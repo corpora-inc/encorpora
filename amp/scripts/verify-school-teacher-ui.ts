@@ -331,7 +331,7 @@ async function seedMisses(student: Student, template: string, days: number[]) {
   );
 }
 
-/** New ground lately: a few skills a little past where they work, each right
+/** New ground lately: a few skills around where they work, each right
  * twice without help. A student at this level does this in the weeks before a
  * report card; answers spread evenly over a year wouldn't show it. */
 async function seedGains(person: Persona, student: Student, count: number) {
@@ -342,13 +342,13 @@ async function seedGains(person: Persona, student: Student, count: number) {
     [student.learnerId],
   );
   const shown = new Set(rows.map((row) => row.skill as string));
-  const level = person.ability + (person.growth ?? 0) + 0.5;
+  const level = person.ability + (person.growth ?? 0);
   const fresh = skills
     .filter(
       (skill) =>
         !shown.has(skill.id) &&
-        gradeNumber[skill.gradeBand] >= Math.floor(level) &&
-        gradeNumber[skill.gradeBand] <= Math.ceil(level),
+        gradeNumber[skill.gradeBand] >= Math.floor(level) - 1 &&
+        gradeNumber[skill.gradeBand] <= Math.floor(level),
     )
     .flatMap((skill) => {
       const template = templates.find(
@@ -729,8 +729,13 @@ const shot = async (
   fullPage = false,
 ) => {
   const file = `${name}-${width}-${theme}.png`;
-  await page.screenshot({ path: `${ARTIFACTS}/${file}`, fullPage });
-  if (SHOTS_FOR_REVIEW.has(width))
+  const isChromium =
+    page.context().browser()?.browserType().name() === "chromium";
+  await page.screenshot({
+    path: `${ARTIFACTS}/${isChromium ? "" : "webkit-"}${file}`,
+    fullPage,
+  });
+  if (isChromium && SHOTS_FOR_REVIEW.has(width))
     await page.screenshot({ path: `${REVIEW}/${file}`, fullPage });
 };
 async function geometry(page: Page, label: string) {
@@ -1277,6 +1282,21 @@ async function printing(browser: Browser) {
   await page.locator("article").waitFor();
   await settle(page, 300);
   await page.screenshot({ path: `${ARTIFACTS}/report-card-print.png` });
+  // Global print rules hide a page's chrome; the card has to survive them.
+  for (const text of [
+    "Alder Street School",
+    "Report card",
+    "Quarter 2",
+    "Final grade",
+  ])
+    check(
+      `the printed card shows ${text}`,
+      await page
+        .locator("article")
+        .getByText(text, { exact: true })
+        .first()
+        .isVisible(),
+    );
   await context.close();
 }
 

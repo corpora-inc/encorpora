@@ -696,7 +696,7 @@ export function componentSentence(component: GradeComponent): string {
       const { weeklyMinutes: minutes, targetMinutes, against } = component;
       const measure =
         against === "target"
-          ? `${minutes} of ${targetMinutes} target minutes a week`
+          ? `${minutes} active minutes a week, against a target of ${targetMinutes}`
           : against === "class"
             ? `${minutes} active minutes a week, against ${targetMinutes} for most of the class`
             : `${minutes} active minutes a week`;

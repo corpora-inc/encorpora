@@ -31,7 +31,7 @@ function Card({
 }) {
   return (
     <article className={styles.card}>
-      <header className={styles.cardHead}>
+      <div className={styles.cardHead}>
         <div>
           <p className={styles.school}>{data.school}</p>
           <p className={styles.kind}>Report card</p>
@@ -40,7 +40,7 @@ function Card({
           <p>{data.term.name}</p>
           <p>{dayRange(data.term.startsOn, data.term.endsOn)}</p>
         </div>
-      </header>
+      </div>
       <h2 className={styles.name}>{student.name}</h2>
       <dl className={styles.people}>
         <div>

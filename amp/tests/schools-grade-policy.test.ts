@@ -479,7 +479,10 @@ test("the sentences state their numbers and never gender a student", () => {
   const sentences = result.components.map(componentSentence);
   assert.match(sentences[0]!, /grade 5\.\d, against grade \d\.\d/);
   assert.match(sentences[1]!, /10 new objectives and 0\.5 grades/);
-  assert.match(sentences[2]!, /of 60 target minutes a week, 1,500 problems/);
+  assert.match(
+    sentences[2]!,
+    /active minutes a week, against a target of 60, 1,500 problems/,
+  );
   assert.match(sentences[3]!, /83% of spaced reviews/);
   for (const sentence of sentences)
     assert.doesNotMatch(sentence, /\b(he|she|his|her|him|hers)\b/i);
