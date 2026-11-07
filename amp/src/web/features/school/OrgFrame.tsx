@@ -19,8 +19,7 @@ import {
 import styles from "./School.module.css";
 
 const VISIBLE_CLASSES = 8;
-/** Someone running a whole school reaches classes through the overview. */
-const VISIBLE_CLASSES_ADMIN = 4;
+const VISIBLE_CLASSES_TAUGHT = 4;
 export type NavId =
   | "overview"
   | "schools"
@@ -184,8 +183,13 @@ export function OrgFrame({
     ...admin("activity", "Activity", "activity", "activity.read"),
   ];
   const overview = can.has("overview.read");
-  const visible = overview ? VISIBLE_CLASSES_ADMIN : VISIBLE_CLASSES;
-  const shown = classes.slice(0, visible);
+  // Someone running a school reaches classes through the overview's table, so
+  // the rail keeps only the ones they teach themselves.
+  const shown = overview
+    ? classes
+        .filter((klass) => org.data.teaches?.includes(klass.id))
+        .slice(0, VISIBLE_CLASSES_TAUGHT)
+    : classes.slice(0, VISIBLE_CLASSES);
   const ancestors = org.data.ancestors ?? [];
   const parent = ancestors.at(-1);
   const sections: SchoolNavSection[] = [
@@ -221,7 +225,7 @@ export function OrgFrame({
         {
           id: "classes",
           label:
-            classes.length > visible
+            classes.length > shown.length
               ? `All ${classes.length} classes`
               : "All classes",
           path: orgPath(orgId, "classes"),
@@ -229,7 +233,7 @@ export function OrgFrame({
       ],
     },
     {
-      label: isSchool ? "School" : "District",
+      label: isSchool ? "School" : "Across schools",
       items: [...schoolItems, ...recordItems],
     },
   ];

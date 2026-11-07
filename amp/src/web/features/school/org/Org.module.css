@@ -290,7 +290,7 @@
   width: 100%;
 }
 .seatFoot a {
-  margin-inline-end: calc(-1 * var(--space-3));
+  margin-inline: calc(-1 * var(--space-3));
   white-space: nowrap;
 }
 .seatDates {
