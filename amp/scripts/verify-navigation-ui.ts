@@ -305,7 +305,18 @@ try {
       ),
       `${label}: keyboard focus is showing`,
     );
-    assert.deepEqual(await paintedRing(), wholeRing, `${label}: focus ring`);
+    // The calculator button is a circle: at the left, right and bottom tangent
+    // points the outer edge of its 3px ring is anti-aliased, so those samples
+    // read two solid pixels where the top reads three (measured the same on
+    // every CI run, after the arrival fade ends). A ring hidden by the stage
+    // below it reads none or one.
+    const ring = await paintedRing();
+    for (const [edge, pixels] of Object.entries(ring))
+      assert(
+        pixels >= wholeRing[edge as keyof typeof wholeRing] - 1 &&
+          pixels <= wholeRing[edge as keyof typeof wholeRing],
+        `${label}: focus ring ${JSON.stringify(ring)}`,
+      );
   }
   // The toolbar paints above the stage below it, so focus rings stay whole,
   // and below everything that overlays practice.
