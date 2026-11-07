@@ -13,8 +13,7 @@ import {
   type GraphClient,
   type Registration,
 } from "../infra/entra.ts";
-import { environments, localOrigin } from "../infra/environments.ts";
-import { oidcRedirectUris } from "../src/schools/oidc.ts";
+import { environments } from "../infra/environments.ts";
 import { checkProviders, classify } from "../infra/provider-drift.ts";
 import {
   checkEnvironment,
@@ -44,40 +43,13 @@ test("redirect URIs use HTTPS except local development, and Apple has none local
     for (const provider of socialProviders)
       for (const uri of registeredRedirects(provider, environment)) {
         const url = new URL(uri);
-        assert.ok(
-          url.pathname === `/api/auth/callback/${provider}` ||
-            (["google", "microsoft"].includes(provider) &&
-              url.pathname === `/api/v1/school/join/oidc/${provider}/callback`),
-          uri,
-        );
+        assert.equal(url.pathname, `/api/auth/callback/${provider}`);
         assert.ok(
           url.protocol === "https:" ||
             (url.hostname === "localhost" && provider !== "apple"),
           uri,
         );
       }
-});
-
-test("student sign-in's callbacks are declared wherever the server sends students", () => {
-  for (const environment of ["stage", "prod"] as const) {
-    const origins =
-      environment === "stage"
-        ? [environments.stage.origin, localOrigin]
-        : [environments.prod.origin];
-    for (const origin of origins) {
-      const student = oidcRedirectUris(origin);
-      assert.ok(
-        registeredRedirects("google", environment).includes(student.google),
-        student.google,
-      );
-      assert.ok(
-        registeredRedirects("microsoft", environment).includes(
-          student.microsoft,
-        ),
-        student.microsoft,
-      );
-    }
-  }
 });
 
 test("a complete environment passes the settings check", () => {
