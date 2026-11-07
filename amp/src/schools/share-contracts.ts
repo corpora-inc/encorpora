@@ -94,3 +94,23 @@ export const parentViewResource = z.object({
   ),
 });
 export type ParentView = z.infer<typeof parentViewResource>;
+
+/** "Talk to us" on `/schools`: a person at a school, writing to the company
+ * mailbox. `website` is left empty by people; a form filler that completes it
+ * is thanked and nothing is sent. */
+const inquiryLine = (max: number) =>
+  z
+    .string()
+    .trim()
+    .min(1)
+    .max(max)
+    .refine((value) => !/[\u0000-\u001f\u007f]/.test(value));
+export const schoolInquirySchema = z.strictObject({
+  name: inquiryLine(100),
+  email: z.email().max(254),
+  school: inquiryLine(200),
+  students: z.number().int().min(1).max(1_000_000).optional(),
+  message: z.string().trim().max(4000).optional(),
+  website: z.string().max(200).optional(),
+});
+export type SchoolInquiry = z.infer<typeof schoolInquirySchema>;
