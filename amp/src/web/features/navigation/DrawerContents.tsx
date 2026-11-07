@@ -29,7 +29,8 @@ function NavIcon({
     | "calendar"
     | "add"
     | "plans"
-    | "out";
+    | "out"
+    | "school";
 }) {
   const paths = {
     learn: "m9 5 10 7-10 7V5Z",
@@ -43,6 +44,7 @@ function NavIcon({
     add: "M10 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-6 9a6 6 0 0 1 9.5-4.9M18 14v6m-3-3h6",
     plans: "M5 5h14v15H5V5Zm4-2h6v4H9V3Zm0 9h6m-6 4h4",
     out: "M10 4H5v16h5m4-13 5 5-5 5m-5-5h10",
+    school: "M3 10l9-5 9 5-9 5-9-5Zm4 3v5c3 2 7 2 10 0v-5",
   };
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -305,6 +307,19 @@ export default function DrawerContents({
             true,
           )}
         </div>
+        {!!account?.staffOf?.length && (
+          <div className={styles.group}>
+            <h2>School</h2>
+            {nav(
+              "/school",
+              "School",
+              "school",
+              account.staffOf.length === 1
+                ? account.staffOf[0]!.orgName
+                : `${account.staffOf.length} schools`,
+            )}
+          </div>
+        )}
         {!student && (
           <div className={styles.group}>
             <h2>Account & access</h2>

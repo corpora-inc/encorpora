@@ -86,6 +86,17 @@ export const meSchema = z.discriminatedUnion("signedIn", [
         levels: z.enum(["hidden", "choice", "shown"]),
       })
       .optional(),
+    /** Schools this account works at. A teacher can also be a parent, so this
+     * sits beside learners rather than replacing them. */
+    staffOf: z
+      .array(
+        z.object({
+          orgId: z.string(),
+          orgName: z.string(),
+          role: z.enum(["admin", "teacher", "aide", "viewer"]),
+        }),
+      )
+      .optional(),
     /** `try`: no purchase or consent yet, so the parent gets the anonymous
      * free trial; the plan opens when they choose to buy or reach the limit. */
     next: z.enum([

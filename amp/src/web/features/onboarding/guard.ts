@@ -23,6 +23,7 @@ export type StartTarget =
   | "/purchase"
   | FundedPath
   | "/practice"
+  | "/school"
   | "/try";
 const learnerSteps: readonly string[] = ["/start/name", "/start/birth-year"];
 
@@ -51,6 +52,16 @@ export function startDestination(
   funded: boolean | FundedProgramSlug = false,
 ): StartTarget | null {
   if (!me.signedIn) return "/sign-in";
+  // School staff aren't new parents. Someone who has learners, or has started
+  // buying for a family, is both, and carries on here.
+  if (
+    !funded &&
+    !buying &&
+    me.staffOf?.length &&
+    !me.learners.length &&
+    me.consent.status !== "active"
+  )
+    return "/school";
   if (funded) {
     if (me.account.confirmationRequired)
       return pathname === "/start/verify-email" ? null : "/start/verify-email";
@@ -117,6 +128,8 @@ function route(
 /** Router navigation options for a guard target (app screens use the splat route). */
 export function startNavigation(target: StartTarget) {
   if (target === "/try") return { to: "/try" } as const;
+  if (target === "/school")
+    return { to: "/$", params: { _splat: "school" } } as const;
   return target === "/purchase" || target === "/practice"
     ? ({ to: "/$", params: { _splat: target.slice(1) } } as const)
     : ({ to: target } as const);

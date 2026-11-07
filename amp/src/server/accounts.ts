@@ -32,6 +32,11 @@ import type { Pool } from "pg";
 import { ApiError } from "./repository";
 import type { Authenticator } from "./auth";
 import { brand, brandTitle } from "../brand";
+import {
+  invitationProvesAddress,
+  isSchoolSignup,
+  isSchoolStaff,
+} from "../schools/staff-account.js";
 
 /** AMP's own parent accounts: users, sessions and linked sign-in methods live
  * in AMP's database (Better Auth). An account id is `amp|<user id>`. */
@@ -435,6 +440,16 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
                 code: PROVIDER_EMAIL_UNVERIFIED,
                 message: "The provider has not verified this email address.",
               });
+            // A mailed school invitation already proved this address.
+            if (
+              !user.emailVerified &&
+              (await invitationProvesAddress(
+                pool,
+                user.email,
+                context?.headers?.get("cookie"),
+              ))
+            )
+              return { data: { ...user, emailVerified: true } };
           },
           after: async (user, context) =>
             enroll(user.id, context?.headers, context?.path),
@@ -449,13 +464,22 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
       // An unconfirmed parent who signs in gets a fresh link (no lockout).
       sendOnSignIn: true,
       autoSignInAfterVerification: true,
-      sendVerificationEmail: ({ user, url }) =>
-        send(
+      sendVerificationEmail: async ({ user, url }, request) => {
+        // A school invitation already confirmed it: no second mail.
+        if (user.emailVerified) return;
+        const school =
+          isSchoolSignup(request?.headers.get("cookie")) ||
+          new URL(url).searchParams.get("callbackURL")?.startsWith("/school") ||
+          (await isSchoolStaff(pool, user.id));
+        await send(
           user.email,
           `Confirm your email for ${brand.name}`,
-          `Confirm this address for your ${brand.name} parent account. Until it is confirmed, the account cannot buy access or give consent for a learner. If you did not create an ${brand.name} account, ignore this email; nothing happens without your confirmation.`,
+          school
+            ? `Confirm this address for your ${brand.name} for Schools account. If you did not create an ${brand.name} account, ignore this email; nothing happens without your confirmation.`
+            : `Confirm this address for your ${brand.name} parent account. Until it is confirmed, the account cannot buy access or give consent for a learner. If you did not create an ${brand.name} account, ignore this email; nothing happens without your confirmation.`,
           url,
-        ),
+        );
+      },
     },
     socialProviders: {
       ...(config.google && {
@@ -519,7 +543,7 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
       database: { validateSchema: false },
     },
   });
-  return { auth, config };
+  return { auth, config, send };
 }
 export type Accounts = Awaited<ReturnType<typeof createAccounts>>;
 

@@ -29,6 +29,20 @@ export const schoolActions = [
   "students.add",
   "signin.read",
   "signin.manage",
+  "setup.start",
+  "setup.write",
+  "invites.accept",
+  "calendar.read",
+  "calendar.write",
+  "classes.update",
+  "students.update",
+  "students.transfer",
+  "students.remove",
+  "staff.read",
+  "staff.manage",
+  "license.read",
+  "license.request",
+  "roster.import",
 ] as const;
 export type OrgKind = (typeof orgKinds)[number];
 export type OrgRole = (typeof orgRoles)[number];
@@ -51,8 +65,10 @@ export class SchoolError extends Error {
 }
 
 const name = z.string().trim().min(1).max(100);
-const plainName = name.refine((value) => !/[\u0000-\u001f\u007f]/.test(value));
-const timezone = z
+export const plainName = name.refine(
+  (value) => !/[\u0000-\u001f\u007f]/.test(value),
+);
+export const timezone = z
   .string()
   .min(1)
   .max(100)
@@ -64,7 +80,7 @@ const timezone = z
       return false;
     }
   });
-const email = z
+export const email = z
   .string()
   .trim()
   .max(254)
@@ -128,6 +144,10 @@ export const issueLicenseSchema = z.strictObject({
 });
 export type IssueLicense = z.infer<typeof issueLicenseSchema>;
 
+export const extendLicenseSchema = z.strictObject({
+  licenseId: z.uuid(),
+  endsAt: z.iso.datetime({ offset: true }),
+});
 export const setSeatsSchema = z.strictObject({
   licenseId: z.uuid(),
   seats: z.number().int().min(0).max(1_000_000),
@@ -240,6 +260,7 @@ export type IssuedCards = z.infer<typeof issuedCardsResource>;
 export const pageSchema = z.object({
   limit: z.coerce.number().int().min(1).max(500).default(200),
   offset: z.coerce.number().int().min(0).max(1_000_000).default(0),
+  q: z.string().trim().max(80).optional(),
 });
 export type Page = z.infer<typeof pageSchema>;
 
@@ -252,6 +273,14 @@ export const orgResource = z.object({
   timezone: z.string(),
   /** The caller's own active roles here; empty when access comes from above. */
   roles: z.array(z.enum(staffRoles)),
+  /** "Just my class": the staff screens collapse. */
+  solo: z.boolean().optional(),
+  /** Still in guided setup. */
+  setupPending: z.boolean().optional(),
+  /** What the caller can do here, so a screen offers only what will work. */
+  can: z.array(z.enum(schoolActions)).optional(),
+  /** Classes the caller teaches here, for the class-level actions in `can`. */
+  teaches: z.array(z.uuid()).optional(),
 });
 export const classResource = z.object({
   id: z.uuid(),
@@ -274,6 +303,8 @@ export const studentResource = z.object({
   classIds: z.array(z.uuid()),
   /** False: rostered and shown as "needs a seat". */
   seated: z.boolean(),
+  /** How many students match, across all pages. */
+  total: z.number().int().optional(),
 });
 export type OrgResource = z.infer<typeof orgResource>;
 export type ClassResource = z.infer<typeof classResource>;

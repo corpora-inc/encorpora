@@ -32,6 +32,7 @@ import {
   registerClassWalletPayByRoutes,
 } from "../funding-purchase/classwallet-payby.js";
 import { registerFamilyRoutes } from "../family/routes.js";
+import { randomBytes } from "node:crypto";
 import { registerSchoolRoutes } from "../schools/routes.js";
 import { stripeConfig, stripeNamespace } from "../billing/stripe/config.js";
 import {
@@ -155,7 +156,25 @@ await registerFamilyRoutes(app, {
   development,
   billingNamespace: billingConfig ? stripeNamespace(billingConfig) : null,
 });
-await registerSchoolRoutes(app, { pool: repository.pool, authenticate });
+await registerSchoolRoutes(app, {
+  pool: repository.pool,
+  authenticate,
+  services: {
+    // Without AMP accounts there's no mail, and a restart only means sending
+    // an invitation again.
+    secret: accounts?.config.secret ?? randomBytes(32).toString("hex"),
+    origin: accounts?.config.baseURL ?? "",
+    ...(accounts ? { mail: accounts.send } : {}),
+    signIn: {
+      ...(accounts?.config.google
+        ? { google: accounts.config.google.clientId }
+        : {}),
+      ...(accounts?.config.microsoft
+        ? { microsoft: accounts.config.microsoft.clientId }
+        : {}),
+    },
+  },
+});
 const fundingOffers = await loadFundingOffers(
   process.env.AMP_FUNDING_OFFERS_FILE,
 );

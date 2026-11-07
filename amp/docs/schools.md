@@ -35,7 +35,7 @@ What schools ask, and the product's answer:
 
 - **Public:** `/schools`, `/schools/scope-and-sequence`, `/schools/trust`
 - **Student:** `/join`, `/join/$code`, `/join/$code/$person`, `/c#<token>`, then the existing `/practice`, plus `/standings` when a class turns it on
-- **Staff:** `/school/new`, `/school/$org` (overview), `.../classes/$class` with tabs `today`, `map`, `gradebook`, `time`, `workbooks`, `roster`, `experience`, `start`, plus `cards` for printing; `.../students/$student`; `.../staff`, `.../calendar`, `.../experience`, `.../import`, `.../integrations`, `.../license`, `.../privacy`, `.../activity`; `.../schools` for districts
+- **Staff:** `/school`, `/school/new`, `/school/invite` (the token is in the fragment, so it never reaches a server log or report), `/school/$org` (overview), `.../classes/$class` with tabs `today`, `map`, `gradebook`, `time`, `workbooks`, `roster`, `roster/cards`, `experience`, `start`; `.../students/$student`; `.../classes`, `.../staff`, `.../sign-in-help`, `.../calendar`, `.../experience`, `.../import`, `.../integrations`, `.../license`, `.../privacy`, `.../activity`; `.../schools` for districts
 
 It scales by collapsing. A lone teacher never sees school admin screens. A district adds one level above. Phones get cards instead of grids at 320 and 390 px.
 
@@ -173,7 +173,7 @@ Merging duplicate students and a standalone school joining a district are agent-
 - **`defineSchoolRoute({ action, ... })`** is the only way to add a route, so a route can't skip authorization, and a test walks the whole table against a cross-tenant matrix.
 - **`can(actor, action, target)`** is the only authorization rule: admin covers descendants, teacher covers their classes, viewer reads. Unauthorized returns 404. A student token never passes it.
 - **`resolveSettings(chain)`** is one pure function, one zod schema, one screen component. It resolves per enrollment, org chain then class then person.
-- **Sources** are plain functions from a file or API to normalized rows, and one reconciler writes them.
+- **Sources** are plain functions from a file or API to normalized rows, and one reconciler writes them. A row with an ID whose name no longer matches, or a new row that matches someone typed in by hand, is held for an admin. Importing adds and updates; it never removes anyone.
 
 Staff stay ordinary accounts, so there is no `kind:'staff'`: a person can be a teacher and a parent at once.
 
@@ -194,7 +194,7 @@ Staff stay ordinary accounts, so there is no `kind:'staff'`: a person can be a t
 
 | Case | With today's sign-in | What we add |
 |---|---|---|
-| Any email address | Works (password, passkey) | The invite link proves the address, so no second confirmation email; the email text stops saying "parent account" |
+| Any email address | Works (password, passkey) | The mailed invite link proves the address, so no second confirmation email; the email text stops saying "parent account". A copied link binds an account but proves nothing about a mailbox, because an admin can copy it: that person confirms their address the usual way |
 | Google Workspace or Microsoft 365 | Works unless IT restricts third-party apps | IT handoff page with the admin-consent link; email fallback |
 | Microsoft doesn't vouch for the email | `providerSignupRefused` correctly refuses to create the account | Clear message and email fallback. Needs a test on a real education tenant |
 | Invite address differs from sign-in address | Would create a mismatch | Invite binds to whichever account accepts it |
@@ -222,4 +222,4 @@ A new staff account isn't treated as a new parent: the guard sends them to `/sch
 
 **Integrations tonight:** CSV and spreadsheet paste with column auto-mapping and a dry-run diff; OneRoster 1.2 CSV import; configurable gradebook CSV plus OneRoster results; Google and Microsoft sign-in. Clever, ClassLink and Google Classroom show a real "set this up with us" request, never a button that fails.
 
-**Licensing:** operated by privileged agents, with no internal admin UI. `scripts/school-admin.ts` creates orgs, issues licenses and adjusts seats with JSON output, reading names from a private input file, and direct database access covers the rest. Adding seats or issuing a license seats the students waiting under that org, longest-waiting first; renewals replace seats on a license that has ended. A school's own license screen shows seats and dates, with "Request more seats" notifying the company mailbox. Self-serve setup starts with 30 seats for 30 days, a default that's one script call to change.
+**Licensing:** operated by privileged agents, with no internal admin UI. `scripts/school-admin.ts` creates orgs, issues licenses and adjusts seats with JSON output, reading names from a private input file, and direct database access covers the rest. Adding seats or issuing a license seats the students waiting under that org, longest-waiting first; renewals replace seats on a license that has ended. A school's own license screen shows seats and dates, with "Request more seats" notifying the company mailbox. Self-serve setup starts with 30 seats for 30 days, a default that's one script call to change (`set-seats`, `extend-license`). One account can set up at most five schools on its own.

@@ -735,6 +735,8 @@ test(
             org: home.orgId,
             class: period1.id,
             student: student1.personId,
+            person: randomUUID(),
+            session: randomUUID(),
           };
           const known = new Set(Object.keys(fixtures));
           assert.ok(schoolRoutes.length >= 6);
@@ -758,7 +760,12 @@ test(
                   : {}),
               });
               if (self) {
-                assert.equal(response.statusCode, 200, route.url);
+                // The probe's body isn't a valid setup or acceptance.
+                assert.equal(
+                  response.statusCode,
+                  route.method === "GET" ? 200 : 400,
+                  route.url,
+                );
                 assert.equal(
                   response.body.includes(home.orgId),
                   false,
