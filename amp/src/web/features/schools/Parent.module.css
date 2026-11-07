@@ -71,6 +71,17 @@
   min-height: 28px;
   margin: 0;
 }
+/* A phone gives each track the whole width, with its name and range above. */
+@media (max-width: 479.98px) {
+  .levelRow {
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: var(--space-2);
+  }
+  .levelTrack {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
 .axisRow {
   display: grid;
   grid-template-columns: minmax(84px, 112px) minmax(0, 1fr) 62px;
@@ -82,6 +93,15 @@
 }
 .axisLabel {
   font-weight: 500;
+}
+@media (max-width: 479.98px) {
+  .axisRow {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 0;
+  }
+  .axisLabel {
+    display: none;
+  }
 }
 .levelName {
   font-size: var(--text-dense);
@@ -117,8 +137,9 @@
   order: 1;
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(28px, 2vw + 22px, 36px);
+  font-size: clamp(22px, 7vw, 36px);
   line-height: 1.1;
+  white-space: nowrap;
   font-variant-numeric: lining-nums;
 }
 .objectives,

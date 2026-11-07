@@ -64,6 +64,3 @@ export async function readParentView(token: string): Promise<ParentView> {
   }
   return parentViewResource.parse(await response.json());
 }
-
-export const shareErrorMessage = (error: unknown, fallback: string) =>
-  error instanceof AppError && error.message ? error.message : fallback;

@@ -95,10 +95,14 @@ function Levels({ view }: { view: ParentView }) {
         {row("overall", "Overall")}
         {view.strands.map((strand) => row(strand.id, strand.label, strand.id))}
       </ul>
+      <div className={styles.axisRow} aria-hidden="true">
+        <span className={styles.axisLabel}>Grade</span>
+        <LevelAxis scale={scale} name={gradeName} reference={!!reference} />
+      </div>
       <p className={styles.key}>
         Each band is the likely grade level in that area of math, and the dot is
         the best estimate.
-        {reference ? " The tick marks the class’s level." : ""}
+        {reference ? ` The tick marks grade ${gradeName(center)}.` : ""}
       </p>
     </>
   );
