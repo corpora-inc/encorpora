@@ -213,14 +213,6 @@ button.student:hover:not(:disabled) {
 .gradePage {
   display: grid;
 }
-.listHead {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: var(--space-4) var(--space-5);
-  margin-bottom: var(--space-5);
-}
 .gradeHead {
   display: flex;
   flex-wrap: wrap;
@@ -497,7 +489,6 @@ input.finalInput:focus-visible {
   clip-path: inset(50%);
   white-space: nowrap;
 }
-.emptyLine,
 .quietLine {
   color: var(--color-muted-text);
   line-height: 1.45;

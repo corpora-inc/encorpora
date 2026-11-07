@@ -8,6 +8,7 @@ import type {
 import { AvatarStack } from "../../../ui/Avatar";
 import { Button, buttonClass } from "../../../ui/Button";
 import { CheckboxControl } from "../../../ui/Checkbox";
+import { EmptyState } from "../../../ui/EmptyState";
 import { Loading } from "../../../ui/Loading";
 import { Sheet } from "../../../ui/Sheet";
 import { StatRow, StatTile } from "../../../ui/StatTile";
@@ -328,15 +329,20 @@ export function MapScreen() {
 
 function EmptyMap({ org, classId }: { org: string; classId: string }) {
   return (
-    <p className={styles.emptyLine}>
-      Add students and each one gets a row here, placed by the work they do.{" "}
-      <Link
-        to="/$"
-        params={{ _splat: classUrl(org, classId, "settings") }}
-        search={{ add: 1 } as never}
-      >
-        Add students
-      </Link>
-    </p>
+    <EmptyState
+      title="No students in this class yet"
+      action={
+        <Link
+          to="/$"
+          params={{ _splat: classUrl(org, classId, "settings") }}
+          search={{ add: 1 } as never}
+          className={buttonClass("primary")}
+        >
+          Add students
+        </Link>
+      }
+    >
+      Each student gets a row here, placed by the work they do.
+    </EmptyState>
   );
 }

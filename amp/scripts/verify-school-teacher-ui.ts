@@ -606,7 +606,7 @@ async function seed(): Promise<Seeded> {
       await seedGains(
         person,
         people.get(person.name[0])!,
-        Math.max(1, Math.round((person.ability - 2.4) * 1.6)),
+        Math.max(1, Math.round(person.ability - 2.4)),
       );
   for (const person of PEOPLE)
     await rebuild(person, people.get(person.name[0])!, "America/New_York");
@@ -949,7 +949,8 @@ async function journey(browser: Browser, engine: string, width: number) {
   // A shared link opens the sheet, and Back closes it.
   await page.goto(`${origin}${classUrl("gradebook")}?student=${amara}`);
   await sheet.waitFor();
-  await page.goBack().catch(() => undefined);
+  await page.goBack();
+  await sheet.waitFor({ state: "detached" });
 
   // Exporting, and reading what came down.
   await page.goto(origin + classUrl("gradebook"));
@@ -1110,6 +1111,8 @@ async function sweep(browser: Browser, engine: string) {
       path: `${classUrl("report-cards")}?term=${terms.q2}&student=${amara}`,
       heading: "Amara Osei",
     },
+    { id: "settings", path: classUrl("settings"), heading: "Grade 5 Math" },
+    { id: "roster", path: classUrl("roster"), heading: "Roster" },
     {
       id: "today-empty",
       path: `/school/${orgId}/classes/${emptyClassId}/today`,
@@ -1335,11 +1338,12 @@ try {
     }
   }
   console.log(`Median gradebook read: ${median.toFixed(0)} ms`);
+} finally {
+  // Whatever stopped the run, what it found so far is worth reading.
   if (failures.length) {
     console.error(failures.join("\n"));
     process.exitCode = 1;
-  } else console.log("School teacher UI: all checks passed");
-} finally {
+  } else console.log("School teacher UI: no failed checks");
   await api.close();
   await learning.pool.end();
   await vite.close();
