@@ -118,6 +118,8 @@ const PASSWORD = "synthetic long fixture passphrase";
 const day = (offset: number) =>
   new Date(Date.now() + offset * 86_400_000).toISOString().slice(0, 10);
 const last: { page: Page | null } = { page: null };
+/** How WebKit reports a request cut off by leaving the page. */
+const CANCELLED_BY_NAVIGATION = /due to access control checks/;
 
 async function signUp(page: Page, email: string) {
   const fallback = page.getByRole("button", {
@@ -250,7 +252,10 @@ async function trialThenSchool(
   page.setDefaultTimeout(30_000);
   last.page = page;
   const errors: string[] = [];
-  page.on("pageerror", (error) => errors.push(error.message));
+  page.on("pageerror", (error) => {
+    if (!CANCELLED_BY_NAVIGATION.test(error.message))
+      errors.push(error.message);
+  });
   const email = `head-${randomUUID().slice(0, 8)}@alder.example`;
   await page.goto(`${origin}/sign-up`);
   await signUp(page, email);
