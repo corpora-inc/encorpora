@@ -1,4 +1,5 @@
 import type { GradeBand } from "../curriculum/types";
+import { startingLevels, type StartingChoice } from "./starting-point";
 import {
   assertFrontierPolicy,
   DEFAULT_FRONTIER_POLICY,
@@ -71,18 +72,19 @@ export function completedGrade(birthYear: number, now = Date.now()): number {
   return schoolYear - birthYear - 7;
 }
 
-const bandStart = { "K–2": 1, "3–5": 4, "6–8": 7, "9–12": 10 } as const;
-/** The grade a learner is typically working in now: born 2016 → grade 4. */
+/** The grade a learner is typically working in now: born 2016 → grade 4.
+ * Without a birth year, the starting choice (a family band, or where an adult
+ * chose to begin) sets it. */
 export function initialLevel(options: {
   birthYear?: number | null;
-  band?: keyof typeof bandStart | null;
+  band?: StartingChoice | null;
   now?: number;
 }): number {
   const level =
     options.birthYear != null
       ? completedGrade(options.birthYear, options.now) + 1
       : options.band
-        ? bandStart[options.band]
+        ? (startingLevels[options.band] ?? 2)
         : 2;
   return Math.min(MAX_GRADE, Math.max(0, level));
 }

@@ -70,6 +70,8 @@ export default function DrawerContents({
   const [error, setError] = useState("");
   const { account, learner, trialMode, trialProgress, frontier } = view;
   const student = account?.account.kind === "student";
+  // Practicing as themselves: the adult's own place, not the family's.
+  const own = view.ownPractice;
   const expired =
     !!view.session.data &&
     !account &&
@@ -198,14 +200,16 @@ export default function DrawerContents({
           <span className={styles.mode}>
             {assessmentCard
               ? "Free assessment"
-              : learner?.entitlement.active
-                ? "Access active"
-                : student
-                  ? "Ask your teacher"
-                  : "Getting started"}
+              : own
+                ? "Your own practice"
+                : learner?.entitlement.active
+                  ? "Access active"
+                  : student
+                    ? "Ask your teacher"
+                    : "Getting started"}
           </span>
         </div>
-        {learnerChoices.length > 1 ? (
+        {learnerChoices.length > 1 && !own ? (
           <ChoicePicker
             label="Current learner"
             placeholder="Choose a learner"
@@ -223,9 +227,11 @@ export default function DrawerContents({
         <p className={styles.contextNote}>
           {assessmentCard
             ? "Progress on this browser"
-            : learner
-              ? "Progress saved to this learner"
-              : "Start an assessment or set up a learner."}
+            : own
+              ? "Your levels and progress"
+              : learner
+                ? "Progress saved to this learner"
+                : "Start an assessment or set up a learner."}
         </p>
         {trialProgress ? (
           <div className={styles.budget}>
@@ -271,23 +277,26 @@ export default function DrawerContents({
         </div>
       )}
       <nav aria-label="AMP navigation" className={styles.navigation}>
-        {nav(
-          view.practiceHref,
-          view.canPractice || student
-            ? "Continue learning"
-            : view.trialProgress?.remaining === 0
-              ? "Continue with a plan"
-              : view.learner
-                ? "Continue setup"
-                : view.trial.data
-                  ? "Resume assessment"
-                  : "Start learning",
-          "learn",
-        )}
+        {/* A paused practice of their own has no next step here: their
+            record, under Progress, says why. */}
+        {!(own && !view.canPractice) &&
+          nav(
+            view.practiceHref,
+            view.canPractice || student
+              ? "Continue learning"
+              : view.trialProgress?.remaining === 0
+                ? "Continue with a plan"
+                : view.learner
+                  ? "Continue setup"
+                  : view.trial.data
+                    ? "Resume assessment"
+                    : "Start learning",
+            "learn",
+          )}
         <div className={styles.group}>
           <h2>Progress</h2>
           {nav(
-            trialMode || !learner ? "/try/map" : "/",
+            trialMode || !learner ? "/try/map" : own ? "/me" : "/",
             "Your progress",
             "level",
             shown
@@ -322,7 +331,11 @@ export default function DrawerContents({
         {account && placeEntries(account).length > 1 ? (
           <div className={`${styles.group} ${styles.places}`}>
             <h2>Your places</h2>
-            <PlaceSwitcher me={account} current="home" onNavigate={close} />
+            <PlaceSwitcher
+              me={account}
+              current={own ? "me" : "home"}
+              onNavigate={close}
+            />
           </div>
         ) : (
           !!account?.staffOf?.length && (
@@ -351,20 +364,24 @@ export default function DrawerContents({
               )}
             {view.session.data &&
               nav("/family/security", "Account settings", "settings")}
+            {/* The family's learners and plans belong to the family side. */}
             {view.session.data &&
+              !own &&
               nav("/family/learners", "Manage learners", "learners")}
             {learner?.birthYear != null &&
               nav("/profile/birth-year", "Change birth year", "calendar")}
             {account &&
+              !own &&
               ["active", "development"].includes(
                 account.family.consent.status,
               ) &&
               nav("/start/name", "Add learner", "add")}
-            {nav(
-              learner?.entitlement.active ? "/family/access" : "/try/plans",
-              learner?.entitlement.active ? "Learning access" : "See plans",
-              "plans",
-            )}
+            {!own &&
+              nav(
+                learner?.entitlement.active ? "/family/access" : "/try/plans",
+                learner?.entitlement.active ? "Learning access" : "See plans",
+                "plans",
+              )}
           </div>
         )}
       </nav>

@@ -24,8 +24,12 @@ import {
   authConfigOptions,
   queryClient,
   sessionOptions,
+  meKey,
   meOptions,
 } from "../lib/query";
+import type { Me } from "../../account/contracts";
+import { useLearnerStore } from "../learner-store";
+import { practicingAsAdult } from "../lib/adult-learner";
 import { LoadingScreen, RouteError } from "../ui/LoadingScreen";
 import {
   homePlace,
@@ -383,6 +387,8 @@ const home = createRoute({
         // their family side. Back and Forward reopen what `/` showed then.
         if (me?.signedIn && !traversing()) {
           const place = homePlace(me, rememberedPlace(me.account.id));
+          if (place === "me")
+            throw redirect({ to: "/me", replace: true } as never);
           if (place !== "home")
             throw redirect({
               to: "/$",
@@ -785,6 +791,58 @@ const standings = createRoute({
     "StandingsScreen",
   ),
 });
+/** The adult's own practice: their record, and where they begin. One chunk.
+ * Arriving chooses their own learner, so practice and the drawer follow. */
+const ownScreens = () => import("../features/me");
+async function ownPractice() {
+  notForStudents();
+  if (nativeRuntime) throw redirect({ to: "/", replace: true });
+  // Signed out: sign in, and `/` brings them back to their own practice.
+  const session = await queryClient.ensureQueryData(sessionOptions);
+  if (!session) throw redirect({ to: "/sign-in" });
+  const me = await queryClient.ensureQueryData({
+    ...meOptions(session),
+    revalidateIfStale: true,
+  });
+  if (!me.signedIn) throw redirect({ to: "/sign-in" });
+  return { me, session };
+}
+const ownRecord = createRoute({
+  getParentRoute: () => root,
+  path: "/me",
+  beforeLoad: async () => {
+    const { me, session } = await ownPractice();
+    const own = me.adultPractice?.learner;
+    // Nothing to read yet: start, when they may; otherwise there's no place.
+    if (!own)
+      throw redirect({
+        to: me.adultPractice?.eligible ? "/me/start" : "/",
+        replace: true,
+      } as never);
+    useLearnerStore.getState().select(own.id);
+    return { session };
+  },
+  loader: ({ context }) =>
+    loadOwnPractice((context as { session: AuthSession }).session),
+  component: lazyRouteComponent(ownScreens, "OwnRecordScreen"),
+});
+const ownStart = createRoute({
+  getParentRoute: () => root,
+  path: "/me/start",
+  beforeLoad: async () => {
+    const { me } = await ownPractice();
+    if (me.adultPractice?.learner)
+      throw redirect({ to: "/me", replace: true } as never);
+    if (!me.adultPractice?.eligible) throw redirect({ to: "/", replace: true });
+  },
+  component: lazyRouteComponent(ownScreens, "OwnStartScreen"),
+});
+async function loadOwnPractice(session: AuthSession) {
+  const { ownPracticeOptions } = await import("../features/me/api");
+  await queryClient
+    .ensureQueryData(ownPracticeOptions(session))
+    .catch(() => undefined);
+}
 /** The public school pages, one chunk between them. */
 const schoolsPublic = () => import("../features/schools");
 const notInTheApp = () => {
@@ -867,6 +925,8 @@ export const router = createRouter({
       schoolClassMarks,
     ]),
     standings,
+    ownRecord,
+    ownStart,
     schoolsHome,
     schoolsScope,
     schoolsTrust,
@@ -914,9 +974,12 @@ export const router = createRouter({
 router.subscribe("onResolved", ({ toLocation }) => {
   const session = queryClient.getQueryData(sessionOptions.queryKey);
   if (!session || studentSession()) return;
+  const me = queryClient.getQueryData<Me>(meKey(session.accountId));
+  const chosen = useLearnerStore.getState().learnerId;
   const place = placeOfPath(
     toLocation.pathname,
     toLocation.search as Record<string, unknown>,
+    me?.signedIn && practicingAsAdult(me, chosen) ? chosen : null,
   );
   if (place) rememberPlace(session.accountId, place);
 });

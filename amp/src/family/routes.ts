@@ -1,3 +1,9 @@
+import {
+  readOwnPractice,
+  recordAdultActivity,
+  startAdultPractice,
+  startPracticeSchema,
+} from "../account/adult.js";
 import { accountSummary } from "../account/repository.js";
 import { studentBearer } from "../schools/principal.js";
 import { studentMe } from "../schools/student-me.js";
@@ -67,6 +73,30 @@ export async function registerFamilyRoutes(
         options.billingNamespace ?? null,
       );
     });
+    // The adult's own practice: their record, starting it, and their time.
+    scope.get("/api/v1/me/practice", async (request) => {
+      const account = await options.authenticate(request);
+      const practice = await readOwnPractice(options.pool, account);
+      if (!practice) throw new FamilyError(404, "adult_practice_not_started");
+      return practice;
+    });
+    scope.post("/api/v1/me/practice", async (request, reply) => {
+      const account = await options.authenticate(request);
+      const input = startPracticeSchema.parse(request.body);
+      return reply
+        .code(201)
+        .send(await startAdultPractice(repository, account, input));
+    });
+    scope.post(
+      "/api/v1/me/practice/activity",
+      { bodyLimit: 4096 },
+      async (request, reply) => {
+        const account = await options.authenticate(request);
+        if (!(await recordAdultActivity(options.pool, account, request.body)))
+          throw new FamilyError(404, "adult_practice_not_started");
+        return reply.code(204).send();
+      },
+    );
     scope.get("/api/v1/family", async (request) =>
       repository.summary(await options.authenticate(request)),
     );

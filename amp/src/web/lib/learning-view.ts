@@ -3,6 +3,7 @@ import { useQuery, queryOptions } from "@tanstack/react-query";
 import { useLocation, useSearch } from "@tanstack/react-router";
 import { meOptions, sessionOptions } from "./query";
 import { useLearnerStore } from "../learner-store";
+import { adultLearner, practicingAsAdult } from "./adult-learner";
 import { request } from "./api";
 import { trialSessionOptions, progressOptions } from "../features/trial/api";
 import { trialEvidenceOptions } from "../features/pathways/queries";
@@ -61,10 +62,16 @@ export function useLearningView() {
       : null;
   const learners = account?.learners ?? [];
   const selectedId = useLearnerStore((s) => s.learnerId);
+  // The adult's own learner, when it's the one chosen: their own practice.
+  const own = practicingAsAdult(account, selectedId)
+    ? adultLearner(account)
+    : null;
   const learner =
+    own ??
     learners.find((l) => l.id === selectedId) ??
     (learners.length === 1 ? learners[0] : undefined);
   useEffect(() => {
+    if (own) return;
     if (learners.length === 1 && selectedId !== learners[0]?.id)
       useLearnerStore.getState().select(learners[0]!.id);
   }, [account, selectedId]);
@@ -78,6 +85,7 @@ export function useLearningView() {
       !session.error &&
       !me.error &&
       !learners.length &&
+      !own &&
       !!trial.data);
   const activeLearner = trialMode ? undefined : learner;
   const trialSession = trial.data ?? { token: "", learnerId: "" };
@@ -114,7 +122,11 @@ export function useLearningView() {
     : !!activeLearner &&
       !!account?.family.learners.find((l) => l.id === activeLearner.id)
         ?.canPractice &&
-      ["active", "development"].includes(account?.family.consent.status ?? "");
+      // An adult learns on their own terms; a child on the family's consent.
+      (!!own ||
+        ["active", "development"].includes(
+          account?.family.consent.status ?? "",
+        ));
   const identityError = session.error || (session.data && me.error);
   const loading =
     (!explicitTrial && loadingIdentity) ||
@@ -135,6 +147,8 @@ export function useLearningView() {
     account,
     learners,
     learner: activeLearner,
+    /** The chosen learner is the adult's own: their own practice. */
+    ownPractice: !trialMode && !!own,
     trial,
     trialMode,
     trialProgress: trialMode ? trialProgress.data : undefined,

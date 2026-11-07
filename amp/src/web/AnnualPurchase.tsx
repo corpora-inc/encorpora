@@ -199,9 +199,13 @@ function PurchasePanel({
               (
                 summary.value.learners.find(
                   (learner) =>
-                    !learner.deletedAt && learner.id === preferredLearnerId,
+                    !learner.deletedAt &&
+                    !learner.adult &&
+                    learner.id === preferredLearnerId,
                 ) ??
-                summary.value.learners.find((learner) => !learner.deletedAt)
+                summary.value.learners.find(
+                  (learner) => !learner.deletedAt && !learner.adult,
+                )
               )?.id ?? "",
             );
         } else
@@ -324,8 +328,11 @@ function PurchasePanel({
       if (alive.current && epoch === generation.current) setBusy(false);
     }
   }
+  // A plan is for a child; the adult's own practice comes with it.
   const choices =
-    family?.learners.filter((learner) => !learner.deletedAt) ?? [];
+    family?.learners.filter(
+      (learner) => !learner.deletedAt && !learner.adult,
+    ) ?? [];
   const phase = status?.phase;
   const canPurchase =
     phase === "ready" ||

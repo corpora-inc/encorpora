@@ -42,6 +42,7 @@ import type {
   EvidenceResponse,
   GradebookResponse,
   MapResponse,
+  ProgressRecord,
   ReportCardsResponse,
   StudentRecordResponse,
   StudentTimeResponse,
@@ -629,6 +630,94 @@ export async function readReportCards(
   };
 }
 
+/** One learner's own progress as a record shows it: levels on every strand,
+ * the last 12 weeks of time, objectives gained over the last year and recent
+ * work. A teacher's student record and an adult's own record both read this,
+ * from the same rollups. `member.personId` keys the rollup reads; an adult
+ * learner, who has no person row, passes its learner id. */
+export async function readProgress(
+  pool: Pool,
+  member: RosterMember & { gradeLevel: number | null },
+  timezone: string,
+  today: string,
+  reference: { from: number; to: number } | null,
+): Promise<ProgressRecord> {
+  const roster: RosterMember[] = [
+    { personId: member.personId, learnerId: member.learnerId },
+  ];
+  const firstWeek = shift(weekStart(today), -7 * 11);
+  const lastTerm = shift(today, -365);
+  const [stored, days, objectives, work] = await Promise.all([
+    levels(pool, roster),
+    perDay(pool, roster, { from: firstWeek, to: today }),
+    objectivesBySpan(pool, [
+      {
+        id: member.personId,
+        learnerId: member.learnerId,
+        name: "",
+        first: "",
+        identifier: null,
+        gradeLevel: member.gradeLevel,
+        from: lastTerm,
+        to: today,
+        beginOn: lastTerm,
+        endOn: null,
+      },
+    ]),
+    workSamples(
+      pool,
+      member.learnerId,
+      { from: lastTerm, to: today },
+      timezone,
+      8,
+    ),
+  ]);
+  const level = stored[0] ?? null;
+  const weekly = new Map<string, number>();
+  for (const row of days) {
+    const week = weekStart(row.day);
+    weekly.set(week, (weekly.get(week) ?? 0) + row.activeMinutes);
+  }
+  return {
+    level: level
+      ? {
+          overall: { level: level.overall.level, sd: level.overall.sd },
+          strands: Object.fromEntries(
+            Object.entries(level.strands).map(([id, { level: at, sd }]) => [
+              id,
+              { level: at, sd },
+            ]),
+          ),
+        }
+      : null,
+    reference,
+    strands: level
+      ? Object.entries(level.strands)
+          .sort(
+            (a, b) => b[1].answered - a[1].answered || a[0].localeCompare(b[0]),
+          )
+          .map(([id]) => ({ id, label: strandLabel(id) }))
+      : [],
+    weeks: mondays({ from: firstWeek, to: today }).map((week) => ({
+      week,
+      minutes: Math.round(weekly.get(week) ?? 0),
+    })),
+    objectives: countedObjectives(
+      objectives.get(member.personId) ?? [],
+      level ? level.overall.level - 1 : null,
+    )
+      .slice(0, 10)
+      .map(({ skillId, day }) => ({
+        skillId,
+        day,
+        title: skillTitleOf(skillId),
+        strand: skillStrandOf(skillId),
+      })),
+    work,
+  };
+}
+export const shiftDay = shift;
+
 type VisibleClass = { id: string; orgId: string; path: string[] };
 /** Everything about one student the actor may see: levels and time are the
  * student's; grades are read only for classes in `classes`. */
@@ -649,9 +738,6 @@ export async function readStudentRecord(
     )
   ).rows[0];
   if (!person) return null;
-  const roster: RosterMember[] = [
-    { personId: person.id, learnerId: person.learnerId },
-  ];
   const today = (
     await pool.query(
       "SELECT to_char(now() AT TIME ZONE $1,'YYYY-MM-DD') AS today",
@@ -661,92 +747,67 @@ export async function readStudentRecord(
   const contexts = await Promise.all(
     classes.map((entry) => classContext(pool, entry.id)),
   );
-  const firstWeek = shift(weekStart(today), -7 * 11);
-  const lastTerm = shift(today, -365);
-  const [stored, days, objectives, work, signIn, gradeRows] = await Promise.all(
-    [
-      levels(pool, roster),
-      perDay(pool, roster, { from: firstWeek, to: today }),
-      objectivesBySpan(pool, [
-        {
-          id: person.id,
-          learnerId: person.learnerId,
-          name: person.name,
-          first: person.first,
-          identifier: person.identifier,
-          gradeLevel: person.gradeLevel,
-          from: lastTerm,
-          to: today,
-          beginOn: lastTerm,
-          endOn: null,
-        },
-      ]),
-      workSamples(
-        pool,
-        person.learnerId,
-        { from: lastTerm, to: today },
-        person.timezone,
-        8,
-      ),
-      pool.query(
-        `SELECT
-           (SELECT max(k.created_at) FROM amp_person_credentials k
-            WHERE k.person_id=$1 AND k.kind='card' AND k.revoked_at IS NULL AND (k.expires_at IS NULL OR k.expires_at>now())) AS "cardIssuedAt",
-           EXISTS(SELECT 1 FROM amp_person_credentials k WHERE k.person_id=$1 AND k.kind='picture' AND k.revoked_at IS NULL) AS "picturesSet",
-           EXISTS(SELECT 1 FROM amp_person_credentials k WHERE k.person_id=$1 AND k.kind='picture' AND k.revoked_at IS NULL AND k.locked_until>now()) AS locked,
-           (SELECT count(*)::int FROM amp_student_sessions s WHERE s.person_id=$1 AND s.revoked_at IS NULL AND s.expires_at>now()) AS "activeSessions",
-           (SELECT max(s.last_seen_at) FROM amp_student_sessions s WHERE s.person_id=$1) AS "lastSeenAt"`,
-        [personId],
-      ),
-      Promise.all(
-        contexts
-          .filter((context) => grades(context.id))
-          .map(async (context) => {
-            const target = await weeklyTargetFor(pool, context);
-            const terms = (await termsFor(pool, context)).filter(
-              (term): term is Term & { state: "open" | "closed" } =>
-                term.state !== "upcoming",
-            );
-            return Promise.all(
-              terms.map(async (term) => {
-                const row = (
-                  await gradebookRows(pool, context, term, target)
-                ).find((entry) => entry.student.id === personId);
-                return row
-                  ? [
-                      {
-                        classId: context.id,
-                        className: context.name,
-                        termId: term.id,
-                        termName: term.name,
-                        state: term.state,
-                        suggestion: toSuggestionResource(row.suggestion),
-                        final: row.final,
-                      },
-                    ]
-                  : [];
-              }),
-            );
-          }),
-      ),
-    ],
-  );
-  const level = stored[0] ?? null;
   const course =
     contexts.map((context) => courseBand(context.courseBands)).find(Boolean) ??
     null;
-  const weekly = new Map<string, number>();
-  for (const row of days) {
-    const week = weekStart(row.day);
-    weekly.set(week, (weekly.get(week) ?? 0) + row.activeMinutes);
-  }
-  const strands = level
-    ? Object.entries(level.strands)
-        .sort(
-          (a, b) => b[1].answered - a[1].answered || a[0].localeCompare(b[0]),
-        )
-        .map(([id]) => ({ id, label: strandLabel(id) }))
-    : [];
+  const [progress, signIn, gradeRows] = await Promise.all([
+    readProgress(
+      pool,
+      {
+        personId: person.id,
+        learnerId: person.learnerId,
+        gradeLevel: person.gradeLevel,
+      },
+      person.timezone,
+      today,
+      course
+        ? { from: course.from, to: course.to }
+        : person.gradeLevel === null
+          ? null
+          : { from: person.gradeLevel - 0.5, to: person.gradeLevel + 0.5 },
+    ),
+    pool.query(
+      `SELECT
+         (SELECT max(k.created_at) FROM amp_person_credentials k
+          WHERE k.person_id=$1 AND k.kind='card' AND k.revoked_at IS NULL AND (k.expires_at IS NULL OR k.expires_at>now())) AS "cardIssuedAt",
+         EXISTS(SELECT 1 FROM amp_person_credentials k WHERE k.person_id=$1 AND k.kind='picture' AND k.revoked_at IS NULL) AS "picturesSet",
+         EXISTS(SELECT 1 FROM amp_person_credentials k WHERE k.person_id=$1 AND k.kind='picture' AND k.revoked_at IS NULL AND k.locked_until>now()) AS locked,
+         (SELECT count(*)::int FROM amp_student_sessions s WHERE s.person_id=$1 AND s.revoked_at IS NULL AND s.expires_at>now()) AS "activeSessions",
+         (SELECT max(s.last_seen_at) FROM amp_student_sessions s WHERE s.person_id=$1) AS "lastSeenAt"`,
+      [personId],
+    ),
+    Promise.all(
+      contexts
+        .filter((context) => grades(context.id))
+        .map(async (context) => {
+          const target = await weeklyTargetFor(pool, context);
+          const terms = (await termsFor(pool, context)).filter(
+            (term): term is Term & { state: "open" | "closed" } =>
+              term.state !== "upcoming",
+          );
+          return Promise.all(
+            terms.map(async (term) => {
+              const row = (
+                await gradebookRows(pool, context, term, target)
+              ).find((entry) => entry.student.id === personId);
+              return row
+                ? [
+                    {
+                      classId: context.id,
+                      className: context.name,
+                      termId: term.id,
+                      termName: term.name,
+                      state: term.state,
+                      suggestion: toSuggestionResource(row.suggestion),
+                      final: row.final,
+                    },
+                  ]
+                : [];
+            }),
+          );
+        }),
+    ),
+  ]);
   const flags = signIn.rows[0];
   return {
     student: {
@@ -762,40 +823,8 @@ export async function readStudentRecord(
       name: context.name,
       course: courseBand(context.courseBands),
     })),
-    level: level
-      ? {
-          overall: { level: level.overall.level, sd: level.overall.sd },
-          strands: Object.fromEntries(
-            Object.entries(level.strands).map(([id, { level: at, sd }]) => [
-              id,
-              { level: at, sd },
-            ]),
-          ),
-        }
-      : null,
-    reference: course
-      ? { from: course.from, to: course.to }
-      : person.gradeLevel === null
-        ? null
-        : { from: person.gradeLevel - 0.5, to: person.gradeLevel + 0.5 },
-    strands,
+    ...progress,
     grades: gradeRows.flat(2),
-    weeks: mondays({ from: firstWeek, to: today }).map((week) => ({
-      week,
-      minutes: Math.round(weekly.get(week) ?? 0),
-    })),
-    objectives: countedObjectives(
-      objectives.get(person.id) ?? [],
-      level ? level.overall.level - 1 : null,
-    )
-      .slice(0, 10)
-      .map(({ skillId, day }) => ({
-        skillId,
-        day,
-        title: skillTitleOf(skillId),
-        strand: skillStrandOf(skillId),
-      })),
-    work,
     signIn: {
       cardIssuedAt: flags.cardIssuedAt?.toISOString() ?? null,
       picturesSet: flags.picturesSet,

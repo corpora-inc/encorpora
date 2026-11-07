@@ -1,0 +1,9 @@
+/* The adult's own record reads in the teacher's record styles
+   (school/classes/Teacher.module.css); this adds only what is theirs. */
+.paused {
+  max-width: 64ch;
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+  line-height: 1.5;
+}

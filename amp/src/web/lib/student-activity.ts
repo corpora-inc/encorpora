@@ -1,13 +1,24 @@
 import { EngagementClock } from "../../analytics/engagement";
 import { screenForPath } from "../../analytics/engagement";
+import type { Me } from "../../account/contracts";
+import type { AuthSession } from "../auth";
+import { useLearnerStore } from "../learner-store";
+import { nativeRuntime } from "../native-runtime";
+import { practicingAsAdult } from "./adult-learner";
+import { meKey, queryClient, sessionOptions } from "./query";
 import { isStudentDevice, studentSession } from "./student-device";
 
-/** Active time for a school student's session, sent to the school's own
- * activity route. Not analytics: it ignores DNT and GPC because a school
- * student's time in class is the school's record, and it carries no
- * identifiers beyond the session token. Time counts only while the page is
- * visible and the student has touched it within the last minute. */
+/** Active time for a learner's own record: a school student's session, sent to
+ * the school's activity route, and an adult practicing as themselves, sent to
+ * their own. Not analytics: a student's time in class is the school's record
+ * and an adult's is their own, so it ignores DNT and GPC, and it carries no
+ * identifiers beyond the sign-in. Time counts only while the page is visible
+ * and the learner has touched it within the last minute. */
 type Surface = "practice" | "lesson" | "feedback" | "map" | "other";
+/** Where the time goes now, or null to let it go uncounted. */
+type Destination = { url: string; token: string } | null;
+type Activity = { navigate(path: string): void; stop(): void };
+const idle: Activity = { navigate: () => {}, stop() {} };
 const SEND_EVERY_MS = 30_000;
 const MAX_DELTAS = 10;
 
@@ -20,15 +31,42 @@ export function surfaceOf(path: string): Surface {
   return "other";
 }
 
-let current: { noteProblem(id: string): void } | null = null;
-/** The problem now showing, so time lands on its skill. A no-op off a student
- * device. */
-export function noteStudentProblem(problemId: string) {
-  current?.noteProblem(problemId);
+const running = new Set<{ noteProblem(id: string): void }>();
+/** The problem now showing, so time lands on its skill. A no-op when no one's
+ * time is counted. */
+export function noteActiveProblem(problemId: string) {
+  for (const clock of running) clock.noteProblem(problemId);
 }
 
-export function startStudentActivity() {
-  if (!isStudentDevice()) return { navigate: (_path: string) => {}, stop() {} };
+/** A school student's time in class. */
+export function startStudentActivity(): Activity {
+  if (!isStudentDevice()) return idle;
+  return startActivity(() => {
+    const session = studentSession();
+    return session
+      ? { url: "/api/v1/school/student/activity", token: session.token }
+      : null;
+  });
+}
+
+/** An adult's time on their own practice, counted only while their own
+ * learner is the one chosen. */
+export function startAdultActivity(): Activity {
+  if (isStudentDevice() || nativeRuntime) return idle;
+  return startActivity(() => {
+    const session = queryClient.getQueryData<AuthSession | null>(
+      sessionOptions.queryKey,
+    );
+    if (!session) return null;
+    const me = queryClient.getQueryData<Me>(meKey(session.accountId));
+    return me?.signedIn &&
+      practicingAsAdult(me, useLearnerStore.getState().learnerId)
+      ? { url: "/api/v1/me/practice/activity", token: session.token }
+      : null;
+  });
+}
+
+function startActivity(destination: () => Destination): Activity {
   let surface: Surface = surfaceOf(location.pathname);
   let problemId: string | undefined;
   let stopped = false;
@@ -57,18 +95,19 @@ export function startStudentActivity() {
   }
   async function send(leaving: boolean) {
     bank();
-    const session = studentSession();
-    if (!session || !queue.length) {
-      if (!session) queue.length = 0;
+    const target = destination();
+    if (!target || !queue.length) {
+      if (!target) queue.length = 0;
       return;
     }
     const deltas = queue.splice(0, MAX_DELTAS);
     try {
-      const response = await fetch("/api/v1/school/student/activity", {
+      const response = await fetch(target.url, {
         method: "POST",
         keepalive: leaving,
+        credentials: "same-origin",
         headers: {
-          Authorization: `Bearer ${session.token}`,
+          ...(target.token ? { Authorization: `Bearer ${target.token}` } : {}),
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -79,9 +118,9 @@ export function startStudentActivity() {
         }),
       });
       if (!response.ok && response.status !== 401)
-        console.warn("Student activity not saved", response.status);
+        console.warn("Active time not saved", response.status);
     } catch (error) {
-      console.warn("Student activity not saved", error);
+      console.warn("Active time not saved", error);
     }
   }
   const interact = () => clock.sample(performance.now(), visible(), true);
@@ -99,13 +138,14 @@ export function startStudentActivity() {
   window.addEventListener("pagehide", leave);
   document.addEventListener("visibilitychange", leave);
   const timer = setInterval(() => void send(false), SEND_EVERY_MS);
-  current = {
-    noteProblem(id) {
+  const watcher = {
+    noteProblem(id: string) {
       if (id === problemId) return;
       bank();
       problemId = id;
     },
   };
+  running.add(watcher);
   return {
     navigate(path: string) {
       const next = surfaceOf(path.split(/[?#]/)[0]);
@@ -117,7 +157,7 @@ export function startStudentActivity() {
     stop() {
       if (stopped) return;
       stopped = true;
-      current = null;
+      running.delete(watcher);
       clearInterval(timer);
       for (const e of interactions) window.removeEventListener(e, interact);
       window.removeEventListener("focus", interact);

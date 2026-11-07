@@ -1,5 +1,6 @@
 import { useNavigate } from "@tanstack/react-router";
 import type { SignedInMe } from "../../../account/contracts";
+import { useLearnerStore } from "../../learner-store";
 import { Menu, MenuItem, MenuLabel } from "../../ui/Menu";
 import { placesFor, type PlaceId } from "../onboarding/guard";
 import { rememberPlace } from "../onboarding/place-memory";
@@ -38,6 +39,23 @@ export function placeEntries(me: SignedInMe): PlaceEntry[] {
                 : "Getting started",
         path: "",
       };
+    if (id === "me") {
+      // Their own learner, by their name; or the way to start one.
+      const own = me.adultPractice?.learner;
+      return own
+        ? {
+            id,
+            name: "My practice",
+            detail: own.name,
+            path: "me",
+          }
+        : {
+            id,
+            name: "Start my own practice",
+            detail: "Free for you",
+            path: "me/start",
+          };
+    }
     const org = me.staffOf!.find((entry) => `school:${entry.orgId}` === id)!;
     return {
       id,
@@ -48,11 +66,24 @@ export function placeEntries(me: SignedInMe): PlaceEntry[] {
   });
 }
 
+/** Choosing a place chooses its learner: the adult's own for their practice,
+ * and the family's first for the family side, unless one of theirs already is. */
+export function choosePlaceLearner(me: SignedInMe, place: PlaceId) {
+  const store = useLearnerStore.getState();
+  const own = me.adultPractice?.learner?.id ?? null;
+  if (place === "me" && own) store.select(own);
+  else if (
+    place === "home" &&
+    !me.learners.some((learner) => learner.id === store.learnerId)
+  )
+    store.select(me.learners[0]?.id ?? null);
+}
+
 /**
  * The one way between the places a person works: their family and practice
- * side, and each school with their role there. It lists only places this
- * account can open, and shows nothing when there's only one. Choosing a place
- * remembers it, so `/` opens there next time.
+ * side, their own practice, and each school with their role there. It lists
+ * only places this account can open, and shows nothing when there's only one.
+ * Choosing a place remembers it, so `/` opens there next time.
  */
 export function PlaceSwitcher({
   me,
@@ -92,7 +123,11 @@ export function PlaceSwitcher({
             key={place.id}
             onSelect={() => {
               if (isHere) return;
-              rememberPlace(me.account.id, place.id);
+              choosePlaceLearner(me, place.id);
+              // Starting is a step on the way there; the place is theirs once
+              // they have it.
+              if (place.path !== "me/start")
+                rememberPlace(me.account.id, place.id);
               onNavigate?.();
               void navigate(
                 place.path

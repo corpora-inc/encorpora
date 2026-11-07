@@ -20,6 +20,7 @@ export function Segmented<T extends string>({
   disabled = false,
   compact = false,
   dense = false,
+  stacked = false,
 }: {
   label: string;
   options: SegmentedOption<T>[];
@@ -32,6 +33,9 @@ export function Segmented<T extends string>({
   compact?: boolean;
   /** With `compact`, for a toolbar: one 44 px line per segment. */
   dense?: boolean;
+  /** Many named choices, such as a ladder of courses: one segment per row,
+   * in order, at every width. */
+  stacked?: boolean;
 }) {
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
   // Four or more longer names can't share a phone's width in one row: below
@@ -63,7 +67,7 @@ export function Segmented<T extends string>({
       role="radiogroup"
       aria-label={label}
       aria-disabled={disabled || undefined}
-      className={`${styles.group} ${compact ? styles.compact : ""} ${dense ? styles.dense : ""} ${crowded ? styles.crowded : ""}`}
+      className={`${styles.group} ${compact ? styles.compact : ""} ${dense ? styles.dense : ""} ${crowded ? styles.crowded : ""} ${stacked ? styles.stacked : ""}`}
       style={{ "--segments": options.length } as CSSProperties}
     >
       {options.map((option, index) => {

@@ -199,6 +199,7 @@ test("service injects a trusted policy; request bodies cannot choose one", async
     }),
     recentSkips: async () => [],
     recentWorkbooks: async () => [],
+    isAdult: async () => false,
     saveProblem: async () => {},
     saveProblems: async () => {},
   };

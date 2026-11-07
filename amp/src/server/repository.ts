@@ -154,11 +154,13 @@ export interface LearnerTransaction {
   setSatMathFocus(enabled: boolean): Promise<void>;
   /** Placement estimate replayed from the learner's whole attempt history. */
   frontier(now?: number): Promise<Frontier>;
-  /** A school student's level for today, in the school's timezone. A no-op for
-   * a learner who isn't on a school roster. */
+  /** A school student's or an adult's level for today, in their timezone. A
+   * no-op for any other learner. */
   saveLevelDay(frontier: Frontier): Promise<void>;
   /** Whether this learner is a school student (has an amp_people row). */
   onSchoolRoster(): Promise<boolean>;
+  /** Whether this is an adult's own learner (docs/families.md). */
+  isAdult(): Promise<boolean>;
   recentAttempts(): Promise<Outcome[]>;
   skillEvidence(): Promise<SkillEvidence[]>;
   attemptByRequest(requestId: string): Promise<Outcome | undefined>;
@@ -208,7 +210,9 @@ export interface LearnerTransaction {
 export interface Repository {
   /** The anonymous free-trial allowance and its placement length. */
   readonly limits?: TrialLimits;
-  hasConsent(accountId: string): Promise<boolean>;
+  /** Whether learning is allowed: for the account, or for one of its
+   * learners, where the account's adult learner needs no parental consent. */
+  hasConsent(accountId: string, learnerId?: string): Promise<boolean>;
   list(accountId: string): Promise<Learner[]>;
   create(
     accountId: string,
@@ -258,10 +262,10 @@ export class PostgresRepository implements Repository {
     this.limits = trialLimits(options.freeProblems);
   }
   readonly limits: TrialLimits;
-  async hasConsent(accountId: string) {
+  async hasConsent(accountId: string, learnerId?: string) {
     const client = await this.pool.connect();
     try {
-      return await learningConsentActive(client, accountId);
+      return await learningConsentActive(client, accountId, false, learnerId);
     } finally {
       client.release();
     }
@@ -333,6 +337,7 @@ export class PostgresRepository implements Repository {
           client,
           accountId,
           this.options.development,
+          learnerId,
         ))
       )
         throw new ApiError(
@@ -664,6 +669,9 @@ export class PgTransaction implements LearnerTransaction {
       ).rowCount === 1
     );
   }
+  async isAdult() {
+    return (await this.learner())?.adult === true;
+  }
   async saveLevelDay(frontier: Frontier) {
     const estimate = ({ level, sd, answered, independent }: Estimate) => ({
       level,
@@ -671,9 +679,15 @@ export class PgTransaction implements LearnerTransaction {
       answered,
       independent,
     });
+    // A school student's day is the school's; an adult's is their own.
     await this.db.query(
       `INSERT INTO amp_level_days(learner_id,day,frontier,policy_version)
-       SELECT $1,(now() AT TIME ZONE p.timezone)::date,$2::jsonb,$3 FROM amp_people p WHERE p.learner_id=$1
+       SELECT $1,(now() AT TIME ZONE z.zone)::date,$2::jsonb,$3 FROM (
+         SELECT p.timezone AS zone FROM amp_people p WHERE p.learner_id=$1
+         UNION ALL
+         SELECT COALESCE(l.timezone,'America/New_York') FROM amp_learners l
+         WHERE l.id=$1 AND l.adult AND NOT EXISTS(SELECT 1 FROM amp_people p WHERE p.learner_id=$1)
+       ) z
        ON CONFLICT(learner_id,day) DO UPDATE SET frontier=EXCLUDED.frontier,policy_version=EXCLUDED.policy_version`,
       [
         this.learnerId,
