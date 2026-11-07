@@ -1,11 +1,11 @@
 import { Link, useLoaderData } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { buttonClass } from "../../ui/Button";
-import { SUPPORT_EMAIL } from "../support/SupportHelp";
 import { SCOPE_CSV, SCOPE_PDF } from "./api";
 import { CurriculumRibbon } from "./CurriculumRibbon";
 import { ProductShot } from "./ProductShot";
 import { PublicFrame } from "./PublicFrame";
+import { TalkToUs } from "./TalkToUs";
 import { productScreens as screens } from "./screens";
 import styles from "./Schools.module.css";
 
@@ -14,20 +14,14 @@ const count = (value: number) => value.toLocaleString("en-US");
 function Actions({ className = "" }: { className?: string }) {
   return (
     <div className={`${styles.actions} ${className}`}>
-      {/* Staff screens are reached through the splat route. */}
+      {/* Schools are set up with us: the conversation starts here. */}
       <Link
-        to="/$"
-        params={{ _splat: "school/new" }}
+        to="/schools"
+        hash="talk"
         className={buttonClass("primary", styles.action)}
       >
-        Start a class
-      </Link>
-      <a
-        href={`mailto:${SUPPORT_EMAIL}`}
-        className={buttonClass("secondary", styles.action)}
-      >
         Talk to us
-      </a>
+      </Link>
     </div>
   );
 }
@@ -264,9 +258,19 @@ export function SchoolsScreen() {
           </dl>
         </section>
 
-        <section className={styles.closing} aria-label="Get started">
-          <h2>Start with one class.</h2>
-          <Actions />
+        <section
+          id="talk"
+          className={styles.closing}
+          aria-labelledby="schools-talk"
+        >
+          <div className={styles.closingHead}>
+            <h2 id="schools-talk">Talk to us.</h2>
+            <p>
+              Tell us about your school, and we’ll set AMP up with you, from the
+              first class to every school in the district.
+            </p>
+          </div>
+          <TalkToUs />
         </section>
       </main>
     </PublicFrame>
