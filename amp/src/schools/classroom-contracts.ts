@@ -6,6 +6,7 @@ import {
   workbookSectionKinds,
 } from "../workbook/contracts.js";
 import {
+  deviceModes,
   levelVisibilities,
   standingsMeasures,
   standingsScopes,
@@ -16,11 +17,18 @@ import type { ExperiencePreset } from "./setup-contracts.js";
 /** The API shapes of a class's student experience, standings and workbook
  * stack. Shared by the routes and their screens. */
 
-/** The settings a screen offers. Device mode is sign-in's, and the weekly target
- * is the gradebook's. */
-export const experienceKeys = ["levels", "standings", "measure"] as const;
+/** The settings a screen offers. The weekly target is the gradebook's. */
+export const experienceKeys = [
+  "levels",
+  "standings",
+  "measure",
+  "deviceMode",
+] as const;
 export type ExperienceKey = (typeof experienceKeys)[number];
-export type ExperienceValues = Pick<SchoolSettings, ExperienceKey>;
+/** A starting point decides what students see. Device mode is about the
+ * devices, so it stays as it is. */
+export type PresetKey = Exclude<ExperienceKey, "deviceMode">;
+export type ExperienceValues = Pick<SchoolSettings, PresetKey>;
 
 /** What each starting point sets. */
 export const experienceValues: Record<ExperiencePreset, ExperienceValues> = {
@@ -61,6 +69,7 @@ export const experienceResource = z.object({
     levels: experienceSetting(z.enum(levelVisibilities)),
     standings: experienceSetting(z.enum(standingsScopes)),
     measure: experienceSetting(z.enum(standingsMeasures)),
+    deviceMode: experienceSetting(z.enum(deviceModes)),
   }),
   /** A class's roster, with who the teacher left off standings. */
   students: z
@@ -74,6 +83,7 @@ const writableValues = z.strictObject({
   levels: z.enum(levelVisibilities).nullable().optional(),
   standings: z.enum(standingsScopes).nullable().optional(),
   measure: z.enum(standingsMeasures).nullable().optional(),
+  deviceMode: z.enum(deviceModes).nullable().optional(),
 });
 export const classExperienceWriteSchema = z.strictObject({
   values: writableValues,
@@ -85,6 +95,7 @@ export const orgExperienceWriteSchema = z.strictObject({
       levels: z.boolean().optional(),
       standings: z.boolean().optional(),
       measure: z.boolean().optional(),
+      deviceMode: z.boolean().optional(),
     })
     .optional(),
 });

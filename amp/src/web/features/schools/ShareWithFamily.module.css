@@ -1,0 +1,20 @@
+.body {
+  display: grid;
+  gap: var(--space-4);
+}
+.body p {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-dense);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+.body .note {
+  font-size: var(--text-label);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}

@@ -259,17 +259,25 @@ export class SchoolSignIn {
         });
     });
   }
-  /** A session in the mode this class resolves to. */
+  /** A session in the mode the student's classes resolve to. */
   private async grant(
     found: LiveClass,
     personId: string,
   ): Promise<StudentGrant> {
-    const mode = studentDeviceMode(
-      await enrollmentSettings(this.pool, personId, { path: found.path }, [
-        { id: found.id, path: found.path },
-      ]),
+    return this.session(personId, await this.deviceMode(personId, found));
+  }
+  /** Every class they're in today, so one that asks for shared devices holds
+   * whichever way the student came in. */
+  private async deviceMode(personId: string, home: { path: string[] }) {
+    const classes = await this.pool.query(
+      `SELECT c.id,o.path FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id
+       JOIN amp_orgs o ON o.id=c.org_id
+       WHERE e.person_id=$1 AND e.role='student' AND c.archived_at IS NULL AND ${activeToday("e", "o")}`,
+      [personId],
     );
-    return this.session(personId, mode);
+    return studentDeviceMode(
+      await enrollmentSettings(this.pool, personId, home, classes.rows),
+    );
   }
   private async session(personId: string, mode: StudentGrant["mode"]) {
     const { token, accountId, expiresAt } =
@@ -300,15 +308,7 @@ export class SchoolSignIn {
       )
     ).rows[0] as { path: string[] } | undefined;
     if (!home) throw invalid();
-    const classes = await this.pool.query(
-      `SELECT c.id,o.path FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id
-       JOIN amp_orgs o ON o.id=c.org_id
-       WHERE e.person_id=$1 AND e.role='student' AND c.archived_at IS NULL AND ${activeToday("e", "o")}`,
-      [personId],
-    );
-    const mode = studentDeviceMode(
-      await enrollmentSettings(this.pool, personId, home, classes.rows),
-    );
+    const mode = await this.deviceMode(personId, home);
     try {
       return await this.session(personId, mode);
     } catch (error) {

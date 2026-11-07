@@ -47,6 +47,7 @@ import {
 } from "../lib/student-device";
 import { workbookSearchSchema } from "../features/workbooks/model";
 import { frameData, schoolRoutes, staffScreen } from "./school-routes";
+import { loadCurriculum, loadScope } from "../features/schools/api";
 import {
   marksSearchSchema,
   stackSearchSchema,
@@ -742,6 +743,41 @@ const standings = createRoute({
     "StandingsScreen",
   ),
 });
+/** The public school pages, one chunk between them. */
+const schoolsPublic = () => import("../features/schools");
+const notInTheApp = () => {
+  if (nativeRuntime) throw redirect({ to: "/", replace: true });
+};
+const schoolsHome = createRoute({
+  getParentRoute: () => root,
+  path: "/schools",
+  beforeLoad: notInTheApp,
+  loader: loadCurriculum,
+  component: lazyRouteComponent(schoolsPublic, "SchoolsScreen"),
+});
+const schoolsScope = createRoute({
+  getParentRoute: () => root,
+  path: "/schools/scope-and-sequence",
+  beforeLoad: notInTheApp,
+  loader: loadScope,
+  component: lazyRouteComponent(schoolsPublic, "ScopeScreen"),
+});
+const schoolsTrust = createRoute({
+  getParentRoute: () => root,
+  path: "/schools/trust",
+  beforeLoad: notInTheApp,
+  component: lazyRouteComponent(schoolsPublic, "TrustScreen"),
+});
+/** A family's progress link. Its secret is in the fragment, which `share-entry`
+ * has already taken out of the address bar. */
+const familyLink = createRoute({
+  getParentRoute: () => root,
+  path: "/p",
+  component: lazyRouteComponent(
+    () => import("../features/schools/ParentScreen"),
+    "ParentScreen",
+  ),
+});
 const fallback = createRoute({
   getParentRoute: () => appScreen,
   path: "/$",
@@ -769,6 +805,10 @@ export const router = createRouter({
       schoolClassMarks,
     ]),
     standings,
+    schoolsHome,
+    schoolsScope,
+    schoolsTrust,
+    familyLink,
     signIn,
     signUp,
     accountReady,

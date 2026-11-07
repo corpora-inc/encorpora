@@ -62,12 +62,12 @@ test("anything else in that slot is not a student sign-in", () => {
 test("the sign-in screens count as a student device before any token exists", () => {
   const at = (path: string) =>
     vi.stubGlobal("location", new URL(`https://amp.corpora.inc${path}`));
-  for (const path of ["/join", "/join/ABC123", "/c/card-secret"]) {
+  for (const path of ["/join", "/join/ABC123", "/c/card-secret", "/p"]) {
     at(path);
     expect(isStudentDevice()).toBe(true);
     expect(analyticsAllowed()).toBe(false);
   }
-  for (const path of ["/", "/joinery", "/class", "/practice"]) {
+  for (const path of ["/", "/joinery", "/class", "/practice", "/pathways"]) {
     at(path);
     expect(isStudentDevice()).toBe(false);
   }

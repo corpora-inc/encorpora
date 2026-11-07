@@ -15,7 +15,7 @@ import { SchoolSignIn } from "./sign-in.js";
  * caps how hard anyone can lean on these routes. The address, not the usual
  * key: these take no credential, so a made-up header must not earn a new limit. */
 export const JOIN_RATE_LIMIT = 1200;
-const limited = {
+export const limited = {
   bodyLimit: 1024,
   config: {
     rateLimit: {

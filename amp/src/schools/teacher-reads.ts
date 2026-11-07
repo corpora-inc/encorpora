@@ -126,7 +126,7 @@ export async function readToday(
   pool: Pool,
   context: ClassContext,
   actorPersonId: string | null,
-): Promise<TodayResponse> {
+): Promise<Omit<TodayResponse, "canPrint">> {
   const named = await namedRoster(pool, context.id);
   const roster = members(named);
   const policy = DEFAULT_GRADE_POLICY;

@@ -5,6 +5,7 @@ import {
   type Experience,
   type ExperienceKey,
   type NamedScope,
+  type PresetKey,
 } from "../../../../schools/classroom-contracts";
 import {
   experiencePresets,
@@ -90,6 +91,25 @@ const measureRow: Row<"measure"> = {
     practice: "Problems done without help this term.",
     level: "Each student’s working level.",
   },
+};
+
+/** What each does, in one line: a teacher is choosing between the two. */
+const DEVICE_LINE =
+  "Shared signs a student out after 30 idle minutes, for a cart of devices. Personal keeps them signed in for 90 days, for a student’s own device.";
+const deviceRow: Row<"deviceMode"> = {
+  key: "deviceMode",
+  title: "Devices",
+  options: [
+    { value: "shared", label: "Shared" },
+    { value: "personal", label: "Personal" },
+  ],
+  describe: { shared: DEVICE_LINE, personal: DEVICE_LINE },
+};
+const rowOf: { [K in ExperienceKey]: Row<K> } = {
+  levels: levelsRow,
+  standings: standingsRow,
+  measure: measureRow,
+  deviceMode: deviceRow,
 };
 
 const whoSet = (setting: {
@@ -215,7 +235,7 @@ export function ExperienceSettings({
   const { settings } = experience;
   const current = (Object.keys(experienceValues) as ExperiencePreset[]).find(
     (preset) =>
-      (Object.keys(experienceValues[preset]) as ExperienceKey[]).every(
+      (Object.keys(experienceValues[preset]) as PresetKey[]).every(
         (key) => settings[key].value === experienceValues[preset][key],
       ),
   );
@@ -227,13 +247,15 @@ export function ExperienceSettings({
   /** A choice a lock above rules out isn't offered as one. */
   const blockedBy = (preset: ExperiencePreset) =>
     lockedKeys.find(
-      (key) => settings[key].value !== experienceValues[preset][key],
+      (key) =>
+        key !== "deviceMode" &&
+        settings[key].value !== experienceValues[preset][key],
     );
   const choose = (preset: ExperiencePreset) => {
     const wanted = experienceValues[preset];
     send({
       values: Object.fromEntries(
-        (Object.keys(wanted) as ExperienceKey[])
+        (Object.keys(wanted) as PresetKey[])
           .filter((key) => !lockedKeys.includes(key))
           .map((key) => [key, wanted[key]]),
       ),
@@ -243,13 +265,7 @@ export function ExperienceSettings({
   const row = (key: ExperienceKey) => (
     <SettingRow
       key={key}
-      row={
-        (key === "levels"
-          ? levelsRow
-          : key === "standings"
-            ? standingsRow
-            : measureRow) as Row<ExperienceKey>
-      }
+      row={rowOf[key] as Row<ExperienceKey>}
       experience={experience}
       disabled={false}
       {...(key === "measure" &&
@@ -309,6 +325,7 @@ export function ExperienceSettings({
         {row("levels")}
         {row("standings")}
         {row("measure")}
+        {row("deviceMode")}
       </div>
       {experience.students && (
         <section className={styles.leftOff} aria-labelledby="left-off">
