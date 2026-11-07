@@ -194,6 +194,37 @@ button.student:hover:not(:disabled) {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: -1px;
 }
+/* A teacher's own line on the map: their name, and under it the word Teacher,
+   so it reads apart from the students without a colour of its own. */
+span.student[data-teacher] {
+  cursor: default;
+}
+.teacherLine {
+  display: grid;
+  min-width: 0;
+  line-height: 1.15;
+}
+/* Only a link underlines, and only the name. */
+.student[data-teacher]:hover span:last-child {
+  text-decoration: none;
+}
+a.student[data-teacher]:hover .teacherLine > span:first-child {
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+.teacherRole {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-weight: 600;
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 .tip {
   position: fixed;
   z-index: 50;

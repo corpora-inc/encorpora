@@ -29,6 +29,14 @@ One model, from one child to a district. A family uses the same classes, sign-in
 - **Home:** `/me` is the student record a teacher reads, from the same rollups and parts (`readProgress`, `school/classes/ProgressRecord.tsx`), with time by day and skill. The adult's answers, level days and active time roll up like a student's; active time counts on practice, lessons and the map while their own learner is the one chosen.
 - **Places:** "My practice" is a place in the switcher, and `/` returns to it. Practice, lessons, pathways and workbooks are the adult's place while their own learner is the one chosen.
 
+### The teacher in their class
+
+- **Who:** every teacher of the class (a teacher enrollment in force, while they hold a staff role along its path) with a live adult learner. That includes a parent who teaches a family class. Aides never appear. `classTeachers` in `src/schools/teacher-line.ts` is the one query.
+- **The class map:** each is a line of their own, by name with "Teacher" under it, sorted in place with the students. Your own line opens `/me`; a colleague's opens nothing. The strand columns and the scale are the students': a teacher far past the class rests at the scale's end ("8+"). `MapResponse.teachers`, apart from `students`.
+- **Standings:** on whatever board the class's setting opens, on its measure and term. A teacher's line never takes a rank and never moves one: students' ranks and the top-10 rule read students alone. A line whose value reaches the lowest listed value sits in the list in place, after any student it ties, with a mark instead of a number. Below it, or on a board that lists nobody, it shows after the student's own line. A teacher with nothing to show yet isn't on it. Off means off. `StandingsBoard.teachers`, apart from `top`.
+- **Show me in my class:** one switch per class on the Student experience tab, for a teacher of that class who practices, on by default. Off takes their line off that class's map and board. It's stored beside the settings as the class's `teachersHidden` list, logged as `standings.teacher_shown`, and only the teacher changes their own (`POST .../classes/$class/experience/me`).
+- **Never counted:** grades and their class median, seats, rosters, Today, time, report cards, exports and school overviews read student enrollments, so a teacher's practice never reaches them. `tests/teacher-in-class.integration.ts` compares each before and after the teachers practice.
+
 ## An adult on their own
 
 An adult can buy a license for themselves, for example an 18-year-old preparing for the SAT, or a parent brushing up. That's the adult learner above, with no class around it, and it needs no other case:
@@ -62,7 +70,7 @@ A child who signed in with an account of their own is moved by an operator proce
 ## Build order
 
 1. An admin takes a class and teaches it. **Done** in this change.
-2. Adult practice for any adult: **done**. The adult's place in their class map and standings is next.
+2. Adult practice for any adult, and the adult's place in their class map and standings: **done**.
 3. Families as classes: buying for a child creates or joins the family class, the child gets join sign-in, and a parent can hand their own device to a child.
 4. Converting existing families, and family licenses that include the parent.
 5. Approval links for another family's child.

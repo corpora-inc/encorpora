@@ -51,6 +51,7 @@ import type {
   TodayResponse,
   WorkItem,
 } from "./teacher-contracts.js";
+import { shownTeachers } from "./teacher-line.js";
 import {
   todayTodos,
   weekStart,
@@ -283,51 +284,72 @@ export const strandLabel = (id: string) =>
 
 /** Fewer answers than this and a level is mostly its starting guess. */
 const PROVISIONAL_ANSWERS = 20;
-/** Every student's stored level, on the ground they're graded against. */
+type StoredLevel = Awaited<ReturnType<typeof levels>>[number];
+const mapLevel = (row: StoredLevel | undefined) => ({
+  provisional: !row || row.overall.answered < PROVISIONAL_ANSWERS,
+  level: row
+    ? {
+        overall: { level: row.overall.level, sd: row.overall.sd },
+        strands: Object.fromEntries(
+          Object.entries(row.strands).map(([id, { level, sd }]) => [
+            id,
+            { level, sd },
+          ]),
+        ),
+      }
+    : null,
+});
+/** Every student's stored level, on the ground they're graded against, and
+ * each teacher who practices and shows here as a line of their own. The
+ * strands are the students': a teacher's work never adds a column.
+ * `readerAccountId` marks the reader's own line. */
 export async function readMap(
   pool: Pool,
   context: ClassContext,
+  readerAccountId: string | null = null,
 ): Promise<MapResponse> {
-  const named = await namedRoster(pool, context.id);
+  const [named, teachers] = await Promise.all([
+    namedRoster(pool, context.id),
+    shownTeachers(pool, context.id),
+  ]);
   const stored = new Map(
-    (await levels(pool, members(named))).map((row) => [row.personId, row]),
+    (await levels(pool, [...members(named), ...teachers])).map((row) => [
+      row.personId,
+      row,
+    ]),
   );
   const course = courseBand(context.courseBands);
   const evidence = new Map<string, number>();
-  for (const row of stored.values())
-    for (const [id, estimate] of Object.entries(row.strands))
+  for (const student of named)
+    for (const [id, estimate] of Object.entries(
+      stored.get(student.id)?.strands ?? {},
+    ))
       evidence.set(id, (evidence.get(id) ?? 0) + estimate.answered);
   return {
     class: classSummaryOf(context),
     strands: [...evidence.entries()]
       .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
       .map(([id]) => ({ id, label: strandLabel(id) })),
-    students: named.map((student) => {
-      const row = stored.get(student.id);
-      return {
-        id: student.id,
-        name: student.name,
-        first: student.first,
-        gradeLevel: student.gradeLevel,
-        provisional: !row || row.overall.answered < PROVISIONAL_ANSWERS,
-        level: row
-          ? {
-              overall: { level: row.overall.level, sd: row.overall.sd },
-              strands: Object.fromEntries(
-                Object.entries(row.strands).map(([id, { level, sd }]) => [
-                  id,
-                  { level, sd },
-                ]),
-              ),
-            }
-          : null,
-        reference: course
-          ? { from: course.from, to: course.to }
-          : student.gradeLevel === null
-            ? null
-            : { from: student.gradeLevel - 0.5, to: student.gradeLevel + 0.5 },
-      };
-    }),
+    students: named.map((student) => ({
+      id: student.id,
+      name: student.name,
+      first: student.first,
+      gradeLevel: student.gradeLevel,
+      ...mapLevel(stored.get(student.id)),
+      reference: course
+        ? { from: course.from, to: course.to }
+        : student.gradeLevel === null
+          ? null
+          : { from: student.gradeLevel - 0.5, to: student.gradeLevel + 0.5 },
+    })),
+    teachers: teachers.map((teacher) => ({
+      id: teacher.personId,
+      name: teacher.name,
+      first: teacher.first,
+      you: teacher.accountId === readerAccountId,
+      ...mapLevel(stored.get(teacher.personId)),
+      reference: course ? { from: course.from, to: course.to } : null,
+    })),
   };
 }
 

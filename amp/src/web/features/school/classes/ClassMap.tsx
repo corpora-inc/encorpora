@@ -29,6 +29,9 @@ const SCALE_SD = 0.3;
 const SCALE_MOST_SD = 1.2;
 const middleOf = (reference: MapStudent["reference"]) =>
   reference ? (reference.from + reference.to) / 2 : null;
+/** A row of the map: a student, or a teacher of the class who practices
+ * themselves (docs/families.md), marked and never one of the students. */
+type MapLine = MapStudent & { teacher?: { you: boolean } };
 
 function estimateOf(
   student: MapStudent,
@@ -71,6 +74,17 @@ export function ClassMap({
   const strands = limitStrands
     ? data.strands.slice(0, limitStrands)
     : data.strands;
+  const rows = useMemo<MapLine[]>(
+    () => [
+      ...data.students,
+      ...data.teachers.map(({ you, ...teacher }) => ({
+        ...teacher,
+        gradeLevel: null,
+        teacher: { you },
+      })),
+    ],
+    [data],
+  );
   const org = data.class.orgId;
   const classId = data.class.id;
   const courseLevel = data.class.course?.level;
@@ -82,8 +96,9 @@ export function ClassMap({
       .sort((a, b) => a - b);
     return middles[Math.floor(middles.length / 2)] ?? 5;
   }, [courseLevel, data.students]);
-  // Wide enough for every best guess: a strand with few answers has a wide band
-  // that runs off the edge rather than shrinking everyone else's.
+  // Wide enough for every student's best guess: a strand with few answers has
+  // a wide band that runs off the edge rather than shrinking everyone else's,
+  // and so does a teacher far past the class, whose dot rests at the end.
   const scale = useMemo(
     () =>
       levelScale(
@@ -144,17 +159,47 @@ export function ClassMap({
       </span>
     );
   };
-  const name = (student: MapStudent) => (
-    <Link
-      to="/$"
-      params={{ _splat: studentUrl(org, student.id) }}
-      search={{ class: classId } as never}
-      className={styles.student}
-    >
-      <Avatar name={student.name} size="small" />
-      <span>{student.name}</span>
-    </Link>
-  );
+  const name = (line: MapLine) => {
+    if (!line.teacher)
+      return (
+        <Link
+          to="/$"
+          params={{ _splat: studentUrl(org, line.id) }}
+          search={{ class: classId } as never}
+          className={styles.student}
+        >
+          <Avatar name={line.name} size="small" />
+          <span>{line.name}</span>
+        </Link>
+      );
+    const content = (
+      <>
+        <Avatar name={line.name} size="small" />
+        <span className={styles.teacherLine}>
+          <span>
+            {line.name}
+            <span className={styles.srOnly}>, </span>
+          </span>
+          <span className={styles.teacherRole}>Teacher</span>
+        </span>
+      </>
+    );
+    // Your own line opens your own record; a colleague's opens nothing.
+    return line.teacher.you ? (
+      <Link
+        to="/me"
+        className={styles.student}
+        data-teacher=""
+        aria-label={`${line.name}, Teacher`}
+      >
+        {content}
+      </Link>
+    ) : (
+      <span className={styles.student} data-teacher="">
+        {content}
+      </span>
+    );
+  };
   // Who has too little work to place goes after everyone who has.
   const level = (student: MapStudent, strand: string) =>
     student.level && !student.provisional
@@ -162,7 +207,7 @@ export function ClassMap({
         ? student.level.overall.level
         : (student.level.strands[strand]?.level ?? student.level.overall.level)
       : -1;
-  const columns = useMemo<DataGridColumn<MapStudent>[]>(
+  const columns = useMemo<DataGridColumn<MapLine>[]>(
     () => [
       {
         id: "student",
@@ -181,7 +226,7 @@ export function ClassMap({
         cell: (student) => band(student, "overall"),
         cellLabel: (student) => reading(student, "overall"),
       },
-      ...strands.map((strand): DataGridColumn<MapStudent> => ({
+      ...strands.map((strand): DataGridColumn<MapLine> => ({
         id: strand.id,
         header: strand.label,
         width: 108,
@@ -212,8 +257,8 @@ export function ClassMap({
       <DataGrid
         label="Class map"
         columns={columns}
-        rows={data.students}
-        rowKey={(student) => student.id}
+        rows={rows}
+        rowKey={(line) => line.id}
         sort={
           parseSort(search.sort) ?? {
             column: "overall",

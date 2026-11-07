@@ -142,6 +142,43 @@ export function useLeaveOff(session: Session, classId: string) {
   });
 }
 
+/** A teacher's own line on this class's map and board. The map reads it too,
+ * so it refreshes with the settings. */
+export function useTeacherShown(session: Session, classId: string) {
+  const client = useQueryClient();
+  const queryKey = experienceOptions(session, {
+    kind: "class",
+    id: classId,
+  }).queryKey;
+  return useMutation({
+    mutationFn: (shown: boolean) =>
+      request(`/school/classes/${classId}/experience/me`, experienceResource, {
+        token: session?.token,
+        body: { shown },
+      }),
+    onMutate: async (shown) => {
+      await client.cancelQueries({ queryKey });
+      const before = client.getQueryData<Experience>(queryKey);
+      if (before?.teacherLine)
+        client.setQueryData(queryKey, { ...before, teacherLine: { shown } });
+      return { before };
+    },
+    onError: (_error, _shown, context) => {
+      if (context?.before) client.setQueryData(queryKey, context.before);
+    },
+    onSuccess: (saved) => client.setQueryData(queryKey, saved),
+    onSettled: () =>
+      client.invalidateQueries({
+        predicate: ({ queryKey: key }) =>
+          key[0] === "account" &&
+          key[1] === session?.accountId &&
+          key[2] === "school" &&
+          key[4] === classId &&
+          key[5] === "map",
+      }),
+  });
+}
+
 export const stackOptions = (
   session: Session,
   classId: string,
