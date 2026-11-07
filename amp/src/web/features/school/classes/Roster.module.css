@@ -1,0 +1,71 @@
+.page {
+  display: grid;
+  gap: var(--space-5);
+}
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+}
+.count {
+  margin-top: var(--space-1);
+  color: var(--color-muted-text);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.code {
+  --tile: 44px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+  padding: var(--space-4) 0;
+  border-block: 1px solid var(--color-border);
+}
+.codeText {
+  flex: 1 1 260px;
+}
+.codeText h2 {
+  font-family: inherit;
+  font-size: var(--text-dense);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.codeText p {
+  margin-top: 2px;
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+}
+.tiles {
+  display: inline-flex;
+  flex: none;
+}
+.student {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 550;
+}
+.none {
+  color: var(--color-subtle-text);
+}
+.dialog {
+  display: grid;
+  gap: var(--space-5);
+}
+.dialogActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-3);
+}
+@media (max-width: 400px) {
+  .code {
+    --tile: 40px;
+  }
+}

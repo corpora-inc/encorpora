@@ -7,6 +7,7 @@ import {
   resolveSettings,
   schoolSettingsSchema,
   SettingLockedError,
+  studentDeviceMode,
   studentLevelVisibility,
   type SettingsScope,
 } from "../src/schools/settings.js";
@@ -111,12 +112,13 @@ test("a write to a key locked above is rejected; unlocked keys go through", () =
   assert.doesNotThrow(() => assertSettingsWritable([], { levels: "shown" }));
 });
 
-test("the schema holds the three settings, a weekly target, and nothing else", () => {
+test("the schema holds the four settings, a weekly target, and nothing else", () => {
   assert.equal(
     schoolSettingsSchema.safeParse({
       levels: "hidden",
       standings: "off",
       measure: "growth",
+      deviceMode: "shared",
     }).success,
     true,
   );
@@ -125,6 +127,7 @@ test("the schema holds the three settings, a weekly target, and nothing else", (
       levels: "hidden",
       standings: "off",
       measure: "growth",
+      deviceMode: "shared",
       gradingScale: "curve",
     }).success,
     false,
@@ -152,4 +155,20 @@ test("across enrollments a student gets the most restrictive level setting", () 
   const strictest = studentLevelVisibility([shown, hidden, choice]);
   assert.equal(strictest.value, "hidden");
   assert.deepEqual(strictest.setBy, { kind: "class", id: "c" });
+});
+
+test("a device is shared unless every class a student is in says personal", () => {
+  const personal = resolveSettings([
+    scope("class", "a", { deviceMode: "personal" }),
+  ]);
+  const shared = resolveSettings([scope("class", "b")]);
+  assert.equal(shared.deviceMode.value, "shared");
+  assert.equal(studentDeviceMode([personal]), "personal");
+  assert.equal(studentDeviceMode([personal, shared]), "shared");
+  assert.equal(studentDeviceMode([]), "shared");
+  const locked = resolveSettings([
+    scope("org", district, { deviceMode: "shared" }, ["deviceMode"]),
+    scope("class", "a", { deviceMode: "personal" }),
+  ]);
+  assert.equal(locked.deviceMode.value, "shared");
 });

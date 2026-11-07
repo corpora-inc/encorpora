@@ -28,7 +28,8 @@ export function Avatar({
   size = "regular",
 }: {
   name: string;
-  size?: "small" | "regular" | "large";
+  /** `fill`: as big as the surrounding `--avatar-size`. */
+  size?: "small" | "regular" | "large" | "fill";
 }) {
   const hue = avatarHue(name);
   return (

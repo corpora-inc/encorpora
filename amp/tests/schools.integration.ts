@@ -731,7 +731,7 @@ test(
           });
           const parent = `amp|parent-${randomUUID()}`;
 
-          const known = new Set(["org"]);
+          const known = new Set(["org", "class", "person"]);
           assert.ok(schoolRoutes.length >= 6);
           for (const route of schoolRoutes) {
             const params = [...route.url.matchAll(/:(\w+)/g)].map((m) => m[1]!);
@@ -740,10 +740,19 @@ test(
                 known.has(param),
                 `The walk needs a fixture for :${param} (${route.url})`,
               );
-            const path = route.url.replace(":org", home.orgId);
+            const path = route.url
+              .replace(":org", home.orgId)
+              .replace(":class", period1.id)
+              .replace(":person", student1.personId);
             const self =
-              route.target({ params: { org: home.orgId }, body: {} }).kind ===
-              "self";
+              route.target({
+                params: {
+                  org: home.orgId,
+                  class: period1.id,
+                  person: student1.personId,
+                },
+                body: {},
+              }).kind === "self";
             for (const account of [stranger, strangerAdmin, parent]) {
               const response = await app.inject({
                 method: route.method,

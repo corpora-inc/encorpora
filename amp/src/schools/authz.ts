@@ -76,11 +76,20 @@ const VIEWER = new Set<SchoolAction>([
   "org.read",
   "classes.read",
   "students.read",
+  "signin.read",
 ]);
 /** What staff can do at the org they work at: open it, and list what's theirs. */
 const ORG_STAFF = VIEWER;
-const AIDE_CLASS = new Set<SchoolAction>(["classes.read", "students.read"]);
-const TEACHER_CLASS = new Set<SchoolAction>([...AIDE_CLASS, "students.add"]);
+const AIDE_CLASS = new Set<SchoolAction>([
+  "classes.read",
+  "students.read",
+  "signin.read",
+]);
+const TEACHER_CLASS = new Set<SchoolAction>([
+  ...AIDE_CLASS,
+  "students.add",
+  "signin.manage",
+]);
 const SELF = new Set<SchoolAction>(["orgs.list"]);
 
 /** The only authorization rule for school routes. Admin covers descendants
@@ -129,4 +138,16 @@ export function rosterScope(
           .filter((c) => c.path.includes(target.orgId))
           .map((c) => c.classId),
   };
+}
+
+/** Who to attribute a change to: the actor's person in this target's tenant. */
+export function actorPerson(
+  actor: Actor,
+  target: { path: string[] },
+): string | null {
+  return (
+    actor.roles.find((role) => target.path.includes(role.orgId))?.personId ??
+    actor.classes.find((c) => target.path.includes(c.orgId))?.personId ??
+    null
+  );
 }

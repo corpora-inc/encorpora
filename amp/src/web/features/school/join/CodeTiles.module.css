@@ -1,0 +1,61 @@
+.tiles {
+  display: inline-flex;
+  gap: calc(var(--tile) * 0.09);
+  font-feature-settings: "tnum";
+  user-select: none;
+}
+/* The tile is a thing with an edge, as if it could be picked up. */
+.tile {
+  position: relative;
+  display: grid;
+  flex: none;
+  place-items: center;
+  box-sizing: border-box;
+  width: calc(var(--tile) * 0.8);
+  height: var(--tile);
+  border: 2px solid var(--color-border-strong);
+  border-bottom-width: calc(var(--tile) * 0.06 + 2px);
+  border-radius: calc(var(--tile) * 0.16);
+  background: var(--color-answer);
+  color: var(--color-on-answer);
+  font-size: calc(var(--tile) * 0.58);
+  font-weight: 750;
+  letter-spacing: 0;
+  line-height: 1;
+}
+.tile[data-group] {
+  margin-inline-start: calc(var(--tile) * 0.14);
+}
+.tile[data-active] {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+.tile[data-active]:not([data-filled])::after {
+  position: absolute;
+  bottom: 22%;
+  width: 44%;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--color-primary);
+  content: "";
+  animation: caret 1.1s steps(2, jump-none) infinite;
+}
+@keyframes caret {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.15;
+  }
+}
+.tiles[data-solid] .tile {
+  border-color: transparent;
+  border-bottom-color: transparent;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+@media (prefers-reduced-motion: reduce) {
+  .tile[data-active]:not([data-filled])::after {
+    animation: none;
+  }
+}

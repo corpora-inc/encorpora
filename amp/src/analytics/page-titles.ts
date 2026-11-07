@@ -161,6 +161,8 @@ export function appPageTitle(
     [/^\/purchase(?:\/|$)/, "Purchase"],
     [/^\/invoice(?:\/|$)/, "Your Invoice"],
     [/^\/consent(?:\/|$)/, "Parent Consent"],
+    [/^\/(?:join|c)(?:\/|$)/, "Join Your Class"],
+    [/^\/school(?:\/|$)/, "AMP for Schools"],
   ] as const;
   return `${category.find(([pattern]) => pattern.test(clean))?.[1] ?? "Adaptive Math Pathways"} | AMP`;
 }

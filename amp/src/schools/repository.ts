@@ -59,7 +59,7 @@ const generateHandle = () =>
   `${HANDLE_FIRST[randomInt(HANDLE_FIRST.length)]}${HANDLE_SECOND[randomInt(HANDLE_SECOND.length)]}${randomInt(1000, 10000)}`;
 
 const JOIN_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
-const generateJoinCode = () =>
+export const generateJoinCode = () =>
   Array.from(
     { length: 6 },
     () => JOIN_ALPHABET[randomInt(JOIN_ALPHABET.length)],

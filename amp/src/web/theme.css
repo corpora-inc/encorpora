@@ -2018,6 +2018,11 @@ html[data-input="pointer"] :focus-visible {
     column-gap: 10px;
     padding-block: 4px;
   }
+  /* A school student's one-tap sign-out stays beside the menu, in the one row. */
+  .shell.immersive .workspace-toolbar:has(> [data-student-sign-out]) {
+    grid-template-columns: var(--target-size) 44px minmax(0, 1fr) 44px;
+    grid-template-areas: "navigation sign-out topic calculator";
+  }
   /* A toolbar status (the free trial's Buy) keeps the one row, so the
      problem below sits where the loading frame put it. */
   .shell.immersive
@@ -2042,6 +2047,9 @@ html[data-input="pointer"] :focus-visible {
   }
   .workspace-toolbar > [data-navigation-trigger] {
     grid-area: navigation;
+  }
+  .workspace-toolbar > [data-student-sign-out] {
+    grid-area: sign-out;
   }
   .workspace-toolbar > .workspace-level {
     grid-area: level;

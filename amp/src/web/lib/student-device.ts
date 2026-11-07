@@ -9,6 +9,9 @@ import { trialKey } from "./pending-trial";
 const studentKey = "amp.student";
 /** `useLearnerStore`'s persisted choice, which must not outlive the student. */
 const learnerKey = "amp.learner";
+/** When a shared device was last used, so a reload doesn't restart the clock. */
+const activeKey = "amp.student.active";
+export const STUDENT_IDLE_MS = 30 * 60_000;
 
 export type StudentSession = { accountId: string; token: string };
 
@@ -45,10 +48,11 @@ export function rememberStudentSession(
   clearStudentDevice();
   const store = mode === "shared" ? sessionStorage : localStorage;
   store.setItem(studentKey, JSON.stringify(session));
+  if (mode === "shared") store.setItem(activeKey, String(Date.now()));
 }
 export function clearStudentDevice() {
   for (const [store, keys] of [
-    [() => sessionStorage, [studentKey]],
+    [() => sessionStorage, [studentKey, activeKey]],
     [() => localStorage, [studentKey, learnerKey, trialKey]],
   ] as const)
     try {
@@ -65,4 +69,36 @@ export async function studentSignInEnded(session: StudentSession) {
     signal: AbortSignal.timeout(10000),
   });
   return response.status === 401;
+}
+/** A shared device signs out when it's left alone. Timers sleep with the tab,
+ * so waking up checks too. A personal device, or no student, does nothing. */
+export function watchStudentIdle(signOut: () => void) {
+  const shared = () => !!read(() => sessionStorage);
+  const check = () => {
+    if (!shared()) return;
+    const active = sessionStorage.getItem(activeKey);
+    if (active === null) sessionStorage.setItem(activeKey, String(Date.now()));
+    else if (Date.now() - Number(active) >= STUDENT_IDLE_MS) signOut();
+  };
+  let last = 0;
+  const used = () => {
+    if (!shared() || Date.now() - last < 5000) return;
+    check();
+    last = Date.now();
+    if (shared()) sessionStorage.setItem(activeKey, String(last));
+  };
+  const events = ["pointerdown", "keydown", "wheel", "touchstart"] as const;
+  for (const event of events)
+    window.addEventListener(event, used, { capture: true, passive: true });
+  document.addEventListener("visibilitychange", check);
+  window.addEventListener("pageshow", check);
+  const timer = setInterval(check, 15_000);
+  check();
+  return () => {
+    for (const event of events)
+      window.removeEventListener(event, used, { capture: true });
+    document.removeEventListener("visibilitychange", check);
+    window.removeEventListener("pageshow", check);
+    clearInterval(timer);
+  };
 }

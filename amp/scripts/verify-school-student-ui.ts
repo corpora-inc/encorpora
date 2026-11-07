@@ -8,7 +8,7 @@ import { retentionNotice } from "../src/family/contracts";
 
 /** A school student in the real app with its real auth module, against a mocked
  * API: no parent chrome, nothing to buy, no analytics, and a bad token lands on
- * /join. Student sign-in itself arrives with the /join screen. */
+ * /join. Student sign-in itself is in verify-school-sign-in-ui.ts. */
 const port = 4393,
   origin = `http://127.0.0.1:${port}`;
 const vite = await createServer({
@@ -309,7 +309,7 @@ try {
     // A bad token goes to /join and is forgotten.
     const { page, close } = await open(fresh({ valid: false }));
     await page.waitForURL("**/join");
-    await page.getByText("Ask your teacher for your class code").waitFor();
+    await page.getByRole("heading", { name: "Type your class code" }).waitFor();
     assert.equal(
       await page.evaluate(() => sessionStorage.getItem("amp.student")),
       null,

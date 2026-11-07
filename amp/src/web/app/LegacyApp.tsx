@@ -1,4 +1,5 @@
 import { PracticeControls } from "../features/practice/PracticeControls";
+import { StudentSignOut } from "../features/practice/StudentSignOut";
 import {
   practiceSettingsOptions,
   usePracticeAdjustment,
@@ -1453,6 +1454,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       {/* One error pattern: a fixed toast that never moves the screen.
           Practice shows its own errors beside the problem. */}
       <Toast message={immersive ? "" : error} onDismiss={() => setError("")} />
+      {student && !immersive && <StudentSignOut />}
       {familyOpen && token && nativeRuntime ? (
         <NativeFamily
           onClose={() => {
@@ -1682,18 +1684,21 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           <PracticeWorkspace
             navigation={
               nativeRuntime ? undefined : (
-                <NavigationDrawer
-                  practiceControls={(close) => (
-                    <PracticeControls
-                      scope={adjustments.scope}
-                      problemId={problem.id}
-                      busy={busy || !!pending}
-                      apply={adjustPractice}
-                      close={close}
-                      canReset={!student}
-                    />
-                  )}
-                />
+                <>
+                  <NavigationDrawer
+                    practiceControls={(close) => (
+                      <PracticeControls
+                        scope={adjustments.scope}
+                        problemId={problem.id}
+                        busy={busy || !!pending}
+                        apply={adjustPractice}
+                        close={close}
+                        canReset={!student}
+                      />
+                    )}
+                  />
+                  {student && <StudentSignOut inBar />}
+                </>
               )
             }
             exit={() => setExploring(true)}

@@ -5,10 +5,13 @@ import { z } from "zod";
 export const levelVisibilities = ["hidden", "choice", "shown"] as const;
 export const standingsScopes = ["off", "class", "school", "district"] as const;
 export const standingsMeasures = ["growth", "practice", "level"] as const;
+/** Shared: a cart of devices, signed out when idle. Personal: a student's own. */
+export const deviceModes = ["shared", "personal"] as const;
 export const schoolSettingsSchema = z.strictObject({
   levels: z.enum(levelVisibilities),
   standings: z.enum(standingsScopes),
   measure: z.enum(standingsMeasures),
+  deviceMode: z.enum(deviceModes),
   weeklyTargetMinutes: z.number().int().min(1).max(10_080).optional(),
 });
 export type SchoolSettings = z.infer<typeof schoolSettingsSchema>;
@@ -20,6 +23,7 @@ export const defaultSettings = {
   levels: "hidden",
   standings: "off",
   measure: "growth",
+  deviceMode: "shared",
 } as const satisfies SchoolSettings;
 
 export type ScopeKind = "org" | "class" | "person";
@@ -120,4 +124,15 @@ export function studentLevelVisibility(
       lockedBy: null,
     },
   );
+}
+
+export type DeviceMode = SchoolSettings["deviceMode"];
+/** A student in two classes signs in the safer way if either says so. */
+export function studentDeviceMode(
+  perEnrollment: readonly ResolvedSettings[],
+): DeviceMode {
+  return perEnrollment.length > 0 &&
+    perEnrollment.every(({ deviceMode }) => deviceMode.value === "personal")
+    ? "personal"
+    : defaultSettings.deviceMode;
 }

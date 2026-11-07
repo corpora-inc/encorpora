@@ -1,0 +1,179 @@
+.page,
+.center {
+  min-height: 100dvh;
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  font-size: var(--text-dense);
+  line-height: 1.45;
+}
+.center {
+  display: grid;
+  place-items: center;
+  padding: var(--space-5) var(--space-4);
+  box-sizing: border-box;
+}
+.prepare {
+  display: grid;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 560px;
+}
+.prepare p {
+  color: var(--color-muted-text);
+}
+.prepare .warning {
+  color: var(--color-on-surface);
+  font-weight: 550;
+}
+.problem {
+  color: var(--color-on-danger);
+}
+.prepare .problem {
+  color: var(--color-on-surface);
+  font-weight: 600;
+}
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+.toolbar {
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+  padding: var(--space-4) clamp(16px, 4vw, 48px);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+.toolbarText {
+  flex: 1 1 320px;
+}
+.toolbarText p {
+  margin-top: 2px;
+  color: var(--color-muted-text);
+}
+.toolbarActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.sheets {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-8);
+  padding: var(--space-6) clamp(16px, 5vw, 48px) var(--space-8);
+}
+/* Letter, with half-inch margins: 7.5 × 10 in of cards, in units of the sheet's
+   width, so the preview is the page at any size. */
+.sheet {
+  width: min(100%, 7.5in);
+  container-type: inline-size;
+  border-radius: var(--radius-small);
+  background: var(--color-print-paper);
+  color: var(--color-print-ink);
+  box-shadow:
+    0 0 0 16px var(--color-print-paper),
+    0 8px 40px var(--color-shadow);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 33.333cqw;
+}
+/* One printed cut line between neighbors. */
+.card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 21cqw;
+  align-items: center;
+  gap: 1.6cqw;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 2cqw 2.2cqw;
+  border: 0.13cqw dashed var(--color-print-rule);
+  margin: -0.065cqw;
+}
+.cardText {
+  display: grid;
+  align-content: center;
+  gap: 0.6cqw;
+  min-width: 0;
+}
+.cardBrand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9cqw;
+  margin-bottom: 0.5cqw;
+  font-size: 2cqw;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+.cardBrand svg {
+  width: 3.8cqw;
+  height: auto;
+  stroke: currentColor;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+}
+.card h2 {
+  color: inherit;
+  font-family: var(--font-display);
+  font-size: 4cqw;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+}
+.card p {
+  color: inherit;
+  font-size: 1.9cqw;
+  line-height: 1.25;
+}
+.card .how {
+  margin-top: 1.1cqw;
+  font-size: 1.75cqw;
+}
+.qr {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media print {
+  @page {
+    size: letter;
+    margin: 0.5in;
+  }
+  html,
+  body,
+  .page {
+    min-height: 0;
+    background: var(--color-print-paper);
+    color: var(--color-print-ink);
+    print-color-adjust: exact;
+  }
+  .toolbar {
+    display: none;
+  }
+  .sheets {
+    display: block;
+    padding: 0;
+  }
+  .sheet {
+    width: 7.5in;
+    box-shadow: none;
+    border-radius: 0;
+    break-after: page;
+    break-inside: avoid;
+  }
+  .sheet:last-child {
+    break-after: auto;
+  }
+  .card {
+    break-inside: avoid;
+  }
+}
