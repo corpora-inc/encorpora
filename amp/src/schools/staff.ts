@@ -328,7 +328,7 @@ export async function setStaffClasses(
     await staffPerson(client, repo, orgId, personId);
     const org = await repo.org(client, orgId);
     const today = await repo.today(client, org.timezone);
-    const role = (
+    let role = (
       await client.query(
         `SELECT r.role FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
          WHERE r.person_id=$1 AND r.role IN ('teacher','aide') AND ${activeToday("r", "o")}
@@ -336,6 +336,24 @@ export async function setStaffClasses(
         [personId],
       )
     ).rows[0]?.role as "teacher" | "aide" | undefined;
+    // An admin who takes a class teaches here from now on: a head of a small
+    // school, a tutor or a parent runs the place and teaches its class.
+    if (!role && classIds.length) {
+      const admin = await client.query(
+        `SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
+         WHERE r.person_id=$1 AND r.role='admin' AND r.org_id=ANY($2::uuid[])
+           AND ${activeToday("r", "o")}`,
+        [personId, org.path],
+      );
+      if (admin.rowCount) {
+        await client.query(
+          `INSERT INTO amp_org_roles(id,person_id,org_id,role,begin_on) VALUES($1,$2,$3,'teacher',$4)
+           ON CONFLICT (person_id,org_id,role) WHERE end_on IS NULL DO NOTHING`,
+          [randomUUID(), personId, org.id, today],
+        );
+        role = "teacher";
+      }
+    }
     if (!role) throw new SchoolError(409, "class_staff_must_teach");
     await client.query(
       `UPDATE amp_enrollments e SET end_on=$2 FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
