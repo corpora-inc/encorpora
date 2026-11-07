@@ -80,7 +80,9 @@ jobs:
       fail-fast: false
       matrix:
         lane: ${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON('["ui-1", "ui-2a", "ui-2b", "family-a", "family-b", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]') || fromJSON('["selected"]') }}
-    timeout-minutes: 60
+    # The longest lanes take 40 to 50 minutes on a typical runner; slow runners
+    # have taken 60.
+    timeout-minutes: 75
     needs: changes
     if: needs.changes.outputs.browser == 'true'
     runs-on: ubuntu-24.04

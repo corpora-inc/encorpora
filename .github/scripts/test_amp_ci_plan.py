@@ -260,7 +260,7 @@ def test_template_sweep_partitions_cover_full_and_selected_browser_runs():
     assert sweep['env']['AMP_UI_SHARD_COUNT'] == 8
     assert sweep['env']['AMP_UI_SHARD_INDEX'] == '${{ matrix.shard }}'
     assert 'AMP_UI_SKIP_TEMPLATE_SWEEP' not in sweep['env']
-    assert sweep['timeout-minutes'] == broad['timeout-minutes'] == 60
+    assert sweep['timeout-minutes'] == 60 and broad['timeout-minutes'] == 75
     assert sweep['if'] == "${{ needs.changes.outputs.browser == 'true' && (fromJSON(needs.changes.outputs.amp_plan).browser || contains(fromJSON(needs.changes.outputs.amp_plan).browser_scripts, 'scripts/verify-ui.ts')) }}"
     assert plan(['amp/scripts/verify-ui.ts'])['browser_scripts'] == ['scripts/verify-ui.ts']
     upload = next(step for step in sweep['steps'] if step.get('uses') == 'actions/upload-artifact@v4')
