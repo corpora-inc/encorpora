@@ -79,23 +79,45 @@ export async function accountSummary(
       };
     });
   const gift = await availableGift(pool, accountId);
-  const staffOf = (
-    await pool
-      .query<{ orgId: string; orgName: string; role: string }>(
-        `SELECT DISTINCT ON (o.id) o.id AS "orgId",o.name AS "orgName",r.role
+  // Both in parallel. A fixture at an earlier migration boundary has no
+  // schools, or trials without owners, and reads as none: no extra round trip
+  // to check first on the path every parent's `/me` takes.
+  const missing =
+    (...codes: string[]) =>
+    (error: { code?: string }) => {
+      if (error.code && codes.includes(error.code)) return { rows: [] };
+      throw error;
+    };
+  const [staffRows, trialRows] = await Promise.all([
+    pool
+      .query<{
+        orgId: string;
+        orgName: string;
+        role: string;
+        setupPending: boolean;
+      }>(
+        `SELECT DISTINCT ON (o.id) o.id AS "orgId",o.name AS "orgName",r.role,
+         o.setup_pending AND r.role='admin' AS "setupPending"
        FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
        JOIN amp_orgs o ON o.id=r.org_id
        WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")}
        ORDER BY o.id,array_position(ARRAY['admin','teacher','aide','viewer'],r.role)`,
         [accountId],
       )
-      .catch((error: { code?: string }) => {
-        // Fixtures at an earlier migration boundary have no schools. No extra
-        // round trip on the path every parent's `/me` takes.
-        if (error.code === "42P01") return { rows: [] };
-        throw error;
-      })
-  ).rows;
+      .catch(missing("42P01")),
+    // A free assessment this account started and hasn't made a learner yet.
+    pool
+      .query(
+        `SELECT 1 FROM amp_trials WHERE owner_account_id=$1 AND adopted_at IS NULL AND expires_at>now() LIMIT 1`,
+        [accountId],
+      )
+      .catch(missing("42P01", "42703")),
+  ]);
+  const staffOf = staffRows.rows.map(({ setupPending, ...place }) => ({
+    ...place,
+    // Only an admin finishes setup, so only theirs says so.
+    ...(setupPending ? { setupPending: true as const } : {}),
+  }));
   const value = {
     signedIn: true as const,
     account: {
@@ -115,6 +137,7 @@ export async function accountSummary(
     learners,
     family,
     ...(staffOf.length ? { staffOf } : {}),
+    ...(trialRows.rows.length ? { trial: true as const } : {}),
     ...(gift ? { availableAccessGrant: gift } : {}),
     ...(unassigned
       ? {

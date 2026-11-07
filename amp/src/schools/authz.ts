@@ -119,11 +119,7 @@ const TEACHER_CLASS = new Set<SchoolAction>([
   "settings.write",
   "share.manage",
 ]);
-const SELF = new Set<SchoolAction>([
-  "orgs.list",
-  "setup.start",
-  "invites.accept",
-]);
+const SELF = new Set<SchoolAction>(["orgs.list", "invites.accept"]);
 
 /** The only authorization rule for school routes. Admin covers descendants
  * along the path, viewer reads them, and teacher and aide cover the classes

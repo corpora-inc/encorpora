@@ -46,6 +46,17 @@
 .barMeter span[data-filled] {
   background: var(--color-primary);
 }
+.barPlaces,
+.places {
+  display: grid;
+}
+.barPlaces {
+  grid-column: 1 / -1;
+  padding-top: var(--space-2);
+}
+.places {
+  margin-top: calc(-1 * var(--space-4));
+}
 .main {
   min-width: 0;
   padding: var(--space-5) var(--gutter) var(--space-6);
@@ -210,11 +221,19 @@ li[data-state="next"] .ledgerName {
   color: var(--color-muted-text);
   font-weight: 500;
 }
+/* One line under every step, there from the start: what the step asks, then
+   its answer in the same place, so nothing below it moves. A long answer keeps
+   to the line, whole in its title. */
 .ledgerAnswer {
+  overflow: hidden;
   color: var(--color-muted-text);
   font-size: var(--text-table-small);
   line-height: 1.35;
-  overflow-wrap: anywhere;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.ledgerAnswer[data-answered] {
+  color: inherit;
 }
 
 /* Forms. */

@@ -28,9 +28,15 @@ import {
 } from "../lib/query";
 import { LoadingScreen, RouteError } from "../ui/LoadingScreen";
 import {
+  homePlace,
+  placeOfPath,
   startDestination,
   startNavigation,
 } from "../features/onboarding/guard";
+import {
+  rememberPlace,
+  rememberedPlace,
+} from "../features/onboarding/place-memory";
 import {
   isFundedReturn,
   campaignSearch,
@@ -376,6 +382,20 @@ const home = createRoute({
           !me.learners.some((learner) => learner.entitlement.active)
         )
           throw redirect({ to: "/access" });
+        // Arriving at `/` opens where this person last worked: a school, or
+        // their family side. Back and Forward reopen what `/` showed then.
+        if (me?.signedIn && !traversing()) {
+          const place = homePlace(me, rememberedPlace(me.account.id));
+          if (place !== "home")
+            throw redirect({
+              to: "/$",
+              params: {
+                _splat:
+                  place === "schools" ? "school" : `school/${place.slice(7)}`,
+              },
+              replace: true,
+            });
+        }
         // Resolve first-run routing before mounting the app shell. Otherwise
         // returning trial users briefly see home and setup before practice.
         if (
@@ -812,6 +832,20 @@ const fallback = createRoute({
     await legacy.preload?.();
   },
 });
+const history = nativeRuntime
+  ? createMemoryHistory({ initialEntries: ["/"] })
+  : createBrowserHistory();
+// Subscribed before the router, so a route's `beforeLoad` knows how it came.
+let lastAction: string | null = null;
+history.subscribe(({ action }) => {
+  lastAction = action.type;
+});
+/** A Back, Forward or jump through history rather than an arrival. */
+function traversing() {
+  return (
+    lastAction === "BACK" || lastAction === "FORWARD" || lastAction === "GO"
+  );
+}
 export const router = createRouter({
   routeTree: root.addChildren([
     appScreen.addChildren([home, fallback]),
@@ -873,12 +907,21 @@ export const router = createRouter({
     // URLs stay out of the typed route table.
     ...(schoolRoutes(root) as unknown as []),
   ]),
-  history: nativeRuntime
-    ? createMemoryHistory({ initialEntries: ["/"] })
-    : createBrowserHistory(),
+  history,
   defaultPendingComponent: LoadingScreen,
   defaultPendingMs: 250,
   defaultPendingMinMs: 0,
+});
+// Each screen a signed-in person settles on records its place, so `/` can
+// return to it next time.
+router.subscribe("onResolved", ({ toLocation }) => {
+  const session = queryClient.getQueryData(sessionOptions.queryKey);
+  if (!session || studentSession()) return;
+  const place = placeOfPath(
+    toLocation.pathname,
+    toLocation.search as Record<string, unknown>,
+  );
+  if (place) rememberPlace(session.accountId, place);
 });
 const SIGNED_OUT_KEY = "amp.signed-out-redirect";
 /** True when this tab was sent to sign-in moments ago: a second 401 then is

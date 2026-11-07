@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 import type { Me, SignedInMe } from "../../../../account/contracts";
-import { startDestination } from "../guard";
+import { homePlace, placeOfPath, placesFor, startDestination } from "../guard";
 
 function me(overrides: Partial<SignedInMe> = {}): SignedInMe {
   return {
@@ -329,4 +329,116 @@ test("staff can still buy for a family, and a parent who teaches stays a parent"
       "/",
     ),
   ).toBe("/start/name");
+});
+
+/* One account, several roles: a parent, a free assessment and school staff. */
+const alder = "9b1d3f4e-2c8a-4b6e-9f10-6a7b8c9d0e1f";
+const birch = "1e2d3c4b-5a69-4788-8a9b-0c1d2e3f4a5b";
+const school = (
+  orgId: string,
+  orgName: string,
+  extra: { setupPending?: true } = {},
+) => ({ orgId, orgName, role: "admin" as const, ...extra });
+const jordan = {
+  id: "jordan",
+  name: "Jordan",
+  birthYear: 2015,
+  entitlement: { active: true, plan: "annual", endsAt: null },
+};
+
+test("a teacher with a free assessment under way keeps it at `/`, and the school a tap away", () => {
+  const teacher = me({
+    staffOf: [school(alder, "Alder Street School")],
+    trial: true,
+    next: "try",
+  });
+  expect(startDestination(teacher, "/")).toBe("/try");
+  expect(startDestination(teacher, "/start/plan")).toBeNull();
+  expect(homePlace(teacher, null)).toBe("home");
+  expect(placesFor(teacher)).toEqual(["home", `school:${alder}`]);
+  // Last worked at the school: `/` goes back there.
+  expect(homePlace(teacher, `school:${alder}`)).toBe(`school:${alder}`);
+  expect(homePlace(teacher, "home")).toBe("home");
+});
+
+test("a teacher who is also a parent opens where they last worked", () => {
+  const both = me({
+    staffOf: [school(alder, "Alder Street School")],
+    learners: [jordan],
+    consent: { status: "active", method: "verified" },
+    next: "practice",
+  });
+  expect(homePlace(both, null)).toBe("home");
+  expect(homePlace(both, "home")).toBe("home");
+  expect(homePlace(both, `school:${alder}`)).toBe(`school:${alder}`);
+  // A school they no longer work at is forgotten, not a dead end.
+  expect(homePlace(both, `school:${birch}`)).toBe("home");
+  expect(placesFor(both)).toEqual(["home", `school:${alder}`]);
+});
+
+test("staff only start at their school; with several they choose", () => {
+  const one = me({ staffOf: [school(alder, "Alder Street School")] });
+  expect(startDestination(one, "/")).toBe("/school");
+  expect(homePlace(one, null)).toBe(`school:${alder}`);
+  // Nothing on the family side to return to: the school it is.
+  expect(homePlace(one, "home")).toBe(`school:${alder}`);
+  expect(placesFor(one)).toEqual([`school:${alder}`]);
+  const two = me({
+    staffOf: [
+      school(birch, "Birch Road School"),
+      school(alder, "Alder Street School"),
+    ],
+  });
+  expect(homePlace(two, null)).toBe("schools");
+  expect(homePlace(two, `school:${birch}`)).toBe(`school:${birch}`);
+  expect(placesFor(two)).toEqual([`school:${alder}`, `school:${birch}`]);
+});
+
+test("a half-finished setup never captures `/` from someone with a family side", () => {
+  const pending = school(alder, "Alder Street School", { setupPending: true });
+  const founder = me({ staffOf: [pending], trial: true, next: "try" });
+  expect(startDestination(founder, "/")).toBe("/try");
+  expect(homePlace(founder, null)).toBe("home");
+  expect(homePlace(founder, `school:${alder}`)).toBe("home");
+  // Still in the switcher, to finish whenever they choose.
+  expect(placesFor(founder)).toEqual(["home", `school:${alder}`]);
+  const parent = me({
+    staffOf: [pending],
+    learners: [jordan],
+    consent: { status: "active", method: "verified" },
+    next: "practice",
+  });
+  expect(homePlace(parent, `school:${alder}`)).toBe("home");
+  // An admin with nothing else carries on with their setup.
+  const admin = me({ staffOf: [pending] });
+  expect(homePlace(admin, null)).toBe(`school:${alder}`);
+  expect(homePlace(admin, `school:${alder}`)).toBe(`school:${alder}`);
+  expect(startDestination(admin, "/")).toBe("/school");
+});
+
+test("each screen belongs to a place, or to neither", () => {
+  expect(placeOfPath(`/school/${alder}/classes`)).toBe(`school:${alder}`);
+  expect(placeOfPath(`/school/${alder.toUpperCase()}`)).toBe(`school:${alder}`);
+  expect(placeOfPath("/school/new", { org: alder, step: "calendar" })).toBe(
+    `school:${alder}`,
+  );
+  for (const path of [
+    "/",
+    "/practice",
+    "/try/practice",
+    "/start/plan",
+    "/family/learners",
+    "/pathways/n-1",
+  ])
+    expect(placeOfPath(path)).toBe("home");
+  for (const path of [
+    "/school",
+    "/school/new",
+    "/school/invite",
+    "/schools",
+    "/sign-in",
+    "/join/ABC",
+    "/school/not-an-id",
+  ])
+    expect(placeOfPath(path)).toBeNull();
 });

@@ -14,14 +14,6 @@ const count = (value: number) => value.toLocaleString("en-US");
 function Actions({ className = "" }: { className?: string }) {
   return (
     <div className={`${styles.actions} ${className}`}>
-      {/* Staff screens are reached through the splat route. */}
-      <Link
-        to="/$"
-        params={{ _splat: "school/new" }}
-        className={buttonClass("primary", styles.action)}
-      >
-        Start a class
-      </Link>
       <a
         href={`mailto:${SUPPORT_EMAIL}`}
         className={buttonClass("secondary", styles.action)}

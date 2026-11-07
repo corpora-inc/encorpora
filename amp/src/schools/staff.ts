@@ -369,7 +369,7 @@ export async function lookupInvite(
   const { token } = inviteLookupSchema.parse(raw);
   const row = (
     await repo.pool.query(
-      `SELECT c.revoked_at,c.expires_at,p.email,p.account_id,o.name,r.role
+      `SELECT c.revoked_at,c.expires_at,p.email,p.account_id,o.name,r.role,o.setup_pending
        FROM amp_person_credentials c JOIN amp_people p ON p.id=c.person_id
        JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
        JOIN amp_orgs o ON o.id=r.org_id
@@ -390,6 +390,7 @@ export async function lookupInvite(
     orgName: row.name,
     role: row.role,
     email: row.email,
+    setup: row.role === "admin" && row.setup_pending === true,
   };
 }
 
@@ -419,7 +420,8 @@ export async function acceptInvite(
       )
     ).rows[0];
     if (invite.revoked_at) {
-      if (person?.account_id === accountId) return { accepted: true };
+      if (person?.account_id === accountId)
+        return { accepted: true, ...(await joinedOrg(client, person.id)) };
       throw new SchoolError(410, "invite_used");
     }
     if (new Date(invite.expires_at) <= new Date())
@@ -464,23 +466,36 @@ export async function acceptInvite(
         [accountId.slice(4), person.email],
       );
     await markStaffAccount(client, accountId);
-    const org = (
-      await client.query(
-        `SELECT r.org_id FROM amp_org_roles r WHERE r.person_id=$1 AND r.role<>'student' AND r.end_on IS NULL
-         ORDER BY r.created_at DESC LIMIT 1`,
-        [personId],
-      )
-    ).rows[0];
-    if (org)
+    const org = await joinedOrg(client, personId);
+    if (org.orgId)
       await recordEvent(client, {
-        orgId: org.org_id,
+        orgId: org.orgId,
         actorPersonId: personId,
         action: "staff.accepted",
         targetKind: "person",
         targetId: personId,
       });
-    return { accepted: true };
+    return { accepted: true, ...org };
   });
+}
+
+/** Where an accepted invitation leads: the school, and whether its admin is
+ * still setting it up. */
+async function joinedOrg(client: PoolClient, personId: string) {
+  const row = (
+    await client.query(
+      `SELECT r.org_id,o.setup_pending AND EXISTS(SELECT 1 FROM amp_org_roles a
+         WHERE a.person_id=r.person_id AND a.org_id=r.org_id AND a.role='admin' AND a.end_on IS NULL) AS setup
+       FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
+       WHERE r.person_id=$1 AND r.role<>'student' AND r.end_on IS NULL
+       ORDER BY r.created_at DESC LIMIT 1`,
+      [personId],
+    )
+  ).rows[0];
+  return {
+    orgId: (row?.org_id as string | undefined) ?? null,
+    setup: row?.setup === true,
+  };
 }
 
 /** An account that already has a person in this tenant keeps that one; the

@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Link, useNavigate, useSearch } from "@tanstack/react-router";
+import { Link, Navigate, useNavigate, useSearch } from "@tanstack/react-router";
 import { useMemo, useRef, useState, type ReactNode } from "react";
 import {
   AGREEMENT_VERSION,
@@ -15,7 +15,6 @@ import {
   suggestedYear,
   type DivisionKind,
 } from "../../../schools/calendar";
-import { EVALUATION_DAYS, EVALUATION_SEATS } from "../../../schools/license";
 import type {
   ExperiencePreset,
   SetupState,
@@ -29,6 +28,8 @@ import { Sheet } from "../../ui/Sheet";
 import { TextArea, TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { useLoggedError } from "../../feedback";
+import { meOptions } from "../../lib/query";
+import { PlaceSwitcher, placeEntries } from "../navigation/PlaceSwitcher";
 import {
   currentSession,
   orgsOptions,
@@ -74,15 +75,6 @@ const experiences: {
 const experienceTitle = (value: ExperiencePreset | null) =>
   experiences.find((entry) => entry.value === value)?.title;
 
-const detectedTimezone = () => {
-  try {
-    return (
-      Intl.DateTimeFormat().resolvedOptions().timeZone || "America/New_York"
-    );
-  } catch {
-    return "America/New_York";
-  }
-};
 export const COMMON_ZONES = [
   ["America/New_York", "Eastern"],
   ["America/Chicago", "Central"],
@@ -105,21 +97,29 @@ function useErrorState() {
   return [error, setError] as const;
 }
 
+/** What each step asks, until it's answered: the line under every step's name
+ * is always there, so an answer arriving moves nothing below it. */
+const stepAsks: Record<SetupStep, string> = {
+  school: "Name and time zone",
+  calendar: "When the year runs",
+  experience: "What students see",
+  agreement: "Read and accept",
+  students: "Import or type a roster",
+};
+
 /** The left of the page writes itself as the questions are answered, so it is
  * always clear what's been decided, and each line is a way back to change it. */
 function Ledger({
   state,
   current,
   orgId,
-  draftName,
 }: {
   state: SetupState | null;
   current: SetupStep;
-  orgId: string | null;
-  draftName: string;
+  orgId: string;
 }) {
   const answers: Record<SetupStep, string | undefined> = {
-    school: state?.org.name ?? (draftName.trim() || undefined),
+    school: state?.org.name,
     calendar: state?.calendar
       ? `${formatDay(state.calendar.startsOn, false)} to ${formatDay(state.calendar.endsOn)}${state.calendar.division ? `, ${divisionLabels[state.calendar.division].plural.toLowerCase()}` : ""}`
       : undefined,
@@ -130,15 +130,15 @@ function Ledger({
     students: undefined,
   };
   const reachable = (step: SetupStep) =>
-    !!orgId &&
-    (step === "school" ||
-      step === current ||
+    !!state &&
+    (step === current ||
       !!answers[step] ||
       setupSteps.indexOf(step) === setupSteps.findIndex((s) => !answers[s]));
   return (
     <ol className={styles.ledger}>
       {setupSteps.map((step, index) => {
         const done = !!answers[step] && step !== current;
+        const answer = answers[step];
         const inner = (
           <>
             <span className={styles.ledgerMark} aria-hidden="true">
@@ -152,9 +152,13 @@ function Ledger({
             </span>
             <span className={styles.ledgerText}>
               <span className={styles.ledgerName}>{stepNames[step]}</span>
-              {answers[step] && (
-                <span className={styles.ledgerAnswer}>{answers[step]}</span>
-              )}
+              <span
+                className={styles.ledgerAnswer}
+                data-answered={answer ? "" : undefined}
+                title={answer}
+              >
+                {answer ?? stepAsks[step]}
+              </span>
             </span>
           </>
         );
@@ -167,7 +171,7 @@ function Ledger({
               <Link
                 to="/$"
                 params={{ _splat: "school/new" }}
-                search={{ org: orgId!, step } as never}
+                search={{ org: orgId, step } as never}
                 className={styles.ledgerRow}
               >
                 {inner}
@@ -191,28 +195,32 @@ function Frame({
   step,
   state,
   orgId,
-  draftName = "",
   children,
   footer,
 }: {
   step: SetupStep;
   state: SetupState | null;
-  orgId: string | null;
-  draftName?: string;
+  orgId: string;
   children: ReactNode;
   footer: ReactNode;
 }) {
   const index = setupSteps.indexOf(step);
+  const me = useQuery(meOptions(currentSession())).data;
+  // A half-finished setup never keeps someone from their other places.
+  const switcher =
+    me?.signedIn && placeEntries(me).length > 1 ? (
+      <PlaceSwitcher
+        me={me}
+        current={`school:${orgId}`}
+        label={state?.org.name}
+      />
+    ) : null;
   return (
     <div className={styles.frame} data-dense>
       <aside className={styles.rail}>
         <Brand />
-        <Ledger
-          state={state}
-          current={step}
-          orgId={orgId}
-          draftName={draftName}
-        />
+        {switcher && <div className={styles.places}>{switcher}</div>}
+        <Ledger state={state} current={step} orgId={orgId} />
       </aside>
       <header className={styles.bar}>
         <Brand />
@@ -232,6 +240,7 @@ function Frame({
             <span key={entry} data-filled={position <= index || undefined} />
           ))}
         </span>
+        {switcher && <div className={styles.barPlaces}>{switcher}</div>}
       </header>
       <main className={styles.main}>
         <div className={styles.question}>{children}</div>
@@ -256,23 +265,16 @@ function BackButton({ orgId, to }: { orgId: string; to: SetupStep }) {
   );
 }
 
-function SchoolStep({
-  state,
-  orgId,
-}: {
-  state: SetupState | null;
-  orgId: string | null;
-}) {
+/** Answered when we issued the school; the admin can change any of it. */
+function SchoolStep({ state, orgId }: { state: SetupState; orgId: string }) {
   const session = currentSession();
   const client = useQueryClient();
   const navigate = useNavigate();
-  const [name, setName] = useState(state?.org.name ?? "");
+  const [name, setName] = useState(state.org.name);
   const [shape, setShape] = useState<"class" | "school">(
-    state?.org.solo === false ? "school" : state?.org.solo ? "class" : "class",
+    state.org.solo ? "class" : "school",
   );
-  const [timezone, setTimezone] = useState(
-    state?.org.timezone ?? detectedTimezone(),
-  );
+  const [timezone, setTimezone] = useState(state.org.timezone);
   const [busy, setBusy] = useState(false);
   const [nameError, setNameError] = useState("");
   const [error, setError] = useErrorState();
@@ -291,27 +293,13 @@ function SchoolStep({
     setError("");
     try {
       const body = { name: name.trim(), shape, timezone };
-      let id = orgId;
-      if (id) {
-        const saved = await school.updateSchool(session, id, body);
-        client.setQueryData(setupOptions(session, id).queryKey, saved);
-      } else {
-        id = (await school.start(session, body)).id;
-        await refreshSchool(session);
-        // This entry becomes the school's own, so Back returns to these answers
-        // rather than to the blank start.
-        await navigate({
-          to: "/$",
-          params: { _splat: "school/new" },
-          search: { org: id, step: "school" } as never,
-          replace: true,
-        });
-      }
+      const saved = await school.updateSchool(session, orgId, body);
+      client.setQueryData(setupOptions(session, orgId).queryKey, saved);
       await refreshSchool(session);
       await navigate({
         to: "/$",
         params: { _splat: "school/new" },
-        search: { org: id, step: "calendar" } as never,
+        search: { org: orgId, step: "calendar" } as never,
       });
     } catch (failure) {
       setError(message(failure, "That didn’t save. Try again."));
@@ -323,7 +311,6 @@ function SchoolStep({
       step="school"
       state={state}
       orgId={orgId}
-      draftName={name}
       footer={
         <>
           <span />
@@ -791,6 +778,16 @@ function AgreementStep({ state, orgId }: { state: SetupState; orgId: string }) {
   );
 }
 
+/** The seats we issued, in the school's own days. */
+function seatsLine(license: SetupState["license"]) {
+  if (!license) return "Each student you add takes a seat.";
+  const today = new Date().toISOString().slice(0, 10);
+  const seats = `${license.seats.toLocaleString("en-US")} ${license.seats === 1 ? "seat is" : "seats are"}`;
+  return license.startsOn > today
+    ? `${seats} ready from ${formatDay(license.startsOn)} through ${formatDay(license.endsOn)}. Each student you add takes one.`
+    : `${seats} ready through ${formatDay(license.endsOn)}. Each student you add takes one.`;
+}
+
 const splitLines = (text: string) =>
   text
     .split(/\r?\n/)
@@ -931,10 +928,7 @@ function StudentsStep({
       footer={<BackButton orgId={orgId} to="agreement" />}
     >
       <h1>Add your students</h1>
-      <p className={styles.lede}>
-        {EVALUATION_SEATS} seats are ready for {EVALUATION_DAYS} days. Each
-        student you add takes one.
-      </p>
+      <p className={styles.lede}>{seatsLine(state.license)}</p>
       <ul className={styles.routes}>
         <li>
           <button
@@ -1005,7 +999,9 @@ export function SetupScreen() {
   const state = orgId ? (setup.data ?? null) : null;
   const step: SetupStep =
     setupSteps.find((entry) => entry === search.step) ?? "school";
-  if (orgId && !state)
+  // Only a school we issued has setup; the route sends anyone else on.
+  if (!orgId) return <Navigate to="/schools" replace />;
+  if (!state)
     return (
       <Frame
         step={step}
@@ -1036,21 +1032,21 @@ export function SetupScreen() {
         </div>
       </Frame>
     );
-  if (!state || step === "school")
-    return <SchoolStep key={orgId ?? "new"} state={state} orgId={orgId} />;
   switch (step) {
+    case "school":
+      return <SchoolStep key={orgId} state={state} orgId={orgId} />;
     case "calendar":
-      return <CalendarStep key={orgId} state={state} orgId={orgId!} />;
+      return <CalendarStep key={orgId} state={state} orgId={orgId} />;
     case "experience":
-      return <ExperienceStep key={orgId} state={state} orgId={orgId!} />;
+      return <ExperienceStep key={orgId} state={state} orgId={orgId} />;
     case "agreement":
-      return <AgreementStep key={orgId} state={state} orgId={orgId!} />;
+      return <AgreementStep key={orgId} state={state} orgId={orgId} />;
     case "students":
       return (
         <StudentsStep
           key={orgId}
           state={state}
-          orgId={orgId!}
+          orgId={orgId}
           method={search.by === "names" ? "names" : null}
         />
       );

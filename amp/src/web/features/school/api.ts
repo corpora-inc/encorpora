@@ -31,8 +31,6 @@ import {
 const messages: Record<string, string> = {
   not_found:
     "This isn’t available to your account. Check the link, or open your schools.",
-  setup_limit:
-    "This account has set up as many schools as it can on its own. Email support@corpora.inc to add another.",
   agreement_changed:
     "The agreement was just updated. Read the new version, then accept it.",
   agreement_required: "Accept the data agreement first, then continue.",
@@ -205,13 +203,6 @@ export const refreshSchool = (session: AuthSession) =>
 
 const ok = z.unknown();
 export const school = {
-  start: (
-    session: AuthSession,
-    body: { name: string; shape: "class" | "school"; timezone: string },
-  ) =>
-    call("/setup", z.object({ org: z.object({ id: z.uuid() }) }), session, {
-      body,
-    }).then((data) => data.org),
   updateSchool: (
     session: AuthSession,
     orgId: string,
@@ -356,7 +347,18 @@ export const school = {
   acceptInvite: (
     session: AuthSession,
     body: { token: string; proof?: string; name?: string },
-  ) => call("/invites/accept", ok, session, { body }),
+  ) =>
+    call(
+      "/invites/accept",
+      z.object({
+        accepted: z.literal(true),
+        orgId: z.uuid().nullable(),
+        /** The school's admin, still to set it up. */
+        setup: z.boolean(),
+      }),
+      session,
+      { body },
+    ),
   requestSeats: (
     session: AuthSession,
     orgId: string,

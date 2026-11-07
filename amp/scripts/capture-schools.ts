@@ -40,6 +40,7 @@ import {
   buildDemo,
   DEMO_COOKIE,
   demoSizes,
+  issueSchool,
   startDemoServer,
   type DemoServer,
   type DemoSize,
@@ -515,11 +516,14 @@ async function measure(page: Page, label: string) {
 /** Someone partway through setup, for the setup screens. */
 async function pendingSetup(server: DemoServer) {
   const account = "demo-newcomer";
-  const { org } = await server.as(account, "POST", "setup", {
-    name: "Birch Road School",
-    shape: "school",
-    timezone: "America/New_York",
-  });
+  const org = {
+    id: await issueSchool(server, account, {
+      name: "Birch Road School",
+      seats: 120,
+      reference: "Pilot",
+      signer: "Ines Vega",
+    }),
+  };
   await server.as(account, "POST", `orgs/${org.id}/calendar`, {
     startsOn: "2026-08-17",
     endsOn: "2027-06-11",
