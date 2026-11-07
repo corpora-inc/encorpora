@@ -1,4 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
+import { settleArrival } from "./ui-settle";
 import AxeBuilder from "@axe-core/playwright";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
@@ -332,6 +333,7 @@ async function box(locator: Locator) {
   });
 }
 async function axe(page: Page, label: string) {
+  await settleArrival(page);
   const result = await new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
     .analyze();

@@ -11,6 +11,7 @@ import {
   retainSearchParams,
   useMatch,
   useRouter,
+  useRouterState,
 } from "@tanstack/react-router";
 import { z } from "zod";
 import { useQuery } from "@tanstack/react-query";
@@ -194,19 +195,26 @@ function AppScreen() {
     if (atHome?.pitch !== undefined && shown !== atHome.pitch)
       void router.invalidate();
   }, [atHome?.pitch, shown]);
-  // On first load the home route's loader decides: until it has, and if it
-  // fails, the route's own pending and error screens show instead of either
-  // screen. Coming from another app path the app screen is already up and
-  // stays, so its state survives.
-  const up = useRef(false);
-  const deciding = !!atHome && (!atHome.settled || atHome.pitch === undefined);
-  const Screen = atHome?.pitch ? pitch : legacy;
-  const pending = deciding && !up.current;
-  if (!pending) up.current = true;
+  // A screen is rendered only once its route has loaded (its chunk with it),
+  // so on first load, and when changing between the pitch and the app, the
+  // route's own pending and error screens show. Moving between app paths
+  // keeps the app screen up, so its state survives.
+  const settled = useRouterState({
+    select: (state) => state.matches.at(-1)?.status === "success",
+  });
+  const kind = atHome?.pitch ? "pitch" : "app";
+  const shownKind = useRef<string | null>(null);
+  const deciding = !settled || (!!atHome && atHome.pitch === undefined);
+  const pending = deciding && shownKind.current !== kind;
+  if (!pending) shownKind.current = kind;
+  const Screen = kind === "pitch" ? pitch : legacy;
   // Keyed, so the route's pending screen is replaced, not left hidden behind
   // the screen's own wait.
   return (
-    <Suspense key={pending ? "deciding" : "ready"} fallback={<LoadingScreen />}>
+    <Suspense
+      key={pending ? "deciding" : kind}
+      fallback={<LoadingScreen />}
+    >
       {pending ? <Outlet /> : <Screen />}
     </Suspense>
   );
@@ -781,6 +789,11 @@ const familyLink = createRoute({
 const fallback = createRoute({
   getParentRoute: () => appScreen,
   path: "/$",
+  // The app screen is rendered by the layout, so load its chunk here, as the
+  // route's own component would have been.
+  loader: async () => {
+    await legacy.preload?.();
+  },
 });
 export const router = createRouter({
   routeTree: root.addChildren([

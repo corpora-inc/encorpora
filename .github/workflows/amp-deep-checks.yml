@@ -434,9 +434,12 @@ jobs:
             } catch (error) {
               if (error.status !== 404) throw error;
             }
-      - name: Install PDF inspection tools
+      # Book figures are laid out with Arial's metrics (src/math/scene/font-metrics.ts):
+      # Liberation Sans has the same advance widths, so the print review measures
+      # the figures in the font they were laid out for rather than DejaVu Sans.
+      - name: Install PDF inspection tools and the Arial-metric font
         if: matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'
-        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils fonts-liberation && fc-match Arial
       - if: steps.reuse.outputs.verified != 'true'
         run: npm ci
       - if: matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'
