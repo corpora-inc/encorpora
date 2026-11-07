@@ -1,7 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { gunzipSync } from "node:zlib";
-import { buildApp, GLOBAL_RATE_LIMIT } from "../src/server/app.js";
+import { buildApp } from "../src/server/app.js";
+import { ANONYMOUS_RATE_LIMIT } from "../src/server/rate-limits.js";
 import type { Repository } from "../src/server/repository.js";
 import { trialLimits } from "../src/server/trials.js";
 
@@ -187,7 +188,7 @@ test("invalid, missing, failed and rate-limited requests are never public-cachea
 
   const limited = app();
   try {
-    for (let i = 0; i < GLOBAL_RATE_LIMIT; i++)
+    for (let i = 0; i < ANONYMOUS_RATE_LIMIT; i++)
       assert.equal(
         (await limited.inject({ url: "/api/v1/health" })).statusCode,
         200,

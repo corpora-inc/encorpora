@@ -26,7 +26,23 @@ export function trialProgress(
   limits: TrialLimits,
   skipped = 0,
 ): TrialProgress {
-  const answered = attempts.length + (SKIP_USES_FREE_PROBLEM ? skipped : 0);
+  return trialProgressFromCounts(
+    {
+      answered: attempts.length,
+      correct: attempts.filter((a) => a.correct).length,
+      assisted: attempts.filter((a) => a.assisted).length,
+    },
+    limits,
+    skipped,
+  );
+}
+
+export function trialProgressFromCounts(
+  attempts: { answered: number; correct: number; assisted: number },
+  limits: TrialLimits,
+  skipped = 0,
+): TrialProgress {
+  const answered = attempts.answered + (SKIP_USES_FREE_PROBLEM ? skipped : 0);
   return {
     phase:
       answered < limits.placement
@@ -39,8 +55,8 @@ export function trialProgress(
     remaining: Math.max(0, limits.free - answered),
     totals: {
       answered,
-      correct: attempts.filter((a) => a.correct).length,
-      assisted: attempts.filter((a) => a.assisted).length,
+      correct: attempts.correct,
+      assisted: attempts.assisted,
       skipped,
     },
   };
@@ -59,11 +75,13 @@ export function masteredSkills(evidence: readonly SkillEvidence[]): string[] {
     .map((skill) => skill.skillId);
 }
 
+/** SQL over `amp_trials t` and `amp_learners l`: a live, unadopted anonymous trial. */
+export const LIVE_TRIAL = `l.account_id='trial:'||t.id AND t.adopted_at IS NULL AND t.expires_at>now()`;
 /** Whether this learner is a live, unadopted anonymous trial. */
 export async function isLiveTrial(db: PoolClient, learnerId: string) {
   const trial = await db.query(
     `SELECT 1 FROM amp_trials t JOIN amp_learners l ON l.id=t.learner_id
-     WHERE t.learner_id=$1 AND l.account_id='trial:'||t.id AND t.adopted_at IS NULL AND t.expires_at>now()`,
+     WHERE t.learner_id=$1 AND ${LIVE_TRIAL}`,
     [learnerId],
   );
   return !!trial.rowCount;
@@ -85,14 +103,15 @@ export async function recordTrialMilestones(
   limits: TrialLimits,
 ) {
   const result = await db.query(
-    `SELECT (SELECT count(*)::int FROM amp_attempts a WHERE a.learner_id=t.learner_id) AS answered
+    `SELECT (SELECT count(*)::int FROM amp_attempts a WHERE a.learner_id=t.learner_id) AS answered,
+      (SELECT count(*)::int FROM amp_instances i WHERE i.learner_id=t.learner_id AND (i.content->>'skipped')::boolean) AS skipped
     FROM amp_trials t WHERE t.learner_id=$1 AND t.adopted_at IS NULL AND t.expires_at>now()`,
     [learnerId],
   );
   const used =
     result.rows[0] &&
     result.rows[0].answered +
-      (SKIP_USES_FREE_PROBLEM ? await countSkips(db, learnerId) : 0);
+      (SKIP_USES_FREE_PROBLEM ? result.rows[0].skipped : 0);
   if (used === limits.placement)
     await recordTrialEvent(db, learnerId, "placement_done");
 }
