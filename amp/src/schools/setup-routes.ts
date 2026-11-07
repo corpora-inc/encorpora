@@ -8,6 +8,7 @@ import {
   SEAT_REQUESTS_PER_HOUR,
 } from "./license.js";
 import { applyRoster, planRoster } from "./reconcile.js";
+import { syncSsoCredentials } from "./sso-credentials.js";
 import type { SchoolRepository } from "./repository.js";
 import {
   licenseView,
@@ -56,7 +57,7 @@ const roleWord: Record<string, string> = {
   aide: "an aide",
   viewer: "a viewer",
 };
-const eventsSince = async (
+export const eventsSince = async (
   repository: SchoolRepository,
   orgId: string,
   action: string,
@@ -586,6 +587,10 @@ export function defineSetupRoutes(define: typeof defineSchoolRoute) {
         target.orgId,
         request.body,
         who(context),
+      );
+      // New students and changed addresses reach any outside sign-in that's on.
+      await repository.transaction((client) =>
+        syncSsoCredentials(client, target.path[0]!),
       );
       const name = invites.length
         ? await orgNameOf(repository, target.orgId)

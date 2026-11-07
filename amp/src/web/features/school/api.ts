@@ -54,6 +54,12 @@ const messages: Record<string, string> = {
   invalid_school_request: "Check the details and try again.",
   school_service_unavailable: "That didn’t save. Try again in a moment.",
   too_many_requests: "Too many requests just now. Wait a minute and try again.",
+  year_overlaps:
+    "Those dates overlap a year already on the calendar. Choose dates after it.",
+  student_not_found:
+    "That student is no longer here. Refresh the list and try again.",
+  school_not_found: "That school isn’t available to your account.",
+  confirm_mismatch: "Type the school’s name exactly as it’s shown.",
 };
 function explained(error: unknown): unknown {
   if (error instanceof AppError && error.code && messages[error.code])
@@ -67,7 +73,7 @@ function explained(error: unknown): unknown {
     );
   return error;
 }
-const call = <T>(
+export const call = <T>(
   path: string,
   schema: z.ZodType<T>,
   session: AuthSession | null,
@@ -80,7 +86,7 @@ const call = <T>(
     throw explained(error);
   });
 
-const keyFor = (session: AuthSession, ...rest: unknown[]) =>
+export const keyFor = (session: AuthSession, ...rest: unknown[]) =>
   ["account", session.accountId, "school", ...rest] as const;
 
 export const orgsOptions = (session: AuthSession) =>
@@ -105,12 +111,16 @@ export const setupOptions = (session: AuthSession, orgId: string) =>
     queryFn: ({ signal }) =>
       call(`/orgs/${orgId}/setup`, setupStateSchema, session, { signal }),
   });
-export const classesOptions = (session: AuthSession, orgId: string) =>
+export const classesOptions = (
+  session: AuthSession,
+  orgId: string,
+  year?: string,
+) =>
   queryOptions({
-    queryKey: keyFor(session, "org", orgId, "classes"),
+    queryKey: keyFor(session, "org", orgId, "classes", year ?? "in-use"),
     queryFn: ({ signal }) =>
       call(
-        `/orgs/${orgId}/classes?limit=500`,
+        `/orgs/${orgId}/classes?limit=500${year ? `&year=${year}` : ""}`,
         z.object({ classes: z.array(classResource) }),
         session,
         { signal },
@@ -121,19 +131,26 @@ const studentsPage = z.object({
   total: z.number().int(),
   nextOffset: z.number().int().nullable(),
 });
-export const studentsKey = (session: AuthSession, orgId: string, q: string) =>
-  keyFor(session, "org", orgId, "students", q);
+export type StudentStatus = "needs-seat" | "never-signed-in";
+export const studentsKey = (
+  session: AuthSession,
+  orgId: string,
+  q: string,
+  status?: StudentStatus,
+) => keyFor(session, "org", orgId, "students", q, status ?? "all");
 export function fetchStudents(
   session: AuthSession,
   orgId: string,
   q: string,
   offset: number,
   signal?: AbortSignal,
+  status?: StudentStatus,
 ) {
   const query = new URLSearchParams({
     limit: "500",
     offset: String(offset),
     ...(q ? { q } : {}),
+    ...(status ? { status } : {}),
   });
   return call(`/orgs/${orgId}/students?${query}`, studentsPage, session, {
     signal,

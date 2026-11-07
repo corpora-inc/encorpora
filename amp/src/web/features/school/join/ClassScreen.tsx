@@ -1,10 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useNavigate, useParams } from "@tanstack/react-router";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearch,
+} from "@tanstack/react-router";
 import { useEffect } from "react";
 import { normalizeJoinCode } from "../../../../schools/contracts";
 import { Avatar } from "../../../ui/Avatar";
 import { buttonClass } from "../../../ui/Button";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
+import { ProviderMark } from "../../auth/ProviderButtons";
 import { joinRosterOptions } from "./api";
 import { JoinFrame } from "./JoinFrame";
 import styles from "./Join.module.css";
@@ -44,12 +50,27 @@ export function JoinProblem({ message }: { message: string }) {
   );
 }
 
+/** In a child's words: what happened with their school account, and what to do. */
+const SSO_MESSAGES: Record<string, string> = {
+  not_on_roster: "That account isn’t on your class list.",
+  email_unverified: "That account’s email couldn’t be confirmed.",
+  declined: "Sign-in was cancelled.",
+  expired: "That took too long.",
+  failed: "That didn’t work.",
+};
+const PROVIDER_NAMES = { google: "Google", microsoft: "Microsoft" } as const;
+
 /** `/join/$code`: the class, as big names to tap. */
 export function ClassScreen() {
   const params = useParams({ from: "/join/$code" });
   const code = normalizeJoinCode(params.code);
   const navigate = useNavigate();
   const roster = useQuery(joinRosterOptions(code));
+  const { sso } = useSearch({ strict: false }) as { sso?: unknown };
+  const problem = typeof sso === "string" ? SSO_MESSAGES[sso] : undefined;
+  useEffect(() => {
+    if (problem) console.error("School account sign-in stopped", sso);
+  }, [problem, sso]);
   // A shared link's `abc-def` becomes the one address for this class.
   useEffect(() => {
     if (code && code !== params.code)
@@ -67,6 +88,29 @@ export function ClassScreen() {
       <div className={styles.wide}>
         <h1 className={styles.title}>Tap your name</h1>
         <p className={styles.subtitle}>{roster.data.class.name}</p>
+        {!!roster.data.signIn?.length && (
+          <div className={styles.accounts}>
+            {roster.data.signIn.map((provider) => (
+              <a
+                key={provider}
+                className={styles.accountButton}
+                href={`/api/v1/school/join/oidc/${provider}/start?code=${code}`}
+              >
+                <ProviderMark provider={provider} />
+                <span>Sign in with {PROVIDER_NAMES[provider]}</span>
+              </a>
+            ))}
+          </div>
+        )}
+        {problem && (
+          <p className={styles.problem} role="alert">
+            {problem} Tap your name below, or{" "}
+            <Link to="/join" className={styles.problemLink}>
+              scan your card
+            </Link>
+            .
+          </p>
+        )}
         {roster.data.students.length ? (
           <ul className={styles.names}>
             {roster.data.students.map((student) => (

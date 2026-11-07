@@ -45,6 +45,15 @@ export const schoolActions = [
   "license.read",
   "license.request",
   "roster.import",
+  "overview.read",
+  "schools.add",
+  "year.rollover",
+  "integrations.read",
+  "integrations.manage",
+  "privacy.read",
+  "privacy.export",
+  "privacy.delete",
+  "activity.read",
   "settings.read",
   "settings.write",
   "workbooks.read",
@@ -211,8 +220,12 @@ export const issueCardsSchema = z.strictObject({
   missingOnly: z.boolean().optional(),
 });
 
+export const ssoProviders = ["google", "microsoft"] as const;
+export type SsoProvider = (typeof ssoProviders)[number];
 export const joinRosterResource = z.object({
   class: z.object({ name: z.string() }),
+  /** Outside sign-ins this class's school has turned on. */
+  signIn: z.array(z.enum(ssoProviders)).optional(),
   /** All a stranger with the code can learn: no learner data of any kind. */
   students: z.array(
     z.object({ id: z.uuid(), name: z.string(), picturesSet: z.boolean() }),
@@ -288,6 +301,8 @@ export const orgResource = z.object({
   can: z.array(z.enum(schoolActions)).optional(),
   /** Classes the caller teaches here, for the class-level actions in `can`. */
   teaches: z.array(z.uuid()).optional(),
+  /** The orgs above this one that the caller can open, from the top down. */
+  ancestors: z.array(z.object({ id: z.uuid(), name: z.string() })).optional(),
 });
 export const classResource = z.object({
   id: z.uuid(),

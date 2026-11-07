@@ -32,7 +32,9 @@ import {
   refreshSchool,
   school,
   studentsKey,
+  type StudentStatus,
 } from "./api";
+import { TransferSheet, useCanMove } from "./org/TransferSheet";
 import { displayName } from "./ClassesScreen";
 import { OrgFrame } from "./OrgFrame";
 import { FormNote, GradePicker, PageHead, gradeLabel } from "./parts";
@@ -41,6 +43,10 @@ import styles from "./School.module.css";
 
 const message = (failure: unknown, fallback: string) =>
   failure instanceof AppError ? failure.message : fallback;
+const statusWords: Record<StudentStatus, string> = {
+  "needs-seat": "waiting for a seat",
+  "never-signed-in": "who haven’t signed in yet",
+};
 
 function StudentSheet({
   orgId,
@@ -55,6 +61,8 @@ function StudentSheet({
   canRemove: boolean;
   onClose: () => void;
 }) {
+  const [moving, setMoving] = useState(false);
+  const canMove = useCanMove(student.id, canTransfer);
   const session = currentSession();
   const classes = useQuery(classesOptions(session, orgId)).data ?? [];
   const [shownName, setShownName] = useState(student.displayName ?? "");
@@ -123,6 +131,11 @@ function StudentSheet({
         >
           Open {student.givenName}’s record
         </Link>
+        {canMove && (
+          <Button variant="secondary" onClick={() => setMoving(true)}>
+            Move to another school
+          </Button>
+        )}
         <TextField
           label="Display name"
           placeholder={rosterName}
@@ -222,6 +235,18 @@ function StudentSheet({
           </div>
         )}
       </div>
+      {canMove && (
+        <TransferSheet
+          studentId={student.id}
+          name={displayName(student)}
+          open={moving}
+          onOpenChange={setMoving}
+          onMoved={() => {
+            setMoving(false);
+            onClose();
+          }}
+        />
+      )}
     </Sheet>
   );
 }
@@ -345,6 +370,8 @@ export function StudentsScreen() {
     q?: unknown;
     student?: unknown;
     add?: unknown;
+    status?: unknown;
+    move?: unknown;
   };
   const navigate = useNavigate();
   const session = currentSession();
@@ -356,11 +383,15 @@ export function StudentsScreen() {
     const timer = setTimeout(() => setNeedle(typed.trim()), 180);
     return () => clearTimeout(timer);
   }, [typed]);
+  const status: StudentStatus | undefined =
+    search.status === "needs-seat" || search.status === "never-signed-in"
+      ? search.status
+      : undefined;
   const query = useInfiniteQuery({
-    queryKey: studentsKey(session, orgId, needle),
+    queryKey: studentsKey(session, orgId, needle, status),
     initialPageParam: 0,
     queryFn: ({ pageParam, signal }) =>
-      fetchStudents(session, orgId, needle, pageParam, signal),
+      fetchStudents(session, orgId, needle, pageParam, signal, status),
     getNextPageParam: (last) => last.nextOffset,
     placeholderData: keepPreviousData,
   });
@@ -458,9 +489,11 @@ export function StudentsScreen() {
         detail={
           query.isPending
             ? " "
-            : needle
-              ? `${total} ${total === 1 ? "match" : "matches"}`
-              : `${total} ${total === 1 ? "student" : "students"}${total ? `, ${total - seated === 0 ? "all" : seated} with seats` : ""}`
+            : status
+              ? `${total.toLocaleString("en-US")} ${total === 1 ? "student" : "students"} ${statusWords[status]}`
+              : needle
+                ? `${total} ${total === 1 ? "match" : "matches"}`
+                : `${total} ${total === 1 ? "student" : "students"}${total ? `, ${total - seated === 0 ? "all" : seated} with seats` : ""}`
         }
         action={
           canAdd ? (
@@ -477,6 +510,15 @@ export function StudentsScreen() {
           value={typed}
           onChange={(value) => setSearch({ q: value || undefined }, true)}
         />
+        {status && (
+          <Button
+            variant="quiet"
+            align="start"
+            onClick={() => setSearch({ status: undefined })}
+          >
+            Show everyone
+          </Button>
+        )}
       </div>
       {query.isError && !rows.length ? (
         <EmptyState

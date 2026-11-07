@@ -124,8 +124,8 @@ export async function setStudentClasses(
     const org = await repo.org(client, orgId);
     const today = await repo.today(client, org.timezone);
     const ended = await client.query(
-      `UPDATE amp_enrollments e SET end_on=$2 FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
-       WHERE e.person_id=$1 AND e.role='student' AND e.end_on IS NULL AND c.id=e.class_id
+      `UPDATE amp_enrollments e SET end_on=GREATEST(e.begin_on,$2::date) FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
+       WHERE e.person_id=$1 AND e.role='student' AND (e.end_on IS NULL OR e.end_on>$2::date) AND c.id=e.class_id
          AND o.path @> ARRAY[$3]::uuid[] AND NOT (e.class_id=ANY($4::uuid[]))`,
       [personId, today, org.id, classIds],
     );
@@ -179,11 +179,11 @@ export async function removeStudent(
     const org = await repo.org(client, orgId);
     const today = await repo.today(client, org.timezone);
     await client.query(
-      `UPDATE amp_org_roles SET end_on=$2 WHERE person_id=$1 AND end_on IS NULL`,
+      `UPDATE amp_org_roles SET end_on=GREATEST(begin_on,$2::date) WHERE person_id=$1 AND end_on IS NULL`,
       [personId, today],
     );
     await client.query(
-      `UPDATE amp_enrollments SET end_on=$2 WHERE person_id=$1 AND end_on IS NULL`,
+      `UPDATE amp_enrollments SET end_on=GREATEST(begin_on,$2::date) WHERE person_id=$1 AND (end_on IS NULL OR end_on>$2::date)`,
       [personId, today],
     );
     await client.query(

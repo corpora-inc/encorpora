@@ -19,7 +19,13 @@ import {
 import styles from "./School.module.css";
 
 const VISIBLE_CLASSES = 8;
+const VISIBLE_CLASSES_TAUGHT = 4;
 export type NavId =
+  | "overview"
+  | "schools"
+  | "integrations"
+  | "privacy"
+  | "activity"
   | "classes"
   | "students"
   | "staff"
@@ -151,6 +157,7 @@ export function OrgFrame({
   }
   const can = new Set(org.data.can ?? []);
   const lone = org.data.solo === true && classes.length <= 1;
+  const isSchool = org.data.kind === "school";
   const admin = (id: NavId, label: string, path: string, action: string) =>
     can.has(action as never) ? [{ id, label, path: orgPath(orgId, path) }] : [];
   const schoolItems = [
@@ -162,30 +169,73 @@ export function OrgFrame({
       label: "Student experience",
       path: orgPath(orgId, "experience"),
     },
-    ...admin("import", "Import", "import", "roster.import"),
+    ...(isSchool ? admin("import", "Import", "import", "roster.import") : []),
     ...admin("license", "License", "license", "license.read"),
   ];
-  const shown = classes.slice(0, VISIBLE_CLASSES);
+  const recordItems = [
+    ...admin(
+      "integrations",
+      "Integrations",
+      "integrations",
+      "integrations.read",
+    ),
+    ...admin("privacy", "Privacy", "privacy", "privacy.read"),
+    ...admin("activity", "Activity", "activity", "activity.read"),
+  ];
+  const overview = can.has("overview.read");
+  // Someone running a school reaches classes through the overview's table, so
+  // the rail keeps only the ones they teach themselves.
+  const shown = overview
+    ? classes
+        .filter((klass) => org.data.teaches?.includes(klass.id))
+        .slice(0, VISIBLE_CLASSES_TAUGHT)
+    : classes.slice(0, VISIBLE_CLASSES);
+  const ancestors = org.data.ancestors ?? [];
+  const parent = ancestors.at(-1);
   const sections: SchoolNavSection[] = [
+    ...(parent
+      ? [
+          {
+            items: [{ id: "up", label: parent.name, path: orgPath(parent.id) }],
+          },
+        ]
+      : []),
+    ...(overview
+      ? [
+          {
+            items: [
+              ...admin("overview", "Overview", "", "overview.read"),
+              ...(isSchool
+                ? []
+                : admin("schools", "Schools", "schools", "overview.read")),
+            ],
+          },
+        ]
+      : []),
     {
       label: "Classes",
       items: [
-        ...shown.map((klass) => ({
-          id: `class:${klass.id}`,
-          label: klass.name,
-          path: classPath(orgId, klass.id),
-        })),
+        ...(isSchool
+          ? shown.map((klass) => ({
+              id: `class:${klass.id}`,
+              label: klass.name,
+              path: classPath(orgId, klass.id),
+            }))
+          : []),
         {
           id: "classes",
           label:
-            classes.length > VISIBLE_CLASSES
+            classes.length > shown.length
               ? `All ${classes.length} classes`
               : "All classes",
           path: orgPath(orgId, "classes"),
         },
       ],
     },
-    { label: "School", items: schoolItems },
+    {
+      label: isSchool ? "School" : "Across schools",
+      items: [...schoolItems, ...recordItems],
+    },
   ];
   // Just my class: the rail lists that one class's screens; nothing else.
   const loneTabs: TabItem[] = [
@@ -199,6 +249,7 @@ export function OrgFrame({
         ]
       : [{ id: "classes", label: "Class", path: orgPath(orgId, "classes") }]),
     ...schoolItems.filter((item) => item.id !== "staff"),
+    ...recordItems.filter((item) => item.id === "privacy"),
   ];
   return (
     <SchoolFrame
@@ -208,7 +259,14 @@ export function OrgFrame({
       sections={sections}
       activeNav={nav}
       breadcrumb={[
-        { label: org.data.name, path: orgPath(orgId, "classes") },
+        ...ancestors.map((entry) => ({
+          label: entry.name,
+          path: orgPath(entry.id),
+        })),
+        {
+          label: org.data.name,
+          path: overview ? orgPath(orgId) : orgPath(orgId, "classes"),
+        },
         ...(crumbs.length ? crumbs : [{ label: title }]),
       ]}
       {...(lone
@@ -217,6 +275,7 @@ export function OrgFrame({
               tabs: [
                 ...tabs,
                 ...schoolItems.filter((item) => item.id !== "staff"),
+                ...recordItems.filter((item) => item.id === "privacy"),
               ],
               activeTab,
             }

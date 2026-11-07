@@ -32,6 +32,7 @@ import {
   type StudentResource,
 } from "./contracts.js";
 import { recordEvent } from "./events.js";
+import { YEAR_IN_USE } from "./years.js";
 
 type Org = { id: string; path: string[]; timezone: string };
 const FROM_ORG = `SELECT id,path,timezone FROM amp_orgs WHERE id=$1`;
@@ -391,7 +392,7 @@ export class SchoolRepository {
 
   /** Locks each candidate license, nearest first (the same order everywhere,
    * so two provisions can't deadlock), and takes the first with room. */
-  private async takeSeat(
+  async takeSeat(
     client: PoolClient,
     personId: string,
     learnerId: string,
@@ -793,11 +794,13 @@ export class SchoolRepository {
     ).rows[0];
     return row ?? null;
   }
-  /** Classes at this org and below; `classIds` narrows to a teacher's own. */
+  /** Classes at this org and below; `classIds` narrows to a teacher's own. The
+   * year in use, unless `year` asks for another. */
   async classes(
     orgId: string,
     { classIds }: { classIds: string[] | null },
     page: Page,
+    year: string | null = null,
   ): Promise<ClassResource[]> {
     return (
       await this.pool.query(
@@ -806,10 +809,12 @@ export class SchoolRepository {
            (SELECT count(*)::int FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
              WHERE e.class_id=c.id AND e.role='student' AND p.deleted_at IS NULL AND ${activeToday("e", "o")}) AS "studentCount"
          FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
+         JOIN amp_academic_sessions cs ON cs.id=c.session_id
          WHERE o.path @> ARRAY[$1]::uuid[] AND c.archived_at IS NULL
            AND ($2::uuid[] IS NULL OR c.id=ANY($2::uuid[]))
+           AND (CASE WHEN $5::uuid IS NULL THEN ${YEAR_IN_USE} ELSE COALESCE(cs.parent_id,cs.id)=$5::uuid END)
          ORDER BY c.name,c.id LIMIT $3 OFFSET $4`,
-        [orgId, classIds, page.limit, page.offset],
+        [orgId, classIds, page.limit, page.offset, year],
       )
     ).rows;
   }
@@ -819,6 +824,7 @@ export class SchoolRepository {
     orgId: string,
     { classIds }: { classIds: string[] | null },
     page: Page,
+    status: "needs-seat" | "never-signed-in" | null = null,
   ): Promise<(StudentResource & { total: number })[]> {
     const needle = page.q
       ? `%${page.q.toLowerCase().replace(/[\\%_]/g, "\\$&")}%`
@@ -840,8 +846,11 @@ export class SchoolRepository {
            AND ($2::uuid[] IS NULL OR EXISTS(SELECT 1 FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs eo ON eo.id=c.org_id
              WHERE e.person_id=p.id AND e.role='student' AND e.class_id=ANY($2::uuid[]) AND c.archived_at IS NULL AND ${activeToday("e", "eo")}))
            AND ($5::text IS NULL OR lower(concat_ws(' ',p.display_name,p.given_name,p.family_name,p.identifier)) LIKE $5)
+           AND ($6::text IS DISTINCT FROM 'needs-seat' OR NOT EXISTS(SELECT 1 FROM amp_seats s JOIN amp_school_licenses l ON l.id=s.license_id
+             WHERE s.person_id=p.id AND s.released_at IS NULL AND ${IN_FORCE("l")}))
+           AND ($6::text IS DISTINCT FROM 'never-signed-in' OR NOT EXISTS(SELECT 1 FROM amp_student_sessions n WHERE n.person_id=p.id))
          ORDER BY lower(COALESCE(p.display_name,p.given_name)),p.id LIMIT $3 OFFSET $4`,
-        [orgId, classIds, page.limit, page.offset, needle],
+        [orgId, classIds, page.limit, page.offset, needle, status],
       )
     ).rows;
   }

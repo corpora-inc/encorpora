@@ -71,6 +71,7 @@
     "test:navigation-ui": "tsx scripts/verify-navigation-ui.ts",
     "test:school-teacher-ui": "tsx scripts/verify-school-teacher-ui.ts",
     "test:school-setup-ui": "tsx scripts/verify-school-setup-ui.ts",
+    "test:school-org-ui": "tsx scripts/verify-school-org-ui.ts",
     "test:account-controls-ui": "tsx scripts/verify-account-controls-ui.ts",
     "test:acquisition-ui": "tsx scripts/verify-acquisition-ui.ts",
     "test:pitch-ui": "tsx scripts/verify-pitch-ui.ts && tsx scripts/verify-pitch-ui.ts --no-media",

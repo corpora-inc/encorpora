@@ -95,6 +95,9 @@ const VIEWER = new Set<SchoolAction>([
   "license.read",
   "signin.read",
   "grades.read",
+  "overview.read",
+  "integrations.read",
+  "privacy.read",
   "workbooks.read",
 ]);
 const AIDE_CLASS = new Set<SchoolAction>([

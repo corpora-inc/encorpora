@@ -19,3 +19,24 @@ export function claimCardToken() {
   taken = null;
   return token;
 }
+
+/** Back from a school account's sign-in: `/join/continue#<grant>`. The same rule:
+ * it's out of the address bar and history before anything else reads the URL. */
+let grant: string | null = null;
+export function takeGrantFragment(
+  location: Pick<Location, "pathname" | "hash"> = window.location,
+  history: Pick<History, "replaceState" | "state"> = window.history,
+) {
+  if (location.pathname !== "/join/continue" || location.hash.length < 2)
+    return;
+  grant = location.hash.slice(1);
+  history.replaceState(history.state, "", "/join/continue");
+}
+takeGrantFragment();
+
+/** The grant, once. */
+export function claimGrant() {
+  const held = grant;
+  grant = null;
+  return held;
+}

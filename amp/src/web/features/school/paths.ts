@@ -15,11 +15,12 @@ export const setupSteps = [
 ] as const;
 export type SetupStep = (typeof setupSteps)[number];
 
-/** A person's home in a school: setup until it's finished, then their classes. */
+/** A person's home in a school: setup until it's finished, then the school's own
+ * address, which opens the overview or their classes as this person can see. */
 export function orgHome(org: Pick<OrgResource, "id" | "setupPending">) {
   return org.setupPending
     ? { to: "/school/new", search: { org: org.id } }
-    : { to: `/school/${org.id}/classes` };
+    : { to: `/school/${org.id}` };
 }
 
 const PENDING_INVITE = "amp.school-invite";
