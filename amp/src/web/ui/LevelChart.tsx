@@ -95,6 +95,55 @@ export function LevelTrack({
   );
 }
 
+/** One estimate in a table row: the likely range as a band and the best guess
+ * as a dot, with no track of its own. `course` paints the class's course the
+ * full height of the row, so the rows of a column join into one stripe and a
+ * reader sees at once who is left of it, on it or past it. `--level-row` on
+ * an ancestor gives the row's height. */
+export function LevelBand({
+  estimate,
+  scale,
+  course,
+  estimated = false,
+  strong = false,
+}: {
+  estimate: LevelEstimate;
+  scale: LevelScale;
+  course?: readonly [from: number, to: number];
+  estimated?: boolean;
+  strong?: boolean;
+}) {
+  const [from, to] = levelRange(estimate);
+  const left = scaleAt(scale, from),
+    right = scaleAt(scale, to);
+  const courseLeft = course ? scaleAt(scale, course[0]) : 0,
+    courseRight = course ? scaleAt(scale, course[1]) : 0;
+  return (
+    <span
+      className={`${styles.bandTrack} ${strong ? styles.bandStrong : ""} ${estimated ? styles.bandEstimated : ""}`}
+      aria-hidden="true"
+    >
+      {course && (
+        <span
+          className={styles.bandCourse}
+          style={{
+            left: pct(courseLeft),
+            width: pct(courseRight - courseLeft),
+          }}
+        />
+      )}
+      <span
+        className={styles.bandRange}
+        style={{ left: pct(left), width: pct(Math.max(0, right - left)) }}
+      />
+      <span
+        className={styles.bandDot}
+        style={{ left: pct(scaleAt(scale, estimate.level)) }}
+      />
+    </span>
+  );
+}
+
 /** The scale's ends and centre, under a column of tracks. */
 export function LevelAxis({
   scale,

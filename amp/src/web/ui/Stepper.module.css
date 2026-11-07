@@ -1,0 +1,88 @@
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.label {
+  font-size: var(--text-table);
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.hiddenLabel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.control {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  height: 44px;
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+}
+/* The outline is drawn over the buttons, so they keep a full 44 px. */
+.control::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--color-border-strong);
+  border-radius: inherit;
+  pointer-events: none;
+}
+button.step {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 44px;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-primary);
+  cursor: pointer;
+}
+button.step:hover:not(:disabled) {
+  filter: none;
+  background: var(--color-surface-raised-hover);
+}
+button.step[aria-disabled="true"] {
+  color: var(--color-on-disabled);
+  cursor: default;
+}
+button.step[aria-disabled="true"]:hover:not(:disabled) {
+  background: transparent;
+}
+button.step:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
+.step svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+.value {
+  display: grid;
+  place-items: center;
+  padding: 0 var(--space-1);
+  font-size: var(--text-table);
+  font-variant-numeric: var(--numeric);
+  font-weight: 650;
+  white-space: nowrap;
+  cursor: default;
+}
+.value:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -1px;
+  border-radius: var(--radius-small);
+}

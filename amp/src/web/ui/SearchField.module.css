@@ -1,0 +1,76 @@
+.field {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 320px;
+  height: 44px;
+  border: 1px solid var(--color-answer-border);
+  border-radius: var(--radius-control);
+  background: var(--color-answer);
+  color: var(--color-on-answer);
+}
+.field:focus-within {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 1px;
+}
+.glass {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-inline-start: var(--space-3);
+  fill: none;
+  stroke: var(--color-subtle-text);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+.field input.input {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  margin: -1px 0;
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-size: var(--text-dense);
+  outline: none;
+}
+.field input.input:focus-visible {
+  outline: none;
+}
+.input::placeholder {
+  color: var(--color-subtle-text);
+}
+button.clear {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin: -1px -1px -1px 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-muted-text);
+  cursor: pointer;
+}
+button.clear:hover:not(:disabled) {
+  filter: none;
+  background: var(--color-surface-hover);
+  color: var(--color-on-surface);
+}
+button.clear:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
+.clear svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
