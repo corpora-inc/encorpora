@@ -32,6 +32,7 @@ export function useCurriculumScope() {
         ? `account:${session.data!.accountId}:${learner!.id}`
         : "pending",
       ready,
+      levels: undefined,
     };
   }
   return {
