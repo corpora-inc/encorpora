@@ -1288,6 +1288,8 @@ background-image:${gridLines};background-size:var(--grid) var(--grid);background
 /* Fractions in running text: text-style with no extra padding, so lines
    stay evenly spaced; on student pages a little larger, for reading. The
    key's narrow columns keep the standard size. */
+/* A long worked equation wraps at the places KaTeX allows (after its operators) in every browser; Firefox otherwise keeps the whole chain on one line. */
+.wb .katex-html{white-space:normal}.wb .katex .base{white-space:nowrap}
 .wb .print-math.print-math--prose,.wb .print-math-punctuation:has(.print-math--prose){padding:0}
 [data-flow="student"] .print-math--prose .katex,.wb-page--student .print-math--prose .katex{font-size:1.25em}
 /* Answer key and results pages. */

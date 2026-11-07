@@ -833,6 +833,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     catalog,
     learner?.id,
     learner?.birthYear,
+    // Choosing another learner while practicing clears the problem after this
+    // route and learner have already changed: load theirs when it is gone.
+    !problem,
     busy,
     error,
   ]);

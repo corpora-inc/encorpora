@@ -32,7 +32,13 @@ async function inspect(html: string, format: "Letter" | "A4") {
   const pageHeight = (((format === "Letter" ? 279.4 : 297) - 36) / 25.4) * 96;
   await page.setViewportSize({ width, height: 1200 });
   await page.setContent(html);
-  await page.evaluate(() => document.fonts.ready);
+  // Measure in the embedded faces: load every one, not only those the layout
+  // had already asked for when `ready` resolved.
+  await page.evaluate(() =>
+    Promise.all([...document.fonts].map((font) => font.load())).then(
+      () => document.fonts.ready,
+    ),
+  );
   return page.evaluate(
     ({ width, pageHeight }) => {
       const issues: string[] = [];
@@ -185,7 +191,9 @@ async function inspect(html: string, format: "Letter" | "A4") {
             Math.max(...xs) > v.x + v.width + 1 ||
             Math.max(...ys) > v.y + v.height + 1
           )
-            issues.push(`Figure label crosses view box: ${label.textContent}`);
+            issues.push(
+              `Figure label crosses view box: ${label.textContent} (box ${Math.round(Math.min(...xs))}..${Math.round(Math.max(...xs))} x ${Math.round(Math.min(...ys))}..${Math.round(Math.max(...ys))} in ${v.x},${v.y} ${v.width}x${v.height}; ${getComputedStyle(label).fontFamily} ${document.fonts.check("14px KaTeX_Main") ? "loaded" : "not loaded"})`,
+            );
         }
       }
       return issues;
