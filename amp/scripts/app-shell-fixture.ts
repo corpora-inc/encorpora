@@ -314,10 +314,11 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       ready: heading(/Reset your password/),
     },
     {
+      // A visitor without an account opens /try and is taken to sign-up first.
       id: "try-start",
       path: "/try",
       state: "guest",
-      ready: heading(/Math that adapts/),
+      ready: heading(/Try AMP free/),
     },
     {
       id: "account-ready",

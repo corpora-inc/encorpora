@@ -389,6 +389,23 @@ def formula_truths(public):
     return truths
 
 
+def formula_frame(public):
+    """The teaching lines around the verdicts, read from the figure and the question.
+
+The rectangle's labeled sides and the measure asked for are all the lines may
+state; anything else, before or after the verdicts, fails the review.
+"""
+    figure = public['figure']
+    length, width = figure['width']['value'], figure['height']['value']
+    unit = {'cm': 'centimeters', 'm': 'meters'}[figure['width']['unit']]
+    given = f'The length is {length} {unit} and the width is {width} {unit}, as labeled.'
+    if 'equal the perimeter' in public['prompt']:
+        return (['The perimeter is the walk around all four sides.', given,
+                 'Adding the four sides, adding twice the length and twice the width, and doubling the sum of the length and the width are the same walk.'], [])
+    return (['The area is the squares inside.', given,
+             'Length times width counts those squares, and so does width times length. Adding or doubling the sides walks around the outside.'], [])
+
+
 def rectangle_formulas(public):
     return kit.answer(public, formula_truths(public))
 
@@ -412,7 +429,7 @@ def solve(public):
 def review_problem(problem):
     public = problem['public']
     if public['templateId'] == 'rectangle-formula-select':
-        return kit.review(problem, formula_truths)
+        return kit.review(problem, formula_truths, formula_frame)
     return solve(public)
 
 

@@ -130,6 +130,11 @@
     font-size: 22px;
     text-align: left;
   }
+  /* Twelve measurements and a table of up to six rows share one column: the
+     prompt steps down so the table fits the card without scrolling. */
+  .problem-content[data-template="line-plot-build-slots"] .question {
+    font-size: 20px;
+  }
   /* The problem has the card's height to itself, so a figure may draw larger.
      It still yields height down to its legible floor before the stage
      scrolls. */

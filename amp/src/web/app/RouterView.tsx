@@ -1,6 +1,6 @@
 import { RouterProvider, useRouterState } from "@tanstack/react-router";
 import { LoadingScreen } from "../ui/LoadingScreen";
-import { router } from "./router";
+import { homeRouteId, router } from "./router";
 import { useEffect } from "react";
 import type { HomeScreen } from "../../analytics/page-titles";
 import { applyRouteHead, routeHead } from "./route-head";
@@ -27,7 +27,7 @@ export function RouterView() {
         return "";
       const pitch = state.matches.some(
         (match) =>
-          match.routeId === "/" &&
+          match.routeId === homeRouteId() &&
           (match.loaderData as { pitch?: unknown } | undefined)?.pitch === true,
       );
       return `${pitch ? "pitch" : "app"} ${resolved.pathname}${resolved.searchStr}`;

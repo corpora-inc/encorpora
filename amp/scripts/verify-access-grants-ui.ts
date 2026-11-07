@@ -1,4 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
+import { settleArrival } from "./ui-settle";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
@@ -226,6 +227,7 @@ try {
         fullPage: true,
       });
       if (width === 390 && theme === "light") {
+        await settleArrival(page);
         const axe = await new AxeBuilder({ page })
           .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
           .analyze();

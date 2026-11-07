@@ -1,4 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
+import { settleArrival } from "./ui-settle";
 import { META_PURCHASE_MEASUREMENT_NOTICE } from "../src/advertising/permission-contracts";
 import AxeBuilder from "@axe-core/playwright";
 import assert from "node:assert/strict";
@@ -339,6 +340,7 @@ async function box(locator: Locator) {
   return value;
 }
 async function axe(page: Page, label: string) {
+  await settleArrival(page);
   const result = await new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
     .analyze();
