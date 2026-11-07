@@ -581,6 +581,52 @@ const fallback = createRoute({
   path: "/$",
   component: legacy,
 });
+/** The AMP for Schools design preview, on mocked data. Development only: the
+ * condition compiles away, so none of it reaches a production bundle. */
+const schoolPreview = import.meta.env.DEV
+  ? [
+      createRoute({
+        getParentRoute: () => root,
+        path: "/school/preview/today",
+        component: lazyRouteComponent(
+          () => import("../features/school/preview/TodayScreen"),
+          "TodayScreen",
+        ),
+      }),
+      createRoute({
+        getParentRoute: () => root,
+        path: "/school/preview/map",
+        component: lazyRouteComponent(
+          () => import("../features/school/preview/TodayScreen"),
+          "MapScreen",
+        ),
+      }),
+      createRoute({
+        getParentRoute: () => root,
+        path: "/school/preview/gradebook",
+        component: lazyRouteComponent(
+          () => import("../features/school/preview/GradebookScreen"),
+          "GradebookScreen",
+        ),
+      }),
+      createRoute({
+        getParentRoute: () => root,
+        path: "/school/preview/students",
+        component: lazyRouteComponent(
+          () => import("../features/school/preview/StudentsScreen"),
+          "StudentsScreen",
+        ),
+      }),
+      createRoute({
+        getParentRoute: () => root,
+        path: "/school/preview/$screen",
+        component: lazyRouteComponent(
+          () => import("../features/school/preview/PlaceholderScreen"),
+          "PlaceholderScreen",
+        ),
+      }),
+    ]
+  : [];
 export const router = createRouter({
   routeTree: root.addChildren([
     home,
@@ -614,6 +660,7 @@ export const router = createRouter({
     invoiceArkansas,
     invoiceArizona,
     invoiceNewHampshire,
+    ...schoolPreview,
     fallback,
   ]),
   history: nativeRuntime

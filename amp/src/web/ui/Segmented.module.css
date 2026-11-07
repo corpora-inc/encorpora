@@ -120,3 +120,18 @@
   line-height: inherit;
   white-space: nowrap;
 }
+
+/* Dense: a toolbar control in a staff tool. Still a 44 px target per segment. */
+.dense {
+  padding: 2px;
+  border-radius: calc(var(--radius-control) + 2px);
+}
+.compact.dense .segment {
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  border-width: 1px;
+}
+.compact.dense .label {
+  font-size: var(--text-table);
+  font-weight: 600;
+}

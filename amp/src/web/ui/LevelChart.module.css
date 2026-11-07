@@ -123,3 +123,52 @@
   box-shadow: 0 0 0 1px var(--color-primary);
   transform: translate(-50%, -50%);
 }
+/* A level band for a table row (LevelBand): no track, a band and a dot, over
+   the course stripe that runs the height of the row. */
+.bandTrack {
+  --level-hue: var(--strand, var(--color-primary));
+  --band-height: 10px;
+  --band-dot: 8px;
+  position: relative;
+  display: block;
+  height: var(--band-height);
+}
+.bandStrong {
+  --band-height: 12px;
+  --band-dot: 10px;
+}
+.bandCourse {
+  position: absolute;
+  top: calc((var(--band-height) - var(--level-row, 44px)) / 2);
+  bottom: calc((var(--band-height) - var(--level-row, 44px)) / 2);
+  background: var(--color-course-band);
+}
+.bandRange {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  min-width: var(--band-dot);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--level-hue) 42%, transparent);
+}
+.bandDot {
+  position: absolute;
+  top: 50%;
+  width: var(--band-dot);
+  height: var(--band-dot);
+  border-radius: 50%;
+  background: var(--level-hue);
+  transform: translate(-50%, -50%);
+}
+.bandEstimated .bandRange {
+  background: repeating-linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--level-hue) 34%, transparent) 0 4px,
+    transparent 4px 7px
+  );
+}
+.bandEstimated .bandDot {
+  box-sizing: border-box;
+  border: 2px solid var(--level-hue);
+  background: var(--color-surface);
+}

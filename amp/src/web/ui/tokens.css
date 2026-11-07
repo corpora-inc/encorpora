@@ -77,6 +77,29 @@
   --color-strand-data: #2a8080;
   --color-strand-probability: #8a5aa0;
   --color-strand-modeling: #b4532a;
+  /* Staff tools: the quiet navigation rail, and the course's column that runs
+     down a class map behind every student's band. */
+  --color-rail: #efeee6;
+  --color-on-rail: #183e3a;
+  --color-course-band: #1f5f551c;
+  --color-meter: #1f5f55;
+  /* Avatars: eight quiet identity tints. Never a status, never a strand. */
+  --color-avatar-0: #dde6f0;
+  --color-on-avatar-0: #2b4a6b;
+  --color-avatar-1: #e9e0ee;
+  --color-on-avatar-1: #553a6b;
+  --color-avatar-2: #f1e2d8;
+  --color-on-avatar-2: #6f3f20;
+  --color-avatar-3: #e3ead6;
+  --color-on-avatar-3: #44541f;
+  --color-avatar-4: #d9ebe8;
+  --color-on-avatar-4: #1d5450;
+  --color-avatar-5: #f0dfe4;
+  --color-on-avatar-5: #6e3446;
+  --color-avatar-6: #eee6d2;
+  --color-on-avatar-6: #5c4a1b;
+  --color-avatar-7: #dfe8df;
+  --color-on-avatar-7: #2f5238;
   /* Provider sign-in buttons share one neutral style: Google's neutral light
      button, Apple's "white with outline" style and Microsoft's light button.
      Marks keep their official colors; Apple's and GitHub's use the label. */
@@ -157,6 +180,28 @@
     --color-strand-data: #70cccc;
     --color-strand-probability: #c7a0e3;
     --color-strand-modeling: #ee9a75;
+    /* Staff tools: rail and course column. Darker than the page, not lighter. */
+    --color-rail: #0e1f1c;
+    --color-on-rail: #e9f0e8;
+    --color-course-band: #8bd1b521;
+    --color-meter: #6db59a;
+    /* Avatars, stepped for the dark surface. */
+    --color-avatar-0: #25384c;
+    --color-on-avatar-0: #cfe0f2;
+    --color-avatar-1: #382d48;
+    --color-on-avatar-1: #e2d3f0;
+    --color-avatar-2: #47322a;
+    --color-on-avatar-2: #f3d6c4;
+    --color-avatar-3: #37402a;
+    --color-on-avatar-3: #dbe8bf;
+    --color-avatar-4: #1f3f3d;
+    --color-on-avatar-4: #c6ece6;
+    --color-avatar-5: #452c36;
+    --color-on-avatar-5: #f2cfdb;
+    --color-avatar-6: #40381f;
+    --color-on-avatar-6: #eee0b4;
+    --color-avatar-7: #2a3f30;
+    --color-on-avatar-7: #cfe8d6;
     /* Provider buttons, one neutral dark style: Google's dark button, Apple's
        black style and Microsoft's dark button. */
     --color-provider: #131314;
@@ -235,6 +280,28 @@
   --color-strand-data: #70cccc;
   --color-strand-probability: #c7a0e3;
   --color-strand-modeling: #ee9a75;
+  /* Staff tools: rail and course column. Darker than the page, not lighter. */
+  --color-rail: #0e1f1c;
+  --color-on-rail: #e9f0e8;
+  --color-course-band: #8bd1b521;
+  --color-meter: #6db59a;
+  /* Avatars, stepped for the dark surface. */
+  --color-avatar-0: #25384c;
+  --color-on-avatar-0: #cfe0f2;
+  --color-avatar-1: #382d48;
+  --color-on-avatar-1: #e2d3f0;
+  --color-avatar-2: #47322a;
+  --color-on-avatar-2: #f3d6c4;
+  --color-avatar-3: #37402a;
+  --color-on-avatar-3: #dbe8bf;
+  --color-avatar-4: #1f3f3d;
+  --color-on-avatar-4: #c6ece6;
+  --color-avatar-5: #452c36;
+  --color-on-avatar-5: #f2cfdb;
+  --color-avatar-6: #40381f;
+  --color-on-avatar-6: #eee0b4;
+  --color-avatar-7: #2a3f30;
+  --color-on-avatar-7: #cfe8d6;
   /* Provider buttons, one neutral dark style: Google's dark button, Apple's
      black style and Microsoft's dark button. */
   --color-provider: #131314;
@@ -313,6 +380,11 @@
     var(--color-on-selected) var(--state-hover),
     var(--color-selected)
   );
+  --color-rail-hover: color-mix(
+    in srgb,
+    var(--color-on-rail) var(--state-hover),
+    var(--color-rail)
+  );
   /* Disabled is a role, not ad hoc opacity: still legible, visibly inert. */
   --color-disabled: color-mix(
     in srgb,
@@ -347,6 +419,9 @@
     #000 86%,
     transparent
   );
+  /* The trailing edge of a strip that scrolls: its last pixels fade, so a cut
+     label reads as "more", not as clipped. */
+  --scroll-edge: linear-gradient(90deg, #000 calc(100% - 28px), transparent);
   --radius-control: 12px;
   --radius-panel: 20px;
   --target-size: 48px;
@@ -364,6 +439,24 @@
   --text-title-min: 28px;
   --text-title-max: 42px;
   --shadow-overlay: 0 20px 80px var(--color-shadow);
+  /* The dense scale for staff tools: a teacher reads a screen in a minute.
+     Display sizes use the app's serif; everything else is the system sans. */
+  --font-display: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --text-heading-1: 34px;
+  --text-heading-2: 22px;
+  --text-heading-3: 17px;
+  --text-heading-4: 15px;
+  --text-dense: 15px;
+  --text-table: 14px;
+  --text-table-small: 12.5px;
+  --text-figure: 22px;
+  --numeric: tabular-nums lining-nums;
+  --space-7: 48px;
+  --space-8: 64px;
+  --radius-small: 8px;
+  --width-rail: 232px;
+  --width-content-wide: 1120px;
+  --width-sheet: 500px;
 }
 /* Print is always ink on paper, whatever the screen theme. */
 :root {
