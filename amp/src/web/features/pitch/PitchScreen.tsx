@@ -268,6 +268,7 @@ export function PitchScreen() {
         </div>
       </main>
       <footer className={styles.footer}>
+        <Link to="/schools">For schools</Link>
         <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
         <a href="https://corpora.inc/legal/privacy/">Privacy</a>
         <a href="https://corpora.inc/legal/terms/">Terms</a>

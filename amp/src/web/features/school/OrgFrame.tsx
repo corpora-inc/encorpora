@@ -11,6 +11,7 @@ import { Menu, MenuItem, MenuLabel } from "../../ui/Menu";
 import type { TabItem } from "../../ui/Tabs";
 import { classesOptions, currentSession, orgOptions, orgsOptions } from "./api";
 import { classPath, orgPath } from "./paths";
+import { compareClassNames } from "./sort";
 import {
   SchoolFrame,
   type SchoolCrumb,
@@ -121,7 +122,9 @@ export function OrgFrame({
 }) {
   const session = currentSession();
   const org = useQuery(orgOptions(session, orgId));
-  const classes = useQuery(classesOptions(session, orgId)).data ?? [];
+  const classes = [
+    ...(useQuery(classesOptions(session, orgId)).data ?? []),
+  ].sort((a, b) => compareClassNames(a.name, b.name));
   if (!org.data) {
     // Not found says so; anything else is this request, and trying again works.
     const missing =
@@ -225,9 +228,11 @@ export function OrgFrame({
         {
           id: "classes",
           label:
-            classes.length > shown.length
-              ? `All ${classes.length} classes`
-              : "All classes",
+            classes.length <= shown.length
+              ? "All classes"
+              : classes.length === 1
+                ? "1 class"
+                : `All ${classes.length} classes`,
           path: orgPath(orgId, "classes"),
         },
       ],
@@ -274,7 +279,10 @@ export function OrgFrame({
           ? {
               tabs: [
                 ...tabs,
-                ...schoolItems.filter((item) => item.id !== "staff"),
+                // The class's own Student experience tab is the school's here.
+                ...schoolItems.filter(
+                  (item) => item.id !== "staff" && item.id !== "experience",
+                ),
                 ...recordItems.filter((item) => item.id === "privacy"),
               ],
               activeTab,

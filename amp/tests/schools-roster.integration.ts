@@ -8,7 +8,13 @@ import { registerFamilyRoutes } from "../src/family/routes.js";
 import { AGREEMENT_VERSION } from "../src/schools/agreement.js";
 import { EVALUATION_DAYS, EVALUATION_SEATS } from "../src/schools/license.js";
 import { SchoolRepository } from "../src/schools/repository.js";
+import { applyRoster, planRoster } from "../src/schools/reconcile.js";
 import { registerSchoolRoutes, schoolRoutes } from "../src/schools/routes.js";
+import {
+  csvRows,
+  guessMapping,
+  readTable,
+} from "../src/schools/sources/csv.js";
 import { invitationProvesAddress } from "../src/schools/staff-account.js";
 import {
   rosterRowSchema,
@@ -1018,5 +1024,118 @@ test(
         404,
       );
     });
+  },
+);
+
+test(
+  "A district imports a CSV at each school: the same class name and the same student name stay each school's own",
+  { skip: !process.env.AMP_TEST_DATABASE_URL },
+  async () => {
+    const url = process.env.AMP_TEST_DATABASE_URL!;
+    const schema = `amp_roster_csv_${randomUUID().replaceAll("-", "")}`;
+    const admin = new Pool({ connectionString: url, max: 1 });
+    const scoped = new URL(url);
+    scoped.searchParams.set("options", `-c search_path=${schema}`);
+    await admin.query(`CREATE SCHEMA ${schema}`);
+    await migrate(scoped.href);
+    const db = new Pool({ connectionString: scoped.href, max: 4 });
+    const schools = new SchoolRepository(db);
+    try {
+      const district = await schools.createOrg(
+        { kind: "district", name: "Fixture District", timezone: "UTC" },
+        {
+          version: AGREEMENT_VERSION,
+          signerName: "Fixture Signer",
+          signerTitle: "Superintendent",
+        },
+      );
+      await schools.issueLicense({
+        orgId: district.id,
+        seats: 10,
+        endsAt: new Date(Date.now() + 86_400_000 * 30).toISOString(),
+      });
+      const north = await schools.createOrg({
+        kind: "school",
+        name: "North",
+        parentId: district.id,
+      });
+      const south = await schools.createOrg({
+        kind: "school",
+        name: "South",
+        parentId: district.id,
+      });
+      // The district's calendar, in semesters, which its schools inherit.
+      const year = randomUUID();
+      await db.query(
+        `INSERT INTO amp_academic_sessions(id,org_id,parent_id,kind,name,starts_on,ends_on) VALUES
+           ($1,$2,NULL,'year','2026–27','2026-08-17','2027-06-11'),
+           ($3,$2,$1,'semester','Semester 1','2026-08-17','2027-01-08')`,
+        [year, district.id, randomUUID()],
+      );
+      // No student IDs: a file only knows these by name and class.
+      const csv =
+        "Last Name,First Name,Grade,Class\r\nOsei,Amara,3,Grade 3 Math\r\nOrtiz,Caleb,3,Grade 3 Math\r\n";
+      const rows = () => {
+        const table = readTable(csv);
+        return csvRows(table, guessMapping(table)).rows;
+      };
+      const keys = { secret: "fixture-secret-fixture-secret", origin: "" };
+      for (const school of [north, south]) {
+        const plan = await planRoster(schools, school.id, {
+          source: "csv",
+          rows: rows(),
+        });
+        assert.deepEqual(
+          plan.map((result) => result.status),
+          ["new", "new"],
+          "the second school's file is new there, not the first school's",
+        );
+        const { results } = await applyRoster(
+          schools,
+          keys,
+          school.id,
+          { source: "csv", rows: rows() },
+          null,
+        );
+        assert.deepEqual(
+          results.map((result) => result.status),
+          ["created", "created"],
+        );
+      }
+      const { rows: classes } = await db.query(
+        `SELECT c.org_id,count(e.id)::int AS students FROM amp_classes c
+         JOIN amp_enrollments e ON e.class_id=c.id AND e.role='student'
+         JOIN amp_org_roles r ON r.person_id=e.person_id AND r.role='student' AND r.org_id=c.org_id
+         WHERE c.name='Grade 3 Math' GROUP BY 1 ORDER BY 1`,
+      );
+      assert.deepEqual(
+        classes.map((row) => row.students),
+        [2, 2],
+        "each school has its own class with its own two students",
+      );
+      const kinds = await db.query(
+        "SELECT DISTINCT grading_kind FROM amp_classes WHERE name='Grade 3 Math'",
+      );
+      assert.deepEqual(
+        kinds.rows.map((row) => row.grading_kind),
+        ["semester"],
+        "a school grades by the district calendar it inherits",
+      );
+      // The same file again changes nothing at either school.
+      for (const school of [north, south])
+        assert.deepEqual(
+          (
+            await planRoster(schools, school.id, {
+              source: "csv",
+              rows: rows(),
+            })
+          ).map((result) => result.status),
+          ["unchanged", "unchanged"],
+        );
+    } finally {
+      await db.end();
+      await admin.query(`DROP SCHEMA ${schema} CASCADE`);
+      await admin.end();
+    }
   },
 );
