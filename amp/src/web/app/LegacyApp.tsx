@@ -34,6 +34,7 @@ import { useLoggedError, requestMessage } from "../feedback";
 import { Toast } from "../ui/Toast";
 import { AccountSessionChanged } from "../lib/account-session";
 import { loadFrontier } from "../lib/frontier-load";
+import { noteStudentProblem } from "../lib/student-activity";
 import { Navigate } from "@tanstack/react-router";
 import { signedOut as reportSignedOut } from "../lib/app-recovery";
 import { useAppRoute } from "../app-routes";
@@ -928,6 +929,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     setReadingLesson(selected);
   }
   function showProblem(p: HintedProblem) {
+    noteStudentProblem(p.id);
     setProblem(p);
     setResponse("");
     setOutcome(null);

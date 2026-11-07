@@ -46,7 +46,7 @@ type Database = Pick<PoolClient, "query">;
 /** SQL: `row` (a role or enrollment) is active today in the org's timezone. */
 export const activeToday = (row: string, org: string) =>
   `${row}.begin_on<=(now() AT TIME ZONE ${org}.timezone)::date AND (${row}.end_on IS NULL OR ${row}.end_on>(now() AT TIME ZONE ${org}.timezone)::date)`;
-const ACTIVE_STUDENT = `EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
+export const ACTIVE_STUDENT = `EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
   WHERE r.person_id=p.id AND r.role='student' AND ${activeToday("r", "o")})`;
 
 /** The synthetic account for a live token, or null when the token is revoked or
