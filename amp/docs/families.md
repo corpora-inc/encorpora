@@ -20,6 +20,15 @@ One model, from one child to a district. A family uses the same classes, sign-in
 - **An adult learner** is a learner owned by the adult's account, marked adult. It has no birth year: the adult chooses where to start, and always sees their levels.
 - **In their class,** the adult appears as a separate member, apart from the students. The class map and standings can show them, so a child can overtake their parent or teacher. Grades, seats and rosters never count them.
 
+### How adult practice works
+
+- **The learner:** `amp_learners.adult`, one live per account, with no birth year and the adult's own time zone (migration `0093`). It is never among `me.learners` (the family's) or a school's roster; `me.adultPractice` names it.
+- **Consent:** `learningConsentActive(client, account, development, learnerId)` passes for the account's own adult learner; every other learner keeps the account's rules. Routes about one learner ask about that learner.
+- **Access:** one grant per adult learner, channel `pilot`, id `adult:<learner>`. Reading `/me` refreshes it to the latest end among licenses in force where the account teaches (no later than a dated role's last day) and grants of its children; with nothing qualifying it lapses now. An unchanged end writes nothing, and practice writes nothing new (`src/account/adult-access.ts`).
+- **Starting:** `/me/start` asks where to begin; each choice is a starting level on the grade axis (`startingLevels` in `src/learning/starting-point.ts`), then practice is the normal loop.
+- **Home:** `/me` is the student record a teacher reads, from the same rollups and parts (`readProgress`, `school/classes/ProgressRecord.tsx`), with time by day and skill. The adult's answers, level days and active time roll up like a student's.
+- **Places:** "My practice" is a place in the switcher, and `/` returns to it. Practice, lessons, pathways and workbooks are the adult's place while their own learner is the one chosen.
+
 ## An adult on their own
 
 An adult can buy a license for themselves, for example an 18-year-old preparing for the SAT, or a parent brushing up. That's the adult learner above, with no class around it, and it needs no other case:
@@ -53,7 +62,7 @@ A child who signed in with an account of their own is moved by an operator proce
 ## Build order
 
 1. An admin takes a class and teaches it. **Done** in this change.
-2. Adult practice for any adult, and the adult's place in their class.
+2. Adult practice for any adult: **done**. The adult's place in their class map and standings is next.
 3. Families as classes: buying for a child creates or joins the family class, the child gets join sign-in, and a parent can hand their own device to a child.
 4. Converting existing families, and family licenses that include the parent.
 5. Approval links for another family's child.
