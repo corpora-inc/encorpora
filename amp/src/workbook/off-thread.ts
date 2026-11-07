@@ -118,6 +118,9 @@ export function createWorkbookWorker(
     compose: (input: ComposeInput) =>
       run<ReturnType<typeof computeWorkbook.compose>>("compose", input),
     html: (input: HtmlInput) => run<string>("html", input),
+    frontierState: (
+      input: Parameters<typeof computeWorkbook.frontierState>[0],
+    ) => run<string>("frontierState", input),
     /** Loads the worker before traffic, so the first workbook isn't delayed. A
      * worker that can't start only costs that: the next task retries it. */
     async warm() {

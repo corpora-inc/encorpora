@@ -42,6 +42,7 @@ test(
         "0014-birth-year.sql",
         "0055-sat-math-focus.sql",
         "0076-practice-recovery.sql",
+        "0085-learner-frontier-state.sql",
       ])
         await pool.query(
           await readFile(
