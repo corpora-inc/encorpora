@@ -793,6 +793,33 @@ test(
       );
     });
 
+    await t.test("an admin takes a class and teaches it", async () => {
+      const head = await user("head@hazel.example");
+      const { base } = await setUp(head, "Hazel School");
+      const klass = (
+        await post(`${base}/classes`, head, { name: "Hazel 4" })
+      ).json().class.id;
+      const before = (await get(base, head)).json().org;
+      assert.deepEqual(before.teaches, []);
+      const me = (await get(`${base}/staff`, head))
+        .json()
+        .staff.find((s: { email: string }) => s.email === "head@hazel.example");
+      assert.ok(me.roles.includes("admin"));
+      assert.ok(!me.roles.includes("teacher"));
+      const taken = await post(`${base}/staff/${me.id}/classes`, head, {
+        classIds: [klass],
+      });
+      assert.equal(taken.statusCode, 200);
+      assert.deepEqual(taken.json().classIds, [klass]);
+      const after = (await get(base, head)).json().org;
+      assert.deepEqual(after.teaches, [klass]);
+      const row = (await get(`${base}/staff`, head))
+        .json()
+        .staff.find((s: { email: string }) => s.email === "head@hazel.example");
+      assert.ok(row.roles.includes("teacher"));
+      assert.deepEqual(row.classIds, [klass]);
+    });
+
     await t.test("students are edited and moved between classes", async () => {
       const head = await user("head@fir.example");
       const { base } = await setUp(head, "Fir School");

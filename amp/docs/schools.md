@@ -2,6 +2,8 @@
 
 Schools, districts and single teachers use AMP through a roster layer on top of the learner the practice loop already knows. This document is the design every school change follows: what each person gets, the data model, the seams into existing code, and sign-in.
 
+Families use the same model at their own size: see [families, classes and adult learners](families.md).
+
 Build order:
 
 1. Foundation: roster, access, license and settings tables; `can`, `defineSchoolRoute`, `resolveSettings`, event log; the seams; `scripts/school-admin.ts`.
