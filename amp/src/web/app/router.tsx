@@ -786,6 +786,17 @@ const standings = createRoute({
   beforeLoad: () => {
     if (!studentSession()) throw redirect({ to: "/", replace: true });
   },
+  // Which boards this student has is known before the screen paints, so a
+  // class picker is there from the first frame and never pushes the board
+  // down. A failure is the screen's to show.
+  loader: async () => {
+    const { standingsBoardsOptions } =
+      await import("../features/school/classroom/api");
+    const session = await queryClient.ensureQueryData(sessionOptions);
+    await queryClient
+      .ensureQueryData(standingsBoardsOptions(session ?? null))
+      .catch((error) => console.warn("Standings didn’t load ahead", error));
+  },
   component: lazyRouteComponent(
     () => import("../features/school/classroom/StandingsScreen"),
     "StandingsScreen",
