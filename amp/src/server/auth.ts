@@ -1,7 +1,18 @@
 import { createRemoteJWKSet, jwtVerify, type JWTVerifyGetKey } from "jose";
 import type { FastifyRequest } from "fastify";
+import { studentBearer } from "../schools/principal.js";
 import { ApiError } from "./repository";
 export type Authenticator = (request: FastifyRequest) => Promise<string>;
+/** Parent-only routes never answer a student token. Without this, a request
+ * with a parent's session cookie on a shared device would act as the parent. */
+export function refuseStudentTokens(
+  authenticate: Authenticator,
+): Authenticator {
+  return async (request) => {
+    if (studentBearer(request)) throw new ApiError(401, "Sign in to continue");
+    return authenticate(request);
+  };
+}
 export type AccessTokenProfile = "rfc9068" | "token-use-access";
 export interface AccessTokenConfig {
   issuer: string;

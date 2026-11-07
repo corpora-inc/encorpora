@@ -302,6 +302,16 @@ def test_aggregate_rejects_failures_cancellations_and_accidentally_skipped_jobs(
     assert (result.returncode == 0) == passes, result.stderr
 
 
+@pytest.mark.parametrize('path', [
+    'amp/src/schools/authz.ts',
+    'amp/src/server/account-access.ts',
+])
+def test_schools_keep_database_authorization_checks_in_feature_prs(path):
+    result = plan([path], quick=True)
+    assert 'tests/schools.integration.ts' in result['database']
+    assert len(result['database']) < len(catalog(ROOT)['database'])
+
+
 def test_access_gifts_keep_database_authorization_checks_in_feature_prs():
     result = plan(['amp/src/access-grants/repository.ts'], quick=True)
     assert 'tests/access-grants.integration.ts' in result['database']

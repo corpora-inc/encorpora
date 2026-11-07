@@ -35,6 +35,8 @@ PROTECTED_DATABASE = {
     'amp/src/funding/': ('funding-invoice', 'funding-purchase'),
     'amp/src/funding-purchase/': ('funding-purchase',),
     'amp/src/commerce/': ('commerce',),
+    'amp/src/schools/': ('schools',),
+    'amp/src/server/account-access.ts': ('schools',),
 }
 
 

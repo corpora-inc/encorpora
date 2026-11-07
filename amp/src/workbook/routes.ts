@@ -4,6 +4,7 @@ import { z } from "zod";
 import { skills } from "../curriculum/catalog.js";
 import { lessons } from "../content/lessons.js";
 import { templates } from "../math/engine.js";
+import { isSchoolAccount } from "../schools/principal.js";
 import type { Authenticator } from "../server/auth.js";
 import {
   ApiError,
@@ -400,6 +401,8 @@ export function registerWorkbookRoutes(
     async (request, reply) => {
       const { accountId, trial } = await account(request);
       parentOnly(trial);
+      if (isSchoolAccount(accountId))
+        throw new ApiError(403, "Your teacher marks paper workbooks.");
       const { learnerId, workbookId } = workbookParams.parse(request.params);
       const { entries } = z
         .object({

@@ -10,6 +10,7 @@ import { UserManager, WebStorageStateStore, type User } from "oidc-client-ts";
 import { accountClient } from "./account-client";
 import { AppError } from "./lib/AppError";
 import { measureAuth } from "./lib/auth-measurement";
+import { clearStudentDevice, studentSession } from "./lib/student-device";
 const authority = import.meta.env.VITE_AMP_AUTHORITY as string | undefined;
 const clientId = import.meta.env.VITE_AMP_CLIENT_ID as string | undefined;
 const manager =
@@ -75,6 +76,10 @@ function session(user: User): AuthSession {
 }
 export async function accessSession(): Promise<AuthSession | null> {
   if (nativeRuntime) return nativeSession();
+  // A student on a device with a parent session stays the student until they
+  // sign out.
+  const student = studentSession();
+  if (student) return student;
   if ((await authConfig()).mode === "accounts") {
     // AMP's own accounts: the session token doubles as the API bearer token.
     const { data, error } = await accountClient.getSession({
@@ -126,6 +131,12 @@ export async function signIn(intent?: "create") {
 }
 export async function signOut() {
   if (nativeRuntime) return nativeSignOut();
+  if (studentSession()) {
+    clearStudentDevice();
+    notifyAccountSessionChanged();
+    location.assign("/join");
+    return;
+  }
   if ((await authConfig()).mode === "accounts") {
     const result = await accountClient.signOut();
     if (result.error)

@@ -195,7 +195,12 @@ type AnalyticsWindow = Window &
  * `home` reports what `/` shows now; without it `/` counts as the pitch.
  */
 export function createGoogleAnalytics(
-  options: { home?: () => HomeScreen } = {},
+  options: {
+    home?: () => HomeScreen;
+    /** A school student's device: nothing is collected, and a document that
+     * started as a parent's stays disabled afterwards. */
+    blocked?: () => boolean;
+  } = {},
 ) {
   const w = window as AnalyticsWindow;
   let loaded = false;
@@ -205,6 +210,7 @@ export function createGoogleAnalytics(
   let signup: GaSignupContext | undefined;
   const identity = browserIdentity();
   const permitted = () =>
+    !options.blocked?.() &&
     navigator.doNotTrack !== "1" &&
     !(navigator as Navigator & { globalPrivacyControl?: boolean })
       .globalPrivacyControl &&

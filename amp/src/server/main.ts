@@ -32,6 +32,7 @@ import {
   registerClassWalletPayByRoutes,
 } from "../funding-purchase/classwallet-payby.js";
 import { registerFamilyRoutes } from "../family/routes.js";
+import { registerSchoolRoutes } from "../schools/routes.js";
 import { stripeConfig, stripeNamespace } from "../billing/stripe/config.js";
 import {
   registerStripeRoutes,
@@ -39,7 +40,7 @@ import {
 } from "../billing/stripe/routes.js";
 import { buildApp } from "./app";
 import { workbookRendererFromEnv } from "../workbook/pdf.js";
-import { developmentAuth, oidcAuth } from "./auth";
+import { developmentAuth, oidcAuth, refuseStudentTokens } from "./auth";
 import {
   accountsAuth,
   accountsConfiguration,
@@ -88,19 +89,21 @@ const accounts =
   authMode === "accounts"
     ? await createAccounts(repository.pool, accountsConfiguration(process.env))
     : null;
-const authenticateIdentity = development
-  ? developmentAuth()
-  : accounts
-    ? accountsAuth(accounts)
-    : oidcAuth({
-        issuer: required("AMP_OIDC_ISSUER"),
-        audience: required("AMP_OIDC_AUDIENCE"),
-        jwksUrl: required("AMP_OIDC_JWKS_URL"),
-        accessTokenProfile:
-          process.env.AMP_OIDC_TOKEN_PROFILE === "token-use-access"
-            ? "token-use-access"
-            : "rfc9068",
-      });
+const authenticateIdentity = refuseStudentTokens(
+  development
+    ? developmentAuth()
+    : accounts
+      ? accountsAuth(accounts)
+      : oidcAuth({
+          issuer: required("AMP_OIDC_ISSUER"),
+          audience: required("AMP_OIDC_AUDIENCE"),
+          jwksUrl: required("AMP_OIDC_JWKS_URL"),
+          accessTokenProfile:
+            process.env.AMP_OIDC_TOKEN_PROFILE === "token-use-access"
+              ? "token-use-access"
+              : "rfc9068",
+        }),
+);
 const authenticate = withAdvertisingPrivacySignals(
   repository.pool,
   authenticateIdentity,
@@ -152,6 +155,7 @@ await registerFamilyRoutes(app, {
   development,
   billingNamespace: billingConfig ? stripeNamespace(billingConfig) : null,
 });
+await registerSchoolRoutes(app, { pool: repository.pool, authenticate });
 const fundingOffers = await loadFundingOffers(
   process.env.AMP_FUNDING_OFFERS_FILE,
 );

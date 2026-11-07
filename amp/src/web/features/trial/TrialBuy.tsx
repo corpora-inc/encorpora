@@ -25,9 +25,11 @@ function useTrialBuy() {
     ...meOptions(session.data ?? { accountId: "", token: "" }),
     enabled: !!session.data,
   });
+  // A school student has nothing to buy, with or without a seat.
   const purchased =
     me.data?.signedIn &&
-    me.data.learners.some((learner) => learner.entitlement.active);
+    (me.data.account.kind === "student" ||
+      me.data.learners.some((learner) => learner.entitlement.active));
   const available =
     !!(data.program && data.fundedOffer) || !!data.offers.length;
   return session.data && !purchased && available ? { data, search } : null;

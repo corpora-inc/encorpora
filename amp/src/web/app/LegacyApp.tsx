@@ -35,6 +35,7 @@ import { Toast } from "../ui/Toast";
 import { AccountSessionChanged } from "../lib/account-session";
 import { loadFrontier } from "../lib/frontier-load";
 import { Navigate } from "@tanstack/react-router";
+import { signedOut as reportSignedOut } from "../lib/app-recovery";
 import { useAppRoute } from "../app-routes";
 import { Select } from "../PremiumControls";
 import { PrintMathText, printMathStyles } from "../../content/PrintMathText";
@@ -197,19 +198,22 @@ export function LegacyApp() {
 function LegacyScreen({ session }: { session: AuthSession | null }) {
   const route = useAppRoute();
   const { navigate } = route;
+  // A school student's account id says so from the first render, before `/me`
+  // answers with `account.kind`, so no family or purchase screen ever mounts.
+  const student = session?.accountId.startsWith("school:") === true;
   const [familyMenuOpen, setFamilyMenuOpen] = useState(false);
   const familyMenuTrigger = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     setFamilyMenuOpen(false);
   }, [route.location.pathname]);
-  const familyOpen = route.familyOpen;
+  const familyOpen = route.familyOpen && !student;
   const setFamilyOpen = (open: boolean) =>
     navigate(open ? "/family/learners" : "/");
-  const consentOpen = route.consentOpen;
+  const consentOpen = route.consentOpen && !student;
   const setConsentOpen = (open: boolean) => {
     if (open) navigate("/consent");
   };
-  const purchaseView = route.purchaseView;
+  const purchaseView = student ? null : route.purchaseView;
   const setPurchaseView = (view: "choose" | "annual" | "funded" | null) => {
     if (view) navigate(`/purchase/${view}`);
   };
@@ -280,7 +284,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     }
   }, [accountId, learner?.id, route.location.pathname, route.location.search]);
 
-  const changingBirthYear = route.location.pathname === "/profile/birth-year";
+  // A school student's level starts from their grade, so there is no prompt.
+  const birthYearKnown = learner?.birthYear != null || student;
+  const changingBirthYear =
+    !student && route.location.pathname === "/profile/birth-year";
   const setChangingBirthYear = (open: boolean) =>
     navigate(open ? "/profile/birth-year" : "/");
   // "Try free" lives at /try (features/trial); a stored trial is adopted
@@ -316,6 +323,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   const learningAllowed =
     familySummary?.consent.status === "active" ||
     familySummary?.consent.status === "development";
+  // A student without a seat, or whose school's agreement ended, can't practice
+  // and can't buy: only their teacher can change that.
+  const studentWaiting =
+    student &&
+    familySummary?.learners.find((entry) => entry.id === learner?.id)
+      ?.canPractice === false;
   const [family, setFamily] = useState(""),
     [problem, setProblem] = useState<HintedProblem | null>(null),
     [queue, setQueue] = useState<HintedProblem[]>([]),
@@ -514,6 +527,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     const result = await learningRequest(path, tokenRef.current, body);
     const data = await result.json();
     if (epoch !== authEpoch.current) throw new AccountSessionChanged();
+    if (result.status === 401 && student) reportSignedOut();
     if (!result.ok)
       throw new HttpError(
         result.status,
@@ -777,7 +791,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     if (
       route.parts[0] === "practice" &&
       !!catalog &&
-      learner?.birthYear != null &&
+      !!learner &&
+      birthYearKnown &&
+      !studentWaiting &&
       !problem &&
       !busy &&
       !error &&
@@ -964,7 +980,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       (entry) => entry.id === learner.id,
     )?.canPractice;
     if (capability === false) {
-      navigate("/purchase/choose", { replace: true });
+      if (!student) navigate("/purchase/choose", { replace: true });
       return;
     }
     upcoming.current = null;
@@ -984,14 +1000,17 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       }
     }
     const data = await requestBatch(templateId, recoveryStrand).catch(
-      (error) => {
+      async (error) => {
         // No license yet: go to purchase rather than show an error.
         if (
           error instanceof HttpError &&
           error.status === 403 &&
           /license/i.test(error.message)
         ) {
-          navigate("/purchase/choose", { replace: true });
+          // A seat ended mid-session: `/me` now says so, and the student sees
+          // to ask their teacher.
+          if (student) await loadFamily();
+          else navigate("/purchase/choose", { replace: true });
           return null;
         }
         return navigationFailure(navigation, learner.id, error);
@@ -1265,11 +1284,14 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     route.parts[0] === "practice" &&
     !problem &&
     !!learner &&
-    learner.birthYear != null &&
+    birthYearKnown &&
+    !studentWaiting &&
     learningAllowed &&
     !changingBirthYear &&
     !error &&
     !loadFailed;
+  if (student && (route.familyOpen || route.purchaseView || route.consentOpen))
+    return <Navigate to="/" replace />;
   if (
     firstRunHome ||
     leavingHome.current ||
@@ -1575,6 +1597,11 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             Manage account
           </button>
         </section>
+      ) : studentWaiting ? (
+        <section className="card welcome">
+          <h2>Ask your teacher about your seat.</h2>
+          <p>Practice opens here as soon as your teacher has one for you.</p>
+        </section>
       ) : !learningAllowed ? (
         <section className="card welcome">
           <p className="eyebrow">PARENT ACCOUNT</p>
@@ -1659,6 +1686,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                       busy={busy || !!pending}
                       apply={adjustPractice}
                       close={close}
+                      canReset={!student}
                     />
                   )}
                 />
@@ -1794,7 +1822,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
               });
             }}
           />
-        ) : (learner.birthYear != null || problem) && !changingBirthYear ? (
+        ) : (birthYearKnown || problem) && !changingBirthYear ? (
           <Home
             key={learner.id}
             navigation={!nativeRuntime && <ProgressViews active="level" />}
@@ -1807,7 +1835,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             go={() =>
               problem ? setExploring(false) : void action(() => loadBatch(""))
             }
-            changeBirthYear={() => setChangingBirthYear(true)}
+            changeBirthYear={
+              student ? undefined : () => setChangingBirthYear(true)
+            }
           />
         ) : (
           <BirthYearPrompt

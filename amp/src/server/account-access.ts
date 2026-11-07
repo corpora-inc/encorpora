@@ -3,6 +3,7 @@ import {
   EMAIL_PLUS_METHOD,
   isEmailPlusMethod,
 } from "../parent-consent/contracts.js";
+import { isSchoolAccount, schoolConsentActive } from "../schools/principal.js";
 /** All learning writers take this lock before a learner lock. Privacy mutations
  * take its exclusive counterpart, then lock learners in sorted ID order. */
 export async function lockLearningAccount(
@@ -41,6 +42,7 @@ export async function learningConsentActive(
   // A parent owns the trial for cross-device resume; adopting its answers
   // into a named family learner requires the regular consent checks.
   if (accountId.startsWith("trial:")) return true;
+  if (isSchoolAccount(accountId)) return schoolConsentActive(client, accountId);
   const result = await client.query(
     "SELECT withdrawn_at,verification_method,evidence_reference FROM amp_parent_consents WHERE account_id=$1",
     [accountId],

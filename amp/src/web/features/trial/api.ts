@@ -22,6 +22,7 @@ import {
   trialKey,
 } from "../../lib/pending-trial";
 import { learningCatalog } from "../../learning-transport";
+import { isStudentDevice } from "../../lib/student-device";
 import { answerProgressSchema } from "../practice/answer-progress";
 import type { ProblemLessonView } from "../../../content/problem-lessons";
 import type { TrialCatalog } from "./types";
@@ -147,6 +148,8 @@ export type TrialSession = {
 export const trialSessionOptions = queryOptions({
   queryKey: ["trial", "session"],
   queryFn: async ({ signal }): Promise<TrialSession | null> => {
+    // This runs at the root; a student has no trial and can't ask about one.
+    if (isStudentDevice()) return null;
     const token = storedTrial();
     if ((await authConfig()).mode !== "development") {
       const parent = await accessSession();

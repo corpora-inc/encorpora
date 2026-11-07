@@ -1,6 +1,7 @@
 import { createContext, useContext, type ReactNode } from "react";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
+import { isStudentDevice } from "../../lib/student-device";
 import { useCurriculumScope } from "./useCurriculumScope";
 import styles from "./CurriculumDetails.module.css";
 import { CheckboxControl } from "../../ui/Checkbox";
@@ -63,6 +64,8 @@ const Details = createContext({
   shown: false,
   ready: false,
   scope: "guest",
+  /** A school decided, so there is nothing for this learner to choose. */
+  decided: false,
   setShown: (_shown: boolean) => {},
 });
 /** Display only: scoped to the active learner on this device, never a learning setting. */
@@ -71,16 +74,23 @@ export function CurriculumDetailsProvider({
 }: {
   children: ReactNode;
 }) {
-  const { scope, ready } = useCurriculumScope();
+  // A student's school decides whether levels show (`me.school.levels`). Until
+  // `/me` answers on a student device, they stay hidden.
+  const {
+    scope,
+    ready,
+    levels = isStudentDevice() ? "hidden" : "choice",
+  } = useCurriculumScope();
   const shown = useCurriculumPreferences(
     (s) => ready && s.shown[scope] === true,
   );
   return (
     <Details.Provider
       value={{
-        shown,
+        shown: levels === "choice" ? shown : levels === "shown",
         ready,
         scope,
+        decided: levels !== "choice",
         setShown: (value) => {
           if (ready) useCurriculumPreferences.getState().set(scope, value);
         },
@@ -96,7 +106,8 @@ export const useCurriculumDetails = () => useContext(Details);
 export function CurriculumDetailsControl({
   variant,
 }: { variant?: "row" } = {}) {
-  const { shown, ready, setShown } = useCurriculumDetails();
+  const { shown, ready, decided, setShown } = useCurriculumDetails();
+  if (decided) return null;
   return (
     <label
       className={

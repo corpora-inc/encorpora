@@ -46,6 +46,7 @@ import type { Authenticator } from "./auth";
 import { planMixedPractice } from "./mixed-practice";
 import { SKIP_USES_FREE_PROBLEM } from "../learning/skip";
 import { isTrialAccount, trialLimits } from "./trials";
+import { isSchoolAccount, studentBearer } from "../schools/principal.js";
 import {
   hasProblemLesson,
   lessonGlossaryContext,
@@ -246,6 +247,12 @@ function routes(app: FastifyInstance, options: AppOptions) {
   // consent and export routes are registered with the parent authenticator
   // alone, so a trial token can never reach them.
   async function learningAccount(request: Parameters<Authenticator>[0]) {
+    const student = studentBearer(request);
+    if (student) {
+      const account = await options.repository.studentAccount?.(student);
+      if (!account) throw new ApiError(401, "Sign in to continue");
+      return account;
+    }
     const trial = request.headers.authorization?.match(
       /^Trial ([A-Za-z0-9_-]{20,100})$/,
     )?.[1];
@@ -262,8 +269,20 @@ function routes(app: FastifyInstance, options: AppOptions) {
     if (!options.development && !(await options.repository.hasConsent(account)))
       throw new ApiError(
         403,
-        "Verified parent consent is required. Open Family → Privacy → Learning consent to review enrollment.",
+        isSchoolAccount(account)
+          ? "Ask your teacher about your access."
+          : "Verified parent consent is required. Open Family → Privacy → Learning consent to review enrollment.",
       );
+    return account;
+  }
+  /** A school decides these for its students, so a student token can't. */
+  function assertFamilyManaged(account: string) {
+    if (isSchoolAccount(account))
+      throw new ApiError(403, "Your school manages this.");
+  }
+  async function familyManaged(request: Parameters<Authenticator>[0]) {
+    const account = await parent(request);
+    assertFamilyManaged(account);
     return account;
   }
   // `commit` and `builtAt` name the running release (null in a local build).
@@ -309,7 +328,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
     learners: await options.repository.list(await parent(request)),
   }));
   app.post("/api/v1/learners", async (request, reply) => {
-    const account = await parent(request);
+    const account = await familyManaged(request);
     if (isTrialAccount(account))
       throw new ApiError(403, "Create an account to add learners");
     const { name, birthYear } = z
@@ -367,7 +386,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
     });
   });
   app.post("/api/v1/learners/:learnerId/starting-point", async (request) => {
-    const account = await parent(request);
+    const account = await familyManaged(request);
     const { learnerId } = paramsSchema.parse(request.params);
     const { band } = z
       .object({ band: z.enum(startingBands) })
@@ -441,12 +460,13 @@ function routes(app: FastifyInstance, options: AppOptions) {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
     const change = practiceChangeSchema.parse(request.body);
+    if (change.kind === "reset") assertFamilyManaged(account);
     return options.repository.transaction(account, learnerId, (tx) =>
       changePractice(tx, change),
     );
   });
   app.post("/api/v1/learners/:learnerId/birth-year", async (request) => {
-    const account = await parent(request);
+    const account = await familyManaged(request);
     const { learnerId } = paramsSchema.parse(request.params);
     const { birthYear } = z
       .object({ birthYear: birthYearSchema })

@@ -18,12 +18,15 @@ export function PracticeControls({
   apply,
   busy,
   close,
+  canReset = true,
 }: {
   scope: PracticeScope;
   problemId?: string;
   apply: (change: PracticeIntent) => Promise<void>;
   busy: boolean;
   close?: () => void;
+  /** False for a school student, whose school manages the practice level. */
+  canReset?: boolean;
 }) {
   const state = useQuery(practiceSettingsOptions(scope));
   const [confirm, setConfirm] = useState(false);
@@ -96,21 +99,23 @@ export function PracticeControls({
           Return to mixed practice
         </button>
       )}
-      <button
-        type="button"
-        className={settings.action}
-        disabled={disabled}
-        onClick={() => {
-          setError("");
-          setConfirm(true);
-        }}
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3L4 9.4" />
-          <path d="M4 4.5v4.9h4.9" />
-        </svg>
-        Reset practice level
-      </button>
+      {canReset && (
+        <button
+          type="button"
+          className={settings.action}
+          disabled={disabled}
+          onClick={() => {
+            setError("");
+            setConfirm(true);
+          }}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3L4 9.4" />
+            <path d="M4 4.5v4.9h4.9" />
+          </svg>
+          Reset practice level
+        </button>
+      )}
       {!confirm && error && (
         <p className={settings.error} role="alert">
           {error}
