@@ -4,7 +4,7 @@
 
 ## Why
 
-AMP sells at $499 a year, and premium means good foundations, not styling over a prototype. Today the web app is about 11k lines in one flat `src/web/` folder (61 files). `main.tsx` alone is 1,560 lines and works as a single-URL state machine. It has no router, no server-data cache and no component kit; every screen calls `fetch` itself and keeps its own copy of shared data.
+AMP sells at $599 a year, and premium means good foundations, not styling over a prototype. Today the web app is about 11k lines in one flat `src/web/` folder (61 files). `main.tsx` alone is 1,560 lines and works as a single-URL state machine. It has no router, no server-data cache and no component kit; every screen calls `fetch` itself and keeps its own copy of shared data.
 
 The failures that follow from this, as seen on stage:
 - No URLs, so Back, refresh and shared links don't work.

@@ -28,7 +28,7 @@ export const RISK_FREE_SHORT = "Risk‑free for 30 days";
 export const GUARANTEE_FOOTNOTE =
   "*Refunds go back the way you paid: to your card, or to your child’s education‑fund account. A few education programs don’t allow refunds; if yours is one, we’ll tell you before you pay.";
 
-/** Whole dollars read "$499"; an amount with cents keeps them ("$49.50"). */
+/** Whole dollars read "$599"; an amount with cents keeps them ("$49.50"). */
 export function formatPrice(minor: number) {
   return minor % 100 === 0
     ? new Intl.NumberFormat("en-US", {
@@ -41,7 +41,7 @@ export function formatPrice(minor: number) {
 }
 
 /** The annual price per day, rounded up to the next 10 cents, so "under" is
- * always true: $499 a year is $1.367 a day, written "under $1.40". */
+ * always true: $599 a year is $1.641 a day, written "under $1.70". */
 export function underPerDay(annualMinor: number) {
   return formatUsd((Math.floor(annualMinor / 365 / 10) + 1) * 10);
 }
@@ -129,7 +129,7 @@ export function BuyOptions({
   const interval = chosen ?? own;
   const choose = onInterval ?? setOwn;
   const { program, fundedOffer, offers } = data;
-  // Whole-dollar plans read "$499", like the saving badge.
+  // Whole-dollar plans read "$599", like the saving badge.
   const plans = offers.map((entry) => ({
     ...entry,
     formattedAmount: formatPrice(entry.amountMinor),

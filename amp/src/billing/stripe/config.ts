@@ -1,11 +1,14 @@
 import type { DocumentProfile } from "../evidence/contracts.js";
 import { parseDocumentProfile } from "../evidence/profile.js";
+import { retiredPrices, type RetiredPrice } from "./retired-prices.js";
 /** No billing defaults: every merchant, catalog and redirect boundary is explicit. */
 export interface StripeBillingConfig {
   documentProfile?: DocumentProfile;
   monthlyDocumentProfile?: DocumentProfile;
   monthlyPriceId?: string;
   monthlyAmountMinor?: number;
+  /** Prices no longer sold whose subscriptions still renew (retired-prices.ts). */
+  retiredPrices?: readonly RetiredPrice[];
   secretKey: string;
   webhookSecret: string;
   accountId: string;
@@ -114,6 +117,13 @@ export function stripeConfig(
     )
       throw new Error("Invalid Stripe monthly price configuration");
   }
+  // A retired price that is also a current one is simply current.
+  config.retiredPrices = retiredPrices.filter(
+    (retired) =>
+      retired.livemode === config.livemode &&
+      retired.priceId !== config.priceId &&
+      retired.priceId !== config.monthlyPriceId,
+  );
   if (config.monthlyPriceId && !env.AMP_PAYMENT_MONTHLY_DOCUMENT_PROFILE)
     throw new Error(
       "Monthly billing requires AMP_PAYMENT_MONTHLY_DOCUMENT_PROFILE",
@@ -152,5 +162,47 @@ export function planConfig(
     priceId: config.monthlyPriceId,
     amountMinor: config.monthlyAmountMinor!,
     documentProfile: config.monthlyDocumentProfile,
+  };
+}
+
+/**
+ * The plan that a Stripe price id belongs to: the price being sold, or a
+ * retired price that existing subscriptions still renew on. A retired plan
+ * keeps its own price and amount; its document profile is the current one with
+ * that price and amount, so renewal review still notices any other change.
+ * Returns undefined for any other id.
+ */
+export function planForPrice(
+  config: StripeBillingConfig,
+  priceId: string | undefined,
+  interval?: BillingInterval,
+): { interval: BillingInterval; plan: StripeBillingConfig } | undefined {
+  if (!priceId) return undefined;
+  for (const candidate of ["year", "month"] as const) {
+    if (interval && candidate !== interval) continue;
+    if (candidate === "month" && !config.monthlyPriceId) continue;
+    const current = planConfig(config, candidate);
+    if (current.priceId === priceId)
+      return { interval: candidate, plan: current };
+  }
+  const retired = config.retiredPrices?.find(
+    (entry) =>
+      entry.priceId === priceId && (!interval || entry.interval === interval),
+  );
+  if (!retired || (retired.interval === "month" && !config.monthlyPriceId))
+    return undefined;
+  const base = planConfig(config, retired.interval);
+  return {
+    interval: retired.interval,
+    plan: {
+      ...base,
+      priceId: retired.priceId,
+      amountMinor: retired.amountMinor,
+      documentProfile: base.documentProfile && {
+        ...base.documentProfile,
+        priceId: retired.priceId,
+        unitAmountMinor: retired.amountMinor,
+      },
+    },
   };
 }
