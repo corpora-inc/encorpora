@@ -576,12 +576,16 @@ async function loneTeacher(
   await page.getByLabel(/Student names/).fill("Ana Ruiz\nNoor Haddad\nCher");
   await shot(page, "setup-5-names", width, theme);
   await page.getByRole("button", { name: "Add 3 students" }).click();
-  await page.waitForURL(/\/classes\/[0-9a-f-]{36}$/);
+  // A new class opens on Today, with the next step that works.
+  await page.waitForURL(/\/classes\/[0-9a-f-]{36}\/today$/);
+  await page.getByRole("link", { name: "Start class" }).first().waitFor();
+  await pause(page);
+  await shot(page, "class-landing", width, theme);
+  // Adding one more, from the class's settings.
+  await page.goto(page.url().replace(/\/today$/, "/settings"));
   await page.getByRole("heading", { name: "My class", level: 1 }).waitFor();
   await page.getByText("Noor Haddad").waitFor();
   await pause(page);
-  await shot(page, "class-landing", width, theme);
-  // Adding one more, from where the class is.
   await page.getByRole("button", { name: "Add student" }).click();
   const addSheet = page.getByRole("dialog");
   await addSheet.getByLabel("First name").fill("Mei");
@@ -807,7 +811,11 @@ async function sweep(
   ] as const;
   const screens: [string, string, string | RegExp][] = [
     ["classes", `/school/${orgId}/classes`, "Classes"],
-    ["class", `/school/${orgId}/classes/${classes.classId}`, "Grade 5 Math"],
+    [
+      "class",
+      `/school/${orgId}/classes/${classes.classId}/settings`,
+      "Grade 5 Math",
+    ],
     ["students", `/school/${orgId}/students`, "Students"],
     ["staff", `/school/${orgId}/staff`, "Staff"],
     ["help", `/school/${orgId}/sign-in-help`, "Sign-in help for IT"],

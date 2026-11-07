@@ -1,0 +1,168 @@
+/* A report card is a sheet of paper: its own page, one to a printed letter, and
+   the same proportions on a screen. */
+.page {
+  min-height: 100dvh;
+  padding: var(--space-5) var(--space-4) var(--space-8);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface);
+  font-size: var(--text-dense);
+  line-height: 1.45;
+}
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4) var(--space-5);
+  max-width: 720px;
+  margin: 0 auto var(--space-5);
+}
+.toolbarText p {
+  margin-top: var(--space-1);
+  color: var(--color-muted-text);
+}
+.toolbarActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.lost {
+  max-width: 720px;
+  margin: var(--space-8) auto;
+}
+.cards {
+  display: grid;
+  gap: var(--space-5);
+  justify-content: center;
+  grid-template-columns: minmax(0, 720px);
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: clamp(var(--space-5), 6vw, 56px);
+  border-radius: var(--radius-small);
+  background: var(--color-print-paper);
+  color: var(--color-print-ink);
+  box-shadow: var(--shadow-overlay);
+}
+.cardHead {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+  padding-bottom: var(--space-4);
+  border-bottom: 2px solid var(--color-print-ink);
+}
+.school {
+  font-family: var(--font-display);
+  font-size: var(--text-heading-2);
+  line-height: 1.2;
+}
+.kind {
+  margin-top: 2px;
+  font-size: var(--text-table);
+}
+.term {
+  font-size: var(--text-table);
+}
+@media (min-width: 560px) {
+  .term {
+    text-align: end;
+  }
+}
+.term p:first-child {
+  font-weight: 600;
+}
+h2.name {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 7vw, var(--text-heading-1));
+  line-height: 1.15;
+}
+.people,
+.facts {
+  display: grid;
+  gap: var(--space-3) var(--space-5);
+}
+.people {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+.people dt,
+.facts dt {
+  margin-bottom: 2px;
+  font-size: var(--text-table-small);
+}
+.people dd {
+  font-weight: 600;
+}
+.grade {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: var(--space-4);
+  border-block: 1px solid var(--color-print-rule);
+}
+.gradeLabel {
+  font-size: var(--text-heading-3);
+  font-weight: 600;
+}
+.gradeValue {
+  font-family: var(--font-display);
+  font-size: 56px;
+  line-height: 1;
+  font-variant-numeric: var(--numeric);
+}
+.gradeBlank {
+  font-size: var(--text-table);
+}
+.facts {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+.facts dd {
+  font-size: var(--text-figure);
+  font-weight: 600;
+  font-variant-numeric: var(--numeric);
+  line-height: 1.2;
+}
+.note {
+  margin-top: auto;
+  font-size: var(--text-table-small);
+}
+@media print {
+  /* The same page as the printable sign-in cards: `@page` is global, and both
+     load together. A card's own padding makes up the rest of its margin. */
+  @page {
+    size: letter;
+    margin: 0.5in;
+  }
+  html,
+  body,
+  .page {
+    min-height: 0;
+    padding: 0;
+    background: var(--color-print-paper);
+    color: var(--color-print-ink);
+    print-color-adjust: exact;
+  }
+  .toolbar {
+    display: none;
+  }
+  .cards {
+    display: block;
+  }
+  .term {
+    text-align: end;
+  }
+  .card {
+    box-sizing: border-box;
+    min-height: 9.9in;
+    padding: 0.25in;
+    border-radius: 0;
+    box-shadow: none;
+    break-after: page;
+  }
+  .card:last-child {
+    break-after: auto;
+  }
+}

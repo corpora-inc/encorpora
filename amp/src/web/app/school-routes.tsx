@@ -100,6 +100,10 @@ export function schoolRoutes(root: AnyRoute) {
       () => import("../features/school/StudentsScreen"),
       "StudentsScreen",
     ),
+    student: screen(
+      () => import("../features/school/classes/StudentScreen"),
+      "StudentScreen",
+    ),
     staff: screen(
       () => import("../features/school/StaffScreen"),
       "StaffScreen",
@@ -218,6 +222,7 @@ export function schoolRoutes(root: AnyRoute) {
     }),
     orgScreen("/classes", screens.classes),
     orgScreen("/students", screens.students),
+    orgScreen("/students/$student", screens.student),
     orgScreen("/staff", screens.staff, (session, orgId) => [
       preload(staffOptions(session, orgId)),
     ]),

@@ -100,12 +100,17 @@ export function OrgFrame({
   nav,
   title,
   crumbs = [],
+  tabs,
+  activeTab,
   children,
 }: {
   orgId: string;
   nav: NavId;
   title: string;
   crumbs?: readonly SchoolCrumb[];
+  /** A class's screens, under the breadcrumb. */
+  tabs?: readonly TabItem[];
+  activeTab?: string;
   children: ReactNode;
 }) {
   const session = currentSession();
@@ -206,7 +211,17 @@ export function OrgFrame({
         { label: org.data.name, path: orgPath(orgId, "classes") },
         ...(crumbs.length ? crumbs : [{ label: title }]),
       ]}
-      {...(lone ? { tabs: loneTabs, activeTab: nav } : {})}
+      {...(lone
+        ? tabs
+          ? {
+              tabs: [
+                ...tabs,
+                ...schoolItems.filter((item) => item.id !== "staff"),
+              ],
+              activeTab,
+            }
+          : { tabs: loneTabs, activeTab: nav }
+        : { tabs, activeTab })}
       account={<AccountMenu />}
     >
       {children}

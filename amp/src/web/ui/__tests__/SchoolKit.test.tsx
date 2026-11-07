@@ -10,12 +10,9 @@ import {
 import { useState } from "react";
 import { afterEach, beforeAll, describe, expect, test } from "vitest";
 import {
-  closedFinal,
-  students,
-  studentById,
-  suggestionFor,
-} from "../../features/school/preview/fixture";
-import { readSearch } from "../../features/school/preview/search";
+  parseSort,
+  uuidOr,
+} from "../../features/school/classes/teacher-shared";
 import { avatarHue, initials } from "../Avatar";
 import { DataGrid } from "../DataGrid";
 import { Stepper } from "../Stepper";
@@ -33,7 +30,7 @@ afterEach(cleanup);
 describe("Avatar", () => {
   test("a name always gets the same hue, in range", () => {
     expect(avatarHue("Amara Osei")).toBe(avatarHue("  amara osei "));
-    for (const { name } of students) {
+    for (const name of ["Amara Osei", "Noor Haddad", "Cher", "Mei Tran"]) {
       expect(avatarHue(name)).toBeGreaterThanOrEqual(0);
       expect(avatarHue(name)).toBeLessThan(8);
     }
@@ -167,31 +164,18 @@ describe("DataGrid", () => {
   });
 });
 
-describe("The preview's data", () => {
-  test("a suggestion reads as the design's example", () => {
-    const amara = studentById("amara-osei")!;
-    expect(suggestionFor(amara, 60, "q2")).toMatchObject({
-      letters: "B to A−",
-      percent: "84–91",
-    });
-  });
-  test("too little work suggests nothing, never a low grade", () => {
-    const elias = studentById("elias-frost")!;
-    expect(suggestionFor(elias, 60, "q2")).toBeNull();
-    expect(closedFinal(elias)).toBe("");
-  });
+describe("A class screen's address", () => {
   test("a malformed shared link recovers", () => {
-    expect(
-      readSearch({ term: "x", student: "nobody", sort: "x", lens: "y", q: 7 }),
-    ).toEqual({
-      lone: false,
-      term: "q2",
-      student: undefined,
-      lesson: undefined,
-      lens: "overall",
-      q: "",
-      sort: undefined,
+    expect(parseSort("x")).toBeUndefined();
+    expect(parseSort(7)).toBeUndefined();
+    expect(parseSort("name:sideways")).toBeUndefined();
+    expect(parseSort("name:descending")).toEqual({
+      column: "name",
+      direction: "descending",
     });
-    expect(readSearch({ q: "z".repeat(500) }).q).toHaveLength(80);
+    expect(uuidOr("nobody")).toBeUndefined();
+    expect(uuidOr(7)).toBeUndefined();
+    const id = "6f1c3a52-7f7e-4c55-9a55-2f0a3c1d9e10";
+    expect(uuidOr(id)).toBe(id);
   });
 });

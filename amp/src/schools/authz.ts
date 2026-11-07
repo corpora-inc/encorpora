@@ -94,12 +94,14 @@ const VIEWER = new Set<SchoolAction>([
   "staff.read",
   "license.read",
   "signin.read",
+  "grades.read",
   "workbooks.read",
 ]);
 const AIDE_CLASS = new Set<SchoolAction>([
   "classes.read",
   "students.read",
   "signin.read",
+  "grades.read",
   "settings.read",
   "workbooks.read",
   "workbooks.write",
@@ -110,6 +112,7 @@ const TEACHER_CLASS = new Set<SchoolAction>([
   "classes.update",
   "students.update",
   "signin.manage",
+  "grades.write",
   "settings.write",
 ]);
 const SELF = new Set<SchoolAction>([

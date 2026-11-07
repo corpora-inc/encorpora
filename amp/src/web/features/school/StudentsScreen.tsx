@@ -116,6 +116,13 @@ function StudentSheet({
       lead={<Avatar name={displayName(student)} />}
     >
       <div className={styles.sheetForm}>
+        <Link
+          to="/$"
+          params={{ _splat: orgPath(orgId, `students/${student.id}`) }}
+          className={buttonClass("secondary")}
+        >
+          Open {student.givenName}’s record
+        </Link>
         <TextField
           label="Display name"
           placeholder={rosterName}

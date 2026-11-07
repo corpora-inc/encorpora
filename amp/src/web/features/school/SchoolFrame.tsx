@@ -39,6 +39,8 @@ function SchoolNav({
               to="/$"
               params={{ _splat: item.path }}
               search={item.search ?? {}}
+              activeOptions={{ exact: true }}
+              activeProps={{}}
               aria-current={item.id === active ? "page" : undefined}
               className={styles.navLink}
               onClick={onNavigate}
@@ -155,6 +157,7 @@ export function SchoolFrame({
                         <Link
                           to="/$"
                           params={{ _splat: crumb.path }}
+                          activeOptions={{ exact: true }}
                           className={styles.crumb}
                         >
                           {crumb.label}

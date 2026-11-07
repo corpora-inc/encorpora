@@ -14,6 +14,7 @@ import {
 import { pageSchema, SchoolError, type SchoolAction } from "./contracts.js";
 import { SchoolRepository } from "./repository.js";
 import { defineSignInRoutes, registerJoinRoutes } from "./sign-in-routes.js";
+import { defineTeacherRoutes } from "./teacher-routes.js";
 import {
   defineClassroomRoutes,
   registerStudentStandings,
@@ -420,5 +421,5 @@ defineSchoolRoute({
 defineSignInRoutes(defineSchoolRoute);
 
 defineSetupRoutes(defineSchoolRoute);
-
+defineTeacherRoutes(defineSchoolRoute);
 defineClassroomRoutes(defineSchoolRoute);
