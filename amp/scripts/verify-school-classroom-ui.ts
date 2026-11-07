@@ -11,7 +11,8 @@
  * docs/reviews/school-classroom/ for a person to look at.
  *
  *     AMP_TEST_DATABASE_URL=... npx tsx scripts/verify-school-classroom-ui.ts \
- *       [--engine chromium|webkit] [--widths 390,1280] [--skip-sweep] [--skip-journeys]
+ *       [--engine chromium|webkit] [--widths 390,1280] [--skip-sweep] [--skip-journeys] \
+ *       [--port 4402]
  */
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
@@ -63,8 +64,8 @@ const widths = (argument("--widths") ?? "320,390,768,1280")
 const themes = ["light", "dark"] as const;
 const REVIEW = "docs/reviews/school-classroom";
 const ARTIFACTS = "artifacts/school-classroom";
-const webPort = 4402,
-  apiPort = 4403,
+const webPort = Number(argument("--port") ?? 4402),
+  apiPort = webPort + 1,
   origin = `http://127.0.0.1:${webPort}`;
 const ACCOUNTS = {
   district: "fixture-district-admin",

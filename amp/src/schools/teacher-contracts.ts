@@ -116,11 +116,26 @@ export const mapStudentResource = z.object({
   reference: z.object({ from: z.number(), to: z.number() }).nullable(),
 });
 export type MapStudent = z.infer<typeof mapStudentResource>;
+/** A teacher of the class who practices themselves (docs/families.md): a line
+ * on the map, marked as the teacher, never one of its students. */
+export const mapTeacherResource = z.object({
+  id,
+  name: z.string(),
+  first: z.string(),
+  /** The line is the reader's own, so it opens their own record. */
+  you: z.boolean(),
+  level: studentLevelResource.nullable(),
+  provisional: z.boolean(),
+  /** This class's course, when it has one. */
+  reference: z.object({ from: z.number(), to: z.number() }).nullable(),
+});
+export type MapTeacher = z.infer<typeof mapTeacherResource>;
 export const mapResponse = z.object({
   class: classSummary,
-  /** Most evidence first. */
+  /** Most evidence first, from the students' work alone. */
   strands: z.array(strandResource),
   students: z.array(mapStudentResource),
+  teachers: z.array(mapTeacherResource).default([]),
 });
 export type MapResponse = z.infer<typeof mapResponse>;
 

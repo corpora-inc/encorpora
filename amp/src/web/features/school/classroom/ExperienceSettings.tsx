@@ -21,6 +21,7 @@ import {
   say,
   useExperienceWrite,
   useLeaveOff,
+  useTeacherShown,
   type ExperienceScope,
 } from "./api";
 import styles from "./Experience.module.css";
@@ -227,6 +228,7 @@ export function ExperienceSettings({
 }) {
   const write = useExperienceWrite(session, scope);
   const leaveOff = useLeaveOff(session, scope.id);
+  const teacherShown = useTeacherShown(session, scope.id);
   const [error, setError] = useState("");
   const send = (body: Parameters<typeof write.mutate>[0]) =>
     write.mutate(body, {
@@ -286,6 +288,43 @@ export function ExperienceSettings({
       }
     />
   );
+  /** One line whatever it's set to, so switching never moves what's below. */
+  const teacherRow = experience.teacherLine && (
+    <section
+      key="teacher-line"
+      className={styles.row}
+      aria-labelledby="setting-teacher-line"
+    >
+      <div className={styles.rowText}>
+        <h2 id="setting-teacher-line">Show me in my class</h2>
+        <p>
+          Shows your own practice as a line on this class’s map and board,
+          marked Teacher and never ranked, so students can pass you. Grades and
+          the roster never count it.
+        </p>
+      </div>
+      <div className={styles.rowControl}>
+        <Segmented
+          label="Show me in my class"
+          options={[
+            { value: "shown", label: "Shown" },
+            { value: "hidden", label: "Hidden" },
+          ]}
+          value={experience.teacherLine.shown ? "shown" : "hidden"}
+          compact
+          dense
+          onChange={(next) => {
+            const shown = next === "shown";
+            if (shown !== experience.teacherLine!.shown)
+              teacherShown.mutate(shown, {
+                onError: (failure) =>
+                  setError(say(failure, "That change didn’t save.")),
+              });
+          }}
+        />
+      </div>
+    </section>
+  );
   return (
     <div className={styles.page}>
       {experience.canEdit ? null : (
@@ -325,6 +364,7 @@ export function ExperienceSettings({
         {row("levels")}
         {row("standings")}
         {row("measure")}
+        {teacherRow}
         {row("deviceMode")}
       </div>
       {experience.students && (

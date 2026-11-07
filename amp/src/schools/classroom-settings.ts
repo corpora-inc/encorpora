@@ -6,6 +6,7 @@ import {
   experienceKeys,
   leaveOffSchema,
   orgExperienceWriteSchema,
+  teacherShownSchema,
   type Experience,
   type ExperienceKey,
   type NamedScope,
@@ -25,6 +26,7 @@ import {
 } from "./settings.js";
 import { STUDENT_NAME } from "./sign-in.js";
 import { clearStandingsCache } from "./standings.js";
+import { classTeachers, TEACHERS_HIDDEN_KEY } from "./teacher-line.js";
 
 type Database = Pick<PoolClient, "query">;
 type Target = Extract<SchoolTarget, { kind: "org" | "class" }>;
@@ -103,6 +105,8 @@ export async function experienceView(
   const hasDistrict = target.path.length > 1 || org?.kind !== "school";
   const students =
     target.kind === "class" ? await classRows(db, target, here) : undefined;
+  const own =
+    target.kind === "class" ? await ownLine(db, actor, target) : undefined;
   const edit = can(actor, "settings.write", target);
   return {
     scope: {
@@ -122,7 +126,26 @@ export async function experienceView(
       deviceMode: setting("deviceMode"),
     },
     ...(students ? { students } : {}),
+    ...(own ? { teacherLine: { shown: own.shown } } : {}),
   };
+}
+
+/** The reader's own line in this class: theirs only while they teach it and
+ * practice themselves. An admin who doesn't teach it has none. */
+async function ownLine(
+  db: Database,
+  actor: Actor,
+  target: Extract<Target, { kind: "class" }>,
+) {
+  const personId = actor.classes.find(
+    (entry) => entry.classId === target.classId && entry.role === "teacher",
+  )?.personId;
+  if (!personId) return null;
+  return (
+    (await classTeachers(db, target.classId)).find(
+      (teacher) => teacher.personId === personId,
+    ) ?? null
+  );
 }
 
 const leftOffIn = (scope: SettingsScope | null) => {
@@ -289,6 +312,44 @@ export async function setLeftOff(
         detail: { before: { leftOff: !leftOff }, after: { leftOff } },
       });
       clearStandingsCache();
+    }
+    return experienceView(client, actor, target);
+  });
+}
+
+/** A teacher shows or hides their own line on this class's map and board. Only
+ * their own: anyone else who reads these settings is told it isn't there. */
+export async function setTeacherShown(
+  repository: SchoolRepository,
+  actor: Actor,
+  target: Extract<Target, { kind: "class" }>,
+  raw: unknown,
+): Promise<Experience> {
+  const { shown } = teacherShownSchema.parse(raw);
+  return repository.transaction(async (client) => {
+    const own = await ownLine(client, actor, target);
+    if (!own) throw new SchoolError(404, "not_found");
+    if (own.shown !== shown) {
+      const current = await lockedRow(client, target);
+      const listed = current.values[TEACHERS_HIDDEN_KEY];
+      const hidden = new Set(Array.isArray(listed) ? (listed as string[]) : []);
+      if (shown) hidden.delete(own.personId);
+      else hidden.add(own.personId);
+      const values = { ...current.values };
+      if (hidden.size) values[TEACHERS_HIDDEN_KEY] = [...hidden].sort();
+      else delete values[TEACHERS_HIDDEN_KEY];
+      await client.query(
+        `UPDATE amp_scope_settings SET "values"=$3,updated_at=now() WHERE scope_kind=$1 AND scope_id=$2`,
+        ["class", target.classId, JSON.stringify(values)],
+      );
+      await recordEvent(client, {
+        orgId: target.orgId,
+        actorPersonId: own.personId,
+        action: "standings.teacher_shown",
+        targetKind: "class",
+        targetId: target.classId,
+        detail: { before: { shown: !shown }, after: { shown } },
+      });
     }
     return experienceView(client, actor, target);
   });

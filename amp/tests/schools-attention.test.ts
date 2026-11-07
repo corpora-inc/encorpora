@@ -101,6 +101,14 @@ test("the activity log has a sentence for every family link, standings and marki
     "Ms. Okafor left Amara Osei off the standings",
   );
   assert.equal(
+    say("standings.teacher_shown", { shown: false }),
+    "Ms. Okafor took their own practice off Grade 5 Math’s map and board",
+  );
+  assert.equal(
+    say("standings.teacher_shown", { shown: true }),
+    "Ms. Okafor showed their own practice in Grade 5 Math",
+  );
+  assert.equal(
     say("workbook.marked", { marks: 12 }),
     "Ms. Okafor marked 12 answers in Amara Osei’s workbook",
   );

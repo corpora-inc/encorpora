@@ -12,6 +12,7 @@ import {
 import {
   experienceView,
   setLeftOff,
+  setTeacherShown,
   writeExperience,
 } from "./classroom-settings.js";
 import {
@@ -90,6 +91,17 @@ export function defineClassroomRoutes(define: typeof defineSchoolRoute) {
         request.body,
         actorPerson(actor, target),
       ),
+  });
+  /* A teacher's own line on the class's map and board. Anyone who reads these
+     settings may ask; only a teacher of the class who practices changes it. */
+  define({
+    method: "POST",
+    url: `${CLASS}/experience/me`,
+    action: "settings.read",
+    target: classParam,
+    bodyLimit: 1024,
+    handler: ({ request, actor, target, repository }) =>
+      setTeacherShown(repository, actor, target, request.body),
   });
   define({
     method: "POST",

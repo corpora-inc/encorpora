@@ -139,6 +139,10 @@ export function describeEvent({
       return after.leftOff
         ? `${who} left ${student} off the standings`
         : `${who} put ${student} back on the standings`;
+    case "standings.teacher_shown":
+      return after.shown
+        ? `${who} showed their own practice in ${klass}`
+        : `${who} took their own practice off ${klass}’s map and board`;
     case "workbook.marked":
       return `${who} marked ${words(after.marks as number, "answer", "answers")} in ${possessive(student)} workbook`;
     case "seat.released":
