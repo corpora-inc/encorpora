@@ -1047,6 +1047,7 @@ async function journey(browser: Browser, engine: string, width: number) {
   );
   await page.reload();
   await page.getByText("Grades in a closed term are frozen.").waitFor();
+  await settle(page, 400);
   await shot(page, "gradebook-closed", width, theme);
 
   // Time and the student's record are real routes too.
