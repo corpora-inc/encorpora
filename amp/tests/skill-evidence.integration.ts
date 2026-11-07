@@ -129,6 +129,7 @@ test(
       const digest = await factsDigest(pool);
       await pool.query(await sql("0008-skill-evidence.sql"));
       await pool.query(await sql("0010-starting-point.sql"));
+      await pool.query(await sql("0085-learner-frontier-state.sql"));
       assert.equal(await factsDigest(pool), digest);
       const expected = async () =>
         projectSkillEvidence(
@@ -196,6 +197,7 @@ test(
     fixture(async (pool, learning) => {
       await pool.query(await sql("0008-skill-evidence.sql"));
       await pool.query(await sql("0010-starting-point.sql"));
+      await pool.query(await sql("0085-learner-frontier-state.sql"));
       const client = await pool.connect();
       try {
         await client.query("BEGIN");
@@ -276,6 +278,7 @@ test(
       await pool.query(await sql("0008-skill-evidence.sql"));
       await pool.query(await sql("0010-starting-point.sql"));
       await pool.query(await sql("0079-paper-evidence.sql"));
+      await pool.query(await sql("0085-learner-frontier-state.sql"));
       const mark = (o: Outcome): Outcome => ({
         ...o,
         evidenceSource: "paper",

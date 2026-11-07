@@ -249,8 +249,13 @@ test(
         (await post("/sign-in/email", { email, password })).statusCode,
         200,
       );
-      // Repeated sign-in attempts from one client are throttled (brute
-      // force); another client is unaffected and the new password works.
+      // Repeated wrong passwords on one account from one client are throttled
+      // (brute force); another client is unaffected and the new password works.
+      let attempt = 0;
+      for (let i = 0; i <= 10 && attempt !== 429; i++)
+        attempt = (await post("/sign-in/email", { email, password }))
+          .statusCode;
+      assert.equal(attempt, 429);
       assert.equal(
         (await post("/sign-in/email", { email, password: newPassword }))
           .statusCode,

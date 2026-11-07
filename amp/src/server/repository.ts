@@ -12,45 +12,46 @@ import {
   masteredSkills,
   recordTrialEvent,
   recordTrialMilestones,
-  trialProgress,
-  countSkips,
   type TrialProgress,
+  LIVE_TRIAL,
+  trialProgressFromCounts,
 } from "./trial-progress";
 import { skills } from "../curriculum/catalog";
 import { templates } from "../math/engine";
 import { historicalTemplates } from "../math/historical-templates";
-import { guessChanceOf } from "../math/guess-chance";
 import {
   estimateFrontier,
   initialLevel,
+  overallTrend,
   type Frontier,
   type FrontierObservation,
 } from "../learning/frontier";
+import {
+  advanceLearnerFrontier,
+  applyStrandRestart,
+  CHECKPOINT_EVERY,
+  decodeLearnerFrontier,
+  encodeLearnerFrontier,
+  frontierCatalog,
+  isCurrentLearnerFrontier,
+  newLearnerFrontier,
+  OFF_THREAD_ANSWERS,
+  readLearnerFrontier,
+  type LearnerObservation,
+} from "./learner-frontier";
+import { workbookWorker } from "../workbook/off-thread";
 import { trendCounts, type TrendPoint } from "../learning/level-check";
-import { templateGrade } from "./mixed-practice";
 const templateById = new Map(
   [...templates, ...historicalTemplates].map((t) => [t.id, t]),
 );
 const skillById = new Map(skills.map((s) => [s.id, s]));
-/** The frontier from a starting level and answers, with the catalog's
- * grades, strands and guessing chances. */
+/** The frontier from a starting level and answers, replayed in full. */
 function frontierFrom(
   start: number,
   observations: readonly FrontierObservation[],
   now: number,
 ): Frontier {
-  return estimateFrontier({
-    start,
-    observations,
-    now,
-    gradeOf: (id) => {
-      const template = templateById.get(id);
-      return template && templateGrade(template, skillById);
-    },
-    strandOf: (id) =>
-      skillById.get(templateById.get(id)?.skillId ?? "")?.strand ?? id,
-    guessOf: guessChanceOf,
-  });
+  return estimateFrontier({ start, observations, now, ...frontierCatalog });
 }
 import {
   lockLearningAccount,
@@ -157,6 +158,7 @@ export interface LearnerTransaction {
   progress(skillIds: string[]): Promise<LearnerSkillProgress[]>;
   problem(id: string): Promise<SavedProblem | undefined>;
   saveProblem(problem: SavedProblem): Promise<void>;
+  saveProblems(problems: readonly SavedProblem[]): Promise<void>;
   saveAttempt(outcome: Outcome): Promise<void>;
   /** Marks a problem skipped (see learning/skip.ts); no attempt is written. */
   saveSkip(problem: SavedProblem): Promise<void>;
@@ -328,7 +330,7 @@ export class PostgresRepository implements Repository {
           "Parent consent is required before collecting learning data",
         );
       const found = await client.query(
-        "SELECT id FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL FOR UPDATE",
+        "SELECT * FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL FOR UPDATE",
         [learnerId, accountId],
       );
       if (!found.rowCount) throw new ApiError(404, "Learner not found");
@@ -341,7 +343,7 @@ export class PostgresRepository implements Repository {
           throw new ApiError(401, "This free trial has ended");
       }
       const result = await run(
-        new PgTransaction(client, learnerId, this.limits),
+        new PgTransaction(client, learnerId, this.limits, found.rows[0]),
       );
       await client.query("COMMIT");
       return result;
@@ -522,6 +524,8 @@ export class PostgresRepository implements Repository {
     }
   }
 }
+const observationColumns = `a.outcome->>'templateId' AS "templateId",(outcome->>'correct')::boolean AS correct,
+        (outcome->>'assisted')::boolean AS assisted,outcome->>'createdAt' AS "createdAt",(outcome->>'evidenceWeight')::float8 AS "evidenceWeight", COALESCE((i.content->>'practiceRevision')::int,0) AS "practiceRevision"`;
 const workbookColumns = `id,to_char(workbook_date,'YYYY-MM-DD') AS date,number,minutes,paper,spec,code,created_at AS "createdAt"`;
 function workbookRow(row: Record<string, unknown>): WorkbookRecord {
   return {
@@ -576,6 +580,8 @@ export class PgTransaction implements LearnerTransaction {
     private db: PoolClient,
     private learnerId: string,
     private limits: TrialLimits = trialLimits(),
+    /** The locked learner row, so reading it again costs no round trip. */
+    private learnerRow?: Record<string, unknown>,
   ) {}
   async startingPoint(): Promise<PracticeStartingPoint> {
     const result = await this.db.query(
@@ -595,25 +601,34 @@ export class PgTransaction implements LearnerTransaction {
         observed.rows.map((row) => strands.get(row.skill_id) ?? row.skill_id),
       ),
     ].sort();
+    this.learnerRow = undefined;
     await this.db.query(
       "UPDATE amp_learners SET starting_band=$2,starting_policy=1,starting_excluded_strands=COALESCE(starting_excluded_strands,$3::text[]) WHERE id=$1",
       [this.learnerId, band, excluded],
     );
   }
+  private async learner() {
+    if (!this.learnerRow) {
+      const result = await this.db.query(
+        "SELECT * FROM amp_learners WHERE id=$1",
+        [this.learnerId],
+      );
+      this.learnerRow = result.rows[0] as Record<string, unknown> | undefined;
+    }
+    return this.learnerRow;
+  }
   async satMathFocus() {
-    const result = await this.db.query(
-      "SELECT sat_math_focus FROM amp_learners WHERE id=$1",
-      [this.learnerId],
-    );
-    return result.rows[0].sat_math_focus;
+    return (await this.learner())!.sat_math_focus as boolean;
   }
   async setSatMathFocus(enabled: boolean) {
+    this.learnerRow = undefined;
     await this.db.query(
       "UPDATE amp_learners SET sat_math_focus=$2 WHERE id=$1",
       [this.learnerId, enabled],
     );
   }
   async setBirthYear(birthYear: number) {
+    this.learnerRow = undefined;
     await this.db.query("UPDATE amp_learners SET birth_year=$2 WHERE id=$1", [
       this.learnerId,
       birthYear,
@@ -623,54 +638,100 @@ export class PgTransaction implements LearnerTransaction {
     now = Date.now(),
     answers: number | null = null,
   ): Promise<Frontier> {
+    return answers === null
+      ? this.currentFrontier(now)
+      : this.frontierAtAnswer(now, answers);
+  }
+  /** The level now, from the stored state plus any answers since it was saved. */
+  private async currentFrontier(now: number): Promise<Frontier> {
+    const settings = await this.practiceSettings();
+    const key = {
+      epoch: settings.epoch,
+      start: await this.startingLevel(now),
+      strandStarts: settings.strandStarts,
+    };
+    const row = await this.db.query(
+      "SELECT state FROM amp_frontier_states WHERE learner_id=$1",
+      [this.learnerId],
+    );
+    const decoded = row.rows[0]
+      ? decodeLearnerFrontier(row.rows[0].state as string)
+      : null;
+    const stored =
+      decoded && isCurrentLearnerFrontier(decoded, key) ? decoded : null;
+    const history = await this.db.query(
+      `SELECT ${observationColumns},a.evidence_sequence::text AS sequence FROM amp_attempts a JOIN amp_instances i ON i.id=a.problem_id
+        WHERE a.learner_id=$1 AND COALESCE((i.content->>'practiceEpoch')::int,0)=$2 AND a.evidence_sequence>$3::bigint ORDER BY a.evidence_sequence`,
+      [this.learnerId, settings.epoch, stored?.sequence ?? "0"],
+    );
+    const observations = history.rows as LearnerObservation[];
+    let state;
+    if (observations.length > OFF_THREAD_ANSWERS) {
+      const updated = await workbookWorker().frontierState({
+        stored: stored ? encodeLearnerFrontier(stored) : null,
+        observations,
+        key,
+      });
+      state = decodeLearnerFrontier(updated)!;
+    } else {
+      state = advanceLearnerFrontier(
+        stored ?? newLearnerFrontier(key),
+        observations,
+      );
+    }
+    if (observations.length >= CHECKPOINT_EVERY)
+      await this.db.query(
+        "INSERT INTO amp_frontier_states(learner_id,state) VALUES($1,$2) ON CONFLICT(learner_id) DO UPDATE SET state=EXCLUDED.state,updated_at=now()",
+        [this.learnerId, encodeLearnerFrontier(state)],
+      );
+    return readLearnerFrontier(state, now);
+  }
+  /** The level as it was after a learner's first `answers` answers. */
+  private async frontierAtAnswer(now: number, answers: number) {
     const { start, observations, settings } = await this.frontierInputs(
       now,
       answers,
     );
     const frontier = frontierFrom(start, observations, now);
-    for (const [strand, reset] of Object.entries(settings.strandStarts)) {
-      const local = frontierFrom(
+    for (const [strand, reset] of Object.entries(settings.strandStarts))
+      applyStrandRestart(
+        frontier,
+        strand,
         reset.level,
-        observations.filter(
-          (o) =>
-            o.practiceRevision >= reset.revision &&
-            skillById.get(templateById.get(o.templateId)?.skillId ?? "")
-              ?.strand === strand,
+        frontierFrom(
+          reset.level,
+          observations.filter(
+            (o) =>
+              o.practiceRevision >= reset.revision &&
+              skillById.get(templateById.get(o.templateId)?.skillId ?? "")
+                ?.strand === strand,
+          ),
+          now,
         ),
-        now,
       );
-      frontier.strands[strand] = local.strands[strand] ?? local.overall;
-      if (frontier.confirmation)
-        frontier.confirmation[strand] = {
-          ...(local.confirmation?.[strand] ?? {
-            level: local.unconfirmedCeiling!,
-            foundationConfirmed: false,
-          }),
-          foundationLevel: reset.level,
-        };
-    }
     return frontier;
+  }
+  private async startingLevel(now: number) {
+    const learner = await this.learner();
+    return initialLevel({
+      birthYear: learner?.birth_year as number | null | undefined,
+      band: learner?.starting_band as Parameters<
+        typeof initialLevel
+      >[0]["band"],
+      now,
+    });
   }
   /** The starting estimate from age and the answers in evidence order. */
   private async frontierInputs(now: number, answers: number | null = null) {
-    const learner = await this.db.query(
-      "SELECT birth_year,starting_band FROM amp_learners WHERE id=$1",
-      [this.learnerId],
-    );
     const settings = await this.practiceSettings();
     const history = await this.db.query(
-      `SELECT a.outcome->>'templateId' AS "templateId",(outcome->>'correct')::boolean AS correct,
-        (outcome->>'assisted')::boolean AS assisted,outcome->>'createdAt' AS "createdAt",(outcome->>'evidenceWeight')::float8 AS "evidenceWeight", COALESCE((i.content->>'practiceRevision')::int,0) AS "practiceRevision" FROM amp_attempts a JOIN amp_instances i ON i.id=a.problem_id
+      `SELECT ${observationColumns} FROM amp_attempts a JOIN amp_instances i ON i.id=a.problem_id
         WHERE a.learner_id=$1 AND COALESCE((i.content->>'practiceEpoch')::int,0)=$3 ORDER BY a.evidence_sequence LIMIT $2`,
       [this.learnerId, answers, settings.epoch],
     );
     return {
       settings,
-      start: initialLevel({
-        birthYear: learner.rows[0]?.birth_year,
-        band: learner.rows[0]?.starting_band,
-        now,
-      }),
+      start: await this.startingLevel(now),
       observations: history.rows as (FrontierObservation & {
         practiceRevision: number;
       })[],
@@ -679,14 +740,10 @@ export class PgTransaction implements LearnerTransaction {
   async frontierTrend(): Promise<TrendPoint[]> {
     const now = Date.now();
     const { start, observations } = await this.frontierInputs(now);
-    return trendCounts(observations.length).map((answered) => {
-      const { level, sd } = frontierFrom(
-        start,
-        observations.slice(0, answered),
-        now,
-      ).overall;
-      return { answered, level, sd };
-    });
+    return overallTrend(
+      { start, observations, now, ...frontierCatalog },
+      trendCounts(observations.length),
+    );
   }
   async recentAttempts() {
     const settings = await this.practiceSettings();
@@ -760,6 +817,17 @@ export class PgTransaction implements LearnerTransaction {
       [problem.public.id, this.learnerId, JSON.stringify(problem)],
     );
   }
+  /** Saves a batch in one round trip. */
+  async saveProblems(problems: readonly SavedProblem[]) {
+    await this.db.query(
+      "INSERT INTO amp_instances(id,learner_id,content) SELECT id,$2,content::jsonb FROM unnest($1::text[],$3::text[]) AS p(id,content) ON CONFLICT(id) DO UPDATE SET content=EXCLUDED.content WHERE amp_instances.learner_id=EXCLUDED.learner_id",
+      [
+        problems.map((problem) => problem.public.id),
+        this.learnerId,
+        problems.map((problem) => JSON.stringify(problem)),
+      ],
+    );
+  }
   async saveAttempt(outcome: Outcome) {
     await this.db.query(
       "INSERT INTO amp_attempts(id,learner_id,problem_id,request_id,outcome) VALUES($1,$2,$3,$4,$5)",
@@ -774,16 +842,18 @@ export class PgTransaction implements LearnerTransaction {
     await recordTrialMilestones(this.db, this.learnerId, this.limits);
   }
   async trialProgress() {
-    if (!(await isLiveTrial(this.db, this.learnerId))) return null;
-    const attempts = await this.db.query(
-      "SELECT (outcome->>'correct')::boolean AS correct,(outcome->>'assisted')::boolean AS assisted FROM amp_attempts WHERE learner_id=$1",
+    const result = await this.db.query(
+      `SELECT answers.*,skips.skipped FROM amp_trials t JOIN amp_learners l ON l.id=t.learner_id,
+        LATERAL (SELECT count(*)::int AS answered,count(*) FILTER (WHERE (outcome->>'correct')::boolean)::int AS correct,
+          count(*) FILTER (WHERE (outcome->>'assisted')::boolean)::int AS assisted FROM amp_attempts WHERE learner_id=t.learner_id) answers,
+        LATERAL (SELECT count(*)::int AS skipped FROM amp_instances WHERE learner_id=t.learner_id AND (content->>'skipped')::boolean) skips
+       WHERE t.learner_id=$1 AND ${LIVE_TRIAL}`,
       [this.learnerId],
     );
-    return trialProgress(
-      attempts.rows,
-      this.limits,
-      await countSkips(this.db, this.learnerId),
-    );
+    const counts = result.rows[0];
+    return counts
+      ? trialProgressFromCounts(counts, this.limits, counts.skipped)
+      : null;
   }
   async saveSkip(problem: SavedProblem) {
     await this.saveProblem(problem);
@@ -814,11 +884,7 @@ export class PgTransaction implements LearnerTransaction {
     await recordTrialEvent(this.db, this.learnerId, "paywall");
   }
   async birthYear() {
-    const result = await this.db.query(
-      "SELECT birth_year FROM amp_learners WHERE id=$1",
-      [this.learnerId],
-    );
-    return (result.rows[0]?.birth_year as number | null) ?? null;
+    return ((await this.learner())?.birth_year as number | null) ?? null;
   }
   async flag(key: { requestId: string } | { problemId: string }) {
     const byRequest = "requestId" in key;
