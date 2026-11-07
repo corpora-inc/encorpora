@@ -18,8 +18,7 @@ import { request } from "../../../lib/api";
 import { sessionOptions } from "../../../lib/query";
 
 type Place = { org: string; class: string };
-const classPath = ({ org, class: id }: Place) =>
-  `/school/orgs/${org}/classes/${id}`;
+const classPath = ({ class: id }: Place) => `/school/classes/${id}`;
 type Session = AuthSession | null;
 const key = (session: Session, place: Place, leaf: string) =>
   [

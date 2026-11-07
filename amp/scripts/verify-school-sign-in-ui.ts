@@ -155,7 +155,7 @@ const addStudent = (classId: string, givenName: string, familyName?: string) =>
   });
 const staff = async (method: "GET" | "POST", path: string, body?: object) => {
   const response = await fetch(
-    `http://127.0.0.1:${apiPort}/api/v1/school/orgs/${org.id}/${path}`,
+    `http://127.0.0.1:${apiPort}/api/v1/school/${path}`,
     {
       method,
       headers: {

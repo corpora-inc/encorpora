@@ -45,8 +45,8 @@ export function registerJoinRoutes(
 }
 
 const classParam = ({ params }: { params: Record<string, string> }) =>
-  ({ kind: "class", orgId: params.org!, classId: params.class! }) as const;
-const CLASS = "/api/v1/school/orgs/:org/classes/:class";
+  ({ kind: "class", classId: params.class! }) as const;
+const CLASS = "/api/v1/school/classes/:class";
 
 /** Called once by `routes.ts`, which owns the table these join. */
 export function defineSignInRoutes(define: typeof defineSchoolRoute) {
@@ -96,27 +96,27 @@ export function defineSignInRoutes(define: typeof defineSchoolRoute) {
   });
   define({
     method: "POST",
-    url: `${CLASS}/students/:person/reset-pictures`,
+    url: `${CLASS}/students/:student/reset-pictures`,
     action: "signin.manage",
     target: classParam,
     bodyLimit: 1024,
     handler: ({ request, actor, target, repository }) =>
       new SchoolSignIn(repository).resetPictures(
         target,
-        (request.params as { person: string }).person,
+        (request.params as { student: string }).student,
         actorPerson(actor, target),
       ),
   });
   define({
     method: "POST",
-    url: `${CLASS}/students/:person/revoke-sessions`,
+    url: `${CLASS}/students/:student/revoke-sessions`,
     action: "signin.manage",
     target: classParam,
     bodyLimit: 1024,
     handler: ({ request, actor, target, repository }) =>
       new SchoolSignIn(repository).revokeSessions(
         target,
-        (request.params as { person: string }).person,
+        (request.params as { student: string }).student,
         actorPerson(actor, target),
       ),
   });

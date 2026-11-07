@@ -278,3 +278,67 @@ export const studentResource = z.object({
 export type OrgResource = z.infer<typeof orgResource>;
 export type ClassResource = z.infer<typeof classResource>;
 export type StudentResource = z.infer<typeof studentResource>;
+
+const count = z.number().int().min(0);
+const activityCounts = {
+  problems: count,
+  correct: count,
+  independent: count,
+  assisted: count,
+  review: count,
+  reviewIndependent: count,
+  activeMinutes: z.number().min(0),
+};
+const dateString = z.iso.date();
+export const activityRangeResource = z.object({
+  from: dateString,
+  to: dateString,
+});
+export const activityTotalsResource = z.object({
+  personId: z.uuid(),
+  ...activityCounts,
+  daysActive: count,
+  /** The latest day with any activity, in or out of the range. */
+  lastActive: dateString.nullable(),
+});
+export const activityDayResource = z.object({
+  personId: z.uuid(),
+  day: dateString,
+  ...activityCounts,
+});
+export const activitySkillResource = z.object({
+  personId: z.uuid(),
+  /** Empty: active time spent where no one problem was showing. */
+  skillId: z.string(),
+  ...activityCounts,
+});
+export const classActivityResponse = z.object({
+  range: activityRangeResource,
+  students: z.array(activityTotalsResource),
+});
+export const studentActivityResponse = z.object({
+  range: activityRangeResource,
+  totals: activityTotalsResource.nullable(),
+  days: z.array(activityDayResource),
+  skills: z.array(activitySkillResource),
+});
+export const levelEstimateResource = z.object({
+  level: z.number(),
+  sd: z.number(),
+  answered: count,
+  independent: count,
+});
+export const levelDayResource = z.object({
+  personId: z.uuid(),
+  day: dateString,
+  policyVersion: z.string(),
+  overall: levelEstimateResource,
+  strands: z.record(z.string(), levelEstimateResource),
+});
+export const classLevelsResponse = z.object({
+  on: dateString.nullable(),
+  students: z.array(levelDayResource),
+});
+export type ClassActivityResponse = z.infer<typeof classActivityResponse>;
+export type StudentActivityResponse = z.infer<typeof studentActivityResponse>;
+export type ClassLevelsResponse = z.infer<typeof classLevelsResponse>;

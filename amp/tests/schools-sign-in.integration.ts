@@ -59,7 +59,7 @@ test(
     ) =>
       app.inject({
         method,
-        url: `/api/v1/school/orgs/${path}`,
+        url: `/api/v1/school/${path}`,
         headers: { authorization: `Bearer ${account}` },
         ...(method === "POST" ? { payload: payload ?? {} } : {}),
       });
@@ -385,7 +385,7 @@ test(
           const rotated = await staff(
             "POST",
             guessed.teacher,
-            `${guessed.orgId}/classes/${guessed.period.id}/rotate-code`,
+            `classes/${guessed.period.id}/rotate-code`,
           );
           assert.equal(rotated.statusCode, 200);
           const fresh = rotated.json().joinCode;
@@ -402,7 +402,7 @@ test(
       await t.test(
         "cards: a link that signs in until it's reissued",
         async () => {
-          const cls = `${home.orgId}/classes/${home.period.id}`;
+          const cls = `classes/${home.period.id}`;
           const student = await enroll(
             home.orgId,
             home.period.id,
@@ -484,7 +484,7 @@ test(
       );
 
       await t.test("card: a removed student's card stops working", async () => {
-        const cls = `${home.orgId}/classes/${home.period.id}`;
+        const cls = `classes/${home.period.id}`;
         const student = await enroll(home.orgId, home.period.id, "Leaving");
         const { cards } = (
           await staff("POST", home.teacher, `${cls}/cards`, {
@@ -502,7 +502,7 @@ test(
       });
 
       await t.test("staff: reset, sign out everywhere, presence", async () => {
-        const cls = `${home.orgId}/classes/${home.period.id}`;
+        const cls = `classes/${home.period.id}`;
         const code = home.period.joinCode;
         const student = await enroll(home.orgId, home.period.id, "Reset", "Me");
         const here = (
@@ -600,7 +600,7 @@ test(
         async () => {
           const student = await enroll(home.orgId, home.period.id, "Mine");
           const stranger = await enroll(away.orgId, away.period.id, "Theirs");
-          const here = `${home.orgId}/classes/${home.period.id}`;
+          const here = `classes/${home.period.id}`;
           const routes: ["GET" | "POST", string][] = [
             ["GET", `${here}/presence`],
             ["GET", `${here}/roster`],
@@ -656,7 +656,7 @@ test(
             accountId: aide,
             classId: home.period.id,
           });
-          const here = `${home.orgId}/classes/${home.period.id}`;
+          const here = `classes/${home.period.id}`;
           assert.equal(
             (await staff("GET", aide, `${here}/presence`)).statusCode,
             200,
@@ -700,7 +700,7 @@ test(
             await staff(
               "POST",
               personal.teacher,
-              `${personal.orgId}/classes/${personal.period.id}/cards`,
+              `classes/${personal.period.id}/cards`,
             )
           ).json();
           const card = (await join("card", { token: cards[0].token })).json();

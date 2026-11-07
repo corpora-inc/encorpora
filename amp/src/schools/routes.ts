@@ -13,13 +13,26 @@ import {
 import { pageSchema, SchoolError, type SchoolAction } from "./contracts.js";
 import { SchoolRepository } from "./repository.js";
 import { defineSignInRoutes, registerJoinRoutes } from "./sign-in-routes.js";
+import { activeToday, studentBearer } from "./principal.js";
+import {
+  classRoster,
+  levels,
+  levelsQuerySchema,
+  perDay,
+  perSkill,
+  rangeSchema,
+  recordHeartbeat,
+  studentRoster,
+  totals,
+} from "./evidence.js";
 
 type TargetInput = { params: Record<string, string>; body: unknown };
 /** Which thing a request is about, before it is looked up. */
 type TargetRef =
   | { kind: "self" }
   | { kind: "org"; orgId: string }
-  | { kind: "class"; orgId: string; classId: string };
+  | { kind: "class"; orgId?: string; classId: string }
+  | { kind: "student"; personId: string };
 type Loaded<R extends TargetRef> = Extract<SchoolTarget, { kind: R["kind"] }>;
 export type SchoolRouteContext<T extends SchoolTarget = SchoolTarget> = {
   request: FastifyRequest;
@@ -27,6 +40,7 @@ export type SchoolRouteContext<T extends SchoolTarget = SchoolTarget> = {
   actor: Actor;
   target: T;
   repository: SchoolRepository;
+  pool: Pool;
 };
 export type SchoolRoute = {
   method: "GET" | "POST";
@@ -60,19 +74,20 @@ async function loadTarget(
   ref: TargetRef,
 ): Promise<SchoolTarget | null> {
   if (ref.kind === "self") return ref;
-  if (!isId(ref.orgId)) return null;
+  if (ref.kind === "student") return loadStudent(pool, ref.personId);
+  if (ref.orgId !== undefined && !isId(ref.orgId)) return null;
   if (ref.kind === "org") {
     const org = (
-      await pool.query("SELECT path FROM amp_orgs WHERE id=$1", [ref.orgId])
+      await pool.query("SELECT path FROM amp_orgs WHERE id=$1", [ref.orgId!])
     ).rows[0];
-    return org ? { kind: "org", orgId: ref.orgId, path: org.path } : null;
+    return org ? { kind: "org", orgId: ref.orgId!, path: org.path } : null;
   }
   if (!isId(ref.classId)) return null;
   const found = (
     await pool.query(
       `SELECT c.org_id,o.path FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
-       WHERE c.id=$1 AND c.archived_at IS NULL AND o.path @> ARRAY[$2]::uuid[]`,
-      [ref.classId, ref.orgId],
+       WHERE c.id=$1 AND c.archived_at IS NULL AND ($2::uuid IS NULL OR o.path @> ARRAY[$2]::uuid[])`,
+      [ref.classId, ref.orgId ?? null],
     )
   ).rows[0];
   return found
@@ -83,6 +98,38 @@ async function loadTarget(
         path: found.path,
       }
     : null;
+}
+/** A student's home org is the one they attend today; their classes are the
+ * ones they're in today. A removed or unrostered student isn't found. */
+async function loadStudent(
+  pool: Pool,
+  personId: string,
+): Promise<SchoolTarget | null> {
+  if (!isId(personId)) return null;
+  const home = (
+    await pool.query(
+      `SELECT o.id,o.path FROM amp_people p
+       JOIN amp_org_roles r ON r.person_id=p.id AND r.role='student'
+       JOIN amp_orgs o ON o.id=r.org_id
+       WHERE p.id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")}
+       ORDER BY r.begin_on DESC,o.id LIMIT 1`,
+      [personId],
+    )
+  ).rows[0];
+  if (!home) return null;
+  const classes = await pool.query(
+    `SELECT e.class_id FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id
+     JOIN amp_orgs o ON o.id=c.org_id
+     WHERE e.person_id=$1 AND e.role='student' AND c.archived_at IS NULL AND ${activeToday("e", "o")}`,
+    [personId],
+  );
+  return {
+    kind: "student",
+    personId,
+    orgId: home.id,
+    path: home.path,
+    classIds: classes.rows.map((row) => row.class_id),
+  };
 }
 const statusOf = (error: unknown) =>
   typeof error === "object" && error !== null && "statusCode" in error
@@ -135,6 +182,20 @@ export async function registerSchoolRoutes(
       return reply.code(503).send({ error: "school_service_unavailable" });
     });
     registerJoinRoutes(scope, repository);
+    // Students only: a staff or parent credential is never a student's.
+    scope.post(
+      "/api/v1/school/student/activity",
+      { bodyLimit: 4096 },
+      async (request, reply) => {
+        const token = studentBearer(request);
+        if (
+          !token ||
+          !(await recordHeartbeat(options.pool, token, request.body))
+        )
+          throw new SchoolError(401, "sign_in_required");
+        return reply.code(204).send();
+      },
+    );
     for (const route of schoolRoutes)
       scope.route({
         method: route.method,
@@ -152,7 +213,14 @@ export async function registerSchoolRoutes(
           );
           if (!target || !can(actor, route.action, target))
             throw new SchoolError(404, "not_found");
-          return route.handler({ request, reply, actor, target, repository });
+          return route.handler({
+            request,
+            reply,
+            actor,
+            target,
+            repository,
+            pool: options.pool,
+          });
         },
       });
   });
@@ -248,5 +316,47 @@ defineSchoolRoute({
         actorPerson(actor, target),
       ),
     }),
+});
+
+const classParam = ({ params }: TargetInput) =>
+  ({ kind: "class", classId: params.class! }) as const;
+defineSchoolRoute({
+  method: "GET",
+  url: "/api/v1/school/classes/:class/activity",
+  action: "students.read",
+  target: classParam,
+  handler: async ({ request, target, pool }) => {
+    const range = rangeSchema.parse(request.query);
+    const roster = await classRoster(pool, target.classId);
+    return { range, students: await totals(pool, roster, range) };
+  },
+});
+defineSchoolRoute({
+  method: "GET",
+  url: "/api/v1/school/classes/:class/levels",
+  action: "students.read",
+  target: classParam,
+  handler: async ({ request, target, pool }) => {
+    const { on } = levelsQuerySchema.parse(request.query);
+    const roster = await classRoster(pool, target.classId);
+    return { on: on ?? null, students: await levels(pool, roster, on) };
+  },
+});
+defineSchoolRoute({
+  method: "GET",
+  url: "/api/v1/school/students/:student/activity",
+  action: "students.read",
+  target: ({ params }) =>
+    ({ kind: "student", personId: params.student! }) as const,
+  handler: async ({ request, target, pool }) => {
+    const range = rangeSchema.parse(request.query);
+    const roster = await studentRoster(pool, target.personId);
+    return {
+      range,
+      totals: (await totals(pool, roster, range))[0] ?? null,
+      days: await perDay(pool, roster, range),
+      skills: await perSkill(pool, roster, range),
+    };
+  },
 });
 defineSignInRoutes(defineSchoolRoute);
