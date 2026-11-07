@@ -589,6 +589,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
                 ? workbookTemplateIds(await tx.recentWorkbooks())
                 : undefined,
           });
+      const saved: SavedProblem[] = [];
       const problems: PublicProblem[] = [];
       const hints: Record<string, ProblemHint> = {};
       for (const choice of selected) {
@@ -619,10 +620,11 @@ function routes(app: FastifyInstance, options: AppOptions) {
           epoch: practice.epoch,
           focusSkillId: practice.focusSkillId,
         };
-        await tx.saveProblem(problem);
+        saved.push(problem);
         problems.push(problem.public);
         hints[problem.public.id] = hintSupport(problem);
       }
+      await tx.saveProblems(saved);
       return {
         problems,
         // Keep the public-problem protocol unchanged for installed clients.
