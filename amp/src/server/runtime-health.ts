@@ -2,6 +2,7 @@ import { monitorEventLoopDelay, PerformanceObserver } from "node:perf_hooks";
 import type { FastifyBaseLogger, FastifyInstance } from "fastify";
 import type { Pool } from "pg";
 import { generateProblem, templates } from "../math/engine.js";
+import { builtGuessChances } from "../math/guess-chance";
 import { workbookWorker } from "../workbook/off-thread.js";
 import { hintSupport } from "./app.js";
 
@@ -96,8 +97,15 @@ export async function warmServer(
       hintSupport(generateProblem(templates[index]!.id, `warm-up-${index}`));
     await pool.query("SELECT 1");
     await workbookWorker(app.log).warm();
+    if (import.meta.url.endsWith(".mjs") && !builtGuessChances)
+      app.log.error(
+        "this server was built without guessing chances: requests will compute them, blocking the API for up to 2 s each",
+      );
     app.log.info(
-      { ms: Math.round(performance.now() - started) },
+      {
+        ms: Math.round(performance.now() - started),
+        guessChances: builtGuessChances,
+      },
       "server warmed",
     );
   } catch (error) {
