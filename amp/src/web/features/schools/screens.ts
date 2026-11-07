@@ -54,7 +54,7 @@ export const productScreens = {
   standings: {
     id: "standings",
     alt: "A class board of the top ten students by growth this term, with one student’s own line highlighted.",
-    wide: { width: 720, height: 1108 },
+    wide: { width: 720, height: 1184 },
     narrow: { width: 780, height: 1688 },
   },
   schoolOverview: {

@@ -7,8 +7,9 @@ import { PLACEMENT_ATTEMPTS } from "../learning/placement.js";
  * below where they settle, so growth never starts there. No such reading
  * means no start level, and so no growth figure rather than a zero.
  *
- * The one rule for the overview (`org-reads.ts`) and the grade model
- * (`term-grades.ts`), so the two can't disagree. `learner`, `from` and `to`
+ * The one rule for the overview (`org-reads.ts`), the grade model
+ * (`term-grades.ts`) and the standings board (`standings.ts`), so a student
+ * never sees a growth number that disagrees with their teacher's. `learner`, `from` and `to`
  * are SQL expressions; `select` is what to read from the row (`d.` columns).
  */
 export const startLevelSql = ({

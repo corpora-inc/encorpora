@@ -6,6 +6,7 @@ import { migrate } from "../scripts/migrate.js";
 import { PLACEMENT_ATTEMPTS } from "../src/learning/placement.js";
 import { studentFacts, usageOf } from "../src/schools/org-reads.js";
 import { SchoolRepository } from "../src/schools/repository.js";
+import { studentBoard } from "../src/schools/standings.js";
 import { levelsBySpan, type TermStudent } from "../src/schools/term-grades.js";
 
 const DAY = 86_400_000;
@@ -15,7 +16,7 @@ const two = (value: number | null | undefined) =>
   value === null || value === undefined ? value : Math.round(value * 100) / 100;
 
 test(
-  "A term's growth starts where placement settled, in the overview and the grade model alike",
+  "A term's growth starts where placement settled, in the overview, the grade model and the standings alike",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async () => {
     const url = process.env.AMP_TEST_DATABASE_URL!;
@@ -41,10 +42,24 @@ test(
         seats: 10,
         endsAt: new Date(Date.now() + 30 * DAY).toISOString(),
       });
+      // A semester running now, and a class on it with a class board.
+      const year = randomUUID();
+      const semester = randomUUID();
+      await db.query(
+        `INSERT INTO amp_academic_sessions(id,org_id,parent_id,kind,name,starts_on,ends_on) VALUES
+           ($1,$3,NULL,'year','This year',$4,$5),($2,$3,$1,'semester','Semester 1',$4,$5)`,
+        [year, semester, org.id, day(-60), day(100)],
+      );
       const klass = await schools.createClass(org.id, {
         name: "Grade 5 Math",
         courseBands: ["5"],
+        gradingKind: "semester",
+        sessionId: year,
       });
+      await db.query(
+        `INSERT INTO amp_scope_settings(scope_kind,scope_id,"values") VALUES('class',$1,'{"standings":"class"}')`,
+        [klass.id],
+      );
       const student = (givenName: string) =>
         schools.provisionStudent(org.id, {
           givenName,
@@ -84,6 +99,13 @@ test(
       await level(continuing.learnerId, -80, 2.6, 280);
       await level(continuing.learnerId, -58, 3.0, 300);
       await level(continuing.learnerId, -1, 3.4, 400);
+
+      // Independent work this term, which a growth board counts.
+      for (const person of [settles, placing, continuing])
+        await db.query(
+          `INSERT INTO amp_skill_days(learner_id,day,skill_id,attempts,correct,independent) VALUES($1,$2,'s1',6,5,5)`,
+          [person.learnerId, day(-2)],
+        );
 
       const term = { name: "Semester 1", startsOn: day(-60), endsOn: day(100) };
       const facts = await studentFacts(db, org.id, term, day(0));
@@ -125,6 +147,17 @@ test(
       assert.equal(levels.get(settles.personId)?.end?.overall.level, 5.3);
       assert.equal(levels.get(placing.personId)?.start, null);
       assert.equal(levels.get(continuing.personId)?.start?.overall.level, 3);
+
+      // The board a student sees agrees with the teacher: the same start.
+      const growth = async (person: typeof settles) =>
+        (await studentBoard(db, person.personId, klass.id)).you.value;
+      assert.equal(await growth(settles), 90, "the climb from 4.4 to 5.3");
+      assert.equal(await growth(placing), 0, "nothing shown while placing");
+      assert.equal(
+        await growth(continuing),
+        40,
+        "from the term's first reading, 3.0, not last term's 2.6",
+      );
     } finally {
       await db.end();
       await admin.query(`DROP SCHEMA ${schema} CASCADE`);
