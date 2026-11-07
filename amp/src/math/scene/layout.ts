@@ -886,12 +886,13 @@ export function layoutScene(
     r.box.x1 - r.box.x0 <= W + 0.5 && r.box.y1 - r.box.y0 <= H + 0.5;
   s = fit(probe);
   if (!Number.isFinite(s)) s = Math.min(cap, 40);
-  s = Math.max(s, 0.01);
+  // No floor but zero: a line over a million units needs a scale far below 0.01.
+  s = Math.max(s, 1e-9);
   let best: { s: number; r: ReturnType<typeof pass> } | undefined;
   for (let i = 0; i < 10; i++) {
     const r = pass(s);
     if (fits(r) && (!best || s > best.s)) best = { s, r };
-    const next = Math.max(0.01, fit(r));
+    const next = Math.max(1e-9, fit(r));
     if (Math.abs(next - s) / s < 0.003) break;
     // Grow toward a fit that has room; shrink at least 3% when over.
     s = fits(r) ? next : Math.min(next, s * 0.97);
