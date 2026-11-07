@@ -20,9 +20,17 @@ One model, from one child to a district. A family uses the same classes, sign-in
 - **An adult learner** is a learner owned by the adult's account, marked adult. It has no birth year: the adult chooses where to start, and always sees their levels.
 - **In their class,** the adult appears as a separate member, apart from the students. The class map and standings can show them, so a child can overtake their parent or teacher. Grades, seats and rosters never count them.
 
+## An adult on their own
+
+An adult can buy a license for themselves, for example an 18-year-old preparing for the SAT, or a parent brushing up. That's the adult learner above, with no class around it, and it needs no other case:
+
+- The license covers the adult's own learner.
+- Their home is their own progress: the same student record a teacher sees, pointed at themselves. That includes time by day and skill, the map of every strand, levels, grades over a term and workbooks.
+- Adding a child later makes the place a family, and the adult becomes its teacher. Nothing is moved or re-entered.
+
 ## Licenses
 
-- **A family license** covers one child and the parent's own practice. Each additional child is an additional seat.
+- **A family license** covers one child and the parent's own practice. Each additional child is an additional seat. An adult on their own buys the same license for themselves.
 - **A school license** covers its seats. Its teachers practice free.
 - **Access** stays one rule: a learner practices with an active grant (`amp_grants`). A family seat writes a grant just as a school seat does.
 
