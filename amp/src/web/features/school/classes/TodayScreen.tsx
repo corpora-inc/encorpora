@@ -228,6 +228,21 @@ export function TodayScreen() {
                   primary={index === 0}
                   onLesson={(templateId) => set({ lesson: templateId })}
                 />
+                {todo.groupSheet && data.canPrint && (
+                  <Link
+                    to="/school/$org/classes/$class/workbooks"
+                    params={place}
+                    search={{
+                      students: todo.students
+                        .map((student) => student.id)
+                        .join(","),
+                      skill: todo.groupSheet.skillId,
+                    }}
+                    className={buttonClass("secondary")}
+                  >
+                    {todo.groupSheet.label}
+                  </Link>
+                )}
               </Todo>
             ))}
           </ul>

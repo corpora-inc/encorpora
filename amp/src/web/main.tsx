@@ -1,4 +1,5 @@
 import "./card-entry";
+import "./share-entry";
 import "./lib/zod-config";
 import { errorDetails } from "../analytics/error-details";
 import { screenOf, track } from "./lib/analytics";

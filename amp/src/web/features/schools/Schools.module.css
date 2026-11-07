@@ -1,0 +1,500 @@
+/* `/schools`. One content width, with one full-bleed band: the Start class board
+   is the thing a teacher will remember. Each screen's box is reserved from its
+   own proportions, so nothing moves as files arrive. */
+.main {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-8);
+  min-width: 0;
+  padding-bottom: var(--space-5);
+}
+.main > * {
+  box-sizing: border-box;
+  width: min(100%, var(--schools-width) + 2 * var(--schools-gutter));
+  padding-inline: var(--schools-gutter);
+  min-width: 0;
+}
+.main h2 {
+  margin: 0;
+  color: inherit;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(30px, 2.4vw + 18px, 44px);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.main p {
+  margin: 0;
+}
+
+/* The opening. */
+.hero {
+  display: grid;
+  gap: var(--space-6);
+  padding-top: var(--space-5);
+}
+.main .title {
+  margin: 0;
+  max-width: 17em;
+  color: var(--color-on-surface);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(38px, 5.4vw + 12px, 84px);
+  line-height: 1.04;
+  letter-spacing: -0.024em;
+  text-wrap: balance;
+}
+.heroBody {
+  display: grid;
+  gap: var(--space-5);
+}
+.main .lede {
+  max-width: 40em;
+  color: var(--color-muted-text);
+  font-size: clamp(18px, 0.5vw + 16px, 21px);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+.heroActions {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.action {
+  flex: 1 1 150px;
+  min-height: 56px;
+  white-space: nowrap;
+  font-size: var(--text-body);
+}
+.main .note {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.45;
+}
+@media (min-width: 960px) {
+  .heroBody {
+    grid-template-columns: minmax(0, 1fr) 384px;
+    gap: var(--space-8);
+    align-items: start;
+  }
+}
+
+/* The ribbon: a line of waves, one per objective. */
+.ribbonFigure {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  min-width: 0;
+}
+.ribbon {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ribbonLevel {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  align-items: center;
+  column-gap: var(--space-3);
+  margin: 0;
+}
+.ribbonLevel .ribbonWave {
+  order: 2;
+  display: block;
+  width: calc(var(--share) * 100%);
+  height: 18px;
+}
+.ribbonLabel {
+  order: 1;
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+  white-space: nowrap;
+}
+.ribbonLabelShort {
+  display: none;
+}
+.wave {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.wave path {
+  fill: none;
+  stroke: var(--strand, var(--color-primary));
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+.ribbonCaption {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.45;
+}
+/* From here the whole program fits on one line, at scale. */
+@media (min-width: 960px) {
+  .ribbon {
+    display: flex;
+    gap: 3px;
+  }
+  .ribbonLevel {
+    flex: var(--objectives) var(--objectives) 0;
+    display: block;
+    min-width: 0;
+  }
+  .ribbonLevel .ribbonWave {
+    width: 100%;
+    height: 24px;
+  }
+  .ribbonLabel {
+    display: block;
+    margin-top: var(--space-2);
+    overflow: visible;
+  }
+  .ribbonLabelShort {
+    display: inline;
+  }
+  .ribbonLabelFull {
+    display: none;
+  }
+}
+/* The one orchestrated moment: the line draws itself once. */
+@media (prefers-reduced-motion: no-preference) {
+  .ribbonLevel .ribbonWave {
+    animation: ribbon-draw 700ms var(--ease-standard) both;
+    animation-delay: calc(var(--index) * 70ms + 120ms);
+  }
+}
+@keyframes ribbon-draw {
+  from {
+    clip-path: inset(-8px 100% -8px 0);
+  }
+  to {
+    clip-path: inset(-8px 0 -8px 0);
+  }
+}
+
+/* The counts, as sentences that happen to start with a number. */
+.facts {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+  padding: var(--space-4) 0 0;
+  list-style: none;
+  border-top: 1px solid var(--color-border);
+}
+.facts li {
+  display: grid;
+  /* Each number takes the same width, so the sentences start on one line. */
+  grid-template-columns: 96px minmax(0, 1fr);
+  align-items: baseline;
+  column-gap: var(--space-3);
+  margin: 0;
+}
+.facts strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(36px, 2vw + 24px, 52px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: lining-nums;
+  color: var(--color-on-surface);
+}
+.facts span {
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+@media (min-width: 960px) {
+  .facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
+  }
+  .facts li {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--space-2);
+  }
+}
+
+/* A real screen. */
+.shot {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-sunken);
+  box-shadow: var(--shadow-overlay);
+  aspect-ratio: var(--shot-narrow);
+}
+.shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+}
+@media (min-width: 720px) {
+  .shot {
+    aspect-ratio: var(--shot-wide);
+  }
+}
+
+/* Start class fills the page, on the product's own green. */
+.main .band {
+  width: 100%;
+  padding: var(--space-7) 0 var(--space-8);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+.bandInner {
+  box-sizing: border-box;
+  display: grid;
+  gap: var(--space-5);
+  width: min(100%, var(--schools-width) + 2 * var(--schools-gutter));
+  margin-inline: auto;
+  padding-inline: var(--schools-gutter);
+}
+.bandHead {
+  display: grid;
+  gap: var(--space-2);
+}
+.band .bandHead p {
+  max-width: 34em;
+  color: inherit;
+  font-size: clamp(18px, 0.5vw + 16px, 21px);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+.boardStage {
+  display: grid;
+  gap: var(--space-5);
+}
+.boardStage .shot {
+  border-color: transparent;
+}
+.cardsLine {
+  display: grid;
+  gap: var(--space-2);
+  align-content: center;
+}
+.band .cardsLine h3 {
+  margin: 0;
+  color: inherit;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(26px, 1.4vw + 20px, 34px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.band .cardsLine p {
+  color: inherit;
+  font-size: clamp(18px, 0.5vw + 16px, 21px);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+@media (prefers-color-scheme: dark) {
+  /* The dark theme's primary is a light mint, too bright for a whole band. */
+  .main .band {
+    background: var(--color-surface-sunken);
+    color: var(--color-on-surface-sunken);
+  }
+}
+@media (min-width: 960px) {
+  .bandHead {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    align-items: baseline;
+    gap: var(--space-6);
+  }
+  .boardStage {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: auto auto;
+    gap: 0 var(--space-5);
+  }
+  .boardStage > .shot {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+  .cardsLine {
+    grid-column: 1 / span 6;
+    grid-row: 2;
+    padding-top: var(--space-6);
+  }
+  .boardStage > .cardsShot {
+    grid-column: 8 / -1;
+    grid-row: 2;
+    margin-top: calc(-1 * var(--space-8));
+    position: relative;
+  }
+}
+
+/* A screen with its one line beside it. */
+.feature {
+  display: grid;
+  gap: var(--space-5);
+}
+.featureText {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+}
+.main .featureText p {
+  max-width: 28em;
+  color: var(--color-muted-text);
+  font-size: clamp(18px, 0.4vw + 16px, 20px);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+@media (min-width: 960px) {
+  .feature {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: var(--space-5);
+    align-items: start;
+  }
+  .feature .featureText {
+    grid-column: 1 / span 3;
+    position: sticky;
+    top: var(--space-6);
+    padding-top: var(--space-5);
+  }
+  .feature .featureShot {
+    grid-column: 4 / -1;
+  }
+  .featureFlip .featureText {
+    grid-column: 10 / -1;
+    grid-row: 1;
+  }
+  .featureFlip .featureShot {
+    grid-column: 1 / span 9;
+    grid-row: 1;
+  }
+}
+
+/* The gradebook, with one student's evidence opened over its edge. */
+.grades {
+  display: grid;
+  gap: var(--space-5);
+}
+.gradesStage {
+  display: grid;
+  gap: var(--space-4);
+}
+@media (min-width: 720px) {
+  .gradesStage {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 0;
+  }
+  .gradebookShot {
+    grid-column: 1 / span 9;
+    grid-row: 1;
+  }
+  .evidenceShot {
+    grid-column: 8 / -1;
+    grid-row: 1;
+    align-self: start;
+    z-index: 1;
+    margin-top: var(--space-7);
+    margin-bottom: calc(-1 * var(--space-6));
+  }
+}
+@media (min-width: 960px) {
+  .grades > .featureText {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    align-items: baseline;
+    gap: var(--space-6);
+  }
+}
+
+/* Standings: a tall board at its own size, with room around it. */
+@media (min-width: 960px) {
+  .standings .featureText {
+    grid-column: 1 / span 5;
+  }
+  .standings .standingsShot {
+    grid-column: 8 / -1;
+  }
+}
+
+/* What schools ask. */
+.questions {
+  display: grid;
+  gap: var(--space-5);
+}
+.questionList {
+  display: grid;
+  margin: 0;
+}
+.question {
+  display: grid;
+  gap: var(--space-2);
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+.question dt {
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.25;
+  color: var(--color-on-surface);
+}
+.question dd {
+  margin: 0;
+  max-width: 38em;
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+.question a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-underline-offset: 3px;
+  /* A link stays on one line, so two never share a row's height. */
+  white-space: nowrap;
+}
+.question a:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+@media (min-width: 960px) {
+  .questions {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+  .questions > h2 {
+    grid-column: 1 / span 4;
+    position: sticky;
+    top: var(--space-6);
+    align-self: start;
+    padding-top: var(--space-4);
+  }
+  .questionList {
+    grid-column: 5 / -1;
+  }
+  .question {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+    gap: var(--space-5);
+  }
+}
+
+/* The way in, once more. */
+.closing {
+  display: grid;
+  gap: var(--space-4);
+}
+@media (min-width: 720px) {
+  .closing {
+    grid-template-columns: minmax(0, 1fr) 384px;
+    align-items: center;
+    gap: var(--space-6);
+  }
+}

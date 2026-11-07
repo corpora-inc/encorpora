@@ -16,6 +16,16 @@ export function pitchDescription(programName?: string) {
   return `A complete math curriculum${programName ? ` for ${programName} families` : ""}, from counting to precalculus. AMP finds your child’s level and chooses each next problem, with lessons and printable workbooks built in.`;
 }
 
+/** What a search result says about the school pages, which aren't for parents. */
+const schoolDescriptions: Readonly<Record<string, string>> = {
+  "/schools":
+    "A complete math curriculum for your school, from counting to precalculus: unlimited problems and personalized workbooks, a suggested grade range with its evidence, and sign-in with no email.",
+  "/schools/scope-and-sequence":
+    "AMP’s scope and sequence: every objective from Kindergarten through Precalculus, with its standards and prerequisites. Read it online or download the PDF or CSV.",
+  "/schools/trust":
+    "How AMP handles student data: what’s collected, what isn’t, who signs in, retention, export and deletion, and the student data agreement as schools accept it.",
+};
+
 export type RouteHead = {
   title: string;
   description: string;
@@ -38,7 +48,9 @@ export function routeHead(
       : undefined;
   return {
     title,
-    description: pitchDescription(program && programNames[program]),
+    description:
+      schoolDescriptions[path] ??
+      pitchDescription(program && programNames[program]),
     canonical:
       publicAppPageTitle(location, home) === undefined
         ? null

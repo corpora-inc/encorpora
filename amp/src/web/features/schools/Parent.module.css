@@ -1,0 +1,218 @@
+/* `/p`. One student on one page, set for a phone first. Nothing to click. */
+.page {
+  box-sizing: border-box;
+  display: grid;
+  align-content: start;
+  gap: var(--space-6);
+  width: min(100%, 720px);
+  min-height: 100dvh;
+  margin-inline: auto;
+  padding: var(--space-6) var(--space-4) var(--space-7);
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+}
+.page p,
+.calm p {
+  margin: 0;
+}
+.head {
+  display: grid;
+  gap: var(--space-2);
+}
+.page .school,
+.page .classes {
+  color: var(--color-muted-text);
+  font-size: var(--text-dense);
+  line-height: 1.4;
+}
+.page h1 {
+  margin: 0;
+  color: var(--color-on-surface);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(36px, 4vw + 22px, 52px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+.section {
+  display: grid;
+  gap: var(--space-4);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+.page h2 {
+  margin: 0;
+  color: var(--color-on-surface);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.page .quiet,
+.page .key {
+  color: var(--color-muted-text);
+  font-size: var(--text-dense);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+.levels {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.levelRow {
+  display: grid;
+  grid-template-columns: minmax(84px, 112px) minmax(0, 1fr) 62px;
+  align-items: center;
+  column-gap: var(--space-3);
+  min-height: 28px;
+  margin: 0;
+}
+.axisRow {
+  display: grid;
+  grid-template-columns: minmax(84px, 112px) minmax(0, 1fr) 62px;
+  align-items: baseline;
+  column-gap: var(--space-3);
+  margin-top: calc(-1 * var(--space-2));
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+.axisLabel {
+  font-weight: 500;
+}
+.levelName {
+  font-size: var(--text-dense);
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+.levelRow:first-child .levelName {
+  font-weight: 650;
+}
+.levelNumbers {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: tabular-nums;
+  text-align: end;
+  white-space: nowrap;
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin: 0;
+}
+.stats div {
+  display: grid;
+  gap: var(--space-1);
+}
+.stats dt {
+  order: 2;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+}
+.stats dd {
+  order: 1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 2vw + 22px, 36px);
+  line-height: 1.1;
+  font-variant-numeric: lining-nums;
+}
+.objectives,
+.grades {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.objectives li {
+  display: grid;
+  grid-template-columns: 56px 8px minmax(0, 1fr);
+  align-items: baseline;
+  column-gap: var(--space-3);
+  margin: 0;
+  font-size: var(--text-dense);
+  line-height: 1.4;
+}
+.when {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  font-variant-numeric: tabular-nums;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--strand, var(--color-primary));
+  transform: translateY(-1px);
+}
+.grades li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin: 0;
+  font-size: var(--text-dense);
+  line-height: 1.4;
+}
+.grades strong {
+  flex: none;
+  font-weight: 650;
+  font-size: var(--text-body);
+}
+.page .note {
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+}
+
+/* An ended link, and a page that didn't load: the same quiet screen. */
+.calm {
+  box-sizing: border-box;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: var(--space-4);
+  min-height: 100dvh;
+  padding: var(--space-6) var(--space-4);
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  text-align: center;
+}
+.mark {
+  width: 56px;
+  height: 36px;
+  color: var(--color-primary);
+}
+.mark svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.calm h1 {
+  margin: 0;
+  max-width: 14em;
+  color: var(--color-on-surface);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(30px, 3vw + 20px, 42px);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.calm p {
+  max-width: 32em;
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+  line-height: 1.5;
+  text-wrap: pretty;
+}

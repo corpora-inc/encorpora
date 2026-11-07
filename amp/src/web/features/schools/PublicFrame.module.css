@@ -1,0 +1,110 @@
+/* The header and footer of the public school pages. Everything sits on one
+   content width, and the legacy element rules for header and footer lose here. */
+.page {
+  --schools-width: 1240px;
+  --schools-gutter: max(var(--space-4), env(safe-area-inset-left));
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  min-height: 100dvh;
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+}
+@media (min-width: 720px) {
+  .page {
+    --schools-gutter: var(--space-6);
+  }
+}
+.header {
+  display: block;
+  height: auto;
+  min-height: 0;
+  border: 0;
+}
+.headerRow {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: min(100%, var(--schools-width) + 2 * var(--schools-gutter));
+  min-height: calc(var(--target-size) + var(--space-4));
+  margin-inline: auto;
+  padding-inline: var(--schools-gutter);
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--target-size);
+  border-radius: var(--radius-control);
+  color: var(--color-on-surface);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.brand svg {
+  flex: none;
+  width: 34px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+.brand:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.wordmark {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.forSchools {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--color-muted-text);
+}
+.headerLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+.signIn {
+  white-space: nowrap;
+}
+.wideOnly {
+  display: none;
+  white-space: nowrap;
+}
+@media (min-width: 880px) {
+  .wideOnly {
+    display: inline-flex;
+  }
+}
+.footer {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0 var(--space-5);
+  width: min(100% - 2 * var(--schools-gutter), var(--schools-width));
+  margin: var(--space-7) auto 0;
+  padding: var(--space-3) 0 max(var(--space-5), env(safe-area-inset-bottom));
+  border-top: 1px solid var(--color-border);
+}
+.footer a {
+  display: inline-flex;
+  align-items: center;
+  min-width: var(--target-size);
+  min-height: var(--target-size);
+  color: var(--color-primary);
+  font-size: var(--text-label);
+  text-underline-offset: 3px;
+}
+.footer a:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

@@ -219,6 +219,7 @@ export function todayTodos(
               label: "Teach this lesson",
             }
           : { kind: "skill", skillId, label: "Open this skill" },
+        groupSheet: { skillId, label: "Print a group sheet" },
       };
     });
 

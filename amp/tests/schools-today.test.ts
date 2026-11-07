@@ -127,6 +127,20 @@ test("no work yet: the next step is Start class, not an empty screen", () => {
   );
 });
 
+test("a shared gap can also go on paper, for those students and that skill", () => {
+  const todos = todayTodos(
+    input({ skills: [gap("amara"), gap("diego"), gap("lena")] }),
+  );
+  const [first] = todos;
+  assert.equal(first!.kind, "shared-gap");
+  assert.equal(first!.groupSheet?.label, "Print a group sheet");
+  assert.equal(
+    first!.groupSheet?.skillId,
+    "skillId" in first!.action ? first!.action.skillId : "",
+  );
+  assert.ok(todos.slice(1).every((todo) => !todo.groupSheet));
+});
+
 test("a shared gap names the skill and the students, and opens the lesson", () => {
   const todos = todayTodos(
     input({ skills: [gap("amara"), gap("diego"), gap("lena")] }),
