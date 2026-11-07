@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildApp, GLOBAL_RATE_LIMIT } from "../src/server/app.js";
+import { buildApp } from "../src/server/app.js";
+import { ANONYMOUS_RATE_LIMIT } from "../src/server/rate-limits.js";
 import type { Repository } from "../src/server/repository.js";
 
 // Only trial creation is reached; every other repository method is unused.
@@ -70,7 +71,7 @@ test("the global limit applies to routes defined by the app", async () => {
   const app = buildApp({ repository, authenticate });
   try {
     let last = 0;
-    for (let i = 0; i <= GLOBAL_RATE_LIMIT; i++)
+    for (let i = 0; i <= ANONYMOUS_RATE_LIMIT; i++)
       last = (await app.inject({ url: "/api/v1/health" })).statusCode;
     assert.equal(last, 429);
     // A signed-in client at the same address has its own allowance.

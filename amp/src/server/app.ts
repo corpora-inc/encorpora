@@ -16,6 +16,13 @@ import type { WorkbookRenderer } from "../workbook/pdf.js";
 import { readFile } from "node:fs/promises";
 import Fastify, { type FastifyInstance } from "fastify";
 import rateLimit from "@fastify/rate-limit";
+import {
+  ANONYMOUS_RATE_LIMIT,
+  GLOBAL_RATE_LIMIT,
+  isAnonymous,
+  limitEachAddress,
+  rateLimitKey,
+} from "./rate-limits";
 import { z, ZodError } from "zod";
 import { createHash, randomUUID } from "node:crypto";
 import {
@@ -119,8 +126,7 @@ export function redactUrl(url: string) {
   return path + (parsed.search ? decodeURIComponent(parsed.search) : "");
 }
 
-/** Requests per minute per credential, or per address when anonymous. */
-export const GLOBAL_RATE_LIMIT = 600;
+export { GLOBAL_RATE_LIMIT } from "./rate-limits";
 type AppOptions = {
   /** Trusted service configuration, never accepted from a practice request. */
   practicePolicy?: PracticePolicy;
@@ -196,15 +202,12 @@ export function buildApp(options: AppOptions) {
   // behind one address is not throttled as one client; anonymous requests
   // are limited per client address.
   app.register(rateLimit, {
-    max: GLOBAL_RATE_LIMIT,
+    max: (_request, key) =>
+      isAnonymous(key) ? ANONYMOUS_RATE_LIMIT : GLOBAL_RATE_LIMIT,
     timeWindow: "1 minute",
-    keyGenerator: (request) => {
-      const credential = request.headers.authorization;
-      return credential
-        ? `credential:${createHash("sha256").update(credential).digest("hex")}`
-        : `address:${request.ip}`;
-    },
+    keyGenerator: rateLimitKey,
   });
+  limitEachAddress(app);
   // Routes load after the limiter so its per-route hook sees every route;
   // fastify-plugin keeps hooks and the error handler on the root instance.
   app.register(fp(async (app) => routes(app, options)));
