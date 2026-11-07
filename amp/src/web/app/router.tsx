@@ -46,6 +46,7 @@ import {
   studentSignInEnded,
 } from "../lib/student-device";
 import { workbookSearchSchema } from "../features/workbooks/model";
+import { schoolRoutes } from "./school-routes";
 const searchSchema = z
   .object({
     return: z
@@ -56,9 +57,13 @@ const searchSchema = z
         "arkansas-efa",
         "new-hampshire-efa",
         "arizona-esa",
+        "school",
+        "school-invite",
       ])
       .optional()
       .catch(undefined),
+    /** Where a school sign-in continues; `continuationSearch` checks it. */
+    next: z.string().max(300).optional().catch(undefined),
     entry: signupEntrySchema.optional().catch(undefined),
     program: z.enum(["ar-efa", "az-esa", "nh-efa"]).optional().catch(undefined),
     token: z.string().max(2048).optional(),
@@ -661,6 +666,9 @@ export const router = createRouter({
     invoiceArizona,
     invoiceNewHampshire,
     ...schoolPreview,
+    // Linked to through the splat route, as every staff screen is, so their
+    // URLs stay out of the typed route table.
+    ...(schoolRoutes(root) as unknown as typeof schoolPreview),
     fallback,
   ]),
   history: nativeRuntime

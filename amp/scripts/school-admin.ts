@@ -20,6 +20,7 @@ import { SchoolRepository } from "../src/schools/repository.js";
  * add-staff              {orgId, role, givenName, familyName?, email?, accountId?, classId?}
  * issue-license          {orgId, seats, endsAt, startsAt?, reference?}
  * set-seats              {licenseId, seats}
+ * extend-license         {licenseId, endsAt}
  * add-student            {orgId, givenName, familyName?, displayName?, email?, identifier?, gradeLevel?, classId?}
  * issue-student-session  {personId, mode: "shared" | "personal"}
  */
@@ -42,6 +43,8 @@ export async function schoolAdmin(
       return repository.issueLicense(input);
     case "set-seats":
       return repository.setSeats(input);
+    case "extend-license":
+      return repository.extendLicense(input);
     case "add-student": {
       const { orgId, ...student } = z
         .looseObject({ orgId: z.uuid() })

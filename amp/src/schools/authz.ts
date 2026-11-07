@@ -81,16 +81,30 @@ export async function loadActor(
   };
 }
 
-const VIEWER = new Set<SchoolAction>([
+/** What staff can do at the org they work at: open it, and list what's theirs. */
+const ORG_STAFF = new Set<SchoolAction>([
   "org.read",
   "classes.read",
   "students.read",
+  "calendar.read",
 ]);
-/** What staff can do at the org they work at: open it, and list what's theirs. */
-const ORG_STAFF = VIEWER;
+const VIEWER = new Set<SchoolAction>([
+  ...ORG_STAFF,
+  "staff.read",
+  "license.read",
+]);
 const AIDE_CLASS = new Set<SchoolAction>(["classes.read", "students.read"]);
-const TEACHER_CLASS = new Set<SchoolAction>([...AIDE_CLASS, "students.add"]);
-const SELF = new Set<SchoolAction>(["orgs.list"]);
+const TEACHER_CLASS = new Set<SchoolAction>([
+  ...AIDE_CLASS,
+  "students.add",
+  "classes.update",
+  "students.update",
+]);
+const SELF = new Set<SchoolAction>([
+  "orgs.list",
+  "setup.start",
+  "invites.accept",
+]);
 
 /** The only authorization rule for school routes. Admin covers descendants
  * along the path, viewer reads them, and teacher and aide cover the classes

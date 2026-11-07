@@ -52,7 +52,7 @@ function SchoolNav({
   );
 }
 
-function Brand() {
+export function Brand() {
   return (
     <span className={styles.brand}>
       <WaveMark />

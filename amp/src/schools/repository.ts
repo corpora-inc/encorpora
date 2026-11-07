@@ -9,6 +9,7 @@ import {
 } from "./principal.js";
 import {
   addStaffSchema,
+  extendLicenseSchema,
   createClassSchema,
   createOrgSchema,
   createStudentSchema,
@@ -18,8 +19,11 @@ import {
   setSeatsSchema,
   SchoolError,
   type ClassResource,
+  type CreateClass,
+  type CreateStudent,
   type DataAgreement,
   type EnrollmentRole,
+  type IssueLicense,
   type OrgKind,
   type OrgResource,
   type Page,
@@ -55,7 +59,7 @@ const HANDLE_SECOND = [
   "Wren",
 ];
 /** A name for wider standings boards: says nothing about who this is. */
-const generateHandle = () =>
+export const generateHandle = () =>
   `${HANDLE_FIRST[randomInt(HANDLE_FIRST.length)]}${HANDLE_SECOND[randomInt(HANDLE_SECOND.length)]}${randomInt(1000, 10000)}`;
 
 const JOIN_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
@@ -104,12 +108,12 @@ export class SchoolRepository {
       client.release();
     }
   }
-  private async org(client: PoolClient, orgId: string): Promise<Org> {
+  async org(client: PoolClient, orgId: string): Promise<Org> {
     const org = (await client.query(FROM_ORG, [orgId])).rows[0];
     if (!org) throw new SchoolError(404, "org_not_found");
     return org;
   }
-  private async today(client: PoolClient, timezone: string): Promise<string> {
+  async today(client: PoolClient, timezone: string): Promise<string> {
     return (
       await client.query(
         "SELECT to_char(now() AT TIME ZONE $1,'YYYY-MM-DD') AS today",
@@ -118,11 +122,7 @@ export class SchoolRepository {
     ).rows[0].today;
   }
   /** A class this org's staff can reach: at the org or below it. */
-  private async classIn(
-    client: PoolClient,
-    classId: string,
-    orgPath: string[],
-  ) {
+  async classIn(client: PoolClient, classId: string, orgPath: string[]) {
     const found = (
       await client.query(
         `SELECT c.id,c.org_id,o.path,o.timezone FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
@@ -183,18 +183,27 @@ export class SchoolRepository {
       return { id: await this.acceptAgreement(client, org.id, input) };
     });
   }
-  private async acceptAgreement(
+  async acceptAgreement(
     client: PoolClient,
     orgId: string,
     input: DataAgreement,
+    signerPersonId: string | null = null,
   ) {
     const id = randomUUID();
     await client.query(
-      "INSERT INTO amp_data_agreements(id,org_id,version,signer_name,signer_title) VALUES($1,$2,$3,$4,$5)",
-      [id, orgId, input.version, input.signerName, input.signerTitle],
+      "INSERT INTO amp_data_agreements(id,org_id,version,signer_person_id,signer_name,signer_title) VALUES($1,$2,$3,$4,$5,$6)",
+      [
+        id,
+        orgId,
+        input.version,
+        signerPersonId,
+        input.signerName,
+        input.signerTitle,
+      ],
     );
     await recordEvent(client, {
       orgId,
+      actorPersonId: signerPersonId,
       action: "agreement.accepted",
       targetKind: "agreement",
       targetId: id,
@@ -275,7 +284,7 @@ export class SchoolRepository {
     ).rows[0];
     return user ? `amp|${user.id}` : null;
   }
-  private async enroll(
+  async enroll(
     client: PoolClient,
     classId: string,
     personId: string,
@@ -299,73 +308,85 @@ export class SchoolRepository {
     now = new Date(),
   ) {
     const input = createStudentSchema.parse(raw);
-    return this.transaction(async (client) => {
-      const named = await this.org(client, orgId);
-      const home = input.classId
-        ? await this.classIn(client, input.classId, named.path)
-        : null;
-      const org: Org = home
-        ? { id: home.org_id, path: home.path, timezone: home.timezone }
-        : named;
-      const personId = randomUUID();
-      const learnerId = randomUUID();
-      await client.query(
-        "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,$3,$4)",
-        [
-          learnerId,
-          schoolAccountId(personId),
-          learnerName(input),
-          input.gradeLevel === undefined
-            ? null
-            : birthYearForGrade(input.gradeLevel, now),
-        ],
-      );
-      await client.query(
-        `INSERT INTO amp_people(id,tenant_id,given_name,family_name,display_name,handle,email,identifier,grade_level,learner_id,timezone)
-         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`,
-        [
-          personId,
-          org.path[0],
-          input.givenName,
-          input.familyName ?? null,
-          input.displayName ?? null,
-          generateHandle(),
-          input.email ?? null,
-          input.identifier ?? null,
-          input.gradeLevel ?? null,
-          learnerId,
-          org.timezone,
-        ],
-      );
-      const today = await this.today(client, org.timezone);
-      await client.query(
-        "INSERT INTO amp_org_roles(id,person_id,org_id,role,begin_on) VALUES($1,$2,$3,'student',$4)",
-        [randomUUID(), personId, org.id, today],
-      );
-      if (home) await this.enroll(client, home.id, personId, "student", today);
-      const seated = await this.takeSeat(client, personId, learnerId, org.path);
-      await recordEvent(client, {
-        orgId: org.id,
-        actorPersonId,
-        action: "student.added",
-        targetKind: "person",
-        targetId: personId,
-        detail: {
-          after: {
-            classId: input.classId ?? null,
-            gradeLevel: input.gradeLevel ?? null,
-            seated,
-          },
-        },
-      });
-      return {
-        personId,
+    return this.transaction((client) =>
+      this.provisionStudentIn(client, orgId, input, actorPersonId, now),
+    );
+  }
+  /** `provisionStudent` inside a transaction the caller holds: the reconciler
+   * records a student's external ID in the same one, so a retry can't add them
+   * twice. */
+  async provisionStudentIn(
+    client: PoolClient,
+    orgId: string,
+    input: CreateStudent,
+    actorPersonId: string | null = null,
+    now = new Date(),
+    personId: string = randomUUID(),
+  ) {
+    const named = await this.org(client, orgId);
+    const home = input.classId
+      ? await this.classIn(client, input.classId, named.path)
+      : null;
+    const org: Org = home
+      ? { id: home.org_id, path: home.path, timezone: home.timezone }
+      : named;
+    const learnerId = randomUUID();
+    await client.query(
+      "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,$3,$4)",
+      [
         learnerId,
-        accountId: schoolAccountId(personId),
-        orgId: org.id,
-        seated,
-      };
+        schoolAccountId(personId),
+        learnerName(input),
+        input.gradeLevel === undefined
+          ? null
+          : birthYearForGrade(input.gradeLevel, now),
+      ],
+    );
+    await client.query(
+      `INSERT INTO amp_people(id,tenant_id,given_name,family_name,display_name,handle,email,identifier,grade_level,learner_id,timezone)
+         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`,
+      [
+        personId,
+        org.path[0],
+        input.givenName,
+        input.familyName ?? null,
+        input.displayName ?? null,
+        generateHandle(),
+        input.email ?? null,
+        input.identifier ?? null,
+        input.gradeLevel ?? null,
+        learnerId,
+        org.timezone,
+      ],
+    );
+    const today = await this.today(client, org.timezone);
+    await client.query(
+      "INSERT INTO amp_org_roles(id,person_id,org_id,role,begin_on) VALUES($1,$2,$3,'student',$4)",
+      [randomUUID(), personId, org.id, today],
+    );
+    if (home) await this.enroll(client, home.id, personId, "student", today);
+    const seated = await this.takeSeat(client, personId, learnerId, org.path);
+    await recordEvent(client, {
+      orgId: org.id,
+      actorPersonId,
+      action: "student.added",
+      targetKind: "person",
+      targetId: personId,
+      detail: {
+        after: {
+          classId: input.classId ?? null,
+          gradeLevel: input.gradeLevel ?? null,
+          seated,
+        },
+      },
     });
+    return {
+      personId,
+      learnerId,
+      accountId: schoolAccountId(personId),
+      orgId: org.id,
+      seated,
+    };
   }
 
   /** Locks each candidate license, nearest first (the same order everywhere,
@@ -453,38 +474,39 @@ export class SchoolRepository {
 
   async issueLicense(raw: unknown) {
     const input = issueLicenseSchema.parse(raw);
-    return this.transaction(async (client) => {
-      const org = await this.org(client, input.orgId);
-      const id = randomUUID();
-      const license = (
-        await client.query(
-          `INSERT INTO amp_school_licenses(id,org_id,seats,starts_at,ends_at,reference)
+    return this.transaction((client) => this.issueLicenseIn(client, input));
+  }
+  async issueLicenseIn(client: PoolClient, input: IssueLicense) {
+    const org = await this.org(client, input.orgId);
+    const id = randomUUID();
+    const license = (
+      await client.query(
+        `INSERT INTO amp_school_licenses(id,org_id,seats,starts_at,ends_at,reference)
            VALUES($1,$2,$3,COALESCE($4::timestamptz,now()),$5,$6)
            RETURNING id,org_id,seats,starts_at,ends_at,starts_at<=now() AND ends_at>now() AS in_force`,
-          [
-            id,
-            org.id,
-            input.seats,
-            input.startsAt ?? null,
-            input.endsAt,
-            input.reference ?? null,
-          ],
-        )
-      ).rows[0];
-      const assigned = license.in_force
-        ? await this.seatWaitingStudents(client, license)
-        : 0;
-      await recordEvent(client, {
-        orgId: org.id,
-        action: "license.issued",
-        targetKind: "license",
-        targetId: id,
-        detail: {
-          after: { seats: input.seats, endsAt: input.endsAt, assigned },
-        },
-      });
-      return { licenseId: id, seats: input.seats, assigned };
+        [
+          id,
+          org.id,
+          input.seats,
+          input.startsAt ?? null,
+          input.endsAt,
+          input.reference ?? null,
+        ],
+      )
+    ).rows[0];
+    const assigned = license.in_force
+      ? await this.seatWaitingStudents(client, license)
+      : 0;
+    await recordEvent(client, {
+      orgId: org.id,
+      action: "license.issued",
+      targetKind: "license",
+      targetId: id,
+      detail: {
+        after: { seats: input.seats, endsAt: input.endsAt, assigned },
+      },
     });
+    return { licenseId: id, seats: input.seats, assigned };
   }
 
   /** Never below the seats in use: release specific students first. */
@@ -522,6 +544,42 @@ export class SchoolRepository {
         },
       });
       return { licenseId: license.id, seats: input.seats, assigned };
+    });
+  }
+
+  /** A new end date for a license and every seat on it. */
+  async extendLicense(raw: unknown) {
+    const input = extendLicenseSchema.parse(raw);
+    return this.transaction(async (client) => {
+      const license = (
+        await client.query(
+          "SELECT id,org_id,ends_at,starts_at FROM amp_school_licenses WHERE id=$1 FOR UPDATE",
+          [input.licenseId],
+        )
+      ).rows[0];
+      if (!license) throw new SchoolError(404, "license_not_found");
+      if (new Date(input.endsAt) <= license.starts_at)
+        throw new SchoolError(409, "license_ends_before_start");
+      await client.query(
+        "UPDATE amp_school_licenses SET ends_at=$2,status='active' WHERE id=$1",
+        [license.id, input.endsAt],
+      );
+      const moved = await client.query(
+        `UPDATE amp_grants g SET ends_at=$2 FROM amp_seats s
+         WHERE s.grant_id=g.id AND s.license_id=$1 AND s.released_at IS NULL`,
+        [license.id, input.endsAt],
+      );
+      await recordEvent(client, {
+        orgId: license.org_id,
+        action: "license.extended",
+        targetKind: "license",
+        targetId: license.id,
+        detail: {
+          before: { endsAt: license.ends_at },
+          after: { endsAt: input.endsAt, seats: moved.rowCount },
+        },
+      });
+      return { licenseId: license.id, endsAt: input.endsAt };
     });
   }
 
@@ -599,8 +657,9 @@ export class SchoolRepository {
     });
   }
 
-  /** District calendars are inherited; a school without one gets a default year. */
-  private async yearSession(client: PoolClient, org: Org): Promise<string> {
+  /** The year in use: this one, or the next if the chosen one hasn't started.
+   * District calendars are inherited; a school without one gets a default year. */
+  async yearSession(client: PoolClient, org: Org): Promise<string> {
     await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
       `school-calendar:${org.id}`,
     ]);
@@ -608,8 +667,8 @@ export class SchoolRepository {
     const existing = (
       await client.query(
         `SELECT id FROM amp_academic_sessions
-         WHERE org_id=ANY($1::uuid[]) AND kind='year' AND starts_on<=$2 AND ends_on>=$2
-         ORDER BY array_position($1::uuid[],org_id) DESC,starts_on DESC,id LIMIT 1`,
+         WHERE org_id=ANY($1::uuid[]) AND kind='year' AND ends_on>=$2
+         ORDER BY array_position($1::uuid[],org_id) DESC,starts_on,id LIMIT 1`,
         [org.path, today],
       )
     ).rows[0];
@@ -634,66 +693,83 @@ export class SchoolRepository {
     orgId: string,
     raw: unknown,
     actorPersonId: string | null = null,
+    teacherPersonId?: string,
   ): Promise<ClassResource> {
     const input = createClassSchema.parse(raw);
     return this.transaction(async (client) => {
-      const org = await this.org(client, orgId);
-      let sessionId = input.sessionId;
-      if (sessionId) {
-        const owned = await client.query(
-          "SELECT 1 FROM amp_academic_sessions WHERE id=$1 AND org_id=ANY($2::uuid[])",
-          [sessionId, org.path],
+      const created = await this.createClassIn(
+        client,
+        orgId,
+        input,
+        actorPersonId,
+      );
+      if (teacherPersonId) {
+        const org = await this.org(client, created.orgId);
+        await this.enroll(
+          client,
+          created.id,
+          teacherPersonId,
+          "teacher",
+          await this.today(client, org.timezone),
         );
-        if (!owned.rowCount) throw new SchoolError(404, "session_not_found");
-      } else sessionId = await this.yearSession(client, org);
-      const id = randomUUID();
-      const gradingKind = input.gradingKind ?? "semester";
-      const courseBands = input.courseBands ?? [];
-      for (let attempt = 0; ; attempt++) {
-        const joinCode = generateJoinCode();
-        const inserted = await client.query(
-          `INSERT INTO amp_classes(id,org_id,session_id,name,course_bands,grading_kind,join_code)
-           VALUES($1,$2,$3,$4,$5,$6,$7) ON CONFLICT (join_code) DO NOTHING RETURNING id`,
-          [
-            id,
-            org.id,
-            sessionId,
-            input.name,
-            courseBands,
-            gradingKind,
-            joinCode,
-          ],
-        );
-        if (inserted.rowCount) {
-          await recordEvent(client, {
-            orgId: org.id,
-            actorPersonId,
-            action: "class.created",
-            targetKind: "class",
-            targetId: id,
-            detail: { after: { sessionId, courseBands, gradingKind } },
-          });
-          return {
-            id,
-            orgId: org.id,
-            sessionId,
-            name: input.name,
-            courseBands,
-            gradingKind,
-            joinCode,
-            studentCount: 0,
-          };
-        }
-        if (attempt >= 5) throw new Error("No unused class code was found");
       }
+      return created;
     });
+  }
+  async createClassIn(
+    client: PoolClient,
+    orgId: string,
+    input: CreateClass,
+    actorPersonId: string | null = null,
+  ): Promise<ClassResource> {
+    const org = await this.org(client, orgId);
+    let sessionId = input.sessionId;
+    if (sessionId) {
+      const owned = await client.query(
+        "SELECT 1 FROM amp_academic_sessions WHERE id=$1 AND org_id=ANY($2::uuid[])",
+        [sessionId, org.path],
+      );
+      if (!owned.rowCount) throw new SchoolError(404, "session_not_found");
+    } else sessionId = await this.yearSession(client, org);
+    const id = randomUUID();
+    const gradingKind = input.gradingKind ?? "semester";
+    const courseBands = input.courseBands ?? [];
+    for (let attempt = 0; ; attempt++) {
+      const joinCode = generateJoinCode();
+      const inserted = await client.query(
+        `INSERT INTO amp_classes(id,org_id,session_id,name,course_bands,grading_kind,join_code)
+           VALUES($1,$2,$3,$4,$5,$6,$7) ON CONFLICT (join_code) DO NOTHING RETURNING id`,
+        [id, org.id, sessionId, input.name, courseBands, gradingKind, joinCode],
+      );
+      if (inserted.rowCount) {
+        await recordEvent(client, {
+          orgId: org.id,
+          actorPersonId,
+          action: "class.created",
+          targetKind: "class",
+          targetId: id,
+          detail: { after: { sessionId, courseBands, gradingKind } },
+        });
+        return {
+          id,
+          orgId: org.id,
+          sessionId,
+          name: input.name,
+          courseBands,
+          gradingKind,
+          joinCode,
+          studentCount: 0,
+        };
+      }
+      if (attempt >= 5) throw new Error("No unused class code was found");
+    }
   }
 
   /** The orgs this account holds a role at, one entry per org. */
   async myOrgs(accountId: string): Promise<OrgResource[]> {
     return (
       await this.pool.query(
-        `SELECT o.id,o.kind,o.name,o.parent_id AS "parentId",o.timezone,
+        `SELECT o.id,o.kind,o.name,o.parent_id AS "parentId",o.timezone,o.solo,o.setup_pending AS "setupPending",
            array_agg(DISTINCT r.role ORDER BY r.role) AS roles
          FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
          JOIN amp_orgs o ON o.id=r.org_id
@@ -706,7 +782,7 @@ export class SchoolRepository {
   async orgFor(accountId: string, orgId: string): Promise<OrgResource | null> {
     const row = (
       await this.pool.query(
-        `SELECT o.id,o.kind,o.name,o.parent_id AS "parentId",o.timezone,
+        `SELECT o.id,o.kind,o.name,o.parent_id AS "parentId",o.timezone,o.solo,o.setup_pending AS "setupPending",
            COALESCE(array_agg(DISTINCT r.role) FILTER (WHERE r.id IS NOT NULL),'{}') AS roles
          FROM amp_orgs o
          LEFT JOIN amp_people p ON p.account_id=$1 AND p.deleted_at IS NULL
@@ -743,11 +819,14 @@ export class SchoolRepository {
     orgId: string,
     { classIds }: { classIds: string[] | null },
     page: Page,
-  ): Promise<StudentResource[]> {
+  ): Promise<(StudentResource & { total: number })[]> {
+    const needle = page.q
+      ? `%${page.q.toLowerCase().replace(/[\\%_]/g, "\\$&")}%`
+      : null;
     return (
       await this.pool.query(
         `SELECT p.id,p.given_name AS "givenName",p.family_name AS "familyName",p.display_name AS "displayName",
-           p.handle,p.identifier,p.grade_level AS "gradeLevel",
+           p.handle,p.identifier,p.grade_level AS "gradeLevel",count(*) OVER()::int AS total,
            ARRAY(SELECT e.class_id FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs eo ON eo.id=c.org_id
              WHERE e.person_id=p.id AND e.role='student' AND c.archived_at IS NULL AND ${activeToday("e", "eo")}
                AND ($2::uuid[] IS NULL OR e.class_id=ANY($2::uuid[]))
@@ -760,8 +839,9 @@ export class SchoolRepository {
              WHERE r.person_id=p.id AND r.role='student' AND o.path @> ARRAY[$1]::uuid[] AND ${activeToday("r", "o")})
            AND ($2::uuid[] IS NULL OR EXISTS(SELECT 1 FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs eo ON eo.id=c.org_id
              WHERE e.person_id=p.id AND e.role='student' AND e.class_id=ANY($2::uuid[]) AND c.archived_at IS NULL AND ${activeToday("e", "eo")}))
+           AND ($5::text IS NULL OR lower(concat_ws(' ',p.display_name,p.given_name,p.family_name,p.identifier)) LIKE $5)
          ORDER BY lower(COALESCE(p.display_name,p.given_name)),p.id LIMIT $3 OFFSET $4`,
-        [orgId, classIds, page.limit, page.offset],
+        [orgId, classIds, page.limit, page.offset, needle],
       )
     ).rows;
   }
