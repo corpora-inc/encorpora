@@ -178,7 +178,7 @@ const join = async (path: string, body: object) =>
   }).then((r) => r.json());
 
 const big = await makeClass("Grade 5 Math");
-const bigStudents = [];
+const bigStudents: Awaited<ReturnType<typeof addStudent>>[] = [];
 for (const [given, family] of NAMES)
   bigStudents.push(await addStudent(big.id, given, family));
 // A class partly here, for the board and the roster.
