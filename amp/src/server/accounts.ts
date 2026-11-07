@@ -1,4 +1,9 @@
 import {
+  isAnonymous,
+  passwordAttemptsExhausted,
+  recordWrongPassword,
+} from "./rate-limits";
+import {
   completeSignup,
   markSignupVerified,
 } from "../parent-followup/repository.js";
@@ -489,8 +494,16 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
     rateLimit: {
       enabled: true,
       storage: "memory",
-      // Each attempt says whether an email has an account; keep that slow.
+      // These are per address and path, and a whole school shares an address,
+      // so the defaults (3 sign-ins per 10 s) would lock out a class. Password
+      // guessing is limited per account instead (`passwordAttemptsExhausted`).
+      window: 60,
+      max: 6000,
       customRules: {
+        "/sign-in/social": { window: 60, max: 600 },
+        "/sign-in/email": { window: 60, max: 300 },
+        "/sign-up/email": { window: 60, max: 60 },
+        // Each attempt says whether an email has an account; keep that slow.
         "/passkey-signup/options": { window: PASSKEY_SIGNUP_SECONDS, max: 10 },
         "/passkey-signup/verify": { window: PASSKEY_SIGNUP_SECONDS, max: 10 },
       },
@@ -589,8 +602,25 @@ export async function registerAccountRoutes(
     scope.route({
       method: ["GET", "POST"],
       url: "/api/auth/*",
-      config: { rateLimit: { max: 60, timeWindow: "1 minute" } },
+      config: {
+        rateLimit: {
+          // Students arriving at once have no session yet and share an address.
+          max: (_request, key) => (isAnonymous(key) ? 600 : 60),
+          timeWindow: "1 minute",
+        },
+      },
       handler: async (request, reply) => {
+        const passwordSignIn =
+          request.method === "POST" &&
+          request.url.split("?")[0] === "/api/auth/sign-in/email";
+        if (
+          passwordSignIn &&
+          passwordAttemptsExhausted(request.body as Buffer, request.ip)
+        )
+          return reply.code(429).send({
+            error:
+              "Too many wrong passwords for this account. Try again in 5 minutes.",
+          });
         if (privacyAuthenticate && advertisingOptOut(request.headers)) {
           try {
             await privacyAuthenticate(request);
@@ -621,6 +651,8 @@ export async function registerAccountRoutes(
             ...(body?.length ? { body: new Uint8Array(body) } : {}),
           }),
         );
+        if (passwordSignIn && response.status === 401)
+          recordWrongPassword(request.body as Buffer, request.ip);
         reply.status(response.status);
         response.headers.forEach((value, key) => {
           if (key !== "set-cookie" && key !== "content-length")
