@@ -272,7 +272,10 @@ def times_as_many(public):
         require(len(pairs) == 1, f"{len(pairs)} pairs are more than twice as likely; exactly one is needed")
         i, j = pairs[0]
         return {"more": pick(blanks["more"], T(names[i])), "less": pick(blanks["less"], T(names[j]))}
-    require(ids == ["k", "big", "small"], f"Blank ids {ids}")
+    # The sentence is worded two ways, "There are <k> times as many <big> as
+    # <small>." and "The count of <big> is <k> times the count of <small>.", so
+    # the blanks come in either order.
+    require(sorted(ids) == ["big", "k", "small"], f"Blank ids {ids}")
     pairs = [(i, j) for i in range(len(counts)) for j in range(len(counts)) if i != j and counts[i] % counts[j] == 0 and counts[i] > counts[j]]
     require(len(pairs) == 1, f"{len(pairs)} whole-number multiples; exactly one is needed")
     i, j = pairs[0]

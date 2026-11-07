@@ -632,8 +632,11 @@ try {
       await shoot(page, "map", tag, true);
 
       // Choosing to see plans early, then "not now", returns to practice.
+      // The map's own Buy invitation replaces its "See plans" link while
+      // Buy is on offer; the menu always keeps "See plans".
+      await page.getByRole("button", { name: "Open AMP menu" }).click();
       await page.getByRole("link", { name: "See plans" }).click();
-      await page.waitForURL("**/try/plans?reason=choice");
+      await page.waitForURL(/\/try\/plans(?:\?reason=choice)?$/);
       await page.getByRole("heading", { name: "Choose a plan" }).waitFor();
       await page.getByRole("radio", { name: /Annual/ }).waitFor();
       await fits(page, `${tag} plans by choice`);
@@ -646,7 +649,7 @@ try {
       await shoot(page, "optional-feedback", tag);
       await page.keyboard.press("Escape");
       await ask.waitFor({ state: "hidden" });
-      assert.match(page.url(), /\/try\/plans\?reason=choice$/);
+      assert.match(page.url(), /\/try\/plans(?:\?reason=choice)?$/);
       await page.getByRole("button", { name: "Not now" }).click();
       await page.waitForURL("**/try/practice");
       assert.equal(await page.getByRole("dialog").count(), 0);

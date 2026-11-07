@@ -9,12 +9,12 @@ import {
   Outlet,
   redirect,
   retainSearchParams,
-  useLoaderData,
+  useMatch,
   useRouter,
 } from "@tanstack/react-router";
 import { z } from "zod";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import type { AuthSession } from "../auth";
 import { setPitchShown } from "../lib/analytics";
 import { CurriculumDetailsProvider } from "../features/curriculum/CurriculumDetails";
@@ -170,19 +170,45 @@ function showsPitch(session: AuthSession | null | undefined) {
     !hasPurchaseReturn(window.location.search)
   );
 }
-/** `/`: the pitch or the app, as the route resolved it. When the session
- * changes here, the route runs again (redirecting as needed) before the
- * screen changes, so a remount never shows the other screen half-loaded. */
-function HomeScreen() {
+/** The pitch or the app. Home (`/`) and every other app path render here, in
+ * one layout route, so going between them keeps the same app screen mounted:
+ * the current problem, the learner and each tab's place survive a visit to
+ * home. At `/` the pitch is what the route resolved; elsewhere it is the app.
+ * When the session changes at `/`, the route runs again (redirecting as
+ * needed) before the screen changes, so a remount never shows the other
+ * screen half-loaded. */
+function AppScreen() {
   const session = useQuery(sessionOptions);
   const router = useRouter();
-  const resolved = useLoaderData({ from: "/" }).pitch;
-  const shown = showsPitch(session.data);
+  const atHome = useMatch({
+    from: home.id,
+    shouldThrow: false,
+    select: (match) => ({
+      pitch: match.loaderData?.pitch,
+      settled: match.status === "success",
+    }),
+  });
+  const shown = !!atHome && showsPitch(session.data);
   useEffect(() => {
-    if (shown !== resolved) void router.invalidate();
-  }, [shown, resolved]);
-  const Screen = resolved ? pitch : legacy;
-  return <Screen />;
+    if (atHome?.pitch !== undefined && shown !== atHome.pitch)
+      void router.invalidate();
+  }, [atHome?.pitch, shown]);
+  // On first load the home route's loader decides: until it has, and if it
+  // fails, the route's own pending and error screens show instead of either
+  // screen. Coming from another app path the app screen is already up and
+  // stays, so its state survives.
+  const up = useRef(false);
+  const deciding = !!atHome && (!atHome.settled || atHome.pitch === undefined);
+  const Screen = atHome?.pitch ? pitch : legacy;
+  const pending = deciding && !up.current;
+  if (!pending) up.current = true;
+  // Keyed, so the route's pending screen is replaced, not left hidden behind
+  // the screen's own wait.
+  return (
+    <Suspense key={pending ? "deciding" : "ready"} fallback={<LoadingScreen />}>
+      {pending ? <Outlet /> : <Screen />}
+    </Suspense>
+  );
 }
 const auth = lazyRouteComponent(
   () => import("../features/auth/SignInScreen"),
@@ -275,10 +301,14 @@ const tryPlans = createRoute({
   beforeLoad: beforeTrial,
   component: trial("Paywall"),
 });
-const home = createRoute({
+const appScreen = createRoute({
   getParentRoute: () => root,
+  id: "app",
+  component: AppScreen,
+});
+const home = createRoute({
+  getParentRoute: () => appScreen,
   path: "/",
-  component: HomeScreen,
   loaderDeps: ({ search }) => ({ program: search.program }),
   loader: async ({ deps }) => {
     const shown = showsPitch(queryClient.getQueryData(sessionOptions.queryKey));
@@ -360,6 +390,9 @@ const home = createRoute({
     }
   },
 });
+/** The pitch/app screen reads what `/` resolved; so does the document head.
+ * A route's id exists once the router is built, so this reads it on demand. */
+export const homeRouteId = () => home.id;
 const signIn = createRoute({
   getParentRoute: () => root,
   path: "/sign-in",
@@ -710,13 +743,12 @@ const standings = createRoute({
   ),
 });
 const fallback = createRoute({
-  getParentRoute: () => root,
+  getParentRoute: () => appScreen,
   path: "/$",
-  component: legacy,
 });
 export const router = createRouter({
   routeTree: root.addChildren([
-    home,
+    appScreen.addChildren([home, fallback]),
     join,
     joinClass,
     joinPictures,
@@ -769,7 +801,6 @@ export const router = createRouter({
     // Linked to through the splat route, as every staff screen is, so their
     // URLs stay out of the typed route table.
     ...(schoolRoutes(root) as unknown as []),
-    fallback,
   ]),
   history: nativeRuntime
     ? createMemoryHistory({ initialEntries: ["/"] })

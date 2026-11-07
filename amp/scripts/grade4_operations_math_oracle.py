@@ -53,7 +53,9 @@ def solve(public):
     prompt = public["prompt"]
     if template == "multiply-two-digit":
         a, b = first_two(prompt)
-        require(12 <= b <= 999 and 11 <= a <= 999, "Factor size")
+        # The squares run from 11 squared through 15 squared; every other product
+        # has two factors of at least 12.
+        require(11 <= a == b <= 15 or (12 <= b <= 999 and 11 <= a <= 999), "Factor size")
         return str(a * b)
     if template == "facts-to-twelve":
         a, b = first_two(prompt)

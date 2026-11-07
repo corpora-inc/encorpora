@@ -253,6 +253,8 @@ def dot_parts(prompt):
         unit = m[1]
     elif 'how many miles' in head:
         unit = 'miles'
+    elif 'how many inches of new snow' in head:
+        unit = 'inches'
     elif 'how many books' in head:
         unit = 'books'
     elif 'how many baskets' in head:

@@ -178,6 +178,10 @@ addEventListener(
 );
 let initialPurchaseReturn = nativeRuntime ? null : capturePurchaseReturn();
 if (nativeRuntime) clearInitialConsentChallenge();
+// Leaving Family lands on "/", which mounts this screen anew: the focus owed
+// to the menu button outlives the screen that asked for it.
+const nativeFamilyReturn = { current: false };
+const progressReturn = { current: { identity: "", href: "/progress" } };
 export function LegacyApp() {
   const session = useQuery(sessionOptions);
   if (session.isPending) return <LoadingScreen />;
@@ -266,12 +270,14 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     token: token ?? undefined,
   });
   // Remember a tab's return URL, not a second copy of its screen/filter state.
-  const progressReturn = useRef({ identity: "", href: "/progress" });
+  // It lives outside the component: "/" and the other app routes mount this
+  // screen separately, so going home must not forget where Progress was.
   useLayoutEffect(() => {
-    if (!accountId || !learner) {
+    if (!accountId) {
       progressReturn.current = { identity: "", href: "/progress" };
       return;
     }
+    if (!learner) return;
     const identity = `${accountId}:${learner.id}`;
     const changed =
       progressReturn.current.identity !== "" &&
@@ -297,11 +303,17 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   const [hasTrial] = useState(() => !!storedTrial());
   // Outside immersive practice: home, lessons, progress and family are visible.
 
-  const nativeFamilyReturn = useRef(false);
   useLayoutEffect(() => {
     if (!familyOpen && nativeFamilyReturn.current) {
       nativeFamilyReturn.current = false;
-      familyMenuTrigger.current?.focus({ preventScroll: true });
+      // After the navigation settles: the screen that owes the focus can be
+      // replaced by the one at "/", whose menu button is the one to focus.
+      requestAnimationFrame(() => {
+        const trigger =
+          document.querySelector<HTMLElement>("[data-navigation-trigger]") ??
+          familyMenuTrigger.current;
+        trigger?.focus({ preventScroll: true });
+      });
     }
   }, [familyOpen]);
 
