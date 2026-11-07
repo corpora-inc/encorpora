@@ -92,13 +92,19 @@ const VIEWER = new Set<SchoolAction>([
   ...ORG_STAFF,
   "staff.read",
   "license.read",
+  "signin.read",
 ]);
-const AIDE_CLASS = new Set<SchoolAction>(["classes.read", "students.read"]);
+const AIDE_CLASS = new Set<SchoolAction>([
+  "classes.read",
+  "students.read",
+  "signin.read",
+]);
 const TEACHER_CLASS = new Set<SchoolAction>([
   ...AIDE_CLASS,
   "students.add",
   "classes.update",
   "students.update",
+  "signin.manage",
 ]);
 const SELF = new Set<SchoolAction>([
   "orgs.list",
@@ -153,4 +159,16 @@ export function rosterScope(
           .filter((c) => c.path.includes(target.orgId))
           .map((c) => c.classId),
   };
+}
+
+/** Who to attribute a change to: the actor's person in this target's tenant. */
+export function actorPerson(
+  actor: Actor,
+  target: { path: string[] },
+): string | null {
+  return (
+    actor.roles.find((role) => target.path.includes(role.orgId))?.personId ??
+    actor.classes.find((c) => target.path.includes(c.orgId))?.personId ??
+    null
+  );
 }

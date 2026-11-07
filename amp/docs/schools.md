@@ -34,8 +34,8 @@ What schools ask, and the product's answer:
 ### Routes (each a real URL)
 
 - **Public:** `/schools`, `/schools/scope-and-sequence`, `/schools/trust`
-- **Student:** `/join`, `/join/$code`, `/c/$cardToken`, then the existing `/practice`, plus `/standings` when a class turns it on
-- **Staff:** `/school`, `/school/new`, `/school/invite` (the token is in the fragment, so it never reaches a server log or report), `/school/$org` (overview), `.../classes/$class` with tabs `today`, `map`, `gradebook`, `time`, `workbooks`, `roster`, `experience`, `start`; `.../students/$student`; `.../classes`, `.../staff`, `.../sign-in-help`, `.../calendar`, `.../experience`, `.../import`, `.../integrations`, `.../license`, `.../privacy`, `.../activity`; `.../schools` for districts
+- **Student:** `/join`, `/join/$code`, `/join/$code/$person`, `/c#<token>`, then the existing `/practice`, plus `/standings` when a class turns it on
+- **Staff:** `/school`, `/school/new`, `/school/invite` (the token is in the fragment, so it never reaches a server log or report), `/school/$org` (overview), `.../classes/$class` with tabs `today`, `map`, `gradebook`, `time`, `workbooks`, `roster`, `roster/cards`, `experience`, `start`; `.../students/$student`; `.../classes`, `.../staff`, `.../sign-in-help`, `.../calendar`, `.../experience`, `.../import`, `.../integrations`, `.../license`, `.../privacy`, `.../activity`; `.../schools` for districts
 
 It scales by collapsing. A lone teacher never sees school admin screens. A district adds one level above. Phones get cards instead of grids at 320 and 390 px.
 
@@ -48,6 +48,7 @@ Schools have real philosophies here, and this control is a selling point. Settin
 | Show levels to students | Hidden, student's choice, shown | Hidden |
 | Standings | Off, class, school, district | Off |
 | Standings measure | Growth this term, practice, level | Growth |
+| Device mode | Shared, personal | Shared |
 
 - Setup offers three starting points, "Quiet focus", "Levels visible" and "Friendly competition". A teacher running an AP class as a competition changes it for that class unless the school locked it.
 - **Standings:** independent work only. A board shows the top 10 and your own line, never a ranked list down to last place. Class boards use names; wider boards use generated handles and group by grade level. A teacher can leave any student off.
@@ -162,7 +163,7 @@ Merging duplicate students and a standalone school joining a district are agent-
 4. `parent()` gains a sibling, `familyManaged()`, on the routes students can't use: create learner, birth year, starting point, reset, self-marking paper. One word changes per route.
 5. `/me` delegates to a separate `studentMe()`, parent-shaped with `account.kind:'student'`. `LegacyApp`, practice, lessons and progress then run unchanged. Its `consent.status` stays `active` so the app never routes a student to parent setup; `canPractice` carries the truth, and false means "ask your teacher".
 6. `web/auth.ts` (`accessSession`, `signOut`) and `trialSessionOptions` handle student tokens, and a bad student token goes to `/join`. Parent-only routes also answer a student 401, so only `/me` decides that a sign-in has ended.
-7. One synchronous `isStudentDevice()` turns off analytics and engagement before they start. It is true with a stored student token and on the sign-in screens themselves (`/join`, `/c/…`), which run before any token exists.
+7. One synchronous `isStudentDevice()` turns off analytics and engagement before they start. It is true with a stored student token and on the sign-in screens themselves (`/join`, `/c`), which run before any token exists.
 8. One hook in `/batches` stores the day's level.
 9. `insights.ts` excludes `school:%` so school use doesn't skew family reports.
 10. Parent chrome is hidden on `account.kind` in the drawer and `LegacyApp`, and `CurriculumDetails` reads the resolved level setting. A student's direct link to a family, purchase, trial, setup or workbook screen goes back to practice.
@@ -180,12 +181,12 @@ Staff stay ordinary accounts, so there is no `kind:'staff'`: a person can be a t
 
 ### Students
 
-- **Card:** a printable card with a QR holding a revocable per-student link. Phones open it from the OS camera; `/join` scans it in the browser (`BarcodeDetector`, with lazy `jsqr` as fallback). Requires `Permissions-Policy: camera=(self)`.
-- **Class code:** code → tap your name → 3 of 16 pictures. Failure counters are per student and class, so a school behind one address isn't locked out.
+- **Card:** a printable card with a QR holding a revocable per-student link, `/c#<token>`. The token is in the fragment, so it never reaches a server or proxy log, and it leaves the address bar and history before anything else reads the URL. Phones open it from the OS camera; `/join` scans it in the browser (`BarcodeDetector`, with lazy `jsqr` as fallback). Requires `Permissions-Policy: camera=(self)`. Only a hash is stored, so printing again makes new cards and the old ones stop working.
+- **Class code:** code → tap your name → 3 of 16 pictures, which a student chooses and confirms the first time. Failure counters are per student and class, so a school behind one address isn't locked out: five wrong tries pause that student for 60 seconds, and many across a class pause the class for five minutes. A new code reopens a paused class; resetting a student's pictures clears that student.
 - **Google and Microsoft:** an OIDC flow matching the roster email to an `sso` credential, reusing existing client IDs, so students never enter the parent user table.
 - **Why cards are the default:** Google blocks under-18 Education users from third-party apps until an admin allows the app. Cards and codes work with no IT involvement. Turning on Google leads to a one-page IT handoff with our client ID.
 - **Start class board:** big code and QR on the projector, with names lighting up as students arrive. This is the demo moment.
-- **Device modes:** shared (session storage, idle sign-out, clears `amp.learner` and `amp.trial`) or personal (long-lived, revocable by the teacher).
+- **Device modes:** the `deviceMode` setting. Shared (session storage, signed out after 30 idle minutes, clears `amp.learner` and `amp.trial`) or personal (local storage, 90 days, revocable by the teacher). A student in two classes signs in as shared if either class says so.
 
 ### Staff: does Better Auth cover everything?
 

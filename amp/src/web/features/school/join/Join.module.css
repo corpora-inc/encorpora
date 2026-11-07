@@ -1,0 +1,438 @@
+/* Student sign-in. A kindergartner reads almost none of this, so size carries
+   it: big type, big targets, one thing to do on each screen. */
+.page {
+  --gutter: var(--space-4);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-height: 100dvh;
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  font-size: var(--text-body);
+  line-height: 1.35;
+}
+@media (min-width: 720px) {
+  .page {
+    --gutter: var(--space-6);
+  }
+}
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 72px;
+  padding: var(--space-2) var(--gutter);
+}
+.brand {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: var(--space-2);
+  margin-inline-start: auto;
+  color: var(--color-on-surface);
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+.brand svg {
+  width: 30px;
+  height: auto;
+  color: var(--color-primary);
+  stroke: currentColor;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+}
+.back {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-inline-start: calc(var(--space-2) * -1);
+  border-radius: 50%;
+  color: var(--color-on-surface);
+  background: var(--color-surface-sunken);
+}
+.back svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.back:hover {
+  background: var(--color-surface-sunken);
+  color: var(--color-primary);
+}
+.main {
+  display: grid;
+  min-width: 0;
+  padding: var(--space-3) var(--gutter) var(--space-7);
+}
+.column {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  padding-bottom: 8dvh;
+  text-align: center;
+}
+.column[data-centered] {
+  gap: var(--space-5);
+}
+.wide {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.title {
+  margin: 0;
+  color: var(--color-on-surface);
+  font-family: var(--font-display);
+  font-size: clamp(30px, 8.4vw, 48px);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+.title[data-stopped] {
+  color: var(--color-on-warning);
+}
+.subtitle {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+/* The code, or the camera: the same space either way. */
+.stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: clamp(160px, 28dvh, 300px);
+  min-height: 0;
+}
+.codeField {
+  position: relative;
+  display: grid;
+  cursor: text;
+  --tile: min(calc((100vw - 2 * var(--gutter) - 12px) / 5.4), 104px);
+}
+.codeField[data-hidden] {
+  visibility: hidden;
+}
+.codeInput {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: transparent;
+  caret-color: transparent;
+  font-size: 16px;
+  opacity: 0;
+  cursor: text;
+}
+.shaker {
+  display: flex;
+}
+.shaker[data-shake],
+.slots[data-shake] {
+  animation: shake 420ms var(--ease-standard);
+}
+@keyframes shake {
+  0%,
+  100% {
+    transform: none;
+  }
+  20% {
+    transform: translateX(-9px);
+  }
+  45% {
+    transform: translateX(7px);
+  }
+  70% {
+    transform: translateX(-4px);
+  }
+  88% {
+    transform: translateX(2px);
+  }
+}
+.viewfinder {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-sunken);
+}
+.viewfinder video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.target {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(62%, 58dvh);
+  aspect-ratio: 1;
+  max-height: 84%;
+  border: 4px solid var(--color-print-paper);
+  border-radius: var(--radius-panel);
+  box-shadow: 0 0 0 100vmax var(--color-scrim);
+  transform: translate(-50%, -50%);
+}
+.message {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 3em;
+  font-size: clamp(17px, 4.6vw, 22px);
+  line-height: 1.3;
+  text-align: center;
+}
+.problem {
+  color: var(--color-on-surface);
+  font-weight: 600;
+  text-wrap: balance;
+}
+.bigButton.bigButton {
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 420px;
+  min-height: 72px;
+  border-radius: var(--radius-panel);
+  font-size: clamp(20px, 5.4vw, 24px);
+  font-weight: 650;
+  white-space: nowrap;
+}
+.cardMark {
+  flex: none;
+  width: 34px;
+  height: auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* Names. */
+.names {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+  gap: var(--space-3);
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 720px) {
+  .names {
+    grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
+    gap: var(--space-4);
+  }
+}
+.names li {
+  display: grid;
+  margin: 0;
+}
+.nameTile {
+  --avatar-size: 64px;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: var(--space-3);
+  min-height: 148px;
+  padding: var(--space-4) var(--space-3);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  font-size: clamp(20px, 5.4vw, 24px);
+  font-weight: 650;
+  line-height: 1.15;
+  text-align: center;
+  text-decoration: none;
+  transition: transform var(--motion-fast) var(--ease-standard);
+}
+.nameTile:hover {
+  border-color: var(--color-border-strong);
+  color: var(--color-on-surface-raised);
+}
+.nameTile:active {
+  transform: scale(0.97);
+}
+.nameTile:focus-visible,
+.back:focus-visible,
+.pictureButton:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+/* Pictures. Side by side when the screen is wide, so nothing scrolls. */
+.pictures {
+  display: grid;
+  align-content: start;
+  justify-items: center;
+  gap: var(--space-3);
+  width: 100%;
+}
+.prompt {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  text-align: center;
+}
+.who {
+  --avatar-size: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0;
+  font-size: 22px;
+  font-weight: 650;
+}
+.pictures .title {
+  min-height: 2.24em;
+  font-size: clamp(26px, 7vw, 44px);
+  display: grid;
+  place-items: center;
+}
+.slots {
+  --slot: min(21vw, 92px);
+  display: flex;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.slot {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: var(--slot);
+  height: var(--slot);
+  margin: 0;
+  padding: 3px;
+  border: 2px dashed var(--color-border-strong);
+  border-radius: 50%;
+  color: var(--color-subtle-text);
+  font-size: calc(var(--slot) * 0.34);
+  font-weight: 600;
+  font-variant-numeric: var(--numeric);
+}
+.slot:has(svg) {
+  border-style: solid;
+  border-color: var(--color-primary);
+}
+.pictures .message {
+  min-height: 2.6em;
+}
+.pad {
+  position: relative;
+  display: grid;
+  width: 100%;
+  max-width: max(280px, calc(100dvh - 480px));
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(6px, 1.8vw, 14px);
+  transition: opacity var(--motion-fast) var(--ease-standard);
+}
+.grid[data-resting] {
+  opacity: 0.28;
+}
+.pictureButton.pictureButton {
+  display: block;
+  aspect-ratio: 1;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: transform var(--motion-fast) var(--ease-standard);
+}
+.pictureButton.pictureButton:hover:not(:disabled) {
+  background: transparent;
+  transform: scale(1.04);
+}
+.pictureButton.pictureButton:active:not(:disabled) {
+  transform: scale(0.94);
+}
+.pictureButton.pictureButton[aria-pressed="true"] {
+  opacity: 0.32;
+}
+.pictureButton.pictureButton:disabled {
+  background: transparent;
+  cursor: default;
+  opacity: 1;
+}
+.confirm {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+}
+.confirm .bigButton {
+  box-shadow: 0 8px 28px var(--color-shadow);
+}
+.confirm .bigButton:not([data-main]) {
+  background: var(--color-surface-raised);
+}
+@media (min-width: 720px) and (min-aspect-ratio: 5/4) {
+  .pictures {
+    grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+    align-content: center;
+    align-items: center;
+    gap: clamp(32px, 5vw, 80px);
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+  .pad {
+    width: min(calc(100dvh - 136px), 56vw);
+    max-width: none;
+  }
+  .slots {
+    --slot: min(9vw, 128px);
+  }
+  .prompt {
+    gap: var(--space-4);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shaker[data-shake],
+  .slots[data-shake] {
+    animation: none;
+  }
+  .nameTile,
+  .grid,
+  .pictureButton.pictureButton {
+    transition: none;
+  }
+}

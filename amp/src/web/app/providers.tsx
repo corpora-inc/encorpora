@@ -11,7 +11,8 @@ import {
 import { clearOnboardingDraft } from "../features/onboarding/state";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Fragment, useEffect, useState, type ReactNode } from "react";
-import { onSessionChanged, type AuthSession } from "../auth";
+import { onSessionChanged, signOut, type AuthSession } from "../auth";
+import { watchStudentIdle } from "../lib/student-device";
 import { meKey, meOptions, queryClient, sessionOptions } from "../lib/query";
 export function Providers({
   children,
@@ -36,6 +37,14 @@ function SessionProviders({
 }) {
   const [error, setError] = useState("");
   const [identityVersion, setIdentityVersion] = useState(0);
+  useEffect(() => {
+    if (nativeRuntime) return;
+    return watchStudentIdle(() => {
+      void signOut().catch((failure) =>
+        console.error("Idle student sign-out failed", failure),
+      );
+    });
+  }, []);
   useEffect(() => {
     let generation = 0;
     async function refreshAccount(session: AuthSession, current: number) {

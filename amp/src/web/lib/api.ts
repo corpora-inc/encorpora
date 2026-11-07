@@ -9,6 +9,13 @@ import {
   signedOut,
 } from "./app-recovery";
 const messages: Record<string, string> = {
+  not_found:
+    "This class isn't open to this account. Check the link, or ask your school's AMP admin.",
+  invalid_school_request: "Check the details and try again.",
+  school_service_unavailable:
+    "School details could not be loaded. Try again in a moment.",
+  too_many_requests:
+    "Too many requests from this network. Wait a minute, then try again.",
   gift_unavailable:
     "This invitation is no longer available. Return to your access page to check your options.",
   gift_already_assigned:

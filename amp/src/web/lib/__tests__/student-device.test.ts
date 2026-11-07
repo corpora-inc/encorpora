@@ -11,6 +11,8 @@ import {
   rememberStudentSession,
   studentSession,
   studentSignInEnded,
+  STUDENT_IDLE_MS,
+  watchStudentIdle,
 } from "../student-device";
 
 const student = {
@@ -137,4 +139,49 @@ test("only /me decides that a student's sign-in has ended", async () => {
   ).toBe(`Bearer ${student.token}`);
   fetched.mockResolvedValueOnce(new Response("{}", { status: 200 }));
   expect(await studentSignInEnded(student)).toBe(false);
+});
+
+test("a shared device signs out when left alone, and use restarts the clock", () => {
+  const signOut = vi.fn();
+  rememberStudentSession(student, "shared");
+  const stop = watchStudentIdle(signOut);
+  expect(signOut).not.toHaveBeenCalled();
+  sessionStorage.setItem(
+    "amp.student.active",
+    String(Date.now() - STUDENT_IDLE_MS + 60_000),
+  );
+  window.dispatchEvent(new Event("pointerdown"));
+  document.dispatchEvent(new Event("visibilitychange"));
+  expect(signOut).not.toHaveBeenCalled();
+  expect(
+    Date.now() - Number(sessionStorage.getItem("amp.student.active")),
+  ).toBeLessThan(1000);
+  sessionStorage.setItem(
+    "amp.student.active",
+    String(Date.now() - STUDENT_IDLE_MS),
+  );
+  document.dispatchEvent(new Event("visibilitychange"));
+  expect(signOut).toHaveBeenCalledTimes(1);
+  stop();
+});
+
+test("a session with no clock yet starts one, rather than signing out", () => {
+  const signOut = vi.fn();
+  sessionStorage.setItem("amp.student", JSON.stringify(student));
+  const stop = watchStudentIdle(signOut);
+  expect(signOut).not.toHaveBeenCalled();
+  expect(sessionStorage.getItem("amp.student.active")).not.toBeNull();
+  stop();
+});
+
+test("a personal device, or no student, is never signed out for being idle", () => {
+  const signOut = vi.fn();
+  rememberStudentSession(student, "personal");
+  sessionStorage.setItem("amp.student.active", "0");
+  const stop = watchStudentIdle(signOut);
+  document.dispatchEvent(new Event("visibilitychange"));
+  clearStudentDevice();
+  document.dispatchEvent(new Event("visibilitychange"));
+  expect(signOut).not.toHaveBeenCalled();
+  stop();
 });

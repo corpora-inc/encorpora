@@ -17,11 +17,11 @@ import {
   updateStudent,
 } from "./roster.js";
 import {
-  actorPerson,
   type defineSchoolRoute,
   type SchoolRouteContext,
   type SchoolServices,
 } from "./routes.js";
+import { actorPerson } from "./authz.js";
 import {
   acceptSetupAgreement,
   addDivision,

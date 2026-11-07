@@ -23,6 +23,11 @@
   height: 44px;
   font-size: var(--text-heading-4);
 }
+.fill {
+  width: var(--avatar-size, 44px);
+  height: var(--avatar-size, 44px);
+  font-size: calc(var(--avatar-size, 44px) * 0.36);
+}
 /* A surface ring separates overlapping faces without a border's weight. */
 .stack {
   display: inline-flex;

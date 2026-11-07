@@ -27,6 +27,8 @@ export const schoolActions = [
   "classes.create",
   "students.read",
   "students.add",
+  "signin.read",
+  "signin.manage",
   "setup.start",
   "setup.write",
   "invites.accept",
@@ -55,6 +57,8 @@ export class SchoolError extends Error {
   constructor(
     public readonly statusCode: number,
     public readonly code: string,
+    /** How many seconds until this is worth trying again. */
+    public readonly retryAfter?: number,
   ) {
     super(code);
   }
@@ -152,6 +156,106 @@ export const issueStudentSessionSchema = z.strictObject({
   personId: z.uuid(),
   mode: z.enum(sessionModes),
 });
+
+/* Student sign-in. The pictures are stable names: a student's secret is built
+   from them, so renaming one locks out everyone who chose it. */
+export const schoolPictures = [
+  "fox",
+  "moon",
+  "turtle",
+  "umbrella",
+  "apple",
+  "owl",
+  "boat",
+  "frog",
+  "sun",
+  "whale",
+  "tree",
+  "bee",
+  "kite",
+  "rabbit",
+  "rocket",
+  "fish",
+] as const;
+export type SchoolPicture = (typeof schoolPictures)[number];
+export const JOIN_CODE_LENGTH = 6;
+/** What a person types or a board shows: any case, with or without a hyphen. */
+export const normalizeJoinCode = (value: string) =>
+  value.toUpperCase().replace(/[^A-Z0-9]/g, "");
+const joinCode = z.string().max(40).transform(normalizeJoinCode);
+export const joinLookupSchema = z.strictObject({ code: joinCode });
+export const joinPictureSchema = z.strictObject({
+  code: joinCode,
+  personId: z.uuid(),
+  pictures: z
+    .array(z.enum(schoolPictures))
+    .length(3)
+    .refine((picked) => new Set(picked).size === picked.length),
+  /** The student is choosing these. Ignored once pictures are set. */
+  set: z.boolean().optional(),
+});
+export const joinCardSchema = z.strictObject({
+  token: z.string().max(200),
+});
+export const issueCardsSchema = z.strictObject({
+  /** Only these students; otherwise the whole class. */
+  personIds: z.array(z.uuid()).min(1).max(1000).optional(),
+  /** Leave out students whose card still works. */
+  missingOnly: z.boolean().optional(),
+});
+
+export const joinRosterResource = z.object({
+  class: z.object({ name: z.string() }),
+  /** All a stranger with the code can learn: no learner data of any kind. */
+  students: z.array(
+    z.object({ id: z.uuid(), name: z.string(), picturesSet: z.boolean() }),
+  ),
+});
+export const studentGrantResource = z.object({
+  token: z.string(),
+  accountId: z.string(),
+  mode: z.enum(sessionModes),
+  expiresAt: z.string(),
+});
+export const presenceResource = z.object({
+  class: z.object({ id: z.uuid(), name: z.string(), joinCode: z.string() }),
+  students: z.array(
+    z.object({ id: z.uuid(), name: z.string(), here: z.boolean() }),
+  ),
+});
+export const signInRosterResource = z.object({
+  class: z.object({
+    id: z.uuid(),
+    name: z.string(),
+    joinCode: z.string(),
+    /** Too many wrong pictures across the class: sign-in is paused until then. */
+    joinLockedUntil: z.string().nullable(),
+  }),
+  /** Whether this person can change sign-in, or only read it. */
+  canManage: z.boolean(),
+  students: z.array(
+    z.object({
+      id: z.uuid(),
+      name: z.string(),
+      cardIssuedAt: z.string().nullable(),
+      picturesSet: z.boolean(),
+      locked: z.boolean(),
+      activeSessions: z.number().int(),
+      lastSeenAt: z.string().nullable(),
+    }),
+  ),
+});
+export const issuedCardsResource = z.object({
+  class: z.object({ name: z.string() }),
+  cards: z.array(
+    z.object({ personId: z.uuid(), name: z.string(), token: z.string() }),
+  ),
+});
+export type JoinRoster = z.infer<typeof joinRosterResource>;
+export type StudentGrant = z.infer<typeof studentGrantResource>;
+export type Presence = z.infer<typeof presenceResource>;
+export type SignInRoster = z.infer<typeof signInRosterResource>;
+export type IssuedCards = z.infer<typeof issuedCardsResource>;
 
 export const pageSchema = z.object({
   limit: z.coerce.number().int().min(1).max(500).default(200),

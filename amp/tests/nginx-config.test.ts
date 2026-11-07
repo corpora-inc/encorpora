@@ -46,3 +46,11 @@ test("the security headers are complete and scripts stay restricted", () => {
   assert.doesNotMatch(script, /unsafe-inline|unsafe-eval|https:(?!\/\/)/);
   assert.match(headers, /frame-ancestors 'self' https:\/\/corpora\.inc;/);
 });
+
+test("the camera is ours alone, and a class code stays out of access logs", () => {
+  assert.match(
+    headers,
+    /Permissions-Policy "camera=\(self\), microphone=\(\), geolocation=\(\)"/,
+  );
+  assert.match(conf, /location \^~ \/join\/ \{\s*access_log off;/);
+});

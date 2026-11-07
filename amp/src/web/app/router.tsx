@@ -576,10 +576,71 @@ const invoiceNewHampshire = createRoute({
   component: invoiceForm,
 });
 /** Where a student signs in, and where an ended sign-in lands. */
+/** One chunk for all of student sign-in, so each next step is already here. */
+const joinScreens = () => import("../features/school/join");
 const join = createRoute({
   getParentRoute: () => root,
   path: "/join",
-  component: () => <p>Ask your teacher for your class code or sign-in card.</p>,
+  component: lazyRouteComponent(joinScreens, "JoinScreen"),
+});
+const joinClass = createRoute({
+  getParentRoute: () => root,
+  path: "/join/$code",
+  component: lazyRouteComponent(joinScreens, "ClassScreen"),
+});
+const joinPictures = createRoute({
+  getParentRoute: () => root,
+  path: "/join/$code/$person",
+  component: lazyRouteComponent(joinScreens, "PicturesScreen"),
+});
+/** A printed card's link. Its secret is in the fragment, which `card-entry`
+ * has already taken out of the address bar. */
+const signInCard = createRoute({
+  getParentRoute: () => root,
+  path: "/c",
+  component: lazyRouteComponent(joinScreens, "CardScreen"),
+});
+/** A class's staff screens. Each is its own child, and the API decides who
+ * reaches which class. */
+async function staffOnly() {
+  notForStudents();
+  const session = await queryClient.ensureQueryData(sessionOptions);
+  if (!session) throw redirect({ to: "/sign-in" });
+}
+const classScreens = () => import("../features/school/classes");
+const schoolClass = createRoute({
+  getParentRoute: () => root,
+  path: "/school/$org/classes/$class",
+  beforeLoad: staffOnly,
+});
+const schoolClassHome = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "/",
+  beforeLoad: ({ params }) => {
+    throw redirect({
+      to: "/school/$org/classes/$class/roster",
+      params,
+      replace: true,
+    });
+  },
+});
+const schoolClassRoster = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "roster",
+  component: lazyRouteComponent(classScreens, "RosterScreen"),
+});
+const schoolClassStart = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "start",
+  component: lazyRouteComponent(classScreens, "StartClassScreen"),
+});
+const schoolClassCards = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "cards",
+  validateSearch: z.object({
+    student: z.uuid().optional().catch(undefined),
+  }),
+  component: lazyRouteComponent(classScreens, "CardsScreen"),
 });
 const fallback = createRoute({
   getParentRoute: () => root,
@@ -636,6 +697,15 @@ export const router = createRouter({
   routeTree: root.addChildren([
     home,
     join,
+    joinClass,
+    joinPictures,
+    signInCard,
+    schoolClass.addChildren([
+      schoolClassHome,
+      schoolClassRoster,
+      schoolClassStart,
+      schoolClassCards,
+    ]),
     signIn,
     signUp,
     accountReady,

@@ -4,6 +4,7 @@ import type { Pool } from "pg";
 import { z } from "zod";
 import type { Authenticator } from "../server/auth.js";
 import {
+  actorPerson,
   can,
   loadActor,
   rosterScope,
@@ -12,6 +13,7 @@ import {
 } from "./authz.js";
 import { pageSchema, SchoolError, type SchoolAction } from "./contracts.js";
 import { SchoolRepository } from "./repository.js";
+import { defineSignInRoutes, registerJoinRoutes } from "./sign-in-routes.js";
 import {
   canList,
   defineSetupRoutes,
@@ -152,17 +154,6 @@ async function loadStudent(
     classIds: classes.rows.map((row) => row.class_id),
   };
 }
-/** Who to attribute a change to: the actor's person in this target's tenant. */
-export function actorPerson(
-  actor: Actor,
-  target: { path: string[] },
-): string | null {
-  return (
-    actor.roles.find((role) => target.path.includes(role.orgId))?.personId ??
-    actor.classes.find((c) => target.path.includes(c.orgId))?.personId ??
-    null
-  );
-}
 const statusOf = (error: unknown) =>
   typeof error === "object" && error !== null && "statusCode" in error
     ? Number(error.statusCode)
@@ -188,8 +179,13 @@ export async function registerSchoolRoutes(
       reply.header("X-Content-Type-Options", "nosniff");
     });
     scope.setErrorHandler((error, request, reply) => {
-      if (error instanceof SchoolError)
-        return reply.code(error.statusCode).send({ error: error.code });
+      if (error instanceof SchoolError) {
+        if (error.retryAfter) reply.header("Retry-After", error.retryAfter);
+        return reply.code(error.statusCode).send({
+          error: error.code,
+          ...(error.retryAfter ? { retryAfter: error.retryAfter } : {}),
+        });
+      }
       if (error instanceof z.ZodError)
         return reply.code(400).send({ error: "invalid_school_request" });
       const status = statusOf(error);
@@ -216,6 +212,7 @@ export async function registerSchoolRoutes(
       );
       return reply.code(503).send({ error: "school_service_unavailable" });
     });
+    registerJoinRoutes(scope, repository);
     registerInvitePreview(scope, repository);
     // Students only: a staff or parent credential is never a student's.
     scope.post(
@@ -410,5 +407,6 @@ defineSchoolRoute({
     };
   },
 });
+defineSignInRoutes(defineSchoolRoute);
 
 defineSetupRoutes(defineSchoolRoute);
