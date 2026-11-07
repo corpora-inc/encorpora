@@ -20,6 +20,11 @@ import { defineOrgRoutes } from "./org-routes.js";
 import { registerOidcRoutes, type OidcProviders } from "./oidc.js";
 import { syncSsoCredentials } from "./sso-credentials.js";
 import {
+  defineShareRoutes,
+  registerCurriculumRoutes,
+  registerShareExchange,
+} from "./share-routes.js";
+import {
   defineClassroomRoutes,
   registerStudentStandings,
 } from "./classroom-routes.js";
@@ -232,6 +237,8 @@ export async function registerSchoolRoutes(
     registerOidcRoutes(scope, repository, services);
     registerInvitePreview(scope, repository);
     registerStudentStandings(scope, options.pool);
+    registerShareExchange(scope, options.pool);
+    registerCurriculumRoutes(scope, services);
     // Students only: a staff or parent credential is never a student's.
     scope.post(
       "/api/v1/school/student/activity",
@@ -463,3 +470,4 @@ defineSetupRoutes(defineSchoolRoute);
 defineTeacherRoutes(defineSchoolRoute);
 defineOrgRoutes(defineSchoolRoute);
 defineClassroomRoutes(defineSchoolRoute);
+defineShareRoutes(defineSchoolRoute);

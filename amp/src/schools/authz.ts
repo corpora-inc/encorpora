@@ -117,6 +117,7 @@ const TEACHER_CLASS = new Set<SchoolAction>([
   "signin.manage",
   "grades.write",
   "settings.write",
+  "share.manage",
 ]);
 const SELF = new Set<SchoolAction>([
   "orgs.list",

@@ -13,6 +13,8 @@ import { EmptyState } from "../../../ui/EmptyState";
 import { levelScale, LevelTrack } from "../../../ui/LevelChart";
 import { Loading } from "../../../ui/Loading";
 import { AppError } from "../../../lib/AppError";
+import { shareOptions } from "../../schools/share-api";
+import { ShareWithFamily } from "../../schools/ShareWithFamily";
 import { Suggested } from "./grade-parts";
 import { studentRecordOptions } from "./teacher-api";
 import {
@@ -130,6 +132,8 @@ export function StudentScreen() {
   );
   const [moving, setMoving] = useState(false);
   const record = useQuery(studentRecordOptions(session, params.student));
+  // Loaded with the record, so the head's actions appear once, in place.
+  const share = useQuery(shareOptions(session, params.student));
   const data = record.data;
   const missing =
     record.error instanceof AppError && record.error.status === 404;
@@ -144,7 +148,7 @@ export function StudentScreen() {
         { label: data?.student.name ?? "Student" },
       ]}
     >
-      {record.isPending ? (
+      {record.isPending || share.isPending ? (
         <Loading />
       ) : !data ? (
         <EmptyState
@@ -189,6 +193,11 @@ export function StudentScreen() {
               </p>
             </div>
             <div className={styles.recordAction}>
+              <ShareWithFamily
+                session={session}
+                student={data.student.id}
+                first={first}
+              />
               {canMove && (
                 <Button variant="secondary" onClick={() => setMoving(true)}>
                   Move to another school

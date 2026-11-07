@@ -10,6 +10,7 @@ import { Dialog } from "../../../ui/Dialog";
 import { EmptyState } from "../../../ui/EmptyState";
 import { Menu, MenuItem } from "../../../ui/Menu";
 import { Toast } from "../../../ui/Toast";
+import { downloadParentLinks } from "../../schools/share-api";
 import { say, useLeaveOff } from "../classroom/api";
 import { useClassExperience } from "../classroom/ExperienceSettings";
 import { CodeTiles } from "../join/CodeTiles";
@@ -50,6 +51,7 @@ function PicturesBadge({ row }: { row: Row }) {
 }
 
 type Pending =
+  | { kind: "links" }
   | { kind: "rotate" }
   | { kind: "reset"; row: Row }
   | { kind: "revoke"; row: Row };
@@ -83,7 +85,9 @@ export function RosterScreen() {
       ),
     [experience.data],
   );
-  const busy = rotate.isPending || reset.isPending || revoke.isPending;
+  const [making, setMaking] = useState(false);
+  const busy =
+    making || rotate.isPending || reset.isPending || revoke.isPending;
 
   const columns = useMemo<DataGridColumn<Row>[]>(
     () => [
@@ -202,7 +206,11 @@ export function RosterScreen() {
   async function confirm() {
     if (!pending) return;
     try {
-      if (pending.kind === "rotate") {
+      if (pending.kind === "links") {
+        setMaking(true);
+        await downloadParentLinks(session, params.class);
+        setStatus("Family links downloaded. Earlier links no longer work.");
+      } else if (pending.kind === "rotate") {
         const { joinCode } = await rotate.mutateAsync();
         setStatus(
           `The new class code is ${joinCode.slice(0, 3)}-${joinCode.slice(3)}.`,
@@ -219,6 +227,7 @@ export function RosterScreen() {
     } catch (failure) {
       setError((failure as Error).message);
     } finally {
+      setMaking(false);
       setPending(null);
     }
   }
@@ -263,6 +272,14 @@ export function RosterScreen() {
                 >
                   Print cards
                 </Link>
+              )}
+              {canManage && data.students.length > 0 && (
+                <Button
+                  variant="secondary"
+                  onClick={() => setPending({ kind: "links" })}
+                >
+                  Parent links
+                </Button>
               )}
             </div>
           </header>
@@ -314,22 +331,26 @@ export function RosterScreen() {
           if (!open && !busy) setPending(null);
         }}
         title={
-          pending?.kind === "rotate"
-            ? "Make a new class code?"
-            : pending?.kind === "reset"
-              ? `Reset pictures for ${pending.row.name}?`
-              : pending?.kind === "revoke"
-                ? `Sign out ${pending.row.name} everywhere?`
-                : ""
+          pending?.kind === "links"
+            ? "Download new family links?"
+            : pending?.kind === "rotate"
+              ? "Make a new class code?"
+              : pending?.kind === "reset"
+                ? `Reset pictures for ${pending.row.name}?`
+                : pending?.kind === "revoke"
+                  ? `Sign out ${pending.row.name} everywhere?`
+                  : ""
         }
       >
         <div className={styles.dialog}>
           <p>
-            {pending?.kind === "rotate"
-              ? "The old code stops working right away. Printed cards keep working."
-              : pending?.kind === "reset"
-                ? "New pictures get chosen at the next sign-in. Devices already signed in stay signed in."
-                : "Every device signed in as this student signs out on its next step. Cards and pictures keep working."}
+            {pending?.kind === "links"
+              ? "You’ll get a CSV of each student’s name and a new read-only link, ready for your school’s mail system. Links sent before stop working."
+              : pending?.kind === "rotate"
+                ? "The old code stops working right away. Printed cards keep working."
+                : pending?.kind === "reset"
+                  ? "New pictures get chosen at the next sign-in. Devices already signed in stay signed in."
+                  : "Every device signed in as this student signs out on its next step. Cards and pictures keep working."}
           </p>
           <div className={styles.dialogActions}>
             <Button
@@ -345,11 +366,13 @@ export function RosterScreen() {
               disabled={busy}
               onClick={() => void confirm()}
             >
-              {pending?.kind === "rotate"
-                ? "Make a new code"
-                : pending?.kind === "reset"
-                  ? "Reset pictures"
-                  : "Sign out everywhere"}
+              {pending?.kind === "links"
+                ? "Download new links"
+                : pending?.kind === "rotate"
+                  ? "Make a new code"
+                  : pending?.kind === "reset"
+                    ? "Reset pictures"
+                    : "Sign out everywhere"}
             </Button>
           </div>
         </div>

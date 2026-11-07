@@ -1,0 +1,260 @@
+/* `/schools/scope-and-sequence`. A document, set to be read and looked up: the
+   title and the summary share the first screen, then each level in turn. */
+.main {
+  box-sizing: border-box;
+  display: grid;
+  align-content: start;
+  gap: var(--space-7);
+  width: min(100%, var(--schools-width) + 2 * var(--schools-gutter));
+  margin-inline: auto;
+  padding: var(--space-5) var(--schools-gutter) 0;
+  min-width: 0;
+}
+.main p {
+  margin: 0;
+}
+.failed {
+  min-height: 50dvh;
+  display: grid;
+  align-content: center;
+}
+.intro {
+  display: grid;
+  gap: var(--space-6);
+  min-width: 0;
+}
+.introText {
+  display: grid;
+  align-content: start;
+  gap: var(--space-5);
+}
+.main .title {
+  margin: 0;
+  color: var(--color-on-surface);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(38px, 3.6vw + 22px, 68px);
+  line-height: 1.06;
+  letter-spacing: -0.022em;
+}
+.main .lead {
+  max-width: 34em;
+  color: var(--color-on-surface);
+  font-size: clamp(19px, 0.5vw + 17px, 22px);
+  line-height: 1.42;
+  text-wrap: pretty;
+}
+.downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.download {
+  flex: 1 1 140px;
+  max-width: 220px;
+  white-space: nowrap;
+}
+.points {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  max-width: 38em;
+  list-style: none;
+}
+.points li {
+  position: relative;
+  margin: 0;
+  padding-left: var(--space-5);
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+.points li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.6em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+@media (min-width: 960px) {
+  .intro {
+    grid-template-columns: minmax(0, 1fr) 400px;
+    gap: var(--space-8);
+    align-items: start;
+  }
+}
+
+/* The summary. */
+.summary {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-dense);
+  font-variant-numeric: tabular-nums;
+}
+.summary th,
+.summary td {
+  padding: 0;
+  height: var(--target-size);
+  text-align: right;
+  font-weight: 400;
+  border-bottom: 1px solid var(--color-border);
+}
+.summary thead th {
+  height: 40px;
+  font-size: var(--text-table);
+  font-weight: 600;
+  border-bottom: 1px solid var(--color-border-strong);
+}
+.summary th:first-child {
+  text-align: left;
+}
+.summary tbody a {
+  display: flex;
+  align-items: center;
+  min-height: var(--target-size);
+  color: var(--color-primary);
+  text-underline-offset: 3px;
+}
+.summary a:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+  border-radius: 4px;
+}
+.summary tfoot th,
+.summary tfoot td {
+  font-weight: 650;
+  border-top: 1px solid var(--color-border-strong);
+  border-bottom: 0;
+}
+.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* One level. */
+.level {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+  scroll-margin-top: var(--space-4);
+}
+.levelHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 var(--space-4);
+}
+.main .levelHead h2 {
+  margin: 0;
+  color: var(--color-on-surface);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(28px, 1vw + 22px, 34px);
+  line-height: 1.15;
+  letter-spacing: -0.012em;
+}
+.main .levelHead p {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+}
+.objectives {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: var(--text-table);
+  line-height: 1.4;
+}
+.objectives thead th {
+  padding: 0 var(--space-4) var(--space-2) 0;
+  text-align: left;
+  font-size: var(--text-small);
+  font-weight: 600;
+  border-bottom: 1px solid var(--color-border-strong);
+}
+.objectives tbody th,
+.objectives td {
+  padding: var(--space-3) var(--space-4) var(--space-3) 0;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--color-border);
+  overflow-wrap: break-word;
+}
+.objectives tbody th {
+  font-size: var(--text-dense);
+  font-weight: 600;
+  color: var(--color-on-surface);
+}
+.objectives td {
+  color: var(--color-muted-text);
+}
+.strand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+.strandDot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--strand, var(--color-primary));
+  transform: translateY(-1px);
+}
+@media (min-width: 720px) {
+  .objectives thead th:nth-child(1) {
+    width: 27%;
+  }
+  .objectives thead th:nth-child(2) {
+    width: 14%;
+  }
+  .objectives thead th:nth-child(3) {
+    width: 24%;
+  }
+}
+/* A phone reads each objective as a short stack, labelled. */
+@media (max-width: 719.98px) {
+  .objectives,
+  .objectives tbody,
+  .objectives tr,
+  .objectives tbody th,
+  .objectives td {
+    display: block;
+    width: auto;
+  }
+  .objectives thead {
+    display: none;
+  }
+  .objectives tr {
+    padding-block: var(--space-3);
+    border-top: 1px solid var(--color-border);
+  }
+  .objectives tbody th,
+  .objectives td {
+    padding: 0;
+    border: 0;
+  }
+  .objectives td {
+    margin-top: var(--space-1);
+  }
+  .objectives td[data-empty] {
+    display: none;
+  }
+  .objectives td[data-label="Standards"]::before,
+  .objectives td[data-label="Prerequisites"]::before {
+    content: attr(data-label) ": ";
+    color: var(--color-on-surface);
+    font-weight: 600;
+  }
+}
+.end {
+  padding-top: var(--space-2);
+}

@@ -119,6 +119,7 @@ export async function experienceView(
       levels: setting("levels"),
       standings: setting("standings"),
       measure: setting("measure"),
+      deviceMode: setting("deviceMode"),
     },
     ...(students ? { students } : {}),
   };

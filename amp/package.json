@@ -16,6 +16,7 @@
     "test:school-student-ui": "tsx scripts/verify-school-student-ui.ts",
     "test:school-sign-in-ui": "tsx scripts/verify-school-sign-in-ui.ts",
     "test:school-classroom-ui": "tsx scripts/verify-school-classroom-ui.ts",
+    "test:schools-public-ui": "tsx scripts/verify-schools-public-ui.ts",
     "db:migrate": "tsx scripts/migrate.ts",
     "test": "node scripts/test-suite.mjs all",
     "test:placement-sim": "tsx --test tests/*.sim.ts",

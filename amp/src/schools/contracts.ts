@@ -58,6 +58,7 @@ export const schoolActions = [
   "settings.write",
   "workbooks.read",
   "workbooks.write",
+  "share.manage",
 ] as const;
 export type OrgKind = (typeof orgKinds)[number];
 export type OrgRole = (typeof orgRoles)[number];

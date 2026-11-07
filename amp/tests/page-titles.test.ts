@@ -112,3 +112,20 @@ test("private screens and the skill map keep their existing titles", () => {
   assert.equal(appPageTitle("/pathways"), undefined);
   assert.equal(appPageTitle("/pathways/count-to-20"), undefined);
 });
+
+test("the public school pages have titles, and a family's link is never public", () => {
+  assert.equal(
+    publicAppPageTitle("/schools", "pitch"),
+    "AMP for Schools: a complete math curriculum",
+  );
+  assert.equal(
+    publicAppPageTitle("/schools/scope-and-sequence", "pitch"),
+    "Scope and Sequence | AMP for Schools",
+  );
+  assert.equal(
+    publicAppPageTitle("/schools/trust", "pitch"),
+    "Student Data | AMP for Schools",
+  );
+  assert.equal(publicAppPageTitle("/p", "pitch"), undefined);
+  assert.equal(appPageTitle("/p"), "Progress from School | AMP");
+});

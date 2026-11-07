@@ -34,6 +34,7 @@ What schools ask, and the product's answer:
 ### Routes (each a real URL)
 
 - **Public:** `/schools`, `/schools/scope-and-sequence`, `/schools/trust`
+- **Family:** `/p#<token>`, one student's read-only progress
 - **Student:** `/join`, `/join/$code`, `/join/$code/$person`, `/c#<token>`, `/join/continue#<grant>`, then the existing `/practice`, plus `/standings` when a class turns it on
 - **Staff:** `/school`, `/school/new`, `/school/invite` (the token is in the fragment, so it never reaches a server log or report), `/school/$org` (overview), `.../classes/$class` with tabs `today`, `map`, `gradebook`, `time`, `workbooks`, `roster`, `roster/cards`, `experience`, `start`; `.../students/$student`; `.../classes`, `.../staff`, `.../sign-in-help`, `.../calendar`, `.../year`, `.../experience`, `.../import`, `.../integrations`, `.../license`, `.../privacy`, `.../activity`; `.../schools` for districts
 
@@ -53,6 +54,7 @@ Schools have real philosophies here, and this control is a selling point. Settin
 - Setup offers three starting points, "Quiet focus", "Levels visible" and "Friendly competition". A teacher running an AP class as a competition changes it for that class unless the school locked it.
 - **Standings:** independent work only, from `amp_skill_days` and `amp_level_days`. A board shows the top 10 and your own line, never a ranked list down to last place: a small board lists at most its top three quarters, and nobody's place shows unless they're listed. Off the list, your line reads as your own progress. Class boards use names; wider boards use generated handles, group by grade level, take only students whose own class chose at least that wide, and are cached for a minute. A teacher can leave any student off a class's board, and a student left off anywhere is off every wider board. A level board needs levels shown to students; otherwise it counts growth, so a hidden level stays hidden.
 - **Never affects scheduling:** time, grades, levels and standings don't feed what's scheduled next.
+- **Device mode** sits on the same screen, with the same "set by" and lock. A starting point doesn't change it, because it's about the devices and not what students see.
 - **Real data later:** every setting change goes in the event log, so outcomes under each setting can be compared once we have scale.
 - The family product stays as it is.
 
@@ -191,6 +193,12 @@ Staff stay ordinary accounts, so there is no `kind:'staff'`: a person can be a t
 - **Start class board:** big code and QR on the projector, with names lighting up as students arrive. This is the demo moment.
 - **Device modes:** the `deviceMode` setting. Shared (session storage, signed out after 30 idle minutes, clears `amp.learner` and `amp.trial`) or personal (local storage, 90 days, revocable by the teacher). A student in two classes signs in as shared if either class says so.
 
+### Families
+
+A teacher or admin makes a read-only link from a student's record ("Share with family"), and can copy it again or revoke it. It's a `share` credential whose token is derived from the credential's id with the server's secret, as an invite is, so nothing secret is stored and the same link can be copied for as long as it lasts (366 days). A class's "Parent links" action makes a fresh link for every student as a CSV for the school's own mail system; every link it replaces stops, and each change is logged. Aides and viewers neither see nor make links.
+
+The link is `/p#<token>`. The first thing the app does is take the token out of the address bar and keep it in that tab's session storage, so a reload works and the token ends with the tab. It reads one student through a rate-limited public route and returns nothing about anyone else: the student's name as the school shows it, class names, levels by strand, active time and objectives gained this term, recent objectives, and final grades only where a teacher entered one. Levels show whatever the student's own setting, because the reader isn't the student. The page has no navigation, no analytics and no engagement tracking, and carries `noindex` and `no-referrer`. A revoked or expired link, an ended enrollment or a deleted student all read as "Ask the school for a new link".
+
 ### Staff: does Better Auth cover everything?
 
 **Not everything.** It covers most small schools. These are the additions:
@@ -230,6 +238,8 @@ Another screen links a group sheet with `.../classes/$class/workbooks?students=<
 **Privacy center:** `.../privacy`. The whole-school export is a ZIP of CSVs streamed a keyset page at a time, admin only, and logged. Deleting one student or a selection uses `removeStudent`. Deleting all of a school's student data needs the school's name typed and runs from the browser, a batch per request, each student their own transaction: the log says a deletion is underway, so a failure or a reload resumes with no job table. This is the full erasure the data model mentions: final grades and the SIS ID go too, leaving a tombstone with no one's name on it. A student who moved to another school in the district is that school's now, and is left alone.
 
 **Activity log:** `.../activity`, admins only. Sentences are built on read from `amp_school_events` and today's names, so no name is ever written to the log and a tombstone reads "Removed". Pages are keyset on `(at, id)`, one index scan per org. Filters live in the URL; the person filter carries only an ID, and the name typed to find them travels in a request body.
+
+**Public pages:** `src/web/features/schools/`. `/schools` takes its counts from `/api/v1/schools/curriculum`, and its product screens from one list, `screens.ts`. The scope and sequence is built once from the live catalog in `src/schools/scope-and-sequence.ts`; the web page, the CSV and the PDF all read that build, with a long cache and an ETag. The PDF is an HTML document through the workbook renderer (`renderWorkbookPdf`), Letter landscape, rendered once per release. Objective counts, problem types and lessons are never typed into copy.
 
 **Trust, built in:** students get no analytics or attribution, and staff get no ad collection or marketing mail. Setup includes accepting a finished data agreement (published at `/schools/trust`), covering FERPA school-official use and school-authorized COPPA consent. The privacy center shows the agreement, whole-school export, deletion and the activity log. Prices never appear in this public repo.
 

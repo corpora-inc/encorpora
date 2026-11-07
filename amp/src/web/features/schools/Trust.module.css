@@ -1,0 +1,229 @@
+/* `/schools/trust`. A calm page: the promises first, each question on its own
+   line with its answer beside it, then the agreement set like a paper document. */
+.main {
+  box-sizing: border-box;
+  display: grid;
+  align-content: start;
+  gap: var(--space-8);
+  width: min(100%, var(--schools-width) + 2 * var(--schools-gutter));
+  margin-inline: auto;
+  padding: var(--space-5) var(--schools-gutter) 0;
+  min-width: 0;
+}
+.main p {
+  margin: 0;
+}
+.intro {
+  display: grid;
+  gap: var(--space-6);
+}
+.main .title {
+  margin: 0;
+  max-width: 14em;
+  color: var(--color-on-surface);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(38px, 4vw + 20px, 72px);
+  line-height: 1.05;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+.promises {
+  display: grid;
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.promises li {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  margin: 0;
+  padding-top: var(--space-3);
+  border-top: 2px solid var(--color-primary);
+}
+.promises strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.22;
+  color: var(--color-on-surface);
+}
+.promises span {
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+@media (min-width: 720px) {
+  .promises {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1100px) {
+  .promises {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.topics {
+  display: grid;
+}
+.topic {
+  display: grid;
+  gap: var(--space-3);
+  padding-block: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+.main .topic h2 {
+  margin: 0;
+  color: var(--color-on-surface);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(24px, 0.6vw + 20px, 28px);
+  line-height: 1.2;
+}
+.topicBody {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 44em;
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+  line-height: 1.55;
+}
+.topicBody p {
+  color: inherit;
+  text-wrap: pretty;
+}
+.topicBody strong {
+  color: var(--color-on-surface);
+  font-weight: 650;
+}
+.topicBody ul {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.topicBody li {
+  position: relative;
+  margin: 0;
+  padding-left: var(--space-5);
+}
+.topicBody li::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0.68em;
+  width: 10px;
+  height: 2px;
+  background: var(--color-primary);
+}
+.topicBody a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+.topicBody a:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+@media (min-width: 960px) {
+  .topic {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+  .topic h2 {
+    grid-column: 1 / span 4;
+  }
+  .topicBody {
+    grid-column: 5 / -1;
+  }
+}
+
+/* The agreement, as written. */
+.agreement {
+  box-sizing: border-box;
+  display: grid;
+  gap: var(--space-5);
+  min-width: 0;
+  width: 100%;
+  padding: var(--space-5) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+}
+@media (min-width: 720px) {
+  .agreement {
+    padding: var(--space-8);
+  }
+}
+.agreementHead {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  height: auto;
+  border: 0;
+}
+.agreementText {
+  display: grid;
+  gap: var(--space-5);
+  min-width: 0;
+}
+@media (min-width: 960px) {
+  .agreement {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-5);
+  }
+  .agreementHead {
+    grid-column: 1 / span 4;
+    position: sticky;
+    top: var(--space-6);
+    align-self: start;
+  }
+  .agreementText {
+    grid-column: 5 / -1;
+  }
+}
+.main .agreementHead h2 {
+  margin: 0;
+  color: inherit;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(30px, 1.2vw + 24px, 40px);
+  line-height: 1.12;
+  letter-spacing: -0.012em;
+}
+.main .agreementHead p {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  font-variant-numeric: tabular-nums;
+}
+.main .agreementLead {
+  max-width: 44em;
+  color: inherit;
+  font-family: var(--font-display);
+  font-size: 19px;
+  line-height: 1.5;
+}
+.agreementSection {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 44em;
+}
+.main .agreementSection h3 {
+  margin: 0;
+  color: inherit;
+  font-size: var(--text-body);
+  font-weight: 650;
+  line-height: 1.35;
+}
+.main .agreementSection p {
+  color: inherit;
+  font-size: var(--text-dense);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
