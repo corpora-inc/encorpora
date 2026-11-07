@@ -213,10 +213,7 @@ function AppScreen() {
   // Keyed, so the route's pending screen is replaced, not left hidden behind
   // the screen's own wait.
   return (
-    <Suspense
-      key={pending ? "deciding" : kind}
-      fallback={<LoadingScreen />}
-    >
+    <Suspense key={pending ? "deciding" : kind} fallback={<LoadingScreen />}>
       {pending ? <Outlet /> : <Screen />}
     </Suspense>
   );
@@ -899,7 +896,12 @@ function redirectedRecently() {
 // is cleared only after, so no mounted screen renders without one.
 let leaving = false;
 let checkingStudent = false;
+/** A student's sign-in has ended and /join is loading. Requests that still
+ * carry it wait for the screen to be replaced, as a parent's do; none of them
+ * is a parent's ended sign-in. */
+let leavingStudent = false;
 onSignedOut(() => {
+  if (leavingStudent) return true;
   const student = studentSession();
   if (student) {
     // A student's ended sign-in goes to /join. Any other route that refuses a
@@ -909,11 +911,16 @@ onSignedOut(() => {
       void studentSignInEnded(student)
         .then(async (ended) => {
           if (!ended) return;
+          leavingStudent = true;
           clearStudentDevice();
-          await router.navigate({ to: "/join", replace: true });
-          queryClient.setQueryData(sessionOptions.queryKey, null);
-          queryClient.removeQueries({ queryKey: ["account"] });
-          queryClient.removeQueries({ queryKey: ["trial"] });
+          try {
+            await router.navigate({ to: "/join", replace: true });
+          } finally {
+            queryClient.setQueryData(sessionOptions.queryKey, null);
+            queryClient.removeQueries({ queryKey: ["account"] });
+            queryClient.removeQueries({ queryKey: ["trial"] });
+            leavingStudent = false;
+          }
         })
         .catch((error) =>
           console.warn("Student sign-in could not be checked", error),
@@ -928,7 +935,9 @@ onSignedOut(() => {
   // rest wait silently for the screen to be replaced.
   if (leaving) return true;
   const { pathname, search } = router.state.location;
-  if (/^\/(sign-in|sign-up|reset-password)(\/|$)/.test(pathname)) return false;
+  // Sign-in screens, a student's included, have no sign-in to leave.
+  if (/^\/(sign-in|sign-up|reset-password|join|c)(\/|$)/.test(pathname))
+    return false;
   if (redirectedRecently()) return false;
   leaving = true;
   const carry = continuationSearch(search);

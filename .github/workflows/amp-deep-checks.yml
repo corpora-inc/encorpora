@@ -79,7 +79,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        lane: ${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON('["ui-1", "ui-2a", "ui-2b", "family", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]') || fromJSON('["selected"]') }}
+        lane: ${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON('["ui-1", "ui-2a", "ui-2b", "family-a", "family-b", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]') || fromJSON('["selected"]') }}
     timeout-minutes: 60
     needs: changes
     if: needs.changes.outputs.browser == 'true'
@@ -163,8 +163,10 @@ jobs:
         run: npm run test:ui:2a
       - if: matrix.lane == 'ui-2b'
         run: npm run test:ui:2b
-      - if: matrix.lane == 'family'
-        run: npm run test:family-ui
+      - if: matrix.lane == 'family-a'
+        run: npm run test:family-ui:a
+      - if: matrix.lane == 'family-b'
+        run: npm run test:family-ui:b
       # Zero contrast violations: every route and state, light and dark, 390 and 1280.
       - if: startsWith(matrix.lane, 'contrast-')
         env:
