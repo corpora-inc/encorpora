@@ -103,7 +103,13 @@ await vite.listen();
 const browser = await chromium.launch();
 async function open(
   state: State,
-  options: { width?: number; dark?: boolean; path?: string } = {},
+  options: {
+    width?: number;
+    dark?: boolean;
+    path?: string;
+    /** Milliseconds before the sign-in screens' code arrives. */
+    slowJoin?: number;
+  } = {},
 ) {
   const context = await browser.newContext({
     viewport: { width: options.width ?? 390, height: 844 },
@@ -169,6 +175,14 @@ async function open(
     localStorage.setItem("amp.learner", "kept-until-sign-out");
     localStorage.setItem("amp.trial", "kept-until-sign-out");
   }, JSON.stringify(session));
+  if (options.slowJoin)
+    await context.route(
+      /\/src\/web\/features\/school\/join\//,
+      async (route) => {
+        await new Promise((done) => setTimeout(done, options.slowJoin));
+        await route.continue();
+      },
+    );
   const page = await context.newPage();
   await page.goto(`${origin}${options.path ?? "/"}`);
   return { page, requests, close: () => context.close() };
@@ -306,10 +320,15 @@ try {
     await close();
   }
   {
-    // A bad token goes to /join and is forgotten.
-    const { page, close } = await open(fresh({ valid: false }));
+    // A bad token goes to /join and is forgotten. On a slow connection the
+    // screen still showing answers its own requests with the same 401 while
+    // /join loads; those mustn't send the student to a parent's sign-in.
+    const { page, close } = await open(fresh({ valid: false }), {
+      slowJoin: 2000,
+    });
     await page.waitForURL("**/join");
     await page.getByRole("heading", { name: "Type your class code" }).waitFor();
+    assert.equal(new URL(page.url()).pathname, "/join");
     assert.equal(
       await page.evaluate(() => sessionStorage.getItem("amp.student")),
       null,
