@@ -200,6 +200,7 @@ test("service injects a trusted policy; request bodies cannot choose one", async
     recentSkips: async () => [],
     recentWorkbooks: async () => [],
     saveProblem: async () => {},
+    saveProblems: async () => {},
   };
   const repository = {
     transaction: async (

@@ -87,12 +87,40 @@ test(
       })) as { licenseId: string };
       return { orgId: org.id, licenseId: license.licenseId };
     }
-    async function enrolled(orgId: string, classId?: string, gradeLevel = 4) {
+    /** A tombstone keeps only what maps a final grade to the school's record. */
+    async function assertScrubbed(personId: string, handle: string) {
+      const person = (
+        await db.query("SELECT * FROM amp_people WHERE id=$1", [personId])
+      ).rows[0];
+      assert.equal(person.learner_id, null);
+      assert.ok(person.deleted_at);
+      assert.equal(person.given_name, "Removed");
+      assert.equal(person.family_name, null);
+      assert.equal(person.display_name, null);
+      assert.equal(person.email, null);
+      assert.equal(person.identifier, "SIS-1001");
+      assert.equal(person.handle, handle);
+    }
+    const handleOf = async (personId: string) =>
+      (await db.query("SELECT handle FROM amp_people WHERE id=$1", [personId]))
+        .rows[0].handle as string;
+    const personal = {
+      displayName: "Fixture S.",
+      email: "fixture-student@example.test",
+      identifier: "SIS-1001",
+    };
+    async function enrolled(
+      orgId: string,
+      classId?: string,
+      gradeLevel = 4,
+      extra: object = {},
+    ) {
       const student = await schools.provisionStudent(orgId, {
         givenName: "Fixture",
         familyName: "Student",
         gradeLevel,
         ...(classId ? { classId } : {}),
+        ...extra,
       });
       const { token } = await schools.issueStudentSession({
         personId: student.personId,
@@ -107,7 +135,8 @@ test(
         async () => {
           const { orgId, licenseId } = await school("Practice School");
           const period = await schools.createClass(orgId, { name: "Period 1" });
-          const student = await enrolled(orgId, period.id);
+          const student = await enrolled(orgId, period.id, 4, personal);
+          const handle = await handleOf(student.personId);
           assert.equal(student.seated, true);
           const grantId = (
             await db.query(
@@ -165,14 +194,7 @@ test(
             student.learnerId,
           );
           assert.equal(receipt.deletedLearners, 1);
-          const person = (
-            await db.query("SELECT * FROM amp_people WHERE id=$1", [
-              student.personId,
-            ])
-          ).rows[0];
-          assert.equal(person.learner_id, null);
-          assert.ok(person.deleted_at);
-          assert.equal(person.given_name, "Fixture");
+          await assertScrubbed(student.personId, handle);
           const seat = (
             await db.query("SELECT * FROM amp_seats WHERE person_id=$1", [
               student.personId,
@@ -201,7 +223,8 @@ test(
         "retention reaches a school learner without an FK failure, and the person survives",
         async () => {
           const { orgId } = await school("Retention School");
-          const student = await enrolled(orgId);
+          const student = await enrolled(orgId, undefined, 4, personal);
+          const handle = await handleOf(student.personId);
           // Not yet: the license is still running.
           assert.deepEqual(await purgeInactiveLearners(db), {
             expiredLearners: 0,
@@ -211,14 +234,7 @@ test(
           assert.ok(
             (await purgeInactiveLearners(db, later)).expiredLearners >= 1,
           );
-          const person = (
-            await db.query(
-              "SELECT learner_id,deleted_at FROM amp_people WHERE id=$1",
-              [student.personId],
-            )
-          ).rows[0];
-          assert.equal(person.learner_id, null);
-          assert.ok(person.deleted_at);
+          await assertScrubbed(student.personId, handle);
           assert.equal(
             (
               await db.query("SELECT 1 FROM amp_learners WHERE id=$1", [

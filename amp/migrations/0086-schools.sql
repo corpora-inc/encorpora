@@ -40,11 +40,17 @@ CREATE INDEX amp_people_email_idx ON amp_people(email);
 CREATE UNIQUE INDEX amp_people_tenant_account_idx ON amp_people(tenant_id,account_id)
  WHERE account_id IS NOT NULL;
 CREATE INDEX amp_people_account_idx ON amp_people(account_id) WHERE account_id IS NOT NULL;
--- A deleted learner leaves a tombstone, whichever path deleted it. Registrars
--- keep the record; a token for this person stops working at once.
+-- A deleted learner leaves a tombstone, whichever path deleted it. The personal
+-- fields go with the learner. `identifier` stays, so final grades still map to
+-- the school's SIS record, and so does the generated `handle`. A token for this
+-- person stops working at once.
 CREATE FUNCTION amp_people_tombstone_with_learner() RETURNS trigger LANGUAGE plpgsql AS $$
 BEGIN
  NEW.deleted_at := COALESCE(NEW.deleted_at,now());
+ NEW.given_name := 'Removed';
+ NEW.family_name := NULL;
+ NEW.display_name := NULL;
+ NEW.email := NULL;
  RETURN NEW;
 END;
 $$;
