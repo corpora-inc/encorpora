@@ -34,11 +34,13 @@ export function studentSession(): StudentSession | null {
   return read(() => sessionStorage) ?? read(() => localStorage);
 }
 /** Signed in as a student, or on the screens a student signs in from, whose
- * URLs can carry a card's secret and which a parent has no reason to open. */
+ * URLs can carry a card's secret and which a parent has no reason to open. A
+ * family's progress link (`/p`) is held to the same silence: it can carry a
+ * secret too, and nothing on it is measured. */
 export function isStudentDevice(): boolean {
   return (
     !!studentSession() ||
-    /^\/(join|c)(\/|$)/.test(globalThis.location?.pathname ?? "")
+    /^\/(join|c|p)(\/|$)/.test(globalThis.location?.pathname ?? "")
   );
 }
 export function rememberStudentSession(

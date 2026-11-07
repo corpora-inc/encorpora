@@ -51,7 +51,7 @@ function selectedEncoding(
 }
 
 /** If-None-Match uses weak comparison for GET, including lists and `*`. */
-function matchesEtag(header: string | undefined, etag: string): boolean {
+export function matchesEtag(header: string | undefined, etag: string): boolean {
   if (!header) return false;
   return header.split(",").some((part) => {
     const candidate = part.trim();
@@ -63,13 +63,14 @@ export function sendPublicJson(
   request: FastifyRequest,
   reply: FastifyReply,
   cached: PublicJson,
+  cacheControl = CACHE_CONTROL,
 ) {
   const encoding = selectedEncoding(request.headers["accept-encoding"]);
   if (!encoding) return reply.code(406).send({ error: "Not acceptable" });
   const selected = cached[encoding];
   reply
     .type("application/json; charset=utf-8")
-    .header("Cache-Control", CACHE_CONTROL)
+    .header("Cache-Control", cacheControl)
     .header("ETag", selected.etag)
     .header("Vary", "Accept-Encoding");
   if (encoding === "gzip") reply.header("Content-Encoding", "gzip");

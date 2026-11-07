@@ -78,11 +78,15 @@ export const todayTodoResource = z.object({
   detail: z.string(),
   students: z.array(person),
   action: todoAction,
+  /** A shared gap can also go on paper: this skill, for these students. */
+  groupSheet: z.object({ skillId: z.string(), label: z.string() }).optional(),
 });
 export type TodayTodo = z.infer<typeof todayTodoResource>;
 export const todayResponse = z.object({
   class: classSummary,
   teacherName: z.string().nullable(),
+  /** This person can print workbooks for the class. */
+  canPrint: z.boolean(),
   today: day,
   partOfDay: z.enum(["morning", "afternoon", "evening"]),
   todos: z.array(todayTodoResource),

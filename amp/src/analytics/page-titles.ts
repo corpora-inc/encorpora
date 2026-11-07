@@ -68,6 +68,9 @@ export const publicAppPageTitles: Readonly<Record<string, string>> = {
   "/invoice/arkansas-efa": "Request an Arkansas EFA Invoice | AMP",
   "/invoice/arizona-esa": "Request an Arizona ESA Invoice | AMP",
   "/invoice/new-hampshire-efa": "Request a New Hampshire EFA Invoice | AMP",
+  "/schools": "AMP for Schools: a complete math curriculum",
+  "/schools/scope-and-sequence": "Scope and Sequence | AMP for Schools",
+  "/schools/trust": "Student Data | AMP for Schools",
 };
 
 /** The signed-in home at `/`: a private screen, so GA never receives it. */
@@ -87,6 +90,7 @@ const appScreenTitles: Readonly<Record<string, string>> = {
   "/start/verify-email": "Verify Your Email | AMP",
   "/account/ready": "Your Account Is Ready | AMP",
   "/access": "Your Access | AMP",
+  "/p": "Progress from School | AMP",
 };
 
 /** A path with optional query and fragment, as a normalized path and its query. */

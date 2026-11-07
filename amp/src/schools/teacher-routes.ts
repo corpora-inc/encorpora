@@ -67,12 +67,14 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     url: `${CLASS}/today`,
     action: "students.read",
     target: classParam,
-    handler: async ({ actor, target, pool }) =>
-      readToday(
+    handler: async ({ actor, target, pool, services }) => ({
+      ...(await readToday(
         pool,
         await classContext(pool, target.classId),
         actorPerson(actor, target),
-      ),
+      )),
+      canPrint: can(actor, "workbooks.write", target) && !!services.learning,
+    }),
   });
   define({
     method: "GET",

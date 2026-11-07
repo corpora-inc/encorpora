@@ -16,6 +16,11 @@ import { SchoolRepository } from "./repository.js";
 import { defineSignInRoutes, registerJoinRoutes } from "./sign-in-routes.js";
 import { defineTeacherRoutes } from "./teacher-routes.js";
 import {
+  defineShareRoutes,
+  registerCurriculumRoutes,
+  registerShareExchange,
+} from "./share-routes.js";
+import {
   defineClassroomRoutes,
   registerStudentStandings,
 } from "./classroom-routes.js";
@@ -225,6 +230,8 @@ export async function registerSchoolRoutes(
     registerJoinRoutes(scope, repository);
     registerInvitePreview(scope, repository);
     registerStudentStandings(scope, options.pool);
+    registerShareExchange(scope, options.pool);
+    registerCurriculumRoutes(scope, services);
     // Students only: a staff or parent credential is never a student's.
     scope.post(
       "/api/v1/school/student/activity",
@@ -423,3 +430,4 @@ defineSignInRoutes(defineSchoolRoute);
 defineSetupRoutes(defineSchoolRoute);
 defineTeacherRoutes(defineSchoolRoute);
 defineClassroomRoutes(defineSchoolRoute);
+defineShareRoutes(defineSchoolRoute);

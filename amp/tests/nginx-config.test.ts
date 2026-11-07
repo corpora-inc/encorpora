@@ -54,3 +54,14 @@ test("the camera is ours alone, and a class code stays out of access logs", () =
   );
   assert.match(conf, /location \^~ \/join\/ \{\s*access_log off;/);
 });
+
+test("a family's progress link stays out of search and sends no referrer", () => {
+  const block = /location = \/p \{([^}]*)\}/.exec(conf)?.[1] ?? "";
+  assert.match(block, /X-Robots-Tag "noindex, nofollow" always;/);
+  assert.match(block, /include \/etc\/nginx\/amp-security-headers\.conf;/);
+  // The later header is the one browsers use.
+  assert.match(
+    block,
+    /amp-security-headers\.conf;[\s\S]*Referrer-Policy no-referrer always;/,
+  );
+});
