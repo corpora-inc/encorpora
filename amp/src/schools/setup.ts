@@ -8,6 +8,7 @@ import {
   type DivisionKind,
 } from "./calendar.js";
 import { SchoolError, type GradingKind } from "./contracts.js";
+import { experienceValues } from "./classroom-contracts.js";
 import { recordEvent } from "./events.js";
 import {
   EVALUATION_DAYS,
@@ -19,7 +20,6 @@ import {
   assertSettingsWritable,
   defaultSettings,
   SettingLockedError,
-  type SchoolSettings,
   type SettingsScope,
 } from "./settings.js";
 import { markStaffAccount } from "./staff-account.js";
@@ -36,15 +36,6 @@ import {
   type SetupState,
 } from "./setup-contracts.js";
 
-/** What each starting point writes to `amp_scope_settings`, from the design. */
-export const experienceValues: Record<
-  ExperiencePreset,
-  Pick<SchoolSettings, "levels" | "standings" | "measure">
-> = {
-  quiet: { levels: "hidden", standings: "off", measure: "growth" },
-  levels: { levels: "shown", standings: "off", measure: "growth" },
-  competition: { levels: "shown", standings: "class", measure: "growth" },
-};
 function presetFor(values: Record<string, unknown>): ExperiencePreset | null {
   for (const [preset, wanted] of Object.entries(experienceValues))
     if (

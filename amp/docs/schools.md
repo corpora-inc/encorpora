@@ -51,7 +51,7 @@ Schools have real philosophies here, and this control is a selling point. Settin
 | Device mode | Shared, personal | Shared |
 
 - Setup offers three starting points, "Quiet focus", "Levels visible" and "Friendly competition". A teacher running an AP class as a competition changes it for that class unless the school locked it.
-- **Standings:** independent work only. A board shows the top 10 and your own line, never a ranked list down to last place. Class boards use names; wider boards use generated handles and group by grade level. A teacher can leave any student off.
+- **Standings:** independent work only, from `amp_skill_days` and `amp_level_days`. A board shows the top 10 and your own line, never a ranked list down to last place: a small board lists at most its top three quarters, and nobody's place shows unless they're listed. Off the list, your line reads as your own progress. Class boards use names; wider boards use generated handles, group by grade level, take only students whose own class chose at least that wide, and are cached for a minute. A teacher can leave any student off a class's board, and a student left off anywhere is off every wider board. A level board needs levels shown to students; otherwise it counts growth, so a hidden level stays hidden.
 - **Never affects scheduling:** time, grades, levels and standings don't feed what's scheduled next.
 - **Real data later:** every setting change goes in the event log, so outcomes under each setting can be compared once we have scale.
 - The family product stays as it is.
@@ -214,7 +214,9 @@ A new staff account isn't treated as a new parent: the guard sends them to `/sch
 - Today's rules run over the rollup and `amp_skill_evidence` for the roster: stuck, shared gap, no practice against target, ready for more.
 - Pending migrations share one transaction, so the trigger ships in a later PR than the base tables.
 
-**Workbook stack:** client-driven, concurrency 2. The teacher's browser requests each student's PDF through a staff route reusing extracted helpers from `src/workbook/routes.ts`, with a fixed workbook number so retries don't create new ones. It retries 503s and merges with lazy `pdf-lib` in a Web Worker. No job table, no stored PDFs. The QR on the page opens a teacher marking route, a roster grid using the existing paper weights.
+**Workbook stack:** client-driven, concurrency 2. The teacher's browser requests each student's PDF through a staff route reusing extracted helpers from `src/workbook/routes.ts`, with a fixed workbook number so retries don't create new ones. It retries 503s and merges with lazy `pdf-lib` in a Web Worker, in files of up to 40 students. No job table, no stored PDFs. The QR on the page opens a teacher marking route, a roster grid using the existing paper weights. Marks are drafts until saved, and saved marks don't change, because attempts are immutable.
+
+Another screen links a group sheet with `.../classes/$class/workbooks?students=<comma-separated person ids>&skill=<skill id>`. The students are preselected and each workbook leans on the skill: today's idea teaches it when a lesson can, and it takes up to half of practice. Unknown students or skills are dropped, so a stale link still opens the tab.
 
 **Trust, built in:** students get no analytics or attribution, and staff get no ad collection or marketing mail. Setup includes accepting a finished data agreement (published at `/schools/trust`), covering FERPA school-official use and school-authorized COPPA consent. The privacy center shows the agreement, whole-school export, deletion and the activity log. Prices never appear in this public repo.
 

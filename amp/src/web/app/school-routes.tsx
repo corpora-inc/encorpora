@@ -48,14 +48,14 @@ async function staffSession(
   }
   return session;
 }
-const staffScreen = async ({
+export const staffScreen = async ({
   location,
 }: {
   location: { pathname: string; searchStr: string };
 }) => ({ session: await staffSession(location) });
 
 /** The frame's data, loaded with the screen so its navigation is whole. */
-async function frameData(session: AuthSession, orgId: string) {
+export async function frameData(session: AuthSession, orgId: string) {
   await Promise.all([
     preload(orgOptions(session, orgId)),
     preload(classesOptions(session, orgId)),
@@ -96,10 +96,6 @@ export function schoolRoutes(root: AnyRoute) {
       () => import("../features/school/ClassesScreen"),
       "ClassesScreen",
     ),
-    klass: screen(
-      () => import("../features/school/ClassesScreen"),
-      "ClassScreen",
-    ),
     students: screen(
       () => import("../features/school/StudentsScreen"),
       "StudentsScreen",
@@ -123,6 +119,10 @@ export function schoolRoutes(root: AnyRoute) {
     importer: screen(
       () => import("../features/school/ImportScreen"),
       "ImportScreen",
+    ),
+    experience: screen(
+      () => import("../features/school/classroom"),
+      "OrgExperienceScreen",
     ),
   };
   return [
@@ -217,7 +217,6 @@ export function schoolRoutes(root: AnyRoute) {
       },
     }),
     orgScreen("/classes", screens.classes),
-    orgScreen("/classes/$class", screens.klass),
     orgScreen("/students", screens.students),
     orgScreen("/staff", screens.staff, (session, orgId) => [
       preload(staffOptions(session, orgId)),
@@ -232,5 +231,6 @@ export function schoolRoutes(root: AnyRoute) {
       preload(licenseOptions(session, orgId)),
     ]),
     orgScreen("/import", screens.importer),
+    orgScreen("/experience", screens.experience),
   ];
 }

@@ -149,6 +149,8 @@ export async function recordPaperResults(
   record: WorkbookRecord,
   entries: readonly PaperEntry[],
   now: Date,
+  /** Who typed these in: a teacher's marks say so on the stored problem. */
+  entered?: { by: "teacher" },
 ): Promise<number> {
   const items = new Map(numbered(record).map((entry) => [entry.n, entry]));
   const seen = new Set<number>();
@@ -197,6 +199,7 @@ export async function recordPaperResults(
         workbookId: record.id,
         workbookDate: record.date,
         problemNumber: entry.n,
+        ...(entered ? { enteredBy: entered.by } : {}),
       },
     };
     if (await tx.attemptByProblem(id))

@@ -9,9 +9,24 @@ import { classListOptions, orgOptions, useStaffSession } from "./api";
 export function classTabs(org: string, id: string): TabItem[] {
   return [
     {
+      id: "workbooks",
+      label: "Workbooks",
+      path: `school/${org}/classes/${id}/workbooks`,
+    },
+    {
       id: "roster",
       label: "Roster",
       path: `school/${org}/classes/${id}/roster`,
+    },
+    {
+      id: "experience",
+      label: "Student experience",
+      path: `school/${org}/classes/${id}/experience`,
+    },
+    {
+      id: "settings",
+      label: "Settings",
+      path: `school/${org}/classes/${id}/settings`,
     },
   ];
 }

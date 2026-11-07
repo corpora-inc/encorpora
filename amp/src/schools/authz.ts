@@ -87,17 +87,22 @@ const ORG_STAFF = new Set<SchoolAction>([
   "classes.read",
   "students.read",
   "calendar.read",
+  "settings.read",
 ]);
 const VIEWER = new Set<SchoolAction>([
   ...ORG_STAFF,
   "staff.read",
   "license.read",
   "signin.read",
+  "workbooks.read",
 ]);
 const AIDE_CLASS = new Set<SchoolAction>([
   "classes.read",
   "students.read",
   "signin.read",
+  "settings.read",
+  "workbooks.read",
+  "workbooks.write",
 ]);
 const TEACHER_CLASS = new Set<SchoolAction>([
   ...AIDE_CLASS,
@@ -105,6 +110,7 @@ const TEACHER_CLASS = new Set<SchoolAction>([
   "classes.update",
   "students.update",
   "signin.manage",
+  "settings.write",
 ]);
 const SELF = new Set<SchoolAction>([
   "orgs.list",

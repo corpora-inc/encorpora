@@ -50,6 +50,7 @@ const compose = (
     minutes?: WorkbookMinutes;
     history?: WorkbookSpec[];
     choices?: Partial<WorkbookChoices>;
+    focusSkill?: string;
   } = {},
 ) => {
   const { frontier, evidence, attempts } = learners.get(id)!;
@@ -305,6 +306,46 @@ test("the results page links to the learner's results with a QR code", () => {
   });
   assert.ok(linked.includes('class="wb-qr"'));
   assert.ok(linked.includes(workbookCode(spec)));
+});
+
+test("a teacher's marking link takes the place of the parent's", () => {
+  const spec = compose("third-grade");
+  const parent = workbookHtml(spec, {
+    lessons,
+    skillTitle,
+    results: {
+      baseUrl: "https://amp.corpora.inc",
+      learnerId: "l1",
+      workbookId: "w1",
+    },
+  });
+  const teacher = workbookHtml(spec, {
+    lessons,
+    skillTitle,
+    results: {
+      baseUrl: "https://amp.corpora.inc",
+      learnerId: "l1",
+      workbookId: "w1",
+    },
+    resultsUrl: "https://amp.corpora.inc/school/o/classes/c/workbooks/d",
+  });
+  assert.ok(teacher.includes('class="wb-qr"'));
+  assert.notEqual(teacher, parent);
+});
+
+test("a focus skill leans a workbook on it, and an unusable one changes nothing", () => {
+  const plain = compose("third-grade");
+  assert.deepEqual(
+    compose("third-grade", { focusSkill: "no-such-skill" }),
+    plain,
+  );
+  const skill = plain.sections.find((s) => s.kind === "practice")!.items[0]!
+    .skillId;
+  const focused = compose("third-grade", { focusSkill: skill });
+  assert.equal(focused.focusSkill, skill);
+  const practice = focused.sections.find((s) => s.kind === "practice")!.items;
+  assert.ok(practice.filter((item) => item.skillId === skill).length >= 2);
+  assert.notEqual(workbookCode(focused), workbookCode(plain));
 });
 
 test("the challenge comes from the curated pool, which is printable", () => {

@@ -15,6 +15,12 @@ import { pageSchema, SchoolError, type SchoolAction } from "./contracts.js";
 import { SchoolRepository } from "./repository.js";
 import { defineSignInRoutes, registerJoinRoutes } from "./sign-in-routes.js";
 import {
+  defineClassroomRoutes,
+  registerStudentStandings,
+} from "./classroom-routes.js";
+import type { Repository } from "../server/repository.js";
+import type { WorkbookRenderer } from "../workbook/pdf.js";
+import {
   canList,
   defineSetupRoutes,
   registerInvitePreview,
@@ -64,6 +70,9 @@ export type SchoolServices = {
   ) => Promise<void>;
   /** Public OAuth client IDs, for the IT handoff page. */
   signIn?: { google?: string; microsoft?: string };
+  /** The learning store and PDF renderer behind a teacher's workbook stack. */
+  learning?: Repository;
+  renderer?: WorkbookRenderer | null;
 };
 export type SchoolRoute = {
   method: "GET" | "POST";
@@ -214,6 +223,7 @@ export async function registerSchoolRoutes(
     });
     registerJoinRoutes(scope, repository);
     registerInvitePreview(scope, repository);
+    registerStudentStandings(scope, options.pool);
     // Students only: a staff or parent credential is never a student's.
     scope.post(
       "/api/v1/school/student/activity",
@@ -410,3 +420,5 @@ defineSchoolRoute({
 defineSignInRoutes(defineSchoolRoute);
 
 defineSetupRoutes(defineSchoolRoute);
+
+defineClassroomRoutes(defineSchoolRoute);

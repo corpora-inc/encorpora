@@ -1,0 +1,259 @@
+/* A child's screen. Nothing here reads as a table: each student is a wave that
+   runs as far as they've come, and the AMP wave is the only flourish. The waves
+   draw once as the board opens, and everything holds still after that. */
+.frame {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-height: 100dvh;
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+}
+.bar {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: calc(var(--target-size) + var(--space-4));
+  padding: 0 var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-size);
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-control);
+  color: inherit;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+@media (max-width: 420px) {
+  .brand {
+    display: none;
+  }
+}
+.brand:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.back {
+  margin-inline-start: var(--space-2);
+  white-space: nowrap;
+}
+.spacer {
+  flex: 1;
+}
+@media (max-width: 360px) {
+  .bar {
+    padding-inline: var(--space-2);
+  }
+  .back {
+    padding-inline: var(--space-3);
+  }
+}
+.main {
+  box-sizing: border-box;
+  width: min(100%, 720px);
+  margin-inline: auto;
+  padding: var(--space-5) var(--space-4) var(--space-8);
+}
+.picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+.pick {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: var(--space-1) var(--space-4);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 22px;
+  color: inherit;
+  font-size: var(--text-table);
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+}
+.pick:hover {
+  border-color: var(--color-primary);
+}
+.pick:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.pick[aria-current="page"] {
+  border-color: var(--color-selected);
+  background: var(--color-selected);
+  color: var(--color-on-selected);
+}
+.head {
+  margin-bottom: var(--space-5);
+}
+.head h1 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 7vw, 46px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+.head p {
+  margin-top: var(--space-1);
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+}
+.list {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.row {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 64px;
+  padding: var(--space-2) var(--space-3) var(--space-2) var(--space-2);
+  border-radius: var(--radius-panel);
+}
+.row[data-you] {
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+}
+.rank {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-variant-numeric: var(--numeric);
+  line-height: 1;
+}
+.row[data-rank="1"] .rank {
+  background: var(--color-figure-gold-fill);
+  color: var(--color-figure-gold);
+  font-size: 26px;
+}
+.row[data-rank="2"] .rank {
+  background: var(--color-figure-accent-fill);
+  color: var(--color-figure-ink);
+}
+.row[data-rank="3"] .rank {
+  background: var(--color-figure-warm-fill);
+  color: var(--color-figure-warm);
+}
+.who {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+}
+.name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 var(--space-2);
+  font-size: var(--text-body);
+  font-weight: 650;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+.youTag {
+  font-size: var(--text-small);
+  font-weight: 650;
+  line-height: 1.25;
+}
+/* The student's wave, the same shape as the AMP mark, run out to their value. */
+.track {
+  display: block;
+  width: var(--reach);
+  height: 12px;
+  background: var(--color-primary);
+  -webkit-mask: var(--standings-wave) 0 50% / 24px 12px repeat-x;
+  mask: var(--standings-wave) 0 50% / 24px 12px repeat-x;
+  animation: wave-draw 900ms var(--ease-standard) both;
+  --standings-wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 12'%3E%3Cpath d='M0 6C3 1 9 1 12 6S21 11 24 6' fill='none' stroke='currentColor' stroke-width='2.4'/%3E%3C/svg%3E");
+}
+.row[data-rank="1"] .track {
+  background: var(--color-figure-gold);
+}
+.row[data-rank="3"] .track {
+  background: var(--color-figure-warm);
+}
+@keyframes wave-draw {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}
+.value {
+  font-size: var(--text-price);
+  font-weight: 700;
+  font-variant-numeric: var(--numeric);
+  line-height: 1;
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.empty {
+  padding-block: var(--space-4);
+  color: var(--color-muted-text);
+}
+.you {
+  margin-top: var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-raised);
+  box-shadow: inset 0 0 0 1px var(--color-border);
+  color: var(--color-on-surface-raised);
+}
+.you h2 {
+  font-family: inherit;
+  font-size: var(--text-body);
+  font-weight: 650;
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+.you p {
+  margin-top: var(--space-1);
+  font-family: var(--font-display);
+  font-size: var(--text-heading-2);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  text-wrap: pretty;
+}
+.note {
+  margin-top: var(--space-3);
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+.problem {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3);
+}
+.problem h1 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 400;
+}

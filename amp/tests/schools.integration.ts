@@ -737,6 +737,7 @@ test(
             student: student1.personId,
             person: randomUUID(),
             session: randomUUID(),
+            workbook: randomUUID(),
           };
           const known = new Set(Object.keys(fixtures));
           assert.ok(schoolRoutes.length >= 6);

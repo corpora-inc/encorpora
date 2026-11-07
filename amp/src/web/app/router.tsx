@@ -46,7 +46,12 @@ import {
   studentSignInEnded,
 } from "../lib/student-device";
 import { workbookSearchSchema } from "../features/workbooks/model";
-import { schoolRoutes } from "./school-routes";
+import { frameData, schoolRoutes, staffScreen } from "./school-routes";
+import {
+  marksSearchSchema,
+  stackSearchSchema,
+  standingsSearchSchema,
+} from "../features/school/classroom/search";
 const searchSchema = z
   .object({
     return: z
@@ -602,16 +607,13 @@ const signInCard = createRoute({
 });
 /** A class's staff screens. Each is its own child, and the API decides who
  * reaches which class. */
-async function staffOnly() {
-  notForStudents();
-  const session = await queryClient.ensureQueryData(sessionOptions);
-  if (!session) throw redirect({ to: "/sign-in" });
-}
 const classScreens = () => import("../features/school/classes");
 const schoolClass = createRoute({
   getParentRoute: () => root,
   path: "/school/$org/classes/$class",
-  beforeLoad: staffOnly,
+  beforeLoad: staffScreen,
+  loader: ({ context, params }) =>
+    frameData((context as { session: AuthSession }).session, params.org),
 });
 const schoolClassHome = createRoute({
   getParentRoute: () => schoolClass,
@@ -623,6 +625,15 @@ const schoolClassHome = createRoute({
       replace: true,
     });
   },
+});
+/** The class's own details: its code, how it grades, and adding students. */
+const schoolClassSettings = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "settings",
+  component: lazyRouteComponent(
+    () => import("../features/school/ClassesScreen"),
+    "ClassScreen",
+  ),
 });
 const schoolClassRoster = createRoute({
   getParentRoute: () => schoolClass,
@@ -641,6 +652,38 @@ const schoolClassCards = createRoute({
     student: z.uuid().optional().catch(undefined),
   }),
   component: lazyRouteComponent(classScreens, "CardsScreen"),
+});
+const classroomScreens = () => import("../features/school/classroom");
+const schoolClassExperience = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "experience",
+  component: lazyRouteComponent(classroomScreens, "ClassExperienceScreen"),
+});
+const schoolClassWorkbooks = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "workbooks",
+  validateSearch: stackSearchSchema,
+  component: lazyRouteComponent(classroomScreens, "WorkbookStackScreen"),
+});
+const schoolClassMarks = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "workbooks/$date",
+  validateSearch: marksSearchSchema,
+  component: lazyRouteComponent(classroomScreens, "MarkingScreen"),
+});
+/** A student's board, in its own chunk: a student's device never loads a staff
+ * screen. Anyone else, or a class with it off, goes back to the app. */
+const standings = createRoute({
+  getParentRoute: () => root,
+  path: "/standings",
+  validateSearch: standingsSearchSchema,
+  beforeLoad: () => {
+    if (!studentSession()) throw redirect({ to: "/", replace: true });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/school/classroom/StandingsScreen"),
+    "StandingsScreen",
+  ),
 });
 const fallback = createRoute({
   getParentRoute: () => root,
@@ -702,10 +745,15 @@ export const router = createRouter({
     signInCard,
     schoolClass.addChildren([
       schoolClassHome,
+      schoolClassSettings,
       schoolClassRoster,
       schoolClassStart,
       schoolClassCards,
+      schoolClassExperience,
+      schoolClassWorkbooks,
+      schoolClassMarks,
     ]),
+    standings,
     signIn,
     signUp,
     accountReady,

@@ -43,6 +43,10 @@ export const schoolActions = [
   "license.read",
   "license.request",
   "roster.import",
+  "settings.read",
+  "settings.write",
+  "workbooks.read",
+  "workbooks.write",
 ] as const;
 export type OrgKind = (typeof orgKinds)[number];
 export type OrgRole = (typeof orgRoles)[number];
