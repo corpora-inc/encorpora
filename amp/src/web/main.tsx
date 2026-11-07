@@ -9,13 +9,16 @@ import { router } from "./app/router";
 import "./app/styles";
 import { captureOpenAIEntry } from "./lib/openai-acquisition";
 import { startEngagement } from "./lib/engagement";
+import { startStudentActivity } from "./lib/student-activity";
 import { watchForNewRelease } from "./lib/app-recovery";
 import { trackSessionStart, trackGooglePage } from "./lib/analytics";
 // After consent-entry has removed any private fragment from the URL.
 captureOpenAIEntry();
 const engagement = startEngagement({ awaitRoute: true });
+const studentActivity = startStudentActivity();
 router.subscribe("onResolved", () => {
   engagement.navigate(router.state.location.pathname);
+  studentActivity.navigate(router.state.location.pathname);
   trackGooglePage();
 });
 trackGooglePage();

@@ -112,7 +112,7 @@ const orgParam = ({ params }: Input) =>
 const classParam = ({ params }: Input) =>
   ({ kind: "class", orgId: params.org!, classId: params.class! }) as const;
 const studentParam = ({ params }: Input) =>
-  ({ kind: "person", orgId: params.org!, personId: params.student! }) as const;
+  ({ kind: "student", personId: params.student! }) as const;
 const who = ({
   actor,
   target,

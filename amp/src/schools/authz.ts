@@ -28,12 +28,13 @@ export type SchoolTarget =
   | { kind: "self" }
   | { kind: "org"; orgId: string; path: string[] }
   | { kind: "class"; classId: string; orgId: string; path: string[] }
+  /** A rostered student, reached through the org they attend and the classes
+   * they are in today. */
   | {
-      kind: "person";
+      kind: "student";
       personId: string;
       orgId: string;
       path: string[];
-      /** Classes this student is enrolled in, for the teacher's rule. */
       classIds: string[];
     };
 
@@ -97,6 +98,7 @@ const TEACHER_CLASS = new Set<SchoolAction>([
   ...AIDE_CLASS,
   "students.add",
   "classes.update",
+  "students.update",
 ]);
 const SELF = new Set<SchoolAction>([
   "orgs.list",
@@ -119,19 +121,12 @@ export function can(
   if (roles.some((role) => role.role === "admin")) return true;
   if (VIEWER.has(action) && roles.some((role) => role.role === "viewer"))
     return true;
-  if (target.kind === "class") {
-    const own = actor.classes.filter((c) => c.classId === target.classId);
+  if (target.kind === "class" || target.kind === "student") {
+    const ids = target.kind === "class" ? [target.classId] : target.classIds;
+    const own = actor.classes.filter((c) => ids.includes(c.classId));
     return (
       (own.some((c) => c.role === "teacher") && TEACHER_CLASS.has(action)) ||
       (own.some((c) => c.role === "aide") && AIDE_CLASS.has(action))
-    );
-  }
-  if (target.kind === "person") {
-    const own = actor.classes.filter((c) =>
-      target.classIds.includes(c.classId),
-    );
-    return (
-      action === "students.update" && own.some((c) => c.role === "teacher")
     );
   }
   return (

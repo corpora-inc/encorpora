@@ -1,3 +1,4 @@
+import type { Frontier } from "../learning/frontier";
 import { DEFAULT_FRONTIER_POLICY } from "../learning/frontier-policy";
 import { practiceChangeSchema } from "../learning/practice-settings";
 import { changePractice } from "./practice-settings";
@@ -581,6 +582,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
           )
         : [];
       const practicePool = recoveryPool.length ? recoveryPool : mixedPool;
+      let levelNow: Frontier | undefined;
       const selected = focused
         ? Array.from({ length: count }, () => ({
             template: focused,
@@ -595,7 +597,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
             skills,
             attempts: await tx.recentAttempts(),
             evidence: await tx.skillEvidence(),
-            frontier: await tx.frontier(),
+            frontier: (levelNow = await tx.frontier()),
             skips: await tx.recentSkips(),
             count,
             seed: randomUUID(),
@@ -609,6 +611,9 @@ function routes(app: FastifyInstance, options: AppOptions) {
                 ? workbookTemplateIds(await tx.recentWorkbooks())
                 : undefined,
           });
+      // The frontier was computed for planning; a school student's level for
+      // today is stored from it, with no second replay.
+      if (levelNow && isSchoolAccount(account)) await tx.saveLevelDay(levelNow);
       const saved: SavedProblem[] = [];
       const problems: PublicProblem[] = [];
       const hints: Record<string, ProblemHint> = {};

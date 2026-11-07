@@ -23,9 +23,11 @@ import {
   estimateFrontier,
   initialLevel,
   overallTrend,
+  type Estimate,
   type Frontier,
   type FrontierObservation,
 } from "../learning/frontier";
+import { DEFAULT_FRONTIER_POLICY } from "../learning/frontier-policy";
 import {
   advanceLearnerFrontier,
   applyStrandRestart,
@@ -152,6 +154,11 @@ export interface LearnerTransaction {
   setSatMathFocus(enabled: boolean): Promise<void>;
   /** Placement estimate replayed from the learner's whole attempt history. */
   frontier(now?: number): Promise<Frontier>;
+  /** A school student's level for today, in the school's timezone. A no-op for
+   * a learner who isn't on a school roster. */
+  saveLevelDay(frontier: Frontier): Promise<void>;
+  /** Whether this learner is a school student (has an amp_people row). */
+  onSchoolRoster(): Promise<boolean>;
   recentAttempts(): Promise<Outcome[]>;
   skillEvidence(): Promise<SkillEvidence[]>;
   attemptByRequest(requestId: string): Promise<Outcome | undefined>;
@@ -647,6 +654,41 @@ export class PgTransaction implements LearnerTransaction {
     return answers === null
       ? this.currentFrontier(now)
       : this.frontierAtAnswer(now, answers);
+  }
+  async onSchoolRoster() {
+    return (
+      (
+        await this.db.query("SELECT 1 FROM amp_people WHERE learner_id=$1", [
+          this.learnerId,
+        ])
+      ).rowCount === 1
+    );
+  }
+  async saveLevelDay(frontier: Frontier) {
+    const estimate = ({ level, sd, answered, independent }: Estimate) => ({
+      level,
+      sd,
+      answered,
+      independent,
+    });
+    await this.db.query(
+      `INSERT INTO amp_level_days(learner_id,day,frontier,policy_version)
+       SELECT $1,(now() AT TIME ZONE p.timezone)::date,$2::jsonb,$3 FROM amp_people p WHERE p.learner_id=$1
+       ON CONFLICT(learner_id,day) DO UPDATE SET frontier=EXCLUDED.frontier,policy_version=EXCLUDED.policy_version`,
+      [
+        this.learnerId,
+        JSON.stringify({
+          overall: estimate(frontier.overall),
+          strands: Object.fromEntries(
+            Object.entries(frontier.strands).map(([id, e]) => [
+              id,
+              estimate(e),
+            ]),
+          ),
+        }),
+        DEFAULT_FRONTIER_POLICY.version,
+      ],
+    );
   }
   /** The level now, from the stored state plus any answers since it was saved. */
   private async currentFrontier(now: number): Promise<Frontier> {
