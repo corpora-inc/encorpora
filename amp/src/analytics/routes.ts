@@ -5,6 +5,7 @@ import type { Pool } from "pg";
 import { MAX_BATCH_BYTES, eventBatchSchema } from "./events.js";
 import { recordEventBatch } from "./repository.js";
 import { MARKETING_SCREENS } from "./site-actions.js";
+import { studentBearer } from "../schools/principal.js";
 
 /** Batches per minute per client address (two-second batching sends ~30). */
 export const EVENT_RATE_LIMIT = 120;
@@ -27,7 +28,11 @@ export async function registerAnalyticsRoutes(
     reply: FastifyReply,
     siteOnly = false,
   ) => {
-    if (request.headers["sec-gpc"] === "1" || request.headers.dnt === "1")
+    if (
+      request.headers["sec-gpc"] === "1" ||
+      request.headers.dnt === "1" ||
+      studentBearer(request)
+    )
       return reply.code(204).send();
     const parsed = eventBatchSchema.safeParse(request.body);
     if (!parsed.success)

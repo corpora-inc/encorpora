@@ -26,7 +26,8 @@ type Props = {
   strands: readonly string[];
   busy: boolean;
   go: () => void;
-  changeBirthYear: () => void;
+  /** Absent for a school student, whose school manages this. */
+  changeBirthYear?: () => void;
 };
 
 /** Home: continue practice, with optional estimates and their uncertainty. */
@@ -57,12 +58,14 @@ export function Home(props: Props) {
         frontier={props.frontier}
         strands={props.strands}
       />
-      <button
-        className="text-button home-birth-year"
-        onClick={props.changeBirthYear}
-      >
-        Change birth year
-      </button>
+      {props.changeBirthYear && (
+        <button
+          className="text-button home-birth-year"
+          onClick={props.changeBirthYear}
+        >
+          Change birth year
+        </button>
+      )}
     </main>
   );
 }

@@ -20,6 +20,7 @@ import { screenForPath } from "../../analytics/engagement";
 import type { TrafficKind } from "../../analytics/engagement";
 import { nativeRuntime } from "../native-runtime";
 import { createGoogleAnalytics } from "../../analytics/google-analytics";
+import { isStudentDevice } from "./student-device";
 
 let pitchShown = false;
 /** Set by the `/` route before it resolves: a signed-out web visitor there
@@ -41,6 +42,7 @@ export function trackGooglePage(): void {
   if (nativeRuntime || (!analyticsAllowed() && !google)) return;
   (google ??= createGoogleAnalytics({
     home: () => (pitchShown ? "pitch" : "app"),
+    blocked: isStudentDevice,
   })).navigate();
 }
 
@@ -222,6 +224,7 @@ export function initializeAnalyticsContext(): void {
 export function analyticsAllowed(): boolean {
   return (
     !nativeRuntime &&
+    !isStudentDevice() &&
     navigator.doNotTrack !== "1" &&
     !(navigator as Navigator & { globalPrivacyControl?: boolean })
       .globalPrivacyControl

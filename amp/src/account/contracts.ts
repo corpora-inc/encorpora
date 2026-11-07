@@ -44,6 +44,9 @@ const accountSchema = z.object({
   /** The parent must confirm the address before consent or purchase. The
    * account works meanwhile: sign-in, the free trial and Family. */
   confirmationRequired: z.boolean().optional(),
+  /** Set for a school student, whose token and learner the school manages.
+   * Staff are ordinary accounts: one person can be a teacher and a parent. */
+  kind: z.literal("student").optional(),
 });
 export const meSchema = z.discriminatedUnion("signedIn", [
   z.object({ signedIn: z.literal(false), next: z.literal("sign-in") }),
@@ -73,6 +76,14 @@ export const meSchema = z.discriminatedUnion("signedIn", [
         id: z.string(),
         interval: z.enum(["month", "year"]),
         endsAt: z.string(),
+      })
+      .optional(),
+    /** The school a student belongs to, and how it shows them their levels. */
+    school: z
+      .object({
+        orgName: z.string(),
+        className: z.string().optional(),
+        levels: z.enum(["hidden", "choice", "shown"]),
       })
       .optional(),
     /** `try`: no purchase or consent yet, so the parent gets the anonymous

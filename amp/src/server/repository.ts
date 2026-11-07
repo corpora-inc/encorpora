@@ -57,6 +57,7 @@ import {
   lockLearningAccount,
   learningConsentActive,
 } from "./account-access.js";
+import { resolveStudentToken } from "../schools/principal.js";
 import { randomUUID } from "node:crypto";
 import {
   isTrialAccount,
@@ -229,6 +230,8 @@ export interface Repository {
   } | null>;
   /** The synthetic account for a live trial token, or null. */
   trialAccount(token: string, owner?: string): Promise<string | null>;
+  /** The synthetic account for a live student token, or null. */
+  studentAccount?(token: string): Promise<string | null>;
   /** Moves a trial learner, with all answers, into a parent's account. */
   adoptTrial(accountId: string, token: string, name: string): Promise<Learner>;
 }
@@ -449,6 +452,9 @@ export class PostgresRepository implements Repository {
     } finally {
       client.release();
     }
+  }
+  studentAccount(token: string) {
+    return resolveStudentToken(this.pool, token);
   }
   async trialAccount(token: string, owner?: string) {
     const result = await this.pool.query(

@@ -32,20 +32,24 @@ export function useCurriculumScope() {
         ? `account:${session.data!.accountId}:${learner!.id}`
         : "pending",
       ready,
+      levels: undefined,
     };
   }
-  return resolveCurriculumScope({
-    pathname: location.pathname,
-    trialContext: search.context === "trial",
-    session: session.data,
-    me: me.data,
-    trial: trial.data,
-    selected,
-    loading: session.isPending || (!!session.data && me.isPending),
-    identityError: !!session.error || !!me.error,
-    trialPending: trial.isPending,
-    trialError: !!trial.error,
-  });
+  return {
+    ...resolveCurriculumScope({
+      pathname: location.pathname,
+      trialContext: search.context === "trial",
+      session: session.data,
+      me: me.data,
+      trial: trial.data,
+      selected,
+      loading: session.isPending || (!!session.data && me.isPending),
+      identityError: !!session.error || !!me.error,
+      trialPending: trial.isPending,
+      trialError: !!trial.error,
+    }),
+    levels: me.data?.signedIn ? me.data.school?.levels : undefined,
+  };
 }
 
 export function resolveCurriculumScope({

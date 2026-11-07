@@ -1,4 +1,6 @@
 import { accountSummary } from "../account/repository.js";
+import { studentBearer } from "../schools/principal.js";
+import { studentMe } from "../schools/student-me.js";
 import { Readable } from "node:stream";
 import type { FastifyInstance, FastifyReply } from "fastify";
 import type { Pool } from "pg";
@@ -43,6 +45,8 @@ export async function registerFamilyRoutes(
       reply.header("X-Content-Type-Options", "nosniff");
     });
     scope.get("/api/v1/me", async (request) => {
+      const student = studentBearer(request);
+      if (student) return studentMe(options.pool, student);
       let account: string;
       try {
         account = await options.authenticate(request);

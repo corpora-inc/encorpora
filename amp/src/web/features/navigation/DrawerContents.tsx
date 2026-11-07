@@ -64,6 +64,7 @@ export default function DrawerContents({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const { account, learner, trialMode, trialProgress, frontier } = view;
+  const student = account?.account.kind === "student";
   const expired =
     !!view.session.data &&
     !account &&
@@ -156,13 +157,15 @@ export default function DrawerContents({
         <span className={styles.kicker}>
           {view.identityLoading && !account
             ? "Checking sign-in…"
-            : account
-              ? "Signed in as"
-              : expired
-                ? "Sign-in expired"
-                : view.session.data || view.session.error
-                  ? "Account details unavailable"
-                  : "Guest · This browser"}
+            : account?.school
+              ? account.school.orgName
+              : account
+                ? "Signed in as"
+                : expired
+                  ? "Sign-in expired"
+                  : view.session.data || view.session.error
+                    ? "Account details unavailable"
+                    : "Guest · This browser"}
         </span>
         {account?.account.email ? (
           <SignedInEmail email={account.account.email} />
@@ -192,7 +195,9 @@ export default function DrawerContents({
               ? "Free assessment"
               : learner?.entitlement.active
                 ? "Access active"
-                : "Getting started"}
+                : student
+                  ? "Ask your teacher"
+                  : "Getting started"}
           </span>
         </div>
         {learnerChoices.length > 1 ? (
@@ -263,7 +268,7 @@ export default function DrawerContents({
       <nav aria-label="AMP navigation" className={styles.navigation}>
         {nav(
           view.practiceHref,
-          view.canPractice
+          view.canPractice || student
             ? "Continue learning"
             : view.trialProgress?.remaining === 0
               ? "Continue with a plan"
@@ -300,30 +305,34 @@ export default function DrawerContents({
             true,
           )}
         </div>
-        <div className={styles.group}>
-          <h2>Account & access</h2>
-          {account?.availableAccessGrant &&
-            nav(
-              "/access",
-              "Your gift of AMP",
+        {!student && (
+          <div className={styles.group}>
+            <h2>Account & access</h2>
+            {account?.availableAccessGrant &&
+              nav(
+                "/access",
+                "Your gift of AMP",
+                "plans",
+                `${account.availableAccessGrant.months === 12 ? "A year" : "A month"} of access is ready`,
+              )}
+            {view.session.data &&
+              nav("/family/security", "Account settings", "settings")}
+            {view.session.data &&
+              nav("/family/learners", "Manage learners", "learners")}
+            {learner?.birthYear != null &&
+              nav("/profile/birth-year", "Change birth year", "calendar")}
+            {account &&
+              ["active", "development"].includes(
+                account.family.consent.status,
+              ) &&
+              nav("/start/name", "Add learner", "add")}
+            {nav(
+              learner?.entitlement.active ? "/family/access" : "/try/plans",
+              learner?.entitlement.active ? "Learning access" : "See plans",
               "plans",
-              `${account.availableAccessGrant.months === 12 ? "A year" : "A month"} of access is ready`,
             )}
-          {view.session.data &&
-            nav("/family/security", "Account settings", "settings")}
-          {view.session.data &&
-            nav("/family/learners", "Manage learners", "learners")}
-          {learner?.birthYear != null &&
-            nav("/profile/birth-year", "Change birth year", "calendar")}
-          {account &&
-            ["active", "development"].includes(account.family.consent.status) &&
-            nav("/start/name", "Add learner", "add")}
-          {nav(
-            learner?.entitlement.active ? "/family/access" : "/try/plans",
-            learner?.entitlement.active ? "Learning access" : "See plans",
-            "plans",
-          )}
-        </div>
+          </div>
+        )}
       </nav>
       {practiceControls}
       <CurriculumDetailsControl variant="row" />

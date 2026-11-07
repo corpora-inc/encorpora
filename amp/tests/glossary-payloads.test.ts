@@ -67,6 +67,9 @@ function fixture() {
     saveProblem: async (problem: SavedProblem) => {
       problems.set(problem.public.id, problem);
     },
+    saveProblems: async (batch: readonly SavedProblem[]) => {
+      for (const problem of batch) problems.set(problem.public.id, problem);
+    },
     saveSkip: async (problem: SavedProblem) => {
       problems.set(problem.public.id, problem);
     },

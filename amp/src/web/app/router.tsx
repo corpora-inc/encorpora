@@ -40,6 +40,11 @@ import { chosenPlan } from "../lib/pending-trial";
 import { hasInitialConsentChallenge } from "../consent-entry";
 import { hasPurchaseReturn } from "../purchase-return";
 import { knownStale, onSignedOut } from "../lib/app-recovery";
+import {
+  clearStudentDevice,
+  studentSession,
+  studentSignInEnded,
+} from "../lib/student-device";
 import { workbookSearchSchema } from "../features/workbooks/model";
 const searchSchema = z
   .object({
@@ -179,12 +184,18 @@ const start = lazyRouteComponent(
   () => import("../features/onboarding/StartScreen"),
   "StartScreen",
 );
+/** A school sets its students up; setup, trials and paper self-marking are for
+ * families, so a student's URL goes back to practice. */
+function notForStudents() {
+  if (studentSession()) throw redirect({ to: "/", replace: true });
+}
 /** Every /start step runs the one first-run guard against `/me`. */
 async function beforeStart({
   location,
 }: {
   location: { pathname: string; search: Record<string, unknown> };
 }) {
+  notForStudents();
   const search = continuationSearch(location.search);
   const session = await queryClient.ensureQueryData(sessionOptions);
   if (!session) throw redirect({ to: "/sign-in", search });
@@ -206,6 +217,7 @@ const trial = (name: "TryStart" | "TrialPractice" | "TrialMap" | "Paywall") =>
   lazyRouteComponent(() => import("../features/trial"), name);
 /** A parent signs in before the account-owned free assessment. */
 async function beforeTrial({ search }: { search: Record<string, unknown> }) {
+  notForStudents();
   const session = await queryClient.ensureQueryData(sessionOptions);
   if (!session)
     throw redirect({
@@ -474,6 +486,7 @@ const workbookHistory = createRoute({
   path: "/learners/$learnerId/workbooks",
   beforeLoad: () => {
     if (nativeRuntime) throw redirect({ to: "/" });
+    notForStudents();
   },
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookHistoryScreen"),
@@ -486,6 +499,7 @@ const workbookDay = createRoute({
   validateSearch: (search) => workbookSearchSchema.parse(search),
   beforeLoad: () => {
     if (nativeRuntime) throw redirect({ to: "/" });
+    notForStudents();
   },
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookDayScreen"),
@@ -497,6 +511,7 @@ const workbookResults = createRoute({
   path: "/learners/$learnerId/workbooks/$workbookId/results",
   beforeLoad: () => {
     if (nativeRuntime) throw redirect({ to: "/" });
+    notForStudents();
   },
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookResultsScreen"),
@@ -555,6 +570,12 @@ const invoiceNewHampshire = createRoute({
   path: "/invoice/new-hampshire-efa",
   component: invoiceForm,
 });
+/** Where a student signs in, and where an ended sign-in lands. */
+const join = createRoute({
+  getParentRoute: () => root,
+  path: "/join",
+  component: () => <p>Ask your teacher for your class code or sign-in card.</p>,
+});
 const fallback = createRoute({
   getParentRoute: () => root,
   path: "/$",
@@ -609,6 +630,7 @@ const schoolPreview = import.meta.env.DEV
 export const router = createRouter({
   routeTree: root.addChildren([
     home,
+    join,
     signIn,
     signUp,
     accountReady,
@@ -666,7 +688,32 @@ function redirectedRecently() {
 // so the current screen stays until it is replaced in one step; the session
 // is cleared only after, so no mounted screen renders without one.
 let leaving = false;
+let checkingStudent = false;
 onSignedOut(() => {
+  const student = studentSession();
+  if (student) {
+    // A student's ended sign-in goes to /join. Any other route that refuses a
+    // student fails where it stands, without signing the class out.
+    if (!checkingStudent) {
+      checkingStudent = true;
+      void studentSignInEnded(student)
+        .then(async (ended) => {
+          if (!ended) return;
+          clearStudentDevice();
+          await router.navigate({ to: "/join", replace: true });
+          queryClient.setQueryData(sessionOptions.queryKey, null);
+          queryClient.removeQueries({ queryKey: ["account"] });
+          queryClient.removeQueries({ queryKey: ["trial"] });
+        })
+        .catch((error) =>
+          console.warn("Student sign-in could not be checked", error),
+        )
+        .finally(() => {
+          checkingStudent = false;
+        });
+    }
+    return false;
+  }
   // Several requests from one screen can fail together: one redirect, and the
   // rest wait silently for the screen to be replaced.
   if (leaving) return true;

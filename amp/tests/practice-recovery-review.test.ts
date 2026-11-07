@@ -106,6 +106,9 @@ test("a persisted focus unsupported by an older client cannot block mixed or exp
     saveProblem: async (problem: SavedProblem) => {
       saved.push(problem);
     },
+    saveProblems: async (problems: readonly SavedProblem[]) => {
+      saved.push(...problems);
+    },
   };
   const repository = {
     transaction: async (

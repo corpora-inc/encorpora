@@ -279,7 +279,7 @@ export async function insightsReport(
   );
   const startingBands = await q<{ band: string; count: number }>(
     `SELECT COALESCE(starting_band,'not chosen') AS band, count(*)::int AS count
-     FROM amp_learners WHERE deleted_at IS NULL AND account_id NOT LIKE 'trial:%'
+     FROM amp_learners WHERE deleted_at IS NULL AND account_id NOT LIKE 'trial:%' AND account_id NOT LIKE 'school:%'
        AND created_at>=$1 AND created_at<$2 GROUP BY 1 ORDER BY 2 DESC,1`,
   );
   const started = trialAnswers.length;
