@@ -30,7 +30,8 @@ function NavIcon({
     | "add"
     | "plans"
     | "out"
-    | "school";
+    | "school"
+    | "standings";
 }) {
   const paths = {
     learn: "m9 5 10 7-10 7V5Z",
@@ -45,6 +46,7 @@ function NavIcon({
     plans: "M5 5h14v15H5V5Zm4-2h6v4H9V3Zm0 9h6m-6 4h4",
     out: "M10 4H5v16h5m4-13 5 5-5 5m-5-5h10",
     school: "M3 10l9-5 9 5-9 5-9-5Zm4 3v5c3 2 7 2 10 0v-5",
+    standings: "M4 20v-6h5v6M9 20V8h6v12M15 20v-9h5v9M3 20h18",
   };
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -306,6 +308,15 @@ export default function DrawerContents({
             "Your skills, strength & earned XP",
             true,
           )}
+          {student &&
+            account?.school?.standings &&
+            !location.pathname.startsWith("/practice") &&
+            nav(
+              "/standings",
+              "Standings",
+              "standings",
+              "See your class’s board",
+            )}
         </div>
         {!!account?.staffOf?.length && (
           <div className={styles.group}>

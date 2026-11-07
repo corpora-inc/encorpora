@@ -20,6 +20,12 @@ import { defineOrgRoutes } from "./org-routes.js";
 import { registerOidcRoutes, type OidcProviders } from "./oidc.js";
 import { syncSsoCredentials } from "./sso-credentials.js";
 import {
+  defineClassroomRoutes,
+  registerStudentStandings,
+} from "./classroom-routes.js";
+import type { Repository } from "../server/repository.js";
+import type { WorkbookRenderer } from "../workbook/pdf.js";
+import {
   canList,
   defineSetupRoutes,
   registerInvitePreview,
@@ -71,6 +77,9 @@ export type SchoolServices = {
   signIn?: { google?: string; microsoft?: string };
   /** Student sign-in through an outside provider. Absent: cards and codes only. */
   oidc?: OidcProviders;
+  /** The learning store and PDF renderer behind a teacher's workbook stack. */
+  learning?: Repository;
+  renderer?: WorkbookRenderer | null;
 };
 export type SchoolRoute = {
   method: "GET" | "POST";
@@ -222,6 +231,7 @@ export async function registerSchoolRoutes(
     registerJoinRoutes(scope, repository, services.oidc);
     registerOidcRoutes(scope, repository, services);
     registerInvitePreview(scope, repository);
+    registerStudentStandings(scope, options.pool);
     // Students only: a staff or parent credential is never a student's.
     scope.post(
       "/api/v1/school/student/activity",
@@ -452,3 +462,4 @@ defineSignInRoutes(defineSchoolRoute);
 defineSetupRoutes(defineSchoolRoute);
 defineTeacherRoutes(defineSchoolRoute);
 defineOrgRoutes(defineSchoolRoute);
+defineClassroomRoutes(defineSchoolRoute);

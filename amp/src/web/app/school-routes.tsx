@@ -139,6 +139,10 @@ export function schoolRoutes(root: AnyRoute) {
       () => import("../features/school/ImportScreen"),
       "ImportScreen",
     ),
+    experience: screen(
+      () => import("../features/school/classroom"),
+      "OrgExperienceScreen",
+    ),
   };
   return [
     createRoute({
@@ -284,5 +288,6 @@ export function schoolRoutes(root: AnyRoute) {
       preload(licenseOptions(session, orgId)),
     ]),
     orgScreen("/import", screens.importer),
+    orgScreen("/experience", screens.experience),
   ];
 }

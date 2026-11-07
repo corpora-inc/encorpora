@@ -54,6 +54,10 @@ export const schoolActions = [
   "privacy.export",
   "privacy.delete",
   "activity.read",
+  "settings.read",
+  "settings.write",
+  "workbooks.read",
+  "workbooks.write",
 ] as const;
 export type OrgKind = (typeof orgKinds)[number];
 export type OrgRole = (typeof orgRoles)[number];

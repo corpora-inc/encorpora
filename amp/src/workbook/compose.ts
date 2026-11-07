@@ -72,6 +72,8 @@ export interface WorkbookSection {
   lessonId?: string;
 }
 export interface WorkbookSpec {
+  /** A skill this workbook leans on: a teacher's group sheet. */
+  focusSkill?: string;
   /** 2 since parent choices; stored version 1 specs reprint unchanged. */
   version: 1 | typeof WORKBOOK_VERSION;
   /** Local calendar date the workbook is for, YYYY-MM-DD. */
@@ -152,6 +154,9 @@ export function composeWorkbook(options: {
    * and templates go last, so every roll is new. */
   history?: readonly WorkbookSpec[];
   choices?: Partial<WorkbookChoices>;
+  /** Today's idea teaches this skill when a lesson can, and it takes up to
+   * half of practice. An unknown or unprintable skill changes nothing. */
+  focusSkill?: string;
   date: string;
   number?: number;
   minutes?: WorkbookMinutes;
@@ -184,7 +189,13 @@ export function composeWorkbook(options: {
       ? { review: Math.ceil(budgets[minutes].review * 1.5) }
       : {}),
   };
-  const seed = `workbook:${options.learnerKey}:${options.date}:${number}:${choices.areas.join("+")}:${choices.lean}:${choices.lesson ? "lesson" : "problems"}`;
+  const focusable = options.focusSkill
+    ? options.templates.filter(
+        (t) => t.skillId === options.focusSkill && printable(t),
+      )
+    : [];
+  const focusSkill = focusable.length ? options.focusSkill : undefined;
+  const seed = `workbook:${options.learnerKey}:${options.date}:${number}:${choices.areas.join("+")}:${choices.lean}:${choices.lesson ? "lesson" : "problems"}${focusSkill ? `:${focusSkill}` : ""}`;
   const nodes = new Map(options.skills.map((s) => [s.id, s]));
   const strandOf = (t: TemplateMetadata) =>
     nodes.get(t.skillId)?.strand ?? t.skillId;
@@ -196,6 +207,7 @@ export function composeWorkbook(options: {
       (!areas.size || areas.has(strandOf(t))),
   );
   if (!pool.length) throw new Error("No printable templates");
+  const focusTemplates = pool.filter((t) => t.skillId === focusSkill);
   // The newest workbook weighs most: a template it printed goes after one
   // printed longer ago, and a skill it practised after a fresh one.
   const history = (options.history ?? []).slice(0, WORKBOOK_HISTORY);
@@ -381,7 +393,10 @@ export function composeWorkbook(options: {
     });
   const focus = !choices.lesson
     ? undefined
-    : (lessonCandidates(-0.6, 0.4)[0] ??
+    : (focusTemplates
+        .filter((t) => lessonOf.has(t.id))
+        .sort((a, b) => rank(a.id) - rank(b.id))[0] ??
+      lessonCandidates(-0.6, 0.4)[0] ??
       lessonCandidates(-1.5, 1)[0] ??
       lessonCandidates(-13, 13)[0]);
   const lessonSection: WorkbookSection | null = focus
@@ -583,8 +598,16 @@ export function composeWorkbook(options: {
   // Problems only: practice also takes the guided problems' share.
   const practiceMax =
     budget.practiceMax + (lessonSection ? 0 : budget.guided + 2);
+  // A focus skill goes first. Each draw is a fresh problem from its templates.
+  if (focusTemplates.length)
+    for (let i = 0; i < Math.ceil(practiceMax / 2); i++) {
+      const next = item(focusTemplates[i % focusTemplates.length]!, "practice");
+      if (next.minutes > remaining) break;
+      practiceItems.push(next);
+      remaining -= next.minutes;
+    }
   for (const t of spread(
-    practiceMax,
+    practiceMax - practiceItems.length,
     [
       [-0.8 + shift, 0.2 + shift],
       [-1.2 + shift, 0.5 + shift],
@@ -627,6 +650,7 @@ export function composeWorkbook(options: {
     level: Math.round(options.frontier.overall.level),
     sections: sections.filter((s) => s.items.length),
     choices,
+    ...(focusSkill ? { focusSkill } : {}),
   };
 }
 

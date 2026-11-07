@@ -84,6 +84,8 @@ export const meSchema = z.discriminatedUnion("signedIn", [
         orgName: z.string(),
         className: z.string().optional(),
         levels: z.enum(["hidden", "choice", "shown"]),
+        /** A current class has a board this student can open. */
+        standings: z.boolean().optional(),
       })
       .optional(),
     /** Schools this account works at. A teacher can also be a parent, so this

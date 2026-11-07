@@ -18,7 +18,9 @@ export function classTabs(org: string, id: string): TabItem[] {
     tab("map", "Class map"),
     tab("gradebook", "Gradebook"),
     tab("time", "Time"),
+    tab("workbooks", "Workbooks"),
     tab("roster", "Roster"),
+    tab("experience", "Student experience"),
     tab("settings", "Settings"),
   ];
 }
