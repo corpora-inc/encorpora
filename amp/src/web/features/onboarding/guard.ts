@@ -129,8 +129,9 @@ export function startNavigation(target: StartTarget) {
     : ({ to: target } as const);
 }
 
-/** One place a person works: their family and practice side, or a school. */
-export type PlaceId = "home" | `school:${string}`;
+/** One place a person works: their family and practice side, their own
+ * practice, or a school. */
+export type PlaceId = "home" | "me" | `school:${string}`;
 
 /** A family or practice side to open: learners, a free assessment under way,
  * or consent, a purchase or a gift on its way to a learner. One account can be a
@@ -145,10 +146,19 @@ export function hasHome(me: SignedInMe) {
   );
 }
 
-/** Every place this account can open, its family side first. */
+/** The adult's own practice: they have their own learner, or they qualify to
+ * start one (a teacher at a licensed school, or a parent of a child with
+ * access). */
+export function hasOwnPractice(me: SignedInMe) {
+  return !!me.adultPractice?.learner || me.adultPractice?.eligible === true;
+}
+
+/** Every place this account can open: its family side, its own practice, then
+ * its schools. */
 export function placesFor(me: SignedInMe): PlaceId[] {
   return [
     ...(hasHome(me) ? (["home"] as const) : []),
+    ...(hasOwnPractice(me) ? (["me"] as const) : []),
     ...[...(me.staffOf ?? [])]
       .sort((a, b) => a.orgName.localeCompare(b.orgName))
       .map((org) => `school:${org.orgId}` as const),
@@ -158,9 +168,11 @@ export function placesFor(me: SignedInMe): PlaceId[] {
 /**
  * Where `/` opens: where this person last worked, if they can still open it;
  * otherwise their family side when they have one, and their school when they
- * work only at schools (`"schools"` to choose between several). A school whose
- * setup this admin hasn't finished never takes `/` from someone with a family
- * side: the switcher is one tap away, and the setup keeps its own URL.
+ * work only at schools (`"schools"` to choose between several), then their
+ * own practice. A school whose setup this admin hasn't finished never takes
+ * `/` from someone with a family side: the switcher is one tap away, and the
+ * setup keeps its own URL. Their own practice is remembered only once they
+ * have it.
  */
 export function homePlace(
   me: SignedInMe,
@@ -168,12 +180,26 @@ export function homePlace(
 ): PlaceId | "schools" {
   const schools = me.staffOf ?? [];
   const home = hasHome(me);
+  const own = !!me.adultPractice?.learner;
+  if (remembered === "me" && own) return "me";
   const last = schools.find((org) => `school:${org.orgId}` === remembered);
   if (last && !(last.setupPending && home)) return `school:${last.orgId}`;
-  if (home || !schools.length) return "home";
-  return schools.length === 1 ? `school:${schools[0]!.orgId}` : "schools";
+  if (home) return "home";
+  if (schools.length)
+    return schools.length === 1 ? `school:${schools[0]!.orgId}` : "schools";
+  return own ? "me" : "home";
 }
 
+/** Learning screens show whichever learner is chosen: the adult's own
+ * learner makes them part of the adult's own practice. */
+const LEARNING_PATHS = [
+  "/practice",
+  "/progress",
+  "/lessons",
+  "/books",
+  "/pathways",
+  "/inventory",
+];
 const HOME_PATHS = [
   "/practice",
   "/try",
@@ -189,11 +215,22 @@ const HOME_PATHS = [
 ];
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 /** The place a screen belongs to, so `/` can return there; null for screens
- * that belong to neither, such as sign-in and the public pages. */
+ * that belong to none, such as sign-in and the public pages. `ownLearner` is
+ * the adult's own learner when it is the one chosen. */
 export function placeOfPath(
   pathname: string,
   search: Record<string, unknown> = {},
+  ownLearner: string | null = null,
 ): PlaceId | null {
+  if (pathname === "/me" || pathname.startsWith("/me/")) return "me";
+  if (
+    ownLearner &&
+    (LEARNING_PATHS.some(
+      (path) => pathname === path || pathname.startsWith(`${path}/`),
+    ) ||
+      pathname.startsWith(`/learners/${ownLearner}/`))
+  )
+    return "me";
   const school = /^\/school\/([^/]+)/.exec(pathname)?.[1];
   if (school && UUID.test(school)) return `school:${school.toLowerCase()}`;
   if (

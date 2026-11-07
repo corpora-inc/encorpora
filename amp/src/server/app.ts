@@ -270,7 +270,17 @@ function routes(app: FastifyInstance, options: AppOptions) {
   }
   async function parent(request: Parameters<Authenticator>[0]) {
     const account = await learningAccount(request);
-    if (!options.development && !(await options.repository.hasConsent(account)))
+    // A route about one learner asks about that learner: the account's adult
+    // learner learns on the account's own terms (docs/families.md).
+    const learnerId = (request as { params?: { learnerId?: unknown } }).params
+      ?.learnerId;
+    if (
+      !options.development &&
+      !(await options.repository.hasConsent(
+        account,
+        typeof learnerId === "string" ? learnerId : undefined,
+      ))
+    )
       throw new ApiError(
         403,
         isSchoolAccount(account)
@@ -477,6 +487,9 @@ function routes(app: FastifyInstance, options: AppOptions) {
       .strict()
       .parse(request.body);
     return options.repository.transaction(account, learnerId, async (tx) => {
+      // An adult begins where they choose; their learner has no birth year.
+      if (await tx.isAdult())
+        throw new ApiError(409, "Your own practice has no birth year.");
       await tx.setBirthYear(birthYear);
       return { birthYear };
     });
@@ -611,9 +624,10 @@ function routes(app: FastifyInstance, options: AppOptions) {
                 ? workbookTemplateIds(await tx.recentWorkbooks())
                 : undefined,
           });
-      // The frontier was computed for planning; a school student's level for
-      // today is stored from it, with no second replay.
-      if (levelNow && isSchoolAccount(account)) await tx.saveLevelDay(levelNow);
+      // The frontier was computed for planning; a school student's or an
+      // adult's level for today is stored from it, with no second replay.
+      if (levelNow && (isSchoolAccount(account) || (await tx.isAdult())))
+        await tx.saveLevelDay(levelNow);
       const saved: SavedProblem[] = [];
       const problems: PublicProblem[] = [];
       const hints: Record<string, ProblemHint> = {};

@@ -38,7 +38,8 @@ export type NavId =
   | "experience"
   | `class:${string}`;
 
-function AccountMenu() {
+/** The signed-in person at the foot of a rail: their address and Sign out. */
+export function AccountMenu() {
   const session = currentSession();
   const me = useQuery(meOptions(session)).data;
   const email = me?.signedIn ? (me.account.email ?? "") : "";

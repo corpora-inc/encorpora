@@ -61,7 +61,7 @@ Before the license is issued: by contract and invoice or PO, recorded as the lic
 One account can be a parent, have a free assessment under way and work at schools, all at once (`hasHome` and `homePlace` in `src/web/features/onboarding/guard.ts`).
 
 - **`/`** opens where the person last worked, the family side or a specific school, remembered per account on the device (`place-memory.ts`, recorded as each screen settles). With nothing remembered it's the family side when they have learners, a trial, consent or a purchase, and the school when they only work at schools. A school whose setup this admin hasn't finished never takes `/` from someone with a family side. Back and Forward to `/` reopen what it showed then.
-- **The place switcher** (`src/web/features/navigation/PlaceSwitcher.tsx`) is one menu in the family drawer, the school's rail and drawer, and setup's rail and bar. It lists the family side and each school with the person's role there, or "Finish setting up", and only places this account can open. Choosing one remembers it.
+- **The place switcher** (`src/web/features/navigation/PlaceSwitcher.tsx`) is one menu in the family drawer, the school's rail and drawer, and setup's rail and bar. It lists the family side, the adult's own practice ([families](families.md)), and each school with the person's role there, or "Finish setting up", and only places this account can open. Choosing one remembers it.
 - `npm run test:school-places-ui` checks both in real browsers: a trial and a half-finished setup, a parent who runs a school, the switcher everywhere it appears, and Back, Forward and reload between the two sides.
 
 ## Student experience is the school's choice

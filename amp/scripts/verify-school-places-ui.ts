@@ -453,9 +453,12 @@ async function practiceAndSchool(browser: Browser, width: number) {
   check(`${label} / is practice`, path(page) === "/", path(page));
   const toSchool = await openSwitcher(page, "Family and practice", true);
   const items = await toSchool.getByRole("menuitem").allInnerTexts();
+  // A parent whose child practices may also start their own practice.
   check(
     `${label} the family side names the learner`,
-    /Jordan/.test(items[0] ?? "") && /Admin/.test(items[1] ?? ""),
+    /Jordan/.test(items[0] ?? "") &&
+      /Start my own practice/.test(items[1] ?? "") &&
+      /Admin/.test(items[2] ?? ""),
     items,
   );
   await choose(page, toSchool, /Birch Road School/);

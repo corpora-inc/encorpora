@@ -1,8 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { useState } from "react";
-import { levelRange } from "../../../../learning/level-check";
-import type { StudentRecordResponse } from "../../../../schools/teacher-contracts";
 import { currentSession, orgOptions } from "../api";
 import { OrgFrame } from "../OrgFrame";
 import { TransferSheet, useCanMove } from "../org/TransferSheet";
@@ -10,7 +8,6 @@ import { Avatar } from "../../../ui/Avatar";
 import { Badge } from "../../../ui/Badge";
 import { Button, buttonClass } from "../../../ui/Button";
 import { EmptyState } from "../../../ui/EmptyState";
-import { levelScale, LevelTrack } from "../../../ui/LevelChart";
 import { Loading } from "../../../ui/Loading";
 import { AppError } from "../../../lib/AppError";
 import { shareOptions } from "../../schools/share-api";
@@ -18,12 +15,12 @@ import { ShareWithFamily } from "../../schools/ShareWithFamily";
 import { Suggested } from "./grade-parts";
 import { studentRecordOptions } from "./teacher-api";
 import {
-  classUrl,
-  number,
-  shortDay,
-  TipZone,
-  WorkList,
-} from "./teacher-shared";
+  RecordLevels,
+  RecordObjectives,
+  RecordWeeks,
+  RecordWork,
+} from "./ProgressRecord";
+import { classUrl } from "./teacher-shared";
 import styles from "./Teacher.module.css";
 
 const lastSeenWords = (iso: string) => {
@@ -32,87 +29,6 @@ const lastSeenWords = (iso: string) => {
     ? `Today, ${date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}`
     : date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
 };
-
-function Levels({ record }: { record: StudentRecordResponse }) {
-  const { level, reference } = record;
-  if (!level)
-    return (
-      <p className={styles.quietLine}>
-        Levels appear here once {record.student.first} has some work to read.
-      </p>
-    );
-  const center = reference
-    ? (reference.from + reference.to) / 2
-    : level.overall.level;
-  const scale = levelScale(center, [
-    level.overall,
-    ...Object.values(level.strands),
-  ]);
-  const row = (id: string, label: string, strand?: string) => {
-    const estimate = strand ? level.strands[strand]! : level.overall;
-    const [from, to] = levelRange(estimate);
-    return (
-      <li key={id} className={styles.levelRow} data-strand={strand}>
-        <span className={styles.levelName}>{label}</span>
-        <span
-          className={styles.levelTrack}
-          role="img"
-          aria-label={`${label}: likely grade ${from.toFixed(1)} to ${to.toFixed(1)}`}
-        >
-          <LevelTrack
-            estimate={estimate}
-            scale={scale}
-            reference={!!reference}
-          />
-        </span>
-        <span className={styles.levelNumbers}>
-          {from.toFixed(1)}–{to.toFixed(1)}
-        </span>
-      </li>
-    );
-  };
-  return (
-    <ul className={styles.levelRows}>
-      {row("overall", "Overall")}
-      {record.strands.map((strand) => row(strand.id, strand.label, strand.id))}
-    </ul>
-  );
-}
-
-function Weeks({ record }: { record: StudentRecordResponse }) {
-  const largest = Math.max(1, ...record.weeks.map((week) => week.minutes));
-  const total = record.weeks.reduce((sum, week) => sum + week.minutes, 0);
-  return (
-    <TipZone>
-      <div
-        className={styles.dayChart}
-        role="img"
-        aria-label={`${number(total)} active minutes over the last ${record.weeks.length} weeks`}
-      >
-        {record.weeks.map((week) => (
-          <span
-            key={week.week}
-            className={styles.dayColumn}
-            data-tip={`Week of ${shortDay(week.week)}: ${number(week.minutes)} active minutes`}
-          >
-            <span
-              className={styles.dayBar}
-              style={{
-                height: week.minutes
-                  ? `${Math.max(6, (week.minutes / largest) * 100)}%`
-                  : 0,
-              }}
-            />
-          </span>
-        ))}
-      </div>
-      <div className={styles.dayAxis} aria-hidden="true">
-        <span>{shortDay(record.weeks[0]!.week)}</span>
-        <span>{shortDay(record.weeks.at(-1)!.week)}</span>
-      </div>
-    </TipZone>
-  );
-}
 
 /** One student, everything a teacher reaches for: where they are, their grades,
  * their time, their recent work, and how they sign in. Prints as a progress
@@ -214,7 +130,10 @@ export function StudentScreen() {
           <div className={styles.recordColumns}>
             <section className={styles.recordSection}>
               <h2>Where {first} is</h2>
-              <Levels record={data} />
+              <RecordLevels
+                record={data}
+                empty={`Levels appear here once ${first} has some work to read.`}
+              />
             </section>
             <section className={styles.recordSection}>
               <h2>Grades</h2>
@@ -260,33 +179,15 @@ export function StudentScreen() {
             </section>
             <section className={styles.recordSection}>
               <h2>Time, last 12 weeks</h2>
-              <Weeks record={data} />
+              <RecordWeeks record={data} />
             </section>
             <section className={styles.recordSection}>
               <h2>Objectives gained</h2>
-              {data.objectives.length === 0 ? (
-                <p className={styles.quietLine}>None yet this year.</p>
-              ) : (
-                <ul className={styles.objectives}>
-                  {data.objectives.map((objective) => (
-                    <li key={objective.skillId} data-strand={objective.strand}>
-                      <span className={styles.when}>
-                        {shortDay(objective.day)}
-                      </span>
-                      <span className={styles.strandDot} aria-hidden="true" />
-                      <span>{objective.title}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <RecordObjectives record={data} />
             </section>
             <section className={styles.recordSection}>
               <h2>Recent work</h2>
-              {data.work.length === 0 ? (
-                <p className={styles.quietLine}>No problems yet.</p>
-              ) : (
-                <WorkList work={data.work} />
-              )}
+              <RecordWork record={data} />
             </section>
             <section className={`${styles.recordSection} ${styles.noPrint}`}>
               <h2>Signing in</h2>

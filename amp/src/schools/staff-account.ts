@@ -17,7 +17,7 @@ export async function markStaffAccount(
   const userId = accountId.slice(4);
   const parent = (
     await client.query(
-      `SELECT EXISTS(SELECT 1 FROM amp_learners WHERE account_id=$1 AND deleted_at IS NULL)
+      `SELECT EXISTS(SELECT 1 FROM amp_learners WHERE account_id=$1 AND deleted_at IS NULL AND NOT adult)
          OR EXISTS(SELECT 1 FROM amp_parent_consents WHERE account_id=$1) AS parent`,
       [accountId],
     )
