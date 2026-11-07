@@ -415,6 +415,21 @@
   }
 }
 
+/* A school's overview beside its district's, a step lower. */
+.overviewsStage {
+  display: grid;
+  gap: var(--space-5);
+}
+@media (min-width: 720px) {
+  .overviewsStage {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+  .districtOverviewShot {
+    margin-top: var(--space-7);
+  }
+}
+
 /* Standings: a tall board at its own size, with room around it. */
 @media (min-width: 960px) {
   .standings .featureText {

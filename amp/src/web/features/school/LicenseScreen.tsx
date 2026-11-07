@@ -17,6 +17,10 @@ import { FormNote, PageHead } from "./parts";
 import { orgPath } from "./paths";
 import styles from "./School.module.css";
 
+/** A seat count as the overview writes it: 9,992, not 9992. */
+const count = (value: number | undefined) =>
+  value === undefined ? "–" : value.toLocaleString("en-US");
+
 function RequestSeats({ orgId, waiting }: { orgId: string; waiting: number }) {
   const session = currentSession();
   const [seats, setSeats] = useState(Math.max(10, waiting));
@@ -119,9 +123,9 @@ export function LicenseScreen() {
         <div className={styles.licenseBody}>
           <section className={styles.licenseFacts}>
             <StatRow label="Seats">
-              <StatTile label="in use" value={data?.used ?? "–"} />
-              <StatTile label="available" value={data?.available ?? "–"} />
-              <StatTile label="total" value={data?.seats ?? "–"} />
+              <StatTile label="in use" value={count(data?.used)} />
+              <StatTile label="available" value={count(data?.available)} />
+              <StatTile label="total" value={count(data?.seats)} />
             </StatRow>
             {data && data.seats > 0 && (
               <Meter value={data.used} max={data.seats} label="Seats in use" />
@@ -129,7 +133,7 @@ export function LicenseScreen() {
             {data && data.waiting > 0 && (
               <p className={styles.waitingNote}>
                 <Badge tone="warning">
-                  {data.waiting}{" "}
+                  {count(data.waiting)}{" "}
                   {data.waiting === 1 ? "student needs" : "students need"} a
                   seat
                 </Badge>{" "}

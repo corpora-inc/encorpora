@@ -28,10 +28,7 @@ import { createServer } from "vite";
 import { secureChromium } from "../browser-security.mjs";
 import { registerAnalyticsRoutes } from "../src/analytics/routes";
 import { registerUnavailableBilling } from "../src/billing/stripe/routes";
-import { skills } from "../src/curriculum/catalog";
 import { registerFamilyRoutes } from "../src/family/routes";
-import { gradeNumber } from "../src/learning/frontier";
-import { generateProblem, templates } from "../src/math/engine";
 import { SchoolRepository } from "../src/schools/repository";
 import { registerSchoolRoutes } from "../src/schools/routes";
 import { buildApp } from "../src/server/app";
@@ -46,6 +43,14 @@ import {
   shiftRecorder,
 } from "./app-shell-probe";
 import { migrate } from "./migrate";
+import {
+  DAY,
+  dayIso,
+  GRADE_5_CLASS,
+  seedClass,
+  type ClassWorld,
+  type Student,
+} from "./school-class-fixture";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 
 const url = process.env.AMP_TEST_DATABASE_URL;
@@ -78,91 +83,7 @@ function check(label: string, ok: boolean, detail: unknown = "") {
   if (!ok) failures.push(`${label}: ${JSON.stringify(detail)}`);
 }
 
-const DAY = 86_400_000;
-const dayIso = (daysAgo: number) =>
-  new Date(Date.now() - daysAgo * DAY).toISOString().slice(0, 10);
-/** An even deterministic stream from a label, so a run is repeatable. */
-const hash = (text: string) => {
-  let seed = 2166136261;
-  for (const char of text) {
-    seed ^= char.codePointAt(0)!;
-    seed = Math.imul(seed, 16777619);
-  }
-  seed = Math.imul(seed ^ (seed >>> 15), seed | 1);
-  seed ^= seed + Math.imul(seed ^ (seed >>> 7), seed | 61);
-  return ((seed ^ (seed >>> 14)) >>> 0) / 4294967296;
-};
-
-type Persona = {
-  name: [string, string];
-  /** Where they work, on the grade axis, and how far that moves over the run. */
-  ability: number;
-  growth?: number;
-  /** Problems answered through the API. */
-  answers: number;
-  /** Minutes on a day they work. */
-  minutes: number;
-  /** One day in this many they skip. */
-  every: number;
-  /** Days ago they last worked. */
-  lastActive?: number;
-  /** Days ago they joined; the whole year otherwise. */
-  joined?: number;
-  identifier?: string;
-};
-const P = (
-  given: string,
-  family: string,
-  ability: number,
-  patch: Partial<Persona> = {},
-): Persona => ({
-  name: [given, family],
-  ability,
-  answers: 300,
-  minutes: 11,
-  every: 2,
-  growth: 0.4,
-  ...patch,
-});
-const PEOPLE: Persona[] = [
-  P("Priya", "Raman", 6.2, { answers: 340, minutes: 14, growth: 0.7 }),
-  P("Sam", "Whitlock", 6.0, { answers: 340, minutes: 13, growth: 0.7 }),
-  P("Mei", "Tran", 5.2, { minutes: 13 }),
-  P("Felix", "Grant", 5.0, { minutes: 12 }),
-  P("Amara", "Osei", 4.9, { minutes: 12 }),
-  P("Ruth", "Adeyemi", 4.8),
-  P("Kai", "Nakamura", 4.7),
-  P("Zara", "Mensah", 4.6, { joined: 12, answers: 80, minutes: 13 }),
-  P("Isaac", "Moreno", 4.5),
-  P("Sofia", "Marin", 4.5, { minutes: 12 }),
-  P("Imani", "Clarke", 4.4, { minutes: 11 }),
-  P("Tomas", "Vega", 4.4, { minutes: 7, every: 3 }),
-  P("Nadia", "Petrov", 4.3),
-  P("Elias", "Frost", 4.3, {
-    answers: 8,
-    minutes: 3,
-    every: 40,
-    lastActive: 0,
-  }),
-  P("Eli", "Novak", 4.2, { minutes: 10 }),
-  P("Lena", "Fischer", 4.1),
-  P("Diego", "Salas", 4.0),
-  P("Marcus", "Bell", 4.0, { lastActive: 9, minutes: 12 }),
-  P("Hana", "Sato", 3.9),
-  P("Owen", "Hartley", 3.8),
-  P("Caleb", "Ortiz", 2.2, { growth: 1.3, answers: 340, minutes: 14 }),
-  P("Jonah", "Reyes", 3.6),
-  P("Noor", "Haddad", 3.5),
-  P("Theo", "Lindqvist", 3.4, { minutes: 6, every: 3 }),
-].map((person, index) => ({
-  ...person,
-  identifier: `S-${10210 + index * 37}`,
-}));
-const SHARED_GAP = {
-  people: ["Noor", "Diego", "Lena", "Jonah", "Owen", "Hana"],
-  template: "add-fractions",
-};
-const STUCK = { person: "Kai", template: "divide-by-two-digit" };
+const PEOPLE = GRADE_5_CLASS;
 
 const reuse = argument("--reuse");
 const schema = reuse ?? `amp_teacher_ui_${randomUUID().replaceAll("-", "")}`;
@@ -196,285 +117,12 @@ const vite = await createServer({
 });
 await vite.listen();
 
-type Student = { personId: string; learnerId: string; accountId: string };
-
-async function studentApi(path: string, token: string, body: object) {
-  const response = await fetch(`http://127.0.0.1:${apiPort}/api/v1${path}`, {
-    method: "POST",
-    headers: {
-      authorization: `Bearer ${token}`,
-      "content-type": "application/json",
-    },
-    body: JSON.stringify(body),
-  });
-  assert.equal(response.ok, true, `${path} ${response.status}`);
-  return response.json();
-}
-const skillOf = new Map(skills.map((skill) => [skill.id, skill]));
-function chanceOfRight(ability: number, skillId: string) {
-  const skill = skillOf.get(skillId);
-  const grade = skill ? gradeNumber[skill.gradeBand] : ability;
-  return 0.12 + 0.82 / (1 + Math.exp(-1.7 * (ability - grade + 0.35)));
-}
-const wrongResponse = (problem: {
-  answer: string;
-  public: { response: { kind: string; options?: { id: string }[] } };
-}) =>
-  problem.public.response.kind === "choice"
-    ? problem.public.response.options!.find((o) => o.id !== problem.answer)!.id
-    : problem.answer === "99999"
-      ? "99998"
-      : "99999";
-
-/** Real answers through the real API, then dated back across the year: the
- * rollups, the skill evidence and the level days are rebuilt from those dates by
- * the same rules the trigger and `/batches` use. */
-async function seedStudent(person: Persona, student: Student, start: number) {
-  const { token } = await schools.issueStudentSession({
-    personId: student.personId,
-    mode: "shared",
-  });
-  let answered = 0,
-    guard = 0;
-  while (answered < person.answers && guard++ < person.answers) {
-    const batch = (await studentApi(
-      `/learners/${student.learnerId}/batches`,
-      token,
-      { count: Math.min(5, person.answers - answered) },
-    )) as { problems: { id: string; skillId: string }[] };
-    for (const problem of batch.problems) {
-      const stored = (
-        await db.query("SELECT content FROM amp_instances WHERE id=$1", [
-          problem.id,
-        ])
-      ).rows[0].content;
-      const progress = answered / person.answers;
-      const ability = person.ability + (person.growth ?? 0) * progress;
-      const right =
-        hash(`${person.name[0]}${answered}`) <
-        chanceOfRight(ability, problem.skillId);
-      await studentApi(`/learners/${student.learnerId}/attempts`, token, {
-        problemId: problem.id,
-        requestId: randomUUID(),
-        response: right ? stored.answer : wrongResponse(stored),
-      });
-      answered++;
-    }
-    if (!batch.problems.length) break;
-  }
-  // The days they worked, oldest first.
-  const last = person.lastActive ?? 0;
-  const first = person.joined ?? start;
-  const days: number[] = [];
-  for (let ago = first; ago >= last; ago--)
-    if (
-      ago === last ||
-      hash(`${person.name[1]}${ago}`) > 1 / person.every ||
-      (person.every <= 2 && ago % 2 === 0)
-    )
-      days.push(ago);
-  const worked = person.every >= 40 ? [last, last + 1] : days;
-  const { rows: attempts } = await db.query(
-    `SELECT id,problem_id,outcome->>'skillId' AS skill FROM amp_attempts WHERE learner_id=$1 ORDER BY evidence_sequence`,
-    [student.learnerId],
-  );
-  const dayOf = (index: number) =>
-    worked[
-      Math.min(
-        worked.length - 1,
-        Math.floor((index / attempts.length) * worked.length),
-      )
-    ]!;
-  for (const [index, attempt] of attempts.entries()) {
-    const ago = dayOf(index);
-    const at = new Date(
-      Date.parse(`${dayIso(ago)}T15:00:00Z`) + index * 45_000,
-    ).toISOString();
-    await db.query(
-      `UPDATE amp_attempts SET created_at=$2::timestamptz,outcome=jsonb_set(outcome,'{createdAt}',to_jsonb($3::text)) WHERE id=$1`,
-      [attempt.id, at, at],
-    );
-    // About one in eight comes back as spaced review.
-    if (index % 8 === 7 && ago !== start)
-      await db.query(
-        `UPDATE amp_instances SET content=content||jsonb_build_object('selection',COALESCE(content->'selection','{}'::jsonb)||'{"reason":"review"}'::jsonb) WHERE id=$1`,
-        [attempt.problem_id],
-      );
-  }
-}
-
-/** A few extra answers on one skill, as the app stores them, for the group this
- * class's Today is about. */
-async function seedMisses(student: Student, template: string, days: number[]) {
-  await learning.transaction(
-    student.accountId,
-    student.learnerId,
-    async (tx) => {
-      for (const ago of days) {
-        const problem = generateProblem(template, randomUUID());
-        await tx.saveProblem(problem);
-        await tx.saveAttempt({
-          id: randomUUID(),
-          requestId: randomUUID(),
-          problemId: problem.public.id,
-          skillId: problem.public.skillId,
-          templateId: template,
-          response: wrongResponse(problem as never),
-          correct: false,
-          assisted: false,
-          answer: problem.answer,
-          explanation: problem.explanation,
-          createdAt: new Date(
-            Date.parse(`${dayIso(ago)}T16:00:00Z`),
-          ).toISOString(),
-        });
-      }
-    },
-  );
-}
-
-/** New ground lately: a few skills around where they work, each right
- * twice without help. A student at this level does this in the weeks before a
- * report card; answers spread evenly over a year wouldn't show it. */
-async function seedGains(person: Persona, student: Student, count: number) {
-  const { rows } = await db.query(
-    `SELECT outcome->>'skillId' AS skill FROM amp_attempts
-     WHERE learner_id=$1 AND (outcome->>'correct')::boolean AND NOT (outcome->>'assisted')::boolean
-     GROUP BY 1 HAVING count(*)>=2`,
-    [student.learnerId],
-  );
-  const shown = new Set(rows.map((row) => row.skill as string));
-  const level = person.ability + (person.growth ?? 0);
-  const fresh = skills
-    .filter(
-      (skill) =>
-        !shown.has(skill.id) &&
-        gradeNumber[skill.gradeBand] >= Math.floor(level) - 1 &&
-        gradeNumber[skill.gradeBand] <= Math.floor(level),
-    )
-    .flatMap((skill) => {
-      const template = templates.find(
-        (entry) =>
-          entry.skillId === skill.id &&
-          !entry.requiredResponseCapability &&
-          !entry.requiredFigureCapability,
-      );
-      return template ? [template.id] : [];
-    })
-    .sort(
-      (a, b) => hash(`${person.name[0]}${a}`) - hash(`${person.name[0]}${b}`),
-    )
-    .slice(0, count);
-  await learning.transaction(
-    student.accountId,
-    student.learnerId,
-    async (tx) => {
-      for (const [index, template] of fresh.entries())
-        for (const ago of [2 + index * 2, 1 + index * 2].map(
-          (days) => days + (person.lastActive ?? 0),
-        )) {
-          const problem = generateProblem(template, randomUUID());
-          await tx.saveProblem(problem);
-          await tx.saveAttempt({
-            id: randomUUID(),
-            requestId: randomUUID(),
-            problemId: problem.public.id,
-            skillId: problem.public.skillId,
-            templateId: template,
-            response: problem.answer,
-            correct: true,
-            assisted: false,
-            answer: problem.answer,
-            explanation: problem.explanation,
-            createdAt: new Date(
-              Date.parse(`${dayIso(ago)}T16:30:00Z`),
-            ).toISOString(),
-          });
-        }
-    },
-  );
-}
-
-/** The rollups, skill evidence and level days, from the dates now on the answers. */
-async function rebuild(person: Persona, student: Student, timezone: string) {
-  const { learnerId } = student;
-  // Evidence order is the order the answers were given in.
-  await db.query(
-    `WITH top AS (SELECT max(evidence_sequence) AS at FROM amp_attempts)
-     UPDATE amp_attempts a SET evidence_sequence=top.at+ranked.position
-     FROM top,(
-       SELECT id,row_number() OVER (ORDER BY (outcome->>'createdAt')::timestamptz,id) AS position
-       FROM amp_attempts WHERE learner_id=$1
-     ) ranked WHERE a.id=ranked.id`,
-    [learnerId],
-  );
-  await db.query(
-    `SELECT setval('amp_attempt_evidence_sequence',(SELECT max(evidence_sequence) FROM amp_attempts)+1,false)`,
-  );
-  await db.query("DELETE FROM amp_skill_days WHERE learner_id=$1", [learnerId]);
-  await db.query(
-    `INSERT INTO amp_skill_days(learner_id,day,skill_id,attempts,correct,independent,assisted,review,review_independent)
-     SELECT a.learner_id,((a.outcome->>'createdAt')::timestamptz AT TIME ZONE $2)::date,a.outcome->>'skillId',
-       count(*),count(*) FILTER (WHERE (a.outcome->>'correct')::boolean),
-       count(*) FILTER (WHERE (a.outcome->>'correct')::boolean AND NOT COALESCE((a.outcome->>'assisted')::boolean,false)),
-       count(*) FILTER (WHERE COALESCE((a.outcome->>'assisted')::boolean,false)),
-       count(*) FILTER (WHERE i.content->'selection'->>'reason'='review'),
-       count(*) FILTER (WHERE i.content->'selection'->>'reason'='review' AND (a.outcome->>'correct')::boolean AND NOT COALESCE((a.outcome->>'assisted')::boolean,false))
-     FROM amp_attempts a JOIN amp_instances i ON i.id=a.problem_id
-     WHERE a.learner_id=$1 GROUP BY 1,2,3`,
-    [learnerId, timezone],
-  );
-  await db.query(
-    `UPDATE amp_skill_evidence e SET state=jsonb_set(state,'{recentOutcomes}',(
-       SELECT jsonb_agg(jsonb_set(o,'{createdAt}',a.outcome->'createdAt') ORDER BY ord)
-       FROM jsonb_array_elements(state->'recentOutcomes') WITH ORDINALITY x(o,ord)
-       JOIN amp_attempts a ON a.id=o->>'id'))
-     WHERE learner_id=$1`,
-    [learnerId],
-  );
-  // Time on task: each worked day's minutes across that day's skills.
-  await db.query("DELETE FROM amp_active_days WHERE learner_id=$1", [
-    learnerId,
-  ]);
-  await db.query(
-    `INSERT INTO amp_active_days(learner_id,day,surface,skill_id,active_ms)
-     SELECT learner_id,day,'practice',skill_id,
-       (($2::numeric*(0.55+0.9*abs(hashtext(day::text||learner_id))/2147483647.0))*60000*attempts/sum(attempts) OVER (PARTITION BY day))::bigint
-     FROM amp_skill_days WHERE learner_id=$1`,
-    [learnerId, person.minutes],
-  );
-  // The stored level on each Monday the student had worked, and on the last day.
-  const { rows: counted } = await db.query(
-    `SELECT ((outcome->>'createdAt')::timestamptz AT TIME ZONE $2)::date::text AS day,count(*)::int AS answers
-     FROM amp_attempts WHERE learner_id=$1 GROUP BY 1 ORDER BY 1`,
-    [learnerId, timezone],
-  );
-  await db.query("DELETE FROM amp_level_days WHERE learner_id=$1", [learnerId]);
-  let total = 0;
-  const lastDay = counted.at(-1)?.day;
-  for (const { day, answers } of counted) {
-    total += answers;
-    const weekday = new Date(`${day}T12:00:00Z`).getUTCDay();
-    if (weekday > 2 && day !== lastDay) continue;
-    const frontier = await learning.transaction(
-      student.accountId,
-      student.learnerId,
-      (tx) => tx.frontierAfter(total),
-    );
-    await db.query(
-      `INSERT INTO amp_level_days(learner_id,day,frontier,policy_version) VALUES($1,$2,$3,'fixture')
-       ON CONFLICT(learner_id,day) DO UPDATE SET frontier=EXCLUDED.frontier`,
-      [
-        learnerId,
-        day,
-        {
-          overall: frontier.overall,
-          strands: frontier.strands,
-        },
-      ],
-    );
-  }
-}
+const world: ClassWorld = {
+  db,
+  learning,
+  schools,
+  api: `http://127.0.0.1:${apiPort}`,
+};
 
 type Seeded = {
   orgId: string;
@@ -593,25 +241,12 @@ async function seed(): Promise<Seeded> {
     [created.id],
   );
   // Six at a time: enough to be quick, and well under the machine's budget.
-  const queue = [...PEOPLE];
-  await Promise.all(
-    Array.from({ length: 6 }, async () => {
-      for (let person = queue.shift(); person; person = queue.shift())
-        await seedStudent(person, people.get(person.name[0])!, YEAR_STARTED);
-    }),
-  );
-  for (const name of SHARED_GAP.people)
-    await seedMisses(people.get(name)!, SHARED_GAP.template, [3, 2, 1]);
-  await seedMisses(people.get(STUCK.person)!, STUCK.template, [4, 2, 1]);
-  for (const person of PEOPLE)
-    if (person.every < 40)
-      await seedGains(
-        person,
-        people.get(person.name[0])!,
-        Math.max(1, Math.round(person.ability - 2.4)),
-      );
-  for (const person of PEOPLE)
-    await rebuild(person, people.get(person.name[0])!, "America/New_York");
+  await seedClass(world, {
+    personas: PEOPLE,
+    students: people,
+    start: YEAR_STARTED,
+    timezone: "America/New_York",
+  });
   console.log(
     `Seeded ${PEOPLE.length} students in ${Math.round((performance.now() - started) / 1000)} s (schema ${schema})`,
   );

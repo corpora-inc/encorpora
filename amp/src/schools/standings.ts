@@ -11,6 +11,8 @@ import {
   type SettingsScope,
 } from "./settings.js";
 import { STUDENT_NAME } from "./sign-in.js";
+import { PLACEMENT_ATTEMPTS } from "../learning/placement.js";
+import { startLevelSql } from "./start-level.js";
 
 /** Standings read from `amp_skill_days` and `amp_level_days`, independent work
  * only, and nothing here feeds what's scheduled next. A board is the top ten and
@@ -182,12 +184,14 @@ const shiftDays = (day: string, days: number) =>
 
 /** One number per student, for students with something to show. Growth is a
  * hundredth of a grade per point, so it reads as a whole number and says nothing
- * of the level itself. */
+ * of the level itself. A term's growth starts where the teacher's does
+ * (`start-level.ts`); a week's runs from the last settled level before it. */
 async function measured(
   db: Database,
   roster: Roster[],
   measure: Measure,
   { from, to }: Term,
+  span: "term" | "week" = "term",
 ): Promise<Map<string, number>> {
   const person = new Map(roster.map((m) => [m.learnerId, m.personId]));
   const values = new Map<string, number>();
@@ -224,18 +228,28 @@ async function measured(
   const worked = new Set(independent.rows.map((row) => row.learner_id));
   const ends = await db.query(
     `SELECT l.learner_id,
-       (SELECT (d.frontier->'overall'->>'level')::float8 FROM amp_level_days d
+       (SELECT d.overall_level::float8 FROM amp_level_days d
         WHERE d.learner_id=l.learner_id AND d.day<=$3::date ORDER BY d.day DESC LIMIT 1) AS latest,
-       COALESCE(
-         (SELECT (d.frontier->'overall'->>'level')::float8 FROM amp_level_days d
-          WHERE d.learner_id=l.learner_id AND d.day<$2::date ORDER BY d.day DESC LIMIT 1),
-         (SELECT (d.frontier->'overall'->>'level')::float8 FROM amp_level_days d
-          WHERE d.learner_id=l.learner_id AND d.day BETWEEN $2::date AND $3::date ORDER BY d.day LIMIT 1)
-       ) AS start
+       ${
+         span === "term"
+           ? startLevelSql({
+               select: "d.overall_level::float8",
+               learner: "l.learner_id",
+               from: "$2::date",
+               to: "$3::date",
+             })
+           : `COALESCE(
+         (SELECT d.overall_level::float8 FROM amp_level_days d
+          WHERE d.learner_id=l.learner_id AND d.day<$2::date AND d.overall_answered>=${PLACEMENT_ATTEMPTS} ORDER BY d.day DESC LIMIT 1),
+         ${startLevelSql({ select: "d.overall_level::float8", learner: "l.learner_id", from: "$2::date", to: "$3::date" })}
+       )`
+       } AS start
      FROM unnest($1::text[]) AS l(learner_id)`,
     [[...worked], from, to],
   );
   for (const row of ends.rows) {
+    // Still placing: no start, so nothing to show rather than a zero.
+    if (row.start === null || row.latest === null) continue;
     const points = Math.round((row.latest - row.start) * 100);
     if (points > 0) values.set(person.get(row.learner_id)!, points);
   }
@@ -439,6 +453,7 @@ export async function studentBoard(
       from: [term.from, shiftDays(term.to, -6)].sort().at(-1)!,
       to: term.to,
     },
+    "week",
   );
   const listed = top.find((row) => row.you);
   return {

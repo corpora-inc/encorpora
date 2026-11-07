@@ -15,6 +15,7 @@ export function Sheet({
   lead,
   children,
   returnFocus,
+  tall = false,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -25,6 +26,9 @@ export function Sheet({
   children: ReactNode;
   /** Where focus goes when what opened the sheet is gone (a shared link). */
   returnFocus?: () => HTMLElement | null;
+  /** Content that arrives after the sheet opens: on a phone the sheet is its
+   * full height from the start, so nothing moves when it lands. */
+  tall?: boolean;
 }) {
   const content = useRef<HTMLDivElement>(null);
   const opener = useRef<HTMLElement | null>(null);
@@ -34,7 +38,7 @@ export function Sheet({
         <Dialog.Overlay className={styles.overlay} />
         <Dialog.Content
           ref={content}
-          className={styles.sheet}
+          className={`${styles.sheet} ${tall ? styles.tall : ""}`}
           data-dense
           aria-describedby={undefined}
           onOpenAutoFocus={(event) => {

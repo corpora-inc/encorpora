@@ -30,6 +30,21 @@ import { OrgFrame } from "./OrgFrame";
 import { CopyButton, FormNote, PageHead, roleNames } from "./parts";
 import { orgPath } from "./paths";
 import styles from "./School.module.css";
+import { compareClassNames } from "./sort";
+
+/** A long school address breaks after its @, never inside a word. */
+function Address({ email }: { email: string }) {
+  const at = email.indexOf("@");
+  return at < 0 ? (
+    <>{email}</>
+  ) : (
+    <>
+      {email.slice(0, at + 1)}
+      <wbr />
+      {email.slice(at + 1)}
+    </>
+  );
+}
 
 const message = (failure: unknown, fallback: string) =>
   failure instanceof AppError ? failure.message : fallback;
@@ -44,7 +59,9 @@ const roleHelp: Record<InviteRole, string> = {
 
 function InviteForm({ orgId }: { orgId: string }) {
   const session = currentSession();
-  const classes = useQuery(classesOptions(session, orgId)).data ?? [];
+  const classes = [
+    ...(useQuery(classesOptions(session, orgId)).data ?? []),
+  ].sort((a, b) => compareClassNames(a.name, b.name));
   const [email, setEmail] = useState("");
   const [role, setRole] = useState<InviteRole>("teacher");
   const [classIds, setClassIds] = useState<string[]>([]);
@@ -172,7 +189,9 @@ function StaffRow({
   onEdit: () => void;
 }) {
   const session = currentSession();
-  const classes = useQuery(classesOptions(session, orgId)).data ?? [];
+  const classes = [
+    ...(useQuery(classesOptions(session, orgId)).data ?? []),
+  ].sort((a, b) => compareClassNames(a.name, b.name));
   const [busy, setBusy] = useState<"resend" | "end" | null>(null);
   const [confirming, setConfirming] = useState(false);
   const [note, setNote] = useState("");
@@ -223,10 +242,18 @@ function StaffRow({
         <Avatar name={shown} />
         <div className={styles.staffText}>
           <strong>
-            {shown}
+            {onlyAddress ? <Address email={shown} /> : shown}
             {person.self ? " (you)" : ""}
           </strong>
-          {!onlyAddress && <span>{person.email ?? "No email on file"}</span>}
+          {!onlyAddress && (
+            <span>
+              {person.email ? (
+                <Address email={person.email} />
+              ) : (
+                "No email on file"
+              )}
+            </span>
+          )}
           {teaches && (
             <span className={styles.staffClasses}>
               {classList || "No classes yet"}
@@ -307,7 +334,9 @@ function ClassesSheet({
   onClose: () => void;
 }) {
   const session = currentSession();
-  const classes = useQuery(classesOptions(session, orgId)).data ?? [];
+  const classes = [
+    ...(useQuery(classesOptions(session, orgId)).data ?? []),
+  ].sort((a, b) => compareClassNames(a.name, b.name));
   const [classIds, setClassIds] = useState(person.classIds);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");

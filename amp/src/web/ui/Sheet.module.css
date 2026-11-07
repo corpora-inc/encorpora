@@ -94,6 +94,17 @@ button.close:focus-visible {
     border-radius: var(--radius-panel) var(--radius-panel) 0 0;
     animation-name: from-bottom;
   }
+  .tall {
+    height: 88dvh;
+  }
+  /* A phone's narrow header can take a second line of detail when the
+     content arrives: the room is there from the start. */
+  .tall .heading {
+    min-height: calc(
+      var(--text-heading-2) * 1.2 + var(--text-table) * 2.8 + 2px + 2 *
+        var(--space-1)
+    );
+  }
   .header {
     padding-inline-start: var(--space-4);
   }

@@ -368,7 +368,14 @@ await writeFile(
       productBlock[3],
   ),
 );
-const urls = ["/", "/pathways", ...skills.map((skill) => skillUrl(skill.id))];
+const urls = [
+  "/",
+  "/pathways",
+  "/schools",
+  "/schools/scope-and-sequence",
+  "/schools/trust",
+  ...skills.map((skill) => skillUrl(skill.id)),
+];
 await writeFile(
   new URL("sitemap.xml", destination),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((path) => `  <url><loc>${escapeHtml(origin + path)}</loc></url>`).join("\n")}\n</urlset>\n`,

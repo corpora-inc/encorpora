@@ -57,6 +57,7 @@ export function EvidenceSheet({
   }, [gone, student]);
   return (
     <Sheet
+      tall
       open={!!student}
       onOpenChange={(next) => {
         if (!next) onClose();
@@ -65,7 +66,14 @@ export function EvidenceSheet({
       description={
         data ? `${data.class.name}, ${data.term.name}` : "Reading the evidence"
       }
-      lead={data ? <Avatar name={data.student.name} size="large" /> : undefined}
+      lead={
+        data ? (
+          <Avatar name={data.student.name} size="large" />
+        ) : (
+          // The avatar's place, kept while the evidence is on its way.
+          <span className={`${styles.leadWait} amp-skeleton`} aria-hidden />
+        )
+      }
       returnFocus={() =>
         document.querySelector<HTMLElement>(`[data-student="${returnFocus}"]`)
       }

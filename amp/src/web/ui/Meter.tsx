@@ -29,7 +29,7 @@ export function Meter({
           style={{ "--share": share.toFixed(4) } as CSSProperties}
         />
       </span>
-      <span className={styles.value}>{value}</span>
+      <span className={styles.value}>{value.toLocaleString("en-US")}</span>
     </span>
   );
 }

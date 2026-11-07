@@ -165,13 +165,37 @@ function matcher(
   };
 }
 
+/** A CSV knows a class, or a person with no student ID, only by name, and a
+ * name means something only inside the school the file is for: two schools in
+ * a district each have a "Grade 3 Math". Those keys are kept per school; a
+ * student ID or a teacher's email stays the whole tenant's, so a district-wide
+ * ID finds the same student at any of its schools. */
+export function scopedRows(
+  source: RosterSource,
+  orgId: string,
+  rows: RosterRow[],
+): RosterRow[] {
+  if (source !== "csv") return rows;
+  const key = (id: string) => (id.startsWith("name:") ? `${orgId}/${id}` : id);
+  return rows.map((row) => ({
+    ...row,
+    sourcedId: key(row.sourcedId),
+    classes: row.classes.map((klass) => ({
+      ...klass,
+      sourcedId: key(klass.sourcedId),
+    })),
+  }));
+}
+
 /** The dry run: reads only, row by row. */
 export async function planRoster(
   repo: SchoolRepository,
   orgId: string,
   raw: unknown,
 ): Promise<PlanResult[]> {
-  const { source, rows } = planRosterSchema.parse(raw);
+  const parsed = planRosterSchema.parse(raw);
+  const { source } = parsed;
+  const rows = scopedRows(source, orgId, parsed.rows);
   const { tenantId } = await tenantOf(repo, orgId);
   const { refs, people } = await lookUp(repo.pool, tenantId, source, rows);
   const loose = rows.some((row) => !refs.has(row.sourcedId))
@@ -255,11 +279,13 @@ async function ensureClasses(
        WHERE tenant_id=$1 AND source=$2 AND kind='class' AND sourced_id=ANY($3::text[])`,
       [tenantId, source, [...wanted.keys()]],
     );
-    // A file that doesn't say grades by what the school's calendar is divided into.
+    // A file that doesn't say grades by what the school's calendar is divided
+    // into: its own, or the district's it inherits.
     const division = (
       await client.query(
-        `SELECT kind FROM amp_academic_sessions WHERE org_id=$1 AND parent_id IS NOT NULL
-         ORDER BY starts_on,id LIMIT 1`,
+        `SELECT s.kind FROM amp_orgs o JOIN amp_academic_sessions s ON s.org_id=ANY(o.path)
+         WHERE o.id=$1 AND s.parent_id IS NOT NULL
+         ORDER BY array_position(o.path,s.org_id) DESC,s.starts_on,s.id LIMIT 1`,
         [orgId],
       )
     ).rows[0]?.kind as GradingKind | undefined;
@@ -350,7 +376,9 @@ export async function applyRoster(
   raw: unknown,
   actorPersonId: string | null,
 ): Promise<{ results: ApplyResult[]; invites: RosterInvite[] }> {
-  const { source, rows, resolutions = {} } = applyRosterSchema.parse(raw);
+  const parsed = applyRosterSchema.parse(raw);
+  const { source, resolutions = {} } = parsed;
+  const rows = scopedRows(source, orgId, parsed.rows);
   const { tenantId } = await tenantOf(repo, orgId);
   const classIds = await ensureClasses(
     repo,
