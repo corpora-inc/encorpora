@@ -1,0 +1,898 @@
+/* The teacher's screens. Sizes and colors are tokens; hierarchy comes from type
+   and space, not boxes. */
+.page {
+  display: grid;
+  gap: var(--space-7);
+}
+
+/* Today */
+.greeting p {
+  margin-top: var(--space-1);
+  color: var(--color-muted-text);
+}
+.todos {
+  container-type: inline-size;
+  display: grid;
+  margin-top: calc(-1 * var(--space-4));
+}
+.todo {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  column-gap: var(--space-2);
+  padding-block: var(--space-5);
+}
+.todo + .todo {
+  box-shadow: inset 0 1px 0 var(--color-border);
+}
+.todo[data-plain] {
+  grid-template-columns: minmax(0, 1fr);
+}
+.todo[data-plain] .todoActions {
+  grid-column: 1;
+}
+.moreFaces {
+  align-self: center;
+  margin-inline-start: var(--space-2);
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+}
+.todoCheck {
+  margin-top: -9px;
+  margin-inline-start: -10px;
+}
+.todoTitle {
+  font-size: var(--text-heading-2);
+  text-wrap: balance;
+  transition: color var(--motion-fast);
+}
+.todo[data-done] .todoTitle {
+  color: var(--color-subtle-text);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+.todoDetail {
+  max-width: 60ch;
+  margin-top: var(--space-1);
+  color: var(--color-muted-text);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+.todoPeople {
+  display: flex;
+  margin-top: var(--space-3);
+}
+.todoActions {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+.todoActions > * {
+  white-space: nowrap;
+}
+@container (min-width: 760px) {
+  .todo {
+    grid-template-columns: 44px minmax(0, 1fr) auto;
+    column-gap: var(--space-2);
+  }
+  .todo[data-plain] {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .todo[data-plain] .todoActions {
+    grid-column: 2;
+  }
+  .todoActions {
+    grid-column: 3;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    margin: 0 0 0 var(--space-5);
+    align-self: start;
+  }
+}
+.week {
+  display: grid;
+  gap: var(--space-3);
+}
+.weekTitle {
+  color: var(--color-muted-text);
+  font-family: inherit;
+  font-size: var(--text-table);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.mapHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-5);
+  margin-bottom: var(--space-4);
+}
+.key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-5);
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+.keyItem {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  white-space: nowrap;
+}
+.keyCourse {
+  width: 16px;
+  height: 18px;
+  background: var(--color-course-band);
+}
+.keyBand {
+  position: relative;
+  width: 28px;
+  height: 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-primary) 42%, transparent);
+}
+.keyBand span {
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  transform: translate(-50%, -50%);
+}
+.mapGrid {
+  position: relative;
+}
+.bandCell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: var(--level-row);
+}
+.bandCell > * {
+  width: 100%;
+}
+.mapRow {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  align-items: center;
+  column-gap: var(--space-3);
+  min-height: var(--level-row);
+}
+.student {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-small);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: start;
+  text-decoration: none;
+  cursor: pointer;
+}
+button.student:hover:not(:disabled) {
+  filter: none;
+}
+.student:hover span:last-child {
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+.student:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -1px;
+}
+.tip {
+  position: fixed;
+  z-index: 50;
+  max-width: 280px;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-small);
+  background: var(--color-menu);
+  color: var(--color-on-menu);
+  box-shadow: var(--shadow-overlay);
+  font-size: var(--text-table-small);
+  line-height: 1.35;
+  transform: translate(-50%, calc(-100% - 2px));
+  pointer-events: none;
+}
+
+/* The gradebook */
+.gradePage {
+  display: grid;
+}
+.gradeHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4) var(--space-5);
+}
+.gradeTitle p {
+  margin-top: var(--space-1);
+  color: var(--color-muted-text);
+}
+.gradeControls {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+}
+.term {
+  flex: 0 1 260px;
+  min-width: 0;
+}
+/* The same rows in every term, so the table never moves when it changes. */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1) var(--space-5);
+  margin-block: var(--space-5) var(--space-4);
+}
+.toolbarMain {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+@media (max-width: 640px) {
+  .gradeControls {
+    justify-content: space-between;
+  }
+  .term {
+    flex: 1 1 auto;
+  }
+  .toolbar > * {
+    flex: 0 0 100%;
+  }
+}
+.count {
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  font-variant-numeric: var(--numeric);
+}
+.export {
+  flex: none;
+}
+.suggested {
+  color: var(--color-muted-text);
+  font-variant-numeric: var(--numeric);
+  white-space: nowrap;
+}
+.suggested strong {
+  color: var(--color-on-surface);
+  font-weight: 650;
+}
+.notEnough {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  line-height: 1.2;
+}
+.noScore {
+  color: var(--color-subtle-text);
+  font-variant-numeric: var(--numeric);
+}
+/* A blank on a gradebook line: a rule to write on, a full target to hit. */
+.finalCell {
+  position: relative;
+  display: block;
+  max-width: 72px;
+}
+input.finalInput {
+  display: block;
+  width: 100%;
+  max-width: 72px;
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0 var(--space-2);
+  border: 0;
+  border-bottom: 1px solid var(--color-answer-border);
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-on-surface);
+  font-size: var(--text-dense);
+  font-variant-numeric: var(--numeric);
+  font-weight: 650;
+  text-align: center;
+}
+input.finalInput:hover {
+  border-bottom-color: var(--color-primary);
+}
+input.finalInput:focus-visible {
+  border-radius: var(--radius-small);
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 1px;
+}
+.finalFrozen {
+  font-weight: 650;
+}
+.gradeCard {
+  display: grid;
+  gap: var(--space-2);
+}
+.gradeCardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.gradeCardTop .student {
+  flex: 1;
+  width: auto;
+  min-width: 0;
+}
+.gradeCardFinal {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+.gradeCardTop .finalInput {
+  width: 64px;
+  color: var(--color-on-surface-raised);
+}
+.gradeCardSuggested {
+  font-size: var(--text-dense);
+}
+.gradeCardSuggested .suggested strong {
+  color: var(--color-on-surface-raised);
+}
+.gradeCardMeters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3) var(--space-5);
+  margin-top: var(--space-2);
+}
+.gradeCardMeters dt {
+  margin-bottom: var(--space-1);
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  white-space: nowrap;
+}
+
+/* Evidence in the sheet */
+.evidence {
+  display: grid;
+  gap: var(--space-6);
+  font-size: var(--text-table);
+}
+.evidence h3 {
+  margin-bottom: var(--space-3);
+}
+.verdict {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+.fieldLabel {
+  margin-bottom: 2px;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+.verdictValue {
+  font-size: var(--text-heading-3);
+}
+.verdictValue .suggested strong {
+  color: var(--color-on-surface-raised);
+}
+.verdictFinal {
+  flex: none;
+  width: 76px;
+}
+.lines {
+  display: grid;
+  gap: var(--space-4);
+}
+.line {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 120px;
+  gap: 2px var(--space-3);
+  align-items: center;
+}
+.line dt {
+  font-weight: 600;
+}
+.lineMeter {
+  justify-self: stretch;
+  text-align: end;
+}
+.lineText {
+  grid-column: 1 / -1;
+  color: var(--color-muted-text);
+  line-height: 1.4;
+}
+.objectives,
+.problems {
+  display: grid;
+  gap: var(--space-2);
+}
+.objectives li {
+  display: grid;
+  grid-template-columns: 52px 8px minmax(0, 1fr);
+  align-items: baseline;
+  gap: var(--space-2);
+}
+.when {
+  color: var(--color-subtle-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+  white-space: nowrap;
+}
+.strandDot {
+  width: 8px;
+  height: 8px;
+  align-self: center;
+  border-radius: 50%;
+  background: var(--strand);
+}
+.problems li {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: var(--space-2);
+  padding-block: var(--space-1);
+}
+.problem {
+  display: grid;
+  gap: 2px;
+}
+.answered {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+
+/* The quiet check beside a saved grade: it overlays the cell and moves nothing. */
+.finalMark {
+  position: absolute;
+  top: 50%;
+  right: -14px;
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  opacity: 0;
+  transform: translateY(-50%);
+  transition: opacity var(--motion-fast);
+  pointer-events: none;
+}
+.finalCell[data-state="saved"] .finalMark {
+  opacity: 1;
+}
+.finalCell[data-state="failed"] input.finalInput {
+  border-bottom-color: var(--color-danger-accent);
+}
+.liveRegion {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.quietLine {
+  color: var(--color-muted-text);
+  line-height: 1.45;
+}
+.sheetFailed {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3);
+}
+.moreWork {
+  margin-top: var(--space-3);
+}
+.sheetLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+.enrollmentNote {
+  margin-top: calc(-1 * var(--space-4));
+  color: var(--color-muted-text);
+}
+
+/* The gradebook's actions and its export sheet */
+.toolbarActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-inline-start: auto;
+}
+.lockedTarget {
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+}
+.gradeEmpty {
+  margin-top: var(--space-6);
+}
+.dialog {
+  display: grid;
+  gap: var(--space-5);
+  line-height: 1.5;
+}
+.dialogActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+.exportSheet {
+  display: grid;
+  gap: var(--space-7);
+  justify-items: start;
+  font-size: var(--text-table);
+}
+.exportSheet section {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: start;
+  width: 100%;
+}
+.exportHint {
+  max-width: 60ch;
+  color: var(--color-muted-text);
+  line-height: 1.45;
+}
+.columnPicks {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  width: 100%;
+}
+label.columnPick {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  gap: var(--space-1);
+  font-size: var(--text-table);
+  cursor: pointer;
+}
+
+/* The time report: one hue, darker for more */
+.period {
+  flex: 0 1 300px;
+  min-width: 0;
+}
+.timeFacts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4) var(--space-5);
+  margin-block: var(--space-5) var(--space-4);
+}
+.heatStrip,
+.heatTicks {
+  display: grid;
+  grid-template-columns: repeat(var(--heat-columns), minmax(0, 1fr));
+  gap: 2px;
+  /* A short period stays a strip of small marks, never a row of blocks. */
+  width: 100%;
+  max-width: calc(var(--heat-columns) * 44px);
+}
+.heatTicks {
+  color: var(--color-subtle-text);
+  font-size: var(--text-table-small);
+  font-weight: 400;
+  white-space: nowrap;
+}
+.heatTicks span {
+  overflow: visible;
+  min-width: 0;
+}
+.heatCell[data-monday],
+.heatTicks [data-monday] {
+  margin-inline-start: 3px;
+}
+.heatCell {
+  display: block;
+  min-width: 0;
+  height: 22px;
+  border-radius: 3px;
+  background: var(--color-surface-sunken);
+}
+.heatCell[data-bin="1"] {
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 16%,
+    var(--color-surface)
+  );
+}
+.heatCell[data-bin="2"] {
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 32%,
+    var(--color-surface)
+  );
+}
+.heatCell[data-bin="3"] {
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 50%,
+    var(--color-surface)
+  );
+}
+.heatCell[data-bin="4"] {
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 72%,
+    var(--color-surface)
+  );
+}
+.heatCell[data-bin="5"] {
+  background: var(--color-primary);
+}
+.heatTotal {
+  font-variant-numeric: var(--numeric);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.heatLegend {
+  display: grid;
+  gap: var(--space-1);
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+.heatLegendScale {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-variant-numeric: var(--numeric);
+}
+.heatLegendScale span:first-child {
+  margin-inline-end: var(--space-1);
+}
+.heatLegendScale span:last-child {
+  margin-inline-start: var(--space-1);
+}
+.heatLegendScale .heatCell {
+  width: 18px;
+  height: 12px;
+}
+.heatCard {
+  display: grid;
+  gap: var(--space-1);
+}
+.heatCardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.heatCardTop .student {
+  flex: 1;
+  width: auto;
+  min-width: 0;
+}
+.timeSkills {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-7);
+}
+@media (min-width: 900px) {
+  .timeSkills .skillBars {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-7);
+  }
+}
+.skillBars {
+  display: grid;
+  gap: var(--space-3);
+  font-size: var(--text-table);
+}
+.skillBars li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px var(--space-3);
+}
+.skillValue {
+  color: var(--color-muted-text);
+  font-variant-numeric: var(--numeric);
+  white-space: nowrap;
+}
+.skillTrack {
+  grid-column: 1 / -1;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-surface-sunken);
+}
+.skillFill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--strand, var(--color-primary));
+}
+.dayChart {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 96px;
+  padding-bottom: 1px;
+  box-shadow: inset 0 -1px 0 var(--color-border);
+}
+.dayColumn {
+  display: flex;
+  flex: 1 1 0;
+  align-items: flex-end;
+  justify-content: center;
+  min-width: 0;
+  height: 100%;
+}
+/* Thin marks with room between them, rounded at the data end only. */
+.dayBar {
+  display: block;
+  width: 100%;
+  max-width: 14px;
+  border-radius: 4px 4px 0 0;
+  background: var(--color-primary);
+}
+.dayAxis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-1);
+  color: var(--color-subtle-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+}
+
+/* One student's record */
+.record {
+  display: grid;
+  gap: var(--space-6);
+}
+.recordHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-4);
+}
+.recordTitle {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+.recordTitle p {
+  margin-top: var(--space-1);
+  color: var(--color-muted-text);
+}
+.recordColumns {
+  display: grid;
+  gap: var(--space-7) var(--space-7);
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .recordColumns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.recordSection {
+  display: grid;
+  gap: var(--space-4);
+  font-size: var(--text-table);
+}
+.levelRows {
+  display: grid;
+  gap: var(--space-2);
+}
+.levelRow {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr) 62px;
+  align-items: center;
+  column-gap: var(--space-3);
+  min-height: 28px;
+}
+.levelName {
+  font-weight: 500;
+}
+.levelRow:first-child .levelName {
+  font-weight: 650;
+}
+.levelNumbers {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+  text-align: end;
+  white-space: nowrap;
+}
+.gradeLines {
+  display: grid;
+}
+.gradeLines li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto 44px;
+  align-items: center;
+  gap: var(--space-1) var(--space-3);
+  min-height: 44px;
+  padding-block: var(--space-1);
+}
+.gradeLines li + li {
+  box-shadow: inset 0 1px 0 var(--color-border);
+}
+.gradeLineName {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1) var(--space-2);
+}
+.gradeLineName a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: inherit;
+  font-weight: 500;
+  text-underline-offset: 0.16em;
+}
+.gradeLineSuggested {
+  white-space: nowrap;
+}
+.gradeLineFinal {
+  font-weight: 650;
+  font-variant-numeric: var(--numeric);
+  text-align: center;
+}
+@media (max-width: 480px) {
+  .gradeLines li {
+    grid-template-columns: minmax(0, 1fr) 44px;
+  }
+  .gradeLineSuggested {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .gradeLineFinal {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+}
+.signIn {
+  display: grid;
+  gap: var(--space-2);
+}
+.signIn div {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  align-items: baseline;
+  column-gap: var(--space-3);
+}
+.signIn dt {
+  color: var(--color-muted-text);
+}
+.printOnly {
+  display: none;
+}
+@media print {
+  .recordAction,
+  .noPrint {
+    display: none;
+  }
+  .printOnly {
+    display: block;
+    color: var(--color-print-ink);
+  }
+  .recordColumns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+  .recordSection {
+    break-inside: avoid;
+  }
+}
