@@ -5,7 +5,7 @@ import { Button, buttonClass } from "../../../ui/Button";
 import { EmptyState } from "../../../ui/EmptyState";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { useStaffSession } from "./api";
-import { reportCardsOptions } from "./teacher-api";
+import { gradebookOptions, reportCardsOptions } from "./teacher-api";
 import {
   classUrl,
   dayRange,
@@ -104,7 +104,13 @@ export function ReportCardScreen() {
   const place = useParams({ from: "/school/$org/classes/$class/report-cards" });
   const session = useStaffSession();
   const [search] = useClassSearch();
-  const term = uuidOr(search.term);
+  const asked = uuidOr(search.term);
+  // A link with no term opens the one the gradebook opens on.
+  const current = useQuery({
+    ...gradebookOptions(session, place, undefined),
+    enabled: !!session && !asked,
+  });
+  const term = asked ?? current.data?.term?.id ?? null;
   const only = uuidOr(search.student);
   const cards = useQuery({
     ...reportCardsOptions(session, place, term ?? ""),
@@ -120,7 +126,8 @@ export function ReportCardScreen() {
       Back to the gradebook
     </Link>
   );
-  if (term && cards.isPending) return <LoadingScreen />;
+  if ((!asked && current.isPending) || (term && cards.isPending))
+    return <LoadingScreen />;
   const data = cards.data;
   const students = data
     ? data.students.filter((student) => !only || student.id === only)

@@ -105,12 +105,6 @@ export async function seedSchools(
     await client.query("BEGIN");
     await client.query("SELECT setseed(0.42)");
     await client.query(
-      "ALTER TABLE amp_active_days DISABLE TRIGGER amp_active_days_week",
-    );
-    await client.query(
-      "ALTER TABLE amp_skill_days DISABLE TRIGGER amp_skill_days_week",
-    );
-    await client.query(
       `CREATE TEMP TABLE seed_class(id uuid,org uuid,grade int,quiet boolean,teacher uuid,drive float8,pace float8,lift float8) ON COMMIT DROP`,
     );
     /* No two classes or schools quite alike, the same on every run. */
@@ -251,97 +245,12 @@ export async function seedSchools(
        FROM seed_student WHERE signin_roll<$1`,
       [signedInShare],
     );
-    // A term with a shape: a slow start, a strong middle, a dip for a break.
-    await client.query(
-      `CREATE TEMP TABLE seed_day ON COMMIT DROP AS
-       SELECT d::date AS day,
-         ((ARRAY[0.55,0.68,0.8,0.86,0.92,0.82,0.96,1.02,0.58,0.94,1.04,1.08,1.1])[1+floor((d::date-$1::date)/7)::int])::float8 AS factor
-       FROM generate_series($1::date,LEAST((now()::date)-0,$1::date+90),interval '1 day') d
-       WHERE extract(isodow FROM d)<6`,
-      [year.start],
-    );
-    await client.query(
-      `INSERT INTO amp_active_days(learner_id,day,surface,skill_id,active_ms)
-       SELECT s.learner,d.day,'practice','skill-'||k,
-         floor((7+random()*9)*60000*s.diligence*d.factor)::bigint
-       FROM seed_student s CROSS JOIN seed_day d CROSS JOIN generate_series(1,$1::int) k
-       WHERE s.diligence>0 AND random()<0.82`,
-      [skillsPerDay],
-    );
-    await client.query(
-      `INSERT INTO amp_skill_days(learner_id,day,skill_id,attempts,correct,independent,assisted,review,review_independent)
-       SELECT s.learner,d.day,'skill-'||k,n,floor(n*0.8),floor(n*0.7),floor(n*0.1),floor(n*0.2),floor(n*0.15)
-       FROM seed_student s CROSS JOIN seed_day d CROSS JOIN generate_series(1,$1::int) k
-       CROSS JOIN LATERAL (SELECT (2+floor(random()*9))::int AS n) a
-       WHERE s.diligence>0 AND random()<0.7`,
-      [skillsPerDay],
-    );
-    await client.query(
-      `INSERT INTO amp_level_days(learner_id,day,frontier,policy_version)
-       SELECT s.learner,d.day,jsonb_build_object(
-           'overall',jsonb_build_object('level',round((s.grade+s.ability+(d.day-$1::date)/90.0*0.45*s.diligence*s.pace)::numeric,2),'sd',0.35,'answered',120,'independent',90),
-           'strands',jsonb_build_object(
-             'operations',jsonb_build_object('level',s.grade+s.ability,'sd',0.4,'answered',30,'independent',22),
-             'fractions',jsonb_build_object('level',s.grade+s.ability-0.2,'sd',0.45,'answered',30,'independent',20),
-             'numbers',jsonb_build_object('level',s.grade+s.ability+0.1,'sd',0.4,'answered',30,'independent',24),
-             'measurement',jsonb_build_object('level',s.grade+s.ability+0.2,'sd',0.5,'answered',20,'independent',14),
-             'algebra',jsonb_build_object('level',s.grade+s.ability-0.1,'sd',0.5,'answered',10,'independent',8))),
-         'fixture'
-       FROM seed_student s CROSS JOIN seed_day d
-       WHERE s.diligence>0 AND extract(isodow FROM d.day) IN (1,3,5)`,
-      [year.start],
-    );
-    await client.query(
-      `INSERT INTO amp_learner_weeks(learner_id,week,active_ms,attempts)
-       SELECT learner_id,week,sum(active_ms)::bigint,sum(attempts)::int FROM (
-         SELECT learner_id,date_trunc('week',day)::date AS week,active_ms,0 AS attempts FROM amp_active_days
-           WHERE learner_id IN (SELECT learner FROM seed_student)
-         UNION ALL
-         SELECT learner_id,date_trunc('week',day)::date,0,attempts FROM amp_skill_days
-           WHERE learner_id IN (SELECT learner FROM seed_student)
-       ) facts GROUP BY learner_id,week
-       ON CONFLICT(learner_id,week) DO UPDATE SET active_ms=EXCLUDED.active_ms,attempts=EXCLUDED.attempts`,
-    );
-    await client.query(
-      "ALTER TABLE amp_active_days ENABLE TRIGGER amp_active_days_week",
-    );
-    await client.query(
-      "ALTER TABLE amp_skill_days ENABLE TRIGGER amp_skill_days_week",
-    );
-    // A week of what staff really do, for the log.
-    await client.query(
-      `INSERT INTO amp_school_events(id,org_id,actor_person_id,action,target_kind,target_id,detail,"at")
-       SELECT gen_random_uuid(),c.org,c.teacher,e.action,e.kind,
-         CASE e.kind WHEN 'person' THEN s.person::text ELSE c.id::text END,
-         CASE e.action
-           WHEN 'grade.final-set' THEN jsonb_build_object('after',jsonb_build_object('value',(ARRAY['A','A-','B+','B','B-','C+','Pass'])[1+floor(random()*7)::int],'classId',c.id))
-           WHEN 'student.updated' THEN jsonb_build_object('after',jsonb_build_object('gradeLevel',s.grade))
-           ELSE '{}'::jsonb END,
-         ((now() AT TIME ZONE $1)::date-1-(g/6)+interval '8 hours 20 minutes'+(g%6)*interval '71 minutes') AT TIME ZONE $1
-       FROM generate_series(1,40) g
-       CROSS JOIN LATERAL (SELECT * FROM seed_class c WHERE c.teacher IS NOT NULL ORDER BY c.id OFFSET (g*7)%(SELECT count(*) FROM seed_class WHERE teacher IS NOT NULL) LIMIT 1) c
-       CROSS JOIN LATERAL (SELECT * FROM seed_student s WHERE s.class=c.id ORDER BY s.index OFFSET g%5 LIMIT 1) s
-       CROSS JOIN LATERAL (SELECT * FROM (VALUES
-           ('grade.final-set','person'),('grade.final-set','person'),('student.card-issued','person'),
-           ('student.pictures-reset','person'),('class.code-rotated','class'),('student.updated','person')
-         ) AS v(action,kind) OFFSET g%6 LIMIT 1) e`,
-      [tenant.timezone],
-    );
-    // Setup happened back when the year began, not this morning.
-    await client.query(
-      "ALTER TABLE amp_school_events DISABLE TRIGGER amp_school_events_immutable",
-    );
-    await client.query(
-      `UPDATE amp_school_events SET "at"="at"-interval '75 days'
-       WHERE action=ANY($1::text[]) AND org_id IN (SELECT id FROM amp_orgs WHERE path[1]=$2)`,
-      [
-        ["org.created", "agreement.accepted", "license.issued", "staff.added"],
-        tenant.id,
-      ],
-    );
-    await client.query(
-      "ALTER TABLE amp_school_events ENABLE TRIGGER amp_school_events_immutable",
-    );
+    await seedTermEvidence(client, {
+      timezone: tenant.timezone,
+      tenantId: tenant.id,
+      yearStart: year.start,
+      skillsPerDay,
+    });
     const counts = (
       await client.query(
         `SELECT (SELECT count(*)::int FROM seed_student) AS students,(SELECT count(*)::int FROM seed_class) AS classes`,
@@ -366,4 +275,126 @@ export async function seedSchools(
   } finally {
     client.release();
   }
+}
+
+/** The week-by-week shape of a term: a slow start, a strong middle, a dip for a
+ * break, then the last two weeks. Index 0 is the term's first week. */
+export const TERM_SHAPE = [
+  0.55, 0.68, 0.8, 0.86, 0.92, 0.82, 0.96, 1.02, 0.58, 0.94, 1.04, 1.08, 1.1,
+] as const;
+
+/** A term of practice for the students in the `seed_student` temp table (and
+ * their classes in `seed_class`), inside the caller's open transaction: active
+ * time, skill days, level days, weeks, and a week of what staff really do. The
+ * rollups' week triggers are off while it writes and on again after, so the
+ * weeks are summed once. Every name it touches is already made up. */
+export async function seedTermEvidence(
+  client: PoolClient,
+  options: {
+    timezone: string;
+    tenantId: string;
+    yearStart: string;
+    skillsPerDay: number;
+    /** Activity by week from the term's start; the last entry repeats. */
+    weekShape?: readonly number[];
+  },
+) {
+  const shape = options.weekShape ?? TERM_SHAPE;
+  await client.query(
+    "ALTER TABLE amp_active_days DISABLE TRIGGER amp_active_days_week",
+  );
+  await client.query(
+    "ALTER TABLE amp_skill_days DISABLE TRIGGER amp_skill_days_week",
+  );
+  // A term with a shape: a slow start, a strong middle, a dip for a break.
+  await client.query(
+    `CREATE TEMP TABLE seed_day ON COMMIT DROP AS
+       SELECT d::date AS day,
+         ($2::float8[])[LEAST(1+floor((d::date-$1::date)/7)::int,array_length($2::float8[],1))] AS factor
+       FROM generate_series($1::date,LEAST((now()::date)-0,$1::date+90),interval '1 day') d
+       WHERE extract(isodow FROM d)<6`,
+    [options.yearStart, shape],
+  );
+  await client.query(
+    `INSERT INTO amp_active_days(learner_id,day,surface,skill_id,active_ms)
+       SELECT s.learner,d.day,'practice','skill-'||k,
+         floor((7+random()*9)*60000*s.diligence*d.factor)::bigint
+       FROM seed_student s CROSS JOIN seed_day d CROSS JOIN generate_series(1,$1::int) k
+       WHERE s.diligence>0 AND random()<0.82`,
+    [options.skillsPerDay],
+  );
+  await client.query(
+    `INSERT INTO amp_skill_days(learner_id,day,skill_id,attempts,correct,independent,assisted,review,review_independent)
+       SELECT s.learner,d.day,'skill-'||k,n,floor(n*0.8),floor(n*0.7),floor(n*0.1),floor(n*0.2),floor(n*0.15)
+       FROM seed_student s CROSS JOIN seed_day d CROSS JOIN generate_series(1,$1::int) k
+       CROSS JOIN LATERAL (SELECT (2+floor(random()*9))::int AS n) a
+       WHERE s.diligence>0 AND random()<0.7`,
+    [options.skillsPerDay],
+  );
+  await client.query(
+    `INSERT INTO amp_level_days(learner_id,day,frontier,policy_version)
+       SELECT s.learner,d.day,jsonb_build_object(
+           'overall',jsonb_build_object('level',round((s.grade+s.ability+(d.day-$1::date)/90.0*0.45*s.diligence*s.pace)::numeric,2),'sd',0.35,'answered',120,'independent',90),
+           'strands',jsonb_build_object(
+             'operations',jsonb_build_object('level',s.grade+s.ability,'sd',0.4,'answered',30,'independent',22),
+             'fractions',jsonb_build_object('level',s.grade+s.ability-0.2,'sd',0.45,'answered',30,'independent',20),
+             'numbers',jsonb_build_object('level',s.grade+s.ability+0.1,'sd',0.4,'answered',30,'independent',24),
+             'measurement',jsonb_build_object('level',s.grade+s.ability+0.2,'sd',0.5,'answered',20,'independent',14),
+             'algebra',jsonb_build_object('level',s.grade+s.ability-0.1,'sd',0.5,'answered',10,'independent',8))),
+         'fixture'
+       FROM seed_student s CROSS JOIN seed_day d
+       WHERE s.diligence>0 AND extract(isodow FROM d.day) IN (1,3,5)`,
+    [options.yearStart],
+  );
+  await client.query(
+    `INSERT INTO amp_learner_weeks(learner_id,week,active_ms,attempts)
+       SELECT learner_id,week,sum(active_ms)::bigint,sum(attempts)::int FROM (
+         SELECT learner_id,date_trunc('week',day)::date AS week,active_ms,0 AS attempts FROM amp_active_days
+           WHERE learner_id IN (SELECT learner FROM seed_student)
+         UNION ALL
+         SELECT learner_id,date_trunc('week',day)::date,0,attempts FROM amp_skill_days
+           WHERE learner_id IN (SELECT learner FROM seed_student)
+       ) facts GROUP BY learner_id,week
+       ON CONFLICT(learner_id,week) DO UPDATE SET active_ms=EXCLUDED.active_ms,attempts=EXCLUDED.attempts`,
+  );
+  await client.query(
+    "ALTER TABLE amp_active_days ENABLE TRIGGER amp_active_days_week",
+  );
+  await client.query(
+    "ALTER TABLE amp_skill_days ENABLE TRIGGER amp_skill_days_week",
+  );
+  // A week of what staff really do, for the log.
+  await client.query(
+    `INSERT INTO amp_school_events(id,org_id,actor_person_id,action,target_kind,target_id,detail,"at")
+       SELECT gen_random_uuid(),c.org,c.teacher,e.action,e.kind,
+         CASE e.kind WHEN 'person' THEN s.person::text ELSE c.id::text END,
+         CASE e.action
+           WHEN 'grade.final-set' THEN jsonb_build_object('after',jsonb_build_object('value',(ARRAY['A','A-','B+','B','B-','C+','Pass'])[1+floor(random()*7)::int],'classId',c.id))
+           WHEN 'student.updated' THEN jsonb_build_object('after',jsonb_build_object('gradeLevel',s.grade))
+           ELSE '{}'::jsonb END,
+         ((now() AT TIME ZONE $1)::date-1-(g/6)+interval '8 hours 20 minutes'+(g%6)*interval '71 minutes') AT TIME ZONE $1
+       FROM generate_series(1,40) g
+       CROSS JOIN LATERAL (SELECT * FROM seed_class c WHERE c.teacher IS NOT NULL ORDER BY c.id OFFSET (g*7)%(SELECT count(*) FROM seed_class WHERE teacher IS NOT NULL) LIMIT 1) c
+       CROSS JOIN LATERAL (SELECT * FROM seed_student s WHERE s.class=c.id ORDER BY s.index OFFSET g%5 LIMIT 1) s
+       CROSS JOIN LATERAL (SELECT * FROM (VALUES
+           ('grade.final-set','person'),('grade.final-set','person'),('student.card-issued','person'),
+           ('student.pictures-reset','person'),('class.code-rotated','class'),('student.updated','person')
+         ) AS v(action,kind) OFFSET g%6 LIMIT 1) e`,
+    [options.timezone],
+  );
+  // Setup happened back when the year began, not this morning.
+  await client.query(
+    "ALTER TABLE amp_school_events DISABLE TRIGGER amp_school_events_immutable",
+  );
+  await client.query(
+    `UPDATE amp_school_events SET "at"="at"-interval '75 days'
+       WHERE action=ANY($1::text[]) AND org_id IN (SELECT id FROM amp_orgs WHERE path[1]=$2)`,
+    [
+      ["org.created", "agreement.accepted", "license.issued", "staff.added"],
+      options.tenantId,
+    ],
+  );
+  await client.query(
+    "ALTER TABLE amp_school_events ENABLE TRIGGER amp_school_events_immutable",
+  );
 }

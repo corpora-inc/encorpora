@@ -103,9 +103,11 @@ export function TrustScreen() {
             </p>
             <p>
               Teachers export grades and time as CSV, and results as OneRoster.
-              For a whole-school export or deletion, an admin writes to{" "}
-              <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>. It’s done
-              within 30 days and confirmed.
+              Admins export all of a school’s student data, or delete it, from
+              the school’s privacy screen, and every export and deletion is
+              logged. An admin can also write to{" "}
+              <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>, and it’s
+              done within 30 days and confirmed.
             </p>
           </Topic>
           <Topic title="Where it lives, and who processes it">

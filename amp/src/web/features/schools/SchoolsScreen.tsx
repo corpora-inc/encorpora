@@ -190,6 +190,28 @@ export function SchoolsScreen() {
           />
         </section>
 
+        <section className={styles.grades} aria-labelledby="schools-overviews">
+          <div className={styles.featureText}>
+            <h2 id="schools-overviews">School and district overviews</h2>
+            <p>
+              The morning read for a head: seats, who needs attention, the
+              week’s practice and where every student stands against their own
+              grade. A district sees each of its schools the same way, and can
+              set and lock policy for all of them.
+            </p>
+          </div>
+          <div className={styles.overviewsStage}>
+            <ProductShot
+              screen={screens.schoolOverview}
+              className={styles.schoolOverviewShot}
+            />
+            <ProductShot
+              screen={screens.districtOverview}
+              className={styles.districtOverviewShot}
+            />
+          </div>
+        </section>
+
         <section className={styles.questions} aria-labelledby="schools-asked">
           <h2 id="schools-asked">Questions schools ask</h2>
           <dl className={styles.questionList}>

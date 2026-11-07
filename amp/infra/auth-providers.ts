@@ -27,6 +27,12 @@ const stage = environments.stage.origin;
 /** Better Auth's callback route for a provider. */
 export const callbackUrl = (origin: string, provider: SocialProvider) =>
   `${origin}/api/auth/callback/${provider}`;
+/** Student sign-in's own callback (src/schools/oidc.ts), on the same client:
+ * students never enter the parent user table. */
+export const studentCallbackUrl = (
+  origin: string,
+  provider: "google" | "microsoft",
+) => `${origin}/api/v1/school/join/oidc/${provider}/callback`;
 
 export interface ConsoleClient {
   name: string;
@@ -64,7 +70,10 @@ export const authProviders = {
         name: `${brand.name} production`,
         homepage: prod,
         origins: [prod],
-        redirectUris: [callbackUrl(prod, "google")],
+        redirectUris: [
+          callbackUrl(prod, "google"),
+          studentCallbackUrl(prod, "google"),
+        ],
       },
       stage: {
         name: `${brand.name} stage`,
@@ -73,6 +82,8 @@ export const authProviders = {
         redirectUris: [
           callbackUrl(stage, "google"),
           callbackUrl(localOrigin, "google"),
+          studentCallbackUrl(stage, "google"),
+          studentCallbackUrl(localOrigin, "google"),
         ],
       },
     } satisfies Record<EnvironmentName, ConsoleClient>,
@@ -105,6 +116,9 @@ export const authProviders = {
         callbackUrl(prod, "microsoft"),
         callbackUrl(stage, "microsoft"),
         callbackUrl(localOrigin, "microsoft"),
+        studentCallbackUrl(prod, "microsoft"),
+        studentCallbackUrl(stage, "microsoft"),
+        studentCallbackUrl(localOrigin, "microsoft"),
       ],
       implicitGrant: false,
       /** xms_edov marks a verified email; without it Microsoft sign-up is refused. */

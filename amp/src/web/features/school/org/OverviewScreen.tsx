@@ -18,6 +18,7 @@ import { fullDay, number } from "../classes/teacher-shared";
 import { OrgFrame } from "../OrgFrame";
 import { classPath, orgPath } from "../paths";
 import { StandingChart, TrendChart } from "./charts";
+import { compareClassNames } from "../sort";
 import { overviewOptions } from "./org-api";
 import styles from "./Org.module.css";
 
@@ -148,7 +149,7 @@ function ClassTable({ orgId, rows }: { orgId: string; rows: ClassUsage[] }) {
         id: "name",
         header: "Class",
         width: 190,
-        compare: (a, b) => a.name.localeCompare(b.name, "en"),
+        compare: (a, b) => compareClassNames(a.name, b.name),
         cell: (row) => (
           <Link
             to="/$"
@@ -212,7 +213,7 @@ export function SchoolTable({ rows }: { rows: SchoolUsage[] }) {
         id: "name",
         header: "School",
         width: 230,
-        compare: (a, b) => a.name.localeCompare(b.name, "en"),
+        compare: (a, b) => compareClassNames(a.name, b.name),
         cell: (row) => (
           <Link
             to="/$"

@@ -351,6 +351,11 @@ export function attentionFor({
   };
   const openLabel = (id: string, fallback: string) =>
     district ? `Open ${schoolNames.get(id) ?? "the school"}` : fallback;
+  // Two schools in a district can each have a "Grade 3 Math".
+  const classLabel = (row: { name: string; org: string }) =>
+    district && schoolNames.has(row.org)
+      ? `${row.name} at ${schoolNames.get(row.org)}`
+      : row.name;
   if (unsigned.length)
     items.push({
       id: "agreement",
@@ -435,10 +440,7 @@ export function attentionFor({
     items.push({
       id: "no-teacher",
       title: `${plural(untaught.length, "class has", "classes have")} no teacher`,
-      detail: `${joinNames(
-        untaught.map((row) => row.name),
-        NAMES_SHOWN,
-      )}.`,
+      detail: `${joinNames(untaught.map(classLabel), NAMES_SHOWN)}.`,
       action: {
         label: openLabel(
           worst(untaught),
@@ -463,10 +465,7 @@ export function attentionFor({
         id: "little-practice",
         title: `${plural(quiet.length, "class", "classes")} had little practice this week`,
         detail: district
-          ? `${joinNames(
-              quiet.map((row) => row.name),
-              NAMES_SHOWN,
-            )}.`
+          ? `${joinNames(quiet.map(classLabel), NAMES_SHOWN)}.`
           : `${joinNames(
               quiet.map((row) => row.name),
               NAMES_SHOWN,

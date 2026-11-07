@@ -57,6 +57,18 @@ export const productScreens = {
     wide: { width: 720, height: 1075 },
     narrow: { width: 390, height: 900 },
   },
+  schoolOverview: {
+    id: "school-overview",
+    alt: "A school’s overview: how many students practiced this week, seats in use, what needs attention, weekly minutes this term, and where students stand against their own grade.",
+    wide: { width: 1280, height: 900 },
+    narrow: { width: 780, height: 1688 },
+  },
+  districtOverview: {
+    id: "district-overview",
+    alt: "A district’s overview: the same morning read across twelve schools, with each school’s practice and growth in one table.",
+    wide: { width: 1280, height: 900 },
+    narrow: { width: 780, height: 1688 },
+  },
 } as const satisfies Record<string, ProductScreen>;
 
 /** The file for a screen, falling back to light where there's no dark capture. */
