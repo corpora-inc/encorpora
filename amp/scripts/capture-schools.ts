@@ -14,7 +14,7 @@
  *
  *     AMP_TEST_DATABASE_URL=... npm run school:capture -- \
  *       [--size 10000] [--port 4424] [--out <dir>] [--only today,gradebook]
- *       [--widths 1280,390,768,320] [--themes light,dark] [--product-shots]
+ *       [--widths 1280,390,768,320] [--themes light,dark] [--product-shots] [--keep]
  */
 import { execFileSync } from "node:child_process";
 import { mkdir, rm, writeFile } from "node:fs/promises";
@@ -843,7 +843,9 @@ try {
   console.error(error);
   exit = 1;
 } finally {
-  await server.close();
+  // `--keep` leaves the schema for reading afterwards; drop it by hand.
+  await server.close({ keep: process.argv.includes("--keep") });
+  if (process.argv.includes("--keep")) console.log(`Kept ${server.schema}`);
 }
 // Whatever stopped the run, what was measured is kept and said.
 await writeFile(join(out, "failures.txt"), failures.join("\n"));
