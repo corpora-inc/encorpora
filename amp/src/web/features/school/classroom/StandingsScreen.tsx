@@ -4,7 +4,6 @@ import type { CSSProperties } from "react";
 import type { StandingsBoard } from "../../../../schools/classroom-contracts";
 import { sessionOptions } from "../../../lib/query";
 import { Button, buttonClass } from "../../../ui/Button";
-import { Loading } from "../../../ui/Loading";
 import { NavigationDrawer } from "../../navigation/NavigationDrawer";
 import { StudentSignOut } from "../../practice/StudentSignOut";
 import { gradeLabel } from "../parts";
@@ -185,9 +184,9 @@ export function StandingsScreen() {
             ))}
           </div>
         )}
-        {boards.isPending ? (
-          <Loading>Opening the board…</Loading>
-        ) : board.data ? (
+        {/* One wait, the board's own shape, from the first frame to the
+            board: never a loader that turns into a skeleton. */}
+        {board.data ? (
           <Board data={board.data} />
         ) : failed ? (
           <div className={styles.problem} role="alert">

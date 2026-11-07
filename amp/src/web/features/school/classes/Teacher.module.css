@@ -896,3 +896,11 @@ label.columnPick {
     break-inside: avoid;
   }
 }
+
+/* The evidence sheet's avatar, before the evidence arrives. */
+.leadWait {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}

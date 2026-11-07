@@ -79,6 +79,9 @@ type Screen = {
   then?: (page: Page) => Promise<void>;
   /** A sheet over the screen is shot as the window shows it, not the page. */
   sheet?: boolean;
+  /** An action bar pinned over the list is measured where it comes to rest,
+   * at the end of the page, as a person reaches it. */
+  pinned?: boolean;
 };
 
 const failures: string[] = [];
@@ -311,6 +314,7 @@ function screens(world: DemoWorld, pendingOrg: string): Screen[] {
     },
     {
       id: "class-workbooks",
+      pinned: true,
       group: "Class",
       title: "Workbook stack",
       who: "teacher",
@@ -573,6 +577,12 @@ async function sweep(
             await paced();
             await page.goto(server.origin + screen.path);
             await ready(page, screen);
+            if (screen.pinned) {
+              await page.evaluate(() =>
+                scrollTo(0, document.documentElement.scrollHeight),
+              );
+              await settle(page, 150);
+            }
             await measure(page, label);
             if (SHOT_WIDTHS.has(width)) {
               const file = `${screen.id}-${width}-${theme}.png`;
@@ -744,15 +754,19 @@ async function productShots(
               : (product.narrow ?? { kind: "viewport" as const });
           const png = join(scratch, `${product.id}-${shape}-${theme}.png`);
           if (rule.kind === "element") {
-            const element = page.locator(rule.selector).first();
-            await element.scrollIntoViewIfNeeded();
-            const box = (await element.boundingBox())!;
+            // Where the element sits on the page as it loads, unscrolled, so
+            // nothing pinned at the top of the window lies over it.
+            const box = (await page
+              .locator(rule.selector)
+              .first()
+              .boundingBox())!;
+            const scrolled = await page.evaluate(() => scrollY);
             await page.screenshot({
               path: png,
               fullPage: true,
               clip: {
                 x: box.x,
-                y: box.y + (await page.evaluate(() => scrollY)),
+                y: box.y + scrolled,
                 width: box.width,
                 height: Math.min(box.height, rule.height ?? box.height),
               },
@@ -814,7 +828,8 @@ try {
   const browser = await secureChromium(rawChromium).launch();
   try {
     const captured = await sweep(browser, server, world, list);
-    await contactSheet(captured, world);
+    // A partial run (`--only`) refreshes its files and leaves the sheet.
+    if (!only) await contactSheet(captured, world);
     console.log(
       `${captured.size} screens, ${[...captured.values()].reduce((sum, entry) => sum + entry.files.length, 0)} captures in ${out}`,
     );
@@ -823,15 +838,17 @@ try {
   } finally {
     await browser.close();
   }
-  if (failures.length) {
-    console.error(`${failures.length} checks failed:`);
-    for (const failure of failures.slice(0, 120)) console.error(`  ${failure}`);
-    exit = 1;
-  } else console.log("Every screen measured clean.");
 } catch (error) {
   console.error(error);
   exit = 1;
 } finally {
   await server.close();
 }
+// Whatever stopped the run, what was measured is kept and said.
+await writeFile(join(out, "failures.txt"), failures.join("\n"));
+if (failures.length) {
+  console.error(`${failures.length} checks failed:`);
+  for (const failure of failures.slice(0, 150)) console.error(`  ${failure}`);
+  exit = 1;
+} else if (!exit) console.log("Every screen measured clean.");
 process.exit(exit);

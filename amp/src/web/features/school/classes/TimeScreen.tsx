@@ -198,6 +198,7 @@ function DaySheet({
   );
   return (
     <Sheet
+      tall
       open={!!student}
       onOpenChange={(next) => {
         if (!next) onClose();

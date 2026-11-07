@@ -1038,9 +1038,11 @@ export async function buildDemo(
     heroClass.join_code,
     heroStudents,
   );
-  const mei = heroStudents.get("Mei")!;
+  // The student the picker signs in: grown the most from behind, so the
+  // board shows their own line among the leaders.
+  const caleb = heroStudents.get("Caleb")!;
   const session = await server.schools.issueStudentSession({
-    personId: mei.personId,
+    personId: caleb.personId,
     mode: "shared",
   });
   const counts = (
@@ -1064,7 +1066,7 @@ export async function buildDemo(
       teacher: "Ms. Okafor",
       students: heroStudents,
     },
-    student: { personId: mei.personId, name: "Mei", token: session.token },
+    student: { personId: caleb.personId, name: "Caleb", token: session.token },
     parentLink,
     counts: { ...counts, teachers },
   };
