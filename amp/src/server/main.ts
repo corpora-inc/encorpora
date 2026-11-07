@@ -34,6 +34,7 @@ import {
 import { registerFamilyRoutes } from "../family/routes.js";
 import { randomBytes } from "node:crypto";
 import { registerSchoolRoutes } from "../schools/routes.js";
+import { schoolOidcProviders } from "../schools/oidc.js";
 import { stripeConfig, stripeNamespace } from "../billing/stripe/config.js";
 import {
   registerStripeRoutes,
@@ -173,6 +174,18 @@ await registerSchoolRoutes(app, {
         ? { microsoft: accounts.config.microsoft.clientId }
         : {}),
     },
+    ...(accounts
+      ? {
+          oidc: schoolOidcProviders({
+            ...(accounts.config.google
+              ? { google: accounts.config.google }
+              : {}),
+            ...(accounts.config.microsoft
+              ? { microsoft: accounts.config.microsoft }
+              : {}),
+          }),
+        }
+      : {}),
   },
 });
 const fundingOffers = await loadFundingOffers(

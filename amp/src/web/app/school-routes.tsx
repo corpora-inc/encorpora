@@ -20,6 +20,14 @@ import {
   staffOptions,
 } from "../features/school/api";
 import {
+  integrationsOptions,
+  overviewOptions,
+  privacyOptions,
+  rolloverOptions,
+  schoolsOptions,
+  yearsOptions,
+} from "../features/school/org/org-api";
+import {
   markSchoolSignup,
   orgHome,
   setupSteps,
@@ -91,7 +99,14 @@ export function schoolRoutes(root: AnyRoute) {
     () => import("../features/school/SetupScreen"),
     "SetupScreen",
   );
+  const org = () => import("../features/school/org");
   const screens = {
+    overview: screen(org, "OverviewScreen"),
+    schools: screen(org, "SchoolsScreen"),
+    rollover: screen(org, "RolloverScreen"),
+    integrations: screen(org, "IntegrationsScreen"),
+    privacy: screen(org, "PrivacyScreen"),
+    activity: screen(org, "ActivityScreen"),
     classes: screen(
       () => import("../features/school/ClassesScreen"),
       "ClassesScreen",
@@ -204,19 +219,56 @@ export function schoolRoutes(root: AnyRoute) {
     createRoute({
       getParentRoute: () => root,
       path: "/school/$org",
+      // A head or district reads the overview here. A teacher, and a lone
+      // teacher's one-class school, go straight to their classes: no admin weight.
       beforeLoad: async ({ location, params }) => {
         const session = await staffSession(location);
         const orgId = (params as unknown as { org: string }).org;
         const org = await queryClient
           .fetchQuery(orgOptions(session, orgId))
           .catch(() => null);
-        throw redirect({
-          ...(org ? orgHome(org) : { to: "/school" }),
-          replace: true,
-        } as never);
+        if (!org) throw redirect({ to: "/school", replace: true } as never);
+        if (org.setupPending)
+          throw redirect({ ...orgHome(org), replace: true } as never);
+        const classes = await queryClient
+          .ensureQueryData(classesOptions(session, orgId))
+          .catch(() => []);
+        if (
+          !org.can?.includes("overview.read") ||
+          (org.solo === true && classes.length <= 1)
+        )
+          throw redirect({
+            to: `/school/${orgId}/classes`,
+            replace: true,
+          } as never);
+        return { session };
       },
+      loader: async ({ context, params }) => {
+        const { session } = context as unknown as { session: AuthSession };
+        const orgId = (params as unknown as { org: string }).org;
+        await Promise.all([
+          frameData(session, orgId),
+          preload(overviewOptions(session, orgId)),
+        ]);
+      },
+      component: screens.overview,
     }),
-    orgScreen("/classes", screens.classes),
+    orgScreen("/schools", screens.schools, (session, orgId) => [
+      preload(schoolsOptions(session, orgId)),
+    ]),
+    orgScreen("/year", screens.rollover, (session, orgId) => [
+      preload(rolloverOptions(session, orgId)),
+    ]),
+    orgScreen("/integrations", screens.integrations, (session, orgId) => [
+      preload(integrationsOptions(session, orgId)),
+    ]),
+    orgScreen("/privacy", screens.privacy, (session, orgId) => [
+      preload(privacyOptions(session, orgId)),
+    ]),
+    orgScreen("/activity", screens.activity),
+    orgScreen("/classes", screens.classes, (session, orgId) => [
+      preload(yearsOptions(session, orgId)),
+    ]),
     orgScreen("/students", screens.students),
     orgScreen("/students/$student", screens.student),
     orgScreen("/staff", screens.staff, (session, orgId) => [

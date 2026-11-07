@@ -4,6 +4,7 @@ import {
   joinCardSchema,
   joinLookupSchema,
   joinPictureSchema,
+  type SsoProvider,
 } from "./contracts.js";
 import type { SchoolRepository } from "./repository.js";
 import type { defineSchoolRoute } from "./routes.js";
@@ -15,7 +16,7 @@ import { SchoolSignIn } from "./sign-in.js";
  * caps how hard anyone can lean on these routes. The address, not the usual
  * key: these take no credential, so a made-up header must not earn a new limit. */
 export const JOIN_RATE_LIMIT = 1200;
-const limited = {
+export const limited = {
   bodyLimit: 1024,
   config: {
     rateLimit: {
@@ -31,11 +32,17 @@ const limited = {
 export function registerJoinRoutes(
   scope: FastifyInstance,
   repository: SchoolRepository,
+  oidc?: Partial<Record<SsoProvider, unknown>>,
 ) {
   const signIn = new SchoolSignIn(repository);
-  scope.post("/api/v1/school/join/lookup", limited, async (request) =>
-    signIn.lookup(joinLookupSchema.parse(request.body)),
-  );
+  scope.post("/api/v1/school/join/lookup", limited, async (request) => {
+    const roster = await signIn.lookup(joinLookupSchema.parse(request.body));
+    // Only what this school turned on and this deployment can actually do.
+    return {
+      ...roster,
+      signIn: roster.signIn?.filter((provider) => !!oidc?.[provider]) ?? [],
+    };
+  });
   scope.post("/api/v1/school/join/picture", limited, async (request) =>
     signIn.picture(joinPictureSchema.parse(request.body)),
   );

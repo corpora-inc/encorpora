@@ -1,4 +1,4 @@
-import { useNavigate } from "@tanstack/react-router";
+import { useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
   JOIN_CODE_LENGTH,
@@ -36,7 +36,13 @@ export function JoinScreen() {
   const input = useRef<HTMLInputElement>(null);
   const [code, setCode] = useState("");
   const [focused, setFocused] = useState(false);
-  const [message, setMessage] = useState("");
+  const { sso } = useSearch({ strict: false }) as { sso?: unknown };
+  // Back from a school account's sign-in, with no class to return to.
+  const [message, setMessage] = useState(
+    sso
+      ? "That sign-in didn’t finish. Type your class code, or scan your card."
+      : "",
+  );
   const [busy, setBusy] = useState(false);
   const [scanning, setScanning] = useState(false);
   const [shake, setShake] = useState(0);

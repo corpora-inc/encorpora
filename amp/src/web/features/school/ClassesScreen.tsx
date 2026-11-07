@@ -1,4 +1,8 @@
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import {
+  keepPreviousData,
+  useInfiniteQuery,
+  useQuery,
+} from "@tanstack/react-query";
 import {
   Link,
   useNavigate,
@@ -43,6 +47,7 @@ import {
   gradeLabel,
 } from "./parts";
 import { classTabs } from "./classes/ClassFrame";
+import { yearsOptions } from "./org/org-api";
 import { classPath, orgPath } from "./paths";
 import styles from "./School.module.css";
 
@@ -180,7 +185,10 @@ function AddClassSheet({
   );
 }
 
-const classColumns = (orgId: string): DataGridColumn<ClassResource>[] => [
+const classColumns = (
+  orgId: string,
+  earlier: boolean,
+): DataGridColumn<ClassResource>[] => [
   {
     id: "name",
     header: "Class",
@@ -189,7 +197,7 @@ const classColumns = (orgId: string): DataGridColumn<ClassResource>[] => [
     cell: (row) => (
       <Link
         to="/$"
-        params={{ _splat: classPath(orgId, row.id) }}
+        params={{ _splat: classHome(orgId, row.id, earlier) }}
         className={styles.rowLink}
       >
         {row.name}
@@ -219,15 +227,33 @@ const classColumns = (orgId: string): DataGridColumn<ClassResource>[] => [
   },
 ];
 
+/** A class from another year opens on its gradebook: there's no today in it. */
+const classHome = (orgId: string, classId: string, earlier: boolean) =>
+  earlier
+    ? `${classPath(orgId, classId)}/gradebook`
+    : classPath(orgId, classId);
+
 export function ClassesScreen() {
   const { org: orgId } = useParams({ strict: false }) as { org: string };
-  const search = useSearch({ strict: false }) as { add?: unknown };
+  const search = useSearch({ strict: false }) as {
+    add?: unknown;
+    year?: unknown;
+  };
   const navigate = useNavigate();
   const session = currentSession();
   const org = useQuery(orgOptions(session, orgId)).data;
-  const classes = useQuery(classesOptions(session, orgId));
+  const years = useQuery(yearsOptions(session, orgId)).data ?? [];
+  const inUse = years.find((entry) => entry.inUse);
+  const asked = years.find((entry) => entry.id === search.year);
+  // The year in use is the plain address; anything else is a year someone chose.
+  const year = asked && asked.id !== inUse?.id ? asked : undefined;
+  const classes = useQuery({
+    ...classesOptions(session, orgId, year?.id),
+    placeholderData: keepPreviousData,
+  });
   const rows = classes.data ?? [];
-  const canAdd = org?.can?.includes("classes.create");
+  const earlier = !!year && !!inUse && year.endsOn < inUse.startsOn;
+  const canAdd = org?.can?.includes("classes.create") && !year;
   const adding = search.add === 1 || search.add === "1";
   const setAdding = (open: boolean) =>
     void navigate({
@@ -243,7 +269,7 @@ export function ClassesScreen() {
         title="Classes"
         detail={
           rows.length
-            ? `${rows.length} ${rows.length === 1 ? "class" : "classes"}`
+            ? `${rows.length} ${rows.length === 1 ? "class" : "classes"}${year ? `, ${year.name}` : ""}`
             : undefined
         }
         action={
@@ -254,6 +280,30 @@ export function ClassesScreen() {
           ) : undefined
         }
       />
+      {years.length > 1 && (
+        <div className={styles.toolbar}>
+          <Segmented
+            label="School year"
+            compact
+            dense
+            value={(year ?? inUse)?.id ?? null}
+            onChange={(value) =>
+              void navigate({
+                to: ".",
+                search: ((previous: Record<string, unknown>) => ({
+                  ...previous,
+                  year: value === inUse?.id ? undefined : value,
+                })) as never,
+                resetScroll: false,
+              })
+            }
+            options={years
+              .slice(0, 4)
+              .reverse()
+              .map((entry) => ({ value: entry.id, label: entry.name }))}
+          />
+        </div>
+      )}
       {classes.isError ? (
         <EmptyState
           title="Your classes didn’t load"
@@ -266,14 +316,14 @@ export function ClassesScreen() {
       ) : rows.length ? (
         <DataGrid
           label="Classes"
-          columns={classColumns(orgId)}
+          columns={classColumns(orgId, earlier)}
           rows={rows}
           rowKey={(row) => row.id}
           defaultSort={{ column: "name", direction: "ascending" }}
           onRowActivate={(row) =>
             void navigate({
               to: "/$",
-              params: { _splat: classPath(orgId, row.id) },
+              params: { _splat: classHome(orgId, row.id, earlier) },
             })
           }
         />

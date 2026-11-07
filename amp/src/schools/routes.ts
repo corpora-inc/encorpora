@@ -12,9 +12,13 @@ import {
   type SchoolTarget,
 } from "./authz.js";
 import { pageSchema, SchoolError, type SchoolAction } from "./contracts.js";
+import { classesQuerySchema, studentsQuerySchema } from "./org-contracts.js";
 import { SchoolRepository } from "./repository.js";
 import { defineSignInRoutes, registerJoinRoutes } from "./sign-in-routes.js";
 import { defineTeacherRoutes } from "./teacher-routes.js";
+import { defineOrgRoutes } from "./org-routes.js";
+import { registerOidcRoutes, type OidcProviders } from "./oidc.js";
+import { syncSsoCredentials } from "./sso-credentials.js";
 import {
   canList,
   defineSetupRoutes,
@@ -65,6 +69,8 @@ export type SchoolServices = {
   ) => Promise<void>;
   /** Public OAuth client IDs, for the IT handoff page. */
   signIn?: { google?: string; microsoft?: string };
+  /** Student sign-in through an outside provider. Absent: cards and codes only. */
+  oidc?: OidcProviders;
 };
 export type SchoolRoute = {
   method: "GET" | "POST";
@@ -213,7 +219,8 @@ export async function registerSchoolRoutes(
       );
       return reply.code(503).send({ error: "school_service_unavailable" });
     });
-    registerJoinRoutes(scope, repository);
+    registerJoinRoutes(scope, repository, services.oidc);
+    registerOidcRoutes(scope, repository, services);
     registerInvitePreview(scope, repository);
     // Students only: a staff or parent credential is never a student's.
     scope.post(
@@ -262,6 +269,28 @@ export async function registerSchoolRoutes(
 
 const orgParam = ({ params }: TargetInput) =>
   ({ kind: "org", orgId: params.org! }) as const;
+/** The orgs above this one that this person can open, for a breadcrumb. */
+async function openableAncestors(
+  repository: SchoolRepository,
+  actor: Actor,
+  target: Extract<SchoolTarget, { kind: "org" }>,
+) {
+  const above = target.path.filter(
+    (id, index) =>
+      id !== target.orgId &&
+      can(actor, "org.read", {
+        kind: "org",
+        orgId: id,
+        path: target.path.slice(0, index + 1),
+      }),
+  );
+  if (!above.length) return [];
+  const { rows } = await repository.pool.query(
+    "SELECT id,name FROM amp_orgs WHERE id=ANY($1::uuid[])",
+    [above],
+  );
+  return above.flatMap((id) => rows.filter((row) => row.id === id));
+}
 const nextOffset = (
   rows: unknown[],
   page: { limit: number; offset: number },
@@ -290,6 +319,7 @@ defineSchoolRoute({
         teaches: actor.classes
           .filter((c) => c.role === "teacher" && c.path.includes(target.orgId))
           .map((c) => c.classId),
+        ancestors: await openableAncestors(repository, actor, target),
       },
     };
   },
@@ -301,10 +331,12 @@ defineSchoolRoute({
   target: orgParam,
   handler: async ({ request, actor, target, repository }) => {
     const page = pageSchema.parse(request.query);
+    const { year } = classesQuerySchema.parse(request.query);
     const classes = await repository.classes(
       target.orgId,
       rosterScope(actor, target),
       page,
+      year ?? null,
     );
     return { classes, nextOffset: nextOffset(classes, page) };
   },
@@ -335,10 +367,12 @@ defineSchoolRoute({
   target: orgParam,
   handler: async ({ request, actor, target, repository }) => {
     const page = pageSchema.parse(request.query);
+    const { status } = studentsQuerySchema.parse(request.query);
     const rows = await repository.students(
       target.orgId,
       rosterScope(actor, target),
       page,
+      status ?? null,
     );
     const total = rows[0]?.total ?? 0;
     const students = rows.map(({ total: _total, ...student }) => student);
@@ -357,14 +391,19 @@ defineSchoolRoute({
       : ({ kind: "org", orgId: params.org! } as const);
   },
   bodyLimit: 4096,
-  handler: async ({ request, reply, actor, target, repository }) =>
-    reply.code(201).send({
-      student: await repository.provisionStudent(
-        target.orgId,
-        request.body,
-        actorPerson(actor, target),
-      ),
-    }),
+  handler: async ({ request, reply, actor, target, repository }) => {
+    const student = await repository.provisionStudent(
+      target.orgId,
+      request.body,
+      actorPerson(actor, target),
+    );
+    // An address on a new student reaches any outside sign-in that's on.
+    if ((request.body as { email?: unknown }).email)
+      await repository.transaction((client) =>
+        syncSsoCredentials(client, target.path[0]!),
+      );
+    return reply.code(201).send({ student });
+  },
 });
 
 const classParam = ({ params }: TargetInput) =>
@@ -412,3 +451,4 @@ defineSignInRoutes(defineSchoolRoute);
 
 defineSetupRoutes(defineSchoolRoute);
 defineTeacherRoutes(defineSchoolRoute);
+defineOrgRoutes(defineSchoolRoute);

@@ -436,3 +436,42 @@
     transition: none;
   }
 }
+
+/* A school account, when the school has turned one on. */
+.accounts {
+  display: grid;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+@media (min-width: 720px) {
+  .accounts {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 320px));
+  }
+}
+.accountButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  min-height: 56px;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-provider-border);
+  border-radius: var(--radius-control);
+  background: var(--color-provider);
+  color: var(--color-on-provider);
+  font-weight: 600;
+  text-decoration: none;
+}
+.accountButton svg {
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+.accountButton:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.problemLink {
+  color: inherit;
+  font-weight: 600;
+}

@@ -1,5 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { useNavigate, useParams, useSearch } from "@tanstack/react-router";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearch,
+} from "@tanstack/react-router";
 import { useState } from "react";
 import {
   divisionKinds,
@@ -10,7 +15,7 @@ import {
 import type { SessionResource } from "../../../schools/setup-contracts";
 import { AppError } from "../../lib/AppError";
 import { useLoggedError } from "../../feedback";
-import { Button } from "../../ui/Button";
+import { Button, buttonClass } from "../../ui/Button";
 import { DatePicker } from "../../ui/DatePicker";
 import { EmptyState } from "../../ui/EmptyState";
 import { Segmented } from "../../ui/Segmented";
@@ -24,6 +29,7 @@ import {
 } from "./api";
 import { OrgFrame } from "./OrgFrame";
 import { FormNote, PageHead } from "./parts";
+import { orgPath } from "./paths";
 import { YearRibbon } from "./YearRibbon";
 import styles from "./School.module.css";
 
@@ -152,12 +158,23 @@ export function CalendarScreen() {
         }
         action={
           canEdit && year ? (
-            <Button
-              variant="secondary"
-              onClick={() => setSearch({ edit: year.id })}
-            >
-              Change year dates
-            </Button>
+            <>
+              {org?.can?.includes("year.rollover") && (
+                <Link
+                  to="/$"
+                  params={{ _splat: orgPath(orgId, "year") }}
+                  className={buttonClass("secondary")}
+                >
+                  Start next year
+                </Link>
+              )}
+              <Button
+                variant="secondary"
+                onClick={() => setSearch({ edit: year.id })}
+              >
+                Change year dates
+              </Button>
+            </>
           ) : undefined
         }
       />

@@ -14,7 +14,7 @@ export const isProvider = (value: unknown): value is Provider =>
 /** Official marks, unmodified: Google's four-color G, the Apple logo,
  * Microsoft's four squares and GitHub's Invertocat. The multicolor marks use
  * brand tokens; Apple's and GitHub's take the button's label color. */
-function Mark({ provider }: { provider: Provider }) {
+export function ProviderMark({ provider }: { provider: Provider }) {
   if (provider === "google")
     return (
       <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
@@ -129,7 +129,7 @@ export function ProviderButtons({
           onClick={() => onSelect(provider)}
         >
           <span className={styles.mark}>
-            <Mark provider={provider} />
+            <ProviderMark provider={provider} />
           </span>
           <span className={styles.label}>
             {providers.length > 2 && !(emphasizeFirst && index === 0)

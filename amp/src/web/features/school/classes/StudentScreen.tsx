@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "@tanstack/react-router";
+import { Link, useNavigate, useParams } from "@tanstack/react-router";
+import { useState } from "react";
 import { levelRange } from "../../../../learning/level-check";
 import type { StudentRecordResponse } from "../../../../schools/teacher-contracts";
-import { currentSession } from "../api";
+import { currentSession, orgOptions } from "../api";
 import { OrgFrame } from "../OrgFrame";
+import { TransferSheet, useCanMove } from "../org/TransferSheet";
 import { Avatar } from "../../../ui/Avatar";
 import { Badge } from "../../../ui/Badge";
 import { Button, buttonClass } from "../../../ui/Button";
@@ -120,6 +122,13 @@ export function StudentScreen() {
     student: string;
   };
   const session = currentSession();
+  const navigate = useNavigate();
+  const org = useQuery(orgOptions(session, params.org)).data;
+  const canMove = useCanMove(
+    params.student,
+    org?.can?.includes("students.transfer") === true,
+  );
+  const [moving, setMoving] = useState(false);
   const record = useQuery(studentRecordOptions(session, params.student));
   const data = record.data;
   const missing =
@@ -180,6 +189,11 @@ export function StudentScreen() {
               </p>
             </div>
             <div className={styles.recordAction}>
+              {canMove && (
+                <Button variant="secondary" onClick={() => setMoving(true)}>
+                  Move to another school
+                </Button>
+              )}
               <Button variant="secondary" onClick={() => window.print()}>
                 Print progress report
               </Button>
@@ -311,6 +325,23 @@ export function StudentScreen() {
             </section>
           </div>
         </div>
+      )}
+      {canMove && data && (
+        <TransferSheet
+          studentId={params.student}
+          name={data.student.name}
+          open={moving}
+          onOpenChange={setMoving}
+          onMoved={(school) => {
+            setMoving(false);
+            void navigate({
+              to: "/$",
+              params: {
+                _splat: `school/${school.id}/students/${params.student}`,
+              },
+            });
+          }}
+        />
       )}
     </OrgFrame>
   );

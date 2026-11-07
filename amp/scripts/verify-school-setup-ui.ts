@@ -684,9 +684,10 @@ async function teacherWhoIsAParent(browser: Browser, width: number) {
     geometry.smallTargets.length === 0,
     geometry.smallTargets,
   );
+  // An admin of a whole school opens on its overview.
   await page.getByRole("link", { name: /Birch Road School/ }).click();
-  await page.waitForURL(/\/school\/[0-9a-f-]{36}\/classes/);
-  await heading(page, "Classes");
+  await page.waitForURL(/\/school\/[0-9a-f-]{36}$/);
+  await page.getByText(/students practiced this week|Add your students/).waitFor();
   await context.close();
 }
 
