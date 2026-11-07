@@ -252,7 +252,15 @@ try {
             });
           await page
             .getByRole("heading", { name: "Your progress", exact: true })
-            .waitFor();
+            .waitFor()
+            .catch(async (error) => {
+              // Say what the map showed instead: a skeleton, an error, or a
+              // redirect back to practice each have a different cause.
+              throw new Error(
+                `${name}/${mode}: no "Your progress" heading at ${page.url()}; page errors=${JSON.stringify(errors)}; navigations=${JSON.stringify(navigations.slice(-6))}; screen=${(await page.locator("body").innerText()).slice(0, 600)}`,
+                { cause: error },
+              );
+            });
           await page.locator(".frontier-map").waitFor();
           console.log(`${name}/${mode}: returning from progress`);
           await page

@@ -742,6 +742,12 @@
 .pathways-status > p {
   color: var(--atlas-muted);
 }
+/* The wait in the status line is no taller than the text that replaces it, so
+   the toolbar and the map below never move up when the learners arrive. */
+.pathways-status .amp-loading-inline .amp-wave {
+  width: 2.2em;
+  height: 1.2em;
+}
 @media (max-width: 650px) {
   .pathways-header {
     min-height: 60px;
