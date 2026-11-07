@@ -190,7 +190,7 @@ async function ownYear(client: PoolClient, orgId: string) {
     )
   ).rows[0] as { id: string; starts_on: string; ends_on: string } | undefined;
 }
-async function insertDivision(
+export async function insertDivision(
   client: PoolClient,
   orgId: string,
   year: { id: string; starts_on: string; ends_on: string },

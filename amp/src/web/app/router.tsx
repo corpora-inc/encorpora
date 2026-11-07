@@ -46,6 +46,8 @@ import {
   studentSignInEnded,
 } from "../lib/student-device";
 import { workbookSearchSchema } from "../features/workbooks/model";
+import { preload } from "../features/school/api";
+import { classYearOptions } from "../features/school/org/org-api";
 import { frameData, schoolRoutes, staffScreen } from "./school-routes";
 import { loadCurriculum, loadScope } from "../features/schools/api";
 import {
@@ -589,6 +591,13 @@ const join = createRoute({
   path: "/join",
   component: lazyRouteComponent(joinScreens, "JoinScreen"),
 });
+/** Back from a school account's sign-in. The session is in the fragment, which
+ * `card-entry` has already taken out of the address bar. */
+const joinContinue = createRoute({
+  getParentRoute: () => root,
+  path: "/join/continue",
+  component: lazyRouteComponent(joinScreens, "ContinueScreen"),
+});
 const joinClass = createRoute({
   getParentRoute: () => root,
   path: "/join/$code",
@@ -614,7 +623,15 @@ const schoolClass = createRoute({
   path: "/school/$org/classes/$class",
   beforeLoad: staffScreen,
   loader: ({ context, params }) =>
-    frameData((context as { session: AuthSession }).session, params.org),
+    Promise.all([
+      frameData((context as { session: AuthSession }).session, params.org),
+      preload(
+        classYearOptions(
+          (context as { session: AuthSession }).session,
+          params.class,
+        ),
+      ),
+    ]),
 });
 const schoolClassHome = createRoute({
   getParentRoute: () => schoolClass,
@@ -754,6 +771,7 @@ export const router = createRouter({
   routeTree: root.addChildren([
     home,
     join,
+    joinContinue,
     joinClass,
     joinPictures,
     signInCard,

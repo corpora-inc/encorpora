@@ -83,7 +83,7 @@ const detectedTimezone = () => {
     return "America/New_York";
   }
 };
-const COMMON_ZONES = [
+export const COMMON_ZONES = [
   ["America/New_York", "Eastern"],
   ["America/Chicago", "Central"],
   ["America/Denver", "Mountain"],

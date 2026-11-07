@@ -30,20 +30,24 @@ export function DatePicker({
   min,
   max,
   error,
+  placeholder = "Choose a date",
 }: {
   label: string;
+  /** Empty: nothing chosen yet, and the month opens on today. */
   value: string;
   onChange: (value: string) => void;
   min?: string;
   max?: string;
   error?: string;
+  placeholder?: string;
 }) {
   const id = useId();
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState(value);
+  const startingDay = () => value || toIso(Date.now());
+  const [active, setActive] = useState(startingDay);
   const grid = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (open) setActive(value);
+    if (open) setActive(startingDay());
   }, [open, value]);
   // Focus follows the active day, also when the month changes under it.
   useEffect(() => {
@@ -110,7 +114,7 @@ export function DatePicker({
             aria-labelledby={`${id}-label ${id}-value`}
             aria-invalid={!!error}
           >
-            <span id={`${id}-value`}>{shown(value)}</span>
+            <span id={`${id}-value`}>{value ? shown(value) : placeholder}</span>
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 5.5h12v11H4v-11Zm0 3.5h12M7.5 3v3.5M12.5 3v3.5" />
             </svg>

@@ -80,12 +80,13 @@ const STUDENTS_OF_CLASS = `amp_classes c JOIN amp_orgs o ON o.id=c.org_id
 const WORKING_CARD = `k.kind='card' AND k.revoked_at IS NULL AND (k.expires_at IS NULL OR k.expires_at>now())`;
 const ROSTER_LIMIT = 1000;
 
-type LiveClass = {
+export type LiveClass = {
   id: string;
   name: string;
   org_id: string;
   path: string[];
   locked_for: number;
+  sign_in_providers: string[];
 };
 const isId = (value: string) => z.uuid().safeParse(value).success;
 
@@ -98,10 +99,10 @@ export class SchoolSignIn {
   }
 
   /** A class a student can still join: not archived, term not over. */
-  private async liveClass(code: string): Promise<LiveClass> {
+  async liveClass(code: string): Promise<LiveClass> {
     const found = (
       await this.pool.query(
-        `SELECT c.id,c.name,c.org_id,o.path,
+        `SELECT c.id,c.name,c.org_id,o.path,o.sign_in_providers,
            GREATEST(0,CEIL(EXTRACT(EPOCH FROM c.join_locked_until-now())))::int AS locked_for
          FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
          JOIN amp_academic_sessions s ON s.id=c.session_id
@@ -126,7 +127,11 @@ export class SchoolSignIn {
        WHERE c.id=$1 AND ${IN_CLASS} ORDER BY lower(${STUDENT_NAME}),p.id LIMIT ${ROSTER_LIMIT}`,
       [found.id],
     );
-    return { class: { name: found.name }, students: rows };
+    return {
+      class: { name: found.name },
+      signIn: found.sign_in_providers as JoinRoster["signIn"],
+      students: rows,
+    };
   }
 
   async picture(input: {
@@ -298,7 +303,14 @@ export class SchoolSignIn {
       )
     ).rows[0] as { person_id: string } | undefined;
     if (!card) throw invalid();
-    const personId = card.person_id;
+    const grant = await this.signInPerson(card.person_id);
+    if (!grant) throw invalid();
+    return grant;
+  }
+
+  /** A session for a student a credential has already vouched for, in the mode
+   * their classes resolve to. Null when they aren't a student here today. */
+  async signInPerson(personId: string): Promise<StudentGrant | null> {
     const home = (
       await this.pool.query(
         `SELECT o.path FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
@@ -307,13 +319,12 @@ export class SchoolSignIn {
         [personId],
       )
     ).rows[0] as { path: string[] } | undefined;
-    if (!home) throw invalid();
+    if (!home) return null;
     const mode = await this.deviceMode(personId, home);
     try {
       return await this.session(personId, mode);
     } catch (error) {
-      if (error instanceof SchoolError && error.statusCode === 404)
-        throw invalid();
+      if (error instanceof SchoolError && error.statusCode === 404) return null;
       throw error;
     }
   }

@@ -505,6 +505,11 @@ export function SignInHelpScreen() {
                   For students under 18, keep it Trusted: Google blocks them
                   from any app that isn’t.
                 </li>
+                <li>
+                  Tell your AMP admin it’s done. They turn Google on under
+                  Integrations, and the button appears on each class’s join
+                  page.
+                </li>
               </ol>
               <div className={styles.helpValue}>
                 <span className={styles.fieldLabel}>Client ID</span>
@@ -527,8 +532,18 @@ export function SignInHelpScreen() {
                 <li>Sign in as a Microsoft Entra administrator.</li>
                 <li>Open the admin-consent link below and approve AMP.</li>
                 <li>
+                  In Microsoft Entra, under Enterprise applications, check that
+                  AMP’s “Assignment required” setting allows your students, or
+                  assign their group to it.
+                </li>
+                <li>
                   AMP asks only for each person’s name and email. It doesn’t
                   read mail, files or anything else.
+                </li>
+                <li>
+                  Tell your AMP admin it’s done. They turn Microsoft on under
+                  Integrations, and the button appears on each class’s join
+                  page.
                 </li>
               </ol>
               <div className={styles.helpValue}>
@@ -549,7 +564,8 @@ export function SignInHelpScreen() {
               </a>
               <p className={styles.quiet}>
                 If Microsoft doesn’t confirm a person’s email address, AMP asks
-                them to use email sign-in instead.
+                staff to use email sign-in and students to use their card or
+                class code.
               </p>
             </>
           ) : (
