@@ -55,6 +55,12 @@ test(
         const trial = await repository.createTrial(
           new Date().getUTCFullYear() - 10,
         );
+        // The trial's expiry comes from the fixed clock, but the database
+        // compares it with its own now(): keep it open on the real clock too.
+        await admin.query(
+          `UPDATE ${schema}.amp_trials SET expires_at=now()+interval '1 day' WHERE learner_id=$1`,
+          [trial.learnerId],
+        );
         const account = await repository.trialAccount(trial.token);
         assert.ok(account);
         const headers = { authorization: `Trial ${trial.token}` };
