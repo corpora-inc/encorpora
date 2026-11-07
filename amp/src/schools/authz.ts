@@ -93,11 +93,13 @@ const VIEWER = new Set<SchoolAction>([
   "staff.read",
   "license.read",
   "signin.read",
+  "grades.read",
 ]);
 const AIDE_CLASS = new Set<SchoolAction>([
   "classes.read",
   "students.read",
   "signin.read",
+  "grades.read",
 ]);
 const TEACHER_CLASS = new Set<SchoolAction>([
   ...AIDE_CLASS,
@@ -105,6 +107,7 @@ const TEACHER_CLASS = new Set<SchoolAction>([
   "classes.update",
   "students.update",
   "signin.manage",
+  "grades.write",
 ]);
 const SELF = new Set<SchoolAction>([
   "orgs.list",

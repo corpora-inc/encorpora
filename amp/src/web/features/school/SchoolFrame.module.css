@@ -331,3 +331,24 @@
   color: var(--color-on-surface);
   font-weight: 600;
 }
+
+/* A screen that prints (a progress report) prints without the frame. */
+@media print {
+  .frame {
+    display: block;
+    min-height: 0;
+    background: var(--color-print-paper);
+    color: var(--color-print-ink);
+    print-color-adjust: exact;
+  }
+  .bar,
+  .rail,
+  .head,
+  .skip {
+    display: none;
+  }
+  .content {
+    max-width: none;
+    padding: 0;
+  }
+}

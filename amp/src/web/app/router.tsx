@@ -46,7 +46,7 @@ import {
   studentSignInEnded,
 } from "../lib/student-device";
 import { workbookSearchSchema } from "../features/workbooks/model";
-import { schoolRoutes } from "./school-routes";
+import { frameData, schoolRoutes, staffScreen } from "./school-routes";
 const searchSchema = z
   .object({
     return: z
@@ -602,27 +602,57 @@ const signInCard = createRoute({
 });
 /** A class's staff screens. Each is its own child, and the API decides who
  * reaches which class. */
-async function staffOnly() {
-  notForStudents();
-  const session = await queryClient.ensureQueryData(sessionOptions);
-  if (!session) throw redirect({ to: "/sign-in" });
-}
 const classScreens = () => import("../features/school/classes");
 const schoolClass = createRoute({
   getParentRoute: () => root,
   path: "/school/$org/classes/$class",
-  beforeLoad: staffOnly,
+  beforeLoad: staffScreen,
+  loader: ({ context, params }) =>
+    frameData((context as { session: AuthSession }).session, params.org),
 });
 const schoolClassHome = createRoute({
   getParentRoute: () => schoolClass,
   path: "/",
   beforeLoad: ({ params }) => {
     throw redirect({
-      to: "/school/$org/classes/$class/roster",
+      to: "/school/$org/classes/$class/today",
       params,
       replace: true,
     });
   },
+});
+const schoolClassToday = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "today",
+  component: lazyRouteComponent(classScreens, "TodayScreen"),
+});
+const schoolClassMap = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "map",
+  component: lazyRouteComponent(classScreens, "MapScreen"),
+});
+const schoolClassGradebook = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "gradebook",
+  component: lazyRouteComponent(classScreens, "GradebookScreen"),
+});
+const schoolClassTime = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "time",
+  component: lazyRouteComponent(classScreens, "TimeScreen"),
+});
+const schoolClassReportCards = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "report-cards",
+  component: lazyRouteComponent(classScreens, "ReportCardScreen"),
+});
+const schoolClassSettings = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "settings",
+  component: lazyRouteComponent(
+    () => import("../features/school/ClassesScreen"),
+    "ClassScreen",
+  ),
 });
 const schoolClassRoster = createRoute({
   getParentRoute: () => schoolClass,
@@ -647,52 +677,6 @@ const fallback = createRoute({
   path: "/$",
   component: legacy,
 });
-/** The AMP for Schools design preview, on mocked data. Development only: the
- * condition compiles away, so none of it reaches a production bundle. */
-const schoolPreview = import.meta.env.DEV
-  ? [
-      createRoute({
-        getParentRoute: () => root,
-        path: "/school/preview/today",
-        component: lazyRouteComponent(
-          () => import("../features/school/preview/TodayScreen"),
-          "TodayScreen",
-        ),
-      }),
-      createRoute({
-        getParentRoute: () => root,
-        path: "/school/preview/map",
-        component: lazyRouteComponent(
-          () => import("../features/school/preview/TodayScreen"),
-          "MapScreen",
-        ),
-      }),
-      createRoute({
-        getParentRoute: () => root,
-        path: "/school/preview/gradebook",
-        component: lazyRouteComponent(
-          () => import("../features/school/preview/GradebookScreen"),
-          "GradebookScreen",
-        ),
-      }),
-      createRoute({
-        getParentRoute: () => root,
-        path: "/school/preview/students",
-        component: lazyRouteComponent(
-          () => import("../features/school/preview/StudentsScreen"),
-          "StudentsScreen",
-        ),
-      }),
-      createRoute({
-        getParentRoute: () => root,
-        path: "/school/preview/$screen",
-        component: lazyRouteComponent(
-          () => import("../features/school/preview/PlaceholderScreen"),
-          "PlaceholderScreen",
-        ),
-      }),
-    ]
-  : [];
 export const router = createRouter({
   routeTree: root.addChildren([
     home,
@@ -702,6 +686,12 @@ export const router = createRouter({
     signInCard,
     schoolClass.addChildren([
       schoolClassHome,
+      schoolClassToday,
+      schoolClassMap,
+      schoolClassGradebook,
+      schoolClassTime,
+      schoolClassReportCards,
+      schoolClassSettings,
       schoolClassRoster,
       schoolClassStart,
       schoolClassCards,
@@ -735,10 +725,9 @@ export const router = createRouter({
     invoiceArkansas,
     invoiceArizona,
     invoiceNewHampshire,
-    ...schoolPreview,
     // Linked to through the splat route, as every staff screen is, so their
     // URLs stay out of the typed route table.
-    ...(schoolRoutes(root) as unknown as typeof schoolPreview),
+    ...(schoolRoutes(root) as unknown as []),
     fallback,
   ]),
   history: nativeRuntime
