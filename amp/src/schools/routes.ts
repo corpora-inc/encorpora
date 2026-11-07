@@ -22,6 +22,7 @@ import { syncSsoCredentials } from "./sso-credentials.js";
 import {
   defineShareRoutes,
   registerCurriculumRoutes,
+  registerInquiryRoute,
   registerShareExchange,
 } from "./share-routes.js";
 import {
@@ -239,6 +240,7 @@ export async function registerSchoolRoutes(
     registerStudentStandings(scope, options.pool);
     registerShareExchange(scope, options.pool);
     registerCurriculumRoutes(scope, services);
+    registerInquiryRoute(scope, services);
     // Students only: a staff or parent credential is never a student's.
     scope.post(
       "/api/v1/school/student/activity",

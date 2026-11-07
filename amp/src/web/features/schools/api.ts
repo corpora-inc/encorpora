@@ -4,8 +4,10 @@ import {
   scopeResource,
   type CurriculumSummary,
   type ParentView,
+  type SchoolInquiry,
   type ScopeAndSequence,
 } from "../../../schools/share-contracts";
+import { z } from "zod";
 import { AppError } from "../../lib/AppError";
 import { request } from "../../lib/api";
 
@@ -63,4 +65,28 @@ export async function readParentView(token: string): Promise<ParentView> {
     throw failure();
   }
   return parentViewResource.parse(await response.json());
+}
+
+const inquiryMessages: Record<string, string> = {
+  too_many_requests:
+    "We’ve had several messages from this network just now. Write to us at the address below instead.",
+  mail_unavailable:
+    "That didn’t send. Write to us at the address below, and we’ll answer the same way.",
+  invalid_school_request: "Check the details and try again.",
+};
+/** "Talk to us": to the company mailbox, and nowhere else. */
+export async function sendInquiry(inquiry: SchoolInquiry) {
+  try {
+    await request("/schools/inquiry", z.unknown(), { body: inquiry });
+  } catch (error) {
+    const code = error instanceof AppError ? (error.code ?? "") : "";
+    throw new AppError(
+      error instanceof AppError ? error.kind : "network",
+      inquiryMessages[code] ??
+        (error instanceof AppError
+          ? error.message
+          : "That didn’t send. Check your connection and try again."),
+      true,
+    );
+  }
 }
