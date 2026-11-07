@@ -109,13 +109,17 @@ const authenticate = withAdvertisingPrivacySignals(
   repository.pool,
   authenticateIdentity,
 );
+const workbookRenderer = await workbookRendererFromEnv(
+  process.env,
+  development,
+);
 const app = buildApp({
   repository,
   authenticate,
   development,
   logger: true,
   trustedProxies: trustedProxies(process.env.AMP_TRUSTED_PROXIES),
-  workbookRenderer: await workbookRendererFromEnv(process.env, development),
+  workbookRenderer,
   publicUrl: accounts?.config.baseURL,
 });
 if (!development && !process.env.AMP_RENDER_URL)
@@ -164,6 +168,8 @@ await registerSchoolRoutes(app, {
     // an invitation again.
     secret: accounts?.config.secret ?? randomBytes(32).toString("hex"),
     origin: accounts?.config.baseURL ?? "",
+    learning: repository,
+    renderer: workbookRenderer,
     ...(accounts ? { mail: accounts.send } : {}),
     signIn: {
       ...(accounts?.config.google

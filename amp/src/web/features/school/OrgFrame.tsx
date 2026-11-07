@@ -27,6 +27,7 @@ export type NavId =
   | "import"
   | "license"
   | "sign-in-help"
+  | "experience"
   | `class:${string}`;
 
 function AccountMenu() {
@@ -156,6 +157,11 @@ export function OrgFrame({
     { id: "students", label: "Students", path: orgPath(orgId, "students") },
     ...admin("staff", "Staff", "staff", "staff.read"),
     { id: "calendar", label: "Calendar", path: orgPath(orgId, "calendar") },
+    {
+      id: "experience",
+      label: "Student experience",
+      path: orgPath(orgId, "experience"),
+    },
     ...admin("import", "Import", "import", "roster.import"),
     ...admin("license", "License", "license", "license.read"),
   ];

@@ -655,6 +655,9 @@ export interface WorkbookHtmlOptions {
   paper?: PaperSize;
   /** Where results are entered; prints a QR code on the results page. */
   results?: { baseUrl: string; learnerId: string; workbookId: string };
+  /** Where results are entered when that isn't the parent's screen: a
+   * teacher's marking route. Wins over `results`. */
+  resultsUrl?: string;
 }
 
 /** The printable workbook: student pages, then a detachable answer key and
@@ -905,9 +908,11 @@ export function workbookHtml(
     });
   }
 
-  const resultsUrl = options.results
-    ? workbookResultsUrl(options.results)
-    : undefined;
+  const resultsUrl = options.resultsUrl
+    ? options.resultsUrl
+    : options.results
+      ? workbookResultsUrl(options.results)
+      : undefined;
 
   const footBase = `${brand.name} · ${title} · ${dateLabel(spec.date, "short")} · No. ${spec.number} · ${code}`;
   const body = (

@@ -10,6 +10,8 @@ import { Dialog } from "../../../ui/Dialog";
 import { EmptyState } from "../../../ui/EmptyState";
 import { Menu, MenuItem } from "../../../ui/Menu";
 import { Toast } from "../../../ui/Toast";
+import { say, useLeaveOff } from "../classroom/api";
+import { useClassExperience } from "../classroom/ExperienceSettings";
 import { CodeTiles } from "../join/CodeTiles";
 import {
   rosterOptions,
@@ -65,11 +67,22 @@ export function RosterScreen() {
   const rotate = useRotateCode(session, place);
   const reset = useResetPictures(session, place);
   const revoke = useRevokeSessions(session, place);
+  const experience = useClassExperience(session, params.class);
+  const leaveOff = useLeaveOff(session, params.class);
   const [pending, setPending] = useState<Pending | null>(null);
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
   const data = roster.data;
   const canManage = data?.canManage ?? false;
+  const leftOff = useMemo(
+    () =>
+      new Set(
+        experience.data?.students
+          ?.filter((student) => student.leftOff)
+          .map((student) => student.id),
+      ),
+    [experience.data],
+  );
   const busy = rotate.isPending || reset.isPending || revoke.isPending;
 
   const columns = useMemo<DataGridColumn<Row>[]>(
@@ -152,13 +165,38 @@ export function RosterScreen() {
                       Sign out everywhere
                     </MenuItem>
                   )}
+                  {experience.data?.canEdit && (
+                    <MenuItem
+                      onSelect={() =>
+                        leaveOff.mutate(
+                          { id: row.id, leftOff: !leftOff.has(row.id) },
+                          {
+                            onSuccess: () =>
+                              setStatus(
+                                leftOff.has(row.id)
+                                  ? `${row.name} is back on standings.`
+                                  : `${row.name} is off standings.`,
+                              ),
+                            onError: (failure) =>
+                              setError(
+                                say(failure, "That change didn’t save."),
+                              ),
+                          },
+                        )
+                      }
+                    >
+                      {leftOff.has(row.id)
+                        ? "Put back on standings"
+                        : "Leave off standings"}
+                    </MenuItem>
+                  )}
                 </Menu>
               ),
             },
           ] satisfies DataGridColumn<Row>[])
         : []),
     ],
-    [canManage, navigate, params],
+    [canManage, navigate, params, experience.data?.canEdit, leaveOff, leftOff],
   );
 
   async function confirm() {

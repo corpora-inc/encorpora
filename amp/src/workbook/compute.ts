@@ -11,7 +11,7 @@ export type ComposeInput = Omit<
 >;
 export type HtmlInput = { spec: WorkbookSpec } & Pick<
   WorkbookHtmlOptions,
-  "learnerName" | "paper" | "results"
+  "learnerName" | "paper" | "results" | "resultsUrl"
 >;
 
 const skillTitle = (id: string) => skills.find((s) => s.id === id)?.title ?? id;

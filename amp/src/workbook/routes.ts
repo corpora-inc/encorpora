@@ -1,4 +1,4 @@
-import type { FastifyInstance } from "fastify";
+import type { FastifyBaseLogger, FastifyInstance } from "fastify";
 import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import { skills } from "../curriculum/catalog.js";
@@ -148,6 +148,7 @@ async function compose(
     minutes: WorkbookMinutes;
     number: number;
     choices?: WorkbookChoicesInput;
+    focusSkill?: string;
   },
   now: number,
 ) {
@@ -169,12 +170,113 @@ async function compose(
       (w) => w.spec,
     ),
     choices,
+    ...(input.focusSkill ? { focusSkill: input.focusSkill } : {}),
     date: input.date,
     number: input.number,
     minutes: input.minutes,
     learnerKey: learnerId,
     now,
   });
+}
+
+/** The workbook for this date, number and length: the stored one when it has
+ * been made, or a new one. Same inputs, same workbook, so a retry is safe.
+ * `allowed` says which dates this caller may make new workbooks for, and
+ * refuses the rest; `beforeMaking` can refuse too. */
+export async function findOrMakeWorkbook(
+  tx: LearnerTransaction,
+  learnerId: string,
+  input: {
+    date: string;
+    minutes: WorkbookMinutes;
+    paper: WorkbookRecord["paper"];
+    number?: number;
+    choices?: WorkbookChoicesInput;
+    focusSkill?: string;
+  },
+  at: number,
+  rules: {
+    allowed: (date: string) => void;
+    beforeMaking?: () => Promise<void>;
+  },
+): Promise<{ status: 200 | 201; record: WorkbookRecord }> {
+  const sameDay = await tx.workbooks(input.date);
+  const number =
+    input.number ?? Math.max(0, ...sameDay.map((w) => w.number)) + 1;
+  if (number > 999)
+    throw new ApiError(409, "This day already has 999 workbooks");
+  const existing = sameDay.find(
+    (w) => w.number === number && w.minutes === input.minutes,
+  );
+  if (existing) {
+    if (existing.paper !== input.paper) {
+      await tx.setWorkbookPaper(existing.id, input.paper);
+      existing.paper = input.paper;
+    }
+    return { status: 200, record: existing };
+  }
+  rules.allowed(input.date);
+  await rules.beforeMaking?.();
+  const spec = await compose(
+    tx,
+    learnerId,
+    {
+      date: input.date,
+      minutes: input.minutes,
+      number,
+      ...(input.choices ? { choices: input.choices } : {}),
+      ...(input.focusSkill ? { focusSkill: input.focusSkill } : {}),
+    },
+    at,
+  );
+  const record = await tx.saveWorkbook({
+    id: randomUUID(),
+    date: input.date,
+    number,
+    minutes: input.minutes,
+    paper: input.paper,
+    spec,
+    code: workbookCode(spec),
+    createdAt: new Date(at).toISOString(),
+  });
+  return { status: 201, record };
+}
+
+/** The printed workbook as a PDF: rendered for each request, never stored, and
+ * outside any learner transaction. A renderer that is down answers 503. */
+export async function renderWorkbookPdf(
+  renderer: WorkbookRenderer | null | undefined,
+  page: { html: string; format: "Letter" | "A4"; footer: string | undefined },
+  log: Pick<FastifyBaseLogger, "error" | "info">,
+): Promise<Buffer> {
+  const started = Date.now();
+  let pdf: Buffer;
+  try {
+    if (!renderer)
+      throw new RendererUnavailable("No workbook renderer configured");
+    pdf = await renderer.render({
+      html: page.html,
+      format: page.format,
+      footer: page.footer,
+    });
+  } catch (error) {
+    log.error(
+      {
+        err: error instanceof Error ? error.message : String(error),
+        durationMs: Date.now() - started,
+      },
+      "Workbook PDF render failed",
+    );
+    throw new ApiError(
+      503,
+      "Your workbook is being prepared; try again in a minute.",
+    );
+  }
+  log.info(
+    { durationMs: Date.now() - started, bytes: pdf.length },
+    "Workbook PDF rendered",
+  );
+  return pdf;
 }
 
 export function registerWorkbookRoutes(
@@ -306,64 +408,33 @@ export function registerWorkbookRoutes(
       learnerId,
       async (tx) => {
         const progress = await access(tx, trial);
-        const sameDay = await tx.workbooks(input.date);
-        const number =
-          input.number ?? Math.max(0, ...sameDay.map((w) => w.number)) + 1;
-        if (number > 999)
-          throw new ApiError(409, "This day already has 999 workbooks");
-        const existing = sameDay.find(
-          (w) => w.number === number && w.minutes === input.minutes,
-        );
-        if (existing) {
-          if (existing.paper !== input.paper) {
-            await tx.setWorkbookPaper(existing.id, input.paper);
-            existing.paper = input.paper;
-          }
-          return { status: 200, body: workbookSummary(existing) };
-        }
-        if (!composableDate(input.date, at))
-          throw new ApiError(
-            400,
-            "Workbooks can be made for today only. Open today's workbook instead.",
-          );
-        // A trial makes only the workbooks it has earned. The learner row is
-        // locked for this transaction, so concurrent requests count in turn.
-        if (progress) {
-          const allowance = trialWorkbookAllowance(
-            progress.totals.answered,
-            (await tx.workbooks()).length,
-            progress.free,
-          );
-          if (allowance.available <= 0)
-            throw new ApiError(
-              403,
-              allowance.nextAt
-                ? `The next free workbook unlocks at ${allowance.nextAt} problems.`
-                : "All free workbooks are made. Choose a plan to print more.",
-            );
-        }
-        const spec = await compose(
-          tx,
-          learnerId,
-          {
-            date: input.date,
-            minutes: input.minutes,
-            number,
-            choices: input.choices,
+        const made = await findOrMakeWorkbook(tx, learnerId, input, at, {
+          allowed: (date) => {
+            if (!composableDate(date, at))
+              throw new ApiError(
+                400,
+                "Workbooks can be made for today only. Open today's workbook instead.",
+              );
           },
-          at,
-        );
-        const saved = await tx.saveWorkbook({
-          id: randomUUID(),
-          date: input.date,
-          number,
-          minutes: input.minutes,
-          paper: input.paper,
-          spec,
-          code: workbookCode(spec),
-          createdAt: new Date(at).toISOString(),
+          // A trial makes only the workbooks it has earned. The learner row is
+          // locked for this transaction, so concurrent requests count in turn.
+          beforeMaking: async () => {
+            if (!progress) return;
+            const allowance = trialWorkbookAllowance(
+              progress.totals.answered,
+              (await tx.workbooks()).length,
+              progress.free,
+            );
+            if (allowance.available <= 0)
+              throw new ApiError(
+                403,
+                allowance.nextAt
+                  ? `The next free workbook unlocks at ${allowance.nextAt} problems.`
+                  : "All free workbooks are made. Choose a plan to print more.",
+              );
+          },
         });
-        return { status: 201, body: workbookSummary(saved) };
+        return { status: made.status, body: workbookSummary(made.record) };
       },
     );
     // Answer only after the transaction commits.
@@ -535,33 +606,7 @@ export function registerWorkbookRoutes(
           return { record, html, format, footer: workbookFooter(record.spec) };
         },
       );
-      const started = Date.now();
-      let pdf: Buffer;
-      try {
-        if (!options.renderer)
-          throw new RendererUnavailable("No workbook renderer configured");
-        pdf = await options.renderer.render({
-          html: page.html,
-          format: page.format,
-          footer: page.footer,
-        });
-      } catch (error) {
-        request.log.error(
-          {
-            err: error instanceof Error ? error.message : String(error),
-            durationMs: Date.now() - started,
-          },
-          "Workbook PDF render failed",
-        );
-        throw new ApiError(
-          503,
-          "Your workbook is being prepared; try again in a minute.",
-        );
-      }
-      request.log.info(
-        { durationMs: Date.now() - started, bytes: pdf.length },
-        "Workbook PDF rendered",
-      );
+      const pdf = await renderWorkbookPdf(options.renderer, page, request.log);
       return reply
         .type("application/pdf")
         .header(

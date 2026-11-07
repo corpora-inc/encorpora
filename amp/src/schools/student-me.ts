@@ -10,6 +10,7 @@ import {
 } from "./principal.js";
 import { enrollmentSettings } from "./enrollment-settings.js";
 import { studentLevelVisibility } from "./settings.js";
+import { hasOpenBoard } from "./standings.js";
 
 /** `/me` for a student token, parent-shaped so the existing app runs unchanged.
  * An invalid token answers 401 rather than `signedIn:false`, which is how the
@@ -58,6 +59,7 @@ export async function studentMe(
     .filter((grant) => grant.in_force)
     .sort((a, b) => b.ends_at.getTime() - a.ends_at.getTime())[0];
   const canPractice = !!current && (await schoolConsentActive(pool, accountId));
+  const settings = await enrollmentSettings(pool, personId, home, classes);
   return meSchema.parse({
     signedIn: true,
     account: {
@@ -112,9 +114,8 @@ export async function studentMe(
     school: {
       orgName: home.name,
       ...(classes[0] ? { className: classes[0].name } : {}),
-      levels: studentLevelVisibility(
-        await enrollmentSettings(pool, personId, home, classes),
-      ).value,
+      levels: studentLevelVisibility(settings).value,
+      standings: await hasOpenBoard(pool, personId, classes, settings),
     },
   }) as SignedInMe;
 }

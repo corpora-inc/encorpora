@@ -68,7 +68,7 @@ const sha256 = (value: string) =>
   createHash("sha256").update(value).digest("hex");
 
 /** SQL: what a roster shows a student as. `display_name` is the school's own. */
-const STUDENT_NAME = `COALESCE(p.display_name,p.given_name||COALESCE(' '||left(p.family_name,1)||'.',''))`;
+export const STUDENT_NAME = `COALESCE(p.display_name,p.given_name||COALESCE(' '||left(p.family_name,1)||'.',''))`;
 /** SQL: `p` is a live student of class `c`, whose org is `o`, today. */
 const IN_CLASS = `e.class_id=c.id AND e.role='student' AND ${activeToday("e", "o")}
   AND p.deleted_at IS NULL AND p.learner_id IS NOT NULL

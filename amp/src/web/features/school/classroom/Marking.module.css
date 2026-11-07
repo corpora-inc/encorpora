@@ -1,0 +1,408 @@
+/* Marking a stack: a teacher's grid with a printed sheet in the other hand. A
+   draft is outlined, because it can still change; a saved mark is solid. */
+.page {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+  /* The pinned bar's room, so the page's end is never under it. */
+  padding-bottom: 76px;
+}
+@media (max-width: 480px) {
+  .page {
+    padding-bottom: 124px;
+  }
+}
+.setPicker {
+  max-width: 320px;
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1) var(--space-4);
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  line-height: 1.3;
+}
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+.legendItem .cellMark {
+  width: 22px;
+  height: 22px;
+}
+.keys {
+  margin-inline-start: auto;
+}
+.keys kbd {
+  padding: 0 4px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 4px;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  font: inherit;
+  font-weight: 600;
+}
+/* Scrolls on its own: the student column and the numbers stay put. */
+.grid {
+  --name: 248px;
+  --cell: 46px;
+  display: grid;
+  grid-template-columns: var(--name) repeat(
+      var(--columns),
+      minmax(var(--cell), 1fr)
+    );
+  width: 100%;
+  /* The room left under the heading and over the pinned bar: one scroll, not
+     two, on a screen that can hold it. */
+  max-height: max(360px, calc(100dvh - 372px));
+  overflow: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  background: var(--color-surface);
+  overscroll-behavior: contain;
+}
+.headRow,
+.row {
+  display: contents;
+}
+.corner,
+.number {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  height: 36px;
+  border-bottom: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  font-size: var(--text-table-small);
+  font-weight: 600;
+  font-variant-numeric: var(--numeric);
+}
+.corner {
+  left: 0;
+  z-index: 3;
+  padding-inline: var(--space-3);
+  box-shadow: 1px 0 0 var(--color-border);
+}
+.number {
+  justify-content: center;
+}
+.name {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 52px;
+  padding-inline: var(--space-3) var(--space-1);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: 1px 0 0 var(--color-border);
+}
+.row[data-current] .name {
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+}
+.nameText {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+}
+.nameLine {
+  font-size: var(--text-table);
+  font-weight: 600;
+  line-height: 1.25;
+}
+.nameDetail {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+  line-height: 1.25;
+  white-space: nowrap;
+}
+.row[data-current] .nameDetail {
+  color: inherit;
+}
+button.allRight {
+  flex: none;
+  min-width: 44px;
+  min-height: 44px;
+  padding-inline: var(--space-2);
+  border: 0;
+  border-radius: var(--radius-small);
+  background: transparent;
+  color: var(--color-primary);
+  font: inherit;
+  font-size: var(--text-table-small);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+button.allRight:hover:not(:disabled) {
+  filter: none;
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+}
+button.allRight:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
+button.allRight:disabled {
+  color: var(--color-subtle-text);
+  cursor: default;
+}
+.cellWrap,
+.gap {
+  display: grid;
+  place-items: center;
+  min-height: 52px;
+  border-bottom: 1px solid var(--color-border);
+}
+button.cell {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-small);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+button.cell:hover:not([aria-disabled="true"]) {
+  filter: none;
+  background: var(--color-surface-sunken);
+}
+button.cell:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
+button.cell[aria-disabled="true"] {
+  cursor: default;
+}
+.cellMark {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  border: 1.5px solid var(--color-border-strong);
+  border-radius: 50%;
+  background: var(--color-answer);
+  color: var(--color-on-answer);
+}
+.cellMark[data-mark="none"] {
+  border-color: var(--color-border-strong);
+}
+.cellMark svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.cellMark[data-mark="right"][data-state="draft"] {
+  border-color: var(--color-primary);
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+}
+.cellMark[data-mark="not-yet"][data-state="draft"] {
+  border-color: var(--color-warning-accent);
+  background: var(--color-warning);
+  color: var(--color-on-warning);
+}
+.cellMark[data-mark="right"][data-state="saved"] {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+.cellMark[data-mark="not-yet"][data-state="saved"] {
+  border-color: var(--color-warning-accent);
+  background: var(--color-warning-accent);
+  color: var(--color-surface);
+}
+/* Fixed over the column, so nothing above it can ever move it. */
+.footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  padding: var(--space-3) var(--gutter, var(--space-4))
+    max(var(--space-3), env(safe-area-inset-bottom));
+  background: var(--color-surface);
+  box-shadow: inset 0 1px 0 var(--color-border);
+}
+@media (min-width: 1024px) {
+  .footer {
+    left: var(--width-rail);
+  }
+}
+.footerInner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+  max-width: calc(var(--width-content-wide) - 2 * var(--gutter, 0px));
+}
+.footerText {
+  flex: 1 1 220px;
+  min-height: 1.4em;
+  font-size: var(--text-table);
+  font-weight: 600;
+  font-variant-numeric: var(--numeric);
+  line-height: 1.4;
+}
+button.save {
+  min-width: 164px;
+}
+@media (max-width: 480px) {
+  button.save {
+    flex: 1 1 100%;
+  }
+}
+/* One student at a time. */
+.phone {
+  display: grid;
+  gap: var(--space-3);
+}
+.phoneHead {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-3);
+}
+button.phoneStep {
+  width: 48px;
+  padding: 0;
+}
+.phoneStep svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.phoneWho {
+  display: grid;
+  justify-items: center;
+  min-width: 0;
+  text-align: center;
+}
+.phoneWho strong {
+  font-family: var(--font-display);
+  font-size: var(--text-heading-2);
+  font-weight: 400;
+  line-height: 1.2;
+}
+.phoneWho span {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+}
+.phoneNone {
+  padding-block: var(--space-4);
+  color: var(--color-muted-text);
+}
+.phoneSummary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-size: var(--text-table);
+  font-variant-numeric: var(--numeric);
+}
+.phoneRows {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.phoneRow {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 60px;
+  padding-block: var(--space-1);
+  border-top: 1px solid var(--color-border);
+}
+.phoneNumber {
+  font-size: var(--text-table);
+  font-weight: 600;
+  font-variant-numeric: var(--numeric);
+  text-align: center;
+}
+.phoneLabel {
+  display: grid;
+  min-width: 0;
+  font-size: var(--text-table);
+  line-height: 1.25;
+  text-wrap: pretty;
+}
+.phoneLabel small {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+.phonePick {
+  display: inline-flex;
+  gap: var(--space-1);
+}
+.phonePick button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1.5px solid var(--color-border-strong);
+  border-radius: 50%;
+  background: var(--color-answer);
+  color: var(--color-on-answer);
+  cursor: pointer;
+}
+.phonePick button svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.phonePick button:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.phonePick button[aria-pressed="true"][data-mark="right"] {
+  border-color: var(--color-primary);
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+}
+.phonePick button[aria-pressed="true"][data-mark="not-yet"] {
+  border-color: var(--color-warning-accent);
+  background: var(--color-warning);
+  color: var(--color-on-warning);
+}
+.phoneSaved {
+  min-width: 92px;
+  font-size: var(--text-table);
+  font-weight: 600;
+  text-align: center;
+}
+.phoneSaved[data-mark="right"] {
+  color: var(--color-success-accent);
+}
+.phoneSaved[data-mark="not-yet"] {
+  color: var(--color-warning-accent);
+}

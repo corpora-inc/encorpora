@@ -1,0 +1,167 @@
+/* The student experience settings: a sheet of decisions, each saying who made
+   it. Hierarchy comes from type and hairlines; only a lock draws attention. */
+.page {
+  display: grid;
+  gap: var(--space-6);
+  max-width: 960px;
+}
+.readOnly {
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  line-height: 1.45;
+}
+.presets {
+  display: grid;
+  gap: var(--space-3);
+}
+@media (min-width: 720px) {
+  .presets {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+button.preset {
+  display: grid;
+  align-content: start;
+  gap: var(--space-1);
+  min-height: 96px;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+button.preset:hover:not(:disabled) {
+  filter: none;
+  border-color: var(--color-primary);
+}
+button.preset:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+button.preset[aria-pressed="true"] {
+  border-color: var(--color-primary);
+  box-shadow: inset 0 0 0 1px var(--color-primary);
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+}
+button.preset:disabled {
+  border-color: var(--color-border);
+  background: transparent;
+  color: var(--color-muted-text);
+  cursor: default;
+}
+button.preset[aria-pressed="true"]:disabled {
+  border-color: var(--color-border-strong);
+  box-shadow: none;
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+}
+.presetTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-heading-2);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.presetDetail {
+  font-size: var(--text-table);
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+.rows {
+  display: grid;
+}
+.row {
+  display: grid;
+  gap: var(--space-3);
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+.row:last-child {
+  border-bottom: 1px solid var(--color-border);
+}
+@media (min-width: 880px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+    gap: var(--space-6);
+    align-items: start;
+  }
+}
+.rowText h2 {
+  font-family: inherit;
+  font-size: var(--text-dense);
+  font-weight: 650;
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+/* Two lines' room, so a shorter description never pulls up what's below it. */
+.rowText p {
+  min-height: calc(2 * 1.45em);
+  margin-top: 2px;
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+.rowControl {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+}
+/* One height, whether or not there's an action, so nothing below ever moves. */
+.rowMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  height: 48px;
+}
+.rowMeta button {
+  flex: 0 1 auto;
+  margin-inline-end: calc(-1 * var(--space-3));
+  min-height: 44px;
+  padding: 2px var(--space-3);
+  font-size: var(--text-table-small);
+  line-height: 1.2;
+}
+.who {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--color-subtle-text);
+  font-size: var(--text-table-small);
+  line-height: 1.3;
+}
+.who[data-locked] {
+  color: var(--color-on-surface);
+  font-weight: 600;
+}
+.lockMark {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+button.lock {
+  gap: var(--space-1);
+}
+button.lock[aria-pressed="true"] {
+  color: var(--color-on-surface);
+}
+button.lock[aria-pressed="true"] .lockMark {
+  fill: var(--color-figure-accent-fill);
+}
+.leftOff {
+  display: grid;
+  gap: var(--space-3);
+}
+.none {
+  color: var(--color-subtle-text);
+  font-size: var(--text-table);
+}
