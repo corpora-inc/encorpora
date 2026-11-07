@@ -11,7 +11,7 @@ import { brand } from "../../../brand";
 import { LandingView } from "../../lib/LandingView";
 import { track, trackOnce } from "../../lib/analytics";
 import { Button, buttonClass } from "../../ui/Button";
-import { SUPPORT_EMAIL } from "../support/SupportHelp";
+import { SiteFooter } from "../support/SiteFooter";
 import {
   BuyOptions,
   formatPrice,
@@ -267,12 +267,11 @@ export function PitchScreen() {
           </section>
         </div>
       </main>
-      <footer className={styles.footer}>
+      <SiteFooter className={styles.footer}>
         <Link to="/schools">For schools</Link>
-        <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
         <a href="https://corpora.inc/legal/privacy/">Privacy</a>
         <a href="https://corpora.inc/legal/terms/">Terms</a>
-      </footer>
+      </SiteFooter>
     </div>
   );
 }

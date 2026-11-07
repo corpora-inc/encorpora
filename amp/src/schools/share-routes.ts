@@ -18,7 +18,9 @@ import {
   scopeCsv,
   scopeDocument,
 } from "./scope-and-sequence.js";
-import { shareTokenSchema } from "./share-contracts.js";
+import { schoolInquirySchema, shareTokenSchema } from "./share-contracts.js";
+import { fixedWindow } from "../server/rate-limits.js";
+import { SchoolError } from "./contracts.js";
 import {
   createShare,
   parentLinksCsv,
@@ -214,4 +216,56 @@ export function defineShareRoutes(define: typeof defineSchoolRoute) {
         .send(parentLinksCsv(links));
     },
   });
+}
+
+/** Where "Talk to us" writes. */
+export const INQUIRY_MAILBOX = "support@corpora.inc";
+/** Per address per hour, and from everyone per hour: a public form that only
+ * ever writes to our own mailbox, so a person never meets the limit. */
+export const INQUIRIES_PER_ADDRESS = 5;
+export const INQUIRIES_PER_HOUR = 200;
+
+/** Public: "Talk to us" on `/schools`. The message goes to the company mailbox
+ * and nowhere else, so the form can't be used to send mail to anyone. */
+export function registerInquiryRoute(
+  scope: FastifyInstance,
+  services: SchoolServices,
+) {
+  const hourly = fixedWindow(60 * 60_000);
+  scope.post(
+    "/api/v1/schools/inquiry",
+    { ...limited, bodyLimit: 8192 },
+    async (request, reply) => {
+      const inquiry = schoolInquirySchema.parse(request.body);
+      if (inquiry.website) return reply.code(204).send();
+      if (
+        !hourly.consume(`address:${request.ip}`, INQUIRIES_PER_ADDRESS) ||
+        !hourly.consume("all", INQUIRIES_PER_HOUR)
+      )
+        throw new SchoolError(429, "too_many_requests", 3600);
+      if (!services.mail) throw new SchoolError(503, "mail_unavailable");
+      await services
+        .mail(
+          INQUIRY_MAILBOX,
+          `School inquiry: ${inquiry.school}`,
+          [
+            `${inquiry.name} <${inquiry.email}> writes from ${inquiry.school}.`,
+            inquiry.students ? `Students: ${inquiry.students}` : "",
+            "",
+            inquiry.message ?? "",
+          ]
+            .filter((line, index) => index !== 1 || line)
+            .join("\n")
+            .trim(),
+          `${services.origin}/schools`,
+        )
+        .catch((error) => {
+          console.error("[schools] inquiry mail not sent", {
+            message: (error as Error).message,
+          });
+          throw new SchoolError(503, "mail_unavailable");
+        });
+      return reply.code(204).send();
+    },
+  );
 }
