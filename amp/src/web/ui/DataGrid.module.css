@@ -1,0 +1,235 @@
+.root {
+  --grid-surface: var(--color-surface);
+  /* Cell inset: tighter when the columns are at their smallest. */
+  --grid-inline: clamp(
+    6px,
+    calc((100cqi - 720px) * 0.025 + 6px),
+    var(--space-3)
+  );
+  container-type: inline-size;
+  width: 100%;
+  min-width: 0;
+  font-size: var(--text-table);
+  font-variant-numeric: var(--numeric);
+}
+/* The page scrolls a short grid, so its header sticks to the viewport. The
+   grid scrolls itself only when its columns need more room than it has, or
+   when it is long enough to virtualize. */
+.scroller {
+  width: 100%;
+}
+.scroller[data-scrolls] {
+  overflow-x: auto;
+}
+.scroller[data-virtual] {
+  overflow: auto;
+  max-height: min(72dvh, 760px);
+  overscroll-behavior: contain;
+}
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+.columnHeader {
+  position: sticky;
+  top: var(--grid-sticky-top, 0);
+  z-index: 2;
+  padding: 0 var(--grid-inline) var(--space-1);
+  background: var(--grid-surface);
+  box-shadow: inset 0 -1px 0 var(--color-border-strong);
+  color: var(--color-on-surface);
+  font-size: var(--text-table-small);
+  font-weight: 600;
+  text-align: start;
+  vertical-align: top;
+}
+.columnHeader.first {
+  left: 0;
+  z-index: 3;
+}
+.headerText {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  line-height: 1.2;
+}
+.headerDetail {
+  display: block;
+  margin-top: -6px;
+}
+/* The whole header is the target; its fill reaches into the cell's padding. */
+button.sort {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  margin: 0 calc(-1 * var(--grid-inline)) 0 calc(-1 * var(--space-1));
+  padding: 0 var(--space-2) 0 var(--space-1);
+  border: 0;
+  border-radius: var(--radius-small);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: start;
+  text-wrap: balance;
+  cursor: pointer;
+}
+button.sort:hover:not(:disabled) {
+  filter: none;
+  background: var(--color-surface-hover);
+}
+button.sort:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
+/* The mark sits in the button's padding: no column grows to make room. */
+.sortMark {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 8px;
+  height: 12px;
+  margin-top: -6px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+}
+button.sort:hover .sortMark {
+  opacity: 0.45;
+}
+.sortMark[data-direction="ascending"],
+.sortMark[data-direction="descending"],
+button.sort:hover .sortMark[data-direction="ascending"],
+button.sort:hover .sortMark[data-direction="descending"] {
+  opacity: 1;
+}
+[data-align="end"] {
+  text-align: end;
+}
+[data-align="end"] button.sort {
+  margin: 0 calc(-1 * var(--space-1)) 0 calc(-1 * var(--grid-inline));
+  padding: 0 var(--space-1) 0 var(--space-2);
+}
+[data-align="end"] .sortMark {
+  right: auto;
+  left: 0;
+  transform: scaleX(-1);
+}
+.sortMark[data-direction="ascending"] {
+  rotate: 180deg;
+}
+.cell {
+  padding: 0 var(--grid-inline);
+  background: var(--grid-surface);
+  font-weight: 400;
+  line-height: 1.3;
+  text-align: start;
+  vertical-align: middle;
+}
+.cell[data-align="end"] {
+  text-align: end;
+}
+.cell:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
+.rules .cell {
+  box-shadow: inset 0 -1px 0 var(--color-border);
+}
+/* Opaque, so rows pass under the first column instead of through it. */
+.cell.first {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+.scroller[data-scrolls] .first {
+  box-shadow:
+    inset -1px 0 0 var(--color-border),
+    inset 0 -1px 0 var(--color-border);
+}
+tr[data-activates] {
+  cursor: pointer;
+}
+tr[data-activates]:hover .cell {
+  background: var(--color-surface-hover);
+}
+.spacer {
+  padding: 0;
+  border: 0;
+}
+
+.cardsBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+.cards {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.card {
+  --avatar-ring: var(--color-surface-raised);
+  margin: 0;
+  padding: var(--space-4);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+}
+.cardRows {
+  gap: 0;
+}
+.cardRows .card {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+}
+.windowed {
+  position: relative;
+  display: block;
+}
+.windowedItem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding-bottom: var(--space-3);
+}
+.cardRows .windowedItem {
+  padding-bottom: 0;
+}
+.cardTitle {
+  margin-bottom: var(--space-3);
+  font-weight: 600;
+}
+.cardFields {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+}
+.cardField {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  align-items: center;
+  gap: var(--space-3);
+}
+.cardField dt {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+.cardField dd {
+  margin: 0;
+}

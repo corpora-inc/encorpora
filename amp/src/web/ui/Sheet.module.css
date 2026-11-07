@@ -1,0 +1,126 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--color-scrim);
+  animation: fade 160ms ease-out;
+}
+.sheet {
+  --avatar-ring: var(--color-surface-raised);
+  --target-size: 44px;
+  position: fixed;
+  z-index: 1001;
+  inset: 0 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: min(var(--width-sheet), calc(100vw - var(--space-7)));
+  height: 100dvh;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  box-shadow: var(--shadow-overlay);
+  outline: none;
+  animation: from-side 200ms var(--ease-standard);
+}
+.header {
+  display: flex;
+  flex: none;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-3) var(--space-3) var(--space-5);
+}
+.heading {
+  flex: 1;
+  min-width: 0;
+  padding-block: var(--space-1);
+}
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-heading-2);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.description {
+  margin-top: 2px;
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  line-height: 1.4;
+}
+button.close {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-muted-text);
+  cursor: pointer;
+}
+button.close:hover:not(:disabled) {
+  filter: none;
+  background: var(--color-surface-raised-hover);
+  color: var(--color-on-surface-raised);
+}
+button.close:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
+.close svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+}
+.body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: var(--space-2) var(--space-5)
+    max(var(--space-6), env(safe-area-inset-bottom));
+}
+@media (max-width: 640px) {
+  .sheet {
+    inset: auto 0 0;
+    width: 100%;
+    height: auto;
+    max-height: 88dvh;
+    border-radius: var(--radius-panel) var(--radius-panel) 0 0;
+    animation-name: from-bottom;
+  }
+  .header {
+    padding-inline-start: var(--space-4);
+  }
+  .body {
+    padding-inline: var(--space-4);
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes from-side {
+  from {
+    transform: translateX(32px);
+    opacity: 0;
+  }
+}
+@keyframes from-bottom {
+  from {
+    transform: translateY(32px);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .sheet {
+    animation: none;
+  }
+}

@@ -299,6 +299,28 @@ export async function probe(page: Page): Promise<ShellProbe> {
   });
 }
 
+/** Grid cells whose content is wider than the cell: clipped, or spilling into
+ * the next column. */
+export async function clippedCells(page: Page) {
+  await page.evaluate("globalThis.__name ??= (f) => f");
+  return page.evaluate(() =>
+    [
+      ...document.querySelectorAll<HTMLElement>(
+        "[role=gridcell],[role=rowheader],[role=columnheader]",
+      ),
+    ]
+      .filter(
+        (cell) =>
+          cell.checkVisibility?.() !== false &&
+          cell.scrollWidth > cell.clientWidth + 1,
+      )
+      .map(
+        (cell) =>
+          `${cell.getAttribute("role")} "${(cell.textContent ?? "").trim().slice(0, 40)}" ${cell.scrollWidth} > ${cell.clientWidth}`,
+      ),
+  );
+}
+
 /** Tabs through the screen: every focused element must be visible on screen
  * and carry a visible focus indicator. */
 export async function focusWalk(page: Page, steps = 24) {
@@ -327,8 +349,12 @@ export async function focusWalk(page: Page, steps = 24) {
           (s.boxShadow && s.boxShadow !== "none")
         );
       };
-      // A field may draw its ring on its wrapper (:focus-within).
-      const ring = shows(el) || (!!el.parentElement && shows(el.parentElement));
+      // A field may draw its ring on its wrapper (:focus-within), and a shared
+      // checkbox on the box drawn beside its input.
+      const ring =
+        shows(el) ||
+        (!!el.parentElement && shows(el.parentElement)) ||
+        (!!el.nextElementSibling && shows(el.nextElementSibling));
       const r = el.getBoundingClientRect();
       const onScreen =
         r.bottom > 0 &&

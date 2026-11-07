@@ -14,6 +14,7 @@ export function Segmented<T extends string>({
   onChange,
   disabled = false,
   compact = false,
+  dense = false,
 }: {
   label: string;
   options: SegmentedOption<T>[];
@@ -24,6 +25,8 @@ export function Segmented<T extends string>({
    * cells, one line each, with type that steps down on the narrowest
    * phones. */
   compact?: boolean;
+  /** With `compact`, for a toolbar: one 44 px line per segment. */
+  dense?: boolean;
 }) {
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
   const current = Math.max(
@@ -48,7 +51,7 @@ export function Segmented<T extends string>({
       role="radiogroup"
       aria-label={label}
       aria-disabled={disabled || undefined}
-      className={`${styles.group} ${compact ? styles.compact : ""}`}
+      className={`${styles.group} ${compact ? styles.compact : ""} ${dense ? styles.dense : ""}`}
       style={{
         gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))`,
       }}

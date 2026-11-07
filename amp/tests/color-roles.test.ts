@@ -24,6 +24,10 @@ const pairs: [role: string, states: string[]][] = [
   ["danger", [""]],
   ["warning", [""]],
   ["info", [""]],
+  ["rail", ["", "-hover"]],
+  ...[0, 1, 2, 3, 4, 5, 6, 7].map(
+    (hue) => [`avatar-${hue}`, [""]] as [string, string[]],
+  ),
 ];
 /** Neutral backgrounds that carry free text (muted, links, accents). */
 const canvases = [
@@ -34,9 +38,16 @@ const canvases = [
   "surface-sunken",
   "menu",
   "menu-hover",
+  "rail",
 ];
 /** Resting backgrounds that carry control borders and focus rings. */
-const resting = ["surface", "surface-raised", "surface-sunken", "menu", "answer"];
+const resting = [
+  "surface",
+  "surface-raised",
+  "surface-sunken",
+  "menu",
+  "answer",
+];
 
 function check(theme: Theme) {
   const { color } = resolveTheme(theme);
@@ -87,6 +98,9 @@ function check(theme: Theme) {
     need(`figure-${mark}`, "figure-paper", UI);
   need("figure-accent", "figure-accent-fill", UI);
   need("figure-warm", "figure-warm-fill", UI);
+  // A meter's fill reads on the page and on a card.
+  need("meter", "surface", UI);
+  need("meter", "surface-raised", UI);
   // Strand colors are marks (dots, bars) on every neutral surface.
   for (const strand of [
     "number",

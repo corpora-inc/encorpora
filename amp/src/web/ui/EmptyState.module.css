@@ -1,0 +1,25 @@
+.empty {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3);
+  max-width: 52ch;
+  padding-block: var(--space-7);
+}
+h2.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-heading-2);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+.body {
+  color: var(--color-muted-text);
+  font-size: var(--text-dense);
+  line-height: 1.5;
+}
+.action {
+  margin-top: var(--space-2);
+}

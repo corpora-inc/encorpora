@@ -1,0 +1,36 @@
+.avatar {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--avatar);
+  color: var(--on-avatar);
+  font-size: var(--text-table-small);
+  font-weight: 650;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  user-select: none;
+}
+.small {
+  width: 26px;
+  height: 26px;
+  font-size: 11px;
+}
+.large {
+  width: 44px;
+  height: 44px;
+  font-size: var(--text-heading-4);
+}
+/* A surface ring separates overlapping faces without a border's weight. */
+.stack {
+  display: inline-flex;
+  flex: none;
+}
+.stack .avatar {
+  box-shadow: 0 0 0 2px var(--avatar-ring, var(--color-surface));
+}
+.stack .avatar + .avatar {
+  margin-inline-start: -6px;
+}
