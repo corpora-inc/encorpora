@@ -758,11 +758,13 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     const allowed =
       summary.consent.status === "active" ||
       summary.consent.status === "development";
+    // The adult's own learner stays chosen only when it was chosen; a device
+    // with no choice opens on the family's first learner, never the adult's.
     const selected = allowed
       ? (available.find(
           (entry) => entry.id === useLearnerStore.getState().learnerId,
         ) ??
-        available[0] ??
+        available.find((entry) => !entry.adult) ??
         null)
       : null;
     learnerRef.current = selected?.id;

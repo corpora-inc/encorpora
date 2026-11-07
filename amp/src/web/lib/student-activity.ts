@@ -49,24 +49,32 @@ export function startStudentActivity(): Activity {
   });
 }
 
-/** An adult's time on their own practice, counted only while their own
- * learner is the one chosen. */
+/** An adult's time on their own practice: practice, lessons and the map,
+ * only while their own learner is the one chosen. Their family, their school
+ * and their record are not practice. */
 export function startAdultActivity(): Activity {
   if (isStudentDevice() || nativeRuntime) return idle;
-  return startActivity(() => {
-    const session = queryClient.getQueryData<AuthSession | null>(
-      sessionOptions.queryKey,
-    );
-    if (!session) return null;
-    const me = queryClient.getQueryData<Me>(meKey(session.accountId));
-    return me?.signedIn &&
-      practicingAsAdult(me, useLearnerStore.getState().learnerId)
-      ? { url: "/api/v1/me/practice/activity", token: session.token }
-      : null;
-  });
+  return startActivity(
+    () => {
+      const session = queryClient.getQueryData<AuthSession | null>(
+        sessionOptions.queryKey,
+      );
+      if (!session) return null;
+      const me = queryClient.getQueryData<Me>(meKey(session.accountId));
+      return me?.signedIn &&
+        practicingAsAdult(me, useLearnerStore.getState().learnerId)
+        ? { url: "/api/v1/me/practice/activity", token: session.token }
+        : null;
+    },
+    (surface) => surface !== "other",
+  );
 }
 
-function startActivity(destination: () => Destination): Activity {
+function startActivity(
+  destination: () => Destination,
+  /** Which surfaces count; every one when absent. */
+  counts: (surface: Surface) => boolean = () => true,
+): Activity {
   let surface: Surface = surfaceOf(location.pathname);
   let problemId: string | undefined;
   let stopped = false;
@@ -82,7 +90,7 @@ function startActivity(destination: () => Destination): Activity {
     const total = Math.floor(clock.activeMs);
     const fresh = total - banked;
     banked = total;
-    if (fresh <= 0) return;
+    if (fresh <= 0 || !counts(surface)) return;
     const last = queue[queue.length - 1];
     if (last && last.surface === surface && last.problemId === problemId)
       last.activeMs += fresh;

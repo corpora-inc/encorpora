@@ -5,6 +5,8 @@ import { Pool } from "pg";
 import { migrate } from "../scripts/migrate.js";
 import { schoolAdmin } from "../scripts/school-admin.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
+import { purgeInactiveLearners } from "../src/privacy/retention.js";
+import { RETENTION } from "../src/privacy/retention-periods.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { learningConsentActive } from "../src/server/account-access.js";
@@ -482,6 +484,45 @@ test(
           404,
         );
         assert.equal((await start(teacher)).statusCode, 201);
+      },
+    );
+
+    await t.test(
+      "free adult practice keeps no one's learning data longer",
+      async () => {
+        // A teacher at the licensed school whose child's plan ended long ago.
+        const parent = await user("Sam Fixture");
+        await consent(parent);
+        await schools.addStaff({
+          orgId: org.id,
+          role: "teacher",
+          givenName: "Sam",
+          familyName: "Fixture",
+          accountId: parent,
+          classId: klass.id,
+        });
+        const child = await learning.create(parent, "Robin Fixture", 2016);
+        await db.query(
+          `INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at)
+           VALUES($1,$2,'stripe',$1,'active',now()-interval '400 days',now()-interval '300 days')`,
+          [`fixture:${child.id}`, child.id],
+        );
+        const own = (await start(parent)).json().learnerId;
+        assert.equal(
+          (await grant(own)).ends_at.getTime(),
+          licenseEnds.getTime(),
+          "free through the school's license",
+        );
+        // The family's inactivity clock runs out ten days before the license
+        // ends: the child's data goes, whatever the adult's practice says.
+        const at = new Date(licenseEnds.getTime() - 10 * DAY);
+        at.setUTCMonth(at.getUTCMonth() + RETENTION.learnerInactivityMonths);
+        await purgeInactiveLearners(db, at);
+        const kept = await db.query(
+          "SELECT 1 FROM amp_learners WHERE id=$1 AND deleted_at IS NULL",
+          [child.id],
+        );
+        assert.equal(kept.rowCount, 0);
       },
     );
   },

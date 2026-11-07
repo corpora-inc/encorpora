@@ -596,6 +596,27 @@ async function parentStarts(
     /Rowan/.test(drawerItems) && !/Your own practice/.test(drawerItems),
     drawerItems.slice(0, 300),
   );
+  // A device with nothing remembered opens the family on the child, even when
+  // the parent's own learner is the account's oldest.
+  await db.query(
+    "UPDATE amp_learners SET created_at=now()-interval '30 days' WHERE account_id=$1 AND adult",
+    [account],
+  );
+  await page.evaluate(() => localStorage.clear());
+  await page.goto(`${origin}/`);
+  await menuButton(page).waitFor();
+  await settle(page, 600);
+  check(
+    `${label} a new device stays on the family side`,
+    path(page) === "/",
+    path(page),
+  );
+  const chosen = await page.evaluate(() => localStorage.getItem("amp.learner"));
+  check(
+    `${label} a new device chooses the child`,
+    !!chosen && chosen.includes(child.id),
+    chosen,
+  );
   await context.close();
 }
 
