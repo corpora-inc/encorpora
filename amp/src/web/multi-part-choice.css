@@ -277,7 +277,7 @@
 /* The radio keeps its 44px target; the row around it is a little tighter so a
    six-row table still fits the stage beside the question on a tablet. */
 .multi-part-table td {
-  padding-block: 3px;
+  padding-block: 2px;
 }
 /* Option columns shrink to their longest word and wrap only between words. */
 .multi-part-table thead th {
