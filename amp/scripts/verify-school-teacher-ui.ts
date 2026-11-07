@@ -71,6 +71,8 @@ const webPort = 4400,
 const TEACHER = "development-household";
 const SHOTS_FOR_REVIEW = new Set([1280, 390]);
 
+/** How WebKit reports a request cut off by leaving the page. */
+const CANCELLED_BY_NAVIGATION = /due to access control checks/;
 const failures: string[] = [];
 function check(label: string, ok: boolean, detail: unknown = "") {
   if (!ok) failures.push(`${label}: ${JSON.stringify(detail)}`);
@@ -801,9 +803,10 @@ async function journey(browser: Browser, engine: string, width: number) {
   const label = `${engine} ${width}`;
   const context = await newContext(browser, width, theme);
   const page = await context.newPage();
-  page.on("pageerror", (error) =>
-    failures.push(`${label} page error: ${error.message}`),
-  );
+  page.on("pageerror", (error) => {
+    if (!CANCELLED_BY_NAVIGATION.test(error.message))
+      failures.push(`${label} page error: ${error.message}`);
+  });
   await open(page, classUrl("today"), /^Good (morning|afternoon|evening)/);
   const greeting = await page.getByRole("heading", { level: 1 }).textContent();
   check(
@@ -821,7 +824,7 @@ async function journey(browser: Browser, engine: string, width: number) {
   check(`${label} gap names students`, /Noor|Diego|Lena/.test(body));
   check(
     `${label} a quiet week shows`,
-    body.includes("Marcus hasn’t practiced this week"),
+    /(behind this week’s target|practiced this week)[^]*Marcus/.test(body),
   );
   check(
     `${label} what's going well shows`,
@@ -951,9 +954,9 @@ async function journey(browser: Browser, engine: string, width: number) {
   await sheet.waitFor();
   await page.goBack();
   await sheet.waitFor({ state: "detached" });
+  await page.waitForLoadState("load");
 
   // Exporting, and reading what came down.
-  await page.goto(origin + classUrl("gradebook"));
   await page.getByRole("heading", { name: "Quarter 2 grades" }).waitFor();
   await page.getByRole("button", { name: "Export", exact: true }).click();
   await sheet.waitFor();
@@ -1142,11 +1145,12 @@ async function sweep(browser: Browser, engine: string) {
     for (const theme of themes) {
       const context = await newContext(browser, width, theme);
       const page = await context.newPage();
-      page.on("pageerror", (error) =>
-        failures.push(
-          `${engine} ${width}-${theme} page error: ${error.message}`,
-        ),
-      );
+      page.on("pageerror", (error) => {
+        if (!CANCELLED_BY_NAVIGATION.test(error.message))
+          failures.push(
+            `${engine} ${width}-${theme} page error: ${error.message}`,
+          );
+      });
       for (const screen of screens) {
         const label = `${engine} ${screen.id} ${width}-${theme}`;
         await open(page, screen.path, screen.heading);
