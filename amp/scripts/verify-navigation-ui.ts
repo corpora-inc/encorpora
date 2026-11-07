@@ -302,7 +302,17 @@ try {
       ),
       `${label}: keyboard focus is showing`,
     );
-    assert.deepEqual(await paintedRing(), wholeRing, `${label}: focus ring`);
+    // A 3px ring beside a control at a fractional position (the toolbar's text
+    // is laid out in a fractional-width font) paints two solid pixels and one
+    // anti-aliased pixel on that edge. Two or three pixels is a whole ring; a
+    // ring hidden by the stage below it shows none or one.
+    const ring = await paintedRing();
+    for (const [edge, pixels] of Object.entries(ring))
+      assert(
+        pixels >= wholeRing[edge as keyof typeof wholeRing] - 1 &&
+          pixels <= wholeRing[edge as keyof typeof wholeRing],
+        `${label}: focus ring ${JSON.stringify(ring)}`,
+      );
   }
   // The toolbar paints above the stage below it, so focus rings stay whole,
   // and below everything that overlays practice.
