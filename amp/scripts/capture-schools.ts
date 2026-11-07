@@ -8,8 +8,9 @@
  * truncated or overlapping, and CLS at or below 0.01.
  *
  * Writes `<out>/<screen>-<width>-<theme>.png` and an `index.html` contact sheet
- * grouped by screen, outside the repository. `--product-shots` also refreshes
- * the `/schools` page's screens from the same data, as WebP.
+ * grouped by screen, to `artifacts/schools-gallery/<date>/` or `--out`.
+ * `--product-shots` also refreshes the `/schools` page's screens from the
+ * same data, as WebP.
  *
  *     AMP_TEST_DATABASE_URL=... npm run school:capture -- \
  *       [--size 10000] [--port 4424] [--out <dir>] [--only today,gradebook]
@@ -17,7 +18,6 @@
  */
 import { execFileSync } from "node:child_process";
 import { mkdir, rm, writeFile } from "node:fs/promises";
-import { homedir } from "node:os";
 import { join } from "node:path";
 import {
   chromium as rawChromium,
@@ -53,9 +53,10 @@ const argument = (name: string) => {
 const size = Number(argument("--size") ?? 10000) as DemoSize;
 if (!demoSizes.includes(size)) throw new Error("--size is 30, 1000 or 10000");
 const port = Number(argument("--port") ?? 4424);
+// Outside the repository's history either way: artifacts/ is ignored.
 const out =
   argument("--out") ??
-  join(homedir(), "corpora-media/AMP-media/schools-gallery/2026-11-07");
+  join("artifacts/schools-gallery", new Date().toISOString().slice(0, 10));
 const only = argument("--only")?.split(",");
 const widths = (argument("--widths") ?? "1280,390,768,320")
   .split(",")
