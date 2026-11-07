@@ -396,7 +396,15 @@ export function todayTodos(
       : [];
 
   const positives = [...readyTodo, ...going];
-  const deficits = [...gaps, ...stuck, ...quiet, ...notStarted];
+  // One of each kind before a second of any: a teacher can act on a shared gap
+  // and a quiet week today, and a second gap can wait for the next list.
+  const deficits = [
+    ...gaps.slice(0, 1),
+    ...stuck,
+    ...quiet,
+    ...notStarted,
+    ...gaps.slice(1),
+  ];
   return [
     ...deficits.slice(0, Math.max(0, rules.maximumTodos - positives.length)),
     ...positives,

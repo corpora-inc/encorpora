@@ -431,11 +431,23 @@ test("never a wall of deficits: what's going well keeps its place", () => {
   assert.equal(list.includes("ready"), true);
   assert.equal(list.includes("good-day"), true);
   assert.equal(list[0], "shared-gap");
-  assert.equal(
-    list.filter((kind) => kind === "shared-gap").length,
-    DEFAULT_GRADE_POLICY.today.maximumSharedGaps,
-  );
+  // One of each kind before a second of any.
+  assert.deepEqual(list.slice(0, 3), ["shared-gap", "stuck", "no-practice"]);
   assert.equal(new Set(todos.map((todo) => todo.id)).size, todos.length);
+});
+
+test("a second shared gap shows when there's room for it", () => {
+  const second = [gap("amara"), gap("diego"), gap("lena")].map((row) => ({
+    ...row,
+    skillId: "second",
+  }));
+  const todos = todayTodos(
+    input({ skills: [gap("amara"), gap("diego"), gap("lena"), ...second] }),
+  );
+  assert.deepEqual(
+    kinds(todos).filter((kind) => kind === "shared-gap"),
+    ["shared-gap", "shared-gap"],
+  );
 });
 
 test("thresholds come from the versioned policy", () => {

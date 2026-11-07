@@ -348,7 +348,7 @@ async function seedGains(person: Persona, student: Student, count: number) {
       (skill) =>
         !shown.has(skill.id) &&
         gradeNumber[skill.gradeBand] >= Math.floor(level) &&
-        gradeNumber[skill.gradeBand] <= Math.ceil(level) + 1,
+        gradeNumber[skill.gradeBand] <= Math.ceil(level),
     )
     .flatMap((skill) => {
       const template = templates.find(
@@ -396,6 +396,19 @@ async function seedGains(person: Persona, student: Student, count: number) {
 /** The rollups, skill evidence and level days, from the dates now on the answers. */
 async function rebuild(person: Persona, student: Student, timezone: string) {
   const { learnerId } = student;
+  // Evidence order is the order the answers were given in.
+  await db.query(
+    `WITH top AS (SELECT max(evidence_sequence) AS at FROM amp_attempts)
+     UPDATE amp_attempts a SET evidence_sequence=top.at+ranked.position
+     FROM top,(
+       SELECT id,row_number() OVER (ORDER BY (outcome->>'createdAt')::timestamptz,id) AS position
+       FROM amp_attempts WHERE learner_id=$1
+     ) ranked WHERE a.id=ranked.id`,
+    [learnerId],
+  );
+  await db.query(
+    `SELECT setval('amp_attempt_evidence_sequence',(SELECT max(evidence_sequence) FROM amp_attempts)+1,false)`,
+  );
   await db.query("DELETE FROM amp_skill_days WHERE learner_id=$1", [learnerId]);
   await db.query(
     `INSERT INTO amp_skill_days(learner_id,day,skill_id,attempts,correct,independent,assisted,review,review_independent)
@@ -802,6 +815,14 @@ async function journey(browser: Browser, engine: string, width: number) {
   const body = await page.locator("main").innerText();
   check(`${label} gap names students`, /Noor|Diego|Lena/.test(body));
   check(
+    `${label} a quiet week shows`,
+    body.includes("Marcus hasn’t practiced this week"),
+  );
+  check(
+    `${label} what's going well shows`,
+    /ready for more|good day/i.test(body),
+  );
+  check(
     `${label} no gendered pronouns on Today`,
     !/\b(he|she|his|her|hers|him)\b/i.test(body),
     body.match(/\b(he|she|his|her|hers|him)\b/i)?.[0],
@@ -1022,7 +1043,7 @@ async function journey(browser: Browser, engine: string, width: number) {
   // Time and the student's record are real routes too.
   await page.goto(origin + classUrl("time"));
   await page.getByRole("heading", { name: "Time", level: 1 }).waitFor();
-  await page.getByRole("radio", { name: "This term" }).click();
+  await page.getByRole("radio", { name: "Term" }).click();
   await page.waitForFunction(() => location.search.includes("period=term"));
   await settle(page, 300);
   await page.locator(`[data-student="${amara}"]`).first().click();

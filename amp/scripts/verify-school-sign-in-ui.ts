@@ -755,7 +755,7 @@ async function journeys(browser: Browser, engine: string) {
       .waitFor({ timeout: 8000 });
     // Exit returns to the class.
     await teacherBoard.page.getByRole("link", { name: "Exit" }).click();
-    await teacherBoard.page.waitForURL("**/roster");
+    await teacherBoard.page.waitForURL("**/today");
     await teacherBoard.page.goBack();
     await teacherBoard.page.waitForURL("**/start");
 

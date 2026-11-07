@@ -41,9 +41,9 @@ import styles from "./Teacher.module.css";
 
 type Row = TimeResponse["students"][number];
 const PERIODS: { value: TimePeriod; label: string }[] = [
-  { value: "week", label: "This week" },
+  { value: "week", label: "Week" },
   { value: "month", label: "4 weeks" },
-  { value: "term", label: "This term" },
+  { value: "term", label: "Term" },
 ];
 const DAY = 86_400_000;
 const addDays = (iso: string, days: number) =>

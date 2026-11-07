@@ -339,7 +339,7 @@ export function GradebookScreen() {
       {
         id: "final",
         header: "Final",
-        width: 90,
+        width: 96,
         cell: final,
       },
     ],
@@ -411,7 +411,7 @@ export function GradebookScreen() {
                     compact
                     dense
                     label="Term"
-                    value={term.id}
+                    value={requested ?? term.id}
                     options={data.terms.map((entry) => ({
                       value: entry.id,
                       label: shortName(entry.name),

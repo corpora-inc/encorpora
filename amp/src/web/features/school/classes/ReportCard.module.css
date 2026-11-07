@@ -130,9 +130,11 @@ h2.name {
   font-size: var(--text-table-small);
 }
 @media print {
+  /* The same page as the printable sign-in cards: `@page` is global, and both
+     load together. A card's own padding makes up the rest of its margin. */
   @page {
     size: letter;
-    margin: 0.75in;
+    margin: 0.5in;
   }
   html,
   body,
@@ -153,8 +155,9 @@ h2.name {
     text-align: end;
   }
   .card {
-    min-height: 9.4in;
-    padding: 0;
+    box-sizing: border-box;
+    min-height: 9.9in;
+    padding: 0.25in;
     border-radius: 0;
     box-shadow: none;
     break-after: page;
