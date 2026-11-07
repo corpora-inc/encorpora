@@ -1339,21 +1339,25 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           <span>MATHEMATICS</span>
         </a>
         <div className="account">
-          {token && !familyOpen && learningAllowed && learners.length > 0 && (
-            <Select
-              aria-label="Learner"
-              value={learner?.id ?? ""}
-              disabled={busy}
-              onValueChange={(e) => selectLearner(e || null)}
-            >
-              {!learner && <option value="">Select a learner</option>}
-              {learners.map((l) => (
-                <option key={l.id} value={l.id}>
-                  {l.name}
-                </option>
-              ))}
-            </Select>
-          )}
+          {token &&
+            !student &&
+            !familyOpen &&
+            learningAllowed &&
+            learners.length > 0 && (
+              <Select
+                aria-label="Learner"
+                value={learner?.id ?? ""}
+                disabled={busy}
+                onValueChange={(e) => selectLearner(e || null)}
+              >
+                {!learner && <option value="">Select a learner</option>}
+                {learners.map((l) => (
+                  <option key={l.id} value={l.id}>
+                    {l.name}
+                  </option>
+                ))}
+              </Select>
+            )}
           {nativeRuntime && token && !familyOpen && (
             <Menu
               label="Account"

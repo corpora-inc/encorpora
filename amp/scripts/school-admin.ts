@@ -2,7 +2,10 @@ import { readFile } from "node:fs/promises";
 import { pathToFileURL } from "node:url";
 import { z } from "zod";
 import { createDatabasePool } from "../src/server/database.js";
-import { sessionModes, SchoolError } from "../src/schools/contracts.js";
+import {
+  issueStudentSessionSchema,
+  SchoolError,
+} from "../src/schools/contracts.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 
 /** Operating AMP for Schools, for privileged agents: there is no admin UI.
@@ -47,9 +50,7 @@ export async function schoolAdmin(
     }
     case "issue-student-session":
       return repository.issueStudentSession(
-        z
-          .strictObject({ personId: z.uuid(), mode: z.enum(sessionModes) })
-          .parse(input),
+        issueStudentSessionSchema.parse(input),
       );
     default:
       throw new SchoolError(400, "unknown_command");
