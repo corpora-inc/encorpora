@@ -1,14 +1,16 @@
 /**
  * The public school pages in real browsers, against the real API and a real
  * database: a signed-out visitor reads `/schools`, writes through "Talk to us",
- * and reaches the scope and sequence; the PDF and CSV download and parse; the trust page's
+ * finds no self-serve start (`/school/new` without an invitation comes back to
+ * `/schools`), and reaches the scope and sequence; the PDF and CSV download and
+ * parse; the trust page's
  * agreement matches `agreement.ts`; a teacher shares a link, a signed-out browser
  * opens it, a reload keeps working, and revoking shows the calm page. Geometry at
  * 320, 390, 768 and 1280, light and dark. PDFs come from the real local renderer.
  * Screenshots land in docs/reviews/schools-public/ for a person to look at.
  *
  *     AMP_TEST_DATABASE_URL=... npx tsx scripts/verify-schools-public-ui.ts \
- *       [--engine chromium|webkit] [--widths 390,1280] [--skip-sweep] [--skip-journeys]
+ *       [--engine chromium|webkit] [--widths 390,1280] [--skip-sweep] [--skip-journeys] [--port 4406]
  */
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
@@ -64,8 +66,8 @@ const widths = (argument("--widths") ?? "320,390,768,1280")
 const themes = ["light", "dark"] as const;
 const REVIEW = "docs/reviews/schools-public";
 const ARTIFACTS = "artifacts/schools-public";
-const webPort = 4406,
-  apiPort = 4407,
+const webPort = Number(argument("--port") ?? 4406),
+  apiPort = webPort + 1,
   origin = `http://127.0.0.1:${webPort}`;
 const SIGNED_OUT_KEY = "amp.dev.signedOut";
 
@@ -651,7 +653,8 @@ async function journeys(browser: Browser, engine: string) {
       ),
     );
 
-    // Schools are set up with us: the page offers no way to start one alone.
+    // Schools are set up with us: the page offers no way to start one alone,
+    // and setup without an invitation is this page.
     await visitor.page.goto(`${origin}/schools`);
     check(
       `${label} no self-serve start`,
@@ -659,6 +662,9 @@ async function journeys(browser: Browser, engine: string) {
         .getByRole("link", { name: "Start a class" })
         .count()) === 0,
     );
+    await visitor.page.goto(`${origin}/school/new`);
+    await visitor.page.waitForURL(`${origin}/schools`);
+    await heading(visitor.page, /complete math curriculum/).waitFor();
 
     // A teacher shares a link from the student's record.
     const teacher = await start({ account: fixture.teacher });

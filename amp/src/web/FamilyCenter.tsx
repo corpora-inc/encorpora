@@ -10,7 +10,7 @@ import { AccountSecurity } from "./AccountSecurity";
 import { PaymentHistoryCenter } from "./PaymentHistoryCenter";
 import { FocusDialog } from "./PracticeWorkspace";
 import { licenseSummary, licenseChannel } from "./family-access";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import type {
   FamilySummary,
   FamilyLearner,
@@ -106,7 +106,17 @@ export function FamilyCenter({
   const setPrivacy = (value: typeof privacy) => {
     if (value) route.navigate(`/family/privacy/${value}`);
   };
-  const family = useFamilyCache(identity);
+  // Family is about the family's learners; the adult's own learner is its
+  // own place.
+  const cached = useFamilyCache(identity);
+  const family = useMemo(
+    () =>
+      cached && {
+        ...cached,
+        learners: cached.learners.filter((learner) => !learner.adult),
+      },
+    [cached],
+  );
   const [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
     [notice, setNotice] = useState("");

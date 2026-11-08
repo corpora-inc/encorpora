@@ -2,8 +2,8 @@
  * AMP for Schools from end to end, in real browsers, against the real API in
  * accounts mode, a real database and the real local PDF renderer:
  *
- *   1. A head signs up, sets up a school, imports 24 students and invites a
- *      teacher.
+ *   1. We issue a school; its head opens the setup link, signs up, sets it up,
+ *      imports 24 students and invites a teacher.
  *   2. The teacher accepts and prints cards.
  *   3. One student signs in by picture and another by card, and both answer
  *      problems in practice.
@@ -19,7 +19,7 @@
  * Chromium at 1280 and WebKit at 390. The per-feature verify scripts cover
  * each screen's geometry at every width; `capture-schools.ts` sweeps them all.
  *
- *     AMP_TEST_DATABASE_URL=... npx tsx scripts/verify-school-ui.ts [--engine chromium|webkit]
+ *     AMP_TEST_DATABASE_URL=... npx tsx scripts/verify-school-ui.ts [--engine chromium|webkit] [--port 4425]
  */
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
@@ -38,6 +38,7 @@ import { secureChromium } from "../browser-security.mjs";
 import { registerFamilyRoutes } from "../src/family/routes";
 import { SchoolRepository } from "../src/schools/repository";
 import { registerSchoolRoutes } from "../src/schools/routes";
+import { schoolAdmin } from "./school-admin";
 import {
   accountsAuth,
   accountsConfiguration,
@@ -68,8 +69,8 @@ const argument = (name: string) => {
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url) throw new Error("AMP_TEST_DATABASE_URL is required");
 assertTestDatabaseTarget(url);
-const webPort = 4425;
-const apiPort = 4426;
+const webPort = Number(argument("--port") ?? 4425);
+const apiPort = webPort + 1;
 const origin = `http://127.0.0.1:${webPort}`;
 const ARTIFACTS = "artifacts/school-launch";
 await mkdir(ARTIFACTS, { recursive: true });
@@ -98,21 +99,20 @@ console.info = (...args: unknown[]) => {
   if (!String(args[0] ?? "").startsWith("[accounts]")) info(...args);
 };
 const renderer = localRenderer();
+const services = {
+  secret: accounts.config.secret,
+  origin,
+  mail: async (to: string, subject: string, _text: string, link: string) => {
+    mail.push({ to, subject, url: link });
+  },
+};
 const app = buildApp({ repository, authenticate, publicUrl: origin });
 await registerAccountRoutes(app, accounts, authenticate);
 await registerFamilyRoutes(app, { pool: db, authenticate });
 await registerSchoolRoutes(app, {
   pool: db,
   authenticate,
-  services: {
-    secret: accounts.config.secret,
-    origin,
-    mail: async (to, subject, _text, link) => {
-      mail.push({ to, subject, url: link });
-    },
-    learning: repository,
-    renderer,
-  },
+  services: { ...services, learning: repository, renderer },
 });
 await app.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
@@ -263,21 +263,44 @@ async function journey(browser: Browser, engine: string, width: number) {
   };
   let last: Page | null = null;
   try {
-    // 1. The head: sign up, set up, import 24, invite a teacher.
+    // 1. We issue the school. The head opens the setup link, signs up, sets
+    // it up, imports 24 and invites a teacher.
     const head = await (await context()).newPage();
     last = head;
     head.setDefaultTimeout(30_000);
     const tag = randomUUID().slice(0, 8);
     const schoolName = `Linden Park School ${engine}`;
-    await head.goto(`${origin}/school/new`);
-    await head.waitForURL(/\/sign-up\?/);
-    await signUp(head, `head-${tag}@linden.example`);
-    await heading(head, "Where will you use AMP?");
-    await head.getByLabel("School name").fill(schoolName);
-    await head.getByRole("radio", { name: /A school/ }).click();
-    await head.getByRole("button", { name: "Continue" }).click();
+    const headEmail = `head-${tag}@linden.example`;
+    const school = (await schoolAdmin(
+      schools,
+      "create-school",
+      {
+        name: schoolName,
+        adminEmail: headEmail,
+        seats: 30,
+        startsOn: new Date(Date.now() - DAY).toISOString().slice(0, 10),
+        endsOn: new Date(Date.now() + 300 * DAY).toISOString().slice(0, 10),
+        reference: "Pilot",
+      },
+      services,
+    )) as { orgId: string; setupUrl: string };
+    const setupMail = mail.find((entry) => entry.url === school.setupUrl);
+    assert.equal(setupMail?.to, headEmail, "The setup link was mailed");
+    await head.goto(school.setupUrl);
+    await heading(head, `Set up ${schoolName}`);
+    await head.getByRole("link", { name: "Create an account" }).click();
+    await head.waitForURL(/\/sign-up/);
+    await signUp(head, headEmail);
+    await heading(head, `Set up ${schoolName}`);
+    await head.getByLabel(/Your name/).fill("Ruth Adeyemi");
+    await head.getByRole("button", { name: "Start setup" }).click();
     await heading(head, "When does your school year run?");
-    const orgId = new URL(head.url()).searchParams.get("org")!;
+    const orgId = school.orgId;
+    check(
+      `${label} setup opens at the calendar for the issued school`,
+      head.url().includes(`org=${orgId}`),
+      head.url(),
+    );
     await head.getByRole("button", { name: "Continue" }).click();
     await heading(head, "What should students see?");
     await head.getByRole("button", { name: "Continue" }).click();

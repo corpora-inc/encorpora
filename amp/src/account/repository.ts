@@ -3,6 +3,7 @@ import type { Pool } from "pg";
 import { meSchema, type SignedInMe } from "./contracts.js";
 import type { FamilyRepository } from "../family/repository.js";
 import { activeToday } from "../schools/principal.js";
+import { adultPracticeEnd } from "./adult-access.js";
 /** One authenticated account snapshot. No trial capability or child draft is stored here. */
 export async function accountSummary(
   pool: Pool,
@@ -56,8 +57,10 @@ export async function accountSummary(
           )
         ).rows[0]
       : undefined;
+  // The family's learners; the adult's own learner is its own place.
+  const adult = family.learners.find((l) => l.adult && !l.deletedAt);
   const learners = family.learners
-    .filter((l) => !l.deletedAt)
+    .filter((l) => !l.deletedAt && !l.adult)
     .map((l) => {
       const grant = l.access
         .filter(
@@ -79,23 +82,66 @@ export async function accountSummary(
       };
     });
   const gift = await availableGift(pool, accountId);
-  const staffOf = (
-    await pool
-      .query<{ orgId: string; orgName: string; role: string }>(
-        `SELECT DISTINCT ON (o.id) o.id AS "orgId",o.name AS "orgName",r.role
+  // Both in parallel. A fixture at an earlier migration boundary has no
+  // schools, or trials without owners, and reads as none: no extra round trip
+  // to check first on the path every parent's `/me` takes.
+  const missing =
+    (...codes: string[]) =>
+    (error: { code?: string }) => {
+      if (error.code && codes.includes(error.code)) return { rows: [] };
+      throw error;
+    };
+  const [staffRows, trialRows, adultEnds] = await Promise.all([
+    pool
+      .query<{
+        orgId: string;
+        orgName: string;
+        role: string;
+        setupPending: boolean;
+      }>(
+        `SELECT DISTINCT ON (o.id) o.id AS "orgId",o.name AS "orgName",r.role,
+         o.setup_pending AND r.role='admin' AS "setupPending"
        FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
        JOIN amp_orgs o ON o.id=r.org_id
        WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")}
        ORDER BY o.id,array_position(ARRAY['admin','teacher','aide','viewer'],r.role)`,
         [accountId],
       )
-      .catch((error: { code?: string }) => {
-        // Fixtures at an earlier migration boundary have no schools. No extra
-        // round trip on the path every parent's `/me` takes.
-        if (error.code === "42P01") return { rows: [] };
-        throw error;
-      })
-  ).rows;
+      .catch(missing("42P01")),
+    // A free assessment this account started and hasn't made a learner yet.
+    pool
+      .query(
+        `SELECT 1 FROM amp_trials WHERE owner_account_id=$1 AND adopted_at IS NULL AND expires_at>now() LIMIT 1`,
+        [accountId],
+      )
+      .catch(missing("42P01", "42703")),
+    // Without their own learner yet, whether this adult may start one. With
+    // one, its refreshed grant already says.
+    adult
+      ? null
+      : adultPracticeEnd(pool, accountId).catch((error: { code?: string }) => {
+          if (error.code === "42P01" || error.code === "42703") return null;
+          throw error;
+        }),
+  ]);
+  const adultPractice =
+    adult || adultEnds
+      ? {
+          eligible: adult ? adult.canPractice === true : true,
+          learner: adult
+            ? {
+                id: adult.id,
+                name: adult.name,
+                active: adult.canPractice === true,
+              }
+            : null,
+        }
+      : null;
+  const staffOf = staffRows.rows.map(({ setupPending, ...place }) => ({
+    ...place,
+    // Only an admin finishes setup, so only theirs says so.
+    ...(setupPending ? { setupPending: true as const } : {}),
+  }));
   const value = {
     signedIn: true as const,
     account: {
@@ -115,6 +161,8 @@ export async function accountSummary(
     learners,
     family,
     ...(staffOf.length ? { staffOf } : {}),
+    ...(trialRows.rows.length ? { trial: true as const } : {}),
+    ...(adultPractice ? { adultPractice } : {}),
     ...(gift ? { availableAccessGrant: gift } : {}),
     ...(unassigned
       ? {

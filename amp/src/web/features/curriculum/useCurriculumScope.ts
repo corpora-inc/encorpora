@@ -5,6 +5,7 @@ import { useLearnerStore } from "../../learner-store";
 import { trialSessionOptions } from "../trial/api";
 import { nativeRuntime } from "../../native-runtime";
 import { useFamilyCache } from "../../lib/family-cache";
+import { practiceLearners, practicingAsAdult } from "../../lib/adult-learner";
 
 /** Resolve presentation identity without loading progress or assessment evidence. */
 export function useCurriculumScope() {
@@ -35,12 +36,17 @@ export function useCurriculumScope() {
       levels: undefined,
     };
   }
+  const account = me.data?.signedIn ? me.data : null;
+  // An adult always sees their own levels.
+  const own = practicingAsAdult(account, selected);
   return {
     ...resolveCurriculumScope({
       pathname: location.pathname,
       trialContext: search.context === "trial",
       session: session.data,
-      me: me.data,
+      me: account
+        ? { ...account, learners: practiceLearners(account) }
+        : me.data,
       trial: trial.data,
       selected,
       loading: session.isPending || (!!session.data && me.isPending),
@@ -48,7 +54,7 @@ export function useCurriculumScope() {
       trialPending: trial.isPending,
       trialError: !!trial.error,
     }),
-    levels: me.data?.signedIn ? me.data.school?.levels : undefined,
+    levels: own ? ("shown" as const) : account?.school?.levels,
   };
 }
 

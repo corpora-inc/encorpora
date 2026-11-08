@@ -230,8 +230,11 @@ function StaffRow({
     .map((id) => classes.find((klass) => klass.id === id)?.name)
     .filter(Boolean)
     .join(", ");
+  // An admin can take classes too, and teaches them from then on.
   const teaches =
-    person.roles.includes("teacher") || person.roles.includes("aide");
+    person.roles.includes("teacher") ||
+    person.roles.includes("aide") ||
+    person.roles.includes("admin");
   // Until they accept, an invited person's only name is their address.
   const onlyAddress =
     person.status === "invited" && person.email?.split("@")[0] === person.name;

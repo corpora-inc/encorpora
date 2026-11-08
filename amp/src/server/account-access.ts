@@ -33,16 +33,46 @@ export async function parentAddressConfirmed(
   );
   return user.rows[0]?.emailVerified === true;
 }
+/** The account's own adult learner, live. Account holders are adults by the
+ * terms, so this learner learns on the account's own terms: no parental
+ * consent applies to it (docs/families.md). */
+export async function isAdultLearner(
+  client: Pick<PoolClient, "query">,
+  accountId: string,
+  learnerId: string,
+): Promise<boolean> {
+  // Read through the row, so a database before migration 0093 has none.
+  return !!(
+    await client.query(
+      "SELECT 1 FROM amp_learners l WHERE l.id=$1 AND l.account_id=$2 AND l.deleted_at IS NULL AND to_jsonb(l)->'adult'='true'::jsonb",
+      [learnerId, accountId],
+    )
+  ).rowCount;
+}
+/** Whether learning data may be collected. With `learnerId`, for that learner:
+ * an adult learner of the account is active on the account's own terms, and
+ * every other learner keeps the account's consent rules below. */
 export async function learningConsentActive(
   client: PoolClient,
   accountId: string,
   development = false,
+  learnerId?: string,
 ): Promise<boolean> {
   // Trial learners use a separate namespace and expire after 14 days.
   // A parent owns the trial for cross-device resume; adopting its answers
   // into a named family learner requires the regular consent checks.
   if (accountId.startsWith("trial:")) return true;
   if (isSchoolAccount(accountId)) return schoolConsentActive(client, accountId);
+  if (await parentConsentActive(client, accountId, development)) return true;
+  return !!learnerId && (await isAdultLearner(client, accountId, learnerId));
+}
+/** The account's verified parental consent, which every child learner of a
+ * family account needs. */
+async function parentConsentActive(
+  client: PoolClient,
+  accountId: string,
+  development: boolean,
+): Promise<boolean> {
   const result = await client.query(
     "SELECT withdrawn_at,verification_method,evidence_reference FROM amp_parent_consents WHERE account_id=$1",
     [accountId],

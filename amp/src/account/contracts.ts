@@ -28,6 +28,8 @@ export const familySummarySchema = z.object({
       ),
       stripeLinked: z.boolean(),
       canPractice: z.boolean().optional(),
+      /** The account holder's own learner (docs/families.md), not a child. */
+      adult: z.literal(true).optional(),
     }),
   ),
   retained: z.object({
@@ -96,8 +98,29 @@ export const meSchema = z.discriminatedUnion("signedIn", [
           orgId: z.string(),
           orgName: z.string(),
           role: z.enum(["admin", "teacher", "aide", "viewer"]),
+          /** This admin hasn't finished the school's guided setup. */
+          setupPending: z.literal(true).optional(),
         }),
       )
+      .optional(),
+    /** A free assessment in progress: the family side has something to open
+     * even before there's a learner. */
+    trial: z.literal(true).optional(),
+    /** The adult's own practice, when they have it or may start it: free while
+     * they teach at a licensed school or a child of theirs has access. Their
+     * learner is never among `learners`, which are the family's. */
+    adultPractice: z
+      .object({
+        /** May practice now: their access is active, or they may start. */
+        eligible: z.boolean(),
+        learner: z
+          .object({
+            id: z.string(),
+            name: z.string(),
+            active: z.boolean(),
+          })
+          .nullable(),
+      })
       .optional(),
     /** `try`: no purchase or consent yet, so the parent gets the anonymous
      * free trial; the plan opens when they choose to buy or reach the limit. */

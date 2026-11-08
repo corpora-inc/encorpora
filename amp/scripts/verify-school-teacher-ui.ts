@@ -10,7 +10,7 @@
  *
  *     AMP_TEST_DATABASE_URL=... npx tsx scripts/verify-school-teacher-ui.ts \
  *       [--engine chromium|webkit] [--widths 390,1280] [--skip-sweep] \
- *       [--skip-journeys] [--reuse <schema>] [--keep]
+ *       [--skip-journeys] [--reuse <schema>] [--keep] [--port 4400]
  */
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
@@ -70,8 +70,8 @@ const sweepWidths = (argument("--widths") ?? "320,390,768,1280")
 const themes = ["light", "dark"] as const;
 const REVIEW = "docs/reviews/school-teacher";
 const ARTIFACTS = "artifacts/school-teacher";
-const webPort = 4400,
-  apiPort = 4401,
+const webPort = Number(argument("--port") ?? 4400),
+  apiPort = webPort + 1,
   origin = `http://127.0.0.1:${webPort}`;
 const TEACHER = "development-household";
 const SHOTS_FOR_REVIEW = new Set([1280, 390]);

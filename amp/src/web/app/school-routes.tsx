@@ -4,7 +4,7 @@ import {
   redirect,
   type AnyRoute,
 } from "@tanstack/react-router";
-import { queryClient, sessionOptions } from "../lib/query";
+import { meOptions, queryClient, sessionOptions } from "../lib/query";
 import { studentSession } from "../lib/student-device";
 import { nativeRuntime } from "../native-runtime";
 import type { AuthSession } from "../auth";
@@ -36,17 +36,17 @@ import {
 
 /** Staff screens: signed in, on the web, and not a student's device. A signed-out
  * visitor goes through the usual sign-in and comes straight back here. */
-async function staffSession(
-  location: { pathname: string; searchStr: string },
-  signUpFirst = false,
-): Promise<AuthSession> {
+async function staffSession(location: {
+  pathname: string;
+  searchStr: string;
+}): Promise<AuthSession> {
   if (nativeRuntime || studentSession())
     throw redirect({ to: "/", replace: true });
   const session = await queryClient.ensureQueryData(sessionOptions);
   if (!session) {
     markSchoolSignup("1");
     throw redirect({
-      to: signUpFirst ? "/sign-up" : "/sign-in",
+      to: "/sign-in",
       search: {
         return: "school",
         next: `${location.pathname}${location.searchStr}`,
@@ -68,6 +68,8 @@ export async function frameData(session: AuthSession, orgId: string) {
     preload(orgOptions(session, orgId)),
     preload(classesOptions(session, orgId)),
     preload(orgsOptions(session)),
+    // The place switcher's list, so the rail is whole on its first paint.
+    preload(meOptions(session)),
   ]);
 }
 
@@ -151,8 +153,9 @@ export function schoolRoutes(root: AnyRoute) {
       beforeLoad: async ({ location }) => {
         const session = await staffSession(location);
         const orgs = await queryClient.fetchQuery(orgsOptions(session));
+        // No school yet: we issue them, so the way in is to talk to us.
         if (orgs.length === 0)
-          throw redirect({ to: "/school/new", replace: true } as never);
+          throw redirect({ to: "/schools", replace: true });
         if (orgs.length === 1)
           throw redirect({ ...orgHome(orgs[0]!), replace: true } as never);
       },
@@ -161,30 +164,38 @@ export function schoolRoutes(root: AnyRoute) {
         "ChooserScreen",
       ),
     }),
+    // Guided setup, for the admin of a school we issued. Their invitation is
+    // how they arrive; without one there's nothing to set up, so a visitor
+    // goes to `/schools`, which says how a school starts.
     createRoute({
       getParentRoute: () => root,
       path: "/school/new",
       beforeLoad: async ({ location }) => {
-        const session = await staffSession(location, true);
         const search = location.search as unknown as {
           org?: unknown;
           step?: unknown;
         };
+        if (nativeRuntime || studentSession())
+          throw redirect({ to: "/", replace: true });
+        const signedIn = await queryClient.ensureQueryData(sessionOptions);
+        // A setup link from earlier: sign in, then carry on with it.
+        if (!signedIn && typeof search.org !== "string")
+          throw redirect({ to: "/schools", replace: true });
+        const session = await staffSession(location);
         const orgs = await queryClient.fetchQuery(orgsOptions(session));
         const requested =
           typeof search.org === "string"
             ? orgs.find((org) => org.id === search.org)
-            : orgs.find((org) => org.setupPending);
-        if (!requested) {
-          if (search.step && search.step !== "school")
-            throw redirect({ to: "/school/new", replace: true } as never);
-          return;
-        }
+            : orgs.find(
+                (org) => org.setupPending && org.roles.includes("admin"),
+              );
+        if (!requested) throw redirect({ to: "/schools", replace: true });
         if (!requested.setupPending)
           throw redirect({ ...orgHome(requested), replace: true } as never);
-        const state = await queryClient.fetchQuery(
-          setupOptions(session, requested.id),
-        );
+        const [state] = await Promise.all([
+          queryClient.fetchQuery(setupOptions(session, requested.id)),
+          preload(meOptions(session)),
+        ]);
         // The first thing not yet answered; a later step waits for it.
         const open: SetupStep = !state.calendar
           ? "calendar"

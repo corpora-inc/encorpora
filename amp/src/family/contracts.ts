@@ -15,6 +15,8 @@ export interface FamilyLearner {
   stripeLinked: boolean;
   /** Server-clock capability; absent on older/native providers. Authorization is still enforced on each request. */
   canPractice?: boolean;
+  /** The account holder's own learner (docs/families.md), not a child. */
+  adult?: true;
 }
 export interface FamilySummary {
   purchaseMeasurement?: PurchaseMeasurement;

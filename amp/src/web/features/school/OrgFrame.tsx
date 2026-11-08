@@ -12,6 +12,7 @@ import type { TabItem } from "../../ui/Tabs";
 import { classesOptions, currentSession, orgOptions, orgsOptions } from "./api";
 import { classPath, orgPath } from "./paths";
 import { compareClassNames } from "./sort";
+import { PlaceSwitcher, placeEntries } from "../navigation/PlaceSwitcher";
 import {
   SchoolFrame,
   type SchoolCrumb,
@@ -37,12 +38,11 @@ export type NavId =
   | "experience"
   | `class:${string}`;
 
-function AccountMenu() {
+/** The signed-in person at the foot of a rail: their address and Sign out. */
+export function AccountMenu() {
   const session = currentSession();
   const me = useQuery(meOptions(session)).data;
-  const navigate = useNavigate();
   const email = me?.signedIn ? (me.account.email ?? "") : "";
-  const hasFamily = me?.signedIn && me.learners.length > 0;
   return (
     <Menu
       align="start"
@@ -56,11 +56,6 @@ function AccountMenu() {
       }
     >
       {email && <MenuLabel>{email}</MenuLabel>}
-      {hasFamily && (
-        <MenuItem onSelect={() => void navigate({ to: "/" })}>
-          Family and learners
-        </MenuItem>
-      )}
       <MenuItem
         onSelect={() =>
           void signOut().catch((error) => {
@@ -74,9 +69,28 @@ function AccountMenu() {
   );
 }
 
-function OrgSwitcher({ current, name }: { current: string; name: string }) {
-  const orgs = useQuery(orgsOptions(currentSession())).data ?? [];
+/** Where this person is, and the way to their other places: the shared place
+ * switcher when there's more than one, otherwise the school's name. */
+function OrgSwitcher({
+  current,
+  name,
+  ancestors,
+}: {
+  current: string;
+  name: string;
+  ancestors: readonly { id: string }[];
+}) {
+  const session = currentSession();
+  const me = useQuery(meOptions(session)).data;
+  const orgs = useQuery(orgsOptions(session)).data ?? [];
   const navigate = useNavigate();
+  if (me?.signedIn && placeEntries(me).length > 1) {
+    // A school inside a district this person works for is that place.
+    const mine = [current, ...ancestors.map((entry) => entry.id).reverse()]
+      .map((id) => `school:${id}` as const)
+      .find((id) => me.staffOf?.some((org) => `school:${org.orgId}` === id));
+    return <PlaceSwitcher me={me} current={mine ?? null} label={name} />;
+  }
   if (orgs.length < 2) return <p className={styles.orgName}>{name}</p>;
   return (
     <Menu align="start" label={name}>
@@ -125,6 +139,8 @@ export function OrgFrame({
   const classes = [
     ...(useQuery(classesOptions(session, orgId)).data ?? []),
   ].sort((a, b) => compareClassNames(a.name, b.name));
+  const me = useQuery(meOptions(session)).data;
+  const elsewhere = !!me?.signedIn && placeEntries(me).length > 1;
   if (!org.data) {
     // Not found says so; anything else is this request, and trying again works.
     const missing =
@@ -260,7 +276,17 @@ export function OrgFrame({
     <SchoolFrame
       title={title}
       lone={lone}
-      orgSwitcher={<OrgSwitcher current={orgId} name={org.data.name} />}
+      orgSwitcher={
+        // Just my class: the school's name is the class's, so only a way to
+        // somewhere else earns the space.
+        lone && !elsewhere ? undefined : (
+          <OrgSwitcher
+            current={orgId}
+            name={org.data.name}
+            ancestors={ancestors}
+          />
+        )
+      }
       sections={sections}
       activeNav={nav}
       breadcrumb={[

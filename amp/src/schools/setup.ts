@@ -10,27 +10,21 @@ import {
 import { SchoolError, type GradingKind } from "./contracts.js";
 import { experienceValues } from "./classroom-contracts.js";
 import { recordEvent } from "./events.js";
-import {
-  EVALUATION_DAYS,
-  EVALUATION_SEATS,
-  SELF_SERVE_ORG_LIMIT,
-} from "./license.js";
-import { generateHandle, type SchoolRepository } from "./repository.js";
+import type { SchoolRepository } from "./repository.js";
 import {
   assertSettingsWritable,
   defaultSettings,
   SettingLockedError,
   type SettingsScope,
 } from "./settings.js";
-import { markStaffAccount } from "./staff-account.js";
 import {
   acceptAgreementSchema,
   addDivisionSchema,
   calendarSchema,
   experienceSchema,
   finishSetupSchema,
+  schoolStepSchema,
   sessionUpdateSchema,
-  startSetupSchema,
   type ExperiencePreset,
   type SessionResource,
   type SetupState,
@@ -49,94 +43,6 @@ function presetFor(values: Record<string, unknown>): ExperiencePreset | null {
 const defaultKey = (key: string) =>
   (defaultSettings as Record<string, unknown>)[key];
 
-async function accountEmail(client: PoolClient, accountId: string) {
-  if (!accountId.startsWith("amp|")) return null;
-  return ((
-    await client.query("SELECT email FROM amp_auth_users WHERE id=$1", [
-      accountId.slice(4),
-    ])
-  ).rows[0]?.email ?? null) as string | null;
-}
-/** A first label for a head or teacher, replaced by their real name when they
- * sign the agreement. */
-const provisionalName = (email: string | null) =>
-  (email?.split("@")[0] ?? "Admin").slice(0, 100) || "Admin";
-
-/** Step one: the org exists from here, so every later step and a reload have
- * something to write to. A second submit carries on with the same org. */
-export async function startSetup(
-  repo: SchoolRepository,
-  accountId: string,
-  raw: unknown,
-) {
-  const input = startSetupSchema.parse(raw);
-  return repo.transaction(async (client) => {
-    await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
-      `school-setup:${accountId}`,
-    ]);
-    const mine = (
-      await client.query(
-        `SELECT id,setup_pending FROM amp_orgs WHERE created_by=$1 ORDER BY created_at DESC`,
-        [accountId],
-      )
-    ).rows;
-    const pending = mine.find((row) => row.setup_pending);
-    if (pending) {
-      await writeSchool(client, repo, pending.id, input);
-      return { id: pending.id as string };
-    }
-    if (mine.length >= SELF_SERVE_ORG_LIMIT)
-      throw new SchoolError(409, "setup_limit");
-    const id = randomUUID();
-    await client.query(
-      `INSERT INTO amp_orgs(id,kind,path,name,timezone,solo,setup_pending,created_by)
-       VALUES($1,'school',$2,$3,$4,$5,true,$6)`,
-      [
-        id,
-        [id],
-        input.name,
-        input.timezone,
-        input.shape === "class",
-        accountId,
-      ],
-    );
-    const personId = randomUUID();
-    const email = await accountEmail(client, accountId);
-    await client.query(
-      `INSERT INTO amp_people(id,tenant_id,given_name,handle,email,account_id,timezone)
-       VALUES($1,$2,$3,$4,$5,$6,$7)`,
-      [
-        personId,
-        id,
-        provisionalName(email),
-        generateHandle(),
-        email,
-        accountId,
-        input.timezone,
-      ],
-    );
-    const today = await repo.today(client, input.timezone);
-    await client.query(
-      "INSERT INTO amp_org_roles(id,person_id,org_id,role,begin_on) VALUES($1,$2,$3,'admin',$4)",
-      [randomUUID(), personId, id, today],
-    );
-    if (input.shape === "class")
-      await client.query(
-        "INSERT INTO amp_org_roles(id,person_id,org_id,role,begin_on) VALUES($1,$2,$3,'teacher',$4)",
-        [randomUUID(), personId, id, today],
-      );
-    await recordEvent(client, {
-      orgId: id,
-      actorPersonId: personId,
-      action: "org.created",
-      targetKind: "org",
-      targetId: id,
-      detail: { after: { kind: "school", solo: input.shape === "class" } },
-    });
-    await markStaffAccount(client, accountId);
-    return { id };
-  });
-}
 async function writeSchool(
   client: PoolClient,
   repo: SchoolRepository,
@@ -176,7 +82,7 @@ export async function updateSetupSchool(
   orgId: string,
   raw: unknown,
 ) {
-  const input = startSetupSchema.parse(raw);
+  const input = schoolStepSchema.parse(raw);
   await repo.transaction((client) => writeSchool(client, repo, orgId, input));
 }
 
@@ -406,30 +312,9 @@ export async function setExperience(
   });
 }
 
-/* Agreement and license. */
-async function ensureEvaluationLicense(
-  client: PoolClient,
-  repo: SchoolRepository,
-  orgId: string,
-  now = new Date(),
-) {
-  const held = await client.query(
-    "SELECT 1 FROM amp_school_licenses WHERE org_id=$1 LIMIT 1",
-    [orgId],
-  );
-  if (held.rowCount) return;
-  await repo.issueLicenseIn(client, {
-    orgId,
-    seats: EVALUATION_SEATS,
-    endsAt: new Date(
-      now.getTime() + EVALUATION_DAYS * 86_400_000,
-    ).toISOString(),
-    reference: "Evaluation",
-  });
-}
+/* Agreement. */
 /** The signer's name also becomes the person's own, in place of the label from
- * their email address. Students can be added from here on, so the evaluation
- * license starts now. */
+ * their email address. */
 export async function acceptSetupAgreement(
   repo: SchoolRepository,
   orgId: string,
@@ -450,7 +335,6 @@ export async function acceptSetupAgreement(
         [actorPersonId, words.join(" "), family],
       );
     }
-    await ensureEvaluationLicense(client, repo, org.id);
     return { id };
   });
 }
@@ -476,7 +360,6 @@ export async function finishSetup(
       [orgId],
     );
     if (!signed.rowCount) throw new SchoolError(409, "agreement_required");
-    await ensureEvaluationLicense(client, repo, orgId);
     const existing = (
       await client.query(
         "SELECT id FROM amp_classes WHERE org_id=$1 AND archived_at IS NULL ORDER BY created_at,id LIMIT 1",
@@ -585,6 +468,18 @@ export async function setupState(
       [orgId],
     )
   ).rows[0];
+  // What the operator issued, in the school's own days, for the roster step.
+  const license = (
+    await pool.query(
+      `SELECT sum(l.seats)::int AS seats,
+         to_char(min(l.starts_at) AT TIME ZONE o.timezone,'YYYY-MM-DD') AS "startsOn",
+         to_char((max(l.ends_at) AT TIME ZONE o.timezone) - interval '1 second','YYYY-MM-DD') AS "endsOn"
+       FROM amp_orgs o JOIN amp_school_licenses l ON l.org_id=ANY(o.path)
+       WHERE o.id=$1 AND l.status='active' AND l.ends_at>now()
+       GROUP BY o.timezone`,
+      [orgId],
+    )
+  ).rows[0];
   return {
     org,
     calendar: year ?? null,
@@ -593,5 +488,6 @@ export async function setupState(
       ? { ...agreement, acceptedAt: agreement.acceptedAt.toISOString() }
       : null,
     firstClass: firstClass ?? null,
+    license: license ?? null,
   };
 }
