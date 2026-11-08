@@ -220,11 +220,7 @@ export class FamilyRepository {
         [learnerId, accountId, name],
       );
       if (!result.rowCount) throw new FamilyError(404, "learner_not_found");
-      // The teacher's roster row (any class) shows the learner's new name.
-      await client.query(
-        "UPDATE amp_people SET given_name=$2 WHERE learner_id=$1",
-        [learnerId, name.trim().slice(0, 100) || "Student"],
-      );
+      // The class roster follows by trigger (migration 0098).
       await this.audit(client, accountId, "learner.renamed", learnerId, 1);
     });
   }
