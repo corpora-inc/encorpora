@@ -3,6 +3,7 @@ import {
   revokeAdvertisingPermission,
 } from "../advertising/permission.js";
 import { refreshAdultAccess } from "../account/adult-access.js";
+import { ensureFamilyClass, practiceHere } from "./family-class.js";
 import { cancelPendingConsent } from "../parent-consent/lifecycle.js";
 import { learningConsentActive } from "../server/account-access.js";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
@@ -71,6 +72,11 @@ export class FamilyRepository {
   }
   async summary(accountId: string): Promise<FamilySummary> {
     return this.transaction(accountId, async (client) => {
+      // Families are classes: children who were here before that get their
+      // family's class on the parent's next visit, under this account lock.
+      await ensureFamilyClass(client, this.pool, accountId, {
+        converting: true,
+      });
       // The adult's own learner keeps its free access current with what
       // qualifies it, so every read below sees the refreshed grant. Read
       // through the row, so a database before 0093 has none.
@@ -179,6 +185,27 @@ export class FamilyRepository {
         })),
         retained: retentionNotice,
       };
+    });
+  }
+  /** "Let Maya practice here": a shared-mode student session for one child,
+   * when that child can practice now. */
+  async practiceHere(accountId: string, learnerId: string) {
+    return this.transaction(accountId, async (client) => {
+      const canPractice =
+        (await learningConsentActive(
+          client,
+          accountId,
+          this.development,
+          learnerId,
+        )) &&
+        (this.development ||
+          !!(
+            await client.query(
+              "SELECT 1 FROM amp_grants WHERE learner_id=$1 AND status='active' AND starts_at<=now() AND ends_at>now()",
+              [learnerId],
+            )
+          ).rowCount);
+      return practiceHere(client, this.pool, accountId, learnerId, canPractice);
     });
   }
   async rename(
@@ -298,6 +325,9 @@ export class FamilyRepository {
     const workbooks = !!(
       await client.query("SELECT to_regclass('amp_workbooks') AS relation")
     ).rows[0]?.relation;
+    const roster = !!(
+      await client.query("SELECT to_regclass('amp_people') AS relation")
+    ).rows[0]?.relation;
     let retained = 0,
       linked =
         !learnerId && stripe
@@ -385,6 +415,13 @@ export class FamilyRepository {
           [row.id],
         );
       if (preserve) {
+        // The family's roster lets go of the learner, and the schools
+        // trigger scrubs the child's name from it, as a deleted learner does.
+        if (roster)
+          await client.query(
+            "UPDATE amp_people SET learner_id=NULL WHERE learner_id=$1",
+            [row.id],
+          );
         await client.query(
           "UPDATE amp_learners SET name='Deleted learner',birth_year=NULL,starting_band=NULL,starting_policy=NULL,starting_excluded_strands=NULL,deleted_at=COALESCE(deleted_at,now()),created_at=CASE WHEN deleted_at IS NULL THEN now() ELSE created_at END WHERE id=$1",
           [row.id],

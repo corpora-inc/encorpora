@@ -250,12 +250,21 @@ function routes(app: FastifyInstance, options: AppOptions) {
   // Free practice requires a parent session plus the device trial capability. Family, billing,
   // consent and export routes are registered with the parent authenticator
   // alone, so a trial token can never reach them.
+  /** The one learner each student request may reach. */
+  const boundLearners = new WeakMap<object, string>();
   async function learningAccount(request: Parameters<Authenticator>[0]) {
     const student = studentBearer(request);
     if (student) {
-      const account = await options.repository.studentAccount?.(student);
-      if (!account) throw new ApiError(401, "Sign in to continue");
-      return account;
+      const session = await options.repository.studentAccount?.(student);
+      if (!session) throw new ApiError(401, "Sign in to continue");
+      // A student session reaches its own learner and no other. A family
+      // student acts as the parent who owns their learner, so their siblings
+      // share that owner: this is what keeps them apart, for every route.
+      for (const learnerId of requestLearnerIds(request))
+        if (learnerId !== session.learnerId)
+          throw new ApiError(404, "Learner not found");
+      boundLearners.set(request, session.learnerId);
+      return session.accountId;
     }
     const trial = request.headers.authorization?.match(
       /^Trial ([A-Za-z0-9_-]{20,100})$/,
@@ -283,20 +292,26 @@ function routes(app: FastifyInstance, options: AppOptions) {
     )
       throw new ApiError(
         403,
-        isSchoolAccount(account)
+        studentBearer(request)
           ? "Ask your teacher about your access."
           : "Verified parent consent is required. Open Family → Privacy → Learning consent to review enrollment.",
       );
     return account;
   }
-  /** A school decides these for its students, so a student token can't. */
-  function assertFamilyManaged(account: string) {
+  /** A school or a family's teacher decides these for its students, so a
+   * student token can't. */
+  function assertFamilyManaged(
+    account: string,
+    request: Parameters<Authenticator>[0],
+  ) {
     if (isSchoolAccount(account))
       throw new ApiError(403, "Your school manages this.");
+    if (studentBearer(request))
+      throw new ApiError(403, "Your teacher manages this.");
   }
   async function familyManaged(request: Parameters<Authenticator>[0]) {
     const account = await parent(request);
-    assertFamilyManaged(account);
+    assertFamilyManaged(account, request);
     return account;
   }
   // `commit` and `builtAt` name the running release (null in a local build).
@@ -338,9 +353,13 @@ function routes(app: FastifyInstance, options: AppOptions) {
     });
     return sendPublicJson(request, reply, catalogCache);
   });
-  app.get("/api/v1/learners", async (request) => ({
-    learners: await options.repository.list(await parent(request)),
-  }));
+  app.get("/api/v1/learners", async (request) => {
+    const learners = await options.repository.list(await parent(request));
+    const bound = boundLearners.get(request);
+    return {
+      learners: bound ? learners.filter((l) => l.id === bound) : learners,
+    };
+  });
   app.post("/api/v1/learners", async (request, reply) => {
     const account = await familyManaged(request);
     if (isTrialAccount(account))
@@ -474,7 +493,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
     const change = practiceChangeSchema.parse(request.body);
-    if (change.kind === "reset") assertFamilyManaged(account);
+    if (change.kind === "reset") assertFamilyManaged(account, request);
     return options.repository.transaction(account, learnerId, (tx) =>
       changePractice(tx, change),
     );
@@ -624,9 +643,15 @@ function routes(app: FastifyInstance, options: AppOptions) {
                 ? workbookTemplateIds(await tx.recentWorkbooks())
                 : undefined,
           });
-      // The frontier was computed for planning; a school student's or an
-      // adult's level for today is stored from it, with no second replay.
-      if (levelNow && (isSchoolAccount(account) || (await tx.isAdult())))
+      // The frontier was computed for planning; a rostered student's (school
+      // or family) or an adult's level for today is stored from it, with no
+      // second replay.
+      if (
+        levelNow &&
+        (isSchoolAccount(account) ||
+          (await tx.onSchoolRoster()) ||
+          (await tx.isAdult()))
+      )
         await tx.saveLevelDay(levelNow);
       const saved: SavedProblem[] = [];
       const problems: PublicProblem[] = [];
@@ -1072,4 +1097,21 @@ export function withGlossary(outcome: Outcome): Outcome {
       screenBand(outcome.templateId),
     ),
   };
+}
+
+/** Every learner id a request names, wherever it names one: the path, the
+ * query or the body. */
+function requestLearnerIds(request: {
+  params?: unknown;
+  query?: unknown;
+  body?: unknown;
+}): string[] {
+  const ids: string[] = [];
+  for (const part of [request.params, request.query, request.body]) {
+    if (!part || typeof part !== "object") continue;
+    const { learnerId, learnerIds } = part as Record<string, unknown>;
+    if (learnerId !== undefined) ids.push(String(learnerId));
+    if (Array.isArray(learnerIds)) ids.push(...learnerIds.map(String));
+  }
+  return ids;
 }

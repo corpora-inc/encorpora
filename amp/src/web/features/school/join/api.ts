@@ -122,14 +122,15 @@ let finishing = false;
 export const finishingSignIn = () => finishing;
 
 /** Straight to the first problem. `replace`: Back goes to the class, not to
- * the pictures that just worked. */
+ * the pictures that just worked. `handed`: a parent gave their own device to
+ * their child, who hands it back by signing out. */
 export function useFinishSignIn() {
   const navigate = useNavigate();
   return useCallback(
-    async (grant: StudentGrant) => {
+    async (grant: StudentGrant, handed = false) => {
       const session = { accountId: grant.accountId, token: grant.token };
       finishing = true;
-      rememberStudentSession(session, grant.mode);
+      rememberStudentSession(session, grant.mode, handed);
       notifyAccountSessionChanged(session);
       // The app remounts for a new identity, and that would cancel a `/me`
       // started during the move. Wait here, so practice opens with it in hand.

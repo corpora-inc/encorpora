@@ -12,6 +12,7 @@
     "start": "tsx src/server/main.ts",
     "access:grant": "tsx scripts/access-grant.ts",
     "school:admin": "tsx scripts/school-admin.ts",
+    "family:convert": "tsx scripts/convert-families.ts",
     "school:demo": "tsx scripts/school-demo.ts",
     "school:load": "tsx scripts/load-school-class.ts",
     "school:capture": "tsx scripts/capture-schools.ts",

@@ -4,6 +4,7 @@ import { meSchema, type SignedInMe } from "./contracts.js";
 import type { FamilyRepository } from "../family/repository.js";
 import { activeToday } from "../schools/principal.js";
 import { adultPracticeEnd } from "./adult-access.js";
+import { familyClassOf } from "../family/family-class.js";
 /** One authenticated account snapshot. No trial capability or child draft is stored here. */
 export async function accountSummary(
   pool: Pool,
@@ -91,7 +92,7 @@ export async function accountSummary(
       if (error.code && codes.includes(error.code)) return { rows: [] };
       throw error;
     };
-  const [staffRows, trialRows, adultEnds] = await Promise.all([
+  const [staffRows, trialRows, adultEnds, familyClass] = await Promise.all([
     pool
       .query<{
         orgId: string;
@@ -102,7 +103,7 @@ export async function accountSummary(
         `SELECT DISTINCT ON (o.id) o.id AS "orgId",o.name AS "orgName",r.role,
          o.setup_pending AND r.role='admin' AS "setupPending"
        FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
-       JOIN amp_orgs o ON o.id=r.org_id
+       JOIN amp_orgs o ON o.id=r.org_id AND o.kind<>'family'
        WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")}
        ORDER BY o.id,array_position(ARRAY['admin','teacher','aide','viewer'],r.role)`,
         [accountId],
@@ -123,6 +124,9 @@ export async function accountSummary(
           if (error.code === "42P01" || error.code === "42703") return null;
           throw error;
         }),
+    // The family's class, which `families.summary` above keeps current. Its
+    // own place, apart from the schools this account works at.
+    familyClassOf(pool, accountId),
   ]);
   const adultPractice =
     adult || adultEnds
@@ -161,6 +165,7 @@ export async function accountSummary(
     learners,
     family,
     ...(staffOf.length ? { staffOf } : {}),
+    ...(familyClass ? { familyClass } : {}),
     ...(trialRows.rows.length ? { trial: true as const } : {}),
     ...(adultPractice ? { adultPractice } : {}),
     ...(gift ? { availableAccessGrant: gift } : {}),

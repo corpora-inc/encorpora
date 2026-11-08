@@ -1,6 +1,9 @@
 import { z } from "zod";
 
-export const orgKinds = ["district", "network", "school"] as const;
+/** Orgs an operator creates. A family (docs/families.md) is made by its
+ * parent's first child, never by hand. */
+export const schoolOrgKinds = ["district", "network", "school"] as const;
+export const orgKinds = [...schoolOrgKinds, "family"] as const;
 export const orgRoles = [
   "admin",
   "teacher",
@@ -106,7 +109,7 @@ const identifier = z.string().trim().min(1).max(100);
 export const gradeLevelSchema = z.number().int().min(0).max(13);
 
 export const createOrgSchema = z.strictObject({
-  kind: z.enum(orgKinds),
+  kind: z.enum(schoolOrgKinds),
   name: z.string().trim().min(1).max(200),
   timezone: timezone.optional(),
   parentId: z.uuid().optional(),

@@ -773,7 +773,7 @@ export class SchoolRepository {
         `SELECT o.id,o.kind,o.name,o.parent_id AS "parentId",o.timezone,o.solo,o.setup_pending AS "setupPending",
            array_agg(DISTINCT r.role ORDER BY r.role) AS roles
          FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
-         JOIN amp_orgs o ON o.id=r.org_id
+         JOIN amp_orgs o ON o.id=r.org_id AND o.kind<>'family'
          WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")}
          GROUP BY o.id ORDER BY o.name,o.id`,
         [accountId],

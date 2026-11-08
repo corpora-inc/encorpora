@@ -2,11 +2,13 @@ import type { Pool } from "pg";
 import { meSchema, type SignedInMe } from "../account/contracts.js";
 import { retentionNotice } from "../family/contracts.js";
 import { ApiError } from "../server/repository.js";
+import { learningConsentActive } from "../server/account-access.js";
 import {
   activeToday,
-  resolveStudentToken,
+  isSchoolAccount,
+  resolveStudentSession,
+  schoolAccountId,
   schoolConsentActive,
-  schoolPersonId,
 } from "./principal.js";
 import { enrollmentSettings } from "./enrollment-settings.js";
 import { studentLevelVisibility } from "./settings.js";
@@ -15,14 +17,16 @@ import { hasOpenBoard } from "./standings.js";
 /** `/me` for a student token, parent-shaped so the existing app runs unchanged.
  * An invalid token answers 401 rather than `signedIn:false`, which is how the
  * client knows to go to `/join`. Reads only: a family's `/me` takes an account
- * lock, and a class signing in together must not queue. */
+ * lock, and a class signing in together must not queue. A family's child is a
+ * student too: their one learner, on their parent's consent and grants. */
 export async function studentMe(
   pool: Pool,
   token: string,
+  development = false,
 ): Promise<SignedInMe> {
-  const accountId = await resolveStudentToken(pool, token);
-  const personId = accountId && schoolPersonId(accountId);
-  if (!accountId || !personId) throw new ApiError(401, "Sign in to continue");
+  const session = await resolveStudentSession(pool, token);
+  if (!session) throw new ApiError(401, "Sign in to continue");
+  const { accountId, personId } = session;
   const learner = (
     await pool.query(
       `SELECT l.id,l.name,l.birth_year,l.sat_math_focus FROM amp_people p
@@ -58,12 +62,23 @@ export async function studentMe(
   const current = grants
     .filter((grant) => grant.in_force)
     .sort((a, b) => b.ends_at.getTime() - a.ends_at.getTime())[0];
-  const canPractice = !!current && (await schoolConsentActive(pool, accountId));
+  // A school's agreement, or for a family's child their parent's consent.
+  const canPractice =
+    !!current &&
+    (isSchoolAccount(accountId)
+      ? await schoolConsentActive(pool, accountId)
+      : await learningConsentActive(
+          pool,
+          accountId,
+          development,
+          learner.id,
+        ));
   const settings = await enrollmentSettings(pool, personId, home, classes);
   return meSchema.parse({
     signedIn: true,
     account: {
-      id: accountId,
+      // The browser's key for this sign-in: the person, never the parent.
+      id: schoolAccountId(personId),
       email: null,
       emailVerified: true,
       confirmationRequired: false,

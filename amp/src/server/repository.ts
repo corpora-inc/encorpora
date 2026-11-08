@@ -59,7 +59,10 @@ import {
   lockLearningAccount,
   learningConsentActive,
 } from "./account-access.js";
-import { resolveStudentToken } from "../schools/principal.js";
+import {
+  resolveStudentSession,
+  type StudentSession,
+} from "../schools/principal.js";
 import { randomUUID } from "node:crypto";
 import {
   isTrialAccount,
@@ -72,6 +75,7 @@ import {
 } from "./trials";
 import type { Pool, PoolClient } from "pg";
 import { createDatabasePool } from "./database.js";
+import { ensureFamilyClass } from "../family/family-class.js";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { eq, and, isNull } from "drizzle-orm";
 import * as schema from "./schema";
@@ -241,8 +245,8 @@ export interface Repository {
   } | null>;
   /** The synthetic account for a live trial token, or null. */
   trialAccount(token: string, owner?: string): Promise<string | null>;
-  /** The synthetic account for a live student token, or null. */
-  studentAccount?(token: string): Promise<string | null>;
+  /** A live student token's learner and the account it acts as, or null. */
+  studentAccount?(token: string): Promise<StudentSession | null>;
   /** Moves a trial learner, with all answers, into a parent's account. */
   adoptTrial(accountId: string, token: string, name: string): Promise<Learner>;
 }
@@ -308,6 +312,10 @@ export class PostgresRepository implements Repository {
         "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,$3,$4)",
         [learner.id, accountId, learner.name, learner.birthYear],
       );
+      // A child is a student of their family's class from the start.
+      await ensureFamilyClass(client, this.pool, accountId, {
+        converting: false,
+      });
       await activateGiftInTransaction(
         client,
         accountId,
@@ -466,7 +474,7 @@ export class PostgresRepository implements Repository {
     }
   }
   studentAccount(token: string) {
-    return resolveStudentToken(this.pool, token);
+    return resolveStudentSession(this.pool, token);
   }
   async trialAccount(token: string, owner?: string) {
     const result = await this.pool.query(
@@ -526,6 +534,9 @@ export class PostgresRepository implements Repository {
         "UPDATE amp_trials SET adopted_at=now(),adopted_by=$2 WHERE id=$1",
         [id, accountId],
       );
+      await ensureFamilyClass(client, this.pool, accountId, {
+        converting: false,
+      });
       await activateGiftInTransaction(
         client,
         accountId,
