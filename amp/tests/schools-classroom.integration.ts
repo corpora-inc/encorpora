@@ -12,6 +12,7 @@ import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { buildApp } from "../src/server/app.js";
 import { refuseStudentTokens } from "../src/server/auth.js";
 import { ApiError, PostgresRepository } from "../src/server/repository.js";
+import { schoolDay } from "./helpers/school-day.js";
 
 const YEAR_AHEAD = new Date(Date.now() + 365 * 86_400_000).toISOString();
 const agreement = {
@@ -180,11 +181,7 @@ test(
         to = 5,
       }: { problems?: number; from?: number; to?: number },
     ) => {
-      const today = new Date();
-      const day = (offset: number) =>
-        new Date(today.getTime() - offset * 86_400_000)
-          .toISOString()
-          .slice(0, 10);
+      const day = (offset: number) => schoolDay(-offset);
       if (problems)
         await db.query(
           `INSERT INTO amp_skill_days(learner_id,day,skill_id,attempts,correct,independent)

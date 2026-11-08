@@ -13,13 +13,13 @@ import { learningConsentActive } from "../src/server/account-access.js";
 import { buildApp } from "../src/server/app.js";
 import { refuseStudentTokens } from "../src/server/auth.js";
 import { ApiError, PostgresRepository } from "../src/server/repository.js";
+import { schoolDay } from "./helpers/school-day.js";
 
 /* Adult practice (docs/families.md, step 2): every teaching adult practices
    free on their own learner, which needs no parental consent and never counts
    as a student. Every name here is made up. */
 const DAY = 86_400_000;
-const daysFromNow = (n: number) =>
-  new Date(Date.now() + n * DAY).toISOString().slice(0, 10);
+const daysFromNow = (n: number) => schoolDay(n);
 
 test(
   "adult practice: who qualifies, consent, access and the school's records",
