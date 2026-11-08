@@ -103,7 +103,7 @@ export async function accountSummary(
         `SELECT DISTINCT ON (o.id) o.id AS "orgId",o.name AS "orgName",r.role,
          o.setup_pending AND r.role='admin' AS "setupPending"
        FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
-       JOIN amp_orgs o ON o.id=r.org_id AND o.kind<>'family'
+       JOIN amp_orgs o ON o.id=r.org_id AND (o.kind<>'family' OR o.created_by<>$1)
        WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")}
        ORDER BY o.id,array_position(ARRAY['admin','teacher','aide','viewer'],r.role)`,
         [accountId],
@@ -124,8 +124,9 @@ export async function accountSummary(
           if (error.code === "42P01" || error.code === "42703") return null;
           throw error;
         }),
-    // The family's class, which `families.summary` above keeps current. Its
-    // own place, apart from the schools this account works at.
+    // The family's class, which `families.summary` above keeps current. It's
+    // this account's family side, so it isn't among the places above; a
+    // co-teacher from another account finds it there.
     familyClassOf(pool, accountId),
   ]);
   const adultPractice =

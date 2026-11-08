@@ -7,9 +7,8 @@
  *      straight into practice. `/` then returns to their own record, which is
  *      the record a teacher reads, pointed at themselves. Back, Forward and
  *      reload keep each screen, and the switcher goes both ways.
- *   2. A parent whose child has access starts their own practice from the
- *      family drawer and switches back to the family, whose learner is the
- *      child again.
+ *   2. A parent whose child has access starts their own practice from their
+ *      family's class and switches back to the class, where the child is.
  *   3. An adult with neither has no such place, and `/me/start` goes home.
  *
  * Chromium at 1280 and 390 in light and dark, WebKit at 390. Screenshots of the
@@ -547,9 +546,19 @@ async function parentStarts(
     "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES($1,$2,'stripe',$1,'active',now()-interval '1 day',now()+interval '300 days')",
     [`fixture-${child.id}`, child.id],
   );
+  // The family's side is its class (docs/families.md), which the parent
+  // teaches; their own practice sits beside it in the switcher.
+  const family = (
+    await db.query(
+      "SELECT c.name FROM amp_families f JOIN amp_classes c ON c.id=f.class_id WHERE f.account_id=$1",
+      [account],
+    )
+  ).rows[0].name as string;
+  const inClass = /\/school\/[^/]+\/classes\/[^/]+\/today$/;
   await page.goto(`${origin}/`);
-  await menuButton(page).waitFor();
-  const fromHome = await openSwitcher(page, "Family and practice", true);
+  await page.waitForURL(inClass);
+  await heading(page, /^Good (morning|afternoon|evening)/);
+  const fromHome = await openSwitcher(page, family, width < 1024);
   const items = await fromHome.getByRole("menuitem").allInnerTexts();
   check(
     `${label} the family switcher offers their own practice`,
@@ -564,58 +573,31 @@ async function parentStarts(
   await page.getByRole("radio", { name: /^Geometry/ }).click();
   await page.getByRole("button", { name: "Start practicing" }).click();
   await practicing(page);
-  // Back to the family: their child is the learner again.
+  // Back to the family: its class, with the child in it.
   const fromOwn = await openSwitcher(page, "My practice", true);
-  await choose(page, fromOwn, /Family and practice/);
-  await page.waitForURL(`${origin}/`);
-  await menuButton(page).waitFor();
-  await settle(page, 400);
-  const learner = await page
-    .getByRole("combobox", { name: "Learner" })
-    .filter({ visible: true })
-    .first()
-    .inputValue()
-    .catch(() => null);
+  await choose(page, fromOwn, new RegExp(family));
+  await page.waitForURL(inClass);
+  await heading(page, /^Good (morning|afternoon|evening)/);
   check(
-    `${label} the family side is the child's`,
-    learner === null || learner === child.id,
-    learner,
+    `${label} the family side is the child's class`,
+    (await page
+      .getByRole("button", { name: "Let Rowan practice here" })
+      .count()) === 1,
   );
-  const drawerItems = await (async () => {
-    await menuButton(page).click();
-    await page
-      .getByRole("dialog")
-      .getByRole("navigation", { name: "AMP navigation" })
-      .waitFor();
-    const text = await page.getByRole("dialog").innerText();
-    await page.keyboard.press("Escape");
-    return text;
-  })();
-  check(
-    `${label} the family drawer is the family's`,
-    /Rowan/.test(drawerItems) && !/Your own practice/.test(drawerItems),
-    drawerItems.slice(0, 300),
-  );
-  // A device with nothing remembered opens the family on the child, even when
-  // the parent's own learner is the account's oldest.
+  // A device with nothing remembered opens the family's class, even when the
+  // parent's own learner is the account's oldest.
   await db.query(
     "UPDATE amp_learners SET created_at=now()-interval '30 days' WHERE account_id=$1 AND adult",
     [account],
   );
   await page.evaluate(() => localStorage.clear());
   await page.goto(`${origin}/`);
-  await menuButton(page).waitFor();
-  await settle(page, 600);
+  await page.waitForURL(inClass);
+  await heading(page, /^Good (morning|afternoon|evening)/);
   check(
     `${label} a new device stays on the family side`,
-    path(page) === "/",
+    inClass.test(path(page)),
     path(page),
-  );
-  const chosen = await page.evaluate(() => localStorage.getItem("amp.learner"));
-  check(
-    `${label} a new device chooses the child`,
-    !!chosen && chosen.includes(child.id),
-    chosen,
   );
   await context.close();
 }

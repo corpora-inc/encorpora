@@ -32,6 +32,7 @@ import { useLearnerStore } from "../learner-store";
 import { practicingAsAdult } from "../lib/adult-learner";
 import { LoadingScreen, RouteError } from "../ui/LoadingScreen";
 import {
+  familyClassPath,
   homePlace,
   placeOfPath,
   startDestination,
@@ -389,6 +390,14 @@ const home = createRoute({
           const place = homePlace(me, rememberedPlace(me.account.id));
           if (place === "me")
             throw redirect({ to: "/me", replace: true } as never);
+          // A family's side is its class, once a child can practice; until
+          // then first-run routing below guides the parent there.
+          if (place === "home" && me.familyClass && me.next === "practice")
+            throw redirect({
+              to: "/$",
+              params: { _splat: familyClassPath(me.familyClass) },
+              replace: true,
+            });
           if (place !== "home")
             throw redirect({
               to: "/$",

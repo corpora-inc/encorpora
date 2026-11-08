@@ -146,6 +146,10 @@ export function hasHome(me: SignedInMe) {
   );
 }
 
+/** Where a family's class opens, without the leading slash: Today. */
+export const familyClassPath = (family: { orgId: string; classId: string }) =>
+  `school/${family.orgId}/classes/${family.classId}/today`;
+
 /** The adult's own practice: they have their own learner, or they qualify to
  * start one (a teacher at a licensed school, or a parent of a child with
  * access). */

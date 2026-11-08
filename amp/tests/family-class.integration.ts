@@ -5,6 +5,7 @@ import { Pool } from "pg";
 import { convertFamilies } from "../scripts/convert-families.js";
 import { migrate } from "../scripts/migrate.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
+import { SchoolRepository } from "../src/schools/repository.js";
 import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { buildApp } from "../src/server/app.js";
 import { refuseStudentTokens } from "../src/server/auth.js";
@@ -202,6 +203,27 @@ test(
         assert.equal(license.statusCode, 404);
         const schools = await get("/api/v1/school/orgs", parent);
         assert.deepEqual(schools.json().orgs, []);
+        // A second parent teaches it too: the family is a place of theirs.
+        const coTeacher = await user("Rafael Fixture");
+        await new SchoolRepository(db).addStaff({
+          orgId: family.org_id,
+          role: "teacher",
+          givenName: "Rafael",
+          accountId: coTeacher,
+          classId: family.class_id,
+        });
+        const theirs = await me(coTeacher);
+        assert.deepEqual(
+          theirs.staffOf?.map((place: { orgId: string }) => place.orgId),
+          [family.org_id],
+        );
+        assert.equal(theirs.familyClass, undefined);
+        const taught = await get(
+          `/api/v1/school/orgs/${family.org_id}`,
+          coTeacher,
+        );
+        assert.equal(taught.statusCode, 200, taught.body);
+        assert.ok(!taught.json().org.can.includes("license.read"));
       },
     );
 
@@ -360,14 +382,15 @@ test(
     await t.test(
       "an existing family converts on its next visit, once, leaving every record as it was",
       async () => {
-        const { parent, ids } = await existing("Ilse Fixture", [
-          "Pia",
-          "Noor",
-        ]);
+        const { parent, ids } = await existing("Ilse Fixture", ["Pia", "Noor"]);
         // Practice before conversion, through the parent as it always was.
-        const served = await post(`/api/v1/learners/${ids[0]}/batches`, parent, {
-          count: 2,
-        });
+        const served = await post(
+          `/api/v1/learners/${ids[0]}/batches`,
+          parent,
+          {
+            count: 2,
+          },
+        );
         assert.equal(served.statusCode, 200, served.body);
         const answered = await post(
           `/api/v1/learners/${ids[0]}/attempts`,
@@ -453,10 +476,7 @@ test(
     await t.test(
       "export, deleting a child and withdrawing consent all still work",
       async () => {
-        const { parent, ids } = await existing("Vera Fixture", [
-          "Kai",
-          "Lumi",
-        ]);
+        const { parent, ids } = await existing("Vera Fixture", ["Kai", "Lumi"]);
         const [kai, lumi] = ids as [string, string];
         const code = (await me(parent)).familyClass
           ? (
@@ -503,10 +523,7 @@ test(
         const batch = () =>
           post(`/api/v1/learners/${lumi}/batches`, lumiToken, { count: 1 });
         assert.equal((await batch()).statusCode, 200);
-        const withdrawn = await post(
-          "/api/v1/family/consent/withdraw",
-          parent,
-        );
+        const withdrawn = await post("/api/v1/family/consent/withdraw", parent);
         assert.equal(withdrawn.statusCode, 200, withdrawn.body);
         assert.equal((await batch()).statusCode, 403);
         const lumiMe = await me(lumiToken);

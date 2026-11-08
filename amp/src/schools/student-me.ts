@@ -67,12 +67,7 @@ export async function studentMe(
     !!current &&
     (isSchoolAccount(accountId)
       ? await schoolConsentActive(pool, accountId)
-      : await learningConsentActive(
-          pool,
-          accountId,
-          development,
-          learner.id,
-        ));
+      : await learningConsentActive(pool, accountId, development, learner.id));
   const settings = await enrollmentSettings(pool, personId, home, classes);
   return meSchema.parse({
     signedIn: true,

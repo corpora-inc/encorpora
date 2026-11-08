@@ -53,8 +53,7 @@ export async function registerFamilyRoutes(
     });
     scope.get("/api/v1/me", async (request) => {
       const student = studentBearer(request);
-      if (student)
-        return studentMe(options.pool, student, options.development);
+      if (student) return studentMe(options.pool, student, options.development);
       let account: string;
       try {
         account = await options.authenticate(request);

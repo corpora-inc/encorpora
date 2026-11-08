@@ -180,13 +180,14 @@ async function parentName(client: Database, accountId: string) {
   const table = await client.query(
     "SELECT to_regclass('amp_auth_users') AS relation",
   );
-  const raw = accountId.startsWith("amp|") && table.rows[0].relation
-    ? ((
-        await client.query("SELECT name FROM amp_auth_users WHERE id=$1", [
-          accountId.slice(4),
-        ])
-      ).rows[0]?.name as string | undefined)
-    : undefined;
+  const raw =
+    accountId.startsWith("amp|") && table.rows[0].relation
+      ? ((
+          await client.query("SELECT name FROM amp_auth_users WHERE id=$1", [
+            accountId.slice(4),
+          ])
+        ).rows[0]?.name as string | undefined)
+      : undefined;
   const words = (raw ?? "")
     .replace(/[\u0000-\u001f\u007f]/g, "")
     .trim()

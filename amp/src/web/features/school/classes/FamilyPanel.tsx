@@ -21,7 +21,8 @@ const DAY = new Intl.DateTimeFormat("en-US", {
 const failures: Record<string, string> = {
   learner_cannot_practice:
     "This child needs access before practicing. Open Family to add it.",
-  learner_not_found: "That child isn’t in your class now. Refresh and try again.",
+  learner_not_found:
+    "That child isn’t in your class now. Refresh and try again.",
 };
 
 /** A family's class (docs/families.md): each child with their own access,
@@ -47,7 +48,9 @@ export function FamilyPanel({ classId }: { classId: string }) {
     } catch (failure) {
       console.error("Practice on this device didn’t start", failure);
       setError(
-        (failure instanceof AppError && failure.code && failures[failure.code]) ||
+        (failure instanceof AppError &&
+          failure.code &&
+          failures[failure.code]) ||
           "Practice didn’t start. Try again in a moment.",
       );
       setStarting(null);

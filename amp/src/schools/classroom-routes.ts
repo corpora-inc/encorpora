@@ -23,10 +23,7 @@ import {
   studentWorkbookPdf,
 } from "./classroom-workbooks.js";
 import { SchoolError } from "./contracts.js";
-import {
-  resolveStudentSession,
-  studentBearer,
-} from "./principal.js";
+import { resolveStudentSession, studentBearer } from "./principal.js";
 import type { defineSchoolRoute, SchoolServices } from "./routes.js";
 import { studentBoard, studentBoards } from "./standings.js";
 

@@ -96,7 +96,13 @@ function OrgSwitcher({
             .find((id) =>
               me.staffOf?.some((org) => `school:${org.orgId}` === id),
             );
-    return <PlaceSwitcher me={me} current={mine ?? null} label={name} />;
+    return (
+      <PlaceSwitcher
+        me={me}
+        current={mine ?? null}
+        label={mine === "home" ? me.familyClass!.className : name}
+      />
+    );
   }
   if (orgs.length < 2) return <p className={styles.orgName}>{name}</p>;
   return (
@@ -295,6 +301,7 @@ export function OrgFrame({
     <SchoolFrame
       title={title}
       lone={lone}
+      {...(family ? { brand: null } : {})}
       orgSwitcher={
         // Just my class: the school's name is the class's, so only a way to
         // somewhere else earns the space.

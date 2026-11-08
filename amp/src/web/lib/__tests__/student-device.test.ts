@@ -98,6 +98,24 @@ test("sign-out clears the token, the chosen learner and the trial, then goes to 
   expect(assign).toHaveBeenCalledWith("/join");
 });
 
+test("a child handed their parent's device hands it back on sign-out", async () => {
+  const assign = vi.fn();
+  vi.stubGlobal("location", {
+    ...new URL("https://amp.corpora.inc/practice"),
+    pathname: "/practice",
+    assign,
+  });
+  rememberStudentSession(student, "shared", true);
+  expect(sessionStorage.getItem("amp.student.handed")).toBe("1");
+  await signOut();
+  expect(studentSession()).toBeNull();
+  expect(sessionStorage.getItem("amp.student.handed")).toBeNull();
+  expect(assign).toHaveBeenCalledWith("/");
+  // The next sign-in on a class's own device is not a handed one.
+  rememberStudentSession(student, "shared");
+  expect(sessionStorage.getItem("amp.student.handed")).toBeNull();
+});
+
 test("clearing is safe with nothing stored", () => {
   clearStudentDevice();
   expect(studentSession()).toBeNull();
