@@ -34,6 +34,31 @@ Checkout always uses the price the settings name. When a settled invoice, a subs
 
 Switch-over order for an environment: deploy (apply creates the prices and prints the settings to change), update the settings in the environment's secret, then roll the API. After that, `stripe plan` shows nothing pending.
 
+## Each additional child
+
+One license covers one child, plus the parent's own practice free. Each additional child in the same family has its own price on the same product: $399 a year or $39 a month ([`infra/stripe.ts`](../infra/stripe.ts) `extraPrices`, lookup keys `amp-extra-year-39900` and `amp-extra-month-3900`).
+
+A new checkout records which price it sells (`amp_stripe_checkouts.price_tier`, `full` or `extra`), chosen under the account lock when it is reserved (`StripeRepository.priceTier`):
+
+- **Additional-child price:** a parent buys for a child while the same account has another, non-adult child with card-paid access: an active Stripe grant, or a Stripe subscription that has started and is not closed. A teacher buying a seat for a child enrolled in their family class (`teachesFamilySeat` in [`src/family/family-seat.ts`](../src/family/family-seat.ts)) always gets it. The child stays their own parent's; the order is the teacher's.
+- **Full price:** everything else. Funded (`esa`), gift, pilot and adult access never count. A purchase before a learner exists (enrollment) is full price.
+- **Nothing is re-priced.** A retry or a reopened checkout keeps the price it was reserved at. Renewals bill the subscription's own price, which reconciles at exactly its amount. A family whose first child's license ends keeps the additional child on the additional-child price.
+
+The offer the parent saw is part of the check: `offerId` must be the offer for the price that checkout sells, or the request answers `offer_changed`. `/billing/prices` and `/billing/offer` return `extraOffers` beside `offers`, and `/billing/status/:learnerId` returns the learner's `tier`. The plan screens show "Each additional child: $399 a year" from `extraOffers`; the checkout screen shows the learner's price from their `tier`.
+
+**Settings.** The six settings below are all or none (`stripe-extra` in [`infra/secrets.ts`](../infra/secrets.ts)). Until an environment has them, every child is sold the full price. The API refuses partial or mismatched values at startup.
+
+| Setting | Value |
+|---|---|
+| `AMP_STRIPE_EXTRA_PRICE_ID` | The `amp-extra-year-39900` price id |
+| `AMP_STRIPE_EXTRA_AMOUNT_MINOR` | `39900` |
+| `AMP_STRIPE_EXTRA_MONTHLY_PRICE_ID` | The `amp-extra-month-3900` price id |
+| `AMP_STRIPE_EXTRA_MONTHLY_AMOUNT_MINOR` | `3900` |
+| `AMP_PAYMENT_EXTRA_DOCUMENT_PROFILE` | The annual profile with that `priceId` and `unitAmountMinor: 39900` |
+| `AMP_PAYMENT_EXTRA_MONTHLY_DOCUMENT_PROFILE` | The monthly profile with that `priceId` and `unitAmountMinor: 3900` |
+
+Switch-over follows the list-price order: deploy (apply creates the prices and prints the ids to set), set the six settings, then roll the API. Keep them while any subscription renews on these prices.
+
 ## Delivery and reconciliation
 
 Run `npm run billing:worker` from a scheduler at least once per minute with the same database and billing configuration as the API. Each invocation processes at most `AMP_STRIPE_WORKER_BATCH` events (default 20, maximum 100) and exits. SDK calls have ten-second timeouts and one network retry. Configure worker process time limits for this bounded workload. The worker CLI owns a four-connection pool and processes one event at a time; a pass refuses a pool with fewer than two connections or another active pass using the same pool. One connection holds the account/invoice locks while a second performs durable evidence or commerce writes. Run workers as separate processes with separate pools, not as parallel tasks inside the API pool.

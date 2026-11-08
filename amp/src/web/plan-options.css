@@ -31,3 +31,13 @@
   font-size: 13px;
   line-height: 1.4;
 }
+.plan-options-grid .plan-price-wait,
+.plan-options .plan-price-wait {
+  display: inline-block;
+  align-self: flex-start;
+  width: 6.5em;
+  border-radius: 4px;
+}
+.plan-options .plan-saving .plan-price-wait {
+  width: 3.5em;
+}

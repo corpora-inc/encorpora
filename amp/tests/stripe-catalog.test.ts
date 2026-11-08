@@ -30,6 +30,9 @@ function runtime(overrides: Partial<StripeRuntime> = {}): StripeRuntime {
     // Before the switch-over the API still sells the retired prices.
     priceIds: { ...retiredIds },
     amounts: { year: "49900", month: "4900" },
+    // Nor does it sell an additional-child price yet.
+    extraPriceIds: {},
+    extraAmounts: {},
     currency: "usd",
     ...overrides,
   };
@@ -58,6 +61,14 @@ function price(
 
 const NEW_YEAR = "price_new_year";
 const NEW_MONTH = "price_new_month";
+const EXTRA_YEAR = "price_extra_year";
+const EXTRA_MONTH = "price_extra_month";
+const createdIds: Record<string, string> = {
+  "amp-year-59900": NEW_YEAR,
+  "amp-month-5900": NEW_MONTH,
+  "amp-extra-year-39900": EXTRA_YEAR,
+  "amp-extra-month-3900": EXTRA_MONTH,
+};
 
 class FakeStripe implements CatalogClient {
   updates: { id: string; update: ProductUpdate; key: string }[] = [];
@@ -97,7 +108,7 @@ class FakeStripe implements CatalogClient {
     this.creates.push({ price: input, key });
     const created = price(
       input.interval,
-      input.interval === "year" ? NEW_YEAR : NEW_MONTH,
+      createdIds[input.lookupKey]!,
       input.unitAmount,
       input.lookupKey,
     );
@@ -139,6 +150,21 @@ test("AMP sells $599 a year and $59 a month; $499 and $49 are retired", () => {
       lookupKey: "amp-month-5900",
     },
   });
+  // Each additional child in a family: $399 a year or $39 a month.
+  assert.deepEqual(stripeCatalog.extraPrices, {
+    year: {
+      unitAmount: 39900,
+      currency: "usd",
+      interval: "year",
+      lookupKey: "amp-extra-year-39900",
+    },
+    month: {
+      unitAmount: 3900,
+      currency: "usd",
+      interval: "month",
+      lookupKey: "amp-extra-month-3900",
+    },
+  });
   assert.equal(environments.stage.stripe.mode, "test");
   assert.equal(environments.prod.stripe.mode, "live");
   for (const env of Object.values(environments)) {
@@ -163,6 +189,8 @@ test("the desired state prints without credentials", () => {
   assert.ok(text.includes(brand.checkout.name));
   assert.ok(text.includes(environments.prod.stripe.retiredPriceIds.year));
   assert.ok(text.includes("amp-year-59900"));
+  assert.ok(text.includes("amp-extra-year-39900"));
+  assert.ok(text.includes("amp-extra-month-3900"));
   assert.doesNotMatch(text, /sk_|rk_|acct_/);
 });
 
@@ -175,6 +203,8 @@ test("plan lists text differences and verifies the prices", async () => {
     [
       "price.year",
       "price.month",
+      "price.extra.year",
+      "price.extra.month",
       "name",
       "description",
       "statement_descriptor",
@@ -183,7 +213,7 @@ test("plan lists text differences and verifies the prices", async () => {
     ],
   );
   assert.equal(plan.verified.length, 2);
-  assert.equal(plan.pending.length, 2);
+  assert.equal(plan.pending.length, 4);
   assert.equal(stripe.updates.length, 0);
   assert.equal(stripe.creates.length, 0);
 });
@@ -203,7 +233,7 @@ test("apply writes only the differences, then the plan is empty", async () => {
   // Idempotent: a second apply makes no call.
   await applyCatalog("stage", stripe, runtime(), quiet);
   assert.equal(stripe.updates.length, 1);
-  assert.equal(stripe.creates.length, 2);
+  assert.equal(stripe.creates.length, 4);
 });
 
 test("apply creates the new prices and leaves the retired ones untouched", async () => {
@@ -219,6 +249,8 @@ test("apply creates the new prices and leaves the retired ones untouched", async
     [
       ["year", 59900, "amp-year-59900", "amp-price-amp-year-59900"],
       ["month", 5900, "amp-month-5900", "amp-price-amp-month-5900"],
+      ["year", 39900, "amp-extra-year-39900", "amp-price-amp-extra-year-39900"],
+      ["month", 3900, "amp-extra-month-3900", "amp-price-amp-extra-month-3900"],
     ],
   );
   for (const c of stripe.creates) {
@@ -240,6 +272,12 @@ test("until the settings switch over, the plan says exactly what to set", async 
   assert.match(out, /AMP_STRIPE_AMOUNT_MINOR=59900/);
   assert.match(out, /AMP_STRIPE_MONTHLY_PRICE_ID=price_new_month/);
   assert.match(out, /AMP_STRIPE_MONTHLY_AMOUNT_MINOR=5900/);
+  assert.match(out, /AMP_STRIPE_EXTRA_PRICE_ID=price_extra_year/);
+  assert.match(out, /AMP_STRIPE_EXTRA_AMOUNT_MINOR=39900/);
+  assert.match(out, /AMP_STRIPE_EXTRA_MONTHLY_PRICE_ID=price_extra_month/);
+  assert.match(out, /AMP_STRIPE_EXTRA_MONTHLY_AMOUNT_MINOR=3900/);
+  assert.match(out, /AMP_PAYMENT_EXTRA_DOCUMENT_PROFILE/);
+  assert.match(out, /AMP_PAYMENT_EXTRA_MONTHLY_DOCUMENT_PROFILE/);
 });
 
 test("once the settings name the new prices there is nothing pending", async () => {
@@ -248,6 +286,8 @@ test("once the settings name the new prices there is nothing pending", async () 
   const switched = runtime({
     priceIds: { year: NEW_YEAR, month: NEW_MONTH },
     amounts: { year: "59900", month: "5900" },
+    extraPriceIds: { year: EXTRA_YEAR, month: EXTRA_MONTH },
+    extraAmounts: { year: "39900", month: "3900" },
   });
   const plan = await planCatalog("stage", stripe, switched);
   assert.deepEqual(plan.errors, []);
@@ -264,6 +304,23 @@ test("apply fails when the read-back still differs", async () => {
     applyCatalog("stage", stripe, runtime(), quiet),
     /still differs/,
   );
+});
+
+test("the additional-child settings must name the created price at its amount", async () => {
+  const stripe = new FakeStripe();
+  await applyCatalog("stage", stripe, runtime(), quiet);
+  for (const [extraPriceIds, extraAmounts] of [
+    [{ year: EXTRA_YEAR }, { year: "59900" }],
+    [{ year: NEW_YEAR }, { year: "39900" }],
+    [{ month: EXTRA_MONTH }, {}],
+  ] as const) {
+    const plan = await planCatalog(
+      "stage",
+      stripe,
+      runtime({ extraPriceIds, extraAmounts }),
+    );
+    assert.equal(plan.errors.length, 1, JSON.stringify(extraPriceIds));
+  }
 });
 
 test("a price that differs from the declaration stops apply before any write", async () => {
@@ -331,6 +388,9 @@ test("the wrong key, account or runtime ids stop the plan before any read", asyn
     { amounts: { year: "39900", month: "4900" } },
     // The retired price with the new amount, or the other way round.
     { amounts: { year: "59900", month: "4900" } },
+    // An additional-child setting that is not the declared price or amount.
+    { extraPriceIds: { year: "price_other" }, extraAmounts: { year: "39900" } },
+    { extraAmounts: { month: "3900" } },
   ] satisfies Partial<StripeRuntime>[]) {
     const stripe = new FakeStripe();
     const plan = await planCatalog("stage", stripe, runtime(overrides));

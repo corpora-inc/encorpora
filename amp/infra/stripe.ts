@@ -45,4 +45,22 @@ export const stripeCatalog = {
       lookupKey: "amp-month-5900",
     },
   } satisfies Record<"year" | "month", DeclaredPrice>,
+  /**
+   * Each additional child in a family: $399 a year or $39 a month, on the same
+   * product (docs/stripe.md#each-additional-child).
+   */
+  extraPrices: {
+    year: {
+      unitAmount: 39900,
+      currency: "usd",
+      interval: "year",
+      lookupKey: "amp-extra-year-39900",
+    },
+    month: {
+      unitAmount: 3900,
+      currency: "usd",
+      interval: "month",
+      lookupKey: "amp-extra-month-3900",
+    },
+  } satisfies Record<"year" | "month", DeclaredPrice>,
 } as const;

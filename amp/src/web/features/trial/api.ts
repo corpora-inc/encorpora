@@ -246,6 +246,7 @@ export const pricesOptions = queryOptions({
       z.object({
         available: z.boolean(),
         offers: z.array(annualOfferSchema),
+        extraOffers: z.array(annualOfferSchema).optional(),
       }),
       { signal },
     ),

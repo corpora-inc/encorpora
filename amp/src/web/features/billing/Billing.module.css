@@ -15,6 +15,17 @@
   color: var(--color-muted-text);
   font-size: var(--text-label);
 }
+.notes {
+  display: grid;
+  gap: var(--space-2);
+}
+.additional {
+  margin: 0;
+  text-wrap: balance;
+  color: var(--color-on-surface);
+  font-size: var(--text-label);
+  font-variant-numeric: tabular-nums;
+}
 .terms {
   margin: 0;
   text-wrap: balance;
