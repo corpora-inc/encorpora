@@ -90,3 +90,33 @@
     white-space: nowrap;
   }
 }
+/* Children from other families (step 5): their status and the link's actions,
+   in the same rows. */
+.rowActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.rowActions > * {
+  flex: 1 1 auto;
+}
+.add {
+  justify-self: stretch;
+}
+.sheetText {
+  margin: 0;
+  color: var(--color-muted-text);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+@container (min-width: 520px) {
+  .rowActions {
+    justify-content: end;
+  }
+  .rowActions > * {
+    flex: 0 0 auto;
+  }
+  .add {
+    justify-self: start;
+  }
+}

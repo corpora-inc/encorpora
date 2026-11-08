@@ -28,6 +28,10 @@ export const RETENTION = {
   /** "Report a problem" reports, from when they were sent. Deleting a
    * learner's learning data unlinks their reports and erases the notes. */
   problemFlagDays: 365,
+  /** Approval links for another family's child that nobody approved, with
+   * the child's first name and parent's address the teacher typed: days after
+   * they expired or the teacher withdrew them. */
+  familyApprovalDays: 30,
   /** Voluntary parent product feedback, from submission. */
   parentFeedbackDays: 90,
   /** Adult purchase measurement preferences after expiry or withdrawal. */

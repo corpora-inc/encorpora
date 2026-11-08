@@ -12,6 +12,7 @@ import { Toast } from "../../../ui/Toast";
 import { currentSession } from "../api";
 import { useFinishSignIn } from "../join/api";
 import styles from "./Family.module.css";
+import { OtherFamilies } from "./OtherFamilies";
 
 const DAY = new Intl.DateTimeFormat("en-US", {
   month: "long",
@@ -125,6 +126,7 @@ export function FamilyPanel({ classId }: { classId: string }) {
           </li>
         ))}
       </ul>
+      <OtherFamilies session={session} />
       <Toast message={error} onDismiss={() => setError("")} />
     </section>
   );

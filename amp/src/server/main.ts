@@ -155,19 +155,25 @@ await registerAccessGiftRoutes(app, {
   authenticate,
   development,
 });
+// Without AMP accounts there's no mail, and a restart only means sending an
+// invitation or an approval link again.
+const linkSecret = accounts?.config.secret ?? randomBytes(32).toString("hex");
 await registerFamilyRoutes(app, {
   pool: repository.pool,
   authenticate,
   development,
   billingNamespace: billingConfig ? stripeNamespace(billingConfig) : null,
+  approvals: {
+    secret: linkSecret,
+    origin: accounts?.config.baseURL ?? "",
+    ...(accounts ? { mail: accounts.send } : {}),
+  },
 });
 await registerSchoolRoutes(app, {
   pool: repository.pool,
   authenticate,
   services: {
-    // Without AMP accounts there's no mail, and a restart only means sending
-    // an invitation again.
-    secret: accounts?.config.secret ?? randomBytes(32).toString("hex"),
+    secret: linkSecret,
     origin: accounts?.config.baseURL ?? "",
     learning: repository,
     renderer: workbookRenderer,
