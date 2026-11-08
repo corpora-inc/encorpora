@@ -505,6 +505,9 @@ try {
         path: `${output}/drawer-${theme}-${width}.png`,
         animations: "disabled",
       });
+      // The account rows end the scrolling drawer: bring them into view first,
+      // so the comparison measures layout, not the scroll the click needs.
+      await identity.scrollIntoViewIfNeeded();
       const hiddenBox = await identity.boundingBox();
       await identity.getByRole("button", { name: "Show email" }).click();
       const hide = identity.getByRole("button", { name: "Hide email" });
