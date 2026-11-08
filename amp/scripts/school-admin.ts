@@ -12,6 +12,7 @@ import {
 } from "../src/schools/onboarding.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import type { SchoolServices } from "../src/schools/routes.js";
+import { deleteOrg } from "./school-delete-org.js";
 import { accountMail, accountsConfiguration } from "../src/server/accounts.js";
 
 /** Operating AMP for Schools, for privileged agents: there is no admin UI.
@@ -38,6 +39,14 @@ import { accountMail, accountsConfiguration } from "../src/server/accounts.js";
  * extend-license         {licenseId, endsAt}
  * add-student            {orgId, givenName, familyName?, displayName?, email?, identifier?, gradeLevel?, classId?}
  * issue-student-session  {personId, mode: "shared" | "personal"}
+ * delete-org             {orgId, confirm, commit?: false, allowLicensed?: false}
+ *     Removes a school, district or family org entirely: its tree, people,
+ *     classes, seats, licenses, credentials, grades, settings and events, and
+ *     the learners that school accounts own. A learner owned by a parent or an
+ *     adult account is only detached. A dry run (the default) prints what a
+ *     commit would remove and changes nothing. `confirm` is the org's exact
+ *     name; a child org is refused (delete its root); a paid license in force
+ *     is refused unless `allowLicensed`.
  */
 export async function schoolAdmin(
   repository: SchoolRepository,
@@ -84,6 +93,8 @@ export async function schoolAdmin(
       return repository.issueStudentSession(
         issueStudentSessionSchema.parse(input),
       );
+    case "delete-org":
+      return deleteOrg(repository, input);
     default:
       throw new SchoolError(400, "unknown_command");
   }

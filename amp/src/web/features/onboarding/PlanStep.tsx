@@ -164,7 +164,10 @@ export function PlanStep({
         <Progress step={1} />
         <h1>Choose your plan</h1>
         <p>Adaptive practice, lessons and printable books for one learner.</p>
-        <div className={`${styles.skeleton} amp-skeleton`} aria-label="Loading plans">
+        <div
+          className={`${styles.skeleton} amp-skeleton`}
+          aria-label="Loading plans"
+        >
           <span style={{ height: 82 }} />
           <span style={{ height: 112 }} />
           <span style={{ height: 66 }} />
@@ -193,6 +196,7 @@ export function PlanStep({
       <TrialPathwaysOffer hideWithoutTrial />
       <PlanChoice
         offers={plans}
+        extra={offers.data?.extraOffers}
         interval={offer.interval}
         disabled={!!pending || checkout.isPending}
         onChange={(next) => {

@@ -5,8 +5,6 @@ import {
 import { useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
-import { NavigationDrawer } from "../navigation/NavigationDrawer";
-import { ProgressViews } from "../navigation/ProgressViews";
 import { skillCatalogOptions, useLearningView } from "../../lib/learning-view";
 import {
   bandLabel,
@@ -113,30 +111,9 @@ export function InventoryScreen() {
   const statsReady = !busy && !failure;
   return (
     <main className={styles.page}>
-      <header className={styles.header}>
-        <NavigationDrawer />
-        <span className={styles.wordmark}>AMP</span>
-        <Link
-          to="/$"
-          params={{ _splat: view.practiceHref.slice(1) }}
-          className={buttonClass("secondary")}
-        >
-          {view.canPractice
-            ? "Keep learning"
-            : view.active
-              ? "Continue"
-              : "Start learning"}
-          <span aria-hidden="true">→</span>
-        </Link>
-      </header>
+      {/* The app frame's bar holds the logo, the Progress tabs and the way to
+          practice; whose record this is shows in the drawer. */}
       <div className={styles.heading}>
-        <p className={styles.eyebrow}>
-          {view.trialMode
-            ? "Free assessment · This browser"
-            : view.learner
-              ? `${view.learner.name} · Learning record`
-              : "Your learning record"}
-        </p>
         <h1>Your inventory</h1>
         <CurriculumDetailsControl />
         {shown && view.frontier?.overall.answered ? (
@@ -155,10 +132,6 @@ export function InventoryScreen() {
           </p>
         ) : null}
       </div>
-      <ProgressViews
-        active="inventory"
-        trial={view.trialMode || !view.learner}
-      />
       <section
         className={styles.summary}
         aria-label="Inventory totals"
@@ -210,6 +183,7 @@ export function InventoryScreen() {
         className={styles.filterRow}
         role="group"
         aria-label="Skills to show"
+        aria-busy={!statsReady}
       >
         {filters.map((f) => (
           <button

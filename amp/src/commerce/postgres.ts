@@ -13,6 +13,7 @@ import {
   reduceCommerce,
   canonicalCommercePayload,
 } from "./ledger.js";
+import { teachesFamilySeat } from "../family/family-seat.js";
 
 const identifier = z
   .string()
@@ -207,9 +208,23 @@ export async function applyCommerceEventInTransaction(
     "SELECT account_id FROM amp_learners WHERE id=$1 FOR SHARE",
     [target.license.learnerId],
   );
+  // A Stripe order may be a teacher's seat for a child enrolled in their family
+  // class (docs/stripe.md#each-additional-child); the child stays their own
+  // parent's. An order already recorded for this account and learner was
+  // checked when it was created.
   if (
     owner.rows.length !== 1 ||
-    owner.rows[0]!.account_id !== target.account.id
+    (owner.rows[0]!.account_id !== target.account.id &&
+      !(
+        target.channel === "stripe" &&
+        ((row?.order_state.account.id === target.account.id &&
+          row.order_state.license.learnerId === target.license.learnerId) ||
+          (await teachesFamilySeat(
+            client,
+            target.account.id,
+            target.license.learnerId,
+          )))
+      ))
   )
     throw new CommerceError("Learner does not belong to purchasing account");
   const grant = next.grants.find((item) => item.orderId === target.id);

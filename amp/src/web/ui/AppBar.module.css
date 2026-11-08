@@ -1,0 +1,241 @@
+/* The one app bar (app/AppShell.tsx) and the drawer header that mirrors it.
+   Its geometry lives here once, so the logo sits in the identical spot in the
+   bar and in the open drawer at every width.
+
+   Legacy element rules (style.css, theme.css) style every header, nav and
+   button; each rule below sets what they set, and hover/active rules carry
+   enough specificity to beat `button:hover:not(:disabled)`. */
+.bar,
+.sheetBar {
+  --bar-inline: var(--space-3);
+  --bar-row: 56px;
+  box-sizing: border-box;
+  margin: 0;
+  color: var(--color-on-surface);
+}
+@media (min-width: 768px) {
+  .bar,
+  .sheetBar {
+    --bar-inline: var(--space-5);
+  }
+}
+
+.bar {
+  position: fixed;
+  top: var(--practice-top, 0px);
+  left: 0;
+  right: 0;
+  z-index: 40;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: "logo tools action";
+  grid-template-rows: var(--bar-row);
+  align-items: center;
+  column-gap: var(--space-2);
+  height: auto;
+  min-height: 0;
+  padding: env(safe-area-inset-top, 0px)
+    max(var(--bar-inline), env(safe-area-inset-right, 0px)) 0
+    max(var(--bar-inline), env(safe-area-inset-left, 0px));
+  row-gap: 0;
+  border: 0;
+  /* The rule is drawn inside the bar, so the bar is exactly its rows. */
+  box-shadow: inset 0 -1px 0 var(--color-border);
+  background: var(--color-surface);
+  flex-wrap: nowrap;
+}
+/* Tabs follow the logo on one row from 640 px; below that they take a row
+   of their own under it, so neither the logo nor a tab ever moves. */
+.bar[data-tabs] {
+  grid-template-columns: auto auto minmax(0, 1fr) auto;
+  grid-template-areas: "logo tabs tools action";
+  column-gap: var(--space-5);
+}
+@media (max-width: 639px) {
+  .bar[data-tabs] {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      "logo tools action"
+      "tabs tabs tabs";
+    grid-template-rows: var(--bar-row) 52px;
+    column-gap: var(--space-2);
+  }
+}
+.logoCell {
+  grid-area: logo;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+.tabsCell {
+  grid-area: tabs;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+@media (max-width: 639px) {
+  /* The strip runs to the screen's edges; its first label lines up with the
+     logo's wordmark. */
+  .tabsCell {
+    margin-inline: calc(-1 * var(--space-2));
+    padding-bottom: var(--space-2);
+  }
+}
+.tools {
+  grid-area: tools;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.action {
+  grid-area: action;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  box-sizing: border-box;
+  height: 44px;
+  min-height: 44px;
+  margin: 0 0 0 calc(-1 * var(--space-2));
+  padding: 0 var(--space-3) 0 var(--space-2);
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-on-surface);
+  font-family: inherit;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transform: none;
+  filter: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.logo svg {
+  flex: none;
+  width: 30px;
+  height: 19px;
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.logo:hover:not(:disabled) {
+  background: var(--color-surface-hover);
+  filter: none;
+}
+.logo:active:not(:disabled) {
+  transform: none;
+  background: var(--color-surface-active);
+}
+.logo:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 0;
+}
+
+/* The drawer's header: the bar's row, on the drawer's surface. */
+.sheetBar {
+  display: flex;
+  flex: none;
+  align-items: center;
+  height: calc(var(--bar-row) + env(safe-area-inset-top, 0px));
+  padding: env(safe-area-inset-top, 0px) var(--space-3) 0
+    max(var(--bar-inline), env(safe-area-inset-left, 0px));
+  border: 0;
+}
+.sheetBar .logo {
+  color: var(--color-on-surface-raised);
+}
+.sheetBar .logo:hover:not(:disabled) {
+  background: var(--color-surface-raised-hover);
+}
+
+/* The bar's one action, beside the edge: a label from 640 px, the icon on a
+   phone, always a 44 px target. */
+.actionLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  box-sizing: border-box;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 var(--space-4);
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.actionLink:hover {
+  background: var(--color-primary-hover);
+}
+.actionLink:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.actionLink svg {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+@media (max-width: 639px) {
+  .actionLink {
+    width: 44px;
+    padding: 0;
+  }
+  /* The link's own accessible name carries the label. */
+  .actionLabel {
+    display: none;
+  }
+}
+
+/* Practice's own toolbar (PracticeWorkspace), portaled into the bar's tools
+   cell: the topic beside the logo, its tools at the edge, one row. */
+.tools :global(.workspace-toolbar[data-in-frame]) {
+  position: static;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+}
+.tools :global(.workspace-toolbar[data-in-frame] .workspace-topic) {
+  display: block;
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  color: var(--color-muted-text);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tools :global(.workspace-toolbar[data-in-frame] .workspace-topic-text) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tools :global(.workspace-toolbar[data-in-frame] .workspace-status) {
+  flex: none;
+}

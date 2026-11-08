@@ -12,7 +12,21 @@ import type { FastifyInstance, FastifyReply } from "fastify";
 import type { Pool } from "pg";
 import { z } from "zod";
 import type { Authenticator } from "../server/auth.js";
+import {
+  approveInside,
+  createApproval,
+  listApprovals,
+  lookupApproval,
+  mailApproval,
+  openApproval,
+  readApproval,
+  removeApproval,
+  renewApproval,
+  type ApprovalKeys,
+  type ApprovalMail,
+} from "./approvals.js";
 import { FamilyError } from "./contracts.js";
+import { dismissFamilyNotice } from "./family-class.js";
 import { FamilyRepository } from "./repository.js";
 export interface FamilyRouteOptions {
   pool: Pool;
@@ -20,6 +34,10 @@ export interface FamilyRouteOptions {
   development?: boolean;
   /** Stripe namespace of the configured billing, for paid-purchase routing. */
   billingNamespace?: string | null;
+  /** Approval links for another family's child (docs/families.md, step 5):
+   * the key that derives them, where they point and the account mail path.
+   * Absent: no approval links. */
+  approvals?: ApprovalKeys & { mail?: ApprovalMail };
 }
 export async function registerFamilyRoutes(
   app: FastifyInstance,
@@ -52,7 +70,7 @@ export async function registerFamilyRoutes(
     });
     scope.get("/api/v1/me", async (request) => {
       const student = studentBearer(request);
-      if (student) return studentMe(options.pool, student);
+      if (student) return studentMe(options.pool, student, options.development);
       let account: string;
       try {
         account = await options.authenticate(request);
@@ -97,6 +115,130 @@ export async function registerFamilyRoutes(
         return reply.code(204).send();
       },
     );
+    // A child practices on this device as themselves, in their class; the
+    // parent's own view returns when they sign out.
+    scope.post(
+      "/api/v1/family/learners/:learnerId/practice-here",
+      async (request, reply) => {
+        const account = await options.authenticate(request);
+        const { learnerId } = learnerParams.parse(request.params);
+        empty.parse(request.body ?? {});
+        return reply
+          .code(201)
+          .send(await repository.practiceHere(account, learnerId));
+      },
+    );
+    scope.post("/api/v1/family/class-notice/dismiss", async (request) => {
+      const account = await options.authenticate(request);
+      empty.parse(request.body ?? {});
+      await dismissFamilyNotice(options.pool, account);
+      return { dismissed: true };
+    });
+    const keys = options.approvals;
+    if (keys) {
+      const approvalParams = z.strictObject({
+        approvalId: z.string().min(1).max(64),
+      });
+      // The family's teacher: who they've asked for, and each child's place.
+      scope.get("/api/v1/family/approvals", async (request) => ({
+        approvals: await listApprovals(
+          options.pool,
+          keys,
+          await options.authenticate(request),
+        ),
+      }));
+      scope.post(
+        "/api/v1/family/approvals",
+        { bodyLimit: 1024 },
+        async (request, reply) => {
+          const account = await options.authenticate(request);
+          const sent = await createApproval(
+            options.pool,
+            keys,
+            account,
+            request.body,
+          );
+          const mailed = await mailApproval(
+            options.pool,
+            keys,
+            keys.mail,
+            sent,
+          );
+          return reply.code(201).send({ id: sent.id, mailed });
+        },
+      );
+      scope.post(
+        "/api/v1/family/approvals/:approvalId/resend",
+        async (request) => {
+          const account = await options.authenticate(request);
+          const { approvalId } = approvalParams.parse(request.params);
+          empty.parse(request.body ?? {});
+          const sent = await renewApproval(options.pool, account, approvalId);
+          return {
+            mailed: await mailApproval(options.pool, keys, keys.mail, sent),
+          };
+        },
+      );
+      scope.post(
+        "/api/v1/family/approvals/:approvalId/remove",
+        async (request) => {
+          const account = await options.authenticate(request);
+          const { approvalId } = approvalParams.parse(request.params);
+          empty.parse(request.body ?? {});
+          return removeApproval(options.pool, account, approvalId);
+        },
+      );
+      // The child's parent. Public: holding the token is the permission, and
+      // it answers only the child's first name, the class and its teachers.
+      scope.post(
+        "/api/v1/family/approvals/lookup",
+        { bodyLimit: 512 },
+        async (request) => ({
+          approval: await lookupApproval(options.pool, request.body),
+        }),
+      );
+      scope.post(
+        "/api/v1/family/approvals/open",
+        { bodyLimit: 512 },
+        async (request) =>
+          openApproval(
+            options.pool,
+            keys,
+            await options.authenticate(request),
+            request.body,
+          ),
+      );
+      scope.get("/api/v1/family/approvals/:approvalId", async (request) => {
+        const account = await options.authenticate(request);
+        const { approvalId } = approvalParams.parse(request.params);
+        return {
+          approval: await readApproval(
+            options.pool,
+            account,
+            approvalId,
+            options.development,
+          ),
+        };
+      });
+      scope.post(
+        "/api/v1/family/approvals/:approvalId/approve",
+        { bodyLimit: 512 },
+        async (request) => {
+          const account = await options.authenticate(request);
+          const { approvalId } = approvalParams.parse(request.params);
+          return repository.transaction(account, (client) =>
+            approveInside(
+              client,
+              options.pool,
+              account,
+              approvalId,
+              request.body,
+              options.development,
+            ),
+          );
+        },
+      );
+    }
     scope.get("/api/v1/family", async (request) =>
       repository.summary(await options.authenticate(request)),
     );

@@ -16,6 +16,8 @@ import {
 import { queryClient, meOptions, refreshMe } from "../src/web/lib/query";
 import { useAppRoute } from "../src/web/app-routes";
 import { FamilyCenter } from "../src/web/FamilyCenter";
+import { Tabs } from "../src/web/ui/Tabs";
+import { accountTabs } from "../src/web/features/navigation/shell-frame";
 import "../src/web/ui/tokens.css";
 const Content = createContext<React.ReactNode>(null);
 export function FixtureRouter({
@@ -62,24 +64,47 @@ export function FamilyFixture({
     };
   }, [identity]);
   const section = location.pathname.split("/")[2];
+  // In the app the frame's bar carries these tabs (app/AppShell.tsx); the
+  // harness draws the same tabs above the settings.
   return (
-    <FamilyCenter
-      token={token}
-      identity={identity}
-      initialSection={
-        section === "access" || section === "privacy" ? section : "learners"
-      }
-      onSectionChange={(s) => navigate("/family/" + s)}
-      onChanged={async () => {
-        const epoch = generation.current;
-        const me = await refreshMe({ token, accountId: identity });
-        if (epoch === generation.current && me.signedIn)
-          events.push(
-            "changed:" + me.family.learners.map((l) => l.name).join(","),
-          );
+    <div
+      data-family-harness
+      style={{
+        display: "grid",
+        gridTemplateRows: "auto minmax(0, 1fr)",
+        height: "100dvh",
       }}
-      onClose={() => {}}
-      onLearningInvalidated={() => events.push("invalidated")}
-    />
+    >
+      <style>{`[data-family-harness] > .family-center { height: auto; }`}</style>
+      <Tabs
+        label="Account"
+        items={accountTabs}
+        active={
+          section === "access" ||
+          section === "privacy" ||
+          section === "security"
+            ? section
+            : "learners"
+        }
+      />
+      <FamilyCenter
+        token={token}
+        identity={identity}
+        initialSection={
+          section === "access" || section === "privacy" ? section : "learners"
+        }
+        onSectionChange={(s) => navigate("/family/" + s)}
+        onChanged={async () => {
+          const epoch = generation.current;
+          const me = await refreshMe({ token, accountId: identity });
+          if (epoch === generation.current && me.signedIn)
+            events.push(
+              "changed:" + me.family.learners.map((l) => l.name).join(","),
+            );
+        }}
+        onClose={() => {}}
+        onLearningInvalidated={() => events.push("invalidated")}
+      />
+    </div>
   );
 }

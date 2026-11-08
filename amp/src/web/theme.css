@@ -936,6 +936,23 @@ header {
   align-self: center;
   font-size: 13px;
 }
+/* The Overview under the app frame's bar: the learner and Go are the page's
+   own top, not a card; on a phone the level map runs edge to edge too. */
+[data-shell-content] .home-hero {
+  padding: var(--space-2) 0 var(--space-3);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+@media (max-width: 650px) {
+  [data-shell-content] .frontier-map {
+    padding: var(--space-4) 0;
+    border: 0;
+    border-top: 1px solid var(--color-border);
+    border-radius: 0;
+    background: transparent;
+  }
+}
 @media (max-width: 650px) {
   .home-hero,
   .frontier-map {
@@ -1820,9 +1837,20 @@ html[data-input="pointer"] :focus-visible {
 .choose-pay::-webkit-scrollbar {
   display: none;
 }
-.choose-pay-header {
+/* Every property the element rules for header set (style.css, theme.css and
+   stylesheets that arrive with later screens), fixed here, so the plan
+   choice never moves when one of them loads. */
+.choose-pay > .choose-pay-header {
   display: flex;
-  height: auto;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0;
+  box-sizing: border-box;
+  height: 49px;
+  min-height: 49px;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 .choose-pay-body {
   display: grid;

@@ -72,6 +72,7 @@ export type FundedSearch = CampaignSearch & {
     | "free-practice"
     | "school"
     | "school-invite"
+    | "family-approval"
     | FundedProgramSlug;
   program?: "ar-efa" | "az-esa" | "nh-efa";
   entry?: SignupIntent["entry"];
@@ -87,13 +88,14 @@ export const safeSchoolPath = (value: unknown) =>
     : undefined;
 /** An invitation being carried across sign-in on this device. Its token never
  * goes in a query string, which a server or report could see. */
-const pendingInvite = () => {
+const stored = (key: string) => {
   try {
-    return localStorage.getItem("amp.school-invite");
+    return localStorage.getItem(key);
   } catch {
     return null;
   }
 };
+const pendingInvite = () => stored("amp.school-invite");
 
 export function measurementOptOut() {
   if (typeof navigator === "undefined") return false;
@@ -134,6 +136,7 @@ export function continuationSearch(
     search.return === "free-practice" ||
     search.return === "school" ||
     search.return === "school-invite" ||
+    search.return === "family-approval" ||
     isFundedReturn(search.return)
       ? { return: search.return }
       : {}),
@@ -152,6 +155,10 @@ export function continuationUrl(
   if (safe.return === "school-invite") {
     const invite = pendingInvite();
     return `/school/invite${invite ? `#${invite}` : ""}`;
+  }
+  if (safe.return === "family-approval") {
+    const approval = stored("amp.family-approval");
+    return `/family/approve${approval ? `#${approval}` : ""}`;
   }
   const path =
     safe.return === "free-practice"

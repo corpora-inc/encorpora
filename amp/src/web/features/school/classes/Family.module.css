@@ -1,0 +1,122 @@
+/* A family's class on Today: who can practice on this device, and each
+   child's access. Tokens only; rows, not boxes. */
+.family {
+  container-type: inline-size;
+  display: grid;
+  gap: var(--space-3);
+}
+.notice {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+.dismiss {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: var(--radius-small);
+  background: transparent;
+  color: var(--color-muted-text);
+  cursor: pointer;
+}
+.dismiss:hover {
+  color: var(--color-on-surface);
+}
+.dismiss:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.dismiss svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+}
+.heading {
+  color: var(--color-muted-text);
+  font-family: inherit;
+  font-size: var(--text-table);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.children {
+  display: grid;
+}
+.child {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3);
+  padding-block: var(--space-4);
+}
+.child + .child {
+  box-shadow: inset 0 1px 0 var(--color-border);
+}
+.who {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+}
+.name {
+  font-size: var(--text-heading-3);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.access {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  font-variant-numeric: var(--numeric);
+}
+.action {
+  justify-self: stretch;
+}
+@container (min-width: 520px) {
+  .child {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+  .action {
+    justify-self: end;
+    white-space: nowrap;
+  }
+}
+/* Children from other families (step 5): their status and the link's actions,
+   in the same rows. */
+.rowActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.rowActions > * {
+  flex: 1 1 auto;
+}
+.add {
+  justify-self: stretch;
+}
+.sheetText {
+  margin: 0;
+  color: var(--color-muted-text);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+@container (min-width: 520px) {
+  .rowActions {
+    justify-content: end;
+  }
+  .rowActions > * {
+    flex: 0 0 auto;
+  }
+  .add {
+    justify-self: start;
+  }
+}

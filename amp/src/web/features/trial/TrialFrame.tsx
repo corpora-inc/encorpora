@@ -17,10 +17,33 @@ export function failureMessage(error: unknown, fallback: string) {
 export function TrialSkeleton({
   wide = false,
   centered = false,
+  framed = false,
 }: {
   wide?: boolean;
   centered?: boolean;
+  /** Inside the app frame (`/try/map`): its column, no card or brand. */
+  framed?: boolean;
 }) {
+  const skeleton = (
+    <div className={`${styles.skeleton} amp-skeleton`}>
+      <span style={{ width: "40%", height: 14 }} />
+      <span style={{ width: "75%", height: 34 }} />
+      <span style={{ height: wide ? 260 : 220 }} />
+      <span style={{ height: 52 }} />
+    </div>
+  );
+  if (framed)
+    return (
+      <main className={styles.mapPage}>
+        <section
+          className={styles.panel}
+          aria-busy="true"
+          aria-label="Loading free practice"
+        >
+          {skeleton}
+        </section>
+      </main>
+    );
   return (
     <PageFrame centered={centered}>
       <section
@@ -29,12 +52,7 @@ export function TrialSkeleton({
         aria-label="Loading free practice"
       >
         {centered && <FrameBrand expanded />}
-        <div className={`${styles.skeleton} amp-skeleton`}>
-          <span style={{ width: "40%", height: 14 }} />
-          <span style={{ width: "75%", height: 34 }} />
-          <span style={{ height: wide ? 260 : 220 }} />
-          <span style={{ height: 52 }} />
-        </div>
+        {skeleton}
       </section>
     </PageFrame>
   );
@@ -45,25 +63,39 @@ export function TrialFailure({
   error,
   retry,
   centered = false,
+  framed = false,
 }: {
   error: unknown;
   retry: () => void;
   centered?: boolean;
+  /** Inside the app frame (`/try/map`): its column, no card or brand. */
+  framed?: boolean;
 }) {
+  const body = (
+    <>
+      <h1 className={styles.title}>Free practice didn’t load</h1>
+      <p role="alert" className={styles.lede}>
+        {failureMessage(
+          error,
+          "Check your connection, then try again. Your progress is saved.",
+        )}
+      </p>
+      <Button variant="primary" onClick={retry}>
+        Try again
+      </Button>
+    </>
+  );
+  if (framed)
+    return (
+      <main className={styles.mapPage}>
+        <section className={styles.start}>{body}</section>
+      </main>
+    );
   return (
     <PageFrame centered={centered}>
       <section className={`${frameCard} ${styles.start}`}>
         {centered && <FrameBrand expanded />}
-        <h1 className={styles.title}>Free practice didn’t load</h1>
-        <p role="alert" className={styles.lede}>
-          {failureMessage(
-            error,
-            "Check your connection, then try again. Your progress is saved.",
-          )}
-        </p>
-        <Button variant="primary" onClick={retry}>
-          Try again
-        </Button>
+        {body}
       </section>
     </PageFrame>
   );

@@ -2,8 +2,10 @@ import { learningConsentActive } from "../../server/account-access.js";
 import { createHash } from "node:crypto";
 import {
   BillingError,
+  extraPlanAvailable,
   planConfig,
   type BillingInterval,
+  type PriceTier,
   type StripeBillingConfig,
 } from "./config.js";
 import type { StripeBilling } from "./service.js";
@@ -12,8 +14,9 @@ import type { AnnualOffer, PurchaseStatus } from "./purchase-contracts.js";
 export function annualOffer(
   configuration: StripeBillingConfig,
   interval: BillingInterval = "year",
+  tier: PriceTier = "full",
 ): AnnualOffer {
-  const config = planConfig(configuration, interval);
+  const config = planConfig(configuration, interval, tier);
   if (config.currency !== "usd")
     throw new BillingError("offer_currency_unsupported", 503);
   return {
@@ -26,6 +29,8 @@ export function annualOffer(
           config.livemode,
           config.sku,
           interval,
+          // The full price keeps the fingerprint it had before tiers existed.
+          ...(tier === "extra" ? [tier] : []),
         ]),
       )
       .digest("hex"),
@@ -38,7 +43,22 @@ export function annualOffer(
     }).format(config.amountMinor / 100),
     interval,
     learnerCount: 1,
+    tier,
   };
+}
+
+/** The full-price offers this environment sells: annual, and monthly if set. */
+export function fullOffers(config: StripeBillingConfig): AnnualOffer[] {
+  return config.monthlyPriceId
+    ? [annualOffer(config), annualOffer(config, "month")]
+    : [annualOffer(config)];
+}
+
+/** The additional-child offers, empty until the environment names them. */
+export function extraOffers(config: StripeBillingConfig): AnnualOffer[] {
+  return (["year", "month"] as const)
+    .filter((interval) => extraPlanAvailable(config, interval))
+    .map((interval) => annualOffer(config, interval, "extra"));
 }
 
 /** Reads ownership before contacting Stripe. Payment access comes exclusively from the grant ledger. */
@@ -46,6 +66,21 @@ export async function purchaseStatus(
   billing: StripeBilling,
   accountId: string,
   learnerId: string,
+): Promise<PurchaseStatus> {
+  let tier: PriceTier = "full";
+  const status = await learnerPurchaseStatus(
+    billing,
+    accountId,
+    learnerId,
+    (found) => (tier = found),
+  );
+  return { ...status, tier };
+}
+async function learnerPurchaseStatus(
+  billing: StripeBilling,
+  accountId: string,
+  learnerId: string,
+  priced: (tier: PriceTier) => void,
 ): Promise<PurchaseStatus> {
   const repository = billing.repository;
   async function snapshot() {
@@ -60,17 +95,29 @@ export async function purchaseStatus(
         [learnerId],
       );
       const checkout = await client.query(
-        "SELECT id,session_id,subscription_id,created_at,billing_interval FROM amp_stripe_checkouts WHERE namespace=$1 AND (learner_id=$2 OR to_jsonb(amp_stripe_checkouts)->>'assigned_learner_id'=$2) AND account_id=$3 AND NOT closed LIMIT 1",
+        "SELECT id,session_id,subscription_id,created_at,billing_interval,price_tier FROM amp_stripe_checkouts WHERE namespace=$1 AND (learner_id=$2 OR to_jsonb(amp_stripe_checkouts)->>'assigned_learner_id'=$2) AND account_id=$3 AND NOT closed LIMIT 1",
         [repository.namespace, learnerId, accountId],
       );
       const consent = await client.query(
         "SELECT 1 FROM amp_parent_consents WHERE account_id=$1 AND policy_version=$2 AND withdrawn_at IS NULL",
         [accountId, repository.config.consentPolicyVersion],
       );
+      // The price this learner's checkout sells: its own while one is open,
+      // else the one a new checkout would sell (the same for both plans).
+      const tier: PriceTier =
+        checkout.rows[0]?.price_tier ??
+        (await repository.priceTier(
+          client,
+          accountId,
+          learnerId,
+          "year",
+          "own",
+        ));
       return {
         deleted: !!learner.rows[0].deleted_at,
         grant: grants.rows[0],
         checkout: checkout.rows[0],
+        tier,
         consent:
           !!consent.rowCount &&
           (await learningConsentActive(client, accountId)),
@@ -78,6 +125,7 @@ export async function purchaseStatus(
     });
   }
   let local = await snapshot();
+  priced(local.tier);
   const grantStatus = (): PurchaseStatus | undefined =>
     local.grant
       ? {
@@ -109,6 +157,7 @@ export async function purchaseStatus(
   );
   const checkoutId = local.checkout.id;
   local = await snapshot(); // A webhook, withdrawal or deletion may have committed while Stripe replied.
+  priced(local.tier);
   if (local.deleted) return { learnerId, phase: "deleted" };
   if (grantStatus()) return grantStatus()!;
   if (!local.consent) return { learnerId, phase: "consent-required" };

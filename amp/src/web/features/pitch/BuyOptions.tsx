@@ -21,14 +21,14 @@ import styles from "./Pitch.module.css";
 export const REFUND_POLICY_URL = "https://corpora.inc/legal/refund/";
 /** The guarantee, the same on every route that carries it; the asterisk
  * points to `GUARANTEE_FOOTNOTE` (https://corpora.inc/legal/refund/). */
-// Non-breaking hyphens (U+2011): "Risk‑free" never splits across lines.
-export const RISK_FREE = "Risk‑free: 30‑day money‑back guarantee*";
+// Non-breaking hyphens (U+2011): "money‑back" never splits across lines.
+export const GUARANTEE_LINE = "30‑day money‑back guarantee*";
 /** Without its asterisk: where the asterisk is a link to the policy. */
-export const RISK_FREE_SHORT = "Risk‑free for 30 days";
+export const GUARANTEE_SHORT = "30‑day money‑back";
 export const GUARANTEE_FOOTNOTE =
   "*Refunds go back the way you paid: to your card, or to your child’s education‑fund account. A few education programs don’t allow refunds; if yours is one, we’ll tell you before you pay.";
 
-/** Whole dollars read "$499"; an amount with cents keeps them ("$49.50"). */
+/** Whole dollars read "$599"; an amount with cents keeps them ("$49.50"). */
 export function formatPrice(minor: number) {
   return minor % 100 === 0
     ? new Intl.NumberFormat("en-US", {
@@ -41,7 +41,7 @@ export function formatPrice(minor: number) {
 }
 
 /** The annual price per day, rounded up to the next 10 cents, so "under" is
- * always true: $499 a year is $1.367 a day, written "under $1.40". */
+ * always true: $599 a year is $1.641 a day, written "under $1.70". */
 export function underPerDay(annualMinor: number) {
   return formatUsd((Math.floor(annualMinor / 365 / 10) + 1) * 10);
 }
@@ -64,6 +64,8 @@ export type BuyData = {
   program?: FundedProgram;
   fundedOffer?: InvoiceOffer;
   offers: AnnualOffer[];
+  /** Each additional child's price, when this environment sells one. */
+  extraOffers?: AnnualOffer[];
   failed: boolean;
   retry: () => void;
 };
@@ -81,6 +83,7 @@ export function useBuyData(search: Record<string, unknown>): BuyData {
     program,
     fundedOffer,
     offers: prices.data?.available ? prices.data.offers : [],
+    extraOffers: prices.data?.available ? prices.data.extraOffers : undefined,
     failed: !!prices.error && (!program || !fundedOffer),
     retry: () => {
       void prices.refetch();
@@ -110,7 +113,7 @@ export function BuyOptions({
   interval: chosen,
   onInterval,
 }: {
-  data: Pick<BuyData, "program" | "fundedOffer" | "offers">;
+  data: Pick<BuyData, "program" | "fundedOffer" | "offers" | "extraOffers">;
   search: Record<string, unknown>;
   signedIn?: boolean;
   from: BuyFrom;
@@ -129,7 +132,7 @@ export function BuyOptions({
   const interval = chosen ?? own;
   const choose = onInterval ?? setOwn;
   const { program, fundedOffer, offers } = data;
-  // Whole-dollar plans read "$499", like the saving badge.
+  // Whole-dollar plans read "$599", like the saving badge.
   const plans = offers.map((entry) => ({
     ...entry,
     formattedAmount: formatPrice(entry.amountMinor),
@@ -173,7 +176,7 @@ export function BuyOptions({
               price only; the page's footnote covers the exception. */}
           .
           {offerRefunds(fundedOffer) && (
-            <span className={styles.guaranteeLine}>{RISK_FREE}</span>
+            <span className={styles.guaranteeLine}>{GUARANTEE_LINE}</span>
           )}
         </p>
         {(fundedOffer.statusLabel || offers.length > 0) && (
@@ -212,12 +215,17 @@ export function BuyOptions({
   if (variant === "button") return button;
   return (
     <div className={styles.buy} data-buy="card">
-      <PlanChoice offers={plans} interval={offer.interval} onChange={choose} />
+      <PlanChoice
+        offers={plans}
+        extra={data.extraOffers}
+        interval={offer.interval}
+        onChange={choose}
+      />
       {button}
       <p className={styles.buyTerms} data-buy-terms>
         {offer.formattedAmount}{" "}
         {offer.interval === "year" ? "for the year" : "a month"}.
-        <span className={styles.guaranteeLine}>{RISK_FREE}</span>
+        <span className={styles.guaranteeLine}>{GUARANTEE_LINE}</span>
       </p>
     </div>
   );

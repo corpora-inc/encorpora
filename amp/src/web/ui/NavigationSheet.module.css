@@ -149,3 +149,31 @@
     transition: none;
   }
 }
+/* The app frame's drawer: its header is the bar (same height, padding and
+   logo spot), so the logo that opened it sits exactly where it was and
+   closes it. The safe-area inset belongs to the header and the body, not the
+   sheet, so the logo's left edge matches the bar's. */
+.framed {
+  padding-left: 0;
+}
+.framed > .body {
+  display: flex;
+  flex-direction: column;
+  padding-left: max(var(--space-4), env(safe-area-inset-left));
+  padding-bottom: var(--space-3);
+}
+.footer {
+  flex: none;
+  padding: var(--space-2) var(--space-4)
+    max(var(--space-4), env(safe-area-inset-bottom))
+    max(var(--space-4), env(safe-area-inset-left));
+  border-top: 1px solid var(--color-border);
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

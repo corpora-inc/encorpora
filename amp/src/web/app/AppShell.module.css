@@ -1,0 +1,48 @@
+/* The one app frame. `--shell-bar` is the bar's height (with the device's top
+   inset); everything below the bar starts there, and nothing else moves. */
+.bare {
+  display: contents;
+}
+.frame {
+  --shell-bar: calc(56px + env(safe-area-inset-top, 0px));
+  display: block;
+  min-height: 100dvh;
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+}
+@media (max-width: 639px) {
+  .frame[data-tabs] {
+    --shell-bar: calc(56px + 52px + env(safe-area-inset-top, 0px));
+  }
+}
+.content {
+  display: block;
+  box-sizing: border-box;
+  min-height: 100dvh;
+  padding-top: var(--shell-bar);
+}
+
+/* A screen that scrolls to a heading or a field stops below the bar. */
+:global(html:has([data-app-frame])) {
+  scroll-padding-top: calc(56px + 52px + env(safe-area-inset-top, 0px));
+}
+
+/* The legacy host's screens (Overview, practice, settings) keep their own
+   layout, starting under the bar instead of at the top of the screen. Its
+   fixed, device-sized screens give the bar their top; its scrolling pages
+   lose the height the bar takes, so they never scroll by that much. */
+.frame :global(.shell.app-shell:not(.flow)) {
+  top: calc(var(--practice-top, 0px) + var(--shell-bar));
+  height: calc(var(--practice-height, 100dvh) - var(--shell-bar));
+  padding-top: 0;
+}
+.frame :global(.shell.app-shell.flow),
+.frame :global(.shell:not(.app-shell)) {
+  min-height: calc(100dvh - var(--shell-bar));
+  padding-top: 0;
+}
+/* A wait inside the frame fills the space under the bar, wave centred. */
+.content > :global(.app-loading),
+.content :global(.shell > .app-loading) {
+  min-height: calc(100dvh - var(--shell-bar));
+}

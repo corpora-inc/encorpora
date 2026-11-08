@@ -15,7 +15,7 @@ import {
   batchWithCapabilityFallback,
   clientResponseCapabilities,
 } from "../../lib/batch-capability-fallback";
-import { queryClient } from "../../lib/query";
+import { queryClient, sessionOptions } from "../../lib/query";
 import {
   clearStoredTrial,
   storedTrial,
@@ -152,7 +152,9 @@ export const trialSessionOptions = queryOptions({
     if (isStudentDevice()) return null;
     const token = storedTrial();
     if ((await authConfig()).mode !== "development") {
-      const parent = await accessSession();
+      // The session the app already holds; asking the server again would
+      // fetch the same session twice on every screen.
+      const parent = await queryClient.ensureQueryData(sessionOptions);
       signal.throwIfAborted();
       if (!parent) return null;
       const result = await request(
@@ -246,6 +248,7 @@ export const pricesOptions = queryOptions({
       z.object({
         available: z.boolean(),
         offers: z.array(annualOfferSchema),
+        extraOffers: z.array(annualOfferSchema).optional(),
       }),
       { signal },
     ),

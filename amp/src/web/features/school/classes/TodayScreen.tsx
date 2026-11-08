@@ -16,6 +16,7 @@ import { LessonBoundary } from "../../pathways/LessonRecovery";
 import { useStaffSession } from "./api";
 import { ClassFrame } from "./ClassFrame";
 import { ClassMap, MapKey } from "./ClassMap";
+import { FamilyPanel } from "./FamilyPanel";
 import { mapOptions, todayOptions } from "./teacher-api";
 import {
   classUrl,
@@ -213,6 +214,7 @@ export function TodayScreen() {
             </h1>
             <p>{fullDay(data.today)}</p>
           </div>
+          <FamilyPanel classId={place.class} />
           <ul className={styles.todos} aria-label="What needs you today">
             {data.todos.map((todo, index) => (
               <Todo

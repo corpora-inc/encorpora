@@ -52,8 +52,8 @@ const offers = [
     id: "a".repeat(64),
     mode: "test",
     currency: "USD",
-    amountMinor: 49900,
-    formattedAmount: "$499.00",
+    amountMinor: 59900,
+    formattedAmount: "$599.00",
     interval: "year",
     learnerCount: 1,
   },
@@ -61,8 +61,8 @@ const offers = [
     id: "b".repeat(64),
     mode: "test",
     currency: "USD",
-    amountMinor: 4900,
-    formattedAmount: "$49.00",
+    amountMinor: 5900,
+    formattedAmount: "$59.00",
     interval: "month",
     learnerCount: 1,
   },
@@ -514,9 +514,9 @@ try {
       );
       const annual = page.getByRole("radio", { name: /Annual/ }),
         monthly = page.getByRole("radio", { name: /Monthly/ });
-      assert.match((await annual.textContent()) ?? "", /\$499\.00 per year/);
-      assert.match((await monthly.textContent()) ?? "", /\$49\.00 per month/);
-      assert.match((await annual.textContent()) ?? "", /Save \$89/);
+      assert.match((await annual.textContent()) ?? "", /\$599\.00 per year/);
+      assert.match((await monthly.textContent()) ?? "", /\$59\.00 per month/);
+      assert.match((await annual.textContent()) ?? "", /Save \$109/);
       assert.equal(await annual.getAttribute("aria-checked"), "true");
       const chooseMonthly = width === 390;
       if (chooseMonthly) {
@@ -699,12 +699,22 @@ try {
     await serve(page, state, faults);
     const card = page.locator("main section").first();
     let reference: Awaited<ReturnType<typeof box>> | null = null;
-    for (const [phase, heading, url] of [
-      [
+    // Leaving Stripe without paying returns to the first step, plan kept.
+    state.enrollment = {
+      ...state.enrollment,
+      purchase: purchase(
         "checkout-open",
-        "You left checkout",
         "https://checkout.stripe.com/c/pay/cs_fixture",
-      ],
+      ),
+    };
+    await page.goto(
+      `${origin}/start/purchase?billing=canceled&purchase=${purchaseId}`,
+    );
+    await page.waitForURL("**/start/plan?*");
+    await page.getByRole("heading", { name: "Choose your plan" }).waitFor();
+    assert.equal(await page.getByText("You left checkout").count(), 0);
+    assert.equal(await page.getByText(/Step \d of/).count(), 0);
+    for (const [phase, heading, url] of [
       ["expired", "This checkout expired", null],
       ["payment-inactive", "Payment isn’t active", null],
       ["requires-review", "Your purchase needs a review", null],

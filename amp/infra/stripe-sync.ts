@@ -1,9 +1,11 @@
 /**
  * Plan and apply for AMP's Stripe catalog (infra/stripe.ts). A plan reads the
  * environment's account, product and prices and lists every difference; apply
- * updates only the product's declared fields, then reads it back and requires
- * an empty plan. Prices are verified, never written: a price that differs from
- * the declaration is an error that stops the run before any write.
+ * updates the product's declared fields and creates a declared price that does
+ * not exist yet, then reads back and requires an empty plan. A price is found by
+ * its lookup key and is never edited, activated or archived: a price that
+ * differs from the declaration is an error that stops the run before any write.
+ * The retired prices that existing subscriptions renew on are only verified.
  */
 import { createHash } from "node:crypto";
 import Stripe from "stripe";
@@ -12,6 +14,7 @@ import {
   type EnvironmentName,
   type StripeEnvironment,
 } from "./environments.ts";
+import { retiredPrices } from "../src/billing/stripe/retired-prices.ts";
 import { stripeCatalog, type DeclaredPrice } from "./stripe.ts";
 
 export interface ProductState {
@@ -32,6 +35,8 @@ export interface PriceState {
   livemode: boolean;
   currency: string;
   unit_amount: number | null;
+  lookup_key: string | null;
+  tax_behavior: string | null;
   type: string;
   billing_scheme: string;
   recurring: {
@@ -49,11 +54,25 @@ export interface ProductUpdate {
   metadata?: Record<string, string>;
 }
 
-/** The only Stripe calls the tooling makes. There is no price write. */
+/** A recurring price to create: tax-exclusive, found afterwards by `lookupKey`. */
+export interface NewPrice {
+  product: string;
+  currency: string;
+  unitAmount: number;
+  interval: "year" | "month";
+  lookupKey: string;
+}
+
+/**
+ * The only Stripe calls the tooling makes. The one price write creates a
+ * declared price; there is no edit, activation or archive.
+ */
 export interface CatalogClient {
   accountId(): Promise<string>;
   product(id: string): Promise<ProductState>;
   price(id: string): Promise<PriceState>;
+  priceByLookupKey(key: string): Promise<PriceState | null>;
+  createPrice(price: NewPrice, idempotencyKey: string): Promise<PriceState>;
   updateProduct(
     id: string,
     update: ProductUpdate,
@@ -69,6 +88,9 @@ export interface StripeRuntime {
   productId: string;
   priceIds: { year: string; month: string };
   amounts: { year: string; month: string };
+  /** The additional-child prices; unset until the environment switches over. */
+  extraPriceIds: { year?: string; month?: string };
+  extraAmounts: { year?: string; month?: string };
   currency: string;
 }
 
@@ -91,9 +113,31 @@ export function stripeRuntime(env: NodeJS.ProcessEnv): StripeRuntime {
       year: required("AMP_STRIPE_AMOUNT_MINOR"),
       month: required("AMP_STRIPE_MONTHLY_AMOUNT_MINOR"),
     },
+    extraPriceIds: {
+      year: env.AMP_STRIPE_EXTRA_PRICE_ID || undefined,
+      month: env.AMP_STRIPE_EXTRA_MONTHLY_PRICE_ID || undefined,
+    },
+    extraAmounts: {
+      year: env.AMP_STRIPE_EXTRA_AMOUNT_MINOR || undefined,
+      month: env.AMP_STRIPE_EXTRA_MONTHLY_AMOUNT_MINOR || undefined,
+    },
     currency: required("AMP_STRIPE_CURRENCY"),
   };
 }
+
+/** The settings that name each additional-child price, by interval. */
+export const extraSettings = {
+  year: {
+    price: "AMP_STRIPE_EXTRA_PRICE_ID",
+    amount: "AMP_STRIPE_EXTRA_AMOUNT_MINOR",
+    profile: "AMP_PAYMENT_EXTRA_DOCUMENT_PROFILE",
+  },
+  month: {
+    price: "AMP_STRIPE_EXTRA_MONTHLY_PRICE_ID",
+    amount: "AMP_STRIPE_EXTRA_MONTHLY_AMOUNT_MINOR",
+    profile: "AMP_PAYMENT_EXTRA_MONTHLY_DOCUMENT_PROFILE",
+  },
+} as const;
 
 export interface Change {
   field: string;
@@ -107,13 +151,21 @@ export interface CatalogPlan {
   productId: string;
   changes: Change[];
   update: ProductUpdate;
+  /** Declared prices that do not exist yet; apply creates them. */
+  creates: NewPrice[];
   verified: string[];
+  /** Settings the environment still has to change; not an error. */
+  pending: string[];
   errors: string[];
 }
 
 const intervals = ["year", "month"] as const;
 
-/** The environment's runtime settings must name the declared objects. */
+/**
+ * The environment's runtime settings must name the declared account, mode and
+ * product. Its price ids and amounts are checked against the live prices in
+ * planCatalog, because the price being sold is found by its lookup key.
+ */
 export function runtimeErrors(
   declared: StripeEnvironment,
   runtime: StripeRuntime,
@@ -130,35 +182,35 @@ export function runtimeErrors(
       `AMP_STRIPE_SECRET_KEY is not a ${declared.mode}-mode key (sk_${declared.mode}_ or rk_${declared.mode}_)`,
     );
   expect("AMP_STRIPE_PRODUCT_ID", runtime.productId, declared.productId);
-  expect("AMP_STRIPE_PRICE_ID", runtime.priceIds.year, declared.priceIds.year);
-  expect(
-    "AMP_STRIPE_MONTHLY_PRICE_ID",
-    runtime.priceIds.month,
-    declared.priceIds.month,
-  );
-  const { year, month } = stripeCatalog.prices;
-  expect("AMP_STRIPE_AMOUNT_MINOR", runtime.amounts.year, `${year.unitAmount}`);
-  expect(
-    "AMP_STRIPE_MONTHLY_AMOUNT_MINOR",
-    runtime.amounts.month,
-    `${month.unitAmount}`,
-  );
+  const { year } = stripeCatalog.prices;
   expect("AMP_STRIPE_CURRENCY", runtime.currency, year.currency);
   return errors;
 }
 
 function priceErrors(
   price: PriceState,
-  declared: DeclaredPrice,
+  declared: Omit<DeclaredPrice, "lookupKey"> & { lookupKey?: string },
   productId: string,
   livemode: boolean,
+  retired = false,
 ): string[] {
   const errors: string[] = [];
   const check = (ok: boolean, what: string) => {
     if (!ok) errors.push(`price ${price.id} (${declared.interval}): ${what}`);
   };
   check(price.product === productId, `belongs to ${price.product}`);
-  check(price.active, "is not active");
+  // A retired price stays valid for the subscriptions that renew on it, even
+  // if it is archived; only a price being sold must be active.
+  check(retired || price.active, "is not active");
+  if (declared.lookupKey)
+    check(
+      price.lookup_key === declared.lookupKey,
+      `lookup key ${price.lookup_key}, declared ${declared.lookupKey}`,
+    );
+  check(
+    retired || price.tax_behavior === "exclusive",
+    `tax behavior ${price.tax_behavior}, declared exclusive`,
+  );
   check(price.livemode === livemode, "is in the wrong mode");
   check(
     price.currency === declared.currency,
@@ -193,7 +245,9 @@ export async function planCatalog(
     productId: declared.productId,
     changes: [],
     update: {},
+    creates: [],
     verified: [],
+    pending: [],
     errors: runtimeErrors(declared, runtime),
   };
   // A key or object mismatch means this is not the environment's catalog:
@@ -210,12 +264,119 @@ export async function planCatalog(
     plan.errors.push(`product ${product.id} is in the wrong mode`);
   for (const interval of intervals) {
     const want = stripeCatalog.prices[interval];
-    const price = await client.price(declared.priceIds[interval]);
-    const errors = priceErrors(price, want, declared.productId, livemode);
-    plan.errors.push(...errors);
-    if (!errors.length)
-      plan.verified.push(
-        `price ${price.id}: ${want.unitAmount} ${want.currency} per ${want.interval}, active`,
+    const retiredId = declared.retiredPriceIds[interval];
+    const retiredWant = retiredPrices.find((p) => p.priceId === retiredId)!;
+    const retired = await client.price(retiredId);
+    plan.errors.push(
+      ...priceErrors(
+        retired,
+        {
+          unitAmount: retiredWant.amountMinor,
+          currency: want.currency,
+          interval,
+        },
+        declared.productId,
+        livemode,
+        true,
+      ),
+    );
+    plan.verified.push(
+      `price ${retired.id}: retired ${retiredWant.amountMinor} ${want.currency} per ${interval}, kept for existing subscriptions`,
+    );
+    const price = await client.priceByLookupKey(want.lookupKey);
+    if (price) {
+      const errors = priceErrors(price, want, declared.productId, livemode);
+      plan.errors.push(...errors);
+      if (!errors.length)
+        plan.verified.push(
+          `price ${price.id}: ${want.unitAmount} ${want.currency} per ${want.interval}, active`,
+        );
+    } else {
+      const create: NewPrice = {
+        product: declared.productId,
+        currency: want.currency,
+        unitAmount: want.unitAmount,
+        interval,
+        lookupKey: want.lookupKey,
+      };
+      plan.creates.push(create);
+      plan.changes.push({
+        field: `price.${interval}`,
+        from: null,
+        to: `${want.unitAmount} ${want.currency} per ${interval}, lookup key ${want.lookupKey}`,
+      });
+    }
+    // The API sells what its settings name: the new price once switched over,
+    // the retired one until then. Anything else is a different catalog.
+    const setting =
+      interval === "year"
+        ? "AMP_STRIPE_PRICE_ID"
+        : "AMP_STRIPE_MONTHLY_PRICE_ID";
+    const amountSetting =
+      interval === "year"
+        ? "AMP_STRIPE_AMOUNT_MINOR"
+        : "AMP_STRIPE_MONTHLY_AMOUNT_MINOR";
+    const set = runtime.priceIds[interval];
+    const amount = runtime.amounts[interval];
+    if (price && set === price.id) {
+      if (amount !== `${want.unitAmount}`)
+        plan.errors.push(
+          `${amountSetting} is "${amount}", declared "${want.unitAmount}"`,
+        );
+    } else if (set === retiredId) {
+      if (amount !== `${retiredWant.amountMinor}`)
+        plan.errors.push(
+          `${amountSetting} is "${amount}", declared "${retiredWant.amountMinor}"`,
+        );
+      plan.pending.push(
+        `${interval}: still selling the retired price. Set ${setting}=${price?.id ?? "(the new price's id)"} and ${amountSetting}=${want.unitAmount}${interval === "year" ? " (and AMP_PAYMENT_DOCUMENT_PROFILE)" : " (and AMP_PAYMENT_MONTHLY_DOCUMENT_PROFILE)"}`,
+      );
+    } else {
+      plan.errors.push(
+        `${setting} is "${set}", declared "${price?.id ?? "(the new price)"}" or the retired "${retiredId}"`,
+      );
+    }
+  }
+
+  // Each additional child: created if missing, sold once the settings name it.
+  for (const interval of intervals) {
+    const want = stripeCatalog.extraPrices[interval];
+    const price = await client.priceByLookupKey(want.lookupKey);
+    if (price) {
+      const errors = priceErrors(price, want, declared.productId, livemode);
+      plan.errors.push(...errors);
+      if (!errors.length)
+        plan.verified.push(
+          `price ${price.id}: ${want.unitAmount} ${want.currency} per ${want.interval} for each additional child, active`,
+        );
+    } else {
+      plan.creates.push({
+        product: declared.productId,
+        currency: want.currency,
+        unitAmount: want.unitAmount,
+        interval,
+        lookupKey: want.lookupKey,
+      });
+      plan.changes.push({
+        field: `price.extra.${interval}`,
+        from: null,
+        to: `${want.unitAmount} ${want.currency} per ${interval}, lookup key ${want.lookupKey}`,
+      });
+    }
+    const names = extraSettings[interval];
+    const set = runtime.extraPriceIds[interval];
+    const amount = runtime.extraAmounts[interval];
+    if (!set && !amount)
+      plan.pending.push(
+        `${interval}: each additional child is sold at the full price. Set ${names.price}=${price?.id ?? "(the new price's id)"}, ${names.amount}=${want.unitAmount} and ${names.profile}`,
+      );
+    else if (!price || set !== price.id)
+      plan.errors.push(
+        `${names.price} is "${set ?? ""}", declared "${price?.id ?? "(the new price)"}"`,
+      );
+    else if (amount !== `${want.unitAmount}`)
+      plan.errors.push(
+        `${names.amount} is "${amount ?? ""}", declared "${want.unitAmount}"`,
       );
   }
 
@@ -263,17 +424,23 @@ export async function applyCatalog(
   if (plan.errors.length)
     throw new Error("The Stripe catalog plan has errors; nothing was changed.");
   if (!plan.changes.length) return plan;
-  await client.updateProduct(
-    plan.productId,
-    plan.update,
-    idempotencyKey(plan.productId, plan.update),
-  );
+  if (Object.keys(plan.update).length)
+    await client.updateProduct(
+      plan.productId,
+      plan.update,
+      idempotencyKey(plan.productId, plan.update),
+    );
+  for (const create of plan.creates)
+    await client.createPrice(create, `amp-price-${create.lookupKey}`);
   const after = await planCatalog(environment, client, runtime);
   if (after.errors.length || after.changes.length) {
     log(formatPlan(after));
-    throw new Error("The product still differs from the catalog after apply.");
+    throw new Error(
+      "The catalog still differs from its declaration after apply.",
+    );
   }
-  log(`Applied ${plan.changes.length} change(s); the product now matches.`);
+  log(`Applied ${plan.changes.length} change(s); the catalog now matches.`);
+  for (const line of after.pending) log(`  > ${line}`);
   return plan;
 }
 
@@ -286,9 +453,14 @@ export function formatPlan(plan: CatalogPlan): string {
   ];
   for (const error of plan.errors) lines.push(`  ! ${error}`);
   for (const c of plan.changes)
-    lines.push(`  ~ ${c.field}: ${show(c.from)} -> ${show(c.to)}`);
+    lines.push(
+      c.field.startsWith("price.")
+        ? `  + ${c.field}: create ${c.to}`
+        : `  ~ ${c.field}: ${show(c.from)} -> ${show(c.to)}`,
+    );
   for (const v of plan.verified)
     lines.push(`  = ${v} (verified, never changed)`);
+  for (const line of plan.pending) lines.push(`  > ${line}`);
   lines.push(
     plan.errors.length
       ? `${plan.errors.length} error(s): apply refuses to run.`
@@ -311,11 +483,38 @@ export function formatDesired(): string {
     for (const interval of intervals) {
       const p = stripeCatalog.prices[interval];
       lines.push(
-        `    ${interval}: ${env.stripe.priceIds[interval]} = ${p.unitAmount} ${p.currency} per ${p.interval} (verified only)`,
+        `    ${interval}: ${p.unitAmount} ${p.currency} per ${p.interval}, lookup key ${p.lookupKey} (created if missing)`,
+        `    ${interval}: ${env.stripe.retiredPriceIds[interval]} retired, kept for existing subscriptions (verified only)`,
+      );
+    }
+    for (const interval of intervals) {
+      const p = stripeCatalog.extraPrices[interval];
+      lines.push(
+        `    ${interval}, each additional child: ${p.unitAmount} ${p.currency} per ${p.interval}, lookup key ${p.lookupKey} (created if missing)`,
       );
     }
   }
   return lines.join("\n");
+}
+
+function priceState(p: Stripe.Price): PriceState {
+  return {
+    id: p.id,
+    product: typeof p.product === "string" ? p.product : p.product.id,
+    active: p.active,
+    livemode: p.livemode,
+    currency: p.currency,
+    unit_amount: p.unit_amount,
+    lookup_key: p.lookup_key,
+    tax_behavior: p.tax_behavior ?? null,
+    type: p.type,
+    billing_scheme: p.billing_scheme,
+    recurring: p.recurring && {
+      interval: p.recurring.interval,
+      interval_count: p.recurring.interval_count,
+      usage_type: p.recurring.usage_type,
+    },
+  };
 }
 
 export function stripeClient(secretKey: string): CatalogClient {
@@ -352,22 +551,31 @@ export function stripeClient(secretKey: string): CatalogClient {
       };
     },
     async price(id) {
-      const p = await stripe.prices.retrieve(id);
-      return {
-        id: p.id,
-        product: typeof p.product === "string" ? p.product : p.product.id,
-        active: p.active,
-        livemode: p.livemode,
-        currency: p.currency,
-        unit_amount: p.unit_amount,
-        type: p.type,
-        billing_scheme: p.billing_scheme,
-        recurring: p.recurring && {
-          interval: p.recurring.interval,
-          interval_count: p.recurring.interval_count,
-          usage_type: p.recurring.usage_type,
-        },
-      };
+      return priceState(await stripe.prices.retrieve(id));
+    },
+    async priceByLookupKey(key) {
+      const found = await stripe.prices.list({ lookup_keys: [key], limit: 2 });
+      if (found.data.length > 1)
+        throw new Error(`lookup key ${key} matches more than one price`);
+      return found.data[0] ? priceState(found.data[0]) : null;
+    },
+    async createPrice(input, idempotencyKey) {
+      return priceState(
+        await stripe.prices
+          .create(
+            {
+              product: input.product,
+              currency: input.currency,
+              unit_amount: input.unitAmount,
+              recurring: { interval: input.interval },
+              lookup_key: input.lookupKey,
+              tax_behavior: "exclusive",
+              nickname: `AMP ${input.interval === "year" ? "annual" : "monthly"}${input.lookupKey.startsWith("amp-extra-") ? ", each additional child" : ""}`,
+            },
+            { idempotencyKey },
+          )
+          .catch(permission),
+      );
     },
     async updateProduct(id, update, idempotencyKey) {
       await stripe.products

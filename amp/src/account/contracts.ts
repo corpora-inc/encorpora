@@ -103,6 +103,20 @@ export const meSchema = z.discriminatedUnion("signedIn", [
         }),
       )
       .optional(),
+    /** The family's class (docs/families.md): the parent teaches it, and
+     * their children are its students. The family side opens on it. */
+    familyClass: z
+      .object({
+        orgId: z.string(),
+        classId: z.string(),
+        className: z.string(),
+        /** Show the line about how the children sign in now. */
+        notice: z.boolean(),
+      })
+      .optional(),
+    /** A link from another family's teacher (docs/families.md, step 5) this
+     * parent opened and hasn't approved yet. */
+    familyApproval: z.object({ id: z.string() }).optional(),
     /** A free assessment in progress: the family side has something to open
      * even before there's a learner. */
     trial: z.literal(true).optional(),

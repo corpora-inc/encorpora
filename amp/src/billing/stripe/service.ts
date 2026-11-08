@@ -20,7 +20,12 @@ import type { Pool } from "pg";
 import { applyCommerceEventInTransaction } from "../../commerce/postgres.js";
 import { recordSubscriptionEvent } from "./subscriptions.js";
 import { annualEvents } from "./model.js";
-import { BillingError, planConfig, type BillingInterval } from "./config.js";
+import {
+  BillingError,
+  planConfig,
+  planForPrice,
+  type BillingInterval,
+} from "./config.js";
 import { StripeGateway } from "./gateway.js";
 import { StripeRepository, type InboxEvent } from "./repository.js";
 import {
@@ -43,6 +48,8 @@ export class StripeBilling {
     /** The browser's random funnel visitor ID, for purchase attribution. */
     visitorId?: string,
     acquisitionId?: string,
+    /** The offer the parent saw; a checkout that sells another is refused. */
+    offerId?: string,
   ): Promise<{ url: string }> {
     const reserve = () =>
       learnerId === null
@@ -55,7 +62,13 @@ export class StripeBilling {
               acknowledgement,
             )
           : Promise.reject(new BillingError("parent_acknowledgement_required"))
-        : this.repository.reserve(accountId, learnerId, requestId, interval);
+        : this.repository.reserve(
+            accountId,
+            learnerId,
+            requestId,
+            interval,
+            offerId,
+          );
     let checkoutId: string;
     try {
       checkoutId = await reserve();
@@ -207,6 +220,7 @@ export class StripeBilling {
         row.billing_interval,
         learnerId === null,
         enrollmentExpiresAt,
+        row.price_tier ?? "full",
       );
       await client.query(
         "UPDATE amp_stripe_checkouts SET customer_id=$2,session_id=$3,session_url=$4 WHERE id=$1",
@@ -336,7 +350,13 @@ export class StripeBilling {
           ? { kind: "review", reason: "provider_dispute_requires_review" }
           : payment.financial,
         event.eventId,
-        planConfig(this.gateway.config, binding.interval).documentProfile,
+        (
+          planForPrice(
+            this.gateway.config,
+            payment.priceId,
+            binding.interval,
+          ) ?? { plan: planConfig(this.gateway.config, binding.interval) }
+        ).plan.documentProfile,
       );
       // Funnel events follow verified provider state; a failure here is
       // logged and never affects billing.

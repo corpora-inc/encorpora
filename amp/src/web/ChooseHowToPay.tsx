@@ -87,76 +87,84 @@ export function ChooseHowToPay(props: Props) {
             type of problem, and printable worksheets with full solutions.
           </p>
         </div>
-        <section className="pay-option" aria-labelledby="pay-card">
-          <h2 id="pay-card">Card</h2>
-          {card === undefined ? (
-            <Loading className="pay-muted">Loading…</Loading>
-          ) : card ? (
-            <>
-              <PlanOptions
-                offers={cards}
-                selected={selected?.id}
-                onSelect={setSelected}
-              />
-              <p className="pay-muted">
-                One learner. Renews each {selected?.interval ?? "year"} until
-                canceled. Review tax in checkout.
-              </p>
-              <button
-                className="go-button"
-                onClick={() => props.onCard(selected?.interval ?? "year")}
-              >
-                Pay by card
-              </button>
-            </>
-          ) : (
-            <p className="pay-muted">Card payment is not available.</p>
-          )}
-        </section>
-        <section className="pay-option" aria-labelledby="pay-funds">
-          <h2 id="pay-funds">ESA or education funds</h2>
-          {funds === undefined ? (
-            <Loading className="pay-muted">Loading…</Loading>
-          ) : states.length ? (
-            <>
-              <label>
-                State
-                <Select
-                  aria-label="State"
-                  value={state}
-                  onValueChange={(event) => setState(event)}
-                >
-                  <option value="">Choose your state</option>
-                  {states.map((code) => (
-                    <option key={code} value={code}>
-                      {stateNames[code] ?? code}
-                    </option>
+        {/* Both ways to pay paint together, once both have answered: a
+            card plan that arrives first would push the funds below it. */}
+        {card === undefined || funds === undefined ? (
+          <Loading className="pay-muted">Loading…</Loading>
+        ) : (
+          <>
+            <section className="pay-option" aria-labelledby="pay-card">
+              <h2 id="pay-card">Card</h2>
+              {card === undefined ? (
+                <Loading className="pay-muted">Loading…</Loading>
+              ) : card ? (
+                <>
+                  <PlanOptions
+                    offers={cards}
+                    selected={selected?.id}
+                    onSelect={setSelected}
+                  />
+                  <p className="pay-muted">
+                    One learner. Renews each {selected?.interval ?? "year"}{" "}
+                    until canceled. Review tax in checkout.
+                  </p>
+                  <button
+                    className="go-button"
+                    onClick={() => props.onCard(selected?.interval ?? "year")}
+                  >
+                    Pay by card
+                  </button>
+                </>
+              ) : (
+                <p className="pay-muted">Card payment is not available.</p>
+              )}
+            </section>
+            <section className="pay-option" aria-labelledby="pay-funds">
+              <h2 id="pay-funds">ESA or education funds</h2>
+              {funds === undefined ? (
+                <Loading className="pay-muted">Loading…</Loading>
+              ) : states.length ? (
+                <>
+                  <label>
+                    State
+                    <Select
+                      aria-label="State"
+                      value={state}
+                      onValueChange={(event) => setState(event)}
+                    >
+                      <option value="">Choose your state</option>
+                      {states.map((code) => (
+                        <option key={code} value={code}>
+                          {stateNames[code] ?? code}
+                        </option>
+                      ))}
+                    </Select>
+                  </label>
+                  {programs.map((offer) => (
+                    <button
+                      key={offer.id}
+                      className="pay-program"
+                      data-offer={offer.id}
+                      onClick={() => props.onFunds(offer.id)}
+                    >
+                      {offer.programName}
+                      <span>{usd(offer.totalMinor)} for 12 months</span>
+                    </button>
                   ))}
-                </Select>
-              </label>
-              {programs.map((offer) => (
-                <button
-                  key={offer.id}
-                  className="pay-program"
-                  data-offer={offer.id}
-                  onClick={() => props.onFunds(offer.id)}
-                >
-                  {offer.programName}
-                  <span>{usd(offer.totalMinor)} for 12 months</span>
-                </button>
-              ))}
-            </>
-          ) : (
-            <p className="pay-muted">
-              Direct payment from a program is not available.
-            </p>
-          )}
-          <ReimbursementGuide
-            token={props.token}
-            onCard={() => props.onCard(selected?.interval ?? "year")}
-            cardAvailable={!!card}
-          />
-        </section>
+                </>
+              ) : (
+                <p className="pay-muted">
+                  Direct payment from a program is not available.
+                </p>
+              )}
+              <ReimbursementGuide
+                token={props.token}
+                onCard={() => props.onCard(selected?.interval ?? "year")}
+                cardAvailable={!!card}
+              />
+            </section>
+          </>
+        )}
       </div>
     </section>
   );

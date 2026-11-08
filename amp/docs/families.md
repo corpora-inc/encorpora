@@ -37,6 +37,28 @@ One model, from one child to a district. A family uses the same classes, sign-in
 - **Show me in my class:** one switch per class on the Student experience tab, for a teacher of that class who practices, on by default. Off takes their line off that class's map and board. It's stored beside the settings as the class's `teachersHidden` list, logged as `standings.teacher_shown`, and only the teacher changes their own (`POST .../classes/$class/experience/me`).
 - **Never counted:** grades and their class median, seats, rosters, Today, time, report cards, exports and school overviews read student enrollments, so a teacher's practice never reaches them. `tests/teacher-in-class.integration.ts` compares each before and after the teachers practice.
 
+### How a family is a class
+
+- **The org:** `amp_orgs.kind='family'`, one per parent account, found through `amp_families` (account, org, class; migration `0095`). It's "Just my class" (`solo`), set up from the start, with the parent as its admin and teacher. Its days are America/New_York until the parent sets the calendar. The class is "<parent's given name>’s class", which they can rename; it has no course band, grades by year and follows the year in use, so its code keeps working when a year ends.
+- **Ownership:** a family child's learner stays owned by the parent's account. The family only adds roster rows that point at it: a person with `learner_id` (name and grade from the learner, kept in step), a student role and an enrollment. Purchases, grants, consent, family settings, exports, retention and deletion carry over untouched. Deleting a child's learning lets go of their roster row, which scrubs their name as any deleted learner's.
+- **Created with the first child:** creating a child (`POST /api/v1/learners`) or keeping a free assessment (`/trials/adopt`) makes the family, its class and the child's roster rows in the same transaction, under the account's learning lock and then the family's own lock. `ensureFamilyClass` in `src/family/family-class.ts` is the one function; every later child joins the same class.
+- **The child's sign-in:** the class code, their name and three pictures, or a printed card, exactly as at school. A student session (`st_`) acts as the owner of its one learner (`resolveStudentSession`): `school:<person>` for a school student, the parent's account for a family's child. `learningAccount` binds the request to that learner: any learner id in the path, query or body that isn't theirs answers 404, a sibling's included, and the learner list holds only theirs. Parent-only routes refuse `st_` (401), and what a family decides (adding a learner, birth year, starting point, reset, marking paper) answers 403. A child's `/me` shows only their learner. The browser keys every student's sign-in by `school:<person>`.
+- **Consent and access:** a family's child practices on their parent's verified consent, which `learningConsentActive` already reads for the parent's account; withdrawing it stops the child's practice at once. Access is the child's own grants, one license per child. A family has no school license or seats, so its screens show each child's access dates instead.
+- **Co-teacher:** the family's own parent chooses **Invite a co-teacher** on Today (`CoTeachers.tsx`): the staff invitation with the teacher role on the family class, with **Copy link** always on the pending row. A co-teacher sees the class and hands a device to a child, but has no family page, sends no approval links and buys nothing (`tests/family-approval.integration.ts`).
+- **What a family's teacher can do:** `can` allows a family only teaching: the class, its sign-in and cards, grades, calendar, settings, workbooks and staff (a co-teacher). Licenses, seats, imports, adding or removing students, the school privacy center, overviews, year rollover, integrations and share links stay schools'. A family's privacy, export and deletion are its own (`/family`).
+- **"Let Maya practice here":** on the parent's own device, Today lists each child with their access dates and this action, offered only when the child can practice. `POST /api/v1/family/learners/:learnerId/practice-here` (parent only) starts that child's student session in shared mode and goes straight to practice. The device remembers it was handed over, so signing out, or the 30-minute idle sign-out, returns to `/` and the parent's class.
+- **Places:** `/me` names the class (`familyClass`). Once a child can practice, `/` opens it, and before then first-run routing guides the parent there. In the place switcher the family's entry is the class, beside "My practice"; the parent's own family never appears among their schools (`staffOf`, `/school`), while a co-teacher from another account finds it there. The class's rail adds **Family** (access, purchases, consent, privacy) and has no Students, License or school Privacy.
+
+### A child from another family
+
+- **The teacher:** on their family class's Today, the family's own parent chooses **Add a child from another family** and gives the child's first name and their parent's email. The link goes through the account mail path, without the child's name; **Copy link** stays on the row while it waits, with **Send again**. The row says "Waiting for their parent". Until the parent approves there is no learner and no roster row, so nobody can sign in or practice as the child. `amp_family_approvals` (migration `0096`), `src/family/approvals.ts`.
+- **The link:** `/family/approve#<token>`, like a staff invitation: the token is derived, and the mailed copy adds a proof that confirms the parent's address, at sign-up or on opening. The parent signs in or creates an account and continues, which makes the link that account's: single use, so another account is refused (`approval_used`), as is an expired one (`approval_expired`). A teacher of the class can't open it (`teacher_cannot_approve`): the child's own parent consents.
+- **The parent's page:** `/family/approvals/<id>` says what the class is, who teaches it, what the teacher sees and what stays the parent's. Consent comes the usual way: without it, **Buy a license for Ana** opens the purchase, whose verified payment records consent; first-run then returns here (`me.familyApproval`) instead of asking for a new child. With consent, **Approve** makes the child a learner of the parent's account, a student of the teacher's class with picture sign-in, and assigns a license bought on the way. The teacher's typed name and address are then erased.
+- **Access:** the child's own grants, as for any family child. Until they have one, both rows say "Needs access". The parent buys from their page; the teacher's **Add access** sends them the link to it, and becomes the extra-child checkout when that lands. The parent practices free once the child has paid access (step 2).
+- **What each side can do:** the teacher sees the child's work in the class (Today, the map, grades and workbooks) through the roster row, and nothing of the other account: not its email, other children, consent or billing. **Remove** only ends the child's place in the class: roles, enrollment, sign-in and cards end, and the roster row lets go of the learner; learning, access and consent stay the parent's. The parent sees progress, and withdraws consent or deletes the child in Family: withdrawal pauses the child in the class at once ("Paused"), and deletion takes them out of it.
+- **Their own family:** a child in another family's class stays there. Approving doesn't give the parent an empty class of their own; adding a child of their own later does, and "Let … practice here" works for both.
+- **Retention:** links nobody approved are deleted 30 days after they expire or are withdrawn (`familyApprovalDays`). `tests/family-approval.integration.ts`, `scripts/verify-family-approval-ui.ts`.
+
 ## An adult on their own
 
 An adult can buy a license for themselves, for example an 18-year-old preparing for the SAT, or a parent brushing up. That's the adult learner above, with no class around it, and it needs no other case:
@@ -47,7 +69,7 @@ An adult can buy a license for themselves, for example an 18-year-old preparing 
 
 ## Licenses
 
-- **A family license** covers one child and the parent's own practice. Each additional child is an additional seat. An adult on their own buys the same license for themselves.
+- **A family license** covers one child and the parent's own practice. Each additional child is an additional seat at the additional-child price, and a family class's teacher may buy a seat for another family's child in that class ([Stripe](stripe.md#each-additional-child)). An adult on their own buys the same license for themselves.
 - **A school license** covers its seats. Its teachers practice free.
 - **Access** stays one rule: a learner practices with an active grant (`amp_grants`). A family seat writes a grant just as a school seat does.
 
@@ -59,18 +81,20 @@ An adult can buy a license for themselves, for example an 18-year-old preparing 
 
 ## Existing families
 
-On release, every existing family is converted in one transaction per family:
+Every family from before is converted automatically, one transaction per family, adding only roster rows:
 
-- A family org and class are created, and the parent becomes their admin and teacher.
-- Each child becomes a student of that class with picture sign-in.
-- Evidence, purchases, grants and consent carry over unchanged.
+- **On the parent's next visit:** their `/me` runs `ensureFamilyClass` inside the family summary's transaction, under the account's exclusive lock, before anything else reads.
+- **The rest:** `npm run family:convert -- [--dry-run] [--batch 200]` with the deployment's `AMP_DATABASE_URL` converts every family still waiting, in batches, and prints JSON counts (`accounts`, `familiesCreated`, `childrenEnrolled`, `failed`). Running it again changes nothing.
+- The parent is the admin and teacher of the new class, and each child a student with picture sign-in. Evidence, purchases, grants and consent stay byte for byte as they were (`tests/family-class.integration.ts`).
+- An account whose only learners are adults isn't converted.
+- **First visit after:** one dismissible line on the class says the children now sign in with the class code and pictures, beside "Let … practice here" (`amp_families.converted_at`, `notice_dismissed_at`). No modal.
 
-A child who signed in with an account of their own is moved by an operator procedure, which keeps their progress.
+A child who signed in with an account of their own stays as they are; moving them into a parent's class is an operator procedure, which keeps their progress.
 
 ## Build order
 
 1. An admin takes a class and teaches it. **Done** in this change.
 2. Adult practice for any adult, and the adult's place in their class map and standings: **done**.
-3. Families as classes: buying for a child creates or joins the family class, the child gets join sign-in, and a parent can hand their own device to a child.
-4. Converting existing families, and family licenses that include the parent.
-5. Approval links for another family's child.
+3. Families as classes: buying for a child creates or joins the family class, the child gets join sign-in, and a parent can hand their own device to a child: **done**.
+4. Converting existing families: **done**. The parent's own practice is free since step 2; each additional child has its own price ([Stripe](stripe.md#each-additional-child)), sold once an environment's settings name it.
+5. Approval links for another family's child: **done**. The teacher's "Add access" sends the link to the child's parent, who buys or approves; a teacher-paid seat needs that parent's verified consent first.

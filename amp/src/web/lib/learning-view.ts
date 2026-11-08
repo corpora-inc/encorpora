@@ -47,8 +47,12 @@ export const learnerFrontierOptions = (
   });
 
 /** One explicit learning context for navigation and inventory. Account identity
- * never silently replaces the anonymous assessment currently on screen. */
-export function useLearningView() {
+ * never silently replaces the anonymous assessment currently on screen.
+ * `records: false` (the drawer) asks only who and where, never the learner's
+ * evidence, so opening it fetches nothing the screen behind it hasn't. */
+export function useLearningView({
+  records = true,
+}: { records?: boolean } = {}) {
   const location = useLocation();
   const search = useSearch({ strict: false });
   const session = useQuery(sessionOptions);
@@ -95,7 +99,7 @@ export function useLearningView() {
   });
   const trialEvidence = useQuery({
     ...trialEvidenceOptions(trialSession),
-    enabled: trialMode && !!trial.data,
+    enabled: records && trialMode && !!trial.data,
     refetchInterval: false,
   });
   const accountEvidence = useQuery({
@@ -103,14 +107,14 @@ export function useLearningView() {
       session.data ?? { accountId: "", token: "" },
       activeLearner?.id ?? "",
     ),
-    enabled: !!session.data && !!activeLearner,
+    enabled: records && !!session.data && !!activeLearner,
   });
   const accountFrontier = useQuery({
     ...learnerFrontierOptions(
       session.data ?? { accountId: "", token: "" },
       activeLearner?.id ?? "",
     ),
-    enabled: !!session.data && !!activeLearner,
+    enabled: records && !!session.data && !!activeLearner,
   });
   const evidence = trialMode ? trialEvidence : accountEvidence;
   const frontier = trialMode
@@ -132,14 +136,16 @@ export function useLearningView() {
     (!explicitTrial && loadingIdentity) ||
     ((explicitTrial || !learners.length) && trial.isPending) ||
     (active &&
-      (evidence.isPending ||
-        (trialMode ? trialProgress.isPending : accountFrontier.isPending)));
+      ((records && evidence.isPending) ||
+        (trialMode
+          ? trialProgress.isPending
+          : records && accountFrontier.isPending)));
   const error =
     (!explicitTrial && identityError) ||
     ((explicitTrial || !learners.length) && trial.error) ||
     (active &&
-      (evidence.error ||
-        (trialMode ? trialProgress.error : accountFrontier.error)));
+      ((records && evidence.error) ||
+        (trialMode ? trialProgress.error : records && accountFrontier.error)));
   return {
     session,
     identityLoading: loadingIdentity,

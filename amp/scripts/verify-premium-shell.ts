@@ -259,9 +259,10 @@ try {
       }
       await page.goto(`${origin}/family/learners`);
       await page.getByRole("heading", { name: "Avery", exact: true }).waitFor();
-      const tabs = page.locator(".family-tabs"),
+      // The Account group's tabs are the app frame's (app/AppShell.tsx).
+      const tabs = page.locator("[data-app-bar] [data-tabs]"),
         tabBox = await tabs.boundingBox();
-      await page.getByRole("button", { name: "Access", exact: true }).click();
+      await tabs.getByRole("link", { name: "Billing", exact: true }).click();
       assert.ok(page.url().endsWith("/family/access"));
       await page.goBack();
       await page.getByRole("heading", { name: "Avery", exact: true }).waitFor();
@@ -352,7 +353,7 @@ try {
       await ready(page);
       await contrast(
         page,
-        ".family-back,.family-tabs button,.family-center h1,.family-center h2,.family-center h3,.account-label,.family-body button:not(:disabled)",
+        "[data-app-bar] [data-tab],.family-center h2,.family-center h3,.account-label,.family-body button:not(:disabled)",
       );
       await page.screenshot({ path: `${shots}/family-${width}-${theme}.png` });
       await fits(page);

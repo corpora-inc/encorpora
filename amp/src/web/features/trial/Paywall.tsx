@@ -65,6 +65,7 @@ export function Paywall() {
       reason={reason}
       run={run}
       offers={prices.data.available ? prices.data.offers : []}
+      extra={prices.data.available ? prices.data.extraOffers : undefined}
       signedIn={!!parent.data}
       record={() => (trial.data ? recordPaywall(trial.data) : null)}
     />
@@ -76,6 +77,7 @@ function PlansView({
   reason,
   run,
   offers,
+  extra,
   signedIn,
   record,
 }: {
@@ -83,6 +85,7 @@ function PlansView({
   reason: "limit" | "choice";
   run: TrialProgress | null;
   offers: Parameters<typeof PlanChoice>[0]["offers"];
+  extra?: Parameters<typeof PlanChoice>[0]["extra"];
   signedIn: boolean;
   record: () => Promise<unknown> | null;
 }) {
@@ -133,6 +136,7 @@ function PlansView({
             </p>
             <PlanChoice
               offers={offers}
+              extra={extra}
               interval={offer.interval}
               onChange={setChosen}
             />

@@ -4,7 +4,12 @@ import {
   ConsentError,
   type ConsentPolicy,
 } from "../../parent-consent/contracts.js";
-import { annualOffer, purchaseStatus } from "./purchase.js";
+import {
+  annualOffer,
+  extraOffers,
+  fullOffers,
+  purchaseStatus,
+} from "./purchase.js";
 import { createHash } from "node:crypto";
 import type { FastifyInstance } from "fastify";
 import type { Pool } from "pg";
@@ -51,22 +56,21 @@ export async function registerStripeRoutes(
       reply.header("Cache-Control", "public, max-age=300");
       return {
         available: true,
-        offers: options.config.monthlyPriceId
-          ? [annualOffer(options.config), annualOffer(options.config, "month")]
-          : [annualOffer(options.config)],
+        offers: fullOffers(options.config),
+        extraOffers: extraOffers(options.config),
       };
     });
     scope.get("/api/v1/billing/offer", async (request, reply) => {
       await options.authenticate(request);
       reply.header("Cache-Control", "no-store");
-      const offer = annualOffer(options.config);
+      const offers = fullOffers(options.config);
       await gateway.verifyCatalog();
       return {
         available: true,
-        offer,
-        offers: options.config.monthlyPriceId
-          ? [offer, annualOffer(options.config, "month")]
-          : [offer],
+        offer: offers[0],
+        offers,
+        // Each additional child's price; a learner's status says which applies.
+        extraOffers: extraOffers(options.config),
       };
     });
     scope.get<{ Params: { purchaseId: string } }>(
@@ -108,9 +112,17 @@ export async function registerStripeRoutes(
       if (!body.success)
         return reply.code(400).send({ error: "invalid_checkout_request" });
       reply.header("Cache-Control", "no-store");
+      // Which of the plan's prices applies is decided under the account lock.
       if (
         body.data.offerId &&
-        body.data.offerId !== annualOffer(options.config, body.data.interval).id
+        ![
+          annualOffer(options.config, body.data.interval),
+          ...extraOffers(options.config),
+        ].some(
+          (offer) =>
+            offer.interval === body.data.interval &&
+            offer.id === body.data.offerId,
+        )
       )
         return reply.code(409).send({ error: "offer_changed" });
       return billing.checkout(
@@ -121,6 +133,7 @@ export async function registerStripeRoutes(
         undefined,
         funnelVisitor(request.headers),
         acquisitionToken(request.headers),
+        body.data.offerId,
       );
     });
     scope.post("/api/v1/billing/portal", async (request, reply) => {

@@ -1,4 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
+import { currentLearner, leaveSettings } from "./ui-controls";
 import { fixtureMe } from "./me-fixture";
 import { defaultPracticeSettings } from "../src/learning/practice-settings";
 import assert from "node:assert/strict";
@@ -13,6 +14,8 @@ import {
 
 // Only the external identity adapter is replaced. The real App, FamilyCenter,
 // effects, request guards and rendered UI execute unchanged.
+/** `AMP_SESSION_UI_PORT` keeps parallel local runs apart. */
+const sessionPort = Number(process.env.AMP_SESSION_UI_PORT ?? 4370);
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 const fixtureSource = `
 let resolve, reject, current;
@@ -43,7 +46,7 @@ const vite = await createServer({
       },
     },
   ],
-  server: { host: "127.0.0.1", port: 4370, strictPort: true },
+  server: { host: "127.0.0.1", port: sessionPort, strictPort: true },
 });
 await vite.listen();
 const browser = await (
@@ -128,7 +131,7 @@ async function fixturePage(family: (token: string) => FamilySummary) {
   return { page, errors, familyTokens };
 }
 async function open(page: Page) {
-  await page.goto("http://127.0.0.1:4370");
+  await page.goto(`http://127.0.0.1:${sessionPort}`);
   await page.waitForFunction(() => (window as any).sessionReview?.ready);
 }
 try {
@@ -147,16 +150,10 @@ try {
           accountId: "current-parent",
         }),
       );
-      await page
-        .getByRole("button", { name: "Learner", exact: true })
-        .filter({ hasText: "Current learner" })
-        .waitFor({ state: "attached" });
-      assert.equal(
-        await page
-          .getByLabel("Learner", { exact: true })
-          .getAttribute("data-value"),
-        "current-child",
-      );
+      // The screen names the current learner (its Overview, or the
+      // birth-year question); the drawer says whose learner it is.
+      await page.getByRole("heading", { name: /Current learner/ }).waitFor();
+      assert.equal(await currentLearner(page), "current-child");
       await page.evaluate((result) => {
         const fixture = (window as any).sessionReview;
         if (result === "resolve")
@@ -167,18 +164,14 @@ try {
         else fixture.reject();
       }, outcome);
       await settledRender(page);
+      assert.equal(await currentLearner(page), "current-child");
       assert.equal(
-        await page
-          .getByLabel("Learner", { exact: true })
-          .getAttribute("data-value"),
-        "current-child",
+        await page.getByRole("heading", { name: /Current learner/ }).count(),
+        1,
       );
       assert.equal(
-        await page
-          .getByRole("button", { name: "Learner", exact: true })
-          .filter({ hasText: "Current learner" })
-          .count(),
-        1,
+        await page.getByRole("heading", { name: /Obsolete learner/ }).count(),
+        0,
       );
       assert.ok(
         familyTokens.length > beforeCurrent,
@@ -300,12 +293,12 @@ try {
           accountId: "current-parent",
         }),
       );
-      await page
-        .getByRole("button", { name: "Learner", exact: true })
-        .waitFor();
+      await page.locator("[data-app-logo]").waitFor();
       await page.getByRole("button", { name: "Open AMP menu" }).click();
+      await page.getByRole("link", { name: "Account", exact: true }).click();
       await page
-        .getByRole("link", { name: "Manage learners", exact: true })
+        .getByRole("navigation", { name: "Account" })
+        .getByRole("link", { name: "Family", exact: true })
         .click();
       await held;
       await page
@@ -322,11 +315,8 @@ try {
         .getByRole("status")
         .filter({ hasText: "Learner name updated." })
         .waitFor();
-      await page.getByRole("button", { name: "Back", exact: true }).click();
-      await page
-        .getByRole("button", { name: "Learner", exact: true })
-        .filter({ hasText: "After rename" })
-        .waitFor({ state: "attached" });
+      await leaveSettings(page);
+      await page.getByRole("heading", { name: /After rename/ }).waitFor();
       release();
       await handlerDone;
       console.log(`Held ${outcome} request: ${await networkDone}`);
@@ -340,17 +330,11 @@ try {
         0,
       );
       assert.equal(
-        await page
-          .getByRole("button", { name: "Learner", exact: true })
-          .filter({ hasText: "After rename" })
-          .count(),
+        await page.getByRole("heading", { name: /After rename/ }).count(),
         1,
       );
       assert.equal(
-        await page
-          .getByRole("button", { name: "Learner", exact: true })
-          .filter({ hasText: "Before rename" })
-          .count(),
+        await page.getByRole("heading", { name: /Before rename/ }).count(),
         0,
       );
       assert.deepEqual(errors, []);
@@ -394,10 +378,7 @@ try {
           accountId: "current-parent",
         }),
       );
-      await page
-        .getByRole("button", { name: "Learner", exact: true })
-        .filter({ hasText: "Current learner" })
-        .waitFor({ state: "attached" });
+      await page.getByRole("heading", { name: /Current learner/ }).waitFor();
       const oldResponse = page.waitForResponse((response) =>
         response.url().endsWith("/birth-year"),
       );

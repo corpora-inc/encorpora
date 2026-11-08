@@ -99,6 +99,12 @@
   font-size: 15px;
   font-weight: 500;
 }
+.annual-price .annual-price-wait {
+  display: inline-block;
+  width: 3.6em;
+  font-size: inherit;
+  border-radius: 6px;
+}
 .annual-plan .annual-renewal {
   margin-top: 9px;
   font-size: 14px;

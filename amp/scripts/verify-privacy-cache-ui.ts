@@ -1,5 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
-import { choose } from "./ui-controls";
+import { choose, leaveSettings, chooseLearner } from "./ui-controls";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { chromium as rawChromium } from "playwright";
 const chromium = secureChromium(rawChromium);
@@ -46,10 +46,7 @@ try {
     const errors: string[] = [];
     page.on("pageerror", (error) => errors.push(error.message));
     await page.goto("http://127.0.0.1:4350");
-    await choose(
-      page.getByRole("button", { name: "Learner", exact: true }),
-      learner.id,
-    );
+    await chooseLearner(page, learner.id);
     await page.goto("http://127.0.0.1:4350/profile/birth-year");
     await page.getByRole("heading", { name: /^What year was/ }).waitFor();
     let releaseFamilyBatch!: () => void, familyBatchHeld!: () => void;
@@ -69,13 +66,15 @@ try {
     await page.getByRole("button", { name: "Go", exact: true }).click();
     await familyBatchWaiting;
     await page.getByRole("button", { name: "Open AMP menu" }).click();
+    await page.getByRole("link", { name: "Account", exact: true }).click();
     await page
-      .getByRole("link", { name: "Manage learners", exact: true })
+      .getByRole("navigation", { name: "Account" })
+      .getByRole("link", { name: "Family", exact: true })
       .click();
     await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
     await page
-      .getByRole("navigation", { name: "Family sections" })
-      .getByRole("button", { name: "Privacy", exact: true })
+      .getByRole("navigation", { name: "Account" })
+      .getByRole("link", { name: "Privacy", exact: true })
       .click();
     await page
       .getByRole("button", {
@@ -131,7 +130,7 @@ try {
       .waitFor();
     releaseFamilyBatch();
     await page.waitForTimeout(100);
-    await page.getByRole("button", { name: "Back", exact: true }).click();
+    await leaveSettings(page);
     assert.equal(
       await page.locator("#answer").count(),
       0,
@@ -146,8 +145,10 @@ try {
       0,
     );
     await page.getByRole("button", { name: "Open AMP menu" }).click();
+    await page.getByRole("link", { name: "Account", exact: true }).click();
     await page
-      .getByRole("link", { name: "Manage learners", exact: true })
+      .getByRole("navigation", { name: "Account" })
+      .getByRole("link", { name: "Family", exact: true })
       .click();
     await page.getByRole("heading", { name: "Family", exact: true }).waitFor();
     assert.deepEqual(errors, []);

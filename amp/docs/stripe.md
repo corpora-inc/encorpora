@@ -16,11 +16,48 @@ The product's customer-facing text and the expected price set are declared in [`
 
 Checkout does not name payment methods: the Dashboard's payment-method settings (for example card, Link, Apple Pay and Google Pay) apply. A purchase-backed consent checkout is the exception: it offers only card (including card wallets) and Link, the methods [parent consent](parent-consent.md) accepts. Access follows only a paid invoice whose PaymentIntent succeeded and whose charge succeeded and was captured, so a method that settles later (such as a bank debit) grants nothing until `invoice.paid`. If that first payment never settles and the subscription becomes `incomplete_expired`, the checkout binding closes so the parent can purchase again. Receipts record the charge's Stripe payment-method type. Subscriptions use flexible billing mode.
 
-Set `AMP_STRIPE_AUTOMATIC_TAX` explicitly. Configure prices as tax-exclusive. With automatic tax, Checkout requires a full billing address and saves it to the customer, and shows tax before payment. Invoice subtotal must match the configured price, while the settled total may include tax. Discounts, credits, prorations, trials, mixed payments, multiple invoice lines and catalog changes require a separate reviewed adapter policy; they are rejected for reconciliation. Set both `AMP_STRIPE_MONTHLY_PRICE_ID` and `AMP_STRIPE_MONTHLY_AMOUNT_MINOR` to offer monthly access. The monthly price must use the same product and currency as annual. Both are verified against Stripe before display and checkout. Monthly billing requires `AMP_PAYMENT_MONTHLY_DOCUMENT_PROFILE` to issue receipts; each profile must match its selected catalog identity. Use the exact configured price for renewals. Do not archive or change mappings without migrating existing subscription reconciliation.
+Set `AMP_STRIPE_AUTOMATIC_TAX` explicitly. Configure prices as tax-exclusive. With automatic tax, Checkout requires a full billing address and saves it to the customer, and shows tax before payment. Invoice subtotal must match the configured price, while the settled total may include tax. Discounts, credits, prorations, trials, mixed payments, multiple invoice lines and catalog changes require a separate reviewed adapter policy; they are rejected for reconciliation. Set both `AMP_STRIPE_MONTHLY_PRICE_ID` and `AMP_STRIPE_MONTHLY_AMOUNT_MINOR` to offer monthly access. The monthly price must use the same product and currency as annual. Both are verified against Stripe before display and checkout. Monthly billing requires `AMP_PAYMENT_MONTHLY_DOCUMENT_PROFILE` to issue receipts; each profile must match its selected catalog identity. Use the exact configured price for renewals. Do not archive or change mappings without migrating existing subscription reconciliation. A list-price change follows [List price changes](#list-price-changes).
 
 The SDK is pinned to Stripe 23 and API version `2026-09-30.endive`. Configure a webhook endpoint for `invoice.paid`, `charge.refunded`, `refund.created` and `refund.updated` at `/api/v1/billing/stripe/webhook`. Connect events and wrong-mode events are rejected. The exact raw JSON body is verified with the endpoint secret and a five-minute timestamp tolerance. The endpoint stores only routing identifiers, a payload hash and delivery metadata, then acknowledges; full invoice snapshots and payment details are not retained.
 
 Live mode requires `AMP_STRIPE_LIVE_APPROVED=true`, a live key and all explicit merchant settings. Development authentication cannot enable live billing. This switch is an operational guard, not evidence that public-launch privacy, customer support, tax or payment onboarding requirements are complete. No test in this repository makes a real charge.
+
+## List price changes
+
+A Stripe price cannot be edited, so a new list price is a new Stripe price. Existing subscribers keep the price they bought. The repository records this in three places that change together:
+
+1. [`infra/stripe.ts`](../infra/stripe.ts) declares the price being sold with a lookup key. `npm run infra -- stripe apply` creates it when it is missing ([external configuration](external-config.md#stripe-catalog)).
+2. [`src/billing/stripe/retired-prices.ts`](../src/billing/stripe/retired-prices.ts) lists every earlier price with its interval and amount.
+3. The environment's `AMP_STRIPE_*` settings and payment document profiles name the new price ids and amounts. Until they do, the API keeps selling the old prices.
+
+Checkout always uses the price the settings name. When a settled invoice, a subscription item or a paid-period grant carries a retired price id instead, the API accepts it only at exactly that price's recorded amount, for the interval it was bought for, and builds the renewal receipt from the current document profile with that price and amount. Any other price id, or a retired price at a different amount, is a mapping failure that grants nothing and goes to review. Retired prices are not re-verified against Stripe, so archiving one never stops renewals. Keep them in the table for as long as a subscription on them can renew.
+
+Switch-over order for an environment: deploy (apply creates the prices and prints the settings to change), update the settings in the environment's secret, then roll the API. After that, `stripe plan` shows nothing pending.
+
+## Each additional child
+
+One license covers one child, plus the parent's own practice free. Each additional child in the same family has its own price on the same product: $399 a year or $39 a month ([`infra/stripe.ts`](../infra/stripe.ts) `extraPrices`, lookup keys `amp-extra-year-39900` and `amp-extra-month-3900`).
+
+A new checkout records which price it sells (`amp_stripe_checkouts.price_tier`, `full` or `extra`), chosen under the account lock when it is reserved (`StripeRepository.priceTier`):
+
+- **Additional-child price:** a parent buys for a child while the same account has another, non-adult child with card-paid access: an active Stripe grant, or a Stripe subscription that has started and is not closed. A teacher buying a seat for a child enrolled in their family class (`teachesFamilySeat` in [`src/family/family-seat.ts`](../src/family/family-seat.ts)) always gets it. The child stays their own parent's; the order is the teacher's.
+- **Full price:** everything else. Funded (`esa`), gift, pilot and adult access never count. A purchase before a learner exists (enrollment) is full price.
+- **Nothing is re-priced.** A retry or a reopened checkout keeps the price it was reserved at. Renewals bill the subscription's own price, which reconciles at exactly its amount. A family whose first child's license ends keeps the additional child on the additional-child price.
+
+The offer the parent saw is part of the check: `offerId` must be the offer for the price that checkout sells, or the request answers `offer_changed`. `/billing/prices` and `/billing/offer` return `extraOffers` beside `offers`, and `/billing/status/:learnerId` returns the learner's `tier`. The plan screens show "Each additional child: $399 a year" from `extraOffers`; the checkout screen shows the learner's price from their `tier`.
+
+**Settings.** The six settings below are all or none (`stripe-extra` in [`infra/secrets.ts`](../infra/secrets.ts)). Until an environment has them, every child is sold the full price. The API refuses partial or mismatched values at startup.
+
+| Setting | Value |
+|---|---|
+| `AMP_STRIPE_EXTRA_PRICE_ID` | The `amp-extra-year-39900` price id |
+| `AMP_STRIPE_EXTRA_AMOUNT_MINOR` | `39900` |
+| `AMP_STRIPE_EXTRA_MONTHLY_PRICE_ID` | The `amp-extra-month-3900` price id |
+| `AMP_STRIPE_EXTRA_MONTHLY_AMOUNT_MINOR` | `3900` |
+| `AMP_PAYMENT_EXTRA_DOCUMENT_PROFILE` | The annual profile with that `priceId` and `unitAmountMinor: 39900` |
+| `AMP_PAYMENT_EXTRA_MONTHLY_DOCUMENT_PROFILE` | The monthly profile with that `priceId` and `unitAmountMinor: 3900` |
+
+Switch-over follows the list-price order: deploy (apply creates the prices and prints the ids to set), set the six settings, then roll the API. Keep them while any subscription renews on these prices.
 
 ## Delivery and reconciliation
 

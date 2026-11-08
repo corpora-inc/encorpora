@@ -16,9 +16,13 @@ This repository is public. It holds names, public identifiers, URLs and the name
 
 ## Stripe catalog
 
-Each environment has one Stripe product with an annual and a monthly price: stage in test mode, prod in live mode. The tool manages the product's name, description, statement descriptor, tax code and the `managed_by` metadata key. It leaves other fields and metadata keys alone.
+Each environment has one Stripe product with an annual and a monthly price, and an annual and a monthly price for each additional child: stage in test mode, prod in live mode. The tool manages the product's name, description, statement descriptor, tax code and the `managed_by` metadata key. It leaves other fields and metadata keys alone.
 
-Prices are verified, never written. Plan and apply never create, edit, activate or archive a price, and never read or change a subscription or customer. If a price's amount, currency, interval or status differs from the declaration, the plan reports an error and apply stops before any write. Changing what AMP charges means a new Stripe price and a reviewed migration ([Stripe](stripe.md)), not an edit to `infra/stripe.ts`.
+A Stripe price is immutable, so changing what AMP charges means a new price. `infra/stripe.ts` declares the prices being sold, each with a lookup key (`amp-year-59900`, `amp-month-5900`, and for each additional child `amp-extra-year-39900`, `amp-extra-month-3900`). Apply finds a declared price by its lookup key and creates it, tax-exclusive, when it does not exist. That is the only price write: plan and apply never edit, activate or archive a price, and never read or change a subscription or customer. If a price found by its lookup key differs from the declaration in amount, currency, interval, tax behavior or status, the plan reports an error and apply stops before any write.
+
+The prices sold before ([`src/billing/stripe/retired-prices.ts`](../src/billing/stripe/retired-prices.ts), $499 a year and $49 a month) stay in Stripe and stay valid. Existing subscriptions keep renewing on them at the price they bought, and the API reconciles those renewals at exactly the retired amount ([Stripe](stripe.md#list-price-changes)). The plan only verifies them. Adding a price to the retired table is part of any later price change, in the same pull request that declares the new one.
+
+Creating a price does not make the API sell it. The API sells the price its settings name. Until `AMP_STRIPE_PRICE_ID`, `AMP_STRIPE_AMOUNT_MINOR`, `AMP_STRIPE_MONTHLY_PRICE_ID`, `AMP_STRIPE_MONTHLY_AMOUNT_MINOR` and the two payment document profiles (`AMP_PAYMENT_DOCUMENT_PROFILE`, `AMP_PAYMENT_MONTHLY_DOCUMENT_PROFILE`, whose `priceId` and `unitAmountMinor` must match) name the new prices, the plan lists the exact settings to change as pending and apply still succeeds. The plan then checks that the settings name either the new prices at their declared amounts or the retired prices at theirs, and never a mixture.
 
 Before it reads the catalog, the tool checks that the environment is the one declared: `AMP_STRIPE_MODE` and the key's mode, the product and price ids and the amounts in the environment's settings, and the key's account against `AMP_STRIPE_ACCOUNT_ID`. Any mismatch is an error, and nothing is written.
 
@@ -30,9 +34,11 @@ npm run infra -- stripe apply --env stage     # plan, apply only the differences
 
 `plan` and `apply` read the `AMP_STRIPE_*` settings the API runs with, from the environment. Apply prints the plan first, applies the product changes in one update (with an idempotency key derived from the change), then reads the product back and fails unless the new plan is empty. Running it again changes nothing.
 
-The environment's Stripe key needs **Products: write** in addition to the read permissions listed in [Stripe](stripe.md#merchant-configuration).
+The environment's Stripe key needs **Products: write** and **Prices: write** in addition to the read permissions listed in [Stripe](stripe.md#merchant-configuration).
 
-On a pull request, `npm test` validates the declarations without credentials (`tests/stripe-catalog.test.ts`): the text comes from the brand, the statement descriptor satisfies Stripe's rules, the prices are $499 a year and $49 a month, and the planner refuses every price mismatch.
+The additional-child prices are sold once the environment's six `AMP_STRIPE_EXTRA_*` and `AMP_PAYMENT_EXTRA_*` settings name them ([Stripe](stripe.md#each-additional-child)). Until then the plan lists them as pending; a setting that names another price or amount is an error.
+
+On a pull request, `npm test` validates the declarations without credentials (`tests/stripe-catalog.test.ts`): the text comes from the brand, the statement descriptor satisfies Stripe's rules, the prices are $599 a year and $59 a month with $499 and $49 retired, each additional child is $399 a year and $39 a month, and the planner refuses every price mismatch.
 
 The deploy pipeline runs `stripe apply` for each environment before it changes the release, from the API image being deployed, with that environment's settings. A failed apply stops that deploy before anything changes. A rollback of the release does not revert product text.
 

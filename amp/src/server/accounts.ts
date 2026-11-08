@@ -38,6 +38,10 @@ import {
   isSchoolSignup,
   isSchoolStaff,
 } from "../schools/staff-account.js";
+import {
+  approvalProvesAddress,
+  approvalSignupClaim,
+} from "../family/approvals.js";
 
 /** AMP's own parent accounts: users, sessions and linked sign-in methods live
  * in AMP's database (Better Auth). An account id is `amp|<user id>`. */
@@ -428,14 +432,17 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
                 code: PROVIDER_EMAIL_UNVERIFIED,
                 message: "The provider has not verified this email address.",
               });
-            // A mailed school invitation already proved this address.
+            // A mailed school invitation or family approval link already
+            // proved this address.
+            const cookie = context?.headers?.get("cookie");
             if (
               !user.emailVerified &&
-              (await invitationProvesAddress(
-                pool,
-                user.email,
-                context?.headers?.get("cookie"),
-              ))
+              ((await invitationProvesAddress(pool, user.email, cookie)) ||
+                (await approvalProvesAddress(
+                  pool,
+                  user.email,
+                  approvalSignupClaim(cookie),
+                )))
             )
               return { data: { ...user, emailVerified: true } };
           },

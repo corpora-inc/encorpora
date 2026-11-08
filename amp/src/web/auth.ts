@@ -10,7 +10,11 @@ import { UserManager, WebStorageStateStore, type User } from "oidc-client-ts";
 import { accountClient } from "./account-client";
 import { AppError } from "./lib/AppError";
 import { measureAuth } from "./lib/auth-measurement";
-import { clearStudentDevice, studentSession } from "./lib/student-device";
+import {
+  clearStudentDevice,
+  handedStudentDevice,
+  studentSession,
+} from "./lib/student-device";
 const authority = import.meta.env.VITE_AMP_AUTHORITY as string | undefined;
 const clientId = import.meta.env.VITE_AMP_CLIENT_ID as string | undefined;
 const manager =
@@ -67,6 +71,9 @@ export function authConfig(): Promise<AuthConfig> {
 export interface AuthSession {
   token: string;
   accountId: string;
+  /** The name the account signed up or in with, when it has one (a Google
+   * or Apple sign-in does; an email sign-up asks for none). Display only. */
+  name?: string;
 }
 function session(user: User): AuthSession {
   return {
@@ -87,7 +94,11 @@ export async function accessSession(): Promise<AuthSession | null> {
     });
     if (error) throw new Error(error.message ?? "Sign-in could not be checked");
     return data
-      ? { token: data.session.token, accountId: `amp|${data.user.id}` }
+      ? {
+          token: data.session.token,
+          accountId: `amp|${data.user.id}`,
+          ...(data.user.name?.trim() ? { name: data.user.name.trim() } : {}),
+        }
       : null;
   }
   if (import.meta.env.DEV && !manager) {
@@ -132,9 +143,11 @@ export async function signIn(intent?: "create") {
 export async function signOut() {
   if (nativeRuntime) return nativeSignOut();
   if (studentSession()) {
+    // A child on their parent's device hands it back to the parent.
+    const handed = handedStudentDevice();
     clearStudentDevice();
     notifyAccountSessionChanged();
-    location.assign("/join");
+    location.assign(handed ? "/" : "/join");
     return;
   }
   if ((await authConfig()).mode === "accounts") {

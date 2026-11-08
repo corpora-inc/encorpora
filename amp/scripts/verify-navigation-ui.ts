@@ -108,7 +108,9 @@ try {
               },
               user: {
                 id: "drawer-fixture",
-                name: "Sample parent",
+                // No display name: the drawer's foot shows the address,
+                // masked until revealed.
+                name: "",
                 email: "parent@example.test",
                 emailVerified: true,
                 createdAt: "2026-01-01T00:00:00.000Z",
@@ -458,7 +460,7 @@ try {
       });
       await trigger.click();
       await assertEmailHidden(`drawer ${theme} ${width}`);
-      await drawer.getByText("42", { exact: true }).waitFor();
+      await drawer.getByRole("listbox", { name: "Current learner" }).waitFor();
       const learners = drawer.getByRole("listbox", {
         name: "Current learner",
       });
@@ -536,8 +538,13 @@ try {
       );
       await trigger.click();
       await assertEmailHidden(`drawer reopened ${theme} ${width}`);
-      await drawer
-        .getByRole("link", { name: "Your inventory", exact: true })
+      // One drawer link per group: Progress opens the assessment's Overview,
+      // and the bar's tabs reach the rest of the group.
+      await drawer.getByRole("link", { name: "Progress", exact: true }).click();
+      await page.locator(".frontier-map").waitFor();
+      await page
+        .getByRole("navigation", { name: "Progress" })
+        .getByRole("link", { name: "Inventory", exact: true })
         .click();
       await page
         .getByRole("heading", { name: "Your inventory", exact: true })
@@ -584,27 +591,19 @@ try {
   // does. Signed in, the "Free assessment" row is decided by the token saved
   // on this browser; without family learners, the card is laid out for the assessment,
   // budget included, from the first frame.
-  const learningCard = drawer.getByRole("region", {
-    name: "Current learning",
-  });
+  // The menu's rows (where you are, the learners, the group links) are laid
+  // out from data the screen already holds: nothing grows or moves when the
+  // assessment lookup answers later.
   const menuGeometry = () =>
     drawer.evaluate((el) =>
       [
         ...el.querySelectorAll(
-          '[aria-label="Current learning"], [aria-label="Current learning"] > *, [role="option"], nav, nav a',
+          '[aria-label="Where you are"], [aria-label="Where you are"] > *, [role="option"], nav, nav a',
         ),
       ].map((node) => {
         const r = node.getBoundingClientRect();
         return `${node.getAttribute("data-value") ?? node.tagName} ${r.x},${r.y} ${r.width}x${r.height}`;
       }),
-    );
-  const statsSettled = () =>
-    page.waitForFunction(() =>
-      [
-        ...document.querySelectorAll(
-          '[aria-label="Current learning"] [aria-live] strong',
-        ),
-      ].every((stat) => stat.textContent !== "—"),
     );
   for (const assessmentOnly of [false, true])
     for (const theme of ["light", "dark"] as const)
@@ -641,24 +640,11 @@ try {
         else await page.locator('[data-strength="Strong"]').first().waitFor();
         await lookup;
         await trigger.click();
-        await learningCard.locator("[aria-live] strong").first().waitFor();
-        if (assessmentOnly) {
-          // The budget holds its place, unnamed until its numbers arrive.
-          await learningCard
-            .locator('[aria-busy="true"]')
-            .getByText("free problems")
-            .waitFor();
-          assert.equal(
-            await learningCard.getByRole("progressbar").count(),
-            0,
-            `${label}: the placeholder budget is not announced as progress`,
-          );
-        } else {
-          await learningCard
+        await drawer.getByRole("link", { name: "Account" }).waitFor();
+        if (!assessmentOnly)
+          await drawer
             .getByRole("listbox", { name: "Current learner" })
             .waitFor();
-          await statsSettled();
-        }
         await drawer.evaluate(async (el) => {
           await Promise.all(el.getAnimations().map((a) => a.finished));
         });
@@ -677,11 +663,6 @@ try {
         const answered = page.waitForResponse("**/api/v1/trials/current");
         release();
         await answered;
-        await statsSettled();
-        if (assessmentOnly)
-          await learningCard
-            .getByRole("progressbar", { name: "Free assessment problems used" })
-            .waitFor();
         await page.evaluate(
           () =>
             new Promise((resolve) =>
@@ -711,7 +692,7 @@ try {
     await page.setViewportSize({ width, height });
     await page.goto(`${origin}/inventory?context=trial`);
     await page
-      .getByRole("navigation", { name: "Progress views" })
+      .getByRole("navigation", { name: "Progress" })
       .getByRole("link", { name: "Overview", exact: true })
       .click();
     await page.locator(".frontier-map").waitFor();
@@ -721,23 +702,23 @@ try {
       fullPage: true,
     });
     await page
-      .getByRole("navigation", { name: "Progress views" })
+      .getByRole("navigation", { name: "Progress" })
       .getByRole("link", { name: "Pathways", exact: true })
       .click();
     await page.locator(".pathways-viewport").waitFor();
     await fits(`pathways ${width}`);
     assert(
       await page
-        .locator(".pathways-header .pathways-go")
+        .locator("[data-shell-action]")
         .evaluate((el) => el.scrollWidth <= el.clientWidth + 1),
-      "map action text stays inside its button",
+      "the bar's action stays inside its button",
     );
     await page.screenshot({
       path: `${output}/pathways-${width}.png`,
       fullPage: true,
     });
     await page
-      .getByRole("navigation", { name: "Progress views" })
+      .getByRole("navigation", { name: "Progress" })
       .getByRole("link", { name: "Inventory", exact: true })
       .click();
     await page.locator('[data-strength="Strong"]').first().waitFor();
@@ -758,12 +739,15 @@ try {
     "an account outage cannot hide a working anonymous assessment",
   );
   await trigger.click();
-  await page
-    .getByRole("link", { name: "Account settings", exact: true })
-    .waitFor();
-  await page
-    .getByRole("link", { name: "Manage learners", exact: true })
-    .waitFor();
+  // One Account link for the whole group, even while the account is down.
+  await page.getByRole("link", { name: "Account", exact: true }).waitFor();
+  assert.equal(
+    await drawer
+      .getByRole("link", { name: /Manage learners|Account settings/ })
+      .count(),
+    0,
+    "no second link into the same settings",
+  );
   await page.keyboard.press("Escape");
   failMe = false;
   await page.setViewportSize({ width: 390, height: 844 });
@@ -831,7 +815,7 @@ try {
   await page.reload();
   await page.locator('[data-strength="Strong"]').first().waitFor();
   await trigger.click();
-  const card = drawer.getByRole("region", { name: "Current learning" });
+  const card = drawer.getByRole("region", { name: "Where you are" });
   const learnerButton = card.getByRole("button", {
     name: /^Current learner\s*Jordan$/,
   });
@@ -843,7 +827,10 @@ try {
     await Promise.all(el.getAnimations().map((a) => a.finished));
   });
   const cardBox = await card.boundingBox();
-  const statsBox = await card.locator("[aria-live]").boundingBox();
+  const navigation = drawer.getByRole("navigation", {
+    name: "AMP navigation",
+  });
+  const statsBox = await navigation.boundingBox();
   await learnerButton.click();
   const crowded = card.getByRole("listbox", { name: "Current learner" });
   await crowded.waitFor();
@@ -854,7 +841,7 @@ try {
   assert.equal(await crowded.getByRole("option").count(), 5);
   assert.deepEqual(await card.boundingBox(), cardBox, "opening shifts card");
   assert.deepEqual(
-    await card.locator("[aria-live]").boundingBox(),
+    await navigation.boundingBox(),
     statsBox,
     "opening shifts the content below",
   );
@@ -885,7 +872,7 @@ try {
   await crowded.waitFor({ state: "detached" });
   assert.equal(await drawer.count(), 1, "Escape kept the drawer open");
   assert(await learnerButton.evaluate((el) => el === document.activeElement));
-  assert.deepEqual(await card.locator("[aria-live]").boundingBox(), statsBox);
+  assert.deepEqual(await navigation.boundingBox(), statsBox);
   // The keyboard opens it again; Tab moves on and closes it.
   await page.keyboard.press("ArrowDown");
   await crowded.waitFor();
@@ -1007,7 +994,11 @@ try {
     .waitFor();
   await page.keyboard.press("Escape");
   signedIn = false;
+  // Signed out, the inventory asks to sign in first; the public map keeps
+  // its own header and drawer.
   await page.goto(`${origin}/inventory?context=trial`);
+  await page.waitForURL((url) => url.pathname === "/sign-in");
+  await page.goto(`${origin}/pathways`);
   await trigger.click();
   await drawer.getByRole("link", { name: "Sign in", exact: true }).waitFor();
   await fits("guest drawer");

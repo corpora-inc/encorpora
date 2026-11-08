@@ -32,7 +32,7 @@ try {
         programName: "Arkansas EFA",
         productTitle: "AMP Mathematics",
         documentPolicy: "named-student-invoice" as const,
-        subtotalMinor: 49900,
+        subtotalMinor: 59900,
       };
       await page.route("**/api/**", async (route) => {
         const path = new URL(route.request().url()).pathname;
@@ -59,7 +59,7 @@ try {
           return route.fulfill({
             json: {
               invoiceId: "55ba16d8-a5b3-4316-977e-c47b591924cf",
-              totalMinor: 49900,
+              totalMinor: 59900,
               merchantName: "Corpora Inc",
               pdfBase64: Buffer.from("%PDF-test").toString("base64"),
               filename: "education-invoice.pdf",

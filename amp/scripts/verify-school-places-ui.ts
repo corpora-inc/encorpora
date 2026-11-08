@@ -9,8 +9,8 @@
  *      drawer and in setup, goes both ways, and Back, Forward and reload keep
  *      each screen.
  *   2. A parent whose child practices also runs a school. `/` opens where they
- *      last worked; Back and Forward between the school and practice at `/`
- *      reopen each, and a reload stays.
+ *      last worked, their family's class at first; Back and Forward between
+ *      the school and the class reopen each, and a reload stays.
  *
  * Chromium at 1280 and 390, WebKit at 390. Screenshots of the switcher and the
  * setup invitation, light and dark, go to docs/reviews/school-places/.
@@ -403,7 +403,8 @@ async function trialThenSchool(
   await context.close();
 }
 
-/** A parent whose child practices at `/`, and who runs a school. */
+/** A parent whose child practices in their family's class, and who runs a
+ * school. */
 async function practiceAndSchool(browser: Browser, width: number) {
   const label = `chromium ${width} parent`;
   const context = await newContext(browser, width, "light");
@@ -447,16 +448,25 @@ async function practiceAndSchool(browser: Browser, width: number) {
     headers,
   });
 
-  // Nothing remembered yet: practice at `/`.
+  // Nothing remembered yet: `/` is the family's class (docs/families.md).
+  const family = (
+    await db.query(
+      "SELECT f.org_id,c.name FROM amp_families f JOIN amp_classes c ON c.id=f.class_id WHERE f.account_id=$1",
+      [account],
+    )
+  ).rows[0] as { org_id: string; name: string };
+  const inClass = new RegExp(`/school/${family.org_id}/classes/[^/]+/today$`);
   await page.goto(`${origin}/`);
-  await menuButton(page).waitFor();
-  check(`${label} / is practice`, path(page) === "/", path(page));
-  const toSchool = await openSwitcher(page, "Family and practice", true);
+  await page.waitForURL(inClass);
+  await page.getByRole("heading", { level: 1 }).first().waitFor();
+  const classPath = path(page);
+  const toSchool = await openSwitcher(page, family.name, width < 1024);
   const items = await toSchool.getByRole("menuitem").allInnerTexts();
   // A parent whose child practices may also start their own practice.
   check(
-    `${label} the family side names the learner`,
-    /Jordan/.test(items[0] ?? "") &&
+    `${label} the family's class names the learner`,
+    items[0]?.includes(family.name) === true &&
+      /Jordan/.test(items[0] ?? "") &&
       /Start my own practice/.test(items[1] ?? "") &&
       /Admin/.test(items[2] ?? ""),
     items,
@@ -468,11 +478,10 @@ async function practiceAndSchool(browser: Browser, width: number) {
   // Last worked at the school: `/` opens it.
   await page.goto(`${origin}/`);
   await page.waitForURL(new RegExp(`/school/${issued.orgId}`));
-  // Back to practice, then Back and Forward between the two.
+  // Back to the family's class, then Back and Forward between the two.
   const back = await openSwitcher(page, school, width < 1024);
-  await choose(page, back, /Family and practice/);
-  await page.waitForURL(`${origin}/`);
-  await menuButton(page).waitFor();
+  await choose(page, back, new RegExp(family.name));
+  await page.waitForURL(inClass);
   await page.goBack();
   await page.waitForURL(new RegExp(`/school/${issued.orgId}`));
   check(
@@ -481,18 +490,25 @@ async function practiceAndSchool(browser: Browser, width: number) {
     path(page),
   );
   await page.goForward();
-  await page.waitForURL(`${origin}/`);
-  await menuButton(page).waitFor();
-  await settle(page, 400);
+  await page.waitForURL(inClass);
+  await page.getByRole("heading", { level: 1 }).first().waitFor();
   check(
-    `${label} Forward reopens practice at /`,
-    path(page) === "/",
+    `${label} Forward reopens the family's class`,
+    path(page) === classPath,
     path(page),
   );
   await page.reload();
-  await menuButton(page).waitFor();
-  await settle(page, 400);
-  check(`${label} reload keeps practice at /`, path(page) === "/", path(page));
+  await page.getByRole("heading", { level: 1 }).first().waitFor();
+  check(
+    `${label} reload keeps the family's class`,
+    path(page) === classPath,
+    path(page),
+  );
+  // Remembered there, `/` opens it again.
+  await page.goto(`${origin}/`);
+  await page.waitForURL(inClass);
+  await page.goBack();
+  await page.waitForURL(inClass);
   await page.goBack();
   await page.waitForURL(new RegExp(`/school/${issued.orgId}`));
   await page.reload();

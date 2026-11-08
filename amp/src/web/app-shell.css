@@ -1,17 +1,9 @@
 .shell .family-center {
-  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
   gap: 12px;
 }
 .shell .family-center > .family-body {
   margin-top: 0;
-}
-.shell .family-tabs {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-.shell .family-tabs button {
-  min-height: 44px;
-  padding: 6px;
-  font-size: 13px;
 }
 .shell .family-center:has(.family-setup-section) .family-body {
   overflow: auto;
@@ -139,68 +131,24 @@
   max-width: 100px;
 }
 
+/* Account and family settings sit under the app frame's bar, whose tabs
+   name the section: the body takes the whole column. */
 .shell.family-shell .family-center {
   grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: auto auto minmax(0, 1fr);
-}
-.shell.family-shell .family-center > .family-heading {
-  display: flex;
-  grid-column: 1;
-  grid-row: 1;
-  flex-direction: row;
-  /* Back, then the page title beside it: one header bar, title first in
-     weight, never a small word stranded at the far edge. */
-  justify-content: flex-start;
-  align-items: center;
-  gap: var(--space-4);
-}
-.shell.family-shell
-  .family-center:has([data-security-tab])
-  .family-heading
-  > div,
-.shell.family-shell .family-heading > div {
-  position: static;
-  width: auto;
-  height: auto;
-  clip-path: none;
-  overflow: visible;
-  grid-column: auto;
-  order: 2;
-}
-.shell.family-shell .family-heading h1,
-.shell.family-shell .family-center:has([data-security-tab]) .family-heading h1 {
-  font-size: clamp(24px, 4vw, 30px);
-  line-height: 1.15;
-}
-.shell.family-shell .family-center > .family-tabs {
-  grid-column: 1;
-  grid-row: 2;
-  background: var(--color-surface-sunken);
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-.shell.family-shell .family-center:has([data-security-tab]) > .family-tabs {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1fr);
 }
 .shell.family-shell .family-center > .family-body {
   grid-column: 1;
-  grid-row: 3;
+  grid-row: 1;
 }
 .shell.family-shell .family-center p {
   color: var(--color-muted-text);
-}
-.shell .family-tabs button,
-.shell .family-center .family-back {
-  color: var(--color-on-surface);
 }
 .shell .go-button,
 .shell .family-add-learner > button,
 .family-first-step > button {
   background: var(--color-primary);
   color: var(--color-on-primary);
-}
-.shell .family-tabs button:hover {
-  background: var(--color-secondary);
-  color: var(--color-on-surface);
 }
 
 .shell.start-shell {

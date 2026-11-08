@@ -2,6 +2,7 @@
 
 AMP is an independent TypeScript/PostgreSQL mathematics product. Follow the repository trunk procedure. AHA's app-specific identity and persistence constraints do not apply here.
 
+- Before changing who signs in, who sees what, places, roles or licenses, read [the product model](docs/product-model.md): people, places, sign-in, prices and every screen by person, with what is decided and what is not built yet.
 - Marketing describes AMP as a complete math curriculum from counting to precalculus (#1996). Coverage audits are internal engineering tools for finding and closing gaps in the product, not limits on marketing copy. Never add self-undermining caveats; keep only qualifiers that a funding program or the law requires. In engineering, a mapped skill is not an implemented or verified skill.
 - Every new skill must join a stable exposure objective in `src/curriculum/selection.ts`. Fine-grained graph steps and new generators share that objective’s budget; creating an objective is an intentional curriculum-mix change. Keep frequency weights separate from difficulty.
 - Follow [the pathway selection model](docs/pathway-selection.md) for adaptive metadata. Preserve direct evidence separately from inferred prerequisite support; do not award ancestor mastery from a downstream answer.
@@ -33,4 +34,5 @@ AMP is an independent TypeScript/PostgreSQL mathematics product. Follow the repo
 
 Follow [the web architecture](docs/architecture/web-app.md). New auth and onboarding screens live in `src/web/features/`; typed TanStack routes and providers live in `src/web/app/`. `main.tsx` only bootstraps providers and the router. TanStack Query owns the account-scoped `/me` resource, including its Family projection; zustand owns selection and memory-only form drafts. Server mutations invalidate that canonical resource. Shared accessible controls and theme tokens live in `src/web/ui/`. The legacy host bridges Family, billing, trial, lessons and practice until their feature migrations; do not add new screens to it.
 
+- **One app frame.** Every signed-in app screen sits in `app/AppShell.tsx`: the logo in one spot, the group's tabs from `ui/Tabs.tsx`, one drawer. Add a screen to a group in `features/navigation/shell-frame.ts`; never draw a second header, logo or drawer. `scripts/verify-app-shell-stability.ts` must stay green.
 - **A wait on the server always moves, and looks the same everywhere** (`src/web/ui/loading.css`). A whole screen uses `LoadingScreen`; a wait inside a screen uses `Loading` from `ui/Loading.tsx`, never plain "Loading…" text; a pressed button sets `aria-busy` on that button only, which swaps its label for the moving wave; a reserved block adds the `amp-skeleton` class. `scripts/verify-loading-ui.ts` fails on a blank, still wait.

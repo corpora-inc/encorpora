@@ -19,6 +19,7 @@ import { Suspense, useEffect, useRef } from "react";
 import type { AuthSession } from "../auth";
 import { setPitchShown } from "../lib/analytics";
 import { CurriculumDetailsProvider } from "../features/curriculum/CurriculumDetails";
+import { AppShell } from "./AppShell";
 import { nativeRuntime } from "../native-runtime";
 import {
   authConfigOptions,
@@ -32,6 +33,7 @@ import { useLearnerStore } from "../learner-store";
 import { practicingAsAdult } from "../lib/adult-learner";
 import { LoadingScreen, RouteError } from "../ui/LoadingScreen";
 import {
+  familyClassPath,
   homePlace,
   placeOfPath,
   startDestination,
@@ -58,6 +60,7 @@ import {
 } from "../lib/student-device";
 import { workbookSearchSchema } from "../features/workbooks/model";
 import { preload } from "../features/school/api";
+import { approvalsOptions } from "../features/family-approval/api";
 import { classYearOptions } from "../features/school/org/org-api";
 import { frameData, schoolRoutes, staffScreen } from "./school-routes";
 import { loadCurriculum, loadScope } from "../features/schools/api";
@@ -78,6 +81,7 @@ const searchSchema = z
         "arizona-esa",
         "school",
         "school-invite",
+        "family-approval",
       ])
       .optional()
       .catch(undefined),
@@ -111,7 +115,9 @@ function RouterError({ error }: { error: unknown }) {
 const root = createRootRoute({
   component: () => (
     <CurriculumDetailsProvider>
-      <Outlet />
+      <AppShell>
+        <Outlet />
+      </AppShell>
     </CurriculumDetailsProvider>
   ),
   validateSearch: (search): z.infer<typeof searchSchema> & CampaignSearch => {
@@ -389,6 +395,14 @@ const home = createRoute({
           const place = homePlace(me, rememberedPlace(me.account.id));
           if (place === "me")
             throw redirect({ to: "/me", replace: true } as never);
+          // A family's side is its class, once a child can practice; until
+          // then first-run routing below guides the parent there.
+          if (place === "home" && me.familyClass && me.next === "practice")
+            throw redirect({
+              to: "/$",
+              params: { _splat: familyClassPath(me.familyClass) },
+              replace: true,
+            });
           if (place !== "home")
             throw redirect({
               to: "/$",
@@ -524,11 +538,23 @@ const startVerify = createRoute({
   beforeLoad: beforeStart,
   component: start,
 });
+/** Screens on the app frame know who is signed in before they paint, so
+ * the frame's bar is there from their first frame and nothing moves under it. */
+async function framedScreen() {
+  if (nativeRuntime) throw redirect({ to: "/" });
+  await queryClient.ensureQueryData(sessionOptions).catch(() => undefined);
+}
 const inventory = createRoute({
   getParentRoute: () => root,
   path: "/inventory",
-  beforeLoad: () => {
-    if (nativeRuntime) throw redirect({ to: "/" });
+  // A learning record belongs to an account: signed out, sign in first.
+  beforeLoad: async ({ location }) => {
+    await framedScreen();
+    if (!queryClient.getQueryData(sessionOptions.queryKey))
+      throw redirect({
+        to: "/sign-in",
+        search: continuationSearch(location.search),
+      });
   },
   component: lazyRouteComponent(
     () => import("../features/inventory/InventoryScreen"),
@@ -538,9 +564,7 @@ const inventory = createRoute({
 const pathways = createRoute({
   getParentRoute: () => root,
   path: "/pathways",
-  beforeLoad: () => {
-    if (nativeRuntime) throw redirect({ to: "/" });
-  },
+  beforeLoad: framedScreen,
   component: lazyRouteComponent(
     () => import("../features/pathways/PathwaysScreen"),
     "PathwaysScreen",
@@ -549,9 +573,7 @@ const pathways = createRoute({
 const pathwaySkill = createRoute({
   getParentRoute: () => root,
   path: "/pathways/$skillId",
-  beforeLoad: () => {
-    if (nativeRuntime) throw redirect({ to: "/" });
-  },
+  beforeLoad: framedScreen,
   component: lazyRouteComponent(
     () => import("../features/pathways/PathwaysScreen"),
     "PathwaysScreen",
@@ -711,6 +733,16 @@ const schoolClassHome = createRoute({
 const schoolClassToday = createRoute({
   getParentRoute: () => schoolClass,
   path: "today",
+  // A family's own class lists children from other families: there before
+  // the screen paints.
+  loader: async ({ context, params }) => {
+    const session = (context as { session: AuthSession }).session;
+    const me = await queryClient
+      .ensureQueryData(meOptions(session))
+      .catch(() => null);
+    if (me?.signedIn && me.familyClass?.classId === params.class)
+      await preload(approvalsOptions(session));
+  },
   component: lazyRouteComponent(classScreens, "TodayScreen"),
 });
 const schoolClassMap = createRoute({
@@ -889,6 +921,34 @@ const familyLink = createRoute({
     "ParentScreen",
   ),
 });
+/** Another family's teacher asked for this parent's child (step 5): the
+ * link from mail or a copy, then this parent's own page about the child. */
+const familyApprove = createRoute({
+  getParentRoute: () => root,
+  path: "/family/approve",
+  beforeLoad: () => {
+    if (nativeRuntime || studentSession())
+      throw redirect({ to: "/", replace: true });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/family-approval/ApproveLinkScreen"),
+    "ApproveLinkScreen",
+  ),
+});
+const familyApproval = createRoute({
+  getParentRoute: () => root,
+  path: "/family/approvals/$approvalId",
+  beforeLoad: async () => {
+    notForStudents();
+    if (nativeRuntime) throw redirect({ to: "/", replace: true });
+    const session = await queryClient.ensureQueryData(sessionOptions);
+    if (!session) throw redirect({ to: "/sign-in", replace: true });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/family-approval/ApprovalScreen"),
+    "ApprovalScreen",
+  ),
+});
 const fallback = createRoute({
   getParentRoute: () => appScreen,
   path: "/$",
@@ -942,6 +1002,8 @@ export const router = createRouter({
     schoolsScope,
     schoolsTrust,
     familyLink,
+    familyApprove,
+    familyApproval,
     signIn,
     signUp,
     accountReady,

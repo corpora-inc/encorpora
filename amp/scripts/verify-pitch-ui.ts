@@ -10,7 +10,11 @@ import {
 } from "playwright";
 import { createServer } from "vite";
 import { signupNotice } from "../src/parent-followup/contracts";
-import { guaranteeProblems, orphanLines, RISK_FREE } from "./ui-copy-checks";
+import {
+  guaranteeProblems,
+  orphanLines,
+  GUARANTEE_LINE,
+} from "./ui-copy-checks";
 import { retentionNotice } from "../src/family/contracts";
 import { noticeDigest } from "../src/parent-consent/crypto";
 import { consentFixture } from "../tests/parent-consent.fixture";
@@ -45,7 +49,7 @@ const shots =
   (noMedia ? "artifacts/pitch-no-media" : "artifacts/pitch");
 await mkdir(shots, { recursive: true });
 
-const port = noMedia ? 4419 : 4418;
+const port = Number(process.env.AMP_PITCH_UI_PORT ?? (noMedia ? 4419 : 4418));
 const origin = `http://127.0.0.1:${port}`;
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 // The session comes from this script (`/api/__pitch/session`), so a sign-up
@@ -79,8 +83,8 @@ const offers = [
     id: "a".repeat(64),
     mode: "test",
     currency: "USD",
-    amountMinor: 49900,
-    formattedAmount: "$499.00",
+    amountMinor: 59900,
+    formattedAmount: "$599.00",
     interval: "year",
     learnerCount: 1,
   },
@@ -88,10 +92,33 @@ const offers = [
     id: "b".repeat(64),
     mode: "test",
     currency: "USD",
-    amountMinor: 4900,
-    formattedAmount: "$49.00",
+    amountMinor: 5900,
+    formattedAmount: "$59.00",
     interval: "month",
     learnerCount: 1,
+  },
+];
+// Each additional child's price, as the server sends it beside the plans.
+const extraOffers = [
+  {
+    id: "c".repeat(64),
+    mode: "test",
+    currency: "USD",
+    amountMinor: 39900,
+    formattedAmount: "$399.00",
+    interval: "year",
+    learnerCount: 1,
+    tier: "extra",
+  },
+  {
+    id: "d".repeat(64),
+    mode: "test",
+    currency: "USD",
+    amountMinor: 3900,
+    formattedAmount: "$39.00",
+    interval: "month",
+    learnerCount: 1,
+    tier: "extra",
   },
 ];
 const fundedOffer = {
@@ -99,7 +126,7 @@ const fundedOffer = {
   revision: "fixture-1",
   programName: "Arkansas EFA",
   productTitle: "AMP Mathematics, 12 months",
-  totalMinor: 49900,
+  totalMinor: 59900,
   currency: "USD",
   instructions: "Attach the invoice to your request.",
   termMonths: 12,
@@ -134,7 +161,7 @@ async function serve(page: Page, api: Api) {
     if (path === "/api/v1/billing/prices")
       return api.pricesFail
         ? route.fulfill({ status: 503, json: { error: "unavailable" } })
-        : route.fulfill({ json: { available: true, offers } });
+        : route.fulfill({ json: { available: true, offers, extraOffers } });
     if (path === "/api/v1/funding/invoice-offers")
       return route.fulfill({
         json: {
@@ -197,7 +224,7 @@ async function serve(page: Page, api: Api) {
       });
     if (path === "/api/v1/billing/offer")
       return route.fulfill({
-        json: { available: true, offer: offers[0], offers },
+        json: { available: true, offer: offers[0], offers, extraOffers },
       });
     if (path === "/api/v1/trials/current")
       return route.fulfill({ json: { trial: null } });
@@ -290,10 +317,23 @@ async function viewports(browser: Browser, engine: string) {
         assert.equal(
           await page.locator("[data-buy-terms]").first().innerText(),
           program
-            ? `$499 for the year, paid from your EFA balance.\n${RISK_FREE}`
-            : `$499 for the year.\n${RISK_FREE}`,
+            ? `$599 for the year, paid from your EFA balance.\n${GUARANTEE_LINE}`
+            : `$599 for the year.\n${GUARANTEE_LINE}`,
           `${tag}: the guarantee beside Buy`,
         );
+        if (!program) {
+          const additional = page.locator("[data-additional-child]").first();
+          assert.equal(
+            (await additional.innerText()).replaceAll("\u00a0", " "),
+            "Each additional child: $399 a year",
+            `${tag}: the additional-child price, from the server's offer`,
+          );
+          const box = await additional.boundingBox();
+          assert.ok(
+            box && box.x >= 0 && box.x + box.width <= width,
+            `${tag}: the additional-child line fits`,
+          );
+        }
         // No guarantee word splits at a hyphen; every promise has its
         // asterisk and footnote; no body or fine-print line is one lone word.
         assert.deepEqual(

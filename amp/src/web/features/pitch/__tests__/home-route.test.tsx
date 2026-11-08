@@ -51,7 +51,7 @@ function respond(url: string, init?: RequestInit) {
     path === "/api/v1/billing/prices"
       ? {
           available: true,
-          offers: [offer("year", 49900), offer("month", 4900)],
+          offers: [offer("year", 59900), offer("month", 5900)],
         }
       : path === "/api/v1/funding/invoice-offers"
         ? {
@@ -67,7 +67,7 @@ function respond(url: string, init?: RequestInit) {
                       refundSummary: "Refund terms.",
                     }
                   : {}),
-                totalMinor: 49900,
+                totalMinor: 59900,
                 currency: "USD",
                 instructions: "Attach the invoice.",
                 termMonths: 12,
@@ -136,7 +136,7 @@ test("a signed-out visitor at / sees the pitch, with ad context kept", async () 
   );
   // An offer that has not stated its refund policy: the price only.
   expect(
-    screen.getByText("$499 for the year, paid from your EFA balance."),
+    screen.getByText("$599 for the year, paid from your EFA balance."),
   ).toBeTruthy();
   // No status line is configured for this offer, so none is claimed.
   expect(screen.queryByText(/approved/i)).toBeNull();
@@ -175,7 +175,7 @@ test("a refunding program's Buy carries the guarantee; the block names the amoun
   await screen.findAllByRole("link", { name: "Buy with Arkansas EFA funds" });
   const terms = document.querySelector("[data-buy-terms]")!;
   expect(terms.textContent).toBe(
-    "$499 for the year, paid from your EFA balance.Risk\u2011free: 30\u2011day money\u2011back guarantee*",
+    "$599 for the year, paid from your EFA balance.30\u2011day money\u2011back guarantee*",
   );
   expect(screen.getByText(/we’ll refund every cent/)).toBeTruthy();
 });
@@ -195,7 +195,7 @@ test("a program that allows no refunds shows its price only beside Buy", async (
     name: "Buy with New Hampshire EFA funds",
   });
   expect(
-    screen.getByText("$499 for the year, paid from your EFA balance."),
+    screen.getByText("$599 for the year, paid from your EFA balance."),
   ).toBeTruthy();
 });
 
@@ -227,7 +227,7 @@ test("Arizona ESA's Buy never promises a full refund", async () => {
   await open("/?program=az-esa");
   await screen.findAllByRole("link", { name: "Buy with Arizona ESA funds" });
   expect(
-    screen.getByText("$499 for the year, paid from your ESA balance."),
+    screen.getByText("$599 for the year, paid from your ESA balance."),
   ).toBeTruthy();
   expect(screen.queryByText(/full refund/)).toBeNull();
 });

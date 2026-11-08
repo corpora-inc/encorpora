@@ -10,6 +10,8 @@ import {
   type FamilySummary,
 } from "../src/family/contracts.js";
 import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
+/** `AMP_FAMILY_UI_PORT` keeps parallel local runs apart. */
+const familyPort = Number(process.env.AMP_FAMILY_UI_PORT ?? 4324);
 const directory = new URL("../artifacts/family-review/", import.meta.url);
 await mkdir(directory, { recursive: true });
 await writeFile(
@@ -52,7 +54,7 @@ const vite = await createServer({
     },
   ],
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
-  server: { host: "127.0.0.1", port: 4324, strictPort: true },
+  server: { host: "127.0.0.1", port: familyPort, strictPort: true },
 });
 await vite.listen();
 const browser = await (
@@ -170,14 +172,23 @@ try {
     }
     await route.fulfill({ json: { ticket } });
   });
-  await page.goto("http://127.0.0.1:4324/artifacts/family-review/index.html");
+  await page.goto(
+    `http://127.0.0.1:${familyPort}/artifacts/family-review/index.html`,
+  );
   await page
     .getByRole("heading", { name: "Sample learner", exact: true })
     .waitFor();
+  // The Account group's tabs: Family, Billing and Privacy (and Profile &
+  // sign-in), links in the app frame's bar.
+  const tabNames: Record<string, string> = {
+    Learners: "Family",
+    Access: "Billing",
+    Privacy: "Privacy",
+  };
   const section = async (name: string) => {
     await page
-      .getByRole("navigation", { name: "Family sections" })
-      .getByRole("button", { name, exact: true })
+      .getByRole("navigation", { name: "Account" })
+      .getByRole("link", { name: tabNames[name] ?? name, exact: true })
       .click();
   };
   const privacy = async (name: string) => {
@@ -340,6 +351,8 @@ try {
     .waitFor();
   assert.match(page.url(), /family-review/);
   failExport = false;
+  // The message overlays the screen's foot until dismissed.
+  await page.getByRole("button", { name: "Dismiss message" }).click();
   await privacy("Learning consent");
   await page
     .getByRole("button", { name: "Withdraw consent", exact: true })
