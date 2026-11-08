@@ -28,7 +28,7 @@ export function NavigationSheet({
   triggerRef?: Ref<HTMLButtonElement>;
   /** The bar's own header: the logo as the close control. */
   header?: ReactNode;
-  /** Pinned to the foot of the sheet, outside the scrolling body. */
+  /** The end of the sheet: it scrolls with the body, never pinned over it. */
   footer?: ReactNode;
 }) {
   return (
@@ -76,8 +76,10 @@ export function NavigationSheet({
               </Dialog.Close>
             </header>
           )}
-          <div className={styles.body}>{children}</div>
-          {footer && <div className={styles.footer}>{footer}</div>}
+          <div className={styles.body}>
+            {children}
+            {footer && <div className={styles.footer}>{footer}</div>}
+          </div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
