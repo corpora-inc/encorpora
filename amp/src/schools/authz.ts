@@ -9,6 +9,8 @@ export type ActorRole = {
   orgId: string;
   path: string[];
   role: StaffRole;
+  /** The org is a family (docs/families.md). */
+  family?: boolean;
 };
 export type ActorClass = {
   personId: string;
@@ -16,6 +18,7 @@ export type ActorClass = {
   orgId: string;
   path: string[];
   role: "teacher" | "aide";
+  family?: boolean;
 };
 /** One account's school access, read on every request so an ended role or
  * enrollment stops working on the next one. */
@@ -47,14 +50,14 @@ export async function loadActor(
 ): Promise<Actor> {
   if (isSchoolAccount(accountId)) return { accountId, roles: [], classes: [] };
   const roles = await db.query(
-    `SELECT r.person_id,r.org_id,o.path,r.role FROM amp_people p
+    `SELECT r.person_id,r.org_id,o.path,r.role,o.kind='family' AS family FROM amp_people p
      JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
      JOIN amp_orgs o ON o.id=r.org_id
      WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")}`,
     [accountId],
   );
   const classes = await db.query(
-    `SELECT e.person_id,e.class_id,c.org_id,o.path,e.role FROM amp_people p
+    `SELECT e.person_id,e.class_id,c.org_id,o.path,e.role,o.kind='family' AS family FROM amp_people p
      JOIN amp_enrollments e ON e.person_id=p.id AND e.role<>'student'
      JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL
      JOIN amp_orgs o ON o.id=c.org_id
@@ -70,6 +73,7 @@ export async function loadActor(
       orgId: row.org_id,
       path: row.path,
       role: row.role,
+      ...(row.family ? { family: true } : {}),
     })),
     classes: classes.rows.map((row) => ({
       personId: row.person_id,
@@ -77,6 +81,7 @@ export async function loadActor(
       orgId: row.org_id,
       path: row.path,
       role: row.role,
+      ...(row.family ? { family: true } : {}),
     })),
   };
 }
@@ -120,6 +125,28 @@ const TEACHER_CLASS = new Set<SchoolAction>([
   "share.manage",
 ]);
 const SELF = new Set<SchoolAction>(["orgs.list", "invites.accept"]);
+/** All a family's teachers do: teach their class and invite a co-teacher.
+ * Its children's access is their own grants, so there are no seats or
+ * licenses; its privacy and deletion are the family's own (`/family`); and
+ * its students are the family's children, so nobody adds or removes one here. */
+const FAMILY = new Set<SchoolAction>([
+  "org.read",
+  "classes.read",
+  "classes.update",
+  "students.read",
+  "signin.read",
+  "signin.manage",
+  "grades.read",
+  "grades.write",
+  "calendar.read",
+  "calendar.write",
+  "settings.read",
+  "settings.write",
+  "workbooks.read",
+  "workbooks.write",
+  "staff.read",
+  "staff.manage",
+]);
 
 /** The only authorization rule for school routes. Admin covers descendants
  * along the path, viewer reads them, and teacher and aide cover the classes
@@ -133,6 +160,10 @@ export function can(
   if (target.kind === "self") return SELF.has(action);
   if (SELF.has(action)) return false;
   const roles = actor.roles.filter((role) => target.path.includes(role.orgId));
+  const family =
+    roles.some((role) => role.family) ||
+    actor.classes.some((c) => c.family && target.path.includes(c.orgId));
+  if (family && !FAMILY.has(action)) return false;
   if (roles.some((role) => role.role === "admin")) return true;
   if (VIEWER.has(action) && roles.some((role) => role.role === "viewer"))
     return true;

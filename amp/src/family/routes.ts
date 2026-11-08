@@ -13,6 +13,7 @@ import type { Pool } from "pg";
 import { z } from "zod";
 import type { Authenticator } from "../server/auth.js";
 import { FamilyError } from "./contracts.js";
+import { dismissFamilyNotice } from "./family-class.js";
 import { FamilyRepository } from "./repository.js";
 export interface FamilyRouteOptions {
   pool: Pool;
@@ -52,7 +53,7 @@ export async function registerFamilyRoutes(
     });
     scope.get("/api/v1/me", async (request) => {
       const student = studentBearer(request);
-      if (student) return studentMe(options.pool, student);
+      if (student) return studentMe(options.pool, student, options.development);
       let account: string;
       try {
         account = await options.authenticate(request);
@@ -97,6 +98,25 @@ export async function registerFamilyRoutes(
         return reply.code(204).send();
       },
     );
+    // A child practices on this device as themselves, in their class; the
+    // parent's own view returns when they sign out.
+    scope.post(
+      "/api/v1/family/learners/:learnerId/practice-here",
+      async (request, reply) => {
+        const account = await options.authenticate(request);
+        const { learnerId } = learnerParams.parse(request.params);
+        empty.parse(request.body ?? {});
+        return reply
+          .code(201)
+          .send(await repository.practiceHere(account, learnerId));
+      },
+    );
+    scope.post("/api/v1/family/class-notice/dismiss", async (request) => {
+      const account = await options.authenticate(request);
+      empty.parse(request.body ?? {});
+      await dismissFamilyNotice(options.pool, account);
+      return { dismissed: true };
+    });
     scope.get("/api/v1/family", async (request) =>
       repository.summary(await options.authenticate(request)),
     );

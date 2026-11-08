@@ -49,17 +49,26 @@ export const activeToday = (row: string, org: string) =>
 export const ACTIVE_STUDENT = `EXISTS(SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
   WHERE r.person_id=p.id AND r.role='student' AND ${activeToday("r", "o")})`;
 
-/** The synthetic account for a live token, or null when the token is revoked or
- * expired, or the student was removed or deleted. `last_seen_at` is the
- * student's own row, written at most every five minutes. */
-export async function resolveStudentToken(
+/** Who a live student token signs in: their person, their one learner, and
+ * that learner's owner, which the session acts as. A school student's learner
+ * is owned by `school:<person>`; a family student's by the parent's account
+ * (docs/families.md), so the session is bound to its learner: see
+ * `learningAccount`. Null when the token is revoked or expired, or the student
+ * was removed or deleted. `last_seen_at` is the student's own row, written at
+ * most every five minutes. */
+export type StudentSession = {
+  accountId: string;
+  personId: string;
+  learnerId: string;
+};
+export async function resolveStudentSession(
   db: Database,
   token: string,
-): Promise<string | null> {
+): Promise<StudentSession | null> {
   if (!TOKEN.test(token)) return null;
   const { rows } = await db.query(
     `WITH live AS (
-       SELECT s.id,s.person_id FROM amp_student_sessions s
+       SELECT s.id,s.person_id,l.id AS learner_id,l.account_id FROM amp_student_sessions s
        JOIN amp_people p ON p.id=s.person_id
        JOIN amp_learners l ON l.id=p.learner_id AND l.deleted_at IS NULL
        WHERE s.token_hash=$1 AND s.revoked_at IS NULL AND s.expires_at>now()
@@ -68,10 +77,24 @@ export async function resolveStudentToken(
        UPDATE amp_student_sessions s SET last_seen_at=now() FROM live
        WHERE s.id=live.id AND s.last_seen_at<now()-interval '5 minutes'
      )
-     SELECT person_id FROM live`,
+     SELECT person_id,learner_id,account_id FROM live`,
     [hashStudentToken(token)],
   );
-  return rows[0] ? schoolAccountId(rows[0].person_id) : null;
+  const row = rows[0];
+  return row
+    ? {
+        accountId: row.account_id,
+        personId: row.person_id,
+        learnerId: row.learner_id,
+      }
+    : null;
+}
+/** The account a live student token acts as, or null. */
+export async function resolveStudentToken(
+  db: Database,
+  token: string,
+): Promise<string | null> {
+  return (await resolveStudentSession(db, token))?.accountId ?? null;
 }
 
 /** A school's consent: the student is active and the nearest data agreement up

@@ -53,7 +53,7 @@ export async function isAdultLearner(
  * an adult learner of the account is active on the account's own terms, and
  * every other learner keeps the account's consent rules below. */
 export async function learningConsentActive(
-  client: PoolClient,
+  client: Pick<PoolClient, "query">,
   accountId: string,
   development = false,
   learnerId?: string,
@@ -69,7 +69,7 @@ export async function learningConsentActive(
 /** The account's verified parental consent, which every child learner of a
  * family account needs. */
 async function parentConsentActive(
-  client: PoolClient,
+  client: Pick<PoolClient, "query">,
   accountId: string,
   development: boolean,
 ): Promise<boolean> {

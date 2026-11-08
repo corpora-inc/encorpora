@@ -36,6 +36,7 @@ export type NavId =
   | "license"
   | "sign-in-help"
   | "experience"
+  | "family"
   | `class:${string}`;
 
 /** The signed-in person at the foot of a rail: their address and Sign out. */
@@ -85,11 +86,23 @@ function OrgSwitcher({
   const orgs = useQuery(orgsOptions(session)).data ?? [];
   const navigate = useNavigate();
   if (me?.signedIn && placeEntries(me).length > 1) {
-    // A school inside a district this person works for is that place.
-    const mine = [current, ...ancestors.map((entry) => entry.id).reverse()]
-      .map((id) => `school:${id}` as const)
-      .find((id) => me.staffOf?.some((org) => `school:${org.orgId}` === id));
-    return <PlaceSwitcher me={me} current={mine ?? null} label={name} />;
+    // A family's class is their family side; a school inside a district this
+    // person works for is that place.
+    const mine =
+      me.familyClass?.orgId === current
+        ? ("home" as const)
+        : [current, ...ancestors.map((entry) => entry.id).reverse()]
+            .map((id) => `school:${id}` as const)
+            .find((id) =>
+              me.staffOf?.some((org) => `school:${org.orgId}` === id),
+            );
+    return (
+      <PlaceSwitcher
+        me={me}
+        current={mine ?? null}
+        label={mine === "home" ? me.familyClass!.className : name}
+      />
+    );
   }
   if (orgs.length < 2) return <p className={styles.orgName}>{name}</p>;
   return (
@@ -177,10 +190,21 @@ export function OrgFrame({
   const can = new Set(org.data.can ?? []);
   const lone = org.data.solo === true && classes.length <= 1;
   const isSchool = org.data.kind === "school";
+  // A family's class: its children are the roster, and their access, consent
+  // and privacy live on the family's own screens.
+  const family = org.data.kind === "family";
   const admin = (id: NavId, label: string, path: string, action: string) =>
     can.has(action as never) ? [{ id, label, path: orgPath(orgId, path) }] : [];
   const schoolItems = [
-    { id: "students", label: "Students", path: orgPath(orgId, "students") },
+    ...(family
+      ? []
+      : [
+          {
+            id: "students",
+            label: "Students",
+            path: orgPath(orgId, "students"),
+          },
+        ]),
     ...admin("staff", "Staff", "staff", "staff.read"),
     { id: "calendar", label: "Calendar", path: orgPath(orgId, "calendar") },
     {
@@ -190,6 +214,7 @@ export function OrgFrame({
     },
     ...(isSchool ? admin("import", "Import", "import", "roster.import") : []),
     ...admin("license", "License", "license", "license.read"),
+    ...(family ? [{ id: "family", label: "Family", path: "family" }] : []),
   ];
   const recordItems = [
     ...admin(
@@ -276,6 +301,7 @@ export function OrgFrame({
     <SchoolFrame
       title={title}
       lone={lone}
+      {...(family ? { brand: null } : {})}
       orgSwitcher={
         // Just my class: the school's name is the class's, so only a way to
         // somewhere else earns the space.

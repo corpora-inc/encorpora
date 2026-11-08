@@ -23,11 +23,7 @@ import {
   studentWorkbookPdf,
 } from "./classroom-workbooks.js";
 import { SchoolError } from "./contracts.js";
-import {
-  resolveStudentToken,
-  schoolPersonId,
-  studentBearer,
-} from "./principal.js";
+import { resolveStudentSession, studentBearer } from "./principal.js";
 import type { defineSchoolRoute, SchoolServices } from "./routes.js";
 import { studentBoard, studentBoards } from "./standings.js";
 
@@ -238,10 +234,9 @@ export function defineClassroomRoutes(define: typeof defineSchoolRoute) {
 export function registerStudentStandings(scope: FastifyInstance, pool: Pool) {
   const student = async (request: { headers: { authorization?: string } }) => {
     const token = studentBearer(request);
-    const account = token && (await resolveStudentToken(pool, token));
-    const personId = account && schoolPersonId(account);
-    if (!personId) throw new SchoolError(401, "sign_in_required");
-    return personId;
+    const session = token && (await resolveStudentSession(pool, token));
+    if (!session) throw new SchoolError(401, "sign_in_required");
+    return session.personId;
   };
   scope.get("/api/v1/school/student/standings", async (request) => ({
     boards: await studentBoards(pool, await student(request)),

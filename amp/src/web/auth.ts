@@ -10,7 +10,11 @@ import { UserManager, WebStorageStateStore, type User } from "oidc-client-ts";
 import { accountClient } from "./account-client";
 import { AppError } from "./lib/AppError";
 import { measureAuth } from "./lib/auth-measurement";
-import { clearStudentDevice, studentSession } from "./lib/student-device";
+import {
+  clearStudentDevice,
+  handedStudentDevice,
+  studentSession,
+} from "./lib/student-device";
 const authority = import.meta.env.VITE_AMP_AUTHORITY as string | undefined;
 const clientId = import.meta.env.VITE_AMP_CLIENT_ID as string | undefined;
 const manager =
@@ -132,9 +136,11 @@ export async function signIn(intent?: "create") {
 export async function signOut() {
   if (nativeRuntime) return nativeSignOut();
   if (studentSession()) {
+    // A child on their parent's device hands it back to the parent.
+    const handed = handedStudentDevice();
     clearStudentDevice();
     notifyAccountSessionChanged();
-    location.assign("/join");
+    location.assign(handed ? "/" : "/join");
     return;
   }
   if ((await authConfig()).mode === "accounts") {

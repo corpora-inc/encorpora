@@ -11,6 +11,9 @@ const studentKey = "amp.student";
 const learnerKey = "amp.learner";
 /** When a shared device was last used, so a reload doesn't restart the clock. */
 const activeKey = "amp.student.active";
+/** A parent handed this device to their child ("Let Maya practice here"), so
+ * signing out returns to the parent rather than to the class sign-in. */
+const handedKey = "amp.student.handed";
 export const STUDENT_IDLE_MS = 30 * 60_000;
 
 export type StudentSession = { accountId: string; token: string };
@@ -46,15 +49,25 @@ export function isStudentDevice(): boolean {
 export function rememberStudentSession(
   session: StudentSession,
   mode: "shared" | "personal",
+  handed = false,
 ) {
   clearStudentDevice();
   const store = mode === "shared" ? sessionStorage : localStorage;
   store.setItem(studentKey, JSON.stringify(session));
   if (mode === "shared") store.setItem(activeKey, String(Date.now()));
+  if (handed) sessionStorage.setItem(handedKey, "1");
+}
+/** This student's sign-in was handed over by a parent on their own device. */
+export function handedStudentDevice(): boolean {
+  try {
+    return sessionStorage.getItem(handedKey) === "1";
+  } catch {
+    return false;
+  }
 }
 export function clearStudentDevice() {
   for (const [store, keys] of [
-    [() => sessionStorage, [studentKey, activeKey]],
+    [() => sessionStorage, [studentKey, activeKey, handedKey]],
     [() => localStorage, [studentKey, learnerKey, trialKey]],
   ] as const)
     try {

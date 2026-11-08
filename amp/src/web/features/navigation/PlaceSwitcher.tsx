@@ -2,7 +2,7 @@ import { useNavigate } from "@tanstack/react-router";
 import type { SignedInMe } from "../../../account/contracts";
 import { useLearnerStore } from "../../learner-store";
 import { Menu, MenuItem, MenuLabel } from "../../ui/Menu";
-import { placesFor, type PlaceId } from "../onboarding/guard";
+import { familyClassPath, placesFor, type PlaceId } from "../onboarding/guard";
 import { rememberPlace } from "../onboarding/place-memory";
 import styles from "./PlaceSwitcher.module.css";
 
@@ -25,6 +25,17 @@ export type PlaceEntry = {
 /** Every place this account can open, named for the switcher. */
 export function placeEntries(me: SignedInMe): PlaceEntry[] {
   return placesFor(me).map((id) => {
+    // A family's side is its class, which the parent teaches.
+    if (id === "home" && me.familyClass)
+      return {
+        id,
+        name: me.familyClass.className,
+        detail:
+          me.learners.length === 1
+            ? me.learners[0]!.name
+            : `${me.learners.length} students`,
+        path: familyClassPath(me.familyClass),
+      };
     if (id === "home")
       return {
         id,
