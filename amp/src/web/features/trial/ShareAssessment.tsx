@@ -1,9 +1,7 @@
-import { CheckboxControl } from "../../ui/Checkbox";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { buttonClass } from "../../ui/Button";
 import { Dialog } from "../../ui/Dialog";
 import { mapShareImage, type ShareMap } from "../pathways/share-image";
-import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import styles from "./ShareAssessment.module.css";
 
 export function assessmentShare(level: string) {
@@ -76,18 +74,12 @@ function ShareIcon({ name }: { name: IconName }) {
 
 /** Explicit sharing destinations; images stay on this device until downloaded. */
 export function ShareAssessment({
-  level: estimatedLevel,
+  level,
   map,
 }: {
   level: string;
   map?: ShareMap;
 }) {
-  const { scope } = useCurriculumDetails();
-  const [includedScope, setIncludedScope] = useState<string | null>(null);
-  const includeEstimate = includedScope === scope;
-  const setIncludeEstimate = (included: boolean) =>
-    setIncludedScope(included ? scope : null);
-  const level = includeEstimate ? estimatedLevel : "";
   const imageKey = useMemo(
     () => (map ? JSON.stringify([level, map.skills, map.evidence]) : ""),
     [level, map?.skills, map?.evidence],
@@ -200,14 +192,6 @@ export function ShareAssessment({
         }}
       >
         <div className={styles.panel}>
-          <label>
-            <CheckboxControl
-              checked={includeEstimate}
-              onChange={(e) => setIncludeEstimate(e.target.checked)}
-            />{" "}
-            Include my estimated level in this share
-          </label>
-
           {map ? (
             preview
           ) : (

@@ -6,8 +6,8 @@ import { meOptions, sessionOptions } from "../../lib/query";
 import {
   BuyOptions,
   GUARANTEE_FOOTNOTE,
-  RISK_FREE,
-  RISK_FREE_SHORT,
+  GUARANTEE_LINE,
+  GUARANTEE_SHORT,
   REFUND_POLICY_URL,
   useBuyData,
 } from "../pitch/BuyOptions";
@@ -107,10 +107,10 @@ export function TrialInvitation({
             {guaranteed && (
               <span className={styles.risk}>
                 {at === "map" ? (
-                  RISK_FREE
+                  GUARANTEE_LINE
                 ) : (
                   <>
-                    {RISK_FREE_SHORT}
+                    {GUARANTEE_SHORT}
                     {/* The asterisk opens the refund policy: the footnote
                         would push Next out of reach in the feedback. */}
                     <a
