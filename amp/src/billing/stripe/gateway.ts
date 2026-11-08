@@ -4,6 +4,7 @@ import Stripe from "stripe";
 import {
   BillingError,
   planConfig,
+  planForPrice,
   type BillingInterval,
   type StripeBillingConfig,
 } from "./config.js";
@@ -251,13 +252,10 @@ export class StripeGateway {
     const line = lines.data[0]!;
     const payment = payments.data[0]!;
     const details = line.pricing?.price_details;
-    const config = planConfig(
-      this.config,
-      this.config.monthlyPriceId &&
-        id(details?.price) === this.config.monthlyPriceId
-        ? "month"
-        : "year",
-    );
+    // The price sold now, or a retired one an existing subscription renews on.
+    const config =
+      planForPrice(this.config, id(details?.price))?.plan ??
+      planConfig(this.config, "year");
     requireEvidence(
       line.quantity === 1 &&
         (line.quantity_decimal == null ||

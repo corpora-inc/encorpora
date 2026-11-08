@@ -103,8 +103,8 @@ const offers = ["year", "month"].map((interval, i) => ({
   id: (i ? "b" : "a").repeat(64),
   mode: "test",
   currency: "USD",
-  amountMinor: i ? 4900 : 49900,
-  formattedAmount: i ? "$49.00" : "$499.00",
+  amountMinor: i ? 5900 : 59900,
+  formattedAmount: i ? "$59.00" : "$599.00",
   interval,
   learnerCount: 1,
 }));
