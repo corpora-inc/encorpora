@@ -64,6 +64,8 @@ export type BuyData = {
   program?: FundedProgram;
   fundedOffer?: InvoiceOffer;
   offers: AnnualOffer[];
+  /** Each additional child's price, when this environment sells one. */
+  extraOffers?: AnnualOffer[];
   failed: boolean;
   retry: () => void;
 };
@@ -81,6 +83,7 @@ export function useBuyData(search: Record<string, unknown>): BuyData {
     program,
     fundedOffer,
     offers: prices.data?.available ? prices.data.offers : [],
+    extraOffers: prices.data?.available ? prices.data.extraOffers : undefined,
     failed: !!prices.error && (!program || !fundedOffer),
     retry: () => {
       void prices.refetch();
@@ -110,7 +113,7 @@ export function BuyOptions({
   interval: chosen,
   onInterval,
 }: {
-  data: Pick<BuyData, "program" | "fundedOffer" | "offers">;
+  data: Pick<BuyData, "program" | "fundedOffer" | "offers" | "extraOffers">;
   search: Record<string, unknown>;
   signedIn?: boolean;
   from: BuyFrom;
@@ -212,7 +215,12 @@ export function BuyOptions({
   if (variant === "button") return button;
   return (
     <div className={styles.buy} data-buy="card">
-      <PlanChoice offers={plans} interval={offer.interval} onChange={choose} />
+      <PlanChoice
+        offers={plans}
+        extra={data.extraOffers}
+        interval={offer.interval}
+        onChange={choose}
+      />
       {button}
       <p className={styles.buyTerms} data-buy-terms>
         {offer.formattedAmount}{" "}

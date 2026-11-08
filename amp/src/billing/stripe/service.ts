@@ -48,6 +48,8 @@ export class StripeBilling {
     /** The browser's random funnel visitor ID, for purchase attribution. */
     visitorId?: string,
     acquisitionId?: string,
+    /** The offer the parent saw; a checkout that sells another is refused. */
+    offerId?: string,
   ): Promise<{ url: string }> {
     const reserve = () =>
       learnerId === null
@@ -60,7 +62,13 @@ export class StripeBilling {
               acknowledgement,
             )
           : Promise.reject(new BillingError("parent_acknowledgement_required"))
-        : this.repository.reserve(accountId, learnerId, requestId, interval);
+        : this.repository.reserve(
+            accountId,
+            learnerId,
+            requestId,
+            interval,
+            offerId,
+          );
     let checkoutId: string;
     try {
       checkoutId = await reserve();
@@ -212,6 +220,7 @@ export class StripeBilling {
         row.billing_interval,
         learnerId === null,
         enrollmentExpiresAt,
+        row.price_tier ?? "full",
       );
       await client.query(
         "UPDATE amp_stripe_checkouts SET customer_id=$2,session_id=$3,session_url=$4 WHERE id=$1",

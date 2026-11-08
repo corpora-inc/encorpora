@@ -26,6 +26,7 @@ export const offerOptions = (session: AuthSession) =>
     select: (view) => ({
       available: view.available,
       offers: view.offers ?? (view.offer ? [view.offer] : []),
+      extraOffers: view.extraOffers ?? [],
     }),
   });
 /** Polls only while a verified result is still pending. */

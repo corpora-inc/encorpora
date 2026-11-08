@@ -88,6 +88,9 @@ export interface StripeRuntime {
   productId: string;
   priceIds: { year: string; month: string };
   amounts: { year: string; month: string };
+  /** The additional-child prices; unset until the environment switches over. */
+  extraPriceIds: { year?: string; month?: string };
+  extraAmounts: { year?: string; month?: string };
   currency: string;
 }
 
@@ -110,9 +113,31 @@ export function stripeRuntime(env: NodeJS.ProcessEnv): StripeRuntime {
       year: required("AMP_STRIPE_AMOUNT_MINOR"),
       month: required("AMP_STRIPE_MONTHLY_AMOUNT_MINOR"),
     },
+    extraPriceIds: {
+      year: env.AMP_STRIPE_EXTRA_PRICE_ID || undefined,
+      month: env.AMP_STRIPE_EXTRA_MONTHLY_PRICE_ID || undefined,
+    },
+    extraAmounts: {
+      year: env.AMP_STRIPE_EXTRA_AMOUNT_MINOR || undefined,
+      month: env.AMP_STRIPE_EXTRA_MONTHLY_AMOUNT_MINOR || undefined,
+    },
     currency: required("AMP_STRIPE_CURRENCY"),
   };
 }
+
+/** The settings that name each additional-child price, by interval. */
+export const extraSettings = {
+  year: {
+    price: "AMP_STRIPE_EXTRA_PRICE_ID",
+    amount: "AMP_STRIPE_EXTRA_AMOUNT_MINOR",
+    profile: "AMP_PAYMENT_EXTRA_DOCUMENT_PROFILE",
+  },
+  month: {
+    price: "AMP_STRIPE_EXTRA_MONTHLY_PRICE_ID",
+    amount: "AMP_STRIPE_EXTRA_MONTHLY_AMOUNT_MINOR",
+    profile: "AMP_PAYMENT_EXTRA_MONTHLY_DOCUMENT_PROFILE",
+  },
+} as const;
 
 export interface Change {
   field: string;
@@ -313,6 +338,48 @@ export async function planCatalog(
     }
   }
 
+  // Each additional child: created if missing, sold once the settings name it.
+  for (const interval of intervals) {
+    const want = stripeCatalog.extraPrices[interval];
+    const price = await client.priceByLookupKey(want.lookupKey);
+    if (price) {
+      const errors = priceErrors(price, want, declared.productId, livemode);
+      plan.errors.push(...errors);
+      if (!errors.length)
+        plan.verified.push(
+          `price ${price.id}: ${want.unitAmount} ${want.currency} per ${want.interval} for each additional child, active`,
+        );
+    } else {
+      plan.creates.push({
+        product: declared.productId,
+        currency: want.currency,
+        unitAmount: want.unitAmount,
+        interval,
+        lookupKey: want.lookupKey,
+      });
+      plan.changes.push({
+        field: `price.extra.${interval}`,
+        from: null,
+        to: `${want.unitAmount} ${want.currency} per ${interval}, lookup key ${want.lookupKey}`,
+      });
+    }
+    const names = extraSettings[interval];
+    const set = runtime.extraPriceIds[interval];
+    const amount = runtime.extraAmounts[interval];
+    if (!set && !amount)
+      plan.pending.push(
+        `${interval}: each additional child is sold at the full price. Set ${names.price}=${price?.id ?? "(the new price's id)"}, ${names.amount}=${want.unitAmount} and ${names.profile}`,
+      );
+    else if (!price || set !== price.id)
+      plan.errors.push(
+        `${names.price} is "${set ?? ""}", declared "${price?.id ?? "(the new price)"}"`,
+      );
+    else if (amount !== `${want.unitAmount}`)
+      plan.errors.push(
+        `${names.amount} is "${amount ?? ""}", declared "${want.unitAmount}"`,
+      );
+  }
+
   const want = stripeCatalog.product;
   for (const field of [
     "name",
@@ -420,6 +487,12 @@ export function formatDesired(): string {
         `    ${interval}: ${env.stripe.retiredPriceIds[interval]} retired, kept for existing subscriptions (verified only)`,
       );
     }
+    for (const interval of intervals) {
+      const p = stripeCatalog.extraPrices[interval];
+      lines.push(
+        `    ${interval}, each additional child: ${p.unitAmount} ${p.currency} per ${p.interval}, lookup key ${p.lookupKey} (created if missing)`,
+      );
+    }
   }
   return lines.join("\n");
 }
@@ -497,7 +570,7 @@ export function stripeClient(secretKey: string): CatalogClient {
               recurring: { interval: input.interval },
               lookup_key: input.lookupKey,
               tax_behavior: "exclusive",
-              nickname: `AMP ${input.interval === "year" ? "annual" : "monthly"}`,
+              nickname: `AMP ${input.interval === "year" ? "annual" : "monthly"}${input.lookupKey.startsWith("amp-extra-") ? ", each additional child" : ""}`,
             },
             { idempotencyKey },
           )

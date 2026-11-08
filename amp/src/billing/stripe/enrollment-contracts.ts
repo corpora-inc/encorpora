@@ -10,11 +10,14 @@ export const annualOfferSchema = z.object({
   formattedAmount: z.string().min(1).max(40),
   interval: z.enum(["year", "month"]),
   learnerCount: z.literal(1),
+  /** The full price, or the price for each additional child in a family. */
+  tier: z.enum(["full", "extra"]).optional(),
 });
 export const offerViewSchema = z.object({
   available: z.boolean(),
   offer: annualOfferSchema.optional(),
   offers: z.array(annualOfferSchema).max(2).optional(),
+  extraOffers: z.array(annualOfferSchema).max(2).optional(),
 });
 export const enrollmentPhases = [
   "checkout-open",

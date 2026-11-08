@@ -44,6 +44,15 @@ export const settingGroups = {
     "AMP_PAYMENT_MONTHLY_DOCUMENT_PROFILE",
   ],
   "stripe-live": ["AMP_STRIPE_LIVE_APPROVED"],
+  /** Each additional child's price (docs/stripe.md): all six or none. */
+  "stripe-extra": [
+    "AMP_STRIPE_EXTRA_PRICE_ID",
+    "AMP_STRIPE_EXTRA_AMOUNT_MINOR",
+    "AMP_STRIPE_EXTRA_MONTHLY_PRICE_ID",
+    "AMP_STRIPE_EXTRA_MONTHLY_AMOUNT_MINOR",
+    "AMP_PAYMENT_EXTRA_DOCUMENT_PROFILE",
+    "AMP_PAYMENT_EXTRA_MONTHLY_DOCUMENT_PROFILE",
+  ],
   google: ["AMP_GOOGLE_CLIENT_ID", "AMP_GOOGLE_CLIENT_SECRET"],
   github: ["AMP_GITHUB_CLIENT_ID", "AMP_GITHUB_CLIENT_SECRET"],
   microsoft: ["AMP_MICROSOFT_CLIENT_ID", "AMP_MICROSOFT_CLIENT_SECRET"],
@@ -94,6 +103,7 @@ export function checkEnvironment(
   ][]) {
     const missing = names.filter((name) => !set(name));
     const provider = (socialProviders as readonly string[]).includes(group);
+    const allOrNone = provider || group === "stripe-extra";
     if (!missing.length) {
       report.ok.push(group);
       if (provider && !required.has(group))
@@ -102,7 +112,7 @@ export function checkEnvironment(
         );
     } else if (required.has(group)) {
       report.errors.push(`${group}: missing ${missing.join(", ")}`);
-    } else if (provider && missing.length < names.length) {
+    } else if (allOrNone && missing.length < names.length) {
       // The API refuses to start with a partial provider; say which settings.
       report.errors.push(
         `${group} is partly configured: missing ${missing.join(", ")} (set all or none)`,
