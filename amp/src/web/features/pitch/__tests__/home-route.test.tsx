@@ -175,7 +175,7 @@ test("a refunding program's Buy carries the guarantee; the block names the amoun
   await screen.findAllByRole("link", { name: "Buy with Arkansas EFA funds" });
   const terms = document.querySelector("[data-buy-terms]")!;
   expect(terms.textContent).toBe(
-    "$599 for the year, paid from your EFA balance.Risk\u2011free: 30\u2011day money\u2011back guarantee*",
+    "$599 for the year, paid from your EFA balance.30\u2011day money\u2011back guarantee*",
   );
   expect(screen.getByText(/we’ll refund every cent/)).toBeTruthy();
 });

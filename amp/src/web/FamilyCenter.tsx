@@ -470,7 +470,9 @@ export function FamilyCenter({
             {notice}
           </p>
         )}
-        {!family ? (
+        {/* Profile & sign-in shows no family details: no family wait sits
+            below its settings to be pushed down when they arrive. */}
+        {section === "security" && accountsEnabled ? null : !family ? (
           <div aria-busy="true">
             <Loading>Loading family details…</Loading>
             {error && (

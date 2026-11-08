@@ -41,12 +41,16 @@ export async function chooseLearner(page: Page, id: string) {
 export async function currentLearner(page: Page) {
   const drawer = await openMenu(page);
   const folded = drawer.getByRole("button", { name: /^Current learner/ });
-  const value = (await folded.count())
-    ? await folded.getAttribute("data-value")
-    : await drawer
-        .getByRole("listbox", { name: "Current learner" })
-        .locator('[role="option"][aria-selected="true"]')
-        .getAttribute("data-value");
+  // One learner is named, not offered: the drawer marks whose it is.
+  const only = drawer.locator('[aria-label="Where you are"] [data-learner]');
+  const value = (await only.count())
+    ? await only.getAttribute("data-learner")
+    : (await folded.count())
+      ? await folded.getAttribute("data-value")
+      : await drawer
+          .getByRole("listbox", { name: "Current learner" })
+          .locator('[role="option"][aria-selected="true"]')
+          .getAttribute("data-value");
   await page.keyboard.press("Escape");
   await drawer.waitFor({ state: "detached" });
   return value;

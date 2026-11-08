@@ -1837,9 +1837,20 @@ html[data-input="pointer"] :focus-visible {
 .choose-pay::-webkit-scrollbar {
   display: none;
 }
-.choose-pay-header {
+/* Every property the element rules for header set (style.css, theme.css and
+   stylesheets that arrive with later screens), fixed here, so the plan
+   choice never moves when one of them loads. */
+.choose-pay > .choose-pay-header {
   display: flex;
-  height: auto;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0;
+  box-sizing: border-box;
+  height: 49px;
+  min-height: 49px;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 .choose-pay-body {
   display: grid;

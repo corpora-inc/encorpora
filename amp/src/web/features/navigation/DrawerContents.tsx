@@ -194,7 +194,10 @@ export default function DrawerContents({
             />
           ) : (
             learnerName && (
-              <div className={styles.current}>
+              <div
+                className={styles.current}
+                data-learner={(own ? view.learner?.id : learner?.id) ?? ""}
+              >
                 <span className={styles.kicker}>
                   {own ? "Your own practice" : "Learner"}
                 </span>
