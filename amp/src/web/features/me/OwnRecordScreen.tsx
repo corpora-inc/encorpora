@@ -2,15 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import type { AdultStart } from "../../../learning/starting-point";
-import { meOptions } from "../../lib/query";
 import { Avatar } from "../../ui/Avatar";
 import { Badge } from "../../ui/Badge";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
 import { Loading } from "../../ui/Loading";
 import { currentSession } from "../school/api";
-import { AccountMenu } from "../school/OrgFrame";
-import { SchoolFrame, type SchoolNavItem } from "../school/SchoolFrame";
+import "../school/SchoolFrame.module.css";
 import {
   RecordLevels,
   RecordObjectives,
@@ -18,7 +16,6 @@ import {
   RecordWork,
   TimeDetail,
 } from "../school/classes/ProgressRecord";
-import { PlaceSwitcher, placeEntries } from "../navigation/PlaceSwitcher";
 import teacher from "../school/classes/Teacher.module.css";
 import { ownPracticeOptions } from "./api";
 import styles from "./Own.module.css";
@@ -33,45 +30,14 @@ const startNames: Record<AdultStart, string> = {
   precalculus: "Precalculus",
 };
 
-/** The adult's own place: their record, practice, pathways and workbooks, in
- * the same frame a teacher works in, with the switcher to their other places. */
-export function OwnFrame({ children }: { children: ReactNode }) {
-  const session = currentSession();
-  const me = useQuery(meOptions(session)).data;
-  const account = me?.signedIn ? me : null;
-  const own = account?.adultPractice?.learner;
-  const items: SchoolNavItem[] = [
-    ...(own?.active
-      ? [{ id: "practice", label: "Practice", path: "practice" }]
-      : []),
-    { id: "progress", label: "My progress", path: "me" },
-    { id: "pathways", label: "Pathways", path: "pathways" },
-    ...(own?.active
-      ? [
-          {
-            id: "workbooks",
-            label: "Workbooks",
-            path: `learners/${own.id}/workbooks`,
-          },
-        ]
-      : []),
-  ];
+/** The adult's own place, under the app frame's bar (logo, the Progress tabs
+ * and Practice). The record reads in the teacher's dense styles, whose
+ * element resets come with the school frame's stylesheet. */
+function OwnPage({ children }: { children: ReactNode }) {
   return (
-    <SchoolFrame
-      title="My practice"
-      brand={null}
-      navLabel="My practice"
-      orgSwitcher={
-        account && placeEntries(account).length > 1 ? (
-          <PlaceSwitcher me={account} current="me" />
-        ) : undefined
-      }
-      sections={[{ items }]}
-      activeNav="progress"
-      account={<AccountMenu />}
-    >
+    <main className={styles.page} data-dense>
       {children}
-    </SchoolFrame>
+    </main>
   );
 }
 
@@ -81,7 +47,7 @@ export function OwnRecordScreen() {
   const record = useQuery(ownPracticeOptions(session));
   const data = record.data;
   return (
-    <OwnFrame>
+    <OwnPage>
       {record.isPending ? (
         <Loading />
       ) : !data ? (
@@ -108,13 +74,16 @@ export function OwnRecordScreen() {
               </p>
             </div>
             <div className={teacher.recordAction}>
+              {/* Practice is the bar's action; workbooks are theirs here. */}
               {data.learner.active ? (
                 <Link
                   to="/$"
-                  params={{ _splat: "practice" }}
-                  className={buttonClass("primary")}
+                  params={{
+                    _splat: `learners/${data.learner.id}/workbooks`,
+                  }}
+                  className={buttonClass("secondary")}
                 >
-                  Practice
+                  Workbooks
                 </Link>
               ) : (
                 <Badge>Practice paused</Badge>
@@ -160,6 +129,6 @@ export function OwnRecordScreen() {
           </div>
         </div>
       )}
-    </OwnFrame>
+    </OwnPage>
   );
 }

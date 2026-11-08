@@ -4,9 +4,21 @@ import type { AuthSession } from "../auth";
 import { accessSession, authConfig } from "../auth";
 import { request } from "./api";
 import { setAnalyticsSession } from "./analytics";
+/** A screen's route loads its data, then the screen mounts and reads it.
+ * Data that arrived in the last moment is the screen's to use: mounting
+ * doesn't ask again (one request per resource per load). Anything older, or
+ * invalidated by a change, still refreshes on mount. */
+export const MOUNT_REFETCH_AFTER_MS = 2_000;
 export const queryClient = new QueryClient({
   defaultOptions: {
-    queries: { retry: false, staleTime: 0, refetchOnWindowFocus: true },
+    queries: {
+      retry: false,
+      staleTime: 0,
+      refetchOnWindowFocus: true,
+      refetchOnMount: (query) =>
+        query.state.isInvalidated ||
+        Date.now() - query.state.dataUpdatedAt > MOUNT_REFETCH_AFTER_MS,
+    },
     mutations: { retry: false },
   },
 });

@@ -1,5 +1,10 @@
 import { secureChromium } from "../browser-security.mjs";
-import { choose } from "./ui-controls";
+import {
+  choose,
+  leaveSettings,
+  chooseLearner,
+  currentLearner,
+} from "./ui-controls";
 import { typeSizes } from "../src/math/scene/type";
 import {
   assertFigureTextScale,
@@ -157,10 +162,7 @@ try {
   });
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("http://127.0.0.1:4350");
-  await choose(
-    page.getByRole("button", { name: "Learner", exact: true }),
-    learner.id,
-  );
+  await chooseLearner(page, learner.id);
   await page.goto("http://127.0.0.1:4350/lessons?strand=data&topic=mean-data");
   await page
     .getByRole("button", { name: "Practice this", exact: true })
@@ -887,39 +889,28 @@ try {
   // A reload keeps the learner chosen on this device.
   progress("learner persistence and family controls");
   await page.reload();
-  await page.getByRole("button", { name: "Learner", exact: true }).waitFor();
-  assert.equal(
-    await page
-      .getByRole("button", { name: "Learner", exact: true })
-      .getAttribute("data-value"),
-    learnerIds.at(-1),
-  );
+  await page.locator("[data-app-logo]").waitFor();
+  assert.equal(await currentLearner(page), learnerIds.at(-1));
   // Family opens on the current learner, and choosing one there makes them
   // the current learner on every screen.
   await page.getByRole("button", { name: "Open AMP menu" }).click();
+  await page.getByRole("link", { name: "Account", exact: true }).click();
   await page
-    .getByRole("link", { name: "Manage learners", exact: true })
+    .getByRole("navigation", { name: "Account" })
+    .getByRole("link", { name: "Family", exact: true })
     .click();
   assert.equal(
     await page.getByLabel("Family learner").getAttribute("data-value"),
     learnerIds.at(-1),
   );
   await choose(page.getByLabel("Family learner"), learnerIds[0]!);
-  await page.getByRole("button", { name: "Back", exact: true }).click();
-  assert.equal(
-    await page
-      .getByRole("button", { name: "Learner", exact: true })
-      .getAttribute("data-value"),
-    learnerIds[0],
-  );
-  await choose(
-    page.getByRole("button", { name: "Learner", exact: true }),
-    learnerIds.at(-1)!,
-  );
-  await page.getByRole("button", { name: "Practice", exact: true }).click();
+  await leaveSettings(page);
+  assert.equal(await currentLearner(page), learnerIds[0]);
+  await chooseLearner(page, learnerIds.at(-1)!);
   await page.getByRole("button", { name: "Open AMP menu" }).click();
+  await page.getByRole("link", { name: "Progress", exact: true }).click();
   await page
-    .getByRole("link", { name: "Change birth year", exact: true })
+    .getByRole("button", { name: "Change birth year", exact: true })
     .click();
   await page.getByRole("heading", { name: /^What year was/ }).waitFor();
   assert.ok(
@@ -930,8 +921,10 @@ try {
   );
   // The real application mounts parent controls independently of learning consent.
   await page.getByRole("button", { name: "Open AMP menu" }).click();
+  await page.getByRole("link", { name: "Account", exact: true }).click();
   await page
-    .getByRole("link", { name: "Manage learners", exact: true })
+    .getByRole("navigation", { name: "Account" })
+    .getByRole("link", { name: "Family", exact: true })
     .click();
   await page.locator(".family-center").waitFor();
   for (const size of [
@@ -942,8 +935,8 @@ try {
   ]) {
     await page.setViewportSize(size);
     await page
-      .getByRole("navigation", { name: "Family sections" })
-      .getByRole("button", { name: "Privacy", exact: true })
+      .getByRole("navigation", { name: "Account" })
+      .getByRole("link", { name: "Privacy", exact: true })
       .click();
     if (isPhoneLandscape(size)) {
       await assertPhoneLandscapeSmoke(page, "Family privacy");
@@ -953,9 +946,8 @@ try {
           () => document.documentElement.scrollHeight <= innerHeight + 1,
         ),
       );
-      const back = await page
-        .getByRole("button", { name: "Back", exact: true })
-        .boundingBox();
+      // The way out is the app frame's logo, always in view.
+      const back = await page.locator("[data-app-logo]").boundingBox();
       assert.ok(
         back && back.y + back.height <= size.height,
         "Family exit stays visible",
@@ -976,7 +968,7 @@ try {
     });
   }
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.getByRole("button", { name: "Back", exact: true }).click();
+  await leaveSettings(page);
   await page.waitForFunction(
     () =>
       document.activeElement?.getAttribute("aria-label") === "Open AMP menu",
@@ -984,8 +976,9 @@ try {
   // Family exits to the workspace; open the profile route before editing again.
   assert.equal(new URL(page.url()).pathname, "/");
   await page.getByRole("button", { name: "Open AMP menu" }).click();
+  await page.getByRole("link", { name: "Progress", exact: true }).click();
   await page
-    .getByRole("link", { name: "Change birth year", exact: true })
+    .getByRole("button", { name: "Change birth year", exact: true })
     .click();
   await page.getByRole("heading", { name: /^What year was/ }).waitFor();
   let releaseFamilyBatch!: () => void, familyBatchHeld!: () => void;
@@ -1005,13 +998,15 @@ try {
   await page.getByRole("button", { name: "Go", exact: true }).click();
   await within(familyBatchWaiting, "family batch request");
   await page.getByRole("button", { name: "Open AMP menu" }).click();
+  await page.getByRole("link", { name: "Account", exact: true }).click();
   await page
-    .getByRole("link", { name: "Manage learners", exact: true })
+    .getByRole("navigation", { name: "Account" })
+    .getByRole("link", { name: "Family", exact: true })
     .click();
   await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
   await page
-    .getByRole("navigation", { name: "Family sections" })
-    .getByRole("button", { name: "Privacy", exact: true })
+    .getByRole("navigation", { name: "Account" })
+    .getByRole("link", { name: "Privacy", exact: true })
     .click();
   await page
     .getByRole("button", { name: "Learning consent", exact: false })
@@ -1041,7 +1036,7 @@ try {
     .waitFor();
   releaseFamilyBatch();
   await page.waitForTimeout(100);
-  await page.getByRole("button", { name: "Back", exact: true }).click();
+  await leaveSettings(page);
   assert.equal(
     await page.locator("#answer").count(),
     0,
@@ -1056,8 +1051,10 @@ try {
     0,
   );
   await page.getByRole("button", { name: "Open AMP menu" }).click();
+  await page.getByRole("link", { name: "Account", exact: true }).click();
   await page
-    .getByRole("link", { name: "Manage learners", exact: true })
+    .getByRole("navigation", { name: "Account" })
+    .getByRole("link", { name: "Family", exact: true })
     .click();
   await page.getByRole("heading", { name: "Family", exact: true }).waitFor();
   assert.deepEqual(errors, []);

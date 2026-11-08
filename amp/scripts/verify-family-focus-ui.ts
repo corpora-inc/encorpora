@@ -185,8 +185,10 @@ try {
     });
     await page.goto("http://127.0.0.1:4384");
     await page.getByRole("button", { name: "Open AMP menu" }).click();
+    await page.getByRole("link", { name: "Account", exact: true }).click();
     await page
-      .getByRole("link", { name: "Manage learners", exact: true })
+      .getByRole("navigation", { name: "Account" })
+      .getByRole("link", { name: "Family", exact: true })
       .click();
     await page.getByLabel("Family learner", { exact: true }).waitFor();
     assert.equal(await page.locator(".family-learner").count(), 1);

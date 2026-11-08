@@ -359,7 +359,7 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       then: async (p) => {
         await p.locator("[data-navigation-trigger]").click();
         await p.getByRole("dialog").waitFor();
-        await p.getByRole("link", { name: /Your progress/ }).waitFor();
+        await p.getByRole("link", { name: /^Progress/ }).waitFor();
         await p.waitForTimeout(400);
       },
     },
@@ -373,7 +373,7 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       id: "pathways",
       path: "/pathways",
       state: "paid",
-      ready: (p) => p.locator("[data-progress-views]").waitFor(),
+      ready: (p) => p.locator("[data-app-bar] [data-tabs]").waitFor(),
     },
     {
       id: "pathway-skill",
@@ -385,7 +385,7 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       id: "inventory",
       path: "/inventory",
       state: "paid",
-      ready: (p) => p.locator("[data-progress-views]").waitFor(),
+      ready: (p) => p.locator("[data-app-bar] [data-tabs]").waitFor(),
     },
     {
       id: "lessons",
@@ -403,25 +403,25 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       id: "family-learners",
       path: "/family/learners",
       state: "paid",
-      ready: (p) => p.locator(".family-tabs").waitFor(),
+      ready: (p) => p.locator(".family-body").waitFor(),
     },
     {
       id: "family-access",
       path: "/family/access",
       state: "paid",
-      ready: (p) => p.locator(".family-tabs").waitFor(),
+      ready: (p) => p.locator(".family-body").waitFor(),
     },
     {
       id: "family-privacy",
       path: "/family/privacy",
       state: "paid",
-      ready: (p) => p.locator(".family-tabs").waitFor(),
+      ready: (p) => p.locator(".family-body").waitFor(),
     },
     {
       id: "family-security",
       path: "/family/security",
       state: "paid",
-      ready: (p) => p.locator(".family-tabs").waitFor(),
+      ready: (p) => p.locator(".family-body").waitFor(),
     },
     {
       id: "workbooks",

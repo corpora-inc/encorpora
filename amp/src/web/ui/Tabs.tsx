@@ -10,20 +10,25 @@ export type TabItem = {
   search?: Record<string, unknown>;
 };
 
-/** Screens of one place, each a real URL: links with `aria-current`, drawn so
- * the active tab changes color and rule but never geometry. */
+/**
+ * The one tab style: the screens of one group, each a real URL. Router links
+ * with `aria-current`; every label keeps one weight and size, so the active
+ * tab changes its fill and never its geometry. One row that never wraps: on a
+ * narrow screen the strip scrolls, and only the strip.
+ */
 export function Tabs({
   label,
   items,
   active,
+  className = "",
 }: {
   label: string;
   items: readonly TabItem[];
-  active: string;
+  active: string | null;
+  className?: string;
 }) {
   const list = useRef<HTMLElement>(null);
-  // On a narrow screen the strip scrolls; the current tab starts in view. Only
-  // the strip moves, never the page.
+  // The current tab starts in view; only the strip scrolls, never the page.
   useLayoutEffect(() => {
     const strip = list.current;
     const tab = strip?.querySelector('[aria-current="page"]');
@@ -32,16 +37,39 @@ export function Tabs({
       box = tab.getBoundingClientRect();
     if (box.right > from.right - 28) strip.scrollLeft += box.left - from.left;
   }, [active]);
+  // A strip wider than its row fades at its trailing edge, so a cut label
+  // reads as "more"; a strip that fits has no soft edge.
+  useLayoutEffect(() => {
+    const strip = list.current;
+    if (!strip) return;
+    const measure = () => {
+      const more = strip.scrollWidth > strip.clientWidth + 1;
+      if (more !== strip.hasAttribute("data-more"))
+        strip.toggleAttribute("data-more", more);
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(strip);
+    return () => observer.disconnect();
+  }, [items]);
   return (
-    <nav ref={list} aria-label={label} className={styles.tabs}>
+    <nav
+      ref={list}
+      aria-label={label}
+      className={`${styles.tabs} ${className}`}
+      data-tabs
+    >
       {items.map((item) => (
         <Link
           key={item.id}
           to="/$"
           params={{ _splat: item.path }}
           search={item.search ?? {}}
+          activeOptions={{ exact: true, includeSearch: false }}
+          activeProps={{}}
           aria-current={item.id === active ? "page" : undefined}
           className={styles.tab}
+          data-tab={item.id}
         >
           {item.label}
         </Link>

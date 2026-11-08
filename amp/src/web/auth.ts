@@ -71,6 +71,9 @@ export function authConfig(): Promise<AuthConfig> {
 export interface AuthSession {
   token: string;
   accountId: string;
+  /** The name the account signed up or in with, when it has one (a Google
+   * or Apple sign-in does; an email sign-up asks for none). Display only. */
+  name?: string;
 }
 function session(user: User): AuthSession {
   return {
@@ -91,7 +94,11 @@ export async function accessSession(): Promise<AuthSession | null> {
     });
     if (error) throw new Error(error.message ?? "Sign-in could not be checked");
     return data
-      ? { token: data.session.token, accountId: `amp|${data.user.id}` }
+      ? {
+          token: data.session.token,
+          accountId: `amp|${data.user.id}`,
+          ...(data.user.name?.trim() ? { name: data.user.name.trim() } : {}),
+        }
       : null;
   }
   if (import.meta.env.DEV && !manager) {

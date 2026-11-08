@@ -490,9 +490,7 @@ async function verifyFrontierSwitch() {
       .locator(`[role="option"][data-value="${id}"]`)
       .click();
     await page.getByRole("button", { name: "Open AMP menu" }).click();
-    await page
-      .getByRole("link", { name: "Your progress", exact: true })
-      .click();
+    await page.getByRole("link", { name: "Progress", exact: true }).click();
   }
   try {
     await selectHome(fixture.paid.avery.id);

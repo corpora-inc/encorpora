@@ -273,8 +273,10 @@ async function setup(
 }
 async function openAccess(page: Page) {
   await page.getByRole("button", { name: "Open AMP menu" }).click();
+  await page.getByRole("link", { name: "Account", exact: true }).click();
   await page
-    .getByRole("link", { name: "Manage learners", exact: true })
+    .getByRole("navigation", { name: "Account" })
+    .getByRole("link", { name: "Family", exact: true })
     .click();
   await page.getByRole("button", { name: "Access", exact: true }).click();
   await page
@@ -325,7 +327,11 @@ try {
     await f.page.screenshot({
       path: `artifacts/purchase-app/chooser-${width}.png`,
     });
-    await f.page.getByRole("button", { name: "Back", exact: true }).click();
+    // Settings have no Back: the Billing tab leaves the purchase choices.
+    await f.page
+      .getByRole("navigation", { name: "Account" })
+      .getByRole("link", { name: "Billing", exact: true })
+      .click();
     await f.page.waitForFunction(() =>
       document.activeElement?.hasAttribute("data-purchase-options"),
     );
@@ -621,7 +627,11 @@ try {
     const f = await setup(width, height, { funds: true });
     await f.page.goto("http://127.0.0.1:4390");
     await openAccess(f.page);
-    await f.page.getByRole("button", { name: "Back", exact: true }).click();
+    // Settings have no Back: the Billing tab leaves the purchase choices.
+    await f.page
+      .getByRole("navigation", { name: "Account" })
+      .getByRole("link", { name: "Billing", exact: true })
+      .click();
     await f.page
       .getByRole("button", { name: "Choose an AMP plan", exact: true })
       .click();
@@ -684,7 +694,11 @@ try {
     );
     await f.page.goto("http://127.0.0.1:4390");
     await openAccess(f.page);
-    await f.page.getByRole("button", { name: "Back", exact: true }).click();
+    // Settings have no Back: the Billing tab leaves the purchase choices.
+    await f.page
+      .getByRole("navigation", { name: "Account" })
+      .getByRole("link", { name: "Billing", exact: true })
+      .click();
     await f.page
       .getByRole("button", { name: "Choose an AMP plan", exact: true })
       .click();

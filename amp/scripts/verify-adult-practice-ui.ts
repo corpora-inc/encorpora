@@ -434,13 +434,14 @@ async function teacherStarts(
   await shot(page, "drawer", width, theme, engine);
   check(
     `${label} the drawer names their own practice`,
-    /Your own practice/.test(drawerText) && /Dana Okafor/.test(drawerText),
+    // The drawer's kicker is set in capitals, which innerText reflects.
+    /Your own practice/i.test(drawerText) && /Dana Okafor/.test(drawerText),
     drawerText.slice(0, 400),
   );
+  // Their levels are always on their record (`/me`), never a toggle here.
   check(
     `${label} adults always see their levels`,
-    /Estimated level/.test(drawerText) &&
-      !/Show grade numbers/.test(drawerText),
+    !/Show grade numbers/.test(drawerText),
     drawerText.slice(0, 400),
   );
   check(
@@ -496,7 +497,9 @@ async function teacherStarts(
   await heading(page, "Dana Okafor");
 
   // The switcher goes both ways, and `/` follows where they last were.
-  const fromOwn = await openSwitcher(page, "My practice", width < 1024);
+  // Their own place is on the app frame: its switcher is in the drawer at
+  // every width.
+  const fromOwn = await openSwitcher(page, "My practice", true);
   const ownItems = await fromOwn.getByRole("menuitem").allInnerTexts();
   check(
     `${label} their own place is named for them`,

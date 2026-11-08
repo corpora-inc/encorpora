@@ -1,39 +1,20 @@
+/* Under the app frame's bar: one column, the page's own edges on a phone. */
 .page {
   box-sizing: border-box;
-  width: min(100%, 1120px);
+  width: min(100%, var(--width-content-wide));
   margin: 0 auto;
-  padding: max(var(--space-4), env(safe-area-inset-top))
-    max(var(--space-5), env(safe-area-inset-right))
+  padding: var(--space-5) max(var(--space-4), env(safe-area-inset-right))
     max(var(--space-6), env(safe-area-inset-bottom))
-    max(var(--space-5), env(safe-area-inset-left));
+    max(var(--space-4), env(safe-area-inset-left));
   color: var(--color-on-surface);
 }
-.header {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  min-height: 0;
-  padding: 0 0 var(--space-4);
-  margin: 0;
-  border: 0;
-}
-.header > a {
-  margin-left: auto;
-  gap: var(--space-2);
-}
-.wordmark {
-  font-size: 20px;
-  font-weight: 800;
-  letter-spacing: -0.04em;
+@media (min-width: 768px) {
+  .page {
+    padding-inline: max(var(--space-5), env(safe-area-inset-left));
+  }
 }
 .heading {
-  margin: var(--space-2) 0 var(--space-4);
-}
-.eyebrow {
-  font-size: 12px;
-  color: var(--color-muted-text);
-  letter-spacing: 0.06em;
-  margin: 0 0 var(--space-2);
+  margin: 0 0 var(--space-4);
 }
 .heading h1 {
   margin: 0 0 var(--space-2);

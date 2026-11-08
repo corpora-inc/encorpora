@@ -3,7 +3,6 @@ import {
   useCurriculumDetails,
 } from "../curriculum/CurriculumDetails";
 import { NavigationDrawer } from "../navigation/NavigationDrawer";
-import { ProgressViews } from "../navigation/ProgressViews";
 import {
   useMemo,
   useRef,
@@ -81,6 +80,7 @@ function GuestMap() {
       start="/try"
       actionLabel="Start free assessment"
       guestMode
+      recordLoading={trial.isPending}
       notice={
         trial.isError ? (
           "Your assessment could not be loaded. Retry to see your progress."
@@ -111,6 +111,7 @@ function TrialAtlas({ session }: { session: TrialSession }) {
       }
       canPractice={!!trial.data?.remaining}
       trialMode
+      recordLoading={progress.isPending}
       noticeImportant={
         progress.isError ||
         progress.isPending ||
@@ -140,9 +141,7 @@ function TrialAtlas({ session }: { session: TrialSession }) {
           >
             Retry
           </button>
-        ) : (
-          <Link to="/try/map">Assessment summary →</Link>
-        )
+        ) : undefined
       }
     />
   );
@@ -219,6 +218,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
       start={canPractice ? "/practice" : own ? "/me" : "/start"}
       key={learner?.id ?? "none"}
       canPractice={canPractice}
+      recordLoading={me.isPending || (!!learner && progress.isPending)}
       notice={notice}
       noticeImportant={
         !learner || me.isError || progress.isError || progress.isPending
@@ -291,6 +291,7 @@ export function MapView({
   guestMode = false,
   actionLabel = "Start learning",
   noticeImportant = false,
+  recordLoading = false,
 }: {
   evidence: Evidence[];
   start:
@@ -305,6 +306,8 @@ export function MapView({
   guestMode?: boolean;
   actionLabel?: string;
   noticeImportant?: boolean;
+  /** The learner's record is still on its way: counts wait for it. */
+  recordLoading?: boolean;
 }) {
   const catalog = useQuery({
     queryKey: ["pathways-catalog"],
@@ -354,6 +357,7 @@ export function MapView({
     [evidence],
   );
   const earned = evidence.filter((s) => s.independentCorrect > 0).length;
+  const countsReady = !!catalog.data && !recordLoading;
   const update = (
     values: {
       skill?: string;
@@ -413,32 +417,41 @@ export function MapView({
     <main
       className={`pathways ${selected ? "has-selection" : ""} ${browse ? "is-browsing" : ""}`}
     >
-      <header className="pathways-header">
-        <NavigationDrawer />
-        <Link to="/" className="pathways-brand">
-          <span>
-            Adaptive Math <strong>Pathways</strong>
-          </span>
-        </Link>
-        <Link
-          className="pathways-go"
-          to="/$"
-          params={{ _splat: start.slice(1) }}
-        >
-          {actionLabel} →
-        </Link>
-      </header>
+      {/* Signed in, the app frame's bar holds the logo, the Progress tabs and
+          the way to practice. A visitor gets the map's own header. */}
+      {guestMode && (
+        <header className="pathways-header">
+          <NavigationDrawer />
+          <Link to="/" className="pathways-brand">
+            <span>
+              Adaptive Math <strong>Pathways</strong>
+            </span>
+          </Link>
+          <Link
+            className="pathways-go"
+            to="/$"
+            params={{ _splat: start.slice(1) }}
+          >
+            {actionLabel} →
+          </Link>
+        </header>
+      )}
       <div className="pathways-heading">
         <div>
           <p className="pathways-eyebrow">THE CURRICULUM, CONNECTED</p>
           <h1>Your pathways</h1>
         </div>
-        <p className="pathways-summary">
-          {earned} skills illuminated · {skills?.length ?? "…"} mapped skills
+        {/* The counts paint once, when both the map and the learner's
+            record are in: their line is held until then, never rewritten. */}
+        <p
+          className="pathways-summary"
+          aria-busy={!countsReady}
+          style={countsReady ? undefined : { visibility: "hidden" }}
+        >
+          {earned} skills illuminated · {skills?.length ?? 327} mapped skills
           from kindergarten through precalculus
         </p>
       </div>
-      <ProgressViews active="pathways" trial={assessmentContext || guestMode} />
       {guestMode && (
         <div className="pathways-guest-intro">
           <p>
@@ -460,8 +473,12 @@ export function MapView({
         {/* Phones: the count shares the learner's row (the full sentence
             above stays for screen readers), so the map starts on the first
             screen. */}
-        <p className="pathways-phone-summary" aria-hidden="true">
-          {earned} of {skills?.length ?? "…"} skills illuminated
+        <p
+          className="pathways-phone-summary"
+          aria-hidden="true"
+          style={countsReady ? undefined : { visibility: "hidden" }}
+        >
+          {earned} of {skills?.length ?? 327} skills illuminated
         </p>
         <p role="status" data-priority={noticeImportant}>
           {notice}

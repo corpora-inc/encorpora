@@ -215,6 +215,7 @@ export function homePlace(
 /** Learning screens show whichever learner is chosen: the adult's own
  * learner makes them part of the adult's own practice. */
 const LEARNING_PATHS = [
+  "/overview",
   "/practice",
   "/progress",
   "/lessons",
@@ -223,6 +224,7 @@ const LEARNING_PATHS = [
   "/inventory",
 ];
 const HOME_PATHS = [
+  "/overview",
   "/practice",
   "/try",
   "/start",

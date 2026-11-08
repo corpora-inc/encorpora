@@ -2,7 +2,6 @@ import {
   CurriculumDetailsControl,
   useCurriculumDetails,
 } from "../curriculum/CurriculumDetails";
-import { ProgressViews } from "../navigation/ProgressViews";
 import { useQuery } from "@tanstack/react-query";
 import { Link, Navigate } from "@tanstack/react-router";
 import { useEffect, useMemo } from "react";
@@ -10,7 +9,6 @@ import { strandNames } from "../../BirthYearPrompt";
 import { FrontierMap, gradeName } from "../../Home";
 import { LevelReadout } from "../../ui/LevelReadout";
 import { buttonClass } from "../../ui/Button";
-import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
 import {
   catalogOptions,
   progressOptions,
@@ -34,12 +32,12 @@ export function TrialMap() {
   if (session.error)
     return (
       <TrialFailure
-        centered
+        framed
         error={session.error}
         retry={() => session.refetch()}
       />
     );
-  if (session.isPending) return <TrialSkeleton wide centered />;
+  if (session.isPending) return <TrialSkeleton wide framed />;
   if (!session.data) return <Navigate to="/try" replace />;
   return <MapView session={session.data} />;
 }
@@ -73,7 +71,7 @@ function MapView({ session }: { session: TrialSession }) {
   if (progress.error && !progress.data)
     return (
       <TrialFailure
-        centered
+        framed
         error={progress.error}
         retry={() => progress.refetch()}
       />
@@ -81,12 +79,12 @@ function MapView({ session }: { session: TrialSession }) {
   if (catalog.error)
     return (
       <TrialFailure
-        centered
+        framed
         error={catalog.error}
         retry={() => catalog.refetch()}
       />
     );
-  if (!progress.data || !catalog.data) return <TrialSkeleton wide centered />;
+  if (!progress.data || !catalog.data) return <TrialSkeleton wide framed />;
   const p = progress.data;
   // Before placement finishes there is no map yet: keep placing.
   if (p.phase === "placement" && p.totals.answered === 0)
@@ -101,11 +99,11 @@ function MapView({ session }: { session: TrialSession }) {
   );
   const left = p.remaining;
   const invited = offered && !nativeRuntime && p.phase !== "placement";
+  // The Overview of the free assessment, under the app frame's bar (the
+  // logo and the Progress tabs): one column, no card.
   return (
-    <PageFrame centered>
-      <section className={`${frameCard} ${styles.panel}`}>
-        <FrameBrand expanded />
-        <ProgressViews active="level" trial />
+    <main className={styles.mapPage}>
+      <section className={styles.panel}>
         <p className={styles.eyebrow}>
           {p.phase === "placement" ? "Placement in progress" : "Free practice"}
         </p>
@@ -188,6 +186,6 @@ function MapView({ session }: { session: TrialSession }) {
           />
         )}
       </section>
-    </PageFrame>
+    </main>
   );
 }

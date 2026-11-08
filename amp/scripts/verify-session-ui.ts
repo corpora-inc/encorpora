@@ -1,4 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
+import { leaveSettings } from "./ui-controls";
 import { fixtureMe } from "./me-fixture";
 import { defaultPracticeSettings } from "../src/learning/practice-settings";
 import assert from "node:assert/strict";
@@ -300,12 +301,12 @@ try {
           accountId: "current-parent",
         }),
       );
-      await page
-        .getByRole("button", { name: "Learner", exact: true })
-        .waitFor();
+      await page.locator("[data-app-logo]").waitFor();
       await page.getByRole("button", { name: "Open AMP menu" }).click();
+      await page.getByRole("link", { name: "Account", exact: true }).click();
       await page
-        .getByRole("link", { name: "Manage learners", exact: true })
+        .getByRole("navigation", { name: "Account" })
+        .getByRole("link", { name: "Family", exact: true })
         .click();
       await held;
       await page
@@ -322,7 +323,7 @@ try {
         .getByRole("status")
         .filter({ hasText: "Learner name updated." })
         .waitFor();
-      await page.getByRole("button", { name: "Back", exact: true }).click();
+      await leaveSettings(page);
       await page
         .getByRole("button", { name: "Learner", exact: true })
         .filter({ hasText: "After rename" })
