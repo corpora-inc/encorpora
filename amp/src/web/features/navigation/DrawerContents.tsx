@@ -281,8 +281,9 @@ export default function DrawerContents({
 /**
  * Who is signed in, and Sign out, at the foot of the drawer. Its rows are
  * always there, so nothing appears or changes while the drawer is open: the
- * account's name when it has one, otherwise its address behind a fixed-length
- * mask (screen recordings never show it) with a button to reveal it.
+ * address behind a fixed-length mask (screen recordings never show it) with a
+ * button to reveal it, or a student's name. They end the drawer's list and
+ * scroll with it.
  */
 export function DrawerFooter({ close }: { close: () => void }) {
   const view = useLearningView({ records: false });
@@ -305,9 +306,9 @@ export function DrawerFooter({ close }: { close: () => void }) {
     );
   const account = view.account;
   const student = account?.account.kind === "student";
-  const name = student
-    ? (account?.learners[0]?.name ?? "")
-    : (session.name ?? "");
+  // A student has no address, so their name; everyone else, their address
+  // behind its mask, as the founder prefers.
+  const name = student ? (account?.learners[0]?.name ?? "") : "";
   return (
     <section
       className={styles.footer}
