@@ -21,7 +21,7 @@ import { trialLimits } from "../src/server/trials";
 import { consentFixture } from "../tests/parent-consent.fixture";
 import { migrate } from "./migrate";
 import { answerOne, trackPracticeProblems } from "./ui-practice-answer";
-import { guaranteeProblems, RISK_FREE } from "./ui-copy-checks";
+import { guaranteeProblems, GUARANTEE_LINE } from "./ui-copy-checks";
 
 /**
  * From the pitch into the free trial and back to Buy, against the real
@@ -432,6 +432,23 @@ async function journey(browser: Browser, engine: string) {
   await page.locator("[data-workbook-offer]").waitFor();
   await targets(page, '[data-trial-invitation="workbook"]', `${engine} earned`);
   await noOverflow(page, `${engine} earned`);
+  // The sheet holds the invitation, the workbook and Next without the screen
+  // or the sheet scrolling.
+  await page.waitForTimeout(500);
+  const held = await page.evaluate(() => {
+    const sheet = document.querySelector(".feedback")!;
+    return {
+      sheetScrolls: sheet.scrollHeight - sheet.clientHeight,
+      pageScrolls:
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight,
+      below: sheet.getBoundingClientRect().bottom - innerHeight,
+    };
+  });
+  assert.ok(
+    held.sheetScrolls <= 1 && held.pageScrolls <= 0 && held.below <= 1,
+    `${engine}: earned-workbook feedback fits the screen (${JSON.stringify(held)})`,
+  );
   await page.screenshot({ path: `${shots}/${engine}-earned-workbook-390.png` });
   const state = await context.storageState();
   await context.close();
@@ -541,7 +558,7 @@ async function viewports(
       await card
         .getByRole("heading", { name: "Ready for the full year?" })
         .waitFor();
-      await card.getByText(RISK_FREE).waitFor();
+      await card.getByText(GUARANTEE_LINE).waitFor();
       assert.deepEqual(
         await guaranteeProblems(page, '[data-trial-invitation="map"]'),
         [],

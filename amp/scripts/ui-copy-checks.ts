@@ -1,7 +1,7 @@
 import type { Page } from "playwright";
 
 /** Copy checks shared by the pitch and trial verifiers. */
-export const RISK_FREE = "Risk‑free: 30‑day money‑back guarantee*";
+export const GUARANTEE_LINE = "30‑day money‑back guarantee*";
 
 /** Every guarantee promise in `scope`: its words never split at an ASCII
  * hyphen, and each carries its asterisk. Returns the problems found. */
@@ -11,9 +11,9 @@ export async function guaranteeProblems(page: Page, scope: string) {
       .map((node) => node.textContent ?? "")
       .join("\n");
     const problems: string[] = [];
-    for (const split of ["Risk-free", "30-day", "money-back"])
+    for (const split of ["30-day", "money-back"])
       if (text.includes(split)) problems.push(`breakable hyphen in "${split}"`);
-    const promises = text.match(/Risk‑free[^*.\n]*\*?/g) ?? [];
+    const promises = text.match(/30‑day money‑back guarantee\*?/g) ?? [];
     for (const promise of promises)
       if (!promise.endsWith("*")) problems.push(`no asterisk: "${promise}"`);
     // The asterisk explains itself: the footnote on the page, or a link to

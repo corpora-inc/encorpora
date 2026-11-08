@@ -539,44 +539,18 @@ try {
         name: "Share your assessment",
       });
       await dialog.waitFor();
-      const includeEstimate = dialog.getByRole("checkbox", {
-        name: "Include my estimated level in this share",
-      });
       assert.equal(
-        await includeEstimate.isChecked(),
-        false,
-        "sharing grade estimates starts opted out in each page context",
+        await dialog.getByRole("checkbox").count(),
+        0,
+        "the share has no estimate toggle",
       );
       const whatsapp = dialog.getByRole("link", { name: "Share on WhatsApp" });
-      assert.doesNotMatch(
-        (await whatsapp.getAttribute("href")) ?? "",
-        /current(?:%20|\+)math(?:%20|\+)estimate/i,
-      );
-      await includeEstimate.focus();
-      await page.keyboard.press("Space");
-      assert(
-        await includeEstimate.isChecked(),
-        "shared native checkbox accepts keyboard opt-in",
-      );
       assert.match(
         decodeURIComponent((await whatsapp.getAttribute("href"))!).replaceAll(
           "+",
           " ",
         ),
         /My current math estimate/,
-      );
-      await includeEstimate.uncheck();
-      assert.doesNotMatch(
-        decodeURIComponent((await whatsapp.getAttribute("href"))!).replaceAll(
-          "+",
-          " ",
-        ),
-        /My current math estimate/,
-      );
-      const target = await includeEstimate.boundingBox();
-      assert(
-        target && target.width >= 44 && target.height >= 44,
-        "share opt-in retains its full native touch target",
       );
       const facebook = dialog.getByRole("link", { name: "Share on Facebook" });
       assert.equal(
