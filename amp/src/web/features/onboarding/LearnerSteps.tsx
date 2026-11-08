@@ -139,7 +139,6 @@ export function LearnerSteps({
                 {funded || gift ? (
                   <div className={styles.progress}>
                     <span>Starting point</span>
-                    <span>Step 2 of 2</span>
                   </div>
                 ) : (
                   firstRun && <Progress step={4} />
@@ -212,7 +211,6 @@ export function LearnerSteps({
       ) : (
         <div className={styles.progress}>
           <span>New learner</span>
-          <span>Step 1 of 2</span>
         </div>
       )}
       <h1>Who’s learning?</h1>

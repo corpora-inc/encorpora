@@ -88,6 +88,16 @@ export function PurchaseStep({
   }, [phase]);
   if (view && (!view.purchase || phase === "ready"))
     return <Navigate to="/start/plan" replace />;
+  // Leaving Stripe without paying returns to the first step with the same
+  // plan selected, and says nothing more.
+  if (left && view?.purchase && phase === "checkout-open")
+    return (
+      <Navigate
+        to="/start/plan"
+        search={{ interval: view.purchase.interval }}
+        replace
+      />
+    );
   const shown: Shown =
     enrollment.error && !view
       ? "unreachable"
@@ -119,10 +129,8 @@ export function PurchaseStep({
       ),
     },
     "checkout-open": {
-      title: left ? "You left checkout" : "Your checkout is still open",
-      body: left
-        ? "Nothing was charged. Continue where you left off when you’re ready."
-        : "Payment isn’t complete yet. Continue checkout to finish.",
+      title: "Your checkout is still open",
+      body: "Payment isn’t complete yet. Continue checkout to finish.",
       action: resume ? (
         <a className={buttonClass("primary")} href={resume}>
           Resume checkout

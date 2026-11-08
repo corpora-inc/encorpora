@@ -699,12 +699,22 @@ try {
     await serve(page, state, faults);
     const card = page.locator("main section").first();
     let reference: Awaited<ReturnType<typeof box>> | null = null;
-    for (const [phase, heading, url] of [
-      [
+    // Leaving Stripe without paying returns to the first step, plan kept.
+    state.enrollment = {
+      ...state.enrollment,
+      purchase: purchase(
         "checkout-open",
-        "You left checkout",
         "https://checkout.stripe.com/c/pay/cs_fixture",
-      ],
+      ),
+    };
+    await page.goto(
+      `${origin}/start/purchase?billing=canceled&purchase=${purchaseId}`,
+    );
+    await page.waitForURL("**/start/plan?*");
+    await page.getByRole("heading", { name: "Choose your plan" }).waitFor();
+    assert.equal(await page.getByText("You left checkout").count(), 0);
+    assert.equal(await page.getByText(/Step \d of/).count(), 0);
+    for (const [phase, heading, url] of [
       ["expired", "This checkout expired", null],
       ["payment-inactive", "Payment isn’t active", null],
       ["requires-review", "Your purchase needs a review", null],

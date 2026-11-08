@@ -403,6 +403,15 @@
     border-width: 1px 0 0;
     border-radius: var(--radius-panel) var(--radius-panel) 0 0;
   }
+  /* With the buy invitation and the workbook it unlocked, the sheet holds
+     more than the question's floor leaves on a short phone. Its own content
+     scrolls, never the screen behind it, and the rows sit closer so both
+     offers and Next fit at 390x844 and 360x740 without any scroll. */
+  .shell.immersive .feedback:has([data-trial-invitation]) {
+    gap: 6px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
   /* Quiet actions share the row evenly instead of overflowing 320 px. */
   .shell.immersive .feedback .practice-tools button {
     flex: 0 1 112px;

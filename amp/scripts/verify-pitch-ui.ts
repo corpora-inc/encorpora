@@ -10,7 +10,11 @@ import {
 } from "playwright";
 import { createServer } from "vite";
 import { signupNotice } from "../src/parent-followup/contracts";
-import { guaranteeProblems, orphanLines, RISK_FREE } from "./ui-copy-checks";
+import {
+  guaranteeProblems,
+  orphanLines,
+  GUARANTEE_LINE,
+} from "./ui-copy-checks";
 import { retentionNotice } from "../src/family/contracts";
 import { noticeDigest } from "../src/parent-consent/crypto";
 import { consentFixture } from "../tests/parent-consent.fixture";
@@ -313,8 +317,8 @@ async function viewports(browser: Browser, engine: string) {
         assert.equal(
           await page.locator("[data-buy-terms]").first().innerText(),
           program
-            ? `$599 for the year, paid from your EFA balance.\n${RISK_FREE}`
-            : `$599 for the year.\n${RISK_FREE}`,
+            ? `$599 for the year, paid from your EFA balance.\n${GUARANTEE_LINE}`
+            : `$599 for the year.\n${GUARANTEE_LINE}`,
           `${tag}: the guarantee beside Buy`,
         );
         if (!program) {
