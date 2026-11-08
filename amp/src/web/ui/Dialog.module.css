@@ -71,3 +71,16 @@
 .content.aboveNavigation {
   z-index: 1201;
 }
+
+@media (max-width: 430px) {
+  .content.fullOnPhone {
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100vw;
+    height: 100dvh;
+    max-height: none;
+    border: 0;
+    border-radius: 0;
+  }
+}

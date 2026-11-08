@@ -132,6 +132,9 @@
 .filterRow button span {
   font-size: 11px;
   font-variant-numeric: tabular-nums;
+  /* Room for three digits, so the row wraps the same at any count. */
+  min-width: 3ch;
+  text-align: center;
 }
 .group {
   margin-bottom: var(--space-6);

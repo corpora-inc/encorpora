@@ -75,7 +75,11 @@ export function InventoryScreen() {
     () => new Map(view.evidence?.skills.map((e) => [e.skillId, e]) ?? []),
     [view.evidence],
   );
-  const skills = catalog.data?.skills ?? [];
+  const allSkills = catalog.data?.skills ?? [];
+  // Every count follows the chosen math area, so the numbers match the list.
+  const skills = area
+    ? allSkills.filter((s) => neighborhoods[neighborhood(s)]?.title === area)
+    : allSkills;
   const earned = skills.filter(
     (s) => (evidence.get(s.id)?.independentCorrect ?? 0) > 0,
   );
@@ -83,15 +87,19 @@ export function InventoryScreen() {
   const strong = skills.filter(
     (s) => evidence.get(s.id)?.status === "review-ready",
   );
-  const xp = (view.evidence?.skills ?? []).reduce(
-    (sum, e) => sum + e.independentCorrect,
-    0,
-  );
+  const xp = area
+    ? earned.reduce(
+        (sum, s) => sum + (evidence.get(s.id)?.independentCorrect ?? 0),
+        0,
+      )
+    : (view.evidence?.skills ?? []).reduce(
+        (sum, e) => sum + e.independentCorrect,
+        0,
+      );
   const visible = skills
     .filter((s) => {
       const e = evidence.get(s.id);
       return (
-        (!area || neighborhoods[neighborhood(s)]?.title === area) &&
         `${s.title} ${s.description}`
           .toLowerCase()
           .includes(query.toLowerCase()) &&

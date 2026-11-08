@@ -552,6 +552,49 @@ try {
       await page.locator('[data-strength="Strong"]').first().waitFor();
       assert.equal(new URL(page.url()).searchParams.get("context"), "trial");
       await fits(`inventory ${theme} ${width}`);
+      {
+        // Every count follows the chosen math area, and choosing one moves
+        // nothing.
+        const count = async (name: string) =>
+          Number(
+            (
+              await page
+                .getByRole("group", { name: "Skills to show" })
+                .getByRole("button", { name: new RegExp(`^${name}`) })
+                .locator("span")
+                .innerText()
+            ).trim(),
+          );
+        const row = page.getByRole("group", { name: "Skills to show" });
+        const rowBefore = (await row.boundingBox())!;
+        const allSkills = await count("All skills");
+        await page.getByRole("button", { name: /^Math area/ }).click();
+        await page
+          .getByRole("option", { name: "Number & operations", exact: true })
+          .click();
+        await page.waitForFunction(() => location.search.includes("area="));
+        const inArea = await count("All skills");
+        assert(
+          inArea > 0 && inArea < allSkills,
+          `all-skills count follows the area: ${inArea} of ${allSkills}`,
+        );
+        for (const name of ["Tried", "Illuminated", "Strong"])
+          assert(
+            (await count(name)) <= inArea,
+            `${name} counts only the chosen area`,
+          );
+        const rowAfter = (await row.boundingBox())!;
+        assert(
+          Math.abs(rowAfter.y - rowBefore.y) < 1 &&
+            Math.abs(rowAfter.height - rowBefore.height) < 1,
+          `choosing an area does not shift the filters ${rowBefore.y},${rowBefore.height} -> ${rowAfter.y},${rowAfter.height}`,
+        );
+        await page.getByRole("button", { name: /^Math area/ }).click();
+        await page
+          .getByRole("option", { name: "Every math area", exact: true })
+          .click();
+        await page.waitForFunction(() => !location.search.includes("area="));
+      }
       const searchBox = await page
         .getByRole("searchbox", { name: "Search your skills" })
         .evaluate((el) => {
