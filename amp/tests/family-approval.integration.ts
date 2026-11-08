@@ -8,6 +8,7 @@ import {
   purgeFamilyApprovals,
 } from "../src/family/approvals.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
+import { SchoolRepository } from "../src/schools/repository.js";
 import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { buildApp } from "../src/server/app.js";
 import { refuseStudentTokens } from "../src/server/auth.js";
@@ -595,6 +596,31 @@ test(
         (await open("/api/v1/family/approvals/lookup", { token })).statusCode,
         404,
       );
+    });
+
+    await t.test("a co-teacher sees the class but sends no links", async () => {
+      const coTeacher = await user("Rafael Fixture");
+      await new SchoolRepository(db).addStaff({
+        orgId: family.org_id,
+        role: "teacher",
+        givenName: "Rafael",
+        accountId: coTeacher,
+        classId: family.class_id,
+      });
+      const org = await ok(get(`/api/v1/school/orgs/${family.org_id}`, coTeacher));
+      assert.equal(org.org.id, family.org_id);
+      assert.equal((await me(coTeacher)).familyClass, undefined);
+      const send = await post("/api/v1/family/approvals", coTeacher, {
+        childName: "Zed",
+        parentEmail: "zed@neighbor.example",
+      });
+      assert.equal(send.statusCode, 409);
+      const remove = await post(
+        `/api/v1/family/approvals/${approvalId}/remove`,
+        coTeacher,
+      );
+      assert.equal(remove.statusCode, 404);
+      assert.deepEqual(await list(coTeacher), []);
     });
   },
 );

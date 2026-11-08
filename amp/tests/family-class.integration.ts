@@ -530,5 +530,38 @@ test(
         assert.equal(lumiMe.learners[0].entitlement.active, false);
       },
     );
+
+    await t.test(
+      "renaming a child renames them on the teacher's roster",
+      async () => {
+        const { parent, ids } = await existing("Nell Fixture", ["Oro"]);
+        await me(parent);
+        const code = (
+          await db.query(
+            "SELECT c.join_code FROM amp_families f JOIN amp_classes c ON c.id=f.class_id WHERE f.account_id=$1",
+            [parent],
+          )
+        ).rows[0].join_code;
+        const renamed = await post(
+          `/api/v1/family/learners/${ids[0]}/rename`,
+          parent,
+          { name: "Orla" },
+        );
+        assert.equal(renamed.statusCode, 200, renamed.body);
+        const row = await db.query(
+          "SELECT given_name FROM amp_people WHERE learner_id=$1",
+          [ids[0]],
+        );
+        assert.deepEqual(
+          row.rows.map((r) => r.given_name),
+          ["Orla"],
+        );
+        const lookup = await open("/api/v1/school/join/lookup", { code });
+        assert.deepEqual(
+          lookup.json().students.map((s: { name: string }) => s.name),
+          ["Orla"],
+        );
+      },
+    );
   },
 );

@@ -167,6 +167,18 @@ async function removeTree(
      (SELECT grant_id FROM amp_seats WHERE license_id=ANY($1::uuid[]) AND grant_id IS NOT NULL)`,
     [licenseIds],
   );
+  // Approval links of the tree's family classes, then the family rows.
+  const families = await ids(
+    "SELECT account_id AS id FROM amp_families WHERE org_id=ANY($1::uuid[])",
+    [orgs],
+  );
+  await purge(
+    "familyApprovals",
+    "amp_family_approvals",
+    "family_account_id=ANY($1::text[]) OR class_id=ANY($2::uuid[]) OR person_id=ANY($3::uuid[])",
+    [families, classes, people],
+  );
+  await purge("families", "amp_families", "org_id=ANY($1::uuid[])", [orgs]);
   await purge(
     "studentSessions",
     "amp_student_sessions",
