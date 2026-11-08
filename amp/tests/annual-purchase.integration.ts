@@ -35,6 +35,7 @@ test(
         "0005-stripe.sql",
         "0011-paid-evidence.sql",
         "0017-monthly-billing.sql",
+        "0096-extra-child-price.sql",
         "0006-commerce-orders.sql",
         "0008-skill-evidence.sql",
         "0085-learner-frontier-state.sql",

@@ -58,7 +58,7 @@ An adult can buy a license for themselves, for example an 18-year-old preparing 
 
 ## Licenses
 
-- **A family license** covers one child and the parent's own practice. Each additional child is an additional seat. An adult on their own buys the same license for themselves.
+- **A family license** covers one child and the parent's own practice. Each additional child is an additional seat at the additional-child price, and a family class's teacher may buy a seat for another family's child in that class ([Stripe](stripe.md#each-additional-child)). An adult on their own buys the same license for themselves.
 - **A school license** covers its seats. Its teachers practice free.
 - **Access** stays one rule: a learner practices with an active grant (`amp_grants`). A family seat writes a grant just as a school seat does.
 
@@ -85,5 +85,5 @@ A child who signed in with an account of their own stays as they are; moving the
 1. An admin takes a class and teaches it. **Done** in this change.
 2. Adult practice for any adult, and the adult's place in their class map and standings: **done**.
 3. Families as classes: buying for a child creates or joins the family class, the child gets join sign-in, and a parent can hand their own device to a child: **done**.
-4. Converting existing families: **done**. The parent's own practice is free since step 2; pricing for each additional child follows separately.
+4. Converting existing families: **done**. The parent's own practice is free since step 2; each additional child has its own price ([Stripe](stripe.md#each-additional-child)), sold once an environment's settings name it.
 5. Approval links for another family's child.

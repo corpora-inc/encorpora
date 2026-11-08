@@ -7,6 +7,8 @@ export interface AnnualOffer {
   formattedAmount: string;
   interval: "year" | "month";
   learnerCount: 1;
+  /** The full price, or the price for each additional child in a family. */
+  tier?: "full" | "extra";
 }
 export interface PurchaseStatus {
   learnerId: string;
@@ -22,6 +24,8 @@ export interface PurchaseStatus {
     | "consent-required"
     | "deleted";
   interval?: "year" | "month";
+  /** The price this learner's checkout sells: its own, or a new one's. */
+  tier?: "full" | "extra";
   startsAt?: string;
   endsAt?: string;
 }

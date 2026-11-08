@@ -4,6 +4,7 @@ import {
   planConfig,
   planForPrice,
   type BillingInterval,
+  type PriceTier,
   stripeNamespace,
   type StripeBillingConfig,
 } from "./config.js";
@@ -17,6 +18,8 @@ export interface CheckoutBinding {
   sessionId?: string;
   createdAt: Date;
   interval?: BillingInterval;
+  /** The price the checkout sold; renewals keep the subscription's own price. */
+  tier?: PriceTier;
 }
 /** Authoritative evidence normalized by the Stripe gateway, never browser input. */
 export interface AnnualPayment {

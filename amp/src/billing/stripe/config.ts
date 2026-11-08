@@ -7,6 +7,17 @@ export interface StripeBillingConfig {
   monthlyDocumentProfile?: DocumentProfile;
   monthlyPriceId?: string;
   monthlyAmountMinor?: number;
+  /**
+   * The price for each additional child in a family (docs/stripe.md#each-
+   * additional-child). Unset until an environment switches over; until then
+   * every child is sold the full price.
+   */
+  extraPriceId?: string;
+  extraAmountMinor?: number;
+  extraDocumentProfile?: DocumentProfile;
+  extraMonthlyPriceId?: string;
+  extraMonthlyAmountMinor?: number;
+  extraMonthlyDocumentProfile?: DocumentProfile;
   /** Prices no longer sold whose subscriptions still renew (retired-prices.ts). */
   retiredPrices?: readonly RetiredPrice[];
   secretKey: string;
@@ -117,12 +128,59 @@ export function stripeConfig(
     )
       throw new Error("Invalid Stripe monthly price configuration");
   }
+  // Each additional child: an annual and a monthly price of their own, on
+  // the same product. Each needs its price id and amount together.
+  const extra = (
+    priceName: string,
+    amountName: string,
+  ): [string, number] | undefined => {
+    if (!env[priceName] && !env[amountName]) return undefined;
+    const id = required(priceName);
+    const amount = Number(required(amountName));
+    if (
+      !id.startsWith("price_") ||
+      !Number.isSafeInteger(amount) ||
+      amount <= 0
+    )
+      throw new Error("Invalid Stripe additional-child price configuration");
+    return [id, amount];
+  };
+  const extraYear = extra(
+    "AMP_STRIPE_EXTRA_PRICE_ID",
+    "AMP_STRIPE_EXTRA_AMOUNT_MINOR",
+  );
+  if (extraYear) [config.extraPriceId, config.extraAmountMinor] = extraYear;
+  const extraMonth = extra(
+    "AMP_STRIPE_EXTRA_MONTHLY_PRICE_ID",
+    "AMP_STRIPE_EXTRA_MONTHLY_AMOUNT_MINOR",
+  );
+  if (extraMonth) {
+    if (!config.monthlyPriceId)
+      throw new Error(
+        "A monthly additional-child price requires the monthly price",
+      );
+    [config.extraMonthlyPriceId, config.extraMonthlyAmountMinor] = extraMonth;
+  }
+  // One switch: with both plans sold, both have an additional-child price.
+  if (
+    !!config.extraMonthlyPriceId !==
+    (!!config.extraPriceId && !!config.monthlyPriceId)
+  )
+    throw new Error(
+      "Set the annual and monthly additional-child prices together",
+    );
+  const sold = [
+    config.priceId,
+    config.monthlyPriceId,
+    config.extraPriceId,
+    config.extraMonthlyPriceId,
+  ].filter((id): id is string => !!id);
+  if (new Set(sold).size !== sold.length)
+    throw new Error("Each configured Stripe price must be a different price");
   // A retired price that is also a current one is simply current.
   config.retiredPrices = retiredPrices.filter(
     (retired) =>
-      retired.livemode === config.livemode &&
-      retired.priceId !== config.priceId &&
-      retired.priceId !== config.monthlyPriceId,
+      retired.livemode === config.livemode && !sold.includes(retired.priceId),
   );
   if (config.monthlyPriceId && !env.AMP_PAYMENT_MONTHLY_DOCUMENT_PROFILE)
     throw new Error(
@@ -138,6 +196,38 @@ export function stripeConfig(
       JSON.parse(env.AMP_PAYMENT_DOCUMENT_PROFILE),
       config,
     );
+  // An additional-child price issues receipts exactly as its full price does.
+  for (const [interval, priceId, name, needed] of [
+    [
+      "year",
+      config.extraPriceId,
+      "AMP_PAYMENT_EXTRA_DOCUMENT_PROFILE",
+      !!config.documentProfile,
+    ],
+    [
+      "month",
+      config.extraMonthlyPriceId,
+      "AMP_PAYMENT_EXTRA_MONTHLY_DOCUMENT_PROFILE",
+      true,
+    ],
+  ] as const) {
+    const raw = env[name];
+    if (!priceId) {
+      if (raw) throw new Error(`${name} needs its additional-child price`);
+      continue;
+    }
+    if (!raw) {
+      if (needed)
+        throw new Error(`The additional-child price requires ${name}`);
+      continue;
+    }
+    const profile = parseDocumentProfile(
+      JSON.parse(raw),
+      planConfig(config, interval, "extra"),
+    );
+    if (interval === "year") config.extraDocumentProfile = profile;
+    else config.extraMonthlyDocumentProfile = profile;
+  }
   return config;
 }
 export function stripeNamespace(config: StripeBillingConfig): string {
@@ -145,11 +235,41 @@ export function stripeNamespace(config: StripeBillingConfig): string {
 }
 
 export type BillingInterval = "year" | "month";
+/** The full price, or the price for each additional child in a family. */
+export type PriceTier = "full" | "extra";
+/** Whether this environment sells an additional-child price for the interval. */
+export function extraPlanAvailable(
+  config: StripeBillingConfig,
+  interval: BillingInterval,
+): boolean {
+  return interval === "year"
+    ? !!config.extraPriceId
+    : !!config.monthlyPriceId && !!config.extraMonthlyPriceId;
+}
 /** Selected catalog identity; the annual environment remains backwards compatible. */
 export function planConfig(
   config: StripeBillingConfig,
   interval: BillingInterval = "year",
+  tier: PriceTier = "full",
 ): StripeBillingConfig {
+  if (tier === "extra") {
+    if (!extraPlanAvailable(config, interval))
+      throw new BillingError("extra_plan_unavailable", 503);
+    const base = planConfig(config, interval);
+    return interval === "year"
+      ? {
+          ...base,
+          priceId: config.extraPriceId!,
+          amountMinor: config.extraAmountMinor!,
+          documentProfile: config.extraDocumentProfile,
+        }
+      : {
+          ...base,
+          priceId: config.extraMonthlyPriceId!,
+          amountMinor: config.extraMonthlyAmountMinor!,
+          documentProfile: config.extraMonthlyDocumentProfile,
+        };
+  }
   if (interval === "year") return config;
   if (
     !config.monthlyPriceId ||
@@ -166,8 +286,9 @@ export function planConfig(
 }
 
 /**
- * The plan that a Stripe price id belongs to: the price being sold, or a
- * retired price that existing subscriptions still renew on. A retired plan
+ * The plan that a Stripe price id belongs to: a price being sold (full or
+ * additional-child), or a retired price that existing subscriptions still
+ * renew on. A retired plan
  * keeps its own price and amount; its document profile is the current one with
  * that price and amount, so renewal review still notices any other change.
  * Returns undefined for any other id.
@@ -176,14 +297,19 @@ export function planForPrice(
   config: StripeBillingConfig,
   priceId: string | undefined,
   interval?: BillingInterval,
-): { interval: BillingInterval; plan: StripeBillingConfig } | undefined {
+):
+  | { interval: BillingInterval; tier: PriceTier; plan: StripeBillingConfig }
+  | undefined {
   if (!priceId) return undefined;
   for (const candidate of ["year", "month"] as const) {
     if (interval && candidate !== interval) continue;
     if (candidate === "month" && !config.monthlyPriceId) continue;
-    const current = planConfig(config, candidate);
-    if (current.priceId === priceId)
-      return { interval: candidate, plan: current };
+    for (const tier of ["full", "extra"] as const) {
+      if (tier === "extra" && !extraPlanAvailable(config, candidate)) continue;
+      const current = planConfig(config, candidate, tier);
+      if (current.priceId === priceId)
+        return { interval: candidate, tier, plan: current };
+    }
   }
   const retired = config.retiredPrices?.find(
     (entry) =>
@@ -194,6 +320,7 @@ export function planForPrice(
   const base = planConfig(config, retired.interval);
   return {
     interval: retired.interval,
+    tier: "full",
     plan: {
       ...base,
       priceId: retired.priceId,

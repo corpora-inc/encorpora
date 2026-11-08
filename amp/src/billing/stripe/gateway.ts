@@ -3,9 +3,11 @@ import type { FinancialResult } from "../evidence/contracts.js";
 import Stripe from "stripe";
 import {
   BillingError,
+  extraPlanAvailable,
   planConfig,
   planForPrice,
   type BillingInterval,
+  type PriceTier,
   type StripeBillingConfig,
 } from "./config.js";
 import type { AnnualPayment } from "./model.js";
@@ -53,10 +55,16 @@ export class StripeGateway {
   }
   async verifyCatalog(): Promise<void> {
     await this.verifyPortal();
+    const plans: [BillingInterval, PriceTier][] = [];
     for (const interval of (this.config.monthlyPriceId
       ? ["year", "month"]
       : ["year"]) as BillingInterval[]) {
-      const config = planConfig(this.config, interval);
+      plans.push([interval, "full"]);
+      if (extraPlanAvailable(this.config, interval))
+        plans.push([interval, "extra"]);
+    }
+    for (const [interval, tier] of plans) {
+      const config = planConfig(this.config, interval, tier);
       const price = await this.client.prices.retrieve(config.priceId, {
         expand: ["product"],
       });
@@ -75,9 +83,7 @@ export class StripeGateway {
           !product.deleted &&
           product.active &&
           product.id === config.productId,
-        interval === "year"
-          ? "annual_catalog_mismatch"
-          : "monthly_catalog_mismatch",
+        `${tier === "extra" ? "extra_" : ""}${interval === "year" ? "annual" : "monthly"}_catalog_mismatch`,
       );
     }
   }
@@ -98,6 +104,7 @@ export class StripeGateway {
     interval: BillingInterval = "year",
     enrollment = false,
     expiresAt?: number,
+    tier: PriceTier = "full",
   ): Promise<{ id: string; url: string }> {
     const session = await this.client.checkout.sessions.create(
       {
@@ -111,7 +118,10 @@ export class StripeGateway {
           billing_mode: { type: "flexible" },
         },
         line_items: [
-          { price: planConfig(this.config, interval).priceId, quantity: 1 },
+          {
+            price: planConfig(this.config, interval, tier).priceId,
+            quantity: 1,
+          },
         ],
         allow_promotion_codes: false,
         // Payment methods come from the Dashboard (dynamic payment methods).

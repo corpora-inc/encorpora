@@ -11,6 +11,7 @@ import type {
 import type { FamilySummary } from "../family/contracts";
 import "./annual-purchase.css";
 import { PlanOptions } from "./PlanOptions";
+import { additionalChildLine } from "./features/billing/PlanChoice";
 import { paymentUrl } from "./features/billing/payment-url";
 import { FocusDialog } from "./PracticeWorkspace";
 import { analyticsVisitorHeaders } from "./lib/analytics";
@@ -91,12 +92,18 @@ function PurchasePanel({
   const requestId = useRef<string | undefined>(undefined);
   const [terms, setTerms] = useState(false);
   const termsTrigger = useRef<HTMLElement | null>(null);
-  const [offer, setOffer] = useState<AnnualOffer>();
-  const [offers, setOffers] = useState<AnnualOffer[]>([]);
+  const [chosen, setOffer] = useState<AnnualOffer>();
+  const [fullOffers, setOffers] = useState<AnnualOffer[]>([]);
+  const [extraOffers, setExtraOffers] = useState<AnnualOffer[]>([]);
   const family = useFamilyCache(identity);
   const [available, setAvailable] = useState<boolean>();
   const [learnerId, setLearnerId] = useState("");
   const [status, setStatus] = useState<PurchaseStatus>();
+  // The server says which price this learner's checkout sells.
+  const offers =
+    status?.tier === "extra" && extraOffers.length ? extraOffers : fullOffers;
+  const offer =
+    offers.find((plan) => plan.interval === chosen?.interval) ?? chosen;
   const [busy, setBusy] = useState(false),
     [checking, setChecking] = useState(false);
   const [error, setError] = useState("");
@@ -140,9 +147,12 @@ function PurchasePanel({
   useEffect(() => {
     const epoch = generation.current;
     void Promise.allSettled([
-      api<{ available: boolean; offer?: AnnualOffer; offers?: AnnualOffer[] }>(
-        "/billing/offer",
-      ),
+      api<{
+        available: boolean;
+        offer?: AnnualOffer;
+        offers?: AnnualOffer[];
+        extraOffers?: AnnualOffer[];
+      }>("/billing/offer"),
       queryClient
         .ensureQueryData(
           meOptions({ accountId: identity, token: tokenRef.current }),
@@ -165,6 +175,7 @@ function PurchasePanel({
             result.value.offers ??
             (result.value.offer ? [result.value.offer] : []);
           setOffers(plans);
+          setExtraOffers(result.value.extraOffers ?? []);
           setOffer(
             plans.find((plan) => plan.interval === preferredInterval) ??
               result.value.offer,
@@ -233,7 +244,7 @@ function PurchasePanel({
       setStatus(next);
       if (next.interval)
         setOffer((current) => {
-          const selected = offers.find(
+          const selected = fullOffers.find(
             (plan) => plan.interval === next.interval,
           );
           if (selected && selected.id !== current?.id)
@@ -446,6 +457,11 @@ function PurchasePanel({
               </p>
             )}
             <p>One learner · practice, lessons & books</p>
+            {additionalChildLine(extraOffers, offer.interval) && (
+              <p className="annual-additional" data-additional-child>
+                {additionalChildLine(extraOffers, offer.interval)}
+              </p>
+            )}
             {canPurchase && (
               <p className="annual-renewal">
                 Renews automatically each {offer.interval} until canceled.

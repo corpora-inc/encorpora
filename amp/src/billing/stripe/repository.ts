@@ -4,12 +4,18 @@ import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import {
   BillingError,
+  extraPlanAvailable,
   planConfig,
   type BillingInterval,
+  type PriceTier,
   stripeNamespace,
   type StripeBillingConfig,
 } from "./config.js";
 import type { CheckoutBinding } from "./model.js";
+import { annualOffer } from "./purchase.js";
+import { teachesFamilySeat } from "../../family/family-seat.js";
+/** Who the purchase is for: the account's own learner, or a family-class seat. */
+export type PurchaseFor = "own" | "seat";
 export interface InboxEvent {
   eventId: string;
   type: string;
@@ -52,11 +58,15 @@ export class StripeRepository {
       client.release();
     }
   }
+  /**
+   * The purchaser's consent, and a learner they may buy for: one their account
+   * owns, or a child enrolled in a family class they teach (a seat).
+   */
   async assertPurchaseAllowed(
     client: PoolClient,
     accountId: string,
     learnerId: string,
-  ): Promise<void> {
+  ): Promise<PurchaseFor> {
     const consent = await client.query(
       "SELECT 1 FROM amp_parent_consents WHERE account_id=$1 AND policy_version=$2 AND withdrawn_at IS NULL",
       [accountId, this.config.consentPolicyVersion],
@@ -64,20 +74,74 @@ export class StripeRepository {
     if (!consent.rowCount || !(await learningConsentActive(client, accountId)))
       throw new BillingError("parent_consent_required", 403);
     const learner = await client.query(
-      "SELECT 1 FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL FOR SHARE",
-      [learnerId, accountId],
+      "SELECT account_id FROM amp_learners WHERE id=$1 AND deleted_at IS NULL FOR SHARE",
+      [learnerId],
     );
-    if (!learner.rowCount) throw new BillingError("learner_not_found", 404);
+    if (learner.rows[0]?.account_id === accountId) return "own";
+    if (
+      learner.rowCount &&
+      (await teachesFamilySeat(client, accountId, learnerId))
+    )
+      return "seat";
+    throw new BillingError("learner_not_found", 404);
+  }
+  /**
+   * The price a new checkout for this learner sells (docs/stripe.md#each-
+   * additional-child). A family-class seat, or a child of an account that
+   * already pays by card for another child (a live grant or an open
+   * subscription), is an additional child. Funded, gift, pilot and adult
+   * access never count. Without the environment's additional-child price,
+   * every child is full price.
+   */
+  async priceTier(
+    client: PoolClient,
+    accountId: string,
+    learnerId: string,
+    interval: BillingInterval,
+    purchaseFor: PurchaseFor,
+  ): Promise<PriceTier> {
+    if (!extraPlanAvailable(this.config, interval)) return "full";
+    if (purchaseFor === "seat") return "extra";
+    // Read through to_jsonb, as elsewhere here, so a schema from before
+    // adult learners or purchase assignment still answers.
+    const adult = "COALESCE((to_jsonb(l)->>'adult')::boolean,false)";
+    const target = await client.query(
+      `SELECT ${adult} AS adult FROM amp_learners l WHERE l.id=$1`,
+      [learnerId],
+    );
+    if (target.rows[0]?.adult) return "full";
+    const paid = await client.query(
+      `SELECT 1 FROM amp_learners l
+        WHERE l.account_id=$1 AND l.id<>$2 AND l.deleted_at IS NULL AND NOT ${adult}
+          AND (EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.channel='stripe'
+                 AND g.status='active' AND g.ends_at>now())
+            OR EXISTS(SELECT 1 FROM amp_stripe_checkouts c WHERE c.namespace=$3 AND c.account_id=$1
+                 AND COALESCE(c.learner_id,to_jsonb(c)->>'assigned_learner_id')=l.id
+                 AND c.subscription_id IS NOT NULL AND NOT c.closed))
+        LIMIT 1`,
+      [accountId, learnerId, this.namespace],
+    );
+    return paid.rowCount ? "extra" : "full";
   }
   async reserve(
     accountId: string,
     learnerId: string,
     requestId: string,
     interval: BillingInterval = "year",
+    /** The offer the parent saw; refused when this checkout sells another. */
+    offerId?: string,
   ): Promise<string> {
-    const selected = planConfig(this.config, interval);
+    // An existing checkout keeps the price it was reserved at.
+    const offered = (tier: PriceTier) => {
+      if (offerId && offerId !== annualOffer(this.config, interval, tier).id)
+        throw new BillingError("offer_changed");
+    };
     return this.transaction(accountId, async (client) => {
-      await this.assertPurchaseAllowed(client, accountId, learnerId);
+      const purchaseFor = await this.assertPurchaseAllowed(
+        client,
+        accountId,
+        learnerId,
+      );
       await client.query(
         "SELECT pg_advisory_xact_lock(hashtextextended($1,1))",
         [`${this.namespace}:${learnerId}`],
@@ -88,7 +152,7 @@ export class StripeRepository {
       );
       if (grants.rowCount) throw new BillingError("learner_already_licensed");
       const retry = await client.query(
-        "SELECT id,learner_id,closed,billing_interval FROM amp_stripe_checkouts WHERE namespace=$1 AND account_id=$2 AND request_id=$3",
+        "SELECT id,learner_id,closed,billing_interval,price_tier FROM amp_stripe_checkouts WHERE namespace=$1 AND account_id=$2 AND request_id=$3",
         [this.namespace, accountId, requestId],
       );
       if (retry.rowCount) {
@@ -98,24 +162,35 @@ export class StripeRepository {
           retry.rows[0].billing_interval !== interval
         )
           throw new BillingError("checkout_request_conflict");
+        offered(retry.rows[0].price_tier);
         return retry.rows[0].id as string;
       }
       const open = await client.query(
-        "SELECT id,billing_interval FROM amp_stripe_checkouts WHERE namespace=$1 AND (learner_id=$2 OR to_jsonb(amp_stripe_checkouts)->>'assigned_learner_id'=$2) AND NOT closed",
+        "SELECT id,billing_interval,price_tier FROM amp_stripe_checkouts WHERE namespace=$1 AND (learner_id=$2 OR to_jsonb(amp_stripe_checkouts)->>'assigned_learner_id'=$2) AND NOT closed",
         [this.namespace, learnerId],
       );
       if (open.rowCount) {
         if (open.rows[0].billing_interval !== interval)
           throw new BillingError("checkout_plan_conflict");
+        offered(open.rows[0].price_tier);
         return open.rows[0].id as string;
       }
+      const tier = await this.priceTier(
+        client,
+        accountId,
+        learnerId,
+        interval,
+        purchaseFor,
+      );
+      offered(tier);
+      const selected = planConfig(this.config, interval, tier);
       await client.query(
         "INSERT INTO amp_stripe_customers(namespace,account_id,reservation_id) VALUES($1,$2,$3) ON CONFLICT DO NOTHING",
         [this.namespace, accountId, randomUUID()],
       );
       const checkoutId = randomUUID();
       await client.query(
-        "INSERT INTO amp_stripe_checkouts(id,namespace,account_id,learner_id,request_id,document_profile,billing_interval) VALUES($1,$2,$3,$4,$5,$6,$7)",
+        "INSERT INTO amp_stripe_checkouts(id,namespace,account_id,learner_id,request_id,document_profile,billing_interval,price_tier) VALUES($1,$2,$3,$4,$5,$6,$7,$8)",
         [
           checkoutId,
           this.namespace,
@@ -128,6 +203,7 @@ export class StripeRepository {
               )
             : null,
           interval,
+          tier,
         ],
       );
       return checkoutId;
@@ -151,6 +227,7 @@ export class StripeRepository {
       sessionId: r.session_id ?? undefined,
       createdAt: r.created_at,
       interval: r.billing_interval,
+      tier: r.price_tier ?? "full",
     };
   }
   async enqueue(event: InboxEvent): Promise<void> {

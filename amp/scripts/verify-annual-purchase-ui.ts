@@ -11,6 +11,12 @@ import { annualOffer } from "../src/billing/stripe/purchase.js";
 import { config } from "../tests/stripe-fixtures.js";
 import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 const directory = new URL("../artifacts/annual-review/", import.meta.url);
+const port = Number(process.env.AMP_ANNUAL_UI_PORT ?? 4380);
+const monthlyConfigBase = () => ({
+  ...config,
+  monthlyPriceId: "price_monthly_fixture",
+  monthlyAmountMinor: 1400,
+});
 await mkdir(directory, { recursive: true });
 await writeFile(
   new URL("index.html", directory),
@@ -22,7 +28,7 @@ await writeFile(
 );
 const vite = await createServer({
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
-  server: { host: "127.0.0.1", port: 4380, strictPort: true },
+  server: { host: "127.0.0.1", port, strictPort: true },
 });
 await vite.listen();
 const browser = await chromium.launch({ headless: true });
@@ -36,6 +42,16 @@ try {
   });
   let offerFailure = false;
   let monthlyEnabled = false;
+  // The environment sells each additional child its own price; the server's
+  // status says which price a learner's checkout sells.
+  let extraEnabled = false;
+  const extraConfig = {
+    ...monthlyConfigBase(),
+    extraPriceId: "price_extra_fixture",
+    extraAmountMinor: 9000,
+    extraMonthlyPriceId: "price_extra_monthly_fixture",
+    extraMonthlyAmountMinor: 1000,
+  };
   const monthlyConfig = {
     ...config,
     monthlyPriceId: "price_monthly_fixture",
@@ -99,6 +115,14 @@ try {
                         ],
                       }
                     : {}),
+                  ...(extraEnabled
+                    ? {
+                        extraOffers: [
+                          annualOffer(extraConfig, "year", "extra"),
+                          annualOffer(extraConfig, "month", "extra"),
+                        ],
+                      }
+                    : {}),
                 }
               : { available: false },
           },
@@ -114,6 +138,10 @@ try {
       json: {
         learnerId: route.request().url().split("/").at(-1),
         phase,
+        tier:
+          extraEnabled && route.request().url().endsWith("/second")
+            ? "extra"
+            : "full",
         ...(phase === "licensed"
           ? { startsAt: "2026-01-01T00:00:00Z", endsAt: "2027-01-01T00:00:00Z" }
           : {}),
@@ -157,7 +185,7 @@ try {
       body: "<p>Sandbox hosted checkout fixture</p>",
     }),
   );
-  const home = "http://127.0.0.1:4380/artifacts/annual-review/index.html";
+  const home = `http://127.0.0.1:${port}/artifacts/annual-review/index.html`;
   await page.goto(home);
   await page.getByRole("button", { name: "Open sandbox checkout" }).waitFor();
   assert.equal(await page.getByText("$120.00", { exact: false }).count(), 1);
@@ -424,6 +452,65 @@ try {
   assert.equal(
     checkoutBodies.at(-1)!.offerId,
     annualOffer(monthlyConfig, "month").id,
+  );
+  // Each additional child: the line shows with the offers, and the learner
+  // the server prices as an additional child is sold that price.
+  extraEnabled = true;
+  checkoutBodies = [];
+  await page.goto(home);
+  const line = page.getByText("Each additional child: $90 a year", {
+    exact: true,
+  });
+  await line.waitFor();
+  await page
+    .getByRole("button", { name: "Annual $120.00 / year", exact: true })
+    .waitFor();
+  await page.getByLabel("Learner", { exact: true }).click();
+  await page.getByRole("option", { name: "Second learner" }).click();
+  await page
+    .getByRole("button", { name: "Annual $90.00 / year", exact: true })
+    .waitFor();
+  await page
+    .getByRole("button", { name: "Monthly $10.00 / month", exact: true })
+    .click();
+  await page
+    .getByText("Each additional child: $10 a month", { exact: true })
+    .waitFor();
+  for (const size of [
+    { width: 320, height: 568 },
+    { width: 390, height: 844 },
+    { width: 1280, height: 900 },
+  ]) {
+    await page.setViewportSize(size);
+    const text = await page.locator("[data-additional-child]").boundingBox();
+    const action = await page
+      .getByRole("button", { name: "Open sandbox checkout" })
+      .boundingBox();
+    assert.ok(
+      text &&
+        action &&
+        text.x >= 0 &&
+        text.x + text.width <= size.width &&
+        action.y + action.height <= size.height,
+      "additional-child line and primary action fit",
+    );
+    assert.ok(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    );
+    await page.evaluate(
+      () => new Promise((done) => requestAnimationFrame(() => done(null))),
+    );
+    await page.screenshot({
+      path: new URL(`additional-child-${size.width}.png`, directory).pathname,
+    });
+  }
+  await page.getByRole("button", { name: "Open sandbox checkout" }).click();
+  await page.waitForURL("https://checkout.stripe.com/fixture");
+  assert.deepEqual(
+    [checkoutBodies.at(-1)!.learnerId, checkoutBodies.at(-1)!.offerId],
+    ["second", annualOffer(extraConfig, "month", "extra").id],
   );
   assert.deepEqual(failures, []);
   console.log(
