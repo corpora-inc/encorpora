@@ -52,8 +52,8 @@ const offers = [
     id: "a".repeat(64),
     mode: "test",
     currency: "USD",
-    amountMinor: 49900,
-    formattedAmount: "$499.00",
+    amountMinor: 59900,
+    formattedAmount: "$599.00",
     interval: "year",
     learnerCount: 1,
   },
@@ -61,8 +61,8 @@ const offers = [
     id: "b".repeat(64),
     mode: "test",
     currency: "USD",
-    amountMinor: 4900,
-    formattedAmount: "$49.00",
+    amountMinor: 5900,
+    formattedAmount: "$59.00",
     interval: "month",
     learnerCount: 1,
   },
@@ -514,9 +514,9 @@ try {
       );
       const annual = page.getByRole("radio", { name: /Annual/ }),
         monthly = page.getByRole("radio", { name: /Monthly/ });
-      assert.match((await annual.textContent()) ?? "", /\$499\.00 per year/);
-      assert.match((await monthly.textContent()) ?? "", /\$49\.00 per month/);
-      assert.match((await annual.textContent()) ?? "", /Save \$89/);
+      assert.match((await annual.textContent()) ?? "", /\$599\.00 per year/);
+      assert.match((await monthly.textContent()) ?? "", /\$59\.00 per month/);
+      assert.match((await annual.textContent()) ?? "", /Save \$109/);
       assert.equal(await annual.getAttribute("aria-checked"), "true");
       const chooseMonthly = width === 390;
       if (chooseMonthly) {

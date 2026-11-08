@@ -2,6 +2,7 @@ import { validateQuoteFonts } from "./quote-pdf.js";
 import { readFile, stat } from "node:fs/promises";
 import { z } from "zod";
 import { fundingPrograms } from "./programs.js";
+import { programAnnualPriceMinor } from "./program-prices.js";
 import {
   fundingOfferSchema,
   availableOffers,
@@ -34,6 +35,15 @@ export async function loadFundingOffers(
         "Funding offer references an unknown program/jurisdiction",
       );
   }
-  await validateQuoteFonts(offers);
-  return offers;
+  // The program's listed price decides what the offer sells for.
+  const priced = offers.map((offer) => {
+    const listed = programAnnualPriceMinor[offer.programId];
+    if (listed === undefined || listed === offer.subtotalMinor) return offer;
+    console.warn(
+      `Funding offer ${offer.id}: the offers file says ${offer.subtotalMinor} but ${offer.programId}'s listing is ${listed} (src/funding-purchase/program-prices.ts); selling at ${listed}.`,
+    );
+    return { ...offer, subtotalMinor: listed };
+  });
+  await validateQuoteFonts(priced);
+  return priced;
 }

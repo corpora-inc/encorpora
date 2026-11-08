@@ -2,6 +2,7 @@ import type { CommerceEvent } from "../../commerce/contracts.js";
 import {
   BillingError,
   planConfig,
+  planForPrice,
   type BillingInterval,
   stripeNamespace,
   type StripeBillingConfig,
@@ -44,7 +45,10 @@ export function annualEvents(
 ): CommerceEvent[] {
   const p = payment;
   const interval = binding.interval ?? "year";
-  config = planConfig(config, interval);
+  // The price sold now, or a retired one this subscription renews on.
+  config =
+    planForPrice(config, p.priceId, interval)?.plan ??
+    planConfig(config, interval);
   if (
     p.customerId !== binding.customerId ||
     p.checkoutId !== binding.id ||

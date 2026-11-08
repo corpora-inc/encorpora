@@ -14,6 +14,8 @@ import { annualTermEnd } from "../src/funding-purchase/provision.js";
 import { testFundingOffer as offer } from "./funding-purchase.fixture.js";
 import { researchedRefundTerms } from "../src/funding-purchase/refund-terms.js";
 import { loadFundingOffers } from "../src/funding-purchase/config.js";
+import { programAnnualPriceMinor } from "../src/funding-purchase/program-prices.js";
+import { fundingPrograms } from "../src/funding-purchase/programs.js";
 import { mkdtemp, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -284,4 +286,43 @@ test("an offer file without refund policies still loads, with a warning", async 
   assert.equal(loaded.length, 1);
   assert.equal(loaded[0]!.refundPolicy, undefined);
   assert.match(warnings.join("\n"), /has no refundPolicy/);
+});
+
+test("a program's listed price decides what its offer sells for", async (t) => {
+  const directory = await mkdtemp(join(tmpdir(), "amp-offers-"));
+  const path = join(directory, "offers.json");
+  const listed = Object.keys(programAnnualPriceMinor)[0]!;
+  await writeFile(
+    path,
+    JSON.stringify([
+      {
+        ...offer,
+        programId: listed,
+        jurisdiction: fundingPrograms.get(listed),
+      },
+    ]),
+  );
+  const warnings: string[] = [];
+  t.mock.method(console, "warn", (message: string) => warnings.push(message));
+  const file = { ...offer }.subtotalMinor;
+  const [loaded] = await loadFundingOffers(path);
+  assert.equal(loaded!.subtotalMinor, programAnnualPriceMinor[listed]);
+  assert.notEqual(file, programAnnualPriceMinor[listed]);
+  assert.match(warnings.join("\n"), /listing is/);
+  // The table carries one line per program, at the price its listing states.
+  assert.deepEqual(programAnnualPriceMinor, {
+    "ar-efa": 49900,
+    "az-esa": 49900,
+    "nh-efa": 49900,
+  });
+});
+
+test("a program without a listed price keeps the price in the offers file", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "amp-offers-"));
+  const path = join(directory, "offers.json");
+  const other = { ...offer, programId: "fl-pep", jurisdiction: "FL" };
+  assert.equal(programAnnualPriceMinor[other.programId], undefined);
+  await writeFile(path, JSON.stringify([other]));
+  const [loaded] = await loadFundingOffers(path);
+  assert.equal(loaded!.subtotalMinor, offer.subtotalMinor);
 });

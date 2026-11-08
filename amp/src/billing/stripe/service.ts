@@ -20,7 +20,12 @@ import type { Pool } from "pg";
 import { applyCommerceEventInTransaction } from "../../commerce/postgres.js";
 import { recordSubscriptionEvent } from "./subscriptions.js";
 import { annualEvents } from "./model.js";
-import { BillingError, planConfig, type BillingInterval } from "./config.js";
+import {
+  BillingError,
+  planConfig,
+  planForPrice,
+  type BillingInterval,
+} from "./config.js";
 import { StripeGateway } from "./gateway.js";
 import { StripeRepository, type InboxEvent } from "./repository.js";
 import {
@@ -336,7 +341,13 @@ export class StripeBilling {
           ? { kind: "review", reason: "provider_dispute_requires_review" }
           : payment.financial,
         event.eventId,
-        planConfig(this.gateway.config, binding.interval).documentProfile,
+        (
+          planForPrice(
+            this.gateway.config,
+            payment.priceId,
+            binding.interval,
+          ) ?? { plan: planConfig(this.gateway.config, binding.interval) }
+        ).plan.documentProfile,
       );
       // Funnel events follow verified provider state; a failure here is
       // logged and never affects billing.

@@ -76,7 +76,7 @@ const ar = {
   programId: "ar-efa",
   programName: "Arkansas EFA",
   productTitle: "AMP Math · one learner",
-  subtotalMinor: 49900,
+  subtotalMinor: 59900,
 };
 const learner = {
   id: "10720fef-40bf-4e75-8982-208b5e05f84a",

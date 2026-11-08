@@ -79,8 +79,8 @@ const offers = [
     id: "a".repeat(64),
     mode: "test",
     currency: "USD",
-    amountMinor: 49900,
-    formattedAmount: "$499.00",
+    amountMinor: 59900,
+    formattedAmount: "$599.00",
     interval: "year",
     learnerCount: 1,
   },
@@ -88,8 +88,8 @@ const offers = [
     id: "b".repeat(64),
     mode: "test",
     currency: "USD",
-    amountMinor: 4900,
-    formattedAmount: "$49.00",
+    amountMinor: 5900,
+    formattedAmount: "$59.00",
     interval: "month",
     learnerCount: 1,
   },
@@ -99,7 +99,7 @@ const fundedOffer = {
   revision: "fixture-1",
   programName: "Arkansas EFA",
   productTitle: "AMP Mathematics, 12 months",
-  totalMinor: 49900,
+  totalMinor: 59900,
   currency: "USD",
   instructions: "Attach the invoice to your request.",
   termMonths: 12,
@@ -290,8 +290,8 @@ async function viewports(browser: Browser, engine: string) {
         assert.equal(
           await page.locator("[data-buy-terms]").first().innerText(),
           program
-            ? `$499 for the year, paid from your EFA balance.\n${RISK_FREE}`
-            : `$499 for the year.\n${RISK_FREE}`,
+            ? `$599 for the year, paid from your EFA balance.\n${RISK_FREE}`
+            : `$599 for the year.\n${RISK_FREE}`,
           `${tag}: the guarantee beside Buy`,
         );
         // No guarantee word splits at a hyphen; every promise has its
