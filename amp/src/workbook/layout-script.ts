@@ -84,6 +84,17 @@ export const workbookLayoutScript = String.raw`(function () {
     var current = newPage("student");
     function append(unit) { unit.forEach(function (b) { current.content.appendChild(b); }); }
     function detach(unit) { unit.forEach(function (b) { b.parentNode.removeChild(b); }); }
+    // Scale a unit down by up to 8% so it fits the page; true when it does.
+    function shrink(unit) {
+      var total = unit.reduce(function (sum, b) { return sum + height(b); }, 0);
+      var over = height(current.content) - height(current.body);
+      if (over > 0.08 * total) return false;
+      var zoom = 1 - (over + 2) / total;
+      unit.forEach(function (b) { b.style.zoom = zoom.toFixed(4); });
+      if (fits(current)) return true;
+      unit.forEach(function (b) { b.style.zoom = ""; });
+      return false;
+    }
     function place(unit, split) {
       append(unit);
       if (fits(current)) return;
@@ -95,6 +106,14 @@ export const workbookLayoutScript = String.raw`(function () {
         if (split && unit.length > 2 && spare > 0.5 * height(current.body)) {
           units(unit, false).forEach(function (u) { place(u, false); });
           return;
+        }
+        // A heading and first problem that miss this page by a few percent
+        // would leave most of it blank (the cover's page, say): they print a
+        // touch smaller instead.
+        if (spare > 0.5 * height(current.body)) {
+          append(unit);
+          if (shrink(unit)) return;
+          detach(unit);
         }
         current = newPage("student");
         append(unit);
@@ -232,7 +251,10 @@ export const workbookLayoutScript = String.raw`(function () {
       // First up to each row's own cap; then, if the page still has a hole,
       // up to a shared ceiling (open space to draw and work in).
       [function (r) { return parseFloat(r.getAttribute("data-grow")) * 96; },
-       function () { return 7 * 96; }]
+       function () { return 7 * 96; },
+       // A page that still has a hole (one tall problem alone) takes it all
+       // as workspace: a page is never left part empty.
+       function () { return 1e6; }]
         .forEach(function (capOf) {
           var caps = rows.map(capOf);
           var open = rows.map(function (_, i) { return i; }).filter(function (i) { return caps[i] - extra[i] > 0.5; });

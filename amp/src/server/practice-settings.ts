@@ -32,7 +32,8 @@ export async function changePractice(
     );
   const next = { ...previous, revision: previous.revision + 1 };
   if (change.kind === "reset") {
-    if ((await tx.birthYear()) === null)
+    // An adult starts again from where they chose to begin.
+    if ((await tx.birthYear()) === null && !(await tx.isAdult()))
       throw new ApiError(409, "Choose the learner’s birth year first.");
     next.epoch++;
     next.strandStarts = {};

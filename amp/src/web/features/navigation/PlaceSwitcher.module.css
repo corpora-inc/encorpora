@@ -1,0 +1,54 @@
+/* The place switcher: a full-width menu button naming where you are, and a
+   list of every place, each with its role. */
+.trigger {
+  justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+.triggerText {
+  overflow: hidden;
+  min-width: 0;
+  text-overflow: ellipsis;
+}
+.item {
+  display: grid;
+  flex: 1 1 auto;
+  gap: 2px;
+  min-width: 0;
+  margin-right: var(--space-3);
+  padding-block: var(--space-2);
+}
+.name {
+  overflow: hidden;
+  max-width: min(280px, calc(100vw - 112px));
+  text-overflow: ellipsis;
+}
+.detail {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-weight: 500;
+}
+.check {
+  flex: 0 0 16px;
+  width: 16px;
+  min-width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  visibility: hidden;
+}
+.check[data-here] {
+  visibility: visible;
+}
+.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

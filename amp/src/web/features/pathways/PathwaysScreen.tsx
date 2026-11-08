@@ -56,6 +56,7 @@ import { trialEvidenceOptions } from "./queries";
 import { usePathwaysMetadata } from "./usePathwaysMetadata";
 import "./pathways.css";
 import { Loading } from "../../ui/Loading";
+import { adultLearner, practicingAsAdult } from "../../lib/adult-learner";
 const emptyEvidence: Evidence[] = [];
 const bandOptions: ListboxOption[] = [
   { value: "", label: "All grades & courses" },
@@ -150,7 +151,13 @@ function TrialAtlas({ session }: { session: TrialSession }) {
 function LearnerMap({ session }: { session: AuthSession }) {
   const me = useQuery(meOptions(session));
   const { learnerId, select } = useLearnerStore();
-  const learners = me.data?.signedIn ? me.data.learners : [];
+  const account = me.data?.signedIn ? me.data : null;
+  // The adult's own pathways, when their own learner is the one chosen: the
+  // family's learners aren't theirs to switch to here.
+  const own = practicingAsAdult(account, learnerId)
+    ? adultLearner(account)
+    : null;
+  const learners = own ? [own] : (account?.learners ?? []);
   const savedTrial = useQuery({
     ...trialSessionOptions,
     enabled: !!me.data?.signedIn && learners.length === 0,
@@ -180,7 +187,8 @@ function LearnerMap({ session }: { session: AuthSession }) {
     !!learner &&
     !!(
       me.data?.signedIn &&
-      ["active", "development"].includes(me.data.family.consent.status) &&
+      (!!own ||
+        ["active", "development"].includes(me.data.family.consent.status)) &&
       me.data.family.learners.find((l) => l.id === learner.id)?.canPractice
     );
   const notice = me.isPending ? (
@@ -208,7 +216,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
   return (
     <MapView
       evidence={progress.data?.skills ?? emptyEvidence}
-      start={canPractice ? "/practice" : "/start"}
+      start={canPractice ? "/practice" : own ? "/me" : "/start"}
       key={learner?.id ?? "none"}
       canPractice={canPractice}
       notice={notice}
@@ -221,7 +229,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
       controls={
         <>
           {/* The learner row holds its place while the family loads. */}
-          {(me.isPending || learners.length > 0) && (
+          {(me.isPending || (learners.length > 0 && !own)) && (
             <div
               className="pathways-learner"
               aria-hidden={me.isPending || undefined}
@@ -285,7 +293,8 @@ export function MapView({
   noticeImportant = false,
 }: {
   evidence: Evidence[];
-  start: "/try" | "/practice" | "/start" | "/try/practice" | "/try/plans";
+  start:
+    "/try" | "/practice" | "/start" | "/me" | "/try/practice" | "/try/plans";
   notice: ReactNode;
   canPractice?: boolean;
   controls?: ReactNode;

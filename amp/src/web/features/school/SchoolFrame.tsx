@@ -20,14 +20,16 @@ export type SchoolCrumb = { label: string; path?: string };
 function SchoolNav({
   sections,
   active,
+  label,
   onNavigate,
 }: {
   sections: readonly SchoolNavSection[];
   active?: string;
+  label: string;
   onNavigate?: () => void;
 }) {
   return (
-    <nav aria-label="School" className={styles.nav}>
+    <nav aria-label={label} className={styles.nav}>
       {sections.map((section, index) => (
         <div key={section.label ?? index} className={styles.navSection}>
           {section.label && (
@@ -54,12 +56,14 @@ function SchoolNav({
   );
 }
 
-export function Brand() {
+/** The wordmark. `for` names the product line beside it; an adult's own
+ * practice is plain AMP. */
+export function Brand({ for: line = "for Schools" }: { for?: string | null }) {
   return (
     <span className={styles.brand}>
       <WaveMark />
       <span className={styles.brandName}>AMP</span>
-      <span className={styles.brandFor}>for Schools</span>
+      {line && <span className={styles.brandFor}>{line}</span>}
     </span>
   );
 }
@@ -85,11 +89,14 @@ export function SchoolFrame({
   tabsLabel = "Class",
   lone = false,
   account,
+  brand = "for Schools",
+  navLabel = "School",
   children,
 }: {
   /** What this place is called, in the phone's bar: the class, usually. */
   title: string;
-  /** A control for choosing a school or district. */
+  /** Where this is, and the way to the person's other places. A lone
+   * teacher's class shows it only when they have somewhere else to go. */
   orgSwitcher?: ReactNode;
   sections: readonly SchoolNavSection[];
   activeNav?: string;
@@ -100,6 +107,10 @@ export function SchoolFrame({
   lone?: boolean;
   /** The signed-in person, at the foot of the rail. */
   account?: ReactNode;
+  /** The product line beside the wordmark; null for plain AMP. */
+  brand?: string | null;
+  /** What the navigation is called to a screen reader. */
+  navLabel?: string;
   children: ReactNode;
 }) {
   const [drawer, setDrawer] = useState(false);
@@ -123,12 +134,11 @@ export function SchoolFrame({
       <header className={styles.bar}>
         <NavigationSheet open={drawer} onOpenChange={setDrawer}>
           <div className={styles.drawer} data-dense>
-            {!lone && orgSwitcher && (
-              <div className={styles.org}>{orgSwitcher}</div>
-            )}
+            {orgSwitcher && <div className={styles.org}>{orgSwitcher}</div>}
             <SchoolNav
               sections={navSections}
               active={navActive}
+              label={navLabel}
               onNavigate={() => setDrawer(false)}
             />
           </div>
@@ -137,11 +147,13 @@ export function SchoolFrame({
       </header>
       <aside className={styles.rail}>
         <div className={styles.railInner}>
-          <Brand />
-          {!lone && orgSwitcher && (
-            <div className={styles.org}>{orgSwitcher}</div>
-          )}
-          <SchoolNav sections={navSections} active={navActive} />
+          <Brand for={brand} />
+          {orgSwitcher && <div className={styles.org}>{orgSwitcher}</div>}
+          <SchoolNav
+            sections={navSections}
+            active={navActive}
+            label={navLabel}
+          />
           {account && <div className={styles.account}>{account}</div>}
         </div>
       </aside>

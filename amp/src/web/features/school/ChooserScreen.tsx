@@ -1,8 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
-import { SELF_SERVE_ORG_LIMIT } from "../../../schools/license";
 import { Brand } from "./SchoolFrame";
-import { buttonClass } from "../../ui/Button";
 import { currentSession, orgsOptions } from "./api";
 import { orgHome } from "./paths";
 import { roleNames } from "./parts";
@@ -36,15 +34,6 @@ export function ChooserScreen() {
           );
         })}
       </ul>
-      {orgs.length < SELF_SERVE_ORG_LIMIT && (
-        <Link
-          to={"/school/new" as never}
-          search={{ org: "new" } as never}
-          className={buttonClass("secondary")}
-        >
-          Set up another school
-        </Link>
-      )}
     </main>
   );
 }

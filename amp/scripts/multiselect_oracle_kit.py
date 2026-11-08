@@ -79,7 +79,13 @@ def options_of(public):
 
 def stated_count(public):
     """The count the learner is told: the prompt's 'Select the N' and the response label."""
-    found = re.findall(r'Select the (\d+) ', public['prompt'])
+    prompt = public['prompt']
+    found = re.findall(r'Select the (\d+) ', prompt)
+    if not found:
+        # A template may vary its ask ("Which 3 shapes ...?", "Find the 2
+        # expressions ..."). The count is still stated once, as a whole number
+        # right after the ask's own verb; givens that precede the ask never are.
+        found = re.findall(r'\b(?:Which|Choose|Find|Pick|Mark|Circle)\s+(?:the\s+)?(\d+)\s', prompt)
     require(len(found) == 1, 'Prompt does not state the selection count once')
     n = int(found[0])
     require(public['response']['selectionCount'] == n, 'selectionCount differs from the prompt')

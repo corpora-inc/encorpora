@@ -11,7 +11,7 @@ const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 /** Which actions each filter means. An action nobody listed still shows under
  * "All", in the plainest sentence below. */
 const KIND_PREFIXES: Record<ActivityKind, readonly string[]> = {
-  grades: ["grade.", "term."],
+  grades: ["grade.", "term.", "workbook."],
   students: [
     "student.added",
     "student.updated",
@@ -21,7 +21,7 @@ const KIND_PREFIXES: Record<ActivityKind, readonly string[]> = {
     "student.moved-school",
     "seat.",
   ],
-  classes: ["class.", "settings."],
+  classes: ["class.", "settings.", "standings."],
   staff: ["staff."],
   "sign-in": [
     "student.pictures",
@@ -31,7 +31,7 @@ const KIND_PREFIXES: Record<ActivityKind, readonly string[]> = {
   ],
   calendar: ["calendar.", "year.", "setup.", "org.", "school."],
   license: ["license.", "integration."],
-  privacy: ["privacy.", "agreement."],
+  privacy: ["privacy.", "agreement.", "student.share"],
 };
 const kindPatterns = (kind: ActivityKind) =>
   KIND_PREFIXES[kind].map((prefix) => `${prefix}%`);
@@ -129,6 +129,22 @@ export function describeEvent({
       return `${who} made a sign-in card for ${student}`;
     case "student.card-reissued":
       return `${who} made a new sign-in card for ${student}`;
+    case "student.share-created":
+      return `${who} made a family link for ${student}`;
+    case "student.share-rotated":
+      return `${who} made a new family link for ${student}`;
+    case "student.share-revoked":
+      return `${who} turned off ${possessive(student)} family link`;
+    case "standings.left_off":
+      return after.leftOff
+        ? `${who} left ${student} off the standings`
+        : `${who} put ${student} back on the standings`;
+    case "standings.teacher_shown":
+      return after.shown
+        ? `${who} showed their own practice in ${klass}`
+        : `${who} took their own practice off ${klass}’s map and board`;
+    case "workbook.marked":
+      return `${who} marked ${words(after.marks as number, "answer", "answers")} in ${possessive(student)} workbook`;
     case "seat.released":
       return `${who} released ${possessive(student)} seat`;
     case "class.created":

@@ -116,11 +116,26 @@ export const mapStudentResource = z.object({
   reference: z.object({ from: z.number(), to: z.number() }).nullable(),
 });
 export type MapStudent = z.infer<typeof mapStudentResource>;
+/** A teacher of the class who practices themselves (docs/families.md): a line
+ * on the map, marked as the teacher, never one of its students. */
+export const mapTeacherResource = z.object({
+  id,
+  name: z.string(),
+  first: z.string(),
+  /** The line is the reader's own, so it opens their own record. */
+  you: z.boolean(),
+  level: studentLevelResource.nullable(),
+  provisional: z.boolean(),
+  /** This class's course, when it has one. */
+  reference: z.object({ from: z.number(), to: z.number() }).nullable(),
+});
+export type MapTeacher = z.infer<typeof mapTeacherResource>;
 export const mapResponse = z.object({
   class: classSummary,
-  /** Most evidence first. */
+  /** Most evidence first, from the students' work alone. */
   strands: z.array(strandResource),
   students: z.array(mapStudentResource),
+  teachers: z.array(mapTeacherResource).default([]),
 });
 export type MapResponse = z.infer<typeof mapResponse>;
 
@@ -284,7 +299,25 @@ export const reportCardsResponse = z.object({
 });
 export type ReportCardsResponse = z.infer<typeof reportCardsResponse>;
 
-export const studentRecordResponse = z.object({
+/** One learner's own progress as a record shows it: the part of a student
+ * record an adult's own record shares (`readProgress`). */
+export const progressRecordResource = z.object({
+  level: studentLevelResource.nullable(),
+  reference: z.object({ from: z.number(), to: z.number() }).nullable(),
+  strands: z.array(strandResource),
+  weeks: z.array(z.object({ week: day, minutes: z.number() })),
+  objectives: z.array(
+    z.object({
+      skillId: z.string(),
+      title: z.string(),
+      strand: z.string(),
+      day,
+    }),
+  ),
+  work: z.array(workItemResource),
+});
+export type ProgressRecord = z.infer<typeof progressRecordResource>;
+export const studentRecordResponse = progressRecordResource.extend({
   student: person.extend({
     first: z.string(),
     gradeLevel: z.number().nullable(),
@@ -294,9 +327,6 @@ export const studentRecordResponse = z.object({
   classes: z.array(
     z.object({ id, name: z.string(), course: courseResource.nullable() }),
   ),
-  level: studentLevelResource.nullable(),
-  reference: z.object({ from: z.number(), to: z.number() }).nullable(),
-  strands: z.array(strandResource),
   grades: z.array(
     z.object({
       classId: id,
@@ -308,16 +338,6 @@ export const studentRecordResponse = z.object({
       final: z.string().nullable(),
     }),
   ),
-  weeks: z.array(z.object({ week: day, minutes: z.number() })),
-  objectives: z.array(
-    z.object({
-      skillId: z.string(),
-      title: z.string(),
-      strand: z.string(),
-      day,
-    }),
-  ),
-  work: z.array(workItemResource),
   signIn: z.object({
     cardIssuedAt: z.string().nullable(),
     picturesSet: z.boolean(),

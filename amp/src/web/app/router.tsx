@@ -9,12 +9,13 @@ import {
   Outlet,
   redirect,
   retainSearchParams,
-  useLoaderData,
+  useMatch,
   useRouter,
+  useRouterState,
 } from "@tanstack/react-router";
 import { z } from "zod";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import type { AuthSession } from "../auth";
 import { setPitchShown } from "../lib/analytics";
 import { CurriculumDetailsProvider } from "../features/curriculum/CurriculumDetails";
@@ -23,13 +24,23 @@ import {
   authConfigOptions,
   queryClient,
   sessionOptions,
+  meKey,
   meOptions,
 } from "../lib/query";
+import type { Me } from "../../account/contracts";
+import { useLearnerStore } from "../learner-store";
+import { practicingAsAdult } from "../lib/adult-learner";
 import { LoadingScreen, RouteError } from "../ui/LoadingScreen";
 import {
+  homePlace,
+  placeOfPath,
   startDestination,
   startNavigation,
 } from "../features/onboarding/guard";
+import {
+  rememberPlace,
+  rememberedPlace,
+} from "../features/onboarding/place-memory";
 import {
   isFundedReturn,
   campaignSearch,
@@ -173,19 +184,49 @@ function showsPitch(session: AuthSession | null | undefined) {
     !hasPurchaseReturn(window.location.search)
   );
 }
-/** `/`: the pitch or the app, as the route resolved it. When the session
- * changes here, the route runs again (redirecting as needed) before the
- * screen changes, so a remount never shows the other screen half-loaded. */
-function HomeScreen() {
+/** The pitch or the app. Home (`/`) and every other app path render here, in
+ * one layout route, so going between them keeps the same app screen mounted:
+ * the current problem, the learner and each tab's place survive a visit to
+ * home. At `/` the pitch is what the route resolved; elsewhere it is the app.
+ * When the session changes at `/`, the route runs again (redirecting as
+ * needed) before the screen changes, so a remount never shows the other
+ * screen half-loaded. */
+function AppScreen() {
   const session = useQuery(sessionOptions);
   const router = useRouter();
-  const resolved = useLoaderData({ from: "/" }).pitch;
-  const shown = showsPitch(session.data);
+  const atHome = useMatch({
+    from: home.id,
+    shouldThrow: false,
+    select: (match) => ({
+      pitch: match.loaderData?.pitch,
+      settled: match.status === "success",
+    }),
+  });
+  const shown = !!atHome && showsPitch(session.data);
   useEffect(() => {
-    if (shown !== resolved) void router.invalidate();
-  }, [shown, resolved]);
-  const Screen = resolved ? pitch : legacy;
-  return <Screen />;
+    if (atHome?.pitch !== undefined && shown !== atHome.pitch)
+      void router.invalidate();
+  }, [atHome?.pitch, shown]);
+  // A screen is rendered only once its route has loaded (its chunk with it),
+  // so on first load, and when changing between the pitch and the app, the
+  // route's own pending and error screens show. Moving between app paths
+  // keeps the app screen up, so its state survives.
+  const settled = useRouterState({
+    select: (state) => state.matches.at(-1)?.status === "success",
+  });
+  const kind = atHome?.pitch ? "pitch" : "app";
+  const shownKind = useRef<string | null>(null);
+  const deciding = !settled || (!!atHome && atHome.pitch === undefined);
+  const pending = deciding && shownKind.current !== kind;
+  if (!pending) shownKind.current = kind;
+  const Screen = kind === "pitch" ? pitch : legacy;
+  // Keyed, so the route's pending screen is replaced, not left hidden behind
+  // the screen's own wait.
+  return (
+    <Suspense key={pending ? "deciding" : kind} fallback={<LoadingScreen />}>
+      {pending ? <Outlet /> : <Screen />}
+    </Suspense>
+  );
 }
 const auth = lazyRouteComponent(
   () => import("../features/auth/SignInScreen"),
@@ -278,10 +319,14 @@ const tryPlans = createRoute({
   beforeLoad: beforeTrial,
   component: trial("Paywall"),
 });
-const home = createRoute({
+const appScreen = createRoute({
   getParentRoute: () => root,
+  id: "app",
+  component: AppScreen,
+});
+const home = createRoute({
+  getParentRoute: () => appScreen,
   path: "/",
-  component: HomeScreen,
   loaderDeps: ({ search }) => ({ program: search.program }),
   loader: async ({ deps }) => {
     const shown = showsPitch(queryClient.getQueryData(sessionOptions.queryKey));
@@ -338,6 +383,22 @@ const home = createRoute({
           !me.learners.some((learner) => learner.entitlement.active)
         )
           throw redirect({ to: "/access" });
+        // Arriving at `/` opens where this person last worked: a school, or
+        // their family side. Back and Forward reopen what `/` showed then.
+        if (me?.signedIn && !traversing()) {
+          const place = homePlace(me, rememberedPlace(me.account.id));
+          if (place === "me")
+            throw redirect({ to: "/me", replace: true } as never);
+          if (place !== "home")
+            throw redirect({
+              to: "/$",
+              params: {
+                _splat:
+                  place === "schools" ? "school" : `school/${place.slice(7)}`,
+              },
+              replace: true,
+            });
+        }
         // Resolve first-run routing before mounting the app shell. Otherwise
         // returning trial users briefly see home and setup before practice.
         if (
@@ -363,6 +424,9 @@ const home = createRoute({
     }
   },
 });
+/** The pitch/app screen reads what `/` resolved; so does the document head.
+ * A route's id exists once the router is built, so this reads it on demand. */
+export const homeRouteId = () => home.id;
 const signIn = createRoute({
   getParentRoute: () => root,
   path: "/sign-in",
@@ -722,11 +786,74 @@ const standings = createRoute({
   beforeLoad: () => {
     if (!studentSession()) throw redirect({ to: "/", replace: true });
   },
+  // Which boards this student has is known before the screen paints, so a
+  // class picker is there from the first frame and never pushes the board
+  // down. A failure is the screen's to show.
+  loader: async () => {
+    const { standingsBoardsOptions } =
+      await import("../features/school/classroom/api");
+    const session = await queryClient.ensureQueryData(sessionOptions);
+    await queryClient
+      .ensureQueryData(standingsBoardsOptions(session ?? null))
+      .catch((error) => console.warn("Standings didn’t load ahead", error));
+  },
   component: lazyRouteComponent(
     () => import("../features/school/classroom/StandingsScreen"),
     "StandingsScreen",
   ),
 });
+/** The adult's own practice: their record, and where they begin. One chunk.
+ * Arriving chooses their own learner, so practice and the drawer follow. */
+const ownScreens = () => import("../features/me");
+async function ownPractice() {
+  notForStudents();
+  if (nativeRuntime) throw redirect({ to: "/", replace: true });
+  // Signed out: sign in, and `/` brings them back to their own practice.
+  const session = await queryClient.ensureQueryData(sessionOptions);
+  if (!session) throw redirect({ to: "/sign-in" });
+  const me = await queryClient.ensureQueryData({
+    ...meOptions(session),
+    revalidateIfStale: true,
+  });
+  if (!me.signedIn) throw redirect({ to: "/sign-in" });
+  return { me, session };
+}
+const ownRecord = createRoute({
+  getParentRoute: () => root,
+  path: "/me",
+  beforeLoad: async () => {
+    const { me, session } = await ownPractice();
+    const own = me.adultPractice?.learner;
+    // Nothing to read yet: start, when they may; otherwise there's no place.
+    if (!own)
+      throw redirect({
+        to: me.adultPractice?.eligible ? "/me/start" : "/",
+        replace: true,
+      } as never);
+    useLearnerStore.getState().select(own.id);
+    return { session };
+  },
+  loader: ({ context }) =>
+    loadOwnPractice((context as { session: AuthSession }).session),
+  component: lazyRouteComponent(ownScreens, "OwnRecordScreen"),
+});
+const ownStart = createRoute({
+  getParentRoute: () => root,
+  path: "/me/start",
+  beforeLoad: async () => {
+    const { me } = await ownPractice();
+    if (me.adultPractice?.learner)
+      throw redirect({ to: "/me", replace: true } as never);
+    if (!me.adultPractice?.eligible) throw redirect({ to: "/", replace: true });
+  },
+  component: lazyRouteComponent(ownScreens, "OwnStartScreen"),
+});
+async function loadOwnPractice(session: AuthSession) {
+  const { ownPracticeOptions } = await import("../features/me/api");
+  await queryClient
+    .ensureQueryData(ownPracticeOptions(session))
+    .catch(() => undefined);
+}
 /** The public school pages, one chunk between them. */
 const schoolsPublic = () => import("../features/schools");
 const notInTheApp = () => {
@@ -763,13 +890,31 @@ const familyLink = createRoute({
   ),
 });
 const fallback = createRoute({
-  getParentRoute: () => root,
+  getParentRoute: () => appScreen,
   path: "/$",
-  component: legacy,
+  // The app screen is rendered by the layout, so load its chunk here, as the
+  // route's own component would have been.
+  loader: async () => {
+    await legacy.preload?.();
+  },
 });
+const history = nativeRuntime
+  ? createMemoryHistory({ initialEntries: ["/"] })
+  : createBrowserHistory();
+// Subscribed before the router, so a route's `beforeLoad` knows how it came.
+let lastAction: string | null = null;
+history.subscribe(({ action }) => {
+  lastAction = action.type;
+});
+/** A Back, Forward or jump through history rather than an arrival. */
+function traversing() {
+  return (
+    lastAction === "BACK" || lastAction === "FORWARD" || lastAction === "GO"
+  );
+}
 export const router = createRouter({
   routeTree: root.addChildren([
-    home,
+    appScreen.addChildren([home, fallback]),
     join,
     joinContinue,
     joinClass,
@@ -791,6 +936,8 @@ export const router = createRouter({
       schoolClassMarks,
     ]),
     standings,
+    ownRecord,
+    ownStart,
     schoolsHome,
     schoolsScope,
     schoolsTrust,
@@ -827,14 +974,25 @@ export const router = createRouter({
     // Linked to through the splat route, as every staff screen is, so their
     // URLs stay out of the typed route table.
     ...(schoolRoutes(root) as unknown as []),
-    fallback,
   ]),
-  history: nativeRuntime
-    ? createMemoryHistory({ initialEntries: ["/"] })
-    : createBrowserHistory(),
+  history,
   defaultPendingComponent: LoadingScreen,
   defaultPendingMs: 250,
   defaultPendingMinMs: 0,
+});
+// Each screen a signed-in person settles on records its place, so `/` can
+// return to it next time.
+router.subscribe("onResolved", ({ toLocation }) => {
+  const session = queryClient.getQueryData(sessionOptions.queryKey);
+  if (!session || studentSession()) return;
+  const me = queryClient.getQueryData<Me>(meKey(session.accountId));
+  const chosen = useLearnerStore.getState().learnerId;
+  const place = placeOfPath(
+    toLocation.pathname,
+    toLocation.search as Record<string, unknown>,
+    me?.signedIn && practicingAsAdult(me, chosen) ? chosen : null,
+  );
+  if (place) rememberPlace(session.accountId, place);
 });
 const SIGNED_OUT_KEY = "amp.signed-out-redirect";
 /** True when this tab was sent to sign-in moments ago: a second 401 then is
@@ -855,7 +1013,12 @@ function redirectedRecently() {
 // is cleared only after, so no mounted screen renders without one.
 let leaving = false;
 let checkingStudent = false;
+/** A student's sign-in has ended and /join is loading. Requests that still
+ * carry it wait for the screen to be replaced, as a parent's do; none of them
+ * is a parent's ended sign-in. */
+let leavingStudent = false;
 onSignedOut(() => {
+  if (leavingStudent) return true;
   const student = studentSession();
   if (student) {
     // A student's ended sign-in goes to /join. Any other route that refuses a
@@ -865,11 +1028,16 @@ onSignedOut(() => {
       void studentSignInEnded(student)
         .then(async (ended) => {
           if (!ended) return;
+          leavingStudent = true;
           clearStudentDevice();
-          await router.navigate({ to: "/join", replace: true });
-          queryClient.setQueryData(sessionOptions.queryKey, null);
-          queryClient.removeQueries({ queryKey: ["account"] });
-          queryClient.removeQueries({ queryKey: ["trial"] });
+          try {
+            await router.navigate({ to: "/join", replace: true });
+          } finally {
+            queryClient.setQueryData(sessionOptions.queryKey, null);
+            queryClient.removeQueries({ queryKey: ["account"] });
+            queryClient.removeQueries({ queryKey: ["trial"] });
+            leavingStudent = false;
+          }
         })
         .catch((error) =>
           console.warn("Student sign-in could not be checked", error),
@@ -884,7 +1052,9 @@ onSignedOut(() => {
   // rest wait silently for the screen to be replaced.
   if (leaving) return true;
   const { pathname, search } = router.state.location;
-  if (/^\/(sign-in|sign-up|reset-password)(\/|$)/.test(pathname)) return false;
+  // Sign-in screens, a student's included, have no sign-in to leave.
+  if (/^\/(sign-in|sign-up|reset-password|join|c)(\/|$)/.test(pathname))
+    return false;
   if (redirectedRecently()) return false;
   leaving = true;
   const carry = continuationSearch(search);

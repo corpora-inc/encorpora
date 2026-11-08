@@ -2,6 +2,8 @@
 
 Schools, districts and single teachers use AMP through a roster layer on top of the learner the practice loop already knows. This document is the design every school change follows: what each person gets, the data model, the seams into existing code, and sign-in.
 
+Families use the same model at their own size: see [families, classes and adult learners](families.md).
+
 Build order:
 
 1. Foundation: roster, access, license and settings tables; `can`, `defineSchoolRoute`, `resolveSettings`, event log; the seams; `scripts/school-admin.ts`.
@@ -16,7 +18,7 @@ Build order:
 
 | Person            | Experience                                                                                                                                                                                                                         |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Head or admin** | Guided setup in minutes: school, calendar, data agreement, roster, teachers. Then an overview: seats, usage by class, who needs attention.                                                                                         |
+| **Head or admin** | We issue the school; their link opens guided setup with the school already named: calendar, what students see, data agreement, roster, teachers. Then an overview: seats, usage by class, who needs attention.                     |
 | **District**      | The same screens rolled up across schools, drilling into any school, with the power to set and lock policy.                                                                                                                        |
 | **Teacher**       | **Today**: a to-do list of who needs them and which students share a gap, each with one action (teach this lesson, print a group sheet). Then class map, gradebook, time, workbook stack, and a projectable **Start class** board. |
 | **Student**       | Hold a card to the camera, or code → tap your name → pick 3 pictures; or Google/Microsoft. Then the same practice loop. No email needed.                                                                                           |
@@ -27,7 +29,7 @@ What schools ask, and the product's answer:
 | Asked                    | Answer                                                                                                                         |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
 | Scope and sequence       | Public PDF and CSV generated from the live catalog                                                                             |
-| Who does setup           | The school admin or a single teacher, in the guided flow                                                                       |
+| Who does setup           | The admin we invite when we issue the school, a head or a single teacher, in the guided flow                                   |
 | Who grades and sees work | Teachers (their classes), admins (all), parents (shared link). Every grade opens to its evidence                               |
 | What reports             | Suggested and final grades, active time by student, day and skill, progress, printable report cards, CSV and OneRoster exports |
 
@@ -36,9 +38,31 @@ What schools ask, and the product's answer:
 - **Public:** `/schools`, `/schools/scope-and-sequence`, `/schools/trust`
 - **Family:** `/p#<token>`, one student's read-only progress
 - **Student:** `/join`, `/join/$code`, `/join/$code/$person`, `/c#<token>`, `/join/continue#<grant>`, then the existing `/practice`, plus `/standings` when a class turns it on
-- **Staff:** `/school`, `/school/new`, `/school/invite` (the token is in the fragment, so it never reaches a server log or report), `/school/$org` (overview), `.../classes/$class` with tabs `today`, `map`, `gradebook`, `time`, `workbooks`, `roster`, `roster/cards`, `experience`, `start`; `.../students/$student`; `.../classes`, `.../staff`, `.../sign-in-help`, `.../calendar`, `.../year`, `.../experience`, `.../import`, `.../integrations`, `.../license`, `.../privacy`, `.../activity`; `.../schools` for districts
+- **Staff:** `/school`, `/school/new` (setup, for the admin of a school we issued; anyone else goes to `/schools`), `/school/invite` (the token is in the fragment, so it never reaches a server log or report), `/school/$org` (overview), `.../classes/$class` with tabs `today`, `map`, `gradebook`, `time`, `workbooks`, `roster`, `roster/cards`, `experience`, `start`; `.../students/$student`; `.../classes`, `.../staff`, `.../sign-in-help`, `.../calendar`, `.../year`, `.../experience`, `.../import`, `.../integrations`, `.../license`, `.../privacy`, `.../activity`; `.../schools` for districts
 
 It scales by collapsing. A lone teacher never sees school admin screens. A district adds one level above. Phones get cards instead of grids at 320 and 390 px.
+
+## How a school starts
+
+No school exists until we issue it a license. There is no self-serve start: `/schools` offers "Talk to us", and `/school/new` without a setup invitation creates nothing and goes to `/schools`.
+
+1. **We issue it.** After the contract and the invoice or PO, an operator runs `npm run school:admin -- create-school <private-input.json>` with `{name, adminEmail, seats, startsOn, endsOn, reference, timezone?}`. One transaction makes the org (setup pending), the license and an admin setup invitation; the command mails the invitation through the account mail path and prints JSON with the setup link. Dates are whole days in the school's time zone (America/New_York unless given), and the license runs through `endsOn`. The same name and admin again, while setup is pending, sends the same invitation and creates nothing. It runs with the server's `AMP_ACCOUNTS_URL` and `AMP_ACCOUNTS_SECRET`, so the link is the one the server reads, and its mail settings to send.
+2. **The admin opens the link,** signs in or signs up (the mailed link confirms their address), and accepts as the school's admin. They land in guided setup at the calendar. The school step is already answered, and its name, "Just my class" or "A school", and time zone stay editable.
+3. **Setup:** calendar, what students see, the data agreement, then the roster and teachers. The roster step says how many seats the license holds and through when.
+
+A free pilot is the same command with reference `Pilot`, given on purpose. Schools that set themselves up before this keep their 30-day evaluation license until it ends; nothing migrates them.
+
+### When a school pays
+
+Before the license is issued: by contract and invoice or PO, recorded as the license's `reference`. `set-seats`, `extend-license` and `issue-license` change a license afterwards, and "Request more seats" on the license screen writes to the company mailbox. A later Stripe seat-pack checkout can become a second way to get a license, issuing it the same way. Prices never appear in this repository.
+
+### One account, several places
+
+One account can be a parent, have a free assessment under way and work at schools, all at once (`hasHome` and `homePlace` in `src/web/features/onboarding/guard.ts`).
+
+- **`/`** opens where the person last worked, the family side or a specific school, remembered per account on the device (`place-memory.ts`, recorded as each screen settles). With nothing remembered it's the family side when they have learners, a trial, consent or a purchase, and the school when they only work at schools. A school whose setup this admin hasn't finished never takes `/` from someone with a family side. Back and Forward to `/` reopen what it showed then.
+- **The place switcher** (`src/web/features/navigation/PlaceSwitcher.tsx`) is one menu in the family drawer, the school's rail and drawer, and setup's rail and bar. It lists the family side, the adult's own practice ([families](families.md)), and each school with the person's role there, or "Finish setting up", and only places this account can open. Choosing one remembers it.
+- `npm run test:school-places-ui` checks both in real browsers: a trial and a half-finished setup, a parent who runs a school, the switcher everywhere it appears, and Back, Forward and reload between the two sides.
 
 ## Student experience is the school's choice
 
@@ -52,7 +76,7 @@ Schools have real philosophies here, and this control is a selling point. Settin
 | Device mode             | Shared, personal                  | Shared    |
 
 - Setup offers three starting points, "Quiet focus", "Levels visible" and "Friendly competition". A teacher running an AP class as a competition changes it for that class unless the school locked it.
-- **Standings:** independent work only, from `amp_skill_days` and `amp_level_days`. A board shows the top 10 and your own line, never a ranked list down to last place: a small board lists at most its top three quarters, and nobody's place shows unless they're listed. Off the list, your line reads as your own progress. Class boards use names; wider boards use generated handles, group by grade level, take only students whose own class chose at least that wide, and are cached for a minute. A teacher can leave any student off a class's board, and a student left off anywhere is off every wider board. A level board needs levels shown to students; otherwise it counts growth, so a hidden level stays hidden.
+- **Standings:** independent work only, from `amp_skill_days` and `amp_level_days`. A board shows the top 10 and your own line, never a ranked list down to last place: a small board lists at most its top three quarters, and nobody's place shows unless they're listed. Off the list, your line reads as your own progress. Class boards use names; wider boards use generated handles, group by grade level, take only students whose own class chose at least that wide, and are cached for a minute. A teacher can leave any student off a class's board, and a student left off anywhere is off every wider board. A level board needs levels shown to students; otherwise it counts growth, so a hidden level stays hidden. A teacher of the class who practices is a line on its board and map, marked and never ranked, unless they switch "Show me in my class" off ([families](families.md#the-teacher-in-their-class)).
 - **Never affects scheduling:** time, grades, levels and standings don't feed what's scheduled next.
 - **Device mode** sits on the same screen, with the same "set by" and lock. A starting point doesn't change it, because it's about the devices and not what students see.
 - **Real data later:** every setting change goes in the event log, so outcomes under each setting can be compared once we have scale.
@@ -73,6 +97,7 @@ Percent correct is the wrong grade, because AMP serves harder work as students s
 - **Every grade opens to evidence:** the objectives, the dates and the actual problems, so "why a B?" takes one click. Overrides are logged. Export as a column to blend with the rest of the course grade.
 - **Mixed-grade classes:** a class with no course grades each student against their own grade level.
 - **Implementation:** versioned policy in `src/schools/grade-policy.ts`, tuned by agents, following `practice-policy.ts`. Closed terms are frozen with their inputs. Open terms compute on read from rollups and level days, with no replay and no learner lock.
+- **Where a term starts:** a student's start level is the first stored level on or after the term began whose estimate stands on at least a placement's worth of answers (`PLACEMENT_ATTEMPTS`). Placement's first guesses can sit well above or below where a student settles, so growth never starts there; with no such reading there's no growth figure rather than a zero. One fragment, `src/schools/start-level.ts`, serves the overview, the grade model and the standings board, so a student's board never disagrees with their teacher.
 - **What never moves a suggestion:** how many problems a student answered on screen, and how many they got right outside spaced review. `tests/schools-grade-policy.test.ts` proves it.
 - **Objectives:** a skill counts on the day a student's own independent successes reach two, with no ancestor credit, and only if it isn't well below where they started the term.
 - **Tests with personas:** fast accelerator, steady at-level, two grades behind but growing fast, high accuracy with little work, inactive, joined mid-term.
@@ -247,4 +272,24 @@ Another screen links a group sheet with `.../classes/$class/workbooks?students=<
 
 **Integrations:** `.../integrations` lists CSV and spreadsheet paste with column auto-mapping and a dry-run diff; OneRoster 1.2 CSV import; configurable gradebook CSV plus OneRoster results; Google and Microsoft sign-in. Clever, ClassLink and Google Classroom show a real "set this up with us" request that records an event and notifies the mailbox, never a button that fails.
 
-**Licensing:** operated by privileged agents, with no internal admin UI. `scripts/school-admin.ts` creates orgs, issues licenses and adjusts seats with JSON output, reading names from a private input file, and direct database access covers the rest. Adding seats or issuing a license seats the students waiting under that org, longest-waiting first; renewals replace seats on a license that has ended. A school's own license screen shows seats and dates, with "Request more seats" notifying the company mailbox. Self-serve setup starts with 30 seats for 30 days, a default that's one script call to change (`set-seats`, `extend-license`). One account can set up at most five schools on its own.
+**Licensing:** operated by privileged agents, with no internal admin UI. `scripts/school-admin.ts` issues schools (`create-school`, above), creates orgs, issues licenses and adjusts seats with JSON output, reading names from a private input file, and direct database access covers the rest. Adding seats or issuing a license seats the students waiting under that org, longest-waiting first; renewals replace seats on a license that has ended. A school's own license screen shows seats and dates, with "Request more seats" notifying the company mailbox.
+
+## Demo, journey, load and gallery
+
+Each command needs `AMP_TEST_DATABASE_URL`, a fixture database, never the shared `/amp` preview. Each makes a throwaway schema and drops it when it stops. Every name is synthetic.
+
+**Seed and preview.** `scripts/school-demo-world.ts` builds a school through the real code paths: issued by `create-school` with its license, its admin's invitation accepted, guided setup and the data agreement through the API, a CSV roster through the real source and the reconciler in chunks, teachers' invitations accepted, and seats. The hero class, Grade 5 with Ms. Okafor and 30 students, answers real problems through the practice API (`scripts/school-class-fixture.ts`, shared with the teacher verification), so Today, the gradebook, standings and the class map read real evidence. Every other class's term is backfilled into the rollups by SQL (`seedTermEvidence` in `scripts/school-org-fixture.ts`). Last week was short, this week is back up, one class is quiet, one has no teacher, a few students wait for seats, and levels spread across grades.
+
+```sh
+npm run school:demo -- --size 1000 --port 4420   # 30 | 1000 | 10000; ports 4420-4429
+```
+
+`--size 30` is one teacher with 30 students, `1000` a K–8 school, and `10000` a district of twelve schools. It runs the real API and Vite on loopback. Open `http://127.0.0.1:<port>/demo` and choose who you are: the head, the district admin, the teacher or a student. The picker answers on loopback only and stands on the development sign-in, which production refuses. `--keep` keeps the schema.
+
+**The journey.** `npm run test:school-ui` (in `test:ui:2b`, so CI's browser lanes run it) walks the launch story in Chromium at 1280 and WebKit at 390, in accounts mode with the real local PDF renderer: we issue a school, and its head opens the setup link, signs up, sets it up, imports 24 students and invites a teacher; the teacher accepts and prints cards; one student signs in by pictures and one by card, and both answer problems; Today counts them; the gradebook suggests a range and the teacher sets a grade; the CSV export parses and the report cards render; a stack of 24 workbooks merges; a family link opens; removing a student frees the seat and deletes their learning.
+
+**Load.** `npm run school:load` runs 30, then 300 students answering in lockstep through the practice API, against a server process built like production's, with the per-pod pool `databasePoolMax` gives production by default. It reports p50 and p95 per answer and per batch, and errors. `--pool <n>` compares another pool size.
+
+On a development laptop (2026-11-07, pool 6, local PostgreSQL), 30 students answered at p50 24 ms and p95 39 ms; 300 at p50 281 ms and p95 413 ms, with no errors. A batch of problems took p95 345 ms at 30 and 2.5 s at 300. A pool of 20 changed neither, and no event-loop stall over 500 ms was logged: the limit is one process's CPU working through 300 requests that arrive in the same instant (about 1.5 ms of server time per answer and 8 ms per batch), not database connections. Real classes don't answer in lockstep, the app fetches the next batch while a student works, and the API autoscales across pods.
+
+**Gallery.** `npm run school:capture -- [--size 10000] [--product-shots]` drives the seeded demo and captures every school screen, both overviews, every class tab, the student record, the evidence sheet, sign-in and Start class, standings, the family page and the public pages, at 1280 and 390 in light and dark at device scale 2, with geometry at 320 and 768 too. Every screen must have no overflow, no clipped cells, 44 px targets and CLS at or below 0.01. It writes PNGs and an `index.html` contact sheet to `artifacts/schools-gallery/<date>/`, or wherever `--out` says, outside version control. `docs/reviews/schools-launch/` keeps the 1280 and 390 light captures at device scale 1. `--product-shots` refreshes the `/schools` page's screens, as WebP, from the same data.

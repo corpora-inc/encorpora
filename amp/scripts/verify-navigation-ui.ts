@@ -1,4 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
+import { settleArrival } from "./ui-settle";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { createServer } from "vite";
@@ -258,6 +259,8 @@ try {
   // Pixels of the focus ring painted outside each edge of the focused control.
   // An outline takes no part in hit testing, so only a screenshot can see it.
   async function paintedRing() {
+    // The screen's arrival fade tints the ring until it ends.
+    await settleArrival(page);
     const screenshot = (await page.screenshot()).toString("base64");
     return page.evaluate(async (png) => {
       const canvas = document.createElement("canvas");
@@ -302,7 +305,18 @@ try {
       ),
       `${label}: keyboard focus is showing`,
     );
-    assert.deepEqual(await paintedRing(), wholeRing, `${label}: focus ring`);
+    // The calculator button is a circle: at the left, right and bottom tangent
+    // points the outer edge of its 3px ring is anti-aliased, so those samples
+    // read two solid pixels where the top reads three (measured the same on
+    // every CI run, after the arrival fade ends). A ring hidden by the stage
+    // below it reads none or one.
+    const ring = await paintedRing();
+    for (const [edge, pixels] of Object.entries(ring))
+      assert(
+        pixels >= wholeRing[edge as keyof typeof wholeRing] - 1 &&
+          pixels <= wholeRing[edge as keyof typeof wholeRing],
+        `${label}: focus ring ${JSON.stringify(ring)}`,
+      );
   }
   // The toolbar paints above the stage below it, so focus rings stay whole,
   // and below everything that overlays practice.

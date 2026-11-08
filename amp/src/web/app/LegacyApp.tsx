@@ -35,7 +35,7 @@ import { useLoggedError, requestMessage } from "../feedback";
 import { Toast } from "../ui/Toast";
 import { AccountSessionChanged } from "../lib/account-session";
 import { loadFrontier } from "../lib/frontier-load";
-import { noteStudentProblem } from "../lib/student-activity";
+import { noteActiveProblem } from "../lib/student-activity";
 import { Navigate } from "@tanstack/react-router";
 import { signedOut as reportSignedOut } from "../lib/app-recovery";
 import { useAppRoute } from "../app-routes";
@@ -178,6 +178,10 @@ addEventListener(
 );
 let initialPurchaseReturn = nativeRuntime ? null : capturePurchaseReturn();
 if (nativeRuntime) clearInitialConsentChallenge();
+// Leaving Family lands on "/", which mounts this screen anew: the focus owed
+// to the menu button outlives the screen that asked for it.
+const nativeFamilyReturn = { current: false };
+const progressReturn = { current: { identity: "", href: "/progress" } };
 export function LegacyApp() {
   const session = useQuery(sessionOptions);
   if (session.isPending) return <LoadingScreen />;
@@ -244,6 +248,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     setNativeFamilySnapshot(accountRef.current, summary);
   const learners =
     familySummary?.learners.filter((entry) => !entry.deletedAt) ?? [];
+  // The family's learners. The adult's own learner practices here too, but it
+  // is its own place: chosen through the place switcher, never listed here.
+  const childLearners = learners.filter((entry) => !entry.adult);
   const readingLesson =
     route.parts[0] === "lessons" && route.parts[1]
       ? (catalog?.lessons.find((entry) => entry.id === route.parts[1]) ?? null)
@@ -259,19 +266,24 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   // Resolve a learner from that snapshot immediately: redirecting to setup
   // while loadFamily is selecting one can continually restart navigation.
   const learner =
-    learners.find((entry) => entry.id === learnerId) ?? learners[0] ?? null;
+    learners.find((entry) => entry.id === learnerId) ??
+    childLearners[0] ??
+    null;
+  const ownLearner = learner?.adult === true;
   const adjustments = usePracticeAdjustment({
     identity: accountId ?? "guest",
     learnerId: learner?.id ?? "",
     token: token ?? undefined,
   });
   // Remember a tab's return URL, not a second copy of its screen/filter state.
-  const progressReturn = useRef({ identity: "", href: "/progress" });
+  // It lives outside the component: "/" and the other app routes mount this
+  // screen separately, so going home must not forget where Progress was.
   useLayoutEffect(() => {
-    if (!accountId || !learner) {
+    if (!accountId) {
       progressReturn.current = { identity: "", href: "/progress" };
       return;
     }
+    if (!learner) return;
     const identity = `${accountId}:${learner.id}`;
     const changed =
       progressReturn.current.identity !== "" &&
@@ -286,8 +298,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     }
   }, [accountId, learner?.id, route.location.pathname, route.location.search]);
 
-  // A school student's level starts from their grade, so there is no prompt.
-  const birthYearKnown = learner?.birthYear != null || student;
+  // A school student's level starts from their grade, and an adult's from
+  // where they chose to begin, so neither has a prompt.
+  const birthYearKnown = learner?.birthYear != null || student || ownLearner;
   const changingBirthYear =
     !student && route.location.pathname === "/profile/birth-year";
   const setChangingBirthYear = (open: boolean) =>
@@ -297,11 +310,17 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   const [hasTrial] = useState(() => !!storedTrial());
   // Outside immersive practice: home, lessons, progress and family are visible.
 
-  const nativeFamilyReturn = useRef(false);
   useLayoutEffect(() => {
     if (!familyOpen && nativeFamilyReturn.current) {
       nativeFamilyReturn.current = false;
-      familyMenuTrigger.current?.focus({ preventScroll: true });
+      // After the navigation settles: the screen that owes the focus can be
+      // replaced by the one at "/", whose menu button is the one to focus.
+      requestAnimationFrame(() => {
+        const trigger =
+          document.querySelector<HTMLElement>("[data-navigation-trigger]") ??
+          familyMenuTrigger.current;
+        trigger?.focus({ preventScroll: true });
+      });
     }
   }, [familyOpen]);
 
@@ -322,7 +341,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   );
   const pendingPurchaseReturn = useRef(initialPurchaseReturn);
   const returnIdentity = useRef<string | null>(null);
+  // An adult's own learner learns on the account's own terms; the family's
+  // learners need its consent.
   const learningAllowed =
+    ownLearner ||
     familySummary?.consent.status === "active" ||
     familySummary?.consent.status === "development";
   // A student without a seat, or whose school's agreement ended, can't practice
@@ -736,11 +758,13 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     const allowed =
       summary.consent.status === "active" ||
       summary.consent.status === "development";
+    // The adult's own learner stays chosen only when it was chosen; a device
+    // with no choice opens on the family's first learner, never the adult's.
     const selected = allowed
       ? (available.find(
           (entry) => entry.id === useLearnerStore.getState().learnerId,
         ) ??
-        available[0] ??
+        available.find((entry) => !entry.adult) ??
         null)
       : null;
     learnerRef.current = selected?.id;
@@ -821,6 +845,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     catalog,
     learner?.id,
     learner?.birthYear,
+    // Choosing another learner while practicing clears the problem after this
+    // route and learner have already changed: load theirs when it is gone.
+    !problem,
     busy,
     error,
   ]);
@@ -930,7 +957,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     setReadingLesson(selected);
   }
   function showProblem(p: HintedProblem) {
-    noteStudentProblem(p.id);
+    noteActiveProblem(p.id);
     setProblem(p);
     setResponse("");
     setOutcome(null);
@@ -983,7 +1010,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       (entry) => entry.id === learner.id,
     )?.canPractice;
     if (capability === false) {
-      if (!student) navigate("/purchase/choose", { replace: true });
+      // An adult's own practice pauses with what made it free; their record
+      // says so. A child's needs a plan.
+      if (!student)
+        navigate(ownLearner ? "/me" : "/purchase/choose", { replace: true });
       return;
     }
     upcoming.current = null;
@@ -1295,6 +1325,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     !loadFailed;
   if (student && (route.familyOpen || route.purchaseView || route.consentOpen))
     return <Navigate to="/" replace />;
+  // The adult's home is their own record.
+  if (ownLearner && !nativeRuntime && route.location.pathname === "/")
+    return <Navigate to="/me" replace />;
   if (
     firstRunHome ||
     leavingHome.current ||
@@ -1346,7 +1379,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             !student &&
             !familyOpen &&
             learningAllowed &&
-            learners.length > 0 && (
+            !ownLearner &&
+            childLearners.length > 0 && (
               <Select
                 aria-label="Learner"
                 value={learner?.id ?? ""}
@@ -1354,7 +1388,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                 onValueChange={(e) => selectLearner(e || null)}
               >
                 {!learner && <option value="">Select a learner</option>}
-                {learners.map((l) => (
+                {childLearners.map((l) => (
                   <option key={l.id} value={l.id}>
                     {l.name}
                   </option>
@@ -1515,9 +1549,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           preferredOfferId={purchaseOffer}
           preferredLearnerId={learnerId ?? undefined}
           identity={accountId ?? token}
-          learners={
-            familySummary?.learners.filter((entry) => !entry.deletedAt) ?? []
-          }
+          learners={childLearners}
           consentActive={familySummary?.consent.status === "active"}
           onClose={closePurchase}
         />

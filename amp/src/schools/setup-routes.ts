@@ -32,7 +32,6 @@ import {
   setCalendar,
   setExperience,
   setupState,
-  startSetup,
   updateSession,
   updateSetupSchool,
 } from "./setup.js";
@@ -147,17 +146,8 @@ export function registerInvitePreview(
 }
 
 export function defineSetupRoutes(define: typeof defineSchoolRoute) {
-  /* Setup. */
-  define({
-    method: "POST",
-    url: "/api/v1/school/setup",
-    action: "setup.start",
-    target: () => ({ kind: "self" }) as const,
-    bodyLimit: 4096,
-    handler: async ({ request, actor, repository }) => ({
-      org: await startSetup(repository, actor.accountId, request.body),
-    }),
-  });
+  /* Setup, for a school we issued: `scripts/school-admin.ts` create-school
+   * makes the org and invites its admin, who carries on from here. */
   define({
     method: "GET",
     url: "/api/v1/school/orgs/:org/setup",

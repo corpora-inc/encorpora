@@ -1,5 +1,6 @@
 .group {
   display: grid;
+  grid-template-columns: repeat(var(--segments), minmax(0, 1fr));
   gap: var(--space-2);
   padding: var(--space-1);
   border: 1px solid var(--color-border);
@@ -134,4 +135,18 @@
 .compact.dense .label {
   font-size: var(--text-table);
   font-weight: 600;
+}
+
+/* Four or more longer names on a phone: two rows, never one squeezed row. */
+@media (max-width: 479.98px) {
+  .crowded {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Stacked: a ladder of choices, one row each, so a long list never squeezes
+   into columns. */
+.group.stacked {
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-1);
 }

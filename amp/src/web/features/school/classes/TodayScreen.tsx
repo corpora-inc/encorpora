@@ -280,6 +280,7 @@ export function TodayScreen() {
         </div>
       )}
       <Sheet
+        tall
         open={!!lesson}
         onOpenChange={(open) => {
           if (!open) set({ lesson: undefined });

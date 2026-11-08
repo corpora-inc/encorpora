@@ -2,6 +2,7 @@ import {
   purchaseMeasurementView,
   revokeAdvertisingPermission,
 } from "../advertising/permission.js";
+import { refreshAdultAccess } from "../account/adult-access.js";
 import { cancelPendingConsent } from "../parent-consent/lifecycle.js";
 import { learningConsentActive } from "../server/account-access.js";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
@@ -70,6 +71,17 @@ export class FamilyRepository {
   }
   async summary(accountId: string): Promise<FamilySummary> {
     return this.transaction(accountId, async (client) => {
+      // The adult's own learner keeps its free access current with what
+      // qualifies it, so every read below sees the refreshed grant. Read
+      // through the row, so a database before 0093 has none.
+      const adult = (
+        await client.query<{ id: string }>(
+          `SELECT l.id FROM amp_learners l WHERE l.account_id=$1 AND l.deleted_at IS NULL
+           AND to_jsonb(l)->'adult'='true'::jsonb`,
+          [accountId],
+        )
+      ).rows[0];
+      if (adult) await refreshAdultAccess(client, accountId, adult.id);
       const consent = (
         await client.query(
           "SELECT policy_version,recorded_at,withdrawn_at FROM amp_parent_consents WHERE account_id=$1",
@@ -78,7 +90,7 @@ export class FamilyRepository {
       ).rows[0];
       const learners = (
         await client.query(
-          "SELECT l.id,l.name,l.birth_year,l.sat_math_focus,l.deleted_at,EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()) AS has_access FROM amp_learners l WHERE l.account_id=$1 ORDER BY l.created_at,l.id",
+          "SELECT l.id,l.name,l.birth_year,l.sat_math_focus,l.deleted_at,EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()) AS has_access,COALESCE(to_jsonb(l)->'adult'='true'::jsonb,false) AS adult FROM amp_learners l WHERE l.account_id=$1 ORDER BY l.created_at,l.id",
           [accountId],
         )
       ).rows;
@@ -149,10 +161,13 @@ export class FamilyRepository {
           satMathFocus: row.sat_math_focus,
           deletedAt: iso(row.deleted_at),
           stripeLinked: linked.includes(row.id),
+          // An adult learns on the account's own terms; a child needs the
+          // account's consent.
           canPractice:
             !row.deleted_at &&
-            effectiveConsent &&
+            (row.adult || effectiveConsent) &&
             (this.development || row.has_access),
+          ...(row.adult ? { adult: true as const } : {}),
           access: grants
             .filter((g) => g.learner_id === row.id)
             .map((g) => ({

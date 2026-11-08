@@ -195,7 +195,8 @@
   display: grid;
   /* Each number takes the same width, so the sentences start on one line. */
   grid-template-columns: 96px minmax(0, 1fr);
-  align-items: baseline;
+  /* On phones each number sits centered beside its sentence. */
+  align-items: center;
   column-gap: var(--space-3);
   margin: 0;
 }
@@ -415,6 +416,21 @@
   }
 }
 
+/* A school's overview beside its district's, a step lower. */
+.overviewsStage {
+  display: grid;
+  gap: var(--space-5);
+}
+@media (min-width: 720px) {
+  .overviewsStage {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+  .districtOverviewShot {
+    margin-top: var(--space-7);
+  }
+}
+
 /* Standings: a tall board at its own size, with room around it. */
 @media (min-width: 960px) {
   .standings .featureText {
@@ -489,12 +505,30 @@
 /* The way in, once more. */
 .closing {
   display: grid;
-  gap: var(--space-4);
+  gap: var(--space-5);
+  scroll-margin-top: var(--space-6);
 }
-@media (min-width: 720px) {
+.closingHead {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+}
+.closingHead p {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+@media (min-width: 960px) {
   .closing {
-    grid-template-columns: minmax(0, 1fr) 384px;
-    align-items: center;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
     gap: var(--space-6);
+  }
+  .closingHead {
+    grid-column: 1 / span 4;
+  }
+  .closing > :last-child {
+    grid-column: 5 / -1;
   }
 }

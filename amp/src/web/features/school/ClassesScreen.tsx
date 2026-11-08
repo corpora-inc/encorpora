@@ -49,6 +49,7 @@ import {
 import { classTabs } from "./classes/ClassFrame";
 import { yearsOptions } from "./org/org-api";
 import { classPath, orgPath } from "./paths";
+import { compareClassNames } from "./sort";
 import styles from "./School.module.css";
 
 const COURSE_OPTIONS: readonly (readonly [string, string])[] = [
@@ -193,7 +194,7 @@ const classColumns = (
     id: "name",
     header: "Class",
     width: 220,
-    compare: (a, b) => a.name.localeCompare(b.name, "en"),
+    compare: (a, b) => compareClassNames(a.name, b.name),
     cell: (row) => (
       <Link
         to="/$"

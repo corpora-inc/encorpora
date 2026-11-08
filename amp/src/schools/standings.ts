@@ -11,6 +11,9 @@ import {
   type SettingsScope,
 } from "./settings.js";
 import { STUDENT_NAME } from "./sign-in.js";
+import { PLACEMENT_ATTEMPTS } from "../learning/placement.js";
+import { startLevelSql } from "./start-level.js";
+import { shownTeachers } from "./teacher-line.js";
 
 /** Standings read from `amp_skill_days` and `amp_level_days`, independent work
  * only, and nothing here feeds what's scheduled next. A board is the top ten and
@@ -182,12 +185,14 @@ const shiftDays = (day: string, days: number) =>
 
 /** One number per student, for students with something to show. Growth is a
  * hundredth of a grade per point, so it reads as a whole number and says nothing
- * of the level itself. */
+ * of the level itself. A term's growth starts where the teacher's does
+ * (`start-level.ts`); a week's runs from the last settled level before it. */
 async function measured(
   db: Database,
   roster: Roster[],
   measure: Measure,
   { from, to }: Term,
+  span: "term" | "week" = "term",
 ): Promise<Map<string, number>> {
   const person = new Map(roster.map((m) => [m.learnerId, m.personId]));
   const values = new Map<string, number>();
@@ -224,18 +229,28 @@ async function measured(
   const worked = new Set(independent.rows.map((row) => row.learner_id));
   const ends = await db.query(
     `SELECT l.learner_id,
-       (SELECT (d.frontier->'overall'->>'level')::float8 FROM amp_level_days d
+       (SELECT d.overall_level::float8 FROM amp_level_days d
         WHERE d.learner_id=l.learner_id AND d.day<=$3::date ORDER BY d.day DESC LIMIT 1) AS latest,
-       COALESCE(
-         (SELECT (d.frontier->'overall'->>'level')::float8 FROM amp_level_days d
-          WHERE d.learner_id=l.learner_id AND d.day<$2::date ORDER BY d.day DESC LIMIT 1),
-         (SELECT (d.frontier->'overall'->>'level')::float8 FROM amp_level_days d
-          WHERE d.learner_id=l.learner_id AND d.day BETWEEN $2::date AND $3::date ORDER BY d.day LIMIT 1)
-       ) AS start
+       ${
+         span === "term"
+           ? startLevelSql({
+               select: "d.overall_level::float8",
+               learner: "l.learner_id",
+               from: "$2::date",
+               to: "$3::date",
+             })
+           : `COALESCE(
+         (SELECT d.overall_level::float8 FROM amp_level_days d
+          WHERE d.learner_id=l.learner_id AND d.day<$2::date AND d.overall_answered>=${PLACEMENT_ATTEMPTS} ORDER BY d.day DESC LIMIT 1),
+         ${startLevelSql({ select: "d.overall_level::float8", learner: "l.learner_id", from: "$2::date", to: "$3::date" })}
+       )`
+       } AS start
      FROM unnest($1::text[]) AS l(learner_id)`,
     [[...worked], from, to],
   );
   for (const row of ends.rows) {
+    // Still placing: no start, so nothing to show rather than a zero.
+    if (row.start === null || row.latest === null) continue;
     const points = Math.round((row.latest - row.start) * 100);
     if (points > 0) values.set(person.get(row.learner_id)!, points);
   }
@@ -381,6 +396,38 @@ async function classBoardRows(
   );
 }
 
+/** The class's teachers who practice, on this board's measure and term
+ * (docs/families.md). They never take a rank and never move one: the students'
+ * ranks come from `rows` alone. A line reaching the lowest listed value sits in
+ * the list; below it, or on a board that lists nobody, it shows after the
+ * student's own line. A teacher with nothing to show yet isn't on it. */
+async function teacherLines(
+  db: Database,
+  classId: string,
+  measure: Measure,
+  term: Term,
+  top: readonly { value: number }[],
+): Promise<StandingsBoard["teachers"]> {
+  const teachers = await shownTeachers(db, classId);
+  if (!teachers.length) return [];
+  const values = await measured(db, teachers, measure, term);
+  const lowest = top.at(-1)?.value;
+  return teachers
+    .flatMap((teacher) => {
+      const value = values.get(teacher.personId);
+      return value === undefined
+        ? []
+        : [
+            {
+              name: teacher.name,
+              value,
+              inList: lowest !== undefined && value >= lowest,
+            },
+          ];
+    })
+    .sort((a, b) => b.value - a.value || a.name.localeCompare(b.name, "en"));
+}
+
 function shape(rows: readonly Row[], personId: string) {
   const listed = rows.slice(0, listedCount(rows.length));
   const place = (value: number) =>
@@ -439,8 +486,10 @@ export async function studentBoard(
       from: [term.from, shiftDays(term.to, -6)].sort().at(-1)!,
       to: term.to,
     },
+    "week",
   );
   const listed = top.find((row) => row.you);
+  const teachers = await teacherLines(pool, classId, measure, term, top);
   return {
     board: {
       classId,
@@ -457,5 +506,6 @@ export async function studentBoard(
       thisWeek: week.get(personId) ?? 0,
       rank: listed?.rank ?? null,
     },
+    teachers,
   };
 }

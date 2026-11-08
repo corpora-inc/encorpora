@@ -17,6 +17,7 @@ import { StatRow, StatTile } from "../../../ui/StatTile";
 import { Toast } from "../../../ui/Toast";
 import { useStaffSession } from "./api";
 import { ClassFrame } from "./ClassFrame";
+import { TimeDetail } from "./ProgressRecord";
 import {
   downloadTime,
   failureMessage,
@@ -177,27 +178,9 @@ function DaySheet({
     enabled: !!session && !!student,
   });
   const data = student ? time.data : undefined;
-  const largest = Math.max(1, ...(data?.days ?? []).map((d) => d.minutes));
-  const total = (data?.days ?? []).reduce((sum, d) => sum + d.minutes, 0);
-  const days = data
-    ? Array.from(
-        {
-          length:
-            Math.round(
-              (Date.parse(`${data.range.to}T00:00:00Z`) -
-                Date.parse(`${data.range.from}T00:00:00Z`)) /
-                DAY,
-            ) + 1,
-        },
-        (_, index) => addDays(data.range.from, index),
-      ).slice(-42)
-    : [];
-  const largestSkill = Math.max(
-    1,
-    ...(data?.skills ?? []).map((s) => s.minutes),
-  );
   return (
     <Sheet
+      tall
       open={!!student}
       onOpenChange={(next) => {
         if (!next) onClose();
@@ -222,71 +205,7 @@ function DaySheet({
         <Loading>Reading the days</Loading>
       ) : (
         <div className={styles.evidence}>
-          <StatRow>
-            <StatTile
-              value={number(Math.round(total))}
-              label="active minutes"
-            />
-            <StatTile value={number(data.days.length)} label="days worked" />
-          </StatRow>
-          <section>
-            <h3>By day</h3>
-            <TipZone>
-              <div
-                className={styles.dayChart}
-                role="img"
-                aria-label={`${data.student.name}: ${Math.round(total)} active minutes across ${data.days.length} days. Largest day ${Math.round(largest)} minutes.`}
-              >
-                {days.map((day) => {
-                  const minutes =
-                    data.days.find((entry) => entry.day === day)?.minutes ?? 0;
-                  return (
-                    <span
-                      key={day}
-                      className={styles.dayColumn}
-                      data-tip={`${fullDay(day)}: ${Math.round(minutes)} active minutes`}
-                    >
-                      <span
-                        className={styles.dayBar}
-                        style={{
-                          height: minutes
-                            ? `${Math.max(6, (minutes / largest) * 100)}%`
-                            : 0,
-                        }}
-                      />
-                    </span>
-                  );
-                })}
-              </div>
-              <div className={styles.dayAxis} aria-hidden="true">
-                <span>{shortDay(days[0]!)}</span>
-                <span>{shortDay(days.at(-1)!)}</span>
-              </div>
-            </TipZone>
-          </section>
-          {data.skills.length > 0 && (
-            <section>
-              <h3>Where the time went</h3>
-              <ul className={styles.skillBars}>
-                {data.skills.map((skill) => (
-                  <li key={skill.skillId}>
-                    <span className={styles.skillName}>{skill.title}</span>
-                    <span className={styles.skillValue}>
-                      {number(skill.minutes)} min
-                    </span>
-                    <span className={styles.skillTrack}>
-                      <span
-                        className={styles.skillFill}
-                        style={{
-                          width: `${(skill.minutes / largestSkill) * 100}%`,
-                        }}
-                      />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
+          <TimeDetail time={data} who={data.student.name} />
           <Link
             to="/$"
             params={{ _splat: studentUrl(place.org, data.student.id) }}

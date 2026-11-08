@@ -31,7 +31,6 @@ export const schoolActions = [
   "signin.manage",
   "grades.read",
   "grades.write",
-  "setup.start",
   "setup.write",
   "invites.accept",
   "calendar.read",

@@ -213,6 +213,12 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+.places {
+  display: grid;
+}
+.places h2 {
+  margin-bottom: var(--space-2);
+}
 .signOut {
   margin-top: var(--space-2);
   border-top: 1px solid var(--color-border);

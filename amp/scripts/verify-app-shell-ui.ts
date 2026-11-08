@@ -199,7 +199,7 @@ async function verifyShell() {
         );
       }
       // The links this review moved off browser blue use the brand ink.
-      const brand = id === "landing" ? "support@corpora.inc" : "Other programs";
+      const brand = id === "landing" ? "For schools" : "Other programs";
       const fixed = links.find((l) => l.text === brand);
       check(
         fixed && fixed.color === fixed.primary,

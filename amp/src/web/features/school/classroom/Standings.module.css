@@ -169,6 +169,39 @@
   font-weight: 650;
   line-height: 1.25;
 }
+/* A teacher's line: on the board by value, never ranked. Their place holds a
+   mark instead of a number, and their wave is drawn in ink, not a medal. */
+.teacherTag {
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+  font-weight: 650;
+  line-height: 1.25;
+}
+.teacherMark {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.row[data-teacher] .rank {
+  box-shadow: inset 0 0 0 1.5px var(--color-border-strong);
+  color: var(--color-figure-ink);
+}
+.row[data-teacher] .track {
+  background: var(--color-figure-axis);
+}
+.you[data-teacher] {
+  margin-top: var(--space-3);
+}
+.you h2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 var(--space-2);
+}
 /* The student's wave, the same shape as the AMP mark, run out to their value. */
 .track {
   display: block;

@@ -81,8 +81,8 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     url: `${CLASS}/map`,
     action: "students.read",
     target: classParam,
-    handler: async ({ target, pool }) =>
-      readMap(pool, await classContext(pool, target.classId)),
+    handler: async ({ actor, target, pool }) =>
+      readMap(pool, await classContext(pool, target.classId), actor.accountId),
   });
   define({
     method: "GET",

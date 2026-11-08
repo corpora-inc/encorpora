@@ -4,7 +4,6 @@ import type { CSSProperties } from "react";
 import type { StandingsBoard } from "../../../../schools/classroom-contracts";
 import { sessionOptions } from "../../../lib/query";
 import { Button, buttonClass } from "../../../ui/Button";
-import { Loading } from "../../../ui/Loading";
 import { NavigationDrawer } from "../../navigation/NavigationDrawer";
 import { StudentSignOut } from "../../practice/StudentSignOut";
 import { gradeLabel } from "../parts";
@@ -36,6 +35,35 @@ const valueUnit: Record<StandingsBoard["board"]["measure"], string> = {
   level: "level",
 };
 
+type Teacher = StandingsBoard["teachers"][number];
+/** A teacher's line below the list, in the same terms as your own. */
+function teacherSentence(
+  measure: StandingsBoard["board"]["measure"],
+  { name, value }: Teacher,
+) {
+  if (measure === "growth")
+    return `${name} has grown ${value} ${value === 1 ? "point" : "points"} this term.`;
+  if (measure === "practice")
+    return `${name} has done ${value} ${value === 1 ? "problem" : "problems"} on their own this term.`;
+  return `${name} is working at level ${value.toFixed(1)}.`;
+}
+
+/** The mark in a teacher's rank place: a teacher is on the board, unranked. */
+function TeacherMark() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={styles.teacherMark}>
+      <path d="M2.5 9 12 4.5 21.5 9 12 13.5Z" />
+      <path d="M6.5 11.2v4.6c0 1.6 2.5 3 5.5 3s5.5-1.4 5.5-3v-4.6" />
+      <path d="M21.5 9v5" />
+    </svg>
+  );
+}
+const TeacherTag = () => (
+  <span className={styles.teacherTag}>
+    <span className={styles.srOnly}>, </span>Teacher
+  </span>
+);
+
 /** Your own line, in your own terms: never a place on a list. */
 function yourLine({ board, you }: StandingsBoard) {
   if (!you.value)
@@ -49,27 +77,49 @@ function yourLine({ board, you }: StandingsBoard) {
   return `${place}You’re working at level ${you.value.toFixed(1)}${week ? `, up ${(week / 100).toFixed(1)} this week` : ""}.`;
 }
 
+type Line =
+  | { teacher: false; row: StandingsBoard["top"][number] }
+  | { teacher: true; row: Teacher };
+/** The list as it reads: each teacher whose line reaches it sits in place by
+ * value, after any student it ties, and takes no one's number. */
+function linesOf(top: StandingsBoard["top"], teachers: readonly Teacher[]) {
+  const waiting = teachers.filter((teacher) => teacher.inList);
+  const lines: Line[] = [];
+  for (const row of top) {
+    while (waiting.length && waiting[0]!.value > row.value)
+      lines.push({ teacher: true, row: waiting.shift()! });
+    lines.push({ teacher: false, row });
+  }
+  for (const row of waiting) lines.push({ teacher: true, row });
+  return lines;
+}
+
 function Row({
-  row,
+  line,
   top,
   measure,
 }: {
-  row: StandingsBoard["top"][number];
+  line: Line;
   top: number;
   measure: StandingsBoard["board"]["measure"];
 }) {
-  const reach = top > 0 ? Math.max(0.12, row.value / top) : 0.12;
+  const { row } = line;
+  const reach = top > 0 ? Math.min(1, Math.max(0.12, row.value / top)) : 0.12;
+  const you = !line.teacher && line.row.you;
+  const rank = line.teacher ? null : line.row.rank;
   return (
     <li
       className={styles.row}
-      data-you={row.you || undefined}
-      data-rank={row.rank <= 3 ? row.rank : undefined}
+      data-you={you || undefined}
+      data-teacher={line.teacher || undefined}
+      data-rank={rank !== null && rank <= 3 ? rank : undefined}
     >
-      <span className={styles.rank}>{row.rank}</span>
+      <span className={styles.rank}>{rank ?? <TeacherMark />}</span>
       <span className={styles.who}>
         <span className={styles.name}>
           {row.name}
-          {row.you && <span className={styles.youTag}>You</span>}
+          {you && <span className={styles.youTag}>You</span>}
+          {line.teacher && <TeacherTag />}
         </span>
         <span
           className={styles.track}
@@ -86,8 +136,13 @@ function Row({
 }
 
 function Board({ data }: { data: StandingsBoard }) {
-  const { board, top, you } = data;
+  const { board, top, you, teachers } = data;
   const wide = board.scope !== "class";
+  const lines = linesOf(top, teachers);
+  // The students' top sets every wave's length, so a teacher far ahead runs
+  // full width beside their number and never shrinks the students' waves.
+  const most = top[0]?.value ?? 0;
+  const below = teachers.filter((teacher) => !teacher.inList);
   const heading = wide
     ? `${board.gradeLevel === null ? "Students" : gradeWord(board.gradeLevel)} at ${board.placeName}`
     : board.placeName;
@@ -99,11 +154,15 @@ function Board({ data }: { data: StandingsBoard }) {
       </div>
       {top.length > 0 ? (
         <ol className={styles.list} aria-label="Top of the board">
-          {top.map((row) => (
+          {lines.map((line, index) => (
             <Row
-              key={`${row.rank}:${row.name}`}
-              row={row}
-              top={top[0]!.value}
+              key={
+                line.teacher
+                  ? `teacher:${index}:${line.row.name}`
+                  : `${line.row.rank}:${line.row.name}`
+              }
+              line={line}
+              top={most}
               measure={board.measure}
             />
           ))}
@@ -118,10 +177,24 @@ function Board({ data }: { data: StandingsBoard }) {
         <h2>{you.name}</h2>
         <p>{yourLine(data)}</p>
       </section>
+      {below.map((teacher, index) => (
+        <section
+          key={`${index}:${teacher.name}`}
+          className={styles.you}
+          data-teacher=""
+          aria-label={`${teacher.name}, teacher`}
+        >
+          <h2>
+            {teacher.name}
+            <TeacherTag />
+          </h2>
+          <p>{teacherSentence(board.measure, teacher)}</p>
+        </section>
+      ))}
       <p className={styles.note}>
         {measureNote[board.measure]}
         {wide
-          ? ` Everyone on this board has a made-up name. Yours is ${you.name}.`
+          ? ` ${teachers.length ? "Every student" : "Everyone"} on this board has a made-up name. Yours is ${you.name}.`
           : ""}
       </p>
     </>
@@ -185,9 +258,9 @@ export function StandingsScreen() {
             ))}
           </div>
         )}
-        {boards.isPending ? (
-          <Loading>Opening the board…</Loading>
-        ) : board.data ? (
+        {/* One wait, the board's own shape, from the first frame to the
+            board: never a loader that turns into a skeleton. */}
+        {board.data ? (
           <Board data={board.data} />
         ) : failed ? (
           <div className={styles.problem} role="alert">

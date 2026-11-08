@@ -190,6 +190,9 @@ button.accountTrigger:hover:not(:disabled) {
 }
 .classCheckList {
   display: grid;
+  /* Rows at their content's height: in a list that scrolls, an auto row would
+     stop at the row's minimum and let its checkbox spill out. */
+  grid-auto-rows: max-content;
   gap: var(--space-1);
   max-height: 268px;
   overflow: auto;
@@ -294,9 +297,6 @@ button.copy[data-done="copied"] {
 .chooser > :first-child,
 .inviteCard > :first-child {
   padding-inline: 0;
-}
-.chooser > a:last-child {
-  justify-self: start;
 }
 .chooserList {
   display: grid;

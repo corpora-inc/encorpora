@@ -1,14 +1,16 @@
 /**
  * The public school pages in real browsers, against the real API and a real
- * database: a signed-out visitor reads `/schools` and reaches `/school/new` and
- * the scope and sequence; the PDF and CSV download and parse; the trust page's
+ * database: a signed-out visitor reads `/schools`, writes through "Talk to us",
+ * finds no self-serve start (`/school/new` without an invitation comes back to
+ * `/schools`), and reaches the scope and sequence; the PDF and CSV download and
+ * parse; the trust page's
  * agreement matches `agreement.ts`; a teacher shares a link, a signed-out browser
  * opens it, a reload keeps working, and revoking shows the calm page. Geometry at
  * 320, 390, 768 and 1280, light and dark. PDFs come from the real local renderer.
  * Screenshots land in docs/reviews/schools-public/ for a person to look at.
  *
  *     AMP_TEST_DATABASE_URL=... npx tsx scripts/verify-schools-public-ui.ts \
- *       [--engine chromium|webkit] [--widths 390,1280] [--skip-sweep] [--skip-journeys]
+ *       [--engine chromium|webkit] [--widths 390,1280] [--skip-sweep] [--skip-journeys] [--port 4406]
  */
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
@@ -64,8 +66,8 @@ const widths = (argument("--widths") ?? "320,390,768,1280")
 const themes = ["light", "dark"] as const;
 const REVIEW = "docs/reviews/schools-public";
 const ARTIFACTS = "artifacts/schools-public";
-const webPort = 4406,
-  apiPort = 4407,
+const webPort = Number(argument("--port") ?? 4406),
+  apiPort = webPort + 1,
   origin = `http://127.0.0.1:${webPort}`;
 const SIGNED_OUT_KEY = "amp.dev.signedOut";
 
@@ -92,6 +94,8 @@ const authenticate = refuseStudentTokens(async (request) => {
   const who = request.headers["x-fixture-account"];
   return typeof who === "string" ? who : "development-household";
 });
+/** Mail the routes sent: "Talk to us" writes to the company mailbox. */
+const mailed: { to: string; subject: string; text: string }[] = [];
 const api = buildApp({ repository: learning, authenticate });
 await registerFamilyRoutes(api, { pool: db, authenticate });
 await registerSchoolRoutes(api, {
@@ -102,6 +106,9 @@ await registerSchoolRoutes(api, {
     origin,
     learning,
     renderer,
+    mail: async (to: string, subject: string, text: string) => {
+      mailed.push({ to, subject, text });
+    },
   },
 });
 await registerUnavailableBilling(api, authenticate);
@@ -290,6 +297,11 @@ async function device(
     acceptDownloads: true,
   });
   await context.addInitScript(shiftRecorder);
+  // Copying the support address needs the clipboard where the engine has it.
+  if (browser.browserType().name() === "chromium")
+    await context.grantPermissions(["clipboard-read", "clipboard-write"], {
+      origin,
+    });
   if (options.signedOut)
     await context.addInitScript((key) => {
       try {
@@ -473,12 +485,68 @@ async function journeys(browser: Browser, engine: string) {
       );
     check(`${label} says no price`, !/[$€£]\s?\d/.test(main));
     check(`${label} every file found`, responses.length === 0, responses);
+    // "Talk to us" goes to the form on the page, not to a mail app.
     check(
-      `${label} talk to us is mail`,
-      (await visitor.page
-        .getByRole("link", { name: "Talk to us" })
-        .first()
-        .getAttribute("href")) === "mailto:support@corpora.inc",
+      `${label} no mail links`,
+      (await visitor.page.locator('a[href^="mailto:"]').count()) === 0,
+    );
+    await visitor.page
+      .getByRole("link", { name: "Talk to us" })
+      .first()
+      .click();
+    await visitor.page.waitForURL("**/schools#talk");
+    const talk = visitor.page.locator("#talk");
+    const before = await talk.boundingBox();
+    await talk.getByRole("button", { name: "Send" }).click();
+    check(
+      `${label} talk asks for a name`,
+      (await talk.getByText("Enter your name.").count()) === 1,
+    );
+    await talk.getByLabel("Your name").fill("Fixture Head");
+    await talk.getByLabel("Your email").fill("head@fixture-academy.example");
+    await talk.getByLabel("School").fill("Fixture Academy");
+    await talk.getByLabel("Students (about)").fill("1,200");
+    await talk.getByLabel("Anything we should know").fill("Two campuses.");
+    const sentBefore = mailed.length;
+    await talk.getByRole("button", { name: "Send" }).click();
+    await talk.getByRole("heading", { name: "Thank you." }).waitFor();
+    const after = await talk.boundingBox();
+    check(
+      `${label} talk sent in place`,
+      !!before && !!after && before.height === after.height,
+      [before?.height, after?.height],
+    );
+    const sentMail = mailed.slice(sentBefore);
+    check(
+      `${label} talk reached the mailbox`,
+      sentMail.length === 1 &&
+        sentMail[0]!.to === "support@corpora.inc" &&
+        sentMail[0]!.subject === "School inquiry: Fixture Academy" &&
+        sentMail[0]!.text.includes("Students: 1200"),
+      sentMail,
+    );
+    // The address is there to read and copy, and copying moves nothing.
+    const copy = visitor.page
+      .locator("footer")
+      .getByRole("button", { name: "Copy support@corpora.inc" });
+    const copyBox = await copy.boundingBox();
+    await copy.click();
+    if (engine === "chromium")
+      await visitor.page
+        .locator("footer")
+        .getByText("Copied", { exact: true })
+        .waitFor();
+    const copiedBox = await copy.boundingBox();
+    check(
+      `${label} copy keeps its place`,
+      !!copyBox && !!copiedBox && copyBox.width === copiedBox.width,
+      [copyBox?.width, copiedBox?.width],
+    );
+    // AMP's other places, from the footer.
+    const socials = visitor.page.getByRole("list", { name: "AMP elsewhere" });
+    check(
+      `${label} footer socials`,
+      (await socials.getByRole("link").count()) === 5,
     );
 
     // On to the curriculum, by the link a school would follow.
@@ -585,18 +653,18 @@ async function journeys(browser: Browser, engine: string) {
       ),
     );
 
-    // Start a class: through sign-up and straight back to setup.
+    // Schools are set up with us: the page offers no way to start one alone,
+    // and setup without an invitation is this page.
     await visitor.page.goto(`${origin}/schools`);
-    await visitor.page
-      .getByRole("link", { name: "Start a class" })
-      .first()
-      .click();
-    await visitor.page.waitForURL(/\/sign-up\?/);
     check(
-      `${label} start a class goes to setup`,
-      new URL(visitor.page.url()).searchParams.get("next") === "/school/new",
-      visitor.page.url(),
+      `${label} no self-serve start`,
+      (await visitor.page
+        .getByRole("link", { name: "Start a class" })
+        .count()) === 0,
     );
+    await visitor.page.goto(`${origin}/school/new`);
+    await visitor.page.waitForURL(`${origin}/schools`);
+    await heading(visitor.page, /complete math curriculum/).waitFor();
 
     // A teacher shares a link from the student's record.
     const teacher = await start({ account: fixture.teacher });

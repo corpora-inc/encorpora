@@ -13,11 +13,31 @@ import { rosterRowSchema } from "./sources/rows.js";
 const isoDate = z.string().refine(isIsoDate);
 const orgName = z.string().trim().min(1).max(200);
 
-export const startSetupSchema = z.strictObject({
+/** Setup's first step: the name, who it's for and the time zone, which the
+ * school's admin can change while setting up. */
+export const schoolStepSchema = z.strictObject({
   name: orgName,
   shape: z.enum(["class", "school"]),
   timezone,
 });
+/** An operator's `create-school`: a school exists once we issue it a license,
+ * by contract and invoice or PO, or as a pilot on purpose. Dates are whole days
+ * in the school's time zone; the license runs through `endsOn`. */
+export const createSchoolSchema = z
+  .strictObject({
+    name: orgName,
+    adminEmail: email,
+    seats: z.number().int().min(1).max(1_000_000),
+    startsOn: isoDate,
+    endsOn: isoDate,
+    /** The PO or invoice number, or "Pilot" for a free pilot. */
+    reference: z.string().trim().min(1).max(200),
+    timezone: timezone.optional(),
+  })
+  .refine(({ startsOn, endsOn }) => endsOn >= startsOn, {
+    error: "license_dates",
+  });
+export type CreateSchool = z.infer<typeof createSchoolSchema>;
 export const calendarSchema = z
   .strictObject({
     startsOn: isoDate,
@@ -137,6 +157,14 @@ export const setupStateSchema = z.object({
     })
     .nullable(),
   firstClass: z.object({ id: z.uuid(), name: z.string() }).nullable(),
+  /** The seats issued for this school that haven't ended. */
+  license: z
+    .object({
+      seats: z.number().int(),
+      startsOn: z.string(),
+      endsOn: z.string(),
+    })
+    .nullable(),
 });
 export type SetupState = z.infer<typeof setupStateSchema>;
 
@@ -171,6 +199,8 @@ export const inviteViewSchema = z.object({
   orgName: z.string(),
   role: z.enum(staffRoles),
   email: z.string().nullable(),
+  /** The school's own admin, invited to set it up. */
+  setup: z.boolean(),
 });
 export type InviteView = z.infer<typeof inviteViewSchema>;
 

@@ -274,6 +274,11 @@
   text-align: center;
   vertical-align: middle;
 }
+/* The radio keeps its 44px target; the row around it is a little tighter so a
+   six-row table still fits the stage beside the question on a tablet. */
+.multi-part-table td {
+  padding-block: 2px;
+}
 /* Option columns shrink to their longest word and wrap only between words. */
 .multi-part-table thead th {
   width: 1%;
@@ -292,15 +297,25 @@
   text-align: start;
 }
 .multi-part-table tbody th {
-  padding: var(--space-2) var(--space-2) var(--space-2) 0;
+  padding: var(--space-1) var(--space-2) var(--space-1) 0;
   font-size: var(--text-body);
   font-weight: 500;
   line-height: 1.4;
   text-align: start;
 }
+/* Roomy option columns, but never wider than the stage allows: the
+   statement column keeps at least 9rem and the rest is shared. The stage can
+   be narrow on a wide screen, so this measures the table's own container. */
+.multi-part[data-layout="table"] {
+  container-type: inline-size;
+}
 @media (min-width: 520px) {
   .multi-part-table thead th:not(:first-child) {
-    min-width: 112px;
+    min-width: clamp(
+      var(--target-size),
+      calc((100cqw - 9rem) / var(--columns)),
+      112px
+    );
   }
 }
 .multi-part-cell {

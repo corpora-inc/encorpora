@@ -16,7 +16,9 @@ const validClock = (at: Date): string => {
 };
 
 /** Latest practice by learner `l`, or purchase activity or licence end for
- * their family. A family that is buying again keeps its learners. */
+ * their family. A family that is buying again keeps its learners. An adult's
+ * free practice (`adult:` grants, which follow a school's license) is not the
+ * family's licence, so it keeps nobody's data longer. */
 const LEARNER_LAST_ACTIVE = `greatest(l.created_at,
   (SELECT max(i.created_at) FROM amp_instances i WHERE i.learner_id=l.id),
   (SELECT max(a.created_at) FROM amp_attempts a WHERE a.learner_id=l.id),
@@ -24,7 +26,7 @@ const LEARNER_LAST_ACTIVE = `greatest(l.created_at,
      (SELECT max(o.received_at) FROM amp_offline_attempts o WHERE o.pack_id=p.id)))
    FROM amp_offline_packs p WHERE p.learner_id=l.id),
   (SELECT max(g.ends_at) FROM amp_grants g JOIN amp_learners f ON f.id=g.learner_id
-   WHERE f.account_id=l.account_id),
+   WHERE f.account_id=l.account_id AND g.id NOT LIKE 'adult:%'),
   (SELECT max(e.ends_at) FROM amp_account_entitlements e
    JOIN amp_stripe_checkouts c ON c.id=e.checkout_id WHERE c.account_id=l.account_id),
   (SELECT max(s.period_end) FROM amp_stripe_subscription_events s

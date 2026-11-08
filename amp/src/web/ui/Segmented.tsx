@@ -1,4 +1,9 @@
-import { useRef, type KeyboardEvent, type ReactNode } from "react";
+import {
+  useRef,
+  type CSSProperties,
+  type KeyboardEvent,
+  type ReactNode,
+} from "react";
 import styles from "./Segmented.module.css";
 export type SegmentedOption<T extends string> = {
   value: T;
@@ -15,6 +20,7 @@ export function Segmented<T extends string>({
   disabled = false,
   compact = false,
   dense = false,
+  stacked = false,
 }: {
   label: string;
   options: SegmentedOption<T>[];
@@ -27,8 +33,18 @@ export function Segmented<T extends string>({
   compact?: boolean;
   /** With `compact`, for a toolbar: one 44 px line per segment. */
   dense?: boolean;
+  /** Many named choices, such as a ladder of courses: one segment per row,
+   * in order, at every width. */
+  stacked?: boolean;
 }) {
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
+  // Four or more longer names can't share a phone's width in one row: below
+  // 480 px they take two rows instead of spilling over each other.
+  const crowded =
+    compact &&
+    !dense &&
+    options.length >= 4 &&
+    options.length * Math.max(...options.map((o) => o.label.length)) > 32;
   const current = Math.max(
     0,
     options.findIndex((option) => option.value === value),
@@ -51,10 +67,8 @@ export function Segmented<T extends string>({
       role="radiogroup"
       aria-label={label}
       aria-disabled={disabled || undefined}
-      className={`${styles.group} ${compact ? styles.compact : ""} ${dense ? styles.dense : ""}`}
-      style={{
-        gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))`,
-      }}
+      className={`${styles.group} ${compact ? styles.compact : ""} ${dense ? styles.dense : ""} ${crowded ? styles.crowded : ""} ${stacked ? styles.stacked : ""}`}
+      style={{ "--segments": options.length } as CSSProperties}
     >
       {options.map((option, index) => {
         const checked = option.value === value;

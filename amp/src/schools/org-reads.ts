@@ -8,6 +8,7 @@ import type {
 import { joinNames, weekStart, dayOfWeek } from "./today.js";
 import { PERSON_NAME } from "./term-grades.js";
 import { YEAR_IN_USE } from "./years.js";
+import { startLevelSql } from "./start-level.js";
 
 type Database = Pick<PoolClient, "query">;
 const DAY = 86_400_000;
@@ -105,7 +106,7 @@ const SQL_ACTIVE_STUDENTS = `
   WHERE o.path @> ARRAY[$1]::uuid[]
   ORDER BY p.id,r.begin_on DESC`;
 /** One row per student here today: this week, last week, where they stand and
- * where they stood when the term began. Read from the learner's week, and from
+ * where they stood when the term began (once placement settled). Read from the learner's week, and from
  * two stored level days, never from replaying the frontier. */
 export async function studentFacts(
   db: Database,
@@ -137,7 +138,7 @@ export async function studentFacts(
        SELECT d.overall_level FROM amp_level_days d WHERE d.learner_id=r.learner_id ORDER BY d.day DESC LIMIT 1
      ) latest ON true
      LEFT JOIN LATERAL (
-       SELECT d.overall_level FROM amp_level_days d WHERE d.learner_id=r.learner_id AND d.day>=$2::date ORDER BY d.day LIMIT 1
+       SELECT ${startLevelSql({ select: "d.overall_level", learner: "r.learner_id", from: "$2::date" })} AS overall_level
      ) first ON true
      LEFT JOIN (
        SELECT s.person_id FROM amp_seats s JOIN amp_school_licenses l ON l.id=s.license_id
@@ -351,6 +352,11 @@ export function attentionFor({
   };
   const openLabel = (id: string, fallback: string) =>
     district ? `Open ${schoolNames.get(id) ?? "the school"}` : fallback;
+  // Two schools in a district can each have a "Grade 3 Math".
+  const classLabel = (row: { name: string; org: string }) =>
+    district && schoolNames.has(row.org)
+      ? `${row.name} at ${schoolNames.get(row.org)}`
+      : row.name;
   if (unsigned.length)
     items.push({
       id: "agreement",
@@ -435,10 +441,7 @@ export function attentionFor({
     items.push({
       id: "no-teacher",
       title: `${plural(untaught.length, "class has", "classes have")} no teacher`,
-      detail: `${joinNames(
-        untaught.map((row) => row.name),
-        NAMES_SHOWN,
-      )}.`,
+      detail: `${joinNames(untaught.map(classLabel), NAMES_SHOWN)}.`,
       action: {
         label: openLabel(
           worst(untaught),
@@ -463,10 +466,7 @@ export function attentionFor({
         id: "little-practice",
         title: `${plural(quiet.length, "class", "classes")} had little practice this week`,
         detail: district
-          ? `${joinNames(
-              quiet.map((row) => row.name),
-              NAMES_SHOWN,
-            )}.`
+          ? `${joinNames(quiet.map(classLabel), NAMES_SHOWN)}.`
           : `${joinNames(
               quiet.map((row) => row.name),
               NAMES_SHOWN,

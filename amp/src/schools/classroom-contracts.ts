@@ -75,6 +75,9 @@ export const experienceResource = z.object({
   students: z
     .array(z.object({ id: z.uuid(), name: z.string(), leftOff: z.boolean() }))
     .optional(),
+  /** For a teacher of this class who practices themselves: whether their own
+   * line shows on its map and board (docs/families.md). */
+  teacherLine: z.object({ shown: z.boolean() }).optional(),
 });
 export type Experience = z.infer<typeof experienceResource>;
 
@@ -100,6 +103,7 @@ export const orgExperienceWriteSchema = z.strictObject({
     .optional(),
 });
 export const leaveOffSchema = z.strictObject({ leftOff: z.boolean() });
+export const teacherShownSchema = z.strictObject({ shown: z.boolean() });
 
 /* Standings, for a student. */
 export const boardScopes = ["class", "school", "district"] as const;
@@ -140,6 +144,19 @@ export const standingsBoardResource = z.object({
     /** Only when this student is on the list. */
     rank: z.number().int().nullable(),
   }),
+  /** The class's teachers who practice and show here, highest first. Never
+   * ranked, and never counted in a student's rank. `inList`: the value reaches
+   * the list, so the line sits in it by value, after any student it ties;
+   * otherwise it shows after your own line. */
+  teachers: z
+    .array(
+      z.object({
+        name: z.string(),
+        value: z.number(),
+        inList: z.boolean(),
+      }),
+    )
+    .default([]),
 });
 export type StandingsBoard = z.infer<typeof standingsBoardResource>;
 

@@ -59,6 +59,7 @@ function memory() {
           practiceSettings: async () => defaultPracticeSettings(),
           frontier: async () => simulated.frontier,
           onSchoolRoster: async () => false,
+          isAdult: async () => false,
           saveLevelDay: async () => undefined,
           skillEvidence: async () => simulated.evidence,
           recentAttempts: async () => simulated.attempts.slice(-12),

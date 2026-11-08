@@ -33,6 +33,7 @@ import type {
   TermResource,
   WorkItem,
 } from "./teacher-contracts.js";
+import { startLevelSql } from "./start-level.js";
 
 type Database = Pick<PoolClient, "query">;
 const catalog = new Map(skills.map((skill) => [skill.id, skill]));
@@ -274,8 +275,8 @@ export async function activityBySpan(
   );
 }
 
-/** Each student's level on the term-start level day (or the first one inside
- * the term, for a student who started during it) and the latest inside it. */
+/** Each student's level where their span starts, once placement settled
+ * (`start-level.ts`), and the latest inside it. */
 export async function levelsBySpan(
   db: Database,
   students: readonly TermStudent[],
@@ -285,10 +286,7 @@ export async function levelsBySpan(
   if (!students.length) return new Map();
   const { rows } = await db.query(
     `SELECT r.person_id AS "personId",
-       COALESCE(
-         (SELECT frontier FROM amp_level_days d WHERE d.learner_id=r.learner_id AND d.day<=r.day_from ORDER BY d.day DESC LIMIT 1),
-         (SELECT frontier FROM amp_level_days d WHERE d.learner_id=r.learner_id AND d.day>r.day_from AND d.day<=r.day_to ORDER BY d.day LIMIT 1)
-       ) AS start,
+       ${startLevelSql({ select: "d.frontier", learner: "r.learner_id", from: "r.day_from", to: "r.day_to" })} AS start,
        (SELECT frontier FROM amp_level_days d WHERE d.learner_id=r.learner_id AND d.day BETWEEN r.day_from AND r.day_to ORDER BY d.day DESC LIMIT 1) AS "end"
      FROM ${SPANS}`,
     spans(students),
