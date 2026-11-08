@@ -57,6 +57,7 @@ Media, videos and ads carry no price; they lead to the Buy button.
   - `/purchase` and `/access`.
 - **Parent:**
   - The family class: Today lists the parent's children, each with access dates and "Let … practice here", plus a "From other families" list.
+  - "Invite a co-teacher" (for example the other parent), with a copyable link. A co-teacher teaches the class but doesn't invite other families or buy access.
   - The full class screens, as for any teacher (below).
   - `/family/…`: settings, consent and billing.
   - `/learners/$id/workbooks`.
@@ -92,7 +93,6 @@ Screenshots of most of these, at 390 and 1280 px in light and dark, are under `d
 - **Google sign-in for students:** the Google console's redirect addresses are still to be added. Microsoft student sign-in is configured.
 - **Teacher-paid access for another family's child:** this needs that child's parent to give verified consent without buying. Today a purchase is the verified method.
 - **Moving a child who already has their own account into a parent's family class.**
-- **Co-teacher invitations** from the family screens. They work by URL only.
 - **Approval duplicates learners:** a family approval always creates a new learner, so a child already in a class gets a second one.
 - **Self-serve seat packs** for co-ops and tutors.
 - **Clever, ClassLink, SAML and gradebook passback** to student information systems.
