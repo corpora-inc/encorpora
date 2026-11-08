@@ -2,6 +2,7 @@
 
 AMP is an independent TypeScript/PostgreSQL mathematics product. Follow the repository trunk procedure. AHA's app-specific identity and persistence constraints do not apply here.
 
+- Before changing who signs in, who sees what, places, roles or licenses, read [the product model](docs/product-model.md): people, places, sign-in, prices and every screen by person, with what is decided and what is not built yet.
 - Marketing describes AMP as a complete math curriculum from counting to precalculus (#1996). Coverage audits are internal engineering tools for finding and closing gaps in the product, not limits on marketing copy. Never add self-undermining caveats; keep only qualifiers that a funding program or the law requires. In engineering, a mapped skill is not an implemented or verified skill.
 - Every new skill must join a stable exposure objective in `src/curriculum/selection.ts`. Fine-grained graph steps and new generators share that objective’s budget; creating an objective is an intentional curriculum-mix change. Keep frequency weights separate from difficulty.
 - Follow [the pathway selection model](docs/pathway-selection.md) for adaptive metadata. Preserve direct evidence separately from inferred prerequisite support; do not award ancestor mastery from a downstream answer.
