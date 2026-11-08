@@ -1,6 +1,3 @@
-.identity {
-  padding: var(--space-3) var(--space-2) var(--space-4);
-}
 .kicker {
   display: block;
   color: var(--color-muted-text);
@@ -54,93 +51,6 @@
   stroke-linejoin: round;
   stroke-linecap: round;
 }
-.authLinks {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-}
-.authLinks a {
-  display: flex;
-  align-items: center;
-  min-height: 44px;
-  color: var(--color-primary);
-  text-decoration: none;
-  font-size: var(--text-label);
-  font-weight: 650;
-}
-.learning {
-  padding: var(--space-4);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-panel);
-  background: var(--color-surface);
-  color: var(--color-on-surface);
-}
-.learningHeading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-2);
-  margin-bottom: var(--space-2);
-}
-.mode {
-  color: var(--color-primary);
-  font-size: 11px;
-  font-weight: 650;
-}
-.learnerName {
-  font-size: 20px;
-  letter-spacing: -0.02em;
-}
-.contextNote {
-  margin: var(--space-1) 0 var(--space-3);
-  font-size: 12px;
-  color: var(--color-muted-text);
-}
-.budget {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  font-size: 12px;
-  color: var(--color-muted-text);
-}
-.budget progress {
-  width: 100%;
-  height: 3px;
-  border: 0;
-  border-radius: 99px;
-  overflow: hidden;
-  background: var(--color-border);
-  color: var(--color-primary);
-  accent-color: var(--color-primary);
-}
-.budget progress::-webkit-progress-bar {
-  background: var(--color-border);
-}
-.budget progress::-webkit-progress-value {
-  background: var(--color-primary);
-}
-.budget progress::-moz-progress-bar {
-  background: var(--color-primary);
-}
-.stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
-  margin-top: var(--space-4);
-}
-.stats strong {
-  display: block;
-  font-size: 19px;
-  font-weight: 650;
-  letter-spacing: -0.02em;
-}
-.stats small {
-  display: block;
-  margin-top: var(--space-1);
-  color: var(--color-muted-text);
-  font-size: 11px;
-}
 .navigation {
   display: block;
   padding: var(--space-3) 0 0;
@@ -162,14 +72,13 @@
   font-weight: 650;
 }
 .navLink:hover {
-  background: var(--color-surface-sunken);
+  background: var(--color-surface-raised-hover);
 }
 .navLink[aria-current="page"] {
   background: var(--color-secondary);
   color: var(--color-on-secondary);
 }
-.navLink:focus-visible,
-.authLinks a:focus-visible {
+.navLink:focus-visible {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 1px;
 }
@@ -191,34 +100,6 @@
   font-weight: 400;
   color: var(--color-muted-text);
 }
-.chevron {
-  margin-left: auto;
-  padding-left: var(--space-2);
-  font-size: 22px;
-  color: var(--color-muted-text);
-  font-weight: 400;
-}
-.group {
-  border-top: 1px solid var(--color-border);
-  margin-top: var(--space-2);
-  padding-top: var(--space-3);
-}
-.group h2 {
-  padding: 0 var(--space-2);
-  margin: 0 0 var(--space-1);
-  color: var(--color-muted-text);
-  font-family: inherit;
-  font-size: 11px;
-  font-weight: 650;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.places {
-  display: grid;
-}
-.places h2 {
-  margin-bottom: var(--space-2);
-}
 .signOut {
   margin-top: var(--space-2);
   border-top: 1px solid var(--color-border);
@@ -238,8 +119,9 @@
   text-align: left;
   font-size: var(--text-label);
 }
-.signOut button:hover {
+.signOut button:hover:not(:disabled) {
   background: var(--color-surface-sunken);
+  filter: none;
 }
 .signOut p {
   min-height: 1.4em;
@@ -260,4 +142,84 @@
   background: transparent;
   color: inherit;
   text-decoration: underline;
+}
+
+/* Where you are: the place and the learner, at the top. */
+.switcher {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-2) 0 var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+.current {
+  display: grid;
+  gap: 2px;
+  min-height: var(--target-size);
+  align-content: center;
+  padding: 0 var(--space-2);
+}
+.current strong {
+  overflow: hidden;
+  font-size: 19px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.navText {
+  display: grid;
+  min-width: 0;
+}
+.navText > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.navText small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Each settings row draws its own rule above it. */
+.settings {
+  margin-top: var(--space-2);
+}
+.settings > [data-drawer-settings]:empty {
+  display: none;
+}
+/* Who is signed in, and Sign out: pinned at the drawer's foot. */
+.footer {
+  display: grid;
+  gap: var(--space-1);
+}
+.who {
+  display: grid;
+  gap: 2px;
+  min-height: calc(var(--target-size) + 16px);
+  align-content: center;
+  padding: 0 var(--space-2);
+}
+.footer .signOut {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.authLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 0 var(--space-2);
+}
+.authLinks a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-primary);
+  font-size: var(--text-label);
+  font-weight: 650;
+  text-decoration: none;
+}
+.authLinks a:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 1px;
 }

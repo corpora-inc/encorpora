@@ -459,3 +459,15 @@
   width: var(--target-size);
   height: var(--target-size);
 }
+/* `/try/map` under the app frame's bar: one column on the page, no card. */
+.mapPage {
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--space-5) max(var(--space-4), env(safe-area-inset-right))
+    max(var(--space-7), env(safe-area-inset-bottom))
+    max(var(--space-4), env(safe-area-inset-left));
+}
+.mapPage > .panel,
+.mapPage > .start {
+  margin-inline: auto !important;
+}

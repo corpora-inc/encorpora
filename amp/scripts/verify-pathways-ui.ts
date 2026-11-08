@@ -919,7 +919,8 @@ try {
       await page
         .getByText("2 skills illuminated", { exact: false })
         .waitFor({ state: "attached" });
-      const go = page.getByRole("link", { name: "Start learning →" });
+      // The way to practice is the app frame's one action in its bar.
+      const go = page.locator("[data-shell-action]");
       assert.equal(await go.getAttribute("href"), "/practice");
       await noOverflow(page);
       if (width <= 390) {
@@ -1306,18 +1307,15 @@ try {
   await fixture(exhausted, { trial: true, trialRemaining: 0 });
   await exhausted.goto(`${origin}/pathways?context=trial&skill=${target.id}`);
   await exhausted.getByText("choose a plan", { exact: false }).waitFor();
+  // The bar's one action leads to plans; so does the notice's own link.
   assert.equal(
-    await exhausted
-      .getByRole("link", { name: "See plans →" })
-      .getAttribute("href"),
+    await exhausted.locator("[data-shell-action]").getAttribute("href"),
     "/try/plans",
   );
-  assert.equal(
-    await exhausted
-      .getByRole("link", { name: "See plans", exact: true })
-      .getAttribute("href"),
-    "/try/plans",
-  );
+  for (const href of await exhausted
+    .getByRole("link", { name: "See plans", exact: true })
+    .evaluateAll((links) => links.map((a) => a.getAttribute("href"))))
+    assert.equal(href, "/try/plans");
   await exhausted
     .getByText("1 skills illuminated", { exact: false })
     .waitFor({ state: "attached" });

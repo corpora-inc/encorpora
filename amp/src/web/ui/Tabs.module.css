@@ -1,50 +1,88 @@
+/* One tab style for every group (Progress, Account, a class, a school).
+   Legacy element rules give `nav` a border, gap and margin; the class resets
+   them. The strip scrolls sideways on a narrow screen and fades at its edge. */
 .tabs {
   display: flex;
+  align-items: center;
   gap: var(--space-1);
-  /* The first label sits on the content's edge; its hover fill takes the
-     gutter. */
-  margin: 0 calc(-1 * var(--space-3));
-  padding-inline-end: 28px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
   overflow-x: auto;
+  overflow-y: hidden;
   border: 0;
+  background: transparent;
   scrollbar-width: none;
-  mask-image: var(--scroll-edge);
+  overscroll-behavior-x: contain;
 }
 .tabs::-webkit-scrollbar {
   display: none;
+}
+.tabs[data-more] {
+  mask-image: var(--scroll-edge);
 }
 .tab {
   position: relative;
   display: inline-flex;
   flex: none;
   align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
   min-height: 44px;
-  padding: 0 var(--space-3);
-  border-radius: var(--radius-small) var(--radius-small) 0 0;
+  padding: 0 var(--space-4);
+  border-radius: 999px;
   color: var(--color-muted-text);
-  font-size: var(--text-table);
+  font-size: 15px;
   font-weight: 600;
+  letter-spacing: -0.005em;
   line-height: 1;
   text-decoration: none;
   white-space: nowrap;
+  transition:
+    background var(--motion-fast),
+    color var(--motion-fast);
+}
+.tab::before {
+  /* The fill sits inside the 44 px target, a quieter 36 px capsule. */
+  content: "";
+  position: absolute;
+  inset: 4px 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: transparent;
+  transition: background var(--motion-fast);
 }
 .tab:hover {
-  background: var(--color-surface-hover);
   color: var(--color-on-surface);
+}
+.tab:hover::before {
+  background: var(--color-surface-hover);
 }
 .tab:focus-visible {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: -3px;
 }
-/* The rule is painted, not bordered, so the active tab takes no extra room. */
 .tab[aria-current="page"] {
-  color: var(--color-on-surface);
+  color: var(--color-on-secondary);
 }
-.tab[aria-current="page"]::after {
-  content: "";
-  position: absolute;
-  inset: auto var(--space-3) 0;
-  height: 2px;
-  border-radius: 2px 2px 0 0;
-  background: var(--color-primary);
+.tab[aria-current="page"]::before {
+  background: var(--color-secondary);
+}
+.tabs {
+  isolation: isolate;
+}
+/* A phone fits the four Account tabs at 390 px: tighter labels, no gaps. */
+@media (max-width: 639px) {
+  .tabs {
+    gap: 0;
+  }
+  .tab {
+    padding: 0 var(--space-3);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tab,
+  .tab::before {
+    transition: none;
+  }
 }

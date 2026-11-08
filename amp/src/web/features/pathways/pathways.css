@@ -1,11 +1,71 @@
+/* The frame, its panels and lists follow the app theme, light or dark; the 3D
+   scene (`.pathways-viewport`) stays the dark atlas in either. The atlas
+   roles below map onto the app's roles for the frame and back onto the
+   scene's own values inside the viewport. */
 .pathways {
-  --color-surface: var(--atlas-surface);
-  color-scheme: dark;
-  min-height: 100dvh;
-  background: var(--atlas-surface);
-  color: var(--atlas-on-surface);
+  --atlas-surface: var(--color-surface);
+  --atlas-on-surface: var(--color-on-surface);
+  --atlas-panel: var(--color-surface-raised);
+  --atlas-on-panel: var(--color-on-surface-raised);
+  --atlas-muted: var(--color-muted-text);
+  --atlas-border: var(--color-border);
+  --atlas-accent: var(--color-primary);
+  --atlas-on-accent: var(--color-on-primary);
+  /* Neighborhood hues, toward the ink so they read on either surface. */
+  --atlas-area-0: color-mix(
+    in srgb,
+    var(--atlas-scene-area-0) 72%,
+    var(--color-on-surface)
+  );
+  --atlas-area-1: color-mix(
+    in srgb,
+    var(--atlas-scene-area-1) 72%,
+    var(--color-on-surface)
+  );
+  --atlas-area-2: color-mix(
+    in srgb,
+    var(--atlas-scene-area-2) 72%,
+    var(--color-on-surface)
+  );
+  --atlas-area-3: color-mix(
+    in srgb,
+    var(--atlas-scene-area-3) 72%,
+    var(--color-on-surface)
+  );
+  --atlas-area-4: color-mix(
+    in srgb,
+    var(--atlas-scene-area-4) 72%,
+    var(--color-on-surface)
+  );
+  --atlas-area-5: color-mix(
+    in srgb,
+    var(--atlas-scene-area-5) 72%,
+    var(--color-on-surface)
+  );
+  min-height: calc(100dvh - var(--shell-bar, 0px));
+  background: var(--color-surface);
+  color: var(--color-on-surface);
   padding: 0 clamp(16px, 3vw, 40px);
   font-family: inherit;
+}
+.pathways-viewport {
+  --atlas-surface: var(--atlas-scene-surface);
+  --atlas-on-surface: var(--atlas-scene-on-surface);
+  --atlas-panel: var(--atlas-scene-panel);
+  --atlas-on-panel: var(--atlas-scene-on-panel);
+  --atlas-muted: var(--atlas-scene-muted);
+  --atlas-border: var(--atlas-scene-border);
+  --atlas-accent: var(--atlas-scene-accent);
+  --atlas-on-accent: var(--atlas-scene-on-accent);
+  --atlas-area-0: var(--atlas-scene-area-0);
+  --atlas-area-1: var(--atlas-scene-area-1);
+  --atlas-area-2: var(--atlas-scene-area-2);
+  --atlas-area-3: var(--atlas-scene-area-3);
+  --atlas-area-4: var(--atlas-scene-area-4);
+  --atlas-area-5: var(--atlas-scene-area-5);
+  --color-focus-ring: var(--atlas-scene-accent);
+  color-scheme: dark;
+  color: var(--atlas-on-surface);
 }
 .pathways * {
   box-sizing: border-box;
@@ -146,22 +206,6 @@
   margin: 8px 0;
   max-width: 660px;
   line-height: 1.5;
-}
-/* The atlas is dark in either theme, so its pickers take the atlas roles. */
-.pathways-learner,
-.pathways-grade {
-  --color-surface-raised: var(--atlas-panel);
-  --color-on-surface-raised: var(--atlas-on-panel);
-  --color-surface-sunken: var(--atlas-surface);
-  --color-on-surface-sunken: var(--atlas-on-surface);
-  --color-menu: var(--atlas-panel);
-  --color-on-menu: var(--atlas-on-panel);
-  --color-menu-hover: var(--atlas-border);
-  --color-border: var(--atlas-border);
-  --color-primary: var(--atlas-accent);
-  --color-focus-ring: var(--atlas-accent);
-  --color-muted-text: var(--atlas-muted);
-  --color-shadow: var(--atlas-surface);
 }
 /* "Learner" beside a fixed-width picker, so a longer name never resizes
    the status bar; the picker's list lays over the map. */
@@ -330,16 +374,6 @@
   line-height: 1.6;
 }
 .pathways-browser {
-  /* Display preferences share the atlas palette in either system theme. */
-  --color-muted-text: var(--atlas-muted);
-  --color-answer: var(--atlas-panel);
-  --color-surface-raised: var(--atlas-panel);
-  --color-on-surface-raised: var(--atlas-on-panel);
-  --color-on-answer: var(--atlas-on-panel);
-  --color-border-strong: var(--atlas-muted);
-  --color-primary: var(--atlas-accent);
-  --color-on-primary: var(--atlas-on-accent);
-  --color-focus-ring: var(--atlas-accent);
   width: 260px;
   flex-shrink: 0;
   overflow: auto;
@@ -1280,5 +1314,13 @@
   }
   .pathways .pathways-status .pathways-learner > :last-child {
     width: clamp(180px, 56vw, 200px);
+  }
+}
+
+/* Under the app frame's bar on a phone, the first row keeps a breath of
+   space from the tabs. */
+@media (max-width: 650px) {
+  [data-shell-content] > .pathways {
+    padding-top: var(--space-2);
   }
 }

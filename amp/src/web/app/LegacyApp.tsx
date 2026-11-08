@@ -6,7 +6,8 @@ import {
   type PracticeIntent,
 } from "../features/practice/practice-settings";
 import { NavigationDrawer } from "../features/navigation/NavigationDrawer";
-import { ProgressViews } from "../features/navigation/ProgressViews";
+import { closeShellDrawer, useShellDrawerSettings } from "../lib/shell-slots";
+import { createPortal } from "react-dom";
 import { withProblemHints, type HintedProblem } from "../lib/problem-hints";
 import type { ProblemHint } from "../../math/contracts";
 import {
@@ -303,8 +304,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   const birthYearKnown = learner?.birthYear != null || student || ownLearner;
   const changingBirthYear =
     !student && route.location.pathname === "/profile/birth-year";
+  // On the web the birth year belongs to the Overview it is changed from.
   const setChangingBirthYear = (open: boolean) =>
-    navigate(open ? "/profile/birth-year" : "/");
+    navigate(open ? "/profile/birth-year" : nativeRuntime ? "/" : "/overview");
   // "Try free" lives at /try (features/trial); a stored trial is adopted
   // in the first-run learner step after purchase.
   const [hasTrial] = useState(() => !!storedTrial());
@@ -1301,6 +1303,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   // reading, progress and family settings own a fixed device-sized screen.
   // Signed out, the welcome and the trial share the app's header and column.
   const signedOut = !token && !nativeRuntime;
+  // Signed in on the web, the app frame owns the bar.
+  const ownsHeader = nativeRuntime || !token;
+  const drawerSettings = useShellDrawerSettings();
   const flowPage =
     signedOut ||
     (!!learner &&
@@ -1355,102 +1360,109 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     <div
       className={`shell ${starting ? "start-shell" : ""} ${learner || familyOpen || signedOut ? "app-shell" : ""} ${familyOpen ? "family-shell" : ""} ${purchaseView || consentOpen ? "purchase-shell" : ""} ${immersive ? "practice-shell immersive" : ""} ${flowPage ? "flow" : ""} ${readingBook ? "reading-shell" : ""}`}
     >
-      <header>
-        {!nativeRuntime && <NavigationDrawer triggerRef={familyMenuTrigger} />}
-        <a
-          onClick={(event) => {
-            event.preventDefault();
-            navigate("/");
-          }}
-          className="brand"
-          href="/"
-          aria-label={`${brand.name} home`}
-        >
-          {nativeRuntime && (
-            <svg viewBox="0 0 64 32" aria-hidden="true">
-              <path d="M0 16 C8 16 8 1 16 1 S24 31 32 31 S40 1 48 1 S56 16 64 16" />
-            </svg>
+      {/* Signed in on the web, the app frame (app/AppShell.tsx) draws the
+          bar, the logo and the drawer; this header is the native app's and
+          the signed-out welcome's. */}
+      {ownsHeader && (
+        <header>
+          {!nativeRuntime && (
+            <NavigationDrawer triggerRef={familyMenuTrigger} />
           )}
-          {brand.name}
-          <span>MATHEMATICS</span>
-        </a>
-        <div className="account">
-          {token &&
-            !student &&
-            !familyOpen &&
-            learningAllowed &&
-            !ownLearner &&
-            childLearners.length > 0 && (
-              <Select
-                aria-label="Learner"
-                value={learner?.id ?? ""}
-                disabled={busy}
-                onValueChange={(e) => selectLearner(e || null)}
-              >
-                {!learner && <option value="">Select a learner</option>}
-                {childLearners.map((l) => (
-                  <option key={l.id} value={l.id}>
-                    {l.name}
-                  </option>
-                ))}
-              </Select>
+          <a
+            onClick={(event) => {
+              event.preventDefault();
+              navigate("/");
+            }}
+            className="brand"
+            href="/"
+            aria-label={`${brand.name} home`}
+          >
+            {nativeRuntime && (
+              <svg viewBox="0 0 64 32" aria-hidden="true">
+                <path d="M0 16 C8 16 8 1 16 1 S24 31 32 31 S40 1 48 1 S56 16 64 16" />
+              </svg>
             )}
-          {nativeRuntime && token && !familyOpen && (
-            <Menu
-              label="Account"
-              aria-label="Account menu"
-              open={familyMenuOpen}
-              onOpenChange={setFamilyMenuOpen}
-              triggerRef={familyMenuTrigger}
-              triggerClassName="account-menu-trigger"
-            >
-              <MenuItem onSelect={openFamily}>Manage account</MenuItem>
-              {learner && learner.birthYear != null && (
-                <MenuItem
+            {brand.name}
+            <span>MATHEMATICS</span>
+          </a>
+          <div className="account">
+            {token &&
+              !student &&
+              !familyOpen &&
+              learningAllowed &&
+              !ownLearner &&
+              childLearners.length > 0 && (
+                <Select
+                  aria-label="Learner"
+                  value={learner?.id ?? ""}
                   disabled={busy}
-                  onSelect={() => {
-                    navigationEpoch.current++;
-                    setProblem(null);
-                    setQueue([]);
-                    setOutcome(null);
-                    setPending(null);
-                    setChangingBirthYear(true);
-                  }}
+                  onValueChange={(e) => selectLearner(e || null)}
                 >
-                  Change birth year
-                </MenuItem>
+                  {!learner && <option value="">Select a learner</option>}
+                  {childLearners.map((l) => (
+                    <option key={l.id} value={l.id}>
+                      {l.name}
+                    </option>
+                  ))}
+                </Select>
               )}
-              {learningAllowed && !nativeRuntime && (
-                <MenuItem
-                  disabled={busy}
-                  onSelect={() => {
-                    setName("");
-                    navigate("/start/name");
-                  }}
-                >
-                  Add learner
-                </MenuItem>
-              )}
-              {token && authMode && authMode !== "development" && (
-                <MenuItem
-                  onSelect={() => {
-                    clearPurchaseReturn();
-                    pendingPurchaseReturn.current = null;
-                    clearInitialConsentChallenge();
-                    clearOwnedPurchaseReturn();
-                    setHasPendingConsent(false);
-                    setConsentChallenge(null);
-                    consentEpoch.current++;
-                    void action(signOut);
-                  }}
-                >
-                  Sign out
-                </MenuItem>
-              )}
-            </Menu>
-          )}
-        </div>
-      </header>
+            {nativeRuntime && token && !familyOpen && (
+              <Menu
+                label="Account"
+                aria-label="Account menu"
+                open={familyMenuOpen}
+                onOpenChange={setFamilyMenuOpen}
+                triggerRef={familyMenuTrigger}
+                triggerClassName="account-menu-trigger"
+              >
+                <MenuItem onSelect={openFamily}>Manage account</MenuItem>
+                {learner && learner.birthYear != null && (
+                  <MenuItem
+                    disabled={busy}
+                    onSelect={() => {
+                      navigationEpoch.current++;
+                      setProblem(null);
+                      setQueue([]);
+                      setOutcome(null);
+                      setPending(null);
+                      setChangingBirthYear(true);
+                    }}
+                  >
+                    Change birth year
+                  </MenuItem>
+                )}
+                {learningAllowed && !nativeRuntime && (
+                  <MenuItem
+                    disabled={busy}
+                    onSelect={() => {
+                      setName("");
+                      navigate("/start/name");
+                    }}
+                  >
+                    Add learner
+                  </MenuItem>
+                )}
+                {token && authMode && authMode !== "development" && (
+                  <MenuItem
+                    onSelect={() => {
+                      clearPurchaseReturn();
+                      pendingPurchaseReturn.current = null;
+                      clearInitialConsentChallenge();
+                      clearOwnedPurchaseReturn();
+                      setHasPendingConsent(false);
+                      setConsentChallenge(null);
+                      consentEpoch.current++;
+                      void action(signOut);
+                    }}
+                  >
+                    Sign out
+                  </MenuItem>
+                )}
+              </Menu>
+            )}
+          </div>
+        </header>
+      )}
       {!token && !familyOpen && !nativeRuntime && !signingIn && (
         <div className="intro">
           <div>
@@ -1465,7 +1477,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           </div>
         </div>
       )}
-      {!familyOpen && learner && (
+      {!familyOpen && learner && nativeRuntime && (
         <nav aria-label="Learning sections">
           {(["practice", "library", "progress"] as const).map((t) => (
             <button
@@ -1716,25 +1728,14 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       ) : tab === "practice" ? (
         problem && !exploring && !changingBirthYear ? (
           <PracticeWorkspace
+            // The logo and drawer are the app frame's; practice's bar holds
+            // only a student's one-tap sign-out beside its tools.
             navigation={
               nativeRuntime ? undefined : (
-                <>
-                  <NavigationDrawer
-                    practiceControls={(close) => (
-                      <PracticeControls
-                        scope={adjustments.scope}
-                        problemId={problem.id}
-                        busy={busy || !!pending}
-                        apply={adjustPractice}
-                        close={close}
-                        canReset={!student}
-                      />
-                    )}
-                  />
-                  {student && <StudentSignOut inBar />}
-                </>
+                <>{student && <StudentSignOut inBar />}</>
               )
             }
+            toolbarInFrame={!nativeRuntime}
             exit={() => setExploring(true)}
             exitHref="/"
             returnToMixed={
@@ -1866,22 +1867,26 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             }}
           />
         ) : (birthYearKnown || problem) && !changingBirthYear ? (
-          <Home
-            key={learner.id}
-            navigation={!nativeRuntime && <ProgressViews active="level" />}
-            name={learner.name}
-            birthYear={learner.birthYear}
-            resuming={!!problem}
-            frontier={frontierMap}
-            strands={homeStrands}
-            busy={busy}
-            go={() =>
-              problem ? setExploring(false) : void action(() => loadBatch(""))
-            }
-            changeBirthYear={
-              student ? undefined : () => setChangingBirthYear(true)
-            }
-          />
+          !nativeRuntime && route.location.pathname === "/" ? (
+            // One address for the Overview: `/` hands over to it.
+            <Navigate to="/$" params={{ _splat: "overview" }} replace />
+          ) : (
+            <Home
+              key={learner.id}
+              name={learner.name}
+              birthYear={learner.birthYear}
+              resuming={!!problem}
+              frontier={frontierMap}
+              strands={homeStrands}
+              busy={busy}
+              go={() =>
+                problem ? setExploring(false) : void action(() => loadBatch(""))
+              }
+              changeBirthYear={
+                student ? undefined : () => setChangingBirthYear(true)
+              }
+            />
+          )
         ) : (
           <BirthYearPrompt
             key={learner.id}
@@ -2075,6 +2080,24 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           }
         />
       )}
+      {/* Practice's adjustments live in the app frame's drawer. */}
+      {drawerSettings &&
+        !nativeRuntime &&
+        learner &&
+        problem &&
+        tab === "practice" &&
+        !exploring &&
+        createPortal(
+          <PracticeControls
+            scope={adjustments.scope}
+            problemId={problem.id}
+            busy={busy || !!pending}
+            apply={adjustPractice}
+            close={closeShellDrawer}
+            canReset={!student}
+          />,
+          drawerSettings,
+        )}
       {!learner && !familyOpen && !nativeRuntime && (
         <footer className="landing-footer">
           <span>

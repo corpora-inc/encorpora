@@ -19,6 +19,7 @@ import { Suspense, useEffect, useRef } from "react";
 import type { AuthSession } from "../auth";
 import { setPitchShown } from "../lib/analytics";
 import { CurriculumDetailsProvider } from "../features/curriculum/CurriculumDetails";
+import { AppShell } from "./AppShell";
 import { nativeRuntime } from "../native-runtime";
 import {
   authConfigOptions,
@@ -114,7 +115,9 @@ function RouterError({ error }: { error: unknown }) {
 const root = createRootRoute({
   component: () => (
     <CurriculumDetailsProvider>
-      <Outlet />
+      <AppShell>
+        <Outlet />
+      </AppShell>
     </CurriculumDetailsProvider>
   ),
   validateSearch: (search): z.infer<typeof searchSchema> & CampaignSearch => {
@@ -535,11 +538,23 @@ const startVerify = createRoute({
   beforeLoad: beforeStart,
   component: start,
 });
+/** Screens on the app frame know who is signed in before they paint, so
+ * the frame's bar is there from their first frame and nothing moves under it. */
+async function framedScreen() {
+  if (nativeRuntime) throw redirect({ to: "/" });
+  await queryClient.ensureQueryData(sessionOptions).catch(() => undefined);
+}
 const inventory = createRoute({
   getParentRoute: () => root,
   path: "/inventory",
-  beforeLoad: () => {
-    if (nativeRuntime) throw redirect({ to: "/" });
+  // A learning record belongs to an account: signed out, sign in first.
+  beforeLoad: async ({ location }) => {
+    await framedScreen();
+    if (!queryClient.getQueryData(sessionOptions.queryKey))
+      throw redirect({
+        to: "/sign-in",
+        search: continuationSearch(location.search),
+      });
   },
   component: lazyRouteComponent(
     () => import("../features/inventory/InventoryScreen"),
@@ -549,9 +564,7 @@ const inventory = createRoute({
 const pathways = createRoute({
   getParentRoute: () => root,
   path: "/pathways",
-  beforeLoad: () => {
-    if (nativeRuntime) throw redirect({ to: "/" });
-  },
+  beforeLoad: framedScreen,
   component: lazyRouteComponent(
     () => import("../features/pathways/PathwaysScreen"),
     "PathwaysScreen",
@@ -560,9 +573,7 @@ const pathways = createRoute({
 const pathwaySkill = createRoute({
   getParentRoute: () => root,
   path: "/pathways/$skillId",
-  beforeLoad: () => {
-    if (nativeRuntime) throw redirect({ to: "/" });
-  },
+  beforeLoad: framedScreen,
   component: lazyRouteComponent(
     () => import("../features/pathways/PathwaysScreen"),
     "PathwaysScreen",

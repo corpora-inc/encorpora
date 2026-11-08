@@ -498,3 +498,22 @@
   --atlas-prerequisite: #5bd7ed;
   --atlas-dependent: #d0a5ff;
 }
+/* The 3D scene keeps these dark values while the Pathways frame around it
+   takes the app theme (features/pathways/pathways.css). Each alias resolves
+   here, at the root, so the frame's own atlas roles never reach the scene. */
+:root {
+  --atlas-scene-surface: var(--atlas-surface);
+  --atlas-scene-on-surface: var(--atlas-on-surface);
+  --atlas-scene-panel: var(--atlas-panel);
+  --atlas-scene-on-panel: var(--atlas-on-panel);
+  --atlas-scene-muted: var(--atlas-muted);
+  --atlas-scene-border: var(--atlas-border);
+  --atlas-scene-accent: var(--atlas-accent);
+  --atlas-scene-on-accent: var(--atlas-on-accent);
+  --atlas-scene-area-0: var(--atlas-area-0);
+  --atlas-scene-area-1: var(--atlas-area-1);
+  --atlas-scene-area-2: var(--atlas-area-2);
+  --atlas-scene-area-3: var(--atlas-area-3);
+  --atlas-scene-area-4: var(--atlas-area-4);
+  --atlas-scene-area-5: var(--atlas-area-5);
+}

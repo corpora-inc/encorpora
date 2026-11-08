@@ -7,3 +7,16 @@
   font-size: var(--text-body);
   line-height: 1.5;
 }
+.page {
+  box-sizing: border-box;
+  width: min(100%, var(--width-content-wide));
+  margin: 0 auto;
+  padding: var(--space-5) max(var(--space-4), env(safe-area-inset-right))
+    max(var(--space-7), env(safe-area-inset-bottom))
+    max(var(--space-4), env(safe-area-inset-left));
+}
+@media (min-width: 768px) {
+  .page {
+    padding-inline: max(var(--space-5), env(safe-area-inset-left));
+  }
+}

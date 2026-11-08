@@ -82,7 +82,6 @@ export function FamilyCenter({
   const paymentTrigger = useRef<HTMLButtonElement>(null);
   const paymentWasOpen = useRef(false);
   const section = initialSection;
-  const setSection = (section: FamilySection) => onSectionChange?.(section);
   const [localLearnerId, setLocalLearnerId] = useState("");
   const [accessDetails, setAccessDetails] = useState(false);
   const adding = route.parts[2] === "new";
@@ -421,53 +420,18 @@ export function FamilyCenter({
     );
   return (
     <section className="family-center" aria-labelledby="family-title">
-      <div className="family-heading">
-        <div>
-          <h1 id="family-title" ref={heading} tabIndex={-1}>
-            Family
-          </h1>
-        </div>
-        <button
-          onClick={purchaseChooser ? closeChooser : onClose}
-          disabled={busy}
-          className="family-back"
-        >
-          <span aria-hidden="true">←</span> Back
-        </button>
-      </div>
-      <nav className="family-tabs" aria-label="Family sections">
-        {(
-          [
-            "learners",
-            "access",
-            "privacy",
-            ...(accountsEnabled ? ["security" as const] : []),
-          ] as const
-        ).map((value) => (
-          <button
-            key={value}
-            data-security-tab={value === "security" ? "" : undefined}
-            aria-current={section === value ? "page" : undefined}
-            onClick={() => {
-              setSection(value);
-              setPurchaseChooser(false);
-              setRename(null);
-              setPrivacy(null);
-              setError("");
-              setNotice("");
-            }}
-            disabled={busy}
-          >
-            {value === "learners"
-              ? "Learners"
-              : value === "access"
-                ? "Access"
-                : value === "privacy"
-                  ? "Privacy"
-                  : "Security"}
-          </button>
-        ))}
-      </nav>
+      {/* The app frame's bar names this group with its tabs (Profile &
+          sign-in, Family, Billing, Privacy) and the logo is the way around,
+          so the heading is for screen readers and focus only. */}
+      <h1 id="family-title" ref={heading} tabIndex={-1} className="sr-only">
+        {section === "security"
+          ? "Profile and sign-in"
+          : section === "learners"
+            ? "Family"
+            : section === "access"
+              ? "Billing"
+              : "Privacy"}
+      </h1>
       {accessDetails && selectedLearner && (
         <FocusDialog
           title="License history"
@@ -506,7 +470,9 @@ export function FamilyCenter({
             {notice}
           </p>
         )}
-        {!family ? (
+        {/* Profile & sign-in shows no family details: no family wait sits
+            below its settings to be pushed down when they arrive. */}
+        {section === "security" && accountsEnabled ? null : !family ? (
           <div aria-busy="true">
             <Loading>Loading family details…</Loading>
             {error && (

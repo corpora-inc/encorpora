@@ -345,21 +345,22 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       ready: heading(/Choose a plan/),
     },
     {
+      // The Overview has its own address; `/` opens a family's class.
       id: "home",
-      path: "/",
+      path: "/overview",
       state: "paid",
       // The retained chart settles when its actual frontier has loaded.
       ready: (p) => p.locator('.frontier-map[aria-busy="false"]').waitFor(),
     },
     {
       id: "drawer",
-      path: "/",
+      path: "/overview",
       state: "paid",
       ready: (p) => p.locator(".frontier-map").waitFor(),
       then: async (p) => {
         await p.locator("[data-navigation-trigger]").click();
         await p.getByRole("dialog").waitFor();
-        await p.getByRole("link", { name: /Your progress/ }).waitFor();
+        await p.getByRole("link", { name: /^Progress/ }).waitFor();
         await p.waitForTimeout(400);
       },
     },
@@ -373,7 +374,7 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       id: "pathways",
       path: "/pathways",
       state: "paid",
-      ready: (p) => p.locator("[data-progress-views]").waitFor(),
+      ready: (p) => p.locator("[data-app-bar] [data-tabs]").waitFor(),
     },
     {
       id: "pathway-skill",
@@ -385,7 +386,7 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       id: "inventory",
       path: "/inventory",
       state: "paid",
-      ready: (p) => p.locator("[data-progress-views]").waitFor(),
+      ready: (p) => p.locator("[data-app-bar] [data-tabs]").waitFor(),
     },
     {
       id: "lessons",
@@ -403,25 +404,25 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       id: "family-learners",
       path: "/family/learners",
       state: "paid",
-      ready: (p) => p.locator(".family-tabs").waitFor(),
+      ready: (p) => p.locator(".family-body").waitFor(),
     },
     {
       id: "family-access",
       path: "/family/access",
       state: "paid",
-      ready: (p) => p.locator(".family-tabs").waitFor(),
+      ready: (p) => p.locator(".family-body").waitFor(),
     },
     {
       id: "family-privacy",
       path: "/family/privacy",
       state: "paid",
-      ready: (p) => p.locator(".family-tabs").waitFor(),
+      ready: (p) => p.locator(".family-body").waitFor(),
     },
     {
       id: "family-security",
       path: "/family/security",
       state: "paid",
-      ready: (p) => p.locator(".family-tabs").waitFor(),
+      ready: (p) => p.locator(".family-body").waitFor(),
     },
     {
       id: "workbooks",

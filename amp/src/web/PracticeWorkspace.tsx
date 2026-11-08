@@ -53,6 +53,8 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { createPortal } from "react-dom";
+import { useShellTools } from "./lib/shell-slots";
 import type { PublicProblem, TemplateMetadata } from "../math/contracts";
 import type { Outcome } from "../server/repository";
 import type { Lesson } from "../content/lessons";
@@ -201,6 +203,9 @@ type Props = {
   status?: ReactNode;
   /** Global navigation supplied by browser routes; native keeps its home link. */
   navigation?: ReactNode;
+  /** The app frame (app/AppShell.tsx) draws the bar: the topic and tools
+   * sit in it beside the logo instead of in a row of the card. */
+  toolbarInFrame?: boolean;
   /** A skill this answer just mastered, shown once with the feedback. */
   mastered?: string | null;
   /** Progress and optional one-problem branches; Next remains adaptive. */
@@ -1267,86 +1272,98 @@ export function PracticeWorkspace(props: Props) {
         : choice
           ? "Choose an answer"
           : "Enter your answer";
+  const frameTools = useShellTools();
+  const toolbarContents = (
+    <>
+      {props.navigation ?? (
+        <a
+          className="workspace-level"
+          href={props.exitHref}
+          aria-label="Your progress"
+          title="Your progress"
+          onClick={(event) => {
+            // A modified click opens the view in a new tab as usual.
+            if (
+              event.button !== 0 ||
+              event.metaKey ||
+              event.ctrlKey ||
+              event.shiftKey ||
+              event.altKey
+            )
+              return;
+            event.preventDefault();
+            props.exit();
+          }}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 19.5h14" />
+            <path d="M7.5 16v-3M12 16V9.5M16.5 16V5.5" />
+          </svg>
+          <span className="workspace-level-label" aria-hidden="true">
+            Your progress
+          </span>
+        </a>
+      )}
+      <span
+        className="workspace-topic"
+        data-strand={props.strand}
+        title={meta?.title ?? "Practice"}
+      >
+        <span className="workspace-topic-text">
+          {props.satMathFocus ? "SAT Math · " : ""}
+          {meta?.title ?? "Practice"}
+        </span>
+      </span>
+      {props.status && <span className="workspace-status">{props.status}</span>}
+      {/* Plotted answers are placed, not typed: the calculator's Use
+              key has nothing to fill, and lattice arithmetic needs none. */}
+      {props.calculator && !plot && !parts && !figures && !work ? (
+        <button
+          ref={calculatorToggle}
+          className="calculator-toggle"
+          aria-label="Calculator"
+          title="Calculator"
+          aria-pressed={calculatorOpen}
+          disabled={!!outcome}
+          onClick={() => setCalculatorOpen(!calculatorOpen)}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="5" y="3" width="14" height="18" rx="2.5" />
+            <rect x="8" y="6" width="8" height="3.5" rx="0.8" />
+            <path d="M8.5 13h1M12 13h1M15 13h.5M8.5 16.5h1M12 16.5h1M15 16.5h.5" />
+          </svg>
+        </button>
+      ) : (
+        <span
+          className="no-calculator"
+          role="img"
+          aria-label="No calculator"
+          title="No calculator"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="5" y="3" width="14" height="18" rx="2.5" />
+            <rect x="8" y="6" width="8" height="3.5" rx="0.8" />
+            <path d="M8.5 13h1M12 13h1M15 13h.5M8.5 16.5h1M12 16.5h1M15 16.5h.5" />
+            <path className="strike" d="M4 21L20 3" />
+          </svg>
+        </span>
+      )}
+    </>
+  );
   return (
     <main className="practice-workspace" aria-label="Math practice">
       <section className="practice-surface" ref={surface}>
-        <div className="workspace-toolbar">
-          {props.navigation ?? (
-            <a
-              className="workspace-level"
-              href={props.exitHref}
-              aria-label="Your progress"
-              title="Your progress"
-              onClick={(event) => {
-                // A modified click opens the view in a new tab as usual.
-                if (
-                  event.button !== 0 ||
-                  event.metaKey ||
-                  event.ctrlKey ||
-                  event.shiftKey ||
-                  event.altKey
-                )
-                  return;
-                event.preventDefault();
-                props.exit();
-              }}
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M5 19.5h14" />
-                <path d="M7.5 16v-3M12 16V9.5M16.5 16V5.5" />
-              </svg>
-              <span className="workspace-level-label" aria-hidden="true">
-                Your progress
-              </span>
-            </a>
-          )}
-          <span
-            className="workspace-topic"
-            data-strand={props.strand}
-            title={meta?.title ?? "Practice"}
-          >
-            <span className="workspace-topic-text">
-              {props.satMathFocus ? "SAT Math · " : ""}
-              {meta?.title ?? "Practice"}
-            </span>
-          </span>
-          {props.status && (
-            <span className="workspace-status">{props.status}</span>
-          )}
-          {/* Plotted answers are placed, not typed: the calculator's Use
-              key has nothing to fill, and lattice arithmetic needs none. */}
-          {props.calculator && !plot && !parts && !figures && !work ? (
-            <button
-              ref={calculatorToggle}
-              className="calculator-toggle"
-              aria-label="Calculator"
-              title="Calculator"
-              aria-pressed={calculatorOpen}
-              disabled={!!outcome}
-              onClick={() => setCalculatorOpen(!calculatorOpen)}
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="5" y="3" width="14" height="18" rx="2.5" />
-                <rect x="8" y="6" width="8" height="3.5" rx="0.8" />
-                <path d="M8.5 13h1M12 13h1M15 13h.5M8.5 16.5h1M12 16.5h1M15 16.5h.5" />
-              </svg>
-            </button>
-          ) : (
-            <span
-              className="no-calculator"
-              role="img"
-              aria-label="No calculator"
-              title="No calculator"
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="5" y="3" width="14" height="18" rx="2.5" />
-                <rect x="8" y="6" width="8" height="3.5" rx="0.8" />
-                <path d="M8.5 13h1M12 13h1M15 13h.5M8.5 16.5h1M12 16.5h1M15 16.5h.5" />
-                <path className="strike" d="M4 21L20 3" />
-              </svg>
-            </span>
-          )}
-        </div>
+        {props.toolbarInFrame ? (
+          frameTools &&
+          createPortal(
+            <div className="workspace-toolbar" data-in-frame>
+              {toolbarContents}
+            </div>,
+            frameTools,
+          )
+        ) : (
+          <div className="workspace-toolbar">{toolbarContents}</div>
+        )}
         <div
           className="problem-stage"
           ref={stage}

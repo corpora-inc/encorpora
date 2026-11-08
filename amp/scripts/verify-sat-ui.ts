@@ -11,7 +11,7 @@ import { registerFamilyRoutes } from "../src/family/routes";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { startTopic, exitPractice } from "./ui-practice";
-import { choose } from "./ui-controls";
+import { choose, leaveSettings } from "./ui-controls";
 import {
   satCompletionTemplates,
   generateSatCompletionProblem,
@@ -75,8 +75,10 @@ async function family(page: Page) {
   await page
     .getByRole("button", { name: "Open AMP menu", exact: true })
     .click();
+  await page.getByRole("link", { name: "Account", exact: true }).click();
   await page
-    .getByRole("link", { name: "Manage learners", exact: true })
+    .getByRole("navigation", { name: "Account" })
+    .getByRole("link", { name: "Family", exact: true })
     .click();
   await page.getByRole("checkbox", { name: "SAT Math focus" }).waitFor();
 }
@@ -168,7 +170,7 @@ try {
         .waitFor();
       assert.equal(await toggle.isChecked(), true);
       await noOverflow(page);
-      await page.getByRole("button", { name: "Back", exact: true }).click();
+      await leaveSettings(page);
       // Representative symbolic, data, geometry and contextual tasks, all with
       // real client rendering and server-owned grading.
       const ids =
@@ -205,7 +207,7 @@ try {
       await page
         .getByText("Practice setting saved. It applies to the next problem.")
         .waitFor();
-      await page.getByRole("button", { name: "Back", exact: true }).click();
+      await leaveSettings(page);
       await page.getByRole("button", { name: "Practice", exact: true }).click();
       const resume = page.getByRole("button", { name: /^(Go|Continue)$/ });
       if (await resume.isVisible()) await resume.click();

@@ -1,4 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
+import { leaveSettings } from "./ui-controls";
 import { exitPractice } from "./ui-practice";
 import { createOTP } from "@better-auth/utils/otp";
 import { base32 } from "@better-auth/utils/base32";
@@ -287,8 +288,10 @@ try {
   await fits(page, "password-changed");
   assert.equal((await siblingRefresh).status(), 200);
   await sibling.getByRole("button", { name: "Open AMP menu" }).click();
+  await sibling.getByRole("link", { name: "Account", exact: true }).click();
   await sibling
-    .getByRole("link", { name: "Manage learners", exact: true })
+    .getByRole("navigation", { name: "Account" })
+    .getByRole("link", { name: "Family", exact: true })
     .click();
   await sibling
     .getByRole("button", { name: "Add learner", exact: false })
@@ -303,12 +306,15 @@ try {
   await sibling.close();
 
   // Session rotation must update AMP's in-memory API bearer token too.
-  await page.getByRole("button", { name: "Learners", exact: true }).click();
+  await page
+    .getByRole("navigation", { name: "Account" })
+    .getByRole("link", { name: "Family", exact: true })
+    .click();
   await page.getByRole("button", { name: "Add learner", exact: false }).click();
   await page.getByRole("textbox", { name: "Name", exact: true }).fill("Maya");
   await page.getByRole("button", { name: "Add learner", exact: true }).click();
   await page.getByText("Maya added.", { exact: true }).waitFor();
-  await page.getByRole("button", { name: "Back", exact: true }).click();
+  await leaveSettings(page);
   await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page.getByRole("button", { name: "Sign out", exact: true }).click();
   // Sign-out redirects asynchronously; finish it before starting another navigation.

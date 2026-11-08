@@ -27,6 +27,9 @@ export function SignedInEmail({ email }: { email: string }) {
         className={styles.reveal}
         aria-pressed={shown}
         aria-label={shown ? "Hide email" : "Show email"}
+        // Until the account answers there is nothing to reveal; the row and
+        // its mask are already in place, so nothing moves when it does.
+        disabled={!email}
         onClick={() => setShown((s) => !s)}
       >
         <svg viewBox="0 0 24 24" aria-hidden="true">
