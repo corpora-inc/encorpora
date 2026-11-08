@@ -24,7 +24,8 @@ export type StartTarget =
   | FundedPath
   | "/practice"
   | "/school"
-  | "/try";
+  | "/try"
+  | `/family/approvals/${string}`;
 const learnerSteps: readonly string[] = ["/start/name", "/start/birth-year"];
 
 /** Steps that record consent or take payment; they need a confirmed address. */
@@ -87,6 +88,14 @@ function route(
 ): StartTarget | null {
   const stay = (allowed: readonly string[], fallback: StartTarget) =>
     allowed.includes(pathname) ? null : fallback;
+  // A parent who opened another family's approval link approves that child
+  // once their consent is in, rather than adding a new one (step 5).
+  if (
+    me.familyApproval &&
+    (me.next === "add-learner" ||
+      (me.next === "choose-plan" && me.consent.status === "active"))
+  )
+    return `/family/approvals/${me.familyApproval.id}`;
   switch (me.next) {
     case "accept-gift":
       if (me.account.confirmationRequired)
@@ -120,8 +129,17 @@ function route(
 }
 
 /** Router navigation options for a guard target (app screens use the splat route). */
+const isApproval = (
+  target: StartTarget,
+): target is `/family/approvals/${string}` =>
+  target.startsWith("/family/approvals/");
 export function startNavigation(target: StartTarget) {
   if (target === "/try") return { to: "/try" } as const;
+  if (isApproval(target))
+    return {
+      to: "/family/approvals/$approvalId",
+      params: { approvalId: target.slice("/family/approvals/".length) },
+    } as const;
   if (target === "/school")
     return { to: "/$", params: { _splat: "school" } } as const;
   return target === "/purchase" || target === "/practice"

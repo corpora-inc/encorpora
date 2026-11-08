@@ -1,0 +1,58 @@
+/* The approving parent's pages: what the class is, who teaches it, what the
+   teacher sees and what stays the parent's. Tokens only; rows, not boxes. */
+.about {
+  display: grid;
+  margin: 0;
+}
+.fact {
+  display: grid;
+  gap: var(--space-1);
+  padding-block: var(--space-3);
+}
+.fact + .fact {
+  box-shadow: inset 0 1px 0 var(--color-border);
+}
+.fact dt {
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  font-weight: 600;
+}
+.fact dd {
+  margin: 0;
+  font-size: var(--text-body);
+  line-height: 1.5;
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
+}
+.step {
+  display: grid;
+  gap: var(--space-4);
+}
+.step > p {
+  margin: 0;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.actions > * {
+  flex: 1 1 200px;
+}
+.access {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+}
+.access strong {
+  font-size: var(--text-heading-3);
+  font-variant-numeric: var(--numeric);
+}
+.wait {
+  display: grid;
+  min-height: 420px;
+  place-items: center;
+}

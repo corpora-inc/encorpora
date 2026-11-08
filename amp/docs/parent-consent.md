@@ -88,6 +88,7 @@ Withdrawal and account-wide learning deletion cancel pending enrollment within t
 | Meta browser confirmation context | At most seven days after verified payment (`advertisingContextDays`), or earlier on permission expiry or withdrawal. No query strings or learner-page context are retained |
 | First-party ad acquisition | At most 90 days per browser journey; provider withdrawal removes its account-associated evidence. The privacy worker deletes expired journeys; family exports include owned evidence without cookie handles |
 | Local purchase-measurement preparation records | 90 days after the payment evidence date (`advertisingPaymentDays`); withdrawal cancels unsent records |
+| Family approval links nobody approved: the child's first name and parent's email a teacher typed | 30 days after the link expires or is withdrawn (`familyApprovalDays`). Approval erases both at once |
 | Privacy activity log | 90 days |
 | Consent contact and evidence | Uncompleted requests: the policy's `pendingContactDays` (2–14; 7 in the reviewed policy). Completed evidence: `withdrawnEvidenceDays` (1–730; 180) after withdrawal or policy replacement, then a do-not-collect flag. |
 

@@ -109,7 +109,9 @@ export async function ensureFamilyClass(
   let family = (await client.query<FamilyRow>(FAMILY, [accountId])).rows[0];
   const created = !family;
   if (!family) {
-    if (!children.length) return null;
+    // A child already in another family's class (approved by this parent,
+    // step 5) stays there, so they alone don't make an empty class here.
+    if (!children.some((child) => !child.person_id)) return null;
     await createFamily(client, schools, accountId, converting);
     family = (await client.query<FamilyRow>(FAMILY, [accountId])).rows[0]!;
   }
@@ -293,19 +295,19 @@ export async function practiceHere(
   learnerId: string,
   canPractice: boolean,
 ) {
-  const family = await ensureFamilyClass(client, pool, accountId, {
-    converting: true,
-  });
-  const person = family
-    ? ((
+  await ensureFamilyClass(client, pool, accountId, { converting: true });
+  // Their roster row in a family class: their own family's, or another
+  // family's that this parent approved (step 5).
+  const person =
+    (
         await client.query<{ id: string }>(
           `SELECT p.id FROM amp_people p JOIN amp_learners l ON l.id=p.learner_id
-           WHERE p.learner_id=$1 AND p.tenant_id=$2 AND p.deleted_at IS NULL
-             AND l.account_id=$3 AND l.deleted_at IS NULL AND NOT l.adult`,
-          [learnerId, family.orgId, accountId],
+           JOIN amp_orgs o ON o.id=p.tenant_id AND o.kind='family'
+           WHERE p.learner_id=$1 AND p.deleted_at IS NULL
+             AND l.account_id=$2 AND l.deleted_at IS NULL AND NOT l.adult`,
+          [learnerId, accountId],
         )
-      ).rows[0] ?? null)
-    : null;
+      ).rows[0] ?? null;
   if (!person) throw new FamilyError(404, "learner_not_found");
   if (!canPractice) throw new FamilyError(409, "learner_cannot_practice");
   const token = generateStudentToken();

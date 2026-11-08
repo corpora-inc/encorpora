@@ -325,7 +325,7 @@ export function SignInScreen() {
     await continueAfterSignIn();
   };
   async function continueAfterSignIn() {
-    if (schoolEntry)
+    if (schoolEntry || carry.return === "family-approval")
       await navigate({ href: continuationUrl(carry), replace: true });
     else if (carry.return === "security")
       await navigate({
@@ -558,6 +558,11 @@ export function SignInScreen() {
                 ? "Your invitation continues right after this."
                 : "Setting up your school continues right after this."}
             </p>
+          </div>
+        )}
+        {carry.return === "family-approval" && showProviders && (
+          <div className={styles.pitch} data-approval-signup>
+            <p>Approving your child’s class continues right after this.</p>
           </div>
         )}
         {freeEntry && showProviders && !pitchCopy && (

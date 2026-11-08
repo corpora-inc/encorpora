@@ -5,6 +5,7 @@ import type { FamilyRepository } from "../family/repository.js";
 import { activeToday } from "../schools/principal.js";
 import { adultPracticeEnd } from "./adult-access.js";
 import { familyClassOf } from "../family/family-class.js";
+import { pendingApprovalOf } from "../family/approvals.js";
 /** One authenticated account snapshot. No trial capability or child draft is stored here. */
 export async function accountSummary(
   pool: Pool,
@@ -92,7 +93,8 @@ export async function accountSummary(
       if (error.code && codes.includes(error.code)) return { rows: [] };
       throw error;
     };
-  const [staffRows, trialRows, adultEnds, familyClass] = await Promise.all([
+  const [staffRows, trialRows, adultEnds, familyClass, familyApproval] =
+    await Promise.all([
     pool
       .query<{
         orgId: string;
@@ -128,6 +130,9 @@ export async function accountSummary(
     // this account's family side, so it isn't among the places above; a
     // co-teacher from another account finds it there.
     familyClassOf(pool, accountId),
+    // A link from another family's teacher this parent opened and hasn't
+    // approved yet: after consent, approving is the next step.
+    pendingApprovalOf(pool, accountId),
   ]);
   const adultPractice =
     adult || adultEnds
@@ -167,6 +172,7 @@ export async function accountSummary(
     family,
     ...(staffOf.length ? { staffOf } : {}),
     ...(familyClass ? { familyClass } : {}),
+    ...(familyApproval ? { familyApproval } : {}),
     ...(trialRows.rows.length ? { trial: true as const } : {}),
     ...(adultPractice ? { adultPractice } : {}),
     ...(gift ? { availableAccessGrant: gift } : {}),

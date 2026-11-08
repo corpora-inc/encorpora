@@ -114,6 +114,9 @@ export const meSchema = z.discriminatedUnion("signedIn", [
         notice: z.boolean(),
       })
       .optional(),
+    /** A link from another family's teacher (docs/families.md, step 5) this
+     * parent opened and hasn't approved yet. */
+    familyApproval: z.object({ id: z.string() }).optional(),
     /** A free assessment in progress: the family side has something to open
      * even before there's a learner. */
     trial: z.literal(true).optional(),

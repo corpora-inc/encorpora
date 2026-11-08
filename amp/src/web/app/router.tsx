@@ -59,6 +59,7 @@ import {
 } from "../lib/student-device";
 import { workbookSearchSchema } from "../features/workbooks/model";
 import { preload } from "../features/school/api";
+import { approvalsOptions } from "../features/family-approval/api";
 import { classYearOptions } from "../features/school/org/org-api";
 import { frameData, schoolRoutes, staffScreen } from "./school-routes";
 import { loadCurriculum, loadScope } from "../features/schools/api";
@@ -79,6 +80,7 @@ const searchSchema = z
         "arizona-esa",
         "school",
         "school-invite",
+        "family-approval",
       ])
       .optional()
       .catch(undefined),
@@ -720,6 +722,16 @@ const schoolClassHome = createRoute({
 const schoolClassToday = createRoute({
   getParentRoute: () => schoolClass,
   path: "today",
+  // A family's own class lists children from other families: there before
+  // the screen paints.
+  loader: async ({ context, params }) => {
+    const session = (context as { session: AuthSession }).session;
+    const me = await queryClient
+      .ensureQueryData(meOptions(session))
+      .catch(() => null);
+    if (me?.signedIn && me.familyClass?.classId === params.class)
+      await preload(approvalsOptions(session));
+  },
   component: lazyRouteComponent(classScreens, "TodayScreen"),
 });
 const schoolClassMap = createRoute({
@@ -898,6 +910,34 @@ const familyLink = createRoute({
     "ParentScreen",
   ),
 });
+/** Another family's teacher asked for this parent's child (step 5): the
+ * link from mail or a copy, then this parent's own page about the child. */
+const familyApprove = createRoute({
+  getParentRoute: () => root,
+  path: "/family/approve",
+  beforeLoad: () => {
+    if (nativeRuntime || studentSession())
+      throw redirect({ to: "/", replace: true });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/family-approval/ApproveLinkScreen"),
+    "ApproveLinkScreen",
+  ),
+});
+const familyApproval = createRoute({
+  getParentRoute: () => root,
+  path: "/family/approvals/$approvalId",
+  beforeLoad: async () => {
+    notForStudents();
+    if (nativeRuntime) throw redirect({ to: "/", replace: true });
+    const session = await queryClient.ensureQueryData(sessionOptions);
+    if (!session) throw redirect({ to: "/sign-in", replace: true });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/family-approval/ApprovalScreen"),
+    "ApprovalScreen",
+  ),
+});
 const fallback = createRoute({
   getParentRoute: () => appScreen,
   path: "/$",
@@ -951,6 +991,8 @@ export const router = createRouter({
     schoolsScope,
     schoolsTrust,
     familyLink,
+    familyApprove,
+    familyApproval,
     signIn,
     signUp,
     accountReady,
