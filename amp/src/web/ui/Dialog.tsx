@@ -9,6 +9,7 @@ export function Dialog({
   children,
   onCloseAutoFocus,
   aboveNavigation = false,
+  fullOnPhone = false,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -16,6 +17,8 @@ export function Dialog({
   children: ReactNode;
   onCloseAutoFocus?: (event: Event) => void;
   aboveNavigation?: boolean;
+  /** At 390 px and below the sheet fills the screen, with its own close. */
+  fullOnPhone?: boolean;
 }) {
   return (
     <RadixDialog.Root open={open} onOpenChange={onOpenChange}>
@@ -24,7 +27,7 @@ export function Dialog({
           className={`${styles.overlay} ${aboveNavigation ? styles.aboveNavigation : ""}`}
         />
         <RadixDialog.Content
-          className={`${styles.content} ${aboveNavigation ? styles.aboveNavigation : ""}`}
+          className={`${styles.content} ${aboveNavigation ? styles.aboveNavigation : ""} ${fullOnPhone ? styles.fullOnPhone : ""}`}
           aria-describedby={undefined}
           onCloseAutoFocus={onCloseAutoFocus}
         >

@@ -605,13 +605,6 @@ async function verifyLessonRecovery() {
       exact: true,
     });
     await opener.waitFor();
-    const fullscreen = await page.evaluate(() => document.fullscreenEnabled);
-    if (fullscreen) {
-      await page
-        .getByRole("button", { name: "Full screen", exact: true })
-        .click();
-      await page.waitForFunction(() => !!document.fullscreenElement);
-    }
     await opener.click();
     const dialog = page.getByRole("dialog");
     await dialog
@@ -625,8 +618,6 @@ async function verifyLessonRecovery() {
         .count(),
       0,
     );
-    if (fullscreen)
-      assert(await page.evaluate(() => !!document.fullscreenElement));
     await page.screenshot({
       path: `${output}/lesson-${failure}-recovery.png`,
       fullPage: true,
@@ -1004,33 +995,6 @@ try {
         true,
         "lesson restores keyboard focus",
       );
-      if (
-        width === 1280 &&
-        theme === "light" &&
-        (await page.evaluate(() => document.fullscreenEnabled))
-      ) {
-        await page
-          .getByRole("button", { name: "Full screen", exact: true })
-          .click();
-        await page.waitForFunction(() => !!document.fullscreenElement);
-        await opener.click();
-        await page
-          .getByRole("dialog")
-          .getByText("Example", { exact: true })
-          .waitFor();
-        assert(
-          await page.getByRole("dialog").isVisible(),
-          "lesson remains visible in fullscreen subtree",
-        );
-        await page
-          .getByRole("dialog")
-          .getByRole("button", { name: "Close", exact: true })
-          .click();
-        await page
-          .getByRole("button", { name: "Exit full screen", exact: true })
-          .click();
-        await page.waitForFunction(() => !document.fullscreenElement);
-      }
       if (width === 1280 && theme === "light") {
         await opener.click();
         await page.getByRole("dialog").waitFor();
@@ -1122,21 +1086,42 @@ try {
       .getByRole("heading", { name: target.title, exact: true })
       .waitFor();
     await noOverflow(page);
-    if (await page.evaluate(() => document.fullscreenEnabled)) {
+    {
+      const map = page.locator(".pathways-viewport");
+      const before = await map.boundingBox();
       await page
         .getByRole("button", { name: "Full screen", exact: true })
         .click();
-      await page.waitForFunction(() => !!document.fullscreenElement);
+      await page.waitForFunction(() =>
+        document.querySelector(".pathways-viewport.is-full"),
+      );
+      const full = await map.boundingBox();
+      assert(
+        Math.abs(full!.width - viewport.width) <= 1 &&
+          Math.abs(full!.height - viewport.height) <= 1,
+        `the map alone fills the screen: ${JSON.stringify(full)}`,
+      );
       assert(
         await page.evaluate(
-          () => document.documentElement.scrollHeight <= innerHeight + 1,
+          () =>
+            getComputedStyle(document.documentElement).overflow === "hidden",
         ),
-        "short fullscreen has no page scroll",
+        "full screen locks the page behind it",
       );
       await page
         .getByRole("button", { name: "Exit full screen", exact: true })
         .click();
-      await page.waitForFunction(() => !document.fullscreenElement);
+      await page.waitForFunction(
+        () =>
+          !document.querySelector(".pathways-viewport.is-full") &&
+          !document.fullscreenElement,
+      );
+      const after = await map.boundingBox();
+      assert(
+        Math.abs(after!.width - before!.width) <= 1 &&
+          Math.abs(after!.height - before!.height) <= 1,
+        "leaving full screen restores the map",
+      );
     }
     if (viewport.width === 320)
       assert(
@@ -1576,9 +1561,8 @@ try {
   await evolving.clock.install();
   await fixture(evolving, { catalogSkills: growingCatalog });
   await evolving.goto(`${origin}/pathways?skill=${target.id}`);
-  const label = evolving
-    .locator(".skill-label")
-    .filter({ hasText: target.title });
+  // Selecting does not move the camera, so an area label is the witness.
+  const label = evolving.locator(".area-label").first();
   await label.waitFor();
   await evolving.getByRole("button", { name: "Zoom in", exact: true }).click();
   const before = (await label.boundingBox())!;

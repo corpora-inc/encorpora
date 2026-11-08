@@ -885,20 +885,6 @@
     font-size: 11px;
   }
 }
-:root:fullscreen .pathways {
-  width: 100vw;
-  height: 100dvh;
-  max-width: none;
-  padding: 0 20px 16px;
-}
-:root:fullscreen .pathways .pathways-heading,
-:root:fullscreen .pathways .pathways-status,
-:root:fullscreen .pathways .pathways-footer {
-  display: none;
-}
-:root:fullscreen .pathways .pathways-toolbar {
-  margin-top: 12px;
-}
 .pathways-lesson-practice {
   display: inline-flex;
   align-items: center;
@@ -984,22 +970,6 @@
     gap: 2px;
   }
 }
-@media (max-height: 700px) {
-  :root:fullscreen .pathways {
-    height: 100dvh;
-    overflow: hidden;
-  }
-  :root:fullscreen .pathways-workspace {
-    height: auto;
-    flex: 1;
-    min-height: 150px;
-  }
-  :root:fullscreen .pathways.has-selection .pathways-viewport {
-    height: auto;
-    flex: 1;
-    min-height: 140px;
-  }
-}
 
 .pathways-illumination-meter {
   height: 4px;
@@ -1072,10 +1042,6 @@
     max-height: none;
     overflow: visible;
     flex: none;
-  }
-  :root:fullscreen .pathways.has-selection {
-    height: 100dvh;
-    overflow: auto;
   }
 }
 
@@ -1180,9 +1146,6 @@
     height: max(320px, calc(100dvh - 240px));
     flex: none;
   }
-  :root:fullscreen .pathways:not(.has-selection) .pathways-workspace {
-    height: calc(100dvh - 130px);
-  }
 }
 
 /* The same navigation and progress views, using the atlas color roles. */
@@ -1206,9 +1169,6 @@
 }
 .pathways [data-progress-views] a {
   color: inherit;
-}
-:root:fullscreen .pathways [data-progress-views] {
-  display: none;
 }
 @media (max-width: 390px) {
   .pathways-header {
@@ -1323,4 +1283,16 @@
   [data-shell-content] > .pathways {
     padding-top: var(--space-2);
   }
+}
+
+/* Full screen puts the map itself on screen (the Fullscreen API where it
+   exists, else this fixed overlay); the rest of the page stays as it is. */
+.pathways-viewport.is-full {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  width: 100vw;
+  height: 100dvh;
+  border-radius: 0;
+  border: 0;
 }

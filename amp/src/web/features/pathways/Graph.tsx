@@ -50,7 +50,7 @@ export function Graph({
   const labelHost = useRef<HTMLDivElement>(null);
   const selection = useRef(onSelect);
   selection.current = onSelect;
-  const focus = useRef<(id: string, move?: boolean) => void>(() => {});
+  const focus = useRef<(id: string) => void>(() => {});
   const reset = useRef<() => void>(() => {});
   const zoom = useRef<(factor: number) => void>(() => {});
   const rotate = useRef<(value: boolean) => void>(() => {});
@@ -59,17 +59,38 @@ export function Graph({
     target: [number, number, number];
     fit: boolean;
   } | null>(null);
-  const lastFocused = useRef("");
   const earnedMemory = useRef(new Map<string, number>());
   const { shown } = useCurriculumDetails();
   const [failed, setFailed] = useState(false);
   const [orbit, setOrbit] = useState(false);
+  const viewport = useRef<HTMLElement>(null);
   const [fullscreen, setFullscreen] = useState(false);
+  // The map alone goes full screen: through the Fullscreen API where there is
+  // one, and always as a fixed full-viewport overlay (iOS Safari has no API).
   useEffect(() => {
-    const changed = () => setFullscreen(!!document.fullscreenElement);
+    if (!fullscreen) return;
+    const changed = () => {
+      if (!document.fullscreenElement) setFullscreen(false);
+    };
+    const key = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setFullscreen(false);
+    };
     document.addEventListener("fullscreenchange", changed);
-    return () => document.removeEventListener("fullscreenchange", changed);
-  }, []);
+    document.addEventListener("keydown", key);
+    const html = document.documentElement;
+    const overflow = html.style.overflow;
+    html.style.overflow = "hidden";
+    const element = viewport.current;
+    if (element?.requestFullscreen)
+      void element.requestFullscreen().catch(() => {});
+    return () => {
+      document.removeEventListener("fullscreenchange", changed);
+      document.removeEventListener("keydown", key);
+      html.style.overflow = overflow;
+      if (document.fullscreenElement === element)
+        void document.exitFullscreen().catch(() => {});
+    };
+  }, [fullscreen]);
   const [labels, setLabels] = useState<Label[]>([]);
   const [labelsMoving, setLabelsMoving] = useState(false);
   const [hover, setHover] = useState("");
@@ -620,27 +641,15 @@ export function Graph({
         glows[i]!.material.opacity = active ? earned.glow : 0.025;
       });
     };
-    focus.current = (id, move = true) => {
+    // Selecting or deselecting only moves the highlight ring; the camera moves
+    // only by the person's own gestures and the camera buttons.
+    focus.current = (id) => {
       recolor(id);
       const p = byId.get(id);
       ring.visible = !!p;
       if (p) {
         const target = new THREE.Vector3(...p.position);
         ring.position.copy(target);
-        if (move) fitView = false;
-        if (move)
-          tween = {
-            target,
-            position: target
-              .clone()
-              .add(new THREE.Vector3(0, 0, Math.max(42, 65 / camera.aspect))),
-          };
-      }
-      if (!motion && tween) {
-        camera.position.copy(tween.position);
-        controls.target.copy(tween.target);
-        tween = null;
-        controls.update();
       }
       settleLabels();
       paint();
@@ -916,8 +925,7 @@ export function Graph({
     };
   }, [skills, evidence, motion, range?.lo, range?.hi, rangeStrand]);
   useEffect(() => {
-    focus.current(selected, selected !== lastFocused.current);
-    lastFocused.current = selected;
+    focus.current(selected);
     rotate.current(orbit);
   }, [
     selected,
@@ -931,7 +939,8 @@ export function Graph({
   ]);
   return (
     <section
-      className="pathways-viewport"
+      ref={viewport}
+      className={`pathways-viewport ${fullscreen ? "is-full" : ""}`}
       aria-label="Interactive curriculum map"
     >
       <div ref={host} className="pathways-canvas" />
@@ -993,28 +1002,18 @@ export function Graph({
         </p>
       )}
       <div className="pathways-camera">
-        {document.fullscreenEnabled && (
-          <button
-            aria-label={fullscreen ? "Exit full screen" : "Full screen"}
-            onClick={() => {
-              const action = document.fullscreenElement
-                ? document.exitFullscreen()
-                : document.documentElement.requestFullscreen();
-              void action?.catch(() => setFailed(false));
-            }}
-          >
-            <span className="camera-wide">
-              {fullscreen ? "Exit full screen" : "Full screen"}
-            </span>
-            <svg
-              className="camera-narrow"
-              viewBox="0 0 20 20"
-              aria-hidden="true"
-            >
-              <path d="M7 3H3v4M13 3h4v4M3 13v4h4M17 13v4h-4" />
-            </svg>
-          </button>
-        )}
+        <button
+          aria-label={fullscreen ? "Exit full screen" : "Full screen"}
+          aria-pressed={fullscreen}
+          onClick={() => setFullscreen((v) => !v)}
+        >
+          <span className="camera-wide">
+            {fullscreen ? "Exit full screen" : "Full screen"}
+          </span>
+          <svg className="camera-narrow" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M7 3H3v4M13 3h4v4M3 13v4h4M17 13v4h-4" />
+          </svg>
+        </button>
         <button
           disabled={failed}
           aria-label="Whole map"

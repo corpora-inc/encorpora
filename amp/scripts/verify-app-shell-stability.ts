@@ -301,16 +301,10 @@ for (const engine of engines) {
                   `requested twice while loading: ${twice.map(([r, n]) => `${r} ×${n}`).join("; ")}`,
                 ]
               : []),
-            // Practice's problem is left out of the movement checks: on a
-            // first load its math (KaTeX) fonts can finish after the first
-            // paint, the prompt reflows taller and the vertically centred
-            // problem settles up to ~15 px (WebKit). That is the problem
-            // stage's font loading, not the frame; the frame's own geometry
-            // (logo, drawer, bar) is still checked below on practice.
-            ...(recorded.cls >= 0.001 && screen.id !== "practice"
+            ...(recorded.cls >= 0.001
               ? [`layout shift ${recorded.cls.toFixed(4)}`]
               : []),
-            ...(recorded.shifts.length && screen.id !== "practice"
+            ...(recorded.shifts.length
               ? [`moved while loading: ${recorded.shifts.join("; ")}`]
               : []),
             ...(recorded.flips.length

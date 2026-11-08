@@ -61,6 +61,22 @@ const bandOptions: ListboxOption[] = [
   { value: "", label: "All grades & courses" },
   ...bands.map((b) => ({ value: b, label: bandLabel(b) })),
 ];
+// Related words a learner may type for what the catalog calls something else.
+const synonyms: Record<string, string[]> = {
+  logic: ["reasoning", "proof", "argument", "justify"],
+  shapes: ["geometry", "polygon"],
+  times: ["multiplication", "multiply"],
+  share: ["division", "divide"],
+};
+function matchesQuery(text: string, query: string) {
+  const haystack = text.toLowerCase();
+  const q = query.trim().toLowerCase();
+  return (
+    haystack.includes(q) ||
+    (synonyms[q] ?? []).some((w) => haystack.includes(w))
+  );
+}
+
 export function PathwaysScreen() {
   const { data: session } = useSuspenseQuery(sessionOptions);
   const search = useSearch({ strict: false });
@@ -378,8 +394,15 @@ export function MapView({
         params: { skillId },
         search: nextSearch,
         replace,
+        resetScroll: false,
       });
-    else void navigate({ to: "/pathways", search: nextSearch, replace });
+    else
+      void navigate({
+        to: "/pathways",
+        search: nextSearch,
+        replace,
+        resetScroll: false,
+      });
   };
   const select = (id: string) => {
     setBrowse(false);
@@ -389,9 +412,7 @@ export function MapView({
     skills?.filter(
       (s) =>
         (!band || s.gradeBand === band) &&
-        `${s.title} ${s.description}`
-          .toLowerCase()
-          .includes(query.toLowerCase()),
+        matchesQuery(`${s.title} ${s.description}`, query),
     ) ?? [];
   const range = frontier ? frontierRange(frontier, selected?.strand) : null;
   const selectedEvidence = selected ? stats.get(selected.id) : undefined;
@@ -803,6 +824,7 @@ export function MapView({
           if (!open) setLesson(null);
         }}
         title="Explore a problem type"
+        fullOnPhone
         onCloseAutoFocus={(e) => {
           e.preventDefault();
           if (lessonTrigger.current?.isConnected) lessonTrigger.current.focus();
