@@ -151,6 +151,14 @@ test(
         "SELECT count(*) n FROM amp_data_agreements WHERE org_id=ANY($1::uuid[])",
         [orgIds],
       ),
+      familyApprovals: await count(
+        "SELECT count(*) n FROM amp_family_approvals WHERE class_id IN (SELECT id FROM amp_classes WHERE org_id=ANY($1::uuid[]))",
+        [orgIds],
+      ),
+      families: await count(
+        "SELECT count(*) n FROM amp_families WHERE org_id=ANY($1::uuid[])",
+        [orgIds],
+      ),
       attempts: await count(
         `SELECT count(*) n FROM amp_attempts a JOIN amp_people p ON p.learner_id=a.learner_id WHERE p.tenant_id=ANY($1::uuid[])`,
         [orgIds],
@@ -166,6 +174,7 @@ test(
       sessions: await count("SELECT count(*) n FROM amp_student_sessions"),
       credentials: await count("SELECT count(*) n FROM amp_person_credentials"),
       scopes: await count("SELECT count(*) n FROM amp_scope_settings"),
+      approvals: await count("SELECT count(*) n FROM amp_family_approvals"),
     });
 
     try {
@@ -210,6 +219,17 @@ test(
         adult,
       ]);
 
+      // A family row with a waiting approval link in the pilot's class.
+      const familyAccount = `amp|family-${randomUUID()}`;
+      await db.query(
+        "INSERT INTO amp_families(account_id,org_id,class_id) VALUES($1,$2,$3)",
+        [familyAccount, pilot, mine.classA.id],
+      );
+      await db.query(
+        `INSERT INTO amp_family_approvals(id,family_account_id,class_id,child_name,parent_email,lookup_hash,secret_hash,expires_at)
+         VALUES($1,$2,$3,'Waiting Child','waiting@example.test',$4,'x',now()+interval '1 day')`,
+        [randomUUID(), familyAccount, mine.classA.id, randomUUID()],
+      );
       const orgBefore = await treeRows([pilot]);
       const everything = await overall();
       assert.ok(
@@ -233,6 +253,8 @@ test(
         assert.equal(result.counts.learnersDetached, 2);
         assert.equal(result.counts.events, orgBefore.events);
         assert.equal(result.counts.classes, 2);
+        assert.equal(result.counts.familyApprovals, 1);
+        assert.equal(result.counts.families, 1);
         assert.deepEqual(result.remaining, { orgs: 0, people: 0 });
         assert.deepEqual(await overall(), everything);
         assert.deepEqual(await treeRows([pilot]), orgBefore);
@@ -291,6 +313,7 @@ test(
         const after = await overall();
         assert.equal(after.orgs, everything.orgs - 1);
         assert.equal(after.people, everything.people - 4);
+        assert.equal(after.approvals, everything.approvals - 1);
         // A parent-owned child and an adult learner survive with their evidence, detached.
         for (const id of [child, adult]) {
           assert.equal(
@@ -343,6 +366,8 @@ test(
             orgs: 0,
             people: 0,
             events: 0,
+            familyApprovals: 0,
+            families: 0,
             licenses: 0,
             classes: 0,
             sessions: 0,

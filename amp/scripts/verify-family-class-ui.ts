@@ -260,6 +260,19 @@ async function family(
   check(`${label} the line stays dismissed`, (await notice.count()) === 0);
   await measured(page, `${label} class`);
   await shot(page, "class", width, theme);
+
+  // The parent invites a co-teacher from the class; "Copy link" stays on the row.
+  await page.getByRole("button", { name: "Invite a co-teacher" }).click();
+  await page.getByLabel("Email").fill("rafael@vega.example");
+  await shot(page, "co-teacher-invite", width, theme);
+  await page.getByRole("button", { name: "Send invitation" }).click();
+  await page.getByText("rafael@vega.example").waitFor();
+  check(
+    `${label} the co-teacher's link is always there`,
+    (await page.getByRole("button", { name: "Copy link" }).count()) === 1,
+  );
+  await measured(page, `${label} class with a co-teacher`);
+  await shot(page, "co-teacher-invited", width, theme);
   const classUrl = page.url();
   const code = (
     await db.query(

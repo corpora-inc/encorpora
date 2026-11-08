@@ -220,6 +220,7 @@ export class FamilyRepository {
         [learnerId, accountId, name],
       );
       if (!result.rowCount) throw new FamilyError(404, "learner_not_found");
+      // The class roster follows by trigger (migration 0098).
       await this.audit(client, accountId, "learner.renamed", learnerId, 1);
     });
   }
