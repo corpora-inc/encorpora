@@ -345,15 +345,16 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       ready: heading(/Choose a plan/),
     },
     {
+      // The Overview has its own address; `/` opens a family's class.
       id: "home",
-      path: "/",
+      path: "/overview",
       state: "paid",
       // The retained chart settles when its actual frontier has loaded.
       ready: (p) => p.locator('.frontier-map[aria-busy="false"]').waitFor(),
     },
     {
       id: "drawer",
-      path: "/",
+      path: "/overview",
       state: "paid",
       ready: (p) => p.locator(".frontier-map").waitFor(),
       then: async (p) => {
