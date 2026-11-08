@@ -45,6 +45,21 @@ try {
   // The environment sells each additional child its own price; the server's
   // status says which price a learner's checkout sells.
   let extraEnabled = false;
+  // Holds the second learner's status, to see the screen before its price is known.
+  let statusGate:
+    | {
+        seen: Promise<void>;
+        enter: () => void;
+        release: () => void;
+        open: Promise<void>;
+      }
+    | undefined;
+  const gate = () => {
+    let enter!: () => void, release!: () => void;
+    const seen = new Promise<void>((resolve) => (enter = resolve));
+    const open = new Promise<void>((resolve) => (release = resolve));
+    return { seen, enter, release, open };
+  };
   const extraConfig = {
     ...monthlyConfigBase(),
     extraPriceId: "price_extra_fixture",
@@ -133,8 +148,13 @@ try {
       json: { url: "https://checkout.stripe.com/wrong-portal-destination" },
     }),
   );
-  await page.route("**/api/v1/billing/status/*", (route) =>
-    route.fulfill({
+  await page.route("**/api/v1/billing/status/*", async (route) => {
+    const held = statusGate;
+    if (held && route.request().url().endsWith("/second")) {
+      held.enter();
+      await held.open;
+    }
+    return route.fulfill({
       json: {
         learnerId: route.request().url().split("/").at(-1),
         phase,
@@ -146,8 +166,8 @@ try {
           ? { startsAt: "2026-01-01T00:00:00Z", endsAt: "2027-01-01T00:00:00Z" }
           : {}),
       },
-    }),
-  );
+    });
+  });
   await page.route("**/api/v1/billing/purchase/*", (route) =>
     route.fulfill(
       route.request().url().endsWith("foreign")
@@ -457,6 +477,7 @@ try {
   // the server prices as an additional child is sold that price.
   extraEnabled = true;
   checkoutBodies = [];
+  await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(home);
   const line = page.getByText("Each additional child: $90 a year", {
     exact: true,
@@ -465,11 +486,57 @@ try {
   await page
     .getByRole("button", { name: "Annual $120.00 / year", exact: true })
     .waitFor();
+  // Until the second learner's status says which price they pay, no amount
+  // shows: the amounts wait as skeletons in their own space.
+  statusGate = gate();
   await page.getByLabel("Learner", { exact: true }).click();
   await page.getByRole("option", { name: "Second learner" }).click();
+  await statusGate.seen;
+  await page.locator(".plan-options[aria-busy='true']").waitFor();
+  const visible = await page.evaluate(() => document.body.innerText);
+  for (const amount of ["$120.00", "$14.00", "$48.00", "$90.00", "$10.00 /"])
+    assert.ok(
+      !visible.includes(amount),
+      `${amount} is not shown before the learner's price is known`,
+    );
+  assert.equal(
+    await page.locator(".plan-options .amp-skeleton").count(),
+    3,
+    "both plan amounts and the saving wait as skeletons",
+  );
+  const geometry = () =>
+    page.evaluate(() =>
+      [
+        ".plan-options-grid > :first-child",
+        ".plan-options-grid > :last-child",
+        ".plan-options-grid > :first-child > :last-child",
+        ".plan-options-grid > :last-child > :last-child",
+        ".plan-saving",
+        "[data-additional-child]",
+        ".annual-renewal",
+        ".annual-primary",
+      ].map((selector) => {
+        const box = document.querySelector(selector)?.getBoundingClientRect();
+        return box
+          ? `${selector} ${box.x.toFixed(1)} ${box.y.toFixed(1)} ${box.height.toFixed(1)}`
+          : `${selector} missing`;
+      }),
+    );
+  const waiting = await geometry();
+  await page.screenshot({
+    path: new URL("additional-child-waiting-390.png", directory).pathname,
+  });
+  statusGate.release();
+  statusGate = undefined;
   await page
     .getByRole("button", { name: "Annual $90.00 / year", exact: true })
     .waitFor();
+  assert.deepEqual(
+    await geometry(),
+    waiting,
+    "the price arrives in its reserved space; nothing moves",
+  );
+  assert.equal(await page.locator(".plan-options .amp-skeleton").count(), 0);
   await page
     .getByRole("button", { name: "Monthly $10.00 / month", exact: true })
     .click();

@@ -104,6 +104,9 @@ function PurchasePanel({
     status?.tier === "extra" && extraOffers.length ? extraOffers : fullOffers;
   const offer =
     offers.find((plan) => plan.interval === chosen?.interval) ?? chosen;
+  // Until the server says which price this learner's checkout sells, no
+  // amount shows: a full price must never flash for an additional child.
+  const pricePending = !!available && !!learnerId && !status;
   const [busy, setBusy] = useState(false),
     [checking, setChecking] = useState(false);
   const [error, setError] = useState("");
@@ -442,6 +445,7 @@ function PurchasePanel({
             {offers.length > 1 && (
               <PlanOptions
                 offers={offers}
+                pending={pricePending}
                 selected={offer.id}
                 disabled={busy || !canPurchase || phase === "checkout-open"}
                 onSelect={(next) => {
@@ -451,9 +455,20 @@ function PurchasePanel({
               />
             )}
             {offers.length <= 1 && (
-              <p className="annual-price">
-                {offer.formattedAmount}
-                <span> USD / {offer.interval}</span>
+              <p
+                className={`annual-price${pricePending ? " amp-skeleton" : ""}`}
+                aria-busy={pricePending || undefined}
+              >
+                {pricePending ? (
+                  <span className="annual-price-wait" aria-hidden>
+                    {"\u00a0"}
+                  </span>
+                ) : (
+                  <>
+                    {offer.formattedAmount}
+                    <span> USD / {offer.interval}</span>
+                  </>
+                )}
               </p>
             )}
             <p>One learner · practice, lessons & books</p>
@@ -462,7 +477,7 @@ function PurchasePanel({
                 {additionalChildLine(extraOffers, offer.interval)}
               </p>
             )}
-            {canPurchase && (
+            {(canPurchase || pricePending) && (
               <p className="annual-renewal">
                 Renews automatically each {offer.interval} until canceled.
                 <br />
@@ -502,11 +517,14 @@ function PurchasePanel({
         </div>
       </div>
       <footer className="annual-dock">
-        {offer && canPurchase && consentActive ? (
+        {offer && (canPurchase || pricePending) && consentActive ? (
+          // While the learner's price loads, the checkout action waits in
+          // place, so the dock does not change when it arrives.
           <button
             className="annual-primary"
             type="button"
-            disabled={busy || checking}
+            disabled={busy || checking || pricePending}
+            aria-busy={pricePending || undefined}
             onClick={() => void checkout()}
           >
             {busy
@@ -563,10 +581,10 @@ function PurchasePanel({
           )}
           {learnerId &&
             available &&
-            (canPurchase || phase === "awaiting-payment") && (
+            (canPurchase || pricePending || phase === "awaiting-payment") && (
               <button
                 type="button"
-                disabled={busy || checking}
+                disabled={busy || checking || pricePending}
                 onClick={() => void refresh(learnerId, ++revision.current)}
               >
                 Check access
@@ -597,7 +615,9 @@ function PurchasePanel({
           returnFocus={termsTrigger.current}
         >
           <p>
-            {offer?.formattedAmount} USD per {offer?.interval} for one learner.
+            {pricePending
+              ? "For one learner."
+              : `${offer?.formattedAmount} USD per ${offer?.interval} for one learner.`}
             Renews automatically each {offer?.interval} unless canceled.
           </p>
           <p>
