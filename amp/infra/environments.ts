@@ -4,14 +4,28 @@
  * keys, webhook secrets and the Stripe account id stay in each environment's
  * secret (see infra/secrets.ts and docs/external-config.md).
  */
+import { retiredPrices } from "../src/billing/stripe/retired-prices.ts";
+
+function retiredIds(livemode: boolean) {
+  const id = (interval: "year" | "month") =>
+    retiredPrices.find(
+      (p) => p.livemode === livemode && p.interval === interval,
+    )!.priceId;
+  return { year: id("year"), month: id("month") };
+}
+
 export type EnvironmentName = "stage" | "prod";
 
 export interface StripeEnvironment {
   /** Test mode for stage, live mode for prod; the key's mode must match. */
   mode: "test" | "live";
   productId: string;
-  /** The existing recurring prices. The tooling verifies them, never edits them. */
-  priceIds: { year: string; month: string };
+  /**
+   * The prices AMP sold before the current catalog (src/billing/stripe/
+   * retired-prices.ts). The tooling verifies they still exist; subscribers
+   * keep renewing on them. The price being sold is found by its lookup key.
+   */
+  retiredPriceIds: { year: string; month: string };
 }
 
 export interface Environment {
@@ -25,10 +39,7 @@ export const environments: Record<EnvironmentName, Environment> = {
     stripe: {
       mode: "test",
       productId: "prod_VStv6AR38jUxQ5",
-      priceIds: {
-        year: "price_1URy7GQzEit9vbmMsJYMY168",
-        month: "price_1URy7GQzEit9vbmMRk26kegM",
-      },
+      retiredPriceIds: retiredIds(false),
     },
   },
   prod: {
@@ -36,10 +47,7 @@ export const environments: Record<EnvironmentName, Environment> = {
     stripe: {
       mode: "live",
       productId: "prod_VTD2GqZXy2tSQL",
-      priceIds: {
-        year: "price_1USGcKQzEit9vbmMZ5uPUGc4",
-        month: "price_1USGcKQzEit9vbmMIeLvG5Ou",
-      },
+      retiredPriceIds: retiredIds(true),
     },
   },
 };

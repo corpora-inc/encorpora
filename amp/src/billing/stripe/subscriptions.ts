@@ -1,4 +1,4 @@
-import { BillingError, planConfig } from "./config.js";
+import { BillingError, planForPrice } from "./config.js";
 import type { StripeGateway } from "./gateway.js";
 import type { StripeRepository, InboxEvent } from "./repository.js";
 
@@ -30,7 +30,7 @@ export async function recordSubscriptionEvent(
     subscription.items.data.length !== 1 ||
     !item ||
     item.quantity !== 1 ||
-    item.price.id !== planConfig(gateway.config, binding.interval).priceId
+    !planForPrice(gateway.config, item.price.id, binding.interval)
   )
     throw new BillingError("subscription_mapping_mismatch");
   if (!binding.sessionId) throw new BillingError("checkout_session_missing");
