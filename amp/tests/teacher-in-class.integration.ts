@@ -10,14 +10,14 @@ import { clearStandingsCache } from "../src/schools/standings.js";
 import { buildApp } from "../src/server/app.js";
 import { refuseStudentTokens } from "../src/server/auth.js";
 import { ApiError, PostgresRepository } from "../src/server/repository.js";
+import { schoolDay } from "./helpers/school-day.js";
 
 /* The teacher in their class (docs/families.md): each teacher of a class who
    practices on their own adult learner is a line on the class's map and board,
    marked as the teacher and never ranked. Students can pass them. Nothing that
    counts students ever counts them. Every name here is made up. */
 const DAY = 86_400_000;
-const day = (back: number) =>
-  new Date(Date.now() - back * DAY).toISOString().slice(0, 10);
+const day = (back: number) => schoolDay(-back);
 const agreement = {
   version: "fixture-1",
   signerName: "Fixture Signer",
