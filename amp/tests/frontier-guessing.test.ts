@@ -129,6 +129,15 @@ test("the recorded below-catalog trial no longer lifts fractions two grades on o
   assert.equal(after.adaptive!.level, before.adaptive!.level);
 });
 
+test("graphical solution estimates cover three-choice intersection variants", () => {
+  const problem = generateProblem("graphical-solution-table", "audit:13");
+  assert.equal(problem.public.response.kind, "choice");
+  if (problem.public.response.kind !== "choice") throw new Error("response");
+  assert.equal(problem.public.response.options.length, 3);
+  assert.equal(problemGuessChance(problem), 1 / 3);
+  assert.equal(guessChanceOf("graphical-solution-table"), 1 / 3);
+});
+
 test("guess chance comes from each family's answer schema and is never understated", () => {
   let choiceFamilies = 0;
   for (const template of templates) {

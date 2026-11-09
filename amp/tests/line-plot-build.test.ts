@@ -18,6 +18,7 @@ import {
 } from "../src/math/contracts";
 import {
   diagnoseLinePlotBuild,
+  gradeLinePlotBuild,
   linePlotCounts,
   linePlotValues,
   normalizeLinePlotBuild,
@@ -25,6 +26,11 @@ import {
   type LinePlotBuildResponse,
 } from "../src/math/line-plot-build";
 import { problemLesson } from "../src/content/problem-lessons";
+import {
+  guessChanceOf,
+  problemGuessChance,
+  responseGuessChance,
+} from "../src/math/guess-chance";
 
 const response: LinePlotBuildResponse = {
   kind: "line-plot-build",
@@ -35,6 +41,40 @@ const response: LinePlotBuildResponse = {
 };
 const encode = (counts: Record<string, number>) => JSON.stringify({ counts });
 const key = encode({ 3: 2, 5: 2, 6: 1 });
+
+test("guess chance counts distinct permitted maps, including empty columns", () => {
+  for (const [columns, maxPerValue] of [
+    [5, 2],
+    [6, 1],
+  ] as const) {
+    const r: LinePlotBuildResponse = {
+      ...response,
+      axis: { ...response.axis, max: response.axis.min + columns - 1 },
+      maxPerValue,
+      measurementCount: 3,
+    };
+    linePlotBuildResponseSchema.parse(r);
+    const answers = new Set<string>();
+    const enumerate = (value: number, counts: Record<string, number>) => {
+      if (value > r.axis.max) {
+        const answer = normalizeLinePlotBuild(r, encode(counts));
+        assert.notEqual(answer, null);
+        answers.add(answer!);
+        return;
+      }
+      for (let count = 0; count <= r.maxPerValue; count++)
+        enumerate(value + 1, { ...counts, [value]: count });
+    };
+    enumerate(r.axis.min, {});
+    assert.ok(answers.has(encode({})), "Empty columns are valid answers");
+    const correct = encode({ 2: 1, 3: 1, 4: 1 });
+    const accepted = [...answers].filter((answer) =>
+      gradeLinePlotBuild(r, correct, answer),
+    ).length;
+    assert.equal(accepted, 1);
+    assert.equal(responseGuessChance(r), accepted / answers.size);
+  }
+});
 
 test("count validation, canonicalization and diagnosis precedence", () => {
   assert.equal(
@@ -113,12 +153,18 @@ test("1000 generated plots satisfy the independent oracle, bounds, gating and re
     generateProblem("line-plot-build", `build-${i}`),
   );
   const families = new Map<string, number>();
+  const chance = guessChanceOf("line-plot-build");
+  assert.ok(chance > 0 && chance < 1 / 1000, `Count-map chance: ${chance}`);
   let several = 0,
     gaps = 0;
   for (const [i, p] of cases.entries()) {
     const r = p.public.response;
     assert.equal(r.kind, "line-plot-build");
     if (r.kind !== "line-plot-build") throw new Error("response");
+    assert.ok(
+      chance >= problemGuessChance(p),
+      `build-${i}: ${problemGuessChance(p)} > ${chance}`,
+    );
     assert.ok(
       r.axis.max - r.axis.min + 1 <= 6,
       "Generated scales leave room for 44px columns at 320px",

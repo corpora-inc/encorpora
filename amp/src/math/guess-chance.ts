@@ -14,10 +14,10 @@ import { historicalTemplates } from "./historical-templates";
  * schema. tests/frontier-guessing.test.ts checks far more seeds against it. */
 const SAMPLE_SEEDS = 16;
 const STRUCTURED_SEEDS = 128;
-/** Floors for variable multi-part families whose high-guessability variants
+/** Floors for variable families whose high-guessability variants
  * are rarer than the deterministic sample. Keep these in sync with the
  * generator-variation audit in frontier-guessing.test.ts. */
-const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
+const FAMILY_GUESS_FLOOR: Readonly<Record<string, number>> = {
   "circle-estimate-blanks": 1 / 8,
   "round-decimal-blanks": 1 / 8,
   "quotient-remainder-blanks": 1 / 8,
@@ -34,6 +34,8 @@ const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
   // Two factors among three or four choices, or three multiples among four or five.
   "factor-pairs-select": 1 / 3,
   "multiples-select": 1 / 4,
+  // Equal intersection coordinates collapse a distractor, leaving three choices.
+  "graphical-solution-table": 1 / 3,
 };
 /** An unregistered choice family is scored as the most guessable choice: two
  * options. Overstating the guess chance only discounts a correct answer. */
@@ -65,6 +67,8 @@ export const builtGuessChances = built.length;
  * Structured work needs its private rule to count valid orders and proofs
  * (`problemGuessChance`); from the public response alone it is unknown. */
 export function responseGuessChance(response: ProblemResponse): number {
+  // One exact count map: each column independently permits 0..maxPerValue.
+  // Omitted counts mean zero; measurementCount does not restrict submissions.
   if (response.kind === "line-plot-build")
     return (
       1 /
@@ -103,7 +107,7 @@ export function guessChance(
     const structured =
       template.requiredResponseCapability === "structured-work-v1";
     // The sample can miss rare, more guessable variants in these generators.
-    let greatest = MULTI_PART_GUESS_FLOOR[template.id] ?? 0;
+    let greatest = FAMILY_GUESS_FLOOR[template.id] ?? 0;
     for (let i = 0; i < (structured ? STRUCTURED_SEEDS : SAMPLE_SEEDS); i++)
       greatest = Math.max(
         greatest,
