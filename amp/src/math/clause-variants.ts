@@ -58,6 +58,9 @@ export function clauseMetadata(meta: TemplateMetadata): TemplateMetadata {
   return {
     ...meta,
     version: meta.version + 1,
+    ...(!meta.requiredResponseCapability
+      ? { hasNumericVariants: true as const }
+      : {}),
     reprintsFrom: meta.reprintsFrom ?? meta.version,
     ...(needs.length
       ? {

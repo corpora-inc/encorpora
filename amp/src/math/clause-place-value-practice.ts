@@ -53,6 +53,7 @@ export const numberNamesTemplate: TemplateMetadata = {
   gradeBand: "K–2",
   requiredResponseCapability: "single-choice-v1",
   requiredResponseCapabilities: ["single-choice-v1"],
+  hasNumericVariants: true,
   description:
     "Match a three-digit numeral to its number name, or write a numeral from words, including zeros and teens.",
 };

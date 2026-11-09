@@ -297,6 +297,8 @@ export const clientCanDraw = (
   (!template.requiredFigureCapability ||
     client.figureCapabilities.includes(template.requiredFigureCapability));
 export interface TemplateMetadata {
+  /** A family with specialized answers also emits typed number/fraction answers. */
+  hasNumericVariants?: true;
   /** Every response capability emitted by a mixed-format family. */
   requiredResponseCapabilities?: readonly ResponseCapability[];
   /** Editorial local step on the curriculum-grade scale, not empirical calibration. */

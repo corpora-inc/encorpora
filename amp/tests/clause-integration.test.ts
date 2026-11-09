@@ -12,6 +12,8 @@ import { guessChance, problemGuessChance } from "../src/math/guess-chance";
 import { problemLesson } from "../src/content/problem-lessons";
 import { clauseMethod } from "../src/content/clause-variant-lessons";
 import { typographyIssues } from "./fixtures/math-typography";
+import { buildCoverageManifest } from "../src/content/coverage";
+import { buildGapLedger } from "../src/curriculum/gap-ledger";
 
 const affected = templates.filter(
   (t) =>
@@ -21,6 +23,13 @@ const affected = templates.filter(
       "similarity-by-transformation-grade-8",
     ].includes(t.id),
 );
+
+test("clause registration preserves valid instruction, standards and released-item coverage", () => {
+  const coverage = buildCoverageManifest();
+  assert.equal(coverage.valid, true, coverage.errors.join("\n"));
+  const ledger = buildGapLedger();
+  assert.equal(ledger.valid, true, ledger.errors.join("\n"));
+});
 const kindCapability = {
   choice: "single-choice-v1",
   "multi-select": "multi-select-v1",

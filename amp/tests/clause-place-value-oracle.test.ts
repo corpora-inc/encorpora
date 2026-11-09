@@ -9,6 +9,7 @@ import {
 import { random } from "../src/math/clause-support";
 import { generatedProblemSchema } from "../src/math/contracts";
 import { numberWords } from "../src/math/staar-gap-practice";
+import { clauseAdditionLessons } from "../src/content/clause-addition-lessons";
 
 test("place-value clauses agree with an independent public-input oracle and reject answer mutations", () => {
   const generationErrors: string[] = [];
@@ -187,4 +188,38 @@ print('900 three-digit names checked')
   );
   assert.equal(result.status, 0, result.stderr || String(result.error));
   assert.match(result.stdout, /900 three-digit names checked/);
+});
+
+test("number-name reference lesson has independently checked examples", () => {
+  const lesson = clauseAdditionLessons.find((entry) =>
+    entry.templateIds.includes("three-digit-number-names"),
+  );
+  assert.ok(lesson);
+  const result = spawnSync(
+    "python3",
+    [
+      "-c",
+      String.raw`
+import json, re, sys
+sys.path.insert(0, 'scripts')
+from clause_place_value_math_oracle import calc, plain, read_name, value
+lesson = json.load(sys.stdin)
+example = lesson['workedExample']
+name = re.fullmatch(r'Write (.+) as a numeral\.', example['prompt'])[1]
+assert value(example['answer']) == read_name(name), 'Worked numeral must match the stated number name'
+for paragraph in lesson['sections'][0]['paragraphs']:
+    match = re.search(r'In ([0-9]+),.*?name is ([^.]+)\.', paragraph)
+    assert match and int(match[1]) == read_name(match[2]), paragraph
+texts = example['steps'] + [p for section in lesson['closingSections'] for p in section['paragraphs']]
+equations = [plain(e) for text in texts for e in re.findall(r'\$([^$]+)\$', text) if '=' in e]
+assert len(equations) >= 2, 'Worked and formal place-value equalities are both checked'
+for equation in equations:
+    left, right = equation.split('=')
+    assert calc(left) == calc(right), equation
+print('Number-name reference lesson examples checked')
+`,
+    ],
+    { input: JSON.stringify(lesson), encoding: "utf8", timeout: 10_000 },
+  );
+  assert.equal(result.status, 0, result.stderr || String(result.error));
 });

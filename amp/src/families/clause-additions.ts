@@ -10,6 +10,7 @@ import {
   clausePrinciple,
 } from "../content/clause-variant-lessons";
 import type { TemplateMetadata } from "../math/contracts";
+import { clauseAdditionLessons } from "../content/clause-addition-lessons";
 
 const grade8: TemplateMetadata = {
   id: "similarity-by-transformation-grade-8",
@@ -47,55 +48,35 @@ export const family = {
   methods: Object.fromEntries(
     types.map((t) => [t.id, clauseMethod(variantOf(t.id))!]),
   ),
+  lessons: clauseAdditionLessons,
   principles: Object.fromEntries(
     types.map((t) => [t.id, clausePrinciple(variantOf(t.id))!]),
   ),
   facetMappings: [
     {
       templateId: numberNamesTemplate.id,
-      facetId: "hundreds-place-value.2.NBT.A.3",
+      facetId: "hundreds-place-value.core",
       extent: "partial",
       rationale:
         "Reads three-digit number names and produces numerals, including zeros, teens and round hundreds.",
     },
     {
       templateId: grade8.id,
-      facetId: "dilations-similarity.8.G.A.4",
+      facetId: "dilations-similarity.core",
       extent: "partial",
       rationale:
         "Grade-8 selection route for the grade-8-origin variant: compare corresponding sides and identify an origin dilation followed by a rigid motion.",
     },
     {
-      templateId: "transformation-rule-slots",
-      facetId: "transformation-invariants.HSG.CO.A.2",
-      extent: "partial",
-      rationale:
-        "The function-notation variant evaluates and inverts a point rule and classifies distance preservation.",
-    },
-    {
-      templateId: "place-transformed-image",
-      facetId: "transformation-constructions.HSG.CO.A.5",
-      extent: "partial",
-      rationale:
-        "The geometry-draw variant places the vertices of an image after off-origin turns, reflections, translations or a two-step composition.",
-    },
-    {
-      templateId: "place-transformed-image",
-      facetId: "transformation-constructions.HSG.CO.B.6",
-      extent: "partial",
-      rationale:
-        "Computes and plots every image vertex from geometric descriptions of rigid motions.",
-    },
-    {
       templateId: "geo-reflection-side",
-      facetId: "transformation-invariants.HSG.CO.B.6",
+      facetId: "transformation-constructions.HSG.CO.B.6",
       extent: "partial",
       rationale:
         "Uses geometric descriptions of two reflections to determine the image of a side.",
     },
     {
       templateId: "similarity-proof-aa",
-      facetId: "similarity-theorems.HSG.SRT.B.4",
+      facetId: "similarity-proofs.HSG.SRT.B.4",
       extent: "partial",
       rationale:
         "Reason-selection proofs establish the proportional-side converse and derive the Pythagorean theorem from triangle similarity.",
@@ -105,4 +86,32 @@ export const family = {
     "three-digit-number-names": ["number.number-word-form"],
     "similarity-by-transformation-grade-8": ["transformation.image"],
   },
+  // A coverage facet belongs to a template's primary skill. Cross-skill
+  // discovery uses the registry's explicit instructional connections.
+  connections: [
+    {
+      from: "rigid-motions",
+      to: "transformation-invariants",
+      kind: "related",
+      explanation:
+        "Evaluate a transformation as a point function, recover its input, and decide whether it preserves distance (HSG.CO.A.2).",
+      templateIds: ["transformation-rule-slots"],
+    },
+    {
+      from: "rigid-motions",
+      to: "transformation-constructions",
+      kind: "related",
+      explanation:
+        "Plot transformed vertices using off-origin turns, reflections and compositions described geometrically (HSG.CO.A.5 and HSG.CO.B.6).",
+      templateIds: ["place-transformed-image"],
+    },
+    {
+      from: "similarity-proofs",
+      to: "similarity-theorems",
+      kind: "related",
+      explanation:
+        "Use similarity to prove the proportional-side converse and the Pythagorean theorem (HSG.SRT.B.4).",
+      templateIds: ["similarity-proof-aa"],
+    },
+  ],
 } satisfies ContentFamily;
