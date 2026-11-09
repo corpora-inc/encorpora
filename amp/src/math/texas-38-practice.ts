@@ -8,6 +8,13 @@ import { random, type Random } from "./distribution-practice";
 import { scene, table } from "./scene/author";
 import { operationStoryValues, timesCast } from "./story-kit/operations";
 import { chooseAxes, defineAxis } from "./variation/axes";
+import {
+  buildReciprocalCheck,
+  clauseTask,
+  scalingExplain,
+  scalingMenu,
+  shuffleScalingPool,
+} from "./fraction-clause-variants";
 import type { Scene } from "./scene/spec";
 
 /* Texas grades 3-8 requirements that existing skills did not yet practise:
@@ -48,10 +55,17 @@ const metadata = (
   description: string,
 ): TemplateMetadata => ({
   id,
-  version: id === "times-as-many-comparison" ? 2 : 1,
+  version:
+    id === "scaling-direction-choice"
+      ? 3
+      : id === "times-as-many-comparison" || id === "reciprocal-division-choice"
+        ? 2
+        : 1,
   ...(id === "times-as-many-comparison"
     ? { reprintsFrom: 1, previousSkillId: "multiplicative-stories" }
-    : {}),
+    : id === "scaling-direction-choice" || id === "reciprocal-division-choice"
+      ? { reprintsFrom: 1 }
+      : {}),
   title,
   skillId,
   gradeBand,
@@ -1978,7 +1992,11 @@ const PROPER: Fr[] = [
   fr(1, 3),
   fr(5, 8),
 ];
-function reciprocalDivisionChoice(r: Random): Built {
+function reciprocalDivisionChoice(r: Random, seed = ""): Built {
+  if (seed && clauseTask("reciprocal-division-choice", seed) === "check") {
+    const built = buildReciprocalCheck(r);
+    return { variant: "check", ...built };
+  }
   const variant = pick(r, [
     "whole-by-fraction",
     "fraction-by-fraction",
@@ -2124,7 +2142,12 @@ const MORE_F: Fr[] = [
   fr(7, 5),
   fr(8, 3),
 ];
-function scalingDirectionChoice(r: Random): Built {
+function scalingDirectionChoice(r: Random, seed = ""): Built {
+  const task = seed ? clauseTask("scaling-direction-choice", seed) : "legacy";
+  if (task === "explain" || task === "times-one") {
+    const built = scalingExplain(r, task);
+    return { variant: built.task, ...built };
+  }
   const variant = pick(r, [
     "greater-than-start",
     "less-than-start",
@@ -2175,7 +2198,7 @@ function scalingDirectionChoice(r: Random): Built {
           outcome,
           `${label} is ${kind === "less" ? "less" : "greater"} than 1.`,
         );
-  const pool: { label: string; feedback: string }[] = [
+  let pool: { label: string; feedback: string }[] = [
     {
       label: text("Greater", "multiplying always makes a number greater."),
       feedback: `Multiplying by a number less than 1 makes a number smaller, and by a number greater than 1 makes it greater; it depends on the multiplier.`,
@@ -2207,7 +2230,10 @@ function scalingDirectionChoice(r: Random): Built {
         ? `Multiplying by 1 does not change ${N}, so the product equals ${N}.`
         : `Multiplying by a number ${kind === "less" ? "less" : "greater"} than 1 makes the result ${kind === "less" ? "less" : "greater"} than ${N}.`,
     ],
-    choices: choicesFrom(correct, pool),
+    choices: choicesFrom(
+      correct,
+      seed && scalingMenu(seed) === "shuffled" ? shuffleScalingPool(seed, pool) : pool,
+    ),
   };
 }
 
@@ -3737,7 +3763,11 @@ export function texas38Case(templateId: string, seed: string) {
       draft =
         templateId === "times-as-many-comparison"
           ? timesAsManyComparison(r, telling)
-          : build(r);
+          : templateId === "scaling-direction-choice"
+            ? scalingDirectionChoice(r, seed)
+            : templateId === "reciprocal-division-choice"
+              ? reciprocalDivisionChoice(r, seed)
+              : build(r);
     } catch (error) {
       if (error instanceof Error && error.message.startsWith("Need three"))
         continue;

@@ -372,6 +372,10 @@ SOLVERS = {
 
 
 def solve(public):
+    from fraction_clause_math_oracle import solve_clause
+    clause = solve_clause(public)
+    if clause is not None:
+        return clause
     require(public["templateId"] in SUPPORTED, "Wrong family")
     return SOLVERS[public["templateId"]](public)
 
