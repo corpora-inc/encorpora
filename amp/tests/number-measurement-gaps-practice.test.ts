@@ -22,6 +22,7 @@ const expectedVariants: Record<string, string[]> = {
     "area-model-sum",
     "l-shape",
     "not-equal",
+    "tile-sentence",
   ],
   "estimate-reasonableness": [
     "best-product",
@@ -221,6 +222,18 @@ test("area: totals come from figures and sentences, not generator internals", ()
         v.some((p) => p[0] === split.from[0] && p[1] === split.from[1]),
       );
       assert.ok(split.from[0] === split.to[0] || split.from[1] === split.to[1]);
+    } else if (variant === "tile-sentence") {
+      const stated =
+        /A rectangle has (\d+) rows of (\d+) unit squares\. (\d+) rows? (?:is|are) already tiled/.exec(
+          problem.public.prompt,
+        )!;
+      const a = Number(stated[1]);
+      const b = Number(stated[2]);
+      const k = Number(stated[3]);
+      assert.ok(k >= 1 && k < a);
+      assert.equal(correct, `${a} × ${b} = ${a * b}`);
+      assert.ok(options.some((o) => o.label === `${k} × ${b} = ${k * b}`));
+      assert.equal(problem.public.figure?.kind, "scene");
     } else {
       const total =
         figure.rows[0] *
