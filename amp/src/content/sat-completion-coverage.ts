@@ -96,7 +96,7 @@ export const satCompletionFacetMappings: readonly FacetMapping[] = [
     facetId: "regression-interpretation.core",
     extent: "partial",
     rationale:
-      "Choose a linear, quadratic, or exponential model fitting plotted observations by comparing squared residuals. Uses bounded original instances; does not establish exhaustive coverage of the aligned standard.",
+      "Construct four-point scatter plots from paired data, describe linear, quadratic and exponential patterns, and choose among candidate models by comparing squared residuals. Construction and interpretation use separate exercises within the existing plotting protocol.",
   },
   {
     templateId: "quadratic-parameter-root",

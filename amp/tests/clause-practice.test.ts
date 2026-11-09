@@ -86,6 +86,19 @@ test("clause surfaces are deterministic, valid, gradeable and reachable", () => 
   }
 });
 
+test("worked examples can request each signed-number and geometry clause", () => {
+  for (const [id, entry] of Object.entries(clauseEntries)) {
+    const meta = templates.find((template) => template.id === id)!;
+    for (const variant of entry.values) {
+      if (variant === "legacy") continue;
+      const problem = generateClauseVariant(meta, "clause-lesson", variant);
+      assert.equal(problem?.public.templateId, id);
+      assert.equal(problem?.variant?.axes?.clause, variant, `${id}/${variant}`);
+      assert.ok(gradeAnswer(problem!, problem!.answer), `${id}/${variant}`);
+    }
+  }
+});
+
 test("saved catalog versions keep the pre-clause surfaces", () => {
   // Captured from the unmodified engine at 8bad63b75, including teaching text.
   const digests = JSON.parse(
@@ -326,6 +339,29 @@ test("independent prompt and figure oracle verifies every clause surface", () =>
   );
   assert.equal(review.status, 0, `${review.stdout}\n${review.stderr}`);
   assert.equal(JSON.parse(review.stdout).cases, problems.length);
+  const routed = spawnSync(
+    "python3",
+    [
+      "-c",
+      `import importlib.util, json, sys
+sys.path.insert(0, 'scripts')
+spec = importlib.util.spec_from_file_location('review', 'scripts/independent-math-review.py')
+review = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(review)
+for line in sys.stdin:
+    problem = json.loads(line)
+    assert review.is_clause_variant(problem['public']), problem['public']['templateId']
+    assert review.solve_family(problem['public']) == review.solve_clause_variant(problem['public'])
+    review.review_clause_variant(problem)
+`,
+    ],
+    {
+      input: problems.map((p) => JSON.stringify(p)).join("\n"),
+      encoding: "utf8",
+      maxBuffer: 8 * 1024 * 1024,
+    },
+  );
+  assert.equal(routed.status, 0, routed.stderr);
 });
 
 test("a future base revision preserves the clause introduction and saved problem IDs", () => {

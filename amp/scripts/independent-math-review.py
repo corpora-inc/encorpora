@@ -14,6 +14,8 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+import clause_variants_oracle
+from clause_variants_oracle import self_test as review_clause_fixtures
 from collections import Counter
 from fractions import Fraction
 from rational_expression_math_oracle import RATIONAL_EXPRESSION, solve_rational_expression, review_rational_expression_fixtures, review_rational_expression_problem
@@ -80,7 +82,27 @@ from attribute_math_oracle import ATTRIBUTE, ATTRIBUTE_CHOICE, solve_attribute, 
 from comparison_math_oracle import COMPARISON, COMPARISON_CHOICE, solve_comparison, review_comparison_fixtures, ComparisonCorpus
 from data_display_math_oracle import DATA_DISPLAY, DATA_DISPLAY_CHOICE, solve_data_display, review_data_display_fixtures
 from rational_content_oracle import check_problem as review_rational_problem, review_rational_content
-from clause_variants_math_oracle import handles_public as is_clause_variant, solve as solve_clause_variant, review_problem as review_clause_variant
+import clause_variants_math_oracle
+
+
+def clause_oracle(public):
+    if clause_variants_math_oracle.handles_public(public):
+        return clause_variants_math_oracle
+    if clause_variants_oracle.matches(public):
+        return clause_variants_oracle
+    return None
+
+
+def is_clause_variant(public):
+    return clause_oracle(public) is not None
+
+
+def solve_clause_variant(public):
+    return clause_oracle(public).solve(public)
+
+
+def review_clause_variant(problem):
+    return clause_oracle(problem['public']).review_problem(problem)
 
 # Add an independently derived solver here before adding a generated family.
 SUPPORTED = frozenset({
@@ -859,6 +881,7 @@ def review(stream):
     # successful review still runs the full fixture and mutation inventory.
     for oracle in FAMILY_ORACLES:
         oracle.self_test()
+    review_clause_fixtures()
     review_fraction_expression_fixtures()
     review_hierarchy_multiselect_fixtures()
     review_variation_axes_fixtures()

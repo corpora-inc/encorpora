@@ -1,7 +1,14 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { spawnSync } from "node:child_process";
-import { templates, generateProblem, gradeAnswer } from "../src/math/engine";
+import {
+  templates,
+  generateProblem as generateCurrent,
+  gradeAnswer,
+} from "../src/math/engine";
+// Retain the original confidence-interval oracle at its stored version.
+const generateProblem = (id: string, seed: string) =>
+  generateCurrent(id, seed, 1);
 import { generatedProblemSchema } from "../src/math/contracts";
 import { assessmentGapTemplates } from "../src/math/assessment-gap-practice";
 import { assessmentGapLessons } from "../src/content/assessment-gap-lessons";
