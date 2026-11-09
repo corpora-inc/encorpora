@@ -10,6 +10,8 @@ import {
 } from "./features/curriculum/CurriculumDetails";
 import { bandLabel } from "./features/pathways/model";
 import { Select } from "./ui/Select";
+import { Button } from "./ui/Button";
+import { Loading } from "./ui/Loading";
 import { MathText } from "./MathText";
 import {
   attachTerms,
@@ -28,20 +30,143 @@ export type LibrarySkillRow = {
   description?: string;
 };
 
+// Glossary terms are part of the search index. They load with the catalog
+// (the placeholder below asks for them), so the first results of a search
+// already include its math words: nothing is inserted above them later.
+let glossaryEntries: readonly GlossaryEntry[] | undefined;
+let glossaryRequest: Promise<readonly GlossaryEntry[]> | undefined;
+/** Fetches the search glossary once; the app asks with the catalog. */
+export function loadGlossary() {
+  glossaryRequest ??= import("../glossary").then(
+    (module) => (glossaryEntries = module.glossary),
+    (error: unknown) => {
+      // Titles and summaries still search; the next visit asks again.
+      glossaryRequest = undefined;
+      console.error("Glossary could not be loaded for search", error);
+      return [];
+    },
+  );
+  return glossaryRequest;
+}
+
+type LibraryProps = {
+  templates: readonly TemplateMetadata[];
+  skills: readonly LibrarySkillRow[];
+  references: readonly Lesson[];
+  openReference: (lesson: Lesson, trigger: HTMLElement) => void;
+  openTopic: (templateId: string) => void;
+};
+
 /**
  * `/lessons`: every reference lesson and every problem type's short lesson,
  * grouped by curriculum band, filtered by math area and found by instant
  * search. The query and area live in the URL (`?q=`, `?strand=`), so
  * refresh, Back and a shared link restore the same results. Rows stay
  * mounted and are hidden, not removed, so filtering never rebuilds the page.
+ * The library opens once its whole index (catalog and glossary) is here.
  */
-export function LessonLibrary(props: {
-  templates: readonly TemplateMetadata[];
-  skills: readonly LibrarySkillRow[];
-  references: readonly Lesson[];
-  openReference: (lesson: Lesson, trigger: HTMLElement) => void;
-  openTopic: (templateId: string) => void;
+export function LessonLibrary(props: LibraryProps) {
+  const [glossary, setGlossary] = useState(glossaryEntries);
+  useEffect(() => {
+    if (glossary) return;
+    let current = true;
+    void loadGlossary().then((entries) => {
+      if (current) setGlossary(entries);
+    });
+    return () => {
+      current = false;
+    };
+  }, [glossary]);
+  return glossary ? (
+    <Library {...props} glossary={glossary} />
+  ) : (
+    <LessonLibraryPlaceholder />
+  );
+}
+
+/**
+ * Lessons before its catalog: the title, the search row and the count line
+ * in the places the library paints them, so nothing moves when it lands. A
+ * failed catalog says so in the search row's place, with Try again.
+ */
+export function LessonLibraryPlaceholder({
+  retry,
+}: {
+  /** Present when the catalog failed: requests it again. */
+  retry?: () => Promise<unknown>;
 }) {
+  useEffect(() => void loadGlossary(), []);
+  return (
+    <section
+      className={`lesson-index ${styles.library}`}
+      aria-label="Lessons"
+      aria-busy={!retry}
+    >
+      <h1 className={styles.title}>Lessons</h1>
+      <div className={styles.body}>
+        {retry ? (
+          <LessonsUnavailable retry={retry} />
+        ) : (
+          <>
+            <div
+              className={`${styles.bar} amp-skeleton`}
+              data-placeholder="search"
+              aria-hidden="true"
+            >
+              <span className={styles.searchSlot} />
+              <span className={styles.areaSlot} />
+            </div>
+            <CurriculumDetailsControl />
+            <p className={styles.summary} role="status">
+              <Loading inline>Opening lessons…</Loading>
+            </p>
+          </>
+        )}
+      </div>
+    </section>
+  );
+}
+
+/** The catalog failed: what happened, and the one action that recovers. */
+export function LessonsUnavailable({
+  retry,
+}: {
+  retry: () => Promise<unknown>;
+}) {
+  const [busy, setBusy] = useState(false);
+  // Still here after a retry means it failed too: the words say so, and the
+  // changed alert is announced again.
+  const [again, setAgain] = useState(false);
+  return (
+    <div className={styles.unavailable}>
+      <p role="alert">
+        <strong>
+          {again ? "Lessons still didn’t load." : "Lessons didn’t load."}
+        </strong>{" "}
+        Check your connection, then try again.
+      </p>
+      <Button
+        variant="primary"
+        aria-busy={busy || undefined}
+        disabled={busy}
+        onClick={() => {
+          setBusy(true);
+          void retry().finally(() => {
+            setBusy(false);
+            setAgain(true);
+          });
+        }}
+      >
+        Try again
+      </Button>
+    </div>
+  );
+}
+
+function Library({
+  glossary,
+  ...props
+}: LibraryProps & { glossary: readonly GlossaryEntry[] }) {
   const { shown: detailsShown } = useCurriculumDetails();
   const { location, navigate } = useAppRoute();
   const params = new URLSearchParams(location.search);
@@ -93,39 +218,18 @@ export function LessonLibrary(props: {
     );
   };
   const query = useDeferredValue(text.trim());
-  // Glossary terms join the index once the first search needs them.
-  const [glossary, setGlossary] = useState<readonly GlossaryEntry[] | null>(
-    null,
-  );
-  useEffect(() => {
-    if (!query || glossary) return;
-    let current = true;
-    import("../glossary")
-      .then((module) => {
-        if (current) setGlossary(module.glossary);
-      })
-      .catch((error) =>
-        console.error("Glossary could not be loaded for search", error),
-      );
-    return () => {
-      current = false;
-    };
-  }, [query, glossary]);
   const base = useMemo(
     () =>
       buildLibrary(props.references, props.templates, props.skills, gradeOrder),
     [props.references, props.templates, props.skills],
   );
-  const items = useMemo(
-    () => (glossary ? attachTerms(base, glossary) : base),
-    [base, glossary],
-  );
+  const items = useMemo(() => attachTerms(base, glossary), [base, glossary]);
   const shown = useMemo(
     () => visibleIds(items, query, strand),
     [items, query, strand],
   );
   const words = useMemo(
-    () => (glossary && query ? matchingTerms(glossary, query) : []),
+    () => (query ? matchingTerms(glossary, query) : []),
     [glossary, query],
   );
   const bands = useMemo(() => {
@@ -165,11 +269,14 @@ export function LessonLibrary(props: {
     types = count("type");
   const plural = (n: number, one: string, many: string) =>
     `${n} ${n === 1 ? one : many}`;
+  // The field shows the whole query; the count names a long one shortened,
+  // so the line stays within its two reserved lines.
+  const named = query.length > 24 ? `${query.slice(0, 23).trimEnd()}…` : query;
   const summary = !query
     ? `${plural(lessons, "lesson", "lessons")} · ${plural(types, "problem type", "problem types")}`
     : lessons + types
-      ? `${plural(lessons, "lesson", "lessons")} and ${plural(types, "problem type", "problem types")} match “${query}”`
-      : `Nothing matches “${query}”. Try fewer letters or another word.`;
+      ? `${plural(lessons, "lesson", "lessons")} and ${plural(types, "problem type", "problem types")} match “${named}”`
+      : `Nothing matches “${named}”. Try fewer letters or another word.`;
   return (
     <section className={`lesson-index ${styles.library}`} aria-label="Lessons">
       <h1 className={styles.title}>Lessons</h1>
