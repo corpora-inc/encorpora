@@ -7,6 +7,9 @@ export function readerProofPage(book: MathBook): string {
   const serialized = JSON.stringify(book).replaceAll("<", "\\u003c");
   return `<!doctype html><html lang="en"><head>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- Exercise classic scrollbar gutters on macOS too: overlay scrollbars
+     otherwise hide wrapping failures found by the Linux browser checks. -->
+<style>.reader-stage::-webkit-scrollbar { width: 15px; }</style>
 </head><body><div id="root"></div><script type="module">
 import '/src/web/app/styles.ts';
 import React from 'react';

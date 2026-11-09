@@ -609,6 +609,28 @@
 /* Keep room for units and captions when the shared bar leaves a short
    reading stage. SVG geometry scales; the surrounding text does not. */
 @container reader (max-height: 360px) {
+  /* A reserved scrollbar gutter can wrap the algebra key or caption onto
+     another line. Let that text keep its size and give the artwork the
+     space left inside the padded reading surface. */
+  .reading-content:has(> .algebra-figure:not(.algebra-value-table)) {
+    display: flex;
+    flex-direction: column;
+    max-height: 100cqh;
+  }
+  .algebra-figure:not(.algebra-value-table) {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .algebra-figure .algebra-art {
+    min-height: 0;
+  }
+  .algebra-figure .algebra-art svg {
+    height: 100%;
+  }
+  .algebra-figure .algebra-notes {
+    flex: none;
+  }
   .reader-stage .book-screen-figure svg {
     max-height: 52cqh;
   }
