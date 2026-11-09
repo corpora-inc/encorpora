@@ -191,10 +191,13 @@ try {
         );
         await page.evaluate(() => document.fonts.ready);
         await noOverflow(page);
-        assert.match(
-          await page.locator(".workspace-topic").innerText(),
-          /SAT Math/,
-        );
+        // The shared frame places the topic above the problem on phones
+        // and in the bar on wider screens. Check the one shown to the learner.
+        const topic = page
+          .locator(".workspace-topic")
+          .filter({ visible: true });
+        assert.equal(await topic.count(), 1, "One visible practice topic");
+        assert.match(await topic.innerText(), /SAT Math/);
         await page.screenshot({
           path: `${output}/${id}-${width}-${theme}.png`,
           fullPage: true,
