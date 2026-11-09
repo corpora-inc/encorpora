@@ -5,7 +5,6 @@ import { Pool } from "pg";
 import { migrate } from "../scripts/migrate.js";
 import { PostgresRepository } from "../src/server/repository.js";
 import { buildApp } from "../src/server/app.js";
-import { generateProblem } from "../src/math/engine.js";
 import { purgeExpiredTrials } from "../src/server/trials.js";
 
 /** The free assessment's workbooks on PostgreSQL, with hosted access rules
@@ -92,8 +91,12 @@ test(
             payload: {
               problemId: problem.id,
               requestId: randomUUID(),
-              response: generateProblem(problem.templateId, problem.seed)
-                .answer,
+              // Any valid response counts as an answer; correctness is not
+              // what this test is about (as in trial-exhaustion).
+              response:
+                problem.response?.kind === "choice"
+                  ? problem.response.options[0].id
+                  : "1",
             },
           });
           assert.equal(attempt.statusCode, 200, attempt.body);
