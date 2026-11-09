@@ -6,13 +6,14 @@ import { invalidateAccount } from "../../lib/query";
 
 export function useActivateGift(session: AuthSession) {
   return useMutation({
-    mutationFn: ({ id, learnerId }: { id: string; learnerId: string }) =>
+    // A family gift covers every child, so it is activated without a learner.
+    mutationFn: ({ id, learnerId }: { id: string; learnerId?: string }) =>
       request(
         `/access-grants/${encodeURIComponent(id)}/activate`,
         giftActivationSchema,
         {
           token: session.token,
-          body: { learnerId },
+          body: learnerId ? { learnerId } : {},
         },
       ),
     onSuccess: () => invalidateAccount(session.accountId),

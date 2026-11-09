@@ -21,6 +21,8 @@ const messages: Record<string, string> = {
   gift_already_assigned:
     "This gift is already attached to a learner. Open practice to continue.",
   gift_learner_unavailable: "Choose a learner from this account and try again.",
+  family_learner_required:
+    "Add a learner first. Your family’s gift starts with them.",
   invalid_gift_request: "Choose a learner and try again.",
   gift_service_unavailable:
     "Your access could not be activated. Please try again; your gift will not be used twice.",
