@@ -28,7 +28,11 @@ import styles from "./Trial.module.css";
 /** `/try/map`: the estimated level in every area after placement, the free
  * meter, and the next step that will succeed. */
 export function TrialMap() {
-  const session = useQuery(trialSessionOptions);
+  const session = useQuery({
+    ...trialSessionOptions,
+    refetchOnMount: false,
+    retryOnMount: false,
+  });
   if (session.error)
     return (
       <TrialFailure
@@ -44,7 +48,13 @@ export function TrialMap() {
 
 function MapView({ session }: { session: TrialSession }) {
   const { shown } = useCurriculumDetails();
-  const progress = useQuery(progressOptions(session));
+  // The route loads this snapshot. A failed arrival stays on its retry view
+  // instead of immediately retrying and changing the screen without input.
+  const progress = useQuery({
+    ...progressOptions(session),
+    refetchOnMount: false,
+    retryOnMount: false,
+  });
   const catalog = useQuery(catalogOptions);
   const evidence = useQuery(trialEvidenceOptions(session));
   const offered = useTrialBuyOffered();
@@ -68,7 +78,7 @@ function MapView({ session }: { session: TrialSession }) {
     track("map_view");
   }, []);
   if (isEnded(progress.error)) return <TrialEnded />;
-  if (progress.error && !progress.data)
+  if (progress.error)
     return (
       <TrialFailure
         framed

@@ -24,6 +24,7 @@ import { nativeRuntime } from "../native-runtime";
 import { hasAccountContext } from "../lib/account-page";
 import {
   authConfigOptions,
+  MOUNT_REFETCH_AFTER_MS,
   queryClient,
   sessionOptions,
   meKey,
@@ -334,7 +335,30 @@ const tryMap = createRoute({
   getParentRoute: () => root,
   path: "/try/map",
   beforeLoad: beforeTrial,
-  loader: loadTrialBuy,
+  loader: async (args) => {
+    const { progressOptions, trialSessionOptions } =
+      await import("../features/trial/api");
+    await Promise.all([
+      loadTrialBuy(args),
+      queryClient
+        .ensureQueryData(trialSessionOptions)
+        .then((session) =>
+          session
+            ? queryClient.fetchQuery({
+                ...progressOptions(session),
+                // Answers mark this resource stale. Await the new count before
+                // deciding whether an empty assessment should return to practice.
+                // A just-loaded checkpoint is shared with its destination.
+                staleTime: MOUNT_REFETCH_AFTER_MS,
+              })
+            : null,
+        )
+        .catch(() => {
+          // The destination owns retry and expired-assessment recovery through
+          // these query errors; the route only waits for the read to settle.
+        }),
+    ]);
+  },
   component: trial("TrialMap"),
 });
 const tryPlans = createRoute({

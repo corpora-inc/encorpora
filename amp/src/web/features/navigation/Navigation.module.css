@@ -8,6 +8,7 @@
 }
 .emailRow {
   display: flex;
+  min-width: 0;
   align-items: center;
   gap: var(--space-2);
   min-height: var(--target-size);
