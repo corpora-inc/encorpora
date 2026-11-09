@@ -38,7 +38,8 @@ const definitions = rows
 export const timeMoneyTemplates: readonly TemplateMetadata[] = definitions.map(
   ({ id, title, skillId, response, description }) => ({
     id,
-    version: 1,
+    version: id === "money-total-dollars" ? 2 : 1,
+    ...(id === "money-total-dollars" ? { reprintsFrom: 1 as const } : {}),
     title,
     skillId,
     gradeBand: "K–2",

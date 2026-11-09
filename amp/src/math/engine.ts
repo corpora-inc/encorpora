@@ -410,6 +410,7 @@ import { elementaryTemplates, generateElementaryProblem } from "./elementary";
 import { graphicalTemplates, generateGraphicalProblem } from "./graphical";
 import { extendedTemplates, generateExtendedProblem } from "./extended";
 import { familyRegistry } from "../families/registry";
+import { clauseVariantProblem } from "./clause-gap";
 import { createHash } from "node:crypto";
 import { makeTenHops } from "./scene/explanations";
 import { mathLabel, polish } from "./polish";
@@ -445,7 +446,8 @@ export const baseTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "add-within-20",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Add within twenty",
     skillId: "addition-within-20",
     gradeBand: "K–2",
@@ -453,7 +455,8 @@ export const baseTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "subtract-within-20",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Subtract within twenty",
     skillId: "subtraction-within-20",
     gradeBand: "K–2",
@@ -1020,6 +1023,10 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  // Clause variants draw on their own axis stream. Legacy draws, version-1
+  // reprints and legacy surfaces return null and fall through unchanged.
+  const clauseVariant = clauseVariantProblem(templateId, seed);
+  if (clauseVariant) return clauseVariant;
   if (templateId === "true-equation-choice")
     return historicalTrueEquationChoice.generate(seed).problem;
   if (templateId === "equal-factor-equations-select")

@@ -67,6 +67,27 @@ HALF = {0, 30}
 FIVES = set(range(5, 60, 5))
 
 
+def solve_money_symbols(public):
+    import json
+    kind = public['response']['kind']
+    prompt = public['prompt']
+    if kind == 'multi-select':
+        cents = one_set(public)
+        labels = {f'{cents}¢', f'$0.{cents:02d}'}
+        ids = sorted(o['id'] for o in public['response']['options'] if o['label'] in labels)
+        require(len(ids) == 2, 'Both symbol forms')
+        return json.dumps(ids, separators=(',', ':'))
+    if prompt.startswith('Dev saved'):
+        cents = int(re.search(r'(\d+) cents', prompt)[1])
+        return option(public, f'${cents // 100}.{cents % 100:02d}')
+    if prompt.startswith('A sticker costs'):
+        found = re.search(r'\$0\.(\d{2})', prompt)
+        require(found is not None, 'Sticker price')
+        return option(public, f'{int(found[1])}¢')
+    cents = one_set(public, coins_only=False)
+    return option(public, f'${cents // 100}.{cents % 100:02d}')
+
+
 def solve_time_money(public):
     template, prompt = public['templateId'], public['prompt']
     if template in ('read-clock-hour-half', 'read-clock-five-minutes'):
@@ -101,6 +122,8 @@ def solve_time_money(public):
     if template == 'coin-total':
         require(prompt == 'How many cents are these coins worth in all?', 'Coin wording')
         return one_set(public)
+    if template == 'money-total-dollars' and public.get('response', {}).get('kind', 'number') != 'number':
+        return solve_money_symbols(public)
     if template == 'money-total-dollars':
         require(prompt.startswith('How much money is shown?'), 'Dollar wording')
         return Fraction(one_set(public, coins_only=False), 100)

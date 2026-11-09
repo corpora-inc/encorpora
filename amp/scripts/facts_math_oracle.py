@@ -53,13 +53,13 @@ def solve_facts(public):
         require(m is not None, f'Unexpected sum prompt {prompt!r}')
         a, b = int(m[1]), int(m[2])
         require(figure == {'kind': 'ten-frame-pair', 'first': a, 'second': b}, 'Frames disagree with the sum')
-        require(11 <= a + b <= 18, 'Sum does not cross ten')
+        require(0 <= a + b <= 18, 'Sum leaves the one-digit facts')
         return a + b
     if name == 'related-subtraction':
         m = re.fullmatch(r'What is (\d+) − (\d+)\?', prompt)
         require(m is not None, f'Unexpected difference prompt {prompt!r}')
         whole, part = int(m[1]), int(m[2])
-        require(11 <= whole <= 20 and 1 <= part <= 9, 'Outside facts within twenty')
+        require(0 <= part <= whole <= 18 and part <= 9, 'Outside one-digit differences')
         # The missing addend: the number that joins part to make whole.
         return next(x for x in range(21) if part + x == whole)
     if name == 'mental-ten-hundred':

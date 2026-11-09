@@ -147,8 +147,11 @@ export const numberSenseTemplates: readonly TemplateMetadata[] =
     skillId,
     gradeBand,
     description,
-    version: id === "round-large" || id === "digit-value-ratio" ? 2 : 1,
-    ...(id === "round-large" || id === "digit-value-ratio"
+    version:
+      id === "round-large" || id === "digit-value-ratio" || id === "number-line-hops"
+        ? 2
+        : 1,
+    ...(id === "round-large" || id === "digit-value-ratio" || id === "number-line-hops"
       ? { reprintsFrom: 1 }
       : {}),
     ...(id === "digit-value-ratio" ? { previousSkillId: "powers-of-ten" } : {}),

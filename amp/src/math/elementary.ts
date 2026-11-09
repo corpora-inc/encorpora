@@ -140,13 +140,21 @@ const definitions = [
     "Continue by ones from any supported starting point through 120.",
   ],
 ] as const;
+const clauseVersion = new Set([
+  "ten-frame-complement",
+  "add-ones-regroup",
+  "add-several-two-digit",
+  "add-with-regrouping",
+  "subtract-with-regrouping",
+]);
 export const elementaryTemplates: readonly TemplateMetadata[] = definitions.map(
   ([id, title, skillId, , description]) => ({
     id,
     title,
     skillId,
     description,
-    version: 1,
+    version: clauseVersion.has(id) ? 2 : 1,
+    ...(clauseVersion.has(id) ? { reprintsFrom: 1 as const } : {}),
     gradeBand: "K–2",
   }),
 );

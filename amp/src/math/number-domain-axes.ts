@@ -283,6 +283,9 @@ export const isSweepId = (id: string): id is SweepId => id in sweepAxes;
 export type SweepAxes<K extends SweepId> = AxisValues<(typeof sweepAxes)[K]>;
 
 let legacyOnly = 0;
+/** True while `withLegacySurfaces` is forcing every sweep family onto the
+ * surface it had before axes existed. Clause variants honor the same gate. */
+export const forcingLegacySurfaces = () => legacyOnly > 0;
 /**
  * Run `build` with every sweep family on its legacy surface. Published
  * editions are built this way: a given edition keeps the exact problems it

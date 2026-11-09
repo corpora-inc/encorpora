@@ -47,7 +47,10 @@ export const earlyOperationsTemplates: readonly TemplateMetadata[] =
     skillId,
     description,
     gradeBand: "K–2",
-    version: 1,
+    version: id === "number-bond-missing" || id === "three-addend-story" ? 2 : 1,
+    ...(id === "number-bond-missing" || id === "three-addend-story"
+      ? { reprintsFrom: 1 as const }
+      : {}),
   }));
 
 function random(id: string, seed: string): Random {

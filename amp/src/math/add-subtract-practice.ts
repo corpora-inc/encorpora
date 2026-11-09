@@ -65,7 +65,19 @@ export const addSubtractTemplates: readonly TemplateMetadata[] =
     skillId,
     gradeBand,
     description,
-    version: 1,
+    version:
+      id === "add-three-digit" ||
+      id === "subtract-three-digit" ||
+      id === "add-multidigit" ||
+      id === "subtract-multidigit"
+        ? 2
+        : 1,
+    ...(id === "add-three-digit" ||
+    id === "subtract-three-digit" ||
+    id === "add-multidigit" ||
+    id === "subtract-multidigit"
+      ? { reprintsFrom: 1 as const }
+      : {}),
   }));
 
 function random(id: string, seed: string): Random {

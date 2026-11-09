@@ -16,6 +16,18 @@ import sys
 from pathlib import Path
 from collections import Counter
 from fractions import Fraction
+
+
+def slot_key(public, labels):
+    """Canonical multi-part answer: blank id to the option whose label matches."""
+    key = {}
+    blanks = public['response']['blanks']
+    require(len(blanks) == len(labels), 'Slot count')
+    for blank, label in zip(blanks, labels):
+        hits = [option['id'] for option in blank['options'] if option['label'] == label]
+        require(len(hits) == 1, f'Slot {blank["id"]} should show {label} once')
+        key[blank['id']] = hits[0]
+    return json.dumps(key, separators=(',', ':'))
 from rational_expression_math_oracle import RATIONAL_EXPRESSION, solve_rational_expression, review_rational_expression_fixtures, review_rational_expression_problem
 from nonlinear_system_math_oracle import NONLINEAR_SYSTEM, solve_nonlinear_system, review_nonlinear_system_fixtures, review_nonlinear_system_problem
 from elementary_math_oracle import ELEMENTARY, solve_elementary
@@ -451,6 +463,12 @@ def solve_family(public):
     if template == 'count-objects':
         require(figure['kind'] == 'collection' and 1 <= figure['count'] <= 10, 'Invalid counting representation')
         return figure['count']
+    if template == 'add-within-20' and public['response']['kind'] != 'number':
+        found = re.search(r'double (\d+) \+ \1, and what is (\d+) \+ (\d+)\?', prompt)
+        require(found is not None, 'Near-double wording')
+        double = 2 * int(found[1])
+        total = int(found[2]) + int(found[3])
+        return slot_key(public, [str(double), str(total)])
     if template == 'add-within-20':
         require(len(numbers) == 2 and min(numbers) >= 0 and sum(numbers) <= 20, 'Addition bounds')
         # The scene: a 0–20 number line marked at the greater addend, with
@@ -756,6 +774,10 @@ def review(stream):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
+        elif public['response']['kind'] not in ('number', 'fraction'):
+            expected = solved
+            actual = problem['answer']
+            require(isinstance(expected, str) and isinstance(actual, str), 'Non-numeric answer must be text')
         else:
             expected = Fraction(solved)
             actual = Fraction(problem['answer'])

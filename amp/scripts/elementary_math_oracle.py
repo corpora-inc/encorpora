@@ -48,6 +48,14 @@ def solve_elementary(public):
         frame(a, 0, 10)
         require(0 <= b <= a <= 10, 'Invalid small subtraction')
         return a - b
+    if name == 'ten-frame-complement' and public.get('response', {}).get('kind') == 'choice':
+        frame(figure['first'], 0, 10)
+        filled = figure['first']
+        empty = 10 - filled
+        labels = {f'{filled} + {empty} = 10', f'10 = {filled} + {empty}'}
+        hits = [option['id'] for option in public['response']['options'] if option['label'] in labels]
+        require(len(hits) == 1, 'One sentence names the partner')
+        return hits[0]
     if name == 'ten-frame-complement':
         frame(figure['first'], 0, 10)
         return sum(1 for index in range(10) if index >= figure['first'])
@@ -78,10 +86,42 @@ def solve_elementary(public):
         require(block_value() == value, 'Model and starting quantity disagree')
         require(('more' in prompt) != ('less' in prompt), 'Ambiguous direction')
         return value + (10 if 'more' in prompt else -10)
+    if name == 'add-ones-regroup' and public.get('response', {}).get('kind', 'number') != 'number':
+        import json
+        found = re.search(r'blocks show (\d+)\. Add (\d+) ones', prompt)
+        require(found is not None, 'Stack wording')
+        start, extra = int(found[1]), int(found[2])
+        require(block_value() == start, 'Model and starting amount disagree')
+        ones = (start % 10) + extra
+        carry = 1 if ones >= 10 else 0
+        cells = {
+            'Ones': str(ones % 10),
+            'Carry': str(carry),
+            'Tens': str(start // 10 + carry),
+        }
+        body = []
+        for row in public['response']['rows']:
+            field = row['fields'][0]
+            if field['kind'] == 'choice':
+                bank = next(b for b in public['response']['banks'] if b['id'] == field['bank'])
+                hits = [o['id'] for o in bank['options'] if o['label'].startswith('Ten of the ones')]
+                require(len(hits) == 1, 'Carry reason')
+                body.append([hits[0]])
+            else:
+                key = next(name for name in cells if row['label'].startswith(name))
+                body.append([cells[key]])
+        return json.dumps(body, separators=(',', ':'))
     if name in ('add-ones-regroup', 'subtract-whole-tens'):
-        start, change = numbers
+        start, change = numbers[:2]
         require(block_value() == start, 'Model and starting amount disagree')
         if name == 'add-ones-regroup':
+            if ' tens' in prompt:
+                added = change * 10
+                require(20 <= added <= 80 and start + added <= 99, 'Tens addend')
+                return start + added
+            if change % 10 == 0 and change >= 20:
+                require(start + change <= 99, 'Tens addend')
+                return start + change
             require(start % 10 + change >= 10 and change < 10, 'Missing required regroup')
             return start + change
         require(start % 10 == change % 10 == 0 and change <= start, 'Not whole-ten subtraction')
@@ -97,13 +137,25 @@ def solve_elementary(public):
             return figure['tens'] + 1
         require(prompt.startswith('Trade ten tens') and figure['tens'] >= 10, 'Not enough tens to exchange')
         return figure['hundreds'] + 1
+    if name == 'add-several-two-digit' and public.get('response', {}).get('kind', 'number') != 'number':
+        from add_subtract_math_oracle import slot_key
+        require(3 <= len(numbers) <= 4, 'Three or four addends')
+        tens = sum(n - n % 10 for n in numbers)
+        ones = sum(n % 10 for n in numbers)
+        return slot_key(public, [str(tens), str(ones), str(tens + ones)])
     if name == 'add-several-two-digit':
         require(3 <= len(numbers) <= 4 and all(10 <= n <= 59 for n in numbers), 'Invalid addend set')
         return sum(numbers)
+    if name == 'add-with-regrouping' and public.get('response', {}).get('kind', 'number') != 'number':
+        from add_subtract_math_oracle import solve_digit_stack
+        return solve_digit_stack(prompt, public)
     if name == 'add-with-regrouping':
         a, b = numbers
         require(a % 10 + b % 10 >= 10 and a + b < 1000, 'Invalid regrouping sum')
         return a + b
+    if name == 'subtract-with-regrouping' and public.get('response', {}).get('kind', 'number') != 'number':
+        from add_subtract_math_oracle import solve_digit_stack
+        return solve_digit_stack(prompt, public)
     if name == 'subtract-with-regrouping':
         a, b = numbers
         require(a % 10 < b % 10 and 0 <= b <= a < 1000, 'Invalid regrouping difference')
