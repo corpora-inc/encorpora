@@ -99,7 +99,7 @@ test("every variant of every template is reachable", () => {
   variants(complexQuadraticSolveCase, 5);
   variants(complexPartsCase, 5);
   variants(interpretLinearParametersCase, 5);
-  variants(quadraticFormConversionCase, 5);
+  variants(quadraticFormConversionCase, 6);
   variants(rationalExtraneousSingleCase, 5);
   variants(squareRootExtraneousCase, 5);
 });
@@ -418,6 +418,54 @@ test("quadratic form conversion keeps the function equal and reveals the stated 
       for (const t of [1, 2, 3, 5])
         assert.ok(near(ev(f, axis + t), ev(f, axis - t)));
       assert.ok(!near(ev(f, axis + 1), ev(f, axis + 2)) || true);
+    } else if (c.variant === 5) {
+      assert.match(prompt, /^In this situation/);
+      const old = generateProblem(
+        "quadratic-form-conversion",
+        `gap:${seed}`,
+        1,
+      );
+      assert.doesNotMatch(old.public.prompt, /^In this situation/);
+      const model = c.model as {
+        a: number;
+        r1: number;
+        r2: number;
+        time: number;
+        extreme: number;
+        start: number;
+        mirror: number;
+      };
+      assert.equal(model.a * model.r1 * model.r2, model.start);
+      assert.equal((model.r1 + model.r2) / 2, model.time);
+      assert.equal(
+        -model.a * ((model.r2 - model.r1) / 2) ** 2,
+        model.extreme,
+      );
+      assert.equal(2 * model.time, model.mirror);
+      assert.ok(!prompt.includes(correct), prompt);
+      const shown = [
+        ...prompt.matchAll(/([ABC]): \$[A-Za-z]\(([a-z])\)=([^$]+)\$/g),
+      ];
+      if (shown.length === 3) {
+        const variable = shown[0]![2]!;
+        const asX = (expr: string) => expr.replaceAll(variable, "x");
+        for (const x of [0, 1, 2, 3, 5]) {
+          assert.equal(ev(asX(shown[0]![3]!), x), ev(asX(shown[1]![3]!), x));
+          assert.equal(ev(asX(shown[0]![3]!), x), ev(asX(shown[2]![3]!), x));
+        }
+        const letter = /Form ([ABC])/.exec(correct)?.[1];
+        if (letter) {
+          for (const n of [...correct.matchAll(/-?\d+/g)].map((m) =>
+            Math.abs(Number(m[0])),
+          )) {
+            const hits = shown.filter((m) =>
+              new RegExp(`(?<![\\d])${n}(?![\\d])`).test(m[3]!),
+            );
+            assert.equal(hits.length, 1, `${correct} :: ${prompt}`);
+            assert.equal(hits[0]![1], letter);
+          }
+        }
+      }
     } else {
       const forms = [...prompt.matchAll(/option ([ABC]): \$([^$]+)\$/g)].map(
         (m) => clean(m[2]!),

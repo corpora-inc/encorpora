@@ -330,6 +330,28 @@ def solve_system_choice(public):
             require(all(ys[i] - ys[0] == slope * (xs[i] - xs[0]) for i in range(len(xs))), 'Table row must be linear')
             expected.add(linear_form_from(-slope, 1, ys[0] - slope * xs[0]))
         require(len(expected) == 2, 'Table rows must give different lines')
+    elif 'Which system of inequalities represents these limits?' in prompt:
+        coeffs = [int(n) for n in re.findall(r'at (\d+)', prompt)]
+        require(len(coeffs) >= 2, 'Two rates')
+        small, large = coeffs[0], coeffs[1]
+        cap = int(re.search(r'at most (\d+)', prompt)[1])
+        goal = int(re.search(r'at least (\d+)', prompt)[1])
+        require(small != large and cap != goal, 'The story numbers must distinguish the systems')
+
+        def norm_system(label):
+            text = plain(label).replace('\\text{ and }', ' and ').replace('\\text{, }', ' ')
+            text = text.replace('\\le', '<=').replace('\\ge', '>=')
+            text = re.sub(r'\\text\{[^}]*\}', '', text)
+            text = re.sub(r',?\s*x\s*>=\s*0', '', text)
+            text = re.sub(r',?\s*y\s*>=\s*0', '', text)
+            return re.sub(r'\s+', '', text)
+        expected = {f'x+y<={cap}and{small}x+{large}y>={goal}', f'{small}x+{large}y>={goal}andx+y<={cap}'}
+        correct, keys = [], []
+        for label in labels:
+            got = norm_system(label)
+            keys.append(got)
+            correct.append(got in expected)
+        return finish(public, correct, keys)
     elif prompt == 'Which system of equations is graphed?':
         graph, lines = graph_lines(public)
         for m_, b_ in lines:

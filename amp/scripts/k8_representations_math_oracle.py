@@ -596,9 +596,126 @@ def theory(text_head, event_text):
     return Fraction(sum(1 for o in space if pred(o)), len(space))
 
 
+def solve_represent(prompt, options):
+    listed = re.findall(r'\((\d+) outcomes: ([^)]*)\)', prompt)
+    require(listed, 'Device outcome lists')
+    if 'used twice' in prompt:
+        require(len(listed) == 1, 'A repeated device lists one stage')
+        width = int(listed[0][0])
+        require(len([item.strip() for item in listed[0][1].split(',') if item.strip()]) == width, 'Listed outcomes')
+        rows, cols = width, width
+    else:
+        require(len(listed) == 2, 'Two devices')
+        rows, cols = int(listed[0][0]), int(listed[1][0])
+        require(len([item.strip() for item in listed[0][1].split(',') if item.strip()]) == rows, 'First outcomes')
+        require(len([item.strip() for item in listed[1][1].split(',') if item.strip()]) == cols, 'Second outcomes')
+    total = rows * cols
+    truth = []
+    for option in options:
+        label = strip(option['label'])
+        found = re.search(r'exactly (\d+) outcomes', label)
+        require(found, 'Outcome count')
+        count = int(found[1])
+        truth.append(count == total and 'each pair once' in label)
+        if count != total:
+            require('each pair once' not in label, 'A wrong count claims every pair')
+    return pick(options, truth)
+
+
+def solve_event_list(prompt, options):
+    first = [item.strip() for item in re.search(r'First outcomes: ([^.]+)\.', prompt)[1].split(',')]
+    second = [item.strip() for item in re.search(r'Second outcomes: ([^.]+)\.', prompt)[1].split(',')]
+    phrase = re.search(r'The event is: ([^.]+)\.', prompt)[1]
+
+    def keep(left, right):
+        if phrase == 'tails or a 6':
+            return left == 'T' or right == '6'
+        if phrase == 'heads and an even number':
+            return left == 'H' and int(right) % 2 == 0
+        if phrase == 'at least one head':
+            return left == 'H' or right == 'H'
+        if phrase == 'doubles':
+            return left == right
+        if phrase == 'a sum of 7':
+            return int(left) + int(right) == 7
+        if phrase == 'a sum of at least 10':
+            return int(left) + int(right) >= 10
+        raise ValueError(f'Unknown event phrase: {phrase}')
+
+    favorable = sorted(f'({left}, {right})' for left in first for right in second if keep(left, right))
+    require(0 < len(favorable) < len(first) * len(second), 'Event is empty or certain')
+    truth = [sorted(re.findall(r'\([^)]*\)', option['label'])) == favorable for option in options]
+    return pick(options, truth)
+
+
+def solve_design(prompt, options):
+    found = re.search(r'These (\d+) trials are ([^.]*)\.', prompt)
+    require(found, 'Trial list')
+    total = int(found[1])
+    rows = [item.strip() for item in found[2].split(';') if item.strip()]
+    require(len(rows) == total, 'Trial count')
+    if 'type A blood' in prompt:
+        percent = int(re.search(r'(\d+)% of donors', prompt)[1])
+        threshold = int(re.search(r'at least (\d+) digits', prompt)[1])
+        width = percent // 10
+
+        def length(text):
+            digits = text[:-3] if text.endswith('cap') else text
+            for index, char in enumerate(digits):
+                if int(char) < width:
+                    return index + 1
+            return 8
+
+        hits = sum(1 for row in rows if length(row) >= threshold)
+        wanted = list(range(width))
+        truth = []
+        for option in options:
+            parsed = re.search(r'Digits ([0-9, ]+) stand for type A\. The estimate is (\d+)/(\d+)\.', strip(option['label']))
+            require(parsed, 'Digit rule')
+            digits = [int(item.strip()) for item in parsed[1].split(',')]
+            truth.append(digits == wanted and int(parsed[2]) == hits and int(parsed[3]) == total)
+        return pick(options, truth)
+    if 'all 3 children are girls' in prompt:
+        hits = sum(1 for row in rows if row and all(int(char) % 2 == 0 for char in row))
+        truth = []
+        for option in options:
+            label = strip(option['label'])
+            parsed = re.search(r'The estimate is (\d+)/(\d+)\.', label)
+            require(parsed, 'Estimate')
+            truth.append(label.startswith('Even digits stand for a girl.') and int(parsed[1]) == hits and int(parsed[2]) == total)
+        return pick(options, truth)
+    require('at least one 6' in prompt, 'Unknown simulation')
+
+    def success(text):
+        digits = text[:-3] if text.endswith('cap') else text
+        kept = []
+        for char in digits:
+            if len(kept) == 2:
+                break
+            digit = int(char)
+            if 1 <= digit <= 6:
+                kept.append(digit)
+        return len(kept) == 2 and 6 in kept
+
+    hits = sum(1 for row in rows if success(row))
+    truth = []
+    for option in options:
+        label = strip(option['label'])
+        parsed = re.search(r'The estimate is (\d+)/(\d+)\.', label)
+        require(parsed, 'Estimate')
+        truth.append(label.startswith('Digits 1, 2, 3, 4, 5, 6 are rolls') and int(parsed[1]) == hits and int(parsed[2]) == total)
+    return pick(options, truth)
+
+
 def solve_compound(public):
     prompt = strip(public['prompt'])
     options = options_of(public)
+    if 'Which description shows every outcome exactly once?' in prompt:
+        return solve_represent(prompt, options)
+    if 'Which list includes every outcome of the event' in prompt:
+        return solve_event_list(prompt, options)
+    if 'Which rule and estimate are correct?' in prompt:
+        return solve_design(prompt, options)
     if 'Here are' in prompt:
         m = re.search(r'Here are (\d+) trials: ([0-9, ]+)\. Based on these trials, what is the estimated probability that (.*)\?', prompt)
         require(m, 'Trial table required')
@@ -844,6 +961,18 @@ def self_test():
     wrong_key(sim)
     bad = copy.deepcopy(sim); bad['public']['prompt'] = bad['public']['prompt'].replace('31,', '61,'); reject(bad)
     bad = copy.deepcopy(sim); bad['public']['prompt'] = bad['public']['prompt'].replace('0 to 5 mean', '0 to 6 mean'); reject(bad)
+    space = make('compound-event-simulation', 'A coin (2 outcomes: H, T) is used with a spinner (3 outcomes: 1, 2, 3). Which description shows every outcome exactly once?',
+                 ['A table has one cell for every pair, exactly 6 outcomes, each pair once.', 'A tree draws the second stage under only one first branch, exactly 4 outcomes.', 'The added list H, T, 1, 2, 3 has exactly 5 outcomes.', 'A table uses 3 for both sides, exactly 9 outcomes.'], 0)
+    fixtures.append(space)
+    wrong_key(space)
+    listed = make('compound-event-simulation', 'Two fair coins are flipped, and the first coin is listed first. First outcomes: H, T. Second outcomes: H, T. The event is: at least one head. Which list includes every outcome of the event and no others?',
+                  ['The outcomes (H, H); (H, T); (T, H).', 'The outcomes (H, T); (T, H).', 'The outcomes (H, H); (H, T); (T, H); (T, T).', 'The outcomes (H, H).'], 0)
+    fixtures.append(listed)
+    wrong_key(listed)
+    rule = make('compound-event-simulation', '40% of donors have type A blood. One digit stands for one donor. A trial reads digits until a type A digit, and it stops at 8 digits. Count a trial when it uses at least 4 digits. These 10 trials are 2;91;9861;580;30;88880;3;77777777cap;12;670. Which rule and estimate are correct?',
+                ['Digits 0, 1, 2, 3 stand for type A. The estimate is 3/10.', 'Digits 0, 1, 2, 3, 4 stand for type A. The estimate is 5/10.', 'Digits 1, 2, 3, 4 stand for type A. The estimate is 6/10.', 'Digits 4 stand for type A. The estimate is 7/10.'], 0)
+    fixtures.append(rule)
+    wrong_key(rule)
 
     for fixture in fixtures:
         if fixture is meaning:

@@ -225,8 +225,23 @@ def quad_fn(equation):
 
 
 def solve_complete_square_equation(public):
+    """Same solutions, including a non-monic original: the two difference
+    polynomials are nonzero rational multiples, not necessarily identical."""
     d = quad_fn(re.search(r'solutions as \$([^$]+)\$', public['prompt'])[1])
-    return only(public, lambda l: all(quad_fn(l)(Q(x)) == d(Q(x)) for x in range(-3, 4)))
+
+    def same(label):
+        f = quad_fn(label)
+        ratios = set()
+        for x in range(-6, 7):
+            dv, fv = d(Q(x)), f(Q(x))
+            if dv == 0:
+                if fv != 0:
+                    return False
+            else:
+                ratios.add(fv / dv)
+        return len(ratios) == 1 and next(iter(ratios)) != 0
+
+    return only(public, same)
 
 
 def solve_step_property(public):

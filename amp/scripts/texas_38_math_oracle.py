@@ -991,8 +991,116 @@ def solve_pi(public):
 
 
 # ---------- 21 experimental-probability-predict ----------
+def hundredths_text(count, n):
+    quotient, remainder = divmod(count * 100, n)
+    if remainder * 2 >= n:
+        quotient += 1
+    return f'{quotient / 100:.2f}'
+
+
 def solve_experimental(public):
     p = public['prompt']
+    if 'What do these relative frequencies suggest?' in p:
+        opts = options_of(public)
+        if 'number cube' in p:
+            given = re.search(r'uses (\d+) of the (\d+) faces', p)
+            favorable, faces = int(given[1]), int(given[2])
+        elif 'equal sections' in p:
+            given = re.search(r'has (\d+) equal sections, and (\d+) (?:is|are) shaded', p)
+            faces, favorable = int(given[1]), int(given[2])
+        else:
+            given = re.search(r'has (\d+) equal marbles, and (\d+) (?:is|are) red', p)
+            faces, favorable = int(given[1]), int(given[2])
+        counts = [int(item) for item in re.findall(r'(\d+) of (?:10|50|200|600)', p)]
+        require(counts and len(counts) == 4, 'Four checkpoint counts')
+        marks = (10, 50, 200, 600)
+        prob = F(favorable, faces)
+        dev = lambda index: abs(F(counts[index], marks[index]) - prob)
+        require(dev(3) <= F(1, 25), '600-trial frequency is not near the probability')
+        require(dev(3) < dev(0), '600 trials are not closer than 10')
+        expected = 600 * prob
+        require(expected.denominator == 1 and counts[3] != int(expected), 'Exact expected count')
+        shown = [hundredths_text(counts[i], marks[i]) for i in range(4)]
+        sequence = f'{shown[0]}, {shown[1]}, {shown[2]}, and {shown[3]}'
+        good = []
+        for option in opts:
+            if sequence in option['label'] and 'settle near' in option['label']:
+                fractions = re.findall(r'(\d+)/(\d+)', option['label'])
+                require(fractions and all(F(int(a), int(b)) == prob for a, b in fractions), 'Stated probability')
+                good.append(option['id'])
+        return only(good, 'Long-run relative frequency')
+    if 'best explanation of the difference' in p:
+        opts = options_of(public)
+        den = int(re.search(r'probability 1/(\d+)', p)[1])
+        expected = int(re.search(r'so (\d+) are expected', p)[1])
+        trials = int(re.search(r'(\d+) times\.', p)[1])
+        observed = int(re.search(r'came up (\d+) times', p)[1])
+        require(expected * den == trials, 'Expected count does not match the model')
+        chance = 1 / den
+        sigma = math.sqrt(trials * chance * (1 - chance))
+        gap = abs(observed - trials * chance)
+        if 8 <= trials <= 30 and 1.2 * sigma - 1e-6 <= gap <= 2.5 * sigma + 1e-6:
+            kind = 'few'
+        elif trials >= 300 and gap >= 4 * sigma - 1e-6:
+            kind = 'wrong'
+        elif trials >= 200 and gap <= sigma + 1e-6:
+            kind = 'good'
+        else:
+            raise ValueError('Discrepancy falls in the gray zone')
+        if kind == 'few':
+            good = [option['id'] for option in opts if 'closer to' in option['label']]
+        elif kind == 'wrong':
+            good = [option['id'] for option in opts if 'model is wrong' in option['label']]
+        else:
+            good = [option['id'] for option in opts if option['label'].startswith('The agreement is good')]
+        return only(good, 'Source of the difference')
+    if 'Which probability model matches these results' in p:
+        opts = options_of(public)
+        results = re.search(r'Results: (.*)\. Which', p)[1]
+        pairs = [(name.strip(), int(count)) for name, count in re.findall(r'([^:;]+): (\d+)', results)]
+        require(len(pairs) >= 2 and len({count for _, count in pairs}) == len(pairs), 'Counts must be positive and distinct')
+        require(all(count > 0 for _, count in pairs), 'A count is zero')
+        total = sum(count for _, count in pairs)
+        follow = re.search(r'next (\d+) \w+ are ([^?]+)\?', p)
+        require(follow, 'Missing prediction')
+        nxt, target = int(follow[1]), follow[2].strip()
+        count = dict(pairs)[target]
+        require(nxt * count % total == 0, 'Prediction is not a whole number')
+        prediction = nxt * count // total
+        shares = []
+        for _, item in pairs:
+            require(item * 100 % total == 0, 'Share is not an exact hundredth')
+            shares.append(f'{item / total:.2f}')
+        require(sum(int(round(float(share) * 100)) for share in shares) == 100, 'Shares do not add to 1')
+        sequence = ', '.join(f'{name} {share}' for (name, _), share in zip(pairs, shares))
+        good = [option['id'] for option in opts if option['label'].startswith(sequence) and option['label'].endswith(f'about {prediction}.')]
+        return only(good, 'Model from data')
+    if 'appear to be equally likely' in p:
+        opts = options_of(public)
+        body = re.search(r'Counts: (.*)\. Based', p)[1]
+        counts = [int(count) for _, count in re.findall(r'([a-z][a-z -]*?)=(\d+)', body)]
+        require(len(counts) >= 2, 'Outcome counts')
+        total = sum(counts)
+        outcomes = len(counts)
+        mean = total / outcomes
+        sigma = math.sqrt(total * (1 / outcomes) * (1 - 1 / outcomes))
+        deviations = [abs(count - mean) for count in counts]
+        if total <= 30 and all(dev <= 2.5 * sigma + 1e-6 for dev in deviations):
+            kind = 'few'
+        elif total >= 200 and all(dev <= 1.5 * sigma + 1e-6 for dev in deviations):
+            kind = 'yes'
+        elif total >= 200 and max(counts) >= mean + 4 * sigma - 1e-6:
+            kind = 'no'
+        else:
+            raise ValueError('Equal-likelihood item is in the gray zone')
+        if kind == 'yes':
+            good = [option['id'] for option in opts if option['label'].startswith('Yes: each outcome')]
+        elif kind == 'no':
+            good = [option['id'] for option in opts if option['label'].startswith('No:')]
+            require(len(set(counts)) > 1, 'A lopsided result needs unequal counts')
+        else:
+            good = [option['id'] for option in opts if option['label'].startswith('Cannot tell:')]
+        return only(good, 'Equally likely judgment')
     m = re.fullmatch(r'A fair (coin is tossed|number cube is rolled) (\d+) times and (?:heads|a \d) comes up (\d+) times\. The theoretical probability of (?:heads|a \d) is (\d+/\d+)\. How many more (?:heads|\d+s) came up than the theory predicts\?', p)
     if m:
         number_response(public)
@@ -1331,6 +1439,20 @@ def self_test():
     good = case('experimental-probability-predict', 'A spinner was spun 25 times and landed on blue 12 times. Use these results to predict how many times the spinner lands on blue in 75 spins.', answer='36', number=True)
     review_problem(good)
     bad = copy.deepcopy(good); bad['answer'] = '12'; must_reject(bad, 'no scaling')
+    record = case('experimental-probability-predict', 'A fair spinner has 4 equal sections, and 3 are shaded. The app ran 600 seeded trials. The learner records the event count. The counts are 8 of 10, 32 of 50, 138 of 200, and 431 of 600. What do these relative frequencies suggest?', ['The relative frequencies are 0.80, 0.64, 0.69, and 0.72. They settle near 3/4, so the probability is about 3/4.', 'The probability is 0.80, the first result.', 'The relative frequencies keep changing, so the probability cannot be estimated.', 'After 600 trials the count must be exactly 450.'])
+    review_problem(record)
+    bad = copy.deepcopy(record); bad['answer'] = 'option-b'; must_reject(bad, 'first frequency')
+    source = case('experimental-probability-predict', 'A coin is spun on its edge 600 times. The model says heads has probability 1/2, so 300 are expected. Heads came up 475 times. Which is the best explanation of the difference?', ['475 of 600 is far more than ordinary chance variation, so the equally likely model is wrong.', 'The results must have been recorded wrongly.', 'It was due to land that way after missing earlier.', 'With 600 trials, this difference is ordinary chance variation.'])
+    review_problem(source)
+    bad = copy.deepcopy(source); bad['answer'] = 'option-d'; must_reject(bad, 'ordinary for a large gap')
+    model = case('experimental-probability-predict', 'A bent spinner was spun 250 times. Results: red: 90; blue: 80; green: 80. Which probability model matches these results, and about how many of the next 500 spins are red?', ['red 90, blue 80, green 80; about 90.', 'red 0.36, blue 0.32, green 0.32; about 90.', 'red 0.36, blue 0.32, green 0.32; about 180.', 'Each of the 3 outcomes has probability 1/3; about 167.'], answer='option-c')
+    must_reject(model, 'two equal counts')
+    model = case('experimental-probability-predict', 'A bent spinner was spun 250 times. Results: red: 120; blue: 80; green: 50. Which probability model matches these results, and about how many of the next 500 spins are red?', ['red 120, blue 80, green 50; about 120.', 'red 0.48, blue 0.32, green 0.20; about 120.', 'red 0.48, blue 0.32, green 0.20; about 240.', 'Each of the 3 outcomes has probability 1/3; about 167.'], answer='option-c')
+    review_problem(model)
+    bad = copy.deepcopy(model); bad['answer'] = 'option-b'; must_reject(bad, 'right shares, wrong prediction')
+    judge = case('experimental-probability-predict', 'A penny was spun 20 times. Counts: heads=13; tails=7. Based on these results, do the outcomes appear to be equally likely?', ['Yes, because the counts add up to 20.', 'Cannot tell: with only 20 trials, heads 13, tails 7 is ordinary variation.', 'Yes, because there are 2 outcomes, so each must have probability 1/2.', 'No, because the counts are not exactly equal.'], answer='option-b')
+    review_problem(judge)
+    bad = copy.deepcopy(judge); bad['answer'] = 'option-d'; must_reject(bad, 'exact counts')
     # 22 surface area
     good = case('cylinder-prism-surface-area', 'A cylinder has a radius of 5 cm and a height of 4 cm. Its total surface area, including both circular bases, is $a\\pi$ square centimeters. What is $a$?', answer='90', number=True)
     review_problem(good)
@@ -1340,7 +1462,7 @@ def self_test():
     good = case('both-sides-situation-equation', 'Rental A charges a starting fee of 26 dollars plus 2 dollars per minute. Rental B charges a starting fee of 2 dollars plus 5 dollars per minute. Which equation can be used to find the number of minutes, m, for which the two total costs are equal?', ['28m = 7m', '26 + 2m = 5m', '26 + 5m = 2 + 2m', '26 + 2m = 2 + 5m'], answer='option-d')
     review_problem(good)
     bad = copy.deepcopy(good); bad['answer'] = 'option-c'; must_reject(bad, 'rates swapped')
-    return {'fixtures': 23, 'rejectedMutations': rejected}
+    return {'fixtures': 27, 'rejectedMutations': rejected}
 
 
 def review_stream(lines, ids=SUPPORTED):

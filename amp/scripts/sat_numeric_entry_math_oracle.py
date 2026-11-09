@@ -464,6 +464,16 @@ def quadratic_context(prompt):
 
 # ---------- rate and mixture ----------
 def rate_numeric(prompt):
+    stated = re.search(r'in (\d+) hours\.', prompt)
+    if stated and 'The equation' in prompt:
+        hours = [int(n) for n in re.findall(r'in (\d+) hours', prompt)]
+        require(len(hours) >= 2 and hours[0] != hours[1], 'Two different times')
+        a, b = Q(hours[0]), Q(hours[1])
+        if 'both running' in prompt:
+            require(a < b, 'The drain must be slower than the pipe')
+            require(f'1/{hours[0]}' in prompt.replace(' ', '') or '\\frac{1}{' + str(hours[0]) + '}' in prompt, 'Equation uses the pipe time')
+            return 1 / (1 / a - 1 / b)
+        return 1 / (1 / a + 1 / b)
     m = re.fullmatch(r'Working alone, one machine finishes a job in (\d+) hours and a second machine finishes the same job in (\d+) hours\. Working together at these constant rates, how many hours do they need to finish the job\?', prompt)
     if m:
         a, b = Q(int(m[1])), Q(int(m[2]))
