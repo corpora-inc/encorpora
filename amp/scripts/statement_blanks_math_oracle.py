@@ -347,6 +347,10 @@ def solve_picks(public):
 
 
 def solve(public):
+    from fraction_clause_math_oracle import solve_clause
+    clause = solve_clause(public)
+    if clause is not None:
+        return clause
     picks = solve_picks(public)
     return compact({b["id"]: picks[b["id"]] for b in public["response"]["blanks"]})
 
