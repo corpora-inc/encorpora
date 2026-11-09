@@ -39,9 +39,10 @@ export async function registerAccessGiftRoutes(
     scope.post("/api/v1/access-grants/:id/activate", async (request) => {
       const account = await options.authenticate(request);
       const { id } = z.strictObject({ id: z.uuid() }).parse(request.params);
+      // A family gift covers every child, so it needs no learner.
       const { learnerId } = z
-        .strictObject({ learnerId: z.string().min(1).max(200) })
-        .parse(request.body);
+        .strictObject({ learnerId: z.string().min(1).max(200).optional() })
+        .parse(request.body ?? {});
       return repository.activate(account, id, learnerId);
     });
   });

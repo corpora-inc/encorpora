@@ -5,6 +5,7 @@ import {
   learningConsentActive,
   parentAddressConfirmed,
 } from "../server/account-access.js";
+import { coverWithFamilyGift } from "../access-grants/repository.js";
 import { recordEvent } from "../schools/events.js";
 import { INVITE_DAYS } from "../schools/license.js";
 import { generateHandle, SchoolRepository } from "../schools/repository.js";
@@ -752,6 +753,9 @@ async function approveInside(
     );
     await schools.enroll(client, family.class_id, personId, "student", today);
   }
+  // The approving family's gift in force covers this child too, whether
+  // they were just added or moved in from a school's unnamed roster.
+  await coverWithFamilyGift(client, accountId, learnerId);
   await client.query(
     "UPDATE amp_family_approvals SET approved_at=now(),person_id=$2,child_name=NULL,parent_email=NULL WHERE id=$1",
     [id, personId],
