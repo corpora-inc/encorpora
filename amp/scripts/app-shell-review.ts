@@ -426,7 +426,14 @@ export async function verifyShellReview({
                 `${fixture.origin}/lessons?topic=${encodeURIComponent(templates[0]!.id)}`,
                 { waitUntil: "domcontentloaded" },
               );
-              await page.locator(".lesson-sheet h2").waitFor();
+              await page
+                .locator(".lesson-sheet h2")
+                .waitFor({ timeout: 8000 })
+                .catch(() =>
+                  problems.push(
+                    "a refreshed short lesson waits for the catalog",
+                  ),
+                );
               if (
                 await page
                   .getByRole("heading", { name: "Lessons", exact: true })
