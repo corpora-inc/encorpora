@@ -11,20 +11,20 @@ export const inferenceFacetMappings: readonly FacetMapping[] = [
   [
     "representative-sample-choice",
     "sampling.representative-samples",
-    "Choose the one method that samples at random from the whole population among three convenience, volunteer or subgroup samples.",
+    "Choose representative sampling methods and judge whether a stated population generalization is supported by the sample's selection method.",
     "Designing a sampling plan and explaining a bias in writing require separate assessment.",
   ],
   [
     "sample-proportion-estimate",
     "sampling.population-estimates",
-    "Scale a random sample's whole-number count to a population of 400 to 5,000.",
+    "Scale a random sample's count to a population and distinguish approximate population inferences from claims of exact counts.",
     "Estimating means and judging margins of error require separate assessment.",
   ],
   [
     "sample-estimates-plot",
     "sampling.sampling-variation",
-    "Estimate a population count from the mean of ten random samples of 20 shown as a dot plot.",
-    "Simulating samples and judging how far estimates may stray require separate assessment.",
+    "Estimate population counts from sample means and gauge the range and largest distance from the class estimate in ten seeded simulated samples of equal size.",
+    "The engine generates the samples; learners do not operate a sampling simulator or infer guaranteed bounds on the population count.",
   ],
   [
     "means-in-mads",

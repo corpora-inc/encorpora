@@ -189,7 +189,7 @@ export const reconciledFacetMappings: readonly FacetMapping[] = [
     facetId: "categorical-association.HSS.ID.B.5",
     extent: "partial",
     rationale:
-      "Read joint and marginal relative frequencies from a two-way table of two categorical variables. Does not assess constructing a table from raw data or judging association.",
+      "Compute joint, marginal and conditional percentages, construct a two-way table from survey counts, and interpret a conditional percentage. Does not assess a numerical measure of association.",
   },
   {
     templateId: "conditional-frequency-choice",
@@ -203,7 +203,7 @@ export const reconciledFacetMappings: readonly FacetMapping[] = [
     facetId: "categorical-association.core",
     extent: "partial",
     rationale:
-      "Compute joint, marginal and conditional percents from a two-way table. Does not assess building the table or judging whether an association exists.",
+      "Compute joint, marginal and conditional percentages, construct a two-way table from survey counts, and interpret a conditional percentage. Does not assess a numerical measure of association.",
   },
   {
     templateId: "picture-graph-questions",
@@ -441,14 +441,14 @@ export const reconciledFacetMappings: readonly FacetMapping[] = [
     facetId: "complementary-trigonometry.HSG.SRT.C.7",
     extent: "partial",
     rationale:
-      "Use sine and cosine of complementary angles to find a value or solve for the variable in a cofunction equation. Does not assess explaining why the relationship holds.",
+      "Use complementary-angle ratios and explain their equality by identifying the same leg and hypotenuse from the two acute angles of a right triangle.",
   },
   {
     templateId: "complementary-trig",
     facetId: "complementary-trigonometry.core",
     extent: "partial",
     rationale:
-      "Use sine and cosine of complementary angles to find a value or solve for the variable in a cofunction equation. Does not assess explaining why the relationship holds.",
+      "Use complementary-angle ratios and explain their equality by identifying the same leg and hypotenuse from the two acute angles of a right triangle.",
   },
   {
     templateId: "complete-square-monic",
@@ -1925,7 +1925,7 @@ export const reconciledFacetMappings: readonly FacetMapping[] = [
     facetId: "oblique-triangles.core",
     extent: "partial",
     rationale:
-      "Use the law of sines or the law of cosines to find a side or angle, and count how many triangles fit side-side-angle measurements. Does not assess area.",
+      "Use sine and cosine laws to find measurements in bare triangles and surveying, force-resultant and navigation contexts, including bearings and right-angle cases. Does not assess free-response proofs of the laws.",
   },
   {
     templateId: "balance-one-step",
@@ -2442,14 +2442,14 @@ export const reconciledFacetMappings: readonly FacetMapping[] = [
     facetId: "residuals-correlation.HSS.ID.C.8",
     extent: "partial",
     rationale:
-      "Estimate and interpret the correlation coefficient from a scatter plot. Does not assess computing it with technology.",
+      "Estimate and interpret correlation, and recover its signed value from a supplied regression output's squared correlation and slope. Does not assess operating technology to compute correlation from raw data.",
   },
   {
     templateId: "correlation-choice",
     facetId: "residuals-correlation.core",
     extent: "partial",
     rationale:
-      "Choose the correlation coefficient closest to a scatter plot, and read a residual plot. Does not assess computing r.",
+      "Estimate and interpret correlation, and recover its signed value from a supplied regression output's squared correlation and slope. Does not assess operating technology to compute correlation from raw data.",
   },
   {
     templateId: "residual-value",
@@ -2526,21 +2526,21 @@ export const reconciledFacetMappings: readonly FacetMapping[] = [
     facetId: "sampling.core",
     extent: "partial",
     rationale:
-      "Choose the sampling method most likely to give a representative sample. Does not assess analyzing data.",
+      "Choose representative sampling methods and judge whether an arithmetically correct population generalization is supported by random or biased selection.",
   },
   {
     templateId: "sample-estimates-plot",
     facetId: "sampling.core",
     extent: "partial",
     rationale:
-      "Estimate a population value from the mean of several random samples. Does not assess designing the samples.",
+      "Estimate a population count from a sample mean, and measure variation and greatest distance from the mean using ten independently simulated samples. The engine draws the samples; the learner interprets their spread.",
   },
   {
     templateId: "sample-proportion-estimate",
     facetId: "sampling.core",
     extent: "partial",
     rationale:
-      "Estimate a population count from a random sample proportion. Does not assess margin of error.",
+      "Estimate a population count from a random sample proportion and distinguish supported approximate inference from claims of exact population counts.",
   },
   {
     templateId: "scale-drawing",
@@ -2568,7 +2568,7 @@ export const reconciledFacetMappings: readonly FacetMapping[] = [
     facetId: "scatterplots.core",
     extent: "partial",
     rationale:
-      "Describe the association shown in a scatter plot. Does not assess calculating statistics.",
+      "Interpret direction, clusters and outliers, construct up to four paired data points, and interpret larger tables in separate choice variants. The existing point-plot response limits construction to four points.",
   },
   {
     templateId: "trend-line-predict",
@@ -2582,7 +2582,7 @@ export const reconciledFacetMappings: readonly FacetMapping[] = [
     facetId: "scatterplots.core",
     extent: "partial",
     rationale:
-      "Interpret the slope of a trend line in context. Does not assess the intercept.",
+      "Interpret slope and intercept in context, distinguishing a meaningful zero input from an impossible zero far outside the data.",
   },
   {
     templateId: "scientific-operations",
@@ -2813,7 +2813,7 @@ export const reconciledFacetMappings: readonly FacetMapping[] = [
     facetId: "special-angle-values.core",
     extent: "partial",
     rationale:
-      "Find exact coordinates or trigonometric values at special angles in radians across quadrants. Does not assess non-special angles.",
+      "Find exact special-angle values across quadrants and derive sine, cosine and tangent at 30, 45 and 60 degrees from a square's diagonal or an equilateral triangle's altitude. Does not assess constructing the unit circle.",
   },
   {
     templateId: "special-right-triangle",
@@ -2848,7 +2848,7 @@ export const reconciledFacetMappings: readonly FacetMapping[] = [
     facetId: "statistical-inference.core",
     extent: "partial",
     rationale:
-      "Interpret a margin of error as a range around a sample estimate. Does not assess computing the margin.",
+      "Interpret intervals and develop a margin from the smallest centered band containing at least 95 of 100 simulated proportions or means. The engine runs the simulations and displays binned frequencies.",
   },
   {
     templateId: "sample-mean-estimate",
@@ -3128,7 +3128,7 @@ export const reconciledFacetMappings: readonly FacetMapping[] = [
     facetId: "trigonometric-identities.core",
     extent: "partial",
     rationale:
-      "Find an exact trigonometric value with the Pythagorean identity or the angle-sum identity. Does not assess proving an identity.",
+      "Evaluate and justify the Pythagorean identity on a unit circle, derive angle-sum and difference formulas, and apply exact tangent formulas at 15, 75, 105 and 165 degrees. Proofs use selected justified steps rather than free-response derivations.",
   },
   {
     templateId: "trig-symmetry-value",
@@ -3170,13 +3170,14 @@ export const reconciledFacetMappings: readonly FacetMapping[] = [
     facetId: "two-way-tables.core",
     extent: "partial",
     rationale:
-      "Decide whether a two-way table shows an association by comparing relative frequencies. Does not assess computing association measures.",
+      "Compare row or column conditional percentages to describe association, including equal percentages in groups of different sizes.",
   },
   {
     templateId: "two-way-missing",
     facetId: "two-way-tables.core",
     extent: "partial",
-    rationale: "Read a count from a two-way table. Does not assess percents.",
+    rationale:
+      "Read missing table counts and construct all four cells of a two-way table from individual paired categorical observations.",
   },
   {
     templateId: "two-way-row-percent",

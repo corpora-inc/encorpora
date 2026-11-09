@@ -8,7 +8,13 @@ import {
   stemLeafCase,
   triangleLawCase,
 } from "../src/math/remaining-gap-practice";
-import { generateProblem, templates } from "../src/math/engine";
+import {
+  generateProblem as generateCurrent,
+  templates,
+} from "../src/math/engine";
+// These assertions compare the original case model, retained at version 1.
+const generateProblem = (id: string, seed: string) =>
+  generateCurrent(id, seed, 1);
 import { problemLesson } from "../src/content/problem-lessons";
 
 const SEEDS = 400;
