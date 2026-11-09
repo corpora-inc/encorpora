@@ -3,8 +3,10 @@ import test from "node:test";
 import { generateProblem, type GeneratedProblem } from "../src/math/engine.js";
 
 /** Generated worked steps must state each rule exactly, with its conditions. */
-const sample = (id: string, n = 40) =>
-  Array.from({ length: n }, (_, i) => generateProblem(id, `exact-${i}`));
+const sample = (id: string, n = 40, version?: number) =>
+  Array.from({ length: n }, (_, i) =>
+    generateProblem(id, `exact-${i}`, version),
+  );
 const text = (p: GeneratedProblem) => [p.hint, ...p.explanation].join("\n");
 const options = (p: GeneratedProblem) => {
   const r = p.public.response;
@@ -122,7 +124,9 @@ test("absolute value: 'within' is used only for at most, never for strictly less
 });
 
 test("least squares: each shown residual total is the sum of the shown squares", () => {
-  for (const p of sample("nonlinear-data-model", 30)) {
+  // This checks the original model-choice explanation; construction and
+  // interpretation surfaces have their own independent clause oracle.
+  for (const p of sample("nonlinear-data-model", 30, 1)) {
     const pairs = [...p.public.prompt.matchAll(/\((\d+),(\d+)\)/g)].map((m) =>
       Number(m[2]),
     );

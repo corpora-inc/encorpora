@@ -59,12 +59,13 @@ test("each answer follows from the displayed numbers", () => {
   }
   for (const p of sample("make-ten-fact")) {
     const [a, b] = numbers(p.public.prompt);
+    assert.ok(a! <= 9 && b! <= 9 && a! + b! <= 18);
     assert.deepEqual(p.public.figure, {
       kind: "ten-frame-pair",
       first: a,
       second: b,
     });
-    assert.ok(a! + b! > 10 && a! < 10 && b! < 10);
+    if (!p.variant?.id) assert.ok(a! + b! > 10);
     assert.equal(Number(p.answer), a! + b!);
   }
   for (const p of sample("related-subtraction")) {
@@ -107,11 +108,12 @@ test("facts openers are numeric and in their grade bands", () => {
 });
 
 test("the make-ten animation moves exactly the counters that fill the ten", () => {
+  let sawMakeTen = 0;
   for (let i = 0; i < 60; i++) {
     const lesson = problemLesson("make-ten-fact", `animation-${i}`);
     const model = animationModel(lesson);
-    assert.ok(model && model.kind === "make-ten");
     if (model?.kind !== "make-ten") continue;
+    sawMakeTen++;
     const { first: a, second: b } = model.figure;
     const frames = animationFrames(model);
     assert.equal(frames.length, 3);
@@ -122,6 +124,7 @@ test("the make-ten animation moves exactly the counters that fill the ten", () =
     );
     assert.equal(Number(lesson.example.answer), a + b);
   }
+  assert.ok(sawMakeTen > 0);
 });
 
 test("every facts family has one illustrated reference lesson", () => {

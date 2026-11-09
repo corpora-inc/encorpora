@@ -1,4 +1,6 @@
+import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
+import { clauseFamily } from "./clause-family";
 import {
   assemble,
   constText,
@@ -107,6 +109,8 @@ export const quadraticStructureTemplates: readonly TemplateMetadata[] = [
   {
     ...hs,
     id: "zero-multiplicity",
+    version: 2,
+    reprintsFrom: 1,
     title: "Crossing or touching at a zero",
     skillId: "polynomial-zeros",
     description:
@@ -1001,6 +1005,121 @@ function zerosFromFactors(r: Random): Case {
   }
 }
 
+/** "−3 and 1" with a unicode minus, matching the quadratic-structure oracle. */
+function joinSigned(values: number[]): string {
+  const text = [...values]
+    .sort((a, b) => a - b)
+    .map((v) => String(v).replace("-", "−"));
+  if (text.length === 1) return text[0]!;
+  if (text.length === 2) return `${text[0]} and ${text[1]}`;
+  return `${text.slice(0, -1).join(", ")} and ${text.at(-1)}`;
+}
+
+/** The rough-sketch sentence for a factored polynomial. The oracle rebuilds
+ * the same sentence from the printed factors. */
+export function roughSketchSentence(
+  lead: 1 | -1,
+  pairs: readonly { z: number; m: 1 | 2 }[],
+): string {
+  const touch = pairs.filter((p) => p.m === 2).map((p) => p.z);
+  const cross = pairs.filter((p) => p.m === 1).map((p) => p.z);
+  return `The right end ${lead < 0 ? "falls" : "rises"}. Touches at ${joinSigned(touch)}. Crosses at ${joinSigned(cross)}.`;
+}
+
+function factoredWriting(
+  lead: 1 | -1,
+  pairs: readonly { z: number; m: 1 | 2 }[],
+  order: readonly number[],
+): string {
+  const body = order
+    .map((i) => {
+      const pair = pairs[i]!;
+      const piece = factor(pair.z);
+      return pair.m === 2 ? `${piece}²` : piece;
+    })
+    .join("");
+  return `${lead < 0 ? "−" : ""}${body}`;
+}
+
+/** Equation → rough graph, as a choice of descriptions. figure-choice cannot
+ * ride on this single-choice template, so each option states the decisions
+ * the sketch requires: the right end, the touch, and the crossings. */
+function graphFromFactored(r: Random): Case {
+  for (;;) {
+    const want = r(2, 4);
+    const pool = shuffle(r, [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]);
+    const zeros: number[] = [];
+    for (const z of pool) {
+      if (zeros.every((u) => Math.abs(u - z) >= 2)) zeros.push(z);
+      if (zeros.length === want) break;
+    }
+    if (zeros.length !== want) continue;
+    if (zeros.every((z) => zeros.includes(-z))) continue;
+    const maxDoubles = Math.min(want - 1, 5 - want);
+    if (maxDoubles < 1) continue;
+    const nDouble = r(1, maxDoubles);
+    const mult = zeros.map(() => 1 as 1 | 2);
+    for (const i of shuffle(r, zeros.map((_, i) => i)).slice(0, nDouble))
+      mult[i] = 2;
+    const pairs = zeros.map((z, i) => ({ z, m: mult[i]! }));
+    const lead = (r(0, 1) === 0 ? 1 : -1) as 1 | -1;
+    const simple = pairs.findIndex((p) => p.m === 1);
+    const doubled = pairs.findIndex((p) => p.m === 2);
+    if (simple < 0 || doubled < 0) continue;
+    const swapped = pairs.map((p, i) =>
+      i === simple
+        ? { z: p.z, m: 2 as const }
+        : i === doubled
+          ? { z: p.z, m: 1 as const }
+          : p,
+    );
+    const negated = pairs.map((p) => ({ z: -p.z, m: p.m }));
+    const correct = roughSketchSentence(lead, pairs);
+    const flipped = roughSketchSentence(lead === 1 ? -1 : 1, pairs);
+    const swappedText = roughSketchSentence(lead, swapped);
+    const negatedText = roughSketchSentence(lead, negated);
+    const choices = options(correct, [
+      {
+        label: flipped,
+        feedback:
+          "This flips the leading sign. The right end follows the sign in front of the product: negative falls, positive rises.",
+      },
+      {
+        label: swappedText,
+        feedback:
+          "This squares the wrong factor. An even exponent touches; an odd exponent crosses.",
+      },
+      {
+        label: negatedText,
+        feedback:
+          "This reads (x + a) as a zero at +a. The factor (x − r) is zero at r, so (x + 3) is zero at −3.",
+      },
+    ]);
+    if (!choices) continue;
+    const order = shuffle(r, pairs.map((_, i) => i));
+    const written = factoredWriting(lead, pairs, order);
+    const degree = pairs.reduce((sum, p) => sum + p.m, 0);
+    const roots = pairs.flatMap((p) => Array<number>(p.m).fill(p.z));
+    const coeffs = fromRoots(lead, roots);
+    const atZero = coeffs[coeffs.length - 1]!;
+    const touchAt = joinSigned(pairs.filter((p) => p.m === 2).map((p) => p.z));
+    const crossAt = joinSigned(pairs.filter((p) => p.m === 1).map((p) => p.z));
+    return {
+      prompt: `Use the zeros of $y = ${written}$ to sketch a rough graph. Which description matches your sketch?`,
+      choices,
+      explanation: [
+        `A factor (x − r) is zero at r, and (x + a) is zero at −a. The zeros are ${joinSigned(pairs.map((p) => p.z))}.`,
+        `The exponents add to ${degree}, and the leading coefficient is ${lead === 1 ? "positive" : "negative"}, so the right end ${lead < 0 ? "falls" : "rises"}.`,
+        `An even exponent touches and an odd exponent crosses. The graph touches at ${touchAt} and crosses at ${crossAt}.`,
+        `So the sketch is: ${correct}`,
+        `Check at x = 0: y = ${String(atZero).replace("-", "−")}, which sits ${atZero > 0 ? "above" : atZero < 0 ? "below" : "on"} the axis.`,
+      ],
+      hint: "Read each factor's zero and whether its exponent is even. Then use the sign in front to decide whether the right end rises or falls.",
+      tags: ["graph-from-factored-rule"],
+    };
+  }
+}
+
 // --------------------------------------------------------- zero-multiplicity
 function zeroMultiplicity(r: Random): Case {
   const frame = pick(r, ["factored", "graph", "describe"] as const);
@@ -1308,6 +1427,33 @@ export function quadraticStructurePrintCase(id: string, seed: string) {
   if (!meta) throw new Error(`Unknown quadratic-structure template ${id}`);
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
+  if (
+    id === "zero-multiplicity" &&
+    clauseFamily(
+      id,
+      seed,
+      2,
+      [
+        { id: "legacy", weight: 3 },
+        { id: "graph-from-factored-rule", weight: 2 },
+      ],
+      "legacy",
+    ) === "graph-from-factored-rule"
+  ) {
+    const r = seeded(`${id}#clause`, seed);
+    const built = assemble(
+      meta,
+      seed,
+      graphFromFactored(r),
+      r,
+      labels[id]!,
+      "number",
+    );
+    built.problem.public.id = createHash("sha256")
+      .update(JSON.stringify([id, 2, seed]))
+      .digest("hex");
+    return built;
+  }
   const r = seeded(id, seed);
   return assemble(
     meta,

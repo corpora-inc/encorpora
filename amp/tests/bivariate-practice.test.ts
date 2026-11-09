@@ -1,6 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { generateProblem } from "../src/math/engine.js";
+import { generateProblem as generateCurrent } from "../src/math/engine.js";
+// These tests inspect the original scene models, retained for stored v1 work.
+const generateProblem = (id: string, seed: string) =>
+  generateCurrent(id, seed, 1);
 import {
   completeTable,
   describeScene,

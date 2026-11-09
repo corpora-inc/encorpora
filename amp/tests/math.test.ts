@@ -28,10 +28,37 @@ test("all reference families are deterministic and independently solve from disp
           assert.equal(p.figure?.kind, "collection");
           expected = p.figure!.kind === "collection" ? p.figure!.count : NaN;
           break;
-        case "add-within-20":
+        case "add-within-20": {
+          if (p.response.kind !== "number") {
+            const found =
+              /the double (\d+) \+ \1, and what is (\d+) \+ (\d+)\?/.exec(
+                p.prompt,
+              );
+            assert.ok(found, p.prompt);
+            const double = 2 * Number(found[1]);
+            const total = Number(found[2]) + Number(found[3]);
+            assert.ok(total <= 20, p.prompt);
+            const response = p.response as {
+              blanks: { id: string; options: { id: string; label: string }[] }[];
+            };
+            const key = JSON.parse(problem.answer) as Record<string, string>;
+            const chosen = (id: string) =>
+              response.blanks
+                .find((blank) => blank.id === id)!
+                .options.find((option) => option.id === key[id])!.label;
+            assert.equal(chosen("dbl"), String(double), p.prompt);
+            assert.equal(chosen("sum"), String(total), p.prompt);
+            assert.equal(gradeAnswer(problem, problem.answer), true);
+            assert.equal(
+              gradeAnswer(problem, JSON.stringify({ ...key, sum: "nope" })),
+              false,
+            );
+            continue;
+          }
           expected = numbers[0]! + numbers[1]!;
           assert.ok(expected <= 20);
           break;
+        }
         case "subtract-within-20":
           expected = numbers[0]! - numbers[1]!;
           assert.ok(expected >= 0);
@@ -44,9 +71,47 @@ test("all reference families are deterministic and independently solve from disp
           expected = f.selected / f.parts;
           break;
         }
-        case "add-fractions":
+        case "add-fractions": {
+          if (p.prompt.startsWith("Rename over the common denominator")) {
+            const response = p.response as {
+              blanks: { id: string; options: { id: string; label: string }[] }[];
+              sentence?: ({ text: string } | { blank: string })[];
+            };
+            const text = (response.sentence ?? [])
+              .map((part) => ("text" in part ? part.text : ""))
+              .join("");
+            const fracs = [...text.matchAll(/\\frac\{(\d+)\}\{(\d+)\}/g)].map(
+              (m) => [Number(m[1]), Number(m[2])] as const,
+            );
+            const denominator = Number(/denominator (\d+)/.exec(p.prompt)![1]);
+            const mixed = /^(\d+) /.exec(text);
+            const whole = mixed ? Number(mixed[1]) : 0;
+            const [topA, denA] = fracs[0]!;
+            const [topC, denC] = fracs[1]!;
+            const renamedA = ((whole * denA + topA) * denominator) / denA;
+            const renamedC = (topC * denominator) / denC;
+            const difference = text.includes("−");
+            const total = difference ? renamedA - renamedC : renamedA + renamedC;
+            const key = JSON.parse(problem.answer) as Record<string, string>;
+            const chosen = (id: string) =>
+              Number(
+                response.blanks
+                  .find((blank) => blank.id === id)!
+                  .options.find((option) => option.id === key[id])!.label,
+              );
+            assert.equal(chosen("left"), renamedA, p.prompt);
+            assert.equal(chosen("right"), renamedC, p.prompt);
+            assert.equal(chosen("sum"), total, p.prompt);
+            assert.equal(gradeAnswer(problem, problem.answer), true);
+            assert.equal(
+              gradeAnswer(problem, JSON.stringify({ ...key, sum: "nope" })),
+              false,
+            );
+            continue;
+          }
           expected = numbers[0]! / numbers[1]! + numbers[2]! / numbers[3]!;
           break;
+        }
         case "rectangle-area": {
           expected = numbers[0]! * numbers[1]!;
           assert.deepEqual(p.figure, {

@@ -6,6 +6,7 @@ from rational_equation_math_oracle import RATIONAL_EQUATION, RATIONAL_EQUATION_C
 from geometry_proof_math_oracle import GEOMETRY_PROOF, solve_geometry_proof, review_geometry_proof_fixtures, review_geometry_proof_problem
 from radical_equation_math_oracle import RADICAL_EQUATION, RADICAL_EQUATION_CHOICE, solve_radical_equation, review_radical_equation_fixtures, review_radical_equation_problem
 import decimal
+import clause_coverage_oracle
 import importlib
 import json
 import math
@@ -14,6 +15,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+from clause_variants_oracle import matches as is_clause_variant, solve as solve_clause_variant, review_problem as review_clause_variant, self_test as review_clause_fixtures
 from collections import Counter
 from fractions import Fraction
 
@@ -118,6 +120,7 @@ SUPPORTED |= QUADRATIC_STRUCTURE
 SUPPORTED |= FUNCTION_TOOLKIT
 SUPPORTED |= EXPONENTIAL
 SUPPORTED |= TWO_VARIABLE
+SUPPORTED |= {"two-column-triangle-proof"}
 
 
 def require(condition, message):
@@ -255,6 +258,49 @@ for _module in list(sys.modules.values()):
                 setattr(_module, _name, read_plainly(_value))
 
 
+def rename_steps_key(public):
+    """The three numerators after renaming over the stated common denominator."""
+    response = public['response']
+    text = ''.join(part['text'] if 'text' in part else '' for part in response['sentence'])
+    fracs = [(int(top), int(bottom)) for top, bottom in re.findall(r'\\frac\{(\d+)\}\{(\d+)\}', text)]
+    require(len(fracs) == 2, 'Two fractions to rename')
+    denominator = int(re.search(r'denominator (\d+)', public['prompt']).group(1))
+    mixed = re.match(r'(\d+) ', text)
+    whole = int(mixed.group(1)) if mixed else 0
+    (top_a, den_a), (top_c, den_c) = fracs
+    require(den_a and den_c and denominator % den_a == 0 and denominator % den_c == 0, 'Common denominator')
+    renamed_a = (whole * den_a + top_a) * (denominator // den_a)
+    renamed_c = top_c * (denominator // den_c)
+    difference = '−' in text
+    require(not difference or renamed_a > renamed_c, 'Positive difference')
+    total = renamed_a - renamed_c if difference else renamed_a + renamed_c
+
+    def option_id(blank_id, value):
+        blank = next(item for item in response['blanks'] if item['id'] == blank_id)
+        hits = [option['id'] for option in blank['options'] if option['label'] == str(value)]
+        require(len(hits) == 1, f'{blank_id} needs {value}')
+        return hits[0]
+
+    return json.dumps({
+        'left': option_id('left', renamed_a),
+        'right': option_id('right', renamed_c),
+        'sum': option_id('sum', total),
+    }, separators=(',', ':'))
+
+
+def rectangle_width(public):
+    """Width = area ÷ length for a rectangle named in the prompt."""
+    found = re.fullmatch(
+        r'A rectangle has area (\d+)/(\d+) square (mile|meter) and length (?:(\d+) )?(\d+)/(\d+) \3\. How wide is it\?',
+        public['prompt'])
+    require(found is not None, 'Rectangle prompt')
+    area = Fraction(int(found[1]), int(found[2]))
+    whole = int(found[4]) if found[4] else 0
+    length = whole + Fraction(int(found[5]), int(found[6]))
+    require(length > 0, 'Length')
+    return area / length
+
+
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated
     answers. A family oracle that does not read the typeset wording retries
@@ -272,6 +318,10 @@ def solve(public):
 
 
 def solve_family(public):
+    if clause_coverage_oracle.recognizes(public):
+        return clause_coverage_oracle.solve(public)
+    if is_clause_variant(public):
+        return solve_clause_variant(public)
     oracle = FAMILY_ORACLE_FOR.get(public["templateId"])
     if oracle is not None:
         return oracle.solve(public)
@@ -431,8 +481,15 @@ def solve_family(public):
                     for point in points), 'Drawn line does not pass through marked points')
         return slope
     if template in {'bar-chart-total', 'bar-chart-difference'}:
-        require(figure['kind'] == 'bar-chart' and figure['valueLabel'] == 'Trees', 'Wrong chart representation')
+        require(figure['kind'] == 'bar-chart', 'Wrong chart representation')
         categories, values = figure['categories'], figure['values']
+        if template == 'bar-chart-total' and 'not drawn yet' in prompt:
+            total = int(re.search(r'of (\d+) students', prompt).group(1))
+            require(figure['valueLabel'] == 'Pets' and 2 <= len(values) <= 3, 'A missing bar leaves the drawn pets')
+            require(all(type(value) is int and value > 0 for value in values), 'Drawn bars are positive')
+            require(sum(values) < total <= 20, 'The missing bar is part of a total at most 20')
+            return total - sum(values)
+        require(figure['valueLabel'] == 'Trees', 'Wrong chart representation')
         require(len(categories) == len(values) == 3 and len(set(categories)) == 3 and
                 all(type(value) is int and value >= 0 for value in values), 'Invalid category counts')
         counts = dict(zip(categories, values))
@@ -444,6 +501,19 @@ def solve_family(public):
         require(difference > 0, 'More-than prompt names the wrong larger category')
         return difference
     if template == 'clock-elapsed-minutes':
+        if 'whole trip' in prompt:
+            parts = [int(n) for n in re.findall(r'(\d+) minutes', prompt)]
+            require(len(parts) >= 2, 'A trip needs its parts')
+            return sum(parts)
+        if 'minutes' in prompt and 'clock' not in prompt and ':' not in prompt:
+            counts = [int(n) for n in re.findall(r'(\d+)', prompt)]
+            require(len(counts) == 2 and counts[0] != counts[1], 'A difference of two times')
+            return abs(counts[0] - counts[1])
+        if prompt.startswith('Reading club starts'):
+            start_h, start_m, end_h, end_m = map(int, re.search(
+                r'(\d{1,2}):(\d{2}).*ends at (\d{1,2}):(\d{2})', prompt).groups())
+            require(figure['kind'] == 'clock' and figure['hour'] == start_h and figure['minute'] == start_m, 'Clock matches the start')
+            return (end_h * 60 + end_m) - (start_h * 60 + start_m)
         require(figure['kind'] == 'clock' and 1 <= figure['hour'] <= 12 and
                 0 <= figure['minute'] < 60, 'Invalid clock')
         end_time = re.search(r'ends at ([0-9]+):([0-9]{2}) later that same morning', prompt)
@@ -493,6 +563,10 @@ def solve_family(public):
         require(figure['kind'] == 'fraction' and 0 < figure['selected'] < figure['parts'], 'Invalid fraction representation')
         return f(figure['selected'], figure['parts'])
     if template in {'add-fractions', 'compare-fractions', 'multiply-fractions', 'divide-fractions'}:
+        if template == 'add-fractions' and public['response']['kind'] == 'multi-part-choice':
+            return rename_steps_key(public)
+        if template == 'divide-fractions' and public['prompt'].startswith('A rectangle has area'):
+            return rectangle_width(public)
         a, b, c, d = numbers
         left, right = f(a, b), f(c, d)
         if template == 'add-fractions':
@@ -663,6 +737,12 @@ def review(stream):
         nonlocal area_volume_equalities
         public = problem['public']
         template, seed = public['templateId'], public['seed']
+        if clause_coverage_oracle.recognizes(public):
+            clause_coverage_oracle.review_problem(problem)
+            return
+        if is_clause_variant(public):
+            review_clause_variant(problem)
+            return
         solved = solve_family(public)
         family = FAMILY_ORACLE_FOR.get(template)
         if family is not None and not family.returns_answer:
@@ -822,6 +902,8 @@ def review(stream):
     # successful review still runs the full fixture and mutation inventory.
     for oracle in FAMILY_ORACLES:
         oracle.self_test()
+    clause_coverage_oracle.self_test()
+    review_clause_fixtures()
     review_fraction_expression_fixtures()
     review_hierarchy_multiselect_fixtures()
     review_variation_axes_fixtures()

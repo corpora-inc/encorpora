@@ -59,7 +59,7 @@ def solve_facts(public):
         m = re.fullmatch(r'What is (\d+) − (\d+)\?', prompt)
         require(m is not None, f'Unexpected difference prompt {prompt!r}')
         whole, part = int(m[1]), int(m[2])
-        require(0 <= part <= whole <= 18 and part <= 9, 'Outside one-digit differences')
+        require(0 <= part <= 9 and part <= whole <= 20, 'Outside one-digit differences')
         # The missing addend: the number that joins part to make whole.
         return next(x for x in range(21) if part + x == whole)
     if name == 'mental-ten-hundred':

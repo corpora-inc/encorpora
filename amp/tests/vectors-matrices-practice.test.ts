@@ -11,7 +11,13 @@ import {
   matrixSystemCase,
   vectorMatrixTemplates,
 } from "../src/math/vectors-matrices-practice";
-import { generateProblem, templates } from "../src/math/engine";
+import {
+  generateProblem as generateCurrent,
+  templates,
+} from "../src/math/engine";
+// Preserve the original case-model assertions; clause v2 has its own oracle.
+const generateProblem = (id: string, seed: string) =>
+  generateCurrent(id, seed, 1);
 import { problemLesson } from "../src/content/problem-lessons";
 
 const cases: Record<

@@ -235,8 +235,11 @@ function braces(ctx: ClauseCtx) {
     right = r(2, 12);
     times = r(2, 6);
     const bracket = times * (left + right);
-    outer = r(Math.max(20, bracket), Math.min(100, bracket + 80));
-    if (outer < bracket) continue;
+    const low = Math.max(20, bracket);
+    const high = Math.min(100, bracket + 80);
+    // The bracket can exceed 100. There is then no outer number in range.
+    if (high < low) continue;
+    outer = r(low, high);
     factor = r(2, 9);
     const brace = outer - bracket;
     value = factor * brace;

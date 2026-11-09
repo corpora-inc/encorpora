@@ -3,6 +3,7 @@ import type { SemanticFigure, TemplateMetadata } from "./contracts";
 import { lineTable, scene } from "./scene/author";
 import type { Element } from "./scene/spec";
 import { storyName } from "./story-kit/names";
+import { clauseAxis, clauseProblem } from "./fraction-clause-variants";
 import { defineAxis, type AxisSet } from "./variation/axes";
 import { differentWhole, sameWholeComparePrompt } from "./story-kit/fractions";
 import {
@@ -109,7 +110,7 @@ export const statementBlanksTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "compare-fractions-reason-blanks",
-    version: 2,
+    version: 3,
     reprintsFrom: 1,
     title: "Compare two fractions and say why",
     skillId: "fraction-comparison",
@@ -323,6 +324,7 @@ export const compareReasonAxes = {
     silentLegacy: true,
     since: 2,
   }),
+  task: clauseAxis("compare-fractions-reason-blanks"),
 } as const;
 const REASONS = {
   "same-numerator": {
@@ -1071,6 +1073,10 @@ export const statementBlanksGenerate = defineGenerate(
     "compare-fractions-reason-blanks": entry(
       compareReasonAxes,
       ({ meta, seed, r, axes }) => {
+        if (axes.task !== "legacy") {
+          const clause = clauseProblem(meta.id, seed, meta);
+          if (clause) return clause;
+        }
         if (axes.whole === "different") {
           const thing = differentWhole(r);
           const d1 = r(2, 8);
