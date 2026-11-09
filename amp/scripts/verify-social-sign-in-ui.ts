@@ -21,6 +21,8 @@ import {
   registerAccountRoutes,
 } from "../src/server/accounts";
 import { registerFamilyRoutes } from "../src/family/routes.js";
+import { registerSchoolRoutes } from "../src/schools/routes.js";
+import { openMenu } from "./ui-controls";
 import { migrate } from "./migrate";
 import { fill, socialCopyFor } from "../src/web/features/auth/social-copy";
 
@@ -73,6 +75,11 @@ async function startAccountsServer() {
     pool: repository.pool,
     authenticate,
     development: true,
+  });
+  await registerSchoolRoutes(server, {
+    pool: repository.pool,
+    authenticate,
+    services: { secret: accounts.config.secret, origin },
   });
   await server.listen({ host: "127.0.0.1", port: 4367 });
   return server;
@@ -757,12 +764,46 @@ try {
     "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES($1,$2,'pilot',$1,'active',now()-interval '1 hour',now()+interval '1 year')",
     [randomUUID(), learnerId],
   );
+  async function familyHome(tab: Page) {
+    await tab.waitForURL(/\/school\/[^/]+\/classes\/[^/]+\/today$/);
+    await tab
+      .getByRole("heading", { name: /^Good (morning|afternoon|evening)/ })
+      .waitFor();
+    await tab
+      .getByRole("button", {
+        name: "Let Test Learner practice here",
+        exact: true,
+      })
+      .waitFor();
+  }
+  async function practiceHere(tab: Page) {
+    await tab
+      .getByRole("button", {
+        name: "Let Test Learner practice here",
+        exact: true,
+      })
+      .click();
+    await tab.locator("#problem-prompt").waitFor();
+    const student = await tab.evaluate(async () => {
+      const saved = JSON.parse(sessionStorage.getItem("amp.student") ?? "{}");
+      return fetch("/api/v1/me", {
+        headers: { Authorization: `Bearer ${saved.token}` },
+      }).then((response) => response.json());
+    });
+    assert.equal(student.account.kind, "student");
+    assert.deepEqual(
+      student.learners.map((learner: { id: string }) => learner.id),
+      [learnerId],
+    );
+  }
   await page.goto(`${origin}/`);
-  await page
-    .getByRole("heading", { name: "Test Learner", exact: true })
-    .waitFor();
-  await page.getByRole("button", { name: "Go", exact: true }).click();
-  await page.locator("#problem-prompt").waitFor();
+  await familyHome(page);
+  await practiceHere(page);
+  const studentMenu = await openMenu(page);
+  await studentMenu
+    .getByRole("button", { name: "Sign out", exact: true })
+    .click();
+  await familyHome(page);
   // Simulate another person's saved learner selection on a shared device.
   await page.evaluate(() =>
     localStorage.setItem(
@@ -774,9 +815,7 @@ try {
     ),
   );
   await page.goto(`${origin}/`);
-  await page
-    .getByRole("heading", { name: "Test Learner", exact: true })
-    .waitFor();
+  await familyHome(page);
   await page.screenshot({
     path: new URL("returning-learner-home-390.png", shots).pathname,
     fullPage: true,
@@ -791,11 +830,8 @@ try {
     await fresh.addCookies(await context.cookies(origin));
     const tab = await fresh.newPage();
     await tab.goto(`${origin}/`);
-    await tab
-      .getByRole("heading", { name: "Test Learner", exact: true })
-      .waitFor();
-    await tab.getByRole("button", { name: "Go", exact: true }).click();
-    await tab.locator("#problem-prompt").waitFor();
+    await familyHome(tab);
+    await practiceHere(tab);
     await tab.screenshot({
       path: new URL("returning-learner-webkit-390.png", shots).pathname,
       fullPage: true,
@@ -922,7 +958,7 @@ try {
   await page.evaluate(async () => {
     const modulePath = "/src/web/app/router.tsx";
     const { router } = await import(modulePath);
-    await router.navigate({ to: "/" });
+    await router.navigate({ to: "/$", params: { _splat: "overview" } });
   });
   await page
     .getByRole("heading", { name: "Test Learner", exact: true })
@@ -972,7 +1008,7 @@ try {
     0,
     "a new account cannot inherit a consumed checkout return",
   );
-  assert.equal(new URL(page.url()).pathname, "/");
+  assert.equal(new URL(page.url()).pathname, "/overview");
   await otherTab.close();
   assert.deepEqual(errors, []);
   await context.close();

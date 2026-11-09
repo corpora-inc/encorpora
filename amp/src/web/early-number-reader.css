@@ -50,4 +50,19 @@
   .book-reader[data-presentation="early-number"] .early-number-art {
     max-width: min(360px, 64cqh);
   }
+  .book-reader[data-presentation="early-number"]
+    .early-base-ten
+    .early-number-art {
+    /* Base-ten cells are 20 units in a 320-unit viewBox: 256px draws them
+       at 16px, above the 14px readability floor after browser rounding. */
+    max-width: clamp(256px, 64cqh, 360px);
+  }
+  .book-reader[data-presentation="early-number"]
+    .early-base-ten
+    .early-number-art
+    svg {
+    /* The artwork width sets its scale. A second, independent height cap
+       would shrink the cells inside the SVG's box below that minimum. */
+    max-height: none;
+  }
 }

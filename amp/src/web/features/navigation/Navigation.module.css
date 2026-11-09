@@ -167,6 +167,12 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.context {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
 .navText {
   display: grid;
   min-width: 0;

@@ -9,6 +9,7 @@ import { algebraModels } from "../tests/fixtures/algebra-models.js";
 import { renderBook } from "../src/publishing/book.js";
 import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 import type { MathBook } from "../src/publishing/schema.js";
+import { readerProofPage } from "./reader-proof-page";
 const book: MathBook = {
   id: "algebra-model-proof",
   version: "1",
@@ -29,7 +30,9 @@ const book: MathBook = {
     blocks: [{ kind: "diagram", diagram }],
   })),
 };
-const output = resolve("artifacts/algebra-reader");
+const output = resolve(
+  process.env.AMP_EVIDENCE_DIR ?? "artifacts/algebra-reader",
+);
 await mkdir(output, { recursive: true });
 const server = await createServer({
   configFile: false,
@@ -44,9 +47,7 @@ const server = await createServer({
           res.end(
             await s.transformIndexHtml(
               "/__algebra-proof",
-              `<html><head><meta name="viewport" content="width=device-width, initial-scale=1"/></head><body><div id="root"></div><script type="module">
-import React from 'react';import{createRoot}from'react-dom/client';import{BookReader}from'/src/web/BookReader.tsx';import'/src/web/style.css';const book=${JSON.stringify(book)};createRoot(document.getElementById('root')).render(React.createElement('div',{className:'shell app-shell'},React.createElement(BookReader,{book,initialFrame:Number(new URLSearchParams(location.search).get('frame')||0),onClose(){},onPosition(){},async download(){}})));
-</script></body></html>`,
+              readerProofPage(book),
             ),
           );
         });
@@ -90,15 +91,24 @@ try {
             figure.left < bound.left ||
             figure.right > bound.right,
           body: document.documentElement.scrollHeight - innerHeight,
+          stageHeight: bound.height,
+          figureHeight: figure.height,
+          svgHeight: document
+            .querySelector("figure svg")
+            ?.getBoundingClientRect().height,
         };
       });
       // Phone landscape only has to stay usable: the reader scrolls there.
       if (isPhoneLandscape([width, height]))
         await assertPhoneLandscapeSmoke(page, `Reader ${algebraModels[i]!.id}`);
-      else if (result.scroll > 1 || result.overflow || result.body > 1)
+      else if (result.scroll > 1 || result.overflow || result.body > 1) {
+        await page.screenshot({
+          path: resolve(output, `failure-${algebraModels[i]!.id}-${width}.png`),
+        });
         throw new Error(
           `Reader ${algebraModels[i]!.id} ${width}x${height}: ${JSON.stringify(result)}`,
         );
+      }
       await page.screenshot({
         path: resolve(output, `${algebraModels[i]!.id}-${width}.png`),
       });

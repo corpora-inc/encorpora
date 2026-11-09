@@ -165,7 +165,7 @@ try {
       });
     });
     await page.goto("http://127.0.0.1:4387/family/learners");
-    await page.getByRole("button", { name: "Privacy", exact: true }).click();
+    await page.getByRole("link", { name: "Privacy", exact: true }).click();
     await page.screenshot({
       path: `artifacts/consent-app/privacy-${width}.png`,
     });

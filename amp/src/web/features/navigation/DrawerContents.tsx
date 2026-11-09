@@ -204,6 +204,13 @@ export default function DrawerContents({
                   {own ? "Your own practice" : "Learner"}
                 </span>
                 <strong>{learnerName}</strong>
+                {student && account?.school && (
+                  <span className={styles.context}>
+                    {account.school.orgName}
+                    {account.school.className &&
+                      ` · ${account.school.className}`}
+                  </span>
+                )}
               </div>
             )
           )}

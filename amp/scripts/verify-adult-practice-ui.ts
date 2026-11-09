@@ -384,11 +384,16 @@ async function teacherStarts(
     accountId: account,
     classId: klass.id,
   });
+  // The school's root redirects teachers to Classes. Wait for that settled
+  // screen before testing another navigation, including the remembered `/`.
+  async function schoolReady() {
+    await page.waitForURL(`${origin}/school/${org.id}/classes`);
+    await heading(page, "Classes");
+  }
 
   // `/` opens their school; its switcher offers their own practice.
   await page.goto(`${origin}/`);
-  await page.waitForURL(new RegExp(`/school/${org.id}`));
-  await page.getByRole("heading", { level: 1 }).first().waitFor();
+  await schoolReady();
   const fromSchool = await openSwitcher(page, school, width < 1024);
   const items = await fromSchool.getByRole("menuitem").allInnerTexts();
   check(
@@ -511,9 +516,9 @@ async function teacherStarts(
   await measured(page, `${label} own switcher`);
   await shot(page, "switcher", width, theme, engine);
   await choose(page, fromOwn, new RegExp(school));
-  await page.waitForURL(new RegExp(`/school/${org.id}`));
+  await schoolReady();
   await page.goto(`${origin}/`);
-  await page.waitForURL(new RegExp(`/school/${org.id}`));
+  await schoolReady();
   const back = await openSwitcher(page, school, width < 1024);
   await choose(page, back, /My practice/);
   await heading(page, "Dana Okafor");

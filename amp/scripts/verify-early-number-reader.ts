@@ -9,6 +9,7 @@ import { earlyNumberModels } from "../tests/fixtures/early-number-models.js";
 import { renderBook } from "../src/publishing/book.js";
 import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 import type { MathBook } from "../src/publishing/schema.js";
+import { readerProofPage } from "./reader-proof-page";
 const book: MathBook = {
   id: "early-number-model-proof",
   version: "1",
@@ -16,6 +17,7 @@ const book: MathBook = {
   subtitle: "Exact mathematical models",
   audience: "Model validation fixture",
   description: "A layout fixture, not a published curriculum book.",
+  presentation: "early-number",
   pages: earlyNumberModels.map((diagram, i) => ({
     id: `proof-${i}`,
     kind: "lesson",
@@ -24,7 +26,9 @@ const book: MathBook = {
     blocks: [{ kind: "diagram", diagram }],
   })),
 };
-const output = resolve("artifacts/early-number-reader");
+const output = resolve(
+  process.env.AMP_EVIDENCE_DIR ?? "artifacts/early-number-reader",
+);
 await mkdir(output, { recursive: true });
 const server = await createServer({
   configFile: false,
@@ -39,9 +43,7 @@ const server = await createServer({
           res.end(
             await s.transformIndexHtml(
               "/__early-number-proof",
-              `<html><head><meta name="viewport" content="width=device-width, initial-scale=1"/></head><body><div id="root"></div><script type="module">
-import React from 'react';import{createRoot}from'react-dom/client';import{BookReader}from'/src/web/BookReader.tsx';import'/src/web/style.css';const book=${JSON.stringify(book)};createRoot(document.getElementById('root')).render(React.createElement('div',{className:'shell app-shell'},React.createElement(BookReader,{book,initialFrame:Number(new URLSearchParams(location.search).get('frame')||0),onClose(){},onPosition(){},async download(){}})));
-</script></body></html>`,
+              readerProofPage(book),
             ),
           );
         });
@@ -55,87 +57,126 @@ if (!address || typeof address === "string") throw new Error("No proof server");
 const browser = await chromium.launch({ headless: true });
 const review: unknown[] = [];
 try {
-  for (const [width, height] of [
-    [320, 568],
-    [390, 844],
-    [1024, 768],
-    [844, 390],
-  ] as const) {
-    const page = await browser.newPage({ viewport: { width, height } });
-    page.on("pageerror", (e) => console.error(e));
-    page.on("console", (m) => {
-      if (m.type() === "error") console.error(m.text());
-    });
-    for (let i = 0; i < earlyNumberModels.length; i++) {
-      await page.goto(
-        `http://127.0.0.1:${address.port}/__early-number-proof?frame=${i}`,
-      );
-      await page.locator(".early-number-figure").waitFor();
-      await page.evaluate(() => document.fonts.ready);
-      const result = await page.evaluate(() => {
-        const stage = document.querySelector<HTMLElement>(".reader-stage")!;
-        const figure = document
-          .querySelector("figure")!
-          .getBoundingClientRect();
-        const bound = stage.getBoundingClientRect();
-        return {
-          scroll: stage.scrollHeight - stage.clientHeight,
-          overflow:
-            figure.bottom > bound.bottom + 1 ||
-            figure.left < bound.left ||
-            figure.right > bound.right,
-          body: document.documentElement.scrollHeight - innerHeight,
-        };
+  for (const theme of ["light", "dark"] as const) {
+    for (const [width, height] of [
+      [320, 568],
+      [390, 844],
+      [768, 1024],
+      [1024, 768],
+      [1280, 800],
+      [844, 390],
+    ] as const) {
+      const page = await browser.newPage({
+        viewport: { width, height },
+        colorScheme: theme,
       });
-      // Phone landscape only has to stay usable: the reader scrolls there.
-      if (isPhoneLandscape([width, height]))
-        await assertPhoneLandscapeSmoke(
-          page,
-          `Reader ${earlyNumberModels[i]!.id}`,
+      page.on("pageerror", (e) => console.error(e));
+      page.on("console", (m) => {
+        if (m.type() === "error") console.error(m.text());
+      });
+      for (let i = 0; i < earlyNumberModels.length; i++) {
+        await page.goto(
+          `http://127.0.0.1:${address.port}/__early-number-proof?frame=${i}`,
         );
-      else if (result.scroll > 1 || result.overflow || result.body > 1)
-        throw new Error(
-          `Reader ${earlyNumberModels[i]!.id} ${width}x${height}: ${JSON.stringify(result)}`,
-        );
-      const readability = await page.evaluate(() => ({
-        smallUnits: Array.from(document.querySelectorAll("[data-unit]")).filter(
-          (e) =>
-            e.getBoundingClientRect().width <
-            (e.closest(".early-base-ten") ? 14 : 7),
-        ).length,
-        smallLabels: Array.from(
-          document.querySelectorAll(
-            ".early-unit,.early-panel-label,.early-emphasis",
-          ),
-        ).filter((e) => parseFloat(getComputedStyle(e).fontSize) < 14).length,
-        clippedUnits: Array.from(
-          document.querySelectorAll("[data-unit]"),
-        ).filter((e) => {
-          const r = e.getBoundingClientRect(),
-            b = e.closest("svg")!.getBoundingClientRect();
-          return (
-            r.left < b.left ||
-            r.right > b.right ||
-            r.top < b.top ||
-            r.bottom > b.bottom
+        await page.locator(".early-number-figure").waitFor();
+        await page.evaluate(() => document.fonts.ready);
+        const result = await page.evaluate(() => {
+          const stage = document.querySelector<HTMLElement>(".reader-stage")!;
+          const figure = document
+            .querySelector("figure")!
+            .getBoundingClientRect();
+          const bound = stage.getBoundingClientRect();
+          return {
+            scroll: stage.scrollHeight - stage.clientHeight,
+            overflow:
+              figure.bottom > bound.bottom + 1 ||
+              figure.left < bound.left ||
+              figure.right > bound.right,
+            body: document.documentElement.scrollHeight - innerHeight,
+          };
+        });
+        // Phone landscape only has to stay usable: the reader scrolls there.
+        if (isPhoneLandscape([width, height]))
+          await assertPhoneLandscapeSmoke(
+            page,
+            `Reader ${earlyNumberModels[i]!.id}`,
           );
-        }).length,
-      }));
-      if (Object.values(readability).some(Boolean))
-        throw new Error(
-          `Unreadable ${earlyNumberModels[i]!.id} ${width}: ${JSON.stringify(readability)}`,
-        );
-      await page.screenshot({
-        path: resolve(output, `${earlyNumberModels[i]!.id}-${width}.png`),
-      });
-      review.push({
-        model: earlyNumberModels[i]!.id,
-        width,
-        height,
-        ...result,
-      });
+        else if (result.scroll > 1 || result.overflow || result.body > 1) {
+          await page.screenshot({
+            path: resolve(
+              output,
+              `failure-${earlyNumberModels[i]!.id}-${width}-${theme}.png`,
+            ),
+          });
+          throw new Error(
+            `Reader ${earlyNumberModels[i]!.id} ${width}x${height}: ${JSON.stringify(result)}`,
+          );
+        }
+        const readability = await page.evaluate(() => ({
+          smallUnits: Array.from(
+            document.querySelectorAll("[data-unit]"),
+          ).filter(
+            (e) =>
+              e.getBoundingClientRect().width <
+              (e.closest(".early-base-ten") ? 14 : 7),
+          ).length,
+          smallLabels: Array.from(
+            document.querySelectorAll(
+              ".early-unit,.early-panel-label,.early-emphasis",
+            ),
+          ).filter((e) => parseFloat(getComputedStyle(e).fontSize) < 14).length,
+          clippedUnits: Array.from(
+            document.querySelectorAll("[data-unit]"),
+          ).filter((e) => {
+            const r = e.getBoundingClientRect(),
+              b = e.closest("svg")!.getBoundingClientRect();
+            return (
+              r.left < b.left ||
+              r.right > b.right ||
+              r.top < b.top ||
+              r.bottom > b.bottom
+            );
+          }).length,
+        }));
+        if (Object.values(readability).some(Boolean)) {
+          const geometry = await page
+            .locator("[data-unit]")
+            .evaluateAll((units) =>
+              units.slice(0, 3).map((unit) => ({
+                width: unit.getBoundingClientRect().width,
+                svg: unit.closest("svg")!.getBoundingClientRect().toJSON(),
+                art: unit
+                  .closest(".early-number-art")!
+                  .getBoundingClientRect()
+                  .toJSON(),
+              })),
+            );
+          await page.screenshot({
+            path: resolve(
+              output,
+              `failure-${earlyNumberModels[i]!.id}-${width}-${theme}.png`,
+            ),
+          });
+          throw new Error(
+            `Unreadable ${earlyNumberModels[i]!.id} ${width}: ${JSON.stringify({ readability, geometry })}`,
+          );
+        }
+        await page.screenshot({
+          path: resolve(
+            output,
+            `${earlyNumberModels[i]!.id}-${width}-${theme}.png`,
+          ),
+        });
+        review.push({
+          model: earlyNumberModels[i]!.id,
+          width,
+          height,
+          theme,
+          ...result,
+        });
+      }
+      await page.close();
     }
-    await page.close();
   }
   const page = await browser.newPage({
     viewport: { width: 1000, height: 1200 },
