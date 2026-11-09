@@ -922,7 +922,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
                 : problem.public.response.kind === "multi-part-choice"
                   ? `Choose one of the displayed options for each of the ${problem.public.response.blanks.length} parts`
                   : problem.public.response.kind === "figure-choice"
-                    ? `Choose one of the displayed ${problem.public.response.noun === "Graph" ? "graphs" : "number lines"}`
+                    ? `Choose one of the displayed ${problem.public.response.noun === "Graph" ? "graphs" : problem.public.response.noun === "Picture" ? "pictures" : "number lines"}`
                     : problem.public.response.kind === "structured-work"
                       ? problem.public.response.mode === "order"
                         ? "Place every step once, in an order"
