@@ -88,7 +88,8 @@
   height: 48px;
   min-width: 0;
   padding: 4px;
-  white-space: normal;
+  /* A count stays on its label's line ("Review · 29"), never below it. */
+  white-space: nowrap;
   line-height: 1.25;
   border: 0;
   background: transparent;
@@ -409,10 +410,13 @@
   .progress-controls .premium-select {
     max-width: none;
   }
+  /* Fixed tracks, so a count that arrives or changes moves nothing. Review
+     carries the count, so its track is wider: a three-digit count still
+     fits on one line at 320px. */
   .progress-filters {
     width: auto;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr);
   }
-  /* Fixed tracks and height reserve room for a two-line review count. */
   .progress-filters button {
     min-height: 44px;
     padding: 4px;

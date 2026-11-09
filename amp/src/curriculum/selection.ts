@@ -15,7 +15,7 @@ export const CURRICULUM_MIX_VERSION = "2026-10-30.1";
 const rows = `
 counting|6|6|count-to-20,count-to-100,write-numerals,compare-small-groups,compare-numerals,skip-counting,odd-and-even
 place-value|6|6|teen-place-value,tens-and-ones,compare-two-digit,hundreds-place-value,compare-three-digit,ten-more-less,large-place-value,powers-of-ten,round-whole-numbers
-addition-subtraction|6|6|addition-within-10,subtraction-within-10,number-bonds,make-ten,facts-within-5,addition-within-20,subtraction-within-20,three-addends,add-two-digit,addition-within-100,subtraction-within-100,regroup-hundreds,multiple-addends,addition-facts,number-line-arithmetic,add-subtract-thousands,whole-add-subtract,counting-arithmetic,mental-tens-hundreds
+addition-subtraction|6|6|addition-within-10,subtraction-within-10,number-bonds,make-ten,facts-within-5,addition-within-20,subtraction-within-20,three-addends,add-two-digit,addition-within-100,subtraction-within-100,regroup-hundreds,multiple-addends,addition-facts,number-line-arithmetic,add-subtract-thousands,whole-add-subtract,counting-arithmetic,mental-tens-hundreds,represent-join-separate,turn-around-facts,explain-strategies
 multiplication-division|6|6|arrays,multiplication-meaning,multiplication-facts,division-meaning,division-facts,operation-properties,multiply-tens,whole-multiplication,whole-division,multidigit-products,multidigit-quotients,integer-division
 arithmetic-modeling|5|5|addition-stories,two-step-stories,multiplicative-stories,multi-operation-stories,multiplicative-comparison,multistep-whole-stories,rational-stories,financial-literacy-elementary
 fraction-meaning|6|6|halves-and-quarters,thirds-and-partitions,unit-fractions,fraction-model,fractions-number-line,equivalent-fractions,compare-fractions,partition-area,fraction-equivalence,fraction-comparison,mixed-numbers,fraction-as-division
@@ -25,11 +25,11 @@ number-structure|3|3|factors-multiples,gcf-lcm,irrational-numbers,approximate-ro
 signed-numbers|5|5|signed-numbers,absolute-value,signed-addition,signed-multiplication
 measurement|4|4|compare-attributes,measure-equal-units,ruler-measurement,mass-volume,unit-conversion,measurement-conversions,units-and-precision
 clock-money|3|3|clock-half-hours,clock-five-minutes,money-values,elapsed-time
-shape-properties|3|3|name-shapes,compose-shapes,shape-attributes,polygon-properties,quadrilateral-categories,shape-hierarchy,geometric-definitions
-area-volume|5|5|rectangle-area,perimeter,area-perimeter-models,volume-cubes,prism-volume,triangle-area,fractional-prism-volume,surface-area,circle-measurement,composite-measurement,curved-solid-volume,solid-volume-models,coordinate-measurement
+shape-properties|3|3|name-shapes,compose-shapes,shape-attributes,polygon-properties,quadrilateral-categories,shape-hierarchy,geometric-definitions,build-and-draw-shapes,composite-shapes
+area-volume|5|5|rectangle-area,perimeter,area-perimeter-models,volume-cubes,prism-volume,triangle-area,fractional-prism-volume,surface-area,circle-measurement,composite-measurement,curved-solid-volume,solid-volume-models,coordinate-measurement,area-by-counting-squares
 angles-lines|4|4|angle-measure,lines-symmetry,angle-relationships,triangle-angle-theorems
 coordinate-geometry|4|4|coordinate-first-quadrant,coordinate-four-quadrants,coordinate-polygons,coordinate-distance,segment-division
-transformations-similarity|4|4|rigid-motions,dilations-similarity,scale-drawings,congruence-criteria,similarity-proofs,dilation-properties,transformation-invariants,polygon-symmetries
+transformations-similarity|4|4|rigid-motions,dilations-similarity,scale-drawings,congruence-criteria,similarity-proofs,dilation-properties,transformation-invariants,polygon-symmetries,rigid-motion-properties
 geometry-constructions|2|1|triangle-construction,solid-cross-sections,geometric-constructions,triangle-circles,tangent-construction,transformation-constructions,inscribed-polygons,sections-and-revolutions
 geometry-proof|3|2|geometric-proof,coordinate-proofs,circle-similarity,line-angle-proofs,triangle-proofs,parallelogram-proofs,measurement-formula-proofs,cavalieri-principle,slope-proofs,similarity-theorems,triangle-law-proofs
 geometry-modeling|3|3|geometric-modeling,density-modeling,geometric-design
@@ -57,7 +57,7 @@ complex-numbers|2|1|complex-numbers,complex-plane,complex-conjugates,complex-dis
 vectors-matrices|1|1|vectors,matrices,vector-modeling,matrix-data,matrix-properties,matrix-inverses,matrix-transformations,matrix-systems
 advanced-models|1|1|parametric-models,polar-coordinates,model-validation,binomial-theorem
 data-displays|4|4|sort-and-count,categorical-data,line-plots,picture-bar-graphs,scaled-graphs,fraction-line-plots,fraction-plot-arithmetic,fraction-plot-computation,distribution-plots,frequency-bar-graphs
-statistics|4|4|statistical-questions,statistics-mean,mean-median,variability,signed-data-summaries,compare-distributions,normal-distributions,statistical-summary-comparison
+statistics|4|4|statistical-questions,statistics-mean,mean-median,variability,signed-data-summaries,compare-distributions,normal-distributions,statistical-summary-comparison,describe-distributions
 bivariate-data|4|4|scatterplots,two-way-tables,residuals-correlation,categorical-association,regression-interpretation
 statistical-inference|3|3|sampling,study-design,statistical-inference,simulation-model-checks,sampling-margin-error,randomization-tests,statistical-report-critique,causal-claims
 probability|3|3|probability,compound-probability,conditional-probability,independent-events,event-sets,probability-addition,probability-multiplication,permutations-combinations,fair-random-decisions

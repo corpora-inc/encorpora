@@ -312,7 +312,7 @@ teen-place-value|K|number|Compose teen numbers from a ten and extra ones|make-te
 compare-attributes|K|measurement|Compare objects by length weight or capacity||K.MD.A.1,K.MD.A.2
 sort-and-count|K|data|Sort objects by an attribute and count each category|count-to-20|K.MD.B.3
 name-shapes|K|geometry|Identify flat and solid shapes across orientations||K.G.A.1,K.G.A.2,K.G.A.3
-compose-shapes|K|geometry|Build and describe shapes using smaller shapes|name-shapes|K.G.B.5,K.G.B.6,K.G.A.2
+compose-shapes|K|geometry|Build and describe shapes using smaller shapes|name-shapes|K.G.B.6,K.G.A.2
 addition-within-20|1|operations|Add through twenty using decomposition and making ten|make-ten|1.OA.C.6
 subtraction-within-20|1|operations|Subtract through twenty using related addition facts|addition-within-20|1.OA.C.6
 addition-stories|1|modeling|Choose an equation for joining comparing or part-whole stories|addition-within-20|1.OA.A.1,3.OA.D.8
@@ -327,13 +327,13 @@ measure-equal-units|1|measurement|Measure length with repeated equal units witho
 clock-half-hours|1|measurement|Read clocks to the hour and half hour|count-to-100|1.MD.B.3
 categorical-data|1|data|Compare category counts and answer questions about a display|sort-and-count|1.MD.C.4,6.RP.A.3,8.SP.A.4
 halves-and-quarters|1|fractions|Partition a whole into equal halves and quarters|compose-shapes|1.G.A.3
-shape-attributes|1|geometry|Classify shapes by defining attributes|name-shapes|1.G.A.1,1.G.A.2,K.G.B.4
+shape-attributes|1|geometry|Classify shapes by defining attributes|name-shapes|1.G.A.1,K.G.B.4
 hundreds-place-value|2|number|Compose and read hundreds tens and ones|tens-and-ones|2.NBT.A.1,2.NBT.A.3,1.NBT.B.2,2.MD.B.6
 skip-counting|2|number|Count by fives tens and hundreds|count-to-100|2.NBT.A.2
 compare-three-digit|2|number|Compare three-digit numbers using place value|hundreds-place-value|2.NBT.A.4
 addition-within-100|2|operations|Add within one hundred with regrouping|add-two-digit|2.NBT.B.5,1.OA.D.8
 subtraction-within-100|2|operations|Subtract within one hundred with regrouping|addition-within-100,subtraction-within-20|2.NBT.B.5
-regroup-hundreds|2|operations|Add and subtract through one thousand using place value|hundreds-place-value,subtraction-within-100|2.NBT.B.7,2.NBT.B.9
+regroup-hundreds|2|operations|Add and subtract through one thousand using place value|hundreds-place-value,subtraction-within-100|2.NBT.B.7
 multiple-addends|2|operations|Combine several two-digit addends|addition-within-100|2.NBT.B.6
 two-step-stories|2|modeling|Represent and solve two-step addition and subtraction stories|addition-stories,subtraction-within-100|2.OA.A.1,3.MD.A.1,3.OA.D.8
 addition-facts|2|operations|Recall addition and subtraction facts within twenty|subtraction-within-20|2.OA.B.2,1.OA.B.4,1.OA.C.6
@@ -370,7 +370,7 @@ elapsed-time|3|measurement|Solve elapsed-time problems to the nearest minute|clo
 mass-volume|3|measurement|Solve measurement problems involving mass and liquid volume|multiplicative-stories|3.MD.A.2
 scaled-graphs|3|data|Read scaled picture and bar graphs|picture-bar-graphs,multiplication-facts|3.MD.B.3
 fraction-line-plots|3|data|Display and interpret fractional length measurements|line-plots,unit-fractions|
-rectangle-area|3|geometry|Find rectangular area by counting unit squares or multiplying sides|arrays,multiplication-facts|3.MD.C.5,3.MD.C.6,3.MD.C.7,3.OA.B.5
+rectangle-area|3|geometry|Find rectangular area by counting unit squares or multiplying sides|arrays,multiplication-facts,area-by-counting-squares|3.MD.C.5,3.MD.C.6,3.MD.C.7,3.OA.B.5
 perimeter|3|geometry|Find perimeter and missing side lengths|addition-within-100|3.MD.D.8
 quadrilateral-categories|3|geometry|Classify quadrilaterals by shared attributes|polygon-properties|3.G.A.1
 partition-area|3|fractions|Relate equal-area partitions to fractions of a whole|rectangle-area,unit-fractions|3.G.A.2,3.NF.A.1,3.OA.A.3
@@ -430,7 +430,7 @@ triangle-area|6|geometry|Find triangle and polygon areas by decomposition|rectan
 fractional-prism-volume|6|geometry|Calculate prism volume with fractional side lengths|prism-volume,fraction-multiplication|6.G.A.2
 coordinate-polygons|6|geometry|Find polygon side lengths from coordinates|coordinate-four-quadrants|6.G.A.3,6.NS.C.8
 surface-area|6|geometry|Use nets to calculate surface area of prisms and pyramids|triangle-area,prism-volume|6.G.A.4,7.G.B.6
-statistical-questions|6|data|Identify statistical questions and sources of variation|categorical-data|6.SP.A.1,6.SP.A.2
+statistical-questions|6|data|Identify statistical questions and sources of variation|categorical-data|6.SP.A.1
 statistics-mean|6|data|Calculate the arithmetic mean of a finite dataset|decimal-arithmetic|6.SP.B.5
 mean-median|6|data|Calculate and interpret mean median and range|decimal-arithmetic|6.SP.A.3,6.SP.B.5
 distribution-plots|6|data|Interpret dot plots histograms and box plots|line-plots,mean-median|6.SP.B.4,6.SP.B.5
@@ -625,6 +625,14 @@ theoretical-distributions|precalculus|probability|Construct theoretical discrete
 empirical-distributions|precalculus|probability|Estimate distributions from observed frequencies and compute expectations|random-variables,expected-value|
 fair-random-decisions|precalculus|probability|Design random selection procedures and justify fairness|probability|7.SP.C.7
 decision-strategies|precalculus|modeling|Compare uncertain strategies using probabilities payoffs and model assumptions|expected-value,conditional-probability|
+build-and-draw-shapes|K|geometry|Build shapes from sticks for sides and balls for corners and judge whether a drawing is a closed straight-sided shape|name-shapes|K.G.B.5
+represent-join-separate|K|operations|Show joining and taking away with pictures, expressions and equations, and read a picture or story as a number sentence|addition-within-10,subtraction-within-10|K.OA.A.1
+composite-shapes|1|geometry|Put flat and solid shapes together and name the composite shape they make|compose-shapes,shape-attributes|1.G.A.2
+turn-around-facts|1|operations|Use a known addition fact to know its turnaround and see that subtraction does not turn around|addition-within-20|1.OA.B.3
+explain-strategies|2|operations|Explain why addition and subtraction strategies work using place value and properties of operations|regroup-hundreds,mental-tens-hundreds|2.NBT.B.9
+area-by-counting-squares|3|geometry|Measure area by counting unit squares in standard and improvised units|arrays|3.MD.C.5,3.MD.C.6
+describe-distributions|6|data|Describe a data distribution by its center, spread and overall shape|statistical-questions,line-plots|6.SP.A.2
+rigid-motion-properties|8|geometry|Verify by measuring that slides, flips and turns keep lengths, angles and parallel lines|rigid-motions,slope,coordinate-distance|8.G.A.1
 `;
 
 /** Words a skill title keeps capitalised: names and initialisms. */
