@@ -2,7 +2,7 @@
 
 The `trend-line-fit-v1` response lets a learner fit a straight line to a scatter plot with two square handles. Drag a handle, or select it and use arrow buttons or keys. The line extends across the plot. The handles must have different horizontal coordinates; they move in the horizontal axis's step and one vertical unit.
 
-The grade 8 `scatterplots` skill includes three families in this change:
+The grade 8 `scatterplots` skill includes these three families:
 
 | Family | Task |
 | --- | --- |
@@ -10,7 +10,7 @@ The grade 8 `scatterplots` skill includes three families in this change:
 | `trend-line-compare` | Compare two lines on identical data and scales. |
 | `trend-line-read` | Read a rounded estimate from a fitted line within the observed range. |
 
-The existing four-line comparison, fit assessment (including curved clouds), prediction and slope-meaning families continue to use their existing protocols. Clients must declare `trend-line-fit-v1` to receive the fitter. Its teaching examples and printed exercises use the shared scatter scene; paper asks for a line, without referring to controls.
+Other scatter-plot families cover four-line comparisons, fit assessment (including curved clouds), prediction and slope meaning. Clients must declare `trend-line-fit-v1` to receive the fitter. Its teaching examples and printed exercises use the shared scatter scene; paper asks for a line, without referring to controls.
 
 ## Informal grading
 
