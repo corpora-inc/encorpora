@@ -20,6 +20,8 @@ const STRUCTURED_SEEDS = 128;
 const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
   // Clause choices can have three options after duplicate distractors are removed.
   "graphical-solution-table": 1 / 3,
+  // A rate of two leaves 3, 3 and 4 choices in the ordered-pair slots.
+  "dependent-variable-value": 1 / 36,
   "circle-estimate-blanks": 1 / 8,
   "round-decimal-blanks": 1 / 8,
   "quotient-remainder-blanks": 1 / 8,
