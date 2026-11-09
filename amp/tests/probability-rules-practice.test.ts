@@ -143,3 +143,77 @@ test("lesson scenes play only on elements they draw", () => {
     );
   }
 });
+
+const words = (text: string) =>
+  text
+    .split(/(?<=[.!?])\s+/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+test("clause tasks keep a fraction in [0, 1] and version 1 omits the new wording", () => {
+  const markers = [
+    ["conditional-probability-value", "Build the two-way table"],
+    ["conditional-probability-value", "what fraction also"],
+    ["addition-rule-probability", "at least one"],
+    ["multiplication-rule-probability", "band given the bus"],
+    ["multiplication-rule-probability", "no rain and a late bus"],
+  ] as const;
+  const seen = new Map<string, number>();
+  for (let i = 0; i < 160; i++) {
+    for (const id of [
+      "conditional-probability-value",
+      "addition-rule-probability",
+      "multiplication-rule-probability",
+    ]) {
+      const old = generateProblem(id, `clause:${i}`, 1);
+      for (const [, marker] of markers.filter(([name]) => name === id))
+        assert.equal(old.public.prompt.includes(marker), false, marker);
+      const problem = generateProblem(id, `clause:${i}`);
+      const hit = markers.find(
+        ([name, marker]) =>
+          name === id && problem.public.prompt.includes(marker),
+      );
+      if (!hit) continue;
+      seen.set(hit[1], (seen.get(hit[1]) ?? 0) + 1);
+      assert.equal(problem.variant?.id === undefined, false);
+      assert.equal(problem.public.response.kind, "fraction");
+      const [n, d = "1"] = problem.answer.split("/");
+      const value = Number(n) / Number(d);
+      assert.ok(value > 0 && value < 1, problem.answer);
+      assert.equal(problem.hint.includes(problem.answer), false);
+      for (const text of [
+        problem.public.prompt,
+        problem.hint,
+        ...problem.explanation,
+      ])
+        for (const sentence of words(text))
+          assert.ok(
+            sentence.split(/\s+/).length <= 35,
+            `${id}: ${sentence}`,
+          );
+      if (hit[1] === "Build the two-way table") {
+        const m =
+          /A survey of (\d+) .+ gives two facts\. (\d+) are .+ and the rest are .+\. (\d+) .+, including (\d+)/.exec(
+            problem.public.prompt,
+          )!;
+        const N = Number(m[1]);
+        const R = Number(m[2]);
+        const C = Number(m[3]);
+        const X = Number(m[4]);
+        const cell = C - X;
+        const rest = N - R;
+        assert.notEqual(X * rest, R * cell);
+        assert.equal(problem.answer, reduce(cell, rest));
+      }
+    }
+  }
+  for (const [, marker] of markers) assert.ok((seen.get(marker) ?? 0) > 0, marker);
+});
+
+function reduce(n: number, d: number) {
+  let a = n;
+  let b = d;
+  while (b) [a, b] = [b, a % b];
+  const g = a || 1;
+  return d / g === 1 ? `${n / g}` : `${n / g}/${d / g}`;
+}

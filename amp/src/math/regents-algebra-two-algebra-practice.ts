@@ -1298,12 +1298,13 @@ export const rationalExponentProduct = chainFamily({
     }
     const { c, d, m: mm, P } = m;
     const e3 = 3 * P + mm; // exponent in thirds
+    const xPow = (exp: number) => (exp === 1 ? "x" : `x^{${exp}}`);
     const xp = (n: number, den: number) =>
       `x^{${expTex(n, den)}}`.replace(/x\^\{1\}/, "x");
     const lab = (coef: number, num: number, den: number) =>
       `$${coef}${xp(num, den)}$`;
     return choiceSurface(rnd, {
-      prompt: `Which expression is equivalent to $${c}x^{${P}}\\sqrt[3]{${d ** 3}x^{${mm}}}$, where $x>0$?`,
+      prompt: `Which expression is equivalent to $${c}${xPow(P)}\\sqrt[3]{${d ** 3}${xPow(mm)}}$, where $x>0$?`,
       options: [
         { label: lab(c * d, e3, 3), correct: true },
         {
@@ -1320,15 +1321,15 @@ export const rationalExponentProduct = chainFamily({
         },
         {
           label: lab(c * d, 3 * P + mm, 9),
-          feedback: `This puts $${c}x^{${P}}$ under the root too. It is outside the radical, so its exponent ${P} is not divided by 3.`,
+          feedback: `This puts $${c}${xPow(P)}$ under the root too. It is outside the radical, so its exponent ${P} is not divided by 3.`,
         },
       ],
-      hint: `Take the cube root of ${d ** 3} separately, and write $\\sqrt[3]{x^{${mm}}}$ as a power of $x$ with exponent $\\frac{${mm}}{3}$. Then combine the powers of $x$.`,
+      hint: `Take the cube root of ${d ** 3} separately, and write $\\sqrt[3]{${xPow(mm)}}$ as a power of $x$ with exponent $\\frac{${mm}}{3}$. Then combine the powers of $x$.`,
       explanation: [
         `A cube root, $\\sqrt[3]{\\ }$, undoes cubing. It applies to each factor under it, the number and the power of $x$.`,
-        `The number: $${d}^3=${d ** 3}$, so $\\sqrt[3]{${d ** 3}}=${d}$. The power: a cube root is the power $\\frac13$, so $\\sqrt[3]{x^{${mm}}}=x^{${mm}/3}$.`,
-        `So $\\sqrt[3]{${d ** 3}x^{${mm}}}=${d}x^{${mm}/3}$.`,
-        `Multiply by $${c}x^{${P}}$. Multiply the coefficients, the numbers in front: $${c}\\cdot${d}=${c * d}$. Add the exponents of $x$: $${P}+\\frac{${mm}}{3}=${expTex(e3, 3)}$.`,
+        `The number: $${d}^3=${d ** 3}$, so $\\sqrt[3]{${d ** 3}}=${d}$. The power: a cube root is the power $\\frac13$, so $\\sqrt[3]{${xPow(mm)}}=x^{${mm}/3}$.`,
+        `So $\\sqrt[3]{${d ** 3}${xPow(mm)}}=${d}x^{${mm}/3}$.`,
+        `Multiply by $${c}${xPow(P)}$. Multiply the coefficients, the numbers in front: $${c}\\cdot${d}=${c * d}$. Add the exponents of $x$: $${P}+\\frac{${mm}}{3}=${expTex(e3, 3)}$.`,
         `So the expression equals $${c * d}x^{${expTex(e3, 3)}}$.`,
       ],
     });

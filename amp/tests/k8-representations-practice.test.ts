@@ -89,6 +89,9 @@ const expected: Record<string, { skill: string; tags: string[] }> = {
       "simulation/family",
       "simulation/free-throws",
       "experimental-vs-theoretical",
+      "represent-sample-space",
+      "event-outcomes",
+      "design-and-run",
     ],
   },
 };
@@ -588,6 +591,13 @@ test("compound-event answers agree with direct counting and comparison", () => {
       }).length;
       assert.ok(Math.abs(frac(correct) - hits / 20) < 1e-12);
       sims++;
+    } else if (
+      tag === "represent-sample-space" ||
+      tag === "event-outcomes" ||
+      tag === "design-and-run"
+    ) {
+      assert.equal(generated.public.templateVersion, 2);
+      assert.equal(generated.variant?.id, tag);
     } else {
       const [obs, trials] = /happened (\d+) times|In (\d+) trials/.exec(prompt)
         ? [
@@ -610,6 +620,137 @@ test("compound-event answers agree with direct counting and comparison", () => {
     }
   }
   assert.ok(sims > 50);
+});
+
+test("grade 7 compound variants list the space, the event, and a simulation rule", () => {
+  const markers = [
+    "Which description shows every outcome exactly once?",
+    "Which list includes every outcome of the event",
+    "Which rule and estimate are correct?",
+  ];
+  for (let i = 0; i < 40; i++) {
+    const old = generateProblem("compound-event-simulation", `old-${i}`, 1);
+    assert.equal(old.public.templateVersion, 1);
+    assert.equal(old.variant, undefined);
+    for (const marker of markers)
+      assert.equal(old.public.prompt.includes(marker), false, old.public.prompt);
+  }
+  const closed: Record<string, number> = {
+    "tails or a 6": 7,
+    "heads and an even number": 3,
+    "at least one head": 3,
+    doubles: 6,
+    "a sum of 7": 6,
+    "a sum of at least 10": 6,
+  };
+  let spaces = 0;
+  let events = 0;
+  let designs = 0;
+  for (const seed of seeds) {
+    const tag = tagOf("compound-event-simulation", seed);
+    if (
+      tag !== "represent-sample-space" &&
+      tag !== "event-outcomes" &&
+      tag !== "design-and-run"
+    )
+      continue;
+    const { generated, correct, response } = parts(
+      "compound-event-simulation",
+      seed,
+    );
+    const prompt = generated.public.prompt;
+    if (tag === "represent-sample-space") {
+      spaces++;
+      const listed = [...prompt.matchAll(/\((\d+) outcomes:/g)];
+      const twice = prompt.includes("used twice");
+      const m = Number(listed[0]![1]);
+      const n = twice ? m : Number(listed[1]![1]);
+      const total = m * n;
+      assert.match(correct, new RegExp(`exactly ${total} outcomes`));
+      assert.match(correct, /each pair once/);
+      for (const option of response.options) {
+        const count = Number(/exactly (\d+) outcomes/.exec(option.label)![1]);
+        if (option.label !== correct) assert.notEqual(count, total);
+      }
+    } else if (tag === "event-outcomes") {
+      events++;
+      const first = /First outcomes: ([^.]+)\./.exec(prompt)![1]!.split(", ");
+      const second = /Second outcomes: ([^.]+)\./
+        .exec(prompt)![1]!
+        .split(", ");
+      const phrase = /The event is: ([^.]+)\./.exec(prompt)![1]!;
+      const keep = (x: string, y: string) =>
+        phrase === "tails or a 6"
+          ? x === "T" || y === "6"
+          : phrase === "heads and an even number"
+            ? x === "H" && Number(y) % 2 === 0
+            : phrase === "at least one head"
+              ? x === "H" || y === "H"
+              : phrase === "doubles"
+                ? x === y
+                : phrase === "a sum of 7"
+                  ? Number(x) + Number(y) === 7
+                  : Number(x) + Number(y) >= 10;
+      const fav = first.flatMap((x) =>
+        second.filter((y) => keep(x, y)).map((y) => `(${x}, ${y})`),
+      );
+      const listed = [...correct.matchAll(/\([^)]*\)/g)].map((m) => m[0]);
+      assert.equal(fav.length, closed[phrase]);
+      assert.deepEqual([...listed].sort(), [...fav].sort());
+      assert.ok(
+        generated.explanation.some((line) =>
+          line.includes(`${fav.length}/${first.length * second.length}`),
+        ),
+      );
+    } else {
+      designs++;
+      const rows = /These (\d+) trials are ([^.]*)\./.exec(prompt)!;
+      const trialCount = Number(rows[1]);
+      const trials = rows[2]!.split(";");
+      assert.equal(trials.length, trialCount);
+      if (prompt.includes("type A blood")) {
+        const percent = Number(/(\d+)% of donors/.exec(prompt)![1]);
+        const threshold = Number(/at least (\d+) digits/.exec(prompt)![1]);
+        const width = percent / 10;
+        const lengthOf = (text: string) => {
+          const digits = text.endsWith("cap") ? text.slice(0, -3) : text;
+          for (let i = 0; i < digits.length; i++)
+            if (Number(digits[i]) < width) return i + 1;
+          return 8;
+        };
+        const hits = trials.filter((row) => lengthOf(row) >= threshold).length;
+        const digits = /Digits ([0-9, ]+) stand for type A/
+          .exec(correct)![1]!
+          .split(", ")
+          .map(Number);
+        assert.deepEqual(
+          digits,
+          Array.from({ length: width }, (_, i) => i),
+        );
+        assert.match(correct, new RegExp(`The estimate is ${hits}/${trialCount}\\.`));
+      } else if (prompt.includes("all 3 children")) {
+        const hits = trials.filter((row) =>
+          [...row].every((digit) => Number(digit) % 2 === 0),
+        ).length;
+        assert.match(correct, /^Even digits stand for a girl\./);
+        assert.match(correct, new RegExp(`${hits}/${trialCount}\\.`));
+      } else {
+        const hits = trials.filter((text) => {
+          const digits = text.endsWith("cap") ? text.slice(0, -3) : text;
+          const kept: number[] = [];
+          for (const ch of digits) {
+            if (kept.length === 2) break;
+            const digit = Number(ch);
+            if (digit >= 1 && digit <= 6) kept.push(digit);
+          }
+          return kept.length === 2 && kept.includes(6);
+        }).length;
+        assert.match(correct, /^Digits 1, 2, 3, 4, 5, 6 are rolls/);
+        assert.match(correct, new RegExp(`${hits}/${trialCount}\\.`));
+      }
+    }
+  }
+  assert.ok(spaces >= 30 && events >= 30 && designs >= 40);
 });
 
 test("pattern pairs always have three distinct wrong options, even when matching terms are equal", () => {

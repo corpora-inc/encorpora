@@ -842,6 +842,9 @@ def _check_line_field(field, text):
 # solve-and-justify review
 
 def _review_derivation(problem):
+    if "completing the square" in problem["public"]["prompt"]:
+        _review_formula(problem)
+        return problem["answer"]
     public, response, banks = _check_public(problem)
     start, ctx = _derivation_context(public)
     require(response["layout"] == "steps", "Derivations use the steps layout")
@@ -1991,10 +1994,152 @@ def _check_show_work_text(problem, derived):
 # ======================================================================
 # API
 
+def _frac_tex(n, d):
+    g = math.gcd(abs(n), abs(d))
+    n, d = n // g, d // g
+    if d < 0:
+        n, d = -n, -d
+    if d == 1:
+        return str(n)
+    return ("-" if n < 0 else "") + f"\\frac{{{abs(n)}}}{{{d}}}"
+
+
+def _signed_term(n, d, body, first):
+    g = math.gcd(abs(n), abs(d))
+    n, d = n // g, d // g
+    if d < 0:
+        n, d = -n, -d
+    if n == 0:
+        return ""
+    mag = ("" if abs(n) == 1 and body else str(abs(n))) + body if d == 1 else f"\\frac{{{abs(n)}}}{{{d}}}{body}"
+    if first:
+        return ("-" if n < 0 else "") + mag
+    return ("-" if n < 0 else "+") + mag
+
+
+def _x_plus(n, d):
+    g = math.gcd(abs(n), abs(d))
+    n, d = n // g, d // g
+    if d < 0:
+        n, d = -n, -d
+    if n == 0:
+        return "x"
+    if d == 1:
+        return f"x{n}" if n < 0 else f"x+{n}"
+    mag = f"\\frac{{{abs(n)}}}{{{d}}}"
+    return f"x-{mag}" if n < 0 else f"x+{mag}"
+
+
+def _sq_shift(n, d):
+    g = math.gcd(abs(n), abs(d))
+    n, d = n // g, d // g
+    if d < 0:
+        n, d = -n, -d
+    if n == 0:
+        return "x^2"
+    inside = (f"-{abs(n)}" if n < 0 else f"+{n}") if d == 1 else (("-" if n < 0 else "+") + f"\\frac{{{abs(n)}}}{{{d}}}")
+    return f"\\left(x{inside}\\right)^2"
+
+
+def _math(body):
+    return f"${body}$"
+
+
+def _letter_lines():
+    return [
+        _math("x^2+\\frac{b}{a}x+\\frac{c}{a}=0"),
+        _math("x^2+\\frac{b}{a}x=-\\frac{c}{a}"),
+        _math("x^2+\\frac{b}{a}x+\\frac{b^2}{4a^2}=-\\frac{c}{a}+\\frac{b^2}{4a^2}"),
+        _math("\\left(x+\\frac{b}{2a}\\right)^2=\\frac{b^2-4ac}{4a^2}"),
+        _math("x+\\frac{b}{2a}=\\pm\\frac{\\sqrt{b^2-4ac}}{2a}"),
+        _math("x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}"),
+    ]
+
+
+def _numeric_lines(a, b, c):
+    disc = b * b - 4 * a * c
+    den2, den4 = 2 * a, 4 * a * a
+    head = -b
+    radical = f"\\pm\\sqrt{{{disc}}}" if head == 0 else (("" if head > 0 else "-") + f"{abs(head)}\\pm\\sqrt{{{disc}}}")
+    # head > 0 means -b > 0, so the numerator starts with that positive integer.
+    if head < 0:
+        radical = f"-{abs(head)}\\pm\\sqrt{{{disc}}}"
+    elif head > 0:
+        radical = f"{head}\\pm\\sqrt{{{disc}}}"
+    return [
+        _math(f"x^2{_signed_term(b, a, 'x', False)}{_signed_term(c, a, '', False)}=0"),
+        _math(f"x^2{_signed_term(b, a, 'x', False)}={_signed_term(-c, a, '', True)}"),
+        _math(
+            f"x^2{_signed_term(b, a, 'x', False)}{_signed_term(b * b, den4, '', False)}="
+            f"{_signed_term(-c, a, '', True)}{_signed_term(b * b, den4, '', False)}"
+        ),
+        _math(f"{_sq_shift(b, den2)}={_frac_tex(disc, den4)}"),
+        _math(f"{_x_plus(b, den2)}=\\pm\\frac{{\\sqrt{{{disc}}}}}{{{den2}}}"),
+        _math(f"x=\\frac{{{radical}}}{{{den2}}}"),
+    ]
+
+
+def _formula_coeffs(prompt):
+    if "$a \\ne 0$" in prompt:
+        return None
+    m = re.search(r"\$([+-]?\d*)x\^2([+-]\d*)x([+-]\d+)=0\$", prompt)
+    require(m is not None, f"No quadratic in {prompt!r}")
+
+    def coef(text, bare):
+        if text in ("", "+"):
+            return 1 if bare else 0
+        if text == "-":
+            return -1
+        return int(text)
+
+    return coef(m[1], True), coef(m[2], True), int(m[3])
+
+
+def _review_formula(problem):
+    public, response, banks = _check_public(problem)
+    require(response["layout"] == "proof", "The formula derivation chooses lines")
+    require(set(banks) == {"lines", "reasons"}, "Line and reason banks")
+    rows = _key_rows(problem)
+    labels = {o["id"]: o["label"] for o in banks["lines"]["options"]}
+    reasons = [reason for _line, reason in rows]
+    chosen = [labels[line] for line, _reason in rows]
+    prompt = public["prompt"]
+    expected_reasons = ["da", "su", "cs", "fa", "sr", "su"]
+    if "general derivation" in prompt:
+        require(len(rows) == 1, "The match item has one line")
+        require(reasons[0] in ("fa", "cf"), "Line 4 is factoring or a common denominator")
+        require(chosen[0] == _letter_lines()[3], "The match is general line 4")
+        coeffs = _formula_coeffs(prompt)
+        require(coeffs is not None, "The match names a numeric equation")
+        shown = re.search(r"is (\$[^$]+\$)\.", prompt)
+        require(shown and shown[1] == _numeric_lines(*coeffs)[3], "The shown line 4 is not the numeric square")
+        return
+    coeffs = _formula_coeffs(prompt)
+    expected = _letter_lines() if coeffs is None else _numeric_lines(*coeffs)
+    require(len(chosen) == 6, "Six derivation lines")
+    require(chosen == expected, f"Lines {chosen} != {expected}")
+    require(reasons[4] == "sr" and reasons[0] == "da" and reasons[2] == "cs", "Reason sequence")
+    require(reasons[1] == "su" and reasons[5] == "su", "Same-to-both-sides reasons")
+    require(reasons[3] in ("fa", "cf"), "Line 4 accepts factoring or a common denominator")
+    require(reasons == expected_reasons or reasons[3] == "cf", "Reason sequence")
+    if coeffs is not None:
+        a, b, c = coeffs
+        disc = b * b - 4 * a * c
+        require(disc > 0, "Positive discriminant")
+        root = math.isqrt(disc)
+        require(root * root != disc, "The numeric companion keeps an unsquared discriminant")
+
+
 def solve(public):
     t = public["templateId"]
     require(t in SUPPORTED, f"Unsupported template {t}")
     if t in SOLVE_JUSTIFY:
+        if "completing the square" in public["prompt"]:
+            coeffs = _formula_coeffs(public["prompt"])
+            lines = _letter_lines() if coeffs is None else _numeric_lines(*coeffs)
+            if "general derivation" in public["prompt"]:
+                return _letter_lines()[3]
+            return lines[-1]
         start, ctx = _derivation_context(public)
         return _solution_text(ctx["solution"], ctx["variable"])
     if t in PROOFS:

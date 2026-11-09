@@ -175,7 +175,30 @@ def parse_selection(prompt):
     return a, b, k, test
 
 
+def solve_ordered(prompt):
+    """Permutation probability: one favorable order over n falling positions."""
+    runners = re.fullmatch(r'(\d+) runners finish a race in a random order, and every order is equally likely\. What is the probability that Ana finishes first and Ben finishes second\?', prompt)
+    cards = re.fullmatch(r'(\d+) cards numbered 1 through (\d+) are dealt in a random order\. What is the probability that the first card is 1 and the second card is 2\?', prompt)
+    books = re.fullmatch(r'(\d+) different books, including a dictionary, are placed in a random order on a shelf\. What is the probability that the dictionary is at the left end\?', prompt)
+    if runners:
+        n = int(runners[1])
+        require(4 <= n <= 10, 'Runner count')
+        return Fraction(1, n * (n - 1))
+    if cards:
+        n = int(cards[1])
+        require(cards[1] == cards[2] and 4 <= n <= 10, 'Card labels')
+        return Fraction(1, n * (n - 1))
+    if books:
+        n = int(books[1])
+        require(4 <= n <= 10, 'Shelf size')
+        return Fraction(1, n)
+    return None
+
+
 def solve_selection(prompt):
+    ordered = solve_ordered(prompt)
+    if ordered is not None:
+        return ordered
     a, b, k, test = parse_selection(prompt)
     items = ['special'] * a + ['other'] * b
     groups = list(itertools.combinations(range(a + b), k))
@@ -272,7 +295,28 @@ def parse_expected(prompt):
     return sections, cost
 
 
+def solve_mean(prompt):
+    m = re.fullmatch(r'A spinner has (\d+) equal sections showing (.+)\. Imagine \1 spins, one landing in each section\. What is the mean of those \1 results\? This mean is the mean of the probability distribution\.', prompt)
+    if m is None:
+        return None
+    n = int(m[1])
+    sections = [int(x) for x in m[2].replace(' and ', ', ').split(', ')]
+    require(len(sections) == n and n in {4, 5, 6, 8, 10}, 'Section count')
+    require(all(1 <= v <= 50 for v in sections), 'Payoff range')
+    distinct = set(sections)
+    require(len(distinct) >= 2, 'At least two payoffs')
+    total = sum(sections)
+    mean = Fraction(total, n)
+    unweighted = Fraction(sum(distinct), len(distinct))
+    require(mean != unweighted and mean not in distinct, 'Mean must differ from the decoys')
+    require(min(sections) < mean < max(sections), 'Mean lies strictly between the payoffs')
+    return mean
+
+
 def solve_expected(prompt):
+    mean = solve_mean(prompt)
+    if mean is not None:
+        return mean
     sections, cost = parse_expected(prompt)
     n = len(sections)
     # Average the payoff over the equally likely sections, then subtract the fixed cost.
@@ -428,6 +472,9 @@ def review_explanation(problem):
         bottom = re.search(r'its (\d) [a-z]+: ([\d ×]+) = (\d+) times\.', joined)
         require(top and factors(top[1]) == list(range(n, n - k, -1)), 'Ordered selections must count down from the pool')
         require(bottom and int(bottom[1]) == k and factors(bottom[2]) == list(range(k, 0, -1)), 'Division must remove every order of the group')
+    elif template == 'combination-probability' and solve_ordered(prompt) is not None:
+        require('random order' in prompt, 'Ordered prompt')
+        require(any('=' in step for step in steps), 'Ordered explanation needs the count of orders')
     elif template == 'combination-probability':
         a, b, k, _ = parse_selection(prompt)
         for m in re.finditer(r'Choose (\d) of the (\d+) [a-z ]+?: [^.]*= (\d+) ways', joined):
@@ -435,6 +482,12 @@ def review_explanation(problem):
         m = re.search(r'The probability is (\d+)/(\d+)', final)
         require(m and Fraction(int(m[1]), int(m[2])) == answer, 'Unreduced probability is wrong')
         require(int(m[2]) == size(itertools.combinations(range(a + b), k)), 'Denominator must count all equally likely groups')
+    elif template == 'expected-value' and solve_mean(prompt) is not None:
+        shown_list = re.search(r'showing (.+)\. Imagine', prompt)
+        require(shown_list is not None, 'Mean prompt lists the sections')
+        sections = [int(x) for x in shown_list[1].replace(' and ', ', ').split(', ')]
+        require(Fraction(sum(sections), len(sections)) == answer, 'Section mean')
+        require(any(f'{sum(sections)} ÷ {len(sections)}' in step for step in steps), 'Mean arithmetic')
     elif template == 'expected-value':
         sections, _ = parse_expected(prompt)
         m = re.search(r'The probabilities are: (.+?)\.', joined)

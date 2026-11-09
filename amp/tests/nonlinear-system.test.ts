@@ -111,6 +111,20 @@ test("independent prompt-based oracle verifies all three families and corrupt ev
   assert.equal(result.stdout.trim(), "768");
 });
 
+test("plot intersections grade one coordinate of a full point set, and version 1 stays numeric-legacy", () => {
+  let plot = 0;
+  for (let i = 0; i < 500; i++) {
+    const old = generateProblem("nonlinear-system-solve", `plot:${i}`, 1);
+    assert.doesNotMatch(old.public.prompt, /Plot every solution/);
+    const p = generateProblem("nonlinear-system-solve", `plot:${i}`);
+    if (!p.public.prompt.includes("Plot every solution")) continue;
+    plot++;
+    const tasks = ["smaller-x", "larger-x", "smaller-y"] as const;
+    assert.ok(tasks.includes(p.variant?.id as (typeof tasks)[number]));
+  }
+  assert.ok(plot >= 100, `${plot} plot items`);
+});
+
 test("new lesson builds from meaning and example to a matching visual and formal statement in print", () => {
   const html = publicationHtml(nonlinearSystemLessons[0]!, "lesson");
   const headings = [

@@ -4,7 +4,7 @@ import {
   extendedTemplates,
   generateExtendedProblem,
 } from "../src/math/extended.js";
-import { gradeAnswer } from "../src/math/engine.js";
+import { generateProblem, gradeAnswer } from "../src/math/engine.js";
 const value = (s: string) => {
   const [a, b] = s.split("/").map(Number);
   return a! / (b ?? 1);
@@ -70,7 +70,36 @@ test("extended families solve independently from their displayed givens across 1
           break;
         }
         case "simple-probability":
-          expected = n[0]! / (n[0]! + n[1]!);
+          assert.equal(p.public.templateVersion, 2);
+          if (q.includes("equal sections labeled")) {
+            const labels = q.match(/labeled ([A-D, ]+)\./)![1]!.split(", ");
+            const asked = q.match(/landing on ([A-D])\?/)![1]!;
+            const counts = new Map<string, number>();
+            for (const label of labels)
+              counts.set(label, (counts.get(label) ?? 0) + 1);
+            expected = counts.get(asked)! / labels.length;
+            assert.equal(
+              [...counts.values()].reduce((sum, count) => sum + count, 0),
+              labels.length,
+            );
+            assert.equal(
+              [...counts.values()].reduce((sum, count) => sum + count, 0) /
+                labels.length,
+              1,
+            );
+          } else if (q.startsWith("A class has")) {
+            const size = n[0]!;
+            const girls = n[1]!;
+            expected = q.includes("Jane is chosen")
+              ? 1 / size
+              : q.includes("not a girl")
+                ? (size - girls) / size
+                : girls / size;
+            assert.ok(Math.abs(girls / size + (size - girls) / size - 1) < 1e-12);
+          } else {
+            expected = n[0]! / (n[0]! + n[1]!);
+            assert.equal(p.variant, undefined);
+          }
           assert.ok(expected > 0 && expected < 1);
           break;
         case "arithmetic-term": {
@@ -169,6 +198,17 @@ test("every extended family has one original companion lesson and mathematically
     y = 5 - x;
   assert.equal(2 * x + y, 7);
   assert.equal(x + y, 5);
+});
+
+test("stored simple-probability items stay one bag draw", () => {
+  for (let i = 0; i < 40; i++) {
+    const p = generateProblem("simple-probability", `old-${i}`, 1);
+    assert.equal(p.public.templateVersion, 1);
+    assert.equal(p.variant, undefined);
+    assert.match(p.public.prompt, /^A bag contains /);
+    assert.equal(p.public.prompt.includes("equal sections labeled"), false);
+    assert.equal(p.public.prompt.includes("A class has"), false);
+  }
 });
 
 test("unit-price asks about a different number of notebooks than it gives", () => {

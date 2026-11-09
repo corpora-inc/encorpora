@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
+import { chooseAxes, defineAxis } from "./variation/axes";
 
 type Random = (low: number, high: number) => number;
 type Rational = { n: number; d: number };
@@ -59,12 +60,13 @@ export const combinatoricsTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "combination-probability",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Probability by counting selections",
     skillId: "permutations-combinations",
     gradeBand: "9–12",
     description:
-      "Find the probability of a random selection as favorable groups divided by all equally likely groups.",
+      "Find the probability of a random selection as favorable groups divided by all equally likely groups, or of an ordered finish as favorable orders divided by all orders.",
   },
   {
     id: "independent-events-probability",
@@ -77,12 +79,13 @@ export const combinatoricsTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "expected-value",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Expected value",
     skillId: "expected-value",
     gradeBand: "9–12",
     description:
-      "Weight each payoff by its probability and add, subtracting a fixed cost for an expected net gain.",
+      "Weight each payoff by its probability and add, subtracting a fixed cost for an expected net gain, or find that value as the mean of one result from each outcome.",
   },
 ];
 
@@ -394,7 +397,132 @@ function groups(n: number, k: number, what: string) {
     ? `There are ${n} ways to choose 1 of the ${n} ${what}.`
     : `Choose ${k} of the ${n} ${what}: (${times(falling(n, k))}) ÷ (${times(falling(k, k))}) = ${top} ÷ ${bottom} = ${value} ways.`;
 }
-function selectionCase(r: Random): Case {
+const selectionTaskAxes = {
+  task: defineAxis("task", ["standard", "ordered-probability"] as const, {
+    legacy: "standard",
+    weights: [1, 1],
+    silentLegacy: true,
+    since: 2,
+  }),
+} as const;
+const expectedTaskAxes = {
+  task: defineAxis(
+    "task",
+    ["standard", "mean-of-the-distribution"] as const,
+    {
+      legacy: "standard",
+      weights: [1, 1],
+      silentLegacy: true,
+      since: 2,
+    },
+  ),
+} as const;
+const taskFor = (id: string, seed: string) => {
+  if (id === "combination-probability")
+    return chooseAxes(id, seed, selectionTaskAxes).task;
+  if (id === "expected-value") return chooseAxes(id, seed, expectedTaskAxes).task;
+  return "standard" as const;
+};
+function orderedProbability(r: Random): Case {
+  const kind = r(0, 2);
+  const n = r(4, 10);
+  const orders = n * (n - 1);
+  const combo = choose(n, 2);
+  const decoy = shown(q(1, combo));
+  if (kind === 0) {
+    const answer = q(1, orders);
+    return {
+      prompt: `${n} runners finish a race in a random order, and every order is equally likely. What is the probability that Ana finishes first and Ben finishes second?`,
+      answer,
+      explanation: [
+        `The first place has ${n} choices and the second has ${n} − 1 left.`,
+        `${n} × ${n - 1} = ${orders} equally likely orders for those two places, and only 1 has Ana then Ben.`,
+        `Order matters, so this is not 1 divided by the combination ${combo}, which is ${decoy}.`,
+        `The probability is ${shown(answer)}.`,
+      ],
+      hint: `The first place can be any of the ${n} runners, and the second any of the ${n - 1} who remain. Only one of those orders has Ana first and Ben second.`,
+      tags: ["ordered-probability", "runners"],
+    };
+  }
+  if (kind === 1) {
+    const answer = q(1, orders);
+    return {
+      prompt: `${n} cards numbered 1 through ${n} are dealt in a random order. What is the probability that the first card is 1 and the second card is 2?`,
+      answer,
+      explanation: [
+        `The first card has ${n} choices and the second has ${n} − 1 left.`,
+        `${n} × ${n - 1} = ${orders} equally likely orders for the first two cards, and only 1 is 1 then 2.`,
+        `Order matters, so this is not 1 divided by the combination ${combo}, which is ${decoy}.`,
+        `The probability is ${shown(answer)}.`,
+      ],
+      hint: `Any of the ${n} cards can be first, and any of the remaining ${n - 1} can be second. Only one of those pairs is 1 followed by 2.`,
+      tags: ["ordered-probability", "cards"],
+    };
+  }
+  const answer = q(1, n);
+  return {
+    prompt: `${n} different books, including a dictionary, are placed in a random order on a shelf. What is the probability that the dictionary is at the left end?`,
+    answer,
+    explanation: [
+      `The dictionary is equally likely to stand in any of the ${n} positions.`,
+      `1 ÷ ${n} = ${shown(answer)}.`,
+      `An unordered pair would give ${decoy}, which is not the chance of one ordered end.`,
+      `The probability is ${shown(answer)}.`,
+    ],
+    hint: `The dictionary is equally likely to be in any of the ${n} positions. Only the left end counts.`,
+    tags: ["ordered-probability", "books"],
+  };
+}
+function meanOfDistribution(r: Random): Case {
+  for (let attempt = 0; attempt < 60; attempt++) {
+    const n = [4, 5, 6, 8, 10][r(0, 4)]!;
+    const k = r(2, Math.min(4, n - 1));
+    const values = new Set<number>();
+    let guard = 0;
+    while (values.size < k && guard++ < 80) values.add(r(1, 50));
+    if (values.size < k) continue;
+    const prizes = [...values].sort((a, b) => b - a);
+    const cuts = new Set<number>();
+    let cutsGuard = 0;
+    while (cuts.size < k - 1 && cutsGuard++ < 80) cuts.add(r(1, n - 1));
+    if (cuts.size < k - 1) continue;
+    const bounds = [0, ...[...cuts].sort((a, b) => a - b), n];
+    const counts = prizes.map((_, i) => bounds[i + 1]! - bounds[i]!);
+    if (counts.some((c) => c < 1)) continue;
+    const sections: number[] = [];
+    prizes.forEach((v, i) => {
+      for (let j = 0; j < counts[i]!; j++) sections.push(v);
+    });
+    const sum = sections.reduce((a, b) => a + b, 0);
+    const distinct = [...new Set(sections)];
+    const distinctSum = distinct.reduce((a, b) => a + b, 0);
+    if (distinctSum * n === sum * distinct.length) continue;
+    if (distinct.some((v) => v * n === sum)) continue;
+    const low = Math.min(...sections);
+    const high = Math.max(...sections);
+    if (!(low * n < sum && sum < high * n)) continue;
+    const answer = q(sum, n);
+    const unweighted = q(distinctSum, distinct.length);
+    const shownList = list(sections.map(String));
+    return {
+      prompt: `A spinner has ${n} equal sections showing ${shownList}. Imagine ${n} spins, one landing in each section. What is the mean of those ${n} results? This mean is the mean of the probability distribution.`,
+      answer,
+      explanation: [
+        `One result from each section is ${shownList}.`,
+        `Add them: ${sections.join(" + ")} = ${sum}.`,
+        `${sum} ÷ ${n} = ${shown(answer)}.`,
+        `Each section has probability 1/${n}, so this ordinary mean is also the expected value.`,
+        `The unweighted mean of the distinct values is ${shown(unweighted)}, which is different.`,
+        `The mean of those ${n} results is ${shown(answer)}.`,
+      ],
+      hint: `Add the ${n} section results, one from each section, then divide by ${n}. Do not average only the distinct numbers.`,
+      tags: ["mean-of-the-distribution"],
+    };
+  }
+  throw new Error("Need a distribution mean");
+}
+function selectionCase(r: Random, task = "standard"): Case {
+  if (task === "ordered-probability") return orderedProbability(r);
   const club = r(0, 1) === 1,
     a = r(2, 8),
     b = r(2, 8),
@@ -608,7 +736,8 @@ function independentCase(r: Random): Case {
   };
 }
 
-function expectedCase(r: Random): Case {
+function expectedCase(r: Random, task = "standard"): Case {
+  if (task === "mean-of-the-distribution") return meanOfDistribution(r);
   const n = [4, 5, 6, 8, 10, 12][r(0, 5)]!,
     groupsCount = r(2, 3),
     net = r(0, 1) === 1,
@@ -712,7 +841,14 @@ export function combinatoricsPrintCase(
   if (!metadata) throw new Error(`Unknown combinatorics template ${id}`);
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
-  const c = builders[id]!(random(id, seed));
+  const task = taskFor(id, seed);
+  const r = random(id, seed);
+  const c =
+    id === "combination-probability"
+      ? selectionCase(r, task)
+      : id === "expected-value"
+        ? expectedCase(r, task)
+        : builders[id]!(r);
   const problem: GeneratedProblem = {
     public: {
       id: createHash("sha256")
@@ -731,6 +867,7 @@ export function combinatoricsPrintCase(
     answer: answerText(c.answer),
     explanation: [...(OPENERS[id] ?? []), ...c.explanation],
     hint: c.hint,
+    ...(task !== "standard" ? { variant: { id: task, axes: { task } } } : {}),
   };
   // The prompt states every given, so equal prompts are the same case.
   return { problem, tags: c.tags, caseKey: c.prompt };
