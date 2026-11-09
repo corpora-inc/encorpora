@@ -25,8 +25,10 @@ import type {
   StackView,
 } from "./classroom-contracts.js";
 import { SchoolError } from "./contracts.js";
-import { activeToday, schoolAccountId } from "./principal.js";
+import { activeToday } from "./principal.js";
 import { STUDENT_NAME } from "./sign-in.js";
+import { freeAllowance } from "../learning/free-allowance.js";
+import { learningConsentActive } from "../server/account-access.js";
 
 /** A teacher's workbook stack. Each workbook is an ordinary one in the student's
  * own learner, so history, results and evidence work as they always do. */
@@ -51,8 +53,11 @@ export async function stackDates(pool: Pick<Pool, "query">, orgId: string) {
 type StackStudent = {
   id: string;
   learner_id: string;
+  account_id: string;
   name: string;
   seated: boolean;
+  free_online_used: number;
+  free_workbooks_used: number;
 };
 /** Students in the class today, in the order a teacher reads them. */
 async function stackRoster(
@@ -61,11 +66,12 @@ async function stackRoster(
 ): Promise<StackStudent[]> {
   return (
     await pool.query(
-      `SELECT p.id,p.learner_id,${STUDENT_NAME} AS name,
+      `SELECT p.id,p.learner_id,l.account_id,l.free_online_used,l.free_workbooks_used,${STUDENT_NAME} AS name,
          EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=p.learner_id AND g.status='active'
            AND g.starts_at<=now() AND g.ends_at>now()) AS seated
        FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs o ON o.id=c.org_id
        JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL AND p.learner_id IS NOT NULL
+       JOIN amp_learners l ON l.id=p.learner_id AND l.deleted_at IS NULL
        WHERE e.class_id=$1 AND e.role='student' AND ${activeToday("e", "o")}
        ORDER BY lower(${STUDENT_NAME}),p.id`,
       [classId],
@@ -88,24 +94,24 @@ const RECENT_SETS = 12;
 /** Workbooks are grouped by date, number and length: what one print made. */
 async function recentSets(
   pool: Pick<Pool, "query">,
-  learners: string[],
+  people: string[],
   today: string,
   date?: string,
 ): Promise<StackSet[]> {
-  if (!learners.length) return [];
+  if (!people.length) return [];
   return (
     await pool.query(
-      `SELECT w.workbook_date::text AS date,w.number,w.minutes,w.spec->>'focusSkill' AS focus,count(*)::int AS students,
+      `SELECT w.workbook_date::text AS date,w.number,w.minutes,w.spec->>'focusSkill' AS focus,count(*)::int AS students, array_agg(p.id) AS "studentIds",
          count(*) FILTER (WHERE EXISTS(SELECT 1 FROM amp_attempts a
            WHERE a.learner_id=w.learner_id AND a.request_id LIKE 'paper:'||w.id||':%'))::int AS marked
-       FROM amp_workbooks w
-       WHERE w.learner_id=ANY($1::text[]) AND (
+       FROM amp_workbooks w JOIN amp_people p ON p.learner_id=w.learner_id
+       WHERE p.id=ANY($1::uuid[]) AND (
          ($3::date IS NOT NULL AND w.workbook_date=$3::date)
          OR ($3::date IS NULL AND w.workbook_date>=$2::date-60))
        GROUP BY w.workbook_date,w.number,w.minutes,w.spec->>'focusSkill'
        ORDER BY w.workbook_date DESC,w.number DESC,w.minutes
        LIMIT $4`,
-      [learners, today, date ?? null, RECENT_SETS],
+      [people, today, date ?? null, RECENT_SETS],
     )
   ).rows;
 }
@@ -129,10 +135,32 @@ export async function stackView(
     ...dates,
     canPrint,
     pdf: !!renderer,
-    students: roster.map(({ id, name, seated }) => ({ id, name, seated })),
+    students: await Promise.all(
+      roster.map(async (row) => {
+        const allowance = freeAllowance(
+          row.free_online_used,
+          row.free_workbooks_used,
+        );
+        const permitted = await learningConsentActive(
+          pool,
+          row.account_id,
+          false,
+          row.learner_id,
+        );
+        return {
+          id: row.id,
+          name: row.name,
+          seated: row.seated,
+          canMakeWorkbook:
+            permitted && (row.seated || allowance.workbooks.available > 0),
+          canReadWorkbooks: permitted,
+          freeAllowance: allowance,
+        };
+      }),
+    ),
     recent: await recentSets(
       pool,
-      roster.map((row) => row.learner_id),
+      roster.map((row) => row.id),
       dates.today,
     ),
     focus: (() => {
@@ -199,7 +227,12 @@ export async function marksView(
   const learners = roster.map((row) => row.learner_id);
   // One print, one number: a number used for two lengths reads as the newest.
   const sets = (
-    await recentSets(pool, learners, query.date, query.date)
+    await recentSets(
+      pool,
+      roster.map((row) => row.id),
+      query.date,
+      query.date,
+    )
   ).filter(
     (entry, index, all) =>
       all.findIndex((other) => other.number === entry.number) === index,
@@ -292,10 +325,9 @@ export async function makeStudentWorkbook(
   const at = Date.now();
   try {
     return await learning.transaction(
-      schoolAccountId(personId),
+      student.account_id,
       student.learner_id,
       async (tx) => {
-        if (!(await tx.hasAccess())) throw new SchoolError(409, "needs_seat");
         const { skill, ...rest } = input;
         const made = await findOrMakeWorkbook(
           tx,
@@ -306,6 +338,13 @@ export async function makeStudentWorkbook(
             allowed: (date) => {
               if (date < today || date > lastDate)
                 throw new SchoolError(400, "workbook_date");
+            },
+            beforeMaking: async () => {
+              if (
+                !(await tx.hasAccess()) &&
+                (await tx.freeAllowance()).workbooks.available <= 0
+              )
+                throw new SchoolError(402, "free_workbooks_unavailable");
             },
           },
         );
@@ -350,10 +389,9 @@ export async function studentWorkbookPdf(
   const student = await studentInClass(pool, klass.classId, personId);
   try {
     const record = await learning.transaction(
-      schoolAccountId(personId),
+      student.account_id,
       student.learner_id,
       async (tx) => {
-        if (!(await tx.hasAccess())) throw new SchoolError(409, "needs_seat");
         const found = await tx.workbook(workbookId);
         if (!found) throw new SchoolError(404, "not_found");
         return found;
@@ -392,10 +430,9 @@ export async function saveStudentMarks(
   const student = await studentInClass(pool, classId, personId);
   try {
     return await learning.transaction(
-      schoolAccountId(personId),
+      student.account_id,
       student.learner_id,
       async (tx) => {
-        if (!(await tx.hasAccess())) throw new SchoolError(409, "needs_seat");
         const record = await tx.workbook(workbookId);
         if (!record) throw new SchoolError(404, "not_found");
         if (!workbookIsCurrent(record.spec)) throw STALE();

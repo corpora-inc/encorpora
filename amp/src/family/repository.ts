@@ -5,7 +5,11 @@ import {
 import { refreshAdultAccess } from "../account/adult-access.js";
 import { ensureFamilyClass, practiceHere } from "./family-class.js";
 import { cancelPendingConsent } from "../parent-consent/lifecycle.js";
-import { learningConsentActive } from "../server/account-access.js";
+import {
+  learningConsentActive,
+  namingConsentActive,
+} from "../server/account-access.js";
+import { freeAllowance } from "../learning/free-allowance.js";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import {
@@ -96,7 +100,7 @@ export class FamilyRepository {
       ).rows[0];
       const learners = (
         await client.query(
-          "SELECT l.id,l.name,l.birth_year,l.sat_math_focus,l.deleted_at,EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()) AS has_access,COALESCE(to_jsonb(l)->'adult'='true'::jsonb,false) AS adult FROM amp_learners l WHERE l.account_id=$1 ORDER BY l.created_at,l.id",
+          "SELECT l.id,l.name,l.birth_year,l.sat_math_focus,l.deleted_at,l.name_pending,l.picture_identity,l.free_online_used,l.free_workbooks_used,EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()) AS has_access,COALESCE(to_jsonb(l)->'adult'='true'::jsonb,false) AS adult FROM amp_learners l WHERE l.account_id=$1 ORDER BY l.created_at,l.id",
           [accountId],
         )
       ).rows;
@@ -134,6 +138,22 @@ export class FamilyRepository {
         accountId,
         this.development,
       );
+      const permitted = new Set<string>();
+      for (const row of learners) {
+        if (
+          !row.deleted_at &&
+          (row.adult ||
+            effectiveConsent ||
+            (row.name_pending &&
+              (await learningConsentActive(
+                client,
+                accountId,
+                this.development,
+                row.id,
+              ))))
+        )
+          permitted.add(row.id);
+      }
       return {
         purchaseMeasurement: await purchaseMeasurementView(client, accountId),
         metaPurchaseMeasurement: await purchaseMeasurementView(
@@ -164,6 +184,14 @@ export class FamilyRepository {
           id: row.id,
           name: row.name,
           birthYear: row.birth_year ?? null,
+          namePending: row.name_pending,
+          pictureIdentity: row.picture_identity,
+          freeAllowance: freeAllowance(
+            row.free_online_used,
+            row.free_workbooks_used,
+          ),
+          hasAccess: row.has_access,
+          learningAllowed: permitted.has(row.id),
           satMathFocus: row.sat_math_focus,
           deletedAt: iso(row.deleted_at),
           stripeLinked: linked.includes(row.id),
@@ -171,8 +199,8 @@ export class FamilyRepository {
           // account's consent.
           canPractice:
             !row.deleted_at &&
-            (row.adult || effectiveConsent) &&
-            (this.development || row.has_access),
+            permitted.has(row.id) &&
+            (this.development || row.has_access || row.free_online_used < 100),
           ...(row.adult ? { adult: true as const } : {}),
           access: grants
             .filter((g) => g.learner_id === row.id)
@@ -201,8 +229,10 @@ export class FamilyRepository {
         (this.development ||
           !!(
             await client.query(
-              "SELECT 1 FROM amp_grants WHERE learner_id=$1 AND status='active' AND starts_at<=now() AND ends_at>now()",
-              [learnerId],
+              `SELECT 1 FROM amp_learners l WHERE l.id=$1 AND l.account_id=$2 AND l.deleted_at IS NULL
+               AND (l.free_online_used<100 OR EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id
+                 AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()))`,
+              [learnerId, accountId],
             )
           ).rowCount);
       return practiceHere(client, this.pool, accountId, learnerId, canPractice);
@@ -214,9 +244,26 @@ export class FamilyRepository {
     name: string,
   ): Promise<void> {
     await this.transaction(accountId, async (client) => {
+      const learner = (
+        await client.query(
+          "SELECT name_pending FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL FOR UPDATE",
+          [learnerId, accountId],
+        )
+      ).rows[0];
+      if (!learner) throw new FamilyError(404, "learner_not_found");
+      if (
+        learner.name_pending &&
+        !(await namingConsentActive(
+          client,
+          accountId,
+          this.development,
+          learnerId,
+        ))
+      )
+        throw new FamilyError(403, "parent_consent_required");
       // A parent may correct a name after withdrawal without resuming collection.
       const result = await client.query(
-        "UPDATE amp_learners SET name=$3 WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL RETURNING id",
+        "UPDATE amp_learners SET name=$3,name_pending=false WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL RETURNING id",
         [learnerId, accountId, name],
       );
       if (!result.rowCount) throw new FamilyError(404, "learner_not_found");
@@ -424,7 +471,7 @@ export class FamilyRepository {
             [row.id],
           );
         await client.query(
-          "UPDATE amp_learners SET name='Deleted learner',birth_year=NULL,starting_band=NULL,starting_policy=NULL,starting_excluded_strands=NULL,deleted_at=COALESCE(deleted_at,now()),created_at=CASE WHEN deleted_at IS NULL THEN now() ELSE created_at END WHERE id=$1",
+          "UPDATE amp_learners SET name='Deleted learner',name_pending=false,picture_identity=NULL,picture_number=NULL,identity_scope=NULL,birth_year=NULL,starting_band=NULL,starting_policy=NULL,starting_excluded_strands=NULL,deleted_at=COALESCE(deleted_at,now()),created_at=CASE WHEN deleted_at IS NULL THEN now() ELSE created_at END WHERE id=$1",
           [row.id],
         );
         retained++;

@@ -5,14 +5,14 @@ import type { AdultStart } from "../../../learning/starting-point";
 import type { AuthSession } from "../../auth";
 import { useLearnerStore } from "../../learner-store";
 import { request } from "../../lib/api";
-import { queryClient, refreshMe } from "../../lib/query";
+import { ownPracticeKey, queryClient, refreshMe } from "../../lib/query";
 import { rememberPlace } from "../onboarding/place-memory";
 
 /** The adult's own record. Under the account's key, so any change to the
  * account refreshes it with everything else. */
 export const ownPracticeOptions = (session: AuthSession) =>
   queryOptions({
-    queryKey: ["account", session.accountId, "own-practice"],
+    queryKey: ownPracticeKey(session.accountId),
     queryFn: ({ signal }) =>
       request("/me/practice", ownPracticeResponse, {
         token: session.token,

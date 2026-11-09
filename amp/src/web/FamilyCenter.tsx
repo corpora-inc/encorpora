@@ -642,8 +642,17 @@ export function FamilyCenter({
                             data-rename-id={learner.id}
                             disabled={busy}
                             onClick={() => {
+                              if (
+                                learner.namePending &&
+                                !["active", "development"].includes(
+                                  family.consent.status,
+                                )
+                              ) {
+                                route.navigate("/start/plan");
+                                return;
+                              }
                               setRename(learner.id);
-                              setName(learner.name);
+                              setName(learner.namePending ? "" : learner.name);
                             }}
                           >
                             Edit name
@@ -680,8 +689,11 @@ export function FamilyCenter({
                             </p>
                           )}
                           {access.kind === "active" &&
-                            !["active", "development"].includes(
-                              family.consent.status,
+                            !(
+                              learner.learningAllowed ??
+                              ["active", "development"].includes(
+                                family.consent.status,
+                              )
                             ) && <p>Learning paused: consent needed.</p>}
                           {!!learner.access.length && (
                             <button

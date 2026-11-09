@@ -29,7 +29,9 @@ function useTrialBuy() {
   const purchased =
     me.data?.signedIn &&
     (me.data.account.kind === "student" ||
-      me.data.learners.some((learner) => learner.entitlement.active));
+      me.data.learners.some(
+        (learner) => learner.entitlement.licensed ?? learner.entitlement.active,
+      ));
   const available =
     !!(data.program && data.fundedOffer) || !!data.offers.length;
   return session.data && !purchased && available ? { data, search } : null;

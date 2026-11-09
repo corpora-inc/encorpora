@@ -63,9 +63,9 @@ export function NoticeSummary({ notice }: { notice: DirectNotice }) {
         <h3>How payment confirms consent</h3>
         <p>
           Your card or Link payment for the first subscription period verifies
-          that you are the parent. No learner details are collected until that
-          payment is verified. Refunds and cancellation do not withdraw consent;
-          withdraw it from Family › Privacy.
+          that you are the parent and lets you name your children. Refunds and
+          cancellation do not withdraw consent; withdraw it from Family ›
+          Privacy.
         </p>
         <p>
           <a href={notice.privacyUrl} target="_blank" rel="noopener noreferrer">
