@@ -245,6 +245,8 @@ export async function seedClassHistory(
         ? 0.5
         : 0);
     let serial = 0;
+    // One slip a skill lately: only a persona's designed misses add up.
+    const slips = new Map<string, number>();
     for (const [index, day] of plan.entries()) {
       const lastDay = index === plan.length - 1;
       const share = day.problems / day.skills.length;
@@ -269,12 +271,14 @@ export async function seedClassHistory(
             const problem = problemFor(template, serial);
             const isReview = serial % 8 === 7 && index > 3;
             // Spaced review is what sticks: it comes back right more often.
-            // A skill's last answer is right, so a slip never reads as stuck;
-            // only the misses a persona has (`misses`) do.
+            // A skill's last answer each day is right and it slips once at
+            // most, so only the misses a persona has (`misses`) read as stuck.
             const correct =
               item === n - 1 ||
+              (slips.get(skill) ?? 0) >= 1 ||
               hash(`${name}${day.day}${skill}${item}`) <
                 (isReview ? Math.min(0.97, p + 0.2) : p);
+            if (!correct) slips.set(skill, (slips.get(skill) ?? 0) + 1);
             const assisted =
               correct && item < n - 1 && hash(`${name}${serial}hint`) < 0.08;
             const wrong = correct ? null : wrongResponse(problem as never);

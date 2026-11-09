@@ -13,7 +13,7 @@ import { generateProblem, templates } from "../../math/engine.js";
 import { workbookWorker } from "../../workbook/off-thread.js";
 import { findOrMakeWorkbook } from "../../workbook/routes.js";
 import type { WorkbookRecord } from "../../workbook/contracts.js";
-import { recordPaperResults } from "../../workbook/results.js";
+import { recordPaperResults, type PaperEntry } from "../../workbook/results.js";
 import {
   birthYearForGrade,
   generateHandle,
@@ -679,7 +679,7 @@ async function seedWorkbooks(
             await recordPaperResults(
               tx,
               record,
-              items.map((item, index) => {
+              items.flatMap((item, index): PaperEntry[] => {
                 const problem = printed(item);
                 const slip =
                   missing.has(item.skillId) ||
@@ -688,19 +688,29 @@ async function seedWorkbooks(
                     hash(`${student.given_name}${index}`) > 0.72);
                 if (slip) slipped.add(item.skillId);
                 const kind = problem.public.response.kind;
-                return kind === "number" ||
+                if (
+                  kind === "number" ||
                   kind === "fraction" ||
                   kind === "choice"
-                  ? {
+                )
+                  return [
+                    {
                       n: index + 1,
                       answer: slip
                         ? wrongResponse(problem as never)
                         : problem.answer,
-                    }
-                  : {
-                      n: index + 1,
-                      mark: slip ? ("not-yet" as const) : ("right" as const),
-                    };
+                    },
+                  ];
+                // A mark counts half, so on a skill they've shown it would
+                // follow their screen work weaker; those wait to be marked.
+                return shown.has(item.skillId) && !missing.has(item.skillId)
+                  ? []
+                  : [
+                      {
+                        n: index + 1,
+                        mark: slip ? ("not-yet" as const) : ("right" as const),
+                      },
+                    ];
               }),
               new Date(Date.parse(`${date}T19:00:00Z`)),
               { by: "teacher" },
