@@ -226,7 +226,7 @@ test(
           await gifts.revoke(active.id);
           await gifts.revoke(active.id);
           assert.equal(
-            (await snapshot(owner)).learners[0].entitlement.active,
+            (await snapshot(owner)).learners[0].entitlement.licensed,
             false,
           );
           const next = await issue("revoked@example.test");
@@ -474,7 +474,8 @@ test(
           assert.equal(me.availableAccessGrant, undefined);
           assert.ok(
             me.learners.every(
-              (l: { entitlement: { active: boolean } }) => l.entitlement.active,
+              (l: { entitlement: { licensed: boolean } }) =>
+                l.entitlement.licensed,
             ),
           );
           // Retries return the same activation and add nothing.
@@ -551,8 +552,8 @@ test(
           assert.equal(await activeEnd(family.adult), null);
           assert.ok(
             (await snapshot(family.owner)).learners.every(
-              (l: { entitlement: { active: boolean } }) =>
-                !l.entitlement.active,
+              (l: { entitlement: { licensed: boolean } }) =>
+                !l.entitlement.licensed,
             ),
           );
           // A child added after revocation is not covered.
