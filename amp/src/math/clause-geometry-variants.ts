@@ -9,7 +9,7 @@ import {
   shuffled,
   type Item,
   type Rng,
-} from "./clause-kit";
+} from "./number-geometry-clause-kit";
 import { scene } from "./scene/author";
 import type { Element, Point, Scene, PathOp } from "./scene/spec";
 const polar = (angle: number, r = 4): Point => [

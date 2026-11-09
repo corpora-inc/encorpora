@@ -13,7 +13,7 @@ import {
   show,
   type Item,
   type Rng,
-} from "./clause-kit";
+} from "./number-geometry-clause-kit";
 import { numberLine, scene } from "./scene/author";
 import type { Element } from "./scene/spec";
 

@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { generateProblem, gradeAnswer } from "../src/math/engine";
+import { gradeAnswer } from "../src/math/engine";
+import { generateProblem } from "./fixtures/pre-clause-problem";
 import { factArrayTemplates, factHint } from "../src/math/fact-arrays-practice";
 import {
   generatedProblemSchema,

@@ -1,224 +1,231 @@
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
-  ProblemResponse,
+  PointPlotResponse,
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts";
-import type { Random } from "./variation/axes";
-import { numberLine } from "./scene/author";
-import type { Scene } from "./scene/spec";
+import { random, shuffle } from "./distribution-practice";
+import { chooseAxes, defineAxis, type Random } from "./variation/axes";
+import type { Surface } from "./variation/compose";
+import type { Element, Fn, Point, Scene } from "./scene/spec";
+import { graph } from "./scene/author";
+import { normalizePointPlot } from "./point-plot";
 
-export type Rng = Random;
-export const rng = (id: string, seed: string): Rng => {
-  let counter = 0;
-  return (lo, hi) => {
-    const span = hi - lo + 1,
-      limit = Math.floor(0x100000000 / span) * span;
-    let n: number;
-    do
-      n = createHash("sha256")
-        .update(JSON.stringify([id, seed, "clauses-v1", counter++]))
-        .digest()
-        .readUInt32BE(0);
-    while (n >= limit);
-    return lo + (n % span);
-  };
+export type ClauseSurface = Surface & {
+  pointGrading?: GeneratedProblem["pointGrading"];
 };
-export const pick = <T>(r: Rng, xs: readonly T[]): T =>
+export type ClauseBuilder = (r: Random, variant: string) => ClauseSurface;
+export interface ClauseExtension {
+  variants: readonly string[];
+  build: ClauseBuilder;
+  capability: TemplateMetadata["requiredResponseCapability"];
+}
+export const math = (s: string | number) => `$${s}$`;
+export const pick = <T>(r: Random, xs: readonly T[]): T =>
   xs[r(0, xs.length - 1)]!;
-export function shuffled<T>(r: Rng, xs: readonly T[]): T[] {
-  const out = [...xs];
-  for (let i = out.length - 1; i > 0; i--) {
-    const j = r(0, i);
-    [out[i], out[j]] = [out[j]!, out[i]!];
-  }
-  return out;
-}
-export const clean = (n: number) => Number(n.toFixed(10));
-export const show = (n: number) => String(clean(n)).replace("-", "−");
-export const math = (s: string) => `$${s}$`;
-export function gcd(a: number, b: number): number {
-  while (b) [a, b] = [b, a % b];
-  return Math.abs(a);
-}
-export function fraction(n: number, d = 1): string {
-  const g = gcd(n, d) || 1;
-  n /= g;
-  d /= g;
-  return d === 1 ? String(n) : `${n}/${d}`;
-}
-export function fracTex(n: number, d = 1): string {
-  const s = fraction(n, d);
-  return s.includes("/")
-    ? `${n < 0 ? "-" : ""}\\frac{${Math.abs(n) / gcd(n, d)}}{${d / gcd(n, d)}}`
-    : s;
-}
-export type Item = Pick<GeneratedProblem, "answer" | "hint" | "explanation"> &
-  Partial<
-    Pick<GeneratedProblem, "choiceFeedback" | "pointGrading" | "workGrading">
-  > & {
-    prompt: string;
-    response: ProblemResponse;
-    figure?: SemanticFigure;
-  };
-export type Option = { label: string; feedback: string };
+export const round = (n: number) => Math.round(n * 1e8) / 1e8;
+export const scene = (elements: Element[], title?: string): Scene => ({
+  v: 1,
+  width: 360,
+  maxHeight: 300,
+  ...(title ? { title } : {}),
+  elements,
+});
+export const picture = (s: Scene): SemanticFigure => ({
+  kind: "scene",
+  scene: s,
+});
+export const curveScene = (
+  fn: Fn,
+  x: [number, number] = [-6, 6],
+  y: [number, number] = [-8, 8],
+) =>
+  graph({
+    x,
+    y,
+    grid: [1, Math.max(1, Math.ceil((y[1] - y[0]) / 40))],
+    tick: [2, Math.max(2, Math.ceil((y[1] - y[0]) / 8))],
+  })
+    .curve(fn, { features: ["asymptotes"] })
+    .scene({ width: 260, maxHeight: 260 });
 export function choice(
-  r: Rng,
+  r: Random,
+  prompt: string,
   correct: string,
-  wrong: (string | Option)[],
-): Pick<Item, "response" | "answer" | "choiceFeedback"> {
-  const xs = [
-    { label: correct, feedback: "", correct: true },
-    ...shuffled(r, wrong)
-      .slice(0, 3)
-      .map((w) => ({
-        ...(typeof w === "string"
-          ? {
-              label: w,
-              feedback: "Check the stated quantities and the operation.",
-            }
-          : w),
-        correct: false,
-      })),
-  ];
-  if (new Set(xs.map((x) => x.label)).size !== xs.length)
-    throw new Error("Duplicate clause choices");
-  const options = shuffled(r, xs).map((x, i) => ({
-    ...x,
-    id: `option-${String.fromCharCode(97 + i)}`,
+  wrong: string[],
+  explanation: string[],
+  hint: string,
+  figure?: SemanticFigure,
+): ClauseSurface {
+  const distinct = [...new Set(wrong)].filter((x) => x !== correct);
+  if (distinct.length < 2)
+    throw new Error("Clause choices need distinct distractors");
+  const labels = shuffle(r, [correct, ...distinct.slice(0, 3)]);
+  const options = labels.map((label, i) => ({
+    id: `option-${"abcd"[i]}`,
+    label,
   }));
   return {
-    response: {
-      kind: "choice",
-      label: "Choose one answer",
-      options: options.map(({ id, label }) => ({ id, label })),
-    },
-    answer: options.find((x) => x.correct)!.id,
+    prompt,
+    response: { kind: "choice", label: "Choose one", options },
+    answer: options[labels.indexOf(correct)]!.id,
+    explanation,
+    hint,
+    ...(figure ? { figure } : {}),
     choiceFeedback: Object.fromEntries(
-      options.filter((x) => !x.correct).map((x) => [x.id, x.feedback]),
-    ),
-  };
-}
-export function multi(
-  r: Rng,
-  labels: string[],
-  correct: number[],
-): Pick<Item, "response" | "answer"> {
-  const options = shuffled(
-    r,
-    labels.map((label, i) => ({ label, correct: correct.includes(i) })),
-  ).map((x, i) => ({ ...x, id: `option-${String.fromCharCode(97 + i)}` }));
-  return {
-    response: {
-      kind: "multi-select",
-      label: `Select ${correct.length} answers`,
-      selectionCount: correct.length,
-      options: options.map(({ id, label }) => ({ id, label })),
-    },
-    answer: JSON.stringify(
       options
-        .filter((x) => x.correct)
-        .map((x) => x.id)
-        .sort(),
+        .filter((o) => o.label !== correct)
+        .map((o) => [
+          o.id,
+          `${o.label} does not justify the stated conclusion. ${explanation[0]}`,
+        ]),
     ),
   };
 }
-export function parts(
-  r: Rng,
-  rows: { label: string; correct: string; wrong: string[] }[],
-): Pick<Item, "response" | "answer"> {
+/** Each slot supplies its own reason or value; ids name shuffled positions. */
+export function blanks(
+  r: Random,
+  prompt: string,
+  parts: { label: string; correct: string; wrong: string[] }[],
+  explanation: string[],
+  hint: string,
+  figure?: SemanticFigure,
+): ClauseSurface {
   const answer: Record<string, string> = {};
-  const blanks = rows.map((row, i) => {
-    const id = `part${i + 1}`;
-    const values = [row.correct, ...row.wrong];
-    if (new Set(values).size !== values.length)
-      throw new Error("Duplicate part choices");
-    const options = shuffled(
+  const bs = parts.map((p, i) => {
+    const id = `b${i + 1}`;
+    const labels = shuffle(
       r,
-      values.map((label, j) => ({ label, correct: j === 0 })),
-    ).map((x, j) => ({ ...x, id: String.fromCharCode(97 + j) }));
-    answer[id] = options.find((x) => x.correct)!.id;
-    return {
-      id,
-      label: row.label,
-      options: options.map(({ id, label }) => ({ id, label })),
-    };
+      [p.correct, ...new Set(p.wrong.filter((w) => w !== p.correct))].slice(
+        0,
+        6,
+      ),
+    );
+    const options = labels.map((label, j) => ({ id: "abcdef"[j]!, label }));
+    answer[id] = options[labels.indexOf(p.correct)]!.id;
+    return { id, label: p.label, options };
   });
+  if (bs.length > 6) throw new Error("Split proofs with more than six blanks");
   return {
+    prompt,
     response: {
       kind: "multi-part-choice",
-      label: "Complete each part",
+      label: "Complete each step",
       layout: "slots",
-      blanks,
+      blanks: bs,
     },
     answer: JSON.stringify(answer),
+    explanation,
+    hint,
+    ...(figure ? { figure } : {}),
+  };
+}
+export function plot(
+  prompt: string,
+  points: Point[],
+  grid: PointPlotResponse["grid"],
+  explanation: string[],
+  hint: string,
+): ClauseSurface {
+  const response: PointPlotResponse = {
+    kind: "point-plot",
+    label: `Place ${points.length} point${points.length === 1 ? "" : "s"}`,
+    pointCount: points.length,
+    ordered: false,
+    connect: "none",
+    grid,
+  };
+  const answer = normalizePointPlot(response, JSON.stringify(points));
+  if (!answer)
+    throw new Error(`Points outside plot grid: ${JSON.stringify(points)}`);
+  return {
+    prompt,
+    response,
+    answer,
+    pointGrading: { mode: "exact" },
+    explanation,
+    hint,
   };
 }
 export function figures(
-  r: Rng,
-  correct: { label: string; scene: Scene },
-  wrong: { label: string; scene: Scene }[],
-): Pick<Item, "response" | "answer"> {
-  const options = shuffled(
-    r,
-    [correct, ...wrong].map((x, i) => ({ ...x, correct: i === 0 })),
-  ).map((x, i) => ({ ...x, id: `option-${String.fromCharCode(97 + i)}` }));
+  r: Random,
+  prompt: string,
+  options: { label: string; scene: Scene }[],
+  explanation: string[],
+  hint: string,
+): ClauseSurface {
+  const correct = options[0]!;
+  const shuffled = shuffle(r, options).map((o, i) => ({
+    ...o,
+    id: `option-${"abcd"[i]}`,
+  }));
   return {
+    prompt,
     response: {
       kind: "figure-choice",
-      label: "Choose the picture",
-      noun: "Picture",
-      options: options.map(({ id, label, scene }) => ({ id, label, scene })),
+      noun: "Graph",
+      label: "Choose the graph",
+      options: shuffled,
     },
-    answer: options.find((x) => x.correct)!.id,
+    answer: shuffled.find((o) => o.scene === correct.scene)!.id,
+    explanation,
+    hint,
+    choiceFeedback: Object.fromEntries(
+      shuffled
+        .filter((o) => o.scene !== correct.scene)
+        .map((o) => [
+          o.id,
+          `${o.label} does not match the given rule. ${explanation[0]}`,
+        ]),
+    ),
   };
 }
-export const numeric = (
-  n: number | string,
-  label = "Answer",
-): Pick<Item, "answer" | "response"> => ({
-  answer: String(n),
-  response: { kind: "fraction", label },
-});
-export function line(
-  points: { at: number; label: string }[],
-  step = 1,
-): SemanticFigure {
-  const values = [0, ...points.map((p) => p.at)];
-  return {
-    kind: "scene",
-    scene: numberLine({
-      min: Math.floor(Math.min(...values)) - 1,
-      max: Math.ceil(Math.max(...values)) + 1,
-      step,
-      marks: points,
-    }).scene(),
-  };
-}
-export function finish(
+/** Catalog version gates preserve every old seed; legacy has half the weight. */
+export function extendProblem(
   meta: TemplateMetadata,
   seed: string,
-  variant: string,
-  c: Item,
-): GeneratedProblem {
+  extension: ClauseExtension,
+  force?: string,
+): GeneratedProblem | null {
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
-  const { prompt, response, figure, ...privatePart } = c;
+  const axis = defineAxis("clause", ["legacy", ...extension.variants], {
+    legacy: "legacy",
+    since: meta.version,
+    silentLegacy: true,
+    weights: [extension.variants.length, ...extension.variants.map(() => 1)],
+    needs: Object.fromEntries(
+      extension.variants.map((v) => [v, "scenes-v1" as const]),
+    ),
+  });
+  const variant = force ?? chooseAxes(meta.id, seed, { clause: axis }).clause;
+  if (variant === "legacy") return null;
+  if (!extension.variants.includes(variant))
+    throw new Error(`Unknown clause ${variant}`);
+  const s = extension.build(
+    random(`${meta.id}:clause:${variant}`, seed),
+    variant,
+  );
   return {
     public: {
       id: createHash("sha256")
-        .update(JSON.stringify([meta.id, meta.version, seed]))
+        .update(JSON.stringify([meta.id, 1, seed]))
         .digest("hex"),
       templateId: meta.id,
       templateVersion: 1,
       skillId: meta.skillId,
       seed,
-      prompt,
-      response,
-      ...(figure ? { figure } : {}),
+      prompt: s.prompt,
+      response: s.response,
+      ...(s.figure ? { figure: s.figure } : {}),
     },
-    ...privatePart,
+    answer: s.answer,
+    hint: s.hint,
+    explanation: s.explanation,
+    ...(s.choiceFeedback ? { choiceFeedback: s.choiceFeedback } : {}),
+    ...(s.workGrading ? { workGrading: s.workGrading } : {}),
+    ...(s.pointGrading ? { pointGrading: s.pointGrading } : {}),
     variant: { id: variant, axes: { clause: variant } },
   };
 }

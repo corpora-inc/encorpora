@@ -11,7 +11,7 @@ import {
   shuffled,
   type Item,
   type Rng,
-} from "./clause-kit";
+} from "./number-geometry-clause-kit";
 import { numberLine, scene } from "./scene/author";
 import type { WorkRow, FieldRule } from "./structured-work";
 

@@ -1,5 +1,5 @@
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
-import { finish, rng } from "./clause-kit";
+import { finish, rng } from "./number-geometry-clause-kit";
 import { decimalDivision } from "./clause-real-variants";
 import { recognizeAngle, constructTriangle } from "./clause-geometry-variants";
 export const clauseTemplates: readonly TemplateMetadata[] = [

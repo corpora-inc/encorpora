@@ -18,6 +18,10 @@ import {
 import { normalizeSelection } from "./selection-response";
 import { withTemplateGlossary } from "./template-glossary";
 import { historicalTrueEquationChoice } from "./operation-sentence-practice";
+import {
+  clauseProblem as extendedClauseProblem,
+  withClauseMetadata as withExtendedClauseMetadata,
+} from "./clause-extensions";
 import { historicalEqualFactorFamily } from "./multiselect-number-practice";
 import { sceneCapabilitiesIn } from "./scene/capability";
 import {
@@ -659,6 +663,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...familyRegistry.templates,
 ]
   .map(withClauseMetadata)
+  .map(withExtendedClauseMetadata)
   .map(clauseMetadata)
   .map(withTemplateGlossary);
 
@@ -945,6 +950,7 @@ export function generateProblemFor(
 }
 /** Apply the legacy count copy-edit without changing authored algebra notation. */
 export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
+  if (problem.variant?.axes?.clause) return problem;
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
@@ -1048,8 +1054,13 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
-  const clause = generateClauseVariant(templateById.get(templateId), seed);
-  if (clause) return clause;
+  const metadata = templateById.get(templateId);
+  if (metadata) {
+    const clause =
+      extendedClauseProblem(metadata, seed) ??
+      generateClauseVariant(metadata, seed);
+    if (clause) return clause;
+  }
   if (templateId === "true-equation-choice")
     return historicalTrueEquationChoice.generate(seed).problem;
   if (templateId === "equal-factor-equations-select")

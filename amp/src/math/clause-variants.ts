@@ -4,7 +4,7 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { chooseAxes, defineAxis } from "./variation/axes";
-import { finish, rng } from "./clause-kit";
+import { finish, rng } from "./number-geometry-clause-kit";
 import { signedClause } from "./clause-signed-variants";
 import { realClause } from "./clause-real-variants";
 import { geometryClause } from "./clause-geometry-variants";
