@@ -57,3 +57,22 @@ test("enabled, it links to today's workbook and the history", async () => {
     screen.getByRole("link", { name: "Past workbooks" }).getAttribute("href"),
   ).toBe("/learners/learner-1/workbooks");
 });
+
+test("exhausted online practice keeps issued workbook history available", async () => {
+  renderEntry({
+    learner: {
+      ...learner,
+      canPractice: false,
+      learningAllowed: true,
+      hasAccess: false,
+      freeAllowance: {
+        problems: { total: 100, used: 100, remaining: 0 },
+        workbooks: { total: 5, made: 5, earned: 5, available: 0, nextAt: null },
+      },
+    },
+  });
+  expect(
+    await screen.findByRole("link", { name: "Past workbooks" }),
+  ).toBeTruthy();
+  expect(screen.queryByRole("link", { name: "Make a workbook" })).toBeNull();
+});

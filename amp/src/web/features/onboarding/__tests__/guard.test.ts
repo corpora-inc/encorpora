@@ -442,3 +442,39 @@ test("each screen belongs to a place, or to neither", () => {
   ])
     expect(placeOfPath(path)).toBeNull();
 });
+
+test("free practice does not block buying or permit collecting a name before consent", () => {
+  const free = me({ next: "practice" });
+  for (const path of ["/start/plan", "/start/purchase", "/start/consent"])
+    expect(startDestination(free, path)).toBeNull();
+  for (const path of ["/start/name", "/start/birth-year"])
+    expect(startDestination(free, path)).toBe("/start/plan");
+  expect(startDestination(free, "/start")).toBe("/practice");
+  expect(
+    startDestination(
+      { ...free, account: { ...free.account, confirmationRequired: true } },
+      "/start/plan",
+    ),
+  ).toBe("/start/verify-email");
+});
+
+test("a consented learner can buy before using up free practice", () => {
+  const free = me({
+    next: "practice",
+    consent: { status: "active", method: "verified" },
+    learners: [
+      {
+        id: "fox",
+        name: "Fox",
+        birthYear: 2016,
+        entitlement: {
+          active: true,
+          licensed: false,
+          plan: null,
+          endsAt: null,
+        },
+      },
+    ],
+  });
+  expect(startDestination(free, "/start/plan")).toBe("/purchase");
+});

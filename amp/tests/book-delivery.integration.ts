@@ -14,7 +14,7 @@ import { fractionFieldGuide as book } from "../books/fraction-field-guide/book.j
 import { contentHash } from "../src/books/publication.js";
 const url = process.env.AMP_TEST_DATABASE_URL;
 test(
-  "owned book delivery enforces license, immutable support evidence and artifact integrity",
+  "owned book delivery enforces access, immutable support evidence and artifact integrity",
   { skip: !url },
   async () => {
     await migrate(url!);
@@ -46,7 +46,12 @@ test(
         headers,
       });
     try {
-      assert.equal((await post("open")).statusCode, 403);
+      assert.equal((await post("open")).statusCode, 200);
+      await repository.pool.query(
+        "UPDATE amp_learners SET free_online_used=100 WHERE id=$1",
+        [learner.id],
+      );
+      assert.equal((await post("open")).statusCode, 402);
       await repository.pool.query(
         "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES($1,$2,'pilot',$1,'active',now()-interval '1 hour',now()+interval '1 hour')",
         [randomUUID(), learner.id],

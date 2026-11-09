@@ -349,6 +349,22 @@ def solve_strip(public):
 def solve_division_area(public):
     p = public['prompt']
     opts = options_of(public)
+    m = re.fullmatch(
+        r'The first chunk of ([\d,]+) ÷ (\d+) is ([\d,]+) wide, not ([\d,]+)\. Why\?', p)
+    if m:
+        N, d, width, nxt = (value(m[i]) for i in range(1, 5))
+        require(nxt > width and (nxt - width) in (F(10), F(100), F(1000)), 'Rejected width is not the next place')
+        require(d * nxt > N >= d * width, 'The shown chunk is not the largest place that fits')
+        good = []
+        for o in opts:
+            claim = re.fullmatch(
+                r'(\d+) × ([\d,]+) = ([\d,]+) is more than ([\d,]+)', o['label'])
+            if not claim:
+                continue
+            factor, tried, product, compared = (value(claim[i]) for i in range(1, 5))
+            if factor == d and tried == nxt and product == d * nxt and compared == N and product > N:
+                good.append(o['id'])
+        return only(good, 'Next chunk does not fit')
     m = re.fullmatch(r'An area model for ([\d,]+) ÷ (\d+) is a rectangle (\d+) units tall\. Its area is split into two columns with areas ([\d,]+) and ([\d,]+)\. What is the quotient\?', p)
     if m:
         X, d, h, a, b = (value(m[i]) for i in range(1, 6))
@@ -1307,6 +1323,14 @@ def self_test():
     review_problem(good)
     bad = copy.deepcopy(good); bad['answer'] = 'option-c'; must_reject(bad, 'wrong quotient')
     bad = copy.deepcopy(good); bad['public']['prompt'] = bad['public']['prompt'].replace('27.', '28.'); must_reject(bad, 'columns do not sum')
+    why = case('division-area-model', 'The first chunk of 1,089 ÷ 3 is 300 wide, not 400. Why?', [
+        '3 × 400 = 1,200 is more than 1,089',
+        '1,089 rounds to 1,000',
+        "1 can't be shared by 3, so the thousand is left over",
+        '3 × 300 = 900 is the closest to 1,000',
+    ])
+    review_problem(why)
+    bad = copy.deepcopy(why); bad['answer'] = 'option-b'; must_reject(bad, 'rounding is not why the chunk stops')
     # 6 benchmark
     good = case('fraction-benchmark-reasonable', 'Which benchmark is 5/6 closest to: 0, 1/4, 1/2, 3/4 or 1?', ['1/2', '3/4', '1', '1/4'], answer='option-b')
     review_problem(good)

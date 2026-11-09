@@ -188,13 +188,25 @@ test(
           "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES($1,'test','test-only','fixture')",
           [account],
         );
+        // Without a grant, the learner practises under the free allowance.
+        const free = await hosted.inject({
+          method: "POST",
+          url: `${path}/batches`,
+          payload: {},
+        });
+        assert.equal(free.statusCode, 200);
+        // Once the allowance is spent, practice needs a grant.
+        await repository.pool.query(
+          "UPDATE amp_learners SET free_online_used=100 WHERE id=$1",
+          [learnerId],
+        );
         const unlicensed = await hosted.inject({
           method: "POST",
           url: `${path}/batches`,
           payload: {},
         });
-        assert.equal(unlicensed.statusCode, 403);
-        assert.match(unlicensed.json().error, /license/);
+        assert.equal(unlicensed.statusCode, 402);
+        assert.equal(unlicensed.json().error, "free-allowance-complete");
         await repository.pool.query(
           "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES($1,$2,'pilot',$1,'active',now()-interval '1 hour',now()+interval '1 hour')",
           [randomUUID(), learnerId],

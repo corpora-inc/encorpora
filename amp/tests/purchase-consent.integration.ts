@@ -322,6 +322,64 @@ test(
 );
 
 test(
+  "a verified purchase names and covers the existing unnamed learner in place",
+  enabled,
+  async () =>
+    fixture(async (f) => {
+      const id = randomUUID();
+      await f.pool.query(
+        `INSERT INTO amp_learners(id,account_id,name,birth_year,name_pending,picture_identity,picture_number,identity_scope,free_online_used,free_workbooks_used)
+      VALUES($1,'parent','Fox',2016,true,'fox',1,'family:parent',37,2)`,
+        [id],
+      );
+      await assert.rejects(
+        f.family.rename("parent", id, "Rowan Fixture"),
+        /consent_required/,
+      );
+      await f.checkout();
+      const checkout = (
+        await f.pool.query("SELECT * FROM amp_stripe_checkouts")
+      ).rows[0];
+      await f.deliver(f.settle(checkout));
+      const me = await accountSummary(
+        f.pool,
+        f.family,
+        "parent",
+        f.repository.namespace,
+      );
+      assert.equal(me.learners[0].entitlement.active, true);
+      assert.equal(me.learners[0].entitlement.licensed, false);
+      assert.equal(me.unassignedPurchase?.id, checkout.id);
+      await claimEnrollment(f.billing, "parent", checkout.id, id);
+      await f.family.rename("parent", id, "Rowan Fixture");
+      assert.deepEqual(
+        (
+          await f.pool.query(
+            "SELECT id,name,name_pending,free_online_used,free_workbooks_used FROM amp_learners WHERE id=$1",
+            [id],
+          )
+        ).rows[0],
+        {
+          id,
+          name: "Rowan Fixture",
+          name_pending: false,
+          free_online_used: 37,
+          free_workbooks_used: 2,
+        },
+      );
+      const after = await accountSummary(
+        f.pool,
+        f.family,
+        "parent",
+        f.repository.namespace,
+      );
+      assert.equal(after.learners.length, 1);
+      assert.equal(after.learners[0].entitlement.licensed, true);
+      assert.equal(after.unassignedPurchase, undefined);
+    }),
+);
+
+test(
   "failed payment and unsupported payment method never consent; entitlement failure rolls consent back",
   enabled,
   async () =>

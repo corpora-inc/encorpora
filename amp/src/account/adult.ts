@@ -1,7 +1,12 @@
 import { randomUUID } from "node:crypto";
 import type { Pool } from "pg";
 import { z } from "zod";
-import { adultPracticeEnd, refreshAdultAccess } from "./adult-access.js";
+import { refreshAdultAccess } from "./adult-access.js";
+import {
+  familyHasLearnerRoom,
+  FREE_ONLINE_PROBLEMS,
+} from "../learning/free-allowance.js";
+import { FamilyError } from "../family/contracts.js";
 import {
   HEARTBEAT_MAX_MS,
   HEARTBEAT_SLACK_MS,
@@ -13,7 +18,6 @@ import { readProgress, shiftDay } from "../schools/teacher-reads.js";
 import { skillStrandOf, skillTitleOf } from "../schools/term-grades.js";
 import { timezone } from "../schools/contracts.js";
 import { adultStarts } from "../learning/starting-point.js";
-import { FamilyError } from "../family/contracts.js";
 import type { FamilyRepository } from "../family/repository.js";
 import type { OwnPractice } from "./adult-contracts.js";
 
@@ -22,8 +26,8 @@ export const startPracticeSchema = z.strictObject({
   timezone,
 });
 
-/** Makes the account's adult learner where the adult chose to begin, with its
- * grant, when they qualify. A second start returns the learner they have. */
+/** Makes the account's adult learner with their free allowance and any access
+ * supplied by their children or school. A second start returns the same learner. */
 export async function startAdultPractice(
   families: FamilyRepository,
   accountId: string,
@@ -38,8 +42,6 @@ export async function startAdultPractice(
       await refreshAdultAccess(client, accountId, existing.rows[0].id);
       return { learnerId: existing.rows[0].id };
     }
-    if (!(await adultPracticeEnd(client, accountId)))
-      throw new FamilyError(403, "adult_practice_unavailable");
     // The adult's own name from their account; "Me" without one.
     const named =
       accountId.startsWith("amp|") &&
@@ -57,6 +59,8 @@ export async function startAdultPractice(
         ?.replace(/[\u0000-\u001f\u007f]/g, "")
         .trim()
         .slice(0, 60) || "Me";
+    if (!(await familyHasLearnerRoom(client, accountId)))
+      throw new FamilyError(403, "too_many_learners");
     const learnerId = randomUUID();
     await client.query(
       `INSERT INTO amp_learners(id,account_id,name,adult,timezone,starting_band,starting_policy,starting_excluded_strands)
@@ -75,20 +79,31 @@ export async function startAdultPractice(
 /** The adult's own record: the student record a teacher reads, pointed at
  * themselves, with their days and skills. Null without an adult learner. */
 export async function readOwnPractice(
-  pool: Pool,
+  families: FamilyRepository,
   accountId: string,
 ): Promise<OwnPractice | null> {
-  const learner = (
-    await pool.query(
-      `SELECT l.id,l.name,l.starting_band AS start,COALESCE(l.timezone,'America/New_York') AS timezone,
+  const pool = families.pool;
+  const learner = await families.transaction(accountId, async (client) => {
+    const own = (
+      await client.query<{ id: string }>(
+        "SELECT id FROM amp_learners WHERE account_id=$1 AND adult AND deleted_at IS NULL",
+        [accountId],
+      )
+    ).rows[0];
+    if (!own) return null;
+    await refreshAdultAccess(client, accountId, own.id);
+    return (
+      await client.query(
+        `SELECT l.id,l.name,l.free_online_used,l.starting_band AS start,COALESCE(l.timezone,'America/New_York') AS timezone,
          to_char(l.created_at AT TIME ZONE COALESCE(l.timezone,'America/New_York'),'YYYY-MM-DD') AS began,
          to_char(now() AT TIME ZONE COALESCE(l.timezone,'America/New_York'),'YYYY-MM-DD') AS today,
          (SELECT max(g.ends_at) FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active'
             AND g.starts_at<=now() AND g.ends_at>now()) AS "endsAt"
        FROM amp_learners l WHERE l.account_id=$1 AND l.adult AND l.deleted_at IS NULL`,
-      [accountId],
-    )
-  ).rows[0];
+        [accountId],
+      )
+    ).rows[0];
+  });
   if (!learner) return null;
   const member = { personId: learner.id, learnerId: learner.id };
   const from = [shiftDay(learner.today, -41), learner.began].sort().at(-1)!;
@@ -111,7 +126,8 @@ export async function readOwnPractice(
       name: learner.name,
       first,
       start: adultStarts.find((start) => start === learner.start) ?? null,
-      active: !!learner.endsAt,
+      active:
+        !!learner.endsAt || learner.free_online_used < FREE_ONLINE_PROBLEMS,
       endsAt: learner.endsAt?.toISOString() ?? null,
     },
     record,

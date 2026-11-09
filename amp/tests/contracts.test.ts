@@ -44,6 +44,10 @@ test("malformed figures and unsupported versions fail closed", () => {
     false,
   );
   assert.equal(
+    publicProblemSchema.safeParse({ ...p, templateVersion: 21 }).success,
+    false,
+  );
+  assert.equal(
     publicProblemSchema.safeParse({
       ...p,
       figure: { kind: "fraction", selected: 10, parts: 2 },
