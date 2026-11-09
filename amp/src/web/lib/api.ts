@@ -88,6 +88,11 @@ const messages: Record<string, string> = {
   billing_unavailable:
     "Billing is temporarily unavailable. Try again in a moment; you won’t be charged twice.",
   "trial-complete": "All free problems are used. Choose a plan to continue.",
+  "free-allowance-complete": "Continue with AMP to practice more.",
+  too_many_learners:
+    "This account has 1,000 learners, the most one account can hold. Delete a learner to add another.",
+  "free-workbooks-complete": "Continue with AMP to make more workbooks.",
+  free_workbooks_unavailable: "This learner has no workbook available yet.",
   trial_ended:
     "That free practice has ended on this device. Continue to add the learner and choose a starting point.",
   "Too Many Requests":
