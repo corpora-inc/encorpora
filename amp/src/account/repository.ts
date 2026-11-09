@@ -2,10 +2,10 @@ import { availableGift } from "../access-grants/repository.js";
 import type { Pool } from "pg";
 import { meSchema, type SignedInMe } from "./contracts.js";
 import type { FamilyRepository } from "../family/repository.js";
-import { activeToday } from "../schools/principal.js";
-import { adultPracticeEnd } from "./adult-access.js";
+import { activeToday, isSchoolAccount } from "../schools/principal.js";
 import { familyClassOf } from "../family/family-class.js";
 import { pendingApprovalOf } from "../family/approvals.js";
+import { absorbLiveTrial } from "../server/absorb-trial.js";
 /** One authenticated account snapshot. No trial capability or child draft is stored here. */
 export async function accountSummary(
   pool: Pool,
@@ -14,6 +14,16 @@ export async function accountSummary(
   /** The configured Stripe namespace; without billing no purchase is offered. */
   billingNamespace: string | null = null,
 ): Promise<SignedInMe> {
+  // A student session is answered before this runs. A school account is not
+  // a family, so its trial, if it has one, stays where it is.
+  if (!isSchoolAccount(accountId)) {
+    const client = await pool.connect();
+    try {
+      await absorbLiveTrial(client, accountId);
+    } finally {
+      client.release();
+    }
+  }
   const family = await families.summary(accountId);
   let email: string | null = null,
     emailVerified = true;
@@ -76,8 +86,12 @@ export async function accountSummary(
         id: l.id,
         name: l.name,
         birthYear: l.birthYear ?? null,
+        namePending: l.namePending,
+        pictureIdentity: l.pictureIdentity,
+        freeAllowance: l.freeAllowance,
         entitlement: {
           active: l.canPractice === true,
+          licensed: l.hasAccess ?? !!grant,
           plan: grant?.channel ?? null,
           endsAt: grant?.endsAt ?? null,
         },
@@ -93,8 +107,8 @@ export async function accountSummary(
       if (error.code && codes.includes(error.code)) return { rows: [] };
       throw error;
     };
-  const [staffRows, trialRows, adultEnds, familyClass, familyApproval] =
-    await Promise.all([
+  const [staffRows, trialRows, familyClass, familyApproval] = await Promise.all(
+    [
       pool
         .query<{
           orgId: string;
@@ -119,16 +133,6 @@ export async function accountSummary(
           [accountId],
         )
         .catch(missing("42P01", "42703")),
-      // Without their own learner yet, whether this adult may start one. With
-      // one, its refreshed grant already says.
-      adult
-        ? null
-        : adultPracticeEnd(pool, accountId).catch(
-            (error: { code?: string }) => {
-              if (error.code === "42P01" || error.code === "42703") return null;
-              throw error;
-            },
-          ),
       // The family's class, which `families.summary` above keeps current. It's
       // this account's family side, so it isn't among the places above; a
       // co-teacher from another account finds it there.
@@ -136,20 +140,18 @@ export async function accountSummary(
       // A link from another family's teacher this parent opened and hasn't
       // approved yet: after consent, approving is the next step.
       pendingApprovalOf(pool, accountId),
-    ]);
-  const adultPractice =
-    adult || adultEnds
+    ],
+  );
+  const adultPractice = {
+    eligible: adult ? adult.canPractice === true : true,
+    learner: adult
       ? {
-          eligible: adult ? adult.canPractice === true : true,
-          learner: adult
-            ? {
-                id: adult.id,
-                name: adult.name,
-                active: adult.canPractice === true,
-              }
-            : null,
+          id: adult.id,
+          name: adult.name,
+          active: adult.canPractice === true,
         }
-      : null;
+      : null,
+  };
   const staffOf = staffRows.rows.map(({ setupPending, demo, ...place }) => ({
     ...place,
     // Only an admin finishes setup, so only theirs says so.
@@ -196,15 +198,17 @@ export async function accountSummary(
     next:
       gift && !unassigned
         ? "accept-gift"
-        : !active
-          ? family.consent.status === "withdrawn"
-            ? "choose-plan"
-            : "try"
+        : active && unassigned
+          ? "add-learner"
           : learners.some((l) => l.entitlement.active)
             ? "practice"
-            : unassigned || !learners.length
-              ? "add-learner"
-              : "choose-plan",
+            : !active
+              ? family.consent.status === "withdrawn"
+                ? "choose-plan"
+                : "try"
+              : !learners.length
+                ? "add-learner"
+                : "choose-plan",
   };
   return meSchema.parse(value) as SignedInMe;
 }

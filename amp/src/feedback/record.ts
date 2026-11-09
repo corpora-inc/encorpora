@@ -33,7 +33,11 @@ export async function recordProblemFlag(
   const note = input.note?.trim() || null;
   if (
     note &&
-    !noteAllowed({ trial: context.trial, birthYear: await tx.birthYear() })
+    !noteAllowed({
+      trial: context.trial,
+      namePending: await tx.namePending(),
+      birthYear: await tx.birthYear(),
+    })
   )
     throw new ApiError(400, "Notes are not available for this learner");
   const outcome: FlagOutcome = attempt

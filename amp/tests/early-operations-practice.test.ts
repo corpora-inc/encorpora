@@ -57,7 +57,8 @@ test("each figure agrees with its answer", () => {
     const f = p.public.figure!;
     assert.ok(f.kind === "bar-model");
     if (f.kind !== "bar-model") continue;
-    assert.equal(sum(f.parts) + Number(p.answer), f.whole);
+    if (f.whole == null) assert.equal(sum(f.parts), Number(p.answer));
+    else assert.equal(sum(f.parts) + Number(p.answer), f.whole);
   }
   for (const p of sample("balanced-addition")) {
     const f = p.public.figure!;
@@ -125,13 +126,15 @@ test("balance, tape and make-ten animations follow the example's figure", () => 
     assert.equal(sum(m.partial) + Number(lesson.example.answer), sum(m.full));
     assert.equal(animationFrames(m).length, 3);
   }
+  let tapes = 0;
   for (let i = 0; i < 40; i++) {
     const lesson = problemLesson("unknown-addend-story", `animation-${i}`);
     const m = animationModel(lesson);
-    assert.equal(m?.kind, "tape-join");
     if (m?.kind !== "tape-join") continue;
+    tapes++;
     assert.equal(m.part + Number(lesson.example.answer), m.whole);
   }
+  assert.ok(tapes >= 10, `addition tapes ${tapes}`);
   for (let i = 0; i < 40; i++) {
     const lesson = problemLesson("three-addend-story", `animation-${i}`);
     const m = animationModel(lesson);

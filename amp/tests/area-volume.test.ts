@@ -28,9 +28,13 @@ test("every area and volume item is valid, exact and drawn without undefined geo
       assert.doesNotMatch(svg, /NaN|undefined|Infinity/, `${t.id}/${i}`);
       assert.match(svg, /aria-label="[^"]{20,}"/);
       // The final explanation step states the answer the learner types.
-      const shown = p.answer.includes("/") ? null : p.answer;
-      if (shown)
-        assert.ok(p.explanation.at(-1)!.includes(shown), `${t.id}/${i}`);
+      // Choice and structured-work answers are ids or JSON, not that sentence.
+      const kind = p.public.response.kind;
+      if (kind === "number" || kind === "fraction") {
+        const shown = p.answer.includes("/") ? null : p.answer;
+        if (shown)
+          assert.ok(p.explanation.at(-1)!.includes(shown), `${t.id}/${i}`);
+      }
     }
 });
 
@@ -97,6 +101,11 @@ test("animations conserve the example's quantities and match its answer", () => 
       if (
         id === "cylinder-volume" &&
         !lesson.example.prompt.includes("What is $a$?")
+      )
+        continue;
+      if (
+        id === "triangle-area-base-height" &&
+        !lesson.example.prompt.startsWith("The figure shows a triangle")
       )
         continue;
       assert.ok(model, `${id}/${i}`);

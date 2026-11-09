@@ -308,15 +308,13 @@ export function registerWorkbookRoutes(
   const workbookParams = learnerParams
     .extend({ workbookId: z.string().uuid() })
     .strict();
-  /** Workbooks are part of a paid learner's practice. A live free trial
-   * (its token reaches only its own learner) earns a few as it goes:
-   * `trialWorkbookAllowance`. */
+  /** The authenticated owner or learner-bound student session. */
   async function account(request: Parameters<Authenticator>[0]) {
     const accountId = await options.parent(request);
     return { accountId, trial: isTrialAccount(accountId) };
   }
-  /** A parent's learner needs an active license; a trial learner needs a
-   * live trial (the transaction also refuses an ended one). */
+  /** Ownership and consent are enforced by the learner transaction. Issued
+   * workbooks remain readable and recordable after an allowance is used. */
   async function access(
     tx: LearnerTransaction,
     trial: boolean,
@@ -326,8 +324,6 @@ export function registerWorkbookRoutes(
       if (!progress) throw new ApiError(401, "This free trial has ended");
       return progress;
     }
-    if (!options.development && !(await tx.hasAccess()))
-      throw new ApiError(403, "An active student license is required");
     return null;
   }
   /** Results become learning evidence, which a trial collects only by
@@ -419,7 +415,18 @@ export function registerWorkbookRoutes(
           // A trial makes only the workbooks it has earned. The learner row is
           // locked for this transaction, so concurrent requests count in turn.
           beforeMaking: async () => {
-            if (!progress) return;
+            if (!progress) {
+              if (options.development || (await tx.hasAccess())) return;
+              const allowance = (await tx.freeAllowance()).workbooks;
+              if (allowance.available <= 0)
+                throw new ApiError(
+                  402,
+                  allowance.nextAt
+                    ? `The next free workbook unlocks at ${allowance.nextAt} problems.`
+                    : "free-workbooks-complete",
+                );
+              return;
+            }
             const allowance = trialWorkbookAllowance(
               progress.totals.answered,
               (await tx.workbooks()).length,

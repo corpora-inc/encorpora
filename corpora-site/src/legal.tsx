@@ -42,8 +42,8 @@ export function Legal({
           <h2>Who may purchase</h2>
           <p>
             A parent or legal guardian must manage the account, purchase access,
-            and complete the applicable consent process before creating a
-            child’s learning profile. Keep sign-in details private. Use a
+            and complete the applicable consent process before adding a child’s
+            name to their learning profile. Keep sign-in details private. Use a
             learner nickname rather than a full legal name.
           </p>
           <h2>What a license includes</h2>
@@ -154,8 +154,8 @@ export function Legal({
             answers and progress. Ad identifiers are removed from the page’s
             address before links are shared. OpenAI ads can lead directly to
             AMP’s home or signup page, where the same process retains the
-            original OpenAI click reference for signup and purchase attribution. Learning
-            routes do not collect it.
+            original OpenAI click reference for signup and purchase attribution.
+            Learning routes do not collect it.
           </p>
           <p>
             Global Privacy Control and Do Not Track prevent this collection and
@@ -172,14 +172,14 @@ export function Legal({
             or OpenAI ad, AMP may send that provider the original ad identifier,
             signup time and a random event reference. Meta also receives the
             signup-page address and the browser’s user agent, which AMP retains
-            for up to seven days. These events measure which ads lead to
-            signups and help improve ad delivery. They contain no email, birth
-            year, learner name, answer, progress or purchase value. Google and
-            OpenAI events request no user-level ad personalization. Browser
-            privacy signals and provider collection withdrawals stop future
-            sharing. Removing the underlying click evidence removes its local
-            signup delivery records; it does not recall information a provider
-            has already received. Local delivery records expire after 90 days.
+            for up to seven days. These events measure which ads lead to signups
+            and help improve ad delivery. They contain no email, birth year,
+            learner name, answer, progress or purchase value. Google and OpenAI
+            events request no user-level ad personalization. Browser privacy
+            signals and provider collection withdrawals stop future sharing.
+            Removing the underlying click evidence removes its local signup
+            delivery records; it does not recall information a provider has
+            already received. Local delivery records expire after 90 days.
           </p>
           <h2>Free-account context and emails</h2>
           <p>
@@ -189,12 +189,12 @@ export function Legal({
             campaign’s target state and a demonstration year are context, not
             confirmed residence, eligibility or a child’s age. The signup page
             says that AMP will email the parent. Parents who sign up or sign in
-            there may receive a personal welcome or follow-up from AMP’s founder.
-            Parents can reply with feedback or ask to stop these messages.
-            Optional product emails can also include math problems, tips, videos
-            and product news. You can stop them through an unsubscribe link or
-            by replying. Opting out does not affect account access or security
-            and purchase messages.
+            there may receive a personal welcome or follow-up from AMP’s
+            founder. Parents can reply with feedback or ask to stop these
+            messages. Optional product emails can also include math problems,
+            tips, videos and product news. You can stop them through an
+            unsubscribe link or by replying. Opting out does not affect account
+            access or security and purchase messages.
           </p>
           <h2>Education-fund purchase documents</h2>
           <p>
@@ -283,18 +283,39 @@ export function Legal({
           </p>
           <h2>Free practice</h2>
           <p>
-            Free practice, a short placement followed by adaptive practice up to
-            the free allowance, requires a parent account but no learner’s name.
-            The app stores the supplied birth year, a derived starting-level
-            estimate, a trial linked to the signed-in parent account, generated
-            problems, answer history, and whether a hint or lesson was opened,
-            to estimate levels, choose the next problem and resume on another
-            device. Random identifiers and activity records can be personal
-            information even without a name. Unclaimed placement sessions expire
-            after {TRIAL_DAYS} days and are removed by the retention process. A
-            parent may choose to use the trial answers when setting up a
-            learner, or start fresh; saved learner answers then follow the
-            family’s learning-data policy.
+            Each family or class learner can begin with a picture identity and
+            birth year, without a name. AMP stores their random learner
+            identifier, generated problems, answers, skips, skill estimates and
+            workbooks to provide practice and let their parent or teacher follow
+            their progress. These records are used to operate the learning
+            service, not to contact the child or target advertising. Student
+            sessions do not load analytics or advertising scripts. Unnamed
+            learners can report a problem using fixed choices, without free
+            text.
+          </p>
+          <p>
+            Each learner has 100 free online problems and five workbooks, all
+            available immediately. Recording printed results does not use the
+            online allowance. Payment and verified consent can be attached to
+            the same learner, preserving their answers. The learner’s name is
+            collected only through the applicable parental-consent or
+            school-agreement process. Unnamed learner records follow the same
+            learning-data retention schedule as named records; using up the
+            allowance does not delete their work.
+          </p>
+          <p>
+            The free assessment at /try provides a short placement followed by
+            adaptive practice. It requires a parent account but no learner’s
+            name. The app stores the supplied birth year, a derived
+            starting-level estimate, a trial linked to the signed-in parent
+            account, generated problems, answer history, and whether a hint or
+            lesson was opened, to estimate levels, choose the next problem and
+            resume on another device. Random identifiers and activity records
+            can be personal information even without a name. Unclaimed placement
+            sessions expire after {TRIAL_DAYS} days and are removed by the
+            retention process. A parent may choose to use the trial answers when
+            setting up a learner, or start fresh; saved learner answers then
+            follow the family’s learning-data policy.
           </p>
           {config.privacy ? (
             <p>{config.privacy.placementBasis}</p>
@@ -375,13 +396,12 @@ export function Legal({
             to measure visits, traffic sources, engagement, verified parent
             signups and purchase-flow actions. Google receives limited page and
             campaign information and uses browser cookies that expire after 90
-            days. We do not send
-            learner answers, learning records, names, email addresses, invoice
-            identifiers or form contents to Google Analytics. Assessment,
-            practice, lessons and family-account pages use our first-party
-            measurement instead. Google advertising personalization is disabled
-            for this measurement. We honor browser Do Not Track and Global
-            Privacy Control signals. See{" "}
+            days. We do not send learner answers, learning records, names, email
+            addresses, invoice identifiers or form contents to Google Analytics.
+            Assessment, practice, lessons and family-account pages use our
+            first-party measurement instead. Google advertising personalization
+            is disabled for this measurement. We honor browser Do Not Track and
+            Global Privacy Control signals. See{" "}
             <a href="https://policies.google.com/technologies/partner-sites">
               how Google uses information from sites that use its services
             </a>
@@ -391,10 +411,11 @@ export function Legal({
           <p>
             “Report a problem” records selected reasons, the learner reference,
             the problem and recorded answer and outcome, software version,
-            device type and viewport size so we can correct errors. Anonymous
-            learners and children under 13 choose fixed reasons only. A learner
-            aged 13 or older in a consented family account may add a note of up
-            to 280 characters. Reports stay in AMP and appear in parent exports.
+            device type and viewport size so we can correct errors. Anonymous or
+            unnamed learners and children under 13 choose fixed reasons only. A
+            learner aged 13 or older in a consented family account may add a
+            note of up to 280 characters. Reports stay in AMP and appear in
+            parent exports.
           </p>
           <p>
             Notes are erased after {RETENTION.problemFlagNoteDays} days and
@@ -434,11 +455,11 @@ export function Legal({
             The Children’s Online Privacy Protection Act (COPPA) regulates
             collection of personal information from children under 13. The
             family enrollment process provides a direct notice to the parent and
-            requires the applicable verified consent before a family learner
-            profile is created. An ordinary login, payment, or checkbox alone
-            does not establish that consent. The free placement flow is separate
-            from family enrollment; the absence of an account does not make its
-            activity records anonymous.
+            requires the applicable verified consent before adding a child’s
+            name. An ordinary login, payment, or checkbox alone does not
+            establish that consent. The unnamed learning and assessment records
+            described above contain persistent identifiers and activity history;
+            the absence of a name does not make them anonymous.
           </p>
           <p>
             Parents can review and export learning records, withdraw consent,

@@ -462,8 +462,72 @@ def math_spans(prompt):
 
 
 # ---------------------------------------------------------------- per-template solvers
+def solve_same_number(public):
+    """Two names for one point, or a decoy polar name. The key is never length alone."""
+    prompt = public['prompt']
+    spans = math_spans(prompt)
+    options = choices(public)
+    if 'Which shows that these are the same number?' in prompt:
+        require(len(spans) >= 3, 'Match prompt needs both names')
+        rect = num(spans[1])
+        polar = re.fullmatch(r'(.+?)\(\\cos(.+)\+i\\sin(.+)\)', plain(spans[2]))
+        require(polar is not None and plain(polar[2]) == plain(polar[3]), 'Match polar name')
+        radius, theta = num(polar[1]), angle(polar[2])
+        real, imag = to_cartesian(radius, theta)
+        require(real + imag * I == rect, 'The two names are not the same number')
+        hits = [o for o in options if '\\cos' in o['label'] and '\\sin' in o['label'] and '\\tan' not in o['label']]
+        require(len(hits) == 1, 'Match key must be the two-part statement')
+        label = hits[0]['label']
+        require('length' not in label, 'Length-only statement was marked correct')
+        require(plain(signed_tex(real)) in plain(label) and plain(signed_tex(imag)) in plain(label),
+                'Two-part statement does not name both coordinates')
+        require(all('\\tan' not in o['label'] or o is not hits[0] for o in options), 'Arctan was the key')
+        return hits[0]['id']
+    require('Which statement decides it correctly?' in prompt, 'Unknown same-number prompt')
+    require(len(spans) >= 2, 'Mismatch prompt needs both names')
+    polar = re.fullmatch(r'(.+?)\(\\cos(.+)\+i\\sin(.+)\)', plain(spans[0]))
+    require(polar is not None and plain(polar[2]) == plain(polar[3]), 'Mismatch polar name')
+    radius, theta = num(polar[1]), angle(polar[2])
+    real, imag = to_cartesian(radius, theta)
+    rect = num(spans[1])
+    _, rect_imag = rect.parts()
+    shown_imag = radius * sin_pi(theta)
+    require(shown_imag != rect_imag, 'Mismatch names are the same point')
+    hits = [o for o in options if 'different point' in o['label']]
+    require(len(hits) == 1, 'Mismatch key must be the different-point statement')
+    label = plain(hits[0]['label'])
+    require('length $' not in hits[0]['label'] and not hits[0]['label'].startswith('Yes, both have length'),
+            'Length-only statement was marked correct')
+    require(plain(signed_tex(shown_imag)) in label and plain(signed_tex(rect_imag)) in label,
+            'Different-point statement does not compare imaginary parts')
+    return hits[0]['id']
+
+
+def signed_tex(value):
+    """A short reading of a real Num, close to the generator's term text."""
+    require(value.real(), 'Expected a real part')
+    if value.is_zero():
+        return '0'
+    if value.is_rational():
+        q = abs(value.rational())
+        sign = '-' if value.rational() < 0 else ''
+        body = str(q.numerator) if q.denominator == 1 else f'\\frac{{{q.numerator}}}{{{q.denominator}}}'
+        return sign + body
+    require(len(value.t) == 1, 'Unsupported part')
+    (rad, _), coef = next(iter(value.t.items()))
+    sign = '-' if coef < 0 else ''
+    mag = abs(coef)
+    body = f'\\sqrt{{{rad}}}' if mag == 1 else f'{mag}\\sqrt{{{rad}}}'
+    if mag.denominator != 1:
+        top = f'\\sqrt{{{rad}}}' if mag.numerator == 1 else f'{mag.numerator}\\sqrt{{{rad}}}'
+        body = f'\\frac{{{top}}}{{{mag.denominator}}}'
+    return sign + body
+
+
 def solve_plane(public):
     prompt = public['prompt']
+    if 'Which shows that these are the same number?' in prompt or 'Which statement decides it correctly?' in prompt:
+        return solve_same_number(public)
     if prompt.startswith('The modulus'):
         require(public.get('figure') is None, 'Unexpected diagram')
         match = re.search(r'Find \$\|(.+)\|\$ in simplest exact form\.$', prompt)
@@ -491,16 +555,21 @@ def solve_plane(public):
         z = num(match[1])
         options = choices(public)
         found, keys = [], set()
+        valid = 0
         for o in options:
             m = re.fullmatch(r'(.+?)\(\\cos (.+?)\+i\\sin (.+?)\)', plain(o['label']))
-            require(m is not None and m[2] == m[3], f'Polar label {o["label"]}')
-            r, th = num(m[1]), angle(m[2])
-            require(r.float() > 0 and 0 <= th < 2, 'Polar label violates r>0 and 0<=theta<2pi')
-            keys.add((r.key(), th))
-            c, s = to_cartesian(r, th)
+            if m is None or m[2] != m[3]:
+                continue
+            radius, th = num(m[1]), angle(m[2])
+            # A negative length, or an i left in the length, cannot be the key.
+            if not radius.real() or radius.rational() <= 0 or not (0 <= th < 2):
+                continue
+            valid += 1
+            keys.add((radius.key(), th))
+            c, s = to_cartesian(radius, th)
             if c + s * I == z:
                 found.append(o['id'])
-        require(len(keys) == 4, 'Duplicate polar choices')
+        require(valid >= 1 and len(keys) == valid, 'Duplicate polar choices')
         require(len(found) == 1, 'Missing or ambiguous polar form')
         return found[0]
     match = re.fullmatch(r'Write \$(.+?)\(\\cos (.+?)\+i\\sin (.+?)\)\$ in the form \$a\+bi\$, using exact values\.', prompt)
@@ -1082,6 +1151,35 @@ def self_test():
     # A non-conjugate list pair mislabelled as conjugates must be refused.
     mislabelled = _case('polynomial-root-count', 'A polynomial with real coefficients has degree 8. Its roots include $2 + 2i$ and $2 - 2i$, which are not conjugates of each other. At most how many of its 8 roots, counting multiplicity, can be real?', ['8', '4', '3', '6'], 'b')
     reject(mislabelled, 'conjugates mislabelled')
+    # Same-number clause: both coordinates, not length and not a false arctan.
+    def text_case(prompt, labels, answer):
+        public = {
+            'templateId': 'complex-plane-forms', 'prompt': prompt,
+            'response': {'kind': 'choice', 'options': [
+                {'id': f'option-{c}', 'label': label} for c, label in zip('abcd', labels)
+            ]},
+        }
+        return {'public': public, 'answer': f'option-{answer}', 'hint': 'Think.',
+                'choiceFeedback': {f'option-{c}': 'Check.' for c in 'abcd' if c != answer}}
+
+    match_labels = [
+        r'$6\cos \frac{5\pi}{3}=3$ and $6\sin \frac{5\pi}{3}=-3\sqrt{3}$, so both name the point $(3, -3\sqrt{3})$.',
+        r'$\sqrt{(3)^2+(3\sqrt{3})^2}=6$, so both have length 6.',
+        r'$\frac{5\pi}{3}$ is in quadrant IV and so is $3 - 3\sqrt{3}i$.',
+        r'$\tan^{-1}\!\left(\frac{-3\sqrt{3}}{3}\right)=\frac{5\pi}{3}$.',
+    ]
+    review_problem(text_case(
+        r'The number $z$ is written two ways: $3 - 3\sqrt{3}i$ and $6(\cos \frac{5\pi}{3}+i\sin \frac{5\pi}{3})$. Which shows that these are the same number?',
+        match_labels, 'a'))
+    mismatch_labels = [
+        r'$6\sin \frac{\pi}{3}=3\sqrt{3}$, but the imaginary part of $3-3\sqrt{3}i$ is $-3\sqrt{3}$: same length, different point.',
+        r'Yes, both have length $6$.',
+        r'Yes, the reference angle is $\frac{\pi}{3}$ in both.',
+        r'No, because $r$ must be negative for a negative imaginary part.',
+    ]
+    review_problem(text_case(
+        r'Is $6(\cos \frac{\pi}{3}+i\sin \frac{\pi}{3})$ another name for $3 - 3\sqrt{3}i$? Which statement decides it correctly?',
+        mismatch_labels, 'a'))
     # An equal-speed motion statement is ambiguous and must be refused.
     tie = _case('parametric-linear-motion', 'A drone\'s position, in meters, is $x(t)=-3+4t$, $y(t)=3+4t$, with $x$ increasing to the right and $y$ increasing upward. Which statement describes its motion?', ['Moves right and up, faster horizontally than vertically', 'Moves right and up, faster vertically than horizontally', 'Moves left and up, faster horizontally than vertically', 'Moves right and down, faster horizontally than vertically'], 'a')
     reject(tie, 'tied speeds')

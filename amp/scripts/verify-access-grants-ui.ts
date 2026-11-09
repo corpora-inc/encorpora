@@ -9,7 +9,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { createServer } from "vite";
 import { retentionNotice } from "../src/family/contracts";
 
-const port = 4386,
+const port = Number(process.env.AMP_ACCESS_UI_PORT ?? 4386),
   origin = `http://127.0.0.1:${port}`;
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 const auth = `export async function accessSession(){const id=sessionStorage.getItem('fixture-account')||'amp|fixture';return id==='guest'?null:{token:id,accountId:id};}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){sessionStorage.setItem('fixture-account','guest');location.assign('/access');}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
@@ -35,6 +35,7 @@ type State = {
   consent: boolean;
   reserved: boolean;
   months: 1 | 12;
+  covers: "learner" | "family";
   failMe: boolean;
   failClaim: boolean;
   paidSetup: boolean;
@@ -50,6 +51,7 @@ function fresh(): State {
     consent: true,
     reserved: true,
     months: 12,
+    covers: "learner",
     failMe: false,
     failClaim: false,
     paidSetup: false,
@@ -99,7 +101,12 @@ function me(s: State) {
     },
     ...(s.reserved && s.verified
       ? {
-          availableAccessGrant: { id: giftId, months: s.months, claimBy: null },
+          availableAccessGrant: {
+            id: giftId,
+            months: s.months,
+            claimBy: null,
+            covers: s.covers,
+          },
         }
       : {}),
     ...(s.paidSetup
@@ -156,14 +163,19 @@ async function serve(page: Page, s: State) {
           json: { error: "gift_service_unavailable" },
         });
       const { learnerId } = req.postDataJSON();
-      const l = s.learners.find((l) => l.id === learnerId)!;
-      assert.ok(l);
-      l.active = true;
+      // A family gift is activated without a learner and covers them all.
+      if (s.covers === "family") assert.equal(learnerId, undefined);
+      const covered =
+        s.covers === "family"
+          ? s.learners
+          : [s.learners.find((l) => l.id === learnerId)!];
+      assert.ok(covered[0]);
+      for (const l of covered) l.active = true;
       s.reserved = false;
       return route.fulfill({
         json: {
           id: giftId,
-          learnerId,
+          learnerId: covered[0].id,
           startsAt: "2026-01-01T00:00:00Z",
           endsAt: "2027-01-01T00:00:00Z",
         },
@@ -247,6 +259,51 @@ try {
       await page.waitForURL("**/practice");
       assert.equal(s.creates, 1);
       assert.equal(s.learners[0].active, true);
+      await context.close();
+    }
+  }
+  // A family gift says so plainly and starts for every learner, no choice.
+  for (const [width, height] of [
+    [390, 844],
+    [1280, 800],
+  ]) {
+    for (const theme of ["light", "dark"] as const) {
+      const context = await browser.newContext({
+        viewport: { width, height },
+        colorScheme: theme,
+      });
+      const page = await context.newPage();
+      const s: State = {
+        ...fresh(),
+        covers: "family",
+        learners: [
+          { id: "first", name: "Alex", birthYear: 2012, active: false },
+          { id: "second", name: "Sam", birthYear: 2015, active: false },
+        ],
+      };
+      await serve(page, s);
+      await page.goto(`${origin}/access`);
+      await page
+        .getByRole("heading", { name: "A year of AMP for your whole family." })
+        .waitFor();
+      await page
+        .getByText("Every learner in your family", { exact: false })
+        .waitFor();
+      assert.equal(
+        await page.getByRole("link", { name: "Continue setup" }).count(),
+        0,
+      );
+      await fits(page);
+      await page.screenshot({
+        path: `${shots}/family-${width}-${theme}.png`,
+        fullPage: true,
+      });
+      await page
+        .getByRole("button", { name: "Start your family’s year" })
+        .click();
+      await page.waitForURL("**/practice");
+      assert.equal(s.claims, 1);
+      assert.ok(s.learners.every((l) => l.active));
       await context.close();
     }
   }
@@ -384,7 +441,7 @@ try {
     await safari.close();
   }
   console.log(
-    "Gift onboarding: 320/390/768/1280, light/dark, Chromium + WebKit; setup, existing learner, retries, reload, account switch, consent, verification and paid coexistence passed.",
+    "Gift onboarding: 320/390/768/1280, light/dark, Chromium + WebKit; setup, existing learner, family gift, retries, reload, account switch, consent, verification and paid coexistence passed.",
   );
 } finally {
   await browser.close();

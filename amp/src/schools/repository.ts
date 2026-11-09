@@ -33,6 +33,7 @@ import {
 } from "./contracts.js";
 import { recordEvent } from "./events.js";
 import { YEAR_IN_USE } from "./years.js";
+import { allocatePictureIdentity } from "../server/picture-identity.js";
 
 type Org = { id: string; path: string[]; timezone: string };
 const FROM_ORG = `SELECT id,path,timezone FROM amp_orgs WHERE id=$1`;
@@ -335,16 +336,36 @@ export class SchoolRepository {
     const org: Org = home
       ? { id: home.org_id, path: home.path, timezone: home.timezone }
       : named;
+    const agreement = (
+      await client.query(
+        `SELECT ended_at FROM amp_data_agreements WHERE org_id=ANY($1::uuid[])
+       ORDER BY array_position($1::uuid[],org_id) DESC,accepted_at DESC,id LIMIT 1`,
+        [org.path],
+      )
+    ).rows[0];
+    if (agreement?.ended_at || (input.givenName !== undefined && !agreement))
+      throw new SchoolError(409, "agreement_required");
+    const identity =
+      input.givenName === undefined
+        ? await allocatePictureIdentity(client, `school:${org.path[0]}`)
+        : null;
+    const givenName = input.givenName ?? identity!.name;
     const learnerId = randomUUID();
     await client.query(
-      "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,$3,$4)",
+      `INSERT INTO amp_learners(id,account_id,name,birth_year,name_pending,picture_identity,picture_number,identity_scope)
+       VALUES($1,$2,$3,$4,$5,$6,$7,$8)`,
       [
         learnerId,
         schoolAccountId(personId),
-        learnerName(input),
-        input.gradeLevel === undefined
-          ? null
-          : birthYearForGrade(input.gradeLevel, now),
+        learnerName({ ...input, givenName }),
+        input.birthYear ??
+          (input.gradeLevel === undefined
+            ? null
+            : birthYearForGrade(input.gradeLevel, now)),
+        identity !== null,
+        identity?.picture ?? null,
+        identity?.number ?? null,
+        identity?.scope ?? null,
       ],
     );
     await client.query(
@@ -353,7 +374,7 @@ export class SchoolRepository {
       [
         personId,
         org.path[0],
-        input.givenName,
+        givenName,
         input.familyName ?? null,
         input.displayName ?? null,
         generateHandle(),

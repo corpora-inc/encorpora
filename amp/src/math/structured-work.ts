@@ -10,10 +10,15 @@ import {
   lineText,
   nodeText,
   parseLine,
+  polyCoefficient,
   polyConstant,
+  polyDegree,
+  polyVariables,
   productFactors,
+  q,
   qEq,
   qInv,
+  qIsZero,
   qMul,
   qParse,
   qText,
@@ -512,7 +517,69 @@ export type WorkGrading =
       mode: "proof";
       goal: string;
       claims: Record<string, Record<string, string[][]>>;
+    }
+  /** Three expression rows that complete px + q = ____. Each row is a class:
+   * same x-count and a different constant, the same expression, or a different
+   * x-count. Any equivalent linear polynomial is accepted. */
+  | {
+      mode: "linear-classes";
+      p: number;
+      q: number;
+      classes: ["none", "infinite", "one"];
+    }
+  /** Three whole-number rows. `same-perimeter`: length, width, area, with
+   * length + width fixed and the given rectangle rejected. `same-area`:
+   * length, width, perimeter, with the product fixed. `l-cut`: two rectangle
+   * areas in either order, then their sum; either listed pair is accepted. */
+  | {
+      mode: "rectangle-work";
+      task: "same-perimeter" | "same-area" | "l-cut";
+      /** Half the perimeter, the shared area, or the L's area. */
+      target: number;
+      /** The given rectangle's sides, or the L's outer width and height. */
+      given: [number, number];
+      /** l-cut: unordered piece-area pairs that tile the figure. */
+      pairs?: [number, number][];
+      /** l-cut: the bounding box, named when it is entered as the total. */
+      box?: number;
     };
+
+export type LinearClass = "none" | "infinite" | "one";
+
+/** ax + b in x, or null when the text is not a linear polynomial in x. */
+export function linearInX(text: string): { a: Q; b: Q } | null {
+  const parsed = parseLine(text, { variables: ["x"] });
+  if (!parsed.ok || parsed.line.parts.length !== 1 || parsed.line.parts[0]!.op)
+    return null;
+  let value: RF;
+  try {
+    value = evaluate(parsed.line.parts[0]!.left);
+  } catch {
+    return null;
+  }
+  const den = polyConstant(value.den);
+  if (!den || qIsZero(den)) return null;
+  if (polyDegree(value.num) > 1) return null;
+  if ([...polyVariables(value.num)].some((v) => v !== "x")) return null;
+  const coef = (powers: Record<string, number>) =>
+    qMul(polyCoefficient(value.num, powers), qInv(den));
+  return { a: coef({ x: 1 }), b: coef({}) };
+}
+
+/** Class of px + q = (the entered right side): none, infinitely many, or one. */
+export function classifyLinearRight(
+  p: number,
+  constant: number,
+  text: string,
+): LinearClass | null {
+  const got = linearInX(text);
+  if (!got) return null;
+  const sameCount = qEq(got.a, q(p));
+  const sameConstant = qEq(got.b, q(constant));
+  if (sameCount && sameConstant) return "infinite";
+  if (sameCount) return "none";
+  return "one";
+}
 
 export interface WorkMarks {
   correct: boolean;
@@ -557,6 +624,9 @@ export function markStructuredWork(
   );
   if (grading.mode === "fields") return markFields(r, grading, rows);
   if (grading.mode === "proof") return markProof(r, grading, rows);
+  if (grading.mode === "linear-classes")
+    return markLinearClasses(r, grading, rows);
+  if (grading.mode === "rectangle-work") return markRectangle(grading, rows);
   return markDerivation(r, grading, rows, learner);
 }
 export function gradeStructuredWork(
@@ -593,6 +663,79 @@ function markFields(
         ],
   );
   return { correct: marks.every(Boolean), rows: marks, notes };
+}
+
+function markLinearClasses(
+  r: StructuredWorkResponse,
+  grading: Extract<WorkGrading, { mode: "linear-classes" }>,
+  rows: ValueRow[],
+): WorkMarks {
+  const marks = rows.map((row, i) => {
+    const text = row.values[0] ?? "";
+    return classifyLinearRight(grading.p, grading.q, text) === grading.classes[i];
+  });
+  const notes = marks.flatMap((ok, i) =>
+    ok
+      ? []
+      : [
+          `${noun(r)} ${i + 1}: compare the number of $x$ with the left side, then the plain number.`,
+        ],
+  );
+  return { correct: marks.every(Boolean), rows: marks, notes };
+}
+
+const whole = (text: string): number | null => {
+  const q = qParse(text);
+  if (!q || q.d !== 1n) return null;
+  const n = Number(q.n);
+  return Number.isSafeInteger(n) ? n : null;
+};
+const samePair = (a: number, b: number, c: number, d: number) =>
+  (a === c && b === d) || (a === d && b === c);
+function markRectangle(
+  grading: Extract<WorkGrading, { mode: "rectangle-work" }>,
+  rows: ValueRow[],
+): WorkMarks {
+  const [x, y, z] = rows.map((row) => whole(row.values[0] ?? ""));
+  const fail = (note: string, which: number[]): WorkMarks => ({
+    correct: false,
+    rows: rows.map((_, i) => !which.includes(i)),
+    notes: [note],
+  });
+  if (x == null || y == null || z == null)
+    return fail(
+      "Enter whole numbers.",
+      [x, y, z].flatMap((v, i) => (v == null ? [i] : [])),
+    );
+  if (grading.task === "same-perimeter") {
+    if (x + y !== grading.target)
+      return fail(`l + w must be ${grading.target}, half the trip`, [0, 1]);
+    if (samePair(x, y, grading.given[0], grading.given[1]))
+      return fail("that is the same rectangle turned", [0, 1]);
+    if (z !== x * y) return fail("area is rows × columns", [2]);
+    return { correct: true, rows: [true, true, true], notes: [] };
+  }
+  if (grading.task === "same-area") {
+    if (x * y !== grading.target)
+      return fail(`length × width must be ${grading.target}`, [0, 1]);
+    if (samePair(x, y, grading.given[0], grading.given[1]))
+      return fail("that is the same rectangle turned", [0, 1]);
+    if (z !== 2 * (x + y))
+      return fail("perimeter is twice the length plus the width", [2]);
+    return { correct: true, rows: [true, true, true], notes: [] };
+  }
+  const pairs = grading.pairs ?? [];
+  const matched = pairs.some((p) => samePair(x, y, p[0], p[1]));
+  if (grading.box != null && z === grading.box)
+    return fail(
+      "That total is the box around the figure: overall length × overall height.",
+      [2],
+    );
+  if (!matched)
+    return fail("Those pieces are not two rectangles of this figure.", [0, 1]);
+  if (z !== x + y)
+    return fail("The total must equal the sum of the two pieces.", [2]);
+  return { correct: true, rows: [true, true, true], notes: [] };
 }
 const lowerFirst = (s: string) =>
   /^[A-Z][a-z]/.test(s) ? s.charAt(0).toLowerCase() + s.slice(1) : s;
@@ -1384,6 +1527,41 @@ export const workGradingSchema: z.ZodType<WorkGrading> = z.union([
       ),
     })
     .strict(),
+  z
+    .object({
+      mode: z.literal("linear-classes"),
+      p: z.number().int().min(-9).max(9),
+      q: z.number().int().min(-12).max(12),
+      classes: z.tuple([
+        z.literal("none"),
+        z.literal("infinite"),
+        z.literal("one"),
+      ]),
+    })
+    .strict()
+    .refine((g) => g.p !== 0, "The left side needs an x"),
+  z
+    .object({
+      mode: z.literal("rectangle-work"),
+      task: z.enum(["same-perimeter", "same-area", "l-cut"]),
+      target: z.number().int().min(1).max(10000),
+      given: z.tuple([
+        z.number().int().min(0).max(1000),
+        z.number().int().min(0).max(1000),
+      ]),
+      pairs: z
+        .array(
+          z.tuple([
+            z.number().int().min(1).max(10000),
+            z.number().int().min(1).max(10000),
+          ]),
+        )
+        .min(1)
+        .max(4)
+        .optional(),
+      box: z.number().int().min(1).max(10000).optional(),
+    })
+    .strict(),
 ]);
 /** The grading rule fits the response: fixed fields cover every learner
  * field, a derivation's rows are [line, reason], a proof's goal and claims
@@ -1406,6 +1584,19 @@ export function gradingFits(
         }),
       )
     );
+  if (g.mode === "linear-classes")
+    return (
+      !r.open &&
+      r.layout === "steps" &&
+      r.rows.length === g.classes.length &&
+      r.rows.every(
+        (row) =>
+          row.fields.length === 1 &&
+          row.fields[0]!.kind === "expression" &&
+          row.fields[0]!.given === undefined &&
+          !row.fields[0]!.relations,
+      )
+    );
   if (g.mode === "derivation")
     return (
       r.layout === "steps" &&
@@ -1417,6 +1608,21 @@ export function gradingFits(
           row.fields[0]!.kind === "expression" &&
           row.fields[1]!.kind === "choice",
       )
+    );
+  if (g.mode === "rectangle-work")
+    return (
+      !r.open &&
+      r.layout === "steps" &&
+      r.mode === "build" &&
+      r.banks.length === 0 &&
+      r.rows.length === 3 &&
+      r.rows.every(
+        (row) =>
+          row.fields.length === 1 &&
+          row.fields[0]!.kind === "number" &&
+          row.fields[0]!.given === undefined,
+      ) &&
+      (g.task !== "l-cut" || ((g.pairs?.length ?? 0) >= 1 && g.box != null))
     );
   const statements = r.banks.find((b) => b.id === r.rows[0]!.fields[0]!.bank);
   const reasons = r.banks.find((b) => b.id === r.rows[0]!.fields[1]!.bank);
