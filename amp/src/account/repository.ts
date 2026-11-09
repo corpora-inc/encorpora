@@ -95,45 +95,48 @@ export async function accountSummary(
     };
   const [staffRows, trialRows, adultEnds, familyClass, familyApproval] =
     await Promise.all([
-    pool
-      .query<{
-        orgId: string;
-        orgName: string;
-        role: string;
-        setupPending: boolean;
-      }>(
-        `SELECT DISTINCT ON (o.id) o.id AS "orgId",o.name AS "orgName",r.role,
-         o.setup_pending AND r.role='admin' AS "setupPending"
+      pool
+        .query<{
+          orgId: string;
+          orgName: string;
+          role: string;
+          setupPending: boolean;
+          demo: boolean;
+        }>(
+          `SELECT DISTINCT ON (o.id) o.id AS "orgId",o.name AS "orgName",r.role,
+         o.setup_pending AND r.role='admin' AS "setupPending",o.demo
        FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
        JOIN amp_orgs o ON o.id=r.org_id AND (o.kind<>'family' OR o.created_by<>$1)
        WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")}
        ORDER BY o.id,array_position(ARRAY['admin','teacher','aide','viewer'],r.role)`,
-        [accountId],
-      )
-      .catch(missing("42P01")),
-    // A free assessment this account started and hasn't made a learner yet.
-    pool
-      .query(
-        `SELECT 1 FROM amp_trials WHERE owner_account_id=$1 AND adopted_at IS NULL AND expires_at>now() LIMIT 1`,
-        [accountId],
-      )
-      .catch(missing("42P01", "42703")),
-    // Without their own learner yet, whether this adult may start one. With
-    // one, its refreshed grant already says.
-    adult
-      ? null
-      : adultPracticeEnd(pool, accountId).catch((error: { code?: string }) => {
-          if (error.code === "42P01" || error.code === "42703") return null;
-          throw error;
-        }),
-    // The family's class, which `families.summary` above keeps current. It's
-    // this account's family side, so it isn't among the places above; a
-    // co-teacher from another account finds it there.
-    familyClassOf(pool, accountId),
-    // A link from another family's teacher this parent opened and hasn't
-    // approved yet: after consent, approving is the next step.
-    pendingApprovalOf(pool, accountId),
-  ]);
+          [accountId],
+        )
+        .catch(missing("42P01")),
+      // A free assessment this account started and hasn't made a learner yet.
+      pool
+        .query(
+          `SELECT 1 FROM amp_trials WHERE owner_account_id=$1 AND adopted_at IS NULL AND expires_at>now() LIMIT 1`,
+          [accountId],
+        )
+        .catch(missing("42P01", "42703")),
+      // Without their own learner yet, whether this adult may start one. With
+      // one, its refreshed grant already says.
+      adult
+        ? null
+        : adultPracticeEnd(pool, accountId).catch(
+            (error: { code?: string }) => {
+              if (error.code === "42P01" || error.code === "42703") return null;
+              throw error;
+            },
+          ),
+      // The family's class, which `families.summary` above keeps current. It's
+      // this account's family side, so it isn't among the places above; a
+      // co-teacher from another account finds it there.
+      familyClassOf(pool, accountId),
+      // A link from another family's teacher this parent opened and hasn't
+      // approved yet: after consent, approving is the next step.
+      pendingApprovalOf(pool, accountId),
+    ]);
   const adultPractice =
     adult || adultEnds
       ? {
@@ -147,10 +150,11 @@ export async function accountSummary(
             : null,
         }
       : null;
-  const staffOf = staffRows.rows.map(({ setupPending, ...place }) => ({
+  const staffOf = staffRows.rows.map(({ setupPending, demo, ...place }) => ({
     ...place,
     // Only an admin finishes setup, so only theirs says so.
     ...(setupPending ? { setupPending: true as const } : {}),
+    ...(demo ? { demo: true as const } : {}),
   }));
   const value = {
     signedIn: true as const,

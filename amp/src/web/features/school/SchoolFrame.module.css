@@ -133,6 +133,14 @@
   line-height: 1.2;
   white-space: nowrap;
 }
+/* A demo's way to the real thing, at the bar's far edge. */
+.barAction {
+  display: flex;
+  margin-inline-start: auto;
+}
+.headLine {
+  display: none;
+}
 .rail {
   display: none;
 }
@@ -237,6 +245,29 @@
     display: block;
     padding-top: var(--space-1);
   }
+  .headLine {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    min-height: 60px;
+  }
+  .headLine .breadcrumb {
+    padding-top: 0;
+  }
+  .headTitle {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-display);
+    font-size: 20px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .headAction {
+    display: flex;
+    flex: none;
+  }
   .content {
     max-width: var(--width-content-wide);
     padding-top: var(--space-6);
@@ -305,6 +336,12 @@
   display: flex;
   align-items: center;
   min-height: 44px;
+}
+.breadcrumb li.crumbMark::before {
+  content: none;
+}
+.crumbMark {
+  margin-inline-start: var(--space-2);
 }
 .breadcrumb li + li::before {
   content: "/";

@@ -30,6 +30,7 @@ The practice loop (one problem at a time, adaptive across strands) is the produc
 - **A child from another family** joins a family class only after their own parent approves through an emailed link. That parent owns the child's learner and gives verified consent, and either they or the teacher pays. The teacher sees the child's work in the class and nothing of the other family's account.
 - **A school** exists only once AMP issues it a license, after a contract and an invoice or PO. An operator runs `create-school`, which emails the admin a setup link, and the admin lands in guided setup. A school with "Just my class" collapses around that one class. Any admin can teach a class.
 - **A district** is the same screens rolled up, with policy it can set and lock.
+- **A demo class or school** ([demo places](schools.md#demo-places)) lets a teacher or school leader explore AMP fully alive before any agreement or payment: made-up students marked "Demo", twelve weeks of practice, and "Practice as" any of them. It is never billed, counted or mailed, goes after 30 idle days, and is never converted: the real class comes from the real onboarding.
 - **An adult on their own,** for example an 18-year-old preparing for the SAT, buys a license for themselves. Their home is their own progress record, and adding a child later makes them a family.
 
 ## Licenses and prices

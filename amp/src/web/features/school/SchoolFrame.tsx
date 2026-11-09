@@ -91,6 +91,8 @@ export function SchoolFrame({
   account,
   brand = "for Schools",
   navLabel = "School",
+  mark,
+  action,
   children,
 }: {
   /** What this place is called, in the phone's bar: the class, usually. */
@@ -111,6 +113,10 @@ export function SchoolFrame({
   brand?: string | null;
   /** What the navigation is called to a screen reader. */
   navLabel?: string;
+  /** A quiet label beside the place's name ("Demo"). */
+  mark?: ReactNode;
+  /** The bar's one action, at its edge. */
+  action?: ReactNode;
   children: ReactNode;
 }) {
   const [drawer, setDrawer] = useState(false);
@@ -119,6 +125,7 @@ export function SchoolFrame({
     lone && tabs ? [{ items: tabs }] : sections;
   const navActive = lone ? activeTab : activeNav;
   const showTabs = !lone && tabs && activeTab;
+  const showCrumbs = !lone && breadcrumb.length > 0;
   return (
     <div className={styles.frame} data-dense data-lone={lone || undefined}>
       <a
@@ -144,6 +151,8 @@ export function SchoolFrame({
           </div>
         </NavigationSheet>
         <span className={styles.barTitle}>{title}</span>
+        {mark}
+        {action && <span className={styles.barAction}>{action}</span>}
       </header>
       <aside className={styles.rail}>
         <div className={styles.railInner}>
@@ -158,29 +167,40 @@ export function SchoolFrame({
         </div>
       </aside>
       <div className={styles.column}>
-        {((!lone && breadcrumb.length > 0) || showTabs) && (
+        {(showCrumbs || showTabs || action) && (
           <div className={styles.head}>
-            {!lone && breadcrumb.length > 0 && (
-              <nav aria-label="Breadcrumb" className={styles.breadcrumb}>
-                <ol>
-                  {breadcrumb.map((crumb) => (
-                    <li key={crumb.label}>
-                      {crumb.path ? (
-                        <Link
-                          to="/$"
-                          params={{ _splat: crumb.path }}
-                          activeOptions={{ exact: true }}
-                          className={styles.crumb}
-                        >
-                          {crumb.label}
-                        </Link>
-                      ) : (
-                        <span aria-current="page">{crumb.label}</span>
-                      )}
-                    </li>
-                  ))}
-                </ol>
-              </nav>
+            {(showCrumbs || action) && (
+              <div className={styles.headLine}>
+                {showCrumbs ? (
+                  <nav aria-label="Breadcrumb" className={styles.breadcrumb}>
+                    <ol>
+                      {breadcrumb.map((crumb) => (
+                        <li key={crumb.label}>
+                          {crumb.path ? (
+                            <Link
+                              to="/$"
+                              params={{ _splat: crumb.path }}
+                              activeOptions={{ exact: true }}
+                              className={styles.crumb}
+                            >
+                              {crumb.label}
+                            </Link>
+                          ) : (
+                            <span aria-current="page">{crumb.label}</span>
+                          )}
+                        </li>
+                      ))}
+                      {mark && <li className={styles.crumbMark}>{mark}</li>}
+                    </ol>
+                  </nav>
+                ) : (
+                  <span className={styles.headTitle}>
+                    {title}
+                    {mark}
+                  </span>
+                )}
+                {action && <span className={styles.headAction}>{action}</span>}
+              </div>
             )}
             {showTabs && (
               <Tabs label={tabsLabel} items={tabs} active={activeTab} />

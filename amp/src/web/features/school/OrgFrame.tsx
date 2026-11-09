@@ -13,6 +13,7 @@ import { classesOptions, currentSession, orgOptions, orgsOptions } from "./api";
 import { classPath, orgPath } from "./paths";
 import { compareClassNames } from "./sort";
 import { PlaceSwitcher, placeEntries } from "../navigation/PlaceSwitcher";
+import { DemoMark, DemoSetupAction } from "./demo/DemoPlace";
 import {
   SchoolFrame,
   type SchoolCrumb,
@@ -301,6 +302,12 @@ export function OrgFrame({
     <SchoolFrame
       title={title}
       lone={lone}
+      {...(org.data.demo
+        ? {
+            mark: <DemoMark />,
+            action: <DemoSetupAction school={!org.data.solo} />,
+          }
+        : {})}
       {...(family ? { brand: null } : {})}
       orgSwitcher={
         // Just my class: the school's name is the class's, so only a way to

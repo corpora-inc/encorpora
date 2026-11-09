@@ -2,8 +2,8 @@ import type { PoolClient } from "pg";
 import { activeToday } from "../schools/principal.js";
 
 /* An adult's own practice (docs/families.md). Every teaching adult practices
-   free: a teacher at a school with a license in force, or a parent of a child
-   with access. `hasAccess` still reads only `amp_grants`: one grant per adult
+   free: a teacher at a school with a license in force (never a demo's), or a
+   parent of a child with access. `hasAccess` still reads only `amp_grants`: one grant per adult
    learner, refreshed when `/me` is read, carries the latest end among what
    qualifies. Practice itself writes nothing new. */
 
@@ -22,7 +22,7 @@ export async function adultPracticeEnd(
        SELECT LEAST(l.ends_at,COALESCE((r.end_on::timestamp AT TIME ZONE o.timezone),'infinity')) AS ends
        FROM amp_people p
        JOIN amp_org_roles r ON r.person_id=p.id AND r.role='teacher'
-       JOIN amp_orgs o ON o.id=r.org_id
+       JOIN amp_orgs o ON o.id=r.org_id AND NOT o.demo
        JOIN amp_school_licenses l ON l.org_id=ANY(o.path)
          AND l.status='active' AND l.starts_at<=now() AND l.ends_at>now()
        WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")}

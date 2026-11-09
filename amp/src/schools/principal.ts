@@ -98,8 +98,10 @@ export async function resolveStudentToken(
 }
 
 /** A school's consent: the student is active and the nearest data agreement up
- * the org path is accepted and not ended. Reads only, with no row locks: every
- * answer in a class passes through here. */
+ * the org path is accepted and not ended. A demo place's students are made up
+ * (docs/schools.md#demo-places), and nothing can add a real one, so a demo
+ * needs no agreement. Reads only, with no row locks: every answer in a class
+ * passes through here. */
 export async function schoolConsentActive(
   db: Database,
   accountId: string,
@@ -111,13 +113,14 @@ export async function schoolConsentActive(
        SELECT 1 FROM amp_people p
        JOIN amp_org_roles r ON r.person_id=p.id AND r.role='student'
        JOIN amp_orgs o ON o.id=r.org_id
-       JOIN LATERAL (
-         SELECT a.ended_at FROM amp_data_agreements a
+       LEFT JOIN LATERAL (
+         SELECT a.id,a.ended_at FROM amp_data_agreements a
          WHERE a.org_id=ANY(o.path)
          ORDER BY array_position(o.path,a.org_id) DESC,a.accepted_at DESC,a.id
          LIMIT 1
-       ) nearest ON nearest.ended_at IS NULL
+       ) nearest ON true
        WHERE p.id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")}
+         AND ((nearest.id IS NOT NULL AND nearest.ended_at IS NULL) OR o.demo)
      ) AS active`,
     [personId],
   );

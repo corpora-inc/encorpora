@@ -1,3 +1,4 @@
+import { demoLearnerSql } from "../schools/demo/sql.js";
 import type { Pool } from "pg";
 import { skills } from "../curriculum/catalog";
 import { templates } from "../math/engine";
@@ -110,7 +111,7 @@ export async function insightsReport(
       (a.outcome->>'correct')::boolean AS correct,
       (a.outcome->>'assisted')::boolean AS assisted
     FROM amp_instances i LEFT JOIN amp_attempts a ON a.problem_id=i.id
-    WHERE i.created_at>=$1 AND i.created_at<$2`;
+    WHERE i.created_at>=$1 AND i.created_at<$2 AND NOT ${demoLearnerSql("i.learner_id")}`;
   const perTemplate = await q<{
     template_id: string;
     served: number;
@@ -199,7 +200,7 @@ export async function insightsReport(
        percentile_cont(0.5) WITHIN GROUP (ORDER BY (e.state->>'attempts')::int)
          FILTER (WHERE e.state->>'status'='review-ready') AS median_attempts
      FROM amp_skill_evidence e JOIN amp_learners l ON l.id=e.learner_id
-     WHERE l.deleted_at IS NULL AND (e.state->>'lastPracticedAt')::timestamptz>=$1
+     WHERE l.deleted_at IS NULL AND NOT ${demoLearnerSql("l.id")} AND (e.state->>'lastPracticedAt')::timestamptz>=$1
        AND (e.state->>'lastPracticedAt')::timestamptz<$2
      GROUP BY 1`,
   );
@@ -239,7 +240,7 @@ export async function insightsReport(
      FROM amp_instances i
      JOIN unnest($3::text[], $4::text[]) AS m(skill_id, strand)
        ON m.skill_id=i.content->'public'->>'skillId'
-     WHERE i.created_at>=$1 AND i.created_at<$2 GROUP BY 1`,
+     WHERE i.created_at>=$1 AND i.created_at<$2 AND NOT ${demoLearnerSql("i.learner_id")} GROUP BY 1`,
     [...range, skills.map((s) => s.id), skills.map((s) => s.strand)],
   );
   const strands = [
