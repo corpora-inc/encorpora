@@ -300,151 +300,151 @@ standards.push(
 const outline = `
 count-to-20|K|number|Count objects with one count per object and state the total||K.CC.B.4,K.CC.B.5
 count-to-100|K|number|Continue the counting sequence by ones and tens|count-to-20|K.CC.A.1,K.CC.A.2
-write-numerals|K|number|Match numerals from zero through twenty to quantities|count-to-20|K.CC.A.3
+write-numerals|K|number|Match numerals from zero through twenty to quantities|count-to-20|K.CC.A.3,K.CC.B.5
 compare-small-groups|K|number|Compare two groups by pairing their objects|count-to-20|K.CC.C.6
 compare-numerals|K|number|Order two written numbers through ten|write-numerals|K.CC.C.7
 addition-within-10|K|operations|Represent joining and solve sums within ten|count-to-20|K.OA.A.1,K.OA.A.2
 subtraction-within-10|K|operations|Represent separating and solve differences within ten|addition-within-10|K.OA.A.1,K.OA.A.2
-number-bonds|K|operations|Decompose quantities through ten in multiple ways|addition-within-10|K.OA.A.3
+number-bonds|K|operations|Decompose quantities through ten in multiple ways|addition-within-10|K.OA.A.3,1.OA.D.8,K.OA.A.2
 make-ten|K|operations|Find the missing part that completes ten|number-bonds|K.OA.A.4
 facts-within-5|K|operations|Recall addition and subtraction facts through five|subtraction-within-10|K.OA.A.5
-teen-place-value|K|number|Compose teen numbers from a ten and extra ones|make-ten|K.NBT.A.1
+teen-place-value|K|number|Compose teen numbers from a ten and extra ones|make-ten|K.NBT.A.1,1.NBT.B.2
 compare-attributes|K|measurement|Compare objects by length weight or capacity||K.MD.A.1,K.MD.A.2
 sort-and-count|K|data|Sort objects by an attribute and count each category|count-to-20|K.MD.B.3
 name-shapes|K|geometry|Identify flat and solid shapes across orientations||K.G.A.1,K.G.A.2,K.G.A.3
-compose-shapes|K|geometry|Build and describe shapes using smaller shapes|name-shapes|K.G.B.4,K.G.B.5,K.G.B.6
+compose-shapes|K|geometry|Build and describe shapes using smaller shapes|name-shapes|K.G.B.5,K.G.B.6,K.G.A.2
 addition-within-20|1|operations|Add through twenty using decomposition and making ten|make-ten|1.OA.C.6
-subtraction-within-20|1|operations|Subtract through twenty using related addition facts|addition-within-20|1.OA.B.4,1.OA.C.6
-addition-stories|1|modeling|Choose an equation for joining comparing or part-whole stories|addition-within-20|1.OA.A.1
+subtraction-within-20|1|operations|Subtract through twenty using related addition facts|addition-within-20|1.OA.C.6
+addition-stories|1|modeling|Choose an equation for joining comparing or part-whole stories|addition-within-20|1.OA.A.1,3.OA.D.8
 three-addends|1|operations|Combine three quantities using useful grouping|addition-within-20|1.OA.A.2,1.OA.B.3
-equality|1|algebra|Decide whether both sides of an equation have equal value|addition-within-20|1.OA.D.7
-missing-addend|1|algebra|Find an unknown in an addition or subtraction equation|equality,subtraction-within-20|1.OA.D.8
-tens-and-ones|1|number|Read write and decompose two-digit quantities|teen-place-value|1.NBT.A.1,1.NBT.B.2
-compare-two-digit|1|number|Compare two-digit values using tens and ones|tens-and-ones|1.NBT.B.3
+equality|1|algebra|Decide whether both sides of an equation have equal value|addition-within-20|1.OA.D.7,1.OA.D.8,2.NBT.B.5
+missing-addend|1|algebra|Find an unknown in an addition or subtraction equation|equality,subtraction-within-20|1.OA.D.8,1.OA.A.1
+tens-and-ones|1|number|Read write and decompose two-digit quantities|teen-place-value|1.NBT.A.1,1.NBT.B.2,K.CC.A.2
+compare-two-digit|1|number|Compare two-digit values using tens and ones|tens-and-ones|1.NBT.B.3,2.MD.B.6
 add-two-digit|1|operations|Add a two-digit number using tens and ones|tens-and-ones,addition-within-20|1.NBT.C.4
 ten-more-less|1|operations|Find ten more or less without recounting|tens-and-ones|1.NBT.C.5,1.NBT.C.6
-measure-equal-units|1|measurement|Measure length with repeated equal units without gaps|compare-attributes|1.MD.A.1,1.MD.A.2
+measure-equal-units|1|measurement|Measure length with repeated equal units without gaps|compare-attributes|1.MD.A.1,1.MD.A.2,2.MD.A.2
 clock-half-hours|1|measurement|Read clocks to the hour and half hour|count-to-100|1.MD.B.3
-categorical-data|1|data|Compare category counts and answer questions about a display|sort-and-count|1.MD.C.4
+categorical-data|1|data|Compare category counts and answer questions about a display|sort-and-count|1.MD.C.4,6.RP.A.3,8.SP.A.4
 halves-and-quarters|1|fractions|Partition a whole into equal halves and quarters|compose-shapes|1.G.A.3
-shape-attributes|1|geometry|Classify shapes by defining attributes|name-shapes|1.G.A.1,1.G.A.2
-hundreds-place-value|2|number|Compose and read hundreds tens and ones|tens-and-ones|2.NBT.A.1,2.NBT.A.3
+shape-attributes|1|geometry|Classify shapes by defining attributes|name-shapes|1.G.A.1,1.G.A.2,K.G.B.4
+hundreds-place-value|2|number|Compose and read hundreds tens and ones|tens-and-ones|2.NBT.A.1,2.NBT.A.3,1.NBT.B.2,2.MD.B.6
 skip-counting|2|number|Count by fives tens and hundreds|count-to-100|2.NBT.A.2
 compare-three-digit|2|number|Compare three-digit numbers using place value|hundreds-place-value|2.NBT.A.4
-addition-within-100|2|operations|Add within one hundred with regrouping|add-two-digit|2.NBT.B.5
+addition-within-100|2|operations|Add within one hundred with regrouping|add-two-digit|2.NBT.B.5,1.OA.D.8
 subtraction-within-100|2|operations|Subtract within one hundred with regrouping|addition-within-100,subtraction-within-20|2.NBT.B.5
 regroup-hundreds|2|operations|Add and subtract through one thousand using place value|hundreds-place-value,subtraction-within-100|2.NBT.B.7,2.NBT.B.9
 multiple-addends|2|operations|Combine several two-digit addends|addition-within-100|2.NBT.B.6
-two-step-stories|2|modeling|Represent and solve two-step addition and subtraction stories|addition-stories,subtraction-within-100|2.OA.A.1
-addition-facts|2|operations|Recall addition and subtraction facts within twenty|subtraction-within-20|2.OA.B.2
+two-step-stories|2|modeling|Represent and solve two-step addition and subtraction stories|addition-stories,subtraction-within-100|2.OA.A.1,3.MD.A.1,3.OA.D.8
+addition-facts|2|operations|Recall addition and subtraction facts within twenty|subtraction-within-20|2.OA.B.2,1.OA.B.4,1.OA.C.6
 odd-and-even|2|number|Determine parity by pairing or grouping|count-to-20|2.OA.C.3
 arrays|2|operations|Count rectangular arrays using equal rows|skip-counting|2.OA.C.4,2.G.A.2
-ruler-measurement|2|measurement|Measure and estimate lengths with appropriate units and tools|measure-equal-units|2.MD.A.1,2.MD.A.2,2.MD.A.3,2.MD.A.4
-number-line-arithmetic|2|number|Represent sums and differences as number-line moves|subtraction-within-100|2.MD.B.5,2.MD.B.6
-clock-five-minutes|2|measurement|Read analog and digital clocks in five-minute intervals|clock-half-hours,skip-counting|2.MD.C.7
-money-values|2|measurement|Calculate amounts with common coins and bills|addition-within-100|2.MD.C.8
-line-plots|2|data|Display measured lengths on a line plot|ruler-measurement|2.MD.D.9
+ruler-measurement|2|measurement|Measure and estimate lengths with appropriate units and tools|measure-equal-units|2.MD.A.1,2.MD.A.3,2.MD.A.4,3.MD.B.4,3.OA.A.3
+number-line-arithmetic|2|number|Represent sums and differences as number-line moves|subtraction-within-100|2.MD.B.6,2.NBT.B.5,2.OA.A.1
+clock-five-minutes|2|measurement|Read analog and digital clocks in five-minute intervals|clock-half-hours,skip-counting|2.MD.C.7,3.MD.A.1
+money-values|2|measurement|Calculate amounts with common coins and bills|addition-within-100|2.MD.C.8,2.OA.A.1,3.OA.D.8,4.MD.A.2,5.NBT.B.7
+line-plots|2|data|Display measured lengths on a line plot|ruler-measurement|2.MD.D.9,2.MD.B.5
 picture-bar-graphs|2|data|Build and interpret picture and bar graphs|categorical-data|2.MD.D.10
-thirds-and-partitions|2|fractions|Recognize equal halves thirds and quarters in varied wholes|halves-and-quarters|2.G.A.3
-polygon-properties|2|geometry|Identify polygons and solids by sides angles and faces|shape-attributes|2.G.A.1
-multiplication-meaning|3|operations|Represent equal groups with multiplication|arrays|3.OA.A.1
-multiplication-facts|3|operations|Recall products of one-digit factors|multiplication-meaning|3.OA.C.7
-division-meaning|3|operations|Interpret division as equal sharing and grouping|multiplication-meaning|3.OA.A.2
-division-facts|3|operations|Use related multiplication facts to find quotients|division-meaning,multiplication-facts|3.OA.B.6,3.OA.C.7
-missing-factor|3|algebra|Find missing factors and quotients|division-facts|3.OA.A.4
-multiplication-division-equality|3|algebra|Decide whether multiplication and division equations have equal values on both sides|equality,multiplication-facts,division-facts|
-whole-number-equality|4|algebra|Decide whether whole-number equations with the four operations have equal values on both sides|multiplication-division-equality,add-subtract-thousands|
-operation-properties|3|operations|Use associative commutative and distributive structure|multiplication-meaning|3.OA.B.5
-multiplicative-stories|3|modeling|Select multiplication or division to model a story|division-meaning|3.OA.A.3
-multi-operation-stories|3|modeling|Solve two-step stories and assess reasonableness|multiplicative-stories,two-step-stories|3.OA.D.8
-arithmetic-patterns|3|algebra|Explain patterns in arithmetic tables|multiplication-facts|3.OA.D.9
-round-whole-numbers|3|number|Round whole numbers to nearby tens and hundreds|hundreds-place-value|3.NBT.A.1
-add-subtract-thousands|3|operations|Add and subtract through one thousand efficiently|regroup-hundreds|3.NBT.A.2
+thirds-and-partitions|2|fractions|Recognize equal halves thirds and quarters in varied wholes|halves-and-quarters|2.G.A.3,1.G.A.3
+polygon-properties|2|geometry|Identify polygons and solids by sides angles and faces|shape-attributes|2.G.A.1,K.G.A.2,K.G.B.4
+multiplication-meaning|3|operations|Represent equal groups with multiplication|arrays|3.OA.A.1,3.OA.A.3
+multiplication-facts|3|operations|Recall products of one-digit factors|multiplication-meaning|3.OA.C.7,3.OA.A.1,3.OA.A.3
+division-meaning|3|operations|Interpret division as equal sharing and grouping|multiplication-meaning|3.OA.A.2,3.OA.A.3
+division-facts|3|operations|Use related multiplication facts to find quotients|division-meaning,multiplication-facts|3.OA.B.6,3.OA.C.7,3.OA.A.2,3.OA.A.3
+missing-factor|3|algebra|Find missing factors and quotients|division-facts|3.OA.A.4,3.OA.A.2,3.OA.A.3,3.OA.B.6,3.OA.C.7
+multiplication-division-equality|3|algebra|Decide whether multiplication and division equations have equal values on both sides|equality,multiplication-facts,division-facts|3.NBT.A.3,3.OA.C.7,4.NBT.B.5,4.NBT.B.6
+whole-number-equality|4|algebra|Decide whether whole-number equations with the four operations have equal values on both sides|multiplication-division-equality,add-subtract-thousands|3.NBT.A.2,3.OA.C.7,4.NBT.B.5,4.NBT.B.6
+operation-properties|3|operations|Use associative commutative and distributive structure|multiplication-meaning|3.OA.B.5,3.OA.A.3,3.OA.D.8
+multiplicative-stories|3|modeling|Select multiplication or division to model a story|division-meaning|3.OA.A.3,3.MD.A.2,3.OA.A.1,3.OA.A.2,3.OA.D.8
+multi-operation-stories|3|modeling|Solve two-step stories and assess reasonableness|multiplicative-stories,two-step-stories|3.OA.D.8,1.OA.A.1,3.OA.A.3,3.OA.B.6,4.MD.A.2,4.OA.A.3
+arithmetic-patterns|3|algebra|Explain patterns in arithmetic tables|multiplication-facts|3.OA.D.9,2.OA.A.1,3.OA.A.3,4.OA.C.5
+round-whole-numbers|3|number|Round whole numbers to nearby tens and hundreds|hundreds-place-value|3.NBT.A.1,4.NBT.A.3
+add-subtract-thousands|3|operations|Add and subtract through one thousand efficiently|regroup-hundreds|3.NBT.A.2,3.OA.D.8
 multiply-tens|3|operations|Multiply a one-digit factor by a multiple of ten|multiplication-facts,tens-and-ones|3.NBT.A.3
-unit-fractions|3|fractions|Interpret a unit fraction as one equal part of a whole|thirds-and-partitions|3.NF.A.1
+unit-fractions|3|fractions|Interpret a unit fraction as one equal part of a whole|thirds-and-partitions|3.NF.A.1,2.G.A.3,3.G.A.2
 fraction-model|3|fractions|Identify the fraction represented by equal shaded parts|unit-fractions|3.NF.A.1
-fractions-number-line|3|fractions|Locate fractions on a number line|unit-fractions,number-line-arithmetic|3.NF.A.2
+fractions-number-line|3|fractions|Locate fractions on a number line|unit-fractions,number-line-arithmetic|3.NF.A.2,3.NF.A.3
 equivalent-fractions|3|fractions|Recognize and justify equivalent fractions|fractions-number-line|3.NF.A.3
 compare-fractions|3|fractions|Compare fractions with a common numerator or denominator|equivalent-fractions|3.NF.A.3
-elapsed-time|3|measurement|Solve elapsed-time problems to the nearest minute|clock-five-minutes|3.MD.A.1
+elapsed-time|3|measurement|Solve elapsed-time problems to the nearest minute|clock-five-minutes|3.MD.A.1,4.MD.A.2
 mass-volume|3|measurement|Solve measurement problems involving mass and liquid volume|multiplicative-stories|3.MD.A.2
 scaled-graphs|3|data|Read scaled picture and bar graphs|picture-bar-graphs,multiplication-facts|3.MD.B.3
-fraction-line-plots|3|data|Display and interpret fractional length measurements|line-plots,unit-fractions|3.MD.B.4
-rectangle-area|3|geometry|Find rectangular area by counting unit squares or multiplying sides|arrays,multiplication-facts|3.MD.C.5,3.MD.C.6,3.MD.C.7
+fraction-line-plots|3|data|Display and interpret fractional length measurements|line-plots,unit-fractions|
+rectangle-area|3|geometry|Find rectangular area by counting unit squares or multiplying sides|arrays,multiplication-facts|3.MD.C.5,3.MD.C.6,3.MD.C.7,3.OA.B.5
 perimeter|3|geometry|Find perimeter and missing side lengths|addition-within-100|3.MD.D.8
 quadrilateral-categories|3|geometry|Classify quadrilaterals by shared attributes|polygon-properties|3.G.A.1
-partition-area|3|fractions|Relate equal-area partitions to fractions of a whole|rectangle-area,unit-fractions|3.G.A.2
-multiplicative-comparison|4|modeling|Distinguish additive and multiplicative comparisons|multiplicative-stories|4.OA.A.1,4.OA.A.2
-multistep-whole-stories|4|modeling|Solve multistep stories with remainders and estimates|multi-operation-stories,round-whole-numbers|4.OA.A.3
+partition-area|3|fractions|Relate equal-area partitions to fractions of a whole|rectangle-area,unit-fractions|3.G.A.2,3.NF.A.1,3.OA.A.3
+multiplicative-comparison|4|modeling|Distinguish additive and multiplicative comparisons|multiplicative-stories|4.OA.A.1,4.OA.A.2,2.OA.A.1,4.NBT.B.6
+multistep-whole-stories|4|modeling|Solve multistep stories with remainders and estimates|multi-operation-stories,round-whole-numbers|4.OA.A.3,3.NBT.A.1,3.OA.D.8,4.MD.A.1,4.MD.A.2,4.NBT.B.6,5.MD.A.1,5.NBT.B.7
 factors-multiples|4|number|Identify factor pairs multiples primes and composites|division-facts|4.OA.B.4
-rule-patterns|4|algebra|Generate and describe number or shape patterns from a rule|arithmetic-patterns|4.OA.C.5
-large-place-value|4|number|Read compare and round multidigit whole numbers|round-whole-numbers|4.NBT.A.1,4.NBT.A.2,4.NBT.A.3
+rule-patterns|4|algebra|Generate and describe number or shape patterns from a rule|arithmetic-patterns|4.OA.C.5,3.OA.D.9,6.EE.A.2
+large-place-value|4|number|Read compare and round multidigit whole numbers|round-whole-numbers|4.NBT.A.1,4.NBT.A.2,4.NBT.A.3,5.NBT.A.1
 whole-add-subtract|4|operations|Use place-value algorithms to add and subtract multidigit numbers|add-subtract-thousands|4.NBT.B.4
-whole-multiplication|4|operations|Multiply multidigit values using partial products|multiply-tens,operation-properties|4.NBT.B.5
-whole-division|4|operations|Divide multidigit values by a one-digit divisor|division-facts,large-place-value|4.NBT.B.6
-fraction-equivalence|4|fractions|Generate equivalent fractions by scaling numerator and denominator|equivalent-fractions,multiplication-facts|4.NF.A.1
-fraction-comparison|4|fractions|Compare fractions using benchmarks or common units|fraction-equivalence|4.NF.A.2
-like-fraction-addition|4|fractions|Add and subtract fractions with a shared denominator|unit-fractions,addition-within-20|4.NF.B.3
-mixed-numbers|4|fractions|Compose decompose and operate on mixed numbers with like denominators|like-fraction-addition|4.NF.B.3
-fraction-times-whole|4|fractions|Multiply a fraction by a whole number|multiplication-meaning,unit-fractions|4.NF.B.4
-decimal-fractions|4|decimals|Connect tenths hundredths fractions and decimal notation|fraction-equivalence|4.NF.C.5,4.NF.C.6
+whole-multiplication|4|operations|Multiply multidigit values using partial products|multiply-tens,operation-properties|4.NBT.B.5,3.NBT.A.3,3.OA.A.3,3.OA.C.7
+whole-division|4|operations|Divide multidigit values by a one-digit divisor|division-facts,large-place-value|4.NBT.B.6,4.MD.A.3,5.NF.B.3
+fraction-equivalence|4|fractions|Generate equivalent fractions by scaling numerator and denominator|equivalent-fractions,multiplication-facts|4.NF.A.1,3.NF.A.3
+fraction-comparison|4|fractions|Compare fractions using benchmarks or common units|fraction-equivalence|4.NF.A.2,3.NF.A.3
+like-fraction-addition|4|fractions|Add and subtract fractions with a shared denominator|unit-fractions,addition-within-20|4.NF.B.3,4.MD.A.2,5.NF.A.2
+mixed-numbers|4|fractions|Compose decompose and operate on mixed numbers with like denominators|like-fraction-addition|4.NF.B.3,4.MD.A.2
+fraction-times-whole|4|fractions|Multiply a fraction by a whole number|multiplication-meaning,unit-fractions|4.NF.B.4,5.NF.B.4
+decimal-fractions|4|decimals|Connect tenths hundredths fractions and decimal notation|fraction-equivalence|4.NF.C.5,4.NF.C.6,5.NBT.B.7
 compare-decimals|4|decimals|Compare decimals through hundredths|decimal-fractions|4.NF.C.7
-decimal-money-operations|4|decimals|Add subtract multiply and divide decimal money and make change|decimal-fractions,whole-add-subtract|4.MD.A.2
-unit-conversion|4|measurement|Convert larger measurement units to smaller units|whole-multiplication|4.MD.A.1,4.MD.A.2
-area-perimeter-models|4|geometry|Use rectangle area and perimeter formulas in context|rectangle-area,perimeter|4.MD.A.3
+decimal-money-operations|4|decimals|Add subtract multiply and divide decimal money and make change|decimal-fractions,whole-add-subtract|4.MD.A.2,2.MD.C.8,4.NF.C.6,5.NBT.B.7
+unit-conversion|4|measurement|Convert larger measurement units to smaller units|whole-multiplication|4.MD.A.1,4.MD.A.2,2.MD.A.3,3.MD.A.1,3.MD.A.2,5.MD.A.1,5.NF.B.6
+area-perimeter-models|4|geometry|Use rectangle area and perimeter formulas in context|rectangle-area,perimeter|4.MD.A.3,3.MD.C.7,3.MD.D.8,5.NBT.B.7
 angle-measure|4|geometry|Measure angles and find sums of adjacent angles|polygon-properties|4.MD.C.5,4.MD.C.6,4.MD.C.7
-lines-symmetry|4|geometry|Identify parallel perpendicular and symmetric features|shape-attributes|4.G.A.1,4.G.A.2,4.G.A.3
-powers-of-ten|5|number|Explain place-value shifts when multiplying by powers of ten|large-place-value,decimal-fractions|5.NBT.A.1,5.NBT.A.2
-decimal-place-value|5|decimals|Read compare and round decimals through thousandths|compare-decimals,round-whole-numbers|5.NBT.A.3,5.NBT.A.4
+lines-symmetry|4|geometry|Identify parallel perpendicular and symmetric features|shape-attributes|4.G.A.1,4.G.A.2,4.G.A.3,5.G.B.4
+powers-of-ten|5|number|Explain place-value shifts when multiplying by powers of ten|large-place-value,decimal-fractions|5.NBT.A.1,5.NBT.A.2,5.NBT.B.7
+decimal-place-value|5|decimals|Read compare and round decimals through thousandths|compare-decimals,round-whole-numbers|5.NBT.A.3,5.NBT.A.4,4.NBT.A.2
 multidigit-products|5|operations|Multiply multidigit whole numbers using a standard algorithm|whole-multiplication|5.NBT.B.5
-multidigit-quotients|5|operations|Divide whole numbers with two-digit divisors|whole-division,multidigit-products|5.NBT.B.6
-decimal-arithmetic|5|decimals|Add subtract multiply and divide decimals through hundredths|decimal-place-value,multidigit-quotients|5.NBT.B.7
-fraction-addition|5|fractions|Add and subtract unlike-denominator fractions|fraction-equivalence,like-fraction-addition|5.NF.A.1,5.NF.A.2
+multidigit-quotients|5|operations|Divide whole numbers with two-digit divisors|whole-division,multidigit-products|5.NBT.B.6,6.NS.B.2
+decimal-arithmetic|5|decimals|Add subtract multiply and divide decimals through hundredths|decimal-place-value,multidigit-quotients|5.NBT.B.7,3.OA.D.8,4.MD.A.2,4.MD.A.3
+fraction-addition|5|fractions|Add and subtract unlike-denominator fractions|fraction-equivalence,like-fraction-addition|5.NF.A.1,5.NF.A.2,4.MD.A.2,5.NBT.B.7
 fraction-as-division|5|fractions|Interpret a fraction as the quotient of two whole numbers|division-meaning,unit-fractions|5.NF.B.3
 fraction-multiplication|5|fractions|Multiply fractions and interpret scaling|fraction-times-whole,fraction-equivalence|5.NF.B.4,5.NF.B.5,5.NF.B.6
 unit-fraction-division|5|fractions|Divide unit fractions by whole numbers and whole numbers by unit fractions|fraction-as-division|5.NF.B.7
-numerical-expressions|5|algebra|Interpret and evaluate grouped numerical expressions|operation-properties|5.OA.A.1,5.OA.A.2
+numerical-expressions|5|algebra|Interpret and evaluate grouped numerical expressions|operation-properties|5.OA.A.1,5.OA.A.2,5.NBT.B.7
 coordinate-first-quadrant|5|geometry|Plot ordered pairs and interpret first-quadrant graphs|number-line-arithmetic|5.G.A.1,5.G.A.2
-related-patterns|5|algebra|Compare two numerical patterns using tables and coordinate pairs|rule-patterns,coordinate-first-quadrant|5.OA.B.3
+related-patterns|5|algebra|Compare two numerical patterns using tables and coordinate pairs|rule-patterns,coordinate-first-quadrant|5.OA.B.3,6.EE.A.2
 volume-cubes|5|geometry|Interpret volume as a count of unit cubes|rectangle-area|5.MD.C.3,5.MD.C.4
-prism-volume|5|geometry|Calculate volume of rectangular prisms and composite solids|volume-cubes,multidigit-products|5.MD.C.5
-shape-hierarchy|5|geometry|Organize shapes into categories and subcategories|quadrilateral-categories|5.G.B.3,5.G.B.4
-ratios|6|ratio|Represent a ratio and explain the quantities being compared|fraction-as-division|6.RP.A.1
-unit-rates|6|ratio|Compute and interpret a unit rate|ratios|6.RP.A.2
+prism-volume|5|geometry|Calculate volume of rectangular prisms and composite solids|volume-cubes,multidigit-products|5.MD.C.5,5.MD.C.4
+shape-hierarchy|5|geometry|Organize shapes into categories and subcategories|quadrilateral-categories|5.G.B.3,5.G.B.4,2.G.A.1
+ratios|6|ratio|Represent a ratio and explain the quantities being compared|fraction-as-division|6.RP.A.1,6.RP.A.2,6.RP.A.3
+unit-rates|6|ratio|Compute and interpret a unit rate|ratios|6.RP.A.2,6.RP.A.3
 ratio-tables|6|ratio|Solve equivalent-ratio problems using tables and double number lines|unit-rates|6.RP.A.3
-percentages|6|ratio|Find a percentage of a quantity and recover a missing part or whole|ratio-tables|6.RP.A.3
-fraction-division|6|fractions|Divide fractions and interpret quotients in context|fraction-multiplication,unit-fraction-division|6.NS.A.1
-integer-division|6|operations|Divide multidigit whole numbers efficiently|multidigit-quotients|6.NS.B.2
-decimal-algorithms|6|decimals|Compute accurately with multidigit decimal operations|decimal-arithmetic|6.NS.B.3
+percentages|6|ratio|Find a percentage of a quantity and recover a missing part or whole|ratio-tables|6.RP.A.3,4.NF.C.6,4.OA.A.3,5.NF.B.6,7.EE.B.3,7.NS.A.2,7.RP.A.3
+fraction-division|6|fractions|Divide fractions and interpret quotients in context|fraction-multiplication,unit-fraction-division|6.NS.A.1,5.NF.B.7
+integer-division|6|operations|Divide multidigit whole numbers efficiently|multidigit-quotients|6.NS.B.2,4.OA.A.3,5.NBT.B.6
+decimal-algorithms|6|decimals|Compute accurately with multidigit decimal operations|decimal-arithmetic|6.NS.B.3,4.MD.A.2,4.OA.A.3,5.NBT.B.5,7.EE.B.3,7.NS.A.2,7.NS.A.3
 gcf-lcm|6|number|Find greatest common factors and least common multiples|factors-multiples|6.NS.B.4
-signed-numbers|6|number|Use signed numbers to represent opposite quantities|number-line-arithmetic|6.NS.C.5,6.NS.C.6
-absolute-value|6|number|Order signed values and interpret absolute value|signed-numbers|6.NS.C.7
-coordinate-four-quadrants|6|geometry|Plot signed coordinate pairs and find aligned distances|signed-numbers,coordinate-first-quadrant|6.NS.C.6,6.NS.C.8
-integer-powers|6|algebra|Evaluate whole-number powers|powers-of-ten|6.EE.A.1
-variable-expressions|6|algebra|Translate and evaluate expressions with variables|numerical-expressions,integer-powers|6.EE.A.2
-expression-properties|6|algebra|Generate equivalent expressions using algebraic properties|variable-expressions|6.EE.A.3,6.EE.A.4
-one-step-equations|6|algebra|Solve one-operation equations and check the solution|missing-addend,variable-expressions|6.EE.B.5,6.EE.B.6,6.EE.B.7
-simple-inequalities|6|algebra|Represent inequality solutions on a number line|signed-numbers,one-step-equations|6.EE.B.8
-dependent-variables|6|algebra|Connect two related quantities in equations tables and graphs|coordinate-first-quadrant,variable-expressions|6.EE.C.9
-triangle-area|6|geometry|Find triangle and polygon areas by decomposition|rectangle-area,fraction-multiplication|6.G.A.1
+signed-numbers|6|number|Use signed numbers to represent opposite quantities|number-line-arithmetic|6.NS.C.5,6.NS.C.6,6.NS.B.3
+absolute-value|6|number|Order signed values and interpret absolute value|signed-numbers|6.NS.C.7,6.EE.B.5
+coordinate-four-quadrants|6|geometry|Plot signed coordinate pairs and find aligned distances|signed-numbers,coordinate-first-quadrant|6.NS.C.6
+integer-powers|6|algebra|Evaluate whole-number powers|powers-of-ten|6.EE.A.1,7.NS.A.3
+variable-expressions|6|algebra|Translate and evaluate expressions with variables|numerical-expressions,integer-powers|6.EE.A.2,6.EE.B.6,7.EE.B.4
+expression-properties|6|algebra|Generate equivalent expressions using algebraic properties|variable-expressions|6.EE.A.3,6.EE.A.4,7.EE.A.1
+one-step-equations|6|algebra|Solve one-operation equations and check the solution|missing-addend,variable-expressions|6.EE.B.6,6.EE.B.7
+simple-inequalities|6|algebra|Represent inequality solutions on a number line|signed-numbers,one-step-equations|6.EE.B.8,6.EE.B.5,7.EE.B.4
+dependent-variables|6|algebra|Connect two related quantities in equations tables and graphs|coordinate-first-quadrant,variable-expressions|6.EE.C.9,6.EE.A.2,6.EE.B.7,7.RP.A.2
+triangle-area|6|geometry|Find triangle and polygon areas by decomposition|rectangle-area,fraction-multiplication|6.G.A.1,4.MD.A.3,6.EE.B.7,6.G.A.2
 fractional-prism-volume|6|geometry|Calculate prism volume with fractional side lengths|prism-volume,fraction-multiplication|6.G.A.2
-coordinate-polygons|6|geometry|Find polygon side lengths from coordinates|coordinate-four-quadrants|6.G.A.3
-surface-area|6|geometry|Use nets to calculate surface area of prisms and pyramids|triangle-area,prism-volume|6.G.A.4
+coordinate-polygons|6|geometry|Find polygon side lengths from coordinates|coordinate-four-quadrants|6.G.A.3,6.NS.C.8
+surface-area|6|geometry|Use nets to calculate surface area of prisms and pyramids|triangle-area,prism-volume|6.G.A.4,7.G.B.6
 statistical-questions|6|data|Identify statistical questions and sources of variation|categorical-data|6.SP.A.1,6.SP.A.2
 statistics-mean|6|data|Calculate the arithmetic mean of a finite dataset|decimal-arithmetic|6.SP.B.5
 mean-median|6|data|Calculate and interpret mean median and range|decimal-arithmetic|6.SP.A.3,6.SP.B.5
-distribution-plots|6|data|Interpret dot plots histograms and box plots|line-plots,mean-median|6.SP.B.4
+distribution-plots|6|data|Interpret dot plots histograms and box plots|line-plots,mean-median|6.SP.B.4,6.SP.B.5
 variability|6|data|Describe spread shape outliers and appropriate summaries|distribution-plots,absolute-value|6.SP.B.5
 rational-unit-rates|7|ratio|Calculate unit rates involving fractional quantities|unit-rates,fraction-division|7.RP.A.1
-proportional-relationships|7|ratio|Identify and represent proportional relationships|ratio-tables,dependent-variables|7.RP.A.2
-percent-change|7|ratio|Solve percent increase decrease markup and interest problems|percentages,fraction-division,decimal-arithmetic|7.RP.A.3
-financial-literacy-elementary|5|modeling|Work out profit, cost and break-even from fixed and variable costs and tell the kinds of taxes apart|decimal-arithmetic|5.NBT.B.7
-financial-literacy-middle|7|modeling|Compute bracket income tax, payroll and property tax, budget percents, net worth and the lowest final cost among discounts|percent-change,financial-literacy-elementary,signed-addition|7.RP.A.3,7.NS.A.3
-signed-addition|7|number|Add and subtract signed rational numbers|signed-numbers,fraction-addition|7.NS.A.1
-signed-multiplication|7|number|Multiply and divide signed rational numbers|signed-addition,fraction-division|7.NS.A.2
-rational-stories|7|modeling|Solve contextual problems using signed rational arithmetic|signed-multiplication|7.NS.A.3,7.EE.B.3
-complex-fractions|7|fractions|Simplify complex fractions by dividing a simplified numerator by a simplified denominator|fraction-division,signed-multiplication|7.NS.A.3
-linear-expressions|7|algebra|Expand and factor linear expressions with rational coefficients|expression-properties,signed-multiplication|7.EE.A.1,7.EE.A.2
+proportional-relationships|7|ratio|Identify and represent proportional relationships|ratio-tables,dependent-variables|7.RP.A.2,6.RP.A.3,7.RP.A.1
+percent-change|7|ratio|Solve percent increase decrease markup and interest problems|percentages,fraction-division,decimal-arithmetic|7.RP.A.3,6.RP.A.3
+financial-literacy-elementary|5|modeling|Work out profit, cost and break-even from fixed and variable costs and tell the kinds of taxes apart|decimal-arithmetic|4.MD.A.2,4.OA.A.3
+financial-literacy-middle|7|modeling|Compute bracket income tax, payroll and property tax, budget percents, net worth and the lowest final cost among discounts|percent-change,financial-literacy-elementary,signed-addition|7.RP.A.3,7.NS.A.3,6.RP.A.3,7.NS.A.1
+signed-addition|7|number|Add and subtract signed rational numbers|signed-numbers,fraction-addition|7.NS.A.1,7.NS.A.3
+signed-multiplication|7|number|Multiply and divide signed rational numbers|signed-addition,fraction-division|7.NS.A.2,6.NS.A.1
+rational-stories|7|modeling|Solve contextual problems using signed rational arithmetic|signed-multiplication|7.NS.A.3,7.EE.B.3,7.NS.A.1
+complex-fractions|7|fractions|Simplify complex fractions by dividing a simplified numerator by a simplified denominator|fraction-division,signed-multiplication|7.NS.A.3,6.NS.A.1
+linear-expressions|7|algebra|Expand and factor linear expressions with rational coefficients|expression-properties,signed-multiplication|7.EE.A.1,7.EE.A.2,6.EE.A.2
 two-step-equations|7|algebra|Construct and solve two-step equations|one-step-equations,signed-addition|7.EE.B.4
 absolute-value-equations|algebra-1|algebra|Solve absolute-value equations and interpret complete real solution sets|absolute-value,two-step-equations,signed-multiplication|SAT.advanced-math
 linear-inequalities|7|algebra|Solve inequalities and interpret direction changes|simple-inequalities,signed-multiplication,linear-expressions,two-step-equations|7.EE.B.4
@@ -452,43 +452,43 @@ scale-drawings|7|geometry|Use scale factors to recover lengths and areas|proport
 triangle-construction|7|geometry|Determine whether side and angle conditions define a triangle|angle-measure|7.G.A.2
 solid-cross-sections|7|geometry|Identify plane cross-sections of solids|surface-area|7.G.A.3
 circle-measurement|7|geometry|Calculate circle area and circumference|decimal-arithmetic,integer-powers,fraction-multiplication|7.G.B.4
-angle-relationships|7|geometry|Solve unknown angles using supplementary vertical and adjacent relationships|angle-measure,two-step-equations|7.G.B.5
-composite-measurement|7|geometry|Find area surface area and volume of compound figures|surface-area,fractional-prism-volume|7.G.B.6
-signed-data-summaries|7|data|Calculate exact median range and interquartile range of signed numerical data|mean-median,decimal-arithmetic,signed-addition,absolute-value|6.SP.B.5,SAT.data
+angle-relationships|7|geometry|Solve unknown angles using supplementary vertical and adjacent relationships|angle-measure,two-step-equations|7.G.B.5,4.MD.C.7,7.EE.A.1,8.EE.C.7
+composite-measurement|7|geometry|Find area surface area and volume of compound figures|surface-area,fractional-prism-volume|7.G.B.6,6.G.A.1,7.G.B.4
+signed-data-summaries|7|data|Calculate exact median range and interquartile range of signed numerical data|mean-median,decimal-arithmetic,signed-addition,absolute-value|6.SP.B.5,SAT.data,7.NS.A.1
 sampling|7|data|Explain why sample selection affects population conclusions|statistical-questions|7.SP.A.1,7.SP.A.2
 compare-distributions|7|data|Compare centers and spread of two distributions|variability|7.SP.B.3,7.SP.B.4
-probability|7|probability|Calculate simple event probabilities and compare observed frequencies|ratios|7.SP.C.5,7.SP.C.6,7.SP.C.7
-compound-probability|7|probability|Enumerate compound outcomes with tables trees and simulations|probability|7.SP.C.8
-irrational-numbers|8|number|Distinguish rational numbers from irrational numbers|fraction-as-division,decimal-algorithms|8.NS.A.1
-approximate-roots|8|number|Approximate roots and compare irrational values|irrational-numbers,integer-powers|8.NS.A.2,8.EE.A.2
+probability|7|probability|Calculate simple event probabilities and compare observed frequencies|ratios|7.SP.C.5,7.SP.C.6,7.SP.C.7,7.SP.C.8
+compound-probability|7|probability|Enumerate compound outcomes with tables trees and simulations|probability|7.SP.C.8,7.SP.C.7
+irrational-numbers|8|number|Distinguish rational numbers from irrational numbers|fraction-as-division,decimal-algorithms|8.NS.A.1,8.EE.A.2
+approximate-roots|8|number|Approximate roots and compare irrational values|irrational-numbers,integer-powers|8.NS.A.2,8.EE.A.2,6.NS.C.7
 exponent-laws|8|algebra|Simplify expressions with integer exponents|integer-powers,signed-multiplication,signed-addition,fraction-division|8.EE.A.1
 scientific-notation|8|number|Represent compare and calculate very large or small quantities|exponent-laws|8.EE.A.3,8.EE.A.4
-slope|8|algebra|Find and interpret slope from points tables and graphs|proportional-relationships,coordinate-four-quadrants|8.EE.B.5,8.EE.B.6
-linear-equations|8|algebra|Solve linear equations with variables on both sides|two-step-equations,linear-expressions|8.EE.C.7
-linear-systems|8|algebra|Solve a pair of linear equations and interpret intersections|linear-equations,slope|8.EE.C.8
+slope|8|algebra|Find and interpret slope from points tables and graphs|proportional-relationships,coordinate-four-quadrants|8.EE.B.5,8.EE.B.6,8.F.B.4
+linear-equations|8|algebra|Solve linear equations with variables on both sides|two-step-equations,linear-expressions|8.EE.C.7,6.EE.B.5,7.EE.B.4
+linear-systems|8|algebra|Solve a pair of linear equations and interpret intersections|linear-equations,slope|8.EE.C.8,8.EE.C.7
 function-notation|8|functions|Determine whether a relation assigns one output per input|dependent-variables|8.F.A.1
-compare-functions|8|functions|Compare function behavior across tables graphs and equations|function-notation,slope|8.F.A.2,8.F.A.3
-linear-models|8|modeling|Construct a linear function and interpret its rate and initial value|slope,compare-functions|8.F.B.4
+compare-functions|8|functions|Compare function behavior across tables graphs and equations|function-notation,slope|8.F.A.2,8.F.A.3,8.F.B.4
+linear-models|8|modeling|Construct a linear function and interpret its rate and initial value|slope,compare-functions|8.F.B.4,4.OA.A.3,7.EE.B.4,8.EE.C.7,8.EE.C.8,8.F.A.3
 qualitative-graphs|8|functions|Describe increase decrease and linearity in graphs|function-notation|8.F.B.5
 rigid-motions|8|geometry|Describe translations rotations and reflections on coordinates|coordinate-four-quadrants|8.G.A.1,8.G.A.2,8.G.A.3
-dilations-similarity|8|geometry|Use dilations and rigid motions to establish similarity|rigid-motions,scale-drawings|8.G.A.4
-triangle-angle-theorems|8|geometry|Reason about triangle sums exterior angles and parallel lines|angle-relationships|8.G.A.5
+dilations-similarity|8|geometry|Use dilations and rigid motions to establish similarity|rigid-motions,scale-drawings|8.G.A.4,8.G.A.3
+triangle-angle-theorems|8|geometry|Reason about triangle sums exterior angles and parallel lines|angle-relationships|8.G.A.5,7.G.B.5,8.EE.C.7
 pythagorean-theorem|8|geometry|Explain and apply the Pythagorean relationship|approximate-roots,triangle-area|8.G.B.6,8.G.B.7
 coordinate-distance|8|geometry|Find distance between two coordinate points|pythagorean-theorem,coordinate-four-quadrants|8.G.B.8
 curved-solid-volume|8|geometry|Find volumes of cylinders cones and spheres|circle-measurement,prism-volume|8.G.C.9
-scatterplots|8|data|Interpret associations and fit an informal trend line|coordinate-four-quadrants,linear-models|8.SP.A.1,8.SP.A.2,8.SP.A.3
+scatterplots|8|data|Interpret associations and fit an informal trend line|coordinate-four-quadrants,linear-models|8.SP.A.1,8.SP.A.2,8.SP.A.3,8.F.B.4
 two-way-tables|8|data|Use relative frequencies to investigate association|probability,percentages|8.SP.A.4
-units-and-precision|algebra-1|modeling|Choose units and justify precision in quantitative models|unit-conversion,scientific-notation|HSN,HSM,SAT.data
-expression-structure|algebra-1|algebra|Interpret terms factors and equivalent forms in context|linear-expressions|HSA,SAT.advanced-math
-formula-rearrangement|algebra-1|algebra|Rearrange formulas to isolate a chosen variable|linear-equations|HSA,SAT.algebra
-linear-equation-modeling|algebra-1|modeling|Construct linear equations from constraints and explain solutions|linear-models,linear-equations|HSA,HSM,SAT.algebra
-systems-modeling|algebra-1|modeling|Model simultaneous constraints with equations and inequalities|linear-systems,linear-inequalities|HSA,SAT.algebra
-function-domain-range|algebra-1|functions|Identify valid inputs and outputs including contextual restrictions|function-notation|HSF
+units-and-precision|algebra-1|modeling|Choose units and justify precision in quantitative models|unit-conversion,scientific-notation|HSN,HSM,SAT.data,6.RP.A.3,7.RP.A.3
+expression-structure|algebra-1|algebra|Interpret terms factors and equivalent forms in context|linear-expressions|HSA,SAT.advanced-math,8.F.B.4
+formula-rearrangement|algebra-1|algebra|Rearrange formulas to isolate a chosen variable|linear-equations|HSA,SAT.algebra,7.EE.B.4,8.EE.C.7
+linear-equation-modeling|algebra-1|modeling|Construct linear equations from constraints and explain solutions|linear-models,linear-equations|HSA,HSM,SAT.algebra,6.RP.A.3,7.EE.B.3,7.EE.B.4,8.F.B.4
+systems-modeling|algebra-1|modeling|Model simultaneous constraints with equations and inequalities|linear-systems,linear-inequalities|HSA,SAT.algebra,8.EE.C.8
+function-domain-range|algebra-1|functions|Identify valid inputs and outputs including contextual restrictions|function-notation|HSF,8.F.A.1
 function-evaluation|algebra-1|functions|Evaluate and interpret function notation|variable-expressions,function-notation|HSF,SAT.algebra
 piecewise-functions|algebra-1|functions|Interpret piecewise and absolute-value functions|function-domain-range,function-evaluation|HSF,SAT.advanced-math
 arithmetic-sequences|algebra-1|functions|Translate arithmetic sequences between recursive and explicit rules|related-patterns,linear-models|HSF
 geometric-sequences|algebra-1|functions|Translate geometric sequences between recursive and explicit rules|exponent-laws|HSF
-polynomial-arithmetic|algebra-1|algebra|Add subtract and multiply polynomials|expression-properties,exponent-laws|HSA,SAT.advanced-math
+polynomial-arithmetic|algebra-1|algebra|Add subtract and multiply polynomials|expression-properties,exponent-laws|HSA,SAT.advanced-math,6.EE.A.2
 factor-quadratics|algebra-1|algebra|Factor quadratic expressions using structure and products|polynomial-arithmetic,gcf-lcm|HSA,SAT.advanced-math
 quadratic-equations|algebra-1|algebra|Solve quadratic equations and check their real solutions|factor-quadratics,approximate-roots|HSA,SAT.advanced-math
 complete-square|algebra-1|algebra|Rewrite quadratics by completing the square|quadratic-equations|HSA,SAT.advanced-math
@@ -500,15 +500,15 @@ residuals-correlation|algebra-1|data|Interpret residuals association and limits 
 geometric-definitions|geometry|geometry|Use precise definitions of geometric objects and relations|lines-symmetry|HSG
 geometric-proof|geometry|reasoning|Construct and critique deductive geometric arguments|geometric-definitions,triangle-angle-theorems|HSG
 congruence-criteria|geometry|geometry|Justify triangle congruence with transformations and criteria|rigid-motions,geometric-proof|HSG
-similarity-proofs|geometry|geometry|Justify triangle similarity and proportional side relationships|dilations-similarity,geometric-proof|HSG,SAT.geometry
+similarity-proofs|geometry|geometry|Justify triangle similarity and proportional side relationships|dilations-similarity,geometric-proof|HSG,SAT.geometry,8.G.A.4
 geometric-constructions|geometry|geometry|Construct bisectors perpendiculars and parallel lines with justified steps|geometric-definitions|HSG
 right-triangle-trigonometry|geometry|trigonometry|Use sine cosine and tangent ratios to solve right triangles|similarity-proofs,pythagorean-theorem|HSG,SAT.geometry
-special-right-triangles|geometry|trigonometry|Derive and use special right-triangle side ratios|right-triangle-trigonometry|HSG,SAT.geometry
-circle-theorems|geometry|geometry|Relate chords tangents arcs and inscribed angles|angle-relationships,geometric-proof|HSG,SAT.geometry
-arc-sector-measure|geometry|geometry|Calculate arc length and sector area|circle-measurement,percentages,angle-measure,fraction-multiplication|HSG,SAT.geometry
+special-right-triangles|geometry|trigonometry|Derive and use special right-triangle side ratios|right-triangle-trigonometry|HSG,SAT.geometry,8.G.B.7
+circle-theorems|geometry|geometry|Relate chords tangents arcs and inscribed angles|angle-relationships,geometric-proof|HSG,SAT.geometry,8.G.B.7
+arc-sector-measure|geometry|geometry|Calculate arc length and sector area|circle-measurement,percentages,angle-measure,fraction-multiplication|HSG,SAT.geometry,7.G.B.4
 circle-equations|geometry|geometry|Interpret and construct coordinate equations of circles|coordinate-distance,complete-square|HSG,SAT.geometry
 coordinate-proofs|geometry|geometry|Use slopes distances and midpoints to prove geometric claims|slope,coordinate-distance,geometric-proof|HSG
-geometric-modeling|geometry|modeling|Choose geometric models for design density and measurement problems|composite-measurement,curved-solid-volume|HSG,HSM
+geometric-modeling|geometry|modeling|Choose geometric models for design density and measurement problems|composite-measurement,curved-solid-volume|HSG,HSM,7.G.B.6,8.G.B.7
 conditional-probability|geometry|probability|Calculate conditional probabilities from tables and sample spaces|compound-probability,two-way-tables|HSS,SAT.data
 independent-events|geometry|probability|Distinguish independence from mutually exclusive outcomes|conditional-probability|HSS,SAT.data
 rational-exponents|algebra-2|algebra|Connect rational exponents and radicals|exponent-laws,approximate-roots,factors-multiples|HSN,SAT.advanced-math
@@ -535,7 +535,7 @@ radians-unit-circle|algebra-2|trigonometry|Connect radians arc length and unit-c
 trigonometric-graphs|algebra-2|trigonometry|Interpret period amplitude phase and midline|radians-unit-circle,function-transformations|HSF
 normal-distributions|algebra-2|data|Use mean and standard deviation to interpret normal models|variability|HSS
 study-design|algebra-2|data|Distinguish observational studies experiments and sampling designs|sampling|HSS,SAT.data
-statistical-inference|algebra-2|data|Interpret sampling variability margin of error and supported claims|study-design,compare-distributions|HSS,SAT.data
+statistical-inference|algebra-2|data|Interpret sampling variability margin of error and supported claims|study-design,compare-distributions|HSS,SAT.data,7.SP.A.2
 expected-value|algebra-2|probability|Use weighted outcomes to compare decisions|conditional-probability|HSS
 polynomial-behavior|precalculus|functions|Analyze polynomial end behavior multiplicities and turning behavior|polynomial-zeros|HSF
 rational-function-behavior|precalculus|functions|Analyze holes asymptotes intercepts and domain of rational functions|rational-expressions,function-domain-range|HSF
@@ -550,11 +550,11 @@ conic-sections|precalculus|geometry|Connect conic equations to geometric definit
 parametric-models|precalculus|modeling|Describe motion using paired functions of a parameter|function-composition,vectors|HSM
 polar-coordinates|precalculus|trigonometry|Translate between polar and Cartesian coordinates|radians-unit-circle,coordinate-distance|
 model-validation|precalculus|modeling|Compare model predictions to evidence and communicate limitations|exponential-models,statistical-inference|HSM
-counting-arithmetic|1|operations|Connect counting forward and backward to addition and subtraction|count-to-100,addition-within-20|1.OA.C.5
+counting-arithmetic|1|operations|Connect counting forward and backward to addition and subtraction|count-to-100,addition-within-20|1.OA.C.5,1.OA.C.6
 mental-tens-hundreds|2|operations|Mentally add or subtract ten or one hundred within one thousand|hundreds-place-value|2.NBT.B.8
-fraction-plot-arithmetic|4|data|Solve addition and subtraction questions from fractional measurement plots|fraction-line-plots,like-fraction-addition|4.MD.B.4
-frequency-bar-graphs|4|data|Build frequency tables and answer multi-step questions from frequency tables and scaled bar graphs|picture-bar-graphs,scaled-graphs|
-measurement-conversions|5|measurement|Convert measurements within one system in multistep problems|unit-conversion,decimal-arithmetic|5.MD.A.1
+fraction-plot-arithmetic|4|data|Solve addition and subtraction questions from fractional measurement plots|fraction-line-plots,like-fraction-addition|4.MD.B.4,3.MD.B.4,4.NF.B.3,5.MD.B.2,6.SP.B.5
+frequency-bar-graphs|4|data|Build frequency tables and answer multi-step questions from frequency tables and scaled bar graphs|picture-bar-graphs,scaled-graphs|3.MD.B.3
+measurement-conversions|5|measurement|Convert measurements within one system in multistep problems|unit-conversion,decimal-arithmetic|5.MD.A.1,4.MD.A.1,4.MD.A.2,4.MD.A.3,5.NBT.B.7,6.RP.A.3
 fraction-plot-computation|5|data|Use fraction operations to solve problems from measurement line plots|fraction-plot-arithmetic,fraction-addition|5.MD.B.2
 complex-conjugates|precalculus|number|Use conjugates to compute complex quotients and moduli|complex-numbers|
 complex-distance|precalculus|number|Find complex-plane distances and midpoints using differences and averages|complex-plane|
@@ -562,7 +562,7 @@ complex-factorization|precalculus|algebra|Extend factorization identities to com
 fundamental-theorem-algebra|precalculus|algebra|Explain polynomial root existence and verify the quadratic case|complex-factorization|
 model-quantities|algebra-1|modeling|Define measurable quantities and their roles before constructing a model|units-and-precision|
 number-system-closure|algebra-2|reasoning|Justify rational and irrational sums and products including nonzero restrictions|irrational-numbers|
-vector-modeling|precalculus|modeling|Resolve and combine velocity or force quantities with vectors|vectors|
+vector-modeling|precalculus|modeling|Resolve and combine velocity or force quantities with vectors|vectors|8.G.B.7
 matrix-data|precalculus|number|Organize quantities in matrices and interpret rows columns and entries|two-way-tables|
 matrix-properties|precalculus|reasoning|Demonstrate matrix noncommutativity and justify associative and distributive operations|matrices|
 matrix-inverses|precalculus|algebra|Use identity matrices and determinants to determine and compute inverses|matrices|
@@ -570,8 +570,8 @@ matrix-transformations|precalculus|geometry|Apply matrices to vectors and connec
 polynomial-identities|algebra-2|reasoning|Prove polynomial identities and use them to establish numerical relationships|polynomial-arithmetic|
 binomial-theorem|precalculus|algebra|Expand integer powers of binomials using combinatorial coefficients|polynomial-arithmetic|
 nonlinear-equation-modeling|algebra-2|modeling|Construct quadratic rational and exponential constraints with valid contextual domains|quadratic-equations,rational-equations,exponential-models|
-equation-reasoning|algebra-1|reasoning|Justify each equation transformation by equality-preserving operations|linear-equations|
-symbolic-linear-constraints|algebra-1|algebra|Solve linear equations and inequalities with literal coefficients and state exceptional cases|linear-equations,linear-inequalities|
+equation-reasoning|algebra-1|reasoning|Justify each equation transformation by equality-preserving operations|linear-equations|8.EE.C.7
+symbolic-linear-constraints|algebra-1|algebra|Solve linear equations and inequalities with literal coefficients and state exceptional cases|linear-equations,linear-inequalities|8.EE.C.7
 elimination-proof|algebra-1|reasoning|Prove that elimination preserves a linear system's solution set|linear-systems,equation-reasoning|
 matrix-systems|precalculus|algebra|Represent systems as matrix equations and solve using inverses where possible|matrix-inverses,linear-systems|
 graph-solution-sets|algebra-1|algebra|Interpret equation graphs as all ordered pairs satisfying the equation|coordinate-four-quadrants,linear-equations|
@@ -583,27 +583,27 @@ growth-comparison|algebra-2|functions|Justify linear versus exponential growth a
 special-angle-values|precalculus|trigonometry|Derive exact special-angle values and related quadrant values geometrically|special-right-triangles,radians-unit-circle|
 trigonometric-symmetry|precalculus|trigonometry|Explain odd even and periodic trigonometric relationships using the unit circle|radians-unit-circle|
 periodic-modeling|algebra-2|modeling|Choose trigonometric models with appropriate amplitude frequency and midline|trigonometric-graphs|
-circle-similarity|geometry|reasoning|Prove circle similarity using translations and dilation|similarity-proofs|
-triangle-circles|geometry|geometry|Construct triangle incircles and circumcircles and prove cyclic angle properties|geometric-constructions,circle-theorems|
-tangent-construction|geometry|geometry|Construct tangents from an exterior point and justify perpendicular radii|geometric-constructions,circle-theorems|
-transformation-invariants|geometry|geometry|Define plane motions and compare distance and angle preservation|rigid-motions,geometric-definitions|
+circle-similarity|geometry|reasoning|Prove circle similarity using translations and dilation|similarity-proofs|8.G.A.3,8.G.A.4
+triangle-circles|geometry|geometry|Construct triangle incircles and circumcircles and prove cyclic angle properties|geometric-constructions,circle-theorems|8.G.B.7
+tangent-construction|geometry|geometry|Construct tangents from an exterior point and justify perpendicular radii|geometric-constructions,circle-theorems|8.G.B.7
+transformation-invariants|geometry|geometry|Define plane motions and compare distance and angle preservation|rigid-motions,geometric-definitions|8.G.A.3
 polygon-symmetries|geometry|geometry|Describe rotations and reflections preserving a polygon|rigid-motions|
-transformation-constructions|geometry|geometry|Construct transformed figures and describe compositions carrying one figure to another|transformation-invariants|
+transformation-constructions|geometry|geometry|Construct transformed figures and describe compositions carrying one figure to another|transformation-invariants|8.G.A.2,8.G.A.3
 line-angle-proofs|geometry|reasoning|Prove vertical-angle parallel-line and perpendicular-bisector relationships|geometric-proof|
 triangle-proofs|geometry|reasoning|Prove triangle-angle base-angle midsegment and median relationships|geometric-proof,congruence-criteria|
-parallelogram-proofs|geometry|reasoning|Prove parallelogram and rectangle side angle and diagonal properties|geometric-proof,congruence-criteria|
+parallelogram-proofs|geometry|reasoning|Prove parallelogram and rectangle side angle and diagonal properties|geometric-proof,congruence-criteria|7.G.B.5
 inscribed-polygons|geometry|geometry|Construct equilateral triangles squares and regular hexagons in circles|geometric-constructions|
-measurement-formula-proofs|geometry|reasoning|Justify circle cylinder cone and pyramid formulas using dissection and comparison|geometric-proof,circle-measurement,prism-volume|
+measurement-formula-proofs|geometry|reasoning|Justify circle cylinder cone and pyramid formulas using dissection and comparison|geometric-proof,circle-measurement,prism-volume|7.G.B.4
 cavalieri-principle|geometry|reasoning|Use equal cross-sectional areas to justify solid volumes including spheres|measurement-formula-proofs|
-solid-volume-models|geometry|modeling|Solve contextual cylinder pyramid cone and sphere volume problems|curved-solid-volume,surface-area|
-sections-and-revolutions|geometry|geometry|Relate plane slices and rotations of plane figures to three-dimensional solids|solid-cross-sections|
+solid-volume-models|geometry|modeling|Solve contextual cylinder pyramid cone and sphere volume problems|curved-solid-volume,surface-area|7.G.B.6,8.G.C.9
+sections-and-revolutions|geometry|geometry|Relate plane slices and rotations of plane figures to three-dimensional solids|solid-cross-sections|8.G.C.9
 parabola-locus|geometry|geometry|Derive a parabola equation from equal focus and directrix distances|coordinate-distance,quadratic-graphs|
 slope-proofs|geometry|reasoning|Prove parallel and perpendicular slope criteria and construct corresponding lines|coordinate-proofs|
 segment-division|geometry|geometry|Find a directed segment's internal or external proportional division point|coordinate-four-quadrants,ratios|
 coordinate-measurement|geometry|geometry|Use coordinates to compute polygon perimeters and areas|coordinate-distance,triangle-area|
 density-modeling|geometry|modeling|Model density using area or volume with consistent units|units-and-precision,geometric-modeling|
-geometric-design|geometry|modeling|Construct and compare geometric designs under stated constraints|geometric-modeling,systems-modeling|
-dilation-properties|geometry|geometry|Investigate how dilation changes lengths lines and parallelism|dilations-similarity|
+geometric-design|geometry|modeling|Construct and compare geometric designs under stated constraints|geometric-modeling,systems-modeling|7.G.B.6
+dilation-properties|geometry|geometry|Investigate how dilation changes lengths lines and parallelism|dilations-similarity|8.G.A.3
 similarity-theorems|geometry|reasoning|Prove proportional-side and Pythagorean results using triangle similarity|similarity-proofs|
 complementary-trigonometry|geometry|trigonometry|Explain and use sine cosine relationships for complementary angles|right-triangle-trigonometry|
 trigonometric-area|precalculus|trigonometry|Derive and apply the two-sides-and-included-angle triangle area formula|right-triangle-trigonometry,triangle-area|
@@ -623,7 +623,7 @@ causal-claims|algebra-1|reasoning|Distinguish association from evidence that sup
 random-variables|precalculus|probability|Define a numerical random variable and graph its probability distribution|compound-probability,distribution-plots|
 theoretical-distributions|precalculus|probability|Construct theoretical discrete distributions and compute their expectations|random-variables,expected-value|
 empirical-distributions|precalculus|probability|Estimate distributions from observed frequencies and compute expectations|random-variables,expected-value|
-fair-random-decisions|precalculus|probability|Design random selection procedures and justify fairness|probability|
+fair-random-decisions|precalculus|probability|Design random selection procedures and justify fairness|probability|7.SP.C.7
 decision-strategies|precalculus|modeling|Compare uncertain strategies using probabilities payoffs and model assumptions|expected-value,conditional-probability|
 `;
 
@@ -718,7 +718,7 @@ const highSchoolRows: [string, string, string, boolean][] = [
   ["HSN.CN.B.4", "Rectangular and polar forms", "complex-plane", true],
   ["HSN.CN.B.5", "Geometric complex arithmetic", "complex-plane", true],
   ["HSN.CN.B.6", "Complex distance and midpoint", "complex-distance", true],
-  ["HSN.CN.C.7", "Nonreal quadratic roots", "complex-numbers", false],
+  ["HSN.CN.C.7", "Nonreal quadratic roots", "complex-numbers,complex-factorization", false],
   [
     "HSN.CN.C.8",
     "Complex polynomial identities",
@@ -731,31 +731,31 @@ const highSchoolRows: [string, string, string, boolean][] = [
     "fundamental-theorem-algebra",
     true,
   ],
-  ["HSN.Q.A.1", "Units scales and origins", "units-and-precision", false],
+  ["HSN.Q.A.1", "Units scales and origins", "units-and-precision,model-quantities,radians-unit-circle,solid-volume-models,statistical-report-critique", false],
   ["HSN.Q.A.2", "Choose modeling quantities", "model-quantities", false],
   ["HSN.Q.A.3", "Measurement precision", "units-and-precision", false],
   ["HSN.RN.A.1", "Justify rational powers", "rational-exponents", false],
-  ["HSN.RN.A.2", "Rewrite radicals and powers", "rational-exponents", false],
+  ["HSN.RN.A.2", "Rewrite radicals and powers", "rational-exponents,coordinate-distance,pythagorean-theorem", false],
   ["HSN.RN.B.3", "Rational irrational closure", "number-system-closure", false],
   ["HSN.VM.A.1", "Vector magnitude and direction", "vectors", true],
   ["HSN.VM.A.2", "Coordinate vector components", "vectors", true],
-  ["HSN.VM.A.3", "Vector quantity models", "vector-modeling", true],
-  ["HSN.VM.B.4", "Vector sums and differences", "vectors", true],
+  ["HSN.VM.A.3", "Vector quantity models", "vector-modeling,parametric-models", true],
+  ["HSN.VM.B.4", "Vector sums and differences", "vectors,vector-modeling", true],
   ["HSN.VM.B.5", "Scalar vector products", "vectors", true],
   ["HSN.VM.C.6", "Matrix data representations", "matrix-data", true],
   ["HSN.VM.C.7", "Scalar matrix products", "matrices", true],
-  ["HSN.VM.C.8", "Matrix sums and products", "matrices", true],
+  ["HSN.VM.C.8", "Matrix sums and products", "matrices,matrix-properties", true],
   ["HSN.VM.C.9", "Matrix operation laws", "matrix-properties", true],
   [
     "HSN.VM.C.10",
     "Identities inverses and determinants",
-    "matrix-inverses",
+    "matrix-inverses,matrix-properties,matrix-systems",
     true,
   ],
   [
     "HSN.VM.C.11",
     "Matrix vector transformations",
-    "matrix-transformations",
+    "matrix-transformations,matrix-systems",
     true,
   ],
   [
@@ -767,7 +767,7 @@ const highSchoolRows: [string, string, string, boolean][] = [
   [
     "HSA.APR.A.1",
     "Polynomial operations and closure",
-    "polynomial-arithmetic",
+    "polynomial-arithmetic,expression-structure,factor-quadratics,function-composition",
     false,
   ],
   [
@@ -776,7 +776,7 @@ const highSchoolRows: [string, string, string, boolean][] = [
     "polynomial-division",
     false,
   ],
-  ["HSA.APR.B.3", "Zeros and graph sketches", "polynomial-zeros", false],
+  ["HSA.APR.B.3", "Zeros and graph sketches", "polynomial-zeros,polynomial-behavior", false],
   [
     "HSA.APR.C.4",
     "Prove polynomial identities",
@@ -787,51 +787,51 @@ const highSchoolRows: [string, string, string, boolean][] = [
   [
     "HSA.APR.D.6",
     "Polynomial quotient remainder forms",
-    "polynomial-division",
+    "polynomial-division,rational-expressions",
     false,
   ],
   [
     "HSA.APR.D.7",
     "Rational expression arithmetic",
-    "rational-expression-domain,rational-expressions",
+    "rational-expressions",
     true,
   ],
   [
     "HSA.CED.A.1",
     "Model single-variable constraints",
-    "linear-equation-modeling,nonlinear-equation-modeling",
+    "linear-equation-modeling,nonlinear-equation-modeling,absolute-value-equations,exponential-models,linear-equations,linear-inequalities,rational-equations,systems-modeling",
     false,
   ],
   [
     "HSA.CED.A.2",
     "Model related quantities graphically",
-    "linear-equation-modeling,nonlinear-equation-modeling",
+    "linear-equation-modeling,nonlinear-equation-modeling,exponential-models,systems-modeling",
     false,
   ],
-  ["HSA.CED.A.3", "Interpret feasible constraints", "systems-modeling", false],
+  ["HSA.CED.A.3", "Interpret feasible constraints", "systems-modeling,linear-equation-modeling,nonlinear-equation-modeling", false],
   ["HSA.CED.A.4", "Isolate formula variables", "formula-rearrangement", false],
   [
     "HSA.REI.A.1",
     "Justify equation transformations",
-    "equation-reasoning",
+    "equation-reasoning,formula-rearrangement,quadratic-equations",
     false,
   ],
   [
     "HSA.REI.A.2",
     "Detect extraneous solutions",
-    "square-root-equations,radical-equations,rational-equation-one-denominator,rational-equations",
+    "square-root-equations,radical-equations,rational-equation-one-denominator,rational-equations,cross-representation-comparison,rational-exponents",
     false,
   ],
   [
     "HSA.REI.B.3",
     "Solve symbolic linear constraints",
-    "symbolic-linear-constraints",
+    "symbolic-linear-constraints,equation-reasoning,formula-rearrangement,function-evaluation,linear-equation-modeling,linear-inequalities,systems-modeling",
     false,
   ],
   [
     "HSA.REI.B.4",
     "Solve and justify quadratics",
-    "quadratic-equations,complete-square,quadratic-formula,complex-numbers",
+    "quadratic-equations,complete-square,quadratic-formula,complex-numbers,complex-factorization,nonlinear-equation-modeling",
     false,
   ],
   [
@@ -840,7 +840,7 @@ const highSchoolRows: [string, string, string, boolean][] = [
     "elimination-proof",
     false,
   ],
-  ["HSA.REI.C.6", "Exact approximate linear systems", "linear-systems", false],
+  ["HSA.REI.C.6", "Exact approximate linear systems", "linear-systems,matrix-systems,systems-modeling", false],
   [
     "HSA.REI.C.7",
     "Linear quadratic intersections",
@@ -848,7 +848,7 @@ const highSchoolRows: [string, string, string, boolean][] = [
     false,
   ],
   ["HSA.REI.C.8", "Matrix system representation", "matrix-systems", true],
-  ["HSA.REI.C.9", "Inverse matrix solutions", "matrix-systems", true],
+  ["HSA.REI.C.9", "Inverse matrix solutions", "matrix-systems,matrix-inverses", true],
   ["HSA.REI.D.10", "Graphs as solution sets", "graph-solution-sets", false],
   [
     "HSA.REI.D.11",
@@ -857,24 +857,24 @@ const highSchoolRows: [string, string, string, boolean][] = [
     false,
   ],
   ["HSA.REI.D.12", "Half-plane solution regions", "inequality-regions", false],
-  ["HSA.SSE.A.1", "Interpret expression parts", "expression-structure", false],
+  ["HSA.SSE.A.1", "Interpret expression parts", "expression-structure,linear-equation-modeling", false],
   [
     "HSA.SSE.A.2",
     "Rewrite through structural recognition",
-    "expression-structure,factor-quadratics",
+    "expression-structure,factor-quadratics,complete-square,logarithm-properties,piecewise-functions,polynomial-identities,polynomial-zeros,rational-expressions",
     false,
   ],
   [
     "HSA.SSE.B.3",
     "Reveal properties through equivalence",
-    "factor-quadratics,complete-square,quadratic-minimum,exponential-models",
+    "factor-quadratics,complete-square,quadratic-minimum,exponential-models,quadratic-equations,quadratic-graphs",
     false,
   ],
   ["HSA.SSE.B.4", "Derive geometric series sums", "sequence-sums", false],
   [
     "HSF.BF.A.1",
     "Build and combine functions",
-    "function-composition,nonlinear-equation-modeling",
+    "function-composition,nonlinear-equation-modeling,exponential-models,geometric-sequences,linear-equation-modeling,periodic-modeling",
     false,
   ],
   [
@@ -886,21 +886,21 @@ const highSchoolRows: [string, string, string, boolean][] = [
   [
     "HSF.BF.B.3",
     "Function changes and symmetry",
-    "function-transformations",
+    "function-transformations,quadratic-graphs,trigonometric-graphs",
     false,
   ],
   ["HSF.BF.B.4", "Verify and restrict inverses", "inverse-functions", false],
   [
     "HSF.BF.B.5",
     "Exponential logarithmic inverses",
-    "logarithms,exponential-equations",
+    "logarithms,exponential-equations,exponential-models,inverse-functions,logarithm-properties",
     true,
   ],
   ["HSF.IF.A.1", "Unique outputs and domains", "function-domain-range", false],
   [
     "HSF.IF.A.2",
     "Evaluate contextual function notation",
-    "function-evaluation",
+    "function-evaluation,arithmetic-sequences,exponential-models,function-composition,function-transformations,geometric-sequences,nonlinear-equation-modeling,parametric-models,periodic-modeling,piecewise-functions",
     false,
   ],
   [
@@ -918,14 +918,14 @@ const highSchoolRows: [string, string, string, boolean][] = [
   [
     "HSF.IF.B.5",
     "Contextual domain restrictions",
-    "function-domain-range",
+    "function-domain-range,arithmetic-sequences,exponential-models,geometric-sequences,logarithms",
     false,
   ],
   ["HSF.IF.B.6", "Average rates of change", "average-rate-change", false],
   [
     "HSF.IF.C.7",
     "Graph diverse function families",
-    "piecewise-functions,quadratic-graphs,rational-function-behavior,polynomial-behavior,trigonometric-graphs,logarithms",
+    "piecewise-functions,quadratic-graphs,rational-function-behavior,polynomial-behavior,trigonometric-graphs,logarithms,exponential-models,function-transformations",
     false,
   ],
   [
@@ -937,27 +937,27 @@ const highSchoolRows: [string, string, string, boolean][] = [
   [
     "HSF.IF.C.9",
     "Compare varied function representations",
-    "cross-representation-comparison",
+    "cross-representation-comparison,trigonometric-graphs",
     false,
   ],
-  ["HSF.LE.A.1", "Distinguish growth mechanisms", "growth-comparison", false],
+  ["HSF.LE.A.1", "Distinguish growth mechanisms", "growth-comparison,exponential-models,percent-change", false],
   [
     "HSF.LE.A.2",
     "Construct growth models",
-    "exponential-models,arithmetic-sequences,geometric-sequences",
+    "exponential-models,arithmetic-sequences,geometric-sequences,linear-equation-modeling,piecewise-functions,systems-modeling",
     false,
   ],
   ["HSF.LE.A.3", "Compare eventual growth", "growth-comparison", false],
   [
     "HSF.LE.A.4",
     "Logarithmic exponential solutions",
-    "exponential-equations",
+    "exponential-equations,exponential-models",
     false,
   ],
   [
     "HSF.LE.B.5",
     "Interpret model parameters",
-    "exponential-models,linear-equation-modeling",
+    "exponential-models,linear-equation-modeling,expression-structure,regression-interpretation",
     false,
   ],
   ["HSF.TF.A.1", "Radians from unit arcs", "radians-unit-circle", false],
@@ -967,7 +967,7 @@ const highSchoolRows: [string, string, string, boolean][] = [
     "radians-unit-circle",
     false,
   ],
-  ["HSF.TF.A.3", "Special-angle circle values", "special-angle-values", true],
+  ["HSF.TF.A.3", "Special-angle circle values", "special-angle-values,radians-unit-circle,trigonometric-symmetry", true],
   [
     "HSF.TF.A.4",
     "Trigonometric parity and periodicity",
@@ -990,7 +990,7 @@ const highSchoolRows: [string, string, string, boolean][] = [
   [
     "HSF.TF.C.8",
     "Prove Pythagorean identity",
-    "trigonometric-identities",
+    "trigonometric-identities,trigonometric-symmetry",
     false,
   ],
   [
@@ -1000,7 +1000,7 @@ const highSchoolRows: [string, string, string, boolean][] = [
     true,
   ],
   ["HSG.C.A.1", "Circle similarity proof", "circle-similarity", false],
-  ["HSG.C.A.2", "Chord tangent arc relationships", "circle-theorems", false],
+  ["HSG.C.A.2", "Chord tangent arc relationships", "circle-theorems,inscribed-polygons,tangent-construction", false],
   [
     "HSG.C.A.3",
     "Circle constructions cyclic quadrilaterals",
@@ -1018,7 +1018,7 @@ const highSchoolRows: [string, string, string, boolean][] = [
   [
     "HSG.CO.A.2",
     "Compare transformation invariants",
-    "transformation-invariants",
+    "transformation-invariants,matrix-transformations",
     false,
   ],
   ["HSG.CO.A.3", "Polygon symmetries", "polygon-symmetries", false],
@@ -1026,13 +1026,13 @@ const highSchoolRows: [string, string, string, boolean][] = [
   [
     "HSG.CO.A.5",
     "Construct composed motions",
-    "transformation-constructions",
+    "transformation-constructions,congruence-criteria",
     false,
   ],
   [
     "HSG.CO.B.6",
     "Congruence through rigid motions",
-    "congruence-criteria",
+    "congruence-criteria,transformation-constructions,transformation-invariants",
     false,
   ],
   [
@@ -1074,14 +1074,14 @@ const highSchoolRows: [string, string, string, boolean][] = [
     false,
   ],
   ["HSG.GMD.A.2", "Cavalieri volume reasoning", "cavalieri-principle", true],
-  ["HSG.GMD.A.3", "Apply solid volume formulas", "solid-volume-models", false],
+  ["HSG.GMD.A.3", "Apply solid volume formulas", "solid-volume-models,cavalieri-principle,density-modeling,measurement-formula-proofs,sections-and-revolutions", false],
   [
     "HSG.GMD.B.4",
     "Sections and rotational solids",
-    "sections-and-revolutions",
+    "sections-and-revolutions,conic-sections,solid-cross-sections",
     false,
   ],
-  ["HSG.GPE.A.1", "Derive coordinate circles", "circle-equations", false],
+  ["HSG.GPE.A.1", "Derive coordinate circles", "circle-equations,conic-sections", false],
   ["HSG.GPE.A.2", "Focus directrix parabolas", "parabola-locus", false],
   [
     "HSG.GPE.A.3",
@@ -1090,8 +1090,8 @@ const highSchoolRows: [string, string, string, boolean][] = [
     true,
   ],
   ["HSG.GPE.B.4", "Algebraic geometric proofs", "coordinate-proofs", false],
-  ["HSG.GPE.B.5", "Prove perpendicular parallel slopes", "slope-proofs", false],
-  ["HSG.GPE.B.6", "Directed segment partitions", "segment-division", false],
+  ["HSG.GPE.B.5", "Prove perpendicular parallel slopes", "slope-proofs,circle-theorems,coordinate-proofs,linear-equation-modeling", false],
+  ["HSG.GPE.B.6", "Directed segment partitions", "segment-division,coordinate-distance", false],
   [
     "HSG.GPE.B.7",
     "Coordinate perimeter and area",
@@ -1099,7 +1099,7 @@ const highSchoolRows: [string, string, string, boolean][] = [
     false,
   ],
   ["HSG.MG.A.1", "Choose geometric object models", "geometric-modeling", false],
-  ["HSG.MG.A.2", "Area volume density models", "density-modeling", false],
+  ["HSG.MG.A.2", "Area volume density models", "density-modeling,solid-volume-models,units-and-precision", false],
   ["HSG.MG.A.3", "Constrained geometric design", "geometric-design", false],
   [
     "HSG.SRT.A.1",
@@ -1117,13 +1117,13 @@ const highSchoolRows: [string, string, string, boolean][] = [
   [
     "HSG.SRT.B.4",
     "Prove proportional triangle theorems",
-    "similarity-theorems",
+    "similarity-theorems,similarity-proofs",
     false,
   ],
   [
     "HSG.SRT.B.5",
     "Apply similarity and congruence",
-    "similarity-proofs,congruence-criteria",
+    "similarity-proofs,congruence-criteria,similarity-theorems",
     false,
   ],
   [
@@ -1135,20 +1135,20 @@ const highSchoolRows: [string, string, string, boolean][] = [
   [
     "HSG.SRT.C.7",
     "Complementary trigonometric relationships",
-    "complementary-trigonometry",
+    "complementary-trigonometry,trigonometric-symmetry",
     false,
   ],
   [
     "HSG.SRT.C.8",
     "Applied right-triangle solutions",
-    "right-triangle-trigonometry,special-right-triangles",
+    "right-triangle-trigonometry,special-right-triangles,vector-modeling",
     false,
   ],
   ["HSG.SRT.D.9", "Derive trigonometric area", "trigonometric-area", true],
-  ["HSG.SRT.D.10", "Prove sine cosine laws", "triangle-law-proofs", true],
+  ["HSG.SRT.D.10", "Prove sine cosine laws", "triangle-law-proofs,oblique-triangles", true],
   ["HSG.SRT.D.11", "Apply oblique triangle laws", "oblique-triangles", true],
   ["HSS.CP.A.1", "Event set operations", "event-sets", false],
-  ["HSS.CP.A.2", "Independence product criterion", "independent-events", false],
+  ["HSS.CP.A.2", "Independence product criterion", "independent-events,conditional-probability", false],
   [
     "HSS.CP.A.3",
     "Conditioning and independence",
@@ -1158,13 +1158,13 @@ const highSchoolRows: [string, string, string, boolean][] = [
   [
     "HSS.CP.A.4",
     "Table-based conditional probabilities",
-    "conditional-probability",
+    "conditional-probability,independent-events",
     false,
   ],
   [
     "HSS.CP.A.5",
     "Explain everyday conditioning",
-    "conditional-probability",
+    "conditional-probability,independent-events",
     false,
   ],
   [
@@ -1173,7 +1173,7 @@ const highSchoolRows: [string, string, string, boolean][] = [
     "conditional-probability",
     false,
   ],
-  ["HSS.CP.B.7", "Overlapping event addition", "probability-addition", false],
+  ["HSS.CP.B.7", "Overlapping event addition", "probability-addition,independent-events", false],
   [
     "HSS.CP.B.8",
     "Conditional product rule",
@@ -1189,7 +1189,7 @@ const highSchoolRows: [string, string, string, boolean][] = [
   [
     "HSS.IC.A.1",
     "Random-sample population inference",
-    "statistical-inference",
+    "statistical-inference,statistical-report-critique,study-design",
     false,
   ],
   [
@@ -1198,8 +1198,8 @@ const highSchoolRows: [string, string, string, boolean][] = [
     "simulation-model-checks",
     false,
   ],
-  ["HSS.IC.B.3", "Randomization and study types", "study-design", false],
-  ["HSS.IC.B.4", "Simulated sampling error", "sampling-margin-error", false],
+  ["HSS.IC.B.3", "Randomization and study types", "study-design,causal-claims", false],
+  ["HSS.IC.B.4", "Simulated sampling error", "sampling-margin-error,statistical-inference", false],
   [
     "HSS.IC.B.5",
     "Randomized treatment comparisons",
@@ -1235,7 +1235,7 @@ const highSchoolRows: [string, string, string, boolean][] = [
   [
     "HSS.ID.B.6",
     "Bivariate models and residuals",
-    "residuals-correlation",
+    "residuals-correlation,model-validation,regression-interpretation",
     false,
   ],
   [
@@ -1257,11 +1257,11 @@ const highSchoolRows: [string, string, string, boolean][] = [
     "random-variables",
     true,
   ],
-  ["HSS.MD.A.2", "Expected distribution values", "expected-value", true],
+  ["HSS.MD.A.2", "Expected distribution values", "expected-value,decision-strategies,empirical-distributions,theoretical-distributions", true],
   [
     "HSS.MD.A.3",
     "Theoretical probability distributions",
-    "theoretical-distributions",
+    "theoretical-distributions,random-variables",
     true,
   ],
   [
@@ -1270,7 +1270,7 @@ const highSchoolRows: [string, string, string, boolean][] = [
     "empirical-distributions",
     true,
   ],
-  ["HSS.MD.B.5", "Expected payoff decisions", "expected-value", true],
+  ["HSS.MD.B.5", "Expected payoff decisions", "expected-value,decision-strategies,theoretical-distributions", true],
   ["HSS.MD.B.6", "Randomized fair decisions", "fair-random-decisions", true],
   [
     "HSS.MD.B.7",
@@ -1295,7 +1295,7 @@ for (const [id, description, skillIds, advanced] of highSchoolRows) {
     sourceReviewedAt: "2026-10-16",
     advanced,
   });
-  for (const skillId of skillIds.split(",")) {
+  for (const skillId of skillIds.split(",").filter(Boolean)) {
     const skill = skills.find((s) => s.id === skillId);
     if (!skill) throw new Error(`Missing crosswalk skill ${skillId}`);
     skill.alignments.push({
