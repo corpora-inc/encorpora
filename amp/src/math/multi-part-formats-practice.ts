@@ -14,6 +14,7 @@ import {
 } from "./multi-part-choice";
 import { lineTable } from "./scene/author";
 import { axisRecord, chooseAxes, defineAxis } from "./variation/axes";
+import { clauseTask, valuesFromSet } from "./equation-clause";
 
 /** Families answered by choosing one option for each blank
  * (multi-part-choice-v1): the rule of a two-row table written as a sentence
@@ -34,7 +35,8 @@ export const multiPartFormatsTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "substitution-match-table",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Mark each equation true or not true",
     skillId: "linear-equations",
     gradeBand: "6–8",
@@ -344,7 +346,10 @@ function equationOf(
 }
 function substitutionMatchTable(seed: string, salt: string): GeneratedProblem {
   const meta = multiPartFormatsTemplates[1]!;
-  const r = random(meta.id, salt);
+  if (clauseTask(meta.id, seed) === "values-from-set")
+    return valuesFromSet({ ...meta, version: 2 }, salt);
+  const classic = { ...meta, version: 1 };
+  const r = random(classic.id, salt);
   const axes = chooseAxes(meta.id, seed, substitutionAxes);
   const count = axes["equation-count"] === "five" ? 5 : 4;
   const magnitude = pick(r, [2, 3, 4, 5, 6, 8, 10, 12]);
@@ -367,7 +372,7 @@ function substitutionMatchTable(seed: string, salt: string): GeneratedProblem {
     throw new Error("Need different equations");
   const columns = optionsOf(["True", "Not true"]);
   const state = `$${v} = ${value}$`;
-  return problemOf(meta, seed, {
+  return problemOf(classic, seed, {
     prompt: `Mark each equation as true or not true when ${state}.`,
     response: {
       kind: "multi-part-choice",
@@ -427,6 +432,7 @@ export function generateMultiPartFormatsProblem(
         throw error;
     }
   if (!problem) throw new Error(`${templateId}: no instance for ${seed}`);
+  if (problem.variant?.axes && "clause" in problem.variant.axes) return problem;
   return {
     ...problem,
     variant: {

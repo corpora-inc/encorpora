@@ -135,6 +135,11 @@ const expected: Record<string, { skill: string; tags: string[] }> = {
       "cone-cylinder",
       "circumference-justification",
       "limit-justification",
+      "cylinder-limit",
+      "pyramid-cavalieri",
+      "cone-equal-sections",
+      "cavalieri-volumes",
+      "cavalieri-oblique",
     ],
   },
 };
