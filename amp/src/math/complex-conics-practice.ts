@@ -1,7 +1,9 @@
+import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { assemble, random, type Random } from "./distribution-practice";
-import { graph } from "./scene/author";
-import type { Scene } from "./scene/spec";
+import { graph, scene as composeScene } from "./scene/author";
+import type { Element, Scene } from "./scene/spec";
+import { generatingVersion } from "./variation/axes";
 
 /**
  * Complex plane, polar coordinates, parametric motion and conics. Each template
@@ -15,9 +17,11 @@ const meta = (
   difficultyOffset: number,
   description: string,
   figure = false,
+  version = 1,
 ): TemplateMetadata => ({
   id,
-  version: 1,
+  version,
+  ...(version > 1 ? { reprintsFrom: 1 as const } : {}),
   title,
   skillId,
   gradeBand: "9–12",
@@ -35,6 +39,7 @@ export const complexConicsTemplates: readonly TemplateMetadata[] = [
     0.5,
     "Read a point as $a+bi$, find a modulus, add as vectors, and convert between $a+bi$ and $r(\\cos\\theta+i\\sin\\theta)$ for special angles.",
     true,
+    2,
   ),
   meta(
     "complex-conjugate-division",
@@ -49,6 +54,8 @@ export const complexConicsTemplates: readonly TemplateMetadata[] = [
     "complex-distance",
     0.45,
     "Find |z − w|, the midpoint (z + w)/2, a missing endpoint, and the circle |z − w| = r.",
+    false,
+    2,
   ),
   meta(
     "complex-quadratic-factors",
@@ -772,7 +779,69 @@ function quotientSpec(
 }
 
 // ------------------------------------------------------------------ distance
-function distanceCase(r: Random): Spec {
+/** Average of an integer sum, as a term: halves stay fractions. */
+const avgTerm = (sum: number): Term =>
+  sum % 2 === 0 ? tInt(sum / 2) : tFrac(sum, 2);
+const avgCx = (sx: number, sy: number) => M(cx(avgTerm(sx), avgTerm(sy)));
+/** Midpoint whose coordinate sum is odd, so the average is not an integer.
+ * Classic seeds keep the even-step midpoint above. */
+function wideMidpoint(r: Random): Spec {
+  for (let attempt = 0; attempt < 60; attempt++) {
+    const a = r(-6, 6);
+    const b = r(-6, 6);
+    const c = r(-6, 6);
+    const d = r(-6, 6);
+    const sx = a + c;
+    const sy = b + d;
+    if (sx === 0 || sy === 0) continue;
+    if (sx % 2 === 0 && sy % 2 === 0) continue;
+    if (a === c && b === d) continue;
+    const correct = avgCx(sx, sy);
+    const wrong: Wrong[] = [
+      [
+        M(cxInt(sx, sy)),
+        "That is $z+w$, the sum. Divide by 2 to get the average, which is halfway.",
+      ],
+      [
+        avgCx(c - a, d - b),
+        "That is half the difference, the step to travel from $z$, not the position of the midpoint.",
+      ],
+      [
+        M(cx(avgTerm(sx), tInt(sy))),
+        "This adds the imaginary parts without halving. Divide that sum by 2 too.",
+      ],
+      [
+        M(cx(tInt(sx), avgTerm(sy))),
+        "This adds the real parts without halving. Divide that sum by 2 too.",
+      ],
+      [
+        avgCx(sy, sx),
+        "The parts are swapped. The real part of the midpoint is the average of the real parts.",
+      ],
+    ];
+    const labels = [correct, ...wrong.map((w) => w[0])];
+    if (new Set(labels).size !== labels.length) continue;
+    const mx = avgTerm(sx);
+    const my = avgTerm(sy);
+    return {
+      variant: 2,
+      prompt: `Find the midpoint of the segment joining $z=${cxInt(a, b)}$ and $w=${cxInt(c, d)}$ in the complex plane, written as a complex number.`,
+      hint: `The midpoint of $z=${cxInt(a, b)}$ and $w=${cxInt(c, d)}$ is the average of the two numbers. Average the real parts, then average the imaginary parts.`,
+      explanation: [
+        COMPLEX,
+        "The midpoint is the point halfway between two points. Its coordinates are the averages: add and divide by 2.",
+        `Average the real parts: $\\frac{${a}+(${c})}{2}=${signed(mx)}$.`,
+        `Average the imaginary parts: $\\frac{${b}+(${d})}{2}=${signed(my)}$.`,
+        `An odd sum does not divide evenly, so the average keeps a denominator of 2.`,
+        `So the midpoint is $\\frac{z+w}{2}=${cx(mx, my)}$.`,
+      ],
+      correct,
+      wrong,
+    };
+  }
+  throw new Error("No odd-sum midpoint");
+}
+function distanceCase(r: Random, wide = false): Spec {
   const variant = r(0, 4);
   const lab = (a: number, b: number) => cxInt(a, b);
   const difference = () => {
@@ -839,6 +908,7 @@ function distanceCase(r: Random): Spec {
     };
   }
   if (variant === 2) {
+    if (wide) return wideMidpoint(r);
     let a: number, b: number, c: number, d: number;
     do {
       a = r(-6, 6);
@@ -2300,6 +2370,467 @@ function parabolaCase(r: Random): Spec {
   };
 }
 
+// --------------------------------------------------------------- clause families
+/** Own stream, not the content stream, so a classic draw reprints the old bytes. */
+function clauseRandom(templateId: string, seed: string): Random {
+  let counter = 0;
+  return (lo, hi) => {
+    const span = hi - lo + 1;
+    const limit = Math.floor(0x100000000 / span) * span;
+    let n: number;
+    do
+      n = createHash("sha256")
+        .update(JSON.stringify([templateId, "clause-family", seed, counter++]))
+        .digest()
+        .readUInt32BE(0);
+    while (n >= limit);
+    return lo + (n % span);
+  };
+}
+function weighted<T>(r: Random, items: readonly (readonly [T, number])[]): T {
+  const total = items.reduce((sum, [, w]) => sum + w, 0);
+  let n = r(0, total - 1);
+  for (const [value, w] of items) {
+    if (n < w) return value;
+    n -= w;
+  }
+  throw new Error("Empty weight table");
+}
+const legacyClause = (since: number) => {
+  const version = generatingVersion();
+  return version != null && version < since;
+};
+function stampClause(built: ComplexConicsCase, family: string): ComplexConicsCase {
+  return {
+    ...built,
+    problem: {
+      ...built.problem,
+      variant: { id: family, axes: { clause: family } },
+    },
+  };
+}
+/** Exact r·(cos, sin). Figure pixels may use a square root; the key does not. */
+function exactPart(radius: number, t: RR): Term {
+  if (t.k === 0) return T(false, "0");
+  const neg = t.k < 0;
+  const num = Math.abs(t.k) * radius;
+  if (num % 2 === 0) {
+    const m = num / 2;
+    if (t.rad === 1) return T(neg, String(m));
+    if (m === 1) return T(neg, `\\sqrt{${t.rad}}`);
+    return T(neg, `${m}\\sqrt{${t.rad}}`);
+  }
+  const top =
+    t.rad === 1
+      ? String(num)
+      : num === 1
+        ? `\\sqrt{${t.rad}}`
+        : `${num}\\sqrt{${t.rad}}`;
+  return T(neg, `\\frac{${top}}{2}`);
+}
+const fitLabel = (options: readonly string[], what: string) => {
+  for (const label of options) if (label.length <= 120) return label;
+  throw new Error(`${what} label is too long`);
+};
+const labelSet = (correct: string, wrong: Wrong[], what: string) => {
+  const labels = [correct, ...wrong.map((w) => w[0])];
+  if (labels.some((label) => label.length > 120 || label.length < 1))
+    throw new Error(`${what} label length`);
+  if (new Set(labels).size !== labels.length)
+    throw new Error(`${what} duplicate choice`);
+};
+const refDeg = (deg: number) => {
+  const d = mod360(deg);
+  return d <= 90 ? d : d <= 180 ? 180 - d : d <= 270 ? d - 180 : 360 - d;
+};
+const reflectDeg = (deg: number) => mod360(360 - mod360(deg));
+/** Display only. The choice key is the exact term, not this number. */
+function partPixel(radius: number, t: RR) {
+  return (t.k * radius * Math.sqrt(t.rad)) / 2;
+}
+function planeArrow(radius: number, deg: number): Scene {
+  const t = trig(deg);
+  const px = partPixel(radius, t.c);
+  const py = partPixel(radius, t.s);
+  const reach = Math.max(Math.abs(px), Math.abs(py), 1);
+  const L = Math.max(2, Math.ceil(reach + 1));
+  const g = graph({
+    x: [-L, L],
+    y: [-L, L],
+    tick: L > 9 ? 2 : 1,
+    axisNames: ["real", "imaginary"],
+  })
+    .id("g")
+    .segment([0, 0], [px, py], { arrow: true, color: "accent" });
+  if (Math.abs(px) > 1e-6 && Math.abs(py) > 1e-6)
+    g.segment([0, 0], [px, 0], { dash: "dash" }).segment([px, 0], [px, py], {
+      dash: "dash",
+    });
+  const arcR = Math.min(0.85, Math.hypot(px, py) * 0.4);
+  const arc: Element | null =
+    mod360(deg) !== 0 && arcR >= 0.25
+      ? {
+          type: "arc",
+          center: [0, 0],
+          r: arcR,
+          from: 0,
+          to: deg,
+          stroke: "gold",
+          width: 2,
+        }
+      : null;
+  return composeScene(...(arc ? [g, arc] : [g])).build({
+    title: "Complex plane with one arrow from 0",
+  });
+}
+const magBody = (t: Term) =>
+  t.body === "0" || /^\\d+$/.test(t.body) ? t.body : `(${t.body})`;
+function regionLine(deg: number, rect: string) {
+  const d = mod360(deg);
+  const theta = piTex(deg);
+  if (d === 0)
+    return `$${theta}$ lies on the positive real axis, and so does $${rect}$.`;
+  if (d === 180)
+    return `$${theta}$ lies on the negative real axis, and so does $${rect}$.`;
+  if (d === 90)
+    return `$${theta}$ lies on the positive imaginary axis, and so does $${rect}$.`;
+  if (d === 270)
+    return `$${theta}$ lies on the negative imaginary axis, and so does $${rect}$.`;
+  const q = d < 90 ? "I" : d < 180 ? "II" : d < 270 ? "III" : "IV";
+  return `$${theta}$ is in quadrant ${q} and so is $${rect}$.`;
+}
+/** A false arctan claim. Never the key. Quadrant I would make the blind ratio true, so that case flips a sign. */
+function arctanLine(x: Term, y: Term, deg: number) {
+  const theta = piTex(deg);
+  const ratio = (num: Term, den: Term) =>
+    `$\\tan^{-1}\\!\\left(\\frac{${signed(num)}}{${signed(den)}}\\right)=${theta}$.`;
+  if (x.body === "0") return `$\\tan^{-1}(${signed(y)})=${theta}$.`;
+  if (deg === 0) return `$\\tan^{-1}(-1)=${theta}$.`;
+  if (deg > 0 && deg < 90)
+    return fitLabel(
+      [ratio(T(!y.neg, y.body), x), `$\\tan^{-1}(-1)=${theta}$.`],
+      "arctan",
+    );
+  return fitLabel([ratio(y, x), `$\\tan^{-1}(-1)=${theta}$.`], "arctan");
+}
+const SAME_DEGS = [
+  0, 30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330,
+] as const;
+const SAME_RADII = [2, 3, 4, 5, 6, 8] as const;
+export type SameNumberInput = {
+  r: number;
+  /** Shown polar angle, in degrees. In mismatch mode this is the decoy. */
+  deg: number;
+  mode: "match" | "mismatch";
+};
+export function sameNumberSpec(input: SameNumberInput): Spec {
+  const radius = input.r;
+  const shown = mod360(input.deg);
+  const trueDeg = input.mode === "match" ? shown : reflectDeg(shown);
+  if (input.mode === "mismatch" && trueDeg === shown)
+    throw new Error("Mismatch needs a different quadrant");
+  const truth = trig(trueDeg);
+  const shownT = trig(shown);
+  const x = exactPart(radius, truth.c);
+  const y = exactPart(radius, truth.s);
+  const shownY = exactPart(radius, shownT.s);
+  const rect = cx(x, y);
+  const polar = polarTex(radius, shown);
+  const theta = piTex(shown);
+  const figure = planeArrow(radius, trueDeg);
+  if (input.mode === "mismatch") {
+    const sine = `$${radius}\\sin ${theta}=${signed(shownY)}$`;
+    const tight = rect.replace(/ - /g, "-").replace(/ \+ /g, "+");
+    const correct = fitLabel(
+      [
+        `${sine}, but the imaginary part of $${tight}$ is $${signed(y)}$: same length, different point.`,
+        `${sine}, but the imaginary part of $${rect}$ is $${signed(y)}$: different point.`,
+        `${sine} but the imaginary part is $${signed(y)}$: different point.`,
+      ],
+      "mismatch",
+    );
+    const wrong: Wrong[] = [
+      [
+        `Yes, both have length $${radius}$.`,
+        "Equal lengths only put both names on one circle. A circle is many points.",
+      ],
+      [
+        `Yes, the reference angle is $${piTex(refDeg(shown))}$ in both.`,
+        "The reference angle ignores the quadrant, so it fits more than one point.",
+      ],
+      [
+        y.neg
+          ? "No, because $r$ must be negative for a negative imaginary part."
+          : "No, because $r$ must be negative for a positive imaginary part.",
+        "The length $r$ stays positive. A negative imaginary part is a negative sine, not a negative length.",
+      ],
+    ];
+    labelSet(correct, wrong, "mismatch");
+    return {
+      variant: 5,
+      prompt: `Is $${polar}$ another name for $${rect}$? Which statement decides it correctly?`,
+      hint: "Turn the polar name back into two parts and compare both. Matching the length is not enough.",
+      explanation: [
+        "A complex number is one point. Polar form and $a+bi$ name that point only when both parts agree: the real part is $r\\cos\\theta$ and the imaginary part is $r\\sin\\theta$.",
+        `Here $\\sin ${theta}=${trigTex(shownT.s)}$, so $${radius}\\sin ${theta}=${signed(shownY)}$. The imaginary part of $${rect}$ is $${signed(y)}$.`,
+        "Same length, and the imaginary part has the wrong sign, so these are different points.",
+        "Length alone is a circle. The reference angle alone ignores the quadrant. A negative imaginary part does not make $r$ negative.",
+      ],
+      correct,
+      wrong,
+      figure,
+    };
+  }
+  const eqs = `$${radius}\\cos ${theta}=${signed(x)}$ and $${radius}\\sin ${theta}=${signed(y)}$`;
+  const correct = fitLabel(
+    [
+      `${eqs}, so both name the point $(${signed(x)}, ${signed(y)})$.`,
+      `${eqs}, so both name $(${signed(x)}, ${signed(y)})$.`,
+      `${eqs}.`,
+    ],
+    "match",
+  );
+  const lengthLine = fitLabel(
+    [
+      `$\\sqrt{${magBody(x)}^2+${magBody(y)}^2}=${radius}$, so both have length ${radius}.`,
+      `Both have length $${radius}$, so both lie on one circle.`,
+    ],
+    "length",
+  );
+  const wrong: Wrong[] = [
+    [
+      lengthLine,
+      "Equal lengths only put both names on one circle. Another point on that circle is a different number.",
+    ],
+    [
+      regionLine(shown, rect),
+      "A quadrant, or one axis, is a whole region. Both parts have to match before the names are the same point.",
+    ],
+    [
+      arctanLine(x, y, shown),
+      "That inverse tangent statement is false. Inverse tangent stays between $-\\pi/2$ and $\\pi/2$ and does not read the quadrant.",
+    ],
+  ];
+  labelSet(correct, wrong, "match");
+  return {
+    variant: 5,
+    prompt: `The number $z$ is written two ways: $${rect}$ and $${polar}$. Which shows that these are the same number?`,
+    hint: "Turn the polar name back into a real part and an imaginary part, then compare both parts, not just the length.",
+    explanation: [
+      "A complex number is one point. The $a+bi$ name gives the point by its legs. Polar form gives the length and the angle, and the triangle under the arrow turns one into the other.",
+      `So the forms agree when both parts come out: $${radius}\\cos ${theta}=${signed(x)}$ and $${radius}\\sin ${theta}=${signed(y)}$. Both names are the point $(${signed(x)}, ${signed(y)})$.`,
+      "Length alone fixes a circle. A quadrant alone fixes a quarter of the plane. Only both legs fix the point.",
+      "The inverse tangent statement is false. $\\tan^{-1}$ returns an angle between $-\\pi/2$ and $\\pi/2$, and it ignores the quadrant.",
+    ],
+    correct,
+    wrong,
+    figure,
+  };
+}
+type AxisKind = "pos-real" | "neg-real" | "pos-imag" | "neg-imag";
+const AXIS_KINDS: readonly AxisKind[] = [
+  "pos-real",
+  "neg-real",
+  "pos-imag",
+  "neg-imag",
+];
+export type AxisNumberInput = {
+  r: number;
+  axis: AxisKind;
+  ask: "polar" | "reverse";
+};
+function axisPoint(axis: AxisKind, radius: number) {
+  if (axis === "pos-real") return { a: radius, b: 0, deg: 0 };
+  if (axis === "neg-real") return { a: -radius, b: 0, deg: 180 };
+  if (axis === "pos-imag") return { a: 0, b: radius, deg: 90 };
+  return { a: 0, b: -radius, deg: 270 };
+}
+function polarWrongs(axis: AxisKind, radius: number): Wrong[] {
+  const at = (value: number, deg: number) => M(polarTex(value, deg));
+  const neg = (deg: number) => M(`-${radius}(\\cos ${piTex(deg)}+i\\sin ${piTex(deg)})`);
+  const withI = (deg: number) =>
+    M(`${radius}i(\\cos ${piTex(deg)}+i\\sin ${piTex(deg)})`);
+  if (axis === "pos-real")
+    return [
+      [neg(180), "The length in polar form stays positive. A negative sign belongs in the angle, not in $r$."],
+      [at(radius, 180), "A positive real number sits on the positive real axis, so the angle is 0, not $\\pi$."],
+      [at(radius, 90), "That angle points up the imaginary axis. This number has no imaginary part."],
+    ];
+  if (axis === "neg-real")
+    return [
+      [neg(0), "The length stays positive. The minus sign is the angle $\\pi$, not a negative $r$."],
+      [at(radius, 0), "Angle 0 is the positive real axis. A negative real number points the opposite way, at $\\pi$."],
+      [at(radius, 270), "A minus sign on a real number is not a move down the imaginary axis."],
+    ];
+  if (axis === "pos-imag")
+    return [
+      [at(radius, 0), "Angle 0 is the positive real axis. $i$ points straight up, at $\\pi/2$."],
+      [at(radius, 270), "That angle points down. A positive imaginary part points up, at $\\pi/2$."],
+      [withI(90), "The $i$ is the direction, not part of the length. The length is the plain positive number."],
+    ];
+  return [
+    [at(radius, 90), "That angle points up. A negative imaginary part points down, at $3\\pi/2$."],
+    [neg(90), "The length stays positive. Do not put the minus sign into $r$."],
+    [at(radius, 180), "Angle $\\pi$ is the negative real axis, not the negative imaginary axis."],
+  ];
+}
+function reverseWrongs(axis: AxisKind, radius: number): Wrong[] {
+  const real = (n: number): Wrong => [
+    M(cxInt(n, 0)),
+    n === radius
+      ? "This reads the length as a positive real number and drops the angle."
+      : "This puts the signed length on the real axis. Check which axis the angle names.",
+  ];
+  const imag = (n: number): Wrong => [
+    M(cxInt(0, n)),
+    "This puts the value on the imaginary axis. Read cosine for the real part and sine for the imaginary part.",
+  ];
+  if (axis === "pos-real")
+    return [
+      real(-radius),
+      imag(radius),
+      imag(-radius),
+    ];
+  if (axis === "neg-real") return [real(radius), imag(-radius), imag(radius)];
+  if (axis === "pos-imag")
+    return [
+      imag(-radius),
+      real(radius),
+      real(-radius),
+    ];
+  return [imag(radius), real(-radius), real(radius)];
+}
+/** Axis explanations must not contain the letters tan, including inside longer words. */
+function axisWords(a: number, b: number, deg: number, radius: number): string[] {
+  const place =
+    b === 0
+      ? a > 0
+        ? "positive real axis"
+        : "negative real axis"
+      : b > 0
+        ? "positive imaginary axis"
+        : "negative imaginary axis";
+  const angle =
+    deg === 0
+      ? "The angle is 0, straight along the positive real axis."
+      : deg === 180
+        ? "The angle is $\\pi$, straight along the negative real axis."
+        : deg === 90
+          ? "The angle is $\\frac{\\pi}{2}$, straight up the imaginary axis."
+          : "The angle is $\\frac{3\\pi}{2}$, straight down the imaginary axis.";
+  return [
+    "A complex number is a point. The real part is across and the imaginary part is up.",
+    `$${cxInt(a, b)}$ sits on the ${place}. ${angle}`,
+    b === 0
+      ? `The length is the positive size of the real number, ${radius}. One of cosine or sine is 0, so one part of the point is 0.`
+      : `The length is the plain positive number without its $i$, which is ${radius}. One of cosine or sine is 0, so the real part is 0.`,
+  ];
+}
+export function axisNumberSpec(input: AxisNumberInput): Spec {
+  const { a, b, deg } = axisPoint(input.axis, input.r);
+  const figure = planeArrow(input.r, deg);
+  const words = axisWords(a, b, deg, input.r);
+  if (input.ask === "reverse") {
+    const correct = M(cxInt(a, b));
+    const wrong = reverseWrongs(input.axis, input.r);
+    labelSet(correct, wrong, "axis reverse");
+    return {
+      variant: 6,
+      prompt: `Write $${polarTex(input.r, deg)}$ in the form $a+bi$, using exact values.`,
+      hint: "Cosine gives the across part and sine gives the up part. On an axis, one of those parts is zero.",
+      explanation: [
+        ...words,
+        `Multiply the length by those cosine and sine values. The number is $${cxInt(a, b)}$.`,
+      ],
+      correct,
+      wrong,
+      figure,
+    };
+  }
+  const correct = M(polarTex(input.r, deg));
+  const wrong = polarWrongs(input.axis, input.r);
+  labelSet(correct, wrong, "axis polar");
+  if (!correct.startsWith("$" + String(input.r) + "("))
+    throw new Error("Correct polar form must use a positive length");
+  return {
+    variant: 6,
+    prompt: `Write $${cxInt(a, b)}$ in polar form $r(\\cos\\theta+i\\sin\\theta)$ with $r>0$ and $0\\le\\theta<2\\pi$.`,
+    hint: "The length in polar form is positive. Face the point from 0 and read the angle off the positive real axis.",
+    explanation: [
+      ...words,
+      `With a positive length, the polar form is $${polarTex(input.r, deg)}$.`,
+    ],
+    correct,
+    wrong,
+    figure,
+  };
+}
+function randomSameNumber(r: Random): Spec {
+  const mode = r(0, 1) === 0 ? "match" : "mismatch";
+  const deg =
+    mode === "match"
+      ? pick(r, SAME_DEGS)
+      : pick(
+          r,
+          SAME_DEGS.filter((d) => d !== 0 && d !== 180),
+        );
+  return sameNumberSpec({ r: pick(r, SAME_RADII), deg, mode });
+}
+function randomAxisNumber(r: Random): Spec {
+  const ask = weighted(r, [
+    ["polar-real", 30],
+    ["polar-imag", 30],
+    ["reverse", 20],
+  ] as const);
+  const radius = r(1, 9);
+  const axis =
+    ask === "polar-real"
+      ? r(0, 1) === 0
+        ? "pos-real"
+        : "neg-real"
+      : ask === "polar-imag"
+        ? r(0, 1) === 0
+          ? "pos-imag"
+          : "neg-imag"
+        : pick(r, AXIS_KINDS);
+  return axisNumberSpec({
+    r: radius,
+    axis,
+    ask: ask === "reverse" ? "reverse" : "polar",
+  });
+}
+function planeRouted(
+  template: TemplateMetadata,
+  seed: string,
+  r: Random,
+): ComplexConicsCase {
+  if (legacyClause(2)) return finish(template, seed, r, planeCase(r));
+  const clause = clauseRandom(template.id, seed);
+  const family = weighted(clause, [
+    ["classic", 2],
+    ["same-number-check", 1],
+    ["axis-numbers", 1],
+  ] as const);
+  if (family === "classic") return finish(template, seed, r, planeCase(r));
+  const spec =
+    family === "same-number-check"
+      ? randomSameNumber(clause)
+      : randomAxisNumber(clause);
+  return stampClause(finish(template, seed, clause, spec), family);
+}
+function distanceRouted(
+  template: TemplateMetadata,
+  seed: string,
+  r: Random,
+): ComplexConicsCase {
+  if (legacyClause(2)) return finish(template, seed, r, distanceCase(r));
+  const clause = clauseRandom(template.id, seed);
+  if (clause(0, 1) === 0) return finish(template, seed, r, distanceCase(r));
+  const spec = distanceCase(r, true);
+  const built = finish(template, seed, r, spec);
+  return spec.variant === 2 ? stampClause(built, "odd-midpoint") : built;
+}
+
 // ------------------------------------------------------------------ dispatch
 const builders: Record<string, (r: Random) => Spec> = {
   "complex-plane-forms": planeCase,
@@ -2314,7 +2845,7 @@ const builders: Record<string, (r: Random) => Spec> = {
 };
 /** Number of deliberate variants per template, for coverage tests. */
 export const complexConicsVariantCounts: Record<string, number> = {
-  "complex-plane-forms": 5,
+  "complex-plane-forms": 7,
   "complex-conjugate-division": 5,
   "complex-distance-midpoint": 5,
   "complex-quadratic-factors": 5,
@@ -2331,6 +2862,9 @@ export function complexConicsCase(id: string, seed: string) {
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
   const r = random(id, seed);
+  if (id === "complex-plane-forms") return planeRouted(template, seed, r);
+  if (id === "complex-distance-midpoint")
+    return distanceRouted(template, seed, r);
   return finish(template, seed, r, builders[id]!(r));
 }
 export const generateComplexConicsProblem = (id: string, seed: string) =>

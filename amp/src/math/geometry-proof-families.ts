@@ -1,5 +1,7 @@
+import { createHash } from "node:crypto";
 import type { TemplateMetadata } from "./contracts";
 import type { Scene } from "./scene/spec";
+import { generatingVersion } from "./variation/axes";
 import {
   angleSumFigure,
   bisectorFigure,
@@ -2568,6 +2570,182 @@ const measurementFamily: Family = {
         "The rearranged shape then has nearly straight, nearly parallel long sides and nearly straight short sides, which is close to a rectangle with the same area as the circle.",
       ],
     }),
+    (r) => {
+      const rad = r(2, 8);
+      const h = r(3, 12);
+      return {
+        tag: "cylinder-limit",
+        label: "Step",
+        prompt: `A right prism with a regular n-gon base is inscribed in a cylinder of radius ${rad} and height ${h}. Which step gives the cylinder volume $V = \\pi r^2 h$?`,
+        correct:
+          "As n grows, the base area approaches $\\pi r^2$, and the volume of every prism is its base area times its height.",
+        wrong: [
+          [
+            "The prism's lateral area approaches $2\\pi rh$.",
+            "Lateral area is surface, not volume. The volume uses the base area times the height.",
+          ],
+          [
+            "The n-gon becomes congruent to the circle.",
+            "The base approaches the circle. It never becomes congruent to it for a finite n.",
+          ],
+          [
+            "The slant edges shrink to zero.",
+            "A right prism has no slant edges. Its side edges stay equal to the height.",
+          ],
+        ],
+        hint: "The prism and the cylinder share a height. Ask what happens to the base area as the polygon gains more sides, and how a prism's volume uses that base.",
+        explanation: [
+          `The prism has height ${h}, the same as the cylinder of radius ${rad}.`,
+          "As the number of sides grows, the base area approaches $\\pi r^2$. A prism's volume is base area times height, so the volume approaches $\\pi r^2 h$.",
+        ],
+        model: { r: rad, h },
+      };
+    },
+    () => ({
+      tag: "pyramid-cavalieri",
+      label: "Step",
+      prompt:
+        "The cube cut into three congruent pyramids shows $V = \\frac{1}{3}Bh$ for one pyramid. Which step extends it to any pyramid of base area $B$ and height $h$?",
+      correct:
+        "Same height and base area give equal slice areas at every level, so by Cavalieri the volumes are equal.",
+      wrong: [
+        [
+          "Every pyramid is a third of some cube.",
+          "Only the three pyramids cut from that cube fill a cube. A pyramid with a different base is not one of them.",
+        ],
+        [
+          "All pyramids with equal heights are congruent.",
+          "Equal heights do not make the bases match, so the pyramids need not be congruent.",
+        ],
+        [
+          "The slant edges are equal, so the volumes are.",
+          "Equal slant edges do not fix the base area. Volume follows from matching cross-sections, not from matching edges.",
+        ],
+      ],
+      hint: "The cube shows the one-third rule for one pyramid. A different pyramid needs a reason that its slices match that pyramid's slices.",
+      explanation: [
+        "The three pyramids in the cube each have volume $\\frac{1}{3}Bh$ for that cube's face and edge.",
+        "Any other pyramid with the same base area and height has the same cross-section area at every level. Cavalieri's principle gives it the same volume.",
+      ],
+    }),
+    (r) => {
+      const pair = pick(r, [
+        [60, 10],
+        [30, 6],
+        [24, 9],
+        [48, 6],
+        [36, 8],
+        [15, 8],
+      ] as const);
+      const base = pair[0];
+      const h = pair[1];
+      const volume = (base * h) / 3;
+      return {
+        tag: "cone-equal-sections",
+        label: "Step",
+        prompt: `A cone of base area ${base} and height ${h} has the same cross-section area at every height as a pyramid of base area ${base} and height ${h}. Which step gives the cone the pyramid's volume?`,
+        correct:
+          "Equal cross-sections at every height give equal volumes.",
+        wrong: [
+          [
+            "The cross-sections are congruent.",
+            "The slices have the same area. A circle and a polygon of that area are not congruent.",
+          ],
+          [
+            "A circle has more area than a square of the same perimeter.",
+            "That compares a circle with a square. It does not compare the cone with the pyramid.",
+          ],
+          [
+            "The cone and the pyramid have equal surface area.",
+            "Matching cross-section areas fix the volume, not the surface area.",
+          ],
+        ],
+        hint: "The cone and the pyramid are given the same slice area at every height. Which fact turns matching slices into matching volumes?",
+        explanation: [
+          `The pyramid of base area ${base} and height ${h} has volume $\\frac{1}{3} \\times ${base} \\times ${h} = ${volume}$.`,
+          "The cone matches that pyramid's cross-section area at every height, so the volumes are equal. The step does not claim the slices are congruent.",
+        ],
+        model: { base, h, volume },
+      };
+    },
+    () => ({
+      tag: "cavalieri-volumes",
+      label: "Conclusion",
+      prompt:
+        "Two solids stand on the same plane with the same height. Every plane parallel to the base cuts equal-area cross-sections. What follows?",
+      correct: "The solids have equal volumes.",
+      wrong: [
+        [
+          "The solids have equal surface areas.",
+          "A sheared stack keeps the slice areas and the volume, but the lateral surface gets longer.",
+        ],
+        [
+          "The solids are congruent.",
+          "Matching slice areas do not force the slices to have the same shape, so the solids need not be congruent.",
+        ],
+        [
+          "The solids have equal base perimeters.",
+          "Equal base areas do not fix the perimeters. A long thin base can match a round one's area.",
+        ],
+      ],
+      hint: "The slices match in area at every height, and the heights match. Which measure do those slices determine?",
+      explanation: [
+        "Cavalieri's principle: same height and equal-area cross-sections at every level give equal volumes.",
+        "The surface can change when the stack is pushed sideways. Congruence and the base perimeter are not fixed.",
+      ],
+    }),
+    (r) => {
+      let rad = 3;
+      let h = 8;
+      let guard = 0;
+      const distinct = (radius: number, height: number) => {
+        const values = [
+          radius * radius * height,
+          4 * radius * radius * height,
+          2 * radius * height,
+          radius * radius,
+        ];
+        return new Set(values).size === 4;
+      };
+      if (r(0, 3) !== 0) {
+        do {
+          rad = r(2, 6);
+          h = r(3, 12);
+          guard++;
+        } while (!distinct(rad, h) && guard < 30);
+      }
+      if (!distinct(rad, h)) {
+        rad = 3;
+        h = 8;
+      }
+      const vol = rad * rad * h;
+      return {
+        tag: "cavalieri-oblique",
+        label: "Volume",
+        prompt: `An oblique cylinder has radius ${rad} and height ${h}. Every plane parallel to the base cuts a circle of area equal to the base of the right cylinder with that radius and height. What is the volume of the oblique cylinder?`,
+        correct: m(`${vol}\\pi`),
+        wrong: [
+          [
+            m(`${4 * vol}\\pi`),
+            "That uses the diameter as the radius. The radius is half the distance across.",
+          ],
+          [
+            m(`${2 * rad * h}\\pi`),
+            "That is the lateral surface of the right cylinder, not the volume.",
+          ],
+          [
+            m(`${rad * rad}\\pi`),
+            "That is the base area. Volume multiplies the base area by the height.",
+          ],
+        ],
+        hint: "The slant does not change any layer. Use the right cylinder with the same radius and height, and keep $\\pi$ in the answer.",
+        explanation: [
+          `A right cylinder of radius ${rad} and height ${h} has volume $\\pi r^2 h = ${vol}\\pi$.`,
+          "The oblique cylinder matches that base area at every height, so its volume is the same.",
+        ],
+        model: { r: rad, h, volume: `${vol}\\pi` },
+      };
+    },
   ],
 };
 
@@ -2608,9 +2786,12 @@ const OPENERS: Record<string, string> = {
 export const proofConstructionTemplates: readonly TemplateMetadata[] =
   families.map((f) => ({
     ...f.meta,
-    version: 1,
-    gradeBand: "9–12",
-    requiredResponseCapability: "single-choice-v1",
+    version: f.meta.id === "measurement-formula-justifications" ? 2 : 1,
+    ...(f.meta.id === "measurement-formula-justifications"
+      ? { reprintsFrom: 1 }
+      : {}),
+    gradeBand: "9–12" as const,
+    requiredResponseCapability: "single-choice-v1" as const,
   }));
 export function proofConstructionVariantCount(id: string) {
   return families.find((f) => f.meta.id === id)?.variants.length ?? 0;
@@ -2622,7 +2803,36 @@ export function proofConstructionCase(id: string, seed: string) {
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
   const r = seeded(id, seed);
-  const v = pick(r, family.variants)(r);
+  let pool = family.variants;
+  let stamp: number | null = null;
+  if (id === "measurement-formula-justifications") {
+    const since = 2;
+    const ver = generatingVersion();
+    const legacy = family.variants.slice(0, 5);
+    if (ver != null && ver < since) pool = legacy;
+    else {
+      stamp = ver ?? since;
+      // Own stream: the legacy content draw stays put when this lands on legacy.
+      let counter = 0;
+      const span = 4;
+      const limit = Math.floor(0x100000000 / span) * span;
+      let n: number;
+      do
+        n = createHash("sha256")
+          .update(JSON.stringify([id, "clause-family", seed, counter++]))
+          .digest()
+          .readUInt32BE(0);
+      while (n >= limit);
+      const which = n % span;
+      pool =
+        which < 2
+          ? legacy
+          : which === 2
+            ? family.variants.slice(5, 8)
+            : family.variants.slice(8);
+    }
+  }
+  const v = pick(r, pool)(r);
   const seen = new Set([v.correct]);
   const wrong = v.wrong.filter(([label]) => {
     if (seen.has(label)) return false;
@@ -2651,5 +2861,6 @@ export function proofConstructionCase(id: string, seed: string) {
     r,
     v.label,
   );
+  if (stamp != null) assembled.problem.public.templateVersion = stamp;
   return { ...assembled, model: v.model };
 }

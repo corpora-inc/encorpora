@@ -40,7 +40,7 @@ test("every generated family satisfies the runtime contract on a deterministic s
 test("malformed figures and unsupported versions fail closed", () => {
   const p = generateProblem("fraction-model", "contract").public;
   assert.equal(
-    publicProblemSchema.safeParse({ ...p, templateVersion: 2 }).success,
+    publicProblemSchema.safeParse({ ...p, templateVersion: 21 }).success,
     false,
   );
   assert.equal(

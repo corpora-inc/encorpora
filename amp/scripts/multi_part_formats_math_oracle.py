@@ -76,7 +76,32 @@ def side_value(text, variable, value):
     return evaluate(tree, {variable: value})
 
 
+def solve_values(public):
+    sentence = re.search(r"\$([^$]+)\$", public["prompt"]).group(1)
+    parsed = re.fullmatch(r"((?:-?\d+)?)x(?: \+ (\d+)| − (\d+))? ([<=>≤≥]) (-?\d+)", sentence)
+    require(parsed is not None, f"Unrecognized sentence {sentence!r}")
+    coef = int(parsed.group(1) or "1")
+    added = int(parsed.group(2) or 0) - int(parsed.group(3) or 0)
+    op, right = parsed.group(4), F(parsed.group(5))
+    blanks = public["response"]["blanks"]
+    key, truths = {}, []
+    for blank in blanks:
+        if blank["id"] == "count":
+            continue
+        left = coef * F(blank["label"]) + added
+        holds = {"=": left == right, "<": left < right, ">": left > right, "≤": left <= right, "≥": left >= right}[op]
+        truths.append(holds)
+        key[blank["id"]] = pick(blank, "true" if holds else "not true", lambda label: label)
+    count = sum(truths)
+    label = "none" if count == 0 else "exactly one" if count == 1 else "more than one"
+    count_blank = next(blank for blank in blanks if blank["id"] == "count")
+    key["count"] = pick(count_blank, label, lambda text: text)
+    return compact(key), None
+
+
 def solve_substitution(public):
+    if public["prompt"].startswith("Which numbers from the set"):
+        return solve_values(public)
     match = re.fullmatch(r"Mark each equation as true or not true when \$([a-z]) = (-?\d+)\$\.", public["prompt"])
     require(match is not None, f"Unrecognized prompt {public['prompt']!r}")
     variable, value = match.group(1), F(match.group(2))
@@ -138,6 +163,8 @@ def review_problem(problem):
     if template == "table-rule-sentence":
         expected, (xs, ys, op, n, ids) = solve_rule(public)
         review_rule_explanation(problem, xs, ys, op, n)
+    elif public["prompt"].startswith("Which numbers from the set"):
+        expected, _rows = solve_values(public)
     else:
         expected, (variable, value, rows) = solve_substitution(public)
         review_substitution_explanation(problem, variable, value, rows)
