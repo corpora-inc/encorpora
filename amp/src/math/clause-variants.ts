@@ -56,13 +56,6 @@ export const clauseEntries: Record<string, Entry> = {
     [sc],
     "Recognize that zero is its own opposite.",
   ),
-  "inequality-number-blanks": entry(
-    "signed",
-    ["position-inequality"],
-    [1, 1],
-    [sc],
-    "Read inequalities as relative positions on a number line.",
-  ),
   "number-line-distance": entry(
     "signed",
     ["absolute-distance", "rational-distance"],
@@ -72,10 +65,10 @@ export const clauseEntries: Record<string, Entry> = {
   ),
   "signed-context-order": entry(
     "signed",
-    ["write-order"],
-    [1, 1],
+    ["write-order", "position-inequality"],
+    [2, 1, 1],
     [sc],
-    "Write inequalities and interpret signed order in context.",
+    "Write inequalities, interpret signed order in context, and read relative positions on a number line.",
   ),
   "signed-story": entry(
     "signed",
@@ -250,7 +243,7 @@ export function generateClauseVariant(
       .filter((v) => v !== "legacy")
       .map((v) => [
         v,
-        meta.id === "signed-context-order"
+        meta.id === "signed-context-order" && v === "write-order"
           ? ("scenes-v2" as const)
           : ("scenes-v1" as const),
       ]),

@@ -271,6 +271,8 @@ def distance(public):
 
 def context_order(public):
     prompt, options = public["prompt"], public["response"]["options"]
+    if "number line increasing to the right" in prompt or "Which inequality describes their positions" in prompt:
+        return position(public)
     if "Which inequality" in prompt:
         return choose(options, relation)
     comparison = spans(prompt)[0]
@@ -784,7 +786,7 @@ def circle_derivation(public):
 
 SIGNED_SOLVERS = {
     "signed-quantity": zero_meaning, "opposite-on-line": opposite,
-    "inequality-number-blanks": position, "number-line-distance": distance,
+    "number-line-distance": distance,
     "signed-context-order": context_order, "signed-story": story,
     "signed-jumps": jumps, "signed-changes-sum": changes,
     "integer-addition": inverse_or_rewrite, "signed-fraction-sum": inverse_or_rewrite,
@@ -832,9 +834,8 @@ def handles_public(public):
     markers = {
         "signed-quantity": ("has a recorded value",),
         "opposite-on-line": ("Which number is its own opposite", "Which statement about opposites", "What is the opposite of the number at point $P$"),
-        "inequality-number-blanks": ("number line increasing to the right", "Which inequality describes their positions"),
         "number-line-distance": ("absolute value of the number at point", "whose number has absolute value", "Select the two expressions giving their distance", "How far apart are"),
-        "signed-context-order": ("express in this situation", "Which inequality expresses this fact"),
+        "signed-context-order": ("express in this situation", "Which inequality expresses this fact", "number line increasing to the right", "Which inequality describes their positions"),
         "signed-story": ("At dawn the temperature was", "towel bar is centered"),
         "signed-jumps": ("Which number line represents", "Which vertical number line shows"),
         "signed-changes-sum": ("combine to make 0", "opposite quantities combining", "Which regrouping keeps its value"),

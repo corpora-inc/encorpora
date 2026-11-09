@@ -825,12 +825,10 @@ export function signedClause(id: string, variant: string, r: Rng): Item {
       return zeroMeaning(r);
     case "opposite-on-line":
       return opposite(r);
-    case "inequality-number-blanks":
-      return position(r);
     case "number-line-distance":
       return distance(r, variant);
     case "signed-context-order":
-      return contextOrder(r);
+      return variant === "position-inequality" ? position(r) : contextOrder(r);
     case "signed-story":
       return story(r, variant);
     case "signed-jumps":

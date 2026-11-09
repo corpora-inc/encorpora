@@ -729,7 +729,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
     facetId: "absolute-value.core",
     extent: "partial",
     rationale:
-      "Select the correct statement about debts, elevations and temperatures given as signed decimals (greater debt, farther from sea level, colder), and the list that orders four signed fractions and decimals in a stated direction. Does not assess graphing on a number line, writing inequalities from a situation, or absolute value of expressions.",
+      "Select statements about debts, elevations and temperatures, order signed fractions and decimals, and match inequalities to situations or relative positions on a number line. Does not assess drawing number-line graphs, free-response inequality writing, or absolute value of expressions.",
   },
   {
     templateId: "equivalent-expressions-check",
