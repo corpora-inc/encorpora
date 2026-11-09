@@ -5,7 +5,7 @@ import type { TabItem } from "../../ui/Tabs";
  * belongs to. Each group has one link in the drawer and one row of tabs; a
  * screen outside every group gets the bar with the logo alone. `null` means
  * the screen keeps a frame of its own (the pitch, sign-in, first-run steps,
- * the free trial's practice, joining a class, school screens).
+ * joining a class, school screens).
  */
 export type ProgressTab = "overview" | "pathways" | "inventory";
 export type AccountTab = "security" | "learners" | "access" | "privacy";
@@ -21,7 +21,7 @@ const under = (pathname: string, path: string) =>
 /** The frame for a signed-in screen at `pathname`, or null for its own. */
 export function shellFrame(pathname: string): ShellFrame | null {
   const path = pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
-  if (path === "/overview" || path === "/me" || path === "/try/map")
+  if (path === "/overview" || path === "/me")
     return { kind: "progress", active: "overview" };
   // Changing the birth year belongs to the Overview it is opened from.
   if (path === "/profile/birth-year")
@@ -67,22 +67,20 @@ export function shellFrame(pathname: string): ShellFrame | null {
   return null;
 }
 
-/** Whose progress the Progress tabs show: the free assessment, the adult's
- * own learner, or the chosen child. */
-export type ProgressContext = "trial" | "own" | "learner";
+/** Whose progress the Progress tabs show: the adult's own learner, or the
+ * chosen child. */
+export type ProgressContext = "own" | "learner";
 
 /** The Progress tabs, one URL each. Paths have no leading slash. */
 export function progressTabs(context: ProgressContext): TabItem[] {
-  const search = context === "trial" ? { context: "trial" } : undefined;
   return [
     {
       id: "overview",
       label: "Overview",
-      path:
-        context === "trial" ? "try/map" : context === "own" ? "me" : "overview",
+      path: context === "own" ? "me" : "overview",
     },
-    { id: "pathways", label: "Pathways", path: "pathways", search },
-    { id: "inventory", label: "Inventory", path: "inventory", search },
+    { id: "pathways", label: "Pathways", path: "pathways" },
+    { id: "inventory", label: "Inventory", path: "inventory" },
   ];
 }
 

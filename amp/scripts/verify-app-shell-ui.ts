@@ -28,10 +28,8 @@ if (
   selectedCase &&
   ![
     "frontier-switch",
-    "drawer-trial",
-    "trial-refresh",
-    "trial-return",
-    "trial-retry",
+    "drawer-learner",
+    "learner-return",
     "library-search",
     "practice-title",
     "library-loading",
@@ -206,9 +204,9 @@ async function verifyShell() {
   }
 
   // 3. Bare links are never the browser's default blue or visited purple;
-  //    the landing footer and "Other programs" use the brand ink.
+  //    the landing footer uses the brand ink.
   for (const theme of ["light", "dark"] as const)
-    for (const id of ["landing", "trial-plans"]) {
+    for (const id of ["landing"]) {
       const { page, context } = await open(
         id,
         { width: 390, height: 844 },
@@ -236,7 +234,7 @@ async function verifyShell() {
         );
       }
       // The links this review moved off browser blue use the brand ink.
-      const brand = id === "landing" ? "For schools" : "Other programs";
+      const brand = "For schools";
       const fixed = links.find((l) => l.text === brand);
       check(
         fixed && fixed.color === fixed.primary,
@@ -265,24 +263,29 @@ async function verifyShell() {
     await context.close();
   }
 
-  // 5. Trial map: the next step is on the first screen of a phone; the map's
-  //    axis labels never collide and every dot stays inside the card.
+  // 5. A new learner's Overview: the free count and the next step are on the
+  //    first screen of a phone; the map's axis labels never collide and
+  //    every dot stays inside the card.
   for (const width of [320, 390]) {
+    const height = width === 320 ? 640 : 844;
     const { page, context } = await open(
-      "trial-map",
-      { width, height: width === 320 ? 640 : 844 },
+      "starter-overview",
+      { width, height },
       "light",
     );
-    const next = await page
-      .getByRole("link", { name: /Continue placement|Keep practicing/ })
-      .boundingBox();
+    const free = await page.locator(".home-free").boundingBox();
     check(
-      next && next.y + next.height <= (width === 320 ? 640 : 844),
-      `trial-map ${width}: the next step is below the fold`,
+      free && free.y + free.height <= height,
+      `starter-overview ${width}: the free problems left are below the fold`,
+    );
+    const next = await page.locator(".go-button").boundingBox();
+    check(
+      next && next.y + next.height <= height,
+      `starter-overview ${width}: the next step is below the fold`,
     );
     await context.close();
   }
-  for (const id of ["trial-map", "home"])
+  for (const id of ["starter-overview", "home"])
     for (const width of [320, 390, 768, 1280]) {
       const { page, context } = await open(id, { width, height: 900 }, "light");
       const chart = () =>
@@ -604,17 +607,16 @@ async function verifyFrontierSwitch() {
   }
 }
 
-/** A trial lookup must not invent a learner choice while it is pending.
- * Hold that response across opening the drawer, then verify the same controls
- * and text survive its completion. The account already says whether it has
- * an assessment, including when this browser has no saved trial token. */
-async function verifyDrawerTrialResolution() {
+/** The drawer names whose work it is from its first frame, and that control
+ * is never replaced once it shows: one learner is named, a family offers its
+ * learners, and a parent's first (unnamed) child is named like any other. */
+async function verifyDrawerLearner() {
   for (const viewport of viewports)
     for (const colorScheme of ["light", "dark"] as const)
-      for (const kind of ["single", "family", "trial"] as const) {
+      for (const kind of ["single", "family", "starter"] as const) {
         const context = await fixture.context(
           browser,
-          kind === "trial" ? "trial" : "paid",
+          kind === "starter" ? "starter" : "paid",
           { viewport, colorScheme },
         );
         // The single-learner case uses the same real paid learner, with the
@@ -629,16 +631,7 @@ async function verifyDrawerTrialResolution() {
             );
             await route.fulfill({ response, json: me });
           });
-        await context.addInitScript(() => localStorage.removeItem("amp.trial"));
-        let release!: () => void;
-        const held = new Promise<void>((resolve) => (release = resolve));
         const page = await context.newPage();
-        let reads = 0;
-        await context.route("**/api/v1/trials/current", async (route) => {
-          reads++;
-          await held;
-          await route.continue();
-        });
         try {
           await page.goto(`${origin}/family/security`);
           await page
@@ -649,40 +642,54 @@ async function verifyDrawerTrialResolution() {
             name: "Adaptive Math Pathways",
           });
           await drawer.waitFor();
-          await settle(page, 250);
+          const where = drawer.locator('[aria-label="Where you are"]');
+          await where.waitFor();
           const text = await drawer.innerText();
-          assert.equal(
-            text.includes("Free assessment"),
-            kind === "trial",
-            `${kind}: pending lookup must use the account's known assessment`,
-          );
-          const before = await drawer
-            .locator('[aria-label="Where you are"]')
-            .innerHTML();
-          const response = page.waitForResponse("**/api/v1/trials/current");
-          release();
-          await (await response).finished();
-          await settle(page, 250);
+          const before = await where.innerHTML();
+          const named = await where
+            .locator("[data-learner]")
+            .getAttribute("data-learner", { timeout: 1000 })
+            .catch(() => null);
+          const choices =
+            (await where
+              .getByRole("listbox", { name: "Current learner" })
+              .count()) +
+            (await where
+              .getByRole("button", { name: /^Current learner/ })
+              .count());
+          if (kind === "family")
+            assert.ok(
+              choices > 0 && named === null,
+              `${kind}: a family offers its learners`,
+            );
+          else
+            assert.equal(
+              named,
+              kind === "starter"
+                ? fixture.starter.learnerId
+                : fixture.paid.jordan.id,
+              `${kind}: one learner is named, not offered`,
+            );
+          // The account and learning reads that were still out land here.
+          await settle(page, 1500);
           assert.equal(
             await drawer.innerText(),
             text,
             `${kind}: drawer text changed`,
           );
           assert.equal(
-            await drawer.locator('[aria-label="Where you are"]').innerHTML(),
+            await where.innerHTML(),
             before,
             `${kind}: learner control was replaced`,
           );
-          assert.equal(reads, 1, `${kind}: duplicate trial lookup`);
           if (shots)
             await page.screenshot({
               path: `${shots}/${engine}-drawer-${kind}-${viewport.width}-${colorScheme}.png`,
             });
           console.log(
-            `Drawer trial lookup: ${kind}, ${viewport.width}, ${colorScheme}`,
+            `Drawer learner: ${kind}, ${viewport.width}, ${colorScheme}`,
           );
         } finally {
-          release();
           await context.unrouteAll({ behavior: "wait" });
           await context.close();
         }
@@ -693,9 +700,7 @@ try {
   if (
     !selectedCase ||
     [
-      "trial-refresh",
-      "trial-return",
-      "trial-retry",
+      "learner-return",
       "library-search",
       "practice-title",
       "library-loading",
@@ -720,8 +725,8 @@ try {
   if (!selectedCase) await verifyShell();
   if (!selectedCase || selectedCase === "frontier-switch")
     await verifyFrontierSwitch();
-  if (!selectedCase || selectedCase === "drawer-trial")
-    await verifyDrawerTrialResolution();
+  if (!selectedCase || selectedCase === "drawer-learner")
+    await verifyDrawerLearner();
 } finally {
   await browser.close();
   await fixture.close();

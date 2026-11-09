@@ -75,185 +75,403 @@ async function submit(page: Page, answer: string) {
   await page.locator("#answer:visible").press("Enter");
   await page.getByRole("region", { name: "Answer feedback" }).waitFor();
 }
+// Signed-in practice for the family's learner.
+const mode = "account";
 try {
-  for (const mode of ["account", "trial"])
-    for (const theme of ["light", "dark"] as const)
-      for (const [width, height] of [
-        [320, 568],
-        [390, 844],
-        [768, 1024],
-        [1280, 800],
-      ]) {
-        const context = await browser.newContext({
-          viewport: { width, height },
-          colorScheme: theme,
-          reducedMotion: "reduce",
-        });
-        await context.addInitScript("globalThis.__name ??= (f) => f");
-        await context.addInitScript(
-          ({ theme }) => {
-            localStorage.setItem("amp.trial", "synthetic-trial");
-            localStorage.setItem("fixture.parent", "1");
-            localStorage.setItem("amp.theme", theme);
-            navigator.sendBeacon = () => true;
-            Object.defineProperty(navigator, "vibrate", { value: () => true });
-          },
-          { mode, theme },
-        );
-        const attempts: Outcome[] = [];
-        const instances = new Map<string, ReturnType<typeof generateProblem>>();
-        const batches: (string | null)[] = [];
-        let practice = defaultPracticeSettings();
-        let failProgress = false;
-        let failBranch = false;
-        const errors: string[] = [];
-        await context.route("**/api/**", async (route) => {
-          const path = new URL(route.request().url()).pathname;
-          const body = route.request().postDataJSON();
-          if (path === "/api/v1/auth-config")
+  for (const theme of ["light", "dark"] as const)
+    for (const [width, height] of [
+      [320, 568],
+      [390, 844],
+      [768, 1024],
+      [1280, 800],
+    ]) {
+      const context = await browser.newContext({
+        viewport: { width, height },
+        colorScheme: theme,
+        reducedMotion: "reduce",
+      });
+      await context.addInitScript("globalThis.__name ??= (f) => f");
+      await context.addInitScript(
+        ({ theme }) => {
+          localStorage.setItem("fixture.parent", "1");
+          localStorage.setItem("amp.theme", theme);
+          navigator.sendBeacon = () => true;
+          Object.defineProperty(navigator, "vibrate", { value: () => true });
+        },
+        { mode, theme },
+      );
+      const attempts: Outcome[] = [];
+      const instances = new Map<string, ReturnType<typeof generateProblem>>();
+      const batches: (string | null)[] = [];
+      let practice = defaultPracticeSettings();
+      let failProgress = false;
+      let failBranch = false;
+      const errors: string[] = [];
+      await context.route("**/api/**", async (route) => {
+        const path = new URL(route.request().url()).pathname;
+        const body = route.request().postDataJSON();
+        if (path === "/api/v1/auth-config")
+          return route.fulfill({
+            json: { mode: "accounts", passwords: true, providers: [] },
+          });
+        if (path === "/api/v1/me") return route.fulfill({ json: account });
+        if (path === "/api/v1/catalog")
+          return route.fulfill({
+            json: {
+              skills,
+              templates,
+              lessons: [],
+              mode: "hosted",
+              trial: { free: 100, placement: 10 },
+            },
+          });
+        if (path.endsWith("/progress")) {
+          if (failProgress)
             return route.fulfill({
-              json: { mode: "accounts", passwords: true, providers: [] },
+              status: 503,
+              json: { error: "Synthetic progress failure" },
             });
-          if (path === "/api/v1/me") return route.fulfill({ json: account });
-          if (path === "/api/v1/trials/current")
-            return route.fulfill({
-              json: {
-                trial: {
-                  token: "synthetic-trial",
-                  learnerId: "trial-learner",
-                  birthYear: 2016,
-                  expiresAt: "2099-01-01T00:00:00.000Z",
-                },
-              },
-            });
-          if (path === "/api/v1/catalog")
-            return route.fulfill({
-              json: {
-                skills,
-                templates,
-                lessons: [],
-                mode: "hosted",
-                trial: { free: 100, placement: 10 },
-              },
-            });
-          if (path === "/api/v1/learners")
-            return route.fulfill({
-              json: { learners: [{ id: "trial-learner", birthYear: 2016 }] },
-            });
-          if (path.endsWith("/trial-progress"))
-            return route.fulfill({
-              json: {
-                phase: "practice",
-                free: 100,
-                placement: 10,
-                remaining: 58 - attempts.length,
-                totals: {
-                  answered: 42 + attempts.length,
-                  correct: 30 + attempts.filter((a) => a.correct).length,
-                  assisted: 0,
-                },
-                mastered: [],
-                frontier: { placement: null, current: frontier },
-              },
-            });
-          if (path.endsWith("/progress")) {
-            if (failProgress)
-              return route.fulfill({
-                status: 503,
-                json: { error: "Synthetic progress failure" },
-              });
-            return route.fulfill({
-              json: {
-                asOf: new Date().toISOString(),
-                skills: projectSkillEvidence(attempts).map((s) => ({
-                  ...s,
-                  independentOccasions: s.creditedRetrievals,
-                  reviewDueAt: null,
-                  recent: s.recentOutcomes.map((a) => ({
-                    correct: a.correct,
-                    assisted: a.assisted,
-                    at: a.createdAt,
-                  })),
+          return route.fulfill({
+            json: {
+              asOf: new Date().toISOString(),
+              skills: projectSkillEvidence(attempts).map((s) => ({
+                ...s,
+                independentOccasions: s.creditedRetrievals,
+                reviewDueAt: null,
+                recent: s.recentOutcomes.map((a) => ({
+                  correct: a.correct,
+                  assisted: a.assisted,
+                  at: a.createdAt,
                 })),
-              },
-            });
-          }
-          if (path.endsWith("/books"))
-            return route.fulfill({ json: { books: [] } });
-          if (path.endsWith("/frontier"))
-            return route.fulfill({ json: frontier });
-          if (path.endsWith("/practice-state")) {
-            if (route.request().method() === "POST") {
-              if (failBranch)
-                return route.fulfill({
-                  status: 503,
-                  json: { error: "Synthetic branch failure" },
-                });
-              practice = {
-                ...practice,
-                revision: practice.revision + 1,
-                ...(body.kind === "focus"
-                  ? { focusSkillId: body.skillId }
-                  : {}),
-              };
-            }
-            return route.fulfill({ json: practice });
-          }
-          if (path.endsWith("/batches")) {
-            batches.push(body.templateId ?? null);
-            if (body.templateId && failBranch)
+              })),
+            },
+          });
+        }
+        if (path.endsWith("/books"))
+          return route.fulfill({ json: { books: [] } });
+        if (path.endsWith("/frontier"))
+          return route.fulfill({ json: frontier });
+        if (path.endsWith("/practice-state")) {
+          if (route.request().method() === "POST") {
+            if (failBranch)
               return route.fulfill({
                 status: 503,
                 json: { error: "Synthetic branch failure" },
               });
-            const problem = generateProblem(
-              body.templateId ??
-                templates.find((t) => t.skillId === practice.focusSkillId)
-                  ?.id ??
-                initial.id,
-              `feedback-${batches.length}`,
-            );
-            instances.set(problem.public.id, problem);
-            return route.fulfill({
-              json: {
-                problems: [problem.public],
-                trialRemaining: 58 - attempts.length,
-              },
-            });
-          }
-          if (path.endsWith("/attempts")) {
-            const problem = instances.get(body.problemId)!;
-            const outcome: Outcome = {
-              id: crypto.randomUUID(),
-              requestId: body.requestId,
-              problemId: body.problemId,
-              skillId: problem.public.skillId,
-              templateId: problem.public.templateId,
-              response: body.response,
-              correct: body.response === problem.answer,
-              assisted: false,
-              createdAt: new Date().toISOString(),
-              answer: problem.answer,
-              explanation: problem.explanation,
+            practice = {
+              ...practice,
+              revision: practice.revision + 1,
+              ...(body.kind === "focus" ? { focusSkillId: body.skillId } : {}),
             };
-            attempts.push(outcome);
-            return route.fulfill({ json: outcome });
           }
-          if (path.includes("/events") || path.includes("/engagement"))
-            return route.fulfill({ status: 204, body: "" });
-          // The trial loads Buy's prices with the route.
-          if (path === "/api/v1/billing/prices")
-            return route.fulfill({ json: { available: false, offers: [] } });
-          console.warn("Unmocked fixture route", path);
+          return route.fulfill({ json: practice });
+        }
+        if (path.endsWith("/batches")) {
+          batches.push(body.templateId ?? null);
+          if (body.templateId && failBranch)
+            return route.fulfill({
+              status: 503,
+              json: { error: "Synthetic branch failure" },
+            });
+          const problem = generateProblem(
+            body.templateId ??
+              templates.find((t) => t.skillId === practice.focusSkillId)?.id ??
+              initial.id,
+            `feedback-${batches.length}`,
+          );
+          instances.set(problem.public.id, problem);
           return route.fulfill({
-            status: 404,
-            json: { error: "Synthetic route unavailable" },
+            json: {
+              problems: [problem.public],
+            },
           });
+        }
+        if (path.endsWith("/attempts")) {
+          const problem = instances.get(body.problemId)!;
+          const outcome: Outcome = {
+            id: crypto.randomUUID(),
+            requestId: body.requestId,
+            problemId: body.problemId,
+            skillId: problem.public.skillId,
+            templateId: problem.public.templateId,
+            response: body.response,
+            correct: body.response === problem.answer,
+            assisted: false,
+            createdAt: new Date().toISOString(),
+            answer: problem.answer,
+            explanation: problem.explanation,
+          };
+          attempts.push(outcome);
+          return route.fulfill({ json: outcome });
+        }
+        if (path.includes("/events") || path.includes("/engagement"))
+          return route.fulfill({ status: 204, body: "" });
+        if (path === "/api/v1/billing/prices")
+          return route.fulfill({ json: { available: false, offers: [] } });
+        console.warn("Unmocked fixture route", path);
+        return route.fulfill({
+          status: 404,
+          json: { error: "Synthetic route unavailable" },
         });
-        const page = await context.newPage();
-        page.on("pageerror", (error) => errors.push(error.message));
-        const routePath = mode === "account" ? "/practice" : "/try/practice";
-        await page.goto(origin + routePath);
+      });
+      const page = await context.newPage();
+      page.on("pageerror", (error) => errors.push(error.message));
+      await page.goto(`${origin}/practice`);
+      await page
+        .locator(".question")
+        .waitFor()
+        .catch(async (error) => {
+          await page.screenshot({
+            path: `${output}/${mode}-${width}-${theme}-failure.png`,
+          });
+          console.error(await page.locator("body").innerText(), errors);
+          throw error;
+        });
+      const current = async () => {
+        const id = await page
+          .locator(".problem-content")
+          .getAttribute("data-template");
+        return [...instances.values()]
+          .reverse()
+          .find((p) => p.public.templateId === id)!;
+      };
+      await submit(page, (await current()).answer);
+      await page.getByText("+1 XP", { exact: true }).waitFor();
+      await page
+        .getByText("4 more correct without help for Strong", { exact: true })
+        .waitFor();
+      const next = page.getByRole("button", { name: "Next", exact: false });
+      const box = await next.boundingBox();
+      assert(
+        box && box.y >= 0 && box.y + box.height <= height,
+        `${mode} ${width}: Next must stay visible`,
+      );
+      assert(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= innerWidth,
+        ),
+        "No page overflow",
+      );
+      await page
+        .locator(".practice-celebration")
+        .waitFor({ state: "detached" });
+      await page.screenshot({
+        path: `${output}/${mode}-${width}-${theme}-correct.png`,
+      });
+      // Side by side, the sheet fills the answer column and explains every
+      // result; stacked, a correct answer's explanation is a tap away.
+      const why = page.getByRole("button", { name: "See why", exact: true });
+      if (width >= 900) {
+        assert.equal(await why.count(), 0, `${mode} ${width}: no See why`);
+        await page.locator(".feedback-steps").waitFor();
+        const column = await page
+          .locator(".practice-surface")
+          .evaluate((surface) => {
+            const sheet = surface.querySelector(".feedback")!;
+            const dock = surface.querySelector(".answer-dock")!;
+            const a = sheet.getBoundingClientRect();
+            const b = dock.getBoundingClientRect();
+            return { sheet: a.toJSON(), dock: b.toJSON() };
+          });
+        assert(
+          Math.abs(column.sheet.top - column.dock.top) <= 1 &&
+            Math.abs(column.sheet.bottom - column.dock.bottom) <= 1,
+          `${mode} ${width}: the sheet fills the answer column: ${JSON.stringify(column)}`,
+        );
+      } else await why.click();
+      const explainedNext = await next.boundingBox();
+      assert(
+        explainedNext && box && Math.abs(explainedNext.y - box.y) <= 2,
+        `${mode} ${width}: See why must not move Next`,
+      );
+      assert.equal(
+        await page
+          .getByRole("button", { name: "Mixed practice", exact: true })
+          .count(),
+        0,
+        "Mixed practice is offered only while practice is focused",
+      );
+      await page
+        .getByRole("button", { name: "Leads to", exact: false })
+        .click();
+      const dialog = page.getByRole("dialog", {
+        name: "Leads to",
+        exact: true,
+      });
+      await dialog.waitFor();
+      assert.equal(
+        await dialog.locator('[class*="grade"]').count(),
+        0,
+        "Grades hidden by default",
+      );
+      await dialog
+        .getByRole("button", {
+          name: "Show details: curriculum grades",
+          exact: true,
+        })
+        .click();
+      assert.ok(
+        (await dialog.locator('[class*="grade"]').count()) > 0,
+        "Local reveal exposes actual curriculum grades",
+      );
+      assert.equal(
+        await page.evaluate(() =>
+          localStorage.getItem("amp.curriculum-details"),
+        ),
+        null,
+        "Local reveal must not set persistent preference",
+      );
+      await page.screenshot({
+        path: `${output}/${mode}-${width}-${theme}-details.png`,
+      });
+      await dialog
+        .getByRole("button", {
+          name: "Hide details: curriculum grades",
+          exact: true,
+        })
+        .click();
+      await page.screenshot({
+        path: `${output}/${mode}-${width}-${theme}-connections.png`,
+      });
+      await page.keyboard.press("Escape");
+      assert(
+        await page
+          .getByRole("button", { name: "Leads to", exact: false })
+          .evaluate((el) => el === document.activeElement),
+        "Escape restores the connection trigger",
+      );
+      await page
+        .getByRole("button", { name: "Leads to", exact: false })
+        .click();
+      await dialog.locator("li button").first().click();
+      await page.waitForFunction(
+        (templateId) =>
+          document
+            .querySelector(".problem-content")
+            ?.getAttribute("data-template") !== templateId,
+        initial.id,
+      );
+      assert(
+        practice.focusSkillId !== null,
+        "Connected choice persists the selected skill",
+      );
+      await submit(page, "999999999");
+      assert.equal(
+        await page
+          .getByRole("button", { name: "Leads to", exact: false })
+          .count(),
+        0,
+        "Incorrect answers offer foundations only",
+      );
+      await page
+        .getByRole("button", { name: "Builds on", exact: false })
+        .waitFor();
+      assert.equal(await page.getByText("+1 XP", { exact: true }).count(), 0);
+      await page.screenshot({
+        path: `${output}/${mode}-${width}-${theme}-incorrect.png`,
+      });
+      const incorrectNext = await next.boundingBox();
+      assert(
+        incorrectNext && box && Math.abs(incorrectNext.y - box.y) <= 2,
+        `${mode} ${width}: correct and incorrect Next must share a position`,
+      );
+      // Focused on one skill, the feedback offers the way back beside Next,
+      // on one line and inside the sheet at every width.
+      const mixed = page.getByRole("button", {
+        name: "Mixed practice",
+        exact: true,
+      });
+      const mixedBox = await mixed.boundingBox();
+      const sheetBox = await page.locator(".feedback").boundingBox();
+      assert(
+        mixedBox &&
+          sheetBox &&
+          incorrectNext &&
+          Math.abs(mixedBox.y - incorrectNext.y) <= 1 &&
+          mixedBox.height >= 44 &&
+          mixedBox.x >= sheetBox.x &&
+          incorrectNext.x + incorrectNext.width <= sheetBox.x + sheetBox.width,
+        `${mode} ${width}: Mixed practice sits beside Next`,
+      );
+      assert(
+        await mixed.evaluate((el) => el.scrollWidth <= el.clientWidth),
+        `${mode} ${width}: Mixed practice keeps its label on one line`,
+      );
+      const selectedTemplate = templates.find(
+        (t) => t.skillId === practice.focusSkillId,
+      )!.id;
+      await next.click();
+      await page.waitForFunction(
+        (templateId) =>
+          document
+            .querySelector(".problem-content")
+            ?.getAttribute("data-template") === templateId,
+        selectedTemplate,
+      );
+      assert.equal(
+        batches.at(-1),
+        null,
+        "Next lets the server select within the saved skill",
+      );
+      await page.getByRole("button", { name: "Open AMP menu" }).click();
+      await page
+        .getByRole("button", {
+          name: "Return to mixed practice",
+          exact: true,
+        })
+        .click();
+      await page.waitForFunction(
+        (templateId) =>
+          document
+            .querySelector(".problem-content")
+            ?.getAttribute("data-template") === templateId,
+        initial.id,
+      );
+      assert.equal(practice.focusSkillId, null);
+      if (width === 390 && theme === "light") {
+        failProgress = true;
+        await submit(page, (await current()).answer);
+        await page
+          .getByText("Progress unavailable.", { exact: false })
+          .waitFor();
+        assert(await next.isEnabled(), "A progress failure never blocks Next");
+        failProgress = false;
+        await page.getByRole("button", { name: "Retry", exact: true }).click();
+        await page
+          .getByText("3 more correct without help for Strong", {
+            exact: true,
+          })
+          .waitFor();
+        failBranch = true;
+        await page
+          .getByRole("button", { name: "Builds on", exact: false })
+          .click();
+        await page
+          .getByRole("dialog", { name: "Builds on", exact: true })
+          .locator("li button")
+          .first()
+          .click();
+        await page.locator(".feedback-navigation-error").waitFor();
+        assert(await next.isEnabled());
+        failBranch = false;
+        await next.click();
+        await page.locator("#answer").waitFor();
+        await page.keyboard.press("Escape");
+        await page.getByRole("button", { name: "Open AMP menu" }).click();
+        await page
+          .getByRole("checkbox", { name: "Sound", exact: true })
+          .check();
+        await page
+          .getByRole("checkbox", { name: "Haptics", exact: true })
+          .check();
+        await page
+          .getByRole("checkbox", {
+            name: "Show grade numbers",
+            exact: true,
+          })
+          .check();
+        await page.keyboard.press("Escape");
+        await page.reload();
         await page
           .locator(".question")
           .waitFor()
@@ -264,319 +482,58 @@ try {
             console.error(await page.locator("body").innerText(), errors);
             throw error;
           });
-        const current = async () => {
-          const id = await page
-            .locator(".problem-content")
-            .getAttribute("data-template");
-          return [...instances.values()]
-            .reverse()
-            .find((p) => p.public.templateId === id)!;
-        };
-        await submit(page, (await current()).answer);
-        await page.getByText("+1 XP", { exact: true }).waitFor();
-        await page
-          .getByText("4 more correct without help for Strong", { exact: true })
-          .waitFor();
-        const next = page.getByRole("button", { name: "Next", exact: false });
-        const box = await next.boundingBox();
-        assert(
-          box && box.y >= 0 && box.y + box.height <= height,
-          `${mode} ${width}: Next must stay visible`,
-        );
-        assert(
-          await page.evaluate(
-            () => document.documentElement.scrollWidth <= innerWidth,
-          ),
-          "No page overflow",
-        );
-        await page
-          .locator(".practice-celebration")
-          .waitFor({ state: "detached" });
-        await page.screenshot({
-          path: `${output}/${mode}-${width}-${theme}-correct.png`,
-        });
-        // Side by side, the sheet fills the answer column and explains every
-        // result; stacked, a correct answer's explanation is a tap away.
-        const why = page.getByRole("button", { name: "See why", exact: true });
-        if (width >= 900) {
-          assert.equal(await why.count(), 0, `${mode} ${width}: no See why`);
-          await page.locator(".feedback-steps").waitFor();
-          const column = await page
-            .locator(".practice-surface")
-            .evaluate((surface) => {
-              const sheet = surface.querySelector(".feedback")!;
-              const dock = surface.querySelector(".answer-dock")!;
-              const a = sheet.getBoundingClientRect();
-              const b = dock.getBoundingClientRect();
-              return { sheet: a.toJSON(), dock: b.toJSON() };
-            });
-          assert(
-            Math.abs(column.sheet.top - column.dock.top) <= 1 &&
-              Math.abs(column.sheet.bottom - column.dock.bottom) <= 1,
-            `${mode} ${width}: the sheet fills the answer column: ${JSON.stringify(column)}`,
-          );
-        } else await why.click();
-        const explainedNext = await next.boundingBox();
-        assert(
-          explainedNext && box && Math.abs(explainedNext.y - box.y) <= 2,
-          `${mode} ${width}: See why must not move Next`,
-        );
-        assert.equal(
-          await page
-            .getByRole("button", { name: "Mixed practice", exact: true })
-            .count(),
-          0,
-          "Mixed practice is offered only while practice is focused",
-        );
-        await page
-          .getByRole("button", { name: "Leads to", exact: false })
-          .click();
-        const dialog = page.getByRole("dialog", {
-          name: "Leads to",
-          exact: true,
-        });
-        await dialog.waitFor();
-        assert.equal(
-          await dialog.locator('[class*="grade"]').count(),
-          0,
-          "Grades hidden by default",
-        );
-        await dialog
-          .getByRole("button", {
-            name: "Show details: curriculum grades",
-            exact: true,
-          })
-          .click();
-        assert.ok(
-          (await dialog.locator('[class*="grade"]').count()) > 0,
-          "Local reveal exposes actual curriculum grades",
-        );
-        assert.equal(
-          await page.evaluate(() =>
-            localStorage.getItem("amp.curriculum-details"),
-          ),
-          null,
-          "Local reveal must not set persistent preference",
-        );
-        await page.screenshot({
-          path: `${output}/${mode}-${width}-${theme}-details.png`,
-        });
-        await dialog
-          .getByRole("button", {
-            name: "Hide details: curriculum grades",
-            exact: true,
-          })
-          .click();
-        await page.screenshot({
-          path: `${output}/${mode}-${width}-${theme}-connections.png`,
-        });
-        await page.keyboard.press("Escape");
-        assert(
-          await page
-            .getByRole("button", { name: "Leads to", exact: false })
-            .evaluate((el) => el === document.activeElement),
-          "Escape restores the connection trigger",
-        );
-        await page
-          .getByRole("button", { name: "Leads to", exact: false })
-          .click();
-        await dialog.locator("li button").first().click();
-        await page.waitForFunction(
-          (templateId) =>
-            document
-              .querySelector(".problem-content")
-              ?.getAttribute("data-template") !== templateId,
-          initial.id,
-        );
-        assert(
-          practice.focusSkillId !== null,
-          "Connected choice persists the selected skill",
-        );
-        await submit(page, "999999999");
-        assert.equal(
-          await page
-            .getByRole("button", { name: "Leads to", exact: false })
-            .count(),
-          0,
-          "Incorrect answers offer foundations only",
-        );
-        await page
-          .getByRole("button", { name: "Builds on", exact: false })
-          .waitFor();
-        assert.equal(await page.getByText("+1 XP", { exact: true }).count(), 0);
-        await page.screenshot({
-          path: `${output}/${mode}-${width}-${theme}-incorrect.png`,
-        });
-        const incorrectNext = await next.boundingBox();
-        assert(
-          incorrectNext && box && Math.abs(incorrectNext.y - box.y) <= 2,
-          `${mode} ${width}: correct and incorrect Next must share a position`,
-        );
-        // Focused on one skill, the feedback offers the way back beside Next,
-        // on one line and inside the sheet at every width.
-        const mixed = page.getByRole("button", {
-          name: "Mixed practice",
-          exact: true,
-        });
-        const mixedBox = await mixed.boundingBox();
-        const sheetBox = await page.locator(".feedback").boundingBox();
-        assert(
-          mixedBox &&
-            sheetBox &&
-            incorrectNext &&
-            Math.abs(mixedBox.y - incorrectNext.y) <= 1 &&
-            mixedBox.height >= 44 &&
-            mixedBox.x >= sheetBox.x &&
-            incorrectNext.x + incorrectNext.width <=
-              sheetBox.x + sheetBox.width,
-          `${mode} ${width}: Mixed practice sits beside Next`,
-        );
-        assert(
-          await mixed.evaluate((el) => el.scrollWidth <= el.clientWidth),
-          `${mode} ${width}: Mixed practice keeps its label on one line`,
-        );
-        const selectedTemplate = templates.find(
-          (t) => t.skillId === practice.focusSkillId,
-        )!.id;
-        await next.click();
-        await page.waitForFunction(
-          (templateId) =>
-            document
-              .querySelector(".problem-content")
-              ?.getAttribute("data-template") === templateId,
-          selectedTemplate,
-        );
-        assert.equal(
-          batches.at(-1),
-          null,
-          "Next lets the server select within the saved skill",
-        );
         await page.getByRole("button", { name: "Open AMP menu" }).click();
-        await page
-          .getByRole("button", {
-            name: "Return to mixed practice",
-            exact: true,
-          })
-          .click();
-        await page.waitForFunction(
-          (templateId) =>
-            document
-              .querySelector(".problem-content")
-              ?.getAttribute("data-template") === templateId,
-          initial.id,
-        );
-        assert.equal(practice.focusSkillId, null);
-        if (width === 390 && theme === "light") {
-          failProgress = true;
-          await submit(page, (await current()).answer);
-          await page
-            .getByText("Progress unavailable.", { exact: false })
-            .waitFor();
-          assert(
-            await next.isEnabled(),
-            "A progress failure never blocks Next",
-          );
-          failProgress = false;
-          await page
-            .getByRole("button", { name: "Retry", exact: true })
-            .click();
-          await page
-            .getByText("3 more correct without help for Strong", {
-              exact: true,
-            })
-            .waitFor();
-          failBranch = true;
-          await page
-            .getByRole("button", { name: "Builds on", exact: false })
-            .click();
-          await page
-            .getByRole("dialog", { name: "Builds on", exact: true })
-            .locator("li button")
-            .first()
-            .click();
-          await page.locator(".feedback-navigation-error").waitFor();
-          assert(await next.isEnabled());
-          failBranch = false;
-          await next.click();
-          await page.locator("#answer").waitFor();
-          await page.keyboard.press("Escape");
-          await page.getByRole("button", { name: "Open AMP menu" }).click();
+        assert(
           await page
             .getByRole("checkbox", { name: "Sound", exact: true })
-            .check();
+            .isChecked(),
+        );
+        assert(
           await page
             .getByRole("checkbox", { name: "Haptics", exact: true })
-            .check();
+            .isChecked(),
+        );
+      }
+      if (width === 390 && theme === "light") {
+        assert(
           await page
             .getByRole("checkbox", {
               name: "Show grade numbers",
               exact: true,
             })
-            .check();
-          await page.keyboard.press("Escape");
-          await page.reload();
-          await page
-            .locator(".question")
-            .waitFor()
-            .catch(async (error) => {
-              await page.screenshot({
-                path: `${output}/${mode}-${width}-${theme}-failure.png`,
-              });
-              console.error(await page.locator("body").innerText(), errors);
-              throw error;
-            });
-          await page.getByRole("button", { name: "Open AMP menu" }).click();
-          assert(
-            await page
-              .getByRole("checkbox", { name: "Sound", exact: true })
-              .isChecked(),
-          );
-          assert(
-            await page
-              .getByRole("checkbox", { name: "Haptics", exact: true })
-              .isChecked(),
-          );
-        }
-        if (width === 390 && theme === "light") {
-          assert(
-            await page
-              .getByRole("checkbox", {
-                name: "Show grade numbers",
-                exact: true,
-              })
-              .isChecked(),
-            "Detail preference survives reload",
-          );
-          await page.screenshot({
-            path: `${output}/${mode}-${width}-${theme}-menu-details.png`,
-          });
-        }
-        if (width === 390 && theme === "light") {
-          await page.keyboard.press("Escape");
-          await page.goto(`${origin}${mode === "trial" ? "/try/map" : "/"}`);
-          const details = page.getByRole("checkbox", {
-            name: "Show grade numbers",
-            exact: true,
-          });
-          await details.uncheck();
-          assert.equal(await page.getByTestId("level-readout").count(), 0);
-          await page.screenshot({
-            path: `${output}/${mode}-390-light-progress-hidden.png`,
-            fullPage: true,
-          });
-          await details.check();
-          await page.getByTestId("level-readout").first().waitFor();
-          await page.screenshot({
-            path: `${output}/${mode}-390-light-progress-details.png`,
-            fullPage: true,
-          });
-        }
-        assert.deepEqual(errors, []);
-        console.log(
-          `${mode} ${width} ${theme}: correct → focused skill → incorrect → continued focus → mixed practice`,
+            .isChecked(),
+          "Detail preference survives reload",
         );
-        await context.close();
+        await page.screenshot({
+          path: `${output}/${mode}-${width}-${theme}-menu-details.png`,
+        });
       }
+      if (width === 390 && theme === "light") {
+        await page.keyboard.press("Escape");
+        await page.goto(`${origin}/`);
+        const details = page.getByRole("checkbox", {
+          name: "Show grade numbers",
+          exact: true,
+        });
+        await details.uncheck();
+        assert.equal(await page.getByTestId("level-readout").count(), 0);
+        await page.screenshot({
+          path: `${output}/${mode}-390-light-progress-hidden.png`,
+          fullPage: true,
+        });
+        await details.check();
+        await page.getByTestId("level-readout").first().waitFor();
+        await page.screenshot({
+          path: `${output}/${mode}-390-light-progress-details.png`,
+          fullPage: true,
+        });
+      }
+      assert.deepEqual(errors, []);
+      console.log(
+        `${mode} ${width} ${theme}: correct → focused skill → incorrect → continued focus → mixed practice`,
+      );
+      await context.close();
+    }
 } finally {
   await browser.close();
   await vite.close();

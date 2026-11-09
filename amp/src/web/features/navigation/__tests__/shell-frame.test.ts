@@ -12,10 +12,6 @@ test("each group's screens share one frame and name their tab", () => {
     active: "overview",
   });
   expect(shellFrame("/me")).toEqual({ kind: "progress", active: "overview" });
-  expect(shellFrame("/try/map")).toEqual({
-    kind: "progress",
-    active: "overview",
-  });
   expect(shellFrame("/pathways/fraction-sums")).toEqual({
     kind: "progress",
     active: "pathways",
@@ -64,8 +60,6 @@ test("screens with frames of their own stay outside it", () => {
   for (const path of [
     "/sign-in",
     "/start/plan",
-    "/try",
-    "/try/practice",
     "/me/start",
     "/join/ABC123",
     "/school/x/classes/y/today",
@@ -84,8 +78,6 @@ test("the Overview tab follows whose progress it is; the URLs never move", () =>
     "inventory",
   ]);
   expect(progressTabs("own")[0]!.path).toBe("me");
-  expect(progressTabs("trial")[0]!.path).toBe("try/map");
-  expect(progressTabs("trial")[1]!.search).toEqual({ context: "trial" });
   expect(overviewPath("learner")).toBe("/overview");
   expect(accountTabs.map((tab) => tab.label)).toEqual([
     "Profile & sign-in",

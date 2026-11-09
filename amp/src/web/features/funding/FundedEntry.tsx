@@ -109,7 +109,7 @@ function SignedInEntry({
           <p>
             <a href={program.helpUrl}>View {program.name} purchase help</a>
           </p>
-          <Link to="/try" className={buttonClass("secondary")}>
+          <Link to="/start" className={buttonClass("secondary")}>
             Practice free
           </Link>
         </section>
@@ -139,7 +139,7 @@ function SignedInEntry({
         campaignSearch={search}
         onClose={() =>
           void navigate({
-            to: "/try/plans",
+            to: "/",
             search: { ...search, return: undefined },
           })
         }

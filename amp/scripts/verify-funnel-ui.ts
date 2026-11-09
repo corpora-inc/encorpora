@@ -30,7 +30,7 @@ import { retentionNotice } from "../src/family/contracts";
  * A scripted browser walk through the funnel. The real web helper sends
  * beacons through Vite to the real `POST /api/v1/events` on a throwaway
  * schema; other API calls are synthetic. Screens that exist (landing, Try
- * free, plan, checkout, return) are driven by clicks; trial and practice
+ * free, the starter, plan, checkout, return) are driven by clicks; practice
  * milestones go through the same `track()` module. The verified purchase is
  * written by the billing writer with the visitor the checkout request carried.
  * The resulting report must show every funnel step.
@@ -151,8 +151,6 @@ async function serve(page: Page, faults: string[]) {
         body: await forwarded.text(),
       });
     }
-    if (path === "/trials/current")
-      return route.fulfill({ json: { trial: null } });
     if (path === "/me")
       return route.fulfill({
         json: {
@@ -214,9 +212,9 @@ async function serve(page: Page, faults: string[]) {
         json: { url: "https://checkout.stripe.com/c/pay/cs_fixture" },
       });
     }
-    // Screens past the walk (practice, catalog, trial API) are not under test.
+    // Screens past the walk (practice, catalog) are not under test.
     if (
-      ["/catalog", "/books", "/trials", "/session"].includes(path) ||
+      ["/catalog", "/books", "/session"].includes(path) ||
       path.startsWith("/learners")
     )
       return route.fulfill({ status: 503, json: { error: "fixture_end" } });
@@ -285,16 +283,18 @@ try {
       url.pathname === "/sign-up" &&
       url.searchParams.get("return") === "free-practice",
   );
-  // Sign-in is supplied by this analytics fixture; the actual guarded trial
-  // screen emits try_click after the session notification reaches its listeners.
+  // Sign-in is supplied by this analytics fixture. A new account continues
+  // where sign-up sends free practice: the starter.
   await page.evaluate(async () => {
     localStorage.setItem("verify.signedIn", "1");
     const auth = await import("/src/web/auth.ts" as string);
     auth.notifyAccountSessionChanged(await auth.accessSession());
     const { router } = await import("/src/web/app/router.tsx" as string);
-    await router.navigate({ to: "/try" });
+    await router.navigate({ to: "/start" });
   });
-  await page.getByRole("group", { name: "Birth year" }).waitFor();
+  await page
+    .getByRole("heading", { name: "What brings you to AMP?" })
+    .waitFor();
   await milestones(page, [
     ["placement_answer", { index: 0 }],
     ["placement_answer", { index: 1 }],
@@ -308,7 +308,7 @@ try {
     ["paywall_view", { reason: "limit" }],
   ]);
   await settled(13);
-  // The parent opens the plan step after the free assessment.
+  // The parent opens the plan step after free practice.
   await page.goto(`${origin}/start/plan`);
   await page.getByRole("radio", { name: /Monthly/ }).click();
   await page.getByRole("radio", { name: /Annual/ }).click();
@@ -344,7 +344,7 @@ try {
   ]);
   await settled(13 + 4 + 1 + 1 + 2);
 
-  // Visitor 2 tries, dismisses the paywall and leaves.
+  // Visitor 2 tries free, dismisses an invitation to buy and leaves.
   const leaver = await browser.newContext({
     viewport: { width: 1280, height: 800 },
   });

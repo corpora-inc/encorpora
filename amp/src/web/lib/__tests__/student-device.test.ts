@@ -1,7 +1,6 @@
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { createGoogleAnalytics } from "../../../analytics/google-analytics";
 import { accessSession, signOut } from "../../auth";
-import { trialSessionOptions } from "../../features/trial/api";
 import { analyticsAllowed, track } from "../analytics";
 import { startEngagement } from "../engagement";
 import { queryClient } from "../query";
@@ -79,7 +78,7 @@ test("a stored student token wins over a parent session, without asking the serv
   expect(fetched).not.toHaveBeenCalled();
 });
 
-test("sign-out clears the token, the chosen learner and the trial, then goes to /join", async () => {
+test("sign-out clears the token and the chosen learner, then goes to /join", async () => {
   const assign = vi.fn();
   vi.stubGlobal("location", {
     ...new URL("https://amp.corpora.inc/practice"),
@@ -88,12 +87,10 @@ test("sign-out clears the token, the chosen learner and the trial, then goes to 
   });
   rememberStudentSession(student, "personal");
   localStorage.setItem("amp.learner", "chosen");
-  localStorage.setItem("amp.trial", "trial-token");
   localStorage.setItem("amp.curriculum-details", "kept");
   await signOut();
   expect(studentSession()).toBeNull();
   expect(localStorage.getItem("amp.learner")).toBeNull();
-  expect(localStorage.getItem("amp.trial")).toBeNull();
   expect(localStorage.getItem("amp.curriculum-details")).toBe("kept");
   expect(assign).toHaveBeenCalledWith("/join");
 });
@@ -119,12 +116,6 @@ test("a child handed their parent's device hands it back on sign-out", async () 
 test("clearing is safe with nothing stored", () => {
   clearStudentDevice();
   expect(studentSession()).toBeNull();
-});
-
-test("a student asks nothing about trials: the root query never reaches the parent route", async () => {
-  rememberStudentSession(student, "shared");
-  expect(await queryClient.fetchQuery(trialSessionOptions)).toBeNull();
-  expect(fetched).not.toHaveBeenCalled();
 });
 
 test("analytics and engagement don't start on a student device", async () => {

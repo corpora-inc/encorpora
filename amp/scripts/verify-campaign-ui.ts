@@ -22,7 +22,7 @@ let endpoint = "";
 const site = createServer((req, res) => {
   res.setHeader("Content-Type", "text/html");
   res.end(
-    `<main data-campaign-program="arkansas-efa"><a data-campaign-action="try" href="${endpoint}/try/">Try</a><a data-campaign-action="invoice" href="mailto:support@example.test">Invoice</a></main><script data-campaign-endpoint="${endpoint}/api/v1/campaign-events">${script}</script>`,
+    `<main data-campaign-program="arkansas-efa"><a data-campaign-action="try" href="${endpoint}/sign-up">Try it free</a><a data-campaign-action="invoice" href="mailto:support@example.test">Invoice</a></main><script data-campaign-endpoint="${endpoint}/api/v1/campaign-events">${script}</script>`,
   );
 });
 await new Promise<void>((resolve) => site.listen(0, "127.0.0.1", resolve));

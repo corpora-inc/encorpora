@@ -162,7 +162,7 @@ export function continuationUrl(
   }
   const path =
     safe.return === "free-practice"
-      ? "/try"
+      ? "/start"
       : safe.return === "access"
         ? "/access"
         : safe.return === "security"

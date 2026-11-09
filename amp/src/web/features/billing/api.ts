@@ -5,6 +5,7 @@ import { AppError } from "../../lib/AppError";
 import { request } from "../../lib/api";
 import { invalidateAccount, meKey, queryClient } from "../../lib/query";
 import {
+  annualOfferSchema,
   enrollmentViewSchema,
   offerViewSchema,
   type EnrollmentView,
@@ -29,6 +30,21 @@ export const offerOptions = (session: AuthSession) =>
       extraOffers: view.extraOffers ?? [],
     }),
   });
+/** The configured prices, for the pitch; no account is needed to read them. */
+export const pricesOptions = queryOptions({
+  queryKey: ["billing", "prices"],
+  queryFn: ({ signal }) =>
+    request(
+      "/billing/prices",
+      z.object({
+        available: z.boolean(),
+        offers: z.array(annualOfferSchema),
+        extraOffers: z.array(annualOfferSchema).optional(),
+      }),
+      { signal },
+    ),
+  staleTime: 5 * 60_000,
+});
 /** Polls only while a verified result is still pending. */
 export const enrollmentOptions = (session: AuthSession, poll = false) =>
   queryOptions({

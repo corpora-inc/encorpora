@@ -63,10 +63,9 @@ const widths = (argument("--widths") ?? "390,1280").split(",").map(Number);
 const themes = (argument("--themes") ?? "light,dark").split(",") as (
   "light" | "dark"
 )[];
-/** Journeys 3 and 5 (teacher, school) wait for the school demo; journey 7
- * (old `/try` links) belongs to the trial's retirement. */
+/** Journeys 3 and 5 (teacher, school) wait for the school demo. */
 const journeys = new Set(
-  (argument("--journeys") ?? "1,2,4,6").split(",").map(Number),
+  (argument("--journeys") ?? "1,2,4,6,7").split(",").map(Number),
 );
 const pending = new Set<number>();
 const apiPort = webPort + 1;
@@ -335,6 +334,16 @@ async function measured(page: Page, label: string) {
   );
   const { cls } = await shellRecord(page);
   check(`${label} CLS`, cls <= 0.01, cls);
+}
+/** A reload the app may itself interrupt with a replace (WebKit reports
+ * "Frame load interrupted"): the page that results is the one under test. */
+async function reloaded(page: Page) {
+  await page
+    .reload({ waitUntil: "domcontentloaded" })
+    .catch(async (error: unknown) => {
+      if (!/interrupted/i.test(String(error))) throw error;
+      await page.waitForLoadState("domcontentloaded");
+    });
 }
 async function signUp(page: Page, name: string) {
   const email = `${name.split(" ")[0]!.toLowerCase()}-${randomUUID().slice(0, 8)}@journeys.example`;
@@ -642,7 +651,7 @@ async function parentJourney(
 
   // The child on their own device sees it too, with nothing to buy.
   await freeUsed(moon.id, 100);
-  await device.reload();
+  await reloaded(device);
   await device.locator("[data-allowance-pause]").first().waitFor();
   await pauseSays(
     device,
@@ -875,7 +884,7 @@ async function tutorJourney(
     "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES($1,'fixture','verified','synthetic')",
     [parentAccount],
   );
-  await parent.reload();
+  await reloaded(parent);
   const childName = parent.getByLabel("Your child’s first name");
   await childName.waitFor();
   await childName.fill("Ana");
@@ -885,7 +894,7 @@ async function tutorJourney(
   await parentContext.close();
 
   last.page = page;
-  await page.reload();
+  await reloaded(page);
   await heading(page, /^Good (morning|afternoon|evening)/);
   const ana = others.locator("li", { hasText: "Ana" });
   await ana.waitFor();
@@ -1000,13 +1009,57 @@ async function returningJourney(
   await again.close();
 }
 
-/** 7. Old `/try` links: retired with the separate trial (PR B). */
+/** Opening an address the app redirects at once: WebKit may report the
+ * first navigation as interrupted by the second, which is the point. */
+async function visit(page: Page, url: string) {
+  await page.goto(url).catch((error: unknown) => {
+    if (!/interrupted/i.test(String(error))) throw error;
+  });
+}
+/** 7. Old `/try` links from ads and email: never a 404. Signed out, they
+ * sign up (and the starter follows); signed in, `/` opens the place. */
 async function journey7(
-  _browser: Browser,
-  _width: number,
-  _theme: "light" | "dark",
+  browser: Browser,
+  width: number,
+  theme: "light" | "dark",
 ) {
-  throw new Error("Journey 7 lands with the trial's retirement");
+  const label = `${engine} ${width} ${theme} old link`;
+  const context = await newContext(browser, width, theme);
+  const page = await opened(context, label);
+  for (const path of [
+    "/try",
+    "/try/practice?utm_source=google",
+    "/try/plans",
+  ]) {
+    await visit(page, `${origin}${path}`);
+    await page.waitForURL(/\/sign-up(\?|$)/);
+    check(
+      `${label} ${path} signed out signs up`,
+      new URL(page.url()).pathname === "/sign-up",
+      page.url(),
+    );
+  }
+  await shot(page, 7, "signed-out", width, theme);
+  // Signed up: the same link opens the starter (no place yet), then home.
+  await signUp(page, "Robin Fixture");
+  await visit(page, `${origin}/try`);
+  await page.waitForURL(/\/start$/);
+  await heading(page, "What brings you to AMP?");
+  await page.getByRole("link", { name: /I’m a parent/ }).click();
+  await page.getByRole("button", { name: "Birth year, your child" }).click();
+  await page.getByRole("option").first().click();
+  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  await page.waitForURL(CLASS_TODAY);
+  await visit(page, `${origin}/try/map`);
+  await page.waitForURL(CLASS_TODAY);
+  check(
+    `${label} signed in goes home`,
+    CLASS_TODAY.test(new URL(page.url()).pathname),
+    page.url(),
+  );
+  await measured(page, `${label} home`);
+  await shot(page, 7, "signed-in", width, theme);
+  await context.close();
 }
 
 const run: Record<number, typeof parentJourney> = {

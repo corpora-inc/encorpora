@@ -107,7 +107,7 @@ test("program names are the purchase flow's, for every pitch program", () => {
 
 test("private screens and the skill map keep their existing titles", () => {
   assert.equal(appPageTitle("/practice"), "Math Practice | AMP");
-  assert.equal(appPageTitle("/try/practice"), "Adaptive Practice | AMP");
+  assert.equal(appPageTitle("/start/parent"), "What Brings You to AMP? | AMP");
   assert.equal(appPageTitle("/plans"), "Plans | AMP");
   assert.equal(appPageTitle("/pathways"), undefined);
   assert.equal(appPageTitle("/pathways/count-to-20"), undefined);

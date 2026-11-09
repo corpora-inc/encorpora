@@ -47,12 +47,7 @@ test(
       await admin.query(`CREATE SCHEMA ${schema}`);
       await migrate(scoped.href);
 
-      const created = await app.inject({
-        method: "POST",
-        url: "/api/v1/trials",
-        payload: { birthYear: 2016 },
-      });
-      const { token, learnerId } = created.json();
+      const { token, learnerId } = await repository.createTrial(2016);
       const trial = { authorization: `Trial ${token}` };
       const base = `/api/v1/learners/${learnerId}`;
       const serve = async (headers: Record<string, string>, path = base) => {

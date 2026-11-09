@@ -45,9 +45,7 @@ export function placeEntries(me: SignedInMe): PlaceEntry[] {
             ? me.learners[0]!.name
             : me.learners.length > 1
               ? `${me.learners.length} learners`
-              : me.trial
-                ? "Free assessment"
-                : "Getting started",
+              : "Getting started",
         path: "",
       };
     if (id === "me") {

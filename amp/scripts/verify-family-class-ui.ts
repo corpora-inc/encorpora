@@ -122,7 +122,7 @@ async function signUp(page: Page, email: string, name: string) {
   await page.getByLabel("Email").fill(email);
   await password.fill(PASSWORD);
   await page.getByRole("button", { name: "Create account" }).click();
-  await page.waitForURL(/\/account\/ready|\/try|\/start|\/school/);
+  await page.waitForURL(/\/account\/ready|\/start|\/school/);
   const session = await (
     await page.context().request.get(`${origin}/api/auth/get-session`)
   ).json();

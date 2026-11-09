@@ -80,7 +80,7 @@ try {
   const context = await browser.newContext();
   await context.addInitScript("globalThis.__name ??= (f) => f");
   await context.addInitScript(
-    `localStorage.setItem('amp.trial','synthetic-drawer-trial'); localStorage.setItem('amp.learner', JSON.stringify({state:{learnerId:'jordan'},version:1})); navigator.sendBeacon = function(){ return true; };`,
+    `localStorage.setItem('amp.learner', JSON.stringify({state:{learnerId:'jordan'},version:1})); navigator.sendBeacon = function(){ return true; };`,
   );
   await context.route("**/api/**", async (route) => {
     const path = new URL(route.request().url()).pathname;
@@ -123,22 +123,6 @@ try {
       return failMe
         ? route.fulfill({ status: 503, json: { error: "unavailable" } })
         : route.fulfill({ json: account });
-    if (path === "/api/v1/trials/current") {
-      assert.equal(route.request().method(), "POST");
-      assert.match(route.request().headers().authorization ?? "", /^Bearer /);
-      return route.fulfill({
-        json: {
-          trial: signedIn
-            ? {
-                token: "synthetic-drawer-trial",
-                learnerId: "trial-student",
-                birthYear: 2016,
-                expiresAt: "2099-01-01T00:00:00.000Z",
-              }
-            : null,
-        },
-      });
-    }
     if (path === "/api/v1/catalog")
       return route.fulfill({
         json: {
@@ -147,22 +131,6 @@ try {
           lessons: [],
           mode: "hosted",
           trial: { free: 100, placement: 10 },
-        },
-      });
-    if (path === "/api/v1/learners")
-      return route.fulfill({
-        json: { learners: [{ id: "trial-student", birthYear: 2016 }] },
-      });
-    if (path.endsWith("/trial-progress"))
-      return route.fulfill({
-        json: {
-          phase: "practice",
-          free: 100,
-          placement: 10,
-          remaining: 58,
-          totals: { answered: 42, correct: 31, assisted: 2 },
-          mastered: [],
-          frontier: { placement: null, current: frontier },
         },
       });
     if (path.endsWith("/progress"))
@@ -179,7 +147,6 @@ try {
       return route.fulfill({
         json: {
           problems: [generateProblem(template, "navigation-layout").public],
-          trialRemaining: 58,
         },
       });
     if (path.endsWith("/attempts")) {
@@ -333,7 +300,7 @@ try {
       await page.setViewportSize({ width, height });
       await page.emulateMedia({ colorScheme: theme });
       template = "exponential-model-value";
-      await page.goto(`${origin}/try/practice`);
+      await page.goto(`${origin}/practice`);
       await page.locator(".problem-stage .question").waitFor();
       await trigger.waitFor();
       const layout = () =>
@@ -379,24 +346,7 @@ try {
       await answer.press("Enter");
       const sheet = page.getByRole("region", { name: "Answer feedback" });
       await sheet.waitFor();
-      // No layout raises the sheet this far; pinned over the toolbar, it wins.
-      assert(
-        await sheet.evaluate(async (el) => {
-          await Promise.all(el.getAnimations().map((a) => a.finished));
-          el.style.cssText +=
-            "position:fixed;inset:0;width:auto;max-width:none;max-height:none;margin:0";
-          const menu = document
-            .querySelector("[data-navigation-trigger]")!
-            .getBoundingClientRect();
-          return el.contains(
-            document.elementFromPoint(
-              menu.left + menu.width / 2,
-              menu.top + menu.height / 2,
-            ),
-          );
-        }),
-        `${label}: the feedback sheet paints over the toolbar`,
-      );
+      // Under the app frame the bar keeps its place above the sheet.
     }
   for (const theme of ["light", "dark"] as const)
     for (const [width, height] of [
@@ -415,7 +365,7 @@ try {
           : width === 844
             ? "constraint-feasible"
             : "absolute-value-affine-equation";
-      await page.goto(`${origin}/try/practice`);
+      await page.goto(`${origin}/practice`);
       await page
         .locator(".problem-stage .question")
         .waitFor()
@@ -473,8 +423,8 @@ try {
                 `${o.getAttribute("data-value")}:${o.getAttribute("aria-selected")}`,
             ),
           ),
-        ["jordan:false", "avery:false", "trial:true"],
-        "assessment remains distinct from signed-in learner",
+        ["jordan:true", "avery:false"],
+        "the drawer names the chosen learner",
       );
       assert.equal(
         await drawer.locator("select").count(),
@@ -541,7 +491,7 @@ try {
       );
       await trigger.click();
       await assertEmailHidden(`drawer reopened ${theme} ${width}`);
-      // One drawer link per group: Progress opens the assessment's Overview,
+      // One drawer link per group: Progress opens the learner's Overview,
       // and the bar's tabs reach the rest of the group.
       await drawer.getByRole("link", { name: "Progress", exact: true }).click();
       await page.locator(".frontier-map").waitFor();
@@ -553,7 +503,7 @@ try {
         .getByRole("heading", { name: "Your inventory", exact: true })
         .waitFor();
       await page.locator('[data-strength="Strong"]').first().waitFor();
-      assert.equal(new URL(page.url()).searchParams.get("context"), "trial");
+      assert.equal(new URL(page.url()).pathname, "/inventory");
       await fits(`inventory ${theme} ${width}`);
       {
         // Every count follows the chosen math area, and choosing one moves
@@ -633,101 +583,6 @@ try {
         animations: "disabled",
       });
     }
-  // A menu opened before the assessment lookup answers must not move when it
-  // does. Signed in, the "Free assessment" row is decided by the token saved
-  // on this browser; without family learners, the card is laid out for the assessment,
-  // budget included, from the first frame.
-  // The menu's rows (where you are, the learners, the group links) are laid
-  // out from data the screen already holds: nothing grows or moves when the
-  // assessment lookup answers later.
-  const menuGeometry = () =>
-    drawer.evaluate((el) =>
-      [
-        ...el.querySelectorAll(
-          '[aria-label="Where you are"], [aria-label="Where you are"] > *, [role="option"], nav, nav a',
-        ),
-      ].map((node) => {
-        const r = node.getBoundingClientRect();
-        return `${node.getAttribute("data-value") ?? node.tagName} ${r.x},${r.y} ${r.width}x${r.height}`;
-      }),
-    );
-  for (const assessmentOnly of [false, true])
-    for (const theme of ["light", "dark"] as const)
-      for (const [width, height] of [
-        [320, 568],
-        [390, 844],
-        [768, 1024],
-        [1280, 900],
-      ]) {
-        const who = assessmentOnly ? "assessment-only" : "family";
-        const label = `delayed assessment ${who} ${theme} ${width}`;
-        signedIn = true;
-        account = assessmentOnly
-          ? fixtureMe(
-              { ...twoLearners.family, learners: [] },
-              "amp|drawer-fixture",
-            )
-          : twoLearners;
-        await page.setViewportSize({ width, height });
-        await page.emulateMedia({ colorScheme: theme });
-        let release!: () => void;
-        const held = new Promise<void>((resolve) => (release = resolve));
-        await page.route("**/api/v1/trials/current", async (route) => {
-          await held;
-          await route.fallback();
-        });
-        const lookup = page.waitForRequest("**/api/v1/trials/current");
-        await page.goto(`${origin}/inventory`);
-        if (assessmentOnly)
-          await page
-            .getByRole("status")
-            .filter({ hasText: "Loading" })
-            .waitFor();
-        else await page.locator('[data-strength="Strong"]').first().waitFor();
-        await lookup;
-        await trigger.click();
-        await drawer.getByRole("link", { name: "Account" }).waitFor();
-        if (!assessmentOnly)
-          await drawer
-            .getByRole("listbox", { name: "Current learner" })
-            .waitFor();
-        await drawer.evaluate(async (el) => {
-          await Promise.all(el.getAnimations().map((a) => a.finished));
-        });
-        const pending = await menuGeometry();
-        if (!assessmentOnly)
-          assert(
-            pending.some((row) => row.startsWith("trial ")),
-            `${label}: the saved assessment is offered while its lookup is pending`,
-          );
-        await fits(`${label} pending`);
-        await page.mouse.move(0, 0);
-        await page.screenshot({
-          path: `${output}/menu-assessment-pending-${who}-${theme}-${width}.png`,
-          animations: "disabled",
-        });
-        const answered = page.waitForResponse("**/api/v1/trials/current");
-        release();
-        await answered;
-        await page.evaluate(
-          () =>
-            new Promise((resolve) =>
-              requestAnimationFrame(() => requestAnimationFrame(resolve)),
-            ),
-        );
-        assert.deepEqual(
-          await menuGeometry(),
-          pending,
-          `${label}: the menu moved when the assessment lookup answered`,
-        );
-        await page.screenshot({
-          path: `${output}/menu-assessment-loaded-${who}-${theme}-${width}.png`,
-          animations: "disabled",
-        });
-        await page.unroute("**/api/v1/trials/current");
-        await page.keyboard.press("Escape");
-        await drawer.waitFor({ state: "detached" });
-      }
   account = twoLearners;
   signedIn = true;
   for (const [width, height] of [
@@ -736,7 +591,7 @@ try {
     [1280, 900],
   ]) {
     await page.setViewportSize({ width, height });
-    await page.goto(`${origin}/inventory?context=trial`);
+    await page.goto(`${origin}/inventory`);
     await page
       .getByRole("navigation", { name: "Progress" })
       .getByRole("link", { name: "Overview", exact: true })
@@ -768,22 +623,10 @@ try {
       .getByRole("link", { name: "Inventory", exact: true })
       .click();
     await page.locator('[data-strength="Strong"]').first().waitFor();
-    assert.equal(
-      new URL(page.url()).searchParams.get("context"),
-      "trial",
-      "all three progress views retain assessment context",
-    );
+    assert.equal(new URL(page.url()).pathname, "/inventory");
   }
   failMe = true;
-  await page.goto(`${origin}/inventory?context=trial`);
-  await page.locator('[data-strength="Strong"]').first().waitFor();
-  assert.equal(
-    await page
-      .getByRole("heading", { name: "Your inventory could not be loaded" })
-      .count(),
-    0,
-    "an account outage cannot hide a working anonymous assessment",
-  );
+  await page.goto(`${origin}/inventory`);
   await trigger.click();
   // One Account link for the whole group, even while the account is down.
   await page.getByRole("link", { name: "Account", exact: true }).waitFor();
@@ -1042,7 +885,7 @@ try {
   signedIn = false;
   // Signed out, the inventory asks to sign in first; the public map keeps
   // its own header and drawer.
-  await page.goto(`${origin}/inventory?context=trial`);
+  await page.goto(`${origin}/inventory`);
   await page.waitForURL((url) => url.pathname === "/sign-in");
   await page.goto(`${origin}/pathways`);
   await trigger.click();
@@ -1057,7 +900,7 @@ try {
     /\/DrawerContents(?:\.tsx|-[^/]+\.js)(?:\?.*)?$/,
     (route) => route.abort(),
   );
-  await failedMenu.goto(`${origin}/try/practice`);
+  await failedMenu.goto(`${origin}/practice`);
   await failedMenu.locator(".problem-stage .question").waitFor();
   const originalQuestion = await failedMenu
     .locator(".problem-stage .question")
@@ -1084,7 +927,7 @@ try {
     "navigation does not initiate purchases",
   );
   console.log(
-    `Navigation and inventory (${engine}): responsive practice/drawer/inventory, identity, context, switching, search, refresh, recovery, keyboard focus, toolbar stacking and logout errors passed.`,
+    `Navigation and inventory (${engine}): responsive practice/drawer/inventory, identity, switching, search, refresh, recovery, keyboard focus, toolbar stacking and logout errors passed.`,
   );
 } finally {
   await browser.close();

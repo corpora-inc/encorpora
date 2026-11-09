@@ -210,7 +210,7 @@ async function serve(page: Page, api: Api) {
             retained: retentionNotice,
           },
           learners: [],
-          next: "try",
+          next: "start",
         },
       });
     if (path === "/api/v1/billing/enrollment")
@@ -226,8 +226,6 @@ async function serve(page: Page, api: Api) {
       return route.fulfill({
         json: { available: true, offer: offers[0], offers, extraOffers },
       });
-    if (path === "/api/v1/trials/current")
-      return route.fulfill({ json: { trial: null } });
     if (path === "/api/v1/events/context")
       return route.fulfill({ json: { generation: "initial" } });
     return route.fulfill({ json: {} });
@@ -671,9 +669,10 @@ async function journeys(browser: Browser, engine: string) {
       signUpHeading: "Try AMP free",
       entry: "pitch-try",
       landing: async (page) => {
-        await page.waitForURL("**/try?**");
+        // A new account answers "What brings you to AMP?" first.
+        await page.waitForURL((url) => url.pathname === "/start");
         await page
-          .getByRole("heading", { name: "See how AMP adapts" })
+          .getByRole("heading", { name: "What brings you to AMP?" })
           .waitFor();
       },
     },

@@ -98,24 +98,16 @@ test(
         authenticate: accountsAuth(accounts),
         development: false,
       });
-      const anonymousTrial = await hosted.inject({
-        method: "POST",
-        url: "/api/v1/trials",
-        payload: { birthYear: 2016 },
-      });
-      assert.equal(
-        anonymousTrial.statusCode,
-        401,
-        "assessment requires a parent account",
-      );
-      const parentTrial = await hosted.inject({
+      const retired = await hosted.inject({
         method: "POST",
         url: "/api/v1/trials",
         payload: { birthYear: 2016 },
         headers: { cookie: cookies },
       });
-      assert.equal(parentTrial.statusCode, 201, parentTrial.body);
-      const trialAuth = { authorization: `Trial ${parentTrial.json().token}` };
+      assert.equal(retired.statusCode, 410, "new trials are retired");
+      assert.deepEqual(retired.json(), { error: "trial_retired" });
+      const parentTrial = await repository.createTrial(2016, me.account.id);
+      const trialAuth = { authorization: `Trial ${parentTrial.token}` };
       assert.equal(
         (
           await hosted.inject({

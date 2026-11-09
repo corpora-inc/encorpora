@@ -2,12 +2,12 @@
  * One account, several places, in real browsers on the real API in accounts
  * mode and a real database. Everyone here is synthetic.
  *
- *   1. A parent has a free assessment under way when we issue a school to their
- *      address. They open the setup link, sign in, and land in setup at the
- *      calendar, the school step answered. `/` still opens their assessment: a
- *      half-finished setup never takes it. The place switcher, in the family
- *      drawer and in setup, goes both ways, and Back, Forward and reload keep
- *      each screen.
+ *   1. A parent answers the starter for one child, and has their family's
+ *      class, when we issue a school to their address. They open the setup
+ *      link, signed in, and land in setup at the calendar, the school step
+ *      answered. `/` still opens the family's class: a half-finished setup
+ *      never takes it. The place switcher, in the class and in setup, goes
+ *      both ways, and Back, Forward and reload keep each screen.
  *   2. A parent whose child practices also runs a school. `/` opens where they
  *      last worked, their family's class at first; Back and Forward between
  *      the school and the class reopen each, and a reload stays.
@@ -45,6 +45,7 @@ import { PostgresRepository } from "../src/server/repository";
 import { probe, settle, shellRecord, shiftRecorder } from "./app-shell-probe";
 import { migrate } from "./migrate";
 import { schoolAdmin } from "./school-admin";
+import { choose as chooseOption } from "./ui-controls";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 
 const chromium = secureChromium(rawChromium);
@@ -239,14 +240,30 @@ async function choose(
   await menu.waitFor({ state: "detached" });
 }
 
-/** The founder's morning: an assessment under way, then a school to set up. */
-async function trialThenSchool(
+/** The family's class, made by the starter, and its address. */
+async function familyClass(account: string) {
+  const family = (
+    await db.query(
+      "SELECT f.org_id,c.name FROM amp_families f JOIN amp_classes c ON c.id=f.class_id WHERE f.account_id=$1",
+      [account],
+    )
+  ).rows[0] as { org_id: string; name: string };
+  return {
+    ...family,
+    named: new RegExp(family.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+    inClass: new RegExp(`/school/${family.org_id}/classes/[^/]+/today$`),
+  };
+}
+
+/** The founder's morning: a child practicing in the family's class, made by
+ * the starter, then a school to set up. */
+async function familyThenSchool(
   browser: Browser,
   engine: string,
   width: number,
   theme: "light" | "dark",
 ) {
-  const label = `${engine} ${width} ${theme} trial`;
+  const label = `${engine} ${width} ${theme} family`;
   const context = await newContext(browser, width, theme);
   const page = await context.newPage();
   page.setDefaultTimeout(30_000);
@@ -259,9 +276,26 @@ async function trialThenSchool(
   const email = `head-${randomUUID().slice(0, 8)}@alder.example`;
   await page.goto(`${origin}/sign-up`);
   await signUp(page, email);
-  await page.waitForURL(/\/account\/ready|\/try|\/start/);
+  await page.waitForURL(/\/account\/ready|\/start/);
+  // "What brings you to AMP?": a parent, one child.
+  await heading(page, "What brings you to AMP?");
+  await page.locator('[data-choice="parent"]').click();
+  await page.waitForURL(`${origin}/start/parent`);
+  await chooseOption(
+    page.getByRole("button", { name: "Birth year, your child" }),
+    "2016",
+  );
+  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  await page.waitForURL(/\/school\/[^/]+\/classes\/[^/]+\/today$/);
+  await heading(page, /^Good (morning|afternoon|evening)/);
+  await settle(page, 300);
   const account = await accountOf(context);
-  await repository.createTrial(2016, account);
+  const family = await familyClass(account);
+  check(
+    `${label} the starter opens the family's class`,
+    family.inClass.test(path(page)),
+    path(page),
+  );
   const school = "Alder Street School";
   const issued = await issue(school, email);
   check(
@@ -288,27 +322,26 @@ async function trialThenSchool(
   }
   await shot(page, "setup-with-switcher", width, theme);
 
-  // `/` keeps the assessment: a half-finished setup never captures it.
+  // `/` keeps the family's class: a half-finished setup never captures it.
   await page.goto(`${origin}/`);
-  await page.waitForURL(/\/try\/practice/);
-  check(
-    `${label} / opens the assessment`,
-    path(page).startsWith("/try/practice"),
-  );
+  await page.waitForURL(family.inClass);
+  await page.getByRole("heading", { level: 1 }).first().waitFor();
+  const classPath = path(page);
 
-  // The drawer's switcher lists both places; the school opens its setup.
-  const fromHome = await openSwitcher(page, "Family and practice", true);
+  // The switcher lists every place; the school opens its setup.
+  const fromHome = await openSwitcher(page, family.name, width < 1024);
   const items = await fromHome.getByRole("menuitem").allInnerTexts();
   check(
-    `${label} the switcher lists both places`,
-    items.length === 2 &&
-      /Family and practice/.test(items[0]!) &&
-      /Free assessment/.test(items[0]!) &&
-      items[1]!.includes(school) &&
-      /Finish setting up/.test(items[1]!),
+    `${label} the switcher lists the family, own practice and the school`,
+    items.length === 4 &&
+      items[0]!.includes(family.name) &&
+      /Start my own practice/.test(items[1]!) &&
+      items[2]!.includes(school) &&
+      /Finish setting up/.test(items[2]!) &&
+      /Add a place/.test(items[3]!),
     items,
   );
-  await measured(page, `${label} drawer switcher`);
+  await measured(page, `${label} family switcher`);
   await shot(page, "drawer-switcher", width, theme);
   await choose(page, fromHome, new RegExp(school));
   await heading(page, "When does your school year run?");
@@ -318,12 +351,12 @@ async function trialThenSchool(
     path(page),
   );
 
-  // From setup, the same switcher goes back to the assessment.
+  // From setup, the same switcher goes back to the family's class.
   const fromSetup = await openSwitcher(page, school, false);
   await measured(page, `${label} setup switcher`);
   await shot(page, "setup-switcher", width, theme);
-  await choose(page, fromSetup, /Family and practice/);
-  await page.waitForURL(/\/try\/practice/);
+  await choose(page, fromSetup, family.named);
+  await page.waitForURL(family.inClass);
 
   // Back, Forward and reload each keep their screen.
   await page.goBack();
@@ -333,19 +366,20 @@ async function trialThenSchool(
   await heading(page, "When does your school year run?");
   check(`${label} reload keeps setup`, path(page) === setupPath, path(page));
   await page.goForward();
-  await page.waitForURL(/\/try\/practice/);
+  await page.waitForURL(family.inClass);
   await page.reload();
-  await page.waitForURL(/\/try\/practice/);
+  await page.waitForURL(family.inClass);
   check(
-    `${label} reload keeps the assessment`,
-    path(page).startsWith("/try/practice"),
+    `${label} reload keeps the family's class`,
+    path(page) === classPath,
+    path(page),
   );
   await page.goBack();
   await heading(page, "When does your school year run?");
 
-  // Having worked in setup, `/` is still the assessment.
+  // Having worked in setup, `/` is still the family's class.
   await page.goto(`${origin}/`);
-  await page.waitForURL(/\/try\/practice/);
+  await page.waitForURL(family.inClass);
 
   // Setup finished: the school is a place `/` can open.
   const base = `${origin}/api/v1/school/orgs/${issued.orgId}`;
@@ -372,7 +406,8 @@ async function trialThenSchool(
   });
   check(`${label} setup finishes`, finished.ok(), await finished.text());
   await page.reload();
-  const toSchool = await openSwitcher(page, "Family and practice", true);
+  await page.getByRole("heading", { level: 1 }).first().waitFor();
+  const toSchool = await openSwitcher(page, family.name, width < 1024);
   await choose(page, toSchool, new RegExp(school));
   await page.waitForURL(new RegExp(`/school/${issued.orgId}`));
   const schoolPath = path(page);
@@ -391,13 +426,14 @@ async function trialThenSchool(
     path(page),
   );
   const back = await openSwitcher(page, school, width < 1024);
-  await choose(page, back, /Family and practice/);
-  await page.waitForURL(/\/try\/practice/);
+  await choose(page, back, family.named);
+  await page.waitForURL(family.inClass);
   await page.goto(`${origin}/`);
-  await page.waitForURL(/\/try\/practice/);
+  await page.waitForURL(family.inClass);
   check(
-    `${label} / returns to the assessment`,
-    path(page).startsWith("/try/practice"),
+    `${label} / returns to the family's class`,
+    path(page) === classPath,
+    path(page),
   );
   check(`${label} no uncaught errors`, errors.length === 0, errors);
   await context.close();
@@ -414,7 +450,7 @@ async function practiceAndSchool(browser: Browser, width: number) {
   const email = `parent-${randomUUID().slice(0, 8)}@birch.example`;
   await page.goto(`${origin}/sign-up`);
   await signUp(page, email);
-  await page.waitForURL(/\/account\/ready|\/try|\/start/);
+  await page.waitForURL(/\/account\/ready|\/start/);
   const account = await accountOf(context);
   await db.query(
     "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES($1,'fixture','verified','synthetic')",
@@ -541,7 +577,7 @@ async function noSelfServe(browser: Browser) {
   );
   await page.goto(`${origin}/sign-up`);
   await signUp(page, `visitor-${randomUUID().slice(0, 8)}@example.com`);
-  await page.waitForURL(/\/account\/ready|\/try|\/start/);
+  await page.waitForURL(/\/account\/ready|\/start/);
   for (const target of [
     "/school/new",
     "/school/new?step=calendar",
@@ -568,12 +604,12 @@ try {
   await noSelfServe(browser);
   for (const width of [1280, 390])
     for (const theme of ["light", "dark"] as const)
-      await trialThenSchool(browser, "chromium", width, theme);
+      await familyThenSchool(browser, "chromium", width, theme);
   await practiceAndSchool(browser, 1280);
   await practiceAndSchool(browser, 390);
   await browser.close();
   const safari = await webkit.launch();
-  await trialThenSchool(safari, "webkit", 390, "light");
+  await familyThenSchool(safari, "webkit", 390, "light");
   await safari.close();
 } catch (error) {
   await last.page?.screenshot({ path: `${scratch}/stuck.png` }).catch(() => {});

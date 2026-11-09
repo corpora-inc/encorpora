@@ -18,6 +18,7 @@ import { retentionNotice } from "../src/family/contracts";
 import { skills } from "../src/curriculum/catalog";
 import { templates, generateProblem } from "../src/math/engine";
 import { problemLesson } from "../src/content/problem-lessons";
+import { defaultPracticeSettings } from "../src/learning/practice-settings";
 
 // Real auth client, session broadcasts, router and menus; synthetic HTTP only.
 const vite = await createServer({ server: { host: "127.0.0.1", port: 0 } });
@@ -54,9 +55,35 @@ const summary = fixtureMe(
   identity,
 );
 summary.account.email = email;
+// Signed-in practice: the family's learner, chosen on this device.
+const practiceLearner = "account-practice-learner";
+const practiceSummary = fixtureMe(
+  {
+    consent: {
+      status: "active",
+      policyVersion: "fixture",
+      recordedAt: null,
+      withdrawnAt: null,
+    },
+    learners: [
+      {
+        id: practiceLearner,
+        name: "Sample learner",
+        birthYear: 2008,
+        deletedAt: null,
+        access: [],
+        stripeLinked: false,
+        canPractice: true,
+      },
+    ],
+    retained: retentionNotice,
+  },
+  identity,
+);
+practiceSummary.account.email = email;
 let practiceTemplate = "two-step-equation";
 let signedIn = true,
-  hasTrial = true,
+  practicing = false,
   access = false,
   failMe = false,
   failSignOut = false;
@@ -151,24 +178,26 @@ try {
       return failMe
         ? route.fulfill({ status: 503, json: { error: "unavailable" } })
         : route.fulfill({
-            json: {
-              ...summary,
-              next: access ? "practice" : "try",
-              learners: access
-                ? [
-                    {
-                      id: "sample-learner",
-                      name: "Sample learner",
-                      birthYear: 2008,
-                      entitlement: {
-                        active: true,
-                        plan: null,
-                        endsAt: "2027-01-01T00:00:00.000Z",
-                      },
-                    },
-                  ]
-                : [],
-            },
+            json: practicing
+              ? practiceSummary
+              : {
+                  ...summary,
+                  next: access ? "practice" : "start",
+                  learners: access
+                    ? [
+                        {
+                          id: "sample-learner",
+                          name: "Sample learner",
+                          birthYear: 2008,
+                          entitlement: {
+                            active: true,
+                            plan: null,
+                            endsAt: "2027-01-01T00:00:00.000Z",
+                          },
+                        },
+                      ]
+                    : [],
+                },
           });
     if (path === "/api/v1/catalog")
       return route.fulfill({
@@ -180,45 +209,17 @@ try {
           trial: { free: 100, placement: 10 },
         },
       });
-    if (path === "/api/v1/trials/current")
+    if (path.endsWith("/frontier"))
       return route.fulfill({
         json: {
-          trial:
-            signedIn && hasTrial
-              ? {
-                  token: "synthetic-practice-layout",
-                  learnerId: "account-practice-learner",
-                  birthYear: 2008,
-                  expiresAt: "2099-01-01T00:00:00.000Z",
-                }
-              : null,
+          expected: 10,
+          overall: { level: 8, sd: 0.8, answered: 15, independent: 12 },
+          strands: {},
         },
       });
-    if (path === "/api/v1/learners")
-      return route.fulfill({
-        json: {
-          learners: [{ id: "account-practice-learner", birthYear: 2008 }],
-        },
-      });
-    if (path.endsWith("/trial-progress"))
-      return route.fulfill({
-        json: {
-          phase: "practice",
-          free: 100,
-          placement: 10,
-          remaining: 85,
-          totals: { answered: 15, correct: 12, assisted: 0 },
-          mastered: [],
-          frontier: {
-            placement: null,
-            current: {
-              expected: 10,
-              overall: { level: 8, sd: 0.8, answered: 15, independent: 12 },
-              strands: {},
-            },
-          },
-        },
-      });
+    if (path.endsWith("/practice-state"))
+      return route.fulfill({ json: defaultPracticeSettings() });
+    if (path.endsWith("/books")) return route.fulfill({ json: { books: [] } });
     if (path.endsWith("/progress"))
       return route.fulfill({
         json: { asOf: "2026-01-01T00:00:00.000Z", skills: [] },
@@ -232,7 +233,6 @@ try {
               : generateProblem(practiceTemplate, "practice-account-1529")
                   .public,
           ],
-          trialRemaining: 85,
         },
       });
     if (path.includes("/problem-lessons/"))
@@ -262,6 +262,7 @@ try {
     );
   });
   // Account controls must be reviewed inside the complete practice view.
+  practicing = true;
   for (const authenticated of [true, false]) {
     signedIn = authenticated;
     for (const theme of ["light", "dark"] as const) {
@@ -293,18 +294,21 @@ try {
         await practice
           .getByRole("heading", { name: "Sign in", exact: true })
           .waitFor();
-        await practice.evaluate(() =>
-          localStorage.setItem("amp.trial", "synthetic-practice-layout"),
+        await practice.evaluate(
+          (learnerId) =>
+            localStorage.setItem(
+              "amp.learner",
+              JSON.stringify({ state: { learnerId }, version: 1 }),
+            ),
+          practiceLearner,
         );
-        await practice.goto(`${origin}/try/practice`);
+        await practice.goto(`${origin}/practice`);
         if (!authenticated) {
+          // Signed out, practice offers the free account in place.
           await practice
-            .getByRole("heading", {
-              name: "Try AMP free",
-              exact: true,
-            })
+            .getByRole("button", { name: "Try it free", exact: true })
             .waitFor();
-          assert.equal(new URL(practice.url()).pathname, "/sign-up");
+          assert.equal(new URL(practice.url()).pathname, "/practice");
           await fits(practice, `practice signup ${theme} ${width}`);
           await practice.close();
           continue;
@@ -387,6 +391,7 @@ try {
       }
     }
   }
+  practicing = false;
   signedIn = true;
   for (const theme of ["light", "dark"] as const) {
     await page.emulateMedia({ colorScheme: theme });
@@ -396,9 +401,10 @@ try {
       await page
         .getByRole("heading", { name: "Your account is ready" })
         .waitFor();
-      const next = page.getByRole("link", { name: "Continue free assessment" });
+      // A new account continues to the starter.
+      const next = page.getByRole("link", { name: "Continue →", exact: true });
       await next.waitFor();
-      assert.equal(await next.getAttribute("href"), "/try");
+      assert.equal(await next.getAttribute("href"), "/start");
       await fits(page, `ready ${theme} ${width}`);
       await page.getByRole("button", { name: "Open AMP menu" }).click();
       await page
@@ -433,15 +439,6 @@ try {
     "/practice",
   );
   access = false;
-  await page.evaluate(() =>
-    localStorage.setItem(
-      "amp.trial.plan",
-      JSON.stringify({ interval: "year", at: Date.now() }),
-    ),
-  );
-  await page.reload();
-  await page.getByRole("link", { name: "Continue setup" }).waitFor();
-  await page.evaluate(() => localStorage.removeItem("amp.trial.plan"));
   failMe = true;
   await page.reload();
   await page
@@ -450,7 +447,7 @@ try {
     .waitFor();
   failMe = false;
   await page.getByRole("button", { name: "Try again", exact: true }).click();
-  await page.getByRole("link", { name: "Continue free assessment" }).waitFor();
+  await page.getByRole("link", { name: "Continue →", exact: true }).waitFor();
   const sibling = await context.newPage();
   await sibling.goto(`${origin}/account/ready`);
   await sibling
@@ -498,7 +495,7 @@ try {
   const search = page.getByRole("searchbox", { name: "Find a skill" });
   await page
     .getByText(
-      "Explore the curriculum. Start a free assessment to illuminate your skills.",
+      "Explore the curriculum. Practice lights up each skill you earn.",
       {
         exact: true,
       },
@@ -526,91 +523,17 @@ try {
   await page.getByRole("link", { name: "Create account" }).click();
   await page.getByRole("heading", { name: "Create your account" }).waitFor();
   assert.equal(new URL(page.url()).pathname, "/sign-up");
-  await page.addInitScript(
-    "Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async function(text) { window.copiedShareText = text; } } });",
-  );
   signedIn = true;
   for (const theme of ["light", "dark"] as const) {
     await page.emulateMedia({ colorScheme: theme });
-    for (const width of [320, 390, 768, 1280]) {
-      await page.setViewportSize({ width, height: width === 320 ? 568 : 844 });
-      await page.goto(`${origin}/try/map`);
-      await page
-        .getByRole("button", { name: "Share your assessment", exact: true })
-        .click();
-      const dialog = page.getByRole("dialog", {
-        name: "Share your assessment",
-      });
-      await dialog.waitFor();
-      assert.equal(
-        await dialog.getByRole("checkbox").count(),
-        0,
-        "the share has no estimate toggle",
-      );
-      const whatsapp = dialog.getByRole("link", { name: "Share on WhatsApp" });
-      assert.match(
-        decodeURIComponent((await whatsapp.getAttribute("href"))!).replaceAll(
-          "+",
-          " ",
-        ),
-        /My current math estimate/,
-      );
-      const facebook = dialog.getByRole("link", { name: "Share on Facebook" });
-      assert.equal(
-        new URL((await facebook.getAttribute("href"))!).searchParams.get("u"),
-        "https://amp.corpora.inc/",
-      );
-      await dialog.getByRole("link", { name: "Save map image" }).waitFor();
-      await dialog
-        .getByRole("button", { name: "Copy link", exact: true })
-        .click();
-      await page.waitForFunction(
-        () => (window as any).copiedShareText === "https://amp.corpora.inc/",
-      );
-      assert.equal(
-        await page.evaluate(
-          () => document.documentElement.scrollWidth > innerWidth,
-        ),
-        false,
-      );
-      for (const control of await dialog.locator("a,button").all()) {
-        const box = await control.boundingBox();
-        assert(
-          box && box.width >= 44 && box.height >= 44,
-          "share controls retain touch targets",
-        );
-      }
-      await page.screenshot({
-        path: `${output}/share-panel-${theme}-${width}.png`,
-        animations: "disabled",
-        fullPage: false,
-      });
-      if (width === 390 && theme === "light") {
-        const [download] = await Promise.all([
-          page.waitForEvent("download"),
-          dialog.getByRole("link", { name: "Save map image" }).click(),
-        ]);
-        assert.equal(download.suggestedFilename(), "amp-pathways.png");
-      }
-      await dialog.getByRole("button", { name: "Close", exact: true }).click();
-      await page
-        .getByRole("button", { name: "Share your assessment", exact: true })
-        .waitFor();
-    }
-  }
-  for (const theme of ["light", "dark"] as const) {
-    await page.emulateMedia({ colorScheme: theme });
     await page.setViewportSize({ width: 390, height: 844 });
-    // This screen set represents a parent who has not started a trial.
-    hasTrial = false;
+    // This screen set represents a new account: no learner or place yet.
     for (const [path, heading] of [
       ["/sign-in", "Sign in"],
       ["/sign-up", "Create your account"],
       ["/sign-in/forgot", "Reset your password"],
-      ["/try", "See how AMP adapts"],
+      ["/start", "What brings you to AMP?"],
     ]) {
-      if (path === "/try")
-        await page.evaluate(() => localStorage.removeItem("amp.trial"));
       await page.goto(`${origin}${path}`);
       await page.getByRole("heading", { name: heading, exact: true }).waitFor();
       await fits(page, `${path} ${theme}`);

@@ -130,7 +130,7 @@ async function signUp(page: Page, email: string, name: string) {
   await page.getByLabel("Email").fill(email);
   await password.fill(PASSWORD);
   await page.getByRole("button", { name: "Create account" }).click();
-  await page.waitForURL(/\/account\/ready|\/try|\/start|\/school/);
+  await page.waitForURL(/\/account\/ready|\/start|\/school/);
   const account = await accountOf(page.context());
   await db.query(
     'UPDATE amp_auth_users SET name=$2,"emailVerified"=true WHERE id=$1',

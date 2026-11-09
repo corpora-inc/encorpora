@@ -63,7 +63,6 @@ export function InventoryScreen() {
     void navigate({
       to: "/inventory",
       search: {
-        ...view.contextSearch,
         topic: query || undefined,
         collection: filter === "tried" ? undefined : filter,
         area: area || undefined,
@@ -129,7 +128,7 @@ export function InventoryScreen() {
             Estimated level{" "}
             <strong>{gradeName(view.frontier.overall.level)}</strong>
           </p>
-        ) : shown && !view.frontier && !view.trialMode ? (
+        ) : shown && !view.frontier ? (
           // Holds the line's place while the estimate loads.
           <p
             className={styles.level}
@@ -296,7 +295,6 @@ export function InventoryScreen() {
                         className={styles.skillName}
                         to="/pathways/$skillId"
                         params={{ skillId: skill.id }}
-                        search={view.contextSearch}
                       >
                         <strong>{skill.title}</strong>
                         {shown && <small>{bandLabel(skill.gradeBand)}</small>}

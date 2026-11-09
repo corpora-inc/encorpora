@@ -44,15 +44,10 @@ test(
     try {
       await admin.query(`CREATE SCHEMA ${schema}`);
       await migrate(scoped.href);
-      const created = await app.inject({
-        method: "POST",
-        url: "/api/v1/trials",
-        payload: { birthYear: 2011 },
-      });
-      assert.equal(created.statusCode, 201, created.body);
-      const learnerId = created.json().learnerId as string;
+      const created = await repository.createTrial(2011);
+      const learnerId = created.learnerId;
       const base = `/api/v1/learners/${learnerId}`;
-      const headers = { authorization: `Trial ${created.json().token}` };
+      const headers = { authorization: `Trial ${created.token}` };
       const count = async (table: string) =>
         Number(
           (

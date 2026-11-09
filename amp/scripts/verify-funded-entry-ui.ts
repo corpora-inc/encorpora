@@ -115,7 +115,6 @@ function fresh(program = ar) {
     requests: [] as FundingRequest[],
     offer: true,
     failCreate: false,
-    adopted: false,
     payloads: [] as Record<string, unknown>[],
   };
 }
@@ -157,7 +156,7 @@ function me(state: State) {
       ? state.learners.length
         ? "choose-plan"
         : "add-learner"
-      : "try",
+      : "start",
   };
 }
 async function serve(page: Page, state: State, faults: string[]) {
@@ -168,21 +167,6 @@ async function serve(page: Page, state: State, faults: string[]) {
     if (path === "/funding/invoices")
       return route.fulfill({ json: { invoices: [] } });
     if (path === "/me") return route.fulfill({ json: me(state) });
-    if (path === "/trials/current")
-      return route.fulfill({
-        json: {
-          trial:
-            req.postDataJSON()?.token === "synthetic-free-trial" &&
-            !state.adopted
-              ? {
-                  token: "synthetic-free-trial",
-                  learnerId: "synthetic-trial-learner",
-                  birthYear: 2016,
-                  expiresAt: "2099-01-01T00:00:00.000Z",
-                }
-              : null,
-        },
-      });
     if (path === "/events")
       return route.fulfill({ status: 202, json: { accepted: 1 } });
     if (path === "/events/context")
@@ -241,16 +225,6 @@ async function serve(page: Page, state: State, faults: string[]) {
           request: null,
         },
       });
-    if (path === "/trials/adopt") {
-      assert.ok(state.consent);
-      assert.deepEqual(Object.keys(req.postDataJSON()).sort(), [
-        "name",
-        "token",
-      ]);
-      state.adopted = true;
-      state.learners = [learner];
-      return route.fulfill({ json: learner });
-    }
     if (path === "/learners" && req.method() === "POST") {
       assert.ok(state.consent);
       state.learners = [{ ...learner, ...req.postDataJSON() }];
@@ -379,11 +353,6 @@ try {
         // Simulate consent completed in the email's tab: this shared component reads
         // the same account-scoped continuation after the server confirms consent.
         state.consent = true;
-        const adopting = width === 390 && theme === "light";
-        if (adopting)
-          await page.evaluate(() =>
-            localStorage.setItem("amp.trial", "synthetic-free-trial"),
-          );
         const original = page;
         page = await context.newPage();
         await serve(page, state, faults);
@@ -409,15 +378,10 @@ try {
           .click();
         await original.close();
         await page.getByLabel("Learner name").fill("Sample learner");
-        if (adopting)
-          await page
-            .getByRole("button", { name: "Use these answers", exact: true })
-            .click();
         await page
           .getByRole("button", { name: "Continue", exact: true })
           .click();
-        if (!adopting)
-          await page.getByRole("button", { name: "2016", exact: true }).click();
+        await page.getByRole("button", { name: "2016", exact: true }).click();
         await page
           .getByRole("heading", { name: entry.offer.programName, exact: true })
           .waitFor();
@@ -425,7 +389,6 @@ try {
           new URL(page.url()).searchParams.get("utm_source"),
           new URLSearchParams(entryCampaign).get("utm_source"),
         );
-        assert.equal(state.adopted, adopting);
         await page
           .getByRole("button", { name: /^Program and product:/ })
           .waitFor();
@@ -494,7 +457,7 @@ try {
         await context.close();
       }
   // Privacy signals never prevent the same funded purchase, and invalid labels
-  // cannot survive actual router links, redirects, or request serialization.
+  // cannot survive the router's redirects or request serialization.
   for (const privacy of [
     "gpc",
     "dnt",
@@ -527,14 +490,6 @@ try {
         : privacy === "invalid-creative"
           ? campaign.replace("efa-facebook-feed-v1", "private%40example.test")
           : campaign;
-    await page.goto(`${origin}/try/plans?program=ar-efa&${tags}`);
-    assert.ok(
-      (
-        await page
-          .getByRole("link", { name: "Use Arkansas EFA funds" })
-          .getAttribute("href")
-      )?.startsWith("/invoice/arkansas-efa"),
-    );
     await page.goto(`${origin}/purchase/arkansas-efa?${tags}`);
     await page
       .getByRole("heading", { name: "Arkansas EFA", exact: true })
@@ -580,9 +535,12 @@ try {
     await page
       .getByRole("heading", { name: "Learning consent", exact: true })
       .waitFor();
+    // Back leaves the funded purchase for the account's first run.
     await page.getByRole("button", { name: "Back", exact: true }).click();
-    await page.getByRole("link", { name: "Use Arkansas EFA funds" }).waitFor();
-    assert.equal(new URL(page.url()).pathname, "/try/plans");
+    await page
+      .getByRole("heading", { name: "What brings you to AMP?" })
+      .waitFor();
+    assert.equal(new URL(page.url()).pathname, "/start");
     assert.equal(
       await page.evaluate(() =>
         localStorage.getItem("amp.pending-funded-purchase.synthetic-parent"),

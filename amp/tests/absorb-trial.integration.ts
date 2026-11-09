@@ -59,7 +59,8 @@ test(
         assert.equal(learner.pictureIdentity, "fox");
         assert.equal(learner.freeAllowance?.problems.used, 7);
         assert.equal(learner.freeAllowance?.workbooks.made, 1);
-        assert.equal(me.trial, undefined);
+        // `/me` names no free assessment: the trial is gone from it.
+        assert.ok(!("trial" in me));
         assert.equal(await f.repository.currentTrial(account), null);
 
         const row = await learnerRow(f.db, trial.learnerId);

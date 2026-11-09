@@ -59,9 +59,7 @@ export async function verifyShellReview({
   for (const viewport of viewports)
     for (const colorScheme of ["light", "dark"] as const)
       for (const kind of [
-        "trial-refresh",
-        "trial-return",
-        "trial-retry",
+        "learner-return",
         "library-search",
         "practice-title",
         "library-loading",
@@ -80,7 +78,7 @@ export async function verifyShellReview({
           continue;
         const context = await fixture.context(
           browser,
-          kind.startsWith("trial") ? "trial" : "paid",
+          kind === "learner-return" ? "starter" : "paid",
           { viewport, colorScheme },
         );
         const page = await context.newPage();
@@ -91,90 +89,43 @@ export async function verifyShellReview({
         });
         const tag = `${kind} ${viewport.width} ${colorScheme}`;
         try {
-          if (kind === "trial-refresh") {
-            await page.goto(`${fixture.origin}/try/map`);
+          if (kind === "learner-return") {
+            // A new learner back on their Overview after a problem: the map
+            // holds its place while it refreshes, and after.
+            await page.goto(`${fixture.origin}/overview`);
             const map = page.locator(".frontier-map");
-            await map.waitFor();
+            await page.locator('.frontier-map[aria-busy="false"]').waitFor();
             const before = await map.boundingBox();
-            await page.route("**/trial-progress", (route) =>
-              route.fulfill({
-                status: 503,
-                json: { error: "Temporarily unavailable" },
-              }),
-            );
-            const failedRefresh = page.waitForResponse(
-              (response) =>
-                response.url().endsWith("/trial-progress") &&
-                response.status() === 503,
-            );
-            await page.evaluate(() =>
-              window.dispatchEvent(new Event("visibilitychange")),
-            );
-            await (await failedRefresh).finished();
-            await settle(page, 200);
-            assert.equal(
-              await map.count(),
-              1,
-              `${tag}: a failed refresh must retain the map`,
-            );
-            assert.deepEqual(
-              await map.boundingBox(),
-              before,
-              `${tag}: the map must not move`,
-            );
-            await page
-              .getByRole("alert")
-              .filter({ hasText: /refresh|connection/i })
-              .waitFor();
-          } else if (kind === "trial-return" || kind === "trial-retry") {
-            await page.goto(`${fixture.origin}/try/map`);
-            await page.locator(".frontier-map").waitFor();
-            await page
-              .getByRole("link", { name: "Practice", exact: true })
-              .click();
+            await page.locator(".go-button:not([disabled])").click();
             await page.getByRole("button", { name: /^Skip/ }).waitFor();
-            let failArrival = kind === "trial-retry";
-            await page.route("**/trial-progress", async (route) => {
+            await page.route("**/api/v1/learners/*/frontier", async (route) => {
               await held;
-              if (failArrival)
-                await route.fulfill({
-                  status: 503,
-                  json: { error: "Temporarily unavailable" },
-                });
-              else await route.continue();
+              await route.continue();
             });
-            // A real skip invalidates the previously visited map. Opening its
-            // drawer link must wait even while the router retains that route.
             await page.getByRole("button", { name: /^Skip/ }).click();
             await page.getByRole("button", { name: /^Next/ }).waitFor();
+            const refreshed = page.waitForResponse((response) =>
+              response.url().endsWith("/frontier"),
+            );
             await page.getByRole("button", { name: "Open AMP menu" }).click();
             await page
               .getByRole("link", { name: "Progress", exact: true })
               .click({ noWaitAfter: true });
+            await page.waitForURL("**/overview");
+            await map.waitFor();
             await settle(page, 350);
-            assert.equal(
-              await page.locator(".frontier-map").count(),
-              0,
-              `${tag}: invalidated map must not paint`,
+            assert.ok(
+              sameBox(await map.boundingBox(), before),
+              `${tag}: the map moved while it refreshed`,
             );
             release();
-            await page.waitForURL("**/try/map");
-            if (failArrival) {
-              await page
-                .getByRole("heading", { name: "Free practice didn’t load" })
-                .waitFor();
-              await settle(page, 300);
-              assert.equal(
-                await page.locator(".frontier-map").count(),
-                0,
-                `${tag}: failed arrival requires explicit retry`,
-              );
-              failArrival = false;
-              await page
-                .getByRole("button", { name: "Try again", exact: true })
-                .click();
-            }
-            await page.locator(".frontier-map").waitFor();
+            await (await refreshed).finished();
+            await page.locator('.frontier-map[aria-busy="false"]').waitFor();
+            await settle(page, 200);
+            assert.ok(
+              sameBox(await map.boundingBox(), before),
+              `${tag}: the refreshed map moved`,
+            );
           } else if (kind === "library-search") {
             await page.goto(`${fixture.origin}/lessons`);
             const field = page.getByRole("searchbox", {

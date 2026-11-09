@@ -92,13 +92,7 @@ test(
         });
 
       // A free trial: three right, one wrong, one left; one report.
-      const trial = (
-        await app.inject({
-          method: "POST",
-          url: "/api/v1/trials",
-          payload: { birthYear: 2016 },
-        })
-      ).json();
+      const trial = await repository.createTrial(2016);
       const trialAuth = { authorization: `Trial ${trial.token}` };
       const trialProblems = await practice(trial.learnerId, trialAuth, [
         true,

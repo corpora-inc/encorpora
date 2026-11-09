@@ -14,7 +14,7 @@ import {
   offerRefunds,
   type InvoiceOffer,
 } from "../funding/invoice-offers";
-import { pricesOptions } from "../trial/api";
+import { pricesOptions } from "../billing/api";
 import { pitchProgram, pitchTarget } from "./targets";
 import styles from "./Pitch.module.css";
 

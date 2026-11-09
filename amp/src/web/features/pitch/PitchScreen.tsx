@@ -32,7 +32,7 @@ import styles from "./Pitch.module.css";
 export const loadPitch = loadBuyData;
 
 /** `/` for a signed-out web visitor: what AMP does for a child, what it
- * costs, and the two ways in. Buy leads; the free trial follows. */
+ * costs, and the two ways in. Buy leads; trying it free follows. */
 export function PitchScreen() {
   const search = useSearch({ strict: false }) as Record<string, unknown>;
   const navigate = useNavigate();

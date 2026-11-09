@@ -47,7 +47,7 @@ export function followupMail(
   if (input.program) trial.searchParams.set("program", input.program);
   const funding = program
     ? new URL(`/purchase/${program.path}`, config.origin).href
-    : new URL("/try/plans", config.origin).href;
+    : new URL("/", config.origin).href;
   const optout = new URL(
     `/api/v1/parent-followup/unsubscribe/${input.token}`,
     config.origin,

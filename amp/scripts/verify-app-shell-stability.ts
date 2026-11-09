@@ -8,8 +8,8 @@ import { secureChromium } from "../browser-security.mjs";
  *       [--widths 320,390,768,1280] [--shots DIR]
  *
  * For every screen on the frame (Overview, Pathways, Inventory, the four
- * Account tabs, practice, an adult's own record and the free assessment's
- * Overview), at 320, 390, 768 and 1280 px, light and dark, in Chromium and WebKit:
+ * Account tabs, practice, an adult's own record and a new child's Overview),
+ * at 320, 390, 768 and 1280 px, light and dark, in Chromium and WebKit:
  *
  * - the logo's box is identical on every screen;
  * - the logo opens the drawer, which shows the same logo in the same spot,
@@ -144,11 +144,11 @@ const screens: Screen[] = [
     ready: (p) => p.locator("main[data-dense] h1").waitFor(),
   },
   {
-    id: "trial-map",
-    path: "/try/map",
-    state: "trial",
+    id: "starter-overview",
+    path: "/overview",
+    state: "starter",
     group: "progress",
-    ready: (p) => p.locator(".frontier-map").waitFor(),
+    ready: (p) => p.locator('.frontier-map[aria-busy="false"]').waitFor(),
   },
 ];
 

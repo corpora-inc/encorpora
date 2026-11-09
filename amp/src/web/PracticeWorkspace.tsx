@@ -191,7 +191,7 @@ type Props = {
   /** A request error to show at the answer rather than at the top of the app. */
   error?: string;
   clearError?: () => void;
-  /** Open the learner's level view (home, or the trial's map), where the
+  /** Open the learner's level view (home), where the
    * rest of the app is also reached. */
   exit: () => void;
   /** That view's URL, so the control is a real link (new tab, copy link). */
@@ -249,9 +249,7 @@ export function PracticeWorkspace(props: Props) {
         frame = requestAnimationFrame(() => {
           if (sent || document.visibilityState !== "visible") return;
           sent = true;
-          const trial = location.pathname.startsWith("/try/");
-          track("problem_rendered", { mode: trial ? "trial" : "practice" });
-          if (trial) track("trial_problem_view");
+          track("problem_rendered", { mode: "practice" });
         });
       });
     };

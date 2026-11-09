@@ -24,7 +24,11 @@ const enabled = { skip: !process.env.AMP_TEST_DATABASE_URL };
 const DAY = 86_400_000;
 
 async function fixture(
-  run: (f: { pool: Pool; app: ReturnType<typeof buildApp> }) => Promise<void>,
+  run: (f: {
+    pool: Pool;
+    app: ReturnType<typeof buildApp>;
+    repository: PostgresRepository;
+  }) => Promise<void>,
 ) {
   const url = process.env.AMP_TEST_DATABASE_URL!;
   const schema = `amp_funnel_${randomUUID().replaceAll("-", "")}`;
@@ -44,7 +48,7 @@ async function fixture(
       pool: repository.pool,
       authenticate: async () => "parent",
     });
-    await run({ pool: repository.pool, app });
+    await run({ pool: repository.pool, app, repository });
   } finally {
     await app.close();
     await repository.close();
@@ -71,13 +75,10 @@ test(
   "events: writes a validated batch with first-touch attribution and a trial link",
   enabled,
   async () =>
-    fixture(async ({ pool, app }) => {
-      const trial = await app.inject({
-        method: "POST",
-        url: "/api/v1/trials",
-        payload: { birthYear: new Date().getUTCFullYear() - 8 },
-      });
-      const { token } = trial.json();
+    fixture(async ({ pool, app, repository }) => {
+      const { token } = await repository.createTrial(
+        new Date().getUTCFullYear() - 8,
+      );
       const visitorId = randomUUID();
       const sent = await post(app, {
         visitorId,

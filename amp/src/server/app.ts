@@ -2,7 +2,6 @@ import type { Frontier } from "../learning/frontier";
 import { DEFAULT_FRONTIER_POLICY } from "../learning/frontier-policy";
 import { practiceChangeSchema } from "../learning/practice-settings";
 import { changePractice } from "./practice-settings";
-import { recordParentAssessmentStart } from "../parent-followup/repository.js";
 import { satPracticeEligible } from "../curriculum/sat.js";
 import {
   assertPracticePolicy,
@@ -45,7 +44,6 @@ import { skills } from "../curriculum/catalog";
 import { auditCurriculum } from "../curriculum/audit";
 import {
   ApiError,
-  PostgresRepository,
   type Outcome,
   type Repository,
   type SavedProblem,
@@ -434,57 +432,10 @@ function routes(app: FastifyInstance, options: AppOptions) {
       return { band, policyVersion };
     });
   });
-  app.post(
-    "/api/v1/trials",
-    { config: { rateLimit: { max: 20, timeWindow: "1 hour" } } },
-    async (request, reply) => {
-      const account = !options.development
-        ? await options.authenticate(request)
-        : null;
-      const { birthYear } = z
-        .object({ birthYear: birthYearSchema })
-        .strict()
-        .parse(request.body);
-      const trial = await options.repository.createTrial(
-        birthYear,
-        account ?? undefined,
-      );
-      if (account && options.repository instanceof PostgresRepository) {
-        await recordParentAssessmentStart(
-          options.repository.pool,
-          account,
-          birthYear,
-        ).catch(() => console.warn("Parent assessment entry was not recorded"));
-      }
-      return reply.code(201).send(trial);
-    },
+  // The separate free trial is retired; old clients get a clear answer.
+  app.post("/api/v1/trials", async (_request, reply) =>
+    reply.code(410).send({ error: "trial_retired" }),
   );
-  app.post("/api/v1/trials/current", async (request) => {
-    const owner = await options.authenticate(request);
-    const { token } = z
-      .object({
-        token: z
-          .string()
-          .regex(/^[A-Za-z0-9_-]{20,100}$/)
-          .optional(),
-      })
-      .strict()
-      .parse(request.body ?? {});
-    return {
-      trial: (await options.repository.currentTrial?.(owner, token)) ?? null,
-    };
-  });
-  app.post("/api/v1/trials/adopt", async (request) => {
-    const account = await options.authenticate(request);
-    const { token, name } = z
-      .object({
-        token: z.string().regex(/^[A-Za-z0-9_-]{20,100}$/),
-        name: z.string().trim().min(1).max(60),
-      })
-      .strict()
-      .parse(request.body);
-    return options.repository.adoptTrial(account, token, name);
-  });
   app.get("/api/v1/learners/:learnerId/practice-state", async (request) => {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
@@ -540,15 +491,6 @@ function routes(app: FastifyInstance, options: AppOptions) {
           !!options.workbookRenderer,
         ),
       };
-    });
-  });
-  /** Records that the paywall was shown, at the limit or by choice. */
-  app.post("/api/v1/learners/:learnerId/trial-paywall", async (request) => {
-    const account = await parent(request);
-    const { learnerId } = paramsSchema.parse(request.params);
-    return options.repository.transaction(account, learnerId, async (tx) => {
-      await tx.trialPaywall();
-      return { recorded: true };
     });
   });
   app.post("/api/v1/learners/:learnerId/batches", async (request) => {

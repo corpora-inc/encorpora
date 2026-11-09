@@ -98,49 +98,40 @@ export async function accountSummary(
       };
     });
   const gift = await availableGift(pool, accountId);
-  // Both in parallel. A fixture at an earlier migration boundary has no
-  // schools, or trials without owners, and reads as none: no extra round trip
-  // to check first on the path every parent's `/me` takes.
+  // In parallel. A fixture at an earlier migration boundary has no schools,
+  // and reads as none: no extra round trip to check first on the path every
+  // parent's `/me` takes.
   const missing =
     (...codes: string[]) =>
     (error: { code?: string }) => {
       if (error.code && codes.includes(error.code)) return { rows: [] };
       throw error;
     };
-  const [staffRows, trialRows, familyClass, familyApproval] = await Promise.all(
-    [
-      pool
-        .query<{
-          orgId: string;
-          orgName: string;
-          role: string;
-          setupPending: boolean;
-        }>(
-          `SELECT DISTINCT ON (o.id) o.id AS "orgId",o.name AS "orgName",r.role,
+  const [staffRows, familyClass, familyApproval] = await Promise.all([
+    pool
+      .query<{
+        orgId: string;
+        orgName: string;
+        role: string;
+        setupPending: boolean;
+      }>(
+        `SELECT DISTINCT ON (o.id) o.id AS "orgId",o.name AS "orgName",r.role,
          o.setup_pending AND r.role='admin' AS "setupPending"
        FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
        JOIN amp_orgs o ON o.id=r.org_id AND (o.kind<>'family' OR o.created_by<>$1)
        WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")}
        ORDER BY o.id,array_position(ARRAY['admin','teacher','aide','viewer'],r.role)`,
-          [accountId],
-        )
-        .catch(missing("42P01")),
-      // A free assessment this account started and hasn't made a learner yet.
-      pool
-        .query(
-          `SELECT 1 FROM amp_trials WHERE owner_account_id=$1 AND adopted_at IS NULL AND expires_at>now() LIMIT 1`,
-          [accountId],
-        )
-        .catch(missing("42P01", "42703")),
-      // The family's class, which `families.summary` above keeps current. It's
-      // this account's family side, so it isn't among the places above; a
-      // co-teacher from another account finds it there.
-      familyClassOf(pool, accountId),
-      // A link from another family's teacher this parent opened and hasn't
-      // approved yet: after consent, approving is the next step.
-      pendingApprovalOf(pool, accountId),
-    ],
-  );
+        [accountId],
+      )
+      .catch(missing("42P01")),
+    // The family's class, which `families.summary` above keeps current. It's
+    // this account's family side, so it isn't among the places above; a
+    // co-teacher from another account finds it there.
+    familyClassOf(pool, accountId),
+    // A link from another family's teacher this parent opened and hasn't
+    // approved yet: after consent, approving is the next step.
+    pendingApprovalOf(pool, accountId),
+  ]);
   const adultPractice = {
     eligible: adult ? adult.canPractice === true : true,
     learner: adult
@@ -177,7 +168,6 @@ export async function accountSummary(
     ...(staffOf.length ? { staffOf } : {}),
     ...(familyClass ? { familyClass } : {}),
     ...(familyApproval ? { familyApproval } : {}),
-    ...(trialRows.rows.length ? { trial: true as const } : {}),
     ...(adultPractice ? { adultPractice } : {}),
     ...(gift ? { availableAccessGrant: gift } : {}),
     ...(unassigned
@@ -201,9 +191,7 @@ export async function accountSummary(
           ? "add-learner"
           : learners.length || adult || familyClass || staffOf.length
             ? "practice"
-            : trialRows.rows.length
-              ? "try"
-              : "start",
+            : "start",
   };
   return meSchema.parse(value) as SignedInMe;
 }
