@@ -82,9 +82,34 @@ test("money answers equal the drawn coins and bills", () => {
     assert.equal(coins.answer, `${sum(cf.sets[0]!.items)}`);
 
     const dollars = generateProblem("money-total-dollars", `tm-${i}`);
-    const df = dollars.public.figure;
-    if (df?.kind !== "money-sets") throw new Error("figure");
-    assert.equal(dollars.answer, (sum(df.sets[0]!.items) / 100).toFixed(2));
+    const shown = dollars.public.figure;
+    const cents = shown?.kind === "money-sets" ? sum(shown.sets[0]!.items) : null;
+    const response = dollars.public.response;
+    const asDollars = (n: number) => `$${(n / 100).toFixed(2)}`;
+    if (response.kind === "number") {
+      if (cents == null) throw new Error("figure");
+      assert.equal(dollars.answer, (cents / 100).toFixed(2));
+    } else if (response.kind === "choice") {
+      const chosen = response.options.find((o) => o.id === dollars.answer)!.label;
+      if (cents != null) {
+        assert.equal(chosen, asDollars(cents));
+      } else {
+        const saved = /Dev saved (\d+) cents/.exec(dollars.public.prompt);
+        const sticker = /A sticker costs \$0\.(\d{2})/.exec(dollars.public.prompt);
+        if (saved) assert.equal(chosen, asDollars(Number(saved[1])));
+        else if (sticker) assert.equal(chosen, `${Number(sticker[1])}¢`);
+        else assert.fail(dollars.public.prompt);
+      }
+    } else if (response.kind === "multi-select") {
+      if (cents == null) throw new Error("figure");
+      const ids = JSON.parse(dollars.answer) as string[];
+      const labels = ids
+        .map((id) => response.options.find((o) => o.id === id)!.label)
+        .sort();
+      assert.deepEqual(labels, [asDollars(cents), `${cents}¢`].sort());
+    } else {
+      assert.fail(response.kind);
+    }
 
     const pay = generateProblem("pay-exact-coins", `tm-${i}`);
     const pf = pay.public.figure;

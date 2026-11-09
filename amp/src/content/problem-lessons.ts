@@ -167,16 +167,28 @@ export function problemLesson(
   const template = byId.get(templateId);
   if (!template) throw new Error(`Unknown problem type ${templateId}`);
   const activeClause = learnerProblem?.variant?.axes?.clause;
+  // These clause tasks replace the figured number problem the lesson
+  // animation teaches. The worked example stays on the reprint unless
+  // the learner is already on that clause.
+  const classicFigure =
+    templateId === "number-bond-missing" ||
+    templateId === "three-addend-story" ||
+    templateId === "unknown-addend-story";
+  const exampleVersion =
+    (!activeClause && classicFigure) ||
+    (learnerProblem && clauseVariants[templateId] && !activeClause)
+      ? 1
+      : undefined;
   const generateProblem = (id: string, exampleSeed: string) =>
     (activeClause && activeClause !== "legacy"
-      ? clauseProblem(template, exampleSeed, activeClause) ??
-        generateClauseVariant(template, exampleSeed, activeClause)
+      ? (clauseProblem(template, exampleSeed, activeClause) ??
+        generateClauseVariant(template, exampleSeed, activeClause))
       : null) ??
     generateProblemFor(
       id,
       exampleSeed,
       lessonFigures(template),
-      learnerProblem && clauseVariants[id] && !activeClause ? 1 : undefined,
+      exampleVersion,
       responseCapabilities,
     );
   // The learner may see a newer figure surface than the example (which is
