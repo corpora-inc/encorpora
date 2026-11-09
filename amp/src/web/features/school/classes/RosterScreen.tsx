@@ -15,6 +15,13 @@ import { say, useLeaveOff } from "../classroom/api";
 import { useClassExperience } from "../classroom/ExperienceSettings";
 import { CodeTiles } from "../join/CodeTiles";
 import {
+  classroomApi,
+  classroomStatusOptions,
+  currentSession,
+  orgOptions as schoolOrgOptions,
+} from "../api";
+import { orgPath } from "../paths";
+import {
   rosterOptions,
   useResetPictures,
   useRevokeSessions,
@@ -86,6 +93,35 @@ export function RosterScreen() {
     [experience.data],
   );
   const [making, setMaking] = useState(false);
+  const official = currentSession();
+  const org = useQuery(schoolOrgOptions(official, params.org)).data;
+  const classroom = useQuery({
+    ...classroomStatusOptions(official, params.org),
+    enabled: !!org?.can?.includes("roster.import"),
+  });
+  const [importing, setImporting] = useState(false);
+  const importFromClassroom = async () => {
+    setImporting(true);
+    try {
+      // With consent already given, the import screen picks up from here.
+      if (classroom.data?.authorized)
+        return void navigate({
+          to: "/$",
+          params: { _splat: orgPath(params.org, "import") },
+          search: { google: "ready", class: params.class } as never,
+        });
+      const { url } = await classroomApi.authorize(
+        official,
+        params.org,
+        params.class,
+      );
+      window.location.assign(url);
+    } catch (failure) {
+      console.error("Google Classroom could not start", failure);
+      setError("Google Classroom couldn’t be reached. Try again.");
+      setImporting(false);
+    }
+  };
   const busy =
     making || rotate.isPending || reset.isPending || revoke.isPending;
 
@@ -263,6 +299,16 @@ export function RosterScreen() {
               >
                 Start class
               </Link>
+              {classroom.data?.enabled && (
+                <Button
+                  variant="secondary"
+                  aria-busy={importing}
+                  disabled={importing}
+                  onClick={() => void importFromClassroom()}
+                >
+                  Import from Google Classroom
+                </Button>
+              )}
               {canManage && data.students.length > 0 && (
                 <Link
                   to="/school/$org/classes/$class/cards"

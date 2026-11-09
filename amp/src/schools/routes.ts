@@ -17,6 +17,11 @@ import { SchoolRepository } from "./repository.js";
 import { defineSignInRoutes, registerJoinRoutes } from "./sign-in-routes.js";
 import { defineTeacherRoutes } from "./teacher-routes.js";
 import { defineOrgRoutes } from "./org-routes.js";
+import {
+  defineGoogleClassroomRoutes,
+  registerClassroomCallback,
+  type ClassroomImport,
+} from "./google-classroom.js";
 import { registerOidcRoutes, type OidcProviders } from "./oidc.js";
 import { syncSsoCredentials } from "./sso-credentials.js";
 import {
@@ -83,6 +88,8 @@ export type SchoolServices = {
   signIn?: { google?: string; microsoft?: string };
   /** Student sign-in through an outside provider. Absent: cards and codes only. */
   oidc?: OidcProviders;
+  /** Google Classroom roster import. Absent: the feature flag is off. */
+  classroom?: ClassroomImport;
   /** The learning store and PDF renderer behind a teacher's workbook stack. */
   learning?: Repository;
   renderer?: WorkbookRenderer | null;
@@ -236,6 +243,7 @@ export async function registerSchoolRoutes(
     });
     registerJoinRoutes(scope, repository, services.oidc);
     registerOidcRoutes(scope, repository, services);
+    registerClassroomCallback(scope, repository, services);
     registerInvitePreview(scope, repository);
     registerStudentStandings(scope, options.pool);
     registerShareExchange(scope, options.pool);
@@ -472,4 +480,5 @@ defineSetupRoutes(defineSchoolRoute);
 defineTeacherRoutes(defineSchoolRoute);
 defineOrgRoutes(defineSchoolRoute);
 defineClassroomRoutes(defineSchoolRoute);
+defineGoogleClassroomRoutes(defineSchoolRoute);
 defineShareRoutes(defineSchoolRoute);

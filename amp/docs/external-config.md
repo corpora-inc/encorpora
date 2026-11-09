@@ -108,7 +108,7 @@ A failure in any of these changes nothing in the cluster. Entra is applied by ha
 
 ## Manual steps that remain
 
-- **Google, GitHub and Apple:** create or edit their apps by hand from `infra/auth-providers.ts`, then put the client values in the environment's secret.
+- **Google, GitHub and Apple:** create or edit their apps by hand from `infra/auth-providers.ts`, then put the client values in the environment's secret. Google's Classroom import redirect URI (`/api/v1/school/google-classroom/callback`) must be on the client before a deploy, or `providers check` stops it.
 - **Microsoft:** the one-time credential step above. After that, run `entra plan` and `entra apply`.
 - **Stripe keys and prices:** creating a restricted key, and any change to what AMP charges, stay in the Stripe Dashboard. A price change is a new price and a reviewed migration.
 
