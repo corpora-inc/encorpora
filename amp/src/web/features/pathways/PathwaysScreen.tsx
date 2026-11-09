@@ -20,6 +20,7 @@ import {
   useSearch,
 } from "@tanstack/react-router";
 import { meOptions, sessionOptions } from "../../lib/query";
+import { skillCatalogOptions } from "../../lib/learning-view";
 import { request } from "../../lib/api";
 import { useLearnerStore } from "../../learner-store";
 import type { AuthSession } from "../../auth";
@@ -31,7 +32,6 @@ import { skillNeighbors, type Neighbor } from "./neighbors";
 import {
   bandLabel,
   bands,
-  catalogSchema,
   crystal,
   neighborhoods,
   neighborhood,
@@ -79,6 +79,9 @@ function matchesQuery(text: string, query: string) {
 
 export function PathwaysScreen() {
   const { data: session } = useSuspenseQuery(sessionOptions);
+  // This public resource outlives the keyed learner view. Keep its in-flight
+  // read alive when the account resolves and that view changes learner.
+  useQuery(skillCatalogOptions);
   const search = useSearch({ strict: false });
   return session && search.context !== "trial" ? (
     <LearnerMap key={session.accountId} session={session} />
@@ -326,9 +329,7 @@ export function MapView({
   recordLoading?: boolean;
 }) {
   const catalog = useQuery({
-    queryKey: ["pathways-catalog"],
-    queryFn: ({ signal }) => request("/catalog", catalogSchema, { signal }),
-    staleTime: 60_000,
+    ...skillCatalogOptions,
     refetchInterval: 300_000,
   });
   const search = useSearch({ strict: false });

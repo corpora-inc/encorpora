@@ -4,12 +4,11 @@ import type { ReactNode } from "react";
 import type { AuthSession } from "../../auth";
 import { meOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
-import { frameCard, PageFrame } from "../../ui/PageFrame";
 import styles from "./Workbooks.module.css";
 
 export type WorkbookLearner = { id: string; name: string };
 
-/** The workbook card, once the learner is known to belong to this account
+/** Workbook content on AppShell, once the learner is known to belong to this account
  * and to have practice (consent and a license, as the server checks). */
 export function WorkbookFrame({
   session,
@@ -82,13 +81,8 @@ export function WorkbookFrame({
     );
   else body = children({ id: learner.id, name: learner.name });
   return (
-    <PageFrame>
-      <section
-        className={`${frameCard} ${styles.card}`}
-        aria-busy={!data || busy}
-      >
-        {body}
-      </section>
-    </PageFrame>
+    <main className={styles.page} aria-busy={!data || busy}>
+      {body}
+    </main>
   );
 }

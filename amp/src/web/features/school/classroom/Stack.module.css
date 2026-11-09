@@ -292,12 +292,8 @@ button.tile[data-state="failed"] {
   background: var(--color-surface);
   box-shadow: inset 0 1px 0 var(--color-border);
 }
-@media (min-width: 1024px) {
-  .footer {
-    left: var(--width-rail);
-  }
-}
 .footerInner {
+  margin-inline: auto;
   display: flex;
   flex-wrap: wrap;
   align-items: center;

@@ -21,6 +21,7 @@ vi.mock("../../practice/FeedbackPreferences", () => ({
 vi.mock("../PlaceSwitcher", () => ({
   PlaceSwitcher: () => null,
   placeEntries: () => [],
+  usePlaceEntries: () => ({ entries: [], loading: false }),
 }));
 
 afterEach(() => {

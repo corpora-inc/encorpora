@@ -1,3 +1,4 @@
+import { schoolShellReview } from "./school-shell-review";
 import { secureChromium } from "../browser-security.mjs";
 /**
  * Workbook screens in a real browser: the real Fastify routes compose
@@ -14,7 +15,7 @@ import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { createServer } from "vite";
-import { chromium as rawChromium, type Page } from "playwright";
+import { chromium as rawChromium, webkit, type Page } from "playwright";
 const chromium = secureChromium(rawChromium);
 import { buildApp } from "../src/server/app";
 import {
@@ -33,7 +34,9 @@ import { skills } from "../src/curriculum/catalog";
 import { lessons } from "../src/content/lessons";
 import { templates } from "../src/math/engine";
 
-const output = new URL("../docs/reviews/workbooks/", import.meta.url).pathname;
+const output = process.env.AMP_UI_REVIEW
+  ? `${process.env.AMP_UI_REVIEW.replace(/\/$/, "")}/`
+  : new URL("../docs/reviews/workbooks/", import.meta.url).pathname;
 await mkdir(output, { recursive: true });
 const learnerId = "5d3c1b2a-0f9e-4d8c-8b7a-6e5f4d3c2b1a";
 const unlicensedId = "6e4d2c3b-1a0f-4e9d-9c8b-7f6e5e4d3c2b";
@@ -58,6 +61,8 @@ const repository = {
     if (id !== learnerId) throw new ApiError(404, "Learner not found");
     return run({
       hasAccess: async () => true,
+      onSchoolRoster: async () => false,
+      isAdult: async () => false,
       frontier: async () => simulated.frontier,
       skillEvidence: async () => simulated.evidence,
       recentAttempts: async () => simulated.attempts.slice(-12),
@@ -163,7 +168,11 @@ const vite = await createServer({
       },
     },
   ],
-  server: { host: "127.0.0.1", port: 0 },
+  server: {
+    host: "127.0.0.1",
+    port: Number(process.env.AMP_SHELL_WEB_PORT ?? 0),
+    strictPort: true,
+  },
 });
 await vite.listen();
 const address = vite.httpServer!.address();
@@ -258,6 +267,13 @@ async function fixture(page: Page) {
         },
         payload: request.postData() ?? undefined,
       });
+      if (response.statusCode >= 500)
+        console.error(
+          "Workbook fixture API failed",
+          request.method(),
+          url.pathname,
+          response.body,
+        );
       return route.fulfill({
         status: response.statusCode,
         headers: Object.fromEntries(
@@ -377,8 +393,10 @@ const controlBoxes = (page: Page) =>
     }),
   );
 
-const browser = await chromium.launch();
+const engine = process.argv.includes("--webkit") ? "webkit" : "chromium";
+const browser = await (engine === "webkit" ? webkit : chromium).launch();
 const summary: string[] = [];
+let lastPage: Page | undefined;
 try {
   for (const width of [320, 360, 390, 768, 1280])
     for (const colorScheme of ["light", "dark"] as const) {
@@ -389,6 +407,7 @@ try {
         acceptDownloads: true,
       });
       const page = await context.newPage();
+      lastPage = page;
       const errors = await fixture(page);
       rows.splice(2);
       attempts.length = 0;
@@ -403,6 +422,7 @@ try {
           );
           throw error;
         });
+      await schoolShellReview(page, "learner-workbooks");
       await assertLayout(page, label);
       await assertSegments(page, label);
       // The date heading keeps its word spaces. A space where the title
@@ -737,6 +757,10 @@ try {
       await context.close();
       summary.push(`${label} ok`);
     }
+} catch (error) {
+  await lastPage?.screenshot({ path: `${output}failure.png` });
+  console.error((await lastPage?.locator("body").innerText())?.slice(-2000));
+  throw error;
 } finally {
   await browser.close();
   await vite.close();

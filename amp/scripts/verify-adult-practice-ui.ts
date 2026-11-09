@@ -54,7 +54,7 @@ const argument = (name: string) => {
 const webPort = Number(argument("--port") ?? 4434);
 const apiPort = webPort + 1;
 const origin = `http://127.0.0.1:${webPort}`;
-const committed = "docs/reviews/adult-practice";
+const committed = process.env.AMP_UI_REVIEW ?? "docs/reviews/adult-practice";
 const scratch = "artifacts/adult-practice";
 await mkdir(committed, { recursive: true });
 await mkdir(scratch, { recursive: true });
@@ -215,7 +215,7 @@ const menuButton = (page: Page) =>
     .getByRole("button", { name: "Open AMP menu" })
     .filter({ visible: true })
     .first();
-/** Opens the switcher where this screen keeps it: a drawer, or the rail. */
+/** Opens the switcher where this screen keeps it: the shared drawer. */
 async function openSwitcher(page: Page, from: string, drawer: boolean) {
   if (drawer) {
     await menuButton(page).click();
@@ -235,7 +235,14 @@ async function choose(
   menu: ReturnType<Page["getByRole"]>,
   name: RegExp,
 ) {
-  await menu.getByRole("menuitem", { name }).click();
+  await menu
+    .getByRole("menuitem", { name })
+    .filter({
+      has: page.locator(
+        '[data-place="home"], [data-place="me"], [data-place^="school:"]',
+      ),
+    })
+    .click();
   await menu.waitFor({ state: "detached" });
 }
 /** A practice problem on screen: the normal loop, unchanged. */
@@ -394,7 +401,7 @@ async function teacherStarts(
   // `/` opens their school; its switcher offers their own practice.
   await page.goto(`${origin}/`);
   await schoolReady();
-  const fromSchool = await openSwitcher(page, school, width < 1024);
+  const fromSchool = await openSwitcher(page, school, true);
   const items = await fromSchool.getByRole("menuitem").allInnerTexts();
   check(
     `${label} the switcher offers their own practice`,
@@ -519,7 +526,7 @@ async function teacherStarts(
   await schoolReady();
   await page.goto(`${origin}/`);
   await schoolReady();
-  const back = await openSwitcher(page, school, width < 1024);
+  const back = await openSwitcher(page, school, true);
   await choose(page, back, /My practice/);
   await heading(page, "Dana Okafor");
   await page.goto(`${origin}/`);
@@ -566,7 +573,7 @@ async function parentStarts(
   await page.goto(`${origin}/`);
   await page.waitForURL(inClass);
   await heading(page, /^Good (morning|afternoon|evening)/);
-  const fromHome = await openSwitcher(page, family, width < 1024);
+  const fromHome = await openSwitcher(page, family, true);
   const items = await fromHome.getByRole("menuitem").allInnerTexts();
   check(
     `${label} the family switcher offers their own practice`,
