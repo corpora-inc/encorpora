@@ -187,7 +187,7 @@ test(
           >;
           const retry = await Promise.all(
             Array.from({ length: 6 }, () =>
-              gifts.activate(owner, gift.id, won.value.learnerId),
+              gifts.activate(owner, gift.id, won.value.learnerId!),
             ),
           );
           for (const result of retry) assert.deepEqual(result, won.value);
@@ -395,6 +395,197 @@ test(
           });
           assert.equal(response.statusCode, 200, response.body);
           assert.equal(response.headers["cache-control"], "no-store");
+        },
+      );
+      // Family gifts (docs/complimentary-access.md).
+      const grantsOf = async (learnerId: string) =>
+        (
+          await db.query(
+            "SELECT id,status,ends_at FROM amp_grants WHERE learner_id=$1 ORDER BY id",
+            [learnerId],
+          )
+        ).rows as { id: string; status: string; ends_at: Date }[];
+      const adultLearner = async (owner: string) => {
+        const id = randomUUID();
+        await db.query(
+          "INSERT INTO amp_learners(id,account_id,name,adult) VALUES($1,$2,'Parent',true)",
+          [id, owner],
+        );
+        return id;
+      };
+      const activeEnd = async (learnerId: string) =>
+        (
+          await db.query(
+            "SELECT max(ends_at) AS ends FROM amp_grants WHERE learner_id=$1 AND status='active' AND starts_at<=now() AND ends_at>now()",
+            [learnerId],
+          )
+        ).rows[0].ends as Date | null;
+      let family: {
+        owner: string;
+        gift: string;
+        ends: string;
+        learners: string[];
+        adult: string;
+      };
+      await t.test(
+        "a family gift covers every child and the parent's own practice",
+        async () => {
+          const owner = await account("family");
+          const reference = randomUUID();
+          const gift = await issue("family@example.test", 12, {
+            reference,
+            covers: "family",
+          });
+          assert.equal(gift.covers, "family");
+          await assert.rejects(
+            issue("family@example.test", 12, { reference }),
+            /gift_reference_conflict/,
+          );
+          const children = [await learner(owner), await learner(owner)];
+          const adult = await adultLearner(owner);
+          assert.equal(
+            (await snapshot(owner)).availableAccessGrant.covers,
+            "family",
+          );
+          // `/access` activates it without choosing a learner.
+          const response = await app.inject({
+            method: "POST",
+            url: `/api/v1/access-grants/${gift.id}/activate`,
+            headers: { authorization: `Bearer ${owner}` },
+            payload: {},
+          });
+          assert.equal(response.statusCode, 200, response.body);
+          const activation = response.json();
+          assert.equal(activation.learnerId, children[0]);
+          for (const child of children)
+            assert.deepEqual(
+              (await grantsOf(child)).map((g) => [
+                g.id,
+                g.status,
+                g.ends_at.toISOString(),
+              ]),
+              [[`email-gift:${gift.id}:${child}`, "active", activation.endsAt]],
+            );
+          assert.equal(
+            (await activeEnd(adult))?.toISOString(),
+            activation.endsAt,
+          );
+          const me = await snapshot(owner);
+          assert.equal(me.availableAccessGrant, undefined);
+          assert.ok(
+            me.learners.every(
+              (l: { entitlement: { active: boolean } }) => l.entitlement.active,
+            ),
+          );
+          // Retries return the same activation and add nothing.
+          assert.deepEqual(await gifts.activate(owner, gift.id), activation);
+          assert.equal(
+            (
+              await db.query(
+                "SELECT count(*) FROM amp_grants WHERE starts_with(id,$1)",
+                [`email-gift:${gift.id}:`],
+              )
+            ).rows[0].count,
+            "2",
+          );
+          family = {
+            owner,
+            gift: gift.id,
+            ends: activation.endsAt,
+            learners: children,
+            adult,
+          };
+        },
+      );
+      await t.test(
+        "a child added while a family gift lasts is covered until its end",
+        async () => {
+          const later = await learning.create(family.owner, "Later", 2016);
+          assert.deepEqual(
+            (await grantsOf(later.id)).map((g) => [
+              g.id,
+              g.ends_at.toISOString(),
+            ]),
+            [[`email-gift:${family.gift}:${later.id}`, family.ends]],
+          );
+          family.learners.push(later.id);
+        },
+      );
+      await t.test("a family gift keeps a child's longer grant", async () => {
+        const owner = await account("familylong");
+        const gift = await issue("familylong@example.test", 1, {
+          covers: "family",
+        });
+        const [paid, other] = [await learner(owner), await learner(owner)];
+        const longer = randomUUID();
+        await db.query(
+          "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES($1,$2,'stripe',$1,'active',now(),now()+interval '2 years')",
+          [longer, paid],
+        );
+        const before = (await grantsOf(paid))[0]!;
+        const activation = (await gifts.activate(owner, gift.id, other))!;
+        assert.equal(activation.learnerId, other);
+        const after = (await grantsOf(paid)).find((g) => g.id === longer)!;
+        assert.equal(after.status, "active");
+        assert.equal(after.ends_at.toISOString(), before.ends_at.toISOString());
+        assert.equal(
+          (await activeEnd(paid))?.toISOString(),
+          before.ends_at.toISOString(),
+        );
+        assert.equal(
+          (await activeEnd(other))?.toISOString(),
+          activation.endsAt,
+        );
+      });
+      await t.test(
+        "revoking a family gift ends every grant it made and the parent's practice",
+        async () => {
+          await gifts.revoke(family.gift);
+          for (const child of family.learners) {
+            assert.deepEqual(
+              (await grantsOf(child)).map((g) => [g.id, g.status]),
+              [[`email-gift:${family.gift}:${child}`, "revoked"]],
+            );
+            assert.equal(await activeEnd(child), null);
+          }
+          assert.equal(await activeEnd(family.adult), null);
+          assert.ok(
+            (await snapshot(family.owner)).learners.every(
+              (l: { entitlement: { active: boolean } }) =>
+                !l.entitlement.active,
+            ),
+          );
+          // A child added after revocation is not covered.
+          const after = await learning.create(family.owner, "After", 2017);
+          assert.deepEqual(await grantsOf(after.id), []);
+        },
+      );
+      await t.test(
+        "a learner gift still covers exactly one learner",
+        async () => {
+          const owner = await account("onelearner");
+          const gift = await issue("onelearner@example.test");
+          assert.equal(gift.covers, "learner");
+          const [chosen, sibling] = [
+            await learner(owner),
+            await learner(owner),
+          ];
+          await assert.rejects(
+            gifts.activate(owner, gift.id),
+            /invalid_gift_request/,
+          );
+          const activation = (await gifts.activate(owner, gift.id, chosen))!;
+          assert.deepEqual(
+            (await grantsOf(chosen)).map((g) => g.id),
+            [`email-gift:${gift.id}`],
+          );
+          assert.deepEqual(await grantsOf(sibling), []);
+          const later = await learning.create(owner, "Later", 2016);
+          assert.deepEqual(await grantsOf(later.id), []);
+          assert.deepEqual(
+            await gifts.activate(owner, gift.id, chosen),
+            activation,
+          );
         },
       );
     } finally {
