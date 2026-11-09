@@ -6,7 +6,8 @@ import { sessionOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
 import { TextField } from "../../ui/TextField";
 import { workbookByCode, workbookHistoryOptions } from "./api";
-import { localDate, workbookMessage } from "./model";
+import { canMakeWorkbook, localDate, workbookMessage } from "./model";
+import { FreeWorkbooksUsed } from "./FreeWorkbooksUsed";
 import { WorkbookFrame, type WorkbookLearner } from "./WorkbookFrame";
 import { WorkbookList } from "./WorkbookList";
 import styles from "./Workbooks.module.css";
@@ -37,17 +38,21 @@ function History({
       </div>
       <h1 className={styles.title}>Workbooks</h1>
       <p className={styles.lede}>
-        A new workbook every day, chosen from {learner.name}'s practice: a
-        warm-up, today's idea, practice, review and a challenge, with an answer
-        key.
+        Practice chosen from {learner.name}'s progress: a warm-up, today's idea,
+        practice, review and a challenge, with an answer key.
       </p>
-      <Link
-        to="/learners/$learnerId/workbooks/$date"
-        params={{ learnerId: learner.id, date: localDate() }}
-        className={buttonClass("primary", styles.today)}
-      >
-        Today's workbook
-      </Link>
+      {/* Known from the account's data on first paint: one or the other. */}
+      {canMakeWorkbook(learner) ? (
+        <Link
+          to="/learners/$learnerId/workbooks/$date"
+          params={{ learnerId: learner.id, date: localDate() }}
+          className={buttonClass("primary", styles.today)}
+        >
+          Today's workbook
+        </Link>
+      ) : (
+        <FreeWorkbooksUsed next={learner.freeWorkbooksNext} />
+      )}
       <CodeEntry session={session} learnerId={learner.id} />
       {history.data && !history.data.workbooks.length ? (
         <p className={styles.empty}>Workbooks you make appear here.</p>

@@ -89,7 +89,10 @@ test(
       return result.json();
     };
     const me = (credential: string) => ok(get("/api/v1/me", credential));
-    const user = async (name: string, email = `${randomUUID()}@family.example`) => {
+    const user = async (
+      name: string,
+      email = `${randomUUID()}@family.example`,
+    ) => {
       const id = randomUUID();
       await db.query(
         `INSERT INTO amp_auth_users(id,name,email,"emailVerified","createdAt","updatedAt")
@@ -171,7 +174,6 @@ test(
       async () => {
         const sent = await ok(
           post("/api/v1/family/approvals", teacher, {
-            childName: "Ana",
             parentEmail: parentEmail.toUpperCase(),
           }),
           201,
@@ -180,29 +182,44 @@ test(
         approvalId = sent.id;
         assert.equal(mailed.length, 1);
         assert.equal(mailed[0]!.to, parentEmail);
-        assert.ok(!mailed[0]!.text.includes("Ana"), "mail never names the child");
+        assert.ok(
+          !mailed[0]!.text.includes("Ana"),
+          "mail never names the child",
+        );
         link = mailed[0]!.url;
-        assert.match(link, /^https:\/\/amp\.example\/family\/approve#[\w-]{43}\.[\w-]{43}$/);
+        assert.match(
+          link,
+          /^https:\/\/amp\.example\/family\/approve#[\w-]{43}\.[\w-]{43}$/,
+        );
         const rows = await list(teacher);
         assert.equal(rows.length, 1);
         assert.equal(rows[0]!.status, "waiting");
-        assert.equal(rows[0]!.name, "Ana");
+        assert.equal(rows[0]!.name, "Child");
         // "Copy link" is the same link without the mailbox's proof.
         assert.equal(rows[0]!.inviteUrl, link.slice(0, link.lastIndexOf(".")));
-        // Asking again is the same link.
+        // Asking again is another child of that parent: a link of its own,
+        // which the teacher can withdraw.
         const again = await ok(
           post("/api/v1/family/approvals", teacher, {
-            childName: "ana",
             parentEmail,
           }),
           201,
         );
-        assert.equal(again.id, approvalId);
+        assert.notEqual(again.id, approvalId);
+        assert.equal((await list(teacher)).length, 2);
+        await ok(post(`/api/v1/family/approvals/${again.id}/remove`, teacher));
+        assert.deepEqual(
+          (await list(teacher)).map((row) => row.id),
+          [approvalId],
+        );
         // Nobody to sign in as, nothing collected for the other family.
         assert.deepEqual(await names(family.join_code), ["Maya"]);
         assert.equal(
-          (await db.query("SELECT 1 FROM amp_learners WHERE account_id=$1", [parent]))
-            .rowCount,
+          (
+            await db.query("SELECT 1 FROM amp_learners WHERE account_id=$1", [
+              parent,
+            ])
+          ).rowCount,
           0,
         );
         // Only a family's own parent sends links.
@@ -210,15 +227,18 @@ test(
         assert.equal(
           (
             await post("/api/v1/family/approvals", stranger, {
-              childName: "Zed",
               parentEmail: "zed@neighbor.example",
             })
           ).statusCode,
           409,
         );
         assert.equal(
-          (await post(`/api/v1/family/approvals/${approvalId}/remove`, stranger))
-            .statusCode,
+          (
+            await post(
+              `/api/v1/family/approvals/${approvalId}/remove`,
+              stranger,
+            )
+          ).statusCode,
           404,
         );
       },
@@ -228,9 +248,11 @@ test(
       "the teacher can't consent for the child; the parent can, once",
       async () => {
         const { token, proof } = fragment(link);
-        const preview = await ok(open("/api/v1/family/approvals/lookup", { token }));
+        const preview = await ok(
+          open("/api/v1/family/approvals/lookup", { token }),
+        );
         assert.equal(preview.approval.status, "open");
-        assert.equal(preview.approval.childName, "Ana");
+        assert.equal(preview.approval.childName, null);
         assert.equal(preview.approval.className, "Marisol’s class");
         assert.deepEqual(preview.approval.teachers, ["Marisol Fixture"]);
         assert.equal(
@@ -240,18 +262,20 @@ test(
         );
         // The parent opens it with an address still unconfirmed: the mailed
         // proof confirms it.
-        await db.query('UPDATE amp_auth_users SET "emailVerified"=false WHERE id=$1', [
-          parent.slice(4),
-        ]);
+        await db.query(
+          'UPDATE amp_auth_users SET "emailVerified"=false WHERE id=$1',
+          [parent.slice(4)],
+        );
         const opened = await ok(
           post("/api/v1/family/approvals/open", parent, { token, proof }),
         );
         assert.equal(opened.id, approvalId);
         assert.equal(
           (
-            await db.query('SELECT "emailVerified" FROM amp_auth_users WHERE id=$1', [
-              parent.slice(4),
-            ])
+            await db.query(
+              'SELECT "emailVerified" FROM amp_auth_users WHERE id=$1',
+              [parent.slice(4)],
+            )
           ).rows[0].emailVerified,
           true,
         );
@@ -263,16 +287,18 @@ test(
         assert.equal(reused.statusCode, 410, reused.body);
         assert.equal(reused.json().error, "approval_used");
         assert.equal(
-          (await ok(open("/api/v1/family/approvals/lookup", { token }))).approval
-            .childName,
+          (await ok(open("/api/v1/family/approvals/lookup", { token })))
+            .approval.childName,
           null,
         );
         assert.equal(
-          (await get(`/api/v1/family/approvals/${approvalId}`, other)).statusCode,
+          (await get(`/api/v1/family/approvals/${approvalId}`, other))
+            .statusCode,
           404,
         );
         assert.equal(
-          (await ok(post("/api/v1/family/approvals/open", parent, { token }))).id,
+          (await ok(post("/api/v1/family/approvals/open", parent, { token })))
+            .id,
           approvalId,
         );
         // After consent, approving is the next step.
@@ -286,11 +312,16 @@ test(
         assert.equal(early.statusCode, 409, early.body);
         assert.equal(early.json().error, "consent_required");
         assert.equal(
-          (await db.query("SELECT 1 FROM amp_learners WHERE account_id=$1", [parent]))
-            .rowCount,
+          (
+            await db.query("SELECT 1 FROM amp_learners WHERE account_id=$1", [
+              parent,
+            ])
+          ).rowCount,
           0,
         );
-        const before = await ok(get(`/api/v1/family/approvals/${approvalId}`, parent));
+        const before = await ok(
+          get(`/api/v1/family/approvals/${approvalId}`, parent),
+        );
         assert.equal(before.approval.status, "open");
         assert.equal(before.approval.consentActive, false);
       },
@@ -337,9 +368,15 @@ test(
           theirs.learners.map((l: { id: string }) => l.id),
           [ana],
         );
-        assert.equal(theirs.familyClass, undefined, "no empty class of their own");
+        assert.equal(
+          theirs.familyClass,
+          undefined,
+          "no empty class of their own",
+        );
         assert.equal(theirs.familyApproval, undefined);
-        const page = await ok(get(`/api/v1/family/approvals/${approvalId}`, parent));
+        const page = await ok(
+          get(`/api/v1/family/approvals/${approvalId}`, parent),
+        );
         assert.equal(page.approval.status, "approved");
         assert.equal(page.approval.learnerId, ana);
         assert.equal(page.approval.access.active, false);
@@ -380,8 +417,11 @@ test(
         ])
           assert.equal((await get(path, anaToken)).statusCode, 404, path);
         assert.equal(
-          (await post(`/api/v1/learners/${maya}/batches`, anaToken, { count: 1 }))
-            .statusCode,
+          (
+            await post(`/api/v1/learners/${maya}/batches`, anaToken, {
+              count: 1,
+            })
+          ).statusCode,
           404,
         );
         // The parent sees her progress on their own account.
@@ -408,16 +448,18 @@ test(
         // Lio makes the parent a family of their own; Ana stays in the class
         // her parent approved.
         const own = (
-          await db.query("SELECT org_id FROM amp_families WHERE account_id=$1", [
-            parent,
-          ])
+          await db.query(
+            "SELECT org_id FROM amp_families WHERE account_id=$1",
+            [parent],
+          )
         ).rows[0].org_id;
         assert.ok(own && own !== family.org_id);
         assert.equal(
           (
-            await db.query("SELECT tenant_id FROM amp_people WHERE learner_id=$1", [
-              ana,
-            ])
+            await db.query(
+              "SELECT tenant_id FROM amp_people WHERE learner_id=$1",
+              [ana],
+            )
           ).rows[0].tenant_id,
           family.org_id,
         );
@@ -461,8 +503,8 @@ test(
         // Lio is nowhere in the class, and nothing of Ana changed.
         assert.deepEqual(await names(family.join_code), ["Ana", "Maya"]);
         assert.equal(
-          (await db.query("SELECT name FROM amp_learners WHERE id=$1", [ana])).rows[0]
-            .name,
+          (await db.query("SELECT name FROM amp_learners WHERE id=$1", [ana]))
+            .rows[0].name,
           "Ana",
         );
         // On the parent's own device, "Let Ana practice here" works too.
@@ -495,13 +537,17 @@ test(
             )
           ).rows[0];
         const before = await evidence();
-        await ok(post(`/api/v1/family/approvals/${approvalId}/remove`, teacher));
+        await ok(
+          post(`/api/v1/family/approvals/${approvalId}/remove`, teacher),
+        );
         assert.deepEqual(await evidence(), before);
         assert.equal(before.deleted, null);
         assert.deepEqual(await names(family.join_code), ["Maya"]);
         assert.equal((await list(teacher)).length, 0);
         assert.equal((await get("/api/v1/me", anaToken)).statusCode, 401);
-        const page = await ok(get(`/api/v1/family/approvals/${approvalId}`, parent));
+        const page = await ok(
+          get(`/api/v1/family/approvals/${approvalId}`, parent),
+        );
         assert.equal(page.approval.status, "ended");
         // Still her parent's child, with her access.
         assert.ok(
@@ -510,93 +556,105 @@ test(
       },
     );
 
-    await t.test("deletion by the parent takes her out of the class", async () => {
-      const sent = await ok(
-        post("/api/v1/family/approvals", teacher, {
-          childName: "Bea",
-          parentEmail,
-        }),
-        201,
-      );
-      const { token } = fragment(mailed.at(-1)!.url);
-      await ok(post("/api/v1/family/approvals/open", parent, { token }));
-      const bea = (
-        await ok(
-          post(`/api/v1/family/approvals/${sent.id}/approve`, parent, {
-            name: "Bea",
+    await t.test(
+      "deletion by the parent takes her out of the class",
+      async () => {
+        const sent = await ok(
+          post("/api/v1/family/approvals", teacher, {
+            parentEmail,
           }),
-        )
-      ).learnerId;
-      assert.deepEqual(await names(family.join_code), ["Bea", "Maya"]);
-      await ok(
-        post(`/api/v1/family/learners/${bea}/delete-learning-data`, parent, {
-          confirmation: "delete-learning-data",
-        }),
-      );
-      assert.deepEqual(await names(family.join_code), ["Maya"]);
-      assert.equal((await list(teacher)).length, 0);
-      const scrubbed = (
-        await db.query(
-          "SELECT p.given_name,p.deleted_at FROM amp_family_approvals a JOIN amp_people p ON p.id=a.person_id WHERE a.id=$1",
-          [sent.id],
-        )
-      ).rows[0];
-      assert.equal(scrubbed.given_name, "Removed");
-      assert.ok(scrubbed.deleted_at);
-    });
+          201,
+        );
+        const { token } = fragment(mailed.at(-1)!.url);
+        await ok(post("/api/v1/family/approvals/open", parent, { token }));
+        const bea = (
+          await ok(
+            post(`/api/v1/family/approvals/${sent.id}/approve`, parent, {
+              name: "Bea",
+            }),
+          )
+        ).learnerId;
+        assert.deepEqual(await names(family.join_code), ["Bea", "Maya"]);
+        await ok(
+          post(`/api/v1/family/learners/${bea}/delete-learning-data`, parent, {
+            confirmation: "delete-learning-data",
+          }),
+        );
+        assert.deepEqual(await names(family.join_code), ["Maya"]);
+        assert.equal((await list(teacher)).length, 0);
+        const scrubbed = (
+          await db.query(
+            "SELECT p.given_name,p.deleted_at FROM amp_family_approvals a JOIN amp_people p ON p.id=a.person_id WHERE a.id=$1",
+            [sent.id],
+          )
+        ).rows[0];
+        assert.equal(scrubbed.given_name, "Removed");
+        assert.ok(scrubbed.deleted_at);
+      },
+    );
 
-    await t.test("an expired link is refused, and retention removes it", async () => {
-      const sent = await ok(
-        post("/api/v1/family/approvals", teacher, {
-          childName: "Cyrus",
-          parentEmail: "cyrus-parent@neighbor.example",
-        }),
-        201,
-      );
-      const { token, proof } = fragment(mailed.at(-1)!.url);
-      // A sign-up from the mailed link proves that address, and no other.
-      const claim = `${token}.${proof}`;
-      assert.equal(
-        await approvalProvesAddress(db, "Cyrus-Parent@neighbor.example", claim),
-        true,
-      );
-      assert.equal(
-        await approvalProvesAddress(db, "someone@neighbor.example", claim),
-        false,
-      );
-      assert.equal(
-        await approvalProvesAddress(db, "cyrus-parent@neighbor.example", token),
-        false,
-      );
-      await db.query(
-        "UPDATE amp_family_approvals SET expires_at=now()-interval '1 minute' WHERE id=$1",
-        [sent.id],
-      );
-      assert.equal(
-        (await ok(open("/api/v1/family/approvals/lookup", { token }))).approval
-          .status,
-        "expired",
-      );
-      const late = await user("Dara Fixture");
-      const refused = await post("/api/v1/family/approvals/open", late, {
-        token,
-      });
-      assert.equal(refused.statusCode, 410, refused.body);
-      assert.equal(refused.json().error, "approval_expired");
-      assert.equal((await list(teacher))[0]!.status, "expired");
-      // Send again: the same link, good again.
-      await ok(post(`/api/v1/family/approvals/${sent.id}/resend`, teacher));
-      assert.equal((await list(teacher))[0]!.status, "waiting");
-      await db.query(
-        "UPDATE amp_family_approvals SET expires_at=now()-interval '31 days' WHERE id=$1",
-        [sent.id],
-      );
-      assert.equal(await purgeFamilyApprovals(db), 1);
-      assert.equal(
-        (await open("/api/v1/family/approvals/lookup", { token })).statusCode,
-        404,
-      );
-    });
+    await t.test(
+      "an expired link is refused, and retention removes it",
+      async () => {
+        const sent = await ok(
+          post("/api/v1/family/approvals", teacher, {
+            parentEmail: "cyrus-parent@neighbor.example",
+          }),
+          201,
+        );
+        const { token, proof } = fragment(mailed.at(-1)!.url);
+        // A sign-up from the mailed link proves that address, and no other.
+        const claim = `${token}.${proof}`;
+        assert.equal(
+          await approvalProvesAddress(
+            db,
+            "Cyrus-Parent@neighbor.example",
+            claim,
+          ),
+          true,
+        );
+        assert.equal(
+          await approvalProvesAddress(db, "someone@neighbor.example", claim),
+          false,
+        );
+        assert.equal(
+          await approvalProvesAddress(
+            db,
+            "cyrus-parent@neighbor.example",
+            token,
+          ),
+          false,
+        );
+        await db.query(
+          "UPDATE amp_family_approvals SET expires_at=now()-interval '1 minute' WHERE id=$1",
+          [sent.id],
+        );
+        assert.equal(
+          (await ok(open("/api/v1/family/approvals/lookup", { token })))
+            .approval.status,
+          "expired",
+        );
+        const late = await user("Dara Fixture");
+        const refused = await post("/api/v1/family/approvals/open", late, {
+          token,
+        });
+        assert.equal(refused.statusCode, 410, refused.body);
+        assert.equal(refused.json().error, "approval_expired");
+        assert.equal((await list(teacher))[0]!.status, "expired");
+        // Send again: the same link, good again.
+        await ok(post(`/api/v1/family/approvals/${sent.id}/resend`, teacher));
+        assert.equal((await list(teacher))[0]!.status, "waiting");
+        await db.query(
+          "UPDATE amp_family_approvals SET expires_at=now()-interval '31 days' WHERE id=$1",
+          [sent.id],
+        );
+        assert.equal(await purgeFamilyApprovals(db), 1);
+        assert.equal(
+          (await open("/api/v1/family/approvals/lookup", { token })).statusCode,
+          404,
+        );
+      },
+    );
 
     await t.test("a co-teacher sees the class but sends no links", async () => {
       const coTeacher = await user("Rafael Fixture");
@@ -607,11 +665,12 @@ test(
         accountId: coTeacher,
         classId: family.class_id,
       });
-      const org = await ok(get(`/api/v1/school/orgs/${family.org_id}`, coTeacher));
+      const org = await ok(
+        get(`/api/v1/school/orgs/${family.org_id}`, coTeacher),
+      );
       assert.equal(org.org.id, family.org_id);
       assert.equal((await me(coTeacher)).familyClass, undefined);
       const send = await post("/api/v1/family/approvals", coTeacher, {
-        childName: "Zed",
         parentEmail: "zed@neighbor.example",
       });
       assert.equal(send.statusCode, 409);

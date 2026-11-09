@@ -358,19 +358,22 @@ function routes(app: FastifyInstance, options: AppOptions) {
     return sendPublicJson(request, reply, catalogCache);
   });
   app.get("/api/v1/learners", async (request) => {
-    const learners = await options.repository.list(await parent(request));
+    const learners = await options.repository.list(
+      await learningAccount(request),
+    );
     const bound = boundLearners.get(request);
     return {
       learners: bound ? learners.filter((l) => l.id === bound) : learners,
     };
   });
   app.post("/api/v1/learners", async (request, reply) => {
-    const account = await familyManaged(request);
+    const account = await learningAccount(request);
+    assertFamilyManaged(account, request);
     if (isTrialAccount(account))
       throw new ApiError(403, "Create an account to add learners");
     const { name, birthYear } = z
       .object({
-        name: z.string().trim().min(1).max(60),
+        name: z.string().trim().min(1).max(60).optional(),
         birthYear: birthYearSchema.optional(),
       })
       .strict()
@@ -574,10 +577,16 @@ function routes(app: FastifyInstance, options: AppOptions) {
     return options.repository.transaction(account, learnerId, async (tx) => {
       // A trial practices until its allowance is used, then sees the paywall.
       const trialRemaining = await tx.trialRemaining();
+      const freeRemaining =
+        trialRemaining === null &&
+        !options.development &&
+        !(await tx.hasAccess())
+          ? (await tx.freeAllowance()).problems.remaining
+          : null;
       if (trialRemaining !== null) {
         if (trialRemaining <= 0) throw new ApiError(402, "trial-complete");
-      } else if (!options.development && !(await tx.hasAccess()))
-        throw new ApiError(403, "An active student license is required");
+      } else if (freeRemaining !== null && freeRemaining <= 0)
+        throw new ApiError(402, "free-allowance-complete");
       const focused = input.templateId
         ? templates.find((t) => t.id === input.templateId)
         : undefined;
@@ -596,7 +605,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
         );
       const count =
         trialRemaining === null
-          ? input.count
+          ? Math.min(input.count, freeRemaining ?? input.count)
           : Math.min(input.count, trialRemaining);
       const satMathFocus = await tx.satMathFocus();
       const practice = await tx.practiceSettings();
@@ -730,8 +739,12 @@ function routes(app: FastifyInstance, options: AppOptions) {
       if (!lessons.some((l) => l.id === lessonId))
         throw new ApiError(404, "Lesson not found");
       await options.repository.transaction(account, learnerId, async (tx) => {
-        if (!options.development && !(await tx.hasAccess()))
-          throw new ApiError(403, "An active student license is required");
+        if (
+          !options.development &&
+          !(await tx.hasAccess()) &&
+          (await tx.freeAllowance()).problems.remaining <= 0
+        )
+          throw new ApiError(402, "free-allowance-complete");
       });
       const filename = `${lessonId}-${kind}-${format}.pdf`;
       try {
@@ -781,9 +794,10 @@ function routes(app: FastifyInstance, options: AppOptions) {
         if (
           trialRemaining === null &&
           !options.development &&
-          !(await tx.hasAccess())
+          !(await tx.hasAccess()) &&
+          (await tx.freeAllowance()).problems.remaining <= 0
         )
-          throw new ApiError(403, "An active student license is required");
+          throw new ApiError(402, "free-allowance-complete");
         problem.skipped = true;
         problem.skippedAt = new Date().toISOString();
         await tx.saveSkip(problem);
@@ -922,9 +936,10 @@ function routes(app: FastifyInstance, options: AppOptions) {
       if (
         trialRemaining === null &&
         !options.development &&
-        !(await tx.hasAccess())
+        !(await tx.hasAccess()) &&
+        (await tx.freeAllowance()).problems.remaining <= 0
       )
-        throw new ApiError(403, "An active student license is required");
+        throw new ApiError(402, "free-allowance-complete");
       const problem = await tx.problem(input.problemId);
       if (!problem) throw new ApiError(404, "Problem not found");
       if (!isValidResponse(problem.public, input.response))

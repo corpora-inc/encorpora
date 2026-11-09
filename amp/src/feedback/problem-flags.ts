@@ -35,10 +35,15 @@ export const FLAG_RATE_LIMIT = 30;
  */
 export const NOTE_MIN_AGE = 13;
 export function noteAllowed(
-  learner: { trial: boolean; birthYear: number | null | undefined },
+  learner: {
+    trial: boolean;
+    namePending?: boolean;
+    birthYear: number | null | undefined;
+  },
   now = new Date(),
 ): boolean {
-  if (learner.trial || learner.birthYear == null) return false;
+  if (learner.trial || learner.namePending || learner.birthYear == null)
+    return false;
   // Born late in the year, a learner is a year younger than the difference.
   return now.getUTCFullYear() - learner.birthYear - 1 >= NOTE_MIN_AGE;
 }

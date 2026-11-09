@@ -37,6 +37,7 @@ const VARIANTS: Record<string, string[]> = {
     "partial-quotients",
     "area-equation",
     "read-quotient",
+    "explain-first-chunk",
   ],
   "fraction-benchmark-reasonable": [
     "nearest-benchmark",

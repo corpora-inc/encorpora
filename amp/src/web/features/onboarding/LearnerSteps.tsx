@@ -65,7 +65,7 @@ export function LearnerSteps({
   const gift = !purchase && !funded ? me.availableAccessGrant : undefined;
   const waiting = me.learners.filter(
     (learner) =>
-      !learner.entitlement.active &&
+      !(learner.entitlement.licensed ?? learner.entitlement.active) &&
       (!gift ||
         !me.family.learners.find((item) => item.id === learner.id)
           ?.stripeLinked),

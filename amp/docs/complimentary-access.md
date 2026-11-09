@@ -4,7 +4,7 @@ An access gift reserves one month or one year of full practice for an email addr
 
 The recipient signs in with the invited address and confirms ownership of that address. AMP finds the reservation, guides them through the existing consent requirements, and asks who is learning. Creating the first learner activates the gift in the same database transaction. If they have assessment progress on the device, adopting that assessment preserves its learner identity and progress. An existing account can choose a learner without active access.
 
-The term starts on activation, not on issuance or sign-in. A year means 12 calendar months; dates at the end of a month are clamped to the destination month’s final day. There is no automatic renewal or payment collection for a gift. A gift covers one learner, not every learner in an account.
+The term starts on activation, not on issuance or sign-in. A year means 12 calendar months; dates at the end of a month are clamped to the destination month’s final day. There is no automatic renewal or payment collection for a gift. A gift covers one learner, not every learner in an account, unless it is a family gift.
 
 ## Issuing a gift
 
@@ -26,6 +26,8 @@ npm run access:grant -- /private/path/access-gift.json
 `months` accepts `1` or `12`. `source` defaults to `manual`. The combination of `source` and `reference` identifies one award: retrying identical input returns that award; changing its recipient or terms is rejected. Reuse the reference when retrying an import. Use a new reference only for an intentional additional gift.
 
 Optional `campaign` records the origin of an award. Optional `claimBy` is an ISO timestamp after which an unused gift cannot be activated. Omitting it leaves the reservation available until activation or revocation. The command prints the gift ID, status and invitation path, without printing the email address.
+
+Add `"covers": "family"` for a family gift; the default is `"learner"`. A family gift covers every child of the account that activates it, each with its own `email-gift:<gift>:<learner>` grant for the same term, and any child added while it lasts gets a grant to its end in the transaction that adds them, unless a paid enrollment is waiting to be assigned. The parent's own practice is free while a child has access, so it covers them too. `/access` activates it without a learner choice; with no child yet, adding the first one starts it. A child's existing grant is kept, never shortened. The gift row records the learner it was activated for (the first child when none was chosen) and that learner's grant. Revoking it ends every grant it made. Changing `covers` on a retry is a reference conflict.
 
 To revoke a pending or activated gift, supply a private file containing:
 

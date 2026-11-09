@@ -31,7 +31,11 @@ const expectedVariants: Record<string, string[]> = {
     "quadruple-radicand",
     "triple-radicand",
   ],
-  "grouped-both-sides-steps": ["grouped-left", "grouped-right"],
+  "grouped-both-sides-steps": [
+    "grouped-left",
+    "grouped-right",
+    "solution-count-steps",
+  ],
   "exponential-time-steps": ["base-b", "natural-rate"],
 };
 const SEEDS = 400;
@@ -67,8 +71,14 @@ for (const [id, variants] of Object.entries(expectedVariants)) {
         for (let f = 0; f < rows[r]!.length; f++) {
           if (rows[r]![f] === "") continue;
           const wrong = rows.map((row) => [...row]);
-          const kind = response.rows[r]!.fields[f]!.kind;
-          wrong[r]![f] = kind === "number" ? "12345" : "x+11";
+          const field = response.rows[r]!.fields[f]!;
+          const kind = field.kind;
+          if (kind === "choice") {
+            const bank = response.banks.find((b) => b.id === field.bank);
+            const other = bank?.options.find((o) => o.id !== rows[r]![f]);
+            if (!other) continue;
+            wrong[r]![f] = other.id;
+          } else wrong[r]![f] = kind === "number" ? "12345" : "x+11";
           assert.equal(
             gradeStructuredWork(
               response,
@@ -95,6 +105,7 @@ test("grouped equation: only the combined grouped side earns the first step", ()
   let checked = 0;
   for (let i = 0; i < SEEDS && checked < 20; i++) {
     const p = generateProblem("grouped-both-sides-steps", `shown-g-${i}`);
+    if (p.variant?.id === "solution-count-steps") continue;
     const response = p.public.response as StructuredWorkResponse;
     const rows = JSON.parse(p.answer) as string[][];
     const first = rows[0]![0]!;
