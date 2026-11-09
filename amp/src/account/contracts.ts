@@ -147,15 +147,12 @@ export const meSchema = z.discriminatedUnion("signedIn", [
           .nullable(),
       })
       .optional(),
-    /** `try`: no purchase or consent yet, so the parent gets the anonymous
-     * free trial; the plan opens when they choose to buy or reach the limit. */
-    next: z.enum([
-      "try",
-      "add-learner",
-      "choose-plan",
-      "practice",
-      "accept-gift",
-    ]),
+    /** `start`: the account has no place yet, so it answers "What brings you
+     * to AMP?". `practice`: it has one, and `/` opens it. `add-learner`: a
+     * paid purchase no learner holds yet. `accept-gift`: an invitation's
+     * access to accept. `try`: a free assessment from before the starter,
+     * until it moves into the family. */
+    next: z.enum(["start", "try", "add-learner", "practice", "accept-gift"]),
   }),
 ]);
 export type Me = z.infer<typeof meSchema>;

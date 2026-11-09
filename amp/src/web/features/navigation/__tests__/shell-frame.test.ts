@@ -48,6 +48,18 @@ test("each group's screens share one frame and name their tab", () => {
   expect(shellFrame("/lessons/fractions")).toEqual({ kind: "plain" });
 });
 
+test("the starter and Continue with AMP sit on the app frame", () => {
+  for (const path of ["/start", "/start/parent", "/start/school"])
+    expect(shellFrame(path), path).toEqual({ kind: "plain" });
+  expect(shellFrame("/continue/learner-1")).toEqual({
+    kind: "account",
+    active: "access",
+  });
+  // The steps around it keep their own frame.
+  for (const path of ["/start/purchase", "/start/verify-email", "/start/x"])
+    expect(shellFrame(path), path).toBeNull();
+});
+
 test("screens with frames of their own stay outside it", () => {
   for (const path of [
     "/sign-in",

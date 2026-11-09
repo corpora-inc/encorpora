@@ -59,24 +59,57 @@ export class StripeRepository {
     }
   }
   /**
+   * Whether this purchase needs no parental consent: the account's own adult
+   * learner buys on the account's own terms (docs/families.md). Every other
+   * learner needs the purchaser's consent.
+   */
+  async ownAdultLearner(
+    client: Pick<PoolClient, "query">,
+    accountId: string,
+    learnerId: string,
+  ): Promise<boolean> {
+    return !!(
+      await client.query(
+        "SELECT 1 FROM amp_learners l WHERE l.id=$1 AND l.account_id=$2 AND l.deleted_at IS NULL AND COALESCE((to_jsonb(l)->>'adult')::boolean,false)",
+        [learnerId, accountId],
+      )
+    ).rowCount;
+  }
+  /** The purchaser's parental consent, current for this policy. */
+  async purchaseConsentActive(
+    client: Pick<PoolClient, "query">,
+    accountId: string,
+  ): Promise<boolean> {
+    const consent = await client.query(
+      "SELECT 1 FROM amp_parent_consents WHERE account_id=$1 AND policy_version=$2 AND withdrawn_at IS NULL",
+      [accountId, this.config.consentPolicyVersion],
+    );
+    return (
+      !!consent.rowCount && (await learningConsentActive(client, accountId))
+    );
+  }
+  /**
    * The purchaser's consent, and a learner they may buy for: one their account
-   * owns, or a child enrolled in a family class they teach (a seat).
+   * owns, or a child enrolled in a family class they teach (a seat). An adult
+   * buying for their own learner needs no parental consent.
    */
   async assertPurchaseAllowed(
     client: PoolClient,
     accountId: string,
     learnerId: string,
   ): Promise<PurchaseFor> {
-    const consent = await client.query(
-      "SELECT 1 FROM amp_parent_consents WHERE account_id=$1 AND policy_version=$2 AND withdrawn_at IS NULL",
-      [accountId, this.config.consentPolicyVersion],
-    );
-    if (!consent.rowCount || !(await learningConsentActive(client, accountId)))
-      throw new BillingError("parent_consent_required", 403);
     const learner = await client.query(
       "SELECT account_id FROM amp_learners WHERE id=$1 AND deleted_at IS NULL FOR SHARE",
       [learnerId],
     );
+    if (
+      !(
+        learner.rows[0]?.account_id === accountId &&
+        (await this.ownAdultLearner(client, accountId, learnerId))
+      ) &&
+      !(await this.purchaseConsentActive(client, accountId))
+    )
+      throw new BillingError("parent_consent_required", 403);
     if (learner.rows[0]?.account_id === accountId) return "own";
     if (
       learner.rowCount &&
@@ -151,6 +184,14 @@ export class StripeRepository {
         [learnerId],
       );
       if (grants.rowCount) throw new BillingError("learner_already_licensed");
+      // A plan already paid for and held by no learner is assigned, never
+      // bought twice.
+      const unassigned = await client.query(
+        "SELECT 1 FROM amp_account_entitlements e JOIN amp_stripe_checkouts c ON c.id=e.checkout_id WHERE c.account_id=$1 AND e.namespace=$2 AND c.learner_id IS NULL AND c.assigned_learner_id IS NULL AND e.status='active' AND e.ends_at>now() LIMIT 1",
+        [accountId, this.namespace],
+      );
+      if (unassigned.rowCount)
+        throw new BillingError("license_ready_for_assignment");
       const retry = await client.query(
         "SELECT id,learner_id,closed,billing_interval,price_tier FROM amp_stripe_checkouts WHERE namespace=$1 AND account_id=$2 AND request_id=$3",
         [this.namespace, accountId, requestId],

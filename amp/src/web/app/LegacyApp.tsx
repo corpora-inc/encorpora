@@ -16,7 +16,6 @@ import {
   queryClient,
   meOptions,
   meKey,
-  ownPracticeKey,
 } from "../lib/query";
 import type { Step } from "../../math/scene/timeline";
 import { useQuery } from "@tanstack/react-query";
@@ -120,6 +119,8 @@ import {
   loadGlossary,
 } from "../LessonLibrary";
 import { Home, type FrontierMap } from "../Home";
+import { freeLeft } from "../lib/free-allowance";
+import { AllowancePause } from "../features/continue/AllowancePause";
 import { strandNames } from "../BirthYearPrompt";
 import type { ProblemLessonView } from "../../content/problem-lessons";
 class HttpError extends Error {
@@ -135,6 +136,11 @@ class HttpError extends Error {
     return this.message;
   }
 }
+/** The learner's free problems are used (402 from a batch, answer or skip). */
+const allowanceEnded = (error: unknown) =>
+  error instanceof HttpError &&
+  error.status === 402 &&
+  error.message === "free-allowance-complete";
 type Catalog = {
   templates: TemplateMetadata[];
   lessons: Lesson[];
@@ -373,10 +379,25 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       familySummary?.consent.status === "development");
   // A student without a seat, or whose school's agreement ended, can't practice
   // and can't buy: only their teacher can change that.
+  const learnerEntry = familySummary?.learners.find(
+    (entry) => entry.id === learner?.id,
+  );
+  // The learner's free problems are used and no plan covers them: practice
+  // shows the one pause, in place (features/continue/AllowancePause).
+  const allowanceSpent =
+    !!learnerEntry &&
+    learnerEntry.canPractice === false &&
+    !learnerEntry.hasAccess &&
+    learnerEntry.learningAllowed !== false &&
+    learnerEntry.freeAllowance?.problems.remaining === 0;
+  const [pausedFor, setPausedFor] = useState<string | null>(null);
+  const paused =
+    !!learner &&
+    !learnerEntry?.hasAccess &&
+    (allowanceSpent || pausedFor === learner.id);
+  const pauseViewer = student ? "student" : ownLearner ? "adult" : "parent";
   const studentWaiting =
-    student &&
-    familySummary?.learners.find((entry) => entry.id === learner?.id)
-      ?.canPractice === false;
+    student && !allowanceSpent && learnerEntry?.canPractice === false;
   const [family, setFamily] = useState(""),
     [problem, setProblem] = useState<HintedProblem | null>(null),
     [queue, setQueue] = useState<HintedProblem[]>([]),
@@ -809,20 +830,22 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     familyRequest.current++;
     setLoadFailed(false);
     setFamilySummary(summary);
-    const available = summary.learners.filter((entry) => !entry.deletedAt);
-
     const allowed =
       summary.consent.status === "active" ||
       summary.consent.status === "development";
+    // Each learner says whether it may learn: an unnamed child and an adult's
+    // own learner may before any family consent.
+    const available = summary.learners.filter(
+      (entry) => !entry.deletedAt && (entry.learningAllowed ?? allowed),
+    );
     // The adult's own learner stays chosen only when it was chosen; a device
     // with no choice opens on the family's first learner, never the adult's.
-    const selected = allowed
-      ? (available.find(
-          (entry) => entry.id === useLearnerStore.getState().learnerId,
-        ) ??
-        available.find((entry) => !entry.adult) ??
-        null)
-      : null;
+    const selected =
+      available.find(
+        (entry) => entry.id === useLearnerStore.getState().learnerId,
+      ) ??
+      available.find((entry) => !entry.adult) ??
+      null;
     learnerRef.current = selected?.id;
     // Keep the chosen learner unless it no longer exists or learning is not
     // allowed; never forget the choice merely because data is reloading.
@@ -855,17 +878,20 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     leavingHome.current = firstRunHome && !!familySummary;
   useEffect(() => {
     if (!firstRunHome || !familySummary) return;
-    // Straight to the free trial when `/me` says so; the first-run guard
-    // routes every other case from /start/name.
+    // Where `/me` says the first run goes: the starter for an account with
+    // no place yet; the first-run guard routes every other case from
+    // /start/name.
     const me = accountId
       ? queryClient.getQueryData<Me>(meKey(accountId))
       : null;
     navigate(
-      me?.signedIn && me.next === "try"
-        ? chosenPlan()
-          ? "/start/plan"
-          : "/try"
-        : "/start/name",
+      me?.signedIn && me.familyApproval
+        ? `/family/approvals/${me.familyApproval.id}`
+        : me?.signedIn && me.next === "start"
+          ? "/start"
+          : me?.signedIn && me.next === "try"
+            ? "/try"
+            : "/start/name",
       { replace: true },
     );
   }, [accountId, familySummary, route.location.pathname]);
@@ -879,7 +905,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       !problem &&
       !busy &&
       !error &&
-      learningAllowed
+      learningAllowed &&
+      !paused
     )
       void action(() => {
         const skillId = new URLSearchParams(route.location.search).get("skill");
@@ -906,6 +933,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     !problem,
     busy,
     error,
+    // Paid for in place: practice picks up where the pause was.
+    paused,
   ]);
   function closePurchase() {
     navigationEpoch.current++;
@@ -1060,25 +1089,19 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     setLesson(data.lesson);
     setFamily("");
   }
-  /** The adult's free problems are used: their record, read fresh, says so.
-   * There is no plan to buy for an adult's own practice. */
-  function toOwnRecord() {
-    if (accountId)
-      queryClient.removeQueries({ queryKey: ownPracticeKey(accountId) });
-    navigate("/me", { replace: true });
-  }
   async function loadBatch(templateId = family, recoveryStrand?: string) {
     if (!learner) return;
     const capability = familySummary?.learners.find(
       (entry) => entry.id === learner.id,
     )?.canPractice;
     if (capability === false) {
-      // An adult's own practice pauses with what made it free; their record
-      // says so. A child's needs a plan.
-      if (!student) {
-        if (ownLearner) toOwnRecord();
-        else navigate("/purchase/choose", { replace: true });
+      // The free problems are used: the pause shows in practice itself.
+      if (allowanceSpent) {
+        setPausedFor(learner.id);
+        if (route.location.pathname !== "/practice") navigate("/practice");
       }
+      // Otherwise learning is paused for consent; Family says why.
+      else if (!student) navigate(ownLearner ? "/me" : "/family/learners");
       return;
     }
     upcoming.current = null;
@@ -1098,19 +1121,24 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     const data = await requestBatch(templateId, recoveryStrand).catch(
       async (error) => {
         if (!current()) return null;
-        // No license yet: go to purchase rather than show an error.
+        // The free problems are used: pause here, in practice.
+        if (allowanceEnded(error)) {
+          setPausedFor(learner.id);
+          if (route.location.pathname !== "/practice") navigate("/practice");
+          void loadFamily().catch((cause) =>
+            console.error("Family refresh after the free problems", cause),
+          );
+          return null;
+        }
+        // A seat ended mid-session: `/me` now says so, and the student sees
+        // to ask their teacher.
         if (
           error instanceof HttpError &&
-          ((error.status === 403 && /license/i.test(error.message)) ||
-            (error.status === 402 &&
-              error.message === "free-allowance-complete"))
+          error.status === 403 &&
+          /license/i.test(error.message)
         ) {
-          // A seat ended mid-session: `/me` now says so, and the student sees
-          // to ask their teacher. An adult's own practice has no plan to
-          // choose; their record says what happened, as above.
           if (student) await loadFamily();
-          else if (ownLearner) toOwnRecord();
-          else navigate("/purchase/choose", { replace: true });
+          else navigate("/family/learners", { replace: true });
           return null;
         }
         return navigationFailure(navigation, learner.id, error);
@@ -1182,15 +1210,34 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       if (learnerRef.current !== learner.id) return;
       if (e instanceof HttpError && e.status >= 400 && e.status < 500)
         setPending(null);
+      if (allowanceEnded(e)) {
+        setPausedFor(learner.id);
+        void loadFamily().catch((cause) =>
+          console.error("Family refresh after the free problems", cause),
+        );
+        return;
+      }
       throw e;
     }
   }
   /** Skip: a neutral pass that shows the worked answer. */
   async function skip() {
     if (!learner || !problem) return;
-    const result = await api<Outcome>(`/learners/${learner.id}/skips`, {
-      problemId: problem.id,
-    });
+    let result: Outcome;
+    try {
+      result = await api<Outcome>(`/learners/${learner.id}/skips`, {
+        problemId: problem.id,
+      });
+    } catch (e) {
+      if (learnerRef.current === learner.id && allowanceEnded(e)) {
+        setPausedFor(learner.id);
+        void loadFamily().catch((cause) =>
+          console.error("Family refresh after the free problems", cause),
+        );
+        return;
+      }
+      throw e;
+    }
     if (learnerRef.current !== learner.id) return;
     setOutcome(result);
     upcoming.current = { learnerId: learner.id, batch: requestBatch("") };
@@ -1385,6 +1432,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     birthYearKnown &&
     !studentWaiting &&
     learningAllowed &&
+    !paused &&
     !changingBirthYear &&
     !error &&
     !loadFailed &&
@@ -1787,7 +1835,13 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           <button onClick={() => navigate("/lessons")}>Back to lessons</button>
         </main>
       ) : tab === "practice" ? (
-        problem && !exploring && !changingBirthYear ? (
+        paused && route.parts[0] === "practice" ? (
+          <AllowancePause
+            kind="problems"
+            viewer={pauseViewer}
+            learner={{ id: learner.id, name: learner.name }}
+          />
+        ) : problem && !exploring && !changingBirthYear ? (
           <PracticeWorkspace
             // The logo and drawer are the app frame's; practice's bar holds
             // only a student's one-tap sign-out beside its tools.
@@ -1947,6 +2001,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
               changeBirthYear={
                 student ? undefined : () => setChangingBirthYear(true)
               }
+              freeLeft={freeLeft(learnerEntry)}
             />
           )
         ) : (

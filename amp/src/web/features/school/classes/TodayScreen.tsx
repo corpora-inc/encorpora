@@ -13,7 +13,7 @@ import { Loading } from "../../../ui/Loading";
 import { Sheet } from "../../../ui/Sheet";
 import { StatRow, StatTile } from "../../../ui/StatTile";
 import { LessonBoundary } from "../../pathways/LessonRecovery";
-import { useStaffSession } from "./api";
+import { presenceOptions, useStaffSession } from "./api";
 import { ClassFrame } from "./ClassFrame";
 import { ClassMap, MapKey } from "./ClassMap";
 import { FamilyPanel } from "./FamilyPanel";
@@ -179,6 +179,9 @@ export function TodayScreen() {
   const session = useStaffSession();
   const today = useQuery(todayOptions(session, place));
   const map = useQuery(mapOptions(session, place));
+  // The class code, for a student's own device: with Today, never after it.
+  const presence = useQuery(presenceOptions(session, place));
+  const code = presence.data?.class.joinCode;
   const [search, set] = useClassSearch();
   const [done, setDone] = useChecks(place.class, today.data?.today);
   const lesson =
@@ -194,7 +197,7 @@ export function TodayScreen() {
       org={place.org}
       classId={place.class}
       className={data?.class.name}
-      loading={today.isPending || map.isPending}
+      loading={today.isPending || map.isPending || presence.isPending}
       tab="today"
     >
       {!data || !week || !map.data ? (
@@ -213,6 +216,14 @@ export function TodayScreen() {
               {data.teacherName ? `, ${data.teacherName}` : ""}.
             </h1>
             <p>{fullDay(data.today)}</p>
+            {code && (
+              <p className={styles.code}>
+                <span>Class code</span>{" "}
+                <strong data-class-code={code}>
+                  {code.slice(0, 3)}-{code.slice(3)}
+                </strong>
+              </p>
+            )}
           </div>
           <FamilyPanel classId={place.class} />
           <ul className={styles.todos} aria-label="What needs you today">

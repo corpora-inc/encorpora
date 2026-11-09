@@ -1,6 +1,12 @@
 import { expect, test } from "vitest";
 import type { Me, SignedInMe } from "../../../../account/contracts";
-import { homePlace, placeOfPath, placesFor, startDestination } from "../guard";
+import {
+  homePlace,
+  isStarterPath,
+  placeOfPath,
+  placesFor,
+  startDestination,
+} from "../guard";
 
 function me(overrides: Partial<SignedInMe> = {}): SignedInMe {
   return {
@@ -27,7 +33,7 @@ function me(overrides: Partial<SignedInMe> = {}): SignedInMe {
         privacyAuditDays: 30,
       },
     },
-    next: "choose-plan",
+    next: "start",
     ...overrides,
   };
 }
@@ -52,48 +58,60 @@ test("signed-out visitors go to sign in from every step", () => {
   );
 });
 
-test("an unconfirmed parent practices free and confirms the address on the way into the plan", () => {
-  const unconfirmed = (next: SignedInMe["next"]) =>
-    me({
-      next,
-      account: {
-        id: "parent",
-        email: "parent@example.test",
-        emailVerified: false,
-        confirmationRequired: true,
-      },
-    });
-  expect(table(unconfirmed("try"))).toEqual({
-    "/start": "/try",
-    "/start/verify-email": null,
-    "/start/plan": "/start/verify-email",
-    "/start/purchase": "/start/verify-email",
-    "/start/consent": "/start/verify-email",
-    "/start/name": "/try",
-    "/start/birth-year": "/try",
-  });
-  // A plan chosen before sign-up leads to the confirmation step first.
-  expect(startDestination(unconfirmed("try"), "/start", true)).toBe(
-    "/start/verify-email",
-  );
-  expect(table(unconfirmed("choose-plan"))["/start"]).toBe(
-    "/start/verify-email",
-  );
-});
-
-test("a parent without consent chooses a plan first; consent is never a forced detour", () => {
-  expect(table(me({ next: "choose-plan" }))).toEqual({
-    "/start": "/start/plan",
-    "/start/verify-email": "/start/plan",
-    "/start/plan": null,
+test("a new account answers the starter; every old first-run step leads there", () => {
+  const fresh = me({ next: "start" });
+  expect(table(fresh)).toEqual({
+    "/start": null,
+    "/start/verify-email": "/start",
+    "/start/plan": "/start",
     "/start/purchase": null,
-    "/start/consent": null,
-    "/start/name": "/start/plan",
-    "/start/birth-year": "/start/plan",
+    "/start/consent": "/start",
+    "/start/name": "/start",
+    "/start/birth-year": "/start",
   });
+  // `/` sends a new account to the starter.
+  expect(startDestination(fresh, "/")).toBe("/start");
+  // Each answer has its own URL on the same screen; an unknown one doesn't.
+  for (const choice of ["myself", "parent", "tutor", "teacher", "school"])
+    expect(startDestination(fresh, `/start/${choice}`)).toBeNull();
+  expect(isStarterPath("/start/parent/")).toBe(true);
+  expect(isStarterPath("/start/plan")).toBe(false);
+  expect(isStarterPath("/start/anything")).toBe(false);
 });
 
-test("after verified payment the parent adds the learner; checkout steps close", () => {
+test("anyone with a place may open the starter to add one; old steps go home", () => {
+  const family = me({
+    next: "practice",
+    learners: [
+      {
+        id: "fox",
+        name: "Fox",
+        birthYear: 2016,
+        entitlement: {
+          active: true,
+          licensed: false,
+          plan: null,
+          endsAt: null,
+        },
+      },
+    ],
+  });
+  expect(startDestination(family, "/start")).toBeNull();
+  expect(startDestination(family, "/start/teacher")).toBeNull();
+  expect(startDestination(family, "/")).toBeNull();
+  for (const path of [
+    "/start/plan",
+    "/start/consent",
+    "/start/name",
+    "/start/birth-year",
+    "/start/verify-email",
+  ])
+    expect(startDestination(family, path), path).toBe("/");
+  // Stripe's enrollment return always reads the purchase itself.
+  expect(startDestination(family, "/start/purchase")).toBeNull();
+});
+
+test("after a verified payment no learner holds, the parent chooses who it is for", () => {
   expect(
     table(
       me({
@@ -102,7 +120,7 @@ test("after verified payment the parent adds the learner; checkout steps close",
       }),
     ),
   ).toEqual({
-    "/start": "/start/name",
+    "/start": null,
     "/start/verify-email": "/start/name",
     "/start/plan": "/start/name",
     "/start/purchase": null,
@@ -112,60 +130,37 @@ test("after verified payment the parent adds the learner; checkout steps close",
   });
 });
 
-test("a consented family with unlicensed learners buys per learner in billing", () => {
-  expect(
-    table(
-      me({
-        next: "choose-plan",
-        consent: { status: "active", method: "verified" },
-      }),
-    ),
-  ).toEqual({
-    "/start": "/purchase",
-    "/start/verify-email": "/purchase",
-    "/start/plan": "/purchase",
-    "/start/purchase": "/purchase",
-    "/start/consent": "/purchase",
-    "/start/name": null,
-    "/start/birth-year": null,
-  });
+test("a free assessment from before the starter continues until it moves into the family", () => {
+  const trial = me({ next: "try", trial: true });
+  expect(startDestination(trial, "/")).toBe("/try");
+  expect(startDestination(trial, "/start/name")).toBe("/try");
+  expect(startDestination(trial, "/start")).toBeNull();
 });
 
-test("a practicing family may add another learner; everything else opens practice", () => {
+test("a parent approving another family's child pays first; the plan before any learner is theirs", () => {
+  const approving = me({ next: "start", familyApproval: { id: "approval" } });
+  expect(startDestination(approving, "/")).toBe("/family/approvals/approval");
+  expect(startDestination(approving, "/start/plan")).toBeNull();
   expect(
-    table(
-      me({
+    startDestination(
+      {
+        ...approving,
+        account: { ...approving.account, confirmationRequired: true },
+      },
+      "/start/plan",
+    ),
+  ).toBe("/start/verify-email");
+  // With consent the approval page approves.
+  expect(
+    startDestination(
+      {
+        ...approving,
         next: "practice",
         consent: { status: "active", method: "monetary-transaction" },
-      }),
-    ),
-  ).toEqual({
-    "/start": "/practice",
-    "/start/verify-email": "/practice",
-    "/start/plan": "/practice",
-    "/start/purchase": "/practice",
-    "/start/consent": "/practice",
-    "/start/name": null,
-    "/start/birth-year": null,
-  });
-});
-
-test("a signed-in parent without a purchase gets the free trial; plan steps open only when they choose to buy", () => {
-  expect(table(me({ next: "try" }))).toEqual({
-    "/start": "/try",
-    "/start/verify-email": "/start/plan",
-    "/start/plan": null,
-    "/start/purchase": null,
-    "/start/consent": null,
-    "/start/name": "/try",
-    "/start/birth-year": "/try",
-  });
-  // Chose a plan on the paywall before signing up: continue to it from
-  // any step, including after email verification.
-  for (const step of ["/start", "/start/verify-email", "/start/name"])
-    expect(startDestination(me({ next: "try" }), step, true)).toBe(
+      },
       "/start/plan",
-    );
+    ),
+  ).toBe("/family/approvals/approval");
 });
 
 test("funded entry requires confirmation and active consent before learner details", () => {
@@ -270,15 +265,12 @@ test("an email gift routes around checkout but never around verification or cons
       claimBy: null,
     },
   });
-  for (const path of [
-    "/start",
-    "/start/plan",
-    "/start/purchase",
-    "/start/name",
-    "/start/birth-year",
-  ]) {
+  for (const path of ["/start/plan", "/start/name", "/start/birth-year"]) {
     expect(startDestination(gift, path)).toBe("/access");
   }
+  // The starter adds a place; Stripe's return reads its own purchase.
+  expect(startDestination(gift, "/start")).toBeNull();
+  expect(startDestination(gift, "/start/purchase")).toBeNull();
   expect(startDestination(gift, "/start/consent")).toBeNull();
   const ready = {
     ...gift,
@@ -287,7 +279,7 @@ test("an email gift routes around checkout but never around verification or cons
   expect(startDestination(ready, "/start/name")).toBeNull();
   expect(startDestination(ready, "/start/birth-year")).toBeNull();
   expect(startDestination(ready, "/start/consent")).toBe("/start/name");
-  expect(startDestination(ready, "/start/purchase", true)).toBe("/access");
+
   expect(
     startDestination(
       { ...gift, account: { ...gift.account, confirmationRequired: true } },
@@ -299,36 +291,12 @@ test("an email gift routes around checkout but never around verification or cons
 const staffOf = [
   { orgId: "school", orgName: "Alder Street School", role: "teacher" as const },
 ];
-test("staff with no learners start at their school, not the parent trial", () => {
-  const staff = me({ staffOf, next: "try" });
-  expect(startDestination(staff, "/")).toBe("/school");
-  expect(startDestination(staff, "/start/plan")).toBe("/school");
-});
-test("staff can still buy for a family, and a parent who teaches stays a parent", () => {
-  const staff = me({ staffOf, next: "try" });
-  expect(startDestination(staff, "/start/plan", true)).toBeNull();
-  const learner = {
-    id: "jordan",
-    name: "Jordan",
-    birthYear: 2015,
-    entitlement: { active: true, plan: "annual", endsAt: null },
-  };
-  expect(
-    startDestination(
-      me({ staffOf, learners: [learner], next: "practice" }),
-      "/",
-    ),
-  ).toBe("/practice");
-  expect(
-    startDestination(
-      me({
-        staffOf,
-        next: "add-learner",
-        consent: { status: "active", method: "verified" },
-      }),
-      "/",
-    ),
-  ).toBe("/start/name");
+test("staff open their school from `/`; the starter stays open to add a family", () => {
+  const staff = me({ staffOf, next: "practice" });
+  expect(startDestination(staff, "/")).toBeNull();
+  expect(homePlace(staff, null)).toBe("school:school");
+  expect(startDestination(staff, "/start/parent")).toBeNull();
+  expect(startDestination(staff, "/start/plan")).toBe("/");
 });
 
 /* One account, several roles: a parent, a free assessment and school staff. */
@@ -353,7 +321,7 @@ test("a teacher with a free assessment under way keeps it at `/`, and the school
     next: "try",
   });
   expect(startDestination(teacher, "/")).toBe("/try");
-  expect(startDestination(teacher, "/start/plan")).toBeNull();
+  expect(startDestination(teacher, "/start/plan")).toBe("/try");
   expect(homePlace(teacher, null)).toBe("home");
   expect(placesFor(teacher)).toEqual(["home", `school:${alder}`]);
   // Last worked at the school: `/` goes back there.
@@ -377,8 +345,11 @@ test("a teacher who is also a parent opens where they last worked", () => {
 });
 
 test("staff only start at their school; with several they choose", () => {
-  const one = me({ staffOf: [school(alder, "Alder Street School")] });
-  expect(startDestination(one, "/")).toBe("/school");
+  const one = me({
+    staffOf: [school(alder, "Alder Street School")],
+    next: "practice",
+  });
+  expect(startDestination(one, "/")).toBeNull();
   expect(homePlace(one, null)).toBe(`school:${alder}`);
   // Nothing on the family side to return to: the school it is.
   expect(homePlace(one, "home")).toBe(`school:${alder}`);
@@ -410,10 +381,10 @@ test("a half-finished setup never captures `/` from someone with a family side",
   });
   expect(homePlace(parent, `school:${alder}`)).toBe("home");
   // An admin with nothing else carries on with their setup.
-  const admin = me({ staffOf: [pending] });
+  const admin = me({ staffOf: [pending], next: "practice" });
   expect(homePlace(admin, null)).toBe(`school:${alder}`);
   expect(homePlace(admin, `school:${alder}`)).toBe(`school:${alder}`);
-  expect(startDestination(admin, "/")).toBe("/school");
+  expect(startDestination(admin, "/")).toBeNull();
 });
 
 test("each screen belongs to a place, or to neither", () => {
@@ -443,38 +414,16 @@ test("each screen belongs to a place, or to neither", () => {
     expect(placeOfPath(path)).toBeNull();
 });
 
-test("free practice does not block buying or permit collecting a name before consent", () => {
-  const free = me({ next: "practice" });
-  for (const path of ["/start/plan", "/start/purchase", "/start/consent"])
-    expect(startDestination(free, path)).toBeNull();
-  for (const path of ["/start/name", "/start/birth-year"])
-    expect(startDestination(free, path)).toBe("/start/plan");
-  expect(startDestination(free, "/start")).toBe("/practice");
-  expect(
-    startDestination(
-      { ...free, account: { ...free.account, confirmationRequired: true } },
-      "/start/plan",
-    ),
-  ).toBe("/start/verify-email");
-});
-
-test("a consented learner can buy before using up free practice", () => {
-  const free = me({
+test("a tutor's class is their family side before any child of their own", () => {
+  const tutor = me({
     next: "practice",
-    consent: { status: "active", method: "verified" },
-    learners: [
-      {
-        id: "fox",
-        name: "Fox",
-        birthYear: 2016,
-        entitlement: {
-          active: true,
-          licensed: false,
-          plan: null,
-          endsAt: null,
-        },
-      },
-    ],
+    familyClass: {
+      orgId: alder,
+      classId: birch,
+      className: "Casey’s class",
+      notice: false,
+    },
   });
-  expect(startDestination(free, "/start/plan")).toBe("/purchase");
+  expect(placesFor(tutor)).toEqual(["home"]);
+  expect(homePlace(tutor, null)).toBe("home");
 });

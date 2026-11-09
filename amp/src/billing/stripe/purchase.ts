@@ -1,4 +1,3 @@
-import { learningConsentActive } from "../../server/account-access.js";
 import { createHash } from "node:crypto";
 import {
   BillingError,
@@ -98,10 +97,7 @@ async function learnerPurchaseStatus(
         "SELECT id,session_id,subscription_id,created_at,billing_interval,price_tier FROM amp_stripe_checkouts WHERE namespace=$1 AND (learner_id=$2 OR to_jsonb(amp_stripe_checkouts)->>'assigned_learner_id'=$2) AND account_id=$3 AND NOT closed LIMIT 1",
         [repository.namespace, learnerId, accountId],
       );
-      const consent = await client.query(
-        "SELECT 1 FROM amp_parent_consents WHERE account_id=$1 AND policy_version=$2 AND withdrawn_at IS NULL",
-        [accountId, repository.config.consentPolicyVersion],
-      );
+
       // The price this learner's checkout sells: its own while one is open,
       // else the one a new checkout would sell (the same for both plans).
       const tier: PriceTier =
@@ -118,9 +114,10 @@ async function learnerPurchaseStatus(
         grant: grants.rows[0],
         checkout: checkout.rows[0],
         tier,
+        // The account's own adult learner buys on its own terms.
         consent:
-          !!consent.rowCount &&
-          (await learningConsentActive(client, accountId)),
+          (await repository.ownAdultLearner(client, accountId, learnerId)) ||
+          (await repository.purchaseConsentActive(client, accountId)),
       };
     });
   }

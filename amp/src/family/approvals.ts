@@ -12,9 +12,11 @@ import { generateHandle, SchoolRepository } from "../schools/repository.js";
 import {
   familyHasLearnerRoom,
   freeAllowance,
+  FREE_ONLINE_PROBLEMS,
 } from "../learning/free-allowance.js";
 import { RETENTION, RETENTION_BATCH } from "../privacy/retention-periods.js";
 import { FamilyError } from "./contracts.js";
+import { schoolPictures } from "../schools/contracts.js";
 
 /* A child from another family joins a family class once their own parent
    approves (docs/families.md, step 5). For anyone who isn't a school, the
@@ -79,7 +81,10 @@ const approvalId = (id: string) => {
 export type ApprovalRow = {
   id: string;
   name: string;
-  status: "waiting" | "expired" | "paused" | "needs-access" | "active";
+  /** `unnamed`: a picture-identity student of this class (a tutor's, from
+   * the starter) whose parent hasn't been sent a link yet. */
+  status:
+    "waiting" | "expired" | "paused" | "needs-access" | "active" | "unnamed";
   parentEmail: string | null;
   /** Waiting: the link to copy. */
   inviteUrl: string | null;
@@ -87,6 +92,9 @@ export type ApprovalRow = {
   parentPageUrl: string | null;
   expiresAt: string | null;
   accessEndsAt: string | null;
+  /** Unnamed: the roster person a link names, and the free problems left. */
+  personId?: string;
+  freeLeft?: number;
 };
 
 type Database = Pick<PoolClient, "query">;
@@ -334,6 +342,15 @@ export async function listApprovals(
     try {
       const consent = await learningConsentActive(client, row.account_id!);
       const ends = await activeGrant(client, row.learner_id!);
+      // Without a plan, their own free problems still count down here.
+      const used = ends
+        ? null
+        : ((
+            await client.query<{ used: number }>(
+              "SELECT free_online_used AS used FROM amp_learners WHERE id=$1",
+              [row.learner_id],
+            )
+          ).rows[0]?.used ?? FREE_ONLINE_PROBLEMS);
       result.push({
         id: row.id,
         name: row.given_name ?? "Child",
@@ -343,11 +360,52 @@ export async function listApprovals(
         parentPageUrl: approvalPageUrl(keys, row.id),
         expiresAt: null,
         accessEndsAt: ends?.toISOString() ?? null,
+        ...(used === null
+          ? {}
+          : { freeLeft: Math.max(0, FREE_ONLINE_PROBLEMS - used) }),
       });
     } finally {
       client.release();
     }
   }
+  // The class's unnamed students no link has gone out for yet: each one's
+  // own parent names them through a link sent from their row.
+  const unnamed = await pool.query<{
+    id: string;
+    given_name: string;
+    free_online_used: number;
+    licensed: boolean;
+  }>(
+    `SELECT p.id,p.given_name,l.free_online_used,
+       EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active'
+         AND g.starts_at<=now() AND g.ends_at>now()) AS licensed
+     FROM amp_families f
+     JOIN amp_enrollments e ON e.class_id=f.class_id AND e.role='student' AND e.end_on IS NULL
+     JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL
+     JOIN amp_learners l ON l.id=p.learner_id AND l.deleted_at IS NULL AND l.name_pending
+       AND l.account_id='school:'||p.id
+     WHERE f.account_id=$1 AND NOT EXISTS(
+       SELECT 1 FROM amp_family_approvals a WHERE a.person_id=p.id AND a.ended_at IS NULL)
+     ORDER BY l.created_at,l.picture_number,array_position($2::text[],l.picture_identity),p.id LIMIT 200`,
+    [familyAccountId, [...schoolPictures]],
+  );
+  for (const row of unnamed.rows)
+    result.push({
+      id: row.id,
+      name: row.given_name,
+      status: "unnamed",
+      parentEmail: null,
+      inviteUrl: null,
+      parentPageUrl: null,
+      expiresAt: null,
+      accessEndsAt: null,
+      personId: row.id,
+      ...(row.licensed
+        ? {}
+        : {
+            freeLeft: Math.max(0, FREE_ONLINE_PROBLEMS - row.free_online_used),
+          }),
+    });
   return result;
 }
 
