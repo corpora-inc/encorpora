@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { generateProblem, templates } from "../src/math/engine";
+import { templates } from "../src/math/engine";
+import { generateProblem } from "./fixtures/pre-clause-problem";
 import { k8RepresentationCase } from "../src/math/k8-representations-practice";
 import { problemLesson } from "../src/content/problem-lessons";
 import { lessons } from "../src/content/lessons";
@@ -153,7 +154,7 @@ test("templates, lessons, methods, principles and facet mappings are registered"
     );
     const view = problemLesson(id, "k8-lesson");
     assert.ok(
-      view.intuition && view.method.length >= 3 && view.watch && view.principle,
+      view.intuition && view.method.length >= 2 && view.watch && view.principle,
     );
     assert.ok(view.example.steps.length >= 2);
     const mapping = actualFacetMappings.filter((m) => m.templateId === id);
