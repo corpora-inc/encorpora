@@ -24,6 +24,8 @@ import type { ProblemLessonView } from "../content/problem-lessons";
 import { ChoiceFigure } from "./ChoiceFigure";
 import { PointPlotAnswer, PointPlotInput, plotReview } from "./PointPlotInput";
 import { pointPlotAnswerText } from "../math/point-plot";
+import { UnitSquareMarkingInput } from "./UnitSquareMarkingInput";
+import { normalizeUnitSquareMarking } from "../math/unit-square-marking";
 import {
   MultiPartChoiceAnswer,
   MultiPartChoiceInput,
@@ -280,6 +282,9 @@ export function PracticeWorkspace(props: Props) {
   // Point plots answer on the grid in the problem itself; the dock holds
   // only the readout and Check, so they never use the answer dialog.
   const plot = problem.response.kind === "point-plot" ? problem.response : null;
+  const marking =
+    problem.response.kind === "unit-square-marking" ? problem.response : null;
+  const [markReset, setMarkReset] = useState(0);
   // Multi-part choices answer in the problem too: blanks, slots or a table.
   const parts =
     problem.response.kind === "multi-part-choice" ? problem.response : null;
@@ -350,7 +355,9 @@ export function PracticeWorkspace(props: Props) {
   // Diagram questions need room above a six-statement answer sheet. Below the
   // side-by-side workspace width, keep that sheet behind a clear answer action.
   const answerLayoutQuery =
-    multiResponse && problem.figure ? "(max-width: 899px)" : compactAnswerQuery;
+    (multiResponse && problem.figure) || marking
+      ? "(max-width: 899px)"
+      : compactAnswerQuery;
   const [compactQuery, setCompact] = useState(
     () => matchMedia(answerLayoutQuery).matches,
   );
@@ -369,7 +376,8 @@ export function PracticeWorkspace(props: Props) {
   }, []);
   const editorInDock = sideBySide && (!!work || !!figures);
   const deferSteps =
-    editorInDock || ((!!plot || !!parts || !!figures || !!work) && !sideBySide);
+    editorInDock ||
+    ((!!plot || !!parts || !!figures || !!work || !!marking) && !sideBySide);
   // Side by side, the sheet has the answer column's full height, so the
   // worked explanation is part of every result rather than a "See why" away.
   const fullColumn = sideBySide && !editorInDock;
@@ -437,7 +445,7 @@ export function PracticeWorkspace(props: Props) {
     // Typed answers start in the answer field. On touch it suppresses the
     // system keyboard (inputMode none), so AMP's keypad stays in charge; the
     // field announces the question through aria-describedby.
-    if (choice || plot || parts || figures || work)
+    if (choice || plot || parts || figures || work || marking)
       prompt.current?.focus({ preventScroll: true });
     else input.current?.focus({ preventScroll: true });
   }, [problem.id]);
@@ -611,6 +619,7 @@ export function PracticeWorkspace(props: Props) {
     );
   }
   function submitAnswer() {
+    if (marking) setMarkReset((value) => value + 1);
     prepareFeedbackSound();
     props.submit();
   }
@@ -799,9 +808,15 @@ export function PracticeWorkspace(props: Props) {
             if (busy || !(outcome || response.trim())) return;
             if (outcome) return advance();
             // Catch a malformed answer at the input, without a request.
-            if (!acceptedAnswer(response))
+            if (
+              marking
+                ? normalizeUnitSquareMarking(response) === null
+                : !acceptedAnswer(response)
+            )
               return setAnswerError(
-                "Enter a number, decimal, or fraction such as 3/4.",
+                marking
+                  ? "Enter a whole number of square units, such as 12."
+                  : "Enter a number, decimal, or fraction such as 3/4.",
               );
             submitAnswer();
           }}
@@ -847,8 +862,9 @@ export function PracticeWorkspace(props: Props) {
             </button>
           </div>
           <span id="answer-format" className="sr-only">
-            Enter a number, decimal or fraction. Negative answers use a minus
-            sign.
+            {marking
+              ? "Enter a whole number of square units."
+              : "Enter a number, decimal or fraction. Negative answers use a minus sign."}
           </span>
         </form>
         {keypad && (
@@ -1396,6 +1412,7 @@ export function PracticeWorkspace(props: Props) {
               <MathText text={problem.prompt} />
             </h2>
             {problem.figure &&
+              !marking &&
               (choice || plot || parts || figures || work ? (
                 <ChoiceFigure figure={problem.figure} />
               ) : (
@@ -1408,6 +1425,15 @@ export function PracticeWorkspace(props: Props) {
                   }
                 />
               ))}
+            {marking && (
+              <UnitSquareMarkingInput
+                key={problem.id}
+                response={marking}
+                locked={locked}
+                resolved={!!outcome}
+                resetKey={markReset}
+              />
+            )}
             {parts && (
               <MultiPartChoiceInput
                 response={parts}

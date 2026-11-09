@@ -133,7 +133,10 @@ test("guess chance comes from each family's answer schema and is never understat
   let choiceFamilies = 0;
   for (const template of templates) {
     const chance = guessChance(template);
-    if (!template.requiredResponseCapability) {
+    if (
+      !template.requiredResponseCapability ||
+      template.requiredResponseCapability === "unit-square-marking-v1"
+    ) {
       assert.equal(chance, 0, template.id);
       continue;
     }

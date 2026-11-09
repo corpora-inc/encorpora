@@ -89,6 +89,8 @@ export function guessChance(
   template: Pick<TemplateMetadata, "id" | "requiredResponseCapability">,
 ): number {
   if (!template.requiredResponseCapability) return 0;
+  if (template.requiredResponseCapability === "unit-square-marking-v1")
+    return 0;
   const known = cache.get(template.id);
   if (known !== undefined) return known;
   let chance = UNKNOWN_CHOICE_GUESS;

@@ -1,0 +1,139 @@
+.square-marking {
+  width: min(100%, 320px);
+  margin: var(--space-3) auto 0;
+  color: var(--color-on-surface);
+  overflow-wrap: normal;
+  word-break: normal;
+}
+.square-marking-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+.square-marking-swatch {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  background: var(--color-figure-accent-fill);
+  border: 2px solid var(--color-figure-ink);
+}
+.square-marking-help {
+  margin: var(--space-2) 0 var(--space-3);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--color-muted-text);
+}
+.square-marking-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--square-columns), minmax(44px, 1fr));
+  width: min(100%, calc(var(--square-columns) * 54px));
+  margin: 0 auto;
+  padding: 3px;
+}
+.square-marking-cell {
+  position: relative;
+  aspect-ratio: 1;
+  min-width: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--color-figure-grid);
+  border-radius: 0;
+  background: var(--color-figure-paper);
+  color: var(--color-figure-ink);
+  touch-action: manipulation;
+  transform: none !important;
+  filter: none !important;
+}
+.square-marking-cell[data-shaded="true"] {
+  background: var(--color-figure-accent-fill);
+}
+.square-marking-cell[data-shaded="true"]:is(
+    [data-tile="sticky"],
+    [data-tile="cracker"]
+  ),
+.square-marking-swatch:is([data-tile="sticky"], [data-tile="cracker"]) {
+  background: var(--color-figure-gold-fill);
+}
+.square-marking-boundary {
+  position: absolute;
+  inset: -1px;
+  border: 0 solid var(--color-figure-ink);
+  pointer-events: none;
+}
+.square-marking-tile {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--color-figure-ink);
+  stroke-width: 0.8;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.square-marking-cell:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -5px;
+  z-index: 1;
+}
+.square-marking[data-resolved="true"] .square-marking-cell {
+  outline: none;
+  cursor: default;
+}
+.square-marking-mark {
+  position: absolute;
+  inset: 22%;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-figure-ink);
+  color: var(--color-figure-paper);
+  visibility: hidden;
+  pointer-events: none;
+}
+.square-marking-mark[data-marked="true"] {
+  visibility: visible;
+}
+.square-marking-mark svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+.square-marking-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  min-height: 44px;
+  margin-top: var(--space-2);
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
+.square-marking-tools strong {
+  display: inline-block;
+  min-width: 2ch;
+  font-variant-numeric: tabular-nums;
+}
+.square-marking-tools button {
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  font-size: inherit;
+}
+.square-marking[data-resolved="true"] .square-marking-tools {
+  visibility: hidden;
+}
+/* A tall counting grid starts below the prompt even when it needs scrolling. */
+.problem-content:has(.square-marking) {
+  flex-shrink: 0;
+}
+.problem-stage:has(.square-marking) {
+  justify-content: flex-start;
+}

@@ -1,6 +1,11 @@
 import type { GlossaryPayload } from "../glossary/types";
 import { z } from "zod";
 import {
+  unitSquareMarkingResponseSchema,
+  normalizeUnitSquareMarking,
+  type UnitSquareMarkingResponse,
+} from "./unit-square-marking";
+import {
   MAX_SELECTION_OPTIONS,
   normalizeSelection,
   selectionIdPattern,
@@ -268,6 +273,7 @@ export const responseCapabilities = [
   "figure-choice-v1",
   "structured-work-v1",
   "multi-part-cards-v1",
+  "unit-square-marking-v1",
 ] as const;
 export type ResponseCapability = (typeof responseCapabilities)[number];
 /** The response and figure families a client declares it can show. */
@@ -330,6 +336,7 @@ export type MultiSelectResponse = {
   selectionCount: number;
 };
 export type {
+  UnitSquareMarkingResponse,
   PointPlotResponse,
   PointPlotGrading,
   MultiPartChoiceResponse,
@@ -344,7 +351,8 @@ export type ProblemResponse =
   | PointPlotResponse
   | MultiPartChoiceResponse
   | FigureChoiceResponse
-  | StructuredWorkResponse;
+  | StructuredWorkResponse
+  | UnitSquareMarkingResponse;
 /** Safe teaching content delivered beside a problem; never grading data.
  * Its glossary fields carry the term cards the hint's words open. */
 export interface ProblemHint extends GlossaryPayload {
@@ -978,6 +986,7 @@ export const problemResponseSchema: z.ZodType<ProblemResponse> = z.union([
       "Select fewer than all options, using unique identifiers and labels",
     ),
   pointPlotResponseSchema,
+  unitSquareMarkingResponseSchema,
   multiPartChoiceResponseSchema,
   figureChoiceResponseSchema,
   structuredWorkResponseSchema,
@@ -1025,6 +1034,15 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
   .strict()
   .refine((problem) => {
     const response = problem.public.response;
+    if (response.kind === "unit-square-marking")
+      return (
+        !problem.choiceFeedback &&
+        !problem.entryPolicy &&
+        !problem.pointGrading &&
+        !problem.workGrading &&
+        normalizeUnitSquareMarking(problem.answer) === problem.answer &&
+        problem.answer === String(response.cells.length)
+      );
     // A worked key is canonical, fits its private rule and earns credit.
     if (response.kind === "structured-work")
       return (

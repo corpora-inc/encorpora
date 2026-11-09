@@ -25,6 +25,10 @@ import {
   withTemplateVersion,
 } from "./variation/axes";
 import { gradePointPlot, normalizePointPlot } from "./point-plot";
+import {
+  gradeUnitSquareMarking,
+  normalizeUnitSquareMarking,
+} from "./unit-square-marking";
 import { gradeMultiPart, normalizeMultiPart } from "./multi-part-choice";
 import {
   multiPartChoiceTemplates,
@@ -701,6 +705,8 @@ export function isValidResponse(
   problem: PublicProblem,
   response: string,
 ): boolean {
+  if (problem.response.kind === "unit-square-marking")
+    return normalizeUnitSquareMarking(response) !== null;
   if (problem.response.kind === "multi-select")
     return normalizeSelection(problem.response, response) !== null;
   if (problem.response.kind === "point-plot")
@@ -719,6 +725,8 @@ export function gradeAnswer(
   problem: GeneratedProblem,
   response: string,
 ): boolean {
+  if (problem.public.response.kind === "unit-square-marking")
+    return gradeUnitSquareMarking(problem.answer, response);
   if (problem.public.response.kind === "multi-select") {
     const answer = normalizeSelection(problem.public.response, response);
     return (

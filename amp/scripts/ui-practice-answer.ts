@@ -218,7 +218,9 @@ export async function preparePracticeAnswer(
       await page.locator(".choice-submit:visible").click();
     } else {
       assert.ok(
-        schema.kind === "number" || schema.kind === "fraction",
+        schema.kind === "number" ||
+          schema.kind === "fraction" ||
+          schema.kind === "unit-square-marking",
         `${template}/${problem.seed}: unsupported UI response ${schema.kind}`,
       );
       const input = page.locator("#answer:visible");

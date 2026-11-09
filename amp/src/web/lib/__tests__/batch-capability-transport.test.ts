@@ -56,19 +56,13 @@ test("trial transport retries an older API without its newest format, keeping au
       "figure-choice-v1",
       "structured-work-v1",
       "multi-part-cards-v1",
+      "unit-square-marking-v1",
     ],
   });
   expect(first.figureCapabilities.length).toBeGreaterThan(0);
   expect(retry).toEqual({
     ...first,
-    responseCapabilities: [
-      "single-choice-v1",
-      "multi-select-v1",
-      "point-plot-v1",
-      "multi-part-choice-v1",
-      "figure-choice-v1",
-      "structured-work-v1",
-    ],
+    responseCapabilities: first.responseCapabilities.slice(0, -1),
   });
 });
 

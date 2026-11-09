@@ -92,7 +92,8 @@ export type ProblemFlag = {
     | "point-plot"
     | "multi-part-choice"
     | "figure-choice"
-    | "structured-work";
+    | "structured-work"
+    | "unit-square-marking";
   response: string | null;
   outcome: FlagOutcome;
   assisted: boolean;
