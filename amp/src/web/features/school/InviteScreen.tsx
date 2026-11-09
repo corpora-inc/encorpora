@@ -107,8 +107,12 @@ export function InviteScreen() {
   const email = me?.signedIn ? me.account.email : null;
   const signInSearch = { return: "school-invite" } as never;
   return (
-    <main className={styles.inviteCard} data-dense>
-      <Brand />
+    <main
+      className={styles.inviteCard}
+      data-dense
+      data-in-shell={session ? "" : undefined}
+    >
+      {!session && <Brand />}
       {!parsed || invite.isError ? (
         <>
           <h1>This invitation link isn’t valid</h1>

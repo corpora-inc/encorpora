@@ -81,175 +81,6 @@
   font-weight: inherit;
 }
 
-.frame {
-  --target-size: 44px;
-  --gutter: var(--space-4);
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: auto minmax(0, 1fr);
-  min-height: 100dvh;
-  background: var(--color-surface);
-  color: var(--color-on-surface);
-  font-size: var(--text-dense);
-  line-height: 1.45;
-}
-@media (min-width: 720px) {
-  .frame {
-    --gutter: var(--space-5);
-  }
-}
-.skip {
-  position: absolute;
-  top: var(--space-2);
-  left: var(--space-2);
-  z-index: 20;
-  padding: var(--space-3) var(--space-4);
-  border-radius: var(--radius-control);
-  background: var(--color-primary);
-  color: var(--color-on-primary);
-  font-weight: 600;
-  text-decoration: none;
-  transform: translateY(-200%);
-}
-.skip:focus-visible {
-  transform: none;
-}
-/* Phones and tablets: a compact bar and the drawer. */
-.bar {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  height: 60px;
-  min-height: 60px;
-  padding: 0 var(--gutter);
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-}
-.barTitle {
-  font-family: var(--font-display);
-  font-size: 20px;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  white-space: nowrap;
-}
-.rail {
-  display: none;
-}
-.drawer {
-  display: grid;
-  gap: var(--space-4);
-  font-size: var(--text-dense);
-}
-.column {
-  min-width: 0;
-}
-/* A hairline across the whole column closes the header; what sits in it keeps
-   the content's left edge. */
-.head {
-  padding: 0 var(--gutter);
-  box-shadow: inset 0 -1px 0 var(--color-border);
-}
-.breadcrumb {
-  display: none;
-}
-.content {
-  min-width: 0;
-  padding: var(--space-5) var(--gutter) var(--space-8);
-  outline: none;
-}
-
-/* Navigation, shared by the rail and the drawer. */
-.nav {
-  display: grid;
-  gap: var(--space-5);
-}
-.navSection {
-  display: grid;
-  gap: 2px;
-}
-.navLabel {
-  padding: 0 var(--space-3) var(--space-1);
-  color: var(--color-subtle-text);
-  font-size: var(--text-table-small);
-  font-weight: 600;
-  line-height: 1.3;
-}
-.navLink {
-  display: flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 0 var(--space-3);
-  border-radius: var(--radius-small);
-  color: inherit;
-  font-size: var(--text-table);
-  font-weight: 500;
-  line-height: 1.2;
-  text-decoration: none;
-}
-.navLink:hover {
-  background: var(--color-surface-sunken);
-}
-.navLink:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: -3px;
-}
-.navLink[aria-current="page"] {
-  background: var(--color-secondary);
-  color: var(--color-on-secondary);
-  font-weight: 600;
-}
-
-/* A wide screen: the rail, then a breadcrumb and tabs over the content. */
-@media (min-width: 1024px) {
-  .frame {
-    --gutter: var(--space-6);
-    grid-template-columns: var(--width-rail) minmax(0, 1fr);
-    grid-template-rows: minmax(0, 1fr);
-  }
-  .bar {
-    display: none;
-  }
-  /* The rail's color runs the page's full height; its contents stay in view. */
-  .rail {
-    display: block;
-    background: var(--color-rail);
-    color: var(--color-on-rail);
-  }
-  .railInner {
-    position: sticky;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-5);
-    height: 100dvh;
-    overflow-y: auto;
-    padding: var(--space-4) var(--space-3) var(--space-3);
-  }
-  .rail .navLink:hover {
-    background: var(--color-rail-hover);
-  }
-  .rail .navLink[aria-current="page"] {
-    background: var(--color-surface-raised);
-    color: var(--color-on-surface-raised);
-  }
-  .breadcrumb {
-    display: block;
-    padding-top: var(--space-1);
-  }
-  .content {
-    max-width: var(--width-content-wide);
-    padding-top: var(--space-6);
-  }
-  .frame[data-lone] .content {
-    padding-top: var(--space-7);
-  }
-}
-@media (min-width: 1200px) {
-  .frame {
-    --gutter: 40px;
-  }
-}
 .brand {
   display: flex;
   align-items: center;
@@ -278,77 +109,57 @@
   font-size: var(--text-dense);
   line-height: 1;
 }
-.org {
-  display: grid;
-}
-.org > button {
-  justify-content: space-between;
+
+.content {
+  --target-size: 44px;
+  --gutter: var(--space-4);
+  --grid-sticky-top: var(--shell-bar, 56px);
+  box-sizing: border-box;
   width: 100%;
+  max-width: var(--width-content-wide);
+  min-height: calc(100dvh - var(--shell-bar, 56px));
+  margin-inline: auto;
+  padding: var(--space-5) var(--gutter) var(--space-8);
+  color: var(--color-on-surface);
+  font-size: var(--text-dense);
+  line-height: 1.45;
+  outline: none;
 }
-.account {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  margin-top: auto;
-  padding: var(--space-2) var(--space-3);
-  font-size: var(--text-table);
-  line-height: 1.2;
+/* A grid with its own scrollport keeps headings at that scrollport's top. */
+.content :global([data-scrolls]),
+.content :global([data-virtual]) {
+  --grid-sticky-top: 0px;
 }
-.breadcrumb ol {
+@media (min-width: 768px) {
+  .content {
+    --gutter: var(--space-6);
+  }
+}
+.links {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  color: var(--color-muted-text);
-  font-size: var(--text-table-small);
+  gap: var(--space-2) var(--space-4);
+  margin-bottom: var(--space-4);
 }
-.breadcrumb li {
-  display: flex;
-  align-items: center;
-  min-height: 44px;
-}
-.breadcrumb li + li::before {
-  content: "/";
-  margin-inline: var(--space-1);
-  color: var(--color-subtle-text);
-}
-.breadcrumb li:first-child .crumb {
-  margin-inline-start: calc(-1 * var(--space-1));
-}
-.crumb {
+.links a {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  padding: 0 var(--space-1);
-  color: inherit;
-  text-decoration: none;
+  color: var(--color-primary);
 }
-.crumb:hover {
-  color: var(--color-on-surface);
-  text-decoration: underline;
-}
-.breadcrumb [aria-current="page"] {
-  padding: 0 var(--space-1);
-  color: var(--color-on-surface);
-  font-weight: 600;
-}
-
-/* A screen that prints (a progress report) prints without the frame. */
 @media print {
-  .frame {
-    display: block;
-    min-height: 0;
-    background: var(--color-print-paper);
-    color: var(--color-print-ink);
-    print-color-adjust: exact;
-  }
-  .bar,
-  .rail,
-  .head,
-  .skip {
-    display: none;
-  }
   .content {
     max-width: none;
+    min-height: 0;
     padding: 0;
   }
+  .links {
+    display: none;
+  }
+}
+
+.place {
+  color: var(--color-muted-text);
+  margin-bottom: var(--space-3);
+  font-weight: 600;
 }

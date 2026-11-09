@@ -264,6 +264,13 @@ export async function probe(page: Page): Promise<ShellProbe> {
         right = Math.min(right, c.right);
         bottom = Math.min(bottom, c.bottom);
       }
+      // Scrolled content passes behind the opaque app bar. Only its exposed
+      // part can overlap another visible control. At scroll zero, retain the
+      // full box so a missing initial header inset still fails this check.
+      if (scrollY > 0 && el.closest("[data-shell-content]")) {
+        const bar = document.querySelector("[data-app-bar]");
+        if (bar) top = Math.max(top, bar.getBoundingClientRect().bottom);
+      }
       return { left, top, right, bottom };
     };
     const boxes = controls
