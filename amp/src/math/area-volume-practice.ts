@@ -5,10 +5,36 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import type { FigureFraction, LengthUnit } from "./area-volume-figures";
+import {
+  multiPartChoiceResponseSchema,
+  serializeMultiPart,
+  type MultiPartChoiceResponse,
+  type PartOption,
+} from "./multi-part-choice";
+import {
+  gradeStructuredWork,
+  gradingFits,
+  normalizeStructuredWork,
+  structuralProblem,
+  type StructuredWorkResponse,
+  type WorkGrading,
+} from "./structured-work";
+import { generatingVersion } from "./variation/axes";
+
+/** Clause families added at this version. A reprint below it runs the
+ * generator that shipped at version 1, on the same content stream. */
+const CLAUSE_SINCE = 2;
+const clauseHostIds = new Set([
+  "triangle-area-base-height",
+  "polygon-area-decompose",
+  "fraction-edge-volume",
+  "composite-area",
+  "composite-face-prism-surface-area",
+]);
 
 /** Area, surface area and volume (grades 6–8): triangles and polygons by
  * decomposition, nets, fractional edges, composite figures and curved solids. */
-export const areaVolumeTemplates: readonly TemplateMetadata[] = (
+const areaVolumeCore: readonly TemplateMetadata[] = (
   [
     [
       "triangle-area-base-height",
@@ -76,9 +102,71 @@ export const areaVolumeTemplates: readonly TemplateMetadata[] = (
   title,
   skillId,
   description,
-  version: 1 as const,
+  version: clauseHostIds.has(id) ? 2 : 1,
+  ...(clauseHostIds.has(id) ? { reprintsFrom: 1 as const } : {}),
   gradeBand: "6–8" as const,
 }));
+
+const clauseTemplates: readonly TemplateMetadata[] = [
+  {
+    id: "polygon-show-the-pieces",
+    title: "Area of the pieces",
+    skillId: "triangle-area",
+    description:
+      "Choose the area of each piece when a trapezoid, parallelogram, or right triangle is split or doubled into rectangles and triangles.",
+    version: 1,
+    gradeBand: "6–8",
+    requiredResponseCapability: "multi-part-choice-v1",
+    glossaryNoLink: ["base", "bases", "side", "part", "parts", "whole", "square"],
+  },
+  {
+    id: "polygon-which-expression",
+    title: "Which area expression",
+    skillId: "triangle-area",
+    description:
+      "Choose the expression that adds a trapezoid's middle rectangle and its two end triangles.",
+    version: 1,
+    gradeBand: "6–8",
+    requiredResponseCapability: "single-choice-v1",
+    glossaryNoLink: ["base", "bases", "side", "part", "whole", "square"],
+  },
+  {
+    id: "count-then-size-then-check",
+    title: "Count, size, then check",
+    skillId: "fractional-prism-volume",
+    description:
+      "Count the unit-fraction cubes along each edge of a box, then find the volume from that count and again from the edge lengths.",
+    version: 1,
+    gradeBand: "6–8",
+    requiredResponseCapability: "structured-work-v1",
+    glossarySenses: { solid: "solid-shape", cube: "cube", edge: "edge" },
+    glossaryNoLink: ["whole", "count"],
+  },
+  {
+    id: "net-name-the-solid",
+    title: "Name the solid from its net",
+    skillId: "surface-area",
+    description:
+      "Name the solid a net of rectangles and triangles folds into: cube, rectangular prism, triangular prism, or square pyramid.",
+    version: 1,
+    gradeBand: "6–8",
+    requiredResponseCapability: "single-choice-v1",
+    glossarySenses: {
+      net: "net-solid",
+      face: "face-solid",
+      solid: "solid-shape",
+      base: "base-shape",
+      square: "square-shape",
+      edge: "edge",
+    },
+    glossaryNoLink: ["opposite", "change"],
+  },
+];
+
+export const areaVolumeTemplates: readonly TemplateMetadata[] = [
+  ...areaVolumeCore,
+  ...clauseTemplates,
+];
 
 type Random = (low: number, high: number) => number;
 type Q = { n: number; d: number };
@@ -1263,6 +1351,1020 @@ const hints: Record<string, string> = {
     "A hemisphere is half a sphere: its volume is one half of four thirds, or two thirds, of $\\pi \\times r \\times r \\times r$.",
 };
 
+function clauseRandom(id: string, seed: string): Random {
+  let counter = 0;
+  return (low, high) => {
+    const span = high - low + 1,
+      limit = Math.floor(0x100000000 / span) * span;
+    let value: number;
+    do
+      value = createHash("sha256")
+        .update(JSON.stringify([id, "clause-family", seed, counter++]))
+        .digest()
+        .readUInt32BE(0);
+    while (value >= limit);
+    return low + (value % span);
+  };
+}
+/** New family on half the seeds. A reprint below CLAUSE_SINCE does not draw. */
+function useClauseFamily(id: string, seed: string): boolean {
+  if (!clauseHostIds.has(id)) return false;
+  const version = generatingVersion();
+  if (typeof version === "number" && version < CLAUSE_SINCE) return false;
+  return clauseRandom(id, seed)(0, 1) === 1;
+}
+function stampedVersion(id: string): number {
+  if (!clauseHostIds.has(id)) return 1;
+  const version = generatingVersion();
+  if (typeof version === "number" && version < CLAUSE_SINCE) return 1;
+  return version ?? CLAUSE_SINCE;
+}
+function shuffle<T>(r: Random, items: readonly T[]): T[] {
+  const out = [...items];
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = r(0, i);
+    const swap = out[i]!;
+    out[i] = out[j]!;
+    out[j] = swap;
+  }
+  return out;
+}
+function problemHash(id: string, seed: string, version: number): string {
+  return createHash("sha256")
+    .update(JSON.stringify([id, version, seed]))
+    .digest("hex");
+}
+type PolyFig = Extract<SemanticFigure, { kind: "measured-polygon" }>;
+function asPoly(figure: SemanticFigure | undefined): PolyFig {
+  if (!figure || figure.kind !== "measured-polygon")
+    throw new Error("Expected a measured polygon");
+  return figure;
+}
+const shown = (a: Q) => (a.d === 1 ? String(a.n) : frac(a));
+const claim = (a: Q) => (a.d === 1 ? String(a.n) : `$${frac(a)}$`);
+
+function inContextTriangle(r: Random): Case {
+  const base = triangleCase(r);
+  const price = r(2, 6);
+  const f = asPoly(base.figure);
+  const b = f.sides[0]!;
+  const h = f.heights[0]
+    ? f.heights[0].value
+    : f.rightAngles.includes(0)
+      ? f.sides[2]!
+      : f.sides[1]!;
+  const area = q(b * h, 2);
+  if (area.n !== base.answer.n || area.d !== base.answer.d)
+    throw new Error("Sail base and height do not match the triangle");
+  const cost = mul(area, q(price));
+  const u = f.unit;
+  return {
+    prompt: `The triangle is a sail. Canvas costs $${price}$ for each square ${unitWords[u][0]}. What does the canvas cost, in dollars?`,
+    answer: cost,
+    explanation: [
+      `The base is ${b} and the perpendicular height is ${h}. Half of their product is the area: $\\tfrac{1}{2} \\times ${b} \\times ${h} = ${shown(area)}$.`,
+      `Canvas costs $${price}$ for each square ${unitWords[u][0]}: $${shown(area)} \\times ${price} = ${shown(cost)}$.`,
+      `The cost is ${plain(cost)} dollars.`,
+    ],
+    hint: "Use the base and the height that meets it at a right angle. Halve that product, then multiply by the price of one square unit.",
+    figure: f,
+    tags: ["in-context", "sail"],
+    kind: "number",
+    label: "Cost (dollars)",
+  };
+}
+
+function inContextPolygon(r: Random): Case {
+  const base = polygonCase(r);
+  const price = r(2, 6);
+  const f = asPoly(base.figure);
+  const u = f.unit;
+  const shape = base.tags[0]!;
+  const skin =
+    shape === "parallelogram"
+      ? { thing: "sign", goods: "Paint", asked: "the paint", word: "parallelogram" }
+      : shape === "pentagon"
+        ? { thing: "barn end", goods: "Siding", asked: "the siding", word: "pentagon" }
+        : { thing: "garden", goods: "Sod", asked: "the sod", word: "trapezoid" };
+  const steps: string[] = [];
+  if (shape === "parallelogram") {
+    const b = f.sides[0]!,
+      h = f.heights[0]!.value;
+    if (b * h !== base.answer.n || base.answer.d !== 1)
+      throw new Error("Parallelogram area mismatch");
+    steps.push(
+      `The base is ${b} and the perpendicular height is ${h}: $${b} \\times ${h} = ${b * h}$.`,
+    );
+  } else if (shape === "pentagon") {
+    const w = f.sides[0]!,
+      wall = f.sides[1]!,
+      marked = f.heights[0]!.value;
+    const roof = base.tags.includes("total-height") ? marked - wall : marked;
+    const rect = w * wall,
+      tri = q(w * roof, 2),
+      sum = add(q(rect), tri);
+    if (sum.n !== base.answer.n || sum.d !== base.answer.d)
+      throw new Error("Pentagon pieces do not match its area");
+    steps.push(
+      `The wall rectangle is ${w} by ${wall}: $${w} \\times ${wall} = ${rect}$.`,
+      `The roof triangle has base ${w} and height ${roof}: $\\tfrac{1}{2} \\times ${w} \\times ${roof} = ${shown(tri)}$.`,
+      `Add the pieces: $${rect} + ${shown(tri)} = ${shown(sum)}$.`,
+    );
+  } else {
+    const a = f.sides[0]!,
+      c = f.sides[2]!,
+      h = f.heights[0]?.value ?? f.sides[3]!;
+    const area = q((a + c) * h, 2);
+    if (area.n !== base.answer.n || area.d !== base.answer.d)
+      throw new Error("Trapezoid area mismatch");
+    steps.push(
+      `The parallel sides are ${a} and ${c}, and the height is ${h}: $\\tfrac{1}{2} \\times (${a} + ${c}) \\times ${h} = ${shown(area)}$.`,
+    );
+  }
+  const cost = mul(base.answer, q(price));
+  steps.push(
+    `${skin.goods} costs $${price}$ for each square ${unitWords[u][0]}: $${shown(base.answer)} \\times ${price} = ${shown(cost)}$.`,
+    `The cost is ${plain(cost)} dollars.`,
+  );
+  const hint =
+    shape === "parallelogram"
+      ? "The area is the base times the perpendicular height, not a slanted side. Then multiply by the price of one square unit."
+      : shape === "pentagon"
+        ? "Add the rectangle and half the roof's base times the roof's own height, then multiply by the price of one square unit."
+        : "Average the two parallel sides, multiply by the height between them, then multiply by the price of one square unit.";
+  return {
+    prompt: `A ${skin.thing} is the ${skin.word} shown. ${skin.goods} costs $${price}$ for each square ${unitWords[u][0]}. What does ${skin.asked} cost, in dollars?`,
+    answer: cost,
+    explanation: steps,
+    hint,
+    figure: f,
+    tags: ["in-context", `context-${skin.word}`],
+    kind: "number",
+    label: "Cost (dollars)",
+  };
+}
+
+function houseCase(r: Random, u: LengthUnit): Case {
+  const w = r(2, 10) * 2,
+    wall = r(3, 12),
+    roof = r(2, 8);
+  const rect = w * wall,
+    tri = (w * roof) / 2,
+    total = rect + tri;
+  const plural = unitWords[u][1],
+    A = square(u);
+  return {
+    prompt: `The figure is a rectangle ${w} ${plural} wide and ${wall} ${plural} tall with a triangle on top. The triangle is ${w} ${plural} wide and ${roof} ${plural} tall. What is its area, in ${A}?`,
+    answer: q(total),
+    explanation: [
+      `The rectangle is ${w} by ${wall}: $${w} \\times ${wall} = ${rect}$.`,
+      `The triangle on top has base ${w} and height ${roof}: $\\tfrac{1}{2} \\times ${w} \\times ${roof} = ${tri}$.`,
+      `Add the pieces: $${rect} + ${tri} = ${total}$. The area is ${total} ${A}.`,
+    ],
+    hint: "Add the rectangle's area to half of the triangle's base times its own height. The roof's height is not the wall.",
+    figure: {
+      kind: "measured-polygon",
+      unit: u,
+      vertices: [
+        [0, 0],
+        [w, 0],
+        [w, wall],
+        [w / 2, wall + roof],
+        [0, wall],
+      ],
+      sides: [w, wall, null, null, wall],
+      heights: [
+        { from: [w / 2, wall + roof], to: [w / 2, wall], value: roof },
+      ],
+      guides: [{ from: [0, wall], to: [w, wall] }],
+      rightAngles: [0, 1],
+    },
+    tags: ["with-triangles", "house"],
+    kind: "number",
+    label: `Area (${A})`,
+  };
+}
+function cutTriangleCase(r: Random, u: LengthUnit): Case {
+  const W = r(6, 14),
+    H = r(5, 12),
+    a = r(2, W - 2),
+    b = r(2, H - 2);
+  const tri = q(a * b, 2),
+    total = sub(q(W * H), tri);
+  const A = square(u);
+  return {
+    prompt: `A rectangle has a right-triangle corner removed. Lengths are in ${unitWords[u][1]}. What is its area, in ${A}?`,
+    answer: total,
+    explanation: [
+      `The whole rectangle is ${W} by ${H}: $${W} \\times ${H} = ${W * H}$.`,
+      `The removed corner has legs ${a} and ${b}: $\\tfrac{1}{2} \\times ${a} \\times ${b} = ${shown(tri)}$.`,
+      `Subtract the triangle: $${W * H} - ${shown(tri)} = ${shown(total)}$. The area is ${plain(total)} ${A}.`,
+    ],
+    hint: "Find the rectangle's area, then subtract half the product of the cut's two legs.",
+    figure: {
+      kind: "measured-polygon",
+      unit: u,
+      vertices: [
+        [0, 0],
+        [W, 0],
+        [W, H - b],
+        [W - a, H],
+        [0, H],
+      ],
+      sides: [W, H - b, null, W - a, H],
+      heights: [],
+      guides: [
+        { from: [W - a, H], to: [W, H] },
+        { from: [W, H], to: [W, H - b] },
+      ],
+      rightAngles: [0, 1, 4],
+    },
+    tags: ["with-triangles", "cut-triangle"],
+    kind: "number",
+    label: `Area (${A})`,
+  };
+}
+function rectTrapCase(r: Random, u: LengthUnit): Case {
+  const W = r(8, 16),
+    H = r(3, 10),
+    o = r(1, Math.min(3, Math.floor((W - 2) / 2))),
+    top = W - 2 * o,
+    t = r(2, 8);
+  const rect = W * H,
+    trap = ((W + top) * t) / 2,
+    total = rect + trap;
+  const plural = unitWords[u][1],
+    A = square(u);
+  return {
+    prompt: `The figure is a rectangle ${W} ${plural} wide and ${H} ${plural} tall with a trapezoid on top. The trapezoid's parallel sides are ${W} ${plural} and ${top} ${plural}, and its height is ${t} ${plural}. What is its area, in ${A}?`,
+    answer: q(total),
+    explanation: [
+      `The rectangle is ${W} by ${H}: $${W} \\times ${H} = ${rect}$.`,
+      `The trapezoid has parallel sides ${W} and ${top} and height ${t}: $\\tfrac{1}{2} \\times (${W} + ${top}) \\times ${t} = ${trap}$.`,
+      `Add the pieces: $${rect} + ${trap} = ${total}$. The area is ${total} ${A}.`,
+    ],
+    hint: "Add the rectangle to the trapezoid. The trapezoid's area is the average of its parallel sides times its own height.",
+    figure: {
+      kind: "measured-polygon",
+      unit: u,
+      vertices: [
+        [0, 0],
+        [W, 0],
+        [W, H],
+        [W - o, H + t],
+        [o, H + t],
+        [0, H],
+      ],
+      sides: [W, H, null, top, null, H],
+      heights: [{ from: [o, H + t], to: [o, H], value: t }],
+      guides: [],
+      rightAngles: [0, 1],
+    },
+    tags: ["with-triangles", "rectangle-trapezoid"],
+    kind: "number",
+    label: `Area (${A})`,
+  };
+}
+function withTriangles(r: Random): Case {
+  const u = pick(r, units);
+  const kind = r(0, 2);
+  return kind === 0 ? houseCase(r, u) : kind === 1 ? cutTriangleCase(r, u) : rectTrapCase(r, u);
+}
+
+function stackedCubes(r: Random): Case {
+  const u = pick(r, units);
+  let e: number, f: number;
+  do {
+    e = r(4, 10);
+    f = r(2, Math.floor(e / 2));
+  } while ((e - f) % 2 !== 0);
+  const bottom = 6 * e * e,
+    top = 6 * f * f,
+    hidden = f * f,
+    answer = bottom + top - 2 * hidden;
+  const left = (e - f) / 2,
+    right = (e + f) / 2;
+  const plural = unitWords[u][1],
+    A = square(u);
+  return {
+    prompt: `Two cubes are stacked. The bottom cube has edges of ${e} ${plural}. The top cube has edges of ${f} ${plural} and sits centered on the bottom cube. The drawing shows the front outline with one depth, so both edges are stated here. What is the surface area of the solid, in ${A}?`,
+    answer: q(answer),
+    explanation: [
+      `The bottom cube has 6 faces of side ${e}: $6 \\times ${e}^2 = ${bottom}$.`,
+      `The top cube has 6 faces of side ${f}: $6 \\times ${f}^2 = ${top}$.`,
+      `The cubes meet on a square of side ${f}, hidden on each cube: $${f}^2 = ${hidden}$, and $2 \\times ${hidden} = ${2 * hidden}$.`,
+      `Subtract both hidden faces: $${bottom} + ${top} - ${2 * hidden} = ${answer}$. The surface area is ${answer} ${A}.`,
+    ],
+    hint: "Do not stop at 6 times each edge squared added together: the touching faces are hidden. Do not subtract the hidden square only once: it is hidden on both cubes.",
+    figure: {
+      kind: "extruded-polygon",
+      unit: u,
+      face: [
+        [0, 0],
+        [e, 0],
+        [e, e],
+        [right, e],
+        [right, e + f],
+        [left, e + f],
+        [left, e],
+        [0, e],
+      ],
+      sides: [e, e, null, f, f, f, null, e],
+      depth: e,
+    },
+    tags: ["stacked-cubes"],
+    kind: "number",
+    label: `Surface area (${A})`,
+  };
+}
+
+function mixedQ(r: Random, denoms: readonly number[], maxWhole: number): Q {
+  const d = pick(r, denoms);
+  return q(r(1, maxWhole) * d + r(1, d - 1), d);
+}
+function fractionalBase(r: Random): Case {
+  const u = pick(r, ["ft", "in", "m", "cm"] as const);
+  const [thing, fill] = pick(r, [
+    ["fish tank", "water"],
+    ["planter", "soil"],
+    ["box", "sand"],
+  ] as const);
+  let B: Q, h: Q, volume: Q;
+  do {
+    B = mixedQ(r, [2, 3, 4, 5, 6], 12);
+    h = mixedQ(r, [2, 3, 4], 5);
+    volume = mul(B, h);
+  } while (volume.d > 12);
+  const missing = r(0, 1) === 1;
+  const plural = unitWords[u][1];
+  const figure: SemanticFigure = {
+    kind: "measured-polygon",
+    unit: u,
+    vertices: [
+      [0, 0],
+      [4, 0],
+      [4, 2],
+      [0, 2],
+    ],
+    sides: [null, null, null, null],
+    heights: [],
+    guides: [],
+    rightAngles: [0, 1, 2, 3],
+  };
+  const rawN = B.n * h.n,
+    rawD = B.d * h.d;
+  if (!missing) {
+    const sum = add(B, h);
+    const trap =
+      sum.n === volume.n && sum.d === volume.d
+        ? []
+        : [
+            `Adding the base area and the height gives $${frac(sum)}$, not the volume.`,
+          ];
+    return {
+      prompt: `A ${thing} has a rectangular base with area $${mixed(B)}$ square ${plural}. The ${fill} is $${mixed(h)}$ ${word(h, u)} deep. How many cubic ${plural} of ${fill} does it hold?`,
+      answer: volume,
+      explanation: [
+        `Write the measures as improper fractions: $${mixed(B)} = ${frac(B)}$ and $${mixed(h)} = ${frac(h)}$.`,
+        `Base times height: $${frac(B)} \\times ${frac(h)} = \\tfrac{${rawN}}{${rawD}} = ${shown(volume)}$.`,
+        ...trap,
+        `The volume is ${claim(volume)} cubic ${word(volume, u)}.`,
+      ],
+      hint: "Multiply the base area by the depth. Adding those two measurements does not give the volume.",
+      figure,
+      tags: ["fractional-base-height", "base-times-height"],
+      kind: "fraction",
+      label: `Volume (${cubic(u)})`,
+    };
+  }
+  return {
+    prompt: `A ${thing} has a base of $${mixed(B)}$ square ${plural} and holds $${mixed(volume)}$ cubic ${word(volume, u)} of ${fill}. How deep is the ${fill}, in ${plural}?`,
+    answer: h,
+    explanation: [
+      `The depth is the volume divided by the base area. Adding the base area to the volume does not give the depth.`,
+      `$${frac(volume)} \\div ${frac(B)} = ${frac(volume)} \\times \\tfrac{${B.d}}{${B.n}} = ${shown(h)}$.`,
+      `The depth is ${claim(h)} ${word(h, u)}.`,
+    ],
+    hint: "Divide the volume by the base area. The depth is that missing factor.",
+    figure,
+    tags: ["fractional-base-height", "missing-base-height"],
+    kind: "fraction",
+    label: `Depth (${plural})`,
+  };
+}
+
+function clauseCase(id: string, r: Random): Case {
+  if (id === "triangle-area-base-height") return inContextTriangle(r);
+  if (id === "polygon-area-decompose") return inContextPolygon(r);
+  if (id === "composite-area") return withTriangles(r);
+  if (id === "composite-face-prism-surface-area") return stackedCubes(r);
+  if (id === "fraction-edge-volume") return fractionalBase(r);
+  throw new Error(`No clause family for ${id}`);
+}
+
+type Trap = {
+  u: LengthUnit;
+  B: number;
+  b: number;
+  h: number;
+  o: number;
+  rect: number;
+  tri: number;
+  total: number;
+};
+function trapDims(r: Random): Trap {
+  const u = pick(r, units);
+  let b: number, o: number, h: number;
+  do {
+    b = r(4, 12);
+    o = r(1, 6);
+    h = r(2, 10);
+  } while ((o * h) % 2 !== 0);
+  const B = b + 2 * o,
+    rect = b * h,
+    tri = (o * h) / 2,
+    total = rect + 2 * tri;
+  return { u, B, b, h, o, rect, tri, total };
+}
+function trapFigure(t: Trap): SemanticFigure {
+  return {
+    kind: "measured-polygon",
+    unit: t.u,
+    vertices: [
+      [0, 0],
+      [t.B, 0],
+      [t.o + t.b, t.h],
+      [t.o, t.h],
+    ],
+    sides: [t.B, null, t.b, null],
+    heights: [{ from: [t.o, t.h], to: [t.o, 0], value: t.h }],
+    guides: [],
+    rightAngles: [],
+  };
+}
+const CHOICE_IDS = ["option-a", "option-b", "option-c", "option-d"] as const;
+function choiceProblem(
+  meta: TemplateMetadata,
+  seed: string,
+  prompt: string,
+  figure: SemanticFigure,
+  options: { label: string; correct?: boolean; feedback?: string }[],
+  explanation: string[],
+  hint: string,
+  label: string,
+): GeneratedProblem {
+  if (options.length !== 4 || options.filter((o) => o.correct).length !== 1)
+    throw new Error(`${meta.id} needs one correct choice of four`);
+  if (new Set(options.map((o) => o.label)).size !== 4)
+    throw new Error(`${meta.id} choice labels collide`);
+  const choiceFeedback: Record<string, string> = {};
+  options.forEach((o, i) => {
+    if (!o.correct && o.feedback) choiceFeedback[CHOICE_IDS[i]!] = o.feedback;
+  });
+  return {
+    public: {
+      id: problemHash(meta.id, seed, 1),
+      templateId: meta.id,
+      templateVersion: 1,
+      seed,
+      skillId: meta.skillId,
+      prompt,
+      response: {
+        kind: "choice",
+        label,
+        options: options.map((o, i) => ({ id: CHOICE_IDS[i]!, label: o.label })),
+      },
+      figure,
+    },
+    answer: CHOICE_IDS[options.findIndex((o) => o.correct)]!,
+    explanation,
+    hint,
+    ...(Object.keys(choiceFeedback).length ? { choiceFeedback } : {}),
+  };
+}
+function whichExpression(
+  r: Random,
+  meta: TemplateMetadata,
+  seed: string,
+): GeneratedProblem {
+  for (let n = 0; n < 40; n++) {
+    const t = trapDims(r);
+    const correct = `${t.b} × ${t.h} + 2 × (1/2 × ${t.o} × ${t.h})`;
+    const box = `${t.B} × ${t.h}`;
+    const rectOnly = `${t.b} × ${t.h}`;
+    const bases = `${t.B} × ${t.b}`;
+    const values = [t.total, t.B * t.h, t.b * t.h, t.B * t.b];
+    if (new Set(values).size !== 4) continue;
+    if (new Set([correct, box, rectOnly, bases]).size !== 4) continue;
+    const options = shuffle(r, [
+      { label: correct, correct: true as const },
+      {
+        label: box,
+        feedback:
+          "That is the box around the trapezoid: the long base times the height.",
+      },
+      {
+        label: rectOnly,
+        feedback:
+          "That is only the middle rectangle. Both end triangles still belong to the trapezoid.",
+      },
+      {
+        label: bases,
+        feedback:
+          "That multiplies the two bases. The second factor is the height, not the other base.",
+      },
+    ]);
+    return choiceProblem(
+      meta,
+      seed,
+      `A trapezoid has parallel sides ${t.B} and ${t.b} and height ${t.h}. Lengths are in ${unitWords[t.u][1]}. Which expression gives its area?`,
+      trapFigure(t),
+      options,
+      [
+        `The bases differ by ${t.B} − ${t.b} = ${t.B - t.b}, so each end overhangs ${t.o}.`,
+        `The middle rectangle is $${t.b} \\times ${t.h} = ${t.rect}$. Each end triangle is $\\tfrac{1}{2} \\times ${t.o} \\times ${t.h} = ${t.tri}$.`,
+        `Rectangle and both triangles: $${t.rect} + ${t.tri} + ${t.tri} = ${t.total}$. The area is ${t.total} ${square(t.u)}.`,
+      ],
+      "The middle uses the shorter base times the height. Each end is half of the overhang times the height. Add the middle and both ends.",
+      "Area expression",
+    );
+  }
+  throw new Error("Need a trapezoid with four distinct expressions");
+}
+
+function trayOptions(labels: string[]): PartOption[] {
+  return labels.map((label, i) => ({ id: "abcdef"[i]!, label }));
+}
+function cardsProblem(
+  meta: TemplateMetadata,
+  seed: string,
+  prompt: string,
+  figure: SemanticFigure,
+  blanks: { id: string; label: string; correct: string }[],
+  tray: string[],
+  sentence: MultiPartChoiceResponse["sentence"],
+  explanation: string[],
+  hint: string,
+): GeneratedProblem {
+  if (new Set(tray).size !== tray.length || tray.length < 2 || tray.length > 6)
+    throw new Error(`${meta.id} tray labels must be distinct`);
+  const options = trayOptions(tray);
+  const response: MultiPartChoiceResponse = {
+    kind: "multi-part-choice",
+    label: "Piece areas",
+    layout: "cards",
+    blanks: blanks.map((b) => ({
+      id: b.id,
+      label: b.label,
+      options: options.map((o) => ({ ...o })),
+    })),
+    sentence,
+  };
+  multiPartChoiceResponseSchema.parse(response);
+  const key = Object.fromEntries(
+    blanks.map((b) => {
+      const id = options.find((o) => o.label === b.correct)?.id;
+      if (!id) throw new Error(`${meta.id} correct card ${b.correct} is missing`);
+      return [b.id, id];
+    }),
+  );
+  return {
+    public: {
+      id: problemHash(meta.id, seed, 1),
+      templateId: meta.id,
+      templateVersion: 1,
+      seed,
+      skillId: meta.skillId,
+      prompt,
+      response,
+      figure,
+    },
+    answer: serializeMultiPart(response, key),
+    explanation,
+    hint,
+  };
+}
+function wrongLabels(correct: number[], candidates: number[]): string[] {
+  const used = new Set(correct.map(String));
+  const out: string[] = [];
+  for (const c of candidates) {
+    if (!Number.isInteger(c) || c <= 0 || used.has(String(c))) continue;
+    used.add(String(c));
+    out.push(String(c));
+    if (out.length === 2) return out;
+  }
+  throw new Error("Need two distractor cards");
+}
+function showPieces(r: Random, meta: TemplateMetadata, seed: string): GeneratedProblem {
+  const shape = r(0, 2);
+  if (shape === 0) {
+    const t = trapDims(r);
+    const correct = [t.rect, t.tri, t.total];
+    const tray = shuffle(r, [
+      ...correct.map(String),
+      ...wrongLabels(correct, [t.B * t.h, t.total + 1, t.B * t.b, t.o * t.h]),
+    ]);
+    const plural = unitWords[t.u][1];
+    return cardsProblem(
+      meta,
+      seed,
+      `The trapezoid is cut into a middle rectangle and two matching end triangles. The parallel sides are ${t.B} and ${t.b}, and the height is ${t.h}. Lengths are in ${plural}. Choose each piece and the total, in square ${plural}.`,
+      trapFigure(t),
+      [
+        { id: "rect", label: "Rectangle", correct: String(t.rect) },
+        { id: "tri", label: "Each triangle", correct: String(t.tri) },
+        { id: "total", label: "Total", correct: String(t.total) },
+      ],
+      tray,
+      [
+        { text: "Rectangle: " },
+        { blank: "rect" },
+        { text: "\nEach triangle: " },
+        { blank: "tri" },
+        { text: "\nTotal: " },
+        { blank: "total" },
+      ],
+      [
+        `Each end overhangs (${t.B} − ${t.b}) ÷ 2 = ${t.o}.`,
+        `The middle rectangle is $${t.b} \\times ${t.h} = ${t.rect}$. Each triangle is $\\tfrac{1}{2} \\times ${t.o} \\times ${t.h} = ${t.tri}$.`,
+        `Add the rectangle and both triangles: $${t.rect} + ${t.tri} + ${t.tri} = ${t.total}$. The area is ${t.total} square ${plural}.`,
+      ],
+      "The middle uses the shorter base times the height. Each end is half of the overhang times the height.",
+    );
+  }
+  if (shape === 1) {
+    const u = pick(r, units);
+    let b: number, h: number;
+    do {
+      b = r(3, 14);
+      h = r(3, 12);
+    } while (b === h);
+    const area = b * h;
+    const slant = hypotenuse(Math.min(b, 20), h);
+    const correct = [b, h, area];
+    const tray = shuffle(r, [
+      ...correct.map(String),
+      ...wrongLabels(correct, [area + b, b + h, 2 * (b + h), area + h, slant ?? 0]),
+    ]);
+    return cardsProblem(
+      meta,
+      seed,
+      `Slide the triangle at one end of the parallelogram across. The base is ${b} ${unitWords[u][1]} and the height is ${h} ${unitWords[u][1]}. Choose the rectangle's length, its width, and its area.`,
+      {
+        kind: "measured-polygon",
+        unit: u,
+        vertices: [
+          [0, 0],
+          [b, 0],
+          [b + 1, h],
+          [1, h],
+        ],
+        sides: [b, null, null, null],
+        heights: [{ from: [1, h], to: [1, 0], value: h }],
+        guides: [],
+        rightAngles: [],
+      },
+      [
+        { id: "len", label: "Length", correct: String(b) },
+        { id: "wid", label: "Width", correct: String(h) },
+        { id: "area", label: "Area", correct: String(area) },
+      ],
+      tray,
+      [
+        { text: "After the slide, the rectangle is " },
+        { blank: "len" },
+        { text: " by " },
+        { blank: "wid" },
+        { text: ". Its area is " },
+        { blank: "area" },
+        { text: "." },
+      ],
+      [
+        `The slide keeps the base ${b} and the height ${h}, so the rectangle is ${b} by ${h}.`,
+        `Its area is $${b} \\times ${h} = ${area}$. The parallelogram has the same area, ${area} square ${unitWords[u][1]}.`,
+      ],
+      "The rectangle after the slide has the parallelogram's base and its perpendicular height. Multiply those.",
+    );
+  }
+  const u = pick(r, units);
+  let b: number, h: number;
+  do {
+    b = r(3, 14);
+    h = r(3, 12);
+  } while (b === h || (b * h) % 2 !== 0);
+  const rect = b * h,
+    tri = rect / 2;
+  const correct = [b, h, rect, tri];
+  const tray = shuffle(r, [
+    ...correct.map(String),
+    ...wrongLabels(correct, [2 * rect, rect + 1, b + h, hypotenuse(b, h) ?? 0]),
+  ]);
+  return cardsProblem(
+    meta,
+    seed,
+    `Two copies of the right triangle make a rectangle. The legs are ${b} and ${h} ${unitWords[u][1]}. Choose the rectangle's sides, its area, and the triangle's area.`,
+    {
+      kind: "measured-polygon",
+      unit: u,
+      vertices: [
+        [0, 0],
+        [b, 0],
+        [0, h],
+      ],
+      sides: [b, null, h],
+      heights: [],
+      guides: [],
+      rightAngles: [0],
+    },
+    [
+      { id: "base", label: "Length", correct: String(b) },
+      { id: "high", label: "Width", correct: String(h) },
+      { id: "box", label: "Rectangle area", correct: String(rect) },
+      { id: "half", label: "Triangle area", correct: String(tri) },
+    ],
+    tray,
+    [
+      { text: "Two copies make a " },
+      { blank: "base" },
+      { text: " by " },
+      { blank: "high" },
+      { text: " rectangle, area " },
+      { blank: "box" },
+      { text: ". The triangle is " },
+      { blank: "half" },
+      { text: "." },
+    ],
+    [
+      `The legs are the rectangle's sides, ${b} and ${h}.`,
+      `The rectangle's area is $${b} \\times ${h} = ${rect}$. The triangle is half: $${rect} \\div 2 = ${tri}$.`,
+      `The triangle's area is ${tri} square ${unitWords[u][1]}.`,
+    ],
+    "The two copies fill a rectangle with the triangle's two legs. The triangle is half of that rectangle.",
+  );
+}
+
+function countThenSize(
+  r: Random,
+  meta: TemplateMetadata,
+  seed: string,
+): GeneratedProblem {
+  const u = pick(r, ["in", "cm", "ft"] as const);
+  const d = pick(r, [2, 3, 4]);
+  const edge = q(1, d);
+  let ks: [number, number, number];
+  do ks = [r(2, 9), r(2, 9), r(2, 9)];
+  while (ks.every((k) => k % d === 0) || ks[0] * ks[1] * ks[2] > 250);
+  const edges = ks.map((k) => q(k, d));
+  const total = ks[0] * ks[1] * ks[2];
+  const small = q(1, d ** 3);
+  const volume = q(total, d ** 3);
+  const volText = answerText(volume);
+  const cubicName = unitWords[u][1];
+  const unitName = unitWords[u][0];
+  const response: StructuredWorkResponse = {
+    kind: "structured-work",
+    label: "Count, then volume",
+    layout: "steps",
+    mode: "build",
+    banks: [],
+    rows: [
+      {
+        id: "r1",
+        label: "Cubes along the length and the width",
+        fields: [
+          { kind: "number", label: "Along the length", maxLength: 8 },
+          { kind: "number", label: "Along the width", maxLength: 8 },
+        ],
+      },
+      {
+        id: "r2",
+        label: "Cubes along the height, and how many cubes in all",
+        fields: [
+          { kind: "number", label: "Along the height", maxLength: 8 },
+          { kind: "number", label: "Total cubes", maxLength: 8 },
+        ],
+      },
+      {
+        id: "r3",
+        label: "Volume of one small cube",
+        fields: [
+          {
+            kind: "number",
+            label: "One cube",
+            unit: `cubic ${cubicName}`,
+            maxLength: 8,
+          },
+        ],
+      },
+      {
+        id: "r4",
+        label: "Volume from the count times one cube",
+        fields: [
+          {
+            kind: "number",
+            label: "From the count",
+            unit: `cubic ${cubicName}`,
+            maxLength: 8,
+          },
+        ],
+      },
+      {
+        id: "r5",
+        label: "Volume from the three edge lengths",
+        fields: [
+          {
+            kind: "number",
+            label: "From the edges",
+            unit: `cubic ${cubicName}`,
+            maxLength: 8,
+          },
+        ],
+      },
+    ],
+  };
+  const workGrading: WorkGrading = {
+    mode: "fields",
+    fields: [
+      [
+        { kind: "number", value: String(ks[0]) },
+        { kind: "number", value: String(ks[1]) },
+      ],
+      [
+        { kind: "number", value: String(ks[2]) },
+        { kind: "number", value: String(total) },
+      ],
+      [{ kind: "number", value: answerText(small) }],
+      [{ kind: "number", value: volText }],
+      [{ kind: "number", value: volText }],
+    ],
+  };
+  const answer = JSON.stringify([
+    [String(ks[0]), String(ks[1])],
+    [String(ks[2]), String(total)],
+    [answerText(small)],
+    [volText],
+    [volText],
+  ]);
+  const structure = structuralProblem(response);
+  if (structure) throw new Error(structure);
+  if (!gradingFits(response, workGrading))
+    throw new Error("Packing rule does not fit");
+  if (normalizeStructuredWork(response, answer) !== answer)
+    throw new Error("Packing answer is not canonical");
+  if (!gradeStructuredWork(response, workGrading, answer))
+    throw new Error("Packing answer is not credited");
+  const notEdge =
+    d === 2
+      ? `A $\\tfrac{1}{2}$-${unitName} cube is $\\tfrac{1}{8}$ cubic ${unitName}, not $\\tfrac{1}{2}$.`
+      : `A $\\tfrac{1}{${d}}$-${unitName} cube is $\\tfrac{1}{${d ** 3}}$ cubic ${unitName}, not $\\tfrac{1}{${d}}$.`;
+  const names = ["long", "wide", "tall"];
+  return {
+    public: {
+      id: problemHash(meta.id, seed, 1),
+      templateId: meta.id,
+      templateVersion: 1,
+      seed,
+      skillId: meta.skillId,
+      prompt: `A box is ${list(edges.map((x, i) => `${len(x, u, true)} ${names[i]}`))}. It is packed with cubes that have edges of ${len(edge, u, true)}.`,
+      response,
+      figure: {
+        kind: "fraction-box-prism",
+        unit: u,
+        length: asFigure(edges[0]!),
+        width: asFigure(edges[1]!),
+        height: asFigure(edges[2]!),
+        cubeEdge: asFigure(edge),
+      },
+    },
+    answer,
+    workGrading,
+    explanation: [
+      `Along the length: $${frac(edges[0]!)} \\div \\tfrac{1}{${d}} = ${ks[0]}$. Along the width: $${frac(edges[1]!)} \\div \\tfrac{1}{${d}} = ${ks[1]}$. Along the height: $${frac(edges[2]!)} \\div \\tfrac{1}{${d}} = ${ks[2]}$.`,
+      `The counts multiply: $${ks[0]} \\times ${ks[1]} \\times ${ks[2]} = ${total}$.`,
+      `${notEdge} Cube the edge: $\\tfrac{1}{${d}} \\times \\tfrac{1}{${d}} \\times \\tfrac{1}{${d}} = ${frac(small)}$.`,
+      `The count is not the volume. $${total} \\times ${frac(small)} = ${frac(volume)}$.`,
+      `The three edges agree: $${edges.map(frac).join(" \\times ")} = ${frac(volume)}$. The volume is ${claim(volume)} cubic ${word(volume, u)}.`,
+    ],
+    hint: "Divide each edge by the small cube's edge to count the cubes along it. A small cube's volume is its edge multiplied three times, not the edge itself. The count is not the volume.",
+  };
+}
+
+const SOLID_NAMES = [
+  "rectangular prism",
+  "cube",
+  "triangular prism",
+  "square pyramid",
+] as const;
+function nameTheSolid(
+  r: Random,
+  meta: TemplateMetadata,
+  seed: string,
+): GeneratedProblem {
+  const u = pick(r, units);
+  const kind = r(0, 3);
+  let figure: SemanticFigure;
+  let name: (typeof SOLID_NAMES)[number];
+  let explanation: string[];
+  if (kind === 0) {
+    const e = r(2, 5);
+    figure = {
+      kind: "rectangular-prism-net",
+      unit: u,
+      length: e,
+      width: e,
+      height: e,
+    };
+    name = "cube";
+    explanation = [
+      `The net is six squares, and every edge is ${e} ${unitWords[u][1]}.`,
+      `A rectangular prism also has six faces, but they are not all squares unless every edge matches.`,
+      `Every face is a square, so the solid is a cube.`,
+    ];
+  } else if (kind === 1) {
+    let l: number, w: number, h: number;
+    do [l, w, h] = [r(2, 6), r(2, 6), r(2, 6)];
+    while (new Set([l, w, h]).size < 3);
+    figure = { kind: "rectangular-prism-net", unit: u, length: l, width: w, height: h };
+    name = "rectangular prism";
+    explanation = [
+      `The net has six rectangles in three pairs: ${l} by ${w}, ${l} by ${h}, and ${w} by ${h}.`,
+      `The three edges differ, so the faces are not all squares. It is not a cube.`,
+      `Six rectangular faces fold into a rectangular prism.`,
+    ];
+  } else if (kind === 2) {
+    const [a, b, c] = pick(r, [
+      [3, 4, 5],
+      [6, 8, 10],
+    ] as const);
+    const L = r(2, 8);
+    figure = {
+      kind: "triangular-prism-net",
+      unit: u,
+      base: a,
+      height: b,
+      sides: [b, c],
+      length: L,
+    };
+    name = "triangular prism";
+    explanation = [
+      `Count the faces: five. Two are triangles and three are rectangles.`,
+      `A square pyramid also has five faces, but they are one square and four triangles. Face shape separates the two.`,
+      `Two triangles and three rectangles fold into a triangular prism.`,
+    ];
+  } else {
+    const side = r(4, 8);
+    const slant = r(Math.max(5, Math.floor(side / 2) + 1), 10);
+    figure = { kind: "square-pyramid-net", unit: u, side, slant };
+    name = "square pyramid";
+    explanation = [
+      `Count the faces: five. One is a square and four are triangles.`,
+      `A triangular prism also has five faces, but they are two triangles and three rectangles. Face shape separates the two.`,
+      `One square and four triangles fold into a square pyramid.`,
+    ];
+  }
+  const options = shuffle(
+    r,
+    SOLID_NAMES.map((label) => ({
+      label,
+      ...(label === name ? { correct: true as const } : {}),
+      feedback:
+        label === name
+          ? undefined
+          : `A ${label} has a different set of faces than this net.`,
+    })),
+  );
+  return choiceProblem(
+    meta,
+    seed,
+    `The net is drawn with lengths in ${unitWords[u][1]}. Which solid does this net fold into?`,
+    figure,
+    options,
+    explanation,
+    "Count the faces, then name their shapes. Five faces can be two triangles and three rectangles, or one square and four triangles.",
+    "Solid",
+  );
+}
+
+function clauseTemplateProblem(
+  id: string,
+  seed: string,
+  meta: TemplateMetadata,
+): { problem: GeneratedProblem; tags: string[] } | null {
+  const r = random(id, seed);
+  if (id === "polygon-show-the-pieces")
+    return { problem: showPieces(r, meta, seed), tags: ["show-the-pieces"] };
+  if (id === "polygon-which-expression")
+    return { problem: whichExpression(r, meta, seed), tags: ["which-expression"] };
+  if (id === "count-then-size-then-check")
+    return {
+      problem: countThenSize(r, meta, seed),
+      tags: ["count-then-size-then-check"],
+    };
+  if (id === "net-name-the-solid")
+    return { problem: nameTheSolid(r, meta, seed), tags: ["name-the-solid"] };
+  return null;
+}
+
 const builders: Record<string, (r: Random) => Case> = {
   "triangle-area-base-height": triangleCase,
   "polygon-area-decompose": polygonCase,
@@ -1284,14 +2386,25 @@ export function areaVolumePrintCase(
   if (!metadata) throw new Error(`Unknown area-volume template ${id}`);
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
-  const c = builders[id]!(random(id, seed));
+  const clause = clauseTemplateProblem(id, seed, metadata);
+  if (clause)
+    return {
+      problem: clause.problem,
+      tags: clause.tags,
+      caseKey: JSON.stringify([
+        clause.problem.public.prompt,
+        clause.problem.public.figure ?? null,
+      ]),
+    };
+  const version = stampedVersion(id);
+  const c = useClauseFamily(id, seed)
+    ? clauseCase(id, random(id, seed))
+    : builders[id]!(random(id, seed));
   const problem: GeneratedProblem = {
     public: {
-      id: createHash("sha256")
-        .update(JSON.stringify([id, 1, seed]))
-        .digest("hex"),
+      id: problemHash(id, seed, version),
       templateId: id,
-      templateVersion: 1,
+      templateVersion: version,
       seed,
       skillId: metadata.skillId,
       prompt: c.prompt,

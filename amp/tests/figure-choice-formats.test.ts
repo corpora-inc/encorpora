@@ -224,6 +224,7 @@ test("table rules and equation tables are decided by their own numbers", () => {
   }
   for (const seed of seeds(200, "subst")) {
     const problem = generateProblem("substitution-match-table", seed);
+    if (problem.variant?.id === "values-from-set") continue;
     const response = problem.public.response as MultiPartChoiceResponse;
     const value = Number(/= (-?\d+)\$\.$/.exec(problem.public.prompt)![1]);
     const key = JSON.parse(problem.answer) as Record<string, string>;

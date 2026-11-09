@@ -1,5 +1,6 @@
 import { article } from "./agreement";
 import { createHash } from "node:crypto";
+import { clauseTask, strictInequality } from "./equation-clause";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -141,7 +142,8 @@ export const equationTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "inequality-solution-set",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Recognize the solutions of an inequality",
     skillId: "simple-inequalities",
     gradeBand: "6–8",
@@ -1595,4 +1597,17 @@ export function equationPrintCase(
 export const generateEquationProblem = (
   id: string,
   seed: string,
-): GeneratedProblem => equationPrintCase(id, seed).problem;
+): GeneratedProblem => {
+  if (id === "inequality-solution-set" && clauseTask(id, seed) === "strict-form") {
+    const meta = equationTemplates.find((t) => t.id === id)!;
+    let last = "";
+    for (let attempt = 0; attempt < 30; attempt++)
+      try {
+        return strictInequality(meta, attempt ? `${seed}#${attempt}` : seed);
+      } catch (error) {
+        last = error instanceof Error ? error.message : "";
+      }
+    throw new Error(`${id}: ${last}`);
+  }
+  return equationPrintCase(id, seed).problem;
+};
