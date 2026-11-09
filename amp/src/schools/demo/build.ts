@@ -9,6 +9,7 @@
 import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import type { Repository } from "../../server/repository.js";
+import { generateProblem, templates } from "../../math/engine.js";
 import { workbookWorker } from "../../workbook/off-thread.js";
 import { findOrMakeWorkbook } from "../../workbook/routes.js";
 import type { WorkbookRecord } from "../../workbook/contracts.js";
@@ -19,10 +20,20 @@ import {
   generateJoinCode,
 } from "../repository.js";
 import { schoolAccountId } from "../principal.js";
+import { AGREEMENT_VERSION } from "../agreement.js";
 import { hashPictures } from "../sign-in.js";
 import { seedClassHistory, type DemoStudent } from "./history.js";
 import { namePairs, TEACHER_NAMES } from "./names.js";
-import { DAY, GRADE_5_CLASS, hash, persona, type Persona } from "./personas.js";
+import {
+  DAY,
+  GRADE_5_CLASS,
+  hash,
+  persona,
+  SHARED_GAP,
+  STUCK,
+  wrongResponse,
+  type Persona,
+} from "./personas.js";
 import {
   seedCalendar,
   seedStaffEvents,
@@ -45,6 +56,8 @@ const SCHOOL_CLASSES = [
   { name: "Grade 4 Math", grade: 4, teacher: 1, size: 25 },
   { name: "Grade 6 Math", grade: 6, teacher: 2, size: 24 },
 ] as const;
+/** The demo school's quiet class. */
+const QUIET_GRADE = 3;
 const DEMO_TEACHERS = [
   TEACHER_NAMES[4]!,
   TEACHER_NAMES[2]!,
@@ -182,6 +195,14 @@ async function build(
     ],
   );
   const year = await seedCalendar(client, orgId, now);
+  // Its students are made up, and nothing can add a real one, so AMP itself
+  // stands behind the data agreement here; a real class's comes from its
+  // school (docs/schools.md#demo-places).
+  await client.query(
+    `INSERT INTO amp_data_agreements(id,org_id,version,signer_name,signer_title,accepted_at)
+     VALUES($1,$2,$3,'AMP','for this demo',$4::date+interval '8 hours')`,
+    [randomUUID(), orgId, AGREEMENT_VERSION, year.start],
+  );
   const clock = (
     await client.query(
       "SELECT ((now() AT TIME ZONE $1)::date)::text AS day,extract(hour FROM now() AT TIME ZONE $1)::int AS hour",
@@ -483,6 +504,8 @@ async function build(
       others.map((person) => person.persona.ability - person.grade),
       others.map((person) => {
         const roll = hash(`${person.persona.name.join(" ")} drive`);
+        // One class barely practices, so the overview has something to say.
+        if (person.grade === QUIET_GRADE) return roll * 0.08;
         return roll < 0.06 ? 0 : 0.5 + roll * 0.85;
       }),
     ],
@@ -512,6 +535,38 @@ async function build(
   );
   return { orgId, classId: heroId, created: true };
 }
+
+/** The skills a demo student keeps missing (`SHARED_GAP`, `STUCK`). */
+const skillOfTemplate = new Map(
+  templates.map((template) => [template.id, template.skillId]),
+);
+function missedSkills(given: string): Set<string> {
+  return new Set(
+    [
+      SHARED_GAP.people.includes(given) ? SHARED_GAP.template : null,
+      STUCK.person === given ? STUCK.template : null,
+    ].flatMap((template) =>
+      template ? [skillOfTemplate.get(template) ?? ""] : [],
+    ),
+  );
+}
+
+/** A printed problem, made once per process: students share a workbook. */
+const printedProblems = new Map<string, ReturnType<typeof generateProblem>>();
+const printed = (item: {
+  templateId: string;
+  seed: string;
+  templateVersion: number;
+}) => {
+  const key = `${item.templateId}:${item.seed}:${item.templateVersion}`;
+  let found = printedProblems.get(key);
+  if (!found) {
+    found = generateProblem(item.templateId, item.seed, item.templateVersion);
+    if (printedProblems.size > 500) printedProblems.clear();
+    printedProblems.set(key, found);
+  }
+  return found;
+};
 
 /** The hero class's workbooks from two school days ago: printed for everyone,
  * most marked, a few still waiting. Composing is a second of CPU on the pod's
@@ -612,16 +667,41 @@ async function seedWorkbooks(
             const items = record.spec.sections.flatMap(
               (section) => section.items,
             );
+            // Typed answers, graded like the app's, so a right one is
+            // independent work; a slip only on ground they haven't shown on
+            // screen, once a skill, so it never reads as stuck.
+            const shown = new Set(
+              (await tx.skillEvidence()).map((entry) => entry.skillId),
+            );
+            const slipped = new Set<string>();
+            // What they keep missing on screen, they miss on paper too.
+            const missing = missedSkills(student.given_name);
             await recordPaperResults(
               tx,
               record,
-              items.map((_, index) => ({
-                n: index + 1,
-                mark:
-                  hash(`${student.given_name}${index}`) < 0.78
-                    ? ("right" as const)
-                    : ("not-yet" as const),
-              })),
+              items.map((item, index) => {
+                const problem = printed(item);
+                const slip =
+                  missing.has(item.skillId) ||
+                  (!shown.has(item.skillId) &&
+                    !slipped.has(item.skillId) &&
+                    hash(`${student.given_name}${index}`) > 0.72);
+                if (slip) slipped.add(item.skillId);
+                const kind = problem.public.response.kind;
+                return kind === "number" ||
+                  kind === "fraction" ||
+                  kind === "choice"
+                  ? {
+                      n: index + 1,
+                      answer: slip
+                        ? wrongResponse(problem as never)
+                        : problem.answer,
+                    }
+                  : {
+                      n: index + 1,
+                      mark: slip ? ("not-yet" as const) : ("right" as const),
+                    };
+              }),
               new Date(Date.parse(`${date}T19:00:00Z`)),
               { by: "teacher" },
             );

@@ -15,6 +15,7 @@ import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { buildApp } from "../src/server/app.js";
 import { refuseStudentTokens } from "../src/server/auth.js";
 import { ApiError, PostgresRepository } from "../src/server/repository.js";
+import { workbookWorker } from "../src/workbook/off-thread.js";
 
 test(
   "Demo places: alive in seconds, the owner's only, never counted, gone on removal",
@@ -42,6 +43,8 @@ test(
       services: { secret: "fixture-secret", origin: "", learning },
     });
     await app.ready();
+    // As the production server does at boot (runtime-health).
+    await workbookWorker().warm();
     t.after(async () => {
       await app.close();
       await db.end();
