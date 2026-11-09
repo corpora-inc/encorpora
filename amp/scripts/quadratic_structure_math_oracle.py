@@ -287,8 +287,34 @@ def describe(c):
     return 'The graph ' + ' and '.join(words) + '.'
 
 
+def rough_sentence(c):
+    """Matches roughSketchSentence in quadratic-structure-practice.ts."""
+    lead = c[-1]
+    parts = touch_cross(c)
+    touch = sorted(z for z, t in parts if t)
+    cross = sorted(z for z, t in parts if not t)
+    require(touch and cross, 'A rough sketch needs a touch and a crossing')
+
+    def join(values):
+        text = [str(v).replace('-', '−') for v in values]
+        if len(text) == 1:
+            return text[0]
+        if len(text) == 2:
+            return f'{text[0]} and {text[1]}'
+        return ', '.join(text[:-1]) + ' and ' + text[-1]
+
+    end = 'falls' if lead < 0 else 'rises'
+    return f'The right end {end}. Touches at {join(touch)}. Crosses at {join(cross)}.'
+
+
 def solve_multiplicity(public):
     prompt = public['prompt']
+    m = re.fullmatch(r'Use the zeros of y = (.+) to sketch a rough graph\. Which description matches your sketch\?', prompt)
+    if m:
+        c = coefficients(m[1])
+        require(3 <= len(c) - 1 <= 5, 'Degree 3, 4 or 5')
+        require(abs(c[-1]) == 1, 'Leading coefficient ±1')
+        return only(public, lambda label: label == rough_sentence(c))
     m = re.fullmatch(r'How does the graph of y = (.+) meet the x-axis\?', prompt)
     if m:
         c = coefficients(m[1])

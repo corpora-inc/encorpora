@@ -462,6 +462,7 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
       "A factor to the first power changes sign at its zero, so the graph crosses there.",
       "A squared factor is positive on both sides, so the graph touches the axis and turns back.",
       "Match each zero's behavior to its factor, then check the right end for the sign of the leading coefficient.",
+      "To sketch from a factored equation, mark each zero, touch where the exponent is even, and let the leading sign set the right end.",
     ],
     watch:
       "A touching zero comes from an even power of its factor, here a square. It is not two separate crossings.",
