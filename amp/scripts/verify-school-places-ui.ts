@@ -335,17 +335,19 @@ async function familyThenSchool(
   await page.getByRole("heading", { level: 1 }).first().waitFor();
   const classPath = path(page);
 
-  // The switcher lists every place; the school opens its setup.
+  // The switcher lists every place and each learner; the school opens its
+  // setup.
   const fromHome = await openSwitcher(page, family.name, true);
   const items = await fromHome.getByRole("menuitem").allInnerTexts();
   check(
-    `${label} the switcher lists the family, own practice and the school`,
-    items.length === 4 &&
+    `${label} the switcher lists the family, own practice, the school and the learner`,
+    items.length === 5 &&
       items[0]!.includes(family.name) &&
       /Start my own practice/.test(items[1]!) &&
       items[2]!.includes(school) &&
       /Finish setting up/.test(items[2]!) &&
-      /Add a place/.test(items[3]!),
+      /\nLearner$/.test(items[3]!) &&
+      /Add a place/.test(items[4]!),
     items,
   );
   await measured(page, `${label} family switcher`);
@@ -418,6 +420,9 @@ async function familyThenSchool(
   await choose(page, toSchool, new RegExp(school));
   await page.waitForURL(new RegExp(`/school/${issued.orgId}`));
   const schoolPath = path(page);
+  // The class's heading stays up while the school loads: wait for the
+  // school's own bar, or the drawer opens on the class and closes on arrival.
+  await page.locator('header[data-app-bar="school"]').waitFor();
   await page.getByRole("heading", { level: 1 }).first().waitFor();
   const fromSchool = await openSwitcher(page, school, true);
   await fromSchool
