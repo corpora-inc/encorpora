@@ -13,6 +13,12 @@ const ids = areaExhibitTemplates.map((t) => t.id);
 
 export const family = {
   id: "area-exhibit",
+  facetMappings: areaExhibitTemplates.map(({ id, skillId, description }) => ({
+    templateId: id,
+    facetId: `${skillId}.core`,
+    extent: "partial",
+    rationale: description,
+  })),
   practice: {
     templates: areaExhibitTemplates,
     generate: generateAreaExhibit,

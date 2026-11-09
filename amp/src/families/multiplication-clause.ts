@@ -16,6 +16,12 @@ const ids = multiplicationClauseTemplates.map((t) => t.id);
 
 export const family = {
   id: "multiplication-clause",
+  facetMappings: multiplicationClauseTemplates.map(({ id, skillId, description }) => ({
+    templateId: id,
+    facetId: `${skillId}.core`,
+    extent: "partial",
+    rationale: description,
+  })),
   practice: {
     templates: multiplicationClauseTemplates,
     generate: generateMultiplicationClause,

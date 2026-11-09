@@ -438,6 +438,12 @@ const pack = formatLessons([
 
 export const family = {
   id: "equation-clause",
+  facetMappings: equationClauseTemplates.map(({ id, skillId, description }) => ({
+    templateId: id,
+    facetId: `${skillId}.core`,
+    extent: "partial",
+    rationale: description,
+  })),
   practice: {
     templates: equationClauseTemplates,
     generate: generateEquationClauseProblem,

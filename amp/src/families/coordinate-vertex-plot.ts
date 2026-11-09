@@ -13,6 +13,12 @@ const ids = coordinatePlotTemplates.map((t) => t.id);
 
 export const family = {
   id: "coordinate-vertex-plot",
+  facetMappings: coordinatePlotTemplates.map(({ id, skillId, description }) => ({
+    templateId: id,
+    facetId: `${skillId}.core`,
+    extent: "partial",
+    rationale: description,
+  })),
   practice: {
     templates: coordinatePlotTemplates,
     generate: generateCoordinatePlot,

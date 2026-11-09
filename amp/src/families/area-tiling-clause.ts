@@ -13,6 +13,12 @@ const ids = areaTilingClauseTemplates.map((t) => t.id);
 
 export const family = {
   id: "area-tiling-clause",
+  facetMappings: areaTilingClauseTemplates.map(({ id, skillId, description }) => ({
+    templateId: id,
+    facetId: `${skillId}.core`,
+    extent: "partial",
+    rationale: description,
+  })),
   practice: {
     templates: areaTilingClauseTemplates,
     generate: generateAreaTilingClause,

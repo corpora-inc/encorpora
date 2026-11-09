@@ -22,6 +22,10 @@ const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
   "graphical-solution-table": 1 / 3,
   // A rate of two leaves 3, 3 and 4 choices in the ordered-pair slots.
   "dependent-variable-value": 1 / 36,
+  // Four reusable slots can share a tray with only four distinct cards.
+  "tile-then-multiply": 1 / 256,
+  // Split rectangles use four reusable slots and at least five distinct cards.
+  "split-tiled-count": 1 / 625,
   "circle-estimate-blanks": 1 / 8,
   "round-decimal-blanks": 1 / 8,
   "quotient-remainder-blanks": 1 / 8,

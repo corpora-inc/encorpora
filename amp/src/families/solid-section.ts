@@ -13,6 +13,12 @@ const ids = solidSectionTemplates.map((t) => t.id);
 
 export const family = {
   id: "solid-section",
+  facetMappings: solidSectionTemplates.map(({ id, skillId, description }) => ({
+    templateId: id,
+    facetId: `${skillId}.core`,
+    extent: "partial",
+    rationale: description,
+  })),
   practice: {
     templates: solidSectionTemplates,
     generate: generateSolidSection,

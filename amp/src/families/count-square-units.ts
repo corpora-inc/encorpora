@@ -13,6 +13,12 @@ const ids = countSquareTemplates.map((t) => t.id);
 
 export const family = {
   id: "count-square-units",
+  facetMappings: countSquareTemplates.map(({ id, skillId, description }) => ({
+    templateId: id,
+    facetId: `${skillId}.core`,
+    extent: "partial",
+    rationale: description,
+  })),
   practice: {
     templates: countSquareTemplates,
     generate: generateCountSquare,

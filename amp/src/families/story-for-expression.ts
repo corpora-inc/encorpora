@@ -14,6 +14,12 @@ const method = (goal: string, steps: string[]): ProblemMethod => ({
 
 export const family = {
   id: "story-for-expression",
+  facetMappings: storyForExpressionTemplates.map(({ id, skillId, description }) => ({
+    templateId: id,
+    facetId: `${skillId}.core`,
+    extent: "partial",
+    rationale: description,
+  })),
   practice: {
     templates: storyForExpressionTemplates,
     generate: generateStoryForExpression,

@@ -13,6 +13,12 @@ const ids = tiltedRectangleTemplates.map((t) => t.id);
 
 export const family = {
   id: "tilted-rectangle",
+  facetMappings: tiltedRectangleTemplates.map(({ id, skillId, description }) => ({
+    templateId: id,
+    facetId: `${skillId}.core`,
+    extent: "partial",
+    rationale: description,
+  })),
   practice: {
     templates: tiltedRectangleTemplates,
     generate: generateTiltedRectangle,

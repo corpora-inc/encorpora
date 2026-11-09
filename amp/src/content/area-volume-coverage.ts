@@ -1,6 +1,26 @@
 import type { FacetMapping } from "./coverage";
 export const areaVolumeFacetMappings: readonly FacetMapping[] = [
   [
+    "polygon-show-the-pieces",
+    "triangle-area.core",
+    "Choose the area of each piece when a trapezoid, parallelogram, or right triangle is split or doubled into rectangles and triangles. Does not assess drawing the decomposition.",
+  ],
+  [
+    "polygon-which-expression",
+    "triangle-area.core",
+    "Choose the expression that adds a trapezoid's middle rectangle and its two end triangles. Does not assess writing an expression without choices.",
+  ],
+  [
+    "count-then-size-then-check",
+    "fractional-prism-volume.core",
+    "Count unit-fraction cubes along a prism's edges and compare the volume from the cube count with the product of its edge lengths. Does not assess physical packing.",
+  ],
+  [
+    "net-name-the-solid",
+    "surface-area.core",
+    "Identify the cube, rectangular prism, triangular prism, or square pyramid made by a displayed net. Does not assess drawing nets or calculating surface area.",
+  ],
+  [
     "triangle-area-base-height",
     "triangle-area.base-height-triangles",
     "Find the area of acute, right and obtuse triangles drawn to scale with whole-number bases of 3 to 24 and heights of 3 to 15, choosing the perpendicular height over labeled slanted sides; heights may fall outside the triangle. Does not assess fractional dimensions, finding a missing base or height, or coordinates.",
