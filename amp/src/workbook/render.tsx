@@ -115,6 +115,7 @@ function longestFormula(problem: GeneratedProblem): number {
 /** Worked steps, tables and long formulas need the full width of the page. */
 const fullWidth = (problem: GeneratedProblem) =>
   problem.public.response.kind === "structured-work" ||
+  problem.public.response.kind === "trend-line-fit" ||
   (problem.public.response.kind === "multi-part-choice" &&
     (problem.public.response.layout === "table" ||
       problem.public.response.blanks.length >= 4)) ||

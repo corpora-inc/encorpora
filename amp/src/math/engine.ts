@@ -26,6 +26,7 @@ import {
   withTemplateVersion,
 } from "./variation/axes";
 import { gradePointPlot, normalizePointPlot } from "./point-plot";
+import { gradeTrendLine, normalizeTrendLine } from "./trend-line-fit";
 import { gradeMultiPart, normalizeMultiPart } from "./multi-part-choice";
 import {
   multiPartChoiceTemplates,
@@ -704,6 +705,8 @@ export function isValidResponse(
   problem: PublicProblem,
   response: string,
 ): boolean {
+  if (problem.response.kind === "trend-line-fit")
+    return normalizeTrendLine(problem.response, response) !== null;
   if (problem.response.kind === "multi-select")
     return normalizeSelection(problem.response, response) !== null;
   if (problem.response.kind === "point-plot")
@@ -722,6 +725,8 @@ export function gradeAnswer(
   problem: GeneratedProblem,
   response: string,
 ): boolean {
+  if (problem.public.response.kind === "trend-line-fit")
+    return gradeTrendLine(problem.public.response, response);
   if (problem.public.response.kind === "multi-select") {
     const answer = normalizeSelection(problem.public.response, response);
     return (

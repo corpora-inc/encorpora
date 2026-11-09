@@ -1,0 +1,1122 @@
+[
+  {
+    "engine": "chromium",
+    "variant": "fit-positive",
+    "width": 320,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        115.7,
+        288,
+        74.1
+      ],
+      "canvas": [
+        16,
+        245.2,
+        288,
+        271
+      ],
+      "tools": [
+        16,
+        544.2,
+        288,
+        113.9
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-positive",
+    "width": 320,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        115.7,
+        288,
+        74.1
+      ],
+      "canvas": [
+        16,
+        245.2,
+        288,
+        271
+      ],
+      "tools": [
+        16,
+        544.2,
+        288,
+        113.9
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-negative",
+    "width": 320,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        112.7,
+        288,
+        74.1
+      ],
+      "canvas": [
+        16,
+        242.2,
+        288,
+        277
+      ],
+      "tools": [
+        16,
+        547.2,
+        288,
+        113.9
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-negative",
+    "width": 320,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        112.7,
+        288,
+        74.1
+      ],
+      "canvas": [
+        16,
+        242.2,
+        288,
+        277
+      ],
+      "tools": [
+        16,
+        547.2,
+        288,
+        113.9
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-positive",
+    "width": 390,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        110,
+        358,
+        50.7
+      ],
+      "canvas": [
+        16,
+        213.5,
+        358,
+        321
+      ],
+      "tools": [
+        16,
+        562.5,
+        358,
+        113.9
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-positive",
+    "width": 390,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        110,
+        358,
+        50.7
+      ],
+      "canvas": [
+        16,
+        213.5,
+        358,
+        321
+      ],
+      "tools": [
+        16,
+        562.5,
+        358,
+        113.9
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-negative",
+    "width": 390,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        110,
+        358,
+        50.7
+      ],
+      "canvas": [
+        16,
+        213.5,
+        358,
+        327
+      ],
+      "tools": [
+        16,
+        568.5,
+        358,
+        113.9
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-negative",
+    "width": 390,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        110,
+        358,
+        50.7
+      ],
+      "canvas": [
+        16,
+        213.5,
+        358,
+        327
+      ],
+      "tools": [
+        16,
+        568.5,
+        358,
+        113.9
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-positive",
+    "width": 768,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        67,
+        97,
+        634,
+        62.2
+      ],
+      "canvas": [
+        126,
+        218,
+        516,
+        400
+      ],
+      "tools": [
+        124,
+        646,
+        520,
+        113.9
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-positive",
+    "width": 768,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        67,
+        97,
+        634,
+        62.2
+      ],
+      "canvas": [
+        126,
+        218,
+        516,
+        400
+      ],
+      "tools": [
+        124,
+        646,
+        520,
+        113.9
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-negative",
+    "width": 768,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        67,
+        97,
+        634,
+        62.2
+      ],
+      "canvas": [
+        154,
+        218,
+        460,
+        400
+      ],
+      "tools": [
+        124,
+        646,
+        520,
+        113.9
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-negative",
+    "width": 768,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        67,
+        97,
+        634,
+        62.2
+      ],
+      "canvas": [
+        154,
+        218,
+        460,
+        400
+      ],
+      "tools": [
+        124,
+        646,
+        520,
+        113.9
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-positive",
+    "width": 1280,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        103,
+        97,
+        659,
+        81
+      ],
+      "canvas": [
+        174.5,
+        236.8,
+        516,
+        400
+      ],
+      "tools": [
+        172.5,
+        664.8,
+        520,
+        113.9
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-positive",
+    "width": 1280,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        103,
+        97,
+        659,
+        81
+      ],
+      "canvas": [
+        174.5,
+        236.8,
+        516,
+        400
+      ],
+      "tools": [
+        172.5,
+        664.8,
+        520,
+        113.9
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-negative",
+    "width": 1280,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        103,
+        97,
+        659,
+        81
+      ],
+      "canvas": [
+        202.5,
+        236.8,
+        460,
+        400
+      ],
+      "tools": [
+        172.5,
+        664.8,
+        520,
+        113.9
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-negative",
+    "width": 1280,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        103,
+        97,
+        659,
+        81
+      ],
+      "canvas": [
+        202.5,
+        236.8,
+        460,
+        400
+      ],
+      "tools": [
+        172.5,
+        664.8,
+        520,
+        113.9
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-positive",
+    "width": 320,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        115.7,
+        288,
+        74.1
+      ],
+      "canvas": [
+        16,
+        245.2,
+        288,
+        271
+      ],
+      "tools": [
+        16,
+        544.2,
+        288,
+        113.9
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-positive",
+    "width": 320,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        115.7,
+        288,
+        74.1
+      ],
+      "canvas": [
+        16,
+        245.2,
+        288,
+        271
+      ],
+      "tools": [
+        16,
+        544.2,
+        288,
+        113.9
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-negative",
+    "width": 320,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        112.7,
+        288,
+        74.1
+      ],
+      "canvas": [
+        16,
+        242.2,
+        288,
+        277
+      ],
+      "tools": [
+        16,
+        547.2,
+        288,
+        113.9
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-negative",
+    "width": 320,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        112.7,
+        288,
+        74.1
+      ],
+      "canvas": [
+        16,
+        242.2,
+        288,
+        277
+      ],
+      "tools": [
+        16,
+        547.2,
+        288,
+        113.9
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-positive",
+    "width": 390,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        110,
+        358,
+        50.7
+      ],
+      "canvas": [
+        16,
+        213.5,
+        358,
+        321
+      ],
+      "tools": [
+        16,
+        562.5,
+        358,
+        113.9
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-positive",
+    "width": 390,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        110,
+        358,
+        50.7
+      ],
+      "canvas": [
+        16,
+        213.5,
+        358,
+        321
+      ],
+      "tools": [
+        16,
+        562.5,
+        358,
+        113.9
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-negative",
+    "width": 390,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        110,
+        358,
+        50.7
+      ],
+      "canvas": [
+        16,
+        213.5,
+        358,
+        327
+      ],
+      "tools": [
+        16,
+        568.5,
+        358,
+        113.9
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-negative",
+    "width": 390,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        110,
+        358,
+        50.7
+      ],
+      "canvas": [
+        16,
+        213.5,
+        358,
+        327
+      ],
+      "tools": [
+        16,
+        568.5,
+        358,
+        113.9
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-positive",
+    "width": 768,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        67,
+        97,
+        634,
+        62.2
+      ],
+      "canvas": [
+        126,
+        218,
+        516,
+        400
+      ],
+      "tools": [
+        124,
+        646,
+        520,
+        113.9
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-positive",
+    "width": 768,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        67,
+        97,
+        634,
+        62.2
+      ],
+      "canvas": [
+        126,
+        218,
+        516,
+        400
+      ],
+      "tools": [
+        124,
+        646,
+        520,
+        113.9
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-negative",
+    "width": 768,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        67,
+        97,
+        634,
+        62.2
+      ],
+      "canvas": [
+        154,
+        218,
+        460,
+        400
+      ],
+      "tools": [
+        124,
+        646,
+        520,
+        113.9
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-negative",
+    "width": 768,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        67,
+        97,
+        634,
+        62.2
+      ],
+      "canvas": [
+        154,
+        218,
+        460,
+        400
+      ],
+      "tools": [
+        124,
+        646,
+        520,
+        113.9
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-positive",
+    "width": 1280,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        103,
+        97,
+        659,
+        81
+      ],
+      "canvas": [
+        174.5,
+        236.8,
+        516,
+        400
+      ],
+      "tools": [
+        172.5,
+        664.8,
+        520,
+        113.9
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-positive",
+    "width": 1280,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        103,
+        97,
+        659,
+        81
+      ],
+      "canvas": [
+        174.5,
+        236.8,
+        516,
+        400
+      ],
+      "tools": [
+        172.5,
+        664.8,
+        520,
+        113.9
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-negative",
+    "width": 1280,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        103,
+        97,
+        659,
+        81
+      ],
+      "canvas": [
+        202.5,
+        236.8,
+        460,
+        400
+      ],
+      "tools": [
+        172.5,
+        664.8,
+        520,
+        113.9
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "engine": "chromium",
+    "variant": "fit-negative",
+    "width": 1280,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        103,
+        97,
+        659,
+        81
+      ],
+      "canvas": [
+        202.5,
+        236.8,
+        460,
+        400
+      ],
+      "tools": [
+        172.5,
+        664.8,
+        520,
+        113.9
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  }
+]

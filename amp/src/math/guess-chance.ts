@@ -66,6 +66,7 @@ export const builtGuessChances = built.length;
  * Structured work needs its private rule to count valid orders and proofs
  * (`problemGuessChance`); from the public response alone it is unknown. */
 export function responseGuessChance(response: ProblemResponse): number {
+  if (response.kind === "trend-line-fit") return response.guessChance;
   if (response.kind === "structured-work") return UNKNOWN_CHOICE_GUESS;
   if (response.kind === "choice") return 1 / response.options.length;
   if (response.kind === "point-plot") return pointPlotGuessChance(response);

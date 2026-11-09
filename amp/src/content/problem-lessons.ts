@@ -258,6 +258,7 @@ export function problemLesson(
     response.kind === "choice" ||
     response.kind === "multi-select" ||
     response.kind === "point-plot" ||
+    response.kind === "trend-line-fit" ||
     response.kind === "multi-part-choice" ||
     response.kind === "figure-choice" ||
     response.kind === "structured-work"

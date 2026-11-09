@@ -5,6 +5,11 @@ import type { GeneratedProblem } from "../math/contracts";
 import { answerText } from "../math/selection-response";
 import { plotPoints, pointPlotScene } from "../math/point-plot";
 import {
+  trendLineScene,
+  trendPoints,
+  throughTrendPoints,
+} from "../math/trend-line-fit";
+import {
   cardRows,
   draftChoices,
   type MultiPartChoiceResponse,
@@ -492,6 +497,20 @@ export function PrintExerciseBody({
         <PrintMathText text={problem.public.prompt} />
       </h2>
       {problem.public.figure && <Figure figure={problem.public.figure} />}
+      {problem.public.response.kind === "trend-line-fit" && (
+        <SceneFigure
+          medium="print"
+          reveal
+          scene={trendLineScene(problem.public.response, {
+            line: solutions
+              ? throughTrendPoints(
+                  trendPoints(problem.public.response, problem.answer)!,
+                )
+              : undefined,
+            distances: solutions,
+          })}
+        />
+      )}
       {problem.public.response.kind === "point-plot" && (
         // The workbook prints the empty grid to plot on by hand; the
         // solutions print the same grid with the answer drawn.

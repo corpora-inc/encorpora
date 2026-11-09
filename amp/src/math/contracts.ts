@@ -1,6 +1,12 @@
 import type { GlossaryPayload } from "../glossary/types";
 import { z } from "zod";
 import {
+  trendLineFitResponseSchema,
+  gradeTrendLine,
+  normalizeTrendLine,
+  type TrendLineFitResponse,
+} from "./trend-line-fit";
+import {
   MAX_SELECTION_OPTIONS,
   normalizeSelection,
   selectionIdPattern,
@@ -268,6 +274,7 @@ export const responseCapabilities = [
   "figure-choice-v1",
   "structured-work-v1",
   "multi-part-cards-v1",
+  "trend-line-fit-v1",
 ] as const;
 export type ResponseCapability = (typeof responseCapabilities)[number];
 /** The response and figure families a client declares it can show. */
@@ -344,6 +351,7 @@ export type ProblemResponse =
   | PointPlotResponse
   | MultiPartChoiceResponse
   | FigureChoiceResponse
+  | TrendLineFitResponse
   | StructuredWorkResponse;
 /** Safe teaching content delivered beside a problem; never grading data.
  * Its glossary fields carry the term cards the hint's words open. */
@@ -981,6 +989,7 @@ export const problemResponseSchema: z.ZodType<ProblemResponse> = z.union([
   multiPartChoiceResponseSchema,
   figureChoiceResponseSchema,
   structuredWorkResponseSchema,
+  trendLineFitResponseSchema,
 ]);
 export const publicProblemSchema: z.ZodType<PublicProblem> = z
   .object({
@@ -1037,6 +1046,14 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
         gradeStructuredWork(response, problem.workGrading, problem.answer)
       );
     if (problem.workGrading || problem.answer.length > 100) return false;
+    if (response.kind === "trend-line-fit")
+      return (
+        !problem.choiceFeedback &&
+        !problem.entryPolicy &&
+        !problem.pointGrading &&
+        normalizeTrendLine(response, problem.answer) === problem.answer &&
+        gradeTrendLine(response, problem.answer)
+      );
     // A plotted answer is canonical, complete, and accepted by its own rule.
     if (response.kind === "point-plot")
       return (

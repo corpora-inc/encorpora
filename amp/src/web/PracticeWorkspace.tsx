@@ -24,6 +24,8 @@ import type { ProblemLessonView } from "../content/problem-lessons";
 import { ChoiceFigure } from "./ChoiceFigure";
 import { PointPlotAnswer, PointPlotInput, plotReview } from "./PointPlotInput";
 import { pointPlotAnswerText } from "../math/point-plot";
+import { TrendLineFitInput, TrendLineFitAnswer } from "./TrendLineFitInput";
+import { trendLineAnswerText } from "../math/trend-line-fit";
 import {
   MultiPartChoiceAnswer,
   MultiPartChoiceInput,
@@ -280,6 +282,8 @@ export function PracticeWorkspace(props: Props) {
   // Point plots answer on the grid in the problem itself; the dock holds
   // only the readout and Check, so they never use the answer dialog.
   const plot = problem.response.kind === "point-plot" ? problem.response : null;
+  const trend =
+    problem.response.kind === "trend-line-fit" ? problem.response : null;
   // Multi-part choices answer in the problem too: blanks, slots or a table.
   const parts =
     problem.response.kind === "multi-part-choice" ? problem.response : null;
@@ -304,6 +308,7 @@ export function PracticeWorkspace(props: Props) {
       ? problem.figure.scene
       : null;
   const displayResponse = (value: string) => {
+    if (trend) return trendLineAnswerText(trend, value);
     if (problem.response.kind === "point-plot") {
       try {
         return pointPlotAnswerText(problem.response, value);
@@ -354,7 +359,8 @@ export function PracticeWorkspace(props: Props) {
   const [compactQuery, setCompact] = useState(
     () => matchMedia(answerLayoutQuery).matches,
   );
-  const compact = compactQuery && !plot && !parts && !figures && !work;
+  const compact =
+    compactQuery && !plot && !trend && !parts && !figures && !work;
   // Side by side (practice-tablet.css), the feedback sheet has its own
   // column; stacked, it covers the dock only, so a plotted answer's grid and
   // its feedback overlay stay in view and the explanation opens on request.
@@ -368,8 +374,10 @@ export function PracticeWorkspace(props: Props) {
     return () => media.removeEventListener("change", changed);
   }, []);
   const editorInDock = sideBySide && (!!work || !!figures);
+  const trendCompact = !!trend && !sideBySide;
   const deferSteps =
-    editorInDock || ((!!plot || !!parts || !!figures || !!work) && !sideBySide);
+    editorInDock ||
+    ((!!plot || !!trend || !!parts || !!figures || !!work) && !sideBySide);
   // Side by side, the sheet has the answer column's full height, so the
   // worked explanation is part of every result rather than a "See why" away.
   const fullColumn = sideBySide && !editorInDock;
@@ -437,7 +445,7 @@ export function PracticeWorkspace(props: Props) {
     // Typed answers start in the answer field. On touch it suppresses the
     // system keyboard (inputMode none), so AMP's keypad stays in charge; the
     // field announces the question through aria-describedby.
-    if (choice || plot || parts || figures || work)
+    if (choice || plot || trend || parts || figures || work)
       prompt.current?.focus({ preventScroll: true });
     else input.current?.focus({ preventScroll: true });
   }, [problem.id]);
@@ -503,7 +511,7 @@ export function PracticeWorkspace(props: Props) {
   // above the sheet instead of staying hidden under it.
   const sheet = useRef<HTMLDivElement>(null);
   const spacer = useRef<HTMLDivElement>(null);
-  const reviewInProblem = !!(plot || parts || figures || work);
+  const reviewInProblem = !!(plot || trend || parts || figures || work);
   useLayoutEffect(() => {
     const host = stage.current;
     const cover = sheet.current;
@@ -537,7 +545,7 @@ export function PracticeWorkspace(props: Props) {
       room.style.height = `${overlap()}px`;
     };
     update();
-    if (reviewInProblem && !outcome.correct) {
+    if (reviewInProblem && !trend && !outcome.correct) {
       const hidden = end() - host.scrollTop - (host.clientHeight - overlap());
       if (hidden > 0)
         host.scrollBy({
@@ -564,7 +572,7 @@ export function PracticeWorkspace(props: Props) {
   const sending = busy && !skipping && !(panel === "hint" && !hint);
   // AMP's keypad is always present for typed answers; touch devices never
   // raise the system keyboard, and a physical keyboard still types.
-  const keypad = !choice && !plot && !parts && !figures && !work;
+  const keypad = !choice && !plot && !trend && !parts && !figures && !work;
   const caret = useKeypadCaret(input);
   function key(value: string) {
     if (locked) return;
@@ -615,6 +623,17 @@ export function PracticeWorkspace(props: Props) {
     props.submit();
   }
   function answerControls(includeContext = false) {
+    if (trend)
+      return (
+        <TrendLineFitAnswer
+          response={trend}
+          value={outcome ? outcome.response : response}
+          onChange={setResponse}
+          locked={locked}
+          sending={sending}
+          submit={submitAnswer}
+        />
+      );
     if (problem.response.kind === "point-plot")
       return (
         <PointPlotAnswer
@@ -1039,7 +1058,7 @@ export function PracticeWorkspace(props: Props) {
                     </span>
                     {support && `, ${support}`}
                   </small>
-                ) : plot ? (
+                ) : plot || trend ? (
                   // The grid shows the learner's points beside the
                   // correct ones; the sentence stays for screen readers.
                   <small>
@@ -1080,7 +1099,7 @@ export function PracticeWorkspace(props: Props) {
             </ol>
           </Glossary>
         )}
-        {!editorInDock && progressFeedback()}
+        {!editorInDock && !trendCompact && progressFeedback()}
       </>
     );
   }
@@ -1196,12 +1215,14 @@ export function PracticeWorkspace(props: Props) {
   const stepsInline =
     !!outcome &&
     !editorInDock &&
+    !trendCompact &&
     ((!outcome.correct && !deferSteps) || showWhy || fullColumn);
   const longAnswer =
     !!outcome &&
     !outcome.correct &&
     ((!!work && skipped) ||
       (!plot &&
+        !trend &&
         !(work && !skipped) &&
         !(parts && (skipped || parts.layout === "table")) &&
         displayResponse(outcome.answer).length > 24));
@@ -1210,6 +1231,7 @@ export function PracticeWorkspace(props: Props) {
    * coordinates for screen readers; the explanation lists them in full. */
   const answerLine = (raw: string) =>
     plot ||
+    trend ||
     (work && !skipped) ||
     (parts && (skipped || parts.layout === "table")) ? (
       <span
@@ -1222,9 +1244,11 @@ export function PracticeWorkspace(props: Props) {
             ? skipped
               ? "The answer is filled in"
               : "Each row’s answer is ringed"
-            : plot?.connect === "line"
-              ? "The answer is dashed"
-              : "The answer is circled"}
+            : trend
+              ? "One good fit is dashed"
+              : plot?.connect === "line"
+                ? "The answer is dashed"
+                : "The answer is circled"}
         <span className="sr-only">
           . Answer: {spokenMath(displayResponse(raw))}
         </span>
@@ -1320,7 +1344,7 @@ export function PracticeWorkspace(props: Props) {
       {props.status && <span className="workspace-status">{props.status}</span>}
       {/* Plotted answers are placed, not typed: the calculator's Use
               key has nothing to fill, and lattice arithmetic needs none. */}
-      {props.calculator && !plot && !parts && !figures && !work ? (
+      {props.calculator && !plot && !trend && !parts && !figures && !work ? (
         <button
           ref={calculatorToggle}
           className="calculator-toggle"
@@ -1396,7 +1420,7 @@ export function PracticeWorkspace(props: Props) {
               <MathText text={problem.prompt} />
             </h2>
             {problem.figure &&
-              (choice || plot || parts || figures || work ? (
+              (choice || plot || trend || parts || figures || work ? (
                 <ChoiceFigure figure={problem.figure} />
               ) : (
                 <Figure
@@ -1431,6 +1455,16 @@ export function PracticeWorkspace(props: Props) {
             )}
             {!sideBySide && work && responseEditor()}
             {!sideBySide && figures && responseEditor()}
+            {trend && (
+              <TrendLineFitInput
+                key={problem.id}
+                response={trend}
+                value={outcome ? outcome.response : response}
+                onChange={setResponse}
+                locked={locked}
+                answer={outcome?.answer}
+              />
+            )}
             {plot && (
               <PointPlotInput
                 response={plot}
@@ -1446,7 +1480,7 @@ export function PracticeWorkspace(props: Props) {
             )}
           </div>
           <div className="feedback-spacer" ref={spacer} aria-hidden="true" />
-          {celebrate && (
+          {celebrate && !trend && (
             <div className="practice-celebration" aria-hidden="true">
               <span>✓</span>
             </div>
@@ -1537,7 +1571,7 @@ export function PracticeWorkspace(props: Props) {
           </div>
         )}
       </section>
-      {outcome && editorInDock && showWhy && (
+      {outcome && (editorInDock || trendCompact) && showWhy && (
         <FocusDialog title="Explanation" close={() => setShowWhy(false)}>
           {progressFeedback()}
           <Glossary payload={outcome} texts={outcome.explanation}>

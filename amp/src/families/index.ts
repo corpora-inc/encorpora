@@ -112,3 +112,4 @@ export { family as triangleTheoremProof } from "./triangle-theorem-proof";
 export { family as twoColumnProof } from "./two-column-proof";
 export { family as variableStory } from "./variable-story";
 export { family as virginiaSolLedger } from "./virginia-sol-ledger";
+export { family as trendLineFit } from "./trend-line-fit";
