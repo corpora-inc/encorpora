@@ -166,7 +166,9 @@ test("guess chance comes from each family's answer schema and is never understat
               ? "multi-part-choice"
               : template.requiredResponseCapability === "figure-choice-v1"
                 ? "figure-choice"
-                : "choice",
+                : template.requiredResponseCapability === "shape-composer-v1"
+                  ? "shape-composer"
+                  : "choice",
         template.id,
       );
       if (response.kind === "choice" || response.kind === "figure-choice")

@@ -18,6 +18,9 @@ const STRUCTURED_SEEDS = 128;
  * are rarer than the deterministic sample. Keep these in sync with the
  * generator-variation audit in frontier-guessing.test.ts. */
 const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
+  // The most guessable recipe places two labelled squares in two spaces:
+  // two accepted orders among 21^2 unused-or-grid-position choices.
+  "compose-flat-shape": 2 / 441,
   "circle-estimate-blanks": 1 / 8,
   "round-decimal-blanks": 1 / 8,
   "quotient-remainder-blanks": 1 / 8,
@@ -66,6 +69,7 @@ export const builtGuessChances = built.length;
  * Structured work needs its private rule to count valid orders and proofs
  * (`problemGuessChance`); from the public response alone it is unknown. */
 export function responseGuessChance(response: ProblemResponse): number {
+  if (response.kind === "shape-composer") return response.guessChance;
   if (response.kind === "structured-work") return UNKNOWN_CHOICE_GUESS;
   if (response.kind === "choice") return 1 / response.options.length;
   if (response.kind === "point-plot") return pointPlotGuessChance(response);
