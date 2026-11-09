@@ -1,7 +1,7 @@
 /* A report card is a sheet of paper: its own page, one to a printed letter, and
    the same proportions on a screen. */
 .page {
-  min-height: 100dvh;
+  min-height: calc(100dvh - var(--shell-bar, 56px));
   padding: var(--space-5) var(--space-4) var(--space-8);
   background: var(--color-surface-sunken);
   color: var(--color-on-surface);

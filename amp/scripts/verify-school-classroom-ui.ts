@@ -1,3 +1,4 @@
+import { schoolShellReview } from "./school-shell-review";
 /**
  * The classroom in real browsers, against the real API and a real database: an
  * admin locks levels and a teacher sees the lock; a teacher turns on standings
@@ -63,7 +64,7 @@ const widths = (argument("--widths") ?? "320,390,768,1280")
   .split(",")
   .map(Number);
 const themes = ["light", "dark"] as const;
-const REVIEW = "docs/reviews/school-classroom";
+const REVIEW = process.env.AMP_UI_REVIEW ?? "docs/reviews/school-classroom";
 const ARTIFACTS = "artifacts/school-classroom";
 const webPort = Number(argument("--port") ?? 4402),
   apiPort = webPort + 1,
@@ -323,6 +324,14 @@ async function shoot(
   width: number,
   theme: string,
 ) {
+  if (
+    new URL(page.url()).pathname.includes("/classes/") &&
+    new URL(page.url()).pathname.endsWith("/workbooks")
+  )
+    await schoolShellReview(
+      page,
+      name === "stack" ? "class-workbooks" : undefined,
+    );
   const inReview = engine === "chromium" && (width === 1280 || width === 390);
   // A window as tall as the page, so the pinned bar sits at the page's end, as a
   // person scrolled there would see it, rather than across the middle.
@@ -369,6 +378,37 @@ async function geometry(page: Page, label: string) {
   );
   check(`${label} truncated`, result.truncated.length === 0, result.truncated);
   check(`${label} overlaps`, result.overlaps.length === 0, result.overlaps);
+  // Both fixed bars belong at the page edges for the all-controls overlap
+  // check. Scrolling intentionally passes content behind the opaque header.
+  // Keep all other checks at the real viewport.
+  const viewport = page.viewportSize()!;
+  await page.evaluate(() => {
+    (window as unknown as { __shell: { paused: boolean } }).__shell.paused =
+      true;
+    scrollTo(0, 0);
+  });
+  let overlaps: string[];
+  try {
+    for (let pass = 0; pass < 2; pass++) {
+      const height = await page.evaluate(
+        () => document.documentElement.scrollHeight,
+      );
+      await page.setViewportSize({
+        width: viewport.width,
+        height: Math.max(viewport.height, height),
+      });
+      await settle(page, 60);
+    }
+    overlaps = (await probe(page)).overlaps;
+  } finally {
+    await page.setViewportSize(viewport);
+    await settle(page, 60);
+    await page.evaluate(() => {
+      (window as unknown as { __shell: { paused: boolean } }).__shell.paused =
+        false;
+    });
+  }
+  check(`${label} whole-page overlaps`, overlaps.length === 0, overlaps);
   const clipped = await clippedCells(page);
   check(`${label} clipped cells`, clipped.length === 0, clipped);
   const { shifts, cls } = await shellRecord(page);
