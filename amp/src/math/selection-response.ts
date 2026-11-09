@@ -1,4 +1,5 @@
 import type { MultiSelectResponse, ProblemResponse } from "./contracts";
+import { counterBuilderAnswerText } from "./counter-builder";
 import { normalizePointPlot, pointPlotAnswerText } from "./point-plot";
 import { multiPartAnswerText, normalizeMultiPart } from "./multi-part-choice";
 import { figureChoiceAnswerText } from "./figure-choice";
@@ -84,6 +85,8 @@ export function joinAnswerLabels(labels: readonly string[]): string {
 
 /** Completed worked answers are readable labels, never the transport format. */
 export function answerText(response: ProblemResponse, raw: string): string {
+  if (response.kind === "counter-builder")
+    return counterBuilderAnswerText(response, raw);
   if (response.kind === "point-plot") {
     if (normalizePointPlot(response, raw) === null)
       throw new Error("Worked answer must place the required grid points");

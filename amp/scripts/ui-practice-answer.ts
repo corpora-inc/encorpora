@@ -7,6 +7,7 @@ import {
   isValidResponse,
 } from "../src/math/engine";
 import { plotPoints, serializePlot } from "../src/math/point-plot";
+import { fillCounterBuilder } from "./ui-counter-builder";
 import {
   parseWorkDraft,
   rowShape,
@@ -91,6 +92,11 @@ export async function preparePracticeAnswer(
     });
   const response = practiceResponse(solution, correct);
   const submit = async () => {
+    if (schema.kind === "counter-builder") {
+      await fillCounterBuilder(page, schema, response);
+      await page.getByRole("button", { name: "Check", exact: true }).click();
+      return;
+    }
     if (schema.kind === "structured-work") {
       const plan = parseWorkDraft(response)!;
       if (schema.mode === "order") {
@@ -270,6 +276,11 @@ export function practiceResponse(solution: GeneratedProblem, correct: boolean) {
   const schema = problem.response;
   let response = solution.answer;
   if (!correct) {
+    if (schema.kind === "counter-builder") {
+      const answer = JSON.parse(response);
+      answer.sentence[3] = (answer.sentence[3] + 1) % 11;
+      return JSON.stringify(answer);
+    }
     if (schema.kind === "choice" || schema.kind === "figure-choice")
       response = schema.options.find((o) => o.id !== solution.answer)!.id;
     else if (schema.kind === "multi-select") {

@@ -56,6 +56,7 @@ test("trial transport retries an older API without its newest format, keeping au
       "figure-choice-v1",
       "structured-work-v1",
       "multi-part-cards-v1",
+      "counter-builder-v1",
     ],
   });
   expect(first.figureCapabilities.length).toBeGreaterThan(0);
@@ -68,6 +69,7 @@ test("trial transport retries an older API without its newest format, keeping au
       "multi-part-choice-v1",
       "figure-choice-v1",
       "structured-work-v1",
+      "multi-part-cards-v1",
     ],
   });
 });

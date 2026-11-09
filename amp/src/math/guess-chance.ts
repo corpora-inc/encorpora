@@ -4,6 +4,7 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { pointPlotGuessChance } from "./point-plot";
+import { counterBuilderGuessChance } from "./counter-builder";
 import { multiPartGuessChance } from "./multi-part-choice";
 import { figureChoiceGuessChance } from "./figure-choice";
 import { structuredWorkGuessChance } from "./structured-work";
@@ -18,6 +19,9 @@ const STRUCTURED_SEEDS = 128;
  * are rarer than the deterministic sample. Keep these in sync with the
  * generator-variation audit in frontier-guessing.test.ts. */
 const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
+  // Older clients answer the same family through four picture choices.
+  // The family estimator conservatively covers those attempts as well.
+  "build-the-number-sentence": 1 / 4,
   "circle-estimate-blanks": 1 / 8,
   "round-decimal-blanks": 1 / 8,
   "quotient-remainder-blanks": 1 / 8,
@@ -50,8 +54,7 @@ const byId = new Map(
 // is computed on first use. Sampling a family takes up to 2 s of CPU, too long
 // to pay on a request thread.
 declare const __AMP_GUESS_CHANCES__:
-  | Readonly<Record<string, number>>
-  | undefined;
+  Readonly<Record<string, number>> | undefined;
 const built =
   typeof __AMP_GUESS_CHANCES__ === "undefined"
     ? []
@@ -66,6 +69,8 @@ export const builtGuessChances = built.length;
  * Structured work needs its private rule to count valid orders and proofs
  * (`problemGuessChance`); from the public response alone it is unknown. */
 export function responseGuessChance(response: ProblemResponse): number {
+  if (response.kind === "counter-builder")
+    return counterBuilderGuessChance(response);
   if (response.kind === "structured-work") return UNKNOWN_CHOICE_GUESS;
   if (response.kind === "choice") return 1 / response.options.length;
   if (response.kind === "point-plot") return pointPlotGuessChance(response);
@@ -123,6 +128,8 @@ export function guessChanceTable(
 /** One instance's guessing chance, using its private rule where needed. */
 export function problemGuessChance(problem: GeneratedProblem): number {
   const response = problem.public.response;
+  if (response.kind === "counter-builder")
+    return counterBuilderGuessChance(response, problem.answer);
   if (response.kind === "structured-work")
     return problem.workGrading
       ? structuredWorkGuessChance(response, problem.workGrading)

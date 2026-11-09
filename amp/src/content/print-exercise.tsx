@@ -4,6 +4,7 @@ import { Figure } from "../web/Figure";
 import type { GeneratedProblem } from "../math/contracts";
 import { answerText } from "../math/selection-response";
 import { plotPoints, pointPlotScene } from "../math/point-plot";
+import { counterBuilderScene } from "../math/counter-objects";
 import {
   cardRows,
   draftChoices,
@@ -492,6 +493,12 @@ export function PrintExerciseBody({
         <PrintMathText text={problem.public.prompt} />
       </h2>
       {problem.public.figure && <Figure figure={problem.public.figure} />}
+      {problem.public.response.kind === "counter-builder" && (
+        <>
+          <SceneFigure medium="print" reveal scene={counterBuilderScene(problem.public.response, solutions ? problem.answer : undefined)} />
+          {!solutions && <p>Number sentence: ____ &nbsp; ____ &nbsp; ____ &nbsp; = &nbsp; ____</p>}
+        </>
+      )}
       {problem.public.response.kind === "point-plot" && (
         // The workbook prints the empty grid to plot on by hand; the
         // solutions print the same grid with the answer drawn.

@@ -100,6 +100,7 @@ try {
       "choice",
       "multi-select",
       "point-plot",
+      "counter-builder",
       "multi-part-choice",
       "figure-choice",
       "structured-work",

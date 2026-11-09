@@ -25,6 +25,14 @@ import { ChoiceFigure } from "./ChoiceFigure";
 import { PointPlotAnswer, PointPlotInput, plotReview } from "./PointPlotInput";
 import { pointPlotAnswerText } from "../math/point-plot";
 import {
+  counterBuilderAnswerText,
+  parseCounterBuilder,
+} from "../math/counter-builder";
+import {
+  CounterBuilderInput,
+  CounterBuilderAnswer,
+} from "./CounterBuilderInput";
+import {
   MultiPartChoiceAnswer,
   MultiPartChoiceInput,
   partsReview,
@@ -280,6 +288,8 @@ export function PracticeWorkspace(props: Props) {
   // Point plots answer on the grid in the problem itself; the dock holds
   // only the readout and Check, so they never use the answer dialog.
   const plot = problem.response.kind === "point-plot" ? problem.response : null;
+  const counters =
+    problem.response.kind === "counter-builder" ? problem.response : null;
   // Multi-part choices answer in the problem too: blanks, slots or a table.
   const parts =
     problem.response.kind === "multi-part-choice" ? problem.response : null;
@@ -304,6 +314,8 @@ export function PracticeWorkspace(props: Props) {
       ? problem.figure.scene
       : null;
   const displayResponse = (value: string) => {
+    if (problem.response.kind === "counter-builder")
+      return counterBuilderAnswerText(problem.response, value);
     if (problem.response.kind === "point-plot") {
       try {
         return pointPlotAnswerText(problem.response, value);
@@ -354,7 +366,8 @@ export function PracticeWorkspace(props: Props) {
   const [compactQuery, setCompact] = useState(
     () => matchMedia(answerLayoutQuery).matches,
   );
-  const compact = compactQuery && !plot && !parts && !figures && !work;
+  const compact =
+    compactQuery && !plot && !parts && !figures && !work && !counters;
   // Side by side (practice-tablet.css), the feedback sheet has its own
   // column; stacked, it covers the dock only, so a plotted answer's grid and
   // its feedback overlay stay in view and the explanation opens on request.
@@ -368,8 +381,12 @@ export function PracticeWorkspace(props: Props) {
     return () => media.removeEventListener("change", changed);
   }, []);
   const editorInDock = sideBySide && (!!work || !!figures);
+  const counterCompact = !!counters && !sideBySide;
+  const counterKey =
+    counters && outcome ? parseCounterBuilder(counters, outcome.answer) : null;
   const deferSteps =
-    editorInDock || ((!!plot || !!parts || !!figures || !!work) && !sideBySide);
+    editorInDock ||
+    ((!!plot || !!parts || !!figures || !!work || !!counters) && !sideBySide);
   // Side by side, the sheet has the answer column's full height, so the
   // worked explanation is part of every result rather than a "See why" away.
   const fullColumn = sideBySide && !editorInDock;
@@ -437,7 +454,7 @@ export function PracticeWorkspace(props: Props) {
     // Typed answers start in the answer field. On touch it suppresses the
     // system keyboard (inputMode none), so AMP's keypad stays in charge; the
     // field announces the question through aria-describedby.
-    if (choice || plot || parts || figures || work)
+    if (choice || plot || parts || figures || work || counters)
       prompt.current?.focus({ preventScroll: true });
     else input.current?.focus({ preventScroll: true });
   }, [problem.id]);
@@ -537,6 +554,7 @@ export function PracticeWorkspace(props: Props) {
       room.style.height = `${overlap()}px`;
     };
     update();
+    if (counters) host.scrollTop = 0;
     if (reviewInProblem && !outcome.correct) {
       const hidden = end() - host.scrollTop - (host.clientHeight - overlap());
       if (hidden > 0)
@@ -564,7 +582,7 @@ export function PracticeWorkspace(props: Props) {
   const sending = busy && !skipping && !(panel === "hint" && !hint);
   // AMP's keypad is always present for typed answers; touch devices never
   // raise the system keyboard, and a physical keyboard still types.
-  const keypad = !choice && !plot && !parts && !figures && !work;
+  const keypad = !choice && !plot && !parts && !figures && !work && !counters;
   const caret = useKeypadCaret(input);
   function key(value: string) {
     if (locked) return;
@@ -615,6 +633,17 @@ export function PracticeWorkspace(props: Props) {
     props.submit();
   }
   function answerControls(includeContext = false) {
+    if (counters)
+      return (
+        <CounterBuilderAnswer
+          response={counters}
+          value={outcome ? outcome.response : response}
+          onChange={setResponse}
+          locked={locked}
+          sending={sending}
+          submit={submitAnswer}
+        />
+      );
     if (problem.response.kind === "point-plot")
       return (
         <PointPlotAnswer
@@ -1039,6 +1068,17 @@ export function PracticeWorkspace(props: Props) {
                     </span>
                     {support && `, ${support}`}
                   </small>
+                ) : counters && counterKey ? (
+                  <small>
+                    {counters.canRemove
+                      ? `${counterKey.groups[0]} at the start; cross out ${counterKey.removed}.`
+                      : `Show groups of ${counterKey.groups[0]} and ${counterKey.groups[1]}.`}
+                    <span className="sr-only">
+                      {" "}
+                      You entered {displayResponse(outcome.response)}.
+                    </span>
+                    {support && ` ${capitalize(support)}.`}
+                  </small>
                 ) : plot ? (
                   // The grid shows the learner's points beside the
                   // correct ones; the sentence stays for screen readers.
@@ -1080,7 +1120,7 @@ export function PracticeWorkspace(props: Props) {
             </ol>
           </Glossary>
         )}
-        {!editorInDock && progressFeedback()}
+        {!editorInDock && !counterCompact && progressFeedback()}
       </>
     );
   }
@@ -1196,6 +1236,7 @@ export function PracticeWorkspace(props: Props) {
   const stepsInline =
     !!outcome &&
     !editorInDock &&
+    !counterCompact &&
     ((!outcome.correct && !deferSteps) || showWhy || fullColumn);
   const longAnswer =
     !!outcome &&
@@ -1209,9 +1250,16 @@ export function PracticeWorkspace(props: Props) {
    * the grid above the sheet, so the sheet names where to look and keeps the
    * coordinates for screen readers; the explanation lists them in full. */
   const answerLine = (raw: string) =>
-    plot ||
-    (work && !skipped) ||
-    (parts && (skipped || parts.layout === "table")) ? (
+    counters && counterKey ? (
+      <span className="solution-answer">
+        Answer:{" "}
+        <MathText
+          text={`$${counterKey.sentence[0]} ${counterKey.sentence[1]} ${counterKey.sentence[2]} = ${counterKey.sentence[3]}$`}
+        />
+      </span>
+    ) : plot ||
+      (work && !skipped) ||
+      (parts && (skipped || parts.layout === "table")) ? (
       <span
         className="solution-answer plot-answer"
         data-text={displayResponse(raw)}
@@ -1355,7 +1403,11 @@ export function PracticeWorkspace(props: Props) {
   );
   return (
     <main className="practice-workspace" aria-label="Math practice">
-      <section className="practice-surface" ref={surface}>
+      <section
+        className="practice-surface"
+        ref={surface}
+        data-counter-compact={counterCompact || undefined}
+      >
         {props.toolbarInFrame ? (
           frameTools &&
           createPortal(
@@ -1430,6 +1482,23 @@ export function PracticeWorkspace(props: Props) {
               />
             )}
             {!sideBySide && work && responseEditor()}
+            {counters && (
+              <CounterBuilderInput
+                key={problem.id}
+                response={counters}
+                value={
+                  outcome
+                    ? outcome.skipped
+                      ? outcome.answer
+                      : outcome.response
+                    : response
+                }
+                onChange={setResponse}
+                locked={locked}
+                resolved={!!outcome}
+                skipped={outcome?.skipped}
+              />
+            )}
             {!sideBySide && figures && responseEditor()}
             {plot && (
               <PointPlotInput
@@ -1537,7 +1606,7 @@ export function PracticeWorkspace(props: Props) {
           </div>
         )}
       </section>
-      {outcome && editorInDock && showWhy && (
+      {outcome && (editorInDock || counterCompact) && showWhy && (
         <FocusDialog title="Explanation" close={() => setShowWhy(false)}>
           {progressFeedback()}
           <Glossary payload={outcome} texts={outcome.explanation}>

@@ -160,6 +160,8 @@ test("guess chance comes from each family's answer schema and is never understat
         response.kind,
         template.requiredResponseCapability === "multi-select-v1"
           ? "multi-select"
+          : template.requiredResponseCapability === "counter-builder-v1"
+            ? "counter-builder"
           : template.requiredResponseCapability === "point-plot-v1"
             ? "point-plot"
             : template.requiredResponseCapability === "multi-part-choice-v1"

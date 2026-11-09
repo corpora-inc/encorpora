@@ -1,4 +1,9 @@
 import type { GlossaryPayload } from "../glossary/types";
+import {
+  counterBuilderResponseSchema,
+  counterBuilderKeyFits,
+  type CounterBuilderResponse,
+} from "./counter-builder";
 import { z } from "zod";
 import {
   MAX_SELECTION_OPTIONS,
@@ -268,6 +273,7 @@ export const responseCapabilities = [
   "figure-choice-v1",
   "structured-work-v1",
   "multi-part-cards-v1",
+  "counter-builder-v1",
 ] as const;
 export type ResponseCapability = (typeof responseCapabilities)[number];
 /** The response and figure families a client declares it can show. */
@@ -284,19 +290,31 @@ export const clientCanDraw = (
     | "requiredFigureCapability"
     | "requiredResponseCapability"
     | "requiredResponseCapabilities"
+    | "fallbackCapabilities"
   >,
   client: ClientCapabilities,
 ): boolean =>
-  (!template.requiredResponseCapability ||
+  (!!template.fallbackCapabilities &&
+    client.responseCapabilities.includes(
+      template.fallbackCapabilities.response,
+    ) &&
+    client.figureCapabilities.includes(template.fallbackCapabilities.figure)) ||
+  ((!template.requiredResponseCapability ||
     client.responseCapabilities.includes(
       template.requiredResponseCapability,
     )) &&
-  (template.requiredResponseCapabilities ?? []).every((capability) =>
-    client.responseCapabilities.includes(capability),
-  ) &&
-  (!template.requiredFigureCapability ||
-    client.figureCapabilities.includes(template.requiredFigureCapability));
+    (template.requiredResponseCapabilities ?? []).every((capability) =>
+      client.responseCapabilities.includes(capability),
+    ) &&
+    (!template.requiredFigureCapability ||
+      client.figureCapabilities.includes(template.requiredFigureCapability)));
 export interface TemplateMetadata {
+  /** An implemented same-givens fallback in generateProblemFor. Admission
+   * requires both its response format and its figure format. */
+  fallbackCapabilities?: {
+    response: ResponseCapability;
+    figure: FigureCapability;
+  };
   /** Every response protocol used by a type with mixed variant formats. */
   requiredResponseCapabilities?: readonly ResponseCapability[];
   /** Editorial local step on the curriculum-grade scale, not empirical calibration. */
@@ -344,6 +362,7 @@ export type ProblemResponse =
   | PointPlotResponse
   | MultiPartChoiceResponse
   | FigureChoiceResponse
+  | CounterBuilderResponse
   | StructuredWorkResponse;
 /** Safe teaching content delivered beside a problem; never grading data.
  * Its glossary fields carry the term cards the hint's words open. */
@@ -981,6 +1000,7 @@ export const problemResponseSchema: z.ZodType<ProblemResponse> = z.union([
   multiPartChoiceResponseSchema,
   figureChoiceResponseSchema,
   structuredWorkResponseSchema,
+  counterBuilderResponseSchema,
 ]);
 export const publicProblemSchema: z.ZodType<PublicProblem> = z
   .object({
@@ -1037,6 +1057,13 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
         gradeStructuredWork(response, problem.workGrading, problem.answer)
       );
     if (problem.workGrading || problem.answer.length > 100) return false;
+    if (response.kind === "counter-builder")
+      return (
+        !problem.choiceFeedback &&
+        !problem.entryPolicy &&
+        !problem.pointGrading &&
+        counterBuilderKeyFits(response, problem.answer)
+      );
     // A plotted answer is canonical, complete, and accepted by its own rule.
     if (response.kind === "point-plot")
       return (

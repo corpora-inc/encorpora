@@ -86,6 +86,10 @@ import {
 } from "../math/structured-work";
 import { recordProblemFlag } from "../feedback/record";
 import {
+  normalizeCounterBuilder,
+  counterBuilderFeedback,
+} from "../math/counter-builder";
+import {
   publicJson,
   sendPublicJson,
   type PublicJson,
@@ -894,6 +898,17 @@ function routes(app: FastifyInstance, options: AppOptions) {
             workProblem.public.response,
             input.response,
           ) === duplicate.response;
+        const counterProblem =
+          duplicate.response !== input.response &&
+          duplicate.response.startsWith("{")
+            ? await tx.problem(duplicate.problemId)
+            : null;
+        const sameCounters =
+          counterProblem?.public.response.kind === "counter-builder" &&
+          normalizeCounterBuilder(
+            counterProblem.public.response,
+            input.response,
+          ) === duplicate.response;
         const sameResponse =
           duplicate.response === input.response ||
           (selected !== null &&
@@ -906,7 +921,8 @@ function routes(app: FastifyInstance, options: AppOptions) {
             canonicalPointSet(input.response) === plotted) ||
           // Multi-part answers are keyed by blank, so key order is not a change.
           (parts !== null && canonicalMultiPart(input.response) === parts) ||
-          sameWork;
+          sameWork ||
+          sameCounters;
         if (duplicate.problemId !== input.problemId || !sameResponse)
           throw new ApiError(
             409,
@@ -932,33 +948,37 @@ function routes(app: FastifyInstance, options: AppOptions) {
           400,
           problem.public.response.kind === "choice"
             ? "Choose one of the displayed answers"
-            : problem.public.response.kind === "multi-select"
-              ? `Choose ${problem.public.response.selectionCount} of the displayed answers`
-              : problem.public.response.kind === "point-plot"
-                ? `Place ${problem.public.response.pointCount} different ${problem.public.response.pointCount === 1 ? "point" : "points"} on the grid`
-                : problem.public.response.kind === "multi-part-choice"
-                  ? `Choose one of the displayed options for each of the ${problem.public.response.blanks.length} parts`
-                  : problem.public.response.kind === "figure-choice"
-                    ? `Choose one of the displayed ${problem.public.response.noun === "Graph" ? "graphs" : problem.public.response.noun === "Picture" ? "pictures" : "number lines"}`
-                    : problem.public.response.kind === "structured-work"
-                      ? problem.public.response.mode === "order"
-                        ? "Place every step once, in an order"
-                        : "Complete every step with a valid entry"
-                      : "Enter a number, decimal, or fraction such as 3/4",
+            : problem.public.response.kind === "counter-builder"
+              ? "Complete the number sentence with number and sign tiles"
+              : problem.public.response.kind === "multi-select"
+                ? `Choose ${problem.public.response.selectionCount} of the displayed answers`
+                : problem.public.response.kind === "point-plot"
+                  ? `Place ${problem.public.response.pointCount} different ${problem.public.response.pointCount === 1 ? "point" : "points"} on the grid`
+                  : problem.public.response.kind === "multi-part-choice"
+                    ? `Choose one of the displayed options for each of the ${problem.public.response.blanks.length} parts`
+                    : problem.public.response.kind === "figure-choice"
+                      ? `Choose one of the displayed ${problem.public.response.noun === "Graph" ? "graphs" : problem.public.response.noun === "Picture" ? "pictures" : "number lines"}`
+                      : problem.public.response.kind === "structured-work"
+                        ? problem.public.response.mode === "order"
+                          ? "Place every step once, in an order"
+                          : "Complete every step with a valid entry"
+                        : "Enter a number, decimal, or fraction such as 3/4",
         );
       const response =
-        problem.public.response.kind === "multi-select"
-          ? normalizeSelection(problem.public.response, input.response)!
-          : problem.public.response.kind === "point-plot"
-            ? normalizePointPlot(problem.public.response, input.response)!
-            : problem.public.response.kind === "multi-part-choice"
-              ? normalizeMultiPart(problem.public.response, input.response)!
-              : problem.public.response.kind === "structured-work"
-                ? normalizeStructuredWork(
-                    problem.public.response,
-                    input.response,
-                  )!
-                : input.response;
+        problem.public.response.kind === "counter-builder"
+          ? normalizeCounterBuilder(problem.public.response, input.response)!
+          : problem.public.response.kind === "multi-select"
+            ? normalizeSelection(problem.public.response, input.response)!
+            : problem.public.response.kind === "point-plot"
+              ? normalizePointPlot(problem.public.response, input.response)!
+              : problem.public.response.kind === "multi-part-choice"
+                ? normalizeMultiPart(problem.public.response, input.response)!
+                : problem.public.response.kind === "structured-work"
+                  ? normalizeStructuredWork(
+                      problem.public.response,
+                      input.response,
+                    )!
+                  : input.response;
       const answered = await tx.attemptByProblem(input.problemId);
       if (answered)
         throw new ApiError(409, "This problem has already been answered");
@@ -996,6 +1016,14 @@ function routes(app: FastifyInstance, options: AppOptions) {
       const workFeedback = work
         ? structuredWorkFeedback(work.response, work.grading, response)
         : [];
+      const counterFeedback =
+        problem.public.response.kind === "counter-builder"
+          ? counterBuilderFeedback(
+              problem.public.response,
+              problem.answer,
+              response,
+            )
+          : [];
       const outcome: Outcome = {
         id: randomUUID(),
         problemId: input.problemId,
@@ -1015,7 +1043,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
             ? [partFeedback, ...problem.explanation]
             : workFeedback.length
               ? [...workFeedback, ...problem.explanation].slice(0, 20)
-              : problem.explanation,
+              : [...counterFeedback, ...problem.explanation],
         answer: problem.answer,
         createdAt: new Date().toISOString(),
         ...(multiPart

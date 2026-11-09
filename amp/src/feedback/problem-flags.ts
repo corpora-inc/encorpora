@@ -97,6 +97,7 @@ export type ProblemFlag = {
     | "point-plot"
     | "multi-part-choice"
     | "figure-choice"
+    | "counter-builder"
     | "structured-work";
   response: string | null;
   outcome: FlagOutcome;
