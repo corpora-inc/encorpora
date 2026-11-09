@@ -58,6 +58,8 @@ export function LessonLibrary(props: {
   // must never overwrite newer typing. Only a value from elsewhere (Back,
   // Forward, a shared link) replaces the field.
   const written = useRef(new Set<string>());
+  const body = useRef<HTMLDivElement>(null);
+  const controls = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (written.current.has(urlQuery)) return;
     setText((current) =>
@@ -65,6 +67,21 @@ export function LessonLibrary(props: {
     );
   }, [urlQuery]);
   const write = (next: { q?: string; strand?: string }) => {
+    // A new filter starts at its results, with the search still pinned. Keeping
+    // a deeper offset would leave the summary and first matches under the bar.
+    const bodyTop = body.current?.getBoundingClientRect().top;
+    const controlsTop = controls.current?.getBoundingClientRect().top;
+    if (
+      bodyTop !== undefined &&
+      controlsTop !== undefined &&
+      bodyTop < controlsTop
+    )
+      window.scrollTo({
+        // Scroll offsets may be integral even when the heading height is not.
+        // Round toward the pinned side of that boundary.
+        top: Math.ceil(window.scrollY + bodyTop - controlsTop),
+        behavior: "instant",
+      });
     const search = new URLSearchParams(location.search);
     for (const [key, value] of Object.entries(next))
       if (value) search.set(key, value);
@@ -156,8 +173,8 @@ export function LessonLibrary(props: {
   return (
     <section className={`lesson-index ${styles.library}`} aria-label="Lessons">
       <h1 className={styles.title}>Lessons</h1>
-      <div className={styles.body}>
-        <div className={styles.bar} role="search">
+      <div ref={body} className={styles.body}>
+        <div ref={controls} className={styles.bar} role="search">
           <label className={styles.search}>
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="11" cy="11" r="6.5" />

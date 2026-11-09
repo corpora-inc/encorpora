@@ -213,8 +213,10 @@ export async function probe(page: Page): Promise<Finding[]> {
             detail: `${Math.round(r.width)}×${Math.round(r.height)}`,
           });
         // A control whose centre is under something else cannot be pressed.
-        const cx = r.left + r.width / 2,
-          cy = r.top + r.height / 2;
+        // Use the same pixel for clipping and browser hit-testing: fractional
+        // centres can round across a scrollport's bottom edge when painted.
+        const cx = Math.round(r.left + r.width / 2),
+          cy = Math.round(r.top + r.height / 2);
         if (cx > 0 && cy > 0 && cx < innerWidth && cy < innerHeight) {
           const hit = document.elementFromPoint(cx, cy);
           // A pinned control (sticky Check) over a scrolled list is by design.
@@ -230,7 +232,7 @@ export async function probe(page: Page): Promise<Finding[]> {
               const s = getComputedStyle(p);
               if (/(auto|scroll|hidden)/.test(s.overflowY)) {
                 const pr = p.getBoundingClientRect();
-                if (cy < pr.top || cy > pr.bottom) clipped = true;
+                if (cy < pr.top || cy >= pr.bottom) clipped = true;
               }
             }
             if (!clipped)

@@ -114,6 +114,22 @@ async function verifyShell() {
           viewport,
           theme,
         );
+        const inset = await page.evaluate(() => {
+          if (!document.querySelector("[data-app-frame]")) return null;
+          return {
+            reserved: Number.parseFloat(
+              getComputedStyle(document.documentElement).scrollPaddingTop,
+            ),
+            bar: document
+              .querySelector("[data-app-bar]")!
+              .getBoundingClientRect().height,
+          };
+        });
+        if (inset)
+          check(
+            Math.abs(inset.reserved - inset.bar) < 1,
+            `${tag}: focus inset ${inset.reserved}px differs from app bar ${inset.bar}px`,
+          );
         const found = await probe(page);
         check(found.overflow === 0, `${tag}: overflows by ${found.overflow}px`);
         check(

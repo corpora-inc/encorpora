@@ -891,6 +891,45 @@ async function probeSelfTest(browser: Browser) {
     (e as HTMLElement).style.marginLeft = "380px";
   });
   const offscreenClip = await probe(page);
+  // A scrollport's bottom edge is exclusive: a partly visible input whose
+  // centre lies exactly on that edge is below the fold, not under the dock.
+  for (const offset of [0, 0.515625]) {
+    await page.setContent(`<main class="practice-workspace" style="position:relative">
+    <div id="scroller" style="height:${100 + Math.ceil(offset)}px;width:220px;overflow:auto">
+      <input aria-label="Scrollable answer" style="display:block;box-sizing:border-box;margin:${76 + offset}px 0 0;width:160px;height:48px;font:16px sans-serif">
+      <div style="height:100px"></div>
+    </div>
+    <button style="display:block;width:220px;height:48px;font:16px sans-serif">Check</button>
+  </main>`);
+    await page.evaluate(shim);
+    const boundaryControl = await probe(page);
+    assert.equal(
+      boundaryControl.some((f) => f.kind === "covered-control"),
+      false,
+      "Probe must recognize a control at the scrollport's clipped bottom edge",
+    );
+    await page.locator("#scroller").evaluate((el) => {
+      el.scrollTop = 48;
+    });
+    const revealedControl = await probe(page);
+    assert.equal(
+      revealedControl.some((f) => f.kind === "covered-control"),
+      false,
+      "Scrolling must reveal the control's own hit target",
+    );
+    await page.locator(".practice-workspace").evaluate((el) => {
+      const cover = document.createElement("div");
+      cover.style.cssText =
+        "position:absolute;top:28px;left:0;width:220px;height:48px;background:white";
+      el.append(cover);
+    });
+    const obscuredControl = await probe(page);
+    assert.equal(
+      obscuredControl.some((f) => f.kind === "covered-control"),
+      true,
+      "Probe must still reject a genuinely covered control inside the scrollport",
+    );
+  }
   await page.close();
   if (clippedSvg.some((f) => f.kind === "horizontal-overflow"))
     throw new Error("Probe measures a clipped SVG tail as visible overflow");

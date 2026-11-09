@@ -214,6 +214,10 @@ async function pressed(page: Page, name: RegExp, id: string) {
   await page
     .getByRole("button", { name: /^Skip/ })
     .waitFor({ timeout: 30_000 });
+  check(
+    new URL(page.url()).pathname === "/practice",
+    "Go opens the practice route",
+  );
   await page.waitForTimeout(SLOW * 3);
   await pressed(page, /^Skip/, "skip-button");
   await context.close();

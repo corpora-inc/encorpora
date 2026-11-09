@@ -165,6 +165,7 @@
 }
 .progress-observations {
   display: flex;
+  flex-wrap: wrap;
   gap: 6px;
   list-style: none;
   margin: 0;
@@ -173,10 +174,12 @@
 .progress-observations [role="listitem"] {
   display: grid;
   place-items: center;
-  width: 26px;
-  height: 26px;
+  flex: none;
+  width: 1.625em;
+  height: 1.625em;
   border-radius: 50%;
   font-size: 1rem;
+  line-height: 1;
   font-weight: 600;
   border: 1px solid transparent;
 }

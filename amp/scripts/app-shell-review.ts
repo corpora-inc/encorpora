@@ -142,9 +142,19 @@ export async function verifyShellReview({
             });
             await field.waitFor();
             await page.locator("[data-lesson-id]").first().waitFor();
+            assert.equal(
+              await page.evaluate(() =>
+                Number.parseFloat(
+                  getComputedStyle(document.documentElement).scrollPaddingTop,
+                ),
+              ),
+              (await page.locator("[data-app-bar]").boundingBox())!.height,
+              `${tag}: the focus inset must match the actual app bar`,
+            );
             await page.evaluate(() => window.scrollTo(0, 300));
             await settle(page, 100);
             const before = (await field.boundingBox())!.y;
+            await field.click();
             for (const value of [
               "fraction",
               "fract",
@@ -152,7 +162,18 @@ export async function verifyShellReview({
               "hypotenuse",
               "",
             ]) {
-              await field.fill(value);
+              const beforeFilter = await page.evaluate(() => {
+                const bar = document.querySelector('[role="search"]')!;
+                return {
+                  scroll: scrollY,
+                  body: bar.parentElement!.getBoundingClientRect().top,
+                  bar: bar.getBoundingClientRect().top,
+                  height: document.documentElement.scrollHeight,
+                };
+              });
+              await page.keyboard.press("ControlOrMeta+A");
+              if (value) await page.keyboard.insertText(value);
+              else await page.keyboard.press("Backspace");
               await page.waitForURL(
                 (url) => (url.searchParams.get("q") ?? "") === value,
               );
@@ -160,11 +181,31 @@ export async function verifyShellReview({
               assert.equal(
                 (await field.boundingBox())!.y,
                 before,
-                `${tag}: typing moved the pinned search`,
+                `${tag} (${value}): typing moved the pinned search; before ${JSON.stringify(beforeFilter)}; after ${JSON.stringify(
+                  await page.evaluate(() => {
+                    const bar = document.querySelector('[role="search"]')!;
+                    return {
+                      scroll: scrollY,
+                      body: bar.parentElement!.getBoundingClientRect().top,
+                      bar: bar.getBoundingClientRect().top,
+                      height: document.documentElement.scrollHeight,
+                    };
+                  }),
+                )}`,
               );
               assert.equal(
                 await field.evaluate((el) => document.activeElement === el),
                 true,
+              );
+              const controls = await page.getByRole("search").boundingBox();
+              const summary = await page
+                .locator(".lesson-index [role=status]")
+                .boundingBox();
+              assert.ok(
+                controls &&
+                  summary &&
+                  summary.y >= controls.y + controls.height - 1,
+                `${tag}: the filtered result summary must be below the pinned controls`,
               );
               if (shots && value === "zzzxq-nothing")
                 await page.screenshot({
@@ -233,6 +274,31 @@ export async function verifyShellReview({
               cards && pager && pager.y >= cards.y + cards.height - 1,
               `${tag}: pagination must follow the cards without overlap`,
             );
+            const markers = await page
+              .locator(".progress-observations > span")
+              .all();
+            assert.ok(
+              markers.length > 0,
+              `${tag}: recent answer marks are present`,
+            );
+            for (const marker of markers) {
+              assert.equal(
+                await marker.evaluate((el) => {
+                  const box = el.getBoundingClientRect(),
+                    range = document.createRange();
+                  range.selectNodeContents(el);
+                  return [...range.getClientRects()].every(
+                    (r) =>
+                      r.left >= box.left - 1 &&
+                      r.right <= box.right + 1 &&
+                      r.top >= box.top - 1 &&
+                      r.bottom <= box.bottom + 1,
+                  );
+                }),
+                true,
+                `${tag}: enlarged answer marks must fit their circles`,
+              );
+            }
           } else {
             const library = kind === "library-loading";
             await page.route(

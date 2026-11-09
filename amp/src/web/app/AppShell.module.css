@@ -24,7 +24,12 @@
 
 /* A screen that scrolls to a heading or a field stops below the bar. */
 :global(html:has([data-app-frame])) {
-  scroll-padding-top: calc(56px + 52px + env(safe-area-inset-top, 0px));
+  scroll-padding-top: calc(56px + env(safe-area-inset-top, 0px));
+}
+@media (max-width: 639px) {
+  :global(html:has([data-app-frame][data-tabs])) {
+    scroll-padding-top: calc(56px + 52px + env(safe-area-inset-top, 0px));
+  }
 }
 
 /* The legacy host's screens (Overview, practice, settings) keep their own
