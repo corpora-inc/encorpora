@@ -2,9 +2,10 @@ import { availableGift } from "../access-grants/repository.js";
 import type { Pool } from "pg";
 import { meSchema, type SignedInMe } from "./contracts.js";
 import type { FamilyRepository } from "../family/repository.js";
-import { activeToday } from "../schools/principal.js";
+import { activeToday, isSchoolAccount } from "../schools/principal.js";
 import { familyClassOf } from "../family/family-class.js";
 import { pendingApprovalOf } from "../family/approvals.js";
+import { absorbLiveTrial } from "../server/absorb-trial.js";
 /** One authenticated account snapshot. No trial capability or child draft is stored here. */
 export async function accountSummary(
   pool: Pool,
@@ -13,6 +14,16 @@ export async function accountSummary(
   /** The configured Stripe namespace; without billing no purchase is offered. */
   billingNamespace: string | null = null,
 ): Promise<SignedInMe> {
+  // A student session is answered before this runs. A school account is not
+  // a family, so its trial, if it has one, stays where it is.
+  if (!isSchoolAccount(accountId)) {
+    const client = await pool.connect();
+    try {
+      await absorbLiveTrial(client, accountId);
+    } finally {
+      client.release();
+    }
+  }
   const family = await families.summary(accountId);
   let email: string | null = null,
     emailVerified = true;
