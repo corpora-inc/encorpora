@@ -4,6 +4,7 @@ import {
   leaveSettings,
   chooseLearner,
   currentLearner,
+  navigateApp,
 } from "./ui-controls";
 import { typeSizes } from "../src/math/scene/type";
 import {
@@ -161,7 +162,7 @@ try {
     requestsInWindow++;
   });
   page.on("pageerror", (error) => errors.push(error.message));
-  await page.goto("http://127.0.0.1:4350");
+  await page.goto("http://127.0.0.1:4350/overview");
   await chooseLearner(page, learner.id);
   await page.goto("http://127.0.0.1:4350/lessons?strand=data&topic=mean-data");
   await page
@@ -421,14 +422,7 @@ try {
   );
   releaseNext();
   await nextDelivered;
-  await page.waitForFunction(
-    () =>
-      !(
-        document.querySelector(
-          "button[aria-label='Learner']",
-        ) as HTMLSelectElement
-      )?.disabled,
-  );
+  await page.locator(".problem-stage .problem-content").waitFor();
   await page.unroute("**/batches");
   await page.unroute("**/lesson-support");
   /** Landscape tablets put the answer beside the problem. Every state there
@@ -781,7 +775,7 @@ try {
   // Lessons: every problem type has its own short lesson.
   progress("lesson inventory and section navigation");
   await exitPractice(page);
-  await page.getByRole("button", { name: "Lessons", exact: true }).click();
+  await navigateApp(page, "Lessons");
   await page.locator(".topic-list:not([hidden]) button").first().click();
   await page.locator(".lesson-sheet .problem-lesson").waitFor();
   assert.ok(
@@ -790,41 +784,25 @@ try {
     ),
   );
   await page.getByRole("button", { name: "← All lessons" }).click();
-  // The header and tabs hold the same geometry on every section.
-  const chrome = async () =>
-    page.evaluate(() =>
-      [".shell > header .brand", ".shell > header .account", ".shell > nav"]
-        .map((selector) => {
-          const r = document.querySelector(selector)!.getBoundingClientRect();
-          return [r.x, r.y, r.width, r.height].map(Math.round).join(",");
-        })
-        .join(" | ")
-        .concat(
-          // Content starts the same distance below the tabs everywhere.
-          ` | gap ${Math.round(
-            document
-              .querySelector(
-                "[data-progress-views], .home-hero, .lesson-index, .lesson-sheet, .progress-surface, .start-card",
-              )!
-              .getBoundingClientRect().top -
-              document.querySelector(".shell > nav")!.getBoundingClientRect()
-                .bottom,
-          )}`,
-        ),
-    );
+  // The shared logo keeps its geometry across the learning destinations.
   const sections: string[] = [];
-  for (const section of ["Lessons", "Progress", "Practice"]) {
-    await page.getByRole("button", { name: section, exact: true }).click();
-    await page.waitForTimeout(150);
-    sections.push(await chrome());
+  for (const section of ["Lessons", "Progress", "Practice"] as const) {
+    await navigateApp(page, section);
+    await page.locator("[data-app-bar]").waitFor();
+    sections.push(
+      await page.locator("[data-navigation-trigger]").evaluate((element) => {
+        const r = element.getBoundingClientRect();
+        return [r.x, r.y, r.width, r.height].map(Math.round).join(",");
+      }),
+    );
   }
   assert.equal(
     new Set(sections).size,
     1,
-    `Header moved: ${sections.join(" / ")}`,
+    `Logo moved: ${sections.join(" / ")}`,
   );
-  await exitPractice(page);
-  await page.getByRole("button", { name: "Progress", exact: true }).click();
+  // The detailed progress reader retains its own address.
+  await page.goto("http://127.0.0.1:4350/progress");
   await page.locator(".progress-skill-card").first().waitFor();
   // The navigation drawer leaves the page in place and returns keyboard focus.
   progress("navigation drawer geometry and focus");
@@ -872,20 +850,28 @@ try {
   }
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByRole("button", { name: "Open AMP menu" }).click();
-  await page.getByRole("link", { name: "Add learner", exact: true }).click();
+  await page.getByRole("link", { name: "Account", exact: true }).click();
   await page
-    .getByLabel("Learner name", { exact: true })
-    .fill("LongNickname".repeat(5));
+    .getByRole("navigation", { name: "Account" })
+    .getByRole("link", { name: "Family", exact: true })
+    .click();
+  await page.getByRole("button", { name: "Add learner", exact: false }).click();
+  const form = page.locator(".family-add-learner");
+  await form.getByLabel("Name", { exact: true }).fill("LongNickname".repeat(5));
+  await choose(
+    form.getByRole("button", { name: "Birth year", exact: true }),
+    "2016",
+  );
   const creation = page.waitForResponse(
     (response) =>
       response.url().endsWith("/learners") &&
       response.request().method() === "POST",
   );
-  await page.getByRole("button", { name: "Continue", exact: true }).click();
-  await page.getByRole("button", { name: "2016", exact: true }).click();
+  await form.getByRole("button", { name: "Add learner", exact: true }).click();
   learnerIds.push((await (await creation).json()).id);
-  await page.locator(".problem-stage").waitFor();
-  await exitPractice(page);
+  await form.waitFor({ state: "detached" });
+  await choose(page.getByLabel("Family learner"), learnerIds.at(-1)!);
+  await leaveSettings(page);
   // A reload keeps the learner chosen on this device.
   progress("learner persistence and family controls");
   await page.reload();
@@ -907,11 +893,7 @@ try {
   await leaveSettings(page);
   assert.equal(await currentLearner(page), learnerIds[0]);
   await chooseLearner(page, learnerIds.at(-1)!);
-  await page.getByRole("button", { name: "Open AMP menu" }).click();
-  await page.getByRole("link", { name: "Progress", exact: true }).click();
-  await page
-    .getByRole("button", { name: "Change birth year", exact: true })
-    .click();
+  await page.goto("http://127.0.0.1:4350/profile/birth-year");
   await page.getByRole("heading", { name: /^What year was/ }).waitFor();
   assert.ok(
     await page.evaluate(
@@ -974,12 +956,8 @@ try {
       document.activeElement?.getAttribute("aria-label") === "Open AMP menu",
   );
   // Family exits to the workspace; open the profile route before editing again.
-  assert.equal(new URL(page.url()).pathname, "/");
-  await page.getByRole("button", { name: "Open AMP menu" }).click();
-  await page.getByRole("link", { name: "Progress", exact: true }).click();
-  await page
-    .getByRole("button", { name: "Change birth year", exact: true })
-    .click();
+  assert.equal(new URL(page.url()).pathname, "/overview");
+  await page.goto("http://127.0.0.1:4350/profile/birth-year");
   await page.getByRole("heading", { name: /^What year was/ }).waitFor();
   let releaseFamilyBatch!: () => void, familyBatchHeld!: () => void;
   const familyBatchRelease = new Promise<void>((resolve) => {
@@ -995,7 +973,8 @@ try {
     await route.fulfill({ response: result });
   });
   await page.getByRole("button", { name: "2016", exact: true }).click();
-  await page.getByRole("button", { name: "Go", exact: true }).click();
+  await page.waitForURL((url) => url.pathname === "/overview");
+  await navigateApp(page, "Practice");
   await within(familyBatchWaiting, "family batch request");
   await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page.getByRole("link", { name: "Account", exact: true }).click();
@@ -1034,9 +1013,36 @@ try {
       { exact: true },
     )
     .waitFor();
+  const releasedBatch = page.waitForResponse((response) =>
+    response.url().endsWith("/batches"),
+  );
   releaseFamilyBatch();
-  await page.waitForTimeout(100);
-  await leaveSettings(page);
+  await (await releasedBatch).finished();
+  // Revoked/unavailable identity offers no Progress link. Back returns to
+  // the existing practice workspace without destroying the in-memory race.
+  await page.evaluate(() => {
+    (
+      window as Window & { __privacyRaceDocument?: boolean }
+    ).__privacyRaceDocument = true;
+  });
+  for (const path of [
+    "/family/privacy",
+    "/family/learners",
+    "/family/security",
+    "/practice",
+  ]) {
+    await page.goBack();
+    await page.waitForURL((url) => url.pathname === path);
+  }
+  assert.equal(
+    await page.evaluate(
+      () =>
+        (window as Window & { __privacyRaceDocument?: boolean })
+          .__privacyRaceDocument,
+    ),
+    true,
+  );
+  await page.locator("[data-app-bar]").waitFor();
   assert.equal(
     await page.locator("#answer").count(),
     0,

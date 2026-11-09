@@ -368,6 +368,20 @@ for (const engine of engines) {
           });
         await close.click();
         await page.getByRole("dialog").waitFor({ state: "detached" });
+        await page.waitForFunction(() =>
+          document.activeElement?.matches(
+            "[data-app-bar] [data-navigation-trigger]",
+          ),
+        );
+        await page.keyboard.press("Enter");
+        await close.waitFor();
+        await page.keyboard.press("Escape");
+        await page.getByRole("dialog").waitFor({ state: "detached" });
+        await page.waitForFunction(() =>
+          document.activeElement?.matches(
+            "[data-app-bar] [data-navigation-trigger]",
+          ),
+        );
         check(
           same(
             await page.locator("[data-app-logo]").first().boundingBox(),

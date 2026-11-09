@@ -1,24 +1,22 @@
 import assert from "node:assert/strict";
 import type { Page } from "playwright";
-import { choose } from "./ui-controls";
+import { choose, navigateApp } from "./ui-controls";
 
 /** Leave immersive practice, if active, for home: "Your progress". */
 export async function exitPractice(page: Page) {
-  const exit = page.getByRole("link", { name: "Your progress", exact: true });
-  if (await exit.count()) await exit.click();
+  const nativeExit = page.getByRole("link", {
+    name: "Your progress",
+    exact: true,
+  });
+  if (await nativeExit.isVisible()) await nativeExit.click();
   else if (await page.locator(".practice-workspace").isVisible()) {
-    await page.getByRole("button", { name: "Open AMP menu" }).click();
-    await page
-      .getByRole("link", { name: "Your progress", exact: true })
-      .click();
+    await navigateApp(page, "Progress");
   }
 }
 
 /** Start practice from the home screen. */
 export async function go(page: Page) {
-  await exitPractice(page);
-  await page.getByRole("button", { name: "Practice", exact: true }).click();
-  await page.getByRole("button", { name: /^(Go|Continue)$/ }).click();
+  await resume(page);
 }
 
 /** Open one problem type’s lesson in the Lessons section. */
@@ -62,7 +60,7 @@ export async function openTopicLesson(
     await page.locator(".lesson-sheet .problem-lesson").waitFor();
   } else {
     await exitPractice(page);
-    await page.getByRole("button", { name: "Lessons", exact: true }).click();
+    await navigateApp(page, "Lessons");
     const back = page.getByRole("button", { name: "← All lessons" });
     if (await back.count()) await back.click();
     const topic = page.locator(`.topic-list [data-template="${templateId}"]`);
@@ -108,16 +106,17 @@ export async function startTopic(
 /** Return to the current problem, from anywhere in the app. */
 export async function resume(page: Page) {
   if (await page.locator(".problem-stage").isVisible()) return;
-  await page.getByRole("button", { name: "Practice", exact: true }).click();
-  const go = page.getByRole("button", { name: /^(Go|Continue)$/ });
-  await Promise.race([
-    go.waitFor(),
-    page.locator(".problem-stage").waitFor(),
-  ]).catch(async (error) => {
-    await page.screenshot({
-      path: "/private/tmp/claude-501/-Users-skyl-Code-corpora-encorpora/20514e70-c8cd-4bc7-8d21-138b610db6f7/scratchpad/resume-fail.png",
-    });
-    throw error;
-  });
-  if (await go.isVisible()) await go.click();
+  const native = await page
+    .getByRole("navigation", { name: "Learning sections" })
+    .isVisible();
+  await navigateApp(page, "Practice");
+  if (native) {
+    const go = page.getByRole("button", { name: /^(Go|Continue)$/ });
+    await Promise.race([
+      go.waitFor(),
+      page.locator(".problem-stage").waitFor(),
+    ]);
+    if (await go.isVisible()) await go.click();
+  }
+  await page.locator(".problem-stage").waitFor();
 }
