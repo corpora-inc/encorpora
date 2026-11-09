@@ -14,6 +14,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+from clause_variants_oracle import matches as is_clause_variant, solve as solve_clause_variant, review_problem as review_clause_variant, self_test as review_clause_fixtures
 from collections import Counter
 from fractions import Fraction
 import clause_place_value_math_oracle as clause_place_value
@@ -308,6 +309,8 @@ def solve_family(public):
     for clause in (clause_place_value, clause_transformation):
         if clause.handles(public):
             return clause.solve(public)
+    if is_clause_variant(public):
+        return solve_clause_variant(public)
     oracle = FAMILY_ORACLE_FOR.get(public["templateId"])
     if oracle is not None:
         return oracle.solve(public)
@@ -701,6 +704,9 @@ def review(stream):
             if clause.handles(public):
                 clause.review_problem(problem)
                 return
+        if is_clause_variant(public):
+            review_clause_variant(problem)
+            return
         solved = solve_family(public)
         family = FAMILY_ORACLE_FOR.get(template)
         if family is not None and not family.returns_answer:
@@ -859,6 +865,7 @@ def review(stream):
     # successful review still runs the full fixture and mutation inventory.
     for oracle in FAMILY_ORACLES:
         oracle.self_test()
+    review_clause_fixtures()
     review_fraction_expression_fixtures()
     review_hierarchy_multiselect_fixtures()
     review_variation_axes_fixtures()

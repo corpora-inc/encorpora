@@ -12,7 +12,13 @@ import {
   trigAreaCase,
   trigonometryTemplates,
 } from "../src/math/trigonometry-practice";
-import { generateProblem, templates } from "../src/math/engine";
+import {
+  generateProblem as generateCurrent,
+  templates,
+} from "../src/math/engine";
+// Preserve the original case-model assertions; clause v2 has its own oracle.
+const generateProblem = (id: string, seed: string) =>
+  generateCurrent(id, seed, 1);
 import { problemLesson } from "../src/content/problem-lessons";
 
 /** Minimal TeX evaluator for the labels these templates produce. */

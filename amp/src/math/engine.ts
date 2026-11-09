@@ -411,8 +411,8 @@ import { elementaryTemplates, generateElementaryProblem } from "./elementary";
 import { graphicalTemplates, generateGraphicalProblem } from "./graphical";
 import { extendedTemplates, generateExtendedProblem } from "./extended";
 import { familyRegistry } from "../families/registry";
+import { clauseMetadata, generateClauseVariant } from "./clause-variants";
 import { createHash } from "node:crypto";
-import { clauseMetadata } from "./clause-variants";
 import { makeTenHops } from "./scene/explanations";
 import { mathLabel, polish } from "./polish";
 import type {
@@ -900,7 +900,24 @@ export function generateProblemFor(
   seed: string,
   figureCapabilities: readonly string[],
   version?: number,
+  responseCapabilities: readonly string[] = [],
 ): GeneratedProblem {
+  const generateForClient = () => {
+    const problem = generateProblem(templateId, seed, version);
+    if (!problem.variant?.axes?.clause) return problem;
+    const kind = problem.public.response.kind;
+    const required =
+      kind === "choice"
+        ? "single-choice-v1"
+        : kind === "number" || kind === "fraction"
+          ? null
+          : `${kind}-v1`;
+    // A legacy template's admission capability cannot name the union of its
+    // added formats. Retain its exact original surface for older clients.
+    return required && !responseCapabilities.includes(required)
+      ? generateProblem(templateId, seed, 1)
+      : problem;
+  };
   const fits = (problem: GeneratedProblem) =>
     // The public problem, and what reaches the client beside it: the hint
     // cue's scene and a lesson's walkthrough.
@@ -910,11 +927,11 @@ export function generateProblemFor(
       problem.walkthrough,
     ]).every((needs) => figureCapabilities.includes(needs));
   const problem = withClientFigures(figureCapabilities, () =>
-    generateProblem(templateId, seed, version),
+    generateForClient(),
   );
   if (fits(problem)) return problem;
   const legacy = withClientFigures(figureCapabilities, () =>
-    withLegacySurfaces(() => generateProblem(templateId, seed, version)),
+    withLegacySurfaces(generateForClient),
   );
   if (fits(legacy)) return legacy;
   throw new Error(
@@ -1026,6 +1043,11 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  const clauseMeta = templateById.get(templateId);
+  if (clauseMeta) {
+    const clause = generateClauseVariant(clauseMeta, seed);
+    if (clause) return clause;
+  }
   if (templateId === "true-equation-choice")
     return historicalTrueEquationChoice.generate(seed).problem;
   if (templateId === "equal-factor-equations-select")
