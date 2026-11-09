@@ -1716,7 +1716,8 @@ function bothDirections(r: Random): SatGeometryDataCase {
     const aOnly = row - joint;
     const bOnly = col - joint;
     const neither = N - row - col + joint;
-    if ([joint, aOnly, bOnly, neither].some((x) => x < 1)) continue;
+    // A cell of 1 would make isAre say "is", and the prompt contract requires "are".
+    if ([joint, aOnly, bOnly, neither].some((x) => x < 2)) continue;
     if ((joint * N === row * col) !== independent) continue;
     const equal =
       "$P(A\\mid B)=P(A)$ and $P(B\\mid A)=P(B)$, so the events are independent.";
