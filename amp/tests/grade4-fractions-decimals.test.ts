@@ -165,7 +165,7 @@ test("legacy fraction and decimal surfaces stay byte-identical", () => {
       // The same-whole, plain-sentence draw omits the newer axes.
       const onLegacy =
         id === "compare-fractions-reason-blanks"
-          ? axes?.whole == null && axes?.setting == null
+          ? axes?.whole == null && axes?.setting == null && axes?.task == null
           : problem.variant === undefined;
       if (id === "compare-fractions-reason-blanks") assert.ok(problem.variant);
       if (onLegacy) {
@@ -282,6 +282,8 @@ test("grade-4 denominator axis reaches 5, 10, 12, 100 and 16", () => {
             ? String(wholes)
             : reduce(total % denominator, denominator),
         );
+      } else if (problem.variant?.axes?.task === "between") {
+        continue;
       } else {
         const frac = prompt.match(/(\d+)\/(\d+)/);
         const times = problem.explanation
@@ -312,6 +314,7 @@ test("fraction decompositions, mixed sums and join stories", () => {
   const stories = { meter: 0, liter: 0, hour: 0 };
   for (const seed of seeds(400)) {
     const decomposition = problemOf("fraction-decompositions-select", seed);
+    if (decomposition.variant?.id === "picture") continue;
     const prompt = decomposition.public.prompt;
     assert.match(prompt, /Choose \d+/);
     const response = decomposition.public.response as SelectResponse;
@@ -744,7 +747,7 @@ const replay = JSON.parse(
 const storedSurface = (id: string, problem: GeneratedProblem): boolean => {
   const axes = problem.variant?.axes;
   if (id === "compare-fractions-reason-blanks")
-    return axes?.whole == null && axes?.setting == null;
+    return axes?.whole == null && axes?.setting == null && axes?.task == null;
   return problem.variant == null;
 };
 

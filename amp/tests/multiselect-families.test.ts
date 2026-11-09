@@ -732,7 +732,7 @@ test("the number of true statements varies, and every variant is reached", () =>
   const variants: Record<string, string[]> = {
     "place-value-forms-select": ["five-digit", "inner-zero", "word-comparison"],
     "equivalent-fractions-select": ["even-denominator", "odd-denominator"],
-    "fraction-line-names-select": ["even-parts", "odd-parts"],
+    "fraction-line-names-select": ["even-parts", "odd-parts", "whole"],
     "equivalent-ratios-select": ["first-part-greater", "second-part-greater"],
     "rounds-to-select": ["whole-place", "tenth-place", "hundredth-place"],
     "compare-to-pi-select": ["pi-greater", "pi-less", "root-greater"],

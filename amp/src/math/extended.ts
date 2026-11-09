@@ -6,6 +6,7 @@ import type {
 } from "./contracts.js";
 import { exactDecimal, sweepChoose, sweepVariant } from "./number-domain-axes";
 import { count, isAre } from "./agreement.js";
+import { clauseProblem } from "./fraction-clause-variants.js";
 export const generatorVersion = 1 as const;
 export const extendedTemplates: readonly TemplateMetadata[] = [
   [
@@ -122,7 +123,8 @@ export const extendedTemplates: readonly TemplateMetadata[] = [
   ],
 ].map(([id, title, skillId, gradeBand, description]) => ({
   id: id!,
-  version: 1,
+  version: id === "divide-fractions" ? 2 : 1,
+  ...(id === "divide-fractions" ? { reprintsFrom: 1 } : {}),
   title: title!,
   skillId: skillId!,
   gradeBand: gradeBand! as TemplateMetadata["gradeBand"],
@@ -152,6 +154,10 @@ export function generateExtendedProblem(
   if (!meta) throw new Error(`Unknown template: ${templateId}`);
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
+  if (templateId === "divide-fractions") {
+    const clause = clauseProblem(templateId, seed, meta);
+    if (clause) return clause;
+  }
   let counter = 0;
   const r = (lo: number, hi: number) => {
     const range = hi - lo + 1,
