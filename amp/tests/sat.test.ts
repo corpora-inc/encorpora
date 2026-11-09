@@ -122,7 +122,10 @@ assert set(data['ids'])==set(o['SUPPORTED'])
 sat=o['family_oracle']('sat_completion_math_oracle')
 print(sat.self_test())
 for p in data['cases']:
- sat.review_problem(p)
+ if o['is_clause_variant'](p['public']):
+  o['review_clause_variant'](p)
+ else:
+  sat.review_problem(p)
  assert o['solve'](p['public'])==p['answer']
 print(len(data['cases']))`,
     ],
