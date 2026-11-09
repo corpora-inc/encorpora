@@ -76,7 +76,7 @@ for (const id of ["mark-unit-squares", "mark-improvised-units"]) {
     if (
       r.cols !== 5 ||
       (id === "mark-unit-squares"
-        ? r.rows !== 6 || !p.variant!.id.startsWith("hole-")
+        ? r.rows !== 6 || p.variant!.id !== "hole-rectangle"
         : r.rows !== 5 || r.tile !== "sticky")
     )
       continue;
@@ -148,7 +148,13 @@ async function promptVisible(page: Page) {
 async function visibleCells(page: Page) {
   const cells = page.locator(".square-marking-cell");
   for (let i = 0; i < (await cells.count()); i++) {
-    await cells.nth(i).scrollIntoViewIfNeeded();
+    await cells.nth(i).evaluate((node) => {
+      const stage = document.querySelector<HTMLElement>(".problem-stage")!;
+      stage.scrollTop +=
+        node.getBoundingClientRect().top -
+        stage.getBoundingClientRect().top -
+        8;
+    });
     assert.ok(
       await cells.nth(i).evaluate((node) => {
         const r = node.getBoundingClientRect(),
@@ -258,6 +264,13 @@ try {
             assert.equal(await first.getAttribute("aria-pressed"), "false");
             await first.focus();
             await page.keyboard.press("Space");
+            assert.equal(
+              await first.evaluate(
+                (node) => getComputedStyle(node).outlineStyle,
+              ),
+              "solid",
+              "Keyboard cursor is a visible outline",
+            );
             await page.keyboard.press("ArrowRight");
             assert.equal(
               await page
@@ -283,9 +296,21 @@ try {
               0,
             );
             await stable(page, before);
-            await first.focus();
+            const lastRow = await cells.last().getAttribute("data-row");
+            const lastColumn = await cells.last().getAttribute("data-col");
+            await page
+              .locator(`.square-marking-cell[data-col="${lastColumn}"]`)
+              .first()
+              .focus();
             for (let row = 1; row < 6; row++)
               await page.keyboard.press("ArrowDown");
+            assert.equal(
+              await page.evaluate(() =>
+                document.activeElement?.getAttribute("data-row"),
+              ),
+              lastRow,
+              "Arrows reach the bottom row",
+            );
             assert.ok(
               await page.evaluate(() => {
                 const focused = document.activeElement!.getBoundingClientRect();
@@ -314,6 +339,7 @@ try {
           await promptVisible(page);
           if (correct)
             await page.screenshot({ path: `${shots}/${tag}-filled.png` });
+          if (correct && width === 768) await reset.click();
           const compact = page.locator(".compact-answer-action");
           if (await compact.isVisible()) await compact.click();
           await page
@@ -342,6 +368,18 @@ try {
               .count(),
             0,
             "Submission resets scratch marks",
+          );
+          await page.keyboard.press("Tab");
+          await cells
+            .first()
+            .evaluate((node: HTMLElement) =>
+              node.focus({ preventScroll: true }),
+            );
+          assert.ok(
+            await cells
+              .first()
+              .evaluate((node) => node.matches(":focus-visible")),
+            "The graded cursor check exercises keyboard focus",
           );
           assert.equal(
             await cells
