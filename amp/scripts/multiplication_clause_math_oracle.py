@@ -10,6 +10,45 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
+SUPPORTED = frozenset({
+    "partition-from-marks",
+    "choose-partition",
+    "regions-to-whole",
+    "which-split",
+    "facts-from-known",
+    "associative-compute",
+    "split-the-dividend",
+    "complete-area-model",
+    "explain-part",
+    "partial-products-by-place",
+    "standard-algorithm-rows",
+    "find-the-error",
+    "complete-division-model",
+    "chunk-model",
+    "first-chunk-choice",
+    "list-all-pairs",
+    "complete-list-choice",
+    "bracket-steps",
+    "spot-the-error",
+    "story-for-expression",
+    "story-both-interpretations",
+})
+# solve returns an option id for these. Structured and multi-select answers are JSON text.
+CHOICE_REVIEW = frozenset({
+    "choose-partition",
+    "which-split",
+    "explain-part",
+    "first-chunk-choice",
+    "find-the-error",
+    "spot-the-error",
+    "complete-list-choice",
+    "story-for-expression",
+})
+
+
+def dumps(value, _dump=json.dumps):
+    return _dump(value, separators=(",", ":"))
+
 
 def require(condition, message):
     if not condition:
@@ -33,7 +72,7 @@ def cells(values):
             # Callers that need a custom shape pass rows directly.
             rows.append([str(values[i]), str(values[i + 1])])
             i += 2
-    return json.dumps(rows)
+    return dumps(rows)
 
 
 def bracket_cells(n, d):
@@ -93,13 +132,13 @@ def solve(public):
             [str(values[8]), str(values[9])],
             [str(values[10])],
         ]
-        return json.dumps(rows)
+        return dumps(rows)
     if template == "standard-algorithm-rows":
         m = re.search(r"([\d,]+) × (\d+)", prompt)
         require(m is not None, "no product")
         a, b = int(m[1].replace(",", "")), int(m[2])
         ones, tens = b % 10, b // 10 * 10
-        return json.dumps([[str(a * ones)], [str(a * tens)], [str(a * b)]])
+        return dumps([[str(a * ones)], [str(a * tens)], [str(a * b)]])
     if template == "partial-products-by-place":
         m = re.match(
             r"([\d,]+) × (\d+) = \(([\d,]+) × \d+\) \+ \(([\d,]+) × \d+\) \+ \((\d+) × \d+\) \+ \((\d+) × \d+\)",
@@ -110,7 +149,7 @@ def solve(public):
         places = [int(m[i].replace(",", "")) for i in range(3, 7)]
         parts = [p * factor for p in places]
         require(sum(places) * factor == sum(parts), "partials disagree")
-        return json.dumps(
+        return dumps(
             [[str(parts[0]), str(parts[1])], [str(parts[2]), str(parts[3])], [str(sum(parts))]]
         )
     if template == "complete-area-model":
@@ -121,7 +160,7 @@ def solve(public):
         bt, bo = b // 10 * 10, b % 10
         parts = [at * bt, at * bo, ao * bt, ao * bo]
         require(sum(parts) == a * b, "parts miss the product")
-        return json.dumps([[str(parts[0]), str(parts[1])], [str(parts[2]), str(parts[3])], [str(a * b)]])
+        return dumps([[str(parts[0]), str(parts[1])], [str(parts[2]), str(parts[3])], [str(a * b)]])
     if template == "regions-to-whole":
         m = re.search(r"find (\d+) × (\d+)", prompt)
         require(m is not None, "no array")
@@ -131,19 +170,19 @@ def solve(public):
         a = int(found[0][0]) * int(found[0][1])
         b = int(found[1][0]) * int(found[1][1])
         require(a + b == rows * cols, "regions do not make the product")
-        return json.dumps([[str(a), str(b)], [str(a), str(b)], [str(rows * cols)]])
+        return dumps([[str(a), str(b)], [str(a), str(b)], [str(rows * cols)]])
     if template == "split-the-dividend":
         m = re.match(r"(\d+) ÷ (\d+): split \d+ into (\d+) \+ (\d+)", prompt)
         require(m is not None, "no split")
         n, d, left, right = (int(m[i]) for i in range(1, 5))
         require(left + right == n and left % d == 0 and right % d == 0, "split is not exact")
         q1, q2 = left // d, right // d
-        return json.dumps([[str(q1), str(q2)], [str(q1 + q2)]])
+        return dumps([[str(q1), str(q2)], [str(q1 + q2)]])
     if template == "associative-compute":
         m = re.match(r"(\d+) × (\d+) × (\d+)", prompt)
         require(m is not None, "no triple")
         a, b, c = int(m[1]), int(m[2]), int(m[3])
-        return json.dumps([[str(a * b), str(a * b * c)], [str(b * c), str(a * b * c)]])
+        return dumps([[str(a * b), str(a * b * c)], [str(b * c), str(a * b * c)]])
     if template == "partition-from-marks":
         figure = public.get("figure")
         require(figure and figure["kind"] == "scene", "marks required")
@@ -151,7 +190,7 @@ def solve(public):
         rows = sum(1 for i in ids if i.startswith("left-"))
         cols = sum(1 for i in ids if i.startswith("top-"))
         require(rows >= 2 and cols >= 2, "marks")
-        return json.dumps([[str(rows), str(cols)], [str(rows * cols)]])
+        return dumps([[str(rows), str(cols)], [str(rows * cols)]])
     if template in ("complete-division-model", "chunk-model"):
         m = re.search(r"([\d,]+) ÷ (\d+)", prompt)
         require(m is not None, "no quotient")
@@ -164,7 +203,7 @@ def solve(public):
             h, t, o = parts
             require(t[0] == 0, "tens width is not 0")
             values = [h[0], h[1], 0, o[0], o[1], rem]
-            return json.dumps([[str(values[0]), str(values[1])], [str(values[2]), str(values[3])], [str(values[4]), str(values[5])]])
+            return dumps([[str(values[0]), str(values[1])], [str(values[2]), str(values[3])], [str(values[4]), str(values[5])]])
         flat = [x for part in parts for x in part]
         if rem:
             flat.extend([q, rem])
@@ -174,13 +213,13 @@ def solve(public):
             flat.append(q)
             rows = [flat[i : i + 2] for i in range(0, len(flat) - 1, 2)]
             rows.append([flat[-1]])
-        return json.dumps([[str(x) for x in row] for row in rows])
+        return dumps([[str(x) for x in row] for row in rows])
     if template == "list-all-pairs":
         m = re.search(r"factor pair of (\d+)", prompt)
         require(m is not None, "no n")
         n = int(m[1])
         pairs = [[i, n // i] for i in range(1, int(n**0.5) + 1) if n % i == 0]
-        return json.dumps([[str(a), str(b)] for a, b in pairs])
+        return dumps([[str(a), str(b)] for a, b in pairs])
     if public["response"]["kind"] == "choice":
         return solve_choice(template, prompt, public["response"]["options"])
     if public["response"]["kind"] == "multi-select":
@@ -299,7 +338,7 @@ def solve_multi(template, prompt, response):
     if template == "facts-from-known":
         ids = [o["id"] for o in options if truth_of_fact(o["label"])]
         require(len(ids) == response["selectionCount"], "selection count")
-        return json.dumps(sorted(ids))
+        return dumps(sorted(ids))
     if template == "story-both-interpretations":
         m = re.search(r"(\d+) ÷ (\d+)", prompt)
         total, div = int(m[1]), int(m[2])
@@ -311,7 +350,7 @@ def solve_multi(template, prompt, response):
             if share or group:
                 ids.append(o["id"])
         require(len(ids) == 2, "both interpretations")
-        return json.dumps(sorted(ids))
+        return dumps(sorted(ids))
     raise ValueError(template)
 
 
@@ -334,12 +373,13 @@ def canon(value):
         return value
 
 
-def review(problem):
+def review_problem(problem):
     got = solve(problem["public"])
     require(
         canon(got) == canon(problem["answer"]),
         f"{problem['public']['templateId']}: {got} != {problem['answer']}",
     )
+    require(got == problem["answer"], f"{problem['public']['templateId']}: answer text")
     return got
 
 
@@ -365,7 +405,7 @@ writeFileSync("/tmp/multiplication-clause-oracle.json", JSON.stringify(out));
     subprocess.check_call(["node", "--import", "tsx", "-e", script], cwd=ROOT)
     problems = json.loads(Path("/tmp/multiplication-clause-oracle.json").read_text())
     for problem in problems:
-        review(problem)
+        review_problem(problem)
     # 5052 is not the tens row of 842 × 69.
     standard = next(p for p in problems if "842 × 69" in p["public"]["prompt"])
     require(json.loads(standard["answer"])[1] == ["50520"], "tens row")

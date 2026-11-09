@@ -5,8 +5,8 @@ export const bivariateFacetMappings: readonly FacetMapping[] = [
   [
     "scatter-association-choice",
     "scatterplots.association-patterns",
-    "Classify clear-cut scatter plots of 12 to 16 points as positive linear, negative linear, nonlinear or no association.",
-    "Clusters, outliers and borderline patterns require separate assessment.",
+    "Classify scatter plots by direction and shape, identify clusters and outliers, and construct four-point plots from paired measurements.",
+    "Larger constructed plots and borderline patterns require separate assessment.",
   ],
   [
     "trend-line-predict",
@@ -17,14 +17,14 @@ export const bivariateFacetMappings: readonly FacetMapping[] = [
   [
     "trend-slope-meaning",
     "scatterplots.trend-line-models",
-    "Choose the slope's meaning as a rate in context over an intercept, a point or swapped quantities.",
-    "Interpreting intercepts in writing requires separate assessment.",
+    "Interpret slope as a rate and the intercept as a prediction at zero, including contexts where zero has no practical meaning.",
+    "Written justifications require separate assessment.",
   ],
   [
     "two-way-missing",
     "two-way-tables.complete-tables",
-    "Find a missing count from a column total when its row has two blanks.",
-    "Building a table from raw categorical data requires separate assessment.",
+    "Find missing counts and construct a two-way table by tallying a roster with two categorical variables for each student.",
+    "Tables with more than two categories per variable require separate assessment.",
   ],
   [
     "two-way-row-percent",
@@ -35,7 +35,7 @@ export const bivariateFacetMappings: readonly FacetMapping[] = [
   [
     "two-way-association-choice",
     "two-way-tables.relative-frequency-association",
-    "Judge association by comparing row percents when raw counts point the other way.",
+    "Judge association by comparing row or column percentages when unequal group sizes make raw counts misleading.",
     "Borderline differences and written arguments require separate assessment.",
   ],
 ].map(([templateId, facetId, scope, limit]) => ({

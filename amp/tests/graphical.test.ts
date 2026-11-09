@@ -80,8 +80,11 @@ test("independent answers follow displayed givens over varied deterministic seed
         }
         case "bar-chart": {
           assert.equal(figure.categories.length, figure.values.length);
-          if (template.id === "bar-chart-total")
-            expected = figure.values.reduce((sum, value) => sum + value, 0);
+          if (template.id === "bar-chart-total") {
+            const missing = /of (\d+) students/.exec(problem.public.prompt);
+            const drawn = figure.values.reduce((sum, value) => sum + value, 0);
+            expected = missing ? Number(missing[1]) - drawn : drawn;
+          }
           else {
             const names = /more (\w+) trees than (\w+) trees/.exec(
               problem.public.prompt,
@@ -99,13 +102,28 @@ test("independent answers follow displayed givens over varied deterministic seed
             Number(end[1]) * 60 +
             Number(end[2]) -
             (figure.hour * 60 + figure.minute);
-          assert.ok(expected >= 15 && expected <= 120);
+          assert.ok(
+            problem.public.prompt.includes("later that same morning")
+              ? expected >= 15 && expected <= 120
+              : expected >= 5 && expected <= 110,
+          );
           assert.ok(Number(end[1]) < 12);
           assert.ok(problem.public.prompt.includes("same morning"));
           break;
         }
         case "number-line":
-          expected = Math.abs(figure.points[1]! - figure.points[0]!);
+          if (figure.points.length >= 2)
+            expected = Math.abs(figure.points[1]! - figure.points[0]!);
+          else if (problem.public.prompt.includes("whole trip"))
+            expected = [...problem.public.prompt.matchAll(/(\d+) minutes/g)]
+              .map((m) => Number(m[1]))
+              .reduce((a, b) => a + b, 0);
+          else {
+            const counts = [...problem.public.prompt.matchAll(/(\d+)/g)].map(
+              (m) => Number(m[1]),
+            );
+            expected = Math.abs(counts[0]! - counts[1]!);
+          }
           break;
         default:
           assert.fail(`Unexpected graphical figure: ${figure.kind}`);

@@ -672,9 +672,52 @@ def solve_quadratic_factors(public):
     return pick(public, lambda lab: equation(lab), expected)
 
 
+def _radical_text(m):
+    """Matches radicalText in complex-conics-practice.ts."""
+    k, rest = 1, m
+    p = 2
+    while p * p <= rest:
+        while rest % (p * p) == 0:
+            k *= p
+            rest //= p * p
+        p += 1
+    if rest == 1:
+        return str(k)
+    return f'√{rest}' if k == 1 else f'{k}√{rest}'
+
+
+def _uni(n):
+    return str(n).replace('-', '−')
+
+
+def quadratic_fta_statement(b, c):
+    """Matches quadraticFtaStatement. b and c are ints of a monic quadratic."""
+    d = b * b - 4 * c
+    if d > 0:
+        s = int(d ** 0.5)
+        require(s * s == d, 'Discriminant is not a square')
+        hi, lo = (-b + s) // 2, (-b - s) // 2
+        return f'D = {_uni(d)} > 0, so x = {_uni(hi)} and x = {_uni(lo)}: two real roots, which is two roots counting multiplicity.'
+    if d == 0:
+        require(b % 2 == 0, 'Repeated root is not an integer')
+        return f'D = 0, so x = {_uni(-b // 2)} is a root of multiplicity 2, which counts as two roots.'
+    require(d % 4 == 0 and b % 2 == 0, 'Nonreal roots are not of the form h ± √m i')
+    h, m = -b // 2, -d // 4
+    return f'D = {_uni(d)} < 0, so x = {_uni(h)} ± {_radical_text(m)}i: two nonreal roots, which is two roots counting multiplicity.'
+
+
 def solve_root_count(public):
     prompt = public['prompt']
     require(public.get('figure') is None, 'Unexpected diagram')
+    match = re.fullmatch(r'Which statement correctly shows that \$p\(x\) = (.+?)\$ has exactly two complex roots, counting multiplicity\?', prompt)
+    if match:
+        text = plain(match[1]).replace('−', '-').replace(' ', '')
+        parsed = re.fullmatch(r'x\^2(?:([+-])(\d+)x)?(?:([+-])(\d+))?', text)
+        require(parsed is not None, f'Not a monic quadratic: {text}')
+        b = int(parsed[2] or 0) * (-1 if parsed[1] == '-' else 1)
+        c = int(parsed[4] or 0) * (-1 if parsed[3] == '-' else 1)
+        expected = plain(quadratic_fta_statement(b, c))
+        return pick(public, plain, expected)
     match = re.fullmatch(r'A polynomial with real coefficients has degree (\d+)\. Counting multiplicity, which number of real roots can it have\?', prompt)
     if match:
         degree = int(match[1])

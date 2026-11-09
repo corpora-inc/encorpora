@@ -14,6 +14,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+from clause_variants_oracle import matches as is_clause_variant, solve as solve_clause_variant, review_problem as review_clause_variant, self_test as review_clause_fixtures
 from collections import Counter
 from fractions import Fraction
 from rational_expression_math_oracle import RATIONAL_EXPRESSION, solve_rational_expression, review_rational_expression_fixtures, review_rational_expression_problem
@@ -303,6 +304,8 @@ def solve(public):
 
 
 def solve_family(public):
+    if is_clause_variant(public):
+        return solve_clause_variant(public)
     oracle = FAMILY_ORACLE_FOR.get(public["templateId"])
     if oracle is not None:
         return oracle.solve(public)
@@ -462,8 +465,15 @@ def solve_family(public):
                     for point in points), 'Drawn line does not pass through marked points')
         return slope
     if template in {'bar-chart-total', 'bar-chart-difference'}:
-        require(figure['kind'] == 'bar-chart' and figure['valueLabel'] == 'Trees', 'Wrong chart representation')
+        require(figure['kind'] == 'bar-chart', 'Wrong chart representation')
         categories, values = figure['categories'], figure['values']
+        if template == 'bar-chart-total' and 'not drawn yet' in prompt:
+            total = int(re.search(r'of (\d+) students', prompt).group(1))
+            require(figure['valueLabel'] == 'Pets' and 2 <= len(values) <= 3, 'A missing bar leaves the drawn pets')
+            require(all(type(value) is int and value > 0 for value in values), 'Drawn bars are positive')
+            require(sum(values) < total <= 20, 'The missing bar is part of a total at most 20')
+            return total - sum(values)
+        require(figure['valueLabel'] == 'Trees', 'Wrong chart representation')
         require(len(categories) == len(values) == 3 and len(set(categories)) == 3 and
                 all(type(value) is int and value >= 0 for value in values), 'Invalid category counts')
         counts = dict(zip(categories, values))
@@ -475,6 +485,19 @@ def solve_family(public):
         require(difference > 0, 'More-than prompt names the wrong larger category')
         return difference
     if template == 'clock-elapsed-minutes':
+        if 'whole trip' in prompt:
+            parts = [int(n) for n in re.findall(r'(\d+) minutes', prompt)]
+            require(len(parts) >= 2, 'A trip needs its parts')
+            return sum(parts)
+        if 'minutes' in prompt and 'clock' not in prompt and ':' not in prompt:
+            counts = [int(n) for n in re.findall(r'(\d+)', prompt)]
+            require(len(counts) == 2 and counts[0] != counts[1], 'A difference of two times')
+            return abs(counts[0] - counts[1])
+        if prompt.startswith('Reading club starts'):
+            start_h, start_m, end_h, end_m = map(int, re.search(
+                r'(\d{1,2}):(\d{2}).*ends at (\d{1,2}):(\d{2})', prompt).groups())
+            require(figure['kind'] == 'clock' and figure['hour'] == start_h and figure['minute'] == start_m, 'Clock matches the start')
+            return (end_h * 60 + end_m) - (start_h * 60 + start_m)
         require(figure['kind'] == 'clock' and 1 <= figure['hour'] <= 12 and
                 0 <= figure['minute'] < 60, 'Invalid clock')
         end_time = re.search(r'ends at ([0-9]+):([0-9]{2}) later that same morning', prompt)
@@ -692,6 +715,9 @@ def review(stream):
         nonlocal area_volume_equalities
         public = problem['public']
         template, seed = public['templateId'], public['seed']
+        if is_clause_variant(public):
+            review_clause_variant(problem)
+            return
         solved = solve_family(public)
         family = FAMILY_ORACLE_FOR.get(template)
         if family is not None and not family.returns_answer:
@@ -850,6 +876,7 @@ def review(stream):
     # successful review still runs the full fixture and mutation inventory.
     for oracle in FAMILY_ORACLES:
         oracle.self_test()
+    review_clause_fixtures()
     review_fraction_expression_fixtures()
     review_hierarchy_multiselect_fixtures()
     review_variation_axes_fixtures()
