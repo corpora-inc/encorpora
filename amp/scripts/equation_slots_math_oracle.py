@@ -170,15 +170,78 @@ def solve_detail(public):
                 key = {"by": pick(blanks[0], F(people), value_of), "den": pick(blanks[1], F(n * people), value_of)}
                 facts = {"values": [f"{n}\\times {people}={n * people}", f"\\frac{{1}}{{{n * people}}}"]}
             else:
-                m = re.fullmatch(r"A trail is (\d+) miles long, and one lap of a track is \$\\frac\{1\}\{(\d+)\}\$ mile\. "
-                                 r"Complete the equation that finds how many laps make \1 miles\.", prompt)
-                require(m is not None, f"Prompt {prompt!r}")
-                miles, n = int(m[1]), int(m[2])
-                blanks = common_response(response, "inline", "Choose a number for each gap")
-                require(s == "{whole} $\\div$ {piece} $=$ {count}", "Sentence")
-                labelled(blanks, ["whole", "piece", "count"], ["The total distance", "The length of one lap", "The number of laps"])
-                key = {"whole": pick(blanks[0], F(miles), value_of), "piece": pick(blanks[1], F(1, n), value_of), "count": pick(blanks[2], F(miles * n), value_of)}
-                facts = {"values": [f"{miles}\\times {n}={miles * n}"]}
+                story = re.fullmatch(r"Which story matches 1/(\d+) ÷ (\d+), and what is the quotient\?", prompt)
+                picture = re.fullmatch(r"Which picture shows 1/(\d+) ÷ (\d+)\?", prompt)
+                unit_check = re.fullmatch(r"Complete the check for 1/(\d+) ÷ (\d+)\.", prompt)
+                whole_check = re.fullmatch(r"Complete the check for (\d+) ÷ 1/(\d+)\.", prompt)
+                if story or picture or unit_check or whole_check:
+                    def text_pick(blank, correct):
+                        hits = [o["id"] for o in blank["options"] if o["label"] == correct]
+                        require(len(hits) == 1, f"{blank['id']} needs {correct!r}, found {len(hits)}")
+                        return hits[0]
+                    blanks = common_response(response, "inline", "Put a card in each box")
+                    if story:
+                        b, n = int(story[1]), int(story[2])
+                        require(s == "The story is {story} and equals {each}.", "Sentence")
+                        labelled(blanks, ["story", "each"], ["The matching story", "The quotient"])
+                        stories = {
+                            f"1/{b} lb shared by {n} people": F(1, b * n),
+                            f"{n} lb shared by {b} people": F(n, b),
+                            f"how many 1/{b}-cup servings in {n} cups": F(n * b),
+                            f"1/{b} of {n} lb": F(n, b),
+                        }
+                        require({o["label"] for o in blanks[0]["options"]} == set(stories), "Story options")
+                        require(list(stories.values()).count(F(1, b * n)) == 1, "One story has the quotient")
+                        key = {"story": text_pick(blanks[0], f"1/{b} lb shared by {n} people"),
+                               "each": pick(blanks[1], F(1, b * n), value_of)}
+                        facts = {"values": [f"1/{b * n}"]}
+                    elif picture:
+                        b, n = int(picture[1]), int(picture[2])
+                        require(s == "The picture is {pic} and shows {val}.", "Sentence")
+                        labelled(blanks, ["pic", "val"], ["The matching picture", "The amount"])
+                        pictures = {
+                            f"one 1/{b} cut into {n}, one small piece marked": F(1, b * n),
+                            f"{n} pieces of size 1/{b}": F(n, b),
+                            f"1/{b} of {n} strips": F(n, b),
+                            f"{n} strips each cut into {b}, every piece counted": F(n * b),
+                        }
+                        require({o["label"] for o in blanks[0]["options"]} == set(pictures), "Picture options")
+                        require(list(pictures.values()).count(F(1, b * n)) == 1, "One picture is the quotient")
+                        key = {"pic": text_pick(blanks[0], f"one 1/{b} cut into {n}, one small piece marked"),
+                               "val": pick(blanks[1], F(1, b * n), value_of)}
+                        facts = {"values": [f"1/{b * n}"]}
+                    elif unit_check:
+                        b, n = int(unit_check[1]), int(unit_check[2])
+                        require(s == f"1/{b} ÷ {n} = {{q}} because the quotient × {n} = {{got}}.", "Sentence")
+                        labelled(blanks, ["q", "got"], ["The quotient", "The check product"])
+                        pairs = [(q, got) for q in blanks[0]["options"] for got in blanks[1]["options"]
+                                 if value_of(q["label"]) * n == value_of(got["label"])]
+                        require(len(pairs) == 1, "One true check")
+                        require(value_of(pairs[0][0]["label"]) == F(1, b * n) and value_of(pairs[0][1]["label"]) == F(1, b),
+                                "The check multiplies the quotient by the divisor")
+                        key = {"q": pairs[0][0]["id"], "got": pairs[0][1]["id"]}
+                        facts = {"values": [f"1/{b}"]}
+                    else:
+                        w, d = int(whole_check[1]), int(whole_check[2])
+                        require(s == f"{w} ÷ 1/{d} = {{q}} because the quotient × {{by}} = {{got}}.", "Sentence")
+                        labelled(blanks, ["q", "by", "got"], ["The quotient", "What the check multiplies by", "The check product"])
+                        triples = [(q, by, got) for q in blanks[0]["options"] for by in blanks[1]["options"] for got in blanks[2]["options"]
+                                   if value_of(q["label"]) * value_of(by["label"]) == value_of(got["label"])]
+                        require(len(triples) == 1, "One true check")
+                        require(value_of(triples[0][0]["label"]) == w * d and value_of(triples[0][1]["label"]) == F(1, d)
+                                and value_of(triples[0][2]["label"]) == w, "The check multiplies back to the whole")
+                        key = {"q": triples[0][0]["id"], "by": triples[0][1]["id"], "got": triples[0][2]["id"]}
+                        facts = {"values": [f"{w * d}", f"1/{d}"]}
+                else:
+                    m = re.fullmatch(r"A trail is (\d+) miles long, and one lap of a track is \$\\frac\{1\}\{(\d+)\}\$ mile\. "
+                                     r"Complete the equation that finds how many laps make \1 miles\.", prompt)
+                    require(m is not None, f"Prompt {prompt!r}")
+                    miles, n = int(m[1]), int(m[2])
+                    blanks = common_response(response, "inline", "Choose a number for each gap")
+                    require(s == "{whole} $\\div$ {piece} $=$ {count}", "Sentence")
+                    labelled(blanks, ["whole", "piece", "count"], ["The total distance", "The length of one lap", "The number of laps"])
+                    key = {"whole": pick(blanks[0], F(miles), value_of), "piece": pick(blanks[1], F(1, n), value_of), "count": pick(blanks[2], F(miles * n), value_of)}
+                    facts = {"values": [f"{miles}\\times {n}={miles * n}"]}
     elif t == "array-division-slots":
         m = re.fullmatch(r"(?:Counters are arranged in an array of|The array has) (\d+) rows with (\d+) counters in each row\. Complete the division(?: equation)? that uses "
                          r"(the number of rows to find the number in each row|the number in each row to find the number of rows)\.", prompt)

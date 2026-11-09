@@ -55,7 +55,45 @@ test("unit fraction divisions and array divisions are exact", () => {
     ): [number, number] => [a[0] * b[0], a[1] * b[1]];
     const same = (a: [number, number], b: [number, number]) =>
       a[0] * b[1] === a[1] * b[0];
-    if ("whole" in chosen && "piece" in chosen) {
+    if (prompt.startsWith("Which story matches")) {
+      const found = prompt.match(/^Which story matches 1\/(\d+) ÷ (\d+)/)!;
+      const bottom = Number(found[1]);
+      const people = Number(found[2]);
+      assert.equal(chosen.story, `1/${bottom} lb shared by ${people} people`);
+      assert.ok(same(ratio(chosen.each!), [1, bottom * people]), prompt);
+    } else if (prompt.startsWith("Which picture shows")) {
+      const found = prompt.match(/^Which picture shows 1\/(\d+) ÷ (\d+)/)!;
+      const bottom = Number(found[1]);
+      const people = Number(found[2]);
+      assert.equal(
+        chosen.pic,
+        `one 1/${bottom} cut into ${people}, one small piece marked`,
+      );
+      assert.ok(same(ratio(chosen.val!), [1, bottom * people]), prompt);
+    } else if (prompt.startsWith("Complete the check for")) {
+      const unit = prompt.match(/^Complete the check for 1\/(\d+) ÷ (\d+)/);
+      if (unit) {
+        const bottom = Number(unit[1]);
+        const people = Number(unit[2]);
+        assert.ok(same(ratio(chosen.q!), [1, bottom * people]), prompt);
+        assert.ok(same(ratio(chosen.got!), [1, bottom]), prompt);
+        assert.ok(
+          same(mul(ratio(chosen.q!), [people, 1]), ratio(chosen.got!)),
+          prompt,
+        );
+      } else {
+        const whole = prompt.match(/^Complete the check for (\d+) ÷ 1\/(\d+)/)!;
+        const total = Number(whole[1]);
+        const piece = Number(whole[2]);
+        assert.equal(num(chosen.q!), total * piece, prompt);
+        assert.ok(same(ratio(chosen.by!), [1, piece]), prompt);
+        assert.equal(num(chosen.got!), total, prompt);
+        assert.ok(
+          same(mul(ratio(chosen.q!), ratio(chosen.by!)), ratio(chosen.got!)),
+          prompt,
+        );
+      }
+    } else if ("whole" in chosen && "piece" in chosen) {
       // whole ÷ (1/d) = count
       assert.ok(
         same(
