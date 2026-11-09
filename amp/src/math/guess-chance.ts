@@ -14,10 +14,12 @@ import { historicalTemplates } from "./historical-templates";
  * schema. tests/frontier-guessing.test.ts checks far more seeds against it. */
 const SAMPLE_SEEDS = 16;
 const STRUCTURED_SEEDS = 128;
-/** Floors for variable multi-part families whose high-guessability variants
+/** Floors for variable-response families whose high-guessability variants
  * are rarer than the deterministic sample. Keep these in sync with the
  * generator-variation audit in frontier-guessing.test.ts. */
 const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
+  // Clause choices can have three options after duplicate distractors are removed.
+  "graphical-solution-table": 1 / 3,
   "circle-estimate-blanks": 1 / 8,
   "round-decimal-blanks": 1 / 8,
   "quotient-remainder-blanks": 1 / 8,
