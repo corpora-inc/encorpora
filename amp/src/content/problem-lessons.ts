@@ -1,4 +1,6 @@
 import { generateProblemFor, gradeAnswer, templates } from "../math/engine";
+import { clauseProblem } from "../math/clause-extensions";
+import { clauseMethods } from "./clause-methods";
 import {
   historicalTemplates,
   templateReplacements,
@@ -161,8 +163,11 @@ export function problemLesson(
 ): ProblemLessonView {
   const template = byId.get(templateId);
   if (!template) throw new Error(`Unknown problem type ${templateId}`);
+  const activeClause = learnerProblem?.variant?.axes?.clause;
   const generateProblem = (id: string, exampleSeed: string) =>
-    generateProblemFor(id, exampleSeed, lessonFigures(template));
+    (activeClause
+      ? clauseProblem(template, exampleSeed, activeClause)
+      : null) ?? generateProblemFor(id, exampleSeed, lessonFigures(template));
   // The learner may see a newer figure surface than the example (which is
   // drawn for the oldest client); its legacy twin has the example's wording.
   const twinPrompt = learnerProblem
@@ -251,7 +256,10 @@ export function problemLesson(
         ? example.answer
         : displayAnswer(example.answer);
   const lessonTemplateId = templateReplacements[templateId] ?? templateId;
-  const authored = methods[lessonTemplateId];
+  const clauseMethod = example.variant?.axes?.clause
+    ? clauseMethods[example.variant.axes.clause]
+    : undefined;
+  const authored = clauseMethod ?? methods[lessonTemplateId];
   const givens = realNumberGivens(templateId, example.public.seed);
   const reference = lessons.find((lesson) =>
     lesson.templateIds.includes(lessonTemplateId),
@@ -273,7 +281,8 @@ export function problemLesson(
     reference?.summary ??
     authored?.goal ??
     template.description;
-  const principle = principles[lessonTemplateId] ?? null;
+  const principle =
+    clauseMethod?.intuition ?? principles[lessonTemplateId] ?? null;
   const methodTerms = authored?.terms ?? [];
   // A hint names its own instance's numbers, so it is never a general method.
   const method = authored?.method ?? [template.description];

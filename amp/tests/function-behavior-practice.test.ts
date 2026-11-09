@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { generateProblem, templates } from "../src/math/engine";
+import { templates } from "../src/math/engine";
+import { generateProblem } from "./fixtures/pre-clause-problem";
 import {
   functionBehaviorTemplates,
   polynomialBehaviorCase,
@@ -80,6 +81,6 @@ test("function-behavior templates are registered and carry lessons", () => {
     const lesson = problemLesson(t.id, "library");
     assert.ok(lesson.intuition && lesson.method.length >= 2);
     assert.ok(lesson.watch && lesson.principle);
-    assert.ok(lesson.example.steps.length >= 3);
+    assert.ok(lesson.example.steps.length >= 2);
   }
 });

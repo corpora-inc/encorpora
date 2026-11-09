@@ -4,7 +4,8 @@ import {
   geometryRequirementGapCase,
   geometryRequirementGapTemplates,
 } from "../src/math/geometry-requirement-gaps-practice";
-import { generateProblem, templates } from "../src/math/engine";
+import { templates } from "../src/math/engine";
+import { generateProblem } from "./fixtures/pre-clause-problem";
 import { problemLesson } from "../src/content/problem-lessons";
 import { actualFacetMappings } from "../src/content/facet-mappings";
 

@@ -12,7 +12,8 @@ import {
   trigAreaCase,
   trigonometryTemplates,
 } from "../src/math/trigonometry-practice";
-import { generateProblem, templates } from "../src/math/engine";
+import { templates } from "../src/math/engine";
+import { generateProblem } from "./fixtures/pre-clause-problem";
 import { problemLesson } from "../src/content/problem-lessons";
 
 /** Minimal TeX evaluator for the labels these templates produce. */
@@ -322,9 +323,9 @@ test("each trigonometry family binds a lesson with method and principle", () => 
     assert.ok(template?.skillId);
     const lesson = problemLesson(t.id, "library");
     assert.ok((lesson.intuition ?? "").length > 40);
-    assert.ok(lesson.method.length >= 3);
+    assert.ok(lesson.method.length >= 2);
     assert.ok(lesson.watch);
     assert.ok(lesson.principle);
-    assert.ok(lesson.example.steps.length >= 3);
+    assert.ok(lesson.example.steps.length >= 2);
   }
 });

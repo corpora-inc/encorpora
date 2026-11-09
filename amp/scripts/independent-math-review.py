@@ -6,6 +6,7 @@ from rational_equation_math_oracle import RATIONAL_EQUATION, RATIONAL_EQUATION_C
 from geometry_proof_math_oracle import GEOMETRY_PROOF, solve_geometry_proof, review_geometry_proof_fixtures, review_geometry_proof_problem
 from radical_equation_math_oracle import RADICAL_EQUATION, RADICAL_EQUATION_CHOICE, solve_radical_equation, review_radical_equation_fixtures, review_radical_equation_problem
 import decimal
+import clause_coverage_oracle
 import importlib
 import json
 import math
@@ -106,6 +107,7 @@ SUPPORTED |= QUADRATIC_STRUCTURE
 SUPPORTED |= FUNCTION_TOOLKIT
 SUPPORTED |= EXPONENTIAL
 SUPPORTED |= TWO_VARIABLE
+SUPPORTED |= {"two-column-triangle-proof"}
 
 
 def require(condition, message):
@@ -260,6 +262,8 @@ def solve(public):
 
 
 def solve_family(public):
+    if clause_coverage_oracle.recognizes(public):
+        return clause_coverage_oracle.solve(public)
     oracle = FAMILY_ORACLE_FOR.get(public["templateId"])
     if oracle is not None:
         return oracle.solve(public)
@@ -645,6 +649,9 @@ def review(stream):
         nonlocal area_volume_equalities
         public = problem['public']
         template, seed = public['templateId'], public['seed']
+        if clause_coverage_oracle.recognizes(public):
+            clause_coverage_oracle.review_problem(problem)
+            return
         solved = solve_family(public)
         family = FAMILY_ORACLE_FOR.get(template)
         if family is not None and not family.returns_answer:
@@ -800,6 +807,7 @@ def review(stream):
     # successful review still runs the full fixture and mutation inventory.
     for oracle in FAMILY_ORACLES:
         oracle.self_test()
+    clause_coverage_oracle.self_test()
     review_fraction_expression_fixtures()
     review_hierarchy_multiselect_fixtures()
     review_variation_axes_fixtures()
