@@ -282,12 +282,17 @@ export function TrendLineFitInput({
           </output>
         )}
       </div>
-      <div className="trend-legend" aria-label="Line key">
+      <div
+        className="trend-legend"
+        aria-label="Line key"
+        style={{ visibility: resolved ? "visible" : "hidden" }}
+        aria-hidden={!resolved || undefined}
+      >
         <span>
           <i className="trend-key-student" />
-          {resolved ? "Your line" : "Line to fit"}
+          Your line
         </span>
-        <span style={{ visibility: resolved ? "visible" : "hidden" }}>
+        <span>
           <i className="trend-key-good" />
           One good fit
         </span>
@@ -357,13 +362,14 @@ export function TrendLineFitInput({
         {resolved && (
           <p className="trend-review-note">
             Each stick shows the vertical gap from a dot to a line. A good fit
-            keeps these gaps small along the whole cloud.
+            keeps these gaps small along the whole cloud. Other nearby lines can
+            also be good fits.
           </p>
         )}
       </div>
       <p className="trend-status" role="status" aria-live="polite">
         {resolved
-          ? "Other nearby lines can also be good fits."
+          ? null
           : message ||
             `Slope: ${short(fitted.m)}. Arrows move ${g.xStep} across or ${g.yStep} up.`}
         <span className="sr-only">

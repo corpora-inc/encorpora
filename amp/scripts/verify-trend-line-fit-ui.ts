@@ -175,6 +175,7 @@ try {
             "Exactly one interaction",
           );
           assert.equal(await page.locator(".trend-handle").count(), 2);
+          assert.equal(await page.locator(".trend-legend").isVisible(), false);
           const before = await geometry(page);
           await stable(page, before);
           const tag = `${variant}-${width}-${theme}`;
@@ -315,6 +316,23 @@ try {
             "Entire graph and legend stay visible above feedback",
           );
           assert.equal(await page.locator(".trend-handle").count(), 0);
+          assert.equal(await page.locator(".trend-legend").isVisible(), true);
+          assert.equal(await page.locator(".trend-legend > span").count(), 2);
+          assert.match(
+            (await page.locator(".trend-review-note").textContent())!,
+            /Each stick.*Other nearby lines can also be good fits\./,
+          );
+          assert.doesNotMatch(
+            (await page.locator(".trend-status").textContent())!,
+            /Other nearby lines/,
+          );
+          if (!correct)
+            assert.ok(
+              (await page.locator(".feedback-title").textContent())!.includes(
+                `Your line is flat, but the dots ${variant === "fit-positive" ? "rise" : "fall"} to the right.`,
+              ),
+              "Incorrect headline describes the submitted flat line and the data's direction",
+            );
           assert.equal(await page.locator(".trend-good-line").count(), 1);
           assert.equal(await page.locator(".trend-student-line").count(), 1);
           assert.equal(

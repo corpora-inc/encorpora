@@ -205,6 +205,32 @@ export function trendLineFeedback(
     "The points are farther from your line than they need to be. Move it closer to the middle and follow the cloud's tilt.",
   ];
 }
+/** Name the main visible mismatch in a submitted line, with one adjustment.
+ * Squared error separates tilt from displacement at the cloud's center. */
+export function trendLineDiagnosis(
+  r: TrendLineFitResponse,
+  raw: string,
+): string | null {
+  const points = trendPoints(r, raw);
+  if (!points || gradeTrendLine(r, raw)) return null;
+  const line = throughTrendPoints(points);
+  const stats = trendStatistics(r.data);
+  if (line.m * stats.line.m <= 0) {
+    const direction = stats.line.m > 0 ? "rise" : "fall";
+    const student = line.m === 0 ? "is flat" : line.m > 0 ? "rises" : "falls";
+    return `Your line ${student}, but the dots ${direction} to the right.`;
+  }
+  const offset = line.m * stats.x + line.b - stats.y;
+  const tiltError = (line.m - stats.line.m) ** 2 * stats.varianceX;
+  const ratio = line.m / stats.line.m;
+  if (ratio < 0.65 || ratio > 1.5 || tiltError >= offset ** 2)
+    return ratio < 1
+      ? "Your line is too shallow; make it steeper."
+      : "Your line is too steep; make it flatter.";
+  return offset > 0
+    ? "Your line sits too high; move it down."
+    : "Your line sits too low; move it up.";
+}
 /** Static scatter surface for practice, lessons and print. No answer in its
  * public version; optional lines and distances belong only to worked examples. */
 export function trendLineScene(

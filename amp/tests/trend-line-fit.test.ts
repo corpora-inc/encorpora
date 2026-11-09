@@ -19,6 +19,7 @@ import {
   acceptsTrendLine,
   normalizeTrendLine,
   trendLineFeedback,
+  trendLineDiagnosis,
   trendStatistics,
   throughTrendPoints,
   initialTrendPoints,
@@ -198,6 +199,84 @@ test("schemas, validation, normalization, diagnoses and capability negotiation",
       .success,
     false,
   );
+});
+test("incorrect headlines diagnose the student's direction, tilt and height for both trends", () => {
+  for (const falling of [false, true]) {
+    const mapY = (y: number) => (falling ? 40 - y : y);
+    const r: TrendLineFitResponse = {
+      kind: "trend-line-fit",
+      label: "Fit the dots",
+      grid: {
+        xMin: 0,
+        xMax: 10,
+        yMin: 0,
+        yMax: 40,
+        xStep: 1,
+        yStep: 1,
+        yTick: 5,
+        xLabel: "x",
+        yLabel: "y",
+      },
+      data: [1, -1, 1, -1, 0, -1, 1, -1, 1].map((noise, i) => [
+        i + 1,
+        mapY(2 * (i + 1) + 10 + noise),
+      ]),
+      guessChance: 0.05,
+    };
+    const cases: [number, number, string][] = [
+      [
+        20,
+        20,
+        `Your line is flat, but the dots ${falling ? "fall" : "rise"} to the right.`,
+      ],
+      [
+        28,
+        12,
+        `Your line ${falling ? "rises" : "falls"}, but the dots ${falling ? "fall" : "rise"} to the right.`,
+      ],
+      [16, 24, "Your line is too shallow; make it steeper."],
+      [8, 32, "Your line is too steep; make it flatter."],
+      // Slopes inside the sign/ratio bounds can still miss the cloud's tilt.
+      [14, 26, "Your line is too shallow; make it steeper."],
+      [10, 30, "Your line is too steep; make it flatter."],
+      [
+        16,
+        32,
+        falling
+          ? "Your line sits too low; move it up."
+          : "Your line sits too high; move it down.",
+      ],
+      [
+        8,
+        24,
+        falling
+          ? "Your line sits too high; move it down."
+          : "Your line sits too low; move it up.",
+      ],
+    ];
+    for (const [left, right, expected] of cases) {
+      const points = [
+        [1, mapY(left)],
+        [9, mapY(right)],
+      ];
+      assert.equal(trendLineDiagnosis(r, JSON.stringify(points)), expected);
+      assert.equal(
+        trendLineDiagnosis(r, JSON.stringify(points.reverse())),
+        expected,
+      );
+    }
+    assert.equal(
+      trendLineDiagnosis(
+        r,
+        JSON.stringify([
+          [1, mapY(12)],
+          [9, mapY(28)],
+        ]),
+      ),
+      null,
+    );
+    assert.equal(trendLineDiagnosis(r, ""), null);
+  }
 });
 test("all three types pass the independent rational oracle and reject corrupt keys", () => {
   const cases = ids.flatMap((id) =>

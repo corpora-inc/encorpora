@@ -25,7 +25,10 @@ import { ChoiceFigure } from "./ChoiceFigure";
 import { PointPlotAnswer, PointPlotInput, plotReview } from "./PointPlotInput";
 import { pointPlotAnswerText } from "../math/point-plot";
 import { TrendLineFitInput, TrendLineFitAnswer } from "./TrendLineFitInput";
-import { trendLineAnswerText } from "../math/trend-line-fit";
+import {
+  trendLineAnswerText,
+  trendLineDiagnosis,
+} from "../math/trend-line-fit";
 import {
   MultiPartChoiceAnswer,
   MultiPartChoiceInput,
@@ -1245,7 +1248,10 @@ export function PracticeWorkspace(props: Props) {
               ? "The answer is filled in"
               : "Each row’s answer is ringed"
             : trend
-              ? "One good fit is dashed"
+              ? (!skipped &&
+                  outcome &&
+                  trendLineDiagnosis(trend, outcome.response)) ||
+                "One good fit is dashed"
               : plot?.connect === "line"
                 ? "The answer is dashed"
                 : "The answer is circled"}
