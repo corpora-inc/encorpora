@@ -79,6 +79,9 @@ test("10752 deterministic instances preserve bounds, response semantics, and req
         `domain-${seed}`,
       );
       generatedProblemSchema.parse(problem);
+      assert.ok(problem.explanation.length >= 2 && problem.hint.length > 0);
+      const responseKind = problem.public.response.kind;
+      if (responseKind !== "number" && responseKind !== "fraction") continue;
       assert.ok(
         problem.public.prompt.length <= 190,
         "Prompt is concise for phone practice",
@@ -107,7 +110,7 @@ test("10752 deterministic instances preserve bounds, response semantics, and req
         value(problem.answer) === 0
       )
         seen.add("zero-difference");
-      if (definition.id === "fraction-group-count") {
+      if (definition.id === "fraction-group-count" && responseKind === "fraction") {
         if (value(problem.answer) < 1) seen.add("less-than-group");
         if (!Number.isInteger(value(problem.answer))) seen.add("partial-group");
         if (Number.isInteger(value(problem.answer))) seen.add("full-groups");
@@ -118,7 +121,10 @@ test("10752 deterministic instances preserve bounds, response semantics, and req
         value(problem.answer) > 1
       )
         seen.add("improper-share");
-      if (definition.id === "unit-fraction-share")
+      if (
+        definition.id === "unit-fraction-share" &&
+        problem.public.response.kind === "fraction"
+      )
         assert.match(problem.public.response.label, /Liters per person/);
       if (definition.id === "mixed-fraction-difference") {
         const [w, n, d, v, a, b] = problem.public.prompt
@@ -221,7 +227,9 @@ test("SVG geometry preserves fractional unit lengths and shaded counts without a
   ])
     for (let seed = 0; seed < 128; seed++) {
       const figure = generateFractionPracticeProblem(id, `render-${seed}`)
-        .public.figure!;
+        .public.figure;
+      if (!figure || (figure.kind !== "rational-line" && figure.kind !== "fraction-strips"))
+        continue;
       const svg = renderToStaticMarkup(React.createElement(Figure, { figure }));
       assert.match(svg, /viewBox=/);
       assert.match(svg, /role="img"/);

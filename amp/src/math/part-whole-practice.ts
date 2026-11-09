@@ -4,6 +4,11 @@ import type {
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts";
+import {
+  clauseProblem,
+  clauseTask,
+  fourthsWording,
+} from "./fraction-clause-variants.js";
 import { snakeRegions, type PartitionedShape } from "./part-whole-models";
 import { fractionBar } from "./scene/author";
 import type { Scene } from "./scene/spec";
@@ -32,10 +37,16 @@ const definitions = rows
     ) as [string, string, string, "K–2" | "3–5", Response, string];
     return { id, title, skillId, gradeBand, response, description };
   });
+const CLAUSE_PARTS = new Set([
+  "name-equal-share",
+  "name-share",
+  "find-equal-shares",
+]);
 export const partWholeTemplates: readonly TemplateMetadata[] = definitions.map(
   ({ id, title, skillId, gradeBand, response, description }) => ({
     id,
-    version: 1,
+    version: CLAUSE_PARTS.has(id) ? 2 : 1,
+    ...(CLAUSE_PARTS.has(id) ? { reprintsFrom: 1 } : {}),
     title,
     skillId,
     gradeBand,
@@ -635,8 +646,22 @@ export function generatePartWholeProblem(
   if (!meta) throw new Error(`Unknown part–whole template: ${templateId}`);
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
+  if (templateId === "name-equal-share" || templateId === "name-share") {
+    const clause = clauseProblem(templateId, seed, meta);
+    if (clause) return clause;
+  }
   const r = random(templateId, seed);
   const d = draft(templateId, r);
+  const fourths =
+    templateId === "find-equal-shares" &&
+    clauseTask(templateId, seed) === "fourths" &&
+    d.prompt.includes("quarter");
+  if (fourths) {
+    const worded = fourthsWording(d.prompt, d.hint, d.explanation);
+    d.prompt = worded.prompt;
+    d.hint = worded.hint;
+    d.explanation = worded.explanation;
+  }
   const id = createHash("sha256")
     .update(JSON.stringify([templateId, 1, seed]))
     .digest("hex");
@@ -684,5 +709,6 @@ export function generatePartWholeProblem(
     explanation: d.explanation,
     hint: d.hint,
     choiceFeedback,
+    ...(fourths ? { variant: { id: "fourths", axes: { task: "fourths" } } } : {}),
   };
 }

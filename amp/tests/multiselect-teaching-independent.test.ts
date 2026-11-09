@@ -69,7 +69,7 @@ for problem in cases:
     reject(lambda lines: lines.__setitem__(-1, 'Every option is correct.'))
     reject(lambda lines: lines.insert(start, 'An additional claim: $1=2$.'))
 assert len(cases) == 2048 and legacy == 1792
-assert len(seen) == 9 and rejected == 72
+assert len(seen) == 10 and rejected == 80
 print({'cases': len(cases), 'legacy': legacy, 'frame_variants': len(seen), 'rejected': rejected})
 `,
     ],
@@ -81,7 +81,7 @@ print({'cases': len(cases), 'legacy': legacy, 'frame_variants': len(seen), 'reje
     },
   );
   assert.equal(result.status, 0, result.stderr || String(result.error));
-  assert.match(result.stdout, /'rejected': 72/);
+  assert.match(result.stdout, /'rejected': 80/);
 });
 
 test("independent review reports the failing case and preserves the original error", () => {

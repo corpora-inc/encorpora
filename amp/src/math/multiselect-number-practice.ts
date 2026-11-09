@@ -1,5 +1,6 @@
 import type { GeneratedProblem } from "./contracts";
 import { dispatch, gcd, pick } from "./chain-kit";
+import { clauseAxis } from "./fraction-clause-variants";
 import { numberLine } from "./scene/author";
 import type { Random } from "./variation/axes";
 import { orientationAxis } from "./variation/orientation";
@@ -337,16 +338,20 @@ function equivalentFractions(r: Random) {
 
 /* ---------------------------------------- fractions on a number line */
 
-export const fractionLineNamesTemplate = selectTemplate({
-  figure: "scenes-v1",
-  id: "fraction-line-names-select",
-  title: "Select the fractions that name a point",
-  skillId: "fractions-number-line",
-  gradeBand: "3–5",
-  difficultyOffset: 0.2,
-  description:
-    "Read a point on a zero-to-one number line cut into equal parts and select every fraction that names it, in the ticks' unit and in an equivalent form.",
-});
+export const fractionLineNamesTemplate = {
+  ...selectTemplate({
+    figure: "scenes-v1",
+    id: "fraction-line-names-select",
+    title: "Select the fractions that name a point",
+    skillId: "fractions-number-line",
+    gradeBand: "3–5",
+    difficultyOffset: 0.2,
+    description:
+      "Read a point on a zero-to-one number line cut into equal parts and select every fraction that names it, in the ticks' unit and in an equivalent form.",
+  }),
+  version: 2,
+  reprintsFrom: 1,
+};
 
 function fractionLineNames(r: Random) {
   const lines: { d: number; p: number }[] = [
@@ -420,6 +425,67 @@ function fractionLineNames(r: Random) {
     ],
     tail: ["The fractions marked true all name point $P$."],
   };
+}
+
+/** 4/4 and 1 (or 2b/b and 2) name the same marked whole. */
+function fractionLineWhole(r: Random) {
+  const b = pick(r, [2, 3, 4, 6, 8]);
+  const atTwo = b > 2 && r(0, 1) === 1;
+  const whole = atTwo ? 2 : 1;
+  const pool: Statement[] = [
+    st(
+      `$\\frac{${whole}}{1}$`,
+      true,
+      `$\\frac{${whole}}{1}$ is the whole number ${whole}.`,
+    ),
+    st(
+      `$\\frac{${whole * b}}{${b}}$`,
+      true,
+      `${whole * b} pieces of size 1/${b} make ${whole}.`,
+    ),
+    st(
+      `$\\frac{1}{${b}}$`,
+      false,
+      `That is one step from 0, not ${whole}.`,
+    ),
+    st(
+      `$\\frac{${b}}{1}$`,
+      false,
+      `${b}/1 equals ${b}, and point P is at ${whole}.`,
+    ),
+    st(`$\\frac{0}{${b}}$`, false, `Zero pieces from 0 is 0, not ${whole}.`),
+  ];
+  const scene = numberLine({
+    min: 0,
+    max: 2,
+    denominator: b,
+    labels: "ends",
+  })
+    .mark(whole, { label: "P" })
+    .scene();
+  return {
+    ...selectModel({
+      variant: "whole",
+      pool,
+      total: 5,
+      k: 2,
+      context: `The number line from $0$ to $2$ is cut into ${b} equal parts on each whole. Point $P$ is marked.`,
+      ask: (k) => `Select the ${k} fractions that name point $P$.`,
+      one: "fraction",
+      hint: () =>
+        `Each whole has ${b} equal steps. Count the steps from 0 to point $P$, then look for the fraction that is the same count over ${b}.`,
+      figure: { kind: "scene", scene },
+    }),
+    lead: [
+      `Point $P$ is at ${whole}. ${whole * b} steps of 1/${b} land on the same point.`,
+    ],
+    tail: [`The true names are ${whole} and ${whole * b}/${b}.`],
+  };
+}
+
+function fractionLineNamesModel(r: Random, axes: Record<string, string>) {
+  if (axes.task === "whole") return fractionLineWhole(r);
+  return fractionLineNames(r);
 }
 
 /* ------------------------------------------------------ equivalent ratios */
@@ -885,7 +951,8 @@ const families = {
   ),
   "fraction-line-names-select": selectFamily(
     fractionLineNamesTemplate,
-    fractionLineNames,
+    fractionLineNamesModel,
+    { task: clauseAxis("fraction-line-names-select") },
   ),
   "equivalent-ratios-select": selectFamily(
     equivalentRatiosTemplate,

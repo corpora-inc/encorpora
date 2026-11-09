@@ -1330,6 +1330,10 @@ require(set(SOLVERS) == SUPPORTED, 'Every supported template has a solver')
 
 
 def solve(public):
+    from fraction_clause_math_oracle import solve_clause
+    clause = solve_clause(public)
+    if clause is not None:
+        return clause
     template = public['templateId']
     require(template in SUPPORTED, f'Unexpected template {template}')
     value = SOLVERS[template](public)

@@ -2,10 +2,12 @@ import type { TemplateMetadata } from "./contracts";
 import { defineAxis } from "./variation/axes";
 import { chainFamily, choiceSurface, dispatch, pick } from "./chain-kit";
 import { draw } from "./elementary-gap-kit";
+import { clauseAxis, judgeSurface } from "./fraction-clause-variants";
 
 export const benchmarkEstimateTemplate: TemplateMetadata = {
   id: "benchmark-fraction-estimate",
-  version: 1,
+  version: 2,
+  reprintsFrom: 1,
   requiredResponseCapability: "single-choice-v1",
   title: "Estimate with 0, one half and 1",
   skillId: "fraction-addition",
@@ -59,9 +61,12 @@ const benchName = (b2: number) =>
 
 const axes = {
   ask: defineAxis("ask", ["sum", "difference", "left"] as const),
+  task: clauseAxis("benchmark-fraction-estimate"),
 };
 interface Model {
   ask: "sum" | "difference" | "left";
+  /** Clause variant. The estimate path leaves this unset. */
+  judge?: boolean;
   x: Frac;
   y: Frac;
   /** The estimate in halves. */
@@ -71,8 +76,10 @@ interface Model {
 }
 function model(
   r: (lo: number, hi: number) => number,
-  a: { ask: Model["ask"] },
+  a: { ask: Model["ask"]; task: string },
 ): Model {
+  if (a.task === "judge")
+    return { ask: "sum", x: pool[0]!, y: pool[1]!, est: 0, wording: 0, judge: true };
   const x = pick(r, pool);
   const y = pick(r, pool);
   if (x.n === y.n && x.d === y.d) throw new Error("Need three retries");
@@ -151,8 +158,9 @@ export const benchmarkEstimate = chainFamily({
   template: benchmarkEstimateTemplate,
   axes,
   model,
-  variant: (m) => m.ask,
+  variant: (m) => (m.judge ? "judge" : m.ask),
   render: (m, _a, r) => {
+    if (m.judge) return judgeSurface(r);
     const { x, y, est } = m;
     const prompt = wordings[m.ask][m.wording]!(x, y);
     // Options: the estimate and three other multiples of one half.
