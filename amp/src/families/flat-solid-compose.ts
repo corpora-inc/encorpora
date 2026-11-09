@@ -32,4 +32,14 @@ export const family = {
     "composite-which-pieces": ["shape.compose"],
     "composite-which-solids": ["shape.compose"],
   },
+  connections: [
+    {
+      from: "composite-shapes",
+      to: "halves-and-quarters",
+      kind: "related",
+      explanation:
+        "Two half-circles put together make a circle, and two quarter-circles make a half-circle. Cutting a whole into equal halves and quarters runs the same idea the other way.",
+      templateIds: ["composite-shape-name"],
+    },
+  ],
 } satisfies ContentFamily;

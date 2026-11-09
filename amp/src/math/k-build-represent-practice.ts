@@ -93,6 +93,7 @@ export const kBuildRepresentTemplates: readonly TemplateMetadata[] = [
     description:
       "Read a picture or a story of joining or taking away within 10, and choose the expression, equation or sentence that tells what happened. Wrong choices use the other operation, give only the total, start from the whole, swap what was taken and what was left, or miscount.",
     requiredResponseCapability: "single-choice-v1",
+    ...scenes,
   },
   {
     id: "number-sentence-to-picture",
@@ -103,6 +104,7 @@ export const kBuildRepresentTemplates: readonly TemplateMetadata[] = [
     description:
       "Choose the picture that shows an addition or subtraction expression or equation within 10: two groups joining, some counters leaving, or two colors on a ten frame. Wrong pictures use the other operation, show only the answer, take away the answer or miscount.",
     requiredResponseCapability: "figure-choice-v1",
+    ...scenes,
   },
 ];
 

@@ -24,4 +24,22 @@ export const family = {
   methods: kBuildRepresentMethods,
   principles: kBuildRepresentPrinciples,
   facetMappings: kBuildRepresentFacetMappings,
+  connections: [
+    {
+      from: "build-and-draw-shapes",
+      to: "shape-attributes",
+      kind: "extension",
+      explanation:
+        "Building a shape with sticks and clay balls shows the parts that make it that shape: straight sides, corners, and an outline that closes. Shape attributes name those parts and sort shapes by them.",
+      templateIds: ["sticks-and-balls-needed"],
+    },
+    {
+      from: "represent-join-separate",
+      to: "addition-stories",
+      kind: "extension",
+      explanation:
+        "Reading a picture of joining or taking away as a number sentence is the first step. Addition stories ask for the number sentence of a longer story, including stories that compare two groups.",
+      templateIds: ["picture-to-number-sentence"],
+    },
+  ],
 } satisfies ContentFamily;

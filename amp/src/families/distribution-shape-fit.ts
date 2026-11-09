@@ -37,4 +37,14 @@ export const family = {
     "trend-line-best-fit-choice": ["bivariate.scatter"],
     "trend-line-fit-assess": ["bivariate.scatter"],
   },
+  connections: [
+    {
+      from: "describe-distributions",
+      to: "distribution-plots",
+      kind: "extension",
+      explanation:
+        "Center, spread and shape describe a distribution in words. The median, the mean, the range and a box plot measure those same features with numbers.",
+      templateIds: ["distribution-describe-dot-plot"],
+    },
+  ],
 } satisfies ContentFamily;

@@ -23,4 +23,14 @@ export const family = {
   methods: strategyReasonsMethods,
   principles: strategyReasonsPrinciples,
   facetMappings: strategyReasonsFacetMappings,
+  connections: [
+    {
+      from: "explain-strategies",
+      to: "add-subtract-thousands",
+      kind: "extension",
+      explanation:
+        "A strategy works because breaking a number by place, and trading 10 ones for 1 ten, keep the amount the same. The same reasons make quick addition and subtraction within 1000 work.",
+      templateIds: ["strategy-step-reason"],
+    },
+  ],
 } satisfies ContentFamily;

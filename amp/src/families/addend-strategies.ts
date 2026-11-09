@@ -28,4 +28,14 @@ export const family = {
     "make-ten-step": ["early.three-addends"],
     "array-add-rows-total": ["early.array-total"],
   },
+  connections: [
+    {
+      from: "turn-around-facts",
+      to: "operation-properties",
+      kind: "extension",
+      explanation:
+        "A turnaround fact says the order of two addends does not change the sum. Multiplication has the same order rule: 3 × 4 and 4 × 3 make the same product.",
+      templateIds: ["turn-around-fact"],
+    },
+  ],
 } satisfies ContentFamily;

@@ -32,4 +32,14 @@ export const family = {
     ],
     "rigid-motion-image-flaw": ["transformation.invariants"],
   },
+  connections: [
+    {
+      from: "rigid-motion-properties",
+      to: "dilations-similarity",
+      kind: "extension",
+      explanation:
+        "Slides, flips and turns keep every length, every angle and every pair of parallel lines. A dilation keeps the angles and the parallel lines too, but it multiplies every length by the scale factor.",
+      templateIds: ["rigid-motion-property-claims"],
+    },
+  ],
 } satisfies ContentFamily;
