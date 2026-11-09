@@ -13,7 +13,10 @@ import {
 import { normalizeSelection } from "./selection-response";
 import { withTemplateGlossary } from "./template-glossary";
 import { historicalTrueEquationChoice } from "./operation-sentence-practice";
-import { clauseProblem, withClauseMetadata } from "./clause-extensions";
+import {
+  clauseProblem as extendedClauseProblem,
+  withClauseMetadata,
+} from "./clause-extensions";
 import { historicalEqualFactorFamily } from "./multiselect-number-practice";
 import { sceneCapabilitiesIn } from "./scene/capability";
 import {
@@ -1025,7 +1028,7 @@ function generateRawProblem(
   seed: string,
 ): GeneratedProblem {
   const metadata = templateById.get(templateId);
-  const clause = metadata ? clauseProblem(metadata, seed) : null;
+  const clause = metadata ? extendedClauseProblem(metadata, seed) : null;
   if (clause) return clause;
   if (templateId === "true-equation-choice")
     return historicalTrueEquationChoice.generate(seed).problem;
