@@ -208,6 +208,12 @@ function ResultRowView({
   onChange: (draft: Draft) => void;
 }) {
   const id = `problem-${row.n}`;
+  const locked = disabled || !!row.recorded;
+  const shown: Draft = row.recorded
+    ? row.recorded.response
+      ? { answer: row.recorded.response }
+      : { mark: row.recorded.correct ? "right" : "not-yet" }
+    : draft;
   return (
     <li className={styles.resultRow} aria-labelledby={`${id}-label`}>
       <div className={styles.resultHead}>
@@ -223,73 +229,73 @@ function ResultRowView({
       <p className={styles.prompt}>
         <MathText text={row.prompt} />
       </p>
-      {row.recorded ? (
-        <p
-          className={`${styles.recorded} ${row.recorded.correct ? styles.right : styles.notYet}`}
-        >
-          {row.recorded.correct ? "Right" : "Not yet"}
-          {row.recorded.response
-            ? ` · answer ${row.recorded.response}`
-            : " · marked"}
-        </p>
-      ) : (
-        <div className={styles.resultControls}>
-          {row.entry === "number" && (
-            <label className={styles.answerField}>
-              <span>Answer</span>
-              <input
-                inputMode="text"
-                autoComplete="off"
-                maxLength={40}
-                value={draft.answer ?? ""}
-                disabled={disabled}
-                aria-invalid={!!error}
-                aria-describedby={`${id}-error`}
-                onChange={(event) =>
-                  onChange(
-                    event.target.value ? { answer: event.target.value } : {},
-                  )
-                }
-              />
-            </label>
-          )}
-          {row.entry === "choice" && (
-            <div className={styles.pickField}>
-              <span aria-hidden="true">Answer</span>
-              <Picker
-                label={`Answer to problem ${row.n}`}
-                options={(row.options ?? []).map((o) => ({
-                  value: o.id,
-                  label: o.letter,
-                  title: o.label,
-                }))}
-                value={draft.answer ?? null}
-                disabled={disabled}
-                onChange={(value) => onChange({ answer: value })}
-              />
-            </div>
-          )}
-          <div className={styles.pickField}>
-            <span aria-hidden="true">
-              {row.entry === "mark" ? "Mark" : "Or mark"}
-            </span>
-            <Picker
-              label={`Mark problem ${row.n}`}
-              options={[
-                { value: "right", label: "Right" },
-                { value: "not-yet", label: "Not yet" },
-              ]}
-              value={draft.answer ? null : (draft.mark ?? null)}
-              disabled={disabled}
-              onChange={(value) =>
-                onChange({ mark: value as "right" | "not-yet" })
+      <div className={styles.resultControls}>
+        {row.entry === "number" && (
+          <label className={styles.answerField}>
+            <span>Answer</span>
+            <input
+              inputMode="text"
+              autoComplete="off"
+              maxLength={40}
+              value={shown.answer ?? ""}
+              disabled={locked}
+              aria-invalid={!!error}
+              aria-describedby={`${id}-error`}
+              onChange={(event) =>
+                onChange(
+                  event.target.value ? { answer: event.target.value } : {},
+                )
               }
             />
+          </label>
+        )}
+        {row.entry === "choice" && (
+          <div className={styles.pickField}>
+            <span aria-hidden="true">Answer</span>
+            <Picker
+              label={`Answer to problem ${row.n}`}
+              options={(row.options ?? []).map((o) => ({
+                value: o.id,
+                label: o.letter,
+                title: o.label,
+              }))}
+              value={shown.answer ?? null}
+              disabled={locked}
+              onChange={(value) => onChange({ answer: value })}
+            />
           </div>
+        )}
+        <div className={styles.pickField}>
+          <span aria-hidden="true">
+            {row.entry === "mark" ? "Mark" : "Or mark"}
+          </span>
+          <Picker
+            label={`Mark problem ${row.n}`}
+            options={[
+              { value: "right", label: "Right" },
+              { value: "not-yet", label: "Not yet" },
+            ]}
+            value={shown.answer ? null : (shown.mark ?? null)}
+            disabled={locked}
+            onChange={(value) =>
+              onChange({ mark: value as "right" | "not-yet" })
+            }
+          />
         </div>
-      )}
+      </div>
       <p id={`${id}-error`} className={styles.rowError} aria-live="polite">
-        {error}
+        {row.recorded ? (
+          <span
+            className={`${styles.recorded} ${row.recorded.correct ? styles.right : styles.notYet}`}
+          >
+            {row.recorded.correct ? "Right" : "Not yet"}
+            {row.recorded.response
+              ? ` · answer ${row.recorded.response}`
+              : " · marked"}
+          </span>
+        ) : (
+          error
+        )}
       </p>
     </li>
   );

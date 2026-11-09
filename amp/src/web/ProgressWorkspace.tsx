@@ -347,7 +347,9 @@ export function ProgressWorkspace({
               </h1>
               <div className="progress-counts">
                 <div>
-                  <strong>{selected.evidence.attempts}</strong>
+                  <strong>
+                    {selected.evidence.attempts.toLocaleString("en-US")}
+                  </strong>
                   <span>problems tried</span>
                 </div>
                 <div>
@@ -407,7 +409,7 @@ export function ProgressWorkspace({
                 <p>
                   {snapshot
                     ? practiced.length
-                      ? `${practiced.length} ideas practiced · ${practiced.reduce((sum, { evidence }) => sum + evidence.attempts, 0)} problems tried`
+                      ? `${practiced.length.toLocaleString("en-US")} ideas practiced · ${practiced.reduce((sum, { evidence }) => sum + evidence.attempts, 0).toLocaleString("en-US")} problems tried`
                       : "No problems answered yet."
                     : "Gathering your practice history…"}
                 </p>

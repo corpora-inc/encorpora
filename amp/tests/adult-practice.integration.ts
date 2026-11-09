@@ -292,6 +292,10 @@ test(
     );
 
     await t.test("access ends when the teaching role ends", async () => {
+      await db.query(
+        "UPDATE amp_learners SET free_online_used=100 WHERE id=$1",
+        [adultId],
+      );
       const role = await db.query(
         `UPDATE amp_org_roles r SET end_on=$2 FROM amp_people p
          WHERE p.id=r.person_id AND p.account_id=$1 AND r.role='teacher' RETURNING r.id`,
@@ -304,7 +308,7 @@ test(
         learner: { id: adultId, name: "Dana Fixture", active: false },
       });
       assert.ok((await grant(adultId)).ends_at.getTime() <= Date.now());
-      assert.equal((await batch(teacher, adultId)).statusCode, 403);
+      assert.equal((await batch(teacher, adultId)).statusCode, 402);
       // Their record stays theirs to read.
       assert.equal((await get("/api/v1/me/practice", teacher)).statusCode, 200);
       // A role that ends on a later date carries access to that day.
@@ -326,7 +330,7 @@ test(
         [org.id],
       );
       assert.equal((await me(teacher)).adultPractice.eligible, false);
-      assert.equal((await batch(teacher, adultId)).statusCode, 403);
+      assert.equal((await batch(teacher, adultId)).statusCode, 402);
       await db.query(
         "UPDATE amp_school_licenses SET status='active' WHERE org_id=$1",
         [org.id],
@@ -336,7 +340,7 @@ test(
     });
 
     await t.test(
-      "a parent of a paid child gets it; a parent with none doesn't",
+      "a paid child supplies adult access; other adults start with their free allowance",
       async () => {
         const paid = await user("Avery Fixture");
         await consent(paid);
@@ -360,22 +364,36 @@ test(
         assert.equal((await batch(paid, own)).statusCode, 200);
         // The child's access ends, and so does the parent's.
         await db.query(
+          "UPDATE amp_learners SET free_online_used=100 WHERE id=$1",
+          [own],
+        );
+        await db.query(
           "UPDATE amp_grants SET status='revoked' WHERE learner_id=$1",
           [child],
         );
         assert.equal((await me(paid)).adultPractice.learner.active, false);
-        assert.equal((await batch(paid, own)).statusCode, 403);
+        assert.equal((await batch(paid, own)).statusCode, 402);
 
         const unpaid = await user("Morgan Fixture");
         await consent(unpaid);
         await learning.create(unpaid, "Sky Fixture", 2017);
-        assert.equal((await me(unpaid)).adultPractice, undefined);
-        const refused = await start(unpaid);
-        assert.equal(refused.statusCode, 403);
-        assert.equal(refused.json().error, "adult_practice_unavailable");
+        assert.deepEqual((await me(unpaid)).adultPractice, {
+          eligible: true,
+          learner: null,
+        });
+        const free = await start(unpaid);
+        assert.equal(free.statusCode, 201);
+        assert.equal(
+          await grant(free.json().learnerId),
+          undefined,
+          "free practice does not fabricate a grant",
+        );
         const nobody = await user("Quinn Fixture");
-        assert.equal((await me(nobody)).adultPractice, undefined);
-        assert.equal((await start(nobody)).statusCode, 403);
+        assert.deepEqual((await me(nobody)).adultPractice, {
+          eligible: true,
+          learner: null,
+        });
+        assert.equal((await start(nobody)).statusCode, 201);
         assert.equal(
           (
             await db.query(
@@ -383,7 +401,7 @@ test(
               [[unpaid, nobody]],
             )
           ).rows[0].n,
-          0,
+          2,
         );
       },
     );

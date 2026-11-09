@@ -1,11 +1,13 @@
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
-import { Link, Navigate } from "@tanstack/react-router";
+import { Link, Navigate, useNavigate } from "@tanstack/react-router";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
 import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
+import { Toast } from "../../ui/Toast";
 import { VerifyEmailStep } from "../onboarding/VerifyEmailStep";
 import styles from "../onboarding/Start.module.css";
 import giftStyles from "./Access.module.css";
+import { useActivateGift } from "./api";
 
 /** Shareable invitation destination. The URL contains no email or bearer capability. */
 export function AccessScreen() {
@@ -14,6 +16,8 @@ export function AccessScreen() {
     ...meOptions(session ?? { accountId: "", token: "" }),
     enabled: !!session,
   });
+  const claim = useActivateGift(session ?? { accountId: "", token: "" });
+  const navigate = useNavigate();
   if (!session)
     return <Navigate to="/sign-in" search={{ return: "access" }} replace />;
   const me =
@@ -27,8 +31,17 @@ export function AccessScreen() {
       </PageFrame>
     );
   const gift = me?.availableAccessGrant;
+  const family = gift?.covers === "family";
+  const term = gift?.months === 12 ? "year" : "month";
   const paidSetup = !!me?.unassignedPurchase;
   const active = me?.learners.some((learner) => learner.entitlement.active);
+  // A family gift starts here for every child at once; with no child yet,
+  // adding the first one starts it.
+  const startFamily =
+    family &&
+    !paidSetup &&
+    me?.consent.status === "active" &&
+    me.learners.length > 0;
   return (
     <PageFrame centered>
       <section
@@ -36,6 +49,10 @@ export function AccessScreen() {
         aria-busy={query.isPending}
       >
         <FrameBrand expanded />
+        <Toast
+          message={claim.error?.message ?? ""}
+          onDismiss={() => claim.reset()}
+        />
         {!me ? (
           <>
             <h1>Your AMP access</h1>
@@ -65,11 +82,13 @@ export function AccessScreen() {
               {gift ? "A gift of learning" : "Your AMP access"}
             </p>
             <h1>
-              {gift
-                ? `Your ${gift.months === 12 ? "year" : "month"} of AMP is ready.`
-                : active
-                  ? "You’re ready to learn."
-                  : "Let’s find your invitation."}
+              {family
+                ? `A ${term} of AMP for your whole family.`
+                : gift
+                  ? `Your ${term} of AMP is ready.`
+                  : active
+                    ? "You’re ready to learn."
+                    : "Let’s find your invitation."}
             </h1>
             <p className={styles.address}>
               {me.account.email ?? "Signed in to your account"}
@@ -82,14 +101,19 @@ export function AccessScreen() {
                     <span>of full access</span>
                   </strong>
                   <p>
-                    One learner. Unlimited adaptive practice, lessons, and a
-                    growing pathways map.
+                    {family
+                      ? "Every learner in your family, including anyone you add later."
+                      : "One learner."}{" "}
+                    Unlimited adaptive practice, lessons, and a growing pathways
+                    map.
                   </p>
                 </div>
                 <p>
                   {paidSetup
-                    ? "Your paid plan is ready to assign first. Finish that setup; this gift stays reserved for another learner or later use. Your paid plan’s renewal terms are unchanged."
-                    : "Choose who’s learning and finish setup. Your access starts then. No payment details or automatic renewal."}
+                    ? `Your paid plan is ready to assign first. Finish that setup; this gift stays reserved for ${family ? "" : "another learner or "}later use. Your paid plan’s renewal terms are unchanged.`
+                    : startFamily
+                      ? "It starts for everyone at once, when you begin. No payment details or automatic renewal."
+                      : "Choose who’s learning and finish setup. Your access starts then. No payment details or automatic renewal."}
                 </p>
                 {gift.claimBy && (
                   <p className={styles.fine}>
@@ -104,21 +128,44 @@ export function AccessScreen() {
                 )}
                 {active && (
                   <p className={styles.fine}>
-                    Existing plans are unchanged. Use this gift for a learner
-                    without access, or save it for later.
+                    {family
+                      ? "Existing plans are unchanged."
+                      : "Existing plans are unchanged. Use this gift for a learner without access, or save it for later."}
                   </p>
                 )}
-                <Link
-                  to={
-                    me.consent.status === "active"
-                      ? "/start/name"
-                      : "/start/consent"
-                  }
-                  search={{ return: "access" }}
-                  className={buttonClass("primary")}
-                >
-                  {paidSetup ? "Finish paid setup →" : "Continue setup →"}
-                </Link>
+                {startFamily ? (
+                  <Button
+                    variant="primary"
+                    disabled={claim.isPending}
+                    onClick={() =>
+                      claim.mutate(
+                        { id: gift.id },
+                        {
+                          onSuccess: () =>
+                            void navigate({
+                              to: "/$",
+                              params: { _splat: "practice" },
+                              replace: true,
+                            }),
+                        },
+                      )
+                    }
+                  >
+                    Start your family’s {term} →
+                  </Button>
+                ) : (
+                  <Link
+                    to={
+                      me.consent.status === "active"
+                        ? "/start/name"
+                        : "/start/consent"
+                    }
+                    search={{ return: "access" }}
+                    className={buttonClass("primary")}
+                  >
+                    {paidSetup ? "Finish paid setup →" : "Continue setup →"}
+                  </Link>
+                )}
               </>
             ) : active ? (
               <>

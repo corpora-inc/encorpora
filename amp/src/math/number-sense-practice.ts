@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
+  ProblemVariant,
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts";
@@ -8,7 +9,22 @@ import { formatWhole } from "./comparison-practice";
 import { act, lessonStep, numberLine, scene, step } from "./scene/author";
 import type { Element, Scene } from "./scene/spec";
 import { countContext } from "./story-kit/place-value";
-import { defineAxis, surfaceStream } from "./variation/axes";
+import {
+  chooseAxes,
+  defineAxis,
+  surfaceStream,
+  versionGatedAxes,
+} from "./variation/axes";
+
+/** An empty ten-frame, so 0 is a count of no objects. Legacy keeps the old draw. */
+export const numeralAxes = {
+  family: defineAxis("family", ["legacy", "empty-frame-zero"] as const, {
+    legacy: "legacy",
+    weights: [5, 1],
+    silentLegacy: true,
+    since: 2,
+  }),
+} as const;
 import { generateWithAxes, omitLegacyVariant } from "./variation/legacy";
 
 /** A window of the hundred chart as a scene: numbered squares, one left
@@ -148,10 +164,16 @@ export const numberSenseTemplates: readonly TemplateMetadata[] =
     gradeBand,
     description,
     version:
-      id === "round-large" || id === "digit-value-ratio" || id === "number-line-hops"
+      id === "round-large" ||
+      id === "digit-value-ratio" ||
+      id === "number-line-hops" ||
+      id === "numeral-for-quantity"
         ? 2
         : 1,
-    ...(id === "round-large" || id === "digit-value-ratio" || id === "number-line-hops"
+    ...(id === "round-large" ||
+    id === "digit-value-ratio" ||
+    id === "number-line-hops" ||
+    id === "numeral-for-quantity"
       ? { reprintsFrom: 1 }
       : {}),
     ...(id === "digit-value-ratio" ? { previousSkillId: "powers-of-ten" } : {}),
@@ -366,7 +388,8 @@ function numberSenseProblem(
     answer = "",
     hint = "",
     explanation: string[] = [],
-    figure: SemanticFigure | undefined;
+    figure: SemanticFigure | undefined,
+    variant: ProblemVariant | undefined;
   switch (templateId) {
     case "count-sequence-missing": {
       const byTens = r(0, 1) === 1,
@@ -440,6 +463,25 @@ function numberSenseProblem(
       break;
     }
     case "numeral-for-quantity": {
+      const family = chooseAxes(templateId, seed, numeralAxes).family;
+      if (family === "empty-frame-zero") {
+        figure = { kind: "ten-frame", first: 0, second: 0, capacity: 10 };
+        prompt = "How many counters are in the frame? Write the number.";
+        answer = "0";
+        hint =
+          "Count the counters you see, not the empty squares. An empty place is not a counter.";
+        explanation = [
+          "Count the counters, not the squares.",
+          "There are none. None is zero.",
+          "Write 0. The word for 0 is zero.",
+          "10 would count the cells. 5 would count one row of cells. 1 would count the frame.",
+        ];
+        variant = {
+          id: "empty-frame-zero",
+          axes: { family: "empty-frame-zero" },
+        };
+        break;
+      }
       const n = r(0, 4) === 0 ? [0, 10, 20][r(0, 2)]! : r(1, 20);
       figure = {
         kind: "ten-frame",
@@ -820,7 +862,11 @@ function numberSenseProblem(
         .update(JSON.stringify([templateId, 1, seed]))
         .digest("hex"),
       templateId,
-      templateVersion: 1,
+      templateVersion:
+        templateId === "numeral-for-quantity" &&
+        !versionGatedAxes().some((axis) => axis.id === "family")
+          ? 2
+          : 1,
       seed,
       prompt,
       skillId: meta.skillId,
@@ -830,5 +876,6 @@ function numberSenseProblem(
     answer,
     hint,
     explanation,
+    ...(variant ? { variant } : {}),
   };
 }

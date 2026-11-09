@@ -7,6 +7,7 @@ formula rather than the generator's chosen factorization.
 import copy
 import re
 from fractions import Fraction as Q
+import math
 from math import isqrt
 
 from algebra_one_expr import require
@@ -27,6 +28,110 @@ def polynomial(text):
         coefficient = term.split('x')[0] if power else term
         coefficients[power] += Q({'': '1', '+': '1', '-': '-1'}.get(coefficient, coefficient))
     return coefficients
+
+
+def _reduced(n, d):
+    g = math.gcd(abs(n), abs(d))
+    n, d = n // g, d // g
+    if d < 0:
+        n, d = -n, -d
+    return Q(n, d)
+
+
+def _parse_rhs(text):
+    """Linear expression mx+b, including a TeX fraction coefficient."""
+    s = text.replace("−", "-").replace(" ", "")
+    if s == "":
+        raise ValueError("Empty line")
+    m = Q(0)
+    rest = s
+    frac = re.match(r"(-)?\\frac\{(\d+)\}\{(\d+)\}x", rest)
+    if frac:
+        m = _reduced((1 if frac[1] is None else -1) * int(frac[2]), int(frac[3]))
+        rest = rest[frac.end():]
+    elif re.match(r"-?(\d*)x", rest):
+        head = re.match(r"(-)?(\d*)x", rest)
+        coef = head[2]
+        sign = -1 if head[1] else 1
+        m = Q(sign * (int(coef) if coef else 1))
+        rest = rest[head.end():]
+    if rest == "":
+        b = Q(0)
+    else:
+        bfrac = re.fullmatch(r"([+-])?\\frac\{(\d+)\}\{(\d+)\}", rest)
+        if bfrac:
+            sign = -1 if bfrac[1] == "-" else 1
+            b = _reduced(sign * int(bfrac[2]), int(bfrac[3]))
+        else:
+            b = Q(rest)
+    return m, b
+
+
+def _rational_sqrt(disc):
+    require(disc >= 0, "Negative discriminant")
+    n, d = math.isqrt(disc.numerator), math.isqrt(disc.denominator)
+    require(n * n == disc.numerator and d * d == disc.denominator, "Intersections must be rational")
+    return Q(n, d)
+
+
+def _on_grid(x, y):
+    require(x.denominator == 1 and y.denominator == 1, "Intersection is not a lattice point")
+    require(-8 <= x <= 8 and -10 <= y <= 10, "Point outside the grid")
+
+
+def _intersections(first, second):
+    first = first.replace("−", "-").replace(" ", "")
+    second = second.replace("−", "-")
+    circle = re.fullmatch(r"x\^2\+y\^2=(\d+)", first)
+    if circle:
+        radius2 = Q(int(circle[1]))
+        require(second.startswith("y = ") or second.startswith("y="), "Circle paired with a line")
+        rhs = second.split("=", 1)[1]
+        m, b = _parse_rhs(rhs)
+        # x^2 + (mx+b)^2 = r^2
+        A = 1 + m * m
+        B = 2 * m * b
+        C = b * b - radius2
+        root = _rational_sqrt(B * B - 4 * A * C)
+        xs = sorted({(-B - root) / (2 * A), (-B + root) / (2 * A)})
+        points = [(x, m * x + b) for x in xs]
+        for x, y in points:
+            require(x * x + y * y == radius2, "Point misses the circle")
+            _on_grid(x, y)
+        return points
+    require(first.startswith("y=") or first.startswith("y ="), "Expected y = parabola")
+    require(second.startswith("y=") or second.startswith("y ="), "Expected y = line")
+    quad = polynomial(first.split("=", 1)[1])
+    line = polynomial(second.split("=", 1)[1])
+    require(quad[2] != 0 and line[2] == 0, "Expected a parabola and a line")
+    C, B, A = [q - l for q, l in zip(quad, line)]
+    root = _rational_sqrt(B * B - 4 * A * C)
+    xs = sorted({(-B - root) / (2 * A), (-B + root) / (2 * A)})
+    points = [(x, line[0] + line[1] * x) for x in xs]
+    for x, y in points:
+        require(quad[0] + quad[1] * x + quad[2] * x * x == y, "Point misses the parabola")
+        _on_grid(x, y)
+    return points
+
+
+def _plot_answer(public):
+    prompt = public["prompt"].replace("−", "-")
+    match = re.fullmatch(
+        r"The graphs of \$([^$]+)\$ and \$([^$]+)\$ are shown on the grid from \$x=-8\$ to \$8\$ and \$y=-10\$ to \$10\$\. "
+        r"Plot every solution of the system\. (.+)",
+        prompt,
+    )
+    require(match is not None, "Unrecognized plot prompt")
+    points = _intersections(match[1], match[2])
+    require(points, "Nothing to plot")
+    question = match[3]
+    smaller, larger = points[0], points[-1]
+    if question == "What is the smaller $x$-coordinate of a solution?":
+        return smaller[0]
+    if question == "What is the larger $x$-coordinate of a solution?":
+        return larger[0]
+    require(question == "What is the $y$-coordinate of the solution with the smaller $x$-coordinate?", "Unknown plot question")
+    return smaller[1]
 
 
 def givens(public):
@@ -59,6 +164,8 @@ def details(public):
 
 
 def solve_nonlinear_system(public):
+    if public["prompt"].startswith("The graphs of "):
+        return _plot_answer(public)
     answer, points, quadratic, line = details(public)
     if public['templateId'] == 'nonlinear-system-read':
         figure = public.get('figure', {})

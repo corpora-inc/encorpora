@@ -331,6 +331,22 @@ def solve_area_tiling(public):
     prompt = clean(public['prompt'])
     figure = public.get('figure')
     require(figure is not None, 'Every area-tiling problem has a figure')
+    sentence = re.fullmatch(
+        r'A rectangle has (\d+) rows of (\d+) unit squares\. (\d+) (?:row is|rows are) already tiled, and the rest are blank\. Which number sentence tells how many unit squares cover the whole rectangle\?',
+        prompt,
+    )
+    if sentence:
+        a, b, k = (int(g) for g in sentence.groups())
+        require(1 <= k < a, 'Tiled rows must be a proper part of the rectangle')
+        note = ''
+        if figure.get('kind') == 'scene':
+            note = (figure.get('scene') or {}).get('note') or ''
+            require(f'{k} of {a}' in note and str(b) in note, 'Figure note disagrees with the prompt')
+        product = f'{a} × {b} = {a * b}'
+        tiled = f'{k} × {b} = {k * b}'
+        require(any(o['label'] == tiled for o in options), 'The tiled-rows distractor must use k, not a')
+        flags = [o['label'] == product for o in options]
+        return single(options, flags, 'Missing or ambiguous whole-rectangle sentence')
     kind = figure['kind']
     if kind == 'area-model':
         sentence = re.fullmatch(r'The rectangle is (\d+) units tall and (\d+) units wide\. It is split into parts (\d+) and (\d+) units wide\. Which expression does NOT give the area of the rectangle\? An expression is numbers joined by signs such as \+ and ×\.', prompt)
@@ -615,6 +631,9 @@ def self_test():
                ['453', '452', '715', '4530'], 0),
         choice('estimate-reasonableness', 'The band sets 9 folders with 34 sheets each and 7 folders with 16 sheets each. Round the number in each group to the nearest ten. Which is the best estimate of the total?',
                ['410', '270', '50', '1,150'], 0),
+        choice('area-tiling-distributive', 'A rectangle has 4 rows of 6 unit squares. 2 rows are already tiled, and the rest are blank. Which number sentence tells how many unit squares cover the whole rectangle?',
+               ['4 × 6 = 24', '2 × 6 = 12', '4 + 6 = 10', '4 + 6 + 4 + 6 = 20'], 0,
+               {'kind': 'scene', 'scene': {'note': 'Tiled rows: 2 of 4. Squares in a row: 6.'}}),
     ]
     rejected = 0
 

@@ -197,11 +197,24 @@ export const sweepAxes = {
       "drawn-cubes": "scenes-v1",
     }),
   },
-  /** Count unit cubes: a rectangular prism (legacy) or a stepped solid. */
+  /** Count unit cubes: a rectangular prism (legacy) or a stepped solid.
+   * Named cubic units and improvised counts. `cubic-units` is the stored
+   * "cubic units" sentence and is silent. */
   "unit-cube-volume": {
     solid: axisFor("solid", ["prism", "steps"], "prism", {
       steps: "scenes-v2",
     }),
+    units: {
+      ...axisFor(
+        "units",
+        ["cubic-units", "cm", "in", "ft", "improvised"],
+        "cubic-units",
+        undefined,
+        [4, 1, 1, 1, 1],
+      ),
+      silentLegacy: true,
+      since: 2,
+    },
   },
   /** Measure a length: a centimeter strip in halves or quarters (legacy)
    * or an object on an inch ruler in halves, quarters or eighths. */

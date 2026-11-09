@@ -44,6 +44,7 @@
   color: var(--color-subtle-text);
   line-height: 1.4;
   min-block-size: 2lh;
+  text-wrap: balance;
 }
 .progress-heading .eyebrow {
   font-size: 0.625rem;
@@ -68,10 +69,14 @@
 .progress-controls label {
   margin: 0;
   min-width: 0;
+  /* Longest area name ("Mathematical models") plus the chevron. Choosing a
+     short name must not shrink the control. 100% keeps a 320px column inside
+     the screen. */
+  width: min(100%, calc(var(--space-8) * 3 + var(--space-6)));
 }
 .progress-controls .premium-select {
   width: 100%;
-  max-width: 260px;
+  max-width: none;
   font-size: 0.875rem;
 }
 .progress-filters {
@@ -97,9 +102,8 @@
   font-size: 0.875rem;
 }
 .progress-filters button[aria-pressed="true"] {
-  background: var(--color-surface-raised);
-  box-shadow: 0 2px 5px var(--color-shadow);
-  color: var(--color-on-surface-raised);
+  background: var(--color-selected);
+  color: var(--color-on-selected);
 }
 .progress-card-stage {
   /* A card with a one-line title; page sizes are counted in these. */

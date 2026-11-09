@@ -188,6 +188,9 @@ def solve_number_sense(public):
         return chart(bx, by)
     if name == 'numeral-for-quantity':
         require(figure and figure['kind'] == 'ten-frame' and figure['second'] == 0, 'Missing frames')
+        if prompt == 'How many counters are in the frame? Write the number.':
+            require(figure['first'] == 0 and figure['capacity'] == 10, 'An empty frame is the zero count')
+            return 0
         require(prompt == 'How many counters are in the frames? Write the number.', 'Unexpected prompt')
         require((figure['capacity'] == 20) == (figure['first'] > 10), 'Second frame only past ten')
         return figure['first']

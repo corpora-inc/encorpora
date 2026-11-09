@@ -5,7 +5,7 @@ import {
 } from "../../lib/funded-entry";
 import type { Me, SignedInMe } from "../../../account/contracts";
 
-/** Every first-run step. The server's `me.next` alone decides which may open. */
+/** First-run steps, guarded by the server's next step and consent state. */
 export const startSteps = [
   "/start/verify-email",
   "/start/plan",
@@ -69,7 +69,7 @@ export function startDestination(
   }
   const confirm =
     !!me.account.confirmationRequired &&
-    (me.next === "try" || me.next === "choose-plan");
+    (me.next === "try" || me.next === "choose-plan" || me.next === "practice");
   if (pathname === "/start/verify-email") {
     if (confirm) return null;
     // Confirmed: continue to the plan the parent was opening.
@@ -93,7 +93,8 @@ function route(
   if (
     me.familyApproval &&
     (me.next === "add-learner" ||
-      (me.next === "choose-plan" && me.consent.status === "active"))
+      (["choose-plan", "practice"].includes(me.next) &&
+        me.consent.status === "active"))
   )
     return `/family/approvals/${me.familyApproval.id}`;
   switch (me.next) {
@@ -124,6 +125,18 @@ function route(
     case "add-learner":
       return stay([...learnerSteps, "/start/purchase"], "/start/name");
     case "practice":
+      if (me.consent.status !== "active") {
+        if (learnerSteps.includes(pathname)) return "/start/plan";
+        return stay(consentSteps, buying ? "/start/plan" : "/practice");
+      }
+      if (
+        consentSteps.includes(pathname) &&
+        me.learners.some(
+          (learner) =>
+            !(learner.entitlement.licensed ?? learner.entitlement.active),
+        )
+      )
+        return "/purchase";
       return stay(learnerSteps, "/practice");
   }
 }

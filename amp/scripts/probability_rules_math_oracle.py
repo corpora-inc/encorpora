@@ -248,6 +248,18 @@ def solve_event_sets(public):
 
 def solve_addition(public):
     prompt = public['prompt']
+    m = re.fullmatch(r'Of (\d+) (.+?), (\d+) (.+?), (\d+) (.+?) and (\d+) (.+?)\. If one (\w+) is chosen at random, '
+                     r'what is the probability of at least one: the \9 (.+?), or the \9 (.+)\?', prompt)
+    if m:
+        total, (first, second, both) = int(m[1]), GROUPS[m[2]]
+        require(m[4] == TRAITS[first][1] and m[6] == TRAITS[second][1] and m[8] == both, 'Totals phrasing')
+        require(m[10] == TRAITS[first][0] and m[11] == TRAITS[second][0], 'Asked events')
+        n_a, n_b, n_ab = int(m[3]), int(m[5]), int(m[7])
+        regions = {'ab': n_ab, 'a': n_a - n_ab, 'b': n_b - n_ab}
+        regions['none'] = total - sum(regions.values())
+        require(min(regions.values()) >= 0, 'Inconsistent totals')
+        universe, a, b = population(regions)
+        return Fraction(len(a | b), len(universe))
     m = re.fullmatch(r'Of (\d+) (.+?), (\d+) (.+?), (\d+) (.+?) and (\d+) (.+?)\. One (\w+) is chosen at random\. '
                      r'What is the probability that the \9 (.+) or (.+)\?', prompt)
     if m:
@@ -284,8 +296,39 @@ def solve_addition(public):
     return overlap
 
 
+BUILD_PAIRS = {
+    ('students', 'tenth graders', 'eleventh graders', 'favor science', 'eleventh grader', 'favors science'),
+    ('players', 'juniors', 'seniors', 'play soccer', 'senior', 'plays soccer'),
+    ('workers', 'office staff', 'remote workers', 'ride the bus', 'remote worker', 'rides the bus'),
+}
+
+
 def solve_conditional(public):
     prompt = public['prompt']
+    m = re.fullmatch(r'A survey of (\d+) (students|players|workers) gives two facts\. (\d+) are (tenth graders|juniors|office staff) and the rest are '
+                     r'(eleventh graders|seniors|remote workers)\. (\d+) (favor science|play soccer|ride the bus), including (\d+) \4\. '
+                     r'Build the two-way table\. What is the probability that a randomly chosen '
+                     r'(eleventh grader|senior|remote worker) (favors science|plays soccer|rides the bus)\?', prompt)
+    if m:
+        require((m[2], m[4], m[5], m[7], m[9], m[10]) in BUILD_PAIRS, 'Table story does not match')
+        n, row, column, inner = (int(m[1]), int(m[3]), int(m[6]), int(m[8]))
+        cell, rest = column - inner, n - row
+        only_row = row - inner
+        only_col = rest - cell
+        outside = n - row - column + inner
+        require(min(cell, rest, only_row, only_col, outside, inner) > 0, 'Table cells must be positive')
+        require(inner * rest != row * cell, 'The two conditional fractions must differ')
+        return Fraction(cell, rest)
+    m = re.fullmatch(r'Of (\d+) (.+?), (\d+) (.+?), (\d+) (.+?) and (\d+) (.+?)\. Among the \3 (\S+) (\S+) \4, '
+                     r'what fraction also (.+)\?', prompt)
+    if m:
+        total, (first, second, both) = int(m[1]), GROUPS[m[2]]
+        require(m[4] == TRAITS[first][1] and m[6] == TRAITS[second][1] and m[8] == both, 'Totals phrasing')
+        require(m[11] == TRAITS[second][1], 'Asked trait')
+        n_a, n_b, n_ab = int(m[3]), int(m[5]), int(m[7])
+        require(0 < n_ab <= n_a and n_ab <= n_b and n_a + n_b - n_ab <= total, 'Inconsistent counts')
+        require(n_a != n_b, 'The reversed conditional must differ')
+        return Fraction(n_ab, n_a)
     m = re.fullmatch(r'The table shows survey results for a group of (\w+)\. One of these \1 is chosen at random\. '
                      r'Given that the (\w+) (.+?), what is the probability that the \2 (.+)\?', prompt)
     if m:
@@ -362,6 +405,22 @@ DRAWS = {
 
 def solve_multiplication(public):
     prompt = public['prompt']
+    m = re.fullmatch(rf'The probability a student rides the bus is {NUMBER}\. The probability a student is in band, given that '
+                     rf'the student rides the bus, is {NUMBER}\. The probability a student is in band is {NUMBER}\. Find the '
+                     r'probability the student is in band and rides the bus, as the bus probability times the probability of band given the bus\.', prompt)
+    if m:
+        bus, given, band = (value(x) for x in m.groups())
+        joint = bus * given
+        require(0 < joint < 1 and joint != bus * band, 'The independence product must differ')
+        require(all(0 < x < 1 for x in (bus, given, band)), 'Each stated probability is between 0 and 1')
+        return joint
+    m = re.fullmatch(rf'The probability of no rain on a school morning is {NUMBER}\. When it does not rain, the bus is late '
+                     rf'with probability {NUMBER}\. What fraction of school mornings have no rain and a late bus\?', prompt)
+    if m:
+        dry, late = value(m[1]), value(m[2])
+        joint = dry * late
+        require(0 < dry < 1 and 0 < late < 1 and joint not in (dry, late), 'Joint must differ from each factor')
+        return joint
     m = re.fullmatch(r'A bag holds (\d+) red and (\d+) blue marbles\. Two marbles are drawn at random, one after the other, '
                      r'without replacement\. What is the probability that (.+)\?', prompt)
     if m:

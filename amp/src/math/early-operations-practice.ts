@@ -5,6 +5,7 @@ import type {
   TemplateMetadata,
 } from "./contracts.js";
 import { isAre, wasWere, count } from "./agreement.js";
+import { clauseTask, subtractionUnknown } from "./equation-clause.js";
 
 type Random = (low: number, high: number) => number;
 /** Grade levels of the catalog skills these families serve. */
@@ -47,8 +48,15 @@ export const earlyOperationsTemplates: readonly TemplateMetadata[] =
     skillId,
     description,
     gradeBand: "K–2",
-    version: id === "number-bond-missing" || id === "three-addend-story" ? 2 : 1,
-    ...(id === "number-bond-missing" || id === "three-addend-story"
+    version:
+      id === "number-bond-missing" ||
+      id === "three-addend-story" ||
+      id === "unknown-addend-story"
+        ? 2
+        : 1,
+    ...(id === "number-bond-missing" ||
+    id === "three-addend-story" ||
+    id === "unknown-addend-story"
       ? { reprintsFrom: 1 as const }
       : {}),
   }));
@@ -99,6 +107,11 @@ export function generateEarlyOperationsProblem(
     throw new Error(`Unknown early-operations template: ${templateId}`);
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
+  if (
+    templateId === "unknown-addend-story" &&
+    clauseTask(templateId, seed) === "subtraction-unknown"
+  )
+    return subtractionUnknown(meta, seed);
   const r = random(templateId, seed);
   let prompt = "",
     answer = 0,

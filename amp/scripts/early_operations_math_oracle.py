@@ -53,7 +53,38 @@ def solve_bond(prompt, figure):
     return missing_part(w, p), 'story'
 
 
+def solve_subtraction(prompt, figure):
+    m = re.fullmatch(r'Find the number that makes the equation true\. (.+)\.', prompt)
+    if m is None:
+        return None
+    require(figure['kind'] == 'bar-model', 'Subtraction needs a bar')
+    eq = m.group(1)
+    box = r'(\d+) − □ = (\d+)'
+    start = r'□ − (\d+) = (\d+)'
+    left = r'(\d+) = □ − (\d+)'
+    result = r'(\d+) − (\d+) = □'
+    if (got := re.fullmatch(box, eq)):
+        whole, remain = map(int, got.groups())
+        require(figure == {'kind': 'bar-model', 'whole': whole, 'parts': [remain, None]}, 'Bar')
+        return whole - remain, 'subtraction'
+    if (got := re.fullmatch(start, eq)) or (got := re.fullmatch(left, eq)):
+        if re.fullmatch(left, eq):
+            remain, part = map(int, got.groups())
+        else:
+            part, remain = map(int, got.groups())
+        require(figure['whole'] is None and figure['parts'] == [part, remain], 'Start bar')
+        return part + remain, 'subtraction'
+    got = re.fullmatch(result, eq)
+    require(got is not None, f'Unexpected subtraction equation {eq!r}')
+    whole, part = map(int, got.groups())
+    require(figure == {'kind': 'bar-model', 'whole': whole, 'parts': [part, None]}, 'Result bar')
+    return whole - part, 'subtraction'
+
+
 def solve_addend(prompt, figure):
+    subtraction = solve_subtraction(prompt, figure)
+    if subtraction is not None:
+        return subtraction
     require(figure['kind'] == 'bar-model', 'Missing addend needs a bar model')
     m = re.fullmatch(r'There (?:was|were) (\d+) blocks?\. More blocks were added\. There are (\d+) now\. How many were added\?', prompt) or \
         re.fullmatch(r'(\d+) \+ □ = (\d+)\. What number belongs in the box\?', prompt) or \
