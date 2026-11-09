@@ -104,6 +104,7 @@ export { family as tiltedRectangle } from "./tilted-rectangle";
 export { family as timeUnitChoice } from "./time-unit-choice";
 export { family as timeUnitRename } from "./time-unit-rename";
 export { family as totalMinusParts } from "./total-minus-parts";
+export { family as triangleTheoremProof } from "./triangle-theorem-proof";
 export { family as twoColumnProof } from "./two-column-proof";
 export { family as variableStory } from "./variable-story";
 export { family as virginiaSolLedger } from "./virginia-sol-ledger";
