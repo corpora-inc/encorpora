@@ -42,6 +42,8 @@
   margin: 0;
   font-size: 0.875rem;
   color: var(--color-subtle-text);
+  line-height: 1.4;
+  min-block-size: 2lh;
 }
 .progress-heading .eyebrow {
   font-size: 0.625rem;
@@ -67,28 +69,27 @@
   margin: 0;
   min-width: 0;
 }
-.progress-controls select {
-  appearance: none;
-  -webkit-appearance: none;
+.progress-controls .premium-select {
   width: 100%;
   max-width: 260px;
-  padding: 8px 34px 8px 12px;
   font-size: 0.875rem;
-  background: var(--color-surface-raised);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%23183e3a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-position: right 12px center;
-  background-repeat: no-repeat;
 }
 .progress-filters {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 360px;
+  max-width: 100%;
   gap: 4px;
   padding: 4px;
   background: var(--color-surface-sunken);
   border-radius: 12px;
 }
 .progress-filters button {
-  min-height: 44px;
-  padding: 8px 16px;
+  height: 48px;
+  min-width: 0;
+  padding: 4px;
+  white-space: normal;
+  line-height: 1.25;
   border: 0;
   background: transparent;
   color: var(--color-muted-text);
@@ -164,6 +165,7 @@
 }
 .progress-observations {
   display: flex;
+  flex-wrap: wrap;
   gap: 6px;
   list-style: none;
   margin: 0;
@@ -172,10 +174,12 @@
 .progress-observations [role="listitem"] {
   display: grid;
   place-items: center;
-  width: 26px;
-  height: 26px;
+  flex: none;
+  width: 1.625em;
+  height: 1.625em;
   border-radius: 50%;
   font-size: 1rem;
+  line-height: 1;
   font-weight: 600;
   border: 1px solid transparent;
 }
@@ -402,17 +406,16 @@
     gap: 8px;
     margin: 14px 0 10px;
   }
-  .progress-controls select {
+  .progress-controls .premium-select {
     max-width: none;
   }
   .progress-filters {
-    justify-content: stretch;
+    width: auto;
   }
-  /* A longer label ("Review · 27") takes the room it needs. */
+  /* Fixed tracks and height reserve room for a two-line review count. */
   .progress-filters button {
-    flex: 1 1 auto;
     min-height: 44px;
-    padding: 8px 4px;
+    padding: 4px;
     font-size: 0.8125rem;
   }
   .progress-skill-card {
@@ -546,7 +549,7 @@
 .progress-detail-actions {
   letter-spacing: 0;
 }
-.progress-controls label select {
+.progress-controls label .premium-select {
   margin-top: 0;
 }
 
@@ -594,6 +597,10 @@
   overflow: visible;
   display: block;
 }
+.progress-workspace.large-text .progress-card-stage {
+  /* The scrolling page needs the cards' intrinsic height. */
+  container-type: normal;
+}
 .progress-workspace.large-text .progress-heading {
   flex-wrap: wrap;
 }
@@ -607,7 +614,13 @@
   flex-wrap: wrap;
 }
 .progress-workspace.large-text .progress-filters {
-  flex-wrap: wrap;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12ch), 1fr));
+}
+.progress-workspace.large-text .progress-filters button {
+  height: auto;
+  min-height: max(48px, calc(1.25em + 16px));
+  padding: 8px;
 }
 .progress-workspace.large-text .progress-detail-actions {
   grid-template-columns: 1fr;

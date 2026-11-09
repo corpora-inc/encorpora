@@ -1,5 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
-import { choose, leaveSettings, chooseLearner } from "./ui-controls";
+import { chooseLearner, navigateApp } from "./ui-controls";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { chromium as rawChromium } from "playwright";
 const chromium = secureChromium(rawChromium);
@@ -45,7 +45,7 @@ try {
     const page = await browser.newPage({ hasTouch: true });
     const errors: string[] = [];
     page.on("pageerror", (error) => errors.push(error.message));
-    await page.goto("http://127.0.0.1:4350");
+    await page.goto("http://127.0.0.1:4350/overview");
     await chooseLearner(page, learner.id);
     await page.goto("http://127.0.0.1:4350/profile/birth-year");
     await page.getByRole("heading", { name: /^What year was/ }).waitFor();
@@ -63,7 +63,8 @@ try {
       await route.fulfill({ response: result });
     });
     await page.getByRole("button", { name: "2016", exact: true }).click();
-    await page.getByRole("button", { name: "Go", exact: true }).click();
+    await page.waitForURL((url) => url.pathname === "/overview");
+    await navigateApp(page, "Practice");
     await familyBatchWaiting;
     await page.getByRole("button", { name: "Open AMP menu" }).click();
     await page.getByRole("link", { name: "Account", exact: true }).click();
@@ -128,9 +129,35 @@ try {
         { exact: true },
       )
       .waitFor();
+    const releasedBatch = page.waitForResponse((response) =>
+      response.url().endsWith("/batches"),
+    );
     releaseFamilyBatch();
-    await page.waitForTimeout(100);
-    await leaveSettings(page);
+    await (await releasedBatch).finished();
+    // Keep the revoked workspace alive while the delayed response arrives.
+    await page.evaluate(() => {
+      (
+        window as Window & { __privacyRaceDocument?: boolean }
+      ).__privacyRaceDocument = true;
+    });
+    for (const path of [
+      "/family/privacy",
+      "/family/learners",
+      "/family/security",
+      "/practice",
+    ]) {
+      await page.goBack();
+      await page.waitForURL((url) => url.pathname === path);
+    }
+    assert.equal(
+      await page.evaluate(
+        () =>
+          (window as Window & { __privacyRaceDocument?: boolean })
+            .__privacyRaceDocument,
+      ),
+      true,
+    );
+    await page.locator("[data-app-bar]").waitFor();
     assert.equal(
       await page.locator("#answer").count(),
       0,

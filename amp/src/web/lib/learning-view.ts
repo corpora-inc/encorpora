@@ -95,7 +95,7 @@ export function useLearningView({
   const trialSession = trial.data ?? { token: "", learnerId: "" };
   const trialProgress = useQuery({
     ...progressOptions(trialSession),
-    enabled: trialMode && !!trial.data,
+    enabled: records && trialMode && !!trial.data,
   });
   const trialEvidence = useQuery({
     ...trialEvidenceOptions(trialSession),

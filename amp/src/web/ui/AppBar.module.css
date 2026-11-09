@@ -239,3 +239,11 @@
 .tools :global(.workspace-toolbar[data-in-frame] .workspace-status) {
   flex: none;
 }
+@media (max-width: 639px) {
+  .tools :global(.workspace-toolbar[data-in-frame]) {
+    justify-content: flex-end;
+  }
+  .tools :global(.workspace-toolbar[data-in-frame] .workspace-topic) {
+    display: none;
+  }
+}

@@ -391,11 +391,10 @@ export const balanceAlignments: readonly AlgebraAlignment[] = [
     ),
   ),
 ];
+/** Book pages and paper tasks have their own scoped standards. Generated
+ * practice coverage belongs to the skill crosswalk, not these teaching links. */
 export function validateBalanceAlignments(
-  skills: readonly {
-    id: string;
-    alignments: readonly { standardId: string }[];
-  }[],
+  skills: readonly { id: string }[],
   templates: readonly { id: string; skillId: string }[],
   standards: readonly { id: string }[],
   alignments: readonly AlgebraAlignment[] = balanceAlignments,
@@ -421,11 +420,7 @@ export function validateBalanceAlignments(
     )
       throw new Error(`Incomplete alignment scope: ${a.id}`);
     for (const id of a.standardIds)
-      if (
-        !standardIds.has(id) ||
-        !skill.alignments.some((s) => s.standardId === id)
-      )
-        throw new Error(`Standard outside skill crosswalk: ${a.skillId}/${id}`);
+      if (!standardIds.has(id)) throw new Error(`Unknown standard: ${id}`);
     for (const id of a.pageIds)
       if (!pages.has(id)) throw new Error(`Unknown page: ${id}`);
     for (const id of a.taskIds)

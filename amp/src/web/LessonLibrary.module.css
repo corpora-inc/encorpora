@@ -1,7 +1,11 @@
 /* Lesson library: a sticky search bar over band sections. */
 .library {
-  /* Room for the pinned app header and section tabs above the bar. */
-  --library-pin: calc(60px + 56px + env(safe-area-inset-top, 0px));
+  /* The shared frame owns the bar height. Native learning retains its
+     header and section tabs when the shared frame is absent. */
+  --library-pin: var(
+    --shell-bar,
+    calc(60px + 56px + env(safe-area-inset-top, 0px))
+  );
   padding-top: var(--space-4);
 }
 /* Filtering hides rows; no layout rule below may bring them back. */
@@ -11,6 +15,11 @@
 .title {
   margin: 0 0 var(--space-3);
   font-size: 28px;
+}
+.body {
+  /* Keep the title's scroll range when a filter has few or no results, so
+     typing never pulls the pinned search field back down the screen. */
+  min-height: calc(100dvh - var(--library-pin));
 }
 .bar {
   position: sticky;
@@ -27,7 +36,10 @@
 }
 @media (max-height: 620px) and (min-width: 651px) {
   .library {
-    --library-pin: calc(48px + 56px + env(safe-area-inset-top, 0px));
+    --library-pin: var(
+      --shell-bar,
+      calc(48px + 56px + env(safe-area-inset-top, 0px))
+    );
   }
 }
 @media (max-width: 520px) {

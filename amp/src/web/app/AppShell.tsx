@@ -8,6 +8,7 @@ import {
   useRef,
   type CSSProperties,
   type ReactNode,
+  type RefObject,
 } from "react";
 import type { SignedInMe } from "../../account/contracts";
 import { nativeRuntime } from "../native-runtime";
@@ -53,6 +54,7 @@ const preloadScreens = () =>
  * remounts because of it.
  */
 export function AppShell({ children }: { children: ReactNode }) {
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const session = useQuery(sessionOptions);
   const settled = useRouterState({
     select: (state) => {
@@ -91,7 +93,12 @@ export function AppShell({ children }: { children: ReactNode }) {
       }
     >
       {frame && (
-        <ShellBar frame={frame} context={context.kind} me={context.me} />
+        <ShellBar
+          frame={frame}
+          context={context.kind}
+          me={context.me}
+          triggerRef={triggerRef}
+        />
       )}
       <div
         className={frame ? styles.content : styles.bare}
@@ -102,7 +109,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       {framed.current && (
         <DrawerRecovery>
           <Suspense fallback={null}>
-            <ShellDrawer frame={frame} />
+            <ShellDrawer frame={frame} triggerRef={triggerRef} />
           </Suspense>
         </DrawerRecovery>
       )}
@@ -135,11 +142,13 @@ function useProgressContext(active: boolean, explicitTrial: boolean) {
 }
 
 function ShellBar({
+  triggerRef,
   frame,
   context,
   me,
 }: {
   frame: ShellFrame;
+  triggerRef: RefObject<HTMLButtonElement | null>;
   context: ProgressContext;
   me: SignedInMe | null;
 }) {
@@ -164,6 +173,7 @@ function ShellBar({
     >
       <div className={bar.logoCell}>
         <AppLogo
+          ref={triggerRef}
           aria-label={open ? "Close AMP menu" : "Open AMP menu"}
           aria-expanded={open}
           aria-haspopup="dialog"

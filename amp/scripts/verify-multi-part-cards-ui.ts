@@ -24,7 +24,7 @@ import {
 } from "../src/math/multi-part-choice";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
-import { choose } from "./ui-controls";
+import { chooseLearner } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 
 const database = process.env.AMP_TEST_DATABASE_URL;
@@ -260,11 +260,8 @@ try {
         if (reply.url().endsWith("/attempts") && reply.status() !== 200)
           errors.push(`attempt ${reply.status()}`);
       });
-      await page.goto(origin);
-      await choose(
-        page.getByRole("button", { name: "Learner", exact: true }),
-        learner.id,
-      );
+      await page.goto(`${origin}/overview`);
+      await chooseLearner(page, learner.id);
       for (const family of families) {
         const tag = `${engine === "webkit" ? "webkit-" : ""}${family}-${width}-${theme}`;
         const problem = instance(family, `${theme}:${width}`);

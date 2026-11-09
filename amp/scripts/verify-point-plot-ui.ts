@@ -23,7 +23,7 @@ import {
 } from "../src/math/point-plot";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
-import { choose } from "./ui-controls";
+import { chooseLearner } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 
 const database = process.env.AMP_TEST_DATABASE_URL;
@@ -248,11 +248,8 @@ try {
       const page = await context.newPage();
       page.setDefaultTimeout(20_000);
       page.on("pageerror", (error) => errors.push(error.message));
-      await page.goto(origin);
-      await choose(
-        page.getByRole("button", { name: "Learner", exact: true }),
-        learner.id,
-      );
+      await page.goto(`${origin}/overview`);
+      await chooseLearner(page, learner.id);
       for (const family of (only("AMP_UI_FAMILIES") ?? [
         "plot-points",
         "graph-linear-equation",
@@ -697,11 +694,8 @@ try {
   });
   const page = await context.newPage();
   page.on("pageerror", (error) => errors.push(error.message));
-  await page.goto(origin);
-  await choose(
-    page.getByRole("button", { name: "Learner", exact: true }),
-    learner.id,
-  );
+  await page.goto(`${origin}/overview`);
+  await chooseLearner(page, learner.id);
   await startTopic(page, "place-transformed-image");
   await page.locator(".point-plot-layer").waitFor();
   await page.getByRole("button", { name: "Lesson", exact: true }).click();

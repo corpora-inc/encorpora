@@ -1,5 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
-import { choose } from "./ui-controls";
+import { chooseLearner } from "./ui-controls";
 import { spokenMath } from "../src/web/MathText";
 import { startTopic } from "./ui-practice";
 import { measurementTemplates } from "../src/math/measurement-practice.js";
@@ -62,11 +62,8 @@ await mkdir(output, {
 });
 try {
   const page = await browser.newPage({ hasTouch: true });
-  await page.goto("http://127.0.0.1:4442");
-  await choose(
-    page.getByRole("button", { name: "Learner", exact: true }),
-    learner.id,
-  );
+  await page.goto("http://127.0.0.1:4442/overview");
+  await chooseLearner(page, learner.id);
   // Classic scrollbars reserve space even on hosts that default to overlays.
   // Keep the narrow-phone layout representative of the Linux browser runner.
   await page.addStyleTag({

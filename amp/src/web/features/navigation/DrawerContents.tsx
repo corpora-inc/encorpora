@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useLearningView } from "../../lib/learning-view";
 import { useLearnerStore } from "../../learner-store";
 import { useShellSlots } from "../../lib/shell-slots";
+import { storedTrial } from "../../lib/pending-trial";
 import { FeedbackPreferences } from "../practice/FeedbackPreferences";
 import { ChoicePicker, type ListboxOption } from "../../ui/Listbox";
 import { SignedInEmail } from "./SignedInEmail";
@@ -75,24 +76,21 @@ export default function DrawerContents({
   const own = view.ownPractice;
   const here = frame ?? shellFrame(location.pathname);
   const context = trialMode ? "trial" : own ? "own" : "learner";
-  // The assessment row comes from the token saved on this browser, known on
-  // the first frame (without one the lookup starts settled as null). It shows
-  // while the lookup is pending or failing and leaves only when the server
-  // reports none, so the rows never grow after the drawer opens.
+  // A pending lookup is not evidence of an assessment. The account or a saved
+  // device token can name one before the lookup settles; its resolved result
+  // then decides. Otherwise a phantom option replaces a single learner's name
+  // with a picker, only to remove that control while someone is using it.
   const assessmentChoice =
-    !own && (!!view.trial.data || view.trial.isPending || view.trial.isError);
+    !own &&
+    !student &&
+    (!!view.trial.data ||
+      (view.trial.data === undefined && (!!account?.trial || !!storedTrial())));
   // With no family learners, the account's own word that an assessment
   // exists names it from the first frame.
   const assessment =
     !own &&
-    (trialMode ||
-      (!view.learners.length &&
-        (!!account?.trial ||
-          // A lookup for the token saved on this browser is still out: the
-          // rows take the assessment's place from the first frame.
-          (view.trial.isPending &&
-            !view.identityLoading &&
-            !view.identityError))));
+    !student &&
+    (trialMode || (!view.learners.length && assessmentChoice));
   const learnerChoices: ListboxOption[] = [
     ...view.learners.map((l) => ({ value: l.id, label: l.name })),
     ...(assessmentChoice ? [{ value: "trial", label: "Free assessment" }] : []),
@@ -133,19 +131,21 @@ export default function DrawerContents({
     const at = location.pathname;
     // Progress screens stay on the same tab for the new learner.
     const destination =
-      at === "/inventory"
-        ? "/inventory"
-        : at.startsWith("/pathways")
-          ? "/pathways"
-          : at === "/overview" || at === "/try/map"
-            ? isTrial
-              ? "/try/map"
-              : "/overview"
-            : isTrial
-              ? "/try/practice"
-              : account?.family.learners.find((l) => l.id === id)?.canPractice
-                ? "/practice"
-                : "/start";
+      at === "/progress" && !isTrial
+        ? "/progress"
+        : at === "/inventory"
+          ? "/inventory"
+          : at.startsWith("/pathways")
+            ? "/pathways"
+            : at === "/overview" || at === "/try/map"
+              ? isTrial
+                ? "/try/map"
+                : "/overview"
+              : isTrial
+                ? "/try/practice"
+                : account?.family.learners.find((l) => l.id === id)?.canPractice
+                  ? "/practice"
+                  : "/start";
     void navigate({
       to: "/$",
       params: { _splat: destination.slice(1) },
@@ -202,6 +202,13 @@ export default function DrawerContents({
                   {own ? "Your own practice" : "Learner"}
                 </span>
                 <strong>{learnerName}</strong>
+                {student && account?.school && (
+                  <span className={styles.context}>
+                    {account.school.orgName}
+                    {account.school.className &&
+                      ` · ${account.school.className}`}
+                  </span>
+                )}
               </div>
             )
           )}

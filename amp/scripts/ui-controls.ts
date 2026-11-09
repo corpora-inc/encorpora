@@ -1,3 +1,4 @@
+import assert from "node:assert/strict";
 import type { Locator, Page } from "playwright";
 /** Exercise the same dialog and option buttons used by pointer/keyboard users. */
 export async function choose(locator: Locator, value: string) {
@@ -10,7 +11,7 @@ export async function choose(locator: Locator, value: string) {
 }
 
 /** The app frame's drawer, opened from the logo (app/AppShell.tsx). */
-async function openMenu(page: Page) {
+export async function openMenu(page: Page) {
   await page.getByRole("button", { name: "Open AMP menu" }).click();
   const drawer = page.getByRole("dialog", { name: "Adaptive Math Pathways" });
   await drawer.waitFor();
@@ -26,6 +27,13 @@ export async function leaveSettings(page: Page) {
 /** Chooses the current learner where the app keeps the choice: the drawer. */
 export async function chooseLearner(page: Page, id: string) {
   const drawer = await openMenu(page);
+  const only = drawer.locator('[aria-label="Where you are"] [data-learner]');
+  if (await only.count()) {
+    assert.equal(await only.getAttribute("data-learner"), id);
+    await page.keyboard.press("Escape");
+    await drawer.waitFor({ state: "detached" });
+    return;
+  }
   const folded = drawer.getByRole("button", { name: /^Current learner/ });
   if (await folded.count()) await folded.click();
   await drawer
@@ -54,4 +62,22 @@ export async function currentLearner(page: Page) {
   await page.keyboard.press("Escape");
   await drawer.waitFor({ state: "detached" });
   return value;
+}
+
+/** Follow a destination through the shared app drawer. */
+export async function navigateApp(
+  page: Page,
+  name: "Practice" | "Lessons" | "Progress" | "Account",
+) {
+  // The native app retains its local learning-section controls.
+  const nativeSections = page.getByRole("navigation", {
+    name: "Learning sections",
+  });
+  if (name !== "Account" && (await nativeSections.isVisible())) {
+    await nativeSections.getByRole("button", { name, exact: true }).click();
+    return;
+  }
+  const drawer = await openMenu(page);
+  await drawer.getByRole("link", { name, exact: true }).click();
+  await drawer.waitFor({ state: "detached" });
 }

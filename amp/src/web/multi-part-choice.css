@@ -241,6 +241,9 @@
 }
 .multi-part-slots li {
   display: flex;
+  flex-wrap: wrap;
+  /* The grid owns row spacing; prose-list margins would double its gap. */
+  margin: 0;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
@@ -253,7 +256,9 @@
 }
 .multi-part-slot-label {
   flex: 1 1 auto;
-  min-width: 0;
+  /* A long choice wraps below its label instead of squeezing words to letters. */
+  min-width: min-content;
+  overflow-wrap: normal;
   font-size: var(--text-label);
   line-height: 1.35;
 }

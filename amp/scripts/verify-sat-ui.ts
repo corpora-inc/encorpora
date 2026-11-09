@@ -11,7 +11,7 @@ import { registerFamilyRoutes } from "../src/family/routes";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { startTopic, exitPractice } from "./ui-practice";
-import { choose, leaveSettings } from "./ui-controls";
+import { choose, leaveSettings, navigateApp } from "./ui-controls";
 import {
   satCompletionTemplates,
   generateSatCompletionProblem,
@@ -191,10 +191,13 @@ try {
         );
         await page.evaluate(() => document.fonts.ready);
         await noOverflow(page);
-        assert.match(
-          await page.locator(".workspace-topic").innerText(),
-          /SAT Math/,
-        );
+        // The shared frame places the topic above the problem on phones
+        // and in the bar on wider screens. Check the one shown to the learner.
+        const topic = page
+          .locator(".workspace-topic")
+          .filter({ visible: true });
+        assert.equal(await topic.count(), 1, "One visible practice topic");
+        assert.match(await topic.innerText(), /SAT Math/);
         await page.screenshot({
           path: `${output}/${id}-${width}-${theme}.png`,
           fullPage: true,
@@ -208,7 +211,7 @@ try {
         .getByText("Practice setting saved. It applies to the next problem.")
         .waitFor();
       await leaveSettings(page);
-      await page.getByRole("button", { name: "Practice", exact: true }).click();
+      await navigateApp(page, "Practice");
       const resume = page.getByRole("button", { name: /^(Go|Continue)$/ });
       if (await resume.isVisible()) await resume.click();
       assert.equal(await page.locator(".problem-stage").innerText(), prompt);

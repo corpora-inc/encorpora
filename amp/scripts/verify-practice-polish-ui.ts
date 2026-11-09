@@ -98,6 +98,7 @@ const VERIFY = [
   "multi-select-figure",
   "parts-inline",
   "parts-cards",
+  "parts-slots",
   "point-plot",
   "figure-choice",
   "work-steps",
@@ -242,6 +243,7 @@ async function mockApi(context: BrowserContext, templateId: string) {
         "quadratic-from-data": "independent-68",
         "trig-equation-solutions": "95d3e70d-9422-4921-b88f-0407b2bb0fad",
         "randomization-test-decision": "tablet-independent-5",
+        "order-whole-numbers-slots": "721a617f-1a51-4990-8ce8-4357815eb50e",
       };
       const problem = generateProblemFor(
         state.templateId,
@@ -620,7 +622,11 @@ async function runCase(
           `${label} ${width}×${height}: the complete study and chart fit`,
         );
     }
-    if (label === "choice-table" || label === "choice-radical") {
+    if (
+      label === "choice-table" ||
+      label === "choice-radical" ||
+      label === "parts-slots"
+    ) {
       // Match the hosted Chromium gutter on overlay-scrollbar hosts. WebKit
       // does not reserve custom scrollbar space until overflow, so use its
       // native scrollbars and keep the same layout and reachability checks.
@@ -651,6 +657,47 @@ async function runCase(
         }
       }
       await assertProblemReachable(page, `${label} ${width}×${height}`);
+    }
+    if (label === "parts-slots") {
+      const id = await page
+        .locator(".problem-content")
+        .getAttribute("data-problem-id");
+      assert.equal(
+        api.problems.get(id ?? "")?.public.seed,
+        "721a617f-1a51-4990-8ce8-4357815eb50e",
+        "Render the five-row ordering question captured by the hosted sweep",
+      );
+      const spacing = await page
+        .locator(".multi-part-slots")
+        .evaluate((list) => {
+          const rows = [...list.children].map((row) =>
+            row.getBoundingClientRect(),
+          );
+          return {
+            count: rows.length,
+            gap: parseFloat(getComputedStyle(list).rowGap),
+            gaps: rows
+              .slice(1)
+              .map((row, index) => row.top - rows[index]!.bottom),
+            trailing: list.getBoundingClientRect().bottom - rows.at(-1)!.bottom,
+          };
+        });
+      assert.equal(
+        spacing.count,
+        5,
+        "The long ordering case has all five rows",
+      );
+      assert.ok(
+        spacing.gaps.every((gap) => Math.abs(gap - spacing.gap) < 0.5) &&
+          Math.abs(spacing.trailing) < 0.5,
+        `Answer rows use the grid gap without extra prose-list spacing: ${JSON.stringify(spacing)}`,
+      );
+      if (width >= 768)
+        assert.deepEqual(
+          await problemInView(page),
+          [],
+          `${label} ${width}×${height}: the complete question and five answers fit`,
+        );
     }
     if (label === "choice-table") {
       const geometry = await page.locator(".question").evaluate((question) => {
@@ -756,13 +803,40 @@ async function runCase(
     await page.locator(".feedback").waitFor({ state: "detached" });
     await page.waitForTimeout(200);
     await takeShifts(page);
+    const slotBoxes = () =>
+      page.locator(".multi-part-slots").evaluate((list) => {
+        const scroll = list.closest(".problem-stage")!.scrollTop;
+        return [
+          ...list.querySelectorAll(".multi-part-slot-label, .multi-part-blank"),
+        ].map((element) => {
+          const r = element.getBoundingClientRect();
+          return [r.x, r.y + scroll, r.width, r.height].map(Math.round);
+        });
+      });
+    const unfilledSlots = label === "parts-slots" ? await slotBoxes() : null;
+    if (unfilledSlots) await record("long-options", null);
+    before = await anchors(page);
     await fill(page, label);
+    if (unfilledSlots) {
+      assert.deepEqual(
+        await slotBoxes(),
+        unfilledSlots,
+        "Choosing long options preserves the label and picker positions",
+      );
+      await record("long-options-filled", before);
+    }
     before = await anchors(page);
     api.grade = true;
     await visibleCheck(page).click();
     await page.locator(".feedback.correct").waitFor();
     await page.waitForTimeout(1300);
     await record("correct", before);
+    if (unfilledSlots)
+      assert.deepEqual(
+        await slotBoxes(),
+        unfilledSlots,
+        "Feedback preserves the label and picker positions",
+      );
     const why = page.getByRole("button", { name: "See why", exact: true });
     if (await why.count()) {
       before = await anchors(page);
@@ -891,6 +965,45 @@ async function probeSelfTest(browser: Browser) {
     (e as HTMLElement).style.marginLeft = "380px";
   });
   const offscreenClip = await probe(page);
+  // A scrollport's bottom edge is exclusive: a partly visible input whose
+  // centre lies exactly on that edge is below the fold, not under the dock.
+  for (const offset of [0, 0.515625]) {
+    await page.setContent(`<main class="practice-workspace" style="position:relative">
+    <div id="scroller" style="height:${100 + Math.ceil(offset)}px;width:220px;overflow:auto">
+      <input aria-label="Scrollable answer" style="display:block;box-sizing:border-box;margin:${76 + offset}px 0 0;width:160px;height:48px;font:16px sans-serif">
+      <div style="height:100px"></div>
+    </div>
+    <button style="display:block;width:220px;height:48px;font:16px sans-serif">Check</button>
+  </main>`);
+    await page.evaluate(shim);
+    const boundaryControl = await probe(page);
+    assert.equal(
+      boundaryControl.some((f) => f.kind === "covered-control"),
+      false,
+      "Probe must recognize a control at the scrollport's clipped bottom edge",
+    );
+    await page.locator("#scroller").evaluate((el) => {
+      el.scrollTop = 48;
+    });
+    const revealedControl = await probe(page);
+    assert.equal(
+      revealedControl.some((f) => f.kind === "covered-control"),
+      false,
+      "Scrolling must reveal the control's own hit target",
+    );
+    await page.locator(".practice-workspace").evaluate((el) => {
+      const cover = document.createElement("div");
+      cover.style.cssText =
+        "position:absolute;top:28px;left:0;width:220px;height:48px;background:white";
+      el.append(cover);
+    });
+    const obscuredControl = await probe(page);
+    assert.equal(
+      obscuredControl.some((f) => f.kind === "covered-control"),
+      true,
+      "Probe must still reject a genuinely covered control inside the scrollport",
+    );
+  }
   await page.close();
   if (clippedSvg.some((f) => f.kind === "horizontal-overflow"))
     throw new Error("Probe measures a clipped SVG tail as visible overflow");
@@ -945,18 +1058,20 @@ try {
           jobs.push(() => runCase(browser, name, c, size, theme, "account"));
         jobs.push(() => runCase(browser, name, CASES[0], size, theme, "trial"));
       }
-    // The default matrix must exercise this study's narrow landscape column.
+    // Long questions and answer rows must fit the narrow landscape column.
     // Explicit viewport filters already describe their own requested coverage.
-    const studyCase = cases.find(([label]) => label === "choice-randomization");
+    const landscapeCases = cases.filter(
+      ([label]) => label === "choice-randomization" || label === "parts-slots",
+    );
     if (
-      studyCase &&
       !process.env.AUDIT_SIZES &&
       !sizes.some(([w, h]) => w === 1024 && h === 768)
     )
-      for (const theme of themes)
-        jobs.push(() =>
-          runCase(browser, name, studyCase, [1024, 768], theme, "account"),
-        );
+      for (const studyCase of landscapeCases)
+        for (const theme of themes)
+          jobs.push(() =>
+            runCase(browser, name, studyCase, [1024, 768], theme, "account"),
+          );
     let next = 0;
     await Promise.all(
       Array.from({ length: workers }, async () => {
@@ -983,6 +1098,7 @@ const steady = new Set([
   "hint-closed",
   "lesson-closed",
   "filled",
+  "long-options-filled",
   "incorrect",
   "correct",
   "skipped",

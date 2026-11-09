@@ -17,13 +17,30 @@ import { chromium as rawChromium, webkit, type Page } from "playwright";
 const chromium = secureChromium(rawChromium);
 import { hoverHugs, probe, settle, shellRecord } from "./app-shell-probe";
 import { shellScenarios, startShellFixture } from "./app-shell-fixture";
+import { verifyShellReview } from "./app-shell-review";
 
 const argument = (name: string) => {
   const index = process.argv.indexOf(`--${name}`);
   return index > 0 ? process.argv[index + 1] : undefined;
 };
 const selectedCase = argument("case");
-if (selectedCase && selectedCase !== "frontier-switch")
+if (
+  selectedCase &&
+  ![
+    "frontier-switch",
+    "drawer-trial",
+    "trial-refresh",
+    "trial-return",
+    "trial-retry",
+    "library-search",
+    "practice-title",
+    "library-loading",
+    "progress-loading",
+    "progress-large-text",
+    "review-loading",
+    "review-edges",
+  ].includes(selectedCase)
+)
   throw new Error(`Unknown app-shell case: ${selectedCase}`);
 const engine = argument("engine") ?? "chromium";
 const shots = argument("shots");
@@ -97,6 +114,22 @@ async function verifyShell() {
           viewport,
           theme,
         );
+        const inset = await page.evaluate(() => {
+          if (!document.querySelector("[data-app-frame]")) return null;
+          return {
+            reserved: Number.parseFloat(
+              getComputedStyle(document.documentElement).scrollPaddingTop,
+            ),
+            bar: document
+              .querySelector("[data-app-bar]")!
+              .getBoundingClientRect().height,
+          };
+        });
+        if (inset)
+          check(
+            Math.abs(inset.reserved - inset.bar) < 1,
+            `${tag}: focus inset ${inset.reserved}px differs from app bar ${inset.bar}px`,
+          );
         const found = await probe(page);
         check(found.overflow === 0, `${tag}: overflows by ${found.overflow}px`);
         check(
@@ -567,15 +600,124 @@ async function verifyFrontierSwitch() {
   }
 }
 
+/** A trial lookup must not invent a learner choice while it is pending.
+ * Hold that response across opening the drawer, then verify the same controls
+ * and text survive its completion. The account already says whether it has
+ * an assessment, including when this browser has no saved trial token. */
+async function verifyDrawerTrialResolution() {
+  for (const viewport of viewports)
+    for (const colorScheme of ["light", "dark"] as const)
+      for (const kind of ["single", "family", "trial"] as const) {
+        const context = await fixture.context(
+          browser,
+          kind === "trial" ? "trial" : "paid",
+          { viewport, colorScheme },
+        );
+        // The single-learner case uses the same real paid learner, with the
+        // second household learner omitted from this browser's account fixture.
+        if (kind === "single")
+          await context.route("**/api/v1/me", async (route) => {
+            const response = await route.fetch();
+            const me = await response.json();
+            me.learners = me.learners.slice(0, 1);
+            me.family.learners = me.family.learners.filter(
+              (learner: { id: string }) => learner.id === me.learners[0].id,
+            );
+            await route.fulfill({ response, json: me });
+          });
+        await context.addInitScript(() => localStorage.removeItem("amp.trial"));
+        let release!: () => void;
+        const held = new Promise<void>((resolve) => (release = resolve));
+        const page = await context.newPage();
+        let reads = 0;
+        await context.route("**/api/v1/trials/current", async (route) => {
+          reads++;
+          await held;
+          await route.continue();
+        });
+        try {
+          await page.goto(`${origin}/family/security`);
+          await page
+            .getByRole("heading", { name: /Sign-in & security/ })
+            .waitFor();
+          await page.getByRole("button", { name: "Open AMP menu" }).click();
+          const drawer = page.getByRole("dialog", {
+            name: "Adaptive Math Pathways",
+          });
+          await drawer.waitFor();
+          await settle(page, 250);
+          const text = await drawer.innerText();
+          assert.equal(
+            text.includes("Free assessment"),
+            kind === "trial",
+            `${kind}: pending lookup must use the account's known assessment`,
+          );
+          const before = await drawer
+            .locator('[aria-label="Where you are"]')
+            .innerHTML();
+          const response = page.waitForResponse("**/api/v1/trials/current");
+          release();
+          await (await response).finished();
+          await settle(page, 250);
+          assert.equal(
+            await drawer.innerText(),
+            text,
+            `${kind}: drawer text changed`,
+          );
+          assert.equal(
+            await drawer.locator('[aria-label="Where you are"]').innerHTML(),
+            before,
+            `${kind}: learner control was replaced`,
+          );
+          assert.equal(reads, 1, `${kind}: duplicate trial lookup`);
+          if (shots)
+            await page.screenshot({
+              path: `${shots}/${engine}-drawer-${kind}-${viewport.width}-${colorScheme}.png`,
+            });
+          console.log(
+            `Drawer trial lookup: ${kind}, ${viewport.width}, ${colorScheme}`,
+          );
+        } finally {
+          release();
+          await context.unrouteAll({ behavior: "wait" });
+          await context.close();
+        }
+      }
+}
+
 try {
+  if (
+    !selectedCase ||
+    [
+      "trial-refresh",
+      "trial-return",
+      "trial-retry",
+      "library-search",
+      "practice-title",
+      "library-loading",
+      "progress-loading",
+      "progress-large-text",
+      "review-loading",
+      "review-edges",
+    ].includes(selectedCase)
+  )
+    await verifyShellReview({
+      browser,
+      fixture,
+      viewports,
+      shots,
+      engine,
+      only: selectedCase === "review-loading" ? undefined : selectedCase,
+    });
   if (!selectedCase) await verifyShell();
-  await verifyFrontierSwitch();
+  if (!selectedCase || selectedCase === "frontier-switch")
+    await verifyFrontierSwitch();
+  if (!selectedCase || selectedCase === "drawer-trial")
+    await verifyDrawerTrialResolution();
 } finally {
   await browser.close();
   await fixture.close();
 }
 assert.deepEqual(failures, [], `App-shell polish:\n${failures.join("\n")}`);
-console.log(
-  `${selectedCase ? "Frontier learner switching" : "App-shell polish"} verified in ${engine}.`,
-);
+console.log(`${selectedCase ?? "App-shell polish"} verified in ${engine}.`);
 process.exit(0);

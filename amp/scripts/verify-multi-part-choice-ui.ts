@@ -22,7 +22,7 @@ import {
 } from "../src/math/multi-part-choice";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
-import { choose } from "./ui-controls";
+import { chooseLearner } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 
 const database = process.env.AMP_TEST_DATABASE_URL;
@@ -259,11 +259,8 @@ try {
           errors.push(`attempt ${reply.status()}`);
         if (reply.status() === 404) console.log("404", reply.url());
       });
-      await page.goto(origin);
-      await choose(
-        page.getByRole("button", { name: "Learner", exact: true }),
-        learner.id,
-      );
+      await page.goto(`${origin}/overview`);
+      await chooseLearner(page, learner.id);
       for (const family of families) {
         const tag = `${engine === "webkit" ? "webkit-" : ""}${family}-${width}-${theme}`;
         const problem = instance(family, `${theme}:${width}`);
@@ -569,11 +566,8 @@ try {
   });
   const page = await context.newPage();
   page.on("pageerror", (error) => errors.push(error.message));
-  await page.goto(origin);
-  await choose(
-    page.getByRole("button", { name: "Learner", exact: true }),
-    learner.id,
-  );
+  await page.goto(`${origin}/overview`);
+  await chooseLearner(page, learner.id);
   await startTopic(page, "inline-linear-features");
   await page.locator(".multi-part").waitFor();
   await page.getByRole("button", { name: "Lesson", exact: true }).click();

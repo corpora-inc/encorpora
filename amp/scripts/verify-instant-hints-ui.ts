@@ -207,7 +207,10 @@ try {
           // intentionally redirects to practice instead of showing the map.
           // Arm the next family before answering can start its prefetch.
           servingFamily = hintedFamily;
-          await attempt(page);
+          if (fallback) {
+            await page.getByRole("button", { name: /^Skip/ }).click();
+            await page.locator(".next-action").waitFor();
+          } else await attempt(page);
           const progress = await app.inject({
             method: "GET",
             url: `/api/v1/learners/${learnerId}/trial-progress`,
@@ -238,9 +241,16 @@ try {
         const hintText = await dialog.locator(".hint").textContent();
         await page.keyboard.press("Escape");
         if (mode !== "account") {
+          let mapUnavailable = fallback;
+          if (fallback)
+            await page.route("**/trial-progress", (route) =>
+              mapUnavailable
+                ? route.fulfill({ status: 503, json: { error: "Unavailable" } })
+                : route.fallback(),
+            );
           await page.getByRole("button", { name: "Open AMP menu" }).click();
           await page
-            .getByRole("link", { name: "Your progress" })
+            .getByRole("link", { name: "Progress" })
             .click({ noWaitAfter: true });
           await page
             .waitForURL((url) => url.pathname === "/try/map")
@@ -250,6 +260,15 @@ try {
                 { cause: error },
               );
             });
+          if (fallback) {
+            const retry = page.getByRole("button", {
+              name: "Try again",
+              exact: true,
+            });
+            await retry.waitFor();
+            mapUnavailable = false;
+            await retry.click();
+          }
           await page
             .getByRole("heading", { name: "Your progress", exact: true })
             .waitFor()
@@ -257,11 +276,19 @@ try {
               // Say what the map showed instead: a skeleton, an error, or a
               // redirect back to practice each have a different cause.
               throw new Error(
-                `${name}/${mode}: no "Your progress" heading at ${page.url()}; page errors=${JSON.stringify(errors)}; navigations=${JSON.stringify(navigations.slice(-6))}; screen=${(await page.locator("body").innerText()).slice(0, 600)}`,
+                `${name}/${mode}: no "Your progress" heading at ${page.url()}; page errors=${JSON.stringify(errors)}; navigations=${JSON.stringify(navigations.slice(-6))}; screen=${await page
+                  .locator("body")
+                  .innerText({ timeout: 1000 })
+                  .then((text) => text.slice(0, 600))
+                  .catch(() => "Unavailable")}`,
                 { cause: error },
               );
             });
           await page.locator(".frontier-map").waitFor();
+          await page
+            .getByText(/^1 of \d+ free problems used$/, { exact: true })
+            .waitFor();
+          if (fallback) await page.unroute("**/trial-progress");
           console.log(`${name}/${mode}: returning from progress`);
           await page
             .goBack({ waitUntil: "domcontentloaded" })

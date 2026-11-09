@@ -22,7 +22,7 @@ import { lessons } from "../src/content/lessons";
 import { publicationHtml } from "../src/content/publications";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
-import { choose } from "./ui-controls";
+import { chooseLearner } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import { assertPhoneLandscapeSmoke, problemInView } from "./ui-viewports";
 
@@ -210,11 +210,8 @@ try {
         if (reply.url().endsWith("/attempts") && reply.status() !== 200)
           errors.push(`attempt ${reply.status()}`);
       });
-      await page.goto(origin);
-      await choose(
-        page.getByRole("button", { name: "Learner", exact: true }),
-        learner.id,
-      );
+      await page.goto(`${origin}/overview`);
+      await chooseLearner(page, learner.id);
       for (const [f, family] of families.entries()) {
         const tag = `${engine === "webkit" ? "webkit-" : ""}${family}-${width}-${theme}`;
         const problem = instance(family, `${theme}:${width}`);
@@ -471,11 +468,8 @@ try {
   });
   const page = await context.newPage();
   page.on("pageerror", (error) => errors.push(error.message));
-  await page.goto(origin);
-  await choose(
-    page.getByRole("button", { name: "Learner", exact: true }),
-    learner.id,
-  );
+  await page.goto(`${origin}/overview`);
+  await chooseLearner(page, learner.id);
   await startTopic(page, "graph-of-linear-rule");
   await page.locator(".figure-choice").waitFor();
   await page.getByRole("button", { name: "Lesson", exact: true }).click();

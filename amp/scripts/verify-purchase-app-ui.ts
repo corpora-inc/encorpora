@@ -1,6 +1,6 @@
 import { secureChromium } from "../browser-security.mjs";
 import { fixtureMe } from "./me-fixture";
-import { choose } from "./ui-controls";
+import { choose, openMenu } from "./ui-controls";
 import assert from "node:assert/strict";
 import { fileURLToPath } from "node:url";
 import { mkdir } from "node:fs/promises";
@@ -278,11 +278,23 @@ async function openAccess(page: Page) {
     .getByRole("navigation", { name: "Account" })
     .getByRole("link", { name: "Family", exact: true })
     .click();
-  await page.getByRole("button", { name: "Access", exact: true }).click();
+  await page
+    .getByRole("navigation", { name: "Account" })
+    .getByRole("link", { name: "Billing", exact: true })
+    .click();
   await page
     .getByRole("button", { name: "Purchases & records", exact: true })
     .click();
   await page.locator('[data-purchase-entry="annual"]').waitFor();
+}
+async function expectCurrentLearner(page: Page, id: string) {
+  const drawer = await openMenu(page);
+  await drawer
+    .getByRole("listbox", { name: "Current learner" })
+    .locator(`[role="option"][aria-selected="true"][data-value="${id}"]`)
+    .waitFor();
+  await page.keyboard.press("Escape");
+  await drawer.waitFor({ state: "detached" });
 }
 async function visible(page: Page, selector: string) {
   // Phone landscape only has to stay usable; the others must fit.
@@ -428,10 +440,7 @@ try {
     purchaseId,
   );
   await expired.page.goto("http://127.0.0.1:4390");
-  await expired.page
-    .getByRole("button", { name: "Learner", exact: true })
-    .filter({ hasText: "Learner A 1" })
-    .waitFor({ state: "attached" });
+  await expectCurrentLearner(expired.page, "child-a-1");
   assert.equal(expired.started(), false);
   assert.equal(await expired.page.locator(".annual-purchase").count(), 0);
   assert.equal(
@@ -539,10 +548,7 @@ try {
       accountId: "parent-b",
     }),
   );
-  await returned.page
-    .getByRole("button", { name: "Learner", exact: true })
-    .filter({ hasText: "Learner B 1" })
-    .waitFor({ state: "attached" });
+  await expectCurrentLearner(returned.page, "child-b-1");
   assert.equal(await returned.page.locator(".annual-purchase").count(), 0);
   await returned.page.evaluate(
     (id) =>
@@ -605,10 +611,7 @@ try {
     );
     await f.releaseAndWait();
     await frames(f.page);
-    await f.page
-      .getByRole("button", { name: "Learner", exact: true })
-      .filter({ hasText: "Learner B 1" })
-      .waitFor({ state: "attached" });
+    await expectCurrentLearner(f.page, "child-b-1");
     assert.equal(await f.page.locator(".annual-purchase").count(), 0);
     assert.equal(
       await f.page.getByText(/purchase return could not be matched/).count(),

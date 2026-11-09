@@ -1,3 +1,4 @@
+import type { RefObject } from "react";
 import { NavigationSheet, SheetClose } from "../../ui/NavigationSheet";
 import { AppLogo } from "../../ui/AppLogo";
 import { useShellSlots } from "../../lib/shell-slots";
@@ -10,7 +11,13 @@ import bar from "../../ui/AppBar.module.css";
  * logo in the bar's exact spot, as its close control; it closes on that logo,
  * Escape, the scrim, or any link inside.
  */
-export default function ShellDrawer({ frame }: { frame: ShellFrame | null }) {
+export default function ShellDrawer({
+  frame,
+  triggerRef,
+}: {
+  frame: ShellFrame | null;
+  triggerRef: RefObject<HTMLButtonElement | null>;
+}) {
   const open = useShellSlots((state) => state.drawerOpen);
   const setOpen = useShellSlots((state) => state.setDrawerOpen);
   const close = () => setOpen(false);
@@ -18,6 +25,13 @@ export default function ShellDrawer({ frame }: { frame: ShellFrame | null }) {
     <NavigationSheet
       open={open && !!frame}
       onOpenChange={setOpen}
+      onCloseAutoFocus={(event) => {
+        // The shared bar owns the trigger outside Dialog.Root.
+        if (triggerRef.current) {
+          event.preventDefault();
+          triggerRef.current.focus({ preventScroll: true });
+        }
+      }}
       header={
         <div className={bar.sheetBar}>
           <SheetClose asChild>

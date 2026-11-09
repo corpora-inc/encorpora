@@ -120,7 +120,7 @@ try {
           !found.midWordWraps.length,
           `${tag} ${state}: ${found.midWordWraps.join("; ")}`,
         );
-        if (shots && (viewport.width === 390 || viewport.width === 1280))
+        if (shots && [320, 390, 768, 1280].includes(viewport.width))
           await page.screenshot({
             path: `${shots}/library-${state}-${viewport.width}-${theme}.png`,
           });
@@ -333,30 +333,32 @@ try {
     await context.close();
   }
 
-  // 5. The filter stays pinned under the app's tabs while the list scrolls.
-  for (const viewport of [
-    { width: 390, height: 844 },
-    { width: 1280, height: 800 },
-  ]) {
-    const { page, context } = await open(viewport, "light");
-    await page.evaluate(() => window.scrollTo(0, 3000));
-    await settle(page, 200);
-    const pin = await page.evaluate(() => {
-      const bar = document
-        .querySelector("[role=search]")!
-        .getBoundingClientRect();
-      const nav = document
-        .querySelector('nav[aria-label="Learning sections"]')!
-        .getBoundingClientRect();
-      return { top: bar.top, navBottom: nav.bottom, visible: bar.bottom > 0 };
-    });
-    check(pin.visible, `${viewport.width}: the filter scrolls away`);
-    check(
-      pin.top >= pin.navBottom - 1 && pin.top <= pin.navBottom + 24,
-      `${viewport.width}: the filter is not pinned under the tabs (${Math.round(pin.top)} vs ${Math.round(pin.navBottom)})`,
-    );
-    await context.close();
-  }
+  // 5. The filter stays pinned under the shared app bar while the list scrolls.
+  for (const theme of ["light", "dark"] as const)
+    for (const viewport of viewports) {
+      const { page, context } = await open(viewport, theme);
+      await page.evaluate(() => window.scrollTo(0, 3000));
+      await settle(page, 200);
+      const pin = await page.evaluate(() => {
+        const bar = document
+          .querySelector("[role=search]")!
+          .getBoundingClientRect();
+        const nav = document
+          .querySelector("[data-app-bar]")!
+          .getBoundingClientRect();
+        return { top: bar.top, navBottom: nav.bottom, visible: bar.bottom > 0 };
+      });
+      check(pin.visible, `${viewport.width}: the filter scrolls away`);
+      check(
+        pin.top >= pin.navBottom - 1 && pin.top <= pin.navBottom + 24,
+        `${viewport.width}: the filter is not pinned under the app bar (${Math.round(pin.top)} vs ${Math.round(pin.navBottom)})`,
+      );
+      if (shots && [320, 390, 768, 1280].includes(viewport.width))
+        await page.screenshot({
+          path: `${shots}/library-pinned-${viewport.width}-${theme}.png`,
+        });
+      await context.close();
+    }
 
   // 6. A problem type still opens its short lesson and practice.
   {

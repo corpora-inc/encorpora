@@ -82,7 +82,8 @@ async function fits(page: Page, label: string) {
       .map((el) => {
         const r = el.getBoundingClientRect();
         return {
-          text: el.textContent,
+          text: el.getAttribute("aria-label") ?? el.textContent,
+          tag: el.outerHTML.slice(0, 220),
           x: r.x,
           right: r.right,
           height: r.height,
@@ -93,7 +94,7 @@ async function fits(page: Page, label: string) {
   for (const c of geometry.controls) {
     assert(
       c.x >= -1 && c.right <= (page.viewportSize()?.width ?? 0) + 1,
-      `${label}: clipped ${c.text}`,
+      `${label}: clipped ${JSON.stringify(c)}`,
     );
     assert(c.height >= 43, `${label}: small target ${c.text}`);
   }
@@ -462,9 +463,11 @@ try {
   });
   await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page.getByRole("button", { name: "Sign out", exact: true }).click();
-  await page
-    .getByRole("button", { name: "Signing out…", exact: true })
-    .waitFor();
+  const signingOut = page
+    .getByRole("button", { name: "Sign out", exact: true })
+    .and(page.locator('[aria-busy="true"]'));
+  await signingOut.waitFor();
+  assert.equal(await signingOut.isDisabled(), true);
   assert.equal(notifications, 0);
   releaseSignOut();
   holdSignOut = null;

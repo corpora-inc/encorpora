@@ -21,8 +21,10 @@ import { setPitchShown } from "../lib/analytics";
 import { CurriculumDetailsProvider } from "../features/curriculum/CurriculumDetails";
 import { AppShell } from "./AppShell";
 import { nativeRuntime } from "../native-runtime";
+import { hasAccountContext } from "../lib/account-page";
 import {
   authConfigOptions,
+  MOUNT_REFETCH_AFTER_MS,
   queryClient,
   sessionOptions,
   meKey,
@@ -167,10 +169,30 @@ const root = createRootRoute({
   // A tab already found to run an older release turns its next navigation
   // into a full page load of the same URL. The current screen stays painted
   // until the new page paints, so no loading screen shows in between.
-  beforeLoad: ({ location }) => {
-    if (nativeRuntime || !knownStale()) return;
-    window.location.assign(location.href);
-    return new Promise<never>(() => {});
+  beforeLoad: async ({ location, preload }) => {
+    if (nativeRuntime) return;
+    if (knownStale()) {
+      window.location.assign(location.href);
+      return new Promise<never>(() => {});
+    }
+    // One refresh belongs to a new screen, shared by the frame, route
+    // guards and late chunks. Filters and cards on that screen reuse it.
+    // Cached screens stay visible while the refresh runs.
+    // Auth and public school pages load without the account whose session
+    // ended. Private child routes enforce their own session requirements.
+    if (
+      preload ||
+      !hasAccountContext(location.pathname) ||
+      router.state.resolvedLocation?.pathname === location.pathname
+    )
+      return;
+    const session = await queryClient
+      .ensureQueryData(sessionOptions)
+      .catch(() => undefined);
+    if (session)
+      void queryClient
+        .fetchQuery({ ...meOptions(session), staleTime: 0 })
+        .catch(() => undefined); // The resource's observer owns its error UI.
   },
   pendingMs: 600_000,
 });
@@ -260,10 +282,7 @@ async function beforeStart({
   const session = await queryClient.ensureQueryData(sessionOptions);
   if (!session) throw redirect({ to: "/sign-in", search });
   if (nativeRuntime) return;
-  const me = await queryClient.ensureQueryData({
-    ...meOptions(session),
-    revalidateIfStale: true,
-  });
+  const me = await queryClient.ensureQueryData(meOptions(session));
   const target = startDestination(
     me,
     location.pathname,
@@ -316,7 +335,33 @@ const tryMap = createRoute({
   getParentRoute: () => root,
   path: "/try/map",
   beforeLoad: beforeTrial,
-  loader: loadTrialBuy,
+  loader: {
+    staleReloadMode: "blocking",
+    handler: async (args) => {
+      const { progressOptions, trialSessionOptions } =
+        await import("../features/trial/api");
+      await Promise.all([
+        loadTrialBuy(args),
+        queryClient
+          .ensureQueryData(trialSessionOptions)
+          .then((session) =>
+            session
+              ? queryClient.fetchQuery({
+                  ...progressOptions(session),
+                  // Answers mark this resource stale. Await the new count before
+                  // deciding whether an empty assessment should return to practice.
+                  // A just-loaded checkpoint is shared with its destination.
+                  staleTime: MOUNT_REFETCH_AFTER_MS,
+                })
+              : null,
+          )
+          .catch(() => {
+            // The destination owns retry and expired-assessment recovery through
+            // these query errors; the route only waits for the read to settle.
+          }),
+      ]);
+    },
+  },
   component: trial("TrialMap"),
 });
 const tryPlans = createRoute({
@@ -360,7 +405,7 @@ const home = createRoute({
       const session = await queryClient.ensureQueryData(sessionOptions);
       if (session) {
         const me = await queryClient
-          .fetchQuery(meOptions(session))
+          .fetchQuery({ ...meOptions(session), staleTime: 0 })
           .catch(() => undefined);
         // Explicit handoffs select their screen before mounting home. Merely
         // skipping the default redirect would let home's setup effect race them.
@@ -843,10 +888,7 @@ async function ownPractice() {
   // Signed out: sign in, and `/` brings them back to their own practice.
   const session = await queryClient.ensureQueryData(sessionOptions);
   if (!session) throw redirect({ to: "/sign-in" });
-  const me = await queryClient.ensureQueryData({
-    ...meOptions(session),
-    revalidateIfStale: true,
-  });
+  const me = await queryClient.ensureQueryData(meOptions(session));
   if (!me.signedIn) throw redirect({ to: "/sign-in" });
   return { me, session };
 }

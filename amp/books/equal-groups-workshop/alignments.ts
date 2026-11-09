@@ -409,11 +409,10 @@ export const equalGroupsSources = [
     scope: "Optional fraction-as-division bridge",
   },
 ].map((source) => ({ ...source, reviewedOn: "2026-10-17" }));
+/** Book pages and paper tasks have their own scoped standards. Generated
+ * practice coverage belongs to the skill crosswalk, not these teaching links. */
 export function validateEqualGroupsAlignments(
-  skills: readonly {
-    id: string;
-    alignments: readonly { standardId: string }[];
-  }[],
+  skills: readonly { id: string }[],
   templates: readonly { id: string; skillId: string }[],
   standards: readonly { id: string }[],
   alignments: readonly WorkshopAlignment[] = equalGroupsAlignments,
@@ -436,17 +435,8 @@ export function validateEqualGroupsAlignments(
       a.unassessedRequirements.some((x) => !x.trim())
     )
       throw new Error(`Missing scope or limitations: ${a.id}`);
-    for (const id of a.standardIds) {
+    for (const id of a.standardIds)
       if (!standardIds.has(id)) throw new Error(`Unknown standard: ${id}`);
-      if (
-        !skillMap
-          .get(a.skillId)!
-          .alignments.some((link) => link.standardId === id)
-      )
-        throw new Error(
-          `Standard is outside skill crosswalk: ${a.skillId}/${id}`,
-        );
-    }
     for (const id of a.pageIds)
       if (!pageMap.has(id)) throw new Error(`Unknown page: ${id}`);
     for (const id of a.taskIds)

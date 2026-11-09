@@ -11,6 +11,7 @@ import {
 import type { CoordinatePlot } from "../src/publishing/algebra-models.js";
 import { BookDiagram } from "../src/publishing/diagrams.js";
 import { BookScreenFigure } from "../src/web/BookScreenFigure.js";
+import { contrast, resolveTheme, type Rgba } from "../scripts/color-system.js";
 const plot = (): CoordinatePlot => ({
   kind: "coordinate-plot",
   xMin: -4,
@@ -30,6 +31,48 @@ const diagram = (model: object) =>
     caption: "Quantities retain their specified units.",
     ...model,
   }) as Parameters<typeof validateDiagram>[0];
+test("screen plot lines, keys and label halos remain legible in both themes", () => {
+  const html = renderToStaticMarkup(
+    React.createElement(BookScreenFigure, {
+      diagram: diagram({
+        ...plot(),
+        lines: [{ slope: [1, 1], intercept: [0, 1], label: "L" }],
+        points: [{ x: [1, 1], y: [1, 1], label: "A" }],
+      }),
+    }),
+  );
+  const line = html.match(
+    /<g data-line="L">[\s\S]*?<line[^>]*stroke="([^"]+)"/,
+  )?.[1];
+  const key = html.match(/<span style="color:([^";]+)/)?.[1];
+  const halo = html.match(/paint-order="stroke" stroke="([^"]+)"/)?.[1];
+  assert.ok(line && key && halo);
+  for (const theme of ["light", "dark"] as const) {
+    const { color } = resolveTheme(theme);
+    const resolve = (value: string): Rgba => {
+      if (value.startsWith("var(")) return color(value.slice(4, -1));
+      if (value === "white") return [255, 255, 255, 1];
+      assert.match(value, /^#[0-9a-f]{6}$/i);
+      return [1, 3, 5]
+        .map((at) => parseInt(value.slice(at, at + 2), 16))
+        .concat(1) as Rgba;
+    };
+    const surface = color("--color-surface");
+    assert.ok(
+      contrast(resolve(line), surface) >= 3,
+      `${theme}: plotted line contrast`,
+    );
+    assert.ok(
+      contrast(resolve(key), surface) >= 4.5,
+      `${theme}: legend text contrast`,
+    );
+    assert.deepEqual(
+      resolve(halo),
+      surface,
+      `${theme}: the label halo matches the page`,
+    );
+  }
+});
 test("algebra examples validate and share exact mathematical drawing between print and screen", () => {
   for (const d of algebraModels) {
     validateDiagram(d);
@@ -39,9 +82,23 @@ test("algebra examples validate and share exact mathematical drawing between pri
     const screen = renderToStaticMarkup(
       React.createElement(BookScreenFigure, { diagram: d }),
     );
+    // Normalize only palette values: every geometric and semantic attribute
+    // must match print, including unfilled shapes and line patterns.
+    const printInks: Record<string, string> = {
+      "--color-figure-accent": "#18594f",
+      "--color-figure-warm": "#af4c39",
+      "--color-figure-gold-fill": "#e8c579",
+      "--color-figure-accent-fill": "#e4f0eb",
+      "--color-figure-grid": "#ccdcd5",
+      "--color-surface": "white",
+    };
+    const screenOnPaper = screen.replace(
+      /var\((--color-[a-z-]+)\)/g,
+      (value, role: string) => printInks[role] ?? value,
+    );
     assert.equal(
       print.match(/<svg[\s\S]*?<\/svg>/)?.[0],
-      screen.match(/<svg[\s\S]*?<\/svg>/)?.[0],
+      screenOnPaper.match(/<svg[\s\S]*?<\/svg>/)?.[0],
     );
     assert.equal(
       print.match(/<table[\s\S]*?<\/table>/)?.[0],
