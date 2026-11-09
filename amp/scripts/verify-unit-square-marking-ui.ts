@@ -145,6 +145,25 @@ async function promptVisible(page: Page) {
   });
   assert.ok(visible, "Prompt is never clipped under the app header");
 }
+async function countVisible(page: Page) {
+  assert.ok(
+    await page.locator(".square-marking-tools").evaluate((node) => {
+      const tools = node.getBoundingClientRect();
+      const stage = document
+        .querySelector(".problem-stage")!
+        .getBoundingClientRect();
+      const dock = document
+        .querySelector(".answer-dock")!
+        .getBoundingClientRect();
+      const overlaps = dock.left < tools.right && dock.right > tools.left;
+      return (
+        tools.top >= stage.top &&
+        tools.bottom <= Math.min(stage.bottom, overlaps ? dock.top : innerHeight)
+      );
+    }),
+    "The running count and reset are visible above the answer dock",
+  );
+}
 async function visibleCells(page: Page) {
   const cells = page.locator(".square-marking-cell");
   for (let i = 0; i < (await cells.count()); i++) {
@@ -229,6 +248,7 @@ try {
           assert.equal(before.overflow, 0);
           assert.equal(before.stageOverflow, 0);
           await promptVisible(page);
+          await countVisible(page);
           const cells = page.locator(".square-marking-cell");
           const first = page.locator(
             '.square-marking-cell[data-row="0"][data-col="0"]',
@@ -337,6 +357,7 @@ try {
           );
           await stable(page, before);
           await promptVisible(page);
+          await countVisible(page);
           if (correct)
             await page.screenshot({ path: `${shots}/${tag}-filled.png` });
           if (correct && width === 768) await reset.click();
@@ -390,6 +411,7 @@ try {
           );
           await stable(page, before);
           await visibleCells(page);
+          await page.locator(".practice-celebration").waitFor({ state: "hidden" });
           await promptVisible(page);
           await page.screenshot({
             path: `${shots}/${tag}-${correct ? "correct" : "incorrect"}.png`,

@@ -34,6 +34,11 @@
   margin: 0 auto;
   padding: 3px;
 }
+@media (max-width: 359px) {
+  .square-marking-grid {
+    width: calc(var(--square-columns) * 44px + 6px);
+  }
+}
 .square-marking-cell {
   position: relative;
   aspect-ratio: 1;
