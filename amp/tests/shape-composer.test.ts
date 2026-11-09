@@ -23,6 +23,7 @@ import {
   parseShapeAnswer,
   normalizeShapeAnswer,
   shapePath,
+  shapeFeedbackSummary,
   inspectShapeStage,
   type ShapeAnswer,
   type ShapeComposerResponse,
@@ -109,6 +110,36 @@ test("exact geometry accepts complementary halves and rejects positive-area over
     false,
   );
   assert.equal(gradeShapeComposer(base, JSON.stringify([[]])), false);
+});
+test("feedback describes gaps, overlap and overhang rather than counting pieces", () => {
+  assert.equal(
+    shapeFeedbackSummary(base, JSON.stringify([[placement(0)]])),
+    "Part of the outline is still empty.",
+  );
+  assert.equal(
+    shapeFeedbackSummary(base, JSON.stringify([[placement(0), placement(1)]])),
+    "Pieces overlap, and part of the outline is still empty.",
+  );
+  assert.equal(
+    shapeFeedbackSummary(base, JSON.stringify([[{ ...placement(0), x: 3 }]])),
+    "A piece sticks out of the outline, and part of the outline is still empty.",
+  );
+  assert.equal(
+    shapeFeedbackSummary(
+      base,
+      JSON.stringify([[placement(0), placement(1, 180)]]),
+    ),
+    "The outline is filled.",
+  );
+  const required = structuredClone(base);
+  required.stages[0]!.required = [{ pieceId: "T1", count: 1 }];
+  assert.equal(
+    shapeFeedbackSummary(
+      required,
+      JSON.stringify([[placement(0), placement(1, 180)]]),
+    ),
+    "Use the pieces named in the question.",
+  );
 });
 test("transport rejects forged copies, transforms and stages; mistakes stay valid attempts", () => {
   for (const a of [

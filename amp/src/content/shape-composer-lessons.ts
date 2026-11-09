@@ -44,8 +44,7 @@ export const shapeComposerMethod: ProblemMethod = {
   method: [
     "Look for straight sides, corners and curves in the outline. Choose a piece with a matching edge.",
     "Tap the piece, then tap where it goes. Turn changes which way it points. Flip turns it over.",
-    "Put the pieces side by side. A gap is an empty part. An overlap is where one piece covers another.",
-    "Fill every part of the outline. Keep every piece inside it. Use the named pieces when the question names them.",
+    "Put the pieces side by side. A gap is an empty part. An overlap is where one piece covers another. Fill every part of the outline. Keep every piece inside it. Use the named pieces when the question names them.",
     "For a bigger shape, join the smaller pieces first. Then move each copy of that whole shape as one piece.",
   ],
   watch:

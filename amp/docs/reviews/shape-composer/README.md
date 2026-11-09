@@ -4,9 +4,11 @@ Grade 1 learners fill an outline with flat pieces, then use a completed shape as
 
 The client declares `shape-composer-v1`. Older clients continue to receive compatible formats, including the existing shape-recognition problems. The composer uses the existing practice route, answer dock, feedback and lesson system.
 
-Tap a tray piece and a grid space to place it. Turn rotates clockwise by 90 degrees; Flip mirrors the right-trapezoid piece. Placed pieces can be moved or removed. Dragging also places pieces. The tray scrolls horizontally on phones. Keyboard controls use arrows, Enter, R, F, Delete and Escape. A live region announces the selected piece, rotation, placement, overlap or overhang, and an approximate percentage left empty. The percentage is an accessibility estimate; grading is exact.
+Tap a tray piece and a grid space to place it. Turn rotates clockwise by a quarter turn; Flip mirrors the right-trapezoid piece. Placed pieces can be moved or removed. Dragging also places pieces. The tray wraps to keep every piece visible on phones. Its cards draw the current turn; placed pieces are dimmed and checked. Keyboard controls use arrows, Enter, R, F, Delete and Escape. A live region announces the selected piece, turns in everyday language, placement, overlap or overhang, and an approximate percentage left empty. The percentage is an accessibility estimate; grading is exact.
 
-The outline stays visible above the pieces. Overlaps and overhangs have stripes. Selection uses an unfilled dashed outline and disappears after grading. The inactive tray is hidden in review so the whole board fits above the phone's feedback panel. The feedback's “Show one way” button replaces the displayed arrangement in the same board. Screen-reader review describes every displayed piece, its rotation and its position for either arrangement.
+The target has a lightly tinted interior and a contrasting outline above the pieces, with space around the grid to keep its edge visible. Overlaps and overhangs have stripes. A faint preview follows the pointer or keyboard focus and disappears after grading. Two-stage problems use a fixed two-step indicator: make a shape, then use it as one piece.
+
+The board fills the available phone width during placement. In review, the inactive tray is hidden and the board fits the space above feedback, keeping the prompt visible. Incorrect feedback names the gaps, overlaps or overhangs in the submitted board. “Show one way” replaces the displayed arrangement in the same board. Screen-reader review describes every displayed piece, its turn and its position for either arrangement.
 
 ## Exact grading and guess chance
 
@@ -32,7 +34,7 @@ npm run test:shape-composer-ui
 npm run test:shape-composer-ui -- --webkit
 ```
 
-The browser matrix covers 320, 390, 768 and 1280 px in both themes, with empty, filled, correct and incorrect states. It asserts stable prompt, board, tray, controls and answer-dock bounds during placement, turns, removal and reset; no horizontal overflow; 44 px targets; keyboard operation; mouse dragging; touch tapping; composite-stage transitions; canonical retries; problem reports; and legacy-format delivery. Chromium also checks native touch dragging and horizontal tray swiping. Geometry receipts accompany the screenshots.
+The Chromium and WebKit browser matrices cover 320, 390, 768 and 1280 px in both themes, with empty, preview, filled, gap, correct, incorrect and reference-solution states. The 390 px viewport is 844 px tall. Assertions cover visible prompts and target outlines; the full tray without horizontal scrolling; the complete active workspace without scrolling at 390 × 844; stable prompt, board, tray, controls and answer-dock bounds during placement, turns, removal, reset and step transitions; 44 px targets; keyboard operation; mouse dragging; touch tapping; canonical retries; problem reports; and legacy-format delivery. Chromium also checks native touch dragging. Geometry receipts accompany the screenshots.
 
 ## Representative screens
 
@@ -46,6 +48,11 @@ The browser matrix covers 320, 390, 768 and 1280 px in both themes, with empty, 
 ![Empty outline on a phone](triangles-320-light-empty.png)
 ![Correct composition on a phone](triangles-320-light-correct.png)
 ![Overlapping triangles after grading](triangles-320-light-incorrect.png)
+
+![Two-step composition at 320 px](joined-circle-320-dark-filled.png)
+![Full tray and board at 390 × 844](house-390-light-gap.png)
+![Turned piece and landing preview](flip-trapezoid-390-light-preview.png)
+![Overlap feedback with the target outline visible](triangles-1280-dark-incorrect.png)
 
 Geometry receipts: [Chromium](geometry-chromium.json), [WebKit](geometry-webkit.json).
 

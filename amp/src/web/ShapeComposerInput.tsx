@@ -58,8 +58,17 @@ function emptyPercent(target: ShapeCell[], placed: ShapeCell[]): number {
     }
   return total ? Math.round((empty / total) * 20) * 5 : 0;
 }
-function PieceIcon({ piece }: { piece: ShapePiece }) {
-  const cells = piece.cells;
+const turnWords = (p: ShapePlacement) =>
+  `${{ 0: "No turn", 90: "A quarter turn clockwise", 180: "A half turn", 270: "Three quarter turns clockwise" }[p.rot]}${p.flip ? ", flipped" : ""}`;
+
+function PieceIcon({
+  piece,
+  pose,
+}: {
+  piece: ShapePiece;
+  pose: ShapePlacement;
+}) {
+  const cells = placedCells(piece, { ...pose, x: 0, y: 0 });
   const w = Math.max(...cells.map((c) => c.x)) + 1,
     h = Math.max(...cells.map((c) => c.y)) + 1;
   return (
@@ -103,6 +112,7 @@ export function ShapeComposerInput({
     board = useRef<HTMLDivElement>(null);
   const [selected, setSelected] = useState<ShapePlacement | null>(null),
     [cursor, setCursor] = useState({ x: 0, y: 0 });
+  const [preview, setPreview] = useState<{ x: number; y: number } | null>(null);
   const [announcement, say] = useState(""),
     [showAnswer, setShowAnswer] = useState(false);
   const drag = useRef<{
@@ -145,7 +155,7 @@ export function ShapeComposerInput({
     previousCount.current = placements.length;
   }, [placements.length, resolved]);
   const describe = (p: ShapePlacement, verb: string) =>
-    `${stage.tray.find((t) => t.id === p.pieceId)!.name} ${p.copy + 1} ${verb}. Turned ${p.rot} degrees${p.flip ? ", flipped" : ""}. Column ${p.x + 1}, row ${p.y + 1}.`;
+    `${stage.tray.find((t) => t.id === p.pieceId)!.name} ${p.copy + 1} ${verb}. ${turnWords(p)}. Column ${p.x + 1}, row ${p.y + 1}.`;
   function update(p: ShapePlacement, verb = "placed") {
     if (locked) return;
     const next = [...a];
@@ -193,7 +203,9 @@ export function ShapeComposerInput({
       .find((d) => d.cells.some((c) => contains(c, x, y)));
   }
   function boardPoint(clientX: number, clientY: number) {
-    const b = board.current!.getBoundingClientRect();
+    const b = board
+      .current!.querySelector(".shape-grid")!
+      .getBoundingClientRect();
     return {
       x: ((clientX - b.left) / b.width) * 5,
       y: ((clientY - b.top) / b.height) * 4,
@@ -278,16 +290,26 @@ export function ShapeComposerInput({
     e.currentTarget.setPointerCapture(e.pointerId);
   }
   function pointerMove(e: PointerEvent) {
+    if (locked) return;
     const d = drag.current;
-    if (d && Math.hypot(e.clientX - d.x, e.clientY - d.y) > 8) d.moved = true;
+    if (d && !d.moved && Math.hypot(e.clientX - d.x, e.clientY - d.y) > 8) {
+      d.moved = true;
+      setSelected(d.p);
+    }
+    const point = boardPoint(e.clientX, e.clientY);
+    setPreview(
+      point.x >= 0 && point.x < 5 && point.y >= 0 && point.y < 4
+        ? { x: Math.floor(point.x), y: Math.floor(point.y) }
+        : null,
+    );
   }
   function pointerUp(e: PointerEvent) {
     const d = drag.current;
     drag.current = null;
     if (!d || !d.moved || locked) return;
-    const b = board.current!.getBoundingClientRect(),
-      x = Math.floor(((e.clientX - b.left) / b.width) * 5),
-      y = Math.floor(((e.clientY - b.top) / b.height) * 4);
+    const point = boardPoint(e.clientX, e.clientY),
+      x = Math.floor(point.x),
+      y = Math.floor(point.y);
     if (x >= 0 && x < 5 && y >= 0 && y < 4) update({ ...d.p, x, y });
     suppressClick.current = true;
     // A drag ends with a synthetic click. Keep it from re-selecting the old pose.
@@ -311,22 +333,39 @@ export function ShapeComposerInput({
             key={i}
             type="button"
             aria-pressed={stageIndex === i}
+            aria-current={stageIndex === i ? "step" : undefined}
+            aria-label={
+              i === 0
+                ? "Step 1: Make the first shape"
+                : "Step 2: Use it as one piece"
+            }
             disabled={!resolved && stageIndex !== i}
             onClick={() => {
               setStage(i);
               setSelected(null);
             }}
           >
-            {r.stages.length === 1 ? "Make the shape" : `Shape ${i + 1}`}
+            <span className="shape-step-number" aria-hidden="true">
+              {i + 1}
+            </span>
+            <span>{i === 0 ? "Make a shape" : "Use it as one piece"}</span>
           </button>
         ))}
-        {r.stages.length === 2 && stageIndex === 1 && (
-          <span className="shape-joined-label">Your pieces joined</span>
-        )}
       </div>
       <p className="shape-instruction">{stage.prompt}</p>
-      <div className="shape-board" ref={board}>
-        <svg viewBox="0 0 5 4" aria-hidden="true" className="shape-canvas">
+      <div
+        className="shape-board"
+        ref={board}
+        onPointerLeave={() => setPreview(null)}
+        onBlur={(e) => {
+          if (!e.currentTarget.contains(e.relatedTarget)) setPreview(null);
+        }}
+      >
+        <svg
+          viewBox="-.12 -.12 5.24 4.24"
+          aria-hidden="true"
+          className="shape-canvas"
+        >
           <defs>
             <pattern
               id={`${uid}-hatch`}
@@ -338,13 +377,12 @@ export function ShapeComposerInput({
               <rect width=".16" height=".16" className="shape-error-fill" />
               <path d="M0 0V.16" className="shape-hatch-line" />
             </pattern>
-            <clipPath id={`${uid}-target`}>
-              <path d={shapePath(stage.target)} />
+            <clipPath id={`${uid}-outside`}>
+              <path
+                d={`M0 0H5V4H0Z${shapePath(stage.target)}`}
+                clipRule="evenodd"
+              />
             </clipPath>
-            <mask id={`${uid}-outside`}>
-              <rect width="5" height="4" fill="white" />
-              <path d={shapePath(stage.target)} fill="black" />
-            </mask>
             {drawn.map((d, i) => (
               <clipPath key={i} id={`${uid}-piece-${i}`}>
                 <path d={shapePath(d.cells)} />
@@ -364,7 +402,7 @@ export function ShapeComposerInput({
               }
             />
           ))}
-          <g mask={`url(#${uid}-outside)`}>
+          <g clipPath={`url(#${uid}-outside)`}>
             {drawn.map((d) => (
               <path
                 key={keyOf(d.p)}
@@ -385,15 +423,15 @@ export function ShapeComposerInput({
                 />
               )),
           )}
-          <path d={shapePath(stage.target)} className="shape-target-edge" />
-          {!resolved && current && (
+          {!resolved && current && preview && (
             <path
-              d={shapePath(
-                placedCells(active!, { ...current, x: cursor.x, y: cursor.y }),
-              )}
+              d={shapePath(placedCells(active!, { ...current, ...preview }))}
+              data-kind={active!.kind}
               className="shape-cursor"
             />
           )}
+          <path d={shapePath(stage.target)} className="shape-target-halo" />
+          <path d={shapePath(stage.target)} className="shape-target-edge" />
         </svg>
         <div
           className="shape-grid"
@@ -414,7 +452,10 @@ export function ShapeComposerInput({
                   resolved ? -1 : cursor.x === x && cursor.y === y ? 0 : -1
                 }
                 disabled={locked}
-                onFocus={() => setCursor({ x, y })}
+                onFocus={() => {
+                  setCursor({ x, y });
+                  setPreview({ x, y });
+                }}
                 onClick={(e) =>
                   at(
                     x,
@@ -437,19 +478,6 @@ export function ShapeComposerInput({
           })}
         </div>
       </div>
-      <p className="shape-status">
-        {status.overlap
-          ? "Striped parts overlap."
-          : status.outside
-            ? "Striped parts stick out."
-            : resolved
-              ? showAnswer || skipped
-                ? "One way to fill the outline."
-                : "Your pieces are shown above."
-              : current
-                ? `${active!.name}, turned ${current.rot}°${current.flip ? ", flipped" : ""}. Tap a space to place it.`
-                : "Tap a piece, then a space. Tap the piece again to move it."}
-      </p>
       <div className="shape-tray" role="group" aria-label="Piece tray">
         {stage.tray.flatMap((piece) =>
           Array.from({ length: piece.copies }, (_, copy) => {
@@ -468,11 +496,9 @@ export function ShapeComposerInput({
                 type="button"
                 key={keyOf(p)}
                 data-piece={keyOf(p)}
-                style={{
-                  width: `max(88px, calc(${Math.max(...piece.cells.map((c) => c.x)) + 1.16} * var(--shape-unit) + 12px))`,
-                }}
+                data-placed={used || undefined}
                 disabled={locked}
-                aria-label={`${piece.name} ${copy + 1}${used ? ", on the board" : ""}`}
+                aria-label={`${piece.name} ${copy + 1}${used ? ", on the board" : ""}. ${turnWords(p)}.`}
                 aria-pressed={
                   !resolved && !!current && keyOf(p) === keyOf(current)
                 }
@@ -488,10 +514,14 @@ export function ShapeComposerInput({
                 }}
               >
                 <div className="shape-piece-icon">
-                  <PieceIcon piece={piece} />
+                  <PieceIcon piece={piece} pose={p} />
                 </div>
                 <span>{piece.name}</span>
-                <small>{used ? "On board" : `Piece ${copy + 1}`}</small>
+                {used && (
+                  <span className="shape-piece-check" aria-hidden="true">
+                    ✓
+                  </span>
+                )}
               </button>
             );
           }),

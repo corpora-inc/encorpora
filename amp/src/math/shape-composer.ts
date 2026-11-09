@@ -284,6 +284,34 @@ export function shapeAnswerText(r: ShapeComposerResponse, raw: string): string {
     )
     .join("; ");
 }
+/** Describe the submitted board without exposing a reference arrangement. */
+export function shapeFeedbackSummary(
+  r: ShapeComposerResponse,
+  raw: string,
+): string {
+  const answer = parseShapeAnswer(r, raw);
+  if (!answer) return "Part of the outline is still empty.";
+  const checks = answer.map((pieces, i) =>
+    inspectShapeStage(r.stages[i]!, pieces),
+  );
+  const overlap = checks.some((c) => c.overlap),
+    outside = checks.some((c) => c.outside),
+    gap = checks.some((c) => c.gap);
+  const parts = [
+    ...(overlap ? ["pieces overlap"] : []),
+    ...(outside ? ["a piece sticks out of the outline"] : []),
+    ...(gap ? ["part of the outline is still empty"] : []),
+  ];
+  if (!parts.length)
+    return checks.every((c) => c.required)
+      ? "The outline is filled."
+      : "Use the pieces named in the question.";
+  const sentence =
+    parts.length === 1
+      ? parts[0]!
+      : `${parts.slice(0, -1).join(", ")}, and ${parts.at(-1)}`;
+  return sentence[0]!.toUpperCase() + sentence.slice(1) + ".";
+}
 export function shapeFeedback(r: ShapeComposerResponse, raw: string): string[] {
   const a = parseShapeAnswer(r, raw);
   if (!a) return [];

@@ -1,12 +1,23 @@
 .shape-composer {
   container-type: inline-size;
-  --shape-unit: min(20cqw, 56px);
+  --shape-unit: min(8cqw, 28px);
   width: 100%;
   max-width: 30rem;
   margin: var(--space-2) auto 0;
   color: var(--color-on-surface);
   flex: none;
   -webkit-tap-highlight-color: transparent;
+}
+/* Keep the prompt in the scrollable flow, even when a short viewport needs
+   more room than the board's minimum touch targets allow. */
+.problem-content:has(> .shape-composer) {
+  flex: none;
+}
+.problem-stage[data-shape-review] .problem-content {
+  margin-block: 0;
+}
+.shape-composer[data-resolved] .shape-board {
+  max-width: min(100%, calc(var(--shape-review-height, 1000px) * 5.24 / 4.24));
 }
 .shape-composer button {
   min-width: 44px;
@@ -35,7 +46,8 @@
   word-break: normal;
 }
 .shape-stage-tabs {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: var(--space-1);
   min-height: 44px;
@@ -44,23 +56,41 @@
   display: none;
 }
 .shape-stage-tabs button {
-  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  white-space: normal;
+  line-height: 1.25;
+  min-height: 52px;
+  padding: 4px;
 }
 .shape-stage-tabs button[aria-pressed="true"] {
   border-color: var(--color-primary);
+  background: var(--color-surface-raised);
   opacity: 1;
 }
-.shape-joined-label {
-  font-size: 0.75rem;
+.shape-step-number {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-surface-sunken);
+}
+.shape-stage-tabs [aria-current="step"] .shape-step-number {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
 }
 .shape-instruction {
-  min-height: 3.92em;
+  min-height: 2.8em;
 }
 .shape-board {
   width: 100%;
-  max-width: 280px;
   margin-inline: auto;
-  aspect-ratio: 5/4;
+  aspect-ratio: 5.24/4.24;
   position: relative;
   border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-control);
@@ -73,14 +103,22 @@
   height: 100%;
 }
 .shape-target-fill {
-  fill: var(--color-figure-grid);
-  opacity: 0.45;
+  fill: var(--color-on-surface);
+  opacity: 0.12;
 }
+.shape-target-halo,
 .shape-target-edge {
   fill: none;
-  stroke: var(--color-on-surface);
-  stroke-width: 0.045;
+  stroke-linejoin: round;
   pointer-events: none;
+}
+.shape-target-halo {
+  stroke: var(--color-surface);
+  stroke-width: 0.11;
+}
+.shape-target-edge {
+  stroke: var(--color-on-surface);
+  stroke-width: 0.055;
 }
 .shape-placed,
 .shape-tray path {
@@ -117,14 +155,15 @@
   stroke-width: 0.04;
 }
 .shape-cursor {
-  fill: none;
   stroke: var(--color-info-accent);
   stroke-width: 0.04;
   stroke-dasharray: 0.08 0.06;
+  fill-opacity: 0.25;
+  pointer-events: none;
 }
 .shape-grid {
   position: absolute;
-  inset: 0;
+  inset: calc(100% * 0.12 / 4.24) calc(100% * 0.12 / 5.24);
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, 1fr);
@@ -163,46 +202,55 @@
 .shape-composer[data-resolved] .shape-grid button::before {
   visibility: hidden;
 }
-.shape-status {
-  min-height: 4.2em;
-}
 .shape-tray {
-  display: flex;
-  gap: var(--space-2);
-  overflow-x: auto;
-  padding: 3px 3px var(--space-2);
-  scrollbar-width: thin;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
+  gap: 6px;
+  padding: 8px 0;
 }
 .shape-tray button {
-  width: 88px;
-  flex: 0 0 auto;
-  min-height: 116px;
+  position: relative;
+  min-width: 0;
+  min-height: 88px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2px;
   padding: 4px;
-  touch-action: pan-x;
+  touch-action: none;
+  white-space: normal;
+  border-width: 2px;
 }
 .shape-tray svg {
   flex: none;
+  max-width: 100%;
 }
 .shape-piece-icon {
-  height: calc(2.16 * var(--shape-unit));
+  height: 60px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .shape-tray span {
   font-size: 0.75rem;
+  line-height: 1.25;
 }
-.shape-tray small {
-  font-size: 0.6875rem;
-  color: var(--color-muted-text);
+.shape-tray button > span:not(.shape-piece-check) {
+  min-height: 2.5em;
+}
+.shape-tray [data-placed] .shape-piece-icon {
+  opacity: 0.4;
+}
+.shape-tray .shape-piece-check {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  color: var(--color-primary);
+  font-size: 0.875rem;
 }
 .shape-tray button[aria-pressed="true"] {
-  border: 2px solid var(--color-primary);
-  padding: 3px;
+  border-color: var(--color-primary);
   background: var(--color-surface-raised);
 }
 .shape-tools {
@@ -221,8 +269,8 @@
 .shape-composer[data-resolved] .shape-tray {
   display: none;
 }
-.shape-composer[data-resolved] .shape-status {
-  min-height: 0;
+.shape-composer[data-resolved] .shape-tools {
+  margin-top: 8px;
 }
 .shape-answer {
   display: flex;

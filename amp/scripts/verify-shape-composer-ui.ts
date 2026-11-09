@@ -135,15 +135,61 @@ async function stable(
   assert.equal(after.overflow, 0);
   assert.equal(after.stageOverflow, 0);
 }
+async function visibleLayout(page: Page, resolved = false) {
+  const layout = await page.evaluate((resolved) => {
+    const stage = document.querySelector<HTMLElement>(".problem-stage")!;
+    const bounds = stage.getBoundingClientRect();
+    const prompt = document
+      .querySelector("#problem-prompt")!
+      .getBoundingClientRect();
+    const board = document
+      .querySelector(".shape-board")!
+      .getBoundingClientRect();
+    const tray = document.querySelector(".shape-tray")!;
+    const trayBox = tray.getBoundingClientRect();
+    const edge = document.querySelector<SVGPathElement>(".shape-target-edge")!;
+    const svg = edge.ownerSVGElement!;
+    const target = edge.getBBox();
+    const view = svg.viewBox.baseVal;
+    return {
+      promptVisible:
+        prompt.top >= bounds.top - 1 && prompt.bottom <= bounds.bottom,
+      trayFits:
+        resolved ||
+        (tray.scrollWidth <= tray.clientWidth &&
+          [...tray.querySelectorAll("button")].every((n) => {
+            const b = n.getBoundingClientRect();
+            return b.left >= trayBox.left - 1 && b.right <= trayBox.right + 1;
+          })),
+      fullPhone:
+        innerWidth !== 390 ||
+        innerHeight !== 844 ||
+        resolved ||
+        (stage.scrollHeight <= stage.clientHeight + 1 && stage.scrollTop === 0),
+      boardUsesWidth:
+        resolved || innerWidth > 390 || board.width >= bounds.width - 2,
+      outlineInset:
+        target.x > view.x &&
+        target.y > view.y &&
+        target.x + target.width < view.x + view.width &&
+        target.y + target.height < view.y + view.height,
+      outlineVisible:
+        getComputedStyle(edge).stroke !== "none" &&
+        Number.parseFloat(getComputedStyle(edge).strokeWidth) >= 0.05,
+    };
+  }, resolved);
+  for (const [key, value] of Object.entries(layout))
+    assert.ok(value, `${key}: ${JSON.stringify(layout)}`);
+}
 try {
   for (const theme of smoke
     ? (["light"] as const)
     : (["light", "dark"] as const))
     for (const [width, height] of smoke
-      ? [[390, 900]]
+      ? [[390, 844]]
       : [
           [320, 900],
-          [390, 900],
+          [390, 844],
           [768, 1024],
           [1280, 900],
         ]) {
@@ -195,6 +241,7 @@ try {
           await page.evaluate(() => document.fonts.ready);
           assert.ok(capabilities.includes("shape-composer-v1"));
           const before = await geometry(page);
+          await visibleLayout(page);
           assert.equal(before.overflow, 0);
           assert.equal(before.stageOverflow, 0);
           assert.equal(await page.locator(".shape-composer").count(), 1);
@@ -226,6 +273,8 @@ try {
               r.stages[0]!.tray.find((t) => t.canRotate)!;
             await page.locator(`[data-piece="${first.id}:0"]`).focus();
             await page.keyboard.press("Enter");
+            const icon = page.locator(`[data-piece="${first.id}:0"] path`);
+            const initialIcon = await icon.getAttribute("d");
             await page.keyboard.press("ArrowRight");
             await page.keyboard.press("Enter");
             await stable(page, before);
@@ -235,7 +284,16 @@ try {
               (await page
                 .locator('.shape-composer [role="status"]')
                 .textContent())!,
-              /90 degrees/,
+              /A quarter turn clockwise/,
+            );
+            assert.notEqual(
+              await icon.getAttribute("d"),
+              initialIcon,
+              "The tray draws the selected turn",
+            );
+            assert.ok(
+              await page.locator(".shape-cursor").count(),
+              "Keyboard focus previews the piece",
             );
             if (first.canFlip) {
               await page.keyboard.press("f");
@@ -250,6 +308,31 @@ try {
             await page.keyboard.press("Delete");
             await stable(page, before);
             assert.equal(await page.locator(".shape-placed").count(), 0);
+            await page.locator(`[data-piece="${first.id}:0"]`).click();
+            await page
+              .getByRole("button", { name: "Turn selected piece clockwise" })
+              .click();
+            const previewCell = page.locator('[data-cell="1,1"]');
+            await previewCell.hover();
+            const previewPath = await page
+              .locator(".shape-cursor")
+              .getAttribute("d");
+            assert.ok(
+              previewPath,
+              "The pointer previews the turned piece before placement",
+            );
+            await page.screenshot({ path: `${shots}/${name}-preview.png` });
+            await previewCell.click();
+            assert.equal(
+              await page.locator(".shape-placed").getAttribute("d"),
+              previewPath,
+              "The placed piece matches its preview",
+            );
+            assert.equal(await page.locator(".shape-piece-check").count(), 1);
+            await page
+              .getByRole("button", { name: "Reset", exact: true })
+              .click();
+            assert.equal(await page.locator(".shape-piece-check").count(), 0);
             // Drag is a second route to the same snapped placement.
             const source = page.locator(`[data-piece="${first.id}:0"]`),
               dest = page.locator('[data-cell="2,1"]');
@@ -302,31 +385,7 @@ try {
                 .getByRole("button", { name: "Reset", exact: true })
                 .tap();
               await stable(page, before);
-              const tray = page.locator(".shape-tray"),
-                box = await tray.boundingBox();
-              await touch.send("Input.dispatchTouchEvent", {
-                type: "touchStart",
-                touchPoints: [{ x: box!.x + box!.width - 15, y: box!.y + 30 }],
-              });
-              for (let step = 1; step <= 10; step++)
-                await touch.send("Input.dispatchTouchEvent", {
-                  type: "touchMove",
-                  touchPoints: [
-                    { x: box!.x + box!.width - 15 - step * 18, y: box!.y + 30 },
-                  ],
-                });
-              await touch.send("Input.dispatchTouchEvent", {
-                type: "touchEnd",
-                touchPoints: [],
-              });
-              assert.ok(
-                await tray.evaluate((n) => n.scrollLeft > 0),
-                "Horizontal touch swipes reveal the rest of the tray",
-              );
-              assert.equal(await page.locator(".shape-placed").count(), 0);
-              await tray.evaluate((n) => {
-                n.scrollLeft = 0;
-              });
+              await visibleLayout(page);
               await touch.detach();
             }
           }
@@ -343,8 +402,11 @@ try {
                 .getByRole("button", { name: "Join pieces", exact: true })
                 .click();
               await page
-                .getByText("Your pieces joined", { exact: true })
+                .locator('.shape-stage-tabs button[aria-current="step"]')
+                .filter({ hasText: "Use it as one piece" })
                 .waitFor();
+              await stable(page, before);
+              await visibleLayout(page);
             }
           }
           await page.locator(".shape-board").scrollIntoViewIfNeeded();
@@ -365,6 +427,7 @@ try {
           await page.screenshot({
             path: `${shots}/${name}-${correct ? "filled" : "gap"}.png`,
           });
+          await visibleLayout(page);
           const attempt = page.waitForResponse(
             (res) =>
               res.url().endsWith("/attempts") &&
@@ -380,8 +443,14 @@ try {
             (await page
               .locator('.shape-composer [role="status"]')
               .textContent())!,
-            /Your arrangement.*Turned \d+ degrees.*Column \d+, row \d+/,
+            /Your arrangement.*(?:No turn|quarter turn|half turn).*Column \d+, row \d+/,
           );
+          if (!correct) {
+            const feedback = await page.locator(".feedback-title").innerText();
+            assert.match(feedback, /outline is still empty/);
+            assert.doesNotMatch(feedback, /pieces placed|You entered|Answer:/);
+            if (tag === "triangles") assert.match(feedback, /Pieces overlap/);
+          }
           assert.equal(await page.locator(".shape-cursor").count(), 0);
           assert.equal(
             await page.locator(".shape-tray [aria-pressed=true]").count(),
@@ -409,6 +478,7 @@ try {
           await page.screenshot({
             path: `${shots}/${name}-${correct ? "correct" : "incorrect"}.png`,
           });
+          await visibleLayout(page, true);
           const request = res.request(),
             body = request.postDataJSON(),
             headers = {
@@ -430,9 +500,11 @@ try {
             (await page
               .locator('.shape-composer [role="status"]')
               .textContent())!,
-            /One way to fill the outline.*Turned \d+ degrees.*Column \d+, row \d+/,
+            /One way to fill the outline.*(?:No turn|quarter turn|half turn).*Column \d+, row \d+/,
           );
           assert.equal(await page.locator(".shape-cursor").count(), 0);
+          await page.screenshot({ path: `${shots}/${name}-solution.png` });
+          await visibleLayout(page, true);
           if (correct && width === 390 && theme === "light") {
             const report = await page.request.post(
               `http://127.0.0.1:4586/api/v1/learners/${learner.id}/problem-flags`,

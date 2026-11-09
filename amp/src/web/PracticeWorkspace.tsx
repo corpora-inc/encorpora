@@ -24,7 +24,7 @@ import type { ProblemLessonView } from "../content/problem-lessons";
 import { ChoiceFigure } from "./ChoiceFigure";
 import { PointPlotAnswer, PointPlotInput, plotReview } from "./PointPlotInput";
 import { pointPlotAnswerText } from "../math/point-plot";
-import { shapeAnswerText } from "../math/shape-composer";
+import { shapeAnswerText, shapeFeedbackSummary } from "../math/shape-composer";
 import { ShapeComposerInput, ShapeComposerAnswer } from "./ShapeComposerInput";
 import {
   MultiPartChoiceAnswer,
@@ -522,6 +522,7 @@ export function PracticeWorkspace(props: Props) {
     const room = spacer.current;
     if (!host || !room) return;
     room.style.height = "0px";
+    host.style.removeProperty("--shape-review-height");
     if (!outcome || !cover || sideBySide) return;
     // Layout offsets, not client rects: the sheet's entrance transform
     // must not shorten the overlap. A fixed sheet (very short screens)
@@ -545,11 +546,23 @@ export function PracticeWorkspace(props: Props) {
           Math.max(content.offsetHeight, content.scrollHeight)
         : 0;
     const update = () => {
+      // Keep the prompt and the entire shape above the review sheet. Scrolling
+      // to the bottom of a full-size board hides the prompt under the header.
+      const board =
+        shapes && content?.querySelector<HTMLElement>(".shape-board");
+      if (board && content) {
+        const otherContent = content.scrollHeight - board.offsetHeight;
+        host.style.setProperty(
+          "--shape-review-height",
+          `${Math.max(144, host.clientHeight - overlap() - otherContent - 16)}px`,
+        );
+        host.scrollTop = 0;
+      }
       room.style.top = `${end()}px`;
       room.style.height = `${overlap()}px`;
     };
     update();
-    if (reviewInProblem && (!outcome.correct || shapes)) {
+    if (reviewInProblem && !shapes && !outcome.correct) {
       const hidden = end() - host.scrollTop - (host.clientHeight - overlap());
       if (hidden > 0)
         host.scrollBy({
@@ -1031,7 +1044,9 @@ export function PracticeWorkspace(props: Props) {
           <span className="feedback-title">
             {skipped ? (
               <>
-                {answerLine(outcome.answer)}
+                {shapes
+                  ? "One way to fill the outline."
+                  : answerLine(outcome.answer)}
                 <small>Skipped. Your progress is unchanged.</small>
               </>
             ) : outcome.correct ? (
@@ -1039,6 +1054,8 @@ export function PracticeWorkspace(props: Props) {
                 Correct
                 {support && <small>{capitalize(support)}</small>}
               </>
+            ) : shapes ? (
+              shapeFeedbackSummary(shapes, outcome.response)
             ) : (
               <>
                 {answerLine(outcome.answer)}
@@ -1227,6 +1244,7 @@ export function PracticeWorkspace(props: Props) {
     !outcome.correct &&
     ((!!work && skipped) ||
       (!plot &&
+        !shapes &&
         !(work && !skipped) &&
         !(parts && (skipped || parts.layout === "table")) &&
         displayResponse(outcome.answer).length > 24));
@@ -1402,6 +1420,7 @@ export function PracticeWorkspace(props: Props) {
         )}
         <div
           className="problem-stage"
+          data-shape-review={shapes && outcome && !sideBySide ? "" : undefined}
           ref={stage}
           tabIndex={0}
           aria-label="Problem workspace"
