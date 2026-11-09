@@ -44,6 +44,12 @@ const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
   // With rate 2, the three ordered-pair blanks have 3, 3 and 4 distinct
   // options after equivalent distractors collapse.
   "dependent-variable-value": 1 / 36,
+  // The shared tray can collapse to four distinct values. Each of the four
+  // blanks permits reuse, so the smallest answer space has 4^4 placements.
+  "tile-then-multiply": 1 / 256,
+  // Splitting into unequal widths leaves at least five distinct tray values
+  // across the bounded dimensions, again reused across four blanks.
+  "split-tiled-count": 1 / 625,
 };
 /** An unregistered choice family is scored as the most guessable choice: two
  * options. Overstating the guess chance only discounts a correct answer. */
