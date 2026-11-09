@@ -373,6 +373,13 @@ export class FamilyRepository {
     const workbooks = !!(
       await client.query("SELECT to_regclass('amp_workbooks') AS relation")
     ).rows[0]?.relation;
+    // Unnamed-learner columns (migration 0101). Fixtures that build an older
+    // schema delete learners too.
+    const unnamedColumns = !!(
+      await client.query(
+        "SELECT 1 FROM information_schema.columns WHERE table_schema=current_schema() AND table_name='amp_learners' AND column_name='name_pending'",
+      )
+    ).rowCount;
     const roster = !!(
       await client.query("SELECT to_regclass('amp_people') AS relation")
     ).rows[0]?.relation;
@@ -471,7 +478,7 @@ export class FamilyRepository {
             [row.id],
           );
         await client.query(
-          "UPDATE amp_learners SET name='Deleted learner',name_pending=false,picture_identity=NULL,picture_number=NULL,identity_scope=NULL,birth_year=NULL,starting_band=NULL,starting_policy=NULL,starting_excluded_strands=NULL,deleted_at=COALESCE(deleted_at,now()),created_at=CASE WHEN deleted_at IS NULL THEN now() ELSE created_at END WHERE id=$1",
+          `UPDATE amp_learners SET name='Deleted learner',${unnamedColumns ? "name_pending=false,picture_identity=NULL,picture_number=NULL,identity_scope=NULL," : ""}birth_year=NULL,starting_band=NULL,starting_policy=NULL,starting_excluded_strands=NULL,deleted_at=COALESCE(deleted_at,now()),created_at=CASE WHEN deleted_at IS NULL THEN now() ELSE created_at END WHERE id=$1`,
           [row.id],
         );
         retained++;
