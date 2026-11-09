@@ -2,7 +2,7 @@ import { accountSummary } from "../src/account/repository.js";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { randomUUID } from "node:crypto";
-import { readFile } from "node:fs/promises";
+import { migrate } from "../scripts/migrate.js";
 import { Pool } from "pg";
 import Fastify from "fastify";
 import { purgeExpiredPrivacyRecords } from "../src/family/retention.js";
@@ -31,25 +31,7 @@ test(
     const app = Fastify();
     try {
       await admin.query(`CREATE SCHEMA ${schema}`);
-      for (const file of [
-        "0001.sql",
-        "0002-commerce.sql",
-        "0003-parent-consent.sql",
-        "0004-parent-lifecycle.sql",
-        "0006-commerce-orders.sql",
-        "0008-skill-evidence.sql",
-        "0010-starting-point.sql",
-        "0014-birth-year.sql",
-        "0055-sat-math-focus.sql",
-        "0076-practice-recovery.sql",
-        "0085-learner-frontier-state.sql",
-      ])
-        await pool.query(
-          await readFile(
-            new URL(`../migrations/${file}`, import.meta.url),
-            "utf8",
-          ),
-        );
+      await migrate(scoped.href);
       await pool.query(
         "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES('parent','policy','verified','private-proof'),('other','policy','verified','other-proof')",
       );
@@ -71,11 +53,15 @@ test(
       );
       assert.equal(
         (await accountSummary(pool, family, "parent")).next,
-        "choose-plan",
+        "practice",
       );
       assert.equal(
         (await family.summary("parent")).learners[0]!.canPractice,
-        false,
+        true,
+      );
+      await pool.query(
+        "UPDATE amp_learners SET free_online_used=100 WHERE id=$1",
+        [child.id],
       );
       await pool.query(
         "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES('capability',$1,'stripe','capability','active',now()-interval '1 day',now()+interval '1 day')",
@@ -199,13 +185,10 @@ test(
       for await (const line of family.export("parent"))
         afterWithdrawal.push(line);
       assert.ok(afterWithdrawal.length > 205);
-      // Simulate installed Stripe bindings without a remote payment or dependency on migration0005.
+      // A retained financial binding, using the deployed schema and no remote payment.
       await pool.query(
-        "CREATE TABLE amp_stripe_checkouts(id text,account_id text,learner_id text,closed boolean,customer_id text,subscription_id text,session_id text,created_at timestamptz DEFAULT now())",
-      );
-      await pool.query(
-        "INSERT INTO amp_stripe_checkouts(id,account_id,learner_id,closed) VALUES('fixture','parent',$1,false)",
-        [child.id],
+        "INSERT INTO amp_stripe_checkouts(id,namespace,account_id,learner_id,request_id,closed) VALUES($2,'fixture:test','parent',$1,$3,false)",
+        [child.id, randomUUID(), randomUUID()],
       );
       await pool.query(
         "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES('paid',$1,'stripe','invoice','active',now(),now()+interval '1 year')",

@@ -2,13 +2,15 @@ import type { Pool } from "pg";
 import { meSchema, type SignedInMe } from "../account/contracts.js";
 import { retentionNotice } from "../family/contracts.js";
 import { ApiError } from "../server/repository.js";
-import { learningConsentActive } from "../server/account-access.js";
+import {
+  learningConsentActive,
+  namingConsentActive,
+} from "../server/account-access.js";
+import { freeAllowance } from "../learning/free-allowance.js";
 import {
   activeToday,
-  isSchoolAccount,
   resolveStudentSession,
   schoolAccountId,
-  schoolConsentActive,
 } from "./principal.js";
 import { enrollmentSettings } from "./enrollment-settings.js";
 import { studentLevelVisibility } from "./settings.js";
@@ -29,7 +31,7 @@ export async function studentMe(
   const { accountId, personId } = session;
   const learner = (
     await pool.query(
-      `SELECT l.id,l.name,l.birth_year,l.sat_math_focus FROM amp_people p
+      `SELECT l.id,l.name,l.birth_year,l.sat_math_focus,l.name_pending,l.picture_identity,l.free_online_used,l.free_workbooks_used FROM amp_people p
        JOIN amp_learners l ON l.id=p.learner_id AND l.deleted_at IS NULL WHERE p.id=$1`,
       [personId],
     )
@@ -62,12 +64,24 @@ export async function studentMe(
   const current = grants
     .filter((grant) => grant.in_force)
     .sort((a, b) => b.ends_at.getTime() - a.ends_at.getTime())[0];
-  // A school's agreement, or for a family's child their parent's consent.
+  const allowance = freeAllowance(
+    learner.free_online_used,
+    learner.free_workbooks_used,
+  );
+  const namedConsent = await namingConsentActive(
+    pool,
+    accountId,
+    development,
+    learner.id,
+  );
+  const learningAllowed = await learningConsentActive(
+    pool,
+    accountId,
+    development,
+    learner.id,
+  );
   const canPractice =
-    !!current &&
-    (isSchoolAccount(accountId)
-      ? await schoolConsentActive(pool, accountId)
-      : await learningConsentActive(pool, accountId, development, learner.id));
+    learningAllowed && (!!current || allowance.problems.remaining > 0);
   const settings = await enrollmentSettings(pool, personId, home, classes);
   return meSchema.parse({
     signedIn: true,
@@ -81,14 +95,18 @@ export async function studentMe(
     },
     // The school's agreement stands in for parent consent. When it ends,
     // `canPractice` goes false and the app says to ask the teacher.
-    consent: { status: "active", method: null },
+    consent: { status: namedConsent ? "active" : "none", method: null },
     learners: [
       {
         id: learner.id,
         name: learner.name,
         birthYear: learner.birth_year ?? null,
+        namePending: learner.name_pending,
+        pictureIdentity: learner.picture_identity,
+        freeAllowance: allowance,
         entitlement: {
           active: canPractice,
+          licensed: !!current,
           plan: current?.channel ?? null,
           endsAt: current?.ends_at.toISOString() ?? null,
         },
@@ -96,7 +114,7 @@ export async function studentMe(
     ],
     family: {
       consent: {
-        status: "active",
+        status: namedConsent ? "active" : "not-recorded",
         policyVersion: null,
         recordedAt: null,
         withdrawnAt: null,
@@ -110,6 +128,11 @@ export async function studentMe(
           deletedAt: null,
           stripeLinked: false,
           canPractice,
+          learningAllowed,
+          hasAccess: !!current,
+          namePending: learner.name_pending,
+          pictureIdentity: learner.picture_identity,
+          freeAllowance: allowance,
           access: grants.map((grant) => ({
             channel: grant.channel,
             status: grant.status,

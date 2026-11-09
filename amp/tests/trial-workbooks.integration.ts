@@ -11,7 +11,7 @@ import { purgeExpiredTrials } from "../src/server/trials.js";
 /** The free assessment's workbooks on PostgreSQL, with hosted access rules
  * (not development): a trial makes only what it has earned, reaches only its
  * own learner, never enters results, and after adoption the learner follows
- * the license rules. Expired trials take their workbooks with them. */
+ * the separate workbook allowance. Expired trials take their workbooks with them. */
 test(
   "a free assessment offers an immediate workbook then earns more, for its own learner only",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
@@ -26,7 +26,7 @@ test(
     });
     const rendered: string[] = [];
     // Hosted rules: a signed-in owner plus the trial token; parents need
-    // consent and, for workbooks, an active license.
+    // consent and an available workbook allowance or active license.
     const app = buildApp({
       repository,
       development: false,
@@ -270,8 +270,8 @@ test(
       assert.equal(done.nextAt, null);
       const madeIds = done.items.map((w: { id: string }) => w.id).sort();
 
-      // Adopted: the trial token ends, and the learner follows the license
-      // rules: no workbooks without a license, every one (and more) with it.
+      // Adoption keeps the five issued workbooks readable. A sixth requires
+      // access because the separate free workbook allowance is spent.
       const adopted = await app.inject({
         method: "POST",
         url: "/api/v1/trials/adopt",
@@ -287,11 +287,11 @@ test(
         url: `${base}/workbooks`,
         headers: asParent,
       });
-      assert.equal(unlicensed.statusCode, 403);
+      assert.equal(unlicensed.statusCode, 200);
       assert.equal(
         (await make({}, asParent)).statusCode,
-        403,
-        "no free workbooks after adoption without a license",
+        402,
+        "no sixth free workbook after adoption without a license",
       );
       await repository.pool.query(
         "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES($1,$2,'pilot',$1,'active',now()-interval '1 hour',now()+interval '1 month')",

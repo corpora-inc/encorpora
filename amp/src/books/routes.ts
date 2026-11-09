@@ -32,8 +32,12 @@ export function registerBookRoutes(
     .object({ readerCapabilities: z.string().max(1024).optional() })
     .strict();
   async function access(tx: LearnerTransaction) {
-    if (!options.development && !(await tx.hasAccess()))
-      throw new ApiError(403, "An active student license is required");
+    if (
+      !options.development &&
+      !(await tx.hasAccess()) &&
+      (await tx.freeAllowance()).problems.remaining <= 0
+    )
+      throw new ApiError(402, "free-allowance-complete");
   }
   async function support(
     tx: LearnerTransaction,

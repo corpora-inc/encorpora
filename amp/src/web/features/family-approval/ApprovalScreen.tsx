@@ -133,6 +133,13 @@ export function ApprovalScreen() {
                   Through {DAY.format(new Date(view.access.endsAt))}
                 </strong>
               </>
+            ) : view.canPractice && view.freeAllowance ? (
+              <>
+                <span>Free practice</span>
+                <strong>
+                  {view.freeAllowance.problems.remaining} problems left
+                </strong>
+              </>
             ) : (
               <>
                 <span>Needs access</span>
@@ -165,7 +172,7 @@ export function ApprovalScreen() {
       ) : view.status === "open" ? (
         <>
           <h1>
-            {child} is invited to {view.className}
+            {view.childName ?? "Your child"} is invited to {view.className}
           </h1>
           <dl className={styles.about}>
             <div className={styles.fact}>

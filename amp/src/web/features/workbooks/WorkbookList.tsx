@@ -89,8 +89,8 @@ export function WorkbookList({
                   className={styles.rowTitle}
                 >
                   {showDates
-                    ? `${dateLabel(workbook.date, "short")} · No. ${workbook.number}`
-                    : `No. ${workbook.number}`}
+                    ? `${dateLabel(workbook.date, "short")} · No.\u00a0${workbook.number}`
+                    : `No.\u00a0${workbook.number}`}
                 </Link>
                 <span className={styles.rowMeta}>
                   {workbook.minutes} min · {workbook.problems}{" "}

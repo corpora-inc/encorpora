@@ -58,7 +58,16 @@ function frontierFrom(
 import {
   lockLearningAccount,
   learningConsentActive,
+  namingConsentActive,
 } from "./account-access.js";
+import { allocatePictureIdentity } from "./picture-identity.js";
+import {
+  familyHasLearnerRoom,
+  freeAllowance,
+  TOO_MANY_LEARNERS,
+  type FreeAllowance,
+} from "../learning/free-allowance.js";
+import { refreshAdultAccess } from "../account/adult-access.js";
 import {
   resolveStudentSession,
   type StudentSession,
@@ -89,7 +98,13 @@ import type {
   StartingBand,
   PracticeStartingPoint,
 } from "../learning/starting-point";
-export type Learner = { id: string; name: string; birthYear: number | null };
+export type Learner = {
+  id: string;
+  name: string;
+  birthYear: number | null;
+  namePending?: boolean;
+  pictureIdentity?: string | null;
+};
 export type Outcome = {
   ingestionSequence?: string;
   id: string;
@@ -165,6 +180,7 @@ export interface LearnerTransaction {
   onSchoolRoster(): Promise<boolean>;
   /** Whether this is an adult's own learner (docs/families.md). */
   isAdult(): Promise<boolean>;
+  namePending(): Promise<boolean>;
   recentAttempts(): Promise<Outcome[]>;
   skillEvidence(): Promise<SkillEvidence[]>;
   attemptByRequest(requestId: string): Promise<Outcome | undefined>;
@@ -179,6 +195,7 @@ export interface LearnerTransaction {
   /** This session's skips, oldest first, for the planner's variety. */
   recentSkips(): Promise<PracticeSkip[]>;
   hasAccess(): Promise<boolean>;
+  freeAllowance(): Promise<FreeAllowance>;
   /** Answers left in an anonymous trial, or null for a parent's learner. */
   trialRemaining(): Promise<number | null>;
   /** The free run's phase and totals, or null for a parent's learner. */
@@ -220,7 +237,7 @@ export interface Repository {
   list(accountId: string): Promise<Learner[]>;
   create(
     accountId: string,
-    name: string,
+    name: string | undefined,
     birthYear?: number | null,
   ): Promise<Learner>;
   transaction<T>(
@@ -280,6 +297,8 @@ export class PostgresRepository implements Repository {
       .select({
         id: schema.learners.id,
         name: schema.learners.name,
+        namePending: schema.learners.namePending,
+        pictureIdentity: schema.learners.pictureIdentity,
         birthYear: schema.learners.birthYear,
         satMathFocus: schema.learners.satMathFocus,
       })
@@ -291,37 +310,75 @@ export class PostgresRepository implements Repository {
         ),
       );
   }
-  async create(accountId: string, name: string, birthYear?: number | null) {
-    const learner = { id: randomUUID(), name, birthYear: birthYear ?? null };
+  async create(
+    accountId: string,
+    name: string | undefined,
+    birthYear?: number | null,
+  ) {
     const client = await this.pool.connect();
     try {
       await client.query("BEGIN");
       await lockLearningAccount(client, accountId);
-      if (
-        !(await learningConsentActive(
-          client,
-          accountId,
-          this.options.development,
-        ))
-      )
+      const canName = await namingConsentActive(
+        client,
+        accountId,
+        this.options.development,
+      );
+      if (name !== undefined && !canName)
         throw new ApiError(
           403,
           "Parent consent is required before collecting learning data",
         );
+      if (name === undefined && birthYear == null)
+        throw new ApiError(400, "A birth year is required");
+      if (
+        name === undefined &&
+        (
+          await client.query(
+            "SELECT 1 FROM amp_parent_consents WHERE account_id=$1 AND withdrawn_at IS NOT NULL",
+            [accountId],
+          )
+        ).rowCount
+      )
+        throw new ApiError(403, "Learning consent has been withdrawn");
+      if (!(await familyHasLearnerRoom(client, accountId)))
+        throw new ApiError(403, TOO_MANY_LEARNERS);
+      const identity =
+        name === undefined
+          ? await allocatePictureIdentity(client, `family:${accountId}`)
+          : null;
+      const learner = {
+        id: randomUUID(),
+        name: name ?? identity!.name,
+        birthYear: birthYear ?? null,
+        namePending: identity !== null,
+        pictureIdentity: identity?.picture ?? null,
+      };
       await client.query(
-        "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,$3,$4)",
-        [learner.id, accountId, learner.name, learner.birthYear],
+        `INSERT INTO amp_learners(id,account_id,name,birth_year,name_pending,picture_identity,picture_number,identity_scope)
+         VALUES($1,$2,$3,$4,$5,$6,$7,$8)`,
+        [
+          learner.id,
+          accountId,
+          learner.name,
+          learner.birthYear,
+          learner.namePending,
+          identity?.picture ?? null,
+          identity?.number ?? null,
+          identity?.scope ?? null,
+        ],
       );
       // A child is a student of their family's class from the start.
       await ensureFamilyClass(client, this.pool, accountId, {
         converting: false,
       });
-      await activateGiftInTransaction(
-        client,
-        accountId,
-        learner.id,
-        this.options,
-      );
+      if (canName)
+        await activateGiftInTransaction(
+          client,
+          accountId,
+          learner.id,
+          this.options,
+        );
       await client.query("COMMIT");
       return learner;
     } catch (error) {
@@ -683,6 +740,9 @@ export class PgTransaction implements LearnerTransaction {
   async isAdult() {
     return (await this.learner())?.adult === true;
   }
+  async namePending() {
+    return (await this.learner())?.name_pending === true;
+  }
   async saveLevelDay(frontier: Frontier) {
     const estimate = ({ level, sd, answered, independent }: Estimate) => ({
       level,
@@ -912,6 +972,7 @@ export class PgTransaction implements LearnerTransaction {
         JSON.stringify(outcome),
       ],
     );
+    if (outcome.evidenceSource !== "paper") await this.chargeFreeOnline();
     await recordTrialMilestones(this.db, this.learnerId, this.limits);
   }
   async trialProgress() {
@@ -929,7 +990,9 @@ export class PgTransaction implements LearnerTransaction {
       : null;
   }
   async saveSkip(problem: SavedProblem) {
+    const previous = await this.problem(problem.public.id);
     await this.saveProblem(problem);
+    if (!previous?.skipped) await this.chargeFreeOnline();
     await recordTrialMilestones(this.db, this.learnerId, this.limits);
   }
   async recentSkips(): Promise<PracticeSkip[]> {
@@ -1015,7 +1078,7 @@ export class PgTransaction implements LearnerTransaction {
     return result.rows[0] ? workbookRow(result.rows[0]) : undefined;
   }
   async saveWorkbook(workbook: WorkbookRecord) {
-    await this.db.query(
+    const inserted = await this.db.query(
       `INSERT INTO amp_workbooks(id,learner_id,workbook_date,number,minutes,paper,spec,code)
         VALUES($1,$2,$3,$4,$5,$6,$7,$8)
         ON CONFLICT(learner_id,workbook_date,number,minutes) DO NOTHING`,
@@ -1030,6 +1093,11 @@ export class PgTransaction implements LearnerTransaction {
         workbook.code,
       ],
     );
+    if (inserted.rowCount && !(await this.hasAccess()))
+      await this.db.query(
+        "UPDATE amp_learners SET free_workbooks_used=LEAST(5,free_workbooks_used+1) WHERE id=$1",
+        [this.learnerId],
+      );
     const result = await this.db.query(
       `SELECT ${workbookColumns} FROM amp_workbooks WHERE learner_id=$1
         AND workbook_date=$2 AND number=$3 AND minutes=$4`,
@@ -1063,10 +1131,31 @@ export class PgTransaction implements LearnerTransaction {
     return (await this.trialProgress())?.remaining ?? null;
   }
   async hasAccess() {
+    const learner = await this.learner();
+    if (learner?.adult)
+      await refreshAdultAccess(
+        this.db,
+        learner.account_id as string,
+        this.learnerId,
+      );
     const result = await this.db.query(
       "SELECT 1 FROM amp_grants WHERE learner_id=$1 AND status='active' AND starts_at<=now() AND ends_at>now() LIMIT 1",
       [this.learnerId],
     );
     return !!result.rowCount;
+  }
+  async freeAllowance() {
+    const { rows } = await this.db.query(
+      "SELECT free_online_used,free_workbooks_used FROM amp_learners WHERE id=$1",
+      [this.learnerId],
+    );
+    return freeAllowance(rows[0].free_online_used, rows[0].free_workbooks_used);
+  }
+  private async chargeFreeOnline() {
+    if (await this.hasAccess()) return;
+    await this.db.query(
+      "UPDATE amp_learners SET free_online_used=LEAST(100,free_online_used+1) WHERE id=$1",
+      [this.learnerId],
+    );
   }
 }
