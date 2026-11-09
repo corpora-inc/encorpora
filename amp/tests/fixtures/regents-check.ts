@@ -12,6 +12,7 @@ export function checkTemplate(
     axes?: Record<string, string[]>;
     hintsMin?: number;
     minHints?: number;
+    version?: number;
   },
 ) {
   const seen = new Set<string>();
@@ -20,8 +21,8 @@ export function checkTemplate(
   const seeds = opts.seeds ?? 400;
   for (let i = 0; i < seeds; i++) {
     const seed = `reg:${i}`;
-    const p = generateProblem(id, seed);
-    const again = generateProblem(id, seed);
+    const p = generateProblem(id, seed, opts.version);
+    const again = generateProblem(id, seed, opts.version);
     assert.deepEqual(p, again, `${id} ${seed} deterministic`);
     assert.equal(p.public.templateId, id);
     seen.add(p.variant?.id ?? "");

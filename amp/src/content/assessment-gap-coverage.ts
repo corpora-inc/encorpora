@@ -12,7 +12,14 @@ export const assessmentGapFacetMappings: readonly FacetMapping[] = [
     facetId: "statistical-inference.HSS.IC.A.1",
     extent: "partial",
     rationale:
-      "Select the symmetric confidence interval from a stated sample estimate and margin of error for a population mean or proportion. Does not assess computing margins, simulating coverage, sample-size effects or selecting a sampling design.",
+      "Form symmetric intervals for means or proportions and derive a margin from a frequency table of 100 seeded simulated sample estimates. Does not assess choosing a sampling design or operating a simulator.",
+  },
+  {
+    templateId: "margin-of-error-interval",
+    facetId: "statistical-inference.HSS.IC.B.4",
+    extent: "partial",
+    rationale:
+      "Find the smallest centered band containing at least 95 of 100 simulated sample means or proportions, then calculate both interval endpoints. The engine runs the simulation; the learner develops its empirical margin.",
   },
   {
     templateId: "radian-arc-ratio",

@@ -715,7 +715,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
     facetId: "regression-interpretation.core",
     extent: "partial",
     rationale:
-      "Choose whether to keep a line or switch to a curved model from a residual plot, classify equally spaced exact data as linear, quadratic, exponential or none from differences and ratios, and compute or interpret a residual from a quadratic or exponential model. Does not assess fitting a curve by technology, residual standard error, outlier influence or constructing a residual plot.",
+      "Choose and evaluate a line that fits a cloud by comparing squared residuals, compute and plot residuals for four observations, and interpret patterns across seven residuals. Construction and interpretation use separate responses. Does not assess operating regression software or fitting arbitrary nonlinear functions.",
   },
   {
     templateId: "function-graph-features",
@@ -869,14 +869,14 @@ export const actualFacetMappings: readonly FacetMapping[] = [
     facetId: "triangle-law-proofs.core",
     extent: "partial",
     rationale:
-      "Select the altitude relations that derive the law of sines, the altitude and Pythagorean steps that derive the law of cosines, the law that starts a triangle given SAS, SSS, ASA or AAS measurements, and the number of triangles in an acute-angle side-side-angle case. Does not assess writing a proof, the obtuse-foot case, or computing side and angle values.",
+      "Select steps in altitude-based derivations of the laws of sines and cosines, choose a law from triangle givens, and explain their reduction to right-triangle ratios and Pythagoras at 90 degrees. Does not assess writing a complete free-response proof.",
   },
   {
     templateId: "triangle-law-reasoning",
     facetId: "triangle-law-proofs.HSG.SRT.D.10",
     extent: "partial",
     rationale:
-      "Select the altitude relations that derive the law of sines, the altitude and Pythagorean steps that derive the law of cosines, the law that starts a triangle given SAS, SSS, ASA or AAS measurements, and the number of triangles in an acute-angle side-side-angle case. Does not assess writing a proof, the obtuse-foot case, or computing side and angle values.",
+      "Select steps in altitude-based derivations of the laws of sines and cosines, choose a law from triangle givens, and explain their reduction to right-triangle ratios and Pythagoras at 90 degrees. Does not assess writing a complete free-response proof.",
   },
   {
     templateId: "model-quantity-roles",
@@ -953,98 +953,112 @@ export const actualFacetMappings: readonly FacetMapping[] = [
     facetId: "vectors.core",
     extent: "partial",
     rationale:
-      "Select components from initial and terminal points or a drawn arrow, a magnitude, and a sum, difference or scalar multiple of two-dimensional vectors with small integer components, including tip-to-tail sums read from a grid. Does not assess drawing vectors, three-dimensional vectors, unit vectors, direction angles of general vectors or proofs.",
+      "Read and construct directed vectors, plot a tip from a specified tail, complete parallelogram sums, interpret tip-to-tip subtraction, compare lengths of sums, and compute scalar-multiple magnitude and direction. Does not assess three-dimensional vectors or freehand drawing.",
   },
   {
     templateId: "vector-components",
     facetId: "vectors.HSN.VM.A.1",
     extent: "partial",
     rationale:
-      "Select components from initial and terminal points or a drawn arrow, a magnitude, and a sum, difference or scalar multiple of two-dimensional vectors with small integer components, including tip-to-tail sums read from a grid. Does not assess drawing vectors, three-dimensional vectors, unit vectors, direction angles of general vectors or proofs.",
+      "Read and construct directed vectors, plot a tip from a specified tail, complete parallelogram sums, interpret tip-to-tip subtraction, compare lengths of sums, and compute scalar-multiple magnitude and direction. Does not assess three-dimensional vectors or freehand drawing.",
   },
   {
     templateId: "vector-components",
     facetId: "vectors.HSN.VM.A.2",
     extent: "partial",
     rationale:
-      "Select components from initial and terminal points or a drawn arrow, a magnitude, and a sum, difference or scalar multiple of two-dimensional vectors with small integer components, including tip-to-tail sums read from a grid. Does not assess drawing vectors, three-dimensional vectors, unit vectors, direction angles of general vectors or proofs.",
+      "Read and construct directed vectors, plot a tip from a specified tail, complete parallelogram sums, interpret tip-to-tip subtraction, compare lengths of sums, and compute scalar-multiple magnitude and direction. Does not assess three-dimensional vectors or freehand drawing.",
   },
   {
     templateId: "vector-components",
     facetId: "vectors.HSN.VM.B.4",
     extent: "partial",
     rationale:
-      "Select components from initial and terminal points or a drawn arrow, a magnitude, and a sum, difference or scalar multiple of two-dimensional vectors with small integer components, including tip-to-tail sums read from a grid. Does not assess drawing vectors, three-dimensional vectors, unit vectors, direction angles of general vectors or proofs.",
+      "Read and construct directed vectors, plot a tip from a specified tail, complete parallelogram sums, interpret tip-to-tip subtraction, compare lengths of sums, and compute scalar-multiple magnitude and direction. Does not assess three-dimensional vectors or freehand drawing.",
   },
   {
     templateId: "vector-components",
     facetId: "vectors.HSN.VM.B.5",
     extent: "partial",
     rationale:
-      "Select components from initial and terminal points or a drawn arrow, a magnitude, and a sum, difference or scalar multiple of two-dimensional vectors with small integer components, including tip-to-tail sums read from a grid. Does not assess drawing vectors, three-dimensional vectors, unit vectors, direction angles of general vectors or proofs.",
+      "Read and construct directed vectors, plot a tip from a specified tail, complete parallelogram sums, interpret tip-to-tip subtraction, compare lengths of sums, and compute scalar-multiple magnitude and direction. Does not assess three-dimensional vectors or freehand drawing.",
   },
   {
     templateId: "vector-resultant",
     facetId: "vector-modeling.core",
     extent: "partial",
     rationale:
-      "Select the magnitude, direction angle by arctangent (stated rounding) or a missing leg for the resultant of two perpendicular velocities or forces. Does not assess non-perpendicular vectors, component resolution at an arbitrary angle, bearings, or constructing a model from an open-ended situation.",
+      "Compute perpendicular and non-perpendicular resultants, including exact magnitudes and rounded directions from magnitude-direction inputs. Component addition and the cosine law support force and displacement contexts. Does not assess open-ended model construction.",
+  },
+  {
+    templateId: "vector-resultant",
+    facetId: "vector-modeling.HSN.VM.B.4",
+    extent: "partial",
+    rationale:
+      "Find magnitudes and directions of non-perpendicular sums from magnitude-direction inputs using components and the cosine law. Uses bounded exact-magnitude cases and rounded directions.",
   },
   {
     templateId: "vector-resultant",
     facetId: "vector-modeling.HSN.VM.A.3",
     extent: "partial",
     rationale:
-      "Select the magnitude, direction angle by arctangent (stated rounding) or a missing leg for the resultant of two perpendicular velocities or forces. Does not assess non-perpendicular vectors, component resolution at an arbitrary angle, bearings, or constructing a model from an open-ended situation.",
+      "Compute perpendicular and non-perpendicular resultants, including exact magnitudes and rounded directions from magnitude-direction inputs. Component addition and the cosine law support force and displacement contexts. Does not assess open-ended model construction.",
   },
   {
     templateId: "matrix-data-reading",
     facetId: "matrix-data.core",
     extent: "partial",
     rationale:
-      "Read an entry, row total or column total of a small data matrix, name its dimensions, and interpret an entry in context. Does not assess constructing a matrix from a situation, or matrices as models of networks or payoffs.",
+      "Read matrix entries and totals, construct matrices from ordered contextual data, represent directed road networks, and interpret zero-sum payoff matrices.",
   },
   {
     templateId: "matrix-data-reading",
     facetId: "matrix-data.HSN.VM.C.6",
     extent: "partial",
     rationale:
-      "Read an entry, row total or column total of a small data matrix, name its dimensions, and interpret an entry in context. Does not assess constructing a matrix from a situation, or matrices as models of networks or payoffs.",
+      "Read matrix entries and totals, construct matrices from ordered contextual data, represent directed road networks, and interpret zero-sum payoff matrices.",
   },
   {
     templateId: "matrix-operations",
     facetId: "matrices.core",
     extent: "partial",
     rationale:
-      "Select the exact sum, scalar multiple, linear combination or product of small integer matrices (including 2x3 times 3x2), and decide from dimensions whether a product is defined. Does not assess matrices larger than 3x3 in products, matrix equations with unknown matrices, or the zero matrix and identity as a standalone skill.",
+      "Add, subtract, scale and multiply small matrices, including rectangular differences, contextual payoff scaling, and dimension mismatches. Does not assess products larger than 3x3 or equations with unknown matrices.",
   },
   {
     templateId: "matrix-operations",
     facetId: "matrices.HSN.VM.C.7",
     extent: "partial",
     rationale:
-      "Select the exact sum, scalar multiple, linear combination or product of small integer matrices (including 2x3 times 3x2), and decide from dimensions whether a product is defined. Does not assess matrices larger than 3x3 in products, matrix equations with unknown matrices, or the zero matrix and identity as a standalone skill.",
+      "Add, subtract, scale and multiply small matrices, including rectangular differences, contextual payoff scaling, and dimension mismatches. Does not assess products larger than 3x3 or equations with unknown matrices.",
   },
   {
     templateId: "matrix-operations",
     facetId: "matrices.HSN.VM.C.8",
     extent: "partial",
     rationale:
-      "Select the exact sum, scalar multiple, linear combination or product of small integer matrices (including 2x3 times 3x2), and decide from dimensions whether a product is defined. Does not assess matrices larger than 3x3 in products, matrix equations with unknown matrices, or the zero matrix and identity as a standalone skill.",
+      "Add, subtract, scale and multiply small matrices, including rectangular differences, contextual payoff scaling, and dimension mismatches. Does not assess products larger than 3x3 or equations with unknown matrices.",
   },
   {
     templateId: "matrix-laws",
     facetId: "matrix-properties.core",
     extent: "partial",
     rationale:
-      "Compute products in both orders, identify the identity matrix, and choose which laws always hold or fail for 2x2 matrices. Does not assess written proofs or counterexample construction, nor determinants of products.",
+      "Compute both product orders for commuting and noncommuting pairs, distinguish identities from statements that hold only for some matrices, and explain the zero and identity matrices' additive and multiplicative roles. Does not assess free-response proofs.",
+  },
+  {
+    templateId: "matrix-laws",
+    facetId: "matrix-properties.HSN.VM.C.10",
+    extent: "partial",
+    rationale:
+      "Identify the zero matrix as an additive identity and the identity matrix as a multiplicative identity, and distinguish their other effects through computed products.",
   },
   {
     templateId: "matrix-laws",
     facetId: "matrix-properties.HSN.VM.C.9",
     extent: "partial",
     rationale:
-      "Compute products in both orders, identify the identity matrix, and choose which laws always hold or fail for 2x2 matrices. Does not assess written proofs or counterexample construction, nor determinants of products.",
+      "Compute both product orders for commuting and noncommuting pairs, distinguish identities from statements that hold only for some matrices, and explain the zero and identity matrices' additive and multiplicative roles. Does not assess free-response proofs.",
   },
   {
     templateId: "matrix-inverse-determinant",
@@ -1086,21 +1100,21 @@ export const actualFacetMappings: readonly FacetMapping[] = [
     facetId: "matrix-systems.core",
     extent: "partial",
     rationale:
-      "Identify the coefficient or constant matrix of a 2x2 system, solve AX = B with the inverse (exact fractions), and recognize that a zero determinant leaves no unique solution. Does not assess systems with three or more variables, technology-based inverses of larger matrices, or classifying no-solution versus infinitely many solutions.",
+      "Represent 2x2 and 3x3 systems as matrix equations and solve with inverses. The 3x3 inverse is supplied as calculator output; the learner selects the coefficient matrix and multiplies the inverse by the constants. Does not assess operating a calculator to find the inverse.",
   },
   {
     templateId: "matrix-linear-system",
     facetId: "matrix-systems.HSA.REI.C.8",
     extent: "partial",
     rationale:
-      "Identify the coefficient or constant matrix of a 2x2 system, solve AX = B with the inverse (exact fractions), and recognize that a zero determinant leaves no unique solution. Does not assess systems with three or more variables, technology-based inverses of larger matrices, or classifying no-solution versus infinitely many solutions.",
+      "Represent 2x2 and 3x3 systems as matrix equations and solve with inverses. The 3x3 inverse is supplied as calculator output; the learner selects the coefficient matrix and multiplies the inverse by the constants. Does not assess operating a calculator to find the inverse.",
   },
   {
     templateId: "matrix-linear-system",
     facetId: "matrix-systems.HSA.REI.C.9",
     extent: "partial",
     rationale:
-      "Identify the coefficient or constant matrix of a 2x2 system, solve AX = B with the inverse (exact fractions), and recognize that a zero determinant leaves no unique solution. Does not assess systems with three or more variables, technology-based inverses of larger matrices, or classifying no-solution versus infinitely many solutions.",
+      "Represent 2x2 and 3x3 systems as matrix equations and solve with inverses. The 3x3 inverse is supplied as calculator output; the learner selects the coefficient matrix and multiplies the inverse by the constants. Does not assess operating a calculator to find the inverse.",
   },
   {
     templateId: "normal-model-rule",
@@ -1303,7 +1317,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
     facetId: "special-angle-values.HSF.TF.A.3",
     extent: "partial",
     rationale:
-      "Choose the exact sine, cosine, tangent or unit-circle point of a special angle in any quadrant, in degrees or radians, including coterminal angles and axis angles where tangent is undefined. Does not assess deriving the values from triangles or constructing the unit circle.",
+      "Find exact special-angle values across quadrants and derive sine, cosine and tangent at 30, 45 and 60 degrees from a square's diagonal or an equilateral triangle's altitude. Does not assess constructing the unit circle.",
   },
   {
     templateId: "trig-symmetry-value",
@@ -1338,21 +1352,21 @@ export const actualFacetMappings: readonly FacetMapping[] = [
     facetId: "trigonometric-identities.HSF.TF.C.8",
     extent: "partial",
     rationale:
-      "Use sin²θ + cos²θ = 1 with a quadrant to choose a missing sine, cosine or tangent value. Does not assess proving the identity.",
+      "Use and prove sin²θ + cos²θ = 1 with a unit-circle reference triangle in quadrants with negative coordinates, then divide by nonzero cos²θ to obtain the tangent-secant identity. Proof steps are selected, not freely written.",
   },
   {
     templateId: "trig-identity-value",
     facetId: "trigonometric-identities.HSF.TF.C.9",
     extent: "partial",
     rationale:
-      "Choose exact values at 15°, 75° and 105° with angle-sum and difference formulas, and apply the cofunction relation in radians. Does not assess deriving or proving the formulas or simplifying symbolic expressions.",
+      "Derive cosine differences from equal chords, use parity and complementary angles for related formulas, derive tangent formulas from sine and cosine, and calculate exact angle-sum and difference values.",
   },
   {
     templateId: "oblique-triangle-solve",
     facetId: "oblique-triangles.HSG.SRT.D.11",
     extent: "partial",
     rationale:
-      "Choose a side or angle found by the law of sines or cosines, rounded as stated, and the number of triangles in the ambiguous SSA case. Does not assess multi-step triangle solving, applications with bearings or proving the laws.",
+      "Use sine and cosine laws to find measurements in bare triangles and surveying, force-resultant and navigation contexts, including bearings and right-angle cases. Does not assess free-response proofs of the laws.",
   },
   {
     templateId: "trig-triangle-area",

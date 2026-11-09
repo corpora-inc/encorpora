@@ -1,7 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { checkTemplate } from "./fixtures/regents-check";
-import { generateProblem } from "../src/math/engine";
+import { generateProblem as generateCurrent } from "../src/math/engine";
+const generateProblem = (id: string, seed: string) =>
+  generateCurrent(id, seed, 1);
 import {
   completeSquareSteps,
   countRationalAbs,
@@ -23,6 +25,7 @@ const evalExpr = (text: string, x: number) => {
 
 test("study design", () => {
   checkTemplate("study-design-classify", {
+    version: 1,
     variants: ["experiment-0", "observational-3"],
     axes: { kind: ["experiment", "observational"] },
     hintsMin: 6,
