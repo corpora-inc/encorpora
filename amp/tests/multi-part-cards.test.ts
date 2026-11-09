@@ -129,9 +129,12 @@ test("equations are built from cards in every equation-building family", () => {
     "delivery-operations-slots",
     "dilation-rule-slots",
     "inequality-number-blanks",
+    "polygon-show-the-pieces",
+    "split-tiled-count",
     "square-root-solutions-slots",
     "story-operations-slots",
     "table-equation-slots",
+    "tile-then-multiply",
     "unit-fraction-division-slots",
     "unit-price-sentence-slots",
   ]);

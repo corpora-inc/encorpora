@@ -2,7 +2,8 @@ import type { ProblemMethod } from "./problem-lessons";
 
 /** The added surfaces teach their own operation, rather than inheriting
  * numeric-entry instructions from an older surface of the same type. */
-const rows: Record<string, [string, string, string, string, string]> = {
+// Goal, intuition, at least two method steps, then the watch line.
+const rows: Record<string, [string, string, string, string, string, ...string[]]> = {
   "explain-with-property": [
     "Explain why a table pattern holds for every entry.",
     "Splitting equal groups or changing the order of addends explains a whole row. Checking one cell only checks one case.",
@@ -98,7 +99,8 @@ const rows: Record<string, [string, string, string, string, string]> = {
     "Write a direct rule from a starting term and repeated addition.",
     "A recursive rule reaches the next term. An explicit rule computes a named term directly. Reaching term $n$ from the first term takes $n-1$ steps.",
     "Identify the first term and the amount added each step.",
-    "Add $(n-1)$ copies of the step to the first term. Check the first and third terms.",
+    "Add $(n-1)$ copies of the step to the first term, because reaching term $n$ takes $n-1$ additions.",
+    "Check the first and third terms with both rules. The values must agree.",
     "Using $n$ steps moves once too far.",
   ],
   "from-graph": [
@@ -236,8 +238,13 @@ for (const key of [
 ])
   rows[key] = construction;
 export const clauseMethods: Record<string, ProblemMethod> = Object.fromEntries(
-  Object.entries(rows).map(([key, [goal, intuition, first, second, watch]]) => [
+  Object.entries(rows).map(([key, [goal, intuition, ...stepsAndWatch]]) => [
     key,
-    { goal, intuition, method: [first, second], watch },
+    {
+      goal,
+      intuition,
+      method: stepsAndWatch.slice(0, -1),
+      watch: stepsAndWatch.at(-1)!,
+    },
   ]),
 );
