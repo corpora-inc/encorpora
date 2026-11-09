@@ -16,6 +16,7 @@ import {
   queryClient,
   meOptions,
   meKey,
+  ownPracticeKey,
 } from "../lib/query";
 import type { Step } from "../../math/scene/timeline";
 import { useQuery } from "@tanstack/react-query";
@@ -365,9 +366,11 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   // An adult's own learner learns on the account's own terms; the family's
   // learners need its consent.
   const learningAllowed =
-    ownLearner ||
-    familySummary?.consent.status === "active" ||
-    familySummary?.consent.status === "development";
+    familySummary?.learners.find((entry) => entry.id === learner?.id)
+      ?.learningAllowed ??
+    (ownLearner ||
+      familySummary?.consent.status === "active" ||
+      familySummary?.consent.status === "development");
   // A student without a seat, or whose school's agreement ended, can't practice
   // and can't buy: only their teacher can change that.
   const studentWaiting =
@@ -1057,6 +1060,13 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     setLesson(data.lesson);
     setFamily("");
   }
+  /** The adult's free problems are used: their record, read fresh, says so.
+   * There is no plan to buy for an adult's own practice. */
+  function toOwnRecord() {
+    if (accountId)
+      queryClient.removeQueries({ queryKey: ownPracticeKey(accountId) });
+    navigate("/me", { replace: true });
+  }
   async function loadBatch(templateId = family, recoveryStrand?: string) {
     if (!learner) return;
     const capability = familySummary?.learners.find(
@@ -1065,8 +1075,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     if (capability === false) {
       // An adult's own practice pauses with what made it free; their record
       // says so. A child's needs a plan.
-      if (!student)
-        navigate(ownLearner ? "/me" : "/purchase/choose", { replace: true });
+      if (!student) {
+        if (ownLearner) toOwnRecord();
+        else navigate("/purchase/choose", { replace: true });
+      }
       return;
     }
     upcoming.current = null;
@@ -1089,12 +1101,15 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         // No license yet: go to purchase rather than show an error.
         if (
           error instanceof HttpError &&
-          error.status === 403 &&
-          /license/i.test(error.message)
+          ((error.status === 403 && /license/i.test(error.message)) ||
+            (error.status === 402 &&
+              error.message === "free-allowance-complete"))
         ) {
           // A seat ended mid-session: `/me` now says so, and the student sees
-          // to ask their teacher.
+          // to ask their teacher. An adult's own practice has no plan to
+          // choose; their record says what happened, as above.
           if (student) await loadFamily();
+          else if (ownLearner) toOwnRecord();
           else navigate("/purchase/choose", { replace: true });
           return null;
         }
@@ -1837,6 +1852,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             }
             reportNote={noteAllowed({
               trial: false,
+              namePending: learner.namePending,
               birthYear: learner.birthYear,
             })}
             response={response}

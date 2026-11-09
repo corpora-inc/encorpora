@@ -117,16 +117,15 @@ test("complete the square", () => {
   });
   const num = (s: string | undefined) =>
     s === undefined ? 0 : s === "" ? 1 : Number(s);
+  const monic =
+    /solutions as \$x\^2 ([+-]) (\d*)x(?: ([+-]) (\d+))? = (-?\d+)\$/;
   for (let i = 0; i < 300; i++) {
     const p = generateProblem("complete-square-equation", `c:${i}`);
-    const eq = p.public.prompt.match(
-      /solutions as \$x\^2 ([+-]) (\d*)x(?: ([+-]) (\d+))? = (-?\d+)\$/,
-    )!;
+    const eq = p.public.prompt.match(monic);
+    if (!eq) continue;
     const b = (eq[1] === "+" ? 1 : -1) * num(eq[2]);
     const c = eq[3] ? (eq[3] === "+" ? 1 : -1) * Number(eq[4]) : 0;
     const rhs = Number(eq[5]);
-    const target = (x: number) => x * x + b * x + c - rhs;
-    const disc = b * b - 4 * (c - rhs);
     for (const o of options(p)) {
       const m = o.label.match(/\(x ([+-]) (\d+)\)\^2 = (-?\d+)/)!;
       const h = (m[1] === "+" ? 1 : -1) * Number(m[2]);
@@ -134,10 +133,76 @@ test("complete the square", () => {
       // (x+h)^2 = k has the same solutions iff x^2+2hx+h^2-k is x^2+bx+c-rhs.
       const same = 2 * h === b && h * h - k === c - rhs;
       assert.equal(same, o.id === p.answer, `${eq[0]} ${o.label}`);
-      void target;
-      void disc;
     }
   }
+});
+
+/** Exact n/d from an integer or a \\frac. */
+function rqOf(sign: string, whole: string | undefined, num: string | undefined, den: string | undefined) {
+  const n = whole !== undefined ? Number(whole) : Number(num);
+  const d = whole !== undefined ? 1 : Number(den);
+  return { n: (sign === "-" ? -1 : 1) * n, d };
+}
+test("nonmonic completed squares keep the same solutions, exactly", () => {
+  const seen = { fraction: 0, negative: 0, checked: 0 };
+  for (let i = 0; i < 500; i++) {
+    const old = generateProblem("complete-square-equation", `nm:${i}`, 1);
+    assert.doesNotMatch(old.public.prompt, /nonmonic-equation/);
+    assert.match(
+      old.public.prompt,
+      /solutions as \$x\^2 /,
+      old.public.prompt,
+    );
+    const p = generateProblem("complete-square-equation", `nm:${i}`);
+    if (!p.variant?.axes?.leading) continue;
+    assert.equal(p.variant.axes.leading, "nonmonic-equation");
+    const eq = p.public.prompt.match(
+      /solutions as \$(-?\d+)x\^2(?: ([+-]) (\d*)x)?(?: ([+-]) (\d+))? = (-?\d+)\$/,
+    );
+    assert.ok(eq, p.public.prompt);
+    const a = Number(eq![1]);
+    const b = eq![2] ? (eq![2] === "+" ? 1 : -1) * (eq![3] === "" ? 1 : Number(eq![3])) : 0;
+    const cOnLeft = eq![4] ? (eq![4] === "+" ? 1 : -1) * Number(eq![5]) : 0;
+    const rhs = Number(eq![6]);
+    // ax^2+bx+cOnLeft = rhs is ax^2+bx+(cOnLeft-rhs)=0.
+    const c = cOnLeft - rhs;
+    const pShift = b / (2 * a);
+    const qn = b * b - 4 * a * c;
+    const qd = 4 * a * a;
+    const g = (u: number, v: number): number => (v ? g(v, u % v) : Math.abs(u));
+    const gg = g(Math.abs(qn), Math.abs(qd)) || 1;
+    const q = { n: qn / gg, d: qd / gg };
+    if (q.d < 0) {
+      q.n = -q.n;
+      q.d = -q.d;
+    }
+    seen.checked++;
+    if (q.d !== 1) seen.fraction++;
+    if (q.n < 0) seen.negative++;
+    const parse = (label: string) => {
+      const m = label.match(
+        /\$\(x ([+-]) (\d+)\)\^2 = (-)?(?:(\d+)|\\frac\{(\d+)\}\{(\d+)\})\$/,
+      );
+      assert.ok(m, label);
+      const h = (m![1] === "+" ? 1 : -1) * Number(m![2]);
+      const mag = rqOf("", m![4], m![5], m![6]);
+      return { h, q: { n: (m![3] === "-" ? -1 : 1) * mag.n, d: mag.d } };
+    };
+    const correct = parse(key(p));
+    assert.equal(correct.h, pShift, p.public.prompt);
+    assert.equal(correct.q.n * q.d, q.n * correct.q.d);
+    for (const o of options(p)) {
+      if (o.id === p.answer) continue;
+      const got = parse(o.label);
+      const same =
+        got.h === correct.h && got.q.n * correct.q.d === correct.q.n * got.q.d;
+      assert.equal(same, false, o.label);
+      assert.ok(got.q.n >= 0, o.label);
+    }
+  }
+  assert.ok(seen.checked >= 150, `${seen.checked} nonmonic`);
+  assert.ok(seen.fraction > 40, `${seen.fraction} fractional`);
+  assert.ok(seen.negative > 10, `${seen.negative} negative`);
 });
 
 test("completing-square step property", () => {

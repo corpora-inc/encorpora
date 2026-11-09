@@ -8,7 +8,8 @@ import type {
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts.js";
-import { sweepChoose, sweepVariant } from "./number-domain-axes.js";
+import { recordedSweepVariant, sweepChoose } from "./number-domain-axes.js";
+import { generatingVersion } from "./variation/axes.js";
 
 const definitions: [string, string, string, string, boolean][] = [
   [
@@ -74,7 +75,8 @@ export const volumeCoordinateTemplates: readonly TemplateMetadata[] =
     title,
     skillId,
     description,
-    version: 1,
+    version: id === "unit-cube-volume" ? 2 : 1,
+    ...(id === "unit-cube-volume" ? { reprintsFrom: 1 } : {}),
     gradeBand: "3–5",
     requiredFigureCapability: "scenes-v1",
     ...(choice
@@ -100,6 +102,224 @@ function random(id: string, seed: string) {
 const pair = (x: number, y: number) => `(${x}, ${y})`;
 type Choice = { label: string; correct?: true; feedback?: string };
 
+/** Clause-family stream. Separate from the content stream `[id, 1, seed, n]`. */
+function clauseDraw(id: string, seed: string) {
+  let counter = 0;
+  return (lo: number, hi: number) => {
+    const span = hi - lo + 1,
+      limit = Math.floor(0x100000000 / span) * span;
+    let value: number;
+    do
+      value = createHash("sha256")
+        .update(JSON.stringify([id, "clause-family", seed, counter++]))
+        .digest()
+        .readUInt32BE(0);
+    while (value >= limit);
+    return lo + (value % span);
+  };
+}
+
+/** Cubes with a face toward the viewer: the top, the depth side, and the front.
+ * A full prism hides the inner (l−1) by (w−1) by (h−1) block. */
+export function visiblePrismCubes(
+  length: number,
+  width: number,
+  height: number,
+): number {
+  return (
+    length * width * height - (length - 1) * (width - 1) * (height - 1)
+  );
+}
+
+/** Same three faces on a stepped solid. `columns` run from back to front. */
+export function visibleStepCubes(
+  depth: number,
+  columns: readonly number[],
+): number {
+  let visible = 0;
+  for (let x = 0; x < columns.length; x++) {
+    const h = columns[x]!,
+      next = x + 1 < columns.length ? columns[x + 1]! : 0;
+    for (let y = 0; y < depth; y++)
+      for (let z = 0; z < h; z++)
+        if (z === h - 1 || y === depth - 1 || z >= next) visible++;
+  }
+  return visible;
+}
+
+const NAMED_CUBIC = {
+  cm: "cubic centimeters",
+  in: "cubic inches",
+  ft: "cubic feet",
+} as const;
+const NAMED_EDGE = {
+  cm: "1-centimeter",
+  in: "1-inch",
+  ft: "1-foot",
+} as const;
+const IMPROVISED = [
+  { many: "blocks", held: "shoebox" },
+  { many: "sugar cubes", held: "box" },
+  { many: "dice", held: "box" },
+  { many: "ice cubes", held: "cooler" },
+  { many: "bales", held: "trailer" },
+] as const;
+
+function cubeLayerEdit(h: number): (scene: Scene) => Scene {
+  return (scene) => ({
+    ...scene,
+    elements: scene.elements.map((e) =>
+      e.type === "isoSolid" && e.solid.form === "cubes"
+        ? { ...e, solid: { ...e.solid, counts: true } }
+        : e,
+    ),
+    steps: Array.from({ length: h }, (_, k) => ({
+      caption:
+        k === 0
+          ? "The bottom layer: count along the length and the width, then multiply. {prism.count.0} cubes."
+          : k === h - 1
+            ? `Layer ${k + 1} is the same. With every layer: {prism.count.${k}} cubes.`
+            : `Layer ${k + 1} is the same: {prism.count.${k}} cubes so far.`,
+      actions: [
+        {
+          do: "fill" as const,
+          target: `prism.layer.${k}`,
+          fill: "warm-fill" as const,
+        },
+        { do: "appear" as const, target: `prism.count.${k}` },
+      ],
+    })),
+  });
+}
+
+type NamedUnit = "cm" | "in" | "ft" | "improvised";
+
+/** Named cubic units or an improvised count on the numeric host. */
+function namedUnitVolume(
+  unit: NamedUnit,
+  solid: "prism" | "steps",
+  seed: string,
+): {
+  prompt: string;
+  answer: string;
+  label: string;
+  hint: string;
+  explanation: string[];
+  figure: SemanticFigure;
+  edit?: (scene: Scene) => Scene;
+} {
+  const cr = clauseDraw("unit-cube-volume", seed);
+  if (solid === "steps") {
+    let depth = 0,
+      columns: number[] = [];
+    do {
+      depth = cr(2, 4);
+      const n = cr(3, 5);
+      columns = Array.from({ length: n }, () => cr(1, 5)).sort(
+        (a, b) => b - a,
+      );
+    } while (
+      columns[0] === columns.at(-1) ||
+      depth * columns.reduce((a, b) => a + b, 0) < 12 ||
+      depth * columns.reduce((a, b) => a + b, 0) > 45
+    );
+    const front = columns.reduce((a, b) => a + b, 0),
+      total = depth * front;
+    const object = IMPROVISED[cr(0, IMPROVISED.length - 1)]!;
+    const unitPhrase =
+      unit === "improvised" ? object.many : NAMED_CUBIC[unit];
+    const things = unit === "improvised" ? object.many : "cubes";
+    let lead: string;
+    if (unit === "ft") {
+      const context = cr(0, 2);
+      lead =
+        context === 0
+          ? "This shipping crate is built from cubes with 1-foot edges, and every column is filled to the bottom."
+          : context === 1
+            ? "This storage pile is built from cubes with 1-foot edges, and every column is filled to the bottom."
+            : "This load of hay bales is built from bales with 1-foot edges, and every column is filled to the bottom.";
+    } else if (unit === "improvised") {
+      lead = `This solid is packed with identical ${object.many}, no gaps, and every column is filled to the bottom.`;
+    } else {
+      lead = `This solid is built from cubes with ${NAMED_EDGE[unit]} edges, and every column is filled to the bottom.`;
+    }
+    return {
+      prompt: `${lead} What is its volume, in ${unitPhrase}?`,
+      answer: String(total),
+      label: `Volume in ${unitPhrase}`,
+      hint: `Some ${things} are hidden. The solid is ${depth} ${things} thick, and every slice through it matches the face that shows the steps. Count the ${things} on that face, column by column, then multiply by the thickness.`,
+      explanation: [
+        `Volume is how many ${things} fill a solid. Hidden ${things} count too.`,
+        `The face that shows the steps has ${columns.length} columns. Their heights are ${columns.join(", ")}: $${columns.join(" + ")} = ${front}$.`,
+        `The solid is ${depth} ${things} thick, and every slice behind that face has the same ${front}.`,
+        `$${front} \\times ${depth} = ${total}$, so the volume is ${total} ${unitPhrase}.`,
+      ],
+      figure: {
+        kind: "scene",
+        scene: sceneSchema.parse({
+          v: 1,
+          width: 320,
+          elements: [
+            {
+              type: "isoSolid",
+              id: "solid",
+              solid: { form: "steps", width: depth, columns },
+            },
+          ],
+        }),
+      },
+    };
+  }
+  let l: number, w: number, h: number;
+  do {
+    l = cr(2, 6);
+    w = cr(2, 6);
+    h = cr(2, 6);
+  } while (l * w * h > 150);
+  const layer = l * w,
+    volume = layer * h;
+  const object = IMPROVISED[cr(0, IMPROVISED.length - 1)]!;
+  const unitPhrase = unit === "improvised" ? object.many : NAMED_CUBIC[unit];
+  const bridge = unit === "in" && cr(0, 2) === 0;
+  let prompt: string;
+  if (unit === "ft") {
+    const context = cr(0, 2);
+    const lead =
+      context === 0
+        ? "A shipping crate is packed with cubes that have 1-foot edges, with no gaps."
+        : context === 1
+          ? "A storage cube is packed with cubes that have 1-foot edges, with no gaps."
+          : "A trailer is packed with hay bales that have 1-foot edges, with no gaps.";
+    prompt = `${lead} What is its volume, in cubic feet?`;
+  } else if (unit === "improvised") {
+    prompt = `Maya packs a ${object.held} with identical ${object.many}, no gaps. What is the volume of the ${object.held}, in ${object.many}?`;
+  } else if (bridge) {
+    prompt = `Each block is 1 cubic inch. The blocks fill this rectangular prism with no gaps. What is its volume, in cubic inches?`;
+  } else {
+    prompt = `Each small cube has ${NAMED_EDGE[unit]} edges. What is the volume of this rectangular prism, in ${unitPhrase}?`;
+  }
+  const things = unit === "improvised" ? object.many : "cubes";
+  return {
+    prompt,
+    answer: String(volume),
+    label: `Volume in ${unitPhrase}`,
+    hint: `Some ${things} are hidden. The top layer is ${l} by ${w}, and every layer below matches it. Count the layers, then multiply.`,
+    explanation: [
+      `Volume is how many ${things} fill the prism. Count one layer, then count the layers.`,
+      `The top layer has ${l} along one edge and ${w} along the other: $${l} \\times ${w} = ${layer}$.`,
+      `Every layer below it is the same. There are ${h} layers.`,
+      `$${layer} \\times ${h} = ${volume}$, so the volume is ${volume} ${unitPhrase}.`,
+      ...(bridge
+        ? [
+            `Each block is 1 cubic inch, so the same count is ${volume} cubic inches.`,
+          ]
+        : []),
+    ],
+    figure: { kind: "cube-prism", length: l, width: w, height: h },
+    edit: cubeLayerEdit(h),
+  };
+}
+
 export function generateVolumeCoordinateProblem(
   templateId: string,
   seed: string,
@@ -119,7 +339,8 @@ export function generateVolumeCoordinateProblem(
     choices: Choice[] | undefined,
     keepOrder = false,
     edit: ((scene: Scene) => Scene) | undefined,
-    variant: ProblemVariant | undefined;
+    variant: ProblemVariant | undefined,
+    templateVersion = 1;
   switch (templateId) {
     case "unit-cube-volume":
     case "cube-layer-count": {
@@ -127,7 +348,30 @@ export function generateVolumeCoordinateProblem(
         templateId === "unit-cube-volume"
           ? sweepChoose("unit-cube-volume", seed)
           : undefined;
-      if (axes) variant = sweepVariant(axes.solid, axes);
+      if (axes)
+        variant = recordedSweepVariant(
+          "unit-cube-volume",
+          axes.solid,
+          axes,
+        );
+      if (
+        templateId === "unit-cube-volume" &&
+        axes &&
+        axes.units !== "cubic-units"
+      ) {
+        const built = namedUnitVolume(axes.units, axes.solid, seed);
+        prompt = built.prompt;
+        answer = built.answer;
+        label = built.label;
+        hint = built.hint;
+        explanation = built.explanation;
+        figure = built.figure;
+        edit = built.edit;
+        // Clause problems are template version 2. Classic problems stay at 1.
+        templateVersion = generatingVersion() ?? 2;
+        if (templateVersion < 2) templateVersion = 2;
+        break;
+      }
       if (axes?.solid === "steps") {
         // A stepped solid, not a full prism: columns from back to front, each
         // no taller than the one behind it, so every column shows.
@@ -545,7 +789,7 @@ export function generateVolumeCoordinateProblem(
         .update(JSON.stringify([templateId, 1, seed]))
         .digest("hex"),
       templateId,
-      templateVersion: 1,
+      templateVersion,
       seed,
       prompt,
       skillId: meta.skillId,

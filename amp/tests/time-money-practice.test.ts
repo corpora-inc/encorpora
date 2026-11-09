@@ -58,7 +58,10 @@ test("hands sit at exact angles and readings match the drawn clock", () => {
     }
   for (let i = 0; i < 200; i++) {
     const p = generateProblem("match-clock-five-minutes", `tm-${i}`);
-    const [, h, m] = /shows (\d+):(\d+)\?/.exec(p.public.prompt)!;
+    const found =
+      /shows (\d+):(\d+)\?/.exec(p.public.prompt) ??
+      /digital clock shows (\d+):(\d+)/.exec(p.public.prompt);
+    const [, h, m] = found!;
     const f = p.public.figure;
     if (f?.kind !== "analog-clocks") throw new Error("figure");
     const right = f.clocks.filter(

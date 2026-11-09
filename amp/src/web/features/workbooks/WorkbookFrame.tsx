@@ -4,13 +4,17 @@ import type { ReactNode } from "react";
 import type { AuthSession } from "../../auth";
 import { meOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
-import { frameCard, PageFrame } from "../../ui/PageFrame";
+import type { FreeWorkbooksNext } from "./FreeWorkbooksUsed";
+import { canReadWorkbooks, type WorkbookAccess } from "./model";
 import styles from "./Workbooks.module.css";
 
-export type WorkbookLearner = { id: string; name: string };
+export type WorkbookLearner = { id: string; name: string } & WorkbookAccess & {
+    /** The step that succeeds once the five free workbooks are used. */
+    freeWorkbooksNext: FreeWorkbooksNext;
+  };
 
-/** The workbook card, once the learner is known to belong to this account
- * and to have practice (consent and a license, as the server checks). */
+/** Workbook content on AppShell for an account-owned learner with learning
+ * permission; workbook history does not depend on a license. */
 export function WorkbookFrame({
   session,
   learnerId,
@@ -63,7 +67,7 @@ export function WorkbookFrame({
         </Link>
       </div>
     );
-  else if (!learner.canPractice)
+  else if (!canReadWorkbooks(learner))
     body = (
       <div className={styles.notice}>
         <h1 className={styles.title}>Workbooks for {learner.name}</h1>
@@ -80,15 +84,17 @@ export function WorkbookFrame({
         </Link>
       </div>
     );
-  else body = children({ id: learner.id, name: learner.name });
+  // A parent continues with AMP. An adult's own practice and a child's
+  // session have no purchase to offer.
+  else
+    body = children({
+      ...learner,
+      freeWorkbooksNext:
+        learner.adult || data.account.kind === "student" ? null : "purchase",
+    });
   return (
-    <PageFrame>
-      <section
-        className={`${frameCard} ${styles.card}`}
-        aria-busy={!data || busy}
-      >
-        {body}
-      </section>
-    </PageFrame>
+    <main className={styles.page} aria-busy={!data || busy}>
+      {body}
+    </main>
   );
 }

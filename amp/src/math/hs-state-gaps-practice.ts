@@ -6,6 +6,7 @@ import {
   type Draft,
   type Random,
 } from "./distribution-practice";
+import { chooseAxes, defineAxis } from "./variation/axes";
 
 /**
  * High-school state-standard gaps: three-variable systems, quadratic
@@ -53,6 +54,13 @@ const OPENERS: Record<string, string[]> = {
   ],
 };
 
+const inequalityAxes = {
+  family: defineAxis("family", ["algebra", "feature-intervals"] as const, {
+    legacy: "algebra",
+    silentLegacy: true,
+    since: 2,
+  }),
+};
 export const hsStateGapTemplates: readonly TemplateMetadata[] = [
   meta(
     "gauss-3x3-solve",
@@ -96,7 +104,17 @@ export const hsStateGapTemplates: readonly TemplateMetadata[] = [
     0.5,
     "Name the figure made by a plane cutting a double cone from the plane's angle with the axis, including degenerate sections through the vertex.",
   ),
-];
+].map((t) =>
+  t.id === "quadratic-inequality-interval"
+    ? {
+        ...t,
+        version: 2,
+        reprintsFrom: 1,
+        description:
+          "Write a quadratic inequality's solution in interval notation, or read where a quadratic graph is rising, falling, positive or negative, including a table.",
+      }
+    : t,
+);
 
 // --------------------------------------------------------------- shared tools
 type Cand = { label: string; feedback: string };
@@ -1638,6 +1656,162 @@ function coneCase(r: Random): Draft {
   };
 }
 
+// ------------------------------------------------ feature intervals
+const span = (lo: string, hi: string, openL = true, openR = true) =>
+  M(
+    `${openL ? "(" : "["}${lo}, ${hi}${openR ? ")" : "]"}`,
+  );
+function featureIntervals(r: Random): Draft {
+  const ask = pick(r, [
+    "rising",
+    "falling",
+    "positive",
+    "negative",
+    "table",
+  ] as const);
+  const context = ask === "table" || ask === "negative" ? ask !== "negative" : r(0, 1) === 0;
+  if (!context) {
+    const a = pick(r, [-2, -1, 1, 2] as const);
+    let p = r(-5, 1);
+    let q = r(p + 2, 6);
+    if ((p + q) % 2 !== 0) q += q < 6 ? 1 : -1;
+    if (p >= q) {
+      p = -2;
+      q = 2;
+    }
+    const vertex = (p + q) / 2;
+    const left = a < 0;
+    const increasing = left
+      ? span("-\\infty", `${vertex}`)
+      : span(`${vertex}`, "\\infty");
+    const decreasing = left
+      ? span(`${vertex}`, "\\infty")
+      : span("-\\infty", `${vertex}`);
+    const between = span(`${p}`, `${q}`);
+    const outside = M(
+      `(-\\infty, ${p}) \\cup (${q}, \\infty)`,
+    );
+    const positive = a > 0 ? outside : between;
+    const negative = a > 0 ? between : outside;
+    const correct =
+      ask === "falling"
+        ? decreasing
+        : ask === "positive"
+          ? positive
+          : ask === "negative"
+            ? negative
+            : increasing;
+    const expr = `${a === 1 ? "" : a === -1 ? "-" : a}(x${p < 0 ? "+" : "-"}${Math.abs(p)})(x${q < 0 ? "+" : "-"}${Math.abs(q)})`;
+    const word =
+      ask === "falling"
+        ? "decreasing"
+        : ask === "positive"
+          ? "positive"
+          : ask === "negative"
+            ? "negative"
+            : "increasing";
+    return {
+      prompt: `The graph of $f(x)=${expr}$ is a parabola. During which interval is $f$ ${word}?`,
+      answer: "",
+      hint: "Increasing or decreasing changes at the axis, halfway between the zeros. Positive or negative changes at the zeros themselves.",
+      explanation: [
+        `The zeros are $x=${p}$ and $x=${q}$, so the axis is $x=${vertex}$.`,
+        a < 0
+          ? "The leading coefficient is negative, so $f$ rises before the axis and falls after it."
+          : "The leading coefficient is positive, so $f$ falls before the axis and rises after it.",
+        a > 0
+          ? `$f$ is negative between the zeros and positive outside them.`
+          : `$f$ is positive between the zeros and negative outside them.`,
+        `The interval where $f$ is ${word} is ${correct}.`,
+      ],
+      choices: choicesOf(correct, [
+        { label: increasing, feedback: "That is where the graph is rising." },
+        { label: decreasing, feedback: "That is where the graph is falling." },
+        { label: positive, feedback: "That is where the graph is above the axis." },
+        { label: negative, feedback: "That is where the graph is below the axis." },
+        {
+          label: span(`${p}`, `${vertex}`),
+          feedback: "That mixes a zero with the axis. Use one or the other, not both.",
+        },
+      ]),
+    };
+  }
+  const lead = pick(r, [-5, -16] as const);
+  const pairs: [number, number][] = [];
+  for (const root of [3, 4, 5, 6, 7])
+    for (const s of [1, 2, 3])
+      if (root > s && (root - s) % 2 === 0) pairs.push([root, s]);
+  const [root, s] = pick(r, pairs);
+  const vertex = (root - s) / 2;
+  const height = (t: number) => lead * (t - root) * (t + s);
+  const rising = span("0", `${vertex}`);
+  const falling = span(`${vertex}`, `${root}`);
+  const positive = span("0", `${root}`, false, true);
+  const heights = span(`${height(0)}`, `${height(vertex)}`);
+  const expr = `${lead}(t-${root})(t+${s})`;
+  if (ask === "table") {
+    const start = Math.max(0, vertex - 2);
+    const times = [start, start + 1, start + 2, start + 3, start + 4];
+    const values = times.map(height);
+    const correct = span(`${times[0]}`, `${vertex}`);
+    return {
+      prompt: `The table shows the height of a ball, in meters, $t$ seconds after it is thrown. Between which times in the table is the height increasing?\n$t$: ${times.join(", ")}\n$h$: ${values.join(", ")}`,
+      answer: "",
+      hint: "The height increases up to the row where it is greatest. Read those times, not the heights in the $h$ row.",
+      explanation: [
+        `The greatest height in the table is in the row $t=${vertex}$.`,
+        "Before that row the heights go up, so the ball is rising.",
+        `The height is increasing from $t=${times[0]}$ to $t=${vertex}$: ${correct}.`,
+      ],
+      choices: choicesOf(correct, [
+        {
+          label: span(`${vertex}`, `${times[times.length - 1]}`),
+          feedback: "Those times are after the highest row, so the height is falling.",
+        },
+        {
+          label: span(`${times[0]}`, `${times[times.length - 1]}`),
+          feedback: "That is the whole table. The height falls again after the highest row.",
+        },
+        {
+          label: span(`${values[0]}`, `${Math.max(...values)}`),
+          feedback: "Those are heights, not times. The question asks for an interval of time.",
+        },
+        {
+          label: positive,
+          feedback: "That is when the ball is above the ground, not when it is rising.",
+        },
+      ]),
+    };
+  }
+  const word =
+    ask === "falling" ? "falling" : ask === "positive" ? "above the ground" : "rising";
+  const correct = ask === "falling" ? falling : ask === "positive" ? positive : rising;
+  return {
+    prompt: `The height in meters of a ball $t$ seconds after it is thrown is $h(t)=${expr}$, with $t\\ge 0$. Its graph is a downward parabola. During which interval of time is the ball ${word}?`,
+    answer: "",
+    hint: "Rising or falling changes at the axis, halfway between the zeros. Above the ground runs from the throw until the later zero.",
+    explanation: [
+      `The zeros are $t=-${s}$, before the throw, and $t=${root}$. The axis is $t=${vertex}$.`,
+      "The leading coefficient is negative, so the ball rises before the axis and falls after it.",
+      `Above the ground, on $t\\ge 0$, is ${positive}.`,
+      `The ball is ${word} on ${correct}.`,
+    ],
+    choices: choicesOf(correct, [
+      { label: rising, feedback: "That is while the ball is rising, before the axis." },
+      { label: falling, feedback: "That is while the ball is falling, after the axis." },
+      { label: positive, feedback: "That is while the ball is above the ground." },
+      {
+        label: heights,
+        feedback: "Those are heights, not times. The question asks for an interval of time.",
+      },
+      {
+        label: span(`-${s}`, `${root}`),
+        feedback: "That keeps the zero from before the throw. Time starts at 0.",
+      },
+    ]),
+  };
+}
+
 // -------------------------------------------------------------------- dispatch
 export function generateHsStateGapProblem(
   templateId: string,
@@ -1648,17 +1822,28 @@ export function generateHsStateGapProblem(
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
   const r = random(templateId, seed);
+  const feature =
+    templateId === "quadratic-inequality-interval" &&
+    chooseAxes(templateId, seed, inequalityAxes).family === "feature-intervals";
   const build: Record<string, (r: Random) => Draft> = {
     "gauss-3x3-solve": gaussCase,
-    "quadratic-inequality-interval": quadraticInequalityCase,
+    "quadratic-inequality-interval": feature
+      ? featureIntervals
+      : quadraticInequalityCase,
     "conditional-statements": conditionalCase,
     "cube-root-equation": cubeRootCase,
     "polar-graph-identify": polarCase,
     "cone-section-name": coneCase,
   };
   const draft = build[templateId]!(r);
-  return assemble(template, seed, r, {
+  const problem = assemble(template, seed, r, {
     ...draft,
     explanation: [...(OPENERS[templateId] ?? []), ...draft.explanation],
   });
+  if (feature)
+    problem.variant = {
+      id: "feature-intervals",
+      axes: { family: "feature-intervals" },
+    };
+  return problem;
 }

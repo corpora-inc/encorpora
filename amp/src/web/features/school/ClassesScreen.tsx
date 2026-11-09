@@ -46,7 +46,6 @@ import {
   PageHead,
   gradeLabel,
 } from "./parts";
-import { classTabs } from "./classes/ClassFrame";
 import { yearsOptions } from "./org/org-api";
 import { classPath, orgPath } from "./paths";
 import { compareClassNames } from "./sort";
@@ -600,8 +599,6 @@ export function ClassScreen() {
       nav={`class:${classId}`}
       title={klass.name}
       crumbs={[{ label: klass.name }]}
-      tabs={classTabs(orgId, classId)}
-      activeTab="settings"
     >
       <PageHead
         title={klass.name}

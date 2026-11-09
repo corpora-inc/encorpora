@@ -41,6 +41,9 @@ export const authConfigOptions = queryOptions({
 });
 export const meKey = (identity: string | null) =>
   ["account", identity, "me"] as const;
+/** The adult's own record (`features/me`), under the account's key. */
+export const ownPracticeKey = (identity: string) =>
+  ["account", identity, "own-practice"] as const;
 export const meOptions = (session: AuthSession) =>
   queryOptions({
     queryKey: meKey(session.accountId),

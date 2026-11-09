@@ -7,7 +7,13 @@ import type {
 import { random, type Random } from "./distribution-practice";
 import { scene, table } from "./scene/author";
 import { operationStoryValues, timesCast } from "./story-kit/operations";
-import { chooseAxes, defineAxis } from "./variation/axes";
+import { isAre } from "./agreement";
+import {
+  chooseAxes,
+  defineAxis,
+  generatingVersion,
+  versionGatedAxes,
+} from "./variation/axes";
 import {
   buildReciprocalCheck,
   clauseTask,
@@ -58,12 +64,18 @@ const metadata = (
   version:
     id === "scaling-direction-choice"
       ? 3
-      : id === "times-as-many-comparison" || id === "reciprocal-division-choice"
+      : id === "times-as-many-comparison" ||
+          id === "reciprocal-division-choice" ||
+          id === "experimental-probability-predict" ||
+          id === "division-area-model"
         ? 2
         : 1,
   ...(id === "times-as-many-comparison"
     ? { reprintsFrom: 1, previousSkillId: "multiplicative-stories" }
-    : id === "scaling-direction-choice" || id === "reciprocal-division-choice"
+    : id === "scaling-direction-choice" ||
+        id === "reciprocal-division-choice" ||
+        id === "experimental-probability-predict" ||
+        id === "division-area-model"
       ? { reprintsFrom: 1 }
       : {}),
   title,
@@ -286,7 +298,7 @@ export const texas38Templates: readonly TemplateMetadata[] = [
     0.35,
     "mixed",
     false,
-    "Find an experimental probability from collected trials, predict a count in more trials, compare observed with expected counts, and judge which experiment to trust.",
+    "Find an experimental probability from collected trials, predict a count in more trials, compare observed with expected counts, and judge which experiment to trust. The app runs the seeded trials; the learner records them.",
   ),
   metadata(
     "cylinder-prism-surface-area",
@@ -1239,7 +1251,83 @@ function stripDiagramEquation(r: Random): Built {
 /* 4.4.E Quotient as an area model                                         */
 /* ---------------------------------------------------------------------- */
 
-function divisionAreaModel(r: Random): Built {
+/** Clause-family draw, off the content stream. Index 0 is the legacy model. */
+function clauseFamily(templateId: string, seed: string, weights: readonly number[]) {
+  const span = weights.reduce((a, b) => a + b, 0);
+  const limit = Math.floor(0x100000000 / span) * span;
+  let counter = 0;
+  let n: number;
+  do {
+    n = createHash("sha256")
+      .update(JSON.stringify([templateId, "clause-family", seed, counter++]))
+      .digest()
+      .readUInt32BE(0);
+  } while (n >= limit);
+  let pickAt = n % span;
+  for (let i = 0; i < weights.length; i++) {
+    if (pickAt < weights[i]!) return i;
+    pickAt -= weights[i]!;
+  }
+  throw new Error("clause family");
+}
+
+function explainFirstChunk(r: Random): Built {
+  const pin = r(0, 4) === 0;
+  const d = pin ? 3 : r(2, 9);
+  const digit = pin ? 3 : r(1, 8);
+  const rest = pin ? 63 : r(0, 99);
+  const width = digit * 100;
+  const next = width + 100;
+  const N = d * (width + rest);
+  const tooBig = d * next;
+  const fits = d * width;
+  const roundTo = Math.max(1000, Math.round(N / 1000) * 1000);
+  const lead = Number(String(N)[0]);
+  const correct = `${d} × ${commas(next)} = ${commas(tooBig)} is more than ${commas(N)}`;
+  const rounding = `${commas(N)} rounds to ${commas(roundTo)}`;
+  const noTrade = `${lead} can't be shared by ${d}, so the thousand is left over`;
+  const closest = `${d} × ${commas(width)} = ${commas(fits)} is the closest to ${commas(roundTo)}`;
+  if (new Set([correct, rounding, noTrade, closest]).size < 4)
+    throw new Error("Need three distinct reasons");
+  if (tooBig <= N) throw new Error("Need three fit");
+  return {
+    variant: "explain-first-chunk",
+    prompt: `The first chunk of ${commas(N)} ÷ ${d} is ${commas(width)} wide, not ${commas(next)}. Why?`,
+    hint: `Try one more hundred, ${commas(next)}. Multiply that width by ${d} and compare the product with ${commas(N)}. Rounding ${commas(N)} is a different question.`,
+    explanation: [
+      `${d} × ${commas(next)} = ${commas(tooBig)}, and ${commas(tooBig)} is more than ${commas(N)}.`,
+      `So a first chunk ${commas(next)} wide does not fit.`,
+      `${d} × ${commas(width)} = ${commas(fits)}, which is not more than ${commas(N)}.`,
+      `${commas(width)} is the widest hundred that fits. Rounding, or refusing to trade the first digit, does not decide the chunk.`,
+    ],
+    choices: choicesFrom(correct, [
+      {
+        label: rounding,
+        feedback: `Rounding ${commas(N)} does not choose the chunk. Compare ${d} × ${commas(next)} with ${commas(N)}.`,
+      },
+      {
+        label: noTrade,
+        feedback: `The first digit can be traded into smaller places. The chunk stops because ${commas(next)} groups do not fit.`,
+      },
+      {
+        label: closest,
+        feedback: `Being near a round number is not the test. ${commas(next)} does not fit because ${d} × ${commas(next)} is more than ${commas(N)}.`,
+      },
+    ]),
+  };
+}
+
+function divisionAreaModel(r: Random, seed = ""): Built {
+  const version = generatingVersion();
+  // Reprints below version 2 stay on the content stream and never draw the
+  // clause family. Current seeds are half classic, half explain-first-chunk.
+  if (version != null && version < 2) return divisionAreaModelClassic(r);
+  if (clauseFamily("division-area-model", seed, [1, 1]) === 1)
+    return explainFirstChunk(r);
+  return divisionAreaModelClassic(r);
+}
+
+function divisionAreaModelClassic(r: Random): Built {
   const variant = pick(r, [
     "partial-quotients",
     "area-equation",
@@ -3337,6 +3425,501 @@ function piAsRatio(r: Random): Built {
 /* 7.6.C, 7.6.H, 7.6.I Experimental probability                            */
 /* ---------------------------------------------------------------------- */
 
+/** Grade 7 long-run frequency, discrepancy, data models, and equal likelihood.
+ * The template stays number or single-choice, so each new family is one
+ * four-option choice. Legacy `reported-experiment` is the stored behavior. */
+const experimentTaskAxis = {
+  task: defineAxis(
+    "task",
+    [
+      "reported-experiment",
+      "run-and-record",
+      "discrepancy-source",
+      "model-from-data",
+      "equally-likely-judgment",
+    ] as const,
+    {
+      legacy: "reported-experiment",
+      weights: [4, 1, 1, 1, 1],
+      silentLegacy: true,
+      since: 2,
+    },
+  ),
+};
+type ExperimentTask = (typeof experimentTaskAxis.task.values)[number];
+
+/** Round half up to hundredths, using integer arithmetic. */
+function hundredths(count: number, n: number): string {
+  const num = count * 100;
+  const q = Math.floor(num / n);
+  const rounded = (num % n) * 2 >= n ? q + 1 : q;
+  return (rounded / 100).toFixed(2);
+}
+function sentenceWords(text: string): number {
+  return text.trim().split(/\s+/).filter(Boolean).length;
+}
+/** Reject a draft whose own sentences run past 35 words. */
+function assertBrief(parts: string[]) {
+  for (const part of parts)
+    for (const sentence of part.split(/(?<=[.?!])\s+/))
+      if (sentenceWords(sentence) > 35)
+        throw new Error(`Sentence has ${sentenceWords(sentence)} words: ${sentence}`);
+}
+
+function runAndRecord(r: Random): Built {
+  const kind = pick(r, ["cube", "spinner", "bag"] as const);
+  let faces: number;
+  let favorable: number;
+  let setup: string;
+  if (kind === "cube") {
+    faces = 6;
+    favorable = r(1, 5);
+    setup = `A fair number cube has 6 faces. The event uses ${favorable} of the 6 faces.`;
+  } else if (kind === "spinner") {
+    faces = pick(r, [3, 4, 5, 8, 10]);
+    favorable = r(1, faces - 1);
+    setup = `A fair spinner has ${faces} equal sections, and ${favorable} ${isAre(favorable)} shaded.`;
+  } else {
+    faces = pick(r, [3, 4, 5, 6, 8, 10]);
+    favorable = r(1, faces - 1);
+    setup = `A bag has ${faces} equal marbles, and ${favorable} ${isAre(favorable)} red.`;
+  }
+  const marks = [10, 50, 200, 600];
+  const counts = [0, 0, 0, 0];
+  let hits = 0;
+  for (let trial = 1; trial <= 600; trial++) {
+    if (r(1, faces) <= favorable) hits++;
+    const at = marks.indexOf(trial);
+    if (at >= 0) counts[at] = hits;
+  }
+  const gap = (count: number, trials: number) =>
+    Math.abs(count * faces - trials * favorable);
+  const expected = (600 * favorable) / faces;
+  // 0.04 of 600 is 24. The 600-trial share must be strictly closer than the
+  // 10-trial share, and not the exact expected count.
+  if (
+    gap(counts[3]!, 600) > 24 * faces ||
+    gap(counts[3]!, 600) * 10 >= gap(counts[0]!, 10) * 600 ||
+    counts[3] === expected
+  )
+    throw new Error("Need three retries");
+  const shown = counts.map((count, i) => hundredths(count, marks[i]!));
+  const ratio = `${favorable}/${faces}`;
+  const correct = `The relative frequencies are ${shown[0]}, ${shown[1]}, ${shown[2]}, and ${shown[3]}. They settle near ${ratio}, so the probability is about ${ratio}.`;
+  const prompt = [
+    setup,
+    "The app ran 600 seeded trials. The learner records the event count.",
+    `The counts are ${counts[0]} of 10, ${counts[1]} of 50, ${counts[2]} of 200, and ${counts[3]} of 600.`,
+    "What do these relative frequencies suggest?",
+  ].join(" ");
+  const hint = `The first recorded count is ${counts[0]} in 10 trials. Divide ${counts[0]} by 10, then divide each later count by its trial total.`;
+  const exactLine = (count: number, trials: number) => {
+    const text = hundredths(count, trials);
+    return (count * 100) % trials === 0
+      ? `${count} ÷ ${trials} = ${text}.`
+      : `${count} ÷ ${trials} is about ${text}.`;
+  };
+  const per = 600 / faces;
+  const explanation = [
+    exactLine(counts[0]!, 10),
+    exactLine(counts[3]!, 600),
+    `600 ÷ ${faces} = ${per}.`,
+    `${per} × ${favorable} = ${expected}.`,
+    `The frequency after 600 trials is closer to ${ratio} than the frequency after 10 trials.`,
+    `The run gave ${counts[3]} events, not exactly ${expected}.`,
+  ];
+  assertBrief([prompt, hint, correct, ...explanation]);
+  return {
+    variant: "run-and-record",
+    prompt,
+    hint,
+    explanation,
+    choices: choicesFrom(correct, [
+      {
+        label: `The probability is ${shown[0]}, the first result.`,
+        feedback: `The first relative frequency uses only 10 trials. It is not the probability.`,
+      },
+      {
+        label:
+          "The relative frequencies keep changing, so the probability cannot be estimated.",
+        feedback: `The later frequencies move toward ${ratio}. Change is not a reason to give up.`,
+      },
+      {
+        label: `After 600 trials the count must be exactly ${expected}.`,
+        feedback: `The expected count is ${expected}, but one run of 600 trials need not hit it.`,
+      },
+    ]),
+  };
+}
+
+type GapCase = "few" | "wrong" | "good";
+function sigmaOf(n: number, den: number): number {
+  const p = 1 / den;
+  return Math.sqrt(n * p * (1 - p));
+}
+function gapCase(n: number, den: number, obs: number): GapCase | "gray" {
+  const mean = n / den;
+  const gap = Math.abs(obs - mean);
+  const sig = sigmaOf(n, den);
+  if (n >= 8 && n <= 30 && gap >= 1.2 * sig - 1e-9 && gap <= 2.5 * sig + 1e-9)
+    return "few";
+  if (n >= 300 && gap >= 4 * sig - 1e-9) return "wrong";
+  if (n >= 200 && gap <= sig + 1e-9) return "good";
+  return "gray";
+}
+
+function discrepancySource(r: Random): Built {
+  const device = pick(r, [
+    {
+      den: 6,
+      verb: "rolled",
+      unit: "rolls",
+      lead: "A fair number cube is rolled",
+      model: "a 6 has probability 1/6",
+      outcome: "A 6",
+    },
+    {
+      den: 4,
+      verb: "spun",
+      unit: "spins",
+      lead: "A homemade spinner has 4 sections meant to be equal. It is spun",
+      model: "one section has probability 1/4",
+      outcome: "That section",
+    },
+    {
+      den: 2,
+      verb: "spun",
+      unit: "spins",
+      lead: "A coin is spun on its edge",
+      model: "heads has probability 1/2",
+      outcome: "Heads",
+    },
+  ] as const);
+  const want = pick(r, ["few", "wrong", "good"] as const);
+  const menus = {
+    cube: { few: [12, 18, 24, 30], wrong: [300, 360, 600], good: [240, 300, 360] },
+    spinner: { few: [8, 12, 16, 20, 28], wrong: [400, 600, 800], good: [200, 400, 600] },
+    coin: { few: [10, 16, 20, 24, 30], wrong: [400, 500, 600], good: [200, 300, 400] },
+  };
+  const menuKey = device.den === 6 ? "cube" : device.den === 4 ? "spinner" : "coin";
+  const n = pick(r, menus[menuKey][want]);
+  const mean = n / device.den;
+  const room: number[] = [];
+  for (let obs = 0; obs <= n; obs++) {
+    if (want === "wrong" && obs <= mean) continue;
+    if (gapCase(n, device.den, obs) === want) room.push(obs);
+  }
+  if (!room.length) throw new Error("Need three retries");
+  const obs = pick(r, room);
+  const gap = Math.abs(obs - mean);
+  const fewKey = `With only ${n} ${device.unit}, a gap of ${gap} is ordinary chance variation, and more ${device.unit} would bring the share closer to 1/${device.den}.`;
+  const wrongKey = `${obs} of ${n} is far more than ordinary chance variation, so the equally likely model is wrong.`;
+  const goodKey =
+    "The agreement is good; the small difference is ordinary variation and needs no explanation.";
+  const correct = want === "few" ? fewKey : want === "wrong" ? wrongKey : goodKey;
+  const ordinaryLarge = `With ${n} trials, this difference is ordinary chance variation.`;
+  const prompt = [
+    `${device.lead} ${n} times.`,
+    `The model says ${device.model}, so ${mean} are expected.`,
+    `${device.outcome} came up ${obs} times.`,
+    "Which is the best explanation of the difference?",
+  ].join(" ");
+  const hint = `The model expects ${mean} in these ${n} ${device.unit}, and the count is ${obs}. Compare the gap with how many ${device.unit} were run.`;
+  const above = obs >= mean;
+  const explanation = [
+    `${n} ÷ ${device.den} = ${mean}.`,
+    above
+      ? `${obs} − ${mean} = ${gap}.`
+      : `${mean} − ${obs} = ${gap}.`,
+    want === "few"
+      ? `With only ${n} ${device.unit}, a gap of ${gap} is ordinary chance variation.`
+      : want === "wrong"
+        ? `${n} trials is a large run, and a gap of ${gap} is far beyond ordinary variation.`
+        : `With ${n} trials, a gap of ${gap} still fits ordinary variation.`,
+    want === "wrong"
+      ? "The equally likely model is probably wrong."
+      : `The model probability stays 1/${device.den}.`,
+  ];
+  const gambler = "It was due to land that way after missing earlier.";
+  const recorded = "The results must have been recorded wrongly.";
+  const wrongs =
+    want === "few"
+      ? [
+          { label: gambler, feedback: "Earlier misses do not make a later result due." },
+          { label: recorded, feedback: "Nothing in the results shows a recording error." },
+          {
+            label: wrongKey,
+            feedback: `A gap of ${gap} in only ${n} ${device.unit} is still ordinary variation.`,
+          },
+        ]
+      : want === "wrong"
+        ? [
+            { label: gambler, feedback: "Earlier misses do not make a later result due." },
+            { label: recorded, feedback: "Nothing in the results shows a recording error." },
+            {
+              label: ordinaryLarge,
+              feedback: `A gap of ${gap} in ${n} trials is too large to call ordinary variation.`,
+            },
+          ]
+        : [
+            { label: gambler, feedback: "Earlier misses do not make a later result due." },
+            { label: recorded, feedback: "Nothing in the results shows a recording error." },
+            {
+              label: wrongKey,
+              feedback: `A gap of ${gap} in ${n} trials is not far beyond ordinary variation.`,
+            },
+          ];
+  assertBrief([prompt, hint, correct, ...explanation, ...wrongs.map((w) => w.label)]);
+  return {
+    variant: "discrepancy-source",
+    prompt,
+    hint,
+    explanation,
+    choices: choicesFrom(correct, wrongs),
+  };
+}
+
+function modelFromData(r: Random): Built {
+  const process = pick(r, [
+    {
+      thing: "paper cup",
+      verb: "tossed",
+      per: "tosses",
+      outcomes: ["open-end down", "open-end up", "on its side"],
+    },
+    {
+      thing: "thumbtack",
+      verb: "dropped",
+      per: "drops",
+      outcomes: ["point up", "point down"],
+    },
+    {
+      thing: "bent spinner",
+      verb: "spun",
+      per: "spins",
+      outcomes: ["red", "blue", "green"],
+    },
+    {
+      thing: "bent spinner",
+      verb: "spun",
+      per: "spins",
+      outcomes: ["red", "blue", "green", "gold"],
+    },
+  ] as const);
+  const total = pick(r, [50, 100, 200, 250, 400]);
+  const step = total === 200 ? 2 : total === 250 ? 5 : total === 400 ? 4 : 1;
+  const k = process.outcomes.length;
+  const units = total / step;
+  // 1..k, then the same extra on every part, keeps the counts distinct and near one another.
+  const base = Array.from({ length: k }, (_, i) => i + 1);
+  let left = units - (k * (k + 1)) / 2;
+  const even = Math.floor(left / k);
+  for (let i = 0; i < k; i++) base[i] = base[i]! + even;
+  left -= even * k;
+  for (let i = 0; i < left; i++) base[k - 1 - i] = base[k - 1 - i]! + 1;
+  const ordered = shuffle(r, base).map((part) => part * step);
+  if (new Set(ordered).size !== k || ordered.some((c) => c <= 0))
+    throw new Error("Need three retries");
+  if (ordered.reduce((s, c) => s + c, 0) !== total)
+    throw new Error("Need three retries");
+  const target = r(0, k - 1);
+  const name = process.outcomes[target]!;
+  const count = ordered[target]!;
+  const next = total * 2;
+  const pred = count * 2;
+  const shares = ordered.map((c) => hundredths(c, total));
+  if (shares.reduce((s, text) => s + Math.round(Number(text) * 100), 0) !== 100)
+    throw new Error("Need three retries");
+  const shareText = process.outcomes
+    .map((outcome, i) => `${outcome} ${shares[i]}`)
+    .join(", ");
+  const countText = process.outcomes
+    .map((outcome, i) => `${outcome} ${ordered[i]}`)
+    .join(", ");
+  const correct = `${shareText}; about ${pred}.`;
+  const uniformPred = Math.round(next / k);
+  const results = process.outcomes
+    .map((outcome, i) => `${outcome}: ${ordered[i]}`)
+    .join("; ");
+  const prompt = [
+    `A ${process.thing} was ${process.verb} ${total} times.`,
+    `Results: ${results}.`,
+    `Which probability model matches these results, and about how many of the next ${next} ${process.per} are ${name}?`,
+  ].join(" ");
+  const hint = `${name} happened ${count} times in ${total} ${process.per}. Divide ${count} by ${total} before scaling to ${next}.`;
+  const explanation = [
+    "The model is the observed shares, not an equal share for each outcome.",
+    `${count} ÷ ${total} = ${shares[target]}.`,
+    `The shares add to 1.00.`,
+    `${next} × ${shares[target]} = ${pred}.`,
+    `About ${pred} of the next ${next} ${process.per} are ${name}, not exactly.`,
+  ];
+  const wrongs = [
+    {
+      label: `Each of the ${k} outcomes has probability 1/${k}; about ${uniformPred}.`,
+      feedback: `The counts are not equal, so the model is not 1/${k} for each outcome.`,
+    },
+    {
+      label: `${countText}; about ${count}.`,
+      feedback: `Those are counts, not probabilities. A probability is a count divided by ${total}.`,
+    },
+    {
+      label: `${shareText}; about ${count}.`,
+      feedback: `The shares match the results, but the next run has ${next} ${process.per}, not ${total}.`,
+    },
+  ];
+  assertBrief([prompt, hint, correct, ...explanation, ...wrongs.map((w) => w.label)]);
+  return {
+    variant: "model-from-data",
+    prompt,
+    hint,
+    explanation,
+    choices: choicesFrom(correct, wrongs),
+  };
+}
+
+function equallyLikelyJudgment(r: Random): Built {
+  const device = pick(r, [
+    { k: 2, names: ["heads", "tails"], lead: (n: number) => `A penny was spun ${n} times.` },
+    {
+      k: 3,
+      names: ["open-end down", "open-end up", "on its side"],
+      lead: (n: number) => `A paper cup was tossed ${n} times.`,
+    },
+    {
+      k: 4,
+      names: ["red", "blue", "green", "gold"],
+      lead: (n: number) => `A spinner with 4 sections was spun ${n} times.`,
+    },
+  ] as const);
+  const want = pick(r, ["yes", "no", "few"] as const);
+  const sizes =
+    device.k === 2
+      ? want === "few"
+        ? [20, 24, 30]
+        : [200, 400, 500]
+      : device.k === 3
+        ? want === "few"
+          ? [24, 30]
+          : [300, 450]
+        : want === "few"
+          ? [20, 24]
+          : [200, 400];
+  const total = pick(r, sizes);
+  const mean = total / device.k;
+  const sig = Math.sqrt(total * (1 / device.k) * (1 - 1 / device.k));
+  let counts: number[] | null = null;
+  if (want === "no") {
+    const high = Math.ceil(mean + 4 * sig - 1e-9);
+    const rest = total - high;
+    const base = Math.floor(rest / (device.k - 1));
+    const extra = rest - base * (device.k - 1);
+    const low = Array.from({ length: device.k - 1 }, (_, i) => base + (i < extra ? 1 : 0));
+    if (high < total && low.every((c) => c > 0) && Math.max(...low) < high)
+      counts = [...low, high];
+  } else {
+    const shift = r(1, 3);
+    const next = Array.from({ length: device.k }, () => mean);
+    if (next[0]! - shift > 0) {
+      next[0] = next[0]! - shift;
+      next[1] = next[1]! + shift;
+      const dev = Math.max(...next.map((c) => Math.abs(c - mean)));
+      const limit = (want === "few" ? 2.5 : 1.5) * sig;
+      if (dev <= limit + 1e-9) counts = next;
+    }
+  }
+  if (!counts) throw new Error("Need three retries");
+  const kind =
+    total <= 30 && counts.every((c) => Math.abs(c - mean) <= 2.5 * sig + 1e-9)
+      ? "few"
+      : total >= 200 && counts.every((c) => Math.abs(c - mean) <= 1.5 * sig + 1e-9)
+        ? "yes"
+        : total >= 200 && Math.max(...counts) >= mean + 4 * sig - 1e-9
+          ? "no"
+          : "gray";
+  if (kind !== want) throw new Error("Need three retries");
+  const top = counts.indexOf(Math.max(...counts));
+  const topName = device.names[top]!;
+  const topCount = counts[top]!;
+  const listed = device.names.map((name, i) => `${name} ${counts[i]}`).join(", ");
+  const yesKey = `Yes: each outcome came up about ${mean} times, which is what equally likely outcomes give.`;
+  const noKey = `No: ${topName} came up ${topCount} of ${total} times, far more than the ${mean} expected; the outcomes do not appear equally likely.`;
+  const fewKey = `Cannot tell: with only ${total} trials, ${listed} is ordinary variation.`;
+  const correct = want === "yes" ? yesKey : want === "no" ? noKey : fewKey;
+  const notExact = "No, because the counts are not exactly equal.";
+  const mustEqual = `Yes, because there are ${device.k} outcomes, so each must have probability 1/${device.k}.`;
+  const addsUp = `Yes, because the counts add up to ${total}.`;
+  const tooSmall = `Cannot tell: with only ${total} trials, the difference is ordinary variation.`;
+  const wrongs =
+    want === "yes"
+      ? [
+          {
+            label: notExact,
+            feedback: "Equally likely outcomes are not expected to match exactly.",
+          },
+          {
+            label: tooSmall,
+            feedback: `${total} trials is enough to judge a gap this small.`,
+          },
+          {
+            label: addsUp,
+            feedback: "Counts of one experiment always add to the number of trials.",
+          },
+        ]
+      : want === "no"
+        ? [
+            {
+              label: mustEqual,
+              feedback: "Two or more names do not force the outcomes to be equally likely.",
+            },
+            {
+              label: addsUp,
+              feedback: "Counts of one experiment always add to the number of trials.",
+            },
+            {
+              label: tooSmall,
+              feedback: `${total} trials is a large run, and this gap is not ordinary.`,
+            },
+          ]
+        : [
+            {
+              label: notExact,
+              feedback: "Unequal counts in a short run do not settle the question.",
+            },
+            {
+              label: mustEqual,
+              feedback: "Names alone do not show that the outcomes are equally likely.",
+            },
+            {
+              label: addsUp,
+              feedback: "Counts of one experiment always add to the number of trials.",
+            },
+          ];
+  const prompt = `${device.lead(total)} Counts: ${device.names.map((name, i) => `${name}=${counts[i]}`).join("; ")}. Based on these results, do the outcomes appear to be equally likely?`;
+  const hint = `There were ${total} trials, and ${topName} came up ${topCount} times. Compare each count with ${mean} before you judge.`;
+  const gap = Math.abs(topCount - mean);
+  const explanation = [
+    `Equally likely outcomes come up about ${mean} times each in ${total} trials.`,
+    topCount >= mean
+      ? `${topCount} − ${mean} = ${gap}.`
+      : `${mean} − ${topCount} = ${gap}.`,
+    want === "no"
+      ? `The gap of ${gap} is far beyond ordinary variation in ${total} trials.`
+      : want === "yes"
+        ? `The gap of ${gap} fits ordinary variation in ${total} trials.`
+        : `With only ${total} trials, a gap of ${gap} is ordinary variation.`,
+  ];
+  assertBrief([prompt, hint, correct, ...explanation, ...wrongs.map((w) => w.label)]);
+  return {
+    variant: "equally-likely-judgment",
+    prompt,
+    hint,
+    explanation,
+    choices: choicesFrom(correct, wrongs),
+  };
+}
+
+
 const EXPERIMENTS = [
   {
     setup: (t: number, s: number) =>
@@ -3357,7 +3940,14 @@ const EXPERIMENTS = [
     per: "drops",
   },
 ];
-function experimentalProbabilityPredict(r: Random): Built {
+function experimentalProbabilityPredict(
+  r: Random,
+  task: ExperimentTask = "reported-experiment",
+): Built {
+  if (task === "run-and-record") return runAndRecord(r);
+  if (task === "discrepancy-source") return discrepancySource(r);
+  if (task === "model-from-data") return modelFromData(r);
+  if (task === "equally-likely-judgment") return equallyLikelyJudgment(r);
   const variant = pick(r, [
     "experimental-probability",
     "predict-count",
@@ -3757,24 +4347,47 @@ export function texas38Case(templateId: string, seed: string) {
     templateId === "times-as-many-comparison"
       ? chooseAxes(templateId, seed, timesStoryAxis).story19
       : "classic";
+  const experimentTask =
+    templateId === "experimental-probability-predict"
+      ? chooseAxes(templateId, seed, experimentTaskAxis).task
+      : "reported-experiment";
   for (let attempt = 0; attempt < 120; attempt++) {
     let draft: Built;
     try {
       draft =
         templateId === "times-as-many-comparison"
           ? timesAsManyComparison(r, telling)
-          : templateId === "scaling-direction-choice"
-            ? scalingDirectionChoice(r, seed)
-            : templateId === "reciprocal-division-choice"
-              ? reciprocalDivisionChoice(r, seed)
-              : build(r);
+          : templateId === "experimental-probability-predict"
+            ? experimentalProbabilityPredict(r, experimentTask)
+            : templateId === "scaling-direction-choice"
+              ? scalingDirectionChoice(r, seed)
+              : templateId === "reciprocal-division-choice"
+                ? reciprocalDivisionChoice(r, seed)
+                : templateId === "division-area-model"
+                  ? divisionAreaModel(r, seed)
+                  : build(r);
     } catch (error) {
       if (error instanceof Error && error.message.startsWith("Need three"))
         continue;
       throw error;
     }
     if (leaks(draft)) continue;
-    const problem = toProblem(meta, seed, r, draft);
+    let problem = toProblem(meta, seed, r, draft);
+    if (templateId === "experimental-probability-predict") {
+      const gated = versionGatedAxes().some((axis) => axis.id === "task");
+      problem = {
+        ...problem,
+        public: { ...problem.public, templateVersion: gated ? 1 : 2 },
+        ...(experimentTask === "reported-experiment"
+          ? {}
+          : {
+              variant: {
+                id: experimentTask,
+                axes: { task: experimentTask },
+              },
+            }),
+      };
+    }
     return {
       variant: draft.variant,
       problem:

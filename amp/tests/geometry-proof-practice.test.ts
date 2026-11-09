@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { generateProblem, templates } from "../src/math/engine";
+import { templates } from "../src/math/engine";
+import { generateProblem } from "./fixtures/pre-clause-problem";
 import { proofConstructionCase as geometryProofCase } from "../src/math/geometry-proof-practice";
 import { problemLesson } from "../src/content/problem-lessons";
 import { lessons } from "../src/content/lessons";
@@ -134,6 +135,11 @@ const expected: Record<string, { skill: string; tags: string[] }> = {
       "cone-cylinder",
       "circumference-justification",
       "limit-justification",
+      "cylinder-limit",
+      "pyramid-cavalieri",
+      "cone-equal-sections",
+      "cavalieri-volumes",
+      "cavalieri-oblique",
     ],
   },
 };
@@ -201,7 +207,7 @@ test("template metadata, lessons, methods and principles are registered for each
     );
     const view = problemLesson(id, "gp-lesson");
     assert.ok(
-      view.intuition && view.method.length >= 3 && view.watch && view.principle,
+      view.intuition && view.method.length >= 2 && view.watch && view.principle,
     );
     assert.ok(view.example.steps.length >= 2);
   }

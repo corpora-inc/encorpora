@@ -395,6 +395,10 @@ def statement_truth(text, op, c):
 def solve_solution_set(public):
     prompt = public['prompt']
     options = choice_options(public, 4)
+    strict = re.fullmatch(r'Which statement about the solutions of x ([<>]) (−?\d+(?:\.\d+)?) is true\?', prompt)
+    if strict:
+        good = [o['id'] for o in options if 'is not' in o['label'] and 'infinitely many' in o['label']]
+        return only(good, 'Exactly one strict statement')
     m = re.fullmatch(r'Which statement about the solutions of x ([<>≤≥]) (\d+) is true\?', prompt)
     if m:
         op, c = m[1], number(m[2])

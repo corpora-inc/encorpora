@@ -1,4 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
+import { assertProgressPolish } from "./app-shell-review";
 import { choose, chooseLearner, navigateApp } from "./ui-controls";
 import { resume } from "./ui-practice";
 import assert from "node:assert/strict";
@@ -175,6 +176,15 @@ try {
         .boundingBox();
       assert.ok(target && target.height >= 44, `${name} needs a 44px target`);
     }
+    for (const scheme of (
+      size.width === 320 || size.width === 1280
+        ? ["light", "dark"]
+        : ["light"]
+    ) as ("light" | "dark")[]) {
+      await page.emulateMedia({ colorScheme: scheme });
+      await assertProgressPolish(page, `progress ${size.width} ${scheme}`);
+    }
+    await page.emulateMedia({ colorScheme: "light" });
     await choose(page.getByRole("button", { name: "Math area" }), "number");
     await page.locator('[data-progress-skill="count-to-20"]').click();
     await page.locator(".progress-detail-content").waitFor();

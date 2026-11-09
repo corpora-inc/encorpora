@@ -4,7 +4,7 @@ import {
   functionDisplaySchema,
   generatedProblemSchema,
 } from "../src/math/contracts";
-import { generateProblem } from "../src/math/engine";
+import { generateProblem } from "./fixtures/pre-clause-problem";
 import { patternFunctionTemplates } from "../src/math/pattern-function-practice";
 import { templateRole } from "../src/learning/placement";
 
@@ -46,6 +46,106 @@ test("the placement item stays short enough to read at a glance", () => {
       generateProblem("dependent-variable-value", `opener-${i}`).public.prompt
         .length <= 160,
     );
+});
+
+test("proportional pairs compare two different representations, including distance-time", () => {
+  let speedGraph = 0;
+  let equal = 0;
+  let checked = 0;
+  for (let i = 0; checked < 500; i++) {
+    const problem = generateProblem("compare-function-rates", `prop-${i}`);
+    if (problem.variant?.id !== "proportional-other" && problem.variant?.id !== "speed-graph-equation")
+      continue;
+    checked++;
+    const response = problem.public.response;
+    if (response.kind !== "choice") throw new Error("choice");
+    const key = response.options.find((o) => o.id === problem.answer)!.label;
+    const figure = problem.public.figure;
+    if (figure?.kind !== "function-display") throw new Error("figure");
+    const rates = new Map<string, number>();
+    if (figure.graph) {
+      assert.ok(figure.graph.xStep >= 2);
+      for (const series of figure.graph.series) {
+        assert.equal(series.line?.b, 0);
+        const marked = series.points.filter((p) => p.x >= 2);
+        assert.ok(marked.length >= 1);
+        rates.set(series.label!, series.line!.rise / series.line!.run);
+      }
+    }
+    if (figure.table) {
+      assert.deepEqual(figure.table.rows.map((row) => row.x), [2, 5, 8]);
+      const slope = figure.table.rows[0]!.y / figure.table.rows[0]!.x;
+      for (const row of figure.table.rows)
+        assert.equal(row.y / row.x, slope);
+      rates.set(figure.table.title!, slope);
+    }
+    for (const match of problem.public.prompt.matchAll(
+      /([A-Z][a-z]+ [AB]) is given by \$[a-z] = (\d+)[a-z]\$/g,
+    ))
+      rates.set(match[1]!, Number(match[2]));
+    for (const match of problem.public.prompt.matchAll(
+      /([A-Z][a-z]+ [AB]) (?:travels|charges|adds) (\d+) \w+ (?:in|for) (\d+)/g,
+    ))
+      rates.set(match[1]!, Number(match[2]) / Number(match[3]));
+    const a = [...rates.entries()].find(([name]) => name.endsWith(" A"))![1];
+    const b = [...rates.entries()].find(([name]) => name.endsWith(" B"))![1];
+    const sources = problem.public.prompt.split(". ").slice(0, 2);
+    assert.notEqual(sources[0], sources[1]);
+    if (problem.variant?.id === "speed-graph-equation") {
+      speedGraph++;
+      assert.match(problem.public.prompt, /Car A is shown on the graph/);
+      assert.match(problem.public.prompt, /Car B is given by/);
+    }
+    const diff = Math.abs(a - b);
+    if (a === b) {
+      equal++;
+      assert.match(key, /same/);
+      for (const option of response.options)
+        if (option.id !== problem.answer)
+          assert.match(option.label, /by [1-9]/);
+    } else {
+      const winner = a > b ? "A" : "B";
+      assert.match(key, new RegExp(`${winner}, by ${diff} `));
+      const oneTime = response.options.find(
+        (o) => o.id !== problem.answer && o.label.includes(`, by ${diff * 2}`),
+      );
+      if (oneTime) assert.notEqual(diff * 2, diff);
+    }
+    assert.ok(i < 4000, "not enough proportional items");
+  }
+  assert.ok(speedGraph > 50);
+  assert.ok(equal > 10);
+});
+
+test("nonlinear-by-points uses the square points and unequal changes", () => {
+  let squares = 0;
+  for (let i = 0; i < 400; i++) {
+    const problem = generateProblem("linear-function-choice", `nl-${i}`);
+    if (!problem.variant) continue;
+    const response = problem.public.response;
+    if (response.kind !== "choice") throw new Error("choice");
+    const key = response.options.find((o) => o.id === problem.answer)!.label;
+    const shown = [...problem.public.prompt.matchAll(/\((\d+), (\d+)\)/g)].map(
+      (m) => [Number(m[1]), Number(m[2])] as const,
+    );
+    assert.equal(shown.length, 3);
+    const [p, q, u] = shown;
+    const d1 = (q![1] - p![1]) / (q![0] - p![0]);
+    const d2 = (u![1] - q![1]) / (u![0] - q![0]);
+    assert.notEqual(d1, d2);
+    assert.ok(key.includes(`(${p![0]}, ${p![1]})`));
+    assert.ok(key.includes(`(${u![0]}, ${u![1]})`));
+    const hasConstant = /s\^2 \+ /.test(problem.public.prompt);
+    const noConstant = response.options.some((o) =>
+      o.label.includes("no constant term"),
+    );
+    assert.equal(noConstant, !hasConstant);
+    if (problem.variant.id === "square-area") {
+      squares++;
+      assert.deepEqual(shown, [[1, 1], [2, 4], [3, 9]]);
+    }
+  }
+  assert.ok(squares > 40);
 });
 
 test("function displays reject points off the grid or off their stated line", () => {

@@ -13,8 +13,13 @@ import {
 import { normalizeSelection } from "./selection-response";
 import { withTemplateGlossary } from "./template-glossary";
 import { historicalTrueEquationChoice } from "./operation-sentence-practice";
+import {
+  clauseProblem as extendedClauseProblem,
+  withClauseMetadata,
+} from "./clause-extensions";
 import { historicalEqualFactorFamily } from "./multiselect-number-practice";
 import { sceneCapabilitiesIn } from "./scene/capability";
+import { buildCountObjects } from "./count-objects-variants";
 import {
   versionGatedAxes,
   withClientFigures,
@@ -439,11 +444,13 @@ export type {
 export const baseTemplates: readonly TemplateMetadata[] = [
   {
     id: "count-objects",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Count objects",
     skillId: "count-to-20",
     gradeBand: "K–2",
-    description: "Count up to ten objects.",
+    description:
+      "Count up to twenty objects in a line, array, ten-frame, or as one more or one less, and spot a miscount.",
   },
   {
     id: "add-within-20",
@@ -654,6 +661,7 @@ export const templates: readonly TemplateMetadata[] = [
   // (docs/content-family-playbook.md) and append here in family-id order.
   ...familyRegistry.templates,
 ]
+  .map(withClauseMetadata)
   .map(clauseMetadata)
   .map(withTemplateGlossary);
 
@@ -940,6 +948,7 @@ export function generateProblemFor(
 }
 /** Apply the legacy count copy-edit without changing authored algebra notation. */
 export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
+  if (problem.variant?.axes?.clause) return problem;
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
@@ -1042,9 +1051,11 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
-  const clauseMeta = templateById.get(templateId);
-  if (clauseMeta) {
-    const clause = generateClauseVariant(clauseMeta, seed);
+  const metadata = templateById.get(templateId);
+  if (metadata) {
+    const clause =
+      extendedClauseProblem(metadata, seed) ??
+      generateClauseVariant(metadata, seed);
     if (clause) return clause;
   }
   if (templateId === "true-equation-choice")
@@ -1301,19 +1312,13 @@ function generateRawProblem(
   let variant: ProblemVariant | undefined;
   switch (templateId) {
     case "count-objects": {
-      const n = r(1, 10);
-      figure = { kind: "collection", count: n };
-      prompt = "How many dots are shown?";
-      answer = `${n}`;
-      hint =
-        n > 5
-          ? "The top row has 5 dots. Count them, then keep counting along the bottom row without starting again."
-          : "Start at the left dot and say one number for each dot as you touch it.";
-      explanation = [
-        "Touch each dot once and say one number for it, so no dot is missed or counted twice.",
-        `Count: ${Array.from({ length: n }, (_, i) => i + 1).join(", ")}.`,
-        `The last number you say tells how many, so there are ${n} dots.`,
-      ];
+      const built = buildCountObjects(templateId, seed, r);
+      prompt = built.prompt;
+      answer = built.answer;
+      hint = built.hint;
+      explanation = built.explanation;
+      figure = built.figure;
+      variant = built.variant;
       break;
     }
     case "add-within-20": {
@@ -1581,13 +1586,26 @@ function generateRawProblem(
     default:
       throw new Error("Template has no generator");
   }
+  const countVersion =
+    templateId === "count-objects" &&
+    !versionGatedAxes().some((axis) => axis.id === "family")
+      ? 2
+      : 1;
   const id = createHash("sha256")
-    .update(JSON.stringify([templateId, meta.reprintsFrom ?? meta.version, seed]))
+    .update(
+      JSON.stringify([
+        templateId,
+        templateId === "count-objects"
+          ? countVersion
+          : (meta.reprintsFrom ?? meta.version),
+        seed,
+      ]),
+    )
     .digest("hex");
   const publicProblem: PublicProblem = {
     id,
     templateId,
-    templateVersion: 1,
+    templateVersion: templateId === "count-objects" ? countVersion : 1,
     seed,
     prompt,
     skillId: meta.skillId,

@@ -23,7 +23,7 @@ const failures: Record<string, string> = {
   too_many_approvals:
     "That’s as many links as one day allows. Try again tomorrow.",
   approval_not_found: "That link isn’t here now. Refresh and try again.",
-  invalid_family_request: "Check the name and the email address.",
+  invalid_family_request: "Check the email address.",
 };
 const why = (failure: unknown, fallback: string) =>
   (failure instanceof AppError && failure.code && failures[failure.code]) ||
@@ -91,8 +91,8 @@ export function OtherFamilies({ session }: { session: AuthSession }) {
         >
           <div className={school.sheetForm}>
             <p className={styles.sheetText}>
-              {access.name}’s parent adds access on their page for{" "}
-              {access.name}, where they approved. Send them the link to it.
+              {access.name}’s parent adds access on their page for {access.name}
+              , where they approved. Send them the link to it.
             </p>
             {access.parentPageUrl && (
               <CopyButton
@@ -130,9 +130,7 @@ function Row({
         const result = await approvals.resend(session, row.id);
         setSent(result.mailed);
         if (!result.mailed)
-          onError(
-            "The email didn’t send. Copy the link and send it yourself.",
-          );
+          onError("The email didn’t send. Copy the link and send it yourself.");
       } else await approvals.remove(session, row.id);
     } catch (failure) {
       console.error(`The ${kind} didn’t go through`, failure);
@@ -225,9 +223,8 @@ function AddSheet({
   rows: ApprovalRowResource[];
   onClose: () => void;
 }) {
-  const [childName, setChildName] = useState("");
   const [parentEmail, setParentEmail] = useState("");
-  const [errors, setErrors] = useState<{ name?: string; email?: string }>({});
+  const [errors, setErrors] = useState<{ email?: string }>({});
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [done, setDone] = useState<{ id: string; mailed: boolean } | null>(
@@ -237,18 +234,16 @@ function AddSheet({
   const link = done ? rows.find((row) => row.id === done.id)?.inviteUrl : null;
   const send = async () => {
     const next = {
-      ...(childName.trim() ? {} : { name: "Enter the child’s first name." }),
       ...(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(parentEmail.trim())
         ? {}
         : { email: "Enter their parent’s email address." }),
     };
     setErrors(next);
-    if (next.name || next.email) return;
+    if (next.email) return;
     setBusy(true);
     setError("");
     try {
       const result = await approvals.send(session, {
-        childName: childName.trim(),
         parentEmail: parentEmail.trim(),
       });
       setDone({ id: result.id!, mailed: result.mailed });
@@ -271,7 +266,7 @@ function AddSheet({
         <div className={school.sheetForm}>
           <p className={styles.sheetText}>
             {done.mailed
-              ? `We sent ${parentEmail.trim()} a link. ${childName.trim()} joins your class once their parent approves.`
+              ? `We sent ${parentEmail.trim()} a link. Their child joins your class once they approve.`
               : `The email didn’t send. Copy the link and send it to ${parentEmail.trim()} yourself.`}
           </p>
           {link && (
@@ -297,17 +292,6 @@ function AddSheet({
             Their parent gets a link to approve. The child can sign in and
             practice once they do.
           </p>
-          <TextField
-            label="Child’s first name"
-            autoComplete="off"
-            value={childName}
-            maxLength={60}
-            error={errors.name}
-            onChange={(event) => {
-              setChildName(event.target.value);
-              setErrors((prior) => ({ ...prior, name: undefined }));
-            }}
-          />
           <TextField
             label="Their parent’s email"
             type="email"

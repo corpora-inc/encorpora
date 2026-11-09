@@ -1,36 +1,43 @@
 import { Link } from "@tanstack/react-router";
 import { buttonClass } from "../../ui/Button";
 import { workbooksEnabled } from "./config";
-import { localDate } from "./model";
+import {
+  canReadWorkbooks,
+  canMakeWorkbook,
+  localDate,
+  type WorkbookAccess,
+} from "./model";
 import styles from "./WorkbookEntry.module.css";
 
 /** Family → learner: today's workbook and past ones. Offered only when the
- * learner can practice, which is what the workbook routes require. */
+ * learner has learning permission; printing uses its own allowance. */
 export function WorkbookEntry({
   learner,
   enabled = workbooksEnabled,
 }: {
-  learner: { id: string; name: string; canPractice?: boolean };
+  learner: { id: string; name: string } & WorkbookAccess;
   enabled?: boolean;
 }) {
-  if (!enabled || !learner.canPractice) return null;
+  if (!enabled || !canReadWorkbooks(learner)) return null;
   return (
     <section className={styles.entry} aria-labelledby={`wb-${learner.id}`}>
       <div>
         <h4 id={`wb-${learner.id}`}>Workbooks</h4>
         <p>
           Printable practice chosen from {learner.name}'s progress, with an
-          answer key. Print as many as you like.
+          answer key.
         </p>
       </div>
       <div className={styles.links}>
-        <Link
-          to="/learners/$learnerId/workbooks/$date"
-          params={{ learnerId: learner.id, date: localDate() }}
-          className={buttonClass("primary")}
-        >
-          Make a workbook
-        </Link>
+        {canMakeWorkbook(learner) && (
+          <Link
+            to="/learners/$learnerId/workbooks/$date"
+            params={{ learnerId: learner.id, date: localDate() }}
+            className={buttonClass("primary")}
+          >
+            Make a workbook
+          </Link>
+        )}
         <Link
           to="/learners/$learnerId/workbooks"
           params={{ learnerId: learner.id }}

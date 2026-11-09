@@ -281,7 +281,9 @@ export interface ClientCapabilities {
 export const clientCanDraw = (
   template: Pick<
     TemplateMetadata,
-    "requiredFigureCapability" | "requiredResponseCapability"
+    | "requiredFigureCapability"
+    | "requiredResponseCapability"
+    | "requiredResponseCapabilities"
   >,
   client: ClientCapabilities,
 ): boolean =>
@@ -289,9 +291,14 @@ export const clientCanDraw = (
     client.responseCapabilities.includes(
       template.requiredResponseCapability,
     )) &&
+  (template.requiredResponseCapabilities ?? []).every((capability) =>
+    client.responseCapabilities.includes(capability),
+  ) &&
   (!template.requiredFigureCapability ||
     client.figureCapabilities.includes(template.requiredFigureCapability));
 export interface TemplateMetadata {
+  /** Every response protocol used by a type with mixed variant formats. */
+  requiredResponseCapabilities?: readonly ResponseCapability[];
   /** Editorial local step on the curriculum-grade scale, not empirical calibration. */
   difficultyOffset?: number;
   requiredFigureCapability?: FigureCapability;
@@ -979,7 +986,7 @@ export const publicProblemSchema: z.ZodType<PublicProblem> = z
   .object({
     id: z.string().regex(/^[a-f0-9]{64}$/),
     templateId: z.string().min(1).max(100),
-    templateVersion: z.literal(1),
+    templateVersion: z.number().int().min(1).max(20),
     seed: z.string().min(1).max(128),
     prompt: z.string().min(1).max(4000),
     skillId: z.string().min(1).max(100),

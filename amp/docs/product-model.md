@@ -1,6 +1,6 @@
 # AMP product model: people, places, sign-in and screens
 
-The current shape of AMP as of 2026-11-08, for anyone changing its screens. It sums up the decisions behind the people, places and licenses, what each person sees, and what isn't built yet. For the details, see the [schools design](schools.md), [families, classes and adult learners](families.md), [Stripe](stripe.md), and [the web architecture](architecture/web-app.md).
+The current shape of AMP as of 2026-11-09, for anyone changing its screens. It sums up the decisions behind the people, places and licenses, what each person sees, and what isn't built yet. For the details, see the [schools design](schools.md), [families, classes and adult learners](families.md), [Stripe](stripe.md), and [the web architecture](architecture/web-app.md).
 
 The practice loop (one problem at a time, adaptive across strands) is the product, and none of this changes it. Everything below decides who practices, who watches, and who pays.
 
@@ -16,9 +16,9 @@ The practice loop (one problem at a time, adaptive across strands) is the produc
 | Who                           | Signs in with                                                                                                                              | Practices as                                  |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------- |
 | Parent, teacher, tutor, admin | An account: email and password, passkey, Google, Microsoft or Apple                                                                        | Their own **adult learner**, if they have one |
-| Child                         | A class: class code → their name → 3 of 16 pictures; or a printed card's QR; or Google or Microsoft through the school (see Not built yet) | Their one learner                             |
+| Child                         | A class: class code → their picture label or name → 3 of 16 pictures; or a printed card's QR; or Google or Microsoft through the school (see Not built yet) | Their one learner                             |
 
-- **Adults hold several places at once.** A person can be a parent, a teacher at a school, the head of a district and their own learner. The **place switcher**, one shared menu in the family drawer, the school rail and setup, moves between them. `/` opens where the person last worked. With nothing remembered, it opens the family side if they have learners or a trial, and the school if they are staff only. A school setup in progress never takes over `/`.
+- **Adults hold several places at once.** A person can be a parent, a teacher at a school, the head of a district and their own learner. The **place switcher**, one shared menu in the app drawer and setup, moves between them. `/` opens where the person last worked. With nothing remembered, it opens the family side if they have learners or a trial, and the school if they are staff only. A school setup in progress never takes over `/`.
 - **A child's session is bound to their one learner.** On a shared device (the default) it lives in session storage and signs out after 30 idle minutes. On a personal device it lasts until the teacher revokes it. Parent-only routes refuse a child's session even when a parent cookie is present. A child's session never reaches a sibling's learner.
 - **"Let Maya practice here".** From the family class, a parent hands their own device to a child: it starts that child's session, and the parent's view returns when the child signs out.
 - **Adult learners** are marked adult, have no birth year and need no parental consent. The adult chooses where to start (Counting through Precalculus) and always sees their levels. In their class, a teacher's adult learner appears on the map and standings as a separate "Teacher" line. It sits in place by value with no rank number, is never counted in grades, seats, rosters, exports or Today, and the teacher can hide it per class.
@@ -27,7 +27,7 @@ The practice loop (one problem at a time, adaptive across strands) is the produc
 
 - **Org tree:** `amp_orgs` with `kind` family, school, network or district. Every child learns in a class, and every class belongs to an org.
 - **A family** is the smallest org: one class, whose parent is its admin and teacher. The class can mix grades: with no course band, each child works at their own level. A child's learner stays owned by the parent's account, so purchases, consent and family settings stay where they were. Every family that existed was converted to this model on 2026-11-08.
-- **A child from another family** joins a family class only after their own parent approves through an emailed link. That parent owns the child's learner and gives verified consent, and either they or the teacher pays. The teacher sees the child's work in the class and nothing of the other family's account.
+- **A child from another family** can begin as an unnamed learner in a tutor’s class. An emailed parent approval names and transfers that same learner to the parent after verified consent, preserving answers, class membership and the free balance. A new invitation collects only the parent’s email address; the parent supplies the child’s name after consent. The teacher sees the child’s work in the class and nothing of the other family’s account.
 - **A school** exists only once AMP issues it a license, after a contract and an invoice or PO. An operator runs `create-school`, which emails the admin a setup link, and the admin lands in guided setup. A school with "Just my class" collapses around that one class. Any admin can teach a class.
 - **A district** is the same screens rolled up, with policy it can set and lock.
 - **An adult on their own,** for example an 18-year-old preparing for the SAT, buys a license for themselves. Their home is their own progress record, and adding a child later makes them a family.
@@ -39,7 +39,9 @@ The practice loop (one problem at a time, adaptive across strands) is the produc
 - **Existing subscriptions** keep the price they bought.
 - **Funded programs** (education savings accounts and similar) sell at the price each program's listing allows.
 - **Schools:** seats by license, issued by an operator. A school's students practice while it holds a seat. There is no self-serve school purchase yet; a self-serve seat pack is a possible second way later.
-- **Access:** one rule for every learner: an active grant.
+- **Free allowance:** every learner, including an adult, has 100 online answers or skips and five separate workbooks. All five workbooks are available immediately. Recording printed results spends neither allowance. Paid activity preserves the unused free balance.
+- **Access:** after checking ownership and learning permission, `canPractice = hasAccess || freeRemaining > 0`. An active grant also covers new workbooks; otherwise the separate workbook allowance applies. Issued workbooks and result entry stay available after either allowance is exhausted.
+- **Unnamed children:** picture identity and birth year establish a learner without collecting a name. Naming requires verified parental consent or an active school data agreement. Consent withdrawal or an ended school agreement stops further learning; a grant does not replace consent.
 
 Media, videos and ads carry no price; they lead to the Buy button.
 
@@ -58,9 +60,9 @@ Media, videos and ads carry no price; they lead to the Buy button.
 - **Parent:**
   - The family class: Today lists the parent's children, each with access dates and "Let … practice here", plus a "From other families" list.
   - "Invite a co-teacher" (for example the other parent), with a copyable link. A co-teacher teaches the class but doesn't invite other families or buy access.
-  - The full class screens, as for any teacher (below).
+  - The full class screens, as for any teacher (below), plus Calendar in the class tab row and Family in the drawer for learners, purchases, consent and privacy.
   - `/family/…`: settings, consent and billing.
-  - `/learners/$id/workbooks`.
+  - `/learners/$id/workbooks`: the learner’s workbook history, creation and results on the shared shell, without Progress tabs. The URL identifies the learner independently of the selection in Progress.
   - `/family/approvals/$id`: a parent approving another family's class.
 - **Adult practice:**
   - `/me/start`: choose where to begin.
@@ -71,9 +73,9 @@ Media, videos and ads carry no price; they lead to the Buy button.
   - `/c/…`: a printed card.
   - `/practice`.
   - `/standings`: only when their class turns standings on.
-- **Teacher:** `/school/$org/classes/$class/` with tabs `today`, `map`, `gradebook`, `time`, `workbooks`, `roster`, `experience`, `start` (the projected Start class board with the code and QR), `cards` and `report-cards`; plus `/school/$org/students/$student`.
+- **Teacher:** `/school/$org/classes/$class/` has Today, Map, Grades (`gradebook`), Time, Workbooks, Students (`roster`) and Settings tabs in the shared app bar. Today’s **Start class** action opens the code and QR board (`start`). Grades opens `report-cards`; Students opens sign-in `cards` and student-experience settings (`experience`). Student records use `/school/$org/students/$student`. Past classes keep Grades and Time.
 - **Admin and district:**
-  - `/school/$org`: the overview.
+  - `/school/$org`: the overview. The shared bar has Overview, Classes, Staff, Calendar, License, Privacy and Activity tabs, filtered by the person’s access. Districts and networks also have a Schools tab. A one-class solo school omits Overview, Staff and Activity. Classes opens students, imports and student-experience settings; Staff opens sign-in help and integrations; Calendar opens year rollover.
   - `staff`, `calendar`, `experience`, `import`, `integrations`, `license`, `privacy`, `activity`, and `schools` for districts.
   - `/school/new?org=…`: guided setup, reached only from a setup invitation; without one it goes to `/schools`.
 
@@ -93,6 +95,5 @@ Screenshots of most of these, at 390 and 1280 px in light and dark, are under `d
 - **Google sign-in for students:** the Google console's redirect addresses are still to be added. Microsoft student sign-in is configured.
 - **Teacher-paid access for another family's child:** this needs that child's parent to give verified consent without buying. Today a purchase is the verified method.
 - **Moving a child who already has their own account into a parent's family class.**
-- **Approval duplicates learners:** a family approval always creates a new learner, so a child already in a class gets a second one.
 - **Self-serve seat packs** for co-ops and tutors.
 - **Clever, ClassLink, SAML and gradebook passback** to student information systems.

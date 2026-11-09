@@ -1,9 +1,13 @@
-.card {
+.page {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  /* The frame keeps one size from first paint through every state. */
-  min-height: min(720px, calc(100dvh - 160px));
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--width-content-wide);
+  margin-inline: auto;
+  padding: var(--space-5) var(--space-4) var(--space-8);
+  min-height: calc(100dvh - var(--shell-bar, 56px));
 }
 .head {
   display: flex;
@@ -141,6 +145,18 @@
 .today {
   align-self: stretch;
   text-align: center;
+}
+/* The five free workbooks are used: one calm line, then the step that
+   succeeds. Not an error, so it keeps the page's own text colour. */
+.used {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3);
+}
+.used p {
+  margin: 0;
+  max-width: 60ch;
+  color: var(--color-on-surface);
 }
 /* History rows: a reserved line for a load or download error. */
 .message {
@@ -447,7 +463,10 @@
   color: var(--color-on-warning);
 }
 .rowError {
-  min-height: 1.4em;
+  display: flex;
+  align-items: flex-start;
+  min-height: calc(1.4em + 2 * var(--space-1));
+  line-height: 1.4;
   margin: 0;
   color: var(--color-danger-accent);
   font-size: var(--text-small);
