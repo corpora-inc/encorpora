@@ -78,7 +78,7 @@ test("inequality solutions, model parts and circle estimates follow the givens",
     assert.ok(Math.abs(num(chosen.pct!) - Math.abs(b - 1) * 100) < 1e-9);
   }
   for (const seed of seeds("circ")) {
-    const { prompt, chosen } = view("circle-estimate-blanks", seed);
+    const { prompt, chosen } = view("circle-estimate-blanks", seed, 1);
     if ("radius" in chosen) {
       const d = Number(prompt.match(/is (\d+) feet across/)![1]);
       assert.equal(num(chosen.radius!), d / 2);

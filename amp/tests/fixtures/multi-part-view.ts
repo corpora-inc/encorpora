@@ -4,8 +4,8 @@ import type { MultiPartChoiceResponse } from "../../src/math/multi-part-choice";
 /** What a learner sees and what the key picks, read only from the public
  * problem and its answer: each blank's keyed label, the sentence with
  * `[id]` where a blank sits, and the figure's table rows. */
-export function view(id: string, seed: string) {
-  const problem = generateProblem(id, seed);
+export function view(id: string, seed: string, version?: number) {
+  const problem = generateProblem(id, seed, version);
   const response = problem.public.response as MultiPartChoiceResponse;
   const key = JSON.parse(problem.answer) as Record<string, string>;
   const chosen = Object.fromEntries(

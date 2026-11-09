@@ -1,4 +1,6 @@
 import { generateProblemFor, gradeAnswer, templates } from "../math/engine";
+import { clauseProblem } from "../math/clause-extensions";
+import { clauseMethods } from "./clause-methods";
 import {
   historicalTemplates,
   templateReplacements,
@@ -167,7 +169,8 @@ export function problemLesson(
   const activeClause = learnerProblem?.variant?.axes?.clause;
   const generateProblem = (id: string, exampleSeed: string) =>
     (activeClause && activeClause !== "legacy"
-      ? generateClauseVariant(template, exampleSeed, activeClause)
+      ? clauseProblem(template, exampleSeed, activeClause) ??
+        generateClauseVariant(template, exampleSeed, activeClause)
       : null) ??
     generateProblemFor(
       id,
@@ -282,7 +285,11 @@ export function problemLesson(
         ? example.answer
         : displayAnswer(example.answer);
   const lessonTemplateId = templateReplacements[templateId] ?? templateId;
+  const clauseMethod = example.variant?.axes?.clause
+    ? clauseMethods[example.variant.axes.clause]
+    : undefined;
   const authored =
+    clauseMethod ??
     clauseVariantMethods[example.variant?.axes?.clause ?? ""] ??
     methods[lessonTemplateId];
   const givens = realNumberGivens(templateId, example.public.seed);
@@ -306,7 +313,8 @@ export function problemLesson(
     reference?.summary ??
     authored?.goal ??
     template.description;
-  const principle = principles[lessonTemplateId] ?? null;
+  const principle =
+    clauseMethod?.intuition ?? principles[lessonTemplateId] ?? null;
   const methodTerms = authored?.terms ?? [];
   // A hint names its own instance's numbers, so it is never a general method.
   const method = authored?.method ?? [template.description];
