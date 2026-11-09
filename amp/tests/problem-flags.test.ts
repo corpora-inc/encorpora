@@ -16,6 +16,10 @@ test("a note is offered only to a consented learner certainly 13 or older", () =
   assert.equal(noteAllowed({ trial: false, birthYear: 2016 }, now), false);
   assert.equal(noteAllowed({ trial: false, birthYear: null }, now), false);
   assert.equal(noteAllowed({ trial: true, birthYear: 1990 }, now), false);
+  assert.equal(
+    noteAllowed({ trial: false, namePending: true, birthYear: 2010 }, now),
+    false,
+  );
 });
 
 test("report labels are short and cover every reason", () => {

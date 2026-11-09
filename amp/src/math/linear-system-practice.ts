@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
+import { clauseTask, linesThroughPoints } from "./equation-clause";
 
 type Q = { n: number; d: number };
 type Point = [Q, Q];
@@ -321,10 +322,11 @@ export const linearSystemTemplates: readonly TemplateMetadata[] = [
   },
 ].map((t) => ({
   ...t,
-  version: 1,
+  version: t.id === "linear-system-solution-count" ? 2 : 1,
+  ...(t.id === "linear-system-solution-count" ? { reprintsFrom: 1 } : {}),
   skillId: "linear-systems",
   gradeBand: "6–8",
-  requiredResponseCapability: "single-choice-v1",
+  requiredResponseCapability: "single-choice-v1" as const,
 }));
 const countLabels = [
   "Exactly one ordered pair",
@@ -470,7 +472,26 @@ function generateCase(
 export const generateLinearSystemProblem = (
   templateId: string,
   seed: string,
-): GeneratedProblem => generateCase(templateId, seed).problem;
+): GeneratedProblem => {
+  if (
+    templateId === "linear-system-solution-count" &&
+    clauseTask(templateId, seed) === "lines-through-points"
+  ) {
+    const meta = linearSystemTemplates.find((t) => t.id === templateId)!;
+    let last = "";
+    for (let attempt = 0; attempt < 40; attempt++)
+      try {
+        return linesThroughPoints(
+          meta,
+          attempt ? `${seed}#${attempt}` : seed,
+        );
+      } catch (error) {
+        last = error instanceof Error ? error.message : "";
+      }
+    throw new Error(`${templateId}: ${last}`);
+  }
+  return generateCase(templateId, seed).problem;
+};
 /** Private worksheet selection metadata; never sent in the public problem. */
 export const linearSystemPrintCase = (templateId: string, seed: string) =>
   generateCase(templateId, seed);

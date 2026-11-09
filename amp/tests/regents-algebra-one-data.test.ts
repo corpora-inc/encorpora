@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { checkTemplate } from "./fixtures/regents-check";
-import { generateProblem } from "../src/math/engine";
+import { generateProblem } from "./fixtures/pre-clause-problem";
 
 type P = ReturnType<typeof generateProblem>;
 const options = (p: P) =>

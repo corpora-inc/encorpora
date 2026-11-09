@@ -10,6 +10,10 @@ import {
   updateStudentSchema,
 } from "./setup-contracts.js";
 import { ensureDivision } from "./setup.js";
+import {
+  lockLearningAccount,
+  namingConsentActive,
+} from "../server/account-access.js";
 
 /** The name a student's learner goes by across the app: a school's own display
  * name, else their roster name. */
@@ -37,6 +41,45 @@ export async function writeStudent(
     identifier?: string | null;
   },
 ) {
+  const learner = (
+    await client.query(
+      `SELECT l.id,l.account_id,l.name_pending FROM amp_people p
+     JOIN amp_learners l ON l.id=p.learner_id WHERE p.id=$1 AND p.deleted_at IS NULL`,
+      [personId],
+    )
+  ).rows[0];
+  if (learner) {
+    await lockLearningAccount(client, learner.account_id);
+    const locked = (
+      await client.query(
+        "SELECT name_pending FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL FOR UPDATE",
+        [learner.id, learner.account_id],
+      )
+    ).rows[0];
+    if (!locked) throw new SchoolError(409, "student_changed");
+    const naming = [
+      changes.givenName,
+      changes.familyName,
+      changes.displayName,
+      changes.email,
+      changes.identifier,
+    ].some((value) => value != null);
+    if (locked.name_pending && naming) {
+      if (
+        !(await namingConsentActive(
+          client,
+          learner.account_id,
+          false,
+          learner.id,
+        ))
+      )
+        throw new SchoolError(403, "consent_required");
+      await client.query(
+        "UPDATE amp_learners SET name_pending=false WHERE id=$1",
+        [learner.id],
+      );
+    }
+  }
   const person = (
     await client.query(
       `UPDATE amp_people SET
@@ -72,7 +115,7 @@ export async function writeStudent(
     ]);
     if (changes.gradeLevel !== undefined && changes.gradeLevel !== null)
       await client.query(
-        `UPDATE amp_learners l SET birth_year=$2 WHERE l.id=$1
+        `UPDATE amp_learners l SET birth_year=$2 WHERE l.id=$1 AND l.picture_identity IS NULL
          AND NOT EXISTS(SELECT 1 FROM amp_attempts a WHERE a.learner_id=l.id)`,
         [person.learner_id, birthYearForGrade(changes.gradeLevel)],
       );

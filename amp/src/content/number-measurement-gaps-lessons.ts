@@ -65,7 +65,7 @@ export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
     method: [
       "Find a line that splits the figure into rectangles that do not overlap. Use the dashed line if one is drawn.",
       "For each rectangle, multiply its height by its width. That counts its squares: rows times squares in a row.",
-      "Add the areas of the parts. If an expression is asked for, write one product, the answer to a times, for each part. Join them with $+$.",
+      "Add the areas of the parts. If an expression is asked for, write one product, the answer to a times, for each part. Join them with $+$. If the question asks for one number sentence for the whole rectangle, multiply every row by the squares in one row; the rows already drawn are not the whole rectangle.",
       "Check: if the whole figure is a rectangle, the parts must add up to its height times its whole width.",
     ],
     watch:

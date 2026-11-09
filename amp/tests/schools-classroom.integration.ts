@@ -816,9 +816,13 @@ test(
             ).students,
             2,
           );
-          // Someone waiting for a seat is told so, and nothing is made.
+          // An exhausted allowance needs paid access for another workbook.
           await db.query(
             "UPDATE amp_grants SET status='revoked' WHERE learner_id=$1",
+            [roster[8]!.learnerId],
+          );
+          await db.query(
+            "UPDATE amp_learners SET free_workbooks_used=5 WHERE id=$1",
             [roster[8]!.learnerId],
           );
           const waiting = await post(
@@ -826,8 +830,10 @@ test(
             teacher,
             { date, minutes: 30, paper: "letter", number: 1 },
           );
-          assert.equal(waiting.statusCode, 409);
-          assert.deepEqual(waiting.json(), { error: "needs_seat" });
+          assert.equal(waiting.statusCode, 402);
+          assert.deepEqual(waiting.json(), {
+            error: "free_workbooks_unavailable",
+          });
           assert.equal(
             (await get(`classes/${period.id}/workbooks`, teacher))
               .json()

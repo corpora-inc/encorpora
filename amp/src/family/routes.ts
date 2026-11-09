@@ -13,7 +13,7 @@ import type { Pool } from "pg";
 import { z } from "zod";
 import type { Authenticator } from "../server/auth.js";
 import {
-  approveInside,
+  approve,
   createApproval,
   listApprovals,
   lookupApproval,
@@ -94,7 +94,7 @@ export async function registerFamilyRoutes(
     // The adult's own practice: their record, starting it, and their time.
     scope.get("/api/v1/me/practice", async (request) => {
       const account = await options.authenticate(request);
-      const practice = await readOwnPractice(options.pool, account);
+      const practice = await readOwnPractice(repository, account);
       if (!practice) throw new FamilyError(404, "adult_practice_not_started");
       return practice;
     });
@@ -226,15 +226,12 @@ export async function registerFamilyRoutes(
         async (request) => {
           const account = await options.authenticate(request);
           const { approvalId } = approvalParams.parse(request.params);
-          return repository.transaction(account, (client) =>
-            approveInside(
-              client,
-              options.pool,
-              account,
-              approvalId,
-              request.body,
-              options.development,
-            ),
+          return approve(
+            options.pool,
+            account,
+            approvalId,
+            request.body,
+            options.development,
           );
         },
       );

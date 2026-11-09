@@ -622,6 +622,19 @@ def compass(public):
 
 def measurement(public):
     p = plain(public['prompt'])
+    if p.startswith('A right prism with a regular n-gon base is inscribed in a cylinder'):
+        return pick(public, lambda l: 'base area approaches' in l and 'every prism' in l)
+    if p.startswith('The cube cut into three congruent pyramids'):
+        return pick(public, lambda l: 'Cavalieri' in l)
+    if p.startswith('A cone of base area'):
+        return pick(public, lambda l: l == 'Equal cross-sections at every height give equal volumes.')
+    if p.startswith('Two solids stand on the same plane'):
+        require(any(o['label'] == 'The solids have equal surface areas.' for o in choices(public)), 'Surface-area distractor missing')
+        return pick(public, lambda l: l == 'The solids have equal volumes.')
+    oblique = re.fullmatch(r'An oblique cylinder has radius (\d+) and height (\d+)\. Every plane parallel to the base cuts a circle of area equal to the base of the right cylinder with that radius and height\. What is the volume of the oblique cylinder\?', p)
+    if oblique:
+        rad, h = int(oblique[1]), int(oblique[2])
+        return pick_number(public, rad * rad * h, pi=1)
     m = re.fullmatch(r'A cube with edge (\d+) is cut into three congruent square pyramids whose apexes all meet at one vertex of the cube\. Each pyramid has one face of the cube as its base and height \1\. What is the volume of one pyramid\?', p)
     if m:
         e = int(m[1])
@@ -685,6 +698,8 @@ def self_test():
         mk('polygon-symmetry-counts', 'How many lines of reflection carry a rhombus that is not a square onto itself?', ['$1$', '$4$', '$2$', '$3$'], 2),
         mk('precise-geometric-definitions', 'Which is the precise definition of parallel lines?', ['Two lines are parallel when they do not intersect.', 'Two lines are parallel when they intersect at exactly one point.', 'Two lines are parallel when they intersect to form a right angle.', 'Two lines in a plane are parallel when they do not intersect.'], 3),
         mk('inscribed-polygon-reasoning', 'Which method inscribes a regular hexagon in a circle with compass and straightedge?', ['Mark any three points on the circle and join them.', 'Step the compass, set to the radius, around the circle, then join every second mark.', 'Draw a diameter, construct the perpendicular diameter, and join its four endpoints in order.', 'Step the compass, set to the radius, around the circle six times and join consecutive marks.'], 3),
+        mk('measurement-formula-justifications', 'An oblique cylinder has radius 3 and height 8. Every plane parallel to the base cuts a circle of area equal to the base of the right cylinder with that radius and height. What is the volume of the oblique cylinder?', ['$288\\pi$', '$72\\pi$', '$48\\pi$', '$9\\pi$'], 1),
+        mk('measurement-formula-justifications', 'Two solids stand on the same plane with the same height. Every plane parallel to the base cuts equal-area cross-sections. What follows?', ['The solids have equal surface areas.', 'The solids are congruent.', 'The solids have equal volumes.', 'The solids have equal base perimeters.'], 2),
     ]
     rejected = 0
     for problem in good:

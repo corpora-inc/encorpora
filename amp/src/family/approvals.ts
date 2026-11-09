@@ -9,13 +9,17 @@ import { coverWithFamilyGift } from "../access-grants/repository.js";
 import { recordEvent } from "../schools/events.js";
 import { INVITE_DAYS } from "../schools/license.js";
 import { generateHandle, SchoolRepository } from "../schools/repository.js";
+import {
+  familyHasLearnerRoom,
+  freeAllowance,
+} from "../learning/free-allowance.js";
 import { RETENTION, RETENTION_BATCH } from "../privacy/retention-periods.js";
 import { FamilyError } from "./contracts.js";
 
 /* A child from another family joins a family class once their own parent
    approves (docs/families.md, step 5). For anyone who isn't a school, the
-   child's parent consents, so the teacher can't: they name the child and the
-   parent's address, and the parent's link does the rest. */
+   child's parent consents. The teacher supplies only the parent's address or
+   selects an existing picture identity; the parent supplies the name. */
 
 /** Links in mail and on screen, set up by the server at startup. */
 export type ApprovalKeys = { secret: string; origin: string };
@@ -51,7 +55,7 @@ const firstName = z
   .max(60)
   .regex(/^[^\u0000-\u001f\u007f<>]+$/);
 export const createApprovalSchema = z.strictObject({
-  childName: firstName,
+  personId: z.uuid().optional(),
   parentEmail: z
     .string()
     .trim()
@@ -104,7 +108,7 @@ const activeGrant = async (db: Database, learnerId: string) =>
 
 async function transaction<T>(
   pool: Pool,
-  lock: string,
+  lock: string | string[],
   action: (client: PoolClient) => Promise<T>,
 ): Promise<T> {
   const client = await pool.connect();
@@ -112,9 +116,11 @@ async function transaction<T>(
     await client.query("BEGIN");
     await client.query("SET LOCAL lock_timeout='5s'");
     await client.query("SET LOCAL statement_timeout='30s'");
-    await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
-      lock,
-    ]);
+    for (const key of [...new Set(Array.isArray(lock) ? lock : [lock])].sort())
+      await client.query(
+        "SELECT pg_advisory_xact_lock(hashtextextended($1,0))",
+        [key],
+      );
     const result = await action(client);
     await client.query("COMMIT");
     return result;
@@ -146,7 +152,9 @@ async function familyOf(db: Database, accountId: string) {
 }
 
 /** "Add a child from another family": a link for that child's parent. Asking
- * again for the same child and address is the same link, good for longer. */
+ * again for the same unnamed student and address is the same link, good for
+ * longer. A link without a student adds one new child, so a second one to the
+ * same address is a sibling's, with its own link. */
 export async function createApproval(
   pool: Pool,
   keys: ApprovalKeys,
@@ -154,55 +162,97 @@ export async function createApproval(
   raw: unknown,
 ) {
   const input = createApprovalSchema.parse(raw);
-  return transaction(pool, `family-class:${familyAccountId}`, async (client) => {
-    const family = await familyOf(client, familyAccountId);
-    const expires = new Date(Date.now() + INVITE_DAYS * 86_400_000);
-    const same = (
-      await client.query<{ id: string }>(
-        `SELECT id FROM amp_family_approvals WHERE family_account_id=$1 AND class_id=$2
+  return transaction(
+    pool,
+    `family-class:${familyAccountId}`,
+    async (client) => {
+      const family = await familyOf(client, familyAccountId);
+      const student = input.personId
+        ? (
+            await client.query(
+              `SELECT p.given_name FROM amp_people p JOIN amp_learners l ON l.id=p.learner_id
+       JOIN amp_enrollments e ON e.person_id=p.id AND e.class_id=$2 AND e.role='student'
+       JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs o ON o.id=c.org_id
+       WHERE p.id=$1 AND p.deleted_at IS NULL AND l.deleted_at IS NULL AND l.name_pending
+         AND l.account_id='school:'||p.id AND e.begin_on<=(now() AT TIME ZONE o.timezone)::date
+         AND (e.end_on IS NULL OR e.end_on>(now() AT TIME ZONE o.timezone)::date)`,
+              [input.personId, family.class_id],
+            )
+          ).rows[0]
+        : null;
+      if (input.personId && !student)
+        throw new FamilyError(404, "unnamed_student_not_found");
+      const childName = student?.given_name ?? null;
+      const expires = new Date(Date.now() + INVITE_DAYS * 86_400_000);
+      const same = input.personId
+        ? (
+            await client.query<{ id: string }>(
+              `SELECT id FROM amp_family_approvals WHERE family_account_id=$1 AND class_id=$2
          AND approved_at IS NULL AND ended_at IS NULL AND account_id IS NULL
-         AND lower(child_name)=lower($3) AND parent_email=$4 LIMIT 1`,
-        [familyAccountId, family.class_id, input.childName, input.parentEmail],
+         AND parent_email=$3 AND person_id=$4::uuid LIMIT 1`,
+              [
+                familyAccountId,
+                family.class_id,
+                input.parentEmail,
+                input.personId,
+              ],
+            )
+          ).rows[0]
+        : undefined;
+      if (same) {
+        await client.query(
+          "UPDATE amp_family_approvals SET expires_at=$2 WHERE id=$1",
+          [same.id, expires],
+        );
+        return {
+          id: same.id,
+          email: input.parentEmail,
+          className: family.class_name,
+        };
+      }
+      if (
+        input.personId &&
+        (
+          await client.query(
+            "SELECT 1 FROM amp_family_approvals WHERE person_id=$1 AND approved_at IS NULL AND ended_at IS NULL",
+            [input.personId],
+          )
+        ).rowCount
       )
-    ).rows[0];
-    if (same) {
+        throw new FamilyError(409, "approval_pending");
+      const today = (
+        await client.query(
+          "SELECT count(*)::int AS n FROM amp_family_approvals WHERE family_account_id=$1 AND created_at>now()-interval '1 day'",
+          [familyAccountId],
+        )
+      ).rows[0].n as number;
+      if (today >= APPROVALS_PER_DAY)
+        throw new FamilyError(429, "too_many_approvals");
+      const id = randomUUID();
       await client.query(
-        "UPDATE amp_family_approvals SET expires_at=$2 WHERE id=$1",
-        [same.id, expires],
+        `INSERT INTO amp_family_approvals(id,family_account_id,class_id,child_name,parent_email,lookup_hash,secret_hash,expires_at,person_id)
+       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
+        [
+          id,
+          familyAccountId,
+          family.class_id,
+          childName,
+          input.parentEmail,
+          hash(approvalToken(keys, id)),
+          hash(approvalProof(keys, id)),
+          expires,
+          input.personId ?? null,
+        ],
       );
-      return { id: same.id, email: input.parentEmail, className: family.class_name };
-    }
-    const today = (
-      await client.query(
-        "SELECT count(*)::int AS n FROM amp_family_approvals WHERE family_account_id=$1 AND created_at>now()-interval '1 day'",
-        [familyAccountId],
-      )
-    ).rows[0].n as number;
-    if (today >= APPROVALS_PER_DAY)
-      throw new FamilyError(429, "too_many_approvals");
-    const id = randomUUID();
-    await client.query(
-      `INSERT INTO amp_family_approvals(id,family_account_id,class_id,child_name,parent_email,lookup_hash,secret_hash,expires_at)
-       VALUES($1,$2,$3,$4,$5,$6,$7,$8)`,
-      [
-        id,
-        familyAccountId,
-        family.class_id,
-        input.childName,
-        input.parentEmail,
-        hash(approvalToken(keys, id)),
-        hash(approvalProof(keys, id)),
-        expires,
-      ],
-    );
-    await recordEvent(client, {
-      orgId: family.org_id,
-      action: "family.approval-sent",
-      targetKind: "class",
-      targetId: family.class_id,
-    });
-    return { id, email: input.parentEmail, className: family.class_name };
-  });
+      await recordEvent(client, {
+        orgId: family.org_id,
+        action: "family.approval-sent",
+        targetKind: "class",
+        targetId: family.class_id,
+      });
+      return { id, email: input.parentEmail, className: family.class_name };
+    },
+  );
 }
 
 /** Counts a send of the mailed link; false once it has been sent enough. */
@@ -311,55 +361,63 @@ export async function removeApproval(
   rawId: string,
 ) {
   const id = approvalId(rawId);
-  return transaction(pool, `family-class:${familyAccountId}`, async (client) => {
-    const row = (
-      await client.query<{ person_id: string | null; class_id: string }>(
-        `SELECT person_id,class_id FROM amp_family_approvals
+  return transaction(
+    pool,
+    `family-class:${familyAccountId}`,
+    async (client) => {
+      const row = (
+        await client.query<{
+          person_id: string | null;
+          class_id: string;
+          approved_at: Date | null;
+        }>(
+          `SELECT person_id,class_id,approved_at FROM amp_family_approvals
          WHERE id=$1 AND family_account_id=$2 AND ended_at IS NULL FOR UPDATE`,
-        [id, familyAccountId],
-      )
-    ).rows[0];
-    if (!row) throw new FamilyError(404, "approval_not_found");
-    const family = await familyOf(client, familyAccountId);
-    if (row.person_id) {
-      const today = await new SchoolRepository(pool).today(
-        client,
-        family.timezone,
-      );
+          [id, familyAccountId],
+        )
+      ).rows[0];
+      if (!row) throw new FamilyError(404, "approval_not_found");
+      const family = await familyOf(client, familyAccountId);
+      if (row.person_id && row.approved_at) {
+        const today = await new SchoolRepository(pool).today(
+          client,
+          family.timezone,
+        );
+        await client.query(
+          "UPDATE amp_org_roles SET end_on=GREATEST(begin_on,$2::date) WHERE person_id=$1 AND end_on IS NULL",
+          [row.person_id, today],
+        );
+        await client.query(
+          "UPDATE amp_enrollments SET end_on=GREATEST(begin_on,$2::date) WHERE person_id=$1 AND (end_on IS NULL OR end_on>$2::date)",
+          [row.person_id, today],
+        );
+        await client.query(
+          "UPDATE amp_student_sessions SET revoked_at=now() WHERE person_id=$1 AND revoked_at IS NULL",
+          [row.person_id],
+        );
+        await client.query(
+          "UPDATE amp_person_credentials SET revoked_at=now() WHERE person_id=$1 AND revoked_at IS NULL",
+          [row.person_id],
+        );
+        await client.query(
+          "UPDATE amp_people SET learner_id=NULL WHERE id=$1 AND learner_id IS NOT NULL",
+          [row.person_id],
+        );
+        await recordEvent(client, {
+          orgId: family.org_id,
+          action: "student.removed",
+          targetKind: "person",
+          targetId: row.person_id,
+          detail: { after: { classId: row.class_id, family: true } },
+        });
+      }
       await client.query(
-        "UPDATE amp_org_roles SET end_on=GREATEST(begin_on,$2::date) WHERE person_id=$1 AND end_on IS NULL",
-        [row.person_id, today],
+        "UPDATE amp_family_approvals SET ended_at=now(),child_name=NULL,parent_email=NULL WHERE id=$1",
+        [id],
       );
-      await client.query(
-        "UPDATE amp_enrollments SET end_on=GREATEST(begin_on,$2::date) WHERE person_id=$1 AND (end_on IS NULL OR end_on>$2::date)",
-        [row.person_id, today],
-      );
-      await client.query(
-        "UPDATE amp_student_sessions SET revoked_at=now() WHERE person_id=$1 AND revoked_at IS NULL",
-        [row.person_id],
-      );
-      await client.query(
-        "UPDATE amp_person_credentials SET revoked_at=now() WHERE person_id=$1 AND revoked_at IS NULL",
-        [row.person_id],
-      );
-      await client.query(
-        "UPDATE amp_people SET learner_id=NULL WHERE id=$1 AND learner_id IS NOT NULL",
-        [row.person_id],
-      );
-      await recordEvent(client, {
-        orgId: family.org_id,
-        action: "student.removed",
-        targetKind: "person",
-        targetId: row.person_id,
-        detail: { after: { classId: row.class_id, family: true } },
-      });
-    }
-    await client.query(
-      "UPDATE amp_family_approvals SET ended_at=now(),child_name=NULL,parent_email=NULL WHERE id=$1",
-      [id],
-    );
-    return { removed: true };
-  });
+      return { removed: true };
+    },
+  );
 }
 
 /** Who teaches the class, by the names the class shows. */
@@ -432,51 +490,55 @@ export async function openApproval(
     )
   ).rows[0];
   if (!found) throw new FamilyError(404, "approval_not_found");
-  return transaction(pool, `family-class:${found.family_account_id}`, async (client) => {
-    const row = (
-      await client.query<{
-        id: string;
-        class_id: string;
-        parent_email: string | null;
-        secret_hash: string;
-        expires_at: Date;
-        account_id: string | null;
-        ended_at: Date | null;
-      }>(
-        "SELECT id,class_id,parent_email,secret_hash,expires_at,account_id,ended_at FROM amp_family_approvals WHERE id=$1 FOR UPDATE",
-        [found.id],
-      )
-    ).rows[0]!;
-    if (row.account_id === accountId) return { id: row.id };
-    if (row.ended_at) throw new FamilyError(410, "approval_ended");
-    if (row.account_id) throw new FamilyError(410, "approval_used");
-    if (row.expires_at <= new Date())
-      throw new FamilyError(410, "approval_expired");
-    const staff = await client.query(
-      `SELECT 1 FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
+  return transaction(
+    pool,
+    `family-class:${found.family_account_id}`,
+    async (client) => {
+      const row = (
+        await client.query<{
+          id: string;
+          class_id: string;
+          parent_email: string | null;
+          secret_hash: string;
+          expires_at: Date;
+          account_id: string | null;
+          ended_at: Date | null;
+        }>(
+          "SELECT id,class_id,parent_email,secret_hash,expires_at,account_id,ended_at FROM amp_family_approvals WHERE id=$1 FOR UPDATE",
+          [found.id],
+        )
+      ).rows[0]!;
+      if (row.account_id === accountId) return { id: row.id };
+      if (row.ended_at) throw new FamilyError(410, "approval_ended");
+      if (row.account_id) throw new FamilyError(410, "approval_used");
+      if (row.expires_at <= new Date())
+        throw new FamilyError(410, "approval_expired");
+      const staff = await client.query(
+        `SELECT 1 FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
        JOIN amp_classes c ON c.id=$2 JOIN amp_orgs o ON o.id=c.org_id
        WHERE p.account_id=$1 AND p.deleted_at IS NULL AND r.org_id=ANY(o.path) AND r.end_on IS NULL
        UNION ALL SELECT 1 FROM amp_families WHERE account_id=$1 AND class_id=$2 LIMIT 1`,
-      [accountId, row.class_id],
-    );
-    if (staff.rowCount) throw new FamilyError(403, "teacher_cannot_approve");
-    await client.query(
-      "UPDATE amp_family_approvals SET account_id=$2,opened_at=now() WHERE id=$1",
-      [row.id, accountId],
-    );
-    if (
-      input.proof &&
-      row.parent_email &&
-      hash(input.proof) === row.secret_hash &&
-      accountId.startsWith("amp|")
-    )
-      await client.query(
-        `UPDATE amp_auth_users SET "emailVerified"=true,"updatedAt"=now()
-         WHERE id=$1 AND lower(email)=$2 AND NOT "emailVerified"`,
-        [accountId.slice(4), row.parent_email],
+        [accountId, row.class_id],
       );
-    return { id: row.id };
-  });
+      if (staff.rowCount) throw new FamilyError(403, "teacher_cannot_approve");
+      await client.query(
+        "UPDATE amp_family_approvals SET account_id=$2,opened_at=now() WHERE id=$1",
+        [row.id, accountId],
+      );
+      if (
+        input.proof &&
+        row.parent_email &&
+        hash(input.proof) === row.secret_hash &&
+        accountId.startsWith("amp|")
+      )
+        await client.query(
+          `UPDATE amp_auth_users SET "emailVerified"=true,"updatedAt"=now()
+         WHERE id=$1 AND lower(email)=$2 AND NOT "emailVerified"`,
+          [accountId.slice(4), row.parent_email],
+        );
+      return { id: row.id };
+    },
+  );
 }
 
 /** The approving parent's page about their child in the class. */
@@ -512,21 +574,42 @@ export async function readApproval(
     if (!row) throw new FamilyError(404, "approval_not_found");
     const approved = !!row.approved_at;
     const here = approved && !row.deleted_at && !!row.learner_id;
-    const status = row.ended_at || (approved && !here)
-      ? ("ended" as const)
-      : approved
-        ? ("approved" as const)
-        : row.expires_at <= new Date()
-          ? ("expired" as const)
-          : ("open" as const);
+    const status =
+      row.ended_at || (approved && !here)
+        ? ("ended" as const)
+        : approved
+          ? ("approved" as const)
+          : row.expires_at <= new Date()
+            ? ("expired" as const)
+            : ("open" as const);
     const ends = here ? await activeGrant(client, row.learner_id!) : null;
+    const usage = here
+      ? (
+          await client.query(
+            "SELECT free_online_used,free_workbooks_used FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL",
+            [row.learner_id, accountId],
+          )
+        ).rows[0]
+      : null;
+    const allowance = usage
+      ? freeAllowance(usage.free_online_used, usage.free_workbooks_used)
+      : undefined;
+    const consentActive = await learningConsentActive(
+      client,
+      accountId,
+      development,
+      here ? row.learner_id! : undefined,
+    );
     return {
       id,
       status,
       childName: here ? row.given_name : (row.child_name ?? null),
       className: row.class_name,
       teachers: await teachers(client, row.class_id),
-      consentActive: await learningConsentActive(client, accountId, development),
+      consentActive,
+      canPractice:
+        consentActive && (!!ends || (allowance?.problems.remaining ?? 0) > 0),
+      freeAllowance: allowance,
       learnerId: here ? row.learner_id : null,
       access: { active: !!ends, endsAt: ends?.toISOString() ?? null },
     };
@@ -540,13 +623,35 @@ export async function readApproval(
  * account's verified consent, which comes through the usual ways (a purchase
  * or email-plus), never from the teacher. The caller holds this account's
  * exclusive learning lock; the family's own lock comes after it. */
-export async function approveInside(
+export async function approve(
+  pool: Pool,
+  accountId: string,
+  rawId: string,
+  raw: unknown,
+  development = false,
+) {
+  const id = approvalId(rawId);
+  const source = (
+    await pool.query<{ account_id: string }>(
+      `SELECT l.account_id FROM amp_family_approvals a JOIN amp_people p ON p.id=a.person_id
+     JOIN amp_learners l ON l.id=p.learner_id WHERE a.id=$1 AND a.account_id=$2 AND a.approved_at IS NULL`,
+      [id, accountId],
+    )
+  ).rows[0]?.account_id;
+  // Ownership moves only while both accounts are locked in the same order.
+  return transaction(pool, source ? [accountId, source] : accountId, (client) =>
+    approveInside(client, pool, accountId, id, raw, development, source),
+  );
+}
+
+async function approveInside(
   client: PoolClient,
   pool: Pool,
   accountId: string,
   rawId: string,
   raw: unknown,
   development = false,
+  sourceAccount?: string,
 ) {
   const id = approvalId(rawId);
   const { name } = approveSchema.parse(raw);
@@ -596,25 +701,60 @@ export async function approveInside(
     )
   ).rows[0];
   if (!family) throw new FamilyError(410, "approval_ended");
-  const learnerId = randomUUID();
-  await client.query(
-    "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,$3,NULL)",
-    [learnerId, accountId, name],
-  );
   const schools = new SchoolRepository(pool);
   const today = await schools.today(client, family.timezone);
-  const personId = randomUUID();
-  await client.query(
-    `INSERT INTO amp_people(id,tenant_id,given_name,handle,grade_level,learner_id,timezone)
+  const personId = row.person_id ?? randomUUID();
+  let learnerId: string;
+  if (row.person_id) {
+    const existing = (
+      await client.query<{ id: string }>(
+        `SELECT l.id FROM amp_people p JOIN amp_learners l ON l.id=p.learner_id
+       WHERE p.id=$1 AND p.deleted_at IS NULL AND l.deleted_at IS NULL AND l.name_pending
+         AND l.account_id=$2 AND l.account_id='school:'||p.id
+         AND EXISTS(SELECT 1 FROM amp_enrollments e WHERE e.person_id=p.id AND e.class_id=$3
+           AND e.role='student' AND e.begin_on<=$4::date AND (e.end_on IS NULL OR e.end_on>$4::date))
+       FOR UPDATE OF l`,
+        [personId, sourceAccount ?? null, family.class_id, today],
+      )
+    ).rows[0];
+    if (!existing) throw new FamilyError(410, "approval_ended");
+    learnerId = existing.id;
+    await client.query(
+      "UPDATE amp_learners SET account_id=$2,name=$3,name_pending=false WHERE id=$1",
+      [learnerId, accountId, name],
+    );
+    await client.query("UPDATE amp_people SET given_name=$2 WHERE id=$1", [
+      personId,
+      name,
+    ]);
+  } else {
+    if (!(await familyHasLearnerRoom(client, accountId)))
+      throw new FamilyError(403, "too_many_learners");
+    learnerId = randomUUID();
+    await client.query(
+      "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,$3,NULL)",
+      [learnerId, accountId, name],
+    );
+    await client.query(
+      `INSERT INTO amp_people(id,tenant_id,given_name,handle,grade_level,learner_id,timezone)
      VALUES($1,$2,$3,$4,NULL,$5,$6)`,
-    [personId, family.org_id, name, generateHandle(), learnerId, family.timezone],
-  );
-  await client.query(
-    "INSERT INTO amp_org_roles(id,person_id,org_id,role,begin_on) VALUES($1,$2,$3,'student',$4)",
-    [randomUUID(), personId, family.org_id, today],
-  );
-  await schools.enroll(client, family.class_id, personId, "student", today);
-  // The approving family's gift in force covers this child too.
+      [
+        personId,
+        family.org_id,
+        name,
+        generateHandle(),
+        learnerId,
+        family.timezone,
+      ],
+    );
+    await client.query(
+      "INSERT INTO amp_org_roles(id,person_id,org_id,role,begin_on) VALUES($1,$2,$3,'student',$4)",
+      [randomUUID(), personId, family.org_id, today],
+    );
+    await schools.enroll(client, family.class_id, personId, "student", today);
+  }
+  // The approving family's gift in force covers this child too, whether
+  // they were just added or moved in from a school's unnamed roster.
   await coverWithFamilyGift(client, accountId, learnerId);
   await client.query(
     "UPDATE amp_family_approvals SET approved_at=now(),person_id=$2,child_name=NULL,parent_email=NULL WHERE id=$1",
@@ -625,7 +765,9 @@ export async function approveInside(
     action: "student.added",
     targetKind: "person",
     targetId: personId,
-    detail: { after: { classId: family.class_id, family: true, approved: true } },
+    detail: {
+      after: { classId: family.class_id, family: true, approved: true },
+    },
   });
   return { learnerId };
 }
@@ -728,7 +870,11 @@ export async function purgeFamilyApprovals(
          SELECT id FROM amp_family_approvals WHERE approved_at IS NULL
            AND COALESCE(ended_at,expires_at) <= $1::timestamptz-make_interval(days=>$2)
          ORDER BY created_at LIMIT $3 FOR UPDATE SKIP LOCKED)`,
-      [at.toISOString(), RETENTION.familyApprovalDays, RETENTION_BATCH.batchSize],
+      [
+        at.toISOString(),
+        RETENTION.familyApprovalDays,
+        RETENTION_BATCH.batchSize,
+      ],
     );
     count += result.rowCount ?? 0;
     if ((result.rowCount ?? 0) < RETENTION_BATCH.batchSize) break;

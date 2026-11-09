@@ -3,7 +3,11 @@ import {
   EMAIL_PLUS_METHOD,
   isEmailPlusMethod,
 } from "../parent-consent/contracts.js";
-import { isSchoolAccount, schoolConsentActive } from "../schools/principal.js";
+import {
+  isSchoolAccount,
+  schoolConsentActive,
+  schoolUnnamedLearningActive,
+} from "../schools/principal.js";
 /** All learning writers take this lock before a learner lock. Privacy mutations
  * take its exclusive counterpart, then lock learners in sorted ID order. */
 export async function lockLearningAccount(
@@ -50,8 +54,8 @@ export async function isAdultLearner(
   ).rowCount;
 }
 /** Whether learning data may be collected. With `learnerId`, for that learner:
- * an adult learner of the account is active on the account's own terms, and
- * every other learner keeps the account's consent rules below. */
+ * an adult learns on their own terms, an unnamed child uses the restricted
+ * learning permission, and a named child requires naming consent. */
 export async function learningConsentActive(
   client: Pick<PoolClient, "query">,
   accountId: string,
@@ -62,12 +66,38 @@ export async function learningConsentActive(
   // A parent owns the trial for cross-device resume; adopting its answers
   // into a named family learner requires the regular consent checks.
   if (accountId.startsWith("trial:")) return true;
+  if (await namingConsentActive(client, accountId, development, learnerId))
+    return true;
+  if (!learnerId) return false;
+  const unnamed = await client.query(
+    "SELECT 1 FROM amp_learners WHERE id=$1 AND account_id=$2 AND name_pending AND deleted_at IS NULL",
+    [learnerId, accountId],
+  );
+  if (!unnamed.rowCount) return false;
+  if (isSchoolAccount(accountId))
+    return schoolUnnamedLearningActive(client, accountId);
+  // Withdrawal stops collection even when the learner has no name.
+  return !(
+    await client.query(
+      "SELECT 1 FROM amp_parent_consents WHERE account_id=$1 AND withdrawn_at IS NOT NULL",
+      [accountId],
+    )
+  ).rowCount;
+}
+
+/** Permission to collect a name is separate from unnamed practice. */
+export async function namingConsentActive(
+  client: Pick<PoolClient, "query">,
+  accountId: string,
+  development = false,
+  learnerId?: string,
+): Promise<boolean> {
+  if (accountId.startsWith("trial:")) return false;
   if (isSchoolAccount(accountId)) return schoolConsentActive(client, accountId);
   if (await parentConsentActive(client, accountId, development)) return true;
   return !!learnerId && (await isAdultLearner(client, accountId, learnerId));
 }
-/** The account's verified parental consent, which every child learner of a
- * family account needs. */
+/** The account's verified parental consent for collecting children's names. */
 async function parentConsentActive(
   client: Pick<PoolClient, "query">,
   accountId: string,

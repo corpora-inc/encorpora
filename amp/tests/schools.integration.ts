@@ -446,6 +446,11 @@ test(
             seats: 5,
             endsAt: YEAR_AHEAD,
           });
+          // With no agreement anywhere up the path, a named student can't be
+          // enrolled: naming needs the agreement.
+          await assert.rejects(enrolled(campus.id), /agreement_required/);
+          // The district's agreement reaches the campus.
+          await schools.recordDataAgreement(district.id, agreement);
           const student = await enrolled(campus.id);
           assert.equal(student.seated, true);
           const path = `/api/v1/learners/${student.learnerId}`;
@@ -453,11 +458,6 @@ test(
           const canPractice = async () =>
             (await get("/api/v1/me", as(student.token))).json().family
               .learners[0].canPractice;
-          // No agreement anywhere up the path yet.
-          assert.equal((await batch()).statusCode, 403);
-          assert.equal(await canPractice(), false);
-          // The district's agreement reaches the campus.
-          await schools.recordDataAgreement(district.id, agreement);
           assert.equal((await batch()).statusCode, 200);
           assert.equal(await canPractice(), true);
           // The campus's own ended agreement is the nearest, and it wins.
@@ -517,16 +517,25 @@ test(
             personId: waiting.personId,
             mode: "personal",
           });
+          // A student without a seat has no grant, and practises under the
+          // free allowance until it is spent.
           const me = (await get("/api/v1/me", as(token))).json();
-          assert.equal(me.learners[0].entitlement.active, false);
+          assert.equal(me.learners[0].entitlement.licensed, false);
+          assert.equal(me.learners[0].entitlement.active, true);
+          const waitingBatch = () =>
+            post(`/api/v1/learners/${waiting.learnerId}/batches`, as(token));
+          assert.equal((await waitingBatch()).statusCode, 200);
+          await db.query(
+            "UPDATE amp_learners SET free_online_used=100 WHERE id=$1",
+            [waiting.learnerId],
+          );
+          const spent = await waitingBatch();
+          assert.equal(spent.statusCode, 402);
+          assert.equal(spent.json().error, "free-allowance-complete");
           assert.equal(
-            (
-              await post(
-                `/api/v1/learners/${waiting.learnerId}/batches`,
-                as(token),
-              )
-            ).statusCode,
-            403,
+            (await get("/api/v1/me", as(token))).json().learners[0].entitlement
+              .active,
+            false,
           );
 
           await assert.rejects(
@@ -864,6 +873,8 @@ test(
             name: "Walk District",
             timezone: "America/Denver",
           });
+          // The district's data agreement lets its schools add named students.
+          await schools.recordDataAgreement(district.id, agreement);
           const north = await schools.createOrg({
             kind: "school",
             name: "North",

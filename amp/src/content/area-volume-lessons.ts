@@ -106,7 +106,11 @@ export const areaVolumeLessons: Lesson[] = [
     title: "Area by splitting into rectangles and triangles",
     summary:
       "A polygon is a flat shape with straight sides, such as a triangle (3 sides) or a pentagon (5 sides). Its area is the flat surface it covers, counted in unit squares: squares 1 unit long on each side. To find it, cut the polygon into rectangles (four sides, four square corners) and triangles. The pieces must cover the shape with no gaps and no overlaps. Find each piece's area and add them.",
-    templateIds: ["polygon-area-decompose"],
+    templateIds: [
+      "polygon-area-decompose",
+      "polygon-show-the-pieces",
+      "polygon-which-expression",
+    ],
     senses: {
       unit: "unit",
       side: "side",
@@ -191,7 +195,7 @@ export const areaVolumeLessons: Lesson[] = [
     title: "Surface area from a net",
     summary:
       "A solid is a shape that takes up space, like a box. Its faces are its flat outside surfaces. Area is the amount of flat surface a shape covers. Surface area is the total area of all the faces. A net is the flat pattern you get when you unfold a solid. Find the area of each face in the net, then add them all.",
-    templateIds: ["net-surface-area"],
+    templateIds: ["net-surface-area", "net-name-the-solid"],
     senses: {
       center: "center",
       unit: "unit",
@@ -270,7 +274,7 @@ export const areaVolumeLessons: Lesson[] = [
     title: "Packing a prism with fraction cubes",
     summary:
       "A solid is a shape that takes up space, and its volume is the amount of space it takes up. A rectangular prism is a box shape. A cube is a box whose edges, the lines where its flat faces meet, are all the same length. Small cubes with edges of $\\tfrac{1}{2}$ unit can fill a box exactly when each edge of the box is a whole number of halves. Count them, then multiply by the volume of one small cube. The result equals the three edge lengths multiplied together.",
-    templateIds: ["unit-fraction-cube-packing"],
+    templateIds: ["unit-fraction-cube-packing", "count-then-size-then-check"],
     senses: {
       side: "side",
       square: "square-shape",
@@ -867,6 +871,26 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
     watch:
       "Give every triangle its height at a right angle to its base, not a slanted side.",
   },
+  "polygon-show-the-pieces": {
+    goal: "Choose the area of each rectangle and triangle when a polygon is split or doubled.",
+    noLink: ["base", "bases", "side", "part", "parts", "whole", "square"],
+    method: [
+      "Name the rectangle the cut or the slide makes, and its base and height.",
+      "Find each triangle as half of base times height.",
+      "Add the pieces, or halve the rectangle, for the whole area.",
+    ],
+    watch: "Halve each end triangle. The box around a trapezoid is not its area.",
+  },
+  "polygon-which-expression": {
+    goal: "Choose the expression that adds a trapezoid's rectangle and its two end triangles.",
+    noLink: ["base", "bases", "side", "part", "whole", "square"],
+    method: [
+      "The middle rectangle is the shorter base times the height.",
+      "Each end triangle is half of the overhang times the height.",
+      "Add the rectangle and both triangles.",
+    ],
+    watch: "Do not multiply the two bases, and do not use the long base times the height.",
+  },
   "net-surface-area": {
     goal: "Find a solid's surface area by adding the areas of all the faces in its net.",
     senses: {
@@ -891,6 +915,23 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
     watch:
       "Count every face once, and count matching faces separately: a triangular prism has two triangle ends.",
   },
+  "net-name-the-solid": {
+    goal: "Name the solid a net of rectangles and triangles folds into.",
+    senses: {
+      net: "net-solid",
+      face: "face-solid",
+      solid: "solid-shape",
+      square: "square-shape",
+    },
+    noLink: ["opposite"],
+    method: [
+      "Count the faces in the net.",
+      "Name each face as a rectangle, a square, or a triangle.",
+      "Match that set of faces to the solid.",
+    ],
+    watch:
+      "Five faces can be two triangles and three rectangles, or one square and four triangles.",
+  },
   "unit-fraction-cube-packing": {
     goal: "Count the fraction-edge cubes that fill a box shape and find its volume.",
     senses: {
@@ -911,6 +952,19 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
     ],
     watch:
       "A cube with edge $\\tfrac{1}{2}$ has volume $\\tfrac{1}{8}$, not $\\tfrac{1}{2}$, because all three edges are halved.",
+  },
+  "count-then-size-then-check": {
+    goal: "Count the fraction-edge cubes in a box, then match that count to the volume.",
+    senses: { cube: "cube", edge: "edge", solid: "solid-shape" },
+    noLink: ["whole", "count"],
+    method: [
+      "Divide each edge by the small cube's edge.",
+      "Multiply the three counts.",
+      "Cube the small edge for one cube's volume, then multiply by the count.",
+      "Check by multiplying the three edge lengths.",
+    ],
+    watch:
+      "A cube with edge 1/2 has volume 1/8, not 1/2. The count of cubes is not the volume.",
   },
   "fraction-edge-volume": {
     goal: "Find a box's volume, or a missing edge, when the edge lengths are fractions.",
@@ -1085,10 +1139,18 @@ export const areaVolumePrinciples: Record<string, string> = {
     "Two copies of a triangle form a parallelogram with the same base and height, so the triangle's area is $\\tfrac{1}{2}$ × base × height.",
   "polygon-area-decompose":
     "Area does not change when a shape is cut into pieces and rearranged without gaps or overlaps. So a shape's area is the sum (total) of its pieces' areas.",
+  "polygon-show-the-pieces":
+    "A polygon's area is the sum of the rectangles and triangles that cover it once.",
+  "polygon-which-expression":
+    "A trapezoid's area is its middle rectangle plus the two end triangles, each half of overhang times height.",
   "net-surface-area":
     "Unfolding a solid into its net keeps every face's area. So the surface area is the sum (total) of the net's face areas.",
+  "net-name-the-solid":
+    "A net names its solid by the faces it contains: how many, and whether each is a rectangle or a triangle.",
   "unit-fraction-cube-packing":
     "For any of the numbers $n$ = 1, 2, 3 and so on, a cube with edge $\\tfrac{1}{n}$ unit has volume $\\tfrac{1}{n^3}$ cubic unit, where $n^3 = n \\times n \\times n$. Exactly $n^3$ of them fill a unit cube, a cube 1 unit long on each edge. So counting them gives the same volume as length × width × height.",
+  "count-then-size-then-check":
+    "A cube of edge $1/n$ has volume $1/n^3$, so the cube count times $1/n^3$ equals the product of the edges.",
   "fraction-edge-volume":
     "Volume = length × width × height holds for fraction edges. So a missing edge is the volume divided by the product of the other two edges.",
   "composite-area":

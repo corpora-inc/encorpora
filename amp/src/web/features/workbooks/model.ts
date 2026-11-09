@@ -120,3 +120,21 @@ export function choicesLabel(
     .filter(Boolean)
     .join(" · ");
 }
+
+export type WorkbookAccess = {
+  canPractice?: boolean;
+  learningAllowed?: boolean;
+  hasAccess?: boolean;
+  freeAllowance?: import("../../../learning/free-allowance").FreeAllowance;
+};
+/** Issued workbooks stay readable after either free allowance is spent. */
+export const canReadWorkbooks = (learner: WorkbookAccess) =>
+  learner.learningAllowed ?? !!learner.canPractice;
+export const canMakeWorkbook = (learner: WorkbookAccess) =>
+  canReadWorkbooks(learner) &&
+  ((learner.hasAccess ?? (!learner.freeAllowance && !!learner.canPractice)) ||
+    (learner.freeAllowance?.workbooks.available ?? 0) > 0);
+/** Readable, but no new workbook: no access covers them and the five free
+ * ones are used. Known from the account's data, so it never shifts a screen. */
+export const freeWorkbooksUsed = (learner: WorkbookAccess) =>
+  canReadWorkbooks(learner) && !canMakeWorkbook(learner);
