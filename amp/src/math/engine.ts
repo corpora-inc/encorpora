@@ -411,6 +411,7 @@ import { graphicalTemplates, generateGraphicalProblem } from "./graphical";
 import { extendedTemplates, generateExtendedProblem } from "./extended";
 import { familyRegistry } from "../families/registry";
 import { createHash } from "node:crypto";
+import { clauseMetadata } from "./clause-variants";
 import { makeTenHops } from "./scene/explanations";
 import { mathLabel, polish } from "./polish";
 import type {
@@ -650,7 +651,9 @@ export const templates: readonly TemplateMetadata[] = [
   // Frozen legacy list above. New families register through src/families/
   // (docs/content-family-playbook.md) and append here in family-id order.
   ...familyRegistry.templates,
-].map(withTemplateGlossary);
+]
+  .map(clauseMetadata)
+  .map(withTemplateGlossary);
 
 function gcd(a: bigint, b: bigint): bigint {
   a = a < 0n ? -a : a;
@@ -987,6 +990,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   ].some((t) => t.id === problem.public.templateId);
   const keepAuthored =
     preserveAlgebra ||
+    Boolean(problem.variant?.axes?.clause) ||
     ["true-equation-choice", "equal-factor-equations-select"].includes(
       problem.public.templateId,
     ) ||

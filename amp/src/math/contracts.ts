@@ -281,7 +281,9 @@ export interface ClientCapabilities {
 export const clientCanDraw = (
   template: Pick<
     TemplateMetadata,
-    "requiredFigureCapability" | "requiredResponseCapability"
+    | "requiredFigureCapability"
+    | "requiredResponseCapability"
+    | "requiredResponseCapabilities"
   >,
   client: ClientCapabilities,
 ): boolean =>
@@ -289,9 +291,14 @@ export const clientCanDraw = (
     client.responseCapabilities.includes(
       template.requiredResponseCapability,
     )) &&
+  (template.requiredResponseCapabilities ?? []).every((c) =>
+    client.responseCapabilities.includes(c),
+  ) &&
   (!template.requiredFigureCapability ||
     client.figureCapabilities.includes(template.requiredFigureCapability));
 export interface TemplateMetadata {
+  /** Every response capability emitted by a mixed-format family. */
+  requiredResponseCapabilities?: readonly ResponseCapability[];
   /** Editorial local step on the curriculum-grade scale, not empirical calibration. */
   difficultyOffset?: number;
   requiredFigureCapability?: FigureCapability;

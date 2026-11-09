@@ -1,3 +1,4 @@
+import { withClauseVariants } from "./clause-variants";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -144,7 +145,7 @@ const signed = (n: number) => (n < 0 ? `(${n})` : `${n}`);
 function decimal(n: number, places: number): string {
   return `${Math.floor(n / 10 ** places)}.${String(n % 10 ** places).padStart(places, "0")}`;
 }
-export function generateExtendedProblem(
+export function generateExtendedProblemLegacy(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
@@ -545,3 +546,8 @@ export function generateExtendedProblem(
     ...(variant ? { variant } : {}),
   };
 }
+
+export const generateExtendedProblem = withClauseVariants(
+  extendedTemplates,
+  generateExtendedProblemLegacy,
+);

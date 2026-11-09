@@ -1,10 +1,11 @@
+import { generateBeforeClauses as generateProblem } from "./helpers/before-clause-variants";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
   geometryRequirementGapCase,
   geometryRequirementGapTemplates,
 } from "../src/math/geometry-requirement-gaps-practice";
-import { generateProblem, templates } from "../src/math/engine";
+import { templates } from "../src/math/engine";
 import { problemLesson } from "../src/content/problem-lessons";
 import { actualFacetMappings } from "../src/content/facet-mappings";
 
@@ -237,7 +238,9 @@ test("arc-sector-derivation answers match independent arithmetic", () => {
       const rr = num(m[2]!);
       // area = (theta / 2pi) * pi r^2 = (p0/q0) * r^2 / 2 times pi
       const expected: [number, number] = [p0 * rr * rr, 2 * q0];
-      const label = c.correctLabel.replace(/^\$/, "").replace(/\$ (?:cm|square centimeters).*$/, "");
+      const label = c.correctLabel
+        .replace(/^\$/, "")
+        .replace(/\$ (?:cm|square centimeters).*$/, "");
       assert.ok(equalRational(coefficient(label), expected), label);
     } else {
       const m =
@@ -484,7 +487,9 @@ test("congruence and similarity sequences really map the drawn triangles", () =>
       } else if (c.variant === "predict-image") {
         const at = scenePoints(c);
         const p = c.problem.public.prompt;
-        const m = /: (.*)\. What are the coordinates of \$?([DEF])\$?\?$/.exec(p)!;
+        const m = /: (.*)\. What are the coordinates of \$?([DEF])\$?\?$/.exec(
+          p,
+        )!;
         const index = "DEF".indexOf(m[2]!);
         const original = at.get("ABC"[index]!)!;
         const image = interpret(m[1]!).reduce((acc, op) => op(acc), original);

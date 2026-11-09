@@ -1,3 +1,4 @@
+import { withClauseVariants } from "./clause-variants";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -3756,6 +3757,11 @@ export function texas38Case(templateId: string, seed: string) {
   throw new Error("Could not generate a problem without leaking the answer");
 }
 
-export function generateTexas38Problem(templateId: string, seed: string) {
+export function generateTexas38ProblemLegacy(templateId: string, seed: string) {
   return texas38Case(templateId, seed).problem;
 }
+
+export const generateTexas38Problem = withClauseVariants(
+  texas38Templates,
+  generateTexas38ProblemLegacy,
+);

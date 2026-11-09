@@ -18,6 +18,8 @@ import { lessons } from "./lessons";
 import { skills } from "../curriculum/catalog";
 import { displayAnswer } from "../math/polish";
 import { methods } from "./problem-methods";
+import { clauseMethod, clausePrinciple } from "./clause-variant-lessons";
+import { buildClause, clauseFamilies } from "../math/clause-variants";
 import { principles } from "./problem-principles";
 import { answerText } from "../math/selection-response";
 import type { MultiPartChoiceResponse } from "../math/multi-part-choice";
@@ -162,7 +164,10 @@ export function problemLesson(
   const template = byId.get(templateId);
   if (!template) throw new Error(`Unknown problem type ${templateId}`);
   const generateProblem = (id: string, exampleSeed: string) =>
-    generateProblemFor(id, exampleSeed, lessonFigures(template));
+    learnerProblem?.variant &&
+    clauseFamilies[id]?.includes(learnerProblem.variant.id)
+      ? buildClause(template, exampleSeed, learnerProblem.variant.id)
+      : generateProblemFor(id, exampleSeed, lessonFigures(template));
   // The learner may see a newer figure surface than the example (which is
   // drawn for the oldest client); its legacy twin has the example's wording.
   const twinPrompt = learnerProblem
@@ -251,7 +256,8 @@ export function problemLesson(
         ? example.answer
         : displayAnswer(example.answer);
   const lessonTemplateId = templateReplacements[templateId] ?? templateId;
-  const authored = methods[lessonTemplateId];
+  const authored =
+    clauseMethod(example.variant?.id) ?? methods[lessonTemplateId];
   const givens = realNumberGivens(templateId, example.public.seed);
   const reference = lessons.find((lesson) =>
     lesson.templateIds.includes(lessonTemplateId),
@@ -273,7 +279,10 @@ export function problemLesson(
     reference?.summary ??
     authored?.goal ??
     template.description;
-  const principle = principles[lessonTemplateId] ?? null;
+  const principle =
+    clausePrinciple(example.variant?.id) ??
+    principles[lessonTemplateId] ??
+    null;
   const methodTerms = authored?.terms ?? [];
   // A hint names its own instance's numbers, so it is never a general method.
   const method = authored?.method ?? [template.description];

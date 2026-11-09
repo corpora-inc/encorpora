@@ -1,3 +1,4 @@
+import { withClauseVariants } from "./clause-variants";
 import type { SemanticFigure, TemplateMetadata } from "./contracts";
 import { array, lineTable } from "./scene/author";
 import { defineAxis } from "./variation/axes";
@@ -399,7 +400,7 @@ export const equationSlotsAxes = {
 
 const VARS = ["x", "y", "w"] as const;
 
-export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
+const equationSlotsLegacy = defineGenerate(equationSlotsTemplates, {
   "booth-equation-slots": entry(boothAxes, ({ meta, seed, r, axes }) => {
     const [unit, units, v] = pick(r, BOOTH_UNITS);
     const rate = r(4, 18);
@@ -1261,3 +1262,8 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
     });
   }),
 });
+
+export const equationSlotsGenerate = withClauseVariants(
+  equationSlotsTemplates,
+  equationSlotsLegacy,
+);

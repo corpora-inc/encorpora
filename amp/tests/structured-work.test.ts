@@ -1,3 +1,4 @@
+import { generateBeforeClauses as generateProblem } from "./helpers/before-clause-variants";
 import { test } from "node:test";
 import { spawnSync } from "node:child_process";
 import assert from "node:assert/strict";
@@ -8,12 +9,7 @@ import {
   responseCapabilities,
   type GeneratedProblem,
 } from "../src/math/contracts";
-import {
-  generateProblem,
-  gradeAnswer,
-  isValidResponse,
-  templates,
-} from "../src/math/engine";
+import { gradeAnswer, isValidResponse, templates } from "../src/math/engine";
 import {
   evaluate,
   lineTex,

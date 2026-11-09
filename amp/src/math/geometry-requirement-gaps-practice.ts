@@ -1,3 +1,4 @@
+import { withClauseVariants } from "./clause-variants";
 import { nounFor, article } from "./agreement";
 import type {
   GeneratedProblem,
@@ -2711,9 +2712,14 @@ export function geometryRequirementGapCase(
     }),
   };
 }
-export function generateGeometryRequirementGapProblem(
+export function generateGeometryRequirementGapProblemLegacy(
   id: string,
   seed: string,
 ): GeneratedProblem {
   return geometryRequirementGapCase(id, seed).problem;
 }
+
+export const generateGeometryRequirementGapProblem = withClauseVariants(
+  geometryRequirementGapTemplates,
+  generateGeometryRequirementGapProblemLegacy,
+);

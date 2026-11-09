@@ -1,3 +1,4 @@
+import { withClauseVariants } from "./clause-variants";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -329,7 +330,7 @@ function roundWording(
   };
 }
 
-export function generateNumberSenseProblem(
+export function generateNumberSenseProblemLegacy(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
@@ -829,3 +830,8 @@ function numberSenseProblem(
     explanation,
   };
 }
+
+export const generateNumberSenseProblem = withClauseVariants(
+  numberSenseTemplates,
+  generateNumberSenseProblemLegacy,
+);

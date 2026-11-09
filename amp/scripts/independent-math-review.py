@@ -16,6 +16,8 @@ import sys
 from pathlib import Path
 from collections import Counter
 from fractions import Fraction
+import clause_place_value_math_oracle as clause_place_value
+import clause_transformation_math_oracle as clause_transformation
 from rational_expression_math_oracle import RATIONAL_EXPRESSION, solve_rational_expression, review_rational_expression_fixtures, review_rational_expression_problem
 from nonlinear_system_math_oracle import NONLINEAR_SYSTEM, solve_nonlinear_system, review_nonlinear_system_fixtures, review_nonlinear_system_problem
 from elementary_math_oracle import ELEMENTARY, solve_elementary
@@ -260,6 +262,9 @@ def solve(public):
 
 
 def solve_family(public):
+    for clause in (clause_place_value, clause_transformation):
+        if clause.handles(public):
+            return clause.solve(public)
     oracle = FAMILY_ORACLE_FOR.get(public["templateId"])
     if oracle is not None:
         return oracle.solve(public)
@@ -645,6 +650,10 @@ def review(stream):
         nonlocal area_volume_equalities
         public = problem['public']
         template, seed = public['templateId'], public['seed']
+        for clause in (clause_place_value, clause_transformation):
+            if clause.handles(public):
+                clause.review_problem(problem)
+                return
         solved = solve_family(public)
         family = FAMILY_ORACLE_FOR.get(template)
         if family is not None and not family.returns_answer:

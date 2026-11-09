@@ -1,3 +1,4 @@
+import { withClauseVariants } from "./clause-variants";
 import { article } from "./agreement";
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
@@ -1072,7 +1073,12 @@ export function similarityTrigCase(
     caseKey: `${c.prompt}${JSON.stringify(c.figure ?? null)}`,
   };
 }
-export const generateSimilarityTrigProblem = (
+export const generateSimilarityTrigProblemLegacy = (
   id: string,
   seed: string,
 ): GeneratedProblem => similarityTrigCase(id, seed).problem;
+
+export const generateSimilarityTrigProblem = withClauseVariants(
+  similarityTrigTemplates,
+  generateSimilarityTrigProblemLegacy,
+);

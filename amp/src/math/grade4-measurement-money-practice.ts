@@ -1,3 +1,4 @@
+import { withClauseVariants } from "./clause-variants";
 import { createHash } from "node:crypto";
 import { article, count } from "./agreement";
 import type {
@@ -1207,7 +1208,7 @@ export function grade4MeasurementMoneyCase(templateId: string, seed: string) {
   throw new Error(`${templateId}: no instance for ${seed} (${last})`);
 }
 
-export function generateGrade4MeasurementMoneyProblem(
+export function generateGrade4MeasurementMoneyProblemLegacy(
   templateId: string,
   seed: string,
 ) {
@@ -1293,3 +1294,8 @@ export const grade4MeasurementMoneyGlossary: Record<
     noLink: ["quarter", "quarters"],
   },
 };
+
+export const generateGrade4MeasurementMoneyProblem = withClauseVariants(
+  grade4MeasurementMoneyTemplates,
+  generateGrade4MeasurementMoneyProblemLegacy,
+);
