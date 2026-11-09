@@ -19,6 +19,8 @@ const older = {
     "multi-part-choice-v1",
     "figure-choice-v1",
     "structured-work-v1",
+    "multi-part-cards-v1",
+    "line-plot-build-v1",
   ],
   figureCapabilities: figureCapabilities.filter((c) => c !== "scenes-v2"),
 };

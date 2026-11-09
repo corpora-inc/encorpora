@@ -160,13 +160,15 @@ test("guess chance comes from each family's answer schema and is never understat
         response.kind,
         template.requiredResponseCapability === "multi-select-v1"
           ? "multi-select"
-          : template.requiredResponseCapability === "point-plot-v1"
-            ? "point-plot"
-            : template.requiredResponseCapability === "multi-part-choice-v1"
-              ? "multi-part-choice"
-              : template.requiredResponseCapability === "figure-choice-v1"
-                ? "figure-choice"
-                : "choice",
+          : template.requiredResponseCapability === "line-plot-build-v1"
+            ? "line-plot-build"
+            : template.requiredResponseCapability === "point-plot-v1"
+              ? "point-plot"
+              : template.requiredResponseCapability === "multi-part-choice-v1"
+                ? "multi-part-choice"
+                : template.requiredResponseCapability === "figure-choice-v1"
+                  ? "figure-choice"
+                  : "choice",
         template.id,
       );
       if (response.kind === "choice" || response.kind === "figure-choice")

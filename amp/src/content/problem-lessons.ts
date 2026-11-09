@@ -171,7 +171,8 @@ export function problemLesson(
   let example = generateProblem(templateId, `${seed}:lesson:0`);
   const repeatsProblem = (p: typeof example) => {
     if (
-      learnerProblem?.public.response.kind === "point-plot" &&
+      (learnerProblem?.public.response.kind === "point-plot" ||
+        learnerProblem?.public.response.kind === "line-plot-build") &&
       learnerProblem.public.templateId === p.public.templateId &&
       gradeAnswer(learnerProblem, p.answer)
     )
@@ -238,10 +239,27 @@ export function problemLesson(
       }
     }
   const response = example.public.response;
+  // A completed plot replaces the source figure in its worked example.
+  // Keep table measurements in the prompt so the example stands on its own.
+  const plotSource =
+    response.kind === "line-plot-build" &&
+    example.public.figure?.kind === "scene"
+      ? example.public.figure.scene.elements.find((e) => e.type === "lineTable")
+      : undefined;
+  const examplePrompt =
+    plotSource?.type === "lineTable"
+      ? `${example.public.prompt} Lengths: ${plotSource.rows
+          .slice(1)
+          .map((row) => (typeof row[1] === "string" ? row[1] : row[1]?.text))
+          .join(
+            ", ",
+          )} ${response.kind === "line-plot-build" ? response.axis.unit : ""}.`
+      : example.public.prompt;
   const answer =
     response.kind === "choice" ||
     response.kind === "multi-select" ||
     response.kind === "point-plot" ||
+    response.kind === "line-plot-build" ||
     response.kind === "multi-part-choice" ||
     response.kind === "figure-choice" ||
     response.kind === "structured-work"
@@ -305,7 +323,7 @@ export function problemLesson(
       watch ?? "",
       principle ?? "",
       ...terms.map((t) => t.meaning),
-      example.public.prompt,
+      examplePrompt,
       ...(choices ?? []),
       ...examplePartsTexts(parts),
       ...steps,
@@ -347,7 +365,7 @@ export function problemLesson(
     method,
     watch,
     example: {
-      prompt: example.public.prompt,
+      prompt: examplePrompt,
       ...(choices ? { choices } : {}),
       ...(parts ? { parts } : {}),
       // A private walkthrough of the example, when it has one, replaces its

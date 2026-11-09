@@ -7,6 +7,7 @@ import {
   isValidResponse,
 } from "../src/math/engine";
 import { plotPoints, serializePlot } from "../src/math/point-plot";
+import { linePlotCounts, linePlotValues } from "../src/math/line-plot-build";
 import {
   parseWorkDraft,
   rowShape,
@@ -91,7 +92,15 @@ export async function preparePracticeAnswer(
     });
   const response = practiceResponse(solution, correct);
   const submit = async () => {
-    if (schema.kind === "structured-work") {
+    if (schema.kind === "line-plot-build") {
+      const counts = linePlotCounts(schema, response);
+      for (const [i, v] of linePlotValues(schema).entries()) {
+        await page.locator(".line-build-column").nth(i).focus();
+        for (let n = 0; n < (counts[v] ?? 0); n++)
+          await page.keyboard.press("Enter");
+      }
+      await page.locator(".choice-submit:visible").click();
+    } else if (schema.kind === "structured-work") {
       const plan = parseWorkDraft(response)!;
       if (schema.mode === "order") {
         const order = schema.rows.map((row) => row.id);
@@ -270,7 +279,9 @@ export function practiceResponse(solution: GeneratedProblem, correct: boolean) {
   const schema = problem.response;
   let response = solution.answer;
   if (!correct) {
-    if (schema.kind === "choice" || schema.kind === "figure-choice")
+    if (schema.kind === "line-plot-build")
+      response = JSON.stringify({ counts: { [schema.axis.min]: 1 } });
+    else if (schema.kind === "choice" || schema.kind === "figure-choice")
       response = schema.options.find((o) => o.id !== solution.answer)!.id;
     else if (schema.kind === "multi-select") {
       const ids = parseSelection(solution.answer)!;
