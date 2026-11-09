@@ -299,6 +299,33 @@ export const clauseVariants = {
   ...trigonometryClauses,
 };
 
+const clauseResponses: Record<string, ResponseCapability[]> = {
+  "representative-sample-choice": [sc],
+  "sample-proportion-estimate": [sc],
+  "sample-estimates-plot": [sc, sw],
+  "scatter-association-choice": [ms, "point-plot-v1", sc],
+  "trend-slope-meaning": [sc],
+  "two-way-association-choice": [sc],
+  "two-way-missing": [sw],
+  "study-design-classify": [mp],
+  "margin-of-error-interval": [sw],
+  "relative-frequency-percent": [sw],
+  "nonlinear-data-model": ["point-plot-v1", sc],
+  "residual-function-fit": ["point-plot-v1", sc, sw, fc],
+  "correlation-choice": [sc],
+  "vector-components": ["point-plot-v1", fc, mp, sc],
+  "vector-resultant": [mp],
+  "matrix-data-reading": [sc],
+  "matrix-operations": [sc, sw],
+  "matrix-laws": [sc, mp],
+  "matrix-linear-system": [mp],
+  "special-angle-exact-value": [mp],
+  "trig-identity-value": [mp, sc],
+  "complementary-trig": [sc],
+  "oblique-triangle-solve": [sc, sw],
+  "triangle-law-reasoning": [sc, sw],
+};
+
 const descriptions: Record<string, string> = {
   "representative-sample-choice":
     "Choose representative sampling methods and judge whether samples support population generalizations.",
@@ -359,6 +386,12 @@ export function clauseMetadata(meta: TemplateMetadata): TemplateMetadata {
         version: 2,
         reprintsFrom: 1,
         description: descriptions[meta.id]!,
+        requiredResponseCapabilities: [
+          ...new Set([
+            ...(meta.requiredResponseCapabilities ?? []),
+            ...clauseResponses[meta.id]!,
+          ]),
+        ],
         ...(meta.id === "vector-resultant"
           ? { title: "Resultants of velocities and forces" }
           : {}),
