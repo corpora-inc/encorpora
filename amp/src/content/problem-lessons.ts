@@ -174,6 +174,19 @@ export function problemLesson(
     : clauseExtensions[templateId]
       ? template.version - 1
       : undefined;
+  // These clause tasks replace the figured number problem the lesson
+  // animation teaches. The worked example stays on the reprint unless
+  // the learner is already on that clause.
+  const classicFigure =
+    templateId === "number-bond-missing" ||
+    templateId === "three-addend-story" ||
+    templateId === "unknown-addend-story";
+  const exampleVersion =
+    !activeClause && classicFigure
+      ? 1
+      : learnerProblem && (!activeClause || activeClause === "legacy")
+        ? legacyVersion
+        : undefined;
   const generateProblem = (id: string, exampleSeed: string) =>
     (activeClause && activeClause !== "legacy"
       ? (clauseProblem(template, exampleSeed, activeClause) ??
@@ -183,9 +196,7 @@ export function problemLesson(
       id,
       exampleSeed,
       lessonFigures(template),
-      learnerProblem && (!activeClause || activeClause === "legacy")
-        ? legacyVersion
-        : undefined,
+      exampleVersion,
       responseCapabilities,
     );
   // The learner may see a newer figure surface than the example (which is
