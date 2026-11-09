@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
-import { generateProblem } from "../src/math/engine.js";
+import { generateProblem } from "./fixtures/pre-clause-problem";
 
 test("independent fraction-rate review reads singular units without accepting wrong rates or units", () => {
   const problems = Array.from({ length: 256 }, (_, seed) =>
