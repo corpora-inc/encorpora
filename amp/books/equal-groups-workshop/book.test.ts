@@ -59,13 +59,23 @@ test("each task maps to real scoped curriculum and no mapping claims complete ma
     assert.ok(a.unassessedRequirements.length);
     assert.ok(a.scope.trim());
   }
+  // Editorial relevance is specific to the authored task; a valid standard
+  // need not be in the generated-practice crosswalk for this skill.
+  assert.deepEqual(
+    equalGroupsAlignments.find((a) => a.id === "entry-equal-groups")!
+      .standardIds,
+    ["3.OA.A.1"],
+  );
+  assert.deepEqual(
+    equalGroupsAlignments.find((a) => a.id === "parity")!.standardIds,
+    ["2.OA.C.3"],
+  );
   const sample = equalGroupsAlignments[0]!;
   for (const invalid of [
     { ...sample, skillId: "missing" },
     { ...sample, pageIds: ["missing"] },
     { ...sample, taskIds: ["absent"] },
     { ...sample, standardIds: ["3.OA.fake"] },
-    { ...sample, standardIds: ["2.OA.C.3"] },
     { ...sample, templateIds: ["missing"] },
     { ...sample, templateIds: ["divide-facts"] },
     { ...sample, unassessedRequirements: [] },
