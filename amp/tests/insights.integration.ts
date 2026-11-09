@@ -131,6 +131,12 @@ test(
         201,
       );
 
+      // A family's unnamed child who used 12 of the free problems: free
+      // practice is the trial now, and its learners join the same counts.
+      await pool.query(
+        "INSERT INTO amp_learners(id,account_id,name,birth_year,free_online_used) VALUES($1,'household-two','Fixture child',2016,12)",
+        [randomUUID()],
+      );
       const window = {
         from: new Date(Date.now() - 86_400_000),
         to: new Date(Date.now() + 60_000),
@@ -165,11 +171,12 @@ test(
       const strand = report.strands.find((s) => s.strand === skill.strand)!;
       assert.equal(strand.learners, 2);
       assert.equal(strand.answered, 6);
-      assert.equal(report.trial.started, 1);
+      // The old trial (4 answers), the household's learner (2 free problems)
+      // and the child (12): past 1, 5, 10 and 20.
+      assert.equal(report.trial.started, 3);
       assert.deepEqual(
-        report.trial.reached.slice(0, 2).map((r) => r.trials),
-        [1, 0],
-        "the trial answered 4: past 1, not 5",
+        report.trial.reached.slice(0, 4).map((r) => r.trials),
+        [3, 1, 1, 0],
       );
       assert.deepEqual(
         report.reasons.find((r) => r.reason === "wrong-answer"),

@@ -324,12 +324,16 @@ async function retiredTrial({ search }: { search: Record<string, unknown> }) {
   const session = await queryClient
     .ensureQueryData(sessionOptions)
     .catch(() => null);
-  if (!session)
+  if (!session) {
+    // An old free-practice link signs up as one, keeping a funded program's
+    // context (the funding pages link here); an explicit return stays.
+    const carry = continuationSearch(search);
     throw redirect({
       to: "/sign-up",
-      search: { ...continuationSearch(search), return: undefined },
+      search: { ...carry, return: carry.return ?? "free-practice" },
       replace: true,
     });
+  }
   // A follow-up email's way back, now signed in: the follow-up is done.
   if (search.return === "free-practice")
     void fetch("/api/v1/parent-followup/complete", {

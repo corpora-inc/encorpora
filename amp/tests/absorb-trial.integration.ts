@@ -243,7 +243,7 @@ test(
     );
 
     await t.test(
-      "a family that already has a child keeps its children, and the trial stays",
+      "a family that already has a child gains the practised trial as another picture learner; an empty trial stays",
       async () => {
         const account = await parent(f.db);
         const fox = await f.repository.create(account, undefined, 2016);
@@ -257,17 +257,20 @@ test(
         const empty = await f.repository.createTrial(2014, emptyOwner);
         const client = await f.db.connect();
         try {
-          assert.equal(await absorbLiveTrial(client, account), 0);
+          // The trial screens are gone: a practised trial left behind would
+          // be out of reach, so it joins the family beside Fox.
+          assert.equal(await absorbLiveTrial(client, account), 1);
           // A trial nobody practised in carries nothing to keep.
           assert.equal(await absorbLiveTrial(client, emptyOwner), 0);
         } finally {
           client.release();
         }
-        assert.ok(
-          (await learnerRow(f.db, trial.learnerId)).account_id.startsWith(
-            "trial:",
-          ),
-        );
+        const moved = await learnerRow(f.db, trial.learnerId);
+        assert.equal(moved.account_id, account);
+        assert.equal(moved.name_pending, true);
+        assert.notEqual(moved.name, "Fox");
+        assert.equal(moved.free_online_used, 1);
+        assert.equal(await enrolled(f.db, trial.learnerId, account), 1);
         assert.ok(
           (await learnerRow(f.db, empty.learnerId)).account_id.startsWith(
             "trial:",

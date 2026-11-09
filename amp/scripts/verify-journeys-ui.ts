@@ -25,6 +25,7 @@ import {
 import { createServer } from "vite";
 import { secureChromium } from "../browser-security.mjs";
 import { registerFamilyRoutes } from "../src/family/routes";
+import { registerParentFollowupRoutes } from "../src/parent-followup/routes";
 import { registerSchoolRoutes } from "../src/schools/routes";
 import { registerStripeRoutes } from "../src/billing/stripe/routes";
 import { StripeGateway } from "../src/billing/stripe/gateway";
@@ -94,6 +95,8 @@ const accounts = await createAccounts(
     // A fresh secret each run: nothing here outlives the process.
     AMP_ACCOUNTS_SECRET: randomBytes(32).toString("hex"),
     NODE_ENV: "development",
+    // Sign-up records its follow-up intent, which carries a funded program.
+    AMP_PARENT_FOLLOWUP: "enabled",
   } as unknown as NodeJS.ProcessEnv),
 );
 const authenticate = refuseStudentTokens(accountsAuth(accounts));
@@ -193,6 +196,12 @@ const app = buildApp({
 /** The account mail path, captured: a parent's approval link comes from here. */
 const mail: { to: string; url: string }[] = [];
 await registerAccountRoutes(app, accounts, authenticate);
+await registerParentFollowupRoutes(app, {
+  pool: db,
+  authenticate,
+  origin,
+  enabled: true,
+});
 await registerFamilyRoutes(app, {
   pool: db,
   authenticate,
@@ -345,9 +354,11 @@ async function reloaded(page: Page) {
       await page.waitForLoadState("domcontentloaded");
     });
 }
-async function signUp(page: Page, name: string) {
+/** Creates an account on the sign-up form; `here` signs up on the page
+ * already open (its search, such as a funded program, carries on). */
+async function signUp(page: Page, name: string, here = false) {
   const email = `${name.split(" ")[0]!.toLowerCase()}-${randomUUID().slice(0, 8)}@journeys.example`;
-  await page.goto(`${origin}/sign-up`);
+  if (!here) await page.goto(`${origin}/sign-up`);
   const fallback = page.getByRole("button", { name: "Use a password instead" });
   const password = page.getByLabel("AMP password");
   await Promise.race([
@@ -358,7 +369,7 @@ async function signUp(page: Page, name: string) {
   await page.getByLabel("Email").fill(email);
   await password.fill(PASSWORD);
   await page.getByRole("button", { name: "Create account" }).click();
-  await page.waitForURL(/\/start$|\/family\/approve/);
+  await page.waitForURL(/\/start(\?|$)|\/family\/approve/);
   const session = await (
     await page.context().request.get(`${origin}/api/auth/get-session`)
   ).json();
@@ -1039,9 +1050,30 @@ async function journey7(
       page.url(),
     );
   }
+  // A funded program's link keeps its program through sign-up: the vendor
+  // line shows, and the follow-up records it.
+  await visit(page, `${origin}/try?program=ar-efa`);
+  await page.waitForURL(/\/sign-up\?/);
+  const carried = new URL(page.url()).searchParams;
+  check(
+    `${label} a funded link keeps its program`,
+    carried.get("program") === "ar-efa" &&
+      carried.get("return") === "free-practice",
+    page.url(),
+  );
+  await page.getByText("Approved Arkansas EFA vendor.").waitFor();
   await shot(page, 7, "signed-out", width, theme);
   // Signed up: the same link opens the starter (no place yet), then home.
-  await signUp(page, "Robin Fixture");
+  const { account } = await signUp(page, "Robin Fixture", true);
+  check(
+    `${label} the follow-up records the funded program`,
+    (
+      await db.query(
+        "SELECT program FROM amp_parent_followups WHERE user_id=$1",
+        [account.slice(4)],
+      )
+    ).rows[0]?.program === "ar-efa",
+  );
   await visit(page, `${origin}/try`);
   await page.waitForURL(/\/start$/);
   await heading(page, "What brings you to AMP?");

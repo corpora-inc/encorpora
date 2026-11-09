@@ -1234,17 +1234,54 @@ try {
       .getByText("Loading earned skills…", { exact: true })
       .waitFor();
     releaseProgress();
+    // The phone row's count paints once the record is in.
     await pendingPhone
-      .getByText(
-        "Sample learner A · Crystals grow with independent successes.",
-        {
-          exact: false,
-        },
-      )
+      .locator(".pathways-phone-summary", {
+        hasText: /^2 of \d+ skills illuminated$/,
+      })
       .waitFor();
   } finally {
     releaseProgress();
     await pendingPhone.close();
+  }
+
+  // The map remounts when the family's learner arrives. The catalog is asked
+  // for once, even when its first request is still on its way then.
+  const once = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  await fixture(once);
+  let catalogRequests = 0;
+  let catalogAsked!: () => void;
+  const asked = new Promise<void>((resolve) => {
+    catalogAsked = resolve;
+  });
+  once.on("request", (r) => {
+    if (!new URL(r.url()).pathname.endsWith("/catalog")) return;
+    catalogRequests++;
+    catalogAsked();
+  });
+  const learnersLoaded = once.waitForResponse((r) =>
+    new URL(r.url()).pathname.endsWith("/me"),
+  );
+  await once.route("**/api/v1/me", async (route) => {
+    await asked;
+    await route.fallback();
+  });
+  await once.route("**/api/v1/catalog", async (route) => {
+    await learnersLoaded;
+    await once.waitForTimeout(300);
+    await route.fallback().catch(() => undefined);
+  });
+  try {
+    await once.goto(`${origin}/pathways`);
+    await once
+      .locator(".pathways-phone-summary", {
+        hasText: /^2 of \d+ skills illuminated$/,
+      })
+      .waitFor();
+    await once.waitForLoadState("networkidle");
+    assert.equal(catalogRequests, 1, "the map asks for the catalog once");
+  } finally {
+    await once.close();
   }
 
   // Invalid direct and legacy skill URLs do not advertise an indexable skill.

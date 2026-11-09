@@ -506,6 +506,24 @@ test(
       assert.match(text, /purchase\s+1\s+/);
       assert.match(text, /buy_click:card\s+1\s+50\.0%/);
       assert.equal(text.includes(buyer), false, "aggregates only");
+      // Free practice has no Try button: a rendered problem is a try.
+      await visit(40, randomUUID(), [
+        { event: "landing_view", props: { referrer: "search" } },
+        { event: "video_play", props: { mix: "a" } },
+        { event: "problem_rendered", props: { mode: "practice" } },
+      ]);
+      const practised = await funnelReport(pool, {
+        from: new Date(start.getTime() + 40 * DAY),
+        to: new Date(start.getTime() + 41 * DAY),
+      });
+      assert.deepEqual(
+        practised.breakdowns.source.map((r) => [r.key, r.visitors, r.tried]),
+        [["search", 1, 1]],
+      );
+      assert.equal(
+        practised.filmMixes.find((m) => m.mix === "a")!.triedFree,
+        1,
+      );
     }),
 );
 

@@ -259,12 +259,23 @@ export async function insightsReport(
     };
   });
 
-  // The free trial: problems answered per trial started in the window.
+  // Free practice, per learner started in the window: the separate trial
+  // while it ran (answers per trial; saved = adopted), and since then each
+  // learner's own free problems (used of the 100; saved = now covered by a
+  // grant). Both stay in one count, so history doesn't fall out of it.
   const trialAnswers = (
     await q<{ answered: number; saved: boolean }>(
       `SELECT t.adopted_at IS NOT NULL AS saved,
          (SELECT count(*)::int FROM amp_attempts a WHERE a.learner_id=t.learner_id) AS answered
-       FROM amp_trials t WHERE t.created_at>=$1 AND t.created_at<$2`,
+       FROM amp_trials t WHERE t.created_at>=$1 AND t.created_at<$2
+       UNION ALL
+       SELECT EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active'
+           AND g.starts_at<=now() AND g.ends_at>now()) AS saved,
+         l.free_online_used AS answered
+       FROM amp_learners l
+       WHERE l.created_at>=$1 AND l.created_at<$2 AND l.free_online_used>0
+         AND l.account_id NOT LIKE 'trial:%'
+         AND NOT EXISTS(SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id)`,
     )
   ).map((row) => ({ answered: Number(row.answered), saved: row.saved }));
   const [events] = await q<{ placement: number; paywall: number }>(
