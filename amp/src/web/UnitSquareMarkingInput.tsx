@@ -23,6 +23,7 @@ export function UnitSquareMarkingInput({
   resetKey: number;
 }) {
   const [marks, setMarks] = useState<Set<number>>(() => new Set());
+  const [announcement, setAnnouncement] = useState("");
   const [cursor, setCursor] = useState(0);
   const refs = useRef(new Map<number, HTMLButtonElement>());
   const help = useId();
@@ -32,8 +33,11 @@ export function UnitSquareMarkingInput({
   );
   const first = response.cells[0]![1] * response.cols + response.cells[0]![0];
   const active = response.showEmptyGrid || shaded.has(cursor) ? cursor : first;
+  // Set iteration preserves tap order; removing a mark closes the numbering gap.
+  const numbers = new Map([...marks].map((index, order) => [index, order + 1]));
   useEffect(() => {
     setMarks(new Set());
+    setAnnouncement("");
   }, [resetKey, resolved]);
   function move(index: number, direction: string) {
     let col = index % response.cols,
@@ -78,12 +82,14 @@ export function UnitSquareMarkingInput({
         <span>{response.unit}</span>
       </div>
       <p id={help} className="square-marking-help">
-        Tap a square to mark it. Tap again to undo.
+        Tap squares to number them. Tap again to undo.
       </p>
       <p id={description} className="sr-only">
         {unitSquareRowDescription(response)} Use arrow keys to move. Enter or
-        Space marks or unmarks a square. Marks help you count; only the area you
-        enter is checked.
+        Space marks or unmarks a square. Numbers follow the order you tap;
+        removing a mark renumbers later squares. When you have counted every
+        shaded square, the last number is the area. Only the area you enter is
+        checked.
       </p>
       <div
         className="square-marking-grid"
@@ -96,7 +102,9 @@ export function UnitSquareMarkingInput({
           const col = index % response.cols,
             row = Math.floor(index / response.cols);
           const inside = shaded.has(index),
-            marked = marks.has(index);
+            number = numbers.get(index),
+            marked = number !== undefined;
+          const location = `Square at row ${row + 1}, column ${col + 1}`;
           if (!inside && !response.showEmptyGrid)
             return <span key={index} aria-hidden="true" />;
           const edges = inside
@@ -121,7 +129,7 @@ export function UnitSquareMarkingInput({
               data-row={row}
               data-shaded={inside}
               data-tile={response.tile}
-              aria-label={`Row ${row + 1}, column ${col + 1}, ${inside ? "shaded" : "unshaded"}, ${marked ? "marked" : "not marked"}`}
+              aria-label={`${location}, ${marked ? `number ${number}` : "not marked"}, ${inside ? "shaded" : "unshaded"}`}
               aria-pressed={marked}
               aria-disabled={locked}
               tabIndex={resolved ? -1 : index === active ? 0 : -1}
@@ -135,12 +143,15 @@ export function UnitSquareMarkingInput({
               onClick={() => {
                 if (locked) return;
                 setCursor(index);
-                setMarks((previous) => {
-                  const next = new Set(previous);
-                  if (next.has(index)) next.delete(index);
-                  else next.add(index);
-                  return next;
-                });
+                const next = new Set(marks);
+                if (marked) next.delete(index);
+                else next.add(index);
+                setMarks(next);
+                setAnnouncement(
+                  marked
+                    ? `${location}, unmarked. Later squares renumbered. `
+                    : `${location}, number ${next.size}. `,
+                );
               }}
             >
               {inside && (
@@ -183,9 +194,7 @@ export function UnitSquareMarkingInput({
                 data-marked={marked}
                 aria-hidden="true"
               >
-                <svg viewBox="0 0 24 24">
-                  <path d="M7 7L17 17M17 7L7 17" />
-                </svg>
+                {number}
               </span>
             </button>
           );
@@ -193,13 +202,19 @@ export function UnitSquareMarkingInput({
       </div>
       <div className="square-marking-tools" aria-hidden={resolved || undefined}>
         <output role="status" aria-live="polite" aria-atomic="true">
-          <strong>{marks.size}</strong> marked
+          <span className="sr-only">{announcement}</span>
+          <span className="square-marking-count">
+            <strong>{marks.size}</strong> marked
+          </span>
         </output>
         <button
           type="button"
           className="secondary"
           disabled={locked || marks.size === 0}
-          onClick={() => setMarks(new Set())}
+          onClick={() => {
+            setMarks(new Set());
+            setAnnouncement("Marks reset. ");
+          }}
         >
           Reset marks
         </button>

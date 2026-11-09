@@ -146,6 +146,9 @@ async function promptVisible(page: Page) {
   assert.ok(visible, "Prompt is never clipped under the app header");
 }
 async function countVisible(page: Page) {
+  // Short landscape screens scroll the counting surface above the answer dock.
+  if (page.viewportSize()!.height < 740)
+    await page.locator(".square-marking-tools").scrollIntoViewIfNeeded();
   assert.ok(
     await page.locator(".square-marking-tools").evaluate((node) => {
       const tools = node.getBoundingClientRect();
@@ -158,11 +161,70 @@ async function countVisible(page: Page) {
       const overlaps = dock.left < tools.right && dock.right > tools.left;
       return (
         tools.top >= stage.top &&
-        tools.bottom <= Math.min(stage.bottom, overlaps ? dock.top : innerHeight)
+        tools.bottom <=
+          Math.min(stage.bottom, overlaps ? dock.top : innerHeight)
       );
     }),
     "The running count and reset are visible above the answer dock",
   );
+}
+async function numberedSquares(page: Page) {
+  const marked = page.locator('.square-marking-cell[aria-pressed="true"]');
+  const numbers = await marked.evaluateAll((nodes) =>
+    nodes.map((node) => {
+      const mark = node.querySelector<HTMLElement>(".square-marking-mark")!;
+      const range = document.createRange();
+      range.selectNodeContents(mark);
+      const text = range.getBoundingClientRect();
+      const cell = node.getBoundingClientRect();
+      const luminance = (color: string) => {
+        const channels = color
+          .match(/[\d.]+/g)!
+          .slice(0, 3)
+          .map(Number);
+        return channels.reduce((total, channel, i) => {
+          const value = channel / 255;
+          const linear =
+            value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+          return total + linear * [0.2126, 0.7152, 0.0722][i]!;
+        }, 0);
+      };
+      const ink = luminance(getComputedStyle(mark).color);
+      const paper = luminance(getComputedStyle(node).backgroundColor);
+      return {
+        number: Number(mark.textContent),
+        label: node.getAttribute("aria-label"),
+        row: Number(node.getAttribute("data-row")) + 1,
+        col: Number(node.getAttribute("data-col")) + 1,
+        contrast: (Math.max(ink, paper) + 0.05) / (Math.min(ink, paper) + 0.05),
+        legible:
+          parseFloat(getComputedStyle(mark).fontSize) >= 18 &&
+          text.width > 0 &&
+          text.left >= cell.left + 4 &&
+          text.right <= cell.right - 4 &&
+          text.top >= cell.top + 4 &&
+          text.bottom <= cell.bottom - 4,
+      };
+    }),
+  );
+  assert.deepEqual(
+    numbers.map((n) => n.number).sort((a, b) => a - b),
+    Array.from({ length: numbers.length }, (_, i) => i + 1),
+    "Every mark has a consecutive count, with no gaps or duplicates",
+  );
+  for (const n of numbers) {
+    assert.ok(n.legible, `Number ${n.number} fits legibly inside its square`);
+    assert.ok(
+      n.contrast >= 4.5,
+      `Number ${n.number} has readable text contrast (${n.contrast})`,
+    );
+    assert.ok(
+      n.label?.startsWith(
+        `Square at row ${n.row}, column ${n.col}, number ${n.number},`,
+      ),
+      "The accessible square name includes its current number",
+    );
+  }
 }
 async function visibleCells(page: Page) {
   const cells = page.locator(".square-marking-cell");
@@ -199,7 +261,9 @@ async function visibleCells(page: Page) {
 try {
   for (const theme of ["light", "dark"] as const) {
     for (const [width, height] of [
+      [568, 320],
       [320, 740],
+      [320, 568],
       [390, 844],
       [768, 1024],
       [1280, 900],
@@ -217,7 +281,8 @@ try {
       await page.goto("http://127.0.0.1:4562/overview");
       await chooseLearner(page, learner.id);
       for (const base of fixtures) {
-        const tag = `${base.public.templateId}-${width}-${theme}`;
+        const size = height! < 740 ? `${width}x${height}` : width;
+        const tag = `${base.public.templateId}-${size}-${theme}`;
         for (const correct of [true, false]) {
           const p = structuredClone(base);
           p.public.id = randomBytes(32).toString("hex");
@@ -277,7 +342,14 @@ try {
             assert.equal(await first.getAttribute("aria-pressed"), "true");
             assert.match(
               (await first.getAttribute("aria-label")) ?? "",
-              /Row 1, column 1, shaded, marked/,
+              /Square at row 1, column 1, number 1, shaded/,
+            );
+            assert.match(
+              (await page
+                .getByRole("status")
+                .filter({ has: page.locator(".square-marking-count") })
+                .textContent()) ?? "",
+              /Square at row 1, column 1, number 1\. 1 marked/,
             );
             await stable(page, before);
             await first.click();
@@ -316,6 +388,51 @@ try {
               0,
             );
             await stable(page, before);
+            // Deliberately count out of reading order, remove the middle tap,
+            // then add it back: numbering follows taps, never grid position.
+            const middle = cells.nth(Math.floor((await cells.count()) / 2));
+            await cells.last().click();
+            await first.click();
+            await middle.click();
+            assert.equal(
+              await cells.last().locator(".square-marking-mark").textContent(),
+              "1",
+            );
+            assert.equal(
+              await first.locator(".square-marking-mark").textContent(),
+              "2",
+            );
+            assert.equal(
+              await middle.locator(".square-marking-mark").textContent(),
+              "3",
+            );
+            await first.click();
+            assert.equal(
+              await middle.locator(".square-marking-mark").textContent(),
+              "2",
+            );
+            assert.match(
+              (await page.locator(".square-marking output").textContent()) ??
+                "",
+              /unmarked\. Later squares renumbered/,
+            );
+            await first.click();
+            assert.equal(
+              await first.locator(".square-marking-mark").textContent(),
+              "3",
+            );
+            await numberedSquares(page);
+            await reset.click();
+            // The 5 × 6 grid exercises every permitted count, including 30.
+            // Scratch work may include an unshaded cell without being graded.
+            for (let i = 0; i < (await cells.count()); i++)
+              await cells.nth(i).click();
+            await numberedSquares(page);
+            assert.equal(
+              await cells.last().locator(".square-marking-mark").textContent(),
+              String(await cells.count()),
+            );
+            await reset.click();
             const lastRow = await cells.last().getAttribute("data-row");
             const lastColumn = await cells.last().getAttribute("data-col");
             await page
@@ -352,8 +469,14 @@ try {
           for (let i = 0; i < (await shaded.count()); i++)
             await shaded.nth(i).click();
           assert.equal(
-            await page.locator(".square-marking output").textContent(),
+            await page.locator(".square-marking-count").textContent(),
             `${p.answer} marked`,
+          );
+          await numberedSquares(page);
+          assert.equal(
+            await shaded.last().locator(".square-marking-mark").textContent(),
+            p.answer,
+            "After counting the shape, the last number is its area",
           );
           await stable(page, before);
           await promptVisible(page);
@@ -411,7 +534,9 @@ try {
           );
           await stable(page, before);
           await visibleCells(page);
-          await page.locator(".practice-celebration").waitFor({ state: "hidden" });
+          await page
+            .locator(".practice-celebration")
+            .waitFor({ state: "hidden" });
           await promptVisible(page);
           await page.screenshot({
             path: `${shots}/${tag}-${correct ? "correct" : "incorrect"}.png`,
@@ -475,8 +600,12 @@ try {
     JSON.stringify(evidence, null, 2),
   );
   console.log(
-    `Unit-square marking (${engine}): ${evidence.length} graded cases passed; touch, keyboard, reset, scratch-only grading, 44px targets, header clearance, overflow, stable geometry and stored reports verified.`,
+    `Unit-square marking (${engine}): ${evidence.length} graded cases passed; tap-order numbering, renumbering, readable numbers, accessible names, touch, keyboard, reset, scratch-only grading, 44px targets, header clearance, overflow, stable geometry and stored reports verified.`,
   );
+} catch (error) {
+  const page = browser.contexts().at(-1)?.pages().at(-1);
+  await page?.screenshot({ path: `${shots}/failure-${engine}.png` });
+  throw error;
 } finally {
   await browser.close();
   await vite.close();

@@ -14,7 +14,7 @@ import { historicalTemplates } from "./historical-templates";
  * schema. tests/frontier-guessing.test.ts checks far more seeds against it. */
 const SAMPLE_SEEDS = 16;
 const STRUCTURED_SEEDS = 128;
-/** Floors for variable multi-part families whose high-guessability variants
+/** Floors for variable families whose high-guessability variants
  * are rarer than the deterministic sample. Keep these in sync with the
  * generator-variation audit in frontier-guessing.test.ts. */
 const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
@@ -34,6 +34,12 @@ const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
   // Two factors among three or four choices, or three multiples among four or five.
   "factor-pairs-select": 1 / 3,
   "multiples-select": 1 / 4,
+  // Equal intersection coordinates collapse a distractor, leaving three choices.
+  "graphical-solution-table": 1 / 3,
+  // Four blanks with reusable cards can share a tray of only four values.
+  "tile-then-multiply": 1 / 256,
+  // Split rectangles have four reusable blanks and at least five tray values.
+  "split-tiled-count": 1 / 625,
 };
 /** An unregistered choice family is scored as the most guessable choice: two
  * options. Overstating the guess chance only discounts a correct answer. */
@@ -50,8 +56,7 @@ const byId = new Map(
 // is computed on first use. Sampling a family takes up to 2 s of CPU, too long
 // to pay on a request thread.
 declare const __AMP_GUESS_CHANCES__:
-  | Readonly<Record<string, number>>
-  | undefined;
+  Readonly<Record<string, number>> | undefined;
 const built =
   typeof __AMP_GUESS_CHANCES__ === "undefined"
     ? []

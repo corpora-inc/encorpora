@@ -40,6 +40,7 @@
   }
 }
 .square-marking-cell {
+  --square-cell-fill: var(--color-figure-paper);
   position: relative;
   aspect-ratio: 1;
   min-width: 44px;
@@ -48,21 +49,22 @@
   padding: 0;
   border: 1px solid var(--color-figure-grid);
   border-radius: 0;
-  background: var(--color-figure-paper);
+  background: var(--square-cell-fill);
   color: var(--color-figure-ink);
   touch-action: manipulation;
   transform: none !important;
   filter: none !important;
 }
 .square-marking-cell[data-shaded="true"] {
-  background: var(--color-figure-accent-fill);
+  --square-cell-fill: var(--color-figure-accent-fill);
 }
 .square-marking-cell[data-shaded="true"]:is(
     [data-tile="sticky"],
     [data-tile="cracker"]
   ),
 .square-marking-swatch:is([data-tile="sticky"], [data-tile="cracker"]) {
-  background: var(--color-figure-gold-fill);
+  --square-cell-fill: var(--color-figure-gold-fill);
+  background: var(--square-cell-fill);
 }
 .square-marking-boundary {
   position: absolute;
@@ -92,25 +94,26 @@
 }
 .square-marking-mark {
   position: absolute;
-  inset: 22%;
+  inset: 0;
   display: grid;
   place-items: center;
-  border-radius: 50%;
-  background: var(--color-figure-ink);
-  color: var(--color-figure-paper);
+  color: var(--color-primary);
+  /* Two digits fit inside the smallest 44px cell. A fine paper halo separates
+     the writing from tile details without covering the unit picture. */
+  font-size: 1.25rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  text-shadow:
+    0 1px var(--square-cell-fill),
+    1px 0 var(--square-cell-fill),
+    0 -1px var(--square-cell-fill),
+    -1px 0 var(--square-cell-fill);
   visibility: hidden;
   pointer-events: none;
 }
 .square-marking-mark[data-marked="true"] {
   visibility: visible;
-}
-.square-marking-mark svg {
-  width: 100%;
-  height: 100%;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.5;
-  stroke-linecap: round;
 }
 .square-marking-tools {
   display: flex;
@@ -141,4 +144,12 @@
 }
 .problem-stage:has(.square-marking) {
   justify-content: flex-start;
+  /* Leave the answer controls on screen in short landscape viewports. */
+  min-height: 44px;
+}
+@media (max-height: 500px) {
+  .shell.immersive:has(.square-marking) .feedback {
+    /* Keep a complete counting row reachable above the scrollable result. */
+    max-height: calc(100dvh - 164px);
+  }
 }

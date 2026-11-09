@@ -129,6 +129,53 @@ test("the recorded below-catalog trial no longer lifts fractions two grades on o
   assert.equal(after.adaptive!.level, before.adaptive!.level);
 });
 
+test("area card guessing floors cover every permitted set of dimensions", () => {
+  // Independently enumerate distinct numerical choices, then four reusable
+  // slots: n choices per slot give n^4 equally likely submitted answers.
+  let tileMinimum = Infinity,
+    splitMinimum = Infinity;
+  for (let a = 3; a <= 9; a++) {
+    for (let b = 3; b <= 10; b++) {
+      if (a === b) continue;
+      for (let k = 1; k < a; k++) {
+        const choices = Math.min(
+          6,
+          new Set([b, a, a * b, k * b, a + b, 2 * (a + b), k * a]).size,
+        );
+        tileMinimum = Math.min(tileMinimum, choices);
+      }
+    }
+    for (let b = 2; b <= 8; b++) {
+      for (let c = 2; c <= 8; c++) {
+        if (b === c || b + c > 12) continue;
+        const choices = Math.min(
+          6,
+          new Set([
+            a * b,
+            a * c,
+            a * (b + c),
+            a + b + c,
+            b * c,
+            a * b * c,
+            b + c,
+          ]).size,
+        );
+        splitMinimum = Math.min(splitMinimum, choices);
+      }
+    }
+  }
+  assert.equal(tileMinimum, 4);
+  assert.equal(splitMinimum, 5);
+  assert.equal(guessChanceOf("tile-then-multiply"), 1 / tileMinimum ** 4);
+  assert.equal(guessChanceOf("split-tiled-count"), 1 / splitMinimum ** 4);
+  const intersection = generateProblem("graphical-solution-table", "audit:13");
+  assert.equal(intersection.public.response.kind, "choice");
+  if (intersection.public.response.kind !== "choice")
+    throw new Error("response");
+  assert.equal(intersection.public.response.options.length, 3);
+  assert.equal(guessChanceOf("graphical-solution-table"), 1 / 3);
+});
+
 test("guess chance comes from each family's answer schema and is never understated", () => {
   let choiceFamilies = 0;
   for (const template of templates) {
@@ -157,20 +204,14 @@ test("guess chance comes from each family's answer schema and is never understat
     choiceFamilies++;
     assert.ok(chance > 0 && chance <= 1 / 2, `${template.id}: ${chance}`);
     for (let i = 0; i < 120; i++) {
-      const response = generateProblem(template.id, `audit:${i}`).public
-        .response;
-      assert.equal(
-        response.kind,
-        template.requiredResponseCapability === "multi-select-v1"
-          ? "multi-select"
-          : template.requiredResponseCapability === "point-plot-v1"
-            ? "point-plot"
-            : template.requiredResponseCapability === "multi-part-choice-v1"
-              ? "multi-part-choice"
-              : template.requiredResponseCapability === "figure-choice-v1"
-                ? "figure-choice"
-                : "choice",
-        template.id,
+      const problem = generateProblem(template.id, `audit:${i}`);
+      const response = problem.public.response;
+      // Clause variants can mix answer formats within one family. Audit the
+      // actual instance, including structured work with private grading rules.
+      // The independent enumerations below also check its public answer space.
+      assert.ok(
+        chance >= problemGuessChance(problem) - 1e-12,
+        `${template.id} seed ${i}: ${problemGuessChance(problem)} > ${chance}`,
       );
       if (response.kind === "choice" || response.kind === "figure-choice")
         assert.ok(
