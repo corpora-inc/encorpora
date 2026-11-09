@@ -16,7 +16,10 @@ import { Dialog } from "../../../ui/Dialog";
 import { EmptyState } from "../../../ui/EmptyState";
 import { Wave } from "../../../ui/Loading";
 import { Segmented } from "../../../ui/Segmented";
+import { meOptions } from "../../../lib/query";
+import { FreeWorkbooksUsed } from "../../workbooks/FreeWorkbooksUsed";
 import { dateLabel, defaultPaper } from "../../workbooks/model";
+import { currentSession } from "../api";
 import { useStaffSession } from "../classes/api";
 import { ClassFrame } from "../classes/ClassFrame";
 import { PageHead } from "../parts";
@@ -31,6 +34,7 @@ import {
   type Tile,
 } from "./stack-run";
 import styles from "./Stack.module.css";
+import { freeWorkbooksUsed, printableStudents } from "./stack-selection";
 
 const dayOf = (iso: string) =>
   new Date(`${iso}T12:00:00Z`).toLocaleDateString(undefined, {
@@ -224,6 +228,12 @@ function Stack({
 }) {
   const run = useStackRun(classId);
   const [parts, setParts] = useState(false);
+  const me = useQuery(meOptions(currentSession())).data;
+  // A family's own parent continues with AMP; a class or school has no
+  // checkout, so its next step is to talk to us.
+  const next =
+    me?.signedIn && me.familyClass?.classId === classId ? "purchase" : "talk";
+  const used = data.students.filter(freeWorkbooksUsed);
   const date =
     search.date && search.date >= data.today && search.date <= data.lastDate
       ? search.date
@@ -232,23 +242,6 @@ function Stack({
   const paper = search.paper ?? defaultPaper();
   const focus = data.focus;
   const skill = focus?.id;
-  const seated = useMemo(
-    () => data.students.filter((student) => student.seated),
-    [data.students],
-  );
-  // "," is a teacher who cleared everyone; a list with nobody real in it is a bad
-  // link, and falls back to the whole class.
-  const none = search.students === ",";
-  const chosen = useMemo(() => {
-    if (none) return [];
-    const named = new Set((search.students ?? "").split(",").filter(Boolean));
-    const known = seated.filter((student) => named.has(student.id));
-    return known.length ? known : seated;
-  }, [none, search.students, seated]);
-  const chosenIds = useMemo(
-    () => new Set(chosen.map((student) => student.id)),
-    [chosen],
-  );
   const onDate = data.recent.filter((entry) => entry.date === date);
   const existing =
     !skill && !search.set
@@ -256,8 +249,26 @@ function Stack({
       : undefined;
   const newest = Math.max(0, ...onDate.map((entry) => entry.number));
   const number = search.set ?? existing?.number ?? newest + 1;
-  const reprint = onDate.some(
+  const issued = onDate.find(
     (entry) => entry.number === number && entry.minutes === minutes,
+  );
+  const reprint = !!issued;
+  const eligible = useMemo(
+    () => printableStudents(data.students, data.recent, date, number, minutes),
+    [data.students, data.recent, date, number, minutes],
+  );
+  // "," is a teacher who cleared everyone; a list with nobody real in it is a bad
+  // link, and falls back to the whole class.
+  const none = search.students === ",";
+  const chosen = useMemo(() => {
+    if (none) return [];
+    const named = new Set((search.students ?? "").split(",").filter(Boolean));
+    const known = eligible.filter((student) => named.has(student.id));
+    return known.length ? known : eligible;
+  }, [none, search.students, eligible]);
+  const chosenIds = useMemo(
+    () => new Set(chosen.map((student) => student.id)),
+    [chosen],
   );
   const key = [
     date,
@@ -283,9 +294,9 @@ function Stack({
     set({
       students: !next.size
         ? ","
-        : next.size === seated.length
+        : next.size === eligible.length
           ? undefined
-          : seated
+          : eligible
               .filter((student) => next.has(student.id))
               .map((student) => student.id)
               .join(","),
@@ -332,6 +343,7 @@ function Stack({
       return here?.note
         ? `${ready} of ${printable} ready. ${here.note}`
         : `Stopped at ${ready} of ${printable}.`;
+    if (!eligible.length) return "No student here can get a new workbook.";
     if (!selected) return "Choose at least one student.";
     return `${count(selected, "workbook")}, about ${minutes} minutes each.${reprint ? " The same ones as last time." : ""}`;
   })();
@@ -395,9 +407,9 @@ function Stack({
         <div className={styles.studentsHead}>
           <h2 id="stack-students">
             {toggles
-              ? selected === seated.length
-                ? count(seated.length, "student")
-                : `${selected} of ${seated.length} students`
+              ? selected === eligible.length
+                ? count(eligible.length, "student")
+                : `${selected} of ${eligible.length} students`
               : count(ids.length, "student")}
           </h2>
           {data.canPrint &&
@@ -413,14 +425,18 @@ function Stack({
               <Button
                 variant="quiet"
                 className={styles.allNone}
-                style={toggles ? undefined : { visibility: "hidden" }}
+                style={
+                  toggles && eligible.length
+                    ? undefined
+                    : { visibility: "hidden" }
+                }
                 onClick={() =>
                   set({
-                    students: selected === seated.length ? "," : undefined,
+                    students: selected === eligible.length ? "," : undefined,
                   })
                 }
               >
-                {selected === seated.length ? "Clear all" : "Choose all"}
+                {selected === eligible.length ? "Clear all" : "Choose all"}
               </Button>
             ))}
         </div>
@@ -430,7 +446,9 @@ function Stack({
             const on = here
               ? here.students.includes(student.id)
               : chosenIds.has(student.id);
-            const seat = !student.seated || tile?.state === "seat";
+            const seat =
+              !eligible.some((entry) => entry.id === student.id) ||
+              tile?.state === "seat";
             return (
               <li key={student.id}>
                 <button
@@ -449,7 +467,9 @@ function Stack({
                     <span className={styles.tileName}>{student.name}</span>
                     <span className={styles.tileStatus}>
                       {seat
-                        ? "Needs a seat"
+                        ? used.includes(student)
+                          ? "Free workbooks used"
+                          : statusWord.seat
                         : tile
                           ? tile.state === "ready" && tile.problems
                             ? count(tile.problems, "problem")
@@ -464,6 +484,15 @@ function Stack({
             );
           })}
         </ul>
+        {/* From the class's data on first paint, whatever set is chosen, so
+            choosing never moves what follows. */}
+        {data.canPrint && used.length > 0 && (
+          <FreeWorkbooksUsed
+            next={next}
+            variant="secondary"
+            className={styles.used}
+          />
+        )}
       </section>
       {data.recent.length > 0 && (
         <section aria-labelledby="stack-recent" className={styles.recent}>

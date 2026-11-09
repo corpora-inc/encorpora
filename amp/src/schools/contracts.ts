@@ -131,15 +131,38 @@ export const createClassSchema = z.strictObject({
 });
 export type CreateClass = z.infer<typeof createClassSchema>;
 
-export const createStudentSchema = z.strictObject({
-  givenName: plainName,
-  familyName: plainName.optional(),
-  displayName: plainName.optional(),
-  email: email.optional(),
-  identifier: identifier.optional(),
-  gradeLevel: gradeLevelSchema.optional(),
-  classId: z.uuid().optional(),
-});
+export const createStudentSchema = z
+  .strictObject({
+    givenName: plainName.optional(),
+    familyName: plainName.optional(),
+    displayName: plainName.optional(),
+    email: email.optional(),
+    identifier: identifier.optional(),
+    gradeLevel: gradeLevelSchema.optional(),
+    birthYear: z.number().int().min(1900).max(2100).optional(),
+    classId: z.uuid().optional(),
+  })
+  .superRefine((input, context) => {
+    if (input.givenName !== undefined) return;
+    if (input.birthYear === undefined)
+      context.addIssue({
+        code: "custom",
+        path: ["birthYear"],
+        message: "A birth year is required",
+      });
+    for (const key of [
+      "familyName",
+      "displayName",
+      "email",
+      "identifier",
+    ] as const)
+      if (input[key] !== undefined)
+        context.addIssue({
+          code: "custom",
+          path: [key],
+          message: "Names and contact details require consent",
+        });
+  });
 export type CreateStudent = z.infer<typeof createStudentSchema>;
 
 export const addStaffSchema = z.strictObject({

@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import type { SemanticFigure, TemplateMetadata } from "./contracts";
 import {
   assemble,
@@ -5,6 +6,9 @@ import {
   type Draft,
   type Random,
 } from "./distribution-practice";
+import type { Element, PathOp } from "./scene/spec";
+import { scene } from "./scene/author";
+import { generatingVersion } from "./variation/axes";
 import {
   isSweepId,
   recordedSweepVariant,
@@ -50,14 +54,15 @@ export const numberMeasurementGapTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "area-tiling-distributive",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Area by splitting a rectangle",
     skillId: "rectangle-area",
     gradeBand: "3–5",
     difficultyOffset: 0.25,
     requiredResponseCapability: "single-choice-v1",
     description:
-      "Split a tiled rectangle into two parts to show a × (b + c) = a × b + a × c, and find the area of an L-shaped figure by splitting it into two rectangles.",
+      "Split a tiled rectangle into two parts to show a × (b + c) = a × b + a × c, find the area of an L-shaped figure by splitting it into two rectangles, and choose the number sentence for a partly tiled rectangle.",
   },
   {
     id: "estimate-reasonableness",
@@ -1559,6 +1564,141 @@ function fractionOfSet(r: Random): Built {
 
 /* ---------------------------------------------------------------------- */
 
+/** Family draw for a clause variant. Not the content stream. */
+function clauseStream(templateId: string, seed: string): Random {
+  let counter = 0;
+  return (lo, hi) => {
+    const span = hi - lo + 1;
+    const limit = Math.floor(0x100000000 / span) * span;
+    let n: number;
+    do
+      n = createHash("sha256")
+        .update(JSON.stringify([templateId, "clause-family", seed, counter++]))
+        .digest()
+        .readUInt32BE(0);
+    while (n >= limit);
+    return lo + (n % span);
+  };
+}
+const squareOps = (x: number, y: number): PathOp[] => [
+  ["M", x, y],
+  ["L", x + 1, y],
+  ["L", x + 1, y + 1],
+  ["L", x, y + 1],
+  ["Z"],
+];
+/** Partly tiled rectangle: k rows filled, the rest of the a × b rectangle blank. */
+function partialTileFigure(a: number, b: number, k: number): SemanticFigure {
+  const lines: PathOp[] = [];
+  for (let c = 0; c <= b; c++) lines.push(["M", c, 0], ["L", c, a]);
+  for (let row = 0; row <= a; row++) lines.push(["M", 0, row], ["L", b, row]);
+  const filled: PathOp[] = [];
+  for (let row = a - k; row < a; row++)
+    for (let c = 0; c < b; c++) filled.push(...squareOps(c, row));
+  const elements: Element[] = [
+    {
+      type: "path",
+      id: "tiled",
+      d: filled,
+      fill: "gold-fill",
+      stroke: "grid",
+      width: 1,
+    },
+    {
+      type: "path",
+      id: "grid",
+      d: lines,
+      fill: "none",
+      stroke: "grid",
+      width: 1,
+    },
+    {
+      type: "path",
+      id: "outline",
+      d: [
+        ["M", 0, 0],
+        ["L", b, 0],
+        ["L", b, a],
+        ["L", 0, a],
+        ["Z"],
+      ],
+      fill: "none",
+      stroke: "ink",
+      width: 2.5,
+    },
+    {
+      type: "text",
+      id: "rowLabel",
+      at: [-0.2, a / 2],
+      text: `${a} rows`,
+      align: [1, 0],
+      size: "sm",
+    },
+    {
+      type: "text",
+      id: "colLabel",
+      at: [b / 2, -0.25],
+      text: `${b} in a row`,
+      align: [0, 1],
+      size: "sm",
+    },
+  ];
+  return {
+    kind: "scene",
+    scene: scene(...elements).build({
+      width: 360,
+      maxHeight: 320,
+      note: `Tiled rows: ${k} of ${a}. Squares in a row: ${b}.`,
+    }),
+  };
+}
+/** Single-choice sibling of tile-then-multiply. Draws from `r`, which is the
+ * clause stream, never the legacy content stream. */
+function tileSentence(r: Random): Built {
+  for (let attempt = 0; attempt < 40; attempt++) {
+    const a = r(3, 9);
+    let b = r(3, 10);
+    if (b === a) b = b === 10 ? 3 : b + 1;
+    if (a === b) continue;
+    const k = r(1, a - 1);
+    const product = a * b;
+    const tiled = k * b;
+    const sum = a + b;
+    const around = 2 * sum;
+    const values = [product, tiled, sum, around];
+    if (new Set(values).size !== 4) continue;
+    const correct = `${a} × ${b} = ${product}`;
+    return {
+      variant: "tile-sentence",
+      figure: partialTileFigure(a, b, k),
+      prompt: `A rectangle has ${a} rows of ${b} unit squares. ${k} ${k === 1 ? "row is" : "rows are"} already tiled, and the rest are blank. Which number sentence tells how many unit squares cover the whole rectangle?`,
+      answer: "",
+      hint: `A full row has the same number of squares whether or not it is drawn yet. Use every row of the rectangle, not only the ${k} ${k === 1 ? "row" : "rows"} already tiled, and multiply rather than add the sides.`,
+      explanation: [
+        `Each row holds ${b} unit squares, and the whole rectangle has ${a} rows, not only the ${k} already tiled.`,
+        `${k} × ${b} = ${tiled} counts only the tiled rows.`,
+        `${a} × ${b} = ${product} counts every row. ${a} + ${b} = ${sum} adds the sides, and ${a} + ${b} + ${a} + ${b} = ${around} is the perimeter.`,
+      ],
+      choices: choicesFrom(r, correct, [
+        {
+          label: `${k} × ${b} = ${tiled}`,
+          feedback: `That counts only the ${k} tiled ${k === 1 ? "row" : "rows"}. The blank rows are part of the rectangle too.`,
+        },
+        {
+          label: `${a} + ${b} = ${sum}`,
+          feedback: "Adding the sides does not count the squares. Each of the rows holds several squares.",
+        },
+        {
+          label: `${a} + ${b} + ${a} + ${b} = ${around}`,
+          feedback:
+            "That is the distance around the rectangle, the perimeter. Area counts the squares inside.",
+        },
+      ]),
+    };
+  }
+  throw new Error("Need three distinct wrong choices");
+}
+
 const builders: Record<
   string,
   (r: Random, axes?: Record<string, string>) => Built
@@ -1596,10 +1736,22 @@ export function numberMeasurementGapCase(templateId: string, seed: string) {
   const axes = isSweepId(templateId)
     ? sweepChoose(templateId, seed)
     : undefined;
+  // Clause families sit on their own stream. Version 1 never draws from it,
+  // so the legacy content stream stays byte-for-byte.
+  const tilingSince = 2;
+  const tilingVersion = generatingVersion();
+  const tilingNew =
+    templateId === "area-tiling-distributive" &&
+    (tilingVersion == null || tilingVersion >= tilingSince);
+  const clause = tilingNew ? clauseStream(templateId, seed) : null;
+  const tilingFamily =
+    clause && clause(0, 1) === 1 ? "tile-sentence" : "legacy";
   for (let attempt = 0; attempt < 60; attempt++) {
     let draft: Built;
+    const rng = tilingFamily === "tile-sentence" && clause ? clause : r;
     try {
-      draft = build(r, axes);
+      draft =
+        tilingFamily === "tile-sentence" ? tileSentence(rng) : build(r, axes);
     } catch (error) {
       // Too few distinct wrong choices for these numbers: draw again.
       if (error instanceof Error && error.message.startsWith("Need three"))
@@ -1607,10 +1759,14 @@ export function numberMeasurementGapCase(templateId: string, seed: string) {
       throw error;
     }
     if (leaks(draft)) continue;
-    const problem = assemble(meta, seed, r, {
+    const problem = assemble(meta, seed, rng, {
       ...draft,
       explanation: [...(OPENERS[meta.id] ?? []), ...draft.explanation],
     });
+    if (tilingNew)
+      problem.public.templateVersion = tilingVersion ?? tilingSince;
+    if (draft.variant === "tile-sentence")
+      problem.variant = { id: "tile-sentence" };
     const variant = axes
       ? templateId === "estimate-reasonableness"
         ? (recordedSweepVariant(templateId, draft.variant, axes) ??

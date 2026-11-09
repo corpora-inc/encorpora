@@ -2,6 +2,51 @@ import { chainLesson } from "./chain-lesson-kit";
 
 export const clauseAdditionLessons = [
   chainLesson({
+    id: "decimal-model-written-method-lesson",
+    title: "Connect a decimal model to a calculation",
+    summary:
+      "Decimals name parts of a whole. Tenths divide one whole into ten equal parts; hundredths divide it into one hundred equal parts. A written calculation must use the same units as its model.",
+    templateIds: ["decimal-model-written-method"],
+    objectives: [
+      "Match a decimal model with a written equation.",
+      "Explain the place values used by the calculation.",
+    ],
+    openingTitle: "Keep track of one whole",
+    opening: [
+      "You need to read tenths and hundredths and multiply whole numbers. In 0.3, the 3 names three tenths. In 0.12, the 12 names twelve hundredths.",
+      "For addition or subtraction, put ones under ones, tenths under tenths and hundredths under hundredths. Aligning the decimal points keeps these units together.",
+      "For an area model, start with a square whose side length is one unit. Divide each side into ten equal lengths. The resulting hundred small squares each cover one hundredth of the whole square.",
+    ],
+    example: {
+      prompt:
+        "A rectangle is 0.3 unit wide and 0.4 unit tall inside a unit square. Find its area and explain the decimal places.",
+      steps: [
+        "Three columns and four rows cover $3\\times4=12$ small squares.",
+        "Each small square is one hundredth of a square unit, so the area is twelve hundredths.",
+        "$0.3\\times0.4=0.12$. Tenths times tenths give hundredths.",
+      ],
+      answer: "0.12 square unit",
+    },
+    methodTitle: "Match the units and the operation",
+    method: [
+      "Identify what one whole means in the model and which decimal values are given.",
+      "For addition and subtraction, align equal place values. For multiplication, count the area units.",
+      "For division in an area model, find the missing side. An area of 0.12 square unit and a height of 0.4 unit give a width of 0.3 unit.",
+      "Choose the equation and the reason that both describe the model.",
+    ],
+    formalTitle: "Why the units matter",
+    formal: [
+      "One tenth times one tenth is one hundredth: $(1/10)\\times(1/10)=1/100$.",
+      "Multiplication and division undo each other here: $0.3\\times0.4=0.12$ means $0.12\\div0.4=0.3$.",
+    ],
+    pitfalls: [
+      "Align decimal points when adding or subtracting, even if one number has more written digits.",
+      "Use the area unit in a product. Twelve small squares mean twelve hundredths of the whole, not twelve wholes.",
+    ],
+    parentGuide:
+      "Ask the learner to name one whole and one small unit before choosing an equation. Then ask why the calculation uses tenths or hundredths.",
+  }),
+  chainLesson({
     id: "three-digit-number-names-lesson",
     title: "Hundreds, tens and ones in words",
     summary:

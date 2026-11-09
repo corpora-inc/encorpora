@@ -3,14 +3,14 @@
 Only public wording, displayed options and figures determine an answer. The
 generated answer is read only by review_problem, as the value under test.
 Existing template IDs are routed by their owning oracle/central dispatcher;
-only the newly introduced number-name type is registered here.
+Standalone number-name and decimal-method types are registered here.
 """
 import ast
 import json
 import re
 from fractions import Fraction
 
-SUPPORTED = frozenset({'three-digit-number-names'})
+SUPPORTED = frozenset({'three-digit-number-names', 'decimal-model-written-method'})
 CHOICE_REVIEW = 'choice-response'
 NUMBER = r'-?\d+(?:\.\d+)?'
 
@@ -380,7 +380,7 @@ def solve(public):
         hundredths = int(a * 100) % 10 + (1 if sign == '+' else -1) * (int(b * 100) % 10)
         regroup = int(hundredths >= 10) if sign == '+' else int(hundredths < 0)
         return structured(public, [[hundredths % 10, regroup], [a+b if sign == '+' else a-b]])
-    if ident == 'decimal-area-model':
+    if ident in {'decimal-area-model', 'decimal-model-written-method'}:
         expression = re.search(r'model for (.+?)\? Choose', prompt)[1]
         answer = calc(expression)
         method = lambda label: '=' in label and label.split('=')[0] == expression and calc(label.split('=')[1]) == answer

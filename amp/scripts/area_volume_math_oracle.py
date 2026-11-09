@@ -192,6 +192,16 @@ def height_to_line(height, a, b, guides):
 
 def solve_triangle(public):
     prompt, figure = public['prompt'], public['figure']
+    cost = re.fullmatch(
+        r'The triangle is a sail\. Canvas costs \$(\d+)\$ for each square (foot|meter|inch|centimeter)\. '
+        r'What does the canvas cost, in dollars\?', prompt)
+    if cost:
+        unit = figure['unit']
+        require(unit in UNITS and cost[2] == UNITS[unit][0], 'Sail unit disagrees with the figure')
+        plural = UNITS[unit][1]
+        classic = (f'The figure shows a triangle with lengths in {plural}. '
+                   f'What is the area of the triangle, in square {plural}?')
+        return solve_triangle({**public, 'prompt': classic}) * int(cost[1])
     m = re.fullmatch(r'The figure shows a triangle with lengths in (\w+)\. What is the area of the triangle, in square (\w+)\?', prompt)
     require(m is not None, 'Unrecognized triangle prompt')
     vertices, labels, heights, guides, square = validate_measured(figure)
@@ -228,6 +238,25 @@ def parallel(u, v):
 
 def solve_decompose(public):
     prompt, figure = public['prompt'], public['figure']
+    cost = re.fullmatch(
+        r'A (garden|sign|barn end) is the (trapezoid|parallelogram|pentagon) shown\. '
+        r'(Sod|Paint|Siding) costs \$(\d+)\$ for each square (foot|meter|inch|centimeter)\. '
+        r'What does (the sod|the paint|the siding) cost, in dollars\?', prompt)
+    if cost:
+        unit = figure['unit']
+        require(unit in UNITS and cost[5] == UNITS[unit][0], 'Context unit disagrees with the figure')
+        require((cost[1], cost[2], cost[3], cost[6]) in {
+            ('garden', 'trapezoid', 'Sod', 'the sod'),
+            ('sign', 'parallelogram', 'Paint', 'the paint'),
+            ('barn end', 'pentagon', 'Siding', 'the siding'),
+        }, 'Context words do not match the shape')
+        plural = UNITS[unit][1]
+        classic = {
+            'trapezoid': f'The figure is a trapezoid: its top and bottom sides are parallel. Lengths are in {plural}. What is its area, in square {plural}?',
+            'parallelogram': f'The figure is a parallelogram with lengths in {plural}. What is its area, in square {plural}?',
+            'pentagon': f'The pentagon has right angles at its two bottom corners, and its top vertex is centered above the bottom side. Lengths are in {plural}. What is its area, in square {plural}?',
+        }[cost[2]]
+        return solve_decompose({**public, 'prompt': classic}) * int(cost[4])
     vertices, labels, heights, guides, square = validate_measured(figure)
     unit = figure['unit']
     n = len(vertices)
@@ -377,6 +406,52 @@ def rectilinear_area(vertices, labels, where):
 
 def solve_composite_area(public):
     prompt, figure = public['prompt'], public['figure']
+    house = re.fullmatch(
+        r'The figure is a rectangle (\d+) (\w+) wide and (\d+) (\w+) tall with a triangle on top\. '
+        r'The triangle is (\d+) (\w+) wide and (\d+) (\w+) tall\. What is its area, in square (\w+)\?', prompt)
+    if house:
+        vertices, labels, heights, _guides, _square = validate_measured(figure)
+        unit = figure['unit']
+        w, wall, tw, roof = (Fraction(int(house[i])) for i in (1, 3, 5, 7))
+        require(w == tw and min(w, wall, roof) > 0, 'House widths disagree')
+        for word, value in ((house[2], w), (house[4], wall), (house[6], tw), (house[8], roof)):
+            require_unit(word, unit, value, 'house')
+        require_plural(house[9], unit, 'house')
+        require(len(vertices) == 5 and labels[0] == w and labels[1] == wall and labels[4] == wall, 'House labels')
+        require(vertices[3][0] * 2 == vertices[0][0] + vertices[1][0], 'Roof is not centered')
+        require(len(heights) == 1 and heights[0][2] == roof, 'Roof height disagrees')
+        area = shoelace(vertices)
+        require(area == w * wall + w * roof / 2, 'House area disagrees with its pieces')
+        return area
+    atop = re.fullmatch(
+        r"The figure is a rectangle (\d+) (\w+) wide and (\d+) (\w+) tall with a trapezoid on top\. "
+        r"The trapezoid's parallel sides are (\d+) (\w+) and (\d+) (\w+), and its height is (\d+) (\w+)\. "
+        r'What is its area, in square (\w+)\?', prompt)
+    if atop:
+        vertices, labels, heights, _guides, _square = validate_measured(figure)
+        unit = figure['unit']
+        W, H, bottom, top, t = (Fraction(int(atop[i])) for i in (1, 3, 5, 7, 9))
+        require(W == bottom and 0 < top < W and H > 0 and t > 0, 'Trapezoid does not sit on that rectangle')
+        for word, value in ((atop[2], W), (atop[4], H), (atop[6], bottom), (atop[8], top), (atop[10], t)):
+            require_unit(word, unit, value, 'rectangle-trapezoid')
+        require_plural(atop[11], unit, 'rectangle-trapezoid')
+        require(labels[0] == W and labels[1] == H and labels[3] == top and labels[5] == H, 'Trapezoid labels')
+        require(len(heights) == 1 and heights[0][2] == t, 'Trapezoid height disagrees')
+        area = shoelace(vertices)
+        require(area == W * H + (W + top) * t / 2, 'Rectangle plus trapezoid disagrees')
+        return area
+    cut = re.fullmatch(
+        r'A rectangle has a right-triangle corner removed\. Lengths are in (\w+)\. What is its area, in square (\w+)\?',
+        prompt)
+    if cut:
+        unit = figure['unit']
+        require(unit in UNITS, 'Unknown unit')
+        require_plural(cut[1], unit, 'cut triangle')
+        require_plural(cut[2], unit, 'cut triangle')
+        plural = UNITS[unit][1]
+        classic = ('The figure is a rectangle with its top right corner cut off by a straight line. '
+                   f'Its other corners are right angles. Lengths are in {plural}. What is its area, in square {plural}?')
+        return solve_composite_area({**public, 'prompt': classic})
     vertices, labels, heights, guides, square = validate_measured(figure)
     unit = figure['unit']
     require(not heights, 'Composite figures carry no heights')
@@ -409,6 +484,26 @@ def solve_composite_area(public):
 
 def solve_extruded(public):
     prompt, figure, template = public['prompt'], public['figure'], public['templateId']
+    stacked = re.fullmatch(
+        r'Two cubes are stacked\. The bottom cube has edges of (\d+) (\w+)\. '
+        r'The top cube has edges of (\d+) (\w+) and sits centered on the bottom cube\. '
+        r'The drawing shows the front outline with one depth, so both edges are stated here\. '
+        r'What is the surface area of the solid, in square (\w+)\?', prompt)
+    if stacked:
+        require(figure.get('kind') == 'extruded-polygon' and figure['unit'] in UNITS, 'Expected the front outline')
+        unit = figure['unit']
+        e, f = Fraction(int(stacked[1])), Fraction(int(stacked[3]))
+        require_unit(stacked[2], unit, e, 'bottom cube')
+        require_unit(stacked[4], unit, f, 'top cube')
+        require_plural(stacked[5], unit, 'stacked cubes')
+        require(e > f >= 2 and (e - f) % 2 == 0, 'The cubes are not stacked and centered')
+        require(exact(figure['depth']) == e, 'The drawn depth must be the bottom edge')
+        face = [point(p) for p in figure['face']]
+        left, right, zero = (e - f) / 2, (e + f) / 2, Fraction(0)
+        expect = [(zero, zero), (e, zero), (e, e), (right, e), (right, e + f), (left, e + f), (left, e), (zero, e)]
+        require(face == expect, 'The front outline is not those two cubes')
+        # 6e² + 6f² − 2f²: the shared square is hidden on both cubes.
+        return 6 * e * e + 4 * f * f
     require(figure.get('kind') == 'extruded-polygon' and figure['unit'] in UNITS, 'Expected an extruded polygon')
     unit = figure['unit']
     asked = 'volume' if template == 'composite-face-prism-volume' else 'surface area'
@@ -546,8 +641,45 @@ def solve_packing(public):
     return volume
 
 
+_BASE_SKIN = {('fish tank', 'water'), ('planter', 'soil'), ('box', 'sand')}
+
+
+def _bare_base(figure):
+    """A base area is stated in the prompt. The sketch must not label length or width."""
+    require(figure.get('kind') == 'measured-polygon' and figure['unit'] in UNITS, 'Expected an unlabeled base')
+    require(all(s is None for s in figure['sides']), 'A base-area item must not give length and width')
+    require(not figure['heights'], 'A base-area item must not label another edge as the height')
+    return figure['unit']
+
+
 def solve_fraction_edge(public):
     prompt, figure = public['prompt'], public['figure']
+    hold = re.fullmatch(
+        r'A (fish tank|planter|box) has a rectangular base with area \$(' + TEX_NUMBER + r')\$ square (\w+)\. '
+        r'The (water|soil|sand) is \$(' + TEX_NUMBER + r')\$ (\w+) deep\. '
+        r'How many cubic (\w+) of (water|soil|sand) does it hold\?', prompt)
+    if hold:
+        unit = _bare_base(figure)
+        B, h = tex_number(hold[2]), tex_number(hold[5])
+        require((hold[1], hold[4]) in _BASE_SKIN and hold[8] == hold[4], 'The fill does not match the container')
+        require_plural(hold[3], unit, 'base area')
+        require_unit(hold[6], unit, h, 'depth')
+        require_plural(hold[7], unit, 'volume')
+        require(B > 0 and h > 0, 'Base area and depth must be positive')
+        return B * h
+    deep = re.fullmatch(
+        r'A (fish tank|planter|box) has a base of \$(' + TEX_NUMBER + r')\$ square (\w+) and holds \$('
+        + TEX_NUMBER + r')\$ cubic (\w+) of (water|soil|sand)\. How deep is the (water|soil|sand), in (\w+)\?',
+        prompt)
+    if deep:
+        unit = _bare_base(figure)
+        B, volume = tex_number(deep[2]), tex_number(deep[4])
+        require((deep[1], deep[6]) in _BASE_SKIN and deep[7] == deep[6], 'The fill does not match the container')
+        require_plural(deep[3], unit, 'base area')
+        require_unit(deep[5], unit, volume, 'volume')
+        require_plural(deep[8], unit, 'depth')
+        require(B > 0 and volume > 0, 'Base area and volume must be positive')
+        return volume / B
     require(figure.get('kind') == 'fraction-box-prism' and figure['unit'] in UNITS and figure['cubeEdge'] is None, 'Expected a plain box')
     unit = figure['unit']
     keys = {'long': 'length', 'wide': 'width', 'tall': 'height'}
@@ -992,6 +1124,32 @@ def _fixtures():
         (_public('cone-sphere-volume', r'A sphere has a radius of 3 centimeters. Its volume is $a\pi$ cubic centimeters. What is $a$?', curved('sphere', r=3), 'fraction'), 36),
         (_public('cone-sphere-volume', r'A hemisphere has a radius of 3 centimeters. Its volume is $a\pi$ cubic centimeters. What is $a$?', curved('hemisphere', r=3), 'fraction'), 18),
         (_public('cone-sphere-volume', r'A sphere has a diameter of 3 centimeters. Its volume is $a\pi$ cubic centimeters. What is $a$?', curved('sphere', d=3), 'fraction'), Fraction(9, 2)),
+        (_public('triangle-area-base-height',
+                 r'The triangle is a sail. Canvas costs $2$ for each square centimeter. What does the canvas cost, in dollars?',
+                 tri), 60),
+        (_public('polygon-area-decompose',
+                 r'A garden is the trapezoid shown. Sod costs $2$ for each square foot. What does the sod cost, in dollars?',
+                 _poly_fig('ft', [(0, 0), (14, 0), (11, 4), (3, 4)], [14, None, 8, None], [((3, 4), (3, 0), 4)])), 88),
+        (_public('composite-area',
+                 'The figure is a rectangle 10 meters wide and 6 meters tall with a triangle on top. The triangle is 10 meters wide and 4 meters tall. What is its area, in square meters?',
+                 _poly_fig('m', [(0, 0), (10, 0), (10, 6), (5, 10), (0, 6)], [10, 6, None, None, 6], [((5, 10), (5, 6), 4)], [((0, 6), (10, 6))], [0, 1])), 80),
+        (_public('composite-area',
+                 "The figure is a rectangle 10 meters wide and 4 meters tall with a trapezoid on top. The trapezoid's parallel sides are 10 meters and 6 meters, and its height is 2 meters. What is its area, in square meters?",
+                 _poly_fig('m', [(0, 0), (10, 0), (10, 4), (8, 6), (2, 6), (0, 4)], [10, 4, None, 6, None, 4], [((2, 6), (2, 4), 2)], right=[0, 1])), 56),
+        (_public('composite-area',
+                 'A rectangle has a right-triangle corner removed. Lengths are in centimeters. What is its area, in square centimeters?',
+                 cut), 80),
+        (_public('composite-face-prism-surface-area',
+                 'Two cubes are stacked. The bottom cube has edges of 6 centimeters. The top cube has edges of 2 centimeters and sits centered on the bottom cube. The drawing shows the front outline with one depth, so both edges are stated here. What is the surface area of the solid, in square centimeters?',
+                 {'kind': 'extruded-polygon', 'unit': 'cm', 'depth': 6,
+                  'face': [[0, 0], [6, 0], [6, 6], [4, 6], [4, 8], [2, 8], [2, 6], [0, 6]],
+                  'sides': [6, 6, None, 2, 2, 2, None, 6]}), 232),
+        (_public('fraction-edge-volume',
+                 r'A fish tank has a rectangular base with area $3\tfrac{1}{3}$ square feet. The water is $1\tfrac{1}{2}$ feet deep. How many cubic feet of water does it hold?',
+                 _poly_fig('ft', [(0, 0), (4, 0), (4, 2), (0, 2)], [None, None, None, None], right=[0, 1, 2, 3]), 'fraction'), 5),
+        (_public('fraction-edge-volume',
+                 r'A planter has a base of $5\tfrac{1}{4}$ square feet and holds $14$ cubic feet of soil. How deep is the soil, in feet?',
+                 _poly_fig('ft', [(0, 0), (4, 0), (4, 2), (0, 2)], [None, None, None, None], right=[0, 1, 2, 3]), 'fraction'), Fraction(8, 3)),
     ]
     return cases
 
@@ -1288,14 +1446,23 @@ def worksheet_tags(problem):
         m = re.search(r'How (long|wide|tall) is it', prompt)
         tags.add('missing-' + {'long': 'length', 'wide': 'width', 'tall': 'height'}[m[1]] if m else 'volume')
     elif template == 'composite-area':
-        if f['guides']:
+        if 'triangle on top' in prompt or 'trapezoid on top' in prompt or prompt.startswith('A rectangle has a right-triangle'):
+            tags.add('with-triangles')
+        elif f['guides']:
             tags.add('cut-corner')
         else:
-            tags.add(shape_name([point(p) for p in f['vertices']]) + '-shape')
+            name = shape_name([point(p) for p in f['vertices']])
+            require(name is not None, 'Composite figure is not an L, T or U')
+            tags.add(name + '-shape')
             if sum(s is None for s in f['sides']) == 2:
                 tags.add('two-hidden')
     elif template in ('composite-face-prism-volume', 'composite-face-prism-surface-area'):
-        tags.add(shape_name([point(p) for p in f['face']]) + '-shape')
+        if prompt.startswith('Two cubes are stacked'):
+            tags.add('stacked-cubes')
+        else:
+            name = shape_name([point(p) for p in f['face']])
+            require(name is not None, 'Prism face is not an L, T or U')
+            tags.add(name + '-shape')
     else:
         if template == 'cone-sphere-volume':
             tags.add(f['solid'])

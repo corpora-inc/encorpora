@@ -130,7 +130,6 @@ const capabilities: Record<string, ResponseCapability[]> = {
   ],
   "multiply-power-of-ten": ["multi-part-choice-v1"],
   "compare-decimals-thousandths": ["multi-part-choice-v1"],
-  "decimal-area-model": ["multi-part-choice-v1"],
   "multidigit-decimal-product": ["structured-work-v1"],
   "multidigit-decimal-quotient": ["structured-work-v1"],
   "multidigit-decimal-sum": ["structured-work-v1"],
@@ -184,7 +183,7 @@ export function buildClause(
   family: string,
 ): GeneratedProblem {
   const c = { meta, seed, family, r: random(`${meta.id}:${family}`, seed) };
-  return placeClauseFamilies[meta.id]
+  return placeClauseFamilies[meta.id] || family === "model-to-written-method"
     ? generatePlaceClause(c)
     : generateTransformationClause(c);
 }

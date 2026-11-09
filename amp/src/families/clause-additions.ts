@@ -1,5 +1,6 @@
 import type { ContentFamily } from "./registry/types";
 import {
+  generatePlaceClause,
   numberNames,
   numberNamesTemplate,
 } from "../math/clause-place-value-practice";
@@ -23,9 +24,25 @@ const grade8: TemplateMetadata = {
   requiredResponseCapability: "single-choice-v1",
   requiredFigureCapability: "scenes-v1",
 };
-const types = [numberNamesTemplate, grade8];
+const decimalMethod: TemplateMetadata = {
+  id: "decimal-model-written-method",
+  version: 1,
+  title: "Connect decimal models to written methods",
+  skillId: "decimal-arithmetic",
+  gradeBand: "3–5",
+  difficultyOffset: 0.45,
+  requiredResponseCapability: "multi-part-choice-v1",
+  requiredFigureCapability: "scenes-v1",
+  description:
+    "Choose the equation and place-value reason that match a decimal addition, subtraction, multiplication or division model.",
+};
+const types = [numberNamesTemplate, grade8, decimalMethod];
 const variantOf = (id: string) =>
-  id === numberNamesTemplate.id ? "number-names" : "grade-8-origin";
+  id === numberNamesTemplate.id
+    ? "number-names"
+    : id === decimalMethod.id
+      ? "model-to-written-method"
+      : "grade-8-origin";
 export const family = {
   id: "clause-additions",
   practice: {
@@ -42,7 +59,9 @@ export const family = {
       };
       return id === numberNamesTemplate.id
         ? numberNames(c)
-        : generateTransformationClause(c);
+        : id === decimalMethod.id
+          ? generatePlaceClause(c)
+          : generateTransformationClause(c);
     },
   },
   methods: Object.fromEntries(
@@ -53,6 +72,13 @@ export const family = {
     types.map((t) => [t.id, clausePrinciple(variantOf(t.id))!]),
   ),
   facetMappings: [
+    {
+      templateId: decimalMethod.id,
+      facetId: "decimal-arithmetic.core",
+      extent: "partial",
+      rationale:
+        "Connects decimal models to written equations and place-value reasons across all four operations.",
+    },
     {
       templateId: numberNamesTemplate.id,
       facetId: "hundreds-place-value.core",
@@ -83,6 +109,7 @@ export const family = {
     },
   ],
   archetypeLinks: {
+    "decimal-model-written-method": ["number.decimal-model-operation"],
     "three-digit-number-names": ["number.number-word-form"],
     "similarity-by-transformation-grade-8": ["transformation.image"],
   },

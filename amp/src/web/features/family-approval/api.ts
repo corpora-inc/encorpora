@@ -38,7 +38,7 @@ const sent = z.object({ id: z.string().optional(), mailed: z.boolean() });
 export const approvals = {
   send: (
     session: AuthSession,
-    body: { childName: string; parentEmail: string },
+    body: { personId?: string; parentEmail: string },
   ) =>
     request("/family/approvals", sent, { token: session.token, body }).finally(
       () => invalidateAccount(session.accountId),

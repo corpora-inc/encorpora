@@ -37,7 +37,6 @@ export const placeClauseFamilies: Record<string, readonly string[]> = {
   ],
   "multiply-power-of-ten": ["power-of-ten-pattern-reason"],
   "compare-decimals-thousandths": ["thousandths-symbol-blank"],
-  "decimal-area-model": ["model-to-written-method"],
   "decimal-multiplication": ["decimal-division-hundredths"],
   "multidigit-decimal-product": ["algorithm-steps"],
   "multidigit-decimal-quotient": ["algorithm-steps"],

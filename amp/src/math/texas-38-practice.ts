@@ -1,4 +1,3 @@
-import { withClauseVariants } from "./clause-variants";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -8,7 +7,7 @@ import type {
 import { random, type Random } from "./distribution-practice";
 import { scene, table } from "./scene/author";
 import { operationStoryValues, timesCast } from "./story-kit/operations";
-import { chooseAxes, defineAxis } from "./variation/axes";
+import { chooseAxes, defineAxis, generatingVersion } from "./variation/axes";
 import {
   buildReciprocalCheck,
   clauseTask,
@@ -59,12 +58,16 @@ const metadata = (
   version:
     id === "scaling-direction-choice"
       ? 3
-      : id === "times-as-many-comparison" || id === "reciprocal-division-choice"
+      : id === "times-as-many-comparison" ||
+          id === "reciprocal-division-choice" ||
+          id === "division-area-model"
         ? 2
         : 1,
   ...(id === "times-as-many-comparison"
     ? { reprintsFrom: 1, previousSkillId: "multiplicative-stories" }
-    : id === "scaling-direction-choice" || id === "reciprocal-division-choice"
+    : id === "scaling-direction-choice" ||
+        id === "reciprocal-division-choice" ||
+        id === "division-area-model"
       ? { reprintsFrom: 1 }
       : {}),
   title,
@@ -1240,7 +1243,83 @@ function stripDiagramEquation(r: Random): Built {
 /* 4.4.E Quotient as an area model                                         */
 /* ---------------------------------------------------------------------- */
 
-function divisionAreaModel(r: Random): Built {
+/** Clause-family draw, off the content stream. Index 0 is the legacy model. */
+function clauseFamily(templateId: string, seed: string, weights: readonly number[]) {
+  const span = weights.reduce((a, b) => a + b, 0);
+  const limit = Math.floor(0x100000000 / span) * span;
+  let counter = 0;
+  let n: number;
+  do {
+    n = createHash("sha256")
+      .update(JSON.stringify([templateId, "clause-family", seed, counter++]))
+      .digest()
+      .readUInt32BE(0);
+  } while (n >= limit);
+  let pickAt = n % span;
+  for (let i = 0; i < weights.length; i++) {
+    if (pickAt < weights[i]!) return i;
+    pickAt -= weights[i]!;
+  }
+  throw new Error("clause family");
+}
+
+function explainFirstChunk(r: Random): Built {
+  const pin = r(0, 4) === 0;
+  const d = pin ? 3 : r(2, 9);
+  const digit = pin ? 3 : r(1, 8);
+  const rest = pin ? 63 : r(0, 99);
+  const width = digit * 100;
+  const next = width + 100;
+  const N = d * (width + rest);
+  const tooBig = d * next;
+  const fits = d * width;
+  const roundTo = Math.max(1000, Math.round(N / 1000) * 1000);
+  const lead = Number(String(N)[0]);
+  const correct = `${d} × ${commas(next)} = ${commas(tooBig)} is more than ${commas(N)}`;
+  const rounding = `${commas(N)} rounds to ${commas(roundTo)}`;
+  const noTrade = `${lead} can't be shared by ${d}, so the thousand is left over`;
+  const closest = `${d} × ${commas(width)} = ${commas(fits)} is the closest to ${commas(roundTo)}`;
+  if (new Set([correct, rounding, noTrade, closest]).size < 4)
+    throw new Error("Need three distinct reasons");
+  if (tooBig <= N) throw new Error("Need three fit");
+  return {
+    variant: "explain-first-chunk",
+    prompt: `The first chunk of ${commas(N)} ÷ ${d} is ${commas(width)} wide, not ${commas(next)}. Why?`,
+    hint: `Try one more hundred, ${commas(next)}. Multiply that width by ${d} and compare the product with ${commas(N)}. Rounding ${commas(N)} is a different question.`,
+    explanation: [
+      `${d} × ${commas(next)} = ${commas(tooBig)}, and ${commas(tooBig)} is more than ${commas(N)}.`,
+      `So a first chunk ${commas(next)} wide does not fit.`,
+      `${d} × ${commas(width)} = ${commas(fits)}, which is not more than ${commas(N)}.`,
+      `${commas(width)} is the widest hundred that fits. Rounding, or refusing to trade the first digit, does not decide the chunk.`,
+    ],
+    choices: choicesFrom(correct, [
+      {
+        label: rounding,
+        feedback: `Rounding ${commas(N)} does not choose the chunk. Compare ${d} × ${commas(next)} with ${commas(N)}.`,
+      },
+      {
+        label: noTrade,
+        feedback: `The first digit can be traded into smaller places. The chunk stops because ${commas(next)} groups do not fit.`,
+      },
+      {
+        label: closest,
+        feedback: `Being near a round number is not the test. ${commas(next)} does not fit because ${d} × ${commas(next)} is more than ${commas(N)}.`,
+      },
+    ]),
+  };
+}
+
+function divisionAreaModel(r: Random, seed = ""): Built {
+  const version = generatingVersion();
+  // Reprints below version 2 stay on the content stream and never draw the
+  // clause family. Current seeds are half classic, half explain-first-chunk.
+  if (version != null && version < 2) return divisionAreaModelClassic(r);
+  if (clauseFamily("division-area-model", seed, [1, 1]) === 1)
+    return explainFirstChunk(r);
+  return divisionAreaModelClassic(r);
+}
+
+function divisionAreaModelClassic(r: Random): Built {
   const variant = pick(r, [
     "partial-quotients",
     "area-equation",
@@ -3768,7 +3847,9 @@ export function texas38Case(templateId: string, seed: string) {
             ? scalingDirectionChoice(r, seed)
             : templateId === "reciprocal-division-choice"
               ? reciprocalDivisionChoice(r, seed)
-              : build(r);
+              : templateId === "division-area-model"
+                ? divisionAreaModel(r, seed)
+                : build(r);
     } catch (error) {
       if (error instanceof Error && error.message.startsWith("Need three"))
         continue;
@@ -3787,11 +3868,6 @@ export function texas38Case(templateId: string, seed: string) {
   throw new Error("Could not generate a problem without leaking the answer");
 }
 
-export function generateTexas38ProblemLegacy(templateId: string, seed: string) {
+export function generateTexas38Problem(templateId: string, seed: string) {
   return texas38Case(templateId, seed).problem;
 }
-
-export const generateTexas38Problem = withClauseVariants(
-  texas38Templates,
-  generateTexas38ProblemLegacy,
-);

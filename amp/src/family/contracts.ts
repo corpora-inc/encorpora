@@ -1,5 +1,6 @@
 import type { PurchaseMeasurement } from "../advertising/permission-contracts.js";
 import { RETENTION } from "../privacy/retention-periods.js";
+import type { FreeAllowance } from "../learning/free-allowance.js";
 export interface FamilyLearner {
   id: string;
   name: string;
@@ -15,6 +16,13 @@ export interface FamilyLearner {
   stripeLinked: boolean;
   /** Server-clock capability; absent on older/native providers. Authorization is still enforced on each request. */
   canPractice?: boolean;
+  /** Permission to collect learning data, independently of the allowance. */
+  learningAllowed?: boolean;
+  /** Actual current grant coverage, separate from the free allowance. */
+  hasAccess?: boolean;
+  namePending?: boolean;
+  pictureIdentity?: string | null;
+  freeAllowance?: FreeAllowance;
   /** The account holder's own learner (docs/families.md), not a child. */
   adult?: true;
 }
