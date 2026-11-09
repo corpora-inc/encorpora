@@ -666,6 +666,8 @@ function routes(app: FastifyInstance, options: AppOptions) {
             choice.template.id,
             randomUUID(),
             input.figureCapabilities,
+            undefined,
+            input.responseCapabilities,
           ),
         );
         problem.public = responseForClient(

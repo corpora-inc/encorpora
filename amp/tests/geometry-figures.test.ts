@@ -49,7 +49,10 @@ const sceneOf = (id: string, seed: string): Scene | undefined => {
 test("figured templates need scene capability; old clients are never sent them", () => {
   for (const id of FIGURED) {
     const t = templates.find((x) => x.id === id)!;
-    assert.equal(t.version, 1);
+    assert.equal(
+      t.version,
+      ["oblique-triangle-solve", "triangle-law-reasoning"].includes(id) ? 2 : 1,
+    );
     assert.equal(t.requiredFigureCapability, "scenes-v1", id);
     assert.ok(
       !clientCanDraw(t, {
