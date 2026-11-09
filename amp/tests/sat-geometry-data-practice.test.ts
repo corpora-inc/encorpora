@@ -375,10 +375,14 @@ test("expected-count surveys state whole numbers of people", () => {
 
 test("both directions: the two equalities agree, and version 1 keeps the old prompt", () => {
   let seen = 0;
-  for (let i = 0; i < 200; i++) {
-    const old = generateProblem("independence-test", `both:${i}`, 1);
+  // audit:54 exhausts all 80 random margin draws and exercises the fallback.
+  for (const seed of [
+    ...Array.from({ length: 200 }, (_, i) => `both:${i}`),
+    "audit:54",
+  ]) {
+    const old = generateProblem("independence-test", seed, 1);
     assert.equal(old.public.prompt.includes("Check both directions"), false);
-    const problem = generateProblem("independence-test", `both:${i}`);
+    const problem = generateProblem("independence-test", seed);
     if (!problem.public.prompt.includes("Check both directions")) continue;
     seen++;
     assert.equal(problem.variant?.id, "both-directions");
@@ -397,18 +401,22 @@ test("both directions: the two equalities agree, and version 1 keeps the old pro
     const independent = both * n === row * col;
     const response = problem.public.response;
     if (response.kind !== "choice") continue;
-    const correct = response.options.find((o) => o.id === problem.answer)!.label;
-    assert.equal(
-      correct.includes("independent."),
-      independent,
-    );
+    const correct = response.options.find(
+      (o) => o.id === problem.answer,
+    )!.label;
+    assert.equal(correct.includes("independent."), independent);
     assert.equal(correct.includes("Neither"), !independent);
     assert.equal(
       response.options.some((o) => o.label.includes("but $B$ depends")),
       true,
     );
     assert.equal(problem.hint.includes(correct), false);
-    for (const text of [problem.public.prompt, problem.hint, ...problem.explanation, ...response.options.map((o) => o.label)])
+    for (const text of [
+      problem.public.prompt,
+      problem.hint,
+      ...problem.explanation,
+      ...response.options.map((o) => o.label),
+    ])
       for (const sentence of text.split(/(?<=[.!?])\s+/))
         assert.ok(sentence.split(/\s+/).length <= 35, sentence);
   }

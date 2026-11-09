@@ -22,6 +22,13 @@ function CounterObject({ thing }: { thing: CounterBuilderResponse["thing"] }) {
     </svg>
   );
 }
+function CounterSign({ sign }: { sign: "+" | "-" }) {
+  return (
+    <svg className="counter-sign" viewBox="0 0 24 24" aria-hidden="true">
+      <path d={sign === "+" ? "M5 12h14M12 5v14" : "M5 12h14"} />
+    </svg>
+  );
+}
 const slotNames = [
   "First number",
   "Plus or minus",
@@ -80,6 +87,7 @@ export function CounterBuilderInput({
   }
   function add(group: number) {
     if (locked || total >= r.max) return;
+    setColor(group);
     const groups = [...a.groups];
     groups[group] = groups[group]! + 1;
     update({ ...a, groups }, `Added one ${r.thing}.`);
@@ -142,7 +150,13 @@ export function CounterBuilderInput({
         const placed =
           r.board === "two-groups" ? index < a.groups[group]! : index < total;
         const tint =
-          r.board === "frame" ? (index < a.groups[0]! ? 0 : 1) : group;
+          r.board === "frame"
+            ? placed
+              ? index < a.groups[0]!
+                ? 0
+                : 1
+              : color
+            : group;
         const removed = placed && shownCrosses.has(index) && r.canRemove;
         const action = !placed
           ? `Add a ${r.thing}`
@@ -179,7 +193,7 @@ export function CounterBuilderInput({
               if (locked) return;
               if (event.key === "Delete" || event.key === "Backspace") {
                 event.preventDefault();
-                undo(r.board === "frame" ? color : group);
+                undo(r.board === "frame" ? tint : group);
                 return;
               }
               if (!event.key.startsWith("Arrow")) return;
@@ -215,6 +229,7 @@ export function CounterBuilderInput({
   const groupControl = (group: number) => (
     <div className="counter-group-heading" data-color={group}>
       <span>
+        <span className="counter-swatch" aria-hidden="true" />
         <strong>{r.canRemove ? "At the start" : `Group ${group + 1}`}</strong>
         <span className="counter-group-count">{a.groups[group]}</span>
       </span>
@@ -264,24 +279,6 @@ export function CounterBuilderInput({
       >
         {r.board === "frame" ? (
           <div className="counter-region counter-frame">
-            <div
-              className="counter-color-picker"
-              role="group"
-              aria-label="Choose a group for empty spaces"
-            >
-              {[0, 1].map((i) => (
-                <button
-                  type="button"
-                  key={i}
-                  data-color={i}
-                  aria-pressed={!resolved && color === i}
-                  disabled={locked}
-                  onClick={() => setColor(i)}
-                >
-                  Group {i + 1}: {a.groups[i]}
-                </button>
-              ))}
-            </div>
             {board(0)}
             <div className="counter-frame-tools">
               {[0, 1].map((i) => (
@@ -344,13 +341,15 @@ export function CounterBuilderInput({
                 }
               }}
             >
-              {v === "-"
-                ? "−"
-                : (v ?? (
-                    <span className="counter-blank" aria-hidden="true">
-                      ?
-                    </span>
-                  ))}
+              {v === "+" || v === "-" ? (
+                <CounterSign sign={v} />
+              ) : (
+                (v ?? (
+                  <span className="counter-blank" aria-hidden="true">
+                    ?
+                  </span>
+                ))
+              )}
             </button>
           </span>
         ))}
@@ -370,29 +369,33 @@ export function CounterBuilderInput({
         aria-label="Number and sign tiles"
         aria-hidden={resolved || undefined}
       >
-        {Array.from({ length: 11 }, (_, n) => (
-          <button
-            type="button"
-            disabled={locked || slot === 1}
-            key={n}
-            onClick={() => put(n)}
-            aria-label={`Number ${n}`}
-          >
-            {n}
-          </button>
-        ))}
-        {(["+", "-"] as const).map((sign) => (
-          <button
-            type="button"
-            className="counter-sign-tile"
-            key={sign}
-            disabled={locked}
-            onClick={() => put(sign)}
-            aria-label={sign === "+" ? "Plus" : "Minus"}
-          >
-            {sign === "-" ? "−" : sign}
-          </button>
-        ))}
+        <div className="counter-signs" role="group" aria-label="Signs">
+          {(["+", "-"] as const).map((sign) => (
+            <button
+              type="button"
+              key={sign}
+              disabled={locked}
+              onClick={() => put(sign)}
+              aria-label={sign === "+" ? "Plus" : "Minus"}
+            >
+              <CounterSign sign={sign} />
+            </button>
+          ))}
+        </div>
+        <div className="counter-numbers" role="group" aria-label="Numbers">
+          {Array.from({ length: 11 }, (_, n) => (
+            <button
+              type="button"
+              className={n === 10 ? "counter-ten" : undefined}
+              disabled={locked || slot === 1}
+              key={n}
+              onClick={() => put(n)}
+              aria-label={`Number ${n}`}
+            >
+              {n}
+            </button>
+          ))}
+        </div>
       </div>
       <span
         className="sr-only"
@@ -406,6 +409,8 @@ export function CounterBuilderInput({
         Use arrow keys to move between spaces. Enter or Space acts on a space.
         Delete undoes the last placement. Read each group size on its Add
         button.
+        {r.board === "frame" &&
+          " Empty spaces use the group you last added to."}
       </span>
     </section>
   );

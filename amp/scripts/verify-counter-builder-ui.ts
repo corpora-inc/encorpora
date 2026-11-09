@@ -12,7 +12,10 @@ import { developmentAuth } from "../src/server/auth";
 import { PostgresRepository } from "../src/server/repository";
 import { registerFamilyRoutes } from "../src/family/routes";
 import { generateProblem, type GeneratedProblem } from "../src/math/engine";
-import type { CounterBuilderResponse } from "../src/math/counter-builder";
+import {
+  counterThings,
+  type CounterBuilderResponse,
+} from "../src/math/counter-builder";
 import { counterBuilderVariants } from "../src/math/counter-builder-practice";
 import { counterBuilderLesson } from "../src/content/counter-builder-lessons";
 import { publicationHtml } from "../src/content/publications";
@@ -26,6 +29,8 @@ const database = process.env.AMP_TEST_DATABASE_URL;
 assert.ok(database, "AMP_TEST_DATABASE_URL required");
 assertTestDatabaseTarget(database);
 const engine = process.argv.includes("--webkit") ? "webkit" : "chromium";
+const port = engine === "webkit" ? 4576 : 4566;
+const baseUrl = `http://127.0.0.1:${port}`;
 const smoke = process.argv.includes("--smoke");
 const shots =
   process.env.AMP_EVIDENCE_DIR ??
@@ -56,13 +61,13 @@ await registerFamilyRoutes(app, {
   authenticate: developmentAuth(),
   development: true,
 });
-await app.listen({ host: "127.0.0.1", port: 4567 });
+await app.listen({ host: "127.0.0.1", port: port + 1 });
 const vite = await createServer({
   server: {
     host: "127.0.0.1",
-    port: 4566,
+    port,
     strictPort: true,
-    proxy: { "/api": { target: "http://127.0.0.1:4567" } },
+    proxy: { "/api": { target: `http://127.0.0.1:${port + 1}` } },
   },
 });
 await vite.listen();
@@ -85,6 +90,18 @@ for (let i = 0; i < 1000 && fixtures.size < 5; i++) {
   if (!fixtures.has(p.variant!.id)) fixtures.set(p.variant!.id, p);
 }
 assert.equal(fixtures.size, 5);
+// Review every silhouette at phone size, with both group colors in a full frame.
+for (let i = 0; i < 2000 && fixtures.size < 5 + counterThings.length; i++) {
+  const p = generateProblem("build-the-number-sentence", `object-${i}`);
+  if (
+    p.variant!.id !== "build-frame" ||
+    JSON.parse(p.answer).sentence[3] !== 10
+  )
+    continue;
+  const r = p.public.response as CounterBuilderResponse;
+  fixtures.set(`object-${r.thing}`, p);
+}
+assert.equal(fixtures.size, 5 + counterThings.length);
 
 async function geometry(page: Page) {
   return page.evaluate(() => {
@@ -102,6 +119,14 @@ async function geometry(page: Page) {
     return {
       prompt: box("#problem-prompt"),
       boards: box(".counter-boards"),
+      groups: Array.from(
+        document.querySelectorAll(".counter-group-heading"),
+      ).map((node) => {
+        const r = node.getBoundingClientRect();
+        return [r.x, r.y + stage.scrollTop, r.width, r.height].map(
+          (n) => Math.round(n * 10) / 10,
+        );
+      }),
       sentence: box(".counter-sentence"),
       tiles: box(".counter-tiles"),
       dock: box(".answer-dock"),
@@ -146,6 +171,15 @@ async function promptVisible(page: Page) {
 }
 async function reachable(page: Page, selector: string) {
   await page.locator(selector).scrollIntoViewIfNeeded();
+  // Native scrollIntoView cannot account for the overlaid feedback sheet.
+  // Scroll the stage as a reader would to uncover a control beneath it.
+  await page.locator(selector).evaluate((node) => {
+    const stage = document.querySelector<HTMLElement>(".problem-stage")!;
+    const b = node.getBoundingClientRect();
+    const sheet = document.querySelector(".feedback")?.getBoundingClientRect();
+    if (sheet && sheet.left < b.right && sheet.right > b.left)
+      stage.scrollTop += Math.max(0, b.bottom - sheet.top + 1);
+  });
   const fits = await page.locator(selector).evaluate((node) => {
     const b = node.getBoundingClientRect();
     const stage = document
@@ -167,12 +201,19 @@ try {
     : (["light", "dark"] as const))
     for (const [width, height] of smoke
       ? [[390, 900]]
-      : [
-          [320, 900],
-          [390, 900],
-          [768, 1024],
-          [1280, 900],
-        ]) {
+      : process.argv.includes("--compact")
+        ? [
+            [320, 568],
+            [844, 390],
+          ]
+        : [
+            [320, 900],
+            [390, 900],
+            [768, 1024],
+            [1280, 900],
+            [320, 568],
+            [844, 390],
+          ]) {
       const context = await browser.newContext({
         viewport: { width, height },
         colorScheme: theme,
@@ -183,14 +224,20 @@ try {
       const page = await context.newPage();
       page.setDefaultTimeout(30000);
       page.on("pageerror", (error) => errors.push(error.message));
-      await page.goto("http://127.0.0.1:4566/overview");
+      await page.goto(`${baseUrl}/overview`);
       await chooseLearner(page, learner.id);
+      const compact = height < 600;
       for (const variant of smoke
         ? ["build-join", "build-frame", "story-take"]
-        : counterBuilderVariants) {
+        : [
+            ...counterBuilderVariants,
+            ...(width === 320 && !compact
+              ? counterThings.map((thing) => `object-${thing}`)
+              : []),
+          ]) {
         const base = fixtures.get(variant)!;
         const r = base.public.response as CounterBuilderResponse;
-        const tag = `${variant}-${width}-${theme}`;
+        const tag = `${variant}-${compact ? `${width}x${height}` : width}-${theme}`;
         for (const correct of [true, false]) {
           const p = structuredClone(base);
           p.public.id = randomUUID();
@@ -232,6 +279,14 @@ try {
           assert.equal(before.overflow, 0);
           assert.equal(before.stageOverflow, 0);
           await promptVisible(page);
+          assert.equal(
+            await page.locator(".counter-group-heading").count(),
+            r.canRemove ? 1 : 2,
+          );
+          assert.equal(
+            await page.getByRole("button", { name: /^Group [12]:/ }).count(),
+            0,
+          );
           assert.ok(
             await page
               .getByRole("button", { name: "Check", exact: true })
@@ -270,6 +325,28 @@ try {
                 .textContent())!,
               /Board reset/,
             );
+            if (r.board === "frame") {
+              const add = (group: number) =>
+                page.getByRole("button", {
+                  name: new RegExp(`Add ${r.thing} to group ${group}\\.`),
+                });
+              await add(2).click();
+              const next = page.locator(".counter-cell").nth(1);
+              await next.focus();
+              assert.match((await next.getAttribute("aria-label"))!, /group 2/);
+              await page.keyboard.press("Enter");
+              await add(1).click();
+              await next.focus();
+              await page.keyboard.press("Delete");
+              assert.deepEqual(
+                await page.locator(".counter-group-count").allTextContents(),
+                ["1", "1"],
+              );
+              await page
+                .getByRole("button", { name: "Reset", exact: true })
+                .click();
+              await stable(page, before);
+            }
             const targets = await page
               .locator(".counter-builder button, .counter-builder-form button")
               .evaluateAll((nodes) =>
@@ -291,7 +368,10 @@ try {
           }
           await fillCounterBuilder(page, r, JSON.stringify(answer));
           await stable(page, before);
-          await reachable(page, ".counter-tiles");
+          if (compact) {
+            await reachable(page, ".counter-signs");
+            await reachable(page, ".counter-ten");
+          } else await reachable(page, ".counter-tiles");
           const placed = await page
             .locator('.counter-cell[data-placed="true"]')
             .count();
@@ -299,6 +379,25 @@ try {
             placed,
             answer.groups.reduce((s: number, n: number) => s + n, 0),
           );
+          for (const [group, count] of answer.groups.entries()) {
+            const colors = await page
+              .locator(
+                `.counter-cell[data-placed="true"][data-color="${group}"] .counter-object`,
+              )
+              .evaluateAll((nodes) =>
+                nodes.map((node) => getComputedStyle(node).color),
+              );
+            const swatch = await page
+              .locator(
+                `.counter-group-heading[data-color="${group}"] .counter-swatch`,
+              )
+              .evaluate((node) => getComputedStyle(node).backgroundColor);
+            assert.equal(colors.length, count);
+            assert.ok(
+              colors.every((color) => color === swatch),
+              "Every object matches its group's swatch, including the ten frame",
+            );
+          }
           assert.equal(
             await page.locator(".counter-cross").count(),
             answer.removed,
@@ -337,6 +436,10 @@ try {
             .waitFor({ state: "hidden" });
           await stable(page, before);
           await promptVisible(page);
+          assert.equal(
+            await page.locator(".counter-group-heading button:visible").count(),
+            0,
+          );
           await reachable(page, ".counter-sentence");
           await page.locator(".problem-stage").evaluate((n) => {
             n.scrollTop = 0;
@@ -402,7 +505,7 @@ try {
           );
           if (correct && width === 390 && theme === "light") {
             const legacy = await page.request.post(
-              `http://127.0.0.1:4566/api/v1/learners/${learner.id}/batches`,
+              `${baseUrl}/api/v1/learners/${learner.id}/batches`,
               {
                 headers,
                 data: {
@@ -428,7 +531,7 @@ try {
               ).public.prompt.match(/\d+/g),
             );
             const report = await page.request.post(
-              `http://127.0.0.1:4566/api/v1/learners/${learner.id}/problem-flags`,
+              `${baseUrl}/api/v1/learners/${learner.id}/problem-flags`,
               {
                 headers,
                 data: {

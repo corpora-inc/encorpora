@@ -278,7 +278,7 @@ function descriptionParts(id: string, seed: string): CurveParts {
         curve: { kind: "quadratic", a: [-1, 1], h: int(h), k: int(k) },
         required: answer,
       },
-      hint: "Break-even means profit 0, so those counts sit on the horizontal axis. The greatest profit is the high point halfway between them, not a count by itself.",
+      hint: `Break-even means profit 0, so the counts ${r0} and ${s} sit on the horizontal axis. The greatest profit is the high point halfway between them, not a count by itself.`,
       explanation: [
         `Break-even is profit 0 at ${r0} items and at ${s} items: ${pointTex([r0, 0])} and ${pointTex([s, 0])}.`,
         `The highest point is halfway between them, at ${h} items. Its height is ${k} ${nounFor(k, "dollar")}: ${pointTex([h, k])}.`,
@@ -335,7 +335,7 @@ function descriptionParts(id: string, seed: string): CurveParts {
     },
     answer,
     grading: { mode: "on-curve", curve, required: answer },
-    hint: "Time runs along the horizontal axis and height along the vertical axis. The greatest height is not the landing, and the starting height is not a time.",
+    hint: `Time runs along the horizontal axis and height along the vertical axis. The starting height is ${c} m, not a time. Distinguish the greatest height from the landing.`,
     explanation: [
       story === "return"
         ? `The throw starts at ${pointTex([0, c])}. The highest point is ${pointTex([tv, k])}. The return to that height is ${pointTex([2 * tv, c])}.`

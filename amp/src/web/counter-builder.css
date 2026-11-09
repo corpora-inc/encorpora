@@ -32,6 +32,9 @@
   gap: var(--space-1);
   min-height: 44px;
   margin-bottom: var(--space-1);
+  padding-inline-start: var(--space-2);
+  background: var(--color-surface-raised);
+  border-radius: var(--radius-control);
 }
 .counter-group-heading > span {
   display: flex;
@@ -42,9 +45,21 @@
   white-space: nowrap;
 }
 .counter-group-count {
+  min-width: 2ch;
+  margin-inline-start: auto;
+  text-align: center;
   font-size: 1.125rem;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
+}
+.counter-swatch {
+  flex: 0 0 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--counter-teal);
+}
+.counter-group-heading[data-color="1"] .counter-swatch {
+  background: var(--counter-rust);
 }
 .counter-builder button {
   min-width: 44px;
@@ -92,7 +107,7 @@
   margin: auto;
   color: var(--counter-teal);
 }
-[data-color="1"] .counter-object {
+.counter-cell[data-color="1"] .counter-object {
   color: var(--counter-rust);
 }
 .counter-object path {
@@ -134,11 +149,15 @@
   gap: var(--space-1);
 }
 .counter-builder .counter-slot {
+  display: grid;
+  place-items: center;
   width: 44px;
   height: 48px;
   padding: 0;
   font-size: 1.5rem;
   font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 .counter-equals {
   display: inline-grid;
@@ -160,34 +179,55 @@
 }
 .counter-tiles {
   display: grid;
-  grid-template-columns: repeat(5, minmax(44px, 1fr));
-  gap: var(--space-1);
+  gap: var(--space-2);
   max-width: 19rem;
   margin: 0 auto;
 }
 .counter-tiles button {
+  display: grid;
+  place-items: center;
   height: 44px;
+  padding: 0;
   font-size: 1.25rem;
   font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: lining-nums tabular-nums;
   background: var(--color-secondary);
   color: var(--color-on-secondary);
 }
-.counter-tiles .counter-sign-tile {
-  font-size: 1.5rem;
-  border-width: 2px;
-}
-.counter-color-picker {
+.counter-numbers {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-2);
-  margin: 2px 2px var(--space-2);
+  grid-template-columns: repeat(5, minmax(44px, 1fr));
+  gap: var(--space-1);
 }
-.counter-color-picker button {
-  font-size: 0.875rem;
-  border-bottom: 4px solid var(--counter-teal);
+.counter-ten {
+  grid-column: 1 / -1;
 }
-.counter-color-picker button[data-color="1"] {
-  border-bottom-color: var(--counter-rust);
+.counter-signs {
+  display: flex;
+  justify-content: center;
+}
+.counter-signs button {
+  width: 56px;
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  border-radius: 0;
+}
+.counter-signs button:first-child {
+  border-radius: var(--radius-control) 0 0 var(--radius-control);
+}
+.counter-signs button:last-child {
+  border-inline-start: 0;
+  border-radius: 0 var(--radius-control) var(--radius-control) 0;
+}
+.counter-sign {
+  display: block;
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
 }
 .counter-frame {
   max-width: 19rem;
@@ -197,7 +237,7 @@
 .counter-frame-tools {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-1);
+  gap: 0;
   margin-top: var(--space-1);
 }
 .counter-builder-form {
@@ -233,13 +273,14 @@
   padding: var(--space-3);
   gap: var(--space-2);
 }
-.practice-surface[data-counter-compact] .feedback-head {
+.practice-surface[data-counter-compact] .feedback .feedback-head {
   flex-direction: row;
   text-align: left;
   margin: 0;
 }
-.practice-surface[data-counter-compact] .result-mark {
+.practice-surface[data-counter-compact] .feedback .result-mark {
   width: 30px;
+  min-width: 30px;
   height: 30px;
   font-size: 15px;
 }

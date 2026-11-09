@@ -1699,10 +1699,13 @@ const interpretations = [
   },
 ] as const;
 function bothDirections(r: Random): SatGeometryDataCase {
-  for (let attempt = 0; attempt < 80; attempt++) {
-    const N = pick(r, [40, 60, 80, 100, 120, 200]);
-    let row = r(Math.floor(N * 0.3), Math.floor(N * 0.7));
-    let col = r(Math.floor(N * 0.25), Math.floor(N * 0.55));
+  for (let attempt = 0; attempt <= 80; attempt++) {
+    // Preserve every successful seeded draw. If all 80 draws fail, these
+    // margins give integer, positive cells for either dependence outcome.
+    const N = attempt === 80 ? 40 : pick(r, [40, 60, 80, 100, 120, 200]);
+    let row = attempt === 80 ? 20 : r(Math.floor(N * 0.3), Math.floor(N * 0.7));
+    let col =
+      attempt === 80 ? 12 : r(Math.floor(N * 0.25), Math.floor(N * 0.55));
     if (row === col) col += row < N / 2 ? 4 : -4;
     if (col < 4 || col >= N || row < 4 || row >= N || row === col) continue;
     if ((row * col) % N !== 0) continue;
@@ -2079,9 +2082,7 @@ export function satGeometryDataCase(
       ? chooseAxes(id, seed, independenceTaskAxes).task
       : "standard";
   const built =
-    id === "independence-test"
-      ? independenceCase(r, task)
-      : builders[id]!(r);
+    id === "independence-test" ? independenceCase(r, task) : builders[id]!(r);
   const problem = assemble(meta, seed, r, built.draft);
   return {
     problem:
