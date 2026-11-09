@@ -631,6 +631,11 @@ label.columnPick {
   overflow: visible;
   min-width: 0;
 }
+/* Keep a date near the end of the strip inside its table column. */
+.heatTicks span:nth-last-child(-n + 3) {
+  justify-self: end;
+  width: max-content;
+}
 .heatCell[data-monday],
 .heatTicks [data-monday] {
   margin-inline-start: 3px;

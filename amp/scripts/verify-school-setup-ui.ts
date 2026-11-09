@@ -58,7 +58,7 @@ const webPort =
   portArgument >= 0 ? Number(process.argv[portArgument + 1]) : 4398;
 const apiPort = webPort + 1;
 const origin = `http://127.0.0.1:${webPort}`;
-const committed = "docs/reviews/school-setup";
+const committed = process.env.AMP_UI_REVIEW ?? "docs/reviews/school-setup";
 const scratch = "artifacts/school-setup";
 await mkdir(committed, { recursive: true });
 await mkdir(scratch, { recursive: true });
@@ -732,7 +732,7 @@ async function loneTeacher(
   await page.getByText("Mei Tran").waitFor();
   if (width >= 1024) {
     const nav = await page
-      .getByRole("complementary")
+      .locator("[data-app-bar]")
       .getByRole("link")
       .allTextContents();
     check("a lone teacher sees no Staff", !nav.includes("Staff"), nav);
@@ -815,13 +815,15 @@ async function teacherWhoIsAParent(browser: Browser, width: number) {
   await page.getByRole("button", { name: "Open AMP menu" }).click();
   const drawer = page.getByRole("dialog");
   await drawer.waitFor();
-  await drawer
-    .getByRole("button", { name: "Family and practice: switch place" })
-    .click();
+  await drawer.getByRole("button", { name: /switch place$/ }).click();
   const places = await page
     .getByRole("menu")
-    .getByRole("menuitem")
+    .locator('[data-place="home"], [data-place^="school:"]')
     .allInnerTexts();
+  await page
+    .getByRole("menu")
+    .locator(`[data-place="learner:${jordan.id}"]`)
+    .waitFor();
   check(
     `${label} the switcher lists the family and both schools`,
     places.length === 3 &&

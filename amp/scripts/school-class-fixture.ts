@@ -13,6 +13,8 @@ import type { Pool } from "pg";
 import { skills } from "../src/curriculum/catalog";
 import { gradeNumber } from "../src/learning/frontier";
 import { generateProblem, templates } from "../src/math/engine";
+import type { GeneratedProblem } from "../src/math/contracts";
+import { practiceResponse } from "./ui-practice-answer";
 import type { SchoolRepository } from "../src/schools/repository";
 import type { PostgresRepository } from "../src/server/repository";
 
@@ -138,7 +140,11 @@ export async function studentApi(
     },
     body: JSON.stringify(body),
   });
-  assert.equal(response.ok, true, `${path} ${response.status}`);
+  assert.equal(
+    response.ok,
+    true,
+    `${path} ${response.status}${response.ok ? "" : `: ${await response.text()}`}`,
+  );
   return response.json();
 }
 const skillOf = new Map(skills.map((skill) => [skill.id, skill]));
@@ -147,24 +153,9 @@ export function chanceOfRight(ability: number, skillId: string) {
   const grade = skill ? gradeNumber[skill.gradeBand] : ability;
   return 0.12 + 0.82 / (1 + Math.exp(-1.7 * (ability - grade + 0.35)));
 }
-/** A wrong answer a student might give: a choice not taken, a number one off,
- * a fraction a step away; anything else, plainly wrong. */
-export const wrongResponse = (problem: {
-  answer: string;
-  public: { response: { kind: string; options?: { id: string }[] } };
-}) => {
-  const { answer } = problem;
-  if (problem.public.response.kind === "choice")
-    return problem.public.response.options!.find((o) => o.id !== answer)!.id;
-  const number = /^-?\d+(\.(\d+))?$/.exec(answer);
-  if (number) {
-    const places = number[2]?.length ?? 0;
-    return (Number(answer) + 10 ** -places).toFixed(places);
-  }
-  const fraction = /^(-?\d+)\/(\d+)$/.exec(answer);
-  if (fraction) return `${Number(fraction[1]) + 1}/${fraction[2]}`;
-  return answer === "99999" ? "99998" : "99999";
-};
+/** A submittable incorrect answer in the problem's actual response format. */
+export const wrongResponse = (problem: GeneratedProblem) =>
+  practiceResponse(problem, false);
 
 /** Real answers through the real API, then dated back across the year: the
  * rollups, the skill evidence and the level days are rebuilt from those dates by
@@ -276,7 +267,7 @@ export async function seedMisses(
           problemId: problem.public.id,
           skillId: problem.public.skillId,
           templateId: template,
-          response: wrongResponse(problem as never),
+          response: wrongResponse(problem),
           correct: false,
           assisted: false,
           answer: problem.answer,

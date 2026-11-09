@@ -7,7 +7,6 @@ import { EmptyState } from "../../../ui/EmptyState";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { publicOrigin } from "../../../app/route-head";
 import { QrCode } from "../../../ui/QrCode";
-import { WaveMark } from "../../../ui/NavigationSheet";
 import { CodeTiles } from "../join/CodeTiles";
 // The reset for the legacy global element rules, under `data-dense`.
 import "../SchoolFrame.module.css";
@@ -107,23 +106,19 @@ export function StartClassScreen() {
   );
   if (presence.isError && !presence.data)
     return (
-      <div className={styles.problem} data-dense>
+      <main className={styles.problem} data-dense>
         <EmptyState title="The board didn’t load" action={exit}>
           {presence.error.message}
         </EmptyState>
-      </div>
+      </main>
     );
   if (!presence.data) return <LoadingScreen />;
   const { class: info, students } = presence.data;
   const here = students.filter((student) => student.here).length;
   const joinUrl = `${location.origin}/join/${info.joinCode}`;
   return (
-    <div className={styles.board} data-dense>
+    <main className={styles.board} data-dense>
       <header className={styles.bar}>
-        <span className={styles.brand}>
-          <WaveMark />
-          <span>AMP</span>
-        </span>
         <h1 className={styles.className}>{info.name}</h1>
         <div className={styles.controls}>
           {document.fullscreenEnabled && (
@@ -205,6 +200,6 @@ export function StartClassScreen() {
       <p className={styles.stale} role="status" data-on={failing || undefined}>
         {failing ? "Reconnecting to AMP" : ""}
       </p>
-    </div>
+    </main>
   );
 }
