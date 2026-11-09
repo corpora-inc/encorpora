@@ -7,6 +7,7 @@ from geometry_proof_math_oracle import GEOMETRY_PROOF, solve_geometry_proof, rev
 from radical_equation_math_oracle import RADICAL_EQUATION, RADICAL_EQUATION_CHOICE, solve_radical_equation, review_radical_equation_fixtures, review_radical_equation_problem
 import decimal
 import clause_coverage_oracle
+import fraction_clause_math_oracle
 import importlib
 import json
 import math
@@ -320,6 +321,9 @@ def solve(public):
 def solve_family(public):
     if clause_coverage_oracle.recognizes(public):
         return clause_coverage_oracle.solve(public)
+    clause_answer = fraction_clause_math_oracle.solve_clause(public)
+    if clause_answer is not None:
+        return clause_answer
     if is_clause_variant(public):
         return solve_clause_variant(public)
     oracle = FAMILY_ORACLE_FOR.get(public["templateId"])
@@ -789,6 +793,10 @@ def review(stream):
         if clause_coverage_oracle.recognizes(public):
             clause_coverage_oracle.review_problem(problem)
             return
+        clause_answer = fraction_clause_math_oracle.solve_clause(public)
+        if clause_answer is not None:
+            require(problem['answer'] == clause_answer, f'Mismatch {template}/{seed}: {public["prompt"]!r}; got {problem["answer"]}, expected {clause_answer}')
+            return
         if is_clause_variant(public):
             review_clause_variant(problem)
             return
@@ -907,6 +915,15 @@ def review(stream):
             expected = solved
             actual = problem['answer']
             require(isinstance(expected, str) and isinstance(actual, str), 'Non-numeric answer must be text')
+        elif isinstance(solved, str):
+            # A string solution is text when it is not a number. A fraction
+            # string such as 27/2 still matches a decimal answer such as 13.5.
+            try:
+                expected = Fraction(solved)
+                actual = Fraction(problem['answer'])
+            except (ValueError, ZeroDivisionError):
+                expected = solved
+                actual = problem['answer']
         else:
             expected = Fraction(solved)
             actual = Fraction(problem['answer'])

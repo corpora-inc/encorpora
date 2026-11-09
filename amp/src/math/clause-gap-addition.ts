@@ -685,7 +685,7 @@ function oneDigitSums(ctx: ClauseCtx) {
   const a = allowZero ? r(0, 9) : r(1, 9);
   const b = allowZero ? r(0, 9) : r(1, 9);
   const figure =
-    a <= 9 && b <= 9
+    a >= 1 && b >= 1
       ? ({ kind: "ten-frame-pair", first: a, second: b } as SemanticFigure)
       : undefined;
   return problem({

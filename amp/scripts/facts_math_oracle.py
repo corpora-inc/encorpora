@@ -52,7 +52,10 @@ def solve_facts(public):
         m = re.fullmatch(r'What is (\d) \+ (\d)\?', prompt)
         require(m is not None, f'Unexpected sum prompt {prompt!r}')
         a, b = int(m[1]), int(m[2])
-        require(figure == {'kind': 'ten-frame-pair', 'first': a, 'second': b}, 'Frames disagree with the sum')
+        if a == 0 or b == 0:
+            require(figure is None, 'A zero addend has no ten frame')
+        else:
+            require(figure == {'kind': 'ten-frame-pair', 'first': a, 'second': b}, 'Frames disagree with the sum')
         require(0 <= a + b <= 18, 'Sum leaves the one-digit facts')
         return a + b
     if name == 'related-subtraction':

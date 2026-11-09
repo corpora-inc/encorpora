@@ -60,11 +60,13 @@ test("each answer follows from the displayed numbers", () => {
   for (const p of sample("make-ten-fact")) {
     const [a, b] = numbers(p.public.prompt);
     assert.ok(a! <= 9 && b! <= 9 && a! + b! <= 18);
-    assert.deepEqual(p.public.figure, {
-      kind: "ten-frame-pair",
-      first: a,
-      second: b,
-    });
+    if (a! >= 1 && b! >= 1)
+      assert.deepEqual(p.public.figure, {
+        kind: "ten-frame-pair",
+        first: a,
+        second: b,
+      });
+    else assert.equal(p.public.figure, undefined);
     if (!p.variant?.id) assert.ok(a! + b! > 10);
     assert.equal(Number(p.answer), a! + b!);
   }
