@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
-import { templates } from "../src/math/engine";
+import { generateProblem, templates } from "../src/math/engine";
 import { lessons } from "../src/content/lessons";
 import { methods } from "../src/content/problem-methods";
 import {
@@ -251,17 +251,38 @@ test("glossaryFor returns used entries and everything their definitions use", ()
 
 test("problem lessons keep the terms wire shape and carry the glossary they use", () => {
   for (const template of templates.filter((_, i) => i % 25 === 0)) {
-    const lesson = problemLesson(template.id, "glossary-shape");
-    for (const term of lesson.terms) {
-      assert.deepEqual(Object.keys(term), ["term", "meaning"], template.id);
-      assert.equal(typeof term.term, "string");
-      assert.ok(term.meaning.length > 0, template.id);
-    }
-    const ids = new Set(lesson.glossary.map((card) => card.id));
+    // Base methods and clause-specific lessons can teach different terms.
+    // Preserve the declared base vocabulary check on its original instance.
+    const legacy = problemLesson(
+      template.id,
+      "glossary-shape",
+      undefined,
+      undefined,
+      generateProblem(template.id, "glossary-legacy", 1),
+    );
     for (const term of methods[template.id]?.terms ?? [])
-      assert.ok(ids.has(methodTermId(term)), `${template.id}: ${term}`);
-    for (const card of lesson.glossary)
-      for (const id of card.uses) assert.ok(ids.has(id), `${card.id} → ${id}`);
+      assert.ok(
+        legacy.glossary.some((card) => card.id === methodTermId(term)),
+        `${template.id}: ${term}`,
+      );
+    for (const lesson of [
+      legacy,
+      problemLesson(template.id, "glossary-shape"),
+    ]) {
+      for (const term of lesson.terms) {
+        assert.deepEqual(Object.keys(term), ["term", "meaning"], template.id);
+        assert.equal(typeof term.term, "string");
+        assert.ok(term.meaning.length > 0, template.id);
+        assert.ok(
+          lesson.glossary.some((card) => card.term === term.term),
+          `${template.id}: ${term.term}`,
+        );
+      }
+      const ids = new Set(lesson.glossary.map((card) => card.id));
+      for (const card of lesson.glossary)
+        for (const id of card.uses)
+          assert.ok(ids.has(id), `${card.id} → ${id}`);
+    }
   }
   // The meaning a client renders is the glossary definition, example and note.
   const definitions = methodTermDefinitions([

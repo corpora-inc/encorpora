@@ -1,10 +1,11 @@
 /** Real practice routes, API grading and responsive line-plot interaction.
- * Requires a disposable AMP_TEST_DATABASE_URL. Evidence: AMP_EVIDENCE_DIR. */
+ * Requires a disposable AMP_TEST_DATABASE_URL. Evidence: AMP_EVIDENCE_DIR.
+ * --engine webkit checks WebKit; --edges checks short and wide screens. */
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
 import { randomUUID } from "node:crypto";
 import { Pool } from "pg";
-import { chromium as rawChromium, type Page } from "playwright";
+import { chromium as rawChromium, webkit, type Page } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
@@ -27,6 +28,8 @@ import { linePlotBuildLesson } from "../src/content/line-plot-build-lessons";
 const database = process.env.AMP_TEST_DATABASE_URL;
 assert.ok(database, "AMP_TEST_DATABASE_URL required");
 assertTestDatabaseTarget(database);
+const engine = process.argv.includes("webkit") ? "webkit" : "chromium";
+const edges = process.argv.includes("--edges");
 const shots =
   process.env.AMP_EVIDENCE_DIR ??
   new URL("../artifacts/line-plot-build-ui/", import.meta.url).pathname;
@@ -66,7 +69,9 @@ const vite = await createServer({
   },
 });
 await vite.listen();
-const browser = await secureChromium(rawChromium).launch();
+const browser = await (
+  engine === "webkit" ? webkit : secureChromium(rawChromium)
+).launch();
 const errors: string[] = [];
 const evidence: object[] = [];
 const families = [
@@ -133,11 +138,103 @@ async function stable(
   assert.equal(after.overflow, 0);
   assert.equal(after.stageOverflow, 0);
 }
+async function promptVisible(page: Page) {
+  const visible = await page.evaluate(() => {
+    const prompt = document.querySelector<HTMLElement>("#problem-prompt")!;
+    const stage = document
+      .querySelector(".problem-stage")!
+      .getBoundingClientRect();
+    const rect = prompt.getBoundingClientRect();
+    const header = document
+      .querySelector("[data-app-bar]")
+      ?.getBoundingClientRect();
+    const topic = document
+      .querySelector(".practice-topic")
+      ?.getBoundingClientRect();
+    const cover = document.querySelector(".feedback")?.getBoundingClientRect();
+    const bottom =
+      cover && cover.left < rect.right && cover.right > rect.left
+        ? Math.min(stage.bottom, cover.top)
+        : stage.bottom;
+    return {
+      top: rect.top,
+      firstLineBottom:
+        rect.top + parseFloat(getComputedStyle(prompt).lineHeight),
+      visibleTop: Math.max(
+        0,
+        stage.top,
+        header?.bottom ?? 0,
+        topic?.bottom ?? 0,
+      ),
+      visibleBottom: Math.min(innerHeight, bottom),
+    };
+  });
+  assert.ok(
+    visible.top >= visible.visibleTop - 1 &&
+      visible.firstLineBottom <= visible.visibleBottom + 1,
+    `The prompt's first line is fully visible: ${JSON.stringify(visible)}`,
+  );
+  return visible;
+}
+async function cursor(page: Page, mode: "pointer" | "keyboard" | "hidden") {
+  const columns = await page
+    .locator(".line-build-column")
+    .evaluateAll((nodes) =>
+      nodes.map((node) => {
+        const style = getComputedStyle(node);
+        const mark = getComputedStyle(node, "::after");
+        return {
+          selected: node.getAttribute("data-selected") === "true",
+          background: style.backgroundColor,
+          focus: node.matches(":focus-visible"),
+          columnHeight: node.getBoundingClientRect().height,
+          content: mark.content,
+          top: parseFloat(mark.top),
+          height: parseFloat(mark.height),
+          border: parseFloat(mark.borderTopWidth),
+        };
+      }),
+    );
+  assert.ok(
+    columns.every((column) => column.background === "rgba(0, 0, 0, 0)"),
+    "No column fill can be confused with plotted data",
+  );
+  const selected = columns.filter((column) => column.selected);
+  if (mode === "hidden") {
+    assert.equal(selected.length, 0, "Grading hides the editing selection");
+    assert.ok(
+      columns.every((column) => column.content === "none"),
+      "Graded columns have no cursor, including with keyboard focus",
+    );
+    return;
+  }
+  assert.equal(selected.length, 1);
+  const mark = selected[0]!;
+  assert.ok(
+    mark.top >= mark.columnHeight * 0.94 &&
+      mark.height <= mark.columnHeight * 0.24,
+    "The cursor encloses the tick and label below the data marks",
+  );
+  assert.equal(mark.border, mode === "keyboard" ? 3 : 1);
+  if (mode === "keyboard") assert.ok(mark.focus, "Keyboard focus is visible");
+}
 try {
   for (const theme of ["light", "dark"] as const)
-    for (const width of [320, 390, 768, 1280]) {
+    for (const [width, height] of edges
+      ? ([
+          [320, 568],
+          [568, 320],
+          [844, 390],
+          [1920, 1080],
+        ] as const)
+      : ([
+          [320, 900],
+          [390, 900],
+          [768, 1024],
+          [1280, 900],
+        ] as const)) {
       const context = await browser.newContext({
-        viewport: { width, height: width === 768 ? 1024 : 900 },
+        viewport: { width, height },
         colorScheme: theme,
         hasTouch: width < 400,
         reducedMotion: "reduce",
@@ -152,7 +249,7 @@ try {
         const base = fixtures.get(family)!;
         const r = base.public.response as LinePlotBuildResponse;
         const counts = linePlotCounts(r, base.answer);
-        const tag = `${family}-${width}-${theme}`;
+        const tag = `${family}-${width}${edges ? `x${height}` : ""}-${theme}`;
         for (const correct of [true, false]) {
           const p = structuredClone(base);
           p.public.id = randomUUID();
@@ -182,6 +279,7 @@ try {
           const before = await geometry(page);
           assert.equal(before.overflow, 0);
           assert.equal(before.stageOverflow, 0);
+          await promptVisible(page);
           assert.ok(
             await page
               .getByRole("button", { name: "Check", exact: true })
@@ -195,6 +293,7 @@ try {
             const first = page.locator(".line-build-column").first();
             // Pointer adds in the blank space; tapping the top mark removes it.
             await first.click({ position: { x: 8, y: 8 } });
+            await cursor(page, "pointer");
             assert.match(
               (await first.getAttribute("aria-label")) ?? "",
               /1 Xs/,
@@ -264,6 +363,7 @@ try {
               : Object.fromEntries(Object.keys(counts).map((v) => [v, 1])),
           );
           await stable(page, before);
+          await cursor(page, "keyboard");
           await page.locator(".line-build-canvas").scrollIntoViewIfNeeded();
           if (correct)
             await page.screenshot({ path: `${shots}/${tag}-filled.png` });
@@ -291,6 +391,82 @@ try {
           await page.screenshot({
             path: `${shots}/${tag}-${correct ? "correct" : "incorrect"}.png`,
           });
+          const reviewPrompt = await promptVisible(page);
+          await cursor(page, "hidden");
+          const actionsVisible = await page
+            .locator(
+              ".feedback .next-row button, .feedback .practice-tools button",
+            )
+            .evaluateAll((nodes) =>
+              nodes.every((node) => {
+                const rect = node.getBoundingClientRect();
+                const sheet = node
+                  .closest(".feedback")!
+                  .getBoundingClientRect();
+                return (
+                  rect.width >= 44 &&
+                  rect.height >= 44 &&
+                  rect.left >= sheet.left &&
+                  rect.right <= sheet.right &&
+                  rect.top >= sheet.top &&
+                  rect.bottom <= Math.min(innerHeight, sheet.bottom)
+                );
+              }),
+            );
+          assert.ok(
+            actionsVisible,
+            "Feedback actions remain visible and touch-sized",
+          );
+          if (width > height && height < 500) {
+            await page
+              .getByRole("button", { name: "See why", exact: true })
+              .click();
+            await page
+              .getByRole("dialog", { name: "Explanation", exact: true })
+              .waitFor();
+            await page.keyboard.press("Escape");
+            await promptVisible(page);
+          }
+          await page
+            .locator(".line-build-column")
+            .first()
+            .evaluate((node: HTMLElement) =>
+              node.focus({ preventScroll: true }),
+            );
+          await cursor(page, "hidden");
+          // Feedback must leave every count reachable in the problem scroller.
+          await page.locator(".problem-stage").evaluate((node) => {
+            const count = node.querySelector(".line-build-expected")!;
+            node.scrollTop +=
+              count.getBoundingClientRect().top -
+              node.getBoundingClientRect().top -
+              8;
+          });
+          const countsVisible = await page
+            .locator(".line-build-expected")
+            .evaluateAll((nodes) => {
+              const stage = document
+                .querySelector(".problem-stage")!
+                .getBoundingClientRect();
+              const sheet = document
+                .querySelector(".feedback")!
+                .getBoundingClientRect();
+              return nodes.every((node) => {
+                const rect = node.getBoundingClientRect();
+                const covered =
+                  sheet.left < rect.right && sheet.right > rect.left;
+                return (
+                  rect.top >= stage.top - 1 &&
+                  rect.bottom <=
+                    Math.min(stage.bottom, covered ? sheet.top : innerHeight) +
+                      1
+                );
+              });
+            });
+          assert.ok(
+            countsVisible,
+            "Every answer count can scroll above feedback",
+          );
           // Retrying an equivalent count map, with explicit zero columns, is idempotent.
           const body = reply.request().postDataJSON();
           const received = linePlotCounts(r, body.response);
@@ -333,7 +509,7 @@ try {
                   problemId: p.public.id,
                   requestId: randomUUID(),
                   reasons: ["confusing-wording"],
-                  client: { kind: "web", viewport: { width, height: 900 } },
+                  client: { kind: "web", viewport: { width, height } },
                 },
               },
             );
@@ -344,35 +520,45 @@ try {
             );
             assert.equal(saved.rows[0].response_kind, "line-plot-build");
           }
-          evidence.push({ family, theme, width, correct, geometry: before });
+          evidence.push({
+            family,
+            theme,
+            width,
+            height,
+            correct,
+            geometry: before,
+            reviewPrompt,
+          });
         }
       }
       await context.close();
     }
   assert.deepEqual(errors, []);
-  const print = await browser.newPage();
-  await print.emulateMedia({ media: "print" });
-  await print.setContent(publicationHtml(linePlotBuildLesson, "lesson"));
-  await print.evaluate(() => document.fonts.ready);
-  for (const format of ["Letter", "A4"] as const) {
-    await print.setViewportSize({
-      width: format === "Letter" ? 816 : 794,
-      height: format === "Letter" ? 1056 : 1123,
-    });
-    await print.pdf({
-      path: `${shots}/lesson-${format}.pdf`,
-      format,
-      printBackground: true,
-    });
-    await print.screenshot({
-      path: `${shots}/lesson-${format}.png`,
-      fullPage: true,
-    });
+  if (engine === "chromium" && !edges) {
+    const print = await browser.newPage();
+    await print.emulateMedia({ media: "print" });
+    await print.setContent(publicationHtml(linePlotBuildLesson, "lesson"));
+    await print.evaluate(() => document.fonts.ready);
+    for (const format of ["Letter", "A4"] as const) {
+      await print.setViewportSize({
+        width: format === "Letter" ? 816 : 794,
+        height: format === "Letter" ? 1056 : 1123,
+      });
+      await print.pdf({
+        path: `${shots}/lesson-${format}.pdf`,
+        format,
+        printBackground: true,
+      });
+      await print.screenshot({
+        path: `${shots}/lesson-${format}.png`,
+        fullPage: true,
+      });
+    }
+    await print.close();
   }
-  await print.close();
   await writeFile(`${shots}/geometry.json`, JSON.stringify(evidence, null, 2));
   console.log(
-    `Line-plot builder: ${evidence.length} graded browser cases; pointer, keyboard, reset, bounds, idempotence, overflow and stable geometry passed.`,
+    `Line-plot builder (${engine}): ${evidence.length} graded browser cases; cursor, visible prompt, reachable counts, pointer, keyboard, reset, bounds, idempotence, overflow and stable geometry passed.`,
   );
 } finally {
   await browser.close();

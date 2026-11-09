@@ -154,23 +154,30 @@ test("guess chance comes from each family's answer schema and is never understat
     choiceFamilies++;
     assert.ok(chance > 0 && chance <= 1 / 2, `${template.id}: ${chance}`);
     for (let i = 0; i < 120; i++) {
-      const response = generateProblem(template.id, `audit:${i}`).public
-        .response;
-      assert.equal(
-        response.kind,
-        template.requiredResponseCapability === "multi-select-v1"
-          ? "multi-select"
-          : template.requiredResponseCapability === "line-plot-build-v1"
-            ? "line-plot-build"
-            : template.requiredResponseCapability === "point-plot-v1"
-              ? "point-plot"
-              : template.requiredResponseCapability === "multi-part-choice-v1"
-                ? "multi-part-choice"
-                : template.requiredResponseCapability === "figure-choice-v1"
-                  ? "figure-choice"
-                  : "choice",
-        template.id,
+      const problem = generateProblem(template.id, `audit:${i}`);
+      const response = problem.public.response;
+      assert.ok(
+        chance >= problemGuessChance(problem) - 1e-12,
+        `${template.id} seed ${i}: ${problemGuessChance(problem)} > ${chance}`,
       );
+      // Clause variants can use a different answer format from the family's
+      // admission capability. Their exact guessing chance is audited above.
+      if (!problem.variant?.axes?.clause)
+        assert.equal(
+          response.kind,
+          template.requiredResponseCapability === "multi-select-v1"
+            ? "multi-select"
+            : template.requiredResponseCapability === "line-plot-build-v1"
+              ? "line-plot-build"
+              : template.requiredResponseCapability === "point-plot-v1"
+                ? "point-plot"
+                : template.requiredResponseCapability === "multi-part-choice-v1"
+                  ? "multi-part-choice"
+                  : template.requiredResponseCapability === "figure-choice-v1"
+                    ? "figure-choice"
+                    : "choice",
+          template.id,
+        );
       if (response.kind === "choice" || response.kind === "figure-choice")
         assert.ok(
           chance >= 1 / response.options.length - 1e-12,

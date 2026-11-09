@@ -213,7 +213,7 @@ export function LinePlotBuildInput({
               className="line-build-column"
               role="group"
               tabIndex={selected === index ? 0 : -1}
-              data-selected={selected === index}
+              data-selected={!locked && selected === index}
               aria-disabled={locked}
               aria-label={`${number} ${response.axis.unit}, ${counts[number] ?? 0} Xs${answer === undefined ? "" : `, correct count ${linePlotCounts(response, answer)[number] ?? 0}`}`}
               aria-keyshortcuts="ArrowLeft ArrowRight ArrowUp ArrowDown Enter Space Backspace + -"

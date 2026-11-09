@@ -365,22 +365,38 @@ export function PracticeWorkspace(props: Props) {
   // Side by side (practice-tablet.css), the feedback sheet has its own
   // column; stacked, it covers the dock only, so a plotted answer's grid and
   // its feedback overlay stay in view and the explanation opens on request.
+  const shortLinePlotQuery =
+    "(orientation: landscape) and (min-width: 560px) and (max-height: 499px)";
+  const [shortLinePlot, setShortLinePlot] = useState(
+    () => !!lineBuild && matchMedia(shortLinePlotQuery).matches,
+  );
   const [sideBySide, setSideBySide] = useState(
-    () => matchMedia(sideBySideQuery).matches,
+    () => matchMedia(sideBySideQuery).matches || shortLinePlot,
   );
   useEffect(() => {
     const media = matchMedia(sideBySideQuery);
-    const changed = () => setSideBySide(media.matches);
+    const short = matchMedia(shortLinePlotQuery);
+    const changed = () => {
+      const compactPlot = !!lineBuild && short.matches;
+      setShortLinePlot(compactPlot);
+      setSideBySide(media.matches || compactPlot);
+    };
+    changed();
     media.addEventListener("change", changed);
-    return () => media.removeEventListener("change", changed);
-  }, []);
+    short.addEventListener("change", changed);
+    return () => {
+      media.removeEventListener("change", changed);
+      short.removeEventListener("change", changed);
+    };
+  }, [!!lineBuild]);
   const editorInDock = sideBySide && (!!work || !!figures);
+  const scrollFeedback = editorInDock || shortLinePlot;
   const deferSteps =
-    editorInDock ||
+    scrollFeedback ||
     ((!!plot || !!lineBuild || !!parts || !!figures || !!work) && !sideBySide);
   // Side by side, the sheet has the answer column's full height, so the
   // worked explanation is part of every result rather than a "See why" away.
-  const fullColumn = sideBySide && !editorInDock;
+  const fullColumn = sideBySide && !scrollFeedback;
   useEffect(() => {
     const media = matchMedia(answerLayoutQuery);
     const changed = () => setCompact(media.matches);
@@ -518,6 +534,10 @@ export function PracticeWorkspace(props: Props) {
     const room = spacer.current;
     if (!host || !room) return;
     room.style.height = "0px";
+    // A line plot's measurements are in its prompt. Start review there even
+    // when editing a tall plot scrolled it away; the spacer below keeps the
+    // counts reachable above the feedback sheet by scrolling.
+    if (outcome && lineBuild) host.scrollTo({ top: 0, behavior: "instant" });
     if (!outcome || !cover || sideBySide) return;
     // Layout offsets, not client rects: the sheet's entrance transform
     // must not shorten the overlap. A fixed sheet (very short screens)
@@ -545,7 +565,7 @@ export function PracticeWorkspace(props: Props) {
       room.style.height = `${overlap()}px`;
     };
     update();
-    if (reviewInProblem && !outcome.correct) {
+    if (reviewInProblem && !lineBuild && !outcome.correct) {
       const hidden = end() - host.scrollTop - (host.clientHeight - overlap());
       if (hidden > 0)
         host.scrollBy({
@@ -1216,7 +1236,7 @@ export function PracticeWorkspace(props: Props) {
    * See why opens a panel instead. */
   const stepsInline =
     !!outcome &&
-    !editorInDock &&
+    !scrollFeedback &&
     ((!outcome.correct && !deferSteps) || showWhy || fullColumn);
   const longAnswer =
     !!outcome &&
@@ -1385,7 +1405,11 @@ export function PracticeWorkspace(props: Props) {
   );
   return (
     <main className="practice-workspace" aria-label="Math practice">
-      <section className="practice-surface" ref={surface}>
+      <section
+        className="practice-surface"
+        data-line-plot-landscape={shortLinePlot || undefined}
+        ref={surface}
+      >
         {props.toolbarInFrame ? (
           frameTools &&
           createPortal(
@@ -1550,7 +1574,7 @@ export function PracticeWorkspace(props: Props) {
                 />
               </svg>
             )}
-            {editorInDock ? (
+            {scrollFeedback ? (
               <div
                 className="feedback-details"
                 tabIndex={0}
@@ -1587,7 +1611,7 @@ export function PracticeWorkspace(props: Props) {
           </div>
         )}
       </section>
-      {outcome && editorInDock && showWhy && (
+      {outcome && scrollFeedback && showWhy && (
         <FocusDialog title="Explanation" close={() => setShowWhy(false)}>
           {progressFeedback()}
           <Glossary payload={outcome} texts={outcome.explanation}>
