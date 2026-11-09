@@ -41,7 +41,7 @@ import { glossaryEntry } from "../glossary/index";
 import { termsIn } from "../glossary/link";
 import type { GradeBand } from "../curriculum/types";
 import { gradeBandOrder } from "./lesson-text";
-import { generateClauseVariant } from "../math/clause-variants";
+import { clauseVariants, generateClauseVariant } from "../math/clause-variants";
 import { clauseVariantMethods } from "./clause-variant-methods";
 
 /** One short lesson per problem type: what is given, what to find, how to
@@ -173,7 +173,7 @@ export function problemLesson(
       id,
       exampleSeed,
       lessonFigures(template),
-      undefined,
+      learnerProblem && clauseVariants[id] && !activeClause ? 1 : undefined,
       responseCapabilities,
     );
   // The learner may see a newer figure surface than the example (which is

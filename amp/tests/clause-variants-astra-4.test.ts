@@ -292,3 +292,22 @@ test("every added surface has a matching lesson method and same-surface worked e
       assert.ok(lesson.example.steps.length >= 2);
     }
 });
+
+test("original surfaces keep their original lesson methods", () => {
+  for (const [id, variants] of Object.entries(clauseVariants)) {
+    const p = generateProblem(id, "legacy-lesson", 1);
+    const lesson = problemLesson(
+      id,
+      "legacy-help",
+      p.public.prompt,
+      p.public.response,
+      p,
+    );
+    for (const variant of variants)
+      assert.notEqual(
+        lesson.goal,
+        clauseVariantMethods[variant]!.goal,
+        `${id}/${variant}`,
+      );
+  }
+});
