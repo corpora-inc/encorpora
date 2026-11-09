@@ -4,8 +4,8 @@ import { activeToday } from "../schools/principal.js";
 /* An adult's own practice (docs/families.md). Every teaching adult practices
    free: a teacher at a school with a license in force, or a parent of a child
    with access. `hasAccess` still reads only `amp_grants`: one grant per adult
-   learner, refreshed when `/me` is read, carries the latest end among what
-   qualifies. Practice itself writes nothing new. */
+   learner, refreshed on account reads and learning transactions, carries the
+   latest qualifying end. The separate free allowance creates no grant. */
 
 type Database = Pick<PoolClient, "query">;
 export const adultGrantId = (learnerId: string) => `adult:${learnerId}`;

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { freeAllowanceSchema } from "../learning/free-allowance.js";
 
 /** Approval links for another family's child (docs/families.md, step 5). */
 
@@ -33,6 +34,8 @@ export const approvalViewSchema = z.object({
   className: z.string(),
   teachers: z.array(z.string()),
   consentActive: z.boolean(),
+  canPractice: z.boolean().optional(),
+  freeAllowance: freeAllowanceSchema.optional(),
   learnerId: z.string().nullable(),
   access: z.object({ active: z.boolean(), endsAt: z.string().nullable() }),
 });

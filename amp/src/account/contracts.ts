@@ -1,6 +1,7 @@
 import { availableGiftSchema } from "../access-grants/contracts.js";
 import { purchaseMeasurementSchema } from "../advertising/permission-contracts.js";
 import { z } from "zod";
+import { freeAllowanceSchema } from "../learning/free-allowance.js";
 export const familySummarySchema = z.object({
   purchaseMeasurement: purchaseMeasurementSchema.optional(),
   metaPurchaseMeasurement: purchaseMeasurementSchema.optional(),
@@ -28,6 +29,11 @@ export const familySummarySchema = z.object({
       ),
       stripeLinked: z.boolean(),
       canPractice: z.boolean().optional(),
+      learningAllowed: z.boolean().optional(),
+      hasAccess: z.boolean().optional(),
+      namePending: z.boolean().optional(),
+      pictureIdentity: z.string().nullable().optional(),
+      freeAllowance: freeAllowanceSchema.optional(),
       /** The account holder's own learner (docs/families.md), not a child. */
       adult: z.literal(true).optional(),
     }),
@@ -64,8 +70,14 @@ export const meSchema = z.discriminatedUnion("signedIn", [
         id: z.string(),
         name: z.string(),
         birthYear: z.number().nullable(),
+        namePending: z.boolean().optional(),
+        pictureIdentity: z.string().nullable().optional(),
+        freeAllowance: freeAllowanceSchema.optional(),
         entitlement: z.object({
+          /** Permission for online practice, including a free allowance. */
           active: z.boolean(),
+          /** Actual grant coverage; absent on older providers. */
+          licensed: z.boolean().optional(),
           plan: z.string().nullable(),
           endsAt: z.string().nullable(),
         }),
@@ -120,9 +132,8 @@ export const meSchema = z.discriminatedUnion("signedIn", [
     /** A free assessment in progress: the family side has something to open
      * even before there's a learner. */
     trial: z.literal(true).optional(),
-    /** The adult's own practice, when they have it or may start it: free while
-     * they teach at a licensed school or a child of theirs has access. Their
-     * learner is never among `learners`, which are the family's. */
+    /** The adult's own practice, with a free allowance and access supplied by
+     * their children or school. It is separate from the family's children. */
     adultPractice: z
       .object({
         /** May practice now: their access is active, or they may start. */

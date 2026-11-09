@@ -218,8 +218,7 @@ async function teacherFamily(account: string) {
     [`fixture-${id}`, id],
   );
 }
-const anaRow = (page: Page) =>
-  page.locator('[data-approval]').filter({ hasText: "Ana" });
+const anaRow = (page: Page) => page.locator("[data-approval]").first();
 
 async function journey(
   browser: Browser,
@@ -248,18 +247,20 @@ async function journey(
     .getByRole("button", { name: "Add a child from another family" })
     .click();
   const parentEmail = `parent-${randomUUID().slice(0, 8)}@reyes.example`;
-  await teacher.getByLabel("Child’s first name").fill("Ana");
   await teacher.getByLabel("Their parent’s email").fill(parentEmail);
   await teacher.getByRole("button", { name: "Send approval link" }).click();
   await teacher.getByText(`We sent ${parentEmail} a link.`).waitFor();
   await measured(teacher, `${label} link sent`);
   await shot(teacher, "teacher-sent", width, theme);
   await teacher.getByRole("button", { name: "Done" }).click();
-  await anaRow(teacher).getByText(/^Waiting for their parent/).waitFor();
+  await anaRow(teacher)
+    .getByText(/^Waiting for their parent/)
+    .waitFor();
   check(
     `${label} Copy link is there while Ana waits`,
-    (await anaRow(teacher).getByRole("button", { name: /Copy link/ }).count()) ===
-      1,
+    (await anaRow(teacher)
+      .getByRole("button", { name: /Copy link/ })
+      .count()) === 1,
   );
   await measured(teacher, `${label} Ana waiting`);
   await shot(teacher, "teacher-waiting", width, theme);
@@ -274,7 +275,7 @@ async function journey(
   parent.setDefaultTimeout(30_000);
   last.page = parent;
   await parent.goto(link);
-  await heading(parent, "Approve Ana joining Marisol’s class");
+  await heading(parent, "Approve your child joining Marisol’s class");
   await measured(parent, `${label} link signed out`);
   await shot(parent, "link-signed-out", width, theme);
   await parent.getByRole("link", { name: "Create an account" }).click();
@@ -282,17 +283,18 @@ async function journey(
   await createAccount(parent, parentEmail);
   await parent.waitForURL(/\/family\/approve/);
   const parentAccount = await accountOf(parent, "Lucía Reyes");
-  await heading(parent, "Approve Ana joining Marisol’s class");
+  await heading(parent, "Approve your child joining Marisol’s class");
   await parent.getByText(`You’re signed in as ${parentEmail}`).waitFor();
   await measured(parent, `${label} link signed in`);
   await parent.getByRole("button", { name: "Continue" }).click();
   await parent.waitForURL(APPROVAL_PAGE);
-  await heading(parent, "Ana is invited to Marisol’s class");
+  await heading(parent, "Your child is invited to Marisol’s class");
   await parent.getByText("Marisol Vega", { exact: true }).waitFor();
   check(
     `${label} consent first: the purchase is the way in`,
-    (await parent.getByRole("link", { name: "Buy a license for Ana" }).count()) ===
-      1,
+    (await parent
+      .getByRole("link", { name: "Buy a license for your child" })
+      .count()) === 1,
   );
   await measured(parent, `${label} consent needed`);
   await shot(parent, "consent-needed", width, theme);
@@ -302,15 +304,21 @@ async function journey(
     [parentAccount],
   );
   await parent.reload();
-  await heading(parent, "Ana is invited to Marisol’s class");
+  await heading(parent, "Your child is invited to Marisol’s class");
   const name = parent.getByLabel("Your child’s first name");
   await name.waitFor();
-  check(`${label} the name the teacher used`, (await name.inputValue()) === "Ana");
+  check(
+    `${label} no child name collected by the teacher`,
+    (await name.inputValue()) === "",
+  );
+  await name.fill("Ana");
   await measured(parent, `${label} approve`);
   await shot(parent, "approve", width, theme);
-  await parent.getByRole("button", { name: "Approve Ana joining" }).click();
+  await parent
+    .getByRole("button", { name: "Approve your child joining" })
+    .click();
   await heading(parent, "Ana is in Marisol’s class");
-  await parent.getByText("Needs access", { exact: true }).waitFor();
+  await parent.getByText("Free practice", { exact: true }).waitFor();
   await measured(parent, `${label} approved, needs access`);
   await shot(parent, "approved-needs-access", width, theme);
   const learner = (
@@ -394,13 +402,17 @@ async function journey(
   await measured(teacher, `${label} class map`);
   await shot(teacher, "teacher-map", width, theme);
   await teacher.goto(classUrl);
-  await anaRow(teacher).getByText(/^Access through /).waitFor();
+  await anaRow(teacher)
+    .getByText(/^Access through /)
+    .waitFor();
   await teacherContext.close();
 }
 
 try {
   const browser = await chromium.launch();
-  for (const width of [1280, 390])
+  for (const width of (argument("--widths") ?? "320,390,768,1280")
+    .split(",")
+    .map(Number))
     for (const theme of ["light", "dark"] as const)
       await journey(browser, width, theme);
   await browser.close();

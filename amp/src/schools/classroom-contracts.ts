@@ -13,6 +13,7 @@ import {
   type SchoolSettings,
 } from "./settings.js";
 import type { ExperiencePreset } from "./setup-contracts.js";
+import { freeAllowanceSchema } from "../learning/free-allowance.js";
 
 /** The API shapes of a class's student experience, standings and workbook
  * stack. Shared by the routes and their screens. */
@@ -183,6 +184,8 @@ const stackSet = z.object({
   number: z.number().int(),
   minutes: workbookMinutesSchema,
   students: z.number().int(),
+  /** Roster members who actually received this set. */
+  studentIds: z.array(z.uuid()).optional(),
   /** Students with at least one mark saved. */
   marked: z.number().int(),
   /** The skill a group sheet leaned on. Printing again never reuses one. */
@@ -198,7 +201,14 @@ export const stackResource = z.object({
   /** Whether this server can render PDFs at all. */
   pdf: z.boolean(),
   students: z.array(
-    z.object({ id: z.uuid(), name: z.string(), seated: z.boolean() }),
+    z.object({
+      id: z.uuid(),
+      name: z.string(),
+      seated: z.boolean(),
+      canMakeWorkbook: z.boolean().optional(),
+      canReadWorkbooks: z.boolean().optional(),
+      freeAllowance: freeAllowanceSchema.optional(),
+    }),
   ),
   /** Sets made lately, newest first. */
   recent: z.array(stackSet),

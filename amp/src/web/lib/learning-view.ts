@@ -125,12 +125,7 @@ export function useLearningView({
     ? !!trialProgress.data && trialProgress.data.remaining > 0
     : !!activeLearner &&
       !!account?.family.learners.find((l) => l.id === activeLearner.id)
-        ?.canPractice &&
-      // An adult learns on their own terms; a child on the family's consent.
-      (!!own ||
-        ["active", "development"].includes(
-          account?.family.consent.status ?? "",
-        ));
+        ?.canPractice;
   const identityError = session.error || (session.data && me.error);
   const loading =
     (!explicitTrial && loadingIdentity) ||

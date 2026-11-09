@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import { FREE_ONLINE_PROBLEMS } from "../../../learning/free-allowance";
 import type { AdultStart } from "../../../learning/starting-point";
 import { Avatar } from "../../ui/Avatar";
 import { Badge } from "../../ui/Badge";
@@ -74,30 +75,32 @@ export function OwnRecordScreen() {
               </p>
             </div>
             <div className={teacher.recordAction}>
-              {/* Practice is the bar's action; workbooks are theirs here. */}
-              {data.learner.active ? (
-                <Link
-                  to="/$"
-                  params={{
-                    _splat: `learners/${data.learner.id}/workbooks`,
-                  }}
-                  className={buttonClass("secondary")}
-                >
-                  Workbooks
-                </Link>
-              ) : (
-                <Badge>Practice paused</Badge>
-              )}
+              {/* Practice is the bar's action; workbooks are theirs here,
+                  with their own allowance, so they stay when practice
+                  pauses. */}
+              {!data.learner.active && <Badge>Practice paused</Badge>}
+              <Link
+                to="/$"
+                params={{
+                  _splat: `learners/${data.learner.id}/workbooks`,
+                }}
+                className={buttonClass("secondary")}
+              >
+                Workbooks
+              </Link>
               <Button variant="secondary" onClick={() => window.print()}>
                 Print progress report
               </Button>
             </div>
           </div>
+          {/* Paused only when no access covers them and their free problems
+              are used: say both plainly. No plan exists for an adult's own
+              practice, so nothing here offers one. */}
           {!data.learner.active && (
             <p className={styles.paused}>
-              Your own practice is free while you teach a class at a school with
-              AMP, or while a child of yours practices. Your progress stays
-              here.
+              Your {FREE_ONLINE_PROBLEMS} free problems are used. Your own
+              practice is free while you teach a class at a school with AMP, or
+              while a child of yours practices. Your progress stays here.
             </p>
           )}
           <div className={teacher.recordColumns}>

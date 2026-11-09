@@ -123,3 +123,28 @@ export async function schoolConsentActive(
   );
   return rows[0].active === true;
 }
+
+/** An unnamed active student may start before the school accepts an
+ * agreement. Ending an agreement stops collection for that school's students. */
+export async function schoolUnnamedLearningActive(
+  db: Database,
+  accountId: string,
+): Promise<boolean> {
+  const personId = schoolPersonId(accountId);
+  if (!personId) return false;
+  const { rows } = await db.query(
+    `SELECT EXISTS(
+       SELECT 1 FROM amp_people p
+       JOIN amp_org_roles r ON r.person_id=p.id AND r.role='student'
+       JOIN amp_orgs o ON o.id=r.org_id
+       LEFT JOIN LATERAL (
+         SELECT a.ended_at FROM amp_data_agreements a WHERE a.org_id=ANY(o.path)
+         ORDER BY array_position(o.path,a.org_id) DESC,a.accepted_at DESC,a.id LIMIT 1
+       ) nearest ON true
+       WHERE p.id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")}
+         AND nearest.ended_at IS NULL
+     ) AS active`,
+    [personId],
+  );
+  return rows[0].active === true;
+}
