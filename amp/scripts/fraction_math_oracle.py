@@ -95,6 +95,10 @@ def review_fraction_expression_fixtures():
     return {'fixtures': len(fixtures), 'mutants': mutants}
 
 def solve_fraction_practice(public):
+    from fraction_clause_math_oracle import solve_clause
+    clause = solve_clause(public)
+    if clause is not None:
+        return clause
     name, prompt = public['templateId'], public['prompt']
     require(name in FRACTION_PRACTICE, 'Unknown fraction family')
     if name in FRACTION_CHOICE:

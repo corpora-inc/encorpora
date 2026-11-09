@@ -13,6 +13,11 @@ import {
   versionGatedAxes,
 } from "./variation/axes.js";
 import {
+  clauseProblem,
+  grade3Band,
+  unitDenominatorOn,
+} from "./fraction-clause-variants.js";
+import {
   groupsStory,
   likeDifferenceStory,
   mixedDifferenceStory,
@@ -74,6 +79,17 @@ export const equivalentNumeratorAxes = {
   }),
 } as const;
 /** Templates whose stored version-1 problem this generator still reprints. */
+/** Clause variants raise the template version. Stored version 1 still reprints. */
+const CLAUSE_VERSION: Record<string, number> = {
+  "fraction-whole-as-parts": 2,
+  "equivalent-numerator": 3,
+  "equivalent-denominator": 2,
+  "whole-times-fraction": 3,
+  "whole-sharing-fraction": 2,
+  "whole-unit-groups": 2,
+  "fraction-group-count": 2,
+  "fraction-of-quantity": 2,
+};
 const REPRINT_V1 = new Set([
   "equivalent-numerator",
   "like-fraction-missing-part",
@@ -204,8 +220,8 @@ export const fractionPracticeTemplates: readonly TemplateMetadata[] =
       title,
       skillId,
       description,
-      version: REPRINT_V1.has(id) ? 2 : 1,
-      ...(REPRINT_V1.has(id) ? { reprintsFrom: 1 } : {}),
+      version: CLAUSE_VERSION[id] ?? (REPRINT_V1.has(id) ? 2 : 1),
+      ...(REPRINT_V1.has(id) || id in CLAUSE_VERSION ? { reprintsFrom: 1 } : {}),
       gradeBand: grade === "6" ? "6–8" : "3–5",
     }),
   );
@@ -252,6 +268,8 @@ export function generateFractionPracticeProblem(
     throw new Error(`Unknown fraction practice template: ${templateId}`);
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
+  const clause = clauseProblem(templateId, seed, template);
+  if (clause) return clause;
   const r = random(templateId, seed),
     choose = (xs: readonly number[]) => xs[r(0, xs.length - 1)]!;
   const denomAxes = DENOM_AXIS_IDS.has(templateId)
@@ -364,24 +382,37 @@ export function generateFractionPracticeProblem(
       break;
     }
     case "fraction-whole-as-parts": {
+      const den = unitDenominatorOn(templateId, seed) ? 1 : d;
       const w = r(1, 3);
-      figure = strips(d, w * d, "one whole", w);
+      if (den > 1) figure = strips(den, w * den, "one whole", w);
       kind = "number";
       label = "Missing numerator";
-      prompt = `Write ${w} wholes as ?/${d}. What is the missing numerator?`;
-      answer = `${w * d}`;
-      hint = `Each whole contains ${d} pieces of size 1/${d}.`;
+      prompt = `Write ${w} wholes as ?/${den}. What is the missing numerator?`;
+      answer = `${w * den}`;
+      hint = `Each whole contains ${den} ${den === 1 ? "piece of size 1/1" : `pieces of size 1/${den}`}.`;
       explanation = [
-        `The bottom number, ${d}, says each whole is cut into ${d} equal pieces of size 1/${d}.`,
+        `The bottom number, ${den}, says each whole is cut into ${den} equal ${den === 1 ? "piece" : "pieces"} of size 1/${den}.`,
         `The top number, the numerator, counts how many of those pieces you have.`,
-        `${w === 1 ? "1 whole holds" : `${w} wholes hold`} ${w} × ${d} = ${w * d} pieces.`,
-        `So ${w} = ${w * d}/${d}, and the missing numerator is ${w * d}.`,
+        `${w === 1 ? "1 whole holds" : `${w} wholes hold`} ${w} × ${den} = ${w * den} ${den === 1 ? "piece" : "pieces"}.`,
+        `So ${w} = ${w * den}/${den}, and the missing numerator is ${w * den}.`,
       ];
       break;
     }
     case "equivalent-numerator": {
       let b: number, a: number, k: number;
-      if (!expanded) {
+      if (grade3Band(templateId, seed)) {
+        const pairs = [
+          [2, 2],
+          [2, 3],
+          [2, 4],
+          [3, 2],
+          [4, 2],
+        ] as const;
+        const pair = pairs[r(0, pairs.length - 1)]!;
+        b = pair[0];
+        k = pair[1];
+        a = r(1, b - 1);
+      } else if (!expanded) {
         b = choose([2, 3, 4]);
         a = r(1, b - 1);
         k = r(2, Math.floor(12 / b));
@@ -435,9 +466,24 @@ export function generateFractionPracticeProblem(
       break;
     }
     case "equivalent-denominator": {
-      const b = choose([2, 3, 4]),
-        a = r(1, b - 1),
+      let b: number, a: number, k: number;
+      if (grade3Band(templateId, seed)) {
+        const pairs = [
+          [2, 2],
+          [2, 3],
+          [2, 4],
+          [3, 2],
+          [4, 2],
+        ] as const;
+        const pair = pairs[r(0, pairs.length - 1)]!;
+        b = pair[0];
+        k = pair[1];
+        a = r(1, b - 1);
+      } else {
+        b = choose([2, 3, 4]);
+        a = r(1, b - 1);
         k = r(2, Math.floor(12 / b));
+      }
       kind = "number";
       label = "Missing denominator";
       prompt = `Rename ${a * k}/${b * k} as ${a}/?. What is the missing denominator?`;
@@ -848,6 +894,20 @@ export function generateFractionPracticeProblem(
         ...(expanded ? { denominator: "expanded" } : {}),
         ...(applied ? { setting: "applied" } : {}),
       }),
+    };
+  if (
+    (templateId === "equivalent-numerator" ||
+      templateId === "equivalent-denominator") &&
+    grade3Band(templateId, seed)
+  )
+    variant = {
+      id: variant?.id ? `${variant.id}-grade3` : "grade3",
+      axes: axisRecord({ ...(variant?.axes ?? {}), band: "grade3" }),
+    };
+  if (templateId === "fraction-whole-as-parts" && unitDenominatorOn(templateId, seed))
+    variant = {
+      id: variant?.id ? `${variant.id}-unitden` : "unitden",
+      axes: axisRecord({ ...(variant?.axes ?? {}), unitden: "on" }),
     };
   return {
     ...(variant ? { variant } : {}),
