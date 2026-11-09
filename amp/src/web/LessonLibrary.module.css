@@ -136,13 +136,44 @@
   width: 100%;
   min-width: 0;
 }
-/* One line, reserved: the count never moves the results under it. */
+/* The search row before the catalog: each field's shape at its size (the
+   search field's frame and the area picker's), so the real row lands on it. */
+.searchSlot,
+.areaSlot {
+  border-radius: var(--radius-control);
+}
+.searchSlot {
+  min-height: var(--target-size);
+}
+.areaSlot {
+  min-height: 48px;
+}
+/* Two lines reserved: a count that names the query wraps inside its own
+   place and never moves the results under it. Nothing is clipped; only an
+   empty result, with nothing under it, can take a third line. */
 .summary {
-  min-height: 1.5em;
+  min-height: calc(2 * 1.45em);
   margin: var(--space-3) 0 var(--space-2);
   overflow-wrap: break-word;
   color: var(--color-muted-text);
   font-size: var(--text-label);
+  line-height: 1.45;
+}
+/* A failed catalog, in the search row's place: what happened, then Try
+   again. */
+.unavailable {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+}
+.unavailable p {
+  margin: 0;
+  line-height: 1.5;
 }
 .words {
   display: grid;
