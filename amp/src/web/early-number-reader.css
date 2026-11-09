@@ -50,7 +50,4 @@
   .book-reader[data-presentation="early-number"] .early-number-art {
     max-width: min(360px, 64cqh);
   }
-  .book-reader[data-presentation="early-number"] .reading-callout {
-    padding: 8px;
-  }
 }

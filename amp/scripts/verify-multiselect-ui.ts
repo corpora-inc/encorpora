@@ -681,7 +681,7 @@ try {
   );
   const prompt = await page.locator("#problem-prompt").textContent();
   await page.getByRole("button", { name: "Open AMP menu" }).click();
-  await page.getByRole("link", { name: "Your progress" }).click();
+  await page.getByRole("link", { name: "Progress" }).click();
   for (let visit = 0; visit < 2; visit++) {
     if (visit > 0) await page.goForward();
     await page.waitForURL(/\/try\/map(?:\?|$)/);

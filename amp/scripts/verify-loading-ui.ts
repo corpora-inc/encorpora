@@ -203,7 +203,10 @@ async function pressed(page: Page, name: RegExp, id: string) {
   await pressed(page, /^Sign in$/, "sign-in-button");
   const signingIn = await watch(page, () => undefined);
   alive("sign-in", signingIn);
-  await page.waitForURL((url) => url.pathname.startsWith("/school/"));
+  await page.waitForURL(/\/school\/[^/]+\/classes\/[^/]+\/today$/);
+  await page
+    .getByRole("heading", { name: /^Good (morning|afternoon|evening)/ })
+    .waitFor();
   await page.goto(`${fixture.origin}/overview`);
   await page.locator('.frontier-map[aria-busy="false"]').waitFor();
   await page.locator(".go-button:not([disabled])").waitFor();

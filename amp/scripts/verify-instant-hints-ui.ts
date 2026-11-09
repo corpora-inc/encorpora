@@ -240,7 +240,7 @@ try {
         if (mode !== "account") {
           await page.getByRole("button", { name: "Open AMP menu" }).click();
           await page
-            .getByRole("link", { name: "Your progress" })
+            .getByRole("link", { name: "Progress" })
             .click({ noWaitAfter: true });
           await page
             .waitForURL((url) => url.pathname === "/try/map")

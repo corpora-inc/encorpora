@@ -209,7 +209,8 @@ export async function preparePracticeAnswer(
             .locator(`.multi-part-blank[data-blank="${blank.id}"]`)
             .click();
           await page
-            .locator('.multi-part-menu [role="menuitemradio"]')
+            .locator('.multi-part-menu[data-state="open"]')
+            .getByRole("menuitemradio")
             .nth(blank.options.findIndex((o) => o.id === option))
             .click();
         }

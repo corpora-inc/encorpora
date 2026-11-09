@@ -10,9 +10,6 @@ export type AlgebraDiagram = Extract<
   Diagram,
   { kind: "balance" | "coordinate-plot" | "value-table" }
 >;
-const ink = "#18594f",
-  coral = "#af4c39",
-  gold = "#e8c579";
 /** Shared semantic drawing: print and screen preserve the same mathematical givens. */
 export function AlgebraDiagramFigure({
   diagram: d,
@@ -22,6 +19,13 @@ export function AlgebraDiagramFigure({
   screen?: boolean;
 }) {
   validateAlgebraModel(d);
+  // Print uses fixed inks on paper; the reader uses the active screen theme.
+  const ink = screen ? "var(--color-figure-accent)" : "#18594f",
+    coral = screen ? "var(--color-figure-warm)" : "#af4c39",
+    gold = screen ? "var(--color-figure-gold-fill)" : "#e8c579",
+    fill = screen ? "var(--color-figure-accent-fill)" : "#e4f0eb",
+    grid = screen ? "var(--color-figure-grid)" : "#ccdcd5",
+    halo = screen ? "var(--color-surface)" : "white";
   let art: React.ReactNode, key: React.ReactNode;
   if (d.kind === "value-table") {
     art = (
@@ -58,7 +62,7 @@ export function AlgebraDiagramFigure({
       >
         <path
           d="M160 91 L132 162 H188 Z"
-          fill="#e4f0eb"
+          fill={fill}
           stroke={ink}
           strokeWidth="2"
         />
@@ -101,7 +105,7 @@ export function AlgebraDiagramFigure({
               width="100"
               height="27"
               rx="5"
-              fill="#e4f0eb"
+              fill={fill}
               stroke={ink}
             />
             <text
@@ -143,7 +147,7 @@ export function AlgebraDiagramFigure({
       >
         {ticks(d.xMin, d.xMax, d.xStep).map((n) => (
           <g key={`x${n}`}>
-            <path d={`M${x(n)} 24 V174`} stroke="#ccdcd5" />
+            <path d={`M${x(n)} 24 V174`} stroke={grid} />
             <text x={x(n)} y="196" textAnchor="middle" style={{ fontSize: 17 }}>
               {n}
             </text>
@@ -151,7 +155,7 @@ export function AlgebraDiagramFigure({
         ))}
         {ticks(d.yMin, d.yMax, d.yStep).map((n) => (
           <g key={`y${n}`}>
-            <path d={`M50 ${y(n)} H285`} stroke="#ccdcd5" />
+            <path d={`M50 ${y(n)} H285`} stroke={grid} />
             <text x="41" y={y(n) + 6} textAnchor="end" style={{ fontSize: 17 }}>
               {n}
             </text>
@@ -234,7 +238,7 @@ export function AlgebraDiagramFigure({
                   y={Math.max(23, (a.y + b.y) / 2 - 8)}
                   textAnchor="middle"
                   paintOrder="stroke"
-                  stroke="white"
+                  stroke={halo}
                   strokeWidth="4"
                   style={{ fontSize: 18 }}
                 >
@@ -269,7 +273,7 @@ export function AlgebraDiagramFigure({
                   y={Math.max(23, Math.min(171, at.y + (south ? 20 : -10)))}
                   textAnchor={west ? "end" : "start"}
                   paintOrder="stroke"
-                  stroke="white"
+                  stroke={halo}
                   strokeWidth="4"
                   fill={coral}
                   style={{ fontSize: 18 }}
