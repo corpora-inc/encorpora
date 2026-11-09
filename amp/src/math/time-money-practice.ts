@@ -4,6 +4,7 @@ import type {
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts";
+import { clauseFamily } from "./clause-family";
 import { CENTS, type MoneyItem } from "./time-money-models";
 
 type Response = "choice" | "number";
@@ -38,10 +39,16 @@ const definitions = rows
 export const timeMoneyTemplates: readonly TemplateMetadata[] = definitions.map(
   ({ id, title, skillId, response, description }) => ({
     id,
-    version: 1,
+    version:
+      id === "match-clock-half-hour" || id === "match-clock-five-minutes"
+        ? 2
+        : 1,
+    ...(id === "match-clock-half-hour" || id === "match-clock-five-minutes"
+      ? { reprintsFrom: 1 as const }
+      : {}),
     title,
     skillId,
-    gradeBand: "K–2",
+    gradeBand: "K–2" as const,
     description,
     ...(response === "choice"
       ? { requiredResponseCapability: "single-choice-v1" as const }
@@ -168,6 +175,96 @@ function readClock(h: number, m: number, options: number): Draft {
     ],
   };
 }
+/** A digital time matched to three analog faces. The template stays a choice
+ * of Clock A/B/C; there is no digital-clock component, so the digits are in
+ * the prompt and the faces are the existing analog figure. */
+function digitalFace(r: Random, five: boolean): Draft {
+  let h = five ? r(1, 11) : r(1, 12);
+  let m = five ? 5 * r(0, 11) : r(0, 1) === 0 ? 0 : 30;
+  if (!five && h === 12 && m === 0) m = 30;
+  if (five && r(0, 9) < 6 && (m === 0 || m === 30)) m = 5 * r(1, 11);
+  const swapH = m === 0 ? 12 : m / 5;
+  const swapM = (h % 12) * 5;
+  const neighbor = five
+    ? m === 0
+      ? 5
+      : m === 55
+        ? 50
+        : r(0, 1) === 0
+          ? m - 5
+          : m + 5
+    : m === 0
+      ? 30
+      : 0;
+  const nextH = (h % 12) + 1;
+  const wrongs: [number, number, string][] = [
+    [
+      swapH,
+      swapM,
+      "reads the hands the other way: the long hand is on the hour's number",
+    ],
+    five
+      ? [h, neighbor, "is one five off"]
+      : [h, neighbor, m === 30 ? "shows the hour, not half past" : "shows half past"],
+    five
+      ? [nextH, m, "reads the short hand as the next number"]
+      : [nextH, m, "reads the short hand as the next number"],
+  ];
+  const seen = new Set([`${h}:${m}`]);
+  const picked = wrongs.filter(([a, b]) => {
+    const k = `${a}:${b}`;
+    if (seen.has(k) || a < 1 || a > 12) return false;
+    seen.add(k);
+    return true;
+  });
+  while (picked.length < 2) {
+    const extra: [number, number, string] = [
+      ((h + picked.length) % 11) + 1,
+      five ? 5 * ((m / 5 + 3) % 12) : 0,
+      "shows a different time",
+    ];
+    const k = `${extra[0]}:${extra[1]}`;
+    if (!seen.has(k)) {
+      seen.add(k);
+      picked.push(extra);
+    }
+  }
+  const clocks = shuffle(r, [
+    { hour: h, minute: m, why: "" },
+    ...picked.slice(0, 2).map(([hour, minute, why]) => ({ hour, minute, why })),
+  ]);
+  const labels = ["A", "B", "C"] as const;
+  const t = clockTime(h, m);
+  return {
+    prompt: `The digital clock shows ${t}. Which clock shows the same time?`,
+    hint: `Digital ${t}: the hour is ${h} and the minutes are ${m}. The short hand is ${m === 0 ? `on ${h}` : `past ${h}, not yet on ${next(h)}`}. The long hand is at ${numeral(m)}.`,
+    figure: {
+      kind: "analog-clocks",
+      clocks: clocks.map(({ hour, minute }, i) => ({
+        hour,
+        minute,
+        label: labels[i],
+      })),
+    },
+    explanation: [
+      `The digital clock reads ${t}: hour ${h}, then ${String(m).padStart(2, "0")} minutes.`,
+      m === 0
+        ? `The short hand is on ${h} and the long hand is straight up.`
+        : `The short hand has passed ${h} and has not reached ${next(h)}. The long hand is at ${numeral(m)}${m % 5 === 0 ? `, because ${numeral(m)} × 5 = ${m}` : ""}.`,
+      `Clock ${labels[clocks.findIndex((c) => !c.why)]} shows both hands in those places.`,
+    ],
+    ordered: true,
+    choices: clocks.map((c, i) =>
+      c.why
+        ? {
+            label: `Clock ${labels[i]}`,
+            feedback: `Clock ${labels[i]} ${c.why}. ${t} needs the long hand at ${numeral(m)}.`,
+          }
+        : { label: `Clock ${labels[i]}`, correct: true },
+    ),
+  };
+}
+
 function matchClock(r: Random, h: number, m: number): Draft {
   const key = (x: [number, number]) => `${x[0]}:${x[1]}`;
   const candidates: [number, number, string][] = [
@@ -553,8 +650,25 @@ export function generateTimeMoneyProblem(
   if (!meta) throw new Error(`Unknown time or money template: ${templateId}`);
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
-  const r = random(templateId, seed);
-  const d = draft(templateId, r);
+  const digital =
+    (templateId === "match-clock-half-hour" ||
+      templateId === "match-clock-five-minutes") &&
+    clauseFamily(
+      templateId,
+      seed,
+      2,
+      [
+        { id: "legacy", weight: 2 },
+        { id: "digital-face", weight: 2 },
+      ],
+      "legacy",
+    ) === "digital-face";
+  const r = digital
+    ? random(`${templateId}#clause`, seed)
+    : random(templateId, seed);
+  const d = digital
+    ? digitalFace(r, templateId === "match-clock-five-minutes")
+    : draft(templateId, r);
   const base = {
     id: createHash("sha256")
       .update(JSON.stringify([templateId, 1, seed]))
