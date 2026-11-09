@@ -251,7 +251,9 @@ export function generateGraphicalProblem(
     family === "legacy" ? random(templateId, seed) : random(`${templateId}#${family}`, seed);
   if (family !== "legacy") {
     const built = clauseGraphical(templateId, seed, family, r);
-    built.public.templateVersion = 2;
+    // The public contract accepts only templateVersion 1. The id still
+    // includes 2, the catalog version that introduced this clause, so it
+    // does not share an id with the version-1 problem of the same seed.
     built.public.id = createHash("sha256")
       .update(JSON.stringify([templateId, 2, seed]))
       .digest("hex");
