@@ -1,4 +1,6 @@
 import { generateProblemFor, gradeAnswer, templates } from "../math/engine";
+import { clauseProblem } from "../math/clause-extensions";
+import { clauseMethods } from "./clause-methods";
 import {
   historicalTemplates,
   templateReplacements,
@@ -176,7 +178,8 @@ export function problemLesson(
     clauseFamilies[id]?.includes(learnerProblem.variant.id)
       ? buildClause(template, exampleSeed, learnerProblem.variant.id)
       : (activeClause && activeClause !== "legacy"
-          ? generateClauseVariant(template, exampleSeed, activeClause)
+          ? clauseProblem(template, exampleSeed, activeClause) ??
+            generateClauseVariant(template, exampleSeed, activeClause)
           : null) ??
         generateProblemFor(
           id,
@@ -273,8 +276,12 @@ export function problemLesson(
         ? example.answer
         : displayAnswer(example.answer);
   const lessonTemplateId = templateReplacements[templateId] ?? templateId;
+  const extensionMethod = example.variant?.axes?.clause
+    ? clauseMethods[example.variant.axes.clause]
+    : undefined;
   const authored =
     clauseMethod(example.variant?.id) ??
+    extensionMethod ??
     clauseVariantMethods[example.variant?.axes?.clause ?? ""] ??
     methods[lessonTemplateId];
   const givens = realNumberGivens(templateId, example.public.seed);
@@ -300,6 +307,7 @@ export function problemLesson(
     template.description;
   const principle =
     clausePrinciple(example.variant?.id) ??
+    extensionMethod?.intuition ??
     principles[lessonTemplateId] ??
     null;
   const methodTerms = authored?.terms ?? [];

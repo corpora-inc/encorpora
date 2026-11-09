@@ -1,5 +1,6 @@
 import { generateProblem, templates } from "../../src/math/engine";
 import { clauseFamilies } from "../../src/math/clause-variants";
+import { clauseExtensions } from "../../src/math/clause-extensions";
 
 /** Regression tests for the previously published surfaces keep exercising
  * their stored catalog version. Clause tests exercise the current version. */
@@ -13,6 +14,8 @@ export function generateBeforeClauses(
     id,
     seed,
     version ??
-      (clauseFamilies[id] && current ? current.version - 1 : undefined),
+      ((clauseFamilies[id] || clauseExtensions[id]) && current
+        ? current.version - 1
+        : undefined),
   );
 }

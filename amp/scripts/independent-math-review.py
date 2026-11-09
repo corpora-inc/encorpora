@@ -6,6 +6,7 @@ from rational_equation_math_oracle import RATIONAL_EQUATION, RATIONAL_EQUATION_C
 from geometry_proof_math_oracle import GEOMETRY_PROOF, solve_geometry_proof, review_geometry_proof_fixtures, review_geometry_proof_problem
 from radical_equation_math_oracle import RADICAL_EQUATION, RADICAL_EQUATION_CHOICE, solve_radical_equation, review_radical_equation_fixtures, review_radical_equation_problem
 import decimal
+import clause_coverage_oracle
 import importlib
 import json
 import math
@@ -109,6 +110,7 @@ SUPPORTED |= QUADRATIC_STRUCTURE
 SUPPORTED |= FUNCTION_TOOLKIT
 SUPPORTED |= EXPONENTIAL
 SUPPORTED |= TWO_VARIABLE
+SUPPORTED |= {"two-column-triangle-proof"}
 
 
 def require(condition, message):
@@ -309,6 +311,8 @@ def solve_family(public):
     for clause in (clause_place_value, clause_transformation):
         if clause.handles(public):
             return clause.solve(public)
+    if clause_coverage_oracle.recognizes(public):
+        return clause_coverage_oracle.solve(public)
     if is_clause_variant(public):
         return solve_clause_variant(public)
     oracle = FAMILY_ORACLE_FOR.get(public["templateId"])
@@ -470,8 +474,15 @@ def solve_family(public):
                     for point in points), 'Drawn line does not pass through marked points')
         return slope
     if template in {'bar-chart-total', 'bar-chart-difference'}:
-        require(figure['kind'] == 'bar-chart' and figure['valueLabel'] == 'Trees', 'Wrong chart representation')
+        require(figure['kind'] == 'bar-chart', 'Wrong chart representation')
         categories, values = figure['categories'], figure['values']
+        if template == 'bar-chart-total' and 'not drawn yet' in prompt:
+            total = int(re.search(r'of (\d+) students', prompt).group(1))
+            require(figure['valueLabel'] == 'Pets' and 2 <= len(values) <= 3, 'A missing bar leaves the drawn pets')
+            require(all(type(value) is int and value > 0 for value in values), 'Drawn bars are positive')
+            require(sum(values) < total <= 20, 'The missing bar is part of a total at most 20')
+            return total - sum(values)
+        require(figure['valueLabel'] == 'Trees', 'Wrong chart representation')
         require(len(categories) == len(values) == 3 and len(set(categories)) == 3 and
                 all(type(value) is int and value >= 0 for value in values), 'Invalid category counts')
         counts = dict(zip(categories, values))
@@ -483,6 +494,19 @@ def solve_family(public):
         require(difference > 0, 'More-than prompt names the wrong larger category')
         return difference
     if template == 'clock-elapsed-minutes':
+        if 'whole trip' in prompt:
+            parts = [int(n) for n in re.findall(r'(\d+) minutes', prompt)]
+            require(len(parts) >= 2, 'A trip needs its parts')
+            return sum(parts)
+        if 'minutes' in prompt and 'clock' not in prompt and ':' not in prompt:
+            counts = [int(n) for n in re.findall(r'(\d+)', prompt)]
+            require(len(counts) == 2 and counts[0] != counts[1], 'A difference of two times')
+            return abs(counts[0] - counts[1])
+        if prompt.startswith('Reading club starts'):
+            start_h, start_m, end_h, end_m = map(int, re.search(
+                r'(\d{1,2}):(\d{2}).*ends at (\d{1,2}):(\d{2})', prompt).groups())
+            require(figure['kind'] == 'clock' and figure['hour'] == start_h and figure['minute'] == start_m, 'Clock matches the start')
+            return (end_h * 60 + end_m) - (start_h * 60 + start_m)
         require(figure['kind'] == 'clock' and 1 <= figure['hour'] <= 12 and
                 0 <= figure['minute'] < 60, 'Invalid clock')
         end_time = re.search(r'ends at ([0-9]+):([0-9]{2}) later that same morning', prompt)
@@ -704,6 +728,9 @@ def review(stream):
             if clause.handles(public):
                 clause.review_problem(problem)
                 return
+        if clause_coverage_oracle.recognizes(public):
+            clause_coverage_oracle.review_problem(problem)
+            return
         if is_clause_variant(public):
             review_clause_variant(problem)
             return
@@ -865,6 +892,7 @@ def review(stream):
     # successful review still runs the full fixture and mutation inventory.
     for oracle in FAMILY_ORACLES:
         oracle.self_test()
+    clause_coverage_oracle.self_test()
     review_clause_fixtures()
     review_fraction_expression_fixtures()
     review_hierarchy_multiselect_fixtures()

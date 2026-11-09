@@ -139,6 +139,14 @@ export function restrictAxis<V extends string, W extends V>(
 let clientFigures: readonly string[] | null = null;
 /** Version passed to `generateProblem`, while a problem is being built. */
 let templateVersion: number | null = null;
+/** The template version `generateProblem` is building, or null when a
+ * generator is called outside `withTemplateVersion`. Null means the current
+ * version: new clause families may appear. A stored workbook reprint passes
+ * the version it was saved with, and a family added at a later version must
+ * stay off that path so the older bytes still reprint. */
+export function generatingVersion(): number | null {
+  return templateVersion;
+}
 /** Axes forced to legacy because the generation version is below `since`. */
 let versionGated: { id: string; value: string }[] | null = null;
 /**

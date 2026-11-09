@@ -89,6 +89,33 @@ export const clauseFamilies = {
   ...transformationClauseFamilies,
 };
 const capabilities: Record<string, ResponseCapability[]> = {
+  "sample-proportion-estimate": ["single-choice-v1"],
+  "sample-estimates-plot": ["single-choice-v1", "structured-work-v1"],
+  "scatter-association-choice": ["multi-select-v1", "point-plot-v1"],
+  "two-way-missing": ["structured-work-v1"],
+  "study-design-classify": ["multi-part-choice-v1"],
+  "margin-of-error-interval": ["structured-work-v1"],
+  "relative-frequency-percent": ["structured-work-v1"],
+  "nonlinear-data-model": ["point-plot-v1"],
+  "residual-function-fit": [
+    "structured-work-v1",
+    "point-plot-v1",
+    "figure-choice-v1",
+  ],
+  "vector-components": [
+    "point-plot-v1",
+    "figure-choice-v1",
+    "multi-part-choice-v1",
+  ],
+  "vector-resultant": ["multi-part-choice-v1"],
+  "matrix-operations": ["structured-work-v1"],
+  "matrix-laws": ["multi-part-choice-v1"],
+  "matrix-linear-system": ["multi-part-choice-v1"],
+  "special-angle-exact-value": ["multi-part-choice-v1"],
+  "trig-identity-value": ["multi-part-choice-v1"],
+  "complementary-trig": ["single-choice-v1"],
+  "oblique-triangle-solve": ["structured-work-v1"],
+  "triangle-law-reasoning": ["structured-work-v1"],
   "tens-ones-model": ["multi-part-choice-v1"],
   "two-digit-symbol": ["multi-part-choice-v1"],
   "ten-more-or-less": ["multi-part-choice-v1"],
@@ -116,33 +143,32 @@ const capabilities: Record<string, ResponseCapability[]> = {
 /** Catalog revision only. Original generator metadata stays untouched so
  * stored versions reproduce their old bytes and random streams. */
 export function clauseMetadata(meta: TemplateMetadata): TemplateMetadata {
-  if (clauseVariants[meta.id]) {
-    return {
-      ...meta,
-      version: 2,
-      reprintsFrom: 1,
-      description: descriptions[meta.id]!,
-      ...(meta.id === "vector-resultant"
-        ? { title: "Resultants of velocities and forces" }
-        : {}),
-    };
-  }
-  if (!clauseFamilies[meta.id]) return meta;
+  const extended = Boolean(clauseVariants[meta.id]);
+  if (!extended && !clauseFamilies[meta.id]) return meta;
   const needs = [
     ...new Set([
       ...(meta.requiredResponseCapability
         ? [meta.requiredResponseCapability]
         : []),
+      ...(meta.requiredResponseCapabilities ?? []),
       ...(capabilities[meta.id] ?? []),
     ]),
   ];
   return {
     ...meta,
-    version: meta.version + 1,
+    version: extended ? 2 : meta.version + 1,
     ...(!meta.requiredResponseCapability
       ? { hasNumericVariants: true as const }
       : {}),
-    reprintsFrom: meta.reprintsFrom ?? meta.version,
+    reprintsFrom: extended ? 1 : (meta.reprintsFrom ?? meta.version),
+    ...(extended
+      ? {
+          description: descriptions[meta.id]!,
+          ...(meta.id === "vector-resultant"
+            ? { title: "Resultants of velocities and forces" }
+            : {}),
+        }
+      : {}),
     ...(needs.length
       ? {
           requiredResponseCapability: needs[0],

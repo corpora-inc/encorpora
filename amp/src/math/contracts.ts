@@ -291,15 +291,15 @@ export const clientCanDraw = (
     client.responseCapabilities.includes(
       template.requiredResponseCapability,
     )) &&
-  (template.requiredResponseCapabilities ?? []).every((c) =>
-    client.responseCapabilities.includes(c),
+  (template.requiredResponseCapabilities ?? []).every((capability) =>
+    client.responseCapabilities.includes(capability),
   ) &&
   (!template.requiredFigureCapability ||
     client.figureCapabilities.includes(template.requiredFigureCapability));
 export interface TemplateMetadata {
   /** A family with specialized answers also emits typed number/fraction answers. */
   hasNumericVariants?: true;
-  /** Every response capability emitted by a mixed-format family. */
+  /** Every response protocol used by a type with mixed variant formats. */
   requiredResponseCapabilities?: readonly ResponseCapability[];
   /** Editorial local step on the curriculum-grade scale, not empirical calibration. */
   difficultyOffset?: number;

@@ -38,6 +38,12 @@ const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
   // Two factors among three or four choices, or three multiples among four or five.
   "factor-pairs-select": 1 / 3,
   "multiples-select": 1 / 4,
+  // When the intersection has equal coordinates, the reversed-pair
+  // distractor matches the answer, leaving three distinct options.
+  "graphical-solution-table": 1 / 3,
+  // With rate 2, the three ordered-pair blanks have 3, 3 and 4 distinct
+  // options after equivalent distractors collapse.
+  "dependent-variable-value": 1 / 36,
 };
 /** An unregistered choice family is scored as the most guessable choice: two
  * options. Overstating the guess chance only discounts a correct answer. */
@@ -89,9 +95,18 @@ export function responseGuessChance(response: ProblemResponse): number {
 /** Use the greatest sampled guessing chance when a family's answer forms vary.
  * Typed answers have chance 0, single choices 1/n, and k-of-n selections 1/C(n,k). */
 export function guessChance(
-  template: Pick<TemplateMetadata, "id" | "requiredResponseCapability">,
+  template: Pick<
+    TemplateMetadata,
+    "id" | "requiredResponseCapability" | "requiredResponseCapabilities"
+  >,
 ): number {
-  if (!template.requiredResponseCapability) return 0;
+  const capabilities = [
+    ...(template.requiredResponseCapability
+      ? [template.requiredResponseCapability]
+      : []),
+    ...(template.requiredResponseCapabilities ?? []),
+  ];
+  if (!capabilities.length) return 0;
   const known = cache.get(template.id);
   if (known !== undefined) return known;
   let chance = UNKNOWN_CHOICE_GUESS;
@@ -99,8 +114,7 @@ export function guessChance(
     // Structured work mixes typed steps (never guessed) with orderings and
     // proofs built from banks; sample more, and a family whose every
     // sampled instance has a typed field cannot be guessed.
-    const structured =
-      template.requiredResponseCapability === "structured-work-v1";
+    const structured = capabilities.includes("structured-work-v1");
     // The sample can miss rare, more guessable variants in these generators.
     let greatest = MULTI_PART_GUESS_FLOOR[template.id] ?? 0;
     for (let i = 0; i < (structured ? STRUCTURED_SEEDS : SAMPLE_SEEDS); i++)
@@ -119,7 +133,10 @@ export function guessChance(
 export function guessChanceTable(
   families: Iterable<TemplateMetadata> = byId.values(),
 ): Record<string, number> {
-  const answered = [...families].filter((t) => t.requiredResponseCapability);
+  const answered = [...families].filter(
+    (t) =>
+      t.requiredResponseCapability || t.requiredResponseCapabilities?.length,
+  );
   return Object.fromEntries(answered.map((t) => [t.id, guessChance(t)]));
 }
 

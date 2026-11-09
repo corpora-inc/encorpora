@@ -83,7 +83,9 @@ def solve_time_money(public):
         require(prompt == 'How many minutes past the hour does the clock show?', 'Minutes wording')
         return one_clock(public, FIVES)[1]
     if template in ('match-clock-half-hour', 'match-clock-five-minutes'):
-        h, m = map(int, match(r'Which clock shows (\d{1,2}):(\d\d)\?', prompt))
+        found = re.fullmatch(r'The digital clock shows (\d{1,2}):(\d\d)\. Which clock shows the same time\?', prompt) or re.fullmatch(r'Which clock shows (\d{1,2}):(\d\d)\?', prompt)
+        require(found is not None, f'Unrecognized clock or money wording: {prompt!r}')
+        h, m = map(int, found.groups())
         figure = public['figure']
         require(figure['kind'] == 'analog-clocks' and len(figure['clocks']) == 3, 'Three clocks')
         times = [(c['hour'], c['minute']) for c in figure['clocks']]

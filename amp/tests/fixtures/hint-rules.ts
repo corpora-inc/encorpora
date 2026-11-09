@@ -118,10 +118,21 @@ export const unnamedGivens = (id: string) => {
   const problems = sample(id);
   const given = (p: GeneratedProblem) =>
     new Set([...stated(p.public.prompt)].map(size));
-  const constant = problems
-    .map(given)
-    .reduce((all, next) => new Set([...all].filter((n) => next.has(n))));
+  // A type can mix independently worded clauses. A fixed instruction such as
+  // "leading coefficient 1 or −1" is not an instance-specific given merely
+  // because another clause asks for an equation instead of showing a graph.
+  const group = (p: GeneratedProblem) => p.variant?.axes?.clause ?? "legacy";
+  const constants = new Map(
+    [...new Set(problems.map(group))].map((clause) => [
+      clause,
+      problems
+        .filter((p) => group(p) === clause)
+        .map(given)
+        .reduce((all, next) => new Set([...all].filter((n) => next.has(n)))),
+    ]),
+  );
   return problems.some((p) => {
+    const constant = constants.get(group(p))!;
     const named = [...given(p)].filter((n) => !constant.has(n));
     const hint = new Set([...stated(p.hint)].map(size));
     return named.length > 0 && !named.some((n) => hint.has(n));
