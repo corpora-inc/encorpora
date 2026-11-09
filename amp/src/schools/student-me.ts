@@ -2,10 +2,7 @@ import type { Pool } from "pg";
 import { meSchema, type SignedInMe } from "../account/contracts.js";
 import { retentionNotice } from "../family/contracts.js";
 import { ApiError } from "../server/repository.js";
-import {
-  learningConsentActive,
-  namingConsentActive,
-} from "../server/account-access.js";
+import { learningConsentActive } from "../server/account-access.js";
 import { freeAllowance } from "../learning/free-allowance.js";
 import {
   activeToday,
@@ -68,12 +65,6 @@ export async function studentMe(
     learner.free_online_used,
     learner.free_workbooks_used,
   );
-  const namedConsent = await namingConsentActive(
-    pool,
-    accountId,
-    development,
-    learner.id,
-  );
   const learningAllowed = await learningConsentActive(
     pool,
     accountId,
@@ -93,9 +84,10 @@ export async function studentMe(
       confirmationRequired: false,
       kind: "student",
     },
-    // The school's agreement stands in for parent consent. When it ends,
-    // `canPractice` goes false and the app says to ask the teacher.
-    consent: { status: namedConsent ? "active" : "none", method: null },
+    // The school's agreement stands in for parent consent. A student never
+    // acts on consent: when the agreement ends, `canPractice` and
+    // `learningAllowed` go false and the app says to ask the teacher.
+    consent: { status: "active", method: null },
     learners: [
       {
         id: learner.id,
@@ -114,7 +106,7 @@ export async function studentMe(
     ],
     family: {
       consent: {
-        status: namedConsent ? "active" : "not-recorded",
+        status: "active",
         policyVersion: null,
         recordedAt: null,
         withdrawnAt: null,
