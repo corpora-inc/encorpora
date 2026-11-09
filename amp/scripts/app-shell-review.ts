@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import type { Browser, Page } from "playwright";
 import { lessons } from "../src/content/lessons";
+import { templates } from "../src/math/engine";
 import type { startShellFixture } from "./app-shell-fixture";
 import { settle } from "./app-shell-probe";
 import { navigateApp } from "./ui-controls";
@@ -198,6 +199,7 @@ export async function verifyShellReview({
               "fraction",
               "fract",
               "zzzxq-nothing",
+              "how to find a percent of a number",
               "hypotenuse",
               "",
             ]) {
@@ -245,6 +247,18 @@ export async function verifyShellReview({
                   summary &&
                   summary.y >= controls.y + controls.height - 1,
                 `${tag}: the filtered result summary must be below the pinned controls`,
+              );
+              // A long query never clips the count or its advice.
+              assert.equal(
+                await page
+                  .locator(".lesson-index [role=status]")
+                  .evaluate(
+                    (line) =>
+                      line.scrollHeight <= line.clientHeight + 1 &&
+                      getComputedStyle(line).overflow === "visible",
+                  ),
+                true,
+                `${tag} (${value}): the result summary is clipped`,
               );
               if (shots && value === "zzzxq-nothing")
                 await page.screenshot({
@@ -397,6 +411,33 @@ export async function verifyShellReview({
               problems.push(
                 `“All lessons” moved when the lesson arrived: ${JSON.stringify(before.back)} → ${JSON.stringify(after.back)}`,
               );
+            // A problem type's short lesson needs no catalog: refreshed, it
+            // opens while the catalog is still on its way.
+            let releaseTopic = () => {};
+            const topicHeld = new Promise<void>((resolve) => {
+              releaseTopic = resolve;
+            });
+            await page.route("**/api/v1/catalog", async (route) => {
+              await topicHeld;
+              await route.continue();
+            });
+            try {
+              await page.goto(
+                `${fixture.origin}/lessons?topic=${encodeURIComponent(templates[0]!.id)}`,
+                { waitUntil: "domcontentloaded" },
+              );
+              await page.locator(".lesson-sheet h2").waitFor();
+              if (
+                await page
+                  .getByRole("heading", { name: "Lessons", exact: true })
+                  .count()
+              )
+                problems.push(
+                  "a refreshed short lesson paints the library frame first",
+                );
+            } finally {
+              releaseTopic();
+            }
             assert.deepEqual(problems, [], tag);
           } else if (kind === "library-retry") {
             // A failed catalog: Lessons says so in place and offers Try
@@ -470,6 +511,17 @@ export async function verifyShellReview({
               );
             if (!(await retry.isVisible()))
               problems.push("after navigating, Lessons offers no Try again");
+            // A retry that fails too says so, rather than looking unpressed.
+            if (await retry.isVisible()) {
+              await retry.click();
+              await page
+                .locator("main.library-main [role=alert]")
+                .filter({ hasText: "Lessons still didn’t load." })
+                .waitFor({ timeout: 5000 })
+                .catch(() =>
+                  problems.push("a failed Try again shows no sign that it ran"),
+                );
+            }
             if (problems.length) assert.deepEqual(problems, [], tag);
             allow = true;
             const seen = requests;

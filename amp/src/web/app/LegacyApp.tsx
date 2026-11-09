@@ -113,7 +113,11 @@ import { calculatorAllowed } from "../../math/calculator";
 import { gradeNumber } from "../../learning/frontier";
 import type { GradeBand } from "../../curriculum/types";
 import { LessonIndex } from "../LessonIndex";
-import { LessonLibraryPlaceholder, LessonsUnavailable } from "../LessonLibrary";
+import {
+  LessonLibraryPlaceholder,
+  LessonsUnavailable,
+  loadGlossary,
+} from "../LessonLibrary";
 import { Home, type FrontierMap } from "../Home";
 import { strandNames } from "../BirthYearPrompt";
 import type { ProblemLessonView } from "../../content/problem-lessons";
@@ -265,6 +269,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     route.parts[0] === "lessons" && route.parts[1]
       ? (catalog?.lessons.find((entry) => entry.id === route.parts[1]) ?? null)
       : null;
+  // A problem type's short lesson (`/lessons?topic=`) reads from the API,
+  // not the catalog, so it opens without waiting for it.
+  const topicOpen =
+    route.parts[0] === "lessons" &&
+    !route.parts[1] &&
+    new URLSearchParams(route.location.search).has("topic");
   const setReadingLesson = (lesson: Lesson | null) => {
     if (lesson) navigate(`/lessons/${encodeURIComponent(lesson.id)}`);
   };
@@ -619,6 +629,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       .then((loaded: Catalog) => {
         setCatalog(loaded);
         setCatalogFailed(false);
+        // Lessons' search index is the catalog and the glossary: with both
+        // here, Lessons opens at once from any screen.
+        void loadGlossary();
       })
       .catch((failure: unknown) => {
         console.error("The lesson catalog could not be loaded", failure);
@@ -1944,10 +1957,13 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           />
         )
       ) : tab === "library" ? (
-        <main className="library-main" aria-busy={!catalog && !catalogFailed}>
+        <main
+          className="library-main"
+          aria-busy={!catalog && !catalogFailed && !topicOpen}
+        >
           {/* Until the catalog lands, the library or the reader paints its
               own frame in place, so nothing moves when it does. */}
-          {!catalog && !route.parts[1] && (
+          {!catalog && !route.parts[1] && !topicOpen && (
             <LessonLibraryPlaceholder
               retry={catalogFailed ? loadCatalog : undefined}
             />
@@ -1969,7 +1985,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
               )}
             </article>
           )}
-          {catalog && !readingLesson && (
+          {(catalog || topicOpen) && !readingLesson && (
             <>
               <LessonIndex
                 templates={catalog?.templates ?? []}

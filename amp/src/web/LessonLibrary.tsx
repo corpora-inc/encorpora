@@ -35,7 +35,8 @@ export type LibrarySkillRow = {
 // already include its math words: nothing is inserted above them later.
 let glossaryEntries: readonly GlossaryEntry[] | undefined;
 let glossaryRequest: Promise<readonly GlossaryEntry[]> | undefined;
-function loadGlossary() {
+/** Fetches the search glossary once; the app asks with the catalog. */
+export function loadGlossary() {
   glossaryRequest ??= import("../glossary").then(
     (module) => (glossaryEntries = module.glossary),
     (error: unknown) => {
@@ -133,11 +134,16 @@ export function LessonsUnavailable({
   retry: () => Promise<unknown>;
 }) {
   const [busy, setBusy] = useState(false);
+  // Still here after a retry means it failed too: the words say so, and the
+  // changed alert is announced again.
+  const [again, setAgain] = useState(false);
   return (
     <div className={styles.unavailable}>
       <p role="alert">
-        <strong>Lessons didn’t load.</strong> Check your connection, then try
-        again.
+        <strong>
+          {again ? "Lessons still didn’t load." : "Lessons didn’t load."}
+        </strong>{" "}
+        Check your connection, then try again.
       </p>
       <Button
         variant="primary"
@@ -145,7 +151,10 @@ export function LessonsUnavailable({
         disabled={busy}
         onClick={() => {
           setBusy(true);
-          void retry().finally(() => setBusy(false));
+          void retry().finally(() => {
+            setBusy(false);
+            setAgain(true);
+          });
         }}
       >
         Try again
@@ -260,11 +269,14 @@ function Library({
     types = count("type");
   const plural = (n: number, one: string, many: string) =>
     `${n} ${n === 1 ? one : many}`;
+  // The field shows the whole query; the count names a long one shortened,
+  // so the line stays within its two reserved lines.
+  const named = query.length > 24 ? `${query.slice(0, 23).trimEnd()}…` : query;
   const summary = !query
     ? `${plural(lessons, "lesson", "lessons")} · ${plural(types, "problem type", "problem types")}`
     : lessons + types
-      ? `${plural(lessons, "lesson", "lessons")} and ${plural(types, "problem type", "problem types")} match “${query}”`
-      : `Nothing matches “${query}”. Try fewer letters or another word.`;
+      ? `${plural(lessons, "lesson", "lessons")} and ${plural(types, "problem type", "problem types")} match “${named}”`
+      : `Nothing matches “${named}”. Try fewer letters or another word.`;
   return (
     <section className={`lesson-index ${styles.library}`} aria-label="Lessons">
       <h1 className={styles.title}>Lessons</h1>

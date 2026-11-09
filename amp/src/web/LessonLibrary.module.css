@@ -148,15 +148,11 @@
 .areaSlot {
   min-height: 48px;
 }
-/* Two lines, always: a count that names a long query wraps inside its own
-   place and never moves the results under it. */
+/* Two lines reserved: a count that names the query wraps inside its own
+   place and never moves the results under it. Nothing is clipped; only an
+   empty result, with nothing under it, can take a third line. */
 .summary {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  overflow: hidden;
-  height: calc(2 * 1.45em);
+  min-height: calc(2 * 1.45em);
   margin: var(--space-3) 0 var(--space-2);
   overflow-wrap: break-word;
   color: var(--color-muted-text);
