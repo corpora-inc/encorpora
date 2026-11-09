@@ -234,6 +234,31 @@ test(
         });
         assert.equal(batch.statusCode, 200, batch.body);
         assert.ok(batch.json().problems.length > 0);
+        // A demo grant covers her: answering spends no free allowance.
+        const problem = batch.json().problems[0];
+        const stored = (
+          await db.query("SELECT content FROM amp_instances WHERE id=$1", [
+            problem.id,
+          ])
+        ).rows[0].content;
+        const answered = await app.inject({
+          method: "POST",
+          url: `/api/v1/learners/${person.learner_id}/attempts`,
+          headers: { authorization: `Bearer ${token}` },
+          payload: {
+            problemId: problem.id,
+            requestId: randomUUID(),
+            response: stored.answer,
+          },
+        });
+        assert.equal(answered.statusCode, 200, answered.body);
+        assert.equal(
+          await count(
+            "SELECT free_online_used AS n FROM amp_learners WHERE id=$1",
+            [person.learner_id],
+          ),
+          0,
+        );
         // The session reaches only her learner.
         const other = await app.inject({
           method: "POST",
