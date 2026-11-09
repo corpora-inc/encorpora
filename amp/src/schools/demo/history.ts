@@ -9,7 +9,6 @@
 import { randomBytes, randomUUID } from "node:crypto";
 import type { PoolClient } from "pg";
 import { skills } from "../../curriculum/catalog.js";
-import { gradeNumber } from "../../learning/frontier.js";
 import { generateProblem, templates } from "../../math/engine.js";
 import {
   chanceOfRight,
@@ -32,15 +31,13 @@ type GeneratedProblem = ReturnType<typeof generateProblem>;
 const skillById = new Map(skills.map((skill) => [skill.id, skill]));
 const strandOf = (skillId: string) =>
   skillById.get(skillId)?.strand ?? "number";
-const gradeOf = (skillId: string) => {
-  const skill = skillById.get(skillId);
-  return skill ? gradeNumber[skill.gradeBand] : 5;
-};
+// At most two problem types a skill: enough variety for a demo's last week.
 const templatesFor = new Map<string, string[]>();
 for (const template of templates)
   if (
     !template.requiredResponseCapability &&
-    !template.requiredFigureCapability
+    !template.requiredFigureCapability &&
+    (templatesFor.get(template.skillId)?.length ?? 0) < 2
   )
     templatesFor.set(template.skillId, [
       ...(templatesFor.get(template.skillId) ?? []),
@@ -58,7 +55,7 @@ function problemFor(templateId: string, pick: number): GeneratedProblem {
   let found = pool.get(templateId);
   if (!found) {
     found = [];
-    for (let seed = 0; seed < 3; seed++)
+    for (let seed = 0; seed < 2; seed++)
       try {
         found.push(generateProblem(templateId, `demo-${templateId}-${seed}`));
       } catch {
@@ -217,7 +214,7 @@ export async function seedClassHistory(
     stuck?: { person: string; template: string } | null;
   },
 ) {
-  const recent = options.recentDays ?? 12;
+  const recent = options.recentDays ?? 8;
   const gap = options.sharedGap === undefined ? SHARED_GAP : options.sharedGap;
   const stuck = options.stuck === undefined ? STUCK : options.stuck;
   const skillDays: SkillDayRow[] = [];
@@ -271,10 +268,15 @@ export async function seedClassHistory(
             const template = kinds[(serial + item) % kinds.length]!;
             const problem = problemFor(template, serial);
             const isReview = serial % 8 === 7 && index > 3;
-            const correct = hash(`${name}${day.day}${skill}${item}`) < p;
-            const assisted = !correct
-              ? false
-              : hash(`${name}${serial}hint`) < 0.08;
+            // Spaced review is what sticks: it comes back right more often.
+            // A skill's last answer is right, so a slip never reads as stuck;
+            // only the misses a persona has (`misses`) do.
+            const correct =
+              item === n - 1 ||
+              hash(`${name}${day.day}${skill}${item}`) <
+                (isReview ? Math.min(0.97, p + 0.2) : p);
+            const assisted =
+              correct && item < n - 1 && hash(`${name}${serial}hint`) < 0.08;
             const wrong = correct ? null : wrongResponse(problem as never);
             const start =
               day.ago === 0

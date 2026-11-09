@@ -20,3 +20,31 @@ CREATE INDEX amp_orgs_demo_seen_idx ON amp_orgs(demo_seen_at) WHERE demo;
 ALTER TABLE amp_grants DROP CONSTRAINT amp_grants_channel_check;
 ALTER TABLE amp_grants ADD CONSTRAINT amp_grants_channel_check
  CHECK (channel IN ('pilot','stripe','apple','google','esa','demo'));
+
+-- A bulk writer of rollups (a demo's twelve weeks, a fixture's district) sums
+-- the weeks once at the end instead of row by row: inside its transaction it
+-- sets `amp.rollup_weeks` to 'deferred'. Practice never sets it.
+CREATE OR REPLACE FUNCTION amp_add_active_week() RETURNS trigger LANGUAGE plpgsql AS $$
+DECLARE
+  added bigint := NEW.active_ms;
+BEGIN
+  IF current_setting('amp.rollup_weeks',true)='deferred' THEN RETURN NEW; END IF;
+  IF TG_OP='UPDATE' THEN added := NEW.active_ms-OLD.active_ms; END IF;
+  INSERT INTO amp_learner_weeks(learner_id,week,active_ms)
+  VALUES(NEW.learner_id,date_trunc('week',NEW.day)::date,GREATEST(added,0))
+  ON CONFLICT(learner_id,week) DO UPDATE
+    SET active_ms=GREATEST(amp_learner_weeks.active_ms+added,0);
+  RETURN NEW;
+END $$;
+CREATE OR REPLACE FUNCTION amp_add_attempts_week() RETURNS trigger LANGUAGE plpgsql AS $$
+DECLARE
+  added integer := NEW.attempts;
+BEGIN
+  IF current_setting('amp.rollup_weeks',true)='deferred' THEN RETURN NEW; END IF;
+  IF TG_OP='UPDATE' THEN added := NEW.attempts-OLD.attempts; END IF;
+  INSERT INTO amp_learner_weeks(learner_id,week,attempts)
+  VALUES(NEW.learner_id,date_trunc('week',NEW.day)::date,GREATEST(added,0))
+  ON CONFLICT(learner_id,week) DO UPDATE
+    SET attempts=GREATEST(amp_learner_weeks.attempts+added,0);
+  RETURN NEW;
+END $$;

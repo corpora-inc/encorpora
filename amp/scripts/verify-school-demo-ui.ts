@@ -240,9 +240,7 @@ async function demo(
   // 3. Practice as Priya, then back to the roster.
   await page.goto(`${origin}/${classPath}/roster`);
   await heading(page, "Roster");
-  const practice = page.getByRole("button", {
-    name: "Practice as Priya Raman",
-  });
+  const practice = page.getByRole("button", { name: /^Practice as Priya/ });
   await practice.waitFor();
   await measured(page, `${label} roster`);
   await shot(page, "roster", label);

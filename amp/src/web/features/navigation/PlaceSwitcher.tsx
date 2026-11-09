@@ -4,7 +4,7 @@ import { useLearnerStore } from "../../learner-store";
 import { Menu, MenuItem, MenuLabel } from "../../ui/Menu";
 import { familyClassPath, placesFor, type PlaceId } from "../onboarding/guard";
 import { rememberPlace } from "../onboarding/place-memory";
-import { DemoMark } from "../school/demo/DemoPlace";
+import { DemoMark } from "../school/demo/DemoMark";
 import styles from "./PlaceSwitcher.module.css";
 
 const roleNames = {

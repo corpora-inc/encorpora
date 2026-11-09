@@ -17,15 +17,6 @@ import styles from "./Demo.module.css";
 export const REAL_SETUP_PATH = "schools";
 export const REAL_SETUP_HASH = "talk";
 
-/** The quiet "Demo" label beside a demo place's name. */
-export function DemoMark() {
-  return (
-    <span className={styles.mark} data-demo-mark>
-      Demo
-    </span>
-  );
-}
-
 /** Whether this org is a demo, from the org the frame already loaded. */
 export function useDemoOrg(orgId: string) {
   return useQuery(orgOptions(currentSession(), orgId)).data?.demo === true;
@@ -80,7 +71,8 @@ export function PracticeAs({
         studentGrantResource,
         { token: currentSession().token, body: {} },
       );
-      await finish(grant, true);
+      // Signing out comes back to this roster.
+      await finish(grant, true, location.pathname);
     } catch (failure) {
       console.error("Practice as a demo student didn’t start", failure);
       setError(

@@ -153,13 +153,19 @@ test(
           ),
           "the shared gap is named",
         );
+        const named = (first: string) =>
+          today.todos.some((todo: { students: { name: string }[] }) =>
+            todo.students.some((student) => student.name.startsWith(first)),
+          );
+        assert.ok(named("Kai"), "the stuck student is named");
+        assert.ok(named("Priya") && named("Sam"), "ready for more");
         const map = (await call("GET", `${base}/map`, owner)).json();
         const placed = map.students.filter((s: { level: unknown }) => s.level);
         assert.ok(placed.length >= 22 && map.strands.length >= 3);
         const book = (await call("GET", `${base}/gradebook`, owner)).json();
         const ranged = book.students.filter(
-          (s: { suggestion: { range?: unknown } | null }) =>
-            s.suggestion?.range,
+          (s: { suggestion: { status: string; letters: string | null } }) =>
+            s.suggestion.status === "ready" && s.suggestion.letters,
         );
         assert.ok(ranged.length >= 18, `ranges: ${ranged.length}`);
         const time = await call("GET", `${base}/time`, owner);

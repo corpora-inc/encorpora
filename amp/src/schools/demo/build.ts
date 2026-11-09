@@ -9,7 +9,9 @@
 import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import type { Repository } from "../../server/repository.js";
+import { workbookWorker } from "../../workbook/off-thread.js";
 import { findOrMakeWorkbook } from "../../workbook/routes.js";
+import type { WorkbookRecord } from "../../workbook/contracts.js";
 import { recordPaperResults } from "../../workbook/results.js";
 import {
   birthYearForGrade,
@@ -17,6 +19,7 @@ import {
   generateJoinCode,
 } from "../repository.js";
 import { schoolAccountId } from "../principal.js";
+import { hashPictures } from "../sign-in.js";
 import { seedClassHistory, type DemoStudent } from "./history.js";
 import { namePairs, TEACHER_NAMES } from "./names.js";
 import { DAY, GRADE_5_CLASS, hash, persona, type Persona } from "./personas.js";
@@ -25,6 +28,7 @@ import {
   seedStaffEvents,
   seedTermEvidence,
   SHORT_LAST_WEEK,
+  sumWeeks,
 } from "./term.js";
 
 export const demoKinds = ["class", "school"] as const;
@@ -106,6 +110,12 @@ export async function createDemo(
   now = Date.now(),
 ): Promise<DemoPlace> {
   const timezone = input.timezone ?? "America/New_York";
+  // The workbook worker starts while the class is written.
+  const warming = learning
+    ? workbookWorker()
+        .warm()
+        .catch(() => undefined)
+    : null;
   const place = await transaction(pool, async (client) => {
     await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
       `school-demo:${input.accountId}:${input.kind}`,
@@ -123,6 +133,7 @@ export async function createDemo(
       return { orgId: existing.id, classId: existing.class_id, created: false };
     return build(client, { ...input, timezone }, now);
   });
+  await warming;
   if (place.created && learning)
     await seedWorkbooks(pool, learning, place, timezone, now).catch((error) =>
       // The class stands without them; the stack is one tap to make.
@@ -379,24 +390,58 @@ async function build(
       },
     ],
   );
-  // Signed in this term; most of the hero class is here today.
+  // Signed in this term, most of the hero class here today; pictures chosen
+  // and cards printed, apart from a late joiner and a few still to do it.
+  // Every demo student's pictures are fox, boat and kite.
+  const notYet = new Set(["Zara", "Elias", "Theo", "Tomas"]);
+  const pictured = people.filter(
+    (person) =>
+      !notYet.has(person.persona.name[0]) &&
+      hash(`${person.persona.name.join(" ")} pictures`) < 0.9,
+  );
   await client.query(
     `INSERT INTO amp_student_sessions(id,token_hash,person_id,mode,expires_at,last_seen_at,created_at)
-     SELECT gen_random_uuid(),encode(sha256(convert_to(gen_random_uuid()::text||clock_timestamp()::text,'UTF8')),'hex'),p,'shared',now()+interval '12 hours',
-       CASE WHEN h THEN now()-interval '12 minutes' ELSE now()-interval '1 day' END,j::date
-     FROM unnest($1::uuid[],$2::boolean[],$3::text[]) AS t(p,h,j)`,
+     SELECT gen_random_uuid(),encode(sha256(convert_to(gen_random_uuid()::text||clock_timestamp()::text,'UTF8')),'hex'),p,'shared',
+       now()+interval '12 hours',now()-make_interval(mins=>m),j::date
+     FROM unnest($1::uuid[],$2::int[],$3::text[]) AS t(p,m,j)`,
     [
       people.map((person) => person.personId),
-      people.map(
-        (person, index) => person.classId === heroId && index % 7 !== 3,
-      ),
+      people.map((person, index) => {
+        const roll = hash(`${person.persona.name.join(" ")} seen`);
+        return person.classId === heroId && index % 7 !== 3
+          ? 4 + Math.floor(roll * 50)
+          : 1440 + Math.floor(roll * 400);
+      }),
       people.map((person) => person.joined),
     ],
+  );
+  await client.query(
+    `INSERT INTO amp_person_credentials(id,person_id,kind,lookup_hash,secret_hash,created_at)
+     SELECT gen_random_uuid(),p,'picture',encode(sha256(convert_to(p::text,'UTF8')),'hex'),$2,j::date+interval '9 hours'
+     FROM unnest($1::uuid[],$3::text[]) AS t(p,j)`,
+    [
+      pictured.map((person) => person.personId),
+      await hashPictures(["fox", "boat", "kite"]),
+      pictured.map((person) => person.joined),
+    ],
+  );
+  const carded = people.filter(
+    (person) =>
+      person.classId === heroId && person.persona.joined === undefined,
+  );
+  await client.query(
+    `INSERT INTO amp_person_credentials(id,person_id,kind,lookup_hash,expires_at,created_at)
+     SELECT gen_random_uuid(),p,'card',encode(sha256(convert_to(gen_random_uuid()::text,'UTF8')),'hex'),
+       $2::date+interval '366 days',$2::date+interval '3 days 8 hours'
+     FROM unnest($1::uuid[]) AS t(p)`,
+    [carded.map((person) => person.personId), year.start],
   );
 
   // Twelve weeks of practice: the hero class from its personas, with real
   // answers lately; every other class straight to the rollups.
   const hero = classes[0]!;
+  // The week triggers wait; each week is summed once below.
+  await client.query("SET LOCAL amp.rollup_weeks='deferred'");
   await seedClassHistory(client, {
     students: hero.people.map((person): DemoStudent => ({
       personId: person.personId,
@@ -411,6 +456,9 @@ async function build(
     now,
     workToday: clock.hour >= 9,
   });
+  await sumWeeks(client, "SELECT unnest($1::text[])", [
+    hero.people.map((person) => person.learnerId),
+  ]);
   await client.query(
     `CREATE TEMP TABLE seed_class(id uuid,org uuid,teacher uuid) ON COMMIT DROP;
      CREATE TEMP TABLE seed_student(person uuid,learner text,class uuid,grade int,ability float8,diligence float8,pace float8,index bigint) ON COMMIT DROP`,
@@ -466,8 +514,10 @@ async function build(
 }
 
 /** The hero class's workbooks from two school days ago: printed for everyone,
- * most marked, a few still waiting. Through the real workbook path, after the
- * place exists, a few students at a time. */
+ * most marked, a few still waiting. Composing is a second of CPU on the pod's
+ * one workbook worker, so two are composed, for the class's lower and upper
+ * levels, and each student gets the one nearest their level; marks go
+ * through the real paper-results path, a few students at a time. */
 async function seedWorkbooks(
   pool: Pool,
   learning: Repository,
@@ -475,11 +525,19 @@ async function seedWorkbooks(
   timezone: string,
   now: number,
 ) {
-  const { rows } = await pool.query(
-    `SELECT p.id,p.learner_id,p.given_name FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
-     WHERE e.class_id=$1 AND e.role='student' AND p.learner_id IS NOT NULL ORDER BY p.given_name`,
+  const { rows } = await pool.query<{
+    id: string;
+    learner_id: string;
+    given_name: string;
+    level: number | null;
+  }>(
+    `SELECT p.id,p.learner_id,p.given_name,
+       (SELECT d.overall_level FROM amp_level_days d WHERE d.learner_id=p.learner_id ORDER BY d.day DESC LIMIT 1) AS level
+     FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id
+     WHERE e.class_id=$1 AND e.role='student' AND p.learner_id IS NOT NULL ORDER BY 4 NULLS FIRST,p.given_name`,
     [place.classId],
   );
+  if (!rows.length) return;
   const today: string = (
     await pool.query("SELECT ((now() AT TIME ZONE $1)::date)::text AS day", [
       timezone,
@@ -495,24 +553,62 @@ async function seedWorkbooks(
     const dow = new Date(`${date}T12:00:00Z`).getUTCDay();
     if (dow !== 0 && dow !== 6) found++;
   }
+  const at = now - back * DAY;
+  const picks = [
+    ...new Set([Math.floor(rows.length * 0.25), Math.floor(rows.length * 0.8)]),
+  ].map((index) => rows[index]!);
+  const made: { level: number; record: WorkbookRecord }[] = [];
+  for (const pick of picks)
+    made.push({
+      level: pick.level ?? 0,
+      record: await learning.transaction(
+        schoolAccountId(pick.id),
+        pick.learner_id,
+        async (tx) =>
+          (
+            await findOrMakeWorkbook(
+              tx,
+              pick.learner_id,
+              { date, minutes: 30, paper: "letter", number: 1 },
+              at,
+              { allowed: () => undefined },
+            )
+          ).record,
+      ),
+    });
+  const nearest = (level: number | null) =>
+    made.reduce((best, entry) =>
+      Math.abs(entry.level - (level ?? 0)) < Math.abs(best.level - (level ?? 0))
+        ? entry
+        : best,
+    ).record;
+  const others = rows.filter((row) => !picks.includes(row));
+  await pool.query(
+    `INSERT INTO amp_workbooks(id,learner_id,workbook_date,number,minutes,paper,spec,code,created_at)
+     SELECT gen_random_uuid(),l,$2::date,1,30,'letter',s::jsonb,c,$3::timestamptz
+     FROM unnest($1::text[],$4::text[],$5::text[]) AS t(l,s,c)
+     ON CONFLICT(learner_id,workbook_date,number,minutes) DO NOTHING`,
+    [
+      others.map((row) => row.learner_id),
+      date,
+      new Date(at).toISOString(),
+      others.map((row) => JSON.stringify(nearest(row.level).spec)),
+      others.map((row) => nearest(row.level).code),
+    ],
+  );
+  // A few are still waiting to be marked.
   const waiting = new Set(["Marcus", "Theo", "Tomas", "Elias", "Zara"]);
-  const queue = [...rows];
+  const queue = rows.filter((row) => !waiting.has(row.given_name));
   await Promise.all(
-    Array.from({ length: 6 }, async () => {
+    Array.from({ length: 3 }, async () => {
       for (let row = queue.shift(); row; row = queue.shift()) {
         const student = row;
         await learning.transaction(
           schoolAccountId(student.id),
           student.learner_id,
           async (tx) => {
-            const { record } = await findOrMakeWorkbook(
-              tx,
-              student.learner_id,
-              { date, minutes: 30, paper: "letter", number: 1 },
-              now - back * DAY,
-              { allowed: () => undefined },
-            );
-            if (waiting.has(student.given_name)) return;
+            const [record] = await tx.workbooks(date);
+            if (!record) return;
             const items = record.spec.sections.flatMap(
               (section) => section.items,
             );
@@ -533,5 +629,11 @@ async function seedWorkbooks(
         );
       }
     }),
+  );
+  // Recording results stores today's level from the few answers on file; the
+  // term's stored levels are the class's real story, so they stand.
+  await pool.query(
+    "DELETE FROM amp_level_days WHERE learner_id=ANY($1::text[]) AND policy_version<>'demo'",
+    [rows.map((row) => row.learner_id)],
   );
 }

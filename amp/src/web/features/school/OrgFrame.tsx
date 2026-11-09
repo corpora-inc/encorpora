@@ -13,7 +13,8 @@ import { classesOptions, currentSession, orgOptions, orgsOptions } from "./api";
 import { classPath, orgPath } from "./paths";
 import { compareClassNames } from "./sort";
 import { PlaceSwitcher, placeEntries } from "../navigation/PlaceSwitcher";
-import { DemoMark, DemoSetupAction } from "./demo/DemoPlace";
+import { DemoMark } from "./demo/DemoMark";
+import { DemoSetupAction } from "./demo/DemoPlace";
 import {
   SchoolFrame,
   type SchoolCrumb,

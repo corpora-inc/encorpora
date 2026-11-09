@@ -99,12 +99,35 @@ export function skillsNear(grade: number): readonly string[] {
   return [];
 }
 
+/** Each learner's weeks, summed from their day rollups: what the week
+ * triggers would have added row by row. A bulk writer turns those off for its
+ * transaction (`amp.rollup_weeks`) and calls this once. `learners` is internal
+ * SQL selecting learner ids, never request input. */
+export async function sumWeeks(
+  client: Pick<PoolClient, "query">,
+  learners: string,
+  params: unknown[] = [],
+) {
+  await client.query(
+    `INSERT INTO amp_learner_weeks(learner_id,week,active_ms,attempts)
+       SELECT learner_id,week,sum(active_ms)::bigint,sum(attempts)::int FROM (
+         SELECT learner_id,date_trunc('week',day)::date AS week,active_ms,0 AS attempts FROM amp_active_days
+           WHERE learner_id IN (${learners})
+         UNION ALL
+         SELECT learner_id,date_trunc('week',day)::date,0,attempts FROM amp_skill_days
+           WHERE learner_id IN (${learners})
+       ) facts GROUP BY learner_id,week
+       ON CONFLICT(learner_id,week) DO UPDATE SET active_ms=EXCLUDED.active_ms,attempts=EXCLUDED.attempts`,
+    params,
+  );
+}
+
 /** A term of practice for the students in the `seed_student` temp table, inside
  * the caller's open transaction: active time and skill days on real skills
  * around each student's level, level days on real strands, and their weeks.
  * `seed_student` has `learner text, grade int, ability float8, diligence
- * float8, pace float8, index bigint`. The weeks are summed once at the end, so
- * a caller that turned the week triggers off for a district still gets them. */
+ * float8, pace float8, index bigint`. The week triggers wait for the end of
+ * it, and the weeks are summed once. */
 export async function seedTermEvidence(
   client: Pick<PoolClient, "query">,
   options: {
@@ -115,6 +138,7 @@ export async function seedTermEvidence(
   },
 ) {
   const shape = options.weekShape ?? TERM_SHAPE;
+  await client.query("SET LOCAL amp.rollup_weeks='deferred'");
   const byGrade = Object.fromEntries(
     Array.from({ length: 13 }, (_, grade) => [grade, skillsNear(grade)]),
   );
@@ -164,17 +188,8 @@ export async function seedTermEvidence(
        WHERE s.diligence>0 AND extract(isodow FROM d.day) IN (1,3,5)`,
     [options.yearStart],
   );
-  await client.query(
-    `INSERT INTO amp_learner_weeks(learner_id,week,active_ms,attempts)
-       SELECT learner_id,week,sum(active_ms)::bigint,sum(attempts)::int FROM (
-         SELECT learner_id,date_trunc('week',day)::date AS week,active_ms,0 AS attempts FROM amp_active_days
-           WHERE learner_id IN (SELECT learner FROM seed_student)
-         UNION ALL
-         SELECT learner_id,date_trunc('week',day)::date,0,attempts FROM amp_skill_days
-           WHERE learner_id IN (SELECT learner FROM seed_student)
-       ) facts GROUP BY learner_id,week
-       ON CONFLICT(learner_id,week) DO UPDATE SET active_ms=EXCLUDED.active_ms,attempts=EXCLUDED.attempts`,
-  );
+  await sumWeeks(client, "SELECT learner FROM seed_student");
+  await client.query("RESET amp.rollup_weeks");
 }
 
 /** A week of what staff really do, for the activity log: grades set, cards

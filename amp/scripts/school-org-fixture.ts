@@ -242,10 +242,9 @@ export async function seedSchools(
 }
 
 /** A term of practice for the `seed_student` and `seed_class` temp tables,
- * inside the caller's open transaction: the product's `seedTermEvidence`, with
- * the rollups' week triggers off while it writes (it sums the weeks once, which
- * a district's 10,000 students need), then a week of staff activity, and setup
- * dated back to when the year began. Fixture databases only. */
+ * inside the caller's open transaction: the product's `seedTermEvidence`, then
+ * a week of staff activity, and setup dated back to when the year began.
+ * Fixture databases only. */
 export async function seedTermEvidence(
   client: PoolClient,
   options: {
@@ -257,19 +256,7 @@ export async function seedTermEvidence(
     weekShape?: readonly number[];
   },
 ) {
-  await client.query(
-    "ALTER TABLE amp_active_days DISABLE TRIGGER amp_active_days_week",
-  );
-  await client.query(
-    "ALTER TABLE amp_skill_days DISABLE TRIGGER amp_skill_days_week",
-  );
   await seedTerm(client, options);
-  await client.query(
-    "ALTER TABLE amp_active_days ENABLE TRIGGER amp_active_days_week",
-  );
-  await client.query(
-    "ALTER TABLE amp_skill_days ENABLE TRIGGER amp_skill_days_week",
-  );
   await seedStaffEvents(client, options.timezone);
   // Setup happened back when the year began, not this morning.
   await client.query(
