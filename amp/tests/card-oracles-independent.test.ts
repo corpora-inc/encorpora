@@ -13,7 +13,13 @@ test("independent oracles review all card families and preserve picker checks", 
   ];
   const cases = ids.flatMap((id) =>
     Array.from({ length: 256 }, (_, i) =>
-      generateProblem(id, `independent-${i}`),
+      // This regression exercises the original card/picker protocol. The
+      // version-2 inequality choices are reviewed by the clause oracle.
+      generateProblem(
+        id,
+        `independent-${i}`,
+        id === "inequality-number-blanks" ? 1 : undefined,
+      ),
     ),
   );
   const result = spawnSync(

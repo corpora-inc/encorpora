@@ -20,6 +20,12 @@ import { clauseTemplates } from "../src/math/clause-practice";
 import { triangleConstructionBank } from "../src/math/clause-geometry-variants";
 import { decimalExpansion } from "../src/math/clause-real-variants";
 import { layoutScene } from "../src/math/scene";
+import { buildCoverageManifest } from "../src/content/coverage";
+import {
+  guessChance,
+  guessChanceTable,
+  problemGuessChance,
+} from "../src/math/guess-chance";
 import {
   fixedHint,
   unnamedGivens,
@@ -40,6 +46,27 @@ const ids = [
 ];
 const sample = (id: string, n = 200) =>
   Array.from({ length: n }, (_, i) => generateProblem(id, `clause-test-${i}`));
+
+test("clause registration preserves a valid coverage manifest", () => {
+  assert.deepEqual(buildCoverageManifest().errors, []);
+});
+
+test("mixed clause formats retain numeric coverage and discount guessable answers", () => {
+  for (const id of [
+    "right-triangle",
+    "right-triangle-missing-leg",
+    "signed-story",
+    "integer-addition",
+  ]) {
+    const meta = templates.find((t) => t.id === id)!;
+    assert.equal(meta.requiredResponseCapability, undefined, id);
+    const chance = guessChance(meta);
+    assert.ok(chance > 0, id);
+    assert.equal(guessChanceTable([meta])[id], chance, id);
+    for (const p of sample(id, 160))
+      assert.ok(chance >= problemGuessChance(p), `${id}: ${p.public.seed}`);
+  }
+});
 
 test("clause surfaces are deterministic, valid, gradeable and reachable", () => {
   for (const id of ids) {

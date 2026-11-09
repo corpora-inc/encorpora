@@ -133,6 +133,19 @@ test("guess chance comes from each family's answer schema and is never understat
   let choiceFamilies = 0;
   for (const template of templates) {
     const chance = guessChance(template);
+    if (template.requiredResponseCapabilities?.length) {
+      // A versioned family may retain typed questions and add choices.
+      // Its declared protocols gate clients; each actual response determines luck.
+      assert.ok(chance >= 0 && chance <= 1 / 2, `${template.id}: ${chance}`);
+      for (let i = 0; i < 120; i++) {
+        const problem = generateProblem(template.id, `audit:${i}`);
+        assert.ok(
+          chance >= problemGuessChance(problem) - 1e-12,
+          `${template.id} seed ${i}: ${problemGuessChance(problem)} > ${chance}`,
+        );
+      }
+      continue;
+    }
     if (!template.requiredResponseCapability) {
       assert.equal(chance, 0, template.id);
       continue;

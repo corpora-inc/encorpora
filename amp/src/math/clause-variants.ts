@@ -228,8 +228,6 @@ export function withClauseMetadata(meta: TemplateMetadata): TemplateMetadata {
       meta.reprintsFrom ?? meta.version,
       e.introducedVersion - 1,
     ),
-    requiredResponseCapability:
-      meta.requiredResponseCapability ?? e.responses[0],
     description: `${meta.description} ${e.description}`,
     requiredResponseCapabilities: [
       ...new Set([

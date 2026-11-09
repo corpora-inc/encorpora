@@ -50,8 +50,7 @@ const byId = new Map(
 // is computed on first use. Sampling a family takes up to 2 s of CPU, too long
 // to pay on a request thread.
 declare const __AMP_GUESS_CHANCES__:
-  | Readonly<Record<string, number>>
-  | undefined;
+  Readonly<Record<string, number>> | undefined;
 const built =
   typeof __AMP_GUESS_CHANCES__ === "undefined"
     ? []
@@ -86,9 +85,16 @@ export function responseGuessChance(response: ProblemResponse): number {
 /** Use the greatest sampled guessing chance when a family's answer forms vary.
  * Typed answers have chance 0, single choices 1/n, and k-of-n selections 1/C(n,k). */
 export function guessChance(
-  template: Pick<TemplateMetadata, "id" | "requiredResponseCapability">,
+  template: Pick<
+    TemplateMetadata,
+    "id" | "requiredResponseCapability" | "requiredResponseCapabilities"
+  >,
 ): number {
-  if (!template.requiredResponseCapability) return 0;
+  if (
+    !template.requiredResponseCapability &&
+    !template.requiredResponseCapabilities?.length
+  )
+    return 0;
   const known = cache.get(template.id);
   if (known !== undefined) return known;
   let chance = UNKNOWN_CHOICE_GUESS;
@@ -97,7 +103,8 @@ export function guessChance(
     // proofs built from banks; sample more, and a family whose every
     // sampled instance has a typed field cannot be guessed.
     const structured =
-      template.requiredResponseCapability === "structured-work-v1";
+      template.requiredResponseCapability === "structured-work-v1" ||
+      template.requiredResponseCapabilities?.includes("structured-work-v1");
     // The sample can miss rare, more guessable variants in these generators.
     let greatest = MULTI_PART_GUESS_FLOOR[template.id] ?? 0;
     for (let i = 0; i < (structured ? STRUCTURED_SEEDS : SAMPLE_SEEDS); i++)
@@ -116,7 +123,10 @@ export function guessChance(
 export function guessChanceTable(
   families: Iterable<TemplateMetadata> = byId.values(),
 ): Record<string, number> {
-  const answered = [...families].filter((t) => t.requiredResponseCapability);
+  const answered = [...families].filter(
+    (t) =>
+      t.requiredResponseCapability || t.requiredResponseCapabilities?.length,
+  );
   return Object.fromEntries(answered.map((t) => [t.id, guessChance(t)]));
 }
 

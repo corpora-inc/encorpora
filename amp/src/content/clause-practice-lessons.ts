@@ -172,11 +172,4 @@ export const clauseFacetMappings: FacetMapping[] = [
     rationale:
       "Divide signed fractions to exact decimals and use zero or returning remainders to justify termination or repetition (7.NS.A.2d).",
   },
-  {
-    templateId: "fraction-to-decimal-long-division",
-    facetId: "irrational-numbers.classify-forms",
-    extent: "partial",
-    rationale:
-      "Explain why a rational decimal must terminate or repeat by the finite set of remainders (8.NS.A.1); does not classify arbitrary irrational expressions.",
-  },
 ];

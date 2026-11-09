@@ -13,9 +13,15 @@ import {
 } from "../src/math/guess-chance";
 
 test("the table holds each answered family's computed chance, and no typed family", () => {
-  const typed = templates.find((t) => !t.requiredResponseCapability)!;
+  const typed = templates.find(
+    (t) =>
+      !t.requiredResponseCapability && !t.requiredResponseCapabilities?.length,
+  )!;
   const answered = templates
-    .filter((t) => t.requiredResponseCapability)
+    .filter(
+      (t) =>
+        t.requiredResponseCapability || t.requiredResponseCapabilities?.length,
+    )
     .slice(0, 6);
   const table = guessChanceTable([typed, ...answered]);
   assert.deepEqual(
@@ -38,7 +44,9 @@ test("a built server answers from the table without generating a problem", async
     "guess.mjs",
   );
   await build({
-    entryPoints: [new URL("../src/math/guess-chance.ts", import.meta.url).pathname],
+    entryPoints: [
+      new URL("../src/math/guess-chance.ts", import.meta.url).pathname,
+    ],
     bundle: true,
     platform: "node",
     format: "esm",
