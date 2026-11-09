@@ -7,6 +7,7 @@ from geometry_proof_math_oracle import GEOMETRY_PROOF, solve_geometry_proof, rev
 from radical_equation_math_oracle import RADICAL_EQUATION, RADICAL_EQUATION_CHOICE, solve_radical_equation, review_radical_equation_fixtures, review_radical_equation_problem
 import decimal
 import clause_coverage_oracle
+import fraction_clause_math_oracle
 import importlib
 import json
 import math
@@ -18,6 +19,18 @@ from pathlib import Path
 from clause_variants_oracle import matches as is_clause_variant, solve as solve_clause_variant, review_problem as review_clause_variant, self_test as review_clause_fixtures
 from collections import Counter
 from fractions import Fraction
+
+
+def slot_key(public, labels):
+    """Canonical multi-part answer: blank id to the option whose label matches."""
+    key = {}
+    blanks = public['response']['blanks']
+    require(len(blanks) == len(labels), 'Slot count')
+    for blank, label in zip(blanks, labels):
+        hits = [option['id'] for option in blank['options'] if option['label'] == label]
+        require(len(hits) == 1, f'Slot {blank["id"]} should show {label} once')
+        key[blank['id']] = hits[0]
+    return json.dumps(key, separators=(',', ':'))
 from rational_expression_math_oracle import RATIONAL_EXPRESSION, solve_rational_expression, review_rational_expression_fixtures, review_rational_expression_problem
 from nonlinear_system_math_oracle import NONLINEAR_SYSTEM, solve_nonlinear_system, review_nonlinear_system_fixtures, review_nonlinear_system_problem
 from elementary_math_oracle import ELEMENTARY, solve_elementary
@@ -308,6 +321,9 @@ def solve(public):
 def solve_family(public):
     if clause_coverage_oracle.recognizes(public):
         return clause_coverage_oracle.solve(public)
+    clause_answer = fraction_clause_math_oracle.solve_clause(public)
+    if clause_answer is not None:
+        return clause_answer
     if is_clause_variant(public):
         return solve_clause_variant(public)
     oracle = FAMILY_ORACLE_FOR.get(public["templateId"])
@@ -556,6 +572,12 @@ def solve_family(public):
         require(prompt.startswith('How many ') and prompt.endswith(' are shown?') and 'dots' not in prompt,
                 'Unexpected count prompt')
         return drawn_count(figure)
+    if template == 'add-within-20' and public['response']['kind'] != 'number':
+        found = re.search(r'double (\d+) \+ \1, and what is (\d+) \+ (\d+)\?', prompt)
+        require(found is not None, 'Near-double wording')
+        double = 2 * int(found[1])
+        total = int(found[2]) + int(found[3])
+        return slot_key(public, [str(double), str(total)])
     if template == 'add-within-20':
         require(len(numbers) == 2 and min(numbers) >= 0 and sum(numbers) <= 20, 'Addition bounds')
         # The scene: a 0–20 number line marked at the greater addend, with
@@ -771,6 +793,10 @@ def review(stream):
         if clause_coverage_oracle.recognizes(public):
             clause_coverage_oracle.review_problem(problem)
             return
+        clause_answer = fraction_clause_math_oracle.solve_clause(public)
+        if clause_answer is not None:
+            require(problem['answer'] == clause_answer, f'Mismatch {template}/{seed}: {public["prompt"]!r}; got {problem["answer"]}, expected {clause_answer}')
+            return
         if is_clause_variant(public):
             review_clause_variant(problem)
             return
@@ -885,9 +911,19 @@ def review(stream):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
-        elif isinstance(solved, str):
+        elif public['response']['kind'] not in ('number', 'fraction'):
             expected = solved
             actual = problem['answer']
+            require(isinstance(expected, str) and isinstance(actual, str), 'Non-numeric answer must be text')
+        elif isinstance(solved, str):
+            # A string solution is text when it is not a number. A fraction
+            # string such as 27/2 still matches a decimal answer such as 13.5.
+            try:
+                expected = Fraction(solved)
+                actual = Fraction(problem['answer'])
+            except (ValueError, ZeroDivisionError):
+                expected = solved
+                actual = problem['answer']
         else:
             expected = Fraction(solved)
             actual = Fraction(problem['answer'])

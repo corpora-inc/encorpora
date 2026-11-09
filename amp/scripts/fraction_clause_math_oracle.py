@@ -193,9 +193,10 @@ def solve_clause(public):
             return choose_label(public, f"A {a}/{b} bar with a {c}/{d} bar laid on it.")
         return None
     if template == "benchmark-fraction-estimate" and prompt.startswith("Rio says"):
-        found = re.fullmatch(r"Rio says (\d+)/(\d+) ([+−]) (\d+)/(\d+) = (\d+)/(\d+)\. Choose the statement that is right\.", prompt)
+        found = re.fullmatch(r"Rio says (\d+)/(\d+) ([+−]) (\d+)/(\d+) = (\d+)(?:/(\d+))?\. Choose the statement that is right\.", prompt)
         require(found is not None, "Judge prompt")
-        a, b, op, c, d, claim_n, claim_d = int(found[1]), int(found[2]), found[3], int(found[4]), int(found[5]), int(found[6]), int(found[7])
+        a, b, op, c, d = int(found[1]), int(found[2]), found[3], int(found[4]), int(found[5])
+        claim_n, claim_d = int(found[6]), int(found[7] or 1)
         claim = fraction_text(claim_n, claim_d)
         if op == "+":
             true = Fraction(a, b) + Fraction(c, d)
