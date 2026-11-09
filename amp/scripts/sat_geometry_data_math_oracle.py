@@ -372,6 +372,30 @@ def solve_indep(public):
     t = plain(public['prompt'])
     options = options_of(public)
     labels = [plain(o['label']) for o in options]
+    if (m := re.fullmatch(r'A group of (\d+) people is classified by events A and B\. (\d+) are in both A and B, (\d+) are in A only, (\d+) are in B only, and (\d+) are in neither\. Check both directions: compare P\(A\|B\) with P\(A\), and compare P\(B\|A\) with P\(B\). Which statement is true\?', t)):
+        n, both, a_only, b_only, neither = (int(x) for x in m.groups())
+        require(both + a_only + b_only + neither == n and min(both, a_only, b_only, neither) > 0, 'Counts must partition the group')
+        row, col = both + a_only, both + b_only
+        require(row != col and 0 < row < n and 0 < col < n, 'The two events need different probabilities')
+        independent = both * n == row * col
+        # Both equalities are the same fact, so one cannot hold alone.
+        require((both * n == row * col) == (both * n == col * row), 'Directions disagree')
+        want = ('P(A|B)=P(A) and P(B|A)=P(B), so the events are independent.' if independent
+                else 'Neither P(A|B)=P(A) nor P(B|A)=P(B), so the events are dependent.')
+        keys = []
+        for label in labels:
+            if label == 'P(A|B)=P(A) and P(B|A)=P(B), so the events are independent.':
+                keys.append('independent')
+            elif label == 'Neither P(A|B)=P(A) nor P(B|A)=P(B), so the events are dependent.':
+                keys.append('dependent')
+            elif label == 'P(A|B)=P(A) but P(B|A) does not equal P(B), so A is independent of B but B depends on A.':
+                keys.append('one-way')
+            elif label == 'P(A|B) does not equal P(B|A), so the events are dependent.':
+                keys.append('wrong-pair')
+            else:
+                raise ValueError(f'Unreadable statement: {label}')
+        require(len(set(keys)) == 4, 'The four statements must be different claims')
+        return pick(options, keys, 'independent' if independent else 'dependent', 'both directions')
     if (m := re.fullmatch(r'Events A and B are independent\. P\(A\)=(\d+)% and P\(B\)=(\d+)%\. What is P\(A and B\)\?', t.replace('{ and }', ' and '))):
         v = Fraction(int(m[1]), 100) * Fraction(int(m[2]), 100) * 100
         keys = []

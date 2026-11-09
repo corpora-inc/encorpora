@@ -256,11 +256,13 @@ export const realNumberLessons: Lesson[] = [
       "scientific-to-standard",
       "standard-to-scientific",
       "scientific-times-larger",
+      "choose-unit-size",
     ],
     includeGeneratedRepresentation: false,
     objectives: [
       "Convert large and small numbers between standard form and scientific notation.",
       "Find how many times as large one number in scientific notation is as another.",
+      "Choose a unit that writes a very large or very small measure as a number from 1 up to 1,000.",
     ],
     senses: {
       place: "place-value",
@@ -288,6 +290,14 @@ export const realNumberLessons: Lesson[] = [
           "Numbers of 10 or more have positive exponents; numbers between 0 and 1 have negative exponents. A negative exponent makes a small positive number, not a negative number.",
         ],
         illustration: "decimal-point-shift",
+      },
+      {
+        title: "Choose a unit you can picture",
+        paragraphs: [
+          "A reader pictures 25 more easily than $2.5 \\times 10^{-5}$. The unit ladder steps by 1,000: kilometer, meter, millimeter, micrometer, nanometer.",
+          "One step to a smaller unit multiplies the number by 1,000. One step to a larger unit divides by 1,000. Stop when the number is at least 1 and under 1,000.",
+          "$2.5 \\times 10^{-5}$ km is $2.5 \\times 10^{-2}$ m, still a fraction. One more step is $25$ mm. That is about the length of a paper clip.",
+        ],
       },
       {
         title: "How many times as large",
@@ -570,6 +580,24 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
     watch:
       "When dividing the coefficients gives less than 1, the answer is less than the power of 10: $0.4 \\times 10^4 = 4000$.",
   },
+  "choose-unit-size": {
+    goal: "Choose a unit that writes a very large or very small measure as a number from 1 up to 1,000, then choose that number.",
+    terms: ["scientific-notation"],
+    senses: {
+      "standard form": "standard-form-number",
+      place: "place-value",
+      places: "place-value",
+    },
+    intuition:
+      "A number from 1 up to 1,000 is easy to picture. A power of 10 is not. The unit ladder steps by 1,000, so each step moves the decimal point three places.",
+    method: [
+      "Read the power of 10 and the unit the measure is given in.",
+      "A step to a smaller unit multiplies the number by 1,000. A step to a larger unit divides by 1,000.",
+      "Stop at the only unit whose number is at least 1 and less than 1,000.",
+    ],
+    watch:
+      "A result below 1, or 1,000 or more, is one step off. Move the other way.",
+  },
   "scientific-operations": {
     noLink: ["change", "part", "parts"],
     goal: "Calculate with numbers in scientific notation and give the result in scientific notation.",
@@ -609,6 +637,8 @@ export const realNumberPrinciples: Record<string, string> = {
     "Every positive number can be written in exactly one way as $a \\times 10^{n}$ with $1 \\le a < 10$ and $n$ an integer.",
   "scientific-times-larger":
     "For $b \\ne 0$ and integer exponents $m$ and $n$, $\\frac{a \\times 10^m}{b \\times 10^n} = \\frac{a}{b} \\times 10^{m - n}$.",
+  "choose-unit-size":
+    "On a ladder whose steps multiply by 1,000, exactly one unit writes a positive measure as a number from 1 up to, but not including, 1,000.",
   "scientific-operations":
     "For integers $m$ and $n$, $10^{m} \\times 10^{n} = 10^{m + n}$ and $10^{m} \\div 10^{n} = 10^{m - n}$. Adding combines coefficients only of equal powers of 10.",
 };

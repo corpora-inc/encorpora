@@ -524,8 +524,43 @@ def solve_family(public):
         require(left != right, 'Distance question needs distinct points')
         return abs(right-left)
     if template == 'count-objects':
-        require(figure['kind'] == 'collection' and 1 <= figure['count'] <= 10, 'Invalid counting representation')
-        return figure['count']
+        def drawn_count(scene_figure):
+            require(scene_figure['kind'] == 'scene', 'Scene required')
+            total = 0
+            found = False
+            for element in scene_figure['scene']['elements']:
+                if element['type'] == 'array':
+                    total += element['rows'] * element['columns']
+                    found = True
+                elif element['type'] == 'tenFrame':
+                    total += sum(group['count'] for group in element['groups'])
+                    found = True
+            require(found and 1 <= total <= 20, 'No counted objects')
+            return total
+        if figure['kind'] == 'collection':
+            require(prompt == 'How many dots are shown?' and 1 <= figure['count'] <= 10, 'Invalid counting representation')
+            return figure['count']
+        require(figure['kind'] == 'scene', 'Count objects are a collection or a scene')
+        settled = re.search(r'There (?:is|are) (\d+)', prompt)
+        if 'One more' in prompt:
+            require(settled is not None, 'The settled count is missing')
+            n = int(settled.group(1))
+            require(1 <= n <= 19 and drawn_count(figure) == n + 1, 'One more is not drawn')
+            return n + 1
+        if 'leaves' in prompt:
+            require(settled is not None, 'The settled count is missing')
+            n = int(settled.group(1))
+            require(2 <= n <= 20 and drawn_count(figure) == n, 'The group that loses one is not drawn')
+            return n - 1
+        if prompt.startswith('Ana counted'):
+            labels = re.search(r'Her labels are ([0-9, ]+)\.', prompt)
+            require(labels is not None, 'Ana\'s labels are missing')
+            count = len([part for part in labels.group(1).split(',') if part.strip()])
+            require(drawn_count(figure) == count and 6 <= count <= 10, 'The row and the labels disagree')
+            return count
+        require(prompt.startswith('How many ') and prompt.endswith(' are shown?') and 'dots' not in prompt,
+                'Unexpected count prompt')
+        return drawn_count(figure)
     if template == 'add-within-20':
         require(len(numbers) == 2 and min(numbers) >= 0 and sum(numbers) <= 20, 'Addition bounds')
         # The scene: a 0–20 number line marked at the greater addend, with
@@ -649,6 +684,20 @@ def solve_family(public):
         # Cramer's rule, distinct from generated elimination explanations.
         return f(e*d-b*total, a*d-b*c)
     if template == 'simple-probability':
+        if 'equal sections labeled' in prompt:
+            labels = [part.strip() for part in re.search(r'labeled ([A-D, ]+)\.', prompt)[1].split(',')]
+            asked = re.search(r'landing on ([A-D])\?', prompt)[1]
+            require(labels and len(labels) == numbers[0] and asked in labels, 'Spinner sections')
+            return f(labels.count(asked), len(labels))
+        if prompt.startswith('A class has'):
+            size, girls = numbers[:2]
+            require(18 <= size <= 32 and 7 <= girls <= size - 7, 'Class size')
+            if 'Jane is chosen' in prompt:
+                return f(1, size)
+            if 'not a girl' in prompt:
+                return f(size - girls, size)
+            require('is a girl' in prompt, 'Class event')
+            return f(girls, size)
         red, blue = numbers
         return f(red, red+blue)
     if template == 'arithmetic-term':

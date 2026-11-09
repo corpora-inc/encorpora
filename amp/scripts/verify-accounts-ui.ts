@@ -84,6 +84,19 @@ async function fits(page: Page, label: string, focus?: string) {
       () => document.documentElement.scrollWidth - innerWidth,
     );
     assert.ok(overflow <= 0, `${label} overflows at ${width}px`);
+    if (label === "security") {
+      for (const scheme of ["light", "dark"] as const) {
+        await page.emulateMedia({ colorScheme: scheme });
+        const box = await page
+          .getByRole("link", { name: "Sign in again", exact: true })
+          .boundingBox();
+        assert.ok(
+          box && box.height >= 44,
+          `Sign in again is ${box?.height ?? 0}px at ${width}px ${scheme}`,
+        );
+      }
+      await page.emulateMedia({ colorScheme: "light" });
+    }
     await page.screenshot({
       path: new URL(`accounts-${label}-${width}.png`, shots).pathname,
       fullPage: true,

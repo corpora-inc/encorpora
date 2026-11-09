@@ -1,4 +1,4 @@
-import { article } from "./agreement";
+import { article, nounFor } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import {
   assemble,
@@ -8,6 +8,7 @@ import {
 } from "./distribution-practice";
 import { graph, lineTable } from "./scene/author";
 import type { Scene } from "./scene/spec";
+import { axisRecord, chooseAxes, defineAxis, isLegacy } from "./variation/axes";
 
 /**
  * Texas high-school requirement gaps: Algebra I, Geometry, Algebra II and
@@ -126,14 +127,18 @@ export const lineRelationshipEquationsTemplate = make(
   0.45,
   "Choose the equation of the line through a point that is parallel or perpendicular to a given line, or parallel to an axis, and state the slope of horizontal and vertical lines.",
 );
-export const systemEquationChoiceTemplate = make(
-  "system-equation-choice",
-  "Write a system from a table, graph or story",
-  "systems-modeling",
-  0.35,
-  "Choose the system of two linear equations that matches a description, a pair of tables or a graph of two lines.",
-  true,
-);
+export const systemEquationChoiceTemplate = {
+  ...make(
+    "system-equation-choice",
+    "Write a system from a table, graph or story",
+    "systems-modeling",
+    0.35,
+    "Choose the system of two linear equations that matches a description, a pair of tables or a graph of two lines. Also choose the system of inequalities for a story with one at-most limit and one at-least limit.",
+    true,
+  ),
+  version: 2,
+  reprintsFrom: 1,
+};
 export const graphEstimateSystemTemplate = make(
   "graph-estimate-system-solution",
   "Estimate a system's solution from a graph",
@@ -1031,8 +1036,118 @@ const systemLabel = (a: [number, number], b: [number, number]) => ({
   key: [eq(...a), eq(...b)].sort().join("|"),
 });
 
+/** Inequality systems from a story. `equations` is the stored equation system. */
+export const inequalityStoryAxes = {
+  task: defineAxis("task", ["equations", "inequality-story"] as const, {
+    legacy: "equations",
+    silentLegacy: true,
+    since: 2,
+    weights: [1, 1],
+  }),
+};
+
+function inequalityStory(meta: TemplateMetadata, seed: string): TexasHsCase {
+  const r = begin(meta, seed);
+  const contexts = ["bakery", "meal", "pages", "cargo"] as const;
+  const context = contexts[r(0, contexts.length - 1)]!;
+  let small = r(1, 12);
+  let large = r(1, 12);
+  while (large === small) large = r(1, 12);
+  const cap = r(5, 10);
+  // A witness strictly inside the count limit, with money strictly above the goal.
+  const x = r(0, cap - 2);
+  const y = r(0, cap - 2 - x);
+  const money = small * x + large * y;
+  const goal = money <= 1 ? 1 : r(1, money - 1);
+  if (money <= goal || goal === cap || x + y >= cap)
+    return inequalityStory(meta, `${seed}~`);
+  const signs = `x+y\\le ${cap}\\text{ and }${small}x+${large}y\\ge ${goal}`;
+  const flipped = `x+y\\ge ${cap}\\text{ and }${small}x+${large}y\\le ${goal}`;
+  const prices = `x+y\\le ${cap}\\text{ and }${large}x+${small}y\\ge ${goal}`;
+  const totals = `x+y\\le ${goal}\\text{ and }${small}x+${large}y\\ge ${cap}`;
+  const bounds = r(0, 3) === 0 ? "\\text{, }x\\ge 0\\text{, }y\\ge 0" : "";
+  const label = (body: string) => tex(`${body}${bounds}`);
+  const countFirst = r(0, 1) === 0;
+  const countBit =
+    context === "bakery"
+      ? `It can bake at most ${cap} boxes a day`
+      : context === "meal"
+        ? `The meal uses at most ${cap} items`
+        : context === "pages"
+          ? `There are at most ${cap} hours`
+          : `The load holds at most ${cap} crates`;
+  const valueBit =
+    context === "bakery"
+      ? `and wants at least ${goal} dollars`
+      : context === "meal"
+        ? `and needs at least ${goal} grams of protein`
+        : context === "pages"
+          ? `and at least ${goal} pages must be read`
+          : `and the cargo must weigh at least ${goal} kilograms`;
+  const lead =
+    context === "bakery"
+      ? `A bakery sells $x$ small boxes at ${small} ${nounFor(small, "dollar")} and $y$ large boxes at ${large} ${nounFor(large, "dollar")}.`
+      : context === "meal"
+        ? `A meal uses $x$ eggs at ${small} ${nounFor(small, "gram")} of protein and $y$ slices of toast at ${large} ${nounFor(large, "gram")}.`
+        : context === "pages"
+          ? `Reading uses $x$ hours of notes at ${small} ${nounFor(small, "page")} an hour and $y$ hours of a book at ${large} ${nounFor(large, "page")} an hour.`
+          : `A shipment packs $x$ light crates at ${small} ${nounFor(small, "kilogram")} and $y$ heavy crates at ${large} ${nounFor(large, "kilogram")}.`;
+  const limits = countFirst ? `${countBit} ${valueBit}.` : `${valueBit.replace(/^and /, "It needs ").replace(/^and the /, "The ")} ${countBit.replace(/^It |^The |^There /, (w) => w.toLowerCase())}.`;
+  // Keep the limit sentence simple and in a fixed shape the oracle can read.
+  const unit = context === "bakery" ? "dollar" : context === "pages" ? "page" : context === "cargo" ? "kilogram" : "gram";
+  const value = `${goal} ${unit}${goal === 1 ? "" : "s"}`;
+  const limitSentence = countFirst
+    ? `${countBit}, and it needs at least ${value}.`
+    : `It needs at least ${value}. ${countBit}.`;
+  void limits;
+  const prompt = `${lead} ${limitSentence} Which system of inequalities represents these limits?`;
+  const right = label(signs);
+  return finish(meta, seed, r, {
+    variant: `inequality-${context}`,
+    prompt,
+    hint: "One limit counts the items and uses at most. The other uses the two rates and at least. Match each number to its unit.",
+    explanation: [
+      `The count limit is at most ${cap}, so $x+y\\le ${cap}$.`,
+      `The value limit uses ${small} for $x$ and ${large} for $y$, and at least ${goal} means $\\ge$.`,
+      `The system is ${right}.`,
+      `The pair (${x}, ${y}) meets both limits, since ${x}+${y}=${x + y} is below ${cap} and ${small}(${x})+${large}(${y})=${money} is above ${goal}.`,
+      "At most is ≤. At least is ≥.",
+    ],
+    correct: right,
+    key: signs + bounds,
+    wrong: [
+      {
+        label: label(flipped),
+        key: flipped + bounds,
+        feedback: "At most was written as ≥ and at least as ≤. The signs are reversed.",
+      },
+      {
+        label: label(prices),
+        key: prices + bounds,
+        feedback: `The rate ${small} belongs with $x$ and ${large} with $y$. Those rates were swapped.`,
+      },
+      {
+        label: label(totals),
+        key: totals + bounds,
+        feedback: `The count limit is ${cap} and the value limit is ${goal}. Those totals were swapped.`,
+      },
+    ],
+  });
+}
+
 export function systemEquationChoiceCase(seed: string): TexasHsCase {
   const meta = systemEquationChoiceTemplate;
+  const axes = chooseAxes(meta.id, seed, inequalityStoryAxes);
+  if (!isLegacy(inequalityStoryAxes, axes)) {
+    const built = inequalityStory(meta, seed);
+    return {
+      ...built,
+      problem: {
+        ...built.problem,
+        variant: { id: "inequality-story", axes: axisRecord(axes) },
+      },
+    };
+  }
   const r = begin(meta, seed);
   const variant = r(0, 3);
   if (variant === 3) {

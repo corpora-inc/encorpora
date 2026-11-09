@@ -3,12 +3,28 @@ import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
   ProblemResponse,
+  ProblemVariant,
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts";
 import { hasHave, isAre } from "./agreement";
 import { countContext } from "./story-kit/place-value";
-import { defineAxis, surfaceStream } from "./variation/axes";
+import {
+  chooseAxes,
+  defineAxis,
+  surfaceStream,
+  versionGatedAxes,
+} from "./variation/axes";
+
+/** Equal counts with one row stretched. Legacy keeps the old more/fewer draw. */
+export const compareGroupAxes = {
+  family: defineAxis("family", ["legacy", "spacing-trap-same"] as const, {
+    legacy: "legacy",
+    weights: [14, 1],
+    silentLegacy: true,
+    since: 2,
+  }),
+} as const;
 import { generateWithAxes, omitLegacyVariant } from "./variation/legacy";
 
 /** Digit length for `multidigit-digit-value`. `as-drawn` keeps four to six digits. */
@@ -99,8 +115,11 @@ export const comparisonTemplates: readonly TemplateMetadata[] = definitions.map(
     skillId,
     gradeBand,
     description,
-    version: id === "multidigit-digit-value" ? 2 : 1,
-    ...(id === "multidigit-digit-value" ? { reprintsFrom: 1 } : {}),
+    version:
+      id === "multidigit-digit-value" || id === "compare-groups" ? 2 : 1,
+    ...(id === "multidigit-digit-value" || id === "compare-groups"
+      ? { reprintsFrom: 1 }
+      : {}),
     ...(choiceIds.has(id)
       ? { requiredResponseCapability: "single-choice-v1" as const }
       : {}),
@@ -337,7 +356,8 @@ function comparisonProblem(
     explanation: string[] = [],
     figure: SemanticFigure | undefined,
     response: ProblemResponse = { kind: "number", label: "Answer" },
-    choiceFeedback: Record<string, string> | undefined;
+    choiceFeedback: Record<string, string> | undefined,
+    variant: ProblemVariant | undefined;
   const pickExtreme = (a: number, b: number, greater: boolean) => {
     const pick = greater ? Math.max(a, b) : Math.min(a, b);
     prompt = `Which number is ${greater ? "greater" : "less"}: ${formatWhole(a)} or ${formatWhole(b)}?`;
@@ -346,6 +366,49 @@ function comparisonProblem(
   };
   switch (templateId) {
     case "compare-groups": {
+      const family = chooseAxes(templateId, seed, compareGroupAxes).family;
+      if (family === "spacing-trap-same") {
+        const s = surfaceStream(templateId, `${seed}:spacing`);
+        const n = s(4, 6);
+        const spreadTop = s(0, 1) === 0;
+        figure = {
+          kind: "counter-rows",
+          circles: n,
+          squares: n,
+          spread: spreadTop ? "circles" : "squares",
+        };
+        prompt =
+          "Which row has more shapes: the top row, the bottom row, or the same number?";
+        const options = [
+          { id: "option-a", label: "The top row" },
+          { id: "option-b", label: "The bottom row" },
+          { id: "option-c", label: "The same number" },
+        ];
+        response = { kind: "choice", label: "Choose one", options };
+        answer = "option-c";
+        const longer = spreadTop ? "top" : "bottom";
+        const bunched = spreadTop ? "bottom" : "top";
+        choiceFeedback = {
+          "option-a": spreadTop
+            ? "The top row is longer, but a longer row is not a bigger number. Count the shapes."
+            : "The top row is bunched, but a crowded row is not a bigger number. Count the shapes.",
+          "option-b": spreadTop
+            ? "The bottom row is bunched, but a crowded row is not a bigger number. Count the shapes."
+            : "The bottom row is longer, but a longer row is not a bigger number. Count the shapes.",
+        };
+        hint = `The ${longer} row is spread out and the ${bunched} row is bunched. Match one shape to one shape. Do not compare the lengths.`;
+        explanation = [
+          `Each row has ${n} shapes. Slide them to the same spacing.`,
+          `Every shape in the top row matches one shape in the bottom row. Nothing is left over.`,
+          `The rows have the same number. A longer row is not a bigger number.`,
+          `Both rows show ${n}.`,
+        ];
+        variant = {
+          id: "spacing-trap-same",
+          axes: { family: "spacing-trap-same" },
+        };
+        break;
+      }
       const equal = r(0, 3) === 0,
         small = r(2, 8),
         big = equal ? small : small + r(1, Math.min(3, 10 - small)),
@@ -609,7 +672,11 @@ function comparisonProblem(
         .update(JSON.stringify([templateId, 1, seed]))
         .digest("hex"),
       templateId,
-      templateVersion: 1,
+      templateVersion:
+        templateId === "compare-groups" &&
+        !versionGatedAxes().some((axis) => axis.id === "family")
+          ? 2
+          : 1,
       seed,
       prompt,
       skillId: meta.skillId,
@@ -620,6 +687,7 @@ function comparisonProblem(
     hint,
     explanation,
     ...(choiceFeedback ? { choiceFeedback } : {}),
+    ...(variant ? { variant } : {}),
   };
 }
 

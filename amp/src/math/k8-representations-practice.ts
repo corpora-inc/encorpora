@@ -1,9 +1,10 @@
-import { count, plural } from "./agreement";
+import { count, hasHave, plural } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { assemble, pick, seeded, shuffle } from "./algebra-one-kit";
 import type { Case, Choice, Random } from "./algebra-one-kit";
 import { act, f, graph, step } from "./scene/author";
 import type { Scene } from "./scene/spec";
+import { chooseAxes, defineAxis, versionGatedAxes } from "./variation/axes";
 
 /** Elementary and middle-school representation tasks: proportional graphs,
  * qualitative graphs of stories, first-quadrant points in context, paired
@@ -86,13 +87,14 @@ export const k8RepresentationTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "compound-event-simulation",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Sample spaces and simulations",
     skillId: "compound-probability",
     gradeBand: "6–8",
     difficultyOffset: 0.15,
     description:
-      "Find a compound-event probability from its sample space, estimate one from random-digit trials, and compare experimental with theoretical probability.",
+      "Find a compound-event probability from its sample space, estimate one from random-digit trials, and compare experimental with theoretical probability. Also choose a complete outcome list, the outcomes in an event, and a simulation rule.",
     ...choice,
   },
 ];
@@ -1797,7 +1799,419 @@ const simContexts: SimContext[] = [
   },
 ];
 
-function compoundEventSimulation(r: Random): Built {
+/** Stored behavior reads a given sample space or a given simulation.
+ * New families stay single-choice: the template cannot ask for a figure choice,
+ * a multi-select, or a multi-part response. */
+const compoundTaskAxis = {
+  task: defineAxis(
+    "task",
+    [
+      "given-setup",
+      "represent-sample-space",
+      "event-outcomes",
+      "design-and-run",
+    ] as const,
+    {
+      legacy: "given-setup",
+      weights: [3, 1, 1, 1],
+      silentLegacy: true,
+      since: 2,
+    },
+  ),
+};
+type CompoundTask = (typeof compoundTaskAxis.task.values)[number];
+
+function tooLong(parts: string[]) {
+  for (const part of parts)
+    for (const sentence of part.split(/(?<=[.?!])\s+/)) {
+      const words = sentence.trim().split(/\s+/).filter(Boolean).length;
+      if (words > 35)
+        throw new Error(`Sentence has ${words} words: ${sentence}`);
+    }
+}
+function withRetries(build: () => Built): Built {
+  for (let attempt = 0; attempt < 80; attempt++) {
+    try {
+      return build();
+    } catch (error) {
+      if (error instanceof Error && error.message.startsWith("Need three"))
+        continue;
+      throw error;
+    }
+  }
+  throw new Error("Could not build a compound-event variant");
+}
+
+type StageDevice = { title: string; outcomes: string[] };
+function stageDevice(r: Random): StageDevice {
+  const kind = pick(r, ["coin", "cube", "spinner", "bag"] as const);
+  if (kind === "coin") return { title: "a coin", outcomes: ["H", "T"] };
+  if (kind === "cube")
+    return { title: "a number cube", outcomes: ["1", "2", "3", "4", "5", "6"] };
+  if (kind === "spinner") {
+    const n = r(3, 5);
+    return {
+      title: "a spinner",
+      outcomes: Array.from({ length: n }, (_, i) => `${i + 1}`),
+    };
+  }
+  return {
+    title: "a bag",
+    outcomes: ["red", "blue", "green", "gold"].slice(0, r(2, 4)),
+  };
+}
+function representSampleSpace(r: Random): Built {
+  const twice = r(0, 1) === 0;
+  const first = stageDevice(r);
+  const second = twice ? first : stageDevice(r);
+  const m = first.outcomes.length;
+  const n = second.outcomes.length;
+  const total = m * n;
+  const describe = (d: StageDevice) =>
+    `${d.title} (${d.outcomes.length} outcomes: ${d.outcomes.join(", ")})`;
+  const candidates: { count: number; label: string }[] = [];
+  const push = (count: number, label: string) => {
+    if (
+      count > 0 &&
+      count !== total &&
+      !candidates.some((item) => item.count === count)
+    )
+      candidates.push({ count, label });
+  };
+  if (twice)
+    push(
+      (m * (m + 1)) / 2,
+      `The unordered list drops swapped pairs, exactly ${(m * (m + 1)) / 2} outcomes.`,
+    );
+  push(
+    m + n - 1,
+    `A tree draws the second stage under only one first branch, exactly ${m + n - 1} outcomes.`,
+  );
+  push(
+    m + n,
+    `The added list ${[...first.outcomes, ...second.outcomes].join(", ")} has exactly ${m + n} outcomes.`,
+  );
+  push(n * n, `A table uses ${n} for both sides, exactly ${n * n} outcomes.`);
+  push(m * m, `A table uses ${m} for both sides, exactly ${m * m} outcomes.`);
+  push(
+    Math.max(m, n),
+    `Only the longer device is listed, exactly ${Math.max(m, n)} outcomes.`,
+  );
+  push(total * 2, `Every pair is listed twice, exactly ${total * 2} outcomes.`);
+  if (candidates.length < 3) throw new Error("Need three retries");
+  const wrongs = candidates.slice(0, 3);
+  const correct = `A table has one cell for every pair, exactly ${total} outcomes, each pair once.`;
+  const named = describe(first);
+  const prompt = twice
+    ? `${cap(named)} is used twice. Which description shows every outcome exactly once?`
+    : `${cap(named)} is used with ${describe(second)}. Which description shows every outcome exactly once?`;
+  const hint = `The first device has ${m} outcomes and the second has ${n}. Start by multiplying those two counts.`;
+  const explanation = [
+    `The first device has ${m} outcomes and the second has ${n}.`,
+    `Every pair is one outcome, so there are ${m} × ${n} = ${total} outcomes.`,
+    `A list, a table, and a tree can show the same ${total} pairs.`,
+    `The other descriptions have ${wrongs.map((item) => item.count).join(", ")} outcomes.`,
+  ];
+  tooLong([prompt, hint, correct, ...explanation, ...wrongs.map((w) => w.label)]);
+  return {
+    prompt,
+    choices: options(
+      correct,
+      wrongs.map((item) => [
+        item.label,
+        `That description has ${item.count} outcomes, not ${m} times ${n}.`,
+      ]),
+    ),
+    explanation,
+    hint,
+    tags: ["represent-sample-space"],
+    model: { m, n, total },
+  };
+}
+
+const pairSpaces: {
+  intro: string;
+  first: string[];
+  second: string[];
+  events: { phrase: string; test: (x: string, y: string) => boolean }[];
+}[] = [
+  {
+    intro: "A coin is flipped and a number cube is rolled.",
+    first: ["H", "T"],
+    second: ["1", "2", "3", "4", "5", "6"],
+    events: [
+      { phrase: "tails or a 6", test: (x, y) => x === "T" || y === "6" },
+      {
+        phrase: "heads and an even number",
+        test: (x, y) => x === "H" && Number(y) % 2 === 0,
+      },
+    ],
+  },
+  {
+    intro: "Two fair coins are flipped, and the first coin is listed first.",
+    first: ["H", "T"],
+    second: ["H", "T"],
+    events: [
+      {
+        phrase: "at least one head",
+        test: (x, y) => x === "H" || y === "H",
+      },
+    ],
+  },
+  {
+    intro: "Two fair number cubes are rolled.",
+    first: ["1", "2", "3", "4", "5", "6"],
+    second: ["1", "2", "3", "4", "5", "6"],
+    events: [
+      { phrase: "doubles", test: (x, y) => x === y },
+      { phrase: "a sum of 7", test: (x, y) => Number(x) + Number(y) === 7 },
+      {
+        phrase: "a sum of at least 10",
+        test: (x, y) => Number(x) + Number(y) >= 10,
+      },
+    ],
+  },
+];
+const pairText = (x: string, y: string) => `(${x}, ${y})`;
+function eventOutcomes(r: Random): Built {
+  const space = pick(r, pairSpaces);
+  const event = pick(r, space.events);
+  const all = space.first.flatMap((x) => space.second.map((y) => [x, y]!));
+  const fav = all.filter(([x, y]) => event.test(x!, y!));
+  if (fav.length < 1 || fav.length >= all.length)
+    throw new Error("Need three retries");
+  const keyOf = (pairs: string[][]) =>
+    pairs
+      .map(([x, y]) => pairText(x!, y!))
+      .sort()
+      .join("; ");
+  const correctKey = keyOf(fav);
+  const wrongKeys: string[] = [];
+  const add = (pairs: string[][]) => {
+    if (!pairs.length) return;
+    const key = keyOf(pairs);
+    if (key !== correctKey && !wrongKeys.includes(key)) wrongKeys.push(key);
+  };
+  add(fav.slice(1));
+  const outsider = all.find(
+    ([x, y]) => !fav.some(([a, b]) => a === x && b === y),
+  );
+  if (outsider) add([...fav, outsider]);
+  if (event.phrase === "at least one head")
+    add(fav.filter(([x, y]) => !(x === "H" && y === "H")));
+  if (event.phrase === "tails or a 6")
+    add(fav.filter(([x, y]) => !(x === "T" && y === "6")));
+  if (event.phrase === "doubles") add([["6", "6"]]);
+  if (event.phrase.startsWith("a sum"))
+    add(fav.filter(([x, y]) => x! <= y!));
+  if (fav.length > 2) add(fav.slice(0, -1));
+  if (wrongKeys.length < 3) throw new Error("Need three retries");
+  const chosen = wrongKeys.slice(0, 3);
+  const correct = `The outcomes ${correctKey}.`;
+  const prompt = `${space.intro} First outcomes: ${space.first.join(", ")}. Second outcomes: ${space.second.join(", ")}. The event is: ${event.phrase}. Which list includes every outcome of the event and no others?`;
+  const hint = `There are ${space.first.length} first outcomes and ${space.second.length} second outcomes. Keep a pair only when it matches ${event.phrase}.`;
+  const explanation = [
+    `There are ${space.first.length} × ${space.second.length} = ${all.length} equally likely outcomes.`,
+    `The event has ${fav.length} outcomes: ${correctKey}.`,
+    `The probability is ${fav.length}/${all.length}.`,
+  ];
+  const wrongLabels = chosen.map((key) => `The outcomes ${key}.`);
+  tooLong([prompt, hint, correct, ...explanation, ...wrongLabels]);
+  return {
+    prompt,
+    choices: options(
+      correct,
+      wrongLabels.map((label, i) => [
+        label,
+        `That list is not exactly the outcomes where the event is ${event.phrase}. It has ${count(chosen[i]!.split("; ").length, "outcome")}, and the event has ${fav.length}.`,
+      ]),
+    ),
+    explanation,
+    hint,
+    tags: ["event-outcomes"],
+    model: { phrase: event.phrase, favorable: fav.length, total: all.length },
+  };
+}
+
+function designAndRun(r: Random): Built {
+  const bank = pick(r, ["donor", "girls", "dice"] as const);
+  const trials = 10;
+  const alt = (k: number, step: number) => {
+    const value = (k + step) % trials;
+    return value === k ? (value + 1) % trials : value;
+  };
+  if (bank === "donor") {
+    const percent = pick(r, [10, 20, 30, 40, 60, 70, 80, 90]);
+    const width = percent / 10;
+    const threshold = pick(r, [2, 3, 4]);
+    const rows = Array.from({ length: trials }, () => {
+      const digits: number[] = [];
+      for (let i = 0; i < 8; i++) {
+        const digit = r(0, 9);
+        digits.push(digit);
+        if (digit < width) return { text: digits.join(""), length: digits.length };
+      }
+      return { text: `${digits.join("")}cap`, length: 8 };
+    });
+    const hits = rows.filter((row) => row.length >= threshold).length;
+    if (hits === 0 || hits === trials) throw new Error("Need three retries");
+    const list = (from: number, to: number) =>
+      Array.from({ length: to - from + 1 }, (_, i) => from + i).join(", ");
+    const rule = (digits: string, k: number) =>
+      `Digits ${digits} stand for type A. The estimate is ${k}/${trials}.`;
+    const correct = rule(list(0, width - 1), hits);
+    const extra = rule(list(0, width), alt(hits, 1));
+    const shifted =
+      width === 1
+        ? rule(list(0, 4), alt(hits, 2))
+        : rule(list(1, width), alt(hits, 2));
+    const single = rule(String(width), alt(hits, 3));
+    const labels = [correct, extra, shifted, single];
+    if (new Set(labels).size < 4) throw new Error("Need three retries");
+    const prompt = `${percent}% of donors have type A blood. One digit stands for one donor. A trial reads digits until a type A digit, and it stops at 8 digits. Count a trial when it uses at least ${threshold} digits. These ${trials} trials are ${rows.map((row) => row.text).join(";")}. Which rule and estimate are correct?`;
+    const hint = `${percent}% is ${count(width, "digit")} out of 10. Then count the trials whose length is at least ${threshold}.`;
+    const explanation = [
+      `Type A uses ${count(width, "digit")}: ${list(0, width - 1)}.`,
+      `${hits} of the ${trials} trials use at least ${threshold} digits.`,
+      `The estimate is ${hits}/${trials}.`,
+    ];
+    tooLong([prompt, hint, correct, extra, shifted, single, ...explanation]);
+    return {
+      prompt,
+      choices: options(correct, [
+        [extra, `That rule uses ${width + 1} digits, which is not ${percent}%.`],
+        [shifted, "That rule does not give each of 0 through 9 an equal role."],
+        [single, `${percent}% is not the single digit ${width}.`],
+      ]),
+      explanation,
+      hint,
+      tags: ["design-and-run"],
+      model: { bank, hits, trials, percent, threshold },
+    };
+  }
+  if (bank === "girls") {
+    const rows = Array.from({ length: trials }, () => {
+      const digits = [r(0, 9), r(0, 9), r(0, 9)];
+      return { text: digits.join(""), girls: digits.filter((d) => d % 2 === 0).length };
+    });
+    const hits = rows.filter((row) => row.girls === 3).length;
+    if (hits === 0 || hits === trials) throw new Error("Need three retries");
+    const oddHits = rows.filter((row) =>
+      [...row.text].every((d) => Number(d) % 2 === 1),
+    ).length;
+    const lowHits = rows.filter((row) =>
+      [...row.text].every((d) => Number(d) <= 4),
+    ).length;
+    const zeroHits = rows.filter((row) => [...row.text].every((d) => d === "0")).length;
+    const rule = (text: string, k: number) => `${text} The estimate is ${k}/${trials}.`;
+    const correct = rule("Even digits stand for a girl.", hits);
+    const wrongs: Wrong[] = [
+      [
+        rule("Odd digits stand for a girl.", oddHits === hits ? alt(hits, 1) : oddHits),
+        "Odd digits are the other result, not girls.",
+      ],
+      [
+        rule(
+          "Digits 0, 1, 2, 3, 4 stand for a girl.",
+          lowHits === hits ? alt(hits, 2) : lowHits,
+        ),
+        "Those five digits are not the even digits.",
+      ],
+      [
+        rule("Only digit 0 stands for a girl.", zeroHits === hits ? alt(hits, 3) : zeroHits),
+        "A fair girl-or-boy split uses five even digits, not only 0.",
+      ],
+    ];
+    const prompt = `Each family has 3 children, and each child is equally likely to be a girl or a boy. The event is that all 3 children are girls. One digit stands for one child. These ${trials} trials are ${rows.map((row) => row.text).join(";")}. Which rule and estimate are correct?`;
+    const hint = `There are ${trials} trials, and each trial has 3 digits. Decide which digits stand for a girl, then count the all-girl trials.`;
+    const explanation = [
+      "Even digits are 0, 2, 4, 6, and 8, so each child is a girl half the time.",
+      `${hits} of the ${trials} trials are three even digits.`,
+      `The estimate is ${hits}/${trials}.`,
+    ];
+    tooLong([prompt, hint, correct, ...wrongs.map((w) => w[0]), ...explanation]);
+    return {
+      prompt,
+      choices: options(correct, wrongs),
+      explanation,
+      hint,
+      tags: ["design-and-run"],
+      model: { bank, hits, trials },
+    };
+  }
+  const rows = Array.from({ length: trials }, () => {
+    const raw: number[] = [];
+    const rolls: number[] = [];
+    while (rolls.length < 2 && raw.length < 8) {
+      const digit = r(0, 9);
+      raw.push(digit);
+      if (digit >= 1 && digit <= 6) rolls.push(digit);
+    }
+    return {
+      text: raw.join("") + (rolls.length < 2 ? "cap" : ""),
+      success: rolls.length === 2 && rolls.includes(6),
+    };
+  });
+  const hits = rows.filter((row) => row.success).length;
+  if (hits === 0 || hits === trials) throw new Error("Need three retries");
+  const decoded = (keep: (d: number) => boolean, six: boolean) =>
+    rows.filter((row) => {
+      const digits = row.text.replace(/cap$/, "").split("").map(Number);
+      const kept: number[] = [];
+      for (const digit of digits) {
+        if (kept.length === 2) break;
+        if (keep(digit)) kept.push(digit);
+      }
+      return kept.length === 2 && (six ? kept.includes(6) : kept.some((d) => d >= 6));
+    }).length;
+  const rule = (text: string, k: number) => `${text} The estimate is ${k}/${trials}.`;
+  const correct = rule(
+    "Digits 1, 2, 3, 4, 5, 6 are rolls, and 0, 7, 8, 9 are skipped.",
+    hits,
+  );
+  const every = decoded(() => true, true);
+  const low = decoded((d) => d <= 5, false);
+  const skipSix = decoded((d) => d >= 1 && d <= 5, false);
+  const wrongs: Wrong[] = [
+    [
+      rule("Every digit is a roll, and a 6 counts.", every === hits ? alt(hits, 1) : every),
+      "Digits 0, 7, 8, and 9 are not faces of a cube.",
+    ],
+    [
+      rule("Digits 0, 1, 2, 3, 4, 5 are rolls.", low === hits ? alt(hits, 2) : low),
+      "A cube has faces 1 through 6, not 0 through 5.",
+    ],
+    [
+      rule("A 6 is skipped and does not count.", skipSix === hits ? alt(hits, 3) : skipSix),
+      "A 6 is a face, so it has to count.",
+    ],
+  ];
+  const prompt = `The event is at least one 6 in two rolls of a number cube. Digits stand for the rolls. These ${trials} trials are ${rows.map((row) => row.text).join(";")}. Which rule and estimate are correct?`;
+  const hint = `There are ${trials} trials, and the event needs a 6. A cube's faces are 1 through 6, so decide which digits to skip before you count.`;
+  const explanation = [
+    "Digits 1 through 6 are the faces. Digits 0, 7, 8, and 9 are skipped.",
+    `${hits} of the ${trials} trials ${hasHave(hits)} at least one 6 in the two kept rolls.`,
+    `The estimate is ${hits}/${trials}.`,
+  ];
+  tooLong([prompt, hint, correct, ...wrongs.map((w) => w[0]), ...explanation]);
+  return {
+    prompt,
+    choices: options(correct, wrongs),
+    explanation,
+    hint,
+    tags: ["design-and-run"],
+    model: { bank, hits, trials },
+  };
+}
+
+function compoundEventSimulation(
+  r: Random,
+  task: CompoundTask = "given-setup",
+): Built {
+  if (task === "represent-sample-space")
+    return withRetries(() => representSampleSpace(r));
+  if (task === "event-outcomes") return withRetries(() => eventOutcomes(r));
+  if (task === "design-and-run") return withRetries(() => designAndRun(r));
   const variant = pick(r, [
     "sample-space",
     "simulation",
@@ -2032,9 +2446,27 @@ export function k8RepresentationCase(id: string, seed: string) {
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
   const r = seeded(id, seed);
-  const { model, ...c } = builders[id]!(r);
+  const task =
+    id === "compound-event-simulation"
+      ? chooseAxes(id, seed, compoundTaskAxis).task
+      : null;
+  const built =
+    id === "compound-event-simulation"
+      ? compoundEventSimulation(r, task!)
+      : builders[id]!(r);
+  const { model, ...c } = built;
   const { problem, tags } = assemble(meta, seed, c, r, labels[id]!);
-  return { problem, tags, model };
+  if (id !== "compound-event-simulation" || task == null)
+    return { problem, tags, model };
+  const gated = versionGatedAxes().some((axis) => axis.id === "task");
+  const stamped: GeneratedProblem = {
+    ...problem,
+    public: { ...problem.public, templateVersion: gated ? 1 : 2 },
+    ...(task === "given-setup"
+      ? {}
+      : { variant: { id: task, axes: { task } } }),
+  };
+  return { problem: stamped, tags, model };
 }
 export const generateK8RepresentationProblem = (
   id: string,

@@ -717,8 +717,107 @@ def vertex_extreme(form):
     return F(0), F(m[1] or 0)
 
 
+def _quad_in(expr, var):
+    xs = [F(i) for i in range(-2, 5)]
+    ys = [ev(expr, **{var: G(x)}).real() for x in xs]
+    c0 = ys[2]
+    c1 = (ys[3] - ys[1]) / 2
+    c2 = (ys[3] + ys[1]) / 2 - c0
+    for x, y in zip(xs, ys):
+        require(c2 * x * x + c1 * x + c0 == y, f'{expr} is not quadratic in {var}')
+    require(c2 != 0, 'A contextual model is quadratic')
+    return c2, c1, c0
+
+
+def _rational_roots(a, b, c):
+    root = exact_sqrt(b * b - 4 * a * c)
+    require(root is not None, 'Contextual zeros must be rational')
+    return sorted({(-b - root) / (2 * a), (-b + root) / (2 * a)})
+
+
+def _form_kind(expr):
+    text = plain(expr).replace(' ', '')
+    if '^2' in text and text.count('(') == 1:
+        return 'vertex'
+    if '(' in text and '^2' not in text:
+        return 'factored'
+    return 'standard'
+
+
+def solve_contextual_forms(public, prompt):
+    options = choice_options(public)
+    shown = re.findall(r'([ABC]): \$([A-Za-z])\(([A-Za-z])\)=([^$]+)\$', prompt)
+    rewrite = 'Rewrite' in prompt
+    if rewrite:
+        one = re.search(r'\$h\(t\)=([^$]+)\$', prompt)
+        require(one is not None, 'Rewrite shows standard form')
+        shown = [('A', 'h', 't', one[1])]
+    require(shown, 'Contextual forms are missing')
+    var = shown[0][2]
+    require(all(item[2] == var for item in shown), 'The forms use one variable')
+    exprs = {letter: expr for letter, _fname, _var, expr in shown}
+    coeffs = {letter: _quad_in(expr, var) for letter, expr in exprs.items()}
+    require(len(set(coeffs.values())) == 1, 'The forms must expand to one polynomial')
+    a, b, c = coeffs['A']
+    require(a < 0, 'Contextual parabolas open downward')
+    zeros = _rational_roots(a, b, c)
+    height_time = -b / (2 * a)
+    extreme = a * height_time * height_time + b * height_time + c
+    kinds = {letter: _form_kind(expr) for letter, expr in exprs.items()}
+    if not rewrite:
+        require(set(kinds.values()) == {'standard', 'factored', 'vertex'}, 'Need all three forms')
+
+    def stated(text):
+        return ev(text).real()
+
+    def truth(option):
+        label = option['label']
+        if 'hits the ground' in prompt or 'Rewrite' in prompt:
+            if 'Rewrite' in prompt:
+                match = re.fullmatch(r'It shows the ball lands at \$t=([^$]+)\$ s\.', label)
+                return bool(match) and stated(match[1]) == max(zeros) and max(zeros) > 0
+            match = re.fullmatch(r'Form ([ABC]); the ball lands at \$t=([^$]+)\$ s\.', label)
+            return bool(match) and kinds[match[1]] == 'factored' and stated(match[2]) == max(zeros) and min(zeros) < 0 < max(zeros)
+        if 'greatest height directly' in prompt:
+            match = re.fullmatch(r'Form ([ABC]); the greatest height is \$([^$]+)\$ (?:ft|m)\.', label)
+            return bool(match) and kinds[match[1]] == 'vertex' and stated(match[2]) == extreme
+        if 'when the ball is highest' in prompt:
+            match = re.fullmatch(r'Form ([ABC]); the greatest height is at \$t=([^$]+)\$ s\.', label)
+            return bool(match) and kinds[match[1]] == 'vertex' and stated(match[2]) == height_time
+        if 'height at the throw' in prompt:
+            match = re.fullmatch(r'Form ([ABC]); the height at the throw is \$([^$]+)\$ (?:ft|m)\.', label)
+            return bool(match) and kinds[match[1]] == 'standard' and stated(match[2]) == c
+        if 'return to the height' in prompt:
+            match = re.fullmatch(r'\$([^$]+)\$ s', label)
+            return bool(match) and stated(match[1]) == 2 * height_time
+        if 'break-even' in prompt:
+            match = re.fullmatch(r'Form ([ABC]); it breaks even at \$x=([^$]+)\$ and \$x=([^$]+)\$\.', label)
+            if not match:
+                return False
+            named = sorted((stated(match[2]), stated(match[3])))
+            return kinds[match[1]] == 'factored' and named == zeros
+        if 'greatest profit directly' in prompt:
+            match = re.fullmatch(r'Form ([ABC]); the greatest profit is \$([^$]+)\$ dollars\.', label)
+            return bool(match) and kinds[match[1]] == 'vertex' and stated(match[2]) == extreme
+        if 'how many items' in prompt:
+            match = re.fullmatch(r'Form ([ABC]); the greatest profit is at \$x=([^$]+)\$\.', label)
+            return bool(match) and kinds[match[1]] == 'vertex' and stated(match[2]) == height_time
+        if 'width that gives the greatest area' in prompt:
+            match = re.fullmatch(r'Form ([ABC]); the greatest area is at \$w=([^$]+)\$\.', label)
+            return bool(match) and kinds[match[1]] == 'vertex' and stated(match[2]) == height_time
+        if 'greatest area directly' in prompt:
+            match = re.fullmatch(r'Form ([ABC]); the greatest area is \$([^$]+)\$ square meters\.', label)
+            return bool(match) and kinds[match[1]] == 'vertex' and stated(match[2]) == extreme
+        require(False, f'Unknown contextual question {prompt!r}')
+
+    require(extreme >= 0 and height_time >= 0, 'The extreme is in the model domain')
+    return only_true(options, truth, 'contextual form')
+
+
 def solve_quadratic_conversion(public):
     prompt = plain_keep(public['prompt'])
+    if prompt.startswith('In this situation'):
+        return solve_contextual_forms(public, prompt)
     options = choice_options(public)
     m = re.fullmatch(r'Rewrite \$y=([^$]+)\$ in vertex form \$y=\(x-h\)\^2\+k\$ by completing the square\. Which equation is correct\?', prompt)
     if m:

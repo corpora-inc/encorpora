@@ -61,11 +61,15 @@ def wire(points):
 
 
 def in_grid(point, grid=GRID):
-    return grid["xMin"] <= point[0] <= grid["xMax"] and grid["yMin"] <= point[1] <= grid["yMax"]
+    step = grid["step"]
+    return (grid["xMin"] <= point[0] <= grid["xMax"] and grid["yMin"] <= point[1] <= grid["yMax"]
+            and (point[0] - grid["xMin"]) % step == 0 and (point[1] - grid["yMin"]) % step == 0)
 
 
 def lattice(grid=GRID):
-    return [(x, y) for x in range(grid["xMin"], grid["xMax"] + 1) for y in range(grid["yMin"], grid["yMax"] + 1)]
+    step = grid["step"]
+    return [(x, y) for x in range(grid["xMin"], grid["xMax"] + 1, step)
+            for y in range(grid["yMin"], grid["yMax"] + 1, step)]
 
 
 # ---------------------------------------------------------------- linear forms
@@ -228,6 +232,17 @@ def read_plot_points(prompt):
 
 
 def read_line(prompt):
+    model = re.search(r"The relationship is ([A-Z] = \d+ [+-] \d+[a-z])\.", prompt)
+    if model:
+        left, right = model[1].split(" = ")
+        sign = -1 if " - " in f" {right}" or right.startswith("-") else 1
+        # "8 - 2h" or "3 + 2m"
+        parts = re.fullmatch(r"(\d+) ([+-]) (\d+)[a-z]", right)
+        require(parts is not None, f"Unrecognized model equation: {model[1]}")
+        intercept, op, rate = int(parts[1]), parts[2], int(parts[3])
+        slope = rate if op == "+" else -rate
+        require("Each horizontal gridline is" in prompt and "Each vertical gridline is" in prompt, "Scale")
+        return "model", line_of_equation(f"y = {intercept} {'+' if slope >= 0 else '-'} {abs(slope)}x"), 2
     match = re.fullmatch(r"y is proportional to x, and y = (-?\d+) when x = (-?\d+)\. Graph the relationship "
                          r"by placing (\d+) points on its line\.", prompt)
     if match:
@@ -464,6 +479,83 @@ def spec_points(curve, grid):
     return out
 
 
+BALL_GRID = {"xMin": 0, "xMax": 8, "yMin": 0, "yMax": 18, "step": 1, "xLabel": "t (s)", "yLabel": "h (m)"}
+PROFIT_GRID = {"xMin": 0, "xMax": 16, "yMin": 0, "yMax": 18, "step": 1, "xLabel": "x", "yLabel": "P"}
+
+
+def description_points(prompt):
+    """The three key points named by a verbal quadratic, or None for an equation prompt."""
+    if "From this description" not in prompt:
+        return None
+    ball = re.fullmatch(
+        r"A ball is thrown from a height of (\d+) m\. It reaches its greatest height, (\d+) m, "
+        r"(\d+) (?:second|seconds) after the throw, and lands (\d+) seconds after the throw\. "
+        r"From this description, place the starting point, the highest point and the landing point\. "
+        r"This graph is height against time, not the ball's path\.",
+        prompt,
+    )
+    if ball:
+        c, k, tv, land = (int(part) for part in ball.groups())
+        require(k in (9, 16) and tv >= 1 and c == k - tv * tv and c > 0, "Ball parameters")
+        require(isqrt(k) ** 2 == k and land == tv + isqrt(k), "Landing is the positive zero")
+        return [(0, c), (tv, k), (land, 0)], BALL_GRID
+    returned = re.fullmatch(
+        r"A ball is thrown upward from a height of (\d+) m\. Its greatest height is (\d+) m after "
+        r"(\d+) (?:second|seconds)\. It returns to its starting height after (\d+) seconds\. "
+        r"From this description, place the start, the highest point and the return point\. "
+        r"This graph is height against time, not the ball's path\.",
+        prompt,
+    )
+    if returned:
+        c, k, tv, back = (int(part) for part in returned.groups())
+        require(k in (9, 16) and tv >= 1 and c == k - tv * tv and c > 0, "Return parameters")
+        require(back == 2 * tv, "The return is twice the axis")
+        return [(0, c), (tv, k), (2 * tv, c)], BALL_GRID
+    profit = re.fullmatch(
+        r"A shop's profit, in dollars, follows a downward parabola\. It breaks even at (\d+) items and at "
+        r"(\d+) items\. The greatest profit is halfway between those counts\. From this description, "
+        r"place the two break-even points and the highest point\.",
+        prompt,
+    )
+    require(profit is not None, "Verbal quadratic was not recognised")
+    left, right = int(profit[1]), int(profit[2])
+    require(0 < left < right and (left + right) % 2 == 0, "Break-even counts")
+    gap = (right - left) // 2
+    return [(left, 0), (right, 0), ((left + right) // 2, gap * gap)], PROFIT_GRID
+
+
+def review_description(problem):
+    public = problem["public"]
+    response = public["response"]
+    parsed = description_points(public["prompt"])
+    require(parsed is not None, "Not a verbal description")
+    points, grid = parsed
+    expected = sorted(points)
+    require(len(set(expected)) == 3 and all(in_grid(p, grid) for p in expected), "Three grid points")
+    common_response(response, 3, False, "curve", grid)
+    require(response["label"] == "Place the 3 points from the description", "Label")
+    require("pointLabels" not in response and "given" not in response, "No labels or givens")
+    grading = problem["pointGrading"]
+    require(grading.get("mode") == "on-curve" and set(grading) <= {"mode", "curve", "required"}, "On-curve grading")
+    curve = grading["curve"]
+    require(curve["kind"] == "quadratic" and curve["a"] == [-1, 1], "The description is a downward unit parabola")
+    for x, y in expected:
+        require(spec_value(curve, x) == y, f"{(x, y)} is off the graded curve")
+    top = max(expected, key=lambda p: p[1])
+    require(F(curve["h"][0], curve["h"][1]) == top[0] and F(curve["k"][0], curve["k"][1]) == top[1], "Vertex")
+    required = sorted(tuple(p) for p in grading.get("required", []))
+    require(required == expected, "The graded points are not the three named points")
+    actual = answer_points(problem, False, grid)
+    require(actual == expected, "Stored answer is not the three named points")
+    require(grade_curve(response, grading, actual, grid), "Stored answer fails grading")
+    moved = [(expected[0][1], expected[0][0]), expected[1], expected[2]]
+    if moved != expected and all(in_grid(p, grid) for p in moved):
+        require(not grade_curve(response, grading, moved, grid), "A swapped coordinate is accepted")
+    _text, hint = review_explanation_mentions(problem, expected)
+    require(not (pairs_in(hint) & set(expected)), "Hint places an answer point")
+    return problem["answer"]
+
+
 CURVE_PROMPT = re.compile(
     r"^Graph \$(y = [^$]+)\$ (by placing 3 points|by placing its vertex and 2 more points"
     r"|by placing its \$y\$-intercept and 2 more points|by placing its starting point and 2 more points)\.$")
@@ -588,6 +680,9 @@ def solve(public):
     template = public["templateId"]
     require(template in SUPPORTED, "Wrong family")
     if template in CURVES:
+        described = description_points(public["prompt"])
+        if described is not None:
+            return wire(sorted(described[0]))
         _, _, _, accepted, feature = read_curve(public)
         return "curve:" + wire(accepted) + ("|" + wire([feature]) if feature else "")
     prompt = normalized(public["prompt"])
@@ -605,7 +700,7 @@ def solve(public):
 
 def grade(response, grading, points):
     """Independent grader: True when the placed points answer the item."""
-    if len(points) != response["pointCount"] or not all(in_grid(p) for p in points):
+    if len(points) != response["pointCount"] or not all(in_grid(p, response["grid"]) for p in points):
         return False
     if len(set(points)) != len(points):
         return False
@@ -627,9 +722,12 @@ def answer_points(problem, ordered, grid=GRID):
     return points
 
 
-def common_response(response, count, ordered, connect):
+def common_response(response, count, ordered, connect, grid=None):
     require(response["kind"] == "point-plot", "Not a point-plot response")
-    require(response["grid"] == GRID, "Grid must be -6..6 on both axes with step 1")
+    if grid is None:
+        require(response["grid"] == GRID, "Grid must be -6..6 on both axes with step 1")
+    else:
+        require(response["grid"] == grid, "Grid disagrees with the stated scale")
     require(response["pointCount"] == count, "Point count disagrees with the prompt")
     require(response["ordered"] is ordered and response["connect"] == connect, "Order/connect contract")
     require(("pointLabels" in response) == ordered, "Labels exactly for ordered points")
@@ -711,7 +809,14 @@ def review_line(problem):
     prompt = normalized(public["prompt"])
     variant, line, count = read_line(prompt)
     require(count == 2, "Two points determine the line")
-    common_response(response, count, False, "line")
+    grid = response["grid"]
+    if variant == "model":
+        require(grid["step"] in (1, 2) and grid["xMin"] == 0 and grid["yMin"] == 0, "Scaled first-quadrant grid")
+        require(grid["xLabel"] != "x" and grid["yLabel"] != "y", "Axes name the quantities")
+        common_response(response, count, False, "line", grid)
+    else:
+        common_response(response, count, False, "line")
+        grid = GRID
     require(response["label"] == "Place 2 points on the line" and "given" not in response, "Label/given")
     grading = problem["pointGrading"]
     require(grading.get("mode") == "on-line" and set(grading) == {"mode", "a", "b", "c"}, "Line items grade on-line")
@@ -719,14 +824,14 @@ def review_line(problem):
     require(all(type(v) is int for v in (a, b, c)) and (a, b) != (0, 0), "Integer coefficients")
     require(gcd(gcd(abs(a), abs(b)), abs(c)) == 1, "Coefficients not in lowest terms")
     require(canonical_line(a, b, c) == line, f"Grading line {a}x+{b}y={c} is not the prompt's line {line}")
-    on_window = [p for p in lattice() if on_line(line, p)]
-    require(len(on_window) >= 3, "Fewer than three lattice points of the line are placeable")
-    accepted = [p for p in lattice() if grade({"pointCount": 1}, grading, [p])]
+    on_window = [p for p in lattice(grid) if on_line(line, p)]
+    require(len(on_window) >= (4 if variant == "model" else 3), "Too few lattice points of the line are placeable")
+    accepted = [p for p in lattice(grid) if grade({"pointCount": 1, "grid": grid}, grading, [p])]
     require(accepted == on_window, "Grading accepts a point set other than the line's lattice points")
     pairs = [(p, q) for i, p in enumerate(on_window) for q in on_window[i + 1:]]
     require(all(grade(response, grading, list(pair)) for pair in pairs), "A correct pair is rejected")
     require(not grade(response, grading, [on_window[0], on_window[0]]), "A repeated point is accepted")
-    actual = answer_points(problem, False)
+    actual = answer_points(problem, False, grid)
     require(len(actual) == 2 and all(on_line(line, p) for p in actual), "Stored answer is not two points on the line")
     require(grade(response, grading, actual), "Stored answer fails grading")
     text, hint = review_explanation_mentions(problem, actual)
@@ -835,6 +940,10 @@ def review_problem(problem):
     require(template in SUPPORTED, "Wrong family")
     expected = solve(problem["public"])
     if template in CURVES:
+        if "From this description" in problem["public"]["prompt"]:
+            reviewed = review_description(problem)
+            require(reviewed == expected, "Answer disagrees with the description")
+            return reviewed
         return review_curve(problem)
     if template == "plot-points":
         reviewed = review_plot_points(problem)

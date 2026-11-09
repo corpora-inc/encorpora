@@ -7,6 +7,7 @@ import type {
 } from "./contracts.js";
 import { exactDecimal, sweepChoose, sweepVariant } from "./number-domain-axes";
 import { count, isAre } from "./agreement.js";
+import { chooseAxes, defineAxis, versionGatedAxes } from "./variation/axes.js";
 import { clauseProblem } from "./fraction-clause-variants.js";
 export const generatorVersion = 1 as const;
 export const extendedTemplates: readonly TemplateMetadata[] = [
@@ -85,7 +86,7 @@ export const extendedTemplates: readonly TemplateMetadata[] = [
     "Probability of one draw",
     "probability",
     "6–8",
-    "Find a probability from equally likely objects.",
+    "Find a probability from equally likely objects, or build the uniform model for a spinner or a class.",
   ],
   [
     "arithmetic-term",
@@ -124,8 +125,10 @@ export const extendedTemplates: readonly TemplateMetadata[] = [
   ],
 ].map(([id, title, skillId, gradeBand, description]) => ({
   id: id!,
-  version: id === "divide-fractions" ? 2 : 1,
-  ...(id === "divide-fractions" ? { reprintsFrom: 1 } : {}),
+  version: id === "simple-probability" || id === "divide-fractions" ? 2 : 1,
+  ...(id === "simple-probability" || id === "divide-fractions"
+    ? { reprintsFrom: 1 }
+    : {}),
   title: title!,
   skillId: skillId!,
   gradeBand: gradeBand! as TemplateMetadata["gradeBand"],
@@ -142,6 +145,89 @@ function fraction(n: number, d = 1): string {
 }
 const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
 const lcm = (a: number, b: number) => (a * b) / gcd(a, b);
+/** One draw stays the stored task. Writing the uniform model is the new family.
+ * The response stays a single fraction, not a table of fields. */
+const simpleProbabilityTask = {
+  task: defineAxis("task", ["one-draw", "write-the-model"] as const, {
+    legacy: "one-draw",
+    weights: [1, 1],
+    silentLegacy: true,
+    since: 2,
+  }),
+};
+function writeUniformModel(r: (lo: number, hi: number) => number): {
+  prompt: string;
+  answer: string;
+  hint: string;
+  explanation: string[];
+} {
+  for (let attempt = 0; attempt < 40; attempt++) {
+    if (r(0, 1) === 0) {
+      const n = [6, 8, 10, 12][r(0, 3)]!;
+      const k = r(0, 1) === 0 ? 3 : 4;
+      const names = ["A", "B", "C", "D"].slice(0, k);
+      const counts = Array(k).fill(1);
+      let left = n - k;
+      while (left > 0) {
+        counts[r(0, k - 2)]!++;
+        left--;
+      }
+      if (!counts.includes(1)) continue;
+      const askable = counts
+        .map((c, i) => ({ c, i }))
+        .filter((x) => x.c * k !== n);
+      const repeated = askable.filter((x) => x.c > 1);
+      const pool = repeated.length ? repeated : askable;
+      if (!pool.length) continue;
+      const asked = pool[r(0, pool.length - 1)]!;
+      const pieces: string[] = [];
+      counts.forEach((c, i) => {
+        for (let j = 0; j < c; j++) pieces.push(names[i]!);
+      });
+      const label = names[asked.i]!;
+      const shares = names.map(
+        (name, i) => `${name} has probability ${fraction(counts[i]!, n)}`,
+      );
+      return {
+        prompt: `A spinner has ${n} equal sections labeled ${pieces.join(", ")}. Each section is equally likely. What is the probability of landing on ${label}?`,
+        answer: fraction(asked.c, n),
+        hint: `The spinner has ${n} equal sections, and ${label} is on ${asked.c} of them. Divide the ${label} sections by ${n}, not by the ${k} different labels.`,
+        explanation: [
+          `The spinner has ${n} equal sections, so each section has probability 1/${n}.`,
+          `${label} is on ${asked.c} sections, so its probability is ${fraction(asked.c, n)}.`,
+          `${shares.join("; ")}.`,
+          "Those label probabilities add to 1.",
+        ],
+      };
+    }
+    const size = r(18, 32);
+    const girls = r(7, size - 7);
+    const ask = r(0, 2);
+    const notGirls = size - girls;
+    const question =
+      ask === 0
+        ? "Jane is chosen"
+        : ask === 1
+          ? "the chosen student is a girl"
+          : "the chosen student is not a girl";
+    const favorable = ask === 0 ? 1 : ask === 1 ? girls : notGirls;
+    return {
+      prompt: `A class has ${size} students, and ${girls} of them are girls. Jane is one student in the class. One student is chosen at random. What is the probability that ${question}?`,
+      answer: fraction(favorable, size),
+      hint:
+        ask === 0
+          ? `The class has ${size} students, and ${girls} are girls. Jane is one of all ${size} students, so start from the whole class.`
+          : `The class has ${size} students, and ${girls} are girls. Count the students who fit, then divide by ${size}.`,
+      explanation: [
+        `One student is chosen from ${size}, so P(Jane) is ${fraction(1, size)}.`,
+        `P(a girl) is ${fraction(girls, size)}, and P(not a girl) is ${fraction(notGirls, size)}.`,
+        "P(a girl) and P(not a girl) add to 1.",
+        `The probability that ${question} is ${fraction(favorable, size)}.`,
+      ],
+    };
+  }
+  throw new Error("Could not build a uniform probability model");
+}
 /** "(−4)" for a negative number written after an operation sign, else "4". */
 const signed = (n: number) => (n < 0 ? `(${n})` : `${n}`);
 function decimal(n: number, places: number): string {
@@ -178,6 +264,7 @@ export function generateExtendedProblemLegacy(
   let explanation: string[] = [];
   let kind: "number" | "fraction" = "number";
   let variant: ProblemVariant | undefined;
+  let templateVersion = 1;
   switch (templateId) {
     case "place-value-digit": {
       const h = r(1, 9),
@@ -423,6 +510,26 @@ export function generateExtendedProblemLegacy(
       break;
     }
     case "simple-probability": {
+      const task = chooseAxes(
+        "simple-probability",
+        seed,
+        simpleProbabilityTask,
+      ).task;
+      const gated = versionGatedAxes().some((axis) => axis.id === "task");
+      templateVersion = gated ? 1 : 2;
+      if (task === "write-the-model") {
+        variant = {
+          id: "write-the-model",
+          axes: { task: "write-the-model" },
+        };
+        const built = writeUniformModel(r);
+        prompt = built.prompt;
+        answer = built.answer;
+        hint = built.hint;
+        explanation = built.explanation;
+        kind = "fraction";
+        break;
+      }
       const red = r(1, 12),
         blue = r(1, 12);
       prompt = `A bag contains ${count(red, "red counter")} and ${count(blue, "blue counter")}. Each counter is equally likely to be drawn. What is the probability of drawing a red counter in one draw?`;
@@ -534,7 +641,7 @@ export function generateExtendedProblemLegacy(
     public: {
       id,
       templateId,
-      templateVersion: 1,
+      templateVersion,
       seed,
       prompt,
       skillId: meta.skillId,
