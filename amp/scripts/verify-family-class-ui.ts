@@ -1,3 +1,4 @@
+import { schoolShellReview, classShellJourney } from "./school-shell-review";
 /**
  * Families as classes in real browsers, on the real API in accounts mode and a
  * real database (docs/families.md, steps 3 and 4). Everyone here is synthetic.
@@ -21,6 +22,7 @@ import { randomBytes, randomUUID } from "node:crypto";
 import pg from "pg";
 import {
   chromium as rawChromium,
+  webkit,
   type Browser,
   type BrowserContext,
   type Page,
@@ -50,7 +52,7 @@ const argument = (name: string) => {
 const webPort = Number(argument("--port") ?? 4438);
 const apiPort = webPort + 1;
 const origin = `http://127.0.0.1:${webPort}`;
-const committed = "docs/reviews/family-class";
+const committed = process.env.AMP_UI_REVIEW ?? "docs/reviews/family-class";
 const scratch = "artifacts/family-class";
 await mkdir(committed, { recursive: true });
 await mkdir(scratch, { recursive: true });
@@ -123,6 +125,8 @@ async function signUp(page: Page, email: string, name: string) {
   await password.fill(PASSWORD);
   await page.getByRole("button", { name: "Create account" }).click();
   await page.waitForURL(/\/account\/ready|\/start|\/school/);
+  if (new URL(page.url()).pathname === "/account/ready")
+    await page.locator('[data-account-ready][aria-busy="false"]').waitFor();
   const session = await (
     await page.context().request.get(`${origin}/api/auth/get-session`)
   ).json();
@@ -219,7 +223,7 @@ async function family(
   width: number,
   theme: "light" | "dark",
 ) {
-  const label = `chromium ${width} ${theme}`;
+  const label = `${browser.browserType().name()} ${width} ${theme}`;
   const context = await newContext(browser, width, theme);
   const page = await context.newPage();
   page.setDefaultTimeout(30_000);
@@ -260,6 +264,8 @@ async function family(
   check(`${label} the line stays dismissed`, (await notice.count()) === 0);
   await measured(page, `${label} class`);
   await shot(page, "class", width, theme);
+  await schoolShellReview(page);
+  await classShellJourney(page);
 
   // The parent invites a co-teacher from the class; "Copy link" stays on the row.
   await page.getByRole("button", { name: "Invite a co-teacher" }).click();
@@ -267,6 +273,7 @@ async function family(
   await shot(page, "co-teacher-invite", width, theme);
   await page.getByRole("button", { name: "Send invitation" }).click();
   await page.getByText("rafael@vega.example").waitFor();
+  await page.getByRole("button", { name: "Copy link", exact: true }).waitFor();
   check(
     `${label} the co-teacher's link is always there`,
     (await page.getByRole("button", { name: "Copy link" }).count()) === 1,
@@ -368,11 +375,13 @@ async function family(
 }
 
 try {
-  const browser = await chromium.launch();
-  for (const width of [1280, 390])
-    for (const theme of ["light", "dark"] as const)
-      await family(browser, width, theme);
-  await browser.close();
+  for (const launcher of [chromium, webkit]) {
+    const browser = await launcher.launch();
+    for (const width of [1280, 390])
+      for (const theme of ["light", "dark"] as const)
+        await family(browser, width, theme);
+    await browser.close();
+  }
 } catch (error) {
   await last.page?.screenshot({ path: `${scratch}/stuck.png` }).catch(() => {});
   console.error(`Stopped at ${last.page?.url()}`);

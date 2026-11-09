@@ -6,6 +6,7 @@ import {
   Suspense,
   useEffect,
   useRef,
+  useState,
   type CSSProperties,
   type ReactNode,
   type RefObject,
@@ -23,6 +24,8 @@ import {
   type ProgressContext,
   type ShellFrame,
 } from "../features/navigation/shell-frame";
+import { usePlaceEntries } from "../features/navigation/PlaceSwitcher";
+import { useSchoolNavigation } from "../features/navigation/school-navigation";
 import { Tabs } from "../ui/Tabs";
 import { AppLogo } from "../ui/AppLogo";
 import bar from "../ui/AppBar.module.css";
@@ -83,7 +86,12 @@ export function AppShell({ children }: { children: ReactNode }) {
       className={frame ? styles.frame : styles.bare}
       data-app-frame={frame?.kind}
       data-tabs={
-        frame?.kind === "progress" || frame?.kind === "account" ? "" : undefined
+        frame?.kind === "progress" ||
+        frame?.kind === "account" ||
+        frame?.kind === "class" ||
+        frame?.kind === "school"
+          ? ""
+          : undefined
       }
     >
       {frame && (
@@ -143,6 +151,22 @@ function ShellBar({
   const open = useShellSlots((state) => state.drawerOpen);
   const setDrawerOpen = useShellSlots((state) => state.setDrawerOpen);
   const setTools = useShellSlots((state) => state.setTools);
+  const school = useSchoolNavigation(frame);
+  // Prepare every place before opening the menu: later class responses must
+  // not insert destinations under the pointer. The logo keeps its fixed box.
+  const { loading: placesLoading } = usePlaceEntries(
+    me,
+    frame.kind === "class" || frame.kind === "school" ? frame.org : undefined,
+  );
+  const [pendingFrame, setPendingFrame] = useState<string | null>(null);
+  const frameKey = JSON.stringify(frame);
+  const opening = pendingFrame === frameKey;
+  useEffect(() => {
+    if (pendingFrame && (!opening || !placesLoading)) {
+      setPendingFrame(null);
+      if (opening) setDrawerOpen(true);
+    }
+  }, [pendingFrame, opening, placesLoading, setDrawerOpen]);
   const tabs =
     frame.kind === "progress" ? (
       <Tabs
@@ -152,6 +176,12 @@ function ShellBar({
       />
     ) : frame.kind === "account" ? (
       <Tabs label="Account" items={accountTabs} active={frame.active} />
+    ) : frame.kind === "class" || frame.kind === "school" ? (
+      <Tabs
+        label={frame.kind === "class" ? "Class" : "School"}
+        items={school.tabs}
+        active={frame.active}
+      />
     ) : null;
   return (
     <header
@@ -167,7 +197,12 @@ function ShellBar({
           aria-haspopup="dialog"
           title="AMP menu"
           data-navigation-trigger
-          onClick={() => setDrawerOpen(!open)}
+          aria-busy={opening || undefined}
+          onClick={() => {
+            if (opening) setPendingFrame(null);
+            else if (!open && placesLoading) setPendingFrame(frameKey);
+            else setDrawerOpen(!open);
+          }}
         />
       </div>
       {tabs && <div className={bar.tabsCell}>{tabs}</div>}
@@ -178,6 +213,28 @@ function ShellBar({
         data-shell-tools={frame.kind === "practice" ? "" : undefined}
       />
       <div className={bar.action}>
+        {frame.kind === "class" && school.start && (
+          <Link
+            to="/$"
+            params={{
+              _splat: `school/${frame.org}/classes/${frame.classId}/start`,
+            }}
+            className={bar.actionLink}
+            aria-label="Start class"
+            data-shell-action
+            aria-hidden={frame.active !== "today" || frame.board || undefined}
+            tabIndex={frame.active !== "today" || frame.board ? -1 : undefined}
+            style={{
+              visibility:
+                frame.active === "today" && !frame.board ? "visible" : "hidden",
+            }}
+          >
+            <svg viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M4.5 2.8v10.4L13 8 4.5 2.8Z" />
+            </svg>
+            <span className={bar.actionLabel}>Start class</span>
+          </Link>
+        )}
         {frame.kind === "progress" && (
           <ProgressAction context={context} me={me} />
         )}

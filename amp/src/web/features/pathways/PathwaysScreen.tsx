@@ -1,5 +1,4 @@
 import { FREE_ONLINE_PROBLEMS } from "../../../learning/free-allowance";
-import type { z } from "zod";
 import {
   CurriculumDetailsControl,
   useCurriculumDetails,
@@ -14,11 +13,7 @@ import {
   Suspense,
   type ReactNode,
 } from "react";
-import {
-  useQuery,
-  useSuspenseQuery,
-  type UseQueryResult,
-} from "@tanstack/react-query";
+import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import {
   Link,
   useNavigate,
@@ -47,7 +42,6 @@ import {
   type Frontier,
   type Evidence,
   type MapSkill,
-  type catalogSchema,
 } from "./model";
 import { Dialog } from "../../ui/Dialog";
 import { ListboxDisclosure, type ListboxOption } from "../../ui/Listbox";
@@ -80,22 +74,19 @@ function matchesQuery(text: string, query: string) {
 
 export function PathwaysScreen() {
   const { data: session } = useSuspenseQuery(sessionOptions);
+  // This public resource outlives the keyed learner view. Keep its in-flight
+  // read alive when the account resolves and that view changes learner.
+  useQuery(skillCatalogOptions);
   return session ? (
     <LearnerMap key={session.accountId} session={session} />
   ) : (
     <GuestMap />
   );
 }
-/** The curriculum the map draws. Each screen holds it above its map, which
- * remounts when the learner changes: one request, however often it does. */
-const mapCatalogOptions = { ...skillCatalogOptions, refetchInterval: 300_000 };
-type MapCatalog = UseQueryResult<z.infer<typeof catalogSchema>>;
 /** Signed out: the whole curriculum, and the way in. */
 function GuestMap() {
-  const catalog = useQuery(mapCatalogOptions);
   return (
     <MapView
-      catalog={catalog}
       evidence={emptyEvidence}
       start="/sign-up"
       actionLabel="Try it free"
@@ -107,7 +98,6 @@ function GuestMap() {
 
 function LearnerMap({ session }: { session: AuthSession }) {
   const me = useQuery(meOptions(session));
-  const catalog = useQuery(mapCatalogOptions);
   const { learnerId, select } = useLearnerStore();
   const account = me.data?.signedIn ? me.data : null;
   // The adult's own pathways, when their own learner is the one chosen: the
@@ -161,7 +151,6 @@ function LearnerMap({ session }: { session: AuthSession }) {
   if (me.data && !me.data.signedIn) return <GuestMap />;
   return (
     <MapView
-      catalog={catalog}
       evidence={progress.data?.skills ?? emptyEvidence}
       start={learner ? "/practice" : "/start"}
       key={learner?.id ?? "none"}
@@ -220,7 +209,6 @@ function LearnerMap({ session }: { session: AuthSession }) {
   );
 }
 export function MapView({
-  catalog,
   evidence,
   start,
   notice,
@@ -234,7 +222,6 @@ export function MapView({
   noticeImportant = false,
   recordLoading = false,
 }: {
-  catalog: MapCatalog;
   evidence: Evidence[];
   start: "/sign-up" | "/practice" | "/start";
   notice: ReactNode;
@@ -249,6 +236,10 @@ export function MapView({
   /** The learner's record is still on its way: counts wait for it. */
   recordLoading?: boolean;
 }) {
+  const catalog = useQuery({
+    ...skillCatalogOptions,
+    refetchInterval: 300_000,
+  });
   const search = useSearch({ strict: false });
   const params = useParams({ strict: false });
   const routeSkillId = typeof params.skillId === "string" ? params.skillId : "";

@@ -10,7 +10,7 @@
   display: grid;
   grid-template-rows: auto auto auto minmax(0, 1fr);
   gap: clamp(14px, 2.4dvh, 32px);
-  min-height: 100dvh;
+  min-height: calc(100dvh - var(--shell-bar, 56px));
   box-sizing: border-box;
   padding: clamp(10px, 1.6dvh, 20px) var(--pad) clamp(16px, 3dvh, 40px);
   background: var(--color-surface);
@@ -21,20 +21,20 @@
 @media (min-width: 720px) {
   .board {
     --tile: min(10.4vw, 21dvh);
-    height: 100dvh;
+    height: calc(100dvh - var(--shell-bar, 56px));
   }
 }
 .problem {
   display: grid;
   place-items: center;
-  min-height: 100dvh;
+  min-height: calc(100dvh - var(--shell-bar, 56px));
   padding: var(--space-5);
   background: var(--color-surface);
   color: var(--color-on-surface);
 }
 .bar {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: var(--space-3);
   min-height: 56px;

@@ -693,3 +693,9 @@ button.copy[data-done="copied"] {
   font-size: var(--text-table);
   font-weight: 600;
 }
+
+.inviteCard[data-in-shell] {
+  max-width: var(--width-form);
+  min-height: calc(100dvh - var(--shell-bar, 56px));
+  padding-top: var(--space-5);
+}

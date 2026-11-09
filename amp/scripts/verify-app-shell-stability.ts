@@ -8,8 +8,9 @@ import { secureChromium } from "../browser-security.mjs";
  *       [--widths 320,390,768,1280] [--shots DIR]
  *
  * For every screen on the frame (Overview, Pathways, Inventory, the four
- * Account tabs, practice, an adult's own record and a new child's Overview),
- * at 320, 390, 768 and 1280 px, light and dark, in Chromium and WebKit:
+ * Account tabs, practice, an adult's own record and a new child's Overview,
+ * the seven Class tabs and learner workbooks), at 320, 390, 768 and 1280 px,
+ * light and dark, in Chromium and WebKit:
  *
  * - the logo's box is identical on every screen;
  * - the logo opens the drawer, which shows the same logo in the same spot,
@@ -48,6 +49,7 @@ const fixture = await startShellFixture({
   webPort: Number(process.env.AMP_SHELL_WEB_PORT ?? 4950),
 });
 const { origin } = fixture;
+let familyClassPath = "";
 
 /** The paid parent also starts their own practice, so `/me` has a record. */
 {
@@ -65,6 +67,13 @@ const { origin } = fixture;
   });
   if (!started.ok())
     throw Error(`own practice ${started.status()} ${await started.text()}`);
+  const me = await (
+    await context.request.get(`${origin}/api/v1/me`, {
+      headers: { authorization: `Bearer ${session.session.token as string}` },
+    })
+  ).json();
+  if (!me.familyClass) throw Error("Paid family fixture must have a class");
+  familyClassPath = `/school/${me.familyClass.orgId}/classes/${me.familyClass.classId}`;
   await context.close();
   await browser.close();
 }
@@ -73,11 +82,33 @@ type Screen = {
   id: string;
   path: string;
   state: ShellState;
-  group: "progress" | "account" | "practice";
+  group: "progress" | "account" | "practice" | "class" | "plain";
   /** Shown once the screen has its data. */
   ready: (page: Page) => Promise<unknown>;
 };
 const screens: Screen[] = [
+  ...[
+    "today",
+    "map",
+    "gradebook",
+    "time",
+    "workbooks",
+    "roster",
+    "settings",
+  ].map((tab): Screen => ({
+    id: `class-${tab}`,
+    path: `${familyClassPath}/${tab}`,
+    state: "paid",
+    group: "class",
+    ready: (p) => p.locator("#school-content").waitFor(),
+  })),
+  {
+    id: "learner-workbooks",
+    path: `/learners/${fixture.paid.jordan.id}/workbooks`,
+    state: "paid",
+    group: "plain",
+    ready: (p) => p.locator('main[aria-busy="false"]').waitFor(),
+  },
   {
     id: "overview",
     path: "/overview",
@@ -216,9 +247,10 @@ async function tabBoxes(page: Page) {
         ...document.querySelectorAll<HTMLElement>("[data-app-bar] [data-tab]"),
       ].map((tab) => {
         const r = tab.getBoundingClientRect();
+        const scroll = tab.parentElement!.scrollLeft;
         return [
           tab.dataset.tab!,
-          { x: r.x, y: r.y, width: r.width, height: r.height },
+          { x: r.x + scroll, y: r.y, width: r.width, height: r.height },
         ];
       }),
     ),
@@ -399,6 +431,19 @@ for (const engine of engines) {
       for (const [group, path, order] of [
         ["progress", "/overview", ["pathways", "inventory", "overview"]],
         ["account", "/family/security", ["learners", "access", "privacy"]],
+        [
+          "class",
+          `${familyClassPath}/today`,
+          [
+            "map",
+            "gradebook",
+            "time",
+            "workbooks",
+            "roster",
+            "settings",
+            "today",
+          ],
+        ],
       ] as const) {
         const screen = screens.find((s) => s.path === path)!;
         const { context, page, errors, requests } = await open(

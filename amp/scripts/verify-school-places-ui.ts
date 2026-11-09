@@ -56,7 +56,7 @@ const argument = (name: string) => {
 const webPort = Number(argument("--port") ?? 4432);
 const apiPort = webPort + 1;
 const origin = `http://127.0.0.1:${webPort}`;
-const committed = "docs/reviews/school-places";
+const committed = process.env.AMP_UI_REVIEW ?? "docs/reviews/school-places";
 const scratch = "artifacts/school-places";
 await mkdir(committed, { recursive: true });
 await mkdir(scratch, { recursive: true });
@@ -216,7 +216,7 @@ const menuButton = (page: Page) =>
     .filter({ visible: true })
     .first();
 /** Opens the switcher wherever this screen keeps it: the family drawer, the
- * school's rail or drawer, or setup's rail or bar. */
+ * shared app drawer, or setup’s own bar. */
 async function openSwitcher(page: Page, from: string, drawer: boolean) {
   if (drawer) {
     await menuButton(page).click();
@@ -236,7 +236,14 @@ async function choose(
   menu: ReturnType<Page["getByRole"]>,
   name: RegExp,
 ) {
-  await menu.getByRole("menuitem", { name }).click();
+  await menu
+    .getByRole("menuitem", { name })
+    .filter({
+      has: page.locator(
+        '[data-place="home"], [data-place="me"], [data-place^="school:"]',
+      ),
+    })
+    .click();
   await menu.waitFor({ state: "detached" });
 }
 
@@ -329,7 +336,7 @@ async function familyThenSchool(
   const classPath = path(page);
 
   // The switcher lists every place; the school opens its setup.
-  const fromHome = await openSwitcher(page, family.name, width < 1024);
+  const fromHome = await openSwitcher(page, family.name, true);
   const items = await fromHome.getByRole("menuitem").allInnerTexts();
   check(
     `${label} the switcher lists the family, own practice and the school`,
@@ -407,12 +414,16 @@ async function familyThenSchool(
   check(`${label} setup finishes`, finished.ok(), await finished.text());
   await page.reload();
   await page.getByRole("heading", { level: 1 }).first().waitFor();
-  const toSchool = await openSwitcher(page, family.name, width < 1024);
+  const toSchool = await openSwitcher(page, family.name, true);
   await choose(page, toSchool, new RegExp(school));
   await page.waitForURL(new RegExp(`/school/${issued.orgId}`));
   const schoolPath = path(page);
   await page.getByRole("heading", { level: 1 }).first().waitFor();
-  const fromSchool = await openSwitcher(page, school, width < 1024);
+  const fromSchool = await openSwitcher(page, school, true);
+  await fromSchool
+    .locator('[data-place^="class:"]')
+    .filter({ hasText: "Grade 5 Math" })
+    .waitFor();
   await measured(page, `${label} school switcher`);
   await shot(page, "school-switcher", width, theme);
   await page.keyboard.press("Escape");
@@ -425,7 +436,7 @@ async function familyThenSchool(
     path(page) === schoolPath,
     path(page),
   );
-  const back = await openSwitcher(page, school, width < 1024);
+  const back = await openSwitcher(page, school, true);
   await choose(page, back, family.named);
   await page.waitForURL(family.inClass);
   await page.goto(`${origin}/`);
@@ -496,7 +507,7 @@ async function practiceAndSchool(browser: Browser, width: number) {
   await page.waitForURL(inClass);
   await page.getByRole("heading", { level: 1 }).first().waitFor();
   const classPath = path(page);
-  const toSchool = await openSwitcher(page, family.name, width < 1024);
+  const toSchool = await openSwitcher(page, family.name, true);
   const items = await toSchool.getByRole("menuitem").allInnerTexts();
   // A parent whose child practices may also start their own practice.
   check(
@@ -515,7 +526,7 @@ async function practiceAndSchool(browser: Browser, width: number) {
   await page.goto(`${origin}/`);
   await page.waitForURL(new RegExp(`/school/${issued.orgId}`));
   // Back to the family's class, then Back and Forward between the two.
-  const back = await openSwitcher(page, school, width < 1024);
+  const back = await openSwitcher(page, school, true);
   await choose(page, back, new RegExp(family.name));
   await page.waitForURL(inClass);
   await page.goBack();
