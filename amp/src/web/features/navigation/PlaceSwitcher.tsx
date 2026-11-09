@@ -187,6 +187,7 @@ export function usePlaceEntries(me: SignedInMe | null, currentOrg?: string) {
     });
   return {
     entries,
+    currentOrg: current,
     loading:
       orgsQuery.isLoading ||
       currentQuery.isLoading ||

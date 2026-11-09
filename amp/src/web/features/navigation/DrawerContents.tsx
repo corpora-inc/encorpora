@@ -152,7 +152,7 @@ export default function DrawerContents({
     });
     close();
   }
-  const { entries: places } = usePlaceEntries(
+  const { entries: places, currentOrg } = usePlaceEntries(
     account,
     here?.kind === "class" || here?.kind === "school" ? here.org : undefined,
   );
@@ -311,6 +311,12 @@ export default function DrawerContents({
           nav("/access", "Your gift of AMP", "plans", {
             detail: `${account.availableAccessGrant.months === 12 ? "A year" : "A month"} of access is ready`,
           })}
+        {view.session.data &&
+          !student &&
+          here?.kind === "class" &&
+          (currentOrg?.kind === "family" ||
+            account?.familyClass?.classId === here.classId) &&
+          nav("/family", "Family", "class")}
         {view.session.data &&
           !student &&
           nav("/family/security", "Account", "settings", {

@@ -61,7 +61,7 @@ Media, videos and ads carry no price; they lead to the Buy button.
 - **Parent:**
   - The family class: Today lists the parent's children, each with access dates and "Let … practice here", plus a "From other families" list.
   - "Invite a co-teacher" (for example the other parent), with a copyable link. A co-teacher teaches the class but doesn't invite other families or buy access.
-  - The full class screens, as for any teacher (below).
+  - The full class screens, as for any teacher (below), plus Calendar in the class tab row and Family in the drawer for learners, purchases, consent and privacy.
   - `/family/…`: settings, consent and billing.
   - `/learners/$id/workbooks`: the learner’s workbook history, creation and results on the shared shell, without Progress tabs. The URL identifies the learner independently of the selection in Progress.
   - `/family/approvals/$id`: a parent approving another family's class.
@@ -76,7 +76,7 @@ Media, videos and ads carry no price; they lead to the Buy button.
   - `/standings`: only when their class turns standings on.
 - **Teacher:** `/school/$org/classes/$class/` has Today, Map, Grades (`gradebook`), Time, Workbooks, Students (`roster`) and Settings tabs in the shared app bar. Today’s **Start class** action opens the code and QR board (`start`). Grades opens `report-cards`; Students opens sign-in `cards` and student-experience settings (`experience`). Student records use `/school/$org/students/$student`. Past classes keep Grades and Time.
 - **Admin and district:**
-  - `/school/$org`: the overview. The shared bar has Overview, Classes, Staff, Calendar, License, Privacy and Activity tabs, filtered by the person’s access. Classes opens students, imports and student-experience settings; Staff opens sign-in help and integrations; Calendar opens year rollover.
+  - `/school/$org`: the overview. The shared bar has Overview, Classes, Staff, Calendar, License, Privacy and Activity tabs, filtered by the person’s access. Districts and networks also have a Schools tab. A one-class solo school omits Overview, Staff and Activity. Classes opens students, imports and student-experience settings; Staff opens sign-in help and integrations; Calendar opens year rollover.
   - `staff`, `calendar`, `experience`, `import`, `integrations`, `license`, `privacy`, `activity`, and `schools` for districts.
   - `/school/new?org=…`: guided setup, reached only from a setup invitation; without one it goes to `/schools`.
 

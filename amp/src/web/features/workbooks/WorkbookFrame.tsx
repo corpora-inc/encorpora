@@ -13,9 +13,8 @@ export type WorkbookLearner = { id: string; name: string } & WorkbookAccess & {
     freeWorkbooksNext: FreeWorkbooksNext;
   };
 
-/** Workbook content on AppShell, once the learner is known to belong to this
- * account with learning permission; workbook history does not depend on a
- * license. */
+/** Workbook content on AppShell for an account-owned learner with learning
+ * permission; workbook history does not depend on a license. */
 export function WorkbookFrame({
   session,
   learnerId,

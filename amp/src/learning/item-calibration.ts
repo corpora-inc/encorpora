@@ -48,7 +48,7 @@ export type EditorialCalibration = Readonly<
  * retrieval into arrays and stories; the frozen regression catalog keeps the
  * old entry with the old generator, in scripts/frontier/frozen-catalog.ts.) */
 export const editorialCalibration: EditorialCalibration = {
-  "count-objects@1": { offset: -0.1, discrimination: 1.8 },
+  "count-objects@2": { offset: -0.1, discrimination: 1.8 },
   "linear-equation@1": { offset: 0.1, discrimination: 1.6 },
   "divide-fractions@2": { offset: 0.1, discrimination: 1.6 },
 };

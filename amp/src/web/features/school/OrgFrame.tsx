@@ -103,11 +103,7 @@ export function OrgFrame({
             ["sign-in-help", "Sign-in help", "staff.read"],
             ["integrations", "Integrations", "integrations.read"],
           ]
-        : nav === "overview" || nav === "schools"
-          ? org.data.kind !== "school"
-            ? [["schools", "Schools", "overview.read"]]
-            : []
-          : [];
+        : [];
   const links = related.filter(
     ([path, , permission]) =>
       pathname !== `/school/${orgId}/${path}` && can.has(permission as never),

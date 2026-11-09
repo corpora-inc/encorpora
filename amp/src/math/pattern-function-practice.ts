@@ -5,6 +5,14 @@ import type {
   ProblemResponse,
   TemplateMetadata,
 } from "./contracts";
+import { nounFor } from "./agreement";
+import {
+  axisRecord,
+  chooseAxes,
+  defineAxis,
+  isLegacy,
+  type AxisSet,
+} from "./variation/axes";
 
 type Random = (low: number, high: number) => number;
 type Choice = { label: string; correct?: true; feedback?: string };
@@ -75,23 +83,25 @@ export const patternFunctionTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "compare-function-rates",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Compare two functions",
     skillId: "compare-functions",
     gradeBand: "6–8",
     description:
-      "Compare the rates of change and initial values of two linear functions given by a table, a graph, an equation or a description.",
+      "Compare the rates of change and initial values of two linear functions given by a table, a graph, an equation or a description. Also compare two proportional relationships shown in two different ways, including a distance-time graph and a distance-time equation.",
     ...choice,
     ...display,
   },
   {
     id: "linear-function-choice",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Linear or not linear",
     skillId: "compare-functions",
     gradeBand: "6–8",
     description:
-      "Decide which equation defines a linear function, including forms that are linear without looking like y = mx + b.",
+      "Decide which equation defines a linear function, including forms that are linear without looking like y = mx + b. Also say why a function given by three points is not linear. The square-area points (1, 1), (2, 4) and (3, 9) are one of those cases.",
     ...choice,
   },
 ];
@@ -905,6 +915,391 @@ function linearCase(r: Random): Case {
   };
 }
 
+/** Proportional pairs, including the required distance-time graph and equation.
+ * `affine` is the stored comparison of two lines with a nonzero start. */
+export const compareRateAxes = {
+  pair: defineAxis(
+    "pair",
+    ["affine", "speed-graph-equation", "proportional-other"] as const,
+    { legacy: "affine", silentLegacy: true, since: 2, weights: [2, 2, 3] },
+  ),
+} as const;
+/** Why three points are not linear. `square-area` is always in the grid:
+ * inputs 1, 2, 3 and A = s². Format B (select every nonlinear rule) is a
+ * different response kind, so it is not generated here. */
+export const linearChoiceAxes = {
+  judge: defineAxis(
+    "judge",
+    ["which-equation", "square-area", "other-nonlinear"] as const,
+    { legacy: "which-equation", silentLegacy: true, since: 2, weights: [2, 3, 2] },
+  ),
+} as const;
+
+function recordedAxes(
+  axes: AxisSet | undefined,
+  values: Readonly<Record<string, string>> | undefined,
+): Record<string, string> | undefined {
+  if (!axes || !values) return undefined;
+  const recorded: Record<string, string> = {};
+  for (const [key, value] of Object.entries(values)) {
+    const axis = axes[key];
+    if (axis?.silentLegacy && value === axis.legacy) continue;
+    recorded[key] = value;
+  }
+  return Object.keys(recorded).length ? recorded : undefined;
+}
+
+type PairValue = (typeof compareRateAxes.pair.values)[number];
+type JudgeValue = (typeof linearChoiceAxes.judge.values)[number];
+
+/** Largest-free tick: a divisor of `value` with at most 12 gridlines. */
+const tickStep = (value: number) => {
+  const min = Math.max(1, Math.ceil(value / 12));
+  for (let step = min; step <= value; step++)
+    if (value % step === 0) return step;
+  return value;
+};
+const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? "" : "s"}`;
+
+type PropRep = "graph" | "equation" | "table" | "sentence";
+type PropContext = {
+  id: "speed" | "price" | "fill";
+  a: string;
+  b: string;
+  unit: string;
+  ask: string;
+  xLabel: string;
+  yLabel: string;
+  xWord: string;
+  yWord: string;
+  eq: (m: number) => string;
+  sentence: (name: string, m: number, t: number) => string;
+  same: string;
+  by: (who: string, gap: number) => string;
+};
+const propContexts: Record<PropContext["id"], PropContext> = {
+  speed: {
+    id: "speed",
+    a: "Car A",
+    b: "Car B",
+    unit: "mph",
+    ask: "Which car is faster, and by how many miles per hour?",
+    xLabel: "hours",
+    yLabel: "miles",
+    xWord: "hours",
+    yWord: "miles",
+    eq: (m) => `$d = ${m}t$`,
+    sentence: (name, m, t) =>
+      `${name} travels ${m * t} miles in ${t} hours.`,
+    same: "They have the same speed",
+    by: (who, gap) => `${who}, by ${gap} mph`,
+  },
+  price: {
+    id: "price",
+    a: "Shop A",
+    b: "Shop B",
+    unit: "dollars",
+    ask: "Which shop charges more per item, and by how many dollars?",
+    xLabel: "items",
+    yLabel: "dollars",
+    xWord: "items",
+    yWord: "dollars",
+    eq: (m) => `$c = ${m}n$`,
+    sentence: (name, m, t) =>
+      `${name} charges ${m * t} ${nounFor(m * t, "dollar")} for ${t} items.`,
+    same: "They charge the same price",
+    by: (who, gap) => `${who}, by ${gap} ${nounFor(gap, "dollar")}`,
+  },
+  fill: {
+    id: "fill",
+    a: "Pump A",
+    b: "Pump B",
+    unit: "liters per minute",
+    ask: "Which pump fills faster, and by how many liters per minute?",
+    xLabel: "minutes",
+    yLabel: "liters",
+    xWord: "minutes",
+    yWord: "liters",
+    eq: (m) => `$w = ${m}t$`,
+    sentence: (name, m, t) =>
+      `${name} adds ${m * t} ${nounFor(m * t, "liter")} in ${t} minutes.`,
+    same: "They fill at the same rate",
+    by: (who, gap) => `${who}, by ${gap} ${nounFor(gap, "liter")} per minute`,
+  },
+};
+
+function proportionalCase(r: Random, pair: PairValue): Case {
+  const required = pair === "speed-graph-equation";
+  const context = required
+    ? propContexts.speed
+    : propContexts[pick(r, ["speed", "price", "fill"] as const)];
+  const lo = context.id === "speed" ? 30 : 2;
+  const hi = context.id === "speed" ? 60 : context.id === "price" ? 12 : 20;
+  const equal = r(0, 9) === 0;
+  const mA = r(lo, hi);
+  let mB = equal ? mA : r(lo, hi);
+  if (!equal) while (mB === mA) mB = r(lo, hi);
+  const pool: readonly (readonly [PropRep, PropRep])[] = [
+    ["table", "equation"],
+    ["graph", "sentence"],
+    ["table", "sentence"],
+    ["table", "graph"],
+    ["graph", "equation"],
+  ];
+  let [repA, repB] = required
+    ? (["graph", "equation"] as const)
+    : pick(r, pool);
+  if (
+    !required &&
+    context.id === "speed" &&
+    ((repA === "graph" && repB === "equation") ||
+      (repA === "equation" && repB === "graph"))
+  )
+    [repA, repB] = ["table", "equation"];
+  if (!required && r(0, 1) === 1) [repA, repB] = [repB, repA];
+  const rateOf = (name: "A" | "B") => (name === "A" ? mA : mB);
+  const who = (name: "A" | "B") => (name === "A" ? context.a : context.b);
+  const latticeX = 2;
+  const hours = () => r(2, 6);
+  const told: Record<"A" | "B", { text: string; sample: number }> = {
+    A: { text: "", sample: latticeX },
+    B: { text: "", sample: latticeX },
+  };
+  const figure: FunctionDisplayFigure = { kind: "function-display" };
+  const place = (name: "A" | "B", rep: PropRep) => {
+    const m = rateOf(name);
+    if (rep === "graph") {
+      const y = m * latticeX;
+      const yStep = tickStep(y);
+      const yMax = Math.max(yStep, Math.ceil(y / yStep) * yStep);
+      figure.graph = {
+        xLabel: context.xLabel,
+        yLabel: context.yLabel,
+        xMax: 8,
+        yMax,
+        xStep: 2,
+        yStep,
+        series: [
+          {
+            label: who(name),
+            points: [
+              { x: 0, y: 0 },
+              { x: latticeX, y },
+            ],
+            line: { rise: m, run: 1, b: 0 },
+          },
+        ],
+      };
+      told[name] = {
+        text: `${who(name)} is shown on the graph. Each horizontal gridline is ${plural(2, context.xWord.replace(/s$/, ""))}. Each vertical gridline is ${plural(yStep, context.yWord.replace(/s$/, ""))}.`,
+        sample: latticeX,
+      };
+      return;
+    }
+    if (rep === "table") {
+      const rows = [2, 5, 8].map((x) => ({ x, y: m * x }));
+      figure.table = {
+        title: who(name),
+        columns: [context.xLabel, context.yLabel],
+        rows,
+      };
+      told[name] = {
+        text: `${who(name)} is shown in the table.`,
+        sample: 5,
+      };
+      return;
+    }
+    if (rep === "equation") {
+      told[name] = {
+        text: `${who(name)} is given by ${context.eq(m)}.`,
+        sample: 4,
+      };
+      return;
+    }
+    const t = hours();
+    told[name] = {
+      text: context.sentence(who(name), m, t),
+      sample: t,
+    };
+  };
+  place("A", repA);
+  place("B", repB);
+  const diff = Math.abs(mA - mB);
+  const sample = told.A.sample;
+  const oneTime = diff * sample;
+  const winner: "A" | "B" = mA > mB ? "A" : "B";
+  const loser: "A" | "B" = winner === "A" ? "B" : "A";
+  const yShown = rateOf(repA === "graph" ? "A" : "B") * latticeX;
+  const fake = Math.abs(yShown - (equal ? mA : 0));
+  const heightGap = equal ? Math.max(yShown, fake, mA) : 0;
+  const rateGap = equal ? Math.max(mA * (latticeX - 1), 2) : 0;
+  const choices: Choice[] = equal
+    ? [
+        { label: context.same, correct: true },
+        {
+          label: context.by(context.a, rateGap),
+          feedback: `The outputs can differ at one input even when you misread a height. The unit rates are both ${mA}.`,
+        },
+        {
+          label: context.by(context.b, rateGap),
+          feedback: `Comparing a labeled height to a coefficient is not a rate gap. Both unit rates are ${mA}.`,
+        },
+        {
+          label: context.by(context.a, heightGap === rateGap ? heightGap + mA : heightGap),
+          feedback: `A labeled output is not the difference of the rates. Both rates equal ${mA}.`,
+        },
+      ]
+    : [
+        { label: context.by(who(winner), diff), correct: true },
+        {
+          label: context.by(who(loser), diff),
+          feedback: `The rates are ${mA} and ${mB}. The larger rate is ${who(winner)}, not ${who(loser)}.`,
+        },
+        {
+          label: context.by(who(winner), oneTime),
+          feedback: `At the input ${sample}, the outputs differ by ${oneTime}. That is the rate gap times ${sample}, not the rate gap.`,
+        },
+        {
+          label: context.same,
+          feedback: `Both pass through the origin. That is the same start, not the same rate. The rates are ${mA} and ${mB}.`,
+        },
+      ];
+  if (new Set(choices.map((c) => c.label)).size !== 4)
+    return proportionalCase(r, pair);
+  const read = (name: "A" | "B", rep: PropRep) => {
+    const m = rateOf(name);
+    if (rep === "graph")
+      return `The graph point (${latticeX}, ${m * latticeX}) gives ${m * latticeX} ÷ ${latticeX} = ${m}.`;
+    if (rep === "table")
+      return `Any table row works: output ÷ input = ${m}.`;
+    if (rep === "equation")
+      return `The equation multiplies by ${m}, so the unit rate is ${m}.`;
+    return `The sentence gives a total ÷ time = ${m}.`;
+  };
+  const prompt = `${told.A.text} ${told.B.text} ${context.ask}`;
+  const explanation = equal
+    ? [
+        "Through the origin, the unit rate is the slope.",
+        read("A", repA),
+        read("B", repB),
+        `Both rates equal ${mA} ${context.unit}. The same start does not decide the rate.`,
+        `Check at input 1: each relationship gives ${mA}.`,
+      ]
+    : [
+        "Through the origin, the unit rate is the slope.",
+        read("A", repA),
+        read("B", repB),
+        `${Math.max(mA, mB)} is greater than ${Math.min(mA, mB)}, so ${who(winner)} is ahead by ${diff} ${context.unit === "liters per minute" ? `${nounFor(diff, "liter")} per minute` : context.unit === "dollars" ? nounFor(diff, "dollar") : context.unit}.`,
+        `At input 1 the values are ${mA} and ${mB}. At input ${sample} the outputs differ by ${oneTime}, which is not the rate gap.`,
+      ];
+  return {
+    prompt,
+    hint: "Through the origin, divide one output by its input. Do that for each relationship, then subtract the two rates.",
+    choices,
+    explanation,
+    figure,
+    tags: [
+      pair,
+      context.id,
+      `${repA}-${repB}`,
+      equal ? "equal-rates" : "unequal-rates",
+    ],
+  };
+}
+
+type NonlinearSpec = {
+  story: string;
+  points: [number, number][];
+  rises: [number, number];
+  hasConstant: boolean;
+};
+function nonlinearSpec(r: Random, judge: JudgeValue): NonlinearSpec {
+  const skip = judge !== "square-area" && r(0, 4) === 0;
+  const xs = skip ? [1, 2, 4] : [1, 2, 3];
+  if (judge === "square-area") {
+    const points = xs.map((x) => [x, x * x] as [number, number]);
+    return {
+      story:
+        "The area $A$ of a square with side length $s$ is $A = s^2$.",
+      points,
+      rises: [points[1]![1] - points[0]![1], points[2]![1] - points[1]![1]],
+      hasConstant: false,
+    };
+  }
+  const kind = pick(r, ["square", "cube", "reciprocal", "power", "square-plus"] as const);
+  const c = r(1, 5);
+  const f =
+    kind === "square"
+      ? (x: number) => x * x
+      : kind === "cube"
+        ? (x: number) => x * x * x
+        : kind === "reciprocal"
+          ? (x: number) => 120 / x
+          : kind === "power"
+            ? (x: number) => 2 ** x
+            : (x: number) => x * x + c;
+  const points = xs.map((x) => [x, f(x)] as [number, number]);
+  const story =
+    kind === "square"
+      ? "The area $A$ of a square with side $s$ is $A = s^2$."
+      : kind === "cube"
+        ? "The volume $V$ of a cube with side $s$ is $V = s^3$."
+        : kind === "reciprocal"
+          ? "The time $t$, in hours, for 120 miles at $s$ miles per hour is $t = 120/s$."
+          : kind === "power"
+            ? "A colony doubles each hour. After $s$ hours its size is $y = 2^s$."
+            : `A square's area plus ${c} is $A = s^2 + ${c}$.`;
+  return {
+    story,
+    points,
+    rises: [points[1]![1] - points[0]![1], points[2]![1] - points[1]![1]],
+    hasConstant: kind === "square-plus",
+  };
+}
+function nonlinearCase(r: Random, judge: JudgeValue): Case {
+  const spec = nonlinearSpec(r, judge);
+  const [p, q, u] = spec.points;
+  const listed = `(${p![0]}, ${p![1]}), (${q![0]}, ${q![1]}) and (${u![0]}, ${u![1]})`;
+  const [d1, d2] = spec.rises;
+  const correct = `Its points ${listed} are not on one straight line. The output changes by ${d1}, then by ${d2}.`;
+  const noConstant = {
+    label: "Because it has no constant term added.",
+    feedback:
+      "A rule with no added constant can still be linear, such as y = 4s. The test is equal changes, not a missing constant.",
+  };
+  const instead = {
+    label: "Because the variable is used more than once.",
+    feedback:
+      "How many times the letter appears does not decide. Check whether equal input steps give equal output changes.",
+  };
+  const choices: Choice[] = [
+    { label: correct, correct: true },
+    spec.hasConstant ? instead : noConstant,
+    {
+      label: "Because the output changes as the input changes.",
+      feedback:
+        "A linear function can rise or fall too. What fails here is that the changes are not equal.",
+    },
+    {
+      label: "It is linear, because every input gives exactly one output.",
+      feedback:
+        "That is what makes it a function. A linear function also needs equal output changes for equal input steps.",
+    },
+  ];
+  return {
+    prompt: `${spec.story} The table shows ${listed}. Why is this not a linear function of the input?`,
+    hint: "Subtract consecutive outputs. A linear function changes by the same amount on equal input steps.",
+    choices,
+    explanation: [
+      "Linear means the same output change for each equal step of the input, so the points lie on one straight line.",
+      `The points are ${listed}. The changes are ${d1} and ${d2}. They are not equal.`,
+      "A straight line through the first two points misses the third.",
+      correct,
+    ],
+    tags: [judge, spec.hasConstant ? "with-constant" : "no-constant"],
+  };
+}
+
 const builders: Record<string, (r: Random) => Case> = {
   "rule-pattern-term": ruleTermCase,
   "rule-pattern-feature": featureCase,
@@ -933,7 +1328,30 @@ export function patternFunctionPrintCase(
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
   const r = random(id, seed);
-  const c = builders[id]!(r);
+  const surface =
+    id === "compare-function-rates"
+      ? compareRateAxes
+      : id === "linear-function-choice"
+        ? linearChoiceAxes
+        : undefined;
+  const rateValues =
+    id === "compare-function-rates"
+      ? chooseAxes(id, seed, compareRateAxes)
+      : undefined;
+  const choiceValues =
+    id === "linear-function-choice"
+      ? chooseAxes(id, seed, linearChoiceAxes)
+      : undefined;
+  const values = rateValues ?? choiceValues;
+  const c = rateValues
+    ? isLegacy(compareRateAxes, rateValues)
+      ? builders[id]!(r)
+      : proportionalCase(r, rateValues.pair)
+    : choiceValues
+      ? isLegacy(linearChoiceAxes, choiceValues)
+        ? builders[id]!(r)
+        : nonlinearCase(r, choiceValues.judge)
+      : builders[id]!(r);
   let response: ProblemResponse, answer: string;
   let choiceFeedback: Record<string, string> | undefined;
   if (c.choices) {
@@ -976,6 +1394,12 @@ export function patternFunctionPrintCase(
     hint: c.hint,
     ...(choiceFeedback ? { choiceFeedback } : {}),
   };
+  const recorded = recordedAxes(surface, values);
+  if (recorded)
+    problem.variant = {
+      id: Object.values(recorded).join("-"),
+      axes: axisRecord(recorded),
+    };
   return {
     problem,
     tags: c.tags,
