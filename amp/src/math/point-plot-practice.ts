@@ -5,6 +5,7 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { random, shuffle, type Random } from "./distribution-practice";
+import { axisRecord, chooseAxes, defineAxis, isLegacy } from "./variation/axes";
 import {
   latticeOnLine,
   lineThrough,
@@ -36,13 +37,14 @@ export const pointPlotTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "graph-linear-equation",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Graph a line from its equation",
     skillId: "slope",
     gradeBand: "6–8",
     ...plot,
     description:
-      "Graph a line by placing two of its lattice points, from slope-intercept, standard or point-slope form, a horizontal line, or a proportional relationship through the origin.",
+      "Graph a line by placing two of its lattice points, from slope-intercept, standard or point-slope form, a horizontal line, or a proportional relationship through the origin. Also graph a linear model on quantity-labeled axes whose gridline step is 1 or 2.",
   },
   {
     id: "place-transformed-image",
@@ -92,7 +94,7 @@ function problemOf(
   return {
     public: {
       id: createHash("sha256")
-        .update(JSON.stringify([meta.id, meta.version, seed]))
+        .update(JSON.stringify([meta.id, meta.reprintsFrom ?? meta.version, seed]))
         .digest("hex"),
       templateId: meta.id,
       templateVersion: 1,
@@ -321,8 +323,131 @@ type LineForm =
   | "point-slope"
   | "proportional"
   | "horizontal";
+
+/** Quantity-labeled axes. `abstract` is the stored unit-grid line.
+ * Independent dollar and month scales do not fit point-plot-v1: one step,
+ * at most 5, and coordinates from -20 to 20. Step 1 or 2 keeps the grid
+ * hard to guess and still names what one gridline is worth. */
+export const modelGraphAxes = {
+  model: defineAxis("model", ["abstract", "scaled-context"] as const, {
+    legacy: "abstract",
+    silentLegacy: true,
+    since: 2,
+    weights: [2, 1],
+  }),
+};
+
+function modelGraph(meta: TemplateMetadata, seed: string): GeneratedProblem {
+  const r = random(`${meta.id}:model`, seed);
+  const setups = [
+    {
+      step: 1,
+      span: 12,
+      b: 3,
+      slope: 2,
+      xLabel: "months (m)",
+      yLabel: "cost (dollars)",
+      xUnit: "month",
+      yUnit: "dollar",
+      letter: "m",
+      out: "C",
+      story: "A gym charges a 3-dollar joining fee plus 2 dollars a month.",
+    },
+    {
+      step: 2,
+      span: 20,
+      b: 4,
+      slope: 2,
+      xLabel: "weeks (w)",
+      yLabel: "height (cm)",
+      xUnit: "week",
+      yUnit: "centimeter",
+      letter: "w",
+      out: "H",
+      story: "A plant starts 4 centimeters tall and grows 2 centimeters a week.",
+    },
+    {
+      step: 2,
+      span: 20,
+      b: 6,
+      slope: 2,
+      xLabel: "minutes (t)",
+      yLabel: "liters (L)",
+      xUnit: "minute",
+      yUnit: "liter",
+      letter: "t",
+      out: "L",
+      story: "A tank starts with 6 liters and gains 2 liters each minute.",
+    },
+    {
+      step: 1,
+      span: 12,
+      b: 8,
+      slope: -2,
+      xLabel: "hours (h)",
+      yLabel: "fuel (liters)",
+      xUnit: "hour",
+      yUnit: "liter",
+      letter: "h",
+      out: "F",
+      story: "A tank holds 8 liters of fuel and burns 2 liters each hour.",
+    },
+  ] as const;
+  const s = setups[r(0, setups.length - 1)]!;
+  const grid: PointPlotGrid = {
+    xMin: 0,
+    xMax: s.span,
+    yMin: 0,
+    yMax: s.span,
+    step: s.step,
+    xLabel: s.xLabel,
+    yLabel: s.yLabel,
+  };
+  const line = lineThrough(
+    [0, s.b],
+    [s.step, s.b + s.slope * s.step],
+  );
+  const onLine = latticeOnLine(grid, line);
+  if (onLine.length < 4) throw new Error("Model line needs four lattice points");
+  const equation =
+    s.slope < 0
+      ? `${s.out} = ${s.b} - ${-s.slope}${s.letter}`
+      : `${s.out} = ${s.b} + ${s.slope}${s.letter}`;
+  const [first, second] = [onLine[0]!, onLine[1]!];
+  const unit = (n: number, word: string) =>
+    `${n} ${word}${n === 1 ? "" : "s"}`;
+  return problemOf(meta, seed, {
+    prompt: `${s.story} The relationship is $${equation}$. Graph it by placing 2 points on its line. Each horizontal gridline is ${unit(s.step, s.xUnit)}. Each vertical gridline is ${unit(s.step, s.yUnit)}.`,
+    response: {
+      kind: "point-plot",
+      label: "Place 2 points on the line",
+      grid,
+      pointCount: 2,
+      ordered: false,
+      connect: "line",
+    },
+    answer: [first, second],
+    grading: { mode: "on-line", ...line },
+    hint: `At 0 ${s.xUnit}s the value is the starting amount, ${s.b}. Each vertical gridline is ${unit(s.step, s.yUnit)}, so count gridlines for that start. Then use the change per ${s.xUnit}.`,
+    explanation: [
+      `The start is ${pointTex([0, s.b])}: 0 ${s.xUnit}s and ${s.b} ${s.yUnit}s.`,
+      `Each vertical gridline is ${unit(s.step, s.yUnit)}, so ${s.b} is not ${s.b} gridlines up.`,
+      `From ${pointTex(first)} the change per ${s.xUnit} is ${s.slope}. The next lattice point is ${pointTex(second)}.`,
+      `Check: the equation gives ${s.b + s.slope * second[0]} at ${s.letter} = ${second[0]}.`,
+    ],
+  });
+}
+
 function graphLinearEquation(seed: string): GeneratedProblem {
   const meta = pointPlotTemplates[1]!;
+  const axes = chooseAxes(meta.id, seed, modelGraphAxes);
+  if (!isLegacy(modelGraphAxes, axes)) {
+    const problem = modelGraph(meta, seed);
+    return {
+      ...problem,
+      variant: { id: "scaled-context", axes: axisRecord(axes) },
+    };
+  }
   const r = random(meta.id, seed);
   // Slope-intercept is the usual first form; a horizontal line is the
   // boundary case of slope 0.

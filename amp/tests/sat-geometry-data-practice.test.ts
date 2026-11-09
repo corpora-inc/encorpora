@@ -78,6 +78,7 @@ const expected: Record<string, { skill: string; tags: string[] }> = {
       "relation-2x2",
       "expected-both",
       "conditional-meaning",
+      "both-directions",
     ],
   },
 };
@@ -283,7 +284,7 @@ test("answers agree with an independent recomputation from the stated givens", (
       assert.equal(match.length, 1, seed);
       assert.equal(t.correct, match[0]!.label);
       checked++;
-    } else {
+    } else if (!t.g.public.prompt.includes("Check both directions")) {
       const [a, b] = body as [any, any];
       const N = total[2]!,
         joint = a.cells[0],
@@ -370,4 +371,46 @@ test("expected-count surveys state whole numbers of people", () => {
       for (const count of match.slice(1))
         assert.ok(Number.isInteger(Number(count)), prompt);
   }
+});
+
+test("both directions: the two equalities agree, and version 1 keeps the old prompt", () => {
+  let seen = 0;
+  for (let i = 0; i < 200; i++) {
+    const old = generateProblem("independence-test", `both:${i}`, 1);
+    assert.equal(old.public.prompt.includes("Check both directions"), false);
+    const problem = generateProblem("independence-test", `both:${i}`);
+    if (!problem.public.prompt.includes("Check both directions")) continue;
+    seen++;
+    assert.equal(problem.variant?.id, "both-directions");
+    assert.equal(problem.public.response.kind, "choice");
+    const counts =
+      /(\d+) are in both \$A\$ and \$B\$, (\d+) are in \$A\$ only, (\d+) are in \$B\$ only, and (\d+) are in neither/.exec(
+        problem.public.prompt,
+      )!;
+    const n = Number(/group of (\d+)/.exec(problem.public.prompt)![1]);
+    const both = Number(counts[1]);
+    const aOnly = Number(counts[2]);
+    const bOnly = Number(counts[3]);
+    const row = both + aOnly;
+    const col = both + bOnly;
+    assert.notEqual(row, col);
+    const independent = both * n === row * col;
+    const response = problem.public.response;
+    if (response.kind !== "choice") continue;
+    const correct = response.options.find((o) => o.id === problem.answer)!.label;
+    assert.equal(
+      correct.includes("independent."),
+      independent,
+    );
+    assert.equal(correct.includes("Neither"), !independent);
+    assert.equal(
+      response.options.some((o) => o.label.includes("but $B$ depends")),
+      true,
+    );
+    assert.equal(problem.hint.includes(correct), false);
+    for (const text of [problem.public.prompt, problem.hint, ...problem.explanation, ...response.options.map((o) => o.label)])
+      for (const sentence of text.split(/(?<=[.!?])\s+/))
+        assert.ok(sentence.split(/\s+/).length <= 35, sentence);
+  }
+  assert.ok(seen > 20);
 });

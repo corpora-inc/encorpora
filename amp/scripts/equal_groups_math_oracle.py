@@ -145,6 +145,20 @@ def solve_equal_groups(public):
         require(rows <= 5 and columns <= 5 and split is None, 'Small-array scope or partition mismatch')
         return sum(columns for _ in range(rows))
     if template == 'pairing-leftover':
+        if prompt == 'Count the cups by 2s. How many cups are there?':
+            require(figure and figure['kind'] == 'grouped-counters', 'The cups are shown in pairs')
+            grouped(figure, figure['total'], 2, 'cups')
+            require(5 <= figure['total'] <= 16, 'Counting by twos shows 5 to 16 cups')
+            return figure['total']
+        named = re.fullmatch(r'Put the (\d+) cups? into pairs\. How many are left without a partner\?', prompt)
+        if named:
+            total = int(named.group(1))
+            require(1 <= total <= 20, 'Pairing scope is one through twenty')
+            if figure is not None:
+                grouped(figure, total, 2, 'cups')
+            else:
+                require(total > 16, 'A small group of cups is shown')
+            return total % 2
         total, = counts(r'Put ([0-9]+) counters into pairs\. How many counters will be left without a partner\?', prompt)
         require(1 <= total <= 20, 'Pairing scope is one through twenty')
         if figure is not None:

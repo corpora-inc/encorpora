@@ -7,7 +7,7 @@ import {
 } from "./distribution-practice";
 import { scene, table, graph, f } from "./scene/author";
 import { dataGraph } from "./algebra-statistics-scenes";
-import { defineAxis, type AxisValues } from "./variation/axes";
+import { defineAxis, versionGatedAxes, type AxisValues } from "./variation/axes";
 import { generateWithAxes } from "./variation/legacy";
 
 /** Surface axes of the SAT-completion families that share one model across
@@ -98,6 +98,22 @@ export const satCompletionExtraAxes = {
      * acceleration whose time unit is squared. */
     rate: defineAxis("rate", ["mixed", "squared-time"], { legacy: "mixed" }),
   },
+  /** `combine` is the stored add, subtract or multiply task. Division and
+   * the closure sentence are later surfaces; a version-1 reprint stays on
+   * combine and does not record the axis. */
+  "rational-expression-operation": {
+    task: defineAxis(
+      "task",
+      [
+        "combine",
+        "divide",
+        "twin-value",
+        "letter-result",
+        "closure-statement",
+      ] as const,
+      { legacy: "combine", silentLegacy: true, since: 2 },
+    ),
+  },
 } as const;
 type SatAxes = Record<string, string>;
 const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
@@ -182,7 +198,7 @@ const definitions = [
     "rational-expression-operation",
     "Combine rational expressions",
     "rational-expressions",
-    "Add, subtract, or multiply rational expressions while retaining excluded inputs.",
+    "Add, subtract, multiply or divide rational expressions, and see that the result stays in that system.",
   ],
   [
     "nonlinear-data-model",
@@ -216,7 +232,8 @@ export const satCompletionTemplates: readonly TemplateMetadata[] =
     title,
     skillId,
     description,
-    version: 1,
+    version: id === "rational-expression-operation" ? 2 : 1,
+    ...(id === "rational-expression-operation" ? { reprintsFrom: 1 as const } : {}),
     gradeBand: "9–12",
     ...(!numeric.has(id)
       ? { requiredResponseCapability: "single-choice-v1" as const }
@@ -247,6 +264,155 @@ const piMultiple = (numerator: number, denominator: number) => {
   const [n, d] = q.split("/");
   return d ? `\\frac{${n}\\pi}{${d}}` : `${n}\\pi`;
 };
+const lin = (k: number) => (k > 0 ? `x+${k}` : `x-${-k}`);
+const excludedList = (values: number[]) => `\\{${values.join(",")}\\}`;
+const withExcluded = (expr: string, values: number[]) =>
+  `$${expr}$, excluded $${excludedList(values)}$`;
+const fracOf = (num: string, den: string) => `\\frac{${num}}{${den}}`;
+/** Shared-factor or difference-of-squares division, with the exclusion set
+ * in every choice. a, b and c are nonzero and distinct. */
+export function rationalDivideModel(
+  a: number,
+  b: number,
+  c: number,
+  squares: boolean,
+): { prompt: string; correct: string; distractors: [string, string, string] } {
+  const top = squares
+    ? fracOf(`x^{2}-${a * a}`, lin(b))
+    : fracOf(lin(a), lin(b));
+  const bottom = squares
+    ? fracOf(lin(-a), lin(c))
+    : fracOf(lin(a), lin(c));
+  const answer = squares
+    ? fracOf(`(${lin(a)})(${lin(c)})`, lin(b))
+    : fracOf(lin(c), lin(b));
+  const holes = squares ? [-b, -c, a] : [-b, -c, -a];
+  const denomHoles = [-b, -c];
+  const multiplied = squares
+    ? fracOf(`(x^{2}-${a * a})(${lin(-a)})`, `(${lin(b)})(${lin(c)})`)
+    : fracOf(`(${lin(a)})^{2}`, `(${lin(b)})(${lin(c)})`);
+  const flipped = squares
+    ? fracOf(lin(b), `(${lin(-a)})(${lin(c)})`)
+    : fracOf(lin(b), lin(c));
+  return {
+    prompt: `Which expression equals $${top}\\div${bottom}$ for all allowed inputs? State every excluded value.`,
+    correct: withExcluded(answer, holes),
+    distractors: [
+      withExcluded(multiplied, denomHoles),
+      withExcluded(answer, denomHoles),
+      withExcluded(flipped, squares ? holes : denomHoles),
+    ],
+  };
+}
+const CLOSURE_TRUE =
+  "$P+Q$, $P-Q$ and $PQ$ are always rational expressions, and $P\\div Q$ is one whenever $Q$ is not the zero expression.";
+const CLOSURE_WRONG = [
+  "$P\\div Q$ is a rational expression for every $Q$, because flipping never leaves the system.",
+  "$P-Q$ can fail to be rational when it simplifies to a polynomial such as $x+2$, since a polynomial is not a fraction.",
+  "$P+Q$ is a rational expression only when $P$ and $Q$ already share a denominator.",
+] as const;
+function reduced(n: number, d: number): [number, number] {
+  if (d < 0) [n, d] = [-n, -d];
+  const g = gcd(Math.abs(n), d) || 1;
+  return [n / g, d / g];
+}
+function sameFraction(a: [number, number], b: [number, number]) {
+  return a[0] * b[1] === b[0] * a[1];
+}
+function closureNumbers(
+  op: "+" | "−" | "×" | "÷",
+  k: number,
+  s: number,
+  n: number,
+): [number, number] {
+  if (op === "+") return reduced(k * (2 * n + s), n * (n + s));
+  if (op === "−") return reduced(k * s, n * (n + s));
+  if (op === "×") return reduced(n + s, n);
+  return reduced(k, n + s);
+}
+function closureExprs(op: "+" | "−" | "×" | "÷", k: number, s: number) {
+  const letter =
+    op === "+"
+      ? `\\frac{${k}}{x}+\\frac{${k}}{x+${s}}`
+      : op === "−"
+        ? `\\frac{${k}}{x}-\\frac{${k}}{x+${s}}`
+        : op === "×"
+          ? `\\frac{${k}}{x}\\cdot\\frac{x+${s}}{${k}}`
+          : `\\frac{x}{x+${s}}\\div\\frac{x}{${k}}`;
+  const simplified =
+    op === "+"
+      ? `\\frac{${2 * k}x+${k * s}}{x(x+${s})}`
+      : op === "−"
+        ? `\\frac{${k * s}}{x(x+${s})}`
+        : op === "×"
+          ? `\\frac{x+${s}}{x}`
+          : `\\frac{${k}}{x+${s}}`;
+  const wrong =
+    op === "+"
+      ? [
+          `\\frac{${2 * k}}{2x+${s}}`,
+          `\\frac{${2 * k}x+${k * s}}{x+${s}}`,
+          `\\frac{${k}x+${k * (s + 1)}}{x(x+${s})}`,
+        ]
+      : op === "−"
+        ? [
+            `\\frac{0}{2x+${s}}`,
+            `\\frac{${k * s}}{x+${s}}`,
+            `\\frac{${k}}{x(x+${s})}`,
+          ]
+        : op === "×"
+          ? [
+              `\\frac{x+${s}}{${k}}`,
+              `\\frac{${k}}{x(x+${s})}`,
+              `x+${s}`,
+            ]
+          : [
+              `\\frac{x^{2}}{${k}(x+${s})}`,
+              `\\frac{x+${s}}{${k}}`,
+              `\\frac{${k}x}{x+${s}}`,
+            ];
+  return { letter, simplified, wrong };
+}
+function closureAt(
+  op: "+" | "−" | "×" | "÷",
+  k: number,
+  s: number,
+  n: number,
+  which: "answer" | 0 | 1 | 2,
+): [number, number] {
+  if (which === "answer") return closureNumbers(op, k, s, n);
+  if (op === "+") {
+    const nums: [number, number][] = [
+      reduced(2 * k, 2 * n + s),
+      reduced(k * (2 * n + s), n + s),
+      reduced(k * n + k * (s + 1), n * (n + s)),
+    ];
+    return nums[which]!;
+  }
+  if (op === "−") {
+    const nums: [number, number][] = [
+      [0, 1],
+      reduced(k * s, n + s),
+      reduced(k, n * (n + s)),
+    ];
+    return nums[which]!;
+  }
+  if (op === "×") {
+    const nums: [number, number][] = [
+      reduced(n + s, k),
+      reduced(k, n * (n + s)),
+      reduced(n + s, 1),
+    ];
+    return nums[which]!;
+  }
+  const nums: [number, number][] = [
+    reduced(n * n, k * (n + s)),
+    reduced(n + s, k),
+    reduced(k * n, n + s),
+  ];
+  return nums[which]!;
+}
+
 function draft(
   id: string,
   r: ReturnType<typeof random>,
@@ -804,8 +970,10 @@ function draft(
     const n = r(2, 5),
       m = r(1, n - 1),
       mode = r(0, 1),
+      radicalTex = (index: number, power: number) =>
+        `\\sqrt${index === 2 ? "" : `[${index}]`}{${power === 1 ? "x" : `x^{${power}}`}}`,
       expression =
-        mode === 0 ? `\\sqrt[${n}]{x^{${m}}}` : `1/\\sqrt[${n}]{x^{${m}}}`,
+        mode === 0 ? radicalTex(n, m) : `1/${radicalTex(n, m)}`,
       exponent = rational(mode === 0 ? m : -m, n);
     if (axes.direction === "power-to-radical") {
       // The exponent is given; the equivalent radical may use a scaled index and power.
@@ -849,7 +1017,7 @@ function draft(
         "For a positive base, an nth root is a power of 1/n; a reciprocal negates the exponent.",
       ),
       explanation: [
-        `For $x>0$, $\\sqrt[${n}]{x^{${m}}}=x^{${rational(m, n)}}$.`,
+        `For $x>0$, $${radicalTex(n, m)}=x^{${rational(m, n)}}$.`,
         mode === 0
           ? `The equivalent expression is $x^{${exponent}}$.`
           : `Taking the reciprocal gives $x^{${exponent}}$.`,
@@ -857,6 +1025,158 @@ function draft(
     };
   }
   if (id === "rational-expression-operation") {
+    const task = axes.task ?? "combine";
+    if (task === "divide") {
+      const squares = r(0, 2) === 0;
+      const pool = squares
+        ? [-4, -3, -2, -1, 1, 2, 3, 4]
+        : [-6, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 6];
+      let a = 0,
+        b = 0,
+        c = 0,
+        model = rationalDivideModel(2, -3, 1, false);
+      for (let attempt = 0; attempt < 40; attempt++) {
+        const bag = [...pool];
+        const take = () => bag.splice(r(0, bag.length - 1), 1)[0]!;
+        a = take();
+        b = take();
+        c = take();
+        if (squares && (a + b === 0 || a + c === 0)) continue;
+        model = rationalDivideModel(a, b, c, squares);
+        if (new Set([model.correct, ...model.distractors]).size === 4) break;
+      }
+      const safe = [0, 1, -4, 4, 5, -5, 6].find(
+        (x) =>
+          x + b !== 0 &&
+          x + c !== 0 &&
+          (squares ? x !== a : x + a !== 0) &&
+          (squares ? x - a !== 0 : x + a !== 0),
+      );
+      if (safe === undefined) throw new Error("Need a safe check value");
+      const top = squares ? safe * safe - a * a : safe + a;
+      const bot = safe + b;
+      const divTop = squares ? safe - a : safe + a;
+      const divBot = safe + c;
+      const simpleTop = squares ? (safe + a) * (safe + c) : safe + c;
+      const simpleBot = safe + b;
+      // (top/bot) / (divTop/divBot) = simpleTop/simpleBot
+      if (top * divBot * simpleBot !== divTop * bot * simpleTop)
+        throw new Error("Division identity failed");
+      if (new Set([model.correct, ...model.distractors]).size !== 4)
+        throw new Error("Need three distinct division choices");
+      return {
+        prompt: model.prompt,
+        answer: "",
+        hint: "A divisor has to be a nonzero expression, so keep every input that makes its numerator 0. Then multiply by the reciprocal and cancel.",
+        choices: choices(
+          [model.correct, ...model.distractors],
+          "Dividing by a fraction multiplies by its reciprocal. Canceling a factor does not remove the input that made that factor 0.",
+        ),
+        explanation: [
+          `The divisor must be nonzero, and neither denominator may be 0. Those inputs are excluded even after a factor cancels.`,
+          squares
+            ? `Multiply by the reciprocal, then cancel $x-${a > 0 ? a : `(${a})`}$ from the difference of squares. The hole stays.`
+            : `Multiply by the reciprocal of the divisor, then cancel the shared factor $${lin(a)}$. The hole at that factor stays.`,
+          `The quotient is ${model.correct.split(",")[0]}. Check it at $x=${safe}$.`,
+        ],
+      };
+    }
+    if (
+      task === "twin-value" ||
+      task === "letter-result" ||
+      task === "closure-statement"
+    ) {
+      const ops = ["+", "−", "×", "÷"] as const;
+      for (let attempt = 0; attempt < 50; attempt++) {
+        const op = pickOps();
+        function pickOps() {
+          return ops[r(0, 3)]!;
+        }
+        const k = r(2, 9),
+          s = r(1, 6),
+          n = r(2, 7);
+        const twin = closureNumbers(op, k, s, n);
+        if (twin[1] === 1) continue;
+        const values = [
+          twin,
+          closureAt(op, k, s, n, 0),
+          closureAt(op, k, s, n, 1),
+          closureAt(op, k, s, n, 2),
+        ];
+        if (values.some((v, i) => values.slice(i + 1).some((w) => sameFraction(v, w))))
+          continue;
+        const exprs = closureExprs(op, k, s);
+        if (new Set([exprs.simplified, ...exprs.wrong]).size !== 4) continue;
+        const letterAt = closureNumbers(op, k, s, n);
+        if (!sameFraction(letterAt, twin))
+          throw new Error("The letter result does not match the numeric twin");
+        const twinTex =
+          twin[1] === 1 ? String(twin[0]) : `\\frac{${twin[0]}}{${twin[1]}}`;
+        const numeric =
+          op === "+"
+            ? `\\frac{${k}}{${n}}+\\frac{${k}}{${n + s}}`
+            : op === "−"
+              ? `\\frac{${k}}{${n}}-\\frac{${k}}{${n + s}}`
+              : op === "×"
+                ? `\\frac{${k}}{${n}}\\cdot\\frac{${n + s}}{${k}}`
+                : `\\frac{${n}}{${n + s}}\\div\\frac{${n}}{${k}}`;
+        if (task === "twin-value")
+          return {
+            prompt: `Which number equals $${numeric}$?`,
+            answer: "",
+            hint: `Use ${n} and ${n + s} as the denominators. ${op === "×" || op === "÷" ? "Multiply by the reciprocal when you see division, and cancel a common factor." : "Add or subtract only after both fractions share the product of the denominators."}`,
+            choices: choices(
+              [twinTex, ...exprs.wrong.map((_, i) => {
+                const v = closureAt(op, k, s, n, i as 0 | 1 | 2);
+                return v[0] === 0 ? `\\frac{0}{${n + (n + s)}}` : `\\frac{${v[0]}}{${v[1]}}`;
+              })].map((s) => math(s.startsWith("\\") ? s : s)),
+              "Combine the fractions the way you would combine number fractions. Do not add the denominators.",
+            ),
+            explanation: [
+              `Substitute the same denominators the letter problem uses: $${numeric}$.`,
+              `The value in lowest terms is $${twinTex}$.`,
+              `At this input the letter result agrees, which is the closure check for this draw.`,
+            ],
+          };
+        if (task === "letter-result")
+          return {
+            prompt: `Which expression equals $${exprs.letter}$ for all allowed $x$?`,
+            answer: "",
+            hint: `The denominators are $x$ and $x+${s}$. ${op === "÷" ? "Multiply by the reciprocal of the divisor, then cancel." : op === "×" ? "Multiply the numerators and the denominators, then cancel the common factor." : "Use their product as the common denominator before combining the numerators."}`,
+            choices: choices(
+              [exprs.simplified, ...exprs.wrong].map(math),
+              "Combine like number fractions. Canceling a factor does not change the excluded inputs.",
+            ),
+            explanation: [
+              `Work the letters the same way as the numbers $${numeric}$.`,
+              `The combined expression is $${exprs.simplified}$.`,
+              `At $x=${n}$ it equals $${twinTex}$, the same value as the numeric twin.`,
+            ],
+          };
+        if (
+          CLOSURE_TRUE.length > 120 ||
+          CLOSURE_WRONG.some((line) => line.length > 120)
+        )
+          throw new Error("Closure statement exceeds 120 characters");
+        return {
+          prompt: `You simplified $${numeric}$ to $${twinTex}$ and $${exprs.letter}$ to $${exprs.simplified}$. Both results are a polynomial over a polynomial. Which statement is true for every pair of rational expressions $P$ and $Q$?`,
+          answer: "",
+          hint: "A rational expression is one polynomial divided by another. The operation that can fail is division, and only when the divisor is the zero expression.",
+          choices: choices(
+            [CLOSURE_TRUE, ...CLOSURE_WRONG],
+            "Rational expressions stay rational under the four operations, with one exception: you cannot divide by the zero expression.",
+          ),
+          explanation: [
+            `The numeric twin is $${twinTex}$ and the letter result is $${exprs.simplified}$. Each is a polynomial over a polynomial.`,
+            `At $x=${n}$ the letter result equals the numeric twin.`,
+            `That is true for addition, subtraction and multiplication of any two rational expressions.`,
+            `Division stays in the system only when the divisor is not the zero expression, for numbers and for letters.`,
+            `$x+2=\\frac{x+2}{1}$, so a polynomial is still a rational expression.`,
+          ],
+        };
+      }
+      throw new Error("Need three distinct closure choices");
+    }
     const a = r(2, 7),
       b = r(2, 7),
       c = r(1, 6),
@@ -1111,9 +1431,26 @@ export function generateSatCompletionProblem(
       Record<string, ReturnType<typeof defineAxis>>
     >
   )[id];
-  return axes
+  const problem = axes
     ? generateWithAxes(id, seed, axes, (values: AxisValues<typeof axes>) =>
         build(values),
       )
     : build({});
+  if (id !== "rational-expression-operation") return problem;
+  const gated = versionGatedAxes().some((axis) => axis.id === "task");
+  const task = problem.variant?.axes?.task;
+  const silent = task === undefined || task === "combine";
+  const printed = silent
+    ? (() => {
+        const { variant: _variant, ...rest } = problem;
+        return rest;
+      })()
+    : problem;
+  return {
+    ...printed,
+    public: {
+      ...printed.public,
+      templateVersion: gated ? 1 : meta.version,
+    },
+  };
 }

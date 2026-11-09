@@ -4,7 +4,7 @@ import { lessons } from "../src/content/lessons";
 import { templates } from "../src/math/engine";
 import type { startShellFixture } from "./app-shell-fixture";
 import { settle } from "./app-shell-probe";
-import { navigateApp } from "./ui-controls";
+import { choose, navigateApp } from "./ui-controls";
 
 type Box = { x: number; y: number; width: number; height: number } | null;
 /** Two boxes in the same place, to half a pixel. */
@@ -22,6 +22,112 @@ const boxOf = async (page: Page, selector: string) => {
   const found = page.locator(selector).first();
   return (await found.count()) ? found.boundingBox() : null;
 };
+/** "870 lessons · 1,189 problem types": every count uses en-US grouping. */
+const groupedCatalog =
+  /^\d{1,3}(?:,\d{3})* lessons · \d{1,3}(?:,\d{3})* problem types$/;
+async function assertGroupedCatalog(page: Page, tag: string) {
+  const text = (await page.locator(".lesson-index [role=status]").innerText())
+    .replace(/\s+/g, " ")
+    .trim();
+  assert.match(
+    text,
+    groupedCatalog,
+    `${tag}: lesson counts are not grouped (${text})`,
+  );
+}
+const channel = (v: number) => {
+  const c = v / 255;
+  return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+};
+const contrastRatio = (a: string, b: string) => {
+  const parse = (css: string) => css.match(/[\d.]+/g)?.slice(0, 3).map(Number);
+  const left = parse(a),
+    right = parse(b);
+  if (!left || !right || left.length < 3 || right.length < 3) return 0;
+  const lum = (rgb: number[]) =>
+    0.2126 * channel(rgb[0]!) +
+    0.7152 * channel(rgb[1]!) +
+    0.0722 * channel(rgb[2]!);
+  const x = lum(left),
+    y = lum(right);
+  return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05);
+};
+/** Area picker stays put, the selected segment is distinct, and the summary
+ * does not leave one word on its last line. */
+export async function assertProgressPolish(page: Page, tag: string) {
+  const problems: string[] = [];
+  const selected = await page.locator(".progress-filters").evaluate((root) => {
+    const button = root.querySelector('[aria-pressed="true"]');
+    return {
+      track: getComputedStyle(root).backgroundColor,
+      fill: button ? getComputedStyle(button).backgroundColor : "",
+    };
+  });
+  const ratio = contrastRatio(selected.track, selected.fill);
+  if (selected.fill === "" || selected.track === selected.fill || ratio < 1.5)
+    problems.push(
+      `selected segment ${selected.fill} on ${selected.track} is ${ratio.toFixed(2)}:1`,
+    );
+  const picker = page.locator(".progress-controls .premium-select");
+  const before = (await picker.boundingBox())?.width ?? 0;
+  await choose(picker, "data");
+  await page.getByRole("dialog", { name: "Math area" }).waitFor({
+    state: "hidden",
+  });
+  await picker.locator("span", { hasText: /^Data$/ }).waitFor();
+  const after = (await picker.boundingBox())?.width ?? 0;
+  if (Math.abs(before - after) > 0.5)
+    problems.push(
+      `area picker ${before.toFixed(1)}px → ${after.toFixed(1)}px after choosing Data`,
+    );
+  // The fixed width has to hold the longest name on a wide screen.
+  await choose(picker, "modeling");
+  await page.getByRole("dialog", { name: "Math area" }).waitFor({
+    state: "hidden",
+  });
+  const longest = await picker.locator("span").first().evaluate((el) => ({
+    text: el.textContent ?? "",
+    clipped: el.scrollWidth > el.clientWidth + 1,
+    wide: window.innerWidth >= 1000,
+  }));
+  if (longest.wide && (longest.clipped || longest.text !== "Mathematical models"))
+    problems.push(
+      `longest area “${longest.text}” ${longest.clipped ? "is clipped" : "was not selected"}`,
+    );
+  await choose(picker, "");
+  await page.getByRole("dialog", { name: "Math area" }).waitFor({
+    state: "hidden",
+  });
+  const summary = await page.locator(".progress-heading p").evaluate((el) => {
+    const wrap =
+      getComputedStyle(el).getPropertyValue("text-wrap").trim() ||
+      getComputedStyle(el).textWrap;
+    const node = el.firstChild;
+    const text = node?.textContent ?? "";
+    if (!node || node.nodeType !== Node.TEXT_NODE)
+      return { wrap, lastWords: 0, text };
+    const words = [...text.matchAll(/\S+/g)];
+    const tops = words.map((word) => {
+      const range = document.createRange();
+      range.setStart(node, word.index ?? 0);
+      range.setEnd(node, (word.index ?? 0) + word[0].length);
+      return Math.round(range.getBoundingClientRect().top);
+    });
+    const last = tops.length ? Math.max(...tops) : 0;
+    return {
+      wrap,
+      lastWords: tops.filter((top) => top === last).length,
+      text,
+    };
+  });
+  if (summary.wrap !== "balance" && summary.wrap !== "pretty")
+    problems.push(`summary wrap is ${summary.wrap || "unset"}`);
+  if (!summary.text.includes("tried") || summary.lastWords < 2)
+    problems.push(
+      `summary last line has ${summary.lastWords} word (${summary.text})`,
+    );
+  assert.deepEqual(problems, [], `${tag}: ${problems.join("; ")}`);
+}
 /** One line per label, inside its button: a count never drops below it. */
 const wrappedLabels = (page: Page, selector: string) =>
   page.locator(selector).evaluateAll((buttons) =>
@@ -70,10 +176,19 @@ export async function verifyShellReview({
         "progress-filters",
         "progress-large-text",
       ] as const) {
+        const polish = [
+          "library-search",
+          "library-loading",
+          "library-retry",
+          "library-typing",
+          "progress-filters",
+        ];
         if (
           only === "review-edges"
             ? !["library-search", "progress-large-text"].includes(kind)
-            : only && only !== kind
+            : only === "polish"
+              ? !polish.includes(kind)
+              : only && only !== kind
         )
           continue;
         const context = await fixture.context(
@@ -133,6 +248,7 @@ export async function verifyShellReview({
             });
             await field.waitFor();
             await page.locator("[data-lesson-id]").first().waitFor();
+            await assertGroupedCatalog(page, tag);
             assert.equal(
               await page.evaluate(() =>
                 Number.parseFloat(
@@ -226,6 +342,7 @@ export async function verifyShellReview({
             });
             await field.waitFor();
             await page.locator("[data-lesson-id]").first().waitFor();
+            await assertGroupedCatalog(page, tag);
             await settle(page, 300);
             await page.evaluate(() => {
               const record = window as unknown as {
@@ -491,6 +608,7 @@ export async function verifyShellReview({
               .locator(".lesson-index [role=status]")
               .filter({ hasText: /[1-9]\d* lessons/ })
               .waitFor();
+            await assertGroupedCatalog(page, tag);
             await settle(page, 150);
             assert.ok(
               requests > seen,
@@ -661,6 +779,7 @@ export async function verifyShellReview({
                 .locator(".lesson-index [role=status]")
                 .filter({ hasText: /[1-9]\d* lessons/ })
                 .waitFor();
+              await assertGroupedCatalog(page, tag);
               await settle(page, 150);
               const after = {
                 title: await title.boundingBox(),
@@ -709,6 +828,7 @@ export async function verifyShellReview({
                 [],
                 `${tag}: a filter label wraps or leaves its button`,
               );
+              await assertProgressPolish(page, tag);
             }
           }
           if (shots) {
