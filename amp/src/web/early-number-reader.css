@@ -2,6 +2,7 @@
 .book-reader[data-presentation="early-number"] .reading-content {
   font-family: Arial, sans-serif;
 }
+
 .book-reader[data-presentation="early-number"]:not([data-page-kind="guide"])
   .reading-content {
   font-size: 24px;
@@ -39,5 +40,17 @@
   }
   .book-reader[data-presentation="early-number"] .reading-equation {
     font-size: 27px;
+  }
+}
+
+/* The app bar reduces the reading area on short phones. Scale the artwork
+   together, leaving its labels and caption at their readable text sizes.
+   The stage is the size container; model dialogs keep their own layout. */
+@container reader (max-height: 360px) {
+  .book-reader[data-presentation="early-number"] .early-number-art {
+    max-width: min(360px, 64cqh);
+  }
+  .book-reader[data-presentation="early-number"] .reading-callout {
+    padding: 8px;
   }
 }

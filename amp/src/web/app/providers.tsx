@@ -54,7 +54,7 @@ function SessionProviders({
       try {
         // React observers may still close over the revoked token in this turn.
         // Fetch the canonical resource with the session we just checked.
-        await queryClient.fetchQuery(meOptions(session));
+        await queryClient.fetchQuery({ ...meOptions(session), staleTime: 0 });
         if (current !== generation) return;
         await queryClient.invalidateQueries({
           queryKey: ["account", session.accountId],

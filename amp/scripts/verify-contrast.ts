@@ -23,6 +23,7 @@ import { PostgresRepository } from "../src/server/repository";
 import { developmentAuth } from "../src/server/auth";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { migrate } from "./migrate";
+import { chooseLearner, openMenu } from "./ui-controls";
 import {
   assertContrastCoverage,
   contrastPartition,
@@ -40,6 +41,12 @@ const learner = await repository.create(
   "development-household",
   "Contrast sweep",
   2016,
+);
+// Four choices exercise the drawer's collapsed and expanded learner picker.
+const otherLearners = await Promise.all(
+  ["Jordan", "Avery", "Casey"].map((name) =>
+    repository.create("development-household", name, 2016),
+  ),
 );
 const app = buildApp({
   repository,
@@ -360,29 +367,20 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
     }
   };
   await step("home", async () => {
-    await page.goto(origin);
-    const learnerButton = page.getByRole("button", {
-      name: "Learner",
-      exact: true,
-    });
-    await learnerButton.waitFor();
-    await learnerButton.click();
-    await page
-      .getByRole("dialog")
-      .locator(`[role="option"][data-value=${JSON.stringify(learner.id)}]`)
-      .click();
-    await page.getByRole("button", { name: /^(Go|Continue)$/ }).waitFor();
+    await page.goto(`${origin}/overview`);
+    await chooseLearner(page, learner.id);
+    await page.locator('.frontier-map[aria-busy="false"]').waitFor();
   });
   await step("learner-select-open", async () => {
-    await page.getByRole("button", { name: "Learner", exact: true }).click();
-    await page.getByRole("option").first().waitFor();
+    const drawer = await openMenu(page);
+    await drawer.getByRole("button", { name: /^Current learner/ }).click();
+    await drawer.getByRole("listbox", { name: "Current learner" }).waitFor();
   });
-  await page.keyboard.press("Escape");
+  await page
+    .getByRole("button", { name: "Close AMP menu", exact: true })
+    .click();
   await step("family-menu-open", async () => {
-    await page.getByRole("button", { name: "Open AMP menu" }).click();
-    await page
-      .getByRole("dialog", { name: "Adaptive Math Pathways" })
-      .waitFor();
+    await openMenu(page);
   });
   await page.keyboard.press("Escape");
   for (const route of ["/lessons", "/progress"])
@@ -514,6 +512,10 @@ try {
   await browser.close();
   await vite.close();
   await app.close();
+  await repository.pool.query(
+    "DELETE FROM amp_learners WHERE id=ANY($1::text[])",
+    [[learner, ...otherLearners].map((entry) => entry.id)],
+  );
   await repository.pool.end();
 }
 

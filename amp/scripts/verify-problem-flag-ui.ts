@@ -12,7 +12,7 @@ import { PostgresRepository } from "../src/server/repository";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { trialKey } from "../src/web/lib/pending-trial";
 import { migrate } from "./migrate";
-import { choose } from "./ui-controls";
+import { chooseLearner } from "./ui-controls";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 
 /**
@@ -363,11 +363,8 @@ try {
     const page = await context.newPage();
     page.on("pageerror", (error) => errors.push(error.message));
     // The shared CI database holds other suites' learners: pick this one.
-    await page.goto(origin);
-    await choose(
-      page.getByRole("button", { name: "Learner", exact: true }),
-      adult.id,
-    );
+    await page.goto(`${origin}/overview`);
+    await chooseLearner(page, adult.id);
     await page.goto(`${origin}/lessons?strand=data&topic=mean-data`);
     await page
       .getByRole("button", { name: "Practice this", exact: true })

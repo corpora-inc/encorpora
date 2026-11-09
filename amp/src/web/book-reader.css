@@ -60,6 +60,7 @@
   color: var(--color-subtle-text);
 }
 .reader-stage {
+  container: reader / size;
   flex: 1;
   min-height: 0;
   overflow: auto;
@@ -612,5 +613,6 @@
   .shell.app-shell > main.book-reader .reader-stage {
     flex: none;
     overflow: visible;
+    container-type: normal;
   }
 }

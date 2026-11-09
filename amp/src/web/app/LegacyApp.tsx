@@ -37,7 +37,7 @@ import { Toast } from "../ui/Toast";
 import { AccountSessionChanged } from "../lib/account-session";
 import { loadFrontier } from "../lib/frontier-load";
 import { noteActiveProblem } from "../lib/student-activity";
-import { Navigate } from "@tanstack/react-router";
+import { Navigate, useRouter } from "@tanstack/react-router";
 import { signedOut as reportSignedOut } from "../lib/app-recovery";
 import { useAppRoute } from "../app-routes";
 import { Select } from "../PremiumControls";
@@ -204,6 +204,7 @@ export function LegacyApp() {
 }
 function LegacyScreen({ session }: { session: AuthSession | null }) {
   const route = useAppRoute();
+  const router = useRouter();
   const { navigate } = route;
   // A school student's account id says so from the first render, before `/me`
   // answers with `account.kind`, so no family or purchase screen ever mounts.
@@ -377,6 +378,15 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       ? loadedBook
       : null;
   const navigationEpoch = useRef(0);
+  useEffect(
+    () =>
+      router.subscribe("onBeforeNavigate", ({ hrefChanged }) => {
+        // Drawer links and browser history own navigation too. A delayed
+        // practice or book response cannot replace the screen chosen next.
+        if (hrefChanged) navigationEpoch.current++;
+      }),
+    [router],
+  );
   const progressRevision = useRef(0);
   const progressParams = new URLSearchParams(route.location.search);
   const progressView: ProgressView = {
@@ -686,8 +696,11 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     setProgressError("");
 
     progressLessonReturn.current = null;
-    if (learner) void refreshProgress();
   }, [learner?.id]);
+  const showingProgress = tab === "progress";
+  useEffect(() => {
+    if (learner && showingProgress) void refreshProgress();
+  }, [learner?.id, showingProgress]);
   function invalidateLearning() {
     authEpoch.current++;
     familyRequest.current++;
@@ -732,7 +745,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         : await (
             refresh
               ? refreshMe({ accountId: identity!, token: tokenRef.current! })
-              : queryClient.fetchQuery(
+              : queryClient.ensureQueryData(
                   meOptions({ accountId: identity!, token: tokenRef.current! }),
                 )
           ).then((me) => {
@@ -1020,22 +1033,21 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     }
     upcoming.current = null;
     const navigation = ++navigationEpoch.current;
+    const current = () =>
+      navigation === navigationEpoch.current &&
+      learnerRef.current === learner.id;
     if (templateId && !nativeRuntime) {
       const skillId = catalog?.templates.find(
         (t) => t.id === templateId,
       )?.skillId;
       if (skillId) {
         const saved = await adjustments.change({ kind: "focus", skillId });
-        if (
-          !saved ||
-          navigation !== navigationEpoch.current ||
-          learnerRef.current !== learner.id
-        )
-          return;
+        if (!saved || !current()) return;
       }
     }
     const data = await requestBatch(templateId, recoveryStrand).catch(
       async (error) => {
+        if (!current()) return null;
         // No license yet: go to purchase rather than show an error.
         if (
           error instanceof HttpError &&
@@ -1051,12 +1063,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         return navigationFailure(navigation, learner.id, error);
       },
     );
-    if (
-      !data ||
-      navigation !== navigationEpoch.current ||
-      learnerRef.current !== learner.id
-    )
-      return;
+    if (!data || !current()) return;
     applyBatch(data);
   }
   async function adjustPractice(intent: PracticeIntent) {
@@ -1487,7 +1494,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
               onClick={() => {
                 navigationEpoch.current++;
                 setTab(t);
-                if (t === "progress") void refreshProgress();
+                if (t === "progress" && tab === "progress")
+                  void refreshProgress();
               }}
             >
               {t === "practice"

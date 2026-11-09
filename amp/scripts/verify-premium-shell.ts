@@ -15,6 +15,7 @@ import {
 import { registerFamilyRoutes } from "../src/family/routes";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { currentLearner } from "./ui-controls";
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url) throw Error("AMP_TEST_DATABASE_URL is required");
 assertTestDatabaseTarget(url);
@@ -317,16 +318,12 @@ try {
       await page
         .getByRole("heading", { name: "Jordan", exact: true })
         .waitFor();
-      await page.goto(`${origin}/`);
-      await page
-        .getByRole("button", { name: "Learner", exact: true })
-        .waitFor();
-      assert.equal(
-        await page
-          .getByRole("button", { name: "Learner", exact: true })
-          .textContent(),
-        "Jordan",
-      );
+      const selectedLearner = await page
+        .getByRole("button", { name: "Family learner", exact: true })
+        .getAttribute("data-value");
+      assert.ok(selectedLearner);
+      await page.goto(`${origin}/overview`);
+      assert.equal(await currentLearner(page), selectedLearner);
       await page.goto(`${origin}/family/learners`);
       await page
         .getByRole("heading", { name: "Jordan", exact: true })
@@ -341,7 +338,10 @@ try {
         await r.continue();
       });
       const before = await tabs.boundingBox();
-      await page.getByRole("button", { name: "Access", exact: true }).click();
+      await page
+        .getByRole("navigation", { name: "Account" })
+        .getByRole("link", { name: "Billing", exact: true })
+        .click();
       await requested;
       await stable(tabs, before, "pending family refresh does not move tabs");
       await page.goBack();

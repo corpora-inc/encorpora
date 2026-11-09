@@ -65,7 +65,7 @@ const sample = (page: Page) =>
             ),
         )
         .map((node) => node.textContent!.trim()),
-      overview: !!document.querySelector(".go-button"),
+      overview: !!document.querySelector(".frontier-map"),
     };
   });
 
@@ -189,7 +189,7 @@ async function pressed(page: Page, name: RegExp, id: string) {
   await shot(page, id);
 }
 
-// Sign in, the overview's Go, then Skip, each on a slow connection.
+// Sign in, enter practice from the overview, then Skip on a slow connection.
 {
   const context = await browser.newContext({ viewport });
   await context.addInitScript("globalThis.__name ??= (f) => f;");
@@ -203,7 +203,10 @@ async function pressed(page: Page, name: RegExp, id: string) {
   await pressed(page, /^Sign in$/, "sign-in-button");
   const signingIn = await watch(page, () => undefined);
   alive("sign-in", signingIn);
-  await page.locator(".go-button:not([disabled])").waitFor({ timeout: 30_000 });
+  await page.waitForURL((url) => url.pathname.startsWith("/school/"));
+  await page.goto(`${fixture.origin}/overview`);
+  await page.locator('.frontier-map[aria-busy="false"]').waitFor();
+  await page.locator(".go-button:not([disabled])").waitFor();
   await pressed(page, /^(Go|Continue)$/, "go-button");
   await page
     .getByRole("button", { name: /^Skip/ })

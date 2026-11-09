@@ -333,7 +333,7 @@ try {
     await context.close();
   }
 
-  // 5. The filter stays pinned under the app's tabs while the list scrolls.
+  // 5. The filter stays pinned under the shared app bar while the list scrolls.
   for (const viewport of [
     { width: 390, height: 844 },
     { width: 1280, height: 800 },
@@ -346,14 +346,14 @@ try {
         .querySelector("[role=search]")!
         .getBoundingClientRect();
       const nav = document
-        .querySelector('nav[aria-label="Learning sections"]')!
+        .querySelector("[data-app-bar]")!
         .getBoundingClientRect();
       return { top: bar.top, navBottom: nav.bottom, visible: bar.bottom > 0 };
     });
     check(pin.visible, `${viewport.width}: the filter scrolls away`);
     check(
       pin.top >= pin.navBottom - 1 && pin.top <= pin.navBottom + 24,
-      `${viewport.width}: the filter is not pinned under the tabs (${Math.round(pin.top)} vs ${Math.round(pin.navBottom)})`,
+      `${viewport.width}: the filter is not pinned under the app bar (${Math.round(pin.top)} vs ${Math.round(pin.navBottom)})`,
     );
     await context.close();
   }

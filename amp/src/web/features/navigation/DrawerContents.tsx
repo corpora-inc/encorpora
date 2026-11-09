@@ -133,19 +133,21 @@ export default function DrawerContents({
     const at = location.pathname;
     // Progress screens stay on the same tab for the new learner.
     const destination =
-      at === "/inventory"
-        ? "/inventory"
-        : at.startsWith("/pathways")
-          ? "/pathways"
-          : at === "/overview" || at === "/try/map"
-            ? isTrial
-              ? "/try/map"
-              : "/overview"
-            : isTrial
-              ? "/try/practice"
-              : account?.family.learners.find((l) => l.id === id)?.canPractice
-                ? "/practice"
-                : "/start";
+      at === "/progress" && !isTrial
+        ? "/progress"
+        : at === "/inventory"
+          ? "/inventory"
+          : at.startsWith("/pathways")
+            ? "/pathways"
+            : at === "/overview" || at === "/try/map"
+              ? isTrial
+                ? "/try/map"
+                : "/overview"
+              : isTrial
+                ? "/try/practice"
+                : account?.family.learners.find((l) => l.id === id)?.canPractice
+                  ? "/practice"
+                  : "/start";
     void navigate({
       to: "/$",
       params: { _splat: destination.slice(1) },

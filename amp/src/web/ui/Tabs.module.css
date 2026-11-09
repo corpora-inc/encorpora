@@ -80,6 +80,12 @@
     padding: 0 var(--space-3);
   }
 }
+/* Keep all four Account tabs visible on the narrowest supported phones. */
+@media (max-width: 359px) {
+  .tab {
+    padding-inline: var(--space-1);
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .tab,
   .tab::before {

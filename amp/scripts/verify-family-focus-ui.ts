@@ -183,7 +183,7 @@ try {
         json: { error: "unexpected_fixture" },
       });
     });
-    await page.goto("http://127.0.0.1:4384");
+    await page.goto("http://127.0.0.1:4384/overview");
     await page.getByRole("button", { name: "Open AMP menu" }).click();
     await page.getByRole("link", { name: "Account", exact: true }).click();
     await page
@@ -199,7 +199,10 @@ try {
       "learner selector has a full touch target",
     );
     await fits(page, ".family-learner");
-    await page.getByRole("button", { name: "Access", exact: true }).click();
+    await page
+      .getByRole("navigation", { name: "Account" })
+      .getByRole("link", { name: "Billing", exact: true })
+      .click();
     await page.getByText("License active", { exact: true }).waitFor();
     await fits(page, ".family-purchase-open");
     await fits(page, ".family-billing button");
@@ -228,7 +231,10 @@ try {
     await choose(page.getByLabel("Family learner", { exact: true }), "jordan");
     await page.getByText("License scheduled", { exact: true }).waitFor();
     assert.equal(await page.locator(".family-billing").count(), 0);
-    await page.getByRole("button", { name: "Learners", exact: true }).click();
+    await page
+      .getByRole("navigation", { name: "Account" })
+      .getByRole("link", { name: "Family", exact: true })
+      .click();
     await page.getByRole("button", { name: "Edit name", exact: true }).click();
     // A long display name and a revoked future term must not displace the dock.
     const longName = "Jordan Alexandra Montgomery Rivera Chen Williamson";
@@ -238,7 +244,10 @@ try {
     await page.getByRole("button", { name: "Save name", exact: true }).click();
     await page.getByRole("heading", { name: longName, exact: true }).waitFor();
     assert.deepEqual(renamed, ["jordan"]);
-    await page.getByRole("button", { name: "Access", exact: true }).click();
+    await page
+      .getByRole("navigation", { name: "Account" })
+      .getByRole("link", { name: "Billing", exact: true })
+      .click();
     await page.getByText("No current license", { exact: true }).waitFor();
     await fits(page, ".family-profile-select");
     await fits(page, ".family-purchase-open");
@@ -267,13 +276,19 @@ try {
       page.getByLabel("Family learner", { exact: true }),
       "reference",
     );
-    await page.getByRole("button", { name: "Access", exact: true }).click();
+    await page
+      .getByRole("navigation", { name: "Account" })
+      .getByRole("link", { name: "Billing", exact: true })
+      .click();
     await fits(page, ".family-billing button");
     await page.screenshot({
       path: `artifacts/family-focus/reference-${width}.png`,
     });
     await choose(page.getByLabel("Family learner", { exact: true }), "jordan");
-    await page.getByRole("button", { name: "Learners", exact: true }).click();
+    await page
+      .getByRole("navigation", { name: "Account" })
+      .getByRole("link", { name: "Family", exact: true })
+      .click();
     await page
       .getByRole("button", { name: "Delete learning data", exact: true })
       .click();
@@ -291,7 +306,10 @@ try {
     family.consent.status = "withdrawn";
     family.consent.withdrawnAt = date(0);
     await page.reload();
-    await page.getByRole("button", { name: "Access", exact: true }).click();
+    await page
+      .getByRole("navigation", { name: "Account" })
+      .getByRole("link", { name: "Billing", exact: true })
+      .click();
     await page
       .getByText("Learning paused: consent needed.", {
         exact: true,

@@ -11,7 +11,7 @@ import { registerFamilyRoutes } from "../src/family/routes";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { startTopic, exitPractice } from "./ui-practice";
-import { choose, leaveSettings } from "./ui-controls";
+import { choose, leaveSettings, navigateApp } from "./ui-controls";
 import {
   satCompletionTemplates,
   generateSatCompletionProblem,
@@ -208,7 +208,7 @@ try {
         .getByText("Practice setting saved. It applies to the next problem.")
         .waitFor();
       await leaveSettings(page);
-      await page.getByRole("button", { name: "Practice", exact: true }).click();
+      await navigateApp(page, "Practice");
       const resume = page.getByRole("button", { name: /^(Go|Continue)$/ });
       if (await resume.isVisible()) await resume.click();
       assert.equal(await page.locator(".problem-stage").innerText(), prompt);

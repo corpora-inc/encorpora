@@ -27,7 +27,7 @@ import { twoColumnProofCases } from "../src/math/two-column-proof-practice";
 import { showWorkCases } from "../src/math/show-work-word-problem-practice";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
-import { choose } from "./ui-controls";
+import { chooseLearner } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import {
   assertPhoneLandscapeSmoke,
@@ -406,11 +406,8 @@ try {
         )
           console.log("404", reply.url());
       });
-      await page.goto(origin);
-      await choose(
-        page.getByRole("button", { name: "Learner", exact: true }),
-        learner.id,
-      );
+      await page.goto(`${origin}/overview`);
+      await chooseLearner(page, learner.id);
       for (const run of runs.filter((x) => !only || only.includes(x.family))) {
         const tag = `${engine === "webkit" ? "webkit-" : ""}${run.family}-${width}-${theme}`;
         const problem = run.problem(`${theme}:${width}`);
@@ -883,11 +880,8 @@ try {
   });
   const page = await context.newPage();
   page.on("pageerror", (error) => errors.push(error.message));
-  await page.goto(origin);
-  await choose(
-    page.getByRole("button", { name: "Learner", exact: true }),
-    learner.id,
-  );
+  await page.goto(`${origin}/overview`);
+  await chooseLearner(page, learner.id);
   await startTopic(page, "two-column-congruence-proof");
   await page.locator(".work").waitFor();
   await page.getByRole("button", { name: "Lesson", exact: true }).click();

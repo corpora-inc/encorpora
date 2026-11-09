@@ -1,5 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
-import { choose } from "./ui-controls";
+import { chooseLearner } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { chromium as rawChromium, webkit } from "playwright";
@@ -197,11 +197,8 @@ try {
       ...(browserName === "chromium" ? { isMobile: true } : {}),
     });
     await paceApi(phone);
-    await phone.goto("http://127.0.0.1:4434");
-    await choose(
-      phone.getByRole("button", { name: "Learner", exact: true }),
-      learner.id,
-    );
+    await phone.goto("http://127.0.0.1:4434/overview");
+    await chooseLearner(phone, learner.id);
     let shown: PublicProblem | undefined;
     await phone.route("**/batches", async (route) => {
       // Page fixture routes take precedence over the context pacing route.
@@ -290,11 +287,8 @@ try {
   {
     const wide = await browser.newPage({ hasTouch: true });
     await paceApi(wide);
-    await wide.goto("http://127.0.0.1:4434");
-    await choose(
-      wide.getByRole("button", { name: "Learner", exact: true }),
-      learner.id,
-    );
+    await wide.goto("http://127.0.0.1:4434/overview");
+    await chooseLearner(wide, learner.id);
     let shown: PublicProblem | undefined;
     await wide.route("**/batches", async (route) => {
       // Page fixture routes take precedence over the context pacing route.
@@ -329,11 +323,8 @@ try {
   }
   const page = await browser.newPage({ hasTouch: true });
   await paceApi(page);
-  await page.goto("http://127.0.0.1:4434");
-  await choose(
-    page.getByRole("button", { name: "Learner", exact: true }),
-    learner.id,
-  );
+  await page.goto("http://127.0.0.1:4434/overview");
+  await chooseLearner(page, learner.id);
   const fixtures: {
     name: string;
     problem: PublicProblem;

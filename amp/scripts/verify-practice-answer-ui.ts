@@ -15,7 +15,7 @@ import type { GeneratedProblem, ProblemResponse } from "../src/math/contracts";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { answerOne, trackPracticeProblems } from "./ui-practice-answer";
-import { choose } from "./ui-controls";
+import { chooseLearner } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 
 const responseShape = (response: ProblemResponse) =>
@@ -98,11 +98,8 @@ try {
       "structured-work",
     ].sort(),
   );
-  await page.goto("http://127.0.0.1:4954");
-  await choose(
-    page.getByRole("button", { name: "Learner", exact: true }),
-    learner.id,
-  );
+  await page.goto("http://127.0.0.1:4954/overview");
+  await chooseLearner(page, learner.id);
   let repeatedTemplateDecoyId: string | undefined;
   for (const [signature, representative] of representatives) {
     const template = representative.public.templateId;

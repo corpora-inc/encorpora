@@ -93,13 +93,10 @@ async function signedIn(page: Page, email: string) {
   await page.waitForURL(
     (url) =>
       url.origin === origin &&
-      url.pathname === "/" &&
+      !/^\/sign-(in|up)(\/|$)/.test(url.pathname) &&
       !url.searchParams.has("sign-in"),
   );
-  await page
-    .locator(".shell > header")
-    .getByRole("button", { name: "Open AMP menu" })
-    .click();
+  await page.getByRole("button", { name: "Open AMP menu" }).click();
   const identity = page.getByRole("region", { name: "Current account" });
   await identity.getByRole("button", { name: "Show email" }).click();
   await identity.getByText(email, { exact: true }).waitFor();

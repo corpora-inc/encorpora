@@ -17,7 +17,7 @@ import {
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { assertOpaqueFeedback } from "./feedback-opacity-proof";
-import { choose } from "./ui-controls";
+import { chooseLearner } from "./ui-controls";
 import { openTopicLesson } from "./ui-practice";
 
 const database = process.env.AMP_TEST_DATABASE_URL;
@@ -109,11 +109,8 @@ try {
       const page = await context.newPage();
       page.setDefaultTimeout(20_000);
       page.on("pageerror", (error) => errors.push(error.message));
-      await page.goto(origin);
-      await choose(
-        page.getByRole("button", { name: "Learner", exact: true }),
-        learner.id,
-      );
+      await page.goto(`${origin}/overview`);
+      await chooseLearner(page, learner.id);
       if (width === 320 && theme === "light")
         await page.route(
           `**/api/v1/learners/${learner.id}/batches`,
@@ -495,11 +492,8 @@ try {
     const graphPage = await graphContext.newPage();
     graphPage.setDefaultTimeout(20_000);
     graphPage.on("pageerror", (error) => errors.push(error.message));
-    await graphPage.goto(origin);
-    await choose(
-      graphPage.getByRole("button", { name: "Learner", exact: true }),
-      learner.id,
-    );
+    await graphPage.goto(`${origin}/overview`);
+    await chooseLearner(graphPage, learner.id);
     await graphPage.route(
       `**/api/v1/learners/${learner.id}/batches`,
       (route) => {

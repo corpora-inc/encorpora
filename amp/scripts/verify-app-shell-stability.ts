@@ -5,11 +5,11 @@ import { secureChromium } from "../browser-security.mjs";
  *
  *   AMP_TEST_DATABASE_URL=postgres://…/amp_shell_fixture \
  *     npx tsx scripts/verify-app-shell-stability.ts [--engines chromium,webkit]
- *       [--widths 390,1280] [--shots DIR]
+ *       [--widths 320,390,768,1280] [--shots DIR]
  *
  * For every screen on the frame (Overview, Pathways, Inventory, the four
  * Account tabs, practice, an adult's own record and the free assessment's
- * Overview), at 390 and 1280 px, light and dark, in Chromium and WebKit:
+ * Overview), at 320, 390, 768 and 1280 px, light and dark, in Chromium and WebKit:
  *
  * - the logo's box is identical on every screen;
  * - the logo opens the drawer, which shows the same logo in the same spot,
@@ -37,7 +37,9 @@ const argument = (name: string) => {
   return index > 0 ? process.argv[index + 1] : undefined;
 };
 const engines = (argument("engines") ?? "chromium,webkit").split(",");
-const widths = (argument("widths") ?? "390,1280").split(",").map(Number);
+const widths = (argument("widths") ?? "320,390,768,1280")
+  .split(",")
+  .map(Number);
 const themes = ["light", "dark"] as const;
 const shots = argument("shots");
 if (shots) await mkdir(shots, { recursive: true });
@@ -399,7 +401,7 @@ for (const engine of engines) {
         ["account", "/family/security", ["learners", "access", "privacy"]],
       ] as const) {
         const screen = screens.find((s) => s.path === path)!;
-        const { context, page, errors } = await open(
+        const { context, page, errors, requests } = await open(
           browser,
           screen,
           width,
@@ -420,11 +422,23 @@ for (const engine of engines) {
           .first()
           .boundingBox();
         for (const id of order) {
+          const accountReads = requests.filter(
+            (r) => r === "GET /api/v1/me",
+          ).length;
+          const refreshed = page.waitForResponse(
+            (response) => new URL(response.url()).pathname === "/api/v1/me",
+          );
           await page.locator(`[data-app-bar] [data-tab="${id}"]`).click();
+          await refreshed;
           await page
             .locator(`[data-app-bar] [data-tab="${id}"][aria-current="page"]`)
             .waitFor();
           await settle(page, 400);
+          check(
+            requests.filter((r) => r === "GET /api/v1/me").length ===
+              accountReads + 1,
+            `${group} → ${id} ${where}: navigation must refresh the account once`,
+          );
           const kept = await page.evaluate(
             () =>
               (

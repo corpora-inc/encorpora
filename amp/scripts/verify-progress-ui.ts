@@ -1,9 +1,9 @@
 import { secureChromium } from "../browser-security.mjs";
-import { choose } from "./ui-controls";
-import { exitPractice, resume } from "./ui-practice";
+import { choose, chooseLearner, navigateApp } from "./ui-controls";
+import { resume } from "./ui-practice";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
-import { chromium as rawChromium, webkit } from "playwright";
+import { chromium as rawChromium, webkit, type Page } from "playwright";
 const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app.js";
@@ -14,6 +14,27 @@ import { migrate } from "./migrate.js";
 import { generateProblem } from "../src/math/engine.js";
 import { seedProgress } from "../tests/progress.fixture.js";
 import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
+/** Return through browser history, preserving the mounted workspace and races. */
+async function returnToHistory(page: Page) {
+  await page.evaluate(() => {
+    (window as Window & { __historyDocument?: boolean }).__historyDocument =
+      true;
+  });
+  if (new URL(page.url()).pathname === "/progress")
+    await navigateApp(page, "Progress");
+  for (let n = 0; n < 6 && new URL(page.url()).pathname !== "/progress"; n++)
+    await page.goBack();
+  assert.equal(new URL(page.url()).pathname, "/progress");
+  assert.equal(
+    await page.evaluate(
+      () =>
+        (window as Window & { __historyDocument?: boolean }).__historyDocument,
+    ),
+    true,
+    "history returns without replacing the document",
+  );
+  await page.locator(".progress-workspace").waitFor();
+}
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url) throw new Error("AMP_TEST_DATABASE_URL required");
 await migrate(url);
@@ -32,6 +53,7 @@ await registerFamilyRoutes(app, {
 });
 await app.listen({ host: "127.0.0.1", port: 4401 });
 const vite = await createServer({
+  cacheDir: "node_modules/.vite-progress-proof",
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
   server: {
     host: "127.0.0.1",
@@ -51,34 +73,43 @@ try {
   page.setDefaultTimeout(15000);
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto("http://127.0.0.1:4400");
+  let accountReads = 0;
+  page.on("request", (request) => {
+    if (new URL(request.url()).pathname === "/api/v1/me") accountReads++;
+  });
+  await page.goto("http://127.0.0.1:4400/overview");
   for (const size of [
     { width: 320, height: 568 },
     { width: 390, height: 844 },
+    { width: 768, height: 900 },
     { width: 1024, height: 768 },
     { width: 844, height: 390 },
     { width: 1280, height: 900 },
   ]) {
+    console.log(`Progress viewport ${size.width}×${size.height}`);
     // Phone landscape only has to stay usable; the others must fit.
     const strict = !isPhoneLandscape(size);
     await page.setViewportSize(size);
-    await choose(
-      page.getByRole("button", { name: "Learner", exact: true }),
-      fresh.id,
-    );
-    await exitPractice(page);
-    await page.getByRole("button", { name: "Progress", exact: true }).click();
+    await chooseLearner(page, fresh.id);
+    await page.goto("http://127.0.0.1:4400/progress");
     await page
       .getByRole("heading", { name: "None yet", exact: true })
       .waitFor();
     await page.screenshot({
       path: new URL(`empty-${size.width}.png`, dir).pathname,
     });
-    await choose(
-      page.getByRole("button", { name: "Learner", exact: true }),
-      learner.id,
-    );
+    await chooseLearner(page, learner.id);
     await page.locator(".progress-skill-card").first().waitFor();
+    await page.waitForTimeout(100);
+    const readsBeforeFilters = accountReads;
+    await page.getByRole("button", { name: "Explore", exact: true }).click();
+    await page.getByRole("button", { name: "Practiced", exact: true }).click();
+    await page.waitForTimeout(100);
+    assert.equal(
+      accountReads,
+      readsBeforeFilters,
+      "progress filters reuse the current account without refreshing it",
+    );
     await page.waitForTimeout(100);
     await page.screenshot({
       path: new URL(`overview-${size.width}.png`, dir).pathname,
@@ -138,7 +169,7 @@ try {
         );
       }
     }
-    for (const name of ["Math area", "Learner"]) {
+    for (const name of ["Math area", "Open AMP menu"]) {
       const target = await page
         .getByRole("button", { name, exact: true })
         .boundingBox();
@@ -266,8 +297,7 @@ try {
   assert.equal(batch.problems.length, 1);
   const problem = batch.problems[0];
   assert.equal(problem.skillId, "count-to-20");
-  await exitPractice(page);
-  await page.getByRole("button", { name: "Progress", exact: true }).click();
+  await returnToHistory(page);
   assert.equal(new URL(page.url()).searchParams.get("skill"), "count-to-20");
   await page
     .getByRole("button", { name: "Open related book", exact: true })
@@ -298,8 +328,7 @@ try {
   const mixResponse = await mixPromise;
   assert.equal(mixResponse.request().postDataJSON().templateId, undefined);
   assert.equal((await mixResponse.json()).problems.length, 1);
-  await exitPractice(page);
-  await page.getByRole("button", { name: "Progress", exact: true }).click();
+  await returnToHistory(page);
   await page
     .locator(".progress-counts strong")
     .first()
@@ -316,8 +345,7 @@ try {
       json: { error: "History temporarily unavailable" },
     }),
   );
-  await exitPractice(page);
-  await page.getByRole("button", { name: "Progress", exact: true }).click();
+  await returnToHistory(page);
   await page
     .getByRole("alert")
     .filter({ hasText: "History temporarily unavailable" })
@@ -345,40 +373,69 @@ try {
       });
     } else await route.continue();
   });
-  await exitPractice(page);
-  await page.getByRole("button", { name: "Progress", exact: true }).click();
+  await returnToHistory(page);
   await oldStarted;
-  await exitPractice(page);
-  await page.getByRole("button", { name: "Progress", exact: true }).click();
+  await returnToHistory(page);
   await page.locator('.progress-workspace[aria-busy="false"]').waitFor();
+  assert.ok(
+    refreshRequests >= 2,
+    "a new refresh completes while the old request is held",
+  );
+  const currentCounts = await page.locator(".progress-counts").innerText();
+  assert.equal(await page.getByRole("alert").count(), 0);
+  const staleFailure = page.waitForResponse(
+    (response) =>
+      response.url().endsWith("/progress") && response.status() === 503,
+  );
   releaseOld();
+  await (await staleFailure).finished();
   await page.unrouteAll({ behavior: "wait" });
   assert.equal(await page.getByRole("alert").count(), 0);
+  assert.equal(
+    await page.locator(".progress-counts").innerText(),
+    currentCounts,
+  );
 
-  // A failed request for a view the learner has left cannot paint an unrelated error.
-  let releaseBatch!: () => void, sawBatch!: () => void;
-  const batchWait = new Promise<void>((resolve) => (releaseBatch = resolve));
-  const batchStarted = new Promise<void>((resolve) => (sawBatch = resolve));
-  await page.route("**/batches", async (route) => {
-    sawBatch();
-    await batchWait;
-    await route.fulfill({
-      status: 503,
-      json: { error: "Obsolete practice request" },
+  // Obsolete failures and license redirects cannot replace the chosen screen.
+  for (const failure of [
+    { status: 503, error: "Obsolete practice request" },
+    { status: 403, error: "A license is required" },
+  ]) {
+    let releaseBatch!: () => void, sawBatch!: () => void;
+    const batchWait = new Promise<void>((resolve) => (releaseBatch = resolve));
+    const batchStarted = new Promise<void>((resolve) => (sawBatch = resolve));
+    await page.route("**/batches", async (route) => {
+      sawBatch();
+      await batchWait;
+      await route.fulfill({
+        status: failure.status,
+        json: { error: failure.error },
+      });
     });
-  });
-  await page
-    .getByRole("button", { name: "Try one problem", exact: true })
-    .click();
-  await batchStarted;
-  await exitPractice(page);
-  await page.getByRole("button", { name: "Lessons", exact: true }).click();
-  releaseBatch();
-  await page.unrouteAll({ behavior: "wait" });
-  assert.equal(await page.getByRole("alert").count(), 0);
-  assert.equal(await page.locator(".progress-workspace").count(), 0);
-  await exitPractice(page);
-  await page.getByRole("button", { name: "Progress", exact: true }).click();
+    await page
+      .getByRole("button", { name: "Try one problem", exact: true })
+      .click();
+    await batchStarted;
+    await navigateApp(page, "Lessons");
+    const obsoleteBatch = page.waitForResponse(
+      (response) =>
+        response.url().endsWith("/batches") &&
+        response.status() === failure.status,
+    );
+    releaseBatch();
+    await (await obsoleteBatch).finished();
+    await page.unrouteAll({ behavior: "wait" });
+    await page.evaluate(
+      () =>
+        new Promise<void>((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+        ),
+    );
+    assert.equal(await page.getByRole("alert").count(), 0, failure.error);
+    assert.equal(new URL(page.url()).pathname, "/lessons", failure.error);
+    assert.equal(await page.locator(".progress-workspace").count(), 0);
+    await returnToHistory(page);
+  }
 
   // Returning after an orientation change retains the selected card and keyboard focus.
   await page.setViewportSize({ width: 320, height: 568 });
@@ -439,23 +496,16 @@ try {
     await held;
     await route.fulfill({ response });
   });
-  await exitPractice(page);
-  await page.getByRole("button", { name: "Progress", exact: true }).click();
+  await returnToHistory(page);
   await started;
-  await choose(
-    page.getByRole("button", { name: "Learner", exact: true }),
-    fresh.id,
-  );
+  await chooseLearner(page, fresh.id);
   await page.getByRole("heading", { name: "None yet", exact: true }).waitFor();
   release();
   await page.unrouteAll({ behavior: "wait" });
   assert.equal(await page.locator(".progress-skill-card").count(), 0);
 
   // Text enlargement preserves access to every action without horizontal clipping.
-  await choose(
-    page.getByRole("button", { name: "Learner", exact: true }),
-    learner.id,
-  );
+  await chooseLearner(page, learner.id);
   await page.addStyleTag({ content: "html { font-size: 200% !important; }" });
   await page.emulateMedia({ reducedMotion: "reduce" });
   await choose(page.getByRole("button", { name: "Math area" }), "number");
@@ -496,7 +546,7 @@ try {
   });
   assert.deepEqual(errors, []);
   console.log(
-    "Progress fits four sizes; lesson assistance, mixed continuation, book return, retry, stale responses, focus and enlarged text passed.",
+    "Progress geometry, lesson assistance, mixed continuation, book return, retry, stale responses, focus and enlarged text passed.",
   );
 } finally {
   await browser.close();

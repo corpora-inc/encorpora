@@ -279,6 +279,46 @@ const signedIn = {
   next: "add-learner",
 };
 
+test("late account consumers share the shell snapshot while focus and mutations refresh it", async () => {
+  const { focusManager, QueryClientProvider, useQuery } =
+    await import("@tanstack/react-query");
+  const fetcher = vi.fn(async () => new Response(JSON.stringify(signedIn)));
+  vi.stubGlobal("fetch", fetcher);
+  await queryClient.fetchQuery(meOptions(parent));
+  // A route chunk can finish long after the shell has loaded the account.
+  const loadedAt = Date.now();
+  vi.spyOn(Date, "now").mockImplementation(() => loadedAt + 10_000);
+  function AccountConsumer({ enabled = true }: { enabled?: boolean }) {
+    const me = useQuery({ ...meOptions(parent), enabled });
+    return <p>{me.data?.signedIn ? "Account ready" : "Loading account"}</p>;
+  }
+  const view = render(
+    <QueryClientProvider client={queryClient}>
+      <AccountConsumer enabled={false} />
+    </QueryClientProvider>,
+  );
+  view.rerender(
+    <QueryClientProvider client={queryClient}>
+      <AccountConsumer />
+      <AccountConsumer />
+    </QueryClientProvider>,
+  );
+  expect(screen.getAllByText("Account ready")).toHaveLength(2);
+  await act(async () => {});
+  expect(fetcher).toHaveBeenCalledTimes(1);
+  await act(async () =>
+    queryClient.invalidateQueries({ queryKey: meKey(parent.accountId) }),
+  );
+  expect(fetcher).toHaveBeenCalledTimes(2);
+  try {
+    focusManager.setFocused(false);
+    await act(async () => focusManager.setFocused(true));
+    await waitFor(() => expect(fetcher).toHaveBeenCalledTimes(3));
+  } finally {
+    focusManager.setFocused(undefined);
+  }
+});
+
 test("a passive Family projection cannot replace the active canonical fetch with null", async () => {
   const { useFamilyCache } = await import("../family-cache");
   const { useQuery } = await import("@tanstack/react-query");

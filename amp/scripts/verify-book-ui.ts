@@ -1,6 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
-import { choose } from "./ui-controls";
-import { exitPractice } from "./ui-practice";
+import { chooseLearner, navigateApp } from "./ui-controls";
 import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { chromium as rawChromium } from "playwright";
@@ -74,12 +73,9 @@ try {
     });
     const errors: string[] = [];
     page.on("pageerror", (error) => errors.push(error.message));
-    await page.goto("http://127.0.0.1:4340");
-    await choose(
-      page.getByRole("button", { name: "Learner", exact: true }),
-      learner.id,
-    );
-    await page.getByRole("button", { name: "Lessons" }).click();
+    await page.goto("http://127.0.0.1:4340/overview");
+    await chooseLearner(page, learner.id);
+    await navigateApp(page, "Lessons");
     await page.locator(`button[data-book-id="${book.id}"]`).click();
     await page.getByRole("main", { name: book.title }).waitFor();
     const frames = readingFrames(book);
@@ -367,17 +363,17 @@ try {
       await route.fulfill({ response });
     });
     await page.locator(`button[data-book-id="${book.id}"]`).click();
-    await exitPractice(page);
-    await page.getByRole("button", { name: "Progress", exact: true }).click();
+    await navigateApp(page, "Progress");
+    const opened = page.waitForResponse((response) =>
+      response.url().endsWith("/open"),
+    );
     releaseOpen();
-    await page.waitForResponse((response) => response.url().endsWith("/open"));
-    await page.waitForFunction(
+    await (await opened).finished();
+    await page.evaluate(
       () =>
-        !(
-          document.querySelector(
-            "button[aria-label='Learner']",
-          ) as HTMLSelectElement
-        )?.disabled,
+        new Promise<void>((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+        ),
     );
     assert.equal(
       await page.locator(".book-reader").count(),
