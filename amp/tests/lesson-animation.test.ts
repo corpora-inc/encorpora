@@ -1,6 +1,8 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { problemLesson } from "../src/content/problem-lessons";
+import { generateProblem } from "../src/math/engine";
+import { clauseMethods } from "../src/content/clause-methods";
 import type { SemanticFigure } from "../src/math/contracts";
 import {
   animationModel,
@@ -247,9 +249,22 @@ test("plot animations turn every table row into a point on the stated rule", () 
     "dependent-variable-equation",
   ]) {
     const rules = new Set<string>();
+    const formats = new Set<string>();
     for (let i = 0; i < 100; i++) {
       const lesson = problemLesson(id, `animation-${i}`);
       const model = animationModel(lesson);
+      formats.add(lesson.example.figure?.kind ?? "none");
+      if (lesson.example.figure?.kind === "scene") {
+        assert.equal(id, "related-patterns-relationship");
+        assert.equal(lesson.goal, clauseMethods["why-multiple"]!.goal);
+        assert.equal(lesson.example.choices?.length, 4);
+        assert.deepEqual(
+          lesson.example.figure.scene.elements.map((e) => e.type),
+          ["table"],
+        );
+        assert.equal(model, null, "a reasoning table has no graph to animate");
+        continue;
+      }
       assert(model?.kind === "plot", `${id} has no plot model`);
       const { rows, rule, graph } = model;
       for (const r of rows) {
@@ -270,6 +285,12 @@ test("plot animations turn every table row into a point on the stated rule", () 
       rules.add(rule.offset ? "offset" : "proportional");
     }
     assert.ok(rules.has("proportional"), id);
+    assert.deepEqual(
+      [...formats].sort(),
+      id === "related-patterns-relationship"
+        ? ["function-display", "scene"]
+        : ["function-display"],
+    );
   }
   const lesson = problemLesson("dependent-variable-equation", "animation");
   const figure = lesson.example.figure!;
@@ -288,6 +309,25 @@ test("plot animations turn every table row into a point on the stated rule", () 
     animationModel({ ...lesson, example: { ...lesson.example, figure: bent } }),
     null,
   );
+});
+
+test("legacy pattern exercises keep plot examples when a family adds reasoning clauses", () => {
+  for (let i = 0; i < 20; i++) {
+    const problem = generateProblem(
+      "related-patterns-relationship",
+      `animation-${i}`,
+      1,
+    );
+    const lesson = problemLesson(
+      problem.public.templateId,
+      `animation-${i}`,
+      problem.public.prompt,
+      problem.public.response,
+      problem,
+    );
+    assert.equal(lesson.example.figure?.kind, "function-display");
+    assert.equal(animationModel(lesson)?.kind, "plot");
+  }
 });
 
 test("balance adapter rejects unlevel or undrawable balances", () => {

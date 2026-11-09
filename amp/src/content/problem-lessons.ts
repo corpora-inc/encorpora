@@ -1,5 +1,5 @@
 import { generateProblemFor, gradeAnswer, templates } from "../math/engine";
-import { clauseProblem } from "../math/clause-extensions";
+import { clauseExtensions, clauseProblem } from "../math/clause-extensions";
 import { clauseMethods } from "./clause-methods";
 import {
   historicalTemplates,
@@ -167,6 +167,13 @@ export function problemLesson(
   const template = byId.get(templateId);
   if (!template) throw new Error(`Unknown problem type ${templateId}`);
   const activeClause = learnerProblem?.variant?.axes?.clause;
+  // A legacy exercise needs a legacy example even when its family also has
+  // construction or explanation clauses with different methods and formats.
+  const legacyVersion = clauseVariants[templateId]
+    ? 1
+    : clauseExtensions[templateId]
+      ? template.version - 1
+      : undefined;
   // These clause tasks replace the figured number problem the lesson
   // animation teaches. The worked example stays on the reprint unless
   // the learner is already on that clause.
@@ -175,10 +182,11 @@ export function problemLesson(
     templateId === "three-addend-story" ||
     templateId === "unknown-addend-story";
   const exampleVersion =
-    (!activeClause && classicFigure) ||
-    (learnerProblem && clauseVariants[templateId] && !activeClause)
+    !activeClause && classicFigure
       ? 1
-      : undefined;
+      : learnerProblem && (!activeClause || activeClause === "legacy")
+        ? legacyVersion
+        : undefined;
   const generateProblem = (id: string, exampleSeed: string) =>
     (activeClause && activeClause !== "legacy"
       ? (clauseProblem(template, exampleSeed, activeClause) ??
