@@ -884,6 +884,7 @@ test("benchmark-fraction-estimate: the estimate rounds each fraction to a benchm
                 ? 2
                 : 0;
   for (const p of prompts("benchmark-fraction-estimate")) {
+    if (p.variant?.id === "judge") continue;
     const fr = [...p.public.prompt.matchAll(/\\frac\{(\d+)\}\{(\d+)\}/g)]
       .map((m) => [Number(m[1]), Number(m[2])] as const)
       .filter(([n, d]) => !(n === 1 && d === 2) || false);

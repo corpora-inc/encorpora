@@ -91,7 +91,12 @@ def share_value(label):
 
 
 def solve_part_whole(public):
-    template, prompt = public['templateId'], public['prompt']
+    from fraction_clause_math_oracle import solve_clause
+    clause = solve_clause(public)
+    if clause is not None:
+        return clause
+    template = public['templateId']
+    prompt = public['prompt'].replace('fourths', 'quarters').replace('fourth', 'quarter')
     require(template in PART_WHOLE, 'Unknown part-whole family')
     figure = public.get('figure')
     if template in ('find-equal-shares', 'find-equal-thirds'):

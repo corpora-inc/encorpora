@@ -21,6 +21,7 @@ import {
 } from "./multi-part-support";
 import { numberLine } from "./scene/author";
 import { serializeSelection } from "./selection-response";
+import { clauseProblem } from "./fraction-clause-variants";
 import { denomFits, learnerName } from "./story-kit/fractions";
 
 /** Grade-4 denominators. 16 is the light Florida extra. */
@@ -62,7 +63,7 @@ export const grade4FractionsDecimalsTemplates: readonly TemplateMetadata[] = [
     "Choose fraction sums",
     "like-fraction-addition",
     "Choose every sum of fractions with one denominator that matches a shaded amount, including a sum made only of unit fractions.",
-    { requiredResponseCapability: "multi-select-v1" },
+    { requiredResponseCapability: "multi-select-v1", version: 2, reprintsFrom: 1 },
   ),
   meta(
     "mixed-fraction-sum",
@@ -95,7 +96,11 @@ export const grade4FractionsDecimalsTemplates: readonly TemplateMetadata[] = [
     "Compare fractions with symbols",
     "fraction-comparison",
     "Choose greater than, equal to, or less than for each pair of fractions of the same whole.",
-    { requiredResponseCapability: "multi-part-choice-v1" },
+    {
+      requiredResponseCapability: "multi-part-choice-v1",
+      version: 2,
+      reprintsFrom: 1,
+    },
   ),
   meta(
     "compare-decimals-symbol-blanks",
@@ -207,6 +212,8 @@ function fractionParts(label: string): { n: number; d: number }[] {
 /** FR-1. Every keyed sum uses the target denominator. One option is only unit fractions. */
 function decompositions(seed: string): GeneratedProblem {
   const template = byId.get("fraction-decompositions-select")!;
+  const clause = clauseProblem(template.id, seed, template);
+  if (clause) return clause;
   const r = random(template.id, seed);
   const above = r(0, 4) < 2;
   const denominator = above
@@ -690,6 +697,8 @@ function comparisonWords(left: number, right: number): string {
 /** FR-8. Record >, =, or < . An equal pair is about half the seeds. */
 function fractionSymbols(seed: string): GeneratedProblem {
   const template = byId.get("compare-fractions-symbol-blanks")!;
+  const clause = clauseProblem(template.id, seed, template);
+  if (clause) return clause;
   const r = random(template.id, seed);
   const withEqual = r(0, 1) === 0;
   const pairs = withEqual

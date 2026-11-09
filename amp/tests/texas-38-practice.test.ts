@@ -62,11 +62,14 @@ const VARIANTS: Record<string, string[]> = {
     "fraction-by-fraction",
     "fraction-by-whole",
     "how-many-fit",
+    "check",
   ],
   "scaling-direction-choice": [
     "greater-than-start",
     "less-than-start",
     "statement",
+    "explain",
+    "times-one",
   ],
   "percent-grid-model": ["grid-percent", "grid-fraction", "grid-decimal"],
   "percent-forms-and-parts": [
