@@ -12,9 +12,9 @@ import {
   useParams,
   useSearch,
 } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { AuthSession } from "../../auth";
-import { sessionOptions } from "../../lib/query";
+import { meOptions, sessionOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
 import { Chips } from "../../ui/Chips";
 import { Segmented } from "../../ui/Segmented";
@@ -35,6 +35,7 @@ import {
   type WorkbookMinutes,
 } from "./api";
 import {
+  canMakeWorkbook,
   choicesLabel,
   choicesSearch,
   dateLabel,
@@ -47,6 +48,7 @@ import {
   workbookMessage,
   type WorkbookSearch,
 } from "./model";
+import { FreeWorkbooksUsed } from "./FreeWorkbooksUsed";
 import { WorkbookFrame, type WorkbookLearner } from "./WorkbookFrame";
 import { WorkbookList } from "./WorkbookList";
 import styles from "./Workbooks.module.css";
@@ -70,7 +72,12 @@ export function WorkbookDayScreen() {
     <WorkbookFrame session={session} learnerId={learnerId}>
       {(learner) =>
         date === localDate() ? (
-          <Today session={session} learner={learner} date={date} />
+          <TodayOrUsed
+            key={learner.id}
+            session={session}
+            learner={learner}
+            date={date}
+          />
         ) : (
           <PastDay session={session} learner={learner} date={date} />
         )
@@ -97,6 +104,20 @@ function Head({ learner, date }: { learner: WorkbookLearner; date: string }) {
   );
 }
 
+type DayProps = {
+  session: AuthSession;
+  learner: WorkbookLearner;
+  date: string;
+};
+/** Today: the controls that make a workbook, or, when the five free ones are
+ * used, the line that says so with today's workbooks. Chosen once, from the
+ * account's data on opening, so making the last free workbook never rebuilds
+ * the screen; the controls then simply stop making new ones. */
+function TodayOrUsed(props: DayProps) {
+  const [used] = useState(() => !canMakeWorkbook(props.learner));
+  return used ? <PastDay {...props} used /> : <Today {...props} />;
+}
+
 function Today({
   session,
   learner,
@@ -109,7 +130,6 @@ function Today({
   const search = useSearch({ strict: false }) as WorkbookSearch;
   const navigate = useNavigate();
   const client = useQueryClient();
-  const minutes = search.minutes ?? 45;
   const paper = search.paper ?? defaultPaper();
   const choices = searchChoices(search);
   const history = useQuery(workbookHistoryOptions(session, learner.id, date));
@@ -118,6 +138,15 @@ function Today({
     ? Math.max(...history.data.workbooks.map((w) => w.number))
     : 1;
   const number = search.number ?? (history.isSuccess ? latest : undefined);
+  const issuedDefault = history.data?.workbooks.find(
+    (book) => book.number === number,
+  );
+  const minutes = search.minutes ?? issuedDefault?.minutes ?? 45;
+  const canMake = canMakeWorkbook(learner);
+  const issued = history.data?.workbooks.some(
+    (book) => book.number === number && book.minutes === minutes,
+  );
+  const unavailable = history.isSuccess && !issued && !canMake;
   const workbook = useQuery({
     ...workbookOptions(session, learner.id, {
       date,
@@ -126,8 +155,8 @@ function Today({
       paper,
       choices,
     }),
-    enabled: number !== undefined,
-    placeholderData: keepPreviousData,
+    enabled: number !== undefined && !unavailable,
+    placeholderData: unavailable ? undefined : keepPreviousData,
     // A stored workbook never changes; there is nothing to refetch.
     staleTime: Infinity,
     refetchOnWindowFocus: false,
@@ -161,10 +190,12 @@ function Today({
       !history.data.workbooks.some(
         (w) => w.id === current.id && w.paper === current.paper,
       )
-    )
+    ) {
+      void client.invalidateQueries({ queryKey: meOptions(session).queryKey });
       void client.invalidateQueries({
         queryKey: [...workbooksKey(session, learner.id), "history"],
       });
+    }
   }, [current?.id, current?.paper, history.data]);
   const [message, setMessage] = useState("");
   const [downloading, setDownloading] = useState(false);
@@ -191,9 +222,6 @@ function Today({
         }).queryKey,
         made,
       );
-      void client.invalidateQueries({
-        queryKey: [...workbooksKey(session, learner.id), "history"],
-      });
       void navigate({
         to: ".",
         search: (prev) => ({
@@ -212,7 +240,7 @@ function Today({
     setMessage("");
     another.mutate(next);
   };
-  const choosing = !current || another.isPending;
+  const choosing = !current || another.isPending || !canMake;
   // The areas row fades at an end only while there is more to scroll there.
   const areasRow = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -266,7 +294,9 @@ function Today({
       setDownloading(false);
     }
   }
-  const loadError = history.error ?? workbook.error;
+  // A workbook that can't be made because the free ones are used is not a
+  // failure: the card says so calmly, in the same place.
+  const loadError = unavailable ? null : (history.error ?? workbook.error);
   return (
     <>
       <Head learner={learner} date={date} />
@@ -276,17 +306,17 @@ function Today({
           variant="primary"
           className={styles.download}
           disabled={!ready || downloading}
-          aria-busy={downloading || (!ready && !loadError)}
+          aria-busy={downloading || (!ready && !loadError && !unavailable)}
           onClick={() => void download()}
         >
-          {(ready || loadError) && !downloading
+          {(ready || loadError || unavailable) && !downloading
             ? "Download workbook"
             : "Preparing…"}
         </Button>
         <Button
           variant="secondary"
           className={styles.another}
-          disabled={!current || another.isPending}
+          disabled={choosing}
           aria-busy={another.isPending}
           onClick={() => roll(choices)}
         >
@@ -303,6 +333,7 @@ function Today({
         <Segmented<"30" | "45" | "60">
           compact
           label="Length"
+          disabled={!canMake}
           value={String(minutes) as "30" | "45" | "60"}
           onChange={(value) =>
             set({ minutes: Number(value) as WorkbookMinutes })
@@ -394,6 +425,11 @@ function Today({
         stale={!current}
         learnerId={learner.id}
         areaName={areaName}
+        used={
+          unavailable && !workbook.data ? (
+            <FreeWorkbooksUsed next={learner.freeWorkbooksNext} />
+          ) : undefined
+        }
         failure={
           loadError && !workbook.data
             ? {
@@ -422,18 +458,21 @@ function Contents({
   stale,
   learnerId,
   areaName,
+  used,
   failure,
 }: {
   workbook?: WorkbookSummary;
   stale: boolean;
   learnerId: string;
   areaName: (id: string) => string;
+  /** No new workbook: the free ones are used. Said in the card's space. */
+  used?: ReactNode;
   /** A load that failed: said in the card's reserved space, with a retry. */
   failure?: { text: string; retry: () => void };
 }) {
   return (
     <div
-      className={`${styles.contents} ${stale && !failure ? styles.stale : ""}`}
+      className={`${styles.contents} ${stale && !failure && !used ? styles.stale : ""}`}
       data-workbook-contents
       tabIndex={-1}
       aria-label="Workbook contents"
@@ -476,6 +515,8 @@ function Contents({
             Enter results
           </Link>
         </>
+      ) : used ? (
+        used
       ) : failure ? (
         <div className={styles.failure} role="alert">
           <p>{failure.text}</p>
@@ -502,26 +543,26 @@ function PastDay({
   session,
   learner,
   date,
-}: {
-  session: AuthSession;
-  learner: WorkbookLearner;
-  date: string;
-}) {
+  used = false,
+}: DayProps & { used?: boolean }) {
   const history = useQuery(workbookHistoryOptions(session, learner.id, date));
   return (
     <>
       <Head learner={learner} date={date} />
+      {used && <FreeWorkbooksUsed next={learner.freeWorkbooksNext} />}
       {history.data && !history.data.workbooks.length ? (
-        <div className={styles.notice}>
-          <p>No workbook was made on this day.</p>
-          <Link
-            to="/learners/$learnerId/workbooks/$date"
-            params={{ learnerId: learner.id, date: localDate() }}
-            className={buttonClass("primary")}
-          >
-            Open today's workbook
-          </Link>
-        </div>
+        used ? null : (
+          <div className={styles.notice}>
+            <p>No workbook was made on this day.</p>
+            <Link
+              to="/learners/$learnerId/workbooks/$date"
+              params={{ learnerId: learner.id, date: localDate() }}
+              className={buttonClass("primary")}
+            >
+              Open today's workbook
+            </Link>
+          </div>
+        )
       ) : (
         <WorkbookList
           session={session}

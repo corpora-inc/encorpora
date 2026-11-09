@@ -349,7 +349,20 @@ test(
           `/api/v1/family/learners/${leo}/practice-here`,
           parent,
         );
-        assert.equal(unpaid.statusCode, 409, unpaid.body);
+        assert.equal(
+          unpaid.statusCode,
+          201,
+          "the free allowance permits a student session",
+        );
+        await db.query(
+          "UPDATE amp_learners SET free_online_used=100 WHERE id=$1",
+          [leo],
+        );
+        assert.equal(
+          (await post(`/api/v1/family/learners/${leo}/practice-here`, parent))
+            .statusCode,
+          409,
+        );
         assert.equal(
           (
             await post(

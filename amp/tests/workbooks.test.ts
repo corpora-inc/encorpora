@@ -13,6 +13,7 @@ import {
 } from "../src/workbook/pdf.js";
 import { composableDate } from "../src/workbook/routes.js";
 import { sampleLearners, simulateLearner } from "../src/workbook/synthetic.js";
+import { freeAllowance } from "../src/learning/free-allowance.js";
 
 const learnerId = "7b8a3c1e-2f4d-4e6a-9b1c-0d2e3f4a5b6c";
 const other = "11111111-2222-4333-8444-555555555555";
@@ -42,6 +43,7 @@ function memoryRepository(
       const mine = () => rows.filter((r) => r.learnerId === id);
       const tx = {
         hasAccess: async () => options.access ?? true,
+        freeAllowance: async () => freeAllowance(100, 5),
         frontier: async () => simulated.frontier,
         skillEvidence: async () => simulated.evidence,
         recentAttempts: async () => simulated.attempts.slice(-12),
@@ -257,7 +259,7 @@ test("new workbooks are for today; stored ones of any date stay available", asyn
   }
 });
 
-test("workbooks require the learner's parent and a license; a trial reaches only its own learner", async () => {
+test("new workbooks require ownership and an allowance or license; a trial reaches only its own learner", async () => {
   const unlicensed = app(memoryRepository({ access: false }).repository, false);
   const denied = await unlicensed.inject({
     method: "POST",
@@ -265,8 +267,8 @@ test("workbooks require the learner's parent and a license; a trial reaches only
     headers,
     payload: { date: today, minutes: 45, paper: "letter" },
   });
-  assert.equal(denied.statusCode, 403);
-  assert.equal((await unlicensed.inject({ url, headers })).statusCode, 403);
+  assert.equal(denied.statusCode, 402);
+  assert.equal((await unlicensed.inject({ url, headers })).statusCode, 200);
 
   const server = app(memoryRepository().repository);
   const stranger = await server.inject({

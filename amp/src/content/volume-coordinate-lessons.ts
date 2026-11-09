@@ -258,7 +258,7 @@ const prismSenses = {
 };
 export const volumeCoordinateMethods: Record<string, ProblemMethod> = {
   "unit-cube-volume": {
-    goal: "Find the volume of a prism built from unit cubes, in cubic units.",
+    goal: "Find the volume of a solid built from equal cubes, in the unit the problem names.",
     intuition:
       "Volume is how much space a solid takes up. A unit cube is a cube with edges 1 unit long. It counts as 1 cubic unit. Volume is the number of unit cubes that fill a solid. A rectangular prism is a box shape. Its cubes sit in equal flat layers, so count one layer and multiply.",
     senses: cubeSenses,

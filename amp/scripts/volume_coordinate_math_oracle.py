@@ -62,14 +62,62 @@ def grid(figure):
     return size, points
 
 
+NAMED_UNITS = frozenset({
+    'cubic centimeters', 'cubic inches', 'cubic feet',
+    'blocks', 'sugar cubes', 'dice', 'ice cubes', 'bales',
+})
+
+
+def prompt_unit(prompt):
+    found = re.search(r', in ([^?]+)\?$', prompt)
+    return found[1] if found else None
+
+
+def count_cubes(figure):
+    """Every cube the drawing holds, one by one."""
+    if figure['kind'] == 'cube-steps':
+        depth = whole(figure['width'], 1, 6, 'Depth')
+        columns = [whole(h, 1, 6, 'Column') for h in figure['columns']]
+        require(2 <= len(columns) <= 6, 'Two to six columns')
+        require(all(a >= b for a, b in zip(columns, columns[1:])) and columns[0] > columns[-1],
+                'Columns step down from back to front, so every column shows')
+        return len([(x, y, z) for x, h in enumerate(columns) for y in range(depth) for z in range(h)])
+    require(figure['kind'] == 'cube-prism', 'Cube prism required')
+    l, w, h = (whole(figure[k], 1, 6, k) for k in ('length', 'width', 'height'))
+    return len([(i, j, k) for i in range(l) for j in range(w) for k in range(h)])
+
+
+def solve_named_unit_cubes(public, figure):
+    """Named cubic units or an improvised count. The prompt's unit is the answer's unit."""
+    prompt = public['prompt']
+    unit = prompt_unit(prompt)
+    require(unit in NAMED_UNITS, f'Named unit required, got {unit!r}')
+    require('cubic units' not in prompt, 'This family does not say cubic units')
+    label = public['response']['label']
+    require('cubic units' not in label, 'Label says cubic units')
+    require(unit in label, 'Prompt unit and answer unit differ')
+    if unit == 'cubic feet':
+        require(any(word in prompt for word in ('crate', 'storage', 'bale')),
+                'Cubic feet only in a crate, storage, or bale context')
+    total = count_cubes(figure)
+    if figure['kind'] == 'cube-prism':
+        l, w, h = (figure[k] for k in ('length', 'width', 'height'))
+        require(2 <= l <= 6 and 2 <= w <= 6 and 2 <= h <= 6 and l * w * h <= 150, 'Named prism bounds')
+        require(total == l * w * h, 'Count')
+    return Fraction(total)
+
+
 def solve_volume_coordinate(public):
     family, prompt, figure = public['templateId'], public['prompt'], figure_view(public['figure'])
     require(family in VOLUME_COORDINATE, 'Unsupported family')
     if family == 'unit-cube-volume' and figure['kind'] == 'cube-steps':
         # A stepped solid: read the drawn columns and depth, then count every
         # cube one by one (each column is filled to the bottom).
-        require(prompt == 'This solid is built from 1-unit cubes, and every column is filled to the bottom. '
-                'What is its volume, in cubic units?', 'Steps wording')
+        classic_steps = ('This solid is built from 1-unit cubes, and every column is filled to the bottom. '
+                         'What is its volume, in cubic units?')
+        if prompt != classic_steps:
+            return solve_named_unit_cubes(public, figure)
+        require(prompt == classic_steps, 'Steps wording')
         depth = whole(figure['width'], 1, 6, 'Depth')
         columns = [whole(h, 1, 6, 'Column') for h in figure['columns']]
         require(2 <= len(columns) <= 6, 'Two to six columns')
@@ -77,6 +125,8 @@ def solve_volume_coordinate(public):
                 'Columns step down from back to front, so every column shows')
         cubes = [(x, y, z) for x, h in enumerate(columns) for y in range(depth) for z in range(h)]
         return Fraction(len(cubes))
+    if family == 'unit-cube-volume' and prompt_unit(prompt) in NAMED_UNITS:
+        return solve_named_unit_cubes(public, figure)
     if family in {'unit-cube-volume', 'cube-layer-count'}:
         require(prompt == ('Each small cube is 1 cubic unit. What is the volume of this rectangular prism, in cubic units?'
                            if family == 'unit-cube-volume' else
@@ -147,6 +197,25 @@ def review_volume_coordinate_fixtures():
     cube = {'templateId': 'unit-cube-volume', 'prompt': 'Each small cube is 1 cubic unit. What is the volume of this rectangular prism, in cubic units?',
             'figure': {'kind': 'cube-prism', 'length': 4, 'width': 3, 'height': 2}}
     require(solve_volume_coordinate(cube) == 24, '4 by 3 by 2 holds 24 cubes')
+    inches = {'templateId': 'unit-cube-volume',
+              'prompt': 'Each small cube has 1-inch edges. What is the volume of this rectangular prism, in cubic inches?',
+              'response': {'kind': 'number', 'label': 'Volume in cubic inches'},
+              'figure': {'kind': 'cube-prism', 'length': 3, 'width': 3, 'height': 4}}
+    require(solve_volume_coordinate(inches) == 36, '3 by 3 by 4 is 36 cubic inches')
+    blocks = {'templateId': 'unit-cube-volume',
+              'prompt': 'Maya packs a shoebox with identical blocks, no gaps. What is the volume of the shoebox, in blocks?',
+              'response': {'kind': 'number', 'label': 'Volume in blocks'},
+              'figure': {'kind': 'cube-prism', 'length': 4, 'width': 6, 'height': 3}}
+    require(solve_volume_coordinate(blocks) == 72, '4 by 6 by 3 is 72 blocks')
+    feet = {'templateId': 'unit-cube-volume',
+            'prompt': 'A shipping crate is packed with cubes that have 1-foot edges, with no gaps. What is its volume, in cubic feet?',
+            'response': {'kind': 'number', 'label': 'Volume in cubic feet'},
+            'figure': {'kind': 'cube-prism', 'length': 2, 'width': 3, 'height': 4}}
+    require(solve_volume_coordinate(feet) == 24, 'Crate of 2 by 3 by 4 is 24 cubic feet')
+    require(rejects(dict(feet, prompt='Each small cube has 1-foot edges. What is its volume, in cubic feet?')),
+            'Cubic feet without a crate, storage, or bale context')
+    require(rejects(dict(inches, response={'kind': 'number', 'label': 'Volume in cubic units'})),
+            'A named prompt cannot be answered in cubic units')
     layer = dict(cube, templateId='cube-layer-count', prompt='This prism is built from unit cubes. How many cubes are in its bottom layer?')
     require(solve_volume_coordinate(layer) == 12, 'A layer of a 4 by 3 base holds 12')
     steps = {'templateId': 'unit-cube-volume',

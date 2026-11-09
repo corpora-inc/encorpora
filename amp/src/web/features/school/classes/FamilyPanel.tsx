@@ -102,7 +102,9 @@ export function FamilyPanel({ classId }: { classId: string }) {
               <span className={styles.access}>
                 {learner.entitlement.active && learner.entitlement.endsAt
                   ? `Access through ${DAY.format(new Date(learner.entitlement.endsAt))}`
-                  : "No access yet"}
+                  : learner.freeAllowance && learner.entitlement.active
+                    ? `${learner.freeAllowance.problems.remaining} free problems left`
+                    : "No access yet"}
               </span>
             </span>
             {learner.entitlement.active ? (

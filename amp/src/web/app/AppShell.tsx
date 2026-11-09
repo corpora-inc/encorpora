@@ -337,11 +337,7 @@ function practiceTarget(
   );
   const learner =
     learners.find((entry) => entry.id === learnerId) ?? learners[0];
-  const consented = ["active", "development"].includes(
-    me.family.consent.status,
-  );
-  if (learner?.canPractice && (consented || me.account.kind === "student"))
-    return { path: "/practice", label: "Practice" };
+  if (learner?.canPractice) return { path: "/practice", label: "Practice" };
   if (me.account.kind === "student") return null;
   return { path: "/start", label: "Continue setup" };
 }

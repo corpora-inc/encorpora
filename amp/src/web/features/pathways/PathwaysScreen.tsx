@@ -205,8 +205,6 @@ function LearnerMap({ session }: { session: AuthSession }) {
     !!learner &&
     !!(
       me.data?.signedIn &&
-      (!!own ||
-        ["active", "development"].includes(me.data.family.consent.status)) &&
       me.data.family.learners.find((l) => l.id === learner.id)?.canPractice
     );
   const notice = me.isPending ? (

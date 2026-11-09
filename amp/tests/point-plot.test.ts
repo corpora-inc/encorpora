@@ -6,12 +6,8 @@ import {
   publicProblemSchema,
   responseCapabilities,
 } from "../src/math/contracts";
-import {
-  generateProblem,
-  gradeAnswer,
-  isValidResponse,
-  templates,
-} from "../src/math/engine";
+import { gradeAnswer, isValidResponse, templates } from "../src/math/engine";
+import { generateProblem } from "./fixtures/pre-clause-problem";
 import {
   canonicalPointSet,
   clipLineToGrid,
