@@ -221,6 +221,8 @@ export class OfflineRepository {
               choice.template.id,
               `offline-v1:${packId}:${variant}:${choice.template.id}`,
               input.figureCapabilities,
+              undefined,
+              input.responseCapabilities,
             ),
           );
           problem.public = responseForClient(
