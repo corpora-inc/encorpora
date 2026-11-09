@@ -281,7 +281,9 @@ export interface ClientCapabilities {
 export const clientCanDraw = (
   template: Pick<
     TemplateMetadata,
-    "requiredFigureCapability" | "requiredResponseCapability"
+    | "requiredFigureCapability"
+    | "requiredResponseCapability"
+    | "requiredResponseCapabilities"
   >,
   client: ClientCapabilities,
 ): boolean =>
@@ -289,6 +291,9 @@ export const clientCanDraw = (
     client.responseCapabilities.includes(
       template.requiredResponseCapability,
     )) &&
+  (template.requiredResponseCapabilities ?? []).every((capability) =>
+    client.responseCapabilities.includes(capability),
+  ) &&
   (!template.requiredFigureCapability ||
     client.figureCapabilities.includes(template.requiredFigureCapability));
 export interface TemplateMetadata {
@@ -297,6 +302,8 @@ export interface TemplateMetadata {
   requiredFigureCapability?: FigureCapability;
   /** Absent for the original number/fraction protocol. */
   requiredResponseCapability?: ResponseCapability;
+  /** Additional protocols when a versioned family has several response surfaces. */
+  requiredResponseCapabilities?: readonly ResponseCapability[];
   id: string;
   /** Catalog version. A stored workbook names this on each problem. */
   version: number;

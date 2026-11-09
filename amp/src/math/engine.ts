@@ -1,3 +1,4 @@
+import { generateClauseVariant, withClauseMetadata } from "./clause-variants";
 import {
   satCompletionTemplates,
   generateSatCompletionProblem,
@@ -650,7 +651,9 @@ export const templates: readonly TemplateMetadata[] = [
   // Frozen legacy list above. New families register through src/families/
   // (docs/content-family-playbook.md) and append here in family-id order.
   ...familyRegistry.templates,
-].map(withTemplateGlossary);
+]
+  .map(withClauseMetadata)
+  .map(withTemplateGlossary);
 
 function gcd(a: bigint, b: bigint): bigint {
   a = a < 0n ? -a : a;
@@ -986,6 +989,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...multiPartChoiceTemplates,
   ].some((t) => t.id === problem.public.templateId);
   const keepAuthored =
+    problem.variant?.axes?.clause !== undefined ||
     preserveAlgebra ||
     ["true-equation-choice", "equal-factor-equations-select"].includes(
       problem.public.templateId,
@@ -1020,6 +1024,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  const clause = generateClauseVariant(templateById.get(templateId), seed);
+  if (clause) return clause;
   if (templateId === "true-equation-choice")
     return historicalTrueEquationChoice.generate(seed).problem;
   if (templateId === "equal-factor-equations-select")
@@ -1256,7 +1262,7 @@ function generateRawProblem(
     return generateGraphicalProblem(templateId, seed);
   if (extendedTemplates.some((t) => t.id === templateId))
     return generateExtendedProblem(templateId, seed);
-  const meta = templates.find((t) => t.id === templateId);
+  const meta = baseTemplates.find((t) => t.id === templateId);
   if (!meta) throw new Error(`Unknown template: ${templateId}`);
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");

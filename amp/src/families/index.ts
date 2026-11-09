@@ -7,6 +7,7 @@ export { family as algebraFormReasoning } from "./algebra-form-reasoning";
 export { family as angleArguments } from "./angle-arguments";
 export { family as areaByCounting } from "./area-by-counting";
 export { family as benchmarkEstimate } from "./benchmark-estimate";
+export { family as clausePractice } from "./clause-practice";
 export { family as congruentParts } from "./congruent-parts";
 export { family as conversionChain } from "./conversion-chain";
 export { family as countRelationChain } from "./count-relation-chain";

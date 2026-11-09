@@ -190,6 +190,7 @@ test("fraction reasons and inequality numbers are decided by the values", () => 
     const { response, sentence, chosen } = view(
       "inequality-number-blanks",
       seed,
+      1, // Audit the original blanks; clause-practice tests the position choices.
     );
     const value = (t: string) => {
       const [n, d] = ratio(t);

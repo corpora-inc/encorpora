@@ -283,6 +283,8 @@ export const isSweepId = (id: string): id is SweepId => id in sweepAxes;
 export type SweepAxes<K extends SweepId> = AxisValues<(typeof sweepAxes)[K]>;
 
 let legacyOnly = 0;
+/** Shared by versioned clause surfaces so printed legacy editions keep their tasks. */
+export const legacySurfacesOnly = () => legacyOnly > 0;
 /**
  * Run `build` with every sweep family on its legacy surface. Published
  * editions are built this way: a given edition keeps the exact problems it

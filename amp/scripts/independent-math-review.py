@@ -80,6 +80,7 @@ from attribute_math_oracle import ATTRIBUTE, ATTRIBUTE_CHOICE, solve_attribute, 
 from comparison_math_oracle import COMPARISON, COMPARISON_CHOICE, solve_comparison, review_comparison_fixtures, ComparisonCorpus
 from data_display_math_oracle import DATA_DISPLAY, DATA_DISPLAY_CHOICE, solve_data_display, review_data_display_fixtures
 from rational_content_oracle import check_problem as review_rational_problem, review_rational_content
+from clause_variants_math_oracle import handles_public as is_clause_variant, solve as solve_clause_variant, review_problem as review_clause_variant
 
 # Add an independently derived solver here before adding a generated family.
 SUPPORTED = frozenset({
@@ -260,6 +261,8 @@ def solve(public):
 
 
 def solve_family(public):
+    if is_clause_variant(public):
+        return solve_clause_variant(public)
     oracle = FAMILY_ORACLE_FOR.get(public["templateId"])
     if oracle is not None:
         return oracle.solve(public)
@@ -632,6 +635,7 @@ def review(stream):
     completing_square_review = CompletingSquareReview()
     right_triangles = RightTriangleCorpusReview()
     rational_corpus = RationalCorpus()
+    clause_counts = Counter()
     comparison_corpus = ComparisonCorpus()
     number_sense_corpus = NumberSenseCorpus()
     multiply_divide_corpus = MultiplyDivideCorpus()
@@ -645,6 +649,11 @@ def review(stream):
         nonlocal area_volume_equalities
         public = problem['public']
         template, seed = public['templateId'], public['seed']
+        if is_clause_variant(public):
+            review_clause_variant(problem)
+            if record:
+                clause_counts[template] += 1
+            return
         solved = solve_family(public)
         family = FAMILY_ORACLE_FOR.get(template)
         if family is not None and not family.returns_answer:
@@ -900,7 +909,9 @@ def review(stream):
     print('Independent combinatorics content: ' + json.dumps(review_combinatorics_content()), file=sys.stderr)
     print('Independent circle review: ' + json.dumps(review_circle_content()), file=sys.stderr)
     print('Independent radical content: ' + json.dumps(review_radical_content()), file=sys.stderr)
-    print('Independent rational coverage: ' + json.dumps(rational_corpus.finish(count)), file=sys.stderr)
+    legacy_counts = {template: count - clause_counts[template] for template in SUPPORTED}
+    print('Independent clause coverage: ' + json.dumps(dict(clause_counts)), file=sys.stderr)
+    print('Independent rational coverage: ' + json.dumps(rational_corpus.finish(count, legacy_counts)), file=sys.stderr)
     print('Independent rational content: ' + json.dumps(review_rational_content()), file=sys.stderr)
     print('Independent integer-exponent coverage: ' + json.dumps(exponent_review.finish(count)), file=sys.stderr)
     print('Independent integer-exponent content: ' + json.dumps(review_integer_exponent_content()), file=sys.stderr)
@@ -910,7 +921,7 @@ def review(stream):
     print('Independent inequality coverage: ' + json.dumps(inequality_review.finish(count)), file=sys.stderr)
     print('Independent linear-system coverage: ' + json.dumps(system_review.finish(count)), file=sys.stderr)
     print('Independent linear-system worksheet/figure review: ' + json.dumps(review_linear_system_content()), file=sys.stderr)
-    print('Independent right-triangle coverage: ' + json.dumps(right_triangles.finish(count)), file=sys.stderr)
+    print('Independent right-triangle coverage: ' + json.dumps(right_triangles.finish(count, legacy_counts)), file=sys.stderr)
     print('Known polynomial choice shortcuts: ' + json.dumps(polynomial_shortcuts.finish(count)), file=sys.stderr)
     print('Independent factoring breadth and named choice shortcuts: ' + json.dumps(factoring_review.finish(count)), file=sys.stderr)
     print('Independent factoring content: ' + json.dumps(review_factoring_content()), file=sys.stderr)
