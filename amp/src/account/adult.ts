@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import type { Pool } from "pg";
+import type { Pool, PoolClient } from "pg";
 import { z } from "zod";
 import { refreshAdultAccess } from "./adult-access.js";
 import {
@@ -26,6 +26,30 @@ export const startPracticeSchema = z.strictObject({
   timezone,
 });
 
+/** An adult's own learner carries the account's name, or "Me" without one. */
+export async function adultLearnerName(
+  client: Pick<PoolClient, "query">,
+  accountId: string,
+): Promise<string> {
+  const named =
+    accountId.startsWith("amp|") &&
+    (await client.query("SELECT to_regclass('amp_auth_users') AS relation"))
+      .rows[0].relation
+      ? (
+          await client.query<{ name: string | null }>(
+            "SELECT name FROM amp_auth_users WHERE id=$1",
+            [accountId.slice(4)],
+          )
+        ).rows[0]?.name
+      : null;
+  return (
+    named
+      ?.replace(/[\u0000-\u001f\u007f]/g, "")
+      .trim()
+      .slice(0, 60) || "Me"
+  );
+}
+
 /** Makes the account's adult learner with their free allowance and any access
  * supplied by their children or school. A second start returns the same learner. */
 export async function startAdultPractice(
@@ -42,23 +66,7 @@ export async function startAdultPractice(
       await refreshAdultAccess(client, accountId, existing.rows[0].id);
       return { learnerId: existing.rows[0].id };
     }
-    // The adult's own name from their account; "Me" without one.
-    const named =
-      accountId.startsWith("amp|") &&
-      (await client.query("SELECT to_regclass('amp_auth_users') AS relation"))
-        .rows[0].relation
-        ? (
-            await client.query<{ name: string | null }>(
-              "SELECT name FROM amp_auth_users WHERE id=$1",
-              [accountId.slice(4)],
-            )
-          ).rows[0]?.name
-        : null;
-    const name =
-      named
-        ?.replace(/[\u0000-\u001f\u007f]/g, "")
-        .trim()
-        .slice(0, 60) || "Me";
+    const name = await adultLearnerName(client, accountId);
     if (!(await familyHasLearnerRoom(client, accountId)))
       throw new FamilyError(403, "too_many_learners");
     const learnerId = randomUUID();
