@@ -1510,7 +1510,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       {/* One error pattern: a fixed toast that never moves the screen.
           Practice shows its own errors beside the problem. */}
       <Toast message={immersive ? "" : error} onDismiss={() => setError("")} />
-      {student && !immersive && <StudentSignOut />}
       {familyOpen && token && nativeRuntime ? (
         <NativeFamily
           onClose={() => {
@@ -1919,8 +1918,14 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           />
         )
       ) : tab === "library" ? (
-        <main className="library-main">
-          {!readingLesson && (
+        <main className="library-main" aria-busy={!catalog && !loadFailed}>
+          {!catalog && !readingLesson && (
+            <>
+              <h1>Lessons</h1>
+              {!loadFailed && <Loading>Opening lessons…</Loading>}
+            </>
+          )}
+          {catalog && !readingLesson && (
             <>
               <LessonIndex
                 templates={catalog?.templates ?? []}

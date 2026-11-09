@@ -814,8 +814,10 @@ try {
       }),
     ),
   );
-  await page.goto(`${origin}/`);
-  await familyHome(page);
+  await page.goto(`${origin}/overview`);
+  await page
+    .getByRole("heading", { name: "Test Learner", exact: true })
+    .waitFor();
   await page.screenshot({
     path: new URL("returning-learner-home-390.png", shots).pathname,
     fullPage: true,

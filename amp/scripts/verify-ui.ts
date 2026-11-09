@@ -877,6 +877,8 @@ try {
   await page.reload();
   await page.locator("[data-app-logo]").waitFor();
   assert.equal(await currentLearner(page), learnerIds.at(-1));
+  // Choose outside Family, so the assertion detects a disconnected picker.
+  await chooseLearner(page, learnerIds[0]!);
   // Family opens on the current learner, and choosing one there makes them
   // the current learner on every screen.
   await page.getByRole("button", { name: "Open AMP menu" }).click();
@@ -887,13 +889,16 @@ try {
     .click();
   assert.equal(
     await page.getByLabel("Family learner").getAttribute("data-value"),
-    learnerIds.at(-1),
+    learnerIds[0],
   );
-  await choose(page.getByLabel("Family learner"), learnerIds[0]!);
+  await choose(page.getByLabel("Family learner"), learnerIds.at(-1)!);
   await leaveSettings(page);
-  assert.equal(await currentLearner(page), learnerIds[0]);
+  assert.equal(await currentLearner(page), learnerIds.at(-1));
   await chooseLearner(page, learnerIds.at(-1)!);
-  await page.goto("http://127.0.0.1:4350/profile/birth-year");
+  await page.goto("http://127.0.0.1:4350/overview");
+  await page
+    .getByRole("button", { name: "Change birth year", exact: true })
+    .click();
   await page.getByRole("heading", { name: /^What year was/ }).waitFor();
   assert.ok(
     await page.evaluate(

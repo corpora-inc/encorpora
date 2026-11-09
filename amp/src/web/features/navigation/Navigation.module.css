@@ -160,12 +160,11 @@
   padding: 0 var(--space-2);
 }
 .current strong {
-  overflow: hidden;
+  min-width: 0;
   font-size: 19px;
   font-weight: 650;
   letter-spacing: -0.02em;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
 }
 .context {
   color: var(--color-muted-text);

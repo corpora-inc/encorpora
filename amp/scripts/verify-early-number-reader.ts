@@ -161,6 +161,41 @@ try {
             `Unreadable ${earlyNumberModels[i]!.id} ${width}: ${JSON.stringify({ readability, geometry })}`,
           );
         }
+        const palette = await page.evaluate<{
+          background: number;
+          boundary: number;
+          units: { edge: number; cells: number }[];
+        }>(String.raw`(() => {
+          const luminance = (color) => {
+            const rgb = color.match(/[\d.]+/g).slice(0, 3).map(Number).map((v) => v / 255);
+            const linear = rgb.map((v) => v <= .04045 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4);
+            return linear[0] * .2126 + linear[1] * .7152 + linear[2] * .0722;
+          };
+          const contrast = (a, b) => (Math.max(a, b) + .05) / (Math.min(a, b) + .05);
+          const board = getComputedStyle(document.querySelector('.early-number-art rect:not([data-unit])'));
+          const background = luminance(board.fill);
+          const units = [...document.querySelectorAll('[data-unit]')].map((el) => {
+            const style = getComputedStyle(el), fill = luminance(style.fill), stroke = luminance(style.stroke);
+            return { edge: Math.max(contrast(fill, background), contrast(stroke, background)), cells: contrast(fill, stroke) };
+          });
+          return { background, boundary: contrast(background, luminance(board.stroke)), units };
+        })()`);
+        if (
+          !Number.isFinite(palette.background) ||
+          !Number.isFinite(palette.boundary) ||
+          (theme === "dark" && palette.background > 0.2) ||
+          palette.boundary < 3 ||
+          palette.units.some(
+            (u) =>
+              !Number.isFinite(u.edge) ||
+              !Number.isFinite(u.cells) ||
+              u.edge < 3 ||
+              u.cells < 3,
+          )
+        )
+          throw new Error(
+            `Early-number palette ${earlyNumberModels[i]!.id} ${theme}: ${JSON.stringify(palette)}`,
+          );
         await page.screenshot({
           path: resolve(
             output,

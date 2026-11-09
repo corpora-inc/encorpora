@@ -267,6 +267,21 @@ header {
   border-radius: 50%;
   background: var(--strand, var(--color-primary));
 }
+/* On a phone the full topic gets the width of the problem, while the shared
+   bar keeps its logo and tools in their fixed positions. */
+.practice-surface > .practice-topic {
+  display: none;
+}
+@media (max-width: 639px) {
+  .practice-surface > .practice-topic {
+    display: flex;
+    flex: none;
+    min-height: 40px;
+    margin: 0;
+    padding: 4px 0;
+    font-size: 14px;
+  }
+}
 .problem-content .question {
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -1558,9 +1573,8 @@ html[data-input="pointer"] :focus-visible {
   font-size: 15px;
 }
 
-/* Labels in tabs and segmented filters never wrap, whatever the font. */
-.app-shell > nav button,
-.progress-filters button {
+/* The legacy native tab strip keeps its labels on one line. */
+.app-shell > nav button {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1568,10 +1582,6 @@ html[data-input="pointer"] :focus-visible {
 @media (max-width: 360px) {
   .app-shell > nav button {
     padding: 6px 4px;
-    font-size: 13px;
-  }
-  .progress-filters button {
-    padding-inline: 6px;
     font-size: 13px;
   }
   .shell .progress-card-title {

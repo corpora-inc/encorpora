@@ -1,7 +1,7 @@
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
-import { chromium as rawChromium, type Page } from "playwright";
+import { chromium as rawChromium, webkit, type Page } from "playwright";
 const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { retentionNotice } from "../src/family/contracts";
@@ -24,6 +24,7 @@ const session = {
   token: `st_${"a".repeat(43)}`,
 };
 type State = {
+  name?: string;
   seated: boolean;
   birthYear: number | null;
   levels: "hidden" | "choice" | "shown";
@@ -45,7 +46,7 @@ function me(state: State) {
     learners: [
       {
         id: learnerId,
-        name: "Fixture Student",
+        name: state.name ?? "Fixture Student",
         birthYear: state.birthYear,
         entitlement: {
           active: state.seated,
@@ -64,7 +65,7 @@ function me(state: State) {
       learners: [
         {
           id: learnerId,
-          name: "Fixture Student",
+          name: state.name ?? "Fixture Student",
           birthYear: state.birthYear,
           deletedAt: null,
           access: [],
@@ -100,7 +101,9 @@ function fresh(overrides: Partial<State> = {}): State {
 }
 
 await vite.listen();
-const browser = await chromium.launch();
+const browser = await (
+  process.argv.includes("--webkit") ? webkit : chromium
+).launch();
 async function open(
   state: State,
   options: {
@@ -216,6 +219,86 @@ function noParentCalls(requests: string[]) {
 }
 
 try {
+  for (const width of [320, 390, 768, 1280])
+    for (const dark of [false, true]) {
+      const name = "Alexandria Cedar-River Learning";
+      const { page, close } = await open(fresh({ name }), {
+        width,
+        dark,
+        path: "/overview",
+      });
+      try {
+        await page.getByRole("button", { name: "Go", exact: true }).waitFor();
+        await drawer(page);
+        const label = page
+          .locator('[aria-label="Where you are"] strong')
+          .filter({ hasText: name });
+        await label.waitFor();
+        assert.equal(
+          await label.evaluate((el) => {
+            const range = document.createRange();
+            range.selectNodeContents(el);
+            const box = el.getBoundingClientRect();
+            return [...range.getClientRects()].every(
+              (r) =>
+                r.left >= box.left - 1 &&
+                r.right <= box.right + 1 &&
+                r.bottom <= box.bottom + 1,
+            );
+          }),
+          true,
+          `${width}: the student's full name must be visible`,
+        );
+        await page.waitForTimeout(350);
+        await page.screenshot({
+          path: `${shots}/long-name-${width}-${dark ? "dark" : "light"}.png`,
+        });
+      } finally {
+        await close();
+      }
+    }
+  // The primary action must receive the tap. A floating sign-out button once
+  // covered it while still passing element-box and horizontal-overflow checks.
+  for (const width of [320, 390, 768, 1280])
+    for (const dark of [false, true]) {
+      const { page, close } = await open(fresh(), {
+        width,
+        dark,
+        path: "/overview",
+      });
+      try {
+        await page.getByRole("button", { name: "Go", exact: true }).waitFor();
+        const practice = page.getByRole("link", {
+          name: "Practice",
+          exact: true,
+        });
+        await practice.waitFor();
+        assert.equal(
+          await practice.evaluate((link) => {
+            const box = link.getBoundingClientRect();
+            const target = document.elementFromPoint(
+              box.x + box.width / 2,
+              box.y + box.height / 2,
+            );
+            return !!target && link.contains(target);
+          }),
+          true,
+          `${width}/${dark ? "dark" : "light"}: Practice must receive the tap`,
+        );
+        await page.waitForTimeout(350);
+        await page.screenshot({
+          path: `${shots}/practice-target-${width}-${dark ? "dark" : "light"}.png`,
+        });
+        await practice.click();
+        await page.waitForURL(`${origin}/practice`);
+        assert.ok(
+          await page.evaluate(() => sessionStorage.getItem("amp.student")),
+          "Practice must preserve the student session",
+        );
+      } finally {
+        await close();
+      }
+    }
   for (const width of [320, 390, 768, 1280])
     for (const dark of [false, true]) {
       const label = `${width}-${dark ? "dark" : "light"}`;

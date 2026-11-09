@@ -531,6 +531,12 @@
   width: 100%;
   display: block;
 }
+/* Screen boards follow the reading surface. Units retain their contrasting
+   fills, outlines and hatching; printed diagrams keep their authored palette. */
+.book-screen-figure.early-number-figure svg rect:not([data-unit]) {
+  fill: var(--color-surface-raised);
+  stroke: var(--color-muted-text);
+}
 .early-number-figure .early-unit,
 .early-number-figure .early-emphasis,
 .early-number-figure .early-panel-label {

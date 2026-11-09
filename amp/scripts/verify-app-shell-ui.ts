@@ -17,13 +17,30 @@ import { chromium as rawChromium, webkit, type Page } from "playwright";
 const chromium = secureChromium(rawChromium);
 import { hoverHugs, probe, settle, shellRecord } from "./app-shell-probe";
 import { shellScenarios, startShellFixture } from "./app-shell-fixture";
+import { verifyShellReview } from "./app-shell-review";
 
 const argument = (name: string) => {
   const index = process.argv.indexOf(`--${name}`);
   return index > 0 ? process.argv[index + 1] : undefined;
 };
 const selectedCase = argument("case");
-if (selectedCase && !["frontier-switch", "drawer-trial"].includes(selectedCase))
+if (
+  selectedCase &&
+  ![
+    "frontier-switch",
+    "drawer-trial",
+    "trial-refresh",
+    "trial-return",
+    "trial-retry",
+    "library-search",
+    "practice-title",
+    "library-loading",
+    "progress-loading",
+    "progress-large-text",
+    "review-loading",
+    "review-edges",
+  ].includes(selectedCase)
+)
   throw new Error(`Unknown app-shell case: ${selectedCase}`);
 const engine = argument("engine") ?? "chromium";
 const shots = argument("shots");
@@ -653,6 +670,29 @@ async function verifyDrawerTrialResolution() {
 }
 
 try {
+  if (
+    !selectedCase ||
+    [
+      "trial-refresh",
+      "trial-return",
+      "trial-retry",
+      "library-search",
+      "practice-title",
+      "library-loading",
+      "progress-loading",
+      "progress-large-text",
+      "review-loading",
+      "review-edges",
+    ].includes(selectedCase)
+  )
+    await verifyShellReview({
+      browser,
+      fixture,
+      viewports,
+      shots,
+      engine,
+      only: selectedCase === "review-loading" ? undefined : selectedCase,
+    });
   if (!selectedCase) await verifyShell();
   if (!selectedCase || selectedCase === "frontier-switch")
     await verifyFrontierSwitch();

@@ -82,7 +82,7 @@
 }
 /* Keep all four Account tabs visible on the narrowest supported phones. */
 @media (max-width: 359px) {
-  .tab {
+  .tabs[aria-label="Account"] .tab {
     padding-inline: var(--space-1);
   }
 }

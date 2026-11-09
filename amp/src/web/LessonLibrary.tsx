@@ -72,7 +72,7 @@ export function LessonLibrary(props: {
     if ("q" in next) written.current.add(next.q ?? "");
     navigate(
       { pathname: "/lessons", search: search.toString() },
-      { replace: "q" in next },
+      { replace: "q" in next, resetScroll: false },
     );
   };
   const query = useDeferredValue(text.trim());
@@ -156,193 +156,195 @@ export function LessonLibrary(props: {
   return (
     <section className={`lesson-index ${styles.library}`} aria-label="Lessons">
       <h1 className={styles.title}>Lessons</h1>
-      <div className={styles.bar} role="search">
-        <label className={styles.search}>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="11" cy="11" r="6.5" />
-            <path d="m16 16 4.5 4.5" />
-          </svg>
-          <input
-            type="search"
-            className={styles.input}
-            aria-label="Search lessons"
-            placeholder="Search lessons and math words"
-            maxLength={80}
-            value={text}
-            autoComplete="off"
-            enterKeyHint="search"
-            onChange={(event) => {
-              setText(event.target.value);
-              write({ q: event.target.value.trim() });
-            }}
-            onKeyDown={(event) => {
-              if (event.key === "Escape" && text) {
-                event.preventDefault();
+      <div className={styles.body}>
+        <div className={styles.bar} role="search">
+          <label className={styles.search}>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5" />
+              <path d="m16 16 4.5 4.5" />
+            </svg>
+            <input
+              type="search"
+              className={styles.input}
+              aria-label="Search lessons"
+              placeholder="Search lessons and math words"
+              maxLength={80}
+              value={text}
+              autoComplete="off"
+              enterKeyHint="search"
+              onChange={(event) => {
+                setText(event.target.value);
+                write({ q: event.target.value.trim() });
+              }}
+              onKeyDown={(event) => {
+                if (event.key === "Escape" && text) {
+                  event.preventDefault();
+                  setText("");
+                  write({ q: "" });
+                }
+              }}
+            />
+            <button
+              type="button"
+              className={styles.clear}
+              aria-label="Clear search"
+              hidden={!text}
+              onClick={(event) => {
                 setText("");
                 write({ q: "" });
-              }
-            }}
-          />
-          <button
-            type="button"
-            className={styles.clear}
-            aria-label="Clear search"
-            hidden={!text}
-            onClick={(event) => {
-              setText("");
-              write({ q: "" });
-              event.currentTarget
-                .closest("label")
-                ?.querySelector("input")
-                ?.focus();
-            }}
+                event.currentTarget
+                  .closest("label")
+                  ?.querySelector("input")
+                  ?.focus();
+              }}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m7 7 10 10M17 7 7 17" />
+              </svg>
+            </button>
+          </label>
+          <Select
+            aria-label="Math area"
+            className={styles.area}
+            value={strand}
+            onValueChange={(value) => write({ strand: value })}
           >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="m7 7 10 10M17 7 7 17" />
-            </svg>
-          </button>
-        </label>
-        <Select
-          aria-label="Math area"
-          className={styles.area}
-          value={strand}
-          onValueChange={(value) => write({ strand: value })}
-        >
-          <option value="">Every math area</option>
-          {Object.entries(strandNames).map(([key, name]) => (
-            <option key={key} value={key}>
-              {name}
-            </option>
-          ))}
-        </Select>
-      </div>
-      <CurriculumDetailsControl />
-      <p className={styles.summary} role="status" aria-live="polite">
-        {summary}
-      </p>
-      {words.length > 0 && (
-        <ul className={styles.words} aria-label="Math words">
-          {words.map((entry) => (
-            <li key={entry.id}>
-              <strong>{entry.term}</strong> <MathText text={entry.plain} />
-            </li>
-          ))}
-        </ul>
-      )}
-      {bands.map(({ band, lessons: bandLessons, types: bandTypes }) => {
-        const visibleLessons = bandLessons.filter((item) =>
-          shown.has(`lesson:${item.id}`),
-        ).length;
-        const visibleTypes = bandTypes.reduce(
-          (sum, group) =>
-            sum +
-            group.list.filter((item) => shown.has(`type:${item.id}`)).length,
-          0,
-        );
-        const open = !detailsShown || !closed.has(band);
-        return (
-          <section
-            key={band}
-            className={styles.band}
-            data-band={band}
-            hidden={!visibleLessons && !visibleTypes}
-          >
-            <h2 className={styles.bandHeading} hidden={!detailsShown}>
-              <button
-                type="button"
-                aria-expanded={open}
-                onClick={() =>
-                  setClosed((current) => {
-                    const next = new Set(current);
-                    if (open) next.add(band);
-                    else next.delete(band);
-                    return next;
-                  })
-                }
-              >
-                <span>{bandLabel(band)}</span>
-                <span className={styles.bandCount}>
-                  {visibleLessons + visibleTypes}
-                </span>
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="m6 9 6 6 6-6" />
-                </svg>
-              </button>
-            </h2>
-            <div className={styles.bandBody} hidden={!open}>
-              <ul
-                className={styles.lessons}
-                aria-label={
-                  detailsShown ? `${bandLabel(band)} lessons` : "Lessons"
-                }
-                hidden={!visibleLessons}
-              >
-                {bandLessons.map((item) => (
-                  <li key={item.id} hidden={!shown.has(`lesson:${item.id}`)}>
-                    <button
-                      type="button"
-                      data-lesson-id={item.id}
-                      data-strand={item.strand}
-                      onClick={(event) => {
-                        const lesson = lessonById.get(item.id);
-                        if (lesson)
-                          props.openReference(lesson, event.currentTarget);
-                      }}
-                    >
-                      <span className={styles.lessonTitle}>
-                        <MathText text={item.title} />
-                      </span>
-                      <span className={styles.lessonSummary}>
-                        <MathText text={item.summary} />
-                      </span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-              <div className={styles.types} hidden={!visibleTypes}>
-                <h3>Practice by problem type</h3>
-                {bandTypes.map((group) => {
-                  const visible = group.list.some((item) =>
-                    shown.has(`type:${item.id}`),
-                  );
-                  return (
-                    <ul
-                      key={group.strand}
-                      className="topic-list"
-                      data-strand={group.strand}
-                      aria-label={
-                        detailsShown
-                          ? `${strandNames[group.strand]}, ${bandLabel(band)}`
-                          : strandNames[group.strand]
-                      }
-                      hidden={!visible}
-                    >
-                      {group.list.map((item) => (
-                        <li
-                          key={item.id}
-                          hidden={!shown.has(`type:${item.id}`)}
-                        >
-                          <button
-                            type="button"
-                            data-template={item.id}
-                            onClick={() => props.openTopic(item.id)}
+            <option value="">Every math area</option>
+            {Object.entries(strandNames).map(([key, name]) => (
+              <option key={key} value={key}>
+                {name}
+              </option>
+            ))}
+          </Select>
+        </div>
+        <CurriculumDetailsControl />
+        <p className={styles.summary} role="status" aria-live="polite">
+          {summary}
+        </p>
+        {words.length > 0 && (
+          <ul className={styles.words} aria-label="Math words">
+            {words.map((entry) => (
+              <li key={entry.id}>
+                <strong>{entry.term}</strong> <MathText text={entry.plain} />
+              </li>
+            ))}
+          </ul>
+        )}
+        {bands.map(({ band, lessons: bandLessons, types: bandTypes }) => {
+          const visibleLessons = bandLessons.filter((item) =>
+            shown.has(`lesson:${item.id}`),
+          ).length;
+          const visibleTypes = bandTypes.reduce(
+            (sum, group) =>
+              sum +
+              group.list.filter((item) => shown.has(`type:${item.id}`)).length,
+            0,
+          );
+          const open = !detailsShown || !closed.has(band);
+          return (
+            <section
+              key={band}
+              className={styles.band}
+              data-band={band}
+              hidden={!visibleLessons && !visibleTypes}
+            >
+              <h2 className={styles.bandHeading} hidden={!detailsShown}>
+                <button
+                  type="button"
+                  aria-expanded={open}
+                  onClick={() =>
+                    setClosed((current) => {
+                      const next = new Set(current);
+                      if (open) next.add(band);
+                      else next.delete(band);
+                      return next;
+                    })
+                  }
+                >
+                  <span>{bandLabel(band)}</span>
+                  <span className={styles.bandCount}>
+                    {visibleLessons + visibleTypes}
+                  </span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+              </h2>
+              <div className={styles.bandBody} hidden={!open}>
+                <ul
+                  className={styles.lessons}
+                  aria-label={
+                    detailsShown ? `${bandLabel(band)} lessons` : "Lessons"
+                  }
+                  hidden={!visibleLessons}
+                >
+                  {bandLessons.map((item) => (
+                    <li key={item.id} hidden={!shown.has(`lesson:${item.id}`)}>
+                      <button
+                        type="button"
+                        data-lesson-id={item.id}
+                        data-strand={item.strand}
+                        onClick={(event) => {
+                          const lesson = lessonById.get(item.id);
+                          if (lesson)
+                            props.openReference(lesson, event.currentTarget);
+                        }}
+                      >
+                        <span className={styles.lessonTitle}>
+                          <MathText text={item.title} />
+                        </span>
+                        <span className={styles.lessonSummary}>
+                          <MathText text={item.summary} />
+                        </span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+                <div className={styles.types} hidden={!visibleTypes}>
+                  <h3>Practice by problem type</h3>
+                  {bandTypes.map((group) => {
+                    const visible = group.list.some((item) =>
+                      shown.has(`type:${item.id}`),
+                    );
+                    return (
+                      <ul
+                        key={group.strand}
+                        className="topic-list"
+                        data-strand={group.strand}
+                        aria-label={
+                          detailsShown
+                            ? `${strandNames[group.strand]}, ${bandLabel(band)}`
+                            : strandNames[group.strand]
+                        }
+                        hidden={!visible}
+                      >
+                        {group.list.map((item) => (
+                          <li
+                            key={item.id}
+                            hidden={!shown.has(`type:${item.id}`)}
                           >
-                            {/* One flex child: text and formulas wrap
+                            <button
+                              type="button"
+                              data-template={item.id}
+                              onClick={() => props.openTopic(item.id)}
+                            >
+                              {/* One flex child: text and formulas wrap
                                 together as a line, never word by word. */}
-                            <span>
-                              <MathText text={item.title} />
-                            </span>
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  );
-                })}
+                              <span>
+                                <MathText text={item.title} />
+                              </span>
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          </section>
-        );
-      })}
+            </section>
+          );
+        })}
+      </div>
     </section>
   );
 }

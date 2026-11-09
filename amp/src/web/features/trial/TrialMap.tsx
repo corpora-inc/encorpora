@@ -4,7 +4,8 @@ import {
 } from "../curriculum/CurriculumDetails";
 import { useQuery } from "@tanstack/react-query";
 import { Link, Navigate } from "@tanstack/react-router";
-import { useEffect, useMemo } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { Toast } from "../../ui/Toast";
 import { strandNames } from "../../BirthYearPrompt";
 import { FrontierMap, gradeName } from "../../Home";
 import { LevelReadout } from "../../ui/LevelReadout";
@@ -43,7 +44,7 @@ export function TrialMap() {
     );
   if (session.isPending) return <TrialSkeleton wide framed />;
   if (!session.data) return <Navigate to="/try" replace />;
-  return <MapView session={session.data} />;
+  return <MapView key={session.data.learnerId} session={session.data} />;
 }
 
 function MapView({ session }: { session: TrialSession }) {
@@ -56,6 +57,23 @@ function MapView({ session }: { session: TrialSession }) {
     retryOnMount: false,
   });
   const catalog = useQuery(catalogOptions);
+  const presented = useRef(false);
+  const canPresentMap =
+    !!progress.data &&
+    !!catalog.data &&
+    !(
+      progress.data.phase === "placement" && progress.data.totals.answered === 0
+    ) &&
+    !isEnded(progress.error) &&
+    (!progress.error || presented.current);
+  useLayoutEffect(() => {
+    if (canPresentMap) presented.current = true;
+  }, [canPresentMap]);
+  const [dismissedRefresh, setDismissedRefresh] = useState(0);
+  const refreshErrorAt = Math.max(
+    progress.errorUpdatedAt,
+    catalog.errorUpdatedAt,
+  );
   const evidence = useQuery(trialEvidenceOptions(session));
   const offered = useTrialBuyOffered();
   const shareMap = useMemo(
@@ -78,7 +96,9 @@ function MapView({ session }: { session: TrialSession }) {
     track("map_view");
   }, []);
   if (isEnded(progress.error)) return <TrialEnded />;
-  if (progress.error)
+  // A failed arrival needs an explicit retry. Once this view has presented
+  // a valid snapshot, a background refresh error must not take it away.
+  if (progress.error && (!progress.data || !presented.current))
     return (
       <TrialFailure
         framed
@@ -86,7 +106,7 @@ function MapView({ session }: { session: TrialSession }) {
         retry={() => progress.refetch()}
       />
     );
-  if (catalog.error)
+  if (catalog.error && !catalog.data)
     return (
       <TrialFailure
         framed
@@ -113,6 +133,15 @@ function MapView({ session }: { session: TrialSession }) {
   // logo and the Progress tabs): one column, no card.
   return (
     <main className={styles.mapPage}>
+      <Toast
+        message={
+          (progress.error || catalog.error) &&
+          refreshErrorAt !== dismissedRefresh
+            ? "Progress could not be refreshed. Check your connection and try again."
+            : ""
+        }
+        onDismiss={() => setDismissedRefresh(refreshErrorAt)}
+      />
       <section className={styles.panel}>
         <p className={styles.eyebrow}>
           {p.phase === "placement" ? "Placement in progress" : "Free practice"}
