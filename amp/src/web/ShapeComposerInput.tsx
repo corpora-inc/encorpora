@@ -538,7 +538,10 @@ export function ShapeComposerInput({
         aria-live="polite"
         aria-atomic="true"
       >
-        {announcement} About {empty}% of the outline is empty.{" "}
+        {resolved
+          ? `Shape ${stageIndex + 1}. ${showAnswer || skipped ? "One way to fill the outline" : "Your arrangement"}. ${placements.map((p) => describe(p, "placed")).join(" ")}`
+          : announcement}{" "}
+        About {empty}% of the outline is empty.{" "}
         {status.overlap ? "Pieces overlap." : ""}{" "}
         {status.outside ? "A piece sticks out." : ""}
       </span>

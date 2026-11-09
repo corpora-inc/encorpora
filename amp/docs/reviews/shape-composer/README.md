@@ -6,7 +6,7 @@ The client declares `shape-composer-v1`. Older clients continue to receive compa
 
 Tap a tray piece and a grid space to place it. Turn rotates clockwise by 90 degrees; Flip mirrors the right-trapezoid piece. Placed pieces can be moved or removed. Dragging also places pieces. The tray scrolls horizontally on phones. Keyboard controls use arrows, Enter, R, F, Delete and Escape. A live region announces the selected piece, rotation, placement, overlap or overhang, and an approximate percentage left empty. The percentage is an accessibility estimate; grading is exact.
 
-The outline stays visible above the pieces. Overlaps and overhangs have stripes. Selection uses an unfilled dashed outline and disappears after grading. The inactive tray is hidden in review so the whole board fits above the phone's feedback panel. The feedback's “Show one way” button replaces the displayed arrangement in the same board.
+The outline stays visible above the pieces. Overlaps and overhangs have stripes. Selection uses an unfilled dashed outline and disappears after grading. The inactive tray is hidden in review so the whole board fits above the phone's feedback panel. The feedback's “Show one way” button replaces the displayed arrangement in the same board. Screen-reader review describes every displayed piece, its rotation and its position for either arrangement.
 
 ## Exact grading and guess chance
 

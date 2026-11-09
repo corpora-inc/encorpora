@@ -376,6 +376,12 @@ try {
           const outcome = await res.json();
           assert.equal(outcome.correct, correct, JSON.stringify(outcome));
           await page.locator(".feedback").waitFor();
+          assert.match(
+            (await page
+              .locator('.shape-composer [role="status"]')
+              .textContent())!,
+            /Your arrangement.*Turned \d+ degrees.*Column \d+, row \d+/,
+          );
           assert.equal(await page.locator(".shape-cursor").count(), 0);
           assert.equal(
             await page.locator(".shape-tray [aria-pressed=true]").count(),
@@ -420,6 +426,12 @@ try {
           await page
             .getByRole("button", { name: "Show one way", exact: true })
             .click();
+          assert.match(
+            (await page
+              .locator('.shape-composer [role="status"]')
+              .textContent())!,
+            /One way to fill the outline.*Turned \d+ degrees.*Column \d+, row \d+/,
+          );
           assert.equal(await page.locator(".shape-cursor").count(), 0);
           if (correct && width === 390 && theme === "light") {
             const report = await page.request.post(
