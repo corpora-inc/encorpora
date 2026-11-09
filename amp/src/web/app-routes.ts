@@ -13,14 +13,18 @@ export function useAppRoute() {
   // Migration adapter for existing screen links. New features use typed routes directly.
   const navigate = (
     to: string | { pathname?: string; search?: string },
-    options: { replace?: boolean } = {},
+    options: { replace?: boolean; resetScroll?: boolean } = {},
   ) => {
     const href =
       typeof to === "string"
         ? to
         : (to.pathname ?? current.pathname) +
           (to.search ? (to.search.startsWith("?") ? "" : "?") + to.search : "");
-    void router.navigate({ href, replace: options.replace });
+    void router.navigate({
+      href,
+      replace: options.replace,
+      resetScroll: options.resetScroll,
+    });
   };
   const parts = location.pathname.split("/").filter(Boolean);
   const familySection: FamilySection = [

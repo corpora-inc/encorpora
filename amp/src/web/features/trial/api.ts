@@ -321,7 +321,7 @@ export async function nextProblem(
     throw error;
   }
 }
-export function answer(
+export async function answer(
   session: TrialSession,
   input: {
     problemId: string;
@@ -330,19 +330,29 @@ export function answer(
     hintViewed?: boolean;
   },
 ) {
-  return request(
-    `/learners/${encodeURIComponent(session.learnerId)}/attempts`,
-    outcomeSchema,
-    { trial: session.token, body: input },
-  );
+  try {
+    return await request(
+      `/learners/${encodeURIComponent(session.learnerId)}/attempts`,
+      outcomeSchema,
+      { trial: session.token, body: input },
+    );
+  } finally {
+    // A lost response can follow a committed answer. The next screen must
+    // read the server's count even when practice offers an idempotent retry.
+    await invalidateProgress(session, "none");
+  }
 }
 /** Skip: the worked answer, as a neutral reveal (learning/skip.ts). */
-export function skip(session: TrialSession, problemId: string) {
-  return request(
-    `/learners/${encodeURIComponent(session.learnerId)}/skips`,
-    outcomeSchema,
-    { trial: session.token, body: { problemId } },
-  );
+export async function skip(session: TrialSession, problemId: string) {
+  try {
+    return await request(
+      `/learners/${encodeURIComponent(session.learnerId)}/skips`,
+      outcomeSchema,
+      { trial: session.token, body: { problemId } },
+    );
+  } finally {
+    await invalidateProgress(session, "none");
+  }
 }
 export function hint(session: TrialSession, problemId: string) {
   return request(
@@ -384,9 +394,16 @@ export function recordPaywall(session: TrialSession) {
   );
 }
 /** Answers change the meter, the map and the paywall summary. */
-export function invalidateProgress(session: TrialSession) {
+export async function invalidateProgress(
+  session: TrialSession,
+  refetchType: "active" | "none" = "active",
+) {
+  // A read started before the answer must not restore the old totals after
+  // invalidation, or satisfy the next screen's short cache reuse window.
+  await queryClient.cancelQueries({ queryKey: ["trial", session.learnerId] });
   return queryClient.invalidateQueries({
     queryKey: ["trial", session.learnerId],
+    refetchType,
   });
 }
 /** The trial ended on the server (expired or saved): forget it here. */

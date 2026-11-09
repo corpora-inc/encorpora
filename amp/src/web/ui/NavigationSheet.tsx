@@ -21,6 +21,7 @@ export function NavigationSheet({
   triggerRef,
   header,
   footer,
+  onCloseAutoFocus,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -30,6 +31,7 @@ export function NavigationSheet({
   header?: ReactNode;
   /** The end of the sheet: it scrolls with the body, never pinned over it. */
   footer?: ReactNode;
+  onCloseAutoFocus?: (event: Event) => void;
 }) {
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
@@ -50,6 +52,7 @@ export function NavigationSheet({
           className={`${styles.sheet} ${header ? styles.framed : ""}`}
           aria-describedby={undefined}
           data-navigation-sheet
+          onCloseAutoFocus={onCloseAutoFocus}
         >
           {header ? (
             <>

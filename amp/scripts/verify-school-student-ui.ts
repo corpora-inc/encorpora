@@ -1,7 +1,7 @@
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
-import { chromium as rawChromium, type Page } from "playwright";
+import { chromium as rawChromium, webkit, type Page } from "playwright";
 const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { retentionNotice } from "../src/family/contracts";
@@ -24,6 +24,7 @@ const session = {
   token: `st_${"a".repeat(43)}`,
 };
 type State = {
+  name?: string;
   seated: boolean;
   birthYear: number | null;
   levels: "hidden" | "choice" | "shown";
@@ -45,7 +46,7 @@ function me(state: State) {
     learners: [
       {
         id: learnerId,
-        name: "Fixture Student",
+        name: state.name ?? "Fixture Student",
         birthYear: state.birthYear,
         entitlement: {
           active: state.seated,
@@ -64,7 +65,7 @@ function me(state: State) {
       learners: [
         {
           id: learnerId,
-          name: "Fixture Student",
+          name: state.name ?? "Fixture Student",
           birthYear: state.birthYear,
           deletedAt: null,
           access: [],
@@ -100,7 +101,9 @@ function fresh(overrides: Partial<State> = {}): State {
 }
 
 await vite.listen();
-const browser = await chromium.launch();
+const browser = await (
+  process.argv.includes("--webkit") ? webkit : chromium
+).launch();
 async function open(
   state: State,
   options: {
@@ -218,6 +221,86 @@ function noParentCalls(requests: string[]) {
 try {
   for (const width of [320, 390, 768, 1280])
     for (const dark of [false, true]) {
+      const name = "Alexandria Cedar-River Learning";
+      const { page, close } = await open(fresh({ name }), {
+        width,
+        dark,
+        path: "/overview",
+      });
+      try {
+        await page.getByRole("button", { name: "Go", exact: true }).waitFor();
+        await drawer(page);
+        const label = page
+          .locator('[aria-label="Where you are"] strong')
+          .filter({ hasText: name });
+        await label.waitFor();
+        assert.equal(
+          await label.evaluate((el) => {
+            const range = document.createRange();
+            range.selectNodeContents(el);
+            const box = el.getBoundingClientRect();
+            return [...range.getClientRects()].every(
+              (r) =>
+                r.left >= box.left - 1 &&
+                r.right <= box.right + 1 &&
+                r.bottom <= box.bottom + 1,
+            );
+          }),
+          true,
+          `${width}: the student's full name must be visible`,
+        );
+        await page.waitForTimeout(350);
+        await page.screenshot({
+          path: `${shots}/long-name-${width}-${dark ? "dark" : "light"}.png`,
+        });
+      } finally {
+        await close();
+      }
+    }
+  // The primary action must receive the tap. A floating sign-out button once
+  // covered it while still passing element-box and horizontal-overflow checks.
+  for (const width of [320, 390, 768, 1280])
+    for (const dark of [false, true]) {
+      const { page, close } = await open(fresh(), {
+        width,
+        dark,
+        path: "/overview",
+      });
+      try {
+        await page.getByRole("button", { name: "Go", exact: true }).waitFor();
+        const practice = page.getByRole("link", {
+          name: "Practice",
+          exact: true,
+        });
+        await practice.waitFor();
+        assert.equal(
+          await practice.evaluate((link) => {
+            const box = link.getBoundingClientRect();
+            const target = document.elementFromPoint(
+              box.x + box.width / 2,
+              box.y + box.height / 2,
+            );
+            return !!target && link.contains(target);
+          }),
+          true,
+          `${width}/${dark ? "dark" : "light"}: Practice must receive the tap`,
+        );
+        await page.waitForTimeout(350);
+        await page.screenshot({
+          path: `${shots}/practice-target-${width}-${dark ? "dark" : "light"}.png`,
+        });
+        await practice.click();
+        await page.waitForURL(`${origin}/practice`);
+        assert.ok(
+          await page.evaluate(() => sessionStorage.getItem("amp.student")),
+          "Practice must preserve the student session",
+        );
+      } finally {
+        await close();
+      }
+    }
+  for (const width of [320, 390, 768, 1280])
+    for (const dark of [false, true]) {
       const label = `${width}-${dark ? "dark" : "light"}`;
       const { page, requests, close } = await open(fresh({ seated: false }), {
         width,
@@ -228,6 +311,7 @@ try {
       assert.equal(await page.getByText("Choose a plan").count(), 0);
       await noOverflow(page, `seat card ${label}`);
       await page.screenshot({ path: `${shots}/seat-${label}.png` });
+      const reads = requests.length;
       await drawer(page);
       const menu = page.getByRole("navigation", { name: "AMP navigation" });
       await menu.waitFor();
@@ -235,8 +319,31 @@ try {
       assert.equal(await menu.getByText("See plans").count(), 0);
       assert.equal(await page.getByText("Show grade numbers").count(), 0);
       await page.getByText("Fixture Academy").waitFor();
+      await page.getByText("Period 1").waitFor();
       await page.getByRole("button", { name: "Sign out" }).waitFor();
       await noOverflow(page, `menu ${label}`);
+      const sheet = page.getByRole("dialog", {
+        name: "Adaptive Math Pathways",
+      });
+      await page.waitForTimeout(250);
+      const content = await sheet.innerText();
+      const bounds = await sheet.boundingBox();
+      await page.waitForTimeout(500);
+      assert.equal(
+        await sheet.innerText(),
+        content,
+        "student drawer text stays settled",
+      );
+      assert.deepEqual(
+        await sheet.boundingBox(),
+        bounds,
+        "student drawer keeps its geometry",
+      );
+      assert.equal(
+        requests.length,
+        reads,
+        "student drawer reuses the screen's data",
+      );
       await page.screenshot({ path: `${shots}/menu-${label}.png` });
       noParentCalls(requests);
       await close();
@@ -270,8 +377,9 @@ try {
     assert.equal(await page.getByText("Change birth year").count(), 0);
     assert.equal(await page.getByText("Show grade numbers").count(), 0);
     await drawer(page);
-    await page.getByText("Your progress").waitFor();
-    assert.equal(await page.getByText("Estimated level").count(), 0);
+    await page.getByRole("link", { name: "Progress", exact: true }).click();
+    await page.waitForURL(`${origin}/overview`);
+    assert.equal(await page.getByTestId("level-readout").count(), 0);
     await close();
   }
   {
@@ -279,7 +387,9 @@ try {
     await page.getByRole("button", { name: "Go", exact: true }).waitFor();
     assert.equal(await page.getByText("Show grade numbers").count(), 0);
     await drawer(page);
-    await page.getByText("Estimated level").waitFor();
+    await page.getByRole("link", { name: "Progress", exact: true }).click();
+    await page.waitForURL(`${origin}/overview`);
+    await page.getByTestId("level-readout").waitFor();
     await close();
   }
   {
@@ -289,7 +399,9 @@ try {
     assert.equal(await toggle.first().isChecked(), false);
     await toggle.first().check();
     await drawer(page);
-    await page.getByText("Estimated level").waitFor();
+    await page.getByRole("link", { name: "Progress", exact: true }).click();
+    await page.waitForURL(`${origin}/overview`);
+    await page.getByTestId("level-readout").waitFor();
     await close();
   }
   {
@@ -314,7 +426,7 @@ try {
     const { page, requests, close } = await open(fresh(), { path });
     await page.getByRole("button", { name: "Go", exact: true }).waitFor();
     if (path !== "/profile/birth-year")
-      assert.equal(new URL(page.url()).pathname, "/", path);
+      assert.equal(new URL(page.url()).pathname, "/overview", path);
     assert.equal(await page.getByLabel(/birth year/i).count(), 0, path);
     noParentCalls(requests);
     await close();

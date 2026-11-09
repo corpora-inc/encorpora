@@ -63,7 +63,10 @@ def check_manifest(record):
         require(skill['gradeBand'] == grade and skill['strand'] == strand and set(skill['prerequisites']) == prerequisites,
                 f'Wrong curriculum placement for {skill_id}')
     complex_skill = skills['complex-fractions']
-    require([a['standardId'] for a in complex_skill['alignments']] == ['7.NS.A.3'], 'Complex fractions must align to 7.NS.A.3')
+    # Require this family's problem-solving link without freezing the entire
+    # skill crosswalk: its problems also practice fraction division (6.NS.A.1).
+    require('7.NS.A.3' in {a['standardId'] for a in complex_skill['alignments']},
+            'Complex fractions must align to 7.NS.A.3')
     expected = set(FACETS.items())
     require(record['coverageValid'] and own_pairs(record['mappings'], expected), 'Missing rational facet mappings')
     require(all(m['extent'] == 'partial' and m['rationale'].strip() for m in record['mappings']),
@@ -271,6 +274,11 @@ def review_content_mutations(records):
     probe(scaling, check_figure, lambda r: r.__setitem__('svg', r['svg'].replace('data-result="5/16"', 'data-result="5/12"', 1)))
     probe(records[0], check_manifest, lambda r: r['mappings'][0].__setitem__('extent', 'complete'))
     probe(records[0], check_manifest, lambda r: next(s for s in r['skills'] if s['id'] == 'complex-fractions').__setitem__('strand', 'algebra'))
+    def remove_required_alignment(record):
+        skill = next(s for s in record['skills'] if s['id'] == 'complex-fractions')
+        skill['alignments'] = [a for a in skill['alignments'] if a['standardId'] != '7.NS.A.3']
+
+    probe(records[0], check_manifest, remove_required_alignment)
     probe(records[0], check_manifest, lambda r: r['calculator'][0].__setitem__('allowed', True))
     for checker, value in probes:
         try:

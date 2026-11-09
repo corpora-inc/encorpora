@@ -9,8 +9,9 @@ import { retentionNotice } from "../src/family/contracts";
 import { skills } from "../src/curriculum/catalog";
 import { templates } from "../src/math/engine";
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
-const source = `export async function accessSession(){return window.routeSession ? {token:'synthetic',accountId:'synthetic-parent'} : null;}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
+const source = `export async function accessSession(){if(window.routeSession==='failed')throw new Error('Synthetic session outage');return window.routeSession ? {token:'synthetic',accountId:'synthetic-parent'} : null;}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
 const vite = await createServer({
+  cacheDir: "node_modules/.vite-router-proof",
   plugins: [
     {
       name: "router-proof-auth",
@@ -145,8 +146,34 @@ try {
     skillTitle,
   );
   await map.close();
+  // Public information does not depend on a working or current sign-in.
+  for (const state of ["failed", "expired"]) {
+    const publicPage = await browser.newPage();
+    await publicPage.addInitScript((state) => {
+      (window as any).routeSession = state;
+    }, state);
+    let accountReads = 0;
+    await publicPage.route("**/api/v1/me", (route) => {
+      accountReads++;
+      return route.fulfill({ status: 401, json: { error: "Session ended" } });
+    });
+    await publicPage.route("**/api/v1/trials/current", (route) => {
+      accountReads++;
+      return route.fulfill({ status: 401, json: { error: "Session ended" } });
+    });
+    await publicPage.route("**/api/v1/events**", (route) =>
+      route.fulfill({ json: {} }),
+    );
+    await publicPage.goto("http://127.0.0.1:4394/schools/trust");
+    await publicPage
+      .getByRole("heading", { name: "How AMP handles student data" })
+      .waitFor({ timeout: 5000 });
+    assert.equal(accountReads, 0, "public pages never request the account");
+    assert.equal(new URL(publicPage.url()).pathname, "/schools/trust");
+    await publicPage.close();
+  }
   console.log(
-    "Router: auth and learner titles, Back/Forward/refresh, Pathways metadata cleanup, and delayed /me during cached onboarding transitions passed.",
+    "Router: auth and learner titles, Back/Forward/refresh, Pathways metadata cleanup, cached onboarding transitions, and public pages during session failures passed.",
   );
 } finally {
   await browser.close();

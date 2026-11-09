@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocation, useSearch } from "@tanstack/react-router";
 import { meOptions, sessionOptions } from "../../lib/query";
+import { hasAccountContext } from "../../lib/account-page";
 import { useLearnerStore } from "../../learner-store";
 import { trialSessionOptions } from "../trial/api";
 import { nativeRuntime } from "../../native-runtime";
@@ -12,11 +13,15 @@ export function useCurriculumScope() {
   const location = useLocation();
   const search = useSearch({ strict: false });
   const session = useQuery(sessionOptions);
+  const accountPage = hasAccountContext(location.pathname);
   const me = useQuery({
     ...meOptions(session.data ?? { accountId: "", token: "" }),
-    enabled: !nativeRuntime && !!session.data,
+    enabled: !nativeRuntime && accountPage && !!session.data,
   });
-  const trial = useQuery({ ...trialSessionOptions, enabled: !nativeRuntime });
+  const trial = useQuery({
+    ...trialSessionOptions,
+    enabled: !nativeRuntime && accountPage,
+  });
   const nativeFamily = useFamilyCache(
     nativeRuntime ? (session.data?.accountId ?? null) : null,
   );

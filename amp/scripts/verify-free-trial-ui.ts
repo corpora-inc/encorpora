@@ -19,12 +19,15 @@ import { noticeDigest } from "../src/parent-consent/crypto";
 import { consentFixture } from "../tests/parent-consent.fixture";
 import type { EnrollmentView } from "../src/billing/stripe/enrollment-contracts";
 import { buildApp } from "../src/server/app";
-import { developmentAuth } from "../src/server/auth";
 import { PostgresRepository } from "../src/server/repository";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { trialLimits } from "../src/server/trials";
 import { migrate } from "./migrate";
-import { answerOne, trackPracticeProblems } from "./ui-practice-answer";
+import {
+  answerOne,
+  preparePracticeAnswer,
+  trackPracticeProblems,
+} from "./ui-practice-answer";
 import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 
 /**
@@ -50,15 +53,18 @@ const repository = new PostgresRepository(url, {
 // Other browser suites share this database. Their saved assessment must not
 // become this family's current trial during the adoption journey.
 const fixtureAccount = `free-trial-fixture-${randomUUID()}`;
-const validateDevelopmentSession = developmentAuth();
-const authenticate: ReturnType<typeof developmentAuth> = async (request) => {
-  await validateDevelopmentSession(request);
+// Model the hosted session cookie alongside the trial capability. An
+// anonymous development API cannot resume an account-owned trial on reload.
+let signedIn = false;
+const authenticate = async () => {
+  if (!signedIn)
+    throw Object.assign(new Error("Sign in to continue"), { statusCode: 401 });
   return fixtureAccount;
 };
 const app = buildApp({
   repository,
   authenticate,
-  development: true,
+  development: false,
 });
 await registerFamilyRoutes(app, {
   pool: repository.pool,
@@ -277,6 +283,11 @@ async function serve(page: Page, state: State, faults: string[]) {
     if (path === "/billing/enrollment/claim") {
       const body = req.postDataJSON();
       state.claims.push(body);
+      await repository.pool.query(
+        `INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at)
+         VALUES($1,$2,'stripe',$1,'active',now()-interval '1 day',now()+interval '1 year')`,
+        [randomUUID(), body.learnerId],
+      );
       state.learners = state.learners.map((l) =>
         l.id === body.learnerId ? { ...l, paid: true } : l,
       );
@@ -518,6 +529,7 @@ try {
       await page.getByRole("heading", { name: "Try AMP free" }).waitFor();
       // Identity-provider behavior is verified in verify-social-sign-in-ui.
       await page.evaluate(() => localStorage.setItem("fixture.parent", "1"));
+      signedIn = true;
       await page.goto(`${origin}/try`);
       await page.waitForURL("**/try");
       const years = page.getByRole("group", { name: "Birth year" });
@@ -587,19 +599,22 @@ try {
       if (audit) await axe(page, "start");
       await shoot(page, "start", tag);
 
-      // Placement keeps the budget in the shared navigation drawer.
+      // The shared drawer names the assessment; its progress screen owns
+      // the free meter. Verify the starting allowance from the same API.
       await years.getByRole("button", { name: "2016", exact: true }).click();
+      const initialProgress = page.waitForResponse((response) =>
+        response.url().endsWith("/trial-progress"),
+      );
       await page
         .getByRole("button", { name: "Start practicing", exact: true })
         .click();
       await page.waitForURL("**/try/practice");
+      const allowance = await (await initialProgress).json();
+      assert.equal(allowance.totals.answered, 0);
+      assert.equal(allowance.free, FREE);
       await page.getByRole("button", { name: "Open AMP menu" }).click();
-      const meter = page.getByRole("progressbar", {
-        name: "Free assessment problems used",
-      });
-      await meter.waitFor();
-      assert.equal(await meter.getAttribute("value"), "0");
-      assert.equal(await meter.getAttribute("max"), String(FREE));
+      await page.getByText("Free assessment", { exact: true }).waitFor();
+      await page.getByRole("link", { name: "Progress", exact: true }).waitFor();
       await page.keyboard.press("Escape");
       await page.waitForFunction(
         () =>
@@ -633,11 +648,9 @@ try {
       if (audit) await axe(page, "map");
       await shoot(page, "map", tag, true);
 
-      // Choosing to see plans early, then "not now", returns to practice.
-      // The map's own Buy invitation replaces its "See plans" link while
-      // Buy is on offer; the menu always keeps "See plans".
-      await page.getByRole("button", { name: "Open AMP menu" }).click();
-      await page.getByRole("link", { name: "See plans" }).click();
+      // The early-plan deep link remains supported; "Not now" resumes
+      // this assessment. Buying from the map has its own invitation journey.
+      await page.goto(`${origin}/try/plans?reason=choice`);
       await page.waitForURL(/\/try\/plans(?:\?reason=choice)?$/);
       await page.getByRole("heading", { name: "Choose a plan" }).waitFor();
       await page.getByRole("radio", { name: /Annual/ }).waitFor();
@@ -669,14 +682,8 @@ try {
           await route.fetch();
           return route.abort("connectionreset");
         });
-        const choice = page.locator(".choice-option");
-        if (await choice.count()) {
-          await choice.first().click();
-          await page.locator(".choice-submit").click();
-        } else {
-          await page.locator("#answer").fill("1");
-          await page.locator("#answer").press("Enter");
-        }
+        const { submit } = await preparePracticeAnswer(page, true);
+        await submit();
         await page.getByText("Check your connection").waitFor();
         const retry = page.getByRole("button", { name: "Check", exact: true });
         await retry.click();
@@ -824,7 +831,10 @@ try {
         0,
       );
       await shoot(page, "map-done", tag, true);
-      await page.getByRole("link", { name: "See plans" }).click();
+      await page
+        .getByRole("main")
+        .getByRole("link", { name: "See plans", exact: true })
+        .click();
       await page.waitForURL("**/try/plans?reason=limit");
 
       // The parent signed up before practice; continue straight to the plan.
@@ -850,6 +860,14 @@ try {
       assert.equal(state.checkouts[0]!.interval, "month");
 
       // Verified payment: the free practice becomes the paid learner.
+      // Payment/notice verification has its own integration suite. Model its
+      // completed consent here before the real adoption and learning gates.
+      await repository.pool.query(
+        `INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference)
+         VALUES($1,'fixture','test-only','synthetic')
+         ON CONFLICT(account_id) DO UPDATE SET withdrawn_at=NULL`,
+        [fixtureAccount],
+      );
       state.next = "add-learner";
       state.enrollment = { ...state.enrollment, purchase: purchase("paid") };
       await page.goto(
@@ -883,6 +901,7 @@ try {
         url: `/api/v1/learners/${state.adopted}/frontier`,
         headers: { authorization: "Bearer amp-local-development" },
       });
+      assert.equal(frontier.statusCode, 200, frontier.body);
       assert.equal(frontier.json().overall.answered, FREE);
       await page.locator(".problem-stage .question").waitFor();
       await shoot(page, "paid-practice", tag);
@@ -925,6 +944,7 @@ try {
         fresh(),
       );
       await parent.close();
+      signedIn = false;
       const visitor = await browser.newContext({
         viewport: { width, height },
         colorScheme: theme,

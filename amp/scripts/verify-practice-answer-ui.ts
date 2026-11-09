@@ -15,7 +15,7 @@ import type { GeneratedProblem, ProblemResponse } from "../src/math/contracts";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { answerOne, trackPracticeProblems } from "./ui-practice-answer";
-import { choose } from "./ui-controls";
+import { chooseLearner } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 
 const responseShape = (response: ProblemResponse) =>
@@ -85,6 +85,13 @@ try {
     },
   ).problem;
   representatives.set(responseShape(ordering.public.response), ordering);
+  // Unequal menu lengths expose a closing menu being counted as part of
+  // the next blank's options. This seed failed in the free-trial journey.
+  const inline = generateProblem(
+    "point-on-axis-sentence",
+    "77e73c1e-b008-4c2a-9172-388b554e9c51",
+  );
+  representatives.set(responseShape(inline.public.response), inline);
   assert.deepEqual(
     [...kinds].sort(),
     [
@@ -98,14 +105,19 @@ try {
       "structured-work",
     ].sort(),
   );
-  await page.goto("http://127.0.0.1:4954");
-  await choose(
-    page.getByRole("button", { name: "Learner", exact: true }),
-    learner.id,
-  );
+  await page.goto("http://127.0.0.1:4954/overview");
+  await chooseLearner(page, learner.id);
+  // Keep exiting menus mounted long enough to exercise the overlap reliably.
+  await page.addStyleTag({
+    content: ".multi-part-menu { animation-duration: 800ms; }",
+  });
   let repeatedTemplateDecoyId: string | undefined;
   for (const [signature, representative] of representatives) {
     const template = representative.public.templateId;
+    await page.setViewportSize({
+      width: representative === inline ? 384 : 390,
+      height: representative === inline ? 688 : 844,
+    });
     for (const correct of [true, false]) {
       console.log(
         `Response controls: ${signature}, ${template}, correct=${correct}`,

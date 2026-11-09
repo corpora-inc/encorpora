@@ -51,6 +51,12 @@ export const meOptions = (session: AuthSession) =>
       });
       return me;
     },
+    // Navigation owns account freshness. Consumers share its snapshot even
+    // when a chunk loads late or an observer becomes enabled afterwards.
+    // Mutations, session changes and window focus still refresh it.
+    staleTime: Infinity,
+    refetchOnMount: (query) => query.state.isInvalidated,
+    refetchOnWindowFocus: "always",
   });
 export function invalidateAccount(identity: string) {
   return queryClient.invalidateQueries({ queryKey: ["account", identity] });
@@ -58,5 +64,5 @@ export function invalidateAccount(identity: string) {
 
 export async function refreshMe(session: AuthSession) {
   await queryClient.cancelQueries({ queryKey: meKey(session.accountId) });
-  return queryClient.fetchQuery(meOptions(session));
+  return queryClient.fetchQuery({ ...meOptions(session), staleTime: 0 });
 }

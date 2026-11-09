@@ -17,6 +17,7 @@ import {
   registerAccountRoutes,
 } from "../src/server/accounts";
 import { registerFamilyRoutes } from "../src/family/routes.js";
+import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { migrate } from "./migrate";
 
 /** AMP's own parent accounts in the browser: create an account, sign out,
@@ -42,6 +43,12 @@ async function startAccountsServer() {
     pool: repository.pool,
     authenticate,
     development: true,
+  });
+  // Returning parents land in their family's class, which uses these routes.
+  await registerSchoolRoutes(app, {
+    pool: repository.pool,
+    authenticate,
+    services: { secret: accounts.config.secret, origin },
   });
   await app.listen({ host: "127.0.0.1", port: 4357 });
   return app;
@@ -88,18 +95,39 @@ async function fits(page: Page, label: string, focus?: string) {
   }
 }
 async function signedIn(page: Page, email: string) {
-  // The menu also exists on the sign-in screen. Wait for its replacement route
-  // and the authenticated identity before the next flow opens the drawer.
+  // The root is an intermediate redirect. Wait for this parent's actual
+  // destination before choosing its navigation controls.
   await page.waitForURL(
     (url) =>
       url.origin === origin &&
-      url.pathname === "/" &&
-      !url.searchParams.has("sign-in"),
+      (url.pathname === "/overview" ||
+        /^\/school\/[^/]+\/classes\/[^/]+\/today$/.test(url.pathname)),
   );
+  if (new URL(page.url()).pathname.startsWith("/school/")) {
+    await page
+      .getByRole("heading", { name: /^Good (morning|afternoon|evening)/ })
+      .waitFor();
+    // The family class has a desktop rail and a phone drawer until it shares
+    // the app frame. Follow its Family link into the account screens.
+    const family = page.getByRole("link", { name: "Family", exact: true });
+    if (!(await family.isVisible()))
+      await page.getByRole("button", { name: "Open AMP menu" }).click();
+    await family.click();
+    await page.waitForURL(origin + "/family");
+    await page
+      .getByRole("heading", { name: "Who’s learning?", exact: true })
+      .waitFor();
+    await page.getByRole("dialog").waitFor({ state: "detached" });
+  }
   await page
-    .locator(".shell > header")
     .getByRole("button", { name: "Open AMP menu" })
-    .click();
+    .click()
+    .catch(async (cause) => {
+      throw new Error(
+        `Signed-in menu missing at ${page.url()}; headings=${JSON.stringify(await page.getByRole("heading").allTextContents())}; alerts=${JSON.stringify(await page.getByRole("alert").allTextContents())}`,
+        { cause },
+      );
+    });
   const identity = page.getByRole("region", { name: "Current account" });
   await identity.getByRole("button", { name: "Show email" }).click();
   await identity.getByText(email, { exact: true }).waitFor();

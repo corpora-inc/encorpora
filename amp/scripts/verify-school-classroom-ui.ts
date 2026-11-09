@@ -47,6 +47,7 @@ import {
 } from "./app-shell-probe";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { answerOne, trackPracticeProblems } from "./ui-practice-answer";
 
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url) throw new Error("AMP_TEST_DATABASE_URL is required");
@@ -641,13 +642,13 @@ async function journeys(browser: Browser, engine: string) {
       .locator(".problem-stage .question")
       .waitFor({ timeout: 40_000 });
     await reader.page.getByRole("button", { name: "Open AMP menu" }).click();
-    await reader.page.getByRole("link", { name: "Your progress" }).waitFor();
+    await reader.page.getByRole("link", { name: "Progress" }).waitFor();
     check(
       `${engine} no standings link during a problem`,
       (await reader.page.getByRole("link", { name: "Standings" }).count()) ===
         0,
     );
-    await reader.page.getByRole("link", { name: "Your progress" }).click();
+    await reader.page.getByRole("link", { name: "Progress" }).click();
     await reader.page.getByRole("button", { name: "Open AMP menu" }).click();
     await reader.page.getByRole("link", { name: "Standings" }).click();
     await reader.page.waitForURL("**/standings");
@@ -692,17 +693,19 @@ async function journeys(browser: Browser, engine: string) {
           personId: student.personId,
         },
       });
-      await viewer.page.goto(`${origin}/`);
+      trackPracticeProblems(viewer.page);
+      await viewer.page.goto(`${origin}/practice`);
+      await answerOne(viewer.page, true);
       await viewer.page.getByRole("button", { name: "Open AMP menu" }).click();
-      await viewer.page.getByRole("link", { name: "Your progress" }).waitFor();
-      await viewer.page.getByText("Skills illuminated").waitFor();
+      await viewer.page
+        .getByRole("link", { name: "Progress", exact: true })
+        .click();
+      await viewer.page.locator('.frontier-map[aria-busy="false"]').waitFor();
       check(
         `${engine} ${label} estimated level`,
-        (await viewer.page
-          .getByText("Estimated level", { exact: true })
-          .count()) >
-          0 ===
-          expected.estimated,
+        expected.estimated
+          ? await viewer.page.getByTestId("level-readout").isVisible()
+          : (await viewer.page.getByTestId("level-readout").count()) === 0,
       );
       check(
         `${engine} ${label} choice control`,

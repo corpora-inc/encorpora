@@ -9,6 +9,7 @@ import { algebraModels } from "../tests/fixtures/algebra-models.js";
 import { renderBook } from "../src/publishing/book.js";
 import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 import type { MathBook } from "../src/publishing/schema.js";
+import { readerProofPage } from "./reader-proof-page";
 const book: MathBook = {
   id: "algebra-model-proof",
   version: "1",
@@ -29,7 +30,9 @@ const book: MathBook = {
     blocks: [{ kind: "diagram", diagram }],
   })),
 };
-const output = resolve("artifacts/algebra-reader");
+const output = resolve(
+  process.env.AMP_EVIDENCE_DIR ?? "artifacts/algebra-reader",
+);
 await mkdir(output, { recursive: true });
 const server = await createServer({
   configFile: false,
@@ -44,9 +47,7 @@ const server = await createServer({
           res.end(
             await s.transformIndexHtml(
               "/__algebra-proof",
-              `<html><head><meta name="viewport" content="width=device-width, initial-scale=1"/></head><body><div id="root"></div><script type="module">
-import React from 'react';import{createRoot}from'react-dom/client';import{BookReader}from'/src/web/BookReader.tsx';import'/src/web/style.css';const book=${JSON.stringify(book)};createRoot(document.getElementById('root')).render(React.createElement('div',{className:'shell app-shell'},React.createElement(BookReader,{book,initialFrame:Number(new URLSearchParams(location.search).get('frame')||0),onClose(){},onPosition(){},async download(){}})));
-</script></body></html>`,
+              readerProofPage(book),
             ),
           );
         });
@@ -60,51 +61,109 @@ if (!address || typeof address === "string") throw new Error("No proof server");
 const browser = await chromium.launch({ headless: true });
 const review: unknown[] = [];
 try {
-  for (const [width, height] of [
-    [320, 568],
-    [390, 844],
-    [1024, 768],
-    [844, 390],
-  ] as const) {
-    const page = await browser.newPage({ viewport: { width, height } });
-    page.on("pageerror", (e) => console.error(e));
-    page.on("console", (m) => {
-      if (m.type() === "error") console.error(m.text());
-    });
-    for (let i = 0; i < algebraModels.length; i++) {
-      await page.goto(
-        `http://127.0.0.1:${address.port}/__algebra-proof?frame=${i}`,
-      );
-      await page.locator(".algebra-figure").waitFor();
-      await page.evaluate(() => document.fonts.ready);
-      const result = await page.evaluate(() => {
-        const stage = document.querySelector<HTMLElement>(".reader-stage")!;
-        const figure = document
-          .querySelector("figure")!
-          .getBoundingClientRect();
-        const bound = stage.getBoundingClientRect();
-        return {
-          scroll: stage.scrollHeight - stage.clientHeight,
-          overflow:
-            figure.bottom > bound.bottom + 1 ||
-            figure.left < bound.left ||
-            figure.right > bound.right,
-          body: document.documentElement.scrollHeight - innerHeight,
-        };
+  for (const theme of ["light", "dark"] as const) {
+    for (const [width, height] of [
+      [320, 568],
+      [390, 844],
+      [768, 1024],
+      [1024, 768],
+      [1280, 800],
+      [844, 390],
+    ] as const) {
+      const page = await browser.newPage({
+        viewport: { width, height },
+        colorScheme: theme,
       });
-      // Phone landscape only has to stay usable: the reader scrolls there.
-      if (isPhoneLandscape([width, height]))
-        await assertPhoneLandscapeSmoke(page, `Reader ${algebraModels[i]!.id}`);
-      else if (result.scroll > 1 || result.overflow || result.body > 1)
-        throw new Error(
-          `Reader ${algebraModels[i]!.id} ${width}x${height}: ${JSON.stringify(result)}`,
+      page.on("pageerror", (e) => console.error(e));
+      page.on("console", (m) => {
+        if (m.type() === "error") console.error(m.text());
+      });
+      for (let i = 0; i < algebraModels.length; i++) {
+        await page.goto(
+          `http://127.0.0.1:${address.port}/__algebra-proof?frame=${i}`,
         );
-      await page.screenshot({
-        path: resolve(output, `${algebraModels[i]!.id}-${width}.png`),
-      });
-      review.push({ model: algebraModels[i]!.id, width, height, ...result });
+        await page.locator(".algebra-figure").waitFor();
+        await page.evaluate(() => document.fonts.ready);
+        const result = await page.evaluate(() => {
+          const stage = document.querySelector<HTMLElement>(".reader-stage")!;
+          const figure = document
+            .querySelector("figure")!
+            .getBoundingClientRect();
+          const bound = stage.getBoundingClientRect();
+          const notes = document
+            .querySelector(".algebra-notes")!
+            .getBoundingClientRect();
+          const artwork = document
+            .querySelector(".algebra-art > svg, .algebra-art > table")!
+            .getBoundingClientRect();
+          const labels = Array.from(
+            document.querySelectorAll<SVGTextElement>("figure svg text"),
+          ).map((label) => {
+            const matrix = label.getScreenCTM()!;
+            return (
+              parseFloat(getComputedStyle(label).fontSize) *
+              Math.hypot(matrix.a, matrix.b)
+            );
+          });
+          return {
+            scroll: stage.scrollHeight - stage.clientHeight,
+            overflow:
+              figure.bottom > bound.bottom + 1 ||
+              figure.left < bound.left ||
+              figure.right > bound.right,
+            body: document.documentElement.scrollHeight - innerHeight,
+            stageHeight: bound.height,
+            stageWidth: bound.width,
+            stageClientWidth: stage.clientWidth,
+            overlappingNotes: artwork.bottom > notes.top + 1,
+            clippedNotes: notes.bottom > figure.bottom + 1,
+            smallestLabel: labels.length ? Math.min(...labels) : null,
+            figureHeight: figure.height,
+            svgHeight: document
+              .querySelector("figure svg")
+              ?.getBoundingClientRect().height,
+          };
+        });
+        // Phone landscape only has to stay usable: the reader scrolls there.
+        if (isPhoneLandscape([width, height]))
+          await assertPhoneLandscapeSmoke(
+            page,
+            `Reader ${algebraModels[i]!.id}`,
+          );
+        else if (
+          result.scroll > 1 ||
+          result.overflow ||
+          result.body > 1 ||
+          result.overlappingNotes ||
+          result.clippedNotes ||
+          (result.smallestLabel !== null && result.smallestLabel < 12)
+        ) {
+          await page.screenshot({
+            path: resolve(
+              output,
+              `failure-${algebraModels[i]!.id}-${width}-${theme}.png`,
+            ),
+          });
+          throw new Error(
+            `Reader ${algebraModels[i]!.id} ${width}x${height} ${theme}: ${JSON.stringify(result)}`,
+          );
+        }
+        await page.screenshot({
+          path: resolve(
+            output,
+            `${algebraModels[i]!.id}-${width}-${theme}.png`,
+          ),
+        });
+        review.push({
+          model: algebraModels[i]!.id,
+          width,
+          height,
+          theme,
+          ...result,
+        });
+      }
+      await page.close();
     }
-    await page.close();
   }
   const page = await browser.newPage({
     viewport: { width: 1000, height: 1200 },

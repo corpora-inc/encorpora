@@ -9,6 +9,7 @@ import { unitRegionModels } from "../tests/fixtures/unit-regions.js";
 import { renderBook } from "../src/publishing/book.js";
 import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 import type { MathBook } from "../src/publishing/schema.js";
+import { readerProofPage } from "./reader-proof-page";
 const book: MathBook = {
   id: "unit-region-model-proof",
   version: "1",
@@ -40,9 +41,7 @@ const server = await createServer({
           res.end(
             await s.transformIndexHtml(
               "/__unit-region-proof",
-              `<html><head><meta name="viewport" content="width=device-width, initial-scale=1"/></head><body><div id="root"></div><script type="module">
-import React from 'react';import{createRoot}from'react-dom/client';import{BookReader}from'/src/web/BookReader.tsx';import'/src/web/style.css';const book=${JSON.stringify(book)};createRoot(document.getElementById('root')).render(React.createElement('div',{className:'shell app-shell'},React.createElement(BookReader,{book,initialFrame:Number(new URLSearchParams(location.search).get('frame')||0),onClose(){},onPosition(){},async download(){}})));
-</script></body></html>`,
+              readerProofPage(book),
             ),
           );
         });

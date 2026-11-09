@@ -22,7 +22,7 @@ import { migrate } from "./migrate";
 
 /**
  * The free assessment's level check, against the real learning API: the
- * practice drawer's "Your progress" link opens /try/map with a real route
+ * practice drawer's "Progress" link opens /try/map with a real route
  * (back returns to the same problem). Runs at 320x568, 384x700, 390x844,
  * 768x1024, 1024x768, 1180x820 and 1280x800, light and dark, and asserts no
  * horizontal overflow and nothing overlapping in the toolbar.
@@ -301,9 +301,7 @@ try {
 
       // A real route: the map opens, back returns to the same problem.
       await level.click();
-      await page
-        .getByRole("link", { name: "Your progress", exact: true })
-        .click();
+      await page.getByRole("link", { name: "Progress", exact: true }).click();
       await page.waitForURL("**/try/map*");
       await page.locator(".frontier-map").waitFor();
       await fits(page, `${tag} map`);
@@ -325,8 +323,8 @@ try {
       await page.goForward();
       await page.waitForURL("**/try/map*");
       await page.locator(".frontier-map").waitFor();
-      // The map keeps its own way out of the trial.
-      await page.getByRole("link", { name: "AMP home" }).waitFor();
+      // The shared logo keeps navigation available on the map.
+      await page.getByRole("button", { name: "Open AMP menu" }).waitFor();
       await page.reload();
       await page.locator(".frontier-map").waitFor();
       assert.deepEqual(faults, [], `${tag}: no page errors`);
@@ -528,21 +526,18 @@ try {
       assert.equal(attempts, 0, `${tag}: no answer was sent`);
       assert.equal(await used(trial.learnerId, trial.token), 25);
       await page.getByRole("button", { name: "Open AMP menu" }).click();
+      await page.getByRole("link", { name: "Progress", exact: true }).click();
+      await page.waitForURL("**/try/map*");
       await page
-        .getByRole("progressbar", { name: "Free assessment problems used" })
+        .getByText(`25 of ${FREE} free problems used`, { exact: true })
         .waitFor();
-      assert.equal(
-        await page
-          .getByRole("progressbar", { name: "Free assessment problems used" })
-          .getAttribute("value"),
-        "25",
-        `${tag}: the budget remains 25`,
-      );
-      await page.keyboard.press("Escape");
-      await page.waitForFunction(
-        () =>
-          document.activeElement?.getAttribute("aria-label") ===
-          "Open AMP menu",
+      await page.goBack();
+      await page.waitForURL("**/try/practice");
+      await page.locator(".problem-stage .question").waitFor();
+      assert.deepEqual(
+        await prompt.boundingBox(),
+        before,
+        `${tag}: returning from the budget keeps the problem in place`,
       );
 
       // The checkpoint opens earned pathways; back returns to the waiting problem.
@@ -573,9 +568,9 @@ try {
         await dialog.getByRole("link", { name: "See your full map" }).click();
         await page.waitForURL("**/pathways?context=trial");
         await page.locator(".pathways-canvas canvas").waitFor();
-        // Compact maps omit explanatory status copy, but keep progress and resume visible.
+        // The shared app bar keeps practice one click away from the map.
         const resume = page.getByRole("link", {
-          name: "Resume free assessment →",
+          name: "Practice",
           exact: true,
         });
         await resume.waitFor();

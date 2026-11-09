@@ -1273,6 +1273,12 @@ export function PracticeWorkspace(props: Props) {
           ? "Choose an answer"
           : "Enter your answer";
   const frameTools = useShellTools();
+  const topic = (
+    <span className="workspace-topic-text">
+      {props.satMathFocus ? "SAT Math · " : ""}
+      {meta?.title ?? "Practice"}
+    </span>
+  );
   const toolbarContents = (
     <>
       {props.navigation ?? (
@@ -1309,10 +1315,7 @@ export function PracticeWorkspace(props: Props) {
         data-strand={props.strand}
         title={meta?.title ?? "Practice"}
       >
-        <span className="workspace-topic-text">
-          {props.satMathFocus ? "SAT Math · " : ""}
-          {meta?.title ?? "Practice"}
-        </span>
+        {topic}
       </span>
       {props.status && <span className="workspace-status">{props.status}</span>}
       {/* Plotted answers are placed, not typed: the calculator's Use
@@ -1363,6 +1366,14 @@ export function PracticeWorkspace(props: Props) {
           )
         ) : (
           <div className="workspace-toolbar">{toolbarContents}</div>
+        )}
+        {props.toolbarInFrame && (
+          <div
+            className="workspace-topic practice-topic"
+            data-strand={props.strand}
+          >
+            {topic}
+          </div>
         )}
         <div
           className="problem-stage"
