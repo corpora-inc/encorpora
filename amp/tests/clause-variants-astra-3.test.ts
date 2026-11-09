@@ -17,6 +17,7 @@ import { problemLesson } from "../src/content/problem-lessons";
 import { clauseMethods } from "../src/content/clause-methods";
 import { typographyIssues } from "./fixtures/math-typography";
 import { unnamedGivens } from "./fixtures/hint-rules";
+import { buildCoverageManifest } from "../src/content/coverage";
 
 test("every clause surface validates, has a credited key, and replays deterministically", () => {
   const errors: string[] = [];
@@ -178,4 +179,9 @@ test("clause lessons follow the active variant and authored notation typesets", 
 
 test("clause hints name the current instance's givens", () => {
   assert.deepEqual(Object.keys(clauseExtensions).filter(unnamedGivens), []);
+});
+
+test("triangle proof registration uses facets owned by its skill", () => {
+  const manifest = buildCoverageManifest();
+  assert.deepEqual(manifest.errors.filter(error => error.includes("two-column-triangle-proof")), []);
 });

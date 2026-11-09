@@ -33,6 +33,7 @@ import json
 import math
 import re
 from fractions import Fraction as F
+import clause_coverage_oracle
 
 SOLVE_JUSTIFY = frozenset({"solve-justify-linear", "solve-justify-inequality", "solve-justify-formula", "solve-justify-quadratic"})
 PROOFS = frozenset({"two-column-congruence-proof", "two-column-angle-proof"})
@@ -1994,6 +1995,8 @@ def _check_show_work_text(problem, derived):
 def solve(public):
     t = public["templateId"]
     require(t in SUPPORTED, f"Unsupported template {t}")
+    if t in PROOFS and clause_coverage_oracle.recognizes(public):
+        return clause_coverage_oracle.solve(public)
     if t in SOLVE_JUSTIFY:
         start, ctx = _derivation_context(public)
         return _solution_text(ctx["solution"], ctx["variable"])
@@ -2016,6 +2019,8 @@ def review_problem(problem):
     t = problem["public"]["templateId"]
     require(t in SUPPORTED, f"Unsupported template {t}")
     STATS["cases"] += 1
+    if t in PROOFS and clause_coverage_oracle.recognizes(problem["public"]):
+        return clause_coverage_oracle.review_problem(problem)
     if t in SOLVE_JUSTIFY:
         return _review_derivation(problem)
     if t in PROOFS:

@@ -31,10 +31,10 @@ export const family = {
     },
     {
       templateId: "two-column-triangle-proof",
-      facetId: "line-angle-proofs.HSG.CO.C.9",
+      facetId: "triangle-proofs.core",
       extent: "partial",
       rationale:
-        "Prove both directions of the perpendicular-bisector theorem, with the converse distinguished from a contrapositive.",
+        "Triangle-congruence proof reasoning for both directions of the perpendicular-bisector theorem (HSG.CO.C.9), with the converse distinguished from a contrapositive. Facet ownership stays within triangle-proofs.",
     },
   ],
 } satisfies ContentFamily;
