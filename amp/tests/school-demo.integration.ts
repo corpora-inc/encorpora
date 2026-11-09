@@ -9,7 +9,7 @@ import {
   purchaseEvidenceSql,
 } from "../src/acquisition/evidence.js";
 import { insightsReport } from "../src/analytics/insights.js";
-import { purgeIdleDemos } from "../src/schools/demo/remove.js";
+import { purgeIdleDemos, removeDemoOrg } from "../src/schools/demo/remove.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { buildApp } from "../src/server/app.js";
@@ -105,6 +105,20 @@ test(
       to: new Date(Date.now() + 86_400_000),
     };
     const before = await insightsReport(db, window);
+    /** What no demo may change: report flags, real evidence, and the real
+     * school's license, grants and seats. */
+    const realState = async () =>
+      (
+        await db.query(
+          `SELECT (SELECT count(*)::int FROM amp_problem_flags) AS flags,
+             (SELECT count(*)::int FROM amp_skill_evidence) AS evidence,
+             (SELECT json_agg(l ORDER BY l.id) FROM amp_school_licenses l WHERE l.org_id=$1) AS licenses,
+             (SELECT json_agg(g ORDER BY g.id) FROM amp_grants g WHERE g.learner_id=$2) AS grants,
+             (SELECT json_agg(s ORDER BY s.id) FROM amp_seats s JOIN amp_school_licenses l ON l.id=s.license_id WHERE l.org_id=$1) AS seats`,
+          [real.id, realStudent.learnerId],
+        )
+      ).rows[0];
+    const untouched = await realState();
 
     let demo: { orgId: string; classId: string; path: string };
     await t.test("a demo class is built in seconds, once", async () => {
@@ -259,6 +273,41 @@ test(
           ),
           0,
         );
+        // Her report of a problem is a demo's: no report counts it.
+        const flagged = await app.inject({
+          method: "POST",
+          url: `/api/v1/learners/${person.learner_id}/problem-flags`,
+          headers: { authorization: `Bearer ${token}` },
+          payload: {
+            problemId: problem.id,
+            requestId: randomUUID(),
+            reasons: ["other"],
+            client: { kind: "web", viewport: { width: 390, height: 844 } },
+          },
+        });
+        assert.equal(flagged.statusCode, 201, flagged.body);
+        const reported = await insightsReport(db, window);
+        assert.equal(reported.totals.flags, before.totals.flags);
+        // Students practicing keep a demo, even with its owner away.
+        await db.query(
+          "UPDATE amp_orgs SET demo_seen_at=now()-interval '2 days' WHERE id=$1",
+          [demo.orgId],
+        );
+        const later = await app.inject({
+          method: "POST",
+          url: `/api/v1/learners/${person.learner_id}/batches`,
+          headers: { authorization: `Bearer ${token}` },
+          payload: { count: 1 },
+        });
+        assert.equal(later.statusCode, 200, later.body);
+        assert.equal(
+          await count(
+            "SELECT count(*) AS n FROM amp_orgs WHERE id=$1 AND demo_seen_at>now()-interval '1 minute'",
+            [demo.orgId],
+          ),
+          1,
+          "a student's practice is a visit",
+        );
         // The session reaches only her learner.
         const other = await app.inject({
           method: "POST",
@@ -276,6 +325,53 @@ test(
           "the real school still counts",
         );
         assert.equal(await adultPracticeEnd(db, stranger), null);
+        // An account whose only place is a demo practices on no license.
+        const lone = "amp|demo-only";
+        assert.equal(
+          (await call("POST", "/api/v1/school/demo", lone, { kind: "class" }))
+            .statusCode,
+          201,
+        );
+        assert.equal(await adultPracticeEnd(db, lone), null);
+        assert.equal(
+          (await call("DELETE", "/api/v1/school/demo", lone)).json().removed,
+          1,
+        );
+      },
+    );
+
+    await t.test(
+      "a second request waits for the first and returns the same demo",
+      async () => {
+        const account = "amp|double-click";
+        // Another request holds the account's demo lock past 5 s.
+        const holder = await db.connect();
+        await holder.query("SELECT pg_advisory_lock(hashtextextended($1,0))", [
+          `school-demo:${account}:class`,
+        ]);
+        const waiting = call("POST", "/api/v1/school/demo", account, {
+          kind: "class",
+        });
+        await new Promise((done) => setTimeout(done, 6_000));
+        await holder.query("SELECT pg_advisory_unlock_all()");
+        holder.release();
+        const first = await waiting;
+        assert.equal(first.statusCode, 201, first.body);
+        const [a, b] = await Promise.all(
+          [0, 1].map(() =>
+            call("POST", "/api/v1/school/demo", account, { kind: "school" }),
+          ),
+        );
+        assert.deepEqual(
+          [a!.statusCode, b!.statusCode].sort(),
+          [200, 201],
+          `${a!.body} ${b!.body}`,
+        );
+        assert.equal(a!.json().demo.orgId, b!.json().demo.orgId);
+        assert.equal(
+          (await call("DELETE", "/api/v1/school/demo", account)).json().removed,
+          2,
+        );
       },
     );
 
@@ -332,6 +428,22 @@ test(
             [school.orgId],
           ),
           3,
+        );
+        // Opened after the purge chose it: it stays.
+        await db.query(
+          "UPDATE amp_orgs SET demo_seen_at=now()-interval '31 days' WHERE id=$1",
+          [school.orgId],
+        );
+        const chosenAt = new Date(Date.now() - 30 * 86_400_000);
+        await db.query("UPDATE amp_orgs SET demo_seen_at=now() WHERE id=$1", [
+          school.orgId,
+        ]);
+        assert.equal(await removeDemoOrg(db, school.orgId, chosenAt), false);
+        assert.equal(
+          await count("SELECT count(*) AS n FROM amp_orgs WHERE id=$1", [
+            school.orgId,
+          ]),
+          1,
         );
         // An idle school goes with the retention job.
         await db.query(
@@ -394,6 +506,9 @@ test(
           0,
           table,
         );
+      // Nothing real moved: report flags, evidence, the real school's
+      // license, grants and seats.
+      assert.deepEqual(await realState(), untouched);
       // The real school is untouched.
       assert.equal(
         await count("SELECT count(*) AS n FROM amp_learners WHERE id=$1", [

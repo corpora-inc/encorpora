@@ -16,10 +16,13 @@ CREATE UNIQUE INDEX amp_orgs_demo_owner_idx ON amp_orgs(created_by,demo_kind) WH
 CREATE INDEX amp_orgs_demo_seen_idx ON amp_orgs(demo_seen_at) WHERE demo;
 
 -- A demo student's practice is covered by a `demo` grant: never revenue, and
--- never the free allowance.
+-- never the free allowance. The wider check goes on without a scan (every row
+-- already meets the narrower one), then is validated under SHARE UPDATE
+-- EXCLUSIVE rather than a scan under ACCESS EXCLUSIVE.
 ALTER TABLE amp_grants DROP CONSTRAINT amp_grants_channel_check;
 ALTER TABLE amp_grants ADD CONSTRAINT amp_grants_channel_check
- CHECK (channel IN ('pilot','stripe','apple','google','esa','demo'));
+ CHECK (channel IN ('pilot','stripe','apple','google','esa','demo')) NOT VALID;
+ALTER TABLE amp_grants VALIDATE CONSTRAINT amp_grants_channel_check;
 
 -- A bulk writer of rollups (a demo's twelve weeks, a fixture's district) sums
 -- the weeks once at the end instead of row by row: inside its transaction it

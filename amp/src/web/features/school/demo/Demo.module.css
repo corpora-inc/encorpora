@@ -21,3 +21,20 @@
   min-height: 44px;
   white-space: nowrap;
 }
+/* The demo's bar action keeps a word on a phone, where the bar's own actions
+   show only their icon. */
+.short {
+  display: none;
+}
+@media (max-width: 639px) {
+  .action[data-demo-action] {
+    width: auto;
+    padding: 0 var(--space-4);
+  }
+  .long {
+    display: none;
+  }
+  .short {
+    display: inline;
+  }
+}

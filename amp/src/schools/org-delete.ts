@@ -30,7 +30,7 @@ export async function removeOrgTree(
     Number((await rows(sql, params))[0].n);
 
   const org = (
-    await rows("SELECT id,name,parent_id FROM amp_orgs WHERE id=$1", [
+    await rows("SELECT id,name,parent_id,demo FROM amp_orgs WHERE id=$1", [
       input.orgId,
     ])
   )[0];
@@ -211,6 +211,15 @@ export async function removeOrgTree(
   await purge("events", "amp_school_events", "org_id=ANY($1::uuid[])", [orgs]);
   await client.query("RESET amp.retention_purge");
   await purge("people", "amp_people", "id=ANY($1::uuid[])", [people]);
+  // A demo's reports of problems are made-up practice: they go with it, where
+  // a real learner's stay, unlinked, for the content's sake.
+  if (org.demo)
+    await purge(
+      "problemFlags",
+      "amp_problem_flags",
+      "learner_id=ANY($1::text[])",
+      [owned],
+    );
   await purge("learners", "amp_learners", "id=ANY($1::text[])", [owned]);
   await purge("licenses", "amp_school_licenses", "id=ANY($1::uuid[])", [
     licenseIds,

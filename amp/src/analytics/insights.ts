@@ -136,12 +136,12 @@ export async function insightsReport(
     count: number;
   }>(
     `SELECT template_id, unnest(reasons) AS reason, count(*)::int AS count
-     FROM amp_problem_flags WHERE created_at>=$1 AND created_at<$2
+     FROM amp_problem_flags WHERE created_at>=$1 AND created_at<$2 AND NOT ${demoLearnerSql("learner_id")}
      GROUP BY 1,2 ORDER BY 3 DESC,2`,
   );
   const flagCounts = await q<{ template_id: string; flags: number }>(
     `SELECT template_id, count(*)::int AS flags FROM amp_problem_flags
-     WHERE created_at>=$1 AND created_at<$2 GROUP BY 1`,
+     WHERE created_at>=$1 AND created_at<$2 AND NOT ${demoLearnerSql("learner_id")} GROUP BY 1`,
   );
   const skipsRecorded = perTemplate.some((row) => row.skipped > 0);
   const templateMeta = new Map(templates.map((t) => [t.id, t]));
@@ -298,12 +298,12 @@ export async function insightsReport(
 
   const reasons = await q<{ reason: FlagReason; count: number }>(
     `SELECT unnest(reasons) AS reason, count(*)::int AS count FROM amp_problem_flags
-     WHERE created_at>=$1 AND created_at<$2 GROUP BY 1`,
+     WHERE created_at>=$1 AND created_at<$2 AND NOT ${demoLearnerSql("learner_id")} GROUP BY 1`,
   );
   const newest = await q<Record<string, unknown>>(
     `SELECT created_at, template_id, seed, outcome, response, reasons, prompt, figure_kind,
        client_kind, viewport_width, viewport_height, web_commit, api_commit${options.notes ? ", note" : ""}
-     FROM amp_problem_flags WHERE created_at>=$1 AND created_at<$2
+     FROM amp_problem_flags WHERE created_at>=$1 AND created_at<$2 AND NOT ${demoLearnerSql("learner_id")}
      ORDER BY created_at DESC, id LIMIT $3`,
     [...range, options.newest ?? 20],
   );

@@ -3,8 +3,14 @@ import { RETENTION } from "../../privacy/retention-periods.js";
 import { removeOrgTree } from "../org-delete.js";
 import type { DemoKind } from "./build.js";
 
-/** Removes one demo org with everything in it, in one transaction. */
-async function removeDemoOrg(pool: Pool, orgId: string) {
+/** Removes one demo org with everything in it, in one transaction. With
+ * `seenBefore` (the retention job), only if nobody has opened it since: the
+ * check is under the org's row lock, so a visit after the job chose it wins. */
+export async function removeDemoOrg(
+  pool: Pool,
+  orgId: string,
+  seenBefore?: Date,
+) {
   const client = await pool.connect();
   try {
     await client.query("BEGIN");
@@ -12,8 +18,9 @@ async function removeDemoOrg(pool: Pool, orgId: string) {
     await client.query("SET LOCAL statement_timeout='60s'");
     const org = (
       await client.query(
-        "SELECT name FROM amp_orgs WHERE id=$1 AND demo FOR UPDATE",
-        [orgId],
+        `SELECT name FROM amp_orgs WHERE id=$1 AND demo
+         AND ($2::timestamptz IS NULL OR demo_seen_at<=$2::timestamptz) FOR UPDATE`,
+        [orgId, seenBefore?.toISOString() ?? null],
       )
     ).rows[0];
     if (!org) {
@@ -57,15 +64,16 @@ export async function purgeIdleDemos(
   pool: Pool,
   at = new Date(),
 ): Promise<{ expiredDemoPlaces: number }> {
+  const cutoff = new Date(at.getTime() - RETENTION.idleDemoDays * 86_400_000);
   const { rows } = await pool.query(
-    `SELECT id FROM amp_orgs WHERE demo AND demo_seen_at<=$1::timestamptz-make_interval(days=>$2)
+    `SELECT id FROM amp_orgs WHERE demo AND demo_seen_at<=$1::timestamptz
      ORDER BY demo_seen_at,id LIMIT 500`,
-    [at.toISOString(), RETENTION.idleDemoDays],
+    [cutoff.toISOString()],
   );
   let expiredDemoPlaces = 0;
   for (const row of rows)
     try {
-      if (await removeDemoOrg(pool, row.id)) expiredDemoPlaces++;
+      if (await removeDemoOrg(pool, row.id, cutoff)) expiredDemoPlaces++;
     } catch (error) {
       const code = (error as { code?: string }).code;
       if (code !== "55P03" && code !== "40P01") throw error;

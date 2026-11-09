@@ -245,8 +245,27 @@ async function demo(
     `${label} Start class on Today`,
     await page.getByRole("link", { name: "Start class" }).isVisible(),
   );
+  // A phone shows a short word on the action, not only an arrow.
+  const actionText = (
+    await page
+      .locator("[data-demo-action]")
+      .filter({ visible: true })
+      .innerText()
+  ).trim();
+  check(
+    `${label} the action says where it goes`,
+    actionText === (width < 640 ? "Real class" : "Set up your real class"),
+    actionText,
+  );
   await measured(page, `${label} Today`);
   await shot(page, "today", label);
+  if (width < 640 && theme === "light" && engine === "chromium") {
+    // It still fits beside the Demo pill on the narrowest phone.
+    await page.setViewportSize({ width: 320, height: 720 });
+    await measured(page, `${label} Today at 320`);
+    await shot(page, "today", `${engine}-320-${theme}`);
+    await page.setViewportSize({ width, height: 844 });
+  }
   // The drawer's place switcher says Demo too.
   await page
     .getByRole("button", { name: "Open AMP menu" })

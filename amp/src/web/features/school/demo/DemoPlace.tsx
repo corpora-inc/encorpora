@@ -22,16 +22,18 @@ export function useDemoOrg(orgId: string) {
   return useQuery(orgOptions(currentSession(), orgId)).data?.demo === true;
 }
 
-/** The bar's one action in a demo: the way to the real class or school. A
- * label from 640 px, the arrow on a phone, always a 44 px target. */
+/** The bar's one action in a demo: the way to the real class or school. Its
+ * full label from 640 px, a short one on a phone, always a 44 px target. */
 export function DemoSetupAction({ school }: { school: boolean }) {
   const label = school ? "Talk to us" : "Set up your real class";
+  // A phone keeps a short word beside the arrow: an arrow alone says nothing.
+  const short = school ? "Talk to us" : "Real class";
   return (
     <Link
       to="/$"
       params={{ _splat: REAL_SETUP_PATH }}
       hash={REAL_SETUP_HASH}
-      className={bar.actionLink}
+      className={`${bar.actionLink} ${styles.action}`}
       aria-label={label}
       data-demo-action
     >
@@ -45,7 +47,10 @@ export function DemoSetupAction({ school }: { school: boolean }) {
           strokeLinejoin="round"
         />
       </svg>
-      <span className={bar.actionLabel}>{label}</span>
+      <span className={styles.long}>{label}</span>
+      <span className={styles.short} aria-hidden="true">
+        {short}
+      </span>
     </Link>
   );
 }

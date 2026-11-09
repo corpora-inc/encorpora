@@ -13,7 +13,8 @@ import { generateProblem, templates } from "../../math/engine.js";
 import { workbookWorker } from "../../workbook/off-thread.js";
 import { findOrMakeWorkbook } from "../../workbook/routes.js";
 import type { WorkbookRecord } from "../../workbook/contracts.js";
-import { recordPaperResults, type PaperEntry } from "../../workbook/results.js";
+import { PAPER_MARK_WEIGHT, paperProblemId } from "../../workbook/results.js";
+import { defaultPracticeSettings } from "../../learning/practice-settings.js";
 import {
   birthYearForGrade,
   generateHandle,
@@ -130,9 +131,13 @@ export async function createDemo(
         .catch(() => undefined)
     : null;
   const place = await transaction(pool, async (client) => {
+    // A second request (a double-click) waits for the first to finish,
+    // then returns what it made.
+    await client.query("SET LOCAL lock_timeout='30s'");
     await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
       `school-demo:${input.accountId}:${input.kind}`,
     ]);
+    await client.query("SET LOCAL lock_timeout='5s'");
     const existing = (
       await client.query(
         `UPDATE amp_orgs SET demo_seen_at=now() WHERE demo AND created_by=$1 AND demo_kind=$2
@@ -638,87 +643,136 @@ async function seedWorkbooks(
         : best,
     ).record;
   const others = rows.filter((row) => !picks.includes(row));
+  const workbookOf = new Map(
+    made.map((entry, index) => [picks[index]!.learner_id, entry.record]),
+  );
+  for (const row of others)
+    workbookOf.set(row.learner_id, {
+      ...nearest(row.level),
+      id: randomUUID(),
+    });
   await pool.query(
     `INSERT INTO amp_workbooks(id,learner_id,workbook_date,number,minutes,paper,spec,code,created_at)
-     SELECT gen_random_uuid(),l,$2::date,1,30,'letter',s::jsonb,c,$3::timestamptz
-     FROM unnest($1::text[],$4::text[],$5::text[]) AS t(l,s,c)
+     SELECT i::uuid,l,$2::date,1,30,'letter',s::jsonb,c,$3::timestamptz
+     FROM unnest($1::text[],$4::text[],$5::text[],$6::text[]) AS t(l,s,c,i)
      ON CONFLICT(learner_id,workbook_date,number,minutes) DO NOTHING`,
     [
       others.map((row) => row.learner_id),
       date,
       new Date(at).toISOString(),
-      others.map((row) => JSON.stringify(nearest(row.level).spec)),
-      others.map((row) => nearest(row.level).code),
+      others.map((row) => JSON.stringify(workbookOf.get(row.learner_id)!.spec)),
+      others.map((row) => workbookOf.get(row.learner_id)!.code),
+      others.map((row) => workbookOf.get(row.learner_id)!.id),
     ],
   );
-  // A few are still waiting to be marked.
+  // Their teacher's results, as the paper-results path records them, in one
+  // statement: typed answers graded like the app's, so a right one is
+  // independent work. A slip lands only on ground they haven't shown on
+  // screen, once a skill, so it never reads as stuck; what they keep missing
+  // on screen, they miss on paper too. A few are still waiting to be marked.
   const waiting = new Set(["Marcus", "Theo", "Tomas", "Elias", "Zara"]);
-  const queue = rows.filter((row) => !waiting.has(row.given_name));
-  await Promise.all(
-    Array.from({ length: 3 }, async () => {
-      for (let row = queue.shift(); row; row = queue.shift()) {
-        const student = row;
-        await learning.transaction(
-          schoolAccountId(student.id),
-          student.learner_id,
-          async (tx) => {
-            const [record] = await tx.workbooks(date);
-            if (!record) return;
-            const items = record.spec.sections.flatMap(
-              (section) => section.items,
-            );
-            // Typed answers, graded like the app's, so a right one is
-            // independent work; a slip only on ground they haven't shown on
-            // screen, once a skill, so it never reads as stuck.
-            const shown = new Set(
-              (await tx.skillEvidence()).map((entry) => entry.skillId),
-            );
-            const slipped = new Set<string>();
-            // What they keep missing on screen, they miss on paper too.
-            const missing = missedSkills(student.given_name);
-            await recordPaperResults(
-              tx,
-              record,
-              items.flatMap((item, index): PaperEntry[] => {
-                const problem = printed(item);
-                const slip =
-                  missing.has(item.skillId) ||
-                  (!shown.has(item.skillId) &&
-                    !slipped.has(item.skillId) &&
-                    hash(`${student.given_name}${index}`) > 0.72);
-                if (slip) slipped.add(item.skillId);
-                const kind = problem.public.response.kind;
-                if (
-                  kind === "number" ||
-                  kind === "fraction" ||
-                  kind === "choice"
-                )
-                  return [
-                    {
-                      n: index + 1,
-                      answer: slip
-                        ? wrongResponse(problem as never)
-                        : problem.answer,
-                    },
-                  ];
-                // A mark counts half, so on a skill they've shown it would
-                // follow their screen work weaker; those wait to be marked.
-                return shown.has(item.skillId) && !missing.has(item.skillId)
-                  ? []
-                  : [
-                      {
-                        n: index + 1,
-                        mark: slip ? ("not-yet" as const) : ("right" as const),
-                      },
-                    ];
-              }),
-              new Date(Date.parse(`${date}T19:00:00Z`)),
-              { by: "teacher" },
-            );
+  const marked = rows.filter((row) => !waiting.has(row.given_name));
+  const shownRows = (
+    await pool.query<{ learner_id: string; skill_id: string }>(
+      "SELECT learner_id,skill_id FROM amp_skill_evidence WHERE learner_id=ANY($1::text[])",
+      [marked.map((row) => row.learner_id)],
+    )
+  ).rows;
+  const settings = defaultPracticeSettings();
+  const recordedAt = new Date(Date.parse(`${date}T19:00:00Z`)).toISOString();
+  const papers: {
+    learner: string;
+    id: string;
+    content: string;
+    outcome: string;
+  }[] = [];
+  for (const student of marked) {
+    const record = workbookOf.get(student.learner_id)!;
+    const shown = new Set(
+      shownRows
+        .filter((row) => row.learner_id === student.learner_id)
+        .map((row) => row.skill_id),
+    );
+    const missing = missedSkills(student.given_name);
+    const slipped = new Set<string>();
+    const items = record.spec.sections.flatMap((section) =>
+      section.items.map((item) => ({ item, section: section.kind })),
+    );
+    for (const [index, { item }] of items.entries()) {
+      const problem = printed(item);
+      const slip =
+        missing.has(item.skillId) ||
+        (!shown.has(item.skillId) &&
+          !slipped.has(item.skillId) &&
+          hash(`${student.given_name}${index}`) > 0.72);
+      if (slip) slipped.add(item.skillId);
+      const kind = problem.public.response.kind;
+      const graded =
+        kind === "number" || kind === "fraction" || kind === "choice";
+      // A mark counts half, so on a skill they've shown it would follow their
+      // screen work weaker; those wait to be marked.
+      if (!graded && shown.has(item.skillId) && !missing.has(item.skillId))
+        continue;
+      const id = paperProblemId(record.id, index + 1);
+      papers.push({
+        learner: student.learner_id,
+        id,
+        content: JSON.stringify({
+          ...problem,
+          public: { ...problem.public, id },
+          practiceEpoch: settings.epoch,
+          practiceRevision: settings.revision,
+          selection: {
+            reason: "paper",
+            workbookId: record.id,
+            workbookDate: date,
+            problemNumber: index + 1,
+            enteredBy: "teacher",
           },
-        );
-      }
-    }),
+        }),
+        outcome: JSON.stringify({
+          id: randomUUID(),
+          problemId: id,
+          requestId: id,
+          skillId: problem.public.skillId,
+          templateId: problem.public.templateId,
+          response: graded
+            ? slip
+              ? wrongResponse(problem as never)
+              : problem.answer
+            : "",
+          correct: !slip,
+          assisted: false,
+          explanation: problem.explanation,
+          answer: problem.answer,
+          createdAt: recordedAt,
+          evidenceSource: "paper",
+          ...(graded ? {} : { evidenceWeight: PAPER_MARK_WEIGHT }),
+          ...(problem.variant ? { variant: problem.variant } : {}),
+        }),
+      });
+    }
+  }
+  await pool.query(
+    `INSERT INTO amp_instances(id,learner_id,content,created_at)
+     SELECT i,l,c::jsonb,$4::timestamptz FROM unnest($1::text[],$2::text[],$3::text[]) AS t(i,l,c)`,
+    [
+      papers.map((paper) => paper.id),
+      papers.map((paper) => paper.learner),
+      papers.map((paper) => paper.content),
+      recordedAt,
+    ],
+  );
+  await pool.query(
+    `INSERT INTO amp_attempts(id,learner_id,problem_id,request_id,outcome,created_at)
+     SELECT o::jsonb->>'id',l,i,i,o::jsonb,$4::timestamptz
+     FROM unnest($1::text[],$2::text[],$3::text[]) WITH ORDINALITY AS t(l,i,o,n) ORDER BY n`,
+    [
+      papers.map((paper) => paper.learner),
+      papers.map((paper) => paper.id),
+      papers.map((paper) => paper.outcome),
+      recordedAt,
+    ],
   );
   // Recording results stores today's level from the few answers on file; the
   // term's stored levels are the class's real story, so they stand.
