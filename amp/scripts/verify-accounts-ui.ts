@@ -26,7 +26,8 @@ const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url)
   throw new Error("AMP_TEST_DATABASE_URL is required for browser verification");
 await migrate(url);
-const origin = "http://localhost:4356";
+const webPort = Number(process.env.AMP_SHELL_WEB_PORT ?? 4356);
+const origin = `http://localhost:${webPort}`;
 const repository = new PostgresRepository(url, { development: true });
 async function startAccountsServer() {
   const accounts = await createAccounts(repository.pool, {
@@ -50,7 +51,7 @@ async function startAccountsServer() {
     authenticate,
     services: { secret: accounts.config.secret, origin },
   });
-  await app.listen({ host: "127.0.0.1", port: 4357 });
+  await app.listen({ host: "127.0.0.1", port: webPort + 1 });
   return app;
 }
 let app = await startAccountsServer();
@@ -59,9 +60,9 @@ const vite = await createServer({
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
   server: {
     host: "127.0.0.1",
-    port: 4356,
+    port: webPort,
     strictPort: true,
-    proxy: { "/api": "http://127.0.0.1:4357" },
+    proxy: { "/api": `http://127.0.0.1:${webPort + 1}` },
   },
 });
 await vite.listen();
@@ -107,17 +108,6 @@ async function signedIn(page: Page, email: string) {
     await page
       .getByRole("heading", { name: /^Good (morning|afternoon|evening)/ })
       .waitFor();
-    // The family class has a desktop rail and a phone drawer until it shares
-    // the app frame. Follow its Family link into the account screens.
-    const family = page.getByRole("link", { name: "Family", exact: true });
-    if (!(await family.isVisible()))
-      await page.getByRole("button", { name: "Open AMP menu" }).click();
-    await family.click();
-    await page.waitForURL(origin + "/family");
-    await page
-      .getByRole("heading", { name: "Who’s learning?", exact: true })
-      .waitFor();
-    await page.getByRole("dialog").waitFor({ state: "detached" });
   }
   await page
     .getByRole("button", { name: "Open AMP menu" })
@@ -201,7 +191,7 @@ try {
   await page.getByRole("status").waitFor();
   const link = mail
     .join("\n")
-    .match(/http:\/\/localhost:4356\/api\/auth\/reset-password\/\S+/)?.[0];
+    .match(new RegExp(`${origin}/api/auth/reset-password/\\S+`))?.[0];
   assert.ok(link, "a reset link was emailed");
   await page.goto(link!);
   await page.getByRole("heading", { name: "Choose a new password" }).waitFor();

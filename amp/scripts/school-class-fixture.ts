@@ -13,6 +13,8 @@ import type { Pool } from "pg";
 import { skills } from "../src/curriculum/catalog";
 import { gradeNumber } from "../src/learning/frontier";
 import { generateProblem, templates } from "../src/math/engine";
+import type { GeneratedProblem } from "../src/math/contracts";
+import { practiceResponse } from "./ui-practice-answer";
 import type { SchoolRepository } from "../src/schools/repository";
 import type { PostgresRepository } from "../src/server/repository";
 import {
@@ -21,7 +23,6 @@ import {
   hash,
   SHARED_GAP,
   STUCK,
-  wrongResponse,
   type Persona,
 } from "../src/schools/demo/personas";
 
@@ -49,7 +50,6 @@ export {
   persona,
   SHARED_GAP,
   STUCK,
-  wrongResponse,
   type Persona,
 } from "../src/schools/demo/personas";
 export async function studentApi(
@@ -66,9 +66,17 @@ export async function studentApi(
     },
     body: JSON.stringify(body),
   });
-  assert.equal(response.ok, true, `${path} ${response.status}`);
+  assert.equal(
+    response.ok,
+    true,
+    `${path} ${response.status}${response.ok ? "" : `: ${await response.text()}`}`,
+  );
   return response.json();
 }
+/** A submittable incorrect answer in the problem's actual response format. */
+export const wrongResponse = (problem: GeneratedProblem) =>
+  practiceResponse(problem, false);
+
 /** Real answers through the real API, then dated back across the year: the
  * rollups, the skill evidence and the level days are rebuilt from those dates by
  * the same rules the trigger and `/batches` use. */
@@ -179,7 +187,7 @@ export async function seedMisses(
           problemId: problem.public.id,
           skillId: problem.public.skillId,
           templateId: template,
-          response: wrongResponse(problem as never),
+          response: wrongResponse(problem),
           correct: false,
           assisted: false,
           answer: problem.answer,

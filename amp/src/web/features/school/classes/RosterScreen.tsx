@@ -278,6 +278,13 @@ export function RosterScreen() {
             </div>
             <div className={styles.actions}>
               <Link
+                to="/school/$org/classes/$class/experience"
+                params={params}
+                className={buttonClass("secondary")}
+              >
+                Student experience
+              </Link>
+              <Link
                 to="/school/$org/classes/$class/start"
                 params={params}
                 className={buttonClass("primary")}

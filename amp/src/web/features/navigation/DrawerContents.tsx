@@ -8,8 +8,7 @@ import { storedTrial } from "../../lib/pending-trial";
 import { FeedbackPreferences } from "../practice/FeedbackPreferences";
 import { ChoicePicker, type ListboxOption } from "../../ui/Listbox";
 import { SignedInEmail } from "./SignedInEmail";
-import { PlaceSwitcher, placeEntries } from "./PlaceSwitcher";
-import { familyClassPath } from "../onboarding/guard";
+import { PlaceSwitcher, usePlaceEntries } from "./PlaceSwitcher";
 import { overviewPath, shellFrame, type ShellFrame } from "./shell-frame";
 import { clearInitialConsentChallenge } from "../../consent-entry";
 import {
@@ -153,7 +152,50 @@ export default function DrawerContents({
     });
     close();
   }
-  const places = account ? placeEntries(account) : [];
+  const { entries: places } = usePlaceEntries(
+    account,
+    here?.kind === "class" || here?.kind === "school" ? here.org : undefined,
+  );
+  const currentClass =
+    here?.kind === "class"
+      ? (`class:${here.org}:${here.classId}` as const)
+      : null;
+  const classPlace =
+    places.find((place) => place.id === currentClass) ??
+    places.find(
+      (place) =>
+        here?.kind === "school" && place.id.startsWith(`class:${here.org}:`),
+    ) ??
+    places.find((place) => place.id === "home" && account?.familyClass) ??
+    places.find((place) => place.id.startsWith("class:"));
+  const schoolPlace =
+    places.find(
+      (place) =>
+        place.id ===
+        (here?.kind === "school" || here?.kind === "class"
+          ? `school:${here.org}`
+          : ""),
+    ) ?? places.find((place) => place.id.startsWith("school:"));
+  const workbookLearner = location.pathname.match(
+    /^\/learners\/([^/]+)\/workbooks/,
+  );
+  const currentPlace = workbookLearner
+    ? workbookLearner[1] === account?.adultPractice?.learner?.id
+      ? "me"
+      : (`learner:${workbookLearner[1]}` as const)
+    : here?.kind === "class"
+      ? account?.familyClass?.classId === here.classId
+        ? "home"
+        : currentClass
+      : here?.kind === "school"
+        ? (`school:${here.org}` as const)
+        : own
+          ? "me"
+          : !assessment &&
+              learner &&
+              (here?.kind === "progress" || here?.kind === "practice")
+            ? (`learner:${learner.id}` as const)
+            : "home";
   const learnerName = own
     ? (view.learner?.name ?? "")
     : assessment
@@ -180,7 +222,8 @@ export default function DrawerContents({
           {account && places.length > 1 && (
             <PlaceSwitcher
               me={account}
-              current={own ? "me" : "home"}
+              current={currentPlace}
+              entries={places}
               onNavigate={close}
             />
           )}
@@ -245,17 +288,17 @@ export default function DrawerContents({
               location.pathname === "/lessons" ||
               location.pathname.startsWith("/lessons/"),
           })}
-        {account?.familyClass &&
+        {classPlace &&
           !student &&
-          nav(familyClassPath(account.familyClass), "Class", "class", {
-            detail: account.familyClass.className,
+          nav(`/${classPlace.path}`, "Class", "class", {
+            detail: classPlace.name,
+            current: here?.kind === "class",
           })}
-        {!!account?.staffOf?.length &&
-          nav("/school", "School", "school", {
-            detail:
-              account.staffOf.length === 1
-                ? account.staffOf[0]!.orgName
-                : `${account.staffOf.length} schools`,
+        {schoolPlace &&
+          !student &&
+          nav(`/${schoolPlace.path}`, "School", "school", {
+            detail: schoolPlace.name,
+            current: here?.kind === "school",
           })}
         {student &&
           account?.school?.standings &&

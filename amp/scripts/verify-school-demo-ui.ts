@@ -233,8 +233,36 @@ async function demo(
     .first()
     .waitFor();
   await marked(page, `${label} Today`);
+  // The bar's one action is the real class; Start class moves into Today.
+  check(
+    `${label} no Start class in the bar`,
+    (await page
+      .locator("[data-shell-action]")
+      .filter({ visible: true })
+      .count()) === 0,
+  );
+  check(
+    `${label} Start class on Today`,
+    await page.getByRole("link", { name: "Start class" }).isVisible(),
+  );
   await measured(page, `${label} Today`);
   await shot(page, "today", label);
+  // The drawer's place switcher says Demo too.
+  await page
+    .getByRole("button", { name: "Open AMP menu" })
+    .filter({ visible: true })
+    .first()
+    .click();
+  const drawer = page.getByRole("dialog");
+  await drawer.waitFor();
+  check(
+    `${label} the switcher says Demo`,
+    await drawer.locator("[data-demo-mark]").first().isVisible(),
+  );
+  await settle(page, 400);
+  await shot(page, "drawer", label);
+  await page.keyboard.press("Escape");
+  await drawer.waitFor({ state: "hidden" });
   await page.goto(`${origin}/${classPath}/map`);
   await page.getByText("Priya Raman").first().waitFor();
   await measured(page, `${label} map`);

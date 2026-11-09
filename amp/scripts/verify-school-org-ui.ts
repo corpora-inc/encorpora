@@ -1,3 +1,4 @@
+import { schoolShellReview } from "./school-shell-review";
 /**
  * The school and district layer in real browsers, against the real API and a real
  * database: an admin reads the overview, rolls a year over, moves a student to
@@ -63,9 +64,9 @@ const widths = (argument("--widths") ?? "320,390,768,1280")
 const themes = (argument("--themes") ?? "light,dark").split(",") as (
   "light" | "dark"
 )[];
-const REVIEW = "docs/reviews/school-org";
+const REVIEW = process.env.AMP_UI_REVIEW ?? "docs/reviews/school-org";
 const ARTIFACTS = "artifacts/school-org";
-const webPort = 4404,
+const webPort = Number(argument("--port") ?? 4404),
   apiPort = 4405,
   origin = `http://127.0.0.1:${webPort}`;
 const ACCOUNT = "development-household";
@@ -450,6 +451,7 @@ async function viewScreen(
   await page.goto(origin + path);
   await heading(page, ready).waitFor({ timeout: 45_000 });
   await settled(page);
+  await schoolShellReview(page, name === "school-overview" ? name : undefined);
   await geometry(page, `${label} ${name}`);
   await shoot(page, engine, name, width, theme);
   await resetRecord(page);
@@ -487,8 +489,17 @@ async function sweep(
         `${label} ${response.status()} ${new URL(response.url()).pathname}`,
       );
   });
+  let releasePlaces: (() => void) | undefined;
   try {
     const { school, district, districtSchool } = places;
+    const otherClasses = `**/api/v1/school/orgs/${district}/classes?*`;
+    const placesGate = new Promise<void>((resolve) => {
+      releasePlaces = resolve;
+    });
+    await page.route(otherClasses, async (route) => {
+      await placesGate;
+      await route.continue();
+    });
     await viewScreen(
       page,
       engine,
@@ -499,6 +510,45 @@ async function sweep(
       `/school/${school}`,
       /^Good /,
     );
+    const logoBefore = await boxes(page, "[data-app-bar] [data-app-logo]");
+    await page.getByRole("button", { name: "Open AMP menu" }).click();
+    await page.locator('[data-navigation-trigger][aria-busy="true"]').waitFor();
+    check(
+      `${label} pending places do not open an incomplete drawer`,
+      (await page.getByRole("dialog").count()) === 0,
+    );
+    sameBoxes(
+      `${label} waiting menu keeps its logo box`,
+      logoBefore,
+      await boxes(page, "[data-app-bar] [data-app-logo]"),
+    );
+    await page.getByRole("button", { name: "Open AMP menu" }).click();
+    await page
+      .locator('[data-navigation-trigger]:not([aria-busy="true"])')
+      .waitFor();
+    check(
+      `${label} a second click cancels the pending drawer`,
+      (await page.getByRole("dialog").count()) === 0,
+    );
+    await page.getByRole("button", { name: "Open AMP menu" }).click();
+    await page.locator('[data-navigation-trigger][aria-busy="true"]').waitFor();
+    releasePlaces!();
+    const readyDrawer = page.getByRole("dialog");
+    await readyDrawer.waitFor();
+    await readyDrawer.getByRole("link", { name: /^Class,/ }).waitFor();
+    await readyDrawer.getByRole("button", { name: /switch place$/ }).click();
+    await settled(page);
+    const menuBefore = await boxes(page, '[role="menu"]');
+    await settled(page);
+    sameBoxes(
+      `${label} loaded place menu stays fixed`,
+      menuBefore,
+      await boxes(page, '[role="menu"]'),
+    );
+    await page.keyboard.press("Escape");
+    await page.keyboard.press("Escape");
+    await readyDrawer.waitFor({ state: "hidden" });
+    await page.unroute(otherClasses);
     await viewScreen(
       page,
       engine,
@@ -519,6 +569,30 @@ async function sweep(
       `/school/${districtSchool}`,
       /^Good /,
     );
+    await page.getByRole("button", { name: "Open AMP menu" }).click();
+    const drawer = page.getByRole("dialog");
+    check(
+      `${label} inherited school keeps its group destination`,
+      (await drawer
+        .getByRole("link", { name: /^School,/ })
+        .getAttribute("href")) === `/school/${districtSchool}`,
+    );
+    await drawer.getByRole("button", { name: /switch place$/ }).click();
+    const placeMenu = page.getByRole("menu");
+    await placeMenu
+      .locator(`[data-place="school:${districtSchool}"]`)
+      .waitFor();
+    await placeMenu
+      .locator('[data-place^="school:"]')
+      .filter({ hasText: "Harbor View Middle School" })
+      .waitFor();
+    await placeMenu
+      .locator('[data-place^="school:"]')
+      .filter({ hasText: "Kestrel Valley High School" })
+      .waitFor();
+    await page.keyboard.press("Escape");
+    await page.keyboard.press("Escape");
+    await drawer.waitFor({ state: "hidden" });
     await viewScreen(
       page,
       engine,
@@ -650,6 +724,7 @@ async function sweep(
       .catch(() => undefined);
     throw error;
   } finally {
+    releasePlaces?.();
     await context.close();
   }
 }
@@ -764,8 +839,11 @@ async function journey(browser: Browser, engine: string) {
     await heading(page, "Classes").waitFor();
     await settled(page);
     check(
-      `${engine} a lone teacher has no overview in the rail`,
-      (await page.getByRole("link", { name: "Overview" }).count()) === 0,
+      `${engine} a lone teacher has no Overview tab`,
+      (await page
+        .locator("[data-app-bar]")
+        .getByRole("link", { name: "Overview" })
+        .count()) === 0,
     );
 
     // Campus transfer, from the Students screen at district scope.

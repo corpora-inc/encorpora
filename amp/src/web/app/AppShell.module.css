@@ -51,3 +51,16 @@
 .content :global(.shell > .app-loading) {
   min-height: calc(100dvh - var(--shell-bar));
 }
+
+@media print {
+  .frame > header {
+    display: none;
+  }
+  .frame,
+  .content {
+    min-height: 0;
+  }
+  .content {
+    padding-top: 0;
+  }
+}

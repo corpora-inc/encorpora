@@ -10,6 +10,9 @@
   margin-top: var(--space-1);
   color: var(--color-muted-text);
 }
+.startClass {
+  margin-top: var(--space-4);
+}
 .todos {
   container-type: inline-size;
   display: grid;
@@ -630,6 +633,11 @@ label.columnPick {
 .heatTicks span {
   overflow: visible;
   min-width: 0;
+}
+/* Keep a date near the end of the strip inside its table column. */
+.heatTicks span:nth-last-child(-n + 3) {
+  justify-self: end;
+  width: max-content;
 }
 .heatCell[data-monday],
 .heatTicks [data-monday] {

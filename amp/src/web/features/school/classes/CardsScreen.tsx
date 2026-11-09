@@ -84,28 +84,28 @@ export function CardsScreen() {
   }
   if (roster.isError)
     return (
-      <div className={styles.center} data-dense>
+      <main className={styles.center} data-dense>
         <EmptyState title="These cards didn’t load" action={back}>
           {roster.error.message}
         </EmptyState>
-      </div>
+      </main>
     );
   if (!roster.data) return <LoadingScreen />;
   const { class: info, students, canManage } = roster.data;
   const chosen = student ? students.filter((s) => s.id === student) : students;
   if (!canManage || !chosen.length)
     return (
-      <div className={styles.center} data-dense>
+      <main className={styles.center} data-dense>
         <EmptyState title="There are no cards to make here" action={back}>
           {canManage
             ? "This student isn’t in this class anymore."
             : "A teacher of this class can print its sign-in cards."}
         </EmptyState>
-      </div>
+      </main>
     );
   if (issued)
     return (
-      <div className={styles.page} data-dense>
+      <main className={styles.page} data-dense>
         <header className={styles.toolbar}>
           <div className={styles.toolbarText}>
             <h1>
@@ -126,13 +126,13 @@ export function CardsScreen() {
           </div>
         </header>
         <Sheets issued={issued} />
-      </div>
+      </main>
     );
   const holding = chosen.filter((s) => s.cardIssuedAt).length;
   const missing = chosen.length - holding;
   const personIds = student ? [student] : undefined;
   return (
-    <div className={styles.center} data-dense>
+    <main className={styles.center} data-dense>
       <section className={styles.prepare}>
         <h1>
           {student
@@ -188,6 +188,6 @@ export function CardsScreen() {
           {back}
         </div>
       </section>
-    </div>
+    </main>
   );
 }

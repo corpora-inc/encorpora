@@ -1,6 +1,6 @@
 .page,
 .center {
-  min-height: 100dvh;
+  min-height: calc(100dvh - var(--shell-bar, 56px));
   background: var(--color-surface);
   color: var(--color-on-surface);
   font-size: var(--text-dense);
