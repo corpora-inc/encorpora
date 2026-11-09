@@ -60,7 +60,6 @@ export function shellFrame(pathname: string): ShellFrame | null {
     const active =
       (
         {
-          schools: "overview",
           students: "classes",
           import: "classes",
           experience: "classes",
@@ -145,8 +144,13 @@ export function overviewPath(context: ProgressContext) {
 }
 
 /** Class sub-screens keep their parent tab selected. Past years retain grades and time. */
-export function classTabs(org: string, id: string, past = false): TabItem[] {
-  return [
+export function classTabs(
+  org: string,
+  id: string,
+  past = false,
+  familyCalendar = false,
+): TabItem[] {
+  const tabs = [
     ["today", "Today"],
     ["map", "Map"],
     ["gradebook", "Grades"],
@@ -161,6 +165,13 @@ export function classTabs(org: string, id: string, past = false): TabItem[] {
       label: label!,
       path: `school/${org}/classes/${id}/${leaf}`,
     }));
+  if (familyCalendar && !past)
+    tabs.push({
+      id: "calendar",
+      label: "Calendar",
+      path: `school/${org}/calendar`,
+    });
+  return tabs;
 }
 
 /** The school's navigation follows exactly the capabilities supplied by its API. */
@@ -172,15 +183,19 @@ export function schoolTabs(org: OrgResource, classCount: number): TabItem[] {
     ...(!family && !lone && can.has("overview.read")
       ? [{ id: "overview", label: "Overview", path: `school/${org.id}` }]
       : []),
+    ...((org.kind === "district" || org.kind === "network") &&
+    can.has("overview.read")
+      ? [{ id: "schools", label: "Schools", path: `school/${org.id}/schools` }]
+      : []),
     ...[
       ["classes", "Classes", "classes.read"],
-      ...(!family ? [["staff", "Staff", "staff.read"]] : []),
+      ...(!family && !lone ? [["staff", "Staff", "staff.read"]] : []),
       ["calendar", "Calendar", "calendar.read"],
       ...(!family
         ? [
             ["license", "License", "license.read"],
             ["privacy", "Privacy", "privacy.read"],
-            ["activity", "Activity", "activity.read"],
+            ...(!lone ? [["activity", "Activity", "activity.read"]] : []),
           ]
         : []),
     ]

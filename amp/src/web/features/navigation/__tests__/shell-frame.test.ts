@@ -124,7 +124,7 @@ test("school sub-screens map to seven tabs and respect capabilities", () => {
     ["experience", "classes"],
     ["integrations", "staff"],
     ["year", "calendar"],
-    ["schools", "overview"],
+    ["schools", "schools"],
   ]) {
     expect(shellFrame(`/school/org/${leaf}`)).toMatchObject({
       kind: "school",
@@ -154,5 +154,70 @@ test("school sub-screens map to seven tabs and respect capabilities", () => {
   expect(classTabs("org", "class", true).map((tab) => tab.id)).toEqual([
     "gradebook",
     "time",
+  ]);
+});
+
+test.each(["district", "network"] as const)(
+  "review regression: %s has its own Schools tab when overview is permitted",
+  (kind) => {
+    const org = {
+      id: "org",
+      name: "District",
+      kind,
+      parentId: null,
+      timezone: "UTC",
+      roles: [],
+      can: ["overview.read"] as ["overview.read"],
+    };
+    expect(schoolTabs(org, 2)).toContainEqual({
+      id: "schools",
+      label: "Schools",
+      path: "school/org/schools",
+    });
+    expect(shellFrame("/school/org/schools")).toMatchObject({
+      active: "schools",
+    });
+    expect(schoolTabs({ ...org, can: [] }, 2)).toEqual([]);
+    expect(
+      schoolTabs({ ...org, kind: "school" }, 2).some(
+        (tab) => tab.id === "schools",
+      ),
+    ).toBe(false);
+  },
+);
+
+test("review regression: a lone school hides Overview, Staff and Activity", () => {
+  const org = {
+    id: "org",
+    name: "Just my class",
+    kind: "school" as const,
+    parentId: null,
+    timezone: "UTC",
+    roles: ["admin"] as ["admin"],
+    solo: true,
+    can: [
+      "overview.read",
+      "staff.read",
+      "activity.read",
+      "calendar.read",
+      "privacy.read",
+    ] as [
+      "overview.read",
+      "staff.read",
+      "activity.read",
+      "calendar.read",
+      "privacy.read",
+    ],
+  };
+  expect(schoolTabs(org, 1).map((tab) => tab.id)).toEqual([
+    "calendar",
+    "privacy",
+  ]);
+  expect(schoolTabs(org, 2).map((tab) => tab.id)).toEqual([
+    "overview",
+    "staff",
+    "calendar",
+    "privacy",
+    "activity",
   ]);
 });

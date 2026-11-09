@@ -13,7 +13,7 @@ import { schoolShellReview } from "./school-shell-review";
  *       [--engine chromium|webkit] [--widths 390,1280] [--themes light,dark] [--skip-sweep] [--skip-journey] [--measure-only] [--small]
  */
 import assert from "node:assert/strict";
-import { randomUUID } from "node:crypto";
+import { randomBytes, randomUUID } from "node:crypto";
 import { readFile, mkdir } from "node:fs/promises";
 import { createServer as createHttpServer } from "node:http";
 import type { AddressInfo } from "node:net";
@@ -67,7 +67,7 @@ const themes = (argument("--themes") ?? "light,dark").split(",") as (
 const REVIEW = process.env.AMP_UI_REVIEW ?? "docs/reviews/school-org";
 const ARTIFACTS = "artifacts/school-org";
 const webPort = Number(argument("--port") ?? 4404),
-  apiPort = 4405,
+  apiPort = webPort + 1,
   origin = `http://127.0.0.1:${webPort}`;
 const ACCOUNT = "development-household";
 const DAY = 86_400_000;
@@ -132,7 +132,7 @@ await new Promise<void>((done) => providerServer.listen(0, "127.0.0.1", done));
 const providerBase = `http://127.0.0.1:${(providerServer.address() as AddressInfo).port}`;
 const fakeGoogle: OidcProvider = {
   clientId: "fake-google-client-id",
-  clientSecret: "fake-secret",
+  clientSecret: randomBytes(24).toString("hex"),
   authorizationEndpoint: `${providerBase}/authorize`,
   tokenEndpoint: `${providerBase}/token`,
   jwksUri: `${providerBase}/jwks`,
@@ -157,7 +157,7 @@ await registerSchoolRoutes(api, {
   pool: db,
   authenticate,
   services: {
-    secret: "verify-secret",
+    secret: randomBytes(32).toString("hex"),
     origin,
     mail: async (to, subject) => {
       mail.push({ to, subject });
@@ -838,13 +838,11 @@ async function journey(browser: Browser, engine: string) {
     await page.waitForURL(`**/school/${solo.id}/classes**`);
     await heading(page, "Classes").waitFor();
     await settled(page);
-    check(
-      `${engine} a lone teacher has no Overview tab`,
-      (await page
-        .locator("[data-app-bar]")
-        .getByRole("link", { name: "Overview" })
-        .count()) === 0,
-    );
+    for (const name of ["Overview", "Staff", "Activity"])
+      check(
+        `${engine} a lone teacher has no ${name} link`,
+        (await page.getByRole("link", { name, exact: true }).count()) === 0,
+      );
 
     // Campus transfer, from the Students screen at district scope.
     await page.goto(

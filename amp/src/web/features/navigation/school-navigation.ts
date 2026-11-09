@@ -25,18 +25,19 @@ export function useSchoolNavigation(frame: ShellFrame) {
     enabled: frame.kind === "class" && !!session,
     refetchOnMount: false,
   }).data;
-  // The year endpoint authorizes past classes absent from the current roster.
-  // That roster includes aides as well as teachers and org-wide readers.
-  const available =
-    frame.kind === "class" &&
-    (year?.past === true ||
-      classes?.some((entry) => entry.id === frame.classId));
+  // The year endpoint authorizes this class independently of the paginated roster.
+  const available = frame.kind === "class" && year !== undefined;
   return {
     tabs: !org
       ? []
       : frame.kind === "class"
         ? available
-          ? classTabs(frame.org, frame.classId, year?.past === true)
+          ? classTabs(
+              frame.org,
+              frame.classId,
+              year?.past === true,
+              org.kind === "family" && org.can?.includes("calendar.read"),
+            )
           : []
         : schoolTabs(org, classes?.length ?? 0),
     start: frame.kind === "class" && available && !year?.past,

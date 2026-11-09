@@ -4,6 +4,7 @@ import { exitPractice } from "./ui-practice";
 import { createOTP } from "@better-auth/utils/otp";
 import { base32 } from "@better-auth/utils/base32";
 import assert from "node:assert/strict";
+import { randomBytes } from "node:crypto";
 import { mkdir } from "node:fs/promises";
 import { setTimeout as delay } from "node:timers/promises";
 import { chromium as rawChromium, type Page } from "playwright";
@@ -29,10 +30,11 @@ await migrate(url);
 const webPort = Number(process.env.AMP_SHELL_WEB_PORT ?? 4356);
 const origin = `http://localhost:${webPort}`;
 const repository = new PostgresRepository(url, { development: true });
+const secret = randomBytes(32).toString("hex");
 async function startAccountsServer() {
   const accounts = await createAccounts(repository.pool, {
     baseURL: origin,
-    secret: "v".repeat(40),
+    secret,
     production: false,
     passwords: true,
     trustedOrigins: [],
@@ -123,7 +125,13 @@ async function signedIn(page: Page, email: string) {
   await identity.getByText(email, { exact: true }).waitFor();
   const signOut = page.getByRole("button", { name: "Sign out", exact: true });
   await signOut.waitFor();
-  await page.getByRole("button", { name: "Close AMP menu" }).click();
+  if (new URL(page.url()).pathname.startsWith("/school/")) {
+    await page.getByRole("link", { name: "Family", exact: true }).click();
+    await page.waitForURL(`${origin}/family`);
+    await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
+  } else {
+    await page.getByRole("button", { name: "Close AMP menu" }).click();
+  }
   await signOut.waitFor({ state: "hidden" });
 }
 
@@ -143,7 +151,8 @@ try {
   });
   page.on("pageerror", (error) => errors.push(error.message));
   const email = `parent-${Date.now()}@example.com`;
-  const password = "a long enough passphrase";
+  const password = randomBytes(24).toString("hex");
+  const securityPassword = randomBytes(24).toString("hex");
 
   // Create an account from the signed-out pitch.
   await page.goto(`${origin}/`);
@@ -195,7 +204,7 @@ try {
   assert.ok(link, "a reset link was emailed");
   await page.goto(link!);
   await page.getByRole("heading", { name: "Choose a new password" }).waitFor();
-  const changed = "a different long passphrase";
+  const changed = randomBytes(24).toString("hex");
   await page.getByLabel("New password").fill(changed);
   await page.getByRole("button", { name: "Change password" }).click();
   await page.getByText("Password changed.").waitFor();
@@ -292,9 +301,7 @@ try {
   );
   await page.getByRole("button", { name: "Password Set", exact: true }).click();
   await page.getByLabel("Current password").fill(changed);
-  await page
-    .getByLabel("New password", { exact: true })
-    .fill("A new security passphrase");
+  await page.getByLabel("New password", { exact: true }).fill(securityPassword);
   await page
     .getByRole("button", { name: "Change password", exact: true })
     .click();
@@ -384,7 +391,7 @@ try {
     url: "/api/auth/sign-in/email",
     remoteAddress: "203.0.113.249",
     headers: { origin },
-    payload: { email, password: "A new security passphrase" },
+    payload: { email, password: securityPassword },
   });
   assert.equal(caregiver.statusCode, 200);
   const caregiverCookie = ([] as string[])
@@ -452,7 +459,7 @@ try {
     url: "/api/auth/sign-in/email",
     remoteAddress: "203.0.113.252",
     headers: { origin },
-    payload: { email, password: "A new security passphrase" },
+    payload: { email, password: securityPassword },
   });
   assert.equal(prepareLogin.statusCode, 200);
   await page.context().addCookies(
