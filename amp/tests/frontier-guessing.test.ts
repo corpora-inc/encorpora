@@ -138,6 +138,23 @@ test("graphical solution estimates cover three-choice intersection variants", ()
   assert.equal(guessChanceOf("graphical-solution-table"), 1 / 3);
 });
 
+for (const [id, seed, cards] of [
+  ["tile-then-multiply", "audit:95", 4],
+  ["split-tiled-count", "audit:5", 5],
+] as const) {
+  test(`${id} estimates cover ${cards}-card reusable trays`, () => {
+    const problem = generateProblem(id, seed);
+    const response = problem.public.response;
+    assert.equal(response.kind, "multi-part-choice");
+    if (response.kind !== "multi-part-choice") throw new Error("response");
+    assert.equal(response.reuse, true);
+    assert.equal(response.blanks.length, 4);
+    assert.ok(response.blanks.every((blank) => blank.options.length === cards));
+    assert.equal(problemGuessChance(problem), 1 / cards ** 4);
+    assert.equal(guessChanceOf(id), 1 / cards ** 4);
+  });
+}
+
 test("guess chance comes from each family's answer schema and is never understated", () => {
   let choiceFamilies = 0;
   for (const template of templates) {

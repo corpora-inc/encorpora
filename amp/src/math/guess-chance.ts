@@ -36,6 +36,10 @@ const FAMILY_GUESS_FLOOR: Readonly<Record<string, number>> = {
   "multiples-select": 1 / 4,
   // Equal intersection coordinates collapse a distractor, leaving three choices.
   "graphical-solution-table": 1 / 3,
+  // Four blanks with reusable cards can share a tray of only four values.
+  "tile-then-multiply": 1 / 256,
+  // Split-area trays have at least five values for their four reusable blanks.
+  "split-tiled-count": 1 / 625,
 };
 /** An unregistered choice family is scored as the most guessable choice: two
  * options. Overstating the guess chance only discounts a correct answer. */
