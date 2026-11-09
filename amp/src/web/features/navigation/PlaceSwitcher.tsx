@@ -154,7 +154,7 @@ export function usePlaceEntries(me: SignedInMe | null, currentOrg?: string) {
         name: org.name,
         detail: "School",
         path: `school/${org.id}`,
-        ...(org.demo ? { demo: true as const } : {}),
+        ...("demo" in org && org.demo ? { demo: true as const } : {}),
       });
   }
   for (const [index, org] of classOrgs.entries()) {
