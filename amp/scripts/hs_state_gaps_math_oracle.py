@@ -275,8 +275,96 @@ def parse_interval_set(label):
     return normalise(pieces)
 
 
+def _quadratic_coeffs(expr, var):
+    xs = [Fraction(i) for i in range(-2, 5)]
+    ys = [ev_poly(expr, var, x) for x in xs]
+    c0 = ys[2]
+    c1 = (ys[3] - ys[1]) / 2
+    c2 = (ys[3] + ys[1]) / 2 - c0
+    for x, y in zip(xs, ys):
+        require(c2 * x * x + c1 * x + c0 == y, f'{expr} is not quadratic')
+    require(c2 != 0, 'Not a quadratic')
+    return c2, c1, c0
+
+
+def ev_poly(expr, var, x):
+    """Evaluate a factored integer polynomial. Local, so this oracle stays standalone."""
+    text = squash(expr).replace(var, f'({x})')
+    text = text.replace('^', '**')
+    text = re.sub(r'(\d|\))(?=\()', r'\1*', text)
+    require(re.fullmatch(r'[0-9+\-*/()]+', text) is not None, f'Unreadable polynomial {expr}')
+    return Fraction(eval(text, {'__builtins__': {}}, {}))  # digits and +-*/() only
+
+
+def _feature_interval(prompt, options):
+    keys = [parse_interval_set(o['label']) for o in options]
+
+    def choose(expected):
+        return pick(options, keys, expected, 'feature interval')
+
+    table = re.fullmatch(
+        r'The table shows the height of a ball, in meters, t seconds after it is thrown\. '
+        r'Between which times in the table is the height increasing\?\n'
+        r't: ([-\d, ]+)\nh: ([-\d, ]+)',
+        prompt,
+    )
+    if table:
+        times = [int(part) for part in table[1].split(',')]
+        heights = [int(part) for part in table[2].split(',')]
+        require(len(times) == len(heights) == 5, 'The table has five rows')
+        top = max(range(len(heights)), key=lambda i: heights[i])
+        require(heights.count(heights[top]) == 1, 'The greatest height is one row')
+        require(all(heights[i] < heights[i + 1] for i in range(top)), 'Heights rise up to the greatest row')
+        require(all(heights[i] > heights[i + 1] for i in range(top, len(heights) - 1)), 'Heights fall after the greatest row')
+        return choose(normalise([(Fraction(times[0]), False, Fraction(times[top]), False)]))
+
+    graph = re.fullmatch(
+        r'The graph of f\(x\)=(.+) is a parabola\. During which interval is f (increasing|decreasing|positive|negative)\?',
+        prompt,
+    )
+    ball = re.fullmatch(
+        r'The height in meters of a ball t seconds after it is thrown is h\(t\)=(.+), with t\\ge 0\. '
+        r'Its graph is a downward parabola\. During which interval of time is the ball (rising|falling|above the ground)\?',
+        prompt,
+    )
+    require(graph or ball, 'Inequality prompt not recognised')
+    expr, word = (graph or ball)[1], (graph or ball)[2]
+    var = 'x' if graph else 't'
+    a, b, c = _quadratic_coeffs(expr, var)
+    disc = b * b - 4 * a * c
+    root = exact_sqrt(disc)
+    zeros = sorted({(-b - root) / (2 * a), (-b + root) / (2 * a)})
+    vertex = -b / (2 * a)
+    def open_ray(lo, hi):
+        return normalise([(lo, False, hi, False)])
+
+    between = open_ray(zeros[0], zeros[1])
+    outside = normalise([(None, False, zeros[0], False), (zeros[1], False, None, False)])
+    if graph:
+        if word == 'increasing':
+            expected = open_ray(vertex, None) if a > 0 else open_ray(None, vertex)
+        elif word == 'decreasing':
+            expected = open_ray(None, vertex) if a > 0 else open_ray(vertex, None)
+        elif word == 'positive':
+            expected = outside if a > 0 else between
+        else:
+            expected = between if a > 0 else outside
+        return choose(expected)
+    require(a < 0 and zeros[0] < 0 < zeros[1] and vertex > 0, 'The ball opens down and lands after the throw')
+    require(a * zeros[0] * zeros[1] > 0, 'The ball starts above the ground')
+    if word == 'rising':
+        expected = open_ray(Fraction(0), vertex)
+    elif word == 'falling':
+        expected = open_ray(vertex, zeros[1])
+    else:
+        expected = normalise([(Fraction(0), True, zeros[1], False)])
+    return choose(expected)
+
+
 def solve_quadratic_inequality(public):
     prompt = plain(public['prompt'])
+    if prompt.startswith('The graph of ') or prompt.startswith('The height ') or prompt.startswith('The table '):
+        return _feature_interval(prompt, options_of(public))
     m = re.match(r'Solve (.+?) (<|>|\\le|\\ge) (.+?)(?: over the real numbers\. Choose the solution set\.|\. Write the solution set in interval notation\.)$', prompt)
     require(m is not None, 'Inequality prompt not recognised')
     left, right = parse_quadratic(m[1]), parse_quadratic(m[3])

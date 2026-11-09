@@ -3,6 +3,7 @@ import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { act, lessonStep, step, table, tree, venn } from "./scene/author";
 import type { Action, Step } from "./scene/timeline";
 import type { Scene } from "./scene/spec";
+import { chooseAxes, defineAxis } from "./variation/axes";
 
 /** High-school probability rules (S-CP): events as sets, the addition rule,
  * conditional probability and the multiplication rule. Figures are scenes:
@@ -51,32 +52,35 @@ export const probabilityRulesTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "addition-rule-probability",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "The addition rule",
     skillId: "probability-addition",
     gradeBand: "9–12",
     description:
-      "Find $P(A \\text{ or } B)$ as $P(A)$ + $P(B)$ − $P(A \\text{ and } B)$, from counts, probabilities or a deck of cards, and solve the rule for the overlap.",
+      "Find $P(A \\text{ or } B)$ as $P(A)$ + $P(B)$ − $P(A \\text{ and } B)$, from counts, probabilities or a deck of cards, and solve the rule for the overlap. One task asks what that probability means for a randomly chosen member.",
     ...scenes,
   },
   {
     id: "conditional-probability-value",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Conditional probability",
     skillId: "conditional-probability",
     gradeBand: "9–12",
     description:
-      "Find $P(A \\mid  B)$ by restricting the sample space to $B$: from a two-way table, a Venn diagram, a list of outcomes or $P(A \\text{ and } B)$ ÷ $P(B)$.",
+      "Find $P(A \\mid  B)$ by restricting the sample space to $B$: from a two-way table, a Venn diagram, a list of outcomes or $P(A \\text{ and } B)$ ÷ $P(B)$. One task builds the table from counts; another asks what the conditional means in the group.",
     ...scenes,
   },
   {
     id: "multiplication-rule-probability",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "The multiplication rule",
     skillId: "probability-multiplication",
     gradeBand: "9–12",
     description:
-      "Find $P(A \\text{ and } B)$ as $P(A) \\times  P(B | A)$ for draws without replacement and two-stage trees, and add the paths that make up an event.",
+      "Find $P(A \\text{ and } B)$ as $P(A) \\times  P(B | A)$, or as $P(B) \\times  P(A | B)$, for draws without replacement and two-stage trees, and say what the joint probability means.",
     ...scenes,
   },
 ];
@@ -657,6 +661,325 @@ const cardPairs = [
 const deckIntro =
   "A card is drawn at random from a standard deck of 52 cards (13 cards in each of the four suits: hearts, diamonds, clubs and spades; hearts and diamonds are red)";
 
+// ---------------------------------------------------------- clause tasks
+/** Legacy questions stay on the content stream. New tasks use this axis only. */
+const taskAxis = (
+  values: readonly ["standard", ...string[]],
+  weights: readonly number[],
+) =>
+  defineAxis("task", values, {
+    legacy: "standard",
+    weights,
+    silentLegacy: true,
+    since: 2,
+  });
+const additionTaskAxes = {
+  task: taskAxis(["standard", "value-and-interpretation"], [1, 1]),
+} as const;
+const conditionalTaskAxes = {
+  task: taskAxis(
+    ["standard", "build-the-table", "value-and-interpretation"],
+    [2, 1, 1],
+  ),
+} as const;
+const multiplicationTaskAxes = {
+  task: taskAxis(
+    ["standard", "two-ways", "value-and-interpretation"],
+    [2, 1, 1],
+  ),
+} as const;
+const taskFor = (id: string, seed: string) => {
+  if (id === "addition-rule-probability")
+    return chooseAxes(id, seed, additionTaskAxes).task;
+  if (id === "conditional-probability-value")
+    return chooseAxes(id, seed, conditionalTaskAxes).task;
+  if (id === "multiplication-rule-probability")
+    return chooseAxes(id, seed, multiplicationTaskAxes).task;
+  return "standard" as const;
+};
+const buildContexts = [
+  {
+    people: "students",
+    rowMany: "tenth graders",
+    restMany: "eleventh graders",
+    trait: "favor science",
+    given: "eleventh grader",
+    asked: "favors science",
+    rowA: "Tenth",
+    rowB: "Eleventh",
+    colA: "Science",
+    colB: "Other",
+    corner: "Grade",
+  },
+  {
+    people: "players",
+    rowMany: "juniors",
+    restMany: "seniors",
+    trait: "play soccer",
+    given: "senior",
+    asked: "plays soccer",
+    rowA: "Juniors",
+    rowB: "Seniors",
+    colA: "Soccer",
+    colB: "Other",
+    corner: "Team",
+  },
+  {
+    people: "workers",
+    rowMany: "office staff",
+    restMany: "remote workers",
+    trait: "ride the bus",
+    given: "remote worker",
+    asked: "rides the bus",
+    rowA: "Office",
+    rowB: "Remote",
+    colA: "Bus",
+    colB: "Other",
+    corner: "Workplace",
+  },
+] as const;
+function buildTableCase(r: Random): Case {
+  for (let attempt = 0; attempt < 60; attempt++) {
+    const ctx = pick(r, buildContexts);
+    const N = r(4, 20) * 10;
+    const R = r(Math.floor(N * 0.3), Math.floor(N * 0.7));
+    const C = r(Math.floor(N * 0.25), Math.floor(N * 0.65));
+    const xMin = Math.max(2, R + C - N + 2);
+    const xMax = Math.min(R - 2, C - 2);
+    if (xMin > xMax) continue;
+    const X = r(xMin, xMax);
+    const eleventh = N - R;
+    const cell = C - X;
+    const other = eleventh - cell;
+    if (cell < 2 || other < 2 || R - X < 2) continue;
+    if (X * eleventh === R * cell) continue;
+    const answer = q(cell, eleventh);
+    const tenthOther = R - X;
+    const figure = table({
+      columns: [ctx.colA, ctx.colB, "Total"],
+      corner: ctx.corner,
+      rows: [
+        { label: ctx.rowA, cells: [X, tenthOther, R] },
+        { label: ctx.rowB, cells: [null, other, eleventh] },
+        { label: "Total", cells: [C, N - C, N] },
+      ],
+      sums: true,
+      derived: [[1, 0]],
+    })
+      .id("t")
+      .highlight({ rows: [1], cells: [[1, 0]] })
+      .scene({
+        title: `Counts for ${N} ${ctx.people}`,
+        steps: [
+          step(
+            `The second row is the ${ctx.restMany}. Its total is already known.`,
+            act.highlight("t.cell.1.2"),
+          ),
+          step(
+            `The missing cell is ${ctx.colA} in that row. The column total determines it.`,
+            act.highlight("t.cell.1.0"),
+          ),
+          step(
+            `The asked probability divides that cell by the second row's total.`,
+            act.highlight("t.cell.1.0"),
+          ),
+        ],
+      });
+    return {
+      prompt: `A survey of ${N} ${ctx.people} gives two facts. ${R} are ${ctx.rowMany} and the rest are ${ctx.restMany}. ${C} ${ctx.trait}, including ${X} ${ctx.rowMany}. Build the two-way table. What is the probability that a randomly chosen ${ctx.given} ${ctx.asked}?`,
+      answer,
+      explanation: [
+        `The ${ctx.restMany} number ${eleventh}, because ${N} − ${R} = ${eleventh}.`,
+        `${ctx.colA} among them is ${C} − ${X} = ${cell}.`,
+        `The probability is ${ratio(cell, eleventh)}.`,
+      ],
+      hint: `Subtract the ${ctx.rowMany} from ${N} to get the ${ctx.restMany}. Then subtract the ${X} who are both from the ${C} who ${ctx.trait}. Divide those two results.`,
+      tags: ["build-the-table"],
+      figure,
+    };
+  }
+  throw new Error("Need a two-way table");
+}
+function conditionalInterpretation(r: Random): Case {
+  for (let attempt = 0; attempt < 40; attempt++) {
+    const g = pick(r, groups);
+    const c = randomCounts(r);
+    const n = total(c);
+    const nA = c.a + c.ab;
+    const nB = c.b + c.ab;
+    if (nA === nB) continue;
+    if (c.ab * n === nA * nA) continue;
+    const answer = q(c.ab, nA);
+    return {
+      prompt: `Of ${n} ${g.intro}, ${nA} ${g.a.have}, ${nB} ${g.b.have} and ${c.ab} ${g.both}. Among the ${nA} ${g.many} ${g.who} ${g.a.have}, what fraction also ${g.b.have}?`,
+      answer,
+      explanation: [
+        `The question stays inside the ${nA} ${g.many} ${g.who} ${g.a.have}.`,
+        `${c.ab} of them also ${g.b.have}.`,
+        `That is not ${c.ab} out of all ${n}, and not ${c.ab} out of the ${nB} ${g.who} ${g.b.have}.`,
+        `The fraction is ${ratio(c.ab, nA)}.`,
+      ],
+      hint: `Use only the ${nA} ${g.many} ${g.who} ${g.a.have}. Count how many of them also ${g.b.have}, then write that count over ${nA}.`,
+      tags: ["value-and-interpretation"],
+      figure: vennOf(g, n)
+        .totals(nA, nB)
+        .regions({ a: null, ab: c.ab, b: null })
+        .scene({
+          title: `Venn diagram of ${n} ${g.many}`,
+          steps: [
+            step(
+              `The ${g.a.name} circle is the group the question names.`,
+              ...shade(["a", "ab"], "accent-fill"),
+            ),
+            step(
+              `The overlap is the part of that circle with ${g.b.name} too.`,
+              ...shade(["ab"], "gold-fill"),
+            ),
+          ],
+        }),
+    };
+  }
+  throw new Error("Need a conditional reading");
+}
+function additionInterpretation(r: Random): Case {
+  const g = pick(r, groups);
+  const c = randomCounts(r);
+  const n = total(c);
+  const nA = c.a + c.ab;
+  const nB = c.b + c.ab;
+  const union = nA + nB - c.ab;
+  const exactly = c.a + c.b;
+  return {
+    prompt: `Of ${n} ${g.intro}, ${nA} ${g.a.have}, ${nB} ${g.b.have} and ${c.ab} ${g.both}. If one ${g.one} is chosen at random, what is the probability of at least one: the ${g.one} ${g.a.has}, or the ${g.one} ${g.b.has}?`,
+    answer: q(union, n),
+    explanation: [
+      `At least one counts ${g.a.name}, ${g.b.name}, or both, with both counted once.`,
+      `${nA} + ${nB} − ${c.ab} = ${union}. Exactly one would be ${exactly}, and both alone is ${c.ab}.`,
+      `The probability is ${ratio(union, n)}.`,
+    ],
+    hint: `Add the ${nA} and the ${nB}, then subtract the ${c.ab} who were counted twice. Divide that result by ${n}.`,
+    tags: ["value-and-interpretation"],
+    figure: vennOf(g, n)
+      .totals(nA, nB)
+      .regions({ a: null, ab: c.ab, b: null })
+      .scene({
+        title: `Venn diagram of ${n} ${g.many}`,
+        steps: doubleCount(String(nA), String(nB), String(c.ab)),
+      }),
+  };
+}
+function productTree(
+  top: [string, string],
+  next: [string, string],
+  pTop: [string, string],
+  left: [string, string],
+  right: [string, string],
+) {
+  return tree([
+    {
+      label: top[0],
+      p: pTop[0],
+      children: [
+        { label: next[0], p: left[0] },
+        { label: next[1], p: left[1] },
+      ],
+    },
+    {
+      label: top[1],
+      p: pTop[1],
+      children: [
+        { label: next[0], p: right[0] },
+        { label: next[1], p: right[1] },
+      ],
+    },
+  ])
+    .id("tr")
+    .products()
+    .scene({
+      title: "Probability tree",
+      steps: pathSteps(
+        [[0, 0]],
+        [
+          "The first branch is the opening event.",
+          "The next branch is the second event given the first.",
+        ],
+      ),
+    });
+}
+function twoWaysCase(r: Random): Case {
+  for (let attempt = 0; attempt < 80; attempt++) {
+    const N = pick(r, [50, 100, 200]);
+    const inBand = r(8, Math.floor(N * 0.6));
+    const onBus = r(8, Math.floor(N * 0.6));
+    const low = Math.max(2, inBand + onBus - N + 2);
+    const high = Math.min(inBand - 2, onBus - 2);
+    if (low > high) continue;
+    const both = r(low, high);
+    if (both * N === inBand * onBus) continue;
+    const answer = q(both, N);
+    const pBus = q(onBus, N);
+    const pGiven = q(both, onBus);
+    const pBand = q(inBand, N);
+    const other = q(inBand * onBus, N * N);
+    if (other.n === answer.n && other.d === answer.d) continue;
+    return {
+      prompt: `The probability a student rides the bus is ${frac(pBus)}. The probability a student is in band, given that the student rides the bus, is ${frac(pGiven)}. The probability a student is in band is ${frac(pBand)}. Find the probability the student is in band and rides the bus, as the bus probability times the probability of band given the bus.`,
+      answer,
+      explanation: [
+        `Band and bus can be reached from the bus riders: ${frac(pBus)} × ${frac(pGiven)} = ${frac(answer)}.`,
+        `The other order uses band first, then bus given band: ${frac(pBand)} × ${frac(q(both, inBand))} = ${frac(answer)}.`,
+        `Multiplying the two separate probabilities gives ${frac(other)}, which is not the overlap.`,
+        `The probability of band and bus is ${frac(answer)}.`,
+      ],
+      hint: `Multiply the probability of riding the bus by the probability of band among those bus riders. Do not multiply the two separate probabilities.`,
+      tags: ["two-ways"],
+      figure: productTree(
+        ["Bus", "Not bus"],
+        ["Band", "Other"],
+        [frac(pBus), frac(sub(one, pBus))],
+        [frac(pGiven), frac(sub(one, pGiven))],
+        [
+          frac(q(inBand - both, N - onBus)),
+          frac(q(N - onBus - (inBand - both), N - onBus)),
+        ],
+      ),
+    };
+  }
+  throw new Error("Need a two-way product");
+}
+function jointInterpretation(r: Random): Case {
+  for (let attempt = 0; attempt < 40; attempt++) {
+    const pDry = q(r(2, 4), 5);
+    const pLateDry = q(r(1, 4), 5);
+    let pLateRain = q(r(1, 4), 5);
+    if (pLateRain.n * pLateDry.d === pLateDry.n * pLateRain.d) continue;
+    const joint = mul(pDry, pLateDry);
+    if (joint.n === pDry.n && joint.d === pDry.d) continue;
+    if (joint.n === pLateDry.n && joint.d === pLateDry.d) continue;
+    const pRain = sub(one, pDry);
+    return {
+      prompt: `The probability of no rain on a school morning is ${frac(pDry)}. When it does not rain, the bus is late with probability ${frac(pLateDry)}. What fraction of school mornings have no rain and a late bus?`,
+      answer: joint,
+      explanation: [
+        `No rain and a late bus is both events, the overlap, not the conditional chance ${frac(pLateDry)}.`,
+        `It is also not the chance of no rain alone, ${frac(pDry)}, and not no rain or a late bus.`,
+        `${frac(pDry)} × ${frac(pLateDry)} = ${frac(joint)}.`,
+        `The fraction of mornings with no rain and a late bus is ${frac(joint)}.`,
+      ],
+      hint: `Multiply the chance of no rain by the chance the bus is late when it does not rain. That product is both events, not the conditional chance alone.`,
+      tags: ["value-and-interpretation"],
+      figure: productTree(
+        ["Dry", "Rain"],
+        ["Late", "On time"],
+        [frac(pDry), frac(pRain)],
+        [frac(pLateDry), frac(sub(one, pLateDry))],
+        [frac(pLateRain), frac(sub(one, pLateRain))],
+      ),
+    };
+  }
+  throw new Error("Need a joint reading");
+}
+
 // ---------------------------------------------------------- addition rule
 /** Probabilities written as decimals or as fractions over one denominator. */
 function probabilities(r: Random) {
@@ -672,7 +995,8 @@ function probabilities(r: Random) {
   } while (a + b - ab > d || a + b - ab === d);
   return { a: q(a, d), b: q(b, d), ab: q(ab, d), asDecimal };
 }
-function additionCase(r: Random): Case {
+function additionCase(r: Random, task = "standard"): Case {
+  if (task === "value-and-interpretation") return additionInterpretation(r);
   const mode = r(0, 3);
   if (mode === 0) {
     const g = pick(r, groups);
@@ -845,7 +1169,9 @@ const also = (predicate: string) =>
   /^(is|are) /.test(predicate)
     ? predicate.replace(/^(is|are) /, "$1 also ")
     : `also ${predicate}`;
-function conditionalCase(r: Random): Case {
+function conditionalCase(r: Random, task = "standard"): Case {
+  if (task === "build-the-table") return buildTableCase(r);
+  if (task === "value-and-interpretation") return conditionalInterpretation(r);
   const mode = r(0, 3);
   if (mode === 0) {
     const s = pick(r, surveys);
@@ -1085,7 +1411,9 @@ function pathSteps(
     ),
   ];
 }
-function multiplicationCase(r: Random): Case {
+function multiplicationCase(r: Random, task = "standard"): Case {
+  if (task === "two-ways") return twoWaysCase(r);
+  if (task === "value-and-interpretation") return jointInterpretation(r);
   const mode = r(0, 3);
   if (mode === 0) {
     const red = r(2, 9),
@@ -1364,7 +1692,16 @@ export function probabilityRulesCase(
   if (!metadata) throw new Error(`Unknown probability template ${id}`);
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
-  const c = builders[id]!(random(id, seed));
+  const task = taskFor(id, seed);
+  const r = random(id, seed);
+  const c =
+    id === "addition-rule-probability"
+      ? additionCase(r, task)
+      : id === "conditional-probability-value"
+        ? conditionalCase(r, task)
+        : id === "multiplication-rule-probability"
+          ? multiplicationCase(r, task)
+          : builders[id]!(r);
   const problem: GeneratedProblem = {
     public: {
       id: createHash("sha256")
@@ -1385,6 +1722,9 @@ export function probabilityRulesCase(
     answer: answerText(c.answer),
     explanation: [...(OPENERS[id] ?? []), ...c.explanation],
     hint: c.hint,
+    ...(task !== "standard"
+      ? { variant: { id: task, axes: { task } } }
+      : {}),
   };
   return {
     problem,

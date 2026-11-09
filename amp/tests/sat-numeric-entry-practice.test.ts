@@ -77,6 +77,8 @@ const variants: Record<string, string[]> = {
     "fill-and-drain",
     "two-phase",
     "mixture",
+    "equation-together",
+    "equation-drain",
   ],
   "sat-entry-radian-conversion": [
     "degrees-to-radians",

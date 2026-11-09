@@ -317,11 +317,43 @@ def solve(public):
                 require(m2 is not None,'Unrecognized radical choice')
                 return Q(int(m2[2] or 1),int(m2[1] or 2))
             return only(public,radical,exponent)
-        m = match(r'equivalent to (1/)?\\sqrt\[(\d+)\]\{x\^\{(\d+)\}\}',p)
-        exponent = Q(int(m[3]),int(m[2]))*(-1 if m[1] else 1)
+        m = match(r'equivalent to (1/)?\\sqrt(?:\[(\d+)\])?\{x(?:\^\{(\d+)\})?\}',p)
+        exponent = Q(int(m[3] or 1), int(m[2] or 2))*(-1 if m[1] else 1)
         def power(s): return Q(match(r'^x\^\{(-?\d+(?:/\d+)?)\}$',s)[1])
         return only(public,power,exponent)
     if kind == 'rational-expression-operation':
+        if 'State every excluded value' in p:
+            body = match(r'equals (.+) for all allowed inputs', p)[1]
+            left, right = body.split('\\div')
+            target = rational_expr('(' + left + ')/(' + right + ')')
+            def piece_roots(expr, numerator):
+                num, den = rational_expr(expr)
+                return roots(num if numerator else den)
+            excluded = piece_roots(left, False) | piece_roots(right, False) | piece_roots(right, True)
+            def divide_choice(label):
+                found = re.fullmatch(r'(.+), excluded \\{([^{}]+)\\}', label.strip())
+                require(found is not None, 'Choice must state an exclusion set')
+                values = frozenset(Q(part.strip()) for part in found[2].split(',') if part.strip())
+                return rational_expr(found[1]), values
+            return only(public, divide_choice, (target, frozenset(excluded)), same=lambda a, b: equal_rational(a[0], b[0]) and a[1] == b[1])
+        if 'Which number equals' in p:
+            expression = match(r'Which number equals (.+)\?', p)[1]
+            return only(public, rational_expr, rational_expr(expression), same=equal_rational)
+        if 'Which statement is true' in p:
+            def closure_claim(label):
+                if 'not the zero expression' in label:
+                    return 'closure'
+                if 'for every' in label:
+                    return 'always-divide'
+                if 'not a fraction' in label:
+                    return 'polynomial'
+                if 'only when' in label:
+                    return 'same-denominator'
+                raise ValueError('Unknown closure statement')
+            return only(public, closure_claim, 'closure', same=lambda a, b: a == b)
+        if 'Retain the restrictions' not in p:
+            expression = match(r'equals (.+) for all allowed', p)[1].replace('\\div', '/')
+            return only(public, rational_expr, rational_expr(expression), same=equal_rational)
         expression = match(r'equals (.+) for all allowed inputs\?',p)[1]
         excluded = match(r'x\\ne-(\d+)',p)
         require(r'x\ne0' in p,'Original restrictions must be stated')

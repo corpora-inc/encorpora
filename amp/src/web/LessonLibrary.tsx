@@ -268,7 +268,7 @@ function Library({
   const lessons = count("lesson"),
     types = count("type");
   const plural = (n: number, one: string, many: string) =>
-    `${n} ${n === 1 ? one : many}`;
+    `${n.toLocaleString("en-US")} ${n === 1 ? one : many}`;
   // The field shows the whole query; the count names a long one shortened,
   // so the line stays within its two reserved lines.
   const named = query.length > 24 ? `${query.slice(0, 23).trimEnd()}…` : query;

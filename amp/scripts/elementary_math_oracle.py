@@ -109,6 +109,29 @@ def solve_elementary(public):
         require(a % 10 < b % 10 and 0 <= b <= a < 1000, 'Invalid regrouping difference')
         return a - b
     if name == 'skip-count-missing':
+        def hops(values, step):
+            require(step in (10, 100) and all(b - a == step for a, b in zip(values, values[1:])), 'Inconsistent skip-count')
+            require(values[-1] <= 1000, 'Count exceeds 1000')
+        unstated_next = re.fullmatch(r'What comes next\? (\d+), (\d+), (\d+), □\.', prompt)
+        if unstated_next:
+            a, b, c = (int(part) for part in unstated_next.groups())
+            step = b - a
+            hops([a, b, c, c + step], step)
+            return c + step
+        unstated_mid = re.fullmatch(r'What number is missing\? (\d+), (\d+), □, (\d+)\.', prompt)
+        if unstated_mid:
+            a, b, d = (int(part) for part in unstated_mid.groups())
+            step = b - a
+            hops([a, b, b + step, d], step)
+            require(d - (b + step) == step, 'The term after the blank skips')
+            return b + step
+        stated_mid = re.fullmatch(r'Count by (\d+): (\d+), (\d+), □, (\d+)\. What number is missing\?', prompt)
+        if stated_mid:
+            step, a, b, d = (int(part) for part in stated_mid.groups())
+            require(b - a == step, 'Stated step disagrees with the terms')
+            hops([a, b, b + step, d], step)
+            require(d - (b + step) == step, 'The term after the blank skips')
+            return b + step
         step, first, second, third = numbers
         require(step in (5, 10, 100) and second - first == third - second == step, 'Inconsistent skip-count')
         require(third + step <= 1000, 'Count exceeds1000')

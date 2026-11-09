@@ -23,7 +23,7 @@ REAL_NUMBER_CHOICE = frozenset({
 })
 REAL_NUMBER = REAL_NUMBER_CHOICE | frozenset({
     'repeating-decimal-to-fraction', 'root-between-integers', 'root-nearest-tenth',
-    'scientific-to-standard', 'scientific-times-larger',
+    'scientific-to-standard', 'scientific-times-larger', 'choose-unit-size',
 })
 RESPONSES = {
     'classify-real-number': ('choice', 'Number'),
@@ -36,7 +36,16 @@ RESPONSES = {
     'standard-to-scientific': ('choice', 'Scientific notation'),
     'scientific-times-larger': ('number', 'Times as large'),
     'scientific-operations': ('choice', 'Scientific notation'),
+    'choose-unit-size': ('multi-part-choice', 'Choose the unit and the number'),
 }
+UNIT_SYMBOL = {
+    'kilometers': 'km', 'meters': 'm', 'millimeters': 'mm', 'micrometers': 'µm',
+    'nanometers': 'nm', 'tonnes': 't', 'kilograms': 'kg', 'grams': 'g',
+    'milligrams': 'mg', 'seconds': 's', 'milliseconds': 'ms', 'microseconds': 'µs',
+    'nanoseconds': 'ns', 'terabytes': 'TB', 'gigabytes': 'GB', 'megabytes': 'MB',
+    'kilobytes': 'KB', 'bytes': 'B',
+}
+SUPER_DIGITS = str.maketrans('⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺', '0123456789-+')
 DECIMAL = r'\d+(?:\.\d+)?'
 SCI = r'(\d+(?:\.\d+)?) \\times 10\^\{(-?\d+)\}'
 
@@ -97,6 +106,56 @@ def scientific(text):
 
 def normalized(coefficient):
     return 1 <= coefficient < 10
+
+
+def one_sig(value):
+    """Round a positive value to one significant digit. The second digit is not 5."""
+    require(value > 0, 'Estimate a positive number')
+    coef, exp = value, 0
+    while coef >= 10:
+        coef /= 10
+        exp += 1
+    while coef < 1:
+        coef *= 10
+        exp -= 1
+    second = int(coef * 10) % 10
+    require(second != 5, 'Second digit must not be 5')
+    leading = int(coef)
+    if second >= 6:
+        leading += 1
+    if leading == 10:
+        leading, exp = 1, exp + 1
+    return Fraction(leading) * Fraction(10) ** exp
+
+
+def parse_display(text):
+    """A calculator's E or superscript exponent, sign included."""
+    body = text.strip().translate(SUPER_DIGITS).replace(' ', '')
+    m = re.fullmatch(r'(\d+(?:\.\d+)?)(?:[Ee]([+-]?\d+)|([+-]\d+))', body)
+    require(m is not None, f'Not a calculator display: {text!r}')
+    coef = Fraction(m[1])
+    exp = int(m[2] or m[3])
+    require(normalized(coef), 'Display coefficient must be normalized')
+    return coef * Fraction(10) ** exp, coef, exp
+
+
+def plain_fraction(value):
+    """The generator's ordinary-number spelling, with no grouping commas."""
+    sign = '-' if value < 0 else ''
+    value = abs(value)
+    if value.denominator == 1:
+        return sign + str(value.numerator)
+    whole = value.numerator // value.denominator
+    rest = value - whole
+    digits = []
+    for _ in range(18):
+        if rest == 0:
+            break
+        rest *= 10
+        digits.append(str(int(rest)))
+        rest -= int(rest)
+    require(rest == 0 and digits, f'Number does not terminate: {value}')
+    return f"{sign}{whole}.{''.join(digits)}"
 
 
 def tex_label(label):
@@ -266,7 +325,17 @@ def solve_equation(public):
 
 # ——— Scientific notation ———
 def solve_to_standard(public):
-    m = re.fullmatch(r'Write \$(.+)\$ in standard form\.', public['prompt'])
+    prompt = public['prompt']
+    shown = re.search(r'`([^`]+)`', prompt)
+    if shown:
+        value, _coef, _exp = parse_display(shown[1])
+        if 'multiplies' in prompt or 'divides' in prompt:
+            factors = [number(n) for n in re.findall(r'([\d,]+\.?\d*|\d*\.\d+)', prompt.split('shows')[0])]
+            require(len(factors) == 2, 'A calculator operation names two numbers')
+            expect = factors[0] / factors[1] if 'divides' in prompt else factors[0] * factors[1]
+            require(expect == value, 'The display disagrees with the operation')
+        return value
+    m = re.fullmatch(r'Write \$(.+)\$ in standard form\.', prompt)
     require(m is not None, 'Standard-form prompt')
     value, coefficient = scientific(m[1])
     require(normalized(coefficient), 'The given number must be in scientific notation')
@@ -274,6 +343,16 @@ def solve_to_standard(public):
 
 
 def solve_to_scientific(public):
+    if 'single digit times a power of 10' in public['prompt']:
+        found = re.search(r'about ([\d,]*\d(?:\.\d+)?)', public['prompt'])
+        require(found is not None, 'Estimate prompt names a number')
+        target = one_sig(number(found[1]))
+        options = check_options(public)
+
+        def rounded(label):
+            value, coefficient = scientific(tex_label(label))
+            return value == target and normalized(coefficient) and coefficient.denominator == 1
+        return single(options, rounded, 'Exactly one single-digit estimate')
     m = re.fullmatch(r'Write ([\d,.]+) in scientific notation\.', public['prompt'])
     require(m is not None, 'Scientific prompt')
     value = number(m[1])
@@ -287,12 +366,63 @@ def solve_to_scientific(public):
 
 
 def solve_times(public):
-    m = re.fullmatch(r'How many times as large as \$(.+)\$ is \$(.+)\$\?', public['prompt'])
+    prompt = public['prompt']
+    if 'Write that estimate as an ordinary number' in prompt:
+        found = re.search(r'about ([\d,]*\d(?:\.\d+)?)', prompt)
+        require(found is not None, 'Estimate prompt names a number')
+        return one_sig(number(found[1]))
+    if 'estimated as' in prompt:
+        estimates = re.findall(r'estimated as \$([^$]+)\$', prompt)
+        abouts = re.findall(r'about ([\d,]*\d(?:\.\d+)?)', prompt)
+        require(len(estimates) == 2 and len(abouts) == 2, 'Two estimates')
+        (first, ca), (second, cb) = scientific(estimates[0]), scientific(estimates[1])
+        require(normalized(ca) and normalized(cb) and ca.denominator == 1 and cb.denominator == 1, 'Single-digit estimates')
+        require(one_sig(number(abouts[0])) == first and one_sig(number(abouts[1])) == second, 'The estimates do not round the given numbers')
+        require(second >= first, 'The second estimate is smaller')
+        ratio = (cb / ca) if ca else None
+        require(ratio is not None and ratio * 10 == int(ratio * 10), 'Ratio has more than one decimal place')
+        return second / first
+    m = re.fullmatch(r'How many times as large as \$(.+)\$ is \$(.+)\$\?', prompt)
     require(m is not None, 'Times prompt')
     (b, cb), (a, ca) = scientific(m[1]), scientific(m[2])
     require(normalized(ca) and normalized(cb), 'Both numbers in scientific notation')
     require(a > b, 'The first number is the larger')
     return a / b
+
+
+def solve_choose_unit(public):
+    """The one ladder unit whose number lies in [1, 1000), and that number."""
+    require(public['response']['kind'] == 'multi-part-choice', 'Unit choice is multi-part')
+    prompt = public['prompt']
+    given = re.search(
+        r'\$(' + SCI + r')\$ ([A-Za-z]+)',
+        prompt,
+    )
+    require(given is not None, 'Given measure')
+    # SCI contributes the coefficient and exponent groups inside the whole power.
+    value, coefficient = scientific(given[1])
+    require(normalized(coefficient), 'Given value must be normalized')
+    symbol = UNIT_SYMBOL.get(given[given.lastindex])
+    require(symbol is not None, 'Unknown unit ' + given[2])
+    ladder = re.search(r'1,000: ([^.]+)\.', prompt)
+    require(ladder is not None, 'Unit ladder')
+    units = [u.strip() for u in ladder[1].split(',')]
+    require(symbol in units and len(units) == len(set(units)), 'Given unit is not on its ladder')
+    origin = units.index(symbol)
+    readable = []
+    for index, unit in enumerate(units):
+        moved = value * Fraction(1000) ** (index - origin)
+        if 1 <= moved < 1000:
+            readable.append((unit, moved))
+    require(len(readable) == 1, 'Exactly one ladder unit must land in [1, 1000)')
+    target, number = readable[0]
+    suffix = '/yr' if 'per year' in prompt else '/month' if 'per month' in prompt else ''
+    blanks = {b['id']: b for b in public['response']['blanks']}
+    require(list(blanks) == ['unit', 'value'], 'Unit and number blanks')
+    unit_hits = [o['id'] for o in blanks['unit']['options'] if o['label'] == target + suffix]
+    value_hits = [o['id'] for o in blanks['value']['options'] if o['label'] == plain_fraction(number)]
+    require(len(unit_hits) == 1 and len(value_hits) == 1, 'Exactly one matching unit and number')
+    return json.dumps({'unit': unit_hits[0], 'value': value_hits[0]}, separators=(',', ':'))
 
 
 def solve_operation(public):
@@ -319,6 +449,7 @@ SOLVERS = {
     'standard-to-scientific': solve_to_scientific,
     'scientific-times-larger': solve_times,
     'scientific-operations': solve_operation,
+    'choose-unit-size': solve_choose_unit,
 }
 
 
@@ -327,7 +458,14 @@ def solve_real_number(public):
     require(template in REAL_NUMBER, 'Unknown real-number task')
     require(public.get('figure') is None, 'Unexpected figure')
     kind, label = RESPONSES[template]
-    require(public['response']['kind'] == kind and public['response']['label'] == label, 'Response contract')
+    response = public['response']
+    require(response['kind'] == kind, 'Response contract')
+    if template == 'scientific-times-larger':
+        require(response['label'] in ('Times as large', 'Estimated number'), 'Response contract')
+    elif template != 'choose-unit-size':
+        require(response['label'] == label, 'Response contract')
+    else:
+        require(response['label'] == label, 'Response contract')
     return SOLVERS[template](public)
 
 
@@ -468,6 +606,7 @@ WORKSHEET_BREADTH = {
     'standard-to-scientific': lambda ps: any('Write 0.' in p['prompt'] for p in ps) and any('Write 0.' not in p['prompt'] for p in ps),
     'scientific-times-larger': lambda ps: any(solve_times(p).denominator > 1 for p in ps),
     'scientific-operations': lambda ps: all(any(f') {op} (' in p['prompt'] for p in ps) for op in ['\\times', '\\div', '+', '-']),
+    'choose-unit-size': lambda ps: all(any(word in p['prompt'] for p in ps) for word in ('kilometer', 'tonne', 'millisecond', 'megabyte')),
 }
 
 
@@ -483,7 +622,12 @@ def review_real_number_content(data=None):
         for p in problems:
             require(p['public']['templateId'] == sheet['templateId'], 'Worksheet template')
             solved = solve_real_number(p['public'])
-            actual = p['answer'] if sheet['templateId'] in REAL_NUMBER_CHOICE else as_number(p['answer'])
+            if sheet['templateId'] == 'choose-unit-size':
+                actual = p['answer']
+            elif sheet['templateId'] in REAL_NUMBER_CHOICE:
+                actual = p['answer']
+            else:
+                actual = as_number(p['answer'])
             require(actual == solved, f'Worksheet answer {p["public"]["prompt"]!r}')
             checks += review_problem(p)
         require(WORKSHEET_BREADTH[sheet['templateId']]([p['public'] for p in problems]), 'Worksheet lacks required breadth: ' + sheet['templateId'])

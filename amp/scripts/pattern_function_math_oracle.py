@@ -214,7 +214,52 @@ def equation_line(text):
     return slope, b
 
 
+def solve_proportional_pair(public):
+    """Two proportional relationships in two different representations."""
+    prompt = public['prompt']
+    figure = display(public)
+    if 'graph' in figure:
+        check_graph(figure['graph'])
+        require(figure['graph']['xStep'] >= 2, 'The horizontal step must not be 1')
+    rates = {}
+    if 'graph' in figure:
+        for series in figure['graph']['series']:
+            line = series['line']
+            require(line['b'] == 0, 'A proportional graph passes through the origin')
+            marked = [p for p in series['points'] if p['x'] >= 2]
+            require(marked, 'A labeled lattice point needs x at least 2')
+            rates[series['label']] = Fraction(line['rise'], line['run'])
+    if 'table' in figure:
+        rows = pairs(figure['table']['rows'])
+        require(len(rows) == 3 and [x for x, _ in rows] == [2, 5, 8], 'Table inputs skip 2, 5, 8')
+        slope = Fraction(rows[0][1], rows[0][0])
+        require(all(Fraction(y, x) == slope for x, y in rows), 'Table is not proportional')
+        rates[figure['table']['title']] = slope
+    for name, coef in re.findall(r'([A-Z][a-z]+ [AB]) is given by \$[a-z] = (\d+)[a-z]\$', prompt):
+        rates[name] = Fraction(int(coef))
+    for name, total, time in re.findall(r'([A-Z][a-z]+ [AB]) travels (\d+) miles in (\d+) hours', prompt):
+        rates[name] = Fraction(int(total), int(time))
+    for name, total, time in re.findall(r'([A-Z][a-z]+ [AB]) charges (\d+) dollars for (\d+) items', prompt):
+        rates[name] = Fraction(int(total), int(time))
+    for name, total, time in re.findall(r'([A-Z][a-z]+ [AB]) adds (\d+) liters in (\d+) minutes', prompt):
+        rates[name] = Fraction(int(total), int(time))
+    require(set(rates) >= {'A', 'B'} or any(n.endswith(' A') for n in rates) and any(n.endswith(' B') for n in rates), 'Both relationships')
+    named = {n[-1]: rates[n] for n in rates}
+    require(set(named) == {'A', 'B'}, 'Need A and B')
+    mA, mB = named['A'], named['B']
+    diff = abs(mA - mB)
+
+    def truth(label):
+        if mA == mB:
+            return 'same' in label
+        winner = 'A' if mA > mB else 'B'
+        return re.search(rf'{winner}, by {diff}(?:\D|$)', label) is not None
+    return only_true(public, truth)
+
+
 def solve_compare(public):
+    if not public['prompt'].startswith('Function A is given by'):
+        return solve_proportional_pair(public)
     m = re.fullmatch(r'Function A is given by (.+?)\. Function B is given by (.+?)\. Which statement compares their rates of change and initial values correctly\?', public['prompt'])
     require(m is not None, 'Unrecognized comparison prompt')
     figure = display(public)
@@ -288,8 +333,25 @@ def is_linear(text):
     return len(slopes) == 1
 
 
+def solve_nonlinear_points(public):
+    shown = re.findall(r'\((\d+), (\d+)\)', public['prompt'])
+    require(len(shown) >= 3, 'Three points')
+    points = [(int(x), int(y)) for x, y in shown[:3]]
+    (x1, y1), (x2, y2), (x3, y3) = points
+    d1 = Fraction(y2 - y1, x2 - x1)
+    d2 = Fraction(y3 - y2, x3 - x2)
+    require(d1 != d2, 'The judged function must be nonlinear')
+    listed = f'({x1}, {y1}), ({x2}, {y2}) and ({x3}, {y3})'
+
+    def truth(label):
+        return listed in label and 'not on one straight line' in label
+    return only_true(public, truth)
+
+
 def solve_linear_choice(public):
     prompt = public['prompt']
+    if prompt not in ('Which equation defines a linear function?', 'Which equation defines a function that is not linear?'):
+        return solve_nonlinear_points(public)
     require(prompt in ('Which equation defines a linear function?', 'Which equation defines a function that is not linear?'), 'Unrecognized linearity prompt')
     want = prompt == 'Which equation defines a linear function?'
     return only_true(public, lambda label: is_linear(label) == want)

@@ -4,6 +4,7 @@ import type {
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts";
+import { chooseAxes, defineAxis } from "./variation/axes";
 import {
   assemble,
   random,
@@ -37,12 +38,13 @@ export const statisticsProbabilityTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "random-variable-distribution",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Random variables and their distributions",
     skillId: "random-variables",
     difficultyOffset: 0.25,
     description:
-      "Define a numerical random variable, find the probability of one of its values, read a probability distribution bar chart and complete a distribution whose probabilities sum to 1.",
+      "Define a numerical random variable, find the probability of one of its values, read a probability distribution bar chart, complete a distribution whose probabilities sum to 1, and choose the list that graphs the distribution.",
     ...base,
   },
   {
@@ -541,7 +543,110 @@ function normalCase(r: Random): Built {
 }
 
 // ----------------------------------------------------------- random-variables
-function randomVariableCase(r: Random): Built {
+const randomVariableTaskAxes = {
+  task: defineAxis(
+    "task",
+    ["standard", "graph-the-distribution"] as const,
+    {
+      legacy: "standard",
+      weights: [1, 1],
+      silentLegacy: true,
+      since: 2,
+    },
+  ),
+} as const;
+function plainFrac(n: number, d: number) {
+  const g = gcd(Math.abs(n), d) || 1;
+  const num = n / g;
+  const den = d / g;
+  return den === 1 ? `${num}` : `${num}/${den}`;
+}
+/** Short enough for a choice label: one probability per value. */
+function distLabel(pairs: readonly (readonly [number, number, number])[]) {
+  return pairs.map(([v, n, d]) => `P(${v})=${plainFrac(n, d)}`).join(", ");
+}
+function graphDistribution(r: Random): Built {
+  const kind = r(0, 3);
+  let values: number[];
+  let counts: number[];
+  let total: number;
+  let prompt: string;
+  if (kind === 0) {
+    const n = r(0, 1) === 0 ? 3 : 4;
+    values = Array.from({ length: n + 1 }, (_, k) => k);
+    counts = values.map((k) => choose(n, k));
+    total = 2 ** n;
+    prompt = `A fair coin is tossed ${n} times. Let $X$ be the number of heads. Which list is the probability distribution of $X$?`;
+  } else if (kind === 1) {
+    values = [2, 3, 4, 5, 6, 7, 8];
+    counts = [1, 2, 3, 4, 3, 2, 1];
+    total = 16;
+    prompt = `Two fair 4-sided dice are rolled. Let $X$ be the sum of the two numbers. Which list is the probability distribution of $X$?`;
+  } else if (kind === 2) {
+    values = [1, 2, 3, 4, 5, 6];
+    counts = values.map((k) => 2 * k - 1);
+    total = 36;
+    prompt = `Two fair six-sided dice are rolled. Let $X$ be the larger of the two numbers, or that number if they match. Which list is the probability distribution of $X$?`;
+  } else {
+    let red = r(2, 5);
+    let blue = r(2, 5);
+    if (red === blue) blue = red === 5 ? 2 : red + 1;
+    values = [0, 1, 2];
+    const bag = (k: number) =>
+      k > red || 2 - k > blue ? 0 : choose(red, k) * choose(blue, 2 - k);
+    counts = values.map(bag);
+    total = choose(red + blue, 2);
+    prompt = `A bag has ${red} red marbles and ${blue} blue marbles. Two marbles are drawn at random at the same time. Let $X$ be the number of red marbles drawn. Which list is the probability distribution of $X$?`;
+  }
+  if (counts.reduce((a, b) => a + b, 0) !== total)
+    throw new Error("Distribution counts must fill the sample space");
+  const pairs = values.map(
+    (v, i) => [v, counts[i]!, total] as const,
+  );
+  const correct = distLabel(pairs);
+  const k = values.length;
+  const valueSum = values.reduce((a, b) => a + b, 0);
+  const candidates = [
+    distLabel(values.map((v) => [v, 1, k] as const)),
+    distLabel(values.map((v, i) => [v + 1, counts[i]!, total] as const)),
+    distLabel(values.map((v) => [v, v, valueSum || 1] as const)),
+    values.map((v, i) => `P(${v})=${counts[i]}`).join(", "),
+    distLabel([...pairs].reverse().map((p, i) => [values[i]!, p[1], p[2]])),
+  ];
+  const wrong = [...new Set(candidates)].filter((label) => label !== correct);
+  if (wrong.length < 3) throw new Error("Need three distribution choices");
+  const feedback = (label: string) => {
+    if (!label.includes("/"))
+      return `Those are counts of outcomes, not probabilities. Divide each count by ${total}.`;
+    if (label.startsWith(`P(${values[0]! + 1})`))
+      return `Those probabilities sit one value too far right. $X$ starts at ${values[0]}.`;
+    if (label.startsWith(`P(${values[0]})=1/${k}`))
+      return `The ${k} values of $X$ are not equally likely. Count the outcomes for each value.`;
+    return "That list does not match the count of outcomes for each value. Divide each count by the total.";
+  };
+  return {
+    variant: "graph-the-distribution",
+    draft: {
+      prompt,
+      answer: correct,
+      hint: `Count the equally likely outcomes for each value of $X$, then divide by ${total}. Every value needs a probability, and the probabilities add to 1.`,
+      explanation: [
+        RANDOM_VARIABLE,
+        `There are ${total} equally likely outcomes.`,
+        `The counts for ${values.join(", ")} are ${counts.join(", ")}.`,
+        `Divide each count by ${total}. The probabilities add to 1.`,
+        `The probability distribution is ${correct}.`,
+      ],
+      choices: options(
+        r,
+        correct,
+        wrong.slice(0, 4).map((label) => ({ label, feedback: feedback(label) })),
+      ),
+    },
+  };
+}
+function randomVariableCase(r: Random, task = "standard"): Built {
+  if (task === "graph-the-distribution") return graphDistribution(r);
   const variant = (
     [
       "list-probability",
@@ -2278,7 +2383,14 @@ function build(templateId: string, seed: string) {
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
   const r = random(templateId, seed);
-  const built = builders[templateId]!(r);
+  const task =
+    templateId === "random-variable-distribution"
+      ? chooseAxes(templateId, seed, randomVariableTaskAxes).task
+      : "standard";
+  const built =
+    templateId === "random-variable-distribution"
+      ? randomVariableCase(r, task)
+      : builders[templateId]!(r);
   return { meta, seed, r, built };
 }
 
@@ -2292,5 +2404,13 @@ export function generateStatisticsProbabilityProblem(
   seed: string,
 ): GeneratedProblem {
   const { meta, r, built } = build(templateId, seed);
-  return assemble(meta, seed, r, built.draft);
+  const problem = assemble(meta, seed, r, built.draft);
+  if (built.variant !== "graph-the-distribution") return problem;
+  return {
+    ...problem,
+    variant: {
+      id: "graph-the-distribution",
+      axes: { task: "graph-the-distribution" },
+    },
+  };
 }

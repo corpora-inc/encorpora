@@ -1,7 +1,7 @@
 import { nounFor, article } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { assemble, random } from "./distribution-practice";
-import { defineAxis } from "./variation/axes";
+import { axisRecord, chooseAxes, defineAxis, isLegacy } from "./variation/axes";
 import { generateWithAxes } from "./variation/legacy";
 
 /** Surface axes of the quadratic-solution entry family: which of the two
@@ -18,6 +18,17 @@ type SolutionAxes = { ask?: string; layout?: string };
  * standard form or with terms on both sides that must be collected first. */
 export const rootRelationsAxes = {
   "equation-form": defineAxis("equation-form", ["standard", "both-sides"]),
+};
+
+/** The rational equation is part of the prompt. This template can only grade
+ * the number, so the learner solves the stated equation rather than choosing it. */
+export const rateEquationAxes = {
+  task: defineAxis("task", ["rates", "equation-then-solve"] as const, {
+    legacy: "rates",
+    silentLegacy: true,
+    since: 2,
+    weights: [4, 1],
+  }),
 };
 
 /**
@@ -102,10 +113,13 @@ function meta(
   skillId: string,
   difficultyOffset: number,
   description: string,
+  version = 1,
+  reprintsFrom?: number,
 ): TemplateMetadata {
   return {
     id,
-    version: 1,
+    version,
+    ...(reprintsFrom != null ? { reprintsFrom } : {}),
     title,
     skillId,
     gradeBand: "9–12",
@@ -1065,6 +1079,45 @@ function rateNumeric(r: R): Case {
   throw new Error("No mixture case");
 }
 
+function equationThenSolve(r: R): Case {
+  const drain = r(0, 1) === 1;
+  let a = r(2, 12);
+  let b = r(2, 12);
+  if (a === b) b = a === 12 ? 11 : a + 1;
+  if (drain && a > b) [a, b] = [b, a];
+  const answer = drain ? q(a * b, b - a) : q(a * b, a + b);
+  const eq = drain
+    ? `\\frac{1}{${a}}-\\frac{1}{${b}}=\\frac{1}{t}`
+    : `\\frac{1}{${a}}+\\frac{1}{${b}}=\\frac{1}{t}`;
+  const added = a + b;
+  const averaged = q(a + b, 2);
+  const mistaken = drain ? q(b - a, a * b) : q(a + b, a * b);
+  const prompt = drain
+    ? `A pipe fills a tank in ${a} hours. A drain empties it in ${b} hours. The equation $${eq}$ gives the hours $t$ to fill the tank with both running. How many hours is $t$?`
+    : `One machine finishes a job in ${a} hours. Another finishes it in ${b} hours. The equation $${eq}$ gives the hours $t$ they need together. How many hours is $t$?`;
+  return {
+    variant: drain ? "equation-drain" : "equation-together",
+    prompt,
+    answer,
+    hint: drain
+      ? `The pipe adds 1/${a} of the tank each hour and the drain removes 1/${b}. Divide 1 tank by that net rate.`
+      : `Each machine finishes a fraction of the job each hour: 1/${a} and 1/${b}. Divide 1 job by the sum.`,
+    explanation: [
+      drain
+        ? `Per-hour shares: $1/${a}$ filled and $1/${b}$ emptied. The net rate is $\\frac{${b - a}}{${a * b}}$ of the tank per hour.`
+        : `Per-hour shares $1/${a}$ and $1/${b}$ add to $\\frac{${a + b}}{${a * b}}$ of the job per hour.`,
+      `One whole takes the reciprocal, so $t=${tex(answer)}$.`,
+      drain
+        ? `Check: $${tex(answer)}\\cdot\\frac{${b - a}}{${a * b}}=1$.`
+        : `Check: $${tex(answer)}\\cdot\\frac{${a + b}}{${a * b}}=1$.`,
+      drain
+        ? `Wrong equations: $${a}+${b}=t$ gives ${added}; $\\frac{${a}+${b}}{2}=t$ gives ${tex(averaged)}; $\\frac{1}{${a}}-\\frac{1}{${b}}=t$ gives ${tex(mistaken)}. None equals $${tex(answer)}$.`
+        : `Wrong equations: $${a}+${b}=t$ gives ${added}; $\\frac{${a}+${b}}{2}=t$ gives ${tex(averaged)}; $\\frac{1}{${a}}+\\frac{1}{${b}}=t$ gives ${tex(mistaken)}. None equals $${tex(answer)}$.`,
+    ],
+    data: { kind: drain ? "fill-drain" : "combined", a, b },
+  };
+}
+
 // ----------------------------------------------- radians and integer inequalities
 function radianConversion(r: R): Case {
   const variant = r(0, 3);
@@ -1307,7 +1360,9 @@ const defs: { template: TemplateMetadata; make: (r: R) => Case }[] = [
       "Enter a combined-rate or mixture value",
       "linear-equation-modeling",
       0.6,
-      "Combine work, fill and drain, two-phase and mixture rates exactly and enter the numeric answer.",
+      "Combine work, fill and drain, two-phase and mixture rates exactly and enter the numeric answer. For a work or drain problem, the prompt states the rational equation and the entry is its positive solution.",
+      2,
+      1,
     ),
     make: rateNumeric,
   },
@@ -1387,6 +1442,25 @@ export function satNumericEntryCase(id: string, seed: string) {
   const def = defs.find((d) => d.template.id === id);
   if (!def) throw new Error(`Unknown SAT numeric-entry template ${id}`);
   const r = random(id, seed);
+  if (id === "sat-entry-rate-numeric") {
+    const task = chooseAxes(id, seed, rateEquationAxes);
+    if (!isLegacy(rateEquationAxes, task)) {
+      const made = equationThenSolve(r);
+      const built = assemble(def.template, seed, r, {
+        prompt: made.prompt,
+        answer: qs(made.answer),
+        fraction: true,
+        hint: made.hint,
+        explanation: [...(OPENERS[id] ?? []), ...made.explanation],
+      });
+      built.entryPolicy = "sat-spr";
+      built.variant = {
+        id: "equation-then-solve",
+        axes: axisRecord(task),
+      };
+      return { ...made, problem: built };
+    }
+  }
   let axes: SolutionAxes & { "equation-form"?: string } = {};
   const build = () => {
     const made =

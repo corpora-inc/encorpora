@@ -61,13 +61,17 @@ export const parabolaVertexDistanceTemplate = meta(
   0.5,
   "Place the vertex halfway between the directrix and a focus that is described only by its distance from the directrix and the line it lies on.",
 );
-export const eventComplementSetTemplate = meta(
-  "event-complement-set",
-  "Write the complement of a set of outcomes as a set",
-  "event-sets",
-  0.3,
-  "List the members of the complement of an event, of a union, or of an intersection of two events in a given sample space.",
-);
+export const eventComplementSetTemplate: TemplateMetadata = {
+  ...meta(
+    "event-complement-set",
+    "Write the complement of a set of outcomes as a set",
+    "event-sets",
+    0.3,
+    "List the members of the complement of an event, of a union, or of an intersection, or match a set with the characteristic that defines it.",
+  ),
+  version: 2,
+  reprintsFrom: 1,
+};
 
 /* ----------------------------------------------------- normal probability */
 const normalAxes = {
@@ -628,12 +632,23 @@ export const parabolaVertexDistance = chainFamily({
 });
 
 /* ------------------------------------------------------ event complement */
+/** Legacy named sets stay on `ask`. Characteristics are a later task. */
 const eventAxes = {
   ask: defineAxis("ask", [
     "complement",
     "complement-of-union",
     "complement-of-intersection",
   ] as const),
+  task: defineAxis(
+    "task",
+    ["named-sets", "events-by-characteristic"] as const,
+    {
+      legacy: "named-sets",
+      weights: [1, 1],
+      silentLegacy: true,
+      since: 2,
+    },
+  ),
 };
 const people = [
   "Ana",
@@ -647,28 +662,186 @@ const people = [
   "Ivy",
   "Jo",
 ] as const;
-interface EventModel {
+type NamedEvent = {
+  kind: "named";
   universe: string[];
   A: Set<string>;
   B: Set<string>;
   ask: "complement" | "complement-of-union" | "complement-of-intersection";
+};
+type CharEvent = {
+  kind: "characteristic";
+  prompt: string;
+  correct: string;
+  wrong: { label: string; feedback: string }[];
+  hint: string;
+  explanation: string[];
+};
+type EventModel = NamedEvent | CharEvent;
+const isPrimeNumber = (x: number) => {
+  if (x < 2) return false;
+  for (let d = 2; d * d <= x; d++) if (x % d === 0) return false;
+  return true;
+};
+const charDescriptions = [
+  { text: "the number is even", holds: (x: number) => x % 2 === 0 },
+  { text: "the number is odd", holds: (x: number) => x % 2 === 1 },
+  { text: "the number is a multiple of 3", holds: (x: number) => x % 3 === 0 },
+  { text: "the number is a multiple of 4", holds: (x: number) => x % 4 === 0 },
+  { text: "the number is a multiple of 6", holds: (x: number) => x % 6 === 0 },
+  { text: "the number is prime", holds: isPrimeNumber },
+  { text: "the number is greater than 6", holds: (x: number) => x > 6 },
+  { text: "the number is less than 5", holds: (x: number) => x < 5 },
+  {
+    text: "the number is not a multiple of 3",
+    holds: (x: number) => x % 3 !== 0,
+  },
+  {
+    text: "the number is a multiple of 3 or 4",
+    holds: (x: number) => x % 3 === 0 || x % 4 === 0,
+  },
+] as const;
+const braceNums = (xs: number[]) => `{${xs.join(", ")}}`;
+const sameNums = (a: number[], b: number[]) =>
+  a.length === b.length && a.every((v, i) => v === b[i]);
+function characteristicModel(
+  r: (lo: number, hi: number) => number,
+): CharEvent | null {
+  const n = r(8, 12);
+  const space = Array.from({ length: n }, (_, i) => i + 1);
+  if (r(0, 1) === 0) {
+    const sets = charDescriptions.map((d) => ({
+      text: d.text,
+      members: space.filter(d.holds),
+    }));
+    const start = r(0, sets.length - 1);
+    for (let k = 0; k < sets.length; k++) {
+      const target = sets[(start + k) % sets.length]!;
+      if (target.members.length === 0 || target.members.length === n) continue;
+      const unique: typeof sets = [];
+      for (const s of sets) {
+        if (s.text === target.text || sameNums(s.members, target.members))
+          continue;
+        if (unique.some((u) => sameNums(u.members, s.members))) continue;
+        unique.push(s);
+        if (unique.length === 3) break;
+      }
+      if (unique.length < 3) continue;
+      const capText = (text: string) =>
+        `${text[0]!.toUpperCase()}${text.slice(1)}`;
+      return {
+        kind: "characteristic",
+        prompt: `The sample space is the whole numbers from 1 to ${n}. Which description gives the event ${braceNums(target.members)} by a characteristic of the number?`,
+        correct: target.text,
+        wrong: unique.map((s) => ({
+          label: s.text,
+          feedback: `That description selects ${braceNums(s.members)}. The braced event is a different set.`,
+        })),
+        hint: `Test each description on the numbers from 1 to ${n}. Keep the one that selects exactly the braced numbers, no more and no fewer.`,
+        explanation: [
+          `The sample space is the whole numbers from 1 to ${n}.`,
+          `The set ${braceNums(target.members)} is exactly the numbers for which ${target.text}.`,
+          `${capText(unique[0]!.text)} selects ${braceNums(unique[0]!.members)}, a different set.`,
+          `So the description is "${target.text}".`,
+        ],
+      };
+    }
+    return null;
+  }
+  const A = (x: number) => x % 2 === 0;
+  const B = (x: number) => x % 3 === 0;
+  const ops = [
+    {
+      words: "in A and not in B",
+      holds: (x: number) => A(x) && !B(x),
+      note: "Keep the even numbers, then remove the multiples of 3.",
+    },
+    {
+      words: "not in A",
+      holds: (x: number) => !A(x),
+      note: "Not A flips membership in the whole sample space.",
+    },
+    {
+      words: "in A or in B",
+      holds: (x: number) => A(x) || B(x),
+      note: "Or keeps a number with either characteristic, including both.",
+    },
+    {
+      words: "not in A or B",
+      holds: (x: number) => !(A(x) || B(x)),
+      note: "This complement is the numbers outside both characteristics.",
+    },
+    {
+      words: "not in both A and B",
+      holds: (x: number) => !(A(x) && B(x)),
+      note: "This keeps every number that misses at least one characteristic.",
+    },
+  ];
+  const withSets = ops.map((op) => ({
+    ...op,
+    members: space.filter(op.holds),
+  }));
+  const start = r(0, withSets.length - 1);
+  for (let k = 0; k < withSets.length; k++) {
+    const target = withSets[(start + k) % withSets.length]!;
+    if (target.members.length === 0 || target.members.length === n) continue;
+    const unique: typeof withSets = [];
+    for (const s of withSets) {
+      if (s.words === target.words || sameNums(s.members, target.members))
+        continue;
+      if (unique.some((u) => sameNums(u.members, s.members))) continue;
+      unique.push(s);
+      if (unique.length === 3) break;
+    }
+    if (unique.length < 3) continue;
+    return {
+      kind: "characteristic",
+      prompt: `The sample space is the whole numbers from 1 to ${n}. Event $A$ is the characteristic "the number is even". Event $B$ is the characteristic "the number is a multiple of 3". Which set lists the numbers ${target.words}?`,
+      correct: braceNums(target.members),
+      wrong: unique.map((s) => ({
+        label: braceNums(s.members),
+        feedback: `That set lists the numbers ${s.words}. The question asks for the numbers ${target.words}.`,
+      })),
+      hint: `Mark the numbers from 1 to ${n} that are even, and those that are multiples of 3. ${target.note}`,
+      explanation: [
+        `Event $A$ holds the even numbers from 1 to ${n}. Event $B$ holds the multiples of 3.`,
+        `The numbers ${target.words} are ${braceNums(target.members)}.`,
+        `The wording "${unique[0]!.words}" gives ${braceNums(unique[0]!.members)} instead.`,
+        `So the set is ${braceNums(target.members)}.`,
+      ],
+    };
+  }
+  return null;
 }
 function eventModel(
   r: (lo: number, hi: number) => number,
-  ax: { ask: EventModel["ask"] },
+  ax: { ask: NamedEvent["ask"]; task: "named-sets" | "events-by-characteristic" },
 ): EventModel {
+  if (ax.task === "events-by-characteristic") {
+    const built = characteristicModel(r);
+    if (!built) throw new Error("Need three retries");
+    return built;
+  }
   const size = r(7, 9);
   const universe = people.slice(0, size) as unknown as string[];
   const A = new Set(universe.filter(() => r(0, 99) < 50));
   const B = new Set(universe.filter(() => r(0, 99) < 45));
-  return { universe, A, B, ask: ax.ask };
+  return { kind: "named", universe, A, B, ask: ax.ask };
 }
-export const eventComplementSet = chainFamily({
+const eventComplementFamily = chainFamily({
   template: eventComplementSetTemplate,
   axes: eventAxes,
   model: eventModel,
-  variant: (m) => m.ask,
+  variant: (m) =>
+    m.kind === "characteristic" ? "events-by-characteristic" : m.ask,
   render: (m, _ax, r) => {
+    if (m.kind === "characteristic")
+      return choiceSurface(r, {
+        prompt: m.prompt,
+        options: [{ label: m.correct, correct: true }, ...m.wrong],
+        hint: m.hint,
+        explanation: m.explanation,
+      });
     const U = m.universe;
     const comp = (s: Set<string>) => new Set(U.filter((x) => !s.has(x)));
     const union = (x: Set<string>, y: Set<string>) =>
@@ -782,6 +955,33 @@ export const eventComplementSet = chainFamily({
     });
   },
 });
+/** A silent legacy task is omitted so a named-set instance keeps its old variant. */
+function finishEvent(
+  result: ReturnType<typeof eventComplementFamily.generate>,
+) {
+  const task = result.axes.task;
+  const problem = result.problem;
+  const variant =
+    task === "named-sets"
+      ? {
+          id: problem.variant!.id,
+          axes: Object.fromEntries(
+            Object.entries(problem.variant?.axes ?? {}).filter(
+              ([key]) => key !== "task",
+            ),
+          ),
+        }
+      : {
+          id: "events-by-characteristic",
+          axes: { task: "events-by-characteristic" },
+        };
+  return { ...result, problem: { ...problem, variant } };
+}
+export const eventComplementSet = {
+  family: eventComplementFamily.family,
+  generate: (...args: Parameters<typeof eventComplementFamily.generate>) =>
+    finishEvent(eventComplementFamily.generate(...args)),
+};
 
 export const regentsAlgebraTwoFunctionsTemplates = [
   normalProbabilityTemplate,
