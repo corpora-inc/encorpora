@@ -113,6 +113,7 @@ import { calculatorAllowed } from "../../math/calculator";
 import { gradeNumber } from "../../learning/frontier";
 import type { GradeBand } from "../../curriculum/types";
 import { LessonIndex } from "../LessonIndex";
+import { LessonLibraryPlaceholder, LessonsUnavailable } from "../LessonLibrary";
 import { Home, type FrontierMap } from "../Home";
 import { strandNames } from "../BirthYearPrompt";
 import type { ProblemLessonView } from "../../content/problem-lessons";
@@ -183,6 +184,10 @@ if (nativeRuntime) clearInitialConsentChallenge();
 // to the menu button outlives the screen that asked for it.
 const nativeFamilyReturn = { current: false };
 const progressReturn = { current: { identity: "", href: "/progress" } };
+// A failed catalog, as the toast names it outside Lessons (which says so in
+// place, beside Try again).
+const catalogUnavailable =
+  "Lesson and skill details didn’t load. Check your connection, then reload the page.";
 export function LegacyApp() {
   const session = useQuery(sessionOptions);
   if (session.isPending) return <LoadingScreen />;
@@ -242,9 +247,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   const token = session?.token ?? null;
   const accountId = session?.accountId ?? null;
   const [catalog, setCatalog] = useState<Catalog | null>(null);
-  // A failed first load. Unlike `error`, dismissing the message does not
+  // A failed family load. Unlike `error`, dismissing the message does not
   // clear it, so the screen never falls back to an endless loading frame.
   const [loadFailed, setLoadFailed] = useState(false);
+  // The catalog's own failure, which a family load never clears: Lessons
+  // says so in place and offers Try again; only an arriving catalog ends it.
+  const [catalogFailed, setCatalogFailed] = useState(false);
   const familySummary = useFamilyCache(accountId);
   const setFamilySummary = (summary: FamilySummary | null) =>
     setNativeFamilySnapshot(accountRef.current, summary);
@@ -605,14 +613,31 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     setConsentChallenge(consumeInitialConsentChallenge(accountId));
     setHasPendingConsent(false);
   }, [accountId, route.location.pathname]);
-  useEffect(() => {
-    void learningCatalog()
-      .then(setCatalog)
-      .catch((e) => {
-        setError(String(e));
-        setLoadFailed(true);
+  const catalogRequest = useRef<Promise<void> | null>(null);
+  function loadCatalog() {
+    catalogRequest.current ??= learningCatalog()
+      .then((loaded: Catalog) => {
+        setCatalog(loaded);
+        setCatalogFailed(false);
+      })
+      .catch((failure: unknown) => {
+        console.error("The lesson catalog could not be loaded", failure);
+        setCatalogFailed(true);
+      })
+      .finally(() => {
+        catalogRequest.current = null;
       });
-  }, []);
+    return catalogRequest.current;
+  }
+  useEffect(() => void loadCatalog(), []);
+  // Lessons shows the failure beside its Try again. The screens that name
+  // skills without it (Practice, Progress) say so once in the toast.
+  useEffect(() => {
+    if (!catalogFailed) return;
+    if (tab === "library")
+      setError((shown) => (shown === catalogUnavailable ? "" : shown));
+    else setError((shown) => shown || catalogUnavailable);
+  }, [catalogFailed, tab]);
   useEffect(() => {
     if (!token) return;
     const epoch = authEpoch.current;
@@ -1334,7 +1359,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     learningAllowed &&
     !changingBirthYear &&
     !error &&
-    !loadFailed;
+    !loadFailed &&
+    !catalogFailed;
   if (student && (route.familyOpen || route.purchaseView || route.consentOpen))
     return <Navigate to="/" replace />;
   // The adult's home is their own record.
@@ -1345,7 +1371,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     leavingHome.current ||
     fetchingProblem ||
     // The welcome states the configured free allowance: paint it once.
-    (!token && !nativeRuntime && !catalog && !error && !loadFailed) ||
+    (!token && !nativeRuntime && !catalog && !error && !catalogFailed) ||
     (starting && token && !familySummary) ||
     // Signed in, the family loads behind the same first-paint frame: never
     // the signed-out welcome or a placeholder card in between.
@@ -1918,12 +1944,30 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           />
         )
       ) : tab === "library" ? (
-        <main className="library-main" aria-busy={!catalog && !loadFailed}>
-          {!catalog && !readingLesson && (
-            <>
-              <h1>Lessons</h1>
-              {!loadFailed && <Loading>Opening lessons…</Loading>}
-            </>
+        <main className="library-main" aria-busy={!catalog && !catalogFailed}>
+          {/* Until the catalog lands, the library or the reader paints its
+              own frame in place, so nothing moves when it does. */}
+          {!catalog && !route.parts[1] && (
+            <LessonLibraryPlaceholder
+              retry={catalogFailed ? loadCatalog : undefined}
+            />
+          )}
+          {!catalog && route.parts[1] && (
+            <article className="card lesson-reader" aria-busy={!catalogFailed}>
+              <div className="card-top">
+                <button
+                  className="text-button"
+                  onClick={() => navigate("/lessons")}
+                >
+                  ← All lessons
+                </button>
+              </div>
+              {catalogFailed ? (
+                <LessonsUnavailable retry={loadCatalog} />
+              ) : (
+                <Loading>Opening the lesson…</Loading>
+              )}
+            </article>
           )}
           {catalog && !readingLesson && (
             <>
