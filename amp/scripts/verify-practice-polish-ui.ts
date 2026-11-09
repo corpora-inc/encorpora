@@ -98,6 +98,7 @@ const VERIFY = [
   "multi-select-figure",
   "parts-inline",
   "parts-cards",
+  "parts-slots",
   "point-plot",
   "figure-choice",
   "work-steps",
@@ -242,6 +243,7 @@ async function mockApi(context: BrowserContext, templateId: string) {
         "quadratic-from-data": "independent-68",
         "trig-equation-solutions": "95d3e70d-9422-4921-b88f-0407b2bb0fad",
         "randomization-test-decision": "tablet-independent-5",
+        "order-whole-numbers-slots": "721a617f-1a51-4990-8ce8-4357815eb50e",
       };
       const problem = generateProblemFor(
         state.templateId,
@@ -620,7 +622,11 @@ async function runCase(
           `${label} ${width}×${height}: the complete study and chart fit`,
         );
     }
-    if (label === "choice-table" || label === "choice-radical") {
+    if (
+      label === "choice-table" ||
+      label === "choice-radical" ||
+      label === "parts-slots"
+    ) {
       // Match the hosted Chromium gutter on overlay-scrollbar hosts. WebKit
       // does not reserve custom scrollbar space until overflow, so use its
       // native scrollbars and keep the same layout and reachability checks.
@@ -651,6 +657,47 @@ async function runCase(
         }
       }
       await assertProblemReachable(page, `${label} ${width}×${height}`);
+    }
+    if (label === "parts-slots") {
+      const id = await page
+        .locator(".problem-content")
+        .getAttribute("data-problem-id");
+      assert.equal(
+        api.problems.get(id ?? "")?.public.seed,
+        "721a617f-1a51-4990-8ce8-4357815eb50e",
+        "Render the five-row ordering question captured by the hosted sweep",
+      );
+      const spacing = await page
+        .locator(".multi-part-slots")
+        .evaluate((list) => {
+          const rows = [...list.children].map((row) =>
+            row.getBoundingClientRect(),
+          );
+          return {
+            count: rows.length,
+            gap: parseFloat(getComputedStyle(list).rowGap),
+            gaps: rows
+              .slice(1)
+              .map((row, index) => row.top - rows[index]!.bottom),
+            trailing: list.getBoundingClientRect().bottom - rows.at(-1)!.bottom,
+          };
+        });
+      assert.equal(
+        spacing.count,
+        5,
+        "The long ordering case has all five rows",
+      );
+      assert.ok(
+        spacing.gaps.every((gap) => Math.abs(gap - spacing.gap) < 0.5) &&
+          Math.abs(spacing.trailing) < 0.5,
+        `Answer rows use the grid gap without extra prose-list spacing: ${JSON.stringify(spacing)}`,
+      );
+      if (width >= 768)
+        assert.deepEqual(
+          await problemInView(page),
+          [],
+          `${label} ${width}×${height}: the complete question and five answers fit`,
+        );
     }
     if (label === "choice-table") {
       const geometry = await page.locator(".question").evaluate((question) => {
@@ -756,13 +803,40 @@ async function runCase(
     await page.locator(".feedback").waitFor({ state: "detached" });
     await page.waitForTimeout(200);
     await takeShifts(page);
+    const slotBoxes = () =>
+      page.locator(".multi-part-slots").evaluate((list) => {
+        const scroll = list.closest(".problem-stage")!.scrollTop;
+        return [
+          ...list.querySelectorAll(".multi-part-slot-label, .multi-part-blank"),
+        ].map((element) => {
+          const r = element.getBoundingClientRect();
+          return [r.x, r.y + scroll, r.width, r.height].map(Math.round);
+        });
+      });
+    const unfilledSlots = label === "parts-slots" ? await slotBoxes() : null;
+    if (unfilledSlots) await record("long-options", null);
+    before = await anchors(page);
     await fill(page, label);
+    if (unfilledSlots) {
+      assert.deepEqual(
+        await slotBoxes(),
+        unfilledSlots,
+        "Choosing long options preserves the label and picker positions",
+      );
+      await record("long-options-filled", before);
+    }
     before = await anchors(page);
     api.grade = true;
     await visibleCheck(page).click();
     await page.locator(".feedback.correct").waitFor();
     await page.waitForTimeout(1300);
     await record("correct", before);
+    if (unfilledSlots)
+      assert.deepEqual(
+        await slotBoxes(),
+        unfilledSlots,
+        "Feedback preserves the label and picker positions",
+      );
     const why = page.getByRole("button", { name: "See why", exact: true });
     if (await why.count()) {
       before = await anchors(page);
@@ -984,18 +1058,20 @@ try {
           jobs.push(() => runCase(browser, name, c, size, theme, "account"));
         jobs.push(() => runCase(browser, name, CASES[0], size, theme, "trial"));
       }
-    // The default matrix must exercise this study's narrow landscape column.
+    // Long questions and answer rows must fit the narrow landscape column.
     // Explicit viewport filters already describe their own requested coverage.
-    const studyCase = cases.find(([label]) => label === "choice-randomization");
+    const landscapeCases = cases.filter(
+      ([label]) => label === "choice-randomization" || label === "parts-slots",
+    );
     if (
-      studyCase &&
       !process.env.AUDIT_SIZES &&
       !sizes.some(([w, h]) => w === 1024 && h === 768)
     )
-      for (const theme of themes)
-        jobs.push(() =>
-          runCase(browser, name, studyCase, [1024, 768], theme, "account"),
-        );
+      for (const studyCase of landscapeCases)
+        for (const theme of themes)
+          jobs.push(() =>
+            runCase(browser, name, studyCase, [1024, 768], theme, "account"),
+          );
     let next = 0;
     await Promise.all(
       Array.from({ length: workers }, async () => {
@@ -1022,6 +1098,7 @@ const steady = new Set([
   "hint-closed",
   "lesson-closed",
   "filled",
+  "long-options-filled",
   "incorrect",
   "correct",
   "skipped",
