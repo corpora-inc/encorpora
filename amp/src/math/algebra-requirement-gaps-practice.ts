@@ -1,5 +1,6 @@
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { assemble, random, type Random } from "./distribution-practice";
+import { chooseAxes, defineAxis } from "./variation/axes";
 
 /**
  * Requirement-gap templates for algebra skills whose standards facets had no
@@ -73,13 +74,25 @@ export const interpretLinearParametersTemplate = make(
   0.2,
   "Interpret the rate of change and the initial value of a linear model in context, with units, including a model measured from a nonzero starting point.",
 );
-export const quadraticFormConversionTemplate = make(
-  "quadratic-form-conversion",
-  "Choose the form that shows a feature",
-  "quadratic-graphs",
-  0.5,
-  "Rewrite a quadratic by completing the square or factoring to reveal its vertex, extreme value, zeros or axis of symmetry.",
-);
+export const quadraticFormConversionTemplate: TemplateMetadata = {
+  ...make(
+    "quadratic-form-conversion",
+    "Choose the form that shows a feature",
+    "quadratic-graphs",
+    0.5,
+    "Rewrite a quadratic to reveal a feature, or read a zero, an extreme value or a symmetry time from a contextual model written in three forms.",
+  ),
+  version: 2,
+  reprintsFrom: 1,
+};
+const formContextAxes = {
+  setting: defineAxis("setting", ["algebra", "in-context"] as const, {
+    legacy: "algebra",
+    silentLegacy: true,
+    since: 2,
+    weights: [3, 2],
+  }),
+};
 export const rationalExtraneousSingleTemplate = make(
   "rational-extraneous-single",
   "Extraneous candidate, one denominator",
@@ -1531,9 +1544,271 @@ export { interpretLinearParametersCase };
 // Quadratic forms
 // ---------------------------------------------------------------------------
 
+function varPoly(a: number, b: number, c: number, v: string) {
+  return poly([
+    [a, `${v}^2`],
+    [b, v],
+    [c, ""],
+  ]);
+}
+function varFactor(v: string, root: number) {
+  return root === 0
+    ? v
+    : `(${v}${root > 0 ? "-" : "+"}${Math.abs(root)})`;
+}
+function varVertex(a: number, h: number, k: number, v: string) {
+  const square =
+    h === 0 ? `${v}^2` : `(${v}${h > 0 ? "-" : "+"}${Math.abs(h)})^2`;
+  const lead = a === 1 ? "" : a === -1 ? "-" : `${a}`;
+  const constant = k === 0 ? "" : `${k < 0 ? "-" : "+"}${Math.abs(k)}`;
+  return `${lead}${square}${constant}`;
+}
+function contextualForms(meta: TemplateMetadata, seed: string, r: Random) {
+  let last = "Need three retry";
+  for (let attempt = 0; attempt < 80; attempt++) {
+    try {
+      const made = oneContextual(meta, seed, r);
+      if (made) return made;
+    } catch (error) {
+      last = error instanceof Error ? error.message : last;
+    }
+  }
+  throw new Error(last);
+}
+function oneContextual(meta: TemplateMetadata, seed: string, r: Random) {
+  const kind = pick(r, ["ball-ft", "ball-m", "profit", "fence"] as const);
+  const ballPairs: [number, number][] = [];
+  for (const root of [3, 4, 5, 6, 7])
+    for (const s of [1, 2, 3])
+      if (root > s && (root - s) % 2 === 0) ballPairs.push([root, s]);
+  let a = -16;
+  let v = "t";
+  let fname = "h";
+  let unit = "ft";
+  let roots: [number, number] = [5, -1];
+  let noun = "ball";
+  if (kind === "ball-ft" || kind === "ball-m") {
+    a = kind === "ball-ft" ? -16 : -5;
+    unit = kind === "ball-ft" ? "ft" : "m";
+    const [root, s] = pick(r, ballPairs);
+    roots = [root, -s];
+  } else if (kind === "profit") {
+    a = -2;
+    v = "x";
+    fname = "P";
+    unit = "dollars";
+    noun = "profit";
+    let lo = r(1, 20);
+    let hi = r(lo + 2, 60);
+    if ((lo + hi) % 2 !== 0) hi += hi < 60 ? 1 : -1;
+    if (lo >= hi) {
+      lo = 4;
+      hi = 10;
+    }
+    roots = [lo, hi];
+  } else {
+    a = -2;
+    v = "w";
+    fname = "A";
+    unit = "square meters";
+    noun = "area";
+    const L = pick(r, [12, 16, 20, 24] as const);
+    roots = [0, L / 2];
+  }
+  const [r1, r2] = roots[0] <= roots[1] ? roots : [roots[1], roots[0]];
+  const time = (r1 + r2) / 2;
+  const extreme = -a * ((r2 - r1) / 2) ** 2;
+  const start = a * r1 * r2;
+  const mirror = 2 * time;
+  const bCoef = -a * (r1 + r2);
+  const A = varPoly(a, bCoef, start, v);
+  const B =
+    kind === "fence"
+      ? `${v}(${r2 * 2}-2${v})`
+      : `${a === -1 ? "-" : a}${varFactor(v, r1)}${varFactor(v, r2)}`;
+  const C = varVertex(a, time, extreme, v);
+  const forms = { A, B, C };
+  const positive = Math.max(r1, r2);
+  const other = Math.min(Math.abs(r1), Math.abs(r2));
+  const asks =
+    kind === "fence"
+      ? (["time", "height"] as const)
+      : kind === "profit"
+        ? (["break", "height", "time"] as const)
+        : (["landing", "height", "time", "start", "symmetry", "rewrite"] as const);
+  const ask = pick(r, asks);
+  const show = (n: number) => tex(`${n}`);
+  let correct = "";
+  let wrong: Wrong[] = [];
+  let prompt = "";
+  const three = `A: ${tex(`${fname}(${v})=${A}`)}; B: ${tex(`${fname}(${v})=${B}`)}; C: ${tex(`${fname}(${v})=${C}`)}.`;
+  if (kind === "ball-ft" || kind === "ball-m") {
+    const setup = `In this situation, a ball's height in ${unit} $${v}$ seconds after the throw is written three ways. ${three}`;
+    if (ask === "landing") {
+      prompt = `${setup} Which form shows directly when the ball hits the ground, and when is that?`;
+      correct = `Form B; the ball lands at $t=${positive}$ s.`;
+      wrong = [
+        { label: `Form A; the ball lands at $t=${start}$ s.`, feedback: `${start} is the height at the throw, a $y$-value, not a time.` },
+        { label: `Form C; the ball lands at $t=${time}$ s.`, feedback: `${time} is when the ball is highest, not when it lands.` },
+        { label: `Form B; the ball lands at $t=${other}$ s.`, feedback: `${other} is the root from before the throw. Reject it.` },
+      ];
+    } else if (ask === "height") {
+      prompt = `${setup} Which form shows the greatest height directly, and what is that height?`;
+      correct = `Form C; the greatest height is ${show(extreme)} ${unit}.`;
+      wrong = [
+        { label: `Form C; the greatest height is ${show(time)} ${unit}.`, feedback: `${time} is when the height is greatest, not the height itself.` },
+        { label: `Form A; the greatest height is ${show(start)} ${unit}.`, feedback: `${start} is the height at the throw, not the greatest height.` },
+        { label: `Form B; the greatest height is ${show(positive)} ${unit}.`, feedback: `${positive} is the landing time, not a height.` },
+      ];
+    } else if (ask === "time") {
+      prompt = `${setup} Which form shows directly when the ball is highest, and when is that?`;
+      correct = `Form C; the greatest height is at $t=${time}$ s.`;
+      wrong = [
+        { label: `Form C; the greatest height is at $t=${extreme}$ s.`, feedback: `${extreme} is the greatest height, not the time.` },
+        { label: `Form B; the greatest height is at $t=${positive}$ s.`, feedback: `${positive} is when the ball lands.` },
+        { label: `Form A; the greatest height is at $t=0$ s.`, feedback: "At $t=0$ the ball has just been thrown, not at its highest." },
+      ];
+    } else if (ask === "start") {
+      prompt = `${setup} Which form shows the height at the throw directly, and what is that height?`;
+      correct = `Form A; the height at the throw is ${show(start)} ${unit}.`;
+      wrong = [
+        { label: `Form C; the height at the throw is ${show(extreme)} ${unit}.`, feedback: `${extreme} is the greatest height, not the height at $t=0$.` },
+        { label: `Form B; the height at the throw is ${show(positive)} ${unit}.`, feedback: `${positive} is a time, the landing, not a height.` },
+        { label: `Form A; the height at the throw is ${show(Math.abs(bCoef))} ${unit}.`, feedback: `${Math.abs(bCoef)} multiplies $t$. It is not the value at $t=0$.` },
+      ];
+    } else if (ask === "symmetry") {
+      prompt = `In this situation, a ball's height in ${unit} is given by ${three} When does the ball return to the height it was thrown from?`;
+      correct = `${show(mirror)} s`;
+      wrong = [
+        { label: `${show(time)} s`, feedback: `${time} is the axis itself, not the later time at the same height.` },
+        { label: `${show(positive)} s`, feedback: `${positive} is when the ball lands, not when it returns to the starting height.` },
+        { label: `${show(other)} s`, feedback: `${other} is a root from before the throw.` },
+        { label: `${show(0)} s`, feedback: "The throw is at 0 seconds. The return is later, across the axis." },
+        { label: `${show(extreme)} s`, feedback: `${extreme} is a height, not a time.` },
+        { label: `${show(start)} s`, feedback: `${start} is the starting height, not the later time.` },
+      ];
+    } else {
+      prompt = `In this situation, a ball's height in ${unit} $${v}$ seconds after the throw is ${tex(`${fname}(${v})=${A}`)}. Rewrite $h(t)$ in factored form. Which statement about the ball does that form show?`;
+      correct = `It shows the ball lands at $t=${positive}$ s.`;
+      wrong = [
+        { label: `It shows the greatest height is ${show(extreme)} ${unit}.`, feedback: "The greatest height is the constant in vertex form, not a factor." },
+        { label: `It shows the height at the throw is ${show(start)} ${unit}.`, feedback: "The height at the throw is the constant of standard form." },
+        { label: `It shows the greatest height is at $t=${time}$ s.`, feedback: "The time of the greatest height is the axis in vertex form." },
+      ];
+    }
+  } else if (kind === "profit") {
+    const setup = `In this situation, profit in dollars from selling $${v}$ items is written three ways. ${three}`;
+    if (ask === "break") {
+      prompt = `${setup} Which form shows the break-even amounts directly?`;
+      correct = `Form B; it breaks even at $x=${r1}$ and $x=${r2}$.`;
+      wrong = [
+        { label: `Form C; it breaks even at $x=${time}$.`, feedback: `${time} is where profit is greatest, not where it is 0.` },
+        { label: `Form A; it breaks even at $x=${start}$.`, feedback: `${start} is the profit when $x=0$, not a break-even amount.` },
+        { label: `Form C; it breaks even at $${extreme}$ dollars.`, feedback: `${extreme} is the greatest profit, not a break-even count.` },
+      ];
+    } else if (ask === "height") {
+      prompt = `${setup} Which form shows the greatest profit directly, and what is it?`;
+      correct = `Form C; the greatest profit is ${show(extreme)} dollars.`;
+      wrong = [
+        { label: `Form C; the greatest profit is ${show(time)} dollars.`, feedback: `${time} is how many items give the greatest profit, not the profit.` },
+        { label: `Form A; the greatest profit is ${show(start)} dollars.`, feedback: `${start} is the profit at 0 items.` },
+        { label: `Form B; the greatest profit is ${show(r2)} dollars.`, feedback: `${r2} is a break-even count, where profit is 0.` },
+        { label: `Form B; the greatest profit is ${show(r1)} dollars.`, feedback: `${r1} is a break-even count, where profit is 0.` },
+        { label: `Form A; the greatest profit is ${show(Math.abs(bCoef))} dollars.`, feedback: `${Math.abs(bCoef)} is a coefficient, not the greatest profit.` },
+      ];
+    } else {
+      prompt = `${setup} Which form shows directly how many items give the greatest profit?`;
+      correct = `Form C; the greatest profit is at $x=${time}$.`;
+      wrong = [
+        { label: `Form C; the greatest profit is at $x=${extreme}$.`, feedback: `${extreme} is the profit, not the number of items.` },
+        { label: `Form B; the greatest profit is at $x=${r2}$.`, feedback: `${r2} is a break-even count.` },
+        { label: `Form B; the greatest profit is at $x=${r1}$.`, feedback: `${r1} is a break-even count.` },
+        { label: `Form A; the greatest profit is at $x=0$.`, feedback: "Zero items is the start, not the greatest profit." },
+        { label: `Form A; the greatest profit is at $x=${Math.abs(bCoef)}$.`, feedback: `${Math.abs(bCoef)} is a coefficient, not how many items to sell.` },
+      ];
+    }
+  } else {
+    const setup = `In this situation, the area in square meters of a pen with width $${v}$ is written three ways. ${three}`;
+    if (ask === "time") {
+      prompt = `${setup} Which form shows directly the width that gives the greatest area?`;
+      correct = `Form C; the greatest area is at $w=${time}$.`;
+      wrong = [
+        { label: `Form C; the greatest area is at $w=${extreme}$.`, feedback: `${extreme} is the greatest area, not the width.` },
+        { label: `Form B; the greatest area is at $w=${r2}$.`, feedback: `${r2} is where the area is 0, not where it is greatest.` },
+        { label: `Form A; the greatest area is at $w=${Math.abs(bCoef)}$.`, feedback: `${Math.abs(bCoef)} is the length used in the standard form, not the best width.` },
+      ];
+    } else {
+      prompt = `${setup} Which form shows the greatest area directly, and what is it?`;
+      correct = `Form C; the greatest area is ${show(extreme)} square meters.`;
+      wrong = [
+        { label: `Form C; the greatest area is ${show(time)} square meters.`, feedback: `${time} is the width that gives the greatest area, not the area.` },
+        { label: `Form B; the greatest area is ${show(r2)} square meters.`, feedback: `${r2} is a width where the area is 0.` },
+        { label: `Form A; the greatest area is ${show(Math.abs(bCoef))} square meters.`, feedback: `${Math.abs(bCoef)} is a coefficient, not the greatest area.` },
+      ];
+    }
+  }
+  const tokensOf = (expr: string) =>
+    [...expr.matchAll(/\d+/g)].map((m) => Number(m[0]));
+  const onlyIn = (n: number, letter: "A" | "B" | "C") => {
+    const hits = (["A", "B", "C"] as const).filter((key) =>
+      tokensOf(forms[key]).includes(Math.abs(n)),
+    );
+    return hits.length === 1 && hits[0] === letter;
+  };
+  const literal =
+    ask === "symmetry"
+      ? true
+      : ask === "rewrite"
+        ? !tokensOf(A).includes(positive)
+        : ask === "landing"
+          ? onlyIn(positive, "B")
+          : ask === "break"
+            ? onlyIn(r1, "B") && onlyIn(r2, "B")
+            : ask === "start"
+              ? onlyIn(start, "A")
+              : ask === "height"
+                ? onlyIn(extreme, "C")
+                : onlyIn(time, "C");
+  if (!literal) return null;
+  const problem = build(meta, seed, r, {
+    prompt,
+    hint:
+      noun === "area"
+        ? "The squared form shows the greatest area and the width that gives it. A factor of 0 shows where the area vanishes."
+        : noun === "profit"
+          ? "Factored form shows the break-even counts. The squared form shows the greatest profit and how many items give it."
+          : "Factored form shows the landing, a zero. Vertex form shows the greatest height and its time. Standard form shows the height at the throw.",
+    explanation: [
+      `The three forms expand to the same ${fname}(${v}).`,
+      ask === "symmetry"
+        ? `The starting height returns at twice the axis: $t=${mirror}$ s.`
+        : `The asked number is read from the form that shows that feature directly.`,
+      `Check: the vertex is at $${v}=${time}$, the extreme value is ${extreme}, and the value at 0 is ${start}.`,
+    ],
+    correct,
+    wrong,
+  });
+  return {
+    variant: 5,
+    model: {
+      a,
+      r1,
+      r2,
+      time,
+      extreme,
+      start,
+      mirror,
+      ask,
+      kind,
+    },
+    problem,
+  };
+}
 function quadraticFormConversionCase(seed: string) {
   const meta = quadraticFormConversionTemplate;
+  const setting = chooseAxes(meta.id, seed, formContextAxes).setting;
   const r = begin(meta, seed);
+  if (setting === "in-context") return contextualForms(meta, seed, r);
   const variant = r(0, 4);
   let spec: Spec;
   let model: Record<string, number> = {};

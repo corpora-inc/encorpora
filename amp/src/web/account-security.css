@@ -18,9 +18,8 @@
   font-size: 0.875rem;
   color: var(--color-muted-text);
 }
-.security-fresh a {
-  color: var(--color-primary);
-  text-underline-offset: 3px;
+.account-security > a {
+  margin-top: var(--space-3);
 }
 .security-panels {
   display: grid;

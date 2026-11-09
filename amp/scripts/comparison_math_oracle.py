@@ -45,6 +45,12 @@ def solve_comparison(public):
         require(figure and figure['kind'] == 'counter-rows', 'Missing counter rows')
         circles, squares = figure['circles'], figure['squares']
         require(1 <= circles <= 10 and 1 <= squares <= 10, 'Counter rows out of range')
+        if prompt == 'Which row has more shapes: the top row, the bottom row, or the same number?':
+            require(circles == squares and 4 <= circles <= 6, 'The spacing trap uses equal rows of 4 to 6')
+            require(figure['spread'] in ('circles', 'squares'), 'One row is spread')
+            labels = [o['label'] for o in public['response']['options']]
+            require(labels == ['The top row', 'The bottom row', 'The same number'], 'Unexpected row choices')
+            return option_for(public, 'The same number')
         m = re.fullmatch(r'Are there (more|fewer) circles or (more|fewer) squares\?', prompt)
         require(m is not None and m[1] == m[2], f'Unexpected group prompt {prompt!r}')
         word = m[1].capitalize()

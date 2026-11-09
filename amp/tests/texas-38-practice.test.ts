@@ -121,6 +121,10 @@ const VARIANTS: Record<string, string[]> = {
     "predict-count",
     "compare-expected",
     "trust-more-trials",
+    "run-and-record",
+    "discrepancy-source",
+    "model-from-data",
+    "equally-likely-judgment",
   ],
   "cylinder-prism-surface-area": [
     "lateral",
@@ -554,4 +558,175 @@ test("rational equations keep the correct choice and reject the others", () => {
     if (variant === "prism-height") assert.ok(eq.split("×").length === 3);
     assert.equal(new Set(labels(p)).size, 4);
   }
+});
+
+const NEW_PROBABILITY = [
+  "What do these relative frequencies suggest?",
+  "Which is the best explanation of the difference?",
+  "Which probability model matches these results",
+  "do the outcomes appear to be equally likely?",
+] as const;
+
+function hundredthsOf(count: number, trials: number): string {
+  const num = count * 100;
+  const q = Math.floor(num / trials);
+  const rounded = (num % trials) * 2 >= trials ? q + 1 : q;
+  return (rounded / 100).toFixed(2);
+}
+function gapBands(n: number, den: number) {
+  const p = 1 / den;
+  const mean = n * p;
+  const sig = Math.sqrt(n * p * (1 - p));
+  let pk = (1 - p) ** n;
+  let few = 0;
+  let extreme = 0;
+  for (let k = 0; k <= n; k++) {
+    const gap = Math.abs(k - mean);
+    if (gap >= 1.2 * sig - 1e-9 && gap <= 2.5 * sig + 1e-9) few += pk;
+    if (gap >= 4 * sig - 1e-9) extreme += pk;
+    pk *= ((n - k) / (k + 1)) * (p / (1 - p));
+  }
+  return { few, extreme };
+}
+
+test("grade 7 probability variants record long-run frequency, sources, models, and equal likelihood", () => {
+  const markers = NEW_PROBABILITY;
+  for (let i = 0; i < 60; i++) {
+    const old = generateProblem(
+      "experimental-probability-predict",
+      `old-${i}`,
+      1,
+    );
+    assert.equal(old.public.templateVersion, 1);
+    assert.equal(old.variant, undefined);
+    for (const marker of markers)
+      assert.equal(old.public.prompt.includes(marker), false, marker);
+  }
+  let recorded = 0;
+  let fewRuns = 0;
+  const checkedBands = new Set<string>();
+  for (let i = 0; i < 2400 && recorded < 200; i++) {
+    const { variant, problem: p } = texas38Case(
+      "experimental-probability-predict",
+      `clause-${i}`,
+    );
+    if (
+      variant !== "run-and-record" &&
+      variant !== "discrepancy-source" &&
+      variant !== "model-from-data" &&
+      variant !== "equally-likely-judgment"
+    )
+      continue;
+    assert.equal(p.public.templateVersion, 2);
+    assert.equal(p.variant?.id, variant);
+    assert.equal(p.variant?.axes?.task, variant);
+    assert.equal(p.public.response.kind, "choice");
+    const choice = correctLabel(p);
+    const prompt = p.public.prompt;
+    if (variant === "run-and-record") {
+      recorded++;
+      const counts = [...prompt.matchAll(/(\d+) of (10|50|200|600)/g)].map(
+        (m) => [Number(m[1]), Number(m[2])] as const,
+      );
+      assert.deepEqual(
+        counts.map((pair) => pair[1]),
+        [10, 50, 200, 600],
+      );
+      const cube = /uses (\d+) of the (\d+) faces/.exec(prompt);
+      const spinner =
+        /has (\d+) equal sections, and (\d+) (?:is|are) shaded/.exec(prompt);
+      const bag = /has (\d+) equal marbles, and (\d+) (?:is|are) red/.exec(
+        prompt,
+      );
+      const faces = cube
+        ? [Number(cube[1]), Number(cube[2])]
+        : spinner
+          ? [Number(spinner[2]), Number(spinner[1])]
+          : [Number(bag![2]), Number(bag![1])];
+      const [favorable, total] = faces as [number, number];
+      const pTrue = favorable / total;
+      const dev = (count: number, trials: number) =>
+        Math.abs(count / trials - pTrue);
+      assert.ok(dev(counts[3]![0], 600) <= 0.04 + 1e-9);
+      assert.ok(dev(counts[3]![0], 600) < dev(counts[0]![0], 10));
+      const shown = counts.map(([count, trials]) =>
+        hundredthsOf(count, trials),
+      );
+      assert.ok(choice.includes(shown.join(", ").replace(/, ([^,]+)$/, ", and $1")));
+      const expected = (600 * favorable) / total;
+      assert.notEqual(counts[3]![0], expected);
+      assert.ok(choice.includes(`${favorable}/${total}`));
+    }
+    if (variant === "discrepancy-source") {
+      const den = Number(/probability 1\/(\d+)/.exec(prompt)![1]);
+      const n = Number(/(\d+) times\./.exec(prompt)![1]);
+      const obs = Number(/came up (\d+) times/.exec(prompt)![1]);
+      const mean = n / den;
+      const sig = Math.sqrt(n * (1 / den) * (1 - 1 / den));
+      const gap = Math.abs(obs - mean);
+      const few = n >= 8 && n <= 30 && gap >= 1.2 * sig - 1e-9 && gap <= 2.5 * sig + 1e-9;
+      const wrong = n >= 300 && gap >= 4 * sig - 1e-9;
+      const good = n >= 200 && gap <= sig + 1e-9;
+      assert.equal([few, wrong, good].filter(Boolean).length, 1);
+      if (few) {
+        assert.match(choice, /closer to 1\//);
+        const key = `${n}/${den}`;
+        if (!checkedBands.has(key)) {
+          checkedBands.add(key);
+          const bands = gapBands(n, den);
+          assert.ok(bands.few >= 0.1, key);
+          assert.ok(bands.extreme < 0.001, key);
+        }
+        fewRuns++;
+      }
+      if (wrong) assert.match(choice, /model is wrong/);
+      if (good) assert.match(choice, /^The agreement is good/);
+    }
+    if (variant === "model-from-data") {
+      const results = /Results: (.*)\. Which/.exec(prompt)![1]!;
+      const pairs = [...results.matchAll(/([^:;]+): (\d+)/g)].map((m) => [
+        m[1]!.trim(),
+        Number(m[2]),
+      ]) as [string, number][];
+      const total = pairs.reduce((sum, pair) => sum + pair[1], 0);
+      assert.equal(new Set(pairs.map((pair) => pair[1])).size, pairs.length);
+      const next = Number(/next (\d+)/.exec(prompt)![1]);
+      const target = /are ([^?]+)\?/.exec(prompt)![1]!;
+      const count = pairs.find((pair) => pair[0] === target)![1];
+      const pred = (next * count) / total;
+      assert.equal(pred, Math.round(pred));
+      const shares = pairs.map((pair) => hundredthsOf(pair[1], total));
+      assert.equal(
+        shares.reduce((sum, text) => sum + Math.round(Number(text) * 100), 0),
+        100,
+      );
+      assert.ok(choice.startsWith(pairs.map((pair, i) => `${pair[0]} ${shares[i]}`).join(", ")));
+      assert.ok(choice.endsWith(`about ${pred}.`));
+    }
+    if (variant === "equally-likely-judgment") {
+      const body = /Counts: (.*)\. Based/.exec(prompt)![1]!;
+      const counts = [...body.matchAll(/=(\d+)/g)].map((m) => Number(m[1]));
+      const total = counts.reduce((sum, count) => sum + count, 0);
+      const k = counts.length;
+      const mean = total / k;
+      const sig = Math.sqrt(total * (1 / k) * (1 - 1 / k));
+      const devs = counts.map((count) => Math.abs(count - mean));
+      const yes = total >= 200 && devs.every((d) => d <= 1.5 * sig + 1e-9);
+      const no = total >= 200 && Math.max(...counts) >= mean + 4 * sig - 1e-9;
+      const few = total <= 30 && devs.every((d) => d <= 2.5 * sig + 1e-9);
+      assert.equal([yes, no, few].filter(Boolean).length, 1);
+      if (yes) assert.match(choice, /^Yes: each outcome/);
+      if (no) {
+        assert.match(choice, /^No:/);
+        const hat = counts.map((count) => count / total);
+        assert.ok(new Set(hat.map((value) => value.toFixed(6))).size > 1);
+        const extreme = Math.max(...counts);
+        assert.ok(Math.abs(extreme - total * (extreme / total)) <= sig);
+      }
+      if (few) assert.match(choice, /^Cannot tell:/);
+    }
+  }
+  assert.equal(recorded, 200);
+  assert.ok(fewRuns > 0);
+  assert.ok(checkedBands.size > 0);
 });

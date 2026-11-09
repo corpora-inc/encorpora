@@ -1,5 +1,18 @@
+import { nounFor } from "./agreement";
 import { createHash } from "node:crypto";
-import type { GeneratedProblem, TemplateMetadata } from "./contracts";
+import type {
+  GeneratedProblem,
+  ProblemVariant,
+  TemplateMetadata,
+} from "./contracts";
+import type { MultiPartChoiceResponse } from "./multi-part-choice";
+import { serializeMultiPart } from "./multi-part-choice";
+import {
+  axisRecord,
+  chooseAxes,
+  defineAxis,
+  versionGatedAxes,
+} from "./variation/axes";
 
 type Random = (low: number, high: number) => number;
 type Option = { label: string; feedback?: string };
@@ -12,11 +25,27 @@ type Case = {
   givens?: RealNumberGivens;
   /** Display order of `answer` options, when the explanation discusses them in that order. */
   order?: number[];
+  /** Set when the prompt is not one the legacy hint parser can read. */
+  hint?: string;
+  /** Response label when a numeric family asks a different question. */
+  label?: string;
+  parts?: {
+    response: MultiPartChoiceResponse;
+    correct: readonly string[];
+  };
 };
 
 const choice = { requiredResponseCapability: "single-choice-v1" as const };
-export const realNumberTemplates: readonly TemplateMetadata[] = (
-  [
+/** Families whose version-2 axis adds a clause surface. Legacy stays the
+ * first value and is silent, so a stored version-1 instance still reprints. */
+const SCIENTIFIC_VARIANT = new Set([
+  "scientific-to-standard",
+  "standard-to-scientific",
+  "scientific-times-larger",
+]);
+export const realNumberTemplates: readonly TemplateMetadata[] = [
+  ...(
+    [
     [
       "classify-real-number",
       "Rational or irrational",
@@ -87,16 +116,28 @@ export const realNumberTemplates: readonly TemplateMetadata[] = (
       "Multiply, divide, add or subtract numbers in scientific notation and give the result in scientific notation.",
       true,
     ],
-  ] as const
-).map(([id, title, skillId, description, isChoice]) => ({
-  id,
-  title,
-  skillId,
-  description,
-  gradeBand: "6–8",
-  version: 1,
-  ...(isChoice ? choice : {}),
-}));
+    ] as const
+  ).map(([id, title, skillId, description, isChoice]) => ({
+    id,
+    title,
+    skillId,
+    description,
+    gradeBand: "6–8" as const,
+    version: SCIENTIFIC_VARIANT.has(id) ? 2 : 1,
+    ...(SCIENTIFIC_VARIANT.has(id) ? { reprintsFrom: 1 as const } : {}),
+    ...(isChoice ? choice : {}),
+  })),
+  {
+    id: "choose-unit-size",
+    title: "Choose a unit you can picture",
+    skillId: "scientific-notation",
+    description:
+      "Choose the unit that writes a very large or very small measure as a number from 1 up to 1,000, then choose that number.",
+    gradeBand: "6–8",
+    version: 1,
+    requiredResponseCapability: "multi-part-choice-v1",
+  },
+];
 
 const hints: Record<string, string> = {
   "classify-real-number":
@@ -119,7 +160,39 @@ const hints: Record<string, string> = {
     "Divide the larger number by the smaller. Divide the coefficients, and subtract the exponents of the powers of 10.",
   "scientific-operations":
     "Multiply or divide coefficients and combine the powers of 10 with exponent rules. To add or subtract, first write both numbers with the same power of 10. Then adjust the coefficient to be at least 1 and less than 10.",
+  "choose-unit-size":
+    "Each step to a smaller unit multiplies the number by 1,000. Stop when the number is at least 1 and less than 1,000.",
 };
+
+/** Clause surfaces. `exact` is the stored task. A version below `since` is
+ * forced back to it, and that draw is left out of the variant record. */
+export const realNumberTaskAxes = {
+  "standard-to-scientific": {
+    task: defineAxis("task", ["exact", "single-digit-estimate"] as const, {
+      legacy: "exact",
+      silentLegacy: true,
+      since: 2,
+    }),
+  },
+  "scientific-times-larger": {
+    task: defineAxis(
+      "task",
+      ["exact", "estimate-first", "estimate-second", "times-as-much"] as const,
+      { legacy: "exact", silentLegacy: true, since: 2 },
+    ),
+  },
+  "scientific-to-standard": {
+    task: defineAxis("task", ["exact", "display", "product"] as const, {
+      legacy: "exact",
+      silentLegacy: true,
+      since: 2,
+    }),
+  },
+} as const;
+type TaskId = keyof typeof realNumberTaskAxes;
+type TaskOf<I extends string> = I extends TaskId
+  ? (typeof realNumberTaskAxes)[I]["task"]["values"][number]
+  : "exact";
 
 function random(id: string, seed: string): Random {
   let counter = 0;
@@ -1195,6 +1268,7 @@ function operationCase(r: Random): Case {
 
 /** One teaching step written from this problem's own givens; never the answer. */
 function hintFor(id: string, c: Case): string {
+  if (c.hint) return c.hint;
   const first = c.explanation[0]!;
   const options = typeof c.answer === "string" ? [] : c.answer;
   switch (id) {
@@ -1225,6 +1299,613 @@ function hintFor(id: string, c: Case): string {
   }
 }
 
+const sciLabel = (coef: number, exp: number) => `${coef} \\times 10^{${exp}}`;
+/** Round a positive standard numeral to one significant digit. The second
+ * digit is never 5, so the three wrong readings stay distinct. */
+export function singleDigitEstimateOf(numeral: string): {
+  correct: string;
+  wrong: [string, string, string];
+  coef: number;
+  exp: number;
+} {
+  const value = parseDec(numeral.replaceAll(",", "").replaceAll("{,}", ""));
+  if (value.m <= 0n) throw new Error("Estimate needs a positive number");
+  const digits = String(value.m).split("").map(Number);
+  const exp = lead(value);
+  const second = digits[1];
+  if (second === undefined || second === 5)
+    throw new Error(`No undisputed second digit in ${numeral}`);
+  let coef = digits[0]!;
+  let outExp = exp;
+  if (second >= 6) {
+    coef += 1;
+    if (coef === 10) {
+      coef = 1;
+      outExp += 1;
+    }
+  }
+  const correct = sciLabel(coef, outExp);
+  const wrongWay =
+    second >= 6
+      ? sciLabel(digits[0]!, exp)
+      : digits[0] === 9
+        ? sciLabel(1, exp + 1)
+        : sciLabel(digits[0]! + 1, exp);
+  const counted = sciLabel(coef, exp + 1);
+  const place =
+    exp < 0
+      ? sciLabel(coef, Math.abs(outExp))
+      : counted === correct
+        ? sciLabel(digits[0]!, exp + 1)
+        : counted;
+  let two = digits[0]! * 10 + second;
+  if (digits.length >= 3 && digits[2]! >= 5) two += 1;
+  const kept =
+    two === 100 ? sciLabel(10, exp) : sciLabel(two, exp - 1);
+  const wrong = [wrongWay, place, kept] as [string, string, string];
+  if (new Set([correct, ...wrong]).size !== 4)
+    throw new Error(`Estimate choices collide for ${numeral}`);
+  return { correct, wrong, coef, exp: outExp };
+}
+
+const numeralFrom = (digits: number[], exp: number) =>
+  standardText(dec(BigInt(digits.join("")), exp - (digits.length - 1)));
+
+const ESTIMATE_CONTEXTS: readonly {
+  min: number;
+  max: number;
+  line: (numeral: string) => string;
+}[] = [
+  {
+    min: 5,
+    max: 9,
+    line: (n) =>
+      `The population of a country was about ${n}. Estimate it as a single digit times a power of 10.`,
+  },
+  {
+    min: 3,
+    max: 9,
+    line: (n) =>
+      `A trip is about ${n} km. Estimate the distance as a single digit times a power of 10.`,
+  },
+  {
+    min: 2,
+    max: 8,
+    line: (n) =>
+      `A ship has a mass of about ${n} kg. Estimate the mass as a single digit times a power of 10.`,
+  },
+  {
+    min: -9,
+    max: -4,
+    line: (n) =>
+      `A cell is about ${n} m across. Estimate its width as a single digit times a power of 10.`,
+  },
+  {
+    min: -6,
+    max: -3,
+    line: (n) =>
+      `An insect has a mass of about ${n} kg. Estimate the mass as a single digit times a power of 10.`,
+  },
+];
+
+function singleDigitEstimateCase(r: Random): Case {
+  for (let attempt = 0; attempt < 40; attempt++) {
+    const nineUp = r(0, 9) === 0;
+    const context = pick(r, ESTIMATE_CONTEXTS);
+    const exp = nineUp ? r(3, 9) : r(context.min, context.max);
+    const digits = nineUp
+      ? [9, 7]
+      : (() => {
+          const sig = r(3, 4);
+          const leadDigit = r(1, 9);
+          const second = r(0, 1) === 1 ? r(6, 9) : r(1, 4);
+          const rest: number[] = [leadDigit, second];
+          while (rest.length < sig)
+            rest.push(rest.length === sig - 1 ? r(1, 9) : r(0, 9));
+          return rest;
+        })();
+    let estimate: ReturnType<typeof singleDigitEstimateOf>;
+    try {
+      estimate = singleDigitEstimateOf(numeralFrom(digits, exp));
+    } catch {
+      continue;
+    }
+    if (estimate.exp === 0 || estimate.exp < -9 || estimate.exp > 12) continue;
+    const numeral = numeralFrom(digits, exp);
+    const rounded = shift(dec(BigInt(estimate.coef)), estimate.exp);
+    const second = digits[1]!;
+    return {
+      prompt: (nineUp ? ESTIMATE_CONTEXTS[1]! : context).line(numeral),
+      answer: [
+        { label: `$${estimate.correct}$` },
+        ...estimate.wrong.map((label) => ({
+          label: `$${label}$`,
+          feedback:
+            label === estimate.wrong[0]
+              ? second >= 6
+                ? "The next digit was cut off. A digit of 6 or more rounds the first digit up."
+                : "The first digit was rounded up. A next digit of 4 or less leaves it as it is."
+              : label === estimate.wrong[1]
+                ? exp < 0
+                  ? "The exponent lost its minus sign. A small number has a negative power of 10."
+                  : "That counts every digit. The exponent is the place of the first digit, one less than the count."
+                : "Scientific estimates use one digit, not two. Shift until the front number is below 10.",
+        })),
+      ],
+      explanation: [
+        `The first nonzero digit of ${numeral} is in the ${placeWords[exp] ?? "counted"} place, worth $10^{${exp}}$.`,
+        second >= 6
+          ? estimate.exp === exp
+            ? `The next digit is ${second}, which is 6 or more, so the first digit rounds up to ${estimate.coef}.`
+            : `The next digit is ${second}, so 9 rounds up to 10. Write that as $1 \\times 10^{${estimate.exp}}$.`
+          : `The next digit is ${second}, which is 4 or less, so the first digit stays ${estimate.coef}.`,
+        `The single-digit estimate is $${estimate.correct} = ${standardTex(rounded)}$.`,
+        `Check by sliding that digit ${places(Math.abs(estimate.exp))} from the ones place.`,
+      ],
+      hint: "Find the place of the first nonzero digit. Then use the next digit only to round that first digit up or to leave it.",
+      tags: [
+        nineUp ? "nine-up" : second >= 6 ? "round-up" : "round-down",
+        exp < 0 ? "estimate-small" : "estimate-large",
+        "single-digit-estimate",
+      ],
+      givens: {
+        kind: "power-of-ten",
+        digits: String(estimate.coef),
+        exponent: estimate.exp,
+        toStandard: false,
+      },
+    };
+  }
+  throw new Error("Could not build a single-digit estimate");
+}
+
+/** Pairs whose ratio has at most one decimal place: a divides 10b. */
+export const singleDigitRatioPairs: readonly [number, number][] = [
+  1, 2, 4, 5, 8,
+].flatMap((a) =>
+  [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    .filter((b) => (10 * b) % a === 0)
+    .map((b) => [a, b] as [number, number]),
+);
+
+/** Value of a one-digit estimate, and how many times as large the second is. */
+export function timesEstimate(
+  a: number,
+  m: number,
+  b: number,
+  n: number,
+): { first: string; second: string; times: string } {
+  if (!(n >= m)) throw new Error("The second estimate must be at least as large");
+  if ((10 * b) % a !== 0) throw new Error("Ratio has more than one decimal place");
+  const gap = n - m;
+  if ((b * 10 ** gap) % a !== 0) throw new Error("Times as large is not exact");
+  return {
+    first: plain(shift(dec(BigInt(a)), m)),
+    second: plain(shift(dec(BigInt(b)), n)),
+    times: String((b * 10 ** gap) / a),
+  };
+}
+
+const RATIO_SCENES: readonly {
+  min: number;
+  max: number;
+  first: (n: string) => string;
+  second: (n: string) => string;
+  ask: string;
+}[] = [
+  {
+    min: 5,
+    max: 9,
+    first: (n) => `The population of one country is about ${n}`,
+    second: (n) => `the population of the world is about ${n}`,
+    ask: "as the first population is the second",
+  },
+  {
+    min: 3,
+    max: 9,
+    first: (n) => `One flight is about ${n} km`,
+    second: (n) => `another flight is about ${n} km`,
+    ask: "as the first flight is the second",
+  },
+  {
+    min: 2,
+    max: 8,
+    first: (n) => `One ship has a mass of about ${n} kg`,
+    second: (n) => `another ship has a mass of about ${n} kg`,
+    ask: "as the first mass is the second",
+  },
+  {
+    min: -8,
+    max: -3,
+    first: (n) => `One cell is about ${n} m across`,
+    second: (n) => `another cell is about ${n} m across`,
+    ask: "as the first width is the second",
+  },
+];
+
+function dressDigit(r: Random, digit: number, exp: number): string {
+  const sig = r(3, 4);
+  const digits = [digit, pick(r, [1, 2, 3, 4])];
+  while (digits.length < sig)
+    digits.push(digits.length === sig - 1 ? r(1, 9) : r(0, 9));
+  return numeralFrom(digits, exp);
+}
+
+function estimateTimesCase(
+  r: Random,
+  task: "estimate-first" | "estimate-second" | "times-as-much",
+): Case {
+  const scene = pick(
+    r,
+    RATIO_SCENES.filter((s) => s.max - s.min >= 1),
+  );
+  const gap = r(1, Math.min(4, scene.max - scene.min));
+  const [a, b] = pick(r, singleDigitRatioPairs);
+  const m = r(scene.min, scene.max - gap);
+  const n = m + gap;
+  const first = dressDigit(r, a, m);
+  const second = dressDigit(r, b, n);
+  const result = timesEstimate(a, m, b, n);
+  const ratioTenths = (10 * b) / a;
+  const ratio =
+    ratioTenths % 10 === 0 ? String(ratioTenths / 10) : (ratioTenths / 10).toFixed(1);
+  const pow = 10 ** gap;
+  if (task !== "times-as-much") {
+    const which = task === "estimate-first";
+    const numeral = which ? first : second;
+    const answer = which ? result.first : result.second;
+    return {
+      prompt: `${which ? scene.first(numeral) : scene.second(numeral)[0]!.toUpperCase() + scene.second(numeral).slice(1)}. Estimate it as a single digit times a power of 10. Write that estimate as an ordinary number.`,
+      answer,
+      label: "Estimated number",
+      explanation: [
+        `The first nonzero digit of ${numeral} is ${which ? a : b}, and the next digit is 4 or less, so it does not round up.`,
+        `That digit sits in the ${placeWords[which ? m : n]} place, so the estimate is $${which ? a : b} \\times 10^{${which ? m : n}}$.`,
+        `As an ordinary number, $${which ? a : b} \\times 10^{${which ? m : n}} = ${standardTex(parseDec(answer))}$.`,
+      ],
+      hint: "The first nonzero digit stays, because the next digit is 4 or less. Its place tells you how many zeros follow.",
+      tags: [task, m < 0 ? "estimate-small" : "estimate-large"],
+    };
+  }
+  return {
+    prompt: `${scene.first(first)}, estimated as $${a} \\times 10^{${m}}$. ${scene.second(second)[0]!.toUpperCase()}${scene.second(second).slice(1)}, estimated as $${b} \\times 10^{${n}}$. About how many times as large ${scene.ask}?`,
+    answer: result.times,
+    explanation: [
+      `Divide the estimates $${b} \\times 10^{${n}}$ and $${a} \\times 10^{${m}}$.`,
+      `The digits give $${b} \\div ${a} = ${ratio}$. The powers of 10 give $10^{${n}} \\div 10^{${m}} = 10^{${gap}}$.`,
+      `$${ratio} \\times ${pow} = ${result.times}$. The answer is an ordinary number, not a power of 10.`,
+      `The digits alone give ${ratio}. Multiplying the digits gives ${a * b}. Adding the exponents makes a huge power of 10, not ${result.times}.`,
+    ],
+    hint: "Divide the single-digit estimates. Divide the front digits, then subtract the exponents of 10.",
+    tags: ["times-as-much", gap === 1 ? "one-place" : "several-places"],
+  };
+}
+
+const SUPER_DIGIT = "⁰¹²³⁴⁵⁶⁷⁸⁹";
+const superExp = (n: number) =>
+  `${n < 0 ? "⁻" : "⁺"}${String(Math.abs(n))
+    .padStart(2, "0")
+    .split("")
+    .map((d) => SUPER_DIGIT[Number(d)])
+    .join("")}`;
+/** Calculator styles the clause names. The exponent keeps its sign. */
+export function calculatorDisplayText(
+  coefficient: string,
+  exp: number,
+  style: number,
+): string {
+  const abs = String(Math.abs(exp));
+  const padded = abs.padStart(2, "0");
+  const sign = exp < 0 ? "-" : "";
+  switch (style % 5) {
+    case 0:
+      return `${coefficient}E${exp}`;
+    case 1:
+      return `${coefficient}E${sign}${padded}`;
+    case 2:
+      return `${coefficient}e${exp}`;
+    case 3:
+      return `${coefficient} ${superExp(exp)}`;
+    default:
+      return `${coefficient}E${exp < 0 ? "-" : "+"}${padded}`;
+  }
+}
+
+function calculatorDisplayCase(r: Random): Case {
+  const c = coefficient(r, 4);
+  const negative = r(0, 1) === 1;
+  const n = negative ? -r(3, 9) : r(6, 12);
+  const shown = calculatorDisplayText(plain(c), n, r(0, 4));
+  const value = shift(c, n);
+  return {
+    prompt: `A calculator shows \`${shown}\`. What number is this?`,
+    answer: plain(value),
+    explanation: [
+      `A calculator writes E for "times ten to the power." \`${shown}\` means $${sciTex(c, n)}$.`,
+      `The number after E is the exponent, sign included. Move the decimal point ${places(Math.abs(n))} to the ${n < 0 ? "left" : "right"}.`,
+      `$${sciTex(c, n)} = ${standardTex(value)}$.`,
+      `Losing the minus sign would point the other way. E is not subtraction, and it is not a power on ${plain(c)} itself.`,
+    ],
+    hint: "E means times ten to the power that follows. Keep the sign of that power, then slide the decimal point.",
+    tags: [negative ? "display-small" : "display-large", "calculator-display"],
+    givens: {
+      kind: "power-of-ten",
+      digits: String(c.m),
+      exponent: n,
+      toStandard: true,
+    },
+  };
+}
+
+const FACTOR_PAIRS = [
+  ["1.2", "5"],
+  ["1.25", "4"],
+  ["1.5", "2"],
+  ["1.5", "4"],
+  ["1.5", "6"],
+  ["2", "3"],
+  ["2", "4"],
+  ["2.5", "2"],
+  ["2.5", "4"],
+  ["3", "2"],
+  ["3", "3"],
+  ["3.5", "2"],
+  ["4", "2"],
+  ["4.5", "2"],
+  ["6", "1.5"],
+] as const;
+
+function calculatorProductCase(r: Random): Case {
+  for (let attempt = 0; attempt < 30; attempt++) {
+    const divide = r(0, 1) === 1;
+    const [left, right] = pick(r, FACTOR_PAIRS).map(parseDec) as [Dec, Dec];
+    const forward = divide ? div(left, right) : mul(left, right);
+    const raw = forward ?? (divide ? div(right, left) : null);
+    if (!raw) continue;
+    const swapped = divide && !forward;
+    const dividend = swapped ? right : left;
+    const divisor = swapped ? left : right;
+    const [coef, extra] = sciParts(raw);
+    const target = divide ? -r(7, 9) : r(10, 12);
+    const span = target - extra;
+    const expB = r(2, 6);
+    const expA = divide ? span + expB : span - expB;
+    const A = shift(dividend, expA);
+    const B = shift(divisor, expB);
+    const value = shift(coef, target);
+    const shown = calculatorDisplayText(plain(coef), target, r(0, 4));
+    return {
+      prompt: divide
+        ? `A calculator divides ${standardText(A)} by ${standardText(B)} and shows \`${shown}\`. Write the quotient in standard form.`
+        : `A calculator multiplies ${standardText(A)} by ${standardText(B)} and shows \`${shown}\`. Write the product in standard form.`,
+      answer: plain(value),
+      explanation: [
+        divide
+          ? `Divide the front digits and subtract the exponents: $${sci(A)} \\div ${sci(B)} = ${sciTex(coef, target)}$.`
+          : `Multiply the front digits and add the exponents: $${sci(A)} \\times ${sci(B)} = ${sciTex(coef, target)}$.`,
+        `The display \`${shown}\` is that result. E means times ten to the power ${target}.`,
+        `In standard form, $${sciTex(coef, target)} = ${standardTex(value)}$.`,
+      ],
+      hint: divide
+        ? "Divide the front digits and subtract the exponents. Then write the result with ordinary digits."
+        : "Multiply the front digits and add the exponents. Then write the result with ordinary digits.",
+      tags: [
+        divide ? "display-quotient" : "display-product",
+        "calculator-display",
+      ],
+      givens: {
+        kind: "power-of-ten",
+        digits: String(coef.m),
+        exponent: target,
+        toStandard: true,
+      },
+    };
+  }
+  throw new Error("Could not build a calculator product");
+}
+
+const LADDERS = {
+  length: ["km", "m", "mm", "µm", "nm"],
+  mass: ["t", "kg", "g", "mg"],
+  time: ["s", "ms", "µs", "ns"],
+  data: ["TB", "GB", "MB", "KB", "B"],
+} as const;
+const UNIT_NAME: Record<string, string> = {
+  km: "kilometers",
+  m: "meters",
+  mm: "millimeters",
+  µm: "micrometers",
+  nm: "nanometers",
+  t: "tonnes",
+  kg: "kilograms",
+  g: "grams",
+  mg: "milligrams",
+  s: "seconds",
+  ms: "milliseconds",
+  µs: "microseconds",
+  ns: "nanoseconds",
+  TB: "terabytes",
+  GB: "gigabytes",
+  MB: "megabytes",
+  KB: "kilobytes",
+  B: "bytes",
+};
+const LADDER_NOTE: Record<keyof typeof LADDERS, string> = {
+  length:
+    "One kilometer is $10^{3}$ m. One millimeter is $10^{-3}$ m. One micrometer is $10^{-6}$ m. One nanometer is $10^{-9}$ m.",
+  mass: "One tonne is $10^{3}$ kg. One gram is $10^{-3}$ kg. One milligram is $10^{-6}$ kg.",
+  time: "One millisecond is $10^{-3}$ s. One microsecond is $10^{-6}$ s. One nanosecond is $10^{-9}$ s.",
+  data: "One kilobyte is $10^{3}$ bytes. One megabyte is $10^{6}$ bytes. One gigabyte is $10^{9}$ bytes. One terabyte is $10^{12}$ bytes.",
+};
+const UNIT_CONTEXTS: readonly {
+  ladder: keyof typeof LADDERS;
+  unit: string;
+  per: string;
+  values: readonly string[];
+  tell: (given: string, unit: string) => string;
+}[] = [
+  {
+    ladder: "length",
+    unit: "mm",
+    per: "/yr",
+    values: ["20", "25", "40", "50", "80", "100"],
+    tell: (g, u) => `The Atlantic seafloor spreads about ${g} ${u} per year.`,
+  },
+  {
+    ladder: "length",
+    unit: "mm",
+    per: "/month",
+    values: ["2", "2.5", "3", "4"],
+    tell: (g, u) => `A fingernail grows about ${g} ${u} per month.`,
+  },
+  {
+    ladder: "length",
+    unit: "µm",
+    per: "",
+    values: ["1", "2", "5", "8", "10"],
+    tell: (g, u) => `A bacterium is about ${g} ${u} long.`,
+  },
+  {
+    ladder: "length",
+    unit: "nm",
+    per: "",
+    values: ["2", "20", "50", "80", "200", "300"],
+    tell: (g, u) => `A virus is about ${g} ${u} across.`,
+  },
+  {
+    ladder: "length",
+    unit: "km",
+    per: "",
+    values: ["5", "10", "21.1", "42.2"],
+    tell: (g, u) => `A race is about ${g} ${u} long.`,
+  },
+  {
+    ladder: "mass",
+    unit: "t",
+    per: "",
+    values: ["5", "8", "10", "20", "40"],
+    tell: (g, u) => `A truck has a mass of about ${g} ${u}.`,
+  },
+  {
+    ladder: "mass",
+    unit: "mg",
+    per: "",
+    values: ["1", "2", "5", "10", "50", "100"],
+    tell: (g, u) => `A grain of sand has a mass of about ${g} ${u}.`,
+  },
+  {
+    ladder: "time",
+    unit: "ms",
+    per: "",
+    values: ["1", "2", "5", "10", "50", "100", "500"],
+    tell: (g, u) => `A camera shutter stays open for about ${g} ${u}.`,
+  },
+  {
+    ladder: "data",
+    unit: "MB",
+    per: "",
+    values: ["2", "3", "4", "5", "8"],
+    tell: (g, u) => `A photo uses about ${g} ${u}.`,
+  },
+  {
+    ladder: "data",
+    unit: "GB",
+    per: "",
+    values: ["64", "128", "256", "512"],
+    tell: (g, u) => `A phone stores about ${g} ${u}.`,
+  },
+];
+const inRange = (d: Dec) =>
+  compare(d, dec(1n)) >= 0 && compare(d, dec(1000n)) < 0;
+const partOptions = (labels: string[], r: Random) =>
+  shuffle([...labels], r).map((label, i) => ({
+    id: "abcd"[i]!,
+    label,
+  }));
+
+function chooseUnitCase(r: Random): Case {
+  const context = pick(r, UNIT_CONTEXTS);
+  const units = LADDERS[context.ladder] as readonly string[];
+  const uIdx = units.indexOf(context.unit);
+  const value = parseDec(pick(r, context.values));
+  const offsets = [-3, -2, -1, 1, 2, 3].filter(
+    (off) => uIdx + off >= 0 && uIdx + off < units.length,
+  );
+  const off = pick(r, offsets);
+  const gIdx = uIdx + off;
+  const given = shift(value, 3 * off);
+  const [coef, exp] = sciParts(given);
+  if (compare(coef, dec(1n)) < 0 || compare(coef, dec(10n)) >= 0)
+    throw new Error("Given value is not normalized");
+  const hits = units.filter((_, i) => inRange(shift(value, 3 * (i - uIdx))));
+  if (hits.length !== 1 || hits[0] !== context.unit)
+    throw new Error("The ladder does not have exactly one readable unit");
+  const chosen = [uIdx];
+  const add = (i: number) => {
+    if (i >= 0 && i < units.length && !chosen.includes(i)) chosen.push(i);
+  };
+  add(uIdx > 0 ? uIdx - 1 : uIdx + 2);
+  add(uIdx + 1 < units.length ? uIdx + 1 : uIdx - 2);
+  add(gIdx);
+  for (let i = 0; chosen.length < 4 && i < units.length; i++) add(i);
+  const unitLabels = chosen.map(
+    (i) => `${units[i]}${context.per}`,
+  );
+  const numberLabels = [
+    plain(value),
+    plain(shift(value, -3)),
+    plain(shift(value, 3)),
+    plain(given),
+    plain(shift(value, -6)),
+    plain(shift(value, 6)),
+  ].filter((label, i, all) => all.indexOf(label) === i);
+  if (unitLabels.length !== 4 || new Set(unitLabels).size !== 4)
+    throw new Error("Unit choices are not four distinct units");
+  if (numberLabels.length < 4) throw new Error("Need four number choices");
+  const numbers = numberLabels.slice(0, 4);
+  const unitOptions = partOptions(unitLabels, r);
+  const numberOptions = partOptions(numbers, r);
+  const response: MultiPartChoiceResponse = {
+    kind: "multi-part-choice",
+    label: "Choose the unit and the number",
+    layout: "slots",
+    blanks: [
+      {
+        id: "unit",
+        label: "Unit that writes this as a number from 1 up to 1,000",
+        options: unitOptions,
+      },
+      {
+        id: "value",
+        label: "The measure written in that unit",
+        options: numberOptions,
+      },
+    ],
+  };
+  const givenName = UNIT_NAME[units[gIdx]!]!;
+  return {
+    prompt: `${context.tell(`$${sciTex(coef, exp)}$`, givenName)} Each step on this ladder is 1,000: ${units.join(", ")}. ${LADDER_NOTE[context.ladder]}`,
+    answer: serializeMultiPart(response, {
+      unit: unitOptions.find((o) => o.label === `${context.unit}${context.per}`)!.id,
+      value: numberOptions.find((o) => o.label === plain(value))!.id,
+    }),
+    parts: {
+      response,
+      correct: [`${context.unit}${context.per}`, plain(value)],
+    },
+    explanation: [
+      `The measure is given as $${sciTex(coef, exp)}$ ${givenName}.`,
+      off > 0
+        ? `Each step to a smaller unit multiplies by 1,000. After ${off === 1 ? "one step" : `${off} steps`}, the number is ${plain(value)}.`
+        : `Each step to a larger unit divides by 1,000. After ${-off === 1 ? "one step" : `${-off} steps`}, the number is ${plain(value)}.`,
+      `${plain(value)} ${nounFor(Number(plain(value)), UNIT_NAME[context.unit]!.replace(/ies$/, "y").replace(/s$/, ""))} is at least 1 and under 1,000. One step past that is ${plain(shift(value, off > 0 ? 3 : -3))}, which is the wrong size to picture.`,
+      `Check backward: ${plain(value)} ${nounFor(Number(plain(value)), UNIT_NAME[context.unit]!.replace(/ies$/, "y").replace(/s$/, ""))} returns to $${sciTex(coef, exp)}$ ${units[gIdx]}.`,
+    ],
+    hint: "Each step changes the number by a factor of 1,000. Stop at the step whose number is at least 1 and under 1,000.",
+    tags: [context.ladder, "choose-unit-size"],
+  };
+}
+
 const builders: Record<string, (r: Random) => Case> = {
   "classify-real-number": classifyCase,
   "repeating-decimal-to-fraction": repeatingCase,
@@ -1250,6 +1931,26 @@ const labels: Record<string, string> = {
   "scientific-operations": "Scientific notation",
 };
 
+function taskFor(id: string, seed: string): string {
+  if (!(id in realNumberTaskAxes)) return "exact";
+  return chooseAxes(id, seed, realNumberTaskAxes[id as TaskId]).task;
+}
+function buildCase(id: string, r: Random, task: string): Case {
+  if (id === "choose-unit-size") return chooseUnitCase(r);
+  if (task === "single-digit-estimate") return singleDigitEstimateCase(r);
+  if (
+    task === "estimate-first" ||
+    task === "estimate-second" ||
+    task === "times-as-much"
+  )
+    return estimateTimesCase(r, task);
+  if (task === "display") return calculatorDisplayCase(r);
+  if (task === "product") return calculatorProductCase(r);
+  const build = builders[id];
+  if (!build) throw new Error(`Unknown real-number template ${id}`);
+  return build(r);
+}
+
 export function realNumberPrintCase(
   id: string,
   seed: string,
@@ -1258,27 +1959,54 @@ export function realNumberPrintCase(
   if (!metadata) throw new Error(`Unknown real-number template ${id}`);
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
+  const task = taskFor(id, seed);
   const r = random(id, seed);
-  const c = builders[id]!(r);
+  const c = buildCase(id, r, task);
+  // A version below `since` forces the legacy task and is recorded by
+  // `versionGatedAxes`. Stamp that stored version so the reprint matches.
+  const templateVersion = versionGatedAxes().some((axis) => axis.id === "task")
+    ? 1
+    : metadata.version;
+  const variant: ProblemVariant | undefined =
+    task === "exact"
+      ? undefined
+      : { id: task, axes: axisRecord({ task }) };
   const base = {
     id: createHash("sha256")
       .update(JSON.stringify([id, 1, seed]))
       .digest("hex"),
     templateId: id,
-    templateVersion: 1 as const,
+    templateVersion,
     seed,
     skillId: metadata.skillId,
     prompt: c.prompt,
   };
+  const withVariant = <T extends GeneratedProblem>(problem: T): T =>
+    variant ? { ...problem, variant } : problem;
+  if (c.parts) {
+    return {
+      problem: withVariant({
+        public: { ...base, response: c.parts.response },
+        answer: c.answer as string,
+        explanation: c.explanation,
+        hint: hintFor(id, c),
+      }),
+      tags: c.tags,
+      caseKey: c.prompt,
+    };
+  }
   if (typeof c.answer === "string") {
     const kind = id === "repeating-decimal-to-fraction" ? "fraction" : "number";
     return {
-      problem: {
-        public: { ...base, response: { kind, label: labels[id]! } },
+      problem: withVariant({
+        public: {
+          ...base,
+          response: { kind, label: c.label ?? labels[id]! },
+        },
         answer: c.answer,
         explanation: c.explanation,
         hint: hintFor(id, c),
-      },
+      }),
       tags: c.tags,
       caseKey: c.prompt,
     };
@@ -1293,7 +2021,7 @@ export function realNumberPrintCase(
   }));
   const answer = options[order.indexOf(correct!)]!.id;
   return {
-    problem: {
+    problem: withVariant({
       public: {
         ...base,
         response: { kind: "choice", label: labels[id]!, options },
@@ -1307,7 +2035,7 @@ export function realNumberPrintCase(
           .filter(([optionId]) => optionId !== answer)
           .map(([optionId, feedback]) => [optionId, feedback ?? hints[id]!]),
       ),
-    },
+    }),
     tags: c.tags,
     caseKey: JSON.stringify([
       c.prompt,
@@ -1333,6 +2061,6 @@ export function realNumberGivens(
   id: string,
   seed: string,
 ): RealNumberGivens | undefined {
-  const build = builders[id];
-  return build ? build(random(id, seed)).givens : undefined;
+  if (!realNumberTemplates.some((t) => t.id === id)) return undefined;
+  return buildCase(id, random(id, seed), taskFor(id, seed)).givens;
 }

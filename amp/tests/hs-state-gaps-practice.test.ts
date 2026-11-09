@@ -199,6 +199,7 @@ test("quadratic inequalities: the correct interval matches brute-force evaluatio
       seed,
     );
     const prompt = problem.public.prompt;
+    if (!prompt.startsWith("Solve ")) continue;
     const m = /^Solve \$(.+?) (<|>|\\le|\\ge) (-?\d+)\$/.exec(prompt)!;
     assert.ok(m, prompt);
     const f = new Function("x", `return ${toJs(m[1]!)};`) as (
@@ -545,4 +546,38 @@ test("each family has a lesson with method, principle and a worked example", () 
     assert.ok(lesson.principle, id);
     assert.ok(lesson.example.steps.length >= 2, id);
   }
+});
+
+test("feature intervals use the axis or the zeros, and version 1 stays algebraic", () => {
+  let feature = 0;
+  for (let seed = 0; seed < 500; seed++) {
+    const old = generateProblem("quadratic-inequality-interval", `feat:${seed}`, 1);
+    assert.match(old.public.prompt, /^Solve /);
+    const p = generateProblem("quadratic-inequality-interval", `feat:${seed}`);
+    if (p.public.prompt.startsWith("Solve ")) continue;
+    feature++;
+    const response = p.public.response;
+    assert.equal(response.kind, "choice");
+    if (response.kind !== "choice") continue;
+    const correct = response.options.find((o) => o.id === p.answer)!.label;
+    const labels = new Set(response.options.map((o) => o.label));
+    assert.equal(labels.size, 4);
+    assert.ok(!p.public.prompt.includes(correct));
+    assert.ok(!p.hint.includes(correct));
+    const ball = /h\(t\)=(-?\d+)\(t-(\d+)\)\(t\+(\d+)\)/.exec(p.public.prompt);
+    if (ball) {
+      const lead = Number(ball[1]);
+      const root = Number(ball[2]);
+      const s = Number(ball[3]);
+      const vertex = (root - s) / 2;
+      assert.ok(lead < 0);
+      if (/rising/.test(p.public.prompt))
+        assert.match(correct, new RegExp(`\\(0, ${vertex}\\)`));
+      if (/falling/.test(p.public.prompt))
+        assert.match(correct, new RegExp(`\\(${vertex}, ${root}\\)`));
+      if (/above the ground/.test(p.public.prompt))
+        assert.match(correct, new RegExp(`\\[0, ${root}\\)`));
+    }
+  }
+  assert.ok(feature >= 150, `${feature} feature intervals`);
 });

@@ -2,6 +2,7 @@ import { useLoggedError } from "./feedback";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { notifyAccountSessionChanged } from "./auth";
 import { accountClient } from "./account-client";
+import { buttonClass } from "./ui/Button";
 import "./account-security.css";
 
 type Summary = {
@@ -197,9 +198,14 @@ export function AccountSecurity() {
           <p className="security-fresh">
             {now >= freshUntil
               ? "Sign in again to change these settings."
-              : "Changes require a sign-in within the last five minutes."}{" "}
-            <a href="/sign-in?return=security">Sign in again</a>.
+              : "Changes require a sign-in within the last five minutes."}
           </p>
+          <a
+            className={buttonClass("secondary")}
+            href="/sign-in?return=security"
+          >
+            Sign in again
+          </a>
           <div className="security-panels">
             {(
               [

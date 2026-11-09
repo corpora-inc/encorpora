@@ -47,7 +47,7 @@
 /* Tabs follow the logo on one row from 640 px; below that they take a row
    of their own under it, so neither the logo nor a tab ever moves. */
 .bar[data-tabs] {
-  grid-template-columns: auto auto minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, max-content) minmax(0, 1fr) auto;
   grid-template-areas: "logo tabs tools action";
   column-gap: var(--space-5);
 }

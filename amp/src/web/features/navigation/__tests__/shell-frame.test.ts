@@ -1,6 +1,8 @@
 import { expect, test } from "vitest";
 import {
   accountTabs,
+  classTabs,
+  schoolTabs,
   overviewPath,
   progressTabs,
   shellFrame,
@@ -46,6 +48,7 @@ test("each group's screens share one frame and name their tab", () => {
   });
   expect(shellFrame("/practice")).toEqual({ kind: "practice" });
   expect(shellFrame("/lessons/fractions")).toEqual({ kind: "plain" });
+  expect(shellFrame("/school/invite")).toEqual({ kind: "plain" });
 });
 
 test("the starter and Continue with AMP sit on the app frame", () => {
@@ -68,7 +71,8 @@ test("screens with frames of their own stay outside it", () => {
     "/try/practice",
     "/me/start",
     "/join/ABC123",
-    "/school/x/classes/y/today",
+    "/school/new",
+    "/schools",
     "/family/approve",
     "/family/approvals/123",
     "/purchase/arizona-esa",
@@ -92,5 +96,140 @@ test("the Overview tab follows whose progress it is; the URLs never move", () =>
     "Family",
     "Billing",
     "Privacy",
+  ]);
+});
+
+test("class sub-screens retain their tab and existing URLs", () => {
+  for (const [leaf, active] of [
+    ["today", "today"],
+    ["start", "today"],
+    ["report-cards", "gradebook"],
+    ["cards", "roster"],
+    ["experience", "roster"],
+    ["workbooks/2026-11-09", "workbooks"],
+  ]) {
+    expect(shellFrame(`/school/org/classes/class/${leaf}`)).toMatchObject({
+      kind: "class",
+      org: "org",
+      classId: "class",
+      active,
+    });
+  }
+  expect(classTabs("org", "class").map((tab) => tab.label)).toEqual([
+    "Today",
+    "Map",
+    "Grades",
+    "Time",
+    "Workbooks",
+    "Students",
+    "Settings",
+  ]);
+  expect(shellFrame("/learners/child/workbooks/2026-11-09/results")).toEqual({
+    kind: "plain",
+  });
+});
+
+test("school sub-screens map to seven tabs and respect capabilities", () => {
+  for (const [leaf, active] of [
+    ["import", "classes"],
+    ["students/id", "classes"],
+    ["experience", "classes"],
+    ["integrations", "staff"],
+    ["year", "calendar"],
+    ["schools", "schools"],
+  ]) {
+    expect(shellFrame(`/school/org/${leaf}`)).toMatchObject({
+      kind: "school",
+      active,
+    });
+  }
+  const org = {
+    id: "org",
+    name: "School",
+    kind: "school" as const,
+    parentId: null,
+    timezone: "UTC",
+    roles: [],
+    can: ["classes.read", "calendar.read"] as const,
+  };
+  expect(
+    schoolTabs({ ...org, can: [...org.can] }, 2).map((tab) => tab.label),
+  ).toEqual(["Classes", "Calendar"]);
+  const family = {
+    ...org,
+    kind: "family" as const,
+    can: ["classes.read", "calendar.read", "staff.read"] as const,
+  };
+  expect(
+    schoolTabs({ ...family, can: [...family.can] }, 1).map((tab) => tab.label),
+  ).toEqual(["Classes", "Calendar"]);
+  expect(classTabs("org", "class", true).map((tab) => tab.id)).toEqual([
+    "gradebook",
+    "time",
+  ]);
+});
+
+test.each(["district", "network"] as const)(
+  "review regression: %s has its own Schools tab when overview is permitted",
+  (kind) => {
+    const org = {
+      id: "org",
+      name: "District",
+      kind,
+      parentId: null,
+      timezone: "UTC",
+      roles: [],
+      can: ["overview.read"] as ["overview.read"],
+    };
+    expect(schoolTabs(org, 2)).toContainEqual({
+      id: "schools",
+      label: "Schools",
+      path: "school/org/schools",
+    });
+    expect(shellFrame("/school/org/schools")).toMatchObject({
+      active: "schools",
+    });
+    expect(schoolTabs({ ...org, can: [] }, 2)).toEqual([]);
+    expect(
+      schoolTabs({ ...org, kind: "school" }, 2).some(
+        (tab) => tab.id === "schools",
+      ),
+    ).toBe(false);
+  },
+);
+
+test("review regression: a lone school hides Overview, Staff and Activity", () => {
+  const org = {
+    id: "org",
+    name: "Just my class",
+    kind: "school" as const,
+    parentId: null,
+    timezone: "UTC",
+    roles: ["admin"] as ["admin"],
+    solo: true,
+    can: [
+      "overview.read",
+      "staff.read",
+      "activity.read",
+      "calendar.read",
+      "privacy.read",
+    ] as [
+      "overview.read",
+      "staff.read",
+      "activity.read",
+      "calendar.read",
+      "privacy.read",
+    ],
+  };
+  expect(schoolTabs(org, 1).map((tab) => tab.id)).toEqual([
+    "calendar",
+    "privacy",
+  ]);
+  expect(schoolTabs(org, 2).map((tab) => tab.id)).toEqual([
+    "overview",
+    "staff",
+    "calendar",
+    "privacy",
+    "activity",
   ]);
 });

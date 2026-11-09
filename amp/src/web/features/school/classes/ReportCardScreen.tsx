@@ -134,7 +134,7 @@ export function ReportCardScreen() {
     : [];
   const blank = students.filter((student) => !student.final).length;
   return (
-    <div className={styles.page} data-dense>
+    <main className={styles.page} data-dense>
       {!term || !data ? (
         <div className={styles.lost}>
           <EmptyState title="These report cards didn’t load" action={back}>
@@ -176,6 +176,6 @@ export function ReportCardScreen() {
           </div>
         </>
       )}
-    </div>
+    </main>
   );
 }

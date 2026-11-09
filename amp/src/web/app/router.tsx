@@ -431,7 +431,7 @@ const home = createRoute({
       if (session) {
         const me = await queryClient
           .fetchQuery({ ...meOptions(session), staleTime: 0 })
-          .catch(() => undefined);
+          .catch(() => queryClient.getQueryData(meOptions(session).queryKey));
         // Explicit handoffs select their screen before mounting home. Merely
         // skipping the default redirect would let home's setup effect race them.
         if (hasInitialConsentChallenge())

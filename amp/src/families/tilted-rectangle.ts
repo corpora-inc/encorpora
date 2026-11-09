@@ -25,4 +25,13 @@ export const family = {
   principles: Object.fromEntries(
     ids.map((id) => [id, areaClausePrinciples[id]!]),
   ),
+  facetMappings: [
+    {
+      templateId: "tilted-rectangle",
+      facetId: "coordinate-measurement.perimeter-area",
+      extent: "partial",
+      rationale:
+        "Use the distance formula on two adjacent sides of a tilted rectangle, then the product for the area or twice the sum for the perimeter. Does not assess triangles.",
+    },
+  ],
 } satisfies ContentFamily;
