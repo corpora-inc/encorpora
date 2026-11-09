@@ -22,8 +22,7 @@ export const triangleTheoremProofContent = workContent([
     senses: { median: "median-triangle", medians: "median-triangle" },
     method: [
       "Identify the claim to prove and the facts given. Mark shared sides and equal parts supplied by a midpoint or angle bisector.",
-      "Choose a congruence test from those facts. Put each supporting statement before the triangle-congruence statement.",
-      "Use corresponding parts only after proving the triangles congruent. CPCTC is the abbreviation for this step.",
+      "Choose a congruence test from those facts. Put supporting statements before the triangle-congruence statement. Then use corresponding parts of congruent triangles, abbreviated CPCTC.",
       "For a midpoint or median argument, use the proved matches to establish a parallelogram. Then apply its opposite-side or diagonal properties.",
       "For an exactly-if claim, prove both directions. A statement's contrapositive is the same implication, so it does not replace the converse.",
     ],
