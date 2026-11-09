@@ -4,7 +4,7 @@ import {
   functionDisplaySchema,
   generatedProblemSchema,
 } from "../src/math/contracts";
-import { generateProblem } from "../src/math/engine";
+import { generateProblem } from "./fixtures/pre-clause-problem";
 import { patternFunctionTemplates } from "../src/math/pattern-function-practice";
 import { templateRole } from "../src/learning/placement";
 

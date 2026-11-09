@@ -381,7 +381,12 @@ export const regentsAlgebraTwoReasoningFacetMappings: FacetMapping[] = [
   fm(
     "study-design-classify",
     "causal-claims.core",
-    "Single choice classifying a described study as an experiment or observational and choosing the reason. Does not assess designing a study, randomization methods, or writing the reason.",
+    "Distinguish sample surveys, experiments and observational comparisons; select designs for stated goals; identify how random selection supports generalization and random assignment supports causal inference. Does not assess writing a study plan.",
+  ),
+  fm(
+    "study-design-classify",
+    "causal-claims.HSS.IC.B.3",
+    "Classify three study designs by purpose and identify the role of random selection or assignment. Surveys are identified as the most specific design, with their observational nature stated explicitly.",
   ),
   fm(
     "quartic-factored-form",
