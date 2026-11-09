@@ -1,4 +1,5 @@
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
+import { clauseFamily } from "./clause-family";
 import { assemble, random, type Random } from "./distribution-practice";
 import { graph } from "./scene/author";
 import type { Scene } from "./scene/spec";
@@ -57,13 +58,17 @@ export const complexConicsTemplates: readonly TemplateMetadata[] = [
     0.55,
     "Factor $x^2+k^2$ as $(x+ki)(x-ki)$, solve quadratics with negative discriminant in $a\\pm bi$ form, and rebuild a quadratic from conjugate roots.",
   ),
-  meta(
-    "polynomial-root-count",
-    "Count the roots of a polynomial",
-    "fundamental-theorem-algebra",
-    0.7,
-    "Count complex roots with multiplicity from degree, and use conjugate pairs to bound or locate nonreal roots of real polynomials.",
-  ),
+  {
+    ...meta(
+      "polynomial-root-count",
+      "Count the roots of a polynomial",
+      "fundamental-theorem-algebra",
+      0.7,
+      "Count complex roots with multiplicity from degree, and use conjugate pairs to bound or locate nonreal roots of real polynomials. A quadratic is shown in all three discriminant cases.",
+    ),
+    version: 2,
+    reprintsFrom: 1,
+  },
   meta(
     "polar-cartesian-conversion",
     "Polar and Cartesian coordinates",
@@ -2300,6 +2305,139 @@ function parabolaCase(r: Random): Spec {
   };
 }
 
+const uni = (n: number) => String(n).replace("-", "−");
+/** Square-free radical of a positive integer: 18 → "3√2", 4 → "2", 3 → "√3". */
+function radicalText(m: number): string {
+  let k = 1;
+  let rest = m;
+  for (let p = 2; p * p <= rest; p++)
+    while (rest % (p * p) === 0) {
+      k *= p;
+      rest /= p * p;
+    }
+  if (rest === 1) return String(k);
+  return k === 1 ? `√${rest}` : `${k}√${rest}`;
+}
+/** The one sound quadratic FTA statement. The oracle rebuilds this text. */
+export function quadraticFtaStatement(
+  b: number,
+  c: number,
+): { sentence: string; kind: "positive" | "zero" | "negative" } {
+  const d = b * b - 4 * c;
+  if (d > 0) {
+    const s = Math.sqrt(d);
+    if (!Number.isInteger(s)) throw new Error("Discriminant is not a square");
+    const hi = (-b + s) / 2;
+    const lo = (-b - s) / 2;
+    return {
+      kind: "positive",
+      sentence: `D = ${uni(d)} > 0, so x = ${uni(hi)} and x = ${uni(lo)}: two real roots, which is two roots counting multiplicity.`,
+    };
+  }
+  if (d === 0) {
+    return {
+      kind: "zero",
+      sentence: `D = 0, so x = ${uni(-b / 2)} is a root of multiplicity 2, which counts as two roots.`,
+    };
+  }
+  const h = -b / 2;
+  const m = -d / 4;
+  return {
+    kind: "negative",
+    sentence: `D = ${uni(d)} < 0, so x = ${uni(h)} ± ${radicalText(m)}i: two nonreal roots, which is two roots counting multiplicity.`,
+  };
+}
+
+function quadraticPoly(b: number, c: number): string {
+  const mid =
+    b === 0 ? "" : b > 0 ? ` + ${b}x` : ` − ${Math.abs(b)}x`;
+  const last = c > 0 ? ` + ${c}` : ` − ${Math.abs(c)}`;
+  return `x^2${mid}${last}`;
+}
+
+/** Show the FTA for one concrete quadratic, all three discriminant cases. */
+function ftaArgument(r: Random): Spec {
+  const kind = r(0, 2);
+  let b = 0;
+  let c = 0;
+  if (kind === 0) {
+    const r1 = r(-8, 8);
+    let r2 = r(-8, 8);
+    if (r2 === r1) r2 = r1 + (r1 < 8 ? 1 : -1);
+    b = -(r1 + r2);
+    c = r1 * r2;
+  } else if (kind === 1) {
+    const root = r(-8, 8);
+    const fixed = root === 0 ? r(1, 8) : root;
+    b = -2 * fixed;
+    c = fixed * fixed;
+  } else {
+    const h = r(-6, 6);
+    const m = [1, 2, 3, 4, 5, 8, 9, 16, 18, 25][r(0, 8)]!;
+    b = -2 * h;
+    c = h * h + m;
+  }
+  const { sentence, kind: disc } = quadraticFtaStatement(b, c);
+  const poly = quadraticPoly(b, c);
+  const wrong: Wrong[] =
+    disc === "negative"
+      ? [
+          [
+            `D = ${uni(b * b - 4 * c)} < 0, so p has no roots; the theorem does not apply here.`,
+            "A nonreal number is still a root. The theorem counts complex roots, not only real ones.",
+          ],
+          [
+            "The graph of p never meets the x-axis, so p has 0 roots, which contradicts the theorem.",
+            "An x-intercept is a real root. A quadratic can have two nonreal roots and no x-intercept.",
+          ],
+          [
+            `D = ${uni(b * b - 4 * c)}, so x = ${uni(-b / 2)} ± ${radicalText(-(b * b - 4 * c) / 4)}: the i was dropped.`,
+            "The square root of a negative number is imaginary. Dropping the i gives real numbers that do not solve p(x) = 0.",
+          ],
+        ]
+      : disc === "zero"
+        ? [
+            [
+              "D = 0, so there is only one root; the theorem fails for this quadratic.",
+              "A double root is counted twice. Degree 2 still means two roots counting multiplicity.",
+            ],
+            [
+              "The graph touches the axis once, so one root.",
+              "Touching once is a root of multiplicity 2. It counts twice.",
+            ],
+            [
+              `D = 0, so x = ${uni(b / 2)} is a root of multiplicity 2, which counts as two roots.`,
+              "The root has the wrong sign. For x^2 + bx + c with D = 0, the root is −b/2.",
+            ],
+          ]
+        : [
+            [
+              "Two real roots, plus the theorem adds two complex ones: four roots.",
+              "Real numbers are complex numbers. The two real roots are the two roots; the theorem does not add more.",
+            ],
+            [
+              `D = ${uni(b * b - 4 * c)} > 0, so there are no complex roots.`,
+              "A positive discriminant means two real roots, and real roots count as complex roots.",
+            ],
+            [
+              `D = ${uni(b * b - 4 * c)} > 0, so x = ${uni((-b + Math.sqrt(b * b - 4 * c)) / 2)} only: one root.`,
+              "The ± gives two roots. Both must be counted.",
+            ],
+          ];
+  return {
+    variant: 5,
+    prompt: `Which statement correctly shows that $p(x) = ${poly}$ has exactly two complex roots, counting multiplicity?`,
+    hint: "Compute the discriminant b² − 4ac. Its sign says whether the two roots are real and distinct, a repeated real root, or a conjugate pair.",
+    explanation: [
+      `For p(x) = ${poly}, b = ${uni(b)} and c = ${uni(c)}, so D = b² − 4ac = ${uni(b * b - 4 * c)}.`,
+      sentence,
+      "A root does not have to be real, and a repeated root is counted as many times as it appears. Degree 2 means two roots in every case.",
+    ],
+    correct: sentence,
+    wrong,
+  };
+}
+
 // ------------------------------------------------------------------ dispatch
 const builders: Record<string, (r: Random) => Spec> = {
   "complex-plane-forms": planeCase,
@@ -2318,7 +2456,7 @@ export const complexConicsVariantCounts: Record<string, number> = {
   "complex-conjugate-division": 5,
   "complex-distance-midpoint": 5,
   "complex-quadratic-factors": 5,
-  "polynomial-root-count": 5,
+  "polynomial-root-count": 6,
   "polar-cartesian-conversion": 4,
   "parametric-linear-motion": 5,
   "conic-standard-form": 5,
@@ -2330,6 +2468,22 @@ export function complexConicsCase(id: string, seed: string) {
   if (!template) throw new Error(`Unknown template ${id}`);
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
+  if (
+    id === "polynomial-root-count" &&
+    clauseFamily(
+      id,
+      seed,
+      2,
+      [
+        { id: "legacy", weight: 5 },
+        { id: "quadratic-fta-argument", weight: 3 },
+      ],
+      "legacy",
+    ) === "quadratic-fta-argument"
+  ) {
+    const r = random(`${id}#clause`, seed);
+    return finish(template, seed, r, ftaArgument(r));
+  }
   const r = random(id, seed);
   return finish(template, seed, r, builders[id]!(r));
 }

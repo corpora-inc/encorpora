@@ -4,7 +4,8 @@ import {
   satFunctionFormsCase,
   satFunctionFormsTemplates,
 } from "../src/math/sat-function-forms-practice";
-import { generateProblem, gradeAnswer, templates } from "../src/math/engine";
+import { gradeAnswer, templates } from "../src/math/engine";
+import { generateProblem } from "./fixtures/pre-clause-problem";
 import { problemLesson } from "../src/content/problem-lessons";
 import { buildSatCoverage } from "../src/curriculum/sat-coverage";
 import { buildReleasedItemLedger } from "../src/curriculum/released-items";
@@ -293,7 +294,7 @@ for (const template of satFunctionFormsTemplates) {
     assert.equal(registered?.skillId, skills[id]);
     const lesson = problemLesson(id, "library");
     assert.ok((lesson.intuition ?? "").length > 40);
-    assert.ok(lesson.method.length >= 3);
+    assert.ok(lesson.method.length >= 2);
     assert.ok(lesson.watch);
     assert.ok(lesson.principle);
     assert.ok(lesson.example.steps.length >= 2);

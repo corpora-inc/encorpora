@@ -13,6 +13,10 @@ import {
 import { normalizeSelection } from "./selection-response";
 import { withTemplateGlossary } from "./template-glossary";
 import { historicalTrueEquationChoice } from "./operation-sentence-practice";
+import {
+  clauseProblem as extendedClauseProblem,
+  withClauseMetadata,
+} from "./clause-extensions";
 import { historicalEqualFactorFamily } from "./multiselect-number-practice";
 import { sceneCapabilitiesIn } from "./scene/capability";
 import {
@@ -411,6 +415,7 @@ import { elementaryTemplates, generateElementaryProblem } from "./elementary";
 import { graphicalTemplates, generateGraphicalProblem } from "./graphical";
 import { extendedTemplates, generateExtendedProblem } from "./extended";
 import { familyRegistry } from "../families/registry";
+import { clauseMetadata, generateClauseVariant } from "./clause-variants";
 import { createHash } from "node:crypto";
 import { makeTenHops } from "./scene/explanations";
 import { mathLabel, polish } from "./polish";
@@ -652,7 +657,10 @@ export const templates: readonly TemplateMetadata[] = [
   // Frozen legacy list above. New families register through src/families/
   // (docs/content-family-playbook.md) and append here in family-id order.
   ...familyRegistry.templates,
-].map(withTemplateGlossary);
+]
+  .map(withClauseMetadata)
+  .map(clauseMetadata)
+  .map(withTemplateGlossary);
 
 function gcd(a: bigint, b: bigint): bigint {
   a = a < 0n ? -a : a;
@@ -897,7 +905,24 @@ export function generateProblemFor(
   seed: string,
   figureCapabilities: readonly string[],
   version?: number,
+  responseCapabilities: readonly string[] = [],
 ): GeneratedProblem {
+  const generateForClient = () => {
+    const problem = generateProblem(templateId, seed, version);
+    if (!problem.variant?.axes?.clause) return problem;
+    const kind = problem.public.response.kind;
+    const required =
+      kind === "choice"
+        ? "single-choice-v1"
+        : kind === "number" || kind === "fraction"
+          ? null
+          : `${kind}-v1`;
+    // A legacy template's admission capability cannot name the union of its
+    // added formats. Retain its exact original surface for older clients.
+    return required && !responseCapabilities.includes(required)
+      ? generateProblem(templateId, seed, 1)
+      : problem;
+  };
   const fits = (problem: GeneratedProblem) =>
     // The public problem, and what reaches the client beside it: the hint
     // cue's scene and a lesson's walkthrough.
@@ -907,11 +932,11 @@ export function generateProblemFor(
       problem.walkthrough,
     ]).every((needs) => figureCapabilities.includes(needs));
   const problem = withClientFigures(figureCapabilities, () =>
-    generateProblem(templateId, seed, version),
+    generateForClient(),
   );
   if (fits(problem)) return problem;
   const legacy = withClientFigures(figureCapabilities, () =>
-    withLegacySurfaces(() => generateProblem(templateId, seed, version)),
+    withLegacySurfaces(generateForClient),
   );
   if (fits(legacy)) return legacy;
   throw new Error(
@@ -920,6 +945,7 @@ export function generateProblemFor(
 }
 /** Apply the legacy count copy-edit without changing authored algebra notation. */
 export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
+  if (problem.variant?.axes?.clause) return problem;
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
@@ -1022,6 +1048,13 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  const metadata = templateById.get(templateId);
+  if (metadata) {
+    const clause =
+      extendedClauseProblem(metadata, seed) ??
+      generateClauseVariant(metadata, seed);
+    if (clause) return clause;
+  }
   if (templateId === "true-equation-choice")
     return historicalTrueEquationChoice.generate(seed).problem;
   if (templateId === "equal-factor-equations-select")
