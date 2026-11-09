@@ -89,13 +89,20 @@ def equivalent_fractions(public):
 
 def fraction_line(public):
     (line,) = [e for e in kit.elements(public) if e['type'] == 'numberLine']
-    require(line['min'] == 0 and line['max'] == 1 and len(line['marks']) == 1, 'Expected one point on 0 to 1')
+    require(len(line['marks']) == 1, 'Expected one point')
     parts = line['denominator']
-    require(f'cut into {parts} equal parts' in public['prompt'], 'Prompt and drawn parts disagree')
-    scaled = line['marks'][0]['at'] * parts
-    require(abs(scaled - round(scaled)) < 1e-9 and 0 < round(scaled) < parts, 'Point is not on a mark')
-    position = Fraction(round(scaled), parts)
-    require(f"Point ${line['marks'][0]['label']}$" in public['prompt'], 'Point letter')
+    mark = line['marks'][0]
+    require(f"Point ${mark['label']}$" in public['prompt'], 'Point letter')
+    if line['min'] == 0 and line['max'] == 2:
+        require(mark['at'] in (1, 2), 'The marked whole is 1 or 2')
+        require(f'cut into {parts} equal parts on each whole' in public['prompt'], 'Prompt and drawn parts disagree')
+        position = Fraction(mark['at'])
+    else:
+        require(line['min'] == 0 and line['max'] == 1, 'Expected one point on 0 to 1')
+        require(f'cut into {parts} equal parts' in public['prompt'], 'Prompt and drawn parts disagree')
+        scaled = mark['at'] * parts
+        require(abs(scaled - round(scaled)) < 1e-9 and 0 < round(scaled) < parts, 'Point is not on a mark')
+        position = Fraction(round(scaled), parts)
     out, pairs = [], []
     for o in options_of(public):
         c, d = fraction_of(only_span(o['label']))
@@ -247,6 +254,10 @@ extra mathematical claim before or after those verdicts, must not be ignored.
     if template == 'fraction-line-names-select':
         (line,) = [e for e in kit.elements(public) if e['type'] == 'numberLine']
         parts = line['denominator']
+        if line['max'] == 2:
+            whole = int(line['marks'][0]['at'])
+            return ([f"Point $P$ is at {whole}. {whole * parts} steps of 1/{parts} land on the same point."],
+                    [f"The true names are {whole} and {whole * parts}/{parts}."])
         count = round(line['marks'][0]['at'] * parts)
         unit, target = f'\\frac{{1}}{{{parts}}}', f'\\frac{{{count}}}{{{parts}}}'
         return ([f"The line from 0 to 1 is cut into {parts} equal parts, so each part is ${unit}$. Point $P$ is {count} parts from 0, at ${target}$.",

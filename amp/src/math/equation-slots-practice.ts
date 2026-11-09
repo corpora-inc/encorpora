@@ -1,4 +1,5 @@
 import type { SemanticFigure, TemplateMetadata } from "./contracts";
+import { clauseAxis, clauseProblem } from "./fraction-clause-variants";
 import { array, lineTable } from "./scene/author";
 import { defineAxis } from "./variation/axes";
 import {
@@ -47,7 +48,8 @@ export const equationSlotsTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "unit-fraction-division-slots",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Complete a unit fraction division",
     skillId: "unit-fraction-division",
     gradeBand: "3–5",
@@ -247,6 +249,7 @@ export const unitFractionAxes = {
     "pieces-in-whole",
     "denominator-of-quotient",
   ] as const),
+  task: clauseAxis("unit-fraction-division-slots"),
 } as const;
 const unitFractionFoods = [
   "cake",
@@ -508,6 +511,10 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
   "unit-fraction-division-slots": entry(
     unitFractionAxes,
     ({ meta, seed, r, axes }) => {
+      if (axes.task !== "legacy") {
+        const clause = clauseProblem(meta.id, seed, meta);
+        if (clause) return clause;
+      }
       const f = (n: number, d: number) => `$${frac(n, d)}$`;
       const food = pick(r, unitFractionFoods);
       if (axes.situation === "share-unit-fraction") {

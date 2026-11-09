@@ -40,7 +40,7 @@ const nodes = new Map(skills.map((skill) => [skill.id, skill]));
 const reviewedGenerators: Record<string, string> = {
   "count-objects@2": "0103f7629159f756",
   "linear-equation@1": "7343048ca8611071",
-  "divide-fractions@1": "8dc12761cc00635b",
+  "divide-fractions@2": "d82f1d261b1533eb",
 };
 const generatorOutput = (id: string) =>
   createHash("sha256")

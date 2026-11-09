@@ -62,11 +62,14 @@ const VARIANTS: Record<string, string[]> = {
     "fraction-by-fraction",
     "fraction-by-whole",
     "how-many-fit",
+    "check",
   ],
   "scaling-direction-choice": [
     "greater-than-start",
     "less-than-start",
     "statement",
+    "explain",
+    "times-one",
   ],
   "percent-grid-model": ["grid-percent", "grid-fraction", "grid-decimal"],
   "percent-forms-and-parts": [
@@ -629,10 +632,11 @@ test("grade 7 probability variants record long-run frequency, sources, models, a
         [10, 50, 200, 600],
       );
       const cube = /uses (\d+) of the (\d+) faces/.exec(prompt);
-      const spinner = /has (\d+) equal sections, and (\d+) are shaded/.exec(
+      const spinner =
+        /has (\d+) equal sections, and (\d+) (?:is|are) shaded/.exec(prompt);
+      const bag = /has (\d+) equal marbles, and (\d+) (?:is|are) red/.exec(
         prompt,
       );
-      const bag = /has (\d+) equal marbles, and (\d+) are red/.exec(prompt);
       const faces = cube
         ? [Number(cube[1]), Number(cube[2])]
         : spinner

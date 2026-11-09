@@ -50,7 +50,7 @@ export type EditorialCalibration = Readonly<
 export const editorialCalibration: EditorialCalibration = {
   "count-objects@2": { offset: -0.1, discrimination: 1.8 },
   "linear-equation@1": { offset: 0.1, discrimination: 1.6 },
-  "divide-fractions@1": { offset: 0.1, discrimination: 1.6 },
+  "divide-fractions@2": { offset: 0.1, discrimination: 1.6 },
 };
 export function gradeCalibration(grade: number): ItemCalibration {
   return {

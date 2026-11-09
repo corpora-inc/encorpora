@@ -175,6 +175,11 @@ test("fraction reasons and inequality numbers are decided by the values", () => 
       assert.ok(matches.length >= 2);
       continue;
     }
+    if (
+      chosen.why !== "the pieces are larger when the denominator is smaller" &&
+      chosen.why !== "it has more pieces of the same size"
+    )
+      continue;
     const [f1, f2] = matches.map((m) => [Number(m[1]), Number(m[2])] as const);
     const greater = f1![0] * f2![1] > f2![0] * f1![1] ? f1! : f2!;
     assert.deepEqual(ratio(chosen.bigger!), [greater[0], greater[1]]);

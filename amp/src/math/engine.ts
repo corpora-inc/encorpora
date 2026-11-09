@@ -27,6 +27,7 @@ import {
   multiPartChoiceTemplates,
   generateMultiPartChoiceProblem,
 } from "./multi-part-choice-practice";
+import { clauseProblem } from "./fraction-clause-variants";
 import { gradeFigureChoice, normalizeFigureChoice } from "./figure-choice";
 import {
   gradeStructuredWork,
@@ -472,7 +473,8 @@ export const baseTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "add-fractions",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Add fractions",
     skillId: "fraction-addition",
     gradeBand: "3–5",
@@ -1263,6 +1265,10 @@ function generateRawProblem(
   if (!meta) throw new Error(`Unknown template: ${templateId}`);
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
+  if (templateId === "add-fractions") {
+    const clause = clauseProblem(templateId, seed, meta);
+    if (clause) return clause;
+  }
   const r = random(templateId, seed);
   let prompt = "",
     answer = "",
@@ -1556,7 +1562,9 @@ function generateRawProblem(
     .update(
       JSON.stringify([
         templateId,
-        templateId === "count-objects" ? countVersion : meta.version,
+        templateId === "count-objects"
+          ? countVersion
+          : (meta.reprintsFrom ?? meta.version),
         seed,
       ]),
     )

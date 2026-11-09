@@ -36,9 +36,21 @@ test("extended families solve independently from their displayed givens across 1
         case "multiply-fractions":
           expected = (n[0]! * n[2]!) / (n[1]! * n[3]!);
           break;
-        case "divide-fractions":
+        case "divide-fractions": {
+          if (q.startsWith("A rectangle")) {
+            const area = q.match(/area (\d+)\/(\d+)/)!;
+            const mixed = q.match(/length (\d+) (\d+)\/(\d+)/);
+            const proper = q.match(/length (\d+)\/(\d+)/);
+            const areaV = Number(area[1]) / Number(area[2]);
+            const lengthV = mixed
+              ? Number(mixed[1]) + Number(mixed[2]) / Number(mixed[3])
+              : Number(proper![1]) / Number(proper![2]);
+            expected = areaV / lengthV;
+            break;
+          }
           expected = n[0]! / n[1]! / (n[2]! / n[3]!);
           break;
+        }
         case "ratio-missing":
           expected = (n[0]! * n[2]!) / n[1]!;
           break;
