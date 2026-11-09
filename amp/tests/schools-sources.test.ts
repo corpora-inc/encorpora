@@ -279,3 +279,48 @@ test("a ZIP that isn't a roster says so instead of half-reading", () => {
   assert.equal(isOneRoster(files), false);
   assert.throws(() => readOneRosterZip(strToU8("not a zip at all")));
 });
+
+test("google classroom: students become person rows in one class, source per course", async () => {
+  const { classroomRows, classroomSource, classroomSourcePattern } =
+    await import("../src/schools/sources/google-classroom.js");
+  const result = classroomRows({ id: "c-9", name: " Period 2   Math " }, [
+    {
+      userId: "u-1",
+      profile: {
+        name: { givenName: "Ana", familyName: "Ruiz", fullName: "Ana Ruiz" },
+        emailAddress: " Ana.Ruiz@School.Example ",
+      },
+    },
+    { userId: "u-2", profile: { name: { fullName: "Noor Haddad" } } },
+    { userId: "u-1", profile: { name: { givenName: "Ana" } } },
+    { userId: "u-3", profile: { name: {}, emailAddress: "not-an-email" } },
+    { profile: { name: { givenName: "No Id" } } },
+  ]);
+  assert.deepEqual(
+    result.rows.map((row) => [
+      row.sourcedId,
+      row.givenName,
+      row.familyName,
+      row.email,
+    ]),
+    [
+      ["u-1", "Ana", "Ruiz", "ana.ruiz@school.example"],
+      ["u-2", "Noor", "Haddad", undefined],
+    ],
+  );
+  for (const row of result.rows) {
+    assert.equal(row.role, "student");
+    assert.deepEqual(row.classes, [
+      { sourcedId: "c-9", name: "Period 2 Math", courseBands: [] },
+    ]);
+    rosterRowSchema.parse(row);
+  }
+  assert.deepEqual(
+    result.issues.map((issue) => issue.code),
+    ["missing_name"],
+  );
+  assert.equal(result.skipped, 2);
+  assert.equal(classroomSource("c-9"), "google-classroom:c-9");
+  assert.ok(classroomSourcePattern.test("google-classroom:c-9"));
+  assert.ok(!classroomSourcePattern.test("google-classroom:a/b"));
+});

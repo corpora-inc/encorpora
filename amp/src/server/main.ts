@@ -186,6 +186,10 @@ await registerSchoolRoutes(app, {
         ? { microsoft: accounts.config.microsoft.clientId }
         : {}),
     },
+    ...(accounts?.config.google &&
+    process.env.AMP_GOOGLE_CLASSROOM_IMPORT === "true"
+      ? { classroom: accounts.config.google }
+      : {}),
     ...(accounts
       ? {
           oidc: schoolOidcProviders({

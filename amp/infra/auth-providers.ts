@@ -34,6 +34,12 @@ export const studentCallbackUrl = (
   provider: "google" | "microsoft",
 ) => `${origin}/api/v1/school/join/oidc/${provider}/callback`;
 
+/** Google Classroom roster import's own callback (src/schools/google-classroom.ts):
+ * a staff member's incremental consent for three read-only Classroom scopes,
+ * kept apart from sign-in. Used only while AMP_GOOGLE_CLASSROOM_IMPORT is on. */
+export const classroomCallbackUrl = (origin: string) =>
+  `${origin}/api/v1/school/google-classroom/callback`;
+
 export interface ConsoleClient {
   name: string;
   homepage: string;
@@ -61,6 +67,8 @@ export const authProviders = {
       appName: brand.name,
       homepage: prod,
       authorizedDomains: ["corpora.inc"],
+      // Sensitive Classroom scopes join once Google verifies them; see
+      // docs/google-classroom-verification.md.
       scopes: ["openid", "email", "profile"],
       audience: "External, In production",
     },
@@ -73,6 +81,7 @@ export const authProviders = {
         redirectUris: [
           callbackUrl(prod, "google"),
           studentCallbackUrl(prod, "google"),
+          classroomCallbackUrl(prod),
         ],
       },
       stage: {
@@ -84,6 +93,8 @@ export const authProviders = {
           callbackUrl(localOrigin, "google"),
           studentCallbackUrl(stage, "google"),
           studentCallbackUrl(localOrigin, "google"),
+          classroomCallbackUrl(stage),
+          classroomCallbackUrl(localOrigin),
         ],
       },
     } satisfies Record<EnvironmentName, ConsoleClient>,

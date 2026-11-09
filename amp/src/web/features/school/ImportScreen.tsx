@@ -59,6 +59,7 @@ import {
 import { OrgFrame } from "./OrgFrame";
 import { GradePicker, PageHead, gradeLabel } from "./parts";
 import { classPath, orgPath } from "./paths";
+import { ClassroomImport } from "./ClassroomImport";
 import styles from "./Import.module.css";
 
 type Draft = {
@@ -106,10 +107,16 @@ const fullName = (row: { givenName?: string; familyName?: string }) =>
 /* Step one: anything a school might have. */
 function SourceStep({
   orgId,
+  classId,
+  returnedAs,
   onLoaded,
+  onClassroom,
 }: {
   orgId: string;
+  classId?: string;
+  returnedAs?: string;
   onLoaded: (draft: Draft) => void;
+  onClassroom: (draft: Draft) => void;
 }) {
   const fileInput = useRef<HTMLInputElement>(null);
   const [dragging, setDragging] = useState(false);
@@ -252,6 +259,22 @@ function SourceStep({
           Use these rows
         </Button>
       </div>
+      <ClassroomImport
+        orgId={orgId}
+        classId={classId}
+        returnedAs={returnedAs}
+        onLoaded={({ source, fileName, result }) =>
+          onClassroom({
+            orgId,
+            fileName,
+            source,
+            result,
+            fallbackClass: null,
+            plan: new Map(),
+            resolutions: {},
+          })
+        }
+      />
       <p className={styles.error} role={error ? "alert" : undefined}>
         {error}
       </p>
@@ -1180,6 +1203,8 @@ export function ImportScreen() {
   const search = useSearch({ strict: false }) as {
     step?: unknown;
     show?: unknown;
+    google?: unknown;
+    class?: unknown;
   };
   const navigate = useNavigate();
   const session = currentSession();
@@ -1219,7 +1244,9 @@ export function ImportScreen() {
   const check = async () => {
     const current = useImport.getState().draft!;
     let result: SourceResult;
-    if (current.source === "oneroster") {
+    if (current.source.startsWith("google-classroom:")) {
+      result = current.result!;
+    } else if (current.source === "oneroster") {
       const { oneRosterRows } =
         await import("../../../schools/sources/oneroster");
       result = oneRosterRows(current.files!, {
@@ -1280,9 +1307,19 @@ export function ImportScreen() {
         {step === "source" && (
           <SourceStep
             orgId={orgId}
+            classId={
+              typeof search.class === "string" ? search.class : undefined
+            }
+            returnedAs={
+              typeof search.google === "string" ? search.google : undefined
+            }
             onLoaded={(next) => {
               setDraft(next);
               goTo("map");
+            }}
+            onClassroom={(next) => {
+              setDraft(next);
+              void check();
             }}
           />
         )}
@@ -1313,7 +1350,12 @@ export function ImportScreen() {
                 resetScroll: false,
               })
             }
-            onBack={() => goTo("map")}
+            onBack={() => {
+              if (draft.source.startsWith("google-classroom:")) {
+                setDraft(null);
+                goTo("source");
+              } else goTo("map");
+            }}
             onDone={() => goTo("done", true)}
           />
         )}

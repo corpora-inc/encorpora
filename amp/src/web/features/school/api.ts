@@ -13,7 +13,11 @@ import {
   staffResource,
   type RosterSource,
 } from "../../../schools/setup-contracts";
-import type { RosterRow } from "../../../schools/sources/rows";
+import {
+  rosterRowSchema,
+  type RosterIssue,
+  type RosterRow,
+} from "../../../schools/sources/rows";
 import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { request } from "../../lib/api";
@@ -95,6 +99,53 @@ export const orgsOptions = (session: AuthSession) =>
         signal,
       }).then((data) => data.orgs),
   });
+export const classroomStatusOptions = (session: AuthSession, orgId: string) =>
+  queryOptions({
+    queryKey: keyFor(session, "org", orgId, "google-classroom"),
+    queryFn: ({ signal }) =>
+      call(
+        `/orgs/${orgId}/google-classroom`,
+        z.object({ enabled: z.boolean(), authorized: z.boolean() }),
+        session,
+        { signal },
+      ),
+  });
+export const classroomApi = {
+  authorize: (session: AuthSession, orgId: string, classId?: string) =>
+    call(
+      `/orgs/${orgId}/google-classroom/authorize`,
+      z.object({ url: z.url() }),
+      session,
+      { body: classId ? { classId } : {} },
+    ),
+  courses: (session: AuthSession, orgId: string) =>
+    call(
+      `/orgs/${orgId}/google-classroom/courses`,
+      z.object({
+        courses: z.array(z.object({ id: z.string(), name: z.string() })),
+      }),
+      session,
+    ).then((data) => data.courses),
+  students: (
+    session: AuthSession,
+    orgId: string,
+    courseId: string,
+    classId?: string,
+  ) =>
+    call(
+      `/orgs/${orgId}/google-classroom/students`,
+      z.object({
+        source: z.string(),
+        courseName: z.string(),
+        rows: z.array(rosterRowSchema),
+        issues: z.array(z.custom<RosterIssue>()),
+        skipped: z.number(),
+        inactive: z.number(),
+      }),
+      session,
+      { body: { courseId, ...(classId ? { classId } : {}) } },
+    ),
+};
 export const orgOptions = (session: AuthSession, orgId: string) =>
   queryOptions({
     queryKey: keyFor(session, "org", orgId),

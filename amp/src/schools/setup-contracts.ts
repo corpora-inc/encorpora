@@ -8,6 +8,7 @@ import {
   staffRoles,
   timezone,
 } from "./contracts.js";
+import { classroomSourcePattern } from "./sources/google-classroom.js";
 import { rosterRowSchema } from "./sources/rows.js";
 
 const isoDate = z.string().refine(isIsoDate);
@@ -121,9 +122,17 @@ export const requestSeatsSchema = z.strictObject({
 
 export const ROSTER_CHUNK = 500;
 export const rosterSources = ["csv", "oneroster"] as const;
-export type RosterSource = (typeof rosterSources)[number];
+/** A file source, or one Google Classroom course (`google-classroom:<courseId>`). */
+export type RosterSource =
+  (typeof rosterSources)[number] | `google-classroom:${string}`;
 export const planRosterSchema = z.strictObject({
-  source: z.enum(rosterSources),
+  source: z.union([
+    z.enum(rosterSources),
+    z
+      .string()
+      .regex(classroomSourcePattern)
+      .transform((value) => value as `google-classroom:${string}`),
+  ]),
   rows: z.array(rosterRowSchema).max(ROSTER_CHUNK),
 });
 export const applyRosterSchema = planRosterSchema.extend({

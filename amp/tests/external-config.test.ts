@@ -47,7 +47,10 @@ test("redirect URIs use HTTPS except local development, and Apple has none local
         assert.ok(
           url.pathname === `/api/auth/callback/${provider}` ||
             (["google", "microsoft"].includes(provider) &&
-              url.pathname === `/api/v1/school/join/oidc/${provider}/callback`),
+              url.pathname ===
+                `/api/v1/school/join/oidc/${provider}/callback`) ||
+            (provider === "google" &&
+              url.pathname === "/api/v1/school/google-classroom/callback"),
           uri,
         );
         assert.ok(
