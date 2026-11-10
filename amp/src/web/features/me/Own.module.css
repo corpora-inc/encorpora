@@ -84,3 +84,11 @@
     break-inside: avoid;
   }
 }
+
+/* Beside the title: the free count (wide screens) and Workbooks. */
+.titleTools {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--space-3);
+}

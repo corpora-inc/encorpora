@@ -26,11 +26,15 @@ type Icon =
   | "plans"
   | "out"
   | "school"
-  | "standings";
+  | "standings"
+  | "someone";
 function NavIcon({ kind }: { kind: Icon }) {
   const paths: Record<Icon, string> = {
     learn: "m9 5 10 7-10 7V5Z",
     level: "M5 19h14M7 15v-3m5 3V8m5 7V4",
+    // A person and an arrow: practicing as someone else.
+    someone:
+      "M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3.5 19c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5M16 8h5m-2-2 2 2-2 2",
     lessons:
       "M4 5.5C6.5 4.5 9.5 4.5 12 6c2.5-1.5 5.5-1.5 8-.5V19c-2.5-1-5.5-1-8 .5-2.5-1.5-5.5-1.5-8-.5V5.5ZM12 6v13.5",
     class:
@@ -281,16 +285,11 @@ export default function DrawerContents({
             place in the switcher (docs/design/ia.md). */}
         {own &&
           !profile &&
-          nav("/me/profiles", "Practice as someone else", "level", {
+          nav("/me/profiles", "Practice as someone else", "someone", {
             current: location.pathname.startsWith("/me/profiles"),
           })}
-        {view.learner &&
-          !view.viewOnly &&
-          nav("/lessons", "Lessons", "lessons", {
-            current:
-              location.pathname === "/lessons" ||
-              location.pathname.startsWith("/lessons/"),
-          })}
+        {/* Lessons are reached from Pathways, practice and search, never
+            as a destination of their own (docs/design/ia.md). */}
         {classPlace &&
           !student &&
           nav(`/${classPlace.path}`, "Class", "class", {

@@ -134,17 +134,26 @@ export function OwnRecordScreen() {
     <OwnPage>
       <HeroAction active={hero} />
       <div className={styles.stack} data-own-page>
-        {/* Just the title (docs/design/ia.md). Workbooks is a tab of My
-            practice, practicing as someone else is in the drawer, and the
-            page prints itself (Cmd+P). The free count is one quiet line,
-            on a wide screen only. */}
+        {/* The title, with Workbooks as one quiet button beside it
+            (docs/design/ia.md). Practicing as someone else is in the drawer,
+            and the page prints itself (Cmd+P). The free count is one quiet
+            line, on a wide screen only. */}
         <header className={styles.titleRow}>
           <h1 id="me-title">Where you are</h1>
-          {left != null && left > 0 && (
-            <span className={styles.free} data-free-left={left}>
-              {freeProblemsLeft(left)}
-            </span>
-          )}
+          <span className={styles.titleTools}>
+            {left != null && left > 0 && (
+              <span className={styles.free} data-free-left={left}>
+                {freeProblemsLeft(left)}
+              </span>
+            )}
+            <Link
+              to="/learners/$learnerId/workbooks"
+              params={{ learnerId: data.learner.id }}
+              className={buttonClass("quiet")}
+            >
+              Workbooks
+            </Link>
+          </span>
         </header>
         {/* Paused only when no access covers them and their free problems
             are used: the one pause, with Continue with AMP for their own

@@ -8,7 +8,7 @@ import type { TabItem } from "../../ui/Tabs";
  * the screen keeps a frame of its own (the pitch, sign-in, first-run steps,
  * joining a class, school setup).
  */
-export type ProgressTab = "overview" | "pathways" | "inventory" | "workbooks";
+export type ProgressTab = "overview" | "pathways" | "inventory";
 export type AccountTab = "security" | "learners" | "access" | "privacy";
 export type ShellFrame =
   | { kind: "progress"; active: ProgressTab }
@@ -92,12 +92,10 @@ export function shellFrame(
     return { kind: "school", org: school[1]!, active };
   }
   if (path === "/school") return { kind: "plain" };
-  // A learner's workbooks: My practice's Workbooks tab for the adult's own;
-  // for a child, the Progress tabs with Overview marked (the bar resolves
-  // which). The URL names the learner; arriving there chooses them
-  // (app/router.tsx), so the tabs are theirs too.
+  // A learner's workbooks belong to their Overview, where Workbooks is a
+  // quiet button (docs/design/ia.md): the Progress tabs stay, Overview marked.
   if (/^\/learners\/[^/]+\/workbooks(?:\/|$)/.test(path))
-    return { kind: "progress", active: "workbooks" };
+    return { kind: "progress", active: "overview" };
   // Practicing as someone else: "Try a level…" and a profile's levels.
   if (under(path, "/me/profiles")) return { kind: "plain" };
   if (path === "/overview" || path === "/me")
@@ -159,7 +157,7 @@ export type ProgressContext = "own" | "learner";
  * (docs/design/ia.md). */
 export function progressTabs(
   context: ProgressContext,
-  ownLearner?: string | null,
+  _ownLearner?: string | null,
 ): TabItem[] {
   return [
     {
@@ -169,15 +167,6 @@ export function progressTabs(
     },
     { id: "pathways", label: "Pathways", path: "pathways" },
     { id: "inventory", label: "Inventory", path: "inventory" },
-    ...(context === "own" && ownLearner
-      ? [
-          {
-            id: "workbooks",
-            label: "Workbooks",
-            path: `learners/${encodeURIComponent(ownLearner)}/workbooks`,
-          },
-        ]
-      : []),
   ];
 }
 

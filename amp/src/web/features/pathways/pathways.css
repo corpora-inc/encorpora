@@ -1317,3 +1317,36 @@
     padding-inline: var(--space-4);
   }
 }
+
+/* Grouped results of the one search, in the browser panel. */
+.pathways-results {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+}
+/* Search results are rows, not the browser's skill cards; the panel widens
+   while it holds them. */
+.pathways-browser:has(.pathways-results) {
+  width: 380px;
+}
+.pathways .pathways-results ul {
+  margin: 0;
+}
+.pathways .pathways-results li a,
+.pathways .pathways-results li button {
+  display: grid;
+  gap: 2px;
+  width: auto;
+  min-height: 44px;
+  margin: 0 calc(-1 * var(--space-2));
+  padding: var(--space-3) var(--space-2);
+  border: 0;
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--atlas-on-panel);
+  font-size: var(--text-dense);
+  line-height: 1.4;
+}
+.pathways .pathways-results li a:hover {
+  background: var(--color-surface-hover);
+}

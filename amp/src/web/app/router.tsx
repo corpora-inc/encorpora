@@ -667,6 +667,21 @@ const pathways = createRoute({
     "PathwaysScreen",
   ),
 });
+/** The lessons library is no destination of its own (docs/design/ia.md):
+ * `/lessons` opens Pathways, its search carrying any query. A lesson's own
+ * address (`/lessons/<id>`) still opens its reader. */
+const lessonsHome = createRoute({
+  getParentRoute: () => root,
+  path: "/lessons",
+  beforeLoad: ({ location }) => {
+    const query = new URLSearchParams(location.searchStr).get("q")?.trim();
+    throw redirect({
+      to: "/pathways",
+      search: (query ? { topic: query } : {}) as never,
+      replace: true,
+    });
+  },
+});
 const pathwaySkill = createRoute({
   getParentRoute: () => root,
   path: "/pathways/$skillId",
@@ -1240,6 +1255,7 @@ export const router = createRouter({
     tryAnything,
     inventory,
     pathways,
+    lessonsHome,
     pathwaySkill,
     workbookHistory,
     workbookDay,

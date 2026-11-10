@@ -4,8 +4,9 @@ The rules every AMP screen follows, decided 2026-11-10 for the design pass. [The
 
 **The references for look, type, spacing and density** are the `/schools` product shots in `src/web/features/schools/screens/*.webp`: today, map, gradebook, board, cards, evidence, standings, school-overview, district-overview and stack. Compare every screen against them. Also use the pre-refactor trial (best guess, a narrowing likely range, per-area bars with uncertainty) and Inventory, which shows how a dashboard should fill the width with purpose.
 
-## Five rules before anything else
+## Rules before anything else
 
+0. **Apply a founder note to the case it describes.** A note about one screen changes that screen. It becomes a rule for every screen only when he says "in general", as he did for centring. When unsure, keep the change local.
 1. **First impressions.** A section without meaningful data doesn't render, or collapses to one compact line. No chart with one bar, no "None yet this year" section, no two-column dashboard with an empty column. Every screen must look intentional on day 0, day 1 and week 3 (the seeded personas cover all three).
 2. **Never name the person to themselves.** A person's own pages never show their own name: no "Good afternoon, Tess Harlow", no name heading on /me, no "Mara Quill · Skills grow…" on Pathways. Titles name the content or the place. Names appear only for other people: children, students, staff.
 3. **Avatars only where they help find someone else.** Never for the person themselves, never in navigation, account pages, /me or staff lists. Initials may stay where they help scan other people: a Today item's group of students, and student rows in the map and gradebook, as in the product shots. A child's chosen sign-in picture appears where the child or teacher uses it to find them (sign-in, the code board, cards).
@@ -24,7 +25,7 @@ One drawer, one place switcher (`PlaceSwitcher`). A person may hold several plac
 
 | Place | Who | Tabs | Bar action |
 |---|---|---|---|
-| My practice | an adult learner | Overview · Pathways · Inventory · Workbooks | ▶ Practice |
+| My practice | an adult learner | Overview · Pathways · Inventory | ▶ Practice |
 | Family | a parent, the second parent | Today · Map · Time · Workbooks · People · Settings | ▶ Practice (picks a child) |
 | Class (tutor, co-op) | a tutor | Today · Map · Time · Workbooks · People · Settings | Start class |
 | Class (school) | a teacher | Today · Map · Grades · Time · Workbooks · Students · Settings | Start class |
@@ -79,9 +80,12 @@ Each of these is that person's own composition of shared components (rule 6). Th
   - The left column has the best guess and likely range, then one row per area with its uncertainty bar. Under them sits "How it narrowed".
   - The right column has this week's line with the 12-week strip, then objectives gained.
   - Recent work runs full width below.
-  - The header is the title alone. Workbooks is a tab. Practice as someone else is in the drawer. A report prints with Cmd+P and a print stylesheet, not a Print button. The bar holds the one Practice button.
+  - The header is the title, with Workbooks as one quiet button beside it. Practice as someone else is in the drawer. A report prints with Cmd+P and a print stylesheet, not a Print button. The bar holds the one Practice button.
 - **Pathways and Inventory:** full width. On day 0 each is a centred hero over the whole curriculum.
-- **Workbooks:** a tab of My practice, with the builder in a sheet.
+- **Workbooks:** reached from the quiet Workbooks button on Overview. The workbook pages keep the Progress tabs, with Overview marked, and the builder opens in a sheet.
+- **Lessons** are not a destination of their own. They are reached from Pathways (skill nodes and the skill panel), from practice (Lesson in the feedback) and from Pathways' search. The `/lessons/<id>` reader stays for links. `/lessons` alone opens Pathways, carrying any `?q=` into its search.
+- **Pathways' search is the one search:** skills, lessons and glossary terms, grouped (the semantic search).
+- **The drawer, for an adult:** Practice, Progress (Overview · Pathways · Inventory), Practice as someone else (its own icon), Account. There is no Lessons item.
 - **Practice as someone else (`/me/profiles`):** saved profiles, recent ones, and "Try a level…", reached from the drawer. It is never in the place switcher.
 - **Account:** Learners lists "Your practice" first. Billing shows the free problems left or the plan.
 
