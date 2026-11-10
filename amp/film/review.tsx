@@ -96,9 +96,62 @@ async function openReview(filmId: string) {
   const frame = $<HTMLIFrameElement>("iframe", "", slot);
   frame.title = "Lesson film";
   frame.src = `index.html?id=${encodeURIComponent(filmId)}`;
+  const full = $<HTMLButtonElement>("button", "btn film-full", slot, "Full screen");
+  full.type = "button";
   const panel = $("div", "panel", root);
 
+  const phone = () => matchMedia("(max-width: 767px)").matches;
+  const filled = () => slot.classList.contains("is-fill");
+  const covering = () => document.fullscreenElement === slot || filled();
+
+  const paintFull = () => {
+    const on = covering();
+    full.textContent = on ? "Exit" : "Full screen";
+    full.setAttribute("aria-pressed", String(on));
+    full.setAttribute("aria-label", on ? "Exit full screen" : "Full screen");
+  };
+
+  // The tall stage is 1080×1920. The slot is that frame at the screen's width, plus the player's own bar.
+  // Fit on the next frame so the width has settled after a viewport change.
+  let barWatch: ResizeObserver | undefined;
+  let fitQueued = false;
+  const fitPhone = () => {
+    if (fitQueued) return;
+    fitQueued = true;
+    requestAnimationFrame(() => {
+      fitQueued = false;
+      if (!phone() || covering()) {
+        slot.style.height = "";
+        return;
+      }
+      const width = slot.clientWidth;
+      if (width < 1) return;
+      const bar = frame.contentDocument?.querySelector(".live-bar");
+      const measured = bar ? bar.getBoundingClientRect().height : 0;
+      const barH = measured > 1 ? Math.ceil(measured) : 160;
+      const next = Math.ceil(width * (1920 / 1080) + barH);
+      const cur = parseFloat(slot.style.height);
+      if (!Number.isFinite(cur) || Math.abs(cur - next) > 1) slot.style.height = `${next}px`;
+    });
+  };
+  const watchBar = () => {
+    barWatch?.disconnect();
+    const bar = frame.contentDocument?.querySelector(".live-bar");
+    if (bar) {
+      barWatch = new ResizeObserver(() => fitPhone());
+      barWatch.observe(bar);
+    }
+    fitPhone();
+  };
+
   const pin = () => {
+    // On a phone the film keeps its width-based size and the note scrolls under it.
+    if (phone()) {
+      root.style.top = "";
+      root.style.height = "";
+      fitPhone();
+      return;
+    }
     const vv = window.visualViewport;
     if (!vv) return;
     root.style.top = `${vv.offsetTop}px`;
@@ -106,7 +159,49 @@ async function openReview(filmId: string) {
   };
   window.visualViewport?.addEventListener("resize", pin);
   window.visualViewport?.addEventListener("scroll", pin);
+  window.addEventListener("resize", pin);
+  frame.addEventListener("load", watchBar);
   pin();
+
+  const enterFallback = () => {
+    slot.classList.add("is-fill");
+    slot.style.height = "";
+    paintFull();
+  };
+  const leaveCover = () => {
+    slot.classList.remove("is-fill");
+    paintFull();
+    fitPhone();
+  };
+  full.onclick = () => {
+    if (document.fullscreenElement === slot) {
+      void document.exitFullscreen();
+      return;
+    }
+    if (filled()) {
+      leaveCover();
+      return;
+    }
+    const open = slot.requestFullscreen?.bind(slot);
+    if (!open) {
+      enterFallback();
+      return;
+    }
+    slot.style.height = "";
+    void open().then(paintFull).catch(() => enterFallback());
+  };
+  document.addEventListener("fullscreenchange", () => {
+    if (document.fullscreenElement === slot) {
+      slot.style.height = "";
+      paintFull();
+      return;
+    }
+    leaveCover();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && filled()) leaveCover();
+  });
+  paintFull();
 
   const applyTheme = () => {
     document.documentElement.dataset.theme = themeNow();

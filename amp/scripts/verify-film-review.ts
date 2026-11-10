@@ -143,8 +143,10 @@ async function behavior() {
     });
     assert.equal(gradeHidden, true);
 
+    const settle = () => page.evaluate("new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))");
     for (const width of [320, 390, 768, 1280]) {
       await page.setViewportSize({ width, height: width >= 768 ? 800 : 700 });
+      await settle();
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
       assert.equal(overflow, false, `horizontal overflow at ${width}`);
       const player = await page.locator(".player-slot").boundingBox();
@@ -152,6 +154,39 @@ async function behavior() {
       assert.ok(player && panel);
       if (width >= 768) assert.ok(panel.x >= player.x + player.width - 2, `side by side at ${width}`);
       else assert.ok(panel.y >= player.y + player.height - 2, `stacked at ${width}`);
+      assert.equal(await page.locator(".film-full").isVisible(), width < 768, `full screen button at ${width}`);
+      if (width < 768) {
+        const fit = await page.evaluate(() => {
+          const slot = document.querySelector(".player-slot")!;
+          const iframe = slot.querySelector("iframe")!;
+          const sr = slot.getBoundingClientRect();
+          const ir = iframe.getBoundingClientRect();
+          const elements = [slot, iframe];
+          const clipped = [false, false];
+          for (let i = 0; i < elements.length; i++) {
+            const el = elements[i]!;
+            const r = el.getBoundingClientRect();
+            for (let node = el.parentElement; node; node = node.parentElement) {
+              const oy = getComputedStyle(node).overflowY;
+              if (oy !== "hidden" && oy !== "clip") continue;
+              const nr = node.getBoundingClientRect();
+              if (r.top < nr.top - 1 || r.left < nr.left - 1 || r.bottom > nr.bottom + 1 || r.right > nr.right + 1) clipped[i] = true;
+            }
+          }
+          return {
+            fullWidth: Math.abs(sr.width - document.documentElement.clientWidth) < 2,
+            inside: ir.top >= sr.top - 1 && ir.left >= sr.left - 1 && ir.bottom <= sr.bottom + 1 && ir.right <= sr.right + 1,
+            tall: sr.height + 1 >= sr.width * (1920 / 1080) + 120 && sr.height < sr.width * (1920 / 1080) + 220,
+            slotClipped: clipped[0],
+            frameClipped: clipped[1],
+          };
+        });
+        assert.equal(fit.fullWidth, true, `film width at ${width}`);
+        assert.equal(fit.inside, true, `iframe clipped by the slot at ${width}`);
+        assert.equal(fit.tall, true, `film shorter than its picture at ${width}`);
+        assert.equal(fit.slotClipped, false, `film clipped at ${width}`);
+        assert.equal(fit.frameClipped, false, `iframe clipped at ${width}`);
+      }
       if (width === 1280) {
         const field = await boxOf(page, "#feedback");
         assert.ok(field.height >= 280, `feedback height ${field.height}`);
@@ -168,10 +203,18 @@ async function behavior() {
     await page.emulateMedia({ colorScheme: "light" });
     await page.waitForFunction(() => document.documentElement.dataset.theme === "light");
 
-    await page.setViewportSize({ width: 390, height: 420 });
+    await page.setViewportSize({ width: 390, height: 844 });
+    await settle();
+    const filmTall = await boxOf(page, ".player-slot");
     await page.locator("#feedback").click();
-    const pinned = await page.locator(".player-slot").boundingBox();
-    assert.ok(pinned && pinned.y >= -1 && pinned.y + pinned.height <= 424 && pinned.height >= 120);
+    await settle();
+    const filmFocused = await boxOf(page, ".player-slot");
+    assert.ok(Math.abs(filmFocused.height - filmTall.height) < 1, `focus resized the film (${filmTall.height} -> ${filmFocused.height})`);
+    await page.setViewportSize({ width: 390, height: 420 });
+    await settle();
+    const filmShort = await boxOf(page, ".player-slot");
+    assert.ok(Math.abs(filmShort.height - filmTall.height) < 1, `a shorter window resized the film (${filmTall.height} -> ${filmShort.height})`);
+    assert.ok(filmShort.width > 380, "film narrower than the screen");
 
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.evaluate(`new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))`);
@@ -211,6 +254,30 @@ async function behavior() {
     assert.equal(await page.locator(".score").getAttribute("data-set"), "true");
     assert.equal((await page.locator("body").innerText()).includes(kept.text), false);
     assert.deepEqual(reviews["alpha-film"].notes, [kept]);
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    await settle();
+    const beforeType = await boxOf(page, ".player-slot");
+    const playing = () => page.evaluate("(() => { const frame = document.querySelector('iframe'); const fn = frame && frame.contentWindow && frame.contentWindow.__playing; return fn ? fn() : false; })()");
+    assert.equal(await playing(), true);
+    const note = page.locator("#feedback");
+    await note.click();
+    await note.pressSequentially(" still", { delay: 15 });
+    await page.waitForTimeout(150);
+    const filmAfterType = await boxOf(page, ".player-slot");
+    assert.ok(Math.abs(filmAfterType.width - beforeType.width) < 1 && Math.abs(filmAfterType.height - beforeType.height) < 1, "typing resized the film");
+    assert.equal(await playing(), true, "typing paused the film");
+
+    await page.locator(".film-full").click();
+    await page.waitForFunction(() => !!document.fullscreenElement || !!document.querySelector(".player-slot.is-fill"));
+    assert.equal(await page.locator("#feedback").inputValue(), "Opening is clear still");
+    assert.equal(await page.locator(".score-num").innerText(), "8");
+    await page.locator(".film-full").click();
+    await page.waitForFunction(() => !document.fullscreenElement && !document.querySelector(".player-slot.is-fill"));
+    assert.equal(await page.locator("#feedback").inputValue(), "Opening is clear still");
+    assert.equal(await page.locator(".score").getAttribute("data-set"), "true");
+    const restored = await boxOf(page, ".player-slot");
+    assert.ok(Math.abs(restored.height - beforeType.height) < 2, "leaving full screen resized the film");
 
     await page.locator(".btn-next").click();
     await page.waitForURL(/id=beta-film/);
