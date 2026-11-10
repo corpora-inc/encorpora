@@ -980,12 +980,16 @@ function chooseLinePlot(seed: string, salt: string): GeneratedProblem {
     prompt = `${who} measured ${count(n, thing.one)} to the nearest ${u.one}. The lengths, in ${u.many}, were ${listed(order)}. Which line plot shows these measurements?`;
   } else {
     const colors = shuffle(r, [...COLORS]).slice(0, n);
+    const header =
+      thing.one === "paper clip chain"
+        ? "Chain"
+        : `${thing.one[0]!.toUpperCase()}${thing.one.slice(1)}`;
     const rows: string[][] = [
-      [
-        `${thing.one[0]!.toUpperCase()}${thing.one.slice(1)}`,
-        `Length (${u.many})`,
-      ],
-      ...order.map((v, i) => [`${colors[i]!} ${thing.one}`, String(v)]),
+      [header, `Length (${u.many})`],
+      ...order.map((v, i) => [
+        `${colors[i]![0]!.toUpperCase()}${colors[i]!.slice(1)}`,
+        String(v),
+      ]),
     ];
     figure = {
       kind: "scene",

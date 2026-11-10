@@ -292,7 +292,9 @@ function sameShare(r: Random, equal: boolean): Draft {
     `${label} is cut into ${parts(n)}, so its shaded part is one ${unit(n)}.`;
   return {
     prompt: `${capital(shape)}s A and B are the same size. Which is true about their shaded parts?`,
-    hint: `${capital(shape)}s A and B are the same size. Count the equal parts in each: the ${shape} cut into more parts has smaller parts, whatever their shape.`,
+    hint: equal
+      ? `${capital(shape)}s A and B are the same size, cut into the same number of equal parts, so the same share, whatever the shape.`
+      : `${capital(shape)}s A and B are the same size. Count the equal parts in each: the ${shape} cut into more parts has smaller parts, whatever their shape.`,
     figure: { kind: "partitioned-shapes", shapes: [a, b] },
     explanation: [
       `The two ${shape}s are the same size, so compare how many equal parts each one has.`,
@@ -709,6 +711,8 @@ export function generatePartWholeProblem(
     explanation: d.explanation,
     hint: d.hint,
     choiceFeedback,
-    ...(fourths ? { variant: { id: "fourths", axes: { task: "fourths" } } } : {}),
+    ...(fourths
+      ? { variant: { id: "fourths", axes: { task: "fourths" } } }
+      : {}),
   };
 }

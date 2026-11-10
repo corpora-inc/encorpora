@@ -248,6 +248,11 @@ nav button {
   width: 100%;
   margin: 18px auto 0;
 }
+.problem-content .figure[data-kind="base-ten-pair"] {
+  height: auto;
+  max-height: none;
+  min-height: 0;
+}
 .answer-dock {
   flex: none;
   width: min(100%, 620px);
