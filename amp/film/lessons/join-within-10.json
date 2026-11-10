@@ -1,0 +1,137 @@
+{
+  "id": "join-within-10",
+  "title": "Join two small groups",
+  "seed": "film",
+  "shots": [
+    {
+      "figure": {
+        "view": [-0.4, -0.5, 13.6, 11.4],
+        "points": { "G": [0, 10.6], "N": [12.2, 5.6] },
+        "parts": [
+          { "id": "g", "grid": [5, 2], "at": "G", "size": [2.2, 5.0], "fill": "paper", "ink": "muted", "w": 5, "start": true },
+          { "id": "a", "counters": "g", "n": 5, "ink": "accent", "start": true },
+          { "id": "b", "counters": "g", "n": 3, "from": 6, "shape": "square", "ink": "warm", "start": true },
+          { "id": "n", "label": "8", "at": "N", "dir": "c", "size": "xl", "ink": "ink" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "There are five round counters and three square counters. How many counters altogether?",
+          "pause": 0.45,
+          "do": [
+            { "do": "problem", "text": "There are $5$ round counters and $3$ square counters. How many counters altogether?", "at": "There", "id": "p53" },
+            { "do": "highlight", "target": "a", "at": "five" },
+            { "do": "highlight", "target": "b", "at": "three" }
+          ]
+        },
+        {
+          "say": "Altogether means how many in all. The sign plus means add.",
+          "do": [
+            { "do": "term", "word": "altogether", "meaning": "How many there are in all, when the two groups are put together.", "at": "Altogether" },
+            { "do": "write", "tex": "\\ca{5}+\\cw{3}", "fresh": true, "at": "plus", "id": "sum53" }
+          ]
+        },
+        {
+          "say": "Count the round counters: one, two, three, four, five.",
+          "do": [
+            { "do": "highlight", "target": "a1", "at": "one" },
+            { "do": "highlight", "target": "a2", "at": "two" },
+            { "do": "highlight", "target": "a3", "at": "three" },
+            { "do": "highlight", "target": "a4", "at": "four" },
+            { "do": "highlight", "target": "a5", "at": "five" },
+            { "do": "write", "tex": "\\ca{1},\\ \\ca{2},\\ \\ca{3},\\ \\ca{4},\\ \\ca{5}", "fresh": true, "at": "one", "id": "r53" }
+          ]
+        },
+        {
+          "say": "Keep counting the squares. Do not start again at one.",
+          "do": [
+            { "do": "highlight", "target": "b", "at": "squares" },
+            { "do": "watch", "text": "Count on from $5$. Do not start the squares again at $1$.", "at": "not" }
+          ]
+        },
+        {
+          "say": "Six, seven, eight.",
+          "do": [
+            { "do": "highlight", "target": "b1", "at": "Six" },
+            { "do": "highlight", "target": "b2", "at": "seven" },
+            { "do": "highlight", "target": "b3", "at": "eight" },
+            { "do": "write", "tex": "\\cw{6},\\ \\cw{7},\\ \\cw{8}", "fresh": true, "at": "Six", "id": "on53" }
+          ]
+        },
+        {
+          "say": "Five plus three is eight. Eight counters altogether.",
+          "pause": 1,
+          "do": [
+            { "do": "show", "target": "n", "at": "eight" },
+            { "do": "write", "tex": "\\ca{5}+\\cw{3}=8", "fresh": true, "at": "Five", "id": "eq53" },
+            { "do": "answer", "tex": "8", "at": "Eight", "id": "ans53" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-0.4, -0.5, 13.6, 11.4],
+        "points": { "G": [0, 10.6], "N": [12.2, 5.6] },
+        "parts": [
+          { "id": "g", "grid": [5, 2], "at": "G", "size": [2.2, 5.0], "fill": "paper", "ink": "muted", "w": 5, "start": true },
+          { "id": "a", "counters": "g", "n": 6, "ink": "accent", "start": true },
+          { "id": "b", "counters": "g", "n": 4, "from": 7, "shape": "square", "ink": "warm", "start": true },
+          { "id": "n", "label": "10", "at": "N", "dir": "c", "size": "xl", "ink": "ink" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "There are six round counters and four square counters. How many altogether?",
+          "pause": 0.3,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "There are $6$ round counters and $4$ square counters. How many counters altogether?", "at": "There", "id": "p64" },
+            { "do": "highlight", "target": "a", "at": "six" },
+            { "do": "highlight", "target": "b", "at": "four" }
+          ]
+        },
+        {
+          "say": "Start at six. Count on: seven, eight, nine, ten.",
+          "do": [
+            { "do": "highlight", "target": "b1", "at": "seven" },
+            { "do": "highlight", "target": "b2", "at": "eight" },
+            { "do": "highlight", "target": "b3", "at": "nine" },
+            { "do": "highlight", "target": "b4", "at": "ten" },
+            { "do": "write", "tex": "\\ca{6}+\\cw{4}=10", "fresh": true, "at": "six", "id": "eq64" }
+          ]
+        },
+        {
+          "say": "Every box is full. A full frame is ten. Six plus four is ten.",
+          "pause": 1,
+          "do": [
+            { "do": "show", "target": "n", "at": "full" },
+            { "do": "highlight", "target": "g", "at": "full" },
+            { "do": "answer", "tex": "10", "at": "ten", "id": "ans64" }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Every join goes the same way.",
+          "do": [ { "do": "overview", "of": "p53", "at": "Every" } ]
+        },
+        {
+          "say": "One: count the first group, the round counters.",
+          "do": [ { "do": "recap", "text": "Count the first group, the round counters.", "marks": ["r53"], "at": "One" } ]
+        },
+        {
+          "say": "Two: count on through the squares. Do not start again at one.",
+          "do": [ { "do": "recap", "text": "Count on through the squares. Do not start again at $1$.", "marks": ["on53"], "at": "Two" } ]
+        },
+        {
+          "say": "Three: the last number is how many altogether.",
+          "pause": 0.8,
+          "do": [ { "do": "recap", "text": "The last number is how many altogether.", "marks": ["eq53", "ans53"], "at": "Three" } ]
+        }
+      ]
+    }
+  ]
+}

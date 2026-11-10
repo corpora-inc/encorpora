@@ -1,0 +1,872 @@
+{
+  "id": "line-slope",
+  "title": "Slope through two points",
+  "seed": "film",
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -1,
+          -1.5,
+          9,
+          10.5
+        ],
+        "points": {
+          "A": [
+            3,
+            2
+          ],
+          "B": [
+            5,
+            8
+          ],
+          "C": [
+            5,
+            2
+          ]
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 2,
+            "start": true
+          },
+          {
+            "id": "line",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "extend": [
+              4.2,
+              4.2
+            ],
+            "ink": "accent",
+            "w": 6
+          },
+          {
+            "id": "run",
+            "seg": [
+              "A",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 7
+          },
+          {
+            "id": "rise",
+            "seg": [
+              "C",
+              "B"
+            ],
+            "ink": "warm",
+            "w": 7
+          },
+          {
+            "id": "dA",
+            "dot": "A",
+            "ink": "gold",
+            "r": 13
+          },
+          {
+            "id": "dB",
+            "dot": "B",
+            "ink": "gold",
+            "r": 13
+          },
+          {
+            "id": "lA",
+            "label": "(3,2)",
+            "at": "A",
+            "dir": "w"
+          },
+          {
+            "id": "lB",
+            "label": "(5,8)",
+            "at": "B",
+            "dir": "e"
+          },
+          {
+            "id": "lA2",
+            "label": "(3,8)",
+            "at": "A",
+            "dir": "w"
+          },
+          {
+            "id": "lB2",
+            "label": "(5,2)",
+            "at": "B",
+            "dir": "e"
+          },
+          {
+            "id": "lrun",
+            "label": "2",
+            "at": "run",
+            "dir": "n",
+            "ink": "blue",
+            "size": "l"
+          },
+          {
+            "id": "lrise",
+            "label": "6",
+            "at": "rise",
+            "dir": "e",
+            "ink": "warm",
+            "size": "l"
+          },
+          {
+            "id": "lrise2",
+            "label": "-6",
+            "at": "rise",
+            "dir": "e",
+            "ink": "warm",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Slope measures how steep a line is.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "line",
+              "at": "Slope",
+              "dur": 1.2
+            }
+          ]
+        },
+        {
+          "say": "Take two points on it: three, two, and five, eight.",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "dA",
+                "lA"
+              ],
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": [
+                "dB",
+                "lB"
+              ],
+              "at": "five"
+            }
+          ]
+        },
+        {
+          "say": "From the first to the second, x changes by five minus three, which is two.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "run",
+              "at": "x"
+            },
+            {
+              "do": "write",
+              "tex": "\\text{change in }x=5-3=\\cb{2}",
+              "fresh": true,
+              "at": "changes",
+              "id": "i1"
+            },
+            {
+              "do": "show",
+              "target": "lrun",
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "say": "And y changes by eight minus two, which is six.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "rise",
+              "at": "y"
+            },
+            {
+              "do": "write",
+              "tex": "\\text{change in }y=8-2=\\cw{6}",
+              "fresh": true,
+              "at": "changes",
+              "id": "i2"
+            },
+            {
+              "do": "show",
+              "target": "lrise",
+              "at": "six"
+            }
+          ]
+        },
+        {
+          "say": "Slope, written m, is the change in y over the change in x: rise over run. Six over two is three.",
+          "do": [
+            {
+              "do": "term",
+              "word": "slope",
+              "meaning": "How steep a line is: rise over run, the change in $y$ divided by the change in $x$ between two of its points. Written $m$.",
+              "at": "Slope"
+            },
+            {
+              "do": "highlight",
+              "target": "lrise",
+              "at": "rise"
+            },
+            {
+              "do": "highlight",
+              "target": "lrun",
+              "at": "run"
+            },
+            {
+              "do": "write",
+              "tex": "m=\\dfrac{\\cw{6}}{\\cb{2}}=3",
+              "fresh": true,
+              "at": "Six",
+              "id": "i3"
+            }
+          ]
+        },
+        {
+          "say": "For each step to the right, this line climbs three.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "line",
+              "at": "climbs"
+            }
+          ]
+        },
+        {
+          "say": "Now tilt the line so it falls. Going right, y drops from eight to two.",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "lA",
+                "lB",
+                "lrise"
+              ],
+              "at": "tilt"
+            },
+            {
+              "do": "move",
+              "points": {
+                "A": [
+                  3,
+                  8
+                ],
+                "B": [
+                  5,
+                  2
+                ],
+                "C": [
+                  5,
+                  8
+                ]
+              },
+              "at": "tilt",
+              "dur": 1.5
+            },
+            {
+              "do": "show",
+              "target": [
+                "lA2",
+                "lB2"
+              ],
+              "at": "drops"
+            },
+            {
+              "do": "write",
+              "tex": "\\text{change in }y=2-8=\\cw{-6}",
+              "fresh": true,
+              "at": "drops",
+              "id": "i4"
+            },
+            {
+              "do": "show",
+              "target": "lrise2",
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "say": "The change in y is negative six, so the slope is negative three. A line that falls has a negative slope.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "lrise2",
+              "at": "negative"
+            },
+            {
+              "do": "write",
+              "tex": "m=\\dfrac{\\cw{-6}}{\\cb{2}}=-3",
+              "fresh": true,
+              "at": "slope",
+              "id": "i5"
+            },
+            {
+              "do": "highlight",
+              "target": "line",
+              "at": "falls"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -7,
+          -6.5,
+          6,
+          2.5
+        ],
+        "points": {
+          "P1": [
+            -4,
+            -4
+          ],
+          "P2": [
+            3,
+            -2
+          ],
+          "C": [
+            3,
+            -4
+          ],
+          "RL": [
+            -2,
+            -4
+          ]
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 2,
+            "start": true
+          },
+          {
+            "id": "line",
+            "seg": [
+              "P1",
+              "P2"
+            ],
+            "extend": [
+              4,
+              4
+            ],
+            "ink": "accent",
+            "w": 6
+          },
+          {
+            "id": "run",
+            "seg": [
+              "P1",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 7
+          },
+          {
+            "id": "rise",
+            "seg": [
+              "C",
+              "P2"
+            ],
+            "ink": "warm",
+            "w": 7
+          },
+          {
+            "id": "d1",
+            "dot": "P1",
+            "ink": "gold",
+            "r": 13
+          },
+          {
+            "id": "d2",
+            "dot": "P2",
+            "ink": "gold",
+            "r": 13
+          },
+          {
+            "id": "l1",
+            "label": "(-4,-4)",
+            "at": "P1",
+            "dir": "nw"
+          },
+          {
+            "id": "l2",
+            "label": "(3,-2)",
+            "at": "P2",
+            "dir": "nw"
+          },
+          {
+            "id": "lrun",
+            "label": "7",
+            "at": "RL",
+            "dir": "s",
+            "ink": "blue",
+            "size": "l"
+          },
+          {
+            "id": "lrise",
+            "label": "2",
+            "at": "rise",
+            "dir": "e",
+            "ink": "warm",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "What is the slope of the line through negative four, negative four and three, negative two?",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "What is the slope of the line through $(-4, -4)$ and $(3, -2)$?",
+              "at": "What",
+              "id": "p2"
+            },
+            {
+              "do": "show",
+              "target": [
+                "d1",
+                "l1"
+              ],
+              "at": "negative"
+            },
+            {
+              "do": "show",
+              "target": [
+                "d2",
+                "l2"
+              ],
+              "at": "three"
+            },
+            {
+              "do": "draw",
+              "target": "line",
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "say": "Call the first point, point one: x one, y one. The other is point two.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "(x_1,y_1)=(-4,-4)",
+              "fresh": true,
+              "at": "first",
+              "id": "j1"
+            },
+            {
+              "do": "highlight",
+              "target": "l1",
+              "at": "first"
+            },
+            {
+              "do": "write",
+              "tex": "(x_2,y_2)=(3,-2)",
+              "fresh": true,
+              "at": "other",
+              "id": "j2"
+            },
+            {
+              "do": "highlight",
+              "target": "l2",
+              "at": "other"
+            }
+          ]
+        },
+        {
+          "say": "Slope is the change in y over the change in x: y two minus y one, over x two minus x one.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "m=\\dfrac{\\cw{y_2-y_1}}{\\cb{x_2-x_1}}",
+              "fresh": true,
+              "at": "Slope",
+              "id": "j3"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "d2",
+                "l2"
+              ],
+              "at": "two"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "d1",
+                "l1"
+              ],
+              "at": "one"
+            }
+          ]
+        },
+        {
+          "say": "Put the numbers in. The change in y is negative two minus negative four.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "m=\\dfrac{\\cw{-2-(-4)}}{\\cb{3-(-4)}}",
+              "at": "Put",
+              "id": "j4"
+            },
+            {
+              "do": "draw",
+              "target": "rise",
+              "at": "change"
+            }
+          ]
+        },
+        {
+          "say": "Subtracting negative four adds four, so the change in y is two.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "m=\\dfrac{\\cw{-2+4}}{\\cb{3+4}}",
+              "at": "Subtracting",
+              "id": "j5"
+            },
+            {
+              "do": "show",
+              "target": "lrise",
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "say": "The change in x, in the same order, is three minus negative four, which is seven.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "run",
+              "at": "change"
+            },
+            {
+              "do": "show",
+              "target": "lrun",
+              "at": "seven"
+            }
+          ]
+        },
+        {
+          "say": "So the slope is two sevenths.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "m=\\dfrac{\\cw{2}}{\\cb{7}}",
+              "at": "slope",
+              "id": "j6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -9,
+          -1.5,
+          2,
+          10
+        ],
+        "points": {
+          "Q1": [
+            -6,
+            8
+          ],
+          "Q2": [
+            -4,
+            2
+          ],
+          "C": [
+            -4,
+            8
+          ]
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 2,
+            "start": true
+          },
+          {
+            "id": "line",
+            "seg": [
+              "Q1",
+              "Q2"
+            ],
+            "extend": [
+              3,
+              3
+            ],
+            "ink": "accent",
+            "w": 6
+          },
+          {
+            "id": "run",
+            "seg": [
+              "Q1",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 7
+          },
+          {
+            "id": "rise",
+            "seg": [
+              "C",
+              "Q2"
+            ],
+            "ink": "warm",
+            "w": 7
+          },
+          {
+            "id": "d1",
+            "dot": "Q1",
+            "ink": "gold",
+            "r": 13
+          },
+          {
+            "id": "d2",
+            "dot": "Q2",
+            "ink": "gold",
+            "r": 13
+          },
+          {
+            "id": "l1",
+            "label": "(-6,8)",
+            "at": "Q1",
+            "dir": "w"
+          },
+          {
+            "id": "l2",
+            "label": "(-4,2)",
+            "at": "Q2",
+            "dir": "e"
+          },
+          {
+            "id": "lrun",
+            "label": "2",
+            "at": "run",
+            "dir": "n",
+            "ink": "blue",
+            "size": "l"
+          },
+          {
+            "id": "lrise",
+            "label": "-6",
+            "at": "rise",
+            "dir": "e",
+            "ink": "warm",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "One more: the line through negative six, eight and negative four, two.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "What is the slope of the line through $(-6, 8)$ and $(-4, 2)$?",
+              "at": "One",
+              "id": "p3"
+            },
+            {
+              "do": "show",
+              "target": [
+                "d1",
+                "l1"
+              ],
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": [
+                "d2",
+                "l2"
+              ],
+              "at": "four"
+            },
+            {
+              "do": "draw",
+              "target": "line",
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "say": "Point one is negative six, eight. Point two is negative four, two.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "(x_1,y_1)=(-6,8)",
+              "fresh": true,
+              "at": "one",
+              "id": "q1"
+            },
+            {
+              "do": "write",
+              "tex": "(x_2,y_2)=(-4,2)",
+              "fresh": true,
+              "at": "Point",
+              "nth": 2,
+              "id": "q2"
+            }
+          ]
+        },
+        {
+          "say": "The change in y is two minus eight: negative six. Going right, the line falls.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "m=\\dfrac{\\cw{2-8}}{\\cb{-4-(-6)}}",
+              "fresh": true,
+              "at": "change",
+              "id": "q3"
+            },
+            {
+              "do": "draw",
+              "target": "rise",
+              "at": "minus"
+            },
+            {
+              "do": "show",
+              "target": "lrise",
+              "at": "negative"
+            },
+            {
+              "do": "highlight",
+              "target": "line",
+              "at": "falls"
+            }
+          ]
+        },
+        {
+          "say": "The change in x, in the same order, is negative four minus negative six: two.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "run",
+              "at": "change"
+            },
+            {
+              "do": "show",
+              "target": "lrun",
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "say": "Negative six over two simplifies to negative three.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "m=\\dfrac{\\cw{-6}}{\\cb{2}}",
+              "at": "Negative",
+              "id": "q4"
+            },
+            {
+              "do": "answer",
+              "tex": "m=-3",
+              "at": "three",
+              "id": "q5"
+            }
+          ]
+        },
+        {
+          "say": "Keep the same order in both subtractions. Mixing them flips the sign.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "watch",
+              "text": "Subtract in the same order on top and bottom: point two minus point one. Mixing the order flips the sign.",
+              "at": "Keep"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Every problem like this goes the same way.",
+          "do": [
+            {
+              "do": "overview",
+              "at": "Every"
+            }
+          ]
+        },
+        {
+          "say": "One: call one point, point one, and the other, point two.",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Call one point $(x_1,y_1)$ and the other $(x_2,y_2)$.",
+              "marks": [
+                "q1",
+                "q2"
+              ],
+              "at": "One"
+            }
+          ]
+        },
+        {
+          "say": "Two: rise over run, the change in y over the change in x, subtracting in the same order.",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Rise over run: change in $y$ over change in $x$, subtracting in the same order.",
+              "marks": [
+                "q3"
+              ],
+              "at": "Two"
+            }
+          ]
+        },
+        {
+          "say": "Three: divide, and simplify the fraction.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "recap",
+              "text": "Divide, and simplify the fraction.",
+              "marks": [
+                "q4",
+                "q5"
+              ],
+              "at": "Three"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

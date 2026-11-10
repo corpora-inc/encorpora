@@ -7,6 +7,8 @@
     "node": ">=22"
   },
   "scripts": {
+    "film:test": "vitest run --config film/vitest.config.ts",
+    "film:build": "vite build --config film/vite.live.config.ts",
     "dev": "vite --host 127.0.0.1",
     "dev:api": "tsx watch src/server/main.ts",
     "start": "tsx src/server/main.ts",

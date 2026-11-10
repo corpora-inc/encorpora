@@ -514,6 +514,9 @@ try {
   await page.evaluate(()=>{window.__ahaAI.enforced=true;document.dispatchEvent(new Event('visibilitychange'));});
   await page.waitForFunction(()=>window.__ahaFixture.read().journals['aha-billing-v1'].operations.every(o=>o.state==='finalized'),null,{timeout:20_000});
   assert.deepEqual(await page.evaluate(()=>window.__ahaAI.starts[0]),inFlightAgain,'resume recovery resends the original operation and key');
+  // The journal finalizes before recovery delivers the reply and logs completion.
+  await page.waitForFunction(()=>JSON.parse(localStorage.getItem('aha-diagnostics-log')||'[]')
+    .some(e=>e.source==='ai-recovery'&&/^resume: every earlier AI request is settled/.test(e.message)));
   assert.ok((await recoveryLog()).some(m=>/^resume: every earlier AI request is settled/.test(m)),'resume recovery is logged');
   await resume();
   await page.getByRole('button',{name:'Check',exact:true}).waitFor();

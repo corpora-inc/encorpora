@@ -1,0 +1,346 @@
+{
+  "id": "mean-data",
+  "title": "Mean of a dataset",
+  "shots": [
+    {
+      "figure": {
+        "view": [-0.5, -0.3, 9.3, 13.15],
+        "points": {
+          "FA": [0, 11],
+          "FB": [3.2, 11],
+          "FC": [6.4, 11],
+          "NA": [0.72, 12.15],
+          "NB": [3.92, 12.15],
+          "NC": [7.12, 12.15],
+          "L0": [-0.15, 7],
+          "L1": [8.05, 7],
+          "LM": [8.7, 7]
+        },
+        "parts": [
+          { "id": "fa", "grid": [1, 11], "at": "FA", "size": [1.45, 1], "fill": "paper", "ink": "muted", "w": 4, "start": true },
+          { "id": "fb", "grid": [1, 11], "at": "FB", "size": [1.45, 1], "fill": "paper", "ink": "muted", "w": 4, "start": true },
+          { "id": "fc", "grid": [1, 11], "at": "FC", "size": [1.45, 1], "fill": "paper", "ink": "muted", "w": 4, "start": true },
+          { "id": "a", "counters": "fa", "n": 4, "from": 8, "ink": "accent", "start": true },
+          { "id": "b", "counters": "fb", "n": 6, "from": 6, "ink": "warm", "start": true },
+          { "id": "c", "counters": "fc", "n": 11, "from": 1, "ink": "gold", "start": true },
+          { "id": "la", "label": "@n", "at": "NA", "of": "fa", "dir": "c", "size": "l", "ink": "accent", "start": true },
+          { "id": "lb", "label": "@n", "at": "NB", "of": "fb", "dir": "c", "size": "l", "ink": "warm", "start": true },
+          { "id": "lc", "label": "@n", "at": "NC", "of": "fc", "dir": "c", "size": "l", "ink": "gold", "start": true },
+          { "id": "line", "seg": ["L0", "L1"], "ink": "ink", "w": 8 },
+          { "id": "lm", "label": "7", "at": "LM", "dir": "c", "size": "l" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Four plus six is ten.",
+          "do": [
+            { "do": "highlight", "target": ["a", "b"], "at": "Four" },
+            { "do": "write", "tex": "\\ca{4}+\\cw{6}=10", "fresh": true, "at": "Four", "id": "w1" }
+          ]
+        },
+        {
+          "say": "Ten plus eleven is twenty-one.",
+          "do": [
+            { "do": "highlight", "target": "c", "at": "eleven" },
+            { "do": "write", "tex": "10+\\cg{11}=21", "at": "Ten", "id": "w2" }
+          ]
+        },
+        {
+          "say": "Twenty-one divided by three is seven.",
+          "do": [
+            { "do": "highlight", "target": ["a", "b", "c"], "at": "Three" },
+            { "do": "write", "tex": "21\\div 3=7", "at": "divided", "id": "w3" }
+          ]
+        },
+        {
+          "say": "Move three from the eleven onto the four: one, two, three.",
+          "pause": 0.4,
+          "do": [
+            { "do": "highlight", "target": "c", "at": "eleven" },
+            { "do": "move", "points": { "c1": { "cell": ["fa", 7] } }, "at": "one", "dur": 0.8 },
+            { "do": "move", "points": { "c2": { "cell": ["fa", 6] } }, "at": "two", "dur": 0.8 },
+            { "do": "move", "points": { "c3": { "cell": ["fa", 5] } }, "at": "three", "nth": 2, "dur": 0.8 }
+          ]
+        },
+        {
+          "say": "Move one onto the six.",
+          "pause": 0.35,
+          "do": [
+            { "do": "move", "points": { "c4": { "cell": ["fb", 5] } }, "at": "one", "dur": 0.8 },
+            { "do": "highlight", "target": "b", "at": "six" }
+          ]
+        },
+        {
+          "say": "Each stack is seven. The mean is that equal share.",
+          "pause": 0.25,
+          "do": [
+            { "do": "show", "target": ["line", "lm"], "at": "seven" },
+            { "do": "term", "word": "mean", "meaning": "The sum of the values divided by how many values there are. It is the equal share of the total. The mean of $4$, $6$ and $11$ is $7$.", "at": "mean" },
+            { "do": "highlight", "target": ["la", "lb", "lc"], "at": "seven" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-0.55, -0.4, 22.3, 23.2],
+        "points": {
+          "a0": [0, 0], "a1": [3.2, 0], "a2": [3.2, 18], "a3": [0, 18],
+          "b0": [4.05, 0], "b1": [7.25, 0], "b2": [7.25, 12], "b3": [4.05, 12],
+          "c0": [8.1, 0], "c1": [11.3, 0], "c2": [11.3, 22], "c3": [8.1, 22],
+          "d0": [12.15, 0], "d1": [15.35, 0], "d2": [15.35, 13], "d3": [12.15, 13],
+          "e0": [16.2, 0], "e1": [19.4, 0], "e2": [19.4, 2], "e3": [16.2, 2],
+          "la": [1.6, 1.05], "lb": [5.65, 1.05], "lc": [9.7, 1.05], "ld": [13.75, 1.05], "le": [17.8, 1.05],
+          "m0": [-0.2, 13.4], "m1": [19.8, 13.4], "ml": [21.05, 13.4]
+        },
+        "parts": [
+          { "id": "b18", "poly": ["a0", "a1", "a2", "a3"], "fill": "accent-fill", "ink": "accent", "w": 4, "group": "v18", "start": true },
+          { "id": "b12", "poly": ["b0", "b1", "b2", "b3"], "fill": "warm-fill", "ink": "warm", "w": 4, "group": "v12", "start": true },
+          { "id": "b22", "poly": ["c0", "c1", "c2", "c3"], "fill": "gold-fill", "ink": "gold", "w": 4, "group": "v22", "start": true },
+          { "id": "b13", "poly": ["d0", "d1", "d2", "d3"], "fill": "blue-fill", "ink": "blue", "w": 4, "group": "v13", "start": true },
+          { "id": "b2", "poly": ["e0", "e1", "e2", "e3"], "fill": "violet-fill", "ink": "violet", "w": 4, "group": "v2", "start": true },
+          { "id": "l18", "label": "18", "at": "la", "dir": "c", "size": "m", "ink": "accent", "halo": true, "group": "v18", "start": true },
+          { "id": "l12", "label": "12", "at": "lb", "dir": "c", "size": "m", "ink": "warm", "halo": true, "group": "v12", "start": true },
+          { "id": "l22", "label": "22", "at": "lc", "dir": "c", "size": "m", "ink": "gold", "halo": true, "group": "v22", "start": true },
+          { "id": "l13", "label": "13", "at": "ld", "dir": "c", "size": "m", "ink": "blue", "halo": true, "group": "v13", "start": true },
+          { "id": "l2", "label": "2", "at": "le", "dir": "c", "size": "m", "ink": "violet", "halo": true, "group": "v2", "start": true },
+          { "id": "line", "seg": ["m0", "m1"], "ink": "ink", "w": 8 },
+          { "id": "lm", "label": "13.4", "at": "ml", "dir": "c", "size": "m" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "What is the mean of eighteen, twelve, twenty-two, thirteen and two?",
+          "pause": 0.3,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "What is the mean of 18, 12, 22, 13, 2?", "at": "What", "id": "pW" },
+            { "do": "highlight", "target": "v18", "at": "eighteen" },
+            { "do": "highlight", "target": "v12", "at": "twelve" },
+            { "do": "highlight", "target": "v22", "at": "twenty-two" },
+            { "do": "highlight", "target": "v13", "at": "thirteen" },
+            { "do": "highlight", "target": "v2", "at": "two" }
+          ]
+        },
+        {
+          "say": "A value is one number in the list. Add every value to get the total.",
+          "do": [
+            { "do": "term", "word": "value", "meaning": "One number in the list. Every value counts, including a repeated value each time it appears.", "at": "value" },
+            { "do": "highlight", "target": ["v18", "v12", "v22", "v13", "v2"], "at": "every" }
+          ]
+        },
+        {
+          "say": "Eighteen plus twelve is thirty. Thirty plus twenty-two is fifty-two.",
+          "do": [
+            { "do": "highlight", "target": ["v18", "v12"], "at": "Eighteen" },
+            { "do": "write", "tex": "\\ca{18}+\\cw{12}=30", "fresh": true, "at": "Eighteen", "id": "s1" },
+            { "do": "highlight", "target": "v22", "at": "twenty-two" },
+            { "do": "write", "tex": "30+\\cg{22}=52", "at": "Thirty", "id": "s2" }
+          ]
+        },
+        {
+          "say": "Fifty-two plus thirteen is sixty-five. Sixty-five plus two is sixty-seven.",
+          "do": [
+            { "do": "highlight", "target": "v13", "at": "thirteen" },
+            { "do": "write", "tex": "52+\\cb{13}=65", "at": "Fifty-two", "id": "s3" },
+            { "do": "highlight", "target": "v2", "at": "two" },
+            { "do": "write", "tex": "65+\\cv{2}=67", "at": "Sixty-five", "id": "s4" }
+          ]
+        },
+        {
+          "say": "Five values. Sixty-seven divided by five is thirteen point four, or sixty-seven fifths.",
+          "do": [
+            { "do": "text", "text": "$5$ values", "at": "Five", "id": "cnt" },
+            { "do": "highlight", "target": ["v18", "v12", "v22", "v13", "v2"], "at": "Five" },
+            { "do": "write", "tex": "67\\div 5=13.4", "fresh": true, "at": "divided", "id": "s7" },
+            { "do": "write", "tex": "\\frac{67}{5}=13.4", "fresh": true, "at": "fifths", "id": "s8" }
+          ]
+        },
+        {
+          "say": "The bars level to that share. Five times sixty-seven fifths is sixty-seven.",
+          "pause": 0.35,
+          "do": [
+            { "do": "show", "target": ["line", "lm"], "at": "level" },
+            { "do": "move", "at": "level", "points": {
+              "a2": [3.2, 13.4], "a3": [0, 13.4],
+              "b2": [7.25, 13.4], "b3": [4.05, 13.4],
+              "c2": [11.3, 13.4], "c3": [8.1, 13.4],
+              "d2": [15.35, 13.4], "d3": [12.15, 13.4],
+              "e2": [19.4, 13.4], "e3": [16.2, 13.4]
+            } },
+            { "do": "write", "tex": "5\\times\\frac{67}{5}=67", "fresh": true, "at": "Five", "id": "s9" }
+          ]
+        },
+        {
+          "say": "The mean is sixty-seven fifths.",
+          "pause": 0.2,
+          "do": [
+            { "do": "answer", "tex": "\\frac{67}{5}", "at": "mean", "id": "ans" },
+            { "do": "highlight", "target": "line", "at": "mean" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-0.5, -0.35, 22.4, 27.1],
+        "points": {
+          "a0": [0, 0], "a1": [3.2, 0], "a2": [3.2, 18], "a3": [0, 18],
+          "b0": [4.05, 0], "b1": [7.25, 0], "b2": [7.25, 22], "b3": [4.05, 22],
+          "c0": [8.1, 0], "c1": [11.3, 0], "c2": [11.3, 24], "c3": [8.1, 24],
+          "d0": [12.15, 0], "d1": [15.35, 0], "d2": [15.35, 16], "d3": [12.15, 16],
+          "e0": [16.2, 0], "e1": [19.4, 0], "e2": [19.4, 10], "e3": [16.2, 10],
+          "la": [1.6, 19.7], "lb": [5.65, 23.7], "lc": [9.7, 25.7], "ld": [13.75, 14.2], "le": [17.8, 11.7],
+          "m0": [-0.15, 18], "m1": [19.7, 18], "ml": [21.05, 18]
+        },
+        "parts": [
+          { "id": "b18", "poly": ["a0", "a1", "a2", "a3"], "fill": "accent-fill", "ink": "accent", "w": 4, "group": "v18", "start": true },
+          { "id": "b22", "poly": ["b0", "b1", "b2", "b3"], "fill": "gold-fill", "ink": "gold", "w": 4, "group": "v22", "start": true },
+          { "id": "b24", "poly": ["c0", "c1", "c2", "c3"], "fill": "warm-fill", "ink": "warm", "w": 4, "group": "v24", "start": true },
+          { "id": "b16", "poly": ["d0", "d1", "d2", "d3"], "fill": "blue-fill", "ink": "blue", "w": 4, "group": "v16", "start": true },
+          { "id": "b10", "poly": ["e0", "e1", "e2", "e3"], "fill": "violet-fill", "ink": "violet", "w": 4, "group": "v10", "start": true },
+          { "id": "l18", "label": "18", "at": "la", "dir": "c", "size": "l", "ink": "accent", "group": "v18", "start": true },
+          { "id": "l22", "label": "22", "at": "lb", "dir": "c", "size": "l", "ink": "gold", "group": "v22", "start": true },
+          { "id": "l24", "label": "24", "at": "lc", "dir": "c", "size": "l", "ink": "warm", "group": "v24", "start": true },
+          { "id": "l16", "label": "16", "at": "ld", "dir": "c", "size": "l", "ink": "blue", "halo": true, "group": "v16", "start": true },
+          { "id": "l10", "label": "10", "at": "le", "dir": "c", "size": "l", "ink": "violet", "group": "v10", "start": true },
+          { "id": "line", "seg": ["m0", "m1"], "ink": "accent", "w": 8 },
+          { "id": "lm", "label": "18", "at": "ml", "dir": "c", "size": "l", "ink": "accent" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "What is the mean of eighteen, twenty-two, twenty-four, sixteen and ten?",
+          "pause": 0.25,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "What is the mean of 18, 22, 24, 16, 10?", "at": "What", "id": "pI" },
+            { "do": "highlight", "target": "v18", "at": "eighteen" },
+            { "do": "highlight", "target": "v22", "at": "twenty-two" },
+            { "do": "highlight", "target": "v24", "at": "twenty-four" },
+            { "do": "highlight", "target": "v16", "at": "sixteen" },
+            { "do": "highlight", "target": "v10", "at": "ten" }
+          ]
+        },
+        {
+          "say": "Eighteen plus twenty-two plus twenty-four plus sixteen plus ten is ninety.",
+          "do": [
+            { "do": "highlight", "target": ["v18", "v22", "v24", "v16", "v10"], "at": "Eighteen" },
+            { "do": "write", "tex": "\\ca{18}+\\cg{22}+\\cw{24}+\\cb{16}+\\cv{10}=90", "fresh": true, "at": "Eighteen", "id": "i1" }
+          ]
+        },
+        {
+          "say": "Five values. Ninety divided by five is eighteen, and that is the mean.",
+          "pause": 0.2,
+          "do": [
+            { "do": "text", "text": "$5$ values", "at": "Five", "id": "iCnt" },
+            { "do": "write", "tex": "90\\div 5=18", "at": "divided", "id": "i2" },
+            { "do": "show", "target": ["line", "lm"], "at": "eighteen" },
+            { "do": "highlight", "target": "v18", "at": "eighteen" },
+            { "do": "answer", "tex": "18", "at": "mean", "id": "iAns" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-0.4, -0.25, 9.15, 9.7],
+        "points": {
+          "FA": [0, 8], "FB": [1.6, 8], "FC": [3.2, 8], "FD": [4.8, 8], "FE": [6.4, 8],
+          "LA": [0.6, 8.85], "LB": [2.2, 8.85], "LC": [3.8, 8.85], "LD": [5.4, 8.85], "LE": [7.0, 8.85],
+          "M0": [-0.15, 5.2], "M1": [7.7, 5.2], "ML": [8.45, 5.2]
+        },
+        "parts": [
+          { "id": "fa", "grid": [1, 8], "at": "FA", "size": [1.2, 1], "fill": "paper", "ink": "muted", "w": 4, "start": true },
+          { "id": "fb", "grid": [1, 8], "at": "FB", "size": [1.2, 1], "fill": "paper", "ink": "muted", "w": 4, "start": true },
+          { "id": "fc", "grid": [1, 8], "at": "FC", "size": [1.2, 1], "fill": "paper", "ink": "muted", "w": 4, "start": true },
+          { "id": "fd", "grid": [1, 8], "at": "FD", "size": [1.2, 1], "fill": "paper", "ink": "muted", "w": 4, "start": true },
+          { "id": "fe", "grid": [1, 8], "at": "FE", "size": [1.2, 1], "fill": "paper", "ink": "muted", "w": 4, "start": true },
+          { "id": "a", "counters": "fa", "n": 3, "from": 6, "ink": "accent", "start": true },
+          { "id": "b", "counters": "fb", "n": 4, "from": 5, "ink": "warm", "start": true },
+          { "id": "c", "counters": "fc", "n": 4, "from": 5, "ink": "warm", "start": true },
+          { "id": "d", "counters": "fd", "n": 7, "from": 2, "ink": "gold", "start": true },
+          { "id": "e", "counters": "fe", "n": 8, "from": 1, "ink": "violet", "start": true },
+          { "id": "la", "label": "3", "at": "LA", "dir": "c", "size": "l", "ink": "accent", "start": true },
+          { "id": "lb", "label": "4", "at": "LB", "dir": "c", "size": "l", "ink": "warm", "start": true },
+          { "id": "lc", "label": "4", "at": "LC", "dir": "c", "size": "l", "ink": "warm", "start": true },
+          { "id": "ld", "label": "7", "at": "LD", "dir": "c", "size": "l", "ink": "gold", "start": true },
+          { "id": "le", "label": "8", "at": "LE", "dir": "c", "size": "l", "ink": "violet", "start": true },
+          { "id": "line", "seg": ["M0", "M1"], "ink": "ink", "w": 8 },
+          { "id": "lm", "label": "5.2", "at": "ML", "dir": "c", "size": "m" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "What is the mean of three, four, four, seven, eight?",
+          "pause": 0.25,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "What is the mean of 3, 4, 4, 7, 8?", "at": "What", "id": "pR" },
+            { "do": "highlight", "target": "a", "at": "three" },
+            { "do": "highlight", "target": "b", "at": "four" },
+            { "do": "highlight", "target": "c", "at": "four", "nth": 2 },
+            { "do": "highlight", "target": "d", "at": "seven" },
+            { "do": "highlight", "target": "e", "at": "eight" }
+          ]
+        },
+        {
+          "say": "Four appears twice, so count five values, not four.",
+          "do": [
+            { "do": "highlight", "target": ["b", "c"], "at": "twice" },
+            { "do": "text", "text": "$5$ values, not $4$", "at": "five", "id": "rCnt" },
+            { "do": "watch", "text": "Divide by how many values there are. $3, 4, 4, 7, 8$ has $5$ values, not $4$.", "at": "not" }
+          ]
+        },
+        {
+          "say": "Three plus four plus four is eleven. Eleven plus seven plus eight is twenty-six.",
+          "do": [
+            { "do": "highlight", "target": ["a", "b", "c"], "at": "Three" },
+            { "do": "write", "tex": "\\ca{3}+\\cw{4}+\\cw{4}=11", "fresh": true, "at": "Three", "id": "r1" },
+            { "do": "highlight", "target": ["d", "e"], "at": "seven" },
+            { "do": "write", "tex": "11+\\cg{7}+\\cv{8}=26", "at": "Eleven", "id": "r2" }
+          ]
+        },
+        {
+          "say": "Twenty-six divided by four is six point five. Four is the wrong count.",
+          "do": [
+            { "do": "write", "tex": "\\cancel{26\\div 4=6.5}", "fresh": true, "at": "four", "id": "rBad" },
+            { "do": "highlight", "target": ["a", "b", "c", "d", "e"], "at": "wrong" }
+          ]
+        },
+        {
+          "say": "Divide by five: five point two. The line is above the fours and below the seven. The mean is twenty-six fifths.",
+          "pause": 0.2,
+          "do": [
+            { "do": "write", "tex": "26\\div 5=5.2", "fresh": true, "at": "five", "id": "r5" },
+            { "do": "show", "target": ["line", "lm"], "at": "line" },
+            { "do": "highlight", "target": ["b", "c"], "at": "fours" },
+            { "do": "highlight", "target": "d", "at": "seven" },
+            { "do": "answer", "tex": "\\frac{26}{5}", "at": "mean", "id": "rAns" }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Every mean is found the same way.",
+          "do": [ { "do": "overview", "of": "pW", "at": "Every" } ]
+        },
+        {
+          "say": "One: add every value. The total is the sum.",
+          "do": [ { "do": "recap", "text": "Add every value. The total is the sum.", "marks": ["s1", "s2", "s3", "s4"], "at": "One" } ]
+        },
+        {
+          "say": "Two: count the values. A repeated value counts each time it appears.",
+          "do": [ { "do": "recap", "text": "Count the values. A repeated value counts each time it appears.", "marks": ["cnt"], "at": "Two" } ]
+        },
+        {
+          "say": "Three: divide the total by the count. That equal share is the mean.",
+          "pause": 0.5,
+          "do": [ { "do": "recap", "text": "Divide the total by the count. That equal share is the mean.", "marks": ["s7", "s8", "ans"], "at": "Three" } ]
+        }
+      ]
+    }
+  ]
+}

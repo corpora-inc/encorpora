@@ -1,0 +1,280 @@
+{
+  "id": "sinusoid-compare-rule",
+  "title": "Compare a graphed sinusoid with a sine rule",
+  "shots": [
+    {
+      "figure": {
+        "view": [-8.3, -6.5, 4.6, 4.7],
+        "points": {
+          "C": [-4.7, 0],
+          "Q": { "on": "circ", "deg": 0 },
+          "Qf": { "foot": "Q" },
+          "P": { "on": "f", "x": 0 },
+          "Pf": { "foot": "P" },
+          "M1": [0, 3],
+          "M2": [4.15, 3],
+          "LA": [1.5, 3],
+          "B1": [0, -3],
+          "B2": [2, -3],
+          "B4": [4, -3]
+        },
+        "parts": [
+          { "id": "ax", "axes": true, "step": 1, "every": 1, "ystep": 1, "yevery": 3, "xrange": [0, 4.15], "yrange": [-3.9, 4.3], "start": true },
+          { "id": "circ", "circle": "C", "r": 3, "ink": "muted", "w": 4, "start": true },
+          { "id": "sw", "sweep": "Q", "r": 84, "fill": "blue-fill", "ink": "blue", "tex": "\\cb{Bx}", "size": "s" },
+          { "id": "f", "plot": "3sin(pi*x)", "from": 0, "to": 4, "upto": "P", "ink": "accent", "w": 6, "start": true },
+          { "id": "f2", "plot": "3sin(pi*x/2)", "from": 0, "to": 4, "ink": "violet", "w": 5 },
+          { "id": "maxl", "seg": ["M1", "M2"], "ink": "warm", "w": 4, "dash": true },
+          { "id": "lMax", "label": "\\cw{A}", "at": "LA", "dir": "n", "ink": "warm", "size": "m" },
+          { "id": "rad", "seg": ["C", "Q"], "ink": "muted", "w": 5 },
+          { "id": "lA", "label": "\\cw{A}", "at": "rad", "dir": "n", "ink": "warm", "size": "m" },
+          { "id": "hQ", "seg": ["Qf", "Q"], "ink": "warm", "w": 7 },
+          { "id": "hP", "seg": ["Pf", "P"], "ink": "warm", "w": 7 },
+          { "id": "link", "seg": ["Q", "P"], "ink": "muted", "w": 3.5, "dash": true },
+          { "id": "dQ", "dot": "Q", "ink": "gold", "r": 12 },
+          { "id": "dP", "dot": "P", "ink": "gold", "r": 12 },
+          { "id": "cyc", "dim": ["B1", "B2"], "side": "s", "tex": "\\cb{\\text{one cycle}}", "ink": "blue" },
+          { "id": "per", "dim": ["B1", "B2"], "side": "s", "tex": "\\cb{\\text{period}}", "ink": "blue" },
+          { "id": "per2", "dim": ["B1", "B2"], "side": "s", "tex": "\\cb{\\text{period }2}", "ink": "blue" },
+          { "id": "per4", "dim": ["B1", "B4"], "side": "s", "tex": "\\cv{\\text{period }4}", "ink": "violet", "far": 4.3 }
+        ]
+      },
+      "beats": [
+        {
+          "say": "A sine wave is the height of a point going around a circle.",
+          "do": [
+            { "do": "write", "tex": "y=\\cw{A}\\sin(\\cb{B}x)", "fresh": true, "at": "sine", "id": "k1" },
+            { "do": "show", "target": ["dQ", "rad"], "at": "point" },
+            { "do": "show", "target": ["dP", "link", "hQ", "hP"], "at": "height" }
+          ]
+        },
+        {
+          "say": "Turn the point once around. Its height, carried across, draws one full wave: one cycle.",
+          "pause": 0.4,
+          "do": [
+            { "do": "show", "target": "sw", "at": "Turn" },
+            { "do": "glide", "point": "Q", "deg": 360, "at": "Turn", "dur": 4.6 },
+            { "do": "glide", "point": "P", "x": 2, "at": "Turn", "dur": 4.6 },
+            { "do": "highlight", "target": ["hQ", "hP", "link"], "at": "height" },
+            { "do": "show", "target": "cyc", "at": "cycle" }
+          ]
+        },
+        {
+          "say": "The circle's radius is A. The point can never rise above A, so the maximum of the wave is A: here, three.",
+          "do": [
+            { "do": "show", "target": "lA", "at": "radius" },
+            { "do": "highlight", "target": "rad", "at": "radius" },
+            { "do": "show", "target": ["maxl", "lMax"], "at": "never" },
+            { "do": "write", "tex": "\\text{maximum}=\\cw{A}", "fresh": true, "at": "maximum", "id": "k2" },
+            { "do": "highlight", "target": "maxl", "at": "three" }
+          ]
+        },
+        {
+          "say": "B sets how fast the point turns. Watch it go around again: after x units, it has turned an angle of B x.",
+          "do": [
+            { "do": "glide", "point": "Q", "deg": 720, "at": "Watch", "dur": 7.5 },
+            { "do": "glide", "point": "P", "x": 4, "at": "Watch", "dur": 7.5 },
+            { "do": "highlight", "target": "sw", "at": "angle" }
+          ]
+        },
+        {
+          "say": "One cycle is one full turn, two pi. So a cycle ends where B x equals two pi: x equals two pi over B. That length is the period.",
+          "do": [
+            { "do": "highlight", "target": "sw", "at": "full" },
+            { "do": "write", "tex": "\\cb{B}x=2\\pi", "fresh": true, "at": "B", "id": "k3" },
+            { "do": "write", "tex": "x=\\dfrac{2\\pi}{\\cb{B}}=\\text{period}", "note": "\\div B", "at": "x", "nth": 2, "id": "k4" },
+            { "do": "hide", "target": "cyc", "at": "period" },
+            { "do": "show", "target": "per", "at": "period" },
+            { "do": "highlight", "target": "per", "at": "period" }
+          ]
+        },
+        {
+          "say": "Here B is pi. Two pi over pi is two: the period in the picture.",
+          "do": [
+            { "do": "write", "tex": "\\cb{B}=\\pi", "fresh": true, "at": "Here", "id": "k5" },
+            { "do": "write", "tex": "\\text{period}=\\dfrac{2\\pi}{\\pi}=2", "at": "Two", "id": "k5b" },
+            { "do": "highlight", "target": "per", "at": "picture" }
+          ]
+        },
+        {
+          "say": "Rules often write B as two pi over p. Then two pi divided by two pi over p is just p: the rule hands you the period.",
+          "do": [
+            { "do": "write", "tex": "\\cb{B}=\\dfrac{2\\pi}{p}", "fresh": true, "at": "Rules", "id": "k6" },
+            { "do": "write", "tex": "\\text{period}=2\\pi\\div\\dfrac{2\\pi}{p}=p", "at": "Then", "id": "k7" }
+          ]
+        },
+        {
+          "say": "Frequency is how many cycles fit in one unit of x: one over the period. Period two means half a cycle per unit.",
+          "do": [
+            { "do": "term", "word": "frequency", "meaning": "How many cycles fit in one unit of $x$: $1$ over the period.", "at": "Frequency", "id": "k8" },
+            { "do": "write", "tex": "\\text{frequency}=\\dfrac{1}{\\text{period}}", "fresh": true, "at": "one", "nth": 2, "id": "k9" },
+            { "do": "write", "tex": "\\text{frequency}=\\dfrac{1}{\\cb{2}}", "at": "Period", "nth": 2, "id": "k10" }
+          ]
+        },
+        {
+          "say": "This violet wave has period four: each cycle takes twice as long, so only half as many cycles fit. Longer period, smaller frequency.",
+          "pause": 0.6,
+          "do": [
+            { "do": "hide", "target": ["hQ", "hP", "link", "sw", "dP", "dQ", "rad", "lA", "per"], "at": "This" },
+            { "do": "show", "target": "per2", "at": "This" },
+            { "do": "draw", "target": "f2", "at": "This", "dur": 1.6 },
+            { "do": "show", "target": "per4", "at": "four" },
+            { "do": "write", "tex": "\\text{frequency}=\\dfrac{1}{\\cv{4}}", "at": "four", "id": "k11" },
+            { "do": "highlight", "target": ["per2", "per4"], "at": "half" },
+            { "do": "text", "text": "Longer period, smaller frequency.", "at": "Longer", "id": "k12" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-0.5, -5, 8, 5],
+        "points": {
+          "PK1": [1, 2],
+          "PK2": [5, 2],
+          "M1": [-0.5, 2],
+          "M2": [8, 2],
+          "LM": [7.1, 2],
+          "LF": [3, -2],
+          "LG": [2, 4]
+        },
+        "parts": [
+          { "id": "ax", "axes": true, "step": 1, "every": 2, "start": true },
+          { "id": "f", "plot": "2sin(pi*x/2)", "ink": "accent", "w": 6 },
+          { "id": "g", "plot": "4sin(pi*x/4)", "ink": "violet", "w": 6 },
+          { "id": "maxl", "seg": ["M1", "M2"], "ink": "warm", "w": 4, "dash": true },
+          { "id": "lMax", "label": "\\cw{\\text{max }2}", "at": "LM", "dir": "n", "ink": "warm", "size": "s" },
+          { "id": "per", "dim": ["PK1", "PK2"], "side": "n", "tex": "\\cb{\\text{period }4}", "ink": "blue", "far": 1.3 },
+          { "id": "lf", "label": "f", "at": "LF", "dir": "s", "ink": "accent", "size": "m" },
+          { "id": "lg", "label": "g", "at": "LG", "dir": "n", "ink": "violet", "size": "m" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "The graph of f of x equals A sine of B x is shown.",
+          "do": [
+            { "do": "clear" },
+            {
+              "do": "problem",
+              "text": "The graph of $f(x) = A\\sin\\left(Bx\\right)$ is shown. The function $g$ is defined by $g(x) = 4\\sin\\left(\\frac{2\\pi}{8}x\\right)$. Which statement is true?",
+              "choices": [
+                "$g$ has a smaller maximum value and a smaller frequency than $f$",
+                "$g$ has a greater maximum value and a greater frequency than $f$",
+                "$g$ has a greater maximum value and a smaller frequency than $f$",
+                "$g$ has a smaller maximum value and a greater frequency than $f$"
+              ],
+              "at": "The",
+              "id": "p0"
+            },
+            { "do": "draw", "target": "f", "at": "graph", "dur": 1.4 },
+            { "do": "show", "target": "lf", "at": "shown" }
+          ]
+        },
+        {
+          "say": "g is defined by the rule g of x equals four sine of two pi over eight, x. Which statement is true?",
+          "pause": 0.5,
+          "do": [
+            { "do": "write", "tex": "g(x)=\\cw{4}\\sin\\!\\left(\\dfrac{2\\pi}{\\cb{8}}x\\right)", "fresh": true, "at": "rule", "id": "p4" }
+          ]
+        },
+        {
+          "say": "Two comparisons decide it: maximum, then frequency.",
+          "do": [
+            { "do": "text", "text": "Two comparisons: maximum, then frequency.", "tone": "muted", "at": "Two", "id": "p1" }
+          ]
+        },
+        {
+          "say": "f, from its graph. The peaks reach two, so the maximum of f is two.",
+          "do": [
+            { "do": "show", "target": ["maxl", "lMax"], "at": "peaks" },
+            { "do": "write", "tex": "\\text{max of }f=\\cw{2}", "fresh": true, "at": "maximum", "id": "p2" }
+          ]
+        },
+        {
+          "say": "Peak to peak is four units, so the period of f is four.",
+          "do": [
+            { "do": "show", "target": "per", "at": "Peak" },
+            { "do": "write", "tex": "\\text{period of }f=\\cb{4}", "at": "period", "id": "p3" }
+          ]
+        },
+        {
+          "say": "g, from its rule. The number in front is four: the maximum of g is four. The number under two pi is eight: the period of g is eight.",
+          "do": [
+            { "do": "write", "tex": "\\text{max of }g=\\cw{4}", "fresh": true, "at": "maximum", "id": "p5" },
+            { "do": "write", "tex": "\\text{period of }g=\\cb{8}", "at": "period", "id": "p6" }
+          ]
+        },
+        {
+          "say": "Maximums: four is greater than two, so g has the greater maximum. Both smaller-maximum choices are out.",
+          "do": [
+            { "do": "text", "text": "$4>2$: $g$ has the greater maximum.", "at": "four", "id": "p7" },
+            { "do": "highlight", "target": ["maxl", "lMax"], "at": "two" }
+          ]
+        },
+        {
+          "say": "Frequency: the period of g is eight, twice the four of f. Each cycle of g takes twice as long, so half as many fit. Longer period, smaller frequency. Both greater-frequency choices are out.",
+          "do": [
+            { "do": "hide", "target": ["per", "maxl", "lMax"], "at": "Frequency" },
+            { "do": "draw", "target": "g", "at": "eight", "dur": 1.6 },
+            { "do": "show", "target": "lg", "at": "twice" },
+            { "do": "highlight", "target": "g", "at": "Each" },
+            { "do": "text", "text": "$8>4$: longer period, so $g$ has the smaller frequency.", "at": "Longer", "id": "p8" }
+          ]
+        },
+        {
+          "say": "Two traps: reading frequency like period, and taking the maximum from the wrong number.",
+          "do": [
+            { "do": "watch", "text": "Longer period means smaller frequency. The maximum is the number in front, never the number under $2\\pi$.", "at": "traps", "id": "p9" }
+          ]
+        },
+        {
+          "say": "g has a greater maximum value and a smaller frequency than f.",
+          "do": [
+            { "do": "answer", "tex": "\\begin{array}{c}\\text{greater maximum,}\\\\ \\text{smaller frequency}\\end{array}", "at": "g", "id": "p10" }
+          ]
+        },
+        {
+          "say": "Check the picture: g rises to four, twice the two of f, and one cycle of g spans the window where f fits two cycles.",
+          "pause": 0.6,
+          "do": [
+            { "do": "highlight", "target": ["g", "lg"], "at": "rises" },
+            { "do": "highlight", "target": ["f", "lf"], "at": "fits" }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "The same reads every time.",
+          "do": [{ "do": "overview", "of": "p0", "at": "same" }]
+        },
+        {
+          "say": "One: on the graph, the maximum is the peak height; the period is peak to peak.",
+          "do": [
+            { "do": "recap", "text": "Graph: maximum at the peaks; period peak to peak.", "marks": ["p2", "p3"], "at": "One" }
+          ]
+        },
+        {
+          "say": "Two: in the rule A sine B x, the maximum is A and the period is two pi over B.",
+          "do": [
+            { "do": "recap", "text": "Rule $A\\sin(Bx)$: maximum $A$, period $\\frac{2\\pi}{B}$.", "marks": ["p4", "p5"], "at": "Two" }
+          ]
+        },
+        {
+          "say": "Three: written as two pi over p, the period is p.",
+          "do": [
+            { "do": "recap", "text": "Written $\\frac{2\\pi}{p}$, the period is $p$.", "marks": ["p4", "p6"], "at": "Three" }
+          ]
+        },
+        {
+          "say": "Four: compare maximums, then periods, and flip: longer period, smaller frequency.",
+          "pause": 0.8,
+          "do": [
+            { "do": "recap", "text": "Compare maximums, then periods, and flip: longer period, smaller frequency.", "marks": ["p7", "p8", "p10"], "at": "Four" }
+          ]
+        }
+      ]
+    }
+  ]
+}

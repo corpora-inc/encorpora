@@ -1,0 +1,4115 @@
+{
+ "id": "fl-trapezoid-consequences",
+ "title": "Trapezoid midsegment, base angles and diagonals",
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -21,
+     -18,
+     21,
+     18
+    ],
+    "points": {
+     "A": [
+      -6,
+      12
+     ],
+     "B": [
+      6,
+      12
+     ],
+     "C": [
+      12,
+      -12
+     ],
+     "D": [
+      -12,
+      -12
+     ],
+     "M": {
+      "mid": [
+       "A",
+       "D"
+      ]
+     },
+     "N": {
+      "mid": [
+       "B",
+       "C"
+      ]
+     },
+     "r0l": [
+      -12.0,
+      -12
+     ],
+     "r0r": [
+      12.0,
+      -12
+     ],
+     "r1l": [
+      -10.5,
+      -6
+     ],
+     "r1r": [
+      10.5,
+      -6
+     ],
+     "r2l": [
+      -9.0,
+      0
+     ],
+     "r2r": [
+      9.0,
+      0
+     ],
+     "r3l": [
+      -7.5,
+      6
+     ],
+     "r3r": [
+      7.5,
+      6
+     ],
+     "r4l": [
+      -6.0,
+      12
+     ],
+     "r4r": [
+      6.0,
+      12
+     ],
+     "railAb": [
+      -12.6,
+      -14.4
+     ],
+     "railAt": [
+      -5.5,
+      13.7
+     ],
+     "railBb": [
+      12.6,
+      -14.4
+     ],
+     "railBt": [
+      5.5,
+      13.7
+     ]
+    },
+    "parts": [
+     {
+      "id": "tile",
+      "poly": [
+       "D",
+       "C",
+       "B",
+       "A"
+      ],
+      "fill": "accent-fill",
+      "solid": true
+     },
+     {
+      "id": "railL",
+      "seg": [
+       "railAb",
+       "railAt"
+      ],
+      "ink": "wood",
+      "w": 22,
+      "group": "ladder"
+     },
+     {
+      "id": "railR",
+      "seg": [
+       "railBb",
+       "railBt"
+      ],
+      "ink": "wood",
+      "w": 22,
+      "group": "ladder"
+     },
+     {
+      "id": "rung0",
+      "seg": [
+       "r0l",
+       "r0r"
+      ],
+      "ink": "wood",
+      "w": 13,
+      "group": "ladder"
+     },
+     {
+      "id": "rung1",
+      "seg": [
+       "r1l",
+       "r1r"
+      ],
+      "ink": "wood",
+      "w": 13,
+      "group": "ladder"
+     },
+     {
+      "id": "rung2",
+      "seg": [
+       "r2l",
+       "r2r"
+      ],
+      "ink": "wood",
+      "w": 13,
+      "group": "ladder"
+     },
+     {
+      "id": "rung3",
+      "seg": [
+       "r3l",
+       "r3r"
+      ],
+      "ink": "wood",
+      "w": 13,
+      "group": "ladder"
+     },
+     {
+      "id": "rung4",
+      "seg": [
+       "r4l",
+       "r4r"
+      ],
+      "ink": "wood",
+      "w": 13,
+      "group": "ladder"
+     },
+     {
+      "id": "top",
+      "seg": [
+       "r4l",
+       "r4r"
+      ],
+      "ink": "accent",
+      "w": 9
+     },
+     {
+      "id": "bot",
+      "seg": [
+       "r0l",
+       "r0r"
+      ],
+      "ink": "warm",
+      "w": 9
+     },
+     {
+      "id": "middle",
+      "seg": [
+       "r2l",
+       "r2r"
+      ],
+      "ink": "gold",
+      "w": 11
+     },
+     {
+      "id": "l24",
+      "label": "24\\text{ in}",
+      "at": "r0r",
+      "dir": "e",
+      "ink": "warm"
+     },
+     {
+      "id": "l12",
+      "label": "12\\text{ in}",
+      "at": "r4r",
+      "dir": "e",
+      "ink": "accent"
+     },
+     {
+      "id": "l21",
+      "label": "21",
+      "at": "r1r",
+      "dir": "e",
+      "ink": "muted",
+      "size": "s"
+     },
+     {
+      "id": "l15",
+      "label": "15",
+      "at": "r3r",
+      "dir": "e",
+      "ink": "muted",
+      "size": "s"
+     },
+     {
+      "id": "lq",
+      "label": "?",
+      "at": "r2r",
+      "dir": "e",
+      "ink": "gold",
+      "size": "l"
+     },
+     {
+      "id": "l18",
+      "label": "18\\text{ in}",
+      "at": "r2r",
+      "dir": "e",
+      "ink": "gold",
+      "size": "l"
+     },
+     {
+      "id": "AB",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "accent",
+      "w": 9,
+      "arrows": 2
+     },
+     {
+      "id": "DC",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ink": "warm",
+      "w": 9,
+      "arrows": 2
+     },
+     {
+      "id": "ABx",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "accent",
+      "w": 3,
+      "extend": [
+       40,
+       40
+      ]
+     },
+     {
+      "id": "DCx",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ink": "warm",
+      "w": 3,
+      "extend": [
+       40,
+       40
+      ]
+     },
+     {
+      "id": "AD",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "ink": "ink",
+      "w": 6,
+      "ticks": 1,
+      "tickAt": [
+       0.25,
+       0.75
+      ]
+     },
+     {
+      "id": "BC",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "ink",
+      "w": 6,
+      "ticks": 2,
+      "tickAt": [
+       0.25,
+       0.75
+      ]
+     },
+     {
+      "id": "ADp",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "ink": "ink",
+      "w": 6
+     },
+     {
+      "id": "BCp",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "ink",
+      "w": 6
+     },
+     {
+      "id": "MN",
+      "seg": [
+       "M",
+       "N"
+      ],
+      "ink": "gold",
+      "w": 11
+     },
+     {
+      "id": "mM",
+      "dot": "M",
+      "ink": "gold"
+     },
+     {
+      "id": "mN",
+      "dot": "N",
+      "ink": "gold"
+     },
+     {
+      "id": "lbase1",
+      "label": "\\text{base}",
+      "at": "AB",
+      "dir": "n",
+      "ink": "accent"
+     },
+     {
+      "id": "lbase2",
+      "label": "\\text{base}",
+      "at": "DC",
+      "dir": "s",
+      "ink": "warm"
+     },
+     {
+      "id": "lleg1",
+      "label": "\\text{leg}",
+      "at": "ADp",
+      "dir": "w"
+     },
+     {
+      "id": "lleg2",
+      "label": "\\text{leg}",
+      "at": "BCp",
+      "dir": "e"
+     },
+     {
+      "id": "lA",
+      "label": "A",
+      "at": "A",
+      "dir": "nw"
+     },
+     {
+      "id": "lB",
+      "label": "B",
+      "at": "B",
+      "dir": "ne"
+     },
+     {
+      "id": "lC",
+      "label": "C",
+      "at": "C",
+      "dir": "se"
+     },
+     {
+      "id": "lD",
+      "label": "D",
+      "at": "D",
+      "dir": "sw"
+     },
+     {
+      "id": "lM",
+      "label": "M",
+      "at": "M",
+      "dir": "w"
+     },
+     {
+      "id": "lN",
+      "label": "N",
+      "at": "N",
+      "dir": "e"
+     },
+     {
+      "id": "lmid",
+      "label": "\\text{midsegment}",
+      "at": "MN",
+      "dir": "n",
+      "ink": "gold",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "say": "This orchard ladder narrows as it climbs.",
+     "do": [
+      {
+       "do": "draw",
+       "target": "ladder",
+       "dur": 1.1
+      }
+     ]
+    },
+    {
+     "say": "The bottom rung is twenty-four inches. The top rung, twelve.",
+     "do": [
+      {
+       "do": "draw",
+       "target": "bot",
+       "at": "twenty-four"
+      },
+      {
+       "do": "show",
+       "target": "l24",
+       "at": "twenty-four"
+      },
+      {
+       "do": "draw",
+       "target": "top",
+       "at": "twelve"
+      },
+      {
+       "do": "show",
+       "target": "l12",
+       "at": "twelve"
+      }
+     ]
+    },
+    {
+     "say": "How long is the rung exactly halfway up?",
+     "pause": 1.1,
+     "do": [
+      {
+       "do": "draw",
+       "target": "middle",
+       "at": "halfway"
+      },
+      {
+       "do": "show",
+       "target": "lq",
+       "at": "halfway"
+      }
+     ]
+    },
+    {
+     "say": "Each rung is three inches shorter than the last, so the middle one is eighteen: halfway between. That's the average. Add the two, divide by two.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "show",
+       "target": "l21",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "l15",
+       "at": "shorter"
+      },
+      {
+       "do": "hide",
+       "target": "lq",
+       "at": "eighteen"
+      },
+      {
+       "do": "show",
+       "target": "l18",
+       "at": "eighteen"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{\\ca{12}+\\cw{24}}{2}=\\cg{18}",
+       "at": "average"
+      }
+     ]
+    },
+    {
+     "say": "The ladder's outline is a trapezoid: four straight sides, with exactly one pair parallel, pointing the same way, never meeting.",
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "ladder",
+        "top",
+        "bot",
+        "middle",
+        "l24",
+        "l12",
+        "l21",
+        "l15",
+        "l18"
+       ]
+      },
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": "tile",
+       "at": "outline"
+      },
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         -8,
+         7
+        ],
+        "B": [
+         4,
+         7
+        ],
+        "C": [
+         12,
+         -7
+        ],
+        "D": [
+         -12,
+         -7
+        ]
+       },
+       "at": "four"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "AB",
+        "DC"
+       ],
+       "at": "parallel"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "ABx",
+        "DCx"
+       ],
+       "at": "pointing",
+       "dur": 1.1
+      }
+     ]
+    },
+    {
+     "say": "Those two are the bases. The other two are the legs.",
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "ABx",
+        "DCx"
+       ]
+      },
+      {
+       "do": "show",
+       "target": [
+        "lbase1",
+        "lbase2"
+       ],
+       "at": "bases"
+      },
+      {
+       "do": "draw",
+       "target": [
+        "ADp",
+        "BCp"
+       ],
+       "at": "legs"
+      },
+      {
+       "do": "show",
+       "target": [
+        "lleg1",
+        "lleg2"
+       ],
+       "at": "legs"
+      }
+     ]
+    },
+    {
+     "say": "Name the corners in order around the shape: A, B, C, D. So A B and D C are the bases.",
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "lbase1",
+        "lbase2",
+        "lleg1",
+        "lleg2"
+       ]
+      },
+      {
+       "do": "show",
+       "target": "lA",
+       "at": "A"
+      },
+      {
+       "do": "show",
+       "target": "lB",
+       "at": "B"
+      },
+      {
+       "do": "show",
+       "target": "lC",
+       "at": "C"
+      },
+      {
+       "do": "show",
+       "target": "lD",
+       "at": "D"
+      },
+      {
+       "do": "write",
+       "tex": "\\overline{\\ca{AB}}\\parallel\\overline{\\cw{DC}}",
+       "at": "So"
+      }
+     ]
+    },
+    {
+     "say": "A bar over the letters means the side itself, and this symbol means parallel.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "text",
+       "text": "A bar: the side itself",
+       "at": "bar",
+       "tone": "muted"
+      },
+      {
+       "do": "text",
+       "text": "$\\parallel$ means parallel",
+       "at": "symbol",
+       "tone": "muted"
+      }
+     ]
+    },
+    {
+     "say": "Join the midpoints of the legs, the points halfway along them, M and N.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "show",
+       "target": [
+        "mM",
+        "mN"
+       ],
+       "at": "midpoints"
+      },
+      {
+       "do": "show",
+       "target": [
+        "AD",
+        "BC"
+       ],
+       "at": "halfway"
+      },
+      {
+       "do": "show",
+       "target": "lM",
+       "at": "M"
+      },
+      {
+       "do": "show",
+       "target": "lN",
+       "at": "N"
+      }
+     ]
+    },
+    {
+     "say": "That's the midsegment, the middle rung, and its length is always the average of the bases.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "AD",
+        "BC"
+       ]
+      },
+      {
+       "do": "draw",
+       "target": "MN"
+      },
+      {
+       "do": "show",
+       "target": "lmid",
+       "at": "midsegment"
+      },
+      {
+       "do": "write",
+       "tex": "\\cg{m}=\\frac{\\ca{b_1}+\\cw{b_2}}{2}",
+       "at": "average"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -15,
+     -14,
+     31,
+     14
+    ],
+    "points": {
+     "A": [
+      -8,
+      7
+     ],
+     "B": [
+      4,
+      7
+     ],
+     "C": [
+      12,
+      -7
+     ],
+     "D": [
+      -12,
+      -7
+     ],
+     "M": {
+      "mid": [
+       "A",
+       "D"
+      ]
+     },
+     "N": {
+      "mid": [
+       "B",
+       "C"
+      ]
+     },
+     "A2": [
+      24,
+      -7
+     ],
+     "B2": [
+      12,
+      -7
+     ],
+     "C2": [
+      4,
+      7
+     ],
+     "D2": [
+      28,
+      7
+     ],
+     "M2": [
+      26,
+      0
+     ],
+     "ca": [
+      -8,
+      7
+     ],
+     "cb": [
+      4,
+      7
+     ],
+     "cc": [
+      12,
+      -7
+     ],
+     "cd": [
+      -12,
+      -7
+     ],
+     "cm": [
+      -10,
+      0
+     ],
+     "cn": [
+      8,
+      0
+     ]
+    },
+    "parts": [
+     {
+      "id": "copy",
+      "poly": [
+       "cd",
+       "cc",
+       "cb",
+       "ca"
+      ],
+      "fill": "warm-fill",
+      "solid": true,
+      "group": "C"
+     },
+     {
+      "id": "copyMN",
+      "seg": [
+       "cm",
+       "cn"
+      ],
+      "ink": "gold",
+      "w": 11,
+      "group": "C"
+     },
+     {
+      "id": "tile",
+      "poly": [
+       "D",
+       "C",
+       "B",
+       "A"
+      ],
+      "fill": "accent-fill",
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "MN",
+      "seg": [
+       "M",
+       "N"
+      ],
+      "ink": "gold",
+      "w": 11,
+      "start": true
+     },
+     {
+      "id": "AB",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "accent",
+      "w": 9,
+      "start": true
+     },
+     {
+      "id": "DC",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ink": "warm",
+      "w": 9,
+      "start": true
+     },
+     {
+      "id": "l12",
+      "label": "12",
+      "at": "AB",
+      "dir": "n",
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "l24",
+      "label": "24",
+      "at": "DC",
+      "dir": "s",
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "l18",
+      "label": "18",
+      "at": "MN",
+      "dir": "n",
+      "ink": "gold",
+      "halo": true,
+      "start": true
+     },
+     {
+      "id": "pin",
+      "dot": "cn",
+      "ink": "ink",
+      "r": 11
+     },
+     {
+      "id": "para",
+      "poly": [
+       "D",
+       "A2",
+       "D2",
+       "A"
+      ],
+      "ink": "ink",
+      "w": 6,
+      "fill": "none"
+     },
+     {
+      "id": "topR",
+      "seg": [
+       "C2",
+       "D2"
+      ],
+      "ink": "warm",
+      "w": 9
+     },
+     {
+      "id": "botR",
+      "seg": [
+       "B2",
+       "A2"
+      ],
+      "ink": "accent",
+      "w": 9
+     },
+     {
+      "id": "mline",
+      "seg": [
+       "M",
+       "M2"
+      ],
+      "ink": "gold",
+      "w": 13
+     },
+     {
+      "id": "d1",
+      "label": "b_1",
+      "at": "AB",
+      "dir": "n",
+      "ink": "accent"
+     },
+     {
+      "id": "d2",
+      "label": "b_2",
+      "at": "topR",
+      "dir": "n",
+      "ink": "warm"
+     },
+     {
+      "id": "d3",
+      "label": "b_2",
+      "at": "DC",
+      "dir": "s",
+      "ink": "warm"
+     },
+     {
+      "id": "d4",
+      "label": "b_1",
+      "at": "botR",
+      "dir": "s",
+      "ink": "accent"
+     },
+     {
+      "id": "lmL",
+      "label": "m",
+      "at": "MN",
+      "dir": "n",
+      "ink": "gold",
+      "halo": true
+     },
+     {
+      "id": "seg2",
+      "seg": [
+       "cn",
+       "M2"
+      ],
+      "ink": "gold",
+      "w": 11
+     },
+     {
+      "id": "lmR",
+      "label": "m",
+      "at": "seg2",
+      "dir": "n",
+      "ink": "gold",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "say": "Slide the top base sideways. The midsegment keeps its length.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         -2.5,
+         7
+        ],
+        "B": [
+         9.5,
+         7
+        ]
+       },
+       "at": "Slide",
+       "dur": 1.3
+      },
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         -13,
+         7
+        ],
+        "B": [
+         -1,
+         7
+        ]
+       },
+       "at": "midsegment",
+       "dur": 1.5
+      }
+     ]
+    },
+    {
+     "say": "Here's why. Give an identical copy a half turn about the midpoint of a leg.",
+     "pause": 1.5,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         -8,
+         7
+        ],
+        "B": [
+         4,
+         7
+        ]
+       },
+       "at": "why",
+       "dur": 0.9
+      },
+      {
+       "do": "hide",
+       "target": [
+        "l12",
+        "l24",
+        "l18"
+       ],
+       "at": "why"
+      },
+      {
+       "do": "show",
+       "target": "C",
+       "at": "identical",
+       "dur": 0.5
+      },
+      {
+       "do": "show",
+       "target": "pin",
+       "at": "half"
+      },
+      {
+       "do": "turn",
+       "target": "C",
+       "about": "cn",
+       "deg": 180,
+       "at": "half",
+       "dur": 2.6
+      }
+     ]
+    },
+    {
+     "say": "The two pieces lock into a parallelogram.",
+     "pause": 0.1,
+     "do": [
+      {
+       "do": "hide",
+       "target": "pin"
+      },
+      {
+       "do": "draw",
+       "target": "para",
+       "at": "lock",
+       "dur": 1.2
+      }
+     ]
+    },
+    {
+     "say": "Its long side is one base plus the other.",
+     "pause": 0.1,
+     "do": [
+      {
+       "do": "hide",
+       "target": "para"
+      },
+      {
+       "do": "show",
+       "target": [
+        "d1",
+        "topR",
+        "d2",
+        "d3",
+        "botR",
+        "d4"
+       ],
+       "at": "long"
+      },
+      {
+       "do": "write",
+       "tex": "\\ca{b_1}+\\cw{b_2}",
+       "at": "plus"
+      }
+     ]
+    },
+    {
+     "say": "And straight across the middle, two midsegments make that same length.",
+     "pause": 0.15,
+     "do": [
+      {
+       "do": "draw",
+       "target": "mline",
+       "at": "straight",
+       "dur": 1.0
+      },
+      {
+       "do": "show",
+       "target": [
+        "lmL",
+        "lmR"
+       ],
+       "at": "two"
+      },
+      {
+       "do": "write",
+       "tex": "\\cg{m}+\\cg{m}=\\ca{b_1}+\\cw{b_2}",
+       "at": "same"
+      }
+     ]
+    },
+    {
+     "say": "So one midsegment is the sum of the bases, divided by two.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "\\cg{m}=\\frac{\\ca{b_1}+\\cw{b_2}}{2}",
+       "at": "one"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -17,
+     -13,
+     17,
+     13
+    ],
+    "points": {
+     "A": [
+      -8,
+      7
+     ],
+     "B": [
+      4,
+      7
+     ],
+     "C": [
+      12,
+      -7
+     ],
+     "D": [
+      -12,
+      -7
+     ],
+     "M": {
+      "mid": [
+       "A",
+       "D"
+      ]
+     },
+     "N": {
+      "mid": [
+       "B",
+       "C"
+      ]
+     }
+    },
+    "parts": [
+     {
+      "id": "tile",
+      "poly": [
+       "D",
+       "C",
+       "B",
+       "A"
+      ],
+      "fill": "accent-fill",
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "MN",
+      "seg": [
+       "M",
+       "N"
+      ],
+      "ink": "gold",
+      "w": 11,
+      "start": true
+     },
+     {
+      "id": "AB",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "accent",
+      "w": 9,
+      "start": true
+     },
+     {
+      "id": "DC",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ink": "warm",
+      "w": 9,
+      "start": true
+     },
+     {
+      "id": "lA",
+      "label": "A",
+      "at": "A",
+      "dir": "nw",
+      "start": true
+     },
+     {
+      "id": "lB",
+      "label": "B",
+      "at": "B",
+      "dir": "ne",
+      "start": true
+     },
+     {
+      "id": "lC",
+      "label": "C",
+      "at": "C",
+      "dir": "se",
+      "start": true
+     },
+     {
+      "id": "lD",
+      "label": "D",
+      "at": "D",
+      "dir": "sw",
+      "start": true
+     },
+     {
+      "id": "tx",
+      "label": "x+6",
+      "at": "AB",
+      "dir": "n",
+      "ink": "accent"
+     },
+     {
+      "id": "bx",
+      "label": "3x+8",
+      "at": "DC",
+      "dir": "s",
+      "ink": "warm"
+     },
+     {
+      "id": "m25",
+      "label": "25",
+      "at": "MN",
+      "dir": "n",
+      "ink": "gold",
+      "halo": true
+     },
+     {
+      "id": "t15",
+      "label": "15",
+      "at": "AB",
+      "dir": "n",
+      "ink": "accent"
+     },
+     {
+      "id": "b35",
+      "label": "35",
+      "at": "DC",
+      "dir": "s",
+      "ink": "warm"
+     },
+     {
+      "id": "t19",
+      "label": "19",
+      "at": "AB",
+      "dir": "n",
+      "ink": "accent"
+     },
+     {
+      "id": "bq",
+      "label": "DC",
+      "at": "DC",
+      "dir": "s",
+      "ink": "warm"
+     },
+     {
+      "id": "b23",
+      "label": "23",
+      "at": "DC",
+      "dir": "s",
+      "ink": "warm"
+     },
+     {
+      "id": "m21",
+      "label": "21",
+      "at": "MN",
+      "dir": "n",
+      "ink": "gold",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "say": "Try one. A B is x plus six. D C is three x plus eight. The midsegment is twenty-five. Find A B.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "problem",
+       "text": "In trapezoid $ABCD$, $AB = x+6$, $DC = 3x+8$, and the midsegment is $25$. Find $AB$."
+      },
+      {
+       "do": "show",
+       "target": "tx",
+       "at": "x"
+      },
+      {
+       "do": "show",
+       "target": "bx",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "m25",
+       "at": "twenty-five"
+      }
+     ]
+    },
+    {
+     "say": "Write the average.",
+     "pause": 0.1,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{(\\ca{x+6})+(\\cw{3x+8})}{2}=\\cg{25}"
+      }
+     ]
+    },
+    {
+     "say": "On top, x and three x make four x, and six and eight make fourteen.",
+     "pause": 0.1,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\frac{4x+14}{2}=\\cg{25}",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "say": "Multiply both sides by two to clear the fraction.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "4x+14=50",
+       "note": "\\times 2"
+      }
+     ]
+    },
+    {
+     "say": "Subtract fourteen.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "4x=36",
+       "note": "-14"
+      }
+     ]
+    },
+    {
+     "say": "Divide by four.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "x=9",
+       "note": "\\div 4"
+      }
+     ]
+    },
+    {
+     "say": "x is nine.",
+     "pause": 0.2
+    },
+    {
+     "say": "But they asked for A B, not x. Nine plus six: fifteen.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "clear",
+       "at": "asked"
+      },
+      {
+       "do": "write",
+       "tex": "x=9",
+       "at": "asked",
+       "fresh": true
+      },
+      {
+       "do": "answer",
+       "tex": "\\ca{AB}=9+6=\\ca{15}",
+       "at": "Nine"
+      },
+      {
+       "do": "hide",
+       "target": "tx",
+       "at": "fifteen"
+      },
+      {
+       "do": "show",
+       "target": "t15",
+       "at": "fifteen"
+      }
+     ]
+    },
+    {
+     "say": "Check: D C is thirty-five, and the average of fifteen and thirty-five is twenty-five.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "hide",
+       "target": "bx",
+       "at": "thirty-five"
+      },
+      {
+       "do": "show",
+       "target": "b35",
+       "at": "thirty-five"
+      },
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         -9.75,
+         7
+        ],
+        "B": [
+         0.15000000000000036,
+         7
+        ],
+        "C": [
+         11.55,
+         -7
+        ],
+        "D": [
+         -11.55,
+         -7
+        ]
+       },
+       "at": "thirty-five",
+       "dur": 1.0
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{DC}=3(9)+8=\\cw{35}",
+       "at": "thirty-five",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{\\ca{15}+\\cw{35}}{2}=\\cg{25}\\ \\checkmark",
+       "at": "average",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "say": "If a base is the unknown, it's the same equation: double the midsegment, then subtract the base you know.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "t15",
+        "b35",
+        "m25"
+       ]
+      },
+      {
+       "do": "clear"
+      },
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         -9.98,
+         7
+        ],
+        "B": [
+         7.5,
+         7
+        ],
+        "C": [
+         10.58,
+         -7
+        ],
+        "D": [
+         -10.58,
+         -7
+        ]
+       },
+       "dur": 1.0
+      },
+      {
+       "do": "show",
+       "target": "t19"
+      },
+      {
+       "do": "show",
+       "target": "bq"
+      },
+      {
+       "do": "show",
+       "target": "m21"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{\\ca{19}+\\cw{DC}}{2}=\\cg{21}",
+       "at": "same"
+      },
+      {
+       "do": "write",
+       "tex": "\\ca{19}+\\cw{DC}=42",
+       "note": "\\times 2",
+       "at": "double"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{DC}=23",
+       "note": "-19",
+       "at": "subtract"
+      },
+      {
+       "do": "hide",
+       "target": "bq",
+       "at": "subtract"
+      },
+      {
+       "do": "show",
+       "target": "b23",
+       "at": "subtract"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -17,
+     -13,
+     17,
+     13
+    ],
+    "points": {
+     "A": [
+      -9.98,
+      7
+     ],
+     "B": [
+      7.5,
+      7
+     ],
+     "C": [
+      10.58,
+      -7
+     ],
+     "D": [
+      -10.58,
+      -7
+     ],
+     "i1": [
+      0,
+      -11.5
+     ],
+     "i2": [
+      0,
+      11.5
+     ],
+     "gA": [
+      -6.904416720273165,
+      7
+     ],
+     "gB": [
+      6.904416720273165,
+      7
+     ],
+     "gC": [
+      12,
+      -7
+     ],
+     "gD": [
+      -12,
+      -7
+     ]
+    },
+    "parts": [
+     {
+      "id": "ghost",
+      "poly": [
+       "gD",
+       "gC",
+       "gB",
+       "gA"
+      ],
+      "ink": "muted",
+      "w": 3,
+      "fill": "none"
+     },
+     {
+      "group": "T",
+      "id": "tile",
+      "poly": [
+       "D",
+       "C",
+       "B",
+       "A"
+      ],
+      "fill": "accent-fill",
+      "back": "warm-fill",
+      "solid": true,
+      "start": true
+     },
+     {
+      "group": "T",
+      "id": "adT",
+      "seg": [
+       "A",
+       "D"
+      ],
+      "ink": "ink",
+      "w": 6,
+      "ticks": 2
+     },
+     {
+      "group": "T",
+      "id": "bcT",
+      "seg": [
+       "B",
+       "C"
+      ],
+      "ink": "ink",
+      "w": 6,
+      "ticks": 2
+     },
+     {
+      "group": "T",
+      "id": "angD",
+      "angle": [
+       "C",
+       "D",
+       "A"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "r": 74
+     },
+     {
+      "group": "T",
+      "id": "angC",
+      "angle": [
+       "D",
+       "C",
+       "B"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "r": 74
+     },
+     {
+      "group": "T",
+      "id": "diagAC",
+      "seg": [
+       "A",
+       "C"
+      ],
+      "ink": "gold",
+      "w": 7
+     },
+     {
+      "group": "T",
+      "id": "diagBD",
+      "seg": [
+       "B",
+       "D"
+      ],
+      "ink": "violet",
+      "w": 7
+     },
+     {
+      "id": "mirror",
+      "seg": [
+       "i1",
+       "i2"
+      ],
+      "ink": "ink",
+      "w": 4,
+      "dash": true
+     },
+     {
+      "group": "T",
+      "id": "lA",
+      "label": "A",
+      "at": "A",
+      "dir": "nw",
+      "start": true
+     },
+     {
+      "group": "T",
+      "id": "lB",
+      "label": "B",
+      "at": "B",
+      "dir": "ne",
+      "start": true
+     },
+     {
+      "group": "T",
+      "id": "lC",
+      "label": "C",
+      "at": "C",
+      "dir": "se",
+      "start": true
+     },
+     {
+      "group": "T",
+      "id": "lD",
+      "label": "D",
+      "at": "D",
+      "dir": "sw",
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "say": "Now make the legs equal, shown by these tick marks, or this symbol. That's an isosceles trapezoid.",
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         -6.904416720273165,
+         7
+        ],
+        "B": [
+         6.904416720273165,
+         7
+        ],
+        "C": [
+         12,
+         -7
+        ],
+        "D": [
+         -12,
+         -7
+        ]
+       },
+       "dur": 1.2
+      },
+      {
+       "do": "show",
+       "target": [
+        "adT",
+        "bcT"
+       ],
+       "at": "tick"
+      },
+      {
+       "do": "write",
+       "tex": "\\overline{AD}\\cong\\overline{BC}",
+       "at": "symbol"
+      },
+      {
+       "do": "text",
+       "text": "Isosceles: the legs are the same length.",
+       "at": "isosceles",
+       "tone": "muted"
+      }
+     ]
+    },
+    {
+     "say": "Flip it over its mirror line, and it lands exactly on its own outline.",
+     "pause": 1.2,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "adT",
+        "bcT"
+       ]
+      },
+      {
+       "do": "show",
+       "target": "ghost",
+       "at": "Flip"
+      },
+      {
+       "do": "show",
+       "target": "mirror",
+       "at": "mirror"
+      },
+      {
+       "do": "show",
+       "target": [
+        "angD",
+        "angC"
+       ],
+       "at": "Flip"
+      },
+      {
+       "do": "flip",
+       "target": "T",
+       "over": [
+        "i1",
+        "i2"
+       ],
+       "at": "mirror",
+       "dur": 2.4
+      }
+     ]
+    },
+    {
+     "say": "A and B trade places, and so do C and D. So the two angles on the same base are equal.",
+     "do": [
+      {
+       "do": "hide",
+       "target": "mirror"
+      },
+      {
+       "do": "write",
+       "tex": "\\cg{\\angle D}=\\cv{\\angle C}",
+       "at": "equal"
+      },
+      {
+       "do": "write",
+       "tex": "\\angle A=\\angle B",
+       "at": "equal"
+      }
+     ]
+    },
+    {
+     "say": "Flip it back, and watch the diagonals, the lines joining opposite corners. They trade places too, so they're equal.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "angD",
+        "angC",
+        "ghost"
+       ]
+      },
+      {
+       "do": "draw",
+       "target": [
+        "diagAC",
+        "diagBD"
+       ]
+      },
+      {
+       "do": "flip",
+       "target": "T",
+       "over": [
+        "i1",
+        "i2"
+       ],
+       "at": "back",
+       "dur": 2.4
+      },
+      {
+       "do": "write",
+       "tex": "\\cg{AC}=\\cv{BD}",
+       "at": "equal"
+      }
+     ]
+    },
+    {
+     "say": "The measure of an angle is its size in degrees. Angle D is three x plus ten, and angle C is five x minus thirty. Same base, so set them equal.",
+     "pause": 0.1,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "diagAC",
+        "diagBD"
+       ]
+      },
+      {
+       "do": "show",
+       "target": [
+        "angD"
+       ],
+       "at": "Angle"
+      },
+      {
+       "do": "write",
+       "tex": "\\cg{\\angle D}=(3x+10)^\\circ",
+       "at": "three"
+      },
+      {
+       "do": "show",
+       "target": "angC",
+       "at": "five"
+      },
+      {
+       "do": "write",
+       "tex": "\\cv{\\angle C}=(5x-30)^\\circ",
+       "at": "five",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "\\cv{5x-30}=\\cg{3x+10}",
+       "at": "set",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "say": "Collect the x terms on one side, the numbers on the other. Two x is forty, so x is twenty.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "2x=40",
+       "note": "-3x,\\,+30",
+       "at": "numbers"
+      },
+      {
+       "do": "write",
+       "tex": "x=20",
+       "note": "\\div 2",
+       "at": "twenty"
+      }
+     ]
+    },
+    {
+     "say": "Angle C is seventy degrees.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "\\cv{\\angle C}=5(20)-30=70^\\circ"
+      }
+     ]
+    },
+    {
+     "say": "Diagonals work the same way. A C is four x minus five, and B D is x plus four. Set them equal: x is three, so A C is seven.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "hide",
+       "target": [
+        "angD",
+        "angC"
+       ]
+      },
+      {
+       "do": "draw",
+       "target": [
+        "diagAC",
+        "diagBD"
+       ]
+      },
+      {
+       "do": "write",
+       "tex": "\\cg{AC}=4x-5",
+       "at": "four"
+      },
+      {
+       "do": "write",
+       "tex": "\\cv{BD}=x+4",
+       "at": "plus",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "4x-5=x+4",
+       "at": "Set",
+       "fresh": true
+      },
+      {
+       "do": "write",
+       "tex": "x=3",
+       "at": "three"
+      },
+      {
+       "do": "answer",
+       "tex": "\\cg{AC}=4(3)-5=7",
+       "at": "seven"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -17,
+     -13.5,
+     17,
+     16
+    ],
+    "points": {
+     "A": [
+      -6.904416720273165,
+      7
+     ],
+     "B": [
+      6.904416720273165,
+      7
+     ],
+     "C": [
+      12,
+      -7
+     ],
+     "D": [
+      -12,
+      -7
+     ],
+     "U": {
+      "along": [
+       "D",
+       "A"
+      ],
+      "t": 1.5
+     },
+     "V": {
+      "along": [
+       "A",
+       "D"
+      ],
+      "t": 1.25
+     },
+     "far": {
+      "along": [
+       "A",
+       "B"
+      ],
+      "t": 0.7
+     }
+    },
+    "parts": [
+     {
+      "id": "tile",
+      "poly": [
+       "D",
+       "C",
+       "B",
+       "A"
+      ],
+      "fill": "accent-fill",
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "AB",
+      "seg": [
+       "A",
+       "B"
+      ],
+      "ink": "accent",
+      "w": 8,
+      "arrows": 2
+     },
+     {
+      "id": "DC",
+      "seg": [
+       "D",
+       "C"
+      ],
+      "ink": "warm",
+      "w": 8,
+      "arrows": 2
+     },
+     {
+      "id": "leg",
+      "seg": [
+       "D",
+       "A"
+      ],
+      "ink": "ink",
+      "w": 7
+     },
+     {
+      "id": "legX",
+      "seg": [
+       "U",
+       "V"
+      ],
+      "ink": "ink",
+      "w": 5
+     },
+     {
+      "id": "ghostD",
+      "angle": [
+       "C",
+       "D",
+       "A"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "r": 86
+     },
+     {
+      "id": "angDs",
+      "angle": [
+       "C",
+       "D",
+       "A"
+      ],
+      "fill": "gold-fill",
+      "ink": "gold",
+      "r": 86,
+      "group": "W"
+     },
+     {
+      "id": "angA",
+      "angle": [
+       "B",
+       "A",
+       "D"
+      ],
+      "fill": "violet-fill",
+      "ink": "violet",
+      "r": 86
+     },
+     {
+      "id": "lA",
+      "label": "A",
+      "at": "A",
+      "dir": "w",
+      "start": true
+     },
+     {
+      "id": "lB",
+      "label": "B",
+      "at": "B",
+      "dir": "ne",
+      "start": true
+     },
+     {
+      "id": "lC",
+      "label": "C",
+      "at": "C",
+      "dir": "se",
+      "start": true
+     },
+     {
+      "id": "lD",
+      "label": "D",
+      "at": "D",
+      "dir": "sw",
+      "start": true
+     },
+     {
+      "id": "l57",
+      "label": "57^\\circ",
+      "at": "A",
+      "dir": "ne",
+      "ink": "gold",
+      "far": 2.6,
+      "size": "s"
+     },
+     {
+      "id": "l123",
+      "label": "123^\\circ",
+      "at": "A",
+      "dir": "se",
+      "ink": "violet",
+      "far": 2.6,
+      "size": "s"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "say": "One more, for every trapezoid.",
+     "pause": 0.1,
+     "do": [
+      {
+       "do": "move",
+       "points": {
+        "A": [
+         -2.9082936952348515,
+         7
+        ],
+        "B": [
+         9.091706304765149,
+         7
+        ],
+        "C": [
+         12,
+         -7
+        ],
+        "D": [
+         -12,
+         -7
+        ]
+       },
+       "dur": 1.2
+      }
+     ]
+    },
+    {
+     "say": "Slide angle D up the leg. The bases are parallel, so its size doesn't change.",
+     "do": [
+      {
+       "do": "show",
+       "target": "leg"
+      },
+      {
+       "do": "show",
+       "target": [
+        "ghostD",
+        "angDs"
+       ]
+      },
+      {
+       "do": "show",
+       "target": "legX",
+       "at": "up"
+      },
+      {
+       "do": "slide",
+       "target": "W",
+       "by": [
+        9.091706304765149,
+        14
+       ],
+       "at": "up",
+       "dur": 2.8
+      },
+      {
+       "do": "draw",
+       "target": [
+        "AB",
+        "DC"
+       ],
+       "at": "bases"
+      }
+     ]
+    },
+    {
+     "say": "At the top it sits beside angle A, and together they fill a straight line: one hundred eighty degrees.",
+     "pause": 0.2,
+     "do": [
+      {
+       "do": "show",
+       "target": "angA",
+       "at": "beside"
+      },
+      {
+       "do": "highlight",
+       "target": "legX",
+       "at": "straight"
+      },
+      {
+       "do": "write",
+       "tex": "\\cg{\\angle D}+\\cv{\\angle A}=180^\\circ",
+       "at": "straight"
+      }
+     ]
+    },
+    {
+     "say": "So if angle D is fifty-seven, angle A is one hundred twenty-three.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "show",
+       "target": "l57",
+       "at": "fifty-seven"
+      },
+      {
+       "do": "write",
+       "tex": "\\cv{\\angle A}=180^\\circ-\\cg{57^\\circ}",
+       "at": "fifty-seven"
+      },
+      {
+       "do": "answer",
+       "tex": "\\cv{\\angle A}=123^\\circ",
+       "at": "twenty-three"
+      },
+      {
+       "do": "show",
+       "target": "l123",
+       "at": "twenty-three"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -17,
+     -13,
+     17,
+     13
+    ],
+    "points": {
+     "A": [
+      -2.9082936952348515,
+      7
+     ],
+     "B": [
+      9.091706304765149,
+      7
+     ],
+     "C": [
+      12,
+      -7
+     ],
+     "D": [
+      -12,
+      -7
+     ],
+     "M": [
+      -7.454146847617426,
+      0
+     ],
+     "N": [
+      10.545853152382573,
+      0
+     ],
+     "Mb": [
+      -7.454146847617426,
+      -7
+     ],
+     "Nb": [
+      10.545853152382573,
+      -7
+     ],
+     "Mt": [
+      -7.454146847617426,
+      7
+     ],
+     "Nt": [
+      10.545853152382573,
+      7
+     ]
+    },
+    "parts": [
+     {
+      "id": "core",
+      "poly": [
+       "Mb",
+       "Nb",
+       "N",
+       "B",
+       "A",
+       "M"
+      ],
+      "fill": "accent-fill",
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "triL",
+      "poly": [
+       "D",
+       "Mb",
+       "M"
+      ],
+      "fill": "gold-fill",
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "triR",
+      "poly": [
+       "Nb",
+       "C",
+       "N"
+      ],
+      "fill": "gold-fill",
+      "solid": true,
+      "start": true
+     },
+     {
+      "id": "MN",
+      "seg": [
+       "M",
+       "N"
+      ],
+      "ink": "gold",
+      "w": 11
+     },
+     {
+      "id": "mM",
+      "dot": "M",
+      "ink": "ink"
+     },
+     {
+      "id": "mN",
+      "dot": "N",
+      "ink": "ink"
+     },
+     {
+      "id": "rect",
+      "poly": [
+       "Mb",
+       "Nb",
+       "Nt",
+       "Mt"
+      ],
+      "ink": "ink",
+      "w": 6,
+      "fill": "none"
+     },
+     {
+      "id": "dimM",
+      "dim": [
+       "Mt",
+       "Nt"
+      ],
+      "side": "n",
+      "tex": "m",
+      "ink": "gold"
+     },
+     {
+      "id": "dimH",
+      "dim": [
+       "Nt",
+       "Nb"
+      ],
+      "side": "e",
+      "tex": "h",
+      "ink": "ink"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "say": "The midsegment also gives you area. Cut off each corner, and give it a half turn about a midpoint.",
+     "pause": 1.0,
+     "do": [
+      {
+       "do": "draw",
+       "target": "MN",
+       "at": "midsegment"
+      },
+      {
+       "do": "show",
+       "target": [
+        "mM",
+        "mN"
+       ],
+       "at": "Cut"
+      },
+      {
+       "do": "turn",
+       "target": "triL",
+       "about": "M",
+       "deg": 180,
+       "at": "half",
+       "dur": 2.2
+      },
+      {
+       "do": "turn",
+       "target": "triR",
+       "about": "N",
+       "deg": 180,
+       "at": "half",
+       "dur": 2.2
+      }
+     ]
+    },
+    {
+     "say": "Now it's a rectangle, as wide as the midsegment. So area is midsegment times height.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "mM",
+        "mN"
+       ]
+      },
+      {
+       "do": "draw",
+       "target": "rect",
+       "dur": 1.0
+      },
+      {
+       "do": "show",
+       "target": "dimM",
+       "at": "wide"
+      },
+      {
+       "do": "show",
+       "target": "dimH",
+       "at": "height"
+      },
+      {
+       "do": "answer",
+       "tex": "\\text{Area}=\\cg{m}\\times h",
+       "at": "So"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -19,
+     -12.5,
+     19,
+     11.5
+    ],
+    "points": {
+     "O": [
+      -14,
+      -8.5
+     ],
+     "R": [
+      14,
+      -8.5
+     ],
+     "OT": [
+      -14,
+      9
+     ],
+     "RX": [
+      16,
+      -8.5
+     ],
+     "d0": [
+      -14,
+      5.5
+     ],
+     "d60": [
+      14,
+      0.833
+     ],
+     "m0": [
+      0,
+      -8.5
+     ],
+     "mt": {
+      "mid": [
+       "d0",
+       "d60"
+      ]
+     }
+    },
+    "parts": [
+     {
+      "id": "chart",
+      "poly": [
+       "O",
+       "R",
+       "d60",
+       "d0"
+      ],
+      "fill": "accent-fill",
+      "solid": true
+     },
+     {
+      "id": "axisX",
+      "seg": [
+       "O",
+       "RX"
+      ],
+      "ink": "ink",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "axisY",
+      "seg": [
+       "O",
+       "OT"
+      ],
+      "ink": "ink",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "lX",
+      "label": "\\text{2 hours}",
+      "at": "axisX",
+      "dir": "s",
+      "size": "s",
+      "start": true
+     },
+     {
+      "id": "lY",
+      "label": "\\text{speed}",
+      "at": "OT",
+      "dir": "e",
+      "size": "s",
+      "ink": "muted",
+      "start": true
+     },
+     {
+      "id": "v0",
+      "seg": [
+       "O",
+       "d0"
+      ],
+      "ink": "accent",
+      "w": 9
+     },
+     {
+      "id": "v60",
+      "seg": [
+       "R",
+       "d60"
+      ],
+      "ink": "warm",
+      "w": 9
+     },
+     {
+      "id": "vm",
+      "seg": [
+       "m0",
+       "mt"
+      ],
+      "ink": "gold",
+      "w": 11
+     },
+     {
+      "id": "fall",
+      "seg": [
+       "d0",
+       "d60"
+      ],
+      "ink": "ink",
+      "w": 6
+     },
+     {
+      "id": "l60",
+      "label": "60",
+      "at": "v0",
+      "dir": "w",
+      "ink": "accent"
+     },
+     {
+      "id": "l40",
+      "label": "40",
+      "at": "v60",
+      "dir": "e",
+      "ink": "warm"
+     },
+     {
+      "id": "l50",
+      "label": "50",
+      "at": "vm",
+      "dir": "e",
+      "ink": "gold",
+      "halo": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "say": "The same idea works for anything that changes steadily.",
+     "do": []
+    },
+    {
+     "say": "A train slows steadily from sixty miles an hour to forty, over two hours.",
+     "do": [
+      {
+       "do": "draw",
+       "target": "v0",
+       "at": "sixty"
+      },
+      {
+       "do": "show",
+       "target": "l60",
+       "at": "sixty"
+      },
+      {
+       "do": "draw",
+       "target": "fall",
+       "at": "to",
+       "dur": 1.2
+      },
+      {
+       "do": "draw",
+       "target": "v60",
+       "at": "forty"
+      },
+      {
+       "do": "show",
+       "target": "l40",
+       "at": "forty"
+      },
+      {
+       "do": "show",
+       "target": "chart",
+       "at": "forty"
+      }
+     ]
+    },
+    {
+     "say": "Its average speed is the midsegment: fifty.",
+     "do": [
+      {
+       "do": "draw",
+       "target": "vm",
+       "at": "midsegment"
+      },
+      {
+       "do": "show",
+       "target": "l50",
+       "at": "fifty"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{\\ca{60}+\\cw{40}}{2}=\\cg{50}",
+       "at": "average"
+      }
+     ]
+    },
+    {
+     "say": "Fifty miles an hour for two hours is a hundred miles: the area of this trapezoid.",
+     "pause": 0.35,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cg{50}\\times 2=100",
+       "at": "hundred"
+      },
+      {
+       "do": "text",
+       "text": "miles, the area under the line",
+       "tone": "muted",
+       "at": "area"
+      },
+      {
+       "do": "highlight",
+       "target": "chart",
+       "at": "area"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -16,
+     -12,
+     16,
+     12
+    ],
+    "points": {
+     "a0": [
+      -14.0,
+      -9.0
+     ],
+     "a1": [
+      14.0,
+      -9.0
+     ],
+     "c0": [
+      -13.0,
+      0.7516915753619369
+     ],
+     "c1": [
+      -12.35,
+      -0.004219945502299538
+     ],
+     "c2": [
+      -11.7,
+      -1.1132057697000892
+     ],
+     "c3": [
+      -11.05,
+      -2.418814680962851
+     ],
+     "c4": [
+      -10.4,
+      -3.714624726734293
+     ],
+     "c5": [
+      -9.75,
+      -4.797322311884177
+     ],
+     "c6": [
+      -9.1,
+      -5.518847515774487
+     ],
+     "c7": [
+      -8.45,
+      -5.822471693431802
+     ],
+     "c8": [
+      -7.8,
+      -5.752437540517801
+     ],
+     "c9": [
+      -7.15,
+      -5.43462489996938
+     ],
+     "c10": [
+      -6.5,
+      -5.034278327114031
+     ],
+     "c11": [
+      -5.85,
+      -4.7035960737574225
+     ],
+     "c12": [
+      -5.2,
+      -4.5349248901351755
+     ],
+     "c13": [
+      -4.550000000000001,
+      -4.533557920799889
+     ],
+     "c14": [
+      -3.9000000000000004,
+      -4.618217498270924
+     ],
+     "c15": [
+      -3.25,
+      -4.64898484889451
+     ],
+     "c16": [
+      -2.5999999999999996,
+      -4.474194076384462
+     ],
+     "c17": [
+      -1.9499999999999993,
+      -3.9820951798237214
+     ],
+     "c18": [
+      -1.3000000000000007,
+      -3.1416133753844884
+     ],
+     "c19": [
+      -0.6500000000000004,
+      -2.019731955427223
+     ],
+     "c20": [
+      0.0,
+      -0.76995316874571
+     ],
+     "c21": [
+      0.6500000000000004,
+      0.40511387475715566
+     ],
+     "c22": [
+      1.3000000000000007,
+      1.3062844113149037
+     ],
+     "c23": [
+      1.9499999999999993,
+      1.7901722786909566
+     ],
+     "c24": [
+      2.5999999999999996,
+      1.806138349694903
+     ],
+     "c25": [
+      3.25,
+      1.4070805316991262
+     ],
+     "c26": [
+      3.8999999999999986,
+      0.7310506641294054
+     ],
+     "c27": [
+      4.550000000000001,
+      -0.04071032457284396
+     ],
+     "c28": [
+      5.199999999999999,
+      -0.7367909801821497
+     ],
+     "c29": [
+      5.850000000000001,
+      -1.2439467451652044
+     ],
+     "c30": [
+      6.5,
+      -1.536494838445181
+     ],
+     "c31": [
+      7.149999999999999,
+      -1.6782168029849611
+     ],
+     "c32": [
+      7.800000000000001,
+      -1.7964656624810775
+     ],
+     "c33": [
+      8.45,
+      -2.0364994821941345
+     ],
+     "c34": [
+      9.100000000000001,
+      -2.509986415988876
+     ],
+     "c35": [
+      9.75,
+      -3.2533836515471926
+     ],
+     "c36": [
+      10.399999999999999,
+      -4.208960058825019
+     ],
+     "c37": [
+      11.05,
+      -5.234482203032268
+     ],
+     "c38": [
+      11.7,
+      -6.139024894021156
+     ],
+     "c39": [
+      12.350000000000001,
+      -6.7345486918554
+     ],
+     "c40": [
+      13.0,
+      -6.888136454447666
+     ],
+     "s4a0": [
+      -13.0,
+      -9.0
+     ],
+     "s4b0": [
+      -6.5,
+      -9.0
+     ],
+     "s4c0": [
+      -6.5,
+      -5.034278327114031
+     ],
+     "s4d0": [
+      -13.0,
+      0.7516915753619369
+     ],
+     "s4a1": [
+      -6.5,
+      -9.0
+     ],
+     "s4b1": [
+      0.0,
+      -9.0
+     ],
+     "s4c1": [
+      0.0,
+      -0.76995316874571
+     ],
+     "s4d1": [
+      -6.5,
+      -5.034278327114031
+     ],
+     "s4a2": [
+      0.0,
+      -9.0
+     ],
+     "s4b2": [
+      6.5,
+      -9.0
+     ],
+     "s4c2": [
+      6.5,
+      -1.536494838445181
+     ],
+     "s4d2": [
+      0.0,
+      -0.76995316874571
+     ],
+     "s4a3": [
+      6.5,
+      -9.0
+     ],
+     "s4b3": [
+      13.0,
+      -9.0
+     ],
+     "s4c3": [
+      13.0,
+      -6.888136454447666
+     ],
+     "s4d3": [
+      6.5,
+      -1.536494838445181
+     ],
+     "s8a0": [
+      -13.0,
+      -9.0
+     ],
+     "s8b0": [
+      -9.75,
+      -9.0
+     ],
+     "s8c0": [
+      -9.75,
+      -4.797322311884177
+     ],
+     "s8d0": [
+      -13.0,
+      0.7516915753619369
+     ],
+     "s8a1": [
+      -9.75,
+      -9.0
+     ],
+     "s8b1": [
+      -6.5,
+      -9.0
+     ],
+     "s8c1": [
+      -6.5,
+      -5.034278327114031
+     ],
+     "s8d1": [
+      -9.75,
+      -4.797322311884177
+     ],
+     "s8a2": [
+      -6.5,
+      -9.0
+     ],
+     "s8b2": [
+      -3.25,
+      -9.0
+     ],
+     "s8c2": [
+      -3.25,
+      -4.64898484889451
+     ],
+     "s8d2": [
+      -6.5,
+      -5.034278327114031
+     ],
+     "s8a3": [
+      -3.25,
+      -9.0
+     ],
+     "s8b3": [
+      0.0,
+      -9.0
+     ],
+     "s8c3": [
+      0.0,
+      -0.76995316874571
+     ],
+     "s8d3": [
+      -3.25,
+      -4.64898484889451
+     ],
+     "s8a4": [
+      0.0,
+      -9.0
+     ],
+     "s8b4": [
+      3.25,
+      -9.0
+     ],
+     "s8c4": [
+      3.25,
+      1.4070805316991262
+     ],
+     "s8d4": [
+      0.0,
+      -0.76995316874571
+     ],
+     "s8a5": [
+      3.25,
+      -9.0
+     ],
+     "s8b5": [
+      6.5,
+      -9.0
+     ],
+     "s8c5": [
+      6.5,
+      -1.536494838445181
+     ],
+     "s8d5": [
+      3.25,
+      1.4070805316991262
+     ],
+     "s8a6": [
+      6.5,
+      -9.0
+     ],
+     "s8b6": [
+      9.75,
+      -9.0
+     ],
+     "s8c6": [
+      9.75,
+      -3.2533836515471926
+     ],
+     "s8d6": [
+      6.5,
+      -1.536494838445181
+     ],
+     "s8a7": [
+      9.75,
+      -9.0
+     ],
+     "s8b7": [
+      13.0,
+      -9.0
+     ],
+     "s8c7": [
+      13.0,
+      -6.888136454447666
+     ],
+     "s8d7": [
+      9.75,
+      -3.2533836515471926
+     ],
+     "s24a0": [
+      -13.0,
+      -9.0
+     ],
+     "s24b0": [
+      -11.916666666666666,
+      -9.0
+     ],
+     "s24c0": [
+      -11.916666666666666,
+      -0.7124817203627227
+     ],
+     "s24d0": [
+      -13.0,
+      0.7516915753619369
+     ],
+     "s24a1": [
+      -11.916666666666666,
+      -9.0
+     ],
+     "s24b1": [
+      -10.833333333333334,
+      -9.0
+     ],
+     "s24c1": [
+      -10.833333333333334,
+      -2.8624821459607466
+     ],
+     "s24d1": [
+      -11.916666666666666,
+      -0.7124817203627227
+     ],
+     "s24a2": [
+      -10.833333333333334,
+      -9.0
+     ],
+     "s24b2": [
+      -9.75,
+      -9.0
+     ],
+     "s24c2": [
+      -9.75,
+      -4.797322311884177
+     ],
+     "s24d2": [
+      -10.833333333333334,
+      -2.8624821459607466
+     ],
+     "s24a3": [
+      -9.75,
+      -9.0
+     ],
+     "s24b3": [
+      -8.666666666666668,
+      -9.0
+     ],
+     "s24c3": [
+      -8.666666666666668,
+      -5.766949258306672
+     ],
+     "s24d3": [
+      -9.75,
+      -4.797322311884177
+     ],
+     "s24a4": [
+      -8.666666666666668,
+      -9.0
+     ],
+     "s24b4": [
+      -7.583333333333333,
+      -9.0
+     ],
+     "s24c4": [
+      -7.583333333333333,
+      -5.666189379018893
+     ],
+     "s24d4": [
+      -8.666666666666668,
+      -5.766949258306672
+     ],
+     "s24a5": [
+      -7.583333333333333,
+      -9.0
+     ],
+     "s24b5": [
+      -6.5,
+      -9.0
+     ],
+     "s24c5": [
+      -6.5,
+      -5.034278327114031
+     ],
+     "s24d5": [
+      -7.583333333333333,
+      -5.666189379018893
+     ],
+     "s24a6": [
+      -6.5,
+      -9.0
+     ],
+     "s24b6": [
+      -5.416666666666667,
+      -9.0
+     ],
+     "s24c6": [
+      -5.416666666666667,
+      -4.570908837879762
+     ],
+     "s24d6": [
+      -6.5,
+      -5.034278327114031
+     ],
+     "s24a7": [
+      -5.416666666666667,
+      -9.0
+     ],
+     "s24b7": [
+      -4.333333333333334,
+      -9.0
+     ],
+     "s24c7": [
+      -4.333333333333334,
+      -4.5583167700733
+     ],
+     "s24d7": [
+      -5.416666666666667,
+      -4.570908837879762
+     ],
+     "s24a8": [
+      -4.333333333333334,
+      -9.0
+     ],
+     "s24b8": [
+      -3.25,
+      -9.0
+     ],
+     "s24c8": [
+      -3.25,
+      -4.64898484889451
+     ],
+     "s24d8": [
+      -4.333333333333334,
+      -4.5583167700733
+     ],
+     "s24a9": [
+      -3.25,
+      -9.0
+     ],
+     "s24b9": [
+      -2.166666666666666,
+      -9.0
+     ],
+     "s24c9": [
+      -2.166666666666666,
+      -4.185273479026019
+     ],
+     "s24d9": [
+      -3.25,
+      -4.64898484889451
+     ],
+     "s24a10": [
+      -2.166666666666666,
+      -9.0
+     ],
+     "s24b10": [
+      -1.083333333333334,
+      -9.0
+     ],
+     "s24c10": [
+      -1.083333333333334,
+      -2.7928548788978613
+     ],
+     "s24d10": [
+      -2.166666666666666,
+      -4.185273479026019
+     ],
+     "s24a11": [
+      -1.083333333333334,
+      -9.0
+     ],
+     "s24b11": [
+      0.0,
+      -9.0
+     ],
+     "s24c11": [
+      0.0,
+      -0.76995316874571
+     ],
+     "s24d11": [
+      -1.083333333333334,
+      -2.7928548788978613
+     ],
+     "s24a12": [
+      0.0,
+      -9.0
+     ],
+     "s24b12": [
+      1.083333333333334,
+      -9.0
+     ],
+     "s24c12": [
+      1.083333333333334,
+      1.0468277623120148
+     ],
+     "s24d12": [
+      0.0,
+      -0.76995316874571
+     ],
+     "s24a13": [
+      1.083333333333334,
+      -9.0
+     ],
+     "s24b13": [
+      2.166666666666666,
+      -9.0
+     ],
+     "s24c13": [
+      2.166666666666666,
+      1.8469481693028644
+     ],
+     "s24d13": [
+      1.083333333333334,
+      1.0468277623120148
+     ],
+     "s24a14": [
+      2.166666666666666,
+      -9.0
+     ],
+     "s24b14": [
+      3.25,
+      -9.0
+     ],
+     "s24c14": [
+      3.25,
+      1.4070805316991262
+     ],
+     "s24d14": [
+      2.166666666666666,
+      1.8469481693028644
+     ],
+     "s24a15": [
+      3.25,
+      -9.0
+     ],
+     "s24b15": [
+      4.333333333333332,
+      -9.0
+     ],
+     "s24c15": [
+      4.333333333333332,
+      0.21581094894389707
+     ],
+     "s24d15": [
+      3.25,
+      1.4070805316991262
+     ],
+     "s24a16": [
+      4.333333333333332,
+      -9.0
+     ],
+     "s24b16": [
+      5.416666666666668,
+      -9.0
+     ],
+     "s24c16": [
+      5.416666666666668,
+      -0.9300490070410632
+     ],
+     "s24d16": [
+      4.333333333333332,
+      0.21581094894389707
+     ],
+     "s24a17": [
+      5.416666666666668,
+      -9.0
+     ],
+     "s24b17": [
+      6.5,
+      -9.0
+     ],
+     "s24c17": [
+      6.5,
+      -1.536494838445181
+     ],
+     "s24d17": [
+      5.416666666666668,
+      -0.9300490070410632
+     ],
+     "s24a18": [
+      6.5,
+      -9.0
+     ],
+     "s24b18": [
+      7.583333333333332,
+      -9.0
+     ],
+     "s24c18": [
+      7.583333333333332,
+      -1.750483365933584
+     ],
+     "s24d18": [
+      6.5,
+      -1.536494838445181
+     ],
+     "s24a19": [
+      7.583333333333332,
+      -9.0
+     ],
+     "s24b19": [
+      8.666666666666668,
+      -9.0
+     ],
+     "s24c19": [
+      8.666666666666668,
+      -2.1647426186290186
+     ],
+     "s24d19": [
+      7.583333333333332,
+      -1.750483365933584
+     ],
+     "s24a20": [
+      8.666666666666668,
+      -9.0
+     ],
+     "s24b20": [
+      9.75,
+      -9.0
+     ],
+     "s24c20": [
+      9.75,
+      -3.2533836515471926
+     ],
+     "s24d20": [
+      8.666666666666668,
+      -2.1647426186290186
+     ],
+     "s24a21": [
+      9.75,
+      -9.0
+     ],
+     "s24b21": [
+      10.833333333333332,
+      -9.0
+     ],
+     "s24c21": [
+      10.833333333333332,
+      -4.896183428142563
+     ],
+     "s24d21": [
+      9.75,
+      -3.2533836515471926
+     ],
+     "s24a22": [
+      10.833333333333332,
+      -9.0
+     ],
+     "s24b22": [
+      11.916666666666668,
+      -9.0
+     ],
+     "s24c22": [
+      11.916666666666668,
+      -6.380017738991036
+     ],
+     "s24d22": [
+      10.833333333333332,
+      -4.896183428142563
+     ],
+     "s24a23": [
+      11.916666666666668,
+      -9.0
+     ],
+     "s24b23": [
+      13.0,
+      -9.0
+     ],
+     "s24c23": [
+      13.0,
+      -6.888136454447666
+     ],
+     "s24d23": [
+      11.916666666666668,
+      -6.380017738991036
+     ]
+    },
+    "parts": [
+     {
+      "id": "s4p0",
+      "poly": [
+       "s4a0",
+       "s4b0",
+       "s4c0",
+       "s4d0"
+      ],
+      "fill": "accent-fill",
+      "group": "s4"
+     },
+     {
+      "id": "s4p1",
+      "poly": [
+       "s4a1",
+       "s4b1",
+       "s4c1",
+       "s4d1"
+      ],
+      "fill": "gold-fill",
+      "group": "s4"
+     },
+     {
+      "id": "s4p2",
+      "poly": [
+       "s4a2",
+       "s4b2",
+       "s4c2",
+       "s4d2"
+      ],
+      "fill": "accent-fill",
+      "group": "s4"
+     },
+     {
+      "id": "s4p3",
+      "poly": [
+       "s4a3",
+       "s4b3",
+       "s4c3",
+       "s4d3"
+      ],
+      "fill": "gold-fill",
+      "group": "s4"
+     },
+     {
+      "id": "s8p0",
+      "poly": [
+       "s8a0",
+       "s8b0",
+       "s8c0",
+       "s8d0"
+      ],
+      "fill": "accent-fill",
+      "group": "s8"
+     },
+     {
+      "id": "s8p1",
+      "poly": [
+       "s8a1",
+       "s8b1",
+       "s8c1",
+       "s8d1"
+      ],
+      "fill": "gold-fill",
+      "group": "s8"
+     },
+     {
+      "id": "s8p2",
+      "poly": [
+       "s8a2",
+       "s8b2",
+       "s8c2",
+       "s8d2"
+      ],
+      "fill": "accent-fill",
+      "group": "s8"
+     },
+     {
+      "id": "s8p3",
+      "poly": [
+       "s8a3",
+       "s8b3",
+       "s8c3",
+       "s8d3"
+      ],
+      "fill": "gold-fill",
+      "group": "s8"
+     },
+     {
+      "id": "s8p4",
+      "poly": [
+       "s8a4",
+       "s8b4",
+       "s8c4",
+       "s8d4"
+      ],
+      "fill": "accent-fill",
+      "group": "s8"
+     },
+     {
+      "id": "s8p5",
+      "poly": [
+       "s8a5",
+       "s8b5",
+       "s8c5",
+       "s8d5"
+      ],
+      "fill": "gold-fill",
+      "group": "s8"
+     },
+     {
+      "id": "s8p6",
+      "poly": [
+       "s8a6",
+       "s8b6",
+       "s8c6",
+       "s8d6"
+      ],
+      "fill": "accent-fill",
+      "group": "s8"
+     },
+     {
+      "id": "s8p7",
+      "poly": [
+       "s8a7",
+       "s8b7",
+       "s8c7",
+       "s8d7"
+      ],
+      "fill": "gold-fill",
+      "group": "s8"
+     },
+     {
+      "id": "s24p0",
+      "poly": [
+       "s24a0",
+       "s24b0",
+       "s24c0",
+       "s24d0"
+      ],
+      "fill": "accent-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p1",
+      "poly": [
+       "s24a1",
+       "s24b1",
+       "s24c1",
+       "s24d1"
+      ],
+      "fill": "gold-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p2",
+      "poly": [
+       "s24a2",
+       "s24b2",
+       "s24c2",
+       "s24d2"
+      ],
+      "fill": "accent-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p3",
+      "poly": [
+       "s24a3",
+       "s24b3",
+       "s24c3",
+       "s24d3"
+      ],
+      "fill": "gold-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p4",
+      "poly": [
+       "s24a4",
+       "s24b4",
+       "s24c4",
+       "s24d4"
+      ],
+      "fill": "accent-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p5",
+      "poly": [
+       "s24a5",
+       "s24b5",
+       "s24c5",
+       "s24d5"
+      ],
+      "fill": "gold-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p6",
+      "poly": [
+       "s24a6",
+       "s24b6",
+       "s24c6",
+       "s24d6"
+      ],
+      "fill": "accent-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p7",
+      "poly": [
+       "s24a7",
+       "s24b7",
+       "s24c7",
+       "s24d7"
+      ],
+      "fill": "gold-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p8",
+      "poly": [
+       "s24a8",
+       "s24b8",
+       "s24c8",
+       "s24d8"
+      ],
+      "fill": "accent-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p9",
+      "poly": [
+       "s24a9",
+       "s24b9",
+       "s24c9",
+       "s24d9"
+      ],
+      "fill": "gold-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p10",
+      "poly": [
+       "s24a10",
+       "s24b10",
+       "s24c10",
+       "s24d10"
+      ],
+      "fill": "accent-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p11",
+      "poly": [
+       "s24a11",
+       "s24b11",
+       "s24c11",
+       "s24d11"
+      ],
+      "fill": "gold-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p12",
+      "poly": [
+       "s24a12",
+       "s24b12",
+       "s24c12",
+       "s24d12"
+      ],
+      "fill": "accent-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p13",
+      "poly": [
+       "s24a13",
+       "s24b13",
+       "s24c13",
+       "s24d13"
+      ],
+      "fill": "gold-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p14",
+      "poly": [
+       "s24a14",
+       "s24b14",
+       "s24c14",
+       "s24d14"
+      ],
+      "fill": "accent-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p15",
+      "poly": [
+       "s24a15",
+       "s24b15",
+       "s24c15",
+       "s24d15"
+      ],
+      "fill": "gold-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p16",
+      "poly": [
+       "s24a16",
+       "s24b16",
+       "s24c16",
+       "s24d16"
+      ],
+      "fill": "accent-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p17",
+      "poly": [
+       "s24a17",
+       "s24b17",
+       "s24c17",
+       "s24d17"
+      ],
+      "fill": "gold-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p18",
+      "poly": [
+       "s24a18",
+       "s24b18",
+       "s24c18",
+       "s24d18"
+      ],
+      "fill": "accent-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p19",
+      "poly": [
+       "s24a19",
+       "s24b19",
+       "s24c19",
+       "s24d19"
+      ],
+      "fill": "gold-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p20",
+      "poly": [
+       "s24a20",
+       "s24b20",
+       "s24c20",
+       "s24d20"
+      ],
+      "fill": "accent-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p21",
+      "poly": [
+       "s24a21",
+       "s24b21",
+       "s24c21",
+       "s24d21"
+      ],
+      "fill": "gold-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p22",
+      "poly": [
+       "s24a22",
+       "s24b22",
+       "s24c22",
+       "s24d22"
+      ],
+      "fill": "accent-fill",
+      "group": "s24"
+     },
+     {
+      "id": "s24p23",
+      "poly": [
+       "s24a23",
+       "s24b23",
+       "s24c23",
+       "s24d23"
+      ],
+      "fill": "gold-fill",
+      "group": "s24"
+     },
+     {
+      "id": "axis",
+      "seg": [
+       "a0",
+       "a1"
+      ],
+      "ink": "ink",
+      "w": 4,
+      "start": true
+     },
+     {
+      "id": "f",
+      "curve": [
+       "c0",
+       "c1",
+       "c2",
+       "c3",
+       "c4",
+       "c5",
+       "c6",
+       "c7",
+       "c8",
+       "c9",
+       "c10",
+       "c11",
+       "c12",
+       "c13",
+       "c14",
+       "c15",
+       "c16",
+       "c17",
+       "c18",
+       "c19",
+       "c20",
+       "c21",
+       "c22",
+       "c23",
+       "c24",
+       "c25",
+       "c26",
+       "c27",
+       "c28",
+       "c29",
+       "c30",
+       "c31",
+       "c32",
+       "c33",
+       "c34",
+       "c35",
+       "c36",
+       "c37",
+       "c38",
+       "c39",
+       "c40"
+      ],
+      "ink": "warm",
+      "w": 7
+     }
+    ]
+   },
+   "beats": [
+    {
+     "say": "Slice a curve into thin trapezoids, and the same calculation closes in on the area beneath it.",
+     "pause": 0.1,
+     "do": [
+      {
+       "do": "draw",
+       "target": "f",
+       "dur": 0.9
+      },
+      {
+       "do": "show",
+       "target": "s4",
+       "at": "Slice"
+      },
+      {
+       "do": "show",
+       "target": "s8",
+       "at": "thin"
+      },
+      {
+       "do": "hide",
+       "target": "s4",
+       "at": "same"
+      },
+      {
+       "do": "show",
+       "target": "s24",
+       "at": "same"
+      },
+      {
+       "do": "hide",
+       "target": "s8",
+       "at": "closes"
+      }
+     ]
+    },
+    {
+     "say": "That's the doorway to calculus.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\int_a^b f(x)\\,dx",
+       "at": "calculus"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "beats": [
+    {
+     "say": "Midsegment: average the bases.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cg{m}=\\frac{\\ca{b_1}+\\cw{b_2}}{2}"
+      }
+     ]
+    },
+    {
+     "say": "Isosceles: same-base angles are equal, and so are the diagonals.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\angle D=\\angle C"
+      },
+      {
+       "do": "write",
+       "tex": "AC=BD",
+       "at": "diagonals"
+      }
+     ]
+    },
+    {
+     "say": "Same-leg angles always add to one hundred eighty.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\angle D+\\angle A=180^\\circ"
+      }
+     ]
+    },
+    {
+     "say": "Set up the equation, solve for x, and answer what they asked.",
+     "pause": 0.6
+    }
+   ]
+  }
+ ]
+}

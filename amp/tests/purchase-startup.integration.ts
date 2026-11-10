@@ -41,20 +41,27 @@ test(
         },
       );
       let ready = false;
-      // A cold start compiles the whole server; under a full parallel CI
-      // suite that can pass ten seconds. Readiness, not speed, is the point.
-      for (let attempt = 0; attempt < 300; attempt++) {
+      // Cold TypeScript imports share runner CPU with the other database tests.
+      // Bound both the total readiness wait and each individual request.
+      const readinessDeadline = Date.now() + 60_000;
+      while (Date.now() < readinessDeadline) {
         if (child.exitCode !== null)
           throw new Error("API entrypoint exited before readiness");
         try {
-          if ((await fetch("http://127.0.0.1:4391/api/v1/catalog")).ok) {
+          if (
+            (
+              await fetch("http://127.0.0.1:4391/api/v1/catalog", {
+                signal: AbortSignal.timeout(1000),
+              })
+            ).ok
+          ) {
             ready = true;
             break;
           }
         } catch {}
         await delay(100);
       }
-      assert.ok(ready, "API became ready within thirty seconds");
+      assert.ok(ready, "API became ready within sixty seconds");
       for (const [path, expected] of [
         ["billing/offer", { available: false }],
         ["funding/offers", { offers: [] }],

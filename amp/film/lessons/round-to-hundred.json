@@ -1,0 +1,232 @@
+{
+  "id": "round-to-hundred",
+  "title": "Round to the nearest hundred",
+  "seed": "film",
+  "shots": [
+    {
+      "figure": {
+        "view": [360, -42, 545, 132],
+        "points": {
+          "D": [487, 0],
+          "E0": [400, 14], "E1": [450, 14], "E2": [450, 42], "E3": [400, 42],
+          "F0": [450, 14], "F1": [500, 14], "F2": [500, 42], "F3": [450, 42],
+          "M": [450, 68], "P4": [425, 108], "P5": [490, 108]
+        },
+        "parts": [
+          { "id": "ax", "axes": true, "step": 50, "every": 50, "y": false, "start": true },
+          { "id": "dot", "dot": "D", "ink": "accent", "r": 16, "start": true },
+          { "id": "low", "poly": ["E0", "E1", "E2", "E3"], "fill": "accent-fill", "ink": "accent", "w": 3 },
+          { "id": "high", "poly": ["F0", "F1", "F2", "F3"], "fill": "gold-fill", "ink": "gold", "w": 3 },
+          { "id": "half", "label": "\\text{halfway}", "at": "M", "dir": "c", "size": "m", "ink": "ink" },
+          { "id": "t4", "label": "\\text{4 or less}", "at": "P4", "dir": "c", "size": "m", "ink": "accent" },
+          { "id": "t5", "label": "\\text{5 or more}", "at": "P5", "dir": "c", "size": "m", "ink": "gold" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Round four hundred eighty-seven to the nearest hundred.",
+          "do": [
+            { "do": "problem", "text": "Round $487$ to the nearest hundred.", "at": "Round", "id": "p487" },
+            { "do": "show", "target": ["low", "high", "half"], "at": "eighty-seven" },
+            { "do": "highlight", "target": "dot", "at": "eighty-seven" }
+          ]
+        },
+        {
+          "say": "It sits between four hundred and five hundred. Halfway is four hundred fifty.",
+          "do": [
+            { "do": "show", "target": ["low", "high", "half"], "at": "between" },
+            { "do": "write", "tex": "\\ca{400}<\\ca{487}<\\cg{500}", "fresh": true, "at": "between", "id": "bet" },
+            { "do": "highlight", "target": "half", "at": "Halfway" }
+          ]
+        },
+        {
+          "say": "Four hundred eighty-seven is past halfway, so it is closer to five hundred.",
+          "do": [
+            { "do": "highlight", "target": "high", "at": "past" },
+            { "do": "move", "points": { "D": [500, 0] }, "at": "closer", "dur": 0.55 },
+            { "do": "write", "tex": "\\cg{500}-\\ca{487}<\\ca{487}-\\ca{400}", "fresh": true, "at": "closer", "id": "near" }
+          ]
+        },
+        {
+          "say": "Look at the tens digit. Five or more rounds up. Four or less rounds down.",
+          "do": [
+            { "do": "show", "target": ["t4", "t5"], "at": "Five" },
+            { "do": "text", "text": "5 or more rounds up. 4 or less rounds down.", "at": "Five", "id": "phrase" },
+            { "do": "write", "tex": "\\ca{487}\\rightarrow\\cg{500}", "fresh": true, "at": "tens", "id": "r487" },
+            { "do": "answer", "tex": "\\cg{500}", "at": "up", "id": "ans487" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [70, -40, 235, 125],
+        "points": {
+          "D": [150, 0],
+          "E0": [100, 14], "E1": [150, 14], "E2": [150, 40], "E3": [100, 40],
+          "F0": [150, 14], "F1": [200, 14], "F2": [200, 40], "F3": [150, 40],
+          "M": [150, 72]
+        },
+        "parts": [
+          { "id": "ax", "axes": true, "step": 50, "every": 50, "y": false, "start": true },
+          { "id": "dot", "dot": "D", "ink": "accent", "r": 16 },
+          { "id": "low", "poly": ["E0", "E1", "E2", "E3"], "fill": "accent-fill", "ink": "accent", "w": 3 },
+          { "id": "high", "poly": ["F0", "F1", "F2", "F3"], "fill": "gold-fill", "ink": "gold", "w": 3 },
+          { "id": "half", "label": "\\text{halfway}", "at": "M", "dir": "c", "size": "m", "ink": "ink" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Round one hundred fifty to the nearest hundred.",
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "Round $150$ to the nearest hundred.", "at": "Round", "id": "p150" },
+            { "do": "show", "target": ["dot", "low", "high", "half"], "at": "fifty" }
+          ]
+        },
+        {
+          "say": "One hundred fifty is exactly halfway. It is the same distance from each hundred.",
+          "do": [
+            { "do": "write", "tex": "\\ca{150}-\\ca{100}=\\cg{200}-\\ca{150}", "fresh": true, "at": "exactly", "id": "eq150" },
+            { "do": "highlight", "target": ["low", "high"], "at": "same" }
+          ]
+        },
+        {
+          "say": "The eyes cannot choose. Halfway rounds up, so it goes to two hundred.",
+          "do": [
+            { "do": "move", "points": { "D": [200, 0] }, "at": "up", "dur": 0.55 },
+            { "do": "write", "tex": "\\ca{150}\\rightarrow\\cg{200}", "fresh": true, "at": "two", "id": "r150" },
+            { "do": "answer", "tex": "\\cg{200}", "at": "hundred", "id": "ans150" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [443, -10, 458, 30],
+        "points": {
+          "D": [449, 0],
+          "E0": [445, 3], "E1": [450, 3], "E2": [450, 10], "E3": [445, 10],
+          "F0": [450, 3], "F1": [455, 3], "F2": [455, 10], "F3": [450, 10],
+          "M": [454, 20], "N": [446, 22]
+        },
+        "parts": [
+          { "id": "ax", "axes": true, "step": 5, "every": 5, "y": false, "start": true },
+          { "id": "dot", "dot": "D", "ink": "accent", "r": 11 },
+          { "id": "low", "poly": ["E0", "E1", "E2", "E3"], "fill": "accent-fill", "ink": "accent", "w": 3 },
+          { "id": "high", "poly": ["F0", "F1", "F2", "F3"], "fill": "gold-fill", "ink": "gold", "w": 3 },
+          { "id": "half", "label": "\\text{halfway}", "at": "M", "dir": "c", "size": "s", "ink": "ink" },
+          { "id": "n", "label": "449", "at": "N", "dir": "c", "size": "l", "ink": "accent" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Four hundred forty-nine is just before halfway, four hundred fifty.",
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "Round $449$ to the nearest hundred.", "at": "Four", "id": "p449" },
+            { "do": "show", "target": ["dot", "low", "high", "half", "n"], "at": "forty-nine" },
+            { "do": "write", "tex": "\\ca{400}<\\ca{449}<450", "fresh": true, "at": "before", "id": "lt449" }
+          ]
+        },
+        {
+          "say": "The ones digit is nine. The tens digit is four, so it rounds down to four hundred.",
+          "do": [
+            { "do": "highlight", "target": "low", "at": "four" },
+            { "do": "write", "tex": "\\ca{449}\\rightarrow\\ca{400}", "fresh": true, "at": "down", "id": "r449" },
+            { "do": "answer", "tex": "\\ca{400}", "at": "hundred", "id": "ans449" }
+          ]
+        },
+        {
+          "say": "Look only at the tens digit. The ones digit does not decide.",
+          "do": [
+            { "do": "watch", "text": "Look only at the tens digit. $449$ rounds to $400$.", "at": "tens", "id": "w449" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [870, -40, 1030, 130],
+        "points": {
+          "D": [960, 0],
+          "E0": [900, 16], "E1": [950, 16], "E2": [950, 46], "E3": [900, 46],
+          "F0": [950, 16], "F1": [1000, 16], "F2": [1000, 46], "F3": [950, 46],
+          "M": [950, 78]
+        },
+        "parts": [
+          { "id": "ax", "axes": true, "step": 50, "every": 50, "y": false, "start": true },
+          { "id": "dot", "dot": "D", "ink": "accent", "r": 16 },
+          { "id": "low", "poly": ["E0", "E1", "E2", "E3"], "fill": "accent-fill", "ink": "accent", "w": 3 },
+          { "id": "high", "poly": ["F0", "F1", "F2", "F3"], "fill": "gold-fill", "ink": "gold", "w": 3 },
+          { "id": "half", "label": "\\text{halfway}", "at": "M", "dir": "c", "size": "m", "ink": "ink" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Nine hundred sixty is past halfway, so the tens digit six rounds up.",
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "Round $960$ to the nearest hundred.", "at": "Nine", "id": "p960" },
+            { "do": "show", "target": ["dot", "low", "high", "half"], "at": "sixty" },
+            { "do": "highlight", "target": "high", "at": "past" },
+            { "do": "move", "points": { "D": [1000, 0] }, "at": "up", "dur": 0.55 }
+          ]
+        },
+        {
+          "say": "The hundreds digit is nine. Nine hundred plus one hundred is one thousand.",
+          "do": [
+            { "do": "write", "tex": "\\ca{900}+100=\\cg{1{,}000}", "fresh": true, "at": "plus", "id": "carry" },
+            { "do": "write", "tex": "\\ca{960}\\rightarrow\\cg{1{,}000}", "fresh": true, "at": "one", "id": "r960" },
+            { "do": "answer", "tex": "\\cg{1{,}000}", "at": "thousand", "id": "ans960" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [560, -40, 850, 120],
+        "points": { "D": [700, 0], "M": [700, 70] },
+        "parts": [
+          { "id": "ax", "axes": true, "step": 50, "every": 100, "y": false, "start": true },
+          { "id": "dot", "dot": "D", "ink": "accent", "r": 16, "start": true },
+          { "id": "stay", "label": "\\text{already }700", "at": "M", "dir": "c", "size": "l", "ink": "accent" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Seven hundred already ends in two zeros. The tens digit is zero, so it stays.",
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "Round $700$ to the nearest hundred.", "at": "Seven", "id": "p700" },
+            { "do": "show", "target": "stay", "at": "already" },
+            { "do": "highlight", "target": "dot", "at": "zero" },
+            { "do": "write", "tex": "\\ca{700}\\rightarrow\\ca{700}", "fresh": true, "at": "stays", "id": "r700" },
+            { "do": "answer", "tex": "\\ca{700}", "at": "stays", "id": "ans700" }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Every number rounds to a hundred the same way.",
+          "do": [{ "do": "overview", "of": "p487", "at": "Every" }]
+        },
+        {
+          "say": "One. Name the two hundreds it sits between.",
+          "do": [{ "do": "recap", "text": "Name the two hundreds it sits between.", "marks": ["bet"], "at": "One" }]
+        },
+        {
+          "say": "Two. Five or more rounds up. Four or less rounds down. Halfway rounds up.",
+          "do": [{ "do": "recap", "text": "5 or more rounds up. 4 or less rounds down. Halfway rounds up.", "marks": ["phrase", "r487"], "at": "Two" }]
+        },
+        {
+          "say": "Three. Look only at the tens digit. The ones digit does not decide.",
+          "pause": 0.4,
+          "do": [{ "do": "recap", "text": "Look only at the tens digit. The ones digit does not decide.", "marks": ["r487", "ans487"], "at": "Three" }]
+        }
+      ]
+    }
+  ]
+}

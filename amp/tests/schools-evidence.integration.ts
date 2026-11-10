@@ -297,7 +297,7 @@ test(
             count: 1,
             figureCapabilities: ["scenes-v1"],
           });
-          assert.equal(batch.statusCode, 200);
+          assert.equal(batch.statusCode, 200, batch.body);
           const problem = batch.json().problems[0] as {
             id: string;
             skillId: string;

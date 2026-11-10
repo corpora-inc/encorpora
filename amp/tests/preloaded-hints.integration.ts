@@ -36,7 +36,7 @@ test(
           figureCapabilities: ["scenes-v1"],
         },
       });
-      assert.equal(batch.statusCode, 200);
+      assert.equal(batch.statusCode, 200, batch.body);
       const { problems, hints } = batch.json();
       const served = new Map<string, GeneratedProblem>();
       assert.deepEqual(

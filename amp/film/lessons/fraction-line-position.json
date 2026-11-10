@@ -1,0 +1,2467 @@
+{
+  "id": "fraction-line-position",
+  "title": "Read a fraction location",
+  "seed": "film",
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -1.35,
+          -2.55,
+          10.95,
+          3.35
+        ],
+        "points": {
+          "a0": [
+            0,
+            -0.34
+          ],
+          "b0": [
+            0,
+            0.34
+          ],
+          "a1": [
+            2.4,
+            -0.34
+          ],
+          "b1": [
+            2.4,
+            0.34
+          ],
+          "a2": [
+            4.8,
+            -0.34
+          ],
+          "b2": [
+            4.8,
+            0.34
+          ],
+          "a3": [
+            7.199999999999999,
+            -0.34
+          ],
+          "b3": [
+            7.199999999999999,
+            0.34
+          ],
+          "a4": [
+            9.6,
+            -0.34
+          ],
+          "b4": [
+            9.6,
+            0.34
+          ],
+          "w0": [
+            0,
+            -1.55
+          ],
+          "w1": [
+            9.6,
+            -1.55
+          ],
+          "O": [
+            0,
+            0
+          ],
+          "E": [
+            9.6,
+            0
+          ],
+          "U": [
+            0,
+            0.72
+          ],
+          "V": [
+            2.4,
+            0.72
+          ],
+          "U2": [
+            2.4,
+            0.72
+          ],
+          "V2": [
+            4.8,
+            0.72
+          ],
+          "U3": [
+            4.8,
+            0.72
+          ],
+          "V3": [
+            7.199999999999999,
+            0.72
+          ],
+          "P": [
+            7.199999999999999,
+            0
+          ],
+          "Q": [
+            8.75,
+            1.35
+          ],
+          "N1": [
+            2.4,
+            1.35
+          ],
+          "N2": [
+            4.8,
+            1.35
+          ],
+          "N3": [
+            7.199999999999999,
+            1.35
+          ]
+        },
+        "parts": [
+          {
+            "id": "line",
+            "seg": [
+              "O",
+              "E"
+            ],
+            "ink": "muted",
+            "w": 8,
+            "start": true
+          },
+          {
+            "id": "k0",
+            "seg": [
+              "a0",
+              "b0"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k1",
+            "seg": [
+              "a1",
+              "b1"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k2",
+            "seg": [
+              "a2",
+              "b2"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k3",
+            "seg": [
+              "a3",
+              "b3"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k4",
+            "seg": [
+              "a4",
+              "b4"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "lw0",
+            "label": "0",
+            "at": "w0",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "lw1",
+            "label": "1",
+            "at": "w1",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "step",
+            "seg": [
+              "U",
+              "V"
+            ],
+            "ink": "accent",
+            "w": 10
+          },
+          {
+            "id": "step2",
+            "seg": [
+              "U2",
+              "V2"
+            ],
+            "ink": "accent",
+            "w": 10
+          },
+          {
+            "id": "step3",
+            "seg": [
+              "U3",
+              "V3"
+            ],
+            "ink": "accent",
+            "w": 10
+          },
+          {
+            "id": "dP",
+            "dot": "P",
+            "ink": "gold",
+            "r": 16
+          },
+          {
+            "id": "lP",
+            "label": "P",
+            "at": "Q",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold"
+          },
+          {
+            "id": "n1",
+            "label": "1",
+            "at": "N1",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "n2",
+            "label": "2",
+            "at": "N2",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "n3",
+            "label": "3",
+            "at": "N3",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "A number line measures distance from zero. The space from zero to one is one whole.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "line",
+              "at": "line"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "lw0",
+                "lw1"
+              ],
+              "at": "zero"
+            }
+          ]
+        },
+        {
+          "say": "This whole is cut into four equal steps. One step is one fourth.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "step",
+              "at": "step"
+            },
+            {
+              "do": "write",
+              "tex": "\\text{one step}=\\dfrac{1}{4}",
+              "fresh": true,
+              "at": "fourth",
+              "id": "step4"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "k0",
+                "k1"
+              ],
+              "at": "equal"
+            }
+          ]
+        },
+        {
+          "say": "Count the steps from zero. One, two, three.",
+          "do": [
+            {
+              "do": "show",
+              "target": "n1",
+              "at": "One"
+            },
+            {
+              "do": "draw",
+              "target": "step2",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "n2",
+              "at": "two"
+            },
+            {
+              "do": "draw",
+              "target": "step3",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "n3",
+              "at": "three"
+            },
+            {
+              "do": "text",
+              "text": "Count the steps from zero.",
+              "at": "Count",
+              "id": "phrase"
+            }
+          ]
+        },
+        {
+          "say": "Three steps of one fourth is three fourths. The point is at three fourths.",
+          "do": [
+            {
+              "do": "hide",
+              "target": "n3",
+              "at": "point"
+            },
+            {
+              "do": "show",
+              "target": [
+                "dP",
+                "lP"
+              ],
+              "at": "point"
+            },
+            {
+              "do": "write",
+              "tex": "\\ca{3}\\times\\dfrac{1}{4}=\\dfrac{\\ca{3}}{4}",
+              "fresh": true,
+              "at": "Three",
+              "id": "f34"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.8,
+          -3.25,
+          26.2,
+          3.85
+        ],
+        "points": {
+          "a0": [
+            0,
+            -0.34
+          ],
+          "b0": [
+            0,
+            0.34
+          ],
+          "a1": [
+            1,
+            -0.34
+          ],
+          "b1": [
+            1,
+            0.34
+          ],
+          "a2": [
+            2,
+            -0.34
+          ],
+          "b2": [
+            2,
+            0.34
+          ],
+          "a3": [
+            3,
+            -0.34
+          ],
+          "b3": [
+            3,
+            0.34
+          ],
+          "a4": [
+            4,
+            -0.34
+          ],
+          "b4": [
+            4,
+            0.34
+          ],
+          "a5": [
+            5,
+            -0.34
+          ],
+          "b5": [
+            5,
+            0.34
+          ],
+          "a6": [
+            6,
+            -0.34
+          ],
+          "b6": [
+            6,
+            0.34
+          ],
+          "a7": [
+            7,
+            -0.34
+          ],
+          "b7": [
+            7,
+            0.34
+          ],
+          "a8": [
+            8,
+            -0.34
+          ],
+          "b8": [
+            8,
+            0.34
+          ],
+          "a9": [
+            9,
+            -0.34
+          ],
+          "b9": [
+            9,
+            0.34
+          ],
+          "a10": [
+            10,
+            -0.34
+          ],
+          "b10": [
+            10,
+            0.34
+          ],
+          "a11": [
+            11,
+            -0.34
+          ],
+          "b11": [
+            11,
+            0.34
+          ],
+          "a12": [
+            12,
+            -0.34
+          ],
+          "b12": [
+            12,
+            0.34
+          ],
+          "a13": [
+            13,
+            -0.34
+          ],
+          "b13": [
+            13,
+            0.34
+          ],
+          "a14": [
+            14,
+            -0.34
+          ],
+          "b14": [
+            14,
+            0.34
+          ],
+          "a15": [
+            15,
+            -0.34
+          ],
+          "b15": [
+            15,
+            0.34
+          ],
+          "a16": [
+            16,
+            -0.34
+          ],
+          "b16": [
+            16,
+            0.34
+          ],
+          "a17": [
+            17,
+            -0.34
+          ],
+          "b17": [
+            17,
+            0.34
+          ],
+          "a18": [
+            18,
+            -0.34
+          ],
+          "b18": [
+            18,
+            0.34
+          ],
+          "a19": [
+            19,
+            -0.34
+          ],
+          "b19": [
+            19,
+            0.34
+          ],
+          "a20": [
+            20,
+            -0.34
+          ],
+          "b20": [
+            20,
+            0.34
+          ],
+          "a21": [
+            21,
+            -0.34
+          ],
+          "b21": [
+            21,
+            0.34
+          ],
+          "a22": [
+            22,
+            -0.34
+          ],
+          "b22": [
+            22,
+            0.34
+          ],
+          "a23": [
+            23,
+            -0.34
+          ],
+          "b23": [
+            23,
+            0.34
+          ],
+          "a24": [
+            24,
+            -0.34
+          ],
+          "b24": [
+            24,
+            0.34
+          ],
+          "w0": [
+            0,
+            -2.05
+          ],
+          "w1": [
+            8,
+            -2.05
+          ],
+          "w2": [
+            16,
+            -2.05
+          ],
+          "w3": [
+            24,
+            -2.05
+          ],
+          "O": [
+            0,
+            0
+          ],
+          "E": [
+            24,
+            0
+          ],
+          "A": [
+            0,
+            0.85
+          ],
+          "B": [
+            8,
+            0.85
+          ],
+          "C": [
+            16,
+            0.85
+          ],
+          "D": [
+            17,
+            0.85
+          ],
+          "P": [
+            17,
+            0
+          ],
+          "Q": [
+            17,
+            2.35
+          ]
+        },
+        "parts": [
+          {
+            "id": "line",
+            "seg": [
+              "O",
+              "E"
+            ],
+            "ink": "muted",
+            "w": 8,
+            "start": true
+          },
+          {
+            "id": "k0",
+            "seg": [
+              "a0",
+              "b0"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k1",
+            "seg": [
+              "a1",
+              "b1"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k2",
+            "seg": [
+              "a2",
+              "b2"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k3",
+            "seg": [
+              "a3",
+              "b3"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k4",
+            "seg": [
+              "a4",
+              "b4"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k5",
+            "seg": [
+              "a5",
+              "b5"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k6",
+            "seg": [
+              "a6",
+              "b6"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k7",
+            "seg": [
+              "a7",
+              "b7"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k8",
+            "seg": [
+              "a8",
+              "b8"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k9",
+            "seg": [
+              "a9",
+              "b9"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k10",
+            "seg": [
+              "a10",
+              "b10"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k11",
+            "seg": [
+              "a11",
+              "b11"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k12",
+            "seg": [
+              "a12",
+              "b12"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k13",
+            "seg": [
+              "a13",
+              "b13"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k14",
+            "seg": [
+              "a14",
+              "b14"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k15",
+            "seg": [
+              "a15",
+              "b15"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k16",
+            "seg": [
+              "a16",
+              "b16"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k17",
+            "seg": [
+              "a17",
+              "b17"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k18",
+            "seg": [
+              "a18",
+              "b18"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k19",
+            "seg": [
+              "a19",
+              "b19"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k20",
+            "seg": [
+              "a20",
+              "b20"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k21",
+            "seg": [
+              "a21",
+              "b21"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k22",
+            "seg": [
+              "a22",
+              "b22"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k23",
+            "seg": [
+              "a23",
+              "b23"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k24",
+            "seg": [
+              "a24",
+              "b24"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "lw0",
+            "label": "0",
+            "at": "w0",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "lw1",
+            "label": "1",
+            "at": "w1",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "lw2",
+            "label": "2",
+            "at": "w2",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "lw3",
+            "label": "3",
+            "at": "w3",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "e1",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "ink": "accent",
+            "w": 12
+          },
+          {
+            "id": "e2",
+            "seg": [
+              "B",
+              "C"
+            ],
+            "ink": "accent",
+            "w": 12
+          },
+          {
+            "id": "e3",
+            "seg": [
+              "C",
+              "D"
+            ],
+            "ink": "gold",
+            "w": 12
+          },
+          {
+            "id": "dP",
+            "dot": "P",
+            "ink": "gold",
+            "r": 16
+          },
+          {
+            "id": "lP",
+            "label": "P",
+            "at": "Q",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "What number is at P? Each whole has eight equal steps.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "What number is at $P$? Each whole interval has 8 equal steps.",
+              "at": "What",
+              "id": "p17"
+            },
+            {
+              "do": "show",
+              "target": [
+                "dP",
+                "lP"
+              ],
+              "at": "P"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "k0",
+                "k8"
+              ],
+              "at": "eight"
+            }
+          ]
+        },
+        {
+          "say": "One step is one eighth. Count the steps from zero, and keep going through each whole.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\text{one step}=\\dfrac{1}{8}",
+              "fresh": true,
+              "at": "eighth",
+              "id": "st8"
+            },
+            {
+              "do": "highlight",
+              "target": "line",
+              "at": "Count"
+            }
+          ]
+        },
+        {
+          "say": "Eight steps reach one. Eight more reach two, which is sixteen steps.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "e1",
+              "at": "Eight"
+            },
+            {
+              "do": "draw",
+              "target": "e2",
+              "at": "more"
+            },
+            {
+              "do": "highlight",
+              "target": "lw2",
+              "at": "two"
+            },
+            {
+              "do": "write",
+              "tex": "\\ca{8}+\\ca{8}=\\ca{16}",
+              "fresh": true,
+              "at": "sixteen",
+              "id": "sum16"
+            }
+          ]
+        },
+        {
+          "say": "One more step reaches P. Sixteen plus one is seventeen.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "e3",
+              "at": "more"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "dP",
+                "lP"
+              ],
+              "at": "P"
+            },
+            {
+              "do": "write",
+              "tex": "\\ca{16}+\\cg{1}=\\ca{17}",
+              "at": "plus",
+              "id": "sum17"
+            }
+          ]
+        },
+        {
+          "say": "Seventeen steps of one eighth is seventeen eighths.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\dfrac{\\ca{17}}{8}",
+              "fresh": true,
+              "at": "Seventeen",
+              "id": "f17"
+            },
+            {
+              "do": "answer",
+              "tex": "\\dfrac{17}{8}",
+              "at": "eighths",
+              "id": "a17"
+            }
+          ]
+        },
+        {
+          "say": "Count the spaces, not the tick marks. Do not start the count over at each whole.",
+          "do": [
+            {
+              "do": "watch",
+              "text": "Count the spaces from zero, not the tick marks. Do not start over at each whole.",
+              "at": "spaces",
+              "id": "w17"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "e1",
+                "e2",
+                "e3"
+              ],
+              "at": "spaces"
+            },
+            {
+              "do": "highlight",
+              "target": "lw2",
+              "at": "whole"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.55,
+          -2.7,
+          20.3,
+          5.4
+        ],
+        "points": {
+          "a0": [
+            0,
+            -0.34
+          ],
+          "b0": [
+            0,
+            0.34
+          ],
+          "a1": [
+            3.1,
+            -0.34
+          ],
+          "b1": [
+            3.1,
+            0.34
+          ],
+          "a2": [
+            6.2,
+            -0.34
+          ],
+          "b2": [
+            6.2,
+            0.34
+          ],
+          "a3": [
+            9.3,
+            -0.34
+          ],
+          "b3": [
+            9.3,
+            0.34
+          ],
+          "a4": [
+            12.4,
+            -0.34
+          ],
+          "b4": [
+            12.4,
+            0.34
+          ],
+          "a5": [
+            15.5,
+            -0.34
+          ],
+          "b5": [
+            15.5,
+            0.34
+          ],
+          "a6": [
+            18.6,
+            -0.34
+          ],
+          "b6": [
+            18.6,
+            0.34
+          ],
+          "w0": [
+            0,
+            -1.65
+          ],
+          "w1": [
+            6.2,
+            -1.65
+          ],
+          "w2": [
+            12.4,
+            -1.65
+          ],
+          "w3": [
+            18.6,
+            -1.65
+          ],
+          "O": [
+            0,
+            0
+          ],
+          "E": [
+            18.6,
+            0
+          ],
+          "A": [
+            0,
+            0.75
+          ],
+          "B": [
+            3.1,
+            0.75
+          ],
+          "C": [
+            6.2,
+            0.75
+          ],
+          "D": [
+            9.3,
+            0.75
+          ],
+          "P": [
+            9.3,
+            0
+          ],
+          "Q": [
+            9.3,
+            2.2
+          ],
+          "H": [
+            3.1,
+            3.45
+          ]
+        },
+        "parts": [
+          {
+            "id": "line",
+            "seg": [
+              "O",
+              "E"
+            ],
+            "ink": "muted",
+            "w": 8,
+            "start": true
+          },
+          {
+            "id": "k0",
+            "seg": [
+              "a0",
+              "b0"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k1",
+            "seg": [
+              "a1",
+              "b1"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k2",
+            "seg": [
+              "a2",
+              "b2"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k3",
+            "seg": [
+              "a3",
+              "b3"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k4",
+            "seg": [
+              "a4",
+              "b4"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k5",
+            "seg": [
+              "a5",
+              "b5"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k6",
+            "seg": [
+              "a6",
+              "b6"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "lw0",
+            "label": "0",
+            "at": "w0",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "lw1",
+            "label": "1",
+            "at": "w1",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "lw2",
+            "label": "2",
+            "at": "w2",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "lw3",
+            "label": "3",
+            "at": "w3",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "e1",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "ink": "accent",
+            "w": 11
+          },
+          {
+            "id": "e2",
+            "seg": [
+              "B",
+              "C"
+            ],
+            "ink": "accent",
+            "w": 11
+          },
+          {
+            "id": "e3",
+            "seg": [
+              "C",
+              "D"
+            ],
+            "ink": "accent",
+            "w": 11
+          },
+          {
+            "id": "bad",
+            "label": "\\frac{1}{2}",
+            "at": "H",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm"
+          },
+          {
+            "id": "dP",
+            "dot": "P",
+            "ink": "gold",
+            "r": 16
+          },
+          {
+            "id": "lP",
+            "label": "P",
+            "at": "Q",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Each whole has two equal steps. One step is one half. P is past one.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "What number is at $P$? Each whole interval has 2 equal steps.",
+              "at": "Each",
+              "id": "p32"
+            },
+            {
+              "do": "show",
+              "target": [
+                "dP",
+                "lP"
+              ],
+              "at": "P"
+            },
+            {
+              "do": "draw",
+              "target": "e1",
+              "at": "half"
+            }
+          ]
+        },
+        {
+          "say": "Count the spaces from zero. One, two, three. Three steps is three halves.",
+          "do": [
+            {
+              "do": "draw",
+              "target": [
+                "e1",
+                "e2",
+                "e3"
+              ],
+              "at": "One"
+            },
+            {
+              "do": "write",
+              "tex": "\\ca{3}\\times\\dfrac{1}{2}=\\dfrac{\\ca{3}}{2}",
+              "fresh": true,
+              "at": "Three",
+              "id": "f32"
+            },
+            {
+              "do": "answer",
+              "tex": "\\dfrac{3}{2}",
+              "at": "halves",
+              "id": "a32"
+            }
+          ]
+        },
+        {
+          "say": "One half is only the first step. P has passed one, so it is three halves, not one half.",
+          "do": [
+            {
+              "do": "show",
+              "target": "bad",
+              "at": "only"
+            },
+            {
+              "do": "highlight",
+              "target": "e1",
+              "at": "first"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "dP",
+                "lP"
+              ],
+              "at": "passed"
+            },
+            {
+              "do": "write",
+              "tex": "\\cancel{\\dfrac{1}{2}}",
+              "fresh": true,
+              "at": "not",
+              "id": "bad32"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.4,
+          -2.6,
+          21.9,
+          5.6
+        ],
+        "points": {
+          "a0": [
+            0,
+            -0.34
+          ],
+          "b0": [
+            0,
+            0.34
+          ],
+          "a1": [
+            1.7,
+            -0.34
+          ],
+          "b1": [
+            1.7,
+            0.34
+          ],
+          "a2": [
+            3.4,
+            -0.34
+          ],
+          "b2": [
+            3.4,
+            0.34
+          ],
+          "a3": [
+            5.1,
+            -0.34
+          ],
+          "b3": [
+            5.1,
+            0.34
+          ],
+          "a4": [
+            6.8,
+            -0.34
+          ],
+          "b4": [
+            6.8,
+            0.34
+          ],
+          "a5": [
+            8.5,
+            -0.34
+          ],
+          "b5": [
+            8.5,
+            0.34
+          ],
+          "a6": [
+            10.2,
+            -0.34
+          ],
+          "b6": [
+            10.2,
+            0.34
+          ],
+          "a7": [
+            11.9,
+            -0.34
+          ],
+          "b7": [
+            11.9,
+            0.34
+          ],
+          "a8": [
+            13.6,
+            -0.34
+          ],
+          "b8": [
+            13.6,
+            0.34
+          ],
+          "a9": [
+            15.299999999999999,
+            -0.34
+          ],
+          "b9": [
+            15.299999999999999,
+            0.34
+          ],
+          "a10": [
+            17,
+            -0.34
+          ],
+          "b10": [
+            17,
+            0.34
+          ],
+          "a11": [
+            18.7,
+            -0.34
+          ],
+          "b11": [
+            18.7,
+            0.34
+          ],
+          "a12": [
+            20.4,
+            -0.34
+          ],
+          "b12": [
+            20.4,
+            0.34
+          ],
+          "w0": [
+            0,
+            -1.6
+          ],
+          "w1": [
+            10.2,
+            -1.6
+          ],
+          "w2": [
+            20.4,
+            -1.6
+          ],
+          "O": [
+            0,
+            0
+          ],
+          "E": [
+            20.4,
+            0
+          ],
+          "A": [
+            0,
+            0.7
+          ],
+          "B": [
+            3.4,
+            0.7
+          ],
+          "C": [
+            6.8,
+            0.7
+          ],
+          "D": [
+            10.2,
+            0.7
+          ],
+          "P": [
+            6.8,
+            0
+          ],
+          "Q": [
+            6.8,
+            4.3
+          ],
+          "G1": [
+            1.7,
+            2.25
+          ],
+          "G2": [
+            5.1,
+            2.25
+          ],
+          "G3": [
+            8.5,
+            2.25
+          ]
+        },
+        "parts": [
+          {
+            "id": "line",
+            "seg": [
+              "O",
+              "E"
+            ],
+            "ink": "muted",
+            "w": 8,
+            "start": true
+          },
+          {
+            "id": "k0",
+            "seg": [
+              "a0",
+              "b0"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k1",
+            "seg": [
+              "a1",
+              "b1"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k2",
+            "seg": [
+              "a2",
+              "b2"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k3",
+            "seg": [
+              "a3",
+              "b3"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k4",
+            "seg": [
+              "a4",
+              "b4"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k5",
+            "seg": [
+              "a5",
+              "b5"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k6",
+            "seg": [
+              "a6",
+              "b6"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k7",
+            "seg": [
+              "a7",
+              "b7"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k8",
+            "seg": [
+              "a8",
+              "b8"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k9",
+            "seg": [
+              "a9",
+              "b9"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k10",
+            "seg": [
+              "a10",
+              "b10"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k11",
+            "seg": [
+              "a11",
+              "b11"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k12",
+            "seg": [
+              "a12",
+              "b12"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "lw0",
+            "label": "0",
+            "at": "w0",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "lw1",
+            "label": "1",
+            "at": "w1",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "lw2",
+            "label": "2",
+            "at": "w2",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "p1",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "ink": "accent",
+            "w": 11
+          },
+          {
+            "id": "p2",
+            "seg": [
+              "B",
+              "C"
+            ],
+            "ink": "accent",
+            "w": 11
+          },
+          {
+            "id": "p3",
+            "seg": [
+              "C",
+              "D"
+            ],
+            "ink": "muted",
+            "w": 8
+          },
+          {
+            "id": "g1",
+            "label": "1",
+            "at": "G1",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "g2",
+            "label": "2",
+            "at": "G2",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "g3",
+            "label": "3",
+            "at": "G3",
+            "dir": "c",
+            "size": "l",
+            "ink": "muted"
+          },
+          {
+            "id": "dP",
+            "dot": "P",
+            "ink": "gold",
+            "r": 15
+          },
+          {
+            "id": "lP",
+            "label": "P",
+            "at": "Q",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Each whole has six equal steps. P is four steps from zero, still before one.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "What number is at $P$? Each whole interval has 6 equal steps.",
+              "at": "Each",
+              "id": "p46"
+            },
+            {
+              "do": "show",
+              "target": [
+                "dP",
+                "lP"
+              ],
+              "at": "P"
+            },
+            {
+              "do": "draw",
+              "target": [
+                "p1",
+                "p2"
+              ],
+              "at": "four"
+            },
+            {
+              "do": "highlight",
+              "target": "lw1",
+              "at": "before"
+            }
+          ]
+        },
+        {
+          "say": "Four sixths. The six steps in one whole make three pairs, and P covers two of those pairs.",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "g1",
+                "g2",
+                "g3",
+                "p3"
+              ],
+              "at": "pairs"
+            },
+            {
+              "do": "write",
+              "tex": "\\dfrac{\\ca{4}}{6}",
+              "fresh": true,
+              "at": "Four",
+              "id": "f46"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "p1",
+                "p2"
+              ],
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "say": "Two pairs out of three is two thirds. Divide the top and the bottom by two.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\dfrac{\\ca{4}}{6}=\\dfrac{\\ca{2}}{3}",
+              "note": "\\div 2",
+              "at": "Divide",
+              "id": "s46"
+            },
+            {
+              "do": "answer",
+              "tex": "\\dfrac{2}{3}",
+              "at": "thirds",
+              "id": "a46"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.45,
+          -2.7,
+          27.349999999999998,
+          3.4
+        ],
+        "points": {
+          "a0": [
+            0,
+            -0.34
+          ],
+          "b0": [
+            0,
+            0.34
+          ],
+          "a1": [
+            2.15,
+            -0.34
+          ],
+          "b1": [
+            2.15,
+            0.34
+          ],
+          "a2": [
+            4.3,
+            -0.34
+          ],
+          "b2": [
+            4.3,
+            0.34
+          ],
+          "a3": [
+            6.449999999999999,
+            -0.34
+          ],
+          "b3": [
+            6.449999999999999,
+            0.34
+          ],
+          "a4": [
+            8.6,
+            -0.34
+          ],
+          "b4": [
+            8.6,
+            0.34
+          ],
+          "a5": [
+            10.75,
+            -0.34
+          ],
+          "b5": [
+            10.75,
+            0.34
+          ],
+          "a6": [
+            12.899999999999999,
+            -0.34
+          ],
+          "b6": [
+            12.899999999999999,
+            0.34
+          ],
+          "a7": [
+            15.049999999999999,
+            -0.34
+          ],
+          "b7": [
+            15.049999999999999,
+            0.34
+          ],
+          "a8": [
+            17.2,
+            -0.34
+          ],
+          "b8": [
+            17.2,
+            0.34
+          ],
+          "a9": [
+            19.349999999999998,
+            -0.34
+          ],
+          "b9": [
+            19.349999999999998,
+            0.34
+          ],
+          "a10": [
+            21.5,
+            -0.34
+          ],
+          "b10": [
+            21.5,
+            0.34
+          ],
+          "a11": [
+            23.65,
+            -0.34
+          ],
+          "b11": [
+            23.65,
+            0.34
+          ],
+          "a12": [
+            25.799999999999997,
+            -0.34
+          ],
+          "b12": [
+            25.799999999999997,
+            0.34
+          ],
+          "w0": [
+            0,
+            -1.65
+          ],
+          "w1": [
+            8.6,
+            -1.65
+          ],
+          "w2": [
+            17.2,
+            -1.65
+          ],
+          "w3": [
+            25.799999999999997,
+            -1.65
+          ],
+          "O": [
+            0,
+            0
+          ],
+          "E": [
+            25.799999999999997,
+            0
+          ],
+          "A": [
+            0,
+            0.72
+          ],
+          "B": [
+            17.2,
+            0.72
+          ],
+          "P": [
+            17.2,
+            0
+          ],
+          "Q": [
+            17.2,
+            2.2
+          ]
+        },
+        "parts": [
+          {
+            "id": "line",
+            "seg": [
+              "O",
+              "E"
+            ],
+            "ink": "muted",
+            "w": 8,
+            "start": true
+          },
+          {
+            "id": "k0",
+            "seg": [
+              "a0",
+              "b0"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k1",
+            "seg": [
+              "a1",
+              "b1"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k2",
+            "seg": [
+              "a2",
+              "b2"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k3",
+            "seg": [
+              "a3",
+              "b3"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k4",
+            "seg": [
+              "a4",
+              "b4"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k5",
+            "seg": [
+              "a5",
+              "b5"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k6",
+            "seg": [
+              "a6",
+              "b6"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k7",
+            "seg": [
+              "a7",
+              "b7"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k8",
+            "seg": [
+              "a8",
+              "b8"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k9",
+            "seg": [
+              "a9",
+              "b9"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k10",
+            "seg": [
+              "a10",
+              "b10"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k11",
+            "seg": [
+              "a11",
+              "b11"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "k12",
+            "seg": [
+              "a12",
+              "b12"
+            ],
+            "ink": "ink",
+            "w": 5,
+            "start": true
+          },
+          {
+            "id": "lw0",
+            "label": "0",
+            "at": "w0",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "lw1",
+            "label": "1",
+            "at": "w1",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "lw2",
+            "label": "2",
+            "at": "w2",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "lw3",
+            "label": "3",
+            "at": "w3",
+            "dir": "c",
+            "size": "l",
+            "ink": "ink",
+            "start": true
+          },
+          {
+            "id": "bar",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "ink": "accent",
+            "w": 11
+          },
+          {
+            "id": "dP",
+            "dot": "P",
+            "ink": "gold",
+            "r": 16
+          },
+          {
+            "id": "lP",
+            "label": "P",
+            "at": "Q",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Each whole has four equal steps. P sits on the two.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "What number is at $P$? Each whole interval has 4 equal steps.",
+              "at": "Each",
+              "id": "p2"
+            },
+            {
+              "do": "show",
+              "target": [
+                "dP",
+                "lP"
+              ],
+              "at": "P"
+            },
+            {
+              "do": "highlight",
+              "target": "lw2",
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "say": "Count the steps from zero. Four steps make one whole, and eight steps make two wholes.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "bar",
+              "at": "Count"
+            },
+            {
+              "do": "write",
+              "tex": "\\dfrac{\\ca{8}}{4}",
+              "fresh": true,
+              "at": "eight",
+              "id": "f84"
+            },
+            {
+              "do": "highlight",
+              "target": "lw2",
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "say": "Eight fourths equals two. The number at P is two.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\dfrac{\\ca{8}}{4}=\\cg{2}",
+              "at": "equals",
+              "id": "s84"
+            },
+            {
+              "do": "answer",
+              "tex": "2",
+              "at": "two",
+              "id": "a2"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "dP",
+                "lw2"
+              ],
+              "at": "P"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Every point on a line like this is read the same way.",
+          "do": [
+            {
+              "do": "overview",
+              "of": "a17",
+              "at": "Every"
+            }
+          ]
+        },
+        {
+          "say": "One. One step is one over the equal steps in a whole.",
+          "do": [
+            {
+              "do": "recap",
+              "text": "One step is $1$ over the equal steps in a whole.",
+              "marks": [
+                "st8"
+              ],
+              "at": "One"
+            }
+          ]
+        },
+        {
+          "say": "Two. Count the spaces from zero, through every whole. Do not count tick marks.",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Count the spaces from zero, through every whole. Do not count tick marks.",
+              "marks": [
+                "sum16",
+                "sum17",
+                "w17"
+              ],
+              "at": "Two"
+            }
+          ]
+        },
+        {
+          "say": "Three. Write the count over the steps in a whole, then simplify.",
+          "pause": 0.75,
+          "do": [
+            {
+              "do": "recap",
+              "text": "Write that count over the steps in a whole. Simplify when the top and bottom share a factor.",
+              "marks": [
+                "f17",
+                "a17"
+              ],
+              "at": "Three"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
