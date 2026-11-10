@@ -375,7 +375,7 @@ export function SignInScreen() {
     if (!result.error) return;
     const messages: Record<string, string> = {
       INVALID_EMAIL_OR_PASSWORD:
-        "Check your email and AMP password, or choose the sign-in method you used before.",
+        "Check your email and password, or choose the sign-in method you used before.",
       INVALID_EMAIL:
         "Enter a complete email address, such as name@example.com.",
       USER_ALREADY_EXISTS_USE_ANOTHER_EMAIL:
@@ -693,7 +693,7 @@ export function SignInScreen() {
                 step === "create" ||
                 step === "reset") && (
                 <label>
-                  {step === "reset" ? "New password" : "AMP password"}
+                  {step === "reset" ? "New password" : "Password"}
                   <input
                     required
                     type="password"

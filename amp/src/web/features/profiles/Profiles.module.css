@@ -281,3 +281,8 @@
 .columns .strand:nth-child(2) {
   border-top-color: transparent;
 }
+/* A new profile shows its levels once a grade sets them. */
+.levelsRow[hidden],
+.levels[hidden] {
+  display: none;
+}

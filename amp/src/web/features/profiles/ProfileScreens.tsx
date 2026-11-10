@@ -144,6 +144,7 @@ function ProfileForm({
   pending,
   onSubmit,
   aside,
+  levelsReady = true,
 }: {
   heading: string;
   intro: string;
@@ -158,6 +159,8 @@ function ProfileForm({
   onSubmit: () => void;
   /** Quieter actions beside the main one. */
   aside?: ReactNode;
+  /** False until a new profile has a grade: levels before one say nothing. */
+  levelsReady?: boolean;
 }) {
   const [touched, setTouched] = useState(false);
   const [adjusting, setAdjusting] = useState(false);
@@ -182,6 +185,7 @@ function ProfileForm({
           {choose}
           <TextField
             label="Name"
+            placeholder="e.g. Grade 8 on level"
             value={label}
             maxLength={PROFILE_LABEL_MAX}
             autoComplete="off"
@@ -194,7 +198,7 @@ function ProfileForm({
             }}
           />
           {/* Below the wide layout the levels open in a sheet of their own. */}
-          <div className={styles.levelsRow}>
+          <div className={styles.levelsRow} hidden={!levelsReady}>
             <div className={styles.levelsRowText}>
               <span className={styles.fieldLabel}>Levels by area</span>
               <span className={styles.caption} data-levels-summary>
@@ -212,7 +216,11 @@ function ProfileForm({
             </Button>
           </div>
         </section>
-        <section className={styles.levels} aria-labelledby="profile-levels">
+        <section
+          className={styles.levels}
+          aria-labelledby="profile-levels"
+          hidden={!levelsReady}
+        >
           <div className={styles.levelsHead}>
             <h2 id="profile-levels">Levels by area</h2>
             <p data-levels-summary>{summary}</p>
@@ -369,6 +377,7 @@ export function NewProfileScreen() {
         levels={levels}
         onLevels={setLevels}
         submit="Start practicing"
+        levelsReady={grade !== null}
         pending={create.isPending || create.isSuccess}
         onSubmit={() =>
           create.mutate(

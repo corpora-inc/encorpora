@@ -384,7 +384,13 @@ const home = createRoute({
     setPitchShown(shown);
     if (!shown) await legacy.preload?.();
     else {
-      const { loadPitch } = await import("../features/pitch/PitchScreen");
+      // The lazy screen's own chunk too: rendering it before it has loaded
+      // suspends inside TanStack's Lazy with `use()`, which React then
+      // reports as a conditional use() once it resolves.
+      const [{ loadPitch }] = await Promise.all([
+        import("../features/pitch/PitchScreen"),
+        pitch.preload?.(),
+      ]);
       await loadPitch(deps);
     }
     return { pitch: shown };

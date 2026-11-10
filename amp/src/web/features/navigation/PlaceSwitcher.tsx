@@ -93,7 +93,8 @@ function place(me: SignedInMe, id: PlaceId): PlaceEntry {
       ? {
           id,
           name: "My practice",
-          detail: own.name,
+          // Never their own name back to them (docs/design/ia.md).
+          detail: "Your practice and progress",
           path: "me",
         }
       : {
@@ -250,6 +251,20 @@ export function choosePlaceLearner(me: SignedInMe, place: PlaceId) {
     store.select(me.learners[0]?.id ?? null);
 }
 
+/** What "Add a place" can still add: never a place the account has. */
+function addPlaceDetail(me: SignedInMe) {
+  const options = [
+    ...(me.adultPractice?.learner ? [] : ["your own practice"]),
+    ...(me.familyClass || me.learners.length ? [] : ["a family"]),
+    "a class",
+  ];
+  const text =
+    options.length > 1
+      ? `${options.slice(0, -1).join(", ")} or ${options.at(-1)}`
+      : options[0]!;
+  return text[0]!.toUpperCase() + text.slice(1);
+}
+
 /**
  * The one way between the places a person works: their family and practice
  * side, their own practice, and each school with their role there. It lists
@@ -358,9 +373,7 @@ export function PlaceSwitcher({
       >
         <span className={styles.item} data-place="add">
           <span className={styles.name}>Add a place</span>
-          <span className={styles.detail}>
-            Your own practice, a family or a class
-          </span>
+          <span className={styles.detail}>{addPlaceDetail(me)}</span>
         </span>
       </MenuItem>
     </Menu>

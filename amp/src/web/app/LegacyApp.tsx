@@ -2272,6 +2272,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             apply={adjustPractice}
             close={closeShellDrawer}
             canReset={!student}
+            together={!ownLearner}
             resetFrom={
               learner.simulation
                 ? "Start again from this profile’s levels."

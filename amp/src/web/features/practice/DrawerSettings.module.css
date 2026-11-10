@@ -79,6 +79,17 @@
   stroke-linejoin: round;
   stroke-linecap: round;
 }
+/* A toggle's name with its one line of meaning under it. */
+.toggleText {
+  display: grid;
+  gap: 2px;
+}
+.toggleText small {
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+  font-weight: 400;
+  line-height: 1.35;
+}
 .note {
   margin: 0 0 var(--space-2);
   padding: 0 var(--space-2);

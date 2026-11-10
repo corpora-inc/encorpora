@@ -197,7 +197,7 @@ async function pressed(page: Page, name: RegExp, id: string) {
   await page.goto(`${fixture.origin}/sign-in`);
   await page.getByLabel("Email").fill(fixture.paid.email);
   await page
-    .getByLabel("AMP password")
+    .getByLabel("Password", { exact: true })
     .fill("synthetic long fixture passphrase");
   await slow(page);
   await pressed(page, /^Sign in$/, "sign-in-button");

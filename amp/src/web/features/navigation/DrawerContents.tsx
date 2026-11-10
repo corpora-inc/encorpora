@@ -190,7 +190,9 @@ export default function DrawerContents({
   const hasProgress = !!view.learner;
   return (
     <>
-      {(places.length > 1 || learnerChoices.length > 1 || !!learnerName) && (
+      {(places.length > 1 ||
+        learnerChoices.length > 1 ||
+        (!!learnerName && !own)) && (
         <section className={styles.switcher} aria-label="Where you are">
           {account && places.length > 1 && (
             <PlaceSwitcher
@@ -211,14 +213,15 @@ export default function DrawerContents({
               onChange={chooseLearner}
             />
           ) : (
-            learnerName && (
+            // Their own practice is named by the place above; the drawer
+            // never names a person to themselves.
+            learnerName &&
+            !own && (
               <div
                 className={styles.current}
                 data-learner={(own ? view.learner?.id : learner?.id) ?? ""}
               >
-                <span className={styles.kicker}>
-                  {own ? "Your own practice" : "Learner"}
-                </span>
+                <span className={styles.kicker}>Learner</span>
                 <strong>{learnerName}</strong>
                 {student && account?.school && (
                   <span className={styles.context}>

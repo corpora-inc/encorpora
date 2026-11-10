@@ -358,7 +358,7 @@ async function signUp(page: Page, name: string, here = false) {
   const email = `${name.split(" ")[0]!.toLowerCase()}-${randomUUID().slice(0, 8)}@journeys.example`;
   if (!here) await page.goto(`${origin}/sign-up`);
   const fallback = page.getByRole("button", { name: "Use a password instead" });
-  const password = page.getByLabel("AMP password");
+  const password = page.getByLabel("Password", { exact: true });
   await Promise.race([
     fallback.waitFor({ timeout: 20_000 }),
     password.waitFor({ timeout: 20_000 }),
@@ -381,7 +381,7 @@ async function signUp(page: Page, name: string, here = false) {
 async function signIn(page: Page, email: string) {
   await page.goto(`${origin}/sign-in`);
   const fallback = page.getByRole("button", { name: "Use a password instead" });
-  const password = page.getByLabel("AMP password");
+  const password = page.getByLabel("Password", { exact: true });
   await Promise.race([
     fallback.waitFor({ timeout: 20_000 }),
     password.waitFor({ timeout: 20_000 }),
@@ -958,7 +958,7 @@ async function tutorJourney(
   const fallback = parent.getByRole("button", {
     name: "Use a password instead",
   });
-  const password = parent.getByLabel("AMP password");
+  const password = parent.getByLabel("Password", { exact: true });
   await Promise.race([fallback.waitFor(), password.waitFor()]);
   if (await fallback.isVisible()) await fallback.click();
   await parent.getByLabel("Email").fill(parentEmail);

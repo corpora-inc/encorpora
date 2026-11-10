@@ -761,7 +761,7 @@ async function journeys(browser: Browser, engine: string) {
     await noOverflow(page, `${tag} sign-up`);
     await page.screenshot({ path: `${shots}/${tag}-sign-up.png` });
     await page.getByLabel("Email").fill("parent@example.test");
-    await page.getByLabel("AMP password").fill("correct horse battery");
+    await page.getByLabel("Password", { exact: true }).fill("correct horse battery");
     await page.getByRole("button", { name: "Create account" }).click();
     await item.landing(page, api);
     assert.equal(api.intents.length, 1, `${tag}: one signup intent`);

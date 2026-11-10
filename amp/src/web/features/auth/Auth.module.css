@@ -117,3 +117,10 @@
   color: inherit;
   text-underline-offset: 3px;
 }
+/* On a phone the card starts at the top, where the keyboard leaves it in
+   view, rather than floating in the middle of the screen. */
+@media (max-width: 520px) {
+  .authFrame.authFrame > main > * {
+    margin-block: 0 auto;
+  }
+}

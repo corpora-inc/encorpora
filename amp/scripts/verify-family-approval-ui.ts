@@ -132,7 +132,7 @@ async function createAccount(page: Page, email: string) {
   const fallback = page.getByRole("button", {
     name: "Use a password instead",
   });
-  const password = page.getByLabel("AMP password");
+  const password = page.getByLabel("Password", { exact: true });
   await Promise.race([
     fallback.waitFor({ timeout: 20_000 }),
     password.waitFor({ timeout: 20_000 }),
