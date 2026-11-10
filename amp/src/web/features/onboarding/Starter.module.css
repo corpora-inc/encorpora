@@ -225,58 +225,7 @@
 }
 /* "What year were you born?": the years in one designed group, newest first,
    with "Adult" across the last row. Four to a row on a phone, eight wider. */
-.yearGrid {
-  box-sizing: border-box;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--space-2);
-  width: 100%;
-}
-@media (min-width: 560px) {
-  .yearGrid {
-    grid-template-columns: repeat(8, minmax(0, 1fr));
-  }
-}
-/* Each year is a tile of its own: paper on the page, a clear edge, the
-   number in tabular figures. The chosen one fills with the brand ink. */
-.yearCell {
-  min-width: 0;
-  min-height: 52px;
-  padding: var(--space-2) var(--space-1);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-control);
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface-raised);
-  font: inherit;
-  font-size: var(--text-body);
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-  cursor: pointer;
-  transition:
-    border-color var(--motion-fast) var(--ease-standard),
-    background-color var(--motion-fast) var(--ease-standard);
-}
-.yearCell:hover:not(:disabled) {
-  filter: none;
-  border-color: var(--color-border-strong);
-}
-.yearCell[aria-checked="true"],
-.yearCell[aria-checked="true"]:hover:not(:disabled) {
-  border-color: var(--color-selected);
-  background: var(--color-selected);
-  color: var(--color-on-selected);
-}
-.yearCell:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: 2px;
-}
-.yearCell:disabled {
-  cursor: default;
-}
-.yearCell[data-adult] {
-  grid-column: 1 / -1;
-}
+/* The years are the shared tile grid (ui/TileChoice.module.css). */
 /* "Where do you want to begin?", under the years once an adult year is
    chosen. */
 .where {

@@ -1,0 +1,56 @@
+/* A grid of equal tiles (ui/TileChoice.tsx): paper on the page, a clear
+   edge, tabular figures; the chosen one filled with the brand ink. */
+.grid {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(var(--tiles-narrow, 4), minmax(0, 1fr));
+  gap: var(--space-2);
+  width: 100%;
+}
+@media (min-width: 560px) {
+  .grid {
+    grid-template-columns: repeat(var(--tiles-wide, 8), minmax(0, 1fr));
+  }
+}
+.tile {
+  min-width: 0;
+  min-height: 52px;
+  padding: var(--space-2) var(--space-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  font: inherit;
+  font-size: var(--text-body);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    border-color var(--motion-fast) var(--ease-standard),
+    background-color var(--motion-fast) var(--ease-standard);
+}
+.tile:hover:not(:disabled) {
+  filter: none;
+  border-color: var(--color-border-strong);
+}
+.tile[aria-checked="true"],
+.tile[aria-checked="true"]:hover:not(:disabled) {
+  border-color: var(--color-selected);
+  background: var(--color-selected);
+  color: var(--color-on-selected);
+}
+.tile:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.tile:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+.tile[data-span="row"] {
+  grid-column: 1 / -1;
+}
+.tile[data-span="2"] {
+  grid-column: span 2;
+}

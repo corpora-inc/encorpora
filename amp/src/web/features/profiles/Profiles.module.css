@@ -62,60 +62,6 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* Grades K to 12: five to a row on the narrowest phones, seven from 360 px,
-   one row with room. Every cell is at least 44 px square. */
-.grades {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: var(--space-1);
-  padding: var(--space-1);
-  border: 1px solid var(--color-border);
-  border-radius: calc(var(--radius-control) + var(--space-1));
-  background: var(--color-surface-sunken);
-}
-@container (min-width: 340px) {
-  .grades {
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-  }
-}
-@container (min-width: 640px) {
-  .grades {
-    grid-template-columns: repeat(13, minmax(0, 1fr));
-  }
-}
-.grade {
-  display: grid;
-  place-items: center;
-  min-width: 44px;
-  min-height: 48px;
-  padding: 0;
-  border: 2px solid transparent;
-  border-radius: var(--radius-control);
-  background: transparent;
-  color: var(--color-on-surface);
-  font: inherit;
-  font-size: var(--text-body);
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  cursor: pointer;
-}
-.grade:hover:not(:disabled) {
-  filter: none;
-  background: var(--color-surface-raised);
-}
-.grade[aria-checked="true"] {
-  border-color: var(--color-primary);
-  background: var(--color-surface-raised);
-}
-.grade:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: 2px;
-}
-.grade:disabled {
-  cursor: default;
-  opacity: 0.7;
-}
-
 /* Levels by area. Narrow: a summary and Adjust, which opens the sheet. Wide:
    the panel beside the choices. */
 .levelsRow {

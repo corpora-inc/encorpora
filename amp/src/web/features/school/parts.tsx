@@ -1,10 +1,5 @@
-import {
-  useId,
-  useRef,
-  useState,
-  type KeyboardEvent,
-  type ReactNode,
-} from "react";
+import { useId, useState, type ReactNode } from "react";
+import { TileChoice } from "../../ui/TileChoice";
 import styles from "./School.module.css";
 
 /** A screen's title and its one line, with its main action beside them. */
@@ -85,47 +80,26 @@ export function GradePicker({
   allowEmpty?: boolean;
 }) {
   const id = useId();
-  const refs = useRef<(HTMLButtonElement | null)[]>([]);
-  const focusable = value ?? 0;
-  const move = (event: KeyboardEvent, at: number) => {
-    const step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[
-      event.key
-    ];
-    if (step === undefined) return;
-    event.preventDefault();
-    const next = (at + step + GRADES.length) % GRADES.length;
-    onChange(GRADES[next]!);
-    refs.current[next]?.focus();
-  };
   return (
     <div className={styles.field}>
       <span className={styles.fieldLabel} id={id}>
         {label}
         {allowEmpty && <span className={styles.optional}> (optional)</span>}
       </span>
-      <div role="radiogroup" aria-labelledby={id} className={styles.grades}>
-        {GRADES.map((grade, at) => (
-          <button
-            key={grade}
-            ref={(node) => {
-              refs.current[at] = node;
-            }}
-            type="button"
-            role="radio"
-            aria-checked={grade === value}
-            aria-label={gradeName(grade)}
-            tabIndex={grade === focusable ? 0 : -1}
-            className={styles.grade}
-            data-wide={grade === 13 || undefined}
-            onClick={() =>
-              onChange(allowEmpty && grade === value ? null : grade)
-            }
-            onKeyDown={(event) => move(event, at)}
-          >
-            {gradeCell(grade)}
-          </button>
-        ))}
-      </div>
+      {/* The shared tile grid; an optional grade clears with a second tap. */}
+      <TileChoice
+        labelledBy={id}
+        tiles={GRADES.map((grade) => ({
+          value: grade,
+          label: gradeCell(grade),
+          name: gradeName(grade),
+          ...(grade === 13 ? { span: 2 as const } : {}),
+        }))}
+        value={value}
+        onChange={onChange}
+        columns={{ narrow: 5, wide: 7 }}
+        clearable={allowEmpty}
+      />
     </div>
   );
 }
