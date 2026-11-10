@@ -54,8 +54,8 @@ def measured_total(values, *, dollars=False, divisor=1):
     present = [value for value in values if value is not None]
     if not present:
         return 'unavailable'
-    value = sum(present)/divisor
-    return money(value) if dollars else f'{value:g}'
+    value = sum(present)
+    return money(value/divisor) if dollars else str(value if divisor == 1 else value/divisor)
 
 
 def api_value(receipt):

@@ -4,10 +4,13 @@ import tempfile
 import unittest
 
 from providers import write_json
-from report import build_report
+from report import build_report, measured_total
 
 
 class AccountingReportTests(unittest.TestCase):
+    def test_large_token_counts_keep_every_reported_digit(self):
+        self.assertEqual(measured_total([21606016, None, 1536]), '21607552')
+
     def test_missing_role_usage_is_unavailable_and_measured_zero_is_zero(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
