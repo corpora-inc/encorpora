@@ -726,6 +726,24 @@ async function parentJourney(
   await page.waitForURL(CLASS_TODAY);
   await page.getByRole("button", { name: "Let Rowan practice here" }).waitFor();
   await shot(page, 1, "today-paid", width, theme);
+
+  // Family: the parent renames a child in place and adds another, with no
+  // consent step for either name.
+  await page.goto(`${origin}/family/learners`);
+  await page.getByRole("button", { name: "Edit name", exact: true }).click();
+  const rename = page.getByLabel("Name", { exact: true });
+  await rename.fill("rowan@example.com");
+  await page.getByRole("button", { name: "Save name" }).click();
+  await page.getByText("Use a name, not an email address.").waitFor();
+  await measured(page, `${label} rename`);
+  await shot(page, 1, "family-rename", width, theme);
+  await rename.fill("Ro");
+  await page.getByRole("button", { name: "Save name" }).click();
+  await page.getByRole("heading", { name: "Ro", exact: true }).waitFor();
+  await page.goto(`${origin}/family/learners/new`);
+  await page.getByText("You’re adding your own children").waitFor();
+  await measured(page, `${label} add learner`);
+  await shot(page, 1, "family-add", width, theme);
   await context.close();
 }
 
@@ -973,7 +991,7 @@ async function tutorJourney(
     [parentAccount],
   );
   await reloaded(parent);
-  const childName = parent.getByLabel("Your child’s first name");
+  const childName = parent.getByLabel("Your child’s name");
   await childName.waitFor();
   await childName.fill("Ana");
   await shot(parent, 4, "approve", width, theme);

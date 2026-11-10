@@ -1,4 +1,5 @@
 import { createHash, createHmac, randomUUID } from "node:crypto";
+import { childNameSchema } from "../learning/nickname.js";
 import type { Pool, PoolClient } from "pg";
 import { z } from "zod";
 import {
@@ -50,12 +51,6 @@ export const approvalPageUrl = (keys: ApprovalKeys, id: string) =>
 export const APPROVALS_PER_DAY = 20;
 const SENDS_PER_LINK = 10;
 const token = z.string().regex(/^[A-Za-z0-9_-]{43}$/);
-const firstName = z
-  .string()
-  .trim()
-  .min(1)
-  .max(60)
-  .regex(/^[^\u0000-\u001f\u007f<>]+$/);
 export const createApprovalSchema = z.strictObject({
   personId: z.uuid().optional(),
   parentEmail: z
@@ -72,7 +67,8 @@ export const openApprovalSchema = z.strictObject({
 /** A child the approval adds (none yet in the class) brings a birth year:
  * it sets where their practice starts. */
 export const approveSchema = z.strictObject({
-  name: firstName,
+  // The parent names their own child (docs/parent-consent.md#childrens-names).
+  name: childNameSchema,
   birthYear: z
     .number()
     .int()
