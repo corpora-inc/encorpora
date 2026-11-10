@@ -91,6 +91,7 @@ import {
 } from "../math/structured-work";
 import { recordProblemFlag } from "../feedback/record";
 import { normalizeShapeAnswer, shapeFeedback } from "../math/shape-composer";
+import { normalizePegBoard, pegBoardFeedback } from "../math/peg-board";
 import {
   normalizeEqualAddends,
   equalAddendsFeedback,
@@ -949,6 +950,11 @@ function routes(app: FastifyInstance, options: AppOptions) {
               counterProblem.public.response,
               input.response,
             ) === duplicate.response) ||
+          (counterProblem?.public.response.kind === "peg-board" &&
+            normalizePegBoard(
+              counterProblem.public.response,
+              input.response,
+            ) === duplicate.response) ||
           (workProblem?.public.response.kind === "shape-composer" &&
             normalizeShapeAnswer(
               workProblem.public.response,
@@ -1008,43 +1014,48 @@ function routes(app: FastifyInstance, options: AppOptions) {
                                   : "Enter a number, decimal, or fraction such as 3/4",
         );
       const response =
-        problem.public.response.kind === "trend-line-fit"
-          ? normalizeTrendLine(problem.public.response, input.response)!
-          : problem.public.response.kind === "equal-addends"
-            ? normalizeEqualAddends(problem.public.response, input.response)!
-            : problem.public.response.kind === "line-plot-build"
-              ? normalizeLinePlotBuild(problem.public.response, input.response)!
-              : problem.public.response.kind === "counter-builder"
-                ? normalizeCounterBuilder(
+        problem.public.response.kind === "peg-board"
+          ? normalizePegBoard(problem.public.response, input.response)!
+          : problem.public.response.kind === "trend-line-fit"
+            ? normalizeTrendLine(problem.public.response, input.response)!
+            : problem.public.response.kind === "equal-addends"
+              ? normalizeEqualAddends(problem.public.response, input.response)!
+              : problem.public.response.kind === "line-plot-build"
+                ? normalizeLinePlotBuild(
                     problem.public.response,
                     input.response,
                   )!
-                : problem.public.response.kind === "shape-composer"
-                  ? normalizeShapeAnswer(
+                : problem.public.response.kind === "counter-builder"
+                  ? normalizeCounterBuilder(
                       problem.public.response,
                       input.response,
                     )!
-                  : problem.public.response.kind === "multi-select"
-                    ? normalizeSelection(
+                  : problem.public.response.kind === "shape-composer"
+                    ? normalizeShapeAnswer(
                         problem.public.response,
                         input.response,
                       )!
-                    : problem.public.response.kind === "point-plot"
-                      ? normalizePointPlot(
+                    : problem.public.response.kind === "multi-select"
+                      ? normalizeSelection(
                           problem.public.response,
                           input.response,
                         )!
-                      : problem.public.response.kind === "multi-part-choice"
-                        ? normalizeMultiPart(
+                      : problem.public.response.kind === "point-plot"
+                        ? normalizePointPlot(
                             problem.public.response,
                             input.response,
                           )!
-                        : problem.public.response.kind === "structured-work"
-                          ? normalizeStructuredWork(
+                        : problem.public.response.kind === "multi-part-choice"
+                          ? normalizeMultiPart(
                               problem.public.response,
                               input.response,
                             )!
-                          : input.response;
+                          : problem.public.response.kind === "structured-work"
+                            ? normalizeStructuredWork(
+                                problem.public.response,
+                                input.response,
+                              )!
+                            : input.response;
       const answered = await tx.attemptByProblem(input.problemId);
       if (answered)
         throw new ApiError(409, "This problem has already been answered");
@@ -1132,6 +1143,11 @@ function routes(app: FastifyInstance, options: AppOptions) {
                   : [
                       ...counterFeedback,
                       ...equalFeedback,
+                      ...(problem.public.response.kind === "peg-board"
+                        ? [
+                            pegBoardFeedback(problem.public.response, response),
+                          ].filter((s): s is string => s !== null)
+                        : []),
                       ...(problem.public.response.kind === "trend-line-fit"
                         ? trendLineFeedback(problem.public.response, response)
                         : problem.public.response.kind === "shape-composer"

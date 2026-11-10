@@ -117,6 +117,7 @@ function longestFormula(problem: GeneratedProblem): number {
 const fullWidth = (problem: GeneratedProblem) =>
   problem.public.response.kind === "equal-addends" ||
   problem.public.response.kind === "counter-builder" ||
+  problem.public.response.kind === "peg-board" ||
   problem.public.response.kind === "shape-composer" ||
   problem.public.response.kind === "structured-work" ||
   problem.public.response.kind === "trend-line-fit" ||

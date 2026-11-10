@@ -224,6 +224,7 @@ test("guess chance comes from each family's answer schema and is never understat
     "structured-work-v1": "structured-work",
     "unit-square-marking-v1": "unit-square-marking",
     "counter-builder-v1": "counter-builder",
+    "peg-board-v1": "peg-board",
     "equal-addends-v1": "equal-addends",
   };
   let choiceFamilies = 0;

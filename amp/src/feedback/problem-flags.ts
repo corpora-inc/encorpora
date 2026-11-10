@@ -101,6 +101,7 @@ export type ProblemFlag = {
     | "figure-choice"
     | "equal-addends"
     | "counter-builder"
+    | "peg-board"
     | "structured-work"
     | "line-plot-build"
     | "unit-square-marking";

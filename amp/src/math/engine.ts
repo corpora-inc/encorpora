@@ -44,6 +44,7 @@ import { normalizeEqualAddends, gradeEqualAddends } from "./equal-addends";
 import { generateEqualAddendsFallback } from "./equal-addends-practice";
 import { generateCounterBuilderFallback } from "./counter-builder-practice";
 import { gradeTrendLine, normalizeTrendLine } from "./trend-line-fit";
+import { gradePegBoard, normalizePegBoard } from "./peg-board";
 import { gradeShapeComposer, normalizeShapeAnswer } from "./shape-composer";
 import { gradeMultiPart, normalizeMultiPart } from "./multi-part-choice";
 import {
@@ -727,6 +728,8 @@ export function isValidResponse(
   problem: PublicProblem,
   response: string,
 ): boolean {
+  if (problem.response.kind === "peg-board")
+    return normalizePegBoard(problem.response, response) !== null;
   if (problem.response.kind === "equal-addends")
     return normalizeEqualAddends(problem.response, response) !== null;
   if (problem.response.kind === "counter-builder")
@@ -758,6 +761,8 @@ export function gradeAnswer(
   problem: GeneratedProblem,
   response: string,
 ): boolean {
+  if (problem.public.response.kind === "peg-board")
+    return gradePegBoard(problem.public.response, response);
   if (problem.public.response.kind === "equal-addends")
     return gradeEqualAddends(problem.public.response, problem.answer, response);
   if (problem.public.response.kind === "counter-builder")

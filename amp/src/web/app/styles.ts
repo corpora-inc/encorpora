@@ -31,6 +31,7 @@ import "../figure-choice.css";
 import "../structured-work.css";
 import "../practice-tablet.css";
 import "../counter-builder.css";
+import "../peg-board.css";
 import "../equal-addends.css";
 import "../lesson-video.css";
 // Lesson reading rhythm sets the reading surface over everything above.
