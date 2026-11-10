@@ -10,6 +10,8 @@ import { Segmented, type SegmentedOption } from "../../../ui/Segmented";
 import { BirthYearPicker, Select } from "../../../ui/Select";
 import { Stepper } from "../../../ui/Stepper";
 import { TextArea, TextField } from "../../../ui/TextField";
+import { TileChoice } from "../../../ui/TileChoice";
+import { YearField } from "../../../ui/YearField";
 import { Section, Specimen } from "../Gallery";
 import styles from "../Design.module.css";
 
@@ -541,9 +543,145 @@ function FieldSection() {
   );
 }
 
+/** Every input-like control in one row, so one field style can be judged:
+ * the same surface, edge, radius, height and placeholder (tokens.css
+ * --field-*). */
+function FieldFamilySection() {
+  return (
+    <Section
+      id="field-family"
+      title="One field style"
+      source={[
+        "ui/tokens.css (--field-*)",
+        "ui/Controls.module.css",
+        "ui/YearField.tsx",
+        "ui/Listbox.module.css",
+        "ui/Stepper.module.css",
+        "ui/SearchField.module.css",
+      ]}
+      note="A text field, a year, a picker, a stepper and a search side by side: one surface, one edge, one height."
+    >
+      <Specimen label="A child's row" wide>
+        <Live initial={{ name: "", year: "" }}>
+          {(value, set) => (
+            <div className={styles.fieldRow}>
+              <TextField
+                label="Name"
+                placeholder="Child 1"
+                value={value.name}
+                onChange={(event) => set({ ...value, name: event.target.value })}
+              />
+              <label className={styles.fieldLabelled}>
+                <span>Birth year</span>
+                <YearField
+                  label="Birth year, Child 1"
+                  value={value.year}
+                  onChange={(year) => set({ ...value, year })}
+                />
+              </label>
+            </div>
+          )}
+        </Live>
+      </Specimen>
+      <Specimen label="A missing year, asked for">
+        <YearField
+          label="Birth year, Child 2"
+          value=""
+          invalid
+          onChange={() => undefined}
+        />
+      </Specimen>
+      <Specimen label="Picker">
+        <Live initial={"all"}>
+          {(value, set) => (
+            <ListboxDisclosure
+              label="Math area"
+              value={value}
+              onChange={(next) => set(next || "all")}
+              options={[
+                { value: "all", label: "Every math area" },
+                { value: "fractions", label: "Fractions" },
+              ]}
+            />
+          )}
+        </Live>
+      </Specimen>
+      <Specimen label="Stepper">
+        <Live initial={60}>
+          {(value, set) => (
+            <Stepper
+              label="Weekly target"
+              value={value}
+              onChange={set}
+              min={10}
+              max={300}
+              step={10}
+            />
+          )}
+        </Live>
+      </Specimen>
+    </Section>
+  );
+}
+
+/** One choice among equal tiles (ui/TileChoice): birth years and grades. */
+function TileSection() {
+  const now = new Date().getFullYear();
+  return (
+    <Section
+      id="tiles"
+      title="Tile choice"
+      source={["ui/TileChoice.tsx", "ui/TileChoice.module.css"]}
+      note="Paper tiles, the chosen one filled. One tab stop; arrows, Home and End move the choice. An optional choice clears with a second tap."
+    >
+      <Specimen label="Birth years, with Adult" wide>
+        <Live<number | null> initial={null}>
+          {(value, set) => (
+            <TileChoice
+              label="Birth year"
+              tiles={[
+                ...Array.from({ length: 16 }, (_, i) => ({
+                  value: now - 4 - i,
+                  label: String(now - 4 - i),
+                })),
+                { value: now - 25, label: "Adult", span: "row" as const },
+              ]}
+              value={value}
+              onChange={set}
+            />
+          )}
+        </Live>
+      </Specimen>
+      <Specimen label="Grades, optional (tap again to clear)" wide>
+        <Live<number | null> initial={4}>
+          {(value, set) => (
+            <TileChoice
+              label="Grade"
+              clearable
+              tiles={[
+                { value: 0, label: "K", name: "Kindergarten" },
+                ...Array.from({ length: 12 }, (_, i) => ({
+                  value: i + 1,
+                  label: String(i + 1),
+                })),
+                { value: 13, label: "College", span: 2 as const },
+              ]}
+              value={value}
+              onChange={set}
+              columns={{ narrow: 5, wide: 7 }}
+            />
+          )}
+        </Live>
+      </Specimen>
+    </Section>
+  );
+}
+
 export function ControlSections() {
   return (
     <>
+      <FieldFamilySection />
+      <TileSection />
       <ButtonSection />
       <SegmentedSection />
       <StepperSection />

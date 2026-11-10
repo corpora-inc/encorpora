@@ -457,6 +457,15 @@
   --width-rail: 232px;
   --width-content-wide: 1120px;
   --width-sheet: 500px;
+  /* One field style for every input-like control: a text field, a picker's
+     trigger, a stepper, a code field (docs/design/ia.md, element finish). */
+  --field-height: 48px;
+  --field-radius: var(--radius-control);
+  --field-padding-inline: var(--space-4);
+  --field-surface: var(--color-answer);
+  --field-on: var(--color-on-answer);
+  --field-border: var(--color-answer-border);
+  --field-placeholder: var(--color-subtle-text);
 }
 /* Print is always ink on paper, whatever the screen theme. */
 :root {

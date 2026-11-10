@@ -21,17 +21,17 @@
   position: relative;
   display: inline-flex;
   align-items: stretch;
-  height: 44px;
-  border-radius: var(--radius-control);
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface-raised);
+  height: var(--field-height);
+  border-radius: var(--field-radius);
+  background: var(--field-surface);
+  color: var(--field-on);
 }
 /* The outline is drawn over the buttons, so they keep a full 44 px. */
 .control::after {
   content: "";
   position: absolute;
   inset: 0;
-  border: 1px solid var(--color-border-strong);
+  border: 1px solid var(--field-border);
   border-radius: inherit;
   pointer-events: none;
 }

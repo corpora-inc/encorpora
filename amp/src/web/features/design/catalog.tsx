@@ -44,6 +44,8 @@ export const contents: {
   {
     group: "Controls",
     sections: [
+      { id: "field-family", title: "One field style" },
+      { id: "tiles", title: "Tile choice" },
       { id: "buttons", title: "Buttons" },
       { id: "segmented", title: "Segmented" },
       { id: "stepper", title: "Stepper" },
