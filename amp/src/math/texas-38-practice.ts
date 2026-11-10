@@ -82,7 +82,7 @@ const metadata = (
   skillId,
   gradeBand,
   difficultyOffset,
-  ...(kind === "choice"
+  ...(kind === "choice" || kind === "mixed"
     ? { requiredResponseCapability: "single-choice-v1" as const }
     : {}),
   ...(figure ? { requiredFigureCapability: "scenes-v1" as const } : {}),

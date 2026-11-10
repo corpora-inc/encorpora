@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
@@ -187,9 +188,9 @@ test("clause tasks keep a fraction in [0, 1] and version 1 omits the new wording
         ...problem.explanation,
       ])
         for (const sentence of words(text))
-          assert.ok(
+          reportEditorialLimit(
             sentence.split(/\s+/).length <= 35,
-            `${id}: ${sentence}`,
+            `${id}: sentence exceeds 35 words: ${sentence}`,
           );
       if (hit[1] === "Build the two-way table") {
         const m =

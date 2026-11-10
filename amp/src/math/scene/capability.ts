@@ -27,16 +27,20 @@ export function sceneCapability(scene: Scene): SceneCapability {
 }
 const isScene = (value: object): value is Scene =>
   "v" in value && "elements" in value && Array.isArray(value.elements);
-/** Every scene capability beyond `scenes-v1` that anything in `value` (a
- * public problem, its figure, a figure-choice option, a lesson) needs. */
-export function sceneCapabilitiesIn(value: unknown): SceneCapability[] {
+/** Scene capabilities needed anywhere in a problem or lesson. By default,
+ * report additions beyond `scenes-v1`; delivery includes v1 as well because
+ * a client may have no scene renderer. */
+export function sceneCapabilitiesIn(
+  value: unknown,
+  { includeV1 = false }: { includeV1?: boolean } = {},
+): SceneCapability[] {
   const found = new Set<SceneCapability>();
   const walk = (v: unknown) => {
     if (!v || typeof v !== "object") return;
     if (Array.isArray(v)) return v.forEach(walk);
     if (isScene(v)) {
       const needs = sceneCapability(v);
-      if (needs !== "scenes-v1") found.add(needs);
+      if (includeV1 || needs !== "scenes-v1") found.add(needs);
     }
     for (const child of Object.values(v)) walk(child);
   };

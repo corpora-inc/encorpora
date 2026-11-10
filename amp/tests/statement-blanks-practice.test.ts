@@ -1,5 +1,8 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { generatedProblemSchema } from "../src/math/contracts";
+import { gradeAnswer } from "../src/math/engine";
+import { chooseOption } from "../src/math/multi-part-choice";
 import { num, ratio, view } from "./fixtures/multi-part-view";
 
 const SEEDS = 150;
@@ -132,21 +135,24 @@ test("pay, coordinates and counts follow the givens", () => {
     assert.equal(num(chosen.net!), gross! - tax! - other!);
     assert.ok(sentence.includes("take-home pay"));
   }
-  const says: Record<string, string> = {
-    "the horizontal number line of the plane": "$x$-axis",
-    "the vertical number line of the plane": "$y$-axis",
-    "the point $(0, 0)$ where the two axes cross": "origin",
-    "the first number of an ordered pair": "$x$-coordinate",
-    "the second number of an ordered pair": "$y$-coordinate",
-    "two numbers in order that name a point": "ordered pair",
-    "The two perpendicular number lines are the": "axes",
-    "Their crossing, 0 on each axis, is the": "origin",
-    "Two numbers in order naming a point form an": "ordered pair",
-  };
   for (const seed of seeds("terms")) {
-    const { response, chosen } = view("coordinate-terms-slots", seed);
-    for (const b of response.blanks)
-      assert.equal(chosen[b.id], says[b.label.replace("The term for ", "")]);
+    const { problem, response, chosen } = view("coordinate-terms-slots", seed);
+    generatedProblemSchema.parse(problem);
+    assert.equal(gradeAnswer(problem, problem.answer), true, seed);
+    for (const b of response.blanks) {
+      assert.ok(b.label.trim(), seed);
+      for (const option of b.options) {
+        if (option.label !== chosen[b.id])
+          assert.equal(
+            gradeAnswer(
+              problem,
+              chooseOption(response, problem.answer, b.id, option.id),
+            ),
+            false,
+            `${seed}: ${b.label} / ${option.label}`,
+          );
+      }
+    }
   }
   for (const seed of seeds("axis")) {
     const { prompt, chosen } = view("point-on-axis-sentence", seed);

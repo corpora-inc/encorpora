@@ -1,3 +1,4 @@
+import { grade4GeometryTemplates } from "../src/math/grade4-geometry-practice";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
@@ -88,15 +89,7 @@ const SHAPE_LEGACY = [
   "baeeebe813f6a3cf2b6810b4d8da9d18938d14281396c4ef48ad97e9fa5ac83c",
 ];
 
-const SKILLS: Record<string, string> = {
-  "protractor-ray-choice": "angle-measure",
-  "adjacent-angle-equation": "angle-measure",
-  "angle-benchmark-estimate": "angle-measure",
-  "triangle-sides-angles-blanks": "lines-symmetry",
-  "quadrilateral-attributes": "lines-symmetry",
-  "composite-rectangle-measure": "area-perimeter-models",
-  "rectangle-formula-select": "area-perimeter-models",
-};
+const metadata = new Map(grade4GeometryTemplates.map((t) => [t.id, t]));
 
 const BENCHMARKS = [30, 45, 60, 90, 180];
 const SEEDS = 200;
@@ -651,7 +644,7 @@ test("protractor rays stay readable at phone and tablet widths", () => {
 });
 
 test("grade-4 geometry templates sit on the grade-4 skills", () => {
-  for (const [id, skillId] of Object.entries(SKILLS)) {
+  for (const { id, skillId } of grade4GeometryTemplates) {
     const template = templates.find((item) => item.id === id);
     assert.ok(template, id);
     assert.equal(template.skillId, skillId);
@@ -668,7 +661,7 @@ test("grade-4 geometry answers match the figure over 200 seeds", () => {
   let perimeters = 0;
   const units = new Set<string>();
   const formulaKinds = new Set<string>();
-  for (const id of Object.keys(SKILLS)) {
+  for (const id of [...metadata.keys()]) {
     for (let i = 0; i < SEEDS; i++) {
       const seed = `g4-${id}-${i}`;
       // This solver audits the original part-unknown model. Whole-unknown
@@ -677,7 +670,7 @@ test("grade-4 geometry answers match the figure over 200 seeds", () => {
       const problem = generateProblem(id, seed, version);
       assert.deepEqual(problem, generateProblem(id, seed, version));
       generatedProblemSchema.parse(problem);
-      assert.equal(problem.public.skillId, SKILLS[id]);
+      assert.equal(problem.public.skillId, metadata.get(id)!.skillId);
       assert.equal(independent(problem), problem.answer, `${id} ${seed}`);
       if (id === "protractor-ray-choice") {
         const tool = one(sceneOf(problem), "protractor");

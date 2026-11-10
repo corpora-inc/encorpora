@@ -1,3 +1,5 @@
+import { skills as curriculumSkills } from "../src/curriculum/catalog";
+import { generatedProblemSchema } from "../src/math/contracts";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -9,7 +11,21 @@ import { generateProblem } from "./fixtures/pre-clause-problem";
 import { problemLesson } from "../src/content/problem-lessons";
 import { actualFacetMappings } from "../src/content/facet-mappings";
 
-const variants: Record<string, string[]> = {
+type Case = ReturnType<typeof geometryRequirementGapCase>;
+const cases = (id: string, count = 400, prefix = "s"): Case[] =>
+  Array.from({ length: count }, (_, i) =>
+    geometryRequirementGapCase(id, `${prefix}${i}`),
+  );
+const options = (c: Case) => {
+  const response = c.problem.public.response;
+  assert.equal(response.kind, "choice");
+  if (response.kind !== "choice") throw new Error("not a choice");
+  return response.options;
+};
+
+// Fixed witnesses keep the independent mathematical cases below exercised.
+// They are not a complete inventory; new types come from the registry.
+const regressionCases: Record<string, string[]> = {
   "arc-sector-derivation": [
     "arc-proportional",
     "similar-circles-equation",
@@ -75,41 +91,9 @@ const variants: Record<string, string[]> = {
     "aa-proportion",
   ],
 };
-const skills: Record<string, string> = {
-  "arc-sector-derivation": "arc-sector-measure",
-  "complex-plane-operations": "complex-plane",
-  "conditional-everyday-reasoning": "conditional-probability",
-  "congruence-by-rigid-motion": "congruence-criteria",
-  "conic-foci": "conic-sections",
-  "choose-the-plot": "distribution-plots",
-  "similarity-by-transformation": "similarity-proofs",
-  "aa-similarity": "similarity-proofs",
-};
-const facets: Record<string, string> = {
-  "arc-sector-derivation": "arc-sector-measure.HSG.C.B.5",
-  "complex-plane-operations": "complex-plane.HSN.CN.B.5",
-  "conditional-everyday-reasoning": "conditional-probability.HSS.CP.A.5",
-  "congruence-by-rigid-motion": "congruence-criteria.HSG.CO.B.6",
-  "conic-foci": "conic-sections.HSG.GPE.A.3",
-  "choose-the-plot": "distribution-plots.HSS.ID.A.1",
-  "similarity-by-transformation": "similarity-proofs.HSG.SRT.A.2",
-  "aa-similarity": "similarity-proofs.HSG.SRT.A.3",
-};
 
-type Case = ReturnType<typeof geometryRequirementGapCase>;
-const cases = (id: string, count = 400, prefix = "s"): Case[] =>
-  Array.from({ length: count }, (_, i) =>
-    geometryRequirementGapCase(id, `${prefix}${i}`),
-  );
-const options = (c: Case) => {
-  const response = c.problem.public.response;
-  assert.equal(response.kind, "choice");
-  if (response.kind !== "choice") throw new Error("not a choice");
-  return response.options;
-};
-
-for (const id of Object.keys(variants)) {
-  test(`${id}: deterministic, every variant reachable, one correct distinct choice`, () => {
+for (const { id } of geometryRequirementGapTemplates) {
+  test(`${id}: deterministic, valid, one correct distinct choice`, () => {
     const seen = new Set<string>();
     for (const a of cases(id)) {
       const seed = a.problem.public.seed;
@@ -118,6 +102,7 @@ for (const id of Object.keys(variants)) {
       assert.equal(via.public.templateId, id);
       assert.deepEqual(via.public.response, a.problem.public.response);
       assert.equal(via.answer, a.problem.answer);
+      generatedProblemSchema.parse(a.problem);
       seen.add(a.variant);
       const choices = options(a);
       const labels = choices.map((o) => o.label);
@@ -137,13 +122,18 @@ for (const id of Object.keys(variants)) {
       assert.ok(a.problem.explanation.length >= 2);
       assert.ok(a.problem.hint.length > 20);
     }
-    assert.deepEqual([...seen].sort(), [...variants[id]!].sort());
+    for (const v of regressionCases[id] ?? [])
+      assert.ok(seen.has(v), `${id}: mathematical case ${v} was not exercised`);
   });
 }
 
 test("templates are registered with their own skill, a lesson and a partial facet mapping", () => {
   for (const t of geometryRequirementGapTemplates) {
-    assert.equal(templates.find((x) => x.id === t.id)?.skillId, skills[t.id]);
+    assert.equal(templates.find((x) => x.id === t.id)?.skillId, t.skillId);
+    assert.ok(
+      curriculumSkills.some((s) => s.id === t.skillId),
+      t.id,
+    );
     const lesson = problemLesson(t.id, "library");
     assert.ok(lesson.method.length >= 3);
     assert.ok(lesson.watch);
@@ -151,7 +141,12 @@ test("templates are registered with their own skill, a lesson and a partial face
     assert.ok(lesson.example.steps.length >= 3);
     const mapping = actualFacetMappings.filter((m) => m.templateId === t.id);
     assert.equal(mapping.length, 1);
-    assert.equal(mapping[0]!.facetId, facets[t.id]);
+    assert.ok(
+      curriculumSkills
+        .find((s) => s.id === t.skillId)!
+        .facets.some((f) => f.id === mapping[0]!.facetId),
+      t.id,
+    );
     assert.equal(mapping[0]!.extent, "partial");
   }
 });

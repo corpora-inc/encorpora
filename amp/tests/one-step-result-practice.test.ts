@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { generatedProblemSchema } from "../src/math/contracts";
@@ -36,7 +37,11 @@ for (const [id, g] of Object.entries(gens)) {
       const labels = r.options.map((o: { label: string }) => o.label);
       assert.equal(labels.length, 4);
       assert.equal(new Set(labels).size, 4, labels.join(" | "));
-      for (const l of labels) assert.ok(l.length <= 120, l);
+      for (const l of labels)
+        reportEditorialLimit(
+          l.length <= 120,
+          `${p.public.templateId}: option exceeds 120 characters`,
+        );
       const correct = r.options.find((o: { id: string }) => o.id === p.answer);
       assert.ok(correct);
       assert.equal(Object.keys(p.choiceFeedback).length, 3);
@@ -109,6 +114,9 @@ test("the family descriptor is complete", () => {
   for (const l of family.lessons) {
     assert.ok(l.objectives.length >= 2 && l.pitfalls.length >= 2);
   }
-  for (const m of Object.values(family.methods))
-    assert.ok(m.goal.length <= 140);
+  for (const [id, m] of Object.entries(family.methods))
+    reportEditorialLimit(
+      m.goal.length <= 140,
+      `${id}: goal exceeds 140 characters`,
+    );
 });

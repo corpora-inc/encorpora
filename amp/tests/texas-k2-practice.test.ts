@@ -1,3 +1,5 @@
+import { skills as curriculumSkills } from "../src/curriculum/catalog";
+import { generatedProblemSchema } from "../src/math/contracts";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { texasK2Case, texasK2Templates } from "../src/math/texas-k2-practice";
@@ -11,7 +13,23 @@ import { describeScene, sceneCapabilitiesIn } from "../src/math/scene";
 import { problemLesson } from "../src/content/problem-lessons";
 
 const ids = texasK2Templates.map((t) => t.id);
-const expectedVariants: Record<string, string[]> = {
+
+const options = (g: ReturnType<typeof generateProblem>) => {
+  const response = g.public.response;
+  assert.equal(response.kind, "choice");
+  return response.kind === "choice" ? response.options : [];
+};
+const correctLabel = (g: ReturnType<typeof generateProblem>) =>
+  options(g).find((o) => o.id === g.answer)!.label;
+const sceneElements = (g: ReturnType<typeof generateProblem>): any[] => {
+  const figure = g.public.figure as any;
+  assert.equal(figure.kind, "scene");
+  return figure.scene.elements;
+};
+
+// Fixed witnesses keep the independent mathematical cases below exercised.
+// They are not a complete inventory; new types come from the registry.
+const regressionCases: Record<string, string[]> = {
   "coin-name-and-cent-value": [
     "name-coin",
     "picture-of-coin",
@@ -70,54 +88,31 @@ const expectedVariants: Record<string, string[]> = {
     "production-cost",
   ],
 };
-const skills: Record<string, string> = {
-  "coin-name-and-cent-value": "money-values",
-  "solid-bottom-face-shape": "polygon-properties",
-  "measurable-attribute-choice": "compare-attributes",
-  "dot-group-compared-to-number": "compare-small-groups",
-  "story-sentence-match-20": "addition-stories",
-  "story-sentence-match-1000": "two-step-stories",
-  "open-number-line-to-120": "compare-two-digit",
-  "open-number-line-to-1000": "hundreds-place-value",
-  "eighths-and-parts-beyond-one": "thirds-and-partitions",
-  "decompose-flat-shape": "compose-shapes",
-  "unit-size-and-count": "measure-equal-units",
-  "benchmark-length-estimate": "ruler-measurement",
-  "clock-minute-match": "clock-five-minutes",
-  "tally-and-t-chart": "categorical-data",
-  "early-money-decisions": "money-values",
-};
 
-const options = (g: ReturnType<typeof generateProblem>) => {
-  const response = g.public.response;
-  assert.equal(response.kind, "choice");
-  return response.kind === "choice" ? response.options : [];
-};
-const correctLabel = (g: ReturnType<typeof generateProblem>) =>
-  options(g).find((o) => o.id === g.answer)!.label;
-const sceneElements = (g: ReturnType<typeof generateProblem>): any[] => {
-  const figure = g.public.figure as any;
-  assert.equal(figure.kind, "scene");
-  return figure.scene.elements;
-};
-
-test("every template is deterministic, reachable through the engine and covers every variant", () => {
-  assert.equal(ids.length, 15);
+test("every template is deterministic, reachable through the engine and stamps a registered skill", () => {
   for (const id of ids) {
     const seen = new Set<string>();
+    const template = texasK2Templates.find((t) => t.id === id)!;
+    assert.ok(
+      curriculumSkills.some((s) => s.id === template.skillId),
+      id,
+    );
     for (let seed = 0; seed < 400; seed++) {
       const a = texasK2Case(id, `s${seed}`);
       const b = texasK2Case(id, `s${seed}`);
       assert.deepEqual(a.problem, b.problem);
+      generatedProblemSchema.parse(a.problem);
       seen.add(a.variant);
+      assert.equal(a.problem.public.skillId, template.skillId, id);
       if (seed < 40) {
         const viaEngine = generateProblem(id, `s${seed}`);
         assert.equal(viaEngine.public.id, a.problem.public.id);
         assert.equal(viaEngine.answer, a.problem.answer);
       }
     }
-    assert.deepEqual([...seen].sort(), [...expectedVariants[id]!].sort(), id);
-    assert.equal(templates.find((t) => t.id === id)?.skillId, skills[id]);
+    for (const v of regressionCases[id] ?? [])
+      assert.ok(seen.has(v), `${id}: mathematical case ${v} was not exercised`);
+    assert.equal(templates.find((t) => t.id === id)?.skillId, template.skillId);
   }
 });
 

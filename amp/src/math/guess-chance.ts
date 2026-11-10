@@ -58,6 +58,8 @@ const FAMILY_GUESS_FLOOR: Readonly<Record<string, number>> = {
   "multiples-select": 1 / 4,
   // Two identical wrong bounds collapse to one: 4 shares × 3 bounds × 4 checks.
   "whole-sharing-fraction": 1 / 48,
+  // Renaming 1/2 + 1/3 leaves 4, 2 and 3 distinct numerator options.
+  "add-fractions": 1 / 24,
 };
 /** An unregistered choice family is scored as the most guessable choice: two
  * options. Overstating the guess chance only discounts a correct answer. */

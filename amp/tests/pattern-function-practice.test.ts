@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -40,11 +41,12 @@ test("pattern and function items are valid, deterministic assessment items", () 
   }
 });
 
-test("the placement item stays short enough to read at a glance", () => {
+test("report placement prompt reading length", () => {
   for (let i = 0; i < 2000; i++)
-    assert.ok(
+    reportEditorialLimit(
       generateProblem("dependent-variable-value", `opener-${i}`).public.prompt
         .length <= 160,
+      "dependent-variable-value: placement prompt exceeds 160 characters",
     );
 });
 

@@ -59,6 +59,9 @@ export const equalGroupsTemplates: readonly TemplateMetadata[] =
     version: reprintsFromV1.has(id) ? 2 : 1,
     ...(reprintsFromV1.has(id) ? { reprintsFrom: 1 } : {}),
     gradeBand: grade === "2" ? "K–2" : "3–5",
+    ...(id === "tens-contribution"
+      ? { requiredFigureCapability: "scenes-v1" as const }
+      : {}),
   }));
 function random(id: string, seed: string) {
   let counter = 0;

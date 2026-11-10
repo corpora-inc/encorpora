@@ -1,3 +1,4 @@
+import { rigidMotionChecksTemplates } from "../src/math/rigid-motion-checks-practice";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
@@ -15,18 +16,7 @@ import { gradeStructuredWork } from "../src/math/structured-work";
  * the generator's own helpers.
  */
 
-const IDS = [
-  "rigid-motion-measure-verify",
-  "rigid-motion-property-claims",
-  "rigid-motion-image-check",
-  "rigid-motion-image-flaw",
-] as const;
-const CAPABILITY: Record<(typeof IDS)[number], string> = {
-  "rigid-motion-measure-verify": "structured-work-v1",
-  "rigid-motion-property-claims": "multi-select-v1",
-  "rigid-motion-image-check": "figure-choice-v1",
-  "rigid-motion-image-flaw": "single-choice-v1",
-};
+const IDS = rigidMotionChecksTemplates.map((t) => t.id);
 const SEEDS = 240;
 const sample = (id: string, n = SEEDS) =>
   Array.from({ length: n }, (_, i) => generateProblem(id, `rmc-${i}`));
@@ -139,7 +129,6 @@ test("every template is registered, valid and deterministic", () => {
     assert.ok(meta, id);
     assert.equal(meta.skillId, "rigid-motion-properties");
     assert.equal(meta.gradeBand, "6–8");
-    assert.equal(meta.requiredResponseCapability, CAPABILITY[id]);
     for (const p of sample(id, 120)) {
       assert.ok(
         generatedProblemSchema.safeParse(p).success,

@@ -11,6 +11,10 @@ import type { GlossaryPayload } from "../src/glossary/types";
 import { estimateFrontier } from "../src/learning/frontier";
 import { defaultPracticeSettings } from "../src/learning/practice-settings";
 import { generateProblem } from "../src/math/engine";
+import {
+  figureCapabilities,
+  responseCapabilities,
+} from "../src/math/contracts";
 import { buildApp } from "../src/server/app";
 import type {
   Outcome,
@@ -109,7 +113,12 @@ function fixture() {
 test("hints, explanations, skips and lessons carry the term cards their words open", async () => {
   const { app, post, attempts } = fixture();
   try {
-    const batch = await post("batches", { templateId: TEMPLATE, count: 3 });
+    const batch = await post("batches", {
+      templateId: TEMPLATE,
+      count: 3,
+      figureCapabilities,
+      responseCapabilities,
+    });
     const [first, second, third] = batch.problems;
     for (const problem of batch.problems) {
       const hint = batch.hints[problem.id];
