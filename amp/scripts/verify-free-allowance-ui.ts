@@ -82,7 +82,12 @@ const app = buildApp({
   workbookRenderer: renderer,
 });
 await registerAccountRoutes(app, accounts, authenticate);
-await registerFamilyRoutes(app, { pool: db, authenticate });
+// As main.ts: the family's second-parent and approval routes are always on.
+await registerFamilyRoutes(app, {
+  pool: db,
+  authenticate,
+  approvals: { secret: accounts.config.secret, origin },
+});
 await registerSchoolRoutes(app, {
   pool: db,
   authenticate,
