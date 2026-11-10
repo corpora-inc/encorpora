@@ -4,6 +4,7 @@
 # src/web/features/dev/persona-list.ts. Open $ORIGIN/dev/personas.
 #
 #   scripts/design-preview.sh start    # start both (seeds an empty database)
+#   scripts/design-preview.sh restart  # restart both, keeping the data
 #   scripts/design-preview.sh stop     # stop what this script started
 #   scripts/design-preview.sh reseed   # stop, recreate the database, start, seed
 #   scripts/design-preview.sh status
@@ -53,8 +54,8 @@ start_api() {
 start_web() {
   running web && return 0
   set -m
-  AMP_WEB_PORT="$WEB_PORT" AMP_API_PORT="$API_PORT" \
-    nohup npx vite --host 127.0.0.1 --port "$WEB_PORT" --strictPort >"$RUN/web.log" 2>&1 &
+  AMP_WEB_PORT="$WEB_PORT" AMP_API_PORT="$API_PORT" AMP_PREVIEW_PRICES=1 \
+    AMP_DATABASE_URL="$DB_URL" nohup npx vite --host 127.0.0.1 --port "$WEB_PORT" --strictPort >"$RUN/web.log" 2>&1 &
   echo $! >"$RUN/web.pid"
   set +m
   wait_for "$ORIGIN/"
@@ -72,6 +73,7 @@ case "${1:-start}" in
     start_api; start_web; seed
     echo "Preview: $ORIGIN/dev/personas" ;;
   stop) stop_one web; stop_one api ;;
+  restart) stop_one web; stop_one api; start_api; start_web; echo "Preview: $ORIGIN/dev/personas" ;;
   reseed)
     stop_one web; stop_one api
     psql "$PG/postgres" -c "DROP DATABASE IF EXISTS $DB_NAME WITH (FORCE)" >/dev/null
@@ -81,5 +83,5 @@ case "${1:-start}" in
     running api && echo "api up (pid $(cat "$RUN/api.pid"))" || echo "api down"
     running web && echo "web up (pid $(cat "$RUN/web.pid"))" || echo "web down"
     echo "logs: $RUN" ;;
-  *) echo "start | stop | reseed | status"; exit 1 ;;
+  *) echo "start | restart | stop | reseed | status"; exit 1 ;;
 esac

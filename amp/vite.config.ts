@@ -72,8 +72,20 @@ const devFixtures: Plugin = {
   },
 };
 
+/** The design preview's prices (scripts/preview-billing.mjs), only on a dev
+ * server started with AMP_PREVIEW_PRICES=1. */
+const previewPrices: Plugin = {
+  name: "amp-preview-prices",
+  apply: "serve",
+  async configureServer(server) {
+    if (process.env.AMP_PREVIEW_PRICES !== "1") return;
+    const { previewBilling } = await import("./scripts/preview-billing.mjs");
+    server.middlewares.use(previewBilling(process.env.AMP_DATABASE_URL));
+  },
+};
+
 export default defineConfig({
-  plugins: [serverOnlyCrypto, devFixtures, react()],
+  plugins: [serverOnlyCrypto, devFixtures, previewPrices, react()],
   optimizeDeps: {
     entries: ["index.html"],
     include: [

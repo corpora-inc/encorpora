@@ -90,6 +90,7 @@ export function OrgFrame({
     nav === "import" ||
     nav === "experience"
       ? [
+          ["classes", "Classes", "classes.read"],
           ...(org.data.kind !== "family"
             ? [["students", "Students", "students.read"]]
             : []),
@@ -100,13 +101,15 @@ export function OrgFrame({
         ]
       : nav === "staff" || nav === "integrations" || nav === "sign-in-help"
         ? [
+            ["staff", "Staff", "staff.read"],
             ["sign-in-help", "Sign-in help", "staff.read"],
             ["integrations", "Integrations", "integrations.read"],
           ]
         : [];
-  const links = related.filter(
-    ([path, , permission]) =>
-      pathname !== `/school/${orgId}/${path}` && can.has(permission as never),
+  // The group's screens as one row of sub-tabs, the open one marked, so the
+  // row never changes shape between them.
+  const links = related.filter(([, , permission]) =>
+    can.has(permission as never),
   );
   return (
     <main
@@ -116,13 +119,18 @@ export function OrgFrame({
       data-dense
     >
       {nav.startsWith("class:") && <p className={frame.place}>{title}</p>}
-      {links.length > 0 && (
-        <nav className={frame.links} aria-label="Related school screens">
+      {links.length > 1 && (
+        <nav className={frame.links} aria-label="In this section">
           {links.map(([path, label]) => (
             <Link
               key={path}
               to="/$"
               params={{ _splat: `school/${orgId}/${path}` }}
+              aria-current={
+                pathname.replace(/\/+$/, "") === `/school/${orgId}/${path}`
+                  ? "page"
+                  : undefined
+              }
             >
               {label}
             </Link>

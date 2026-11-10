@@ -79,8 +79,10 @@ export function TrendChart({
                   : week.week === current
                     ? "current"
                     : "past";
+              // The week in hand reads to its right, over the weeks still to
+              // come, so a taller week before it never runs into its label.
               const edge =
-                index === 0
+                index === 0 || (state === "current" && index < weeks.length - 2)
                   ? "start"
                   : index === weeks.length - 1
                     ? "end"
