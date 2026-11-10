@@ -1,0 +1,4638 @@
+{
+  "id": "share-whole-items--bc",
+  "title": "Share equally among trays: find how many on each",
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -0.4,
+          -8.8,
+          10.4,
+          2.3
+        ],
+        "points": {
+          "TG": [
+            0,
+            0
+          ],
+          "LA": [
+            0.1,
+            -4.2
+          ],
+          "LB": [
+            0.1,
+            -5.4
+          ],
+          "LC": [
+            0.1,
+            -6.6
+          ],
+          "S1": {
+            "cell": [
+              "tc",
+              7
+            ]
+          },
+          "S2": {
+            "cell": [
+              "tc",
+              17
+            ]
+          },
+          "S3": {
+            "cell": [
+              "tc",
+              27
+            ]
+          }
+        },
+        "parts": [
+          {
+            "id": "tr",
+            "start": true,
+            "grid": [
+              1,
+              3
+            ],
+            "at": "TG",
+            "size": [
+              10,
+              1.05
+            ],
+            "fill": "none",
+            "ink": "blue",
+            "w": 4
+          },
+          {
+            "id": "tc",
+            "grid": [
+              10,
+              3
+            ],
+            "at": "TG",
+            "size": [
+              1,
+              1.05
+            ]
+          },
+          {
+            "id": "a",
+            "counters": "tc",
+            "n": 5,
+            "from": 1
+          },
+          {
+            "id": "b",
+            "counters": "tc",
+            "n": 5,
+            "from": 11
+          },
+          {
+            "id": "c",
+            "counters": "tc",
+            "n": 5,
+            "from": 21
+          },
+          {
+            "id": "lT",
+            "label": "\\cb{3}\\text{ trays}",
+            "at": "LA",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "lE",
+            "label": "\\cv{5}\\text{ on each tray}",
+            "at": "LB",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "lQ",
+            "label": "\\cg{?}\\text{ in all}",
+            "at": "LC",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "lTot",
+            "label": "\\ca{15}\\text{ in all}",
+            "at": "LC",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "s1",
+            "label": "\\ca{5}",
+            "at": "S1",
+            "dir": "c",
+            "size": "m"
+          },
+          {
+            "id": "s2",
+            "label": "\\ca{10}",
+            "at": "S2",
+            "dir": "c",
+            "size": "m"
+          },
+          {
+            "id": "s3",
+            "label": "\\ca{15}",
+            "at": "S3",
+            "dir": "c",
+            "size": "m"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Three trays, with five counters on each tray. How many counters are there in all?",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "problem",
+              "text": "There are 3 trays with 5 counters on each tray. How many counters are there in all?",
+              "id": "p1"
+            },
+            {
+              "do": "show",
+              "target": "lT",
+              "at": "trays"
+            },
+            {
+              "do": "show",
+              "target": [
+                "a",
+                "b",
+                "c"
+              ],
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": "lE",
+              "at": "each"
+            },
+            {
+              "do": "show",
+              "target": "lQ",
+              "at": "all"
+            }
+          ]
+        },
+        {
+          "say": "A tray holds counters. Every tray here has the same number of counters, so these are equal groups.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "Every"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "a",
+                "b",
+                "c"
+              ],
+              "at": "equal"
+            }
+          ]
+        },
+        {
+          "say": "Count the counters by fives, one tray at a time.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "a",
+              "at": "fives"
+            }
+          ]
+        },
+        {
+          "say": "Five, ten, fifteen.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "show",
+              "target": "s1",
+              "at": "Five"
+            },
+            {
+              "do": "highlight",
+              "target": "a",
+              "at": "Five"
+            },
+            {
+              "do": "show",
+              "target": "s2",
+              "at": "ten"
+            },
+            {
+              "do": "highlight",
+              "target": "b",
+              "at": "ten"
+            },
+            {
+              "do": "show",
+              "target": "s3",
+              "at": "fifteen"
+            },
+            {
+              "do": "highlight",
+              "target": "c",
+              "at": "fifteen"
+            }
+          ]
+        },
+        {
+          "say": "Three trays times five on each tray makes fifteen counters in all.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cb{3}\\times\\cv{5}=\\ca{15}",
+              "fresh": true,
+              "id": "eq1",
+              "at": "Three"
+            },
+            {
+              "do": "hide",
+              "target": "lQ",
+              "at": "fifteen"
+            },
+            {
+              "do": "show",
+              "target": "lTot",
+              "at": "fifteen"
+            },
+            {
+              "do": "answer",
+              "tex": "\\ca{15}\\text{ counters}",
+              "id": "a1",
+              "at": "fifteen"
+            }
+          ]
+        },
+        {
+          "say": "Equal groups have three numbers: the trays, the number on each tray, and the total.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "lT",
+              "at": "trays"
+            },
+            {
+              "do": "highlight",
+              "target": "lE",
+              "at": "each"
+            },
+            {
+              "do": "highlight",
+              "target": "lTot",
+              "at": "total"
+            }
+          ]
+        },
+        {
+          "say": "Here the total was the missing number, so we multiplied.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "lTot",
+              "at": "total"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "a",
+                "b",
+                "c"
+              ],
+              "at": "multiplied"
+            }
+          ]
+        },
+        {
+          "say": "Next, the total is known, and the number on each tray is missing.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "lTot",
+              "at": "total"
+            },
+            {
+              "do": "highlight",
+              "target": "lE",
+              "at": "each"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.4,
+          -12.55,
+          16,
+          4.25
+        ],
+        "points": {
+          "PG": [
+            0,
+            0
+          ],
+          "TG": [
+            0,
+            -2.5
+          ],
+          "L1": [
+            10.7,
+            -0.5
+          ],
+          "L2": [
+            10.7,
+            -1.65
+          ],
+          "L3": [
+            10.7,
+            -3.025
+          ],
+          "L4": [
+            10.7,
+            -4.225
+          ],
+          "R1": {
+            "cell": [
+              "tc",
+              31
+            ]
+          },
+          "R2": {
+            "cell": [
+              "tc",
+              32
+            ]
+          },
+          "H1": {
+            "cell": [
+              "tc",
+              1
+            ]
+          },
+          "H2": {
+            "cell": [
+              "tc",
+              2
+            ]
+          }
+        },
+        "parts": [
+          {
+            "id": "tr",
+            "start": true,
+            "grid": [
+              1,
+              4
+            ],
+            "at": "TG",
+            "size": [
+              10,
+              1.05
+            ],
+            "fill": "none",
+            "ink": "blue",
+            "w": 4
+          },
+          {
+            "id": "tc",
+            "grid": [
+              10,
+              4
+            ],
+            "at": "TG",
+            "size": [
+              1,
+              1.05
+            ]
+          },
+          {
+            "id": "pg",
+            "grid": [
+              10,
+              1
+            ],
+            "at": "PG",
+            "size": 1
+          },
+          {
+            "id": "k",
+            "start": true,
+            "counters": "pg",
+            "n": 8
+          },
+          {
+            "id": "l8",
+            "label": "\\ca{8}\\text{ counters}",
+            "at": "L1",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "lp",
+            "label": "\\text{in pile: }@n",
+            "at": "L2",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m",
+            "of": "pg"
+          },
+          {
+            "id": "l4",
+            "label": "\\cb{4}\\text{ trays}",
+            "at": "L3",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "lq",
+            "label": "\\cg{?}\\text{ each tray}",
+            "at": "L4",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "le",
+            "label": "\\cv{2}\\text{ each tray}",
+            "at": "L4",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "h1",
+            "group": "c1",
+            "label": "\\cg{1}",
+            "at": "H1",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t1",
+            "group": "c1",
+            "label": "\\ca{4}",
+            "at": "R1",
+            "dir": "s",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "h2",
+            "group": "c2",
+            "label": "\\cg{2}",
+            "at": "H2",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t2",
+            "group": "c2",
+            "label": "\\ca{8}",
+            "at": "R2",
+            "dir": "s",
+            "far": 0.85,
+            "size": "s"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Share eight counters equally among four trays. How many counters belong on each tray?",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Share 8 counters equally among 4 trays. How many counters belong on each tray?",
+              "id": "p2"
+            },
+            {
+              "do": "show",
+              "target": [
+                "l8",
+                "lp"
+              ],
+              "at": "eight"
+            },
+            {
+              "do": "show",
+              "target": "l4",
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": "lq",
+              "at": "each"
+            }
+          ]
+        },
+        {
+          "say": "The counters waiting to be shared are the pile. Sharing equally means every tray gets the same number, and none stay in the pile.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "k",
+              "at": "pile"
+            },
+            {
+              "do": "term",
+              "word": "share equally",
+              "meaning": "Every tray gets the same number of counters, and none are left in the pile.",
+              "at": "equally"
+            }
+          ]
+        },
+        {
+          "say": "Four trays, eight counters. I multiplied last time, so four times eight: thirty-two on each tray?",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "l4",
+              "at": "Four"
+            },
+            {
+              "do": "highlight",
+              "target": "l8",
+              "at": "eight"
+            },
+            {
+              "do": "highlight",
+              "target": "lq",
+              "at": "thirty-two"
+            }
+          ]
+        },
+        {
+          "say": "Four times eight is four trays with eight on each tray, thirty-two counters in all.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "l4",
+              "at": "Four"
+            },
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "trays"
+            }
+          ]
+        },
+        {
+          "say": "Test it on the figure. This pile has only eight counters. Put the whole pile on the first tray.",
+          "pause": 0.6,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "figure"
+            },
+            {
+              "do": "highlight",
+              "target": "k",
+              "at": "only"
+            },
+            {
+              "do": "move",
+              "points": {
+                "k1": {
+                  "cell": [
+                    "tc",
+                    1
+                  ]
+                },
+                "k2": {
+                  "cell": [
+                    "tc",
+                    2
+                  ]
+                },
+                "k3": {
+                  "cell": [
+                    "tc",
+                    3
+                  ]
+                },
+                "k4": {
+                  "cell": [
+                    "tc",
+                    4
+                  ]
+                },
+                "k5": {
+                  "cell": [
+                    "tc",
+                    5
+                  ]
+                },
+                "k6": {
+                  "cell": [
+                    "tc",
+                    6
+                  ]
+                },
+                "k7": {
+                  "cell": [
+                    "tc",
+                    7
+                  ]
+                },
+                "k8": {
+                  "cell": [
+                    "tc",
+                    8
+                  ]
+                }
+              },
+              "at": "whole"
+            }
+          ]
+        },
+        {
+          "say": "The pile is empty, and that one tray holds eight. The other three trays have none.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "lp",
+              "at": "empty"
+            },
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "other"
+            }
+          ]
+        },
+        {
+          "say": "So thirty-two on each tray is impossible. Nobody can get more than the pile has: eight.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "lq",
+              "at": "thirty-two"
+            },
+            {
+              "do": "highlight",
+              "target": "l8",
+              "at": "eight"
+            }
+          ]
+        },
+        {
+          "say": "Put the counters back.",
+          "pause": 0.6,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "k1": {
+                  "cell": [
+                    "pg",
+                    1
+                  ]
+                },
+                "k2": {
+                  "cell": [
+                    "pg",
+                    2
+                  ]
+                },
+                "k3": {
+                  "cell": [
+                    "pg",
+                    3
+                  ]
+                },
+                "k4": {
+                  "cell": [
+                    "pg",
+                    4
+                  ]
+                },
+                "k5": {
+                  "cell": [
+                    "pg",
+                    5
+                  ]
+                },
+                "k6": {
+                  "cell": [
+                    "pg",
+                    6
+                  ]
+                },
+                "k7": {
+                  "cell": [
+                    "pg",
+                    7
+                  ]
+                },
+                "k8": {
+                  "cell": [
+                    "pg",
+                    8
+                  ]
+                }
+              },
+              "at": "back"
+            }
+          ]
+        },
+        {
+          "say": "Four trays share the pile, so each tray gets only part of it. Multiplying the pile by the trays makes a number bigger than the pile.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "l8",
+              "at": "pile"
+            },
+            {
+              "do": "watch",
+              "text": "The total is given, and each tray gets only part of it. Do not multiply the total by the trays.",
+              "at": "Multiplying"
+            }
+          ]
+        },
+        {
+          "say": "Now share equally. Deal one counter to each tray, in turn: the first tray, the second, the third, the fourth.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "k",
+              "at": "share"
+            },
+            {
+              "do": "move",
+              "points": {
+                "k8": {
+                  "cell": [
+                    "tc",
+                    1
+                  ]
+                }
+              },
+              "at": "first"
+            },
+            {
+              "do": "move",
+              "points": {
+                "k7": {
+                  "cell": [
+                    "tc",
+                    11
+                  ]
+                }
+              },
+              "at": "second"
+            },
+            {
+              "do": "move",
+              "points": {
+                "k6": {
+                  "cell": [
+                    "tc",
+                    21
+                  ]
+                }
+              },
+              "at": "third"
+            },
+            {
+              "do": "move",
+              "points": {
+                "k5": {
+                  "cell": [
+                    "tc",
+                    31
+                  ]
+                }
+              },
+              "at": "fourth"
+            }
+          ]
+        },
+        {
+          "say": "That is one round: one counter on every tray. A round uses four counters, one for each tray.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "c1",
+              "at": "round"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "k8",
+                "k7",
+                "k6",
+                "k5"
+              ],
+              "at": "uses"
+            }
+          ]
+        },
+        {
+          "say": "Every tray has one, so the trays match. But four are still in the pile.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "match"
+            },
+            {
+              "do": "highlight",
+              "target": "lp",
+              "at": "pile"
+            }
+          ]
+        },
+        {
+          "say": "Deal another round, until the pile is empty.",
+          "pause": 0.5,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "k4": {
+                  "cell": [
+                    "tc",
+                    2
+                  ]
+                },
+                "k3": {
+                  "cell": [
+                    "tc",
+                    12
+                  ]
+                },
+                "k2": {
+                  "cell": [
+                    "tc",
+                    22
+                  ]
+                },
+                "k1": {
+                  "cell": [
+                    "tc",
+                    32
+                  ]
+                }
+              },
+              "at": "another"
+            },
+            {
+              "do": "show",
+              "target": "c2",
+              "at": "empty"
+            }
+          ]
+        },
+        {
+          "say": "The pile is empty. Every tray has two counters, the same number.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "lp",
+              "at": "empty"
+            },
+            {
+              "do": "hide",
+              "target": "lq",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "le",
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "say": "Each round gave every tray one counter, so the number of rounds is the number on each tray.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "c1",
+                "c2"
+              ],
+              "at": "rounds"
+            },
+            {
+              "do": "highlight",
+              "target": "le",
+              "at": "each",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "Write it as a multiplication: four trays times the number on each tray makes eight.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cb{4}\\times\\square=\\ca{8}",
+              "fresh": true,
+              "id": "e2",
+              "at": "four"
+            },
+            {
+              "do": "highlight",
+              "target": "l4",
+              "at": "trays"
+            },
+            {
+              "do": "highlight",
+              "target": "le",
+              "at": "each"
+            }
+          ]
+        },
+        {
+          "say": "The box stands for the number we do not know yet: the number on each tray.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "le",
+              "at": "box"
+            }
+          ]
+        },
+        {
+          "say": "Four times two makes eight, so the deal found the box: two.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cb{4}\\times\\cv{2}=\\ca{8}",
+              "note": "\\text{check}",
+              "at": "Four"
+            },
+            {
+              "do": "highlight",
+              "target": "le",
+              "at": "box"
+            }
+          ]
+        },
+        {
+          "say": "Two counters belong on each tray.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "answer",
+              "tex": "\\cv{2}\\text{ on each tray}",
+              "id": "a2",
+              "at": "Two"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.4,
+          -14.6,
+          16,
+          2.2
+        ],
+        "points": {
+          "PG": [
+            0,
+            0
+          ],
+          "TG": [
+            0,
+            -4.5
+          ],
+          "L1": [
+            10.7,
+            -0.5
+          ],
+          "L2": [
+            10.7,
+            -1.65
+          ],
+          "L3": [
+            10.7,
+            -5.025
+          ],
+          "L4": [
+            10.7,
+            -6.225
+          ],
+          "R1": {
+            "cell": [
+              "tc",
+              51
+            ]
+          },
+          "R2": {
+            "cell": [
+              "tc",
+              52
+            ]
+          },
+          "R3": {
+            "cell": [
+              "tc",
+              53
+            ]
+          },
+          "R4": {
+            "cell": [
+              "tc",
+              54
+            ]
+          },
+          "R5": {
+            "cell": [
+              "tc",
+              55
+            ]
+          },
+          "H1": {
+            "cell": [
+              "tc",
+              1
+            ]
+          },
+          "H2": {
+            "cell": [
+              "tc",
+              2
+            ]
+          },
+          "H3": {
+            "cell": [
+              "tc",
+              3
+            ]
+          },
+          "H4": {
+            "cell": [
+              "tc",
+              4
+            ]
+          },
+          "H5": {
+            "cell": [
+              "tc",
+              5
+            ]
+          }
+        },
+        "parts": [
+          {
+            "id": "tr",
+            "start": true,
+            "grid": [
+              1,
+              6
+            ],
+            "at": "TG",
+            "size": [
+              10,
+              1.05
+            ],
+            "fill": "none",
+            "ink": "blue",
+            "w": 4
+          },
+          {
+            "id": "tc",
+            "grid": [
+              10,
+              6
+            ],
+            "at": "TG",
+            "size": [
+              1,
+              1.05
+            ]
+          },
+          {
+            "id": "pg",
+            "grid": [
+              10,
+              3
+            ],
+            "at": "PG",
+            "size": 1
+          },
+          {
+            "id": "k",
+            "start": true,
+            "counters": "pg",
+            "n": 30
+          },
+          {
+            "id": "l30",
+            "label": "\\ca{30}\\text{ counters}",
+            "at": "L1",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "lp",
+            "label": "\\text{in pile: }@n",
+            "at": "L2",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m",
+            "of": "pg"
+          },
+          {
+            "id": "l6",
+            "label": "\\cb{6}\\text{ trays}",
+            "at": "L3",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "lq",
+            "label": "\\cg{?}\\text{ each tray}",
+            "at": "L4",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "le",
+            "label": "\\cv{5}\\text{ each tray}",
+            "at": "L4",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "h1",
+            "group": "c1",
+            "label": "\\cg{1}",
+            "at": "H1",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t1",
+            "group": "c1",
+            "label": "\\ca{6}",
+            "at": "R1",
+            "dir": "s",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "h2",
+            "group": "c2",
+            "label": "\\cg{2}",
+            "at": "H2",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t2",
+            "group": "c2",
+            "label": "\\ca{12}",
+            "at": "R2",
+            "dir": "s",
+            "far": 2,
+            "size": "s"
+          },
+          {
+            "id": "h3",
+            "group": "c3",
+            "label": "\\cg{3}",
+            "at": "H3",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t3",
+            "group": "c3",
+            "label": "\\ca{18}",
+            "at": "R3",
+            "dir": "s",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "h4",
+            "group": "c4",
+            "label": "\\cg{4}",
+            "at": "H4",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t4",
+            "group": "c4",
+            "label": "\\ca{24}",
+            "at": "R4",
+            "dir": "s",
+            "far": 2,
+            "size": "s"
+          },
+          {
+            "id": "h5",
+            "group": "c5",
+            "label": "\\cg{5}",
+            "at": "H5",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t5",
+            "group": "c5",
+            "label": "\\ca{30}",
+            "at": "R5",
+            "dir": "s",
+            "far": 0.85,
+            "size": "s"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Share thirty counters equally among six trays. How many counters belong on each tray?",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Share 30 counters equally among 6 trays. How many counters belong on each tray?",
+              "id": "p3"
+            },
+            {
+              "do": "show",
+              "target": [
+                "l30",
+                "lp"
+              ],
+              "at": "thirty"
+            },
+            {
+              "do": "show",
+              "target": "l6",
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": "lq",
+              "at": "each"
+            }
+          ]
+        },
+        {
+          "say": "Dealing one counter at a time would take thirty moves.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "k",
+              "at": "thirty"
+            }
+          ]
+        },
+        {
+          "say": "Deal a round at a time. How many counters does one round use?",
+          "pause": 0.4,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "round"
+            }
+          ]
+        },
+        {
+          "say": "Six. A round puts one counter on every tray, and there are six trays.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "l6",
+              "at": "Six"
+            },
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "every"
+            }
+          ]
+        },
+        {
+          "say": "Round one: six counters dealt, twenty-four left.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "k30": {
+                  "cell": [
+                    "tc",
+                    1
+                  ]
+                },
+                "k29": {
+                  "cell": [
+                    "tc",
+                    11
+                  ]
+                },
+                "k28": {
+                  "cell": [
+                    "tc",
+                    21
+                  ]
+                },
+                "k27": {
+                  "cell": [
+                    "tc",
+                    31
+                  ]
+                },
+                "k26": {
+                  "cell": [
+                    "tc",
+                    41
+                  ]
+                },
+                "k25": {
+                  "cell": [
+                    "tc",
+                    51
+                  ]
+                }
+              },
+              "at": "one"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "k30",
+                "k29",
+                "k28",
+                "k27",
+                "k26",
+                "k25"
+              ],
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": "c1",
+              "at": "dealt"
+            },
+            {
+              "do": "highlight",
+              "target": "lp",
+              "at": "twenty-four"
+            }
+          ]
+        },
+        {
+          "say": "Round two: twelve dealt, eighteen left.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "k24": {
+                  "cell": [
+                    "tc",
+                    2
+                  ]
+                },
+                "k23": {
+                  "cell": [
+                    "tc",
+                    12
+                  ]
+                },
+                "k22": {
+                  "cell": [
+                    "tc",
+                    22
+                  ]
+                },
+                "k21": {
+                  "cell": [
+                    "tc",
+                    32
+                  ]
+                },
+                "k20": {
+                  "cell": [
+                    "tc",
+                    42
+                  ]
+                },
+                "k19": {
+                  "cell": [
+                    "tc",
+                    52
+                  ]
+                }
+              },
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "c2",
+              "at": "twelve"
+            },
+            {
+              "do": "highlight",
+              "target": "lp",
+              "at": "eighteen"
+            }
+          ]
+        },
+        {
+          "say": "Round three: eighteen dealt, twelve left. Each round adds six, so I am counting by sixes.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "k18": {
+                  "cell": [
+                    "tc",
+                    3
+                  ]
+                },
+                "k17": {
+                  "cell": [
+                    "tc",
+                    13
+                  ]
+                },
+                "k16": {
+                  "cell": [
+                    "tc",
+                    23
+                  ]
+                },
+                "k15": {
+                  "cell": [
+                    "tc",
+                    33
+                  ]
+                },
+                "k14": {
+                  "cell": [
+                    "tc",
+                    43
+                  ]
+                },
+                "k13": {
+                  "cell": [
+                    "tc",
+                    53
+                  ]
+                }
+              },
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "c3",
+              "at": "eighteen"
+            },
+            {
+              "do": "highlight",
+              "target": "lp",
+              "at": "twelve"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "c1",
+                "c2",
+                "c3"
+              ],
+              "at": "sixes"
+            }
+          ]
+        },
+        {
+          "say": "Keep counting by sixes until the pile is empty: twenty-four, thirty.",
+          "pause": 0.5,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "c1",
+                "c2",
+                "c3"
+              ],
+              "at": "Keep"
+            },
+            {
+              "do": "highlight",
+              "target": "lp",
+              "at": "empty"
+            },
+            {
+              "do": "move",
+              "points": {
+                "k12": {
+                  "cell": [
+                    "tc",
+                    4
+                  ]
+                },
+                "k11": {
+                  "cell": [
+                    "tc",
+                    14
+                  ]
+                },
+                "k10": {
+                  "cell": [
+                    "tc",
+                    24
+                  ]
+                },
+                "k9": {
+                  "cell": [
+                    "tc",
+                    34
+                  ]
+                },
+                "k8": {
+                  "cell": [
+                    "tc",
+                    44
+                  ]
+                },
+                "k7": {
+                  "cell": [
+                    "tc",
+                    54
+                  ]
+                }
+              },
+              "at": "twenty-four"
+            },
+            {
+              "do": "show",
+              "target": "c4",
+              "at": "twenty-four"
+            },
+            {
+              "do": "move",
+              "points": {
+                "k6": {
+                  "cell": [
+                    "tc",
+                    5
+                  ]
+                },
+                "k5": {
+                  "cell": [
+                    "tc",
+                    15
+                  ]
+                },
+                "k4": {
+                  "cell": [
+                    "tc",
+                    25
+                  ]
+                },
+                "k3": {
+                  "cell": [
+                    "tc",
+                    35
+                  ]
+                },
+                "k2": {
+                  "cell": [
+                    "tc",
+                    45
+                  ]
+                },
+                "k1": {
+                  "cell": [
+                    "tc",
+                    55
+                  ]
+                }
+              },
+              "at": "thirty"
+            },
+            {
+              "do": "show",
+              "target": "c5",
+              "at": "thirty"
+            }
+          ]
+        },
+        {
+          "say": "Five rounds, and the pile is empty. How many counters does each tray have?",
+          "pause": 0.3,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "c1",
+                "c2",
+                "c3",
+                "c4",
+                "c5"
+              ],
+              "at": "Five"
+            },
+            {
+              "do": "highlight",
+              "target": "lp",
+              "at": "empty"
+            }
+          ]
+        },
+        {
+          "say": "Every round gave each tray one counter. Five rounds, so five on each tray.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "Every"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "c1",
+                "c2",
+                "c3",
+                "c4",
+                "c5"
+              ],
+              "at": "Five"
+            },
+            {
+              "do": "hide",
+              "target": "lq",
+              "at": "five",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": "le",
+              "at": "five",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "Write it as a multiplication: six trays times the box makes thirty.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cb{6}\\times\\square=\\ca{30}",
+              "fresh": true,
+              "id": "e3",
+              "at": "six"
+            },
+            {
+              "do": "highlight",
+              "target": "le",
+              "at": "box"
+            }
+          ]
+        },
+        {
+          "say": "The box is how many sixes make thirty. Counting by sixes found it: five.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "le",
+              "at": "box"
+            },
+            {
+              "do": "text",
+              "text": "Count by the number of trays until you reach the total.",
+              "tone": "muted",
+              "id": "m3",
+              "at": "Counting"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "c1",
+                "c2",
+                "c3",
+                "c4",
+                "c5"
+              ],
+              "at": "five"
+            }
+          ]
+        },
+        {
+          "say": "Finding the box is called division. Thirty divided by six.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "le",
+              "at": "box"
+            },
+            {
+              "do": "term",
+              "word": "division",
+              "meaning": "Splitting a total into equal shares to find the size of each share. $30 \\div 6$ is read thirty divided by six.",
+              "at": "division"
+            },
+            {
+              "do": "write",
+              "tex": "\\ca{30}\\div\\cb{6}=\\cv{5}",
+              "fresh": true,
+              "id": "q3",
+              "at": "Thirty"
+            }
+          ]
+        },
+        {
+          "say": "So thirty divided by six means thirty counters shared among six trays?",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "l30",
+              "at": "thirty"
+            },
+            {
+              "do": "highlight",
+              "target": "l6",
+              "at": "trays"
+            }
+          ]
+        },
+        {
+          "say": "Yes. The total goes first, then the number of trays. The answer is how many each tray gets.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "l30",
+              "at": "total"
+            },
+            {
+              "do": "highlight",
+              "target": "l6",
+              "at": "trays"
+            },
+            {
+              "do": "highlight",
+              "target": "le",
+              "at": "each"
+            }
+          ]
+        },
+        {
+          "say": "Check by multiplying back: six trays with five on each tray make thirty.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cb{6}\\times\\cv{5}=\\ca{30}",
+              "note": "\\text{check}",
+              "id": "c3b",
+              "at": "Check"
+            },
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "trays"
+            }
+          ]
+        },
+        {
+          "say": "Five counters belong on each tray.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "answer",
+              "tex": "\\cv{5}\\text{ on each tray}",
+              "id": "a3",
+              "at": "Five"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.4,
+          -15.65,
+          16,
+          1.15
+        ],
+        "points": {
+          "PG": [
+            0,
+            0
+          ],
+          "TG": [
+            0,
+            -4.5
+          ],
+          "L1": [
+            10.7,
+            -0.5
+          ],
+          "L2": [
+            10.7,
+            -1.65
+          ],
+          "L3": [
+            10.7,
+            -5.025
+          ],
+          "L4": [
+            10.7,
+            -6.225
+          ],
+          "R1": {
+            "cell": [
+              "tc",
+              21
+            ]
+          },
+          "R2": {
+            "cell": [
+              "tc",
+              22
+            ]
+          },
+          "R3": {
+            "cell": [
+              "tc",
+              23
+            ]
+          },
+          "R4": {
+            "cell": [
+              "tc",
+              24
+            ]
+          },
+          "R5": {
+            "cell": [
+              "tc",
+              25
+            ]
+          },
+          "R6": {
+            "cell": [
+              "tc",
+              26
+            ]
+          },
+          "R7": {
+            "cell": [
+              "tc",
+              27
+            ]
+          },
+          "R8": {
+            "cell": [
+              "tc",
+              28
+            ]
+          },
+          "H1": {
+            "cell": [
+              "tc",
+              1
+            ]
+          },
+          "H2": {
+            "cell": [
+              "tc",
+              2
+            ]
+          },
+          "H3": {
+            "cell": [
+              "tc",
+              3
+            ]
+          },
+          "H4": {
+            "cell": [
+              "tc",
+              4
+            ]
+          },
+          "H5": {
+            "cell": [
+              "tc",
+              5
+            ]
+          },
+          "H6": {
+            "cell": [
+              "tc",
+              6
+            ]
+          },
+          "H7": {
+            "cell": [
+              "tc",
+              7
+            ]
+          },
+          "H8": {
+            "cell": [
+              "tc",
+              8
+            ]
+          }
+        },
+        "parts": [
+          {
+            "id": "tr",
+            "start": true,
+            "grid": [
+              1,
+              3
+            ],
+            "at": "TG",
+            "size": [
+              10,
+              1.05
+            ],
+            "fill": "none",
+            "ink": "blue",
+            "w": 4
+          },
+          {
+            "id": "tc",
+            "grid": [
+              10,
+              3
+            ],
+            "at": "TG",
+            "size": [
+              1,
+              1.05
+            ]
+          },
+          {
+            "id": "pg",
+            "grid": [
+              10,
+              3
+            ],
+            "at": "PG",
+            "size": 1
+          },
+          {
+            "id": "k",
+            "start": true,
+            "counters": "pg",
+            "n": 24
+          },
+          {
+            "id": "l24",
+            "label": "\\ca{24}\\text{ counters}",
+            "at": "L1",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "lp",
+            "label": "\\text{in pile: }@n",
+            "at": "L2",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m",
+            "of": "pg"
+          },
+          {
+            "id": "l3",
+            "label": "\\cb{3}\\text{ trays}",
+            "at": "L3",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "lq",
+            "label": "\\cg{?}\\text{ each tray}",
+            "at": "L4",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "le",
+            "label": "\\cv{8}\\text{ each tray}",
+            "at": "L4",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "h1",
+            "group": "c1",
+            "label": "\\cg{1}",
+            "at": "H1",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t1",
+            "group": "c1",
+            "label": "\\ca{3}",
+            "at": "R1",
+            "dir": "s",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "h2",
+            "group": "c2",
+            "label": "\\cg{2}",
+            "at": "H2",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t2",
+            "group": "c2",
+            "label": "\\ca{6}",
+            "at": "R2",
+            "dir": "s",
+            "far": 2,
+            "size": "s"
+          },
+          {
+            "id": "h3",
+            "group": "c3",
+            "label": "\\cg{3}",
+            "at": "H3",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t3",
+            "group": "c3",
+            "label": "\\ca{9}",
+            "at": "R3",
+            "dir": "s",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "h4",
+            "group": "c4",
+            "label": "\\cg{4}",
+            "at": "H4",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t4",
+            "group": "c4",
+            "label": "\\ca{12}",
+            "at": "R4",
+            "dir": "s",
+            "far": 2,
+            "size": "s"
+          },
+          {
+            "id": "h5",
+            "group": "c5",
+            "label": "\\cg{5}",
+            "at": "H5",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t5",
+            "group": "c5",
+            "label": "\\ca{15}",
+            "at": "R5",
+            "dir": "s",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "h6",
+            "group": "c6",
+            "label": "\\cg{6}",
+            "at": "H6",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t6",
+            "group": "c6",
+            "label": "\\ca{18}",
+            "at": "R6",
+            "dir": "s",
+            "far": 2,
+            "size": "s"
+          },
+          {
+            "id": "h7",
+            "group": "c7",
+            "label": "\\cg{7}",
+            "at": "H7",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t7",
+            "group": "c7",
+            "label": "\\ca{21}",
+            "at": "R7",
+            "dir": "s",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "h8",
+            "group": "c8",
+            "label": "\\cg{8}",
+            "at": "H8",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t8",
+            "group": "c8",
+            "label": "\\ca{24}",
+            "at": "R8",
+            "dir": "s",
+            "far": 2,
+            "size": "s"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Share twenty-four counters equally among three trays. How many counters belong on each tray?",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Share 24 counters equally among 3 trays. How many counters belong on each tray?",
+              "id": "p4"
+            },
+            {
+              "do": "show",
+              "target": [
+                "l24",
+                "lp"
+              ],
+              "at": "twenty-four"
+            },
+            {
+              "do": "show",
+              "target": "l3",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "lq",
+              "at": "each"
+            }
+          ]
+        },
+        {
+          "say": "Before dealing, say the division for this pile and these trays.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "k",
+              "at": "pile"
+            },
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "trays"
+            }
+          ]
+        },
+        {
+          "say": "Trays came first in the multiplication, so trays first here: three divided by twenty-four.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "Trays"
+            },
+            {
+              "do": "highlight",
+              "target": "l3",
+              "at": "three"
+            },
+            {
+              "do": "highlight",
+              "target": "l24",
+              "at": "twenty-four"
+            }
+          ]
+        },
+        {
+          "say": "A division starts with what is being shared. Here the pile is shared: twenty-four counters.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "watch",
+              "text": "In a division, the total goes first. It is the number that gets shared.",
+              "at": "starts"
+            },
+            {
+              "do": "highlight",
+              "target": "k",
+              "at": "pile"
+            }
+          ]
+        },
+        {
+          "say": "Three divided by twenty-four would share three counters among twenty-four trays. This figure has twenty-four counters and three trays.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "l3",
+              "at": "Three"
+            },
+            {
+              "do": "highlight",
+              "target": "l24",
+              "at": "twenty-four"
+            },
+            {
+              "do": "highlight",
+              "target": "k",
+              "at": "figure"
+            },
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "trays",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "Twenty-four divided by three. Twenty-four counters shared among three trays.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "k",
+              "at": "Twenty-four"
+            },
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "trays"
+            }
+          ]
+        },
+        {
+          "say": "Now find the box. Write the multiplication: three trays times the box makes twenty-four.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "lq",
+              "at": "box"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb{3}\\times\\square=\\ca{24}",
+              "fresh": true,
+              "id": "e4",
+              "at": "Write"
+            },
+            {
+              "do": "highlight",
+              "target": "l3",
+              "at": "trays"
+            },
+            {
+              "do": "highlight",
+              "target": "lq",
+              "at": "box",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": "l24",
+              "at": "twenty-four"
+            }
+          ]
+        },
+        {
+          "say": "How many counters does a round use? Count by that number as you deal.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "l3",
+              "at": "round"
+            },
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "deal"
+            }
+          ]
+        },
+        {
+          "say": "Three, one for each tray. So: three, six, nine, twelve, fifteen, eighteen, twenty-one, twenty-four.",
+          "pause": 0.5,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "l3",
+              "at": "Three"
+            },
+            {
+              "do": "move",
+              "points": {
+                "k24": {
+                  "cell": [
+                    "tc",
+                    1
+                  ]
+                },
+                "k23": {
+                  "cell": [
+                    "tc",
+                    11
+                  ]
+                },
+                "k22": {
+                  "cell": [
+                    "tc",
+                    21
+                  ]
+                }
+              },
+              "at": "three",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": "c1",
+              "at": "three",
+              "nth": 2
+            },
+            {
+              "do": "move",
+              "points": {
+                "k21": {
+                  "cell": [
+                    "tc",
+                    2
+                  ]
+                },
+                "k20": {
+                  "cell": [
+                    "tc",
+                    12
+                  ]
+                },
+                "k19": {
+                  "cell": [
+                    "tc",
+                    22
+                  ]
+                }
+              },
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": "c2",
+              "at": "six"
+            },
+            {
+              "do": "move",
+              "points": {
+                "k18": {
+                  "cell": [
+                    "tc",
+                    3
+                  ]
+                },
+                "k17": {
+                  "cell": [
+                    "tc",
+                    13
+                  ]
+                },
+                "k16": {
+                  "cell": [
+                    "tc",
+                    23
+                  ]
+                }
+              },
+              "at": "nine"
+            },
+            {
+              "do": "show",
+              "target": "c3",
+              "at": "nine"
+            },
+            {
+              "do": "move",
+              "points": {
+                "k15": {
+                  "cell": [
+                    "tc",
+                    4
+                  ]
+                },
+                "k14": {
+                  "cell": [
+                    "tc",
+                    14
+                  ]
+                },
+                "k13": {
+                  "cell": [
+                    "tc",
+                    24
+                  ]
+                }
+              },
+              "at": "twelve"
+            },
+            {
+              "do": "show",
+              "target": "c4",
+              "at": "twelve"
+            },
+            {
+              "do": "move",
+              "points": {
+                "k12": {
+                  "cell": [
+                    "tc",
+                    5
+                  ]
+                },
+                "k11": {
+                  "cell": [
+                    "tc",
+                    15
+                  ]
+                },
+                "k10": {
+                  "cell": [
+                    "tc",
+                    25
+                  ]
+                }
+              },
+              "at": "fifteen"
+            },
+            {
+              "do": "show",
+              "target": "c5",
+              "at": "fifteen"
+            },
+            {
+              "do": "move",
+              "points": {
+                "k9": {
+                  "cell": [
+                    "tc",
+                    6
+                  ]
+                },
+                "k8": {
+                  "cell": [
+                    "tc",
+                    16
+                  ]
+                },
+                "k7": {
+                  "cell": [
+                    "tc",
+                    26
+                  ]
+                }
+              },
+              "at": "eighteen"
+            },
+            {
+              "do": "show",
+              "target": "c6",
+              "at": "eighteen"
+            },
+            {
+              "do": "move",
+              "points": {
+                "k6": {
+                  "cell": [
+                    "tc",
+                    7
+                  ]
+                },
+                "k5": {
+                  "cell": [
+                    "tc",
+                    17
+                  ]
+                },
+                "k4": {
+                  "cell": [
+                    "tc",
+                    27
+                  ]
+                }
+              },
+              "at": "twenty-one"
+            },
+            {
+              "do": "show",
+              "target": "c7",
+              "at": "twenty-one"
+            },
+            {
+              "do": "move",
+              "points": {
+                "k3": {
+                  "cell": [
+                    "tc",
+                    8
+                  ]
+                },
+                "k2": {
+                  "cell": [
+                    "tc",
+                    18
+                  ]
+                },
+                "k1": {
+                  "cell": [
+                    "tc",
+                    28
+                  ]
+                }
+              },
+              "at": "twenty-four"
+            },
+            {
+              "do": "show",
+              "target": "c8",
+              "at": "twenty-four"
+            }
+          ]
+        },
+        {
+          "say": "Eight rounds, and the pile is empty. What does the number of rounds tell us?",
+          "pause": 0.3,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "c1",
+                "c2",
+                "c3",
+                "c4",
+                "c5",
+                "c6",
+                "c7",
+                "c8"
+              ],
+              "at": "Eight"
+            },
+            {
+              "do": "highlight",
+              "target": "lp",
+              "at": "empty"
+            }
+          ]
+        },
+        {
+          "say": "Each round gave every tray one counter, so each tray has eight. Twenty-four divided by three is eight.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "c1",
+                "c2",
+                "c3",
+                "c4",
+                "c5",
+                "c6",
+                "c7",
+                "c8"
+              ],
+              "at": "Each"
+            },
+            {
+              "do": "hide",
+              "target": "lq",
+              "at": "has"
+            },
+            {
+              "do": "show",
+              "target": "le",
+              "at": "has"
+            },
+            {
+              "do": "write",
+              "tex": "\\ca{24}\\div\\cb{3}=\\cv{8}",
+              "fresh": true,
+              "id": "q4",
+              "at": "Twenty-four"
+            }
+          ]
+        },
+        {
+          "say": "Check by multiplying back: three trays with eight on each tray make twenty-four.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cb{3}\\times\\cv{8}=\\ca{24}",
+              "note": "\\text{check}",
+              "id": "c4b",
+              "at": "Check"
+            },
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "trays"
+            }
+          ]
+        },
+        {
+          "say": "Eight counters belong on each tray.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "answer",
+              "tex": "\\cv{8}\\text{ on each tray}",
+              "id": "a4",
+              "at": "Eight"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.4,
+          -15.65,
+          16,
+          1.15
+        ],
+        "points": {
+          "PG": [
+            0,
+            0
+          ],
+          "TG": [
+            0,
+            -4.5
+          ],
+          "L1": [
+            10.7,
+            -0.5
+          ],
+          "L2": [
+            10.7,
+            -1.65
+          ],
+          "L3": [
+            10.7,
+            -5.025
+          ],
+          "L4": [
+            10.7,
+            -6.225
+          ],
+          "R1": {
+            "cell": [
+              "tc",
+              71
+            ]
+          },
+          "R2": {
+            "cell": [
+              "tc",
+              72
+            ]
+          },
+          "R3": {
+            "cell": [
+              "tc",
+              73
+            ]
+          },
+          "H1": {
+            "cell": [
+              "tc",
+              1
+            ]
+          },
+          "H2": {
+            "cell": [
+              "tc",
+              2
+            ]
+          },
+          "H3": {
+            "cell": [
+              "tc",
+              3
+            ]
+          },
+          "DT": [
+            8,
+            -4.5
+          ],
+          "DB": [
+            8,
+            -12.9
+          ]
+        },
+        "parts": [
+          {
+            "id": "tr",
+            "start": true,
+            "grid": [
+              1,
+              8
+            ],
+            "at": "TG",
+            "size": [
+              10,
+              1.05
+            ],
+            "fill": "none",
+            "ink": "blue",
+            "w": 4
+          },
+          {
+            "id": "mk",
+            "seg": [
+              "DT",
+              "DB"
+            ],
+            "ink": "muted",
+            "w": 4,
+            "dash": true
+          },
+          {
+            "id": "lmk",
+            "label": "\\text{last time: 8 each}",
+            "at": "DB",
+            "dir": "s",
+            "ink": "muted",
+            "size": "s"
+          },
+          {
+            "id": "tc",
+            "grid": [
+              10,
+              8
+            ],
+            "at": "TG",
+            "size": [
+              1,
+              1.05
+            ]
+          },
+          {
+            "id": "pg",
+            "grid": [
+              10,
+              3
+            ],
+            "at": "PG",
+            "size": 1
+          },
+          {
+            "id": "k",
+            "start": true,
+            "counters": "pg",
+            "n": 24
+          },
+          {
+            "id": "l24",
+            "label": "\\ca{24}\\text{ counters}",
+            "at": "L1",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "lp",
+            "label": "\\text{in pile: }@n",
+            "at": "L2",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m",
+            "of": "pg"
+          },
+          {
+            "id": "l8",
+            "label": "\\cb{8}\\text{ trays}",
+            "at": "L3",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "lq",
+            "label": "\\cg{?}\\text{ each tray}",
+            "at": "L4",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "le",
+            "label": "\\cv{3}\\text{ each tray}",
+            "at": "L4",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "h1",
+            "group": "c1",
+            "label": "\\cg{1}",
+            "at": "H1",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t1",
+            "group": "c1",
+            "label": "\\ca{8}",
+            "at": "R1",
+            "dir": "s",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "h2",
+            "group": "c2",
+            "label": "\\cg{2}",
+            "at": "H2",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t2",
+            "group": "c2",
+            "label": "\\ca{16}",
+            "at": "R2",
+            "dir": "s",
+            "far": 2,
+            "size": "s"
+          },
+          {
+            "id": "h3",
+            "group": "c3",
+            "label": "\\cg{3}",
+            "at": "H3",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t3",
+            "group": "c3",
+            "label": "\\ca{24}",
+            "at": "R3",
+            "dir": "s",
+            "far": 0.85,
+            "size": "s"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Share twenty-four counters equally among eight trays. How many counters belong on each tray?",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Share 24 counters equally among 8 trays. How many counters belong on each tray?",
+              "id": "p5"
+            },
+            {
+              "do": "show",
+              "target": [
+                "l24",
+                "lp"
+              ],
+              "at": "twenty-four"
+            },
+            {
+              "do": "show",
+              "target": "l8",
+              "at": "eight"
+            },
+            {
+              "do": "show",
+              "target": "lq",
+              "at": "each"
+            }
+          ]
+        },
+        {
+          "say": "The same twenty-four counters, now on eight trays instead of three.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "k",
+              "at": "twenty-four"
+            },
+            {
+              "do": "highlight",
+              "target": "l8",
+              "at": "eight"
+            }
+          ]
+        },
+        {
+          "say": "Last time, each of three trays got eight. The dashed line marks eight on a tray. Will each of eight trays get more than eight, or fewer?",
+          "pause": 0.4,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "Last"
+            },
+            {
+              "do": "show",
+              "target": [
+                "mk",
+                "lmk"
+              ],
+              "at": "dashed"
+            },
+            {
+              "do": "highlight",
+              "target": "lq",
+              "at": "Will"
+            }
+          ]
+        },
+        {
+          "say": "Eight trays is more trays, so more counters on each. Past the dashed line.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "l8",
+              "at": "trays"
+            },
+            {
+              "do": "highlight",
+              "target": "lq",
+              "at": "each"
+            },
+            {
+              "do": "highlight",
+              "target": "mk",
+              "at": "dashed"
+            }
+          ]
+        },
+        {
+          "say": "Test it. A round puts one counter on each of eight trays, so a round uses eight counters.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "each"
+            },
+            {
+              "do": "highlight",
+              "target": "l8",
+              "at": "eight"
+            },
+            {
+              "do": "highlight",
+              "target": "k",
+              "at": "counters"
+            }
+          ]
+        },
+        {
+          "say": "Round one: eight dealt, sixteen left.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "k24": {
+                  "cell": [
+                    "tc",
+                    1
+                  ]
+                },
+                "k23": {
+                  "cell": [
+                    "tc",
+                    11
+                  ]
+                },
+                "k22": {
+                  "cell": [
+                    "tc",
+                    21
+                  ]
+                },
+                "k21": {
+                  "cell": [
+                    "tc",
+                    31
+                  ]
+                },
+                "k20": {
+                  "cell": [
+                    "tc",
+                    41
+                  ]
+                },
+                "k19": {
+                  "cell": [
+                    "tc",
+                    51
+                  ]
+                },
+                "k18": {
+                  "cell": [
+                    "tc",
+                    61
+                  ]
+                },
+                "k17": {
+                  "cell": [
+                    "tc",
+                    71
+                  ]
+                }
+              },
+              "at": "one"
+            },
+            {
+              "do": "show",
+              "target": "c1",
+              "at": "dealt"
+            },
+            {
+              "do": "highlight",
+              "target": "lp",
+              "at": "sixteen"
+            }
+          ]
+        },
+        {
+          "say": "Round two: sixteen dealt, eight left.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "k16": {
+                  "cell": [
+                    "tc",
+                    2
+                  ]
+                },
+                "k15": {
+                  "cell": [
+                    "tc",
+                    12
+                  ]
+                },
+                "k14": {
+                  "cell": [
+                    "tc",
+                    22
+                  ]
+                },
+                "k13": {
+                  "cell": [
+                    "tc",
+                    32
+                  ]
+                },
+                "k12": {
+                  "cell": [
+                    "tc",
+                    42
+                  ]
+                },
+                "k11": {
+                  "cell": [
+                    "tc",
+                    52
+                  ]
+                },
+                "k10": {
+                  "cell": [
+                    "tc",
+                    62
+                  ]
+                },
+                "k9": {
+                  "cell": [
+                    "tc",
+                    72
+                  ]
+                }
+              },
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "c2",
+              "at": "sixteen"
+            },
+            {
+              "do": "highlight",
+              "target": "lp",
+              "at": "eight"
+            }
+          ]
+        },
+        {
+          "say": "Round three: twenty-four dealt, none left.",
+          "pause": 0.4,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "k8": {
+                  "cell": [
+                    "tc",
+                    3
+                  ]
+                },
+                "k7": {
+                  "cell": [
+                    "tc",
+                    13
+                  ]
+                },
+                "k6": {
+                  "cell": [
+                    "tc",
+                    23
+                  ]
+                },
+                "k5": {
+                  "cell": [
+                    "tc",
+                    33
+                  ]
+                },
+                "k4": {
+                  "cell": [
+                    "tc",
+                    43
+                  ]
+                },
+                "k3": {
+                  "cell": [
+                    "tc",
+                    53
+                  ]
+                },
+                "k2": {
+                  "cell": [
+                    "tc",
+                    63
+                  ]
+                },
+                "k1": {
+                  "cell": [
+                    "tc",
+                    73
+                  ]
+                }
+              },
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "c3",
+              "at": "twenty-four"
+            },
+            {
+              "do": "highlight",
+              "target": "lp",
+              "at": "none"
+            }
+          ]
+        },
+        {
+          "say": "The pile ran out after three rounds, so each tray has three.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "c1",
+                "c2",
+                "c3"
+              ],
+              "at": "rounds"
+            },
+            {
+              "do": "hide",
+              "target": "lq",
+              "at": "has"
+            },
+            {
+              "do": "show",
+              "target": "le",
+              "at": "has"
+            }
+          ]
+        },
+        {
+          "say": "Three trays gave eight each, up to the dashed line. Eight trays give three each, far short of it. More trays, smaller shares.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "mk",
+              "at": "dashed"
+            },
+            {
+              "do": "highlight",
+              "target": "l8",
+              "at": "Eight",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": "le",
+              "at": "three",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "smaller"
+            }
+          ]
+        },
+        {
+          "say": "The same pile is cut into more shares, so each share is smaller.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "more"
+            },
+            {
+              "do": "watch",
+              "text": "Same total, more trays: each tray gets fewer counters.",
+              "at": "smaller"
+            }
+          ]
+        },
+        {
+          "say": "Write the multiplication: eight trays times the box makes twenty-four.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cb{8}\\times\\square=\\ca{24}",
+              "fresh": true,
+              "id": "e5",
+              "at": "Write"
+            },
+            {
+              "do": "highlight",
+              "target": "le",
+              "at": "box"
+            }
+          ]
+        },
+        {
+          "say": "Twenty-four divided by eight is three.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\ca{24}\\div\\cb{8}=\\cv{3}",
+              "fresh": true,
+              "id": "q5",
+              "at": "Twenty-four"
+            },
+            {
+              "do": "highlight",
+              "target": "k",
+              "at": "eight"
+            }
+          ]
+        },
+        {
+          "say": "Check by multiplying back: eight trays with three on each tray make twenty-four.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cb{8}\\times\\cv{3}=\\ca{24}",
+              "note": "\\text{check}",
+              "id": "c5b",
+              "at": "Check"
+            },
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "trays"
+            }
+          ]
+        },
+        {
+          "say": "Three counters belong on each tray.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "answer",
+              "tex": "\\cv{3}\\text{ on each tray}",
+              "id": "a5",
+              "at": "Three"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.4,
+          -19.2,
+          19,
+          0.55
+        ],
+        "points": {
+          "PG": [
+            0,
+            0
+          ],
+          "TG": [
+            0,
+            -7.5
+          ],
+          "L1": [
+            12.7,
+            -0.5
+          ],
+          "L2": [
+            12.7,
+            -2
+          ],
+          "L3": [
+            12.7,
+            -8.025
+          ],
+          "L4": [
+            12.7,
+            -9.525
+          ],
+          "R1": {
+            "cell": [
+              "tc",
+              71
+            ]
+          },
+          "R2": {
+            "cell": [
+              "tc",
+              72
+            ]
+          },
+          "R3": {
+            "cell": [
+              "tc",
+              73
+            ]
+          },
+          "R4": {
+            "cell": [
+              "tc",
+              74
+            ]
+          },
+          "R5": {
+            "cell": [
+              "tc",
+              75
+            ]
+          },
+          "R6": {
+            "cell": [
+              "tc",
+              76
+            ]
+          },
+          "R7": {
+            "cell": [
+              "tc",
+              77
+            ]
+          },
+          "H1": {
+            "cell": [
+              "tc",
+              1
+            ]
+          },
+          "H2": {
+            "cell": [
+              "tc",
+              2
+            ]
+          },
+          "H3": {
+            "cell": [
+              "tc",
+              3
+            ]
+          },
+          "H4": {
+            "cell": [
+              "tc",
+              4
+            ]
+          },
+          "H5": {
+            "cell": [
+              "tc",
+              5
+            ]
+          },
+          "H6": {
+            "cell": [
+              "tc",
+              6
+            ]
+          },
+          "H7": {
+            "cell": [
+              "tc",
+              7
+            ]
+          }
+        },
+        "parts": [
+          {
+            "id": "tr",
+            "start": true,
+            "grid": [
+              1,
+              8
+            ],
+            "at": "TG",
+            "size": [
+              12,
+              1.05
+            ],
+            "fill": "none",
+            "ink": "blue",
+            "w": 4
+          },
+          {
+            "id": "tc",
+            "grid": [
+              10,
+              8
+            ],
+            "at": "TG",
+            "size": [
+              1.2,
+              1.05
+            ]
+          },
+          {
+            "id": "pg",
+            "grid": [
+              10,
+              6
+            ],
+            "at": "PG",
+            "size": [
+              1.2,
+              1
+            ]
+          },
+          {
+            "id": "k",
+            "start": true,
+            "counters": "pg",
+            "n": 56
+          },
+          {
+            "id": "l56",
+            "label": "\\ca{56}\\text{ counters}",
+            "at": "L1",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "lp",
+            "label": "\\text{in pile: }@n",
+            "at": "L2",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m",
+            "of": "pg"
+          },
+          {
+            "id": "l8",
+            "label": "\\cb{8}\\text{ trays}",
+            "at": "L3",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "lq",
+            "label": "\\cg{?}\\text{ each tray}",
+            "at": "L4",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "le",
+            "label": "\\cv{7}\\text{ each tray}",
+            "at": "L4",
+            "dir": "e",
+            "far": 0.15,
+            "size": "m"
+          },
+          {
+            "id": "h1",
+            "group": "c1",
+            "label": "\\cg{1}",
+            "at": "H1",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t1",
+            "group": "c1",
+            "label": "\\ca{8}",
+            "at": "R1",
+            "dir": "s",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "h2",
+            "group": "c2",
+            "label": "\\cg{2}",
+            "at": "H2",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t2",
+            "group": "c2",
+            "label": "\\ca{16}",
+            "at": "R2",
+            "dir": "s",
+            "far": 2,
+            "size": "s"
+          },
+          {
+            "id": "h3",
+            "group": "c3",
+            "label": "\\cg{3}",
+            "at": "H3",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t3",
+            "group": "c3",
+            "label": "\\ca{24}",
+            "at": "R3",
+            "dir": "s",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "h4",
+            "group": "c4",
+            "label": "\\cg{4}",
+            "at": "H4",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t4",
+            "group": "c4",
+            "label": "\\ca{32}",
+            "at": "R4",
+            "dir": "s",
+            "far": 2,
+            "size": "s"
+          },
+          {
+            "id": "h5",
+            "group": "c5",
+            "label": "\\cg{5}",
+            "at": "H5",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t5",
+            "group": "c5",
+            "label": "\\ca{40}",
+            "at": "R5",
+            "dir": "s",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "h6",
+            "group": "c6",
+            "label": "\\cg{6}",
+            "at": "H6",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t6",
+            "group": "c6",
+            "label": "\\ca{48}",
+            "at": "R6",
+            "dir": "s",
+            "far": 2,
+            "size": "s"
+          },
+          {
+            "id": "h7",
+            "group": "c7",
+            "label": "\\cg{7}",
+            "at": "H7",
+            "dir": "n",
+            "far": 0.85,
+            "size": "s"
+          },
+          {
+            "id": "t7",
+            "group": "c7",
+            "label": "\\ca{56}",
+            "at": "R7",
+            "dir": "s",
+            "far": 0.85,
+            "size": "s"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Share fifty-six counters equally among eight trays. How many counters belong on each tray? Champ, work this one.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Share 56 counters equally among 8 trays. How many counters belong on each tray?",
+              "id": "p6"
+            },
+            {
+              "do": "show",
+              "target": [
+                "l56",
+                "lp"
+              ],
+              "at": "fifty-six"
+            },
+            {
+              "do": "show",
+              "target": "l8",
+              "at": "eight"
+            },
+            {
+              "do": "show",
+              "target": "lq",
+              "at": "each"
+            }
+          ]
+        },
+        {
+          "say": "Which of the three numbers is missing: trays, each, or total?",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "l8",
+              "at": "trays"
+            },
+            {
+              "do": "highlight",
+              "target": "lq",
+              "at": "each"
+            },
+            {
+              "do": "highlight",
+              "target": "l56",
+              "at": "total"
+            }
+          ]
+        },
+        {
+          "say": "Trays: eight. Total: fifty-six, the pile. The number on each tray is missing.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "l8",
+              "at": "Trays"
+            },
+            {
+              "do": "highlight",
+              "target": "l56",
+              "at": "Total"
+            },
+            {
+              "do": "highlight",
+              "target": "lq",
+              "at": "missing"
+            }
+          ]
+        },
+        {
+          "say": "Write what you know as trays times box.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "trays"
+            }
+          ]
+        },
+        {
+          "say": "Eight times box equals fifty-six.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cb{8}\\times\\square=\\ca{56}",
+              "fresh": true,
+              "id": "e6",
+              "at": "Eight"
+            }
+          ]
+        },
+        {
+          "say": "Now find the box with the figure. How many counters does one round use?",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "lq",
+              "at": "box"
+            },
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "round"
+            }
+          ]
+        },
+        {
+          "say": "Eight, one for each tray.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "l8",
+              "at": "Eight"
+            }
+          ]
+        },
+        {
+          "say": "So I count by eights until I reach fifty-six, one round for each count: eight, sixteen, twenty-four, thirty-two, forty, forty-eight, fifty-six.",
+          "pause": 0.5,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "text",
+              "text": "Count by the number of trays until you reach the total.",
+              "tone": "muted",
+              "id": "m6",
+              "at": "count"
+            },
+            {
+              "do": "highlight",
+              "target": "lp",
+              "at": "reach"
+            },
+            {
+              "do": "move",
+              "points": {
+                "k56": {
+                  "cell": [
+                    "tc",
+                    1
+                  ]
+                },
+                "k55": {
+                  "cell": [
+                    "tc",
+                    11
+                  ]
+                },
+                "k54": {
+                  "cell": [
+                    "tc",
+                    21
+                  ]
+                },
+                "k53": {
+                  "cell": [
+                    "tc",
+                    31
+                  ]
+                },
+                "k52": {
+                  "cell": [
+                    "tc",
+                    41
+                  ]
+                },
+                "k51": {
+                  "cell": [
+                    "tc",
+                    51
+                  ]
+                },
+                "k50": {
+                  "cell": [
+                    "tc",
+                    61
+                  ]
+                },
+                "k49": {
+                  "cell": [
+                    "tc",
+                    71
+                  ]
+                }
+              },
+              "at": "eight"
+            },
+            {
+              "do": "show",
+              "target": "c1",
+              "at": "eight"
+            },
+            {
+              "do": "move",
+              "points": {
+                "k48": {
+                  "cell": [
+                    "tc",
+                    2
+                  ]
+                },
+                "k47": {
+                  "cell": [
+                    "tc",
+                    12
+                  ]
+                },
+                "k46": {
+                  "cell": [
+                    "tc",
+                    22
+                  ]
+                },
+                "k45": {
+                  "cell": [
+                    "tc",
+                    32
+                  ]
+                },
+                "k44": {
+                  "cell": [
+                    "tc",
+                    42
+                  ]
+                },
+                "k43": {
+                  "cell": [
+                    "tc",
+                    52
+                  ]
+                },
+                "k42": {
+                  "cell": [
+                    "tc",
+                    62
+                  ]
+                },
+                "k41": {
+                  "cell": [
+                    "tc",
+                    72
+                  ]
+                }
+              },
+              "at": "sixteen"
+            },
+            {
+              "do": "show",
+              "target": "c2",
+              "at": "sixteen"
+            },
+            {
+              "do": "move",
+              "points": {
+                "k40": {
+                  "cell": [
+                    "tc",
+                    3
+                  ]
+                },
+                "k39": {
+                  "cell": [
+                    "tc",
+                    13
+                  ]
+                },
+                "k38": {
+                  "cell": [
+                    "tc",
+                    23
+                  ]
+                },
+                "k37": {
+                  "cell": [
+                    "tc",
+                    33
+                  ]
+                },
+                "k36": {
+                  "cell": [
+                    "tc",
+                    43
+                  ]
+                },
+                "k35": {
+                  "cell": [
+                    "tc",
+                    53
+                  ]
+                },
+                "k34": {
+                  "cell": [
+                    "tc",
+                    63
+                  ]
+                },
+                "k33": {
+                  "cell": [
+                    "tc",
+                    73
+                  ]
+                }
+              },
+              "at": "twenty-four"
+            },
+            {
+              "do": "show",
+              "target": "c3",
+              "at": "twenty-four"
+            },
+            {
+              "do": "move",
+              "points": {
+                "k32": {
+                  "cell": [
+                    "tc",
+                    4
+                  ]
+                },
+                "k31": {
+                  "cell": [
+                    "tc",
+                    14
+                  ]
+                },
+                "k30": {
+                  "cell": [
+                    "tc",
+                    24
+                  ]
+                },
+                "k29": {
+                  "cell": [
+                    "tc",
+                    34
+                  ]
+                },
+                "k28": {
+                  "cell": [
+                    "tc",
+                    44
+                  ]
+                },
+                "k27": {
+                  "cell": [
+                    "tc",
+                    54
+                  ]
+                },
+                "k26": {
+                  "cell": [
+                    "tc",
+                    64
+                  ]
+                },
+                "k25": {
+                  "cell": [
+                    "tc",
+                    74
+                  ]
+                }
+              },
+              "at": "thirty-two"
+            },
+            {
+              "do": "show",
+              "target": "c4",
+              "at": "thirty-two"
+            },
+            {
+              "do": "move",
+              "points": {
+                "k24": {
+                  "cell": [
+                    "tc",
+                    5
+                  ]
+                },
+                "k23": {
+                  "cell": [
+                    "tc",
+                    15
+                  ]
+                },
+                "k22": {
+                  "cell": [
+                    "tc",
+                    25
+                  ]
+                },
+                "k21": {
+                  "cell": [
+                    "tc",
+                    35
+                  ]
+                },
+                "k20": {
+                  "cell": [
+                    "tc",
+                    45
+                  ]
+                },
+                "k19": {
+                  "cell": [
+                    "tc",
+                    55
+                  ]
+                },
+                "k18": {
+                  "cell": [
+                    "tc",
+                    65
+                  ]
+                },
+                "k17": {
+                  "cell": [
+                    "tc",
+                    75
+                  ]
+                }
+              },
+              "at": "forty"
+            },
+            {
+              "do": "show",
+              "target": "c5",
+              "at": "forty"
+            },
+            {
+              "do": "move",
+              "points": {
+                "k16": {
+                  "cell": [
+                    "tc",
+                    6
+                  ]
+                },
+                "k15": {
+                  "cell": [
+                    "tc",
+                    16
+                  ]
+                },
+                "k14": {
+                  "cell": [
+                    "tc",
+                    26
+                  ]
+                },
+                "k13": {
+                  "cell": [
+                    "tc",
+                    36
+                  ]
+                },
+                "k12": {
+                  "cell": [
+                    "tc",
+                    46
+                  ]
+                },
+                "k11": {
+                  "cell": [
+                    "tc",
+                    56
+                  ]
+                },
+                "k10": {
+                  "cell": [
+                    "tc",
+                    66
+                  ]
+                },
+                "k9": {
+                  "cell": [
+                    "tc",
+                    76
+                  ]
+                }
+              },
+              "at": "forty-eight"
+            },
+            {
+              "do": "show",
+              "target": "c6",
+              "at": "forty-eight"
+            },
+            {
+              "do": "move",
+              "points": {
+                "k8": {
+                  "cell": [
+                    "tc",
+                    7
+                  ]
+                },
+                "k7": {
+                  "cell": [
+                    "tc",
+                    17
+                  ]
+                },
+                "k6": {
+                  "cell": [
+                    "tc",
+                    27
+                  ]
+                },
+                "k5": {
+                  "cell": [
+                    "tc",
+                    37
+                  ]
+                },
+                "k4": {
+                  "cell": [
+                    "tc",
+                    47
+                  ]
+                },
+                "k3": {
+                  "cell": [
+                    "tc",
+                    57
+                  ]
+                },
+                "k2": {
+                  "cell": [
+                    "tc",
+                    67
+                  ]
+                },
+                "k1": {
+                  "cell": [
+                    "tc",
+                    77
+                  ]
+                }
+              },
+              "at": "fifty-six",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": "c7",
+              "at": "fifty-six",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "How many counts did you make?",
+          "pause": 0.3,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "c1",
+                "c2",
+                "c3",
+                "c4",
+                "c5",
+                "c6",
+                "c7"
+              ],
+              "at": "counts"
+            }
+          ]
+        },
+        {
+          "say": "Seven rounds, so seven on each tray.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "c1",
+                "c2",
+                "c3",
+                "c4",
+                "c5",
+                "c6",
+                "c7"
+              ],
+              "at": "Seven"
+            },
+            {
+              "do": "hide",
+              "target": "lq",
+              "at": "seven",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": "le",
+              "at": "seven",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "Now write the division for this pile and these trays.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "k",
+              "at": "pile"
+            },
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "trays"
+            }
+          ]
+        },
+        {
+          "say": "The pile is shared among the trays, so the pile goes first. Fifty-six divided by eight is seven.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "k",
+              "at": "pile"
+            },
+            {
+              "do": "write",
+              "tex": "\\ca{56}\\div\\cb{8}=\\cv{7}",
+              "fresh": true,
+              "id": "q6",
+              "at": "Fifty-six"
+            }
+          ]
+        },
+        {
+          "say": "Check it by multiplying back.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "multiplying"
+            }
+          ]
+        },
+        {
+          "say": "Eight trays with seven on each tray is eight times seven, fifty-six. That matches the pile.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cb{8}\\times\\cv{7}=\\ca{56}",
+              "note": "\\text{check}",
+              "id": "c6b",
+              "at": "Eight"
+            },
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "trays"
+            },
+            {
+              "do": "highlight",
+              "target": "l56",
+              "at": "pile"
+            }
+          ]
+        },
+        {
+          "say": "Now say why counting rounds finds the number on each tray.",
+          "pause": 0.3,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "c1",
+                "c2",
+                "c3",
+                "c4",
+                "c5",
+                "c6",
+                "c7"
+              ],
+              "at": "rounds"
+            }
+          ]
+        },
+        {
+          "say": "The pile is the total. Each round gives every tray one counter, so it uses eight, one for each tray. The pile is empty after seven rounds, so each tray has seven.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "l56",
+              "at": "pile"
+            },
+            {
+              "do": "highlight",
+              "target": "tr",
+              "at": "Each"
+            },
+            {
+              "do": "highlight",
+              "target": "l8",
+              "at": "eight"
+            },
+            {
+              "do": "highlight",
+              "target": "lp",
+              "at": "empty"
+            },
+            {
+              "do": "highlight",
+              "target": "le",
+              "at": "seven",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "Seven counters belong on each tray.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "answer",
+              "tex": "\\cv{7}\\text{ on each tray}",
+              "id": "a6",
+              "at": "Seven"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Every shared pile goes the same way.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "overview",
+              "of": "p6",
+              "at": "Every"
+            }
+          ]
+        },
+        {
+          "say": "One. Name the three numbers: trays, each, and total.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Name trays, each and total.",
+              "marks": [
+                "p6"
+              ],
+              "at": "One"
+            }
+          ]
+        },
+        {
+          "say": "Two. Write trays times box equals total.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Write trays times box equals total.",
+              "marks": [
+                "e6"
+              ],
+              "at": "Two"
+            }
+          ]
+        },
+        {
+          "say": "Three. Count by the number of trays until you reach the total.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Count by the trays up to the total. The number of counts is the number on each tray.",
+              "marks": [
+                "m6"
+              ],
+              "at": "Three"
+            }
+          ]
+        },
+        {
+          "say": "Four. Divide, total first. Then check by multiplying back.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Divide, total first. Check by multiplying back.",
+              "marks": [
+                "q6",
+                "c6b",
+                "a6"
+              ],
+              "at": "Four"
+            }
+          ]
+        },
+        {
+          "say": "Five. Know the multiplication fact, and you can skip the dealing.",
+          "pause": 0.8,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Know the fact, skip the dealing: $8 \\times 7 = 56$, so $56 \\div 8 = 7$.",
+              "marks": [
+                "c6b"
+              ],
+              "at": "Five"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
