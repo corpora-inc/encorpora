@@ -513,6 +513,7 @@ test("elements stay put unless a motion is authored, and a highlight does not co
               const o = other.box;
               const ocx = (o.left + o.right) / 2, ocy = (o.top + o.bottom) / 2;
               if (ocx > rest.l && ocx < rest.r && ocy > rest.t && ocy < rest.b) continue;
+              if (o.left <= rest.l + 1 && o.top <= rest.t + 1 && o.right >= rest.r - 1 && o.bottom >= rest.b - 1) continue;
               if (!meet(gb, { l: o.left, t: o.top, r: o.right, b: o.bottom })) continue;
               const label = ((el.textContent || el.getAttribute("class") || el.tagName) + " ∩ " + (other.el.textContent || other.el.getAttribute("class") || other.el.tagName)).replace(/\s+/g, " ").trim().slice(0, 80);
               if (hits.length < 4) hits.push(label);

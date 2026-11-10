@@ -153,6 +153,9 @@ test("things light on their numbers, paint only, in a picture that never re-fram
       for (let k = 0; k < 5; k++) {
         const before = await at(page, said(0, k) - 0.03);
         expect(before.things[ducks[k]!]!.shown, where(`duck ${k + 1} before its number`)).toBe(false);
+        const arriving = await at(page, said(0, k) + 0.06);
+        expect(lit(arriving), where(`arriving duck ${k + 1} is lit within 60 ms`)).toEqual([ducks[k]]);
+        expect(ducks.every((n) => arriving.things[n]!.tick === 0), where("an arrival has no tick")).toBe(true);
         const on = await at(page, said(0, k) + 0.3);
         expect(lit(on), where(`lit as ${k + 1} is said`)).toEqual([ducks[k]]);
         expect(on.count, where(`count as ${k + 1} is said`)).toEqual({ text: String(k + 1), o: 1 });
@@ -169,6 +172,9 @@ test("things light on their numbers, paint only, in a picture that never re-fram
       for (let k = 0; k < 5; k++) {
         const before = await at(page, said(1, k) - 0.03);
         expect(before.things[ducks[k]!]!.em, where(`duck ${k + 1} just before its number`)).toBe(0);
+        const soon = await at(page, said(1, k) + 0.06);
+        expect(lit(soon), where(`lit 60 ms into ${k + 1}`)).toEqual([ducks[k]]);
+        expect(ducks.map((n) => soon.things[n]!.tick), where(`ticks 60 ms into ${k + 1}`)).toEqual(ducks.map((_, i) => (i <= k ? 1 : 0)));
         const on = await at(page, said(1, k) + 0.3);
         expect(lit(on), where(`lit as ${k + 1} is said`)).toEqual([ducks[k]]);
         const grown = on.things[ducks[k]!]!, was = rest.things[ducks[k]!]!;
@@ -176,16 +182,18 @@ test("things light on their numbers, paint only, in a picture that never re-fram
         expect(Math.hypot(cx - rx, cy - ry), where(`duck ${k + 1} grows about its centre`)).toBeLessThanOrEqual(1.5);
         expect(grown.box.r - grown.box.l, where(`duck ${k + 1} grows`)).toBeGreaterThan((was.box.r - was.box.l) * 1.08);
         expect(grown.sw, where(`duck ${k + 1} boldens`)).toBeGreaterThan(was.sw * 1.4);
-        // a counted duck keeps a tick; the one being counted and those not yet counted have none
-        expect(ducks.map((n) => on.things[n]!.tick), where(`ticks as ${k + 1} is said`)).toEqual(ducks.map((_, i) => (i < k ? 1 : 0)));
+        // a counted duck keeps its tick, taken as its own number started, until the beat is over
+        expect(ducks.map((n) => on.things[n]!.tick), where(`ticks as ${k + 1} is said`)).toEqual(ducks.map((_, i) => (i <= k ? 1 : 0)));
         // the light does not move the picture or the other things
         expect(on.fit, where(`frame as ${k + 1} is lit`)).toBe(rest.fit);
         expect(places(on, [...apples, ...ducks]), where(`places as ${k + 1} is lit`)).toEqual(places(rest, [...apples, ...ducks]));
         for (const n of [...apples, ...ducks]) if (n !== ducks[k]) expect(on.things[n]!.box, where(`${n} as ${k + 1} is lit`)).toEqual(rest.things[n]!.box);
         expect(on.count, where(`count as ${k + 1} is lit`)).toEqual({ text: "5", o: 1 });
       }
-      // the last number tells how many: the last duck keeps the light to the end of the beat, then everything is plain again
-      expect(lit(await at(page, beat(1).end + 0.2)), where("the last duck holds the light")).toEqual(["row5"]);
+      // the last number tells how many: the last duck keeps the light to the end of the beat, and it is ticked like the others
+      const held = await at(page, beat(1).end + 0.2);
+      expect(lit(held), where("the last duck holds the light")).toEqual(["row5"]);
+      expect(ducks.map((n) => held.things[n]!.tick), where("every duck ticked at the end of the count")).toEqual([1, 1, 1, 1, 1]);
       const plain = await at(page, beat(1).end + 1.2);
       expect(lit(plain), where("lights out after the beat")).toEqual([]);
       expect(ducks.map((n) => plain.things[n]!.tick), where("ticks gone after the beat")).toEqual([0, 0, 0, 0, 0]);
