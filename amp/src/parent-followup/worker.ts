@@ -23,9 +23,10 @@ export async function deliverParentFollowup(
       EXISTS(SELECT 1 FROM amp_commerce_orders c WHERE c.account_id='amp|'||p.user_id AND c.grant_state IS NOT NULL)
       OR EXISTS(SELECT 1 FROM amp_payment_records r WHERE r.account_id='amp|'||p.user_id AND r.status='verified')
       OR EXISTS(SELECT 1 FROM amp_access_gifts g WHERE g.account_id='amp|'||p.user_id AND g.activated_at IS NOT NULL) AS purchased,
-      -- A place to open, as accountSummary decides next: learners, the
-      -- family's class, a school role, or a gift waiting to be accepted.
-      EXISTS(SELECT 1 FROM amp_learners l WHERE l.account_id='amp|'||p.user_id AND l.deleted_at IS NULL)
+      -- A place to open, as accountSummary decides next: learners (a
+      -- practice profile alone is no place), the family's class, a school
+      -- role, or a gift waiting to be accepted.
+      EXISTS(SELECT 1 FROM amp_learners l WHERE l.account_id='amp|'||p.user_id AND l.deleted_at IS NULL AND NOT l.simulation)
       OR EXISTS(SELECT 1 FROM amp_families f WHERE f.account_id='amp|'||p.user_id)
       OR EXISTS(SELECT 1 FROM amp_people pe JOIN amp_org_roles r ON r.person_id=pe.id AND r.role<>'student'
         WHERE pe.account_id='amp|'||p.user_id AND pe.deleted_at IS NULL)

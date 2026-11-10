@@ -636,11 +636,72 @@ async function teacherCopiesAStudent(
     before.attempts === after.attempts && before.levels === after.levels,
     { before, after },
   );
+
   await page.locator("[data-profile-back]").click();
   await page.waitForURL(new RegExp(`/school/${org.id}`));
   check(
     `${label} home is the school`,
     path(page).startsWith(`/school/${org.id}`),
+    path(page),
+  );
+
+  // Without a license or a plan, the copy has its own free problems. Once
+  // they are used, Continue with AMP sells the teacher's own practice, and
+  // opening it creates nothing.
+  await db.query(
+    "UPDATE amp_school_licenses SET status='ended' WHERE org_id=$1",
+    [org.id],
+  );
+  await db.query("UPDATE amp_learners SET free_online_used=100 WHERE id=$1", [
+    copy.id,
+  ]);
+  const ownLearners = async () =>
+    (
+      await db.query(
+        "SELECT count(*)::int AS n FROM amp_learners WHERE account_id=$1 AND adult AND NOT simulation",
+        [account],
+      )
+    ).rows[0].n;
+  const continueFromPause = async () => {
+    // Practicing as the copy again.
+    await page.evaluate(
+      (id) =>
+        localStorage.setItem(
+          "amp.learner",
+          JSON.stringify({ state: { learnerId: id }, version: 1 }),
+        ),
+      copy.id,
+    );
+    await page.goto(`${origin}/practice`);
+    await page.locator(`[data-continue-with-amp="${copy.id}"]`).click();
+    await page.waitForURL(/\/continue\//);
+  };
+  await continueFromPause();
+  await heading(page, "Continue with AMP");
+  check(
+    `${label} a profile without children continues with their own practice`,
+    path(page) === `/continue/${copy.id}` &&
+      (await page.getByText("For your own practice").isVisible()),
+    path(page),
+  );
+  await settle(page, 500);
+  check(
+    `${label} opening Continue creates no learner`,
+    (await ownLearners()) === 0,
+  );
+  // With a child of their own, the family's plan covers them, the teacher
+  // and every profile: Continue opens it for that child.
+  const child = await context.request.post(`${origin}/api/v1/learners`, {
+    data: { birthYear: 2017 },
+    headers: { Origin: origin },
+  });
+  check(`${label} a child is added`, child.ok(), await child.text());
+  const childId = (await child.json()).id as string;
+  await continueFromPause();
+  await page.waitForURL(new RegExp(`/continue/${childId}$`));
+  check(
+    `${label} a profile with a paused child continues the family's plan`,
+    path(page) === `/continue/${childId}`,
     path(page),
   );
   await context.close();

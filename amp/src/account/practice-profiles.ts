@@ -4,6 +4,7 @@ import type { z } from "zod";
 import { adultPracticeEnd } from "./adult-access.js";
 import { FamilyError } from "../family/contracts.js";
 import type { FamilyRepository } from "../family/repository.js";
+import { familyHasLearnerRoom } from "../learning/free-allowance.js";
 import { initialLevel } from "../learning/frontier.js";
 import {
   defaultPracticeSettings,
@@ -38,11 +39,17 @@ import {
 
 type Database = Pick<PoolClient, "query">;
 
-/** Whether the account's paid or licensed access covers its profiles: its
- * own adult learner's access (bought, or given by teaching or a child), its
- * children's, a licensed school where it teaches, or the children of a
- * family it is the second parent of. Read live, so a revoked license or an
- * ended plan stops covering on the next request. */
+/** SQL: this learner id (an internal SQL expression) is a practice profile,
+ * which no report or follow-up counts as anyone's learning. */
+export const simulationLearnerSql = (learner: string) =>
+  `EXISTS(SELECT 1 FROM amp_learners sim_learner WHERE sim_learner.id=${learner} AND sim_learner.simulation)`;
+
+/** Whether the account's paid or licensed access covers its profiles: a
+ * plan or gift on its own adult learner, its children's access, a licensed
+ * school where it teaches, or the children of a family it is the second
+ * parent of. Read live from those sources, never from the derived `adult:`
+ * grant, so a refunded plan or a revoked license stops covering on the next
+ * request. */
 export async function profilesCovered(
   db: Database,
   accountId: string,
@@ -50,6 +57,7 @@ export async function profilesCovered(
   const own = await db.query(
     `SELECT 1 FROM amp_learners a JOIN amp_grants g ON g.learner_id=a.id
      WHERE a.account_id=$1 AND a.adult AND NOT a.simulation AND a.deleted_at IS NULL
+       AND g.id NOT LIKE 'adult:%'
        AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now() LIMIT 1`,
     [accountId],
   );
@@ -121,6 +129,9 @@ export async function createProfile(
   input: z.infer<typeof createProfileSchema>,
 ): Promise<{ learnerId: string }> {
   return families.transaction(accountId, async (client) => {
+    // The one sanity limit: live learners per account, profiles included.
+    if (!(await familyHasLearnerRoom(client, accountId)))
+      throw new FamilyError(403, "too_many_learners");
     const learnerId = randomUUID();
     // A starting point is all three or none (amp_starting_point_valid).
     await client.query(

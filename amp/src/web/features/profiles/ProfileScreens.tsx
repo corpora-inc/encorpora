@@ -74,6 +74,8 @@ function failureText(error: unknown, fallback: string) {
   if (error instanceof AppError) {
     if (error.code === "profile_not_found")
       return "This profile isn’t in your account anymore. Choose another from your places.";
+    if (error.code === "too_many_learners")
+      return "This account has 1,000 learners and profiles, the most one account can hold. Delete a profile to make another.";
     if (error.kind === "network") return error.message;
     if (error.kind === "validation")
       return "Check the name and levels, then try again.";

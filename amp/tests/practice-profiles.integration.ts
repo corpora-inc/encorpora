@@ -300,21 +300,33 @@ test(
           ).rowCount,
           0,
         );
-        // It counts toward no limit.
+        // Profiles count toward the one sanity limit, 1000 live learners
+        // per account, and toward nothing else.
         const live = (
           await db.query(
-            "SELECT count(*)::int AS n FROM amp_learners WHERE account_id=$1 AND deleted_at IS NULL AND NOT simulation",
+            "SELECT count(*)::int AS n FROM amp_learners WHERE account_id=$1 AND deleted_at IS NULL",
             [parent],
           )
         ).rows[0].n;
         await db.query(
           `INSERT INTO amp_learners(id,account_id,name,adult,simulation)
          SELECT gen_random_uuid()::text,$1,'Bulk profile',true,true FROM generate_series(1,$2::int)`,
-          [parent, 1000 - live],
+          [parent, 999 - live],
         );
         assert.equal(await familyHasLearnerRoom(db, parent), true);
+        const last = await send("POST", "/api/v1/me/profiles", parent, {
+          label: "The thousandth",
+          levels: presetLevels(2, "on-level"),
+        });
+        assert.equal(last.statusCode, 201, last.body);
+        const over = await send("POST", "/api/v1/me/profiles", parent, {
+          label: "One too many",
+          levels: presetLevels(2, "on-level"),
+        });
+        assert.equal(over.statusCode, 403, over.body);
+        assert.equal(over.json().error, "too_many_learners");
         await db.query(
-          "DELETE FROM amp_learners WHERE account_id=$1 AND name='Bulk profile'",
+          "DELETE FROM amp_learners WHERE account_id=$1 AND name IN ('Bulk profile','The thousandth')",
           [parent],
         );
         // Nobody buys for it: checkout, gifts and funded requests refuse it.
@@ -511,10 +523,21 @@ test(
         await practice(parent, fourth);
         assert.equal((await footprint(fourth)).used, used);
 
-        // The plan ends: the profile has its own free allowance.
+        // The plan ends: the profile has its own free allowance at once,
+        // before anything refreshes the adult's stored `adult:` grant.
         await db.query(
           "UPDATE amp_grants SET status='revoked' WHERE learner_id=$1",
           [child.id],
+        );
+        const adultId = (await me(parent)).adultPractice.learner.id;
+        await db.query(
+          `UPDATE amp_grants SET status='active',ends_at=now()+interval '100 days' WHERE id=$1`,
+          [`adult:${adultId}`],
+        );
+        assert.equal(
+          await learning.transaction(parent, fourth, (tx) => tx.hasAccess()),
+          false,
+          "a stale adult: grant never covers a profile",
         );
         const lapsed = await entry(parent, fourth);
         assert.equal(lapsed.hasAccess, false);
