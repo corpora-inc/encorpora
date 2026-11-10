@@ -189,24 +189,47 @@ export async function reissueInvite(
   orgId: string,
   personId: string,
 ) {
-  return repo.transaction(async (client) => {
-    const person = await staffPerson(client, repo, orgId, personId);
-    if (person.account_id)
-      throw new SchoolError(409, "invite_already_accepted");
-    const credentialId = await issueCredential(client, keys, personId);
-    await recordEvent(client, {
-      orgId,
-      action: "staff.invited",
-      targetKind: "person",
-      targetId: personId,
-      detail: { after: { resent: true } },
-    });
-    return {
-      personId,
-      credentialId,
-      email: person.email as string | null,
-    };
+  return repo.transaction((client) =>
+    reissueInviteIn(client, repo, keys, orgId, personId),
+  );
+}
+
+/** `reissueInvite` in a transaction the caller holds. Its live link and then
+ * the person are locked, in the order accepting takes them, so a link is
+ * never renewed or issued again for a person someone has just become. */
+export async function reissueInviteIn(
+  client: PoolClient,
+  repo: SchoolRepository,
+  keys: InviteKeys,
+  orgId: string,
+  personId: string,
+) {
+  await client.query(
+    `SELECT id FROM amp_person_credentials WHERE person_id=$1 AND kind='invite'
+     AND revoked_at IS NULL ORDER BY id FOR UPDATE`,
+    [personId],
+  );
+  const person = await staffPerson(client, repo, orgId, personId);
+  const accepted = (
+    await client.query(
+      "SELECT account_id FROM amp_people WHERE id=$1 FOR UPDATE",
+      [personId],
+    )
+  ).rows[0]?.account_id;
+  if (accepted) throw new SchoolError(409, "invite_already_accepted");
+  const credentialId = await issueCredential(client, keys, personId);
+  await recordEvent(client, {
+    orgId,
+    action: "staff.invited",
+    targetKind: "person",
+    targetId: personId,
+    detail: { after: { resent: true } },
   });
+  return {
+    personId,
+    credentialId,
+    email: person.email as string | null,
+  };
 }
 
 /** A person with a staff role along this org, or not found. */
@@ -306,11 +329,21 @@ export async function endStaffIn(
   actorPersonId: string | null,
 ) {
   // The family's row first, in the order inviting and accepting take it.
-  await client.query(
-    "SELECT 1 FROM amp_families WHERE second_parent=$1 FOR UPDATE",
-    [personId],
-  );
-  await staffPerson(client, repo, orgId, personId);
+  const family = (
+    await client.query<{
+      holder: string;
+      parent: string | null;
+      gone: boolean;
+    }>(
+      `SELECT f.account_id AS holder,p.account_id AS parent,p.deleted_at IS NOT NULL AS gone
+       FROM amp_families f JOIN amp_people p ON p.id=f.second_parent
+       WHERE f.second_parent=$1 FOR UPDATE OF f`,
+      [personId],
+    )
+  ).rows[0];
+  // A second parent's row an earlier fault removed still ends: her roles and
+  // the family's pointer to her go, so the family can invite again.
+  if (!family?.gone) await staffPerson(client, repo, orgId, personId);
   const org = await repo.org(client, orgId);
   const others = await client.query(
     `SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
@@ -341,10 +374,14 @@ export async function endStaffIn(
     "UPDATE amp_person_credentials SET revoked_at=now() WHERE person_id=$1 AND kind='invite' AND revoked_at IS NULL",
     [personId],
   );
-  await client.query(
-    "UPDATE amp_families SET second_parent=NULL WHERE second_parent=$1",
-    [personId],
-  );
+  if (family) {
+    await client.query(
+      "UPDATE amp_families SET second_parent=NULL WHERE account_id=$1",
+      [family.holder],
+    );
+    if (family.parent)
+      await endSecondParentSessions(client, family.holder, family.parent);
+  }
   await recordEvent(client, {
     orgId: org.id,
     actorPersonId,
@@ -353,6 +390,23 @@ export async function endStaffIn(
     targetId: personId,
   });
   return { ended: true };
+}
+
+/** "Let … practice here" sessions a family's second parent started for its
+ * children end with her place in the family. The account holder's and the
+ * children's own sessions stay. */
+export async function endSecondParentSessions(
+  client: Pick<PoolClient, "query">,
+  holder: string,
+  parent: string,
+) {
+  await client.query(
+    `UPDATE amp_student_sessions s SET revoked_at=now()
+     FROM amp_people p JOIN amp_learners l ON l.id=p.learner_id
+     WHERE s.person_id=p.id AND l.account_id=$1 AND s.started_by=$2
+       AND s.revoked_at IS NULL`,
+    [holder, parent],
+  );
 }
 
 /** Which classes a staff member teaches here. */
@@ -499,6 +553,16 @@ export async function acceptInvite(
     }
     if (new Date(invite.expires_at) <= new Date())
       throw new SchoolError(410, "invite_expired");
+    // Already someone's: the link is spent, whoever holds it.
+    if (person.account_id) {
+      if (person.account_id !== accountId)
+        throw new SchoolError(410, "invite_used");
+      await client.query(
+        "UPDATE amp_person_credentials SET revoked_at=now() WHERE id=$1",
+        [invite.id],
+      );
+      return { accepted: true, ...(await joinedOrg(client, person.id)) };
+    }
     if (family)
       await secondParentMayAccept(client, {
         holder: family.account_id,
@@ -513,7 +577,7 @@ export async function acceptInvite(
       )
     ).rows[0];
     let personId: string = person.id;
-    if (already) {
+    if (already && already.id !== person.id) {
       await moveStaffRecords(client, person.id, already.id);
       personId = already.id;
     } else {
@@ -551,7 +615,9 @@ export async function acceptInvite(
         "UPDATE amp_families SET second_parent=$2 WHERE account_id=$1",
         [family.account_id, personId],
       );
-    await markStaffAccount(client, accountId);
+    // A school's staff aren't new parents; a family's second parent is a
+    // parent, and her account stays as it was.
+    if (!family) await markStaffAccount(client, accountId);
     const org = await joinedOrg(client, personId);
     if (org.orgId)
       await recordEvent(client, {

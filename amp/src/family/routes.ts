@@ -153,7 +153,7 @@ export async function registerFamilyRoutes(
           account;
         return reply
           .code(201)
-          .send(await repository.practiceHere(owner, learnerId));
+          .send(await repository.practiceHere(owner, learnerId, account));
       },
     );
     scope.post("/api/v1/family/class-notice/dismiss", async (request) => {

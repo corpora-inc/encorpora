@@ -261,6 +261,16 @@ async function openSwitcher(page: Page, from: string) {
   return menu;
 }
 
+/** A family's own class sends no parent links, whoever teaches it. */
+async function noParentLinks(page: Page, classUrl: string, label: string) {
+  await go(page, classUrl.replace(/\/today$/, "/roster"));
+  await page.getByRole("heading", { name: "Class code" }).waitFor();
+  check(
+    `${label} no Parent links on a family's Students tab`,
+    (await page.getByRole("button", { name: "Parent links" }).count()) === 0,
+  );
+}
+
 async function journey(
   browser: Browser,
   engine: string,
@@ -409,6 +419,9 @@ async function journey(
   );
   await measured(rowan, `${label} second parent today`);
   await shot(rowan, "second-parent-today", width, theme, engine);
+  await noParentLinks(rowan, classUrl, `${label} second parent`);
+  await go(rowan, classUrl);
+  await heading(rowan, /^Good (morning|afternoon|evening)/);
 
   // 4. Maya's progress, then her own practice.
   const toMaya = await openSwitcher(rowan, "Fern’s class");
@@ -503,6 +516,7 @@ async function journey(
   );
   await measured(holder, `${label} holder active`);
   await shot(holder, "holder-active", width, theme, engine);
+  await noParentLinks(holder, classUrl, `${label} holder`);
   await holderContext.close();
   void rowanAccount;
 }

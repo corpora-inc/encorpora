@@ -3,15 +3,17 @@ import { z } from "zod";
 import { activeToday } from "../schools/principal.js";
 import { SchoolRepository } from "../schools/repository.js";
 import {
+  endSecondParentSessions,
   endStaffIn,
   inviteStaffIn,
   liveInviteUrl,
   mailedInviteUrl,
-  reissueInvite,
+  reissueInviteIn,
   type InviteKeys,
 } from "../schools/staff.js";
 import type { ApprovalMail } from "./approvals.js";
 import { FamilyError } from "./contracts.js";
+import { SchoolError } from "../schools/contracts.js";
 
 /* A family's second parent (docs/families.md). A paid family covers two
    adults: the account holder and one parent they invite. She is a teacher of
@@ -193,25 +195,38 @@ export async function resendSecondParent(
   keys: InviteKeys,
   holder: string,
 ): Promise<SentInvitation> {
-  const family = await holderFamily(pool, holder);
-  const row = family.second_parent
-    ? await secondParentRow(pool, family.second_parent)
-    : null;
-  if (!row) throw new FamilyError(404, "second_parent_not_found");
-  if (row.account_id) throw new FamilyError(409, "second_parent_active");
-  const issued = await reissueInvite(
-    new SchoolRepository(pool),
-    keys,
-    family.org_id,
-    row.id,
-  );
-  return {
-    credentialId: issued.credentialId,
-    email: issued.email!,
-    orgId: family.org_id,
-    className: family.class_name,
-    holderName: family.holder_name,
-  };
+  const schools = new SchoolRepository(pool);
+  // The family's row first, as accepting takes it: a link is never issued
+  // again for a second parent who has just joined.
+  return schools.transaction(async (client) => {
+    const family = await holderFamily(client, holder, true);
+    const row = family.second_parent
+      ? await secondParentRow(client, family.second_parent)
+      : null;
+    if (!row) throw new FamilyError(404, "second_parent_not_found");
+    if (row.account_id) throw new FamilyError(409, "second_parent_active");
+    const issued = await reissueInviteIn(
+      client,
+      schools,
+      keys,
+      family.org_id,
+      row.id,
+    ).catch((error: unknown) => {
+      if (
+        error instanceof SchoolError &&
+        error.code === "invite_already_accepted"
+      )
+        throw new FamilyError(409, "second_parent_active");
+      throw error;
+    });
+    return {
+      credentialId: issued.credentialId,
+      email: issued.email!,
+      orgId: family.org_id,
+      className: family.class_name,
+      holderName: family.holder_name,
+    };
+  });
 }
 
 /** Ends her family access and her free practice. Her own account and her own
@@ -236,11 +251,19 @@ export async function removeSecondParent(pool: Pool, holder: string) {
         family.second_parent,
         family.holder_person,
       );
-    else
+    else {
       await client.query(
         "UPDATE amp_families SET second_parent=NULL WHERE account_id=$1",
         [holder],
       );
+      const parent = (
+        await client.query<{ account_id: string | null }>(
+          "SELECT account_id FROM amp_people WHERE id=$1",
+          [family.second_parent],
+        )
+      ).rows[0]?.account_id;
+      if (parent) await endSecondParentSessions(client, holder, parent);
+    }
     return { removed: true };
   });
 }

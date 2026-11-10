@@ -278,6 +278,9 @@ export const signInRosterResource = z.object({
   }),
   /** Whether this person can change sign-in, or only read it. */
   canManage: z.boolean(),
+  /** Whether this person can send families their progress links; a
+   * family's own class has none (its parents see it themselves). */
+  canShare: z.boolean().optional(),
   students: z.array(
     z.object({
       id: z.uuid(),

@@ -9,3 +9,8 @@
 -- is the second parent of two families.
 ALTER TABLE amp_families
   ADD COLUMN second_parent uuid UNIQUE REFERENCES amp_people(id);
+
+-- Who started a shared "Let … practice here" session on their own device: the
+-- account holder or the second parent. Removing her ends the sessions she
+-- started and leaves the rest.
+ALTER TABLE amp_student_sessions ADD COLUMN started_by text;

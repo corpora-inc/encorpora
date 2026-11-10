@@ -3,7 +3,14 @@ import assert from "node:assert/strict";
 import { randomBytes, randomUUID } from "node:crypto";
 import { Pool } from "pg";
 import { migrate } from "../scripts/migrate.js";
+import { createHash } from "node:crypto";
+import { registerAccessGiftRoutes } from "../src/access-grants/routes.js";
+import { stripeNamespace } from "../src/billing/stripe/config.js";
+import { StripeGateway } from "../src/billing/stripe/gateway.js";
 import { registerStripeRoutes } from "../src/billing/stripe/routes.js";
+import { registerFundingPurchaseRoutes } from "../src/funding-purchase/routes.js";
+import { inviteToken, mailedInviteUrl } from "../src/schools/staff.js";
+import * as staffAccount from "../src/schools/staff-account.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { buildApp } from "../src/server/app.js";
@@ -57,10 +64,22 @@ test(
       authenticate,
       services: { secret, origin, mail },
     });
+    // The portal is stubbed: which account's customer it opens is the point.
+    const gateway = new StripeGateway(stripeFixtureConfig);
+    gateway.verifyPortal = async () => {};
+    gateway.portal = async (customer) =>
+      `https://billing.example.test/${customer}`;
     await registerStripeRoutes(app, {
       pool: db,
       config: stripeFixtureConfig,
       authenticate,
+      gateway,
+    });
+    await registerAccessGiftRoutes(app, { pool: db, authenticate });
+    await registerFundingPurchaseRoutes(app, {
+      pool: db,
+      authenticate,
+      offers: [],
     });
     await app.ready();
     t.after(async () => {
@@ -267,6 +286,17 @@ test(
     );
 
     await t.test("the matching address accepts", async () => {
+      // A new parent's welcome mail is waiting: accepting leaves it, and her
+      // account, as they were.
+      await db.query(
+        `INSERT INTO amp_parent_followups(user_id,email,notice_version,unsubscribe_token)
+         VALUES($1,$2,'fixture',$3)`,
+        [rowan.slice(4), rowanEmail, randomBytes(16).toString("hex")],
+      );
+      await db.query(
+        "INSERT INTO amp_parent_followup_outbox(id,user_id,stage) VALUES($1,$2,'welcome')",
+        [randomUUID(), rowan.slice(4)],
+      );
       const { token, proof } = fragment(link);
       const joined = await ok(
         post("/api/v1/school/invites/accept", rowan, {
@@ -290,6 +320,22 @@ test(
       const view = await secondParent(holder);
       assert.equal(view.status, "active");
       assert.equal(view.name, "Rowan Fixture");
+      // A parent, not a school's staff.
+      const account = rowan.slice(4);
+      for (const [table, where] of [
+        ["amp_account_classifications", "user_id=$1"],
+        ["amp_account_classification_events", "user_id=$1"],
+        ["amp_ad_collection_withdrawals", "account_id='amp|'||$1"],
+        ["amp_parent_followup_outbox", "user_id=$1 AND stopped_at IS NOT NULL"],
+      ])
+        assert.equal(
+          (await db.query(`SELECT 1 FROM ${table} WHERE ${where}`, [account]))
+            .rowCount,
+          0,
+          `${table} unchanged`,
+        );
+      assert.equal(await staffAccount.isSchoolStaff(db, account), false);
+      assert.equal(await staffAccount.isFamilyInvitee(db, rowanEmail), true);
       assert.equal(view.inviteUrl, null);
       const mine = await me(rowan);
       assert.equal(mine.secondParentOf.length, 1);
@@ -322,6 +368,16 @@ test(
       "she sees the class and the children's progress, and hands over a device",
       async () => {
         await ok(get(`/api/v1/school/classes/${family.class_id}/today`, rowan));
+        // A family's own class sends no parent links, for either parent.
+        for (const parent of [holder, rowan])
+          assert.equal(
+            (
+              await ok(
+                get(`/api/v1/school/classes/${family.class_id}/roster`, parent),
+              )
+            ).canShare,
+            false,
+          );
         await ok(get(`/api/v1/learners/${maya}/progress`, rowan));
         await ok(get(`/api/v1/learners/${maya}/frontier`, rowan));
         const session = await ok(
@@ -419,6 +475,48 @@ test(
           403,
         );
         await refused(post(`/api/v1/learners/${maya}/batches`, rowan, {}), 403);
+        // Her account's own billing, gifts and funding are hers: never the
+        // holder's customer, and never one of the holder's children.
+        await db.query(
+          "INSERT INTO amp_stripe_customers(namespace,account_id,reservation_id,customer_id) VALUES($1,$2,$3,'cus_holder_fixture')",
+          [stripeNamespace(stripeFixtureConfig), holder, randomUUID()],
+        );
+        assert.equal(
+          (await ok(post("/api/v1/billing/portal", holder))).url,
+          "https://billing.example.test/cus_holder_fixture",
+        );
+        await refused(
+          post("/api/v1/billing/portal", rowan),
+          404,
+          "billing_account_not_found",
+        );
+        await refused(
+          post("/api/v1/billing/enrollment/checkout", rowan, {
+            requestId: randomUUID(),
+            offerId: "a".repeat(64),
+            interval: "year",
+            acknowledgement: {
+              noticeDigest: "b".repeat(64),
+              parentAttestation: true,
+            },
+          }),
+          403,
+          holderOnly,
+        );
+        await refused(
+          post(`/api/v1/access-grants/${randomUUID()}/activate`, rowan, {
+            learnerId: maya,
+          }),
+          403,
+          holderOnly,
+        );
+        await refused(
+          post(`/api/v1/funding/invoices/${randomUUID()}/claim`, rowan, {
+            learnerId: maya,
+          }),
+          403,
+          holderOnly,
+        );
         // Nothing of the holder's changed.
         const theirs = await me(holder);
         assert.equal(theirs.consent.status, "active");
@@ -524,5 +622,160 @@ test(
       );
       assert.equal((await secondParent(holder)).status, "invited");
     });
+
+    /** Backends of this database waiting on a lock. */
+    const waiting = async (count: number) => {
+      for (let tries = 0; tries < 200; tries++) {
+        const { n } = (
+          await admin.query(
+            `SELECT count(*)::int AS n FROM pg_stat_activity
+             WHERE datname=current_database() AND wait_event_type='Lock'`,
+          )
+        ).rows[0];
+        if (n >= count) return;
+        await new Promise((resolve) => setTimeout(resolve, 25));
+      }
+      assert.fail(`${count} lock waits never appeared`);
+    };
+    const joinAgain = async () => {
+      if ((await secondParent(holder))?.status !== "invited")
+        await ok(
+          post("/api/v1/family/second-parent", holder, { email: rowanEmail }),
+          201,
+        );
+      const { token, proof } = fragment(mailed.at(-1)!.url);
+      await ok(
+        post("/api/v1/school/invites/accept", rowan, {
+          token,
+          proof,
+          name: "Rowan Fixture",
+        }),
+      );
+      assert.equal((await secondParent(holder)).status, "active");
+    };
+
+    await t.test(
+      "Send again while she joins: she's joined and no link outlives it",
+      async () => {
+        const { personId } = await secondParent(holder);
+        const { token, proof } = fragment(mailed.at(-1)!.url);
+        // Hold her row so her join stops halfway, then Send again.
+        const gate = await db.connect();
+        await gate.query("BEGIN");
+        await gate.query("SELECT 1 FROM amp_people WHERE id=$1 FOR UPDATE", [
+          personId,
+        ]);
+        const joining = post("/api/v1/school/invites/accept", rowan, {
+          token,
+          proof,
+          name: "Rowan Fixture",
+        });
+        await waiting(1);
+        const resending = post("/api/v1/family/second-parent/resend", holder);
+        await waiting(2);
+        await gate.query("COMMIT");
+        gate.release();
+        await ok(joining);
+        await refused(resending, 409, "second_parent_active");
+        assert.equal(
+          (
+            await db.query(
+              "SELECT 1 FROM amp_person_credentials WHERE person_id=$1 AND kind='invite' AND revoked_at IS NULL",
+              [personId],
+            )
+          ).rowCount,
+          0,
+          "no live link for someone who joined",
+        );
+        assert.equal((await secondParent(holder)).status, "active");
+      },
+    );
+
+    await t.test(
+      "a link left live for her joins her again and never removes her",
+      async () => {
+        const { personId } = await secondParent(holder);
+        // What an overlapping send used to leave: a live link to a person
+        // who already joined.
+        const keys = { secret, origin };
+        const id = randomUUID();
+        const sha = (value: string) =>
+          createHash("sha256").update(value).digest("hex");
+        const [token, proof] = new URL(mailedInviteUrl(keys, id)).hash
+          .slice(1)
+          .split(".");
+        await db.query(
+          `INSERT INTO amp_person_credentials(id,person_id,kind,lookup_hash,secret_hash,expires_at)
+           VALUES($1,$2,'invite',$3,$4,now()+interval '1 day')`,
+          [id, personId, sha(inviteToken(keys, id)), sha(proof!)],
+        );
+        await refused(
+          post("/api/v1/school/invites/accept", stranger, { token, proof }),
+          410,
+          "invite_used",
+        );
+        await ok(
+          post("/api/v1/school/invites/accept", rowan, { token, proof }),
+        );
+        assert.equal(
+          (
+            await db.query("SELECT deleted_at FROM amp_people WHERE id=$1", [
+              personId,
+            ])
+          ).rows[0].deleted_at,
+          null,
+        );
+        const view = await secondParent(holder);
+        assert.equal(view.status, "active");
+        assert.equal(view.personId, personId);
+        assert.equal((await me(rowan)).secondParentOf.length, 1);
+      },
+    );
+
+    await t.test(
+      "removal ends the practice sessions she started, and only those",
+      async () => {
+        const student = (token: string) =>
+          app.inject({
+            method: "GET",
+            url: "/api/v1/me",
+            headers: { authorization: `Bearer ${token}` },
+          });
+        const hers = (
+          await ok(
+            post(`/api/v1/family/learners/${maya}/practice-here`, rowan),
+            201,
+          )
+        ).token as string;
+        const theirs = (
+          await ok(
+            post(`/api/v1/family/learners/${maya}/practice-here`, holder),
+            201,
+          )
+        ).token as string;
+        await ok(student(hers));
+        await ok(post("/api/v1/family/second-parent/remove", holder));
+        await refused(student(hers), 401);
+        await ok(student(theirs));
+      },
+    );
+
+    await t.test(
+      "a second parent's row removed by an earlier fault still comes off",
+      async () => {
+        await joinAgain();
+        const { personId } = await secondParent(holder);
+        // What the overlapping send used to do to her person.
+        await db.query("UPDATE amp_people SET deleted_at=now() WHERE id=$1", [
+          personId,
+        ]);
+        await ok(post("/api/v1/family/second-parent/remove", holder));
+        assert.equal(await secondParent(holder), null);
+        await ok(
+          post("/api/v1/family/second-parent", holder, { email: rowanEmail }),
+          201,
+        );
+      },
+    );
   },
 );

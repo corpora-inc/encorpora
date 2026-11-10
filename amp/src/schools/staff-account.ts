@@ -88,12 +88,24 @@ export async function invitationProvesAddress(
 }
 
 /** Whether this account holds, or held, a school role: its mail shouldn't call
- * it a parent account. */
+ * it a parent account. A family's roles are a parent's. */
 export async function isSchoolStaff(pool: Pool, userId: string) {
   const found = await pool.query(
     `SELECT 1 FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
+     JOIN amp_orgs o ON o.id=r.org_id AND o.kind<>'family'
      WHERE p.account_id=$1 LIMIT 1`,
     [`amp|${userId}`],
+  );
+  return !!found.rowCount;
+}
+
+/** This address is invited as a family's second parent: a parent, whose
+ * mail never calls their account a school's. */
+export async function isFamilyInvitee(pool: Pool, email: string) {
+  const found = await pool.query(
+    `SELECT 1 FROM amp_families f JOIN amp_people p ON p.id=f.second_parent
+     WHERE lower(p.email)=lower($1) AND p.deleted_at IS NULL LIMIT 1`,
+    [email],
   );
   return !!found.rowCount;
 }

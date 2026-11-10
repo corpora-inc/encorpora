@@ -124,11 +124,14 @@ export async function registerFundingPurchaseRoutes(
       );
       return { discarded: true };
     });
-    scope.post("/api/v1/funding/invoices/:id/claim", async (request) => {
+    scope.post("/api/v1/funding/invoices/:id/claim", async (request, reply) => {
       const account = await options.authenticate(request);
       const { learnerId } = z
         .strictObject({ learnerId: z.string().min(1).max(500) })
         .parse(request.body);
+      // A family's purchases are its account holder's (docs/families.md).
+      if (await secondParentOwner(options.pool, account, learnerId))
+        return reply.code(403).send({ error: "family_holder_only" });
       const invoiceId = params.parse(request.params).id;
       const claimed = await invoices.claim(
         account,
