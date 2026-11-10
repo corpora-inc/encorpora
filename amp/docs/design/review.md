@@ -46,6 +46,8 @@ Status: **done** means looked at and fixed to the bar. **open** means not yet pa
 | Workbooks | family | merged | |
 | People, Settings | family | done | People tab; Settings: code, year with None, target |
 | Second parent lands on the class | second-parent | done | a one-class place opens on its Today |
+| Join element (Today header, People, Settings) | family, teacher-class | done | the code, then one group of equal 48 px controls: Copy link, Full screen, QR, More (New class code, confirmed); on a phone two rows; while paused New code shows itself |
+| Downloads (PDF) | adult-3wk, family | done | progress report, lesson, workbook, solutions and sign-in card PDFs download from the preview |
 
 ## Tutor and teacher
 
