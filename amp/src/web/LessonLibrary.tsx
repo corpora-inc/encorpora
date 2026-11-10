@@ -31,7 +31,12 @@ import {
 } from "./lib/lesson-library";
 import { useUrlSearchText } from "./lib/url-search-text";
 import { lessonFilms } from "../content/lesson-films";
-import { buildCorpus, type SearchDoc } from "../search/corpus";
+import {
+  buildCorpus,
+  type SearchDoc,
+  type SearchGroupId,
+} from "../search/corpus";
+import { GROUP_LIMIT } from "../search/blend";
 import { useLessonSearch, type SearchResult } from "./lib/lesson-search";
 import {
   resultKeys,
@@ -337,13 +342,15 @@ function Library({
   const named = query.length > 24 ? `${query.slice(0, 23).trimEnd()}…` : query;
   const found = { lessons: 0, skills: 0, glossary: 0 };
   for (const result of search.results) found[result.group]++;
-  // Each group holds its best 20; more than that reads "20+".
-  const many = (n: number, one: string, more: string) =>
-    n >= 20 ? `20+ ${more}` : plural(n, one, more);
+  // A group holds its best few (GROUP_LIMIT); a full group reads "20+".
+  const many = (group: SearchGroupId, one: string, more: string) =>
+    found[group] >= GROUP_LIMIT[group]
+      ? `${GROUP_LIMIT[group]}+ ${more}`
+      : plural(found[group], one, more);
   const foundText = [
-    found.lessons && many(found.lessons, "lesson", "lessons"),
-    found.skills && many(found.skills, "skill", "skills"),
-    found.glossary && many(found.glossary, "math word", "math words"),
+    found.lessons && many("lessons", "lesson", "lessons"),
+    found.skills && many("skills", "skill", "skills"),
+    found.glossary && many("glossary", "math word", "math words"),
   ].filter(Boolean) as string[];
   const summary = !query
     ? `${plural(lessons, "lesson", "lessons")} · ${plural(types, "problem type", "problem types")}`

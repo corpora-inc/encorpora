@@ -111,22 +111,17 @@ export async function loadSemanticSearch(
 
   async function search(
     query: string,
-    { strand = "", perGroup = 20 }: { strand?: string; perGroup?: number } = {},
+    { strand = "" }: { strand?: string } = {},
   ) {
     const lexicalHits = lexical.search(query, { strand });
-    if (!embedder || query.trim().length < 3)
-      return blend(lexicalHits, [], perGroup);
+    if (!embedder || query.trim().length < 3) return blend(lexicalHits, []);
     try {
-      return blend(
-        lexicalHits,
-        neighbours(await embedQuery(query), strand),
-        perGroup,
-      );
+      return blend(lexicalHits, neighbours(await embedQuery(query), strand));
     } catch (error) {
       log.error(
         `Search embedding failed; answering lexically: ${String(error)}`,
       );
-      return blend(lexicalHits, [], perGroup);
+      return blend(lexicalHits, []);
     }
   }
   return {

@@ -26,12 +26,17 @@ export type BlendedHit = {
 const groupOfId = (id: string) =>
   groupOf(id.slice(0, id.indexOf(":")) as SearchKind);
 
-/** Best first within each group; groups in display order, at most
- * `perGroup` results each. */
+/** The most results a group holds: enough to scan, never a dump. */
+export const GROUP_LIMIT: Record<SearchGroupId, number> = {
+  lessons: 20,
+  skills: 10,
+  glossary: 6,
+};
+
+/** Best first within each group, at most its GROUP_LIMIT. */
 export function blend(
   lexical: readonly LexicalHit[],
   neighbours: readonly { id: string; similarity: number }[],
-  perGroup = 20,
 ): BlendedHit[] {
   const lexicalTop = new Map<SearchGroupId, number>();
   for (const hit of lexical) {
@@ -78,7 +83,7 @@ export function blend(
     const group = groupOfId(hit.id);
     const count = counts.get(group) ?? 0;
     counts.set(group, count + 1);
-    return count < perGroup;
+    return count < GROUP_LIMIT[group];
   });
 }
 
