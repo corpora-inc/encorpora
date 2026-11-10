@@ -1,14 +1,20 @@
-"""Version-two production prompts shared by every study and writer model."""
+"""Production prompts shared by every study and writer model."""
 import json
 
-from prompts import HOUSE, coverage_from_study, review_prompt, validate_review
+from prompts import HOUSE, coverage_from_study, review_prompt as base_review_prompt, validate_review
 
-VERSION = 2
-FRAMEWORK = """Teach how to understand and solve this problem type. Build unfamiliar objects and define words before using them. Mention a neighbouring idea only when the learner needs it to understand this problem, in a sentence at most; never teach the next skill. The coverage audit belongs to the study, not the film: do not expand this film to cover the rest of the standard.
+VERSION = 3
+FRAMEWORK = """A great lesson connects with the child watching. Find the simplest explanation with the strongest intuition and say it in few words: the picture and the examples carry the rigour, so a line that only describes what the picture already shows should go. Show the idea in several quick, different situations a learner at this level knows from life, so the idea is seen as a pattern and never mistaken for a fact about one prop; introduce each object the way a child would meet it, in a few words, before using it. More examples in less time with fewer words beats one example described exhaustively. The test: would a child at this level enjoy it and remember the idea, and would a parent watching think it is the clearest explanation they have seen?
+
+Teach how to understand and solve this problem type. Mention a neighbouring idea only when the learner needs it to understand this problem, in a sentence at most; never teach the next skill. The coverage audit belongs to the study, not the film: do not expand this film to cover the rest of the standard.
 
 The cast is a patient teacher and Champ, a quick learner who is wrong for a reason. Ground his questions and first attempts in the facts pack: observed wrong answers if available, then generated decoys, then an earlier true rule that stops applying, unfamiliar words, and boundary cases. Label inferred misconceptions as inferences; never invent app observations. A teacher can invite Champ to test a claim against the figure; the visible result settles it. Leave no false idea standing in K–2 and use no strike-outs there. Champ solving a final case with only nudges and explaining the idea in his own words is allowed, not required. Remove a Champ line if deleting it loses no mathematical idea. About 70% teacher words is a guide, not a quota.
 
-The figure carries the explanation: it makes the actual quantities, operation, and reason visible. Choose the insight, picture, examples and sequence for this type. Make the film as long as this type needs and no longer, usually about 3 to 5 minutes. Work each meaningfully different method or case fully on its own screen; omit repeated examples that teach nothing new. Say the givens and question plainly. Do not append another problem's answer to a completed example. Do not use praise, greetings, decorative stories or motivational filler. Read the family design as a teaching proposal; use only tools implemented in the supplied kit. Its unbuilt tool specifications are not API documentation. Follow the grade plan's conventions without teaching a different type or assuming that every viewer watched the preceding films."""
+The figure carries the explanation: it makes the actual quantities, operation, and reason visible. Choose the insight, picture, examples and sequence for this type. Make the film as long as this type needs and no longer, usually about 3 to 5 minutes, shorter when the idea is simple. Work each meaningfully different method or case fully on its own screen; omit repeated examples that teach nothing new. Say the givens and question plainly. Do not append another problem's answer to a completed example. No praise, greetings or motivational filler; a situation earns its place by doing mathematical work. Read the family design as a teaching proposal; use only tools implemented in the supplied kit. Its unbuilt tool specifications are not API documentation. Follow the grade plan's conventions without teaching a different type or assuming that every viewer watched the preceding films."""
+
+
+def review_prompt(payload, images):
+    return base_review_prompt(payload, images) + "\n\nAlso judge it as the founder does: is this the simplest, most intuitive explanation, in few words, with varied real situations, that a child at this level would enjoy? A verbose, over-rigorous or monotonous film (one prop repeated, long description of what the picture shows) does not ship even if it is correct; name the cut or change that would fix it."
 
 
 def grade_plan_prompt(grade, rows, kit_summary):

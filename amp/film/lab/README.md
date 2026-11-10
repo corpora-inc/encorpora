@@ -1,9 +1,44 @@
 # Lesson-film model lab
 
+## One film for founder feedback
+
+Run from the repository root with an existing production configuration and queue:
+
+```sh
+python3 amp/film/lab/prod.py --config /private/production.json --phase one --type <type-id>
+python3 amp/film/lab/prod.py --config /private/production.json --phase one --type <type-id> --note "<feedback>" --from <film-id>
+```
+
+Each invocation makes exactly one new film, using Sonnet 5.5 for study and Astra
+with xhigh reasoning for screenplay. Override those with `--study` and `--writer`.
+Facts and grade plans are copied from production when available. A rewrite uses
+the source film's study and screenplay; `--restudy` requests a fresh study using
+the feedback. A source available only as a live export requires `--restudy`.
+
+The current `prod_prompts.py` governs each invocation. Evidence lives in a sibling
+`_one/<film-id>/` directory: prompt source copies, exact submitted prompts, model
+receipts, input copies, screenplay, runtime provenance, stage timings and costs.
+Account CLI dollars and voice dollar charges can be unavailable; reported model
+charges and voice credits are recorded separately. Reused studies and plans incur
+no new model charge. There is no shared protocol freeze. Existing production and
+experiment state, including the production `PAUSE`, are preserved.
+
+The writer runs and inspects kit checks; an independent final check precedes
+narration. Teachers alternate the approved Madeline and Paul IDs, with Champ as
+learner. The quota guard protects the 50,000-credit reserve. Fable review is off
+by default; `--stickler` adds an advisory review without automatic revision.
+Model or kit failures stop the invocation and retain its evidence. Another
+invocation creates a new film and may incur new charges.
+
+The live `one.html` page lists films newest first under their problem-type titles.
+Exports use `<type>--<two letters>`. Stage durations print as they finish, and the
+last output line is the film's review link. Review that film before starting the
+next one. The existing player, grades and batch pages are preserved.
+
 ## Curriculum production
 
 `prod.py` produces lesson films in the app's curriculum order, starting with
-Kindergarten. Production uses a separate private output root and version-two
+Kindergarten. Production uses a separate private output root and production
 prompts; `lab.py` retains the experiment protocol. Configure production from
 `config.example.json`, choosing a new output root, an isolated subdirectory of
 `.work/`, and a review URL ending in `prod.html`. Set `agents` between one and six
@@ -88,7 +123,7 @@ A pathway contains nine adjacent types in one family and grade, spanning at most
 - Python 3.11+, the Node version required by AMP, FFmpeg with `drawtext`, Chromium through Playwright, and the `trash` command.
 - Authenticated `codex` and `grok` CLIs and a Claude Code version supporting `--bare`, `--restricted` and JSON output.
 - An Anthropic API key and an ElevenLabs API key in a private environment file. The parser reads only `ANTHROPIC_API_KEY`, `ELEVEN_LABS_API_KEY` and `ELEVENLABS_API_KEY`; it does not execute the file.
-- A private CCSS JSON array with `code`, `aliases`, `text` and `parts`, plus the running live review service and 40 version-matched founder grades.
+- A private CCSS JSON array with `code`, `aliases`, `text` and `parts`, plus the running live review service. The model experiment additionally requires 40 version-matched founder grades.
 - The machine's heavy-command wrapper. All type checks and browser/encoder commands must run through it.
 
 Copy `config.example.json` outside the repository and replace its placeholder paths. Keep the output root outside every public checkout. Authoring workspaces must be inside this worktree's ignored `amp/film/lab/.work/` directory. The existing review server and its installed player stay in place.

@@ -12,7 +12,8 @@ import threading
 import time
 
 from lab import append_coverage
-from prompts import coverage_from_study, review_prompt
+from prompts import coverage_from_study
+from prod_prompts import review_prompt
 from providers import (MODELS, credentials, now, run_agent, write_json,
                        submit_review_batch, collect_review_batch)
 from prod_report import build_status, spending
@@ -162,7 +163,8 @@ def stickler(config, row, state, workspace, secrets, *, edition=1, allow_new=Tru
     saved = Path(config['root'])/'review-items'/(row['id']+'-review-'+str(edition)+'.json')
     item = read_json(saved) or make_review_item(config, row, workspace, edition=edition)
     write_json(Path(config['root'])/'review-items'/(item['id']+'.json'), item)
-    verdict = review_one(item, 'fable', config['root'], config['workspace_root'], secrets, allow_new=allow_new)
+    verdict = review_one(item, 'fable', config['root'], config['workspace_root'], secrets,
+                         allow_new=allow_new, prompt_builder=review_prompt)
     if not verdict:
         raise RuntimeError('Fable review unavailable; do not voice an unreviewed film')
     if len(state.setdefault('verdicts', [])) < edition:
@@ -398,9 +400,20 @@ def ensure_facts(config, rows):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--config',required=True)
-    parser.add_argument('--phase',choices=('prepare','smoke','run','status'),required=True)
+    parser.add_argument('--phase',choices=('prepare','smoke','run','status','one'),required=True)
+    parser.add_argument('--type', dest='type_id')
+    parser.add_argument('--study', choices=MODELS, default='sonnet')
+    parser.add_argument('--writer', choices=MODELS, default='astra')
+    parser.add_argument('--note')
+    parser.add_argument('--from', dest='from_id')
+    parser.add_argument('--restudy', action='store_true')
+    parser.add_argument('--stickler', action='store_true')
     args = parser.parse_args()
     config = read_json(args.config)
+    if args.phase == 'one':
+        from one import run_one
+        run_one(config, args)
+        return
     if args.phase != 'status' and not config.get('production'):
         config['production'] = True
         private_destination(Path(args.config).parent,config['worktree'])
@@ -480,7 +493,8 @@ if __name__ == '__main__':
         main()
     except Exception as error:
         import sys
-        if '--config' in sys.argv:
+        single = '--phase=one' in sys.argv or ('--phase' in sys.argv and sys.argv[sys.argv.index('--phase')+1] == 'one')
+        if '--config' in sys.argv and not single:
             config = read_json(sys.argv[sys.argv.index('--config')+1])
             root = private_destination(config['root'],config['worktree'])
             write_json(root/'run-error.json', {'at':now(),'error':str(error)})

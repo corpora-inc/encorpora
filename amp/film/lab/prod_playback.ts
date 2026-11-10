@@ -7,10 +7,12 @@ import { secureChromium } from "../../browser-security.mjs";
 
 const { values } = parseArgs({ options: {
   url: { type: "string" }, out: { type: "string" }, ids: { type: "string" },
+  page: { type: "string", default: "prod.html" },
 } });
 if (!process.env.FILM_LAB_HEAVY) throw new Error("Run playback checks through the heavy-command gate");
 if (!values.url || !values.out || !values.ids) throw new Error("Required: --url <player-url> --out <private-directory> --ids <comma-separated-blind-ids>");
 const base = new URL(values.url);
+if (!['prod.html', 'one.html'].includes(values.page)) throw new Error('Unsupported review page');
 if (!['127.0.0.1', 'localhost', '[::1]'].includes(base.hostname)) throw new Error("Playback checks require the local review server");
 const ids = values.ids.split(',');
 if (!ids.length || ids.some(id => !/^[a-z0-9]+(?:-[a-z0-9]+)*--[a-z]{2}$/.test(id))) throw new Error("Invalid blind film IDs");
@@ -26,7 +28,7 @@ try {
   const catalog = await context.newPage();
   const pageErrors: string[] = [];
   catalog.on('pageerror', error => pageErrors.push(error.message));
-  await catalog.goto(new URL('prod.html', base).href, { waitUntil: 'networkidle' });
+  await catalog.goto(new URL(values.page, base).href, { waitUntil: 'networkidle' });
   for (const id of ids) await catalog.locator(`[data-film="${id}"] a`).waitFor();
   const geometry = await catalog.evaluate(() => ({
     viewport: innerWidth, scrollWidth: document.documentElement.scrollWidth,
@@ -39,7 +41,7 @@ try {
   if (geometry.scrollWidth > geometry.viewport || geometry.links.some(link => link.height < 44 || link.left < 0 || link.right > geometry.viewport)) throw new Error('Production page overflows or has undersized film links');
   if (pageErrors.length) throw new Error('Production page errors: '+pageErrors.join('; '));
   await catalog.screenshot({ path: join(values.out, 'prod-phone.png'), fullPage: true });
-  results.push({ page: 'prod.html', ...geometry });
+  results.push({ page: values.page, ...geometry });
   await catalog.close();
   for (const id of ids) {
     const page = await context.newPage();

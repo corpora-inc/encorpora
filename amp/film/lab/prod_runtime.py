@@ -123,16 +123,16 @@ def page_rows(config):
     return rows
 
 
-def grouped_page(config):
+def grouped_page(config, *, rows=None, single=False):
     """Group by curriculum order and type; expose no model or sibling labels."""
     data = Path(config['live_data'])
-    rows = page_rows(config)
+    rows = page_rows(config) if rows is None else rows
     groups = {}
     for row in rows:
-        groups.setdefault(row['grade'], {}).setdefault(row['type'], []).append(row)
+        groups.setdefault(row['id'] if single else row['grade'], {}).setdefault(row['type'], []).append(row)
     cards = []
     for grade, types in groups.items():
-        cards.append('<section class="grade"><h2>'+html.escape(_grade_title(grade))+'</h2>')
+        cards.append('<section class="grade">'+('' if single else '<h2>'+html.escape(_grade_title(grade))+'</h2>'))
         for siblings in types.values():
             cards.append('<section class="type"><h3>'+html.escape(siblings[0]['type_title'])+'</h3>')
             for row in sorted(siblings, key=lambda value: value['id']):
@@ -160,7 +160,11 @@ refresh();setInterval(refresh,60000);
 setTimeout(()=>location.reload(),300000);
 </script></html>'''
     data.parent.mkdir(parents=True, exist_ok=True)
-    path = data.parent/'prod.html'
+    if single:
+        page = page.replace('Lessons follow curriculum order. Versions of the same problem type appear together.',
+                            'One film at a time, newest first.')
+        page = page.replace('amp-production-films-seen', 'amp-one-films-seen')
+    path = data.parent/('one.html' if single else 'prod.html')
     temporary = path.with_suffix('.html.tmp')
     temporary.write_text(page)
     temporary.replace(path)
@@ -172,6 +176,9 @@ def export_worker(config, row, workspace):
     result = read_json(Path(config['root'])/'films'/row['id']/'voice-run.json',{})
     if result.get('exit_code') != 0:
         raise RuntimeError('Voiced timing has no passing kit check; export stopped')
+    if config.get('single_film'):
+        from one import one_page
+        return export(config, row, workspace, page_builder=one_page)
     return export(config, row, workspace, page_builder=grouped_page)
 
 

@@ -18,7 +18,7 @@ def fingerprint(payload, images):
     return digest.hexdigest()
 
 
-def review_one(item, provider, root, workspace_root, secrets, *, allow_new=True):
+def review_one(item, provider, root, workspace_root, secrets, *, allow_new=True, prompt_builder=review_prompt):
     """Run at most two attempts. The caller bounds concurrent model jobs."""
     root = Path(root)
     job_id = item['id']
@@ -38,7 +38,7 @@ def review_one(item, provider, root, workspace_root, secrets, *, allow_new=True)
         if old.get('input_sha256') != digest:
             raise RuntimeError('Review inputs changed; use a new blind edition')
         return validate_review(old, names)
-    prompt = review_prompt(payload, names)
+    prompt = prompt_builder(payload, names)
     prompt_digest = hashlib.sha256(prompt.encode()).hexdigest()
     image_digests = [hashlib.sha256(p.read_bytes()).hexdigest() for p in images]
     workspace = Path(workspace_root)/'reviews'/job_id/provider
