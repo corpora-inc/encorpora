@@ -65,11 +65,19 @@ export const approvals = {
       token: session.token,
       body,
     }),
-  approve: (session: AuthSession, id: string, name: string) =>
+  approve: (
+    session: AuthSession,
+    id: string,
+    name: string,
+    birthYear?: number,
+  ) =>
     request(
       `/family/approvals/${id}/approve`,
       z.object({ learnerId: z.string() }),
-      { token: session.token, body: { name } },
+      {
+        token: session.token,
+        body: birthYear === undefined ? { name } : { name, birthYear },
+      },
     ),
 };
 

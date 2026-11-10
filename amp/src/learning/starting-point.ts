@@ -14,6 +14,13 @@ export const adultStarts = [
 ] as const;
 export type AdultStart = (typeof adultStarts)[number];
 export type StartingChoice = StartingBand | AdultStart;
+/** The youngest age at which an account holder practices as themselves;
+ * anyone younger starts with a parent. A birth year alone can't rule out a
+ * birthday still to come this year, so the year must make them this old
+ * already on January 1. */
+export const OWN_PRACTICE_MIN_AGE = 13;
+export const ownPracticeAllowed = (birthYear: number, thisYear: number) =>
+  thisYear - birthYear - 1 >= OWN_PRACTICE_MIN_AGE;
 /** The grade-axis level each starting choice opens at (`gradeNumber`: K = 0,
  * Algebra 1 = 9, Precalculus = 12). */
 export const startingLevels: Record<StartingChoice, number> = {
