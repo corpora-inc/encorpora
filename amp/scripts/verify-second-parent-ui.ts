@@ -318,6 +318,12 @@ async function journey(
   await measured(holder, `${label} invitation sent`);
   await shot(holder, "holder-sent", width, theme, engine);
   await holder.getByRole("button", { name: "Done" }).click();
+  // Today's offer is gone; the row lives with the class's people.
+  await holder
+    .locator('[data-feed="second-parent"]')
+    .waitFor({ state: "detached" });
+  await go(holder, holder.url().replace(/\/today$/, "/roster"));
+  await heading(holder, "Students");
   const waiting = holder.locator('[data-second-parent-row="invited"]');
   await waiting.getByText("Waiting for r…@…").waitFor();
   for (const name of [/Copy link/, /^Send again$/, /^Remove$/])
@@ -510,11 +516,8 @@ async function journey(
 
   // 5. The holder sees her joined.
   last.page = holder;
-  await go(holder, classUrl);
-  await heading(
-    holder,
-    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
-  );
+  await go(holder, classUrl.replace(/\/today$/, "/roster"));
+  await heading(holder, "Students");
   const active = holder.locator('[data-second-parent-row="active"]');
   await active.getByText("Rowan Fixture").waitFor();
   check(
