@@ -146,6 +146,10 @@ export function OrgFrame({
               key={path}
               to="/$"
               params={{ _splat: `school/${orgId}/${path}` }}
+              // One current sub-tab, decided here: never the router's
+              // prefix match as well.
+              activeOptions={{ exact: true, includeSearch: false }}
+              activeProps={{}}
               aria-current={
                 pathname.replace(/\/+$/, "") === `/school/${orgId}/${path}`
                   ? "page"

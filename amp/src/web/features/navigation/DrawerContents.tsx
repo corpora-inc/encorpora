@@ -118,6 +118,10 @@ export default function DrawerContents({
       to="/$"
       params={{ _splat: href.slice(1) }}
       search={search ?? {}}
+      // The drawer decides the one current item (`currentItem`); the
+      // router's own prefix match would mark /me current on /me/profiles.
+      activeOptions={{ exact: true, includeSearch: false }}
+      activeProps={{}}
       aria-label={detail ? `${title}, ${detail}` : title}
       aria-current={current ? "page" : undefined}
       onClick={close}

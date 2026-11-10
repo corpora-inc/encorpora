@@ -684,6 +684,15 @@ async function verifyDrawerLearner() {
             name: "Adaptive Math Pathways",
           });
           await drawer.waitFor();
+          // Exactly one item is current: never the router's prefix match
+          // as well as the drawer's own choice (founder: no double highlight).
+          const currentItems = await drawer
+            .locator('nav[aria-label="AMP navigation"] [aria-current="page"]')
+            .count();
+          check(
+            currentItems === 1,
+            `drawer ${kind} ${viewport.width} ${colorScheme}: ${currentItems} items are current`,
+          );
           const where = drawer.locator('[aria-label="Where you are"]');
           await where.waitFor();
           const text = await drawer.innerText();
