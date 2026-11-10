@@ -630,6 +630,7 @@ export function ClassScreen() {
       nav={`class:${classId}`}
       title={klass.name}
       crumbs={[{ label: klass.name }]}
+      narrow
     >
       <div className={styles.classSettings}>
       <PageHead

@@ -33,6 +33,7 @@ export function OrgFrame({
   nav,
   title,
   place = true,
+  narrow = false,
   children,
 }: {
   orgId: string;
@@ -40,6 +41,8 @@ export function OrgFrame({
   title: string;
   /** A class screen's eyebrow: the class's name. */
   place?: boolean;
+  /** One focused, centred column: a Settings page. */
+  narrow?: boolean;
   crumbs?: readonly SchoolCrumb[];
   children: ReactNode;
 }) {
@@ -124,7 +127,10 @@ export function OrgFrame({
       data-dense
       // Settings and its pages are one focused, centred column.
       data-narrow={
-        nav === "settings" || nav === "privacy" || nav === "integrations"
+        narrow ||
+        nav === "settings" ||
+        nav === "privacy" ||
+        nav === "integrations"
           ? ""
           : undefined
       }

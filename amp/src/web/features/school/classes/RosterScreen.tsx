@@ -12,7 +12,7 @@ import { Toast } from "../../../ui/Toast";
 import { downloadParentLinks } from "../../schools/share-api";
 import { say, useLeaveOff } from "../classroom/api";
 import { useClassExperience } from "../classroom/ExperienceSettings";
-import { CodeTiles } from "../join/CodeTiles";
+import { JoinClass } from "../join/JoinClass";
 import {
   rosterOptions,
   useResetPictures,
@@ -376,23 +376,16 @@ export function RosterScreen() {
                     : "Students type this at /join. Printed cards don’t need it."}
               </p>
             </div>
-            <span
-              className={styles.tiles}
-              role="img"
-              aria-label={[...data.class.joinCode].join(" ")}
-            >
-              <CodeTiles code={data.class.joinCode} />
-            </span>
+            {/* The compact form of the one Join element: the code in its one
+                face, Copy link and the board. */}
+            <JoinClass
+              compact
+              code={data.class.joinCode}
+              place={params}
+              family={family}
+              boardLink={family}
+            />
             <span className={styles.codeActions}>
-              {family && (
-                <Link
-                  to="/school/$org/classes/$class/start"
-                  params={params}
-                  className={buttonClass("quiet")}
-                >
-                  Full screen
-                </Link>
-              )}
               {canManage && (
                 <Button
                   variant={data.class.joinLockedUntil ? "primary" : "secondary"}
