@@ -54,6 +54,11 @@ const required: Record<string, string[]> = {
     "diameter",
     "fraction-coefficient",
   ],
+  // Clause variants: one case kind each, drawn from hundreds of distinct cases.
+  "polygon-show-the-pieces": ["show-the-pieces"],
+  "polygon-which-expression": ["which-expression"],
+  "count-then-size-then-check": ["count-then-size-then-check"],
+  "net-name-the-solid": ["name-the-solid"],
   "cone-sphere-volume": [
     "cone",
     "sphere",
