@@ -50,6 +50,19 @@ def recorded_api_cost(receipt):
     return cost if cost is not None else receipt.get('partial_api_dollars') or 0
 
 
+def measured_total(values, *, dollars=False, divisor=1):
+    present = [value for value in values if value is not None]
+    if not present:
+        return 'unavailable'
+    value = sum(present)/divisor
+    return money(value) if dollars else f'{value:g}'
+
+
+def api_value(receipt):
+    value = receipt.get('api_dollars')
+    return value if value is not None else receipt.get('partial_api_dollars')
+
+
 def build_report(root, review_url, status='running'):
     root = Path(root)
     mapping = read(root/'arms.json', {'pathways': [], 'assignments': [], 'seed': 'not selected'})
@@ -109,16 +122,17 @@ def build_report(root, review_url, status='running'):
         ss = [states[i] for i in ids]
         runs = [r for p, r in receipts if p.parent.name in ids and r['role'] in ('study', 'screenplay')]
         produced = sum(bool(s.get('checked')) for s in ss)
-        cost = sum(recorded_api_cost(r) for r in runs)
-        grok_cost = sum(r.get('reported_dollars') or 0 for r in runs if r.get('provider') == 'grok')
+        api_runs = [r for r in runs if r.get('transport') == 'api-cli']
+        grok_runs = [r for r in runs if r.get('provider') == 'grok']
         seconds = sum(r.get('wall_seconds') or 0 for r in runs)
         production_seconds = sum(s.get('production_wall_seconds') or 0 for s in ss)
         unknown = sum((r.get('transport') == 'api-cli' and r.get('api_dollars') is None)
                       or (r.get('provider') == 'grok' and r.get('reported_dollars') is None) for r in runs)
         out.append('| '+' | '.join(map(str, [arm, len(ids), produced,
             sum(bool(s.get('voiced')) for s in ss), sum(bool(s.get('exported')) for s in ss),
-            sum(s.get('status')=='failed' for s in ss), money(cost/produced) if produced else 'n/a',
-            money(grok_cost/produced) if produced and any(r.get('provider')=='grok' for r in runs) else 'n/a',
+            sum(s.get('status')=='failed' for s in ss),
+            measured_total((api_value(r) for r in api_runs), dollars=True, divisor=produced) if produced and api_runs else 'n/a',
+            measured_total((r.get('reported_dollars') for r in grok_runs), dollars=True, divisor=produced) if produced and grok_runs else 'n/a',
             f'{seconds/produced:.1f}' if produced else 'n/a',
             f'{production_seconds/produced:.1f}' if produced else 'n/a', unknown]))+' |')
     out += ['', 'Means include study and screenplay retries, divided by the number of checked screenplays. Agent time measures complete provider or CLI invocations, including writer tool calls and waiting inside them. Production time adds independent kit checks and coordinator overhead. Both exclude review and voice processing. A cost with unknown attempts is a lower bound. A checked screenplay is not a founder approval.', '',
@@ -132,13 +146,13 @@ def build_report(root, review_url, status='running'):
             if not runs:
                 continue
             walls = [r['wall_seconds'] for r in runs if r.get('wall_seconds') is not None]
-            token_sums = [sum((r.get('tokens') or {}).get(k) or 0 for r in runs)
+            token_sums = [measured_total((r.get('tokens') or {}).get(k) for r in runs)
                           for k in ('input_uncached', 'input_cached', 'cache_write', 'output')]
             values = [provider, role, len(runs), sum(r.get('status')=='failed' for r in runs),
                       sum(bool(r.get('usage_complete')) for r in runs),
                       f'{sum(walls)/len(walls):.1f}' if walls else 'unavailable',
-                      money(sum(recorded_api_cost(r) for r in runs)) if provider in ('fable', 'opus', 'sonnet') else 'n/a',
-                      money(sum(r.get('reported_dollars') or 0 for r in runs)) if provider=='grok' else 'n/a',
+                      measured_total((api_value(r) for r in runs), dollars=True) if provider in ('fable', 'opus', 'sonnet') else 'n/a',
+                      measured_total((r.get('reported_dollars') for r in runs), dollars=True) if provider=='grok' else 'n/a',
                       *token_sums]
             out.append('| '+' | '.join(map(cell, values))+' |')
     out += ['', 'Token totals include only reported usage. An incomplete receipt makes the corresponding total a lower bound. Claude streaming receipts retain deduplicated request inputs and completed raw output-usage events after interruption; any calculated partial cost is a lower bound, and the attempt still counts as missing its total cost. Mean wall time uses only attempts with a measured duration. Each batch receipt separately retains provider batch duration, including queueing, and client collection elapsed time, including polling delay; neither is a per-item execution measurement. Artifact validation failures are recorded in the receipts even when the provider completed normally.', '',

@@ -8,6 +8,26 @@ from report import build_report
 
 
 class AccountingReportTests(unittest.TestCase):
+    def test_missing_role_usage_is_unavailable_and_measured_zero_is_zero(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            write_json(root/'runs/film/screenplay-fable-1.json', {
+                'provider': 'fable', 'role': 'screenplay', 'transport': 'api-cli',
+                'status': 'failed', 'api_dollars': None, 'tokens': {}})
+            write_json(root/'runs/film/review-grok-1.json', {
+                'provider': 'grok', 'role': 'review', 'transport': 'subscription-cli',
+                'status': 'failed', 'reported_dollars': 0, 'tokens': {'output': 0}})
+            result = build_report(root, 'http://localhost/live/lab.html')
+            self.assertEqual(result['known_api_dollars'], 0)
+            self.assertEqual(result['unknown_api_attempts'], 1)
+            lines = (root/'RESULTS.md').read_text().splitlines()
+            fable = next(line for line in lines if line.startswith('| fable | screenplay |'))
+            grok = next(line for line in lines if line.startswith('| grok | review |'))
+            self.assertNotIn('$0.000000', fable)
+            self.assertIn('| unavailable | n/a | unavailable | unavailable | unavailable | unavailable |', fable)
+            self.assertIn('$0.000000', grok)
+            self.assertTrue(grok.endswith('| 0 |'))
+
     def test_unknown_charges_and_subscription_estimates_are_separate(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
