@@ -1,4 +1,4 @@
-import { useId, useRef, useState } from "react";
+import { useId, useLayoutEffect, useRef, useState } from "react";
 import { AppError } from "../lib/AppError";
 import { Button, type ButtonVariant } from "./Button";
 import styles from "./PrintButton.module.css";
@@ -27,6 +27,20 @@ export function PrintButton({
   const [message, setMessage] = useState("");
   const running = useRef(false);
   const id = useId();
+  // The message hangs from the button's end; on a narrow screen it slides
+  // back inside the viewport rather than off its edge.
+  const callout = useRef<HTMLSpanElement>(null);
+  useLayoutEffect(() => {
+    const node = callout.current;
+    if (!node) return;
+    node.style.transform = "";
+    const box = node.getBoundingClientRect();
+    const margin = 16;
+    const shift =
+      Math.max(0, margin - box.left) -
+      Math.max(0, box.right - (window.innerWidth - margin));
+    if (shift) node.style.transform = `translateX(${shift}px)`;
+  }, [message]);
   async function run() {
     if (running.current) return;
     running.current = true;
@@ -59,7 +73,7 @@ export function PrintButton({
         {children}
       </Button>
       {message && (
-        <span className={styles.callout} role="alert" id={id}>
+        <span ref={callout} className={styles.callout} role="alert" id={id}>
           <span>{message}</span>
           <button
             type="button"

@@ -4,6 +4,7 @@ import { createProfile, studentLevels } from "../account/practice-profiles.js";
 import { FamilyRepository } from "../family/repository.js";
 import { profileLabelSchema } from "../learning/practice-profiles.js";
 import type { Readable } from "node:stream";
+import type { Pool } from "pg";
 import { actorPerson, can, type Actor, type SchoolTarget } from "./authz.js";
 import { perDay } from "./evidence.js";
 import {
@@ -437,10 +438,9 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
 }
 const copyStudentSchema = z.strictObject({ label: profileLabelSchema });
 
-/** Of the classes a student is in today, the ones this person can open. */
 /** One student's record, as far as this reader may see it. */
 async function studentRecord(
-  pool: Parameters<typeof classContext>[0],
+  pool: Pool,
   actor: Actor,
   target: Extract<SchoolTarget, { kind: "student" }>,
 ) {
@@ -461,6 +461,7 @@ async function studentRecord(
   return record;
 }
 
+/** Of the classes a student is in today, the ones this person can open. */
 async function visibleClasses(
   pool: Parameters<typeof classContext>[0],
   actor: Actor,

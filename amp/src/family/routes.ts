@@ -135,9 +135,12 @@ export async function registerFamilyRoutes(
       const practice = await readOwnPractice(repository, account);
       if (!practice) throw new FamilyError(404, "adult_practice_not_started");
       const today = practice.time.range.to;
+      // An account with no name practices as "Me" (adultLearnerName).
+      const named = practice.learner.name !== "Me";
       const { html, footer } = progressReportHtml({
         paper: format,
-        name: practice.learner.name,
+        own: true,
+        name: named ? practice.learner.name : null,
         first: practice.learner.first,
         subtitle: practice.learner.start
           ? `Own practice, began at ${adultStartNames[practice.learner.start]}`
@@ -158,7 +161,7 @@ export async function registerFamilyRoutes(
         .type("application/pdf")
         .header(
           "Content-Disposition",
-          `attachment; filename="${fileName("amp-progress", practice.learner.name, today)}.pdf"`,
+          `attachment; filename="${fileName("amp-progress", named ? practice.learner.name : "", today)}.pdf"`,
         )
         .send(pdf);
     });

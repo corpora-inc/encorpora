@@ -24,7 +24,8 @@ import {
  * objectives they gained. The same facts the record screen reads. */
 export type ProgressReportInput = {
   paper: Paper;
-  name: string;
+  /** Null: an adult's own record with no name on the account. */
+  name: string | null;
   first: string;
   /** Under the name: their classes, or where an adult began. */
   subtitle: string;
@@ -36,6 +37,8 @@ export type ProgressReportInput = {
   /** Days and skills over the last weeks (an adult's own record). */
   time?: Pick<StudentTimeResponse, "range" | "days" | "skills">;
   grades?: StudentRecordResponse["grades"];
+  /** The reader's own record: "Where you are", as the screen says. */
+  own?: boolean;
 };
 
 /** Where an adult chose to begin, in words. */
@@ -55,7 +58,7 @@ const fixed = (value: number) => value.toFixed(1);
 function levels(input: ProgressReportInput) {
   const { level, reference, strands } = input.record;
   if (!level)
-    return `<p class="quiet">Levels appear here once ${esc(input.first)} has some work to read.</p>`;
+    return `<p class="quiet">Levels appear here once ${input.own ? "you have" : `${esc(input.first)} has`} some work to read.</p>`;
   const center = reference
     ? (reference.from + reference.to) / 2
     : level.overall.level;
@@ -94,6 +97,8 @@ function weeks(record: ProgressRecord) {
   const largest = Math.max(1, ...record.weeks.map((w) => w.minutes));
   const total = record.weeks.reduce((sum, w) => sum + w.minutes, 0);
   const active = record.weeks.filter((w) => w.minutes > 0).length;
+  if (!total)
+    return `<p class="quiet">No practice time in the last ${plural(record.weeks.length, "week")}.</p>`;
   const bars = record.weeks
     .map(
       (w) =>
@@ -206,20 +211,22 @@ export function progressReportHtml(input: ProgressReportInput) {
     )
     .join("");
   const body = `${masthead("Progress report", dayWords(input.today))}
-<div class="who"><div><h1>${esc(input.name)}</h1>${input.subtitle ? `<p class="sub">${esc(input.subtitle)}</p>` : ""}</div>${facts ? `<dl class="facts">${facts}</dl>` : ""}</div>
-<section class="section"><div class="sectionHead"><h2>Where ${esc(input.first)} is</h2><p>Grade levels, kindergarten to college</p></div>${levels(input)}</section>
-<section class="section"><div class="sectionHead"><h2>Time</h2><p>Active minutes, last ${input.record.weeks.length} weeks</p></div>${weeks(input.record)}${input.time ? skills(input.time) : ""}</section>
+<div class="who"><div><h1>${esc(input.name ?? "Your progress")}</h1>${input.subtitle ? `<p class="sub">${esc(input.subtitle)}</p>` : ""}</div>${facts ? `<dl class="facts">${facts}</dl>` : ""}</div>
+<section class="section"><div class="sectionHead"><h2>${input.own ? "Where you are" : `Where ${esc(input.first)} is`}</h2><p>Grade levels, kindergarten to college</p></div>${levels(input)}</section>
+<section class="section"><div class="sectionHead"><h2>Time</h2><p>Active minutes, last ${plural(input.record.weeks.length, "week")}</p></div>${weeks(input.record)}${input.time ? skills(input.time) : ""}</section>
 ${input.grades ? grades(input.grades) : ""}
 <section class="section objectivesSection"><div class="sectionHead"><h2>Objectives gained</h2><p>${input.record.objectives.length ? `${plural(input.record.objectives.length, "objective")} this year` : "This year"}</p></div>${objectives(input.record)}</section>`;
   return {
     html: printDocument({
-      title: `${input.name}: progress report`,
+      title: input.name ? `${input.name}: progress report` : "Progress report",
       paper: input.paper,
       css: CSS,
       body,
     }),
     footer: pageFooter(
-      `AMP · Progress report · ${input.name} · ${dayWords(input.today, "short")}`,
+      ["AMP", "Progress report", input.name, dayWords(input.today, "short")]
+        .filter(Boolean)
+        .join(" · "),
     ),
   };
 }
