@@ -42,6 +42,7 @@ import {
   progressSchema,
   frontierSchema,
   frontierRange,
+  levelRegion,
   type Frontier,
   type Evidence,
   type MapSkill,
@@ -184,6 +185,10 @@ function LearnerMap({ session }: { session: AuthSession }) {
         !learner || me.isError || progress.isError || progress.isPending
       }
       frontier={frontier.data}
+      frontierLoading={
+        me.isPending ||
+        (!!learner && (frontier.isPending || progress.isPending))
+      }
       learnerName={learner?.name}
       birthYear={learner?.birthYear}
       controls={
@@ -238,6 +243,7 @@ export function MapView({
   canPractice = false,
   controls,
   frontier,
+  frontierLoading = false,
   learnerName,
   birthYear,
   guestMode = false,
@@ -252,6 +258,8 @@ export function MapView({
   canPractice?: boolean;
   controls?: ReactNode;
   frontier?: Frontier;
+  /** The learner's estimate or record is on its way: "My level" waits. */
+  frontierLoading?: boolean;
   learnerName?: string;
   birthYear?: number | null;
   guestMode?: boolean;
@@ -352,6 +360,13 @@ export function MapView({
         matchesQuery(`${s.title} ${s.description}`, query),
     ) ?? [];
   const range = frontier ? frontierRange(frontier, selected?.strand) : null;
+  const level = useMemo(
+    () =>
+      skills && !frontierLoading
+        ? levelRegion(skills, frontier, evidence)
+        : null,
+    [skills, frontier, evidence, frontierLoading],
+  );
   const selectedEvidence = selected ? stats.get(selected.id) : undefined;
   const families =
     catalog.data?.templates.filter((t) => t.skillId === selected?.id) ?? [];
@@ -571,6 +586,8 @@ export function MapView({
               onSelect={select}
               range={range}
               rangeStrand={selected?.strand}
+              level={level}
+              levelLoading={frontierLoading}
             />
             {selected && (
               <section

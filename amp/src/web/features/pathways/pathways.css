@@ -330,6 +330,19 @@
   right: 14px;
   pointer-events: none;
 }
+.pathways-camera[data-ready="false"] {
+  visibility: hidden;
+  opacity: 0;
+}
+.pathways-camera[data-ready="true"] {
+  opacity: 1;
+  transition: opacity 160ms ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pathways-camera[data-ready="true"] {
+    transition: none;
+  }
+}
 .pathways-camera button {
   pointer-events: auto;
   min-width: 44px;

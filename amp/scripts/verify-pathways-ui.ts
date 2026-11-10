@@ -855,6 +855,11 @@ try {
           mapBox.y < 250,
           "phone overview is visible without scrolling through a hero",
         );
+        // The map opens on the learner's level, named; Whole map shows the areas.
+        await page.locator(".skill-label").first().waitFor();
+        await page
+          .getByRole("button", { name: "Whole map", exact: true })
+          .click();
         await page.locator(".area-label").first().waitFor();
         assert.equal(await page.locator(".area-label").count(), 6);
         assert(
@@ -1430,8 +1435,10 @@ try {
   await evolving.clock.install();
   await fixture(evolving, { catalogSkills: growingCatalog });
   await evolving.goto(`${origin}/pathways?skill=${target.id}`);
-  // Selecting does not move the camera, so an area label is the witness.
-  const label = evolving.locator(".area-label").first();
+  // A deep link frames its skill; that skill's name is the witness.
+  const label = evolving
+    .locator(".skill-label")
+    .filter({ hasText: target.title });
   await label.waitFor();
   await evolving.getByRole("button", { name: "Zoom in", exact: true }).click();
   const before = (await label.boundingBox())!;
