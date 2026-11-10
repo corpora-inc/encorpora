@@ -149,6 +149,14 @@ docker run --rm --network none --read-only --tmpfs /tmp amp-api:pdf-check \
 
 The check runs as the image’s unprivileged user. It validates the complete catalog’s artifact inventory and hashes, requests representative Letter/A4 publications and every book through the actual Fastify routes, and checks authentication, consent, license, and ownership rejection using synthetic in-memory fixtures. It does not create a listener or access learner records. The publisher logs PDF counts, byte totals, cache status, and elapsed generation time.
 
+### Lesson search model
+
+`GET /api/v1/search` blends a lexical index with nearest neighbours from a small sentence-embedding model (all-MiniLM-L6-v2, int8 ONNX, 23 MB) that runs in the API process on one CPU thread. Its files are pinned by revision and SHA-256 in `src/search/model.json`. The `search-model` Docker stage fetches them once (`scripts/fetch-search-model.mjs`), and that layer is reused until a pin changes. The build stage then embeds every lesson, problem type, skill, glossary term and lesson film (`npm run build:search`, no network) into `models/search/index`. The API image keeps only this platform's onnxruntime binaries, and it runs `scripts/verify-search.ts` with no network.
+
+The API never downloads the model. Without the model or the vectors it answers lexically and logs why. If a document's vectors are missing or out of date, as in local development after a content change, it embeds that document in the background. Search adds about 90 MB of resident memory, 80 MB of it the model. A query takes about 5 ms.
+
+Run `npm run build:search` locally (it fetches the model the first time), then `npm run search:relevance` to score the fixed relevance set.
+
 ### Workbook render service
 
 Workbook PDFs are rendered on request, so they need a browser, and the API image has none. The `render` image (`docker build --target render`, `src/render-service/`) is a small internal service: HTML in, PDF out, through headless Chromium. The API checks the parent's access, builds the document and posts it with a shared secret. Rendered PDFs are not stored anywhere: each download renders afresh (about 0.4–1 s) and streams to the parent. Only the workbook spec, which is practice data, is kept.

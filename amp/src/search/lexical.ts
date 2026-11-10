@@ -81,7 +81,22 @@ export type LexicalIndex = ReturnType<typeof createLexicalIndex>;
 const FIELDS = ["title", "names", "codes", "snippet", "body"] as const;
 const BOOST = { title: 4, names: 2, codes: 3, snippet: 1.5, body: 1 };
 
+/** The index, filled at once (the API, scripts and tests). */
 export function createLexicalIndex(docs: readonly SearchDoc[]) {
+  const { index, searcher } = emptyIndex(docs);
+  index.addAll(docs as SearchDoc[]);
+  return searcher;
+}
+
+/** The index, filled in small chunks that yield to the page between them
+ * (the browser: a library that opens never waits for its search index). */
+export async function loadLexicalIndex(docs: readonly SearchDoc[]) {
+  const { index, searcher } = emptyIndex(docs);
+  await index.addAllAsync(docs as SearchDoc[], { chunkSize: 100 });
+  return searcher;
+}
+
+function emptyIndex(docs: readonly SearchDoc[]) {
   const byId = new Map(docs.map((doc) => [doc.id, doc]));
   const index = new MiniSearch<SearchDoc>({
     fields: [...FIELDS],
@@ -95,7 +110,6 @@ export function createLexicalIndex(docs: readonly SearchDoc[]) {
     processTerm: (word) => term(word),
     searchOptions: { tokenize: words, processTerm: (word) => term(word) },
   });
-  index.addAll(docs as SearchDoc[]);
   const titles = new Map(
     docs.map((doc) => [doc.id, ` ${words(doc.title).join(" ")} `]),
   );
@@ -120,7 +134,15 @@ export function createLexicalIndex(docs: readonly SearchDoc[]) {
       weights: { fuzzy: 0.35, prefix: 0.6 },
       filter: (result: SearchResult) => {
         const doc = byId.get(result.id as string)!;
-        return !strand || !doc.strand || doc.strand === strand;
+        if (strand && doc.strand && doc.strand !== strand) return false;
+        // A math word is found by its name, not by a word its definition
+        // happens to use.
+        return (
+          doc.kind !== "term" ||
+          Object.values(result.match).some((fields) =>
+            fields.some((field) => field === "title" || field === "names"),
+          )
+        );
       },
     };
     const ownSet = new Set(own);
@@ -164,7 +186,7 @@ export function createLexicalIndex(docs: readonly SearchDoc[]) {
       .sort((a, b) => b.score - a.score || a.id.localeCompare(b.id))
       .slice(0, limit);
   }
-  return { search, docs: byId };
+  return { index, searcher: { search, docs: byId } };
 }
 
 /** Character ranges of `text` to mark: words whose stored form is one of

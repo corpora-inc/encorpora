@@ -9,25 +9,24 @@
   display: grid;
   gap: var(--space-2);
 }
+/* A group's name is a label (ia.md: sans, 14 px, semibold, muted). */
 .heading {
   margin: 0;
   color: var(--color-muted-text);
-  font-size: var(--text-small);
-  font-weight: 650;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: var(--text-label);
+  font-weight: 600;
 }
+/* Rows are separated by hairlines, never boxed. */
 .rows,
 .terms {
   display: grid;
   margin: 0;
   padding: 0;
+  border-top: 1px solid var(--color-border);
   list-style: none;
 }
-.rows {
-  border-top: 1px solid var(--color-border);
-}
-.rows > li {
+.rows > li,
+.terms > li {
   border-bottom: 1px solid var(--color-border);
 }
 .row {
@@ -73,22 +72,15 @@
   height: 8px;
   border-radius: 50%;
 }
-/* A matched word: heavier and underlined in the brand color, never a tint. */
+/* A matched word: heavier and in full ink, never a tint. */
 .results mark {
   background: none;
-  color: inherit;
+  color: var(--color-on-surface-raised);
   font-weight: 700;
-  text-decoration: underline;
-  text-decoration-color: var(--color-primary);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 3px;
-}
-.terms {
-  gap: var(--space-2);
 }
 .term {
-  padding: var(--space-3) var(--space-4);
-  border-left: 3px solid var(--color-primary);
+  min-height: var(--target-size);
+  padding: var(--space-3) 0;
   color: var(--color-on-surface-raised);
   font-size: 15px;
   line-height: 1.5;

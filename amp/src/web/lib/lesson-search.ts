@@ -14,7 +14,7 @@ import {
   type SearchGroupId,
   type SearchKind,
 } from "../../search/corpus";
-import { createLexicalIndex } from "../../search/lexical";
+import { loadLexicalIndex, type LexicalIndex } from "../../search/lexical";
 import { request } from "./api";
 
 const resultSchema = z.object({
@@ -39,6 +39,24 @@ export type SearchResult = z.infer<typeof resultSchema> & {
 /** Wait this long after typing pauses before asking the API. */
 const REMOTE_AFTER_MS = 150;
 const remembered = new Map<string, SearchResult[]>();
+// One index per corpus for the session, built in the background once.
+const indexes = new WeakMap<readonly SearchDoc[], Promise<LexicalIndex>>();
+const built = new WeakMap<readonly SearchDoc[], LexicalIndex>();
+function indexFor(docs: readonly SearchDoc[]) {
+  let index = indexes.get(docs);
+  if (!index) {
+    index = loadLexicalIndex(docs);
+    indexes.set(docs, index);
+    index.then(
+      (ready) => built.set(docs, ready),
+      (error: unknown) => {
+        indexes.delete(docs);
+        console.error("Lesson search index could not be built", error);
+      },
+    );
+  }
+  return index;
+}
 
 const view = (doc: SearchDoc, terms: string[]): SearchResult => ({
   id: doc.id,
@@ -58,10 +76,22 @@ export function useLessonSearch(
   query: string,
   strand: string,
 ) {
-  const index = useMemo(() => createLexicalIndex(docs), [docs]);
+  // Back on Lessons, the index built earlier answers in the first frame.
+  const [index, setIndex] = useState<LexicalIndex | null>(
+    () => built.get(docs) ?? null,
+  );
+  useEffect(() => {
+    let current = true;
+    void indexFor(docs).then((ready) => {
+      if (current) setIndex(ready);
+    });
+    return () => {
+      current = false;
+    };
+  }, [docs]);
   const local = useMemo(
     () =>
-      query
+      query && index
         ? blend(index.search(query, { strand }), []).map((hit) =>
             view(index.docs.get(hit.id)!, hit.terms),
           )
@@ -115,5 +145,9 @@ export function useLessonSearch(
     };
   }, [key, query, strand]);
   const results = remote?.key === key ? remote.results : local;
-  return { results, pending: waiting === key };
+  // Busy until there is an answer: the device's index or the API's.
+  return {
+    results,
+    pending: waiting === key || (!index && remote?.key !== key),
+  };
 }

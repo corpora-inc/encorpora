@@ -60,7 +60,9 @@ async function queryReady(page: Page, query: string) {
   await summary(page)
     .filter({
       hasText: query
-        ? new RegExp(`(match|matches) “${query}”`)
+        ? new RegExp(
+            `(match|matches) “${(query.length > 24 ? `${query.slice(0, 23).trimEnd()}…` : query).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}”`,
+          )
         : /^\d{1,3}(?:,\d{3})* lessons? · \d{1,3}(?:,\d{3})* problem types?$/,
     })
     .waitFor();

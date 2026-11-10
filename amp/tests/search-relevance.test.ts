@@ -25,7 +25,7 @@ test("every expected document in the relevance set exists", () => {
 
 test("lexical search finds the relevance set's answers in its top three", () => {
   // Results are shown grouped (Lessons, Skills, Glossary): a hit is an
-  // expected document among the first three of its group. Measured 30 of 32
+  // expected document among the first three of its group. Measured 28 of 32
   // when written (the library filter it replaced: 15). The floor leaves room
   // for new lessons, not for a broken index.
   let hits = 0;

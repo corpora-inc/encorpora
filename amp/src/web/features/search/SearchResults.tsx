@@ -94,7 +94,19 @@ export const SearchResults = memo(function SearchResults({
   return (
     <div className={styles.results} aria-busy={pending} data-search-results="">
       {searchGroups.map((group) => {
-        const rows = results.filter((result) => result.group === group.id);
+        // A problem type's lesson plays its film, so a film whose problem
+        // type is listed rides on that row instead of repeating its title.
+        const types = new Set(
+          results.filter((r) => r.kind === "type").map((r) => r.target),
+        );
+        const films = new Set(
+          results.filter((r) => r.kind === "film").map((r) => r.target),
+        );
+        const rows = results.filter(
+          (result) =>
+            result.group === group.id &&
+            !(result.kind === "film" && types.has(result.target)),
+        );
         if (!rows.length) return null;
         const shown = open.has(group.id)
           ? rows
@@ -161,7 +173,12 @@ export const SearchResults = memo(function SearchResults({
                             aria-hidden="true"
                           />
                         )}
-                        <span>{KIND_LABEL[result.kind]}</span>
+                        <span>
+                          {KIND_LABEL[result.kind]}
+                          {result.kind === "type" &&
+                            films.has(result.target) &&
+                            " · with film"}
+                        </span>
                         {result.band && <span>{bandLabel(result.band)}</span>}
                         {result.codes[0] && <span>{result.codes[0]}</span>}
                       </span>
