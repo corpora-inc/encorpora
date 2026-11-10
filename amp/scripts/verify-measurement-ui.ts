@@ -17,7 +17,11 @@ import { generateProblem } from "../src/math/engine";
 import type { PublicProblem, SemanticFigure } from "../src/math/contracts";
 import { lessons } from "../src/content/lessons";
 import { publicationHtml } from "../src/content/publications";
-import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
+import {
+  answerSurfaceSettled,
+  assertPhoneLandscapeSmoke,
+  isPhoneLandscape,
+} from "./ui-viewports";
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url)
   throw new Error("AMP_TEST_DATABASE_URL is required for browser verification");
@@ -146,11 +150,7 @@ try {
       { width: 1280, height: 800 },
     ]) {
       await page.setViewportSize(size);
-      await page.waitForFunction(
-        () =>
-          !!document.querySelector(".compact-answer-action") ===
-          matchMedia("(max-width: 650px) and (max-height: 640px)").matches,
-      );
+      await answerSurfaceSettled(page);
       await page.waitForFunction(
         () =>
           Math.abs(

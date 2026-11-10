@@ -32,16 +32,18 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
 .film-surface { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
 .film-col {
   position: absolute; top: 0;
-  display: flex; flex-direction: column; align-items: center; gap: 34px;
+  display: flex; flex-direction: column; align-items: center;
+  /* the gap between stacked lines is wider than the leading inside a line */
+  gap: calc(var(--film-math) * 0.52);
   --film-math: 84px;
   font-size: calc(var(--film-math) * 0.66);
-  line-height: 1.28;
+  line-height: 1.45;
 }
 .film-line { position: relative; flex: none; max-width: var(--film-card, 1400px); }
 .film-line.write { align-self: stretch; max-width: none; display: block; }
 .film-line.answer { display: flex; align-items: center; justify-content: center; }
-.film-line.text { text-align: center; }
-.film-math { display: inline-block; font-size: var(--film-math); line-height: 1; white-space: nowrap; }
+.film-line.text { text-align: center; line-height: 1.45; }
+.film-math { display: inline-block; font-size: var(--film-math); line-height: 1.35; padding-block: 0.1em; white-space: nowrap; }
 .film-math .katex-display { margin: 0; text-align: left; }
 .film-math .katex-display > .katex { text-align: left; }
 .film-math .katex { font-size: 1em; }
@@ -49,13 +51,14 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
   position: absolute; top: 50%; transform: translateY(-50%);
   color: var(--color-muted-text);
   font-size: calc(var(--film-math) * 0.62);
+  line-height: 1.4;
   white-space: nowrap;
 }
 .film-note .katex { font-size: 1em; }
 .film-line .katex { font-size: 1.08em; }
 .film-line.text.muted { color: var(--color-muted-text); }
 .film-line.answer {
-  padding: 22px 38px;
+  padding: 32px 48px;
   border-radius: 22px;
   background: color-mix(in srgb, var(--color-success) calc(var(--film-box, 0) * 100%), transparent);
   box-shadow: inset 0 0 0 calc(var(--film-box, 0) * 3px) var(--color-success-accent);
@@ -63,43 +66,43 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
 }
 .film-line.problem {
   width: var(--film-card, 1400px); box-sizing: border-box;
-  padding: 34px 44px;
+  padding: 48px 52px;
   background: var(--color-answer);
   border: 2px solid var(--color-border);
   border-radius: 22px;
   font-size: calc(var(--film-math) * 0.74);
-  line-height: 1.34;
+  line-height: 1.48;
 }
 .film-line.term {
-  padding: 26px 36px;
+  padding: 44px 48px;
   background: var(--color-secondary);
   color: var(--color-on-secondary);
   border-radius: 22px;
   font-size: calc(var(--film-math) * 0.7);
-  line-height: 1.3;
+  line-height: 1.48;
 }
-.film-line.term b { display: block; font-family: var(--font-display); font-size: 1.16em; margin-bottom: 6px; }
+.film-line.term b { display: block; font-family: var(--font-display); font-size: 1.16em; line-height: 1.35; margin-bottom: 0.42em; }
 .film-line.watch {
-  padding: 26px 36px;
+  padding: 44px 48px;
   background: var(--color-warning);
   color: var(--color-on-warning);
   border-left: 10px solid var(--color-warning-accent);
   border-radius: 16px;
   font-size: calc(var(--film-math) * 0.7);
-  line-height: 1.3;
+  line-height: 1.48;
 }
-.film-line.problem.long { font-size: calc(var(--film-math) * 0.6); padding: 28px 36px; }
-.film-line.problem.long .film-display { font-size: calc(var(--film-math) * 0.8); margin: 14px 0 4px; }
-.film-line.problem.long .film-choices { gap: 10px 14px; margin-top: 16px; }
-.film-line.problem .film-display { font-size: calc(var(--film-math) * 0.95); margin: 22px 0 6px; text-align: center; }
+.film-line.problem.long { font-size: calc(var(--film-math) * 0.6); padding: 42px 46px; }
+.film-line.problem.long .film-display { font-size: calc(var(--film-math) * 0.8); margin: 20px 0 16px; }
+.film-line.problem.long .film-choices { gap: 16px 18px; margin-top: 22px; }
+.film-line.problem .film-display { font-size: calc(var(--film-math) * 0.95); margin: 28px 0 18px; text-align: center; }
 .film-line.problem .film-display .katex-display { margin: 0; }
 .film-line.problem .film-display .katex { font-size: 1em; }
-.film-choices { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 18px; margin-top: 22px; font-size: 0.86em; }
+.film-choices { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px 22px; margin-top: 28px; font-size: 0.86em; }
 .film-choices > span {
-  padding: 10px 26px; border-radius: 999px;
+  padding: 22px 32px; border-radius: 999px;
   border: 2px solid var(--color-border); background: var(--color-surface);
   /* a short choice stays on one line; a sentence-long one takes its own row and wraps inside its pill */
-  flex: 0 0 auto; max-width: 100%; box-sizing: border-box; text-align: center; line-height: 1.25;
+  flex: 0 0 auto; max-width: 100%; box-sizing: border-box; text-align: center; line-height: 1.4;
 }
 
 .film-axis-num { font-size: 34px; color: var(--color-muted-text); }
@@ -155,12 +158,12 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
   border: 1.5px solid var(--color-border);
   border-radius: 28px;
   box-shadow: 0 2px 4px var(--color-shadow), 0 18px 48px -18px var(--color-shadow);
-  padding: 44px 46px; display: flex; flex-direction: column; gap: 30px;
-  font-size: 48px; line-height: 1.3;
+  padding: 56px 52px; display: flex; flex-direction: column; gap: 40px;
+  font-size: 48px; line-height: 1.48;
 }
-.film-recap-item { display: grid; grid-template-columns: 64px 1fr; align-items: start; }
+.film-recap-item { display: grid; grid-template-columns: 64px 1fr; align-items: start; column-gap: 8px; }
 .film-recap-item b {
-  font-family: var(--font-display); color: var(--color-figure-accent); font-size: 1.15em; line-height: 1.1;
+  font-family: var(--font-display); color: var(--color-figure-accent); font-size: 1.15em; line-height: 1.35;
 }
 .film-recap-item .katex { font-size: 1.04em; }
 /* math and the punctuation that touches it never split across lines */
@@ -168,13 +171,13 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
 /* an upright phone: the recap card sits under the board, a little smaller */
 .film-recap-tall .film-recap-list { font-size: 44px; }
 /* a column too narrow for a margin: each note sits under the end of its own line */
-.notes-below .film-line.has-note { padding-bottom: calc(var(--film-math) * 0.62); }
+.notes-below .film-line.has-note { padding-bottom: calc(var(--film-math) * 0.98); }
 .notes-below .film-note { top: auto; bottom: 0; transform: none; }
 /* column arithmetic: digits on a grid, carries and borrows above, a rule over the answer */
 .film-line.stack { display: flex; justify-content: center; }
-.film-stack { display: grid; grid-auto-rows: auto; column-gap: 0.06em; font-size: var(--film-math); line-height: 1.12; position: relative; }
+.film-stack { display: grid; grid-auto-rows: auto; column-gap: 0.08em; font-size: var(--film-math); line-height: 1.28; position: relative; }
 .film-stack .katex { font-size: 1em; }
-.film-stack-cell { position: relative; text-align: center; min-width: 0.62em; padding: 0 0.04em; z-index: 1; }
+.film-stack-cell { position: relative; text-align: center; min-width: 0.62em; padding: 0.06em 0.08em; z-index: 1; }
 .film-stack-cell.point { min-width: 0.24em; }
 .film-stack-cell.op { padding-right: 0.22em; }
 .film-stack-cell.pad { color: var(--color-figure-accent); }

@@ -409,18 +409,19 @@ export function PracticeWorkspace(props: Props) {
   const [compactQuery, setCompact] = useState(
     () => matchMedia(answerLayoutQuery).matches,
   );
-  const compact =
-    compactQuery &&
-    !plot &&
-    !trend &&
-    !lineBuild &&
-    !parts &&
-    !figures &&
-    !work &&
-    !equalAddends &&
-    !counters &&
-    !pegs &&
-    !shapes;
+  // These answer in the problem itself and never use the answer dialog.
+  const answersInProblem =
+    !!plot ||
+    !!trend ||
+    !!lineBuild ||
+    !!parts ||
+    !!figures ||
+    !!work ||
+    !!equalAddends ||
+    !!counters ||
+    !!pegs ||
+    !!shapes;
+  const compact = compactQuery && !answersInProblem;
   // Side by side (practice-tablet.css), the feedback sheet has its own
   // column; stacked, it covers the dock only, so a plotted answer's grid and
   // its feedback overlay stay in view and the explanation opens on request.
@@ -1882,6 +1883,9 @@ export function PracticeWorkspace(props: Props) {
         <div
           className={`answer-dock${sideBySide && (work || figures) ? " editor-dock" : ""}`}
           ref={dock}
+          // Where the answer moves behind the compact answer action. Browser
+          // checks read it rather than keep a copy of these rules.
+          data-answer-dialog={answersInProblem ? undefined : answerLayoutQuery}
         >
           {sideBySide && (work || figures) && (
             <section

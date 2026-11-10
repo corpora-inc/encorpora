@@ -218,11 +218,12 @@ type MosaicView = {
   guide: SVGElement;
 };
 /**
- * Centre the figure's ink in its card. The box is the ink that is actually
- * drawn (shapes, axes, bars, tables, labels), not the scene's nominal view.
- * Every side keeps a margin of at least 6% of the shorter side and 16 CSS px.
- * Ink that would cross that margin is scaled down; ink that already fits is
- * only moved. `root` is the card's `.film-fit` layer.
+ * Centre the figure's ink in its card. The box is the scene's content
+ * (shapes, axes, bars, tables, labels), not the scene's nominal view and not
+ * a highlight's ink (`.film-em`: rings, bands, overlays). Every side keeps a
+ * margin of at least 6% of the shorter side and 16 CSS px. Ink that would
+ * cross that margin is scaled down; ink that already fits is only moved.
+ * `root` is the card's `.film-fit` layer.
  */
 export function fitFigure(root: HTMLElement) {
   root.style.transform = "none";
@@ -240,6 +241,7 @@ export function fitFigure(root: HTMLElement) {
     return el.childElementCount === 0 && (el.textContent ?? "").trim() !== "";
   };
   const walk = (el: Element, opac: number) => {
+    if (el.classList.contains("film-em")) return;
     const cs = getComputedStyle(el);
     if (cs.display === "none" || cs.visibility === "hidden") return;
     const o = opac * (Number.parseFloat(cs.opacity) || 0);
@@ -266,6 +268,43 @@ export function fitFigure(root: HTMLElement) {
   const tx = ((area.width - iw * s) / 2 - (l - area.left) * s) / k;
   const ty = ((area.height - ih * s) / 2 - (t - area.top) * s) / k;
   root.style.transform = `translate(${tx}px, ${ty}px) scale(${s})`;
+}
+/** Nudge a placed label without touching its scale. place() writes a plain translate. */
+function nudgeLabel(el: HTMLElement, dx: number, dy: number) {
+  const m = el.style.transform.match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
+  if (!m) return;
+  el.style.transform = `translate(${(parseFloat(m[1]!) + dx).toFixed(2)}px, ${(parseFloat(m[2]!) + dy).toFixed(2)}px)`;
+}
+/**
+ * Labels that land on each other are pushed apart. A highlight does not change
+ * their boxes, so this nudge is the same on the frame before and during one.
+ */
+function separateLabels(root: HTMLElement) {
+  const els = [...root.querySelectorAll<HTMLElement>(".film-label")].filter((el) => {
+    const cs = getComputedStyle(el);
+    if (cs.display === "none" || cs.visibility === "hidden" || (Number.parseFloat(cs.opacity) || 0) < 0.85) return false;
+    const r = el.getBoundingClientRect();
+    return r.width > 1 && r.height > 1;
+  });
+  const k = root.getBoundingClientRect().width / root.offsetWidth || 1;
+  const gap = 6;
+  for (let pass = 0; pass < 8; pass++) {
+    let moved = false;
+    for (let i = 0; i < els.length; i++) {
+      for (let j = i + 1; j < els.length; j++) {
+        const a = els[i]!.getBoundingClientRect(), b = els[j]!.getBoundingClientRect();
+        const ox = Math.min(a.right, b.right) - Math.max(a.left, b.left);
+        const oy = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+        if (ox <= 0.5 || oy <= 0.5) continue;
+        const dx = ox <= oy ? ((a.left + a.width / 2 <= b.left + b.width / 2 ? -1 : 1) * ((ox + gap) / 2)) / k : 0;
+        const dy = oy < ox ? ((a.top + a.height / 2 <= b.top + b.height / 2 ? -1 : 1) * ((oy + gap) / 2)) / k : 0;
+        nudgeLabel(els[i]!, dx, dy);
+        nudgeLabel(els[j]!, -dx, -dy);
+        moved = true;
+      }
+    }
+    if (!moved) break;
+  }
 }
 const roundRect = (x: number, y: number, w: number, h: number, r: number) => {
   r = Math.min(r, w / 2, h / 2);
@@ -714,7 +753,7 @@ class GeoStage {
       const g = svg("g", "film-bar"); this.svg.appendChild(g); entry.el = g;
       const path = (cls: string) => { const el = svg("path", cls); g.appendChild(el); return el; };
       const label = (cls: string, content: string) => { const el = div(`film-label ${cls}`, this.labels); el.innerHTML = tex(content); return el; };
-      const base = path("film-bar-base"), part = path("film-bar-part"), cuts = path("film-bar-cuts"), major = path("film-bar-major"), unit = path("film-bar-unit"), ring = path("film-bar-ring"), bracket = path("film-bar-bracket");
+      const base = path("film-bar-base"), part = path("film-bar-part"), cuts = path("film-bar-cuts"), major = path("film-bar-major"), unit = path("film-bar-unit"), ring = path("film-bar-ring film-em"), bracket = path("film-bar-bracket");
       const title = label("size-s film-bar-title", p.title ?? "\\text{One whole}");
       const scales: BarView["scales"] = (["top", "amount"] as const).map(kind => ({ kind, line: path("film-bar-axis"), caption: label("film-bar-caption", `\\text{${kind === "top" ? p.scale?.label ?? "Share" : p.unit ?? "Amount"}}`) }));
       const marks: BarView["marks"] = [{ id: "zero", value: 0 }, ...(p.marks ?? []), { id: "end", value: 1 }].map(m => {
@@ -746,7 +785,7 @@ class GeoStage {
         for (const id of fadeIds) {
           if (!id.startsWith(piece.id + ".")) continue;
           const sub = id.slice(piece.id.length + 1);
-          const ov = svg("path", "film-block-overlay");
+          const ov = svg("path", "film-block-overlay film-em");
           g.appendChild(ov);
           overlays.set(sub, ov);
         }
@@ -783,8 +822,8 @@ class GeoStage {
       entry.el = g;
       // bands beneath, then cell backgrounds, then the lines
       const bands = new Map<string, SVGElement>();
-      for (let r = 1; r <= p.rows.length; r++) bands.set(`row.${r}`, svg("path", "film-table-band"));
-      for (let c = 1; c <= p.head.length; c++) bands.set(`col.${c}`, svg("path", "film-table-band"));
+      for (let r = 1; r <= p.rows.length; r++) bands.set(`row.${r}`, svg("path", "film-table-band film-em"));
+      for (let c = 1; c <= p.head.length; c++) bands.set(`col.${c}`, svg("path", "film-table-band film-em"));
       for (const b of bands.values()) g.appendChild(b);
       const cells: TableView["cells"] = [];
       const text = (r: number, c: number) => (r === 0 ? (c === 0 ? p.corner ?? "" : p.head[c - 1]!) : c === 0 ? p.rows[r - 1]!.label : p.rows[r - 1]!.cells[c - 1]!);
@@ -814,7 +853,7 @@ class GeoStage {
       const slabs: MosaicView["slabs"] = [];
       const html: HTMLElement[] = [];
       p.groups.forEach((grp, i) => {
-        const base = svg("path", "film-mosaic-base"), part = svg("path", "film-mosaic-part"), edge = svg("path", "film-mosaic-edge"), ring = svg("path", "film-mosaic-ring");
+        const base = svg("path", "film-mosaic-base"), part = svg("path", "film-mosaic-part"), edge = svg("path", "film-mosaic-edge"), ring = svg("path", "film-mosaic-ring film-em");
         for (const el of [base, part]) g.appendChild(el);
         const slab: MosaicView["slabs"][number] = { base, part, edge, ring };
         if (p.names) {
@@ -953,8 +992,8 @@ class GeoStage {
         e.el.style.fill = em > 0 && f !== "none" ? `color-mix(in srgb, ${FILL[f]} ${(1 - em * 0.5) * 100}%, var(--color-figure-accent-fill-strong))` : FILL[f]!;
         e.el.style.fillOpacity = String(o);
         const w = p.w ?? (p.ink ? 5 : 0);
-        e.el.style.stroke = p.ink ? INK[p.ink]! : "none";
-        e.el.style.strokeWidth = String(w + em * 3);
+        e.el.style.stroke = emphInk(p.ink ? INK[p.ink]! : "none", em);
+        e.el.style.strokeWidth = String(w);
         e.el.style.strokeOpacity = String(o);
         if (p.solid) {
           const th = 7; // thickness of the tile in px
@@ -972,8 +1011,8 @@ class GeoStage {
         }
       } else if ("vector" in p) {
         e.el.setAttribute("d", vectorPath(planVector(P(p.vector[0]), P(p.vector[1]), drawn)));
-        e.el.style.stroke = INK[p.ink ?? "accent"]!;
-        e.el.style.strokeWidth = String((p.w ?? 6) + em * 3);
+        e.el.style.stroke = emphInk(INK[p.ink ?? "accent"]!, em);
+        e.el.style.strokeWidth = String(p.w ?? 6);
         e.el.style.strokeLinejoin = "round";
         e.el.style.strokeDasharray = p.dash ? "16 14" : "";
         e.el.style.opacity = String(o);
@@ -988,8 +1027,8 @@ class GeoStage {
         }
         const end: P = [a[0] + (b[0] - a[0]) * drawn, a[1] + (b[1] - a[1]) * drawn];
         e.el.setAttribute("d", `M${a[0].toFixed(2)} ${a[1].toFixed(2)}L${end[0].toFixed(2)} ${end[1].toFixed(2)}`);
-        e.el.style.stroke = INK[p.ink ?? "ink"]!;
-        e.el.style.strokeWidth = String((p.w ?? 5) + em * 3);
+        e.el.style.stroke = emphInk(INK[p.ink ?? "ink"]!, em);
+        e.el.style.strokeWidth = String(p.w ?? 5);
         e.el.style.opacity = String(o);
         e.el.style.strokeDasharray = p.dash ? "16 14" : "";
         if (e.extra) {
@@ -1018,7 +1057,7 @@ class GeoStage {
       } else if ("dot" in p && (p as Counter).counter) {
         const c = P(p.dot), d = this.geo.points[p.dot] as { cell: [string, number] };
         const [cw, ch] = cellSize(this.grid(d.cell[0]));
-        const k = Math.min(cw, ch) * s * (1 + em * 0.16);
+        const k = Math.min(cw, ch) * s;
         let path: string;
         if ((p as Counter).counter === "square") {
           const h = 0.27 * k, r = 0.05 * k;
@@ -1028,7 +1067,7 @@ class GeoStage {
           path = `M${c[0] - r} ${c[1]}A${r} ${r} 0 1 0 ${c[0] + r} ${c[1]}A${r} ${r} 0 1 0 ${c[0] - r} ${c[1]}Z`;
         }
         e.el.setAttribute("d", path);
-        e.el.style.fill = INK[p.ink ?? "accent"]!;
+        e.el.style.fill = emphInk(INK[p.ink ?? "accent"]!, em);
         e.el.style.opacity = String(o);
         // a counter in flight passes over the others
         if (this.moves.some((m) => m.name === p.dot && t >= m.t0 && t <= m.t0 + m.dur) && this.svg.lastChild !== e.el) this.svg.appendChild(e.el);
@@ -1045,8 +1084,8 @@ class GeoStage {
         e.el.setAttribute("d", d);
         e.el.style.fill = FILL[p.fill ?? "none"]!;
         e.el.style.fillOpacity = String(o);
-        e.el.style.stroke = INK[p.ink ?? "ink"]!;
-        e.el.style.strokeWidth = String((p.w ?? 5) + em * 3);
+        e.el.style.stroke = emphInk(INK[p.ink ?? "ink"]!, em);
+        e.el.style.strokeWidth = String(p.w ?? 5);
         e.el.style.strokeOpacity = String(o);
       } else if ("sweep" in p) {
         const d = this.geo.points[p.sweep] as { on: string; deg: number };
@@ -1061,8 +1100,8 @@ class GeoStage {
         e.el.style.fill = FILL[p.fill ?? "gold-fill"]!;
         e.el.style.opacity = String(o * 0.92);
         e.extra![0]!.setAttribute("d", deg > 0.01 ? arc : "");
-        e.extra![0]!.style.stroke = INK[p.ink ?? "gold"]!;
-        e.extra![0]!.style.strokeWidth = String(4.5 + em * 2.5);
+        e.extra![0]!.style.stroke = emphInk(INK[p.ink ?? "gold"]!, em);
+        e.extra![0]!.style.strokeWidth = "4.5";
         e.extra![0]!.style.opacity = String(o);
         if (e.html) {
           // the reading rides the bisector, just inside the arc; a full turn reads at the top
@@ -1078,15 +1117,15 @@ class GeoStage {
         for (let c = 1; c < nc; c++) inner += `M${k(c, 0)}L${k(c, nr)}`;
         for (let r = 1; r < nr; r++) inner += `M${k(0, r)}L${k(nc, r)}`;
         e.extra![0]!.setAttribute("d", inner);
-        const w = String((p.w ?? 4) + em * 2), ink = INK[p.ink ?? "ink"]!;
+        const w = String(p.w ?? 4), ink = emphInk(INK[p.ink ?? "ink"]!, em);
         e.el.style.fill = FILL[p.fill ?? "paper"]!; e.el.style.stroke = ink; e.el.style.strokeWidth = w; e.el.style.opacity = String(o);
         e.extra![0]!.style.stroke = ink; e.extra![0]!.style.strokeWidth = w; e.extra![0]!.style.opacity = String(o);
       } else if ("dot" in p) {
         const c = P(p.dot);
         if (!Number.isFinite(c[1]) || c[1] < -60 || c[1] > this.box.h + 60) { e.el.style.opacity = "0"; continue; }
         e.el.setAttribute("cx", String(c[0])); e.el.setAttribute("cy", String(c[1]));
-        e.el.setAttribute("r", String((p.r ?? 9) + em * 3));
-        e.el.style.fill = INK[p.ink ?? "ink"]!;
+        e.el.setAttribute("r", String(p.r ?? 9));
+        e.el.style.fill = emphInk(INK[p.ink ?? "ink"]!, em);
         e.el.style.stroke = "var(--color-figure-paper)"; e.el.style.strokeWidth = "3";
         e.el.style.opacity = String(o);
       } else if ("angle" in p) {
@@ -1110,8 +1149,8 @@ class GeoStage {
         e.el.style.fill = FILL[p.fill ?? "gold-fill"]!;
         e.el.style.opacity = String(o * 0.92);
         e.extra![0]!.setAttribute("d", arc);
-        e.extra![0]!.style.stroke = INK[p.ink ?? "gold"]!;
-        e.extra![0]!.style.strokeWidth = String(4.5 + em * 2.5);
+        e.extra![0]!.style.stroke = emphInk(INK[p.ink ?? "gold"]!, em);
+        e.extra![0]!.style.strokeWidth = "4.5";
         e.extra![0]!.style.opacity = String(o);
       } else if ("curve" in p) {
         const pts = p.curve.map(P);
@@ -1123,7 +1162,7 @@ class GeoStage {
         e.el.setAttribute("d", d);
         e.el.setAttribute("pathLength", "1");
         e.el.style.strokeDasharray = "1 1"; e.el.style.strokeDashoffset = String(1 - drawn);
-        e.el.style.stroke = INK[p.ink ?? "ink"]!; e.el.style.strokeWidth = String((p.w ?? 5) + em * 3); e.el.style.opacity = String(o);
+        e.el.style.stroke = emphInk(INK[p.ink ?? "ink"]!, em); e.el.style.strokeWidth = String(p.w ?? 5); e.el.style.opacity = String(o);
       } else if ("plot" in p) {
         const f = this.fn(p.id), v = this.viewAt(t);
         const range = traceRange(p.from, p.to, [v[0]!, v[2]!], p.upto ? this.at(p.upto, t)[0] : undefined);
@@ -1161,7 +1200,7 @@ class GeoStage {
         }
         e.el.setAttribute("d", d);
         e.el.style.strokeDasharray = "1 1"; e.el.style.strokeDashoffset = String(1 - drawn);
-        e.el.style.stroke = INK[p.ink ?? "accent"]!; e.el.style.strokeWidth = String((p.w ?? 6) + em * 3); e.el.style.opacity = String(o);
+        e.el.style.stroke = emphInk(INK[p.ink ?? "accent"]!, em); e.el.style.strokeWidth = String(p.w ?? 6); e.el.style.opacity = String(o);
       } else if ("axes" in p) {
         const v = this.viewAt(t);
         // when the view zooms out, ticks and numbers thin out in 1-2-5 steps
@@ -1194,7 +1233,7 @@ class GeoStage {
         e.el.style.stroke = INK[p.ink ?? "muted"]!; e.el.style.strokeWidth = "3.5"; e.el.style.opacity = String(o);
         // numbers that would touch each other (near the origin, or crowded) drop out, nearest the origin first
         {
-          const o0 = map([0, 0]), fs = 34, gap = 46 * 0.62;
+          const o0 = map([0, 0]), fs = 34, gap = LABEL_GAP * 0.62;
           const box = (n: [string, P, string]) => {
             const w = n[0].replace(/[^0-9.\-]/g, "").length * fs * 0.55 + 6, h = fs;
             const cx = n[2] === "s" ? n[1][0] : n[1][0] - gap - w / 2, cy = n[2] === "s" ? n[1][1] + gap + h / 2 : n[1][1];
@@ -1239,7 +1278,7 @@ class GeoStage {
         place(e.html!, anchor, p.dir ?? "n", p.far ?? 1, o, em);
       } else if ("dim" in p) {
         const a = P(p.dim[0]), b = P(p.dim[1]);
-        const dirv = DIRS[p.side]!; const gap = 34 * (p.far ?? 1);
+        const dirv = DIRS[p.side]!; const gap = LABEL_GAP * 0.7 * (p.far ?? 1);
         const q0: P = [a[0] + dirv[0] * gap, a[1] + dirv[1] * gap], q1: P = [b[0] + dirv[0] * gap, b[1] + dirv[1] * gap];
         const tick = 13;
         e.el.setAttribute("d", `M${q0[0] - dirv[0] * tick} ${q0[1] - dirv[1] * tick}L${q0[0]} ${q0[1]}L${q1[0]} ${q1[1]}L${q1[0] - dirv[0] * tick} ${q1[1] - dirv[1] * tick}`);
@@ -1249,7 +1288,7 @@ class GeoStage {
       void unit;
     }
     const host = this.labels.parentElement;
-    if (host) fitFigure(host);
+    if (host) { separateLabels(host); fitFigure(host); }
   }
   /** A rectangle in pixels from a box in units. */
   rectPath(b: Box, map: (p: P) => P, s: number, r = 0) {
@@ -1300,8 +1339,9 @@ class GeoStage {
       if (!cell || opacity < 0.002) return;
       const content = cell.amount === undefined ? "?" : Number.isInteger(cell.amount) ? fmtNum(cell.amount) : `\\frac{${fmtNum(spec.whole!)}}{${plan.divisions}}`;
       if (el.dataset.value !== content) { el.innerHTML = tex(content); el.dataset.value = content; }
+      if (opacity > 0.5) fitCellLabel(el, cell.box.w * s, cell.box.h * s, 10, 8);
       place(el, map(cell.center), "c", 0, opacity, values.em);
-      if (opacity > 0.5 && !fits(el.offsetWidth, el.offsetHeight, cell.box.w * s, cell.box.h * s, 8, 4))
+      if (opacity > 0.5 && !fits(el.offsetWidth, el.offsetHeight, cell.box.w * s, cell.box.h * s, 10, 8))
         this.tableIssues.add(`bar ${p.id}: a per-piece value does not fit. Widen the bar or hide .values.`);
     });
     const title = this.chainState([`${p.id}.title`], true, t);
@@ -1333,11 +1373,11 @@ class GeoStage {
         el.style.color = end ? INK.ink! : ink;
         if (opacity >= 0.002) visible.push({ m, x, y, el, opacity, em: Math.max(st.em, ms.em) });
       }
-      const xs = spreadBarLabels(visible.map(x => ({ x: x.x, w: x.el.offsetWidth * 1.08 })), map([b.x, 0])[0] - 32, map([b.x + b.w, 0])[0] + 48, 16);
+      const xs = spreadBarLabels(visible.map(x => ({ x: x.x, w: x.el.offsetWidth * 1.08 })), map([b.x, 0])[0] - 32, map([b.x + b.w, 0])[0] + 48, 22);
       if (!xs) this.tableIssues.add(`bar ${p.id}: ${sc.kind} labels cannot fit. Show fewer marks together or widen the bar.`);
       visible.forEach((label, i) => {
         const x = xs?.[i] ?? label.x, dir = sc.kind === "top" ? -1 : 1;
-        place(label.el, [x, label.y + dir * 42], "c", 0, label.opacity, label.em);
+        place(label.el, [x, label.y + dir * 56], "c", 0, label.opacity, label.em);
       });
       // One leader path per mark, rebuilt for both scales on every seek.
       for (const m of v.marks) {
@@ -1345,7 +1385,7 @@ class GeoStage {
         const idx = visible.findIndex(x => x.m === m);
         if (idx < 0) continue;
         const l = visible[idx]!, x = xs?.[idx] ?? l.x, dir = sc.kind === "top" ? -1 : 1;
-        if (Math.abs(x - l.x) > 3) m.leaders.setAttribute("d", (m.leaders.getAttribute("d") ?? "") + `M${l.x} ${l.y + dir * 10}L${x} ${l.y + dir * 22}`);
+        if (Math.abs(x - l.x) > 3) m.leaders.setAttribute("d", (m.leaders.getAttribute("d") ?? "") + `M${l.x} ${l.y + dir * 12}L${x} ${l.y + dir * 32}`);
       }
     }
     for (const m of v.marks) {
@@ -1378,8 +1418,9 @@ class GeoStage {
       const tint = head ? "var(--color-figure-head-tint, color-mix(in srgb, var(--color-muted-text) 9%, transparent))" : "transparent";
       bg.style.fill = st.em > 0 ? `color-mix(in srgb, var(--color-figure-gold-fill) ${Math.round(st.em * 100)}%, ${tint})` : tint;
       bg.style.opacity = String(o);
+      if (o > 0.5) fitCellLabel(el, box.w * s, box.h * s, 12, 8);
       place(el, map([box.x + box.w / 2, box.y + box.h / 2]), "c", 0, o, st.em);
-      if (o > 0.5 && !fits(el.offsetWidth, el.offsetHeight, box.w * s, box.h * s, 6, 3))
+      if (o > 0.5 && !fits(el.offsetWidth, el.offsetHeight, box.w * s, box.h * s, 12, 8))
         this.tableIssues.add(`table ${p.id}: "${(el.textContent ?? "").trim()}" does not fit cell (${r}, ${c}): ${Math.round(el.offsetWidth)} by ${Math.round(el.offsetHeight)} px in a cell ${Math.round(box.w * s)} by ${Math.round(box.h * s)} px. Widen the cell or shorten the text.`);
     }
     g.style.display = frameO < 0.002 ? "none" : "";
@@ -1441,8 +1482,8 @@ class GeoStage {
       const b = p.slice === "rows" ? map([pb.x + pb.w, pb.y + pb.h]) : map([pb.x + pb.w, pb.y + pb.h]);
       set(sl.edge, partO * (spec.groups[idx]!.k > 0 ? 1 : 0));
       sl.edge.setAttribute("d", `M${a[0].toFixed(2)} ${a[1].toFixed(2)}L${b[0].toFixed(2)} ${b[1].toFixed(2)}`);
-      sl.edge.style.stroke = INK[p.fill === "warm-fill" ? "warm" : p.fill === "gold-fill" ? "gold" : p.fill === "blue-fill" ? "blue" : p.fill === "violet-fill" ? "violet" : "accent"]!;
-      sl.edge.style.strokeWidth = String(5 + pt.em * 3);
+      sl.edge.style.stroke = emphInk(INK[p.fill === "warm-fill" ? "warm" : p.fill === "gold-fill" ? "gold" : p.fill === "blue-fill" ? "blue" : p.fill === "violet-fill" ? "violet" : "accent"]!, pt.em);
+      sl.edge.style.strokeWidth = "5";
       const ringO = bandOpacity(givens, t, `slab.${i}`, ease) * sb.o;
       set(sl.ring, Math.max(ringO, sb.em * baseO));
       sl.ring.setAttribute("d", this.rectPath(box, map, s));
@@ -1471,7 +1512,8 @@ class GeoStage {
       const [a, b] = guideLine(spec).map((q) => map(q));
       v.guide.setAttribute("d", `M${a![0].toFixed(2)} ${a![1].toFixed(2)}L${b![0].toFixed(2)} ${b![1].toFixed(2)}`);
       v.guide.style.opacity = String(gd.o);
-      v.guide.style.strokeWidth = String(5 + gd.em * 3);
+      v.guide.style.strokeWidth = "5";
+      v.guide.style.stroke = emphInk("var(--color-figure-warm)", gd.em);
       any = Math.max(any, gd.o);
     }
     g.style.display = any < 0.002 ? "none" : "";
@@ -1512,7 +1554,7 @@ class GeoStage {
       // looked at: the block glows light gold, with a gold edge
       el.body.style.fill = own.em > 0 ? `color-mix(in srgb, ${base} ${Math.round((1 - own.em) * 100)}%, var(--color-figure-gold-fill))` : base;
       el.body.style.stroke = own.em > 0 ? `color-mix(in srgb, var(--color-figure-ink) ${Math.round((1 - own.em) * 100)}%, var(--color-figure-gold))` : "";
-      el.body.style.strokeWidth = String(bodyW + own.em * 2);
+      el.body.style.strokeWidth = String(bodyW);
       el.body.style.opacity = String(o);
       // unit lines: the cuts that make a flat ten rods and a rod ten squares
       let d = "";
@@ -1584,7 +1626,7 @@ class GeoStage {
       const q = map([layout.pointX, m.digitY]);
       v.point.style.display = "";
       v.point.setAttribute("cx", String(q[0])); v.point.setAttribute("cy", String(q[1] + 24));
-      v.point.setAttribute("r", String(9 + em * 4));
+      v.point.setAttribute("r", "9");
       v.point.style.fill = em > 0 ? "var(--color-figure-gold)" : "var(--color-figure-ink)";
       v.point.style.opacity = String(frameO);
       const a = map([layout.pointX, layout.top + 0.6]), b = map([layout.pointX, m.digitY + (m.headY - m.digitY) * 0.45]);
@@ -1607,13 +1649,34 @@ class GeoStage {
 const DIRS: Record<string, P> = {
   n: [0, -1], s: [0, 1], e: [1, 0], w: [-1, 0], ne: [0.71, -0.71], nw: [-0.71, -0.71], se: [0.71, 0.71], sw: [-0.71, 0.71], c: [0, 0],
 };
+/** How far a label sits from the thing it names, before `far` scales it. */
+const LABEL_GAP = 58;
+/** A highlight mixes paint toward gold. It never changes a length. */
+function emphInk(ink: string, em: number): string {
+  if (em <= 0.001 || ink === "none") return ink;
+  const keep = Math.round((1 - Math.min(1, em)) * 100);
+  return `color-mix(in srgb, ${ink} ${keep}%, var(--color-figure-gold))`;
+}
 function place(el: HTMLElement, at: P, dir: string, far: number, o: number, em: number) {
-  const d = DIRS[dir]!; const gap = 46 * far;
+  const d = DIRS[dir]!; const gap = LABEL_GAP * far;
   const w = el.offsetWidth, h = el.offsetHeight;
   const hw = (w / 2) * (d[0] === 0 ? 0 : Math.sign(d[0])), hh = (h / 2) * (d[1] === 0 ? 0 : Math.sign(d[1]));
   const k = Math.abs(d[0]) > 0 && Math.abs(d[1]) > 0 ? 0.6 : 1;
-  el.style.transform = `translate(${at[0] + d[0] * gap + hw * k - w / 2}px, ${at[1] + d[1] * gap + hh * k - h / 2}px) scale(${1 + em * 0.08})`;
+  // emphasis is a glow, not a scale: scaling would change the ink box and re-centre the figure
+  el.style.transform = `translate(${at[0] + d[0] * gap + hw * k - w / 2}px, ${at[1] + d[1] * gap + hh * k - h / 2}px)`;
   el.style.opacity = String(o);
+  if (em > 0.02) el.style.textShadow = `0 0 ${Math.round(8 + em * 14)}px var(--color-figure-gold)`;
+  else el.style.removeProperty("text-shadow");
+}
+/** Shrink a label until it clears its cell. Extra leading must not spill into the rules. */
+function fitCellLabel(el: HTMLElement, cellW: number, cellH: number, padX = 12, padY = 8) {
+  el.style.fontSize = "";
+  let size = parseFloat(getComputedStyle(el).fontSize) || 44;
+  for (let i = 0; i < 8 && !fits(el.offsetWidth, el.offsetHeight, cellW, cellH, padX, padY); i++) {
+    size *= 0.9;
+    if (size < 24) break;
+    el.style.fontSize = `${size.toFixed(1)}px`;
+  }
 }
 
 // ------------------------------------------------------------------ work column
@@ -1970,6 +2033,15 @@ class Board {
         ext = this.measure(ci);
         fit();
       }
+      // A card taller than the window shrinks its type. The padding stays in pixels, so the camera does not have to scale that padding down to a sliver.
+      const winH = (this.home[ci] ?? this.L.full).h - 2 * EDGE_PAD;
+      while (size > this.L.minType) {
+        const h = Math.max(0, ...this.items.filter((i) => i.col === ci).map((i) => i.el.offsetHeight));
+        if (h <= winH) break;
+        size -= 4;
+        c.style.setProperty("--film-math", `${size}px`);
+        ext = this.measure(ci);
+      }
       if (ext.r - ext.l > room) {
         const its = this.items.filter((i) => i.col === ci);
         // cards wrap to the column, so the cause is a line of math (with its note)
@@ -2069,11 +2141,19 @@ class Board {
     const e = this.colExt[col]!, room = win.w - 24, sym = 2 * this.half(col);
     const centered = sym <= room;
     let s = Math.min(1, room / (centered ? sym : e.r - e.l));
-    // a line taller than the window (a problem with long choices) is shown whole, a little smaller, rather than with its top cut off
+    // A card and the lines written under it are shown whole. Extra padding shrinks the column rather than sliding the card under the figure.
     let tall = false;
-    if (newest && newest.bottom - newest.top > (win.h - 2 * EDGE_PAD) / s) { s = Math.min(s, Math.max(0.55, (win.h - 2 * EDGE_PAD) / (newest.bottom - newest.top))); tall = true; }
+    let spanTop = 0;
+    if (newest) {
+      const card = [...this.items].reverse().find((i) => i.col === col && i.t0 <= newest.t0 + 1e-6 && (i.kind === "problem" || i.kind === "term" || i.kind === "watch"));
+      // Pull the card into frame only while the work under it is still short. A long column keeps scrolling.
+      const room = (win.h - 2 * EDGE_PAD) * 1.8;
+      spanTop = card && newest.bottom - card.top <= room ? card.top : newest.top;
+      const span = Math.max(newest.bottom - spanTop, 1);
+      if (span > (win.h - 2 * EDGE_PAD) / s) { s = Math.min(s, (win.h - 2 * EDGE_PAD) / span); tall = true; }
+    }
     const visH = (win.h - 2 * EDGE_PAD) / s;
-    const cy = bottom <= visH ? bottom / 2 : bottom - visH / 2;
+    const cy = tall ? spanTop + (bottom - spanTop) / 2 : bottom <= visH ? bottom / 2 : bottom - visH / 2;
     return { cx: this.colX[col]! + (centered ? 0 : (e.l + e.r) / 2), cy, s, win, tall };
   }
   whole(win: Rect, upTo: number, only?: number): Cam {

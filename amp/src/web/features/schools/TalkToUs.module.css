@@ -27,6 +27,12 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+/* In a narrow sheet a field shrinks with its column instead of spilling
+   into the field beside it. */
+.pair > *,
+.pair :global(input) {
+  min-width: 0;
+}
 .trap {
   position: absolute;
   left: -10000px;

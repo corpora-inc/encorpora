@@ -20,6 +20,7 @@ import { isPorted, legacyScene } from "../src/math/scene/legacy";
 import { typeSizes } from "../src/math/scene/type";
 import { FIGURE_TEXT_MAX_PX } from "../src/web/FigureTextCap";
 import {
+  answerSurfaceSettled,
   assertFigureTextScale,
   figureTextScale,
   assertPhoneLandscapeSmoke,
@@ -228,11 +229,7 @@ try {
           const label = `${id} ${seed} ${size.width}×${size.height}`;
           console.log(`[graphical:${browserName}] phone figure ${label}`);
           await phone.setViewportSize(size);
-          await phone.waitForFunction(
-            () =>
-              !!document.querySelector(".compact-answer-action") ===
-              matchMedia("(max-width: 650px) and (max-height: 640px)").matches,
-          );
+          await answerSurfaceSettled(phone);
           if (isPhoneLandscape(size)) {
             await assertPhoneLandscapeSmoke(phone, label);
             continue;
@@ -343,7 +340,10 @@ try {
   ])
     fixtures.push({
       name: id,
-      problem: generateProblem(id, "graph-readable").public,
+      // A drawn instance: some families' clause variants have no figure.
+      problem: Array.from({ length: 64 }, (_, n) =>
+        generateProblem(id, n ? `graph-readable-${n}` : "graph-readable"),
+      ).find((p) => p.public.figure)!.public,
     });
   function find(
     name: string,
@@ -442,11 +442,7 @@ try {
         `[graphical:${browserName}] boundary viewport ${fixture.name} ${size.width}×${size.height}`,
       );
       await page.setViewportSize(size);
-      await page.waitForFunction(
-        () =>
-          !!document.querySelector(".compact-answer-action") ===
-          matchMedia("(max-width: 650px) and (max-height: 640px)").matches,
-      );
+      await answerSurfaceSettled(page);
       if (fixture.boundary && size.width !== 320) continue;
       const labels = await page
         .locator(".problem-content svg text")

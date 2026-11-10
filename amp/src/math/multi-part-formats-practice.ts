@@ -14,7 +14,7 @@ import {
 } from "./multi-part-choice";
 import { lineTable } from "./scene/author";
 import { axisRecord, chooseAxes, defineAxis } from "./variation/axes";
-import { clauseTask, valuesFromSet } from "./equation-clause";
+import { clauseTask, keepSeed, valuesFromSet } from "./equation-clause";
 
 /** Families answered by choosing one option for each blank
  * (multi-part-choice-v1): the rule of a two-row table written as a sentence
@@ -347,7 +347,7 @@ function equationOf(
 function substitutionMatchTable(seed: string, salt: string): GeneratedProblem {
   const meta = multiPartFormatsTemplates[1]!;
   if (clauseTask(meta.id, seed) === "values-from-set")
-    return valuesFromSet({ ...meta, version: 2 }, salt);
+    return keepSeed(valuesFromSet({ ...meta, version: 2 }, salt), seed);
   const classic = { ...meta, version: 1 };
   const r = random(classic.id, salt);
   const axes = chooseAxes(meta.id, seed, substitutionAxes);
