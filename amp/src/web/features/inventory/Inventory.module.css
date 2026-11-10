@@ -229,14 +229,29 @@
   margin: 0;
 }
 /* Name, a bar across the middle of the page, and strength at the end. */
+/* The whole row opens the skill: a quiet tint on hover, never an underline.
+   Its padding bleeds into the gutter so the text keeps the column's edge. */
 .skill {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(180px, 40%) 148px;
   gap: var(--space-5);
   align-items: center;
   min-height: 56px;
-  padding: var(--space-2) 0;
+  margin-inline: calc(-1 * var(--space-3));
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-small);
+  cursor: pointer;
+}
+/* The rule between rows keeps the column's edges, not the tint's. */
+.skill::before {
+  content: "";
+  position: absolute;
+  inset: auto var(--space-3) 0;
   border-bottom: 1px solid var(--color-border);
+}
+.skill:hover {
+  background: var(--color-surface-hover);
 }
 .skillName {
   display: flex;
@@ -256,14 +271,18 @@
   color: var(--color-muted-text);
   font-size: var(--text-small);
 }
-.skillName:hover strong {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+.skillName::after {
+  content: "";
+  position: absolute;
+  inset: 0;
 }
 .skillName:focus-visible {
+  outline: none;
+}
+.skillName:focus-visible::after {
   outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
-  border-radius: 4px;
+  outline-offset: -2px;
+  border-radius: var(--radius-small);
 }
 .meter {
   height: 8px;
@@ -369,7 +388,7 @@
   .skill {
     grid-template-columns: minmax(0, 1fr) auto;
     gap: var(--space-2) var(--space-4);
-    padding: var(--space-3) 0;
+    padding-block: var(--space-3);
   }
   .skillName {
     grid-column: 1 / -1;

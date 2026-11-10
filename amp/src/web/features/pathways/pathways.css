@@ -1299,3 +1299,21 @@
     right: 6px;
   }
 }
+
+/* The search field and Browse are one matched pair: the same height, the
+   same weight of type. */
+.pathways .pathways-toolbar input,
+.pathways .pathways-toolbar button {
+  box-sizing: border-box;
+  height: var(--target-size);
+  min-height: var(--target-size);
+}
+.pathways .pathways-toolbar button {
+  font-size: var(--text-label);
+  font-weight: 600;
+}
+@media (min-width: 651px) {
+  .pathways .pathways-toolbar button {
+    padding-inline: var(--space-4);
+  }
+}
