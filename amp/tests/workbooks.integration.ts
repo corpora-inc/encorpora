@@ -7,7 +7,6 @@ import { migrate } from "../scripts/migrate.js";
 import { PostgresRepository } from "../src/server/repository.js";
 import { buildApp } from "../src/server/app.js";
 import { FamilyRepository } from "../src/family/repository.js";
-import { generateProblem } from "../src/math/engine.js";
 import { existsSync } from "node:fs";
 import { chromium as rawChromium } from "playwright-core";
 const chromium = secureChromium(rawChromium);
@@ -78,7 +77,14 @@ test(
         });
         assert.equal(batch.statusCode, 200, batch.body);
         const problem = batch.json().problems[0];
-        const solution = generateProblem(problem.templateId, problem.seed);
+        // Answer the immutable instance served to this client's capabilities.
+        const solution = await repository.transaction(
+          "workbook-parent",
+          learner.id,
+          (tx) => tx.problem(problem.id),
+        );
+        assert.ok(solution);
+        assert.deepEqual(solution.public, problem);
         const answered = await app.inject({
           method: "POST",
           url: `${base}/attempts`,
@@ -89,6 +95,7 @@ test(
           },
         });
         assert.equal(answered.statusCode, 200, answered.body);
+        assert.equal(answered.json().correct, true);
       }
       assert.equal((await make({ number: 1 })).json().code, first.json().code);
       const another = await make({});
