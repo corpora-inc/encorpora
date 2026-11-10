@@ -4,7 +4,7 @@ import { secureChromium } from "../browser-security.mjs";
  * that emits a scene), each drawn as the learner sees it — prompt, figure and
  * options — at 320, 390, 768 and 1280 px in light and dark.
  *
- *   npx tsx scripts/scene-problems.ts [templateId …]   artifacts/scene-problems/
+ *   [SCENE_SAMPLES=4] npx tsx scripts/scene-problems.ts [templateId …]   artifacts/scene-problems/
  *
  * The same checks as the scene gallery: no horizontal overflow, no label
  * outside its view box, no overlapping labels, no label wider than its metric
@@ -28,7 +28,12 @@ const cases: {
 }[] = [];
 for (const t of templates) {
   if (ids.length && !ids.includes(t.id)) continue;
-  for (let i = 0; i < 24 && cases.filter((c) => c.t === t.id).length < 4; i++) {
+  const samples = Number(process.env.SCENE_SAMPLES ?? 4);
+  for (
+    let i = 0;
+    i < samples * 6 && cases.filter((c) => c.t === t.id).length < samples;
+    i++
+  ) {
     const p = generateProblem(t.id, `scene-${i}`);
     if (p.public.figure?.kind === "scene") cases.push({ t: t.id, p: p.public });
   }
@@ -119,8 +124,10 @@ const browser = await chromium.launch();
 const failures: string[] = [];
 const report: unknown[] = [];
 try {
-  for (const theme of ["light", "dark"])
-    for (const width of [320, 390, 768, 1280]) {
+  for (const theme of (process.env.SCENE_THEMES ?? "light,dark").split(","))
+    for (const width of (process.env.SCENE_WIDTHS ?? "320,390,768,1280")
+      .split(",")
+      .map(Number)) {
       const page = await browser.newPage({ viewport: { width, height: 900 } });
       await page.addInitScript("window.__name = (f) => f");
       page.on("pageerror", (e) =>
