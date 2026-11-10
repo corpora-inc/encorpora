@@ -2,13 +2,13 @@
 
 The rules every AMP screen follows, decided 2026-11-10 for the design pass. [The product model](../product-model.md) says who sees what; this file says where it goes and how it looks. Where they disagree, this file wins for layout and the product model wins for permissions.
 
-The bar is the pre-refactor trial (best guess, a narrowing likely range, per-area bars with uncertainty) and the school gradebook: dense, full-width data, serif titles, natural-width controls. Inventory is the reference for a dashboard: it fills the width with purpose.
+**The references for look, type, spacing and density** are the `/schools` product shots in `src/web/features/schools/screens/*.webp`: today, map, gradebook, board, cards, evidence, standings, school-overview, district-overview and stack. Compare every screen against them. Also use the pre-refactor trial (best guess, a narrowing likely range, per-area bars with uncertainty) and Inventory, which shows how a dashboard should fill the width with purpose.
 
 ## Five rules before anything else
 
 1. **First impressions.** A section without meaningful data doesn't render, or collapses to one compact line. No chart with one bar, no "None yet this year" section, no two-column dashboard with an empty column. Every screen must look intentional on day 0, day 1 and week 3 (the seeded personas cover all three).
 2. **Never name the person to themselves.** A person's own pages never show their own name: no "Good afternoon, Tess Harlow", no name heading on /me, no "Mara Quill · Skills grow…" on Pathways. Titles name the content or the place. Names appear only for other people: children, students, staff.
-3. **No avatars.** No initials circles anywhere, including lists. A child's chosen sign-in picture appears beside their name only where the child or teacher uses it to find them (sign-in, the code board, cards).
+3. **Avatars only where they help find someone else.** Never for the person themselves, never in navigation, account pages, /me or staff lists. Initials may stay where they help scan other people: a Today item's group of students, and student rows in the map and gradebook, as in the product shots. A child's chosen sign-in picture appears where the child or teacher uses it to find them (sign-in, the code board, cards).
 4. **No card wrappers on app screens.** Sections are separated by space and a heading, rows by a hairline. Raised surfaces are only for things that float or are touched as objects: sheets, menus, dialogs, toasts, the practice answer area, paper previews.
 5. **Plain words that describe.** Copy inside the app describes; it never sells. "Skills", not "crystals". Number and noun agree ("1 attempt"). Helper text appears only where a control is not obvious, and it is one line.
 
@@ -45,7 +45,7 @@ One drawer, one place switcher (`PlaceSwitcher`). A person may hold several plac
 ### Parent (Family)
 
 - **First run:** "Parent" → the children's names (parent-entered nicknames) and birth years → the first child's first problem on this device. Consent and access are steps in that flow, never a separate page.
-- **Today**, in order:
+- **Today** is the same feed component as a teacher's Today (below), led by the children:
   1. One row per child: name, this week (minutes, problems, last practiced), and the one action that works now ("Let Pip practice here", or "Continue with AMP" when the free problems are used). No access dates on Today; they go to Billing.
   2. Needs attention, when there is something (a skill missed three times, no practice in a week). Absent otherwise.
   3. This week's work across the family, once there is any.
@@ -58,7 +58,8 @@ As the family, with Students in place of People, and Start class (the code and Q
 
 ### Teacher (Class)
 
-- **Today:** today's practice, who needs attention, shared gaps, ready for more. These are dense rows, not cards.
+- **Today** is a feed of actions, each with its reason: a group stuck on a skill (Teach this lesson / Print a group sheet), a student to sit with, students behind the week's target, students ready for more, a good day. It ends with a compact This week line. It has no class map, because Map is its own tab. The class name is the title, with the date under it. There is no greeting by name.
+- **Map** adapts to the class's size. A small class (a family, a tutor) gets one full-width panel per learner on a K–12 axis. A large class gets a wide matrix with one row per student and one column per area.
 - **Map, Grades, Time:** full-width tables and charts (the gradebook is the reference).
 - **Students:** the roster, sign-in cards and student experience.
 - **Settings:** class settings and the calendar.
