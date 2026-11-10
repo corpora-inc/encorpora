@@ -253,7 +253,11 @@ export function schoolRoutes(root: AnyRoute) {
           (org.solo === true && classes.length <= 1)
         )
           throw redirect({
-            to: `/school/${orgId}/classes`,
+            // One class opens on its Today, never on a list of one.
+            to:
+              classes.length === 1
+                ? `/school/${orgId}/classes/${classes[0]!.id}/today`
+                : `/school/${orgId}/classes`,
             replace: true,
           } as never);
         return { session };
