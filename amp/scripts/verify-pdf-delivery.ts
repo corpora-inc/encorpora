@@ -10,6 +10,7 @@ import {
 import { lessons } from "../src/content/lessons";
 import { books } from "../src/books/catalog";
 import { verifyPdfRelease } from "./pdf-release";
+import { freeAllowance } from "../src/learning/free-allowance";
 assert.equal(
   process.getuid?.(),
   65532,
@@ -20,17 +21,26 @@ const report = await verifyPdfRelease(
 );
 const fixtures: Record<
   string,
-  { learner: string; consent: boolean; access: boolean }
+  { learner: string; consent: boolean; access: boolean; freeLeft?: number }
 > = {
   owner: {
     learner: "11111111-1111-4111-8111-111111111111",
     consent: true,
     access: true,
   },
+  // No grant and the free allowance spent: refused.
   unlicensed: {
     learner: "22222222-2222-4222-8222-222222222222",
     consent: true,
     access: false,
+    freeLeft: 0,
+  },
+  // No grant, free problems left: lessons and books open (free allowance).
+  free: {
+    learner: "55555555-5555-4555-8555-555555555555",
+    consent: true,
+    access: false,
+    freeLeft: 40,
   },
   unconsented: {
     learner: "33333333-3333-4333-8333-333333333333",
@@ -55,10 +65,15 @@ const repository = {
     if (!fixture || fixture.learner !== learner)
       throw new ApiError(404, "Learner not found");
     const tx = new Proxy(
-      { hasAccess: async () => fixture.access },
+      {
+        hasAccess: async () => fixture.access,
+        freeAllowance: async () =>
+          freeAllowance(100 - (fixture.freeLeft ?? 0), 5),
+      },
       {
         get(target, key) {
           if (key === "hasAccess") return target.hasAccess;
+          if (key === "freeAllowance") return target.freeAllowance;
           throw new Error(`Unexpected repository operation: ${String(key)}`);
         },
       },
@@ -108,6 +123,15 @@ try {
         );
   for (const { content: book } of books)
     await pdf(`/api/v1/learners/${owner}/books/${book.id}/download`, "POST");
+  // A learner on the free allowance, with problems left, gets the lesson.
+  const freeLesson = await app.inject({
+    method: "GET",
+    url: `/api/v1/learners/${fixtures.free.learner}/publications/${lessons[0].id}/lesson`,
+    headers: { authorization: "Bearer free" },
+  });
+  assert.equal(freeLesson.statusCode, 200, "GET free allowance");
+  assert.equal(freeLesson.rawPayload.subarray(0, 5).toString(), "%PDF-");
+  responses++;
   let denied = 0;
   for (const [method, suffix] of [
     ["GET", `publications/${lessons[0].id}/lesson`],
@@ -116,7 +140,7 @@ try {
     for (const [account, status] of [
       [undefined, 401],
       ["unconsented", 403],
-      ["unlicensed", 403],
+      ["unlicensed", 402],
       ["foreign", 404],
     ] as const) {
       const learner =
