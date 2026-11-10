@@ -1,3 +1,4 @@
+import { count as agreeCount } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { numberWords } from "./staar-gap-practice";
 import { array, numberLine, scene } from "./scene/author";
@@ -115,10 +116,13 @@ export function numberNames(c: Context): GeneratedProblem {
           ? c.r(11, 19)
           : c.r(0, 99));
   const name = numberWords(n),
-    [hundreds, tens, ones] = digits(n);
+    [hundreds, tens, ones] = digits(n),
+    askName = c.r(0, 1) === 1;
   const t = teaching(
-    c.r(0, 1) ? `Which number name means ${n}?` : `Write ${name} as a numeral.`,
-    `The word hundred means a group of 100. Keep a place for each group and each extra one.`,
+    askName ? `Which number name means ${n}?` : `Write ${name} as a numeral.`,
+    askName
+      ? `${n} has ${hundreds} hundreds, ${tens} tens and ${ones} ones. Match those groups to the number name.`
+      : `The number name is ${name}. Keep a place for the hundreds, the tens and the ones, including a zero when a place is empty.`,
     [
       `${n} has ${hundreds} hundreds, ${tens} tens and ${ones} ones.`,
       `${tex(`${n}=${hundreds * 100}+${n % 100}`)}. Its number name is ${name}.`,
@@ -187,7 +191,7 @@ export function generatePlaceClause(c: Context): GeneratedProblem {
         : mode === 1 || (mode === 0 && !teen)
           ? `${n} has which digits in its ${hundred ? "hundreds, tens and ones" : "tens and ones"} places?`
           : `Read the model. Fill the ${hundred ? "hundreds, tens and ones" : "tens and ones"} digits${(mode === 0 && teen) || mode === 2 ? " and the number" : ""}.`,
-      `Each ${hundred ? "hundred" : "ten"} is ${hundred ? 100 : 10} ones. Count the groups and the extra ones separately.`,
+      `A ${hundred ? "hundred" : "ten"} is a group of ${hundred ? "ten tens" : "ten ones"}. Count the ${agreeCount(d, hundred ? "hundred" : "ten")} in this problem, then count any extra ones separately.`,
       [
         `${n} means ${hundred ? `${h} hundreds, ` : ""}${tens} ${tens === 1 ? "ten" : "tens"} and ${ones} ones.`,
         `${tex(`${n}=${h * 100}+${tens * 10}+${ones}`)}. A digit counts groups of its place value.`,
@@ -405,7 +409,9 @@ export function generatePlaceClause(c: Context): GeneratedProblem {
       reverse
         ? `${tex(`${shown.join("+")}=\\square`)}. Write the numeral.`
         : `Write ${n} in expanded form. Choose the hundreds value, tens value and ones value.`,
-      `In ${n}, multiply each digit by the value of its place.`,
+      reverse
+        ? `Start with the hundreds value ${h * 100} in the sum. Add the tens value and the ones value, and write one numeral.`
+        : `In ${n}, multiply each digit by the value of its place.`,
       [
         `The hundreds contribute ${values[0]}, the tens ${values[1]}, and the ones ${values[2]}.`,
         `${tex(`${n}=${values.join("+")}`)}.`,
@@ -506,7 +512,9 @@ export function generatePlaceClause(c: Context): GeneratedProblem {
         reverse
           ? `A board is ${dec(cm)} meters long. How many centimeters is that? Use 1 meter = 100 centimeters.`
           : `A ribbon is ${cm} centimeters long. Write its length in meters. Use 1 meter = 100 centimeters.`,
-        `One centimeter is one hundredth of a meter. Use the factor 100 to change the unit.`,
+        reverse
+          ? `The board is ${dec(cm)} meters. One centimeter is one hundredth of a meter, so multiply ${dec(cm)} by the 100 in the conversion.`
+          : `The ribbon is ${cm} centimeters. One centimeter is one hundredth of a meter, so divide ${cm} by the 100 in the conversion.`,
         [
           `${cm} centimeters is ${tex(`\\frac{${cm}}{100}`)} meters.`,
           `${tex(`${cm}\\div100=${dec(cm)}`)}. In the other direction, multiply meters by 100.`,
@@ -816,7 +824,7 @@ export function generatePlaceClause(c: Context): GeneratedProblem {
       family === "teen-equation-record"
         ? "Which number sentence tells about the counters?"
         : `${n} is 10 and how many more ones?`,
-      `One full frame holds 10 ones. Count only the extra ones.`,
+      `${n} is one ten and some extra ones. The full frame holds 10. Count only the ones past that frame.`,
       [
         `The full frame is ten ones. There are ${k} more ones.`,
         `${tex(`10+${k}=${n}`)}. The number ${n} is one ten and ${k} extra ones.`,
