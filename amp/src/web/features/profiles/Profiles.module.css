@@ -225,8 +225,22 @@
   gap: var(--space-2) var(--space-3);
   padding-bottom: max(var(--space-6), env(safe-area-inset-bottom));
 }
+/* The action is its natural width (docs/design/ia.md); full width only on a
+   phone, where it is the step's one action at the foot. Before a grade is
+   chosen it waits faintly in its place and comes up when it can work. */
 .go {
-  flex: 1 1 12rem;
+  flex: 0 0 auto;
+  min-width: 12rem;
+  transition: opacity var(--motion-fast) var(--ease-standard);
+}
+.go[data-waiting] {
+  opacity: 0.38;
+  filter: none;
+}
+@media (max-width: 599px) {
+  .go {
+    flex: 1 1 auto;
+  }
 }
 .delete {
   flex: 0 0 auto;
@@ -255,8 +269,10 @@
     padding-inline: max(var(--space-5), env(safe-area-inset-left));
     padding-bottom: var(--space-7);
   }
+  /* A focused, centred column; once a grade sets the levels they sit beside
+     the choices, the pair centred together. */
   .form {
-    max-width: none;
+    max-width: 960px;
     grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
     grid-template-areas:
       "head head"
@@ -276,6 +292,11 @@
   .actions {
     padding-bottom: 0;
   }
+  .form:has(> .levels[hidden]) {
+    max-width: 480px;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "head" "choose" "actions";
+  }
 }
 .strand:first-child,
 .columns .strand:nth-child(2) {
@@ -292,6 +313,7 @@
   display: grid;
   gap: var(--space-5);
   max-width: 720px;
+  margin-inline: auto;
   padding-bottom: var(--space-7);
 }
 .listHead {
