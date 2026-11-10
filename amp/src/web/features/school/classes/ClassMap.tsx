@@ -387,11 +387,11 @@ function SmallClassMap({
                   {student.name}
                 </Link>
               </h2>
-              <p className={styles.learnerLevel}>
-                {overall.estimated
-                  ? "Starting estimate"
-                  : `Likely ${from.toFixed(1)}–${to.toFixed(1)}`}
-              </p>
+              {!overall.estimated && (
+                <p className={styles.learnerLevel}>
+                  Likely {from.toFixed(1)}–{to.toFixed(1)}
+                </p>
+              )}
             </div>
             <LevelRows
               overall={overall.estimate}

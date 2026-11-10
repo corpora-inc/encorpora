@@ -351,7 +351,10 @@ h3.caption {
 .rows > .row,
 .axisRow {
   display: grid;
-  grid-template-columns: var(--name-column) minmax(0, 1fr) var(--numbers-column);
+  grid-template-columns: var(--name-column, 132px) minmax(0, 1fr) var(
+      --numbers-column,
+      80px
+    );
   column-gap: var(--space-4);
 }
 .row {
