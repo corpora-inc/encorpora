@@ -826,6 +826,9 @@ button.copy[data-done="copied"] {
   max-width: 880px;
   margin-inline: auto;
 }
+.classSettings > .settingsSection {
+  margin-top: var(--space-7);
+}
 .settingsSection {
   display: grid;
   gap: var(--space-4);

@@ -46,6 +46,7 @@ import {
 import { OrgFrame } from "./OrgFrame";
 import { YearCalendar } from "./CalendarScreen";
 import { JoinClass } from "./join/JoinClass";
+import { ClassExperienceSection } from "./classroom/ExperienceScreens";
 import {
   FormNote,
   GradePicker,
@@ -682,27 +683,9 @@ export function ClassScreen() {
           grading={{ value: klass.gradingKind, onChange: pick, disabled: !canEdit }}
         />
       )}
-      {(schoolSettings || !family) && (
+      <ClassExperienceSection classId={classId} family={family} />
+      {schoolSettings && (
         <ul className={styles.settingsLinks}>
-          {!family && (
-            <li>
-              <Link
-                to="/$"
-                params={{
-                  _splat: `school/${orgId}/classes/${classId}/experience`,
-                }}
-                className={styles.settingsLink}
-              >
-                <span>
-                  <strong>Student experience</strong>
-                  <span className={styles.quiet}>
-                    Levels, standings and devices for this class
-                  </span>
-                </span>
-                <span aria-hidden="true">›</span>
-              </Link>
-            </li>
-          )}
           {schoolSettings && (
             <li>
               <Link

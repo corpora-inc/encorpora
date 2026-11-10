@@ -333,13 +333,6 @@ export function RosterScreen() {
               )}
             </div>
             <div className={styles.actions}>
-              <Link
-                to="/school/$org/classes/$class/experience"
-                params={params}
-                className={buttonClass("secondary")}
-              >
-                {family ? "What children see" : "Student experience"}
-              </Link>
               {!family && (
                 <Link
                   to="/school/$org/classes/$class/start"

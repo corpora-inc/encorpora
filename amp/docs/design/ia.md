@@ -100,7 +100,7 @@ Each of these is that person's own composition of shared components (rule 6). Th
 - **Map:** one full-width panel per child on one K–12 axis, each child at their own level, with a grade line in each panel. A child opens inside the class.
 - **Time, Workbooks:** per child. The workbook builder opens in a sheet.
 - **People:** the children, the second parent, co-teachers, children from other families, and their invitations. None of these are on Today.
-- **Settings:** the class code, the school year with None · Semesters · Trimesters · Quarters, and the weekly target.
+- **Settings:** the class code (the Join element), the school year with None · Semesters · Trimesters · Quarters, the weekly target, and what children see (levels, standings, devices).
 - **The second parent** sees the same Family screens. She sees no buying, consent, naming or deletion.
 
 ### Tutor (a family org's class of students from other families)
