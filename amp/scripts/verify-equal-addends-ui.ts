@@ -140,7 +140,7 @@ async function stable(
   assert.equal(after.overflow, 0);
   assert.equal(after.stageOverflow, 0);
   await sentenceFits(page);
-  await arraySpacing(page);
+  return arraySpacing(page);
 }
 async function sentenceFits(page: Page) {
   const layout = await page
@@ -224,34 +224,83 @@ async function sentenceFits(page: Page) {
   }
 }
 async function arraySpacing(page: Page) {
-  const drawings = await page
-    .locator(".equal-object svg")
-    .evaluateAll((nodes) =>
-      nodes.map((n) => {
-        const b = n.getBoundingClientRect();
+  const drawings = await page.locator(".equal-object").evaluateAll((nodes) =>
+    nodes.flatMap((cell, index) => {
+      const svg = cell.querySelector("svg");
+      if (!svg) return [];
+      // Measure the drawing, not its grid cell or the SVG viewport. Path
+      // rectangles omit strokes, so include the round stroke's screen extent.
+      const paths = [...svg.querySelectorAll("path")].map((path) => {
+        const b = path.getBoundingClientRect();
+        const style = getComputedStyle(path);
+        const radius =
+          style.stroke === "none" ? 0 : parseFloat(style.strokeWidth) / 2;
+        const matrix = path.getScreenCTM()!;
+        const dx = radius * Math.hypot(matrix.a, matrix.c);
+        const dy = radius * Math.hypot(matrix.b, matrix.d);
         return {
-          left: b.left,
-          right: b.right,
-          top: b.top,
-          bottom: b.bottom,
-          width: b.width,
-          height: b.height,
+          left: b.left - dx,
+          right: b.right + dx,
+          top: b.top - dy,
+          bottom: b.bottom + dy,
         };
-      }),
-    );
-  for (const a of drawings)
-    for (const b of drawings) {
-      if (Math.abs(a.top - b.top) < 1 && b.left > a.left)
+      });
+      const left = Math.min(...paths.map((b) => b.left));
+      const right = Math.max(...paths.map((b) => b.right));
+      return [
+        {
+          row: Math.floor(index / 5),
+          column: index % 5,
+          left,
+          right,
+          top: Math.min(...paths.map((b) => b.top)),
+          bottom: Math.max(...paths.map((b) => b.bottom)),
+          width: right - left,
+        },
+      ];
+    }),
+  );
+  assert.ok(drawings.length > 0, "The array must contain drawings");
+  assert.ok(
+    drawings.every(
+      (b) => Number.isFinite(b.width) && b.width > 0 && b.bottom > b.top,
+    ),
+    "Every drawing must have measurable path bounds",
+  );
+  const rows = new Set(drawings.map((b) => b.row)).size;
+  const columns = new Set(drawings.map((b) => b.column)).size;
+  const gaps = { horizontal: [] as number[], vertical: [] as number[] };
+  for (const a of drawings) {
+    for (const axis of ["horizontal", "vertical"] as const) {
+      const b = drawings.find((candidate) =>
+        axis === "horizontal"
+          ? candidate.row === a.row && candidate.column === a.column + 1
+          : candidate.column === a.column && candidate.row === a.row + 1,
+      );
+      if (b) {
+        const gap = axis === "horizontal" ? b.left - a.right : b.top - a.bottom;
+        const ratio = gap / Math.max(a.width, b.width);
         assert.ok(
-          b.left - a.right >= a.width / 4 - 0.1,
-          "Horizontal object gaps must be at least a quarter of the drawing width",
+          ratio >= 0.25,
+          `${axis} gap at row ${a.row + 1}, column ${a.column + 1}: ${gap.toFixed(3)}px / ${a.width.toFixed(3)}px = ${ratio.toFixed(4)}; requires at least 0.25 of the drawing width`,
         );
-      if (Math.abs(a.left - b.left) < 1 && b.top > a.top)
-        assert.ok(
-          b.top - a.bottom >= a.height / 4 - 0.1,
-          "Vertical object gaps must be at least a quarter of the drawing height",
-        );
+        gaps[axis].push(ratio);
+      }
     }
+  }
+  assert.equal(gaps.horizontal.length, rows * (columns - 1));
+  assert.equal(gaps.vertical.length, columns * (rows - 1));
+  return {
+    drawings,
+    horizontalPairs: gaps.horizontal.length,
+    verticalPairs: gaps.vertical.length,
+    minHorizontalGapRatio: gaps.horizontal.length
+      ? Math.min(...gaps.horizontal)
+      : null,
+    minVerticalGapRatio: gaps.vertical.length
+      ? Math.min(...gaps.vertical)
+      : null,
+  };
 }
 async function keypadReachable(page: Page, fitsWithoutScrolling: boolean) {
   await page.locator(".problem-stage").evaluate((stage, fits) => {
@@ -507,7 +556,8 @@ try {
             .getByRole("button", { name: "Reset", exact: true })
             .click();
           await fillEqualAddends(page, r, JSON.stringify(answer));
-          await stable(page, before);
+          const spacing = await stable(page, before);
+          assert.ok(spacing.horizontalPairs > 0 && spacing.verticalPairs > 0);
           const targets = await page
             .locator(".equal-addends button, .counter-builder-form button")
             .evaluateAll((nodes) =>
@@ -623,6 +673,7 @@ try {
             theme,
             correct,
             geometry: before,
+            spacing,
           });
         }
       await context.close();

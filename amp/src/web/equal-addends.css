@@ -61,9 +61,10 @@
   place-items: center;
 }
 .equal-object .counter-object {
-  /* Leave at least one quarter of the drawing's size between neighbours. */
-  width: min(32px, calc(var(--equal-cell) * 0.75));
-  height: min(32px, calc(var(--equal-cell) * 0.75));
+  /* Shrink the drawing in every mode; preserve cell spacing and group targets.
+     The spare space also accommodates the drawing's stroke. */
+  width: min(30px, calc(var(--equal-cell) * 0.7));
+  height: min(30px, calc(var(--equal-cell) * 0.7));
 }
 .equal-addends .equal-group {
   position: absolute;
