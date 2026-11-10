@@ -923,7 +923,7 @@ async function teacherJourney(
 
   // Practice as a demo student, then back to the roster.
   await page.goto(`${origin}${classPath}/roster`);
-  await heading(page, "Roster");
+  await heading(page, "Students");
   const practice = page.getByRole("button", { name: /^Practice as / }).first();
   await practice.waitFor();
   const roster = page.url();
@@ -938,7 +938,7 @@ async function teacherJourney(
     .click();
   await page.getByRole("button", { name: "Sign out" }).click();
   await page.waitForURL((at) => at.href === roster);
-  await heading(page, "Roster");
+  await heading(page, "Students");
 
   // The real class: "Set up your real class" opens the real onboarding.
   await page.goto(`${origin}${classPath}/today`);

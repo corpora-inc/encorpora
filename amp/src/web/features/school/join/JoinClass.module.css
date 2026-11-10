@@ -141,6 +141,12 @@
   background: var(--color-success);
   color: var(--color-on-success);
 }
+/* Copy keeps one width whatever it says: its two labels share one cell. */
+.group .copyAct {
+  display: inline-grid;
+  align-items: center;
+  justify-items: center;
+}
 .group .iconOnly {
   width: var(--target-size);
   padding: 0;

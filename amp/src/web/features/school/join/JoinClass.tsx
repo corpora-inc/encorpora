@@ -101,7 +101,7 @@ export function JoinClass({
             text={link}
             label="Copy link"
             copied="Link copied"
-            className={styles.act}
+            className={`${styles.act} ${styles.copyAct}`}
             icon={<Glyph kind="copy" />}
           />
           {boardLink && (
@@ -165,7 +165,7 @@ export function JoinClass({
             text={link}
             label="Copy link"
             copied="Link copied"
-            className={styles.act}
+            className={`${styles.act} ${styles.copyAct}`}
             icon={<Glyph kind="copy" />}
           />
         </div>

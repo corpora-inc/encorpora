@@ -305,7 +305,7 @@ async function demo(
 
   // 3. Practice as Priya, then back to the roster.
   await page.goto(`${origin}/${classPath}/roster`);
-  await heading(page, "Roster");
+  await heading(page, "Students");
   const practice = page.getByRole("button", { name: /^Practice as Priya/ });
   await practice.waitFor();
   await measured(page, `${label} roster`);
@@ -337,7 +337,7 @@ async function demo(
     .click();
   await page.getByRole("button", { name: "Sign out" }).click();
   await page.waitForURL((at) => at.href === rosterUrl);
-  await heading(page, "Roster");
+  await heading(page, "Students");
 
   // 4. The real class comes from the real onboarding.
   await page.goto(`${origin}/${path}`);
