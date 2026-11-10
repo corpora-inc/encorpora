@@ -10,6 +10,7 @@ export { family as areaByCounting } from "./area-by-counting";
 export { family as areaExhibit } from "./area-exhibit";
 export { family as areaTilingClause } from "./area-tiling-clause";
 export { family as benchmarkEstimate } from "./benchmark-estimate";
+export { family as clausePractice } from "./clause-practice";
 export { family as cavalieriArgument } from "./cavalieri-argument";
 export { family as circleSimilarityProof } from "./circle-similarity-proof";
 export { family as congruenceCriterionProof } from "./congruence-criterion-proof";

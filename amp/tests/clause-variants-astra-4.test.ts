@@ -51,6 +51,19 @@ test("every clause surface has a valid, deterministic, gradeable existing respon
     assert.ok(p.hint.length > 20 && p.explanation.length >= 2, id);
     const response = p.public.response;
     kinds.add(response.kind);
+    const meta = metadata(p.public.templateId);
+    const declared = new Set<string>(meta.requiredResponseCapabilities ?? []);
+    if (meta.requiredResponseCapability)
+      declared.add(meta.requiredResponseCapability);
+    if (response.kind !== "number" && response.kind !== "fraction")
+      assert.ok(
+        declared.has(
+          response.kind === "choice"
+            ? "single-choice-v1"
+            : `${response.kind}-v1`,
+        ),
+        `${id}: undeclared ${response.kind} response`,
+      );
     if (response.kind === "choice" || response.kind === "figure-choice") {
       for (const option of response.options)
         assert.equal(gradeAnswer(p, option.id), option.id === p.answer, id);

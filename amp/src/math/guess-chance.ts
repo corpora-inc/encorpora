@@ -16,10 +16,18 @@ import { historicalTemplates } from "./historical-templates";
 const SAMPLE_SEEDS = 16;
 const STRUCTURED_SEEDS = 128;
 const CLAUSE_SEEDS = 64;
-/** Floors for variable multi-part families whose high-guessability variants
+/** Floors for variable-response families whose high-guessability variants
  * are rarer than the deterministic sample. Keep these in sync with the
  * generator-variation audit in frontier-guessing.test.ts. */
 const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
+  // Clause choices can have three options after duplicate distractors are removed.
+  "graphical-solution-table": 1 / 3,
+  // A rate of two leaves 3, 3 and 4 choices in the ordered-pair slots.
+  "dependent-variable-value": 1 / 36,
+  // Four reusable slots can share a tray with only four distinct cards.
+  "tile-then-multiply": 1 / 256,
+  // Split rectangles use four reusable slots and at least five distinct cards.
+  "split-tiled-count": 1 / 625,
   // The most guessable recipe places two labelled squares in two spaces:
   // two accepted orders among 21^2 unused-or-grid-position choices.
   "compose-flat-shape": 2 / 441,
@@ -39,14 +47,6 @@ const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
   // Two factors among three or four choices, or three multiples among four or five.
   "factor-pairs-select": 1 / 3,
   "multiples-select": 1 / 4,
-  // Clause intersection variants can offer three distinct choices; the
-  // fixed sample can draw only their four-choice or typed-answer variants.
-  "graphical-solution-table": 1 / 3,
-  // At rate 2, the three blanks have 3, 3 and 4 distinct options.
-  "dependent-variable-value": 1 / 36,
-  // Four reusable boxes share a numeric tray with at least four/five cards.
-  "tile-then-multiply": 1 / 4 ** 4,
-  "split-tiled-count": 1 / 5 ** 4,
   // Two identical wrong bounds collapse to one: 4 shares × 3 bounds × 4 checks.
   "whole-sharing-fraction": 1 / 48,
 };
@@ -65,8 +65,7 @@ const byId = new Map(
 // is computed on first use. Sampling a family takes up to 2 s of CPU, too long
 // to pay on a request thread.
 declare const __AMP_GUESS_CHANCES__:
-  | Readonly<Record<string, number>>
-  | undefined;
+  Readonly<Record<string, number>> | undefined;
 const built =
   typeof __AMP_GUESS_CHANCES__ === "undefined"
     ? []
@@ -121,7 +120,8 @@ export function guessChance(
     // proofs built from banks; sample more, and a family whose every
     // sampled instance has a typed field cannot be guessed.
     const structured =
-      template.requiredResponseCapability === "structured-work-v1";
+      template.requiredResponseCapability === "structured-work-v1" ||
+      template.requiredResponseCapabilities?.includes("structured-work-v1");
     // The sample can miss rare, more guessable variants in these generators.
     let greatest = MULTI_PART_GUESS_FLOOR[template.id] ?? 0;
     for (let i = 0; i < (structured ? STRUCTURED_SEEDS : SAMPLE_SEEDS); i++)

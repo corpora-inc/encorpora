@@ -1,4 +1,9 @@
 import {
+  clauseMetadata,
+  generateClauseVariant,
+  withClauseMetadata,
+} from "./clause-variants";
+import {
   satCompletionTemplates,
   generateSatCompletionProblem,
 } from "./sat-completion-practice";
@@ -15,7 +20,7 @@ import { withTemplateGlossary } from "./template-glossary";
 import { historicalTrueEquationChoice } from "./operation-sentence-practice";
 import {
   clauseProblem as extendedClauseProblem,
-  withClauseMetadata,
+  withClauseMetadata as withExtendedClauseMetadata,
 } from "./clause-extensions";
 import { historicalEqualFactorFamily } from "./multiselect-number-practice";
 import { sceneCapabilitiesIn } from "./scene/capability";
@@ -419,7 +424,6 @@ import { graphicalTemplates, generateGraphicalProblem } from "./graphical";
 import { extendedTemplates, generateExtendedProblem } from "./extended";
 import { familyRegistry } from "../families/registry";
 import { clauseVariantProblem } from "./clause-gap";
-import { clauseMetadata, generateClauseVariant } from "./clause-variants";
 import { createHash } from "node:crypto";
 import { makeTenHops } from "./scene/explanations";
 import { mathLabel, polish } from "./polish";
@@ -667,6 +671,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...familyRegistry.templates,
 ]
   .map(withClauseMetadata)
+  .map(withExtendedClauseMetadata)
   .map(clauseMetadata)
   .map(withTemplateGlossary);
 
@@ -1031,6 +1036,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...multiPartChoiceTemplates,
   ].some((t) => t.id === problem.public.templateId);
   const keepAuthored =
+    problem.variant?.axes?.clause !== undefined ||
     preserveAlgebra ||
     ["true-equation-choice", "equal-factor-equations-select"].includes(
       problem.public.templateId,
@@ -1312,7 +1318,7 @@ function generateRawProblem(
     return generateGraphicalProblem(templateId, seed);
   if (extendedTemplates.some((t) => t.id === templateId))
     return generateExtendedProblem(templateId, seed);
-  const meta = templates.find((t) => t.id === templateId);
+  const meta = baseTemplates.find((t) => t.id === templateId);
   if (!meta) throw new Error(`Unknown template: ${templateId}`);
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
