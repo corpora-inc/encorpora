@@ -513,15 +513,15 @@ def description_points(prompt):
         return [(0, c), (tv, k), (2 * tv, c)], BALL_GRID
     profit = re.fullmatch(
         r"A shop's profit, in dollars, follows a downward parabola\. It breaks even at (\d+) items and at "
-        r"(\d+) items\. The greatest profit is halfway between those counts\. From this description, "
+        r"(\d+) items\. The greatest profit is (\d+) dollars?, halfway between those counts\. From this description, "
         r"place the two break-even points and the highest point\.",
         prompt,
     )
     require(profit is not None, "Verbal quadratic was not recognised")
-    left, right = int(profit[1]), int(profit[2])
+    left, right, height = (int(part) for part in profit.groups())
     require(0 < left < right and (left + right) % 2 == 0, "Break-even counts")
-    gap = (right - left) // 2
-    return [(left, 0), (right, 0), ((left + right) // 2, gap * gap)], PROFIT_GRID
+    require(height > 0, "Greatest profit must be positive")
+    return [(left, 0), (right, 0), ((left + right) // 2, height)], PROFIT_GRID
 
 
 def review_description(problem):

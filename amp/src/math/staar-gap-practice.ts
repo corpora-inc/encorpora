@@ -59,6 +59,7 @@ export const staarGapTemplates: readonly TemplateMetadata[] = [
     "3–5",
     0.4,
     "Evaluate whole-number expressions with brackets around parenthesized groups, or a product or difference written in words with a sum or difference inside it.",
+    { version: 2, reprintsFrom: 1 },
   ),
   meta(
     "staar-signed-exponent-order",

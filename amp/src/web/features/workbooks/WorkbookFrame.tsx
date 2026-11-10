@@ -4,13 +4,13 @@ import type { ReactNode } from "react";
 import type { AuthSession } from "../../auth";
 import { meOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
-import type { FreeWorkbooksNext } from "./FreeWorkbooksUsed";
+import type { PauseViewer } from "../continue/AllowancePause";
 import { canReadWorkbooks, type WorkbookAccess } from "./model";
 import styles from "./Workbooks.module.css";
 
 export type WorkbookLearner = { id: string; name: string } & WorkbookAccess & {
-    /** The step that succeeds once the five free workbooks are used. */
-    freeWorkbooksNext: FreeWorkbooksNext;
+    /** Who sees the pause once the five free workbooks are used. */
+    pauseViewer: PauseViewer;
   };
 
 /** Workbook content on AppShell for an account-owned learner with learning
@@ -89,8 +89,12 @@ export function WorkbookFrame({
   else
     body = children({
       ...learner,
-      freeWorkbooksNext:
-        learner.adult || data.account.kind === "student" ? null : "purchase",
+      pauseViewer:
+        data.account.kind === "student"
+          ? "student"
+          : learner.adult
+            ? "adult"
+            : "parent",
     });
   return (
     <main className={styles.page} aria-busy={!data || busy}>

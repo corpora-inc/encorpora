@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
 import type { SignedInMe } from "../../../../account/contracts";
@@ -10,6 +10,8 @@ import { meKey, meOptions, queryClient } from "../../../lib/query";
 import { Button, buttonClass } from "../../../ui/Button";
 import { Toast } from "../../../ui/Toast";
 import { currentSession } from "../api";
+import { rememberContinuation } from "../../continue/memory";
+import { freeProblemsLeft } from "../../../lib/free-allowance";
 import { useFinishSignIn } from "../join/api";
 import styles from "./Family.module.css";
 import { CoTeachers } from "./CoTeachers";
@@ -36,6 +38,9 @@ export function FamilyPanel({ classId }: { classId: string }) {
   const finish = useFinishSignIn();
   const [starting, setStarting] = useState<string | null>(null);
   const [error, setError] = useState("");
+  const here = useRouterState({
+    select: (state) => state.location.pathname + state.location.searchStr,
+  });
   if (!me?.signedIn || me.familyClass?.classId !== classId) return null;
   const family = me.familyClass;
   const handOver = async (learner: SignedInMe["learners"][number]) => {
@@ -72,7 +77,10 @@ export function FamilyPanel({ classId }: { classId: string }) {
     );
   };
   return (
-    <section className={styles.family} aria-labelledby="family-children">
+    <section
+      className={styles.family}
+      aria-labelledby={me.learners.length ? "family-children" : undefined}
+    >
       {family.notice && (
         <p className={styles.notice}>
           <span>
@@ -91,44 +99,60 @@ export function FamilyPanel({ classId }: { classId: string }) {
           </button>
         </p>
       )}
-      <h2 id="family-children" className={styles.heading}>
-        Practice on this device
-      </h2>
-      <ul className={styles.children}>
-        {me.learners.map((learner) => (
-          <li key={learner.id} className={styles.child}>
-            <span className={styles.who}>
-              <span className={styles.name}>{learner.name}</span>
-              <span className={styles.access}>
-                {learner.entitlement.active && learner.entitlement.endsAt
-                  ? `Access through ${DAY.format(new Date(learner.entitlement.endsAt))}`
-                  : learner.freeAllowance && learner.entitlement.active
-                    ? `${learner.freeAllowance.problems.remaining} free problems left`
-                    : "No access yet"}
-              </span>
-            </span>
-            {learner.entitlement.active ? (
-              <Button
-                variant="secondary"
-                className={styles.action}
-                aria-busy={starting === learner.id || undefined}
-                disabled={starting !== null && starting !== learner.id}
-                onClick={() => void handOver(learner)}
-              >
-                Let {learner.name} practice here
-              </Button>
-            ) : (
-              <Link
-                to="/$"
-                params={{ _splat: "family" }}
-                className={`${buttonClass("secondary")} ${styles.action}`}
-              >
-                Add access
-              </Link>
-            )}
-          </li>
-        ))}
-      </ul>
+      {/* A tutor's class has children from other families only. */}
+      {me.learners.length > 0 && (
+        <>
+          <h2 id="family-children" className={styles.heading}>
+            Practice on this device
+          </h2>
+          <ul className={styles.children}>
+            {me.learners.map((learner) => (
+              <li key={learner.id} className={styles.child}>
+                <span className={styles.who}>
+                  <span className={styles.name}>{learner.name}</span>
+                  <span className={styles.access}>
+                    {learner.entitlement.licensed && learner.entitlement.endsAt
+                      ? `Access through ${DAY.format(new Date(learner.entitlement.endsAt))}`
+                      : learner.freeAllowance
+                        ? learner.freeAllowance.problems.remaining > 0
+                          ? freeProblemsLeft(
+                              learner.freeAllowance.problems.remaining,
+                            )
+                          : "Used the 100 free problems"
+                        : "No access yet"}
+                  </span>
+                </span>
+                {learner.entitlement.active ? (
+                  <Button
+                    variant="secondary"
+                    className={styles.action}
+                    aria-busy={starting === learner.id || undefined}
+                    disabled={starting !== null && starting !== learner.id}
+                    onClick={() => void handOver(learner)}
+                  >
+                    Let {learner.name} practice here
+                  </Button>
+                ) : (
+                  <Link
+                    to="/continue/$learnerId"
+                    params={{ learnerId: learner.id }}
+                    className={`${buttonClass("secondary")} ${styles.action}`}
+                    onClick={() =>
+                      rememberContinuation({
+                        accountId: session.accountId,
+                        learnerId: learner.id,
+                        returnTo: here,
+                      })
+                    }
+                  >
+                    Continue with AMP
+                  </Link>
+                )}
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
       <OtherFamilies session={session} />
       <CoTeachers
         session={session}

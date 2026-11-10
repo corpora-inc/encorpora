@@ -45,6 +45,7 @@ const definitions = [
     "Add or subtract 10 or 100 to or from a number from 100 to 900.",
   ],
 ] as const;
+const clauseVersion = new Set(["make-ten-fact", "related-subtraction"]);
 export const factsTemplates: readonly TemplateMetadata[] = definitions.map(
   ([id, title, skillId, description]) => ({
     id,
@@ -52,7 +53,8 @@ export const factsTemplates: readonly TemplateMetadata[] = definitions.map(
     skillId,
     description,
     gradeBand: "K–2",
-    version: 1,
+    version: clauseVersion.has(id) ? 2 : 1,
+    ...(clauseVersion.has(id) ? { reprintsFrom: 1 as const } : {}),
   }),
 );
 

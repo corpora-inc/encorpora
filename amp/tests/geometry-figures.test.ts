@@ -51,7 +51,13 @@ test("figured templates need scene capability; old clients are never sent them",
     const t = templates.find((x) => x.id === id)!;
     assert.equal(
       t.version,
-      ["oblique-triangle-solve", "triangle-law-reasoning"].includes(id) ? 2 : 1,
+      [
+        "oblique-triangle-solve",
+        "triangle-law-reasoning",
+        "triangle-circle-centers",
+        "polynomial-graph-match",
+      ].includes(id) ? 2 : 1,
+      id,
     );
     assert.equal(t.requiredFigureCapability, "scenes-v1", id);
     assert.ok(

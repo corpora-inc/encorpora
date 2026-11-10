@@ -5,7 +5,29 @@ import {
 } from "../../lib/funded-entry";
 import type { Me, SignedInMe } from "../../../account/contracts";
 
-/** First-run steps, guarded by the server's next step and consent state. */
+/** "What brings you to AMP?" (`/start`) and each of its answers, one URL
+ * each. Any signed-in adult may open it to add a place. */
+export const starterChoices = [
+  "myself",
+  "parent",
+  "tutor",
+  "teacher",
+  "school",
+] as const;
+export type StarterChoice = (typeof starterChoices)[number];
+export const isStarterChoice = (value: unknown): value is StarterChoice =>
+  starterChoices.includes(value as StarterChoice);
+export function isStarterPath(pathname: string) {
+  const path = pathname.replace(/\/+$/, "");
+  if (path === "/start") return true;
+  const choice = /^\/start\/([^/]+)$/.exec(path)?.[1];
+  return isStarterChoice(choice);
+}
+
+/** The steps that remain around the starter: Stripe's enrollment return; the
+ * plan a parent approving another family's child pays for first; and the
+ * confirmation, consent and learner steps of funded programs, gifts and a
+ * paid purchase that no learner holds yet. */
 export const startSteps = [
   "/start/verify-email",
   "/start/plan",
@@ -18,45 +40,33 @@ export type StartStep = (typeof startSteps)[number];
 
 export type StartTarget =
   | StartStep
+  | "/start"
+  | "/"
   | "/access"
   | "/sign-in"
-  | "/purchase"
   | FundedPath
-  | "/practice"
-  | "/school"
   | "/try"
   | `/family/approvals/${string}`;
 const learnerSteps: readonly string[] = ["/start/name", "/start/birth-year"];
-
-/** Steps that record consent or take payment; they need a confirmed address. */
-const consentSteps: readonly string[] = [
-  "/start/plan",
-  "/start/purchase",
-  "/start/consent",
-];
 
 /**
  * The single first-run guard, used by route `beforeLoad` and by the mounted
  * screen when `/me` changes. Returns where to go instead, or null to stay.
  *
- * Order: free trial → plan → secure payment (the verified parental consent)
- * → learner name → birth year → practice. No learner details are collected
- * before consent, so the learner steps open only once `next` says so. A
- * parent whose address is unconfirmed confirms it on the way into the plan:
- * nothing before that waits for it. `buying` is a plan chosen on the paywall
- * before sign-up.
+ * A new account answers one question at `/start` (the server's `next` is
+ * "start" while the account has no place). The starter itself is open to
+ * every signed-in adult, to add a place. Stripe's enrollment return always
+ * stays. Funded programs, gifts and a paid purchase without a learner keep
+ * their confirmation, consent and learner steps; anyone else who opens one of
+ * those steps goes where `next` says.
  */
 export function startDestination(
   me: Me,
   pathname: string,
-  buying = false,
+  _buying = false,
   funded: boolean | FundedProgramSlug = false,
 ): StartTarget | null {
   if (!me.signedIn) return "/sign-in";
-  // School staff aren't new parents. Someone with learners, a free assessment
-  // under way or a purchase for a family is both, and carries on here.
-  if (!funded && !buying && me.staffOf?.length && !hasHome(me))
-    return "/school";
   if (funded) {
     if (me.account.confirmationRequired)
       return pathname === "/start/verify-email" ? null : "/start/verify-email";
@@ -67,34 +77,39 @@ export function startDestination(
       ? fundedPrograms[funded === true ? "arkansas-efa" : funded].path
       : "/start/name";
   }
-  const confirm =
-    !!me.account.confirmationRequired &&
-    (me.next === "try" || me.next === "choose-plan" || me.next === "practice");
-  if (pathname === "/start/verify-email") {
-    if (confirm) return null;
-    // Confirmed: continue to the plan the parent was opening.
-    return route(me, "/start/plan", buying) ?? "/start/plan";
-  }
-  const target = route(me, pathname, buying);
-  return confirm && consentSteps.includes(target ?? pathname)
-    ? "/start/verify-email"
-    : target;
+  if (isStarterPath(pathname)) return null;
+  if (pathname === "/start/purchase") return null;
+  // Approving another family's child: the plan comes before any learner of
+  // this account, and paying for it is the consent the approval needs.
+  if (
+    pathname === "/start/plan" &&
+    me.familyApproval &&
+    me.consent.status !== "active"
+  )
+    return me.account.confirmationRequired ? "/start/verify-email" : null;
+  if (
+    pathname === "/start/verify-email" &&
+    me.familyApproval &&
+    me.consent.status !== "active" &&
+    me.account.confirmationRequired
+  )
+    return null;
+  return route(me, pathname);
 }
 
 function route(
   me: Extract<Me, { signedIn: true }>,
   pathname: string,
-  buying: boolean,
 ): StartTarget | null {
   const stay = (allowed: readonly string[], fallback: StartTarget) =>
     allowed.includes(pathname) ? null : fallback;
-  // A parent who opened another family's approval link approves that child
-  // once their consent is in, rather than adding a new one (step 5).
+  // A parent who opened another family's approval link approves that child,
+  // rather than starting a place of their own (docs/families.md, step 5).
   if (
     me.familyApproval &&
     (me.next === "add-learner" ||
-      (["choose-plan", "practice"].includes(me.next) &&
-        me.consent.status === "active"))
+      me.next === "start" ||
+      (me.next === "practice" && me.consent.status === "active"))
   )
     return `/family/approvals/${me.familyApproval.id}`;
   switch (me.next) {
@@ -107,37 +122,17 @@ function route(
         return pathname === "/start/consent" ? null : "/access";
       if (pathname === "/start/consent") return "/start/name";
       return stay(learnerSteps, "/access");
-    case "try":
-      // The plan opens when the parent chooses to buy; otherwise practice free.
-      return stay(
-        ["/start/plan", "/start/purchase", "/start/consent"],
-        buying ? "/start/plan" : "/try",
-      );
-    case "choose-plan":
-      // With consent already recorded (for example through email-plus), the
-      // purchase is for an existing learner: per-learner checkout in billing.
-      return me.consent.status === "active"
-        ? stay(learnerSteps, "/purchase")
-        : stay(
-            ["/start/plan", "/start/purchase", "/start/consent"],
-            "/start/plan",
-          );
     case "add-learner":
-      return stay([...learnerSteps, "/start/purchase"], "/start/name");
+      // Paid before any learner held it: choose or add who it is for.
+      return stay(learnerSteps, "/start/name");
+    case "try":
+      // A free assessment from before the starter, until it moves into the
+      // family.
+      return "/try";
+    case "start":
+      return "/start";
     case "practice":
-      if (me.consent.status !== "active") {
-        if (learnerSteps.includes(pathname)) return "/start/plan";
-        return stay(consentSteps, buying ? "/start/plan" : "/practice");
-      }
-      if (
-        consentSteps.includes(pathname) &&
-        me.learners.some(
-          (learner) =>
-            !(learner.entitlement.licensed ?? learner.entitlement.active),
-        )
-      )
-        return "/purchase";
-      return stay(learnerSteps, "/practice");
+      return pathname === "/" ? null : "/";
   }
 }
 
@@ -153,23 +148,21 @@ export function startNavigation(target: StartTarget) {
       to: "/family/approvals/$approvalId",
       params: { approvalId: target.slice("/family/approvals/".length) },
     } as const;
-  if (target === "/school")
-    return { to: "/$", params: { _splat: "school" } } as const;
-  return target === "/purchase" || target === "/practice"
-    ? ({ to: "/$", params: { _splat: target.slice(1) } } as const)
-    : ({ to: target } as const);
+  return { to: target } as const;
 }
 
 /** One place a person works: their family and practice side, their own
  * practice, or a school. */
 export type PlaceId = "home" | "me" | `school:${string}`;
 
-/** A family or practice side to open: learners, a free assessment under way,
+/** A family or practice side to open: learners, the family's class (a
+ * tutor's, before any child of their own), a free assessment under way,
  * or consent, a purchase or a gift on its way to a learner. One account can be a
  * parent, have a trial in progress and work at schools, all at once. */
 export function hasHome(me: SignedInMe) {
   return (
     me.learners.length > 0 ||
+    !!me.familyClass ||
     me.trial === true ||
     me.consent.status === "active" ||
     !!me.unassignedPurchase ||

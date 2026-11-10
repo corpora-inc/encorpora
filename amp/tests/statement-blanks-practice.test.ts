@@ -139,6 +139,9 @@ test("pay, coordinates and counts follow the givens", () => {
     "the first number of an ordered pair": "$x$-coordinate",
     "the second number of an ordered pair": "$y$-coordinate",
     "two numbers in order that name a point": "ordered pair",
+    "The two perpendicular number lines are the": "axes",
+    "Their crossing, 0 on each axis, is the": "origin",
+    "Two numbers in order naming a point form an": "ordered pair",
   };
   for (const seed of seeds("terms")) {
     const { response, chosen } = view("coordinate-terms-slots", seed);

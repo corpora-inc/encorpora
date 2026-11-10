@@ -26,6 +26,8 @@ import {
 } from "../features/navigation/shell-frame";
 import { usePlaceEntries } from "../features/navigation/PlaceSwitcher";
 import { useSchoolNavigation } from "../features/navigation/school-navigation";
+import { DemoMark } from "../features/school/demo/DemoMark";
+import { DemoSetupAction } from "../features/school/demo/DemoPlace";
 import { Tabs } from "../ui/Tabs";
 import { AppLogo } from "../ui/AppLogo";
 import bar from "../ui/AppBar.module.css";
@@ -216,6 +218,7 @@ function ShellBar({
             else setDrawerOpen(!open);
           }}
         />
+        {school.demo && <DemoMark />}
       </div>
       {tabs && <div className={bar.tabsCell}>{tabs}</div>}
       {/* A screen's own tools (practice's topic and calculator) portal here. */}
@@ -225,7 +228,8 @@ function ShellBar({
         data-shell-tools={frame.kind === "practice" ? "" : undefined}
       />
       <div className={bar.action}>
-        {frame.kind === "class" && school.start && (
+        {school.demo && <DemoSetupAction school={!school.solo} />}
+        {frame.kind === "class" && school.start && !school.demo && (
           <Link
             to="/$"
             params={{

@@ -41,5 +41,9 @@ export function useSchoolNavigation(frame: ShellFrame) {
           : []
         : schoolTabs(org, classes?.length ?? 0),
     start: frame.kind === "class" && available && !year?.past,
+    /** A demo place (docs/schools.md#demo-places), and whether it is a demo
+     * class ("Just my class") rather than a demo school. */
+    demo: active && org?.demo === true,
+    solo: org?.solo === true,
   };
 }

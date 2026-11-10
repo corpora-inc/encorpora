@@ -1,0 +1,140 @@
+/* "Continue with AMP" and the pause that leads to it. */
+.page {
+  box-sizing: border-box;
+  display: grid;
+  align-content: start;
+  gap: var(--space-5);
+  width: min(100%, 560px);
+  margin: 0 auto;
+  padding: var(--space-6) max(var(--space-4), env(safe-area-inset-right))
+    max(var(--space-7), env(safe-area-inset-bottom))
+    max(var(--space-4), env(safe-area-inset-left));
+  color: var(--color-on-surface);
+}
+.head {
+  display: grid;
+  gap: var(--space-1);
+}
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(var(--text-title-min), 6vw, 38px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.for {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+  font-weight: 600;
+}
+.panel {
+  display: grid;
+  gap: var(--space-4);
+}
+.text,
+.fine {
+  margin: 0;
+  max-width: 60ch;
+  font-size: var(--text-body);
+  line-height: 1.5;
+}
+.fine {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+}
+.go {
+  width: 100%;
+}
+.back {
+  justify-self: center;
+}
+.skeleton {
+  height: 132px;
+  border-radius: var(--radius-control);
+}
+
+/* The pause: calm, centred in the space the work had, one action. */
+.pause,
+.pauseCompact {
+  box-sizing: border-box;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: var(--space-3);
+  width: min(100%, 520px);
+  margin: 0 auto;
+  padding: var(--space-7) var(--space-4);
+  text-align: center;
+  color: var(--color-on-surface);
+}
+.pause {
+  min-height: calc(100dvh - var(--shell-bar, 56px) - var(--space-7));
+}
+.pauseCompact {
+  padding-block: var(--space-6);
+}
+.mark {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-surface-sunken);
+  color: var(--color-primary);
+}
+.mark svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.25;
+  stroke-linecap: round;
+}
+.fact {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(24px, 5vw, 30px);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.detail {
+  margin: 0;
+  max-width: 44ch;
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+  line-height: 1.5;
+  text-wrap: balance;
+}
+.action {
+  min-width: 240px;
+  margin-top: var(--space-2);
+}
+@media (max-width: 359px) {
+  .action {
+    min-width: 0;
+    width: 100%;
+  }
+}
+.sheetText {
+  margin: 0 0 var(--space-4);
+  color: var(--color-muted-text);
+  line-height: 1.5;
+}
+
+/* "Add Fox's name", once access is active. */
+.nameForm {
+  display: grid;
+  gap: var(--space-3);
+}
+.nameActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.nameActions > * {
+  flex: 1 1 160px;
+}

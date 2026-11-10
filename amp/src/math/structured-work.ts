@@ -518,6 +518,9 @@ export type WorkGrading =
       goal: string;
       claims: Record<string, Record<string, string[][]>>;
     }
+  /** Two rows of two whole-number parts. Each row sums to `whole`. The two
+   * rows are different as unordered pairs. Zero is allowed (0 + whole). */
+  | { mode: "bond-pairs"; whole: number }
   /** Three expression rows that complete px + q = ____. Each row is a class:
    * same x-count and a different constant, the same expression, or a different
    * x-count. Any equivalent linear polynomial is accepted. */
@@ -624,10 +627,38 @@ export function markStructuredWork(
   );
   if (grading.mode === "fields") return markFields(r, grading, rows);
   if (grading.mode === "proof") return markProof(r, grading, rows);
+  if (grading.mode === "bond-pairs") return markBondPairs(r, grading, rows);
   if (grading.mode === "linear-classes")
     return markLinearClasses(r, grading, rows);
   if (grading.mode === "rectangle-work") return markRectangle(grading, rows);
   return markDerivation(r, grading, rows, learner);
+}
+/** Two different splits of one whole. Order inside a row does not matter. */
+function markBondPairs(
+  r: StructuredWorkResponse,
+  grading: Extract<WorkGrading, { mode: "bond-pairs" }>,
+  rows: ValueRow[],
+): WorkMarks {
+  const whole = grading.whole;
+  const pairs = rows.map((row) => {
+    const [a, b] = row.values.map((v) => qParse(v));
+    if (!a || !b || a.d !== 1n || b.d !== 1n) return null;
+    const x = Number(a.n),
+      y = Number(b.n);
+    if (x < 0 || y < 0 || x + y !== whole) return null;
+    return x <= y ? `${x}+${y}` : `${y}+${x}`;
+  });
+  const marks = pairs.map((key, i) => key !== null && key !== pairs[1 - i]);
+  // A repeated unordered pair fails both rows: neither split is "another way".
+  if (pairs[0] && pairs[0] === pairs[1]) marks[0] = marks[1] = false;
+  const notes = marks.flatMap((ok, i) =>
+    ok
+      ? []
+      : [
+          `${noun(r)} ${i + 1}: the two parts must make ${whole}, and the second split must be a different pair.`,
+        ],
+  );
+  return { correct: marks.every(Boolean), rows: marks, notes };
 }
 export function gradeStructuredWork(
   r: StructuredWorkResponse,
@@ -1513,6 +1544,12 @@ export const workGradingSchema: z.ZodType<WorkGrading> = z.union([
     .strict(),
   z
     .object({
+      mode: z.literal("bond-pairs"),
+      whole: z.number().int().min(2).max(20),
+    })
+    .strict(),
+  z
+    .object({
       mode: z.literal("proof"),
       goal: z.string().regex(OPTION_ID),
       claims: z.record(
@@ -1607,6 +1644,17 @@ export function gradingFits(
           row.fields.length === 2 &&
           row.fields[0]!.kind === "expression" &&
           row.fields[1]!.kind === "choice",
+      )
+    );
+  if (g.mode === "bond-pairs")
+    return (
+      r.layout === "steps" &&
+      !r.open &&
+      r.rows.length === 2 &&
+      r.rows.every(
+        (row) =>
+          row.fields.length === 2 &&
+          row.fields.every((f) => f.kind === "number" && f.given === undefined),
       )
     );
   if (g.mode === "rectangle-work")

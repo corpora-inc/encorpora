@@ -6,31 +6,27 @@
  */
 import { randomUUID } from "node:crypto";
 import type { PoolClient } from "pg";
+import {
+  FAMILY_NAMES,
+  GIVEN_NAMES,
+  TEACHER_NAMES,
+} from "../src/schools/demo/names";
+import {
+  seedStaffEvents,
+  seedTermEvidence as seedTerm,
+} from "../src/schools/demo/term";
 import type { SchoolRepository } from "../src/schools/repository";
 
-const FIRST =
-  "Amara Caleb Diego Elias Eli Felix Hana Imani Isaac Jonah Kai Lena Marcus Mei Nadia Noor Owen Priya Ruth Sam Sofia Theo Tomas Zara Ada Bram Cleo Dara Emre Farah Gus Hugo Ines Jada Kofi Lila Milo Nia Omar Pia Quinn Rafi Sana Tess Uma Vik Wren Xan Yara Zeke".split(
-    " ",
-  );
-const LAST =
-  "Osei Ortiz Salas Frost Novak Grant Sato Clarke Moreno Reyes Nakamura Fischer Bell Tran Petrov Haddad Hartley Raman Adeyemi Whitlock Marin Lindqvist Vega Mensah Abara Beck Cruz Dahl Eze Flores Gupta Holm Ito Jones Kim Lund Mora Ng Obi Park Quist Rossi Silva Tate Ueda Voss Wolfe Xu Yates Zhou".split(
-    " ",
-  );
-const TEACHERS =
-  "Ms. Okafor,Mr. Lindgren,Ms. Tanaka,Mr. Abara,Ms. Rivera,Mr. Dube,Ms. Novak,Mr. Haddad,Ms. Ferreira,Mr. Oyelaran,Ms. Kowalski,Mr. Ito,Ms. Shah,Mr. Moreau,Ms. Bianchi,Mr. Nguyen,Ms. Larsen,Mr. Castillo".split(
-    ",",
-  );
+const FIRST = GIVEN_NAMES.slice(0, 50);
+const LAST = FAMILY_NAMES.slice(0, 50);
+const TEACHERS = TEACHER_NAMES;
 
-const DAY = 86_400_000;
-export const iso = (time: number) => new Date(time).toISOString().slice(0, 10);
-export const mondayOf = (time: number) => {
-  const date = new Date(time);
-  return Date.UTC(
-    date.getUTCFullYear(),
-    date.getUTCMonth(),
-    date.getUTCDate() - ((date.getUTCDay() + 6) % 7),
-  );
-};
+export {
+  iso,
+  mondayOf,
+  seedCalendar,
+  TERM_SHAPE,
+} from "../src/schools/demo/term";
 
 export type SeedSchool = {
   name: string;
@@ -40,38 +36,6 @@ export type SeedSchool = {
 };
 const gradeName = (grade: number) =>
   grade === 0 ? "Kindergarten" : `Grade ${grade}`;
-
-/** A year and two semesters that began 13 weeks ago, so a term chart has shape. */
-export async function seedCalendar(client: PoolClient, orgId: string) {
-  const start = mondayOf(Date.now()) - 12 * 7 * DAY;
-  const year = randomUUID();
-  const end = start + 300 * DAY;
-  const middle = start + 150 * DAY;
-  const insert = (
-    id: string,
-    parent: string | null,
-    kind: string,
-    name: string,
-    from: number,
-    to: number,
-  ) =>
-    client.query(
-      `INSERT INTO amp_academic_sessions(id,org_id,parent_id,kind,name,starts_on,ends_on) VALUES($1,$2,$3,$4,$5,$6,$7)`,
-      [id, orgId, parent, kind, name, iso(from), iso(to)],
-    );
-  const first = new Date(start).getUTCFullYear();
-  await insert(
-    year,
-    null,
-    "year",
-    `${first}–${String(first + 1).slice(2)}`,
-    start,
-    end,
-  );
-  await insert(randomUUID(), year, "semester", "Semester 1", start, middle);
-  await insert(randomUUID(), year, "semester", "Semester 2", middle + DAY, end);
-  return { year, start: iso(start) };
-}
 
 /** Classes, teachers, students, seats, sign-ins and a term of evidence for each
  * school. `seatShare` of the students hold seats, and `signedInShare` have signed
@@ -277,17 +241,10 @@ export async function seedSchools(
   }
 }
 
-/** The week-by-week shape of a term: a slow start, a strong middle, a dip for a
- * break, then the last two weeks. Index 0 is the term's first week. */
-export const TERM_SHAPE = [
-  0.55, 0.68, 0.8, 0.86, 0.92, 0.82, 0.96, 1.02, 0.58, 0.94, 1.04, 1.08, 1.1,
-] as const;
-
-/** A term of practice for the students in the `seed_student` temp table (and
- * their classes in `seed_class`), inside the caller's open transaction: active
- * time, skill days, level days, weeks, and a week of what staff really do. The
- * rollups' week triggers are off while it writes and on again after, so the
- * weeks are summed once. Every name it touches is already made up. */
+/** A term of practice for the `seed_student` and `seed_class` temp tables,
+ * inside the caller's open transaction: the product's `seedTermEvidence`, then
+ * a week of staff activity, and setup dated back to when the year began.
+ * Fixture databases only. */
 export async function seedTermEvidence(
   client: PoolClient,
   options: {
@@ -299,89 +256,8 @@ export async function seedTermEvidence(
     weekShape?: readonly number[];
   },
 ) {
-  const shape = options.weekShape ?? TERM_SHAPE;
-  await client.query(
-    "ALTER TABLE amp_active_days DISABLE TRIGGER amp_active_days_week",
-  );
-  await client.query(
-    "ALTER TABLE amp_skill_days DISABLE TRIGGER amp_skill_days_week",
-  );
-  // A term with a shape: a slow start, a strong middle, a dip for a break.
-  await client.query(
-    `CREATE TEMP TABLE seed_day ON COMMIT DROP AS
-       SELECT d::date AS day,
-         ($2::float8[])[LEAST(1+floor((d::date-$1::date)/7)::int,array_length($2::float8[],1))] AS factor
-       FROM generate_series($1::date,LEAST((now()::date)-0,$1::date+90),interval '1 day') d
-       WHERE extract(isodow FROM d)<6`,
-    [options.yearStart, shape],
-  );
-  await client.query(
-    `INSERT INTO amp_active_days(learner_id,day,surface,skill_id,active_ms)
-       SELECT s.learner,d.day,'practice','skill-'||k,
-         floor((7+random()*9)*60000*s.diligence*d.factor)::bigint
-       FROM seed_student s CROSS JOIN seed_day d CROSS JOIN generate_series(1,$1::int) k
-       WHERE s.diligence>0 AND random()<0.82`,
-    [options.skillsPerDay],
-  );
-  await client.query(
-    `INSERT INTO amp_skill_days(learner_id,day,skill_id,attempts,correct,independent,assisted,review,review_independent)
-       SELECT s.learner,d.day,'skill-'||k,n,floor(n*0.8),floor(n*0.7),floor(n*0.1),floor(n*0.2),floor(n*0.15)
-       FROM seed_student s CROSS JOIN seed_day d CROSS JOIN generate_series(1,$1::int) k
-       CROSS JOIN LATERAL (SELECT (2+floor(random()*9))::int AS n) a
-       WHERE s.diligence>0 AND random()<0.7`,
-    [options.skillsPerDay],
-  );
-  await client.query(
-    `INSERT INTO amp_level_days(learner_id,day,frontier,policy_version)
-       SELECT s.learner,d.day,jsonb_build_object(
-           'overall',jsonb_build_object('level',round((s.grade+s.ability+(d.day-$1::date)/90.0*0.45*s.diligence*s.pace)::numeric,2),'sd',0.35,'answered',120,'independent',90),
-           'strands',jsonb_build_object(
-             'operations',jsonb_build_object('level',s.grade+s.ability,'sd',0.4,'answered',30,'independent',22),
-             'fractions',jsonb_build_object('level',s.grade+s.ability-0.2,'sd',0.45,'answered',30,'independent',20),
-             'numbers',jsonb_build_object('level',s.grade+s.ability+0.1,'sd',0.4,'answered',30,'independent',24),
-             'measurement',jsonb_build_object('level',s.grade+s.ability+0.2,'sd',0.5,'answered',20,'independent',14),
-             'algebra',jsonb_build_object('level',s.grade+s.ability-0.1,'sd',0.5,'answered',10,'independent',8))),
-         'fixture'
-       FROM seed_student s CROSS JOIN seed_day d
-       WHERE s.diligence>0 AND extract(isodow FROM d.day) IN (1,3,5)`,
-    [options.yearStart],
-  );
-  await client.query(
-    `INSERT INTO amp_learner_weeks(learner_id,week,active_ms,attempts)
-       SELECT learner_id,week,sum(active_ms)::bigint,sum(attempts)::int FROM (
-         SELECT learner_id,date_trunc('week',day)::date AS week,active_ms,0 AS attempts FROM amp_active_days
-           WHERE learner_id IN (SELECT learner FROM seed_student)
-         UNION ALL
-         SELECT learner_id,date_trunc('week',day)::date,0,attempts FROM amp_skill_days
-           WHERE learner_id IN (SELECT learner FROM seed_student)
-       ) facts GROUP BY learner_id,week
-       ON CONFLICT(learner_id,week) DO UPDATE SET active_ms=EXCLUDED.active_ms,attempts=EXCLUDED.attempts`,
-  );
-  await client.query(
-    "ALTER TABLE amp_active_days ENABLE TRIGGER amp_active_days_week",
-  );
-  await client.query(
-    "ALTER TABLE amp_skill_days ENABLE TRIGGER amp_skill_days_week",
-  );
-  // A week of what staff really do, for the log.
-  await client.query(
-    `INSERT INTO amp_school_events(id,org_id,actor_person_id,action,target_kind,target_id,detail,"at")
-       SELECT gen_random_uuid(),c.org,c.teacher,e.action,e.kind,
-         CASE e.kind WHEN 'person' THEN s.person::text ELSE c.id::text END,
-         CASE e.action
-           WHEN 'grade.final-set' THEN jsonb_build_object('after',jsonb_build_object('value',(ARRAY['A','A-','B+','B','B-','C+','Pass'])[1+floor(random()*7)::int],'classId',c.id))
-           WHEN 'student.updated' THEN jsonb_build_object('after',jsonb_build_object('gradeLevel',s.grade))
-           ELSE '{}'::jsonb END,
-         ((now() AT TIME ZONE $1)::date-1-(g/6)+interval '8 hours 20 minutes'+(g%6)*interval '71 minutes') AT TIME ZONE $1
-       FROM generate_series(1,40) g
-       CROSS JOIN LATERAL (SELECT * FROM seed_class c WHERE c.teacher IS NOT NULL ORDER BY c.id OFFSET (g*7)%(SELECT count(*) FROM seed_class WHERE teacher IS NOT NULL) LIMIT 1) c
-       CROSS JOIN LATERAL (SELECT * FROM seed_student s WHERE s.class=c.id ORDER BY s.index OFFSET g%5 LIMIT 1) s
-       CROSS JOIN LATERAL (SELECT * FROM (VALUES
-           ('grade.final-set','person'),('grade.final-set','person'),('student.card-issued','person'),
-           ('student.pictures-reset','person'),('class.code-rotated','class'),('student.updated','person')
-         ) AS v(action,kind) OFFSET g%6 LIMIT 1) e`,
-    [options.timezone],
-  );
+  await seedTerm(client, options);
+  await seedStaffEvents(client, options.timezone);
   // Setup happened back when the year began, not this morning.
   await client.query(
     "ALTER TABLE amp_school_events DISABLE TRIGGER amp_school_events_immutable",

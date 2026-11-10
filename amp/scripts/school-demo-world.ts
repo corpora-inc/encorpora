@@ -44,6 +44,7 @@ import {
 } from "./school-class-fixture";
 import { mondayOf, seedTermEvidence, iso } from "./school-org-fixture";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { FAMILY_NAMES, GIVEN_NAMES } from "../src/schools/demo/names";
 
 export const demoSizes = [30, 1000, 10000] as const;
 export type DemoSize = (typeof demoSizes)[number];
@@ -221,14 +222,8 @@ export async function startDemoServer(options: {
 
 /* The roster: names, classes and teachers for a school of any size. */
 
-const FIRST =
-  "Amara Caleb Diego Elias Eli Felix Hana Imani Isaac Jonah Kai Lena Marcus Mei Nadia Noor Owen Priya Ruth Sam Sofia Theo Tomas Zara Ada Bram Cleo Dara Emre Farah Gus Hugo Ines Jada Kofi Lila Milo Nia Omar Pia Quinn Rafi Sana Tess Uma Vik Wren Xan Yara Zeke Aiko Beni Cyra Dov Esme Femi Gael Hollis Ira Juno Kenji Lior Maren Nico Odile Pax Rosa Saul Tavi Una Vera Wade Yusuf Zoya".split(
-    " ",
-  );
-const LAST =
-  "Osei Ortiz Salas Frost Novak Grant Sato Clarke Moreno Reyes Nakamura Fischer Bell Tran Petrov Haddad Hartley Raman Adeyemi Whitlock Marin Lindqvist Vega Mensah Abara Beck Cruz Dahl Eze Flores Gupta Holm Ito Jones Kim Lund Mora Ng Obi Park Quist Rossi Silva Tate Ueda Voss Wolfe Xu Yates Zhou Achebe Bose Castro Dorsey Ekwueme Farrow Galli Hayes Iyer Jansen Kaur Lowe Mbeki Navarro Oduya Pryor Rahman Sandoval Toivonen Umeh Varga Wexler Yilmaz Zamora".split(
-    " ",
-  );
+const FIRST = GIVEN_NAMES;
+const LAST = FAMILY_NAMES;
 const TEACHER_FAMILY =
   "Okafor Lindgren Tanaka Rivera Dube Kowalski Shah Moreau Bianchi Nguyen Larsen Castillo Oyelaran Ferreira Brennan Achterberg Baptiste Chaudhry Delacroix Engel Fontaine Gallagher Halvorsen Ibarra Jaramillo Kessler Lachance Mwangi Nakashima Okonkwo Pellegrini Quintero Rasmussen Szabo Thibodeaux Underwood Valdez Whitfield Yamada Zielinski Abernathy Bergstrom Carrasco Donnelly Eriksen Fairweather Gutierrez Hollander Iwasaki Jovanovic Kirkland Lombardi Marchetti Nordstrom Ogunleye Petrakis Quigley Rourke Sorensen Takahashi Ulrich Vasquez Wainwright Xiong Yorke Zapata Amador Blackwood Cardenas Dimitriou Esposito Fitzgerald Gonzaga Haverford Ishikawa Kaminski Lindqvist Montoya Nightingale Oliveira Prescott Ravensworth Salazar Templeton Villanueva Westbrook Yablonski Zuniga Aldana Barros Cavendish Duarte Everly Falcone Granger Hollis Ingram Jessup Kingsley Lancaster Merriweather Northcott Osterhout Palmieri Quarles Redmond Sinclair Thorne Upton Vance Whitaker Yardley Zeller".split(
     " ",

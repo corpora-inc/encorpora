@@ -81,7 +81,15 @@ export async function ensureFamilyClass(
   client: PoolClient,
   pool: Pool,
   accountId: string,
-  { converting }: { converting: boolean },
+  {
+    converting,
+    withoutChildren = false,
+  }: {
+    converting: boolean;
+    /** A tutor's class (the starter): the family and its class exist before
+     * any child of this account, for children from other families. */
+    withoutChildren?: boolean;
+  },
 ): Promise<(FamilyClass & { created: boolean; enrolled: number }) | null> {
   if (!isParentAccount(accountId) || !(await familiesExist(client)))
     return null;
@@ -111,7 +119,8 @@ export async function ensureFamilyClass(
   if (!family) {
     // A child already in another family's class (approved by this parent,
     // step 5) stays there, so they alone don't make an empty class here.
-    if (!children.some((child) => !child.person_id)) return null;
+    if (!withoutChildren && !children.some((child) => !child.person_id))
+      return null;
     await createFamily(client, schools, accountId, converting);
     family = (await client.query<FamilyRow>(FAMILY, [accountId])).rows[0]!;
   }
@@ -259,6 +268,14 @@ async function createFamily(
     personId,
   );
   await schools.enroll(client, created.id, personId, "teacher", today);
+  // A family's children sign in on their own devices and stay signed in, as
+  // on a personal device; "Let … practice here" keeps its own shared session.
+  // The class's experience settings can change it.
+  await client.query(
+    `INSERT INTO amp_scope_settings(scope_kind,scope_id,"values") VALUES('class',$1,$2)
+     ON CONFLICT(scope_kind,scope_id) DO UPDATE SET "values"=amp_scope_settings."values"||excluded."values",updated_at=now()`,
+    [created.id, JSON.stringify({ deviceMode: "personal" })],
+  );
   await client.query(
     "INSERT INTO amp_families(account_id,org_id,class_id,converted_at) VALUES($1,$2,$3,$4)",
     [accountId, orgId, created.id, converting ? new Date() : null],
@@ -300,14 +317,14 @@ export async function practiceHere(
   // family's that this parent approved (step 5).
   const person =
     (
-        await client.query<{ id: string }>(
-          `SELECT p.id FROM amp_people p JOIN amp_learners l ON l.id=p.learner_id
+      await client.query<{ id: string }>(
+        `SELECT p.id FROM amp_people p JOIN amp_learners l ON l.id=p.learner_id
            JOIN amp_orgs o ON o.id=p.tenant_id AND o.kind='family'
            WHERE p.learner_id=$1 AND p.deleted_at IS NULL
              AND l.account_id=$2 AND l.deleted_at IS NULL AND NOT l.adult`,
-          [learnerId, accountId],
-        )
-      ).rows[0] ?? null;
+        [learnerId, accountId],
+      )
+    ).rows[0] ?? null;
   if (!person) throw new FamilyError(404, "learner_not_found");
   if (!canPractice) throw new FamilyError(409, "learner_cannot_practice");
   const token = generateStudentToken();
