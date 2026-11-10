@@ -111,29 +111,6 @@ const plans: SegmentedOption<string>[] = [
   { value: "month", label: "Monthly", detail: "$59 per month" },
 ];
 /** The adult start ladder (features/me/OwnStartScreen.tsx). */
-const courses: SegmentedOption<string>[] = [
-  { value: "counting", label: "Counting", detail: "Numbers, counting, shapes" },
-  {
-    value: "elementary",
-    label: "Elementary",
-    detail: "Operations, fractions, decimals",
-  },
-  {
-    value: "middle-school",
-    label: "Middle school",
-    detail: "Ratios, negatives, equations",
-  },
-  {
-    value: "algebra-1",
-    label: "Algebra",
-    detail: "Linear, quadratic, functions",
-  },
-  {
-    value: "precalculus",
-    label: "Precalculus",
-    detail: "Functions, trigonometry, vectors",
-  },
-];
 const roles: SegmentedOption<string>[] = [
   { value: "parent", label: "Parent" },
   { value: "teacher", label: "Teacher" },
@@ -208,19 +185,6 @@ function SegmentedSection() {
               value={value}
               onChange={set}
               compact
-            />
-          )}
-        </Live>
-      </Specimen>
-      <Specimen label="Stacked (a ladder of courses)">
-        <Live initial={"middle-school" as string | null}>
-          {(value, set) => (
-            <Segmented
-              label="Course"
-              options={courses}
-              value={value}
-              onChange={set}
-              stacked
             />
           )}
         </Live>
@@ -569,7 +533,9 @@ function FieldFamilySection() {
                 label="Name"
                 placeholder="Child 1"
                 value={value.name}
-                onChange={(event) => set({ ...value, name: event.target.value })}
+                onChange={(event) =>
+                  set({ ...value, name: event.target.value })
+                }
               />
               <label className={styles.fieldLabelled}>
                 <span>Birth year</span>

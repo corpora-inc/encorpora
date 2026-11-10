@@ -1,7 +1,6 @@
 import { queryOptions, useMutation } from "@tanstack/react-query";
 import { z } from "zod";
 import { ownPracticeResponse } from "../../../account/adult-contracts";
-import type { AdultStart } from "../../../learning/starting-point";
 import type { AuthSession } from "../../auth";
 import { useLearnerStore } from "../../learner-store";
 import { request } from "../../lib/api";
