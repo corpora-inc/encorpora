@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useSearch, Link } from "@tanstack/react-router";
 import { skillCatalogOptions, useLearningView } from "../../lib/learning-view";
 import { useUrlSearchText } from "../../lib/url-search-text";
+import { useHeroAction } from "../../lib/shell-slots";
 import {
   bandLabel,
   bands,
@@ -139,6 +140,25 @@ export function InventoryScreen() {
     shown && view.frontier?.overall.answered
       ? view.frontier.overall.level
       : null;
+  // Day 0: a centred hero rather than 335 untouched rows (docs/design/ia.md,
+  // rule 7). Asking for a filter or a search shows the list itself.
+  const hero =
+    !busy &&
+    !failure &&
+    view.active &&
+    !triedAnything &&
+    !search.collection &&
+    !query &&
+    !area;
+  if (hero)
+    return (
+      <main className={styles.page}>
+        <InventoryHero
+          total={allSkills.length}
+          preview={visible.slice(0, 4).map((skill) => skill.title)}
+        />
+      </main>
+    );
   return (
     <main className={styles.page}>
       {/* The app frame's bar holds the logo, the Progress tabs and the way to
@@ -360,5 +380,44 @@ function SkillRow({
         {attempts > 0 && <small>{plural(attempts, "attempt")}</small>}
       </div>
     </li>
+  );
+}
+
+/** Day 0: what Inventory will be, the one step that fills it, and the whole
+ * list a tap away. The bar's Practice steps aside for this one. */
+function InventoryHero({
+  total,
+  preview,
+}: {
+  total: number;
+  preview: readonly string[];
+}) {
+  useHeroAction(true);
+  return (
+    <section className={styles.hero} aria-labelledby="inventory-title">
+      <ul className={styles.heroPreview} aria-hidden="true">
+        {preview.map((title, index) => (
+          <li key={title} style={{ opacity: 1 - index * 0.2 }}>
+            <span>{title}</span>
+            <span className={styles.heroBar} />
+          </li>
+        ))}
+      </ul>
+      <h1 id="inventory-title">Your skills fill in as you practice</h1>
+      <p>
+        All {total.toLocaleString("en-US")} skills, from counting to
+        precalculus. Each one fills as it’s answered without help.
+      </p>
+      <Link to="/practice" className={buttonClass("primary", styles.heroGo)}>
+        Start practicing
+      </Link>
+      <Link
+        to="/inventory"
+        search={{ collection: "all" } as never}
+        className={buttonClass("quiet")}
+      >
+        Browse all {total.toLocaleString("en-US")} skills
+      </Link>
+    </section>
   );
 }
