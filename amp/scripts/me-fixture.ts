@@ -23,10 +23,12 @@ export function fixtureMe(family: FamilySummary, identity = "fixture") {
           endsAt: null,
         },
       })),
-    next: !active
-      ? "choose-plan"
-      : family.learners.length
-        ? "practice"
-        : "add-learner",
+    // As the server: a family with children opens practice whatever its
+    // consent; one without opens the starter.
+    next: family.learners.some((learner) => !learner.deletedAt)
+      ? "practice"
+      : active
+        ? "add-learner"
+        : "start",
   };
 }
