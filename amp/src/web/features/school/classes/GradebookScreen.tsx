@@ -378,7 +378,8 @@ export function GradebookScreen() {
       ...COMPONENTS.map(({ id, label }): DataGridColumn<GradeRow> => ({
         id,
         header: label,
-        width: 85,
+        // Room for "Course progress" and its sort chevron on one line.
+        width: 96,
         firstSort: "descending",
         compare: (a, b) =>
           (scoreOf(a.suggestion, id) ?? -1) - (scoreOf(b.suggestion, id) ?? -1),
