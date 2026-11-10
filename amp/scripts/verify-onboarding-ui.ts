@@ -15,12 +15,14 @@ import type { EnrollmentView } from "../src/billing/stripe/enrollment-contracts"
 import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 
 /**
- * First-run purchase flow against a synthetic API: confirm email → plan →
- * acknowledgement → Stripe Checkout redirect → verified return → learner →
- * birth year → claim → practice; plus unavailable enrollment and every return
- * phase. Measures overflow, card geometry and layout shift.
+ * "Continue with AMP" for a family's child against a synthetic API: confirm
+ * email → plan → acknowledgement → Stripe Checkout redirect → verified return
+ * → the plan is claimed for that child → back where it was opened; plus every
+ * return phase, a paid plan no learner holds yet (learner → birth year →
+ * claim → practice) and unavailable enrollment. Measures overflow, card
+ * geometry and layout shift.
  */
-const port = 4398;
+const port = Number(process.env.AMP_ONBOARDING_UI_PORT ?? 4398);
 const origin = `http://127.0.0.1:${port}`;
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 const auth = `export async function accessSession(){return {token:'synthetic',accountId:'synthetic-parent'};}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
@@ -69,7 +71,7 @@ const offers = [
 ];
 type Learner = { id: string; name: string; birthYear: number; paid: boolean };
 type State = {
-  next: "start" | "choose-plan" | "add-learner" | "practice";
+  next: "start" | "add-learner" | "practice";
   /** The parent has not confirmed the account email yet. */
   confirm: boolean;
   consent: boolean;
@@ -91,8 +93,10 @@ function me(state: State) {
     id: l.id,
     name: l.name,
     birthYear: l.birthYear,
+    // Every child practices on the free allowance; the plan licenses them.
     entitlement: {
-      active: l.paid,
+      active: true,
+      licensed: l.paid,
       plan: l.paid ? "stripe" : null,
       endsAt: null,
     },
@@ -137,7 +141,8 @@ function me(state: State) {
         deletedAt: null,
         access: [],
         stripeLinked: l.paid,
-        canPractice: l.paid,
+        canPractice: true,
+        hasAccess: l.paid,
       })),
       retained: retentionNotice,
     },
@@ -153,12 +158,19 @@ function me(state: State) {
     next: state.next,
   };
 }
+/** The starter made the family and its child, who practices free. */
+const child = () => ({
+  id: "learner-1",
+  name: "Fox",
+  birthYear: 2016,
+  paid: false,
+});
 function fresh(): State {
   return {
-    next: "choose-plan",
+    next: "practice",
     confirm: true,
     consent: false,
-    learners: [],
+    learners: [child()],
     unassigned: false,
     enrollment: {
       available: true,
@@ -442,11 +454,15 @@ try {
           `${tag}: tall sign-up card keeps padding`,
         );
       await fits(page, `${tag} sign-up`);
-      await page.goto(`${origin}/start`);
-      await page.waitForURL("**/start/verify-email");
+      // "Continue with AMP" for the child, as the free allowance's pause opens
+      // it: the email is confirmed first.
+      await page.goto(`${origin}/continue/learner-1`);
+      await page.getByRole("heading", { name: "Continue with AMP" }).waitFor();
       await page.getByRole("heading", { name: "Confirm your email" }).waitFor();
       await page.getByText("parent@example.test", { exact: true }).waitFor();
-      const verify = await box(page.locator("main section").first());
+      const title = page.getByRole("heading", { name: "Continue with AMP" }),
+        titleBox = await box(title),
+        verify = await box(page.locator("main section").first());
       const look = (name: string, role: "button" | "link" = "button") =>
         page.getByRole(role, { name, exact: true }).evaluate((node) => {
           const style = getComputedStyle(node);
@@ -460,7 +476,7 @@ try {
         });
       const primary = await look("I confirmed my email"),
         secondary = await look("Send another email"),
-        back = await look("Keep practicing free", "link");
+        back = await look("Not now", "link");
       assert.notEqual(
         primary.background,
         secondary.background,
@@ -474,12 +490,12 @@ try {
       assert.equal(
         back.decoration,
         "none",
-        `${tag}: sign-in link is a designed control`,
+        `${tag}: "Not now" is a designed control`,
       );
       assert.equal(
         back.color,
         secondary.color,
-        `${tag}: sign-in link uses the accent token`,
+        `${tag}: "Not now" uses the accent token`,
       );
       for (const control of [primary, secondary, back])
         assert.ok(control.height >= 44, `${tag}: 44px targets`);
@@ -487,25 +503,19 @@ try {
       if (width === 320 && theme === "light") await axe(page, "verify");
       await page.screenshot({ path: `${shots}/verify-${tag}.png` });
 
-      // Confirmation follows `/me` to the plan step: never consent, never a dead end.
+      // Confirmation follows `/me` to the plan, in place: never consent, never
+      // a dead end, and the title holds still.
       state.confirm = false;
       await page.getByRole("button", { name: "I confirmed my email" }).click();
-      await page.waitForURL("**/start/plan");
       const plan = page.getByRole("radiogroup", { name: "Plan" });
       await plan.waitFor();
-      const planCard = await box(page.locator("main section").first());
-      assert.ok(planCard.y >= 24, `${tag}: plan card keeps safe top padding`);
-      const planContent = await box(page.locator("main"));
-      if (planCard.height + 48 <= planContent.height)
-        assert.ok(
-          Math.abs(
-            planCard.y +
-              planCard.height / 2 -
-              (planContent.y + planContent.height / 2),
-          ) <= 1,
-          `${tag}: short setup cards are centered above the support footer`,
-        );
-      assert.equal(planCard.x, verify.x, `${tag}: plan card keeps its column`);
+      assert.match(page.url(), /\/continue\/learner-1$/);
+      assert.deepEqual(await box(title), titleBox, `${tag}: the title stays`);
+      assert.equal(
+        (await box(plan)).x,
+        verify.x,
+        `${tag}: the plan keeps the step's column`,
+      );
       assert.equal(
         await page.getByText("Enrollment is unavailable").count(),
         0,
@@ -551,14 +561,14 @@ try {
         await dialog.getByRole("button", { name: "Close" }).click();
         await dialog.waitFor({ state: "detached" });
       }
-      const card = page.locator("main section").first(),
+      const card = page.locator("main"),
         before = await box(card);
       await page.getByRole("checkbox").click();
       assert.equal(await page.getByRole("checkbox").isChecked(), true);
       assert.deepEqual(
         await box(card),
         before,
-        `${tag}: acknowledgement does not move the card`,
+        `${tag}: acknowledgement does not move the page`,
       );
       if (width === 320 && theme === "light") await axe(page, "plan");
       await page.mouse.move(0, 0);
@@ -604,6 +614,16 @@ try {
       const contextRecorded = page.waitForResponse((response) =>
         response.url().endsWith("/advertising/meta/purchase-context"),
       );
+      // The claim waits, so the paid phase can be measured before access
+      // starts and the screen goes back.
+      let releaseClaim!: () => void;
+      const claimHold = new Promise<void>((resolve) => {
+        releaseClaim = resolve;
+      });
+      await page.route("**/api/v1/billing/enrollment/claim", async (route) => {
+        await claimHold;
+        await route.fallback();
+      });
       await page.goto(
         `${origin}/start/purchase?billing=processing&purchase=${purchaseId}`,
       );
@@ -623,6 +643,9 @@ try {
       await page
         .getByRole("heading", { name: "Payment confirmed" })
         .waitFor({ timeout: 15000 });
+      await page
+        .getByRole("button", { name: "Starting access…", disabled: true })
+        .waitFor();
       await frames(page);
       assert.deepEqual(
         await box(returnCard),
@@ -637,42 +660,21 @@ try {
       await contextSent;
       await fits(page, `${tag} paid`);
       await page.screenshot({ path: `${shots}/paid-${tag}.png` });
-      await page.getByRole("link", { name: "Continue", exact: true }).click();
-      await page.waitForURL("**/start/name");
       releaseContext();
       await contextRecorded;
       assert.deepEqual(state.metaContexts, [{ checkoutId: purchaseId }]);
-      await page.getByLabel("Learner name").fill("Avery");
-      await page.getByRole("button", { name: "Continue", exact: true }).click();
-      await page.waitForURL("**/start/birth-year");
-      await page.getByRole("group", { name: "Birth year" }).waitFor();
-      await fits(page, `${tag} birth year`);
-      await page.mouse.move(0, 0);
-      await frames(page);
-      await page.screenshot({ path: `${shots}/birth-year-${tag}.png` });
-      await page.getByRole("button", { name: "2016", exact: true }).click();
-      await page.waitForURL("**/practice").catch(async (error) => {
-        console.log(
-          page.url(),
-          JSON.stringify(state.claims),
-          state.learners,
-          faults,
-          logs,
-        );
-        console.log(await page.locator("body").innerText());
-        throw error;
-      });
+      // The plan becomes the child's, and the screen goes back to where
+      // "Continue with AMP" was opened.
+      releaseClaim();
+      await page.waitForURL((url) => !url.pathname.startsWith("/start"));
+      await page.unroute("**/api/v1/billing/enrollment/claim");
       assert.deepEqual(state.claims, [{ purchaseId, learnerId: "learner-1" }]);
-      assert.equal(
-        state.learners.length,
-        1,
-        `${tag}: one learner, created after payment`,
-      );
-      assert.equal(state.learners[0]!.birthYear, 2016);
+      assert.equal(state.learners.length, 1, `${tag}: no second learner`);
+      assert.equal(state.learners[0]!.paid, true);
       assert.equal(
         state.metaContexts.length,
         1,
-        "no context from learner setup or practice",
+        "no context from the claim or practice",
       );
       assert.deepEqual(
         faults,
@@ -697,7 +699,10 @@ try {
     await serve(page, state, faults);
     const card = page.locator("main section").first();
     let reference: Awaited<ReturnType<typeof box>> | null = null;
-    // Leaving Stripe without paying returns to the first step, plan kept.
+    // Checkout is opened from "Continue with AMP" for the child.
+    await page.goto(`${origin}/continue/learner-1`);
+    await page.getByRole("radiogroup", { name: "Plan" }).waitFor();
+    // Leaving Stripe without paying returns there, plan kept.
     state.enrollment = {
       ...state.enrollment,
       purchase: purchase(
@@ -708,8 +713,8 @@ try {
     await page.goto(
       `${origin}/start/purchase?billing=canceled&purchase=${purchaseId}`,
     );
-    await page.waitForURL("**/start/plan?*");
-    await page.getByRole("heading", { name: "Choose your plan" }).waitFor();
+    await page.waitForURL("**/continue/learner-1?interval=year");
+    await page.getByRole("radiogroup", { name: "Plan" }).waitFor();
     assert.equal(await page.getByText("You left checkout").count(), 0);
     assert.equal(await page.getByText(/Step \d of/).count(), 0);
     for (const [phase, heading, url] of [
@@ -758,7 +763,7 @@ try {
     state.enrollment = { ...state.enrollment, purchase: purchase("expired") };
     await page.goto(`${origin}/start/purchase`);
     await page.getByRole("link", { name: "Start again" }).click();
-    await page.waitForURL("**/start/plan");
+    await page.waitForURL("**/continue/learner-1");
     await page.getByRole("radiogroup", { name: "Plan" }).waitFor();
     // Stripe expired the old session: the server asks for a new request id and
     // the client retries once. Then Stripe fails after the reservation: the
@@ -806,11 +811,13 @@ try {
     await page.waitForURL("https://checkout.stripe.com/**");
     assert.equal(attempts[2], attempts[1], "ambiguous failure retries same id");
     await page.unroute("**/api/v1/billing/enrollment/checkout");
-    // Payment verified, learner saved, claim fails once: retry claims, never re-creates.
+    // A paid plan no learner holds yet (paid before any learner): learner
+    // saved, claim fails once: retry claims, never re-creates.
     Object.assign(state, {
       consent: true,
       next: "add-learner",
       unassigned: true,
+      learners: [],
     });
     state.enrollment = { ...state.enrollment, purchase: purchase("paid") };
     await page.goto(`${origin}/start/plan`);
@@ -914,8 +921,7 @@ try {
         purchase: null,
       };
       await serve(page, state, faults);
-      await page.goto(`${origin}/start`);
-      await page.waitForURL("**/start/plan");
+      await page.goto(`${origin}/continue/learner-1`);
       await page
         .getByRole("heading", { name: "Enrollment isn’t open yet" })
         .waitFor();
@@ -937,14 +943,16 @@ try {
           .getByRole("heading", { name: "Confirm by email first" })
           .waitFor();
         await page.screenshot({ path: `${shots}/email-plus-${tag}.png` });
+        // The app's consent center: /start/consent is only for funded
+        // programs and invitations, and sends anyone else home.
         await page.getByRole("link", { name: "Continue with email" }).click();
-        await page.waitForURL("**/start/consent");
+        await page.waitForURL((url) => url.pathname === "/consent");
       }
       assert.deepEqual(faults, []);
       await context.close();
     }
   console.log(
-    "Onboarding: confirm email → plan → acknowledgement → Stripe redirect; return processing → paid → learner → birth year → claim → practice; every return phase, claim retry and unavailable enrollment at 320x568/390x844/768x1024/1280x800 (strict) and 844x390 (phone-landscape smoke) × light/dark; no overflow, stable card geometry, zero layout shift between phases.",
+    "Onboarding: Continue with AMP for a child: confirm email → plan → acknowledgement → Stripe redirect; return processing → paid → claim for the child → back; every return phase, a paid plan's learner → birth year → claim retry, and unavailable enrollment at 320x568/390x844/768x1024/1280x800 (strict) and 844x390 (phone-landscape smoke) × light/dark; no overflow, stable card geometry, zero layout shift between phases.",
   );
 } finally {
   await browser.close();

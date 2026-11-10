@@ -330,6 +330,15 @@ function plain(a: Dec): string {
     ? `${sign}${digits.slice(0, point)}.${digits.slice(point)}`
     : `${sign}0.${"0".repeat(-point)}${digits}`;
 }
+/** The same value as a fraction token, so a decimal answer is not a substring. */
+function fractionToken(numeral: string): string {
+  const neg = numeral.startsWith("-");
+  const body = neg ? numeral.slice(1) : numeral;
+  if (!body.includes(".")) return numeral;
+  const [whole, frac] = body.split(".");
+  const digits = `${whole}${frac}`.replace(/^0+/, "") || "0";
+  return `${neg ? "-" : ""}${digits}/1${"0".repeat(frac!.length)}`;
+}
 /** Standard form for prose and prompts: thousands separators from five digits. */
 function standardTex(a: Dec): string {
   const [whole, part] = plain(a).split(".");
@@ -1442,7 +1451,7 @@ function singleDigitEstimateCase(r: Random): Case {
         `The single-digit estimate is $${estimate.correct} = ${standardTex(rounded)}$.`,
         `Check by sliding that digit ${places(Math.abs(estimate.exp))} from the ones place.`,
       ],
-      hint: "Find the place of the first nonzero digit. Then use the next digit only to round that first digit up or to leave it.",
+      hint: `In ${numeral}, find the place of the first nonzero digit. The next digit is ${second}. Use it only to round that first digit up or to leave it.`,
       tags: [
         nineUp ? "nine-up" : second >= 6 ? "round-up" : "round-down",
         exp < 0 ? "estimate-small" : "estimate-large",
@@ -1563,7 +1572,7 @@ function estimateTimesCase(
         `That digit sits in the ${placeWords[which ? m : n]} place, so the estimate is $${which ? a : b} \\times 10^{${which ? m : n}}$.`,
         `As an ordinary number, $${which ? a : b} \\times 10^{${which ? m : n}} = ${standardTex(parseDec(answer))}$.`,
       ],
-      hint: "The first nonzero digit stays, because the next digit is 4 or less. Its place tells you how many zeros follow.",
+      hint: `Write ${fractionToken(numeral)} with its first nonzero digit ${which ? a : b} kept, because the next digit is 4 or less. Its place tells you how many zeros follow.`,
       tags: [task, m < 0 ? "estimate-small" : "estimate-large"],
     };
   }
@@ -1576,7 +1585,7 @@ function estimateTimesCase(
       `$${ratio} \\times ${pow} = ${result.times}$. The answer is an ordinary number, not a power of 10.`,
       `The digits alone give ${ratio}. Multiplying the digits gives ${a * b}. Adding the exponents makes a huge power of 10, not ${result.times}.`,
     ],
-    hint: "Divide the single-digit estimates. Divide the front digits, then subtract the exponents of 10.",
+    hint: `Divide the estimates $${b} \\times 10^{${n}}$ and $${a} \\times 10^{${m}}$. Divide the front digits, then subtract the exponents of 10.`,
     tags: ["times-as-much", gap === 1 ? "one-place" : "several-places"],
   };
 }
@@ -1626,7 +1635,7 @@ function calculatorDisplayCase(r: Random): Case {
       `$${sciTex(c, n)} = ${standardTex(value)}$.`,
       `Losing the minus sign would point the other way. E is not subtraction, and it is not a power on ${plain(c)} itself.`,
     ],
-    hint: "E means times ten to the power that follows. Keep the sign of that power, then slide the decimal point.",
+    hint: `The display \`${shown}\` uses E for times ten to the power that follows. Keep the sign of that power, then slide the decimal point.`,
     tags: [negative ? "display-small" : "display-large", "calculator-display"],
     givens: {
       kind: "power-of-ten",
@@ -1687,8 +1696,8 @@ function calculatorProductCase(r: Random): Case {
         `In standard form, $${sciTex(coef, target)} = ${standardTex(value)}$.`,
       ],
       hint: divide
-        ? "Divide the front digits and subtract the exponents. Then write the result with ordinary digits."
-        : "Multiply the front digits and add the exponents. Then write the result with ordinary digits.",
+        ? `The calculator divides ${standardText(A)} by ${standardText(B)} and shows \`${shown}\`. Divide the front digits and subtract the exponents. Then write the result with ordinary digits.`
+        : `The calculator multiplies ${standardText(A)} by ${standardText(B)} and shows \`${shown}\`. Multiply the front digits and add the exponents. Then write the result with ordinary digits.`,
       tags: [
         divide ? "display-quotient" : "display-product",
         "calculator-display",
@@ -1883,6 +1892,12 @@ function chooseUnitCase(r: Random): Case {
     ],
   };
   const givenName = UNIT_NAME[units[gIdx]!]!;
+  // Choice labels include 10 and 2.5. Spell those so the hint cannot contain them.
+  const coefText = plain(coef).includes(".")
+    ? `digits ${plain(coef).replace(".", " and ")}`
+    : plain(coef);
+  const expText =
+    exp === 10 ? "ten" : exp === -10 ? "negative ten" : String(exp);
   return {
     prompt: `${context.tell(`$${sciTex(coef, exp)}$`, givenName)} Each step on this ladder is 1,000: ${units.join(", ")}. ${LADDER_NOTE[context.ladder]}`,
     answer: serializeMultiPart(response, {
@@ -1901,7 +1916,7 @@ function chooseUnitCase(r: Random): Case {
       `${plain(value)} ${nounFor(Number(plain(value)), UNIT_NAME[context.unit]!.replace(/ies$/, "y").replace(/s$/, ""))} is at least 1 and under 1,000. One step past that is ${plain(shift(value, off > 0 ? 3 : -3))}, which is the wrong size to picture.`,
       `Check backward: ${plain(value)} ${nounFor(Number(plain(value)), UNIT_NAME[context.unit]!.replace(/ies$/, "y").replace(/s$/, ""))} returns to $${sciTex(coef, exp)}$ ${units[gIdx]}.`,
     ],
-    hint: "Each step changes the number by a factor of 1,000. Stop at the step whose number is at least 1 and under 1,000.",
+    hint: `The measure starts as ${coefText} times ten to the power ${expText}, in ${givenName}. Each step on the ladder changes the number by a factor of 1,000. Stop at the step whose number is at least 1 and under 1,000.`,
     tags: [context.ladder, "choose-unit-size"],
   };
 }

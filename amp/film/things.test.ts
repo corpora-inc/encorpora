@@ -81,7 +81,7 @@ describe("the plan", () => {
     expect(m.stateAt("d2", 11.2).lit).toBe(1);
     expect(m.stateAt("d1", 11.5).lit).toBe(0);
     expect(m.stateAt("d3", 11.5).lit).toBe(0);
-    // one gold thing at a time: never two lights at once, at any moment of the count
+    // one lit thing at a time: never two lights at once, at any moment of the count
     for (let t = 9.5; t < 14; t += 0.05) expect(["d1", "d2", "d3"].filter((n) => m.stateAt(n, t).lit > 0.5).length).toBeLessThanOrEqual(1);
     // a thing counted where it sits takes a tick as the light moves on, until the beat is over
     expect(m.stateAt("d1", 10.5).mark).toBe(0);

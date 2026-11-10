@@ -12,7 +12,8 @@
  *
  * Everything here is pure: the plan is built once from the screenplay's
  * actions, and `stateAt` is a function of time alone, so any frame can be
- * drawn by itself. A light is paint only: it never moves or resizes anything.
+ * drawn by itself. A light does not move a thing: the stage grows it about its
+ * own centre, the way a highlight grows, and a counted thing may keep a tick.
  */
 import {
   isThingKind,
@@ -133,7 +134,8 @@ export const LIGHT_R = 0.54;
 const DUR = { show: 0.4, hide: 0.35, arrive: 0.5, leave: 0.45, send: 0.9 };
 /** Seconds between things when several arrive, leave or are sent by one action. */
 const STEP = { arrive: 0.26, leave: 0.26, send: 0.34 };
-const LIGHT_UP = 0.16, LIGHT_DOWN = 0.28, HOLD = 0.35, RELEASE = 0.35;
+/** The highlight's short ease, in and out (stage.ts EMPH_IN / EMPH_OUT). */
+const LIGHT_UP = 0.2, LIGHT_DOWN = 0.22, HOLD = 0.35, RELEASE = 0.35;
 
 type Vis = { t0: number; dur: number; on: boolean; moved: boolean };
 type Hop = { t0: number; dur: number; seat: Seat };
@@ -152,7 +154,7 @@ export type ThingState = {
   pose: number;
   /** How much it counts toward its group: 1 once it starts to arrive, 0 once it starts to leave, its opacity through a plain fade. */
   present: number;
-  /** The light on it now (one thing at a time in a count), and the small muted tick that it has been counted. Paint only. */
+  /** How lit it is (one thing at a time in a count), and the small muted tick once it has been counted. The stage draws the light as a highlight. */
   lit: number; mark: number;
 };
 
@@ -317,12 +319,15 @@ export class ThingsModel {
       present = v.moved ? (v.on ? 1 : 0) : o;
     }
     let lit = 0, mark = 0;
+    // the highlight's short ease; snap the ends so a light is fully on or off, not 0.999
+    const ramp = (t0: number, dur: number) => ((t - t0) / dur >= 1 - 1e-6 ? 1 : ease(clamp((t - t0) / dur)));
     for (const l of th.lights) {
       if (t < l.t0) continue;
-      const up = clamp((t - l.t0) / LIGHT_UP);
+      const up = ramp(l.t0, LIGHT_UP);
       // in a count the light leaves one thing exactly as fast as it lands on the next: never two lit at once
-      const down = l.t1 < l.end + HOLD - 1e-6 ? LIGHT_UP : LIGHT_DOWN;
-      lit = Math.max(lit, Math.min(up, 1 - clamp((t - l.t1) / down)));
+      const downDur = l.t1 < l.end + HOLD - 1e-6 ? LIGHT_UP : LIGHT_DOWN;
+      const down = ramp(l.t1, downDur);
+      lit = Math.max(lit, Math.min(up, 1 - down));
       // the tick comes as the light moves on to the next thing
       if (l.tick) mark = Math.max(mark, Math.min(clamp((t - l.t1) / LIGHT_DOWN), 1 - clamp((t - l.end - HOLD) / RELEASE)));
     }
@@ -342,6 +347,25 @@ export class ThingsModel {
   /** How many things a group holds at time t. */
   countAt(group: string, t: number) {
     return this.seatedAt(t).filter((s) => s.seat.group === group && s.o >= 0.5).length;
+  }
+  /** True while a thing is arriving, leaving or in flight. A light is not motion. */
+  movingAt(t: number) {
+    const hit = (t0: number, dur: number) => t >= t0 - 0.03 && t <= t0 + dur + 0.03;
+    for (const th of this.things.values()) {
+      if (th.vis.some((v) => v.moved && hit(v.t0, v.dur))) return true;
+      if (th.hops.some((h) => hit(h.t0, h.dur))) return true;
+    }
+    return false;
+  }
+  /** Moments the shot's frame must include: an arrival, a flight, a leaving, and a light fully on. */
+  sampleTimes(): number[] {
+    const out: number[] = [];
+    for (const th of this.things.values()) {
+      for (const v of th.vis) if (v.moved) out.push(v.t0 + Math.min(0.12, v.dur * 0.35), v.t0 + v.dur);
+      for (const h of th.hops) out.push(h.t0 + h.dur * 0.5, h.t0 + h.dur);
+      for (const l of th.lights) out.push(l.t0 + LIGHT_UP);
+    }
+    return out;
   }
   /** When things change, so a render draws every frame of it. */
   ranges(): [number, number][] {

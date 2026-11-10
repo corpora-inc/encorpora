@@ -1,9 +1,9 @@
 /**
  * Things to count, drawn by the live player in Chrome: each thing lights as
- * its number is said, one at a time; a light is paint only (nothing moves or
- * resizes, and the picture is never re-framed); things arrive, move between
- * groups and leave; the count ticks with the voice; and the drawings wear the
- * theme's own paints in light and dark. Phone and desktop.
+ * its number is said, one at a time; a light grows that thing about its own
+ * centre and boldens its stroke, and the picture is never re-framed; things
+ * arrive, move between groups and leave; the count ticks with the voice; and
+ * the drawings wear the theme's own paints in light and dark. Phone and desktop.
  */
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
@@ -86,7 +86,7 @@ type Snap = {
   card: { l: number; t: number; r: number; b: number };
   count: { text: string; o: number };
   order: string[];
-  things: Record<string, { shown: boolean; o: number; at: string; glow: number; ring: number; tick: number; box: { l: number; t: number; r: number; b: number }; fill: string }>;
+  things: Record<string, { shown: boolean; o: number; at: string; em: number; sw: number; tick: number; box: { l: number; t: number; r: number; b: number }; fill: string }>;
 };
 /** Seek, then read every thing as the browser drew it. */
 async function at(page: Page, t: number): Promise<Snap> {
@@ -101,13 +101,15 @@ async function at(page: Page, t: number): Promise<Snap> {
       const name = g.dataset.name!;
       order.push(name);
       const shown = g.style.display !== "none";
-      const art = [...g.querySelectorAll<SVGPathElement>("path:not(.film-thing-tick)")];
+      const artG = g.querySelector<SVGGElement>(".film-thing-art");
+      const art = [...(artG ?? g).querySelectorAll<SVGPathElement>("path")];
       let l = Infinity, t0 = Infinity, r = -Infinity, b = -Infinity;
       if (shown) for (const p of art) { const q = p.getBoundingClientRect(); l = Math.min(l, q.left); t0 = Math.min(t0, q.top); r = Math.max(r, q.right); b = Math.max(b, q.bottom); }
-      const part = (cls: string) => Number(g.querySelector<SVGElement>(cls)!.style.opacity || "0");
+      const stroked = art.find((p) => p.style.stroke && p.style.stroke !== "none") ?? art[0];
       things[name] = {
         shown, o: shown ? Number(g.style.opacity || "1") : 0, at: g.getAttribute("transform") ?? "",
-        glow: part(".film-thing-glow"), ring: part(".film-thing-ring"), tick: part(".film-thing-tick"),
+        em: Number(artG?.dataset.em || 0), sw: stroked ? Number.parseFloat(stroked.style.strokeWidth || "0") : 0,
+        tick: Number(g.querySelector<SVGElement>(".film-thing-tick")!.style.opacity || "0"),
         box: { l, t: t0, r, b }, fill: getComputedStyle(art[0]!).fill,
       };
     }
@@ -122,7 +124,8 @@ async function at(page: Page, t: number): Promise<Snap> {
 }
 const ducks = ["row1", "row2", "row3", "row4", "row5"];
 const apples = ["pile1", "pile2", "pile3", "pile4"];
-const lit = (s: Snap) => Object.entries(s.things).filter(([, v]) => v.shown && (v.glow > 0.5 || v.ring > 0.5)).map(([n]) => n);
+const lit = (s: Snap) => Object.entries(s.things).filter(([, v]) => v.shown && v.em > 0.5).map(([n]) => n);
+const mid = (b: Snap["things"][string]["box"]): [number, number] => [(b.l + b.r) / 2, (b.t + b.b) / 2];
 const places = (s: Snap, names: string[]) => names.map((n) => s.things[n]!.at);
 const apart = (a: Snap["things"][string]["box"], b: Snap["things"][string]["box"]) => a.r <= b.l || b.r <= a.l || a.b <= b.t || b.b <= a.t;
 
@@ -160,21 +163,25 @@ test("things light on their numbers, paint only, in a picture that never re-fram
         expect(places(landed, ducks.slice(0, k)), where(`earlier ducks after ${k + 1}`)).toEqual(places(before, ducks.slice(0, k)));
       }
 
-      // counting things where they sit: one light at a time, exactly on the word; only paint changes
+      // counting things where they sit: one light at a time, exactly on the word; it grows in place
       const rest = await at(page, beat(1).start - 0.5);
       expect(lit(rest), where("no light between beats")).toEqual([]);
       for (let k = 0; k < 5; k++) {
         const before = await at(page, said(1, k) - 0.03);
-        expect(before.things[ducks[k]!]!.glow, where(`duck ${k + 1} just before its number`)).toBe(0);
+        expect(before.things[ducks[k]!]!.em, where(`duck ${k + 1} just before its number`)).toBe(0);
         const on = await at(page, said(1, k) + 0.3);
         expect(lit(on), where(`lit as ${k + 1} is said`)).toEqual([ducks[k]]);
-        expect(on.things[ducks[k]!]!.ring, where(`light on duck ${k + 1}`)).toBe(1);
+        const grown = on.things[ducks[k]!]!, was = rest.things[ducks[k]!]!;
+        const [cx, cy] = mid(grown.box), [rx, ry] = mid(was.box);
+        expect(Math.hypot(cx - rx, cy - ry), where(`duck ${k + 1} grows about its centre`)).toBeLessThanOrEqual(1.5);
+        expect(grown.box.r - grown.box.l, where(`duck ${k + 1} grows`)).toBeGreaterThan((was.box.r - was.box.l) * 1.08);
+        expect(grown.sw, where(`duck ${k + 1} boldens`)).toBeGreaterThan(was.sw * 1.4);
         // a counted duck keeps a tick; the one being counted and those not yet counted have none
         expect(ducks.map((n) => on.things[n]!.tick), where(`ticks as ${k + 1} is said`)).toEqual(ducks.map((_, i) => (i < k ? 1 : 0)));
-        // paint only: every thing sits exactly where it sat, at the size it had, in the same frame
+        // the light does not move the picture or the other things
         expect(on.fit, where(`frame as ${k + 1} is lit`)).toBe(rest.fit);
         expect(places(on, [...apples, ...ducks]), where(`places as ${k + 1} is lit`)).toEqual(places(rest, [...apples, ...ducks]));
-        for (const n of [...apples, ...ducks]) expect(on.things[n]!.box, where(`${n} as ${k + 1} is lit`)).toEqual(rest.things[n]!.box);
+        for (const n of [...apples, ...ducks]) if (n !== ducks[k]) expect(on.things[n]!.box, where(`${n} as ${k + 1} is lit`)).toEqual(rest.things[n]!.box);
         expect(on.count, where(`count as ${k + 1} is lit`)).toEqual({ text: "5", o: 1 });
       }
       // the last number tells how many: the last duck keeps the light to the end of the beat, then everything is plain again
@@ -238,8 +245,7 @@ test("things wear the theme's own paints in light and dark", async () => {
         };
         const lit = document.querySelector<SVGElement>('.film-thing[data-name="row3"]')!;
         return {
-          warmFill: read("--color-figure-warm-fill"), warm: read("--color-figure-warm"), goldFill: read("--color-figure-gold-fill"), gold: read("--color-figure-gold"), muted: read("--color-muted-text"),
-          glow: getComputedStyle(lit.querySelector(".film-thing-glow")!).fill, ring: getComputedStyle(lit.querySelector(".film-thing-ring")!).stroke,
+          warmFill: read("--color-figure-warm-fill"), warm: read("--color-figure-warm"), muted: read("--color-muted-text"),
           tick: getComputedStyle(lit.querySelector(".film-thing-tick")!).stroke,
         };
       });
@@ -250,12 +256,10 @@ test("things wear the theme's own paints in light and dark", async () => {
       // an apple's first layer is its body, a duck's its beak
       expect(p.apple).toBe(p.warmFill);
       expect(p.duck).toBe(p.warm);
-      expect(p.glow).toBe(p.goldFill);
-      expect(p.ring).toBe(p.gold);
       expect(p.tick).toBe(p.muted);
     }
     expect(dark.apple).not.toBe(light.apple);
-    expect(dark.ring).not.toBe(light.ring);
+    expect(dark.duck).not.toBe(light.duck);
   } finally {
     await page.close();
   }

@@ -57,7 +57,8 @@ const pitchCreate: Partial<
   },
   "pitch-buy": {
     title: "Create your account to buy",
-    detail: "Next, choose annual or monthly and pay securely with Stripe.",
+    detail:
+      "Next, tell us who’s learning, then choose annual or monthly and pay securely with Stripe.",
   },
 };
 
