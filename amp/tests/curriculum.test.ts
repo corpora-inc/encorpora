@@ -199,13 +199,13 @@ test("production queue fails closed on dangling prerequisites and cycles", () =>
 });
 
 test("skill titles are editorial sentence case, never the id with spaces", () => {
-  assert.equal(skillTitle("compare-two-digit"), "Compare two-digit numbers");
-  assert.equal(skillTitle("add-two-digit"), "Add two-digit numbers");
+  assert.equal(skillTitle("compare-two-digit"), "Two-digit comparison");
+  assert.equal(skillTitle("add-two-digit"), "Two-digit addition");
   assert.equal(skillTitle("ten-more-less"), "Ten more and ten less");
   assert.equal(skillTitle("two-step-stories"), "Two-step word problems");
   assert.equal(skillTitle("mean-median"), "Mean and median");
   assert.equal(skillTitle("two-way-tables"), "Two-way tables");
-  assert.equal(skillTitle("complete-square"), "Completing the square");
+  assert.equal(skillTitle("complete-square"), "Square completion");
   assert.equal(
     skillTitle("fundamental-theorem-algebra"),
     "Fundamental theorem of algebra",
