@@ -514,8 +514,7 @@ async function journey(
     .getByText(/1 need|1 needs/)
     .first()
     .waitFor();
-  await page.getByRole("button", { name: "Grade", exact: true }).click();
-  await page.getByRole("option", { name: "Grade 5", exact: true }).click();
+  await page.getByRole("radio", { name: "Grade 5", exact: true }).click();
   await page.getByText(/0 need attention/).waitFor();
   // A dropped connection on the apply: inline, resumable, nothing moves.
   await page.route("**/roster/apply", (route) => route.abort());

@@ -759,6 +759,41 @@ async function parentJourney(
   await page.getByText("You’re adding your own children").waitFor();
   await measured(page, `${label} add learner`);
   await shot(page, 1, "family-add", width, theme);
+
+  // The class's Settings adds a child the family way, never the school form,
+  // and the child is on Today and the map at once.
+  const place = await classOf(account);
+  await page.goto(
+    `${origin}/school/${place.org_id}/classes/${place.class_id}/settings`,
+  );
+  await page.getByRole("button", { name: "Add a child", exact: true }).click();
+  const sheet = page.getByRole("dialog", { name: "Add a child" });
+  await sheet.waitFor();
+  check(
+    `${label} no school roster fields in a family`,
+    (await sheet.getByText(/Last name|Grade/).count()) === 0,
+  );
+  await sheet.getByRole("textbox", { name: /^Name/ }).fill("Ivy");
+  await sheet.getByRole("button", { name: "Birth year" }).click();
+  await page.getByRole("option", { name: "2019", exact: true }).click();
+  await measured(page, `${label} add a child`);
+  await shot(page, 1, "settings-add-child", width, theme);
+  await sheet.getByRole("button", { name: "Add child" }).click();
+  await sheet.getByText("Ivy is in your class.").waitFor();
+  await page.keyboard.press("Escape");
+  await page.goto(`${origin}/school/${place.org_id}/classes/${place.class_id}/today`);
+  await page.getByRole("button", { name: "Let Ivy practice here" }).waitFor();
+  await page.goto(`${origin}/school/${place.org_id}/classes/${place.class_id}/map`);
+  check(
+    `${label} the new child is on the map`,
+    await page
+      .getByText("Ivy", { exact: true })
+      .first()
+      .waitFor({ timeout: 15_000 })
+      .then(() => true)
+      .catch(() => false),
+  );
+  await shot(page, 1, "map-with-new-child", width, theme);
   await context.close();
 }
 
