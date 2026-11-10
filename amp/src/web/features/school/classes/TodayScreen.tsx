@@ -15,6 +15,7 @@ import { StatRow, StatTile } from "../../../ui/StatTile";
 import { LessonBoundary } from "../../pathways/LessonRecovery";
 import { presenceOptions, useStaffSession } from "./api";
 import { ClassFrame } from "./ClassFrame";
+import { useDemoOrg } from "../demo/DemoPlace";
 import { ClassMap, MapKey } from "./ClassMap";
 import { FamilyPanel } from "./FamilyPanel";
 import { mapOptions, todayOptions } from "./teacher-api";
@@ -192,6 +193,7 @@ export function TodayScreen() {
   );
   const data = today.data;
   const week = data?.week;
+  const demo = useDemoOrg(place.org);
   return (
     <ClassFrame
       org={place.org}
@@ -223,6 +225,16 @@ export function TodayScreen() {
                   {code.slice(0, 3)}-{code.slice(3)}
                 </strong>
               </p>
+            )}
+            {demo && (
+              // A demo's bar leads to the real class, so the board opens here.
+              <Link
+                to="/school/$org/classes/$class/start"
+                params={place}
+                className={`${buttonClass("secondary")} ${styles.startClass}`}
+              >
+                Start class
+              </Link>
             )}
           </div>
           <FamilyPanel classId={place.class} />

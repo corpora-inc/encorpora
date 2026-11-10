@@ -37,23 +37,24 @@ const definitions = rows
     return { id, title, skillId, response, description };
   });
 export const timeMoneyTemplates: readonly TemplateMetadata[] = definitions.map(
-  ({ id, title, skillId, response, description }) => ({
-    id,
-    version:
-      id === "match-clock-half-hour" || id === "match-clock-five-minutes"
-        ? 2
-        : 1,
-    ...(id === "match-clock-half-hour" || id === "match-clock-five-minutes"
-      ? { reprintsFrom: 1 as const }
-      : {}),
-    title,
-    skillId,
-    gradeBand: "K–2" as const,
-    description,
-    ...(response === "choice"
-      ? { requiredResponseCapability: "single-choice-v1" as const }
-      : {}),
-  }),
+  ({ id, title, skillId, response, description }) => {
+    const bumped =
+      id === "money-total-dollars" ||
+      id === "match-clock-half-hour" ||
+      id === "match-clock-five-minutes";
+    return {
+      id,
+      version: bumped ? 2 : 1,
+      ...(bumped ? { reprintsFrom: 1 as const } : {}),
+      title,
+      skillId,
+      gradeBand: "K–2" as const,
+      description,
+      ...(response === "choice"
+        ? { requiredResponseCapability: "single-choice-v1" as const }
+        : {}),
+    };
+  },
 );
 
 type Random = (low: number, high: number) => number;

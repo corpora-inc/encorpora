@@ -42,6 +42,8 @@ export const RETENTION = {
   advertisingPaymentDays: 90,
   /** Privacy activity log. */
   privacyAuditDays: 90,
+  /** A demo class or school (all synthetic) after its owner last opened it. */
+  idleDemoDays: 30,
 } as const;
 
 /** Each run deletes at most batchSize × maxBatches rows or units per category. */

@@ -1,3 +1,4 @@
+import { touchDemoOfPersonSql } from "./demo/sql.js";
 import {
   createHash,
   randomBytes,
@@ -287,6 +288,8 @@ export class SchoolSignIn {
   private async session(personId: string, mode: StudentGrant["mode"]) {
     const { token, accountId, expiresAt } =
       await this.schools.issueStudentSession({ personId, mode });
+    // A student signing in to a demo keeps it, as its owner opening it does.
+    await this.pool.query(touchDemoOfPersonSql("$1::uuid"), [personId]);
     return { token, accountId, mode, expiresAt };
   }
 

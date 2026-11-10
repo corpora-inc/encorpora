@@ -322,6 +322,9 @@ export const orgResource = z.object({
   solo: z.boolean().optional(),
   /** Still in guided setup. */
   setupPending: z.boolean().optional(),
+  /** A demo place (docs/schools.md#demo-places): made-up students, there to
+   * explore; the real class comes from the real onboarding. */
+  demo: z.literal(true).optional(),
   /** What the caller can do here, so a screen offers only what will work. */
   can: z.array(z.enum(schoolActions)).optional(),
   /** Classes the caller teaches here, for the class-level actions in `can`. */

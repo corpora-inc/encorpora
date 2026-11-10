@@ -24,6 +24,9 @@
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.06em;
 }
+.startClass {
+  margin-top: var(--space-4);
+}
 .todos {
   container-type: inline-size;
   display: grid;
