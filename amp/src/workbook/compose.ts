@@ -109,7 +109,9 @@ export function minutesFor(
       ? 2 + (response.open?.max ?? response.rows.length)
       : response.kind === "multi-part-choice"
         ? 1 + response.blanks.length
-        : response.kind === "point-plot" || response.kind === "counter-builder"
+        : response.kind === "point-plot" ||
+            response.kind === "counter-builder" ||
+            response.kind === "shape-composer"
           ? 3
           : response.kind === "multi-select" ||
               response.kind === "figure-choice"

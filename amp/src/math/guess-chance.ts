@@ -24,6 +24,9 @@ const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
   // Older clients answer the same family through four picture choices.
   // The family estimator conservatively covers those attempts as well.
   "build-the-number-sentence": 1 / 4,
+  // The most guessable recipe places two labelled squares in two spaces:
+  // two accepted orders among 21^2 unused-or-grid-position choices.
+  "compose-flat-shape": 2 / 441,
   "circle-estimate-blanks": 1 / 8,
   "round-decimal-blanks": 1 / 8,
   "quotient-remainder-blanks": 1 / 8,
@@ -83,6 +86,7 @@ export const builtGuessChances = built.length;
 export function responseGuessChance(response: ProblemResponse): number {
   if (response.kind === "counter-builder")
     return counterBuilderGuessChance(response);
+  if (response.kind === "shape-composer") return response.guessChance;
   if (response.kind === "structured-work") return UNKNOWN_CHOICE_GUESS;
   if (response.kind === "choice") return 1 / response.options.length;
   if (response.kind === "point-plot") return pointPlotGuessChance(response);

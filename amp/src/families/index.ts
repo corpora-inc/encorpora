@@ -99,6 +99,7 @@ export { family as repeatingPattern } from "./repeating-pattern";
 export { family as rigidMotionDefinition } from "./rigid-motion-definition";
 export { family as rigidMotionChecks } from "./rigid-motion-checks";
 export { family as rulerLinePlot } from "./ruler-line-plot";
+export { family as shapeComposer } from "./shape-composer";
 export { family as shapeFigureGap } from "./shape-figure-gap";
 export { family as shareRemainder } from "./share-remainder";
 export { family as showWorkWordProblem } from "./show-work-word-problem";

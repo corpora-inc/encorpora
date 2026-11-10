@@ -31,6 +31,7 @@ import {
   normalizeCounterBuilder,
 } from "./counter-builder";
 import { generateCounterBuilderFallback } from "./counter-builder-practice";
+import { gradeShapeComposer, normalizeShapeAnswer } from "./shape-composer";
 import { gradeMultiPart, normalizeMultiPart } from "./multi-part-choice";
 import {
   multiPartChoiceTemplates,
@@ -714,6 +715,9 @@ export function isValidResponse(
 ): boolean {
   if (problem.response.kind === "counter-builder")
     return normalizeCounterBuilder(problem.response, response) !== null;
+  if (problem.response.kind === "shape-composer")
+    return normalizeShapeAnswer(problem.response, response) !== null;
+  if (response.length > 200) return false;
   if (problem.response.kind === "multi-select")
     return normalizeSelection(problem.response, response) !== null;
   if (problem.response.kind === "point-plot")
@@ -738,6 +742,8 @@ export function gradeAnswer(
       problem.answer,
       response,
     );
+  if (problem.public.response.kind === "shape-composer")
+    return gradeShapeComposer(problem.public.response, response);
   if (problem.public.response.kind === "multi-select") {
     const answer = normalizeSelection(problem.public.response, response);
     return (
