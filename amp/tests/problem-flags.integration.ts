@@ -4,10 +4,9 @@ import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { Pool } from "pg";
 import { migrate } from "../scripts/migrate.js";
-import { PostgresRepository } from "../src/server/repository.js";
+import { PostgresRepository, type SavedProblem } from "../src/server/repository.js";
 import { buildApp } from "../src/server/app.js";
 import { FamilyRepository } from "../src/family/repository.js";
-import { generateProblem } from "../src/math/engine.js";
 import { purgeProblemFlags } from "../src/feedback/retention.js";
 import { purgeTrialRecords } from "../src/privacy/retention.js";
 import { RETENTION } from "../src/privacy/retention-periods.js";
@@ -55,6 +54,7 @@ test(
       const { token, learnerId } = created.json();
       const trial = { authorization: `Trial ${token}` };
       const base = `/api/v1/learners/${learnerId}`;
+      const served = new Map<string, SavedProblem>();
       const serve = async (headers: Record<string, string>, path = base) => {
         const batch = await app.inject({
           method: "POST",
@@ -63,7 +63,19 @@ test(
           payload: { count: 1 },
         });
         assert.equal(batch.statusCode, 200, batch.body);
-        return batch.json().problems[0];
+        const problem = batch.json().problems[0];
+        // Client capability fallbacks can change the response and answer.
+        // Reports and attempts must use the immutable instance actually served.
+        const stored = (
+          await pool.query<{ content: SavedProblem }>(
+            "SELECT content FROM amp_instances WHERE id=$1 AND learner_id=$2",
+            [problem.id, path.split("/").at(-1)],
+          )
+        ).rows[0]?.content;
+        assert.ok(stored);
+        assert.deepEqual(stored.public, problem);
+        served.set(problem.id, stored);
+        return problem;
       };
       const answer = async (
         headers: Record<string, string>,
@@ -76,7 +88,8 @@ test(
         correct: boolean,
         path = base,
       ) => {
-        const solution = generateProblem(problem.templateId, problem.seed);
+        const solution = served.get(problem.id);
+        assert.ok(solution);
         const response = correct
           ? solution.answer
           : problem.response.kind === "choice"
@@ -90,6 +103,7 @@ test(
           payload: { problemId: problem.id, requestId: randomUUID(), response },
         });
         assert.equal(attempt.statusCode, 200, attempt.body);
+        assert.equal(attempt.json().correct, correct);
         return response;
       };
       const report = (
@@ -128,11 +142,11 @@ test(
           sent.json().id,
         ])
       ).rows;
-      const solved = generateProblem(open.templateId, open.seed);
+      const solved = served.get(open.id)!;
       assert.equal(row.learner_id, learnerId);
       assert.equal(row.problem_id, open.id);
       assert.equal(row.template_id, open.templateId);
-      assert.equal(row.template_version, 1);
+      assert.equal(row.template_version, solved.public.templateVersion);
       assert.equal(row.seed, open.seed);
       assert.equal(row.skill_id, open.skillId);
       assert.equal(row.prompt, solved.public.prompt);
