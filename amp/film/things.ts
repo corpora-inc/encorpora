@@ -7,8 +7,9 @@
  * tidy scatter, or the cells of a five- or ten-frame), so nothing shifts when
  * a thing comes, goes or is lit. Each thing keeps its name (`a1`, `a2`, …)
  * wherever it goes. A film can make things arrive one by one, count along
- * (each thing lights exactly as its number is said), send things to another
- * group (joining, taking away, sharing) and make things leave.
+ * (each thing lights, and takes its tick, as its own number is said, the last
+ * one included), send things to another group (joining, taking away, sharing)
+ * and make things leave.
  *
  * Everything here is pure: the plan is built once from the screenplay's
  * actions, and `stateAt` is a function of time alone, so any frame can be
@@ -136,11 +137,20 @@ const DUR = { show: 0.4, hide: 0.35, arrive: 0.5, leave: 0.45, send: 0.9 };
 const STEP = { arrive: 0.26, leave: 0.26, send: 0.34 };
 /** The highlight's short ease, in and out (stage.ts EMPH_IN / EMPH_OUT). */
 const LIGHT_UP = 0.2, LIGHT_DOWN = 0.22, HOLD = 0.35, RELEASE = 0.35;
+/**
+ * A count's light and tick finish inside this. 60 ms after a number word
+ * starts, the thing it names is the lit one and its tick is on.
+ */
+const COUNT_ON = 0.05;
 
 type Vis = { t0: number; dur: number; on: boolean; moved: boolean };
 type Hop = { t0: number; dur: number; seat: Seat };
-/** Lit from t0 to t1. `tick`: it was counted where it sits, so it keeps a small muted tick until the beat is over (`end`). */
-type Light = { t0: number; t1: number; end: number; tick: boolean };
+/**
+ * Lit from t0 to t1. `tick`: counted where it sits, so a small muted tick stays
+ * until the beat is over (`end`). `count`: the light and the tick meet the
+ * number word, on the short count ease, instead of the highlight's ease.
+ */
+type Light = { t0: number; t1: number; end: number; tick: boolean; count?: boolean };
 type Thing = { name: string; kind: ThingKind; home: Seat; start: boolean; vis: Vis[]; hops: Hop[]; lights: Light[] };
 
 export type ThingState = {
@@ -293,8 +303,8 @@ export class ThingsModel {
       const stays = !!this.shown.get(n) && !a.into;
       if (!this.shown.get(n)) this.vis(n, t, DUR.arrive, true, true);
       if (a.into) this.hop(n, a.into, t, dur, "count");
-      // (the last thing counted keeps the light to the end of the beat instead: the last number tells how many)
-      this.things.get(n)!.lights.push({ t0: t, t1: next, end: beatEnd, tick: stays && k + 1 < who.length });
+      // the light and the tick both start as this number is said, including the last thing. The last one keeps the light to the end of the beat: the last number tells how many
+      this.things.get(n)!.lights.push({ t0: t, t1: next, end: beatEnd, tick: stays, count: true });
     });
     return run.times[who.length - 1]! - t0 + dur;
   }
@@ -323,13 +333,14 @@ export class ThingsModel {
     const ramp = (t0: number, dur: number) => ((t - t0) / dur >= 1 - 1e-6 ? 1 : ease(clamp((t - t0) / dur)));
     for (const l of th.lights) {
       if (t < l.t0) continue;
-      const up = ramp(l.t0, LIGHT_UP);
+      const upDur = l.count ? COUNT_ON : LIGHT_UP;
+      const up = ramp(l.t0, upDur);
       // in a count the light leaves one thing exactly as fast as it lands on the next: never two lit at once
-      const downDur = l.t1 < l.end + HOLD - 1e-6 ? LIGHT_UP : LIGHT_DOWN;
-      const down = ramp(l.t1, downDur);
+      const handoff = l.t1 < l.end + HOLD - 1e-6;
+      const down = ramp(l.t1, handoff ? upDur : LIGHT_DOWN);
       lit = Math.max(lit, Math.min(up, 1 - down));
-      // the tick comes as the light moves on to the next thing
-      if (l.tick) mark = Math.max(mark, Math.min(clamp((t - l.t1) / LIGHT_DOWN), 1 - clamp((t - l.end - HOLD) / RELEASE)));
+      // the tick comes as this thing's own number starts, and stays until the beat is over
+      if (l.tick) mark = Math.max(mark, Math.min(clamp((t - l.t0) / (l.count ? COUNT_ON : LIGHT_DOWN)), 1 - clamp((t - l.end - HOLD) / RELEASE)));
     }
     return { from, to, u, flying, flightStart, o, pose, present, lit, mark };
   }

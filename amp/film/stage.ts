@@ -400,7 +400,9 @@ function coversNeighbour(el: Element, em: number) {
       const box = node.getBoundingClientRect();
       const ocx = (box.left + box.right) / 2, ocy = (box.top + box.bottom) / 2;
       const outside = !(ocx > rest.l && ocx < rest.r && ocy > rest.t && ocy < rest.b);
-      if (outside && box.width >= 0.5 && boxesMeet(grown, { l: box.left, t: box.top, r: box.right, b: box.bottom }, 2)) return true;
+      // a frame the thing already sits inside (a ten-frame's grid) is not a neighbour it grows into
+      const contains = box.left <= rest.l + 1 && box.top <= rest.t + 1 && box.right >= rest.r - 1 && box.bottom >= rest.b - 1;
+      if (outside && !contains && box.width >= 0.5 && boxesMeet(grown, { l: box.left, t: box.top, r: box.right, b: box.bottom }, 2)) return true;
     }
     if (node instanceof HTMLElement && node.classList.contains("film-label")) return false;
     for (const c of node.children) if (see(c, o)) return true;
