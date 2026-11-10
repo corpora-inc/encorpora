@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { count, isAre, nounFor } from "./agreement";
 import type {
   FigureChoiceResponse,
   GeneratedProblem,
@@ -737,12 +738,12 @@ function choosePartition(r: Random) {
   const noun: FigureChoiceNoun = "Picture";
   const options = [
     {
-      description: `${rows} rows and ${columns} columns of equal squares filling the rectangle`,
+      description: `${count(rows, "row")} and ${count(columns, "column")} of equal squares filling the rectangle`,
       scene: picture(correct),
       correct: true as const,
     },
     {
-      description: `${columns} rows and ${rows} columns of equal rectangles that are not squares, filling the same outer rectangle`,
+      description: `${count(columns, "row")} and ${count(rows, "column")} of equal rectangles that are not squares, filling the same outer rectangle`,
       scene: picture(turned),
       feedback: "These are not squares: the rows and columns were swapped inside the same outer rectangle, so each piece is stretched.",
     },
@@ -752,9 +753,9 @@ function choosePartition(r: Random) {
       feedback: "The columns are not the same width, so the pieces are not same-size squares.",
     },
     {
-      description: `${rows} rows and ${columns - 1} columns of equal squares, with an empty strip on the right of the same outer rectangle`,
+      description: `${count(rows, "row")} and ${count(columns - 1, "column")} of equal squares, with an empty strip on the right of the same outer rectangle`,
       scene: picture(short),
-      feedback: `That partition has ${columns - 1} columns, one fewer than ${columns}.`,
+      feedback: `That partition has ${count(columns - 1, "column")}, one fewer than ${columns}.`,
     },
   ];
   if (
@@ -785,13 +786,13 @@ function choosePartition(r: Random) {
   const letter = figureOptionLetters[at];
   return {
     family: "choose-partition",
-    prompt: `Which rectangle is partitioned into ${rows} rows and ${columns} columns of same-size squares?`,
+    prompt: `Which rectangle is partitioned into ${count(rows, "row")} and ${count(columns, "column")} of same-size squares?`,
     hint: `Same-size squares means every piece has equal width and equal height, and the width matches the height. Count the rows down the side and the columns across the top. Swapping the counts inside the same outer rectangle stretches the pieces.`,
     explanation: [
       `The rectangle is ${columns} units wide and ${rows} units tall, so ${rows} rows of ${columns} unit squares fill it.`,
-      `Picture ${letter} shows ${rows} rows and ${columns} columns of equal squares.`,
+      `Picture ${letter} shows ${count(rows, "row")} and ${count(columns, "column")} of equal squares.`,
       `The ${columns}-by-${rows} picture uses the same outer rectangle, so its pieces are not squares.`,
-      `Unequal column widths are not same-size squares, and ${columns - 1} columns is a miscount by one.`,
+      `Unequal column widths are not same-size squares, and ${count(columns - 1, "column")} is a miscount by one.`,
     ],
     response,
     answer,
@@ -847,7 +848,7 @@ function regionsToWhole(r: Random) {
   return {
     family: "regions-to-whole",
     prompt: `Use the regions to find ${g.rows} × ${g.columns}. ${g.rows} × ${g.cut} = __, ${g.rows} × ${g.rest} = __, so ${g.rows} × ${g.columns} = __ + __ = __.`,
-    hint: `The cut is after ${g.cut} columns, and ${g.rest} columns are left. Multiply ${g.rows} by each part. The whole array is those two regions added; the total number of squares did not change.`,
+    hint: `The cut is after ${count(g.cut, "column")}, and ${count(g.rest, "column")} ${isAre(g.rest)} left. Multiply ${g.rows} by each part. The whole array is those two regions added; the total number of squares did not change.`,
     explanation: [
       `The line keeps ${g.cut} columns on one side and ${g.rest} on the other. ${g.cut} + ${g.rest} = ${g.columns}.`,
       `${g.rows} × ${g.cut} = ${a} and ${g.rows} × ${g.rest} = ${b}.`,
@@ -880,7 +881,7 @@ function whichSplit(r: Random) {
     },
     {
       label: add,
-      feedback: `The leftover ${g.rest} columns are ${g.rows} × ${g.rest} squares, not ${g.rest} squares. Adding ${g.rest} drops the rows.`,
+      feedback: `The leftover ${count(g.rest, "column")} ${isAre(g.rest)} ${g.rows} × ${g.rest} ${nounFor(g.rest, "square")}, not ${count(g.rest, "square")}. Adding ${g.rest} drops the rows.`,
     },
   ];
   const chosen = choiceResponse(r, cards);
@@ -1673,7 +1674,7 @@ function firstChunkChoice(r: Random) {
     },
     {
       label: String(small),
-      feedback: `${small} is ${width} tens written as ${small} ones. The first width is ${width}.`,
+      feedback: `${count(small, "one")} is ${count(width, "ten")} written in the ones place. The first width is ${width}.`,
     },
     {
       label: String(huge),

@@ -2,6 +2,7 @@ import { z } from "zod";
 import { base, fill, label, num as zNum, small } from "../base";
 import { registerComponent, type Prim } from "../layout";
 import type { FillRole, Point } from "../spec";
+import { count } from "../../agreement";
 import { num, spoken } from "./format";
 
 /** A rectangle partitioned by place value or by terms: an area model. */
@@ -174,7 +175,7 @@ registerComponent("areaModel", {
     const A = c.acrossLabels?.join(" + ") ?? c.across.map(num).join(" + "),
       D = c.downLabels?.join(" + ") ?? c.down.map(num).join(" + ");
     const out = [
-      `An area model: a rectangle ${A} across and ${D} down, split into ${c.across.length * c.down.length} regions${areaScale(c) === "schematic" ? " (not to scale)" : ""}.`,
+      `An area model: a rectangle ${A} across and ${D} down, split into ${count(c.across.length * c.down.length, "region")}${areaScale(c) === "schematic" ? " (not to scale)" : ""}.`,
     ];
     if (
       (c.products ?? "derived") === "shown" ||
