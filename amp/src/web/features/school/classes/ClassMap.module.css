@@ -1,0 +1,261 @@
+/* The class map: a row per student on one shared scale (ui/level-range).
+   One grid for the whole table: the name column is as wide as the longest
+   name (up to a limit), the bars take the rest, the ranges sit at the end. */
+.map {
+  display: grid;
+  gap: var(--space-3);
+}
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+.table {
+  display: grid;
+  grid-template-columns: fit-content(220px) minmax(0, 1fr) auto;
+  column-gap: var(--space-5);
+  padding: var(--space-2) var(--space-5) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+}
+.head,
+.row {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+}
+/* The sort controls share the top line; the axis sits under them, over
+   the bars, never under a control. */
+.head {
+  align-items: start;
+  padding-bottom: var(--space-1);
+}
+.head > [role="columnheader"]:first-child {
+  display: flex;
+}
+.levelHead {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-1);
+  min-width: 0;
+}
+.headAxis {
+  display: block;
+  width: 100%;
+}
+.numbersHead {
+  align-self: end;
+  color: var(--color-subtle-text);
+  font-size: var(--text-table-small);
+  font-weight: 600;
+  line-height: 18px;
+  text-align: end;
+}
+/* A quiet sort control: the label, a chevron a small step away, the
+   standard focus ring. Its fill appears only on hover. */
+.sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  margin-inline: calc(-1 * var(--space-2));
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: var(--radius-small);
+  background: transparent;
+  color: var(--color-muted-text);
+  font: inherit;
+  font-size: var(--text-label);
+  font-weight: 650;
+  cursor: pointer;
+}
+.sort[data-active] {
+  color: var(--color-on-surface-raised);
+}
+.sort:hover {
+  background: var(--color-surface-raised-hover);
+}
+.sort:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.chevron {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.4;
+  transition: transform var(--motion-fast) var(--ease-standard);
+}
+.chevron[data-direction] {
+  opacity: 1;
+}
+.chevron[data-direction="ascending"] {
+  transform: rotate(180deg);
+}
+.row {
+  min-height: 44px;
+}
+.name {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+.student {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  min-width: 0;
+  border-radius: var(--radius-small);
+  color: inherit;
+  font-size: var(--text-table);
+  font-weight: 550;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.student:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.student:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.bar {
+  display: block;
+  min-width: 0;
+}
+.numbers {
+  align-self: center;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+  text-align: end;
+  white-space: nowrap;
+}
+.notYet {
+  color: var(--color-subtle-text);
+}
+
+/* Phones: name and range on one line, the bar under them at full width;
+   the axis under the header the same width as the bars. */
+@media (max-width: 599.98px) {
+  .table {
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: var(--space-3);
+    padding-inline: var(--space-4);
+  }
+  .levelHead {
+    display: contents;
+  }
+  .levelHead > button {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+  .headAxis {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  .numbersHead {
+    display: none;
+  }
+  .row {
+    grid-template-rows: auto 26px;
+    min-height: 0;
+    padding-bottom: var(--space-2);
+  }
+  .student {
+    min-height: 36px;
+  }
+  .numbers {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .bar {
+    --band-inset: 4px;
+    --band-radius: 6px;
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
+
+/* What the marks mean. */
+.key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-5);
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+.keyItem {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  white-space: nowrap;
+}
+.keyCourse {
+  width: 16px;
+  height: 18px;
+  border-radius: 3px;
+  background: var(--color-course-band);
+}
+.keyBand {
+  position: relative;
+  width: 28px;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-primary) 16%, transparent),
+    color-mix(in srgb, var(--color-primary) 52%, transparent) 55%,
+    color-mix(in srgb, var(--color-primary) 16%, transparent)
+  );
+}
+.keyBand span {
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  width: 12px;
+  height: 12px;
+  box-sizing: border-box;
+  border: 2.5px solid var(--color-surface);
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+  transform: translate(-50%, -50%);
+}
+
+/* Before anyone has practiced: what the quiet ranges are, and the step
+   that starts it. */
+.starting {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-panel);
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+}
+.startingTitle {
+  margin: 0;
+  font-weight: 700;
+}
+.startingBody {
+  max-width: 52ch;
+  margin: 2px 0 0;
+  font-size: var(--text-table);
+  line-height: 1.45;
+}
+.toolbar[hidden] {
+  display: none;
+}

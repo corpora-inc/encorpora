@@ -663,6 +663,10 @@ export async function readProgress(
   timezone: string,
   today: string,
   reference: { from: number; to: number } | null,
+  /** "counted": objectives as a grade counts them (above the student's
+   * working level less the reach). "all": every one gained, for the
+   * learner's own record, where something earned never disappears. */
+  objectiveList: "counted" | "all" = "counted",
 ): Promise<ProgressRecord> {
   const roster: RosterMember[] = [
     { personId: member.personId, learnerId: member.learnerId },
@@ -726,7 +730,7 @@ export async function readProgress(
     })),
     objectives: countedObjectives(
       objectives.get(member.personId) ?? [],
-      level ? level.overall.level - 1 : null,
+      level && objectiveList === "counted" ? level.overall.level - 1 : null,
     )
       .slice(0, 10)
       .map(({ skillId, day }) => ({

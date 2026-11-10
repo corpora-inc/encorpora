@@ -4,7 +4,7 @@ import {
   useQueryClient,
   useSuspenseQuery,
 } from "@tanstack/react-query";
-import { Link, Navigate, useParams } from "@tanstack/react-router";
+import { Navigate, useParams } from "@tanstack/react-router";
 import { useState } from "react";
 import type { AuthSession } from "../../auth";
 import { invalidateAccount, sessionOptions } from "../../lib/query";
@@ -17,7 +17,12 @@ import type {
 } from "../../../workbook/contracts";
 import { saveWorkbookResults, workbookResultsOptions } from "./api";
 import { dateLabel, sectionNames, workbookMessage } from "./model";
-import { WorkbookFrame, type WorkbookLearner } from "./WorkbookFrame";
+import {
+  WorkbookFrame,
+  WorkbookTrail,
+  whose,
+  type WorkbookLearner,
+} from "./WorkbookFrame";
 import styles from "./Workbooks.module.css";
 
 type Draft = { answer?: string; mark?: "right" | "not-yet" };
@@ -104,24 +109,16 @@ function Results({
   const open = data?.rows.filter((row) => !row.recorded).length ?? 0;
   return (
     <>
-      <div className={styles.head}>
-        <p className={styles.eyebrow}>{learner.name} · Workbook results</p>
-        <Link
-          to="/learners/$learnerId/workbooks"
-          params={{ learnerId: learner.id }}
-          className={styles.textLink}
-        >
-          Past workbooks
-        </Link>
-      </div>
+      <WorkbookTrail learner={learner} />
       <h1 className={styles.title}>
         {data
           ? `No. ${data.workbook.number} · ${dateLabel(data.workbook.date)}`
           : "Workbook results"}
       </h1>
       <p className={styles.lede}>
-        Type {learner.name}'s answer to have it checked, or mark each problem
-        right or not yet. Saved results update progress right away.
+        {whose(learner).own
+          ? "Type your answer to have it checked, or mark each problem right or not yet. Saved results update your progress right away."
+          : `Type ${learner.name}’s answer to have it checked, or mark each problem right or not yet. Saved results update progress right away.`}
       </p>
       {results.error ? (
         <p className={styles.message} role="alert">

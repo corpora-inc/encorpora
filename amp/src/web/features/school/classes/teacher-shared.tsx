@@ -145,6 +145,10 @@ export function LoadFailed({
   );
 }
 
+/** Who reads a record: a teacher or parent reads someone else's ("On their
+ * own"); a learner reading their own work reads it to them ("On your own").
+ * The other results read the same to both. */
+export type RecordReader = "other" | "self";
 const RESULTS: Record<WorkItem["result"], { label: string; tone: BadgeTone }> =
   {
     independent: { label: "On their own", tone: "success" },
@@ -152,8 +156,22 @@ const RESULTS: Record<WorkItem["result"], { label: string; tone: BadgeTone }> =
     paper: { label: "Marked on paper", tone: "neutral" },
     missed: { label: "Missed", tone: "danger" },
   };
+export function resultLabel(
+  result: WorkItem["result"],
+  reader: RecordReader = "other",
+) {
+  return result === "independent" && reader === "self"
+    ? "On your own"
+    : RESULTS[result].label;
+}
 /** Real problems a student worked, as they read them. */
-export function WorkList({ work }: { work: readonly WorkItem[] }) {
+export function WorkList({
+  work,
+  reader = "other",
+}: {
+  work: readonly WorkItem[];
+  reader?: RecordReader;
+}) {
   return (
     <ul className={styles.problems}>
       {work.map((item) => (
@@ -180,7 +198,7 @@ export function WorkList({ work }: { work: readonly WorkItem[] }) {
             )}
           </span>
           <Badge tone={RESULTS[item.result].tone}>
-            {RESULTS[item.result].label}
+            {resultLabel(item.result, reader)}
           </Badge>
         </li>
       ))}

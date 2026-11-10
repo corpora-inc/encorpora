@@ -5,7 +5,14 @@ import type {
 } from "../../../../schools/teacher-contracts";
 import { levelScale, LevelTrack } from "../../../ui/LevelChart";
 import { StatRow, StatTile } from "../../../ui/StatTile";
-import { fullDay, number, shortDay, TipZone, WorkList } from "./teacher-shared";
+import {
+  fullDay,
+  number,
+  shortDay,
+  TipZone,
+  WorkList,
+  type RecordReader,
+} from "./teacher-shared";
 import styles from "./Teacher.module.css";
 
 /* One learner's progress, as a record shows it. A teacher's student record and
@@ -114,11 +121,18 @@ export function RecordObjectives({ record }: { record: ProgressRecord }) {
   );
 }
 
-/** The latest problems and how each went. */
-export function RecordWork({ record }: { record: ProgressRecord }) {
+/** The latest problems and how each went. `reader="self"` when the learner
+ * reads their own record. */
+export function RecordWork({
+  record,
+  reader = "other",
+}: {
+  record: ProgressRecord;
+  reader?: RecordReader;
+}) {
   if (record.work.length === 0)
     return <p className={styles.quietLine}>No problems yet.</p>;
-  return <WorkList work={record.work} />;
+  return <WorkList work={record.work} reader={reader} />;
 }
 
 const DAY = 86_400_000;
@@ -150,9 +164,18 @@ export function TimeDetail({
     },
     (_, index) => addDays(time.range.from, index),
   ).slice(-42);
-  // Where the time went: skills with measured time, not answers alone.
-  const skills = time.skills.filter((skill) => skill.minutes > 0);
+  // Where the time went: every skill worked, by its time; a skill with a
+  // few quick answers still shows, as under a minute or as its problems.
+  const skills = time.skills.filter(
+    (skill) => skill.minutes > 0 || skill.problems > 0,
+  );
   const largestSkill = Math.max(1, ...skills.map((s) => s.minutes));
+  const spent = (skill: (typeof skills)[number]) =>
+    skill.minutes >= 1
+      ? `${number(Math.round(skill.minutes))} min`
+      : skill.minutes > 0
+        ? "under 1 min"
+        : `${number(skill.problems)} ${skill.problems === 1 ? "problem" : "problems"}`;
   // Its parts sit in the caller's own stack, as the sheet's did.
   return (
     <>
@@ -202,14 +225,12 @@ export function TimeDetail({
             {skills.map((skill) => (
               <li key={skill.skillId}>
                 <span className={styles.skillName}>{skill.title}</span>
-                <span className={styles.skillValue}>
-                  {number(skill.minutes)} min
-                </span>
+                <span className={styles.skillValue}>{spent(skill)}</span>
                 <span className={styles.skillTrack}>
                   <span
                     className={styles.skillFill}
                     style={{
-                      width: `${(skill.minutes / largestSkill) * 100}%`,
+                      width: `${Math.max(2, (skill.minutes / largestSkill) * 100)}%`,
                     }}
                   />
                 </span>

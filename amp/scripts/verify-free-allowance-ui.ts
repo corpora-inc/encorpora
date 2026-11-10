@@ -654,7 +654,9 @@ async function adultJourney(
     .first()
     .click();
   await page.waitForURL(`**/learners/${learnerId}/workbooks`);
-  await page.getByLabel("Enter results with the workbook code").waitFor();
+  await page
+    .getByRole("button", { name: "Enter results with a code" })
+    .waitFor();
   await settle(page, 300);
   await workbooksUsed(page, `${label} workbooks`, "Continue with AMP");
   await measured(page, `${label} workbooks`);

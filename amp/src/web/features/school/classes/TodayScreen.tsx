@@ -17,6 +17,7 @@ import { presenceOptions, useStaffSession } from "./api";
 import { ClassFrame } from "./ClassFrame";
 import { useDemoOrg } from "../demo/DemoPlace";
 import { ClassMap, MapKey } from "./ClassMap";
+import { useSchoolNavigation } from "../../navigation/school-navigation";
 import { FamilyPanel } from "./FamilyPanel";
 import { mapOptions, todayOptions } from "./teacher-api";
 import {
@@ -340,6 +341,15 @@ export function MapScreen() {
   const place = useParams({ from: "/school/$org/classes/$class/map" });
   const session = useStaffSession();
   const map = useQuery(mapOptions(session, place));
+  // The class's code board, where students join; offered as the map's one
+  // step only where the bar would offer it (a current class).
+  const { start } = useSchoolNavigation({
+    kind: "class",
+    org: place.org,
+    classId: place.class,
+    active: "map",
+    board: false,
+  });
   return (
     <ClassFrame
       org={place.org}
@@ -361,7 +371,20 @@ export function MapScreen() {
             <h1>Class map</h1>
             <MapKey data={map.data} />
           </div>
-          <ClassMap data={map.data} />
+          <ClassMap
+            data={map.data}
+            action={
+              start ? (
+                <Link
+                  to="/$"
+                  params={{ _splat: classUrl(place.org, place.class, "start") }}
+                  className={buttonClass("primary")}
+                >
+                  Start class
+                </Link>
+              ) : undefined
+            }
+          />
         </div>
       )}
     </ClassFrame>

@@ -1,14 +1,8 @@
-/* The adult's own record reads in the teacher's record styles
-   (school/classes/Teacher.module.css); this adds only what is theirs. */
-.free {
-  margin: 2px 0 0;
-  color: var(--color-muted-text);
-  font-size: var(--text-label);
-  font-variant-numeric: tabular-nums;
-}
+/* The adult's own place (`/me`). One column at a reading width: the level is the page; time and work
+   follow under it as they grow. */
 .page {
   box-sizing: border-box;
-  width: min(100%, var(--width-content-wide));
+  width: min(100%, 800px);
   margin: 0 auto;
   padding: var(--space-5) max(var(--space-4), env(safe-area-inset-right))
     max(var(--space-7), env(safe-area-inset-bottom))
@@ -16,25 +10,79 @@
 }
 @media (min-width: 768px) {
   .page {
+    padding-top: var(--space-6);
     padding-inline: max(var(--space-5), env(safe-area-inset-left));
   }
 }
-/* The one quiet way to practice as someone else (features/profiles). */
-.quietLink {
-  display: inline-flex;
+.stack {
+  display: grid;
+  gap: var(--space-5);
+}
+/* Their time and work, in the teacher's record styles
+   (school/classes/Teacher.module.css). */
+.record {
+  display: grid;
+  gap: var(--space-7);
+  margin-top: var(--space-2);
+}
+.practice svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+.practice {
+  padding-inline: var(--space-5);
+}
+/* Under the level: the free count at the start, the quiet actions at the
+   end; one line on a wide screen, two on a phone. */
+.tools {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  min-height: 44px;
-  color: var(--color-primary);
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-4);
+  margin-top: calc(-1 * var(--space-2));
+}
+.free {
+  min-height: 1lh;
+  margin: 0;
+  color: var(--color-muted-text);
   font-size: var(--text-label);
-  font-weight: 650;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  font-variant-numeric: tabular-nums;
 }
-.quietLink:hover {
-  text-decoration-thickness: 2px;
+.free:empty {
+  display: none;
 }
-.quietLink:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: 2px;
-  border-radius: var(--radius-small);
+.free > span + span::before {
+  content: " · ";
+}
+[data-activity-line] {
+  color: var(--color-on-surface);
+  font-weight: 600;
+}
+.toolActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-1);
+  margin-inline: calc(-1 * var(--space-3));
+}
+.quiet.quiet {
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-label);
+}
+.icon {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+@media (max-width: 599.98px) {
+  .tools {
+    justify-content: flex-start;
+  }
 }

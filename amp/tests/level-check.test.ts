@@ -6,6 +6,7 @@ import {
   levelRange,
   levelDetails,
   trendCounts,
+  trendStep,
 } from "../src/learning/level-check";
 import { trialLimits } from "../src/server/trials";
 
@@ -58,4 +59,17 @@ test("numeric readouts preserve hundredths and include estimates below the chart
     from: "11.26",
     to: "13.00",
   });
+});
+
+test("a long record's level path keeps to about the points asked for", () => {
+  assert.equal(trendStep(40), 5);
+  assert.equal(trendStep(0, 48), 5);
+  assert.deepEqual(trendCounts(96, trendStep(96, 48)), [
+    0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90,
+    95, 96,
+  ]);
+  const long = trendCounts(2000, trendStep(2000, 48));
+  assert.ok(long.length <= 49 && long.length >= 40, String(long.length));
+  assert.equal(long[0], 0);
+  assert.equal(long.at(-1), 2000);
 });

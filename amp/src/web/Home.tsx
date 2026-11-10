@@ -13,6 +13,7 @@ import {
 import { gradeName, levelDetails, levelRange } from "../learning/level-check";
 import { LevelReadout } from "./ui/LevelReadout";
 import { LevelAxis, levelPositionDescription } from "./ui/LevelChart";
+import { fitScale } from "./ui/level-range";
 import { freeProblemsLeft } from "./lib/free-allowance";
 export { gradeName } from "../learning/level-check";
 export type FrontierMap = Frontier;
@@ -125,8 +126,26 @@ export function FrontierMap(props: {
   const [open, setOpen] = useState<string | null>(null);
   const f = props.frontier;
   const center = f?.expected ?? 4;
-  const lo = Math.max(0, Math.min(center - 3, COLLEGE - 6)),
-    hi = lo + 6;
+  // Six grades around the age reference, widened to hold every practiced
+  // area's whole likely range and every best guess: no measured band or dot
+  // is pinned against an end. An unpracticed area's wide, striped band may
+  // run on past one.
+  const fitted = f
+    ? fitScale(
+        props.strands
+          .filter((strand) => (f.strands[strand]?.answered ?? 0) > 0)
+          .map((strand) => f.strands[strand]!),
+        {
+          minSpan: 6,
+          include: [
+            center,
+            ...props.strands.map((strand) => strandEstimate(f, strand).level),
+          ],
+        },
+      )
+    : null;
+  const lo = fitted?.lo ?? Math.max(0, Math.min(center - 3, COLLEGE - 6)),
+    hi = fitted?.hi ?? lo + 6;
   const at = (v: number) =>
     `${((Math.min(hi, Math.max(lo, v)) - lo) / (hi - lo)) * 100}%`;
   const reference = props.birthYear != null && f ? center : undefined;

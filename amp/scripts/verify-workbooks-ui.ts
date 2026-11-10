@@ -390,6 +390,26 @@ const controlBoxes = (page: Page) =>
     }),
   );
 
+/** The workbook's options: beside it from 900 px, in a sheet below that.
+ * Runs `act` with them open, then closes the sheet, so the page is in reach. */
+async function withOptions<T>(
+  page: Page,
+  act: (options: ReturnType<Page["locator"]>) => Promise<T>,
+) {
+  const opener = page.getByRole("button", { name: "Options", exact: true });
+  const sheet = await opener.isVisible();
+  if (sheet) await opener.click();
+  const options = sheet
+    ? page.getByRole("dialog", { name: "Workbook options" })
+    : page.getByRole("complementary", { name: "Workbook options" });
+  const result = await act(options);
+  if (sheet) {
+    await page.keyboard.press("Escape");
+    await options.waitFor({ state: "detached" });
+  }
+  return result;
+}
+
 const engine = process.argv.includes("--webkit") ? "webkit" : "chromium";
 const browser = await (engine === "webkit" ? webkit : chromium).launch();
 const summary: string[] = [];
@@ -438,28 +458,29 @@ try {
         return Math.max(0, ...widths);
       });
       assert.ok(space >= 4, `${label}: title word space is ${space}px`);
-      // No empty band between the last choice (the areas row) and the
-      // contents card.
-      const gap = await page.evaluate(() => {
-        const actions = document
-          .querySelector("main [role=group][aria-label=Areas]")!
-          .parentElement!.getBoundingClientRect();
-        const contents = document
-          .querySelector("main [aria-label='Workbook contents']")!
-          .getBoundingClientRect();
-        return contents.top - actions.bottom;
-      });
-      assert.ok(gap <= 24, `${label}: ${Math.round(gap)}px gap above contents`);
+      // Every area reads whole: the chips wrap, none is cut at an edge.
+      const cut = await withOptions(page, (options) =>
+        options.getByRole("group", { name: "Areas" }).evaluate((group) => {
+          const box = group.getBoundingClientRect();
+          return [...group.children].filter((chip) => {
+            const at = chip.getBoundingClientRect();
+            return at.left < box.left - 1 || at.right > box.right + 1;
+          }).length;
+        }),
+      );
+      assert.equal(cut, 0, `${label}: area chips cut off`);
       const before = await controlBoxes(page);
-      assert.ok(before.length >= 4, "controls found");
+      assert.ok(before.length >= 3, "controls found");
       await page.screenshot({
         path: `${output}day-${label}.png`,
         fullPage: true,
       });
 
       // Length changes keep every control in place and keep the number.
-      await page.getByRole("radio", { name: "60 min" }).click();
-      await page.waitForURL(/minutes=60/);
+      await withOptions(page, async (options) => {
+        await options.getByRole("radio", { name: "60 min" }).click();
+        await page.waitForURL(/minutes=60/);
+      });
       await page.getByText(/About (55|60|65) minutes/).waitFor();
       assert.deepEqual(await controlBoxes(page), before, `${label}: length`);
 
@@ -534,34 +555,45 @@ try {
       await page.reload();
       await page.getByRole("heading", { name: "No. 1" }).waitFor();
       assert.equal(
-        await page
-          .getByRole("radio", { name: "60 min" })
-          .getAttribute("aria-checked"),
+        await withOptions(page, (options) =>
+          options
+            .getByRole("radio", { name: "60 min" })
+            .getAttribute("aria-checked"),
+        ),
         "true",
       );
 
       // Mix and match: each choice rolls a new workbook with it, at its own
       // URL, and nothing moves. An area, then a stretch, then problems only.
-      const area = page
-        .getByRole("group", { name: "Areas" })
-        .getByRole("button")
-        .nth(1);
-      await area.waitFor();
-      const areaLabel = (await area.textContent())!.trim();
-      await area.click();
+      const areaLabel = await withOptions(page, async (options) => {
+        const area = options
+          .getByRole("group", { name: "Areas" })
+          .getByRole("button")
+          .nth(1);
+        await area.waitFor();
+        const text = (await area.textContent())!.trim();
+        await area.click();
+        await page.waitForURL(/areas=/);
+        return text;
+      });
       await page.getByRole("heading", { name: "No. 3" }).waitFor();
       assert.match(page.url(), /areas=/);
-      assert.equal(await area.getAttribute("aria-pressed"), "true");
       await page
         .getByText(new RegExp(`^${areaLabel}`))
         .first()
         .waitFor();
       assert.deepEqual(await controlBoxes(page), before, `${label}: area`);
-      await page.getByRole("radio", { name: /^Harder/ }).click();
+      await withOptions(page, async (options) => {
+        await options.getByRole("radio", { name: /^Harder/ }).click();
+        await page.waitForURL(/lean=stretch/);
+      });
       await page.getByRole("heading", { name: "No. 4" }).waitFor();
       assert.match(page.url(), /lean=stretch/);
       assert.deepEqual(await controlBoxes(page), before, `${label}: lean`);
-      await page.getByRole("radio", { name: /^Leave out/ }).click();
+      await withOptions(page, async (options) => {
+        await options.getByRole("radio", { name: /^Leave out/ }).click();
+        await page.waitForURL(/lesson=off/);
+      });
       await page.getByRole("heading", { name: "No. 5" }).waitFor();
       assert.match(page.url(), /lesson=off/);
       assert.equal(
@@ -582,20 +614,26 @@ try {
       await page.goBack();
       await page.getByRole("heading", { name: "No. 4" }).waitFor();
       assert.equal(
-        await page
-          .getByRole("radio", { name: /^Include/ })
-          .getAttribute("aria-checked"),
+        await withOptions(page, (options) =>
+          options
+            .getByRole("radio", { name: /^Include/ })
+            .getAttribute("aria-checked"),
+        ),
         "true",
       );
       assert.equal(
-        await page
-          .getByRole("radio", { name: /^Harder/ })
-          .getAttribute("aria-checked"),
+        await withOptions(page, (options) =>
+          options
+            .getByRole("radio", { name: /^Harder/ })
+            .getAttribute("aria-checked"),
+        ),
         "true",
       );
 
       // History lists every stored workbook, newest first.
-      await page.getByRole("link", { name: "Past workbooks" }).click();
+      await page
+        .getByRole("link", { name: /’s workbooks$|^Your workbooks$/ })
+        .click();
       await page.waitForURL(new RegExp(`/learners/${learnerId}/workbooks$`));
       await page.getByRole("list", { name: "Workbooks" }).waitFor();
       const items = await page
@@ -613,9 +651,12 @@ try {
       // save; the rows lock as recorded and nothing moves.
       const code = rows.find((r) => r.date === today)!.code;
       await page
-        .getByLabel("Enter results with the workbook code")
+        .getByRole("button", { name: "Enter results with a code" })
+        .click();
+      await page
+        .getByLabel("Workbook code")
         .fill(code.toLowerCase().replace("-", ""));
-      await page.getByRole("button", { name: "Open", exact: true }).click();
+      await page.getByRole("button", { name: "Open results" }).click();
       await page.waitForURL(/\/results$/);
       await page.getByRole("list", { name: "Problems" }).waitFor();
       await assertLayout(page, `${label} results`);

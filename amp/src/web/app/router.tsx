@@ -657,14 +657,33 @@ const pathwaySkill = createRoute({
     "PathwaysScreen",
   ),
 });
+/** A learner's workbooks are a tab of their Progress: arriving chooses
+ * that learner (the account's own, never a practice profile), so the
+ * group's other tabs and Practice are theirs too. The server still decides
+ * what the account may open. */
+async function beforeWorkbooks({ params }: { params: unknown }) {
+  const { learnerId } = params as { learnerId: string };
+  if (nativeRuntime) throw redirect({ to: "/" });
+  notForStudents();
+  const session = await queryClient.ensureQueryData(sessionOptions);
+  if (!session) return;
+  const me = await queryClient
+    .ensureQueryData(meOptions(session))
+    .catch(() => null);
+  if (
+    me?.signedIn &&
+    me.family.learners.some(
+      (learner) =>
+        learner.id === learnerId && !learner.deletedAt && !learner.simulation,
+    )
+  )
+    useLearnerStore.getState().select(learnerId);
+}
 /** Daily paper workbooks for one learner (features/workbooks). */
 const workbookHistory = createRoute({
   getParentRoute: () => root,
   path: "/learners/$learnerId/workbooks",
-  beforeLoad: () => {
-    if (nativeRuntime) throw redirect({ to: "/" });
-    notForStudents();
-  },
+  beforeLoad: beforeWorkbooks,
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookHistoryScreen"),
     "WorkbookHistoryScreen",
@@ -674,10 +693,7 @@ const workbookDay = createRoute({
   getParentRoute: () => root,
   path: "/learners/$learnerId/workbooks/$date",
   validateSearch: (search) => workbookSearchSchema.parse(search),
-  beforeLoad: () => {
-    if (nativeRuntime) throw redirect({ to: "/" });
-    notForStudents();
-  },
+  beforeLoad: beforeWorkbooks,
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookDayScreen"),
     "WorkbookDayScreen",
@@ -686,10 +702,7 @@ const workbookDay = createRoute({
 const workbookResults = createRoute({
   getParentRoute: () => root,
   path: "/learners/$learnerId/workbooks/$workbookId/results",
-  beforeLoad: () => {
-    if (nativeRuntime) throw redirect({ to: "/" });
-    notForStudents();
-  },
+  beforeLoad: beforeWorkbooks,
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookResultsScreen"),
     "WorkbookResultsScreen",
@@ -941,10 +954,15 @@ const ownRecord = createRoute({
         replace: true,
       } as never);
     useLearnerStore.getState().select(own.id);
-    return { session };
+    return { session, learnerId: own.id };
   },
-  loader: ({ context }) =>
-    loadOwnPractice((context as { session: AuthSession }).session),
+  loader: ({ context }) => {
+    const { session, learnerId } = context as {
+      session: AuthSession;
+      learnerId: string;
+    };
+    return loadOwnPractice(session, learnerId);
+  },
   component: lazyRouteComponent(ownScreens, "OwnRecordScreen"),
 });
 const ownStart = createRoute({
@@ -977,11 +995,26 @@ const editProfile = createRoute({
   },
   component: lazyRouteComponent(profileScreens, "EditProfileScreen"),
 });
-async function loadOwnPractice(session: AuthSession) {
-  const { ownPracticeOptions } = await import("../features/me/api");
-  await queryClient
-    .ensureQueryData(ownPracticeOptions(session))
-    .catch(() => undefined);
+/** The record, the level and its path arrive together, so `/me` paints
+ * whole: nothing below the level moves when it lands. A failure is the
+ * screen's to show. */
+async function loadOwnPractice(session: AuthSession, learnerId: string) {
+  const [{ ownPracticeOptions }, { levelTrendOptions }, { learnerFrontierOptions }] =
+    await Promise.all([
+      import("../features/me/api"),
+      import("../features/level/api"),
+      import("../lib/learning-view"),
+    ]);
+  await Promise.all([
+    queryClient.ensureQueryData(ownPracticeOptions(session)),
+    queryClient
+      .ensureQueryData(learnerFrontierOptions(session, learnerId))
+      .then((frontier) =>
+        frontier.overall.answered > 0
+          ? queryClient.ensureQueryData(levelTrendOptions(session, learnerId))
+          : undefined,
+      ),
+  ]).catch((error) => console.warn("Your progress didn’t load ahead", error));
 }
 /** The public school pages, one chunk between them. */
 const schoolsPublic = () => import("../features/schools");

@@ -446,6 +446,16 @@ function routes(app: FastifyInstance, options: AppOptions) {
       return tx.frontier();
     });
   });
+  /** How the overall estimate moved as answers came in: the best guess and
+   * its likely range from the start, then at even steps to the latest answer
+   * (at most `LEVEL_TREND_POINTS`), for the Overview's level view. */
+  app.get("/api/v1/learners/:learnerId/level-trend", async (request) => {
+    const account = await parent(request);
+    const { learnerId } = paramsSchema.parse(request.params);
+    return options.repository.transaction(account, learnerId, async (tx) => ({
+      trend: await tx.frontierTrend(LEVEL_TREND_POINTS),
+    }));
+  });
   app.post("/api/v1/learners/:learnerId/practice-settings", async (request) => {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
@@ -1244,7 +1254,10 @@ export function withGlossary(outcome: Outcome): Outcome {
 const SECOND_PARENT_READS = new Set([
   "/api/v1/learners/:learnerId/progress",
   "/api/v1/learners/:learnerId/frontier",
+  "/api/v1/learners/:learnerId/level-trend",
 ]);
+/** Enough points to draw the level's path, however long the record. */
+const LEVEL_TREND_POINTS = 48;
 function requestLearnerIds(request: {
   params?: unknown;
   query?: unknown;

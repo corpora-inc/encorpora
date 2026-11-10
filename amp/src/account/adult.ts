@@ -134,6 +134,7 @@ export async function readOwnPractice(
       learner.timezone,
       learner.today,
       null,
+      "all",
     ),
     perDay(pool, [member], range),
     perSkill(pool, [member], range),
@@ -168,7 +169,9 @@ export async function readOwnPractice(
           skillId: row.skillId,
           title: skillTitleOf(row.skillId),
           strand: skillStrandOf(row.skillId),
-          minutes: Math.round(row.activeMinutes),
+          // A tenth of a minute: a skill worked for twenty seconds still
+          // shows where the time went.
+          minutes: Math.round(row.activeMinutes * 10) / 10,
           problems: row.problems,
         })),
     },

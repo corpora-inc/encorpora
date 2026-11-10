@@ -13,16 +13,16 @@ The practice loop (one problem at a time, adaptive across strands) is the produc
 
 ## People and sign-in
 
-| Who                           | Signs in with                                                                                                                              | Practices as                                  |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------- |
-| Parent, teacher, tutor, admin | An account: email and password, passkey, Google, Microsoft or Apple                                                                        | Their own **adult learner**, if they have one |
+| Who                           | Signs in with                                                                                                                                               | Practices as                                  |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| Parent, teacher, tutor, admin | An account: email and password, passkey, Google, Microsoft or Apple                                                                                         | Their own **adult learner**, if they have one |
 | Child                         | A class: class code → their picture label or name → 3 of 16 pictures; or a printed card's QR; or Google or Microsoft through the school (see Not built yet) | Their one learner                             |
 
 - **Adults hold several places at once.** A person can be a parent, a teacher at a school, the head of a district and their own learner. The **place switcher**, one shared menu in the app drawer and setup, moves between them. `/` opens where the person last worked. With nothing remembered, it opens the family side if they have learners or a family class, and the school if they are staff only. An account with no place yet answers "What brings you to AMP?" first. A school setup in progress never takes over `/`.
 - **A child's session is bound to their one learner.** On a shared device (the default) it lives in session storage and signs out after 30 idle minutes. On a personal device it lasts until the teacher revokes it. Parent-only routes refuse a child's session even when a parent cookie is present. A child's session never reaches a sibling's learner.
 - **"Let Maya practice here".** From the family class, a parent hands their own device to a child: it starts that child's session, and the parent's view returns when the child signs out.
 - **Practice profiles:** any adult who practices can practice as someone else: a grade K–12 at a pace (behind, on level, ahead), adjusted strand by strand and saved under a name, or a one-time copy of a student's levels from their record. Nobody's record changes. A profile is the adult's own learner marked as a simulation, left out of every list a real learner counts in; the account's access covers it, and otherwise it has its own free allowance ([families](families.md#practicing-as-someone-else-practice-profiles)).
-- **Adult learners** are marked adult, have no birth year and need no parental consent. The adult chooses where to start (Counting through Precalculus) and always sees their levels. In their class, a teacher's adult learner appears on the map and standings as a separate "Teacher" line. It sits in place by value with no rank number, is never counted in grades, seats, rosters, exports or Today, and the teacher can hide it per class.
+- **Adult learners** are marked adult, have no birth year and need no parental consent. The adult chooses where to start (Counting through Precalculus) and always sees their levels. In their class, a teacher's adult learner appears on standings as a separate "Teacher" line. It sits in place by value with no rank number, is never counted in grades, seats, rosters, exports or Today, and the teacher can hide it per class. The class map shows students only; the teacher's own level is on `/me`.
 
 ## Places
 
@@ -51,7 +51,7 @@ The practice loop (one problem at a time, adaptive across strands) is the produc
   - **Tutor or co-op:** the family class with unnamed students owned by their roster person, so each one's own parent names them by an approval link; home is the class's Today.
   - **Teacher:** a demo class, alive with fictional students marked "Demo" and months of their work (`POST /api/v1/school/demo {kind:"class"}`); its bar offers "Set up your real class", which leads to the real onboarding: the data agreement, then the roster. No real student exists before that.
   - **School:** the school pitch inline, with "Explore a demo school" (`{kind:"school"}`) and "Talk to us".
-  Asking again for a place the account already has opens it. Anyone can add another place from the place switcher's "Add a place".
+    Asking again for a place the account already has opens it. Anyone can add another place from the place switcher's "Add a place".
 - **When the allowance ends:** the screen in use shows one pause (`features/continue/AllowancePause.tsx`) naming the learner and the fact, with the one action that works for whoever is looking. A parent or an adult continues with AMP for that learner (`/continue/<learner>`: the plan, with the parent notice when no consent is recorded yet, then Stripe, then back to the same screen with access active, then an optional "Add Fox's name"). A class's teacher, a tutor or a school talks to us. A student is told their grown-up can continue.
 
 Media, videos and ads carry no price; they lead to the Buy button.
@@ -77,12 +77,12 @@ Media, videos and ads carry no price; they lead to the Buy button.
   - "Invite a co-teacher", with a copyable link. A co-teacher teaches the class but doesn't invite other families or buy access.
   - The full class screens, as for any teacher (below), plus Calendar in the class tab row and Family in the drawer for learners, purchases, consent and privacy.
   - `/family/…`: settings, consent and billing.
-  - `/learners/$id/workbooks`: the learner’s workbook history, creation and results on the shared shell, without Progress tabs. The URL identifies the learner independently of the selection in Progress.
+  - `/learners/$id/workbooks`: the learner’s workbooks, a Workbooks tab of their Progress group (Overview, Pathways, Inventory, Workbooks). The URL names the learner, and arriving there chooses them, so the group's other tabs are theirs too. Today's workbook is a sheet-of-paper preview with its options beside it (a sheet on phones).
   - `/family/approvals/$id`: a parent approving another family's class.
 - **Adult practice:**
   - `/me/start`: choose where to begin.
   - `/me/profiles/new`: "Try a level…", a grade and pace (`?grade=4&pace=behind`), adjusted by strand and saved under a name; `/me/profiles/$id`: one profile's levels, name and Delete. Both from the place switcher under "My practice"; `/me` has one quiet link. A student's record adds "Try problems as this student".
-  - `/me`: their own record, with levels per strand, 12 weeks of time, time by day and skill, objectives and recent work.
+  - `/me`: their own practice, mathematics first and never their name: the level view (best guess, likely range, how it narrowed, every area with its error bar; before the first problem, the starting estimate and Start practicing), then quiet Workbooks, Print and "Practice as someone else", then 12 weeks of time, time by day and skill, objectives and recent work.
   - `/practice` and `/pathways`.
 - **Child:**
   - `/join`, `/join/$code` and `/join/$code/$person`: sign-in.
