@@ -25,6 +25,11 @@ const FAMILY_GUESS_FLOOR: Readonly<Record<string, number>> = {
   // a whole-number pattern can likewise have three distinct reasons.
   "multiply-power-of-ten": 1 / 9,
   "tens-ones-model": 1 / 9,
+  // A random closed walk chooses one of six side counts (3–8). This is an
+  // upper bound even for the easiest triangle/count/finish/copy instance.
+  "build-shape-sticks-balls": 1 / 6,
+  "build-shape-by-count": 1 / 6,
+  "copy-peg-shape": 1 / 6,
   // Older clients answer the same family through four picture choices.
   // The family estimator conservatively covers those attempts as well.
   "build-the-number-sentence": 1 / 4,
@@ -101,6 +106,7 @@ export function responseGuessChance(response: ProblemResponse): number {
     return counterBuilderGuessChance(response);
   if (response.kind === "trend-line-fit") return response.guessChance;
   if (response.kind === "shape-composer") return response.guessChance;
+  if (response.kind === "peg-board") return response.guessChance;
   if (response.kind === "structured-work") return UNKNOWN_CHOICE_GUESS;
   if (response.kind === "choice") return 1 / response.options.length;
   if (response.kind === "point-plot") return pointPlotGuessChance(response);
