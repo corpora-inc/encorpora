@@ -22,7 +22,9 @@ export type ShellFrame =
     }
   | { kind: "school"; org: string; active: string }
   | { kind: "practice" }
-  | { kind: "plain" };
+  /** `practice`: a learning screen (lessons, books) whose bar keeps the
+   * one way to practice, as the Progress tabs do. */
+  | { kind: "plain"; practice?: true };
 
 const under = (pathname: string, path: string) =>
   pathname === path || pathname.startsWith(`${path}/`);
@@ -102,8 +104,9 @@ export function shellFrame(pathname: string): ShellFrame | null {
   )
     return { kind: "account", active: "access" };
   if (path === "/consent") return { kind: "account", active: "privacy" };
-  // "Continue with AMP" for one learner is a step of Billing.
-  if (under(path, "/continue")) return { kind: "account", active: "access" };
+  // "Continue with AMP" for one learner is a step of whatever led there
+  // (practice, Today, Billing), so it has the plain bar and its own way back.
+  if (under(path, "/continue")) return { kind: "plain" };
   // "What brings you to AMP?" and each answer's question.
   if (
     path === "/start" ||
@@ -114,12 +117,11 @@ export function shellFrame(pathname: string): ShellFrame | null {
   // The immersive film route supplies its own return and playback controls.
   if (/^\/lessons\/[^/]+\/watch$/.test(path)) return null;
   if (
-    path === "/" ||
-    path === "/progress" ||
     under(path, "/lessons") ||
     under(path, "/books")
   )
-    return { kind: "plain" };
+    return { kind: "plain", practice: true };
+  if (path === "/" || path === "/progress") return { kind: "plain" };
   return null;
 }
 
@@ -142,8 +144,8 @@ export function progressTabs(context: ProgressContext): TabItem[] {
 
 /** Account and family settings: one group of four tabs. */
 export const accountTabs: readonly TabItem[] = [
-  { id: "security", label: "Profile & sign-in", path: "family/security" },
-  { id: "learners", label: "Family", path: "family/learners" },
+  { id: "security", label: "Sign-in", path: "family/security" },
+  { id: "learners", label: "Learners", path: "family/learners" },
   { id: "access", label: "Billing", path: "family/access" },
   { id: "privacy", label: "Privacy", path: "family/privacy" },
 ];

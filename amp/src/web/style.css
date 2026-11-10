@@ -379,10 +379,15 @@ nav button:hover {
   font-size: 14px;
   flex: 1;
 }
-.lesson-reader {
-  padding: 44px;
-  max-width: 800px;
-  margin: 32px auto;
+/* A lesson is text on the page, not a card (docs/design/ia.md). */
+.lesson-reader,
+.lesson-reader.card {
+  padding: 0;
+  max-width: 720px;
+  margin: var(--space-4) 0 var(--space-6);
+  border: 0;
+  border-radius: 0;
+  background: none;
 }
 .lesson-reader p {
   max-width: 65ch;
@@ -546,9 +551,6 @@ footer {
   }
   .library-grid {
     grid-template-columns: 1fr;
-  }
-  .lesson-reader {
-    padding: 24px;
   }
   .progress-card {
     align-items: flex-start;

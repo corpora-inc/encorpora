@@ -245,7 +245,8 @@ function ShellBar({
             <span className={bar.actionLabel}>Start class</span>
           </Link>
         )}
-        {frame.kind === "progress" && (
+        {(frame.kind === "progress" ||
+          (frame.kind === "plain" && frame.practice)) && (
           <ProgressAction context={context} me={me} />
         )}
         {/* Practicing as a profile: the way back, always one tap away. */}
@@ -325,6 +326,10 @@ function practiceTarget(
   const learner =
     learners.find((entry) => entry.id === learnerId) ?? learners[0];
   if (learner && learner.learningAllowed !== false)
+    return { path: "/practice", label: "Practice" };
+  // An adult with no child, before this device has chosen a learner (a
+  // shared lesson link): their own practice, never "Get started" again.
+  if (!learner && me.adultPractice?.learner)
     return { path: "/practice", label: "Practice" };
   if (me.account.kind === "student") return null;
   return learner ? null : { path: "/start", label: "Get started" };

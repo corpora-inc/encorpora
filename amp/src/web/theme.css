@@ -53,8 +53,11 @@ body,
   font-weight: 700;
   letter-spacing: -0.015em;
 }
-/* Display headings keep the editorial serif of the paper-and-green studio. */
+/* Display headings keep the editorial serif of the paper-and-green studio.
+   A lesson's title and its parts are page and section titles too. */
 .shell:not(.reading-shell) h1,
+.shell:not(.reading-shell) .lesson-reader > h2,
+.shell:not(.reading-shell) .reference-lesson h3,
 .lesson-sheet h2,
 .dialog-heading h2 {
   font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
@@ -628,15 +631,44 @@ header {
   color: var(--color-on-primary);
 }
 
-/* Lessons tab */
+/* Lessons tab: plain sections on the page, no card around them
+   (docs/design/ia.md). */
 .lesson-index,
 .lesson-sheet,
 .book-list {
-  margin-bottom: 20px;
-  padding: 20px;
-  border: 1px solid var(--color-border);
-  border-radius: 20px;
-  background: var(--color-surface-raised);
+  margin-bottom: var(--space-6);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+/* The library browses at the content width; a lesson reads at a measure
+   from the same left edge. */
+.shell.app-shell.flow > main.library-main {
+  width: min(calc(100% - 32px), var(--width-content-wide));
+}
+@media (min-width: 768px) {
+  .shell.app-shell.flow > main.library-main {
+    width: min(calc(100% - 48px), var(--width-content-wide));
+  }
+}
+.library-main > .lesson-sheet,
+.library-main > .lesson-reader {
+  max-width: 720px;
+}
+.lesson-reader > h2 {
+  margin: var(--space-5) 0 var(--space-3);
+  font-size: var(--text-heading-1);
+  line-height: 1.15;
+}
+@media (max-width: 650px) {
+  .lesson-reader > h2 {
+    font-size: 28px;
+  }
+}
+/* The download menu sits at the row's end, as quiet as "All lessons". */
+.lesson-reader .card-top {
+  align-items: center;
 }
 .lesson-sheet {
   max-width: 720px;
@@ -796,10 +828,7 @@ header {
   box-shadow: none;
 }
 @media (max-width: 650px) {
-  .start-card,
-  .lesson-index,
-  .lesson-sheet,
-  .book-list {
+  .start-card {
     padding: 16px;
     border-radius: 16px;
   }

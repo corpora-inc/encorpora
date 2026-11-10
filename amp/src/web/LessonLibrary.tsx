@@ -1,4 +1,5 @@
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
+import { useLearningView } from "./lib/learning-view";
 import { useAppRoute } from "./app-routes";
 import type { TemplateMetadata } from "../math/contracts";
 import type { Lesson } from "../content/lessons";
@@ -47,6 +48,59 @@ export function loadGlossary() {
     },
   );
   return glossaryRequest;
+}
+
+/** The card a reader left the library from, so Back (the browser's or "All
+ * lessons") lands on that card, wherever it now sits, rather than at a pixel
+ * offset that no longer points at it. Session-scoped: a refresh of the
+ * lesson still returns to it. */
+const RETURN_KEY = "amp.lessons.return";
+type LibraryReturn = { selector: string; search: string };
+export function rememberLibraryCard(trigger: HTMLElement) {
+  const selector = trigger.dataset.lessonId
+    ? `[data-lesson-id="${CSS.escape(trigger.dataset.lessonId)}"]`
+    : trigger.dataset.template
+      ? `[data-template="${CSS.escape(trigger.dataset.template)}"]`
+      : null;
+  if (!selector) return;
+  try {
+    sessionStorage.setItem(
+      RETURN_KEY,
+      JSON.stringify({ selector, search: location.search }),
+    );
+  } catch (error) {
+    console.warn("The lesson's place in the library couldn’t be kept", error);
+  }
+}
+function takeLibraryReturn(): LibraryReturn | null {
+  try {
+    const raw = sessionStorage.getItem(RETURN_KEY);
+    sessionStorage.removeItem(RETURN_KEY);
+    return raw ? (JSON.parse(raw) as LibraryReturn) : null;
+  } catch {
+    return null;
+  }
+}
+/** The band a learner works in: their level, or where their age puts them
+ * before they have answered anything. */
+function bandAt(level: number) {
+  return gradeOrder[Math.max(0, Math.min(gradeOrder.length - 1, Math.floor(level)))]!;
+}
+/** The library's top edge under the pinned bars: where a band or a card
+ * scrolled into place should sit. */
+function scrollToItem(element: HTMLElement, pinned: HTMLElement | null) {
+  // Where the search bar pins, not where it sits before the scroll.
+  const offset =
+    (pinned
+      ? (parseFloat(getComputedStyle(pinned).top) || 0) + pinned.offsetHeight
+      : 0) + 16;
+  window.scrollTo({
+    top: Math.max(
+      0,
+      Math.round(window.scrollY + element.getBoundingClientRect().top - offset),
+    ),
+    behavior: "instant",
+  });
 }
 
 type LibraryProps = {
@@ -263,6 +317,49 @@ function Library({
     () => new Map(props.references.map((lesson) => [lesson.id, lesson])),
     [props.references],
   );
+  // Arriving: back on the card the reader came from, or, with nothing asked
+  // for, at the learner's own level rather than at Kindergarten.
+  const view = useLearningView();
+  const level = view.frontier
+    ? view.frontier.overall.answered > 0
+      ? view.frontier.overall.level
+      : view.frontier.expected
+    : null;
+  const arrived = useRef<"pending" | "placed" | "left">("pending");
+  const mountedAt = useRef(performance.now());
+  useEffect(() => {
+    const back = takeLibraryReturn();
+    if (back && back.search === location.search) {
+      arrived.current = "placed";
+      // After the router settles its own scroll for this entry.
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => {
+          const card = document.querySelector<HTMLElement>(back.selector);
+          if (!card || card.closest("[hidden]")) return;
+          scrollToItem(card, controls.current);
+          card.focus({ preventScroll: true });
+        }),
+      );
+    }
+    // A reader who scrolls first has chosen where to be.
+    const leave = () => {
+      if (window.scrollY > 40 && arrived.current === "pending")
+        arrived.current = "left";
+    };
+    window.addEventListener("scroll", leave, { passive: true });
+    return () => window.removeEventListener("scroll", leave);
+  }, []);
+  useEffect(() => {
+    if (arrived.current !== "pending" || level === null) return;
+    arrived.current = "placed";
+    // A level that arrives late never moves a page someone is reading.
+    if (performance.now() - mountedAt.current > 2500) return;
+    if (query || strand || level < 1) return;
+    const band = document.querySelector<HTMLElement>(
+      `[data-band="${CSS.escape(bandAt(level))}"]`,
+    );
+    if (band && !band.hidden) scrollToItem(band, controls.current);
+  }, [level, query, strand]);
   const count = (kind: LibraryItem["kind"]) =>
     [...shown].filter((key) => key.startsWith(`${kind}:`)).length;
   const lessons = count("lesson"),
@@ -409,6 +506,7 @@ function Library({
                         data-lesson-id={item.id}
                         data-strand={item.strand}
                         onClick={(event) => {
+                          rememberLibraryCard(event.currentTarget);
                           const lesson = lessonById.get(item.id);
                           if (lesson)
                             props.openReference(lesson, event.currentTarget);
@@ -450,7 +548,10 @@ function Library({
                             <button
                               type="button"
                               data-template={item.id}
-                              onClick={() => props.openTopic(item.id)}
+                              onClick={(event) => {
+                                rememberLibraryCard(event.currentTarget);
+                                props.openTopic(item.id);
+                              }}
                             >
                               {/* One flex child: text and formulas wrap
                                 together as a line, never word by word. */}

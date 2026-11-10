@@ -43,17 +43,17 @@ test("each group's screens share one frame and name their tab", () => {
     active: "privacy",
   });
   expect(shellFrame("/practice")).toEqual({ kind: "practice" });
-  expect(shellFrame("/lessons/fractions")).toEqual({ kind: "plain" });
+  expect(shellFrame("/lessons/fractions")).toEqual({
+    kind: "plain",
+    practice: true,
+  });
   expect(shellFrame("/school/invite")).toEqual({ kind: "plain" });
 });
 
 test("the starter and Continue with AMP sit on the app frame", () => {
   for (const path of ["/start", "/start/parent", "/start/school"])
     expect(shellFrame(path), path).toEqual({ kind: "plain" });
-  expect(shellFrame("/continue/learner-1")).toEqual({
-    kind: "account",
-    active: "access",
-  });
+  expect(shellFrame("/continue/learner-1")).toEqual({ kind: "plain" });
   // The steps around it keep their own frame.
   for (const path of ["/start/purchase", "/start/verify-email", "/start/x"])
     expect(shellFrame(path), path).toBeNull();
@@ -84,8 +84,8 @@ test("the Overview tab follows whose progress it is; the URLs never move", () =>
   expect(progressTabs("own")[0]!.path).toBe("me");
   expect(overviewPath("learner")).toBe("/overview");
   expect(accountTabs.map((tab) => tab.label)).toEqual([
-    "Profile & sign-in",
-    "Family",
+    "Sign-in",
+    "Learners",
     "Billing",
     "Privacy",
   ]);

@@ -307,9 +307,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   // The account snapshot can arrive before this device has a saved selection.
   // Resolve a learner from that snapshot immediately: redirecting to setup
   // while loadFamily is selecting one can continually restart navigation.
+  // An adult on their own, on a device with no selection yet (a shared link
+  // to a lesson), learns as their own learner, never meets family setup.
   const learner =
     learners.find((entry) => entry.id === learnerId) ??
     childLearners[0] ??
+    learners.find((entry) => entry.adult && !entry.simulation) ??
     null;
   // The adult's own learner, or one of their practice profiles: both learn
   // on the account's own terms, with no birth year.
@@ -2183,58 +2186,46 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                       );
                       return;
                     }
-                    requestAnimationFrame(() => {
-                      const trigger = document.querySelector<HTMLButtonElement>(
-                        `[data-lesson-id="${CSS.escape(readerTriggerId.current ?? "")}"]`,
-                      );
-                      window.scrollTo({
-                        top: libraryReturn.current.scroll,
-                        behavior: "instant",
-                      });
-                      trigger?.focus({ preventScroll: true });
-                    });
+                    // The library puts the card it opened from back in view
+                    // (rememberLibraryCard), as browser Back does.
                   }}
                 >
                   {progressLessonReturn.current
                     ? "← Your idea"
                     : "← All lessons"}
                 </button>
+                {/* One compact control for the lesson's printable copies,
+                    each a PDF made for paper. */}
                 {!nativeRuntime && (
-                  <button
-                    className="text-button"
-                    onClick={() => window.print()}
+                  <Menu
+                    label="Download"
+                    aria-label="Download PDFs of this lesson"
+                    triggerClassName="reader-download-trigger"
                   >
-                    Print lesson
-                  </button>
+                    {(
+                      [
+                        ["lesson", "Lesson"],
+                        ["workbook", "Workbook"],
+                        ["solutions", "Solutions"],
+                      ] as const
+                    ).map(([kind, label]) => (
+                      <MenuItem
+                        key={kind}
+                        disabled={busy}
+                        onSelect={() => void action(() => download(kind))}
+                      >
+                        {label} PDF
+                      </MenuItem>
+                    ))}
+                  </Menu>
                 )}
               </div>
               <h2 ref={readerHeading} tabIndex={-1}>
                 {readingLesson.title}
               </h2>
-              <ReferenceLesson lesson={readingLesson} />
-              {/* The lesson comes first; its printable copies follow it. */}
-              {!nativeRuntime && (
-                <section
-                  className="reader-downloads"
-                  aria-label="Download and print"
-                >
-                  <h3>Download &amp; print</h3>
-                  <div className="downloads">
-                    {(["lesson", "workbook", "solutions"] as const).map(
-                      (kind) => (
-                        <button
-                          className="secondary"
-                          key={kind}
-                          disabled={busy}
-                          onClick={() => void action(() => download(kind))}
-                        >
-                          Download {kind} PDF
-                        </button>
-                      ),
-                    )}
-                  </div>
-                </section>
-              )}
+              {/* The partner note speaks to a parent about a child: an adult
+                  learning on their own, or as a profile, has no use for it. */}
+              <ReferenceLesson lesson={readingLesson} partner={!ownLearner} />
             </article>
           )}
         </main>
