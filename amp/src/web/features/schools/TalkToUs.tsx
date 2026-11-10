@@ -89,7 +89,7 @@ export function TalkToUs() {
           </div>
           <div className={styles.pair}>
             <TextField
-              label="School"
+              label="School or organization"
               autoComplete="organization"
               value={school}
               onChange={(event) => setSchool(event.target.value)}
@@ -97,8 +97,9 @@ export function TalkToUs() {
               error={errors.school}
             />
             <TextField
-              label="Students (about)"
+              label="Approximate number of students"
               inputMode="numeric"
+              placeholder="e.g. 120"
               value={students}
               onChange={(event) => setStudents(event.target.value)}
               maxLength={9}
@@ -106,7 +107,7 @@ export function TalkToUs() {
             />
           </div>
           <TextArea
-            label="Anything we should know"
+            label="What you’d like to talk about (optional)"
             value={message}
             onChange={(event) => setMessage(event.target.value)}
             maxLength={MESSAGE_LIMIT}
