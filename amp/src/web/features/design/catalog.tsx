@@ -24,12 +24,8 @@ export const contents: {
   {
     group: "Levels",
     sections: [
-      { id: "level-track", title: "Level track" },
-      { id: "level-band", title: "Level band" },
-      { id: "level-trend", title: "Level trend" },
-      { id: "level-readout", title: "Level readout" },
+      { id: "level-range", title: "Level range" },
       { id: "record-levels", title: "Record parts" },
-      { id: "frontier-map", title: "Frontier map" },
     ],
   },
   {
