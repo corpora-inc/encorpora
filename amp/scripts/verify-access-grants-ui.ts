@@ -122,9 +122,9 @@ function me(s: State) {
       ? "add-learner"
       : s.reserved && s.verified
         ? "accept-gift"
-        : learners.some((l) => l.active)
+        : learners.length
           ? "practice"
-          : "try",
+          : "start",
   };
 }
 async function serve(page: Page, s: State) {
@@ -148,9 +148,10 @@ async function serve(page: Page, s: State) {
     if (path === "/learners" && req.method() === "POST") {
       assert.ok(s.consent && s.verified);
       s.creates++;
+      // A new learner practices on the free allowance; the gift stays
+      // reserved until it is activated for them.
       const l = { ...req.postDataJSON(), id: "learner-fixture", active: true };
       s.learners.push(l);
-      s.reserved = false;
       return route.fulfill({ json: l });
     }
     if (path.endsWith("/activate")) {
@@ -256,6 +257,7 @@ try {
       await page.getByRole("button", { name: "2012", exact: true }).click();
       await page.waitForURL("**/practice");
       assert.equal(s.creates, 1);
+      assert.equal(s.claims, 1);
       assert.equal(s.learners[0].active, true);
       await context.close();
     }

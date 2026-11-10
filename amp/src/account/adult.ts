@@ -17,14 +17,27 @@ import {
 import { readProgress, shiftDay } from "../schools/teacher-reads.js";
 import { skillStrandOf, skillTitleOf } from "../schools/term-grades.js";
 import { timezone } from "../schools/contracts.js";
-import { adultStarts } from "../learning/starting-point.js";
+import { adultStartFor } from "../learning/frontier.js";
+import { adultStarts, ownPracticeAllowed } from "../learning/starting-point.js";
 import type { FamilyRepository } from "../family/repository.js";
 import type { OwnPractice } from "./adult-contracts.js";
 
+/** The account holder's own birth year: it sets where their practice starts
+ * and is never stored (an adult learner has no birth year). */
+export const ownBirthYear = z
+  .number()
+  .int()
+  .refine(
+    (year) => year >= 1900 && year <= new Date().getUTCFullYear(),
+    "A birth year",
+  );
+
 export const startPracticeSchema = z.strictObject({
-  /** Where they begin. Without one (the starter's "I'm learning for myself"),
-   * practice begins at its default level and adapts from the first answer. */
+  /** Where they begin. Without one, the birth year they give sets it
+   * (`adultStartFor`); without either, practice begins at its default level
+   * and adapts from the first answer. */
   start: z.enum(adultStarts).optional(),
+  birthYear: ownBirthYear.optional(),
   timezone,
 });
 
@@ -59,12 +72,31 @@ export async function startAdultPractice(
   accountId: string,
   input: z.infer<typeof startPracticeSchema>,
 ): Promise<{ learnerId: string }> {
+  // Under 13, a parent sets AMP up: their own account holds the child.
+  if (
+    input.birthYear !== undefined &&
+    !ownPracticeAllowed(input.birthYear, new Date().getUTCFullYear())
+  )
+    throw new FamilyError(403, "own_practice_too_young");
+  const start =
+    input.start ??
+    (input.birthYear === undefined
+      ? undefined
+      : adultStartFor(input.birthYear));
   return families.transaction(accountId, async (client) => {
     const existing = await client.query<{ id: string }>(
       "SELECT id FROM amp_learners WHERE account_id=$1 AND adult AND NOT simulation AND deleted_at IS NULL",
       [accountId],
     );
     if (existing.rows[0]) {
+      // A learner begun without a start takes the one given now; a start
+      // already chosen stays.
+      if (start)
+        await client.query(
+          `UPDATE amp_learners SET starting_band=$2,starting_policy=1,starting_excluded_strands='{}'::text[]
+           WHERE id=$1 AND starting_band IS NULL`,
+          [existing.rows[0].id, start],
+        );
       await refreshAdultAccess(client, accountId, existing.rows[0].id);
       return { learnerId: existing.rows[0].id };
     }
@@ -81,9 +113,9 @@ export async function startAdultPractice(
         accountId,
         name,
         input.timezone,
-        input.start ?? null,
-        input.start ? 1 : null,
-        input.start ? [] : null,
+        start ?? null,
+        start ? 1 : null,
+        start ? [] : null,
       ],
     );
     await client.query(

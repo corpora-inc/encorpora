@@ -1,5 +1,10 @@
 import type { GradeBand } from "../curriculum/types";
-import { startingLevels, type StartingChoice } from "./starting-point";
+import {
+  adultStarts,
+  startingLevels,
+  type AdultStart,
+  type StartingChoice,
+} from "./starting-point";
 import {
   assertFrontierPolicy,
   DEFAULT_FRONTIER_POLICY,
@@ -87,6 +92,21 @@ export function initialLevel(options: {
         ? (startingLevels[options.band] ?? 2)
         : 2;
   return Math.min(MAX_GRADE, Math.max(0, level));
+}
+
+/** Where an account holder's own practice begins from the birth year they
+ * give: the start nearest the level that year implies (`initialLevel`). Their
+ * learner is an adult and keeps no birth year, so the year becomes one of
+ * `adultStarts`: born 2011 → Algebra (grade 9 by `startingLevels`), born 1985
+ * → Precalculus, the top of the scale. */
+export function adultStartFor(birthYear: number, now?: number): AdultStart {
+  const level = initialLevel({ birthYear, now });
+  return adultStarts.reduce((nearest, start) =>
+    Math.abs(startingLevels[start] - level) <
+    Math.abs(startingLevels[nearest] - level)
+      ? start
+      : nearest,
+  );
 }
 
 // A grid posterior over grade level. Grade -1 lets "below kindergarten" be

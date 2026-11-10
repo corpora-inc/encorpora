@@ -615,8 +615,11 @@ try {
     assert.deepEqual(f.faults, []);
     await f.page.close();
   }
-  // "Choose an AMP plan": card price and a state's education-fund programs,
-  // each leading to its purchase screen with the choice carried over.
+  // On the web, Billing continues with AMP for the chosen learner (the
+  // plan and checkout are verify-onboarding-ui's). The app's own Billing
+  // opens "Choose your AMP plan" (its /purchase/choose): card price and a
+  // state's education-fund programs, each leading to its purchase screen
+  // with the choice carried over.
   for (const [width, height] of [
     [320, 568],
     [390, 844],
@@ -631,8 +634,10 @@ try {
       .getByRole("link", { name: "Billing", exact: true })
       .click();
     await f.page
-      .getByRole("button", { name: "Choose an AMP plan", exact: true })
+      .getByRole("button", { name: "Continue with AMP", exact: true })
       .click();
+    await f.page.waitForURL(/\/continue\/child-a-\d$/);
+    await f.page.goto("http://127.0.0.1:4390/purchase/choose");
     await f.page
       .getByRole("heading", { name: "Choose your AMP plan" })
       .waitFor();
@@ -669,7 +674,7 @@ try {
       .waitFor();
     await f.page.getByRole("button", { name: "Back to family" }).click();
     await f.page
-      .getByRole("button", { name: "Choose an AMP plan", exact: true })
+      .getByRole("button", { name: "Continue with AMP", exact: true })
       .waitFor();
     assert.deepEqual(f.faults, []);
     await f.page.close();
@@ -690,16 +695,7 @@ try {
         body: "Synthetic hosted checkout",
       }),
     );
-    await f.page.goto("http://127.0.0.1:4390");
-    await openAccess(f.page);
-    // Settings have no Back: the Billing tab leaves the purchase choices.
-    await f.page
-      .getByRole("navigation", { name: "Account" })
-      .getByRole("link", { name: "Billing", exact: true })
-      .click();
-    await f.page
-      .getByRole("button", { name: "Choose an AMP plan", exact: true })
-      .click();
+    await f.page.goto("http://127.0.0.1:4390/purchase/choose");
     await f.page
       .getByRole("button", { name: "Monthly $14.00 / month", exact: true })
       .click();
