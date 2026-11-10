@@ -58,6 +58,14 @@ export const PREVIEW_PERSONAS: readonly PreviewPersona[] = [
     home: "/",
   },
   {
+    slug: "adult-paused",
+    group: "Adults",
+    name: "Iris Calder",
+    label: "Adult learner, free problems used",
+    stage: "100 free problems over a week: the pause and Continue",
+    home: "/",
+  },
+  {
     slug: "parent-new",
     group: "Families",
     name: "Tess Harlow",

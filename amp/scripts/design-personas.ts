@@ -242,6 +242,30 @@ const seeds: Record<string, (session: Session) => Promise<void>> = {
       { weeks: 3, grade: 8 },
     );
   },
+  "adult-paused": async (session) => {
+    const { learnerId } = await start<Started>(session, {
+      as: "myself",
+      timezone: ZONE,
+      birthYear: 1993,
+    });
+    await history(
+      [
+        {
+          learnerId: learnerId!,
+          persona: persona("Iris", "Calder", 5.4, {
+            answers: 100,
+            minutes: 14,
+            every: 1,
+            growth: 0.5,
+          }),
+        },
+      ],
+      { weeks: 1, grade: 6 },
+    );
+    await pool.query("UPDATE amp_learners SET free_online_used=100 WHERE id=$1", [
+      learnerId,
+    ]);
+  },
   "parent-new": async (session) => {
     await start(session, {
       as: "parent",
