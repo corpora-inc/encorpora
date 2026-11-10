@@ -1,7 +1,7 @@
 /**
- * The live player centres each figure's ink and draws no cast name tags.
- * Text keeps its padding, wrapped lines keep their leading, and a highlight
- * does not move anything it is not painting.
+ * The live player fits each figure once, to everything that shot will draw,
+ * and draws no cast name tags. Text keeps its padding, wrapped lines keep
+ * their leading, and a highlight grows in place without pushing a neighbour.
  * A handful of real exports, at phone and desktop, in both themes.
  */
 import { existsSync, readFileSync } from "node:fs";
@@ -15,6 +15,7 @@ import { secureChromium } from "../browser-security.mjs";
 
 const FIX = fileURLToPath(new URL("./fixtures/frame/", import.meta.url));
 const FILMS = ["frequency-table-build--pr", "line-slope", "bar-chart-total", "decimal-line-point"];
+const STABLE = [...FILMS, "divide-facts--pf", "count-sequence-missing--fn", "flat-or-solid-name--md", "pick-flat-or-solid--as"];
 const VIEWS = [
   { width: 390, height: 844, layout: "tall" },
   { width: 1280, height: 800, layout: "wide" },
@@ -254,8 +255,8 @@ test("centres figure ink, keeps a margin, and draws no name tags", async () => {
             const margin = Math.min(...hit.margins);
             if (centre > worst.centre) { worst.centre = centre; worst.where = where; }
             if (margin < worst.margin) worst.margin = margin;
-            expect(hit.dx, where).toBeLessThanOrEqual(0.02);
-            expect(hit.dy, where).toBeLessThanOrEqual(0.02);
+            // The frame is the whole shot, so the ink of one moment need not sit in the middle.
+            // The shot-extent test checks that the union does.
             for (const m of hit.margins) expect(m, where).toBeGreaterThanOrEqual(hit.need);
             expect(hit.overlaps, where).toEqual([]);
             if (Number.isFinite(hit.pad)) {
@@ -310,7 +311,7 @@ test("a highlight does not move the other elements", async () => {
               }
               const cs = getComputedStyle(el);
               const inline = (el as HTMLElement).style;
-              const paint = [inline?.fill ?? "", inline?.stroke ?? "", inline?.textShadow ?? ""].join("|");
+              const paint = [inline?.fill ?? "", inline?.stroke ?? "", el.getAttribute("data-em") ?? ""].join("|");
               return { x: r.x, y: r.y, w: r.width, h: r.height, o, paint };
             });
           };
@@ -336,3 +337,220 @@ test("a highlight does not move the other elements", async () => {
     await page.close();
   }
 }, 120_000);
+
+const MOTION = new Set(["move", "slide", "turn", "flip", "glide", "view", "zoom", "split", "draw", "partition", "shade", "cut"]);
+const MOTION_DUR: Record<string, number> = {
+  glide: 1.4, move: 1.2, turn: 2.2, flip: 2.2, slide: 1.1, view: 1.3,
+  cut: 1, split: 0.9, zoom: 1.4, draw: 0.8, partition: 1.5, shade: 1.3,
+};
+
+/** Times when an authored motion can change a figure element's place. */
+function motionWindows(id: string) {
+  const lesson = JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")) as {
+    script: { shots: { beats: { do?: { do: string; at?: string; nth?: number; dur?: number }[] }[] }[] };
+    timing: { shots: { start: number; words: { text: string; start: number }[] }[][] };
+  };
+  const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+  const out: { shot: number; t0: number; t1: number }[] = [];
+  lesson.script.shots.forEach((shot, si) => {
+    const beats = lesson.timing.shots[si] ?? [];
+    shot.beats.forEach((b, i) => {
+      const beat = beats[i];
+      if (!beat) return;
+      let stagger = 0;
+      for (const a of b.do ?? []) {
+        let t0 = beat.start + stagger;
+        if (a.at) {
+          const hits = beat.words.filter((w) => norm(w.text) === norm(a.at!));
+          const hit = hits[(a.nth ?? 1) - 1];
+          if (hit) t0 = hit.start;
+        } else stagger += 0.1;
+        if (!MOTION.has(a.do)) continue;
+        const dur = a.dur ?? MOTION_DUR[a.do] ?? 0.5;
+        // A split can run longer than its first step. Pad so the gap between samples still counts.
+        const pad = a.do === "split" ? 4 : 0.15;
+        out.push({ shot: si, t0: t0 - 0.1, t1: t0 + dur + pad });
+      }
+    });
+  });
+  return out;
+}
+
+function shotSpans(id: string) {
+  const lesson = JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")) as {
+    script: { shots: { figure?: unknown }[] };
+    timing: { duration: number; shots: { start: number }[][] };
+  };
+  const spans: { start: number; end: number; index: number }[] = [];
+  lesson.script.shots.forEach((shot, i) => {
+    const beats = lesson.timing.shots[i];
+    if (!shot.figure || !beats?.length) return;
+    const start = i === 0 ? 0 : beats[0]!.start - 0.5;
+    const next = lesson.timing.shots[i + 1]?.[0]?.start;
+    const end = next === undefined ? lesson.timing.duration : next - 0.5;
+    if (end - start < 0.4) return;
+    spans.push({ start: start + 0.08, end: end - 0.08, index: i });
+  });
+  return spans;
+}
+
+test("elements stay put unless a motion is authored, and a highlight does not cover a neighbour", async () => {
+  const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+  try {
+    for (const id of STABLE) {
+      await page.goto(`${origin}/live.html?id=${encodeURIComponent(id)}`, { waitUntil: "domcontentloaded" });
+      await page.waitForSelector(".live.ready", { timeout: 60_000 });
+      await page.waitForFunction(() => document.querySelector("#film")?.getAttribute("data-layout") === "wide");
+      await page.evaluate(() => { document.documentElement.dataset.theme = "light"; });
+      const plan = shotSpans(id).flatMap((span) => {
+        const step = Math.max(0.4, (span.end - span.start) / 32);
+        const glideUntil = span.index === 0 ? span.start : span.start + 0.52;
+        const times: { t: number; glide: boolean }[] = [];
+        for (let t = span.start; t <= span.end + 1e-6; t += step) times.push({ t, glide: t < glideUntil });
+        const last = times[times.length - 1];
+        if (!last || span.end - last.t > 0.05) times.push({ t: span.end, glide: span.end < glideUntil });
+        return times.map((sample) => ({ ...sample, shot: span.index }));
+      });
+      const snaps = await page.evaluate((samples) => {
+        const meet = (a: { l: number; t: number; r: number; b: number }, b: { l: number; t: number; r: number; b: number }) =>
+          Math.min(a.r, b.r) - Math.max(a.l, b.l) > 2 && Math.min(a.b, b.b) - Math.max(a.t, b.t) > 2;
+        return samples.map((sample) => {
+          const scrub = document.querySelector<HTMLInputElement>(".live-scrub");
+          if (!scrub) return { error: "no scrubber" };
+          scrub.value = String(sample.t);
+          scrub.dispatchEvent(new Event("input", { bubbles: true }));
+          const shots = [...document.querySelectorAll<HTMLElement>(".film-shot")];
+          let fit: HTMLElement | null = null, best = 0, dom = -1;
+          for (let i = 0; i < shots.length; i++) {
+            const shot = shots[i]!;
+            const o = Number.parseFloat(getComputedStyle(shot).opacity);
+            const host = shot.querySelector<HTMLElement>(".film-fit");
+            if (!host || o < 0.8 || getComputedStyle(shot).visibility === "hidden") continue;
+            if (o >= best) { fit = host; best = o; dom = i; }
+          }
+          if (!fit || dom !== sample.shot) return { t: sample.t, shot: sample.shot, glide: sample.glide, moving: false, items: [], hits: [], ink: null, card: null };
+          const cardEl = fit.parentElement;
+          const cardBox = cardEl?.getBoundingClientRect();
+          const card = cardBox ? { l: cardBox.left, t: cardBox.top, r: cardBox.right, b: cardBox.bottom, w: cardBox.width, h: cardBox.height } : null;
+          const shown = (el: Element) => {
+            let o = 1;
+            let n: Element | null = el;
+            while (n && n !== document.body) {
+              const cs = getComputedStyle(n);
+              if (cs.display === "none" || cs.visibility === "hidden") return 0;
+              o *= Number.parseFloat(cs.opacity) || 0;
+              n = n.parentElement;
+            }
+            return o;
+          };
+          const paint = (el: Element) => {
+            if (el.classList.contains("film-em")) return false;
+            if (el instanceof SVGSVGElement || el instanceof SVGGElement) return false;
+            if (el instanceof SVGGraphicsElement) return true;
+            if (!(el instanceof HTMLElement)) return false;
+            if (el.classList.contains("film-label")) return true;
+            return el.childElementCount === 0 && (el.textContent ?? "").trim() !== "";
+          };
+          let l = Infinity, top = Infinity, r = -Infinity, b = -Infinity;
+          const walk = (el: Element, opac: number) => {
+            if (el.classList.contains("film-em")) return;
+            const cs = getComputedStyle(el);
+            if (cs.display === "none" || cs.visibility === "hidden") return;
+            const o = opac * (Number.parseFloat(cs.opacity) || 0);
+            if (o < 0.04) return;
+            if (paint(el)) {
+              const box = el.getBoundingClientRect();
+              if (box.width >= 0.5 || box.height >= 0.5) {
+                l = Math.min(l, box.left); top = Math.min(top, box.top); r = Math.max(r, box.right); b = Math.max(b, box.bottom);
+              }
+            }
+            if (el instanceof HTMLElement && el.classList.contains("film-label")) return;
+            for (const c of el.children) walk(c, o);
+          };
+          for (const c of fit.children) walk(c, 1);
+          const ink = Number.isFinite(l) ? { l, t: top, r, b } : null;
+          const nodes = [...fit.querySelectorAll<Element>("path, circle, rect, ellipse, polygon, polyline, .film-label")];
+          const items: { i: number; x: number; y: number }[] = [];
+          nodes.forEach((el, i) => {
+            if (el.classList.contains("film-em") || shown(el) < 0.45) return;
+            if (el instanceof SVGGraphicsElement) {
+              let box: { x: number; y: number; width: number; height: number };
+              try { box = el.getBBox(); } catch { return; }
+              if (box.width + box.height < 0.5) return;
+              items.push({ i, x: box.x + box.width / 2, y: box.y + box.height / 2 });
+            } else if (el instanceof HTMLElement) {
+              const m = el.style.transform.match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
+              if (!m || el.offsetWidth + el.offsetHeight < 1) return;
+              items.push({ i, x: parseFloat(m[1]!) + el.offsetWidth / 2, y: parseFloat(m[2]!) + el.offsetHeight / 2 });
+            }
+          });
+          const hits: string[] = [];
+          const hot = [...fit.querySelectorAll<Element>("[data-em]")].filter((el) => !el.classList.contains("film-em") && shown(el) > 0.45 && Number(el.getAttribute("data-em") || 0) > 0.35);
+          const others: { el: Element; box: DOMRect }[] = [];
+          const collect = (el: Element, opac: number) => {
+            if (el.classList.contains("film-em")) return;
+            const cs = getComputedStyle(el);
+            if (cs.display === "none" || cs.visibility === "hidden") return;
+            const o = opac * (Number.parseFloat(cs.opacity) || 0);
+            if (o < 0.45) return;
+            if (paint(el)) {
+              const box = el.getBoundingClientRect();
+              if (box.width >= 0.5 || box.height >= 0.5) others.push({ el, box });
+            }
+            if (el instanceof HTMLElement && el.classList.contains("film-label")) return;
+            for (const c of el.children) collect(c, o);
+          };
+          for (const c of fit.children) collect(c, 1);
+          for (const el of hot) {
+            const grown = el.getBoundingClientRect();
+            const em = Number(el.getAttribute("data-em") || 0);
+            const k = 1 + 0.15 * em;
+            const cx = (grown.left + grown.right) / 2, cy = (grown.top + grown.bottom) / 2;
+            const rest = { l: cx - grown.width / k / 2, t: cy - grown.height / k / 2, r: cx + grown.width / k / 2, b: cy + grown.height / k / 2 };
+            const gb = { l: grown.left, t: grown.top, r: grown.right, b: grown.bottom };
+            for (const other of others) {
+              if (other.el === el || el.contains(other.el) || other.el.contains(el)) continue;
+              const o = other.box;
+              const ocx = (o.left + o.right) / 2, ocy = (o.top + o.bottom) / 2;
+              if (ocx > rest.l && ocx < rest.r && ocy > rest.t && ocy < rest.b) continue;
+              if (!meet(gb, { l: o.left, t: o.top, r: o.right, b: o.bottom })) continue;
+              const label = ((el.textContent || el.getAttribute("class") || el.tagName) + " ∩ " + (other.el.textContent || other.el.getAttribute("class") || other.el.tagName)).replace(/\s+/g, " ").trim().slice(0, 80);
+              if (hits.length < 4) hits.push(label);
+            }
+          }
+          return { t: sample.t, shot: sample.shot, glide: sample.glide, moving: fit.dataset.moving === "1", items, hits, ink, card };
+        });
+      }, plan);
+      let shot = -1;
+      const windows = motionWindows(id);
+      const busy = (shotN: number, a: number, b: number) => windows.some((w) => w.shot === shotN && w.t1 > a && w.t0 < b);
+      let prev: { t: number; shot: number; moving: boolean; items: { i: number; x: number; y: number }[] } | null = null;
+      for (const snap of snaps) {
+        if (!snap || "error" in snap) throw new Error(`${id}: ${snap && "error" in snap ? snap.error : "no sample"}`);
+        if (snap.shot !== shot) { shot = snap.shot; prev = null; }
+        expect(snap.hits, `${id} shot ${snap.shot} t=${snap.t.toFixed(2)}`).toEqual([]);
+        if (!snap.glide && snap.ink && snap.card) {
+          const need = Math.max(Math.min(snap.card.w, snap.card.h) * 0.06, 16) - 1;
+          const where = `${id} shot ${snap.shot} t=${snap.t.toFixed(2)} margin`;
+          expect(snap.ink.l - snap.card.l, where).toBeGreaterThanOrEqual(need);
+          expect(snap.card.r - snap.ink.r, where).toBeGreaterThanOrEqual(need);
+          expect(snap.ink.t - snap.card.t, where).toBeGreaterThanOrEqual(need);
+          expect(snap.card.b - snap.ink.b, where).toBeGreaterThanOrEqual(need);
+        }
+        if (prev && prev.shot === snap.shot && !prev.moving && !snap.moving && !busy(snap.shot, prev.t, snap.t)) {
+          const at = new Map(snap.items.map((item) => [item.i, item]));
+          for (const item of prev.items) {
+            const next = at.get(item.i);
+            if (!next) continue;
+            const where = `${id} shot ${snap.shot} t=${snap.t.toFixed(2)} #${item.i}`;
+            expect(Math.abs(item.x - next.x), where).toBeLessThanOrEqual(1);
+            expect(Math.abs(item.y - next.y), where).toBeLessThanOrEqual(1);
+          }
+        }
+        prev = snap;
+      }
+    }
+  } finally {
+    await page.close();
+  }
+}, 180_000);

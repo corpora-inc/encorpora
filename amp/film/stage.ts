@@ -1,7 +1,8 @@
 /**
  * The film is a pure function of time. `seek(t)` sets every element from t and
  * nothing else, so any frame can be rendered alone, in any order.
- * The board is laid out once. Each frame centres the figure's ink in its card.
+ * The board is laid out once. Each shot's figure is fitted once, to everything
+ * that shot will draw, and that frame stays put until the next shot.
  */
 import katex from "katex";
 import type { Action, BeatTime, Geo, Part, Script, Shot, Timing } from "./schema";
@@ -26,6 +27,13 @@ const ease = (u: number) => {
   u = clamp(u);
   return u * u * u * (u * (u * 6 - 15) + 10);
 };
+/**
+ * A highlight grows about its own centre and takes no layout space.
+ * The in and out are a short smooth ease, with no bounce.
+ */
+const EMPH_GROW = 0.15;
+const EMPH_IN = 0.2;
+const EMPH_OUT = 0.22;
 const svgNS = "http://www.w3.org/2000/svg";
 const svg = (tag: string, cls?: string) => {
   const e = document.createElementNS(svgNS, tag);
@@ -218,35 +226,36 @@ type MosaicView = {
   guide: SVGElement;
 };
 /**
- * Centre the figure's ink in its card. The box is the scene's content
- * (shapes, axes, bars, tables, labels), not the scene's nominal view and not
- * a highlight's ink (`.film-em`: rings, bands, overlays). Every side keeps a
- * margin of at least 6% of the shorter side and 16 CSS px. Ink that would
- * cross that margin is scaled down; ink that already fits is only moved.
- * `root` is the card's `.film-fit` layer.
+ * Centre one shot's figure in its card. The box is the union of everything the
+ * shot draws, including a highlight's grown size — not the scene's nominal view,
+ * and not a highlight's spare ink (`.film-em`: rings, bands, overlays). Every
+ * side keeps a margin of at least 6% of the shorter side and 16 CSS px. Ink
+ * that would cross that margin is scaled down; ink that already fits is only
+ * moved. `root` is the card's `.film-fit` layer. The pose stays fixed for the shot.
  */
-export function fitFigure(root: HTMLElement) {
-  root.style.transform = "none";
-  const area = root.getBoundingClientRect();
-  const localW = root.offsetWidth, localH = root.offsetHeight;
-  if (area.width < 32 || area.height < 32 || localW < 32 || localH < 32) return;
+type InkBox = { l: number; t: number; r: number; b: number };
+export type FigurePose = { tx: number; ty: number; s: number };
+
+function isPaint(el: Element) {
+  if (el instanceof SVGSVGElement || el instanceof SVGGElement) return false;
+  if (el instanceof SVGGraphicsElement) return true;
+  if (!(el instanceof HTMLElement)) return false;
+  if (el.classList.contains("film-label")) return true;
+  const bg = getComputedStyle(el).backgroundColor;
+  if (bg && bg !== "transparent" && !/rgba?\([^)]*,\s*0(?:\.0+)?\)/.test(bg) && !bg.endsWith("/ 0)") && !bg.endsWith("/0)")) return true;
+  return el.childElementCount === 0 && (el.textContent ?? "").trim() !== "";
+}
+
+/** Ink drawn right now, in viewport pixels. A highlight's spare decoration is not ink. */
+export function measureInk(root: HTMLElement): InkBox | null {
   let l = Infinity, t = Infinity, r = -Infinity, b = -Infinity;
-  const paint = (el: Element) => {
-    if (el instanceof SVGSVGElement || el instanceof SVGGElement) return false;
-    if (el instanceof SVGGraphicsElement) return true;
-    if (!(el instanceof HTMLElement)) return false;
-    if (el.classList.contains("film-label")) return true;
-    const bg = getComputedStyle(el).backgroundColor;
-    if (bg && bg !== "transparent" && !/rgba?\([^)]*,\s*0(?:\.0+)?\)/.test(bg) && !bg.endsWith("/ 0)") && !bg.endsWith("/0)")) return true;
-    return el.childElementCount === 0 && (el.textContent ?? "").trim() !== "";
-  };
   const walk = (el: Element, opac: number) => {
     if (el.classList.contains("film-em")) return;
     const cs = getComputedStyle(el);
     if (cs.display === "none" || cs.visibility === "hidden") return;
     const o = opac * (Number.parseFloat(cs.opacity) || 0);
     if (o < 0.04) return;
-    if (paint(el)) {
+    if (isPaint(el)) {
       const box = el.getBoundingClientRect();
       if (box.width >= 0.5 || box.height >= 0.5) {
         l = Math.min(l, box.left); t = Math.min(t, box.top); r = Math.max(r, box.right); b = Math.max(b, box.bottom);
@@ -256,28 +265,55 @@ export function fitFigure(root: HTMLElement) {
     for (const c of el.children) walk(c, o);
   };
   for (const c of root.children) walk(c, 1);
-  if (!Number.isFinite(l) || r - l < 0.5 || b - t < 0.5) return;
+  if (!Number.isFinite(l) || r - l < 0.5 || b - t < 0.5) return null;
+  return { l, t, r, b };
+}
+
+/** The fit from #2131, applied to a box measured with the layer's transform cleared. */
+export function poseFrom(root: HTMLElement, ink: InkBox): FigurePose | null {
+  const area = root.getBoundingClientRect();
+  const localW = root.offsetWidth, localH = root.offsetHeight;
+  if (area.width < 32 || area.height < 32 || localW < 32 || localH < 32) return null;
   const k = area.width / localW;
   const shorter = Math.min(area.width, area.height);
   const margin = Math.max(shorter * 0.06, 16) + 0.75;
-  const iw = r - l, ih = b - t;
+  const iw = ink.r - ink.l, ih = ink.b - ink.t;
   const roomW = area.width - 2 * margin, roomH = area.height - 2 * margin;
-  if (roomW < 8 || roomH < 8) return;
+  if (roomW < 8 || roomH < 8) return null;
   const s = Math.min(1, roomW / iw, roomH / ih);
-  if (!Number.isFinite(s) || s <= 0) return;
-  const tx = ((area.width - iw * s) / 2 - (l - area.left) * s) / k;
-  const ty = ((area.height - ih * s) / 2 - (t - area.top) * s) / k;
-  root.style.transform = `translate(${tx}px, ${ty}px) scale(${s})`;
+  if (!Number.isFinite(s) || s <= 0) return null;
+  const tx = ((area.width - iw * s) / 2 - (ink.l - area.left) * s) / k;
+  const ty = ((area.height - ih * s) / 2 - (ink.t - area.top) * s) / k;
+  return { tx, ty, s };
 }
-/** Nudge a placed label without touching its scale. place() writes a plain translate. */
+
+export function applyPose(root: HTMLElement, pose: FigurePose) {
+  root.style.transform = `translate(${pose.tx}px, ${pose.ty}px) scale(${pose.s})`;
+}
+
+/** Fit the ink drawn right now. A shot uses `poseFrom` on its whole extent instead. */
+export function fitFigure(root: HTMLElement) {
+  root.style.transform = "none";
+  const ink = measureInk(root);
+  if (!ink) return;
+  const pose = poseFrom(root, ink);
+  if (pose) applyPose(root, pose);
+}
+
+function readTranslate(el: HTMLElement): [number, number, string] | null {
+  const m = el.style.transform.match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)(\s*scale\(([-\d.]+)\))?/);
+  if (!m) return null;
+  return [parseFloat(m[1]!), parseFloat(m[2]!), m[4] ? ` scale(${m[4]})` : ""];
+}
+/** Nudge a placed label. Keeps the highlight scale place() wrote after the translate. */
 function nudgeLabel(el: HTMLElement, dx: number, dy: number) {
-  const m = el.style.transform.match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
+  const m = readTranslate(el);
   if (!m) return;
-  el.style.transform = `translate(${(parseFloat(m[1]!) + dx).toFixed(2)}px, ${(parseFloat(m[2]!) + dy).toFixed(2)}px)`;
+  el.style.transform = `translate(${(m[0] + dx).toFixed(2)}px, ${(m[1] + dy).toFixed(2)}px)${m[2]}`;
 }
 /**
- * Labels that land on each other are pushed apart. A highlight does not change
- * their boxes, so this nudge is the same on the frame before and during one.
+ * Labels that land on each other are pushed apart. The shot stores the nudge
+ * and replays it, so a label that appears later does not shove one already there.
  */
 function separateLabels(root: HTMLElement) {
   const els = [...root.querySelectorAll<HTMLElement>(".film-label")].filter((el) => {
@@ -304,6 +340,66 @@ function separateLabels(root: HTMLElement) {
       }
     }
     if (!moved) break;
+  }
+}
+type Box4 = { l: number; t: number; r: number; b: number };
+const boxesMeet = (a: Box4, b: Box4, gap: number) =>
+  Math.min(a.r, b.r) - Math.max(a.l, b.l) > gap && Math.min(a.b, b.b) - Math.max(a.t, b.t) > gap;
+/**
+ * A highlight may grow only until it would touch a neighbour it did not already
+ * cover. The scale is a transform, so the neighbour's layout does not move.
+ */
+function setEmVisual(el: SVGElement | HTMLElement, em: number) {
+  const clamped = clamp(em);
+  const k = (1 + EMPH_GROW * clamped).toFixed(4);
+  const scale = `scale(${k})`;
+  if (el instanceof HTMLElement && el.style.transform.includes("scale(")) el.style.transform = el.style.transform.replace(/scale\([-\d.]+\)/, scale);
+  else if (el instanceof SVGElement && (el.getAttribute("transform") ?? "").includes("scale(")) el.setAttribute("transform", (el.getAttribute("transform") ?? "").replace(/scale\([-\d.]+\)/, scale));
+  if (el.dataset.sw) el.style.strokeWidth = String(parseFloat(el.dataset.sw) * (1 + 0.75 * clamped));
+  if (clamped > 0.02) el.dataset.em = clamped.toFixed(3);
+  else delete el.dataset.em;
+}
+/** True when the grown element meets a neighbour it did not already cover. */
+function coversNeighbour(el: Element, em: number) {
+  const cur = el.getBoundingClientRect();
+  const k = 1 + EMPH_GROW * Math.max(em, 0.001);
+  const cx = (cur.left + cur.right) / 2, cy = (cur.top + cur.bottom) / 2;
+  const rest: Box4 = { l: cx - cur.width / k / 2, t: cy - cur.height / k / 2, r: cx + cur.width / k / 2, b: cy + cur.height / k / 2 };
+  const grown: Box4 = { l: cur.left, t: cur.top, r: cur.right, b: cur.bottom };
+  const root = el.closest(".film-fit");
+  if (!root) return false;
+  const see = (node: Element, opac: number): boolean => {
+    if (node === el || node.classList.contains("film-em")) return false;
+    const cs = getComputedStyle(node);
+    if (cs.display === "none" || cs.visibility === "hidden") return false;
+    const o = opac * (Number.parseFloat(cs.opacity) || 0);
+    if (o < 0.45) return false;
+    if (isPaint(node) && !el.contains(node) && !node.contains(el)) {
+      const box = node.getBoundingClientRect();
+      const ocx = (box.left + box.right) / 2, ocy = (box.top + box.bottom) / 2;
+      const outside = !(ocx > rest.l && ocx < rest.r && ocy > rest.t && ocy < rest.b);
+      if (outside && box.width >= 0.5 && boxesMeet(grown, { l: box.left, t: box.top, r: box.right, b: box.bottom }, 2)) return true;
+    }
+    if (node instanceof HTMLElement && node.classList.contains("film-label")) return false;
+    for (const c of node.children) if (see(c, o)) return true;
+    return false;
+  };
+  for (const c of root.children) if (see(c, 1)) return true;
+  return false;
+}
+function limitGrow(root: HTMLElement) {
+  const nodes = [...root.querySelectorAll<SVGElement | HTMLElement>("[data-em]")].filter((el) => !el.classList.contains("film-em"));
+  for (const el of nodes) {
+    let em = Number(el.dataset.em || 0);
+    if (em < 0.04 || !coversNeighbour(el, em)) continue;
+    let lo = 0, hi = em;
+    for (let n = 0; n < 6; n++) {
+      const mid = (lo + hi) / 2;
+      setEmVisual(el, mid);
+      if (coversNeighbour(el, mid)) hi = mid;
+      else lo = mid;
+    }
+    setEmVisual(el, lo);
   }
 }
 const roundRect = (x: number, y: number, w: number, h: number, r: number) => {
@@ -336,6 +432,12 @@ class GeoStage {
   /** Points that may leave the view: they ride a graph off to infinity. */
   riders = new Set<string>();
   readouts = new Map<HTMLElement, string>();
+  /** Emphasis transforms composed at the end of the frame. A highlight never changes layout. */
+  emphList: { el: SVGElement; em: number; lift: string }[] = [];
+  /** Whole-shot label nudges. Empty while the shot is being measured. */
+  labelNudges: Map<HTMLElement, { dx: number; dy: number }> | null = null;
+  /** When set, draw reports this frame's nudges instead of applying the stored ones. */
+  nudgeReport: ((got: Map<HTMLElement, { dx: number; dy: number }>) => void) | null = null;
 
   geo: Geo;
   constructor(host: HTMLElement, geo: Geo, entriesList: Entry[], box: { x: number; y: number; w: number; h: number }) {
@@ -740,8 +842,8 @@ class GeoStage {
       else if (f.kind === "draw") { o = 1; drawn = Math.max(drawn, u); }
       else if (f.kind === "hide") { o = Math.min(o, 1 - u); }
       else if (f.kind === "highlight") {
-        const off = f.end! + 0.35;
-        const v = t < off ? ease((t - f.t0) / 0.3) : 1 - ease((t - off) / 0.35);
+        const off = (f.end ?? f.t0 + f.dur) + 0.06;
+        const v = t < off ? ease((t - f.t0) / EMPH_IN) : 1 - ease((t - off) / EMPH_OUT);
         em = Math.max(em, v);
       }
     }
@@ -966,7 +1068,79 @@ class GeoStage {
     if (part && "vector" in part) return [this.at(part.vector[0], t), this.at(part.vector[1], t)];
     return null;
   }
+  /** Remember a shape's emphasis. The transform is composed after the whole frame is placed. */
+  markEm(el: SVGElement | undefined, em: number, lift = "") {
+    if (!el) return;
+    this.emphList.push({ el, em: clamp(em), lift });
+  }
+  /** Grow highlighted shapes about their own centres. A lift (a solid's thickness) stays outside the scale. */
+  finishEmphasis() {
+    for (const { el, em, lift } of this.emphList) {
+      if (em > 0.02) el.dataset.em = em.toFixed(3);
+      else delete el.dataset.em;
+      let about = "";
+      if (em > 0.02 && el instanceof SVGGraphicsElement) {
+        let box = { x: 0, y: 0, width: 0, height: 0 };
+        try { box = el.getBBox(); } catch { /* not in the document yet */ }
+        if (box.width >= 0.4 || box.height >= 0.4) {
+          const cx = box.x + box.width / 2, cy = box.y + box.height / 2;
+          const k = 1 + EMPH_GROW * em;
+          about = `translate(${cx.toFixed(2)} ${cy.toFixed(2)}) scale(${k.toFixed(4)}) translate(${(-cx).toFixed(2)} ${(-cy).toFixed(2)})`;
+          // The branch just wrote the resting stroke. Keep it, then thicken.
+          if (el.style.strokeWidth) {
+            el.dataset.sw = el.style.strokeWidth;
+            el.style.strokeWidth = String(parseFloat(el.dataset.sw) * (1 + 0.75 * em));
+          }
+        }
+      }
+      // SVG applies the list right to left: scale about the local centre, then the lift.
+      const transform = [lift, about].filter(Boolean).join(" ");
+      if (transform) el.setAttribute("transform", transform);
+      else el.removeAttribute("transform");
+    }
+  }
+  /** An authored move, turn, camera change or draw is in progress. Appearing and highlighting are not. */
+  figureMoving(t: number) {
+    const hit = (t0: number, dur: number) => t >= t0 - 0.03 && t <= t0 + dur + 0.03;
+    if (this.views.some((v) => hit(v.t0, v.dur))) return true;
+    if (this.moves.some((m) => hit(m.t0, m.dur))) return true;
+    if (this.xforms.some((x) => hit(x.t0, x.dur))) return true;
+    if (this.glides.some((g) => hit(g.t0, g.dur))) return true;
+    for (const m of this.blocks.values()) {
+      if (m.transitions.some((tr) => hit(tr.t0, tr.dur))) return true;
+      if (m.cuts.some((c) => hit(c.t0, c.dur))) return true;
+    }
+    for (const cuts of this.barCuts.values()) if (cuts.some((c) => hit(c.t0, c.dur))) return true;
+    for (const shades of this.barShades.values()) if (shades.some((c) => hit(c.t0, c.dur))) return true;
+    for (const list of this.fades.values()) if (list.some((f) => f.kind === "draw" && hit(f.t0, f.dur))) return true;
+    return false;
+  }
+  capturedNudges(host: HTMLElement) {
+    const before = new Map<HTMLElement, [number, number]>();
+    for (const el of host.querySelectorAll<HTMLElement>(".film-label")) {
+      const m = readTranslate(el);
+      if (m) before.set(el, [m[0], m[1]]);
+    }
+    separateLabels(host);
+    const got = new Map<HTMLElement, { dx: number; dy: number }>();
+    for (const [el, xy] of before) {
+      const m = readTranslate(el);
+      if (!m) continue;
+      const dx = m[0] - xy[0], dy = m[1] - xy[1];
+      if (Math.abs(dx) > 0.2 || Math.abs(dy) > 0.2) got.set(el, { dx, dy });
+    }
+    return got;
+  }
+  applyNudges() {
+    if (!this.labelNudges) return;
+    for (const [el, n] of this.labelNudges) nudgeLabel(el, n.dx, n.dy);
+  }
   draw(t: number) {
+    this.emphList = [];
+    for (const old of this.svg.querySelectorAll<SVGElement>("[data-em]")) {
+      delete old.dataset.em;
+      old.removeAttribute("transform");
+    }
     const { s, map } = this.px(t);
     const unit = 1;
     for (const e of this.parts) {
@@ -989,7 +1163,7 @@ class GeoStage {
         const d = "M" + pts.map((q) => `${q[0].toFixed(2)} ${q[1].toFixed(2)}`).join("L") + "Z";
         const f = back && p.back ? p.back : (p.fill ?? "none");
         e.el.setAttribute("d", d);
-        e.el.style.fill = em > 0 && f !== "none" ? `color-mix(in srgb, ${FILL[f]} ${(1 - em * 0.5) * 100}%, var(--color-figure-accent-fill-strong))` : FILL[f]!;
+        e.el.style.fill = FILL[f]!;
         e.el.style.fillOpacity = String(o);
         const w = p.w ?? (p.ink ? 5 : 0);
         e.el.style.stroke = emphInk(p.ink ? INK[p.ink]! : "none", em);
@@ -1003,11 +1177,12 @@ class GeoStage {
           (e.shadow as SVGElement).style.opacity = String(o * (0.26 - lift * 0.1));
           (e.shadow as SVGElement).style.filter = `blur(${blur.toFixed(1)}px)`;
           e.side!.setAttribute("d", d);
-          e.side!.setAttribute("transform", `translate(0 ${th * (1 - lift * 0.3)})`);
           (e.side as SVGElement).style.opacity = String(o);
           (e.side as SVGElement).style.fill = `color-mix(in srgb, ${FILL[f]} 62%, #1b2b28)`;
-          e.el.setAttribute("transform", `translate(${-lift * 4} ${-lift * 14})`);
-          e.side!.setAttribute("transform", `translate(${-lift * 4} ${th * (1 - lift * 0.3) - lift * 14})`);
+          const topLift = `translate(${(-lift * 4).toFixed(2)} ${(-lift * 14).toFixed(2)})`;
+          const sideLift = `translate(${(-lift * 4).toFixed(2)} ${(th * (1 - lift * 0.3) - lift * 14).toFixed(2)})`;
+          this.markEm(e.el, em, topLift);
+          this.markEm(e.side, em, sideLift);
         }
       } else if ("vector" in p) {
         e.el.setAttribute("d", vectorPath(planVector(P(p.vector[0]), P(p.vector[1]), drawn)));
@@ -1286,9 +1461,17 @@ class GeoStage {
         place(e.html!, [(q0[0] + q1[0]) / 2, (q0[1] + q1[1]) / 2], p.side, 0.7, o, em);
       }
       void unit;
+      if (em > 0.02 && !this.emphList.some((x) => x.el === e.el)) this.markEm(e.el, em);
+      e.extra?.forEach((x) => { if (em > 0.02 && !x.classList.contains("film-em") && !this.emphList.some((q) => q.el === x)) this.markEm(x, em); });
     }
+    this.finishEmphasis();
     const host = this.labels.parentElement;
-    if (host) { separateLabels(host); fitFigure(host); }
+    if (host) {
+      limitGrow(host);
+      if (this.nudgeReport) this.nudgeReport(this.capturedNudges(host));
+      else this.applyNudges();
+      host.dataset.moving = this.figureMoving(t) ? "1" : "0";
+    }
   }
   /** A rectangle in pixels from a box in units. */
   rectPath(b: Box, map: (p: P) => P, s: number, r = 0) {
@@ -1325,7 +1508,12 @@ class GeoStage {
     show(v.cuts, o); v.cuts.setAttribute("d", fine);
     show(v.major, o); v.major.setAttribute("d", major);
     const highlight = Math.max(own.em, whole.em, shade.em);
-    show(v.ring, o * highlight); v.ring.setAttribute("d", this.rectPath(shade.em > 0 ? plan.part : b, map, s));
+    // The bar itself grows and boldens. The old gold ring was a second shape around it.
+    show(v.ring, 0); v.ring.setAttribute("d", this.rectPath(shade.em > 0 ? plan.part : b, map, s));
+    if (highlight > 0.02) {
+      if (own.em > 0.02 || whole.em > 0.02) this.markEm(g, Math.max(own.em, whole.em));
+      else this.markEm(v.part, shade.em);
+    }
     const unit = this.chainState([`${p.id}.unit`], false, t);
     show(v.unit, o * unit.o); v.unit.setAttribute("d", this.rectPath(shareBox(spec, 0, 1 / plan.divisions), map, s));
     const values = this.chainState([`${p.id}.values`], false, t);
@@ -1416,8 +1604,11 @@ class GeoStage {
       bg.setAttribute("d", this.rectPath(box, map, s));
       const head = r === 0 || c === 0;
       const tint = head ? "var(--color-figure-head-tint, color-mix(in srgb, var(--color-muted-text) 9%, transparent))" : "transparent";
-      bg.style.fill = st.em > 0 ? `color-mix(in srgb, var(--color-figure-gold-fill) ${Math.round(st.em * 100)}%, ${tint})` : tint;
+      bg.style.fill = tint;
+      bg.style.stroke = st.em > 0.02 ? emphInk("var(--color-figure-gold)", st.em) : "none";
+      bg.style.strokeWidth = st.em > 0.02 ? String(3 + 4 * st.em) : "0";
       bg.style.opacity = String(o);
+      if (st.em > 0.02) this.markEm(bg, st.em);
       if (o > 0.5) fitCellLabel(el, box.w * s, box.h * s, 12, 8);
       place(el, map([box.x + box.w / 2, box.y + box.h / 2]), "c", 0, o, st.em);
       if (o > 0.5 && !fits(el.offsetWidth, el.offsetHeight, box.w * s, box.h * s, 12, 8))
@@ -1475,8 +1666,10 @@ class GeoStage {
       sl.base.style.stroke = ink;
       set(sl.part, partO);
       sl.part.setAttribute("d", this.rectPath(pb, map, s));
-      sl.part.style.fill = pt.em > 0 ? `color-mix(in srgb, ${fill} ${Math.round((1 - pt.em * 0.6) * 100)}%, var(--color-figure-gold-fill))` : fill;
+      sl.part.style.fill = fill;
       sl.part.style.stroke = ink;
+      if (pt.em > 0.02) this.markEm(sl.part, pt.em);
+      if (sb.em > 0.02) this.markEm(sl.base, sb.em);
       // the colored edge: the line a learner reads
       const a = p.slice === "rows" ? map([pb.x + pb.w, pb.y]) : map([pb.x, pb.y + pb.h]);
       const b = p.slice === "rows" ? map([pb.x + pb.w, pb.y + pb.h]) : map([pb.x + pb.w, pb.y + pb.h]);
@@ -1484,8 +1677,9 @@ class GeoStage {
       sl.edge.setAttribute("d", `M${a[0].toFixed(2)} ${a[1].toFixed(2)}L${b[0].toFixed(2)} ${b[1].toFixed(2)}`);
       sl.edge.style.stroke = emphInk(INK[p.fill === "warm-fill" ? "warm" : p.fill === "gold-fill" ? "gold" : p.fill === "blue-fill" ? "blue" : p.fill === "violet-fill" ? "violet" : "accent"]!, pt.em);
       sl.edge.style.strokeWidth = "5";
+      if (pt.em > 0.02) this.markEm(sl.edge, pt.em);
       const ringO = bandOpacity(givens, t, `slab.${i}`, ease) * sb.o;
-      set(sl.ring, Math.max(ringO, sb.em * baseO));
+      set(sl.ring, ringO);
       sl.ring.setAttribute("d", this.rectPath(box, map, s));
       if (sl.name) {
         const nm = this.chainState([p.id, `${p.id}.slab.${i}`, `${p.id}.name.${i}`], start, t);
@@ -1551,10 +1745,10 @@ class GeoStage {
       const w = box.w * s, h = box.h * s;
       el.body.setAttribute("d", roundRect(tl[0], tl[1], w, h, 0.07 * s));
       const base = INK[piece.ink] ?? INK.accent!;
-      // looked at: the block glows light gold, with a gold edge
-      el.body.style.fill = own.em > 0 ? `color-mix(in srgb, ${base} ${Math.round((1 - own.em) * 100)}%, var(--color-figure-gold-fill))` : base;
-      el.body.style.stroke = own.em > 0 ? `color-mix(in srgb, var(--color-figure-ink) ${Math.round((1 - own.em) * 100)}%, var(--color-figure-gold))` : "";
+      el.body.style.fill = base;
+      el.body.style.stroke = own.em > 0.02 ? emphInk("var(--color-figure-ink)", own.em) : "var(--color-figure-ink)";
       el.body.style.strokeWidth = String(bodyW);
+      if (own.em > 0.02) { this.markEm(el.body, own.em); this.markEm(el.lines, own.em); }
       el.body.style.opacity = String(o);
       // unit lines: the cuts that make a flat ten rods and a rod ten squares
       let d = "";
@@ -1577,7 +1771,10 @@ class GeoStage {
         const q = map([sb.x, sb.y + sb.h]);
         ov.style.display = "";
         ov.setAttribute("d", roundRect(q[0], q[1], sb.w * s, sb.h * s, 0.08 * s));
-        ov.style.opacity = String(o * st.em);
+        ov.style.fill = "none";
+        ov.style.strokeWidth = String(3 + 3 * st.em);
+        ov.style.opacity = String(o);
+        this.markEm(ov, st.em);
       }
     }
     // the frame: place names, the digit row, the point
@@ -1594,7 +1791,7 @@ class GeoStage {
     for (const c of layout.columns) {
       const head = v.heads.get(c.place)!;
       const em = this.chainState([`${p.id}.place.${c.place}`], false, t).em;
-      head.style.color = em > 0 ? `color-mix(in srgb, var(--color-muted-text) ${Math.round((1 - em) * 100)}%, var(--color-figure-gold))` : "";
+      head.style.color = em > 0.02 ? emphInk("var(--color-muted-text)", em) : "";
       head.style.display = frameO < 0.002 ? "none" : "";
       place(head, map([c.cx, m.headY]), "c", 0, frameO, em);
       const dcell = v.digits.get(c.place);
@@ -1651,7 +1848,7 @@ const DIRS: Record<string, P> = {
 };
 /** How far a label sits from the thing it names, before `far` scales it. */
 const LABEL_GAP = 58;
-/** A highlight mixes paint toward gold. It never changes a length. */
+/** A highlight deepens the ink toward gold. The wash behind an element is not a highlight. */
 function emphInk(ink: string, em: number): string {
   if (em <= 0.001 || ink === "none") return ink;
   const keep = Math.round((1 - Math.min(1, em)) * 100);
@@ -1659,14 +1856,19 @@ function emphInk(ink: string, em: number): string {
 }
 function place(el: HTMLElement, at: P, dir: string, far: number, o: number, em: number) {
   const d = DIRS[dir]!; const gap = LABEL_GAP * far;
+  // Weight can change the box. Measure after it, then anchor the centre.
+  el.style.fontWeight = em > 0.4 ? "700" : "";
   const w = el.offsetWidth, h = el.offsetHeight;
   const hw = (w / 2) * (d[0] === 0 ? 0 : Math.sign(d[0])), hh = (h / 2) * (d[1] === 0 ? 0 : Math.sign(d[1]));
   const k = Math.abs(d[0]) > 0 && Math.abs(d[1]) > 0 ? 0.6 : 1;
-  // emphasis is a glow, not a scale: scaling would change the ink box and re-centre the figure
-  el.style.transform = `translate(${at[0] + d[0] * gap + hw * k - w / 2}px, ${at[1] + d[1] * gap + hh * k - h / 2}px)`;
+  const grow = 1 + EMPH_GROW * clamp(em);
+  const x = at[0] + d[0] * gap + hw * k - w / 2, y = at[1] + d[1] * gap + hh * k - h / 2;
+  // Scale about the label's own centre (transform-origin is center). The translate stays put.
+  el.style.transform = `translate(${x}px, ${y}px) scale(${grow.toFixed(4)})`;
   el.style.opacity = String(o);
-  if (em > 0.02) el.style.textShadow = `0 0 ${Math.round(8 + em * 14)}px var(--color-figure-gold)`;
-  else el.style.removeProperty("text-shadow");
+  if (em > 0.02) el.dataset.em = clamp(em).toFixed(3);
+  else delete el.dataset.em;
+  el.style.removeProperty("text-shadow");
 }
 /** Shrink a label until it clears its cell. Extra leading must not spill into the rules. */
 function fitCellLabel(el: HTMLElement, cellW: number, cellH: number, padX = 12, padY = 8) {
@@ -2325,7 +2527,7 @@ class Board {
 
 // ------------------------------------------------------------------ the film
 export class Film {
-  shots: { el: HTMLElement; t0: number; t1: number; geo?: GeoStage; list: Entry[]; extern?: (t: number) => void; hasFig: boolean }[] = [];
+  shots: { el: HTMLElement; t0: number; t1: number; geo?: GeoStage; list: Entry[]; extern?: (t: number) => void; hasFig: boolean; pose: FigurePose | null; fill: number }[] = [];
   board: Board;
   issues: string[] = [];
   duration: number;
@@ -2357,9 +2559,10 @@ export class Film {
         if (shot.figure && "parts" in shot.figure) geo = new GeoStage(host, shot.figure, list, { x: 0, y: 0, w: FIG.w, h: FIG.h });
         else extern = mountExample?.(host, shot, list);
       }
-      this.shots.push({ el, t0, t1: Infinity, geo, list, extern, hasFig });
+      this.shots.push({ el, t0, t1: Infinity, geo, list, extern, hasFig, pose: null, fill: 0 });
     });
     this.shots.forEach((s, i) => { s.t1 = this.shots[i + 1]?.t0 ?? Infinity; });
+    this.lockFrames();
     const lastShot = timing.shots[timing.shots.length - 1]!;
     this.board = new Board(root, this.shots, this.duration, lastShot[lastShot.length - 1]!.end, L);
     this.issues.push(...this.board.issues);
@@ -2368,6 +2571,70 @@ export class Film {
       this.checkFigures();
       this.checkScreen();
     }
+  }
+  /**
+   * Fit each figure to the union of everything the shot will draw, including
+   * highlighted sizes, before the first frame. New elements then appear in
+   * place. Between shots the pose eases from the previous shot's frame.
+   */
+  lockFrames() {
+    const motion = new Set(["move", "slide", "turn", "flip", "glide", "view", "zoom", "split", "draw", "partition", "shade", "cut"]);
+    for (const s of this.shots) {
+      const root = s.el.querySelector<HTMLElement>(".film-fit");
+      if (!root || (!s.geo && !s.extern)) continue;
+      const end = Math.min(s.t1 === Infinity ? this.duration : s.t1, this.duration) - 0.04;
+      const start = Math.max(0, s.t0) + 0.02;
+      const raw = [start, Math.max(start, end)];
+      for (const e of s.list) {
+        raw.push(e.t0, e.t0 + e.dur);
+        if (e.a.do === "highlight") raw.push(e.t0 + EMPH_IN + 0.02, e.beatEnd);
+        if (motion.has(e.a.do)) raw.push(e.t0 + e.dur * 0.33, e.t0 + e.dur * 0.66);
+      }
+      const times = [...new Set(raw.map((t) => Math.round(Math.min(Math.max(start, end), Math.max(start, t)) * 20) / 20))].sort((a, b) => a - b);
+      const drawAt = (t: number) => { s.geo?.draw(t); s.extern?.(t); };
+      root.style.transform = "none";
+      let bestScore = -1;
+      let best = new Map<HTMLElement, { dx: number; dy: number }>();
+      if (s.geo) {
+        s.geo.nudgeReport = (got) => {
+          let score = 0;
+          for (const n of got.values()) score += Math.abs(n.dx) + Math.abs(n.dy);
+          if (score >= bestScore) { bestScore = score; best = got; }
+        };
+        for (const t of times) drawAt(t);
+        s.geo.nudgeReport = null;
+        s.geo.labelNudges = best;
+      }
+      let L = Infinity, T = Infinity, R = -Infinity, B = -Infinity;
+      for (const t of times) {
+        drawAt(t);
+        const ink = measureInk(root);
+        if (!ink) continue;
+        L = Math.min(L, ink.l); T = Math.min(T, ink.t); R = Math.max(R, ink.r); B = Math.max(B, ink.b);
+      }
+      const area = root.getBoundingClientRect();
+      const pose = Number.isFinite(L) ? poseFrom(root, { l: L, t: T, r: R, b: B }) : null;
+      s.pose = pose;
+      if (pose) {
+        // The fitted ink is the measured box times the pose scale. Capture it before the transform.
+        s.fill = area.width > 1 ? Math.max((R - L) * pose.s / area.width, (B - T) * pose.s / area.height) : 0;
+        applyPose(root, pose);
+      }
+    }
+  }
+  /** The shot's pose, gliding in from the previous shot's frame. Fixed after that. */
+  poseAt(i: number, t: number): FigurePose | null {
+    const pose = this.shots[i]!.pose;
+    if (!pose) return null;
+    const prev = i > 0 ? this.shots[i - 1]!.pose : null;
+    if (!prev) return pose;
+    const u = ease((t - this.shots[i]!.t0) / 0.48);
+    if (u >= 1) return pose;
+    return {
+      tx: prev.tx + (pose.tx - prev.tx) * u,
+      ty: prev.ty + (pose.ty - prev.ty) * u,
+      s: prev.s + (pose.s - prev.s) * u,
+    };
   }
   /** Labels and points must stay on their card, and the picture must be big enough to see. */
   checkFigures() {
@@ -2444,6 +2711,7 @@ export class Film {
       }
       if (r > l) best = Math.max(best, Math.max((r - l) / card.width, (b - top) / card.height));
     }
+    best = Math.max(best, s.fill);
     if (best > 0 && best < 0.65)
       this.issues.push(`Shot ${i + 1}: the picture fills only ${Math.round(best * 100)}% of its card. Tighten geo.view around the parts, or make them bigger, so the picture is easy to see.`);
     for (const m of small) this.issues.push(`Shot ${i + 1}: ${m}, too small to see. Use fewer, bigger cells (a taller bar, a larger size) or a tighter view.`);
@@ -2487,12 +2755,12 @@ export class Film {
   }
   /** Frames where nothing moves are copies; only these need rendering. */
   moving(): [number, number][] {
-    const out: [number, number][] = [[0, 0.6], ...this.board.moving()];
+    const out: [number, number][] = [[0, 0.75], ...this.board.moving()];
     for (const s of this.shots) {
-      out.push([s.t0 - 0.05, s.t0 + 0.65]);
+      out.push([s.t0 - 0.05, s.t0 + 0.75]);
       for (const e of s.list) {
         out.push([e.t0 - 0.02, e.t0 + e.dur + 0.02]);
-        if (e.a.do === "highlight") out.push([e.beatEnd + 0.33, e.beatEnd + 0.72]);
+        if (e.a.do === "highlight") out.push([e.beatEnd + 0.02, e.beatEnd + 0.34]);
       }
     }
     out.push([this.duration - 0.05, this.duration + 0.1]);
@@ -2500,7 +2768,8 @@ export class Film {
   }
   seek(t: number) {
     this.shots.forEach((s, i) => {
-      const inn = i === 0 ? ease(t / 0.5) : ease((t - s.t0) / 0.55);
+      // The film, and each shot, eases in. Nothing is fully present on the first frame.
+      const inn = i === 0 ? ease(t / 0.7) : ease((t - s.t0) / 0.6);
       // the last shot never fades: the film ends on its summary, held
       const out = s.t1 === Infinity ? 1 : 1 - ease((t - s.t1) / 0.3);
       const o = inn * out;
@@ -2511,8 +2780,9 @@ export class Film {
       s.geo?.draw(t);
       s.extern?.(t);
       const fit = s.el.querySelector<HTMLElement>(".film-fit");
-      if (fit) fitFigure(fit);
+      const pose = this.poseAt(i, t);
+      if (fit && pose) applyPose(fit, pose);
     });
-    this.board.draw(t, ease(t / 0.5));
+    this.board.draw(t, ease(t / 0.7));
   }
 }
