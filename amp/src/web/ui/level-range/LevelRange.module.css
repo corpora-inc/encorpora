@@ -1,0 +1,524 @@
+/* The level view and its parts (ui/level-range). Colours are roles from
+   ui/tokens.css; a bar's hue is the nearest [data-strand]'s (theme.css). */
+
+/* ── One error bar ─────────────────────────────────────────────────────── */
+.bar {
+  --level-hue: var(--strand, var(--color-primary));
+  --rail: 8px;
+  --dot: 14px;
+  position: relative;
+  display: block;
+  height: 100%;
+  min-height: 28px;
+}
+.large {
+  --rail: 12px;
+  --dot: 20px;
+  min-height: 36px;
+}
+.gridline {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  margin-left: -0.5px;
+  background: var(--color-border);
+}
+/* The learner's own grade (a class's course): a quiet stripe the full
+   height of the row, so a column of rows reads as one stripe. */
+.ownBand {
+  position: absolute;
+  top: var(--band-inset, 0);
+  bottom: var(--band-inset, 0);
+  border-radius: var(--band-radius, 0);
+  background: var(--color-course-band);
+}
+.rail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: var(--rail);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-on-surface) 6%, transparent);
+  transform: translateY(-50%);
+}
+.range {
+  position: absolute;
+  top: 50%;
+  height: var(--rail);
+  min-width: var(--rail);
+  border-radius: 999px;
+  /* The likely range is densest at the best guess and fades toward its
+     ends: an error bar that reads as how sure the estimate is. */
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--level-hue) 16%, transparent),
+    color-mix(in srgb, var(--level-hue) 52%, transparent) var(--peak, 50%),
+    color-mix(in srgb, var(--level-hue) 16%, transparent)
+  );
+  transform: translateY(-50%);
+  transition:
+    left var(--motion-fast) var(--ease-standard),
+    width var(--motion-fast) var(--ease-standard);
+}
+.dot {
+  position: absolute;
+  top: 50%;
+  width: var(--dot);
+  height: var(--dot);
+  box-sizing: border-box;
+  border: 3px solid var(--color-surface);
+  border-radius: 50%;
+  background: var(--level-hue);
+  box-shadow: 0 0 0 1px var(--level-hue);
+  transform: translate(-50%, -50%);
+  transition: left var(--motion-fast) var(--ease-standard);
+}
+.large .dot {
+  border-width: 4px;
+}
+.estimated .range {
+  background: repeating-linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--level-hue) 30%, transparent) 0 4px,
+    transparent 4px 7px
+  );
+}
+.estimated .dot {
+  border: 2.5px solid var(--level-hue);
+  background: var(--color-surface);
+  box-shadow: 0 0 0 2px var(--color-surface);
+}
+
+/* ── The axis under a column of bars ───────────────────────────────────── */
+.axisFrame {
+  display: block;
+}
+.axis {
+  position: relative;
+  display: block;
+  height: 18px;
+}
+.axisLabel {
+  position: absolute;
+  top: 0;
+  color: var(--color-subtle-text);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  font-variant-numeric: var(--numeric);
+}
+.axisLabel[data-end="start"] {
+  transform: none;
+}
+.axisLabel[data-end="end"] {
+  transform: translateX(-100%);
+}
+
+/* ── The level view ────────────────────────────────────────────────────── */
+/* No card: the view sits on the page, its parts separated by space and a
+   hairline (docs/design/ia.md). */
+.view {
+  --name-column: 132px;
+  --numbers-column: 80px;
+  display: grid;
+  gap: var(--space-6);
+}
+/* One column: the best guess (with the next step beside it), every area,
+   then the path the estimate took. */
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4) var(--space-6);
+}
+.action {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.estimate {
+  min-width: 0;
+}
+h2.eyebrow {
+  margin: 0 0 var(--space-4);
+  color: var(--color-primary);
+  font-family: inherit;
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+.bestLabel {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+  font-weight: 600;
+}
+.best {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-3);
+  margin: var(--space-1) 0 0;
+}
+.bestName {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 9vw, 56px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.bestPoint {
+  color: var(--color-muted-text);
+  font-size: var(--text-heading-3);
+  font-weight: 600;
+  font-variant-numeric: var(--numeric);
+}
+.likely {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-2);
+  margin: var(--space-3) 0 0;
+  font-size: var(--text-heading-3);
+  font-weight: 600;
+}
+.likelyNumbers {
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  font-weight: 500;
+  font-variant-numeric: var(--numeric);
+}
+.summary {
+  max-width: 44ch;
+  margin: var(--space-4) 0 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-dense);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+.caption,
+h3.caption {
+  margin: 0;
+  color: var(--color-on-surface);
+  font-family: inherit;
+  font-size: var(--text-label);
+  font-weight: 650;
+  line-height: 1.3;
+}
+
+/* The path of the estimate. */
+.pathFigure {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+  margin: 0;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+.path {
+  display: grid;
+  grid-template-rows: 176px auto;
+  gap: var(--space-2);
+  min-height: 200px;
+  border-radius: var(--radius-control);
+}
+.pathFailed {
+  align-self: center;
+  margin: 0;
+  padding: var(--space-4);
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+}
+.pathPlot {
+  position: relative;
+  margin-left: 52px;
+}
+.pathPlot svg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.pathLine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-top: 1px solid var(--color-border);
+}
+.pathLabel {
+  position: absolute;
+  right: calc(100% + var(--space-2));
+  top: 0;
+  color: var(--color-subtle-text);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  transform: translateY(-50%);
+}
+.pathBand {
+  fill: color-mix(in srgb, var(--color-primary) 22%, transparent);
+  stroke: none;
+}
+.pathGuess {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.pathDot {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  box-sizing: border-box;
+  border: 3px solid var(--color-surface);
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+  transform: translate(-50%, -50%);
+}
+.pathAxis {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 52px;
+  color: var(--color-subtle-text);
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: var(--numeric);
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  margin-left: 52px;
+  color: var(--color-muted-text);
+  font-size: 12px;
+  font-weight: 600;
+}
+.legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.legendBand,
+.legendGuess,
+.legendGrade {
+  display: inline-block;
+  width: 18px;
+  border-radius: 999px;
+}
+.legendBand {
+  height: 10px;
+  background: color-mix(in srgb, var(--color-primary) 22%, transparent);
+}
+.legendGuess {
+  height: 3px;
+  background: var(--color-primary);
+}
+.legendGrade {
+  height: 14px;
+  border-radius: 3px;
+  background: var(--color-course-band);
+}
+
+/* Every area on one scale, the overall estimate first and larger. */
+.areas {
+  display: grid;
+  gap: var(--space-3);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+/* Two classes deep, so a page's own list rules never reach the rows. */
+.rows,
+.areas .rows {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.rows > .row,
+.axisRow {
+  display: grid;
+  grid-template-columns: var(--name-column, 132px) minmax(0, 1fr) var(
+      --numbers-column,
+      80px
+    );
+  column-gap: var(--space-4);
+}
+.row {
+  align-items: stretch;
+  min-height: 40px;
+}
+.rowStrong {
+  min-height: 52px;
+}
+.rowName {
+  align-self: center;
+  padding-block: var(--space-2);
+  font-size: var(--text-table);
+  font-weight: 550;
+  line-height: 1.25;
+}
+.rowStrong .rowName {
+  font-weight: 700;
+}
+.rowBar {
+  display: block;
+  min-width: 0;
+}
+.rowNumbers {
+  align-self: center;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+  text-align: end;
+  white-space: nowrap;
+}
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2) var(--space-4);
+  margin-top: calc(-1 * var(--space-3));
+}
+
+/* Phones: the name and range on one line, the bar under them at full
+   width. */
+@media (max-width: 599.98px) {
+  .view {
+    gap: var(--space-5);
+  }
+  .rows > .row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto 28px;
+    column-gap: var(--space-3);
+    min-height: 0;
+    padding-bottom: var(--space-2);
+  }
+  .rowStrong {
+    grid-template-rows: auto 34px;
+  }
+  .rowName {
+    padding-block: var(--space-1) 0;
+  }
+  .rowBar {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  .rowNumbers {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: end;
+  }
+  .axisRow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .axisRow > span:not(.axisFrame) {
+    display: none;
+  }
+  .path {
+    grid-template-rows: 148px auto;
+    min-height: 170px;
+  }
+  .footer {
+    justify-content: flex-start;
+  }
+}
+
+/* ── Before the first answer ───────────────────────────────────────────── */
+.start {
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .start {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-7);
+  }
+}
+.startText {
+  display: grid;
+  justify-items: start;
+}
+.startTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-heading-2);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.startBody {
+  max-width: 42ch;
+  margin: var(--space-3) 0 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-dense);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+.startAction {
+  margin-top: var(--space-5);
+}
+.startFigure {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+}
+.startBar {
+  height: 56px;
+}
+.startBar .bar {
+  --dot: 22px;
+}
+.startNote {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin: var(--space-2) 0 0;
+  color: var(--color-muted-text);
+  font-size: 12px;
+  font-weight: 600;
+}
+.startNote svg {
+  width: 20px;
+  height: 10px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* A wide dashed range now, a narrow solid one later: the legend of what
+   practice does to it. */
+.startNoteBefore,
+.startNoteAfter {
+  display: inline-block;
+  height: 8px;
+  border-radius: 999px;
+}
+.startNoteBefore {
+  width: 36px;
+  background: repeating-linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-primary) 34%, transparent) 0 4px,
+    transparent 4px 7px
+  );
+}
+.startNoteAfter {
+  width: 14px;
+  margin-left: var(--space-2);
+  background: color-mix(in srgb, var(--color-primary) 45%, transparent);
+}

@@ -380,6 +380,12 @@ test(
           );
         await ok(get(`/api/v1/learners/${maya}/progress`, rowan));
         await ok(get(`/api/v1/learners/${maya}/frontier`, rowan));
+        // The Overview's level path: the same read, starting from the prior.
+        const { trend } = await ok(
+          get(`/api/v1/learners/${maya}/level-trend`, rowan),
+        );
+        assert.equal(trend[0].answered, 0);
+        await denied(get(`/api/v1/learners/${maya}/level-trend`, stranger));
         const session = await ok(
           post(`/api/v1/family/learners/${maya}/practice-here`, rowan),
           201,

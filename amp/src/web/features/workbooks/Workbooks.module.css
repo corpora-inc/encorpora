@@ -1,58 +1,29 @@
+/* A learner's workbooks, on the app frame under their Progress tabs. Every
+   action keeps its natural width; nothing stretches across a wide page. */
 .page {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-5);
   box-sizing: border-box;
   width: 100%;
   max-width: var(--width-content-wide);
   margin-inline: auto;
-  padding: var(--space-5) var(--space-4) var(--space-8);
+  padding: var(--space-5) max(var(--space-4), env(safe-area-inset-right))
+    max(var(--space-8), env(safe-area-inset-bottom))
+    max(var(--space-4), env(safe-area-inset-left));
   min-height: calc(100dvh - var(--shell-bar, 56px));
 }
-.head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-2) var(--space-4);
-  min-height: var(--target-size);
-}
-.eyebrow {
-  margin: 0;
-  color: var(--color-muted-text);
-  font-size: var(--text-small);
-  font-weight: 700;
-  overflow-wrap: anywhere;
-}
-.textLink {
-  display: inline-flex;
-  align-items: center;
-  min-height: var(--target-size);
-  padding: 0 var(--space-2);
-  margin-right: calc(-1 * var(--space-2));
-  border-radius: var(--radius-control);
-  color: var(--color-primary);
-  font-weight: 700;
-  text-decoration: none;
-  white-space: nowrap;
-}
-/* The link's padding is a touch area, not an indent: its text lines up
-   with the eyebrow when the two wrap onto separate lines. */
-.head .textLink {
-  margin-inline: calc(-1 * var(--space-2));
-}
-.textLink:hover {
-  background: var(--color-surface-sunken);
-}
-.textLink:focus-visible,
-.rowTitle:focus-visible,
-.retry:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: 2px;
+@media (min-width: 768px) {
+  .page {
+    padding-top: var(--space-6);
+    padding-inline: max(var(--space-5), env(safe-area-inset-left));
+  }
 }
 .title {
   margin: 0;
-  font-size: clamp(var(--text-title-min), 6vw, var(--text-title-max));
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-title-min), 6vw, var(--text-heading-1));
+  font-weight: 400;
   line-height: 1.15;
   /* Relative to the title's size: words keep their spaces at 320 px. */
   letter-spacing: -0.01em;
@@ -60,31 +31,264 @@
   text-wrap: balance;
 }
 .lede {
+  max-width: 60ch;
+  margin: var(--space-2) 0 0;
+  color: var(--color-muted-text);
+  text-wrap: pretty;
+}
+/* Whose workbooks, when they aren't the reader's own: small and quiet. */
+.learnerLabel {
+  margin: 0 0 var(--space-1);
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  font-weight: 650;
+  overflow-wrap: anywhere;
+}
+.buttonIcon {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* The list: title and lede, the two actions at the end of the row. */
+.listHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4) var(--space-6);
+}
+.listTitle {
+  flex: 1 1 320px;
+  min-width: 0;
+}
+.listActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
+}
+.listActions > * {
+  white-space: nowrap;
+}
+.today {
+  min-height: var(--target-size);
+  padding-inline: var(--space-5);
+}
+.past {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+h2.sectionTitle {
   margin: 0;
   color: var(--color-muted-text);
+  font-family: inherit;
+  font-size: var(--text-label);
+  font-weight: 650;
+  letter-spacing: 0;
 }
-.controls {
+.emptyPanel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  color: var(--color-muted-text);
+}
+.emptyPanel p {
+  margin: 0;
+}
+/* Rows separated by a hairline, on the page (docs/design/ia.md). */
+.list {
   display: grid;
-  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
-.actions {
+.row {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-  gap: var(--space-3);
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+  min-height: 92px;
+  box-sizing: border-box;
+  padding: var(--space-3) 0;
 }
-/* Both labels fit their widest state, so nothing moves while a file is
-   prepared or another workbook is made. */
-.download,
-.another,
-.today {
+.row + .row {
+  border-top: 1px solid var(--color-border);
+}
+.listSkeleton .row {
+  display: block;
+  border-radius: 0;
+}
+/* The workbook's day as a calendar leaf. */
+.tile {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  width: 52px;
+  height: 56px;
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+  font-variant-numeric: var(--numeric);
+}
+.tileMonth {
+  color: var(--color-primary);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.tileDay {
+  font-size: 22px;
+  font-weight: 650;
+  line-height: 1.1;
+}
+.rowText {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+.rowTitle {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-self: start;
+  gap: 0 var(--space-2);
+  border-radius: var(--radius-small);
+  color: var(--color-on-surface);
+  font-weight: 700;
+  text-decoration: none;
+}
+.rowTitle:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+/* The whole row is the title's target on a pointer. */
+.rowNumber {
+  color: var(--color-muted-text);
+  font-weight: 600;
+}
+.rowMeta {
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+}
+.rowCode {
+  color: var(--color-subtle-text);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+.rowActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+.rowButton {
+  min-height: 44px;
+  padding-block: var(--space-2);
+  white-space: nowrap;
+}
+.code {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: var(--text-small);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* Results by code, in a sheet: the field, its reserved error line, then
+   the action at its natural width. */
+.codeForm {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+}
+.codeForm > label {
+  width: 100%;
+  max-width: 320px;
+}
+.codeForm input {
+  /* The legacy `label input` margin would drop it from its label. */
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.codeButton {
   min-height: var(--target-size);
   white-space: nowrap;
 }
-.another {
+
+/* A workbook's day: the way back, the date and its two actions on one row
+   when there is room. */
+/* A breadcrumb, not the legacy tab row the bare `nav` element is styled as. */
+.trail {
+  display: block;
+  margin: 0 0 var(--space-1) calc(-1 * var(--space-2));
+  border: 0;
+}
+.trailLink {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
+  gap: var(--space-1);
+  min-height: 44px;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-control);
+  color: var(--color-primary);
+  font-size: var(--text-label);
+  font-weight: 650;
+  text-decoration: none;
+}
+.trailLink:hover {
+  background: var(--color-secondary);
+}
+.trailLink:focus-visible,
+.rowTitle:focus-visible,
+.retry:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.trailLink svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.dayHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+}
+.dayTitle {
+  flex: 1 1 320px;
+  min-width: 0;
+}
+.dayActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
+}
+.download,
+.another {
+  min-height: var(--target-size);
+  white-space: nowrap;
+}
+.download {
+  padding-inline: var(--space-5);
 }
 .dice {
   flex: none;
@@ -98,82 +302,148 @@
   fill: currentColor;
   stroke: none;
 }
-/* Areas: one row that scrolls sideways, so the number of areas a learner
-   has never changes the height of anything. Room for the focus ring. */
-.areas {
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scrollbar-width: none;
-  padding: 4px;
-  margin: -4px;
+
+/* In the day's sheet: the two actions, the workbook as paper, then its
+   options, one column. */
+.builder {
+  display: grid;
+  gap: var(--space-5);
+  padding-top: var(--space-3);
+}
+.optionsPanel {
+  display: grid;
+  gap: var(--space-4);
+}
+h3.optionsTitle {
+  margin: 0;
+  font-family: inherit;
+  font-size: var(--text-heading-4);
+  font-weight: 650;
+  letter-spacing: 0;
+}
+.options {
+  display: grid;
+  gap: var(--space-4);
 }
 .choice {
   display: grid;
-  gap: var(--space-1);
+  gap: var(--space-2);
 }
 .choiceLabel {
   color: var(--color-muted-text);
   font-size: var(--text-small);
   font-weight: 650;
 }
-/* A fade at an end says the row scrolls further that way. */
-.areas[data-start="false"] {
-  mask-image: linear-gradient(90deg, transparent, currentColor 28px);
+
+/* The workbook as a sheet of paper. */
+.contents {
+  min-height: 420px;
+  box-sizing: border-box;
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background: var(--color-figure-paper);
+  color: var(--color-on-surface-raised);
+  box-shadow:
+    0 1px 2px var(--color-shadow),
+    0 12px 32px -18px var(--color-shadow);
+  transition: opacity var(--motion-fast) var(--ease-standard);
 }
-.areas[data-end="false"] {
-  mask-image: linear-gradient(
-    90deg,
-    currentColor calc(100% - 28px),
-    transparent
-  );
+/* Focus moves here only to keep a retry's place; it is not a control. */
+.contents:focus {
+  outline: none;
 }
-.areas[data-start="false"][data-end="false"] {
-  mask-image: linear-gradient(
-    90deg,
-    transparent,
-    currentColor 28px,
-    currentColor calc(100% - 28px),
-    transparent
-  );
+.stale {
+  opacity: 0.6;
 }
-.areas::-webkit-scrollbar {
-  display: none;
-}
-.areas [role="group"] {
-  flex-wrap: nowrap;
-}
-.today {
-  align-self: stretch;
-  text-align: center;
-}
-/* The five free workbooks are used: one calm line, then the step that
-   succeeds. Not an error, so it keeps the page's own text colour. */
-.used {
-  display: grid;
-  justify-items: start;
-  gap: var(--space-3);
-}
-.used p {
-  margin: 0;
-  max-width: 60ch;
-  color: var(--color-on-surface);
-}
-/* History rows: a reserved line for a load or download error. */
-.message {
+.paperHead {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-2);
-  min-height: calc(var(--target-size) + var(--space-2));
-  margin: calc(-1 * var(--space-2)) 0;
-  color: var(--color-danger-accent);
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-muted-text);
   font-size: var(--text-small);
+  font-weight: 600;
 }
+.contentsHead {
+  padding-block: var(--space-5) var(--space-4);
+}
+.contentsHead h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(26px, 5vw, 32px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.summary {
+  margin: var(--space-2) 0 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+}
+.choiceLine {
+  margin: var(--space-1) 0 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+}
+.sections {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sections li {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-border);
+}
+.sectionIndex {
+  color: var(--color-subtle-text);
+  font-size: var(--text-small);
+  font-weight: 650;
+  font-variant-numeric: var(--numeric);
+}
+.sectionName {
+  display: grid;
+  min-width: 0;
+  font-weight: 700;
+}
+.sectionTitle {
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+  font-weight: 400;
+  overflow-wrap: break-word;
+}
+.count {
+  flex: 0 0 auto;
+  font-weight: 650;
+  font-variant-numeric: var(--numeric);
+  white-space: nowrap;
+}
+.countUnit {
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+  font-weight: 400;
+}
+.paperFoot {
+  display: flex;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+.resultsButton {
+  min-height: 44px;
+}
+
+/* Waits, failures and notices hold the space of what they stand for. */
 .failure {
   display: grid;
   justify-items: start;
   gap: var(--space-2);
-  color: var(--color-on-surface);
 }
 .failure p {
   margin: 0;
@@ -192,122 +462,16 @@
   font-weight: 700;
   cursor: pointer;
 }
-.contents {
-  min-height: 300px;
-  padding: var(--space-4);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-panel);
-  background: var(--color-surface-sunken);
-  transition: opacity var(--motion-fast) var(--ease-standard);
-}
-/* Focus moves here only to keep a retry's place; it is not a control. */
-.contents:focus {
-  outline: none;
-}
-.stale {
-  opacity: 0.6;
-}
-.contentsHead {
+/* Results: a reserved line for a load error. */
+.message {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--space-3);
-}
-.contentsHead h2 {
-  margin: 0;
-  font-size: var(--text-label);
-}
-.code {
-  font-family: ui-monospace, "SF Mono", Menlo, monospace;
-  font-size: var(--text-small);
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-}
-.summary {
-  margin: var(--space-1) 0 0;
-  color: var(--color-muted-text);
-  font-size: var(--text-small);
-}
-.choiceLine {
-  margin: 0 0 var(--space-3);
-  color: var(--color-muted-text);
-  font-size: var(--text-small);
-}
-.sections {
-  display: grid;
-  gap: var(--space-1);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.sections li {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--space-3);
-  padding: var(--space-2) 0;
-  border-top: 1px solid var(--color-border);
-}
-.sectionName {
-  display: grid;
-  min-width: 0;
-  font-weight: 700;
-}
-.sectionTitle {
-  color: var(--color-muted-text);
-  font-size: var(--text-small);
-  font-weight: 400;
-  overflow-wrap: break-word;
-}
-.count {
-  flex: 0 0 auto;
-  color: var(--color-muted-text);
-  font-variant-numeric: tabular-nums;
-}
-.list {
-  display: grid;
-  margin: calc(-1 * var(--space-2)) 0 0;
-  padding: 0;
-  list-style: none;
-}
-.row {
-  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-  padding: var(--space-3) 0;
-  border-top: 1px solid var(--color-border);
-}
-.rowText {
-  display: grid;
-  min-width: 0;
-  gap: 2px;
-}
-.rowTitle {
-  display: inline-flex;
-  align-items: center;
-  min-height: var(--target-size);
-  border-radius: var(--radius-control);
-  color: var(--color-on-surface);
-  font-weight: 700;
-  text-decoration: none;
-}
-.rowTitle:hover {
-  text-decoration: underline;
-}
-.rowMeta {
-  color: var(--color-muted-text);
+  gap: var(--space-2);
+  min-height: calc(var(--target-size) + var(--space-2));
+  margin: calc(-1 * var(--space-2)) 0;
+  color: var(--color-danger-accent);
   font-size: var(--text-small);
-}
-.rowDownload {
-  flex: 0 0 auto;
-  min-width: 128px;
-  min-height: var(--target-size);
-  white-space: nowrap;
-}
-.empty {
-  margin: 0;
-  color: var(--color-muted-text);
 }
 .notice {
   display: grid;
@@ -327,22 +491,41 @@
   border-radius: var(--radius-control);
   background: var(--color-surface-hover);
 }
-/* The narrowest phones: less padding around the nested controls, so the
-   choices get the width. */
-@media (max-width: 360px) {
-  .card {
-    --frame-card-padding: var(--space-3);
+
+/* Phones: rows put their actions under the text, download first; the
+   primary action leads; rolling another keeps its dice beside the download,
+   its words for assistive technology. */
+@media (max-width: 599.98px) {
+  .row {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    padding: var(--space-4) 0;
+  }
+  .rowActions {
+    grid-column: 1 / -1;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+  .contents {
+    padding: var(--space-5) var(--space-4);
+  }
+  .listActions .today,
+  .dayActions .download {
+    order: -1;
   }
 }
-@media (max-width: 380px) {
-  .actions {
-    grid-template-columns: minmax(0, 1fr);
+@media (max-width: 439.98px) {
+  .another {
+    min-width: var(--target-size);
+    padding-inline: var(--space-3);
   }
-  .row {
-    flex-wrap: wrap;
-  }
-  .rowDownload {
-    width: 100%;
+  .anotherLabel {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 }
 .resultRows {
@@ -481,58 +664,13 @@
   border-top: 1px solid var(--color-border);
   background: var(--color-surface-raised);
 }
-/* The label spans the field and its button, so it wraps only where the
-   card does; the button sits on the input's row and the error line below
-   both. */
-.codeForm {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  column-gap: var(--space-2);
-  row-gap: var(--space-2);
-}
-.codeForm > label {
-  display: contents;
-}
-.codeForm > label > span:first-child {
-  grid-column: 1 / -1;
-}
-.codeForm > label > span:last-child {
-  grid-column: 1 / -1;
-  margin-top: calc(-1 * var(--space-1));
-}
-.codeForm input {
-  /* The legacy `label input` margin would drop it below its button. */
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-.resultsLink {
-  display: inline-flex;
-  align-items: center;
-  min-height: var(--target-size);
-  margin-top: var(--space-2);
-  color: var(--color-primary);
-  font-weight: 700;
-  text-decoration: none;
-}
-.resultsLink:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: 2px;
-}
+
 .srOnly {
   position: absolute;
   width: 1px;
   height: 1px;
   overflow: hidden;
   clip-path: inset(50%);
-  white-space: nowrap;
-}
-/* Aligns with the field's input, above its reserved error line. */
-.codeButton {
-  grid-column: 2;
-  grid-row: 2;
-  min-height: var(--target-size);
   white-space: nowrap;
 }
 .pickField {

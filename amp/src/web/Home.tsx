@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import { useState, type ReactNode } from "react";
 import {
   CurriculumDetailsControl,
@@ -11,8 +12,10 @@ import {
   type Estimate,
 } from "../learning/frontier";
 import { gradeName, levelDetails, levelRange } from "../learning/level-check";
-import { LevelReadout } from "./ui/LevelReadout";
 import { LevelAxis, levelPositionDescription } from "./ui/LevelChart";
+import { fitScale, LevelRange, LevelRangeStart } from "./ui/level-range";
+import { sessionOptions } from "./lib/query";
+import { levelTrendOptions } from "./features/level/api";
 import { freeProblemsLeft } from "./lib/free-allowance";
 export { gradeName } from "../learning/level-check";
 export type FrontierMap = Frontier;
@@ -21,6 +24,11 @@ const COLLEGE = 13;
 type Props = {
   navigation?: ReactNode;
   name: string;
+  /** For the level's path; without it the path waits. */
+  learnerId?: string;
+  /** "other": someone else reads this learner's Overview (a parent), so it
+   * names them; "self": the learner reads it, so it speaks to them. */
+  reader?: "self" | "other";
   birthYear?: number | null;
   resuming: boolean;
   frontier: FrontierMap | null;
@@ -37,41 +45,95 @@ type Props = {
   freeLeft?: number | null;
 };
 
-/** Home: continue practice, with optional estimates and their uncertainty. */
+/** The learner's Overview: their level leads, with the one action beside
+ * it. Before any answer, the starting estimate from their age; after, the
+ * best guess, the likely range, every area practiced and how it narrowed.
+ * Grade numbers follow the learner's setting on this device. */
 export function Home(props: Props) {
   const { shown } = useCurriculumDetails();
   const f = props.frontier;
+  const measured = !!f && f.overall.answered > 0;
+  const session = useQuery(sessionOptions).data;
+  const trend = useQuery({
+    ...levelTrendOptions(
+      session ?? { accountId: "", token: "" },
+      props.learnerId ?? "",
+    ),
+    enabled: !!session && !!props.learnerId && measured,
+  });
+  const who = props.reader === "other" ? props.name : undefined;
+  // The grade typical for their age, behind every bar, when it is known.
+  const grade =
+    props.birthYear != null && f
+      ? ([f.expected - 0.5, f.expected + 0.5] as const)
+      : null;
+  const go = props.go && (
+    <button
+      className="go-button"
+      disabled={props.busy}
+      aria-busy={props.busy}
+      onClick={props.go}
+    >
+      {props.goLabel ?? (props.resuming ? "Continue" : "Go")}
+    </button>
+  );
+  const areas = f
+    ? props.strands
+        .filter((strand) => (f.strands[strand]?.answered ?? 0) > 0)
+        .map((strand) => ({
+          id: strand,
+          label: strandNames[strand] ?? strand,
+          estimate: f.strands[strand]!,
+        }))
+    : [];
   return (
     <main className="home">
       {props.navigation}
       <section className="home-hero">
         <div>
-          <h1>{props.name}</h1>
+          <h1 className="home-learner">{props.name}</h1>
           {props.freeLeft != null && (
             <p className="home-free" data-free-left={props.freeLeft}>
               {freeProblemsLeft(props.freeLeft)}
             </p>
           )}
-          {shown && <HomeLevel frontier={f} />}
         </div>
-        {props.go && (
-          <button
-            className="go-button"
-            disabled={props.busy}
-            aria-busy={props.busy}
-            onClick={props.go}
-          >
-            {props.goLabel ?? (props.resuming ? "Continue" : "Go")}
-          </button>
-        )}
+        {go}
       </section>
+      {/* `.frontier-map` and `aria-busy` mark the level's place for the
+          browser checks that wait on the Overview. */}
+      <div className="frontier-map home-level-slot" aria-busy={!f}>
+        {!f ? (
+          <div
+            className="home-level-wait amp-skeleton"
+            aria-busy="true"
+            aria-label="Loading the level"
+          />
+        ) : measured ? (
+          <LevelRange
+            title={who ? `Where ${who} is` : "Where you are"}
+            overall={f.overall}
+            answered={f.overall.answered}
+            areas={areas}
+            grade={grade}
+            path={trend.data ?? null}
+            pathState={
+              trend.isError ? "failed" : trend.data ? "ready" : "loading"
+            }
+            numbers={shown}
+            who={who}
+          />
+        ) : (
+          <LevelRangeStart
+            title={who ? `Where ${who} is` : "Where you are"}
+            start={f.overall}
+            grade={grade}
+            numbers={shown}
+            who={who}
+          />
+        )}
+      </div>
       <CurriculumDetailsControl />
-      <FrontierMap
-        name={props.name}
-        birthYear={props.birthYear}
-        frontier={props.frontier}
-        strands={props.strands}
-      />
       {props.changeBirthYear && (
         <button
           className="text-button home-birth-year"
@@ -81,35 +143,6 @@ export function Home(props: Props) {
         </button>
       )}
     </main>
-  );
-}
-
-/** The working level, in space reserved from the first frame: while the
- * estimate loads an invisible readout holds its place, and before any answer
- * a short line takes that same place, so the action below never moves. */
-function HomeLevel({ frontier }: { frontier: FrontierMap | null }) {
-  const measured = !!frontier && frontier.overall.answered > 0;
-  return (
-    <div className="home-level" aria-busy={!frontier}>
-      <div
-        className="home-level-readout"
-        aria-hidden={!measured}
-        style={{ visibility: measured ? "visible" : "hidden" }}
-      >
-        <LevelReadout
-          estimate={
-            measured && frontier
-              ? frontier.overall
-              : { level: frontier?.expected ?? 4, sd: 1 }
-          }
-        />
-      </div>
-      {frontier && !measured && (
-        <p className="home-level-empty">
-          Your level appears after a few problems.
-        </p>
-      )}
-    </div>
   );
 }
 
@@ -125,8 +158,26 @@ export function FrontierMap(props: {
   const [open, setOpen] = useState<string | null>(null);
   const f = props.frontier;
   const center = f?.expected ?? 4;
-  const lo = Math.max(0, Math.min(center - 3, COLLEGE - 6)),
-    hi = lo + 6;
+  // Six grades around the age reference, widened to hold every practiced
+  // area's whole likely range and every best guess: no measured band or dot
+  // is pinned against an end. An unpracticed area's wide, striped band may
+  // run on past one.
+  const fitted = f
+    ? fitScale(
+        props.strands
+          .filter((strand) => (f.strands[strand]?.answered ?? 0) > 0)
+          .map((strand) => f.strands[strand]!),
+        {
+          minSpan: 6,
+          include: [
+            center,
+            ...props.strands.map((strand) => strandEstimate(f, strand).level),
+          ],
+        },
+      )
+    : null;
+  const lo = fitted?.lo ?? Math.max(0, Math.min(center - 3, COLLEGE - 6)),
+    hi = fitted?.hi ?? lo + 6;
   const at = (v: number) =>
     `${((Math.min(hi, Math.max(lo, v)) - lo) / (hi - lo)) * 100}%`;
   const reference = props.birthYear != null && f ? center : undefined;

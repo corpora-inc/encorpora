@@ -42,7 +42,11 @@ import {
   type LearnerObservation,
 } from "./learner-frontier";
 import { workbookWorker } from "../workbook/off-thread";
-import { trendCounts, type TrendPoint } from "../learning/level-check";
+import {
+  trendCounts,
+  trendStep,
+  type TrendPoint,
+} from "../learning/level-check";
 const templateById = new Map(
   [...templates, ...historicalTemplates].map((t) => [t.id, t]),
 );
@@ -210,8 +214,9 @@ export interface LearnerTransaction {
   /** The frontier as estimated from only the first `answers` answers. */
   frontierAfter(answers: number): Promise<Frontier>;
   /** The overall estimate after 0, every level-check step and all answers:
-   * how the level moved over the free run (learning/level-check.ts). */
-  frontierTrend(): Promise<TrendPoint[]>;
+   * how the level moved (learning/level-check.ts). With `points`, the step
+   * widens so a long record gives at most about that many. */
+  frontierTrend(points?: number): Promise<TrendPoint[]>;
   trialPaywall(): Promise<void>;
   /** The learner's birth year, or null when none was given. */
   birthYear(): Promise<number | null>;
@@ -887,12 +892,15 @@ export class PgTransaction implements LearnerTransaction {
       })[],
     };
   }
-  async frontierTrend(): Promise<TrendPoint[]> {
+  async frontierTrend(points?: number): Promise<TrendPoint[]> {
     const now = Date.now();
     const { start, observations } = await this.frontierInputs(now);
     return overallTrend(
       { start, observations, now, ...frontierCatalog },
-      trendCounts(observations.length),
+      trendCounts(
+        observations.length,
+        trendStep(observations.length, points),
+      ),
     );
   }
   async recentAttempts() {

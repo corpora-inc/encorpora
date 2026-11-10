@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "@tanstack/react-router";
+import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { lazy, Suspense, useEffect, useState, type ReactNode } from "react";
 import type {
   ClassTabId,
@@ -14,11 +14,15 @@ import { Sheet } from "../../../ui/Sheet";
 import { StatRow, StatTile } from "../../../ui/StatTile";
 import { LessonBoundary } from "../../pathways/LessonRecovery";
 import { presenceOptions, useStaffSession } from "./api";
+import { currentSession } from "../api";
 import { ClassFrame } from "./ClassFrame";
 import { useDemoOrg } from "../demo/DemoPlace";
 import { ClassMap, MapKey } from "./ClassMap";
+import { useSchoolNavigation } from "../../navigation/school-navigation";
 import { FamilyPanel } from "./FamilyPanel";
-import { mapOptions, todayOptions } from "./teacher-api";
+import { mapOptions, studentRecordOptions, todayOptions } from "./teacher-api";
+import { StudentSections } from "./StudentSections";
+import { TryAsStudent } from "../../profiles/TryAsStudent";
 import {
   classUrl,
   fullDay,
@@ -337,9 +341,24 @@ export function TodayScreen() {
 
 /** The class map alone, with every strand. */
 export function MapScreen() {
-  const place = useParams({ from: "/school/$org/classes/$class/map" });
+  const params = useParams({ strict: false }) as {
+    org: string;
+    class: string;
+    student?: string;
+  };
+  const place = { org: params.org, class: params.class };
   const session = useStaffSession();
   const map = useQuery(mapOptions(session, place));
+  const navigate = useNavigate();
+  // The class's code board, where students join; offered as the map's one
+  // step only where the bar would offer it (a current class).
+  const { start } = useSchoolNavigation({
+    kind: "class",
+    org: place.org,
+    classId: place.class,
+    active: "map",
+    board: false,
+  });
   return (
     <ClassFrame
       org={place.org}
@@ -361,10 +380,97 @@ export function MapScreen() {
             <h1>Class map</h1>
             <MapKey data={map.data} />
           </div>
-          <ClassMap data={map.data} />
+          <MapStudentSheet
+            org={place.org}
+            classId={place.class}
+            student={params.student}
+            onClose={() =>
+              void navigate({
+                to: "/$",
+                params: { _splat: classUrl(place.org, place.class, "map") },
+                replace: true,
+              })
+            }
+          />
+          <ClassMap
+            data={map.data}
+            action={
+              start ? (
+                <Link
+                  to="/$"
+                  params={{ _splat: classUrl(place.org, place.class, "start") }}
+                  className={buttonClass("primary")}
+                >
+                  Start class
+                </Link>
+              ) : undefined
+            }
+          />
         </div>
       )}
     </ClassFrame>
+  );
+}
+
+/** One student, over the map: their whole record in one column, with
+ * trying their level and printing. Its own URL under the class
+ * (`map/<student>`), so the class's tabs stay and Back closes it. */
+function MapStudentSheet({
+  org,
+  classId,
+  student,
+  onClose,
+}: {
+  org: string;
+  classId: string;
+  student: string | undefined;
+  onClose: () => void;
+}) {
+  const session = useStaffSession();
+  const record = useQuery({
+    ...studentRecordOptions(session, student ?? ""),
+    enabled: !!student,
+  });
+  const data = record.data;
+  return (
+    <Sheet
+      open={!!student}
+      tall
+      onOpenChange={(open) => {
+        if (!open) onClose();
+      }}
+      title={data?.student.name ?? "Student"}
+      description={
+        data ? data.classes.map((entry) => entry.name).join(", ") : undefined
+      }
+      returnFocus={() =>
+        document.querySelector<HTMLElement>(`[data-map-student="${student}"]`)
+      }
+    >
+      {!data ? (
+        record.isError ? (
+          <LoadFailed
+            what="This record"
+            onRetry={() => void record.refetch()}
+          />
+        ) : (
+          <Loading />
+        )
+      ) : (
+        <div className={styles.sheetRecord}>
+          <div className={styles.recordAction}>
+            <TryAsStudent
+              session={currentSession()}
+              personId={data.student.id}
+            />
+            <Button variant="quiet" onClick={() => window.print()}>
+              Print progress report
+            </Button>
+          </div>
+          <StudentSections data={data} org={org} single />
+        </div>
+      )}
+    </Sheet>
   );
 }
 

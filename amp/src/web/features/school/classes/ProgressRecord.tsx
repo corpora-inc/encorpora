@@ -1,18 +1,26 @@
-import { levelRange } from "../../../../learning/level-check";
 import type {
   ProgressRecord,
   StudentTimeResponse,
 } from "../../../../schools/teacher-contracts";
-import { levelScale, LevelTrack } from "../../../ui/LevelChart";
+import { fitScale, LevelRows } from "../../../ui/level-range";
 import { StatRow, StatTile } from "../../../ui/StatTile";
-import { fullDay, number, shortDay, TipZone, WorkList } from "./teacher-shared";
+import {
+  fullDay,
+  number,
+  shortDay,
+  TipZone,
+  WorkList,
+  type RecordReader,
+} from "./teacher-shared";
 import styles from "./Teacher.module.css";
 
 /* One learner's progress, as a record shows it. A teacher's student record and
    an adult's own record are the same parts on the same facts; only who reads
    them differs. */
 
-/** Levels on every strand: overall first, then each strand by the work in it. */
+/** Levels on every strand: overall first, then each strand by the work in
+ * it, as error bars on one fitted scale (ui/level-range), over the
+ * student's own grade when there is one. */
 export function RecordLevels({
   record,
   empty,
@@ -23,41 +31,22 @@ export function RecordLevels({
 }) {
   const { level, reference } = record;
   if (!level) return <p className={styles.quietLine}>{empty}</p>;
-  const center = reference
-    ? (reference.from + reference.to) / 2
-    : level.overall.level;
-  const scale = levelScale(center, [
-    level.overall,
-    ...Object.values(level.strands),
-  ]);
-  const row = (id: string, label: string, strand?: string) => {
-    const estimate = strand ? level.strands[strand]! : level.overall;
-    const [from, to] = levelRange(estimate);
-    return (
-      <li key={id} className={styles.levelRow} data-strand={strand}>
-        <span className={styles.levelName}>{label}</span>
-        <span
-          className={styles.levelTrack}
-          role="img"
-          aria-label={`${label}: likely grade ${from.toFixed(1)} to ${to.toFixed(1)}`}
-        >
-          <LevelTrack
-            estimate={estimate}
-            scale={scale}
-            reference={!!reference}
-          />
-        </span>
-        <span className={styles.levelNumbers}>
-          {from.toFixed(1)}–{to.toFixed(1)}
-        </span>
-      </li>
-    );
-  };
+  const areas = record.strands.flatMap((strand) => {
+    const estimate = level.strands[strand.id];
+    return estimate ? [{ id: strand.id, label: strand.label, estimate }] : [];
+  });
+  const grade = reference ? ([reference.from, reference.to] as const) : null;
+  const scale = fitScale(
+    [level.overall, ...areas.map((area) => area.estimate)],
+    { minSpan: 5, include: grade ? [...grade] : [] },
+  );
   return (
-    <ul className={styles.levelRows}>
-      {row("overall", "Overall")}
-      {record.strands.map((strand) => row(strand.id, strand.label, strand.id))}
-    </ul>
+    <LevelRows
+      overall={level.overall}
+      areas={areas}
+      scale={scale}
+      grade={grade}
+    />
   );
 }
 
@@ -114,11 +103,18 @@ export function RecordObjectives({ record }: { record: ProgressRecord }) {
   );
 }
 
-/** The latest problems and how each went. */
-export function RecordWork({ record }: { record: ProgressRecord }) {
+/** The latest problems and how each went. `reader="self"` when the learner
+ * reads their own record. */
+export function RecordWork({
+  record,
+  reader = "other",
+}: {
+  record: ProgressRecord;
+  reader?: RecordReader;
+}) {
   if (record.work.length === 0)
     return <p className={styles.quietLine}>No problems yet.</p>;
-  return <WorkList work={record.work} />;
+  return <WorkList work={record.work} reader={reader} />;
 }
 
 const DAY = 86_400_000;
@@ -150,9 +146,18 @@ export function TimeDetail({
     },
     (_, index) => addDays(time.range.from, index),
   ).slice(-42);
-  // Where the time went: skills with measured time, not answers alone.
-  const skills = time.skills.filter((skill) => skill.minutes > 0);
+  // Where the time went: every skill worked, by its time; a skill with a
+  // few quick answers still shows, as under a minute or as its problems.
+  const skills = time.skills.filter(
+    (skill) => skill.minutes > 0 || skill.problems > 0,
+  );
   const largestSkill = Math.max(1, ...skills.map((s) => s.minutes));
+  const spent = (skill: (typeof skills)[number]) =>
+    skill.minutes >= 1
+      ? `${number(Math.round(skill.minutes))} min`
+      : skill.minutes > 0
+        ? "under 1 min"
+        : `${number(skill.problems)} ${skill.problems === 1 ? "problem" : "problems"}`;
   // Its parts sit in the caller's own stack, as the sheet's did.
   return (
     <>
@@ -202,14 +207,12 @@ export function TimeDetail({
             {skills.map((skill) => (
               <li key={skill.skillId}>
                 <span className={styles.skillName}>{skill.title}</span>
-                <span className={styles.skillValue}>
-                  {number(skill.minutes)} min
-                </span>
+                <span className={styles.skillValue}>{spent(skill)}</span>
                 <span className={styles.skillTrack}>
                   <span
                     className={styles.skillFill}
                     style={{
-                      width: `${(skill.minutes / largestSkill) * 100}%`,
+                      width: `${Math.max(2, (skill.minutes / largestSkill) * 100)}%`,
                     }}
                   />
                 </span>

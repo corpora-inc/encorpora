@@ -82,6 +82,7 @@ test("the Overview tab follows whose progress it is; the URLs never move", () =>
     "inventory",
   ]);
   expect(progressTabs("own")[0]!.path).toBe("me");
+
   expect(overviewPath("learner")).toBe("/overview");
   expect(accountTabs.map((tab) => tab.label)).toEqual([
     "Sign-in",
@@ -116,9 +117,16 @@ test("class sub-screens retain their tab and existing URLs", () => {
     "Students",
     "Settings",
   ]);
-  expect(shellFrame("/learners/child/workbooks/2026-11-09/results")).toEqual({
-    kind: "plain",
-  });
+  // A learner's workbooks belong to their Overview: the Progress tabs stay.
+  for (const path of [
+    "/learners/child/workbooks",
+    "/learners/child/workbooks/2026-11-09",
+    "/learners/child/workbooks/2026-11-09/results",
+  ])
+    expect(shellFrame(path), path).toEqual({
+      kind: "progress",
+      active: "overview",
+    });
 });
 
 test("school sub-screens map to seven tabs and respect capabilities", () => {

@@ -72,9 +72,13 @@ export function shellFrame(pathname: string): ShellFrame | null {
       )[leaf] ?? leaf;
     return { kind: "school", org: school[1]!, active };
   }
-  // Workbook URLs identify their learner independently of Progress selection.
-  if (path === "/school" || /^\/learners\/[^/]+\/workbooks(?:\/|$)/.test(path))
-    return { kind: "plain" };
+  if (path === "/school") return { kind: "plain" };
+  // A learner's workbooks belong to their Overview, where Workbooks is a
+  // quiet action (docs/design/ia.md): the Progress tabs stay, Overview
+  // marked, so the way back is one tap. The URL names the learner; arriving
+  // there chooses them (app/router.tsx), so the tabs are theirs too.
+  if (/^\/learners\/[^/]+\/workbooks(?:\/|$)/.test(path))
+    return { kind: "progress", active: "overview" };
   // Practicing as someone else: "Try a level…" and a profile's levels.
   if (under(path, "/me/profiles")) return { kind: "plain" };
   if (path === "/overview" || path === "/me")

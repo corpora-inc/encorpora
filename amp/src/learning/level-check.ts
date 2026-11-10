@@ -46,6 +46,14 @@ export function trendCounts(answers: number, step = LEVEL_CHECK_EVERY) {
   return counts;
 }
 
+/** The step for a trend of at most about `points` points: the level-check
+ * step, widened in whole steps for a long record. */
+export function trendStep(answers: number, points?: number) {
+  if (!points || points < 2) return LEVEL_CHECK_EVERY;
+  const step = Math.ceil(answers / (points - 1) / LEVEL_CHECK_EVERY);
+  return Math.max(1, step) * LEVEL_CHECK_EVERY;
+}
+
 /** Rounded curriculum labels for chart ticks and compact navigation. */
 export function gradeName(level: number) {
   const g = Math.round(level);

@@ -1,11 +1,6 @@
-/* The adult's own record reads in the teacher's record styles
-   (school/classes/Teacher.module.css); this adds only what is theirs. */
-.free {
-  margin: 2px 0 0;
-  color: var(--color-muted-text);
-  font-size: var(--text-label);
-  font-variant-numeric: tabular-nums;
-}
+/* The adult's own place (`/me`). One column at a comfortable width, on the
+   page's shared left edge (docs/design/ia.md): the level is the page; time
+   and work follow under it as they grow. */
 .page {
   box-sizing: border-box;
   width: min(100%, var(--width-content-wide));
@@ -16,25 +11,70 @@
 }
 @media (min-width: 768px) {
   .page {
+    padding-top: var(--space-6);
     padding-inline: max(var(--space-5), env(safe-area-inset-left));
   }
 }
-/* The one quiet way to practice as someone else (features/profiles). */
-.quietLink {
-  display: inline-flex;
+.stack {
+  display: grid;
+  gap: var(--space-6);
+  max-width: 760px;
+}
+@media (max-width: 599.98px) {
+  .stack {
+    gap: var(--space-5);
+  }
+}
+/* The title, with the rare actions quiet at the end of its row. */
+.titleRow {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  min-height: 44px;
-  color: var(--color-primary);
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+}
+.free {
+  color: var(--color-muted-text);
   font-size: var(--text-label);
-  font-weight: 650;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
-.quietLink:hover {
-  text-decoration-thickness: 2px;
+.toolActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--space-1);
+  margin-inline-end: calc(-1 * var(--space-3));
 }
-.quietLink:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: 2px;
-  border-radius: var(--radius-small);
+.toolActions .free {
+  margin-inline-end: var(--space-2);
+}
+.quiet.quiet {
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-label);
+}
+.icon {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.weekLine {
+  margin: 0;
+  font-size: var(--text-dense);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.practice svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+.practice {
+  padding-inline: var(--space-5);
 }
