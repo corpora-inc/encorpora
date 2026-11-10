@@ -21,6 +21,8 @@ export const learners = pgTable(
     startingBand: text("starting_band"),
     birthYear: integer("birth_year"),
     satMathFocus: boolean("sat_math_focus").notNull().default(false),
+    /** A practice profile (migration 0107): an adult practicing as someone else. */
+    simulation: boolean("simulation").notNull().default(false),
     startingPolicy: integer("starting_policy"),
     startingExcludedStrands: text("starting_excluded_strands").array(),
     deletedAt: timestamp("deleted_at", { withTimezone: true }),

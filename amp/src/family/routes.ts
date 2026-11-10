@@ -6,10 +6,19 @@ import {
 } from "../account/adult.js";
 import { accountSummary } from "../account/repository.js";
 import { startPlace } from "../account/starter.js";
-import { studentBearer } from "../schools/principal.js";
+import { isSchoolAccount, studentBearer } from "../schools/principal.js";
+import {
+  createProfile,
+  deleteProfile,
+  updateProfile,
+} from "../account/practice-profiles.js";
+import {
+  createProfileSchema,
+  updateProfileSchema,
+} from "../learning/practice-profiles.js";
 import { studentMe } from "../schools/student-me.js";
 import { Readable } from "node:stream";
-import type { FastifyInstance, FastifyReply } from "fastify";
+import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import type { Pool } from "pg";
 import { z } from "zod";
 import type { Authenticator } from "../server/auth.js";
@@ -116,6 +125,42 @@ export async function registerFamilyRoutes(
       return reply
         .code(201)
         .send(await startAdultPractice(repository, account, input));
+    });
+    // Practice profiles (docs/families.md): the adult practicing as someone
+    // else. Any adult account; never a student's session or a school's.
+    const profileOwner = async (request: FastifyRequest) => {
+      const account = await options.authenticate(request);
+      if (isSchoolAccount(account))
+        throw new FamilyError(404, "profile_not_found");
+      return account;
+    };
+    const profileParams = z.strictObject({ profileId: z.uuid() });
+    scope.post(
+      "/api/v1/me/profiles",
+      { bodyLimit: 4096 },
+      async (request, reply) => {
+        const account = await profileOwner(request);
+        const input = createProfileSchema.parse(request.body);
+        return reply
+          .code(201)
+          .send(await createProfile(repository, account, input));
+      },
+    );
+    scope.patch(
+      "/api/v1/me/profiles/:profileId",
+      { bodyLimit: 4096 },
+      async (request) => {
+        const account = await profileOwner(request);
+        const { profileId } = profileParams.parse(request.params);
+        const input = updateProfileSchema.parse(request.body);
+        return updateProfile(repository, account, profileId, input);
+      },
+    );
+    scope.delete("/api/v1/me/profiles/:profileId", async (request, reply) => {
+      const account = await profileOwner(request);
+      const { profileId } = profileParams.parse(request.params);
+      await deleteProfile(repository, account, profileId);
+      return reply.code(204).send();
     });
     // "What brings you to AMP?": the place that answer needs, in one call.
     scope.post(

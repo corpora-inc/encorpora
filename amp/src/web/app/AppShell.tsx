@@ -28,6 +28,10 @@ import { usePlaceEntries } from "../features/navigation/PlaceSwitcher";
 import { useSchoolNavigation } from "../features/navigation/school-navigation";
 import { DemoMark } from "../features/school/demo/DemoMark";
 import { DemoSetupAction } from "../features/school/demo/DemoPlace";
+import {
+  ProfileBackAction,
+  ProfileMark,
+} from "../features/profiles/ProfileBar";
 import { Tabs } from "../ui/Tabs";
 import { AppLogo } from "../ui/AppLogo";
 import bar from "../ui/AppBar.module.css";
@@ -208,6 +212,7 @@ function ShellBar({
           }}
         />
         {school.demo && <DemoMark />}
+        {frame.kind === "practice" && <ProfileMark />}
       </div>
       {tabs && <div className={bar.tabsCell}>{tabs}</div>}
       {/* A screen's own tools (practice's topic and calculator) portal here. */}
@@ -243,6 +248,8 @@ function ShellBar({
         {frame.kind === "progress" && (
           <ProgressAction context={context} me={me} />
         )}
+        {/* Practicing as a profile: the way back, always one tap away. */}
+        {frame.kind === "practice" && <ProfileBackAction />}
       </div>
     </header>
   );

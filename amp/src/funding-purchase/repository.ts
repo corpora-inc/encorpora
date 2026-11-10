@@ -83,7 +83,8 @@ export class FundingPurchaseRepository {
       if (!(await learningConsentActive(client, account)))
         throw new FundingPurchaseError(403, "verified_consent_required");
       const learner = await client.query(
-        "SELECT id FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL FOR SHARE",
+        // A practice profile is never bought for: the account's access covers it.
+        "SELECT id FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL AND NOT simulation FOR SHARE",
         [data.learnerId, account],
       );
       if (!learner.rowCount)

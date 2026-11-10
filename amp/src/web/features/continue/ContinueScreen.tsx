@@ -13,7 +13,7 @@ import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { request } from "../../lib/api";
 import { analyticsVisitorHeaders, flush } from "../../lib/analytics";
-import { meOptions, sessionOptions } from "../../lib/query";
+import { meOptions, refreshMe, sessionOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
 import { Loading } from "../../ui/Loading";
@@ -105,6 +105,32 @@ function Continue({ session }: { session: AuthSession }) {
     continuationPaid(session.accountId);
     return <Return href={returnTo} />;
   }
+  // A practice profile has no plan of its own: the adult's own practice
+  // does, and it covers every profile (docs/families.md).
+  if (learner.simulation)
+    return (
+      <Page>
+        <header className={styles.head}>
+          <h1 className={styles.title}>Continue with AMP</h1>
+          <p className={styles.for}>For your own practice</p>
+        </header>
+        <p className={styles.covers}>
+          It covers practicing as {learner.name} and every level you try.
+        </p>
+        <OwnPracticeCheckout
+          session={session}
+          account={account}
+          interval={interval}
+          returnTo={returnTo}
+        />
+        <Link
+          to={returnTo.split("?")[0] as never}
+          className={`${buttonClass("quiet")} ${styles.back}`}
+        >
+          Not now
+        </Link>
+      </Page>
+    );
   const adult = learner.adult === true;
   const consented = account.consent.status === "active";
   return (
@@ -153,6 +179,83 @@ function Continue({ session }: { session: AuthSession }) {
         Not now
       </Link>
     </Page>
+  );
+}
+
+/** The adult's own practice, bought for a profile's sake: their own learner,
+ * started now (with no starting choice: practice adapts) if they have none,
+ * then the same plan and checkout as their own "Continue with AMP". */
+function OwnPracticeCheckout({
+  session,
+  account,
+  interval,
+  returnTo,
+}: {
+  session: AuthSession;
+  account: SignedInMe;
+  interval?: "year" | "month";
+  returnTo: string;
+}) {
+  const own = account.family.learners.find(
+    (entry) => entry.adult && !entry.simulation && !entry.deletedAt,
+  );
+  const start = useMutation({
+    mutationFn: async () => {
+      await request("/me/practice", z.object({ learnerId: z.string() }), {
+        token: session.token,
+        body: {
+          timezone:
+            Intl.DateTimeFormat().resolvedOptions().timeZone ||
+            "America/New_York",
+        },
+      });
+      await refreshMe(session);
+    },
+    onError: (error) => console.error("Own practice did not start", error),
+  });
+  const asked = useRef(false);
+  useEffect(() => {
+    // Starting is idempotent on the server: a second start returns the same.
+    if (!own && !asked.current) {
+      asked.current = true;
+      start.mutate();
+    }
+  }, [!!own]);
+  if (own?.hasAccess) {
+    continuationPaid(session.accountId);
+    return <Return href={returnTo} />;
+  }
+  if (!own)
+    return start.error ? (
+      <section className={styles.panel}>
+        <p className={styles.text} role="alert">
+          Your own practice didn’t start. Check your connection, then try again.
+        </p>
+        <Button
+          variant="primary"
+          className={styles.go}
+          onClick={() => start.mutate()}
+        >
+          Try again
+        </Button>
+      </section>
+    ) : (
+      <section className={styles.panel} aria-busy="true">
+        <div className={`${styles.skeleton} amp-skeleton`} />
+        <Button variant="primary" className={styles.go} disabled aria-busy>
+          Continue to secure checkout
+        </Button>
+      </section>
+    );
+  return account.unassignedPurchase ? (
+    <UsePaidPlan
+      session={session}
+      purchaseId={account.unassignedPurchase.id}
+      learner={own}
+      returnTo={returnTo}
+    />
+  ) : (
+    <LearnerCheckout session={session} learnerId={own.id} interval={interval} />
   );
 }
 

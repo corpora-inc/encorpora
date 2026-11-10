@@ -108,7 +108,7 @@ async function startFamily(
     if (withdrawn.rowCount) throw new FamilyError(403, "consent_withdrawn");
     const all = (
       await client.query<{ n: number }>(
-        "SELECT count(*)::int AS n FROM amp_learners WHERE account_id=$1 AND deleted_at IS NULL",
+        "SELECT count(*)::int AS n FROM amp_learners WHERE account_id=$1 AND deleted_at IS NULL AND NOT simulation",
         [accountId],
       )
     ).rows[0]!.n;

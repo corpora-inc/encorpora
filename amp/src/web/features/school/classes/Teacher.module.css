@@ -827,6 +827,12 @@ label.columnPick {
   margin-top: var(--space-1);
   color: var(--color-muted-text);
 }
+/* A record's actions wrap as whole buttons, never touching. */
+.recordAction {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
 .recordColumns {
   display: grid;
   gap: var(--space-7) var(--space-7);

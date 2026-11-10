@@ -4,8 +4,8 @@ import { z } from "zod";
 
 export const FREE_ONLINE_PROBLEMS = 100;
 /** A sanity limit, not a plan: live learners in one family account (its
- * children and its adult learner). Adding and removing learners is otherwise
- * free. Schools have no such limit. */
+ * children and its adult learner; practice profiles count toward nothing).
+ * Adding and removing learners is otherwise free. Schools have no such limit. */
 export const MAX_FAMILY_LEARNERS = 1000;
 export const TOO_MANY_LEARNERS = `This account has ${MAX_FAMILY_LEARNERS.toLocaleString("en-US")} learners, the most one account can hold. Delete a learner to add another.`;
 
@@ -16,7 +16,7 @@ export async function familyHasLearnerRoom(
   accountId: string,
 ) {
   const { rows } = await db.query<{ live: number }>(
-    "SELECT count(*)::int AS live FROM amp_learners WHERE account_id=$1 AND deleted_at IS NULL",
+    "SELECT count(*)::int AS live FROM amp_learners WHERE account_id=$1 AND deleted_at IS NULL AND NOT simulation",
     [accountId],
   );
   return rows[0]!.live < MAX_FAMILY_LEARNERS;

@@ -51,7 +51,9 @@ export function OwnRecordScreen() {
   const me = useQuery(meOptions(session)).data;
   // Their free allowance, from the account's one store (`/me`).
   const own = me?.signedIn
-    ? me.family.learners.find((entry) => entry.adult && !entry.deletedAt)
+    ? me.family.learners.find(
+        (entry) => entry.adult && !entry.simulation && !entry.deletedAt,
+      )
     : undefined;
   const left = freeLeft(own);
   return (
@@ -85,6 +87,15 @@ export function OwnRecordScreen() {
                   {freeProblemsLeft(left)}
                 </p>
               )}
+              {/* Practicing as someone else: any grade and pace. */}
+              <Link
+                to="/$"
+                params={{ _splat: "me/profiles/new" }}
+                className={styles.quietLink}
+                data-try-level
+              >
+                Practice as someone else
+              </Link>
             </div>
             <div className={teacher.recordAction}>
               {/* Practice is the bar's action; workbooks are theirs here. */}

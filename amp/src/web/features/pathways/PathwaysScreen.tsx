@@ -50,7 +50,11 @@ const SkillLesson = lazy(() => import("./SkillLesson"));
 import { usePathwaysMetadata } from "./usePathwaysMetadata";
 import "./pathways.css";
 import { Loading } from "../../ui/Loading";
-import { adultLearner, practicingAsAdult } from "../../lib/adult-learner";
+import {
+  adultLearner,
+  practicingAsAdult,
+  profileLearner,
+} from "../../lib/adult-learner";
 import { secondParentChild, secondParentChildren } from "../second-parent/api";
 const emptyEvidence: Evidence[] = [];
 const bandOptions: ListboxOption[] = [
@@ -105,7 +109,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
   // family's learners aren't theirs to switch to here.
   const own = practicingAsAdult(account, learnerId)
     ? adultLearner(account)
-    : null;
+    : profileLearner(account, learnerId);
   // A second parent's family's children follow the family's own: their
   // progress, read-only.
   const learners = own

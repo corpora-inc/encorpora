@@ -2,7 +2,12 @@ import { useEffect } from "react";
 import { useQuery, queryOptions } from "@tanstack/react-query";
 import { meOptions, sessionOptions } from "./query";
 import { useLearnerStore } from "../learner-store";
-import { adultLearner, practicingAsAdult } from "./adult-learner";
+import {
+  adultLearner,
+  practiceProfile,
+  practicingAsAdult,
+  profileLearner,
+} from "./adult-learner";
 import { request } from "./api";
 import {
   catalogSchema,
@@ -68,9 +73,13 @@ export function useLearningView({
   const shared = secondParentChildren(account);
   const selectedId = useLearnerStore((s) => s.learnerId);
   // The adult's own learner, when it's the one chosen: their own practice.
+  // One of their practice profiles is their own practice too, as someone else.
+  const profile = practiceProfile(account, selectedId);
   const own = practicingAsAdult(account, selectedId)
     ? adultLearner(account)
-    : null;
+    : profile
+      ? profileLearner(account, selectedId)
+      : null;
   const learner =
     own ??
     learners.find((l) => l.id === selectedId) ??
@@ -120,8 +129,11 @@ export function useLearningView({
     /** The chosen child is a second parent's family's: their progress is
      * read here, and practice is the family's class. */
     viewOnly,
-    /** The chosen learner is the adult's own: their own practice. */
+    /** The chosen learner is the adult's own: their own practice, or one of
+     * their practice profiles. */
     ownPractice: !!own,
+    /** The adult is practicing as this profile of theirs. */
+    profile,
     active,
     canPractice,
     evidence: active ? evidence.data : undefined,

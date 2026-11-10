@@ -36,7 +36,9 @@ export async function changePractice(
     if ((await tx.birthYear()) === null && !(await tx.isAdult()))
       throw new ApiError(409, "Choose the learner’s birth year first.");
     next.epoch++;
-    next.strandStarts = {};
+    // A practice profile starts again at its own levels; anyone else from
+    // where they began.
+    if (!(await tx.isSimulation())) next.strandStarts = {};
     next.focusSkillId = null;
   } else if (change.kind === "easier") {
     const problem = await tx.problem(change.problemId);
