@@ -231,3 +231,59 @@
   font-size: var(--text-label);
   line-height: 1.45;
 }
+/* A longer reason, such as the note for a learner under 13, keeps two lines
+   from the start. */
+.hint[data-lines="2"] {
+  min-height: 2.9em;
+}
+/* "What year were you born?": the years in one designed group, newest first,
+   with "Adult" across the last row. Four to a row on a phone, eight wider. */
+.yearGrid {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-1);
+  width: 100%;
+  padding: var(--space-1);
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius-control) + var(--space-1));
+  background: var(--color-surface-sunken);
+}
+@media (min-width: 560px) {
+  .yearGrid {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+}
+.yearCell {
+  min-width: 0;
+  min-height: var(--target-size, 44px);
+  padding: var(--space-2) var(--space-1);
+  border: 2px solid transparent;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-on-surface);
+  font: inherit;
+  font-size: var(--text-body);
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.yearCell:hover:not(:disabled) {
+  filter: none;
+  background: var(--color-surface-raised);
+}
+.yearCell[aria-checked="true"] {
+  border-color: var(--color-primary);
+  background: var(--color-surface-raised);
+}
+.yearCell:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.yearCell:disabled {
+  cursor: default;
+}
+.yearCell[data-adult] {
+  grid-column: 1 / -1;
+}
