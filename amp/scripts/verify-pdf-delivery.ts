@@ -123,6 +123,14 @@ try {
         );
   for (const { content: book } of books)
     await pdf(`/api/v1/learners/${owner}/books/${book.id}/download`, "POST");
+  // The catalog offers print for every lesson: none is listed as unpublished.
+  const catalog = await app.inject({ method: "GET", url: "/api/v1/catalog" });
+  assert.equal(catalog.statusCode, 200, "GET catalog");
+  assert.deepEqual(
+    catalog.json().unpublishedLessons,
+    [],
+    "Every catalog lesson has its PDFs",
+  );
   // A learner on the free allowance, with problems left, gets the lesson.
   const freeLesson = await app.inject({
     method: "GET",

@@ -126,6 +126,11 @@ import { Home, type FrontierMap } from "../Home";
 import { freeLeft } from "../lib/free-allowance";
 import { FREE_ONLINE_PROBLEMS } from "../../learning/free-allowance";
 import { AllowancePause } from "../features/continue/AllowancePause";
+import {
+  LessonDownloads,
+  PrintLessonButton,
+  useLessonPrint,
+} from "../features/lessons/LessonPrint";
 import { strandNames } from "../BirthYearPrompt";
 import type { ProblemLessonView } from "../../content/problem-lessons";
 class HttpError extends Error {
@@ -149,6 +154,9 @@ const allowanceEnded = (error: unknown) =>
 type Catalog = {
   templates: TemplateMetadata[];
   lessons: Lesson[];
+  /** Lessons this server has no PDFs for (src/server/publications.ts). An
+   * older server leaves it out; its lessons all have them. */
+  unpublishedLessons?: string[];
   skills: {
     id: string;
     title: string;
@@ -494,6 +502,33 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     accountRef = useRef<string | null>(null);
   const learnerRef = useRef<string | undefined>(undefined);
   learnerRef.current = learner?.id;
+  // Printing a lesson hands over its typeset PDF, never a browser print of
+  // the page. A lesson without PDFs on this server offers no print at all.
+  const lessonPrintState = useLessonPrint({
+    learnerId: learner?.id ?? "",
+    lessonId: readingLesson?.id ?? "",
+    token: token ?? "",
+    // Signed out or switched accounts while it downloaded: not saved.
+    keep: () => tokenRef.current === token,
+    onAllowanceEnded: () => {
+      if (!learner) return;
+      setPausedFor(learner.id);
+      // The pause takes the downloads' place, after the lesson.
+      requestAnimationFrame(() =>
+        document
+          .querySelector("[data-lesson-downloads]")
+          ?.scrollIntoView({ block: "center" }),
+      );
+    },
+  });
+  const lessonPrint =
+    !nativeRuntime &&
+    learner &&
+    token &&
+    readingLesson &&
+    !catalog?.unpublishedLessons?.includes(readingLesson.id)
+      ? lessonPrintState
+      : null;
   useLayoutEffect(
     () => () => {
       // Account-keyed unmounts must also invalidate work outside React: an old
@@ -1354,27 +1389,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     link.click();
     URL.revokeObjectURL(url);
   }
-  async function download(kind: "lesson" | "workbook" | "solutions") {
-    if (nativeRuntime)
-      throw new Error("PDF downloads require the configured web application.");
-    const publicationLesson = readingLesson ?? lesson;
-    if (!learner || !publicationLesson || !token) return;
-    const epoch = authEpoch.current;
-    const result = await fetch(
-      `/api/v1/learners/${learner.id}/publications/${publicationLesson.id}/${kind}`,
-      { headers: { authorization: `Bearer ${token}` } },
-    );
-    if (!result.ok)
-      throw new Error((await result.json()).error ?? "Download unavailable");
-    const blob = await result.blob();
-    if (epoch !== authEpoch.current) return;
-    const url = URL.createObjectURL(blob),
-      a = document.createElement("a");
-    a.href = url;
-    a.download = `${publicationLesson.id}-${kind}.pdf`;
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  }
   // Home shows where the learner stands in each strand; refresh it on return.
   // LegacyScreen is keyed by account. Bind each response to the learner and
   // birth-year context too, so a switch cannot display the preceding map.
@@ -2199,41 +2213,22 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                     ? "← Your idea"
                     : "← All lessons"}
                 </button>
-                {!nativeRuntime && (
-                  <button
-                    className="text-button"
-                    onClick={() => window.print()}
-                  >
-                    Print lesson
-                  </button>
+                {lessonPrint && !paused && (
+                  <PrintLessonButton print={lessonPrint} />
                 )}
               </div>
               <h2 ref={readerHeading} tabIndex={-1}>
                 {readingLesson.title}
               </h2>
               <ReferenceLesson lesson={readingLesson} />
-              {/* The lesson comes first; its printable copies follow it. */}
-              {!nativeRuntime && (
-                <section
-                  className="reader-downloads"
-                  aria-label="Download and print"
-                >
-                  <h3>Download &amp; print</h3>
-                  <div className="downloads">
-                    {(["lesson", "workbook", "solutions"] as const).map(
-                      (kind) => (
-                        <button
-                          className="secondary"
-                          key={kind}
-                          disabled={busy}
-                          onClick={() => void action(() => download(kind))}
-                        >
-                          Download {kind} PDF
-                        </button>
-                      ),
-                    )}
-                  </div>
-                </section>
+              {/* The lesson comes first; its typeset PDFs follow it. */}
+              {lessonPrint && learner && (
+                <LessonDownloads
+                  print={lessonPrint}
+                  paused={paused}
+                  viewer={pauseViewer}
+                  learner={{ id: learner.id, name: learner.name }}
+                />
               )}
             </article>
           )}
