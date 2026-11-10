@@ -284,7 +284,7 @@ def main():
         freeze_protocol(root/'protocol.json', {
             'prompts_sha256': hashlib.sha256(Path(__file__).with_name('prompts.py').read_bytes()).hexdigest(),
             'assignment_sha256': hashlib.sha256(json.dumps(mapping, sort_keys=True).encode()).hexdigest(),
-            'models': MODELS, 'api_rates_usd_per_million': {key: list(value) for key, value in RATES.items()},
+            'models': {key: MODELS[key] for key in REVIEWERS}, 'api_rates_usd_per_million': {key: list(value) for key, value in RATES.items()},
             'reviewers': list(REVIEWERS), 'agent_limit': 3, 'failure_limit': 2,
         })
         freeze_protocol(root/'execution-settings.json', {

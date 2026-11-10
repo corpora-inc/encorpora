@@ -221,6 +221,9 @@ def _last_report(output):
 
 
 def _make(config, row, workspace, *, voice=False, tall=False):
+    if voice and config.get('production'):
+        from prod_voice import migrate_voice_runtime
+        migrate_voice_runtime(config,row,workspace)
     verify_runtime(config, row, workspace)
     if row['teacher'] not in TEACHERS:
         raise ValueError('Unapproved teacher voice')
@@ -235,11 +238,13 @@ def _make(config, row, workspace, *, voice=False, tall=False):
         env['ELEVEN_LABS_API_KEY'] = os.environ['ELEVEN_LABS_API_KEY']
         env.update(FILM_LAB_QUOTA_STATE=str(root/'voice-quota.json'),
                    FILM_LAB_VOICE_LEDGER=str(root/'voice-ledger.jsonl'), FILM_LAB_ID=row['id'])
+        if config.get('production'):
+            env['FILM_PROD_VOICE_REPAIR_CACHE'] = str(root/'voice-repairs'/row['id'])
         command += ['--import', str(HERE/'quota-hook.mjs')]
     command += ['--import', 'tsx', str(runtime/'film/make.ts'), row['id'],
                 '--check' if voice else '--dry', '--res', '1080', '--out', str(out),
                 '--voice', 'teacher='+row['teacher'], '--voice', 'learner='+CHAMP]
-    if not voice:
+    if not voice and not config.get('production'):
         command += ['--board']
     if tall:
         command += ['--tall']
@@ -278,7 +283,7 @@ def validate_cast(path, identifier):
     if speakers != {'teacher', 'learner'}:
         raise ValueError('Every beat must name its teacher or learner speaker, and both roles must speak')
     visible = script.get('title', '')+'\n'+'\n'.join(beat.get('say', '') for beat in beats)
-    if re.search(r'\b(?:claude|fable|opus|sonnet|grok|astra|study-opus|write-opus)\b', visible, re.I):
+    if re.search(r'\b(?:claude|fable|opus|sonnet|grok|astra|sol|study-opus|write-opus)\b', visible, re.I):
         raise ValueError('Remove model or arm attribution from the visible screenplay')
     return script
 
@@ -299,7 +304,7 @@ def check_worker(config, row, workspace):
             reported = result['report']
             if result['exit_code'] or not reported:
                 errors.extend((reported or {}).get('problems') or [result['stderr'][-6000:] or 'Kit did not report a completed check'])
-            if not tall and reported:
+            if not tall and reported and not config.get('production'):
                 payload = Path(workspace)/'check-output'/row['id']/'lab-payload.json'
                 compatibility = _run([config.get('node', 'node'), '--import', 'tsx',
                     str(HERE/'check-player-figure.ts'), str(payload)],
@@ -307,8 +312,27 @@ def check_worker(config, row, workspace):
                 if compatibility['exit_code']:
                     errors.append(compatibility['stderr'][-3000:] or 'Installed player figure compatibility failed')
             directory = Path(workspace)/'check-output'/row['id']/('board-tall' if tall else 'board')
-            if directory.exists() and list(directory.glob('*.jpg')):
+            if not config.get('production') and directory.exists() and list(directory.glob('*.jpg')):
                 captures += pages(directory, Path(workspace)/'storyboards', 'author-'+name, tall)
+        if config.get('production'):
+            from prod_runtime import capture_worker
+            source = Path(workspace)/'check-output'/row['id']/'lab-payload.json'
+            payload = read_json(source)
+            if not payload or payload.get('timing_source') != 'estimated' or payload.get('script') != read_json(Path(workspace)/'screenplay.json'):
+                raise RuntimeError('No current estimated payload for installed-player authoring boards')
+            identifier = row['id']+'-author'
+            previous = Path(config['root'])/'boards'/identifier
+            if previous.exists():
+                subprocess.run(['trash',str(previous)],check=True,capture_output=True)
+            job = Path(workspace)/'author-capture.json'
+            write_json(job, [{'id':identifier, 'payload':str(source)}])
+            capture_worker(config,job)
+            target = Path(workspace)/'storyboards'
+            target.mkdir(parents=True,exist_ok=True)
+            for name in read_json(Path(config['root'])/'boards'/identifier/'pages.json'):
+                destination = target/Path(name).name
+                shutil.copyfile(name,destination)
+                captures.append(str(destination))
     except Exception as error:
         errors.append(str(error))
     result = {'passed': not errors, 'errors': errors, 'storyboard_pages': captures, 'checked_at': now(),

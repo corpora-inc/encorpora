@@ -77,7 +77,7 @@ refresh();setInterval(refresh,60000);
     return len(rows)
 
 
-def export_worker(config, row, workspace):
+def export_worker(config, row, workspace, *, page_builder=grouped_page):
     if not os.environ.get('FILM_LAB_HEAVY'):
         raise RuntimeError('Audio export requires the heavy-command gate')
     from runtime import verify_runtime, validate_cast
@@ -119,7 +119,7 @@ def export_worker(config, row, workspace):
         else:
             index.append(index_row)
         write_json(data/'index.json', index)
-        grouped_page(config)
+        page_builder(config)
     base = config['player_url'].rstrip('/')+'/data/'
     with urllib.request.urlopen(base+row['id']+'.json', timeout=20) as response:
         if json.load(response) != payload:

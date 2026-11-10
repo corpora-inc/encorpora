@@ -23,6 +23,7 @@ import urllib.request
 MODELS = {
     'fable': 'claude-fable-5-2', 'opus': 'claude-opus-5-5',
     'sonnet': 'claude-sonnet-5-5', 'astra': 'gpt-6-astra', 'grok': 'grok-4.7',
+    'sol': 'gpt-6.1-sol',
 }
 # USD per million tokens, checked 2026-11-10 against the provider's pricing page.
 # https://platform.claude.com/docs/en/about-claude/pricing
@@ -101,7 +102,7 @@ def parse_json(text):
 
 
 def normalized_usage(provider, raw):
-    if provider == 'astra':
+    if provider in ('astra', 'sol'):
         total = raw.get('input_tokens')
         cached = raw.get('cached_input_tokens', 0)
         return {'input_uncached': None if total is None else total-cached,
@@ -225,7 +226,7 @@ def grok_output(stdout):
 
 
 def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
-              check_command=None, images=(), timeout=1800):
+              check_command=None, images=(), timeout=1800, max_dollars=None):
     """One measured attempt. The caller owns retry limits and concurrency."""
     workspace, receipt = Path(workspace).resolve(), Path(receipt)
     workspace.mkdir(parents=True, exist_ok=True)
@@ -240,7 +241,7 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
              'Never read credentials, founder grades, experiment results, or assignments. '
              'Do not edit source code, run Git, voice audio, or render MP4. '
              'Run kit checks only using the exact supplied check command, which invokes the heavy-command gate.')
-    if provider == 'astra':
+    if provider in ('astra', 'sol'):
         command = ['codex', 'exec', '-m', MODELS[provider], '-c', 'model_reasoning_effort="xhigh"',
                    '-c', 'mcp_servers={}', '--ignore-user-config',
                    '--dangerously-bypass-approvals-and-sandbox', '--skip-git-repo-check',
@@ -262,6 +263,10 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
                    '--effort', 'xhigh', '--output-format', 'stream-json', '--verbose', '--include-partial-messages',
                    '--no-session-persistence', '--permission-mode', 'dontAsk',
                    '--disable-slash-commands', '--append-system-prompt', house]
+        if max_dollars is not None:
+            if not isinstance(max_dollars,(int,float)) or max_dollars <= 0:
+                raise ValueError('The API attempt budget must be positive')
+            command += ['--max-budget-usd',str(max_dollars)]
         if role == 'screenplay':
             if not check_command:
                 raise ValueError('A screenplay agent needs its bounded check command')
@@ -271,12 +276,14 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
             command += ['--tools', '']
     record = {'provider': provider, 'model': MODELS[provider], 'role': role,
               'reasoning_effort': 'xhigh',
-              'output_format': 'streaming-json' if provider == 'grok' else 'json' if provider == 'astra' else 'stream-json',
+              'output_format': 'streaming-json' if provider == 'grok' else 'json' if provider in ('astra', 'sol') else 'stream-json',
               'started_at': now(), 'prompt_sha256': hashlib.sha256(prompt.encode()).hexdigest(),
               'image_sha256': [hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in images],
               'timeout_seconds': timeout,
-              'transport': 'account-cli' if provider in ('astra', 'grok') else 'api-cli',
+              'transport': 'account-cli' if provider in ('astra', 'sol', 'grok') else 'api-cli',
               'api_dollars': None, 'reported_dollars': None, 'status': 'running'}
+    if max_dollars is not None and provider in RATES:
+        record['budget_limit_usd'] = max_dollars
     write_json(receipt, record)
     start = time.monotonic()
     timed_out = False
@@ -309,7 +316,7 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
                   exit_code=process.returncode, timed_out=timed_out)
     result, raw_usage = '', {}
     try:
-        if provider == 'astra':
+        if provider in ('astra', 'sol'):
             events = [json.loads(line) for line in stdout.splitlines() if line.startswith('{')]
             messages = [e['item'].get('text', '') for e in events
                         if e.get('type') == 'item.completed' and e.get('item', {}).get('type') == 'agent_message']

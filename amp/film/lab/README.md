@@ -1,5 +1,83 @@
 # Lesson-film model lab
 
+## Curriculum production
+
+`prod.py` produces lesson films in the app's curriculum order, starting with
+Kindergarten. Production uses a separate private output root and version-two
+prompts; `lab.py` retains the experiment protocol. Configure production from
+`config.example.json`, choosing a new output root, an isolated subdirectory of
+`.work/`, and a review URL ending in `prod.html`. Set `agents` between one and six
+(default six). Do not reuse the experiment's root or frozen-player hash.
+
+```sh
+python3 film/lab/prod.py --config /private/production.json --phase prepare
+python3 film/lab/prod.py --config /private/production.json --phase smoke
+/private/standards/heavy.sh env FILM_LAB_HEAVY=1 node --import tsx film/lab/prod_playback.ts --url http://127.0.0.1:28941/live/ --out /private/film-production/playback --ids first-type--ab,second-type--cd,third-type--ef
+nohup python3 film/lab/prod.py --config /private/production.json --phase run > /private/film-production/run.log 2>&1 < /dev/null &
+```
+
+Run these commands from `amp/`. Replace the playback IDs with the actual smoke
+IDs in the private `smoke-complete.json`. Inspect the phone screenshots and
+playback receipt before starting the detached run. The smoke phase covers the
+first three eligible Kindergarten types, including any selected control siblings.
+
+Preparation reads approved lesson filenames from `origin/main` and approvals
+from the live grading service. Refresh `origin/main` before preparation. The
+queue records unsupported figure reasons and preserves app skill order while
+putting same-grade prerequisites first. Cross-grade prerequisite conflicts are
+recorded explicitly. Existing assignments are reused on resume.
+
+Fable writes one grade plan before that grade's studies. Sonnet studies each
+type; screenplay assignments rotate Sonnet, Grok, and Sol in seeded balance.
+Four Kindergarten types from different domains also receive blind control
+versions: two Fable/Astra pairs and two Opus/Opus pairs. A usage-limited cheap
+writer's assignments move to the available writers. All writers receive the
+same scope and pacing instructions: solve this problem type, usually in three
+to five minutes, without teaching the next skill. Verbatim standards audits
+stay in the study and private coverage queue.
+
+Fable reviews the checked screenplay and estimated storyboard before narration.
+A negative verdict triggers one revision by the same writer, fresh kit checks,
+and a second recorded verdict. A technically valid revised film proceeds to
+founder review even if Fable's second verdict is negative. Unavailable reviews
+and failed kit checks prevent narration. Both authoring and review storyboards
+use the player installed on the live service at capture time; receipts record
+its asset hashes. Preparation marks the private configuration as production so
+later check workers use that player.
+
+Narration and export use one worker and the existing approved voices and
+50,000-credit reserve. If all three ordinary takes fail only acoustic checks,
+production permits three further takes with the same words and voice, new
+seeds, and no neighbouring context. Repair takes use a separate private cache;
+the original takes and all audio thresholds are preserved. A clipped take is
+never accepted. Runtime migrations retain the old source and manifest. A
+terminal boundary failure from the earlier policy receives one recorded
+recovery attempt on resume, without resetting its attempt count.
+After the reserve stops narration, authoring continues;
+completed grade drafts use Fable batches of at most six items. Those batches
+have no playable-film delivery waiting behind them. The coordinator waits for
+submitted results instead of duplicating an uncertain request. Failed attempts,
+revisions, incomplete usage, and films waiting for voice appear in `STATUS.md`.
+`prod.html` groups blind siblings by curriculum grade and marks recent unseen
+films. The private `arms.json` holds assignments; the page exposes no models.
+
+Create `<production-root>/PAUSE` to stop new film starts and let in-flight films
+finish. New starts also stop at $250 in recorded Anthropic API spending plus
+unconfirmed budget holds. Anthropic CLI attempts have a $20 API cap; an
+incomplete receipt holds that cap instead of treating missing usage as zero.
+Legacy uncapped attempts and unknown direct requests hold $25 each. These
+holds are estimates, reported separately from charges. In-flight work can
+finish above the start threshold. Remove a pause file with `trash` and rerun the
+same command to resume. Completed work is reused; terminal failures retain
+their receipts. Never delete evidence to force another paid attempt.
+
+Keep the worktree, kit, and application sources available while a detached run
+uses them. Existing bake-off workspaces require the source revision recorded in
+their provenance when resuming that experiment. Production does not rewrite
+experiment state or rebuild the installed player.
+
+## Model experiment
+
 This harness compares study, screenplay and review models for AMP lesson films. It selects 54 distinct problem types in six pathways, assigns nine study/writer combinations within each pathway, and exports voiced candidates under blind IDs. Five models review the candidates and 40 films with frozen founder grades. The report records results without choosing a winner before founder grading.
 
 A pathway contains nine adjacent types in one family and grade, spanning at most three neighboring skills and 0.75 curriculum difficulty units. The six strata are K–2, grades 3–5, grades 6–8, high-school algebra/functions, high-school geometry/trigonometry, and high-school statistics/probability. Selection excludes approved films, figures outside the implemented kit, and example scenes needing a scale below the installed review player's minimum of 0.01. Comparisons across neighboring types contain type-level variation; they are not controlled comparisons of identical scripts or problems.
