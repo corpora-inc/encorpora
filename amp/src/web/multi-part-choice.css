@@ -550,7 +550,12 @@
   font-weight: 600;
   line-height: 1.15;
   font-variant-numeric: tabular-nums;
-  white-space: nowrap;
+  /* A card never runs past its row: a phrase wider than the row wraps
+     between words. Numbers and typeset math never break. */
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+  text-wrap: balance;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }

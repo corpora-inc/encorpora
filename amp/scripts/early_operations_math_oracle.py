@@ -261,7 +261,8 @@ class EarlyOperationsCorpus:
             tags.add('zero-part')
         if name == 'three-addend-story':
             tags.add('ten-pair' if tag.endswith('-ten') else 'no-ten-pair')
-        if name == 'unknown-addend-story' and public['figure']['whole'] > 10 and value >= 2:
+        # The subtraction clause variant ("3 = □ − 1") leaves the whole unknown.
+        if name == 'unknown-addend-story' and (public['figure']['whole'] or 0) > 10 and value >= 2:
             tags.add('teen-whole')
 
     def finish(self):

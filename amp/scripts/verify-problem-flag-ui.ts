@@ -16,6 +16,10 @@ import { PostgresRepository } from "../src/server/repository";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { migrate } from "./migrate";
 import { chooseLearner } from "./ui-controls";
+import {
+  preparePracticeAnswer,
+  trackPracticeProblems,
+} from "./ui-practice-answer";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 
 /**
@@ -124,14 +128,11 @@ async function axe(page: Page, label: string, include: string[]) {
     label,
   );
 }
-/** Answers the open problem with Check (a choice, or a typed number). */
+/** Answers the open problem, whatever its kind, through its own controls. */
 async function answer(page: Page) {
   const report = page.getByRole("button", { name: "Report a problem" });
   assert.equal(await report.count(), 0, "no flag while the problem is open");
-  const choice = page.locator(".choice-option").first();
-  if (await choice.count()) await choice.click();
-  else await page.locator("#answer").fill("7");
-  await page.getByRole("button", { name: "Check", exact: true }).click();
+  await (await preparePracticeAnswer(page, false)).submit();
   await page.locator(".feedback").waitFor();
   // The sheet's entrance animation.
   await page.waitForTimeout(400);
@@ -354,6 +355,7 @@ try {
       const learnerId = await newChild(context, 2016);
       await context.addInitScript(observeShifts);
       const page = await context.newPage();
+      trackPracticeProblems(page);
       page.on("pageerror", (error) => errors.push(error.message));
       await page.goto(`${origin}/practice`);
       await page.locator(".question").waitFor();
@@ -382,6 +384,7 @@ try {
     });
     await context.addInitScript(observeShifts);
     const page = await context.newPage();
+    trackPracticeProblems(page);
     page.on("pageerror", (error) => errors.push(error.message));
     // The shared CI database holds other suites' learners: pick this one.
     await page.goto(`${origin}/overview`);

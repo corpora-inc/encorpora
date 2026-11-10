@@ -31,6 +31,10 @@
 .line-build-canvas {
   position: relative;
   width: 100%;
+  /* The drawing scales with its width. At 24rem its 20-unit numbers stay
+     within the figure type size (22 px) on tablets and desktops. */
+  max-width: 24rem;
+  margin-inline: auto;
 }
 .line-build-drawing {
   display: block;

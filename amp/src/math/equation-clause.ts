@@ -126,6 +126,17 @@ const fnum = (a: Fr) => a.n / a.d;
 const ftxt = (a: Fr) => (a.d === 1 ? `${a.n}` : `${a.n}/${a.d}`);
 const signed = (n: number) => (n < 0 ? `−${-n}` : `${n}`);
 
+const instanceId = (templateId: string, seed: string) =>
+  createHash("sha256")
+    .update(JSON.stringify([templateId, SINCE, seed]))
+    .digest("hex");
+/** A retry with a salted seed changes only the draw: the problem keeps the
+ * seed it was asked for, as every other family's does. */
+export function keepSeed(made: GeneratedProblem, seed: string) {
+  made.public.seed = seed;
+  made.public.id = instanceId(made.public.templateId, seed);
+  return made;
+}
 function stamp(
   meta: TemplateMetadata,
   seed: string,
@@ -144,9 +155,7 @@ function stamp(
 ): GeneratedProblem {
   return {
     public: {
-      id: createHash("sha256")
-        .update(JSON.stringify([meta.id, SINCE, seed]))
-        .digest("hex"),
+      id: instanceId(meta.id, seed),
       templateId: meta.id,
       templateVersion: SINCE,
       seed,
@@ -515,6 +524,16 @@ export function solutionCountSteps(
     e = a * b;
   }
   if (Math.abs(d) > 6 || d === 0) d = a + c === 0 ? 1 : a + c;
+  // The clamps above can move d; the equation must still say what the kind
+  // claims (one solution x0, every number, or none), or draw again.
+  if (
+    kind === 0
+      ? a + c === d || e - a * b !== (a + c - d) * x0
+      : a + c !== d || (kind === 1) !== (e === a * b)
+  )
+    throw new Error("Equation does not match its solution count");
+  // "One solution, x = 0" is a distractor; at x0 = 0 it would also be true.
+  if (kind === 0 && x0 === 0) throw new Error("Two true conclusions");
   const leftConst = a * b;
   const expand = `${a === 1 ? "" : a === -1 ? "-" : a}x${leftConst >= 0 ? "+" : ""}${leftConst}${c >= 0 ? "+" : ""}${c === 1 || c === -1 ? (c < 0 ? "-x" : "+x") : `${c}x`}=${lin(d, e)}`
     .replace(/\+\-/, "-")
@@ -1803,7 +1822,7 @@ export function generateEquationClauseProblem(
   let last = "";
   for (let attempt = 0; attempt < 40; attempt++)
     try {
-      return build(attempt ? `${seed}#${attempt}` : seed);
+      return keepSeed(build(attempt ? `${seed}#${attempt}` : seed), seed);
     } catch (error) {
       if (!(error instanceof Error)) throw error;
       last = error.message;

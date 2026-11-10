@@ -54,7 +54,15 @@ for (const id of [
   "related-patterns-relationship",
   "dependent-variable-equation",
 ])
-  lessons.push(problemLesson(id, "animation-review"));
+  // The animated example: related patterns can also draw a static table scene.
+  lessons.push(
+    [
+      "animation-review",
+      ...Array.from({ length: 32 }, (_, i) => `animation-${i}`),
+    ]
+      .map((seed) => problemLesson(id, seed))
+      .find((lesson) => lesson.example.figure?.kind !== "scene")!,
+  );
 const names = [
   "fraction-model",
   "split-array-part",

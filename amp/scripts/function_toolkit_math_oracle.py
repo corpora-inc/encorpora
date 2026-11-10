@@ -52,7 +52,7 @@ def braced(s, i):
 
 def python_source(tex):
     """TeX of an expression in x (or another letter) to Python source."""
-    s = tex.replace('\\left', '').replace('\\right', '').replace('−', '-').replace('\\cdot', '*').replace('\\,', '')
+    s = tex.replace('\\left', '').replace('\\right', '').replace('−', '-').replace('\\cdot', '*').replace('\\div', '/').replace('\\,', '')
     out, i = '', 0
     while i < len(s):
         if s.startswith('\\frac', i):

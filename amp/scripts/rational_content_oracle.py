@@ -54,7 +54,8 @@ def check_manifest(record):
     require(len(templates) == 4 and {t['id'] for t in templates} == RATIONAL_TYPES, 'Missing or duplicate rational template')
     for t in templates:
         band = '9–12' if t['id'] == 'rational-power' else '6–8'
-        require(t['version'] == 1 and t['skillId'] == SKILLS[t['id']] and t['gradeBand'] == band
+        # The version moves with each reviewed variant (clause variants are 2).
+        require(t['skillId'] == SKILLS[t['id']] and t['gradeBand'] == band
                 and 'requiredResponseCapability' not in t, 'Wrong rational template metadata')
     skills = {s['id']: s for s in record['skills']}
     require(set(skills) == set(PLACEMENT), 'Wrong rational skill inventory')

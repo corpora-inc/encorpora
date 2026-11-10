@@ -4,7 +4,7 @@ import { cosD, sinD, tanD } from "./regents-geometry-kit";
 import { workModeAxisNoOrder } from "./structured-work-kit";
 import { rowsWork, workSurface, type RowSpec } from "./structured-work-rows";
 import { defineAxis } from "./variation/axes";
-import { clauseTask, solutionCountSteps } from "./equation-clause";
+import { clauseTask, keepSeed, solutionCountSteps } from "./equation-clause";
 
 /**
  * Regents constructed responses whose rating guides credit the shown work:
@@ -32,7 +32,7 @@ const meta = (
   requiredResponseCapability: capability,
   description,
 });
-export const regentsShownWorkTemplates: readonly TemplateMetadata[] = ([
+export const regentsShownWorkTemplates: readonly TemplateMetadata[] = [
   meta(
     "density-volume-steps",
     "Show the work: weight, mass or count from a solid's volume and a density",
@@ -110,7 +110,7 @@ export const regentsShownWorkTemplates: readonly TemplateMetadata[] = ([
     0.65,
     "Divide the target by the starting amount, take the natural logarithm of the ratio and of the growth factor, and divide to find the time to the nearest hundredth.",
   ),
-]).map((t) =>
+].map((t) =>
   t.id === "grouped-both-sides-steps"
     ? { ...t, version: 2, reprintsFrom: 1 }
     : t,
@@ -949,9 +949,9 @@ export const regentsShownWorkGenerate = dispatch(regentsShownWorkTemplates, {
     let last = "";
     for (let attempt = 0; attempt < 40; attempt++)
       try {
-        return solutionCountSteps(
-          meta,
-          attempt ? `${seed}#${attempt}` : seed,
+        return keepSeed(
+          solutionCountSteps(meta, attempt ? `${seed}#${attempt}` : seed),
+          seed,
         );
       } catch (error) {
         last = error instanceof Error ? error.message : "";

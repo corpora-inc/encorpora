@@ -28,6 +28,21 @@ export function isTabletLandscape(size: Size): boolean {
   return size.width > size.height && size.width >= 900 && size.height >= 500;
 }
 
+/** After a resize, waits for practice to commit the answer surface for the
+ * new viewport: the compact answer action shows exactly where the problem's
+ * own answer-dialog query (`data-answer-dialog` on the dock) matches. */
+export async function answerSurfaceSettled(page: Page) {
+  await page.waitForFunction(() => {
+    const query = document
+      .querySelector(".answer-dock")
+      ?.getAttribute("data-answer-dialog");
+    return (
+      !!document.querySelector(".compact-answer-action") ===
+      (!!query && matchMedia(query).matches)
+    );
+  });
+}
+
 /** Wider than tall and shorter than the smallest tablet in landscape. */
 export function isPhoneLandscape(size: Size | readonly number[]): boolean {
   const [width, height] = Array.isArray(size)
@@ -348,6 +363,8 @@ export async function assertProblemReachable(page: Page, label: string) {
         ...content.querySelectorAll("svg:not(svg svg), table, img, canvas"),
       ];
       for (const part of new Set(parts)) {
+        // Content of a closed <details> (a figure's data table) is not shown.
+        if (part.checkVisibility?.() === false) continue;
         const b = part.getBoundingClientRect();
         if (b.width < 2 || b.height < 2) continue;
         if (b.top < top - 1 || b.bottom > bottom + 1)

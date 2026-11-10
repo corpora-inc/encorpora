@@ -65,12 +65,12 @@ try {
   page.setDefaultTimeout(15_000);
   page.setDefaultNavigationTimeout(30_000);
   const served = trackPracticeProblems(page);
-  const kinds = new Set<string>();
+  // One representative of every response shape the catalog generates; the
+  // shared answer helper fails on any kind it cannot answer.
   const representatives = new Map<string, GeneratedProblem>();
   for (const template of templates) {
     const problem = generateProblem(template.id, "response-controls");
     const response = problem.public.response;
-    kinds.add(response.kind);
     const signature = responseShape(response);
     if (!representatives.has(signature))
       representatives.set(signature, problem);
@@ -92,24 +92,6 @@ try {
     "77e73c1e-b008-4c2a-9172-388b554e9c51",
   );
   representatives.set(responseShape(inline.public.response), inline);
-  assert.deepEqual(
-    [...kinds].sort(),
-    [
-      "number",
-      "fraction",
-      "choice",
-      "multi-select",
-      "point-plot",
-      "line-plot-build",
-      "counter-builder",
-      "trend-line-fit",
-      "equal-addends",
-      "multi-part-choice",
-      "figure-choice",
-      "structured-work",
-      "unit-square-marking",
-    ].sort(),
-  );
   await page.goto("http://127.0.0.1:4954/overview");
   await chooseLearner(page, learner.id);
   // Keep exiting menus mounted long enough to exercise the overlap reliably.
