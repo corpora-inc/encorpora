@@ -81,8 +81,12 @@ for (const client of clients)
           );
           assert.deepEqual(p, expected.public);
           assert.ok(
+            // A scene may name a capability no client declares yet (things
+            // to count): compare as plain strings.
             sceneCapabilitiesIn(p).every((capability) =>
-              capable.figureCapabilities.includes(capability),
+              (capable.figureCapabilities as readonly string[]).includes(
+                capability,
+              ),
             ),
           );
           const attempt = {
