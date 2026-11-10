@@ -60,6 +60,12 @@ test(
         assert.equal(batch.statusCode, 200, batch.body);
         return batch.json().problems[0];
       };
+      const servedSecret = async (id: string) =>
+        (
+          await pool.query("SELECT content FROM amp_instances WHERE id=$1", [
+            id,
+          ])
+        ).rows[0].content as ReturnType<typeof generateProblem>;
       const answer = async (
         headers: Record<string, string>,
         problem: {
@@ -71,7 +77,9 @@ test(
         correct: boolean,
         path = base,
       ) => {
-        const solution = generateProblem(problem.templateId, problem.seed);
+        // The problem as the server served and stored it (a client without
+        // figure capabilities can get another variant than the full engine).
+        const solution = await servedSecret(problem.id);
         const response = correct
           ? solution.answer
           : problem.response.kind === "choice"
@@ -123,7 +131,7 @@ test(
           sent.json().id,
         ])
       ).rows;
-      const solved = generateProblem(open.templateId, open.seed);
+      const solved = await servedSecret(open.id);
       assert.equal(row.learner_id, learnerId);
       assert.equal(row.problem_id, open.id);
       assert.equal(row.template_id, open.templateId);
