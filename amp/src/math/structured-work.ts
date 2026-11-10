@@ -686,14 +686,22 @@ function markFields(
       return fieldMatches(f, rule, row.values[j]!);
     }),
   );
+  // An open list names its item with its one row label ("Pair") and is
+  // complete only with every expected row: a row past the key has no rule
+  // (marked wrong), and a short list is wrong without saying how short.
+  const item = r.open ? (r.rows[0]!.label ?? noun(r)) : null;
   const notes = marks.flatMap((ok, i) =>
     ok
       ? []
       : [
-          `${noun(r)} ${i + 1}: check ${rows[i]!.shape.label ? `“${lowerFirst(rows[i]!.shape.label!)}”` : "this value"}.`,
+          item
+            ? `${item} ${i + 1}: check this ${item.toLowerCase()}.`
+            : `${noun(r)} ${i + 1}: check ${rows[i]!.shape.label ? `“${lowerFirst(rows[i]!.shape.label!)}”` : "this value"}.`,
         ],
   );
-  return { correct: marks.every(Boolean), rows: marks, notes };
+  const missing = !!item && rows.length < grading.fields.length;
+  if (missing) notes.push(`Some ${item!.toLowerCase()}s are missing.`);
+  return { correct: !missing && marks.every(Boolean), rows: marks, notes };
 }
 
 function markLinearClasses(
@@ -1360,10 +1368,21 @@ export function rowText(
     parts[j] = powerTex(a, base, n);
     parts[j + 1] = "";
   });
+  // A number whose unit is a joining sign (a factor pair's "×") reads as
+  // one expression with the next number: "$1$ × $40$", not "$1$ × — $40$".
+  shape.fields.forEach((f, j) => {
+    if (f.kind !== "number" || !JOINING_SIGN.test(f.unit ?? "")) return;
+    if (!parts[j] || !parts[j + 1] || parts[j] === "—") return;
+    parts[j] = `${parts[j]} ${parts[j + 1]}`;
+    parts[j + 1] = "";
+  });
   if (r.layout === "proof") return `${parts[0]} (${parts[1]})`;
   const body = parts.filter(Boolean).join(" — ");
-  return shape.label ? `${shape.label}: ${body}` : body;
+  // An open list's label names its item, not each row.
+  return shape.label && !r.open ? `${shape.label}: ${body}` : body;
 }
+/** A unit that joins two numbers rather than naming a measure. */
+const JOINING_SIGN = /^[×÷+−=]$/;
 /** The rows of a response (or the answer key) in order, as readable text. */
 export function structuredWorkRows(
   r: StructuredWorkResponse,
@@ -1609,18 +1628,33 @@ export function gradingFits(
 ): boolean {
   const shapes = r.open ? [r.rows[0]!] : r.rows;
   if (g.mode === "fields")
-    return (
-      !r.open &&
-      r.layout === "steps" &&
-      g.fields.length === r.rows.length &&
-      r.rows.every((row, i) =>
-        row.fields.every((f, j) => {
-          const rule = g.fields[i]?.[j];
-          if (f.given !== undefined) return rule === null || rule === undefined;
-          return !!rule && rule.kind === f.kind;
-        }),
-      )
-    );
+    return r.open
+      ? // An open list: one expected row per key row, each of the one shape,
+        // with no given values (every row is the learner's).
+        r.layout === "steps" &&
+          r.mode === "build" &&
+          g.fields.length >= 1 &&
+          g.fields.length <= r.open.max &&
+          g.fields.every(
+            (rule) =>
+              rule.length === r.rows[0]!.fields.length &&
+              r.rows[0]!.fields.every(
+                (f, j) =>
+                  f.given === undefined &&
+                  !!rule[j] &&
+                  rule[j]!.kind === f.kind,
+              ),
+          )
+      : r.layout === "steps" &&
+          g.fields.length === r.rows.length &&
+          r.rows.every((row, i) =>
+            row.fields.every((f, j) => {
+              const rule = g.fields[i]?.[j];
+              if (f.given !== undefined)
+                return rule === null || rule === undefined;
+              return !!rule && rule.kind === f.kind;
+            }),
+          );
   if (g.mode === "linear-classes")
     return (
       !r.open &&

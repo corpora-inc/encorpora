@@ -449,10 +449,6 @@ nav button {
   margin-top: 24px;
 }
 @media (max-width: 650px) {
-  /* Phone practice drops the card: the stage sits on the screen surface. */
-  .shell.immersive .problem-stage {
-    --stage-paper: var(--color-surface);
-  }
   nav {
     gap: 4px;
   }

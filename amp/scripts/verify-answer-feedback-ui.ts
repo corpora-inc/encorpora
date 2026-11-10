@@ -271,12 +271,27 @@ try {
             const dock = surface.querySelector(".answer-dock")!;
             const a = sheet.getBoundingClientRect();
             const b = dock.getBoundingClientRect();
-            return { sheet: a.toJSON(), dock: b.toJSON() };
+            return {
+              sheet: a.toJSON(),
+              dock: b.toJSON(),
+              surface: surface.getBoundingClientRect().toJSON(),
+              radius: getComputedStyle(sheet).borderTopLeftRadius,
+            };
           });
         assert(
           Math.abs(column.sheet.top - column.dock.top) <= 1 &&
             Math.abs(column.sheet.bottom - column.dock.bottom) <= 1,
           `${mode} ${width}: the sheet fills the answer column: ${JSON.stringify(column)}`,
+        );
+        // Immersive: no card around practice. The stage meets the screen's
+        // edges, and the panel is flush to the right and bottom edges.
+        assert(
+          column.surface.left <= 1 &&
+            column.surface.right >= width - 1 &&
+            column.sheet.right >= width - 1 &&
+            column.sheet.bottom >= height - 1 &&
+            column.radius === "0px",
+          `${mode} ${width}: practice is edge to edge, the panel flush: ${JSON.stringify(column)}`,
         );
       } else await why.click();
       const explainedNext = await next.boundingBox();
