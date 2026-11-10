@@ -122,6 +122,12 @@ export function OrgFrame({
       tabIndex={-1}
       className={frame.content}
       data-dense
+      // Settings and its pages are one focused, centred column.
+      data-narrow={
+        nav === "settings" || nav === "privacy" || nav === "integrations"
+          ? ""
+          : undefined
+      }
     >
       {/* Which class, for someone who teaches several; a family has one. */}
       {place && nav.startsWith("class:") && org.data.kind !== "family" && (

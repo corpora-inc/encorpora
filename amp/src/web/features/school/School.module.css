@@ -817,8 +817,6 @@ button.copy[data-done="copied"] {
 .settingsPage {
   display: grid;
   gap: var(--space-7);
-  max-width: 880px;
-  margin-inline: auto;
 }
 .settingsPage > :first-child {
   margin-bottom: calc(-1 * var(--space-4));
