@@ -1,0 +1,240 @@
+/* Account: Sign-in, Learners, Billing, Privacy (docs/design/ia.md).
+   One page geometry with the rest of the app: the content width, one left
+   edge, a reading column for settings. Rows with hairlines, never cards.
+   Legacy element rules (style.css, theme.css) style bare buttons, headings
+   and labels; every rule here sets its element fully so they never leak. */
+.page {
+  --gutter: var(--space-4);
+  --page-top: var(--space-5);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--width-content-wide);
+  margin-inline: auto;
+  color: var(--color-on-surface);
+}
+@media (min-width: 768px) {
+  .page {
+    --gutter: var(--space-6);
+    --page-top: var(--space-6);
+  }
+}
+/* The padding sits on the column: legacy `.shell` rules reset a section's. */
+.column {
+  --column-gap: var(--space-6);
+  display: grid;
+  align-content: start;
+  gap: var(--column-gap);
+  box-sizing: content-box;
+  max-width: 720px;
+  padding: var(--page-top) var(--gutter) var(--space-8);
+}
+@media (max-width: 639px) {
+  .column {
+    --column-gap: var(--space-5);
+  }
+}
+/* A step's way back sits close above the step it leaves. */
+.back {
+  margin-bottom: calc(var(--space-1) - var(--column-gap));
+}
+.back .chevron {
+  stroke: currentColor;
+  margin-inline-end: var(--space-1);
+}
+.head {
+  display: grid;
+  gap: var(--space-2);
+}
+.title {
+  margin: 0;
+  color: inherit;
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-title-min), 7vw, var(--text-heading-1));
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+}
+.title:focus {
+  outline: none;
+}
+.lede {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+  line-height: 1.5;
+}
+.section {
+  display: grid;
+  gap: var(--space-3);
+}
+/* Doubled: the legacy `.shell :is(h2, h3)` rule sets a bold sans. */
+.page .sectionTitle.sectionTitle {
+  margin: 0;
+  color: inherit;
+  font-family: var(--font-display);
+  font-size: var(--text-heading-2);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+/* Rows: one per learner, method or choice. */
+.list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-border);
+}
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+  min-height: 64px;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.rowText {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.rowTitle {
+  margin: 0;
+  color: var(--color-on-surface);
+  font-family: inherit;
+  font-size: var(--text-body);
+  font-weight: 650;
+  letter-spacing: 0;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+.rowMeta {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.45;
+  font-variant-numeric: var(--numeric);
+}
+.rowMeta strong {
+  color: var(--color-on-surface);
+  font-weight: 600;
+}
+.rowActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-2);
+}
+/* On a phone the action goes under the words, at its own width. */
+@media (max-width: 479px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rowActions {
+    justify-content: flex-start;
+  }
+}
+.paused {
+  color: var(--color-on-warning);
+}
+
+/* A whole row that opens something: a link or a button, with a chevron. */
+.linkRow {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: 64px;
+  margin: 0 calc(-1 * var(--space-3));
+  padding: var(--space-3);
+  width: calc(100% + 2 * var(--space-3));
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-on-surface);
+  font: inherit;
+  text-align: start;
+  text-decoration: none;
+  cursor: pointer;
+}
+.linkRow:hover {
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface);
+}
+.linkRow:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
+.chevron {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--color-muted-text);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.linkItem {
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* A learner's settings, opened under their row. */
+.detail {
+  display: grid;
+  gap: var(--space-4);
+  padding: 0 0 var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+}
+.detailActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+}
+.danger {
+  color: var(--color-on-danger);
+}
+.quietLine {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.45;
+}
+.footActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.reserve {
+  height: 64px;
+  border-radius: var(--radius-control);
+}
+.chevronOpen {
+  rotate: 90deg;
+}
+.prose {
+  margin: 0;
+  max-width: 62ch;
+  font-size: var(--text-body);
+  line-height: 1.55;
+}
+.renameForm,
+.addForm {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 420px;
+}
+.addForm {
+  padding-top: var(--space-2);
+}
+.fieldLabel {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  font-size: var(--text-label);
+  font-weight: 600;
+}

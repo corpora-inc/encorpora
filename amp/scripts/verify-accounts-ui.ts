@@ -330,7 +330,7 @@ try {
   await sibling.getByRole("link", { name: "Account", exact: true }).click();
   await sibling
     .getByRole("navigation", { name: "Account" })
-    .getByRole("link", { name: "Family", exact: true })
+    .getByRole("link", { name: "Learners", exact: true })
     .click();
   await sibling
     .getByRole("button", { name: "Add learner", exact: false })
@@ -347,7 +347,7 @@ try {
   // Session rotation must update AMP's in-memory API bearer token too.
   await page
     .getByRole("navigation", { name: "Account" })
-    .getByRole("link", { name: "Family", exact: true })
+    .getByRole("link", { name: "Learners", exact: true })
     .click();
   await page.getByRole("button", { name: "Add learner", exact: false }).click();
   await page.getByRole("textbox", { name: "Name", exact: true }).fill("Maya");

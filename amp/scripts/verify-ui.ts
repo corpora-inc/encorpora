@@ -1015,9 +1015,9 @@ try {
   await page.getByRole("link", { name: "Account", exact: true }).click();
   await page
     .getByRole("navigation", { name: "Account" })
-    .getByRole("link", { name: "Family", exact: true })
+    .getByRole("link", { name: "Learners", exact: true })
     .click();
-  await page.getByRole("heading", { name: "Family", exact: true }).waitFor();
+  await page.getByRole("heading", { name: "Learners", exact: true }).waitFor();
   assert.deepEqual(errors, []);
   console.log(
     "Browser learning, hint, attempt, lesson and progress flows passed at desktop and phone widths.",

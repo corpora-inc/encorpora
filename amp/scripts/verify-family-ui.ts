@@ -181,7 +181,7 @@ try {
   // The Account group's tabs: Family, Billing and Privacy (and Profile &
   // sign-in), links in the app frame's bar.
   const tabNames: Record<string, string> = {
-    Learners: "Family",
+    Learners: "Learners",
     Access: "Billing",
     Privacy: "Privacy",
   };

@@ -141,7 +141,8 @@
   grid-column: 1;
   grid-row: 1;
 }
-.shell.family-shell .family-center p {
+/* Low specificity: Account's own components set their text colors. */
+:where(.shell.family-shell .family-center) p {
   color: var(--color-muted-text);
 }
 .shell .go-button,

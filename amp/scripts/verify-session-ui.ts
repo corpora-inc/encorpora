@@ -293,7 +293,7 @@ try {
       await page.getByRole("link", { name: "Account", exact: true }).click();
       await page
         .getByRole("navigation", { name: "Account" })
-        .getByRole("link", { name: "Family", exact: true })
+        .getByRole("link", { name: "Learners", exact: true })
         .click();
       await held;
       await page

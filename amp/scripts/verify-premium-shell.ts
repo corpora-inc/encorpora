@@ -377,7 +377,7 @@ try {
       await ready(page);
       await contrast(
         page,
-        "[data-app-bar] [data-tab],.family-center h2,.family-center h3,.account-label,.family-body button:not(:disabled)",
+        "[data-app-bar] [data-tab],.family-center h2,.family-center h3,.account-label,[data-account-body] button:not(:disabled)",
       );
       await page.screenshot({ path: `${shots}/family-${width}-${theme}.png` });
       await fits(page);
