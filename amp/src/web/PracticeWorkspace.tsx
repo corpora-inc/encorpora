@@ -28,6 +28,11 @@ import { linePlotBuildAnswerText } from "../math/line-plot-build";
 import { LinePlotBuildAnswer, LinePlotBuildInput } from "./LinePlotBuildInput";
 import { UnitSquareMarkingInput } from "./UnitSquareMarkingInput";
 import { normalizeUnitSquareMarking } from "../math/unit-square-marking";
+import { TrendLineFitInput, TrendLineFitAnswer } from "./TrendLineFitInput";
+import {
+  trendLineAnswerText,
+  trendLineDiagnosis,
+} from "../math/trend-line-fit";
 import { shapeAnswerText, shapeFeedbackSummary } from "../math/shape-composer";
 import { ShapeComposerInput, ShapeComposerAnswer } from "./ShapeComposerInput";
 import {
@@ -308,6 +313,8 @@ export function PracticeWorkspace(props: Props) {
     problem.response.kind === "equal-addends" ? problem.response : null;
   const counters =
     problem.response.kind === "counter-builder" ? problem.response : null;
+  const trend =
+    problem.response.kind === "trend-line-fit" ? problem.response : null;
   const shapes =
     problem.response.kind === "shape-composer" ? problem.response : null;
   const [shapeStep, setShapeStep] = useState({ id: problem.id, index: 0 });
@@ -344,6 +351,7 @@ export function PracticeWorkspace(props: Props) {
       return equalAddendsAnswerText(problem.response, value);
     if (problem.response.kind === "counter-builder")
       return counterBuilderAnswerText(problem.response, value);
+    if (trend) return trendLineAnswerText(trend, value);
     if (problem.response.kind === "shape-composer")
       return shapeAnswerText(problem.response, value);
     if (problem.response.kind === "point-plot") {
@@ -401,6 +409,7 @@ export function PracticeWorkspace(props: Props) {
   const compact =
     compactQuery &&
     !plot &&
+    !trend &&
     !lineBuild &&
     !parts &&
     !figures &&
@@ -436,6 +445,7 @@ export function PracticeWorkspace(props: Props) {
     };
   }, [!!lineBuild]);
   const editorInDock = sideBySide && (!!work || !!figures);
+  const trendCompact = !!trend && !sideBySide;
   const counterCompact = (!!counters || !!equalAddends) && !sideBySide;
   const counterKey =
     counters && outcome ? parseCounterBuilder(counters, outcome.answer) : null;
@@ -444,6 +454,7 @@ export function PracticeWorkspace(props: Props) {
     scrollFeedback ||
     ((!!plot ||
       !!lineBuild ||
+      !!trend ||
       !!parts ||
       !!figures ||
       !!work ||
@@ -523,6 +534,7 @@ export function PracticeWorkspace(props: Props) {
       choice ||
       plot ||
       lineBuild ||
+      trend ||
       parts ||
       figures ||
       work ||
@@ -599,6 +611,7 @@ export function PracticeWorkspace(props: Props) {
   const reviewInProblem = !!(
     plot ||
     lineBuild ||
+    trend ||
     parts ||
     figures ||
     work ||
@@ -655,7 +668,13 @@ export function PracticeWorkspace(props: Props) {
     };
     update();
     if (counters || equalAddends) host.scrollTop = 0;
-    if (reviewInProblem && !lineBuild && !shapes && !outcome.correct) {
+    if (
+      reviewInProblem &&
+      !lineBuild &&
+      !trend &&
+      !shapes &&
+      !outcome.correct
+    ) {
       const hidden = end() - host.scrollTop - (host.clientHeight - overlap());
       if (hidden > 0)
         host.scrollBy({
@@ -686,6 +705,7 @@ export function PracticeWorkspace(props: Props) {
     !choice &&
     !plot &&
     !lineBuild &&
+    !trend &&
     !parts &&
     !figures &&
     !work &&
@@ -747,6 +767,17 @@ export function PracticeWorkspace(props: Props) {
       return (
         <EqualAddendsAnswerControls
           response={equalAddends}
+          value={outcome ? outcome.response : response}
+          onChange={setResponse}
+          locked={locked}
+          sending={sending}
+          submit={submitAnswer}
+        />
+      );
+    if (trend)
+      return (
+        <TrendLineFitAnswer
+          response={trend}
           value={outcome ? outcome.response : response}
           onChange={setResponse}
           locked={locked}
@@ -1244,7 +1275,7 @@ export function PracticeWorkspace(props: Props) {
                     </span>
                     {support && ` ${capitalize(support)}.`}
                   </small>
-                ) : plot || lineBuild ? (
+                ) : plot || lineBuild || trend ? (
                   // The grid shows the learner's points beside the
                   // correct ones; the sentence stays for screen readers.
                   <small>
@@ -1285,7 +1316,10 @@ export function PracticeWorkspace(props: Props) {
             </ol>
           </Glossary>
         )}
-        {!editorInDock && !counterCompact && progressFeedback()}
+        {!editorInDock &&
+          !counterCompact &&
+          !trendCompact &&
+          progressFeedback()}
       </>
     );
   }
@@ -1402,6 +1436,7 @@ export function PracticeWorkspace(props: Props) {
     !!outcome &&
     !scrollFeedback &&
     !counterCompact &&
+    !trendCompact &&
     ((!outcome.correct && !deferSteps) || showWhy || fullColumn);
   const longAnswer =
     !!outcome &&
@@ -1409,6 +1444,7 @@ export function PracticeWorkspace(props: Props) {
     ((!!work && skipped) ||
       (!plot &&
         !lineBuild &&
+        !trend &&
         !shapes &&
         !equalAddends &&
         !(work && !skipped) &&
@@ -1433,6 +1469,7 @@ export function PracticeWorkspace(props: Props) {
       </span>
     ) : plot ||
       lineBuild ||
+      trend ||
       (work && !skipped) ||
       (parts && (skipped || parts.layout === "table")) ? (
       <span
@@ -1447,9 +1484,14 @@ export function PracticeWorkspace(props: Props) {
               ? skipped
                 ? "The answer is filled in"
                 : "Each row’s answer is ringed"
-              : plot?.connect === "line"
-                ? "The answer is dashed"
-                : "The answer is circled"}
+              : trend
+                ? (!skipped &&
+                    outcome &&
+                    trendLineDiagnosis(trend, outcome.response)) ||
+                  "One good fit is dashed"
+                : plot?.connect === "line"
+                  ? "The answer is dashed"
+                  : "The answer is circled"}
         <span className="sr-only">
           . Answer: {spokenMath(displayResponse(raw))}
         </span>
@@ -1548,6 +1590,7 @@ export function PracticeWorkspace(props: Props) {
       {props.calculator &&
       !plot &&
       !lineBuild &&
+      !trend &&
       !parts &&
       !figures &&
       !work &&
@@ -1634,7 +1677,13 @@ export function PracticeWorkspace(props: Props) {
             </h2>
             {problem.figure &&
               !marking &&
-              (choice || plot || lineBuild || parts || figures || work ? (
+              (choice ||
+              plot ||
+              trend ||
+              lineBuild ||
+              parts ||
+              figures ||
+              work ? (
                 <ChoiceFigure
                   figure={problem.figure}
                   maxHeight={lineBuild ? 900 : undefined}
@@ -1734,6 +1783,16 @@ export function PracticeWorkspace(props: Props) {
               />
             )}
             {!sideBySide && figures && responseEditor()}
+            {trend && (
+              <TrendLineFitInput
+                key={problem.id}
+                response={trend}
+                value={outcome ? outcome.response : response}
+                onChange={setResponse}
+                locked={locked}
+                answer={outcome?.answer}
+              />
+            )}
             {lineBuild && (
               <LinePlotBuildInput
                 key={problem.id}
@@ -1766,7 +1825,7 @@ export function PracticeWorkspace(props: Props) {
             )}
           </div>
           <div className="feedback-spacer" ref={spacer} aria-hidden="true" />
-          {celebrate && (
+          {celebrate && !trend && (
             <div className="practice-celebration" aria-hidden="true">
               <span>✓</span>
             </div>
@@ -1857,20 +1916,22 @@ export function PracticeWorkspace(props: Props) {
           </div>
         )}
       </section>
-      {outcome && (scrollFeedback || counterCompact) && showWhy && (
-        <FocusDialog title="Explanation" close={() => setShowWhy(false)}>
-          {progressFeedback()}
-          <Glossary payload={outcome} texts={outcome.explanation}>
-            <ol className="feedback-steps" aria-label="Explanation">
-              {outcome.explanation.map((step, index) => (
-                <li key={index}>
-                  <MathText text={step} />
-                </li>
-              ))}
-            </ol>
-          </Glossary>
-        </FocusDialog>
-      )}
+      {outcome &&
+        (scrollFeedback || counterCompact || trendCompact) &&
+        showWhy && (
+          <FocusDialog title="Explanation" close={() => setShowWhy(false)}>
+            {progressFeedback()}
+            <Glossary payload={outcome} texts={outcome.explanation}>
+              <ol className="feedback-steps" aria-label="Explanation">
+                {outcome.explanation.map((step, index) => (
+                  <li key={index}>
+                    <MathText text={step} />
+                  </li>
+                ))}
+              </ol>
+            </Glossary>
+          </FocusDialog>
+        )}
       {outcome && props.error && (
         <div className="feedback-navigation-error" role="alert">
           <span>{props.error}</span>

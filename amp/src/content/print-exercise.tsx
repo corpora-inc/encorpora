@@ -9,6 +9,11 @@ import { plotPoints, pointPlotScene } from "../math/point-plot";
 import { LinePlotBuildDrawing } from "../web/LinePlotBuildInput";
 import { counterBuilderScene } from "../math/counter-objects";
 import {
+  trendLineScene,
+  trendPoints,
+  throughTrendPoints,
+} from "../math/trend-line-fit";
+import {
   cardRows,
   draftChoices,
   type MultiPartChoiceResponse,
@@ -519,6 +524,20 @@ export function PrintExerciseBody({
             <p>Addition sentence: ____________________________________</p>
           )}
         </>
+      )}
+      {problem.public.response.kind === "trend-line-fit" && (
+        <SceneFigure
+          medium="print"
+          reveal
+          scene={trendLineScene(problem.public.response, {
+            line: solutions
+              ? throughTrendPoints(
+                  trendPoints(problem.public.response, problem.answer)!,
+                )
+              : undefined,
+            distances: solutions,
+          })}
+        />
       )}
       {problem.public.response.kind === "counter-builder" && (
         <>

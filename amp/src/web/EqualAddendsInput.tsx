@@ -157,6 +157,7 @@ export function EqualAddendsInput({
                   if (direction !== d) {
                     setDirection(d);
                     setGroup(null);
+                    select(0);
                     update({ ...a, addends: [null, null], total: null });
                   }
                 }}

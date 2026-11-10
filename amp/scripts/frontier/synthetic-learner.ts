@@ -139,6 +139,7 @@ export function syntheticProbability(
     template.requiredResponseCapability !== "point-plot-v1" &&
     template.requiredResponseCapability !== "line-plot-build-v1" &&
     template.requiredResponseCapability !== "unit-square-marking-v1" &&
+    template.requiredResponseCapability !== "trend-line-fit-v1" &&
     template.requiredResponseCapability !== "shape-composer-v1" &&
     template.requiredResponseCapability !== "multi-part-choice-v1" &&
     template.requiredResponseCapability !== "equal-addends-v1" &&

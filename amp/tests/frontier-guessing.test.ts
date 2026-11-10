@@ -216,6 +216,7 @@ test("guess chance comes from each family's answer schema and is never understat
     "multi-select-v1": "multi-select",
     "point-plot-v1": "point-plot",
     "line-plot-build-v1": "line-plot-build",
+    "trend-line-fit-v1": "trend-line-fit",
     "shape-composer-v1": "shape-composer",
     "multi-part-choice-v1": "multi-part-choice",
     "multi-part-cards-v1": "multi-part-choice",

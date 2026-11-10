@@ -96,6 +96,7 @@ export function responseGuessChance(response: ProblemResponse): number {
   if (response.kind === "equal-addends") return response.guessChance;
   if (response.kind === "counter-builder")
     return counterBuilderGuessChance(response);
+  if (response.kind === "trend-line-fit") return response.guessChance;
   if (response.kind === "shape-composer") return response.guessChance;
   if (response.kind === "structured-work") return UNKNOWN_CHOICE_GUESS;
   if (response.kind === "choice") return 1 / response.options.length;

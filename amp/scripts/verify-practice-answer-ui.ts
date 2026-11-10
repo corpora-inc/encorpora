@@ -102,6 +102,7 @@ try {
       "point-plot",
       "line-plot-build",
       "counter-builder",
+      "trend-line-fit",
       "equal-addends",
       "multi-part-choice",
       "figure-choice",

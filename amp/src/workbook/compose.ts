@@ -112,6 +112,7 @@ export function minutesFor(
         : response.kind === "point-plot" ||
             response.kind === "equal-addends" ||
             response.kind === "counter-builder" ||
+            response.kind === "trend-line-fit" ||
             response.kind === "shape-composer"
           ? 3
           : response.kind === "multi-select" ||

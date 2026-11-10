@@ -82,6 +82,7 @@ for (const upgrade of [false, true]) {
         "line-plot-build",
         "unit-square-marking",
         "counter-builder",
+        "trend-line-fit",
         "equal-addends",
       ])
         await report(kind, "12");

@@ -327,6 +327,7 @@ export function problemLesson(
     response.kind === "multi-select" ||
     response.kind === "point-plot" ||
     response.kind === "line-plot-build" ||
+    response.kind === "trend-line-fit" ||
     response.kind === "shape-composer" ||
     response.kind === "multi-part-choice" ||
     response.kind === "figure-choice" ||
