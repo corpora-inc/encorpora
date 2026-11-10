@@ -20,6 +20,7 @@ The rules every AMP screen follows, decided 2026-11-10 for the design pass. [The
 One drawer, one place switcher (`PlaceSwitcher`). A person may hold several places. The bar shows the place's tabs and one primary action. Everything rare lives in Settings, a row's overflow menu, or the drawer, never on the place's first tab.
 
 - **The place switcher holds places only:** My practice, each family or class, each school, and Add a place. It never lists practice profiles, "Try a level…", children or students. Children and students are reached from their class: the Map and Students tabs, and the drill-in.
+- **Workbooks, for an adult's own practice,** is an item of the drawer directly under Practice: a workbook is a way to practise (on paper, at your level), not a view of progress. Its pages are a place of their own: the plain bar, no Progress tabs, the drawer item current. A family's and a class's Workbooks stay their tab.
 - **Practice as someone else** is a page (`/me/profiles`) reached from the drawer under My practice. It holds the saved profiles, recently used ones, and "Try a level…". While practicing as a profile, the bar keeps "Back to my own practice".
 - **One tab header per place.** Navigating within a place never swaps in another place's tab bar. A family, a tutor or a lone teacher never lands on a school-level page.
 
@@ -64,6 +65,8 @@ Every setting lives in exactly one place, chosen by its scope: school (or distri
 | Sign-in methods and passkeys | account | Account → Sign-in | — |
 | Consent and the account's own data | account | Account → Privacy | — |
 | Practice profiles | adult | Practice as someone else (`/me/profiles`) | the drawer, under My practice |
+| An adult's own workbooks | adult | Workbooks (`/learners/<own>/workbooks`), its own place | the drawer, directly under Practice |
+| A child's workbooks | family or class | the place's Workbooks tab | — |
 | Show grade numbers, sound, haptics | device | the drawer | — |
 
 **An optional choice always has a way back.** Every segmented control that sets something optional includes None or Off, so a choice can always be undone (terms: None · Semesters · Trimesters · Quarters; standings: Off · Class · School). A picker that only views something (a term in the gradebook, a period on Time) needs no None.
@@ -74,18 +77,18 @@ Each of these is that person's own composition of shared components (rule 6). Th
 
 ### Adult (My practice)
 
-- **First run:** "Myself" → where to begin → straight into practice. They never land on an empty Overview.
-- **Overview (`/me`), day 0:** the centred hero (rule 7). It has the heading "Where you are" and the starting estimate on the scale, large and centred. One sentence ("AMP starts near Algebra 2. Every answer narrows the range.") sits above a prominent Start practicing button. The free problems left and Workbooks sit quietly below.
+- **First run:** "Myself" → the year they were born → straight into practice. The year is always enough: an adult's starts mid-scale and practice finds the level within a few problems. There is no level chooser. They never land on an empty Overview.
+- **Overview (`/me`), day 0:** the centred hero (rule 7). It has the heading "Where you are" and the starting estimate on the scale, large and centred. One sentence ("AMP starts near Algebra 2. Every answer narrows the range.") sits above a prominent Start practicing button. The free problems left sit quietly below.
 - **Overview, with data:** two columns from 1024 px.
   - The left column has the best guess and likely range, then one row per area with its uncertainty bar. Under them sits "How it narrowed".
   - The right column has this week's line with the 12-week strip, then objectives gained.
   - Recent work runs full width below.
-  - The header is the title, with Workbooks as one quiet button beside it. Practice as someone else is in the drawer. A report prints with Cmd+P and a print stylesheet, not a Print button. The bar holds the one Practice button.
+  - The header is the title alone, "Where you are" (with the free problems left as one quiet line). Workbooks and Practice as someone else are in the drawer. A report prints with Cmd+P and a print stylesheet, not a Print button. The bar holds the one Practice button.
 - **Pathways and Inventory:** full width. On day 0 each is a centred hero over the whole curriculum.
-- **Workbooks:** reached from the quiet Workbooks button on Overview. The workbook pages keep the Progress tabs, with Overview marked, and the builder opens in a sheet.
+- **Workbooks:** the drawer item under Practice. The workbook pages are their own place (the plain bar with its Practice, no Progress tabs, the drawer item current); a workbook's page keeps its in-page way back to "Your workbooks", and the builder opens in a sheet.
 - **Lessons** are not a destination of their own. They are reached from Pathways (skill nodes and the skill panel), from practice (Lesson in the feedback) and from Pathways' search. The `/lessons/<id>` reader stays for links. `/lessons` alone opens Pathways, carrying any `?q=` into its search.
 - **Pathways' search is the one search:** skills, lessons and glossary terms, grouped (the semantic search).
-- **The drawer, for an adult:** Practice, Progress (Overview · Pathways · Inventory), Practice as someone else (its own icon), Account. There is no Lessons item.
+- **The drawer, for an adult:** Practice · Workbooks (a book icon) · Progress (Overview · Pathways · Inventory) · Practice as someone else (its own icon) · Account. Exactly one item is current. There is no Lessons item.
 - **Practice as someone else (`/me/profiles`):** saved profiles, recent ones, and "Try a level…", reached from the drawer. It is never in the place switcher.
 - **Account:** Learners lists "Your practice" first. Billing shows the free problems left or the plan.
 
