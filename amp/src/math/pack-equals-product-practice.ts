@@ -215,7 +215,7 @@ function workProblem(seed: string): GeneratedProblem {
     },
     answer,
     workGrading,
-    hint: `The bottom layer is the length times the width. The height is the number of layers. Multiply those, and multiply the three edges. Then compare the two results.`,
+    hint: `This prism is ${l} cubes long, ${w} wide and ${h} high. The bottom layer is the length times the width. The height is the number of layers. Multiply those, and multiply the three edges. Then compare the two results.`,
     explanation: [
       `The bottom layer is $${l} \\times ${w} = ${layer}$ cubes.`,
       `The prism is ${h} cubes high, so it has ${h} layers: $${layer} \\times ${h} = ${volume}$.`,
@@ -290,7 +290,7 @@ function selectProblem(seed: string): GeneratedProblem {
       figure: prismFigure(l, w, h),
     },
     answer: serializeSelection(keyed.map((o) => o.id)),
-    hint: `A product of all three edges counts the cubes, in any grouping. Adding an edge, or stopping after two edges, does not.`,
+    hint: `This prism is ${l} cubes long, ${w} wide and ${h} high. A product of all three edges counts the cubes, in any grouping. Adding an edge, or stopping after two edges, does not.`,
     explanation: [
       `One layer is $${l} \\times ${w} = ${layer}$ cubes, and ${h} layers make $${layer} \\times ${h} = ${volume}$.`,
       `${h} × (${l} × ${w}) is ${h} layers of ${layer}. ${l} × (${w} × ${h}) turns the box onto a ${w} by ${h} face. (${l} × ${h}) × ${w} makes ${w} layers of ${l * h}.`,

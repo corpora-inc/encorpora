@@ -271,7 +271,10 @@ try {
       const context = await browser.newContext({
         viewport: { width: width!, height: height! },
         colorScheme: theme,
+        // A phone draws overlay scrollbars. Without isMobile, Linux Chromium
+        // in CI gives a 320 px stage two 15 px scrollbar gutters no phone has.
         hasTouch: width! < 400,
+        isMobile: width! < 400,
         reducedMotion: "reduce",
       });
       await context.addInitScript("globalThis.__name = (f) => f");

@@ -1114,7 +1114,7 @@ function graphFromFactored(r: Random): Case {
         `So the sketch is: ${correct}`,
         `Check at x = 0: y = ${String(atZero).replace("-", "−")}, which sits ${atZero > 0 ? "above" : atZero < 0 ? "below" : "on"} the axis.`,
       ],
-      hint: "Read each factor's zero and whether its exponent is even. Then use the sign in front to decide whether the right end rises or falls.",
+      hint: `In $y = ${written}$, read each factor's zero and whether its exponent is even. Then use the sign in front to decide whether the right end rises or falls.`,
       tags: ["graph-from-factored-rule"],
     };
   }
