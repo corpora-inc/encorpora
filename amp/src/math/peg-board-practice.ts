@@ -239,7 +239,7 @@ export function generatePegBoard(id: string, seed: string): GeneratedProblem {
         ? ["A square is a rectangle too: it has four square corners."]
         : []),
       copyTask
-        ? `Keep the same side lengths and corners.${allowRotation ? " Turning the whole shape is allowed." : " Move it without turning it."}`
+        ? `Compare each side with the shown shape. The same counts across and down put the ends on matching pegs.${allowRotation ? " You may also turn the whole shape." : " Move it without turning it."}`
         : "Moving or turning the shape does not change its name.",
       "Try this with toothpicks and dough at home.",
     ],

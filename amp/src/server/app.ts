@@ -76,6 +76,7 @@ import {
   normalizeSelection,
 } from "../math/selection-response";
 import { canonicalPointSet, normalizePointPlot } from "../math/point-plot";
+import { normalizeTrendLine, trendLineFeedback } from "../math/trend-line-fit";
 import {
   canonicalMultiPart,
   multiPartFeedback,
@@ -973,60 +974,71 @@ function routes(app: FastifyInstance, options: AppOptions) {
       if (!isValidResponse(problem.public, input.response))
         throw new ApiError(
           400,
-          problem.public.response.kind === "line-plot-build"
-            ? `Place whole counts of Xs only above the displayed numbers, up to ${problem.public.response.maxPerValue} per number`
-            : problem.public.response.kind === "counter-builder"
-              ? "Complete the number sentence with number and sign tiles"
-              : problem.public.response.kind === "choice"
-                ? "Choose one of the displayed answers"
-                : problem.public.response.kind === "shape-composer"
-                  ? "Place pieces from the tray on the grid"
-                  : problem.public.response.kind === "unit-square-marking"
-                    ? "Enter a whole number of square units, such as 12"
-                    : problem.public.response.kind === "multi-select"
-                      ? `Choose ${problem.public.response.selectionCount} of the displayed answers`
-                      : problem.public.response.kind === "point-plot"
-                        ? `Place ${problem.public.response.pointCount} different ${problem.public.response.pointCount === 1 ? "point" : "points"} on the grid`
-                        : problem.public.response.kind === "multi-part-choice"
-                          ? `Choose one of the displayed options for each of the ${problem.public.response.blanks.length} parts`
-                          : problem.public.response.kind === "figure-choice"
-                            ? `Choose one of the displayed ${problem.public.response.noun === "Graph" ? "graphs" : problem.public.response.noun === "Picture" ? "pictures" : "number lines"}`
-                            : problem.public.response.kind === "structured-work"
-                              ? problem.public.response.mode === "order"
-                                ? "Place every step once, in an order"
-                                : "Complete every step with a valid entry"
-                              : "Enter a number, decimal, or fraction such as 3/4",
+          problem.public.response.kind === "trend-line-fit"
+            ? "Place the two handles at different horizontal values on the grid"
+            : problem.public.response.kind === "line-plot-build"
+              ? `Place whole counts of Xs only above the displayed numbers, up to ${problem.public.response.maxPerValue} per number`
+              : problem.public.response.kind === "counter-builder"
+                ? "Complete the number sentence with number and sign tiles"
+                : problem.public.response.kind === "choice"
+                  ? "Choose one of the displayed answers"
+                  : problem.public.response.kind === "shape-composer"
+                    ? "Place pieces from the tray on the grid"
+                    : problem.public.response.kind === "unit-square-marking"
+                      ? "Enter a whole number of square units, such as 12"
+                      : problem.public.response.kind === "multi-select"
+                        ? `Choose ${problem.public.response.selectionCount} of the displayed answers`
+                        : problem.public.response.kind === "point-plot"
+                          ? `Place ${problem.public.response.pointCount} different ${problem.public.response.pointCount === 1 ? "point" : "points"} on the grid`
+                          : problem.public.response.kind === "multi-part-choice"
+                            ? `Choose one of the displayed options for each of the ${problem.public.response.blanks.length} parts`
+                            : problem.public.response.kind === "figure-choice"
+                              ? `Choose one of the displayed ${problem.public.response.noun === "Graph" ? "graphs" : problem.public.response.noun === "Picture" ? "pictures" : "number lines"}`
+                              : problem.public.response.kind ===
+                                  "structured-work"
+                                ? problem.public.response.mode === "order"
+                                  ? "Place every step once, in an order"
+                                  : "Complete every step with a valid entry"
+                                : "Enter a number, decimal, or fraction such as 3/4",
         );
       const response =
         problem.public.response.kind === "peg-board"
           ? normalizePegBoard(problem.public.response, input.response)!
-          : problem.public.response.kind === "line-plot-build"
-            ? normalizeLinePlotBuild(problem.public.response, input.response)!
-            : problem.public.response.kind === "counter-builder"
-              ? normalizeCounterBuilder(
-                  problem.public.response,
-                  input.response,
-                )!
-              : problem.public.response.kind === "shape-composer"
-                ? normalizeShapeAnswer(problem.public.response, input.response)!
-                : problem.public.response.kind === "multi-select"
-                  ? normalizeSelection(problem.public.response, input.response)!
-                  : problem.public.response.kind === "point-plot"
-                    ? normalizePointPlot(
+          : problem.public.response.kind === "trend-line-fit"
+            ? normalizeTrendLine(problem.public.response, input.response)!
+            : problem.public.response.kind === "line-plot-build"
+              ? normalizeLinePlotBuild(problem.public.response, input.response)!
+              : problem.public.response.kind === "counter-builder"
+                ? normalizeCounterBuilder(
+                    problem.public.response,
+                    input.response,
+                  )!
+                : problem.public.response.kind === "shape-composer"
+                  ? normalizeShapeAnswer(
+                      problem.public.response,
+                      input.response,
+                    )!
+                  : problem.public.response.kind === "multi-select"
+                    ? normalizeSelection(
                         problem.public.response,
                         input.response,
                       )!
-                    : problem.public.response.kind === "multi-part-choice"
-                      ? normalizeMultiPart(
+                    : problem.public.response.kind === "point-plot"
+                      ? normalizePointPlot(
                           problem.public.response,
                           input.response,
                         )!
-                      : problem.public.response.kind === "structured-work"
-                        ? normalizeStructuredWork(
+                      : problem.public.response.kind === "multi-part-choice"
+                        ? normalizeMultiPart(
                             problem.public.response,
                             input.response,
                           )!
-                        : input.response;
+                        : problem.public.response.kind === "structured-work"
+                          ? normalizeStructuredWork(
+                              problem.public.response,
+                              input.response,
+                            )!
+                          : input.response;
       const answered = await tx.attemptByProblem(input.problemId);
       if (answered)
         throw new ApiError(409, "This problem has already been answered");
@@ -1110,9 +1122,11 @@ function routes(app: FastifyInstance, options: AppOptions) {
                             pegBoardFeedback(problem.public.response, response),
                           ].filter((s): s is string => s !== null)
                         : []),
-                      ...(problem.public.response.kind === "shape-composer"
-                        ? shapeFeedback(problem.public.response, response)
-                        : []),
+                      ...(problem.public.response.kind === "trend-line-fit"
+                        ? trendLineFeedback(problem.public.response, response)
+                        : problem.public.response.kind === "shape-composer"
+                          ? shapeFeedback(problem.public.response, response)
+                          : []),
                       ...problem.explanation,
                     ],
         answer: problem.answer,

@@ -24,6 +24,7 @@ import "../problem-flag.css";
 import "../point-plot.css";
 import "../line-plot-build.css";
 import "../unit-square-marking.css";
+import "../trend-line-fit.css";
 import "../shape-composer.css";
 import "../multi-part-choice.css";
 import "../figure-choice.css";

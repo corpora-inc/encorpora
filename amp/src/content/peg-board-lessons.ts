@@ -3,9 +3,9 @@ import type { ProblemMethod } from "./problem-lessons";
 import { pegBoardScene } from "../math/peg-board-scene";
 
 export const pegBoardMethod: ProblemMethod = {
-  goal: "Join straight sides to make a closed shape.",
+  goal: "Join sticks to make a shape with no gaps.",
   intuition:
-    "A side is a straight part of a shape. A corner is where two sides meet and turn. Join the sides all the way around, with no gaps or crossings.",
+    "A side is a straight part of a shape. A corner is where two sides meet and turn. A closed shape has no gaps. A square corner fits the corner of a page. A rectangle has 4 sides and 4 square corners. A square is a rectangle with all 4 sides equally long. A triangle has 3 sides. A hexagon has 6 sides. Join the sides without crossings.",
   terms: ["side", "triangle", "square-shape", "rectangle", "hexagon"],
   method: [
     "Tap one peg, then another to place a side. For drawing, you can also drag between pegs.",

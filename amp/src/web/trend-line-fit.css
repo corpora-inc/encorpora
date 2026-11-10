@@ -1,0 +1,208 @@
+.trend-fit {
+  width: 100%;
+  max-width: 520px;
+  margin-inline: auto;
+}
+.trend-instructions {
+  min-height: 3em;
+  margin: 0 0 4px;
+  font-size: 0.85rem;
+  color: var(--color-muted-text);
+}
+.trend-canvas {
+  position: relative;
+  max-width: 100%;
+  margin-inline: auto;
+}
+.trend-canvas > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.trend-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.trend-student-line {
+  stroke: var(--color-figure-warm);
+  stroke-width: 2.5;
+}
+.trend-good-line {
+  stroke: var(--color-figure-ink);
+  stroke-width: 2.5;
+  stroke-dasharray: 7 5;
+}
+.trend-residual {
+  stroke-width: 1.2;
+  opacity: 0.7;
+}
+.trend-residual.student {
+  stroke: var(--color-figure-warm);
+}
+.trend-residual.good {
+  stroke: var(--color-figure-ink);
+  stroke-dasharray: 2 2;
+}
+.trend-handle {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-figure-warm);
+  touch-action: none;
+  cursor: grab;
+  box-shadow: none;
+}
+.trend-handle span {
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  margin: auto;
+  border: 2px solid currentColor;
+  border-radius: 3px;
+  background: var(--color-surface);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+}
+.trend-handle[data-selected="true"] span {
+  outline: 2px solid var(--color-surface);
+  box-shadow: 0 0 0 4px var(--color-figure-warm);
+}
+.trend-handle:focus-visible {
+  outline: 2px solid var(--color-figure-accent);
+  outline-offset: 1px;
+}
+.trend-coordinate {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--color-surface);
+  color: var(--color-figure-ink);
+  border: 1px solid var(--color-border);
+  pointer-events: none;
+  font-size: 0.8rem;
+}
+.trend-legend {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  min-height: 28px;
+  font-size: 0.8rem;
+}
+.trend-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.trend-legend i {
+  width: 22px;
+  border-top: 3px solid var(--color-figure-warm);
+}
+.trend-legend .trend-key-good {
+  border-color: var(--color-figure-ink);
+  border-top-style: dashed;
+}
+.trend-tools {
+  display: grid;
+  gap: 8px;
+}
+.trend-tool-space {
+  position: relative;
+}
+.trend-review-note {
+  position: absolute;
+  inset: 0;
+  margin: 8px 0;
+  color: var(--color-on-surface);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.trend-select,
+.trend-nudges {
+  display: grid;
+  gap: 8px;
+}
+.trend-select {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.trend-nudges {
+  grid-template-columns: repeat(4, minmax(44px, 1fr));
+}
+.trend-tools button {
+  min-height: 44px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-surface);
+  color: var(--color-figure-ink);
+  padding: 5px 8px;
+}
+.trend-tools button:focus-visible,
+.trend-table summary:focus-visible {
+  outline: 2px solid var(--color-figure-accent);
+  outline-offset: 2px;
+}
+.trend-tools button[aria-pressed="true"] {
+  border-color: var(--color-figure-accent);
+  box-shadow: inset 0 0 0 1px var(--color-figure-accent);
+}
+.trend-tools button:disabled {
+  opacity: 0.45;
+}
+.trend-select small {
+  display: block;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+.trend-nudges button {
+  font-size: 1.4rem;
+}
+.trend-status {
+  min-height: 4.5em;
+  margin: 8px 0 0;
+  font-size: 0.8rem;
+  color: var(--color-muted-text);
+}
+.trend-table {
+  font-size: 0.8rem;
+}
+.trend-table summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.trend-table table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+.trend-table th,
+.trend-table td {
+  padding: 4px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+  overflow-wrap: normal;
+}
+.trend-answer {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+.trend-answer button {
+  min-height: 44px;
+}
+.trend-answer .choice-submit {
+  flex: 1;
+}
