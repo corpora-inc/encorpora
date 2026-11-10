@@ -1,7 +1,9 @@
 /**
  * Founder review desk. The film plays in the existing live player, embedded
- * same-origin, so this page can read the playback time and seek without
- * editing the player. Grade controls inside the player are hidden.
+ * same-origin. Grade controls inside the player are hidden.
+ *
+ * One score and one feedback box. The box is the review summary. Timestamped
+ * notes already stored stay in the saved review and are not shown or edited.
  *
  *   review.html?id=<film>&list=lab|prod|one
  */
@@ -20,47 +22,12 @@ const $ = <T extends HTMLElement>(tag: string, cls: string, parent: HTMLElement,
   return e;
 };
 
-const clock = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
-const roundT = (s: number) => Math.round(s * 100) / 100;
-
 const params = new URLSearchParams(location.search);
 const id = params.get("id") ?? "";
 const app = document.getElementById("app")!;
 
 function themeNow() {
   return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-}
-
-type LiveApi = { time?: () => number; seek?: (t: number) => void; audio?: HTMLAudioElement };
-type LiveWindow = Window & { __live?: LiveApi };
-
-function bridge(frame: HTMLIFrameElement) {
-  const win = frame.contentWindow as LiveWindow | null;
-  const doc = frame.contentDocument;
-  if (!win || !doc) return null;
-  const scrub = doc.querySelector<HTMLInputElement>("input.live-scrub, input[aria-label='Position']");
-  const audio = doc.querySelector("audio") ?? win.__live?.audio ?? null;
-  const api = win.__live;
-  return {
-    time() {
-      if (api?.time) return api.time();
-      if (scrub) return Number(scrub.value) || 0;
-      return audio?.currentTime || 0;
-    },
-    seek(t: number) {
-      if (api?.seek) {
-        api.seek(t);
-        return;
-      }
-      if (scrub) {
-        scrub.value = String(t);
-        scrub.dispatchEvent(new Event("input", { bubbles: true }));
-        scrub.dispatchEvent(new Event("change", { bubbles: true }));
-        return;
-      }
-      if (audio) audio.currentTime = t;
-    },
-  };
 }
 
 function hideGrades(doc: Document) {
@@ -101,6 +68,11 @@ function hasScore(entry: Review | undefined, added: string | undefined) {
   return true;
 }
 
+function keptNotes(raw: unknown): Note[] {
+  if (!Array.isArray(raw)) return [];
+  return raw.filter((n): n is Note => !!n && typeof n.t === "number" && typeof n.text === "string");
+}
+
 if (!/^[a-z0-9-]+$/.test(id)) {
   const page = $("main", "panel empty", app);
   $("h1", "panel-title", page, "This review link needs a film.");
@@ -112,7 +84,6 @@ if (!/^[a-z0-9-]+$/.test(id)) {
 
 async function openReview(filmId: string) {
   const review: Review = { score: null, summary: "", notes: [] };
-  let draftT: number | null = null;
   let ready = false;
   let listName = params.get("list") ?? "";
   if (!["lab", "prod", "one"].includes(listName)) {
@@ -174,30 +145,15 @@ async function openReview(filmId: string) {
   $("span", "", ends, "1");
   $("span", "", ends, "10");
 
-  const notesLabel = $<HTMLLabelElement>("label", "block-label", panel, "Notes");
-  notesLabel.htmlFor = "note-draft";
-  const draft = $("div", "draft", panel);
-  const box = $<HTMLTextAreaElement>("textarea", "field", draft);
-  box.id = "note-draft";
-  box.placeholder = "Type while it plays. Enter saves this moment.";
-  box.rows = 2;
-  box.maxLength = 2000;
+  const feedback = $("div", "feedback", panel);
+  const feedbackLabel = $<HTMLLabelElement>("label", "block-label", feedback, "Feedback");
+  feedbackLabel.htmlFor = "feedback";
+  const box = $<HTMLTextAreaElement>("textarea", "field", feedback);
+  box.id = "feedback";
+  box.placeholder = "Anything you notice. A timestamp is fine if it helps.";
+  box.rows = 8;
+  box.maxLength = 4000;
   box.disabled = true;
-  const add = $<HTMLButtonElement>("button", "btn btn-add", draft, "Add");
-  add.type = "button";
-  add.disabled = true;
-  const stamp = $("p", "stamp", panel, "");
-
-  const list = $<HTMLUListElement>("ul", "notes", panel);
-
-  const summaryLabel = $<HTMLLabelElement>("label", "block-label", panel, "Overall note");
-  summaryLabel.htmlFor = "summary";
-  const summary = $<HTMLTextAreaElement>("textarea", "field summary", panel);
-  summary.id = "summary";
-  summary.placeholder = "Optional. One note for the whole film.";
-  summary.rows = 3;
-  summary.maxLength = 4000;
-  summary.disabled = true;
 
   const saveLine = $("div", "save-line", panel);
   saveLine.setAttribute("role", "status");
@@ -206,9 +162,6 @@ async function openReview(filmId: string) {
   const retry = $<HTMLButtonElement>("button", "btn save-retry", saveLine, "Retry");
   retry.type = "button";
   retry.hidden = true;
-
-  const player = () => bridge(frame);
-  const readTime = () => player()?.time() ?? 0;
 
   const paintScore = () => {
     const set = typeof review.score === "number";
@@ -228,17 +181,13 @@ async function openReview(filmId: string) {
     }
   };
 
-  const showStamp = () => {
-    stamp.textContent = draftT === null || !box.value ? "" : `At ${clock(draftT)}`;
-  };
-
   let flight = false;
   let again = false;
 
   const setStatus = (state: "saving" | "saved" | "error" | "idle") => {
     saveLine.classList.toggle("is-bad", state === "error");
     retry.hidden = state !== "error";
-    saveText.textContent = state === "saving" ? "Saving" : state === "saved" ? "Saved" : state === "error" ? "Could not save." : "";
+    saveText.textContent = state === "saving" ? "Saving" : state === "saved" ? "Saved" : state === "error" ? "Could not save." : "\u00a0";
   };
 
   async function flush() {
@@ -315,93 +264,15 @@ async function openReview(filmId: string) {
     }
   });
 
-  const renderNotes = () => {
-    list.replaceChildren();
-    for (const [index, note] of review.notes.entries()) {
-      const li = $<HTMLLIElement>("li", "note", list);
-      const time = $<HTMLButtonElement>("button", "note-time", li, clock(note.t));
-      time.type = "button";
-      time.dataset.t = String(note.t);
-      time.setAttribute("aria-label", `Play from ${clock(note.t)}`);
-      time.onclick = () => player()?.seek(note.t);
-      const edit = $<HTMLButtonElement>("button", "btn btn-quiet note-edit", li, "Edit");
-      edit.type = "button";
-      const del = $<HTMLButtonElement>("button", "btn btn-quiet note-delete", li, "Delete");
-      del.type = "button";
-      const text = $("p", "note-text", li, note.text);
-      edit.onclick = () => {
-        const field = $<HTMLTextAreaElement>("textarea", "field note-edit-field", li);
-        field.value = note.text;
-        field.maxLength = 2000;
-        text.replaceWith(field);
-        field.focus();
-        edit.textContent = "Save";
-        del.textContent = "Cancel";
-        const finish = (keep: boolean) => {
-          if (keep) {
-            const trimmed = field.value.trim();
-            if (!trimmed) review.notes.splice(index, 1);
-            else review.notes[index] = { ...note, text: trimmed };
-            void flush();
-          }
-          renderNotes();
-        };
-        edit.onclick = () => finish(true);
-        del.onclick = () => finish(false);
-        field.addEventListener("keydown", (e) => {
-          if (e.key === "Enter" && !e.shiftKey && !e.isComposing) {
-            e.preventDefault();
-            finish(true);
-          } else if (e.key === "Escape") {
-            e.preventDefault();
-            finish(false);
-          }
-        });
-      };
-      del.onclick = () => {
-        review.notes.splice(index, 1);
-        renderNotes();
-        void flush();
-      };
-    }
-  };
-
-  const commitDraft = () => {
-    const text = box.value.trim();
-    if (!text) return;
-    const t = roundT(draftT ?? readTime());
-    review.notes.push({ t, text });
-    review.notes.sort((a, b) => a.t - b.t);
-    box.value = "";
-    draftT = null;
-    showStamp();
-    renderNotes();
-    void flush();
-  };
-
-  box.addEventListener("beforeinput", () => {
-    if (draftT === null) draftT = readTime();
-  });
+  let textTimer = 0;
   box.addEventListener("input", () => {
-    if (!box.value) draftT = null;
-    showStamp();
-  });
-  box.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" && !e.shiftKey && !e.isComposing) {
-      e.preventDefault();
-      commitDraft();
-    }
-  });
-  add.onclick = () => commitDraft();
-
-  let summaryTimer = 0;
-  summary.addEventListener("input", () => {
-    review.summary = summary.value;
-    window.clearTimeout(summaryTimer);
-    summaryTimer = window.setTimeout(() => void flush(), 400);
+    review.summary = box.value;
+    window.clearTimeout(textTimer);
+    textTimer = window.setTimeout(() => void flush(), 400);
   });
 
   paintScore();
+  setStatus("idle");
 
   const names = listName ? [listName] : ["prod", "lab", "one"];
   const noReviews: Record<string, Review> = {};
@@ -436,15 +307,12 @@ async function openReview(filmId: string) {
   if (fresh && stored) {
     review.score = typeof stored.score === "number" ? stored.score : null;
     review.summary = stored.summary ?? "";
-    review.notes = Array.isArray(stored.notes) ? stored.notes.filter((n: Note) => n && typeof n.t === "number" && typeof n.text === "string") : [];
-    summary.value = review.summary;
+    review.notes = keptNotes(stored.notes);
+    box.value = review.summary;
     paintScore();
-    renderNotes();
   }
   ready = true;
   box.disabled = false;
-  add.disabled = false;
-  summary.disabled = false;
 
   const goNext = () => {
     if (!rows.length) return null;
