@@ -216,6 +216,11 @@ export function problemLesson(
   let example = generateProblem(templateId, `${seed}:lesson:0`);
   const repeatsProblem = (p: typeof example) => {
     if (
+      learnerProblem?.public.response.kind === "peg-board" &&
+      p.public.response.kind === "peg-board"
+    )
+      return gradeAnswer(learnerProblem, p.answer);
+    if (
       learnerProblem?.public.response.kind === "shape-composer" &&
       p.public.response.kind === "shape-composer"
     )
@@ -318,6 +323,7 @@ export function problemLesson(
     response.kind === "line-plot-build" ||
     response.kind === "trend-line-fit" ||
     response.kind === "shape-composer" ||
+    response.kind === "peg-board" ||
     response.kind === "multi-part-choice" ||
     response.kind === "figure-choice" ||
     response.kind === "counter-builder" ||

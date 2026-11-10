@@ -3,20 +3,6 @@ import { areaVolumePrintCase } from "../math/area-volume-practice";
 
 /** Each worksheet covers every shape, solid and condition the type assesses. */
 const required: Record<string, string[]> = {
-  "polygon-which-expression": ["which-expression"],
-  "count-then-size-then-check": [
-    "edge-1/2",
-    "edge-1/3",
-    "edge-1/4",
-    "whole-volume",
-    "fraction-volume",
-  ],
-  "net-name-the-solid": [
-    "cube",
-    "rectangular-prism",
-    "triangular-prism",
-    "square-pyramid",
-  ],
   "triangle-area-base-height": [
     "acute",
     "right",
@@ -67,6 +53,22 @@ const required: Record<string, string[]> = {
     "missing-height",
     "diameter",
     "fraction-coefficient",
+  ],
+  // Clause variants: one case kind each, drawn from hundreds of distinct cases.
+  "polygon-show-the-pieces": ["show-the-pieces"],
+  "polygon-which-expression": ["which-expression"],
+  "count-then-size-then-check": [
+    "edge-1/2",
+    "edge-1/3",
+    "edge-1/4",
+    "whole-volume",
+    "fraction-volume",
+  ],
+  "net-name-the-solid": [
+    "cube",
+    "rectangular-prism",
+    "triangular-prism",
+    "square-pyramid",
   ],
   "cone-sphere-volume": [
     "cone",

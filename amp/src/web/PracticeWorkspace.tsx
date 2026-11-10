@@ -35,6 +35,8 @@ import {
 } from "../math/trend-line-fit";
 import { shapeAnswerText, shapeFeedbackSummary } from "../math/shape-composer";
 import { ShapeComposerInput, ShapeComposerAnswer } from "./ShapeComposerInput";
+import { PegBoardInput, PegBoardAnswer } from "./PegBoardInput";
+import { pegBoardAnswerText, pegBoardFeedback } from "../math/peg-board";
 import {
   counterBuilderAnswerText,
   parseCounterBuilder,
@@ -310,6 +312,8 @@ export function PracticeWorkspace(props: Props) {
     problem.response.kind === "trend-line-fit" ? problem.response : null;
   const shapes =
     problem.response.kind === "shape-composer" ? problem.response : null;
+  const pegs = problem.response.kind === "peg-board" ? problem.response : null;
+  const [pegReset, setPegReset] = useState(0);
   const [shapeStep, setShapeStep] = useState({ id: problem.id, index: 0 });
   const shapeStage = shapeStep.id === problem.id ? shapeStep.index : 0;
   const setShapeStage = (index: number) =>
@@ -338,6 +342,7 @@ export function PracticeWorkspace(props: Props) {
       ? problem.figure.scene
       : null;
   const displayResponse = (value: string) => {
+    if (pegs) return pegBoardAnswerText(pegs, value);
     if (problem.response.kind === "line-plot-build")
       return linePlotBuildAnswerText(problem.response, value);
     if (problem.response.kind === "counter-builder")
@@ -406,6 +411,7 @@ export function PracticeWorkspace(props: Props) {
     !figures &&
     !work &&
     !counters &&
+    !pegs &&
     !shapes;
   // Side by side (practice-tablet.css), the feedback sheet has its own
   // column; stacked, it covers the dock only, so a plotted answer's grid and
@@ -437,6 +443,7 @@ export function PracticeWorkspace(props: Props) {
   const editorInDock = sideBySide && (!!work || !!figures);
   const trendCompact = !!trend && !sideBySide;
   const counterCompact = !!counters && !sideBySide;
+  const pegCompact = !!pegs && !sideBySide;
   const counterKey =
     counters && outcome ? parseCounterBuilder(counters, outcome.answer) : null;
   const scrollFeedback = editorInDock || shortLinePlot;
@@ -450,6 +457,7 @@ export function PracticeWorkspace(props: Props) {
       !!work ||
       !!marking ||
       !!counters ||
+      !!pegs ||
       !!shapes) &&
       !sideBySide);
   // Side by side, the sheet has the answer column's full height, so the
@@ -529,6 +537,7 @@ export function PracticeWorkspace(props: Props) {
       work ||
       marking ||
       counters ||
+      pegs ||
       shapes
     )
       prompt.current?.focus({ preventScroll: true });
@@ -698,6 +707,7 @@ export function PracticeWorkspace(props: Props) {
     !figures &&
     !work &&
     !counters &&
+    !pegs &&
     !shapes;
   const caret = useKeypadCaret(input);
   function key(value: string) {
@@ -750,6 +760,20 @@ export function PracticeWorkspace(props: Props) {
     props.submit();
   }
   function answerControls(includeContext = false) {
+    if (pegs)
+      return (
+        <PegBoardAnswer
+          response={pegs}
+          value={outcome ? outcome.response : response}
+          reset={() => {
+            setResponse(JSON.stringify({ sticks: pegs.given }));
+            setPegReset((n) => n + 1);
+          }}
+          locked={locked}
+          sending={sending}
+          submit={submitAnswer}
+        />
+      );
     if (trend)
       return (
         <TrendLineFitAnswer
@@ -1196,9 +1220,11 @@ export function PracticeWorkspace(props: Props) {
           <span className="feedback-title">
             {skipped ? (
               <>
-                {shapes
-                  ? "One way to fill the outline."
-                  : answerLine(outcome.answer)}
+                {pegs
+                  ? "One way to build the shape."
+                  : shapes
+                    ? "One way to fill the outline."
+                    : answerLine(outcome.answer)}
                 <small>Skipped. Your progress is unchanged.</small>
               </>
             ) : outcome.correct ? (
@@ -1206,6 +1232,8 @@ export function PracticeWorkspace(props: Props) {
                 Correct
                 {support && <small>{capitalize(support)}</small>}
               </>
+            ) : pegs ? (
+              pegBoardFeedback(pegs, outcome.response)
             ) : shapes ? (
               shapeFeedbackSummary(shapes, outcome.response)
             ) : (
@@ -1288,6 +1316,7 @@ export function PracticeWorkspace(props: Props) {
         {!editorInDock &&
           !counterCompact &&
           !trendCompact &&
+          !pegCompact &&
           progressFeedback()}
       </>
     );
@@ -1406,6 +1435,7 @@ export function PracticeWorkspace(props: Props) {
     !scrollFeedback &&
     !counterCompact &&
     !trendCompact &&
+    !pegCompact &&
     ((!outcome.correct && !deferSteps) || showWhy || fullColumn);
   const longAnswer =
     !!outcome &&
@@ -1415,6 +1445,7 @@ export function PracticeWorkspace(props: Props) {
         !lineBuild &&
         !trend &&
         !shapes &&
+        !pegs &&
         !(work && !skipped) &&
         !(parts && (skipped || parts.layout === "table")) &&
         displayResponse(outcome.answer).length > 24));
@@ -1556,6 +1587,7 @@ export function PracticeWorkspace(props: Props) {
       !parts &&
       !figures &&
       !work &&
+      !pegs &&
       !shapes ? (
         <button
           ref={calculatorToggle}
@@ -1596,6 +1628,7 @@ export function PracticeWorkspace(props: Props) {
         data-line-plot-landscape={shortLinePlot || undefined}
         ref={surface}
         data-counter-compact={counterCompact || undefined}
+        data-peg-compact={pegCompact || undefined}
       >
         {props.toolbarInFrame ? (
           frameTools &&
@@ -1726,6 +1759,23 @@ export function PracticeWorkspace(props: Props) {
                 setStage={setShapeStage}
                 answer={outcome?.answer}
                 skipped={outcome?.skipped}
+              />
+            )}
+            {pegs && (
+              <PegBoardInput
+                key={problem.id}
+                response={pegs}
+                resetKey={pegReset}
+                value={
+                  outcome
+                    ? outcome.skipped
+                      ? outcome.answer
+                      : outcome.response
+                    : response
+                }
+                onChange={setResponse}
+                locked={locked}
+                resolved={!!outcome}
               />
             )}
             {!sideBySide && figures && responseEditor()}
@@ -1863,7 +1913,7 @@ export function PracticeWorkspace(props: Props) {
         )}
       </section>
       {outcome &&
-        (scrollFeedback || counterCompact || trendCompact) &&
+        (scrollFeedback || counterCompact || trendCompact || pegCompact) &&
         showWhy && (
           <FocusDialog title="Explanation" close={() => setShowWhy(false)}>
             {progressFeedback()}

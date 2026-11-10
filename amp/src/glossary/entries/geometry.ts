@@ -3,6 +3,15 @@ import type { GlossaryEntry } from "../types";
 /** Shapes, angles, coordinates, transformations, measurement of figures, proof and study design. */
 export const geometryEntries: GlossaryEntry[] = [
   {
+    id: "hexagon",
+    term: "hexagon",
+    forms: ["hexagon", "hexagons"],
+    plain:
+      "A closed flat shape with 6 straight sides and 6 corners. Its sides do not cross.",
+    uses: ["side", "corner"],
+    band: "K",
+  },
+  {
     id: "aa-similarity",
     term: "AA similarity",
     forms: ["aa similarity", "aa", "angle-angle similarity"],
@@ -84,7 +93,14 @@ export const geometryEntries: GlossaryEntry[] = [
       "In a regular polygon, the distance from the center straight to the midpoint of a side.",
     example:
       "A regular hexagon with sides of 6 has an apothem of $3\\sqrt{3}$, about 5.2.",
-    uses: ["regular-polygon", "distance", "center", "midpoint", "side"],
+    uses: [
+      "regular-polygon",
+      "distance",
+      "center",
+      "midpoint",
+      "side",
+      "hexagon",
+    ],
     band: "geometry",
   },
   {

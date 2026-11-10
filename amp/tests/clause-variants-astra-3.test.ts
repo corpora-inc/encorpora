@@ -88,6 +88,7 @@ test("normal dispatch reaches every clause and mixed-format metadata excludes un
     "counter-builder": "counter-builder-v1",
     "trend-line-fit": "trend-line-fit-v1",
     "shape-composer": "shape-composer-v1",
+    "peg-board": "peg-board-v1",
     "multi-part-choice": "multi-part-choice-v1",
     "figure-choice": "figure-choice-v1",
     "structured-work": "structured-work-v1",
