@@ -11,6 +11,7 @@ import {
 } from "../src/math/scene/index.js";
 import { galleryCases } from "../src/math/scene/gallery.js";
 import { sceneV2Cases } from "../src/math/scene/gallery-v2.js";
+import { thingsCases } from "../src/math/scene/gallery-things.js";
 import {
   coinDiameter,
   sectorAngles,
@@ -72,10 +73,12 @@ test("scenes-v2 is the newest figure capability", () => {
 
 test("every earlier gallery scene stays scenes-v1; the new components need scenes-v2", () => {
   const v2 = new Set(sceneV2Cases.map((c) => c.name));
+  // Things to count came later still (tests/scene-things.test.ts).
+  const v3 = new Set(thingsCases.map((c) => c.name));
   for (const c of galleryCases)
     assert.equal(
       sceneCapability(c.scene),
-      v2.has(c.name) ? "scenes-v2" : "scenes-v1",
+      v3.has(c.name) ? "scenes-v3" : v2.has(c.name) ? "scenes-v2" : "scenes-v1",
       c.name,
     );
   // An unchanged form of an existing component stays scenes-v1.

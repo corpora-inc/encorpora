@@ -11,6 +11,9 @@ import type { Element, Scene } from "./spec";
 const rank: Record<SceneCapability, number> = {
   "scenes-v1": 1,
   "scenes-v2": 2,
+  // Things to count. Not yet in the wire contract (contracts.ts), so no
+  // client declares it and `generateProblemFor` refuses to send one.
+  "scenes-v3": 3,
 };
 export function elementCapability(element: Element): SceneCapability {
   return (
