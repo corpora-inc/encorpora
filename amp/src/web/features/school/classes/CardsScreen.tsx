@@ -3,6 +3,8 @@ import { Link, useParams, useSearch } from "@tanstack/react-router";
 import { useState } from "react";
 import type { IssuedCards } from "../../../../schools/contracts";
 import { Button, buttonClass } from "../../../ui/Button";
+import { PrintButton } from "../../../ui/PrintButton";
+import { downloadPdf, paperFormat } from "../../../lib/pdf-download";
 import { EmptyState } from "../../../ui/EmptyState";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { QrCode, loadQrEncoder } from "../../../ui/QrCode";
@@ -119,9 +121,26 @@ export function CardsScreen() {
             </p>
           </div>
           <div className={styles.toolbarActions}>
-            <Button variant="primary" onClick={() => window.print()}>
+            <PrintButton
+              variant="primary"
+              disabled={!session}
+              download={() =>
+                downloadPdf({
+                  path: `/school/classes/${encodeURIComponent(params.class)}/cards.pdf`,
+                  token: session!.token,
+                  body: {
+                    format: paperFormat(),
+                    cards: issued.cards.map(({ personId, token }) => ({
+                      personId,
+                      token,
+                    })),
+                  },
+                  name: "amp-sign-in-cards.pdf",
+                })
+              }
+            >
               Print
-            </Button>
+            </PrintButton>
             {back}
           </div>
         </header>

@@ -1,9 +1,13 @@
 import type { FastifyInstance } from "fastify";
+import { z } from "zod";
+import { fileName, renderReportPdf } from "../reports/print.js";
+import { signInCardsHtml } from "../reports/sign-in-cards.js";
 import { actorPerson, can } from "./authz.js";
 import {
   joinCardSchema,
   joinLookupSchema,
   joinPictureSchema,
+  SchoolError,
   type SsoProvider,
 } from "./contracts.js";
 import type { SchoolRepository } from "./repository.js";
@@ -51,6 +55,13 @@ export function registerJoinRoutes(
   );
 }
 
+const printCardsSchema = z.strictObject({
+  format: z.enum(["Letter", "A4"]).default("Letter"),
+  cards: z
+    .array(z.strictObject({ personId: z.uuid(), token: z.string().max(64) }))
+    .min(1)
+    .max(1000),
+});
 const classParam = ({ params }: { params: Record<string, string> }) =>
   ({ kind: "class", classId: params.class! }) as const;
 const CLASS = "/api/v1/school/classes/:class";
@@ -101,6 +112,43 @@ export function defineSignInRoutes(define: typeof defineSchoolRoute) {
         request.body,
         actorPerson(actor, target),
       ),
+  });
+  // The cards just made, as a PDF to print and cut. The tokens travel back
+  // in the body (never logged); the PDF is rendered for this request and
+  // never stored.
+  define({
+    method: "POST",
+    url: `${CLASS}/cards.pdf`,
+    action: "signin.manage",
+    target: classParam,
+    bodyLimit: 128 * 1024,
+    handler: async ({ request, reply, target, repository, services }) => {
+      const input = printCardsSchema.parse(request.body);
+      const found = await new SchoolSignIn(repository).cardsToPrint(
+        target.classId,
+        input.cards,
+      );
+      const { html, footer } = signInCardsHtml({
+        paper: input.format,
+        className: found.className,
+        origin: services.origin || `${request.protocol}://${request.host}`,
+        cards: found.cards,
+      });
+      const pdf = await renderReportPdf(
+        services.renderer,
+        { html, format: input.format, footer },
+        request.log,
+        "Sign-in cards",
+      );
+      if (!pdf) throw new SchoolError(503, "report_unavailable", 30);
+      return reply
+        .type("application/pdf")
+        .header(
+          "Content-Disposition",
+          `attachment; filename="${fileName("amp-sign-in-cards", found.className)}.pdf"`,
+        )
+        .send(pdf);
+    },
   });
   define({
     method: "POST",

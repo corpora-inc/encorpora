@@ -1,0 +1,55 @@
+/* A print button and the failure that floats under it, over the page. */
+.anchor {
+  position: relative;
+  display: inline-flex;
+}
+.anchor > button {
+  width: 100%;
+}
+.callout {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  box-sizing: border-box;
+  width: max-content;
+  max-width: min(340px, calc(100vw - 2 * var(--space-4)));
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
+  box-shadow: var(--shadow-overlay);
+  font-size: var(--text-label);
+  font-weight: 400;
+  line-height: 1.45;
+  text-align: left;
+  white-space: normal;
+}
+.callout > span {
+  min-width: 0;
+}
+.dismiss {
+  flex: none;
+  min-width: var(--target-size);
+  min-height: var(--target-size);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-on-surface-raised);
+  font-size: 22px;
+  line-height: 1;
+}
+.dismiss:hover {
+  filter: none;
+  background: var(--color-surface-raised-hover);
+}
+@media print {
+  .callout {
+    display: none;
+  }
+}
