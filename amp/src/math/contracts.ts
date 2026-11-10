@@ -13,6 +13,12 @@ import {
 } from "./shape-composer";
 import { z } from "zod";
 import {
+  pegBoardResponseSchema,
+  normalizePegBoard,
+  gradePegBoard,
+  type PegBoardResponse,
+} from "./peg-board";
+import {
   linePlotBuildResponseSchema,
   linePlotContextSchema,
   normalizeLinePlotBuild,
@@ -297,6 +303,7 @@ export const responseCapabilities = [
   "line-plot-build-v1",
   "unit-square-marking-v1",
   "counter-builder-v1",
+  "peg-board-v1",
 ] as const;
 export type ResponseCapability = (typeof responseCapabilities)[number];
 /** The response and figure families a client declares it can show. */
@@ -382,6 +389,7 @@ export type {
   WorkGrading,
 };
 export type ProblemResponse =
+  | PegBoardResponse
   | ShapeComposerResponse
   | { kind: "number" | "fraction"; label: string }
   | { kind: "choice"; label: string; options: { id: string; label: string }[] }
@@ -964,6 +972,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   ]);
 const choiceIdSchema = z.string().regex(/^option-[a-d]$/);
 export const problemResponseSchema: z.ZodType<ProblemResponse> = z.union([
+  pegBoardResponseSchema,
   shapeComposerResponseSchema,
   z
     .object({
@@ -1095,6 +1104,15 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
           ).reduce((a, b) => a + b, 0) === response.measurementCount)
       );
     if (problem.linePlotContext) return false;
+    if (response.kind === "peg-board")
+      return (
+        !problem.choiceFeedback &&
+        !problem.entryPolicy &&
+        !problem.pointGrading &&
+        !problem.workGrading &&
+        normalizePegBoard(response, problem.answer) === problem.answer &&
+        gradePegBoard(response, problem.answer)
+      );
     if (response.kind === "unit-square-marking")
       return (
         !problem.choiceFeedback &&

@@ -111,6 +111,7 @@ export function minutesFor(
         ? 1 + response.blanks.length
         : response.kind === "point-plot" ||
             response.kind === "counter-builder" ||
+            response.kind === "peg-board" ||
             response.kind === "shape-composer"
           ? 3
           : response.kind === "multi-select" ||

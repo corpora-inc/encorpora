@@ -1,0 +1,200 @@
+.peg-builder {
+  width: 100%;
+  max-width: 40rem;
+  flex: none;
+  margin: var(--space-2) auto;
+  color: var(--color-on-surface);
+}
+.peg-builder .peg-help {
+  margin: 0 0 var(--space-2);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+.peg-workbench {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.peg-board {
+  position: relative;
+  width: 100%;
+  max-width: 290px;
+  aspect-ratio: 1;
+  flex: none;
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-raised);
+  box-shadow: inset 0 0 0 1px var(--color-border-strong);
+}
+.peg-sticks {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+.peg-stick {
+  stroke: var(--color-figure-accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+.peg-stick-hit {
+  stroke: transparent;
+  stroke-width: 44px;
+  pointer-events: stroke;
+  cursor: pointer;
+}
+.peg-builder[data-skin="draw"] .peg-stick {
+  stroke: var(--color-figure-ink);
+  stroke-width: 1.3;
+}
+.peg-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  pointer-events: none;
+}
+.peg-grid [role="row"] {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+.peg-grid [role="gridcell"] {
+  display: grid;
+  place-items: center;
+}
+.peg-grid button {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  touch-action: none;
+  pointer-events: auto;
+}
+.peg-ball {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--color-figure-warm);
+  border: 1.5px solid var(--color-figure-ink);
+  pointer-events: none;
+}
+.peg-grid button[aria-pressed="true"] {
+  border: 2px dashed var(--color-figure-ink);
+  background: var(--color-surface);
+}
+.peg-grid button[aria-pressed="true"] .peg-ball {
+  background: transparent;
+  border-style: dashed;
+}
+.peg-builder button:disabled {
+  opacity: 1;
+  cursor: default;
+}
+.peg-remove {
+  touch-action: manipulation;
+}
+.peg-remove[aria-disabled="true"] .peg-stick-hit {
+  pointer-events: none;
+}
+.peg-remove:focus-visible {
+  outline: none;
+}
+.peg-remove:focus-visible .peg-stick {
+  stroke: var(--color-focus-ring);
+  stroke-width: 5;
+}
+.peg-builder button:focus-visible,
+.peg-board-form button:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 1px;
+}
+.peg-counts {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.peg-counts span {
+  min-width: 5ch;
+}
+.peg-reference {
+  margin: 0;
+  width: 128px;
+  flex: none;
+}
+.peg-reference figcaption {
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+.peg-reference svg {
+  display: block;
+  width: 100%;
+}
+.peg-reference-dot {
+  fill: var(--color-muted-text);
+}
+.peg-reference-side {
+  stroke: var(--color-figure-ink);
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+}
+.peg-board-form {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-3);
+  width: 100%;
+}
+.peg-board-form button {
+  min-height: 44px;
+  white-space: nowrap;
+}
+.practice-surface:has(.peg-builder) .problem-content {
+  flex: none;
+}
+.practice-surface:has(.peg-builder) .problem-stage {
+  scrollbar-gutter: stable;
+}
+.practice-surface[data-peg-compact] .feedback {
+  padding: var(--space-3);
+  gap: var(--space-2);
+}
+.practice-surface[data-peg-compact] .feedback .feedback-head {
+  flex-direction: row;
+  text-align: left;
+  margin: 0;
+}
+.practice-surface[data-peg-compact] .feedback .result-mark {
+  width: 28px;
+  min-width: 28px;
+  height: 28px;
+  font-size: 15px;
+}
+.practice-surface[data-peg-compact] .feedback .feedback-title {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+@media (max-width: 380px) {
+  .practice-surface:has(.peg-builder) {
+    padding-inline: var(--space-2);
+  }
+  .practice-surface:has(.peg-builder) .problem-content {
+    padding-inline: 0;
+  }
+}
