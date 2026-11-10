@@ -838,7 +838,7 @@ export function FamilyCenter({
                       onSubmit={(event) => {
                         event.preventDefault();
                         const name = newName.trim();
-                        if (!name) return;
+                        if (!name || !newBirthYear) return;
                         // An adult may be adding themselves: their own
                         // practice is their own learner, not a family one.
                         if (
@@ -851,9 +851,7 @@ export function FamilyCenter({
                         void action(async () => {
                           await api("/learners", {
                             name,
-                            ...(newBirthYear
-                              ? { birthYear: Number(newBirthYear) }
-                              : {}),
+                            birthYear: Number(newBirthYear),
                           });
                           await refresh();
                           setNewName("");
@@ -880,7 +878,10 @@ export function FamilyCenter({
                           disabled={busy}
                         />
                       </label>
-                      <button disabled={busy || !newName.trim()}>
+                      {/* The birth year sets where practice starts. */}
+                      <button
+                        disabled={busy || !newName.trim() || !newBirthYear}
+                      >
                         Add learner
                       </button>
                       <Sheet
@@ -905,6 +906,8 @@ export function FamilyCenter({
                                   learnerId: string;
                                 }>("/me/practice", {
                                   timezone: deviceTimeZone(),
+                                  // Sets where their own practice starts.
+                                  birthYear: Number(newBirthYear),
                                 });
                                 useLearnerStore.getState().select(learnerId);
                                 rememberPlace(identity, "me");

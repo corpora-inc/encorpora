@@ -61,6 +61,8 @@ const messages: Record<string, string> = {
   consent_withdrawn:
     "Learning is paused for this account. Open Family → Privacy to resume it.",
   starter_unavailable: "Sign in with your own account to start a place.",
+  own_practice_too_young:
+    "Under 13, a parent sets up AMP for you. Ask yours to choose “I’m a parent”.",
   family_class_required: "Your family’s class couldn’t be made. Try again.",
   family_service_unavailable: "Family details could not be loaded. Try again.",
   notice_changed:
