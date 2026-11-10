@@ -5,6 +5,7 @@
  */
 import { z } from "zod";
 import { PLACES } from "./blocks";
+import { isRoleKind, ROLE_KINDS, type RoleKind } from "./voices";
 
 const num = z.number().finite();
 const point = z.tuple([num, num]);
@@ -468,17 +469,21 @@ export const beatSchema = z
     say: z.string().min(1),
     /** Extra silence after this beat, in seconds. */
     pause: num.min(0).max(3).optional(),
-    /** Who says it: a role of the lesson's `cast`. Default: the first role. */
-    speaker: z.enum(["teacher", "learner", "narrator"]).optional(),
+    /** Who says it: a speaker key of the lesson's `cast`. Default: the first speaker. */
+    speaker: z.string().regex(/^[a-z][a-z0-9-]{0,40}$/).optional(),
     do: z.array(actionSchema).optional(),
   })
   .strict();
 export type Beat = z.infer<typeof beatSchema>;
 
-/** Screenplays declare roles; voice selection belongs to the production binding. */
-export const roleSchema = z.object({}).strict();
-export const speakerRoles = ["teacher", "learner", "narrator"] as const;
-export type SpeakerRole = (typeof speakerRoles)[number];
+/** Screenplays declare speakers. Voice selection belongs to the production binding. */
+export const castEntrySchema = z.object({
+  /** Role kind. Omitted when the speaker key is itself a kind (`teacher`, `learner`, `narrator`). */
+  kind: z.enum(ROLE_KINDS).optional(),
+}).strict();
+export const speakerRoles = ROLE_KINDS;
+export type SpeakerRole = RoleKind;
+const speakerKey = z.string().regex(/^[a-z][a-z0-9-]{0,40}$/);
 
 export const shotSchema = z
   .object({
@@ -496,14 +501,33 @@ export const scriptSchema = z
     /** Seed of the worked example shown by figure {example: true}. */
     seed: z.string().optional(),
     /**
-     * The cast, in order: role → {}. The first role speaks every beat with
-     * no `speaker`. A lesson without a cast is read by the narrator. Roles
-     * choose who speaks; their names are not drawn on the picture.
+     * Speakers, in order: speaker key → { kind }. The first speaker says every
+     * beat with no `speaker`. A key that is itself a role kind may omit `kind`.
+     * A lesson without a cast is read by the narrator. Names are not drawn.
      */
-    cast: z.partialRecord(z.enum(speakerRoles), roleSchema).optional(),
+    cast: z.record(speakerKey, castEntrySchema).optional(),
     shots: z.array(shotSchema).min(1),
   })
-  .strict();
+  .strict()
+  .superRefine((script, ctx) => {
+    const cast = script.cast ?? {};
+    const keys = Object.keys(cast);
+    for (const key of keys) {
+      const entry = cast[key]!;
+      if (!entry.kind && !isRoleKind(key))
+        ctx.addIssue({ code: "custom", message: `cast.${key} needs a role kind`, path: ["cast", key] });
+    }
+    script.shots.forEach((shot, si) => shot.beats.forEach((beat, bi) => {
+      if (!beat.speaker) return;
+      const known = keys.length ? Object.hasOwn(cast, beat.speaker) : isRoleKind(beat.speaker);
+      if (!known)
+        ctx.addIssue({
+          code: "custom",
+          message: `speaker "${beat.speaker}" is not in the cast`,
+          path: ["shots", si, "beats", bi, "speaker"],
+        });
+    }));
+  });
 export type Script = z.infer<typeof scriptSchema>;
 
 export type WordTime = { text: string; start: number; end: number };

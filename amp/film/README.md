@@ -53,11 +53,18 @@ Production output defaults to `~/.local/share/amp-film/films`, voice cache to
 `FILM_VOICES` and `FILM_LOCKS`; `--out` overrides a render's output root.
 Keep all generated media, timing, caches and review records outside Git.
 
-Screenplays use `teacher`, `learner` and `narrator` roles. The
-[cast table](cast.ts) binds teachers to Madeline or Paul and learners to Champ.
-The film ID chooses a stable default teacher. Use `--voice teacher=paul`
-for an explicit edition; exact voice IDs are saved with timing so playback
-uses the recorded voice. Solo films retain their narrator behavior.
+Screenplays name speakers. A speaker key maps to a role kind (`teacher`,
+`learner`, `narrator`; the list lives in [voices.ts](voices.ts) and can grow).
+Keys that are themselves kinds may omit the kind, so existing screenplays stay
+valid. A film may have several speakers of one kind. The
+[voice registry](voices.ts) binds teachers to Madeline or Paul and learners to
+Champ. The film ID chooses a stable default teacher. The learner is Champ, and
+two speakers of one film never share a voice. A film with more speakers of one
+kind than approved voices of that kind still passes `--dry`; voicing fails
+instead of reusing a voice. Use
+`--voice teacher=paul` for an explicit edition; exact voice IDs are saved with
+timing, keyed by speaker key, so playback uses the recorded voice. Solo films
+retain their narrator behavior. Adding a voice is one entry in `voices.ts`.
 
 The optional `critic.py` and `judge.py` tools produce private review reports.
 The former requires `FILM_CRITIC_URL` and `FILM_CRITIC_MODEL`; the latter
