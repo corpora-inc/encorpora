@@ -114,6 +114,14 @@ export const PREVIEW_PERSONAS: readonly PreviewPersona[] = [
     home: "/",
   },
   {
+    slug: "teacher-class",
+    group: "Teaching",
+    name: "Elena Marsh",
+    label: "Teacher, licensed class",
+    stage: "A real class of 24, twelve weeks in (no demo bar)",
+    home: "/",
+  },
+  {
     slug: "school",
     group: "Teaching",
     name: "Imogen Hale",

@@ -406,6 +406,20 @@ const seeds: Record<string, (session: Session) => Promise<void>> = {
   teacher: async (session) => {
     await call(session, "POST", "/api/v1/school/demo", { kind: "class" });
   },
+  // The teacher's demo class, made real: what a licensed teacher sees, with
+  // the same twelve weeks, and no demo bar.
+  "teacher-class": async (session) => {
+    const { demo } = await call<{ demo: { orgId: string } }>(
+      session,
+      "POST",
+      "/api/v1/school/demo",
+      { kind: "class" },
+    );
+    await pool.query(
+      "UPDATE amp_orgs SET demo=false,demo_kind=NULL,demo_seen_at=NULL,name='Alder Street School' WHERE id=$1",
+      [demo.orgId],
+    );
+  },
   school: async (session) => {
     await call(session, "POST", "/api/v1/school/demo", { kind: "school" });
   },
