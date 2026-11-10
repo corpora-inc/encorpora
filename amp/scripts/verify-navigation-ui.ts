@@ -898,16 +898,17 @@ try {
   const originalQuestion = await failedMenu
     .locator(".problem-stage .question")
     .textContent();
+  // The menu button says why it cannot open, in a toast over the problem.
   await failedMenu.getByRole("button", { name: "Open AMP menu" }).click();
   await failedMenu
     .getByRole("alert")
     .filter({ hasText: "Your menu could not be loaded" })
     .waitFor();
-  await failedMenu.getByRole("button", { name: "Close AMP menu" }).click();
-  await failedMenu.waitForFunction(
-    () =>
-      document.activeElement?.getAttribute("aria-label") === "Open AMP menu",
-  );
+  await failedMenu.getByRole("button", { name: "Dismiss message" }).click();
+  await failedMenu
+    .getByRole("alert")
+    .filter({ hasText: "Your menu could not be loaded" })
+    .waitFor({ state: "detached" });
   assert.equal(
     await failedMenu.locator(".problem-stage .question").textContent(),
     originalQuestion,
