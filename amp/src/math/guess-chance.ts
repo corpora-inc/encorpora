@@ -4,6 +4,7 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { pointPlotGuessChance } from "./point-plot";
+import { equalAddendsGuessChance, parseEqualAddends } from "./equal-addends";
 import { counterBuilderGuessChance } from "./counter-builder";
 import { multiPartGuessChance } from "./multi-part-choice";
 import { figureChoiceGuessChance } from "./figure-choice";
@@ -21,6 +22,10 @@ const CLAUSE_SEEDS = 64;
  * are rarer than the deterministic sample. Keep these in sync with the
  * generator-variation audit in frontier-guessing.test.ts. */
 const FAMILY_GUESS_FLOOR: Readonly<Record<string, number>> = {
+  // Equivalent power-of-ten results collapse to three distinct values;
+  // a whole-number pattern can likewise have three distinct reasons.
+  "multiply-power-of-ten": 1 / 9,
+  "tens-ones-model": 1 / 9,
   // A random closed walk chooses one of six side counts (3–8). This is an
   // upper bound even for the easiest triangle/count/finish/copy instance.
   "build-shape-sticks-balls": 1 / 6,
@@ -29,6 +34,7 @@ const FAMILY_GUESS_FLOOR: Readonly<Record<string, number>> = {
   // Older clients answer the same family through four picture choices.
   // The family estimator conservatively covers those attempts as well.
   "build-the-number-sentence": 1 / 4,
+  "array-equal-addends-equation": 1 / 4,
   // Clause choices can have three options after duplicate distractors are removed.
   "graphical-solution-table": 1 / 3,
   // A rate of two leaves 3, 3 and 4 choices in the ordered-pair slots.
@@ -98,6 +104,7 @@ export function responseGuessChance(response: ProblemResponse): number {
       1 /
       (response.maxPerValue + 1) ** (response.axis.max - response.axis.min + 1)
     );
+  if (response.kind === "equal-addends") return response.guessChance;
   if (response.kind === "counter-builder")
     return counterBuilderGuessChance(response);
   if (response.kind === "trend-line-fit") return response.guessChance;
@@ -136,11 +143,7 @@ export function guessChance(
   ];
   const known = cache.get(template.id);
   if (known !== undefined) return known;
-  let chance =
-    template.requiredResponseCapability ||
-    template.requiredResponseCapabilities?.length
-      ? UNKNOWN_CHOICE_GUESS
-      : 0;
+  let chance = capabilities.length ? UNKNOWN_CHOICE_GUESS : 0;
   if (byId.has(template.id)) {
     // Admission capabilities describe what old clients can receive, not all
     // current answer forms. Even a typed family can have choice clauses.
@@ -184,6 +187,16 @@ export function guessChanceTable(
 /** One instance's guessing chance, using its private rule where needed. */
 export function problemGuessChance(problem: GeneratedProblem): number {
   const response = problem.public.response;
+  if (response.kind === "equal-addends") {
+    const a = parseEqualAddends(response, problem.answer);
+    return a
+      ? equalAddendsGuessChance({
+          ...response,
+          ...a,
+          orientation: a.rows === a.columns ? "rows" : response.orientation,
+        })
+      : response.guessChance;
+  }
   if (response.kind === "counter-builder")
     return counterBuilderGuessChance(response, problem.answer);
   if (response.kind === "structured-work")

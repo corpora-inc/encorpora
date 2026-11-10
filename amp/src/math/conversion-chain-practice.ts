@@ -1,3 +1,4 @@
+import { withClauseVariants } from "./clause-variants";
 import type { TemplateMetadata } from "./contracts";
 import { defineAxis } from "./variation/axes";
 import {
@@ -135,6 +136,14 @@ export const conversionChain = chainFamily({
 });
 
 export const conversionChainTemplates = [conversionChainTemplate] as const;
-export const conversionChainGenerate = dispatch(conversionChainTemplates, {
-  "conversion-chain-story": (seed) => conversionChain.generate(seed).problem,
-});
+export const conversionChainGenerateLegacy = dispatch(
+  conversionChainTemplates,
+  {
+    "conversion-chain-story": (seed) => conversionChain.generate(seed).problem,
+  },
+);
+
+export const conversionChainGenerate = withClauseVariants(
+  conversionChainTemplates,
+  conversionChainGenerateLegacy,
+);

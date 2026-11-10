@@ -1,3 +1,4 @@
+import { withClauseVariants } from "./clause-variants";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -85,7 +86,7 @@ const places = (n: number) =>
     unit(n % 10, "one", "ones"),
   ].join(", ");
 
-export function generateFactsProblem(
+export function generateFactsProblemLegacy(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
@@ -284,3 +285,8 @@ export function generateFactsProblem(
     explanation,
   };
 }
+
+export const generateFactsProblem = withClauseVariants(
+  factsTemplates,
+  generateFactsProblemLegacy,
+);

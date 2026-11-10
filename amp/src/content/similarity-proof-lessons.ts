@@ -87,6 +87,6 @@ export const similarityProofFacetMappings: FacetMapping[] = [
     facetId: "similarity-proofs.HSG.SRT.B.5",
     extent: "partial",
     rationale:
-      "A two-column proof of AA similarity and one proportion of corresponding sides, built from statement and reason banks that include out-of-order and false statements, filled in or ordered; any valid proof is accepted. Four configurations: a segment perpendicular to a leg of a right triangle, the altitude to the hypotenuse, a segment parallel to a side, and two perpendiculars to the base of an isosceles triangle (base angles, then a rearranged proportion). Does not assess proofs written freely without banks, SAS or SSS similarity, or proofs of the Pythagorean theorem.",
+      "A two-column proof of AA similarity and a proportion of corresponding sides, built from statement and reason banks that include out-of-order and false statements, filled in or ordered; any valid proof is accepted. Configurations include a perpendicular to a right-triangle leg, the altitude to the hypotenuse, a parallel segment, and two perpendiculars to an isosceles triangle's base. Additional reason-selection variants prove the proportional-side converse by SAS similarity and derive the Pythagorean theorem. Does not assess proofs written freely without banks.",
   },
 ];

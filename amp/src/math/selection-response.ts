@@ -1,4 +1,5 @@
 import type { MultiSelectResponse, ProblemResponse } from "./contracts";
+import { equalAddendsAnswerText } from "./equal-addends";
 import { counterBuilderAnswerText } from "./counter-builder";
 import { pegBoardAnswerText } from "./peg-board";
 import { normalizePointPlot, pointPlotAnswerText } from "./point-plot";
@@ -91,6 +92,8 @@ export function joinAnswerLabels(labels: readonly string[]): string {
 export function answerText(response: ProblemResponse, raw: string): string {
   if (response.kind === "line-plot-build")
     return linePlotBuildAnswerText(response, raw);
+  if (response.kind === "equal-addends")
+    return equalAddendsAnswerText(response, raw);
   if (response.kind === "counter-builder")
     return counterBuilderAnswerText(response, raw);
   if (response.kind === "trend-line-fit")

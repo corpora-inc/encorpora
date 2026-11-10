@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { spawnSync } from "node:child_process";
-import { generateProblem } from "../src/math/engine.js";
+import { generateBeforeClauses as generateProblem } from "./helpers/before-clause-variants";
 
 test("similarity oracle reads shared origins and verifies every transformed vertex", () => {
   const cases = Array.from({ length: 256 }, (_, index) =>

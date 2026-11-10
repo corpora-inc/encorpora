@@ -4,7 +4,8 @@ import {
   generatedProblemSchema,
   publicProblemSchema,
 } from "../src/math/contracts";
-import { generateProblem, gradeAnswer, templates } from "../src/math/engine";
+import { gradeAnswer, templates } from "../src/math/engine";
+import { generateBeforeClauses as generateProblem } from "./helpers/before-clause-variants";
 import {
   gradeMultiPart,
   multiPartChoiceResponseSchema,
