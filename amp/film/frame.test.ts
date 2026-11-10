@@ -555,3 +555,110 @@ test("elements stay put unless a motion is authored, and a highlight does not co
     await page.close();
   }
 }, 180_000);
+
+const PHONE = [
+  { width: 390, height: 844 },
+  { width: 412, height: 892 },
+] as const;
+
+/** Times across the whole film, plus the founder's phone frame at 11:31. */
+function phoneSamples(id: string): number[] {
+  const lesson = JSON.parse(readFileSync(path.join(FIX, `${id}.json`), "utf8")) as { timing: { duration: number } };
+  const times: number[] = [];
+  for (let t = 0.4; t <= lesson.timing.duration; t += 2) times.push(Math.round(t * 10) / 10);
+  const at = 11 * 60 + 31;
+  if (at <= lesson.timing.duration + 0.2) times.push(at);
+  return times;
+}
+
+test("on a phone, no text sits behind a card or is cut in half", async () => {
+  const id = "standard-algorithm-rows--aq";
+  const page = await browser.newPage();
+  try {
+    await page.goto(`${origin}/live.html?id=${encodeURIComponent(id)}`, { waitUntil: "domcontentloaded" });
+    await page.waitForSelector(".live.ready", { timeout: 60_000 });
+    const samples = phoneSamples(id);
+    expect(samples).toContain(11 * 60 + 31);
+    for (const view of PHONE) {
+      await page.setViewportSize({ width: view.width, height: view.height });
+      await page.waitForFunction(() => document.querySelector("#film")?.getAttribute("data-layout") === "tall");
+      for (const theme of THEMES) {
+        await page.evaluate((name) => { document.documentElement.dataset.theme = name; }, theme);
+        const bad = await page.evaluate((times) => {
+          const TEXT = ".film-label, .film-prose, .film-math, .film-display, .film-note, .film-stack-cell, .film-line.term > b, .film-line.term > span, .film-choices > span, .film-recap-item > b, .film-recap-item > span, .film-line.watch, .film-line.text";
+          const CARD = ".film-figure, .film-recap-list, .film-line.problem, .film-line.term, .film-line.watch, .film-line.answer";
+          const shown = (el: Element) => {
+            let o = 1;
+            let n: Element | null = el;
+            while (n && n !== document.body) {
+              const cs = getComputedStyle(n);
+              if (cs.display === "none" || cs.visibility === "hidden") return 0;
+              o *= Number.parseFloat(cs.opacity) || 0;
+              if (o < 0.04) return 0;
+              n = n.parentElement;
+            }
+            return o;
+          };
+          const problems: string[] = [];
+          const note = (m: string) => { if (problems.length < 8) problems.push(m); };
+          for (const time of times) {
+            const scrub = document.querySelector<HTMLInputElement>(".live-scrub");
+            if (!scrub) return { problems: ["no scrubber"], recap: 0, first: "" };
+            scrub.value = String(time);
+            scrub.dispatchEvent(new Event("input", { bubbles: true }));
+            const cards = [...document.querySelectorAll<HTMLElement>(CARD)].flatMap((el) => {
+              if (shown(el) < 0.04) return [];
+              const b = el.getBoundingClientRect();
+              if (b.width < 2 || b.height < 2) return [];
+              return [{ el, l: b.left, t: b.top, r: b.right, b: b.bottom }];
+            });
+            for (const el of document.querySelectorAll<HTMLElement>(TEXT)) {
+              if (shown(el) < 0.04) continue;
+              const label = (el.textContent ?? "").replace(/\s+/g, " ").trim().slice(0, 42);
+              for (const box of el.getClientRects()) {
+                if (box.width < 1 || box.height < 1) continue;
+                let l = box.left, t = box.top, r = box.right, b = box.bottom;
+                let hidden = false, partial = false;
+                let n: HTMLElement | null = el.parentElement;
+                while (n && n !== document.body) {
+                  const cs = getComputedStyle(n);
+                  if (cs.overflowX !== "visible" || cs.overflowY !== "visible") {
+                    const h = n.getBoundingClientRect();
+                    const nl = Math.max(l, h.left), nt = Math.max(t, h.top), nr = Math.min(r, h.right), nb = Math.min(b, h.bottom);
+                    if (box.width - (nr - nl) > 3 || box.height - (nb - nt) > 3) {
+                      if (nr - nl <= 2 || nb - nt <= 2) hidden = true;
+                      else partial = true;
+                    }
+                    l = nl; t = nt; r = nr; b = nb;
+                  }
+                  n = n.parentElement;
+                }
+                if (hidden) continue;
+                if (partial) { note(`cut "${label}" @ ${time}s`); continue; }
+                for (const card of cards) {
+                  if (card.el.contains(el) || el.contains(card.el)) continue;
+                  const ox = Math.min(r, card.r) - Math.max(l, card.l);
+                  const oy = Math.min(b, card.b) - Math.max(t, card.t);
+                  if (ox > 2 && oy > 2) note(`"${label}" behind a card @ ${time}s`);
+                }
+              }
+            }
+          }
+          const scrub = document.querySelector<HTMLInputElement>(".live-scrub");
+          if (scrub) {
+            scrub.value = "691";
+            scrub.dispatchEvent(new Event("input", { bubbles: true }));
+          }
+          const recap = [...document.querySelectorAll(".film-recap-item span")].map((el) => (el.textContent ?? "").replace(/\s+/g, " ").trim());
+          const visible = recap.filter((_, i) => shown(document.querySelectorAll(".film-recap-item span")[i]!) >= 0.04);
+          return { problems, recap: visible.length, first: visible[0] ?? "" };
+        }, samples);
+        expect(bad.problems, `${id} ${view.width} ${theme}`).toEqual([]);
+        expect(bad.recap, `${id} ${view.width} ${theme} recap steps`).toBeGreaterThanOrEqual(5);
+        expect(bad.first, `${id} ${view.width} ${theme} first step`).toMatch(/Ones row/);
+      }
+    }
+  } finally {
+    await page.close();
+  }
+}, 240_000);

@@ -29,6 +29,8 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
 }
+/* A phone holds the figure, the notes and a card in separate bands, so a line is not faded across the edge of one. */
+#film[data-layout="tall"] .film-board { -webkit-mask-image: none; mask-image: none; }
 .film-surface { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
 .film-col {
   position: absolute; top: 0;
@@ -173,8 +175,12 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
 .film-recap-item .katex { font-size: 1.04em; }
 /* math and the punctuation that touches it never split across lines */
 .film-nowrap { white-space: nowrap; }
-/* an upright phone: the recap card sits under the board, a little smaller */
+/* an upright phone: the recap card sits under the notes, a little smaller, and nothing paints outside its band */
 .film-recap-tall .film-recap-list { font-size: 44px; }
+#film[data-layout="tall"] .film-recap { overflow: hidden; }
+/* a card that cannot fit any other way takes the screen, and the picture and the notes step aside */
+#film[data-card-takeover="1"] .film-shot,
+#film[data-card-takeover="1"] .film-board { visibility: hidden; }
 /* a column too narrow for a margin: each note sits under the end of its own line */
 .notes-below .film-line.has-note { padding-bottom: calc(var(--film-math) * 0.98); }
 .notes-below .film-note { top: auto; bottom: 0; transform: none; }
