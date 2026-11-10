@@ -1,3 +1,4 @@
+import { randomUUID } from "node:crypto";
 import type { PoolClient } from "pg";
 import { schoolPictures } from "../schools/contracts.js";
 
@@ -32,4 +33,39 @@ export async function allocatePictureIdentity(
       name: number === 1 ? label : `${label} ${number}`,
     };
   }
+}
+
+/** A family's child with no name: a picture identity ("Fox", "Moon 2") from
+ * the family's own scope and a birth year, owned by the parent's account.
+ * The caller holds the account's learning lock and has checked its consent
+ * state and learner room, in the same transaction. */
+export async function insertUnnamedChild(
+  client: PoolClient,
+  accountId: string,
+  birthYear: number,
+) {
+  const identity = await allocatePictureIdentity(client, `family:${accountId}`);
+  const learner = {
+    id: randomUUID(),
+    name: identity.name,
+    birthYear,
+    namePending: true as const,
+    pictureIdentity: identity.picture,
+  };
+  await client.query(
+    // The time it is written, not the transaction's: several children made
+    // together keep the order they were given in (learners list by it).
+    `INSERT INTO amp_learners(id,account_id,name,birth_year,name_pending,picture_identity,picture_number,identity_scope,created_at)
+     VALUES($1,$2,$3,$4,true,$5,$6,$7,clock_timestamp())`,
+    [
+      learner.id,
+      accountId,
+      learner.name,
+      birthYear,
+      identity.picture,
+      identity.number,
+      identity.scope,
+    ],
+  );
+  return learner;
 }

@@ -12,6 +12,7 @@ import { AppError } from "./lib/AppError";
 import { measureAuth } from "./lib/auth-measurement";
 import {
   clearStudentDevice,
+  handedReturnPath,
   handedStudentDevice,
   studentSession,
 } from "./lib/student-device";
@@ -145,9 +146,10 @@ export async function signOut() {
   if (studentSession()) {
     // A child on their parent's device hands it back to the parent.
     const handed = handedStudentDevice();
+    const back = handedReturnPath();
     clearStudentDevice();
     notifyAccountSessionChanged();
-    location.assign(handed ? "/" : "/join");
+    location.assign(handed ? back : "/join");
     return;
   }
   if ((await authConfig()).mode === "accounts") {

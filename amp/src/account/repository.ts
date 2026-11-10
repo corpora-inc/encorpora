@@ -115,9 +115,10 @@ export async function accountSummary(
           orgName: string;
           role: string;
           setupPending: boolean;
+          demo: boolean;
         }>(
           `SELECT DISTINCT ON (o.id) o.id AS "orgId",o.name AS "orgName",r.role,
-         o.setup_pending AND r.role='admin' AS "setupPending"
+         o.setup_pending AND r.role='admin' AS "setupPending",o.demo
        FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
        JOIN amp_orgs o ON o.id=r.org_id AND (o.kind<>'family' OR o.created_by<>$1)
        WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")}
@@ -151,10 +152,11 @@ export async function accountSummary(
         }
       : null,
   };
-  const staffOf = staffRows.rows.map(({ setupPending, ...place }) => ({
+  const staffOf = staffRows.rows.map(({ setupPending, demo, ...place }) => ({
     ...place,
     // Only an admin finishes setup, so only theirs says so.
     ...(setupPending ? { setupPending: true as const } : {}),
+    ...(demo ? { demo: true as const } : {}),
   }));
   const value = {
     signedIn: true as const,
@@ -189,24 +191,21 @@ export async function accountSummary(
           },
         }
       : {}),
-    // Purchase-first enrollment: plan and payment (the verified consent) come
-    // before any learner profile; a paid, unassigned purchase resumes there.
-    // An unconfirmed address does not block the trial; the consent steps ask
-    // for it (`confirmationRequired`), and the server refuses them without it.
+    // A place to open: the family's children or class, the adult's own
+    // practice, or a school. Without one, the account answers the starter
+    // (another family's approval link it opened is not a place: the first
+    // run opens it first). A paid purchase no learner holds yet goes to a
+    // learner first.
     next:
       gift && !unassigned
         ? "accept-gift"
         : active && unassigned
           ? "add-learner"
-          : learners.some((l) => l.entitlement.active)
+          : learners.length || adult || familyClass || staffOf.length
             ? "practice"
-            : !active
-              ? family.consent.status === "withdrawn"
-                ? "choose-plan"
-                : "try"
-              : !learners.length
-                ? "add-learner"
-                : "choose-plan",
+            : trialRows.rows.length
+              ? "try"
+              : "start",
   };
   return meSchema.parse(value) as SignedInMe;
 }

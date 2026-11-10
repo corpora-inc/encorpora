@@ -1,3 +1,4 @@
+import { canAddStudents } from "./permissions";
 import {
   keepPreviousData,
   useInfiniteQuery,
@@ -552,8 +553,7 @@ export function ClassScreen() {
     });
   const canEdit =
     org?.can?.includes("classes.update") || org?.teaches?.includes(classId);
-  const canAdd =
-    org?.can?.includes("students.add") || org?.teaches?.includes(classId);
+  const canAdd = canAddStudents(org, classId);
   const [notice, setNotice] = useState("");
   const [error, setError] = useState("");
   useLoggedError(error);

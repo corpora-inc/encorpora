@@ -1,7 +1,14 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
-import { templates } from "../src/math/engine";
+import { generateProblem, templates } from "../src/math/engine";
+import { clauseExtensions, clauseProblem } from "../src/math/clause-extensions";
+import {
+  clauseVariants,
+  generateClauseVariant,
+} from "../src/math/clause-variants";
+import { clauseMethods } from "../src/content/clause-methods";
+import { clauseVariantMethods } from "../src/content/clause-variant-methods";
 import { lessons } from "../src/content/lessons";
 import { methods } from "../src/content/problem-methods";
 import {
@@ -250,18 +257,75 @@ test("glossaryFor returns used entries and everything their definitions use", ()
 });
 
 test("problem lessons keep the terms wire shape and carry the glossary they use", () => {
-  for (const template of templates.filter((_, i) => i % 25 === 0)) {
-    const lesson = problemLesson(template.id, "glossary-shape");
+  const check = (
+    lesson: ReturnType<typeof problemLesson>,
+    expected: (typeof methods)[string],
+  ) => {
+    assert.equal(lesson.goal, expected.goal, lesson.templateId);
+    assert.deepEqual(
+      lesson.terms,
+      methodTermDefinitions(expected.terms ?? []).map(({ term, meaning }) => ({
+        term,
+        meaning,
+      })),
+      lesson.templateId,
+    );
     for (const term of lesson.terms) {
-      assert.deepEqual(Object.keys(term), ["term", "meaning"], template.id);
+      assert.deepEqual(
+        Object.keys(term),
+        ["term", "meaning"],
+        lesson.templateId,
+      );
       assert.equal(typeof term.term, "string");
-      assert.ok(term.meaning.length > 0, template.id);
+      assert.ok(term.meaning.length > 0, lesson.templateId);
     }
     const ids = new Set(lesson.glossary.map((card) => card.id));
-    for (const term of methods[template.id]?.terms ?? [])
-      assert.ok(ids.has(methodTermId(term)), `${template.id}: ${term}`);
+    for (const term of expected.terms ?? [])
+      assert.ok(ids.has(methodTermId(term)), `${lesson.templateId}: ${term}`);
     for (const card of lesson.glossary)
       for (const id of card.uses) assert.ok(ids.has(id), `${card.id} → ${id}`);
+  };
+  for (const template of templates.filter(
+    (t, i) =>
+      i % 25 === 0 ||
+      [
+        "oblique-triangle-solve",
+        "related-patterns-relationship",
+        "coordinate-terms-slots",
+      ].includes(t.id),
+  )) {
+    // Check the original method and each added clause independently. A clause
+    // teaches its own terms, rather than the terms of a different exercise.
+    const version = clauseVariants[template.id]
+      ? 1
+      : clauseExtensions[template.id]
+        ? template.version - 1
+        : template.version;
+    const cases = [
+      {
+        problem: generateProblem(template.id, "glossary-shape", version),
+        method: methods[template.id]!,
+      },
+      ...(clauseExtensions[template.id]?.variants ?? []).map((clause) => ({
+        problem: clauseProblem(template, "glossary-shape", clause)!,
+        method: clauseMethods[clause]!,
+      })),
+      ...(clauseVariants[template.id] ?? []).map((clause) => ({
+        problem: generateClauseVariant(template, "glossary-shape", clause)!,
+        method: clauseVariantMethods[clause]!,
+      })),
+    ];
+    for (const { problem, method } of cases)
+      check(
+        problemLesson(
+          template.id,
+          "glossary-shape",
+          problem.public.prompt,
+          problem.public.response,
+          problem,
+        ),
+        method,
+      );
   }
   // The meaning a client renders is the glossary definition, example and note.
   const definitions = methodTermDefinitions([

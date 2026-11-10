@@ -1,3 +1,4 @@
+import { touchDemoOfPersonSql } from "./demo/sql.js";
 import type { Pool } from "pg";
 import { z } from "zod";
 import { ACTIVE_STUDENT, activeToday, hashStudentToken } from "./principal.js";
@@ -45,7 +46,7 @@ export async function recordHeartbeat(
   if (!/^st_[A-Za-z0-9_-]{43}$/.test(token)) return false;
   const { rows } = await pool.query(
     `WITH live AS (
-       SELECT s.id,s.last_seen_at AS previous,p.learner_id,p.timezone
+       SELECT s.id,s.person_id,s.last_seen_at AS previous,p.learner_id,p.timezone
        FROM amp_student_sessions s
        JOIN amp_people p ON p.id=s.person_id
        JOIN amp_learners l ON l.id=p.learner_id AND l.deleted_at IS NULL
@@ -72,6 +73,8 @@ export async function recordHeartbeat(
        ON CONFLICT(learner_id,day,surface,skill_id) DO UPDATE SET active_ms=amp_active_days.active_ms+EXCLUDED.active_ms
      ), touched AS (
        UPDATE amp_student_sessions s SET last_seen_at=now() FROM live WHERE s.id=live.id
+     ), demo_seen AS (
+       ${touchDemoOfPersonSql("(SELECT person_id FROM live)")}
      )
      SELECT count(*)::int AS live FROM live`,
     [

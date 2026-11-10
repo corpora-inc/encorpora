@@ -1,6 +1,7 @@
 import { createHash, randomBytes } from "node:crypto";
 import type { PoolClient } from "pg";
 import type { SessionMode } from "./contracts.js";
+import { touchDemoOfPersonSql } from "./demo/sql.js";
 
 /** Who a student is to the rest of AMP: one synthetic account per person, so
  * learner ownership and `transaction()` work unchanged. This module imports
@@ -76,6 +77,8 @@ export async function resolveStudentSession(
      ), touched AS (
        UPDATE amp_student_sessions s SET last_seen_at=now() FROM live
        WHERE s.id=live.id AND s.last_seen_at<now()-interval '5 minutes'
+     ), demo_seen AS (
+       ${touchDemoOfPersonSql("(SELECT person_id FROM live)")}
      )
      SELECT person_id,learner_id,account_id FROM live`,
     [hashStudentToken(token)],

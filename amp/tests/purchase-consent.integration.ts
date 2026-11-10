@@ -1121,16 +1121,16 @@ test(
 );
 
 test(
-  "account next step follows purchase-first enrollment: free trial, then learner after verified payment, then claim",
+  "account next step follows purchase-first enrollment: the starter, then learner after verified payment, then claim",
   enabled,
   async () =>
     fixture(async (f) => {
       const next = async () =>
         accountSummary(f.pool, f.family, "parent", f.repository.namespace);
-      // Without a purchase or consent, the parent gets the free trial.
-      assert.equal((await next()).next, "try");
+      // Without a place, the parent answers the starter.
+      assert.equal((await next()).next, "start");
       const row = await f.checkout();
-      assert.equal((await next()).next, "try");
+      assert.equal((await next()).next, "start");
       assert.equal((await next()).unassignedPurchase, undefined);
       assert.deepEqual(await f.deliver(f.settle(row)), {
         processed: 1,
@@ -1151,6 +1151,12 @@ test(
       const unclaimed = await next();
       assert.equal(unclaimed.next, "add-learner");
       assert.equal(unclaimed.unassignedPurchase?.id, row.id);
+      // The paid plan is that learner's to claim: a second checkout for them
+      // is refused, so nobody pays twice.
+      await assert.rejects(
+        f.billing.checkout("parent", "child", randomUUID(), "year"),
+        /license_ready_for_assignment/,
+      );
       await claimEnrollment(f.billing, "parent", row.id, "child");
       const assigned = await next();
       assert.equal(assigned.next, "practice");
