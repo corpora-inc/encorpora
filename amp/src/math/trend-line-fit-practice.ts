@@ -4,6 +4,7 @@ import { random, shuffle } from "./distribution-practice";
 import {
   makeCloud,
   scatterContexts,
+  yAmount,
   type Cloud,
 } from "./distribution-shape-fit-practice";
 import {
@@ -64,8 +65,8 @@ function surface(c: Cloud): TrendLineFitResponse {
       xStep: c.ctx.xStep,
       yStep: 1,
       yTick: c.ctx.yStep,
-      xLabel: c.ctx.id === "study" ? "Study time (hours)" : c.ctx.xName,
-      yLabel: c.ctx.id === "study" ? "Test score (points)" : c.ctx.yName,
+      xLabel: c.ctx.id === "study" ? "Study time in hours" : c.ctx.xName,
+      yLabel: c.ctx.id === "study" ? "Test score in points" : c.ctx.yName,
     },
   };
 }
@@ -115,7 +116,7 @@ export function generateTrendLineFit(
     `Each dot represents one of ${c.n} ${ctx.members}. Read ${response.grid.xLabel.toLowerCase()} across and ${response.grid.yLabel.toLowerCase()} up.`,
     `The dots ${sign > 0 ? "rise" : "fall"} from left to right, so a fitting line should ${sign > 0 ? "rise" : "fall"} too.`,
     `Place the line through the middle and follow the tilt at both ends. The shown good line has ${above} dots above and ${below} below.`,
-    `A vertical distance is the gap straight up or down from a dot to the line at the same horizontal position. The largest gap here is about ${short(Math.max(...residuals.map(Math.abs)))} ${ctx.yUnit}.`,
+    `A vertical distance is the gap straight up or down from a dot to the line at the same horizontal position. The largest gap here is about ${yAmount(short(Math.max(...residuals.map(Math.abs))), ctx.yUnit)}.`,
     "Other nearby lines also fit well. A trend line models the whole cloud; it does not need to pass through particular dots.",
   ];
   const hint = `Look at all ${c.n} dots from left to right. Put your line through their middle and follow their direction at both ends.`;

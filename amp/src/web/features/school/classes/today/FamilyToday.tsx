@@ -9,9 +9,11 @@ import type {
 import type { AuthSession } from "../../../../auth";
 import { Button, buttonClass } from "../../../../ui/Button";
 import { EmptyState } from "../../../../ui/EmptyState";
+import { Sheet } from "../../../../ui/Sheet";
 import { Toast } from "../../../../ui/Toast";
 import { rememberContinuation } from "../../../continue/memory";
 import { SecondParentInviteSheet } from "../../../second-parent/SecondParent";
+import { JoinClass } from "../../join/JoinClass";
 import { ChildRow, PracticeHere } from "./ChildRow";
 import { Feed, type FeedEntry } from "./Feed";
 import { todoEntries, useChecks } from "./todo-entries";
@@ -29,12 +31,6 @@ const names = (list: readonly string[]) =>
   list.length < 2
     ? (list[0] ?? "")
     : `${list.slice(0, -1).join(", ")} and ${list.at(-1)}`;
-const gradeWords = (grade: number | null) =>
-  grade === null
-    ? "their grade"
-    : grade === 0
-      ? "kindergarten"
-      : `grade ${grade}`;
 
 function dismissedSecondParent(accountId: string) {
   try {
@@ -52,6 +48,7 @@ function dismissedSecondParent(accountId: string) {
 export function FamilyToday({
   data,
   place,
+  code,
   session,
   me,
   secondParent,
@@ -59,6 +56,8 @@ export function FamilyToday({
 }: {
   data: TodayResponse;
   place: { org: string; class: string };
+  /** The class code, for the one Join element. */
+  code: string | null;
   session: AuthSession;
   me: SignedInMe | undefined;
   /** The family's second parent; undefined unless this is its holder. */
@@ -74,6 +73,7 @@ export function FamilyToday({
     dismissedSecondParent(session.accountId),
   );
   const [inviting, setInviting] = useState(false);
+  const [joining, setJoining] = useState(false);
   const holder = me?.familyClass?.classId === place.class;
   const learners: readonly Learner[] = holder
     ? me!.learners
@@ -124,20 +124,9 @@ export function FamilyToday({
     ) : null;
 
   const fresh = data.students.filter((student) => !student.lastActive);
-  const firstSteps: FeedEntry[] = fresh.flatMap((student, index) => {
-    const action = practice(student, index === 0);
-    return action
-      ? [
-          {
-            id: `first:${student.id}`,
-            title: `Let ${student.name} do a first practice here`,
-            detail: `${student.name} starts near ${gradeWords(student.gradeLevel)}, and AMP finds their level from the first answers.`,
-            mark: "plain" as const,
-            actions: action,
-          },
-        ]
-      : [];
-  });
+  // A first practice is each child's own row action ("Let … practice
+  // here"); the feed doesn't repeat it.
+  const firstSteps: FeedEntry[] = [];
   // On a single child's item, the way to practice it now.
   const extra = (todo: TodayTodo) => {
     if (todo.kind === "good-day" || todo.students.length !== 1) return null;
@@ -187,24 +176,22 @@ export function FamilyToday({
         ];
       })
     : [];
-  const cards: FeedEntry[] =
-    fresh.length > 0 && data.canPrint
+  // The real task is getting each child signed in on a device of their
+  // own; printing cards is one way, inside the Join element. Gone once
+  // they've practiced.
+  const signIn: FeedEntry[] =
+    fresh.length > 0 && code
       ? [
           {
-            id: "cards",
-            title: `Print sign-in cards so ${names(fresh.map((student) => student.name))} can practice on their own ${fresh.length === 1 ? "device" : "devices"}`,
+            id: "sign-in",
+            title: `Sign ${names(fresh.map((student) => student.name))} in on ${fresh.length === 1 ? "their own device" : "their own devices"}`,
             detail:
-              "A card signs a child in with one scan. The class code and three pictures work too.",
+              "Scan the class’s QR code, or open its link: each child taps their name and three pictures.",
             mark: "check",
             actions: (
-              <Link
-                to="/school/$org/classes/$class/cards"
-                params={place}
-                search={{}}
-                className={buttonClass("secondary")}
-              >
-                Print cards
-              </Link>
+              <Button variant="secondary" onClick={() => setJoining(true)}>
+                Sign in
+              </Button>
             ),
           },
         ]
@@ -225,7 +212,7 @@ export function FamilyToday({
           },
         ]
       : [];
-  const entries = [...firstSteps, ...todos, ...allowance, ...cards, ...second];
+  const entries = [...firstSteps, ...todos, ...allowance, ...signIn, ...second];
 
   return (
     <>
@@ -275,6 +262,15 @@ export function FamilyToday({
         </section>
       )}
       <WeekFacts week={data.week} family target={data.weeklyTargetMinutes} />
+      {code && (
+        <Sheet
+          open={joining}
+          onOpenChange={setJoining}
+          title="Sign in on their own device"
+        >
+          <JoinClass code={code} place={place} family />
+        </Sheet>
+      )}
       {inviting && (
         <SecondParentInviteSheet
           session={session}

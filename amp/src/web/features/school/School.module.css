@@ -290,6 +290,10 @@ button.copy[data-done="copied"] {
 .copySizer,
 .copyText {
   grid-area: 1 / 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   text-align: center;
 }
 .copySizer {
@@ -397,9 +401,10 @@ button.copy[data-done="copied"] {
   margin-bottom: var(--space-6);
 }
 @media (min-width: 900px) {
+  /* The Join element runs the column; a school class's grading periods sit
+     under it. */
   .classMeta {
-    grid-template-columns: auto minmax(0, 460px);
-    justify-content: space-between;
+    grid-template-columns: minmax(0, 1fr);
     align-items: start;
   }
 }
@@ -825,6 +830,9 @@ button.copy[data-done="copied"] {
   max-width: 880px;
   margin-inline: auto;
 }
+.classSettings > .settingsSection {
+  margin-top: var(--space-7);
+}
 .settingsSection {
   display: grid;
   gap: var(--space-4);
@@ -905,46 +913,4 @@ button.copy[data-done="copied"] {
 .optional {
   color: var(--color-muted-text);
   font-weight: 400;
-}
-.grades {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: var(--space-1);
-  max-width: 420px;
-  padding: var(--space-1);
-  border: 1px solid var(--color-border);
-  border-radius: calc(var(--radius-control) + var(--space-1));
-  background: var(--color-surface-sunken);
-}
-.grade {
-  display: grid;
-  place-items: center;
-  min-width: 44px;
-  min-height: 44px;
-  padding: 0;
-  border: 2px solid transparent;
-  border-radius: var(--radius-control);
-  background: transparent;
-  color: var(--color-on-surface);
-  font: inherit;
-  font-size: var(--text-body);
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  cursor: pointer;
-}
-.grade[data-wide] {
-  grid-column: span 2;
-  font-size: var(--text-label);
-}
-.grade:hover {
-  filter: none;
-  background: var(--color-surface-raised);
-}
-.grade[aria-checked="true"] {
-  border-color: var(--color-primary);
-  background: var(--color-surface-raised);
-}
-.grade:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: 2px;
 }

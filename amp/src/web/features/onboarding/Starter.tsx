@@ -1,6 +1,12 @@
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { Link, Navigate, useNavigate, useParams } from "@tanstack/react-router";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 import { create } from "zustand";
 import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
@@ -27,6 +33,7 @@ import {
   type StarterAnswer,
 } from "./starter-api";
 import { FamilySetup, type SetupKind } from "./setup/FamilySetup";
+import tiles from "../../ui/TileChoice.module.css";
 import styles from "./Starter.module.css";
 
 /** Unsent answers live only in this tab's memory, per account. */
@@ -376,7 +383,8 @@ function Myself({
       <div
         role="radiogroup"
         aria-labelledby="starter-myself"
-        className={styles.yearGrid}
+        className={tiles.grid}
+        style={{ "--tiles-narrow": 4, "--tiles-wide": 8 } as CSSProperties}
       >
         {options.map((option, index) => (
           <button
@@ -388,8 +396,8 @@ function Myself({
             role="radio"
             aria-checked={option.year === picked}
             tabIndex={index === current ? 0 : -1}
-            data-adult={option.label === "Adult" || undefined}
-            className={styles.yearCell}
+            data-span={option.label === "Adult" ? "row" : undefined}
+            className={tiles.tile}
             disabled={busy}
             onClick={() => pick(index, true)}
             onKeyDown={(event) => {

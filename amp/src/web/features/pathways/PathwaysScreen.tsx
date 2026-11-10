@@ -29,6 +29,12 @@ import { useLearnerStore } from "../../learner-store";
 import type { AuthSession } from "../../auth";
 import { gradeName } from "../../Home";
 import { fitScale, LevelRows } from "../../ui/level-range";
+import { useLessonSearch, type SearchResult } from "../../lib/lesson-search";
+import {
+  SearchResults,
+  type SearchActions,
+} from "../search/SearchResults";
+import { useSearchCorpus } from "../search/search-corpus";
 import { strandNames } from "../../BirthYearPrompt";
 import { Graph } from "./Graph";
 import { ConnectionList } from "./ConnectionList";
@@ -289,13 +295,38 @@ export function MapView({
       : "";
   const navigate = useNavigate();
   const { shown } = useCurriculumDetails();
-  const [browse, setBrowse] = useState(false);
+  // Arriving with a search (a link, or /lessons?q=) opens its results.
+  const [browse, setBrowse] = useState(() => urlQuery.trim().length > 0);
   const [lesson, setLesson] = useState<string | null>(null);
   useEffect(() => setLesson(null), [selectedId]);
   const lessonTrigger = useRef<HTMLElement | null>(null);
   const openLesson = (id: string, trigger: HTMLElement) => {
     lessonTrigger.current = trigger;
     setLesson(id);
+  };
+  // The one search (docs/design/ia.md): skills, lessons, films and math
+  // words, grouped, once there is something typed.
+  const searching = query.trim().length > 0;
+  const docs = useSearchCorpus(searching);
+  const found = useLessonSearch(docs, searching ? query.trim() : "", "");
+  const searchActionsFor = (): SearchActions => {
+    const href = (result: SearchResult) =>
+      result.kind === "lesson"
+        ? `/lessons/${encodeURIComponent(result.target)}`
+        : result.kind === "film"
+          ? `/lessons/${encodeURIComponent(result.target)}/watch?from=${encodeURIComponent(window.location.pathname + window.location.search)}`
+          : result.kind === "skill"
+            ? `/pathways/${encodeURIComponent(result.target)}`
+            : `/pathways${window.location.search}`;
+    return {
+      href,
+      open: (result, trigger) => {
+        if (result.kind === "type") openLesson(result.target, trigger);
+        else if (result.kind === "skill") select(result.target);
+        else if (result.kind !== "term")
+          void navigate({ href: href(result) } as never);
+      },
+    };
   };
   const skills = catalog.data?.skills;
   const selected = skills?.find((s) => s.id === selectedId);
@@ -480,8 +511,8 @@ export function MapView({
           <span className="sr-only">Find a skill</span>
           <input
             type="search"
-            aria-label="Find a skill"
-            placeholder="Find a skill…"
+            aria-label="Search skills, lessons and math words"
+            placeholder="Search skills, lessons, math words…"
             maxLength={100}
             value={field.text}
             onFocus={() => setBrowse(true)}
@@ -541,10 +572,19 @@ export function MapView({
                   onChange={(next) => update({ filter: next }, true)}
                 />
               </div>
-              <p className="pathways-muted">
+              {searching && (
+                <div className="pathways-results">
+                  <SearchResults
+                    results={found.results}
+                    pending={found.pending}
+                    actions={searchActionsFor()}
+                  />
+                </div>
+              )}
+              <p className="pathways-muted" hidden={searching}>
                 {filtered.length} skills · select to explore
               </p>
-              <ul className="pathways-skill-list">
+              <ul className="pathways-skill-list" hidden={searching}>
                 {filtered.map((s) => (
                   <li key={s.id}>
                     <Link
@@ -575,8 +615,8 @@ export function MapView({
                   </li>
                 ))}
               </ul>
-              {!filtered.length && (
-                <p>No matching skills. Try another search or grade.</p>
+              {!searching && !filtered.length && (
+                <p>No matching skills. Try another grade.</p>
               )}
             </section>
             <Graph

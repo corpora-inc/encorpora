@@ -382,3 +382,16 @@ h3.text {
 .qr {
   width: 160px;
 }
+
+/* A row of fields judged together (One field style). */
+.fieldRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: start;
+}
+.fieldLabelled {
+  display: grid;
+  gap: var(--space-2);
+  font-weight: 600;
+}

@@ -183,7 +183,7 @@ def cone_or_cavalieri(public):
         base, height = int(cone[1]), int(cone[2])
         require(base * height % 3 == 0, "cone volume")
         return str(base * height // 3)
-    coins = re.search(r"stack of (\d+) coins, each of volume ([0-9.]+) cubic centimeters", prompt)
+    coins = re.search(r"stack of (\d+) coins, each of volume ([0-9.]+) cubic centimeters?", prompt)
     require(coins is not None, "solid prompt")
     count = int(coins[1])
     each = coins[2]
@@ -340,6 +340,11 @@ def self_test():
         "prompt": "A stack of 30 coins, each of volume 1.5 cubic centimeters, is pushed into a slanted stack. What is the volume of the slanted stack, in cubic centimeters?",
     }
     require(solve(coins) == "45", "coins")
+    one = {
+        "templateId": "cavalieri-coin-stack",
+        "prompt": "A stack of 10 coins, each of volume 1 cubic centimeter, is pushed into a slanted stack. What is the volume of the slanted stack, in cubic centimeters?",
+    }
+    require(solve(one) == "10", "one cubic centimeter")
     return 2
 
 

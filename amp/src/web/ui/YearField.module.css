@@ -1,0 +1,45 @@
+/* A birth year field: the shared field style (tokens.css --field-*). */
+.field {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  width: 100%;
+  height: var(--field-height);
+  padding: 0 var(--space-3) 0 var(--field-padding-inline);
+  border: 1px solid var(--field-border);
+  border-radius: var(--field-radius);
+  background: var(--field-surface);
+  color: var(--field-on);
+  font: inherit;
+  font-size: var(--text-body);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  text-align: start;
+  cursor: pointer;
+}
+.field:hover:not(:disabled) {
+  filter: none;
+  border-color: var(--color-on-surface);
+}
+.field[data-empty] > span {
+  color: var(--field-placeholder);
+}
+.field[aria-invalid="true"] {
+  border-color: var(--color-danger-accent);
+}
+.field svg {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.field:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}

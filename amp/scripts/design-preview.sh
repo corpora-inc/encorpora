@@ -15,6 +15,9 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 WEB_PORT="${AMP_WEB_PORT:-4700}"
 API_PORT="${AMP_API_PORT:-4701}"
+RENDER_PORT="${AMP_RENDER_PORT:-4702}"
+# A loopback-only token for the local render service (not a secret).
+RENDER_TOKEN="local-design-preview-render-token-0123456789"
 DB_NAME="${AMP_PREVIEW_DB:-amp_design_pass}"
 PG="postgres://amp:amp@127.0.0.1:55490"
 DB_URL="$PG/$DB_NAME"
@@ -40,9 +43,23 @@ wait_for() {
   done
   echo "Timed out waiting for $1"; return 1
 }
+start_render() {
+  running render && return 0
+  set -m
+  AMP_RENDER_TOKEN="$RENDER_TOKEN" AMP_RENDER_PORT="$RENDER_PORT" AMP_RENDER_HOST=127.0.0.1 \
+    nohup npx tsx src/render-service/main.ts >"$RUN/render.log" 2>&1 &
+  echo $! >"$RUN/render.pid"
+  set +m
+  for _ in $(seq 1 60); do
+    grep -q "render service listening" "$RUN/render.log" 2>/dev/null && return 0
+    sleep 1
+  done
+  echo "The render service did not start; see $RUN/render.log"; return 1
+}
 start_api() {
   running api && return 0
   set -m
+  AMP_RENDER_URL="http://127.0.0.1:$RENDER_PORT" AMP_RENDER_TOKEN="$RENDER_TOKEN" \
   AMP_DATABASE_URL="$DB_URL" AMP_AUTH_MODE=accounts AMP_HOSTED_PILOT_READY=true \
     AMP_ACCOUNTS_URL="$ORIGIN" \
     AMP_ACCOUNTS_SECRET=local-design-preview-secret-0123456789abcdef \
@@ -71,18 +88,19 @@ case "${1:-start}" in
     # The API migrates nothing itself; the seed script does, so run it first
     # against an empty database with the API not yet answering.
     AMP_DATABASE_URL="$DB_URL" npx tsx -e "import('./scripts/migrate.ts').then(m=>m.migrate(process.env.AMP_DATABASE_URL)).then(()=>process.exit(0))"
-    start_api; start_web; seed
+    start_render; start_api; start_web; seed
     echo "Preview: $ORIGIN/dev/personas" ;;
-  stop) stop_one web; stop_one api ;;
-  restart) stop_one web; stop_one api; start_api; start_web; echo "Preview: $ORIGIN/dev/personas" ;;
+  stop) stop_one web; stop_one api; stop_one render ;;
+  restart) stop_one web; stop_one api; stop_one render; start_render; start_api; start_web; echo "Preview: $ORIGIN/dev/personas" ;;
   reseed)
-    stop_one web; stop_one api
+    stop_one web; stop_one api; stop_one render
     psql "$PG/postgres" -c "DROP DATABASE IF EXISTS $DB_NAME WITH (FORCE)" >/dev/null
     psql "$PG/postgres" -c "CREATE DATABASE $DB_NAME" >/dev/null
     "$0" start ;;
   status)
     running api && echo "api up (pid $(cat "$RUN/api.pid"))" || echo "api down"
     running web && echo "web up (pid $(cat "$RUN/web.pid"))" || echo "web down"
+    running render && echo "render up (pid $(cat "$RUN/render.pid"))" || echo "render down"
     echo "logs: $RUN" ;;
   check)
     # Fast health check: no conflict markers, a production build (CSS and
@@ -104,6 +122,7 @@ case "${1:-start}" in
       -d '{"email":"family@personas.amp.test","password":"design pass persona passphrase"}' \
       "$ORIGIN/api/auth/sign-in/email")
     [ "$code" = 200 ] || { echo "FAIL persona sign-in answered $code"; fail=1; }
+    running render || { echo "FAIL the render service is down (PDFs would fall back to HTML)"; fail=1; }
     [ "$fail" = 0 ] && echo "check: healthy" || { echo "check: FAILED"; exit 1; } ;;
   *) echo "start | restart | stop | reseed | status | check"; exit 1 ;;
 esac

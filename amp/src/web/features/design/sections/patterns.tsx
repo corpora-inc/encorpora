@@ -15,6 +15,7 @@ import {
   PageHead,
 } from "../../school/parts";
 import { CodeTiles } from "../../school/join/CodeTiles";
+import { JoinClass } from "../../school/join/JoinClass";
 import { YearRibbon } from "../../school/YearRibbon";
 import { ContactAddress } from "../../support/ContactAddress";
 import { Button } from "../../../ui/Button";
@@ -107,6 +108,26 @@ export function PatternSections() {
             text="https://amp.corpora.inc/join/K7M24Q"
             label="Copy link"
             copied="Link copied"
+          />
+        </Specimen>
+        <Specimen label="Join this class, compact: the code, then one group of equal controls">
+          <JoinClass
+            compact
+            code="K7M24Q"
+            place={{ org: "gallery", class: "gallery" }}
+            family
+            manage
+          />
+        </Specimen>
+        <Specimen label="Join this class, compact, while sign-in is paused">
+          <JoinClass
+            compact
+            code="K7M24Q"
+            place={{ org: "gallery", class: "gallery" }}
+            family={false}
+            boardLink={false}
+            manage
+            locked
           />
         </Specimen>
         <Specimen label="Load failed, with retry">

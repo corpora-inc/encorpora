@@ -130,34 +130,92 @@ export function OwnRecordScreen() {
   // Before the first answer the page's own Start practicing is the one
   // Practice; after, the bar's is (one per screen).
   const hero = !started && data.learner.active;
+  const freeLine = left != null && left > 0 && (
+    <span className={styles.free} data-free-left={left}>
+      {freeProblemsLeft(left)}
+    </span>
+  );
+  const pause = !data.learner.active && (
+    // Paused only when no access covers them and their free problems are
+    // used: the one pause, with Continue with AMP for their own practice.
+    <AllowancePause
+      kind="problems"
+      viewer="adult"
+      learner={{ id: data.learner.id, name: data.learner.name }}
+      compact
+    />
+  );
+  // Day 0 (docs/design/ia.md, rule 7): one centred hero, its Start practicing
+  // the only Practice on screen.
+  if (!started)
+    return (
+      <OwnPage>
+        <HeroAction active={hero} />
+        <div className={styles.stack} data-own-page>
+          {pause}
+          <LevelRangeStart
+            title="Where you are"
+            heading={1}
+            start={level.overall}
+            action={
+              hero ? (
+                <Link
+                  to="/$"
+                  params={{ _splat: "practice" }}
+                  className={buttonClass("primary", styles.start)}
+                >
+                  <svg viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M4.5 2.8v10.4L13 8 4.5 2.8Z" />
+                  </svg>
+                  Start practicing
+                </Link>
+              ) : undefined
+            }
+            secondary={
+              <>
+                {freeLine}
+                <Link
+                  to="/learners/$learnerId/workbooks"
+                  params={{ learnerId: data.learner.id }}
+                  className={styles.quietLink}
+                >
+                  Workbooks
+                </Link>
+              </>
+            }
+          />
+        </div>
+      </OwnPage>
+    );
+  const side = shown.week || shown.objectives;
   return (
     <OwnPage>
-      <HeroAction active={hero} />
-      <div className={styles.stack} data-own-page>
-        {/* Just the title (docs/design/ia.md). Workbooks is a tab of My
-            practice, practicing as someone else is in the drawer, and the
-            page prints itself (Cmd+P). The free count is one quiet line,
-            on a wide screen only. */}
+      <div
+        className={styles.stack}
+        data-own-page
+        data-wide={side ? "" : undefined}
+      >
+        {/* The title, with Workbooks as one quiet button beside it
+            (docs/design/ia.md). Practicing as someone else is in the drawer,
+            the page prints itself (Cmd+P), and the bar holds the one
+            Practice. The free count is one quiet line, on a wide screen. */}
         <header className={styles.titleRow}>
           <h1 id="me-title">Where you are</h1>
-          {left != null && left > 0 && (
-            <span className={styles.free} data-free-left={left}>
-              {freeProblemsLeft(left)}
-            </span>
-          )}
+          <span className={styles.titleTools}>
+            {freeLine}
+            <Link
+              to="/learners/$learnerId/workbooks"
+              params={{ learnerId: data.learner.id }}
+              className={buttonClass("quiet")}
+            >
+              Workbooks
+            </Link>
+          </span>
         </header>
-        {/* Paused only when no access covers them and their free problems
-            are used: the one pause, with Continue with AMP for their own
-            practice. */}
-        {!data.learner.active && (
-          <AllowancePause
-            kind="problems"
-            viewer="adult"
-            learner={{ id: data.learner.id, name: data.learner.name }}
-            compact
-          />
-        )}
-        {started ? (
+        {pause}
+        {/* From 1024 px with something beside it: the level on the left,
+            this week and objectives on the right; one column otherwise. */}
+        <div className={styles.columns}>
           <LevelRange
             title={null}
             labelledBy="me-title"
@@ -170,42 +228,26 @@ export function OwnRecordScreen() {
             }
             decimals={numbersShown}
           />
-        ) : (
-          <LevelRangeStart
-            title={null}
-            labelledBy="me-title"
-            start={level.overall}
-            action={
-              hero ? (
-                <Link
-                  to="/$"
-                  params={{ _splat: "practice" }}
-                  className={buttonClass("primary", styles.practice)}
-                >
-                  <svg viewBox="0 0 16 16" aria-hidden="true">
-                    <path d="M4.5 2.8v10.4L13 8 4.5 2.8Z" />
-                  </svg>
-                  Start practicing
-                </Link>
-              ) : undefined
-            }
-          />
-        )}
-        {/* Their time and work, each part only once it has something to
-            say. Never an empty chart. */}
-        {shown.week && (
-          <section className={teacher.recordSection} data-this-week>
-            <h2>This week</h2>
-            <p className={styles.weekLine}>{shown.week}</p>
-            {shown.weeks && <RecordWeeks record={data.record} />}
-          </section>
-        )}
-        {shown.objectives && (
-          <section className={teacher.recordSection}>
-            <h2>Objectives gained</h2>
-            <RecordObjectives record={data.record} />
-          </section>
-        )}
+          {side && (
+            <div className={styles.side}>
+              {/* Their time and work, each part only once it has something
+                  to say. Never an empty chart. */}
+              {shown.week && (
+                <section className={teacher.recordSection} data-this-week>
+                  <h2>This week</h2>
+                  <p className={styles.weekLine}>{shown.week}</p>
+                  {shown.weeks && <RecordWeeks record={data.record} />}
+                </section>
+              )}
+              {shown.objectives && (
+                <section className={teacher.recordSection}>
+                  <h2>Objectives gained</h2>
+                  <RecordObjectives record={data.record} />
+                </section>
+              )}
+            </div>
+          )}
+        </div>
         {shown.work && (
           <section className={teacher.recordSection}>
             <h2>Recent work</h2>

@@ -17,9 +17,34 @@
 }
 .stack {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-6);
   max-width: 760px;
   margin-inline: auto;
+}
+.columns,
+.side {
+  display: grid;
+  gap: var(--space-6);
+  align-content: start;
+  min-width: 0;
+}
+/* From 1024 px, with this week or objectives to show: two columns across
+   the content width, the level on the left (2fr), the rest beside it. */
+@media (min-width: 1024px) {
+  .stack[data-wide] {
+    max-width: var(--width-content-wide);
+  }
+  .stack[data-wide] .columns {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: var(--space-7);
+  }
+}
+@media (max-width: 599.98px) {
+  .stack,
+  .columns,
+  .side {
+    gap: var(--space-5);
+  }
 }
 /* Just the title; on a wide screen the free count rides quietly at the end
    of its line, on a phone it isn't there at all. */
@@ -37,23 +62,43 @@
   white-space: nowrap;
 }
 @media (max-width: 599.98px) {
-  .free {
+  .titleRow .free {
     display: none;
   }
+}
+/* Day 0's action: prominent, its natural width. */
+.start {
+  min-height: 56px;
+  padding-inline: var(--space-6);
+  font-size: var(--text-heading-3);
+}
+.start svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+.quietLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: var(--space-2);
+  border-radius: var(--radius-small);
+  color: var(--color-primary);
+  font-weight: 650;
+  text-decoration: none;
+}
+.quietLink:hover {
+  background: var(--color-surface-hover);
+}
+.quietLink:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
 }
 .weekLine {
   margin: 0;
   font-size: var(--text-dense);
   font-weight: 600;
   font-variant-numeric: tabular-nums;
-}
-.practice svg {
-  width: 14px;
-  height: 14px;
-  fill: currentColor;
-}
-.practice {
-  padding-inline: var(--space-5);
 }
 
 /* Cmd+P prints the page as a report: ink on white, the level view and the
@@ -83,4 +128,12 @@
   .stack section {
     break-inside: avoid;
   }
+}
+
+/* Beside the title: the free count (wide screens) and Workbooks. */
+.titleTools {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--space-3);
 }

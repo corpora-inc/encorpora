@@ -18,7 +18,9 @@ import { AppError } from "../../../lib/AppError";
 import { meOptions } from "../../../lib/query";
 import { chosenPlan } from "../../../lib/pending-trial";
 import { Button, buttonClass } from "../../../ui/Button";
-import { BirthYearPicker } from "../../../ui/Select";
+import { YearField } from "../../../ui/YearField";
+import { Loading } from "../../../ui/Loading";
+import { JoinClass } from "../../school/join/JoinClass";
 import { TextField } from "../../../ui/TextField";
 import { Toast } from "../../../ui/Toast";
 import { approvalsOptions } from "../../family-approval/api";
@@ -208,24 +210,25 @@ function ChildrenStep({ session, me, kind, index }: StepProps) {
   const label = (at: number) => `Child ${at + 1}`;
   const nameOf = (child: (typeof existing)[number]) =>
     renames[child.id] ?? (child.defaultName ? "" : child.name);
-  // The first thing in the way, said once beneath Next.
+  // What's in the way is said at its own field: a name's problem under the
+  // name, a missing year under the year once Next is asked for.
   let hint = "";
   let invalid = -1;
   const names = [...existing.map(nameOf), ...rows.map((row) => row.name)];
   for (const [at, name] of names.entries()) {
     const problem = childNameProblem(name);
     if (problem) {
-      hint = `${label(at)}: ${problem}`;
+      hint = problem;
       invalid = at;
       break;
     }
   }
-  if (!hint && rows.some((row) => !row.year))
-    hint = "Choose a birth year for each child.";
-  if (!hint && total === 0) hint = "Add a child to continue.";
+  const missingYear = rows.some((row) => !row.year);
+  const [asked, setAsked] = useState(false);
   const setRows = (next: Draft["rows"]) =>
     draft.set(session.accountId, { rows: next, renames });
   const next = async () => {
+    if (missingYear) return setAsked(true);
     if (hint || saving) return;
     setSaving(true);
     setError("");
@@ -283,12 +286,12 @@ function ChildrenStep({ session, me, kind, index }: StepProps) {
       index={index}
       title="Your children"
       lede="A first name or nickname, and the year each was born. The year sets where they start."
-      hint={hint}
       next={
         <Button
           variant="primary"
           aria-busy={saving || undefined}
-          disabled={!!hint || saving}
+          data-waiting={missingYear || !!hint || undefined}
+          disabled={saving}
           onClick={() => void next()}
         >
           Next
@@ -296,6 +299,8 @@ function ChildrenStep({ session, me, kind, index }: StepProps) {
       }
     >
       <People
+        nameNote={hint}
+        missingYear={asked}
         field={{
           label: "Name",
           placeholder: "First name or nickname",
@@ -368,14 +373,15 @@ function StudentsStep({ session, me, kind, index }: StepProps) {
   for (const [at, row] of rows.entries()) {
     const problem = childNameProblem(row.name, NICKNAME_MAX);
     if (problem) {
-      hint = `Student ${at + 1}: ${problem}`;
+      hint = problem;
       invalid = at;
       break;
     }
   }
-  if (!hint && rows.some((row) => !row.year))
-    hint = "Choose a birth year for each student.";
+  const missingYear = rows.some((row) => !row.year);
+  const [asked, setAsked] = useState(false);
   const next = async () => {
+    if (missingYear) return setAsked(true);
     if (hint || saving) return;
     setSaving(true);
     setError("");
@@ -411,12 +417,12 @@ function StudentsStep({ session, me, kind, index }: StepProps) {
           ? "Your class is made. Children from other families join it by their parent’s approval, from Today."
           : `${NICKNAME_HINT} Each student’s own parent adds their name through a link you send.`
       }
-      hint={hint}
       next={
         <Button
           variant="primary"
           aria-busy={saving || undefined}
-          disabled={!!hint || saving}
+          data-waiting={missingYear || !!hint || undefined}
+          disabled={saving}
           onClick={() => void next()}
         >
           {created || rows.length ? "Next" : "Skip for now"}
@@ -433,6 +439,8 @@ function StudentsStep({ session, me, kind, index }: StepProps) {
         )
       ) : (
         <People
+          nameNote={hint}
+          missingYear={asked}
           field={{
             label: "Nickname or initials",
             placeholder: "Optional",
@@ -478,19 +486,27 @@ type Row = {
   onRemove?: () => void;
 };
 
-/** Each child: the name they go by if left blank ("Child 2"), a name field,
- * a birth year and, for a new row, Remove. Stacked with its own labels on a
- * phone; one line under shared column labels from 560 px. */
+/** Each child: a name field whose placeholder is what they go by if it stays
+ * blank ("Child 2"), a birth year in the shared field style that opens the
+ * year tiles, and, for a new row, Remove. One line from 560 px, under column
+ * labels; stacked with its own labels on a phone. A row that still needs its
+ * year says so at that field, once Next is asked for. */
 function People({
   field,
   rows,
   invalid,
+  nameNote,
+  missingYear,
   disabled,
   add,
 }: {
   field: { label: string; placeholder: string; max: number };
   rows: Row[];
   invalid: number;
+  /** The invalid name's problem, said under it. */
+  nameNote: string;
+  /** Show "Choose a year" at each row without one. */
+  missingYear: boolean;
   disabled: boolean;
   add: { label: string; onAdd: () => void } | null;
 }) {
@@ -498,75 +514,83 @@ function People({
     <div className={styles.people}>
       {rows.length > 0 && (
         <div className={styles.columns} aria-hidden="true">
-          <span />
           <span>{field.label}</span>
           <span>Birth year</span>
           <span />
         </div>
       )}
       <ol className={styles.rows}>
-        {rows.map((row, at) => (
-          <li key={row.key} className={styles.person}>
-            <span className={styles.personName}>{row.label}</span>
-            <label className={styles.cell}>
-              <span className={styles.cellLabel}>{field.label}</span>
-              <input
-                className={styles.nameInput}
-                value={row.name}
-                placeholder={field.placeholder}
-                maxLength={field.max}
-                autoComplete="off"
-                autoCapitalize="words"
-                spellCheck={false}
-                aria-invalid={invalid === at || undefined}
-                aria-label={`${field.label}, ${row.label}`}
-                disabled={disabled}
-                onChange={(event) => row.onName(event.target.value)}
-              />
-            </label>
-            <div className={styles.cell}>
-              <span className={styles.cellLabel} aria-hidden="true">
-                Birth year
-              </span>
-              {row.fixed ? (
-                <span className={styles.fixedYear}>{row.year || "—"}</span>
-              ) : (
-                <BirthYearPicker
-                  label={`Birth year, ${row.label}`}
-                  adult={false}
-                  value={row.year}
+        {rows.map((row, at) => {
+          const needsYear = missingYear && !row.fixed && !row.year;
+          return (
+            <li key={row.key} className={styles.person}>
+              <label className={styles.cell}>
+                <span className={styles.cellLabel}>{field.label}</span>
+                <input
+                  className={styles.nameInput}
+                  value={row.name}
+                  placeholder={row.label}
+                  maxLength={field.max}
+                  autoComplete="off"
+                  autoCapitalize="words"
+                  spellCheck={false}
+                  aria-invalid={invalid === at || undefined}
+                  aria-label={`${field.label}, ${row.label} (${field.placeholder.toLowerCase()})`}
                   disabled={disabled}
-                  onChange={(value) => row.onYear?.(value)}
+                  onChange={(event) => row.onName(event.target.value)}
                 />
-              )}
-            </div>
-            <span className={styles.removeCell}>
-              {row.onRemove && (
-                <button
-                  type="button"
-                  className={styles.remove}
-                  aria-label={`Remove ${row.label}`}
-                  disabled={disabled}
-                  onClick={row.onRemove}
-                >
-                  <svg viewBox="0 0 16 16" aria-hidden="true">
-                    <path d="m4 4 8 8m0-8-8 8" />
-                  </svg>
-                </button>
-              )}
-            </span>
-          </li>
-        ))}
+                <span className={styles.cellNote} aria-live="polite">
+                  {invalid === at ? nameNote : ""}
+                </span>
+              </label>
+              <div className={styles.cell}>
+                <span className={styles.cellLabel} aria-hidden="true">
+                  Birth year
+                </span>
+                {row.fixed ? (
+                  <span className={styles.fixedYear}>{row.year || "—"}</span>
+                ) : (
+                  <YearField
+                    label={`Birth year, ${row.label}`}
+                    value={row.year}
+                    disabled={disabled}
+                    invalid={needsYear}
+                    onChange={(value) => row.onYear?.(value)}
+                  />
+                )}
+                <span className={styles.cellNote} aria-live="polite">
+                  {needsYear ? "Choose a year" : ""}
+                </span>
+              </div>
+              <span className={styles.removeCell}>
+                {row.onRemove && (
+                  <button
+                    type="button"
+                    className={styles.remove}
+                    aria-label={`Remove ${row.label}`}
+                    disabled={disabled}
+                    onClick={row.onRemove}
+                  >
+                    <svg viewBox="0 0 16 16" aria-hidden="true">
+                      <path d="m4 4 8 8m0-8-8 8" />
+                    </svg>
+                  </button>
+                )}
+              </span>
+            </li>
+          );
+        })}
       </ol>
       {add && (
-        <button
+        <Button
           type="button"
-          className={styles.add}
+          variant="quiet"
+          align="start"
           disabled={disabled}
           onClick={add.onAdd}
         >
-          <span aria-hidden="true">+</span> {add.label}
-        </button>
+          {add.label}
+        </Button>
       )}
     </div>
   );
@@ -610,33 +634,16 @@ function JoinStep({ session, me, kind, index }: StepProps) {
             </p>
           </section>
         )}
-        <section className={styles.way} aria-labelledby="way-own">
-          <svg viewBox="0 0 24 24" className={styles.wayIcon} aria-hidden="true">
-            <path d="M3 5h18v11H3zM8 20h8M12 16v4" />
-          </svg>
-          <h2 id="way-own">
-            {parent ? "On their own device" : "On each student’s device"}
-          </h2>
-          <ol className={styles.howTo}>
-            <li>
-              Open <strong>{location.host}/join</strong>
-            </li>
-            <li>Type the class code</li>
-            <li>Tap their name, then pick three pictures</li>
-          </ol>
-          <p className={styles.code} aria-busy={presence.isPending || undefined}>
-            <span>Class code</span>
-            <strong data-class-code={code}>
-              {code ? `${code.slice(0, 3)}-${code.slice(3)}` : " "}
-            </strong>
-          </p>
-          <Link
-            to="/school/$org/classes/$class/cards"
-            params={{ org: place.orgId, class: place.classId }}
-            className={buttonClass("secondary")}
-          >
-            Print sign-in cards
-          </Link>
+        <section className={styles.way} aria-labelledby="join-class">
+          {code ? (
+            <JoinClass
+              code={code}
+              place={{ org: place.orgId, class: place.classId }}
+              family={parent}
+            />
+          ) : (
+            <Loading />
+          )}
         </section>
       </div>
       {!parent && (

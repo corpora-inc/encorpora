@@ -1,3 +1,4 @@
+import { term } from "./agreement";
 import {
   choice,
   figures,
@@ -40,7 +41,7 @@ function equation(r: Rng): Item {
     explanation: [
       cube
         ? `Cubing a negative number gives a negative result, so it cannot give the positive value $${radicand}$.`
-        : `Squaring either sign gives the same positive value: $(${root})^2=(-${root})^2=${radicand}$.`,
+        : `Squaring either sign gives the same positive value: $${term(root)}^2=(-${root})^2=${radicand}$.`,
       cube
         ? `There is exactly one real solution: $${correct}$.`
         : `Both solutions are needed: $${correct}$.`,
@@ -61,7 +62,7 @@ function exactRoot(r: Rng): Item {
     ...numeric(fraction(n, d)),
     hint: `Find a number whose ${index === 2 ? "square" : "cube"} is $${radicand}$. Root both the numerator and denominator of a fraction.`,
     explanation: [
-      `$(${fracTex(n, d)})^{${index}}=${radicand}$, so $${root}=${fracTex(n, d)}$.`,
+      `$${String(fracTex(n, d)).includes("/") ? `\\frac{${n}}{${d}}` : term(fracTex(n, d))}^{${index}}=${radicand}$, so $${root}=${fracTex(n, d)}$.`,
       `A root asks which value gives the radicand under the stated power. It does not divide the radicand by ${index}.`,
     ],
   };
@@ -137,7 +138,7 @@ function classify(r: Rng, variant: string): Item {
     explanation: [
       `$\\sqrt{2}$ is the side length of a square with area 2. Its decimal $1.41421\\ldots$ never ends or repeats.`,
       `$1.4^2=1.96<2<2.25=1.5^2$. No tenth squares to 2; in fact, no fraction of integers does.`,
-      `$7/5$ is only an approximation: $(7/5)^2=49/25\\ne2$. Also, $22/7$ is rational because it is a ratio of integers.`,
+      `$7/5$ is only an approximation: $\\frac{7}{5}^2=49/25\\ne2$. Also, $22/7$ is rational because it is a ratio of integers.`,
     ],
   };
 }
@@ -171,7 +172,7 @@ function locate(r: Rng): Item {
     ...figures(r, options[0]!, options.slice(1)),
     hint: `Compare ${n} with neighboring perfect ${index === 2 ? "squares" : "cubes"}, then test tenths between their roots.`,
     explanation: [
-      `$${k}^{${index}}=${k ** index}<${n}<${(k + 1) ** index}=(${k + 1})^{${index}}$, so the root is between ${k} and ${k + 1}.`,
+      `$${k}^{${index}}=${k ** index}<${n}<${(k + 1) ** index}=${term(k + 1)}^{${index}}$, so the root is between ${k} and ${k + 1}.`,
       `The root is approximately ${value.toFixed(5)}. Its nearest tenth is ${rounded.toFixed(1)}.`,
     ],
   };
@@ -301,8 +302,8 @@ function closure(r: Rng, variant: string): Item {
         `$0\\times\\sqrt{2}=0$, a rational number. The undoing argument requires division by a nonzero rational factor.`,
       ],
     };
-  const result = sum ? `${irr}+(${coef})` : `(${coef})${irr}`,
-    undo = sum ? `\\frac{${den}a-(${k})b}{${den}b}` : `\\frac{${den}a}{${k}b}`;
+  const result = sum ? `${irr}+${term(coef)}` : `${term(coef)}${irr}`,
+    undo = sum ? `\\frac{${den}a-${term(k)}b}{${den}b}` : `\\frac{${den}a}{${k}b}`;
   return {
     prompt: `Suppose $${result}=a/b$ for integers $a,b$ with $b\\ne0$. Which step shows this is impossible?`,
     ...choice(
@@ -408,7 +409,7 @@ export function decimalDivision(r: Rng, forcedForm?: number): Item {
     `Separate the sign. Divide ${Math.abs(n)} by ${d}: the whole-number part is ${e.whole}, with remainder ${Math.abs(n) % d}.`,
     ...steps,
     e.repeat
-      ? `Remainder ${e.repeated} returns. The same divisions now repeat the block ${e.repeat}, so $${fractionText}=${e.text}$.`
+      ? `The remainder is ${e.repeated}, so the same divisions now repeat the block ${e.repeat}, and $${fractionText}=${e.text}$.`
       : `The remainder reaches 0, so $${fractionText}=${e.text}$; all later decimal digits are 0.`,
     "There are only finitely many possible remainders. Division must reach 0 or revisit a remainder, after which the same digits repeat.",
   ];
@@ -470,7 +471,7 @@ export function decimalDivision(r: Rng, forcedForm?: number): Item {
       ...choice(
         r,
         e.repeat
-          ? `It repeats: $${e.text}$; remainder ${e.repeated} returns.`
+          ? `It repeats: $${e.text}$; the remainder is ${e.repeated}.`
           : `It terminates: $${e.text}$; the remainder reaches 0.`,
         [
           e.repeat
@@ -488,7 +489,7 @@ export function decimalDivision(r: Rng, forcedForm?: number): Item {
       prompt: `Why must the decimal for $${fractionText}$ eventually repeat?`,
       ...choice(
         r,
-        `This fraction does not terminate. Only remainders 1–${d - 1} can occur, so one returns and the digits repeat.`,
+        `This fraction does not terminate. Only remainders 1–${d - 1} can occur, so a remainder comes back and the digits repeat.`,
         [
           "Because every fraction is less than 1.",
           "Because the denominator is odd.",

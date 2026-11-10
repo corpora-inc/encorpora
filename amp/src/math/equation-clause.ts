@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { count, term } from "./agreement";
 import type {
   FigureCapability,
   GeneratedProblem,
@@ -265,8 +266,13 @@ export function subtractionUnknown(
     hint: startUnknown
       ? `In ${equation}, the box is the start, the number before the minus sign. ${P} left and ${R} stayed, so join those two parts. Do not subtract them.`
       : which === 0
-        ? `${W} is the whole bar in ${equation}. The box is the part that left, and ${R} stayed. Take ${R} away from ${W}.`
-        : `${W} is the whole bar in ${equation}. ${P} left. The box is what remains, so take ${P} away from ${W}.`,
+        ? // When what stayed equals the answer, quoting it would give the box away.
+          R === answer
+          ? `${W} is the whole bar. The box is the part that left, and the rest of the bar stayed. Take what stayed away from ${W}.`
+          : `${W} is the whole bar in ${equation}. The box is the part that left, and ${R} stayed. Take ${R} away from ${W}.`
+        : P === answer
+          ? `${W} is the whole bar. Part of it left, and the box is what remains. Take the part that left away from ${W}.`
+          : `${W} is the whole bar in ${equation}. ${P} left. The box is what remains, so take ${P} away from ${W}.`,
     explanation: startUnknown
       ? [
           `The number before the minus sign is the whole bar, the start. In ${equation} the start is the box: ${P} left it and ${R} remain.`,
@@ -423,7 +429,7 @@ export function strictInequality(
   const finite = wholeCount(sign, c);
   const finiteLabel =
     typeof finite === "number" && finite > 0
-      ? `Only the ${finite} whole numbers ${word} ${cText} are solutions; there are ${finite} solutions.`
+      ? `Only ${count(finite, "whole number")} ${word} ${cText} ${finite === 1 ? "is a solution" : "are solutions"}; there ${finite === 1 ? "is" : "are"} ${count(finite, "solution")}.`
       : "There are no solutions because no whole number works.";
   const boundary = `${cText} and every number ${word} ${cText} are solutions.`;
   const reversed = `Every number ${back} ${cText} is a solution.`;
@@ -473,7 +479,7 @@ export function strictInequality(
     },
     hint: `The inequality is $x ${sign} ${cText}$. The sign is strict, so ${cText} itself fails. The solutions run forever along the ray, not just through the whole numbers.`,
     explanation: [
-      `An open circle at ${cText} and a ray to the ${sign === "<" ? "left" : "right"}: every number ${word} ${cText} works, and ${cText} does not.`,
+      `An open circle sits at ${cText}, and the ray goes ${sign === "<" ? "left" : "right"}. Numbers ${word} that boundary work. The boundary is not a solution.`,
       `Test ${signed(probe)}: ${signed(probe)} ${sign} ${cText} is ${probe < c === (sign === "<") || probe > c === (sign === ">") ? "true" : "false"}.`,
       `${cText} ${sign} ${cText} is false, so the boundary is not a solution.`,
       "Between any two solutions sit more numbers, so the list never ends.",
@@ -1376,7 +1382,7 @@ export function makeExample(seed: string): GeneratedProblem {
   if (!gradeStructuredWork(response, workGrading, answer))
     throw new Error("Example key");
   return stamp(meta, seed, "make-an-example", {
-    prompt: `Complete the right side of $${axb(p, q)} = ____$ so the equation has (1) no solution, (2) infinitely many solutions, (3) exactly one solution.`,
+    prompt: `Complete the right side of $${axb(p, q)} = ____$ so the equation has 1. no solution, 2. infinitely many solutions, 3. exactly one solution.`,
     response,
     answer,
     workGrading,
@@ -1791,7 +1797,7 @@ export function scaledElimination(seed: string): GeneratedProblem {
     hint: `E1 is ${left1} = ${c}, and the new system uses E2 + ${k}·E1. Multiply every term of E1 by ${k}, then add matching terms to E2. The new equation is reversible: subtract ${k}·E1 to get E2 back.`,
     explanation: [
       `${k}·E1 is ${coef(k * a, "x")} and ${coef(k * b, "y")} equal to ${k * c}.`,
-      `Add E2: ${coef(nx, "x")} = ${nr}. The y terms are ${e} + (${k})(${b}) = 0.`,
+      `Add E2: ${coef(nx, "x")} = ${nr}. The y terms are ${e} + ${term(k)}(${b}) = 0.`,
       `The unscaled right side would be ${f + c}, which is not ${nr}.`,
       general
         ? `At a solution, E2 contributes ${f} and k·E1 contributes ${k * c}, so the sum is ${nr}.`

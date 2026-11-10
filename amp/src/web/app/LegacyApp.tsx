@@ -1902,7 +1902,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           <h1>
             <Loading inline>Opening your book…</Loading>
           </h1>
-          <button onClick={() => navigate("/lessons")}>Back to lessons</button>
+          <button onClick={() => navigate("/pathways")}>Back to Pathways</button>
         </main>
       ) : tab === "practice" ? (
         paused && route.parts[0] === "practice" ? (
@@ -2125,9 +2125,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
               <div className="card-top">
                 <button
                   className="text-button"
-                  onClick={() => navigate("/lessons")}
+                  onClick={() => navigate("/pathways")}
                 >
-                  ← All lessons
+                  ← Pathways
                 </button>
               </div>
               {catalogFailed ? (
@@ -2230,7 +2230,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                 >
                   {progressLessonReturn.current
                     ? "← Your idea"
-                    : "← All lessons"}
+                    : "← Pathways"}
                 </button>
                 {/* One compact control for the lesson's typeset PDFs. A
                     lesson without them on this server offers none. */}

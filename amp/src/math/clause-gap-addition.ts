@@ -301,7 +301,7 @@ function withinAdd(ctx: ClauseCtx) {
     figure: { kind: "scene", scene: makeTenHops(a, b) },
     response: { kind: "number", label: "Sum" },
     answer: String(sum),
-    hint: a + b === 10 ? `${a} and ${b} are partners to ten.` : `Put ${a} and ${b} together. The total is at most 10.`,
+    hint: a + b === 10 ? `${a} and ${b} partner to make ten.` : `Put ${a} and ${b} together. The total is at most 10.`,
     explanation: [
       `${a} and ${b} make ${sum}.`,
       `${sum} hides ${a} and ${b}.`,
@@ -321,7 +321,7 @@ function withinSub(ctx: ClauseCtx) {
     prompt: `What is ${whole} − ${part}?`,
     response: { kind: "number", label: "Difference" },
     answer: String(whole - part),
-    hint: `${part} is one part of ${whole}. Ask what joins ${part} to make ${whole}.`,
+    hint: `${part} is one part of ${whole}. Ask which number joins ${part} so the sum is ${whole}.`,
     explanation: [
       `${part} and ${whole - part} make ${whole}.`,
       `So ${whole} − ${part} = ${whole - part}.`,
@@ -683,7 +683,7 @@ function openWhich(ctx: ClauseCtx) {
     hint: `Look at the ones of ${a}, which are ${a % 10}. You need ${b % 10} ones. ${openHundred ? `${a} has no tens to open.` : `${a} has tens to open.`}`,
     explanation: [
       openHundred
-        ? `${a} has ${a % 10} ones and no tens. Open a hundred into ten tens, then open one of those tens into ten ones.`
+        ? `${a} has ${count(a % 10, "one")} and no tens. Open a hundred into ten tens, then open one of those tens into ten ones.`
         : `${a} has a ten to open into ten ones.`,
       `The difference is ${a - b}. Check: ${a - b} + ${b} = ${a}.`,
     ],

@@ -275,7 +275,15 @@ export const studentGrantResource = z.object({
   expiresAt: z.string(),
 });
 export const presenceResource = z.object({
-  class: z.object({ id: z.uuid(), name: z.string(), joinCode: z.string() }),
+  class: z.object({
+    id: z.uuid(),
+    name: z.string(),
+    joinCode: z.string(),
+    /** Sign-in is paused by guessing until then; a new code reopens it. */
+    joinLockedUntil: z.string().nullable().optional(),
+  }),
+  /** Whether this person can make a new code (and so offer it). */
+  canManage: z.boolean().optional(),
   students: z.array(
     z.object({ id: z.uuid(), name: z.string(), here: z.boolean() }),
   ),

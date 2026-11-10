@@ -36,10 +36,10 @@ const words = {
     `${area}: best guess ${level}, likely ${from} to ${to}`,
   rowUnnumbered: (area: string) =>
     `${area}: a likely range, narrowing with practice`,
-  start: (level: string, from: string, to: string, who?: string) =>
+  start: (level: string, who?: string) =>
     who
-      ? `AMP starts ${who} near ${level}, somewhere between ${from} and ${to}. Every answer narrows the range.`
-      : `AMP starts near ${level}, somewhere between ${from} and ${to}. Every answer narrows the range.`,
+      ? `AMP starts ${who} near ${level}. Every answer narrows the range.`
+      : `AMP starts near ${level}. Every answer narrows the range.`,
   startUnnumbered: (who?: string) =>
     who
       ? `AMP starts from ${who}’s age and narrows the range with every answer.`
@@ -332,24 +332,31 @@ function Legend({ grade }: { grade: boolean }) {
 }
 
 /**
- * Before the first answer: the starting estimate as a quiet, dashed range on
- * a labelled scale, the line that says it sharpens with practice, and the one
- * step that starts it. Never an empty chart.
+ * Day 0 (docs/design/ia.md, rule 7): one centred column. One heading, the
+ * starting estimate large on its labelled scale, one sentence, the one
+ * prominent action, and quiet secondary items below. The range is wide on
+ * purpose; every answer narrows it.
  */
 export function LevelRangeStart({
   start,
   action,
   title = "Where you are",
-  labelledBy,
+  heading = 2,
+  secondary,
   numbers = true,
   who,
   grade = null,
 }: {
   /** Where AMP begins: from a birth year, or the start an adult chose. */
   start: Estimate;
+  /** The one prominent action: Start practicing. */
   action?: ReactNode;
-  title?: string | null;
-  labelledBy?: string;
+  /** The hero's one heading. */
+  title?: string;
+  /** The heading's level: 1 when the hero is the page. */
+  heading?: 1 | 2;
+  /** Quiet items under the action: the free problems left, a link. */
+  secondary?: ReactNode;
   /** Grade names and numbers; off where a learner's levels are hidden. */
   numbers?: boolean;
   /** The learner's name when someone else reads it. */
@@ -363,39 +370,20 @@ export function LevelRangeStart({
     pad: 1,
     include: grade ? [...grade] : [],
   });
+  const Heading = heading === 1 ? "h1" : "h2";
   return (
     <section
-      className={`${styles.view} ${styles.start}`}
-      aria-labelledby={labelledBy ?? "level-range-title"}
+      className={styles.hero}
+      aria-labelledby="level-start-title"
       data-level-view
+      data-level-start
     >
-      <div className={styles.startText}>
-        {title && (
-          <h2 id="level-range-title" className={styles.eyebrow}>
-            {title}
-          </h2>
-        )}
-        <p className={styles.startTitle}>
-          {who
-            ? `${who}’s level appears with practice`
-            : "Your level appears as you practice"}
-        </p>
-        <p className={styles.startBody}>
-          {numbers
-            ? words.start(
-                gradeName(start.level),
-                gradeName(from),
-                gradeName(to),
-                who,
-              )
-            : words.startUnnumbered(who)}
-        </p>
-        {action && <div className={styles.startAction}>{action}</div>}
-      </div>
-      <figure className={styles.startFigure}>
-        <figcaption className={styles.caption}>Starting estimate</figcaption>
+      <Heading id="level-start-title" className={styles.heroTitle}>
+        {title}
+      </Heading>
+      <figure className={styles.heroFigure}>
         <div
-          className={styles.startBar}
+          className={styles.heroBar}
           role="img"
           aria-label={
             numbers
@@ -412,16 +400,14 @@ export function LevelRangeStart({
           />
         </div>
         {numbers && <LevelAxis scale={scale} />}
-        <p className={styles.startNote}>
-          <span className={styles.startNoteBefore} aria-hidden="true" />
-          Now
-          <svg viewBox="0 0 24 12" aria-hidden="true">
-            <path d="M2 6h18M16 2l4 4-4 4" />
-          </svg>
-          <span className={styles.startNoteAfter} aria-hidden="true" />
-          After practice
-        </p>
       </figure>
+      <p className={styles.heroBody}>
+        {numbers
+          ? words.start(gradeName(start.level), who)
+          : words.startUnnumbered(who)}
+      </p>
+      {action && <div className={styles.heroAction}>{action}</div>}
+      {secondary && <div className={styles.heroSecondary}>{secondary}</div>}
     </section>
   );
 }

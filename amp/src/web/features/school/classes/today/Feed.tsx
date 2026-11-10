@@ -39,25 +39,17 @@ function FeedItem({
       data-done={done || undefined}
       data-feed={entry.id}
     >
+      {/* One treatment for every item: a box to tick off. An offer that can
+          be put away for good is put away by ticking it. */}
       <span className={styles.todoCheck}>
-        {entry.mark === "check" ? (
-          <CheckboxControl
-            aria-label={`Done: ${entry.title}`}
-            checked={done}
-            onChange={(event) => onDone(event.target.checked)}
-          />
-        ) : entry.mark === "dismiss" ? (
-          <button
-            type="button"
-            className={styles.dismiss}
-            aria-label={`Dismiss: ${entry.title}`}
-            onClick={onDismiss}
-          >
-            <svg viewBox="0 0 16 16" aria-hidden="true">
-              <path d="m4 4 8 8m0-8-8 8" />
-            </svg>
-          </button>
-        ) : null}
+        <CheckboxControl
+          aria-label={`Done: ${entry.title}`}
+          checked={done}
+          onChange={(event) => {
+            onDone(event.target.checked);
+            if (entry.mark === "dismiss" && event.target.checked) onDismiss?.();
+          }}
+        />
       </span>
       <div className={styles.todoBody}>
         <h3 className={styles.todoTitle}>{entry.title}</h3>

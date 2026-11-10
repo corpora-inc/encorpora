@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState, type ReactNode } from "react";
 import {
-  CurriculumDetailsControl,
   useCurriculumDetails,
 } from "./features/curriculum/CurriculumDetails";
 import { strandNames } from "./BirthYearPrompt";
@@ -12,7 +11,6 @@ import {
   type Estimate,
 } from "../learning/frontier";
 import { gradeName, levelDetails, levelRange } from "../learning/level-check";
-import { LevelAxis, levelPositionDescription } from "./ui/LevelChart";
 import { fitScale, LevelRange, LevelRangeStart } from "./ui/level-range";
 import { sessionOptions } from "./lib/query";
 import { useHeroAction } from "./lib/shell-slots";
@@ -93,27 +91,33 @@ export function Home(props: Props) {
           estimate: f.strands[strand]!,
         }))
     : [];
+  const freeLine = props.freeLeft != null && (
+    <span className="home-free" data-free-left={props.freeLeft}>
+      {freeProblemsLeft(props.freeLeft)}
+    </span>
+  );
+  // Day 0 (docs/design/ia.md, rule 7): one centred hero, its start the only
+  // Practice on screen.
+  const dayZero = !!f && !measured;
   return (
     <main className="home">
       {props.navigation}
-      <section className="home-hero">
-        <div>
-          {/* Whose Overview, for someone reading another's; a learner's
-              own never names them (docs/design/ia.md). */}
-          <h1
-            id="home-title"
-            className={who ? "home-learner" : "home-learner home-learner-own"}
-          >
-            {who ? props.name : "Where you are"}
-          </h1>
-          {props.freeLeft != null && (
-            <p className="home-free" data-free-left={props.freeLeft}>
-              {freeProblemsLeft(props.freeLeft)}
-            </p>
-          )}
-        </div>
-        {go}
-      </section>
+      {!dayZero && (
+        <section className="home-hero">
+          <div>
+            {/* Whose Overview, for someone reading another's; a learner's
+                own never names them (docs/design/ia.md). */}
+            <h1
+              id="home-title"
+              className={who ? "home-learner" : "home-learner home-learner-own"}
+            >
+              {who ? props.name : "Where you are"}
+            </h1>
+            {freeLine && <p className="home-free-line">{freeLine}</p>}
+          </div>
+          {go}
+        </section>
+      )}
       {/* `.frontier-map` and `aria-busy` mark the level's place for the
           browser checks that wait on the Overview. */}
       <div className="frontier-map home-level-slot" aria-busy={!f}>
@@ -140,16 +144,20 @@ export function Home(props: Props) {
           />
         ) : (
           <LevelRangeStart
-            title={who ? `Where ${who} is` : null}
-            labelledBy={who ? undefined : "home-title"}
+            title={who ? `Where ${who} is` : "Where you are"}
+            heading={1}
             start={f.overall}
             grade={grade}
             numbers={shown}
             who={who}
+            action={go}
+            secondary={freeLine}
           />
         )}
       </div>
-      <CurriculumDetailsControl />
+      {/* Grade numbers are a setting of the drawer (docs/design/ia.md,
+          "Where settings live"); the birth year, a quiet line under the
+          level, centred with it. */}
       {props.changeBirthYear && (
         <button
           className="text-button home-birth-year"
@@ -162,129 +170,3 @@ export function Home(props: Props) {
   );
 }
 
-/** Each strand's estimated grade level and its uncertainty range, on a scale centred
- * on the grade typical for the learner's age. Rows open to show the data. */
-export function FrontierMap(props: {
-  name: string;
-  birthYear?: number | null;
-  frontier: FrontierMap | null;
-  strands: readonly string[];
-}) {
-  const { shown } = useCurriculumDetails();
-  const [open, setOpen] = useState<string | null>(null);
-  const f = props.frontier;
-  const center = f?.expected ?? 4;
-  // Six grades around the age reference, widened to hold every practiced
-  // area's whole likely range and every best guess: no measured band or dot
-  // is pinned against an end. An unpracticed area's wide, striped band may
-  // run on past one.
-  const fitted = f
-    ? fitScale(
-        props.strands
-          .filter((strand) => (f.strands[strand]?.answered ?? 0) > 0)
-          .map((strand) => f.strands[strand]!),
-        {
-          minSpan: 6,
-          include: [
-            center,
-            ...props.strands.map((strand) => strandEstimate(f, strand).level),
-          ],
-        },
-      )
-    : null;
-  const lo = fitted?.lo ?? Math.max(0, Math.min(center - 3, COLLEGE - 6)),
-    hi = fitted?.hi ?? lo + 6;
-  const at = (v: number) =>
-    `${((Math.min(hi, Math.max(lo, v)) - lo) / (hi - lo)) * 100}%`;
-  const reference = props.birthYear != null && f ? center : undefined;
-  return (
-    <section className="frontier-map" aria-label="Where you are" aria-busy={!f}>
-      <div className="frontier-heading">
-        <h2>{f ? "Where you are" : "Loading estimates…"}</h2>
-        <p>
-          Dots show estimates; bands show uncertainty.{" "}
-          {props.birthYear != null && (
-            <>Vertical marks show the age reference. </>
-          )}
-          Striped bands mark areas not practiced yet.
-        </p>
-      </div>
-      <ul>
-        {props.strands.map((strand) => {
-          const own = f?.strands[strand];
-          const measured = own && own.answered > 0 ? own : undefined;
-          const estimate: Estimate = f
-            ? strandEstimate(f, strand)
-            : {
-                level: center,
-                sd: 2.5,
-                answered: 0,
-                independent: 0,
-              };
-          const [from, to] = levelRange(estimate);
-          const detail = levelDetails(estimate);
-          const expanded = open === strand;
-          return (
-            <li key={strand} data-strand={strand}>
-              <button
-                className="frontier-row"
-                aria-expanded={expanded}
-                aria-label={
-                  f
-                    ? `${strandNames[strand]}. ${levelPositionDescription(estimate, reference)}`
-                    : `${strandNames[strand]}. Loading estimate.`
-                }
-                disabled={!f}
-                onClick={() => setOpen(expanded ? null : strand)}
-              >
-                <span className="frontier-name">{strandNames[strand]}</span>
-                <span
-                  className={`frontier-track ${measured ? "" : "estimated"}`}
-                  aria-hidden="true"
-                >
-                  {f && (
-                    <>
-                      {reference !== undefined && (
-                        <span
-                          className="frontier-center"
-                          style={{ left: at(center) }}
-                        />
-                      )}
-                      <span
-                        className="frontier-range"
-                        style={{
-                          left: at(from),
-                          width: `calc(${at(to)} - ${at(from)})`,
-                        }}
-                      />
-                      <span
-                        className="frontier-dot"
-                        style={{ left: at(estimate.level) }}
-                      />
-                    </>
-                  )}
-                </span>
-              </button>
-              {expanded && f && (
-                <p className="frontier-detail">
-                  {shown
-                    ? measured
-                      ? `Level ${detail.point} (${gradeName(estimate.level)}). Estimated range ${detail.from} to ${detail.to}. ${measured.answered} answered, ${measured.independent} correct without help.`
-                      : `Not practiced yet. Estimated level ${detail.point} (${gradeName(estimate.level)}), range ${detail.from} to ${detail.to}.`
-                    : `${measured ? `${measured.answered} answered, ${measured.independent} correct without help.` : "Not practiced yet."} ${levelPositionDescription(estimate, reference)}`}
-                </p>
-              )}
-            </li>
-          );
-        })}
-      </ul>
-      <div className="frontier-axis">
-        <LevelAxis
-          scale={{ lo, hi, center }}
-          name={shown && f ? gradeName : () => ""}
-          reference={reference !== undefined}
-        />
-      </div>
-    </section>
-  );
-}

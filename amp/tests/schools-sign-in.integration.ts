@@ -509,6 +509,8 @@ test(
           await staff("GET", home.teacher, `${cls}/presence`)
         ).json();
         assert.equal(here.class.joinCode, code);
+        assert.equal(here.canManage, true);
+        assert.equal(here.class.joinLockedUntil, null);
         const before = here.students.find(
           (s: { id: string }) => s.id === student.personId,
         );
@@ -657,10 +659,10 @@ test(
             classId: home.period.id,
           });
           const here = `classes/${home.period.id}`;
-          assert.equal(
-            (await staff("GET", aide, `${here}/presence`)).statusCode,
-            200,
-          );
+          const presence = await staff("GET", aide, `${here}/presence`);
+          assert.equal(presence.statusCode, 200);
+          // Today offers a new code only to someone who can make one.
+          assert.equal(presence.json().canManage, false);
           const roster = await staff("GET", aide, `${here}/roster`);
           assert.equal(roster.json().canManage, false);
           assert.equal(

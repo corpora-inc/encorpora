@@ -12,12 +12,11 @@ import { Toast } from "../../../ui/Toast";
 import { downloadParentLinks } from "../../schools/share-api";
 import { say, useLeaveOff } from "../classroom/api";
 import { useClassExperience } from "../classroom/ExperienceSettings";
-import { CodeTiles } from "../join/CodeTiles";
+import { JoinClass } from "../join/JoinClass";
 import {
   rosterOptions,
   useResetPictures,
   useRevokeSessions,
-  useRotateCode,
   useStaffSession,
 } from "./api";
 import { ClassFrame } from "./ClassFrame";
@@ -85,7 +84,6 @@ function ExampleSignIn() {
 
 type Pending =
   | { kind: "links" }
-  | { kind: "rotate" }
   | { kind: "reset"; row: Row }
   | { kind: "revoke"; row: Row };
 
@@ -99,7 +97,6 @@ export function RosterScreen() {
     ...rosterOptions(session, place),
     refetchInterval: 15_000,
   });
-  const rotate = useRotateCode(session, place);
   const reset = useResetPictures(session, place);
   const revoke = useRevokeSessions(session, place);
   const experience = useClassExperience(session, params.class);
@@ -143,8 +140,7 @@ export function RosterScreen() {
   });
   const peoplePending =
     holder && family && (second.isPending || others.isPending);
-  const busy =
-    making || rotate.isPending || reset.isPending || revoke.isPending;
+  const busy = making || reset.isPending || revoke.isPending;
 
   const columns = useMemo<DataGridColumn<Row>[]>(
     () => [
@@ -285,11 +281,6 @@ export function RosterScreen() {
         setMaking(true);
         await downloadParentLinks(session, params.class);
         setStatus("Family links downloaded. Earlier links no longer work.");
-      } else if (pending.kind === "rotate") {
-        const { joinCode } = await rotate.mutateAsync();
-        setStatus(
-          `The new class code is ${joinCode.slice(0, 3)}-${joinCode.slice(3)}.`,
-        );
       } else if (pending.kind === "reset") {
         await reset.mutateAsync(pending.row.id);
         setStatus(
@@ -323,7 +314,7 @@ export function RosterScreen() {
         <div className={styles.page}>
           <header className={styles.head}>
             <div>
-              <h1>{family ? "Students" : "Roster"}</h1>
+              <h1>{family ? "People" : "Students"}</h1>
               {data.students.length > 0 && (
                 <p className={styles.count}>
                   {data.students.length === 1
@@ -333,13 +324,6 @@ export function RosterScreen() {
               )}
             </div>
             <div className={styles.actions}>
-              <Link
-                to="/school/$org/classes/$class/experience"
-                params={params}
-                className={buttonClass("secondary")}
-              >
-                {family ? "What children see" : "Student experience"}
-              </Link>
               {!family && (
                 <Link
                   to="/school/$org/classes/$class/start"
@@ -383,32 +367,18 @@ export function RosterScreen() {
                     : "Students type this at /join. Printed cards don’t need it."}
               </p>
             </div>
-            <span
-              className={styles.tiles}
-              role="img"
-              aria-label={[...data.class.joinCode].join(" ")}
-            >
-              <CodeTiles code={data.class.joinCode} />
-            </span>
-            <span className={styles.codeActions}>
-              {family && (
-                <Link
-                  to="/school/$org/classes/$class/start"
-                  params={params}
-                  className={buttonClass("quiet")}
-                >
-                  Full screen
-                </Link>
-              )}
-              {canManage && (
-                <Button
-                  variant={data.class.joinLockedUntil ? "primary" : "secondary"}
-                  onClick={() => setPending({ kind: "rotate" })}
-                >
-                  New code
-                </Button>
-              )}
-            </span>
+            {/* The compact form of the one Join element: the code in its one
+                face, then Copy link, the board, the QR and More (New code). */}
+            <JoinClass
+              compact
+              code={data.class.joinCode}
+              place={params}
+              family={family}
+              boardLink={family}
+              label={false}
+              manage={canManage}
+              locked={!!data.class.joinLockedUntil}
+            />
           </section>
           {data.students.length ? (
             <DataGrid
@@ -498,24 +468,20 @@ export function RosterScreen() {
         title={
           pending?.kind === "links"
             ? "Download new family links?"
-            : pending?.kind === "rotate"
-              ? "Make a new class code?"
-              : pending?.kind === "reset"
-                ? `Reset pictures for ${pending.row.name}?`
-                : pending?.kind === "revoke"
-                  ? `Sign out ${pending.row.name} everywhere?`
-                  : ""
+            : pending?.kind === "reset"
+              ? `Reset pictures for ${pending.row.name}?`
+              : pending?.kind === "revoke"
+                ? `Sign out ${pending.row.name} everywhere?`
+                : ""
         }
       >
         <div className={styles.dialog}>
           <p>
             {pending?.kind === "links"
               ? "You’ll get a CSV of each student’s name and a new read-only link, ready for your school’s mail system. Links sent before stop working."
-              : pending?.kind === "rotate"
-                ? "The old code stops working right away. Printed cards keep working."
-                : pending?.kind === "reset"
-                  ? "New pictures get chosen at the next sign-in. Devices already signed in stay signed in."
-                  : "Every device signed in as this student signs out on its next step. Cards and pictures keep working."}
+              : pending?.kind === "reset"
+                ? "New pictures get chosen at the next sign-in. Devices already signed in stay signed in."
+                : "Every device signed in as this student signs out on its next step. Cards and pictures keep working."}
           </p>
           <div className={styles.dialogActions}>
             <Button
@@ -533,11 +499,9 @@ export function RosterScreen() {
             >
               {pending?.kind === "links"
                 ? "Download new links"
-                : pending?.kind === "rotate"
-                  ? "Make a new code"
-                  : pending?.kind === "reset"
-                    ? "Reset pictures"
-                    : "Sign out everywhere"}
+                : pending?.kind === "reset"
+                  ? "Reset pictures"
+                  : "Sign out everywhere"}
             </Button>
           </div>
         </div>

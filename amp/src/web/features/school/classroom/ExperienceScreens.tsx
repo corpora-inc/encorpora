@@ -50,6 +50,56 @@ export function ClassExperienceScreen() {
   );
 }
 
+/** What a class's students (or a family's children) see: a section of the
+ * class's Settings (docs/design/ia.md, "Where settings live"), with what the
+ * school has locked shown as locked. */
+export function ClassExperienceSection({
+  classId,
+  family,
+}: {
+  classId: string;
+  family: boolean;
+}) {
+  const session = useStaffSession();
+  const scope = { kind: "class", id: classId } as const;
+  const experience = useQuery(experienceOptions(session, scope));
+  return (
+    <section
+      className={styles.settingsSection}
+      aria-labelledby="class-experience"
+    >
+      <h2 id="class-experience">
+        {family ? "What children see" : "Student experience"}
+      </h2>
+      <p className={styles.sectionLead}>
+        {family
+          ? "Levels, standings and devices for your children. The math they practice is the same either way."
+          : "What students in this class see. The math they practice is the same either way."}
+      </p>
+      {experience.data ? (
+        <ExperienceSettings
+          session={session}
+          scope={scope}
+          experience={experience.data}
+        />
+      ) : experience.isPending ? (
+        <Loading>Loading these settings…</Loading>
+      ) : (
+        <EmptyState
+          title="These settings didn’t load"
+          action={
+            <Button variant="primary" onClick={() => void experience.refetch()}>
+              Try again
+            </Button>
+          }
+        >
+          {say(experience.error, "The settings didn’t load.")}
+        </EmptyState>
+      )}
+    </section>
+  );
+}
+
 /** What a school or district decides for everyone: a section of its Settings
  * (docs/design/ia.md). */
 export function OrgExperienceSection({ orgId }: { orgId: string }) {
