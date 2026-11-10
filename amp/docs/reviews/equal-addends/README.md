@@ -20,6 +20,8 @@ Run `npm run test:equal-addends-ui` with a disposable `AMP_TEST_DATABASE_URL`; s
 
 All screenshots use synthetic problems.
 
+Chromium and WebKit each passed 64 graded cases. The geometry receipts cover all four variants, widths, and themes. The shared counter builder also passed its six-case Chromium smoke check. On macOS, WebKit keyboard tests use Option-Tab to include buttons in navigation.
+
 | Width | Light | Dark |
 | --- | --- | --- |
 | 320 | [Build an array](chromium-build-array-320-light-right-filled.png) | [Build an array](chromium-build-array-320-dark-right-filled.png) |

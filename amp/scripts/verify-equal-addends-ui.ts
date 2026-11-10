@@ -295,7 +295,14 @@ try {
             (await page.locator(":focus").getAttribute("aria-label")) ?? "",
             /Addend 1:/,
           );
-          await page.keyboard.press("Tab");
+          // WebKit follows macOS keyboard-navigation settings. Option-Tab
+          // includes buttons without changing the machine preference:
+          // https://github.com/microsoft/playwright/issues/41808
+          await page.keyboard.press(
+            engine === "webkit" && process.platform === "darwin"
+              ? "Alt+Tab"
+              : "Tab",
+          );
           await page.keyboard.press("4");
           assert.match(
             (await page.locator(":focus").getAttribute("aria-label")) ?? "",
@@ -330,11 +337,9 @@ try {
           await page.screenshot({
             path: `${shots}/${tag}-${correct ? "right" : "wrong"}-filled.png`,
           });
-          await page
-            .locator(".equal-addends")
-            .screenshot({
-              path: `${shots}/${tag}-${correct ? "right" : "wrong"}-control.png`,
-            });
+          await page.locator(".equal-addends").screenshot({
+            path: `${shots}/${tag}-${correct ? "right" : "wrong"}-control.png`,
+          });
           const [reply] = await Promise.all([
             page.waitForResponse(
               (v) =>
