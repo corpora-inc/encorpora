@@ -111,6 +111,18 @@ if (process.argv.includes("--check")) {
         const key =
           config.originPrefix.replace(/^\/+|\/+$/g, "") + new URL(url).pathname;
         const hash = sha256(bytes);
+        const existing = await fetch(url, {
+          signal: AbortSignal.timeout(60000),
+        });
+        if (existing.ok) {
+          if (sha256(Buffer.from(await existing.arrayBuffer())) !== hash)
+            throw new Error("Immutable CDN URL already holds different bytes");
+          return;
+        }
+        if (![403, 404].includes(existing.status))
+          throw new Error(
+            "CDN availability check failed; retry before publishing",
+          );
         const file = join(temp, hash);
         await writeFile(file, bytes);
         try {

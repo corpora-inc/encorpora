@@ -46,8 +46,16 @@ const macros = {
   "\\cv": "\\textcolor{##6a5aa0}{#1}",
   "\\cm": "\\textcolor{##4c625b}{#1}",
 };
+// KaTeX writes macro colors inline. Bind those semantic inks to the same
+// theme tokens as the figures so colored equations stay readable in the dark.
+const mathInks: Record<string, string> = {
+  "20776d": "--color-figure-accent", "9c4420": "--color-figure-warm",
+  "9a5c12": "--color-figure-gold", "2d6a9a": "--color-info-accent",
+  "6a5aa0": "--color-strand-operations", "4c625b": "--color-muted-text",
+};
 export const tex = (s: string, display = false) =>
-  katex.renderToString(s, { throwOnError: true, displayMode: display, macros, strict: false, output: "html" });
+  katex.renderToString(s, { throwOnError: true, displayMode: display, macros, strict: false, output: "html" })
+    .replace(/color:#(20776d|9c4420|9a5c12|2d6a9a|6a5aa0|4c625b)/g, (_, ink: string) => `color:var(${mathInks[ink]})`);
 const esc = (t: string) => t.replace(/[<>&]/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;" })[c]!);
 /**
  * Prose with $math$. Math and the punctuation touching it stay on one line:

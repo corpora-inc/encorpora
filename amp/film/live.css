@@ -11,7 +11,7 @@ html:has(.live-index), html:has(.live-index) body { overflow: auto; }
 .live button, .live a { font-family: var(--font-body, system-ui); }
 .live button:focus-visible, .live a:focus-visible, .live input:focus-visible { outline: 3px solid var(--color-focus-ring); outline-offset: 3px; }
 .live button:disabled { cursor: wait; }
-.live-cover:disabled::after { opacity: 0; }
+.live-cover:disabled::after, .live-cover:disabled::before { opacity: 0; }
 .live-status { position: absolute; z-index: 3; left: 16px; right: 16px; bottom: 16px; margin: auto; max-width: 440px; padding: 12px 16px; border-radius: 16px; background: var(--color-surface-raised); box-shadow: 0 2px 14px var(--color-shadow); text-align: center; font: 500 15px/1.4 var(--font-body, system-ui); }
 .live-status[hidden], .live [hidden] { display: none; }
 .live-status p { margin: 0; }
@@ -28,12 +28,12 @@ html:has(.live-index), html:has(.live-index) body { overflow: auto; }
 .live-cover { position: absolute; inset: 0; border: 0; background: transparent; cursor: pointer; -webkit-tap-highlight-color: transparent; }
 .live-cover::after {
   content: ""; position: absolute; left: 50%; top: 50%; width: 88px; height: 88px; margin: -44px 0 0 -44px; border-radius: 50%;
-  background: color-mix(in srgb, var(--color-on-surface) 72%, transparent)
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6.5v11l9-5.5z' fill='white'/%3E%3C/svg%3E") center / 46px no-repeat;
+  background: var(--color-on-surface);
   transition: opacity 0.25s, transform 0.25s;
 }
+.live-cover::before { content: ""; position: absolute; z-index: 1; left: 50%; top: 50%; width: 34px; height: 40px; margin: -20px 0 0 -17px; background: var(--color-surface); clip-path: polygon(25% 0, 100% 50%, 25% 100%); transition: opacity 0.25s; }
 /* only before the first play and after the end: mid-lesson, pausing leaves the picture clear */
-.live.playing .live-cover::after, .live.started .live-cover::after { opacity: 0; transform: scale(0.85); }
+.live.playing .live-cover::after, .live.started .live-cover::after, .live.playing .live-cover::before, .live.started .live-cover::before { opacity: 0; transform: scale(0.85); }
 
 .live-bar {
   display: flex; align-items: center; gap: 14px; height: 60px; padding: 0 max(16px, env(safe-area-inset-right)) env(safe-area-inset-bottom) max(16px, env(safe-area-inset-left));
@@ -41,11 +41,11 @@ html:has(.live-index), html:has(.live-index) body { overflow: auto; }
 }
 .live-toggle {
   flex: none; width: 44px; height: 44px; border: 0; border-radius: 50%; cursor: pointer;
-  background: var(--color-figure-accent)
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6.5v11l9-5.5z' fill='white'/%3E%3C/svg%3E") center / 26px no-repeat;
+  display: grid; place-items: center; background: var(--color-figure-accent);
 }
-.live.playing .live-toggle {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 6h3.5v12H7zM13.5 6H17v12h-3.5z' fill='white'/%3E%3C/svg%3E");
+.live-toggle::before { content: ""; display: block; width: 26px; height: 26px; background: var(--color-on-primary); mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6.5v11l9-5.5z'/%3E%3C/svg%3E") center / contain no-repeat; }
+.live.playing .live-toggle::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 6h3.5v12H7zM13.5 6H17v12h-3.5z'/%3E%3C/svg%3E");
 }
 .live-scrub {
   flex: 1; min-width: 60px; height: 44px; margin: 0; padding: 0; border: 0; border-radius: 0; box-shadow: none; outline-offset: 4px;

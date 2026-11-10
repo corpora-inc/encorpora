@@ -48,6 +48,46 @@ async function playAndSeek(page: Page) {
     target,
   );
   assert.ok(await page.locator("#film .film-shot").count());
+  const contrast = await page.evaluate(() => {
+    const luminance = (color: string) => {
+      const rgb = color
+        .match(/[\d.]+/g)!
+        .slice(0, 3)
+        .map(Number)
+        .map((n) => n / 255)
+        .map((n) => (n <= 0.04045 ? n / 12.92 : ((n + 0.055) / 1.055) ** 2.4));
+      return rgb[0]! * 0.2126 + rgb[1]! * 0.7152 + rgb[2]! * 0.0722;
+    };
+    const ratio = (a: string, b: string) => {
+      const x = luminance(a),
+        y = luminance(b);
+      return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05);
+    };
+    const ink = document.querySelector(
+      '.katex [style*="--color-figure-accent"]',
+    );
+    const toggle = document.querySelector(".live-toggle")!;
+    return {
+      equation: ink
+        ? ratio(
+            getComputedStyle(ink).color,
+            getComputedStyle(document.querySelector(".live")!).backgroundColor,
+          )
+        : 0,
+      control: ratio(
+        getComputedStyle(toggle, "::before").backgroundColor,
+        getComputedStyle(toggle).backgroundColor,
+      ),
+    };
+  });
+  assert.ok(
+    contrast.equation >= 4.5,
+    `Colored equation contrast: ${contrast.equation}`,
+  );
+  assert.ok(
+    contrast.control >= 3,
+    `Playback control contrast: ${contrast.control}`,
+  );
   await page.waitForFunction(
     () =>
       document.querySelector(".live-toggle")?.getAttribute("aria-label") ===
