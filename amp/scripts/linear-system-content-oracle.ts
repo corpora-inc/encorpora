@@ -60,8 +60,13 @@ async function main() {
         templateId,
         lessonId: lesson.id,
         problems,
+        // As workbook results regenerate a problem: by seed at its version.
         replayed: problems.map((problem) =>
-          generateProblem(templateId, problem.public.seed),
+          generateProblem(
+            templateId,
+            problem.public.seed,
+            problem.public.templateVersion,
+          ),
         ),
         workbookHtml: publicationHtml(lesson, "workbook", edition),
         solutionsHtml: publicationHtml(lesson, "solutions", edition),

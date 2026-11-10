@@ -160,7 +160,7 @@ export function statisticsClause(
         {
           figure,
           prompt: `${intro} The mean-based class estimate is ${mean}. Which statement correctly describes the simulated estimates?`,
-          hint: `Multiply the smallest and largest counts by ${k}.`,
+          hint: `Each of the ${n} students in a sample stands for ${N} ÷ ${n} students in the school of ${N}. Multiply the smallest and largest counts on the plot by that factor. The class estimate ${mean} is a separate number.`,
           explanation: [
             ...explanation,
             "The spread describes variation due to sampling. It does not guarantee bounds on the true population count.",
@@ -242,7 +242,7 @@ export function statisticsClause(
       {
         figure: sceneFigure(g.scene()),
         prompt: `The scatter plot records ${points.length} students' distance from school and commute time. Select all the patterns shown.`,
-        hint: "Look first for the overall upward or downward trend, then for an empty gap or a point off that trend.",
+        hint: `The plot records ${points.length} students. Look first for the overall upward or downward trend, then for an empty gap or a point off that trend.`,
         explanation: [
           m === 0
             ? "The two clusters have similar heights; there is no clear upward or downward association."
@@ -323,7 +323,9 @@ export function statisticsClause(
     const copy = {
       prompt: `${advanced ? "The table gives paired measurements." : "Each table row gives one student's practice hours and successful shots."} ${plot ? "Plot one point for each row. Read the horizontal coordinate first." : "Which description best matches the relationship?"}`,
       figure: table(rows),
-      hint: `The first row pairs ${points[0]![0]} with ${points[0]![1]}. A pair gives one point, not two points on the axes.`,
+      hint: advanced
+        ? `The first measurement pair is ${points[0]![0]} with ${points[0]![1]}. Plot that pair as one point, then decide whether the pattern is linear, exponential or quadratic.`
+        : `The first row of practice and shots pairs ${points[0]![0]} with ${points[0]![1]}. Plot that pair as one point, not two points on the axes.`,
       explanation: [
         `The pairs are ${points.map((p) => `(${p.join(", ")})`).join(", ")}.`,
         relation + ".",
@@ -374,7 +376,7 @@ export function statisticsClause(
           { m, b: c },
         ),
         prompt: `${equation} predicts ${absurd ? "adult mass in kg from height in cm; the studied heights are 150–190 cm" : "a skill score in points from practice hours; the studied hours are 0–10"}. What is the practical meaning of the intercept ${c}?`,
-        hint: `The intercept is the predicted value when $x=0$. Ask whether 0 ${absurd ? "cm" : "hours"} makes sense here.`,
+        hint: `In ${equation} the intercept is ${c}, the predicted value when $x=0$. The studied ${absurd ? "heights run from 150 to 190 cm" : "hours run from 0 to 10"}. Ask whether 0 ${absurd ? "cm" : "hours"} makes sense here.`,
         explanation: [
           `At $x=0$, the line predicts $\\hat y=${c}$.`,
           absurd
@@ -482,7 +484,7 @@ export function statisticsClause(
           ["Curfew: yes", "?", "?"],
           ["Curfew: no", "?", "?"],
         ]),
-        hint: `${names[0]} has curfew ${pairs[0]![0]} and chores ${pairs[0]![1]}. Put one tally where that row and column meet.`,
+        hint: `There are ${n} students. ${names[0]} has curfew ${pairs[0]![0]} and chores ${pairs[0]![1]}. Put one tally for each student where that row and column meet.`,
         explanation: [
           "Count each student once in the cell matching both answers.",
           `Reading rows from left to right gives ${cells.join(", ")}.`,
@@ -552,7 +554,12 @@ export function statisticsClause(
     return b.parts(
       {
         prompt: `${purpose ? `Goal: ${goals[kind]} Evaluate this proposed design. ` : ""}${scenarios[kind]} Classify the most specific study design and identify what its randomization supports. A sample survey asks a population sample questions; an observational comparison measures existing groups; an experiment assigns a treatment.`,
-        hint: `In this study, ${kind === 1 ? "80 volunteers are assigned to treatments" : "people or records are selected at random"}. Identify which act is randomized.`,
+        hint:
+          kind === 0
+            ? "This design selects 500 residents from 60000. Identify whether the random act is selection or assignment."
+            : kind === 1
+              ? "This design assigns 80 volunteers, and the warm-up lasts 10 minutes. Identify whether the random act is selection or assignment."
+              : "This design selects 200 adults' records and assigns no treatment. Identify whether the random act is selection or assignment.",
         explanation: [
           `${designs[kind]}: ${goals[kind]}`,
           roles[kind]!,

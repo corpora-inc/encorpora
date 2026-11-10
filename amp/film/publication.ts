@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 import { z } from "zod";
 import { semanticFigureSchema } from "../src/math/contracts";
 import { scriptSchema } from "./schema";
-import { APPROVED, resolveCast, templateOf } from "./cast";
+import { APPROVED, requireVoices, resolveCast, templateOf, voiceBindings } from "./cast";
 import {
   FILM_CAPABILITY,
   FILM_CDN,
@@ -115,6 +115,7 @@ export function screenplayFromExport(value: unknown) {
           voice: z.string().optional(),
           name: z.string().optional(),
           tag: z.string().optional(),
+          kind: z.string().optional(),
         })
         .strict(),
     )
@@ -125,7 +126,9 @@ export function screenplayFromExport(value: unknown) {
   }
   return scriptSchema.parse({
     ...source.script,
-    cast: Object.fromEntries(Object.keys(roles).map((role) => [role, {}])),
+    cast: Object.fromEntries(
+      Object.entries(roles).map(([key, binding]) => [key, binding.kind ? { kind: binding.kind } : {}]),
+    ),
   });
 }
 export function planFilm(
@@ -188,8 +191,9 @@ export function planFilm(
   if (script.cast && !timing.voices)
     throw new Error(`Missing recorded cast: ${id}`);
   const cast = resolveCast(script, timing.voices);
+  requireVoices(cast);
   const teacher = cast.roles.find(
-    (r) => r.role === "teacher" || r.role === "narrator",
+    (r) => r.kind === "teacher" || r.kind === "narrator",
   );
   if (!teacher || !["Madeline Brousseaux", "Paul"].includes(teacher.name))
     throw new Error(`Missing approved teacher: ${id}`);
@@ -210,6 +214,17 @@ export function planFilm(
   );
   const version = sha256(`${sha256(data)}:${sha256(audio)}`);
   const base = `${FILM_CDN}/amp/films/${id}/${version}`;
+  const dataUrl = `${base}/data.json`;
+  const audioUrl = `${base}/audio.m4a`;
+  // The published film is one voice edition. The app plays this edition;
+  // further editions can be listed beside it without changing the default.
+  const edition = {
+    voices: voiceBindings(cast),
+    dataUrl,
+    audioUrl,
+    version,
+    duration: timing.duration,
+  };
   return {
     templateId,
     data,
@@ -218,11 +233,12 @@ export function planFilm(
       id,
       version,
       title: script.title,
-      dataUrl: `${base}/data.json`,
-      audioUrl: `${base}/audio.m4a`,
+      dataUrl,
+      audioUrl,
       duration: timing.duration,
       teacher: teacher.name as LessonFilm["teacher"],
       capability: FILM_CAPABILITY,
+      editions: [edition],
     },
   };
 }

@@ -1001,8 +1001,8 @@ function formulaSurface(
       ? `Solve ${equation}, $a \\ne 0$, by completing the square. Choose each line and its reason.`
       : `Solve ${equation} by completing the square. Choose each line and its reason.`;
   const hint = match
-    ? "A finished square set equal to one fraction is the step that uses a common denominator."
-    : "Divide by the leading coefficient first, then move the constant. Add the square of half the new $x$ coefficient.";
+    ? `Line 4 of completing the square on ${equation} is ${shown[3]}. A finished square set equal to one fraction is the step that uses a common denominator.`
+    : `Start from ${equation}. Divide by the leading coefficient first, then move the constant. Add the square of half the new $x$ coefficient.`;
   const explanation = match
     ? [
         `${lines[3]} is the finished square, with the right side over one denominator.`,

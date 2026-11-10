@@ -13,6 +13,13 @@
   line-height: 1.15;
   overflow-wrap: normal;
 }
+/* A step inside another screen, under that screen's title. */
+.embedded h2 {
+  margin: 0;
+  font-size: var(--text-body);
+  font-weight: 700;
+  color: var(--color-on-surface);
+}
 .step p {
   margin: 0;
   font-size: var(--text-body);

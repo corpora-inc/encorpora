@@ -1067,7 +1067,7 @@ function draft(
       return {
         prompt: model.prompt,
         answer: "",
-        hint: "A divisor has to be a nonzero expression, so keep every input that makes its numerator 0. Then multiply by the reciprocal and cancel.",
+        hint: `The division uses ${b} and ${c} in the denominators. A divisor has to be a nonzero expression, so keep every input that makes its numerator 0. Then multiply by the reciprocal and cancel.`,
         choices: choices(
           [model.correct, ...model.distractors],
           "Dividing by a fraction multiplies by its reciprocal. Canceling a factor does not remove the input that made that factor 0.",
@@ -1161,7 +1161,7 @@ function draft(
         return {
           prompt: `You simplified $${numeric}$ to $${twinTex}$ and $${exprs.letter}$ to $${exprs.simplified}$. Both results are a polynomial over a polynomial. Which statement is true for every pair of rational expressions $P$ and $Q$?`,
           answer: "",
-          hint: "A rational expression is one polynomial divided by another. The operation that can fail is division, and only when the divisor is the zero expression.",
+          hint: `You simplified $${numeric}$ and the letter form $${exprs.letter}$. A rational expression is one polynomial divided by another. The operation that can fail is division, and only when the divisor is the zero expression.`,
           choices: choices(
             [CLOSURE_TRUE, ...CLOSURE_WRONG],
             "Rational expressions stay rational under the four operations, with one exception: you cannot divide by the zero expression.",

@@ -12,6 +12,7 @@ import { BlocksModel, chartView, subBox, zoomView, type Box, type Dir, type Plac
 import { axisSpan, glided, onCircle, sectorAngles, sweepLabelAngle, traceRange } from "./wave";
 import { planVector, vectorPath } from "./vector";
 import { resolveCast } from "./cast";
+import type { VoiceSpec } from "./voices";
 import { amountAt, barAnchor, barCells, checkBar, planBar, shareBox, shadedAt, spreadBarLabels, type BarCut, type BarShade, type BarSpec } from "./bar";
 import {
   bandOpacity, checkGroups, CONTEXT, DIM, fits, guideLine, inRegion, mosaicAnchor, partBox, restBox, restriction, slabBox, tableAnchor, tableBox, tableCell,
@@ -2534,7 +2535,7 @@ export class Film {
   L: Layout;
   /** Longest stretch of speech with nothing changing on screen; --dry passes a stricter limit, since its timing is estimated. */
   still = 7.5;
-  constructor(root: HTMLElement, public script: Script, public timing: Timing, mountExample?: (host: HTMLElement, shot: Shot, list: Entry[]) => ((t: number) => void) | undefined, opts: { checks?: boolean; layout?: Layout; still?: number } = {}) {
+  constructor(root: HTMLElement, public script: Script, public timing: Timing, mountExample?: (host: HTMLElement, shot: Shot, list: Entry[]) => ((t: number) => void) | undefined, opts: { checks?: boolean; layout?: Layout; still?: number; voices?: readonly VoiceSpec[] } = {}) {
     if (opts.still) this.still = opts.still;
     this.duration = timing.duration;
     const L0 = opts.layout ?? WIDE;
@@ -2542,7 +2543,7 @@ export class Film {
     root.style.height = `${L0.h}px`;
     root.dataset.layout = L0.name;
     // Roles still choose the recorded voice. Nothing about them is drawn.
-    resolveCast(script, timing.voices);
+    resolveCast(script, timing.voices, opts.voices);
     const L = (this.L = L0);
     const FIG = L.fig;
     script.shots.forEach((shot, i) => {

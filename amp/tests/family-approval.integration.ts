@@ -324,6 +324,8 @@ test(
         );
         assert.equal(before.approval.status, "open");
         assert.equal(before.approval.consentActive, false);
+        // A child new to the class: approving asks their birth year too.
+        assert.equal(before.approval.asksBirthYear, true);
       },
     );
 
@@ -334,12 +336,13 @@ test(
         const approved = await ok(
           post(`/api/v1/family/approvals/${approvalId}/approve`, parent, {
             name: "Ana",
+            birthYear: new Date().getUTCFullYear() - 9,
           }),
         );
         ana = approved.learnerId;
         const row = (
           await db.query(
-            `SELECT l.account_id,l.name,p.tenant_id,p.given_name,
+            `SELECT l.account_id,l.name,l.birth_year,p.tenant_id,p.given_name,
                EXISTS(SELECT 1 FROM amp_enrollments e WHERE e.person_id=p.id AND e.class_id=$2 AND e.role='student' AND e.end_on IS NULL) AS enrolled,
                a.child_name,a.parent_email
              FROM amp_learners l JOIN amp_people p ON p.learner_id=l.id
@@ -348,6 +351,11 @@ test(
           )
         ).rows[0];
         assert.equal(row.account_id, parent, "the approving parent owns her");
+        assert.equal(
+          row.birth_year,
+          new Date().getUTCFullYear() - 9,
+          "her birth year sets where she starts",
+        );
         assert.equal(row.tenant_id, family.org_id);
         assert.equal(row.enrolled, true);
         assert.equal(row.child_name, null, "the typed name is erased");

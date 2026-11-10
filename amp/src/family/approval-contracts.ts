@@ -48,6 +48,9 @@ export const approvalViewSchema = z.object({
   canPractice: z.boolean().optional(),
   freeAllowance: freeAllowanceSchema.optional(),
   learnerId: z.string().nullable(),
+  /** The approval adds a child new to the class: approving asks their birth
+   * year, which sets where their practice starts. */
+  asksBirthYear: z.boolean().optional(),
   access: z.object({ active: z.boolean(), endsAt: z.string().nullable() }),
 });
 export type ApprovalView = z.infer<typeof approvalViewSchema>;

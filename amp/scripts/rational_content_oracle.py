@@ -201,10 +201,14 @@ def check_worksheet(record):
     return len(problems)
 
 
-def review_content_records(records):
+def review_content_records(records, review_variant=None):
+    """`review_variant`: the inventory review's clause oracle. The runtime serves
+    some seeds as clause variants this oracle does not read; that oracle checks
+    them, and the coverage counts the rest."""
     require(records and records[0]['kind'] == 'rational-manifest', 'Missing rational manifest')
     check_manifest(records[0]); corpus = RationalCorpus()
     seen, sheets, lessons, chains = set(), set(), set(), 0
+    variants = {template: 0 for template in RATIONAL_TYPES}
     for record in records[1:]:
         template, kind = record['templateId'], record['kind']
         require(template in RATIONAL_TYPES, 'Unknown rational export template')
@@ -214,7 +218,11 @@ def review_content_records(records):
             seen.add(key)
             require(record['problem'] == record['replayed'] and record['problem']['public']['seed'] == f'rational-review-{record["index"]}'
                     and record['problem']['public']['templateId'] == template, 'Rational runtime does not replay')
-            chains += check_problem(record['problem']); corpus.record(record['problem']['public'])
+            if 'variant' in record['problem']:
+                require(review_variant is not None, 'Unreviewed rational clause variant')
+                review_variant(record['problem']); variants[template] += 1
+            else:
+                chains += check_problem(record['problem']); corpus.record(record['problem']['public'])
         elif kind == 'rational-worksheet':
             key = (template, record['edition'])
             require(key not in sheets and record['edition'] in {str(i) for i in range(1, 17)}, 'Repeated or invalid worksheet edition')
@@ -224,12 +232,13 @@ def review_content_records(records):
         else:
             raise ValueError('Unknown rational content record')
     require(len(seen) == 4096 and len(sheets) == 64 and lessons == RATIONAL_TYPES, 'Incomplete rational content inventory')
-    return {'runtime': corpus.finish(1024), 'worksheetEditions': len(sheets), 'lessons': len(lessons),
+    return {'runtime': corpus.finish(1024, {t: 1024 - n for t, n in variants.items()}),
+            'clauseVariants': variants, 'worksheetEditions': len(sheets), 'lessons': len(lessons),
             'figures': len(FIGURES), 'checkedEqualityChains': chains}
 
 
 def review_content_mutations(records):
-    runtime = next(r for r in records if r['kind'] == 'rational-runtime')
+    runtime = next(r for r in records if r['kind'] == 'rational-runtime' and 'variant' not in r['problem'])
     sheet = next(r for r in records if r['kind'] == 'rational-worksheet')
     lessons = {r['templateId']: r for r in records if r['kind'] == 'rational-lesson'}
     probes = []
@@ -290,13 +299,13 @@ def review_content_mutations(records):
     return len(probes)
 
 
-def review_rational_content():
+def review_rational_content(review_variant=None):
     app = Path(__file__).resolve().parents[1]
     result = subprocess.run(['node', '--import', 'tsx', 'scripts/rational-content-oracle.ts'], cwd=app,
                             text=True, capture_output=True, timeout=180)
     require(result.returncode == 0, 'Rational content exporter failed: ' + result.stderr)
     records = [json.loads(line) for line in result.stdout.splitlines()]
-    report = review_content_records(records)
+    report = review_content_records(records, review_variant)
     report['rejectedContentMutations'] = review_content_mutations(records)
     return report
 

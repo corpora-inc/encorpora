@@ -20,6 +20,7 @@ import { meOptions, sessionOptions } from "../../lib/query";
 import { buttonClass } from "../../ui/Button";
 import { LoadingScreen, RouteError } from "../../ui/LoadingScreen";
 import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
+import { startDestination, startNavigation } from "../onboarding/guard";
 
 const availabilitySchema = z.object({
   offers: z.array(
@@ -115,12 +116,11 @@ function SignedInEntry({
         </section>
       </PageFrame>
     );
-  if (
-    me.data.account.confirmationRequired ||
-    me.data.consent.status !== "active" ||
-    !me.data.learners.length
-  )
-    return <Navigate to="/start" search={search} replace />;
+  // The program's own steps: confirm the email, consent, then a learner.
+  // (`/start` is "What brings you to AMP?", which would drop the program.)
+  const step = startDestination(me.data, "/start", false, program.slug);
+  if (step && step !== program.path)
+    return <Navigate {...startNavigation(step)} search={search} replace />;
   return (
     <InvoiceClaim
       session={session}

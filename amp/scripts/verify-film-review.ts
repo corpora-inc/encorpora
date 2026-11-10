@@ -1,7 +1,8 @@
 /**
- * One browser pass for the founder review page: a note typed while the film
- * plays keeps the time of the first keystroke, the score starts unset at 5,
- * and both are still there after a reload.
+ * One browser pass for the founder review page: feedback typed into the
+ * single box autosaves, the score starts unset at 5 and saves when it
+ * changes, and both are still there after a reload. Timestamped notes
+ * already stored are not shown and are not dropped by a save.
  *
  *   npx tsx scripts/verify-film-review.ts
  *   npx tsx scripts/verify-film-review.ts --shots <url> <directory>
@@ -38,6 +39,8 @@ const lab = `<!doctype html><html><body><script>
 const films=[{"id":"alpha-film","title":"Alpha film","added":"2026-11-10T00:00:00.000Z"},{"id":"beta-film","title":"Beta film","added":"2026-11-10T00:00:00.000Z"}];
 </script></body></html>`;
 
+type Stored = { score: number | null; summary: string; notes: { t: number; text: string }[]; added?: string };
+
 function send(res: ServerResponse, status: number, body: string, type: string) {
   res.statusCode = status;
   res.setHeader("Content-Type", type);
@@ -48,14 +51,6 @@ async function readBody(req: IncomingMessage) {
   const chunks: Buffer[] = [];
   for await (const chunk of req) chunks.push(chunk as Buffer);
   return Buffer.concat(chunks).toString("utf8");
-}
-
-async function scrubTime(page: Page) {
-  return page.evaluate(() => {
-    const frame = document.querySelector("iframe");
-    const scrub = frame?.contentDocument?.querySelector(".live-scrub") as HTMLInputElement | null;
-    return scrub ? Number(scrub.value) : -1;
-  });
 }
 
 async function shots(url: string, dir: string) {
@@ -89,8 +84,18 @@ async function shots(url: string, dir: string) {
   }
 }
 
+async function boxOf(page: Page, selector: string) {
+  const box = await page.locator(selector).boundingBox();
+  assert.ok(box, selector);
+  return box;
+}
+
 async function behavior() {
-  const reviews: Record<string, { score: number | null; notes: { t: number; text: string }[] }> = {};
+  const kept = { t: 12.5, text: "Kept from before" };
+  const reviews: Record<string, Stored> = {
+    "alpha-film": { score: null, summary: "", notes: [kept], added: "2026-11-10T00:00:00.000Z" },
+  };
+  let posts = 0;
   const port = 8766;
   const vite = await createServer({
     configFile: fileURLToPath(new URL("../film/vite.live.config.ts", import.meta.url)),
@@ -105,7 +110,8 @@ async function behavior() {
             if (url === "/lab.html") return send(res, 200, lab, "text/html; charset=utf-8");
             if (url === "/review" && req.method === "GET") return send(res, 200, JSON.stringify(reviews), "application/json");
             if (url === "/review" && req.method === "POST") {
-              const body = JSON.parse(await readBody(req)) as { id: string; score: number | null; notes: { t: number; text: string }[] };
+              const body = JSON.parse(await readBody(req)) as Stored & { id: string };
+              posts += 1;
               reviews[body.id] = body;
               return send(res, 200, JSON.stringify(body), "application/json");
             }
@@ -122,11 +128,13 @@ async function behavior() {
   page.on("pageerror", (error) => errors.push(String(error)));
   try {
     await page.goto(`http://127.0.0.1:${port}/review.html?id=alpha-film&list=lab`);
-    await page.waitForFunction(() => !(document.querySelector("#note-draft") as HTMLTextAreaElement).disabled);
+    await page.waitForFunction(() => !(document.querySelector("#feedback") as HTMLTextAreaElement).disabled);
     assert.equal(await page.locator(".panel-title").innerText(), "Alpha film");
     assert.equal(await page.locator(".score").getAttribute("data-set"), "false");
     assert.equal(await page.locator(".score-num").innerText(), "5");
     assert.equal(await page.locator(".score-caption").innerText(), "Not scored");
+    assert.equal(await page.locator("#note-draft, .notes, .note-time, #summary").count(), 0);
+    assert.equal((await page.locator("body").innerText()).includes(kept.text), false);
 
     const gradeHidden = await page.evaluate(() => {
       const button = document.querySelector("iframe")?.contentDocument?.querySelector(".live-grade-btn") as HTMLElement | null;
@@ -144,6 +152,10 @@ async function behavior() {
       assert.ok(player && panel);
       if (width >= 768) assert.ok(panel.x >= player.x + player.width - 2, `side by side at ${width}`);
       else assert.ok(panel.y >= player.y + player.height - 2, `stacked at ${width}`);
+      if (width === 1280) {
+        const field = await boxOf(page, "#feedback");
+        assert.ok(field.height >= 280, `feedback height ${field.height}`);
+      }
     }
 
     await page.emulateMedia({ colorScheme: "dark" });
@@ -157,26 +169,26 @@ async function behavior() {
     await page.waitForFunction(() => document.documentElement.dataset.theme === "light");
 
     await page.setViewportSize({ width: 390, height: 420 });
-    await page.locator("#note-draft").click();
+    await page.locator("#feedback").click();
     const pinned = await page.locator(".player-slot").boundingBox();
     assert.ok(pinned && pinned.y >= -1 && pinned.y + pinned.height <= 424 && pinned.height >= 120);
 
-    await page.setViewportSize({ width: 390, height: 844 });
-    const before = await scrubTime(page);
-    assert.ok(before >= 0);
-    const box = page.locator("#note-draft");
-    await box.press("O");
-    await box.pressSequentially("pening is clear", { delay: 40 });
-    const during = await scrubTime(page);
-    await box.press("Enter");
-    const savedT = Number(await page.locator(".note-time").getAttribute("data-t"));
-    assert.ok(Math.abs(savedT - before) < 0.45, `note time ${savedT} should be the first keystroke near ${before}`);
-    assert.ok(during > savedT + 0.35, `typing continued (${during}) after the stamp (${savedT})`);
-    assert.equal(await page.locator(".note-text").innerText(), "Opening is clear");
-    assert.equal(
-      await page.evaluate(() => (document.querySelector("iframe")?.contentWindow as { __playing?: () => boolean } | null)?.__playing?.()),
-      true,
-    );
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.evaluate(`new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))`);
+    assert.equal(posts, 0, "opening the page must not save the unscored default");
+    const before = await boxOf(page, "#feedback");
+    const scoreBefore = await boxOf(page, ".score");
+    const box = page.locator("#feedback");
+    await box.click();
+    await box.pressSequentially("Opening is clear", { delay: 20 });
+    await page.waitForFunction(() => document.querySelector(".save-text")?.textContent === "Saved");
+    const afterType = await boxOf(page, "#feedback");
+    assert.ok(Math.abs(afterType.y - before.y) < 1, `feedback moved when the note saved (${before.y} -> ${afterType.y})`);
+    assert.ok(Math.abs(afterType.height - before.height) < 1, `feedback resized when the note saved (${before.height} -> ${afterType.height})`);
+    assert.equal(await page.locator("#feedback").inputValue(), "Opening is clear");
+    assert.deepEqual(reviews["alpha-film"].notes, [kept]);
+    assert.equal(reviews["alpha-film"].summary, "Opening is clear");
+    assert.equal(reviews["alpha-film"].score, null);
 
     const track = await page.locator(".score-track").boundingBox();
     assert.ok(track);
@@ -184,29 +196,28 @@ async function behavior() {
     await page.waitForFunction(() => document.querySelector(".score-num")?.textContent === "8");
     assert.equal(await page.locator(".score").getAttribute("data-set"), "true");
     await page.waitForFunction(() => document.querySelector(".save-text")?.textContent === "Saved");
+    const afterScore = await boxOf(page, "#feedback");
+    const scoreAfter = await boxOf(page, ".score");
+    assert.ok(Math.abs(afterScore.y - before.y) < 1, `feedback moved when the score saved (${before.y} -> ${afterScore.y})`);
+    assert.ok(Math.abs(afterScore.height - before.height) < 1, `feedback resized when the score saved (${before.height} -> ${afterScore.height})`);
+    assert.ok(Math.abs(scoreAfter.y - scoreBefore.y) < 1 && Math.abs(scoreAfter.height - scoreBefore.height) < 1, "score block shifted when it saved");
+    assert.equal(reviews["alpha-film"].score, 8);
+    assert.deepEqual(reviews["alpha-film"].notes, [kept]);
 
     await page.reload();
-    await page.waitForFunction(() => !(document.querySelector("#note-draft") as HTMLTextAreaElement).disabled);
-    assert.equal(await page.locator(".note-text").innerText(), "Opening is clear");
+    await page.waitForFunction(() => !(document.querySelector("#feedback") as HTMLTextAreaElement).disabled);
+    assert.equal(await page.locator("#feedback").inputValue(), "Opening is clear");
     assert.equal(await page.locator(".score-num").innerText(), "8");
     assert.equal(await page.locator(".score").getAttribute("data-set"), "true");
-    const again = Number(await page.locator(".note-time").getAttribute("data-t"));
-    assert.equal(again, savedT);
-
-    await page.locator(".note-time").click();
-    await page.waitForFunction(
-      (t) => {
-        const scrub = document.querySelector("iframe")?.contentDocument?.querySelector(".live-scrub") as HTMLInputElement | null;
-        return !!scrub && Math.abs(Number(scrub.value) - t) < 0.05;
-      },
-      savedT,
-    );
+    assert.equal((await page.locator("body").innerText()).includes(kept.text), false);
+    assert.deepEqual(reviews["alpha-film"].notes, [kept]);
 
     await page.locator(".btn-next").click();
     await page.waitForURL(/id=beta-film/);
-    await page.waitForFunction(() => !(document.querySelector("#note-draft") as HTMLTextAreaElement).disabled);
+    await page.waitForFunction(() => !(document.querySelector("#feedback") as HTMLTextAreaElement).disabled);
     assert.equal(await page.locator(".panel-title").innerText(), "Beta film");
     assert.equal(await page.locator(".score").getAttribute("data-set"), "false");
+    assert.equal(await page.locator("#feedback").inputValue(), "");
     assert.equal(errors.length, 0, errors.join("\n"));
   } finally {
     await browser.close();

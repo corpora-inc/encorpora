@@ -3,6 +3,7 @@ import { LessonFailure } from "./LessonRecovery";
 import { useQuery } from "@tanstack/react-query";
 import { z } from "zod";
 import type { ProblemLessonView } from "../../../content/problem-lessons";
+import { FILM_CAPABILITY } from "../../../content/lesson-films";
 import { request } from "../../lib/api";
 import { ProblemLesson } from "../../ProblemLesson";
 import "../../practice.css";
@@ -20,7 +21,7 @@ export default function SkillLesson({
     queryKey: ["pathways-lesson", templateId],
     queryFn: ({ signal }) =>
       request(
-        `/problem-lessons/${encodeURIComponent(templateId)}?film=lesson-film-v1`,
+        `/problem-lessons/${encodeURIComponent(templateId)}?film=${FILM_CAPABILITY}`,
         z.object({
           lesson: z.custom<ProblemLessonView>(
             (v) =>

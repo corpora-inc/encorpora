@@ -16,10 +16,10 @@ import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { EDGE, envelope, SR } from "./audio";
-import { MODEL, NARRATOR_ID, resolveCast, runsOf, spokenText, takeKeyParts, type Voice } from "./cast";
+import { MODEL, NARRATOR_ID, requireVoices, resolveCast, runsOf, spokenText, takeKeyParts, type Voice } from "./cast";
 import { FILM_VOICES } from "./paths";
 
-/** The narrator: Madeline Brousseaux, by exact id (docs/amp-media-pipeline.md). Other approved voices are in cast.ts. */
+/** The narrator: Madeline Brousseaux, by exact id (docs/amp-media-pipeline.md). Other approved voices are in voices.ts. */
 export const VOICE_ID = NARRATOR_ID;
 export { MODEL };
 /** The cache key of a take: voice, model, text, and the voice's tag when it has one. */
@@ -262,11 +262,13 @@ if (process.argv[1]?.endsWith("voice.ts")) {
   const script = JSON.parse(readFileSync(join(here, "lessons", `${id}.json`), "utf8"));
   const dir = FILM_VOICES;
   // one take per run of beats by the same speaker: a one-voice lesson has one run per shot
-  const runs = runsOf(script, resolveCast(script));
+  const cast = resolveCast(script);
+  requireVoices(cast);
+  const runs = runsOf(script, cast);
   let bad = 0;
   for (const r of runs) {
     const who = `shot ${r.shot + 1}${runs.filter((x) => x.shot === r.shot).length > 1 ? `, ${r.role.role} from beat ${r.from + 1}` : ""}`;
-    const hash = takeKey(r.role.voice, r.text);
+    const hash = takeKey(r.role.voice!, r.text);
     const file = join(dir, `${hash}.json`);
     if (!existsSync(file)) { console.log(`${who}: no take yet`); continue; }
     const faults = await judge(r.text, JSON.parse(readFileSync(file, "utf8")), join(dir, `${hash}.heard.json`));

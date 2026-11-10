@@ -13,6 +13,7 @@ import {
   registerAccountRoutes,
 } from "../src/server/accounts";
 import { registerFamilyRoutes } from "../src/family/routes";
+import { registerSchoolRoutes } from "../src/schools/routes";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { currentLearner } from "./ui-controls";
@@ -21,7 +22,8 @@ if (!url) throw Error("AMP_TEST_DATABASE_URL is required");
 assertTestDatabaseTarget(url);
 await migrate(url);
 const repository = new PostgresRepository(url, { development: true });
-const origin = "http://localhost:4384";
+const webPort = Number(process.env.AMP_PREMIUM_UI_PORT ?? 4384);
+const origin = `http://localhost:${webPort}`;
 async function startServer() {
   const accounts = await createAccounts(repository.pool, {
     baseURL: origin,
@@ -33,20 +35,32 @@ async function startServer() {
   const authenticate = accountsAuth(accounts);
   const app = buildApp({ repository, authenticate, development: true });
   await registerAccountRoutes(app, accounts);
+  // As main.ts: second-parent approvals, and the starter's family opening
+  // on its class (families are classes).
   await registerFamilyRoutes(app, {
     pool: repository.pool,
     authenticate,
     development: true,
+    approvals: { secret: accounts.config.secret, origin },
   });
-  await app.listen({ host: "127.0.0.1", port: 4385 });
+  await registerSchoolRoutes(app, {
+    pool: repository.pool,
+    authenticate,
+    services: {
+      secret: accounts.config.secret,
+      origin,
+      learning: repository,
+    },
+  });
+  await app.listen({ host: "127.0.0.1", port: webPort + 1 });
   return app;
 }
 let app = await startServer();
 const serverOptions = {
   host: "127.0.0.1",
-  port: 4384,
+  port: webPort,
   strictPort: true,
-  proxy: { "/api": { target: "http://127.0.0.1:4385" } },
+  proxy: { "/api": { target: `http://127.0.0.1:${webPort + 1}` } },
 };
 const built = process.argv.includes("--production");
 const apiEnvironment = process.env.NODE_ENV;
@@ -188,34 +202,44 @@ try {
       await page
         .getByRole("button", { name: "Create account", exact: true })
         .click();
+      // A new account answers "What brings you to AMP?": a parent of one
+      // child. A failed save is reported in place and moves nothing.
       await page
-        .getByRole("heading", { name: "Your account is ready" })
+        .getByRole("heading", { name: "What brings you to AMP?" })
         .waitFor();
-      await page.getByRole("link", { name: "Continue setup" }).click();
-      await page.getByLabel("Learner name").waitFor();
-      assert.ok(page.url().endsWith("/start/name"));
+      await page.getByRole("link", { name: /^I’m a parent/ }).click();
+      await choose(page, "Birth year, your child", "2016");
       await page.screenshot({
         path: `${shots}/guided-start-${width}-${theme}.png`,
       });
-      await page.getByLabel("Learner name").fill("Avery");
-      await page.getByRole("button", { name: "Continue", exact: true }).click();
-      await page.getByRole("group", { name: "Birth year" }).waitFor();
-      assert.ok(page.url().endsWith("/start/birth-year"));
-      await page.route("**/api/v1/learners", (r) =>
+      await page.route("**/api/v1/start", (r) =>
         r.fulfill({ status: 503, json: { error: "temporarily_unavailable" } }),
       );
-      const card = page.locator(".start-card"),
-        box = await card.boundingBox();
-      await page.getByRole("button", { name: "2016", exact: true }).click();
+      // Scroll first, so the click's scroll is not mistaken for a shift.
+      const start = page.getByRole("button", { name: "Continue", exact: true });
+      await start.scrollIntoViewIfNeeded();
+      const panel = page.locator("[data-starter] section").first(),
+        box = await panel.boundingBox();
+      await start.click();
       await page.getByRole("alert").waitFor();
       await ready(page);
-      await stable(card, box, "failed learner save does not move setup");
-      assert.ok(logs.some((s) => s.includes("AMP action failed")));
+      await stable(panel, box, "a failed start does not move setup");
+      assert.ok(logs.some((s) => s.includes("The starter didn’t finish")));
       await page.screenshot({
         path: `${shots}/setup-error-${width}-${theme}.png`,
       });
-      await page.unroute("**/api/v1/learners");
-      await page.getByRole("button", { name: "2016", exact: true }).click();
+      await page.unroute("**/api/v1/start");
+      await page.getByRole("button", { name: "Dismiss message" }).click();
+      await page.getByRole("button", { name: "Continue", exact: true }).click();
+      await page.waitForURL(
+        /\/school\/[0-9a-f-]+\/classes\/[0-9a-f-]+\/today$/,
+      );
+      // The child practices on this device: their first problem.
+      const first = (
+        await (await context.request.get(`${origin}/api/v1/me`)).json()
+      ).learners[0] as { id: string; name: string };
+      const child = first.name;
+      await page.goto(`${origin}/practice`);
       await page
         .locator(".problem-stage")
         .waitFor()
@@ -259,19 +283,19 @@ try {
         await fits(page);
       }
       await page.goto(`${origin}/family/learners`);
-      await page.getByRole("heading", { name: "Avery", exact: true }).waitFor();
+      await page.getByRole("heading", { name: child, exact: true }).waitFor();
       // The Account group's tabs are the app frame's (app/AppShell.tsx).
       const tabs = page.locator("[data-app-bar] [data-tabs]"),
         tabBox = await tabs.boundingBox();
       await tabs.getByRole("link", { name: "Billing", exact: true }).click();
       assert.ok(page.url().endsWith("/family/access"));
       await page.goBack();
-      await page.getByRole("heading", { name: "Avery", exact: true }).waitFor();
+      await page.getByRole("heading", { name: child, exact: true }).waitFor();
       await stable(tabs, tabBox, "family tab navigation keeps frame stable");
       await page.goForward();
       await page.waitForURL("**/family/access");
       await page.goBack();
-      await page.getByRole("heading", { name: "Avery", exact: true }).waitFor();
+      await page.getByRole("heading", { name: child, exact: true }).waitFor();
       await page
         .getByRole("button", { name: "Add learner", exact: false })
         .click();
@@ -400,8 +424,10 @@ try {
             json: { error: "family_service_unavailable" },
           }),
         );
-        await page.goto(`${origin}/start/name`);
-        await page.getByRole("alert").waitFor();
+        // A setup screen opened cold while `/me` fails: a designed error
+        // with a retry that works.
+        await page.goto(`${origin}/continue/${first.id}`);
+        await page.getByRole("heading", { name: "This didn’t load" }).waitFor();
         await page
           .getByRole("button", { name: "Try again", exact: true })
           .waitFor();
@@ -411,7 +437,9 @@ try {
         await page
           .getByRole("button", { name: "Try again", exact: true })
           .click();
-        await page.getByLabel("Learner name").waitFor();
+        await page
+          .getByRole("heading", { name: "Continue with AMP" })
+          .waitFor();
         await page.goto(`${origin}/family/learners`);
         await page
           .getByRole("heading", { name: "Jordan", exact: true })
@@ -503,7 +531,8 @@ try {
           .getByRole("heading", { name: "Jordan", exact: true })
           .waitFor();
       }
-      // Capability fixture: a parent without consent never sees a learner-write button.
+      // A parent with no child and no consent is offered the starter's next
+      // step, never a learner form that consent would refuse.
       const response = await context.request.get(`${origin}/api/v1/me`),
         me = await response.json();
       await page.route("**/api/v1/me", (route) =>
@@ -511,7 +540,7 @@ try {
           json: {
             ...me,
             learners: [],
-            next: "choose-plan",
+            next: "start",
             consent: { status: "none", method: null },
             family: {
               ...me.family,
@@ -521,51 +550,22 @@ try {
           },
         }),
       );
-      await page.route("**/api/v1/consent", (route) =>
-        route.fulfill({
-          json: {
-            available: false,
-            consentActive: false,
-            notice: null,
-            noticeDigest: null,
-            confirmationDelayHours: null,
-            request: null,
-          },
-        }),
-      );
-      // Without purchase or email-plus configuration, setup ends in a designed
-      // state with a next step, never a refresh-only dead end.
-      await page.route("**/api/v1/billing/enrollment", (route) =>
-        route.fulfill({
-          json: {
-            available: false,
-            notice: null,
-            noticeDigest: null,
-            purchase: null,
-          },
-        }),
-      );
       await page.reload();
-      await page.getByRole("button", { name: "Continue setup" }).waitFor();
+      await page.getByRole("button", { name: "Add a child" }).waitFor();
       assert.equal(
         await page
           .getByRole("button", { name: "Add learner", exact: false })
           .count(),
         0,
       );
-      await page.getByRole("button", { name: "Continue setup" }).click();
-      await page.waitForURL("**/start/plan");
-      await page
-        .getByRole("heading", { name: "Enrollment isn’t open yet" })
-        .waitFor();
-      assert.equal(
-        await page.getByRole("button", { name: "Refresh status" }).count(),
-        0,
-      );
       await fits(page);
       await page.screenshot({
-        path: `${shots}/consent-unavailable-${width}-${theme}.png`,
+        path: `${shots}/no-child-${width}-${theme}.png`,
       });
+      await page.getByRole("button", { name: "Add a child" }).click();
+      await page.waitForURL("**/start/parent");
+      await page.getByRole("heading", { name: "How many children?" }).waitFor();
+      await page.unrouteAll({ behavior: "wait" });
       assert.deepEqual(faults, []);
       console.log("Complete viewport fixture auth requests", authRequests);
       await context.close();
@@ -575,7 +575,7 @@ try {
       app = await startServer();
     }
   console.log(
-    `Premium shell: real parent sign-up → learner → first problem; routes, refresh/history, mutation consistency, failed-save and pending-refresh geometry; ${process.argv.includes("--smoke") ? "320px" : "4 widths"} × ${process.argv.includes("--dark-only") ? "dark theme" : "2 themes"} passed. Development consent is a test fixture, not purchase-consent acceptance.`,
+    `Premium shell: real parent sign-up → starter (one child) → first problem; routes, refresh/history, mutation consistency, failed-save and pending-refresh geometry; ${process.argv.includes("--smoke") ? "320px" : "4 widths"} × ${process.argv.includes("--dark-only") ? "dark theme" : "2 themes"} passed. Development consent is a test fixture, not purchase-consent acceptance.`,
   );
 } finally {
   await browser.close();

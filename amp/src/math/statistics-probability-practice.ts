@@ -571,22 +571,26 @@ function graphDistribution(r: Random): Built {
   let counts: number[];
   let total: number;
   let prompt: string;
+  let focus: string;
   if (kind === 0) {
     const n = r(0, 1) === 0 ? 3 : 4;
     values = Array.from({ length: n + 1 }, (_, k) => k);
     counts = values.map((k) => choose(n, k));
     total = 2 ** n;
     prompt = `A fair coin is tossed ${n} times. Let $X$ be the number of heads. Which list is the probability distribution of $X$?`;
+    focus = `${n} tosses`;
   } else if (kind === 1) {
     values = [2, 3, 4, 5, 6, 7, 8];
     counts = [1, 2, 3, 4, 3, 2, 1];
     total = 16;
     prompt = `Two fair 4-sided dice are rolled. Let $X$ be the sum of the two numbers. Which list is the probability distribution of $X$?`;
+    focus = "two 4-sided dice";
   } else if (kind === 2) {
     values = [1, 2, 3, 4, 5, 6];
     counts = values.map((k) => 2 * k - 1);
     total = 36;
     prompt = `Two fair six-sided dice are rolled. Let $X$ be the larger of the two numbers, or that number if they match. Which list is the probability distribution of $X$?`;
+    focus = "two 6-sided dice";
   } else {
     let red = r(2, 5);
     let blue = r(2, 5);
@@ -597,6 +601,7 @@ function graphDistribution(r: Random): Built {
     counts = values.map(bag);
     total = choose(red + blue, 2);
     prompt = `A bag has ${red} red marbles and ${blue} blue marbles. Two marbles are drawn at random at the same time. Let $X$ be the number of red marbles drawn. Which list is the probability distribution of $X$?`;
+    focus = `${red} red marbles and ${blue} blue marbles`;
   }
   if (counts.reduce((a, b) => a + b, 0) !== total)
     throw new Error("Distribution counts must fill the sample space");
@@ -629,7 +634,7 @@ function graphDistribution(r: Random): Built {
     draft: {
       prompt,
       answer: correct,
-      hint: `Count the equally likely outcomes for each value of $X$, then divide by ${total}. Every value needs a probability, and the probabilities add to 1.`,
+      hint: `Start from ${focus}. Count the equally likely outcomes for each value of $X$, then divide by ${total}. Every value needs a probability, and the probabilities add to 1.`,
       explanation: [
         RANDOM_VARIABLE,
         `There are ${total} equally likely outcomes.`,
