@@ -201,7 +201,10 @@ def read_plainly(check):
                 raise
             try:
                 return check(*readings, **kwargs)
-            except (ValueError, TypeError, KeyError, AttributeError, StopIteration) as fallback:
+            # The plain reading is only a second chance: however it fails
+            # (a lookup that finds no typeset span, say), the typeset
+            # reading's own error is the verdict.
+            except (ValueError, TypeError, KeyError, AttributeError, StopIteration, IndexError) as fallback:
                 raise original from fallback
         return check(*readings, **kwargs)
     check_typeset.__wrapped__ = check

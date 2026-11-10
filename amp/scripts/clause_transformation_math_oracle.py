@@ -135,7 +135,9 @@ def handles(public):
     if ident == 'transformation-rule-slots':
         return kind == 'structured-work'
     if ident == 'place-transformed-image':
-        return prompt.startswith('Triangle ABC has vertices')
+        # The original family also names a triangle ABC; it ends by naming
+        # the images ("..., the images of A, B and C.").
+        return prompt.startswith('Triangle ABC has vertices') and prompt.endswith('in that order.')
     if ident == 'dilation-measure':
         return kind == 'structured-work'
     if ident == 'similarity-proof-aa':
