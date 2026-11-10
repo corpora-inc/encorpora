@@ -1,4 +1,10 @@
-import { useId, useLayoutEffect, useRef, useState } from "react";
+import {
+  useId,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import { AppError } from "../lib/AppError";
 import { Button, type ButtonVariant } from "./Button";
 import styles from "./PrintButton.module.css";
@@ -17,8 +23,9 @@ export function PrintButton({
   download,
   disabled,
 }: {
-  children: string;
+  children: ReactNode;
   variant?: ButtonVariant;
+  /** The button's own class (the anchor around it is the component's). */
   className?: string;
   download: () => Promise<void>;
   disabled?: boolean;
@@ -62,9 +69,10 @@ export function PrintButton({
     }
   }
   return (
-    <span className={`${styles.anchor} ${className ?? ""}`}>
+    <span className={styles.anchor}>
       <Button
         variant={variant}
+        className={className}
         aria-busy={busy}
         disabled={disabled}
         aria-describedby={message ? id : undefined}
