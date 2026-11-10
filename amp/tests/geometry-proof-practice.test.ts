@@ -1,3 +1,5 @@
+import { proofConstructionTemplates } from "../src/math/geometry-proof-practice";
+import { skills } from "../src/curriculum/catalog";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { templates } from "../src/math/engine";
@@ -6,144 +8,114 @@ import { proofConstructionCase as geometryProofCase } from "../src/math/geometry
 import { problemLesson } from "../src/content/problem-lessons";
 import { lessons } from "../src/content/lessons";
 
-const expected: Record<string, { skill: string; tags: string[] }> = {
-  "line-angle-proof-reasons": {
-    skill: "line-angle-proofs",
-    tags: [
-      "alternate-interior",
-      "bisector-equidistant",
-      "equidistant-converse",
-      "vertical-equation",
-    ],
-  },
-  "triangle-theorem-consequences": {
-    skill: "triangle-proofs",
-    tags: ["base-angles", "midsegment", "median-ratio", "angle-sum-step"],
-  },
-  "parallelogram-property-consequences": {
-    skill: "parallelogram-proofs",
-    tags: [
-      "reason-bisect",
-      "reason-opAngles",
-      "reason-opSides",
-      "reason-rectDiag",
-      "diagonal-halves",
-      "rectangle-diagonals",
-      "consecutive-angles",
-    ],
-  },
-  "precise-geometric-definitions": {
-    skill: "geometric-definitions",
-    tags: [
-      "define-circle",
-      "define-parallel",
-      "define-angle-ray",
-      "spot-flawed",
-    ],
-  },
-  "transformation-invariant-claims": {
-    skill: "transformation-invariants",
-    tags: [
-      "which-preserves",
-      "coordinate-rigid",
-      "coordinate-dilation",
-      "coordinate-mixed",
-      "dilation-facts",
-      "rotation-definition",
-    ],
-  },
-  "polygon-symmetry-counts": {
-    skill: "polygon-symmetries",
-    tags: [
-      "smallest-rotation",
-      "reflection-lines",
-      "rotations-half",
-      "rotations-square",
-      "rotations-none",
-      "rotations-hex",
-      "rotation-count",
-    ],
-  },
-  "transformation-sequence-mapping": {
-    skill: "transformation-constructions",
-    tags: ["single", "composition", "dilation-composition"],
-  },
-  "compass-straightedge-reasoning": {
-    skill: "geometric-constructions",
-    tags: [
-      "bisector-next-step",
-      "angle-bisector-next-step",
-      "bisector-justification",
-      "parallel-justification",
-      "step-order",
-    ],
-  },
-  "inscribed-polygon-reasoning": {
-    skill: "inscribed-polygons",
-    tags: [
-      "hexagon-side-reason",
-      "hexagon-perimeter",
-      "central-angle",
-      "method-hexagon",
-      "method-triangle",
-      "method-square",
-    ],
-  },
-  "triangle-circle-centers": {
-    skill: "triangle-circles",
-    tags: [
-      "circumcenter",
-      "incenter",
-      "cyclic-opposite",
-      "cyclic-algebra",
-      "right-triangle-circumradius",
-    ],
-  },
-  "tangent-circle-computation": {
-    skill: "tangent-construction",
-    tags: [
-      "tangent-length",
-      "equal-tangents",
-      "radius-from-tangent",
-      "tangent-angle",
-    ],
-  },
-  "circle-dilation-scaling": {
-    skill: "circle-similarity",
-    tags: [
-      "scale-factor",
-      "area-factor",
-      "circumference-factor",
-      "map-sequence",
-    ],
-  },
-  "coordinate-quadrilateral-claims": {
-    skill: "coordinate-proofs",
-    tags: [
-      "type-square",
-      "type-rectangle",
-      "type-rhombus",
-      "type-parallelogram",
-      "type-trapezoid",
-    ],
-  },
-  "measurement-formula-justifications": {
-    skill: "measurement-formula-proofs",
-    tags: [
-      "sector-rearrangement",
-      "cube-three-pyramids",
-      "cone-cylinder",
-      "circumference-justification",
-      "limit-justification",
-      "cylinder-limit",
-      "pyramid-cavalieri",
-      "cone-equal-sections",
-      "cavalieri-volumes",
-      "cavalieri-oblique",
-    ],
-  },
+// Fixed witnesses keep the independent mathematical cases below exercised.
+// They are not a complete inventory; new types come from the registry.
+const regressionCases: Record<string, string[]> = {
+  "line-angle-proof-reasons": [
+    "alternate-interior",
+    "bisector-equidistant",
+    "equidistant-converse",
+    "vertical-equation",
+  ],
+  "triangle-theorem-consequences": [
+    "base-angles",
+    "midsegment",
+    "median-ratio",
+    "angle-sum-step",
+  ],
+  "parallelogram-property-consequences": [
+    "reason-bisect",
+    "reason-opAngles",
+    "reason-opSides",
+    "reason-rectDiag",
+    "diagonal-halves",
+    "rectangle-diagonals",
+    "consecutive-angles",
+  ],
+  "precise-geometric-definitions": [
+    "define-circle",
+    "define-parallel",
+    "define-angle-ray",
+    "spot-flawed",
+  ],
+  "transformation-invariant-claims": [
+    "which-preserves",
+    "coordinate-rigid",
+    "coordinate-dilation",
+    "coordinate-mixed",
+    "dilation-facts",
+    "rotation-definition",
+  ],
+  "polygon-symmetry-counts": [
+    "smallest-rotation",
+    "reflection-lines",
+    "rotations-half",
+    "rotations-square",
+    "rotations-none",
+    "rotations-hex",
+    "rotation-count",
+  ],
+  "transformation-sequence-mapping": [
+    "single",
+    "composition",
+    "dilation-composition",
+  ],
+  "compass-straightedge-reasoning": [
+    "bisector-next-step",
+    "angle-bisector-next-step",
+    "bisector-justification",
+    "parallel-justification",
+    "step-order",
+  ],
+  "inscribed-polygon-reasoning": [
+    "hexagon-side-reason",
+    "hexagon-perimeter",
+    "central-angle",
+    "method-hexagon",
+    "method-triangle",
+    "method-square",
+  ],
+  "triangle-circle-centers": [
+    "circumcenter",
+    "incenter",
+    "cyclic-opposite",
+    "cyclic-algebra",
+    "right-triangle-circumradius",
+  ],
+  "tangent-circle-computation": [
+    "tangent-length",
+    "equal-tangents",
+    "radius-from-tangent",
+    "tangent-angle",
+  ],
+  "circle-dilation-scaling": [
+    "scale-factor",
+    "area-factor",
+    "circumference-factor",
+    "map-sequence",
+  ],
+  "coordinate-quadrilateral-claims": [
+    "type-square",
+    "type-rectangle",
+    "type-rhombus",
+    "type-parallelogram",
+    "type-trapezoid",
+  ],
+  "measurement-formula-justifications": [
+    "sector-rearrangement",
+    "cube-three-pyramids",
+    "cone-cylinder",
+    "circumference-justification",
+    "limit-justification",
+    "cylinder-limit",
+    "pyramid-cavalieri",
+    "cone-equal-sections",
+    "cavalieri-volumes",
+    "cavalieri-oblique",
+  ],
 };
-const ids = Object.keys(expected);
+const ids = proofConstructionTemplates.map((t) => t.id);
+const metadata = new Map(proofConstructionTemplates.map((t) => [t.id, t]));
 const seeds = Array.from({ length: 400 }, (_, i) => `gp:${i}`);
 
 function parts(templateId: string, seed: string) {
@@ -165,7 +137,7 @@ test("every geometry proof family is deterministic, reaches every variant, and h
       assert.deepEqual(again, generated);
       const direct = geometryProofCase(id, seed);
       assert.equal(direct.problem.answer, generated.answer);
-      assert.equal(generated.public.skillId, expected[id]!.skill);
+      assert.equal(generated.public.skillId, metadata.get(id)!.skillId);
       assert.equal(new Set(labels).size, 4, `${id} ${seed}`);
       assert.equal(
         response.options.filter((o) => o.id === generated.answer).length,
@@ -192,14 +164,22 @@ test("every geometry proof family is deterministic, reaches every variant, and h
           );
       for (const tag of direct.tags) seen.add(tag);
     }
-    assert.deepEqual([...seen].sort(), [...expected[id]!.tags].sort(), id);
+    for (const tag of regressionCases[id] ?? [])
+      assert.ok(
+        seen.has(tag),
+        `${id}: mathematical case ${tag} was not exercised`,
+      );
   }
 });
 
 test("template metadata, lessons, methods and principles are registered for each family", () => {
   for (const id of ids) {
     const template = templates.find((t) => t.id === id);
-    assert.equal(template?.skillId, expected[id]!.skill);
+    assert.equal(template?.skillId, metadata.get(id)!.skillId);
+    assert.ok(
+      skills.some((s) => s.id === metadata.get(id)!.skillId),
+      id,
+    );
     assert.equal(template?.requiredResponseCapability, "single-choice-v1");
     assert.ok(
       lessons.some((l) => l.templateIds.includes(id)),

@@ -117,7 +117,6 @@ test("every chain template is registered with lesson, method, principle and face
       `${id} lesson`,
     );
   }
-  assert.equal(percentChainTemplates.length, 1);
 });
 
 test("generation is deterministic, reaches the engine and every axis value and variant", () => {

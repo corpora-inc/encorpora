@@ -1,3 +1,4 @@
+import { skills } from "../src/curriculum/catalog";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
@@ -16,16 +17,6 @@ import { addendStrategiesTemplates } from "../src/math/addend-strategies-practic
  */
 
 const ids = addendStrategiesTemplates.map((t) => t.id);
-const SKILLS: Record<string, string> = {
-  "turn-around-fact": "turn-around-facts",
-  "turn-around-sum": "turn-around-facts",
-  "make-ten-grouping": "three-addends",
-  "make-ten-step": "three-addends",
-  "array-add-rows-total": "arrays",
-  "equal-addends-match": "arrays",
-  "equal-addends-array": "arrays",
-  "equal-addends-select": "arrays",
-};
 const many = (id: string, n: number, prefix = "addend") =>
   Array.from({ length: n }, (_, i) => generateProblem(id, `${prefix}-${i}`));
 
@@ -97,15 +88,17 @@ const countsArray = (label: string, rows: number, columns: number) => {
 /* ---------- contract ---------- */
 
 test("every template validates, is deterministic and stamps its skill", () => {
-  assert.deepEqual(ids, Object.keys(SKILLS));
   for (const t of addendStrategiesTemplates) {
     assert.equal(t.gradeBand, "K–2");
-    assert.equal(t.skillId, SKILLS[t.id]);
+    assert.ok(
+      skills.some((s) => s.id === t.skillId),
+      t.id,
+    );
     for (let i = 0; i < 60; i++) {
       const p = generateProblem(t.id, `contract-${i}`);
       generatedProblemSchema.parse(p);
       assert.deepEqual(generateProblem(t.id, `contract-${i}`), p);
-      assert.equal(p.public.skillId, SKILLS[t.id]);
+      assert.equal(p.public.skillId, t.skillId);
       const kind = p.public.response.kind;
       const expected: Record<string, string | undefined> = {
         choice: "single-choice-v1",

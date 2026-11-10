@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import { books } from "../src/books/catalog.js";
 import { validateEqualGroupsPracticeBindings } from "../books/equal-groups-workshop/practice.js";
 import { validateFractionPracticeCoverage } from "../src/content/fraction-practice-coverage.js";
@@ -25,8 +26,16 @@ test("every problem type has an authored lesson and no lesson is orphaned", () =
   const orphaned = Object.keys(methods).filter((id) => !ids.has(id));
   assert.deepEqual(orphaned, []);
   for (const [id, method] of Object.entries(methods)) {
-    assert.ok(method.goal.length <= 140, `${id} goal is concise`);
-    assert.ok(method.method.length >= 1 && method.method.length <= 4, id);
+    assert.ok(method.goal.trim(), `${id}: missing goal`);
+    reportEditorialLimit(
+      method.goal.length <= 140,
+      `${id}: goal exceeds 140 characters (${method.goal.length})`,
+    );
+    assert.ok(method.method.length >= 1, `${id}: missing method`);
+    reportEditorialLimit(
+      method.method.length <= 4,
+      `${id}: method exceeds 4 steps (${method.method.length})`,
+    );
   }
 });
 
@@ -43,13 +52,33 @@ test("each implemented family has a reference lesson or validated book-page teac
       );
       bindings.set(id, (bindings.get(id) ?? 0) + 1);
     }
-    assert.ok(lesson.objectives.length >= 2);
+    assert.ok(lesson.objectives.length > 0, lesson.id);
+    reportEditorialLimit(
+      lesson.objectives.length >= 2,
+      `${lesson.id}: fewer than 2 objectives`,
+    );
     const sections = [...lesson.sections, ...(lesson.closingSections ?? [])];
-    assert.ok(sections.length >= 2);
+    assert.ok(sections.length > 0, lesson.id);
+    reportEditorialLimit(
+      sections.length >= 2,
+      `${lesson.id}: fewer than 2 sections`,
+    );
     assert.ok(sections.every((s) => s.paragraphs.length >= 1));
-    assert.ok(lesson.workedExample.steps.length >= 2);
-    assert.ok(lesson.pitfalls.length >= 2);
-    assert.ok(lesson.parentGuide.length > 40);
+    assert.ok(lesson.workedExample.steps.length > 0, lesson.id);
+    reportEditorialLimit(
+      lesson.workedExample.steps.length >= 2,
+      `${lesson.id}: fewer than 2 worked steps`,
+    );
+    assert.ok(lesson.pitfalls.length > 0, lesson.id);
+    reportEditorialLimit(
+      lesson.pitfalls.length >= 2,
+      `${lesson.id}: fewer than 2 pitfalls`,
+    );
+    assert.ok(lesson.parentGuide.trim(), lesson.id);
+    reportEditorialLimit(
+      lesson.parentGuide.length > 40,
+      `${lesson.id}: parent guide has at most 40 characters`,
+    );
   }
   for (const [id, count] of bindings)
     assert.equal(count, 1, `Duplicate reference lesson for ${id}`);

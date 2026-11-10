@@ -40,17 +40,21 @@ test(
       const batch = await app.inject({
         method: "POST",
         url: `${path}/batches`,
-        payload: { templateId: "add-within-20", count: 2 },
+        payload: {
+          templateId: "add-within-20",
+          count: 2,
+          figureCapabilities: ["scenes-v1"],
+        },
       });
       assert.equal(batch.statusCode, 200);
       const publicProblem = batch.json().problems[0];
       assert.ok(!("answer" in publicProblem));
       assert.ok(!("explanation" in publicProblem));
-      // These requests declare no capabilities, so solve the served legacy surface.
+      // No response formats are declared; match the requested scene support.
       const answer = generateProblemFor(
         publicProblem.templateId,
         publicProblem.seed,
-        [],
+        ["scenes-v1"],
       ).answer;
       const input = {
         problemId: publicProblem.id,
@@ -101,8 +105,9 @@ test(
         payload: {
           problemId: second.id,
           requestId: randomUUID(),
-          response: generateProblemFor(second.templateId, second.seed, [])
-            .answer,
+          response: generateProblemFor(second.templateId, second.seed, [
+            "scenes-v1",
+          ]).answer,
         },
       });
       assert.equal(helped.json().assisted, true);

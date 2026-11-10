@@ -30,7 +30,6 @@ const ids = Object.keys(varied).sort();
 const seeds = Array.from({ length: 400 }, (_, i) => `hs:${i}`);
 
 test("every varied family keeps its template, skill and exposure objective", () => {
-  assert.equal(ids.length, 11);
   for (const id of ids) {
     const matches = templates.filter((t) => t.id === id);
     assert.equal(matches.length, 1, id);

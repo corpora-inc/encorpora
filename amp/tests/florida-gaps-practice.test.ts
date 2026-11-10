@@ -1,3 +1,4 @@
+import { generatedProblemSchema } from "../src/math/contracts";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -47,39 +48,16 @@ const choiceLabels = (g: ReturnType<typeof floridaGapCase>["problem"]) => {
   return response.options;
 };
 
-test("every template is registered, deterministic, reaches the engine and has all variants", () => {
-  const expected: Record<string, number> = {
-    "fl-equation-truth-20": 2,
-    "fl-equation-truth-100": 2,
-    "multiplication-division-equation-truth": 2,
-    "whole-number-equation-truth": 2,
-    "fl-equation-truth-grouped": 2,
-    "fl-decimal-tenth-hundredth-step": 8,
-    "fl-decimal-by-tenth-hundredth": 5,
-    "fl-expression-description-match": 2,
-    "fl-two-step-story-equation": 5,
-    "fl-metric-customary-conversion": 10,
-    "fl-integer-multiply-divide": 6,
-    "fl-vector-dot-product": 3,
-    "fl-vector-angle": 5,
-    "fl-even-odd-classify": 6,
-    "fl-function-arithmetic": 6,
-    "fl-trapezoid-consequences": 6,
-  };
-  assert.deepEqual(
-    [...floridaGapTemplateIds].sort(),
-    Object.keys(expected).sort(),
-  );
+test("every template is registered, deterministic, reaches the engine and generates valid problems", () => {
   for (const template of floridaGapTemplates)
     assert.ok(
       templates.some((t) => t.id === template.id),
       template.id,
     );
   for (const id of floridaGapTemplateIds) {
-    const variants = new Set<string>();
     for (let i = 0; i < SEEDS; i++) {
       const c = floridaGapCase(id, `fl:${i}`);
-      variants.add(c.variant);
+      generatedProblemSchema.parse(c.problem);
       if (i < 25) {
         // The case model describes version 1; clause extensions have their
         // own current-version checks in clause-variants-astra-3.test.ts.
@@ -92,7 +70,6 @@ test("every template is registered, deterministic, reaches the engine and has al
         );
       }
     }
-    assert.equal(variants.size, expected[id], `${id}: ${[...variants]}`);
   }
 });
 

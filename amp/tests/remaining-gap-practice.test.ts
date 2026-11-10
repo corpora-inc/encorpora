@@ -1,3 +1,4 @@
+import { skills as curriculumSkills } from "../src/curriculum/catalog";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -294,15 +295,12 @@ test("quantity-role answers name the quantity, role and unit the situation state
 });
 
 test("each family binds its skill, a lesson, a method and a principle", () => {
-  const expected: Record<string, string> = {
-    "triangle-law-reasoning": "triangle-law-proofs",
-    "model-quantity-roles": "model-quantities",
-    "stem-leaf-read": "mean-median",
-    "budget-category-balance": "decimal-arithmetic",
-    "gross-net-pay": "decimal-arithmetic",
-  };
-  for (const id of ids) {
-    assert.equal(templates.find((t) => t.id === id)?.skillId, expected[id]);
+  for (const { id, skillId } of remainingGapTemplates) {
+    assert.equal(templates.find((t) => t.id === id)?.skillId, skillId);
+    assert.ok(
+      curriculumSkills.some((s) => s.id === skillId),
+      id,
+    );
     const lesson = problemLesson(id, "library");
     assert.ok(lesson.intuition);
     assert.ok(lesson.method.length >= 3);

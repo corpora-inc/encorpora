@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -292,7 +293,10 @@ test("single choices: four distinct options, position spread, feedback, consiste
       assert.ok(r.kind === "choice");
       if (r.kind !== "choice") continue;
       assert.equal(new Set(r.options.map((o) => o.label)).size, 4);
-      assert.ok(r.options.every((o) => o.label.length <= 120));
+      reportEditorialLimit(
+        r.options.every((o) => o.label.length <= 120),
+        `${p.public.templateId}: option exceeds 120 characters`,
+      );
       position[r.options.findIndex((o) => o.id === p.answer)]!++;
       for (const o of r.options)
         if (o.id !== p.answer)

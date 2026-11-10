@@ -10,6 +10,7 @@ import type { Element, PathOp } from "./scene/spec";
 import { scene } from "./scene/author";
 import { generatingVersion } from "./variation/axes";
 import {
+  forcingLegacySurfaces,
   isSweepId,
   recordedSweepVariant,
   sweepChoose,
@@ -1742,6 +1743,7 @@ export function numberMeasurementGapCase(templateId: string, seed: string) {
   const tilingVersion = generatingVersion();
   const tilingNew =
     templateId === "area-tiling-distributive" &&
+    !forcingLegacySurfaces() &&
     (tilingVersion == null || tilingVersion >= tilingSince);
   const clause = tilingNew ? clauseStream(templateId, seed) : null;
   const tilingFamily =

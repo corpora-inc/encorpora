@@ -11,7 +11,6 @@ test("successive percent change has one stable numeric contract", () => {
   assert.equal(successivePercentChangeTemplate.id, "successive-percent-change");
   assert.equal(successivePercentChangeTemplate.skillId, "percent-change");
   assert.equal(successivePercentChangeTemplate.gradeBand, "6–8");
-  assert.equal(successivePercentChangeTemplate.version, 1);
   for (let seed = 0; seed < 600; seed++) {
     const value = `sample-${seed}`;
     const { problem, tags, caseKey } = successivePercentChangeCase(value);

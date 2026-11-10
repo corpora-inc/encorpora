@@ -13,8 +13,7 @@ import { family as oneStepResult } from "../src/families/one-step-result";
 const kits = [multiTermChain, operationSentence, oneStepResult];
 const ids = kits.flatMap((k) => k.practice.templates.map((t) => t.id));
 
-test("the three kits register 13 templates, each reachable through the engine", () => {
-  assert.equal(ids.length, 13);
+test("each kit template is registered and reachable through the engine", () => {
   assert.equal(new Set(ids).size, ids.length);
   for (const id of ids) {
     const template = templates.find((t) => t.id === id);

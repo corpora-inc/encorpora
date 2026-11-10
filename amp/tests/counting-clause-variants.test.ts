@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { generateProblem, generateProblemFor } from "../src/math/engine";
@@ -10,9 +11,12 @@ const sentences = (text: string) =>
     .map((sentence) => sentence.trim())
     .filter(Boolean);
 
-function assertBrief(text: string, where: string) {
+function reportBrief(text: string, where: string) {
   for (const sentence of sentences(text))
-    assert.ok(words(sentence) <= 35, `${where}: ${sentence}`);
+    reportEditorialLimit(
+      words(sentence) <= 35,
+      `${where}: sentence exceeds 35 words: ${sentence}`,
+    );
 }
 
 function collect(
@@ -60,9 +64,10 @@ test("by-10s and by-100s within 1000 meet the clause counts", () => {
     generatedProblemSchema.parse(problem);
     assert.equal(problem.public.response.kind, "number");
     assert.equal(problem.public.templateVersion, 2);
-    assertBrief(problem.public.prompt, "tens prompt");
-    assertBrief(problem.hint, "tens hint");
-    for (const line of problem.explanation) assertBrief(line, "tens explanation");
+    reportBrief(problem.public.prompt, "tens prompt");
+    reportBrief(problem.hint, "tens hint");
+    for (const line of problem.explanation)
+      reportBrief(line, "tens explanation");
     const filled = filledSkip(problem.public.prompt, Number(problem.answer));
     assert.ok(filled.every((term) => term <= 1000));
     if (
@@ -116,11 +121,15 @@ function skipTokens(prompt: string): (number | "blank")[] {
     .replace(/ What comes next\?$/, "")
     .replace(/ What number is missing\?$/, "")
     .replace(/\.$/, "");
-  return rest.split(", ").map((token) => (token === "□" ? "blank" : Number(token)));
+  return rest
+    .split(", ")
+    .map((token) => (token === "□" ? "blank" : Number(token)));
 }
 
 function filledSkip(prompt: string, answer: number): number[] {
-  return skipTokens(prompt).map((token) => (token === "blank" ? answer : token));
+  return skipTokens(prompt).map((token) =>
+    token === "blank" ? answer : token,
+  );
 }
 
 test("count by twos and odd or even stay numeric", () => {

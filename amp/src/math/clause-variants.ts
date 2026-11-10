@@ -234,6 +234,10 @@ export function withClauseMetadata(meta: TemplateMetadata): TemplateMetadata {
       e.introducedVersion - 1,
     ),
     description: `${meta.description} ${e.description}`,
+    // Figure-choice options are scenes, even when the original format was typed.
+    ...(e.responses.includes(fc) && !meta.requiredFigureCapability
+      ? { requiredFigureCapability: "scenes-v1" as const }
+      : {}),
     requiredResponseCapabilities: [
       ...new Set([
         ...(meta.requiredResponseCapabilities ?? []),

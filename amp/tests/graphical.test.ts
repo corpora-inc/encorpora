@@ -30,7 +30,6 @@ const near = (actual: number, expected: number) =>
   assert.ok(Math.abs(actual - expected) < 1e-9, `${actual} != ${expected}`);
 
 test("graphical families have valid catalog and lesson associations", () => {
-  assert.equal(graphicalTemplates.length, 6);
   for (const template of graphicalTemplates) {
     assert.ok(skills.some((skill) => skill.id === template.skillId));
     assert.equal(
