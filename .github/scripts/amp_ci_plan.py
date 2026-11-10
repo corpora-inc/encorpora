@@ -241,7 +241,7 @@ def plan(paths, root=ROOT, full=False, quick=False):
             changed['core'].extend(p for p in SMOKE_CORE if p in catalog['core'])
         api_changed = any(p.startswith(('amp/src/server/', 'amp/migrations/')) for p in paths)
         if api_changed:
-            changed['database'].extend(['tests/database.integration.ts', 'tests/trials.integration.ts'])
+            changed['database'].extend(['tests/database.integration.ts', 'tests/starter.integration.ts'])
         for prefix, names in PROTECTED_DATABASE.items():
             if any(p.startswith(prefix) for p in paths):
                 changed['database'].extend(f'tests/{name}.integration.ts' for name in names)
