@@ -138,7 +138,7 @@ def grouped_page(config, *, rows=None, single=False):
             for row in sorted(siblings, key=lambda value: value['id']):
                 identifier = row['id']
                 minutes, seconds = divmod(round(row['seconds']), 60)
-                cards.append(f'<article data-film="{identifier}"><a class="film" href="./?id={identifier}">'
+                cards.append(f'<article data-film="{identifier}"><a class="film" href="review.html?id={identifier}&list={"one" if single else "prod"}">'
                              f'<span>{html.escape(row["title"])}<small>{identifier[-2:].upper()}</small></span>'
                              f'<span class="duration">{minutes}:{seconds:02}</span></a>'
                              f'<p class="details"><span class="status" id="status-{identifier}">Unreviewed</span>'
@@ -155,7 +155,7 @@ const seenKey='amp-production-films-seen';
 let seen={};try{seen=JSON.parse(localStorage.getItem(seenKey)||'{}');if(!seen||typeof seen!=='object'||Array.isArray(seen))seen={};}catch{}
 const newest=Math.max(0,...films.map(f=>Date.parse(f.added)||0));
 for(const film of films){const added=Date.parse(film.added)||0;document.getElementById('new-'+film.id).hidden=seen[film.id]===film.added||!added||added<newest-86400000;const link=document.querySelector('[data-film="'+film.id+'"] a');link.addEventListener('click',()=>{seen[film.id]=film.added;try{localStorage.setItem(seenKey,JSON.stringify(seen));}catch{}document.getElementById('new-'+film.id).hidden=true;});}
-async function refresh(){try{const response=await fetch('data/grades.json?t='+Date.now());if(!response.ok)throw Error();const grades=await response.json();let count=0;for(const film of films){const entry=grades[film.id];const current=entry&&(!entry.added||entry.added===film.added);const state=current&&['approved','rejected'].includes(entry.grade)?entry.grade:'unreviewed';const label=document.getElementById('status-'+film.id);label.textContent=state[0].toUpperCase()+state.slice(1);label.className='status '+state;if(state!=='unreviewed')count++;}document.getElementById('count').textContent=films.length+' '+filmLabel+' available; '+count+' graded.';}catch{document.getElementById('count').textContent=films.length+' '+filmLabel+' available. Grades could not be refreshed.';}}
+async function refresh(){try{const response=await fetch('data/reviews.json?t='+Date.now());const reviews=response.ok?await response.json():{};let count=0;for(const film of films){const entry=reviews[film.id];const current=entry&&(!entry.added||entry.added===film.added);const score=current&&typeof entry.score==='number'?entry.score:null;const label=document.getElementById('status-'+film.id);if(!label)continue;label.textContent=score===null?'new':String(score);label.className='status'+(score===null?'':' scored');if(score!==null)count++;}document.getElementById('count').textContent=films.length+' '+filmLabel+' available; '+count+' scored.';}catch{document.getElementById('count').textContent=films.length+' '+filmLabel+' available. Scores could not be refreshed.';}}
 refresh();setInterval(refresh,60000);
 setTimeout(()=>location.reload(),300000);
 </script></html>'''

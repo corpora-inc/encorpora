@@ -243,7 +243,7 @@ def run_one(production, args):
                 exported = export_film(config, row, workspace)
                 if not exported.get('exported'):
                     raise RuntimeError(exported.get('error') or 'Export failed')
-            recipe.update(status='exported', review_url=urljoin(config['review_url'], './?id='+row['id']))
+            recipe.update(status='exported', review_url=urljoin(config['review_url'], 'review.html?id='+row['id']+'&list=one'))
         except BaseException as error:
             recipe.update(status='failed', error=str(error))
             raise
