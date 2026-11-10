@@ -1069,6 +1069,19 @@ const lessonFilm = createRoute({
     await legacy.preload?.();
   },
 });
+/** Development only: the design preview's persona switcher
+ * (`scripts/design-preview.sh`). `import.meta.env.DEV` is false in a build,
+ * so neither the route nor its chunk is in production. */
+const devPersonas = import.meta.env.DEV
+  ? createRoute({
+      getParentRoute: () => root,
+      path: "/dev/personas",
+      component: lazyRouteComponent(
+        () => import("../features/dev/PersonaSwitcher"),
+        "PersonaSwitcher",
+      ),
+    })
+  : null;
 const history = nativeRuntime
   ? createMemoryHistory({ initialEntries: ["/"] })
   : createBrowserHistory();
@@ -1149,6 +1162,7 @@ export const router = createRouter({
     // Linked to through the splat route, as every staff screen is, so their
     // URLs stay out of the typed route table.
     ...(schoolRoutes(root) as unknown as []),
+    ...((devPersonas ? [devPersonas] : []) as unknown as []),
   ]),
   history,
   defaultPendingComponent: LoadingScreen,

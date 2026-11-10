@@ -96,6 +96,12 @@ export default defineConfig({
       "katex",
     ],
   },
-  server: { port: 4310, proxy: { "/api": "http://127.0.0.1:4311" } },
+  // A preview on other ports (scripts/design-preview.sh) sets both.
+  server: {
+    port: Number(process.env.AMP_WEB_PORT ?? 4310),
+    proxy: {
+      "/api": `http://127.0.0.1:${process.env.AMP_API_PORT ?? 4311}`,
+    },
+  },
   build: { outDir: "dist" },
 });
