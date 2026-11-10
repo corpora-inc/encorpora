@@ -19,6 +19,7 @@ export function PracticeControls({
   busy,
   close,
   canReset = true,
+  resetFrom = "Start from the learner’s birth year.",
 }: {
   scope: PracticeScope;
   problemId?: string;
@@ -27,6 +28,8 @@ export function PracticeControls({
   close?: () => void;
   /** False for a school student, whose school manages the practice level. */
   canReset?: boolean;
+  /** Where a reset starts again, said in the confirmation. */
+  resetFrom?: string;
 }) {
   const state = useQuery(practiceSettingsOptions(scope));
   const [confirm, setConfirm] = useState(false);
@@ -129,9 +132,7 @@ export function PracticeControls({
           if (!saving) setConfirm(open);
         }}
       >
-        <p>
-          Start from the learner’s birth year. Keep all XP and skill history.
-        </p>
+        <p>{resetFrom} Keep all XP and skill history.</p>
         {error && <p role="alert">{error}</p>}
         <div className={styles.actions}>
           <Button

@@ -21,6 +21,7 @@ import {
   RecordWork,
 } from "./ProgressRecord";
 import { classUrl } from "./teacher-shared";
+import { TryAsStudent } from "../../profiles/TryAsStudent";
 import styles from "./Teacher.module.css";
 
 const lastSeenWords = (iso: string) => {
@@ -109,6 +110,9 @@ export function StudentScreen() {
               </p>
             </div>
             <div className={styles.recordAction}>
+              {/* Practice at this student's levels, on the reader's own
+                  account: the student's record never changes. */}
+              <TryAsStudent session={session} personId={data.student.id} />
               <ShareWithFamily
                 session={session}
                 student={data.student.id}

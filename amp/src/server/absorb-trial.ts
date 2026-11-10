@@ -138,7 +138,7 @@ async function moveAdultTrial(
   trial: { id: string; learner_id: string },
 ) {
   const existing = await client.query(
-    "SELECT 1 FROM amp_learners WHERE account_id=$1 AND adult AND deleted_at IS NULL",
+    "SELECT 1 FROM amp_learners WHERE account_id=$1 AND adult AND NOT simulation AND deleted_at IS NULL",
     [ownerAccountId],
   );
   if (existing.rowCount) return false;

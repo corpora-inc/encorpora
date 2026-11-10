@@ -1,0 +1,114 @@
+/* Practicing as a profile: a quiet mark beside the logo, the way back as the
+   bar's one action, and the drawer's "where you are". */
+.mark {
+  display: none;
+  min-width: 0;
+  max-width: 28ch;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1px;
+  margin-inline-end: var(--space-3);
+  padding-inline: var(--space-3);
+  border-inline: 1px solid var(--color-border);
+  line-height: 1.15;
+}
+.markKicker {
+  color: var(--color-muted-text);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.markName {
+  overflow-wrap: anywhere;
+  font-size: var(--text-label);
+  font-weight: 650;
+}
+@media (min-width: 960px) {
+  .mark {
+    display: flex;
+  }
+}
+
+/* The bar's action keeps a word on a phone, where the bar's own actions show
+   only their icon: an arrow alone says nothing. */
+.back {
+  border: 0;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 650;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.back svg {
+  fill: none;
+}
+.short {
+  display: none;
+}
+@media (max-width: 639px) {
+  .back {
+    width: auto;
+    padding: 0 var(--space-4);
+  }
+  .long {
+    display: none;
+  }
+  .short {
+    display: inline;
+  }
+}
+
+.place {
+  display: grid;
+  gap: 2px;
+  min-height: var(--target-size);
+  align-content: center;
+  padding: 0 var(--space-2);
+}
+.kicker {
+  display: block;
+  color: var(--color-muted-text);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.name {
+  min-width: 0;
+  font-size: 19px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+.placeActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-4);
+  margin-top: var(--space-1);
+}
+.placeLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-primary);
+  font: inherit;
+  font-size: var(--text-label);
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.placeLink:hover {
+  filter: none;
+  text-decoration-thickness: 2px;
+}
+.placeLink:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-small);
+}

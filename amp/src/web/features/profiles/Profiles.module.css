@@ -1,0 +1,283 @@
+/* Practice profiles (docs/families.md): the picker and the editor are one
+   form. A phone reads it top to bottom with the action pinned to the foot;
+   with room, the choices sit beside the levels. Spacing, type and radii come
+   from the shared tokens. */
+.page {
+  box-sizing: border-box;
+  width: min(100%, var(--width-content-wide));
+  margin: 0 auto;
+  padding: var(--space-5) max(var(--space-4), env(safe-area-inset-right)) 0
+    max(var(--space-4), env(safe-area-inset-left));
+}
+.form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "head" "choose" "actions";
+  gap: var(--space-5);
+  max-width: 560px;
+  margin-inline: auto;
+}
+.head {
+  display: block;
+  grid-area: head;
+}
+.head h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-title-min), 7vw, var(--text-heading-1));
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+.head p {
+  max-width: 62ch;
+  margin: var(--space-2) 0 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+  line-height: 1.45;
+}
+.choose {
+  grid-area: choose;
+  display: grid;
+  align-content: start;
+  gap: var(--space-5);
+}
+.field {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+  container-type: inline-size;
+}
+.fieldLabel {
+  font-size: var(--text-label);
+  font-weight: 650;
+  line-height: 1.3;
+}
+/* One line, always there: what the grade and pace mean. */
+.caption {
+  min-height: 1.4em;
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Grades K to 12: five to a row on the narrowest phones, seven from 360 px,
+   one row with room. Every cell is at least 44 px square. */
+.grades {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-1);
+  padding: var(--space-1);
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius-control) + var(--space-1));
+  background: var(--color-surface-sunken);
+}
+@container (min-width: 340px) {
+  .grades {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+}
+@container (min-width: 640px) {
+  .grades {
+    grid-template-columns: repeat(13, minmax(0, 1fr));
+  }
+}
+.grade {
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 48px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-on-surface);
+  font: inherit;
+  font-size: var(--text-body);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+.grade:hover:not(:disabled) {
+  filter: none;
+  background: var(--color-surface-raised);
+}
+.grade[aria-checked="true"] {
+  border-color: var(--color-primary);
+  background: var(--color-surface-raised);
+}
+.grade:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.grade:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+/* Levels by area. Narrow: a summary and Adjust, which opens the sheet. Wide:
+   the panel beside the choices. */
+.levelsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-3) var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+}
+.levelsRowText {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.adjust {
+  flex: none;
+}
+.sheetSummary {
+  min-height: 1.4em;
+  margin: 0;
+}
+.done {
+  width: 100%;
+  margin-top: var(--space-4);
+}
+.levels {
+  display: none;
+  grid-area: levels;
+  min-width: 0;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+}
+.levelsHead h2 {
+  margin: 0;
+  font-size: var(--text-heading-3);
+  line-height: 1.3;
+}
+.levelsHead p {
+  min-height: 1.4em;
+  margin: 2px 0 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.4;
+}
+.strands {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  list-style: none;
+  column-gap: var(--space-6);
+}
+.strand {
+  display: grid;
+  align-items: center;
+  gap: var(--space-1) var(--space-3);
+  min-height: 60px;
+  padding-block: var(--space-2);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-on-surface-raised);
+}
+.strandName {
+  min-width: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+/* The sheet: name and stepper side by side, stacked only where a row can't
+   hold both (the narrowest phones). */
+.rows {
+  container-type: inline-size;
+}
+.rows .strand {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+@container (max-width: 329px) {
+  .rows .strand {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* The wide panel: two columns, each name above its stepper. */
+.columns {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.columns .strand {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: start;
+}
+.strands[aria-disabled="true"] {
+  opacity: 0.7;
+}
+
+/* The main action, with quieter actions beside it. */
+.actions {
+  grid-area: actions;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  padding-bottom: max(var(--space-6), env(safe-area-inset-bottom));
+}
+.go {
+  flex: 1 1 12rem;
+}
+.delete {
+  flex: 0 0 auto;
+  color: var(--color-danger-accent);
+}
+.confirmText {
+  margin: 0;
+  line-height: 1.45;
+}
+.confirmError {
+  min-height: 1.4em;
+  margin: var(--space-2) 0 0;
+  color: var(--color-danger-accent);
+  font-size: var(--text-label);
+}
+.confirmActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+@media (min-width: 960px) {
+  .page {
+    padding-inline: max(var(--space-5), env(safe-area-inset-left));
+    padding-bottom: var(--space-7);
+  }
+  .form {
+    max-width: none;
+    grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+    grid-template-areas:
+      "head head"
+      "choose levels"
+      "actions levels";
+    grid-template-rows: auto auto 1fr;
+    column-gap: var(--space-6);
+    align-items: start;
+  }
+  .levels {
+    display: block;
+    padding: var(--space-5);
+  }
+  .levelsRow {
+    display: none;
+  }
+  .actions {
+    padding-bottom: 0;
+  }
+}
+.strand:first-child,
+.columns .strand:nth-child(2) {
+  border-top-color: transparent;
+}

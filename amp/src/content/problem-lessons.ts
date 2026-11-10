@@ -18,6 +18,7 @@ import {
   type RealNumberGivens,
 } from "../math/real-number-practice";
 import { lessons } from "./lessons";
+import { canonicalJson } from "../math/canonical-json";
 import { skills } from "../curriculum/catalog";
 import { displayAnswer } from "../math/polish";
 import { methods } from "./problem-methods";
@@ -34,6 +35,7 @@ import { answerText } from "../math/selection-response";
 import type { MultiPartChoiceResponse } from "../math/multi-part-choice";
 import { examplePartsTexts, type ExampleParts } from "./example-parts";
 import { lessonVideoFor, type LessonVideo } from "./lesson-videos";
+import type { LessonFilm } from "./lesson-films";
 import type {
   GlossaryCard,
   GlossaryLexicon,
@@ -62,6 +64,7 @@ export type ProblemLessonView = {
   /** Plain-language meaning before the example; no unexplained notation. */
   intuition?: string;
   video?: LessonVideo;
+  film?: LessonFilm;
   /** The named property or definition the method rests on. */
   principle: string | null;
   /** The method's terms with their glossary definitions; the same shape
@@ -279,7 +282,7 @@ export function problemLesson(
     // is compared.
     if (avoidResponse?.kind === "multi-part-choice") {
       const givens = (labels: string[], figure: unknown) =>
-        JSON.stringify([[...labels].sort(), figure ?? null]);
+        canonicalJson([[...labels].sort(), figure ?? null]);
       return (
         p.public.response.kind === "multi-part-choice" &&
         givens(
@@ -508,7 +511,7 @@ function workGivens(p: GeneratedProblem): string {
   if (!g || r.kind !== "structured-work") return p.public.prompt;
   if (g.mode === "derivation") return `derivation:${g.start}`;
   if (g.mode === "proof")
-    return `proof:${r.goal}:${JSON.stringify(p.public.figure ?? null)}`;
+    return `proof:${r.goal}:${canonicalJson(p.public.figure ?? null)}`;
   // Labeled values: the story without its mode sentence, and the labels.
   return `fields:${p.public.prompt.replace(/ (?:Enter each step|Some steps are filled in\. Enter the others)\.$/, "")}:${JSON.stringify(r.rows.map((row) => row.label ?? ""))}`;
 }

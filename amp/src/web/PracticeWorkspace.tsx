@@ -2099,7 +2099,10 @@ export function PracticeWorkspace(props: Props) {
           )}
           {panel === "lesson" && problemLessonView && (
             <>
-              <ProblemLesson lesson={problemLessonView} />
+              <ProblemLesson
+                lesson={problemLessonView}
+                onWatchFilm={() => setPanel(null)}
+              />
               <button className="lesson-return" onClick={() => setPanel(null)}>
                 Back to the problem
               </button>

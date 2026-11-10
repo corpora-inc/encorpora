@@ -33,7 +33,7 @@ import {
 } from "../lib/query";
 import type { Me } from "../../account/contracts";
 import { useLearnerStore } from "../learner-store";
-import { practicingAsAdult } from "../lib/adult-learner";
+import { practicingAsAdult, practicingAsProfile } from "../lib/adult-learner";
 import { LoadingScreen, RouteError } from "../ui/LoadingScreen";
 import {
   familyClassPath,
@@ -245,6 +245,10 @@ function showsPitch(session: AuthSession | null | undefined) {
  * needed) before the screen changes, so a remount never shows the other
  * screen half-loaded. */
 function AppScreen() {
+  const watchingFilm = useMatch({
+    from: "/app/lessons/$templateId/watch",
+    shouldThrow: false,
+  });
   const session = useQuery(sessionOptions);
   const router = useRouter();
   const atHome = useMatch({
@@ -277,7 +281,16 @@ function AppScreen() {
   // the screen's own wait.
   return (
     <Suspense key={pending ? "deciding" : kind} fallback={<LoadingScreen />}>
-      {pending ? <Outlet /> : <Screen />}
+      {pending ? (
+        <Outlet />
+      ) : (
+        <>
+          <div style={{ display: watchingFilm ? "none" : "contents" }}>
+            <Screen />
+          </div>
+          {watchingFilm && <Outlet />}
+        </>
+      )}
     </Suspense>
   );
 }
@@ -945,6 +958,25 @@ const ownStart = createRoute({
   },
   component: lazyRouteComponent(ownScreens, "OwnStartScreen"),
 });
+/** Practicing as someone else (features/profiles): "Try a level…" and one
+ * saved profile's levels. Any adult account; one chunk. */
+const profileScreens = () => import("../features/profiles");
+const newProfile = createRoute({
+  getParentRoute: () => root,
+  path: "/me/profiles/new",
+  beforeLoad: async () => {
+    await ownPractice();
+  },
+  component: lazyRouteComponent(profileScreens, "NewProfileScreen"),
+});
+const editProfile = createRoute({
+  getParentRoute: () => root,
+  path: "/me/profiles/$profileId",
+  beforeLoad: async () => {
+    await ownPractice();
+  },
+  component: lazyRouteComponent(profileScreens, "EditProfileScreen"),
+});
 async function loadOwnPractice(session: AuthSession) {
   const { ownPracticeOptions } = await import("../features/me/api");
   await queryClient
@@ -1023,6 +1055,20 @@ const fallback = createRoute({
     await legacy.preload?.();
   },
 });
+const lessonFilm = createRoute({
+  getParentRoute: () => appScreen,
+  path: "/lessons/$templateId/watch",
+  validateSearch: (search) => ({
+    from: z.string().max(2048).optional().catch(undefined).parse(search.from),
+  }),
+  component: lazyRouteComponent(
+    () => import("../features/films/FilmScreen"),
+    "FilmScreen",
+  ),
+  loader: async () => {
+    await legacy.preload?.();
+  },
+});
 const history = nativeRuntime
   ? createMemoryHistory({ initialEntries: ["/"] })
   : createBrowserHistory();
@@ -1039,7 +1085,7 @@ function traversing() {
 }
 export const router = createRouter({
   routeTree: root.addChildren([
-    appScreen.addChildren([home, fallback]),
+    appScreen.addChildren([home, fallback, lessonFilm]),
     join,
     joinContinue,
     joinClass,
@@ -1063,6 +1109,8 @@ export const router = createRouter({
     standings,
     ownRecord,
     ownStart,
+    newProfile,
+    editProfile,
     schoolsHome,
     schoolsScope,
     schoolsTrust,
@@ -1107,6 +1155,14 @@ export const router = createRouter({
   defaultPendingMs: 250,
   defaultPendingMinMs: 0,
 });
+/** Learning screens, which a practice profile never makes a place. */
+const PROFILE_PRACTICE_PATHS = [
+  "/practice",
+  "/lessons",
+  "/books",
+  "/pathways",
+  "/inventory",
+];
 // Each screen a signed-in person settles on records its place, so `/` can
 // return to it next time.
 router.subscribe("onResolved", ({ toLocation }) => {
@@ -1114,6 +1170,18 @@ router.subscribe("onResolved", ({ toLocation }) => {
   if (!session || studentSession()) return;
   const me = queryClient.getQueryData<Me>(meKey(session.accountId));
   const chosen = useLearnerStore.getState().learnerId;
+  // Practicing as a profile is a step away from a place, never one `/`
+  // returns to.
+  if (
+    me?.signedIn &&
+    practicingAsProfile(me, chosen) &&
+    PROFILE_PRACTICE_PATHS.some(
+      (path) =>
+        toLocation.pathname === path ||
+        toLocation.pathname.startsWith(`${path}/`),
+    )
+  )
+    return;
   const place = placeOfPath(
     toLocation.pathname,
     toLocation.search as Record<string, unknown>,

@@ -9,14 +9,17 @@ import { Sheet } from "../../ui/Sheet";
 import { rememberContinuation } from "./memory";
 import styles from "./Continue.module.css";
 
-/** Who is looking at a learner whose free allowance ended. */
-export type PauseViewer = "parent" | "adult" | "student" | "staff";
+/** Who is looking at a learner whose free allowance ended. `profile`: an
+ * adult practicing as one of their practice profiles. */
+export type PauseViewer = "parent" | "adult" | "profile" | "student" | "staff";
 
 /** A parent or a child is the family's pause; a teacher is the class. */
 const pauseFor = {
   parent: "family",
   student: "family",
   adult: "adult",
+  // An adult practicing as one of their profiles.
+  profile: "adult",
   staff: "class",
 } as const satisfies Record<PauseViewer, "family" | "adult" | "class">;
 
@@ -37,6 +40,11 @@ export function pauseWords(
       detail: "Your grown-up can continue AMP.",
     };
   if (viewer === "adult") return { fact: "You’ve used the 100 free problems." };
+  if (viewer === "profile")
+    return {
+      fact: `${name} has used its 100 free problems.`,
+      detail: "Your own plan covers every level you try.",
+    };
   return { fact: `${name} has used the 100 free problems.` };
 }
 
@@ -108,32 +116,33 @@ export function AllowancePause({
         {words.fact}
       </Heading>
       {words.detail && <p className={styles.detail}>{words.detail}</p>}
-      {(viewer === "parent" || viewer === "adult") && learner && (
-        <Button
-          variant="primary"
-          className={styles.action}
-          data-continue-with-amp={learner.id}
-          disabled={!session}
-          onClick={() => {
-            if (!session) return;
-            if (!continued.current) {
-              continued.current = true;
-              track("continue_click");
-            }
-            rememberContinuation({
-              accountId: session.accountId,
-              learnerId: learner.id,
-              returnTo: here,
-            });
-            void navigate({
-              to: "/continue/$learnerId",
-              params: { learnerId: learner.id },
-            });
-          }}
-        >
-          Continue with AMP
-        </Button>
-      )}
+      {(viewer === "parent" || viewer === "adult" || viewer === "profile") &&
+        learner && (
+          <Button
+            variant="primary"
+            className={styles.action}
+            data-continue-with-amp={learner.id}
+            disabled={!session}
+            onClick={() => {
+              if (!session) return;
+              if (!continued.current) {
+                continued.current = true;
+                track("continue_click");
+              }
+              rememberContinuation({
+                accountId: session.accountId,
+                learnerId: learner.id,
+                returnTo: here,
+              });
+              void navigate({
+                to: "/continue/$learnerId",
+                params: { learnerId: learner.id },
+              });
+            }}
+          >
+            Continue with AMP
+          </Button>
+        )}
       {viewer === "staff" && (
         <TalkToUsButton variant="primary" className={styles.action} />
       )}

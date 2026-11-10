@@ -5,8 +5,8 @@ contains a figure and spoken beats; each beat triggers drawing or movement.
 The same stage renders video frames and draws lessons live in the browser,
 synchronized to narration.
 
-The kit is a standalone authoring tool. It is not connected to AMP's learner
-lesson selection or production hosting. The curated screenplays in
+Approved films appear beside their problem type's written lesson in AMP.
+The learner and review pages use the same live player and stage. The curated screenplays in
 `lessons/` provide worked examples; `design/` contains teaching designs and
 tool proposals, including tools not yet implemented.
 
@@ -57,10 +57,39 @@ Screenplays use `teacher`, `learner` and `narrator` roles. The
 [cast table](cast.ts) binds teachers to Madeline or Paul and learners to Champ.
 The film ID chooses a stable default teacher. Use `--voice teacher=paul`
 for an explicit edition; exact voice IDs are saved with timing so playback
-shows the recorded speaker's name. Solo films retain their narrator behavior.
+uses the recorded voice. Solo films retain their narrator behavior.
 
 The optional `critic.py` and `judge.py` tools produce private review reports.
 The former requires `FILM_CRITIC_URL` and `FILM_CRITIC_MODEL`; the latter
 requires an authenticated Codex CLI. Neither is part of CI or a substitute
 for reviewing the lesson. Publishing is governed by the
 [YouTube operating policy](../../docs/youtube-publishing.md).
+
+## Publish approved films to AMP
+
+After the founder approves an export on the review page, commit its screenplay
+in `film/lessons/`. From `amp/`, run:
+
+```sh
+npm run film:publish
+```
+
+Publishing requires the AWS CLI and the `trash` command for temporary-file cleanup.
+The command reads the operator's private `corpora/amp/film-publish.json` under
+the OS configuration directory (`$XDG_CONFIG_HOME`, or `~/.config`). Configure
+`reviewDir` for the review export's data directory, `bucket` and `profile` for
+the existing media publisher, and `originPrefix` for the CDN origin prefix
+(`artifacts`). `AMP_FILM_PUBLISH_CONFIG` can select another configuration file.
+AWS credentials use the provider chain; never put credentials in this file.
+
+Only an explicit approval for the current review edition qualifies. The command
+checks the exported screenplay against Git HEAD, validates timing and voice
+bindings, uploads data and narration to content-hashed CDN paths, and verifies
+their bytes and browser access. It writes `src/content/films/manifest.json`
+only after every readback succeeds. Commit that manifest and ship it through
+the normal trunk PR gates; the app deploy includes the film links. Repeating the
+command verifies existing immutable files. `-- --check` validates without writing.
+Removing every approval writes an empty manifest, withdrawing all film links.
+If more than one edition of a problem type is approved, choose one on the review
+page before publishing. Review records, notes, voiced data and audio stay outside
+Git. Clients without `lesson-film-v1` receive written lessons only.

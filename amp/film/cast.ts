@@ -5,8 +5,8 @@
  * beat a speaker; a lesson without one is read by the narrator. The voice
  * mapping is separate from the words: `--voice role=voice` on make.ts re-voices
  * a role without touching the screenplay, so the same lesson can be read by a
- * different narrator. Everything here is pure (and free of node modules: the
- * stage draws the name tags from it in the browser), so it is tested with vitest.
+ * different narrator. Everything here is pure (and free of node modules, so
+ * the stage can import it in the browser), so it is tested with vitest.
  */
 import type { Script, SpeakerRole } from "./schema";
 
@@ -118,34 +118,10 @@ export function takeKeyParts(voice: Voice, text: string): unknown[] {
 /** A bracketed audio tag ("[energetic]") is written, not spoken: it is no word of the script. */
 export const isTagWord = (w: string) => /^\[[^\[\]]+\]$/.test(w.trim());
 
-/** When each speaker starts, for the on-screen name tag: one change per beat whose speaker differs from the last. */
-export function speakerChanges(script: Pick<Script, "shots">, cast: Cast, timing: { shots: { start: number }[][] }): { t: number; role: string }[] {
-  const out: { t: number; role: string }[] = [];
-  script.shots.forEach((shot, si) => shot.beats.forEach((b, bi) => {
-    const role = speakerOf(cast, b).role;
-    const t = timing.shots[si]?.[bi]?.start;
-    if (t === undefined) return;
-    if (!out.length || out[out.length - 1]!.role !== role) out.push({ t, role });
-  }));
-  return out;
-}
-
 /** `<template>--<variant>` reads its own screenplay but takes facts and metadata from the template. */
 export function templateOf(id: string) {
   const m = id.match(/^(.+?)--([\w-]+)$/);
   return { template: m ? m[1]! : id, variant: m ? m[2] : undefined };
 }
 
-type Rect = { x: number; y: number; w: number; h: number };
-/** The name tags' band above the cards, in frame pixels. */
-export const BAND = { wide: 80, tall: 96 } as const;
-/**
- * A layout with room above the cards for the cast's name tags: every rect that
- * starts at the top margin moves down and loses that height; the rest (a
- * panel under the figure, the recap card below) stays where it was.
- */
-export function withBand<L extends { name: "wide" | "tall"; fig: Rect; panel: Rect; full: Rect; side: Rect; recap: Rect }>(L: L): L {
-  const b = BAND[L.name];
-  const shift = (r: Rect): Rect => (r.y <= 60 ? { ...r, y: r.y + b, h: r.h - b } : r);
-  return { ...L, fig: shift(L.fig), panel: shift(L.panel), full: shift(L.full), side: shift(L.side), recap: shift(L.recap) };
-}
+

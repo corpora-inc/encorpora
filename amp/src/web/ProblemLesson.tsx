@@ -10,6 +10,7 @@ import { dataWalkthrough } from "../math/scene/data-walkthroughs";
 import { LessonVideo } from "./LessonVideo";
 import { GlossaryBlock, GlossaryProvider } from "./ui/Glossary";
 import { KeyWords } from "./ui/KeyWords";
+import { FilmLink } from "./features/films/FilmLink";
 
 const LessonAnimation = lazy(
   () => import("./lesson-animation/LessonAnimation"),
@@ -99,7 +100,13 @@ function ExamplePartsView({ parts }: { parts: ExampleParts }) {
 }
 
 /** Build from a plain explanation and example to the general rule. */
-export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
+export function ProblemLesson({
+  lesson,
+  onWatchFilm,
+}: {
+  lesson: ProblemLessonView;
+  onWatchFilm?: () => void;
+}) {
   const figure = lesson.example.figure;
   // A scene with a walkthrough plays it, revealed, on the example's numbers.
   // Data displays still travel as legacy kinds; their walkthroughs are
@@ -115,6 +122,13 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
   return (
     <GlossaryProvider payload={lesson}>
       <article className="problem-lesson">
+        {lesson.film && (
+          <FilmLink
+            templateId={lesson.templateId}
+            film={lesson.film}
+            onOpen={onWatchFilm}
+          />
+        )}
         <KeyWords key={lesson.templateId} ids={lesson.keyWords ?? []} />
         <GlossaryBlock texts={blocks.opening}>
           <p className="lesson-goal">

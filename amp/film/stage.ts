@@ -1,7 +1,7 @@
 /**
  * The film is a pure function of time. `seek(t)` sets every element from t and
  * nothing else, so any frame can be rendered alone, in any order.
- * Layout is decided once at load and never moves; things only fade and travel.
+ * The board is laid out once. Each frame centres the figure's ink in its card.
  */
 import katex from "katex";
 import type { Action, BeatTime, Geo, Part, Script, Shot, Timing } from "./schema";
@@ -10,7 +10,7 @@ import { placeNames, planStack, type StackPlan } from "./stack";
 import { BlocksModel, chartView, subBox, zoomView, type Box, type Dir, type Place } from "./blocks";
 import { axisSpan, glided, onCircle, sectorAngles, sweepLabelAngle, traceRange } from "./wave";
 import { planVector, vectorPath } from "./vector";
-import { BAND, resolveCast, speakerChanges, withBand } from "./cast";
+import { resolveCast } from "./cast";
 import { amountAt, barAnchor, barCells, checkBar, planBar, shareBox, shadedAt, spreadBarLabels, type BarCut, type BarShade, type BarSpec } from "./bar";
 import {
   bandOpacity, checkGroups, CONTEXT, DIM, fits, guideLine, inRegion, mosaicAnchor, partBox, restBox, restriction, slabBox, tableAnchor, tableBox, tableCell,
@@ -46,8 +46,16 @@ const macros = {
   "\\cv": "\\textcolor{##6a5aa0}{#1}",
   "\\cm": "\\textcolor{##4c625b}{#1}",
 };
+// KaTeX writes macro colors inline. Bind those semantic inks to the same
+// theme tokens as the figures so colored equations stay readable in the dark.
+const mathInks: Record<string, string> = {
+  "20776d": "--color-figure-accent", "9c4420": "--color-figure-warm",
+  "9a5c12": "--color-figure-gold", "2d6a9a": "--color-info-accent",
+  "6a5aa0": "--color-strand-operations", "4c625b": "--color-muted-text",
+};
 export const tex = (s: string, display = false) =>
-  katex.renderToString(s, { throwOnError: true, displayMode: display, macros, strict: false, output: "html" });
+  katex.renderToString(s, { throwOnError: true, displayMode: display, macros, strict: false, output: "html" })
+    .replace(/color:#(20776d|9c4420|9a5c12|2d6a9a|6a5aa0|4c625b)/g, (_, ink: string) => `color:var(${mathInks[ink]})`);
 const esc = (t: string) => t.replace(/[<>&]/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;" })[c]!);
 /**
  * Prose with $math$. Math and the punctuation touching it stay on one line:
@@ -209,6 +217,56 @@ type MosaicView = {
   slabs: { base: SVGElement; part: SVGElement; edge: SVGElement; ring: SVGElement; name?: HTMLElement; kEl?: HTMLElement; restEl?: HTMLElement }[];
   guide: SVGElement;
 };
+/**
+ * Centre the figure's ink in its card. The box is the ink that is actually
+ * drawn (shapes, axes, bars, tables, labels), not the scene's nominal view.
+ * Every side keeps a margin of at least 6% of the shorter side and 16 CSS px.
+ * Ink that would cross that margin is scaled down; ink that already fits is
+ * only moved. `root` is the card's `.film-fit` layer.
+ */
+export function fitFigure(root: HTMLElement) {
+  root.style.transform = "none";
+  const area = root.getBoundingClientRect();
+  const localW = root.offsetWidth, localH = root.offsetHeight;
+  if (area.width < 32 || area.height < 32 || localW < 32 || localH < 32) return;
+  let l = Infinity, t = Infinity, r = -Infinity, b = -Infinity;
+  const paint = (el: Element) => {
+    if (el instanceof SVGSVGElement || el instanceof SVGGElement) return false;
+    if (el instanceof SVGGraphicsElement) return true;
+    if (!(el instanceof HTMLElement)) return false;
+    if (el.classList.contains("film-label")) return true;
+    const bg = getComputedStyle(el).backgroundColor;
+    if (bg && bg !== "transparent" && !/rgba?\([^)]*,\s*0(?:\.0+)?\)/.test(bg) && !bg.endsWith("/ 0)") && !bg.endsWith("/0)")) return true;
+    return el.childElementCount === 0 && (el.textContent ?? "").trim() !== "";
+  };
+  const walk = (el: Element, opac: number) => {
+    const cs = getComputedStyle(el);
+    if (cs.display === "none" || cs.visibility === "hidden") return;
+    const o = opac * (Number.parseFloat(cs.opacity) || 0);
+    if (o < 0.04) return;
+    if (paint(el)) {
+      const box = el.getBoundingClientRect();
+      if (box.width >= 0.5 || box.height >= 0.5) {
+        l = Math.min(l, box.left); t = Math.min(t, box.top); r = Math.max(r, box.right); b = Math.max(b, box.bottom);
+      }
+    }
+    if (el instanceof HTMLElement && el.classList.contains("film-label")) return;
+    for (const c of el.children) walk(c, o);
+  };
+  for (const c of root.children) walk(c, 1);
+  if (!Number.isFinite(l) || r - l < 0.5 || b - t < 0.5) return;
+  const k = area.width / localW;
+  const shorter = Math.min(area.width, area.height);
+  const margin = Math.max(shorter * 0.06, 16) + 0.75;
+  const iw = r - l, ih = b - t;
+  const roomW = area.width - 2 * margin, roomH = area.height - 2 * margin;
+  if (roomW < 8 || roomH < 8) return;
+  const s = Math.min(1, roomW / iw, roomH / ih);
+  if (!Number.isFinite(s) || s <= 0) return;
+  const tx = ((area.width - iw * s) / 2 - (l - area.left) * s) / k;
+  const ty = ((area.height - ih * s) / 2 - (t - area.top) * s) / k;
+  root.style.transform = `translate(${tx}px, ${ty}px) scale(${s})`;
+}
 const roundRect = (x: number, y: number, w: number, h: number, r: number) => {
   r = Math.min(r, w / 2, h / 2);
   return `M${(x + r).toFixed(2)} ${y.toFixed(2)}H${(x + w - r).toFixed(2)}Q${(x + w).toFixed(2)} ${y.toFixed(2)} ${(x + w).toFixed(2)} ${(y + r).toFixed(2)}V${(y + h - r).toFixed(2)}Q${(x + w).toFixed(2)} ${(y + h).toFixed(2)} ${(x + w - r).toFixed(2)} ${(y + h).toFixed(2)}H${(x + r).toFixed(2)}Q${x.toFixed(2)} ${(y + h).toFixed(2)} ${x.toFixed(2)} ${(y + h - r).toFixed(2)}V${(y + r).toFixed(2)}Q${x.toFixed(2)} ${y.toFixed(2)} ${(x + r).toFixed(2)} ${y.toFixed(2)}Z`;
@@ -1190,6 +1248,8 @@ class GeoStage {
       }
       void unit;
     }
+    const host = this.labels.parentElement;
+    if (host) fitFigure(host);
   }
   /** A rectangle in pixels from a box in units. */
   rectPath(b: Box, map: (p: P) => P, s: number, r = 0) {
@@ -1620,8 +1680,6 @@ export const TALL: Layout = {
   minType: 52,
 };
 const COL_W = 1640, COL_GAP = 200, EDGE_PAD = 64, CAM_DUR = 0.95;
-/** The name tag changes this long before the new speaker's first word, over this long. */
-const TAG_LEAD = 0.25, TAG_FADE = 0.3;
 
 type StackView = {
   plan: StackPlan;
@@ -2194,9 +2252,6 @@ export class Film {
   L: Layout;
   /** Longest stretch of speech with nothing changing on screen; --dry passes a stricter limit, since its timing is estimated. */
   still = 7.5;
-  /** The cast's name tags (two or more roles), the speaker's lit, and when the speaker changes. */
-  tags: { role: string; el: HTMLElement }[] = [];
-  changes: { t: number; role: string }[] = [];
   constructor(root: HTMLElement, public script: Script, public timing: Timing, mountExample?: (host: HTMLElement, shot: Shot, list: Entry[]) => ((t: number) => void) | undefined, opts: { checks?: boolean; layout?: Layout; still?: number } = {}) {
     if (opts.still) this.still = opts.still;
     this.duration = timing.duration;
@@ -2204,20 +2259,9 @@ export class Film {
     root.style.width = `${L0.w}px`;
     root.style.height = `${L0.h}px`;
     root.dataset.layout = L0.name;
-    // A cast of two or more wears name tags in a band above the cards; the cards make room.
-    const cast = resolveCast(script, timing.voices);
-    const L = (this.L = cast.named ? withBand(L0) : L0);
-    if (cast.named) {
-      const band = div("film-cast", root);
-      band.style.cssText = `left:${L0.fig.x}px;top:${L0.fig.y}px;height:${BAND[L0.name] - 20}px`;
-      for (const r of cast.roles) {
-        const el = div("film-cast-tag", band);
-        el.dataset.role = r.role;
-        el.innerHTML = `<i></i><span>${esc(r.name)}</span>`;
-        this.tags.push({ role: r.role, el });
-      }
-      this.changes = speakerChanges(script, cast, timing);
-    }
+    // Roles still choose the recorded voice. Nothing about them is drawn.
+    resolveCast(script, timing.voices);
+    const L = (this.L = L0);
     const FIG = L.fig;
     script.shots.forEach((shot, i) => {
       const times = timing.shots[i]!;
@@ -2229,8 +2273,9 @@ export class Film {
       if (hasFig) {
         const card = div("film-figure", el);
         card.style.cssText = `left:${FIG.x}px;top:${FIG.y}px;width:${FIG.w}px;height:${FIG.h}px`;
-        if (shot.figure && "parts" in shot.figure) geo = new GeoStage(card, shot.figure, list, { x: 0, y: 0, w: FIG.w, h: FIG.h });
-        else extern = mountExample?.(card, shot, list);
+        const host = div("film-fit", card);
+        if (shot.figure && "parts" in shot.figure) geo = new GeoStage(host, shot.figure, list, { x: 0, y: 0, w: FIG.w, h: FIG.h });
+        else extern = mountExample?.(host, shot, list);
       }
       this.shots.push({ el, t0, t1: Infinity, geo, list, extern, hasFig });
     });
@@ -2370,26 +2415,10 @@ export class Film {
         if (e.a.do === "highlight") out.push([e.beatEnd + 0.33, e.beatEnd + 0.72]);
       }
     }
-    for (const c of this.changes) out.push([c.t - TAG_LEAD - 0.02, c.t - TAG_LEAD + TAG_FADE + 0.02]);
     out.push([this.duration - 0.05, this.duration + 0.1]);
     return out;
   }
-  /** The speaker's tag lights a moment before their first word, so the eye knows who is about to talk. */
-  drawTags(t: number) {
-    if (!this.tags.length) return;
-    let i = 0;
-    for (let k = 0; k < this.changes.length; k++) if (t >= this.changes[k]!.t - TAG_LEAD) i = k;
-    const cur = this.changes[i]?.role, prev = i > 0 ? this.changes[i - 1]!.role : undefined;
-    const u = i > 0 ? ease((t - (this.changes[i]!.t - TAG_LEAD)) / TAG_FADE) : 1;
-    // the one coming on brightens as the one going off dims, in the same moment
-    for (const tag of this.tags) {
-      const lit = tag.role === cur ? u : tag.role === prev ? 1 - u : 0;
-      tag.el.style.setProperty("--lit", lit.toFixed(3));
-      tag.el.classList.toggle("on", tag.role === cur);
-    }
-  }
   seek(t: number) {
-    this.drawTags(t);
     this.shots.forEach((s, i) => {
       const inn = i === 0 ? ease(t / 0.5) : ease((t - s.t0) / 0.55);
       // the last shot never fades: the film ends on its summary, held
@@ -2401,6 +2430,8 @@ export class Film {
       s.el.style.opacity = String(o);
       s.geo?.draw(t);
       s.extern?.(t);
+      const fit = s.el.querySelector<HTMLElement>(".film-fit");
+      if (fit) fitFigure(fit);
     });
     this.board.draw(t, ease(t / 0.5));
   }

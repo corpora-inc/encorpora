@@ -2,6 +2,7 @@ import { availableGiftSchema } from "../access-grants/contracts.js";
 import { purchaseMeasurementSchema } from "../advertising/permission-contracts.js";
 import { z } from "zod";
 import { freeAllowanceSchema } from "../learning/free-allowance.js";
+import { practiceProfileSchema } from "../learning/practice-profiles.js";
 export const familySummarySchema = z.object({
   purchaseMeasurement: purchaseMeasurementSchema.optional(),
   metaPurchaseMeasurement: purchaseMeasurementSchema.optional(),
@@ -36,6 +37,8 @@ export const familySummarySchema = z.object({
       freeAllowance: freeAllowanceSchema.optional(),
       /** The account holder's own learner (docs/families.md), not a child. */
       adult: z.literal(true).optional(),
+      /** A practice profile: the adult practicing as someone else. */
+      simulation: z.literal(true).optional(),
     }),
   ),
   retained: z.object({
@@ -160,6 +163,9 @@ export const meSchema = z.discriminatedUnion("signedIn", [
           .nullable(),
       })
       .optional(),
+    /** Practice profiles (docs/families.md): the adult practicing as someone
+     * else, newest first, each with its label and starting levels. */
+    practiceProfiles: z.array(practiceProfileSchema).optional(),
     /** `start`: the account has no place yet, so it answers "What brings you
      * to AMP?". `practice`: it has one, and `/` opens it. `add-learner`: a
      * paid purchase no learner holds yet. `accept-gift`: an invitation's

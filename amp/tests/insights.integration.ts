@@ -214,6 +214,27 @@ test(
         /'=HYPERLINK\(private detail\)/,
       );
       assert.match(formatInsights(withNotes), /Note: =HYPERLINK/);
+      // A practice profile is an adult practicing as someone else: its
+      // problems, answers, reports and free problems reach no count.
+      const profile = randomUUID();
+      await pool.query(
+        "INSERT INTO amp_learners(id,account_id,name,adult,simulation,free_online_used) VALUES($1,'household','4th grade · behind',true,true,3)",
+        [profile],
+      );
+      const profileProblems = await practice(profile, parent, [true, false]);
+      assert.equal(
+        (await flag(profile, parent, profileProblems[1]!, ["wrong-answer"]))
+          .statusCode,
+        201,
+      );
+      const withProfile = await insightsReport(pool, window);
+      assert.deepEqual(withProfile.totals, report.totals);
+      assert.deepEqual(withProfile.templates, report.templates);
+      assert.deepEqual(withProfile.strands, report.strands);
+      assert.deepEqual(withProfile.trial, report.trial);
+      assert.deepEqual(withProfile.reasons, report.reasons);
+      assert.equal(withProfile.newestFlags.length, 2);
+
       // A window with nothing in it is empty, not an error.
       const empty = await insightsReport(pool, {
         from: new Date(Date.now() - 10 * 86_400_000),
