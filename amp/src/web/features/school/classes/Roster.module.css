@@ -45,6 +45,11 @@
   display: inline-flex;
   flex: none;
 }
+.codeActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
 .student {
   display: inline-flex;
   align-items: center;
@@ -68,4 +73,60 @@
   .code {
     --tile: 40px;
   }
+}
+/* The empty roster's one made-up line. */
+.example {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3) var(--space-5);
+  margin: 0;
+  font-size: var(--text-table);
+}
+.example dt {
+  margin-bottom: 2px;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+.example dd {
+  margin: 0;
+  font-weight: 550;
+}
+.exampleName {
+  grid-column: 1 / -1;
+}
+.exampleName dt {
+  display: none;
+}
+.exampleName dd {
+  font-weight: 650;
+}
+/* A phone's row: name and Manage, then card, pictures and last seen. */
+.card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-1) var(--space-3);
+}
+.cardName {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.cardAction {
+  grid-row: span 2;
+}
+.cardFacts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1) var(--space-3);
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+}
+.cardPictures {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+.sectionTitle {
+  margin-bottom: calc(var(--space-3) - var(--space-5));
 }

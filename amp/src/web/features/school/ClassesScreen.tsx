@@ -19,7 +19,6 @@ import type {
 } from "../../../schools/contracts";
 import { AppError } from "../../lib/AppError";
 import { useLoggedError } from "../../feedback";
-import { Avatar } from "../../ui/Avatar";
 import { Badge } from "../../ui/Badge";
 import { Button, buttonClass } from "../../ui/Button";
 import { DataGrid, type DataGridColumn } from "../../ui/DataGrid";
@@ -51,6 +50,10 @@ import {
 import { yearsOptions } from "./org/org-api";
 import { classPath, orgPath } from "./paths";
 import { compareClassNames } from "./sort";
+import { SmallClassGrades } from "./classes/SmallClassGrades";
+import { SMALL_CLASS } from "../navigation/shell-frame";
+import { meOptions } from "../../lib/query";
+import { studentUrl } from "./classes/teacher-shared";
 import styles from "./School.module.css";
 
 const COURSE_OPTIONS: readonly (readonly [string, string])[] = [
@@ -365,20 +368,26 @@ export function ClassesScreen() {
   );
 }
 
-const rosterColumns = (orgId: string): DataGridColumn<StudentResource>[] => [
+/** A family has no Students screen or seats: a child's name opens their
+ * record in the class, and the seat column isn't there. */
+const rosterColumns = (
+  orgId: string,
+  classId: string,
+  family: boolean,
+): DataGridColumn<StudentResource>[] => [
   {
     id: "name",
-    header: "Student",
+    header: family ? "Child" : "Student",
     width: 220,
     compare: (a, b) => displayName(a).localeCompare(displayName(b), "en"),
+    // A student opens in the class, never on the school's Students page.
     cell: (row) => (
       <Link
         to="/$"
-        params={{ _splat: orgPath(orgId, "students") }}
-        search={{ student: row.id } as never}
+        params={{ _splat: studentUrl(orgId, row.id) }}
+        search={{ class: classId } as never}
         className={`${styles.person} ${styles.rowLink}`}
       >
-        <Avatar name={displayName(row)} size="small" />
         <span>{displayName(row)}</span>
       </Link>
     ),
@@ -390,17 +399,21 @@ const rosterColumns = (orgId: string): DataGridColumn<StudentResource>[] => [
     compare: (a, b) => (a.gradeLevel ?? -1) - (b.gradeLevel ?? -1),
     cell: (row) => gradeLabel(row.gradeLevel),
   },
-  {
-    id: "seat",
-    header: "Seat",
-    width: 130,
-    cell: (row) =>
-      row.seated ? (
-        <Badge tone="success">Seated</Badge>
-      ) : (
-        <Badge tone="warning">Needs a seat</Badge>
-      ),
-  },
+  ...(family
+    ? []
+    : [
+        {
+          id: "seat",
+          header: "Seat",
+          width: 130,
+          cell: (row: StudentResource) =>
+            row.seated ? (
+              <Badge tone="success">Seated</Badge>
+            ) : (
+              <Badge tone="warning">Needs a seat</Badge>
+            ),
+        },
+      ]),
 ];
 export const displayName = (row: StudentResource) =>
   row.displayName ??
@@ -555,6 +568,10 @@ export function ClassScreen() {
   const canEdit =
     org?.can?.includes("classes.update") || org?.teaches?.includes(classId);
   const canAdd = canAddStudents(org, classId);
+  const family = org?.kind === "family";
+  const me = useQuery(meOptions(session)).data;
+  // The family's account holder adds a child in Family.
+  const holder = !!me?.signedIn && me.familyClass?.classId === classId;
   const [notice, setNotice] = useState("");
   const [error, setError] = useState("");
   useLoggedError(error);
@@ -613,7 +630,13 @@ export function ClassScreen() {
     >
       <PageHead
         title="Settings"
-        detail={`${klass.studentCount} ${klass.studentCount === 1 ? "student" : "students"}, ${courseLabel(klass.courseBands).toLowerCase()}`}
+        detail={
+          family
+            ? "Each child works at their own grade"
+            : klass.studentCount
+              ? `${klass.studentCount} ${klass.studentCount === 1 ? "student" : "students"}, ${courseLabel(klass.courseBands).toLowerCase()}`
+              : courseLabel(klass.courseBands)
+        }
         action={
           org?.can?.includes("roster.import") ? (
             <Link
@@ -704,11 +727,20 @@ export function ClassScreen() {
       {!family && (
       <section className={styles.classRoster}>
         <div className={styles.rosterHead}>
-          <h2>Students</h2>
+          <h2>{family ? "Children" : "Students"}</h2>
           {canAdd && (
             <Button variant="secondary" onClick={() => setAdding(true)}>
               Add student
             </Button>
+          )}
+          {family && holder && (
+            <Link
+              to="/$"
+              params={{ _splat: "family/learners" }}
+              className={buttonClass("secondary")}
+            >
+              Add a child
+            </Link>
           )}
         </div>
         {query.isPending ? (
@@ -716,7 +748,7 @@ export function ClassScreen() {
         ) : rows.length ? (
           <DataGrid
             label={`Students in ${klass.name}`}
-            columns={rosterColumns(orgId)}
+            columns={rosterColumns(orgId, classId, family)}
             rows={rows}
             rowKey={(row) => row.id}
             defaultSort={{ column: "name", direction: "ascending" }}
@@ -725,11 +757,10 @@ export function ClassScreen() {
             card={(row) => (
               <Link
                 to="/$"
-                params={{ _splat: orgPath(orgId, "students") }}
-                search={{ student: row.id } as never}
+                params={{ _splat: studentUrl(orgId, row.id) }}
+                search={{ class: classId } as never}
                 className={styles.studentCard}
               >
-                <Avatar name={displayName(row)} size="small" />
                 <span className={styles.studentCardText}>
                   <strong>{displayName(row)}</strong>
                   <span>
@@ -738,7 +769,7 @@ export function ClassScreen() {
                       : `Grade ${gradeLabel(row.gradeLevel)}`}
                   </span>
                 </span>
-                {row.seated ? (
+                {family ? null : row.seated ? (
                   <Badge tone="success">Seated</Badge>
                 ) : (
                   <Badge tone="warning">Needs a seat</Badge>
@@ -747,9 +778,13 @@ export function ClassScreen() {
             )}
           />
         ) : (
-          <p className={styles.quiet}>
-            No students yet. Add them one at a time, or import a file.
-          </p>
+          <EmptyState title={family ? "No children yet" : "No students yet"}>
+            {family
+              ? "Add a child in Family and they appear here with their grade."
+              : canAdd
+                ? "Add them one at a time, or import a file."
+                : "Students added to this class appear here."}
+          </EmptyState>
         )}
         {canAdd && (
           <AddStudentSheet
@@ -761,6 +796,10 @@ export function ClassScreen() {
           />
         )}
       </section>
+      )}
+      {/* A small class has no Grades tab: its target and records are here. */}
+      {family && klass.studentCount <= SMALL_CLASS && (
+        <SmallClassGrades orgId={orgId} classId={classId} />
       )}
       <Toast tone="status" message={notice} onDismiss={() => setNotice("")} />
       <Toast message={error} onDismiss={() => setError("")} />

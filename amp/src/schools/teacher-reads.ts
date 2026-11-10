@@ -221,9 +221,11 @@ export async function readToday(
     };
   });
   const course = courseBand(context.courseBands);
+  const family = context.orgKind === "family";
   const todos = todayTodos(
     {
       today,
+      family,
       students,
       skills: evidence.map((row) => ({
         studentId: learnerToPerson.get(row.learner_id)!,
@@ -239,6 +241,28 @@ export async function readToday(
   );
   return {
     class: classSummaryOf(context),
+    family,
+    weeklyTargetMinutes: target.minutes,
+    students: named.map((student, index) => {
+      const stored = levelRows.get(student.id);
+      const day = dayRows.get(student.id);
+      return {
+        id: student.id,
+        // A family's own children are matched to their learners on screen.
+        ...(family ? { learnerId: student.learnerId } : {}),
+        name: student.name,
+        gradeLevel: student.gradeLevel,
+        level: stored
+          ? { level: stored.overall.level, sd: stored.overall.sd }
+          : null,
+        provisional: !stored || stored.overall.answered < PROVISIONAL_ANSWERS,
+        todayMinutes: Math.round(day?.activeMinutes ?? 0),
+        todayProblems: day?.problems ?? 0,
+        weekMinutes: Math.round(students[index]!.weekMinutes),
+        weekProblems: students[index]!.weekProblems,
+        lastActive: students[index]!.lastActive,
+      };
+    }),
     teacherName,
     today,
     partOfDay: partOfDay(context.hour),

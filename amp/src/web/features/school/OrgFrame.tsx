@@ -32,11 +32,14 @@ export function OrgFrame({
   orgId,
   nav,
   title,
+  place = true,
   children,
 }: {
   orgId: string;
   nav: NavId;
   title: string;
+  /** A class screen's eyebrow: the class's name. */
+  place?: boolean;
   crumbs?: readonly SchoolCrumb[];
   children: ReactNode;
 }) {
@@ -120,7 +123,10 @@ export function OrgFrame({
       className={frame.content}
       data-dense
     >
-      {nav.startsWith("class:") && <p className={frame.place}>{title}</p>}
+      {/* Which class, for someone who teaches several; a family has one. */}
+      {place && nav.startsWith("class:") && org.data.kind !== "family" && (
+        <p className={frame.place}>{title}</p>
+      )}
       {links.length > 1 && (
         <nav className={frame.links} aria-label="In this section">
           {links.map(([path, label]) => (

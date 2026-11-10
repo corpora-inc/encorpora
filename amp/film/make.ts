@@ -23,6 +23,7 @@ import { audioProblems, envelope, fadeAround, FLOOR, quietRuns, SR, TAKE_FADE } 
 import { goodTake, pcmOf, type Alignment } from "./voice";
 import { scriptSchema, type BeatTime, type Script, type Timing, type WordTime } from "./schema";
 import { mathProblems } from "./mathcheck";
+import { thingsProblems } from "./things";
 import { isTagWord, neighbours, requireVoices, resolveCast, runsOf, templateOf, TURN_GAP, voiceBindings } from "./cast";
 import { FILM_OUT, FILM_VOICES, FILM_LOCKS } from "./paths";
 import { renderFormat } from "./render-format";
@@ -62,7 +63,15 @@ const started = Date.now();
 const clock: Record<string, number> = {};
 const lap = (name: string, from: number) => (clock[name] = Math.round((Date.now() - from) / 100) / 10);
 
-const script: Script = scriptSchema.parse(JSON.parse(readFileSync(join(HERE, "lessons", `${id}.json`), "utf8")));
+const raw: unknown = JSON.parse(readFileSync(join(HERE, "lessons", `${id}.json`), "utf8"));
+// Things to count: an unknown kind, or a count whose words do not match the things on screen,
+// is reported in plain words before the schema, the browser or a paid voice is involved.
+const misuse = thingsProblems(raw);
+if (misuse.length) {
+  console.error(`PROBLEMS in ${id}:\n- ${misuse.join("\n- ")}`);
+  process.exit(1);
+}
+const script: Script = scriptSchema.parse(raw);
 const overrides = Object.fromEntries(values.voice.map((v) => {
   const m = v.match(/^([\w-]+)=(.+)$/);
   if (!m) throw new Error(`--voice takes role=voice, not "${v}"`);

@@ -82,36 +82,26 @@ function navigation({
 }
 
 test.each([["admin", "teacher"], ["teacher"]] as OrgResource["roles"][])(
-  "review regression: family roles %j can reach Calendar from the class row",
+  "a family's class row, for roles %j: no Grades, no Calendar tab and no Start class",
   (...roles) => {
-    const { tabs } = navigation({ kind: "family", roles });
-    expect(tabs).toContainEqual({
-      id: "calendar",
-      label: "Calendar",
-      path: "school/org/calendar",
-    });
+    const { tabs, start } = navigation({ kind: "family", roles });
+    // The fixture's class has no students yet: a small family class.
     expect(tabs.map((tab) => tab.id)).toEqual([
       "today",
       "map",
-      "gradebook",
       "time",
       "workbooks",
       "roster",
       "settings",
-      "calendar",
     ]);
+    expect(start).toBe(false);
   },
 );
 
-test("family Calendar respects permission and past-year navigation", () => {
-  expect(
-    navigation({ kind: "family", can: [] }).tabs.some(
-      (tab) => tab.id === "calendar",
-    ),
-  ).toBe(false);
+test("a small family's past year keeps its time", () => {
   expect(
     navigation({ kind: "family", past: true }).tabs.map((tab) => tab.id),
-  ).toEqual(["gradebook", "time"]);
+  ).toEqual(["time"]);
   expect(navigation().tabs.some((tab) => tab.id === "calendar")).toBe(false);
 });
 

@@ -31,6 +31,7 @@ figure = { kind: "scene", scene: numberLine({ min: 0, max: 20 }).mark(a).hop(a, 
 | `{type: "ruler", unit, length, parts, object}` | inch rulers in halves to sixteenths, centimeter rulers in halves or millimeters, with an object whose ends sit on ticks |
 | `{type: "coins", coins}` | pennies, nickels, dimes and quarters drawn to scale without values |
 | `{type: "isoSolid", solid}` | unit-cube prisms (`cubes`), labeled boxes, composites and stepped solids (`steps`) |
+| `{type: "things", sets, arrange?, perRow?, seed?, frame?}` | everyday things to count (24 kinds: apples, ducks, cars, pencils, …) in a row, a grid, a tidy seeded scatter, separate groups, or five- and ten-frame boxes |
 | `scene(a, b, {type: "brace", …}).build({title})` | several elements in one coordinate system; primitives (`text`, `segment`, `arrow`, `brace`, `polygon`, `arc`, `point`, …) annotate a component in its own math units |
 
 Geometry is in math units with y pointing up. Mark sizes, label sizes and offsets are in pixels and stay fixed whatever the data scale. Width, fit, label placement and print are handled for you: do not pass pixel positions.
@@ -99,6 +100,15 @@ Circle graphs, thermometers, rulers, coins and the `steps` form of `isoSolid` we
 - An older API rejects `scenes-v2`; the web client then retries once without it (`batch-capability-fallback.ts`).
 
 Layout rules for these components: a circle graph labels every sector inside when all labels fit, otherwise numbers the sectors and lists number, swatch, category and value in a key below; a thermometer keeps minor ticks at least 6 px and labels at least 28 px apart; an inch ruler in eighths is at most 4 inches so eighths stay 7 px apart on a 288 px phone stage, and millimeters are never finer than a real ruler; coins keep true relative diameters and are described by size, color and edge, never by name or value.
+
+## Things to count: `scenes-v3`
+
+`things` draws real things a young child counts. `sets` lists them in counting order, each set one kind (`thingKinds` in `components/things-art.ts`), so several kinds can share a figure. Parts are `thing.0`, `thing.1`, … in counting order and, in a frame, `slot.0`, `slot.1`, …
+
+- Every drawing is a flat tint with an outline of its own hue, painted with roles only, and sits in a square one math unit wide. A thing is drawn between 24 and 72 px: a row holds at most ten, and no arrangement is more than ten things wide.
+- A scatter never overlaps and is the same picture for the same `seed`.
+- The drawings and arrangements live in `components/things-art.ts`, which has no schema and no DOM. The lesson-film kit draws the same things from it ([film/AUTHORING.md](../film/AUTHORING.md), "Things to count").
+- `things` declares the capability `scenes-v3`. That name is not in `figureCapabilities` yet, so no client declares it and `generateProblemFor` refuses to send one. The first problem type that draws things adds `scenes-v3` to the wire contract with the same steps as `scenes-v2` above.
 
 ## Add a component
 

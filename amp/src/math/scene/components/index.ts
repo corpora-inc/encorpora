@@ -31,6 +31,7 @@ import { shapeSortSchema } from "./shape-sort";
 import { tableSchema } from "./table";
 import { tenFrameSchema } from "./ten-frame";
 import { thermometerSchema } from "./thermometer";
+import { thingsSchema } from "./things";
 import { treeSchema } from "./tree";
 import { triangleSchema } from "./triangle";
 import { vennSchema } from "./venn";
@@ -65,6 +66,7 @@ export const componentSchemas = [
   tableSchema,
   tenFrameSchema,
   thermometerSchema,
+  thingsSchema,
   treeSchema,
   triangleSchema,
   vennSchema,
@@ -98,6 +100,8 @@ export * from "./shape-sort";
 export * from "./table";
 export * from "./ten-frame";
 export * from "./thermometer";
+export * from "./things";
+export * from "./things-art";
 export * from "./tree";
 export * from "./triangle";
 export * from "./venn";

@@ -561,7 +561,10 @@ async function parentJourney(
   );
   await page.getByRole("button", { name: "Continue" }).click();
   await page.waitForURL(CLASS_TODAY);
-  await heading(page, /^Good (morning|afternoon|evening)/);
+  await heading(
+    page,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   const [fox, moon] = await learnersOf(account);
   assert.ok(fox && moon, "two unnamed children");
   check(
@@ -819,7 +822,10 @@ async function teacherJourney(
   const { account } = await signUp(page, "Dana Fixture");
   await page.getByRole("button", { name: /^I’m a teacher/ }).click();
   await page.waitForURL(CLASS_TODAY);
-  await heading(page, /^Good (morning|afternoon|evening)/);
+  await heading(
+    page,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   check(
     `${label} the demo is theirs`,
     (
@@ -869,7 +875,10 @@ async function teacherJourney(
 
   // The real class: "Set up your real class" opens the real onboarding.
   await page.goto(`${origin}${classPath}/today`);
-  await heading(page, /^Good (morning|afternoon|evening)/);
+  await heading(
+    page,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   const real = page.locator("[data-demo-action]").filter({ visible: true });
   check(
     `${label} the action names the real class`,
@@ -912,7 +921,10 @@ async function tutorJourney(
   await shot(page, 4, "students", width, theme);
   await page.getByRole("button", { name: "Create my class" }).click();
   await page.waitForURL(CLASS_TODAY);
-  await heading(page, /^Good (morning|afternoon|evening)/);
+  await heading(
+    page,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   const names = (
     await db.query<{ name: string }>(
       `SELECT p.given_name AS name FROM amp_families f JOIN amp_enrollments e ON e.class_id=f.class_id AND e.role='student'
@@ -922,6 +934,11 @@ async function tutorJourney(
     )
   ).rows.map((row) => row.name);
   check(`${label} three picture students`, names.length === 3, names);
+  await measured(page, `${label} today`);
+  await shot(page, 4, "today", width, theme);
+  // A tutor’s students, each from another family, are on Students.
+  await page.goto(page.url().replace(/\/today$/, "/roster"));
+  await heading(page, "Students");
   const others = page.getByRole("region", { name: "From other families" });
   for (const name of names)
     await others.getByText(name, { exact: true }).waitFor();
@@ -931,8 +948,8 @@ async function tutorJourney(
       .getByText("100 free problems left", { exact: true })
       .count()) === 3,
   );
-  await measured(page, `${label} today`);
-  await shot(page, 4, "today", width, theme);
+  await measured(page, `${label} people`);
+  await shot(page, 4, "people", width, theme);
   const first = others.locator("li", { hasText: names[0]! });
   await first.getByRole("button", { name: "Send to their parent" }).click();
   const sheet = page.getByRole("dialog", {
@@ -984,7 +1001,7 @@ async function tutorJourney(
 
   last.page = page;
   await reloaded(page);
-  await heading(page, /^Good (morning|afternoon|evening)/);
+  await heading(page, "Students");
   const ana = others.locator("li", { hasText: "Ana" });
   await ana.waitFor();
   check(
@@ -1083,7 +1100,10 @@ async function returningJourney(
   });
   await signIn(back, email);
   await back.waitForURL(CLASS_TODAY);
-  await heading(back, /^Good (morning|afternoon|evening)/);
+  await heading(
+    back,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   await back.getByRole("button", { name: "Let Lena practice here" }).waitFor();
   check(
     `${label} nothing to answer on the way`,

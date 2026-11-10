@@ -7,7 +7,6 @@ import { Badge } from "../../../ui/Badge";
 import { Button } from "../../../ui/Button";
 import { Sheet } from "../../../ui/Sheet";
 import { TextField } from "../../../ui/TextField";
-import { Toast } from "../../../ui/Toast";
 import { refreshSchool, school as schoolApi, staffOptions } from "../api";
 import { CopyButton, FormNote } from "../parts";
 import school from "../School.module.css";
@@ -15,20 +14,18 @@ import styles from "./Family.module.css";
 
 /** The other adults who teach this family's class, for example the other
  * parent. The invitation is the school's staff invitation with the teacher
- * role, limited to this class. The server decides what a co-teacher may do. */
-export function CoTeachers({
+ * role, limited to this class. The server decides what a co-teacher may do.
+ * Rows only, for the people on Today; nothing while there's no one. */
+export function CoTeacherRows({
   session,
   orgId,
-  classId,
+  onError,
 }: {
   session: AuthSession;
   orgId: string;
-  classId: string;
+  onError: (message: string) => void;
 }) {
   const staff = useQuery(staffOptions(session, orgId));
-  const [inviting, setInviting] = useState(false);
-  const [error, setError] = useState("");
-  useLoggedError(error);
   // The family's second parent has her own row (`SecondParent`).
   const others = (staff.data ?? []).filter(
     (person) => !person.self && !person.secondParent,
@@ -38,79 +35,57 @@ export function CoTeachers({
       const sent = await schoolApi.resendInvite(session, orgId, personId);
       await refreshSchool(session);
       if (!sent.mailed)
-        setError("The email didn’t send. Copy the link and send it yourself.");
+        onError("The email didn’t send. Copy the link and send it yourself.");
     } catch (failure) {
       console.error("The invitation didn’t send again", failure);
-      setError("That didn’t send. Try again in a moment.");
+      onError("That didn’t send. Try again in a moment.");
     }
   };
   return (
-    <section className={styles.family} aria-labelledby="co-teachers">
-      <h2 id="co-teachers" className={styles.heading}>
-        Co-teachers
-      </h2>
-      {others.length > 0 && (
-        <ul className={styles.children}>
-          {others.map((person) => (
-            <li
-              key={person.id}
-              className={styles.child}
-              data-co-teacher={person.status}
-            >
-              <span className={styles.who}>
-                <span className={styles.name}>
-                  {person.email ?? person.name}
-                </span>
-                <span className={styles.access}>
-                  {person.status === "invited" ? (
-                    <Badge tone="warning">Invited</Badge>
-                  ) : (
-                    "Teaches this class"
-                  )}
-                </span>
+    <>
+      {others.map((person) => (
+        <li
+          key={person.id}
+          className={styles.child}
+          data-co-teacher={person.status}
+        >
+          <span className={styles.who}>
+            <span className={styles.name}>{person.email ?? person.name}</span>
+            <span className={styles.access}>
+              {person.status === "invited" ? (
+                <Badge tone="warning">Invited</Badge>
+              ) : (
+                "Co-teacher"
+              )}
+            </span>
+          </span>
+          {person.status === "invited" &&
+            (person.inviteUrl ? (
+              <span className={styles.rowActions}>
+                <CopyButton
+                  text={person.inviteUrl}
+                  label="Copy link"
+                  copied="Link copied"
+                />
               </span>
-              {person.status === "invited" &&
-                (person.inviteUrl ? (
-                  <CopyButton
-                    text={person.inviteUrl}
-                    label="Copy link"
-                    copied="Link copied"
-                    className={styles.action}
-                  />
-                ) : (
-                  <Button
-                    variant="secondary"
-                    className={styles.action}
-                    onClick={() => void resend(person.id)}
-                  >
-                    Send again
-                  </Button>
-                ))}
-            </li>
-          ))}
-        </ul>
-      )}
-      <Button
-        variant="secondary"
-        className={styles.add}
-        onClick={() => setInviting(true)}
-      >
-        Invite a co-teacher
-      </Button>
-      {inviting && (
-        <InviteSheet
-          session={session}
-          orgId={orgId}
-          classId={classId}
-          onClose={() => setInviting(false)}
-        />
-      )}
-      <Toast message={error} onDismiss={() => setError("")} />
-    </section>
+            ) : (
+              <span className={styles.rowActions}>
+                <Button
+                  variant="secondary"
+                  onClick={() => void resend(person.id)}
+                >
+                  Send again
+                </Button>
+              </span>
+            ))}
+        </li>
+      ))}
+    </>
   );
 }
 
-function InviteSheet({
+/** "Invite a co-teacher": an email, then the invitation. */
+export function CoTeacherInviteSheet({
   session,
   orgId,
   classId,

@@ -37,7 +37,7 @@ export type ComponentDef<C> = {
    * client that cannot draw them is never sent one (scene/capability.ts). */
   capability?(c: C): SceneCapability;
 };
-export type SceneCapability = "scenes-v1" | "scenes-v2";
+export type SceneCapability = "scenes-v1" | "scenes-v2" | "scenes-v3";
 
 export type Box = { x0: number; y0: number; x1: number; y1: number };
 type Common = { id: string; data?: Record<string, string | number> };
@@ -430,8 +430,8 @@ function draw(
           id,
           data,
           d: p.d.map((op) => pathOp(op, X, Y)).join(""),
-          stroke,
-          w,
+          stroke: p.noStroke ? undefined : stroke,
+          w: p.noStroke ? undefined : w,
           fill: p.fill ?? "none",
           opacity: p.opacity,
           dash,

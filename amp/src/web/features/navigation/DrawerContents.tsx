@@ -76,7 +76,14 @@ export default function DrawerContents({
   // Practicing as one of their profiles: someone else's level, their own
   // practice (features/profiles).
   const profile = view.profile;
-  const here = frame ?? shellFrame(location.pathname);
+  const here =
+    frame ??
+    shellFrame(
+      location.pathname,
+      typeof (location.search as Record<string, unknown>).class === "string"
+        ? ((location.search as Record<string, unknown>).class as string)
+        : undefined,
+    );
   const context = own ? "own" : "learner";
   const learnerChoices: ListboxOption[] = view.learners.map((l) => ({
     value: l.id,

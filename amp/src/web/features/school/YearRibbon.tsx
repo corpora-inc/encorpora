@@ -20,6 +20,7 @@ export function YearRibbon({
   division,
   sessions,
   list = true,
+  today,
 }: {
   startsOn: string;
   endsOn: string;
@@ -28,6 +29,8 @@ export function YearRibbon({
   sessions?: readonly SplitSession[];
   /** The terms in words below the bar; off where a screen lists them itself. */
   list?: boolean;
+  /** Marks where today falls, when it falls inside the year. */
+  today?: string;
 }) {
   const start = time(startsOn);
   const span = Math.max(DAY, time(endsOn) - start + DAY);
@@ -48,6 +51,7 @@ export function YearRibbon({
       });
     cursor.setUTCMonth(cursor.getUTCMonth() + 1);
   }
+  const now = today ? (time(today) - start + DAY / 2) / span : -1;
   return (
     <figure
       className={styles.ribbon}
@@ -57,7 +61,25 @@ export function YearRibbon({
           : `School year from ${formatDay(startsOn)} to ${formatDay(endsOn)}`
       }
     >
+      {now > 0 && now < 1 && (
+        <div className={styles.ribbonNow} aria-hidden="true">
+          <span
+            style={{
+              left: `${now * 100}%`,
+              translate: `${-Math.round(now * 100)}% 0`,
+            }}
+          >
+            Today
+          </span>
+        </div>
+      )}
       <div className={styles.ribbonBar} aria-hidden="true">
+        {now > 0 && now < 1 && (
+          <span
+            className={styles.ribbonToday}
+            style={{ left: `${now * 100}%` }}
+          />
+        )}
         {parts.length ? (
           parts.map((part, index) => (
             <span

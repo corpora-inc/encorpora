@@ -624,6 +624,27 @@ button.copy[data-done="copied"] {
 .calendarBody[data-compact] {
   gap: var(--space-4);
 }
+/* The calendar inside a class's Settings. */
+.calendarSection {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+.calendarSectionHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+}
+.targetRow {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+.calendarSectionHead p {
+  margin-top: var(--space-1);
+}
 .calendarControl {
   display: grid;
   gap: var(--space-2);
@@ -654,11 +675,36 @@ button.copy[data-done="copied"] {
   min-width: 0;
 }
 .ribbonBar {
+  position: relative;
   display: flex;
   height: 40px;
   overflow: hidden;
   border-radius: var(--radius-small);
   background: var(--color-surface-sunken);
+}
+/* Today: its label over the bar, then a hairline across it. */
+.ribbonNow {
+  position: relative;
+  height: 18px;
+  margin-bottom: calc(-1 * var(--space-1));
+}
+.ribbonNow span {
+  position: absolute;
+  top: 0;
+  color: var(--color-primary);
+  font-size: var(--text-table-small);
+  font-weight: 650;
+  line-height: 18px;
+  white-space: nowrap;
+}
+.ribbonToday {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--color-surface);
 }
 .ribbonPart {
   display: block;

@@ -11,6 +11,7 @@ export function ClassFrame({
   className,
   loading,
   tab,
+  place = true,
   children,
 }: {
   org: string;
@@ -21,6 +22,8 @@ export function ClassFrame({
    * the wait sits inside it and nothing above it moves. */
   loading: boolean;
   tab: string;
+  /** The class's name over the page; off where the page's title is it. */
+  place?: boolean;
   children: ReactNode;
 }) {
   const classes = useQuery({
@@ -37,6 +40,7 @@ export function ClassFrame({
       nav={`class:${classId}`}
       title={name}
       crumbs={[{ label: name }]}
+      place={place}
     >
       {loading ? <Loading /> : children}
     </OrgFrame>

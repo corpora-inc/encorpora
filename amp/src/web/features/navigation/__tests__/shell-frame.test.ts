@@ -127,6 +127,32 @@ test("class sub-screens retain their tab and existing URLs", () => {
       kind: "progress",
       active: "overview",
     });
+  // A family's or tutor's class: Grades only past six learners.
+  expect(
+    classTabs("org", "class", false, true, 12).map((tab) => tab.label),
+  ).toEqual([
+    "Today",
+    "Map",
+    "Grades",
+    "Time",
+    "Workbooks",
+    "People",
+    "Settings",
+  ]);
+  expect(
+    classTabs("org", "class", false, true, 2).map((tab) => tab.label),
+  ).toEqual(["Today", "Map", "Time", "Workbooks", "People", "Settings"]);
+  // A student's record opened from a class keeps that class's tabs.
+  expect(shellFrame("/school/org/students/kai", "class")).toEqual({
+    kind: "class",
+    org: "org",
+    classId: "class",
+    active: "map",
+    board: false,
+  });
+  expect(shellFrame("/school/org/students/kai")).toMatchObject({
+    kind: "school",
+  });
 });
 
 test("school sub-screens map to seven tabs and respect capabilities", () => {

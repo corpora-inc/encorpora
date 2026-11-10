@@ -11,7 +11,6 @@ import {
 } from "../../../../schools/teacher-contracts";
 import type { AuthSession } from "../../../auth";
 import { AppError } from "../../../lib/AppError";
-import { Avatar } from "../../../ui/Avatar";
 import { Badge } from "../../../ui/Badge";
 import { Button, buttonClass } from "../../../ui/Button";
 import { CheckboxControl } from "../../../ui/Checkbox";
@@ -23,6 +22,7 @@ import { Segmented } from "../../../ui/Segmented";
 import { Sheet } from "../../../ui/Sheet";
 import { Stepper } from "../../../ui/Stepper";
 import { Toast } from "../../../ui/Toast";
+import { currentSession, orgOptions } from "../api";
 import { useStaffSession } from "./api";
 import { ClassFrame } from "./ClassFrame";
 import { EvidenceSheet } from "./EvidenceSheet";
@@ -190,7 +190,8 @@ function ExportSheet({
 /** The one number a teacher sets. Zero is no target, which reads as the class's
  * usual week. Changes settle before they save, so stepping isn't a stream of
  * writes. */
-function WeeklyTarget({
+/** Exported for Settings, where a small class sets it. */
+export function WeeklyTarget({
   session,
   place,
   book,
@@ -245,6 +246,43 @@ function WeeklyTarget({
   );
 }
 
+/** One made-up line of the gradebook, for the empty state: what a suggested
+ * range and its four parts look like once there's work. */
+function ExampleGrade() {
+  const parts = [
+    ["Course progress", 92],
+    ["Growth", 100],
+    ["Practice", 56],
+    ["Retention", 96],
+  ] as const;
+  return (
+    <div className={styles.exampleGrade}>
+      <div className={styles.exampleGradeTop}>
+        <span className={styles.exampleName}>A student</span>
+        <Suggested
+          suggestion={{
+            status: "ready",
+            low: 85,
+            high: 90,
+            letters: "B to A−",
+            components: [],
+          }}
+        />
+      </div>
+      <dl className={styles.gradeCardMeters}>
+        {parts.map(([label, value]) => (
+          <div key={label}>
+            <dt>{label}</dt>
+            <dd>
+              <Meter value={value} label={label} />
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  );
+}
+
 /** A class's term: a suggested range and four components per student, and a
  * final grade the teacher decides. Every row opens to its evidence. */
 export function GradebookScreen() {
@@ -253,10 +291,21 @@ export function GradebookScreen() {
   const [search, set] = useClassSearch();
   const requested = uuidOr(search.term);
   const book = useQuery(gradebookOptions(session, place, requested));
+  const family =
+    useQuery({
+      ...orgOptions(currentSession(), place.org),
+      refetchOnMount: false,
+    }).data?.kind === "family";
   const close = useCloseTerm(session, place);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  const [closing, setClosing] = useState(false);
+  const [closingHere, setClosing] = useState(false);
+  // Settings of a small class opens this with `?close=1`.
+  const closing = closingHere || search.close === 1 || search.close === "1";
+  const stopClosing = () => {
+    setClosing(false);
+    if (search.close) set({ close: undefined });
+  };
   const [announcement, setAnnouncement] = useState("");
   const data = book.data;
   const term = data?.term ?? null;
@@ -295,7 +344,6 @@ export function GradebookScreen() {
       data-student={row.id}
       onClick={() => set({ student: row.id })}
     >
-      <Avatar name={row.name} size="small" />
       <span>{row.name}</span>
     </button>
   );
@@ -314,7 +362,7 @@ export function GradebookScreen() {
     () => [
       {
         id: "student",
-        header: "Student",
+        header: family ? "Child" : "Student",
         width: 160,
         compare: (a, b) => a.name.localeCompare(b.name, "en"),
         cell: name,
@@ -330,7 +378,8 @@ export function GradebookScreen() {
       ...COMPONENTS.map(({ id, label }): DataGridColumn<GradeRow> => ({
         id,
         header: label,
-        width: 85,
+        // Room for "Course progress" and its sort chevron on one line.
+        width: 96,
         firstSort: "descending",
         compare: (a, b) =>
           (scoreOf(a.suggestion, id) ?? -1) - (scoreOf(b.suggestion, id) ?? -1),
@@ -345,7 +394,7 @@ export function GradebookScreen() {
     ],
     // Cells read the current row and term; a row only changes with new data.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [term?.id, editable, session, place.class],
+    [term?.id, editable, session, place.class, family],
   );
   const card = (row: GradeRow) => (
     <div className={styles.gradeCard}>
@@ -372,6 +421,11 @@ export function GradebookScreen() {
     </div>
   );
   const missing = rows.length - entered;
+  // Nobody has a week's work yet: what a grade will look like, not a table of
+  // dashes.
+  const waiting =
+    rows.length > 0 &&
+    rows.every((row) => row.suggestion.status !== "ready" && !row.final);
   return (
     <ClassFrame
       org={place.org}
@@ -388,7 +442,12 @@ export function GradebookScreen() {
           action={
             <Link
               to="/$"
-              params={{ _splat: `school/${place.org}/calendar` }}
+              params={{
+                // A family's calendar is a section of its class's Settings.
+                _splat: family
+                  ? classUrl(place.org, place.class, "settings")
+                  : `school/${place.org}/calendar`,
+              }}
               className={buttonClass("primary")}
             >
               Open the calendar
@@ -420,18 +479,6 @@ export function GradebookScreen() {
                   />
                 </div>
               )}
-              {/* A term with nothing to export holds the space, so the switcher
-                  never moves between terms. */}
-              <div
-                className={styles.export}
-                style={{
-                  visibility: term.state === "upcoming" ? "hidden" : undefined,
-                }}
-              >
-                <Button variant="secondary" onClick={() => set({ export: 1 })}>
-                  Export
-                </Button>
-              </div>
             </div>
           </div>
           {term.state === "upcoming" ? (
@@ -446,21 +493,52 @@ export function GradebookScreen() {
           ) : rows.length === 0 ? (
             <div className={styles.gradeEmpty}>
               <EmptyState
-                title="No students in this term"
+                title={
+                  family
+                    ? "No children in this term"
+                    : "No students in this term"
+                }
+                example={<ExampleGrade />}
                 action={
                   <Link
                     to="/$"
                     params={{
-                      _splat: classUrl(place.org, place.class, "settings"),
+                      _splat: family
+                        ? "family/learners"
+                        : classUrl(place.org, place.class, "settings"),
                     }}
-                    search={{ add: 1 } as never}
+                    search={(family ? {} : { add: 1 }) as never}
                     className={buttonClass("primary")}
                   >
-                    Add students
+                    {family ? "Add a child" : "Add students"}
                   </Link>
                 }
               >
-                Add students and each one gets a suggested range as they work.
+                {family
+                  ? "Each child gets a suggested range as they practice."
+                  : "Add students and each one gets a suggested range as they work."}
+              </EmptyState>
+            </div>
+          ) : waiting ? (
+            <div className={styles.gradeEmpty}>
+              <EmptyState
+                title="Suggested grades appear after a week of work"
+                example={<ExampleGrade />}
+                action={
+                  <Link
+                    to="/$"
+                    params={{
+                      _splat: classUrl(place.org, place.class, "today"),
+                    }}
+                    className={buttonClass("primary")}
+                  >
+                    Back to Today
+                  </Link>
+                }
+              >
+                A range comes from course progress, growth, practice and
+                retention, and opens to its evidence. You decide every final
+                grade.
               </EmptyState>
             </div>
           ) : (
@@ -490,6 +568,9 @@ export function GradebookScreen() {
                     : `${entered} of ${rows.length} final grades entered`}
                 </span>
                 <div className={styles.toolbarActions}>
+                  <Button variant="quiet" onClick={() => set({ export: 1 })}>
+                    Export
+                  </Button>
                   <Link
                     to="/$"
                     params={{
@@ -530,6 +611,8 @@ export function GradebookScreen() {
                 onRowActivate={(row) => set({ student: row.id })}
                 rowHeight={52}
                 rules={false}
+                cardLayout="list"
+                cardsSort={rows.length > 6}
                 cardEstimate={200}
                 card={card}
               />
@@ -563,7 +646,7 @@ export function GradebookScreen() {
           <Dialog
             open={closing}
             onOpenChange={(next) => {
-              if (!next && !close.isPending) setClosing(false);
+              if (!next && !close.isPending) stopClosing();
             }}
             title={`Close ${term.name}?`}
           >
@@ -579,7 +662,7 @@ export function GradebookScreen() {
                 <Button
                   variant="secondary"
                   disabled={close.isPending}
-                  onClick={() => setClosing(false)}
+                  onClick={stopClosing}
                 >
                   Keep it open
                 </Button>
@@ -590,11 +673,11 @@ export function GradebookScreen() {
                   onClick={() =>
                     close.mutate(term.id, {
                       onSuccess: () => {
-                        setClosing(false);
+                        stopClosing();
                         setMessage(`${term.name} is closed.`);
                       },
                       onError: (failure) => {
-                        setClosing(false);
+                        stopClosing();
                         setError(
                           failureMessage(
                             failure,

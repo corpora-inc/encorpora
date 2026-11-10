@@ -5,6 +5,7 @@
  */
 import { z } from "zod";
 import { PLACES } from "./blocks";
+import { thingKinds } from "../src/math/scene/components/things-art";
 import { isRoleKind, ROLE_KINDS, type RoleKind } from "./voices";
 
 const num = z.number().finite();
@@ -200,6 +201,39 @@ const counters = z.object({
   shape: z.enum(["round", "square"]).optional(),
   ink: ink.optional(),
 });
+const thingKind = z.enum(thingKinds);
+const things = z.object({
+  ...common,
+  /**
+   * Real things to count: one kind ("apple", with `n`), or each thing's kind
+   * in order (["bear", "bear", "ball"]). Each thing is named id1, id2, … and
+   * keeps its name wherever it goes. The group's places never move, so
+   * nothing shifts when a thing arrives, leaves or is lit.
+   */
+  things: z.union([thingKind, z.array(thingKind).min(1).max(20)]),
+  /** How many, 0 to 20. 0 is an empty group that things are sent to. */
+  n: z.number().int().min(0).max(20).optional(),
+  /** The top-left corner of a row, a grid or a scatter. */
+  at: name.optional(),
+  /** Or a grid's id: the things sit in its cells, a five- or ten-frame. */
+  in: name.optional(),
+  /** The first cell to fill; cells count from 1, row by row. */
+  from: z.number().int().min(1).optional(),
+  /** row (the default), grid (rows of `perRow`), or scatter (tidy, never overlapping, the same for the same `seed`). */
+  arrange: z.enum(["row", "grid", "scatter"]).optional(),
+  perRow: z.number().int().min(1).max(10).optional(),
+  seed: z.string().min(1).max(40).optional(),
+  /** How many places the group has, when more things will join it than it starts with. */
+  slots: z.number().int().min(1).max(20).optional(),
+  /** One thing's width in the figure's units. Default 2. */
+  size: num.positive().optional(),
+  /**
+   * A live count under the group: how many things it holds now. It ticks as
+   * each thing is counted in or leaves, shows nothing while the group is
+   * empty, and its room is kept from the start, so nothing shifts.
+   */
+  count: z.boolean().optional(),
+});
 const place = z.enum(PLACES);
 const blocks = z.object({
   ...common,
@@ -328,6 +362,7 @@ export const partSchema = z.union([
   plot.strict(),
   grid.strict(),
   counters.strict(),
+  things.strict(),
   circle.strict(),
   sweep.strict(),
 ]);
@@ -412,6 +447,26 @@ export const actionSchema = z.discriminatedUnion("do", [
   z.object({ do: z.literal("partition"), target: name, into: z.number().int().min(1).max(100), ...timing }).strict(),
   /** Shade an interval as fractions of the whole; default from is zero. */
   z.object({ do: z.literal("shade"), target: name, from: num.min(0).max(1).optional(), to: num.min(0).max(1), ...timing }).strict(),
+  // ---- things to count (a `things` part, or things by name: a1, a2, …)
+  /** Things come in one by one. Target a group for all of its things not yet on screen. */
+  z.object({ do: z.literal("arrive"), target: targets, ...timing }).strict(),
+  /**
+   * Count along: each thing lights exactly as the voice says its number in
+   * this beat. Target a group (its things in order) or a list of things in
+   * the order they are touched. A thing not yet on screen arrives on its
+   * number: that is counting out. `into` sends each thing to that group on
+   * its number. `from` is the first number said, when counting on. `to` ends
+   * the count early. `at` is optional: the count starts at the first number.
+   */
+  z.object({
+    do: z.literal("count"), target: targets,
+    from: z.number().int().min(1).max(100).optional(), to: z.number().int().min(1).max(100).optional(),
+    into: name.optional(), ...timing,
+  }).strict(),
+  /** Things go to another group and take its next free places: joining, taking away. Several groups in `to` are dealt to in turn: sharing. */
+  z.object({ do: z.literal("send"), target: targets, to: z.union([name, z.array(name).min(2)]), ...timing }).strict(),
+  /** Things go away one by one. */
+  z.object({ do: z.literal("leave"), target: targets, ...timing }).strict(),
   /** The lesson's real figure (figure: {example: true}): scene actions on its part names. */
   z.object({ do: z.literal("scene"), actions: z.array(z.record(z.string(), z.unknown())).min(1), ...timing }).strict(),
   // ---- the work column
