@@ -129,17 +129,12 @@ export function RosterScreen() {
   const me = useQuery(meOptions(account)).data;
   const holder = !!me?.signedIn && me.familyClass?.classId === params.class;
   const who = family ? "child" : "student";
-  // Its lists arrive with the page, so nothing below moves in after it.
-  const second = useQuery({
-    ...secondParentOptions(account),
-    enabled: holder && family,
-  });
-  const others = useQuery({
-    ...approvalsOptions(account),
-    enabled: holder && family,
-  });
-  const peoplePending =
-    holder && family && (second.isPending || others.isPending);
+  // Its lists start loading with the page; they sit at its foot, so
+  // nothing moves when they arrive, and a list that fails says so in its
+  // place rather than holding the page (a query refetched after an error
+  // is pending again, which would loop the page through its wait).
+  useQuery({ ...secondParentOptions(account), enabled: holder && family });
+  useQuery({ ...approvalsOptions(account), enabled: holder && family });
   const busy = making || reset.isPending || revoke.isPending;
 
   const columns = useMemo<DataGridColumn<Row>[]>(
@@ -303,7 +298,7 @@ export function RosterScreen() {
       org={params.org}
       classId={params.class}
       className={data?.class.name}
-      loading={roster.isPending || peoplePending}
+      loading={roster.isPending}
       tab="roster"
     >
       {!data ? (

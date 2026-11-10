@@ -86,7 +86,17 @@ console.info = (...args: unknown[]) => {
 };
 const app = buildApp({ repository, authenticate, publicUrl: origin });
 await registerAccountRoutes(app, accounts, authenticate);
-await registerFamilyRoutes(app, { pool: db, authenticate });
+// As production registers them: People asks for the second parent and other
+// families' children, which exist only with approval links configured.
+await registerFamilyRoutes(app, {
+  pool: db,
+  authenticate,
+  approvals: {
+    secret: accounts.config.secret,
+    origin,
+    mail: async () => {},
+  },
+});
 await registerSchoolRoutes(app, {
   pool: db,
   authenticate,
@@ -138,6 +148,26 @@ async function signUp(page: Page, email: string, name: string) {
   );
   return account;
 }
+/** What the page met lately (failed requests, error responses, console
+ * errors), printed when a step gets stuck. */
+const recent = new WeakMap<Page, string[]>();
+function watchPage(page: Page) {
+  const log: string[] = [];
+  recent.set(page, log);
+  const add = (line: string) => {
+    log.push(line);
+    if (log.length > 30) log.shift();
+  };
+  page.on("requestfailed", (r) => add(`failed ${r.method()} ${r.url()}`));
+  page.on("response", (r) => {
+    if (r.status() >= 400)
+      add(`${r.status()} ${r.request().method()} ${r.url()}`);
+  });
+  page.on("console", (m) => {
+    if (m.type() === "error") add(`console ${m.text().slice(0, 300)}`);
+  });
+  page.on("pageerror", (e) => add(`pageerror ${e.message.slice(0, 300)}`));
+}
 async function heading(page: Page, name: RegExp | string) {
   try {
     await page
@@ -148,6 +178,7 @@ async function heading(page: Page, name: RegExp | string) {
   } catch (error) {
     await page.screenshot({ path: `${scratch}/stuck.png` }).catch(() => {});
     console.error(`Stuck waiting for ${name} at ${page.url()}`);
+    console.error((recent.get(page) ?? []).join("\n"));
     throw error;
   }
 }
@@ -227,6 +258,7 @@ async function family(
   const label = `${browser.browserType().name()} ${width} ${theme}`;
   const context = await newContext(browser, width, theme);
   const page = await context.newPage();
+  watchPage(page);
   page.setDefaultTimeout(30_000);
   last.page = page;
   await page.goto(`${origin}/sign-up`);
@@ -282,10 +314,14 @@ async function family(
   await shot(page, "co-teacher-invite", width, theme);
   await page.getByRole("button", { name: "Send invitation" }).click();
   await page.getByText("rafael@vega.example").waitFor();
-  await page.getByRole("button", { name: "Copy link", exact: true }).waitFor();
+  // The Grown-ups list; the Join element above has a Copy link of its own.
+  const grownUps = page.getByRole("region", { name: "Grown-ups" });
+  await grownUps
+    .getByRole("button", { name: "Copy link", exact: true })
+    .waitFor();
   check(
     `${label} the co-teacher's link is always there`,
-    (await page.getByRole("button", { name: "Copy link" }).count()) === 1,
+    (await grownUps.getByRole("button", { name: "Copy link" }).count()) === 1,
   );
   await measured(page, `${label} class with a co-teacher`);
   await shot(page, "co-teacher-invited", width, theme);

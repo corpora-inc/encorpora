@@ -3,6 +3,7 @@ import { useState, type ReactNode } from "react";
 import type { ApprovalRowResource } from "../../../../../family/approval-contracts";
 import type { AuthSession } from "../../../../auth";
 import { useLoggedError } from "../../../../feedback";
+import { Button } from "../../../../ui/Button";
 import { Toast } from "../../../../ui/Toast";
 import { approvalsOptions } from "../../../family-approval/api";
 import {
@@ -98,12 +99,18 @@ export function ClassPeople({
           id="people-grown-ups"
           title="Grown-ups"
           lead={
-            grownUps
-              ? undefined
-              : "A second parent or a co-teacher sees the class and can let a child practice on their device."
+            second.isSuccess && !grownUps
+              ? "A second parent or a co-teacher sees the class and can let a child practice on their device."
+              : undefined
           }
           rows={
             <>
+              {second.isError && (
+                <ListFailed
+                  what="The second parent"
+                  onRetry={() => void second.refetch()}
+                />
+              )}
               {second.data && (
                 <SecondParentRow
                   session={session}
@@ -136,26 +143,35 @@ export function ClassPeople({
           id="people-other-families"
           title="From other families"
           lead={
-            rows.length
-              ? undefined
-              : "A child from another family joins once their parent approves by email."
+            others.isSuccess && !rows.length
+              ? "A child from another family joins once their parent approves by email."
+              : undefined
           }
-          rows={rows.map((row) => (
-            <OtherFamilyRow
-              key={row.id}
-              row={row}
-              session={session}
-              onAccess={() => setOpen({ kind: "access", row })}
-              onSend={() =>
-                setOpen({
-                  kind: "other-family",
-                  personId: row.personId,
-                  name: row.name,
-                })
-              }
-              onError={setError}
-            />
-          ))}
+          rows={[
+            others.isError && (
+              <ListFailed
+                key="failed"
+                what="Children from other families"
+                onRetry={() => void others.refetch()}
+              />
+            ),
+            ...rows.map((row) => (
+              <OtherFamilyRow
+                key={row.id}
+                row={row}
+                session={session}
+                onAccess={() => setOpen({ kind: "access", row })}
+                onSend={() =>
+                  setOpen({
+                    kind: "other-family",
+                    personId: row.personId,
+                    name: row.name,
+                  })
+                }
+                onError={setError}
+              />
+            )),
+          ]}
           actions={
             <AddAction onClick={() => setOpen({ kind: "other-family" })}>
               Add a child from another family
@@ -187,5 +203,18 @@ export function ClassPeople({
       )}
       <Toast message={error} onDismiss={() => setError("")} />
     </div>
+  );
+}
+
+/** A list that didn't load says so in its place, with the way to try again;
+ * the rest of the page stays. */
+function ListFailed({ what, onRetry }: { what: string; onRetry: () => void }) {
+  return (
+    <li className={styles.failed}>
+      <span role="alert">{what} didn’t load.</span>
+      <Button variant="quiet" onClick={onRetry}>
+        Try again
+      </Button>
+    </li>
   );
 }
