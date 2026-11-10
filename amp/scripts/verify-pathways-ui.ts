@@ -855,6 +855,11 @@ try {
           mapBox.y < 250,
           "phone overview is visible without scrolling through a hero",
         );
+        // The map opens on the learner's level, named; Whole map shows the areas.
+        await page.locator(".skill-label").first().waitFor();
+        await page
+          .getByRole("button", { name: "Whole map", exact: true })
+          .click();
         await page.locator(".area-label").first().waitFor();
         assert.equal(await page.locator(".area-label").count(), 6);
         assert(
@@ -1107,7 +1112,7 @@ try {
   await linked.getByRole("heading", { name: target.title }).waitFor();
   const related = linked
     .locator(".pathways-detail a")
-    .filter({ hasText: "Nonlinear intersection reading" });
+    .filter({ hasText: skillTitle("nonlinear-intersection-reading") });
   await related.click();
   await linked.waitForURL(/pathways\/nonlinear-intersection-reading/);
   await linked.goBack();
@@ -1171,7 +1176,7 @@ try {
   );
   const parentLink = guest
     .locator(".pathways-detail a")
-    .filter({ hasText: "Nonlinear intersection reading" });
+    .filter({ hasText: skillTitle("nonlinear-intersection-reading") });
   const parentUrl = new URL((await parentLink.getAttribute("href"))!, origin);
   assert.equal(parentUrl.pathname, "/pathways/nonlinear-intersection-reading");
   assert.equal(parentUrl.searchParams.get("topic"), "systems");
@@ -1430,8 +1435,10 @@ try {
   await evolving.clock.install();
   await fixture(evolving, { catalogSkills: growingCatalog });
   await evolving.goto(`${origin}/pathways?skill=${target.id}`);
-  // Selecting does not move the camera, so an area label is the witness.
-  const label = evolving.locator(".area-label").first();
+  // A deep link frames its skill; that skill's name is the witness.
+  const label = evolving
+    .locator(".skill-label")
+    .filter({ hasText: target.title });
   await label.waitFor();
   await evolving.getByRole("button", { name: "Zoom in", exact: true }).click();
   const before = (await label.boundingBox())!;
@@ -1442,7 +1449,8 @@ try {
   });
   await evolving.clock.fastForward(300_100);
   await evolving
-    .getByText(`${skills.length + 1} mapped skills`, { exact: false })
+    .locator(".pathways-summary")
+    .filter({ hasText: `of ${skills.length + 1} skills earned` })
     .waitFor({ state: "attached" });
   await label.waitFor();
   const after = (await label.boundingBox())!;
@@ -1543,7 +1551,9 @@ try {
           1,
         );
 
-      const application = related.getByRole("link", { name: /Event sets/ });
+      const application = related.getByRole("link", {
+        name: skillTitle("event-sets"),
+      });
       assert.equal(
         await application.getAttribute("href"),
         "/pathways/event-sets",
@@ -1563,7 +1573,7 @@ try {
       await application.click();
       await parity.waitForURL("**/pathways/event-sets");
       await parity
-        .getByRole("heading", { name: "Event sets", exact: true })
+        .getByRole("heading", { name: skillTitle("event-sets"), exact: true })
         .waitFor();
       await parity
         .locator(".pathways-connections")
@@ -1571,7 +1581,10 @@ try {
         .click();
       await parity.waitForURL("**/pathways/odd-and-even");
       await parity
-        .getByRole("heading", { name: "Odd and even", exact: true })
+        .getByRole("heading", {
+          name: skillTitle("odd-and-even"),
+          exact: true,
+        })
         .waitFor();
       await parity.close();
     }

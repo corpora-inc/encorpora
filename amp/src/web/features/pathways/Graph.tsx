@@ -16,6 +16,20 @@ import {
 } from "./model";
 
 import { overviewCamera, overviewCallouts } from "./overview";
+import {
+  FOV,
+  SKILL_INSETS,
+  TOOLBAR_CLEARANCE,
+  ease,
+  fit,
+  frameSkill,
+  glideDuration,
+  isFramed,
+  labelDistance,
+  readableDepth,
+  type Basis,
+  type Vec3,
+} from "./camera";
 
 type Props = {
   skills: MapSkill[];
@@ -24,7 +38,13 @@ type Props = {
   onSelect: (id: string) => void;
   range: { lo: number; hi: number; level: number } | null;
   rangeStrand?: string;
+  /** The learner's level on the map ("My level"), once estimated. */
+  level?: { wide: string[]; close: string[] } | null;
+  /** The level is still loading: its control keeps its place. */
+  levelLoading?: boolean;
 };
+type Pose = { position: THREE.Vector3; target: THREE.Vector3 };
+type Frame = { left: number; top: number; width: number; height: number };
 type Label = {
   id: string;
   title: string;
@@ -34,10 +54,17 @@ type Label = {
   anchorX?: number;
   anchorY?: number;
 };
-/** GPU-rendered atlas. Geometry is stable; continuous motion stops when hidden or reduced. */
-/** Height of the map toolbar plus its inset; callouts stay below it. */
-const TOOLBAR_CLEARANCE = 64;
-
+/**
+ * GPU-rendered atlas. Geometry is stable; continuous motion stops when hidden
+ * or reduced.
+ *
+ * The camera answers the person: selecting a skill that is already
+ * comfortably in view leaves it still; a skill off screen, cut off or too
+ * small to read gets a short eased glide that frames it with the skills it
+ * builds on and leads to, never zooming out. Closing a skill, the panel
+ * opening or closing and resizes leave the map where it is. A drag, wheel or
+ * pinch stops any glide at once. Reduced motion cuts instead of gliding.
+ */
 export function Graph({
   skills,
   evidence,
@@ -45,19 +72,38 @@ export function Graph({
   onSelect,
   range,
   rangeStrand,
+  level = null,
+  levelLoading = false,
 }: Props) {
   const host = useRef<HTMLDivElement>(null);
   const labelHost = useRef<HTMLDivElement>(null);
   const selection = useRef(onSelect);
   selection.current = onSelect;
-  const focus = useRef<(id: string) => void>(() => {});
+  /** Highlight a skill; frame it with a glide, a cut, or not at all. */
+  const focus = useRef<(id: string, frame: "glide" | "cut" | "none") => void>(
+    () => {},
+  );
   const reset = useRef<() => void>(() => {});
+  /** Frame the learner's level; false when there is none to frame. */
+  const home = useRef<(instant: boolean) => boolean>(() => false);
   const zoom = useRef<(factor: number) => void>(() => {});
   const rotate = useRef<(value: boolean) => void>(() => {});
+  const levelRegion = useRef(level);
+  levelRegion.current = level;
+  /** The skill the person is looking at: selected, or the one just closed. */
+  const focal = useRef(selected);
+  if (selected) focal.current = selected;
+  /** The selection the camera last answered, so a rebuild never re-frames it. */
+  const answered = useRef("");
+  /** Until the person moves the map or selects, the first view may follow the level. */
+  const touched = useRef(false);
+  const firstView = useRef(true);
   const cameraMemory = useRef<{
     position: [number, number, number];
     target: [number, number, number];
     fit: boolean;
+    /** Where the map sat on the page, so a rebuild still keeps it in place. */
+    frame: Frame | null;
   } | null>(null);
   const earnedMemory = useRef(new Map<string, number>());
   const { shown } = useCurriculumDetails();
@@ -65,6 +111,14 @@ export function Graph({
   const [orbit, setOrbit] = useState(false);
   const viewport = useRef<HTMLElement>(null);
   const [fullscreen, setFullscreen] = useState(false);
+  // The toolbar appears whole, once it knows whether "My level" belongs in
+  // it, so no button ever shifts (at most 1.5 s on a slow estimate).
+  const [toolbarReady, setToolbarReady] = useState(!levelLoading);
+  useEffect(() => {
+    if (!levelLoading) return setToolbarReady(true);
+    const timer = setTimeout(() => setToolbarReady(true), 1500);
+    return () => clearTimeout(timer);
+  }, [levelLoading]);
   // The map alone goes full screen: through the Fullscreen API where there is
   // one, and always as a fixed full-viewport overlay (iOS Safari has no API).
   useEffect(() => {
@@ -124,7 +178,7 @@ export function Graph({
     el.appendChild(renderer.domElement);
     renderer.domElement.setAttribute("aria-hidden", "true");
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 1200);
+    const camera = new THREE.PerspectiveCamera(FOV, 1, 0.1, 1200);
     const controls = new OrbitControls(camera, renderer.domElement);
     const saved = cameraMemory.current;
     let fitView = saved?.fit ?? true;
@@ -390,7 +444,10 @@ export function Graph({
     let width = 1,
       height = 1,
       current = "",
-      tween: { position: THREE.Vector3; target: THREE.Vector3 } | null = null;
+      tween: { from: Pose; to: Pose; start: number; duration: number } | null =
+        null;
+    // Where the map sat on the page at the last resize (page coordinates).
+    let placed: Frame | null = saved?.frame ?? null;
     let frame = 0,
       disposed = false;
     let labelTimer: ReturnType<typeof setTimeout> | undefined;
@@ -479,7 +536,8 @@ export function Graph({
     const updateLabels = () => {
       // Projection must use this camera pose, not the preceding rendered frame.
       camera.updateMatrixWorld();
-      const close = camera.position.distanceTo(controls.target) < 105;
+      const close =
+        camera.position.distanceTo(controls.target) < labelDistance(height);
       const result: Label[] = [];
       areaLabelsShown = !close || fitView;
       if (!close || fitView) {
@@ -505,10 +563,10 @@ export function Graph({
           const p = project(new THREE.Vector3(...node.position));
           if (
             !p.visible ||
-            p.x < 85 ||
-            p.x > width - 85 ||
-            p.y < 80 ||
-            p.y > height - 85
+            p.x < SKILL_INSETS.left ||
+            p.x > width - SKILL_INSETS.right ||
+            p.y < SKILL_INSETS.top ||
+            p.y > height - SKILL_INSETS.bottom
           )
             continue;
           if (
@@ -527,6 +585,15 @@ export function Graph({
         }
       }
       setLabels(result);
+    };
+    /** After a discrete change (a selection, a new size), names follow at once. */
+    const refreshLabels = () => {
+      if (disposed) return;
+      if (interacting || pointers.size || tween) return settleLabels();
+      clearTimeout(labelTimer);
+      updateLabels();
+      labelsHidden = false;
+      setLabelsMoving(false);
     };
     const hideLabels = () => {
       clearTimeout(labelTimer);
@@ -566,7 +633,8 @@ export function Graph({
       renderer.render(scene, camera);
       if (
         !areaLabelsShown &&
-        (fitView || camera.position.distanceTo(controls.target) >= 105)
+        (fitView ||
+          camera.position.distanceTo(controls.target) >= labelDistance(height))
       )
         updateLabels();
       moveAreas();
@@ -641,59 +709,237 @@ export function Graph({
         glows[i]!.material.opacity = active ? earned.glow : 0.025;
       });
     };
-    // Selecting or deselecting only moves the highlight ring; the camera moves
-    // only by the person's own gestures and the camera buttons.
-    focus.current = (id) => {
+    // Immediate prerequisites and next steps: what a framing tries to keep in view.
+    const nextSteps = new Map<string, string[]>();
+    for (const p of points)
+      for (const id of p.skill.prerequisites)
+        nextSteps.set(id, [...(nextSteps.get(id) ?? []), p.skill.id]);
+    const pose = (): Pose => ({
+      position: camera.position.clone(),
+      target: controls.target.clone(),
+    });
+    /** Where the camera is headed: a glide's end, or where it is. */
+    const destination = () => (tween ? tween.to : pose());
+    // A stand-in camera to ask "what would this pose show?".
+    const probe = camera.clone();
+    const look = (at: Pose) => {
+      probe.aspect = camera.aspect;
+      probe.updateProjectionMatrix();
+      probe.position.copy(at.position);
+      probe.up.set(0, 1, 0);
+      probe.lookAt(at.target);
+      probe.updateMatrixWorld();
+      const right = new THREE.Vector3(),
+        up = new THREE.Vector3(),
+        back = new THREE.Vector3();
+      probe.matrixWorld.extractBasis(right, up, back);
+      const basis: Basis = {
+        right: right.toArray(),
+        up: up.toArray(),
+        back: back.toArray(),
+      };
+      return { probe, basis, back };
+    };
+    const poseAt = (target: Vec3, back: THREE.Vector3, distance: number) => {
+      const goal = new THREE.Vector3(...target);
+      return {
+        target: goal,
+        position: goal.clone().addScaledVector(back, distance),
+      };
+    };
+    const place = (at: Pose) => {
+      camera.position.copy(at.position);
+      controls.target.copy(at.target);
+      controls.update();
+    };
+    /** Move the camera: an eased glide, or a cut when motion is reduced. */
+    const glide = (to: Pose, { instant = false, duration = 0 } = {}) => {
+      const from = pose();
+      const span = from.position.distanceTo(from.target);
+      const travel =
+        from.target.distanceTo(to.target) /
+        (2 * Math.tan(THREE.MathUtils.degToRad(FOV / 2)) * span);
+      const ratio = to.position.distanceTo(to.target) / span;
+      if (travel < 0.002 && Math.abs(ratio - 1) < 0.002) {
+        tween = null;
+        return;
+      }
+      if (instant || !motion) {
+        tween = null;
+        place(to);
+        paint();
+        refreshLabels();
+        return;
+      }
+      tween = {
+        from,
+        to,
+        start: performance.now(),
+        duration: duration || glideDuration(travel, ratio),
+      };
+      hideLabels();
+    };
+    /** One frame of a glide: target in a line, zoom at an even pace. */
+    const offset = new THREE.Vector3(),
+      direction = new THREE.Vector3(),
+      turn = new THREE.Quaternion();
+    const step = (time: number) => {
+      if (!tween) return;
+      const t = Math.min(1, (time - tween.start) / tween.duration);
+      const e = ease(t);
+      const { from, to } = tween;
+      const a = from.position.clone().sub(from.target),
+        b = to.position.clone().sub(to.target);
+      const la = a.length(),
+        lb = b.length();
+      turn.setFromUnitVectors(a.clone().normalize(), b.clone().normalize());
+      direction
+        .copy(a)
+        .normalize()
+        .applyQuaternion(new THREE.Quaternion().slerp(turn, e));
+      offset.copy(direction).setLength(la * Math.pow(lb / la, e));
+      controls.target.lerpVectors(from.target, to.target, e);
+      camera.position.copy(controls.target).add(offset);
+      controls.update();
+      if (t >= 1) {
+        place(to);
+        tween = null;
+        settleLabels();
+      }
+    };
+    /**
+     * The pose that frames a skill, or null when it is already comfortably
+     * in view (on screen, clear of the edges and controls, and readable).
+     */
+    const framing = (id: string): Pose | null => {
+      const p = byId.get(id);
+      if (!p) return null;
+      const goal = destination();
+      const { probe, basis, back } = look(goal);
+      const node = new THREE.Vector3(...p.position);
+      const projected = node.clone().project(probe);
+      const depth = goal.position.clone().sub(node).dot(back);
+      const named =
+        !fitView &&
+        goal.position.distanceTo(goal.target) < labelDistance(height);
+      if (
+        named &&
+        isFramed(
+          {
+            x: ((projected.x + 1) * width) / 2,
+            y: ((1 - projected.y) * height) / 2,
+            depth,
+          },
+          { width, height },
+        )
+      )
+        return null;
+      const neighbors = [...p.skill.prerequisites, ...(nextSteps.get(id) ?? [])]
+        .map((n) => byId.get(n)?.position)
+        .filter((n): n is [number, number, number] => !!n);
+      const plan = frameSkill({
+        node: p.position,
+        neighbors,
+        basis,
+        view: { width, height },
+        distance: goal.position.distanceTo(goal.target),
+      });
+      return poseAt(plan.target, back, plan.distance);
+    };
+    focus.current = (id, frame) => {
       recolor(id);
       const p = byId.get(id);
       ring.visible = !!p;
-      if (p) {
-        const target = new THREE.Vector3(...p.position);
-        ring.position.copy(target);
+      if (p) ring.position.set(...p.position);
+      // A selection never fights a hand on the map.
+      if (p && frame !== "none" && !pointers.size) {
+        syncSize();
+        const to = framing(id);
+        touched.current = true;
+        if (to) {
+          fitView = false;
+          glide(to, { instant: frame === "cut" });
+        }
       }
-      settleLabels();
       paint();
+      refreshLabels();
     };
-    reset.current = () => {
-      fitView = true;
+    const overviewPose = (): Pose => {
       const overview = overviewCamera(
         points.map((p) => p.position),
         width,
         height,
       );
-      camera.up.set(0, 1, 0);
-      tween = {
+      return {
         position: new THREE.Vector3(...overview.position),
         target: new THREE.Vector3(...overview.target),
       };
-      if (!motion) {
-        camera.position.copy(tween.position);
-        controls.target.copy(tween.target);
-        tween = null;
-        controls.update();
-      }
+    };
+    reset.current = () => {
+      touched.current = true;
+      fitView = true;
+      camera.up.set(0, 1, 0);
+      glide(overviewPose());
       recolor(current);
       ring.visible = !!byId.get(current);
-      settleLabels();
       paint();
+      refreshLabels();
+    };
+    home.current = (instant) => {
+      const region = levelRegion.current;
+      if (!region) return false;
+      syncSize();
+      // Near enough for skill names, with room around the region.
+      const far = readableDepth(height);
+      const { basis, back } = look(destination());
+      const frame = (ids: string[]) => {
+        const at = ids
+          .map((id) => byId.get(id)?.position)
+          .filter((n): n is [number, number, number] => !!n);
+        return at.length
+          ? fit({
+              points: at,
+              basis,
+              view: { width, height },
+              near: far * 0.75,
+              far,
+            })
+          : null;
+      };
+      // The whole estimated range when it fits at a readable zoom; otherwise
+      // the area with the most work in it.
+      let plan = frame(region.wide);
+      if (!plan?.complete) plan = frame(region.close) ?? plan;
+      if (!plan) return false;
+      fitView = false;
+      glide(poseAt(plan.target, back, plan.distance), { instant });
+      paint();
+      refreshLabels();
+      return true;
     };
     zoom.current = (factor) => {
+      touched.current = true;
       fitView = false;
-      tween = null;
+      const goal = destination();
       const distance = THREE.MathUtils.clamp(
-        camera.position.distanceTo(controls.target) * factor,
+        goal.position.distanceTo(goal.target) * factor,
         controls.minDistance,
         controls.maxDistance,
       );
-      camera.position
-        .sub(controls.target)
-        .setLength(distance)
-        .add(controls.target);
-      controls.update();
-      settleLabels();
-      paint();
+      glide(
+        {
+          target: goal.target.clone(),
+          position: goal.position
+            .clone()
+            .sub(goal.target)
+            .setLength(distance)
+            .add(goal.target),
+        },
+        { duration: 240 },
+      );
     };
     rotate.current = (value) => {
+      if (controls.enableRotate === value) return;
       controls.enableRotate = value;
       controls.mouseButtons.LEFT = value ? THREE.MOUSE.ROTATE : THREE.MOUSE.PAN;
       controls.touches.ONE = value ? THREE.TOUCH.ROTATE : THREE.TOUCH.PAN;
@@ -709,9 +955,101 @@ export function Graph({
         paint();
       }
     };
-    const resize = () => {
+    /**
+     * A new size keeps the map where it was on the page. The skill in focus
+     * (selected, or just closed) stays exactly where it was, at the same
+     * size; without one, the middle of what stays visible does. A side panel
+     * covers part of the map rather than shoving it; full screen reveals
+     * more around it.
+     */
+    const keepInPlace = (before: Frame, after: Frame) => {
+      const left = Math.max(before.left, after.left),
+        right = Math.min(before.left + before.width, after.left + after.width),
+        top = Math.max(before.top, after.top),
+        bottom = Math.min(before.top + before.height, after.top + after.height);
+      const anchor =
+        right > left && bottom > top
+          ? { x: (left + right) / 2, y: (top + bottom) / 2 }
+          : {
+              x: after.left + after.width / 2,
+              y: after.top + after.height / 2,
+            };
+      const scale = after.height / before.height;
+      const tan = Math.tan(THREE.MathUtils.degToRad(FOV / 2));
+      const node = byId.get(focal.current)?.position;
+      const move = (at: Pose): Pose => {
+        const { basis } = look(at);
+        const right = new THREE.Vector3(...basis.right),
+          up = new THREE.Vector3(...basis.up),
+          back = new THREE.Vector3(...basis.back);
+        const span = at.position.distanceTo(at.target);
+        // The point to hold: the focal skill if it was on screen, else the
+        // anchor, on the target's plane.
+        let point: THREE.Vector3 | null = null,
+          depth = span,
+          page = anchor;
+        if (node) {
+          const v = new THREE.Vector3(...node).sub(at.position);
+          const d = -v.dot(back);
+          const unit = before.height / (2 * tan * d);
+          const x = before.left + before.width / 2 + v.dot(right) * unit,
+            y = before.top + before.height / 2 - v.dot(up) * unit;
+          if (
+            d > 1 &&
+            x >= before.left &&
+            x <= before.left + before.width &&
+            y >= before.top &&
+            y <= before.top + before.height
+          ) {
+            point = new THREE.Vector3(...node);
+            depth = d;
+            page = { x, y };
+          }
+        }
+        if (!point) {
+          const unit = before.height / (2 * tan * span);
+          point = at.target
+            .clone()
+            .addScaledVector(
+              right,
+              (anchor.x - before.left - before.width / 2) / unit,
+            )
+            .addScaledVector(
+              up,
+              -(anchor.y - before.top - before.height / 2) / unit,
+            );
+        }
+        // Same pixels per unit at the point; the point at the same place.
+        const unit = before.height / (2 * tan * depth);
+        const position = point
+          .clone()
+          .addScaledVector(
+            right,
+            -(page.x - after.left - after.width / 2) / unit,
+          )
+          .addScaledVector(up, (page.y - after.top - after.height / 2) / unit)
+          .addScaledVector(back, depth * scale);
+        return {
+          position,
+          target: position.clone().addScaledVector(back, -span * scale),
+        };
+      };
+      place(move(pose()));
+      if (tween)
+        tween = { ...tween, from: move(tween.from), to: move(tween.to) };
+    };
+    const syncSize = () => {
       const box = el.getBoundingClientRect();
       if (!box.width || !box.height) return;
+      const now: Frame = {
+        left: box.left + scrollX,
+        top: box.top + scrollY,
+        width: box.width,
+        height: box.height,
+      };
+      const before = placed;
+      placed = now;
+      if (box.width === width && box.height === height) return;
       width = box.width;
       height = box.height;
       camera.aspect = width / height;
@@ -726,19 +1064,17 @@ export function Graph({
       renderer.setSize(width, height);
       placeAreas();
       if (fitView) {
-        const overview = overviewCamera(
-          points.map((p) => p.position),
-          width,
-          height,
-        );
-        camera.position.set(...overview.position);
-        controls.target.set(...overview.target);
         tween = null;
-        controls.update();
-      }
-      settleLabels();
+        place(overviewPose());
+      } else if (
+        before &&
+        (before.width !== now.width || before.height !== now.height)
+      )
+        keepInPlace(before, now);
       paint();
+      refreshLabels();
     };
+    const resize = () => syncSize();
     let down = { x: 0, y: 0 },
       pointers = new Set<number>(),
       multiple = false;
@@ -766,8 +1102,9 @@ export function Graph({
           distance = d;
         }
       }
+      // Highlight at once; the camera answers once the selection lands.
       if (nearest) {
-        focus.current(nearest);
+        focus.current(nearest, "none");
         selection.current(nearest);
       }
     };
@@ -805,8 +1142,10 @@ export function Graph({
       settleLabels();
       paint();
     };
+    // A drag, wheel or pinch takes the camera from any glide at once.
     const start = () => {
       interacting = true;
+      touched.current = true;
       hideLabels();
       fitView = false;
       tween = null;
@@ -831,12 +1170,15 @@ export function Graph({
     const observer = new ResizeObserver(resize);
     observer.observe(el);
     resize();
-    if (!saved) reset.current();
+    // The first view is the whole map until the selection or the learner's
+    // level (just after this) chooses better.
+    if (!saved) place(overviewPose());
     const vector = new THREE.Vector3();
     let lastFrame = 0;
     const animate = (time: number) => {
       if (disposed) return;
-      if (!document.hidden && time - lastFrame >= 1000 / 30) {
+      // A glide runs at the display's rate; the ambient motion at 30 fps.
+      if (!document.hidden && (tween || time - lastFrame >= 1000 / 30)) {
         lastFrame = time;
         const growthPhase =
           1 -
@@ -852,18 +1194,7 @@ export function Graph({
               growthPhase,
             )),
         );
-        if (tween) {
-          camera.position.lerp(tween.position, 0.22);
-          controls.target.lerp(tween.target, 0.22);
-          controls.update();
-          if (camera.position.distanceTo(tween.position) < 0.1) {
-            camera.position.copy(tween.position);
-            controls.target.copy(tween.target);
-            tween = null;
-            controls.update();
-            settleLabels();
-          }
-        }
+        step(time);
         edges.forEach((edge, i) => {
           edge.curve.getPoint((time * 0.00013 + i * 0.137) % 1, vector);
           pulsePosition.set(vector.toArray(), i * 3);
@@ -881,10 +1212,13 @@ export function Graph({
     else pulses.visible = false;
     recolor("");
     return () => {
+      // A rebuild mid-glide resumes where the glide was going.
+      const kept = destination();
       cameraMemory.current = {
-        position: camera.position.toArray() as [number, number, number],
-        target: controls.target.toArray() as [number, number, number],
+        position: kept.position.toArray() as [number, number, number],
+        target: kept.target.toArray() as [number, number, number],
         fit: fitView,
+        frame: placed,
       };
       disposed = true;
       clearTimeout(labelTimer);
@@ -920,12 +1254,20 @@ export function Graph({
       renderer.domElement.remove();
       focus.current = () => {};
       reset.current = () => {};
+      home.current = () => false;
       zoom.current = () => {};
       rotate.current = () => {};
     };
   }, [skills, evidence, motion, range?.lo, range?.hi, rangeStrand]);
+  // The camera answers a new selection once: a deep link on arrival cuts
+  // straight to it; a selection made here glides when it needs to.
   useEffect(() => {
-    focus.current(selected);
+    const changed = selected !== answered.current;
+    answered.current = selected;
+    focus.current(
+      selected,
+      changed && selected ? (firstView.current ? "cut" : "glide") : "none",
+    );
     rotate.current(orbit);
   }, [
     selected,
@@ -937,6 +1279,16 @@ export function Graph({
     rangeStrand,
     orbit,
   ]);
+  // Arriving with nothing selected, the map opens on the learner's level; if
+  // the estimate arrives a moment later, it glides there, unless the person
+  // has already moved the map or chosen a skill.
+  useEffect(() => {
+    const first = firstView.current;
+    firstView.current = false;
+    if (!level || touched.current || answered.current) return;
+    // Once only: a later change in the estimate never moves the map.
+    if (home.current(first)) touched.current = true;
+  }, [level]);
   return (
     <section
       ref={viewport}
@@ -1001,7 +1353,7 @@ export function Graph({
           pathway.
         </p>
       )}
-      <div className="pathways-camera">
+      <div className="pathways-camera" data-ready={toolbarReady}>
         <button
           aria-label={fullscreen ? "Exit full screen" : "Full screen"}
           aria-pressed={fullscreen}
@@ -1024,6 +1376,24 @@ export function Graph({
             All
           </span>
         </button>
+        {level && (
+          <button
+            disabled={failed}
+            aria-label="My level"
+            onClick={() => home.current(false)}
+          >
+            <span className="camera-wide">My level</span>
+            <svg
+              className="camera-narrow"
+              viewBox="0 0 20 20"
+              aria-hidden="true"
+            >
+              <circle cx="10" cy="10" r="5" />
+              <circle cx="10" cy="10" r="1.2" />
+              <path d="M10 2v3M10 15v3M2 10h3M15 10h3" />
+            </svg>
+          </button>
+        )}
         <button
           disabled={failed}
           aria-label="Zoom in"

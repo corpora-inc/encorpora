@@ -658,6 +658,9 @@ const inventory = createRoute({
     "InventoryScreen",
   ),
 });
+/** One map for the whole curriculum and each skill in it: choosing or
+ * closing a skill changes the URL, never the map (its camera, full screen
+ * and orbit stay as they were). */
 const pathways = createRoute({
   getParentRoute: () => root,
   path: "/pathways",
@@ -666,6 +669,10 @@ const pathways = createRoute({
     () => import("../features/pathways/PathwaysScreen"),
     "PathwaysScreen",
   ),
+});
+const pathwaysIndex = createRoute({
+  getParentRoute: () => pathways,
+  path: "/",
 });
 /** The lessons library is no destination of its own (docs/design/ia.md):
  * `/lessons` opens Pathways, its search carrying any query. A lesson's own
@@ -683,13 +690,8 @@ const lessonsHome = createRoute({
   },
 });
 const pathwaySkill = createRoute({
-  getParentRoute: () => root,
-  path: "/pathways/$skillId",
-  beforeLoad: framedScreen,
-  component: lazyRouteComponent(
-    () => import("../features/pathways/PathwaysScreen"),
-    "PathwaysScreen",
-  ),
+  getParentRoute: () => pathways,
+  path: "$skillId",
 });
 /** A learner's workbooks are a tab of their Progress: arriving chooses
  * that learner (the account's own, never a practice profile), so the
@@ -1254,9 +1256,8 @@ export const router = createRouter({
     tryStart,
     tryAnything,
     inventory,
-    pathways,
+    pathways.addChildren([pathwaysIndex, pathwaySkill]),
     lessonsHome,
-    pathwaySkill,
     workbookHistory,
     workbookDay,
     workbookResults,

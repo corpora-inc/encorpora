@@ -293,3 +293,47 @@ export function frontierRange(frontier: Frontier, strand?: string) {
     hi: estimate.level + 1.64 * estimate.sd,
   };
 }
+
+/**
+ * The skills that make up "my level" on the map: the estimated range the map
+ * outlines and the skills already earned, in the areas the learner has worked
+ * in (`wide`), and in the one area with the most work (`close`, for when
+ * `wide` spans the whole map). Null until there is an estimate from answers.
+ */
+export function levelRegion(
+  skills: MapSkill[],
+  frontier?: Frontier,
+  evidence: Evidence[] = [],
+) {
+  const range = frontier ? frontierRange(frontier) : null;
+  if (!frontier || !range) return null;
+  const inRange = skills.filter((s) => {
+    const grade = bands.indexOf(s.gradeBand);
+    return grade >= range.lo && grade <= range.hi;
+  });
+  // An estimate past either end of the curriculum: its nearest band.
+  const nearest = Math.min(
+    bands.length - 1,
+    Math.max(0, Math.round(range.level)),
+  );
+  const earned = new Set(
+    evidence.filter((e) => e.independentCorrect > 0).map((e) => e.skillId),
+  );
+  const region = (
+    inRange.length
+      ? inRange
+      : skills.filter((s) => bands.indexOf(s.gradeBand) === nearest)
+  ).concat(skills.filter((s) => earned.has(s.id)));
+  const work = neighborhoods.map(() => 0);
+  for (const [strand, estimate] of Object.entries(frontier.strands)) {
+    const area = neighborhoods.findIndex((n) => n.strands.includes(strand));
+    if (area >= 0) work[area]! += estimate.answered;
+  }
+  const top = work.indexOf(Math.max(...work));
+  const unique = (list: MapSkill[]) => [...new Set(list.map((s) => s.id))];
+  const worked = region.filter((s) => work[neighborhood(s)]! > 0);
+  const wide = unique(worked.length ? worked : region);
+  const close = unique(region.filter((s) => neighborhood(s) === top));
+  if (!wide.length) return null;
+  return { wide, close: work[top]! > 0 && close.length ? close : wide };
+}
