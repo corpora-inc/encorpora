@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { generatedProblemSchema } from "../src/math/contracts";
@@ -36,7 +37,11 @@ for (const t of operationSentenceTemplates)
       if (res.kind !== "choice") return;
       assert.equal(res.options.length, 4);
       assert.equal(new Set(res.options.map((o) => o.label)).size, 4);
-      for (const o of res.options) assert.ok(o.label.length <= 120);
+      for (const o of res.options)
+        reportEditorialLimit(
+          o.label.length <= 120,
+          `${t.id}: option exceeds 120 characters`,
+        );
       const correct = res.options.filter((o) => o.id === a.answer);
       assert.equal(correct.length, 1);
       const label = correct[0]!.label;

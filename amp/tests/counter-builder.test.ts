@@ -236,10 +236,22 @@ test("500 seeds cover the spec, match an independent prompt oracle and fall back
       "Picture-choice hints describe picture reading",
     );
     assert.deepEqual(
+      generateProblemFor(
+        p.public.templateId,
+        p.public.seed,
+        ["scenes-v1"],
+        undefined,
+        ["counter-builder-v1"],
+      ),
+      p,
+    );
+    assert.ok(p.walkthrough);
+    const { walkthrough: _walkthrough, ...withoutWalkthrough } = p;
+    assert.deepEqual(
       generateProblemFor(p.public.templateId, p.public.seed, [], undefined, [
         "counter-builder-v1",
       ]),
-      p,
+      withoutWalkthrough,
     );
     assert.doesNotMatch(
       JSON.stringify(p.public),

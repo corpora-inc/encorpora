@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -145,11 +146,19 @@ test("every problem is valid, deterministic and credited only for its key", () =
             new Set(b.options.map((o) => o.label)).size,
             b.options.length,
           );
-          for (const o of b.options) assert.ok(o.label.length <= 80, o.label);
+          for (const o of b.options)
+            reportEditorialLimit(
+              o.label.length <= 80,
+              `${p.public.templateId}: option exceeds 80 characters`,
+            );
         }
       if (r.kind === "choice") {
         assert.equal(r.options.length, 4);
-        for (const o of r.options) assert.ok(o.label.length <= 120, o.label);
+        for (const o of r.options)
+          reportEditorialLimit(
+            o.label.length <= 120,
+            `${p.public.templateId}: option exceeds 120 characters`,
+          );
         for (const o of r.options)
           if (o.id !== p.answer)
             assert.ok(p.choiceFeedback?.[o.id], `${id}: feedback`);

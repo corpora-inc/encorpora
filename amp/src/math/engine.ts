@@ -42,6 +42,7 @@ import {
 } from "./counter-builder";
 import { generateCounterBuilderFallback } from "./counter-builder-practice";
 import { gradeTrendLine, normalizeTrendLine } from "./trend-line-fit";
+import { gradePegBoard, normalizePegBoard } from "./peg-board";
 import { gradeShapeComposer, normalizeShapeAnswer } from "./shape-composer";
 import { gradeMultiPart, normalizeMultiPart } from "./multi-part-choice";
 import {
@@ -473,6 +474,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
     id: "add-within-20",
     version: 2,
     reprintsFrom: 1,
+    requiredFigureCapability: "scenes-v1",
     title: "Add within twenty",
     skillId: "addition-within-20",
     gradeBand: "K–2",
@@ -724,6 +726,8 @@ export function isValidResponse(
   problem: PublicProblem,
   response: string,
 ): boolean {
+  if (problem.response.kind === "peg-board")
+    return normalizePegBoard(problem.response, response) !== null;
   if (problem.response.kind === "counter-builder")
     return normalizeCounterBuilder(problem.response, response) !== null;
   if (problem.response.kind === "trend-line-fit")
@@ -753,6 +757,8 @@ export function gradeAnswer(
   problem: GeneratedProblem,
   response: string,
 ): boolean {
+  if (problem.public.response.kind === "peg-board")
+    return gradePegBoard(problem.public.response, response);
   if (problem.public.response.kind === "counter-builder")
     return gradeCounterBuilder(
       problem.public.response,
@@ -947,8 +953,9 @@ export function generateProblem(
 /**
  * Generate a problem a client can draw. Figure-surface axes fall back to
  * their legacy value when the client lacks the capability a value needs
- * (variation/axes.ts). The result is then checked: should a family draw a
- * newer scene component without declaring it on its axis, the instance is
+ * (variation/axes.ts). Optional worked scenes are omitted if unsupported.
+ * The result is then checked: should a family draw an unsupported scene
+ * component without declaring it on its axis, the instance is
  * rebuilt on legacy surfaces, and a template that still needs more than the
  * client has is an error, never a figure the client cannot show.
  */
@@ -969,7 +976,8 @@ export function generateProblemFor(
       return generateCounterBuilderFallback(seed);
     }
     const problem = generateProblem(templateId, seed, version);
-    if (!problem.variant?.axes?.clause) return problem;
+    if (!problem.variant?.axes?.clause && !problem.variant?.axes?.task)
+      return problem;
     const kind = problem.public.response.kind;
     const required =
       kind === "choice"
@@ -977,8 +985,9 @@ export function generateProblemFor(
         : kind === "number" || kind === "fraction"
           ? null
           : `${kind}-v1`;
-    // A legacy template's admission capability cannot name the union of its
-    // added formats. Retain its exact original surface for older clients.
+    // Clause variants use either the `clause` or `task` axis. Admission
+    // capabilities describe the original formats; retain the original
+    // surface when a client cannot render an added response format.
     return required && !responseCapabilities.includes(required)
       ? generateProblem(templateId, seed, 1)
       : problem;
@@ -986,17 +995,31 @@ export function generateProblemFor(
   const fits = (problem: GeneratedProblem) =>
     // The public problem, and what reaches the client beside it: the hint
     // cue's scene and a lesson's walkthrough.
-    sceneCapabilitiesIn([
-      problem.public,
-      problem.hintCue,
-      problem.walkthrough,
-    ]).every((needs) => figureCapabilities.includes(needs));
-  const problem = withClientFigures(figureCapabilities, () =>
-    generateForClient(),
+    sceneCapabilitiesIn(
+      [problem.public, problem.hintCue, problem.walkthrough],
+      { includeV1: true },
+    ).every((needs) => figureCapabilities.includes(needs));
+  const withoutUnsupportedWalkthrough = (problem: GeneratedProblem) => {
+    if (
+      !problem.walkthrough ||
+      sceneCapabilitiesIn(problem.walkthrough, { includeV1: true }).every(
+        (needs) => figureCapabilities.includes(needs),
+      )
+    )
+      return problem;
+    // Worked scenes supplement the textual explanation; they are not
+    // givens needed to answer the public problem.
+    const { walkthrough: _walkthrough, ...textExplanation } = problem;
+    return textExplanation;
+  };
+  const problem = withoutUnsupportedWalkthrough(
+    withClientFigures(figureCapabilities, generateForClient),
   );
   if (fits(problem)) return problem;
-  const legacy = withClientFigures(figureCapabilities, () =>
-    withLegacySurfaces(generateForClient),
+  const legacy = withoutUnsupportedWalkthrough(
+    withClientFigures(figureCapabilities, () =>
+      withLegacySurfaces(generateForClient),
+    ),
   );
   if (fits(legacy)) return legacy;
   throw new Error(
