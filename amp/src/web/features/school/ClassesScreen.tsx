@@ -1,5 +1,10 @@
 import { canAddStudents } from "./permissions";
 import {
+  AddChildSheet,
+  familyAddLabel,
+  useFamilyAdd,
+} from "../family-class/AddChildSheet";
+import {
   keepPreviousData,
   useInfiniteQuery,
   useQuery,
@@ -568,9 +573,9 @@ export function ClassScreen() {
     org?.can?.includes("classes.update") || org?.teaches?.includes(classId);
   const canAdd = canAddStudents(org, classId);
   const family = org?.kind === "family";
-  const me = useQuery(meOptions(session)).data;
-  // The family's account holder adds a child in Family.
-  const holder = !!me?.signedIn && me.familyClass?.classId === classId;
+  // A family's class adds a child (or a tutor's student), never by the
+  // school form: a family has no school roster endpoint.
+  const familyAdd = useFamilyAdd(session, org);
   const [notice, setNotice] = useState("");
   const [error, setError] = useState("");
   useLoggedError(error);
@@ -614,7 +619,6 @@ export function ClassScreen() {
   // pick only their grading periods, and the year is the school's
   // (docs/design/ia.md, "Where settings live").
   const small = org?.kind === "family" || org?.solo === true;
-  const family = org?.kind === "family";
   const schoolSettings =
     !family &&
     ["calendar.read", "license.read", "privacy.read", "settings.read"].some(
@@ -726,20 +730,11 @@ export function ClassScreen() {
       {!family && (
       <section className={styles.classRoster}>
         <div className={styles.rosterHead}>
-          <h2>{family ? "Children" : "Students"}</h2>
-          {canAdd && (
+          <h2>Students</h2>
+          {(canAdd || familyAdd) && (
             <Button variant="secondary" onClick={() => setAdding(true)}>
-              Add student
+              {familyAdd ? familyAddLabel(familyAdd) : "Add student"}
             </Button>
-          )}
-          {family && holder && (
-            <Link
-              to="/$"
-              params={{ _splat: "family/learners" }}
-              className={buttonClass("secondary")}
-            >
-              Add a child
-            </Link>
           )}
         </div>
         {query.isPending ? (
@@ -784,14 +779,23 @@ export function ClassScreen() {
                 : "Students added to this class appear here."}
           </EmptyState>
         )}
-        {canAdd && (
-          <AddStudentSheet
-            orgId={orgId}
-            classId={classId}
-            className={klass.name}
+        {familyAdd && session ? (
+          <AddChildSheet
+            session={session}
+            kind={familyAdd}
             open={adding}
             onOpenChange={setAdding}
           />
+        ) : (
+          canAdd && (
+            <AddStudentSheet
+              orgId={orgId}
+              classId={classId}
+              className={klass.name}
+              open={adding}
+              onOpenChange={setAdding}
+            />
+          )
         )}
       </section>
       )}

@@ -130,10 +130,12 @@ export function shellFrame(
   // "Continue with AMP" for one learner is a step of whatever led there
   // (practice, Today, Billing), so it has the plain bar and its own way back.
   if (under(path, "/continue")) return { kind: "plain" };
-  // "What brings you to AMP?" and each answer's question.
+  // "What brings you to AMP?", each answer's question, and the steps of a
+  // parent's or a tutor's setup.
   if (
     path === "/start" ||
-    /^\/start\/(myself|parent|tutor|teacher|school)$/.test(path)
+    /^\/start\/(myself|parent|tutor|teacher|school)$/.test(path) ||
+    /^\/start\/(parent|tutor)\/[a-z-]+$/.test(path)
   )
     return { kind: "plain" };
   if (path === "/practice") return { kind: "practice" };

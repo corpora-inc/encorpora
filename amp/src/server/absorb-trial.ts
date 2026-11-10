@@ -5,7 +5,7 @@ import { ensureFamilyClass } from "../family/family-class.js";
 import { familyHasLearnerRoom } from "../learning/free-allowance.js";
 import { isSchoolAccount } from "../schools/principal.js";
 import { lockLearningAccount } from "./account-access.js";
-import { allocatePictureIdentity } from "./picture-identity.js";
+import { allocateLabel } from "./learner-label.js";
 
 /** `ensureFamilyClass` only stores this. Enrollment runs on the caller's client. */
 const enrollmentPool = {
@@ -75,7 +75,7 @@ export async function absorbLiveTrial(
     let moved = 0;
     let children = 0;
     // The trial's screens are retired, so a practised trial is only
-    // reachable in the family: a child's joins it as another picture learner
+    // reachable in the family: a child's joins it as another child ("Child 2")
     // beside any children already there. Two rare cases still expire as
     // before (`purgeExpiredTrials`): a trial with no birth year (migration
     // 0101 refuses an unnamed learner without one) and an adult's trial when
@@ -87,23 +87,15 @@ export async function absorbLiveTrial(
         if (await moveAdultTrial(client, ownerAccountId, trial)) moved++;
         continue;
       }
-      const identity = await allocatePictureIdentity(
-        client,
-        `family:${ownerAccountId}`,
-      );
+      // The parent never named a trial: it goes by its number ("Child 2")
+      // until they do.
+      const label = await allocateLabel(client, `family:${ownerAccountId}`);
       const updated = await client.query(
-        `UPDATE amp_learners SET account_id=$1,name_pending=true,picture_identity=$2,
-           picture_number=$3,identity_scope=$4,name=$5
-         WHERE id=$6 AND deleted_at IS NULL AND birth_year IS NOT NULL AND NOT adult
+        `UPDATE amp_learners SET account_id=$1,name_pending=true,label_number=$2,
+           identity_scope=$3,name=$4
+         WHERE id=$5 AND deleted_at IS NULL AND birth_year IS NOT NULL AND NOT adult
          RETURNING id`,
-        [
-          ownerAccountId,
-          identity.picture,
-          identity.number,
-          identity.scope,
-          identity.name,
-          trial.learner_id,
-        ],
+        [ownerAccountId, label.number, label.scope, label.name, trial.learner_id],
       );
       if (!updated.rowCount) continue;
       await client.query(

@@ -604,3 +604,36 @@
 .family-sheet-actions > * {
   flex: 1 1 160px;
 }
+/* A child's name, edited in place on their card. */
+.family-name-edit {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: 16px;
+}
+.family-center .family-name-edit label,
+.family-center .family-add-learner label {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+}
+/* A field's reason keeps its line, in the danger ink, in both forms. */
+.family-center .family-name-edit label > span[aria-live],
+.family-center .family-add-learner label > span[aria-live] {
+  min-height: 1.4em;
+  color: var(--color-danger-accent);
+  font-size: var(--text-label);
+  font-weight: 400;
+}
+.family-name-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+/* The basis for a parent's names: one quiet line beside the action. */
+.family-name-basis {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.45;
+}

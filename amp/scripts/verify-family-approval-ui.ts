@@ -312,7 +312,7 @@ async function journey(
   );
   await parent.reload();
   await heading(parent, "Your child is invited to Marisol’s class");
-  const name = parent.getByLabel("Your child’s first name");
+  const name = parent.getByLabel("Your child’s name");
   await name.waitFor();
   check(
     `${label} no child name collected by the teacher`,

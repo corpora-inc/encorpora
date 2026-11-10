@@ -1,0 +1,41 @@
+/* Add a child to a family's class: two fields, a quiet line, the action. */
+.form {
+  display: grid;
+  gap: var(--space-3);
+  width: min(100%, var(--width-form, 480px));
+}
+.field {
+  display: grid;
+  gap: var(--space-2);
+}
+.label {
+  font-weight: 600;
+}
+.error {
+  min-height: 1.4em;
+  color: var(--color-danger-accent);
+  font-size: var(--text-label);
+}
+.note {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.45;
+}
+/* Saved or failed: one line, its space kept. */
+.done,
+.failed {
+  min-height: 1.45em;
+  margin: 0;
+  font-size: var(--text-label);
+  line-height: 1.45;
+}
+.done {
+  color: var(--color-on-surface);
+}
+.failed {
+  color: var(--color-danger-accent);
+}
+.action {
+  justify-self: start;
+}

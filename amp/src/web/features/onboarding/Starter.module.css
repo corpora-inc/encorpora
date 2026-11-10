@@ -141,32 +141,6 @@
 .lede {
   color: var(--color-on-surface);
 }
-.years {
-  display: grid;
-  gap: var(--space-2);
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.year {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-  align-items: center;
-  gap: var(--space-3);
-}
-.yearName {
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-@media (max-width: 359px) {
-  .year {
-    grid-template-columns: 1fr;
-    gap: var(--space-1);
-  }
-}
 .facts {
   display: grid;
   gap: var(--space-3);

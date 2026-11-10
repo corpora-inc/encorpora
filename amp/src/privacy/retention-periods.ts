@@ -29,7 +29,7 @@ export const RETENTION = {
    * learner's learning data unlinks their reports and erases the notes. */
   problemFlagDays: 365,
   /** Approval links for another family's child that nobody approved, with
-   * the parent's address, picture label and any legacy name: days after
+   * the parent's address, the child's nickname and any legacy name: days after
    * they expired or the teacher withdrew them. */
   familyApprovalDays: 30,
   /** Voluntary parent product feedback, from submission. */

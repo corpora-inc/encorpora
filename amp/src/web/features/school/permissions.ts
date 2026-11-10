@@ -9,6 +9,9 @@ export function canAddStudents(
   classId?: string,
 ): boolean {
   if (!org) return false;
+  // A family's class has no school roster: it adds children its own way
+  // (`useFamilyAdd`), never by this form.
+  if (org.kind === "family") return false;
   if (org.can?.includes("students.add")) return true;
   if (org.demo || org.kind === "family") return false;
   return classId

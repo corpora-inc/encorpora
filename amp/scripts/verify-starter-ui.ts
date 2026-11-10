@@ -152,7 +152,7 @@ try {
     await page.getByRole("radio", { name: String(thisYear - 9) }).click();
     await page.getByRole("button", { name: "Set up as a parent" }).click();
     await page.waitForURL(/\/start\/parent$/);
-    await page.getByRole("heading", { name: "How many children?" }).waitFor();
+    await page.getByRole("heading", { name: "Your children" }).waitFor();
     await context.close();
   }
 

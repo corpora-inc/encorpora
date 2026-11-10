@@ -1,4 +1,5 @@
 import type { Frontier } from "../learning/frontier";
+import { optionalChildName } from "../learning/nickname.js";
 import { lessonFilmFor } from "../content/lesson-films";
 import {
   diagnoseLinePlotBuild,
@@ -414,7 +415,8 @@ function routes(app: FastifyInstance, options: AppOptions) {
       throw new ApiError(403, "Create an account to add learners");
     const { name, birthYear } = z
       .object({
-        name: z.string().trim().min(1).max(60).optional(),
+        // The parent's name for their own child; blank is "Child 2".
+        name: optionalChildName,
         birthYear: birthYearSchema.optional(),
       })
       .strict()
