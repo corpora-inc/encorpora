@@ -599,6 +599,7 @@ test("clients without point-plot-v1 are never served these families, online or o
       "line-plot-build-v1",
       "unit-square-marking-v1",
       "counter-builder-v1",
+      "trend-line-fit-v1",
     ],
   );
   for (const client of [

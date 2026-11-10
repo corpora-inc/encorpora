@@ -11,6 +11,8 @@ import {
 import { plotPoints, serializePlot } from "../src/math/point-plot";
 import { linePlotCounts, linePlotValues } from "../src/math/line-plot-build";
 import { fillCounterBuilder } from "./ui-counter-builder";
+import { fillTrendLine } from "./ui-trend-line-fit";
+import { initialTrendPoints } from "../src/math/trend-line-fit";
 import {
   parseWorkDraft,
   rowShape,
@@ -172,6 +174,11 @@ export async function preparePracticeAnswer(
         }
       }
       await page.locator(".choice-submit:visible").click();
+    } else if (schema.kind === "trend-line-fit") {
+      await fillTrendLine(page, schema, response);
+      await page
+        .getByRole("button", { name: "Check line", exact: true })
+        .click();
     } else if (schema.kind === "point-plot") {
       const layer = page.locator(".point-plot-layer");
       const grid = schema.grid;
@@ -318,6 +325,8 @@ export function practiceResponse(solution: GeneratedProblem, correct: boolean) {
       response = serializeSelection(
         replacement ? [...ids.slice(1), replacement] : ids.slice(1),
       );
+    } else if (schema.kind === "trend-line-fit") {
+      response = JSON.stringify(initialTrendPoints(schema));
     } else if (schema.kind === "point-plot") {
       const points = plotPoints(response);
       const grid = schema.grid;
