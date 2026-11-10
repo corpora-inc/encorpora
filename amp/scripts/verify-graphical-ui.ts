@@ -340,7 +340,10 @@ try {
   ])
     fixtures.push({
       name: id,
-      problem: generateProblem(id, "graph-readable").public,
+      // A drawn instance: some families' clause variants have no figure.
+      problem: Array.from({ length: 64 }, (_, n) =>
+        generateProblem(id, n ? `graph-readable-${n}` : "graph-readable"),
+      ).find((p) => p.public.figure)!.public,
     });
   function find(
     name: string,
