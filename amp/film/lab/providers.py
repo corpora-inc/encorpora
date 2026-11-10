@@ -179,6 +179,51 @@ def claude_output(stdout, provider):
             'partial_api_dollars': sum(api_cost(provider, value) for value in messages.values()) if messages else None}
 
 
+def grok_output(stdout):
+    """Prefer closing spend; otherwise retain reported response boundaries.
+
+    Grok's streaming-json usage fields already exclude cache hits from input.
+    Never add per-response usage to the cumulative closing event, or derive a
+    dollar figure when the CLI omits one.
+    """
+    chunks, requests = [], {}
+    final = None
+    malformed = 0
+    for number, line in enumerate(stdout.splitlines()):
+        try:
+            event = json.loads(line)
+        except ValueError:
+            malformed += bool(line.strip())
+            continue
+        if not isinstance(event, dict):
+            continue
+        kind = event.get('type')
+        if kind == 'text' and isinstance(event.get('data'), str):
+            chunks.append(event['data'])
+        elif kind == 'usage':
+            identifier = event.get('messageId') or event.get('message_id') or f'line-{number}'
+            requests[identifier] = event.get('usage') or {}
+        elif kind in ('end', 'error'):
+            final = event
+    usage = (final or {}).get('usage') or {}
+    usable_final_usage = isinstance(usage, dict) and any(
+        isinstance(usage.get(key), (int, float)) and not isinstance(usage.get(key), bool)
+        for key in ('input_tokens', 'output_tokens', 'total_tokens'))
+    partial = final is None or bool(final.get('usage_is_incomplete')) or not usable_final_usage
+    if partial and requests:
+        usage = {key: sum(value.get(key, 0) for value in requests.values())
+                 for key in ('input_tokens', 'output_tokens', 'cache_read_input_tokens',
+                             'cache_creation_input_tokens', 'reasoning_tokens', 'total_tokens')}
+    result = {**(final or {}), 'text': ''.join(chunks), 'usage': usage,
+              'usage_partial': partial, 'reported_requests': len(requests),
+              'malformed_stream_lines': malformed,
+              'is_error': final is None or final.get('type') == 'error'
+                          or final.get('stopReason') not in (None, 'end_turn')}
+    if partial or result.get('cost_is_partial'):
+        result.pop('total_cost_usd', None)
+    return result
+
+
 def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
               check_command=None, images=(), timeout=1800):
     """One measured attempt. The caller owns retry limits and concurrency."""
@@ -207,7 +252,7 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
         command = ['grok', '-m', MODELS[provider], '--reasoning-effort', 'xhigh',
                    '--prompt-file', str(prompt_path), '--cwd', str(workspace),
                    '--always-approve', '--rules', house, '--no-subagents',
-                   '--disable-web-search', '--output-format', 'json']
+                   '--disable-web-search', '--output-format', 'streaming-json']
     else:
         if not secrets.get('ANTHROPIC_API_KEY'):
             raise RuntimeError('Anthropic API key is unavailable')
@@ -225,6 +270,8 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
         else:
             command += ['--tools', '']
     record = {'provider': provider, 'model': MODELS[provider], 'role': role,
+              'reasoning_effort': 'xhigh',
+              'output_format': 'streaming-json' if provider == 'grok' else 'json' if provider == 'astra' else 'stream-json',
               'started_at': now(), 'prompt_sha256': hashlib.sha256(prompt.encode()).hexdigest(),
               'image_sha256': [hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in images],
               'timeout_seconds': timeout,
@@ -274,18 +321,21 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
                         raw_usage[key] = raw_usage.get(key, 0)+value
             record['api_dollars'] = None  # This CLI reports tokens, not an API-key charge.
         else:
-            response = json.loads(stdout) if provider == 'grok' else claude_output(stdout, provider)
+            response = grok_output(stdout) if provider == 'grok' else claude_output(stdout, provider)
             result = response.get('text' if provider == 'grok' else 'result', '')
             raw_usage = response.get('usage', {})
             record['model_usage'] = response.get('modelUsage')
             record['reported_dollars'] = response.get('total_cost_usd')
             record['api_dollars'] = None if provider == 'grok' else response.get('total_cost_usd')
             record['provider_error'] = bool(response.get('is_error'))
-            if provider != 'grok':
-                record['usage_partial'] = response.get('usage_partial', False)
-                record['partial_api_dollars'] = response.get('partial_api_dollars')
-                record['reported_requests'] = response.get('reported_requests')
-                record['malformed_stream_lines'] = response.get('malformed_stream_lines', 0)
+            record['usage_partial'] = response.get('usage_partial', False)
+            record['partial_api_dollars'] = response.get('partial_api_dollars')
+            record['reported_requests'] = response.get('reported_requests')
+            record['malformed_stream_lines'] = response.get('malformed_stream_lines', 0)
+            if provider == 'grok':
+                record['session_id'] = response.get('sessionId')
+                record['reported_usage_is_incomplete'] = response.get('usage_is_incomplete', False)
+                record['reported_cost_is_partial'] = response.get('cost_is_partial', False)
         record['raw_usage'] = raw_usage
         record['tokens'] = normalized_usage(provider, raw_usage)
         record['usage_complete'] = bool(raw_usage) and not timed_out and not record.get('usage_partial')

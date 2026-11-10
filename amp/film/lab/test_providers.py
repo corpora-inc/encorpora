@@ -4,11 +4,47 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from providers import api_cost, batch_timing, claude_output, credentials, normalized_usage, parse_json, redact, submit_review_batch
+from providers import api_cost, batch_timing, claude_output, credentials, grok_output, normalized_usage, parse_json, redact, submit_review_batch
 from prompts import coverage_from_study, validate_review
 
 
 class EvidenceTests(unittest.TestCase):
+    def test_grok_closing_event_without_usage_preserves_response_boundaries(self):
+        boundary = {'type': 'usage', 'messageId': 'one',
+                    'usage': {'input_tokens': 20, 'output_tokens': 30}}
+        for kind in ('end', 'error'):
+            for closing_usage in ({}, {'usage': {}}):
+                with self.subTest(kind=kind, closing_usage=closing_usage):
+                    final = {'type': kind, **closing_usage}
+                    result = grok_output(json.dumps(boundary)+'\n'+json.dumps(final))
+                    self.assertEqual(result['usage']['input_tokens'], 20)
+                    self.assertEqual(result['usage']['output_tokens'], 30)
+                    self.assertTrue(result['usage_partial'])
+                    self.assertNotIn('total_cost_usd', result)
+
+    def test_grok_stream_preserves_partial_tokens_without_inventing_dollars(self):
+        boundary = {'type': 'usage', 'messageId': 'one', 'usage': {
+            'input_tokens': 20, 'cache_read_input_tokens': 100, 'output_tokens': 30}}
+        events = [{'type': 'text', 'data': 'Progress.'}, boundary, boundary,
+                  {'type': 'text', 'data': '{"ship":true}'},
+                  {'type': 'end', 'stopReason': 'cancelled', 'usage_is_incomplete': True,
+                   'usage': {}, 'total_cost_usd': 0}]
+        partial = grok_output('\n'.join(json.dumps(e) for e in events))
+        self.assertEqual(partial['text'], 'Progress.{"ship":true}')
+        self.assertEqual(partial['usage']['input_tokens'], 20)
+        self.assertEqual(partial['usage']['cache_read_input_tokens'], 100)
+        self.assertEqual(partial['reported_requests'], 1)
+        self.assertTrue(partial['usage_partial'])
+        self.assertTrue(partial['is_error'])
+        self.assertNotIn('total_cost_usd', partial)
+        events[-1] = {'type': 'end', 'stopReason': 'end_turn', 'usage': {
+            'input_tokens': 40, 'output_tokens': 50}, 'total_cost_usd': .25}
+        complete = grok_output('\n'.join(json.dumps(e) for e in events))
+        self.assertEqual(complete['usage']['input_tokens'], 40)
+        self.assertEqual(complete['total_cost_usd'], .25)
+        self.assertFalse(complete['usage_partial'])
+        self.assertFalse(complete['is_error'])
+
     def test_batch_duration_excludes_polling_delay_and_never_claims_item_runtime(self):
         metadata = {'created_at': '2026-01-01T00:00:05Z', 'ended_at': '2026-01-01T00:01:05Z'}
         timing = batch_timing(metadata, '2026-01-01T00:00:00+00:00', '2026-01-01T00:03:00+00:00')
