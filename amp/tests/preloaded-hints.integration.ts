@@ -29,6 +29,7 @@ test(
       const batch = await app.inject({
         method: "POST",
         url: `${base}/batches`,
+        // A current client: add-within-20 draws a scene (#2112).
         payload: {
           templateId: "add-within-20",
           count: 3,
