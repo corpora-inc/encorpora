@@ -237,9 +237,11 @@ def run_fresh(production, args):
                 from prod import ensure_facts
                 ensure_facts(config, [row])
                 facts = read_json(root/'facts'/(row['type']+'.json'))
-                if not facts['standards'] or facts.get('unresolved_alignments'):
+                if not facts['standards']:
                     raise RuntimeError('Verbatim standards are missing for the selected type')
                 recipe['standards'] = facts['standards']
+                # Exam-framework tags (SAT, MCAS, STAAR) have no Common Core text; keep them on record.
+                recipe['unresolved_alignments'] = facts.get('unresolved_alignments') or []
             with stage('workspace'):
                 references = random.Random(str(seed)+':references').sample(
                     sorted(reference_map), min(3, len(reference_map)))
