@@ -98,7 +98,8 @@ export type ProblemFlag = {
     | "shape-composer"
     | "multi-part-choice"
     | "figure-choice"
-    | "structured-work";
+    | "structured-work"
+    | "line-plot-build";
   response: string | null;
   outcome: FlagOutcome;
   assisted: boolean;

@@ -22,6 +22,7 @@ import "../premium-controls.css";
 import "../app-shell.css";
 import "../problem-flag.css";
 import "../point-plot.css";
+import "../line-plot-build.css";
 import "../shape-composer.css";
 import "../multi-part-choice.css";
 import "../figure-choice.css";

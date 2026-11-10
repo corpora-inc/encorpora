@@ -1,15 +1,13 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
 import { generateProblem, gradeAnswer } from "../src/math/engine";
 import {
   addSubtractTemplates,
   borrows,
   carries,
 } from "../src/math/add-subtract-practice";
-import {
-  generatedProblemSchema,
-  type GeneratedProblem,
-} from "../src/math/contracts";
+import { generatedProblemSchema } from "../src/math/contracts";
 import { openerSlots, templateRole } from "../src/learning/placement";
 import { problemLesson } from "../src/content/problem-lessons";
 import {
@@ -22,121 +20,96 @@ const ids = addSubtractTemplates.map((t) => t.id);
 const parse = (text: string) => Number(text.replaceAll(",", ""));
 const numbersIn = (prompt: string) =>
   (prompt.match(/\d[\d,]*\d|\d/g) ?? []).map(parse);
+// Numeric prompt and range checks protect stored version-1 problems. Current
+// clause formats are checked separately against the independent oracle below.
 const sample = (id: string, n = 300) =>
-  Array.from({ length: n }, (_, i) => generateProblem(id, `as-${i}`));
+  Array.from({ length: n }, (_, i) => generateProblem(id, `as-${i}`, 1));
 
-/** Solve the public givens, including every intermediate slot and carry. */
-function arithmetic(p: GeneratedProblem) {
-  const [a, b] = numbersIn(p.public.prompt) as [number, number];
-  const adding = p.public.prompt.includes("+");
-  const total =
-    p.public.templateId === "make-hundred" ? 100 - a : adding ? a + b : a - b;
-  const response = p.public.response;
-  const clause = p.variant?.axes?.clause;
-  if (clause === "round-and-adjust" || clause === "count-up") {
-    assert.equal(response.kind, "multi-part-choice");
-    if (response.kind !== "multi-part-choice")
-      throw new Error("Expected slots");
-    const round = Math.round(b / 100) * 100;
-    const ten = Math.ceil(b / 10) * 10;
-    const hundred = Math.ceil(ten / 100) * 100;
-    const values: Record<string, number> =
-      clause === "round-and-adjust"
-        ? {
-            near: round,
-            round: a + round,
-            off: Math.abs(b - round),
-            sum: total,
-          }
-        : { h1: ten - b, h2: hundred - ten, h3: a - hundred, diff: total };
-    assert.deepEqual(
-      response.blanks.map((blank) => blank.id),
-      Object.keys(values),
-    );
-    const key: Record<string, string> = {};
-    for (const blank of response.blanks) {
-      const correct = blank.options.filter(
-        (option) => parse(option.label) === values[blank.id],
-      );
-      assert.equal(correct.length, 1, blank.label);
-      key[blank.id] = correct[0]!.id;
-    }
-    assert.deepEqual(JSON.parse(p.answer), key, p.public.prompt);
-    assert.equal(gradeAnswer(p, JSON.stringify(key)), true);
-    for (const blank of response.blanks) {
-      const wrong = blank.options.find(
-        (option) => option.id !== key[blank.id],
-      )!;
-      assert.equal(
-        gradeAnswer(p, JSON.stringify({ ...key, [blank.id]: wrong.id })),
-        false,
-      );
-    }
-  } else if (clause === "stack-work") {
-    assert.equal(response.kind, "structured-work");
-    if (response.kind !== "structured-work") throw new Error("Expected stack");
-    const width = Math.max(
-      String(a).length,
-      String(b).length,
-      String(total).length,
-    );
-    const digits = String(total).padStart(width, "0").split("").reverse();
-    const rows = digits.map((digit, i) => {
-      // The lower i+1 places overflow precisely when they carry into the next.
-      const place = 10 ** (i + 1);
-      const carry = Math.floor(((a % place) + (b % place)) / place);
-      return adding && i < width - 1 ? [digit, String(carry)] : [digit];
-    });
-    assert.deepEqual(
-      response.rows.map((row) => row.fields.length),
-      rows.map((row) => row.length),
-    );
-    assert.deepEqual(JSON.parse(p.answer), rows, p.public.prompt);
-    assert.equal(gradeAnswer(p, JSON.stringify(rows)), true);
-    for (const [i, row] of rows.entries())
-      for (const [j, value] of row.entries()) {
-        const wrong = rows.map((r) => [...r]);
-        wrong[i]![j] = String((Number(value) + 1) % 10);
-        assert.equal(gradeAnswer(p, JSON.stringify(wrong)), false);
-      }
-  } else {
-    assert.equal(clause, undefined, `Unhandled clause ${clause}`);
-    assert.equal(response.kind, "number");
-    assert.equal(Number(p.answer), total, p.public.prompt);
-    assert.equal(gradeAnswer(p, String(total)), true);
-    assert.equal(gradeAnswer(p, String(total + 1)), false);
-  }
-  return total;
-}
-
-test("addition and subtraction families are deterministic, valid and exact", () => {
-  const seen = new Set<string>();
+test("version 1 addition and subtraction families are deterministic, valid and exact", () => {
   for (const id of ids)
     for (const [i, p] of sample(id).entries()) {
-      assert.deepEqual(p, generateProblem(id, `as-${i}`));
+      assert.deepEqual(p, generateProblem(id, `as-${i}`, 1));
       generatedProblemSchema.parse(p);
       assert.equal(templateRole(id), "assessment");
-      seen.add(`${id}:${p.variant?.axes?.clause ?? "legacy"}`);
-      const expected = arithmetic(p);
+      assert.equal(p.public.response.kind, "number");
+      const [a, b] = numbersIn(p.public.prompt) as [number, number];
+      const expected =
+        id === "make-hundred"
+          ? 100 - a
+          : p.public.prompt.includes("+")
+            ? a + b
+            : a - b;
+      assert.equal(Number(p.answer), expected, p.public.prompt);
       assert.ok(expected > 0);
       assert.equal(gradeAnswer(p, p.answer), true);
-      // Accept grouped or ungrouped digits in the worked solution.
+      assert.equal(gradeAnswer(p, String(expected + 1)), false);
+      // The worked solution ends on the answer, written with separators.
       assert.ok(
-        p.explanation.some((line) => numbersIn(line).includes(expected)),
+        p.explanation.some((line) =>
+          line.includes(expected.toLocaleString("en-US")),
+        ),
         p.public.prompt,
       );
     }
-  for (const id of ids) assert.ok(seen.has(`${id}:legacy`));
-  for (const [id, clause] of [
-    ["add-three-digit", "round-and-adjust"],
-    ["subtract-three-digit", "count-up"],
-    ["add-multidigit", "stack-work"],
-    ["subtract-multidigit", "stack-work"],
-  ])
-    assert.ok(seen.has(`${id}:${clause}`), `${id}:${clause}`);
 });
 
-test("operands stay in each skill's range", () => {
+test("current addition and subtraction formats agree with the independent oracle", () => {
+  const addedFormats: Record<string, string> = {
+    "add-three-digit": "multi-part-choice",
+    "subtract-three-digit": "multi-part-choice",
+    "add-multidigit": "structured-work",
+    "subtract-multidigit": "structured-work",
+  };
+  const cases = ids.flatMap((id) => {
+    const problems = Array.from({ length: 120 }, (_, i) =>
+      generateProblem(id, `as-current-${i}`),
+    );
+    const expectedFormats = [
+      "number",
+      ...(addedFormats[id] ? [addedFormats[id]] : []),
+    ];
+    assert.deepEqual(
+      [...new Set(problems.map((p) => p.public.response.kind))].sort(),
+      expectedFormats.sort(),
+      id,
+    );
+    for (const [i, problem] of problems.entries()) {
+      generatedProblemSchema.parse(problem);
+      assert.deepEqual(problem, generateProblem(id, `as-current-${i}`));
+      assert.equal(gradeAnswer(problem, problem.answer), true, `${id}/${i}`);
+      assert.equal(gradeAnswer(problem, "-1"), false, `${id}/${i}`);
+    }
+    return problems;
+  });
+  const result = spawnSync(
+    "python3",
+    [
+      "-c",
+      String.raw`
+import json, sys
+sys.path.insert(0, "scripts")
+import add_subtract_math_oracle as oracle
+oracle.review_add_subtract_fixtures()
+cases = json.load(sys.stdin)
+for problem in cases:
+    expected = json.loads(str(oracle.solve_add_subtract(problem["public"])))
+    actual = json.loads(problem["answer"])
+    assert actual == expected, (problem["public"]["templateId"], problem["public"]["seed"], actual, expected)
+print(len(cases))
+`,
+    ],
+    {
+      input: JSON.stringify(cases),
+      encoding: "utf8",
+      timeout: 120000,
+      maxBuffer: 4 * 1024 * 1024,
+    },
+  );
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(result.stdout.trim(), String(cases.length));
+});
+
+test("version 1 operands stay in each skill's range", () => {
   const bounds: Record<string, [number, number, number]> = {
     "add-two-digit-regroup": [10, 99, 100],
     "subtract-two-digit-regroup": [10, 100, 100],
@@ -148,23 +121,8 @@ test("operands stay in each skill's range", () => {
   for (const [id, [low, high, limit]] of Object.entries(bounds))
     for (const p of sample(id)) {
       const [a, b] = numbersIn(p.public.prompt) as [number, number];
-      if (p.variant?.axes?.clause === "round-and-adjust") {
-        // The near-hundred addend includes 97–99; the other has three digits.
-        assert.ok(a >= 105 && a <= 799, p.public.prompt);
-        assert.ok(b >= 97 && b <= 703, p.public.prompt);
-        assert.ok(Math.abs(b - Math.round(b / 100) * 100) <= 3);
-      } else if (p.variant?.axes?.clause === "stack-work") {
-        // Written stacks include a shorter second operand.
-        assert.ok(a >= 1000 && a <= 99999, p.public.prompt);
-        assert.ok(
-          b >= 10 ** (String(a).length - 2) && b <= 99999,
-          p.public.prompt,
-        );
-      } else {
-        for (const n of [a, b])
-          assert.ok(n >= low && n <= high, p.public.prompt);
-      }
-      assert.ok(arithmetic(p) <= limit, p.public.prompt);
+      for (const n of [a, b]) assert.ok(n >= low && n <= high, p.public.prompt);
+      assert.ok(Number(p.answer) <= limit);
     }
   for (const p of sample("add-two-digit-regroup", 50))
     assert.deepEqual(p.public.figure, {
@@ -173,7 +131,50 @@ test("operands stay in each skill's range", () => {
     });
 });
 
-test("hard cases appear: regrouping in each place, zeros, and controls", () => {
+test("current addition and subtraction formats preserve the arithmetic result", () => {
+  const formats = {
+    "add-three-digit": "multi-part-choice",
+    "subtract-three-digit": "multi-part-choice",
+    "add-multidigit": "structured-work",
+    "subtract-multidigit": "structured-work",
+  } as const;
+  for (const [id, format] of Object.entries(formats)) {
+    const seen = new Set<string>();
+    for (let i = 0; i < 120; i++) {
+      const seed = `as-current-${i}`;
+      const p = generateProblem(id, seed);
+      assert.deepEqual(p, generateProblem(id, seed));
+      generatedProblemSchema.parse(p);
+      const response = p.public.response;
+      seen.add(response.kind);
+      assert.ok(["number", format].includes(response.kind), id);
+      const [a, b] = numbersIn(p.public.prompt) as [number, number];
+      const expected = id.startsWith("add-") ? a + b : a - b;
+      let actual = Number(p.answer);
+      if (response.kind === "multi-part-choice") {
+        const key = JSON.parse(p.answer) as Record<string, string>;
+        const result = response.blanks.find((blank) =>
+          blank.id === (id.startsWith("add-") ? "sum" : "diff"),
+        )!;
+        actual = Number(
+          result.options.find((option) => option.id === key[result.id])!.label,
+        );
+      } else if (response.kind === "structured-work") {
+        const rows = JSON.parse(p.answer) as string[][];
+        actual = rows.reduce(
+          (sum, row, place) => sum + Number(row[0]) * 10 ** place,
+          0,
+        );
+      }
+      assert.equal(actual, expected, p.public.prompt);
+      assert.equal(gradeAnswer(p, p.answer), true);
+      assert.equal(gradeAnswer(p, "not-an-answer"), false);
+    }
+    assert.deepEqual([...seen].sort(), ["number", format].sort(), id);
+  }
+});
+
+test("version 1 hard cases appear: regrouping in each place, zeros, and controls", () => {
   const share = (id: string, has: (a: number, b: number) => boolean) =>
     sample(id, 400).filter((p) => {
       const [a, b] = numbersIn(p.public.prompt) as [number, number];
