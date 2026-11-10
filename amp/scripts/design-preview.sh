@@ -24,6 +24,12 @@ DB_URL="$PG/$DB_NAME"
 ORIGIN="http://127.0.0.1:$WEB_PORT"
 RUN="${AMP_PREVIEW_RUN:-${TMPDIR:-/tmp}/amp-design-preview}"
 mkdir -p "$RUN"
+# Machine-local settings stay out of this public repository: $RUN/preview.env
+# (KEY=value lines) is loaded and exported on every start and restart. Phone
+# access over a private network, for example, needs the host it is served on:
+#   __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS=<host>
+#   AMP_ACCOUNTS_TRUSTED_ORIGINS=https://<host>:<port>
+if [ -f "$RUN/preview.env" ]; then set -a; . "$RUN/preview.env"; set +a; fi
 [ "$WEB_PORT" = 4310 ] && { echo "Port 4310 is the founder's"; exit 1; }
 
 running() { [ -f "$RUN/$1.pid" ] && kill -0 "$(cat "$RUN/$1.pid")" 2>/dev/null; }
