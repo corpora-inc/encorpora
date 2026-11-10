@@ -32,6 +32,7 @@ jobs:
     outputs:
       corpora_site: ${{ steps.filter.outputs.corpora_site }}
       amp: ${{ steps.filter.outputs.amp }}
+      amp_film: ${{ steps.filter.outputs.amp_film }}
       amp_plan: ${{ steps.filter.outputs.amp_plan }}
       amp_core: ${{ steps.filter.outputs.amp_core }}
       amp_database: ${{ steps.filter.outputs.amp_database }}
@@ -153,6 +154,7 @@ jobs:
           # reviewer, whose failure mode when it regresses is to PASS wrongly —
           # so its tests must run on any change to it (or to this workflow, or
           # to the workflow that invokes it).
+          set_output amp_film '^(amp/(film/|src/|package(-lock)?\.json$|tsconfig\.json$)|\.github/workflows/ci\.yml$)'
           set_output amp_native '^(amp/mobile/|amp/src/web/(auth|native-session|native-runtime|NativeGate|NativePreview|learning-transport|BookReader|main)\.|amp/src/server/(app|auth)\.|amp/scripts/verify-native-session\.|\.github/workflows/ci\.yml$)'
           # The static site imports AMP analytics, figures, content, audit and theme at build time.
           set_output corpora_site '^(corpora-site/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$|amp/(books/|src/(analytics|math|content|curriculum|books|publishing)/|src/web/([^/]*Figure|MathText)\.tsx$|src/web/ui/tokens\.css$|src/server/trials\.ts$|package(-lock)?\.json$|tsconfig\.json$)|\.github/workflows/ci\.yml$)'
@@ -1820,6 +1822,47 @@ jobs:
   # PR/queue checks are fast; broad affected suites run asynchronously on main.
   # The amp aggregate preserves deployment eligibility and required ci-gate.
   # Exhaustive browser/content checks run independently in amp-deep-checks.yml.
+  amp-film:
+    name: amp-film
+    needs: changes
+    if: needs.changes.outputs.amp_film == 'true'
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: amp
+    steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/7ac9640a94395e199ea6edf38318b3aa1efb2212/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != 'd28194d064f7e633e894d99a40bf8521da9c7bb1b749e8a38a1a3d832d56717c':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '7ac9640a94395e199ea6edf38318b3aa1efb2212'], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: amp/package-lock.json
+      - run: npm ci
+      - name: Lesson-film kit unit tests (no rendering or voice)
+        run: npm run film:test
   amp-core:
     name: amp-core
     needs: changes
@@ -2159,6 +2202,7 @@ jobs:
       [
         changes,
         amp,
+        amp-film,
         amp-native,
         aha-app,
         aha-native,

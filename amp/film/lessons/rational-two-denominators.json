@@ -1,0 +1,666 @@
+{
+ "id": "rational-two-denominators",
+ "title": "Solve a rational equation with two denominators and reject an excluded value",
+ "seed": "film",
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -3,
+     -5.5,
+     7,
+     6.5
+    ],
+    "points": {
+     "P": {
+      "on": "f",
+      "x": 4
+     },
+     "A1": [
+      2,
+      -5.5
+     ],
+     "A2": [
+      2,
+      6.5
+     ],
+     "RX": [
+      4.7,
+      5.4
+     ],
+     "RY": [
+      4.7,
+      4.3
+     ],
+     "F": [
+      4.7,
+      -2.5
+     ],
+     "U": [
+      2,
+      -4.6
+     ]
+    },
+    "parts": [
+     {
+      "id": "ax",
+      "axes": true,
+      "step": 1,
+      "every": 2,
+      "start": true
+     },
+     {
+      "id": "asym",
+      "seg": [
+       "A1",
+       "A2"
+      ],
+      "dash": true,
+      "ink": "warm",
+      "w": 4
+     },
+     {
+      "id": "f",
+      "plot": "1/(x-2)",
+      "ink": "accent",
+      "w": 6
+     },
+     {
+      "id": "dP",
+      "dot": "P",
+      "ink": "gold",
+      "r": 13
+     },
+     {
+      "id": "lF",
+      "label": "y=\\dfrac{1}{x-2}",
+      "at": "F",
+      "dir": "c",
+      "ink": "accent",
+      "pin": true
+     },
+     {
+      "id": "lx",
+      "label": "x=@x",
+      "at": "RX",
+      "of": "P",
+      "dir": "c",
+      "pin": true
+     },
+     {
+      "id": "ly",
+      "label": "y=@y",
+      "at": "RY",
+      "of": "P",
+      "dir": "c",
+      "ink": "gold",
+      "pin": true
+     },
+     {
+      "id": "lne",
+      "label": "x\\ne 2",
+      "at": "U",
+      "dir": "e",
+      "ink": "warm"
+     }
+    ],
+    "stretch": true
+   },
+   "beats": [
+    {
+     "say": "Here is y equals one over x minus two.",
+     "do": [
+      {
+       "do": "draw",
+       "target": "f",
+       "at": "Here",
+       "dur": 1.6
+      },
+      {
+       "do": "show",
+       "target": "lF",
+       "at": "y"
+      }
+     ]
+    },
+    {
+     "say": "When x is four, the bottom is two, so y is one half.",
+     "do": [
+      {
+       "do": "show",
+       "target": [
+        "dP",
+        "lx",
+        "ly"
+       ],
+       "at": "four"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{1}{4-2}=\\frac{1}{\\cw{2}}=\\cg{\\tfrac12}",
+       "at": "bottom",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "say": "Move x toward two. At two and a half, y is two.",
+     "do": [
+      {
+       "do": "glide",
+       "point": "P",
+       "x": 2.5,
+       "at": "Move"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{1}{2.5-2}=\\frac{1}{\\cw{0.5}}=\\cg{2}",
+       "at": "half",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "say": "At two point one, y is ten.",
+     "do": [
+      {
+       "do": "glide",
+       "point": "P",
+       "x": 2.1,
+       "at": "At"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{1}{2.1-2}=\\frac{1}{\\cw{0.1}}=\\cg{10}",
+       "at": "ten",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "say": "At two point oh one, a hundred.",
+     "do": [
+      {
+       "do": "glide",
+       "point": "P",
+       "x": 2.01,
+       "at": "At"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{1}{2.01-2}=\\frac{1}{\\cw{0.01}}=\\cg{100}",
+       "at": "hundred",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "say": "As the bottom shrinks toward zero, y grows without end: a thousand, ten thousand, a hundred thousand.",
+     "do": [
+      {
+       "do": "highlight",
+       "target": "ly",
+       "at": "grows"
+      },
+      {
+       "do": "glide",
+       "point": "P",
+       "x": 2.001,
+       "at": "thousand",
+       "dur": 0.9
+      },
+      {
+       "do": "view",
+       "to": [
+        -3,
+        -1500,
+        7,
+        1500
+       ],
+       "at": "thousand",
+       "dur": 0.9
+      },
+      {
+       "do": "glide",
+       "point": "P",
+       "x": 2.0001,
+       "at": "thousand",
+       "nth": 2,
+       "dur": 0.9
+      },
+      {
+       "do": "view",
+       "to": [
+        -3,
+        -15000,
+        7,
+        15000
+       ],
+       "at": "thousand",
+       "nth": 2,
+       "dur": 0.9
+      },
+      {
+       "do": "glide",
+       "point": "P",
+       "x": 2.00001,
+       "at": "hundred",
+       "dur": 1.0
+      },
+      {
+       "do": "view",
+       "to": [
+        -3,
+        -150000,
+        7,
+        150000
+       ],
+       "at": "hundred",
+       "dur": 1.0
+      }
+     ]
+    },
+    {
+     "say": "At two itself, the bottom is zero.",
+     "do": [
+      {
+       "do": "view",
+       "to": [
+        -3,
+        -5.5,
+        7,
+        6.5
+       ],
+       "at": "At",
+       "dur": 1.0
+      },
+      {
+       "do": "glide",
+       "point": "P",
+       "x": 2,
+       "at": "itself",
+       "dur": 0.9
+      },
+      {
+       "do": "draw",
+       "target": "asym",
+       "at": "zero"
+      },
+      {
+       "do": "show",
+       "target": "lne",
+       "at": "zero"
+      },
+      {
+       "do": "write",
+       "tex": "\\frac{1}{2-2}=\\frac{1}{\\cw{0}}",
+       "at": "zero",
+       "fresh": true
+      }
+     ]
+    },
+    {
+     "say": "One over zero has no value: no number times zero makes one.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "asym",
+        "lne"
+       ],
+       "at": "no"
+      }
+     ]
+    },
+    {
+     "say": "So x equals two is an excluded value. It can never be a solution.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "term",
+       "word": "excluded value",
+       "meaning": "A value of $x$ that makes a denominator $0$. The expression has no value there, so it can never be a solution.",
+       "at": "excluded"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "beats": [
+    {
+     "say": "Now an equation with two fractions.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "id": "p1",
+       "text": "Which is the solution set of $\\dfrac{1}{x+5} + \\dfrac{x}{x-2}=\\dfrac{-7}{(x-2)(x+5)}$?",
+       "choices": [
+        "No solution",
+        "$x=-5$ only",
+        "$x=-1$ and $x=-5$",
+        "$x=-1$ only"
+       ],
+       "at": "equation"
+      }
+     ]
+    },
+    {
+     "say": "First, the excluded values. The bottoms are x plus five and x minus two, so x cannot be negative five or two.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cw{x+5\\ne 0,\\quad x-2\\ne 0}",
+       "at": "bottoms",
+       "fresh": true,
+       "id": "ex1a"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{x\\ne -5,\\quad x\\ne 2}",
+       "at": "cannot",
+       "id": "ex1"
+      }
+     ]
+    },
+    {
+     "say": "Then multiply every term by the common denominator, x minus two times x plus five.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\frac{1}{x+5}+\\frac{x}{x-2}=\\frac{-7}{(x-2)(x+5)}",
+       "at": "multiply",
+       "fresh": true,
+       "id": "e1a"
+      }
+     ]
+    },
+    {
+     "say": "Each bottom cancels, leaving x minus two, plus x times x plus five, equals negative seven.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "(x-2)+x(x+5)=-7",
+       "at": "cancels",
+       "note": "\\times (x-2)(x+5)",
+       "id": "e1b"
+      }
+     ]
+    },
+    {
+     "say": "Multiply out and collect like terms.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "x^{2}+6x-2=-7",
+       "at": "Multiply",
+       "id": "e1c"
+      }
+     ]
+    },
+    {
+     "say": "Add seven to both sides.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "x^{2}+6x+5=0",
+       "at": "Add",
+       "note": "+7",
+       "id": "e1d"
+      }
+     ]
+    },
+    {
+     "say": "Factor: one and five multiply to five and add to six.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "(x+1)(x+5)=0",
+       "at": "Factor",
+       "id": "e1e"
+      }
+     ]
+    },
+    {
+     "say": "A product is zero only when a factor is zero, so x is negative one or negative five.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "x=-1\\ \\text{ or }\\ x=-5",
+       "at": "so",
+       "fresh": true,
+       "id": "e1f"
+      }
+     ]
+    },
+    {
+     "say": "But negative five is excluded: it makes x plus five zero. It is an extraneous solution, so reject it.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "x=-1\\qquad \\cw{\\cancel{x=-5}}",
+       "at": "excluded",
+       "fresh": true,
+       "id": "chk1"
+      },
+      {
+       "do": "term",
+       "word": "extraneous solution",
+       "meaning": "A root of the cleared equation that does not solve the original one. Reject it.",
+       "at": "extraneous"
+      }
+     ]
+    },
+    {
+     "say": "The solution set is x equals negative one only.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "x=-1\\ \\text{only}",
+       "at": "set",
+       "id": "ans1"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "beats": [
+    {
+     "say": "One more. This time the root that fails is positive.",
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "id": "p2",
+       "text": "Which is the solution set of $-\\dfrac{6}{x-3} + \\dfrac{x}{x-1}=\\dfrac{-12}{(x-1)(x-3)}$?",
+       "choices": [
+        "$x=3$ only",
+        "$x=6$ only",
+        "No solution",
+        "$x=6$ and $x=3$"
+       ],
+       "at": "One"
+      }
+     ]
+    },
+    {
+     "say": "Excluded values: x minus three and x minus one cannot be zero, so x cannot be three or one.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cw{x-3\\ne 0,\\quad x-1\\ne 0}",
+       "at": "minus",
+       "fresh": true,
+       "id": "ex2a"
+      },
+      {
+       "do": "write",
+       "tex": "\\cw{x\\ne 3,\\quad x\\ne 1}",
+       "at": "so",
+       "id": "ex2"
+      }
+     ]
+    },
+    {
+     "say": "Multiply every term by x minus one times x minus three.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "-\\frac{6}{x-3}+\\frac{x}{x-1}=\\frac{-12}{(x-1)(x-3)}",
+       "at": "Multiply",
+       "fresh": true,
+       "id": "e2a"
+      },
+      {
+       "do": "write",
+       "tex": "-6(x-1)+x(x-3)=-12",
+       "at": "times",
+       "note": "\\times (x-1)(x-3)",
+       "id": "e2b"
+      }
+     ]
+    },
+    {
+     "say": "Multiply out, then add twelve to both sides.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "x^{2}-9x+6=-12",
+       "at": "out",
+       "id": "e2c"
+      },
+      {
+       "do": "write",
+       "tex": "x^{2}-9x+18=0",
+       "at": "add",
+       "note": "+12",
+       "id": "e2d"
+      }
+     ]
+    },
+    {
+     "say": "Negative three and negative six multiply to eighteen and add to negative nine.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "(x-3)(x-6)=0",
+       "at": "Negative",
+       "id": "e2e"
+      }
+     ]
+    },
+    {
+     "say": "So x is three or six.",
+     "do": [
+      {
+       "do": "write",
+       "tex": "x=3\\ \\text{ or }\\ x=6",
+       "at": "So",
+       "fresh": true,
+       "id": "e2f"
+      }
+     ]
+    },
+    {
+     "say": "Three is excluded, so reject it. The solution set is x equals six only.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\cw{\\cancel{x=3}}\\qquad x=6",
+       "at": "reject",
+       "fresh": true,
+       "id": "chk2"
+      },
+      {
+       "do": "answer",
+       "tex": "x=6\\ \\text{only}",
+       "at": "set",
+       "id": "ans2"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "beats": [
+    {
+     "say": "Every problem of this type goes the same way.",
+     "do": [
+      {
+       "do": "overview",
+       "at": "Every"
+      }
+     ]
+    },
+    {
+     "say": "One: list the excluded values.",
+     "do": [
+      {
+       "do": "recap",
+       "text": "List the excluded values: each $x$ that makes a bottom $0$.",
+       "marks": [
+        "ex2a",
+        "ex2"
+       ],
+       "at": "One"
+      }
+     ]
+    },
+    {
+     "say": "Two: multiply every term by the common denominator.",
+     "do": [
+      {
+       "do": "recap",
+       "text": "Multiply every term by the common denominator.",
+       "marks": [
+        "e2a",
+        "e2b"
+       ],
+       "at": "Two"
+      }
+     ]
+    },
+    {
+     "say": "Three: solve what is left.",
+     "do": [
+      {
+       "do": "recap",
+       "text": "Solve what is left.",
+       "marks": [
+        "e2c",
+        "e2d",
+        "e2e",
+        "e2f"
+       ],
+       "at": "Three"
+      }
+     ]
+    },
+    {
+     "say": "Four: reject any root that is an excluded value. The roots that remain are the solution set.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "recap",
+       "text": "Reject any root that is an excluded value. The rest are the solution set.",
+       "marks": [
+        "chk2",
+        "ans2"
+       ],
+       "at": "Four"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

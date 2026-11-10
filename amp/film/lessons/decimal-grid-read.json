@@ -1,0 +1,209 @@
+{
+  "id": "decimal-grid-read",
+  "title": "Name a shaded decimal",
+  "seed": "film",
+  "shots": [
+    {
+      "figure": {
+        "view": [-0.35, -0.35, 10.4, 5.15],
+        "points": {
+          "G": [0, 3.5],
+          "A1": [0, 3.5], "B1": [1, 3.5], "C1": [1, 0.4], "D1": [0, 0.4],
+          "A2": [1, 3.5], "B2": [2, 3.5], "C2": [2, 0.4], "D2": [1, 0.4],
+          "A3": [2, 3.5], "B3": [3, 3.5], "C3": [3, 0.4], "D3": [2, 0.4],
+          "N": [1.5, 4.55]
+        },
+        "parts": [
+          { "id": "c1", "poly": ["A1", "B1", "C1", "D1"], "fill": "accent-fill", "ink": "accent", "w": 2 },
+          { "id": "c2", "poly": ["A2", "B2", "C2", "D2"], "fill": "accent-fill", "ink": "accent", "w": 2 },
+          { "id": "c3", "poly": ["A3", "B3", "C3", "D3"], "fill": "accent-fill", "ink": "accent", "w": 2 },
+          { "id": "g", "grid": [10, 1], "at": "G", "size": [1, 3.1], "fill": "none", "ink": "ink", "w": 4, "start": true },
+          { "id": "n", "label": "3", "at": "N", "dir": "c", "size": "xl", "ink": "accent" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "One whole strip, cut into ten equal parts.",
+          "pause": 0.3,
+          "do": [
+            { "do": "problem", "text": "The strip is one whole, cut into 10 equal parts. What decimal names the shaded part?", "at": "One", "id": "p3" },
+            { "do": "highlight", "target": "g", "at": "ten" }
+          ]
+        },
+        {
+          "say": "Three parts are shaded: one, two, three.",
+          "do": [
+            { "do": "show", "target": "c1", "at": "one" },
+            { "do": "show", "target": "c2", "at": "two" },
+            { "do": "show", "target": ["c3", "n"], "at": "three" }
+          ]
+        },
+        {
+          "say": "Each part is one tenth, written zero point one.",
+          "do": [
+            { "do": "highlight", "target": "c1", "at": "tenth" },
+            { "do": "write", "tex": "\\ca{1}/10=\\ca{0.1}", "fresh": true, "at": "written", "id": "u" }
+          ]
+        },
+        {
+          "say": "Three tenths is zero point three.",
+          "do": [
+            { "do": "highlight", "target": ["c1", "c2", "c3"], "at": "Three" },
+            { "do": "write", "tex": "\\ca{3}/10=\\ca{0.3}", "fresh": true, "at": "is", "id": "w3" },
+            { "do": "answer", "tex": "\\ca{0.3}", "at": "zero", "id": "a3" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-0.2, -0.25, 10.25, 10.25],
+        "points": {
+          "G": [0, 10],
+          "A": [0, 10], "B": [1, 10], "C": [1, 0], "D": [0, 0]
+        },
+        "parts": [
+          { "id": "col", "poly": ["A", "B", "C", "D"], "fill": "accent-fill", "ink": "accent", "w": 2 },
+          { "id": "g", "grid": [10, 10], "at": "G", "size": 1, "fill": "none", "ink": "ink", "w": 2, "start": true }
+        ]
+      },
+      "beats": [
+        {
+          "say": "This square is one whole, cut into one hundred small squares.",
+          "pause": 0.25,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "The large square is one whole, cut into 100 equal squares. What decimal names the shaded part?", "at": "This", "id": "p10" },
+            { "do": "highlight", "target": "g", "at": "hundred" }
+          ]
+        },
+        {
+          "say": "Ten squares fill the first column.",
+          "do": [
+            { "do": "show", "target": "col", "at": "Ten" },
+            { "do": "highlight", "target": "col", "at": "column" }
+          ]
+        },
+        {
+          "say": "Ten hundredths make one tenth.",
+          "do": [
+            { "do": "text", "text": "Ten hundredths make one tenth.", "at": "Ten", "id": "phrase" },
+            { "do": "highlight", "target": "col", "at": "hundredths" },
+            { "do": "write", "tex": "\\ca{10}/100=\\ca{0.10}", "fresh": true, "at": "make", "id": "w10" }
+          ]
+        },
+        {
+          "say": "The same as zero point one. Write zero point one zero.",
+          "do": [
+            { "do": "write", "tex": "\\ca{0.10}=\\ca{0.1}", "at": "zero", "id": "eq10" },
+            { "do": "answer", "tex": "\\ca{0.10}", "at": "Write", "id": "a10" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-0.2, -0.25, 10.25, 10.25],
+        "points": {
+          "G": [0, 10],
+          "A": [0, 10], "B": [1, 10], "C": [1, 1], "D": [0, 1]
+        },
+        "parts": [
+          { "id": "nine", "poly": ["A", "B", "C", "D"], "fill": "warm-fill", "ink": "warm", "w": 2 },
+          { "id": "g", "grid": [10, 10], "at": "G", "size": 1, "fill": "none", "ink": "ink", "w": 2, "start": true }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Nine small squares, and the column is not full.",
+          "pause": 0.25,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "The large square is one whole, cut into 100 equal squares. What decimal names the shaded part?", "at": "Nine", "id": "p09" },
+            { "do": "show", "target": "nine", "at": "Nine" },
+            { "do": "highlight", "target": "nine", "at": "not" }
+          ]
+        },
+        {
+          "say": "No full column, so the tenths digit is zero.",
+          "do": [
+            { "do": "highlight", "target": "g", "at": "column" },
+            { "do": "write", "tex": "\\ca{0}\\text{ tenths}", "fresh": true, "at": "zero", "id": "z09" }
+          ]
+        },
+        {
+          "say": "Not zero point nine. Nine hundredths is zero point zero nine.",
+          "do": [
+            { "do": "watch", "text": "Nine hundredths is $0.09$, not $0.9$. The zero holds the tenths place.", "at": "Not", "id": "watch" },
+            { "do": "write", "tex": "\\cw{9}/100=\\cw{0.09}", "fresh": true, "at": "hundredths", "id": "w09" },
+            { "do": "answer", "tex": "\\cw{0.09}", "at": "zero", "nth": 2, "id": "a09" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-0.2, -0.25, 10.25, 10.25],
+        "points": {
+          "G": [0, 10],
+          "A": [0, 10], "B": [2, 10], "C": [2, 0], "D": [0, 0],
+          "E": [2, 10], "F": [3, 10], "H": [3, 3], "I": [2, 3]
+        },
+        "parts": [
+          { "id": "cols", "poly": ["A", "B", "C", "D"], "fill": "accent-fill", "ink": "accent", "w": 2 },
+          { "id": "extra", "poly": ["E", "F", "H", "I"], "fill": "warm-fill", "ink": "warm", "w": 2 },
+          { "id": "g", "grid": [10, 10], "at": "G", "size": 1, "fill": "none", "ink": "ink", "w": 2, "start": true }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Two full columns are two tenths.",
+          "pause": 0.2,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "The large square is one whole, cut into 100 equal squares. What decimal names the shaded part?", "at": "Two", "id": "p27" },
+            { "do": "show", "target": "cols", "at": "columns" },
+            { "do": "write", "tex": "\\ca{2}/10=\\ca{0.2}", "fresh": true, "at": "two", "nth": 2, "id": "t27" }
+          ]
+        },
+        {
+          "say": "Seven more squares are seven hundredths.",
+          "do": [
+            { "do": "show", "target": "extra", "at": "Seven" },
+            { "do": "highlight", "target": "extra", "at": "squares" },
+            { "do": "write", "tex": "\\cw{7}/100=\\cw{0.07}", "fresh": true, "at": "seven", "nth": 2, "id": "h27" }
+          ]
+        },
+        {
+          "say": "Tenths, then hundredths: zero point two seven.",
+          "do": [
+            { "do": "highlight", "target": "cols", "at": "Tenths" },
+            { "do": "highlight", "target": "extra", "at": "hundredths" },
+            { "do": "write", "tex": "\\ca{0.2}+\\cw{0.07}=\\cg{0.27}", "fresh": true, "at": "zero", "id": "s27" },
+            { "do": "answer", "tex": "\\cg{0.27}", "at": "two", "id": "a27" }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Read a shaded decimal this way.",
+          "do": [ { "do": "overview", "at": "Read" } ]
+        },
+        {
+          "say": "One: count the full columns. Each column is one tenth.",
+          "do": [ { "do": "recap", "text": "Count the full columns. Each column is one tenth.", "marks": ["t27"], "at": "One" } ]
+        },
+        {
+          "say": "Two: count the leftover squares. Each square is one hundredth.",
+          "do": [ { "do": "recap", "text": "Count the leftover squares. Each square is one hundredth.", "marks": ["h27"], "at": "Two" } ]
+        },
+        {
+          "say": "Three: write tenths, then hundredths. Ten hundredths make one tenth.",
+          "do": [ { "do": "recap", "text": "Write tenths, then hundredths. Ten hundredths make one tenth.", "marks": ["phrase", "s27", "a27"], "at": "Three" } ]
+        }
+      ]
+    }
+  ]
+}

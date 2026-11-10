@@ -1,0 +1,274 @@
+{
+  "id": "count-objects",
+  "title": "Count objects",
+  "seed": "film",
+  "shots": [
+    {
+      "figure": {
+        "view": [-0.45, -0.55, 11.0, 9.4],
+        "points": { "G": [0, 8.6], "N": [9.4, 4.5] },
+        "parts": [
+          { "id": "g", "grid": [2, 1], "at": "G", "size": [4.2, 8.0], "fill": "paper", "ink": "muted", "w": 5, "start": true },
+          { "id": "a", "counters": "g", "n": 1, "from": 1, "ink": "accent", "start": true },
+          { "id": "b", "counters": "g", "n": 1, "from": 2, "ink": "gold", "start": true },
+          { "id": "n", "label": "@n", "at": "N", "of": "g", "dir": "c", "size": "xl", "ink": "accent" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "How many dots are shown?",
+          "pause": 0.45,
+          "do": [
+            { "do": "problem", "text": "How many dots are shown?", "at": "How", "id": "p2" }
+          ]
+        },
+        {
+          "say": "Say one number for each dot. Touch each dot once.",
+          "do": [
+            { "do": "text", "text": "One number for each dot.", "at": "Say", "id": "rule" },
+            { "do": "highlight", "target": ["a1", "b1"], "at": "each" }
+          ]
+        },
+        {
+          "say": "One.",
+          "do": [
+            { "do": "highlight", "target": "a1", "at": "One" },
+            { "do": "write", "tex": "\\ca{1}", "fresh": true, "at": "One", "id": "c1" }
+          ]
+        },
+        {
+          "say": "Two.",
+          "do": [
+            { "do": "highlight", "target": "b1", "at": "Two" },
+            { "do": "show", "target": "n", "at": "Two" },
+            { "do": "write", "tex": "\\ca{1},\\ \\cg{2}", "fresh": true, "at": "Two", "id": "c2" }
+          ]
+        },
+        {
+          "say": "The last number tells how many. There are two dots.",
+          "pause": 1,
+          "do": [
+            { "do": "text", "text": "The last number tells how many.", "at": "last", "id": "phrase" },
+            { "do": "highlight", "target": "n", "at": "two" },
+            { "do": "answer", "tex": "2", "at": "two", "id": "ans2" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-0.4, -0.5, 13.6, 11.4],
+        "points": { "G": [0, 10.6], "N": [12.2, 5.6], "S": [1.1, 10.75] },
+        "parts": [
+          { "id": "g", "grid": [5, 2], "at": "G", "size": [2.2, 5.0], "fill": "paper", "ink": "muted", "w": 5, "start": true },
+          { "id": "a", "counters": "g", "n": 1, "from": 1, "ink": "accent", "start": true },
+          { "id": "b", "counters": "g", "n": 1, "from": 2, "ink": "gold", "start": true },
+          { "id": "c", "counters": "g", "n": 1, "from": 3, "ink": "accent", "start": true },
+          { "id": "d", "counters": "g", "n": 1, "from": 4, "ink": "gold", "start": true },
+          { "id": "e", "counters": "g", "n": 1, "from": 5, "ink": "accent", "start": true },
+          { "id": "f", "counters": "g", "n": 1, "from": 6, "ink": "gold", "start": true },
+          { "id": "h", "counters": "g", "n": 1, "from": 7, "ink": "accent", "start": true },
+          { "id": "i", "counters": "g", "n": 1, "from": 8, "ink": "gold", "start": true },
+          { "id": "st", "label": "\\text{start}", "at": "S", "dir": "n", "far": 0.15, "size": "s", "ink": "warm" },
+          { "id": "n", "label": "@n", "at": "N", "of": "g", "dir": "c", "size": "xl", "ink": "accent" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "How many dots are shown?",
+          "pause": 0.4,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "How many dots are shown?", "at": "How", "id": "p8" },
+            { "do": "show", "target": "st", "at": "How" }
+          ]
+        },
+        {
+          "say": "Start at the top left dot, so you know when to stop.",
+          "do": [
+            { "do": "highlight", "target": ["a1", "st"], "at": "Start" },
+            { "do": "text", "text": "Start at the first dot.", "at": "Start", "id": "start" }
+          ]
+        },
+        {
+          "say": "Count the top row: one, two, three, four, five.",
+          "do": [
+            { "do": "highlight", "target": "a1", "at": "one" },
+            { "do": "highlight", "target": "b1", "at": "two" },
+            { "do": "highlight", "target": "c1", "at": "three" },
+            { "do": "highlight", "target": "d1", "at": "four" },
+            { "do": "highlight", "target": "e1", "at": "five" },
+            { "do": "write", "tex": "\\ca{1},\\ \\cg{2},\\ \\ca{3},\\ \\cg{4},\\ \\ca{5}", "fresh": true, "at": "five", "id": "top" }
+          ]
+        },
+        {
+          "say": "The top row is five. Do not start again at one.",
+          "do": [
+            { "do": "highlight", "target": ["a1", "b1", "c1", "d1", "e1"], "at": "five" },
+            { "do": "watch", "text": "Keep counting. Do not start the next row again at $1$.", "at": "not" }
+          ]
+        },
+        {
+          "say": "Count on: six, seven, eight.",
+          "do": [
+            { "do": "highlight", "target": "f1", "at": "six" },
+            { "do": "highlight", "target": "h1", "at": "seven" },
+            { "do": "highlight", "target": "i1", "at": "eight" },
+            { "do": "write", "tex": "\\cg{6},\\ \\ca{7},\\ \\cg{8}", "fresh": true, "at": "six", "id": "bot" }
+          ]
+        },
+        {
+          "say": "Two boxes are empty. An empty box is not a dot.",
+          "do": [
+            { "do": "highlight", "target": "g", "at": "empty" },
+            { "do": "text", "text": "Skip an empty box.", "at": "empty", "id": "empty" }
+          ]
+        },
+        {
+          "say": "The last number is eight. There are eight dots.",
+          "pause": 1,
+          "do": [
+            { "do": "show", "target": "n", "at": "eight" },
+            { "do": "highlight", "target": "n", "at": "eight" },
+            { "do": "answer", "tex": "8", "at": "eight", "id": "ans8" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-0.4, -0.5, 13.6, 11.4],
+        "points": { "G": [0, 10.6], "N": [12.2, 5.6] },
+        "parts": [
+          { "id": "g", "grid": [5, 2], "at": "G", "size": [2.2, 5.0], "fill": "paper", "ink": "muted", "w": 5, "start": true },
+          { "id": "a", "counters": "g", "n": 1, "from": 1, "ink": "accent", "start": true },
+          { "id": "b", "counters": "g", "n": 1, "from": 2, "ink": "gold", "start": true },
+          { "id": "c", "counters": "g", "n": 1, "from": 3, "ink": "accent", "start": true },
+          { "id": "d", "counters": "g", "n": 1, "from": 4, "ink": "gold", "start": true },
+          { "id": "e", "counters": "g", "n": 1, "from": 5, "ink": "accent", "start": true },
+          { "id": "f", "counters": "g", "n": 1, "from": 6, "ink": "gold", "start": true },
+          { "id": "h", "counters": "g", "n": 1, "from": 7, "ink": "accent", "start": true },
+          { "id": "i", "counters": "g", "n": 1, "from": 8, "ink": "gold", "start": true },
+          { "id": "j", "counters": "g", "n": 1, "from": 9, "ink": "accent", "start": true },
+          { "id": "k", "counters": "g", "n": 1, "from": 10, "ink": "gold", "start": true },
+          { "id": "n", "label": "@n", "at": "N", "of": "g", "dir": "c", "size": "xl", "ink": "accent" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "How many dots are shown?",
+          "pause": 0.35,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "How many dots are shown?", "at": "How", "id": "p10" },
+            { "do": "highlight", "target": ["a1", "b1", "c1", "d1", "e1"], "at": "dots" }
+          ]
+        },
+        {
+          "say": "The top row is five. Count on: six, seven, eight, nine, ten.",
+          "do": [
+            { "do": "highlight", "target": "f1", "at": "six" },
+            { "do": "highlight", "target": "h1", "at": "seven" },
+            { "do": "highlight", "target": "i1", "at": "eight" },
+            { "do": "highlight", "target": "j1", "at": "nine" },
+            { "do": "highlight", "target": "k1", "at": "ten" },
+            { "do": "write", "tex": "5,\\ 6,\\ 7,\\ 8,\\ 9,\\ 10", "fresh": true, "at": "six", "id": "on10" }
+          ]
+        },
+        {
+          "say": "Both rows are full. Do not stop at five. The last number is ten.",
+          "pause": 1,
+          "do": [
+            { "do": "show", "target": "n", "at": "ten" },
+            { "do": "highlight", "target": "n", "at": "ten" },
+            { "do": "answer", "tex": "10", "at": "ten", "id": "ans10" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-0.45, 0.7, 13.0, 10.4],
+        "points": { "G": [0, 9.8], "H": [1.35, 6.7] },
+        "parts": [
+          { "id": "g", "grid": [6, 1], "at": "G", "size": [2.05, 2.35], "fill": "paper", "ink": "muted", "w": 5, "start": true },
+          { "id": "h", "grid": [3, 2], "at": "H", "size": [3.2, 2.55], "fill": "paper", "ink": "muted", "w": 5 },
+          { "id": "a", "counters": "g", "n": 1, "from": 1, "ink": "accent", "start": true },
+          { "id": "b", "counters": "g", "n": 1, "from": 2, "ink": "gold", "start": true },
+          { "id": "c", "counters": "g", "n": 1, "from": 3, "ink": "accent", "start": true },
+          { "id": "d", "counters": "g", "n": 1, "from": 4, "ink": "gold", "start": true },
+          { "id": "e", "counters": "g", "n": 1, "from": 5, "ink": "accent", "start": true },
+          { "id": "f", "counters": "g", "n": 1, "from": 6, "ink": "gold", "start": true }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Count this line: one, two, three, four, five, six.",
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "How many dots are shown?", "at": "Count", "id": "p6" },
+            { "do": "highlight", "target": "a1", "at": "one" },
+            { "do": "highlight", "target": "b1", "at": "two" },
+            { "do": "highlight", "target": "c1", "at": "three" },
+            { "do": "highlight", "target": "d1", "at": "four" },
+            { "do": "highlight", "target": "e1", "at": "five" },
+            { "do": "highlight", "target": "f1", "at": "six" },
+            { "do": "write", "tex": "1, 2, 3, 4, 5, 6", "fresh": true, "at": "six", "id": "line" }
+          ]
+        },
+        {
+          "say": "The last number is six.",
+          "do": [
+            { "do": "answer", "tex": "6", "at": "six", "id": "ans6" },
+            { "do": "highlight", "target": ["a1", "b1", "c1", "d1", "e1", "f1"], "at": "six" }
+          ]
+        },
+        {
+          "say": "Move the dots.",
+          "pause": 0.45,
+          "do": [
+            { "do": "show", "target": "h", "at": "Move" },
+            { "do": "move", "at": "Move", "dur": 1.2, "points": {
+              "a1": { "cell": ["h", 1] },
+              "b1": { "cell": ["h", 2] },
+              "c1": { "cell": ["h", 3] },
+              "d1": { "cell": ["h", 4] },
+              "e1": { "cell": ["h", 5] },
+              "f1": { "cell": ["h", 6] }
+            } }
+          ]
+        },
+        {
+          "say": "No dot came in, and no dot left. There are still six.",
+          "pause": 1,
+          "do": [
+            { "do": "hide", "target": "g", "at": "No" },
+            { "do": "highlight", "target": ["a1", "b1", "c1", "d1", "e1", "f1"], "at": "still" },
+            { "do": "text", "text": "Moving the dots does not change how many.", "at": "still", "id": "still" }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Every count goes the same way.",
+          "do": [ { "do": "overview", "of": "p8", "at": "Every" } ]
+        },
+        {
+          "say": "One: start at the first dot, so you know when to stop.",
+          "do": [ { "do": "recap", "text": "Start at the first dot, so you know when to stop.", "marks": ["start"], "at": "One" } ]
+        },
+        {
+          "say": "Two: say one number for each dot. Skip an empty box. Do not start over.",
+          "do": [ { "do": "recap", "text": "Say one number for each dot. Skip an empty box. Do not start over.", "marks": ["top", "bot", "empty"], "at": "Two" } ]
+        },
+        {
+          "say": "Three: the last number tells how many.",
+          "pause": 0.8,
+          "do": [ { "do": "recap", "text": "The last number tells how many.", "marks": ["bot", "ans8"], "at": "Three" } ]
+        }
+      ]
+    }
+  ]
+}

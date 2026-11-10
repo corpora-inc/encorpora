@@ -1,0 +1,3765 @@
+{
+  "id": "complex-plane-forms",
+  "title": "Complex plane, modulus and polar form",
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -5,
+          -4,
+          5.5,
+          5.5
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "XR": [
+            4.8,
+            -0.15
+          ],
+          "YI": [
+            0.1,
+            4.7
+          ],
+          "A": [
+            3,
+            0
+          ],
+          "P": [
+            3,
+            2
+          ],
+          "I": [
+            0,
+            1
+          ]
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 100,
+            "xrange": [
+              -4.65,
+              5.15
+            ],
+            "yrange": [
+              -3.65,
+              5.15
+            ]
+          },
+          {
+            "id": "real",
+            "label": "\\text{real}",
+            "at": "XR",
+            "dir": "s",
+            "size": "s",
+            "start": true,
+            "ink": "blue"
+          },
+          {
+            "id": "imag",
+            "label": "\\text{imaginary}",
+            "at": "YI",
+            "dir": "e",
+            "size": "s",
+            "ink": "warm"
+          },
+          {
+            "id": "zero",
+            "label": "0",
+            "at": "O",
+            "dir": "sw",
+            "size": "s",
+            "far": 0.35
+          },
+          {
+            "id": "across",
+            "vector": [
+              "O",
+              "A"
+            ],
+            "ink": "blue"
+          },
+          {
+            "id": "up",
+            "vector": [
+              "A",
+              "P"
+            ],
+            "ink": "warm"
+          },
+          {
+            "id": "p",
+            "dot": "P",
+            "ink": "accent",
+            "r": 9
+          },
+          {
+            "id": "la",
+            "label": "a",
+            "at": "across",
+            "dir": "s",
+            "size": "s",
+            "ink": "blue",
+            "far": 1.4
+          },
+          {
+            "id": "lb",
+            "label": "b",
+            "at": "up",
+            "dir": "e",
+            "size": "s",
+            "ink": "warm"
+          },
+          {
+            "id": "lp",
+            "label": "a+bi",
+            "at": "P",
+            "dir": "n",
+            "size": "s"
+          },
+          {
+            "id": "di",
+            "dot": "I",
+            "ink": "warm",
+            "r": 9
+          },
+          {
+            "id": "li",
+            "label": "i",
+            "at": "I",
+            "dir": "w",
+            "size": "s",
+            "ink": "warm"
+          },
+          {
+            "id": "line",
+            "axes": true,
+            "y": false,
+            "step": 1,
+            "every": 2,
+            "xrange": [
+              -4.65,
+              5.15
+            ],
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "A real number lives on a line. A complex number needs two coordinates.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "text",
+              "at": "real",
+              "text": "From the real line to the complex plane."
+            },
+            {
+              "do": "highlight",
+              "target": "line",
+              "at": "line"
+            }
+          ]
+        },
+        {
+          "say": "The number i is defined by i squared equals negative one.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "write",
+              "tex": "i^2=-1",
+              "fresh": true,
+              "at": "i"
+            }
+          ]
+        },
+        {
+          "say": "In rectangular form, write z as a plus b i; a and b are real numbers.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "write",
+              "tex": "z=\\cb{a}+\\cw{b}i",
+              "id": "fForm",
+              "fresh": true,
+              "at": "write"
+            },
+            {
+              "do": "show",
+              "target": [
+                "ax",
+                "imag",
+                "zero"
+              ],
+              "at": "rectangular"
+            },
+            {
+              "do": "hide",
+              "target": "line",
+              "at": "rectangular"
+            }
+          ]
+        },
+        {
+          "say": "The real part, a, is horizontal. The imaginary part, b, is vertical.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "across",
+                "la"
+              ],
+              "at": "horizontal"
+            },
+            {
+              "do": "show",
+              "target": [
+                "up",
+                "lb",
+                "p",
+                "lp"
+              ],
+              "at": "vertical"
+            },
+            {
+              "do": "text",
+              "text": "Real part: across. Imaginary part: up or down.",
+              "id": "fParts",
+              "at": "real"
+            }
+          ]
+        },
+        {
+          "say": "So a plus b i is the point a, b. The coefficient b is a real number; i marks the imaginary direction.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cb{a}+\\cw{b}i\\ \\longleftrightarrow\\ (\\cb{a},\\cw{b})",
+              "fresh": true,
+              "at": "So"
+            },
+            {
+              "do": "highlight",
+              "target": "lb",
+              "at": "coefficient"
+            }
+          ]
+        },
+        {
+          "say": "In particular, i sits one unit above zero.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "di",
+                "li"
+              ],
+              "at": "one"
+            },
+            {
+              "do": "highlight",
+              "target": "zero",
+              "at": "zero"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -5,
+          -3,
+          5,
+          4.8
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "XR": [
+            4.3,
+            -0.15
+          ],
+          "YI": [
+            0.1,
+            4.0
+          ],
+          "A": [
+            -3,
+            0
+          ],
+          "P": [
+            -3,
+            2
+          ]
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 1,
+            "xrange": [
+              -4.65,
+              4.65
+            ],
+            "yrange": [
+              -2.65,
+              4.45
+            ],
+            "start": true
+          },
+          {
+            "id": "real",
+            "label": "\\text{Re}",
+            "at": "XR",
+            "dir": "s",
+            "size": "s",
+            "start": true,
+            "ink": "blue"
+          },
+          {
+            "id": "imag",
+            "label": "\\text{Im}",
+            "at": "YI",
+            "dir": "e",
+            "size": "s",
+            "start": true,
+            "ink": "warm"
+          },
+          {
+            "id": "zero",
+            "label": "0",
+            "at": "O",
+            "dir": "sw",
+            "size": "s",
+            "start": true,
+            "far": 0.35
+          },
+          {
+            "id": "p",
+            "dot": "P",
+            "ink": "accent",
+            "r": 9,
+            "start": true
+          },
+          {
+            "id": "lp",
+            "label": "P",
+            "at": "P",
+            "dir": "n",
+            "size": "s",
+            "start": true
+          },
+          {
+            "id": "a",
+            "vector": [
+              "O",
+              "A"
+            ],
+            "ink": "blue"
+          },
+          {
+            "id": "b",
+            "vector": [
+              "A",
+              "P"
+            ],
+            "ink": "warm"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Point P represents z. Write z in the form a plus b i.",
+          "pause": 1.2,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Point $P$ represents $z$. Write $z$ in the form $a+bi$.",
+              "choices": [
+                "$-3+2i$",
+                "$3+2i$",
+                "$2-3i$",
+                "$-3-2i$"
+              ],
+              "id": "readP",
+              "at": "Point"
+            },
+            {
+              "do": "highlight",
+              "target": "p",
+              "at": "P"
+            }
+          ]
+        },
+        {
+          "say": "Three left: the real part is negative three.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "draw",
+              "target": "a",
+              "at": "Three"
+            },
+            {
+              "do": "write",
+              "tex": "a=-3",
+              "id": "readA",
+              "fresh": true,
+              "at": "real"
+            }
+          ]
+        },
+        {
+          "say": "Two up: the imaginary part is positive two.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "draw",
+              "target": "b",
+              "at": "Two"
+            },
+            {
+              "do": "write",
+              "tex": "b=2",
+              "id": "readB",
+              "fresh": true,
+              "at": "imaginary"
+            }
+          ]
+        },
+        {
+          "say": "Negative three plus two i. Check the choices against the picture: left, then up.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "z=-3+2i",
+              "id": "readAnswer",
+              "at": "Negative"
+            },
+            {
+              "do": "highlight",
+              "target": "a",
+              "at": "left"
+            },
+            {
+              "do": "highlight",
+              "target": "b",
+              "at": "up"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -3.5,
+          -2.3,
+          5,
+          5
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "XR": [
+            4.3,
+            -0.15
+          ],
+          "YI": [
+            0.1,
+            4.2
+          ],
+          "P": [
+            3,
+            1
+          ],
+          "Q": [
+            -1,
+            2
+          ],
+          "T": [
+            2,
+            3
+          ],
+          "H": [
+            2,
+            0
+          ]
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 1,
+            "xrange": [
+              -3.15,
+              4.65
+            ],
+            "yrange": [
+              -1.9499999999999997,
+              4.65
+            ],
+            "start": true
+          },
+          {
+            "id": "real",
+            "label": "\\text{Re}",
+            "at": "XR",
+            "dir": "s",
+            "size": "s",
+            "start": true,
+            "ink": "blue"
+          },
+          {
+            "id": "imag",
+            "label": "\\text{Im}",
+            "at": "YI",
+            "dir": "e",
+            "size": "s",
+            "start": true,
+            "ink": "warm"
+          },
+          {
+            "id": "zero",
+            "label": "0",
+            "at": "O",
+            "dir": "sw",
+            "size": "s",
+            "start": true,
+            "far": 0.35
+          },
+          {
+            "id": "z",
+            "vector": [
+              "O",
+              "P"
+            ],
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "w",
+            "vector": [
+              "O",
+              "Q"
+            ],
+            "ink": "violet",
+            "start": true
+          },
+          {
+            "id": "p",
+            "dot": "P",
+            "ink": "accent",
+            "r": 9,
+            "start": true
+          },
+          {
+            "id": "q",
+            "dot": "Q",
+            "ink": "violet",
+            "r": 9,
+            "start": true
+          },
+          {
+            "id": "lp",
+            "label": "P",
+            "at": "P",
+            "dir": "e",
+            "size": "s",
+            "start": true
+          },
+          {
+            "id": "lq",
+            "label": "Q",
+            "at": "Q",
+            "dir": "nw",
+            "size": "s",
+            "start": true
+          },
+          {
+            "id": "wc",
+            "vector": [
+              "O",
+              "Q"
+            ],
+            "ink": "violet",
+            "group": "copy"
+          },
+          {
+            "id": "lw",
+            "label": "w",
+            "at": "wc",
+            "dir": "e",
+            "size": "s",
+            "ink": "violet",
+            "group": "copy",
+            "far": 0.7
+          },
+          {
+            "id": "sum",
+            "vector": [
+              "O",
+              "T"
+            ],
+            "ink": "gold",
+            "w": 8
+          },
+          {
+            "id": "dt",
+            "dot": "T",
+            "ink": "gold",
+            "r": 9
+          },
+          {
+            "id": "ls",
+            "label": "z+w",
+            "at": "T",
+            "dir": "n",
+            "size": "s",
+            "ink": "gold"
+          },
+          {
+            "id": "xguide",
+            "seg": [
+              "T",
+              "H"
+            ],
+            "ink": "blue",
+            "dash": true
+          },
+          {
+            "id": "coord",
+            "label": "(2,3)",
+            "at": "T",
+            "dir": "e",
+            "size": "s",
+            "ink": "gold"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "P represents z; Q represents w. Choose z plus w.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Points $P$ and $Q$ represent $z$ and $w$. Choose $z+w$.",
+              "choices": [
+                "$4-i$",
+                "$2+3i$",
+                "$-3+2i$",
+                "$2$"
+              ],
+              "id": "addP",
+              "at": "P"
+            },
+            {
+              "do": "highlight",
+              "target": "p",
+              "at": "P"
+            },
+            {
+              "do": "highlight",
+              "target": "q",
+              "at": "Q"
+            }
+          ]
+        },
+        {
+          "say": "Read each arrow from zero: z is three plus i. w is negative one plus two i.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "write",
+              "tex": "z=3+i",
+              "id": "addZ",
+              "fresh": true,
+              "at": "z"
+            },
+            {
+              "do": "write",
+              "tex": "w=-1+2i",
+              "id": "addW",
+              "fresh": true,
+              "at": "w"
+            },
+            {
+              "do": "highlight",
+              "target": "z",
+              "at": "three"
+            },
+            {
+              "do": "highlight",
+              "target": "w",
+              "at": "negative"
+            }
+          ]
+        },
+        {
+          "say": "Adding means following both arrows. Slide a copy of w to the tip of z.",
+          "pause": 1.1,
+          "do": [
+            {
+              "do": "text",
+              "text": "Add arrows tip to tail.",
+              "id": "addHow",
+              "at": "Adding"
+            },
+            {
+              "do": "show",
+              "target": "copy",
+              "at": "Slide"
+            },
+            {
+              "do": "slide",
+              "target": "copy",
+              "by": [
+                3,
+                1
+              ],
+              "dur": 2.3,
+              "at": "Slide"
+            }
+          ]
+        },
+        {
+          "say": "The copy still goes one left and two up. Its length and direction have not changed.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "copy",
+              "at": "left"
+            },
+            {
+              "do": "text",
+              "text": "The same arrow, starting at $P$.",
+              "tone": "muted",
+              "at": "length"
+            }
+          ]
+        },
+        {
+          "say": "The sum runs from zero to the final tip.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "draw",
+              "target": "sum",
+              "dur": 1.3,
+              "at": "sum"
+            },
+            {
+              "do": "show",
+              "target": [
+                "dt",
+                "ls"
+              ],
+              "at": "tip"
+            }
+          ]
+        },
+        {
+          "say": "Horizontally: three plus negative one is two.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cb{3+(-1)=2}",
+              "id": "addReal",
+              "fresh": true,
+              "at": "Horizontally"
+            },
+            {
+              "do": "show",
+              "target": "xguide",
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "say": "Vertically: one plus two is three. Combine matching parts.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cw{1+2=3}",
+              "id": "addImag",
+              "fresh": true,
+              "at": "Vertically"
+            },
+            {
+              "do": "show",
+              "target": "coord",
+              "at": "three"
+            }
+          ]
+        },
+        {
+          "say": "The answer is two plus three i. The endpoint checks both parts: two right, three up.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "z+w=2+3i",
+              "id": "addAnswer",
+              "at": "answer"
+            },
+            {
+              "do": "highlight",
+              "target": "coord",
+              "at": "endpoint"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4.6,
+          -2,
+          4.4,
+          5.8
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "XR": [
+            3.7,
+            -0.15
+          ],
+          "YI": [
+            0.1,
+            5.0
+          ],
+          "A": [
+            -2,
+            0
+          ],
+          "P": [
+            -2,
+            4
+          ],
+          "RL": {
+            "along": [
+              "O",
+              "P"
+            ],
+            "t": 0.66
+          }
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 100,
+            "xrange": [
+              -4.25,
+              4.050000000000001
+            ],
+            "yrange": [
+              -1.65,
+              5.45
+            ],
+            "start": true
+          },
+          {
+            "id": "real",
+            "label": "\\text{Re}",
+            "at": "XR",
+            "dir": "s",
+            "size": "s",
+            "start": true,
+            "ink": "blue"
+          },
+          {
+            "id": "imag",
+            "label": "\\text{Im}",
+            "at": "YI",
+            "dir": "e",
+            "size": "s",
+            "start": true,
+            "ink": "warm"
+          },
+          {
+            "id": "zero",
+            "label": "0",
+            "at": "O",
+            "dir": "sw",
+            "size": "s",
+            "start": true,
+            "far": 0.35
+          },
+          {
+            "id": "a",
+            "seg": [
+              "O",
+              "A"
+            ],
+            "ink": "blue",
+            "w": 7
+          },
+          {
+            "id": "b",
+            "seg": [
+              "A",
+              "P"
+            ],
+            "ink": "warm",
+            "w": 7
+          },
+          {
+            "id": "r",
+            "vector": [
+              "O",
+              "P"
+            ],
+            "ink": "accent",
+            "w": 7
+          },
+          {
+            "id": "p",
+            "dot": "P",
+            "ink": "accent",
+            "r": 9
+          },
+          {
+            "id": "right",
+            "angle": [
+              "O",
+              "A",
+              "P"
+            ],
+            "right": true,
+            "r": 26
+          },
+          {
+            "id": "la",
+            "label": "|a|",
+            "at": "a",
+            "dir": "s",
+            "size": "s",
+            "ink": "blue",
+            "far": 1.4
+          },
+          {
+            "id": "lb",
+            "label": "|b|",
+            "at": "b",
+            "dir": "w",
+            "size": "s",
+            "ink": "warm"
+          },
+          {
+            "id": "lr",
+            "label": "|z|",
+            "at": "RL",
+            "dir": "e",
+            "size": "s",
+            "ink": "accent",
+            "far": 0.5
+          },
+          {
+            "id": "lp",
+            "label": "a+bi",
+            "at": "P",
+            "dir": "n",
+            "size": "s"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "The modulus of z means its distance from zero. The bars around z name that distance.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "term",
+              "word": "modulus",
+              "meaning": "Distance from zero, written $|z|$.",
+              "id": "modDef",
+              "at": "modulus"
+            },
+            {
+              "do": "show",
+              "target": [
+                "p",
+                "lp"
+              ],
+              "at": "z"
+            },
+            {
+              "do": "draw",
+              "target": "r",
+              "at": "distance"
+            },
+            {
+              "do": "show",
+              "target": "lr",
+              "at": "bars"
+            }
+          ]
+        },
+        {
+          "say": "Across and up form the legs of a right triangle. The direct distance is its hypotenuse.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "draw",
+              "target": "a",
+              "at": "Across"
+            },
+            {
+              "do": "draw",
+              "target": "b",
+              "at": "up"
+            },
+            {
+              "do": "show",
+              "target": [
+                "la",
+                "lb",
+                "right"
+              ],
+              "at": "triangle"
+            },
+            {
+              "do": "highlight",
+              "target": "r",
+              "at": "hypotenuse"
+            }
+          ]
+        },
+        {
+          "say": "Pythagoras gives the distance squared. Take the nonnegative square root to get the distance.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "write",
+              "tex": "|z|^2=a^2+b^2",
+              "id": "modSquare",
+              "fresh": true,
+              "at": "Pythagoras"
+            },
+            {
+              "do": "write",
+              "tex": "|z|=\\sqrt{a^2+b^2}",
+              "id": "modFormula",
+              "at": "Take"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4.6,
+          -2,
+          4.4,
+          5.8
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "XR": [
+            3.7,
+            -0.15
+          ],
+          "YI": [
+            0.1,
+            5.0
+          ],
+          "A": [
+            -2,
+            0
+          ],
+          "P": [
+            -2,
+            4
+          ],
+          "RL": {
+            "along": [
+              "O",
+              "P"
+            ],
+            "t": 0.66
+          }
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 2,
+            "xrange": [
+              -4.25,
+              4.050000000000001
+            ],
+            "yrange": [
+              -1.65,
+              5.45
+            ],
+            "start": true
+          },
+          {
+            "id": "real",
+            "label": "\\text{Re}",
+            "at": "XR",
+            "dir": "s",
+            "size": "s",
+            "start": true,
+            "ink": "blue"
+          },
+          {
+            "id": "imag",
+            "label": "\\text{Im}",
+            "at": "YI",
+            "dir": "e",
+            "size": "s",
+            "start": true,
+            "ink": "warm"
+          },
+          {
+            "id": "zero",
+            "label": "0",
+            "at": "O",
+            "dir": "sw",
+            "size": "s",
+            "start": true,
+            "far": 0.35
+          },
+          {
+            "id": "a",
+            "seg": [
+              "O",
+              "A"
+            ],
+            "ink": "blue",
+            "w": 7
+          },
+          {
+            "id": "b",
+            "seg": [
+              "A",
+              "P"
+            ],
+            "ink": "warm",
+            "w": 7
+          },
+          {
+            "id": "r",
+            "vector": [
+              "O",
+              "P"
+            ],
+            "ink": "accent",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "p",
+            "dot": "P",
+            "ink": "accent",
+            "r": 9,
+            "start": true
+          },
+          {
+            "id": "right",
+            "angle": [
+              "O",
+              "A",
+              "P"
+            ],
+            "right": true,
+            "r": 26
+          },
+          {
+            "id": "la",
+            "label": "2",
+            "at": "a",
+            "dir": "s",
+            "size": "s",
+            "ink": "blue",
+            "far": 1.4
+          },
+          {
+            "id": "lb",
+            "label": "4",
+            "at": "b",
+            "dir": "w",
+            "size": "s",
+            "ink": "warm"
+          },
+          {
+            "id": "lr",
+            "label": "r",
+            "at": "RL",
+            "dir": "e",
+            "size": "s",
+            "ink": "accent",
+            "far": 0.5,
+            "start": true
+          },
+          {
+            "id": "lp",
+            "label": "-2+4i",
+            "at": "P",
+            "dir": "n",
+            "size": "s",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Find the modulus of negative two plus four i, in simplest exact form.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Find $|-2+4i|$ in simplest exact form.",
+              "choices": [
+                "$6$",
+                "$20$",
+                "$2\\sqrt3$",
+                "$2\\sqrt5$"
+              ],
+              "id": "modP",
+              "at": "Find"
+            }
+          ]
+        },
+        {
+          "say": "The legs have lengths two and four. A negative coordinate does not make a negative length.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "a",
+                "la"
+              ],
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": [
+                "b",
+                "lb",
+                "right"
+              ],
+              "at": "four"
+            },
+            {
+              "do": "highlight",
+              "target": "la",
+              "at": "negative"
+            }
+          ]
+        },
+        {
+          "say": "Call the distance r. Square each coordinate, then add: four plus sixteen is twenty.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "write",
+              "tex": "r^2=(-2)^2+4^2",
+              "id": "modCalc",
+              "fresh": true,
+              "at": "Square"
+            },
+            {
+              "do": "write",
+              "tex": "=4+16=20",
+              "id": "mod20",
+              "at": "four"
+            }
+          ]
+        },
+        {
+          "say": "Take the square root. Twenty is four times five, so a factor of two comes outside.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "write",
+              "tex": "r=\\sqrt{20}=\\sqrt{4\\cdot5}",
+              "id": "modRoot",
+              "fresh": true,
+              "at": "Take"
+            },
+            {
+              "do": "answer",
+              "tex": "|-2+4i|=2\\sqrt5",
+              "id": "modAnswer",
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "say": "Check: the straight path is longer than four, but shorter than the two-leg path, six.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "write",
+              "tex": "4<2\\sqrt5<6",
+              "id": "modCheck",
+              "fresh": true,
+              "at": "Check"
+            },
+            {
+              "do": "highlight",
+              "target": "r",
+              "at": "straight"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "a",
+                "b"
+              ],
+              "at": "two-leg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4.9,
+          -4.6,
+          5.4,
+          5
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "XR": [
+            4.7,
+            -0.15
+          ],
+          "YI": [
+            0.1,
+            4.2
+          ],
+          "P": {
+            "on": "c",
+            "deg": 0
+          },
+          "F": {
+            "foot": "P"
+          }
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 100,
+            "xrange": [
+              -4.550000000000001,
+              5.050000000000001
+            ],
+            "yrange": [
+              -4.25,
+              4.65
+            ],
+            "start": true
+          },
+          {
+            "id": "real",
+            "label": "\\text{Re}",
+            "at": "XR",
+            "dir": "s",
+            "size": "s",
+            "start": true,
+            "ink": "blue"
+          },
+          {
+            "id": "imag",
+            "label": "\\text{Im}",
+            "at": "YI",
+            "dir": "e",
+            "size": "s",
+            "start": true,
+            "ink": "warm"
+          },
+          {
+            "id": "zero",
+            "label": "0",
+            "at": "O",
+            "dir": "sw",
+            "size": "s",
+            "start": true,
+            "far": 0.35
+          },
+          {
+            "id": "c",
+            "circle": "O",
+            "r": 3.4,
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "sw",
+            "sweep": "P",
+            "r": 93,
+            "ink": "gold",
+            "fill": "gold-fill",
+            "tex": "\\theta",
+            "size": "s"
+          },
+          {
+            "id": "radius",
+            "vector": [
+              "O",
+              "P"
+            ],
+            "ink": "accent",
+            "start": true,
+            "w": 7
+          },
+          {
+            "id": "p",
+            "dot": "P",
+            "ink": "accent",
+            "r": 9,
+            "start": true
+          },
+          {
+            "id": "lr",
+            "label": "r",
+            "at": "radius",
+            "dir": "nw",
+            "size": "s",
+            "ink": "accent",
+            "far": 0.6
+          },
+          {
+            "id": "a",
+            "vector": [
+              "O",
+              "F"
+            ],
+            "ink": "blue",
+            "w": 7
+          },
+          {
+            "id": "b",
+            "ink": "warm",
+            "w": 7,
+            "seg": [
+              "P",
+              "F"
+            ]
+          },
+          {
+            "id": "la",
+            "label": "a",
+            "at": "a",
+            "dir": "s",
+            "size": "s",
+            "ink": "blue",
+            "far": 1.45
+          },
+          {
+            "id": "lb",
+            "label": "b",
+            "at": "b",
+            "dir": "e",
+            "size": "s",
+            "ink": "warm"
+          },
+          {
+            "id": "lp",
+            "label": "z",
+            "at": "P",
+            "dir": "n",
+            "size": "s"
+          },
+          {
+            "id": "right",
+            "angle": [
+              "O",
+              "F",
+              "P"
+            ],
+            "right": true,
+            "r": 22
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "There is another way to locate the same point: distance and direction.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "term",
+              "word": "polar form",
+              "meaning": "Locate a point by distance $r$ and angle $\\theta$.",
+              "id": "polarDef",
+              "at": "distance"
+            },
+            {
+              "do": "show",
+              "target": "lr",
+              "at": "distance"
+            }
+          ]
+        },
+        {
+          "say": "The distance r is the radius. Start the angle at the positive real axis, pointing right.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "write",
+              "tex": "r=|z|",
+              "id": "polR",
+              "fresh": true,
+              "at": "distance"
+            },
+            {
+              "do": "highlight",
+              "target": "radius",
+              "at": "right"
+            }
+          ]
+        },
+        {
+          "say": "Turn counterclockwise. The swept angle is theta, also called the argument.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "show",
+              "target": "sw",
+              "at": "Turn"
+            },
+            {
+              "do": "glide",
+              "point": "P",
+              "deg": 60,
+              "dur": 2.6,
+              "at": "Turn"
+            },
+            {
+              "do": "text",
+              "text": "Angle $\\theta$: counterclockwise from the positive real axis.",
+              "id": "polTheta",
+              "at": "theta"
+            }
+          ]
+        },
+        {
+          "say": "Drop a vertical line to the real axis. The radius becomes the hypotenuse of a right triangle.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "a",
+                "la"
+              ],
+              "at": "real"
+            },
+            {
+              "do": "draw",
+              "target": "b",
+              "at": "Drop"
+            },
+            {
+              "do": "show",
+              "target": [
+                "lb",
+                "right",
+                "lp"
+              ],
+              "at": "triangle"
+            }
+          ]
+        },
+        {
+          "say": "Cosine is horizontal divided by radius. So the real part is r times cosine theta.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cos\\theta=\\frac{\\cb a}{\\ca r}",
+              "id": "cosRatio",
+              "fresh": true,
+              "at": "Cosine"
+            },
+            {
+              "do": "write",
+              "tex": "\\cb a=\\ca r\\cos\\theta",
+              "id": "cosPart",
+              "at": "So"
+            },
+            {
+              "do": "highlight",
+              "target": "a",
+              "at": "horizontal"
+            }
+          ]
+        },
+        {
+          "say": "Sine is vertical divided by radius. So the imaginary part is r times sine theta.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\sin\\theta=\\frac{\\cw b}{\\ca r}",
+              "id": "sinRatio",
+              "fresh": true,
+              "at": "Sine"
+            },
+            {
+              "do": "write",
+              "tex": "\\cw b=\\ca r\\sin\\theta",
+              "id": "sinPart",
+              "at": "So"
+            },
+            {
+              "do": "highlight",
+              "target": "b",
+              "at": "vertical"
+            }
+          ]
+        },
+        {
+          "say": "Put those parts into a plus b i, and factor out r.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "write",
+              "tex": "z=\\ca r\\cos\\theta+(\\ca r\\sin\\theta)i",
+              "id": "polExpand",
+              "fresh": true,
+              "at": "Put"
+            },
+            {
+              "do": "write",
+              "tex": "=\\ca r(\\cos\\theta+i\\sin\\theta)",
+              "id": "polForm",
+              "at": "factor"
+            }
+          ]
+        },
+        {
+          "say": "Both forms land on this same point. Rectangular gives the components; polar gives length and direction.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "p",
+              "at": "same"
+            },
+            {
+              "do": "text",
+              "text": "Same point. Two ways to name it.",
+              "id": "samePoint",
+              "at": "Rectangular"
+            }
+          ]
+        },
+        {
+          "say": "Beyond the first quadrant, cosine and sine are signed coordinates. Here, left makes cosine negative; up makes sine positive.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "glide",
+              "point": "P",
+              "deg": 150,
+              "dur": 2.4,
+              "at": "Beyond"
+            },
+            {
+              "do": "highlight",
+              "target": "a",
+              "at": "left"
+            },
+            {
+              "do": "highlight",
+              "target": "b",
+              "at": "up"
+            },
+            {
+              "do": "text",
+              "text": "Left: $a<0$. Up: $b>0$.",
+              "id": "polSigns",
+              "at": "Here"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.34,
+          -0.48,
+          2.1,
+          1.42
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "F": [
+            1.7320508075688772,
+            0
+          ],
+          "P": [
+            1.7320508075688772,
+            1
+          ],
+          "AL": [
+            0.64,
+            0.12
+          ],
+          "AL60": [
+            1.53,
+            0.65
+          ]
+        },
+        "parts": [
+          {
+            "id": "tri",
+            "poly": [
+              "O",
+              "F",
+              "P"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "fill": "accent-fill",
+            "start": true
+          },
+          {
+            "id": "h",
+            "label": "2",
+            "at": "O",
+            "dir": "n",
+            "size": "s"
+          },
+          {
+            "id": "base",
+            "seg": [
+              "O",
+              "F"
+            ],
+            "ink": "blue",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "vert",
+            "seg": [
+              "F",
+              "P"
+            ],
+            "ink": "warm",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "hyp",
+            "seg": [
+              "O",
+              "P"
+            ],
+            "ink": "accent",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "lh",
+            "label": "2",
+            "at": "hyp",
+            "dir": "nw",
+            "size": "s",
+            "start": true,
+            "ink": "accent",
+            "far": 0.6
+          },
+          {
+            "id": "lv",
+            "label": "1",
+            "at": "vert",
+            "dir": "e",
+            "size": "s",
+            "start": true,
+            "ink": "warm"
+          },
+          {
+            "id": "lb",
+            "label": "\\sqrt3",
+            "at": "base",
+            "dir": "s",
+            "size": "s",
+            "ink": "blue"
+          },
+          {
+            "id": "ra",
+            "angle": [
+              "O",
+              "F",
+              "P"
+            ],
+            "right": true,
+            "r": 25,
+            "start": true
+          },
+          {
+            "id": "ang",
+            "angle": [
+              "F",
+              "O",
+              "P"
+            ],
+            "r": 100,
+            "ink": "gold",
+            "fill": "gold-fill",
+            "start": true
+          },
+          {
+            "id": "la",
+            "label": "30^\\circ",
+            "at": "AL",
+            "dir": "c",
+            "size": "s",
+            "start": true,
+            "ink": "gold",
+            "far": 0
+          },
+          {
+            "id": "angle60",
+            "angle": [
+              "O",
+              "P",
+              "F"
+            ],
+            "r": 74,
+            "ink": "gold",
+            "fill": "gold-fill"
+          },
+          {
+            "id": "label60",
+            "label": "60^\\circ",
+            "at": "AL60",
+            "dir": "w",
+            "size": "s",
+            "ink": "gold",
+            "far": 0.3
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "For exact values, use the special right triangles. A thirty-degree triangle has hypotenuse two and short leg one.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Exact values come from special right triangles.",
+              "at": "For"
+            },
+            {
+              "do": "highlight",
+              "target": "lh",
+              "at": "two"
+            },
+            {
+              "do": "highlight",
+              "target": "lv",
+              "at": "one"
+            }
+          ]
+        },
+        {
+          "say": "Pythagoras gives the other leg: square root of three.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\sqrt{2^2-1^2}=\\sqrt3",
+              "fresh": true,
+              "at": "Pythagoras"
+            },
+            {
+              "do": "show",
+              "target": "lb",
+              "at": "three"
+            }
+          ]
+        },
+        {
+          "say": "At thirty degrees, cosine is root three over two; sine is one half.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cos30^\\circ=\\frac{\\sqrt3}{2}",
+              "fresh": true,
+              "at": "cosine"
+            },
+            {
+              "do": "write",
+              "tex": "\\sin30^\\circ=\\frac12",
+              "fresh": true,
+              "at": "sine"
+            }
+          ]
+        },
+        {
+          "say": "At sixty degrees, the opposite and adjacent legs switch roles, so those two values switch.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cos60^\\circ=\\frac12",
+              "fresh": true,
+              "at": "sixty"
+            },
+            {
+              "do": "write",
+              "tex": "\\sin60^\\circ=\\frac{\\sqrt3}{2}",
+              "fresh": true,
+              "at": "switch"
+            },
+            {
+              "do": "show",
+              "at": "sixty",
+              "target": [
+                "angle60",
+                "label60"
+              ]
+            },
+            {
+              "do": "highlight",
+              "at": "opposite",
+              "target": "base"
+            },
+            {
+              "do": "highlight",
+              "at": "adjacent",
+              "target": "vert"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.27,
+          -0.4,
+          1.4,
+          1.3
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "F": [
+            1,
+            0
+          ],
+          "P": [
+            1,
+            1
+          ],
+          "AL": [
+            0.35,
+            0.12
+          ]
+        },
+        "parts": [
+          {
+            "id": "tri",
+            "poly": [
+              "O",
+              "F",
+              "P"
+            ],
+            "ink": "accent",
+            "w": 5,
+            "fill": "accent-fill",
+            "start": true
+          },
+          {
+            "id": "base",
+            "seg": [
+              "O",
+              "F"
+            ],
+            "ink": "blue",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "vert",
+            "seg": [
+              "F",
+              "P"
+            ],
+            "ink": "warm",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "hyp",
+            "seg": [
+              "O",
+              "P"
+            ],
+            "ink": "accent",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "lh",
+            "label": "\\sqrt2",
+            "at": "hyp",
+            "dir": "nw",
+            "size": "s",
+            "ink": "accent",
+            "far": 0.6
+          },
+          {
+            "id": "lv",
+            "label": "1",
+            "at": "vert",
+            "dir": "e",
+            "size": "s",
+            "start": true,
+            "ink": "warm"
+          },
+          {
+            "id": "lb",
+            "label": "1",
+            "at": "base",
+            "dir": "s",
+            "size": "s",
+            "start": true,
+            "ink": "blue"
+          },
+          {
+            "id": "ra",
+            "angle": [
+              "O",
+              "F",
+              "P"
+            ],
+            "right": true,
+            "r": 25,
+            "start": true
+          },
+          {
+            "id": "la",
+            "label": "45^\\circ",
+            "at": "AL",
+            "dir": "c",
+            "size": "s",
+            "start": true,
+            "ink": "gold",
+            "far": 0
+          },
+          {
+            "id": "angle45",
+            "angle": [
+              "F",
+              "O",
+              "P"
+            ],
+            "r": 70,
+            "ink": "gold",
+            "fill": "gold-fill",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "At forty-five degrees, the legs are equal. Legs one and one give hypotenuse square root of two.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "\\sqrt{1^2+1^2}=\\sqrt2",
+              "fresh": true,
+              "at": "Legs"
+            },
+            {
+              "do": "show",
+              "target": "lh",
+              "at": "hypotenuse"
+            }
+          ]
+        },
+        {
+          "say": "Both ratios are one over root two, or root two over two. The quadrant supplies the signs.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cos45^\\circ=\\sin45^\\circ",
+              "fresh": true,
+              "at": "Both"
+            },
+            {
+              "do": "write",
+              "tex": "=\\frac1{\\sqrt2}=\\frac{\\sqrt2}{2}",
+              "at": "one"
+            },
+            {
+              "do": "text",
+              "text": "Use the triangle for sizes; the quadrant for signs.",
+              "at": "quadrant"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -6.2,
+          -4.8,
+          5.5,
+          5.5
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "XR": [
+            4.8,
+            -0.15
+          ],
+          "YI": [
+            0.1,
+            4.7
+          ],
+          "P": {
+            "on": "c",
+            "deg": 0
+          },
+          "F": {
+            "foot": "P"
+          },
+          "L": [
+            -4,
+            0
+          ],
+          "REF": [
+            -2.3,
+            0.45
+          ]
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 2,
+            "xrange": [
+              -5.8500000000000005,
+              5.15
+            ],
+            "yrange": [
+              -4.45,
+              5.15
+            ],
+            "start": true
+          },
+          {
+            "id": "real",
+            "label": "\\text{Re}",
+            "at": "XR",
+            "dir": "s",
+            "size": "s",
+            "start": true,
+            "ink": "blue"
+          },
+          {
+            "id": "imag",
+            "label": "\\text{Im}",
+            "at": "YI",
+            "dir": "e",
+            "size": "s",
+            "start": true,
+            "ink": "warm"
+          },
+          {
+            "id": "zero",
+            "label": "0",
+            "at": "O",
+            "dir": "sw",
+            "size": "s",
+            "start": true,
+            "far": 0.35
+          },
+          {
+            "id": "c",
+            "circle": "O",
+            "r": 4,
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "sw",
+            "sweep": "P",
+            "r": 100,
+            "ink": "gold",
+            "fill": "gold-fill"
+          },
+          {
+            "id": "radius",
+            "vector": [
+              "O",
+              "P"
+            ],
+            "ink": "accent",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "p",
+            "dot": "P",
+            "ink": "accent",
+            "r": 9,
+            "start": true
+          },
+          {
+            "id": "lr",
+            "label": "4",
+            "at": "radius",
+            "dir": "n",
+            "size": "s",
+            "ink": "accent",
+            "far": 0.6
+          },
+          {
+            "id": "a",
+            "seg": [
+              "O",
+              "F"
+            ],
+            "ink": "blue",
+            "w": 7
+          },
+          {
+            "id": "b",
+            "seg": [
+              "F",
+              "P"
+            ],
+            "ink": "warm",
+            "w": 7
+          },
+          {
+            "id": "la",
+            "label": "-2\\sqrt3",
+            "at": "a",
+            "dir": "s",
+            "size": "s",
+            "ink": "blue",
+            "far": 1.5
+          },
+          {
+            "id": "lb",
+            "label": "2",
+            "at": "b",
+            "dir": "w",
+            "size": "s",
+            "ink": "warm"
+          },
+          {
+            "id": "ref",
+            "angle": [
+              "L",
+              "O",
+              "P"
+            ],
+            "r": 130,
+            "ink": "violet"
+          },
+          {
+            "id": "refLabel",
+            "label": "30^\\circ",
+            "at": "REF",
+            "dir": "c",
+            "size": "s",
+            "ink": "violet",
+            "far": 0
+          },
+          {
+            "id": "pointLabel",
+            "label": "-2\\sqrt3+2i",
+            "at": "P",
+            "dir": "n",
+            "size": "s",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Write this polar number in rectangular form, a plus b i.",
+          "pause": 1.2,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Write $4(\\cos\\frac{5\\pi}{6}+i\\sin\\frac{5\\pi}{6})$ as $a+bi$.",
+              "choices": [
+                "$-2\\sqrt3+2i$",
+                "$2-2\\sqrt3i$",
+                "$2\\sqrt3+2i$",
+                "$-2\\sqrt3-2i$"
+              ],
+              "id": "toRectP",
+              "at": "Write"
+            }
+          ]
+        },
+        {
+          "say": "The radius is four. The angle is five pi over six.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "show",
+              "at": "four",
+              "target": "lr"
+            },
+            {
+              "do": "text",
+              "at": "angle",
+              "text": "$r=4$, $\\theta=5\\pi/6$.",
+              "id": "rectGiven"
+            }
+          ]
+        },
+        {
+          "say": "Angles here use radians: pi is a half-turn, one hundred eighty degrees.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "text",
+              "at": "radians",
+              "text": "A half-turn: $\\pi$ radians $=180^\\circ$.",
+              "id": "radUnits"
+            }
+          ]
+        },
+        {
+          "say": "Five pi over six is one hundred fifty degrees. Turn from the positive real axis.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\theta=\\frac{5\\pi}{6}=150^\\circ",
+              "id": "rectAngle",
+              "fresh": true,
+              "at": "Five"
+            },
+            {
+              "do": "show",
+              "target": "sw",
+              "at": "Turn"
+            },
+            {
+              "do": "glide",
+              "point": "P",
+              "deg": 150,
+              "dur": 2.5,
+              "at": "Turn"
+            }
+          ]
+        },
+        {
+          "say": "The point is left and up. The real part must be negative; the imaginary part, positive. Reject choices in other quadrants.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "a",
+                "b"
+              ],
+              "at": "left"
+            },
+            {
+              "do": "text",
+              "text": "Left and up: $a<0$, $b>0$.",
+              "id": "rectSigns",
+              "at": "real"
+            },
+            {
+              "do": "highlight",
+              "target": "a",
+              "at": "negative"
+            },
+            {
+              "do": "highlight",
+              "target": "b",
+              "at": "positive"
+            },
+            {
+              "do": "highlight",
+              "at": "Reject",
+              "target": "p"
+            }
+          ]
+        },
+        {
+          "say": "The reference angle is the acute angle to the real axis: thirty degrees.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "ref",
+                "refLabel"
+              ],
+              "at": "acute"
+            },
+            {
+              "do": "write",
+              "tex": "\\alpha=180^\\circ-150^\\circ",
+              "id": "rectRef",
+              "fresh": true,
+              "at": "thirty"
+            },
+            {
+              "do": "write",
+              "at": "degrees",
+              "tex": "=30^\\circ",
+              "id": "rectRef30"
+            }
+          ]
+        },
+        {
+          "say": "Cosine is negative root three over two. Multiply by four for the horizontal part.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "write",
+              "tex": "a=4\\!\\left(-\\frac{\\sqrt3}{2}\\right)",
+              "id": "rectA1",
+              "fresh": true,
+              "at": "Cosine"
+            },
+            {
+              "do": "write",
+              "tex": "=-2\\sqrt3",
+              "id": "rectA2",
+              "at": "horizontal"
+            },
+            {
+              "do": "show",
+              "target": "la",
+              "at": "horizontal"
+            }
+          ]
+        },
+        {
+          "say": "Sine is one half. Multiply by four for the vertical part: two.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "write",
+              "tex": "b=4\\!\\left(\\frac12\\right)=2",
+              "id": "rectB",
+              "fresh": true,
+              "at": "Sine"
+            },
+            {
+              "do": "show",
+              "target": "lb",
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "say": "So z is negative two root three plus two i.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "z=-2\\sqrt3+2i",
+              "id": "rectAnswer",
+              "at": "So"
+            },
+            {
+              "do": "show",
+              "target": "pointLabel",
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "say": "Check: left and up, with a larger horizontal part. Swapping sine and cosine would miss this point.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "a",
+              "at": "horizontal"
+            },
+            {
+              "do": "watch",
+              "text": "Cosine gives the real part. Sine gives the imaginary part.",
+              "at": "Swapping"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4.8,
+          -4.5,
+          5.2,
+          4.9
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "E": [
+            3,
+            0
+          ],
+          "W": [
+            -3,
+            0
+          ],
+          "P": {
+            "on": "c",
+            "deg": 30
+          },
+          "F": {
+            "foot": "P"
+          },
+          "XR": [
+            4.5,
+            -0.15
+          ],
+          "YI": [
+            0.1,
+            4.1
+          ],
+          "AL": {
+            "on": "refCircle",
+            "deg": 15
+          }
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 100,
+            "every": 100,
+            "start": true
+          },
+          {
+            "id": "real",
+            "label": "\\text{Re}",
+            "at": "XR",
+            "dir": "s",
+            "size": "s",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "imag",
+            "label": "\\text{Im}",
+            "at": "YI",
+            "dir": "e",
+            "size": "s",
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "zero",
+            "label": "0",
+            "at": "O",
+            "dir": "sw",
+            "size": "s",
+            "far": 0.35,
+            "start": true
+          },
+          {
+            "id": "c",
+            "circle": "O",
+            "r": 3,
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "theta",
+            "sweep": "P",
+            "r": 115,
+            "ink": "gold",
+            "fill": "none",
+            "start": true
+          },
+          {
+            "id": "rightRef",
+            "angle": [
+              "E",
+              "O",
+              "P"
+            ],
+            "r": 75,
+            "fill": "violet-fill",
+            "ink": "violet",
+            "start": true
+          },
+          {
+            "id": "leftRef",
+            "angle": [
+              "W",
+              "O",
+              "P"
+            ],
+            "r": 75,
+            "fill": "violet-fill",
+            "ink": "violet"
+          },
+          {
+            "id": "radius",
+            "vector": [
+              "O",
+              "P"
+            ],
+            "ink": "accent",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "a",
+            "seg": [
+              "O",
+              "F"
+            ],
+            "ink": "blue",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "b",
+            "seg": [
+              "F",
+              "P"
+            ],
+            "ink": "warm",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "p",
+            "dot": "P",
+            "r": 9,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "z",
+            "label": "z",
+            "at": "P",
+            "dir": "ne",
+            "size": "s",
+            "start": true
+          },
+          {
+            "id": "refCircle",
+            "circle": "O",
+            "r": 1.55,
+            "ink": "muted"
+          },
+          {
+            "id": "alpha",
+            "label": "\\alpha",
+            "at": "AL",
+            "dir": "c",
+            "size": "s",
+            "ink": "violet",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Call the reference angle alpha. In quadrant one, theta equals alpha.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "at": "reference",
+              "text": "Reference angle $\\alpha$: the acute angle to the real axis."
+            },
+            {
+              "do": "write",
+              "at": "theta",
+              "tex": "\\text{I:}\\quad\\theta=\\alpha",
+              "fresh": true
+            }
+          ]
+        },
+        {
+          "say": "Left and up: quadrant two. Subtract alpha from a half-turn.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "hide",
+              "at": "Left",
+              "target": "rightRef"
+            },
+            {
+              "do": "glide",
+              "at": "Left",
+              "point": "P",
+              "deg": 150,
+              "dur": 1.8
+            },
+            {
+              "do": "show",
+              "at": "quadrant",
+              "target": "leftRef"
+            },
+            {
+              "do": "write",
+              "at": "Subtract",
+              "tex": "\\text{II:}\\quad\\theta=\\pi-\\alpha",
+              "fresh": true
+            },
+            {
+              "do": "hide",
+              "target": "alpha",
+              "at": "Left"
+            },
+            {
+              "do": "glide",
+              "point": "AL",
+              "deg": 165,
+              "dur": 1.8,
+              "at": "Left"
+            },
+            {
+              "do": "show",
+              "target": "alpha",
+              "at": "Subtract"
+            }
+          ]
+        },
+        {
+          "say": "Left and down: quadrant three. Go past a half-turn by alpha.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "glide",
+              "at": "Left",
+              "point": "P",
+              "deg": 210,
+              "dur": 1.8
+            },
+            {
+              "do": "write",
+              "at": "Go",
+              "tex": "\\text{III:}\\quad\\theta=\\pi+\\alpha",
+              "fresh": true
+            },
+            {
+              "do": "hide",
+              "target": "alpha",
+              "at": "Left"
+            },
+            {
+              "do": "glide",
+              "point": "AL",
+              "deg": 195,
+              "dur": 1.8,
+              "at": "Left"
+            },
+            {
+              "do": "show",
+              "target": "alpha",
+              "at": "Go"
+            }
+          ]
+        },
+        {
+          "say": "Right and down: quadrant four. Stop alpha short of a full turn.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "hide",
+              "at": "Right",
+              "target": "leftRef"
+            },
+            {
+              "do": "glide",
+              "at": "Right",
+              "point": "P",
+              "deg": 330,
+              "dur": 1.8
+            },
+            {
+              "do": "show",
+              "at": "quadrant",
+              "target": "rightRef"
+            },
+            {
+              "do": "write",
+              "at": "Stop",
+              "tex": "\\text{IV:}\\quad\\theta=2\\pi-\\alpha",
+              "fresh": true
+            },
+            {
+              "do": "hide",
+              "target": "alpha",
+              "at": "Right"
+            },
+            {
+              "do": "glide",
+              "point": "AL",
+              "deg": 345,
+              "dur": 1.8,
+              "at": "Right"
+            },
+            {
+              "do": "show",
+              "target": "alpha",
+              "at": "Stop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -5.2,
+          -5.6,
+          6,
+          5
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "XR": [
+            5.3,
+            -0.15
+          ],
+          "YI": [
+            0.1,
+            4.2
+          ],
+          "P": [
+            2,
+            -3.4641016151377544
+          ],
+          "F": [
+            2,
+            0
+          ],
+          "G": {
+            "on": "c",
+            "deg": 0
+          },
+          "R": [
+            4,
+            0
+          ],
+          "RL": {
+            "along": [
+              "O",
+              "P"
+            ],
+            "t": 0.72
+          }
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 2,
+            "xrange": [
+              -4.8500000000000005,
+              5.65
+            ],
+            "yrange": [
+              -5.25,
+              4.65
+            ],
+            "start": true
+          },
+          {
+            "id": "real",
+            "label": "\\text{Re}",
+            "at": "XR",
+            "dir": "s",
+            "size": "s",
+            "start": true,
+            "ink": "blue"
+          },
+          {
+            "id": "imag",
+            "label": "\\text{Im}",
+            "at": "YI",
+            "dir": "e",
+            "size": "s",
+            "start": true,
+            "ink": "warm"
+          },
+          {
+            "id": "zero",
+            "label": "0",
+            "at": "O",
+            "dir": "sw",
+            "size": "s",
+            "start": true,
+            "far": 0.35
+          },
+          {
+            "id": "c",
+            "circle": "O",
+            "r": 4,
+            "ink": "muted",
+            "w": 3
+          },
+          {
+            "id": "r",
+            "vector": [
+              "O",
+              "P"
+            ],
+            "ink": "accent",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "p",
+            "dot": "P",
+            "ink": "accent",
+            "r": 9,
+            "start": true
+          },
+          {
+            "id": "lp",
+            "label": "2-2\\sqrt3i",
+            "at": "P",
+            "dir": "s",
+            "size": "s",
+            "start": true,
+            "ink": "accent"
+          },
+          {
+            "id": "a",
+            "seg": [
+              "O",
+              "F"
+            ],
+            "ink": "blue",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "b",
+            "seg": [
+              "F",
+              "P"
+            ],
+            "ink": "warm",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "la",
+            "label": "2",
+            "at": "a",
+            "dir": "n",
+            "size": "s",
+            "start": true,
+            "ink": "blue"
+          },
+          {
+            "id": "lb",
+            "label": "-2\\sqrt3",
+            "at": "b",
+            "dir": "e",
+            "size": "s",
+            "start": true,
+            "ink": "warm"
+          },
+          {
+            "id": "lr",
+            "label": "4",
+            "at": "RL",
+            "dir": "w",
+            "size": "s",
+            "ink": "accent",
+            "far": 0.5
+          },
+          {
+            "id": "ref",
+            "angle": [
+              "R",
+              "O",
+              "P"
+            ],
+            "r": 110,
+            "ink": "violet",
+            "fill": "violet-fill"
+          },
+          {
+            "id": "refLabel",
+            "label": "\\pi/3",
+            "at": "O",
+            "dir": "se",
+            "size": "s",
+            "ink": "violet",
+            "far": 1.5
+          },
+          {
+            "id": "sw",
+            "sweep": "G",
+            "r": 140,
+            "ink": "gold",
+            "fill": "gold-fill"
+          },
+          {
+            "id": "turning",
+            "vector": [
+              "O",
+              "G"
+            ],
+            "ink": "gold",
+            "w": 5
+          },
+          {
+            "id": "dg",
+            "dot": "G",
+            "ink": "gold",
+            "r": 9
+          },
+          {
+            "id": "theta",
+            "label": "5\\pi/3",
+            "at": "O",
+            "dir": "nw",
+            "size": "s",
+            "ink": "gold",
+            "far": 1.6
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Write two minus two root three i in polar form.",
+          "pause": 1.4,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Write $2-2\\sqrt3i$ in polar form. Use $r>0,\\ 0\\le\\theta<2\\pi$.",
+              "choices": [
+                "$4(\\cos\\frac{2\\pi}{3}+i\\sin\\frac{2\\pi}{3})$",
+                "$4(\\cos\\frac{\\pi}{3}+i\\sin\\frac{\\pi}{3})$",
+                "$4(\\cos\\frac{4\\pi}{3}+i\\sin\\frac{4\\pi}{3})$",
+                "$4(\\cos\\frac{5\\pi}{3}+i\\sin\\frac{5\\pi}{3})$"
+              ],
+              "id": "toPolarP",
+              "at": "Write"
+            },
+            {
+              "do": "highlight",
+              "target": "p",
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "say": "Use positive radius, and an angle from zero up to, but not including, two pi.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "text",
+              "at": "positive",
+              "text": "$r>0$, $0\\le\\theta<2\\pi$.",
+              "id": "revGiven"
+            },
+            {
+              "do": "highlight",
+              "at": "angle",
+              "target": "r"
+            }
+          ]
+        },
+        {
+          "say": "Reread the signs: right and down. That is quadrant four.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "text",
+              "text": "Quadrant IV: $a>0$, $b<0$.",
+              "id": "reverseSigns",
+              "at": "Reread"
+            },
+            {
+              "do": "highlight",
+              "target": "a",
+              "at": "right"
+            },
+            {
+              "do": "highlight",
+              "target": "b",
+              "at": "down"
+            }
+          ]
+        },
+        {
+          "say": "First, the radius. Square both parts: four plus twelve is sixteen.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "write",
+              "tex": "r^2=2^2+(-2\\sqrt3)^2",
+              "id": "revR2",
+              "fresh": true,
+              "at": "radius"
+            },
+            {
+              "do": "write",
+              "tex": "=4+12=16",
+              "id": "rev16",
+              "at": "four"
+            }
+          ]
+        },
+        {
+          "say": "The radius is four. Both forms must reach this same circle.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "write",
+              "tex": "r=\\sqrt{16}=4",
+              "id": "revR",
+              "fresh": true,
+              "at": "radius"
+            },
+            {
+              "do": "show",
+              "target": [
+                "c",
+                "lr"
+              ],
+              "at": "four"
+            }
+          ]
+        },
+        {
+          "say": "Divide each component by four. Cosine is two over four: one half.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "write",
+              "at": "Cosine",
+              "tex": "\\cos\\theta=\\frac24=\\frac12",
+              "id": "revCos",
+              "fresh": true
+            },
+            {
+              "do": "highlight",
+              "at": "two",
+              "target": "a"
+            }
+          ]
+        },
+        {
+          "say": "Sine is negative two root three over four: negative root three over two.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "write",
+              "at": "Sine",
+              "tex": "\\sin\\theta=\\frac{-2\\sqrt3}{4}",
+              "id": "revSin",
+              "fresh": true
+            },
+            {
+              "do": "write",
+              "at": "negative",
+              "nth": 2,
+              "tex": "=-\\frac{\\sqrt3}{2}",
+              "id": "revSinSimple"
+            },
+            {
+              "do": "highlight",
+              "at": "four",
+              "target": "b"
+            }
+          ]
+        },
+        {
+          "say": "Their sizes give a reference angle of pi over three, or sixty degrees.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "ref",
+                "refLabel"
+              ],
+              "at": "reference"
+            },
+            {
+              "do": "write",
+              "tex": "\\alpha=\\frac\\pi3=60^\\circ",
+              "id": "revRef",
+              "fresh": true,
+              "at": "pi"
+            }
+          ]
+        },
+        {
+          "say": "But pi over three points up. We need down. The reference angle alone is not the answer.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "watch",
+              "text": "Choose the quadrant first. Then use the reference angle.",
+              "id": "revWarning",
+              "at": "But"
+            },
+            {
+              "do": "highlight",
+              "target": "b",
+              "at": "down"
+            }
+          ]
+        },
+        {
+          "say": "A full turn is two pi. Stop pi over three short of that full turn.",
+          "pause": 1.1,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "sw",
+                "turning",
+                "dg"
+              ],
+              "at": "full"
+            },
+            {
+              "do": "glide",
+              "point": "G",
+              "deg": 300,
+              "dur": 3,
+              "at": "Stop"
+            },
+            {
+              "do": "write",
+              "tex": "\\theta=2\\pi-\\frac\\pi3",
+              "id": "revAngle1",
+              "fresh": true,
+              "at": "Stop"
+            }
+          ]
+        },
+        {
+          "say": "That gives five pi over three, in the requested interval.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "turning",
+                "dg"
+              ],
+              "at": "That"
+            },
+            {
+              "do": "show",
+              "target": "theta",
+              "at": "five"
+            },
+            {
+              "do": "write",
+              "tex": "\\theta=\\frac{5\\pi}{3}",
+              "id": "revAngle2",
+              "fresh": true,
+              "at": "five"
+            }
+          ]
+        },
+        {
+          "say": "A clockwise angle of negative pi over three reaches the same point, but falls outside that interval.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "watch",
+              "text": "$-\\pi/3$ points correctly, but $0\\le\\theta<2\\pi$ requires $5\\pi/3$.",
+              "id": "revRange",
+              "at": "clockwise"
+            },
+            {
+              "do": "highlight",
+              "target": "ref",
+              "at": "same"
+            }
+          ]
+        },
+        {
+          "say": "Use radius four and angle five pi over three in both places.",
+          "pause": 1.2,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "4\\bigl(\\cos\\tfrac{5\\pi}{3}+i\\sin\\tfrac{5\\pi}{3}\\bigr)",
+              "id": "revAnswer",
+              "at": "Use"
+            }
+          ]
+        },
+        {
+          "say": "Check by converting back: four times one half is two; four times negative root three over two is negative two root three.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\begin{aligned}4\\cos\\theta&=2\\\\4\\sin\\theta&=-2\\sqrt3\\end{aligned}",
+              "id": "revCheck",
+              "fresh": true,
+              "at": "Check"
+            },
+            {
+              "do": "highlight",
+              "target": "a",
+              "at": "two"
+            },
+            {
+              "do": "highlight",
+              "target": "b",
+              "at": "negative"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -5.9,
+          -4.7,
+          6.5,
+          5.4
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "XR": [
+            5.8,
+            -0.15
+          ],
+          "YI": [
+            0.1,
+            4.6000000000000005
+          ],
+          "P": {
+            "on": "c",
+            "deg": 0
+          },
+          "E": [
+            3,
+            0
+          ],
+          "N": [
+            0,
+            3
+          ],
+          "W": [
+            -3,
+            0
+          ],
+          "D": [
+            0,
+            -3
+          ]
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 100,
+            "every": 100,
+            "xrange": [
+              -5.550000000000001,
+              6.15
+            ],
+            "yrange": [
+              -4.3500000000000005,
+              5.050000000000001
+            ],
+            "start": true
+          },
+          {
+            "id": "real",
+            "label": "\\text{Re}",
+            "at": "XR",
+            "dir": "s",
+            "size": "s",
+            "start": true,
+            "ink": "blue"
+          },
+          {
+            "id": "imag",
+            "label": "\\text{Im}",
+            "at": "YI",
+            "dir": "e",
+            "size": "s",
+            "start": true,
+            "ink": "warm"
+          },
+          {
+            "id": "zero",
+            "label": "0",
+            "at": "O",
+            "dir": "sw",
+            "size": "s",
+            "start": true,
+            "far": 0.35
+          },
+          {
+            "id": "c",
+            "circle": "O",
+            "r": 3,
+            "ink": "muted",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "r",
+            "vector": [
+              "O",
+              "P"
+            ],
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "p",
+            "dot": "P",
+            "ink": "accent",
+            "r": 9,
+            "start": true
+          },
+          {
+            "id": "east",
+            "label": "r\\quad(0)",
+            "at": "E",
+            "dir": "ne",
+            "size": "s",
+            "ink": "accent",
+            "far": 0.6
+          },
+          {
+            "id": "north",
+            "label": "ri\\quad(\\pi/2)",
+            "at": "N",
+            "dir": "nw",
+            "size": "s",
+            "ink": "accent",
+            "far": 0.6
+          },
+          {
+            "id": "west",
+            "label": "-r\\quad(\\pi)",
+            "at": "W",
+            "dir": "nw",
+            "size": "s",
+            "ink": "accent",
+            "far": 0.6
+          },
+          {
+            "id": "south",
+            "label": "-ri\\quad(3\\pi/2)",
+            "at": "D",
+            "dir": "se",
+            "size": "s",
+            "ink": "accent",
+            "far": 0.6
+          },
+          {
+            "id": "origin",
+            "dot": "O",
+            "ink": "gold",
+            "r": 9
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Points on the axes work too. A real number has imaginary part zero.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Axis points: number, then angle in parentheses.",
+              "at": "Points"
+            },
+            {
+              "do": "show",
+              "target": "east",
+              "at": "real"
+            },
+            {
+              "do": "write",
+              "tex": "r+0i=r",
+              "fresh": true,
+              "at": "zero"
+            }
+          ]
+        },
+        {
+          "say": "A purely imaginary number has real part zero. Its arrow is vertical.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "glide",
+              "point": "P",
+              "deg": 90,
+              "dur": 1.6,
+              "at": "purely"
+            },
+            {
+              "do": "show",
+              "target": "north",
+              "at": "vertical"
+            },
+            {
+              "do": "write",
+              "tex": "0+ri=ri",
+              "fresh": true,
+              "at": "zero"
+            }
+          ]
+        },
+        {
+          "say": "The negative real axis is angle pi. Straight down is three pi over two.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "glide",
+              "point": "P",
+              "deg": 180,
+              "dur": 1.3,
+              "at": "negative"
+            },
+            {
+              "do": "show",
+              "target": "west",
+              "at": "pi"
+            },
+            {
+              "do": "glide",
+              "point": "P",
+              "deg": 270,
+              "dur": 1.3,
+              "at": "Straight"
+            },
+            {
+              "do": "show",
+              "target": "south",
+              "at": "down"
+            },
+            {
+              "do": "text",
+              "text": "Axis angles: $0,\\ \\pi/2,\\ \\pi,\\ 3\\pi/2$.",
+              "at": "Straight"
+            }
+          ]
+        },
+        {
+          "say": "At zero itself, the modulus is zero. There is no direction, so its argument is undefined.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "r",
+                "p",
+                "east",
+                "north",
+                "west",
+                "south"
+              ],
+              "at": "At"
+            },
+            {
+              "do": "show",
+              "target": "origin",
+              "at": "zero"
+            },
+            {
+              "do": "write",
+              "tex": "|0|=0",
+              "fresh": true,
+              "at": "modulus"
+            },
+            {
+              "do": "text",
+              "text": "Zero has no defined argument.",
+              "at": "direction"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Read what is requested. The picture tells you which quantities matter.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "overview",
+              "of": "toPolarP",
+              "at": "Read"
+            },
+            {
+              "do": "recap",
+              "at": "Read",
+              "text": "Read the requested form and angle interval.",
+              "marks": [
+                "toPolarP"
+              ]
+            }
+          ]
+        },
+        {
+          "say": "Components locate the point. Their signs fix its quadrant.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "recap",
+              "text": "Components locate the point and fix its quadrant.",
+              "marks": [
+                "reverseSigns"
+              ],
+              "at": "Components"
+            }
+          ]
+        },
+        {
+          "say": "Distance comes from the right triangle. Direction comes from cosine and sine together.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "recap",
+              "text": "Find the length, then match both signed components.",
+              "marks": [
+                "revR",
+                "revCos",
+                "revSin",
+                "revSinSimple"
+              ],
+              "at": "Distance"
+            }
+          ]
+        },
+        {
+          "say": "Use the requested angle interval. Convert back to check.",
+          "pause": 1.5,
+          "do": [
+            {
+              "do": "recap",
+              "text": "Use the requested angle interval. Convert back to check.",
+              "marks": [
+                "revAngle2",
+                "revAnswer",
+                "revCheck"
+              ],
+              "at": "Use"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

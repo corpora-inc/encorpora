@@ -1,0 +1,161 @@
+{
+  "id": "make-ten-remainder",
+  "title": "Split an addend to make ten",
+  "seed": "film-0",
+  "shots": [
+    {
+      "figure": {
+        "view": [-1.4, -2, 15, 12],
+        "points": { "TA": [0, 10], "TB": [0, 4], "NA": [12.6, 8], "NB": [12.6, 2] },
+        "parts": [
+          { "id": "fa", "grid": [5, 2], "at": "TA", "size": [2.2, 2], "start": true },
+          { "id": "fb", "grid": [5, 2], "at": "TB", "size": [2.2, 2], "start": true },
+          { "id": "a", "counters": "fa", "n": 8, "ink": "accent" },
+          { "id": "b", "counters": "fb", "n": 5, "shape": "square", "ink": "warm" },
+          { "id": "la", "label": "@n", "at": "NA", "of": "fa", "dir": "c", "size": "xl", "ink": "accent" },
+          { "id": "lb", "label": "@n", "at": "NB", "of": "fb", "dir": "c", "size": "xl", "ink": "warm" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Eight plus five.",
+          "do": [
+            { "do": "show", "target": ["a", "la"], "at": "Eight" },
+            { "do": "write", "tex": "\\ca{8}+\\cw{5}", "fresh": true, "at": "Eight" },
+            { "do": "show", "target": ["b", "lb"], "at": "five" }
+          ]
+        },
+        {
+          "say": "Each frame is a ten-frame. It holds ten, in two rows of five.",
+          "do": [
+            { "do": "term", "word": "ten-frame", "meaning": "A frame of $10$ boxes, in $2$ rows of $5$. When it is full, it shows $10$.", "at": "frame" },
+            { "do": "highlight", "target": ["fa", "fb"], "at": "holds" }
+          ]
+        },
+        {
+          "say": "Ten is easy to add to, so first fill the top frame.",
+          "do": [ { "do": "highlight", "target": "fa", "at": "fill" } ]
+        },
+        {
+          "say": "Eight needs two more to make ten.",
+          "do": [
+            { "do": "highlight", "target": "la", "at": "Eight" },
+            { "do": "write", "tex": "\\ca{8}+\\cw{2}=10", "fresh": true, "at": "needs", "id": "n1" }
+          ]
+        },
+        {
+          "say": "Move two from the five: one, two.",
+          "pause": 0.3,
+          "do": [
+            { "do": "move", "points": { "b4": { "cell": ["fa", 9] } }, "at": "one", "dur": 0.9 },
+            { "do": "move", "points": { "b5": { "cell": ["fa", 10] } }, "at": "two", "nth": 2, "dur": 0.9 }
+          ]
+        },
+        {
+          "say": "Now the top frame is a full ten, and three are left below.",
+          "do": [
+            { "do": "highlight", "target": "la", "at": "ten" },
+            { "do": "highlight", "target": "lb", "at": "three" },
+            { "do": "write", "tex": "\\cw{5}-\\cw{2}=\\cw{3}", "fresh": true, "at": "three", "id": "m1" }
+          ]
+        },
+        {
+          "say": "Ten and three make thirteen. So eight plus five is thirteen.",
+          "do": [ { "do": "write", "tex": "\\ca{8}+\\cw{5}=10+\\cw{3}=13", "fresh": true, "at": "Ten", "id": "s1" } ]
+        },
+        {
+          "say": "Moving counters from one frame to the other never changes the total.",
+          "pause": 0.4,
+          "do": [ { "do": "highlight", "target": ["a", "b"], "at": "Moving" } ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-1.4, -2, 15, 12],
+        "points": { "TA": [0, 10], "TB": [0, 4], "NA": [12.6, 8], "NB": [12.6, 2] },
+        "parts": [
+          { "id": "fa", "grid": [5, 2], "at": "TA", "size": [2.2, 2], "start": true },
+          { "id": "fb", "grid": [5, 2], "at": "TB", "size": [2.2, 2], "start": true },
+          { "id": "a", "counters": "fa", "n": 7, "ink": "accent", "start": true },
+          { "id": "b", "counters": "fb", "n": 9, "shape": "square", "ink": "warm", "start": true },
+          { "id": "la", "label": "@n", "at": "NA", "of": "fa", "dir": "c", "size": "xl", "ink": "accent", "start": true },
+          { "id": "lb", "label": "@n", "at": "NB", "of": "fb", "dir": "c", "size": "xl", "ink": "warm", "start": true }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Now the problem. To add seven plus nine, move three from nine to make ten. How much of nine is left?",
+          "pause": 0.5,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "To add $7 + 9$, move $3$ from $9$ to make ten. How much of $9$ is left?", "at": "problem", "id": "p2" },
+            { "do": "highlight", "target": "la", "at": "seven" },
+            { "do": "highlight", "target": "lb", "at": "nine" }
+          ]
+        },
+        {
+          "say": "Seven needs three more to make ten.",
+          "do": [
+            { "do": "highlight", "target": "la", "at": "Seven" },
+            { "do": "write", "tex": "\\ca{7}+\\cw{3}=10", "fresh": true, "at": "needs", "id": "n2" }
+          ]
+        },
+        {
+          "say": "So move three from the nine: one, two, three.",
+          "pause": 0.3,
+          "do": [
+            { "do": "move", "points": { "b7": { "cell": ["fa", 8] } }, "at": "one", "dur": 0.9 },
+            { "do": "move", "points": { "b8": { "cell": ["fa", 9] } }, "at": "two", "dur": 0.9 },
+            { "do": "move", "points": { "b9": { "cell": ["fa", 10] } }, "at": "three", "nth": 2, "dur": 0.9 }
+          ]
+        },
+        {
+          "say": "The top frame is a full ten. Nine take away three leaves six.",
+          "do": [
+            { "do": "highlight", "target": "la", "at": "ten" },
+            { "do": "write", "tex": "\\cw{9}-\\cw{3}=\\cw{6}", "fresh": true, "at": "Nine", "id": "m2" },
+            { "do": "highlight", "target": "lb", "at": "six" }
+          ]
+        },
+        {
+          "say": "So seven plus nine is ten plus six, which is sixteen.",
+          "do": [ { "do": "write", "tex": "\\ca{7}+\\cw{9}=10+\\cw{6}=16", "fresh": true, "at": "seven", "id": "s2" } ]
+        },
+        {
+          "say": "But the question asks how much of nine is left. That is six.",
+          "do": [
+            { "do": "highlight", "target": ["b1", "b2", "b3", "b4", "b5", "b6"], "at": "left" },
+            { "do": "answer", "tex": "\\cw{6}", "at": "six", "id": "ans2" }
+          ]
+        },
+        {
+          "say": "Answer with the part that is left, not the total.",
+          "pause": 0.5,
+          "do": [ { "do": "watch", "text": "Answer with the part left, $6$, not the total, $16$.", "at": "Answer" } ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Every problem like this goes the same way.",
+          "do": [ { "do": "overview", "at": "Every" } ]
+        },
+        {
+          "say": "One: find how many the first number needs to make ten.",
+          "do": [ { "do": "recap", "text": "Find what the first number needs to make $10$.", "marks": ["n2"], "at": "One" } ]
+        },
+        {
+          "say": "Two: take that many from the second number.",
+          "do": [ { "do": "recap", "text": "Take that many from the second number.", "marks": ["m2"], "at": "Two" } ]
+        },
+        {
+          "say": "Three: what is left of the second number is the answer.",
+          "pause": 0.8,
+          "do": [ { "do": "recap", "text": "What is left of the second number is the answer.", "marks": ["m2", "ans2"], "at": "Three" } ]
+        }
+      ]
+    }
+  ]
+}

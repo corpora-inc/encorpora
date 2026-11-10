@@ -1,0 +1,234 @@
+{
+  "id": "linked-division-equations",
+  "title": "Choose the linked equations for a two-step sharing story",
+  "seed": "film",
+  "shots": [
+    {
+      "figure": {
+        "view": [-0.8, -3.8, 12.6, 4.8],
+        "points": {
+          "A0": [0, 0], "A1": [1.9, 0], "A2": [1.9, 2.3], "A3": [0, 2.3],
+          "B0": [1.9, 0], "B1": [3.8, 0], "B2": [3.8, 2.3], "B3": [1.9, 2.3],
+          "C0": [3.8, 0], "C1": [5.7, 0], "C2": [5.7, 2.3], "C3": [3.8, 2.3],
+          "D0": [5.7, 0], "D1": [7.6, 0], "D2": [7.6, 2.3], "D3": [5.7, 2.3],
+          "E0": [7.6, 0], "E1": [9.5, 0], "E2": [9.5, 2.3], "E3": [7.6, 2.3],
+          "F0": [9.5, 0], "F1": [11.4, 0], "F2": [11.4, 2.3], "F3": [9.5, 2.3],
+          "AC": [0.95, 1.15], "BC": [2.85, 1.15], "CC": [4.75, 1.15],
+          "DC": [6.65, 1.15], "EC": [8.55, 1.15], "FC": [10.45, 1.15],
+          "T24": [3.8, 3.5]
+        },
+        "parts": [
+          { "id": "p1", "poly": ["A0", "A1", "A2", "A3"], "fill": "accent-fill", "ink": "accent", "w": 4, "group": "keep" },
+          { "id": "p2", "poly": ["B0", "B1", "B2", "B3"], "fill": "accent-fill", "ink": "accent", "w": 4, "group": "keep" },
+          { "id": "p3", "poly": ["C0", "C1", "C2", "C3"], "fill": "accent-fill", "ink": "accent", "w": 4, "group": "keep" },
+          { "id": "p4", "poly": ["D0", "D1", "D2", "D3"], "fill": "accent-fill", "ink": "accent", "w": 4, "group": "keep" },
+          { "id": "p5", "poly": ["E0", "E1", "E2", "E3"], "fill": "warm-fill", "ink": "warm", "w": 4, "group": "rest" },
+          { "id": "p6", "poly": ["F0", "F1", "F2", "F3"], "fill": "warm-fill", "ink": "warm", "w": 4, "group": "rest" },
+          { "id": "n1", "label": "6", "at": "AC", "dir": "c", "size": "l", "ink": "accent", "halo": true, "group": "sixes" },
+          { "id": "n2", "label": "6", "at": "BC", "dir": "c", "size": "l", "ink": "accent", "halo": true, "group": "sixes" },
+          { "id": "n3", "label": "6", "at": "CC", "dir": "c", "size": "l", "ink": "accent", "halo": true, "group": "sixes" },
+          { "id": "n4", "label": "6", "at": "DC", "dir": "c", "size": "l", "ink": "accent", "halo": true, "group": "sixes" },
+          { "id": "n5", "label": "6", "at": "EC", "dir": "c", "size": "l", "ink": "warm", "halo": true, "group": "rest" },
+          { "id": "n6", "label": "6", "at": "FC", "dir": "c", "size": "l", "ink": "warm", "halo": true, "group": "rest" },
+          { "id": "d36", "dim": ["A3", "F2"], "side": "n", "tex": "36", "ink": "accent" },
+          { "id": "l24", "label": "24", "at": "T24", "dir": "c", "size": "l", "ink": "gold" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Thirty-six stickers are shared equally among six pages. How many are in four of the pages?",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "problem",
+              "text": "36 stickers are shared equally among 6 pages. How many stickers are in 4 of the pages?",
+              "at": "Thirty-six",
+              "id": "p1"
+            },
+            { "do": "show", "target": ["p1", "p2", "p3", "p4", "p5", "p6", "d36"], "at": "shared" }
+          ]
+        },
+        {
+          "say": "Sharing equally divides. Thirty-six divided by six is six stickers on a page.",
+          "do": [
+            { "do": "show", "target": "sixes", "at": "divides" },
+            { "do": "show", "target": ["n5", "n6"], "at": "six" },
+            { "do": "text", "text": "Sharing equally divides.", "at": "Sharing", "id": "phrase" },
+            { "do": "write", "tex": "\\ca{36}\\div\\ca{6}=6", "fresh": true, "at": "divided", "id": "d1" }
+          ]
+        },
+        {
+          "say": "Let v be the stickers on one page. Thirty-six divided by six equals v.",
+          "do": [
+            { "do": "write", "tex": "\\ca{36}\\div\\ca{6}=v", "fresh": true, "at": "equals", "id": "d2" }
+          ]
+        },
+        {
+          "say": "Four pages is four groups of six. The other two pages are not asked for.",
+          "do": [
+            { "do": "slide", "target": "rest", "by": [0, -3.2], "at": "other" },
+            { "do": "hide", "target": "d36", "at": "other" },
+            { "do": "highlight", "target": "keep", "at": "Four" }
+          ]
+        },
+        {
+          "say": "The answer to step one is used in step two. Six times four is twenty-four.",
+          "do": [
+            { "do": "show", "target": "l24", "at": "twenty-four" },
+            { "do": "text", "text": "The answer to step one is used in step two.", "at": "answer", "id": "step" },
+            { "do": "write", "tex": "6\\times 4=24", "fresh": true, "at": "times", "id": "d3" }
+          ]
+        },
+        {
+          "say": "Linked equations: v times four equals f. Parentheses do both steps, thirty-six divided by six, times four.",
+          "do": [
+            { "do": "term", "word": "linked equations", "meaning": "Two equations. The answer of the first is used in the second. Parentheses do both steps at once.", "at": "Linked" },
+            { "do": "write", "tex": "v\\times 4=f", "fresh": true, "at": "times", "id": "d4" },
+            { "do": "write", "tex": "(\\ca{36}\\div\\ca{6})\\times 4=f", "fresh": true, "at": "Parentheses", "id": "d5" }
+          ]
+        },
+        {
+          "say": "f is twenty-four stickers.",
+          "do": [
+            { "do": "write", "tex": "f=24", "at": "twenty-four", "id": "d6" },
+            { "do": "highlight", "target": "l24", "at": "twenty-four" }
+          ]
+        },
+        {
+          "say": "Dividing by four first puts four in the wrong step. That makes fifty-four, more stickers than we have.",
+          "do": [
+            { "do": "write", "tex": "\\cancel{(\\ca{36}\\div 4)\\times 6=f}", "fresh": true, "at": "wrong", "id": "dbad" },
+            { "do": "watch", "text": "Put each number in the step where the story uses it. Sharing divides. It does not multiply the total by the number of pages.", "at": "step" }
+          ]
+        },
+        {
+          "say": "The equation is thirty-six divided by six, times four, equals f.",
+          "pause": 0.3,
+          "do": [
+            { "do": "answer", "tex": "(36\\div 6)\\times 4=f", "at": "thirty-six", "id": "ans1" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-0.7, -1.6, 13.4, 5],
+        "points": {
+          "U0": [0, 0.2], "U1": [12, 0.2], "U2": [12, 2.7], "U3": [0, 2.7],
+          "L0": [0, 0.2], "L1": [6, 0.2], "L2": [6, 2.7], "L3": [0, 2.7],
+          "R0": [6, 0.2], "R1": [12, 0.2], "R2": [12, 2.7], "R3": [6, 2.7],
+          "LC": [3, 1.45], "RC": [9, 1.45],
+          "G": [0, 2.7],
+          "c1": { "cell": ["gd", 1] }, "c2": { "cell": ["gd", 2] }, "c3": { "cell": ["gd", 3] },
+          "c4": { "cell": ["gd", 4] }, "c5": { "cell": ["gd", 5] }, "c6": { "cell": ["gd", 6] },
+          "TL": [3, 3.7], "TR": [9, 3.7]
+        },
+        "parts": [
+          { "id": "all", "poly": ["U0", "U1", "U2", "U3"], "fill": "accent-fill", "ink": "accent", "w": 4 },
+          { "id": "d72", "dim": ["U3", "U2"], "side": "n", "tex": "72" },
+          { "id": "halfL", "poly": ["L0", "L1", "L2", "L3"], "fill": "gold-fill", "ink": "gold", "w": 4 },
+          { "id": "halfR", "poly": ["R0", "R1", "R2", "R3"], "fill": "warm-fill", "ink": "warm", "w": 4 },
+          { "id": "l36", "label": "36", "at": "LC", "dir": "c", "size": "l", "ink": "gold", "halo": true },
+          { "id": "r36", "label": "36", "at": "RC", "dir": "c", "size": "l", "ink": "warm", "halo": true },
+          { "id": "gd", "grid": [6, 1], "at": "G", "size": [1, 2.5], "fill": "none", "ink": "gold", "w": 4 },
+          { "id": "s1", "label": "6", "at": "c1", "dir": "c", "size": "m", "ink": "gold", "halo": true, "group": "sixes" },
+          { "id": "s2", "label": "6", "at": "c2", "dir": "c", "size": "m", "ink": "gold", "halo": true, "group": "sixes" },
+          { "id": "s3", "label": "6", "at": "c3", "dir": "c", "size": "m", "ink": "gold", "halo": true, "group": "sixes" },
+          { "id": "s4", "label": "6", "at": "c4", "dir": "c", "size": "m", "ink": "gold", "halo": true, "group": "sixes" },
+          { "id": "s5", "label": "6", "at": "c5", "dir": "c", "size": "m", "ink": "gold", "halo": true, "group": "sixes" },
+          { "id": "s6", "label": "6", "at": "c6", "dir": "c", "size": "m", "ink": "gold", "halo": true, "group": "sixes" },
+          { "id": "lt", "label": "t=6", "at": "TL", "dir": "c", "size": "l", "ink": "gold" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "A club of seventy-two members is split into two equal groups.",
+          "do": [
+            { "do": "clear" },
+            {
+              "do": "problem",
+              "text": "A club of 72 members is split into two equal groups. Each group is shared equally among 6 tables. How many members at each table?",
+              "at": "club",
+              "id": "p2"
+            },
+            { "do": "show", "target": ["all", "d72"], "at": "seventy-two" }
+          ]
+        },
+        {
+          "say": "Each group is then shared equally among six tables. How many members at each table?",
+          "pause": 0.25,
+          "do": [
+            { "do": "hide", "target": "all", "at": "shared" },
+            { "do": "show", "target": ["halfL", "halfR", "l36", "r36"], "at": "shared" },
+            { "do": "hide", "target": "d72", "at": "shared" }
+          ]
+        },
+        {
+          "say": "Split into two equal groups means divide by two, not subtract two.",
+          "do": [
+            { "do": "highlight", "target": ["halfL", "halfR"], "at": "two" },
+            { "do": "write", "tex": "\\ca{72}\\div 2=36", "fresh": true, "at": "divide", "id": "k1" },
+            { "do": "watch", "text": "Splitting into two equal groups divides by $2$. Subtracting $2$ does not make a half.", "at": "not" }
+          ]
+        },
+        {
+          "say": "Share one group among the six tables. Thirty-six divided by six is six.",
+          "do": [
+            { "do": "draw", "target": "gd", "at": "Share" },
+            { "do": "hide", "target": "l36", "at": "Share" },
+            { "do": "show", "target": "sixes", "at": "six" },
+            { "do": "write", "tex": "36\\div 6=6", "fresh": true, "at": "divided", "id": "k2" },
+            { "do": "highlight", "target": "halfR", "at": "one" }
+          ]
+        },
+        {
+          "say": "Parentheses first. Seventy-two divided by two, divided by six, equals t.",
+          "do": [
+            { "do": "write", "tex": "(\\ca{72}\\div 2)\\div 6=t", "fresh": true, "at": "divided", "id": "k3" },
+            { "do": "show", "target": "lt", "at": "t" }
+          ]
+        },
+        {
+          "say": "Times six would make six copies of the group, not a share of it.",
+          "do": [
+            { "do": "write", "tex": "\\cancel{(\\ca{72}\\div 2)\\times 6=t}", "fresh": true, "at": "Times", "id": "kbad" },
+            { "do": "highlight", "target": "sixes", "at": "share" }
+          ]
+        },
+        {
+          "say": "Six members sit at each table.",
+          "pause": 0.3,
+          "do": [
+            { "do": "write", "tex": "t=6", "at": "Six", "id": "k4" },
+            { "do": "answer", "tex": "(72\\div 2)\\div 6=t", "at": "table", "id": "ans2" }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Two-step sharing always uses the first answer in the second step.",
+          "do": [{ "do": "overview", "of": "d1", "at": "Two-step" }]
+        },
+        {
+          "say": "One: sharing equally divides.",
+          "do": [{ "do": "recap", "text": "Sharing equally divides.", "marks": ["phrase", "d1", "d2"], "at": "One" }]
+        },
+        {
+          "say": "Two: the answer to step one is used in step two.",
+          "do": [{ "do": "recap", "text": "The answer to step one is used in step two.", "marks": ["step", "d3", "d4"], "at": "Two" }]
+        },
+        {
+          "say": "Three: several of those groups, multiply. Sharing a group again, divide.",
+          "do": [{ "do": "recap", "text": "Several of those groups: multiply. Sharing a group again: divide.", "marks": ["d3", "d5"], "at": "Three" }]
+        },
+        {
+          "say": "Four: parentheses mark the first step. Each number stays in its own step.",
+          "pause": 0.4,
+          "do": [{ "do": "recap", "text": "Parentheses mark the first step. Each number stays in its own step.", "marks": ["d5", "dbad", "ans1"], "at": "Four" }]
+        }
+      ]
+    }
+  ]
+}

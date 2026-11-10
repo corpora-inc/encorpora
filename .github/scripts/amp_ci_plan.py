@@ -167,6 +167,9 @@ def plan(paths, root=ROOT, full=False, quick=False):
             continue
         if not path.startswith('amp/'):
             continue
+        # The standalone film kit has its own unit job behind ci-gate.
+        if path.startswith('amp/film/'):
+            continue
         if path.startswith('amp/docs/') or path in ('amp/README.md', 'amp/AGENTS.md'):
             reasons.append('Documentation only')
             continue

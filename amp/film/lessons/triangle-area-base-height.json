@@ -1,0 +1,295 @@
+{
+  "id": "triangle-area-base-height",
+  "title": "Triangle area",
+  "seed": "film",
+  "shots": [
+    {
+      "figure": {
+        "view": [-2.5, -2.4, 9.7, 11.2],
+        "points": {
+          "A": [0, 0],
+          "B": [7, 0],
+          "C": [0, 9],
+          "D": [7, 9],
+          "M": { "mid": ["B", "C"] }
+        },
+        "parts": [
+          { "id": "tri", "poly": ["A", "B", "C"], "fill": "gold-fill", "solid": true, "start": true },
+          { "id": "twin", "poly": ["A", "B", "C"], "fill": "accent-fill", "solid": true, "group": "twin" },
+          { "id": "box", "poly": ["A", "B", "D", "C"], "fill": "none", "ink": "ink", "w": 6 },
+          { "id": "base", "seg": ["A", "B"], "ink": "accent", "w": 8 },
+          { "id": "ht", "seg": ["A", "C"], "ink": "warm", "w": 8 },
+          { "id": "slant", "seg": ["B", "C"], "ink": "muted", "w": 6 },
+          { "id": "top", "seg": ["C", "D"], "ink": "accent", "w": 8, "arrows": 1 },
+          { "id": "side", "seg": ["B", "D"], "ink": "warm", "w": 8 },
+          { "id": "baseMark", "seg": ["A", "B"], "ink": "accent", "w": 8, "arrows": 1 },
+          { "id": "ang", "angle": ["B", "A", "C"], "right": true, "fill": "none", "ink": "ink" },
+          { "id": "angB", "angle": ["A", "B", "D"], "right": true, "fill": "none", "ink": "warm" },
+          { "id": "l7", "label": "7", "at": "base", "dir": "s", "ink": "accent", "size": "l" },
+          { "id": "l9", "label": "9", "at": "ht", "dir": "w", "ink": "warm", "size": "l" },
+          { "id": "l7t", "label": "7", "at": "top", "dir": "n", "ink": "accent", "size": "l" },
+          { "id": "l9s", "label": "9", "at": "side", "dir": "e", "ink": "warm", "size": "l" },
+          { "id": "pin", "dot": "M", "ink": "ink", "r": 11 }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Area is the flat surface this triangle covers, in square feet.",
+          "do": [
+            { "do": "problem", "text": "The figure shows a triangle with lengths in feet. What is the area of the triangle, in square feet?", "at": "Area", "id": "pRight" }
+          ]
+        },
+        {
+          "say": "The base is seven feet. It meets the upright side at a right angle.",
+          "do": [
+            { "do": "draw", "target": "base", "at": "base" },
+            { "do": "show", "target": "l7", "at": "seven" },
+            { "do": "show", "target": "ang", "at": "right" }
+          ]
+        },
+        {
+          "say": "Perpendicular means that square corner. The height is nine feet. A slanted side is not the height.",
+          "do": [
+            { "do": "highlight", "target": "ang", "at": "Perpendicular" },
+            { "do": "draw", "target": "ht", "at": "height" },
+            { "do": "show", "target": "l9", "at": "nine" },
+            { "do": "term", "word": "height", "meaning": "The distance from the base to the opposite corner, at a right angle to the base. A slanted side is not the height.", "at": "height" },
+            { "do": "draw", "target": "slant", "at": "slanted" }
+          ]
+        },
+        {
+          "say": "Pin the middle of the slanted side. Turn an identical copy halfway around that point.",
+          "pause": 0.65,
+          "do": [
+            { "do": "show", "target": "pin", "at": "middle" },
+            { "do": "highlight", "target": "slant", "at": "slanted" },
+            { "do": "show", "target": "twin", "at": "copy" },
+            { "do": "turn", "target": "twin", "about": "M", "deg": 180, "at": "Turn" }
+          ]
+        },
+        {
+          "say": "They lock into a rectangle with the same base and the same height.",
+          "do": [
+            { "do": "hide", "target": "pin", "at": "lock" },
+            { "do": "draw", "target": "box", "at": "lock" },
+            { "do": "show", "target": ["top", "l7t", "baseMark"], "at": "base" },
+            { "do": "show", "target": ["side", "l9s", "angB"], "at": "height" }
+          ]
+        },
+        {
+          "say": "b is seven and h is nine. Seven times nine is sixty-three.",
+          "do": [
+            { "do": "write", "tex": "b=\\ca{7},\\ h=\\cw{9}", "at": "b", "id": "bhRight" },
+            { "do": "write", "tex": "\\ca{7}\\times\\cw{9}=63", "note": "\\times", "at": "times", "id": "mRight" },
+            { "do": "highlight", "target": "box", "at": "sixty-three" }
+          ]
+        },
+        {
+          "say": "Divide sixty-three by two. The area is thirty-one point five square feet.",
+          "pause": 0.2,
+          "do": [
+            { "do": "highlight", "target": "tri", "at": "Divide" },
+            { "do": "write", "tex": "63\\div 2=\\cg{31.5}", "note": "\\div 2", "at": "Divide", "id": "dRight" },
+            { "do": "answer", "tex": "\\cg{31.5}\\ \\text{ft}^{2}", "at": "thirty-one", "id": "aRight" }
+          ]
+        },
+        {
+          "say": "The area is one half times b times h.",
+          "do": [
+            { "do": "write", "tex": "A=\\frac{1}{2}\\times\\ca{b}\\times\\cw{h}", "fresh": true, "at": "half", "id": "rule" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-11.6, -2.8, 14.2, 17.6],
+        "points": {
+          "A": [-8, 15],
+          "B": [0, 0],
+          "C": [12, 0],
+          "F": [-8, 0],
+          "P": [4, 15],
+          "HL": [-8, 3.2],
+          "M": { "mid": ["A", "C"] }
+        },
+        "parts": [
+          { "id": "tri", "poly": ["A", "B", "C"], "fill": "gold-fill", "solid": true, "start": true },
+          { "id": "twin", "poly": ["A", "B", "C"], "fill": "accent-fill", "solid": true, "group": "twin" },
+          { "id": "para", "poly": ["B", "C", "P", "A"], "fill": "none", "ink": "ink", "w": 6 },
+          { "id": "base", "seg": ["B", "C"], "ink": "accent", "w": 8 },
+          { "id": "guide", "seg": ["F", "B"], "ink": "muted", "w": 4, "dash": true },
+          { "id": "ht", "seg": ["A", "F"], "ink": "warm", "w": 7, "dash": true },
+          { "id": "s17", "seg": ["A", "B"], "ink": "muted", "w": 5 },
+          { "id": "s25", "seg": ["A", "C"], "ink": "muted", "w": 5 },
+          { "id": "top", "seg": ["A", "P"], "ink": "accent", "w": 8, "arrows": 1 },
+          { "id": "baseMark", "seg": ["B", "C"], "ink": "accent", "w": 8, "arrows": 1 },
+          { "id": "ang", "angle": ["A", "F", "B"], "right": true, "fill": "none", "ink": "warm" },
+          { "id": "l12", "label": "12", "at": "base", "dir": "s", "ink": "accent", "size": "l" },
+          { "id": "l15", "label": "15", "at": "HL", "dir": "w", "ink": "warm", "size": "l", "far": 1.15 },
+          { "id": "l17", "label": "17", "at": "s17", "dir": "w", "ink": "muted", "size": "m", "far": 1.35 },
+          { "id": "l25", "label": "25", "at": "s25", "dir": "n", "ink": "muted", "size": "m", "far": 1.35, "halo": true },
+          { "id": "l12t", "label": "12", "at": "top", "dir": "n", "ink": "accent", "size": "l" },
+          { "id": "pin", "dot": "M", "ink": "ink", "r": 11 }
+        ]
+      },
+      "beats": [
+        {
+          "say": "The base is twelve inches.",
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "The figure shows a triangle with lengths in inches. What is the area of the triangle, in square inches?", "at": "base", "id": "pOut" },
+            { "do": "draw", "target": "base", "at": "base" },
+            { "do": "show", "target": "l12", "at": "twelve" }
+          ]
+        },
+        {
+          "say": "The dashed height falls outside and meets the base line at a right angle: fifteen inches.",
+          "do": [
+            { "do": "draw", "target": "ht", "at": "dashed" },
+            { "do": "draw", "target": "guide", "at": "line" },
+            { "do": "show", "target": "ang", "at": "right" },
+            { "do": "show", "target": "l15", "at": "fifteen" }
+          ]
+        },
+        {
+          "say": "The slanted sides are twenty-five and seventeen inches. Neither is the height.",
+          "do": [
+            { "do": "draw", "target": ["s25", "s17"], "at": "slanted" },
+            { "do": "show", "target": "l25", "at": "twenty-five" },
+            { "do": "show", "target": "l17", "at": "seventeen" },
+            { "do": "highlight", "target": "ht", "at": "Neither" }
+          ]
+        },
+        {
+          "say": "Pin the middle of the long side. Turn an identical copy halfway around that point.",
+          "pause": 0.65,
+          "do": [
+            { "do": "show", "target": "pin", "at": "middle" },
+            { "do": "highlight", "target": "s25", "at": "long" },
+            { "do": "show", "target": "twin", "at": "copy" },
+            { "do": "turn", "target": "twin", "about": "M", "deg": 180, "at": "Turn" }
+          ]
+        },
+        {
+          "say": "They make a parallelogram: facing sides never meet. Same base and height.",
+          "do": [
+            { "do": "hide", "target": "pin", "at": "They" },
+            { "do": "draw", "target": "para", "at": "parallelogram" },
+            { "do": "show", "target": ["top", "l12t", "baseMark"], "at": "parallelogram" },
+            { "do": "highlight", "target": ["top", "base"], "at": "facing" },
+            { "do": "highlight", "target": "ht", "at": "height" }
+          ]
+        },
+        {
+          "say": "b is twelve and h is fifteen. Twelve times fifteen is one hundred eighty.",
+          "do": [
+            { "do": "write", "tex": "b=\\ca{12},\\ h=\\cw{15}", "at": "b", "id": "bhOut" },
+            { "do": "write", "tex": "\\ca{12}\\times\\cw{15}=180", "note": "\\times", "at": "times", "id": "mOut" }
+          ]
+        },
+        {
+          "say": "One hundred eighty divided by two is ninety square inches.",
+          "pause": 0.2,
+          "do": [
+            { "do": "highlight", "target": "tri", "at": "divided" },
+            { "do": "write", "tex": "180\\div 2=\\cg{90}", "note": "\\div 2", "at": "divided", "id": "dOut" },
+            { "do": "answer", "tex": "\\cg{90}\\ \\text{in}^{2}", "at": "ninety", "id": "aOut" }
+          ]
+        },
+        {
+          "say": "Use the height that meets the base at a right angle, never a slanted side.",
+          "pause": 0.35,
+          "do": [
+            { "do": "watch", "text": "Use the height that meets the base at a right angle, never a slanted side.", "at": "height", "id": "wOut" },
+            { "do": "highlight", "target": "l15", "at": "height" },
+            { "do": "highlight", "target": ["l25", "l17"], "at": "never" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-3.3, -2.6, 19.3, 17.4],
+        "points": {
+          "A": [8, 15],
+          "B": [0, 0],
+          "C": [16, 0],
+          "F": [8, 0],
+          "HL": [8, 4]
+        },
+        "parts": [
+          { "id": "tri", "poly": ["A", "B", "C"], "fill": "gold-fill", "solid": true, "start": true },
+          { "id": "base", "seg": ["B", "C"], "ink": "accent", "w": 8 },
+          { "id": "ht", "seg": ["A", "F"], "ink": "warm", "w": 7, "dash": true },
+          { "id": "sL", "seg": ["B", "A"], "ink": "muted", "w": 5 },
+          { "id": "sR", "seg": ["C", "A"], "ink": "muted", "w": 5 },
+          { "id": "ang", "angle": ["A", "F", "C"], "right": true, "fill": "none", "ink": "warm" },
+          { "id": "l16", "label": "16", "at": "base", "dir": "s", "ink": "accent", "size": "l" },
+          { "id": "l15", "label": "15", "at": "HL", "dir": "e", "ink": "warm", "size": "l", "halo": true, "far": 1.05 },
+          { "id": "lL", "label": "17", "at": "sL", "dir": "w", "ink": "muted", "size": "m", "far": 1.35 },
+          { "id": "lR", "label": "17", "at": "sR", "dir": "e", "ink": "muted", "size": "m", "far": 1.35 }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Inside, the base is sixteen feet and the height is fifteen. The sides of seventeen are not the height.",
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "The figure shows a triangle with lengths in feet. What is the area of the triangle, in square feet?", "at": "Inside", "id": "pIn" },
+            { "do": "draw", "target": "base", "at": "base" },
+            { "do": "show", "target": "l16", "at": "sixteen" },
+            { "do": "draw", "target": "ht", "at": "height" },
+            { "do": "show", "target": ["ang", "l15"], "at": "fifteen" },
+            { "do": "draw", "target": ["sL", "sR"], "at": "sides" },
+            { "do": "show", "target": ["lL", "lR"], "at": "seventeen" },
+            { "do": "highlight", "target": ["base", "ht"], "at": "not" }
+          ]
+        },
+        {
+          "say": "Sixteen times fifteen is two hundred forty. Half of that is one hundred twenty.",
+          "do": [
+            { "do": "write", "tex": "\\ca{16}\\times\\cw{15}=240", "note": "\\times", "fresh": true, "at": "times", "id": "mIn" },
+            { "do": "write", "tex": "240\\div 2=\\cg{120}", "note": "\\div 2", "at": "Half", "id": "dIn" }
+          ]
+        },
+        {
+          "say": "The area is one hundred twenty square feet.",
+          "pause": 0.2,
+          "do": [
+            { "do": "answer", "tex": "\\cg{120}\\ \\text{ft}^{2}", "at": "one", "id": "aIn" }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Same steps each time.",
+          "do": [
+            { "do": "overview", "of": "bhOut", "at": "Same" }
+          ]
+        },
+        {
+          "say": "One. Base and height meet at a right angle. Skip slanted sides.",
+          "do": [
+            { "do": "recap", "text": "Base and height meet at a right angle. Skip slanted sides.", "marks": ["bhOut", "wOut"], "at": "One" }
+          ]
+        },
+        {
+          "say": "Two. Multiply base times height.",
+          "do": [
+            { "do": "recap", "text": "Multiply base times height.", "marks": ["mOut"], "at": "Two" }
+          ]
+        },
+        {
+          "say": "Three. Divide by two. The triangle is half.",
+          "pause": 0.7,
+          "do": [
+            { "do": "recap", "text": "Divide by 2. The triangle is half.", "marks": ["dOut", "aOut"], "at": "Three" }
+          ]
+        }
+      ]
+    }
+  ]
+}

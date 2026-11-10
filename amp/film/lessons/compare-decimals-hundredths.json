@@ -1,0 +1,327 @@
+{
+  "id": "compare-decimals-hundredths",
+  "title": "Compare decimals to hundredths",
+  "shots": [
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": ["ones", "tenths", "hundredths"],
+            "rows": [{ "id": "n", "pieces": { "ones": 1, "tenths": 1, "hundredths": 1 }, "shown": ["ones"] }],
+            "point": true,
+            "digits": true,
+            "lines": "none",
+            "focus": "n.ones.1",
+            "labels": [
+              { "id": "lw", "on": "n.ones.1", "tex": "1", "dir": "n", "size": "l" },
+              { "id": "lt", "on": "n.ones.1.s10", "tex": "\\frac{1}{10}=0.1", "dir": "e" },
+              { "id": "lh", "on": "n.ones.1.c10", "tex": "\\frac{1}{100}=0.01", "dir": "e" }
+            ]
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "This flat is one whole.",
+          "do": [{ "do": "show", "target": "lw", "at": "whole" }]
+        },
+        {
+          "say": "Cut it into ten equal strips. Each strip is one tenth.",
+          "pause": 0.35,
+          "do": [
+            { "do": "cut", "target": "b.n.ones.1", "into": "tenths", "at": "Cut" },
+            { "do": "highlight", "target": "b.n.ones.1.s10", "at": "Each" },
+            { "do": "show", "target": "lt", "at": "tenth" },
+            { "do": "term", "word": "tenth", "meaning": "One of $10$ equal parts of one whole: $\\frac{1}{10}$, written $0.1$.", "at": "tenth", "id": "t1" }
+          ]
+        },
+        {
+          "say": "Cut each strip into ten squares. Each square is one hundredth.",
+          "pause": 0.35,
+          "do": [
+            { "do": "cut", "target": "b.n.ones.1", "into": "hundredths", "at": "Cut" },
+            { "do": "highlight", "target": "b.n.ones.1.c10", "at": "Each" },
+            { "do": "show", "target": "lh", "at": "hundredth" },
+            { "do": "term", "word": "hundredth", "meaning": "One of $100$ equal parts of one whole: $\\frac{1}{100}$, written $0.01$. Ten hundredths make one tenth.", "at": "hundredth", "id": "t2" }
+          ]
+        },
+        {
+          "say": "Ten hundredths fill one strip. That is one tenth.",
+          "pause": 0.3,
+          "do": [
+            { "do": "highlight", "target": "b.n.ones.1.s10", "at": "Ten" },
+            { "do": "write", "tex": "\\frac{10}{100}=\\frac{1}{10}", "fresh": true, "at": "That", "id": "eq10" }
+          ]
+        },
+        {
+          "say": "A hundred hundredths fill the whole.",
+          "pause": 0.3,
+          "do": [
+            { "do": "highlight", "target": "b.n.ones.1", "at": "hundred" },
+            { "do": "write", "tex": "\\frac{100}{100}=1", "fresh": true, "at": "fill", "id": "eq100" }
+          ]
+        },
+        {
+          "say": "Now the chart. A rod in the tenths, and a square in the hundredths.",
+          "pause": 0.35,
+          "do": [
+            { "do": "zoom", "target": "b", "at": "chart" },
+            { "do": "hide", "target": ["lw", "lt", "lh"], "at": "chart" },
+            { "do": "show", "target": "b.n.tenths", "at": "rod" },
+            { "do": "show", "target": "b.n.hundredths", "at": "square" }
+          ]
+        },
+        {
+          "say": "The digits count the pieces. One flat, one rod, one square: one point one one.",
+          "pause": 0.3,
+          "do": [
+            { "do": "highlight", "target": "b.digit.ones", "at": "flat" },
+            { "do": "highlight", "target": "b.digit.tenths", "at": "rod" },
+            { "do": "highlight", "target": "b.digit.hundredths", "at": "square" }
+          ]
+        },
+        {
+          "say": "The point sits beside the ones.",
+          "pause": 0.25,
+          "do": [
+            { "do": "highlight", "target": "b.point", "at": "point" },
+            { "do": "highlight", "target": "b.place.ones", "at": "ones" }
+          ]
+        },
+        {
+          "say": "A tenth beats any hundredths. One of a place beats everything to its right.",
+          "pause": 0.45,
+          "do": [
+            { "do": "highlight", "target": "b.n.tenths", "at": "tenth" },
+            { "do": "text", "text": "One of a place beats everything to its right.", "at": "One", "id": "rule" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": ["ones", "tenths", "hundredths"],
+            "rows": [{ "id": "n", "pieces": { "ones": 1, "tenths": 5 }, "shown": ["ones", "tenths"] }],
+            "point": true,
+            "digits": true,
+            "counts": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Which is greater: one point five, or one point four five?",
+          "pause": 0.45,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "Which is $\\cg{greater}$: $1.5$ or $1.45$? Enter that decimal.", "at": "Which", "id": "p1" }
+          ]
+        },
+        {
+          "say": "One point five is one whole and five tenths.",
+          "do": [
+            { "do": "highlight", "target": "b.n.ones", "at": "whole" },
+            { "do": "highlight", "target": "b.n.tenths", "at": "five", "nth": 2 }
+          ]
+        },
+        {
+          "say": "The hundredths place is empty. Write a zero. Nothing is added.",
+          "pause": 0.35,
+          "do": [{ "do": "show", "target": "b.digit.hundredths", "at": "zero" }]
+        },
+        {
+          "say": "One point five zero is still those five rods. A zero on the end changes nothing.",
+          "pause": 0.4,
+          "do": [
+            { "do": "write", "tex": "\\ca{1.5}=\\ca{1.50}", "fresh": true, "at": "zero", "id": "eq50" },
+            { "do": "highlight", "target": "b.n.tenths", "at": "rods" }
+          ]
+        },
+        {
+          "say": "Five rods are half a whole more than the flat. One point five is halfway from one to two.",
+          "pause": 0.45,
+          "do": [{ "do": "highlight", "target": "b.n.tenths", "at": "Five" }]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": ["ones", "tenths", "hundredths"],
+            "rows": [{ "id": "n", "pieces": { "ones": 1, "tenths": 4, "hundredths": 5 }, "ink": "warm", "shown": ["ones", "tenths", "hundredths"] }],
+            "point": true,
+            "digits": true,
+            "counts": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "One point four five: one whole, four tenths, and five hundredths.",
+          "pause": 0.3,
+          "do": [
+            { "do": "highlight", "target": "b.n.ones", "at": "whole" },
+            { "do": "highlight", "target": "b.n.tenths", "at": "four", "nth": 2 },
+            { "do": "highlight", "target": "b.n.hundredths", "at": "five", "nth": 2 }
+          ]
+        },
+        {
+          "say": "Line up the points. Both use this same flat, so the places match.",
+          "pause": 0.35,
+          "do": [
+            { "do": "highlight", "target": "b.point", "at": "points" },
+            { "do": "write", "tex": "\\begin{array}{r}\\ca{1.50}\\\\\\cw{1.45}\\end{array}", "fresh": true, "at": "Line", "id": "lined" }
+          ]
+        },
+        {
+          "say": "Ones: both are one. They match.",
+          "pause": 0.3,
+          "do": [
+            { "do": "highlight", "target": "b.place.ones", "at": "Ones" },
+            { "do": "highlight", "target": "b.digit.ones", "at": "one" }
+          ]
+        },
+        {
+          "say": "Tenths: five rods against four rods. Five is more, so we stop.",
+          "pause": 0.4,
+          "do": [
+            { "do": "highlight", "target": "b.place.tenths", "at": "Tenths" },
+            { "do": "highlight", "target": "b.n.tenths", "at": "four" }
+          ]
+        },
+        {
+          "say": "Five squares cannot make a fifth rod. Ten squares would. Five do not.",
+          "pause": 0.45,
+          "do": [{ "do": "highlight", "target": "b.n.hundredths", "at": "squares" }]
+        },
+        {
+          "say": "Do not compare forty-five with five. Forty-five counts hundredths. Five counts tenths.",
+          "pause": 0.6,
+          "do": [
+            { "do": "write", "tex": "\\cancel{\\cw{1.45}>\\ca{1.5}}", "fresh": true, "at": "not", "id": "bad" },
+            { "do": "watch", "text": "Do not compare $45$ with $5$. Forty-five counts hundredths. Five counts tenths.", "at": "not", "id": "w1" }
+          ]
+        },
+        {
+          "say": "Line up the point. Start at the left. One point five zero is greater.",
+          "pause": 0.35,
+          "do": [
+            { "do": "text", "text": "Line up the point. Start at the left.", "at": "Line", "id": "phrase" },
+            { "do": "write", "tex": "\\ca{1.50}>\\cw{1.45}", "fresh": true, "at": "greater", "id": "gt" }
+          ]
+        },
+        {
+          "say": "One hundred fifty hundredths beats one hundred forty-five. Fifty cents beats forty-five cents.",
+          "pause": 0.3,
+          "do": [
+            { "do": "write", "tex": "\\frac{150}{100}>\\frac{145}{100}", "fresh": true, "at": "fifty", "id": "hun" },
+            { "do": "highlight", "target": "b.n.hundredths", "at": "cents" }
+          ]
+        },
+        {
+          "say": "One point five is greater.",
+          "do": [{ "do": "answer", "tex": "\\ca{1.5}", "at": "five", "id": "a1" }]
+        },
+        {
+          "say": "Check the short stack: five squares do not fill a rod, so the tenths still decide.",
+          "pause": 0.35,
+          "do": [{ "do": "highlight", "target": "b.n.hundredths", "at": "squares" }]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": ["ones", "tenths", "hundredths"],
+            "rows": [{ "id": "n", "pieces": { "ones": 1, "tenths": 4, "hundredths": 9 }, "shown": ["ones", "tenths", "hundredths"] }],
+            "point": true,
+            "digits": true,
+            "counts": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Which is greater: one point four, or one point four nine?",
+          "pause": 0.4,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "Which is $\\cg{greater}$: $1.4$ or $1.49$? Enter that decimal.", "at": "Which", "id": "p2" }
+          ]
+        },
+        {
+          "say": "One point four is the flat and the four rods only. Write the zero: one point four zero.",
+          "pause": 0.3,
+          "do": [
+            { "do": "highlight", "target": "b.n.ones", "at": "flat" },
+            { "do": "highlight", "target": "b.n.tenths", "at": "rods" },
+            { "do": "write", "tex": "\\cw{1.4}=\\cw{1.40}", "fresh": true, "at": "zero", "id": "eq40" }
+          ]
+        },
+        {
+          "say": "Ones match. Tenths match. The hundredths decide.",
+          "pause": 0.3,
+          "do": [
+            { "do": "highlight", "target": "b.place.ones", "at": "Ones" },
+            { "do": "highlight", "target": "b.place.tenths", "at": "Tenths" },
+            { "do": "highlight", "target": "b.place.hundredths", "at": "hundredths" }
+          ]
+        },
+        {
+          "say": "Nine squares, almost as tall as a rod, against no squares.",
+          "pause": 0.35,
+          "do": [
+            { "do": "highlight", "target": "b.n.hundredths", "at": "Nine" },
+            { "do": "write", "tex": "\\ca{1.49}>\\cw{1.40}", "fresh": true, "at": "against", "id": "gt2" }
+          ]
+        },
+        {
+          "say": "One point four nine is greater.",
+          "do": [{ "do": "answer", "tex": "\\ca{1.49}", "at": "nine", "id": "a2" }]
+        },
+        {
+          "say": "Without the squares it would be one point four zero, the same as one point four.",
+          "pause": 0.4,
+          "do": [{ "do": "highlight", "target": "b.n.hundredths", "at": "squares" }]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Compare decimals to hundredths this way.",
+          "do": [{ "do": "overview", "of": "p1", "at": "Compare" }]
+        },
+        {
+          "say": "Line up the point, not the last digit.",
+          "do": [{ "do": "recap", "text": "Line up the point, not the last digit.", "marks": ["lined", "w1"], "at": "Line" }]
+        },
+        {
+          "say": "A zero on the end changes nothing.",
+          "do": [{ "do": "recap", "text": "A zero on the end changes nothing.", "marks": ["eq50"], "at": "zero" }]
+        },
+        {
+          "say": "Start at the left. The first place that differs decides.",
+          "do": [{ "do": "recap", "text": "Start at the left. The first place that differs decides.", "marks": ["gt", "phrase"], "at": "left" }]
+        },
+        {
+          "say": "Answer the greater or the lesser, whichever is asked.",
+          "pause": 0.4,
+          "do": [{ "do": "recap", "text": "Answer the greater or the lesser, whichever is asked.", "marks": ["a1"], "at": "greater" }]
+        }
+      ]
+    }
+  ]
+}

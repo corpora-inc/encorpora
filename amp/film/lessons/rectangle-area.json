@@ -1,0 +1,211 @@
+{
+  "id": "rectangle-area",
+  "title": "Rectangle area",
+  "seed": "film",
+  "shots": [
+    {
+      "figure": {
+        "view": [-2.05, -1.85, 7.05, 5.35],
+        "points": {
+          "G": [0, 4.8],
+          "BL": [0, 0],
+          "BR": [6.4, 0],
+          "TL": [0, 4.8],
+          "TR": [6.4, 4.8],
+          "R1": [6.4, 3.2],
+          "R0": [0, 3.2],
+          "C1": [1.6, 4.8],
+          "C2": [1.6, 3.2],
+          "M": [0.8, 4.0]
+        },
+        "parts": [
+          { "id": "box", "poly": ["BL", "BR", "TR", "TL"], "fill": "none", "ink": "ink", "w": 7, "start": true },
+          { "id": "g", "grid": [4, 3], "at": "G", "size": [1.6, 1.6], "fill": "none", "ink": "accent", "w": 5 },
+          { "id": "row", "poly": ["TL", "TR", "R1", "R0"], "fill": "accent-fill", "ink": "accent", "w": 5 },
+          { "id": "cell", "poly": ["TL", "C1", "C2", "R0"], "fill": "warm-fill", "ink": "warm", "w": 5 },
+          { "id": "one", "label": "1\\text{ cm}", "at": "M", "dir": "c", "size": "s", "ink": "warm", "halo": true },
+          { "id": "wdim", "dim": ["BL", "BR"], "side": "s", "tex": "4\\text{ cm}", "ink": "accent", "far": 1.15 },
+          { "id": "hdim", "dim": ["BL", "TL"], "side": "w", "tex": "3\\text{ cm}", "ink": "gold", "far": 1.25 }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Area is how many unit squares cover a rectangle, with no gaps and no overlaps.",
+          "do": [
+            { "do": "term", "word": "area", "meaning": "How much flat space a shape covers, counted in unit squares.", "at": "Area", "id": "term" },
+            { "do": "show", "target": "g", "at": "squares" },
+            { "do": "highlight", "target": "g", "at": "cover" }
+          ]
+        },
+        {
+          "say": "Each square is one centimeter on a side. That square is one square centimeter.",
+          "do": [
+            { "do": "show", "target": ["cell", "one"], "at": "Each" },
+            { "do": "highlight", "target": "cell", "at": "square" }
+          ]
+        },
+        {
+          "say": "This rectangle is four centimeters wide, so one row holds four squares.",
+          "do": [
+            { "do": "show", "target": "wdim", "at": "four" },
+            { "do": "show", "target": "row", "at": "row" },
+            { "do": "hide", "target": ["cell", "one"], "at": "row" },
+            { "do": "write", "tex": "\\text{one row}=\\ca{4}", "fresh": true, "at": "four", "id": "row4" }
+          ]
+        },
+        {
+          "say": "It is three centimeters high, so there are three rows.",
+          "do": [
+            { "do": "show", "target": "hdim", "at": "three" },
+            { "do": "highlight", "target": "g", "at": "rows" },
+            { "do": "write", "tex": "\\text{rows}=\\cg{3}", "fresh": true, "at": "three", "id": "rows3" }
+          ]
+        },
+        {
+          "say": "Width times height. Four times three is twelve square centimeters.",
+          "do": [
+            { "do": "text", "text": "Width times height.", "at": "Width", "id": "phrase" },
+            { "do": "write", "tex": "\\ca{4}\\times\\cg{3}=\\cw{12}", "fresh": true, "at": "Four", "id": "p4" },
+            { "do": "highlight", "target": ["g", "row"], "at": "twelve" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-1.9, -1.5, 9.4, 9.45],
+        "points": {
+          "G": [0, 9],
+          "BL": [0, 0],
+          "BR": [9, 0],
+          "TL": [0, 9],
+          "TR": [9, 9],
+          "R1": [9, 8],
+          "R0": [0, 8],
+          "H9": [-0.95, 4.5],
+          "A": [0, 0],
+          "B": [9, 0],
+          "C": [9, 9],
+          "D": [0, 9]
+        },
+        "parts": [
+          { "id": "box", "poly": ["A", "B", "C", "D"], "fill": "none", "ink": "ink", "w": 7, "start": true },
+          { "id": "g", "grid": [9, 9], "at": "G", "size": 1, "fill": "none", "ink": "accent", "w": 4 },
+          { "id": "row", "poly": ["TL", "TR", "R1", "R0"], "fill": "accent-fill", "ink": "accent", "w": 4 },
+          { "id": "ang", "angle": ["B", "A", "D"], "right": true, "fill": "none", "ink": "ink" },
+          { "id": "wdim", "dim": ["BL", "BR"], "side": "s", "tex": "9\\text{ cm}", "ink": "accent", "far": 1.05 },
+          { "id": "hdim", "label": "9\\text{ cm}", "at": "H9", "dir": "c", "size": "s", "ink": "gold" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "A rectangle is nine centimeters wide and nine centimeters high. What is its area in square centimeters?",
+          "pause": 0.4,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "A rectangle is 9 cm wide and 9 cm high. What is its area in square centimeters?", "at": "rectangle", "id": "p9" },
+            { "do": "show", "target": "g", "at": "nine" },
+            { "do": "show", "target": ["wdim", "hdim", "ang"], "at": "high" }
+          ]
+        },
+        {
+          "say": "The sides are equal, and they meet at a square corner. One row holds nine squares. There are nine rows.",
+          "do": [
+            { "do": "highlight", "target": "ang", "at": "square" },
+            { "do": "show", "target": "row", "at": "row" },
+            { "do": "highlight", "target": "wdim", "at": "nine" }
+          ]
+        },
+        {
+          "say": "Nine times nine is eighty-one. The area is eighty-one square centimeters.",
+          "do": [
+            { "do": "write", "tex": "\\ca{9}\\times\\cg{9}=\\cw{81}", "at": "times", "id": "eq9" },
+            { "do": "answer", "tex": "\\cw{81}\\ \\text{cm}^{2}", "at": "eighty-one", "id": "a9" },
+            { "do": "highlight", "target": "g", "at": "area" }
+          ]
+        },
+        {
+          "say": "Nine plus nine is eighteen. Adding the sides does not count the squares inside.",
+          "do": [
+            { "do": "write", "tex": "\\cancel{\\ca{9}+\\cg{9}=18}", "fresh": true, "at": "plus", "id": "bad9" },
+            { "do": "watch", "text": "Multiply the sides. Adding them is not the area.", "at": "Adding", "id": "w9" },
+            { "do": "highlight", "target": "row", "at": "squares" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-1.65, -1.55, 11.05, 3.35],
+        "points": {
+          "G": [0, 2.12],
+          "BL": [0, 0],
+          "BR": [10.6, 0],
+          "TL": [0, 2.12],
+          "TR": [10.6, 2.12],
+          "R1": [10.6, 1.06],
+          "R0": [0, 1.06],
+          "H": [0.1, 1.06],
+          "A": [0, 0],
+          "B": [10.6, 0],
+          "C": [10.6, 2.12],
+          "D": [0, 2.12]
+        },
+        "parts": [
+          { "id": "box", "poly": ["A", "B", "C", "D"], "fill": "none", "ink": "ink", "w": 7, "start": true },
+          { "id": "g", "grid": [10, 2], "at": "G", "size": 1.06, "fill": "none", "ink": "accent", "w": 5 },
+          { "id": "row", "poly": ["TL", "TR", "R1", "R0"], "fill": "accent-fill", "ink": "accent", "w": 5 },
+          { "id": "wdim", "dim": ["BL", "BR"], "side": "s", "tex": "10\\text{ cm}", "ink": "accent", "far": 1.05 },
+          { "id": "hdim", "label": "2\\text{ cm}", "at": "H", "dir": "w", "far": 0.15, "size": "s", "ink": "gold" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "A rectangle is ten centimeters wide and two centimeters high.",
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "A rectangle is 10 cm wide and 2 cm high. What is its area in square centimeters?", "at": "rectangle", "id": "p10" },
+            { "do": "show", "target": "g", "at": "ten" },
+            { "do": "show", "target": ["wdim", "hdim"], "at": "two" }
+          ]
+        },
+        {
+          "say": "Two rows of ten squares. Ten times two is twenty.",
+          "do": [
+            { "do": "show", "target": "row", "at": "rows" },
+            { "do": "write", "tex": "\\ca{10}\\times\\cg{2}=\\cw{20}", "fresh": true, "at": "times", "id": "eq10" },
+            { "do": "highlight", "target": "g", "at": "twenty" }
+          ]
+        },
+        {
+          "say": "The area is twenty square centimeters. Ten plus two is twelve, and that sum is not the area.",
+          "do": [
+            { "do": "answer", "tex": "\\cw{20}\\ \\text{cm}^{2}", "at": "twenty", "id": "a10" },
+            { "do": "write", "tex": "\\cancel{\\ca{10}+\\cg{2}=12}", "fresh": true, "at": "plus", "id": "bad10" }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Every rectangle goes the same way.",
+          "do": [{ "do": "overview", "of": "eq9", "at": "Every" }]
+        },
+        {
+          "say": "One. Count the squares in one row. That is the width.",
+          "do": [{ "do": "recap", "text": "Count the squares in one row. That is the width.", "marks": ["eq9"], "at": "One" }]
+        },
+        {
+          "say": "Two. Count the rows. That is the height.",
+          "do": [{ "do": "recap", "text": "Count the rows. That is the height.", "marks": ["eq9"], "at": "Two" }]
+        },
+        {
+          "say": "Three. Width times height, in square centimeters. Do not add the sides.",
+          "pause": 0.75,
+          "do": [{ "do": "recap", "text": "Width times height, in square centimeters. Do not add the sides.", "marks": ["eq9", "a9", "w9"], "at": "Three" }]
+        }
+      ]
+    }
+  ]
+}

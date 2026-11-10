@@ -1,0 +1,1247 @@
+{
+  "id": "percent-amounts-blanks",
+  "title": "Two percents. One whole.",
+  "seed": "film",
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          0,
+          -1,
+          19,
+          11
+        ],
+        "points": {
+          "B": [
+            3.6,
+            8
+          ],
+          "C": [
+            10.6,
+            -0.3
+          ]
+        },
+        "parts": [
+          {
+            "id": "b",
+            "bar": "B",
+            "w": 14,
+            "h": 3,
+            "title": "\\text{One whole}",
+            "scale": {
+              "max": 100,
+              "suffix": "\\%",
+              "label": "Percent"
+            },
+            "unit": "Amount",
+            "divisions": 1,
+            "start": true,
+            "marks": [
+              {
+                "id": "one",
+                "value": 0.01
+              },
+              {
+                "id": "ten",
+                "value": 0.1
+              },
+              {
+                "id": "twenty",
+                "value": 0.2
+              }
+            ]
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "A percent compares a part with a whole. This entire bar is one whole.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "term",
+              "at": "percent",
+              "word": "percent",
+              "meaning": "Per hundred: a share of one whole."
+            },
+            {
+              "do": "highlight",
+              "at": "entire",
+              "target": "b.whole"
+            }
+          ]
+        },
+        {
+          "say": "The whole is one hundred percent. Zero percent means none of it.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "show",
+              "at": "whole",
+              "target": "b.scale"
+            },
+            {
+              "do": "highlight",
+              "at": "hundred",
+              "target": "b.mark.end.top"
+            },
+            {
+              "do": "highlight",
+              "at": "Zero",
+              "target": "b.mark.zero.top"
+            }
+          ]
+        },
+        {
+          "say": "Split the bar into ten equal pieces.",
+          "pause": 1.1,
+          "do": [
+            {
+              "do": "partition",
+              "at": "Split",
+              "target": "b",
+              "into": 10,
+              "dur": 2
+            }
+          ]
+        },
+        {
+          "say": "Each piece is ten percent. Ten of them make one hundred percent.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "show",
+              "at": "Each",
+              "target": "b.unit"
+            },
+            {
+              "do": "show",
+              "at": "ten",
+              "target": "b.mark.ten.top"
+            },
+            {
+              "do": "write",
+              "at": "ten",
+              "tex": "10\\%=\\frac{10}{100}",
+              "fresh": true
+            }
+          ]
+        },
+        {
+          "say": "Split each piece into ten again. That makes one hundred equal pieces.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "hide",
+              "at": "Split",
+              "target": [
+                "b.unit",
+                "b.mark.ten.top"
+              ]
+            },
+            {
+              "do": "partition",
+              "at": "Split",
+              "target": "b",
+              "into": 100,
+              "dur": 2.3
+            }
+          ]
+        },
+        {
+          "say": "One little piece is one percent: one hundredth of the whole.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "show",
+              "at": "One",
+              "target": "b.unit"
+            },
+            {
+              "do": "show",
+              "at": "percent",
+              "target": "b.mark.one.top"
+            },
+            {
+              "do": "write",
+              "at": "percent",
+              "tex": "1\\%=\\frac{1}{100}",
+              "fresh": true
+            }
+          ]
+        },
+        {
+          "say": "Twenty percent takes twenty of those hundredths.",
+          "pause": 1.3,
+          "do": [
+            {
+              "do": "hide",
+              "at": "Twenty",
+              "target": [
+                "b.unit",
+                "b.mark.one.top"
+              ]
+            },
+            {
+              "do": "shade",
+              "at": "Twenty",
+              "target": "b",
+              "to": 0.2,
+              "dur": 1.8
+            },
+            {
+              "do": "show",
+              "at": "Twenty",
+              "target": "b.mark.twenty.top"
+            },
+            {
+              "do": "write",
+              "at": "Twenty",
+              "tex": "20\\%=\\frac{20}{100}",
+              "fresh": true
+            }
+          ]
+        },
+        {
+          "say": "The percent tells the share. The question tells how much the whole contains.",
+          "pause": 1.2,
+          "do": [
+            {
+              "do": "highlight",
+              "at": "share",
+              "target": "b.part"
+            },
+            {
+              "do": "text",
+              "at": "question",
+              "text": "First, name the whole."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          0,
+          -1,
+          19,
+          11
+        ],
+        "points": {
+          "B": [
+            3.6,
+            8
+          ],
+          "C": [
+            10.6,
+            -0.3
+          ]
+        },
+        "parts": [
+          {
+            "id": "b",
+            "bar": "B",
+            "w": 14,
+            "h": 3,
+            "title": "\\text{All 50 books}",
+            "scale": {
+              "max": 100,
+              "suffix": "\\%",
+              "label": "Percent"
+            },
+            "unit": "Books",
+            "divisions": 1,
+            "start": true,
+            "marks": [
+              {
+                "id": "ten",
+                "value": 0.1
+              },
+              {
+                "id": "twenty",
+                "value": 0.2
+              }
+            ],
+            "whole": 50
+          },
+          {
+            "id": "fiction",
+            "label": "\\text{Fiction}",
+            "at": "C",
+            "dir": "c",
+            "size": "s",
+            "ink": "accent"
+          },
+          {
+            "id": "mystery",
+            "label": "\\text{Mystery}",
+            "at": "C",
+            "dir": "c",
+            "size": "s",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "A library shelf holds fifty books.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "at": "A",
+              "text": "A library shelf holds 50 books. 20% of the books are fiction and 10% are mystery. Complete the sentence with the number of books in each group.",
+              "choices": [
+                "Fiction: 10, 3, 5, 20",
+                "Mystery: 45, 15, 5, 10"
+              ],
+              "id": "booksProblem"
+            }
+          ]
+        },
+        {
+          "say": "Twenty percent of the books are fiction, and ten percent are mystery.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "show",
+              "at": "Twenty",
+              "target": "b.scale"
+            },
+            {
+              "do": "show",
+              "at": "Twenty",
+              "target": "b.mark.twenty.top"
+            },
+            {
+              "do": "show",
+              "at": "ten",
+              "target": "b.mark.ten.top"
+            }
+          ]
+        },
+        {
+          "say": "Complete the sentence with the number of books in each group.",
+          "pause": 1.6,
+          "do": [
+            {
+              "do": "text",
+              "at": "Complete",
+              "text": "Of the books, ___ are fiction, and ___ are mystery."
+            }
+          ]
+        },
+        {
+          "say": "First, name the whole. Both percentages are of all fifty books.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "show",
+              "at": "whole",
+              "target": "b.amounts"
+            },
+            {
+              "do": "highlight",
+              "at": "all",
+              "target": "b.whole"
+            },
+            {
+              "do": "write",
+              "at": "fifty",
+              "tex": "\\text{whole: }50\\text{ books}",
+              "fresh": true,
+              "id": "booksWhole"
+            }
+          ]
+        },
+        {
+          "say": "Percent above, books below. Matching positions show the same amount.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "highlight",
+              "at": "Percent",
+              "target": "b.scale"
+            },
+            {
+              "do": "highlight",
+              "at": "books",
+              "target": "b.amounts"
+            },
+            {
+              "do": "highlight",
+              "at": "same",
+              "target": [
+                "b.mark.end.top",
+                "b.mark.end.amount"
+              ]
+            }
+          ]
+        },
+        {
+          "say": "Twenty percent names a share, not a count of twenty books.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "watch",
+              "at": "Twenty",
+              "text": "20% tells the share. Use the whole to find the book count."
+            },
+            {
+              "do": "highlight",
+              "at": "share",
+              "target": "b.mark.twenty.top"
+            }
+          ]
+        },
+        {
+          "say": "Ten equal pieces: fifty divided by ten is five books per piece.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "partition",
+              "at": "Ten",
+              "target": "b",
+              "into": 10,
+              "dur": 1.7
+            },
+            {
+              "do": "hide",
+              "at": "Ten",
+              "target": "b.mark.twenty"
+            },
+            {
+              "do": "show",
+              "at": "five",
+              "target": "b.unit"
+            },
+            {
+              "do": "show",
+              "at": "five",
+              "target": "b.values"
+            },
+            {
+              "do": "show",
+              "at": "five",
+              "target": "b.mark.ten.amount"
+            },
+            {
+              "do": "write",
+              "at": "divided",
+              "tex": "50\\div10=5",
+              "fresh": true,
+              "id": "booksUnit"
+            }
+          ]
+        },
+        {
+          "say": "Each piece is ten percent. Fiction takes two pieces: twenty percent.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "highlight",
+              "at": "ten",
+              "target": "b.unit"
+            },
+            {
+              "do": "hide",
+              "at": "Fiction",
+              "target": "b.unit"
+            },
+            {
+              "do": "show",
+              "at": "Fiction",
+              "target": "fiction"
+            },
+            {
+              "do": "shade",
+              "at": "Fiction",
+              "target": "b",
+              "to": 0.2,
+              "dur": 1.7
+            },
+            {
+              "do": "show",
+              "at": "twenty",
+              "target": "b.mark.twenty.top"
+            }
+          ]
+        },
+        {
+          "say": "Two groups of five make ten fiction books.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "write",
+              "at": "Two",
+              "tex": "2\\times5=10",
+              "fresh": true,
+              "id": "booksFiction"
+            },
+            {
+              "do": "show",
+              "at": "ten",
+              "target": "b.mark.twenty.amount"
+            }
+          ]
+        },
+        {
+          "say": "In one calculation: fifty times twenty over one hundred equals ten.",
+          "pause": 1.1,
+          "do": [
+            {
+              "do": "write",
+              "at": "fifty",
+              "tex": "50\\times\\frac{20}{100}=10",
+              "fresh": true,
+              "id": "booksFraction"
+            }
+          ]
+        },
+        {
+          "say": "For mystery, return to the same whole: fifty books.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "hide",
+              "at": "mystery",
+              "target": "fiction"
+            },
+            {
+              "do": "show",
+              "at": "mystery",
+              "target": "mystery"
+            },
+            {
+              "do": "shade",
+              "at": "return",
+              "target": "b",
+              "to": 0,
+              "dur": 1
+            },
+            {
+              "do": "hide",
+              "at": "return",
+              "target": "b.mark.twenty"
+            },
+            {
+              "do": "highlight",
+              "at": "whole",
+              "target": "b.whole"
+            },
+            {
+              "do": "text",
+              "at": "same",
+              "text": "Mystery also uses all 50 books."
+            }
+          ]
+        },
+        {
+          "say": "Ten percent is one of the ten pieces: five mystery books.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "shade",
+              "at": "Ten",
+              "target": "b",
+              "to": 0.1,
+              "dur": 1.5
+            },
+            {
+              "do": "show",
+              "at": "Ten",
+              "target": "b.mark.ten"
+            },
+            {
+              "do": "write",
+              "at": "five",
+              "tex": "50\\times\\frac{10}{100}=5",
+              "fresh": true,
+              "id": "booksMystery"
+            }
+          ]
+        },
+        {
+          "say": "Forty-five would count the other ninety percent. The blank asks for the mystery group.",
+          "pause": 1.2,
+          "do": [
+            {
+              "do": "watch",
+              "at": "Forty-five",
+              "text": "Mystery choices: 45, 15, 5, 10.\n45 counts the books outside the 10% group."
+            },
+            {
+              "do": "highlight",
+              "at": "mystery",
+              "target": "b.part"
+            }
+          ]
+        },
+        {
+          "say": "Of the books, ten are fiction, and five are mystery.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "answer",
+              "at": "ten",
+              "tex": "\\begin{aligned}\\text{Fiction: }&10\\text{ books}\\\\\\text{Mystery: }&5\\text{ books}\\end{aligned}",
+              "id": "booksAnswer"
+            }
+          ]
+        },
+        {
+          "say": "Check: twenty percent is twice ten percent. Ten books is twice five books.",
+          "pause": 1.3,
+          "do": [
+            {
+              "do": "show",
+              "at": "twenty",
+              "target": "b.mark.twenty"
+            },
+            {
+              "do": "write",
+              "at": "Ten",
+              "tex": "10=2\\times5",
+              "fresh": true,
+              "id": "booksCheck"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Income is money earned. A budget plans how to use it.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "term",
+              "at": "Income",
+              "word": "income and budget",
+              "meaning": "Income is money earned. A budget is a plan for using it."
+            }
+          ]
+        },
+        {
+          "say": "A limit is the most allowed. Within means below the limit, or exactly equal to it.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "text",
+              "at": "limit",
+              "text": "Limit: the most allowed."
+            },
+            {
+              "do": "write",
+              "at": "Within",
+              "tex": "\\text{within: amount}\\le\\text{limit}",
+              "fresh": true
+            }
+          ]
+        },
+        {
+          "say": "Over means greater than the limit. Equal is within.",
+          "pause": 1.2,
+          "do": [
+            {
+              "do": "write",
+              "at": "Over",
+              "tex": "\\text{over: amount}>\\text{limit}",
+              "fresh": true
+            },
+            {
+              "do": "watch",
+              "at": "Equal",
+              "text": "Exactly equal to the limit is within."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          0,
+          -1,
+          19,
+          11
+        ],
+        "points": {
+          "B": [
+            3.6,
+            8
+          ],
+          "C": [
+            10.6,
+            -0.3
+          ],
+          "zerotop": {
+            "anchor": [
+              "b",
+              "top:0"
+            ]
+          },
+          "zerobottom": {
+            "anchor": [
+              "b",
+              "bottom:0"
+            ]
+          },
+          "thirtytop": {
+            "anchor": [
+              "b",
+              "top:0.3"
+            ]
+          },
+          "thirtybottom": {
+            "anchor": [
+              "b",
+              "bottom:0.3"
+            ]
+          },
+          "thirtyfivetop": {
+            "anchor": [
+              "b",
+              "top:0.35"
+            ]
+          },
+          "thirtyfivebottom": {
+            "anchor": [
+              "b",
+              "bottom:0.35"
+            ]
+          }
+        },
+        "parts": [
+          {
+            "id": "b",
+            "bar": "B",
+            "w": 14,
+            "h": 3,
+            "title": "\\text{Full income: 2,400 dollars}",
+            "scale": {
+              "max": 100,
+              "suffix": "\\%",
+              "label": "Percent"
+            },
+            "unit": "Dollars",
+            "divisions": 1,
+            "start": true,
+            "marks": [
+              {
+                "id": "one",
+                "value": 0.01
+              },
+              {
+                "id": "rent",
+                "value": 0.35
+              },
+              {
+                "id": "insurance",
+                "value": 0.06
+              }
+            ],
+            "whole": 2400
+          },
+          {
+            "id": "rent",
+            "label": "\\text{Rent}",
+            "at": "C",
+            "dir": "c",
+            "size": "s",
+            "ink": "accent"
+          },
+          {
+            "id": "insurance",
+            "label": "\\text{Insurance}",
+            "at": "C",
+            "dir": "c",
+            "size": "s",
+            "ink": "accent"
+          },
+          {
+            "id": "rentThirtyPiece",
+            "poly": [
+              "zerotop",
+              "thirtytop",
+              "thirtybottom",
+              "zerobottom"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "rentFivePiece",
+            "poly": [
+              "thirtytop",
+              "thirtyfivetop",
+              "thirtyfivebottom",
+              "thirtybottom"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "A family earns two thousand four hundred dollars a month.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "at": "A",
+              "text": "A family earns 2,400 dollars a month. Rent is 35% of the income, and the rent limit is 800 dollars. Insurance is 6% of the income, and the insurance limit is 164 dollars. Complete the sentence.",
+              "choices": [
+                "Rent dollars: 35, 840, 69, 984",
+                "Insurance dollars: 400, 144, 984, 6",
+                "Each limit: within or over"
+              ],
+              "id": "budgetProblem"
+            }
+          ]
+        },
+        {
+          "say": "Rent is thirty-five percent of the income. The rent limit is eight hundred dollars.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "show",
+              "at": "Rent",
+              "target": "b.scale"
+            },
+            {
+              "do": "show",
+              "at": "thirty-five",
+              "target": "b.mark.rent.top"
+            },
+            {
+              "do": "highlight",
+              "at": "income",
+              "target": "b.title"
+            }
+          ]
+        },
+        {
+          "say": "Insurance is six percent of the income. The insurance limit is one hundred sixty-four dollars.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "show",
+              "at": "six",
+              "target": "b.mark.insurance.top"
+            },
+            {
+              "do": "highlight",
+              "at": "income",
+              "target": "b.title"
+            }
+          ]
+        },
+        {
+          "say": "Choose an amount and a limit word for each expense.",
+          "pause": 1.6,
+          "do": [
+            {
+              "do": "text",
+              "at": "Choose",
+              "text": "Rent: ___ dollars, ___ its limit.\nInsurance: ___ dollars, ___ its limit."
+            }
+          ]
+        },
+        {
+          "say": "Both percentages use the full income: two thousand four hundred dollars.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "show",
+              "at": "full",
+              "target": "b.amounts"
+            },
+            {
+              "do": "highlight",
+              "at": "full",
+              "target": "b.whole"
+            },
+            {
+              "do": "write",
+              "at": "two",
+              "tex": "\\text{whole: }2{,}400\\text{ dollars}",
+              "fresh": true,
+              "id": "budgetWhole"
+            }
+          ]
+        },
+        {
+          "say": "For any percent, we can start with one percent: one hundredth of the whole.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "partition",
+              "at": "one",
+              "target": "b",
+              "into": 100,
+              "dur": 2
+            },
+            {
+              "do": "hide",
+              "at": "one",
+              "target": [
+                "b.mark.rent",
+                "b.mark.insurance"
+              ]
+            },
+            {
+              "do": "show",
+              "at": "hundredth",
+              "target": "b.unit"
+            },
+            {
+              "do": "show",
+              "at": "hundredth",
+              "target": "b.mark.one.top"
+            }
+          ]
+        },
+        {
+          "say": "Divide twenty-four hundred by one hundred. Each one-percent share is twenty-four dollars.",
+          "pause": 1.1,
+          "do": [
+            {
+              "do": "write",
+              "at": "Divide",
+              "tex": "2{,}400\\div100=24",
+              "fresh": true,
+              "id": "budgetUnit"
+            },
+            {
+              "do": "show",
+              "at": "twenty-four",
+              "target": "b.mark.one.amount"
+            }
+          ]
+        },
+        {
+          "say": "Thirty-five percent takes thirty-five shares of twenty-four dollars.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "hide",
+              "at": "Thirty-five",
+              "target": [
+                "b.unit",
+                "b.mark.one"
+              ]
+            },
+            {
+              "do": "show",
+              "at": "Thirty-five",
+              "target": "rent"
+            },
+            {
+              "do": "show",
+              "at": "Thirty-five",
+              "target": "b.mark.rent.top"
+            },
+            {
+              "do": "shade",
+              "at": "Thirty-five",
+              "target": "b",
+              "to": 0.35,
+              "dur": 2
+            },
+            {
+              "do": "write",
+              "at": "shares",
+              "tex": "24\\times35",
+              "fresh": true,
+              "id": "rentMultiply"
+            }
+          ]
+        },
+        {
+          "say": "Split thirty-five into thirty and five.",
+          "pause": 0.9,
+          "do": [
+            {
+              "do": "write",
+              "at": "Split",
+              "tex": "24\\times(30+5)",
+              "fresh": true,
+              "id": "rentSplit"
+            }
+          ]
+        },
+        {
+          "say": "Thirty shares give seven hundred twenty dollars. Five shares give one hundred twenty.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "show",
+              "at": "Thirty",
+              "target": "rentThirtyPiece"
+            },
+            {
+              "do": "write",
+              "at": "Thirty",
+              "tex": "24\\times30=720",
+              "fresh": true,
+              "id": "rentThirty"
+            },
+            {
+              "do": "hide",
+              "at": "Five",
+              "target": "rentThirtyPiece"
+            },
+            {
+              "do": "show",
+              "at": "Five",
+              "target": "rentFivePiece"
+            },
+            {
+              "do": "write",
+              "at": "Five",
+              "tex": "24\\times5=120",
+              "fresh": true,
+              "id": "rentFive"
+            }
+          ]
+        },
+        {
+          "say": "Add them: eight hundred forty dollars for rent.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "hide",
+              "at": "Add",
+              "target": "rentFivePiece"
+            },
+            {
+              "do": "highlight",
+              "at": "them",
+              "target": "b.part"
+            },
+            {
+              "do": "write",
+              "at": "Add",
+              "tex": "720+120=840",
+              "fresh": true,
+              "id": "rentAmount"
+            },
+            {
+              "do": "show",
+              "at": "forty",
+              "target": "b.mark.rent.amount"
+            }
+          ]
+        },
+        {
+          "say": "Compare with the rent limit, eight hundred dollars. Eight hundred forty is greater, so rent is over.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "write",
+              "at": "Compare",
+              "tex": "840>800",
+              "fresh": true,
+              "id": "rentLimit"
+            },
+            {
+              "do": "text",
+              "at": "over",
+              "text": "Rent is over its limit.",
+              "id": "rentVerdict"
+            },
+            {
+              "do": "highlight",
+              "at": "forty",
+              "target": "b.mark.rent.amount"
+            }
+          ]
+        },
+        {
+          "say": "Insurance is six percent of the full income, not six percent of rent.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "hide",
+              "at": "Insurance",
+              "target": [
+                "b.mark.rent",
+                "rent"
+              ]
+            },
+            {
+              "do": "show",
+              "at": "Insurance",
+              "target": "insurance"
+            },
+            {
+              "do": "shade",
+              "at": "Insurance",
+              "target": "b",
+              "to": 0,
+              "dur": 1
+            },
+            {
+              "do": "highlight",
+              "at": "full",
+              "target": "b.whole"
+            },
+            {
+              "do": "watch",
+              "at": "full",
+              "text": "Insurance also uses the full $2{,}400$."
+            }
+          ]
+        },
+        {
+          "say": "Six shares of twenty-four: one hundred forty-four dollars for insurance.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "show",
+              "at": "Six",
+              "target": "b.mark.insurance.top"
+            },
+            {
+              "do": "shade",
+              "at": "Six",
+              "target": "b",
+              "to": 0.06,
+              "dur": 1.5
+            },
+            {
+              "do": "write",
+              "at": "Six",
+              "tex": "24\\times6=144",
+              "fresh": true,
+              "id": "insuranceAmount"
+            },
+            {
+              "do": "show",
+              "at": "forty-four",
+              "target": "b.mark.insurance.amount"
+            }
+          ]
+        },
+        {
+          "say": "Its limit is one hundred sixty-four dollars. One hundred forty-four is less, so insurance is within.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "write",
+              "at": "limit",
+              "tex": "144<164",
+              "fresh": true,
+              "id": "insuranceLimit"
+            },
+            {
+              "do": "text",
+              "at": "within",
+              "text": "Insurance is within its limit.",
+              "id": "insuranceVerdict"
+            }
+          ]
+        },
+        {
+          "say": "Fill the four blanks. Rent: eight hundred forty dollars, over. Insurance: one hundred forty-four dollars, within.",
+          "pause": 1.6,
+          "do": [
+            {
+              "do": "answer",
+              "at": "Rent",
+              "tex": "\\begin{gathered}\\text{Rent}\\\\840\\text{ dollars, over}\\\\[.35em]\\text{Insurance}\\\\144\\text{ dollars, within}\\end{gathered}",
+              "id": "budgetAnswer"
+            },
+            {
+              "do": "highlight",
+              "at": "Insurance",
+              "target": "b.mark.insurance.amount"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Name the whole. Both percents refer to that same amount.",
+          "pause": 0.9,
+          "do": [
+            {
+              "do": "overview",
+              "at": "Name",
+              "of": "budgetProblem"
+            },
+            {
+              "do": "recap",
+              "at": "Name",
+              "text": "Name the whole. Use it for both percents.",
+              "marks": [
+                "budgetWhole"
+              ]
+            }
+          ]
+        },
+        {
+          "say": "One percent is the whole divided by one hundred. Take as many shares as the percent says.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "recap",
+              "at": "One",
+              "text": "Find 1%: whole \u00f7 100. Multiply by the percent number.",
+              "marks": [
+                "budgetUnit",
+                "rentMultiply"
+              ]
+            }
+          ]
+        },
+        {
+          "say": "If there is a limit, compare each amount with its own limit. Equal is within.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "recap",
+              "at": "If",
+              "text": "Compare each amount with its own limit. Equal is within.",
+              "marks": [
+                "insuranceLimit",
+                "insuranceVerdict"
+              ]
+            }
+          ]
+        },
+        {
+          "say": "Then fill each blank with the amount or word requested.",
+          "pause": 1.5,
+          "do": [
+            {
+              "do": "recap",
+              "at": "Then",
+              "text": "Fill the blanks in the requested order.",
+              "marks": [
+                "budgetAnswer"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

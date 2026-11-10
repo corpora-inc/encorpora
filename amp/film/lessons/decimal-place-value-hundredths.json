@@ -1,0 +1,387 @@
+{
+  "id": "decimal-place-value-hundredths",
+  "title": "Decimal place value to hundredths",
+  "seed": "film",
+  "shots": [
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": ["ones", "tenths", "hundredths"],
+            "rows": [{ "id": "n", "pieces": { "ones": 1, "tenths": 1, "hundredths": 1 }, "shown": ["ones"] }],
+            "point": true,
+            "digits": true,
+            "lines": "none",
+            "focus": "n.ones.1",
+            "labels": [
+              { "id": "lw", "on": "n.ones.1", "tex": "1", "dir": "n", "size": "l" },
+              { "id": "lt", "on": "n.ones.1.s10", "tex": "\\frac{1}{10}=0.1", "dir": "e" },
+              { "id": "lh", "on": "n.ones.1.c10", "tex": "\\frac{1}{100}=0.01", "dir": "e" }
+            ]
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "This square is one whole.",
+          "do": [{ "do": "show", "target": "lw", "at": "one" }]
+        },
+        {
+          "say": "Cut it into ten equal strips. Each strip is one tenth: one over ten, or zero point one.",
+          "do": [
+            { "do": "cut", "target": "b.n.ones.1", "into": "tenths", "at": "Cut" },
+            { "do": "highlight", "target": "b.n.ones.1.s10", "at": "Each" },
+            { "do": "show", "target": "lt", "at": "tenth" },
+            { "do": "term", "word": "tenth", "meaning": "One of $10$ equal parts of one whole: $\\frac{1}{10}$, written $0.1$.", "at": "tenth", "id": "tenth" }
+          ]
+        },
+        {
+          "say": "Cut every strip into ten equal squares. Each little square is one hundredth: one over one hundred, or zero point zero one.",
+          "do": [
+            { "do": "cut", "target": "b.n.ones.1", "into": "hundredths", "at": "Cut" },
+            { "do": "highlight", "target": "b.n.ones.1.c10", "at": "Each" },
+            { "do": "show", "target": "lh", "at": "hundredth" },
+            { "do": "term", "word": "hundredth", "meaning": "One of $100$ equal parts of one whole: $\\frac{1}{100}$, written $0.01$.", "at": "hundredth", "id": "hun" }
+          ]
+        },
+        {
+          "say": "Ten little squares fill one strip. Ten hundredths make one tenth.",
+          "pause": 0.45,
+          "do": [
+            { "do": "highlight", "target": "b.n.ones.1.s10", "at": "Ten" },
+            { "do": "write", "tex": "10\\text{ hundredths}=1\\text{ tenth}", "fresh": true, "at": "Ten", "nth": 2, "id": "d10" }
+          ]
+        },
+        {
+          "say": "A hundred little squares fill the whole.",
+          "do": [
+            { "do": "highlight", "target": "b.n.ones.1", "at": "hundred" },
+            { "do": "write", "tex": "100\\text{ hundredths}=1\\text{ whole}", "fresh": true, "at": "hundred", "id": "d100" }
+          ]
+        },
+        {
+          "say": "A chart gives each size its own place: the ones, the tenths, and the hundredths.",
+          "do": [
+            { "do": "zoom", "target": "b", "at": "chart" },
+            { "do": "hide", "target": ["lw", "lt", "lh"], "at": "chart" },
+            { "do": "show", "target": "b.n.tenths", "at": "tenths" },
+            { "do": "show", "target": "b.n.hundredths", "at": "hundredths" }
+          ]
+        },
+        {
+          "say": "The digit under each pile counts the pieces. One, one, and one: one point one one.",
+          "do": [
+            { "do": "highlight", "target": "b.digits", "at": "digit" },
+            { "do": "text", "text": "The digit counts the pieces.", "at": "counts", "id": "count" }
+          ]
+        },
+        {
+          "say": "The point sits beside the ones. The ones are just to its left.",
+          "pause": 0.5,
+          "do": [
+            { "do": "highlight", "target": "b.point", "at": "point" },
+            { "do": "text", "text": "The point sits beside the ones.", "at": "beside", "id": "pt" }
+          ]
+        },
+        {
+          "say": "The one in the tenths place is worth one tenth: zero point one. Not one whole.",
+          "pause": 0.4,
+          "do": [
+            { "do": "highlight", "target": ["b.n.tenths", "b.digit.tenths"], "at": "tenths" },
+            { "do": "write", "tex": "1\\text{ tenth}=0.1", "fresh": true, "at": "worth", "id": "v1" }
+          ]
+        },
+        {
+          "say": "The one in the hundredths place is worth one hundredth: zero point zero one.",
+          "do": [
+            { "do": "highlight", "target": ["b.n.hundredths", "b.digit.hundredths"], "at": "hundredths" },
+            { "do": "write", "tex": "1\\text{ hundredth}=0.01", "fresh": true, "at": "worth", "id": "v01" }
+          ]
+        },
+        {
+          "say": "The one in the ones place is worth one. The place says what the digit is worth.",
+          "pause": 0.55,
+          "do": [
+            { "do": "highlight", "target": ["b.n.ones", "b.digit.ones"], "at": "ones" },
+            { "do": "text", "text": "The place says what the digit is worth.", "at": "place", "nth": 2, "id": "idea" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": ["ones", "tenths", "hundredths"],
+            "rows": [{ "id": "n", "pieces": { "ones": 2, "tenths": 9, "hundredths": 8 } }],
+            "point": true,
+            "digits": true,
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "A stopwatch shows two point nine eight seconds. Complete the sentence about the digit nine. The value is one of these.",
+          "pause": 0.7,
+          "do": [
+            { "do": "clear" },
+            {
+              "do": "problem",
+              "text": "A stopwatch shows $2.98$ seconds. Complete the sentence about the digit $\\cg{9}$. The digit $\\cg{9}$ is in the $\\square$ place. Its value is $\\square$.",
+              "choices": ["$0.09$", "$0.9$", "$9$", "$90$"],
+              "at": "stopwatch",
+              "id": "p298"
+            },
+            { "do": "highlight", "target": "b.n.tenths", "at": "nine" },
+            { "do": "highlight", "target": "b.digit.tenths", "at": "nine", "nth": 2 }
+          ]
+        },
+        {
+          "say": "Two flats, nine rods, eight squares. The question is about the nine.",
+          "do": [
+            { "do": "write", "tex": "\\ca{2}.\\cg{9}\\ca{8}", "fresh": true, "at": "Two", "id": "n298" },
+            { "do": "highlight", "target": "b.n.tenths", "at": "nine" },
+            { "do": "highlight", "target": "b.digit.tenths", "at": "nine", "nth": 2 }
+          ]
+        },
+        {
+          "say": "The nine is the first digit after the point. That place is tenths.",
+          "do": [
+            { "do": "highlight", "target": ["b.place.tenths", "b.digit.tenths", "b.n.tenths"], "at": "tenths" },
+            { "do": "text", "text": "The $9$ is in the tenths place.", "at": "tenths", "id": "pl9" }
+          ]
+        },
+        {
+          "say": "Nine rods are almost one whole. The value is about one, not nine, and not ninety.",
+          "pause": 0.5,
+          "do": [
+            { "do": "highlight", "target": "b.n.tenths", "at": "Nine" },
+            { "do": "text", "text": "About one, not $9$ or $90$.", "at": "about", "id": "sense" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": ["ones", "tenths", "hundredths"],
+            "rows": [{ "id": "n", "pieces": { "tenths": 9 }, "shown": ["tenths"] }],
+            "point": true,
+            "digits": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Keep the nine in the tenths place, and zero the rest.",
+          "do": [
+            { "do": "text", "text": "Keep the digit in its place. Zero the rest.", "at": "Keep", "id": "phrase" },
+            { "do": "show", "target": "b.digit.hundredths", "at": "zero" },
+            { "do": "highlight", "target": "b.digit.tenths", "at": "nine" }
+          ]
+        },
+        {
+          "say": "Zero point nine zero. The nine has not moved.",
+          "pause": 0.65,
+          "do": [
+            { "do": "write", "tex": "\\ca{0}.\\cg{9}\\cm{0}", "at": "Zero", "id": "z90" },
+            { "do": "highlight", "target": ["b.digit.tenths", "b.n.tenths"], "at": "nine" }
+          ]
+        },
+        {
+          "say": "A zero on the end changes nothing. Zero point nine zero is zero point nine.",
+          "do": [
+            { "do": "hide", "target": "b.digit.hundredths", "at": "nothing" },
+            { "do": "write", "tex": "0.90=0.\\cg{9}", "at": "is", "id": "z9" }
+          ]
+        },
+        {
+          "say": "Nine rods. Nine times one tenth is zero point nine.",
+          "do": [
+            { "do": "highlight", "target": "b.n.tenths", "at": "rods" },
+            { "do": "write", "tex": "9\\times 0.1=0.9", "fresh": true, "at": "times", "id": "times" }
+          ]
+        },
+        {
+          "say": "Tenths place. Its value is zero point nine.",
+          "pause": 0.4,
+          "do": [
+            { "do": "highlight", "target": "b.place.tenths", "at": "Tenths" },
+            { "do": "answer", "tex": "\\text{tenths},\\ 0.9", "at": "zero", "id": "a9" }
+          ]
+        },
+        {
+          "say": "Not nine, not zero point zero nine, and not ninety.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "watch",
+              "text": "Not $9$, not $0.09$, and not $90$.",
+              "at": "Not",
+              "id": "w9"
+            },
+            { "do": "highlight", "target": "b.digit.tenths", "at": "ninety" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": ["ones", "tenths", "hundredths"],
+            "rows": [{ "id": "n", "pieces": { "ones": 2, "tenths": 9, "hundredths": 8 } }],
+            "point": true,
+            "digits": true,
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "The other pieces come back. The two flats are worth two, not twenty and not zero point two.",
+          "do": [{ "do": "highlight", "target": ["b.n.ones", "b.digit.ones"], "at": "two" }]
+        },
+        {
+          "say": "The eight squares are eight hundredths: zero point zero eight.",
+          "do": [
+            { "do": "highlight", "target": ["b.n.hundredths", "b.digit.hundredths"], "at": "eight" },
+            { "do": "write", "tex": "8\\times 0.01=0.08", "fresh": true, "at": "zero", "id": "v08" }
+          ]
+        },
+        {
+          "say": "Two, plus zero point nine, plus zero point zero eight, is two point nine eight.",
+          "pause": 0.5,
+          "do": [{ "do": "write", "tex": "2+0.9+0.08=2.98", "fresh": true, "at": "Two", "id": "c9" }]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": ["ones", "tenths", "hundredths"],
+            "rows": [{ "id": "n", "pieces": { "ones": 2, "hundredths": 5 } }],
+            "point": true,
+            "digits": true,
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "A board is two point zero five meters long. Complete the sentence about the digit five. The value is one of these.",
+          "pause": 0.65,
+          "do": [
+            { "do": "clear" },
+            {
+              "do": "problem",
+              "text": "A board is $2.05$ meters long. Complete the sentence about the digit $\\cg{5}$. The digit $\\cg{5}$ is in the $\\square$ place. Its value is $\\square$.",
+              "choices": ["$0.05$", "$0.5$", "$5$", "$50$"],
+              "at": "board",
+              "id": "p205"
+            },
+            { "do": "highlight", "target": "b.digit.tenths", "at": "zero" },
+            { "do": "highlight", "target": "b.digit.hundredths", "at": "five", "nth": 2 }
+          ]
+        },
+        {
+          "say": "Two flats. The tenths column is empty: a zero. Five squares in the hundredths.",
+          "do": [
+            { "do": "write", "tex": "\\ca{2}.\\ca{0}\\cg{5}", "fresh": true, "at": "Two", "id": "n205" },
+            { "do": "highlight", "target": ["b.digit.tenths", "b.place.tenths"], "at": "zero" }
+          ]
+        },
+        {
+          "say": "The zero holds the tenths place, so the five stays in the hundredths.",
+          "pause": 0.5,
+          "do": [
+            { "do": "highlight", "target": "b.digit.tenths", "at": "zero" },
+            { "do": "text", "text": "A zero holds the place.", "at": "holds", "id": "hold" }
+          ]
+        },
+        {
+          "say": "Five squares. Keep the five in the hundredths place. Five hundredths is zero point zero five.",
+          "do": [
+            { "do": "highlight", "target": ["b.n.hundredths", "b.digit.hundredths"], "at": "squares" },
+            { "do": "write", "tex": "5\\times 0.01=0.05", "fresh": true, "at": "zero", "id": "t05" }
+          ]
+        },
+        {
+          "say": "Five squares do not fill a rod, so this is not zero point five.",
+          "pause": 0.4,
+          "do": [
+            { "do": "highlight", "target": "b.n.hundredths", "at": "squares" },
+            { "do": "text", "text": "Five squares do not fill a rod.", "at": "not", "id": "rod" }
+          ]
+        },
+        {
+          "say": "Hundredths place. The value is zero point zero five.",
+          "pause": 0.35,
+          "do": [
+            { "do": "highlight", "target": "b.place.hundredths", "at": "Hundredths" },
+            { "do": "answer", "tex": "\\text{hundredths},\\ 0.05", "at": "zero", "id": "a5" }
+          ]
+        },
+        {
+          "say": "Not zero point five, not five, and not fifty.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "watch",
+              "text": "Not $0.5$, not $5$, and not $50$.",
+              "at": "Not",
+              "id": "w5"
+            },
+            { "do": "highlight", "target": "b.digit.hundredths", "at": "fifty" }
+          ]
+        },
+        {
+          "say": "Check. Two, plus zero, plus zero point zero five, is two point zero five. The zero adds nothing.",
+          "pause": 0.45,
+          "do": [
+            { "do": "write", "tex": "2+0+0.05=2.05", "fresh": true, "at": "Two", "id": "c5" },
+            { "do": "highlight", "target": "b.digit.tenths", "at": "nothing" }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Every digit goes the same way.",
+          "do": [{ "do": "overview", "columns": "all", "at": "Every" }]
+        },
+        {
+          "say": "One: read the place from the point.",
+          "do": [{ "do": "recap", "text": "Read the place from the point.", "marks": ["pl9"], "at": "One" }]
+        },
+        {
+          "say": "Two: a zero holds its place.",
+          "do": [{ "do": "recap", "text": "A zero holds its place.", "marks": ["hold"], "at": "Two" }]
+        },
+        {
+          "say": "Three: keep the digit in its place, and zero the rest.",
+          "do": [{ "do": "recap", "text": "Keep the digit in its place. Zero the rest.", "marks": ["phrase", "z9"], "at": "Three" }]
+        },
+        {
+          "say": "Four: add the values of the digits. They come back to the number.",
+          "pause": 0.55,
+          "do": [{ "do": "recap", "text": "Add the values of the digits. They come back to the number.", "marks": ["c9", "a9", "c5"], "at": "Four" }]
+        }
+      ]
+    }
+  ]
+}
