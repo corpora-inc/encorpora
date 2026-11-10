@@ -193,6 +193,37 @@ async function startTutor(
   };
 }
 
+/** One more student in a tutor's class, after the starter: the tutor's
+ * nickname for them (or "Student 4") and a birth year, owned by their roster
+ * person the school way, so their own parent names them by a link. */
+export async function addClassStudent(
+  families: FamilyRepository,
+  accountId: string,
+  raw: unknown,
+) {
+  if (accountId.startsWith("school:") || accountId.startsWith("trial:"))
+    throw new FamilyError(403, "starter_unavailable");
+  const input = student.parse(raw);
+  return families.transaction(accountId, async (client) => {
+    const family = await familyClassOf(client, accountId);
+    if (!family) throw new FamilyError(409, "family_class_required");
+    const schools = new SchoolRepository(families.pool);
+    const added = await schools.provisionStudentIn(
+      client,
+      family.orgId,
+      { ...input, classId: family.classId },
+      await teacherPerson(client, family.orgId, accountId),
+    );
+    const { name } = (
+      await client.query<{ name: string }>(
+        "SELECT name FROM amp_learners WHERE id=$1",
+        [added.learnerId],
+      )
+    ).rows[0]!;
+    return { personId: added.personId, learnerId: added.learnerId, name };
+  });
+}
+
 /** This account's person in the org, as the actor of what the starter adds. */
 async function teacherPerson(
   client: PoolClient,

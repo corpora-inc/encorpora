@@ -1,5 +1,10 @@
 import { canAddStudents } from "./permissions";
 import {
+  AddChildSheet,
+  familyAddLabel,
+  useFamilyAdd,
+} from "../family-class/AddChildSheet";
+import {
   keepPreviousData,
   useInfiniteQuery,
   useQuery,
@@ -554,6 +559,9 @@ export function ClassScreen() {
   const canEdit =
     org?.can?.includes("classes.update") || org?.teaches?.includes(classId);
   const canAdd = canAddStudents(org, classId);
+  // A family's class adds a child (or a tutor's student), never by the
+  // school form: a family has no school roster endpoint.
+  const familyAdd = useFamilyAdd(session, org);
   const [notice, setNotice] = useState("");
   const [error, setError] = useState("");
   useLoggedError(error);
@@ -644,9 +652,9 @@ export function ClassScreen() {
       <section className={styles.classRoster}>
         <div className={styles.rosterHead}>
           <h2>Students</h2>
-          {canAdd && (
+          {(canAdd || familyAdd) && (
             <Button variant="secondary" onClick={() => setAdding(true)}>
-              Add student
+              {familyAdd ? familyAddLabel(familyAdd) : "Add student"}
             </Button>
           )}
         </div>
@@ -690,14 +698,23 @@ export function ClassScreen() {
             No students yet. Add them one at a time, or import a file.
           </p>
         )}
-        {canAdd && (
-          <AddStudentSheet
-            orgId={orgId}
-            classId={classId}
-            className={klass.name}
+        {familyAdd && session ? (
+          <AddChildSheet
+            session={session}
+            kind={familyAdd}
             open={adding}
             onOpenChange={setAdding}
           />
+        ) : (
+          canAdd && (
+            <AddStudentSheet
+              orgId={orgId}
+              classId={classId}
+              className={klass.name}
+              open={adding}
+              onOpenChange={setAdding}
+            />
+          )
         )}
       </section>
       <Toast tone="status" message={notice} onDismiss={() => setNotice("")} />

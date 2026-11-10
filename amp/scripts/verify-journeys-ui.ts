@@ -745,7 +745,8 @@ async function parentJourney(
   // consent step for either name.
   await page.goto(`${origin}/family/learners`);
   await page.getByRole("button", { name: "Edit name", exact: true }).click();
-  const rename = page.getByLabel("Name", { exact: true });
+  // The field's reason sits inside its label, so match the name's start.
+  const rename = page.getByRole("textbox", { name: /^Name/ });
   await rename.fill("rowan@example.com");
   await page.getByRole("button", { name: "Save name" }).click();
   await page.getByText("Use a name, not an email address.").waitFor();

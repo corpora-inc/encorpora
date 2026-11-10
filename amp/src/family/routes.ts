@@ -6,7 +6,7 @@ import {
 } from "../account/adult.js";
 import { optionalChildName } from "../learning/nickname.js";
 import { accountSummary } from "../account/repository.js";
-import { startPlace } from "../account/starter.js";
+import { addClassStudent, startPlace } from "../account/starter.js";
 import { isSchoolAccount, studentBearer } from "../schools/principal.js";
 import {
   createProfile,
@@ -173,6 +173,21 @@ export async function registerFamilyRoutes(
       async (request) => {
         const account = await options.authenticate(request);
         return startPlace(repository, account, request.body);
+      },
+    );
+    // A tutor adds a student from another family to their class: a nickname
+    // or initials and a birth year. Their own parent names them by a link.
+    scope.post(
+      "/api/v1/family/class/students",
+      {
+        bodyLimit: 4096,
+        config: { rateLimit: { max: 120, timeWindow: "1 hour" } },
+      },
+      async (request, reply) => {
+        const account = await options.authenticate(request);
+        return reply
+          .code(201)
+          .send(await addClassStudent(repository, account, request.body));
       },
     );
     scope.post(
