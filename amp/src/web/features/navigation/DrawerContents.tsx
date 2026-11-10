@@ -93,6 +93,12 @@ export default function DrawerContents({
     value: l.id,
     label: l.name,
   }));
+  // Exactly one item is current: the most specific match for this route.
+  // Practice as someone else sits inside My practice, so it outranks
+  // Progress there; never two fills at once.
+  const currentItem = location.pathname.startsWith("/me/profiles")
+    ? "someone"
+    : (here?.kind ?? null);
   const nav = (
     href: string,
     title: string,
@@ -273,20 +279,20 @@ export default function DrawerContents({
             ("Let … practice here"), which is the Class link below. */}
         {!view.viewOnly &&
           nav(practiceHref, practiceLabel, "learn", {
-            current: here?.kind === "practice",
+            current: currentItem === "practice",
           })}
         {/* A profile's progress is its practice; its levels are its editor. */}
         {hasProgress &&
           !profile &&
           nav(overviewPath(context), "Progress", "level", {
-            current: here?.kind === "progress",
+            current: currentItem === "progress",
           })}
         {/* Practicing at another grade and pace: a page of its own, never a
             place in the switcher (docs/design/ia.md). */}
         {own &&
           !profile &&
           nav("/me/profiles", "Practice as someone else", "someone", {
-            current: location.pathname.startsWith("/me/profiles"),
+            current: currentItem === "someone",
           })}
         {/* Lessons are reached from Pathways, practice and search, never
             as a destination of their own (docs/design/ia.md). */}
@@ -299,13 +305,13 @@ export default function DrawerContents({
               (classPlace.id === currentClass && currentPlace === "home")
                 ? undefined
                 : classPlace.name,
-            current: here?.kind === "class",
+            current: currentItem === "class",
           })}
         {schoolPlace &&
           !student &&
           nav(`/${schoolPlace.path}`, "School", "school", {
             detail: schoolPlace.name,
-            current: here?.kind === "school",
+            current: currentItem === "school",
           })}
         {student &&
           account?.school?.standings &&
@@ -326,7 +332,7 @@ export default function DrawerContents({
           account?.familyClass?.classId === here.classId
             ? nav("/family", "Family & account", "settings")
             : nav("/family/security", "Account", "settings", {
-                current: here?.kind === "account",
+                current: currentItem === "account",
               }))}
       </nav>
       <div className={styles.settings}>

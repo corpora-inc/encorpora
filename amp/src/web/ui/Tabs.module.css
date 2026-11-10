@@ -52,11 +52,14 @@
   background: transparent;
   transition: background var(--motion-fast);
 }
-.tab:hover {
-  color: var(--color-on-surface);
-}
-.tab:hover::before {
-  background: var(--color-surface-hover);
+/* Hover only where a pointer hovers: a tapped tab keeps no fill. */
+@media (hover: hover) {
+  .tab:hover {
+    color: var(--color-on-surface);
+  }
+  .tab:hover::before {
+    background: var(--color-surface-hover);
+  }
 }
 .tab:focus-visible {
   outline: 3px solid var(--color-focus-ring);
