@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { optionalNickname } from "../learning/nickname.js";
 
 /** Orgs an operator creates. A family (docs/families.md) is made by its
  * parent's first child, never by hand. */
@@ -141,9 +142,20 @@ export const createStudentSchema = z
     gradeLevel: gradeLevelSchema.optional(),
     birthYear: z.number().int().min(1900).max(2100).optional(),
     classId: z.uuid().optional(),
+    /** Without a name (no data agreement, as in a tutor's class): a nickname
+     * or initials, or blank for "Student 3" (src/learning/nickname.ts). */
+    nickname: optionalNickname,
   })
   .superRefine((input, context) => {
-    if (input.givenName !== undefined) return;
+    if (input.givenName !== undefined) {
+      if (input.nickname !== undefined)
+        context.addIssue({
+          code: "custom",
+          path: ["nickname"],
+          message: "A named student has no nickname",
+        });
+      return;
+    }
     if (input.birthYear === undefined)
       context.addIssue({
         code: "custom",

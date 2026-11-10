@@ -21,6 +21,12 @@ import { nativeRuntime } from "./native-runtime";
 import { Loading } from "./ui/Loading";
 import { Sheet } from "./ui/Sheet";
 import { Button } from "./ui/Button";
+import { TextField } from "./ui/TextField";
+import {
+  CHILD_NAME_MAX,
+  childNameProblem,
+  PARENT_ENTRY_LINE,
+} from "../learning/nickname";
 import { useLearnerStore } from "./learner-store";
 import { refreshMe } from "./lib/query";
 import { rememberPlace } from "./features/onboarding/place-memory";
@@ -135,13 +141,22 @@ export function FamilyCenter({
       },
     [cached],
   );
+  // A parent adds a child with or without verified consent; withdrawal
+  // stops collection. With none yet, the starter's first step adds them.
+  const canAddChild =
+    !!family &&
+    family.consent.status !== "withdrawn" &&
+    (["active", "development"].includes(family.consent.status) ||
+      family.learners.some((entry) => !entry.deletedAt && !entry.adult));
   const [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
     [notice, setNotice] = useState("");
   useLoggedError(error);
   const [confirmation, setConfirmation] = useState<Confirmation | null>(null),
     [rename, setRename] = useState<string | null>(null),
-    [name, setName] = useState("");
+    [name, setName] = useState(""),
+    [nameError, setNameError] = useState(""),
+    [newNameError, setNewNameError] = useState("");
   const body = useRef<HTMLDivElement>(null);
   const previousPrivacy = useRef(privacy),
     previousRename = useRef(rename);
@@ -568,8 +583,8 @@ export function FamilyCenter({
                     <div className="family-first-step">
                       <h3>Add a child</h3>
                       <p>
-                        Each child practices with a picture, like Fox or Moon,
-                        until you add their name.
+                        Add each child with their name and birth year. Each one
+                        practices at their own level.
                       </p>
                       <button onClick={() => route.navigate("/start/parent")}>
                         Add a child
@@ -583,7 +598,7 @@ export function FamilyCenter({
                       <h3>{selectedLearner.name}</h3>
                       <p>
                         Continue with AMP to keep practicing after the free
-                        problems, and to add {selectedLearner.name}’s name.
+                        problems.
                       </p>
                       <button
                         onClick={() =>
@@ -649,68 +664,76 @@ export function FamilyCenter({
                       ) : section !== "learners" ? null : rename ===
                         learner.id ? (
                         <form
+                          className="family-name-edit"
+                          noValidate
                           onSubmit={(event) => {
                             event.preventDefault();
+                            const problem = childNameProblem(name);
+                            if (problem) return setNameError(problem);
                             void action(async () => {
                               await api(
                                 `/family/learners/${encodeURIComponent(learner.id)}/rename`,
-                                { name },
+                                { name: name.trim() },
                               );
                               setRename(null);
                               await refresh();
-                              setNotice("Learner name updated.");
+                              setNotice("Name saved.");
                             });
                           }}
                         >
-                          <label htmlFor={`rename-${learner.id}`}>
-                            Learner display name
-                          </label>
-                          <input
-                            id={`rename-${learner.id}`}
+                          {/* Blank returns them to their number ("Child 2"). */}
+                          <TextField
+                            label="Name"
+                            placeholder="First name or nickname"
                             value={name}
-                            onChange={(event) => setName(event.target.value)}
-                            maxLength={80}
+                            error={nameError}
+                            onChange={(event) => {
+                              setName(event.target.value);
+                              setNameError("");
+                            }}
+                            maxLength={CHILD_NAME_MAX}
                             autoComplete="off"
+                            autoCapitalize="words"
+                            spellCheck={false}
                             autoFocus
                             disabled={busy}
                           />
-                          <div className="family-actions">
-                            <button disabled={busy || !name.trim()}>
+                          <div className="family-name-actions">
+                            <Button
+                              variant="primary"
+                              type="submit"
+                              aria-busy={busy || undefined}
+                              disabled={busy}
+                            >
                               Save name
-                            </button>
-                            <button
+                            </Button>
+                            <Button
+                              variant="secondary"
                               type="button"
                               onClick={() => setRename(null)}
                               disabled={busy}
                             >
                               Cancel
-                            </button>
+                            </Button>
                           </div>
                         </form>
                       ) : (
                         <div className="family-actions">
                           {/* A quiet edit beside a destructive action: the
                               card's one primary action is the workbook. A
-                              picture name becomes a name once there is the
-                              consent a name needs (a purchase is one). */}
-                          {(!learner.namePending ||
-                            ["active", "development"].includes(
-                              family.consent.status,
-                            )) && (
-                            <button
-                              className="secondary"
-                              data-rename-id={learner.id}
-                              disabled={busy}
-                              onClick={() => {
-                                setRename(learner.id);
-                                setName(
-                                  learner.namePending ? "" : learner.name,
-                                );
-                              }}
-                            >
-                              {learner.namePending ? "Add name" : "Edit name"}
-                            </button>
-                          )}
+                              parent names their own child at any time. */}
+                          <button
+                            className="secondary"
+                            data-rename-id={learner.id}
+                            disabled={busy}
+                            onClick={() => {
+                              setRename(learner.id);
+                              setNameError("");
+                              setName(learner.defaultName ? "" : learner.name);
+                            }}
+                          >
+                            {learner.defaultName ? "Add name" : "Edit name"}
+                          </button>
                           <button
                             className="family-danger-link"
                             disabled={busy}
@@ -818,7 +841,7 @@ export function FamilyCenter({
                 )}
                 {section === "learners" &&
                   !nativeRuntime &&
-                  ["active", "development"].includes(family.consent.status) &&
+                  canAddChild &&
                   !adding && (
                     <button
                       className="secondary family-add-toggle"
@@ -830,7 +853,7 @@ export function FamilyCenter({
                   )}
                 {section === "learners" &&
                   !nativeRuntime &&
-                  ["active", "development"].includes(family.consent.status) &&
+                  canAddChild &&
                   adding && (
                     <form
                       id="family-add-learner"
@@ -838,7 +861,11 @@ export function FamilyCenter({
                       onSubmit={(event) => {
                         event.preventDefault();
                         const name = newName.trim();
-                        if (!name) return;
+                        const problem = childNameProblem(name);
+                        if (problem) return setNewNameError(problem);
+                        // A child's birth year sets where they start, and a
+                        // child with no verified consent needs one.
+                        if (!newBirthYear) return;
                         // An adult may be adding themselves: their own
                         // practice is their own learner, not a family one.
                         if (
@@ -849,29 +876,36 @@ export function FamilyCenter({
                           return setAskSelf(name);
                         setAskSelf(null);
                         void action(async () => {
-                          await api("/learners", {
-                            name,
-                            ...(newBirthYear
-                              ? { birthYear: Number(newBirthYear) }
-                              : {}),
-                          });
+                          // Blank goes by their number ("Child 2").
+                          const added = await api<{ name: string }>(
+                            "/learners",
+                            {
+                              ...(name ? { name } : {}),
+                              birthYear: Number(newBirthYear),
+                            },
+                          );
                           await refresh();
                           setNewName("");
                           setNewBirthYear("");
                           setAdding(false);
-                          setNotice(`${name} added.`);
+                          setNotice(`${added.name} added.`);
                         });
                       }}
                     >
-                      <label>
-                        <span>Name</span>
-                        <input
-                          value={newName}
-                          maxLength={60}
-                          placeholder="First name or nickname"
-                          onChange={(event) => setNewName(event.target.value)}
-                        />
-                      </label>
+                      <TextField
+                        label="Name"
+                        value={newName}
+                        maxLength={CHILD_NAME_MAX}
+                        placeholder="First name or nickname"
+                        autoComplete="off"
+                        autoCapitalize="words"
+                        spellCheck={false}
+                        error={newNameError}
+                        onChange={(event) => {
+                          setNewName(event.target.value);
+                          setNewNameError("");
+                        }}
+                      />
                       <label>
                         <span>Birth year</span>
                         <BirthYearPicker
@@ -880,7 +914,8 @@ export function FamilyCenter({
                           disabled={busy}
                         />
                       </label>
-                      <button disabled={busy || !newName.trim()}>
+                      <p className="family-name-basis">{PARENT_ENTRY_LINE}</p>
+                      <button disabled={busy || !newBirthYear}>
                         Add learner
                       </button>
                       <Sheet
@@ -925,7 +960,7 @@ export function FamilyCenter({
                             form="family-add-learner"
                             disabled={busy}
                           >
-                            No, add {askSelf ?? "them"}
+                            No, add {askSelf || "them"}
                           </Button>
                         </div>
                       </Sheet>

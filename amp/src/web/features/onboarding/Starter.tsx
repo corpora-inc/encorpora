@@ -9,6 +9,13 @@ import { sessionOptions } from "../../lib/query";
 import { chosenPlan } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
 import { BirthYearPicker } from "../../ui/Select";
+import {
+  CHILD_NAME_MAX,
+  childNameProblem,
+  NICKNAME_HINT,
+  NICKNAME_MAX,
+  PARENT_ENTRY_LINE,
+} from "../../../learning/nickname";
 import { Stepper } from "../../ui/Stepper";
 import { Toast } from "../../ui/Toast";
 import { loadCurriculum } from "../schools/api";
@@ -22,7 +29,6 @@ import {
 } from "./starter-api";
 import styles from "./Starter.module.css";
 
-const ORDINALS = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth"];
 const MAX_CHILDREN = 6;
 const MAX_STUDENTS = 30;
 
@@ -30,14 +36,20 @@ const MAX_STUDENTS = 30;
 type StarterDraft = {
   children: number;
   childYears: string[];
+  /** The name each child goes by; blank is "Child 2". */
+  childNames: string[];
   students: number;
   studentYears: string[];
+  /** A tutor's nickname for each student; blank is "Student 2". */
+  studentNames: string[];
 };
 const emptyDraft: StarterDraft = {
   children: 1,
   childYears: [],
+  childNames: [],
   students: 1,
   studentYears: [],
+  studentNames: [],
 };
 const useStarterDraft = create<
   StarterDraft & {
@@ -128,8 +140,10 @@ function StarterScreen({ session }: { session: AuthSession }) {
     JSON.stringify([
       draft.children,
       draft.childYears,
+      draft.childNames,
       draft.students,
       draft.studentYears,
+      draft.studentNames,
     ]),
   );
   useEffect(() => setAlready(null), [answer, choice]);
@@ -283,10 +297,13 @@ function StarterScreen({ session }: { session: AuthSession }) {
                 open: openPlace,
               }
             }
-            onStart={(years) =>
+            onStart={(people) =>
               begin({
                 as: "parent",
-                children: years.map((birthYear) => ({ birthYear })),
+                children: people.map(({ birthYear, name }) => ({
+                  birthYear,
+                  ...(name ? { name } : {}),
+                })),
               })
             }
           />
@@ -300,10 +317,13 @@ function StarterScreen({ session }: { session: AuthSession }) {
                 open: openPlace,
               }
             }
-            onStart={(years) =>
+            onStart={(people) =>
               begin({
                 as: "tutor",
-                students: years.map((birthYear) => ({ birthYear })),
+                students: people.map(({ birthYear, name }) => ({
+                  birthYear,
+                  ...(name ? { nickname: name } : {}),
+                })),
               })
             }
           />
@@ -320,39 +340,85 @@ function StarterScreen({ session }: { session: AuthSession }) {
   );
 }
 
-/** Birth years for `count` people, each with its own designed picker. */
-function Years({
+/** What a child is called beside their birth year: a parent's name for their
+ * own child, or a tutor's nickname for a student from another family. */
+type NameField = { label: string; placeholder: string; max: number };
+
+/** `count` people, each with an optional name and a birth year. Each row is
+ * labelled with the name it gets when the field is left blank ("Child 2").
+ * Wide screens show the field names once, over the columns. */
+function People({
   count,
+  rowName,
+  field,
+  names,
   years,
-  name,
-  onChange,
+  invalid,
+  onNames,
+  onYears,
   disabled,
 }: {
   count: number;
+  rowName: (index: number) => string;
+  field: NameField;
+  names: string[];
   years: string[];
-  name: (index: number) => string;
-  onChange: (years: string[]) => void;
+  /** The first row whose name can't be used: marked, its reason below. */
+  invalid: number | null;
+  onNames: (names: string[]) => void;
+  onYears: (years: string[]) => void;
   disabled: boolean;
 }) {
+  const set = (list: string[], index: number, value: string) => {
+    const next = [...list];
+    next[index] = value;
+    return next;
+  };
   return (
-    <ol className={styles.years}>
-      {Array.from({ length: count }, (_, index) => (
-        <li key={index} className={styles.year}>
-          <span className={styles.yearName}>{name(index)}</span>
-          <BirthYearPicker
-            label={`Birth year, ${name(index).toLowerCase()}`}
-            adult={false}
-            value={years[index] ?? ""}
-            disabled={disabled}
-            onChange={(value) => {
-              const next = [...years];
-              next[index] = value;
-              onChange(next);
-            }}
-          />
-        </li>
-      ))}
-    </ol>
+    <div className={styles.people}>
+      <div className={styles.columns} aria-hidden="true">
+        <span />
+        <span>{field.label}</span>
+        <span>Birth year</span>
+      </div>
+      <ol className={styles.rows}>
+        {Array.from({ length: count }, (_, index) => (
+          <li key={index} className={styles.person}>
+            <span className={styles.personName}>{rowName(index)}</span>
+            <label className={styles.cell}>
+              <span className={styles.cellLabel}>{field.label}</span>
+              <input
+                className={styles.nameInput}
+                value={names[index] ?? ""}
+                placeholder={field.placeholder}
+                maxLength={field.max}
+                autoComplete="off"
+                autoCapitalize="words"
+                spellCheck={false}
+                aria-invalid={invalid === index || undefined}
+                aria-label={`${field.label}, ${rowName(index)}`}
+                disabled={disabled}
+                onChange={(event) =>
+                  onNames(set(names, index, event.target.value))
+                }
+              />
+            </label>
+            <div className={styles.cell}>
+              <span className={styles.cellLabel} aria-hidden="true">
+                Birth year
+              </span>
+              <BirthYearPicker
+                label={`Birth year, ${rowName(index)}`}
+                adult={false}
+                value={years[index] ?? ""}
+                disabled={disabled}
+                onChange={(value) => onYears(set(years, index, value))}
+              />
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
   );
 }
 
@@ -363,6 +429,45 @@ const chosenYears = (years: string[], count: number) => {
     : null;
 };
 
+/** Each row's birth year and name, once every year is chosen and every name
+ * can be used; otherwise what's missing, in words for the hint line. */
+function answers(
+  count: number,
+  years: string[],
+  names: string[],
+  field: NameField,
+  rowName: (index: number) => string,
+  missingYear: string,
+) {
+  for (let index = 0; index < count; index++) {
+    const problem = childNameProblem(names[index] ?? "", field.max);
+    if (problem)
+      return { ready: null, invalid: index, why: `${rowName(index)}: ${problem}` };
+  }
+  const picked = chosenYears(years, count);
+  if (!picked) return { ready: null, invalid: null, why: missingYear };
+  return {
+    ready: picked.map((birthYear, index) => ({
+      birthYear,
+      name: names[index]?.trim() || undefined,
+    })),
+    invalid: null,
+    why: "",
+  };
+}
+
+const childField: NameField = {
+  label: "Name",
+  placeholder: "First name or nickname",
+  max: CHILD_NAME_MAX,
+};
+const studentField: NameField = {
+  label: "Nickname or initials",
+  placeholder: "Optional",
+  max: NICKNAME_MAX,
+};
+type Person = { birthYear: number; name?: string };
+
 function Children({
   session,
   busy,
@@ -372,13 +477,22 @@ function Children({
   session: AuthSession;
   busy: boolean;
   already: { note: string; open: () => void } | null;
-  onStart: (years: number[]) => void;
+  onStart: (people: Person[]) => void;
 }) {
   const draft = useStarterDraft();
   const mine = draft.owner === session.accountId;
   const count = mine ? draft.children : 1;
   const years = mine ? draft.childYears : [];
-  const ready = chosenYears(years, count);
+  const names = mine ? draft.childNames : [];
+  const rowName = (index: number) => `Child ${index + 1}`;
+  const { ready, invalid, why } = answers(
+    count,
+    years,
+    names,
+    childField,
+    rowName,
+    "Choose a birth year for each child.",
+  );
   return (
     <section className={styles.panel} aria-labelledby="starter-children">
       <h2 id="starter-children" className={styles.question}>
@@ -392,23 +506,22 @@ function Children({
         max={MAX_CHILDREN}
         onChange={(value) => draft.set(session.accountId, { children: value })}
       />
-      <Years
+      <People
         count={count}
+        rowName={rowName}
+        field={childField}
+        names={names}
         years={years}
+        invalid={invalid}
         disabled={busy}
-        name={(index) =>
-          count === 1 ? "Your child" : `${ORDINALS[index]} child`
-        }
-        onChange={(next) => draft.set(session.accountId, { childYears: next })}
+        onNames={(next) => draft.set(session.accountId, { childNames: next })}
+        onYears={(next) => draft.set(session.accountId, { childYears: next })}
       />
-      <p className={styles.note}>
-        Each child starts as a picture, like Fox or Moon, until you add their
-        name.
-      </p>
+      <p className={styles.basis}>{PARENT_ENTRY_LINE}</p>
       <Start
         busy={busy}
         ready={!!ready}
-        missing="Choose a birth year for each child."
+        missing={why}
         already={already}
         onClick={() => ready && onStart(ready)}
       >
@@ -427,13 +540,22 @@ function Students({
   session: AuthSession;
   busy: boolean;
   already: { note: string; open: () => void } | null;
-  onStart: (years: number[]) => void;
+  onStart: (people: Person[]) => void;
 }) {
   const draft = useStarterDraft();
   const mine = draft.owner === session.accountId;
   const count = mine ? draft.students : 1;
   const years = mine ? draft.studentYears : [];
-  const ready = count === 0 ? [] : chosenYears(years, count);
+  const names = mine ? draft.studentNames : [];
+  const rowName = (index: number) => `Student ${index + 1}`;
+  const { ready, invalid, why } = answers(
+    count,
+    years,
+    names,
+    studentField,
+    rowName,
+    "Choose a birth year for each student.",
+  );
   return (
     <section className={styles.panel} aria-labelledby="starter-students">
       <h2 id="starter-students" className={styles.question}>
@@ -448,26 +570,34 @@ function Students({
         onChange={(value) => draft.set(session.accountId, { students: value })}
       />
       {count > 0 && (
-        <Years
+        <People
           count={count}
+          rowName={rowName}
+          field={studentField}
+          names={names}
           years={years}
+          invalid={invalid}
           disabled={busy}
-          name={(index) => `Student ${index + 1}`}
-          onChange={(next) =>
+          onNames={(next) =>
+            draft.set(session.accountId, { studentNames: next })
+          }
+          onYears={(next) =>
             draft.set(session.accountId, { studentYears: next })
           }
         />
       )}
       <p className={styles.note}>
-        Each student is a picture, like Fox or Moon. Their own parent adds their
-        name through a link you send.
+        {NICKNAME_HINT} Each student’s own parent adds their name through a
+        link you send.
       </p>
       <Start
         busy={busy}
-        ready={!!ready}
-        missing="Choose a birth year for each student."
+        ready={count === 0 || !!ready}
+        missing={why}
         already={already}
-        onClick={() => ready && onStart(ready)}
+        onClick={() =>
+          count === 0 ? onStart([]) : ready && onStart(ready)
+        }
       >
         Create my class
       </Start>

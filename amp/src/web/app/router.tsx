@@ -116,7 +116,7 @@ function RouterError({ error }: { error: unknown }) {
   const router = useRouter();
   return <RouteError error={error} reset={() => void router.invalidate()} />;
 }
-/** "Add Fox's name", once "Continue with AMP" has made access active. Its
+/** "Add Child 2's name", once "Continue with AMP" has made access active. Its
  * chunk loads only on the screen the purchase returned to. */
 const AfterPurchase = lazy(() =>
   import("../features/continue/AfterPurchase").then((module) => ({

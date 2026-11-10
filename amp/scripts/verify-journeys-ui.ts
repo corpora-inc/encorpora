@@ -42,7 +42,6 @@ import { buildApp } from "../src/server/app";
 import { refuseStudentTokens } from "../src/server/auth";
 import { PostgresRepository } from "../src/server/repository";
 import { localRenderer } from "../src/workbook/pdf";
-import { schoolPictures } from "../src/schools/contracts";
 import {
   config as stripeBase,
   payment as basePayment,
@@ -538,15 +537,15 @@ async function parentJourney(
   await page.waitForURL(/\/start\/parent$/);
   await heading(page, "How many children?", 2);
   await page.getByRole("button", { name: "Increase children" }).click();
-  for (const [ordinal, year] of [
-    ["first", "2016"],
-    ["second", "2018"],
+  for (const [child, year] of [
+    ["Child 1", "2016"],
+    ["Child 2", "2018"],
   ] as const) {
-    await page
-      .getByRole("button", { name: `Birth year, ${ordinal} child` })
-      .click();
+    await page.getByRole("button", { name: `Birth year, ${child}` }).click();
     await page.getByRole("option", { name: year, exact: true }).click();
   }
+  // One child named by the parent, one left blank ("Child 1").
+  await page.getByLabel("Name, Child 2").fill("Sam");
   await measured(page, `${label} children`);
   await shot(page, 1, "children", width, theme);
   // Back and forward keep the same screen; refresh keeps the answer's URL.
@@ -563,10 +562,10 @@ async function parentJourney(
   await page.waitForURL(CLASS_TODAY);
   await heading(page, /^Good (morning|afternoon|evening)/);
   const [fox, moon] = await learnersOf(account);
-  assert.ok(fox && moon, "two unnamed children");
+  assert.ok(fox && moon, "two children");
   check(
-    `${label} picture names`,
-    /^[A-Z][a-z]+$/.test(fox.name) && fox.name !== moon.name,
+    `${label} the parent's name, and a blank one by its number`,
+    fox.name === "Child 1" && moon.name === "Sam",
     [fox.name, moon.name],
   );
   await page
@@ -695,7 +694,7 @@ async function parentJourney(
   await naming.waitFor();
   await measured(page, `${label} naming`);
   await shot(page, 1, "name", width, theme);
-  await naming.getByLabel("First name or nickname").fill("Rowan");
+  await naming.getByLabel("Name", { exact: true }).fill("Rowan");
   await naming.getByRole("button", { name: "Save name" }).click();
   await naming.waitFor({ state: "detached" });
   const named = (
@@ -891,7 +890,7 @@ async function tutorJourney(
     [3, "2017"],
   ] as const) {
     await page
-      .getByRole("button", { name: `Birth year, student ${index}` })
+      .getByRole("button", { name: `Birth year, Student ${index}` })
       .click();
     await page.getByRole("option", { name: year, exact: true }).click();
   }
@@ -904,11 +903,11 @@ async function tutorJourney(
     await db.query<{ name: string }>(
       `SELECT p.given_name AS name FROM amp_families f JOIN amp_enrollments e ON e.class_id=f.class_id AND e.role='student'
        JOIN amp_people p ON p.id=e.person_id JOIN amp_learners l ON l.id=p.learner_id
-       WHERE f.account_id=$1 ORDER BY l.created_at,l.picture_number,array_position($2::text[],l.picture_identity),p.id`,
-      [account, [...schoolPictures]],
+       WHERE f.account_id=$1 ORDER BY l.created_at,l.label_number,p.id`,
+      [account],
     )
   ).rows.map((row) => row.name);
-  check(`${label} three picture students`, names.length === 3, names);
+  check(`${label} three numbered students`, names.length === 3, names);
   const others = page.getByRole("region", { name: "From other families" });
   for (const name of names)
     await others.getByText(name, { exact: true }).waitFor();

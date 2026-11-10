@@ -15,7 +15,9 @@ export const learners = pgTable(
     accountId: text("account_id").notNull(),
     name: text("name").notNull(),
     namePending: boolean("name_pending").notNull().default(false),
-    pictureIdentity: text("picture_identity"),
+    /** "Child 2": the learner's number in `identityScope` (migration 0109). */
+    labelNumber: integer("label_number"),
+    identityScope: text("identity_scope"),
     freeOnlineUsed: integer("free_online_used").notNull().default(0),
     freeWorkbooksUsed: integer("free_workbooks_used").notNull().default(0),
     startingBand: text("starting_band"),

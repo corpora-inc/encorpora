@@ -9,8 +9,8 @@ import { rememberPlace } from "./place-memory";
 /** What the starter sends: one answer and only what that answer needs. */
 export type StarterAnswer =
   | { as: "myself"; timezone: string }
-  | { as: "parent"; children: { birthYear: number }[] }
-  | { as: "tutor"; students: { birthYear: number }[] };
+  | { as: "parent"; children: { birthYear: number; name?: string }[] }
+  | { as: "tutor"; students: { birthYear: number; nickname?: string }[] };
 
 const result = z.object({
   home: z.string().min(1),

@@ -4,6 +4,7 @@ import {
   startAdultPractice,
   startPracticeSchema,
 } from "../account/adult.js";
+import { optionalChildName } from "../learning/nickname.js";
 import { accountSummary } from "../account/repository.js";
 import { startPlace } from "../account/starter.js";
 import { isSchoolAccount, studentBearer } from "../schools/principal.js";
@@ -369,15 +370,9 @@ export async function registerFamilyRoutes(
       const account = await options.authenticate(request);
       const { learnerId } = learnerParams.parse(request.params);
       await refuseSecondParentFor(options.pool, account, learnerId);
+      // A parent's name for their own child; blank is "Child 2".
       const { name } = z
-        .strictObject({
-          name: z
-            .string()
-            .trim()
-            .min(1)
-            .max(80)
-            .refine((value) => !/[\u0000-\u001f\u007f]/.test(value)),
-        })
+        .strictObject({ name: optionalChildName })
         .parse(request.body);
       await repository.rename(account, learnerId, name);
       return { renamed: true };

@@ -16,12 +16,12 @@ import {
 } from "../learning/free-allowance.js";
 import { RETENTION, RETENTION_BATCH } from "../privacy/retention-periods.js";
 import { FamilyError } from "./contracts.js";
-import { schoolPictures } from "../schools/contracts.js";
 
 /* A child from another family joins a family class once their own parent
    approves (docs/families.md, step 5). For anyone who isn't a school, the
    child's parent consents. The teacher supplies only the parent's address or
-   selects an existing picture identity; the parent supplies the name. */
+   selects an existing student (their nickname, or "Student 3"); the parent
+   supplies the name. */
 
 /** Links in mail and on screen, set up by the server at startup. */
 export type ApprovalKeys = { secret: string; origin: string };
@@ -81,8 +81,8 @@ const approvalId = (id: string) => {
 export type ApprovalRow = {
   id: string;
   name: string;
-  /** `unnamed`: a picture-identity student of this class (a tutor's, from
-   * the starter) whose parent hasn't been sent a link yet. */
+  /** `unnamed`: a student of this class with a nickname or a number (a
+   * tutor's, from the starter) whose parent hasn't been sent a link yet. */
   status:
     "waiting" | "expired" | "paused" | "needs-access" | "active" | "unnamed";
   parentEmail: string | null;
@@ -386,8 +386,8 @@ export async function listApprovals(
        AND l.account_id='school:'||p.id
      WHERE f.account_id=$1 AND NOT EXISTS(
        SELECT 1 FROM amp_family_approvals a WHERE a.person_id=p.id AND a.ended_at IS NULL)
-     ORDER BY l.created_at,l.picture_number,array_position($2::text[],l.picture_identity),p.id LIMIT 200`,
-    [familyAccountId, [...schoolPictures]],
+     ORDER BY l.created_at,l.label_number,p.id LIMIT 200`,
+    [familyAccountId],
   );
   for (const row of unnamed.rows)
     result.push({

@@ -322,19 +322,27 @@ test(
 );
 
 test(
-  "a verified purchase names and covers the existing unnamed learner in place",
+  "a verified purchase covers the existing child in place, and their name leaves the restricted basis",
   enabled,
   async () =>
     fixture(async (f) => {
       const id = randomUUID();
       await f.pool.query(
-        `INSERT INTO amp_learners(id,account_id,name,birth_year,name_pending,picture_identity,picture_number,identity_scope,free_online_used,free_workbooks_used)
-      VALUES($1,'parent','Fox',2016,true,'fox',1,'family:parent',37,2)`,
+        `INSERT INTO amp_learners(id,account_id,name,birth_year,name_pending,label_number,identity_scope,free_online_used,free_workbooks_used)
+      VALUES($1,'parent','Child 1',2016,true,1,'family:parent',37,2)`,
         [id],
       );
-      await assert.rejects(
-        f.family.rename("parent", id, "Rowan Fixture"),
-        /consent_required/,
+      // The parent names their own child before consent; the child stays
+      // on the restricted basis.
+      await f.family.rename("parent", id, "Rowan");
+      assert.deepEqual(
+        (
+          await f.pool.query(
+            "SELECT name,name_pending,name_basis FROM amp_learners WHERE id=$1",
+            [id],
+          )
+        ).rows[0],
+        { name: "Rowan", name_pending: true, name_basis: "parent_entry" },
       );
       await f.checkout();
       const checkout = (

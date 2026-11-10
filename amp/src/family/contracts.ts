@@ -21,7 +21,8 @@ export interface FamilyLearner {
   /** Actual current grant coverage, separate from the free allowance. */
   hasAccess?: boolean;
   namePending?: boolean;
-  pictureIdentity?: string | null;
+  /** Goes by their number ("Child 2"): no nickname has been chosen. */
+  defaultName?: true;
   freeAllowance?: FreeAllowance;
   /** The account holder's own learner (docs/families.md), not a child. */
   adult?: true;
