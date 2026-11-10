@@ -2144,6 +2144,10 @@ export const TALL: Layout = {
   // an upright phone scales the frame less, so slightly smaller type still reads at about 19 px
   minType: 52,
 };
+/** Phone recap type, in stage pixels. It may shrink a little, and it stops at a size that still reads once the frame is scaled onto a phone. */
+const RECAP_FONT = 44, RECAP_FONT_MIN = 40;
+/** Clear band between the figure, the notes and a card on a phone. */
+const REGION_GAP = 32;
 const COL_W = 1640, COL_GAP = 200, EDGE_PAD = 64, CAM_DUR = 0.95;
 
 type StackView = {
@@ -2297,6 +2301,8 @@ class Board {
   colExt: { l: number; r: number }[] = [];
   items: BoardItem[] = [];
   recapItems: { el: HTMLElement; t0: number; dur: number; marks?: Set<string> }[] = [];
+  recapList!: HTMLElement;
+  shotMeta: { t0: number; hasFig: boolean }[] = [];
   home: Rect[] = [];
   recapCard: HTMLElement;
   keys: CamKey[] = [];
@@ -2311,7 +2317,8 @@ class Board {
     this.recapCard = div("film-recap", root);
     this.recapCard.style.cssText = `left:${L.recap.x}px;top:${L.recap.y}px;width:${L.recap.w}px;height:${L.recap.h}px`;
     this.recapCard.classList.add(`film-recap-${L.name}`);
-    const recapList = div("film-recap-list", this.recapCard);
+    this.shotMeta = shots.map((s) => ({ t0: s.t0, hasFig: s.hasFig }));
+    const recapList = this.recapList = div("film-recap-list", this.recapCard);
     let col = this.newCol();
     const events: { t: number; kind: string; item?: BoardItem; shot?: number; col?: number; idx?: number }[] = [];
     shots.forEach((sh, si) => {
@@ -2678,8 +2685,140 @@ class Board {
     for (const it of this.items) if (it.stack) out.push(...stackMoves(it.stack, it.t0));
     return out;
   }
+  /** A figure shot is still on screen, including while it fades out, so the notes stay below it. */
+  figureShowing(t: number) {
+    for (let i = 0; i < this.shotMeta.length; i++) {
+      const s = this.shotMeta[i]!;
+      if (!s.hasFig) continue;
+      const t1 = this.shotMeta[i + 1]?.t0 ?? Infinity;
+      const inn = i === 0 ? ease(t / 0.7) : ease((t - s.t0) / 0.6);
+      const out = t1 === Infinity ? 1 : 1 - ease((t - t1) / 0.3);
+      if (inn * out > 0.04) return true;
+    }
+    return false;
+  }
+  /** Set the recap type so the steps that have started fit in `maxH`. Future steps take no space. */
+  fitRecap(t: number, maxH: number) {
+    const list = this.recapList;
+    for (const r of this.recapItems) r.el.style.display = r.t0 <= t + 1e-4 ? "" : "none";
+    const apply = (font: number) => {
+      const k = font / RECAP_FONT;
+      list.style.fontSize = `${font}px`;
+      list.style.gap = `${Math.round(40 * k)}px`;
+      list.style.padding = `${Math.round(56 * k)}px ${Math.round(52 * k)}px`;
+    };
+    let font = RECAP_FONT;
+    apply(font);
+    let h = list.offsetHeight;
+    while (h > maxH && font > RECAP_FONT_MIN) {
+      font -= 2;
+      apply(font);
+      h = list.offsetHeight;
+    }
+    if (h > maxH) {
+      list.style.gap = "16px";
+      list.style.padding = "24px 32px";
+      h = list.offsetHeight;
+    }
+    return h;
+  }
+  /**
+   * On a phone the figure, the notes and a card each keep their own band.
+   * When a card is showing, the notes band ends above it. A long card may set
+   * its type a little smaller. If it still does not fit, the card takes the
+   * screen and the notes step aside.
+   */
+  portrait(t: number, cam: Cam): Cam {
+    const L = this.L;
+    const edge = 40;
+    const fig = this.figureShowing(t);
+    const below = fig ? L.fig.y + L.fig.h + REGION_GAP : edge;
+    const floor = L.h - edge;
+    const root = this.win.parentElement;
+    const recapOn = this.recapItems.some((r) => r.t0 <= t + 1e-4);
+    if (!recapOn) {
+      if (root) delete root.dataset.cardTakeover;
+      for (const r of this.recapItems) r.el.style.display = "";
+      if (!fig || cam.win.y >= L.fig.y + L.fig.h - 1) return cam;
+      const bottom = cam.win.y + cam.win.h;
+      const win: Rect = { x: cam.win.x, y: below, w: cam.win.w, h: Math.max(0, bottom - below) };
+      const k = cam.win.h > 1 ? win.h / cam.win.h : 1;
+      return { ...cam, win, s: cam.s * k };
+    }
+    this.recapCard.style.width = `${L.w - 2 * edge}px`;
+    this.recapCard.style.height = "auto";
+    const room = Math.max(0, floor - below);
+    let h = this.fitRecap(t, room);
+    let takeover = h > room + 1;
+    if (takeover) h = this.fitRecap(t, floor - edge);
+    if (root) {
+      if (takeover) root.dataset.cardTakeover = "1";
+      else delete root.dataset.cardTakeover;
+    }
+    const cardH = Math.min(h, takeover ? floor - edge : Math.max(h, 0));
+    const cardTop = takeover ? edge : floor - cardH;
+    this.recapCard.style.cssText = `left:${edge}px;top:${cardTop}px;width:${L.w - 2 * edge}px;height:${cardH}px`;
+    if (takeover) return { ...cam, win: { x: edge, y: below, w: L.w - 2 * edge, h: 0 } };
+    const notesH = cardTop - REGION_GAP - below;
+    const notes: Rect = { x: edge, y: below, w: L.w - 2 * edge, h: Math.max(0, notesH) };
+    if (notes.h < 48) return { ...cam, win: { ...notes, h: 0 } };
+    return this.pinAbove(cam, notes, t);
+  }
+  /** Keep the newest lines that fit, oldest dropped first, sitting just above the card. */
+  pinAbove(cam: Cam, win: Rect, t: number): Cam {
+    const margin = 24;
+    const inner = win.h - 2 * margin;
+    if (inner < 16) return { ...cam, win: { ...win, h: 0 } };
+    const step = [...this.recapItems].reverse().find((r) => r.t0 <= t + 1e-4);
+    let lines = step?.marks
+      ? this.items.filter((i) => i.t0 <= t + 1e-4 && i.id !== undefined && step.marks!.has(i.id))
+      : [];
+    if (!lines.length) {
+      const visH = cam.win.h / Math.max(cam.s, 1e-3);
+      const visBot = cam.cy + visH / 2;
+      const visTop = cam.cy - visH / 2;
+      lines = this.items.filter((i) => i.t0 <= t + 1e-4 && i.bottom > visTop && i.top < visBot);
+    }
+    if (!lines.length) return { ...cam, win };
+    const col = lines[lines.length - 1]!.col;
+    lines = lines.filter((i) => i.col === col).sort((a, b) => a.top - b.top);
+    let s = cam.s;
+    while (lines.length > 1 && (lines[lines.length - 1]!.bottom - lines[0]!.top) * s > inner) lines.shift();
+    const top = lines[0]!.top;
+    const bot = lines[lines.length - 1]!.bottom;
+    const span = Math.max(1, bot - top);
+    if (span * s > inner) s = inner / span;
+    const cy = bot - (win.h / 2 - margin) / s;
+    return { cx: cam.cx, cy, s, win };
+  }
+  /** A line that would be sliced by the notes band is hidden whole. What remains is fully on screen. */
+  concealCut(c: Cam) {
+    if (c.win.h < 8) {
+      for (const it of this.items) { it.el.style.opacity = "0"; it.el.style.visibility = "hidden"; }
+      return;
+    }
+    const board = this.win.getBoundingClientRect();
+    if (board.height < 2) return;
+    for (const it of this.items) {
+      if (it.el.style.visibility === "hidden") continue;
+      if (parseFloat(it.el.style.opacity || "1") < 0.02) continue;
+      let top = Infinity, bot = -Infinity, left = Infinity, right = -Infinity;
+      const take = (b: DOMRect) => {
+        if (b.width < 0.5 && b.height < 0.5) return;
+        top = Math.min(top, b.top); bot = Math.max(bot, b.bottom); left = Math.min(left, b.left); right = Math.max(right, b.right);
+      };
+      // A worked line stretches to the column, wider than the band. Judge the words, not that stretch.
+      const ink = [...it.el.querySelectorAll<HTMLElement>(".film-math, .film-note, .film-prose, .film-stack, .film-display, .film-choices")];
+      const boxes = it.kind === "write" && ink.length ? ink : [it.el, ...ink];
+      for (const el of boxes) take(el.getBoundingClientRect());
+      if (!Number.isFinite(top)) continue;
+      const inside = top >= board.top - 2 && bot <= board.bottom + 2 && left >= board.left - 2 && right <= board.right + 2;
+      if (!inside) { it.el.style.opacity = "0"; it.el.style.visibility = "hidden"; }
+    }
+  }
   draw(t: number, fade: number) {
-    const c = this.camAt(t);
+    let c = this.camAt(t);
+    if (this.L.name === "tall") c = this.portrait(t, c);
     const w = c.win;
     this.win.style.cssText = `left:${w.x}px;top:${w.y}px;width:${w.w}px;height:${w.h}px;opacity:${fade}`;
     this.surface.style.transform = `translate(${w.w / 2 - c.cx * c.s}px, ${w.h / 2 - c.cy * c.s}px) scale(${c.s})`;
@@ -2713,6 +2852,7 @@ class Board {
       it.el.style.opacity = String((it.fly || it.fresh ? 1 : u) * dim);
       if (it.stack) drawStack(it.stack, it.t0, t);
     }
+    if (this.L.name === "tall") this.concealCut(c);
     const r0 = this.recapItems[0];
     const ro = r0 ? ease((t - r0.t0) / 0.5) : 0;
     this.recapCard.style.opacity = String(ro * fade);
