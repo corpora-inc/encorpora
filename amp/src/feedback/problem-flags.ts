@@ -99,6 +99,7 @@ export type ProblemFlag = {
     | "shape-composer"
     | "multi-part-choice"
     | "figure-choice"
+    | "equal-addends"
     | "counter-builder"
     | "peg-board"
     | "structured-work"

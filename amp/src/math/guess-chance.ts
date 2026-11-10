@@ -4,6 +4,7 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { pointPlotGuessChance } from "./point-plot";
+import { equalAddendsGuessChance, parseEqualAddends } from "./equal-addends";
 import { counterBuilderGuessChance } from "./counter-builder";
 import { multiPartGuessChance } from "./multi-part-choice";
 import { figureChoiceGuessChance } from "./figure-choice";
@@ -33,6 +34,7 @@ const FAMILY_GUESS_FLOOR: Readonly<Record<string, number>> = {
   // Older clients answer the same family through four picture choices.
   // The family estimator conservatively covers those attempts as well.
   "build-the-number-sentence": 1 / 4,
+  "array-equal-addends-equation": 1 / 4,
   // Clause choices can have three options after duplicate distractors are removed.
   "graphical-solution-table": 1 / 3,
   // A rate of two leaves 3, 3 and 4 choices in the ordered-pair slots.
@@ -102,6 +104,7 @@ export function responseGuessChance(response: ProblemResponse): number {
       1 /
       (response.maxPerValue + 1) ** (response.axis.max - response.axis.min + 1)
     );
+  if (response.kind === "equal-addends") return response.guessChance;
   if (response.kind === "counter-builder")
     return counterBuilderGuessChance(response);
   if (response.kind === "trend-line-fit") return response.guessChance;
@@ -184,6 +187,16 @@ export function guessChanceTable(
 /** One instance's guessing chance, using its private rule where needed. */
 export function problemGuessChance(problem: GeneratedProblem): number {
   const response = problem.public.response;
+  if (response.kind === "equal-addends") {
+    const a = parseEqualAddends(response, problem.answer);
+    return a
+      ? equalAddendsGuessChance({
+          ...response,
+          ...a,
+          orientation: a.rows === a.columns ? "rows" : response.orientation,
+        })
+      : response.guessChance;
+  }
   if (response.kind === "counter-builder")
     return counterBuilderGuessChance(response, problem.answer);
   if (response.kind === "structured-work")

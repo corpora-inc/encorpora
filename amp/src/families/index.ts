@@ -27,6 +27,7 @@ export { family as counterBuilder } from "./counter-builder";
 export { family as dataList } from "./data-list";
 export { family as dataMeasure } from "./data-measure";
 export { family as distributionShapeFit } from "./distribution-shape-fit";
+export { family as equalAddends } from "./equal-addends";
 export { family as equationClause } from "./equation-clause";
 export { family as equationSlots } from "./equation-slots";
 export { family as evenAsEqualAddends } from "./even-as-equal-addends";

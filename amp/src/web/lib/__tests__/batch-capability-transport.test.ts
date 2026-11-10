@@ -62,6 +62,7 @@ test("trial transport retries an older API without its newest format, keeping au
       "counter-builder-v1",
       "trend-line-fit-v1",
       "peg-board-v1",
+      "equal-addends-v1",
     ],
   });
   expect(first.figureCapabilities.length).toBeGreaterThan(0);
@@ -80,6 +81,7 @@ test("trial transport retries an older API without its newest format, keeping au
       "unit-square-marking-v1",
       "counter-builder-v1",
       "trend-line-fit-v1",
+      "peg-board-v1",
     ],
   });
 });

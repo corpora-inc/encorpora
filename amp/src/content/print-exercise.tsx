@@ -1,3 +1,4 @@
+import { equalAddendsScene } from "../math/equal-addends-practice";
 import { readFileSync } from "node:fs";
 import { shapeComposerScene } from "../math/shape-composer-scene";
 import { pegBoardScene } from "../math/peg-board-scene";
@@ -501,6 +502,30 @@ export function PrintExerciseBody({
         <PrintMathText text={problem.public.prompt} />
       </h2>
       {problem.public.figure && <Figure figure={problem.public.figure} />}
+      {problem.public.response.kind === "equal-addends" && (
+        <>
+          {solutions || problem.public.response.mode === "given" ? (
+            <SceneFigure
+              medium="print"
+              reveal
+              scene={equalAddendsScene(
+                problem.public.response.thing,
+                solutions
+                  ? JSON.parse(problem.answer).rows
+                  : problem.public.response.rows!,
+                solutions
+                  ? JSON.parse(problem.answer).columns
+                  : problem.public.response.columns!,
+              )}
+            />
+          ) : (
+            <p>Draw the rows and columns here: ____________________</p>
+          )}
+          {!solutions && (
+            <p>Addition sentence: ____________________________________</p>
+          )}
+        </>
+      )}
       {problem.public.response.kind === "peg-board" && (
         <SceneFigure
           medium="print"

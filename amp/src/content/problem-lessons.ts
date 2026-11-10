@@ -248,6 +248,17 @@ export function problemLesson(
         answerText(learnerProblem.public.response, learnerProblem.answer)
     )
       return true;
+    if (
+      twin?.public.response.kind === "equal-addends" &&
+      p.public.response.kind === "equal-addends"
+    ) {
+      const a = JSON.parse(twin.answer),
+        b = JSON.parse(p.answer);
+      return (
+        (a.rows === b.rows && a.columns === b.columns) ||
+        (a.rows === b.columns && a.columns === b.rows)
+      );
+    }
     // A different object or story must not work the active counter model.
     if (
       twin?.public.response.kind === "counter-builder" &&
@@ -333,6 +344,7 @@ export function problemLesson(
     response.kind === "peg-board" ||
     response.kind === "multi-part-choice" ||
     response.kind === "figure-choice" ||
+    response.kind === "equal-addends" ||
     response.kind === "counter-builder" ||
     response.kind === "structured-work"
       ? answerText(response, example.answer)
