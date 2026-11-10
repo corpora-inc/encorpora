@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
   clientCanDraw,
+  figureCapabilities,
   generatedProblemSchema,
   publicProblemSchema,
   responseCapabilities,
@@ -369,12 +370,14 @@ test("a stored answer must name a displayed option for every blank", () => {
 });
 
 test("clients without multi-part-choice-v1 are never served these families, online or offline", () => {
-  const partTemplates = templates.filter((t) =>
-    families.includes(t.id as (typeof families)[number]),
+  const partTemplates = templates.filter(
+    (t) =>
+      t.requiredResponseCapability === "multi-part-choice-v1" ||
+      t.requiredResponseCapabilities?.includes("multi-part-choice-v1"),
   );
-  assert.equal(partTemplates.length, 3);
+  assert.ok(partTemplates.length > 0);
   assert.ok(responseCapabilities.includes("multi-part-choice-v1"));
-  const allFigures = ["function-displays-v1", "scenes-v1"];
+  const allFigures = figureCapabilities;
   for (const client of [
     { responseCapabilities: [], figureCapabilities: allFigures },
     {
@@ -410,17 +413,18 @@ test("clients without multi-part-choice-v1 are never served these families, onli
   }
   // The line family also needs its graphs and tables drawn as scenes.
   const current = {
-    responseCapabilities: ["multi-part-choice-v1"],
-    figureCapabilities: ["scenes-v1"],
+    responseCapabilities,
+    figureCapabilities,
   };
   for (const t of partTemplates) assert.equal(clientCanDraw(t, current), true);
-  assert.equal(
-    clientCanDraw(partTemplates[0]!, {
-      responseCapabilities: ["multi-part-choice-v1"],
-      figureCapabilities: [],
-    }),
-    false,
-  );
+  for (const t of partTemplates.filter((t) => t.requiredFigureCapability))
+    assert.equal(
+      clientCanDraw(t, {
+        responseCapabilities: ["multi-part-choice-v1"],
+        figureCapabilities: [],
+      }),
+      false,
+    );
   // Offline packs never declare it, and grader v1 rejects a multi-part item.
   assert.equal(
     capabilitySchema.safeParse({

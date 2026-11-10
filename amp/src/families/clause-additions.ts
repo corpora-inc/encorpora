@@ -115,15 +115,9 @@ export const family = {
   },
   // A coverage facet belongs to a template's primary skill. Cross-skill
   // discovery uses the registry's explicit instructional connections.
+  // Rigid motions → invariants and similarity proofs → theorems are already
+  // prerequisite edges in the curriculum; do not duplicate those links here.
   connections: [
-    {
-      from: "rigid-motions",
-      to: "transformation-invariants",
-      kind: "related",
-      explanation:
-        "Evaluate a transformation as a point function, recover its input, and decide whether it preserves distance (HSG.CO.A.2).",
-      templateIds: ["transformation-rule-slots"],
-    },
     {
       from: "rigid-motions",
       to: "transformation-constructions",
@@ -131,14 +125,6 @@ export const family = {
       explanation:
         "Plot transformed vertices using off-origin turns, reflections and compositions described geometrically (HSG.CO.A.5 and HSG.CO.B.6).",
       templateIds: ["place-transformed-image"],
-    },
-    {
-      from: "similarity-proofs",
-      to: "similarity-theorems",
-      kind: "related",
-      explanation:
-        "Use similarity to prove the proportional-side converse and the Pythagorean theorem (HSG.SRT.B.4).",
-      templateIds: ["similarity-proof-aa"],
     },
   ],
 } satisfies ContentFamily;

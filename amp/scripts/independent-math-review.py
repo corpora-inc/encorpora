@@ -16,7 +16,8 @@ import re
 import subprocess
 import sys
 from pathlib import Path
-from clause_variants_oracle import matches as is_clause_variant, solve as solve_clause_variant, review_problem as review_clause_variant, self_test as review_clause_fixtures
+import clause_variants_oracle
+from clause_variants_oracle import self_test as review_clause_fixtures
 from collections import Counter
 from fractions import Fraction
 import clause_place_value_math_oracle as clause_place_value
@@ -97,6 +98,27 @@ from attribute_math_oracle import ATTRIBUTE, ATTRIBUTE_CHOICE, solve_attribute, 
 from comparison_math_oracle import COMPARISON, COMPARISON_CHOICE, solve_comparison, review_comparison_fixtures, ComparisonCorpus
 from data_display_math_oracle import DATA_DISPLAY, DATA_DISPLAY_CHOICE, solve_data_display, review_data_display_fixtures
 from rational_content_oracle import check_problem as review_rational_problem, review_rational_content
+import clause_variants_math_oracle
+
+
+def clause_oracle(public):
+    if clause_variants_math_oracle.handles_public(public):
+        return clause_variants_math_oracle
+    if clause_variants_oracle.matches(public):
+        return clause_variants_oracle
+    return None
+
+
+def is_clause_variant(public):
+    return clause_oracle(public) is not None
+
+
+def solve_clause_variant(public):
+    return clause_oracle(public).solve(public)
+
+
+def review_clause_variant(problem):
+    return clause_oracle(problem['public']).review_problem(problem)
 
 # Add an independently derived solver here before adding a generated family.
 SUPPORTED = frozenset({
@@ -782,6 +804,7 @@ def review(stream):
     completing_square_review = CompletingSquareReview()
     right_triangles = RightTriangleCorpusReview()
     rational_corpus = RationalCorpus()
+    clause_counts = Counter()
     comparison_corpus = ComparisonCorpus()
     number_sense_corpus = NumberSenseCorpus()
     multiply_divide_corpus = MultiplyDivideCorpus()
@@ -808,6 +831,8 @@ def review(stream):
             return
         if is_clause_variant(public):
             review_clause_variant(problem)
+            if record:
+                clause_counts[template] += 1
             return
         solved = solve_family(public)
         family = FAMILY_ORACLE_FOR.get(template)
@@ -1079,7 +1104,9 @@ def review(stream):
     print('Independent combinatorics content: ' + json.dumps(review_combinatorics_content()), file=sys.stderr)
     print('Independent circle review: ' + json.dumps(review_circle_content()), file=sys.stderr)
     print('Independent radical content: ' + json.dumps(review_radical_content()), file=sys.stderr)
-    print('Independent rational coverage: ' + json.dumps(rational_corpus.finish(count)), file=sys.stderr)
+    legacy_counts = {template: count - clause_counts[template] for template in SUPPORTED}
+    print('Independent clause coverage: ' + json.dumps(dict(clause_counts)), file=sys.stderr)
+    print('Independent rational coverage: ' + json.dumps(rational_corpus.finish(count, legacy_counts)), file=sys.stderr)
     print('Independent rational content: ' + json.dumps(review_rational_content()), file=sys.stderr)
     print('Independent integer-exponent coverage: ' + json.dumps(exponent_review.finish(count)), file=sys.stderr)
     print('Independent integer-exponent content: ' + json.dumps(review_integer_exponent_content()), file=sys.stderr)
@@ -1089,7 +1116,7 @@ def review(stream):
     print('Independent inequality coverage: ' + json.dumps(inequality_review.finish(count)), file=sys.stderr)
     print('Independent linear-system coverage: ' + json.dumps(system_review.finish(count)), file=sys.stderr)
     print('Independent linear-system worksheet/figure review: ' + json.dumps(review_linear_system_content()), file=sys.stderr)
-    print('Independent right-triangle coverage: ' + json.dumps(right_triangles.finish(count)), file=sys.stderr)
+    print('Independent right-triangle coverage: ' + json.dumps(right_triangles.finish(count, legacy_counts)), file=sys.stderr)
     print('Known polynomial choice shortcuts: ' + json.dumps(polynomial_shortcuts.finish(count)), file=sys.stderr)
     print('Independent factoring breadth and named choice shortcuts: ' + json.dumps(factoring_review.finish(count)), file=sys.stderr)
     print('Independent factoring content: ' + json.dumps(review_factoring_content()), file=sys.stderr)

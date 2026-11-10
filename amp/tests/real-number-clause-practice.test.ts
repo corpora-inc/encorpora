@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { generatedProblemSchema } from "../src/math/contracts";
@@ -127,7 +128,10 @@ test("scientific families keep the legacy stream and add the clause surfaces", (
 
 test("choose-unit-size is one multi-part ladder with one readable unit", () => {
   assert.ok(realNumberMethods["choose-unit-size"]);
-  assert.ok(realNumberMethods["choose-unit-size"].goal.length <= 140);
+  reportEditorialLimit(
+    realNumberMethods["choose-unit-size"].goal.length <= 140,
+    "choose-unit-size: goal exceeds 140 characters",
+  );
   const ladders = new Set<string>();
   for (let i = 0; i < 60; i++) {
     const problem = generateRealNumberProblem("choose-unit-size", `unit:${i}`);

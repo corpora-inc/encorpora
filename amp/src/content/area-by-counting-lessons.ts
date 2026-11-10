@@ -123,6 +123,24 @@ export const areaByCountingPrinciples: Record<string, string> = {
     "For the same surface, a smaller unit gives a larger count and a larger unit gives a smaller count. When each side is half as long, 4 small units cover 1 large unit, so the count is 4 times as large.",
 };
 
+for (const [id, base] of [
+  ["mark-unit-squares", "count-unit-squares"],
+  ["mark-improvised-units", "improvised-unit-count"],
+] as const) {
+  areaByCountingMethods[id] = {
+    ...areaByCountingMethods[base]!,
+    method: [
+      ...areaByCountingMethods[base]!.method.slice(0, 1),
+      "Count one row at a time. Tap each square as you count it; an X helps you remember which squares you counted.",
+      "Tap again to remove an X, or use Reset marks to start counting again. The marks are only a counting aid.",
+      "Enter the area with the named unit. Only your entered area is checked, so you may also count without marks.",
+    ],
+    watch:
+      "Count only the shaded squares, including those inside the shape. Leave unshaded squares and holes out of your count.",
+  };
+  areaByCountingPrinciples[id] = areaByCountingPrinciples[base]!;
+}
+
 export const areaByCountingLessons: Lesson[] = [
   chainLesson({
     id: "area-by-counting-unit-squares-lesson",
@@ -131,7 +149,11 @@ export const areaByCountingLessons: Lesson[] = [
       "Area is how much flat space a shape covers. Find it by counting the unit squares that cover the shape, one row at a time, and give it in square units such as square feet.",
     senses: areaSenses,
     noLink: areaNoLink,
-    templateIds: ["count-unit-squares", "unit-square-area-statement"],
+    templateIds: [
+      "count-unit-squares",
+      "unit-square-area-statement",
+      "mark-unit-squares",
+    ],
     objectives: [
       "Find the area of a rectangle, a composite shape, an irregular shape or a shape with a hole by counting unit squares.",
       "State an area in square centimeters, square inches, square feet or square meters.",
@@ -181,6 +203,7 @@ export const areaByCountingLessons: Lesson[] = [
     noLink: areaNoLink,
     templateIds: [
       "improvised-unit-count",
+      "mark-improvised-units",
       "improvised-unit-covering",
       "improvised-unit-change",
     ],
@@ -226,6 +249,15 @@ export const areaByCountingLessons: Lesson[] = [
 ];
 
 export const areaByCountingFacetMappings: FacetMapping[] = [
+  ...["mark-unit-squares", "mark-improvised-units"].map(
+    (templateId): FacetMapping => ({
+      templateId,
+      facetId: "area-by-counting-squares.core",
+      extent: "partial",
+      rationale:
+        "Counts drawn square units with optional tap-to-mark scratch work, then reports the area in the given unit. Does not assess physical tiling.",
+    }),
+  ),
   {
     templateId: "count-unit-squares",
     facetId: "area-by-counting-squares.core",

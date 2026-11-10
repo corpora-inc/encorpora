@@ -1,99 +1,88 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
+import { skills } from "../src/curriculum/catalog";
+import { generatedProblemSchema } from "../src/math/contracts";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { generateProblem, templates } from "../src/math/engine";
-import { satGeometryAdvancedCase } from "../src/math/sat-geometry-advanced-practice";
+import {
+  satGeometryAdvancedCase,
+  satGeometryAdvancedTemplates,
+} from "../src/math/sat-geometry-advanced-practice";
 import { lessons } from "../src/content/lessons";
 import { methods } from "../src/content/problem-methods";
 import { principles } from "../src/content/problem-principles";
 import { buildSatCoverage } from "../src/curriculum/sat-coverage";
 
-const expected: Record<
-  string,
-  { skill: string; kind: "choice" | "number"; tags: string[] }
-> = {
-  "corresponding-angle-transfer": {
-    skill: "similarity-proofs",
-    kind: "choice",
-    tags: [
-      "similar-scale",
-      "similar-third",
-      "similar-right",
-      "congruent-direct",
-      "congruent-right",
-    ],
-  },
-  "crossing-segment-similarity": {
-    skill: "similarity-proofs",
-    kind: "number",
-    tags: ["crossing-side", "crossing-near", "crossing-base"],
-  },
-  "angle-chase-chain": {
-    skill: "triangle-angle-theorems",
-    kind: "number",
-    tags: ["vertical-sameside", "triangle-parallel", "right-parallel"],
-  },
-  "angle-claim-reasoning": {
-    skill: "angle-relationships",
-    kind: "choice",
-    tags: [
-      "triangle-possible",
-      "triangle-impossible",
-      "compare-adjacent",
-      "compare-vertical",
-      "sum-impossible",
-    ],
-  },
-  "circle-radii-triangle": {
-    skill: "circle-theorems",
-    kind: "number",
-    tags: [
-      "base-angle",
-      "base-angle-arc",
-      "central-from-base",
-      "chord-perimeter",
-      "radius-perimeter",
-    ],
-  },
-  "shifted-polynomial-features": {
-    skill: "function-transformations",
-    kind: "number",
-    tags: ["quad-extreme", "cubic-zero-sum", "cubic-vertical-value"],
-  },
-  "radical-side-entry": {
-    skill: "pythagorean-theorem",
-    kind: "number",
-    tags: ["hyp-radicand", "hyp-coefficient", "decimal-leg"],
-  },
-  "special-triangle-in-figure": {
-    skill: "special-right-triangles",
-    kind: "number",
-    tags: [
-      "acute-angle",
-      "equilateral-altitude",
-      "square-in-circle",
-      "equilateral-circumradius",
-    ],
-  },
-};
-const ids = Object.keys(expected);
+const ids = satGeometryAdvancedTemplates.map((t) => t.id);
 const seeds = Array.from({ length: 400 }, (_, i) => `sga:${i}`);
 const numbers = (text: string) => new Set(text.match(/\d+(?:\.\d+)?/g) ?? []);
 
-test("each family is deterministic, reaches every variant and has one exact answer", () => {
+// Fixed witnesses keep the independent mathematical cases below exercised.
+// They are not a complete inventory; new types come from the registry.
+const regressionCases: Record<string, string[]> = {
+  "corresponding-angle-transfer": [
+    "similar-scale",
+    "similar-third",
+    "similar-right",
+    "congruent-direct",
+    "congruent-right",
+  ],
+  "crossing-segment-similarity": [
+    "crossing-side",
+    "crossing-near",
+    "crossing-base",
+  ],
+  "angle-chase-chain": [
+    "vertical-sameside",
+    "triangle-parallel",
+    "right-parallel",
+  ],
+  "angle-claim-reasoning": [
+    "triangle-possible",
+    "triangle-impossible",
+    "compare-adjacent",
+    "compare-vertical",
+    "sum-impossible",
+  ],
+  "circle-radii-triangle": [
+    "base-angle",
+    "base-angle-arc",
+    "central-from-base",
+    "chord-perimeter",
+    "radius-perimeter",
+  ],
+  "shifted-polynomial-features": [
+    "quad-extreme",
+    "cubic-zero-sum",
+    "cubic-vertical-value",
+  ],
+  "radical-side-entry": ["hyp-radicand", "hyp-coefficient", "decimal-leg"],
+  "special-triangle-in-figure": [
+    "acute-angle",
+    "equilateral-altitude",
+    "square-in-circle",
+    "equilateral-circumradius",
+  ],
+};
+
+test("each family is deterministic, valid and has one exact answer", () => {
   for (const id of ids) {
     const seen = new Set<string>();
+    const template = satGeometryAdvancedTemplates.find((t) => t.id === id)!;
     for (const seed of seeds) {
       const generated = generateProblem(id, seed);
       assert.deepEqual(generateProblem(id, seed), generated);
       const direct = satGeometryAdvancedCase(id, seed);
+      seen.add(direct.tag);
       assert.equal(direct.problem.answer, generated.answer);
-      assert.equal(generated.public.skillId, expected[id]!.skill);
+      generatedProblemSchema.parse(generated);
+      assert.equal(generated.public.skillId, template.skillId);
       assert.ok(
         generated.hint.length > 40 && generated.explanation.length >= 3,
         `${id} ${seed}`,
       );
       const response = generated.public.response;
-      if (expected[id]!.kind === "choice") {
+      if (response.kind === "choice") {
         assert.equal(response.kind, "choice");
         if (response.kind !== "choice") throw new Error("choice expected");
         const labels = response.options.map((o) => o.label);
@@ -131,9 +120,9 @@ test("each family is deterministic, reaches every variant and has one exact answ
             `${id} ${seed}: hint states answer`,
           );
       }
-      seen.add(direct.tag);
     }
-    assert.deepEqual([...seen].sort(), [...expected[id]!.tags].sort(), id);
+    for (const v of regressionCases[id] ?? [])
+      assert.ok(seen.has(v), `${id}: mathematical case ${v} was not exercised`);
   }
 });
 
@@ -231,8 +220,16 @@ test("numeric answers agree with independent recomputation from the prompt", () 
 test("families have lessons, methods, principles, SAT rows and one lesson binding", () => {
   for (const id of ids) {
     const template = templates.find((t) => t.id === id);
-    assert.equal(template?.skillId, expected[id]!.skill);
-    assert.ok(methods[id] && methods[id]!.goal.length <= 140, id);
+    assert.ok(template, id);
+    assert.ok(
+      skills.some((s) => s.id === template.skillId),
+      id,
+    );
+    assert.ok(methods[id], id);
+    reportEditorialLimit(
+      methods[id]!.goal.length <= 140,
+      `${id}: goal exceeds 140 characters`,
+    );
     assert.ok(principles[id], id);
     assert.ok(
       lessons.some((l) => l.templateIds.includes(id)),

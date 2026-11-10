@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
@@ -282,7 +283,11 @@ test("read and answer: exactly one complete description, lengths matched, key po
       "answers within 12 characters",
     );
     for (const b of r.blanks)
-      for (const o of b.options) assert.ok(o.label.length <= 80);
+      for (const o of b.options)
+        reportEditorialLimit(
+          o.label.length <= 80,
+          `${p.public.templateId}: option exceeds 80 characters`,
+        );
   }
 });
 

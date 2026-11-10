@@ -3,7 +3,7 @@ export const realNumberFacetMappings: readonly FacetMapping[] = [
   [
     "classify-real-number",
     "irrational-numbers.classify-forms",
-    "Pick the one rational or one irrational number among four: square roots of 2 to 169, cube roots of 2 to 125, negative integers, fractions, terminating and one- or two-digit repeating decimals, π and its multiples or halves to fifths, and a decimal with lengthening runs of zeros. Does not assess sums or products of irrational numbers or proofs of irrationality.",
+    "Classify rational and irrational numbers, including the square root of two; distinguish terminating, repeating and nonrepeating decimal expansions; explain why fraction decimals terminate or repeat using the finite set of remainders. Does not assess general proofs of irrationality.",
   ],
   [
     "repeating-decimal-to-fraction",
@@ -13,12 +13,12 @@ export const realNumberFacetMappings: readonly FacetMapping[] = [
   [
     "root-between-integers",
     "approximate-roots.integer-bounds",
-    "Name the smaller or larger consecutive whole number around the square root of 2 to 300 or the cube root of 2 to 999 (non-perfect powers). Does not assess negative radicands or roots of decimals.",
+    "Name consecutive whole-number bounds for non-perfect square and cube roots, and evaluate exact roots of perfect powers, fractions and decimals. Does not assess negative radicands.",
   ],
   [
     "root-nearest-tenth",
     "approximate-roots.nearest-tenth",
-    "Round the square root of a non-square whole number from 2 to 200 to the nearest tenth by squaring tenths and the halfway point. Does not assess hundredths, cube roots to tenths, or estimation in context.",
+    "Round square roots to the nearest tenth, refine square-root bounds through whole numbers, tenths and hundredths, and select the next squaring step. Does not assess cube roots to tenths or estimation in context.",
   ],
   [
     "compare-irrational-values",
@@ -28,7 +28,7 @@ export const realNumberFacetMappings: readonly FacetMapping[] = [
   [
     "solve-square-cube-equation",
     "approximate-roots.root-equations",
-    "Choose all real solutions of x² = p for perfect squares, squares of proper fractions and non-square whole numbers, and of x³ = p for positive or negative perfect cubes and non-cube whole numbers. Does not assess x² = p with p ≤ 0, simplifying radical solutions, or equations needing rearrangement.",
+    "Choose all real solutions of square and cube equations, including positive rational right sides, fractional or decimal roots, positive or negative integer cubes, and irrational roots. Does not assess square equations with nonpositive right sides or equations needing rearrangement.",
   ],
   [
     "scientific-to-standard",

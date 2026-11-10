@@ -238,7 +238,9 @@ test("unit price, cylinder, dilation and transformation keys follow the givens",
     "a rotation of 90° clockwise about the origin": (x, y) => `(${y}, ${-x})`,
   };
   for (const seed of seeds("tr")) {
-    const { response, chosen } = view("transformation-rule-slots", seed);
+    // Version 1 records coordinate rules in slots; version 2 also evaluates
+    // point functions, independently checked by the transformation oracle.
+    const { response, chosen } = view("transformation-rule-slots", seed, 1);
     for (const b of response.blanks) {
       const name = b.label.replace("The rule for ", "");
       const rule = chosen[b.id]!.replaceAll("$", "");

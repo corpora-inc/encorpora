@@ -2083,9 +2083,7 @@ export function satGeometryDataCase(
       ? chooseAxes(id, seed, independenceTaskAxes).task
       : "standard";
   const built =
-    id === "independence-test"
-      ? independenceCase(r, task)
-      : builders[id]!(r);
+    id === "independence-test" ? independenceCase(r, task) : builders[id]!(r);
   const problem = assemble(meta, seed, r, built.draft);
   return {
     problem:

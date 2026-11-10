@@ -1,3 +1,5 @@
+import { skills as curriculumSkills } from "../src/curriculum/catalog";
+import { generatedProblemSchema } from "../src/math/contracts";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -14,7 +16,9 @@ const generateProblem = (id: string, seed: string) =>
   generateCurrent(id, seed, 1);
 import { problemLesson } from "../src/content/problem-lessons";
 
-const variants: Record<string, string[]> = {
+// Fixed witnesses keep the independent mathematical cases below exercised.
+// They are not a complete inventory; new types come from the registry.
+const regressionCases: Record<string, string[]> = {
   "series-recursion": [
     "series-listed",
     "series-story",
@@ -58,16 +62,9 @@ const variants: Record<string, string[]> = {
     "log-graph-intercept",
   ],
 };
-const skills: Record<string, string> = {
-  "series-recursion": "arithmetic-sequences",
-  "compound-growth": "exponential-models",
-  "polynomial-factoring-patterns": "factor-quadratics",
-  "residual-function-fit": "regression-interpretation",
-  "function-graph-features": "logarithms",
-};
 
-for (const id of Object.keys(variants)) {
-  test(`${id}: deterministic, every variant reachable, one correct distinct choice`, () => {
+for (const { id } of advancedMathGapTemplates) {
+  test(`${id}: deterministic, valid, one correct distinct choice`, () => {
     const seen = new Set<string>();
     for (let seed = 0; seed < 400; seed++) {
       const a = advancedMathGapCase(id, `s${seed}`);
@@ -77,6 +74,7 @@ for (const id of Object.keys(variants)) {
       assert.equal(via.public.templateId, a.problem.public.templateId);
       assert.deepEqual(via.public.response, a.problem.public.response);
       assert.equal(via.answer, a.problem.answer);
+      generatedProblemSchema.parse(a.problem);
       seen.add(a.variant);
       const response = a.problem.public.response;
       assert.equal(response.kind, "choice");
@@ -97,14 +95,19 @@ for (const id of Object.keys(variants)) {
       assert.ok(a.problem.explanation.length >= 2);
       assert.ok(a.problem.hint.length > 20);
     }
-    assert.deepEqual([...seen].sort(), [...variants[id]!].sort());
+    for (const v of regressionCases[id] ?? [])
+      assert.ok(seen.has(v), `${id}: mathematical case ${v} was not exercised`);
   });
 }
 
 test("templates are registered against existing skills", () => {
   for (const t of advancedMathGapTemplates) {
     const registered = templates.find((x) => x.id === t.id);
-    assert.equal(registered?.skillId, skills[t.id]);
+    assert.equal(registered?.skillId, t.skillId);
+    assert.ok(
+      curriculumSkills.some((s) => s.id === t.skillId),
+      t.id,
+    );
     const lesson = problemLesson(t.id, "library");
     assert.ok(lesson.method.length >= 3);
     assert.ok(lesson.watch);

@@ -119,6 +119,10 @@ test("easing follows the CSS curve", () => {
 });
 
 const numbers = (text: string): string[] => text.match(/\d+/g) ?? [];
+const clausesWithoutScenes: Record<string, string[]> = {
+  "add-within-20": ["near-double"],
+  "number-line-hops": ["length-story", "from-zero"],
+};
 for (const id of [
   "add-within-20",
   "tens-contribution",
@@ -126,10 +130,29 @@ for (const id of [
   "number-line-missing-hop",
 ]) {
   test(`${id}: the learner's scene walks its own numbers and never shows the answer`, () => {
-    for (let i = 0; i < 300; i++) {
-      const p = generateProblem(id, `scene-${i}`);
+    // Preserve all original scene assertions, and exercise the current mixed
+    // catalog, including clauses that use response controls without a scene.
+    const cases = [1, undefined].flatMap((version) =>
+      Array.from({ length: 300 }, (_, i) => ({
+        problem: generateProblem(id, `scene-${i}`, version),
+        version,
+      })),
+    );
+    const withoutScenes = new Set<string>();
+    for (const [i, { problem: p, version }] of cases.entries()) {
       assert.equal(generatedProblemSchema.safeParse(p).success, true);
       const f = p.public.figure;
+      if (!f) {
+        assert.equal(version, undefined);
+        const clause = p.variant?.id ?? "";
+        assert.ok(
+          clausesWithoutScenes[id]?.includes(clause),
+          `${id}/${clause}`,
+        );
+        assert.equal(p.hintCue, undefined);
+        withoutScenes.add(clause);
+        continue;
+      }
       assert.ok(f?.kind === "scene");
       const scene = f.scene;
       const masked = layoutScene(scene);
@@ -155,6 +178,10 @@ for (const id of [
       const final = captionText(revealed, scene.steps!.at(-1)!.caption);
       assert.ok(!final.includes("?"), final);
     }
+    assert.deepEqual(
+      [...withoutScenes].sort(),
+      [...(clausesWithoutScenes[id] ?? [])].sort(),
+    );
   });
 }
 

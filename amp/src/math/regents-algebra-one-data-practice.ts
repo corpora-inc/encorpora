@@ -51,6 +51,7 @@ export const exponentialPassesLinearTemplate = meta({
 });
 export const twoWayShareTemplate = meta({
   id: "two-way-share",
+  requiredFigureCapability: "scenes-v1",
   title: "Find a conditional or joint percent from a two-way frequency table",
   skillId: "categorical-association",
   difficultyOffset: 0.4,
@@ -68,6 +69,7 @@ export const quartileListTemplate = meta({
 });
 export const averageRateTableTemplate = meta({
   id: "average-rate-table-rounded",
+  requiredFigureCapability: "scenes-v1",
   title: "Average rate of change from a table, rounded",
   skillId: "average-rate-change",
   difficultyOffset: 0.5,

@@ -14,6 +14,7 @@ import { clauseMethod } from "../src/content/clause-variant-lessons";
 import { typographyIssues } from "./fixtures/math-typography";
 import { buildCoverageManifest } from "../src/content/coverage";
 import { buildGapLedger } from "../src/curriculum/gap-ledger";
+import { withLegacySurfaces } from "../src/math/number-domain-axes";
 
 const affected = templates.filter(
   (t) =>
@@ -38,6 +39,18 @@ const kindCapability = {
   "figure-choice": "figure-choice-v1",
   "structured-work": "structured-work-v1",
 } as const;
+
+test("printed legacy surfaces omit place-value and transformation clause tasks", () => {
+  withLegacySurfaces(() => {
+    for (const meta of affected.filter((t) => clauseFamilies[t.id]))
+      for (let i = 0; i < 20; i++) {
+        const problem = generateProblem(meta.id, `print-legacy:${i}`);
+        assert.equal(problem.variant?.axes?.clause, undefined, meta.id);
+        generatedProblemSchema.parse(problem);
+        assert.ok(gradeAnswer(problem, problem.answer), meta.id);
+      }
+  });
+});
 
 test("clause variants are reachable, grade their answers, and declare every answer capability", () => {
   const chances = new Set<string>();

@@ -1,3 +1,4 @@
+import { skills as curriculumSkills } from "../src/curriculum/catalog";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -10,15 +11,9 @@ import { problemLesson } from "../src/content/problem-lessons";
 import { buildSatCoverage } from "../src/curriculum/sat-coverage";
 import { buildReleasedItemLedger } from "../src/curriculum/released-items";
 
-const skills: Record<string, string> = {
-  "sat-entry-fn-linear-notation": "function-evaluation",
-  "sat-fn-line-equation-choice": "linear-models",
-  "sat-fn-constraint-choice": "linear-equation-modeling",
-  "sat-fn-exponential-choice": "exponential-models",
-  "sat-entry-fn-exponential": "exponential-models",
-  "sat-entry-fn-related-value": "linear-equations",
-};
-const variants: Record<string, string[]> = {
+// Fixed witnesses keep the independent mathematical cases below exercised.
+// They are not a complete inventory; new types come from the registry.
+const regressionCases: Record<string, string[]> = {
   "sat-entry-fn-linear-notation": [
     "evaluate-integer",
     "evaluate-fraction-coefficient",
@@ -285,13 +280,14 @@ for (const template of satFunctionFormsTemplates) {
         );
       }
     }
-    for (const v of variants[id]!)
+    for (const v of regressionCases[id] ?? [])
       assert.ok(seen.has(v), `${id} missing ${v}; saw ${[...seen].join(",")}`);
   });
 
   test(`${id}: skill, instruction and SAT binding`, () => {
     const registered = templates.find((t) => t.id === id);
-    assert.equal(registered?.skillId, skills[id]);
+    assert.equal(registered?.skillId, template.skillId);
+    assert.ok(curriculumSkills.some((s) => s.id === template.skillId), id);
     const lesson = problemLesson(id, "library");
     assert.ok((lesson.intuition ?? "").length > 40);
     assert.ok(lesson.method.length >= 2);

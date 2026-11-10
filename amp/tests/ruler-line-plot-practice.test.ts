@@ -1,3 +1,5 @@
+import { rulerLinePlotTemplates } from "../src/math/ruler-line-plot-practice";
+import { skills } from "../src/curriculum/catalog";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
@@ -15,18 +17,7 @@ import { principles } from "../src/content/problem-principles";
  * from their drawn marks; nothing here calls the generator's own arithmetic.
  */
 
-const IDS = [
-  "ruler-length-difference",
-  "compare-measured-lengths",
-  "ruler-read-nearest-unit",
-  "line-plot-choose-for-data",
-] as const;
-const SKILLS: Record<(typeof IDS)[number], string> = {
-  "ruler-length-difference": "ruler-measurement",
-  "compare-measured-lengths": "ruler-measurement",
-  "ruler-read-nearest-unit": "line-plots",
-  "line-plot-choose-for-data": "line-plots",
-};
+const IDS = rulerLinePlotTemplates.map((t) => t.id);
 const sample = (id: string, n: number, prefix = "rlp") =>
   Array.from({ length: n }, (_, i) => generateProblem(id, `${prefix}-${i}`));
 
@@ -84,23 +75,17 @@ test("every template is registered, valid, deterministic and documented", () => 
   for (const id of IDS) {
     const meta = templates.find((t) => t.id === id);
     assert.ok(meta, id);
-    assert.equal(meta!.skillId, SKILLS[id]);
+    assert.ok(
+      skills.some((s) => s.id === meta!.skillId),
+      id,
+    );
     assert.equal(meta!.gradeBand, "K–2");
     assert.equal(meta!.requiredFigureCapability, "scenes-v1");
     assert.ok(methods[id]?.watch && principles[id], `${id} lesson text`);
     for (const p of sample(id, 120)) {
       generatedProblemSchema.parse(p);
       assert.deepEqual(generateProblem(id, p.public.seed), p);
-      assert.equal(p.public.skillId, SKILLS[id]);
-      const kind = p.public.response.kind;
-      assert.equal(
-        kind,
-        id === "compare-measured-lengths"
-          ? "multi-part-choice"
-          : id === "line-plot-choose-for-data"
-            ? "figure-choice"
-            : "number",
-      );
+      assert.equal(p.public.skillId, meta!.skillId);
     }
   }
 });

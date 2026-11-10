@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import type { Page } from "playwright";
+import { fillShapeStage } from "./ui-shape-composer";
+import type { ShapeAnswer } from "../src/math/shape-composer";
 import type { GeneratedProblem, PublicProblem } from "../src/math/contracts";
 import {
   generateProblem,
@@ -7,6 +9,10 @@ import {
   isValidResponse,
 } from "../src/math/engine";
 import { plotPoints, serializePlot } from "../src/math/point-plot";
+import { linePlotCounts, linePlotValues } from "../src/math/line-plot-build";
+import { fillCounterBuilder } from "./ui-counter-builder";
+import { fillTrendLine } from "./ui-trend-line-fit";
+import { initialTrendPoints } from "../src/math/trend-line-fit";
 import {
   parseWorkDraft,
   rowShape,
@@ -91,7 +97,30 @@ export async function preparePracticeAnswer(
     });
   const response = practiceResponse(solution, correct);
   const submit = async () => {
-    if (schema.kind === "structured-work") {
+    if (schema.kind === "counter-builder") {
+      await fillCounterBuilder(page, schema, response);
+      await page.getByRole("button", { name: "Check", exact: true }).click();
+      return;
+    }
+    if (schema.kind === "line-plot-build") {
+      const counts = linePlotCounts(schema, response);
+      for (const [i, v] of linePlotValues(schema).entries()) {
+        await page.locator(".line-build-column").nth(i).focus();
+        for (let n = 0; n < (counts[v] ?? 0); n++)
+          await page.keyboard.press("Enter");
+      }
+      await page.locator(".choice-submit:visible").click();
+    } else if (schema.kind === "shape-composer") {
+      const stages = JSON.parse(response) as ShapeAnswer;
+      for (const [i, placements] of stages.entries()) {
+        await fillShapeStage(page, placements);
+        if (i < stages.length - 1)
+          await page
+            .getByRole("button", { name: "Join pieces", exact: true })
+            .click();
+      }
+      await page.locator(".shape-answer .choice-submit").click();
+    } else if (schema.kind === "structured-work") {
       const plan = parseWorkDraft(response)!;
       if (schema.mode === "order") {
         const order = schema.rows.map((row) => row.id);
@@ -145,6 +174,11 @@ export async function preparePracticeAnswer(
         }
       }
       await page.locator(".choice-submit:visible").click();
+    } else if (schema.kind === "trend-line-fit") {
+      await fillTrendLine(page, schema, response);
+      await page
+        .getByRole("button", { name: "Check line", exact: true })
+        .click();
     } else if (schema.kind === "point-plot") {
       const layer = page.locator(".point-plot-layer");
       const grid = schema.grid;
@@ -218,7 +252,9 @@ export async function preparePracticeAnswer(
       await page.locator(".choice-submit:visible").click();
     } else {
       assert.ok(
-        schema.kind === "number" || schema.kind === "fraction",
+        schema.kind === "number" ||
+          schema.kind === "fraction" ||
+          schema.kind === "unit-square-marking",
         `${template}/${problem.seed}: unsupported UI response ${schema.kind}`,
       );
       const input = page.locator("#answer:visible");
@@ -270,7 +306,18 @@ export function practiceResponse(solution: GeneratedProblem, correct: boolean) {
   const schema = problem.response;
   let response = solution.answer;
   if (!correct) {
-    if (schema.kind === "choice" || schema.kind === "figure-choice")
+    if (schema.kind === "counter-builder") {
+      const answer = JSON.parse(response);
+      answer.sentence[3] = (answer.sentence[3] + 1) % 11;
+      return JSON.stringify(answer);
+    }
+    if (schema.kind === "line-plot-build")
+      response = JSON.stringify({ counts: { [schema.axis.min]: 1 } });
+    else if (schema.kind === "shape-composer") {
+      const stages = JSON.parse(response) as ShapeAnswer;
+      stages.at(-1)!.pop();
+      response = JSON.stringify(stages);
+    } else if (schema.kind === "choice" || schema.kind === "figure-choice")
       response = schema.options.find((o) => o.id !== solution.answer)!.id;
     else if (schema.kind === "multi-select") {
       const ids = parseSelection(solution.answer)!;
@@ -278,6 +325,8 @@ export function practiceResponse(solution: GeneratedProblem, correct: boolean) {
       response = serializeSelection(
         replacement ? [...ids.slice(1), replacement] : ids.slice(1),
       );
+    } else if (schema.kind === "trend-line-fit") {
+      response = JSON.stringify(initialTrendPoints(schema));
     } else if (schema.kind === "point-plot") {
       const points = plotPoints(response);
       const grid = schema.grid;

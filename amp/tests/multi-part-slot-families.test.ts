@@ -4,7 +4,8 @@ import {
   generatedProblemSchema,
   publicProblemSchema,
 } from "../src/math/contracts";
-import { generateProblem, gradeAnswer, templates } from "../src/math/engine";
+import { gradeAnswer, templates } from "../src/math/engine";
+import { generateBeforeClauses as generateProblem } from "./helpers/before-clause-variants";
 import {
   gradeMultiPart,
   multiPartChoiceResponseSchema,
@@ -21,17 +22,16 @@ import { statementBlanksAxes } from "../src/math/statement-blanks-practice";
 import { formBlanksAxes } from "../src/math/form-blanks-practice";
 import type { AxisSet } from "../src/math/variation/axes";
 
-/** Every template of the multi-part slot families: one entry per template with
- * its axes. A new family adds its axes map here. */
-const families: Record<string, Record<string, AxisSet>> = {
-  "number-order-slots": numberOrderSlotsAxes,
-  "place-value-blanks": placeValueBlanksAxes,
-  "equation-slots": equationSlotsAxes,
-  "quantity-pair-blanks": quantityPairBlanksAxes,
-  "statement-blanks": statementBlanksAxes,
-  "form-and-model-blanks": formBlanksAxes,
+// Axis coverage comes from the generators' declarations, with no copied ids.
+const axesByTemplate: Record<string, AxisSet> = {
+  ...numberOrderSlotsAxes,
+  ...placeValueBlanksAxes,
+  ...equationSlotsAxes,
+  ...quantityPairBlanksAxes,
+  ...statementBlanksAxes,
+  ...formBlanksAxes,
 };
-const ids = Object.values(families).flatMap((axes) => Object.keys(axes));
+const ids = Object.keys(axesByTemplate);
 const SEEDS = 300;
 const seeds = Array.from({ length: SEEDS }, (_, i) => `slots:${i}`);
 const PLACEHOLDER = /\$\{|\bundefined\b|\bNaN\b|\bnull\b|\[object/;
@@ -51,62 +51,57 @@ test("every template is registered with a skill, an archetype and a lesson", () 
 });
 
 test("problems are deterministic, valid and reach every axis value", () => {
-  for (const [family, axesOf] of Object.entries(families))
-    for (const [id, axes] of Object.entries(axesOf)) {
-      const reached = new Map<string, Set<string>>();
-      const prompts = new Set<string>();
-      for (const seed of seeds) {
-        const problem = generateProblem(id, seed);
-        assert.deepEqual(generateProblem(id, seed), problem, `${id} ${seed}`);
-        generatedProblemSchema.parse(problem);
-        publicProblemSchema.parse(problem.public);
-        assert.ok(
-          multiPartChoiceResponseSchema.safeParse(problem.public.response)
-            .success,
-          `${family}/${id} ${seed}`,
-        );
-        assert.match(problem.variant!.id, /^[a-z0-9][a-z0-9-]{0,63}$/);
-        const response = problem.public.response as MultiPartChoiceResponse;
-        prompts.add(
-          problem.public.prompt +
-            JSON.stringify(problem.public.figure ?? null) +
-            JSON.stringify(
-              response.sentence ?? response.blanks.map((b) => b.label),
-            ) +
-            JSON.stringify(
-              response.blanks.map((b) => b.options.map((o) => o.label).sort()),
-            ),
-        );
-        for (const [axis, value] of Object.entries(problem.variant!.axes!))
-          reached.set(axis, (reached.get(axis) ?? new Set()).add(value));
-        const text = JSON.stringify(problem);
-        assert.equal(
-          PLACEHOLDER.test(text),
-          false,
-          `${id} ${seed}: placeholder`,
-        );
-      }
-      for (const [axis, spec] of Object.entries(axes)) {
-        // A silent legacy value is omitted from the saved variant, so the
-        // pre-axis id stays intact. The other values of that axis still appear.
-        const want = (
-          spec.silentLegacy
-            ? spec.values.filter((value) => value !== spec.legacy)
-            : spec.values
-        )
-          .map(String)
-          .sort();
-        assert.deepEqual(
-          [...(reached.get(axis) ?? [])].sort(),
-          want,
-          `${id}: ${axis}`,
-        );
-      }
+  for (const [id, axes] of Object.entries(axesByTemplate)) {
+    const reached = new Map<string, Set<string>>();
+    const prompts = new Set<string>();
+    for (const seed of seeds) {
+      const problem = generateProblem(id, seed);
+      assert.deepEqual(generateProblem(id, seed), problem, `${id} ${seed}`);
+      generatedProblemSchema.parse(problem);
+      publicProblemSchema.parse(problem.public);
       assert.ok(
-        prompts.size >= 30,
-        `${id}: only ${prompts.size} distinct problems`,
+        multiPartChoiceResponseSchema.safeParse(problem.public.response)
+          .success,
+        `${id} ${seed}`,
+      );
+      assert.match(problem.variant!.id, /^[a-z0-9][a-z0-9-]{0,63}$/);
+      const response = problem.public.response as MultiPartChoiceResponse;
+      prompts.add(
+        problem.public.prompt +
+          JSON.stringify(problem.public.figure ?? null) +
+          JSON.stringify(
+            response.sentence ?? response.blanks.map((b) => b.label),
+          ) +
+          JSON.stringify(
+            response.blanks.map((b) => b.options.map((o) => o.label).sort()),
+          ),
+      );
+      for (const [axis, value] of Object.entries(problem.variant!.axes!))
+        reached.set(axis, (reached.get(axis) ?? new Set()).add(value));
+      const text = JSON.stringify(problem);
+      assert.equal(PLACEHOLDER.test(text), false, `${id} ${seed}: placeholder`);
+    }
+    for (const [axis, spec] of Object.entries(axes)) {
+      // A silent legacy value is omitted from the saved variant, so the
+      // pre-axis id stays intact. The other values of that axis still appear.
+      const want = (
+        spec.silentLegacy
+          ? spec.values.filter((value) => value !== spec.legacy)
+          : spec.values
+      )
+        .map(String)
+        .sort();
+      assert.deepEqual(
+        [...(reached.get(axis) ?? [])].sort(),
+        want,
+        `${id}: ${axis}`,
       );
     }
+    assert.ok(
+      prompts.size >= 30,
+      `${id}: only ${prompts.size} distinct problems`,
+    );
+  }
 });
 
 test("each blank has one correct option, grading needs every blank, and hints do not leak", () => {

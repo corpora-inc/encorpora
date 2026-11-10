@@ -613,7 +613,7 @@ try {
         );
         await page
           .locator(
-            "#answer, .choice-form, .point-plot-form, .multi-part-form, .figure-choice-form, .work-form, .compact-answer-action",
+            "#answer, .choice-form, .point-plot-form, .shape-composer, .multi-part-form, .figure-choice-form, .work-form, .compact-answer-action",
           )
           .first()
           .waitFor();
@@ -623,7 +623,7 @@ try {
             ".multi-select-form, .multi-select-entry-dialog",
           ),
           inline: !!document.querySelector(
-            ".point-plot-form, .multi-part-form, .figure-choice-form, .work-form",
+            ".point-plot-form, .shape-composer, .multi-part-form, .figure-choice-form, .work-form",
           ),
           structured: !!document.querySelector(".work-form"),
         }));

@@ -11,8 +11,8 @@ test("angle problems are deterministic, valid, balanced scenes", () => {
     assert.equal(t.requiredFigureCapability, "scenes-v1");
     const answers = new Map<string, number>();
     for (let i = 0; i < 200; i++) {
-      const p = generateProblem(t.id, `angle-${i}`);
-      assert.deepEqual(p, generateProblem(t.id, `angle-${i}`));
+      const p = generateProblem(t.id, `angle-${i}`, t.version);
+      assert.deepEqual(p, generateProblem(t.id, `angle-${i}`, t.version));
       generatedProblemSchema.parse(p);
       assert.equal(p.public.figure?.kind, "scene");
       answers.set(p.answer, (answers.get(p.answer) ?? 0) + 1);

@@ -21,7 +21,9 @@ const cases = {
   ...mcasWrittenWorkCases,
   ...regentsWrittenWorkCases,
 };
-const expectedVariants: Record<string, string[]> = {
+// Fixed witnesses keep the independent mathematical cases below exercised.
+// They are not a complete inventory; new types come from the registry.
+const regressionCases: Record<string, string[]> = {
   "polynomial-product-steps": [
     "binomials",
     "squared-binomial",
@@ -52,7 +54,7 @@ const expectedVariants: Record<string, string[]> = {
 };
 const SEEDS = 400;
 
-for (const [id, variants] of Object.entries(expectedVariants)) {
+for (const id of Object.keys(cases)) {
   test(`${id}: contract, determinism, variants, credit`, () => {
     assert.ok(
       templates.some((t) => t.id === id),
@@ -107,7 +109,11 @@ for (const [id, variants] of Object.entries(expectedVariants)) {
       assert.ok(a.hint.length > 40);
       assert.ok(a.explanation.length >= 2);
     }
-    assert.deepEqual([...seen].sort(), [...variants].sort());
+    for (const variant of regressionCases[id] ?? [])
+      assert.ok(
+        seen.has(variant),
+        `${id}: mathematical case ${variant} was not exercised`,
+      );
     assert.ok(modes.has("build") && modes.has("fill"));
     assert.ok(
       hints.size >= (id === "similarity-proof-aa" ? 8 : 20),
