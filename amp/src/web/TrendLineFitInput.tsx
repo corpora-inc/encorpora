@@ -167,10 +167,15 @@ export function TrendLineFitInput({
   );
   return (
     <div className="trend-fit" ref={host} data-resolved={resolved || undefined}>
+      {/* Both lines share one cell, so the taller keeps its room when the
+          line is graded and nothing below it moves. */}
       <p className="trend-instructions">
-        {resolved
-          ? "Compare the lines and the vertical gaps from the dots."
-          : "Drag a square handle, or select one and use the arrows."}
+        <span hidden={resolved || undefined}>
+          Drag a square handle, or select one and use the arrows.
+        </span>
+        <span hidden={!resolved || undefined}>
+          Compare the lines and the vertical gaps from the dots.
+        </span>
       </p>
       <div
         className="trend-canvas"

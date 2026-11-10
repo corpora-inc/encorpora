@@ -562,7 +562,7 @@ function dilationCase(r: Random): Case {
         `Start at $C$ and take the new step: $${frac(q(c))} ${p - c < 0 ? "−" : "+"} ${frac(mul(k, q(Math.abs(p - c))))} = ${frac(answer)}$.`,
         `The $${name}$-coordinate of $P'$ is ${frac(answer)}.`,
       ],
-      hint: `Measure the step from the center $C$ to $P$, not from the origin. Multiply that step by ${frac(k)}, then add it to $C$.`,
+      hint: `Measure the step from the center $C${pt(C)}$ to $P${pt(P)}$, not from the origin. Multiply that step by ${frac(k)}, then add it to $C$.`,
       tags: ["center", `axis-${name}`],
       figure: graph({ x: [-ext, ext], y: [-ext, ext], tick: 2 })
         .id("g")
@@ -594,7 +594,7 @@ function dilationCase(r: Random): Case {
         `Multiplying the top and bottom of a fraction by ${frac(k)} leaves its value unchanged. So rise ÷ run stays ${frac(m)}.`,
         `The image line is parallel to ℓ, and its slope is ${frac(m)}.`,
       ],
-      hint: `Under a dilation by ${frac(k)}, both the rise and the run of any step along ℓ are multiplied by ${frac(k)}. What happens to their ratio?`,
+      hint: `Line ℓ has slope ${frac(m)}. Under a dilation by ${frac(k)}, both the rise and the run of any step along ℓ are multiplied by ${frac(k)}. What happens to their ratio?`,
       tags: ["slope"],
       label: "Slope",
     };

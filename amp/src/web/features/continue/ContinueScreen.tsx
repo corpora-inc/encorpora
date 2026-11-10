@@ -173,7 +173,7 @@ function Continue({ session }: { session: AuthSession }) {
           interval={interval}
         />
       ) : account.account.confirmationRequired ? (
-        <VerifyEmailStep session={session} me={account} />
+        <VerifyEmailStep session={session} me={account} embedded />
       ) : (
         <PlanStep
           session={session}

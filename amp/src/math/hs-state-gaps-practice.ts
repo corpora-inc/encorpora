@@ -1713,7 +1713,7 @@ function featureIntervals(r: Random): Draft {
     return {
       prompt: `The graph of $f(x)=${expr}$ is a parabola. During which interval is $f$ ${word}?`,
       answer: "",
-      hint: "Increasing or decreasing changes at the axis, halfway between the zeros. Positive or negative changes at the zeros themselves.",
+      hint: `The factors of $${expr}$ give the zeros. Increasing or decreasing changes at the axis, halfway between those zeros. Positive or negative changes at the zeros themselves.`,
       explanation: [
         `The zeros are $x=${p}$ and $x=${q}$, so the axis is $x=${vertex}$.`,
         a < 0
@@ -1757,7 +1757,7 @@ function featureIntervals(r: Random): Draft {
     return {
       prompt: `The table shows the height of a ball, in meters, $t$ seconds after it is thrown. Between which times in the table is the height increasing?\n$t$: ${times.join(", ")}\n$h$: ${values.join(", ")}`,
       answer: "",
-      hint: "The height increases up to the row where it is greatest. Read those times, not the heights in the $h$ row.",
+      hint: `The table pairs times ${times.join(", ")} with heights ${values.join(", ")}. The height increases up to the greatest of those heights. Read those times, not the heights.`,
       explanation: [
         `The greatest height in the table is in the row $t=${vertex}$.`,
         "Before that row the heights go up, so the ball is rising.",
@@ -1789,7 +1789,7 @@ function featureIntervals(r: Random): Draft {
   return {
     prompt: `The height in meters of a ball $t$ seconds after it is thrown is $h(t)=${expr}$, with $t\\ge 0$. Its graph is a downward parabola. During which interval of time is the ball ${word}?`,
     answer: "",
-    hint: "Rising or falling changes at the axis, halfway between the zeros. Above the ground runs from the throw until the later zero.",
+    hint: `For $h(t)=${expr}$, rising or falling changes at the axis, halfway between the zeros. Above the ground runs from the throw until the later zero.`,
     explanation: [
       `The zeros are $t=-${s}$, before the throw, and $t=${root}$. The axis is $t=${vertex}$.`,
       "The leading coefficient is negative, so the ball rises before the axis and falls after it.",

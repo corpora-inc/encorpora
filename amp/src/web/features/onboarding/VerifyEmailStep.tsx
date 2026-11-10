@@ -17,10 +17,14 @@ export function VerifyEmailStep({
   session,
   me,
   invitation = false,
+  embedded = false,
 }: {
   session: AuthSession;
   me: SignedInMe;
   invitation?: boolean;
+  /** Inside another screen ("Continue with AMP"), which has the title, the
+   * frame and its own "Not now". */
+  embedded?: boolean;
 }) {
   const email = me.account.email ?? "";
   const location = useLocation();
@@ -53,9 +57,16 @@ export function VerifyEmailStep({
     },
   });
   const busy = confirmation.isPending || verification.isPending;
+  const Heading = embedded ? "h2" : "h1";
   return (
-    <section className={`${frameCard} ${styles.step}`}>
-      <FrameBrand expanded />
+    <section
+      className={
+        embedded
+          ? `${styles.step} ${styles.embedded}`
+          : `${frameCard} ${styles.step}`
+      }
+    >
+      {!embedded && <FrameBrand expanded />}
       <Toast
         message={
           verification.error?.message ??
@@ -69,7 +80,7 @@ export function VerifyEmailStep({
           confirmation.reset();
         }}
       />
-      <h1>Confirm your email</h1>
+      <Heading>Confirm your email</Heading>
       <p>
         Confirm your address to continue. We sent a link to{" "}
         <span className={styles.address}>{email || "your email address"}</span>.
@@ -97,9 +108,11 @@ export function VerifyEmailStep({
         >
           {verification.isPending ? "Sending email…" : "Send another email"}
         </Button>
-        <Link to="/" className={buttonClass("quiet")}>
-          Not now
-        </Link>
+        {!embedded && (
+          <Link to="/" className={buttonClass("quiet")}>
+            Not now
+          </Link>
+        )}
       </div>
     </section>
   );

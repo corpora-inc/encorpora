@@ -147,8 +147,8 @@ export function generateExponentialContextEquation(
     answer: serializeMultiPart(response, { eq: eqPick.key, n: numPick.key }),
     hint:
       axes.kind === "decay"
-        ? "Each half-life multiplies by 1/2. Match that factor, then read how many half-lives fit in t."
-        : "Multiplying is not adding. Match the starting amount and the base, then read the exponent.",
+        ? `The sample starts at ${model.start} and the half-life is ${model.half} hours, until ${model.target} remain. Each half-life multiplies by 1/2. Match that factor, then read how many half-lives fit in t.`
+        : `The culture starts at ${model.start} and multiplies by ${model.base}, until there are ${model.target}. Multiplying is not adding. Match the starting amount and the base, then read the exponent.`,
     explanation: [
       axes.kind === "decay"
         ? `After t hours the amount is ${model.start} times 1/2 to the power t/${model.half}.`
