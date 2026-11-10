@@ -57,6 +57,7 @@ test("trial transport retries an older API without its newest format, keeping au
       "structured-work-v1",
       "multi-part-cards-v1",
       "shape-composer-v1",
+      "line-plot-build-v1",
     ],
   });
   expect(first.figureCapabilities.length).toBeGreaterThan(0);
@@ -70,6 +71,7 @@ test("trial transport retries an older API without its newest format, keeping au
       "figure-choice-v1",
       "structured-work-v1",
       "multi-part-cards-v1",
+      "shape-composer-v1",
     ],
   });
 });

@@ -138,11 +138,38 @@ test("the recorded below-catalog trial no longer lifts fractions two grades on o
   assert.equal(after.adaptive!.level, before.adaptive!.level);
 });
 
+test("graphical solution estimates cover three-choice intersection variants", () => {
+  const problem = generateProblem("graphical-solution-table", "audit:13");
+  assert.equal(problem.public.response.kind, "choice");
+  if (problem.public.response.kind !== "choice") throw new Error("response");
+  assert.equal(problem.public.response.options.length, 3);
+  assert.equal(problemGuessChance(problem), 1 / 3);
+  assert.equal(guessChanceOf("graphical-solution-table"), 1 / 3);
+});
+
+for (const [id, seed, cards] of [
+  ["tile-then-multiply", "audit:95", 4],
+  ["split-tiled-count", "audit:5", 5],
+] as const) {
+  test(`${id} estimates cover ${cards}-card reusable trays`, () => {
+    const problem = generateProblem(id, seed);
+    const response = problem.public.response;
+    assert.equal(response.kind, "multi-part-choice");
+    if (response.kind !== "multi-part-choice") throw new Error("response");
+    assert.equal(response.reuse, true);
+    assert.equal(response.blanks.length, 4);
+    assert.ok(response.blanks.every((blank) => blank.options.length === cards));
+    assert.equal(problemGuessChance(problem), 1 / cards ** 4);
+    assert.equal(guessChanceOf(id), 1 / cards ** 4);
+  });
+}
+
 test("guess chance comes from each family's answer schema and is never understated", () => {
   const kindForCapability: Record<ResponseCapability, string> = {
     "single-choice-v1": "choice",
     "multi-select-v1": "multi-select",
     "point-plot-v1": "point-plot",
+    "line-plot-build-v1": "line-plot-build",
     "shape-composer-v1": "shape-composer",
     "multi-part-choice-v1": "multi-part-choice",
     "multi-part-cards-v1": "multi-part-choice",
@@ -176,7 +203,9 @@ test("guess chance comes from each family's answer schema and is never understat
     if (chance > 0) choiceFamilies++;
     assert.ok(chance >= 0 && chance <= 1 / 2, `${template.id}: ${chance}`);
     const capabilities = [
-      ...(template.requiredResponseCapability ? [template.requiredResponseCapability] : []),
+      ...(template.requiredResponseCapability
+        ? [template.requiredResponseCapability]
+        : []),
       ...(template.requiredResponseCapabilities ?? []),
     ];
     // Typed answers are supported without a response capability.
@@ -192,7 +221,11 @@ test("guess chance comes from each family's answer schema and is never understat
       // The transport must fall back for a client declaring only that format.
       const compatible = problem.variant?.axes?.clause
         ? generateProblemFor(
-            template.id, `audit:${i}`, figureCapabilities, undefined, capabilities,
+            template.id,
+            `audit:${i}`,
+            figureCapabilities,
+            undefined,
+            capabilities,
           )
         : problem;
       if (capabilities.length)

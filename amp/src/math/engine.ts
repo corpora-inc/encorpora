@@ -31,6 +31,7 @@ import {
   withTemplateVersion,
 } from "./variation/axes";
 import { gradePointPlot, normalizePointPlot } from "./point-plot";
+import { gradeLinePlotBuild, normalizeLinePlotBuild } from "./line-plot-build";
 import { gradeShapeComposer, normalizeShapeAnswer } from "./shape-composer";
 import { gradeMultiPart, normalizeMultiPart } from "./multi-part-choice";
 import {
@@ -716,6 +717,8 @@ export function isValidResponse(
   if (problem.response.kind === "shape-composer")
     return normalizeShapeAnswer(problem.response, response) !== null;
   if (response.length > 200) return false;
+  if (problem.response.kind === "line-plot-build")
+    return normalizeLinePlotBuild(problem.response, response) !== null;
   if (problem.response.kind === "multi-select")
     return normalizeSelection(problem.response, response) !== null;
   if (problem.response.kind === "point-plot")
@@ -734,6 +737,12 @@ export function gradeAnswer(
   problem: GeneratedProblem,
   response: string,
 ): boolean {
+  if (problem.public.response.kind === "line-plot-build")
+    return gradeLinePlotBuild(
+      problem.public.response,
+      problem.answer,
+      response,
+    );
   if (problem.public.response.kind === "shape-composer")
     return gradeShapeComposer(problem.public.response, response);
   if (problem.public.response.kind === "multi-select") {

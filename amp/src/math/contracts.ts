@@ -8,6 +8,14 @@ import {
 } from "./shape-composer";
 import { z } from "zod";
 import {
+  linePlotBuildResponseSchema,
+  linePlotContextSchema,
+  normalizeLinePlotBuild,
+  type LinePlotBuildResponse,
+  type LinePlotBuildAnswer,
+  type LinePlotContext,
+} from "./line-plot-build";
+import {
   MAX_SELECTION_OPTIONS,
   normalizeSelection,
   selectionIdPattern,
@@ -276,6 +284,7 @@ export const responseCapabilities = [
   "structured-work-v1",
   "multi-part-cards-v1",
   "shape-composer-v1",
+  "line-plot-build-v1",
 ] as const;
 export type ResponseCapability = (typeof responseCapabilities)[number];
 /** The response and figure families a client declares it can show. */
@@ -338,6 +347,8 @@ export type MultiSelectResponse = {
   selectionCount: number;
 };
 export type {
+  LinePlotBuildResponse,
+  LinePlotBuildAnswer,
   PointPlotResponse,
   PointPlotGrading,
   MultiPartChoiceResponse,
@@ -353,7 +364,8 @@ export type ProblemResponse =
   | PointPlotResponse
   | MultiPartChoiceResponse
   | FigureChoiceResponse
-  | StructuredWorkResponse;
+  | StructuredWorkResponse
+  | LinePlotBuildResponse;
 /** Safe teaching content delivered beside a problem; never grading data.
  * Its glossary fields carry the term cards the hint's words open. */
 export interface ProblemHint extends GlossaryPayload {
@@ -393,6 +405,7 @@ export interface GeneratedProblem {
   choiceFeedback?: Record<string, string>;
   /** Private grading rule of a point-plot response (point-plot.ts). */
   pointGrading?: PointPlotGrading;
+  linePlotContext?: LinePlotContext;
   /** Private grading rule of a structured-work response (structured-work.ts):
    * expected fields, the moves a derivation's reasons name and its
    * solutions, or a proof's justified claims. Never public. */
@@ -988,6 +1001,7 @@ export const problemResponseSchema: z.ZodType<ProblemResponse> = z.union([
       "Select fewer than all options, using unique identifiers and labels",
     ),
   pointPlotResponseSchema,
+  linePlotBuildResponseSchema,
   multiPartChoiceResponseSchema,
   figureChoiceResponseSchema,
   structuredWorkResponseSchema,
@@ -1028,6 +1042,7 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
       .record(choiceIdSchema, z.string().trim().min(1).max(1000))
       .optional(),
     pointGrading: pointPlotGradingSchema.optional(),
+    linePlotContext: linePlotContextSchema.optional(),
     workGrading: workGradingSchema.optional(),
     entryPolicy: z.literal("sat-spr").optional(),
     variant: problemVariantSchema.optional(),
@@ -1037,6 +1052,20 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
     const response = problem.public.response;
     if (response.kind !== "shape-composer" && problem.answer.length > 200)
       return false;
+    if (response.kind === "line-plot-build")
+      return (
+        !problem.choiceFeedback &&
+        !problem.entryPolicy &&
+        !problem.pointGrading &&
+        !problem.workGrading &&
+        normalizeLinePlotBuild(response, problem.answer) === problem.answer &&
+        (!response.measurementCount ||
+          Object.values(
+            (JSON.parse(problem.answer) as { counts: Record<string, number> })
+              .counts,
+          ).reduce((a, b) => a + b, 0) === response.measurementCount)
+      );
+    if (problem.linePlotContext) return false;
     // A worked key is canonical, fits its private rule and earns credit.
     if (response.kind === "structured-work")
       return (

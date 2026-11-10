@@ -44,6 +44,7 @@ export { family as interceptPoint } from "./intercept-point";
 export { family as kBuildRepresent } from "./k-build-represent";
 export { family as likelihood } from "./likelihood";
 export { family as lineFromPointSteps } from "./line-from-point-steps";
+export { family as linePlotBuild } from "./line-plot-build";
 export { family as lineGraphRead } from "./line-graph-read";
 export { family as linkedEquations } from "./linked-equations";
 export { family as matrixEquationSystem } from "./matrix-equation-system";
