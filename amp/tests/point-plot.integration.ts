@@ -6,7 +6,13 @@ import { assertTestDatabaseTarget } from "../scripts/test-database-preflight";
 import { migrate } from "../scripts/migrate";
 import { buildApp } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";
-import { generateProblem } from "../src/math/engine";
+import { generateProblemFor } from "../src/math/engine";
+/** The problem as the server generated it for a client that declared no
+ * figure capabilities (the batches here send none). Regenerating with the full
+ * engine can pick newer variants than the server served. */
+const generateServed = (templateId: string, seed: string) =>
+  generateProblemFor(templateId, seed, []);
+
 import {
   latticeOnCurve,
   latticeOnLine,
@@ -141,7 +147,7 @@ test(
 
       // A graphed line: any two of its lattice points are correct.
       const lineProblem = await serve("graph-linear-equation");
-      const lineSecret = generateProblem(
+      const lineSecret = generateServed(
         lineProblem.templateId,
         lineProblem.seed,
       );
@@ -170,7 +176,8 @@ test(
         "[]",
         JSON.stringify([alternate[0]]),
         JSON.stringify([alternate[0], alternate[0]]),
-        JSON.stringify([alternate[0], [7, 0]]),
+        // Far off every grid any variant draws.
+        JSON.stringify([alternate[0], [1000, 0]]),
         JSON.stringify([alternate[0], null]),
         JSON.stringify([...alternate, onLine[1]]),
         "malformed",
@@ -212,7 +219,7 @@ test(
 
       // A wrong line is graded incorrect, not rejected.
       const another = await serve("graph-linear-equation");
-      const anotherSecret = generateProblem(another.templateId, another.seed);
+      const anotherSecret = generateServed(another.templateId, another.seed);
       const [p] = plotPoints(anotherSecret.answer);
       const off = JSON.stringify([p, [p![0], p![1] === 6 ? 5 : p![1] + 1]]);
       const miss = await send({
@@ -230,7 +237,7 @@ test(
       const byXY = (a: readonly number[], b: readonly number[]) =>
         a[0]! - b[0]! || a[1]! - b[1]!;
       let image = await serve("place-transformed-image");
-      let imageSecret = generateProblem(image.templateId, image.seed);
+      let imageSecret = generateServed(image.templateId, image.seed);
       for (let tries = 0; tries < 300; tries++) {
         const pts = plotPoints(imageSecret.answer);
         const swappedPts = [pts[1]!, pts[0]!, ...pts.slice(2)];
@@ -239,7 +246,7 @@ test(
         )
           break;
         image = await serve("place-transformed-image");
-        imageSecret = generateProblem(image.templateId, image.seed);
+        imageSecret = generateServed(image.templateId, image.seed);
       }
       const correctImages = plotPoints(imageSecret.answer);
       const swapped = [
@@ -271,7 +278,7 @@ test(
 
       // Exact sets: the given points in any order.
       const plotted = await serve("plot-points");
-      const plottedSecret = generateProblem(plotted.templateId, plotted.seed);
+      const plottedSecret = generateServed(plotted.templateId, plotted.seed);
       const plottedReply = await send({
         problemId: plotted.id,
         requestId: randomUUID(),
@@ -339,7 +346,7 @@ test(
       // A graphed curve: any distinct lattice points of the function, with a
       // required vertex or intercept among them; the function never leaves the server.
       const curveProblem = await serve("graph-quadratic-points");
-      const curveSecret = generateProblem(
+      const curveSecret = generateServed(
         curveProblem.templateId,
         curveProblem.seed,
       );
@@ -391,7 +398,7 @@ test(
         assert.equal(accepted.json().answer, curveSecret.answer);
       }
       const secondCurve = await serve("graph-quadratic-points");
-      const secondSecret = generateProblem(
+      const secondSecret = generateServed(
         secondCurve.templateId,
         secondCurve.seed,
       );

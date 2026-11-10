@@ -4,7 +4,13 @@ import { randomUUID } from "node:crypto";
 import { migrate } from "../scripts/migrate";
 import { PostgresRepository } from "../src/server/repository";
 import { buildApp } from "../src/server/app";
-import { generateProblem } from "../src/math/engine";
+import { generateProblemFor } from "../src/math/engine";
+/** The problem as the server generated it for a client that declared no
+ * figure capabilities (the batches here send none). Regenerating with the full
+ * engine can pick newer variants than the server served. */
+const generateServed = (templateId: string, seed: string) =>
+  generateProblemFor(templateId, seed, []);
+
 import { publicProblemSchema } from "../src/math/contracts";
 
 const url = process.env.AMP_TEST_DATABASE_URL;
@@ -37,7 +43,7 @@ test(
       );
       for (const p of problems) {
         publicProblemSchema.parse(p); // unchanged strict protocol for installed clients
-        const generated = generateProblem(p.templateId, p.seed);
+        const generated = generateServed(p.templateId, p.seed);
         // Teaching content only: the hint, its cue and its term cards.
         const { glossary, glossaryLexicon, ...support } = hints[p.id];
         assert.deepEqual(support, {
@@ -58,7 +64,7 @@ test(
       const body = (p: any, extra = {}) => ({
         problemId: p.id,
         requestId: randomUUID(),
-        response: generateProblem(p.templateId, p.seed).answer,
+        response: generateServed(p.templateId, p.seed).answer,
         ...extra,
       });
       const independent = await app.inject({
