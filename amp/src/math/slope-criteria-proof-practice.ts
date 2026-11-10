@@ -264,6 +264,7 @@ export function generateSlopeCriteriaProof(
   const fig = parallelFigures[r(0, parallelFigures.length - 1)]!;
   let prompt = "";
   let steps: Step[] = [];
+  let hint = `The figure's run is ${fig.run} and its rise is ${fig.rise}. Use the given runs first. A reason that mentions the conclusion too early is circular.`;
   let scene = parallelScene(fig.run, fig.rise, fig.x2, fig.y0);
   if (axes.proof === "perpendicular") {
     let a = r(1, 5);
@@ -303,6 +304,7 @@ export function generateSlopeCriteriaProof(
     }
     steps = perpSteps(a, b);
     prompt = `Line l through P(${px}, ${py}) has run ${a} and rise ${b}, so its slope is ${b}/${a}. Line m is l turned 90 degrees about P. Complete the proof that the slope of m is -${a}/${b}. Choose that slope as a number too.`;
+    hint = `Line l through P(${px}, ${py}) has run ${a} and rise ${b}. Use those counts first. A reason that mentions the conclusion too early is circular.`;
     scene = graph({ id: "g", x: [-6, 6], y: [-6, 6], grid: 1, aspect: 1 })
       .line({ through: [[px, py], [px + a, py + b]] }, { color: "accent" })
       .line({ through: [[px, py], [px - b, py + a]] }, { color: "warm" })
@@ -346,7 +348,7 @@ export function generateSlopeCriteriaProof(
       figure: { kind: "scene", scene },
     },
     answer,
-    hint: "Use the given runs first. A reason that mentions the conclusion too early is circular.",
+    hint,
     explanation: [
       ...built.map(
         (item, i) =>

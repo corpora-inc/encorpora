@@ -397,7 +397,8 @@ function whichUnit(seed: string, r: Random): GeneratedProblem {
       "Each small square of the grid is one unit on a side. Which figure is a unit square?",
     label: "Choose the unit square",
     options,
-    hint: "A unit square has sides of length 1. A longer rectangle, a larger square, and a segment do not cover exactly one square unit.",
+    hint: (ordered) =>
+      `Start with the first picture: ${ordered[0]!.description} A unit square has sides of length 1. A longer rectangle, a larger square, and a segment do not cover exactly one square unit.`,
     explanation: (name) => [
       "A unit square is a square whose sides are each 1 unit. Its area is 1 square unit.",
       "The 1 by 2 rectangle is two unit squares. The 2 by 2 square has area 4. The segment has length but no area.",
@@ -421,7 +422,7 @@ function countCover(seed: string, r: Random): GeneratedProblem {
   const problem = assemble(meta, seed, r, {
     prompt: `The figure is covered by unit squares with no gaps or overlaps. What is its area, in ${unit}?`,
     answer: String(n),
-    hint: "Count the shaded squares in each row, and keep a running total. Skip the empty squares of the grid.",
+    hint: `The grid is ${region.cols} across and ${region.rows} down, and the top row has ${counts[0]} shaded squares. Count each row and keep a running total. Skip the empty squares.`,
     explanation: [
       `The shaded counts by row, from the top, are ${counts.join(", ")}.`,
       `The running total is ${counts.join(" + ")} = ${n}.`,
@@ -531,7 +532,7 @@ function gapsOverlaps(seed: string, r: Random): GeneratedProblem {
         scene: overlaps,
       },
     ],
-    hint: "A gap leaves part of the figure uncovered, so the count is too small. An overlap counts some of the figure twice, so the count is too large.",
+    hint: `This outline is ${region.cols} squares across and ${region.rows} down. A gap leaves part uncovered, so the count is too small. An overlap counts some of the figure twice, so the count is too large.`,
     explanation: (name) => [
       `The outline has ${n} unit cells.`,
       `The covering with ${n - 2} tiles leaves two cells bare, so its count is too small. The covering with ${n + 2} tiles lays two tiles on top of others, so its count is too large.`,
@@ -556,7 +557,7 @@ function figureProblem(
     prompt: string;
     label: string;
     options: FigureOption[];
-    hint: string;
+    hint: string | ((ordered: FigureOption[]) => string);
     explanation: (name: string) => string[];
     feedback: string[];
     r?: Random;
@@ -575,6 +576,7 @@ function figureProblem(
     })),
   };
   figureChoiceResponseSchema.parse(response);
+  const orderedOptions = order.map((source) => parts.options[source]!);
   const correctAt = order.findIndex((source) => parts.options[source]!.correct);
   const answer = figureOptionIds[correctAt]!;
   const name = `Picture ${figureOptionLetters[correctAt]}`;
@@ -595,7 +597,8 @@ function figureProblem(
       response,
     },
     answer,
-    hint: parts.hint,
+    hint:
+      typeof parts.hint === "function" ? parts.hint(orderedOptions) : parts.hint,
     explanation: parts.explanation(name),
     choiceFeedback: feedback,
   };
@@ -1032,7 +1035,7 @@ function ownCut(seed: string, r: Random): GeneratedProblem {
         box: pieces.box,
       },
       answer: JSON.stringify([[String(p1)], [String(p2)], [String(pieces.total)]]),
-      hint: "One cut goes across from the inner corner to a side. The two pieces must be rectangles of this figure, and the total is their sum, not the box around the L.",
+      hint: `The outer sides are ${W} and ${H}, and the step-in uses ${w1} and ${h1}. One cut goes across from the inner corner to a side. The two pieces must be rectangles, and the total is their sum, not the box around the L.`,
       explanation: [
         `A horizontal cut gives ${W} × ${h1} = ${pieces.horizontal[0]} and ${w1} × ${H - h1} = ${pieces.horizontal[1]}.`,
         `A vertical cut gives ${w1} × ${H} = ${pieces.vertical[0]} and ${W - w1} × ${h1} = ${pieces.vertical[1]}.`,
@@ -1130,7 +1133,8 @@ function whichCut(seed: string, r: Random): GeneratedProblem {
         ]),
       },
     ],
-    hint: "A rectangle cut meets the inner corner and runs straight to a side. A slanted line, a line that misses the corner, and two outlines that share the corner do not.",
+    hint: (ordered) =>
+      `Start with the first picture: ${ordered[0]!.description} A rectangle cut meets the inner corner and runs straight to a side. A slanted line, a line that misses the corner, and two outlines that share the corner do not.`,
     explanation: (name) => [
       "The inner corner is where the outline steps in. A straight cut from that corner to the opposite side makes two rectangles.",
       "A diagonal makes pieces that are not rectangles. A vertical line that misses the corner leaves a smaller L. Two outlines that both cover the corner count that corner twice.",
@@ -1254,7 +1258,7 @@ function exhibitArea(seed: string, r: Random): GeneratedProblem {
       [String(pick[1])],
       [String(perimeter)],
     ]),
-    hint: `The area ${area} is length times width. Find a different factor pair. The perimeter is twice the sum of the sides, not the area.`,
+    hint: `This rectangle is ${given[0]} by ${given[1]}. Their product is the area. Find a different factor pair of that product. The perimeter is twice the sum of the sides, not the area.`,
     explanation: [
       `${given[0]} × ${given[1]} = ${area}. Another factor pair is ${pick[0]} × ${pick[1]} = ${area}.`,
       `That is not ${given[0]} by ${given[1]} turned.`,
@@ -1368,7 +1372,7 @@ export function generateCoordinatePlot(templateId: string, seed: string) {
         connect: "none",
       },
       points: pts,
-      hint: "The first number in each pair is the x-coordinate, right if positive and left if negative. The second is the y-coordinate. Plot each vertex. The order does not matter.",
+      hint: `The vertices are ${names.map((name, i) => `${name}${pairText(pts[i]!)}`).join(", ")}. The first number in each pair is the x-coordinate, right if positive and left if negative. Plot each vertex. The order does not matter.`,
       explanation: [
         `Rectangle ABCD is ${rect.w} units wide and ${rect.h} units tall.`,
         ...pts.map((p, i) => `$${names[i]}${pairText(p)}$ sits ${p[0]} across and ${p[1]} up from the origin.`),
@@ -1488,7 +1492,7 @@ export function generateSolidSection(templateId: string, seed: string) {
     return assemble(meta, seed, r, {
       prompt: `A stack of ${count} coins, each of volume ${each} ${nounFor(Number(each), "cubic centimeter")}, is pushed into a slanted stack. What is the volume of the slanted stack, in cubic centimeters?`,
       answer: String(volume),
-      hint: "The slant does not change any layer. Multiply the number of coins by the volume of one coin.",
+      hint: `There are ${count} coins, and each has volume ${each} ${nounFor(each, "cubic centimeter")}. The slant does not change any layer. Multiply the number of coins by the volume of one coin.`,
       explanation: [
         `Each coin has volume ${each} ${nounFor(Number(each), "cubic centimeter")}, and there are ${count} coins.`,
         `Pushing the stack sideways keeps every coin. The volume is ${count} × ${each} = ${volume}.`,
@@ -1643,8 +1647,8 @@ export function generateTiltedRectangle(templateId: string, seed: string) {
         answer: "",
         hint:
           ask === "area"
-            ? "Adjacent sides are perpendicular when the product of their slopes is −1, or when their direction vectors have dot product 0. Multiply the two side lengths."
-            : "Find the two different side lengths with the distance formula, add them, and double. A grid path along the coordinate gaps is longer than the straight side.",
+            ? `The vertices are ${coord("A", fact.A)}, ${coord("B", fact.B)}, ${coord("C", fact.C)} and ${coord("D", fact.D)}. Adjacent sides are perpendicular when the product of their slopes is −1, or when their direction vectors have dot product 0. Multiply the two side lengths.`
+            : `The vertices are ${coord("A", fact.A)}, ${coord("B", fact.B)}, ${coord("C", fact.C)} and ${coord("D", fact.D)}. Find the two different side lengths with the distance formula, add them, and double. A grid path along the coordinate gaps is longer than the straight side.`,
         explanation: [
           `Side AB runs ${count(m, "step")} of (${p}, ${q}), so its length is ${fact.ab}. Side AD runs ${count(n, "step")} of (${-q}, ${p}), so its length is ${fact.ad}.`,
           `The direction vectors have dot product 0, so the angle at A is a right angle.`,

@@ -183,7 +183,7 @@ export function trigonometryClause(
       {
         figure: sceneFigure(g.scene()),
         prompt: `Point $P=(\\cos\\theta,\\sin\\theta)$ is on the circle of radius 1 at $\\theta=${theta}^\\circ$, approximately (${round(x, 2)}, ${round(y, 2)}). The reference triangle has hypotenuse 1 and legs $|\\cos\\theta|$ and $|\\sin\\theta|$. Here $\\${negative}\\theta<0$. Complete the proof, then divide the identity by $\\cos^2\\theta$ (which is nonzero).`,
-        hint: "Apply the right-triangle rule to the two leg lengths and hypotenuse 1. Squares of negative coordinates equal squares of their positive lengths.",
+        hint: `The point is at ${theta}°, about (${round(x, 2)}, ${round(y, 2)}). Apply the right-triangle rule to the two leg lengths and hypotenuse 1. Squares of negative coordinates equal squares of their positive lengths.`,
         explanation: [
           "Pythagoras gives $|\\cos\\theta|^2+|\\sin\\theta|^2=1^2$.",
           "Squaring removes signs, so $\\cos^2\\theta+\\sin^2\\theta=1$, in every quadrant.",
@@ -343,8 +343,8 @@ export function trigonometryClause(
         figure: sceneFigure(g.scene()),
         hint:
           ask <= 1
-            ? "Rotation by −β sends the point at angle β to angle 0. Track where it sends the other endpoint."
-            : "Keep products in the expansion. Replacing an angle by its negative changes sine's sign but not cosine's sign.",
+            ? `The drawing uses α = ${alpha}° and β = ${beta}°. Rotation by −β sends the point at angle β to angle 0. Track where it sends the other endpoint.`
+            : `The drawing uses α = ${alpha}° and β = ${beta}°. Keep products in the expansion. Replacing an angle by its negative changes sine's sign but not cosine's sign.`,
         explanation: proof,
       },
       correct,
@@ -478,7 +478,7 @@ export function trigonometryClause(
     const copy = {
       figure,
       prompt: `In triangle ABC, $C=90^\\circ$, $a=${a}$, and $b=${d}$. ${ask === 0 ? "What does the law of cosines for side c become?" : ask === 1 ? "What does a/sin A = c/sin C become?" : "Use the law of cosines to find c."}`,
-      hint: `The law of cosines has correction term $2ab\\cos C$. Substitute $C=90^\\circ$ before calculating.`,
+      hint: `Here $a=${a}$ and $b=${d}$, with $C=90^\\circ$. The law of cosines has correction term $2ab\\cos C$. Substitute $C=90^\\circ$ before calculating.`,
       explanation: [
         "Since $\\cos90^\\circ=0$, $c^2=a^2+b^2-2ab\\cos C$ becomes $c^2=a^2+b^2$.",
         `$c=\\sqrt{${a ** 2}+${d ** 2}}=${c}$.`,

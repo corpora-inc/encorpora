@@ -1774,10 +1774,10 @@ function oneContextual(meta: TemplateMetadata, seed: string, r: Random) {
     prompt,
     hint:
       noun === "area"
-        ? "The squared form shows the greatest area and the width that gives it. A factor of 0 shows where the area vanishes."
+        ? `Read the three forms, starting with $${forms.A}$. The squared form shows the greatest area and the width that gives it. A factor of 0 shows where the area vanishes.`
         : noun === "profit"
-          ? "Factored form shows the break-even counts. The squared form shows the greatest profit and how many items give it."
-          : "Factored form shows the landing, a zero. Vertex form shows the greatest height and its time. Standard form shows the height at the throw.",
+          ? `Read the three forms, starting with $${forms.A}$. Factored form shows the break-even counts. The squared form shows the greatest profit and how many items give it.`
+          : `Read the three forms, starting with $${forms.A}$. Factored form shows the landing, a zero. Vertex form shows the greatest height and its time. Standard form shows the height at the throw.`,
     explanation: [
       `The three forms expand to the same ${fname}(${v}).`,
       ask === "symmetry"

@@ -26,24 +26,23 @@ export const APPROVED: Record<string, { short: string; name: string; roles: Role
   }]));
 
 export type Voice = { id: string; tag?: string };
-/** `role` is the speaker key. `kind` is teacher, learner, narrator, or a later kind. */
-export type Role = { role: string; kind: RoleKind; name: string; voice: Voice };
+/** `role` is the speaker key. `kind` is teacher, learner, narrator, or a later kind. `voice` is absent when no distinct approved voice is left. */
+export type Role = { role: string; kind: RoleKind; name: string; voice?: Voice };
 export type Cast = { roles: Role[]; named: boolean };
 
-const voiceById = (id: string): VoiceSpec | undefined => VOICES.find((voice) => voice.id === id);
-
-/** A voice by id or short name; throws when it is not approved. */
-export function approvedVoice(v: string, where: string): string {
-  if (Object.hasOwn(APPROVED, v)) return v;
-  const byShort = VOICES.find((voice) => voice.short === v.toLowerCase());
+/** A voice by id or short name from `registry`; throws when it is not there. */
+export function approvedVoice(v: string, where: string, registry: readonly VoiceSpec[] = VOICES): string {
+  const byId = registry.find((voice) => voice.id === v);
+  if (byId) return byId.id;
+  const byShort = registry.find((voice) => voice.short === v.toLowerCase());
   if (byShort) return byShort.id;
-  throw new Error(`${where}: "${v}" is not an approved voice. Use one of: ${VOICES.map((voice) => `${voice.short} (${voice.id})`).join(", ")}.`);
+  throw new Error(`${where}: "${v}" is not an approved voice. Use one of: ${registry.map((voice) => `${voice.short} (${voice.id})`).join(", ")}.`);
 }
 
 /** FNV-1a over the film ID gives a stable choice independent of catalog order. */
-export function defaultVoice(kind: RoleKind, filmId: string): string {
+export function defaultVoice(kind: RoleKind, filmId: string, registry: readonly VoiceSpec[] = VOICES): string {
   if (kind === "narrator") return NARRATOR_ID;
-  const eligible = voicesFor(kind);
+  const eligible = voicesFor(kind, registry);
   if (!eligible.length) throw new Error(`No approved voices for ${kind}`);
   // The first learner voice stays Champ, so a one-learner film is unchanged
   // when another learner voice is added. Teachers are balanced across films.
@@ -53,17 +52,17 @@ export function defaultVoice(kind: RoleKind, filmId: string): string {
   return eligible[hash % eligible.length]!.id;
 }
 
-/** The next eligible voice for this kind that this film has not used yet. */
-function distinctVoice(kind: RoleKind, filmId: string, used: ReadonlySet<string>): string {
-  const eligible = voicesFor(kind);
-  if (!eligible.length) throw new Error(`No approved voices for ${kind}`);
-  const preferred = defaultVoice(kind, filmId);
+/** The next eligible voice for this kind that this film has not used yet, or none. */
+function distinctVoice(kind: RoleKind, filmId: string, used: ReadonlySet<string>, registry: readonly VoiceSpec[]): string | undefined {
+  const eligible = voicesFor(kind, registry);
+  if (!eligible.length) return undefined;
+  const preferred = defaultVoice(kind, filmId, registry);
   const start = Math.max(0, eligible.findIndex((voice) => voice.id === preferred));
   for (let i = 0; i < eligible.length; i++) {
     const id = eligible[(start + i) % eligible.length]!.id;
     if (!used.has(id)) return id;
   }
-  throw new Error(`No distinct approved voice left for ${kind}`);
+  return undefined;
 }
 
 type SpeakerDecl = { key: string; kind: RoleKind };
@@ -81,15 +80,18 @@ function speakersOf(script: Pick<Script, "cast">): SpeakerDecl[] {
 /**
  * The speakers of a script, in cast order, each with its voice.
  * `overrides` (speaker key → voice id or short name) re-voice this run.
+ * `registry` defaults to the approved voices. A test passes its own list.
  * A script without a cast has the single speaker `narrator`.
+ * A speaker with no distinct voice left is unbound. Voicing rejects that. A dry check does not.
  */
-export function resolveCast(script: Pick<Script, "id" | "cast" | "shots">, overrides: Record<string, string> = {}): Cast {
+export function resolveCast(script: Pick<Script, "id" | "cast" | "shots">, overrides: Record<string, string> = {}, registry: readonly VoiceSpec[] = VOICES): Cast {
   const speakers = speakersOf(script);
   const used = new Set<string>();
   const roles: Role[] = speakers.map((speaker) => {
     const requested = overrides[speaker.key];
-    const id = requested ? approvedVoice(requested, `cast.${speaker.key}`) : distinctVoice(speaker.kind, script.id, used);
-    const spec = voiceById(id);
+    const id = requested ? approvedVoice(requested, `cast.${speaker.key}`, registry) : distinctVoice(speaker.kind, script.id, used, registry);
+    if (!id) return { role: speaker.key, kind: speaker.kind, name: speaker.key };
+    const spec = registry.find((voice) => voice.id === id);
     if (!spec) throw new Error(`cast.${speaker.key}: missing voice`);
     if (!spec.kinds.includes(speaker.kind)) throw new Error(`${spec.name} is not approved for the ${speaker.kind} role`);
     if (used.has(id)) throw new Error(`${spec.name} is already assigned to another speaker`);
@@ -107,9 +109,22 @@ export function resolveCast(script: Pick<Script, "id" | "cast" | "shots">, overr
   return { roles, named: roles.length > 1 };
 }
 
-/** Persist with timing so render and playback use the voices that were recorded. Keyed by speaker key. */
+/** Persist with timing so render and playback use the voices that were recorded. Keyed by speaker key. Unbound speakers are omitted. */
 export const voiceBindings = (cast: Cast): Record<string, string> =>
-  Object.fromEntries(cast.roles.map((role) => [role.role, role.voice.id]));
+  Object.fromEntries(cast.roles.flatMap((role) => (role.voice ? [[role.role, role.voice.id] as const] : [])));
+
+/**
+ * Voicing calls this. A dry check does not.
+ * Two speakers never share a voice. A speaker without one fails here, by kind.
+ */
+export function requireVoices(cast: Cast): void {
+  const seen = new Set<string>();
+  for (const role of cast.roles) {
+    const id = role.voice?.id;
+    if (!id || seen.has(id)) throw new Error(`${role.role} needs another approved ${role.kind} voice`);
+    seen.add(id);
+  }
+}
 
 /** The speaker of a beat: its `speaker`, or the first speaker. */
 export const speakerOf = (cast: Cast, beat: { speaker?: string }) =>
@@ -136,10 +151,11 @@ export function runsOf(script: Pick<Script, "shots">, cast: Cast): Run[] {
 
 /** The runs before and after this one by the same voice: context for its prosody. */
 export function neighbours(runs: Run[], i: number): { prev?: string; next?: string } {
-  const id = runs[i]!.role.voice.id;
+  const id = runs[i]!.role.voice?.id;
+  if (!id) return {};
   let prev: string | undefined, next: string | undefined;
-  for (let k = i - 1; k >= 0; k--) if (runs[k]!.role.voice.id === id) { prev = runs[k]!.text; break; }
-  for (let k = i + 1; k < runs.length; k++) if (runs[k]!.role.voice.id === id) { next = runs[k]!.text; break; }
+  for (let k = i - 1; k >= 0; k--) if (runs[k]!.role.voice?.id === id) { prev = runs[k]!.text; break; }
+  for (let k = i + 1; k < runs.length; k++) if (runs[k]!.role.voice?.id === id) { next = runs[k]!.text; break; }
   return { prev, next };
 }
 

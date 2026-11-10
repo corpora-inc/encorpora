@@ -164,7 +164,7 @@ export function generateNamedUnitCubeChoice(
       figure,
     },
     answer,
-    hint: `The question names the unit. A square unit measures a flat cover, and a length is a distance. Cubes you cannot see still fill the solid.`,
+    hint: `Each small cube's edge is 1 of the named unit, and the prism is ${l} by ${w} by ${h}. A square unit measures a flat cover, and a length is a distance. Cubes you cannot see still fill the solid.`,
     explanation: [
       `The prism is ${l} by ${w} by ${h}. One layer holds $${l} \\times ${w} = ${l * w}$ ${unit === "improvised" ? object.many : "cubes"}.`,
       `There are ${h} layers, so the volume is $${l * w} \\times ${h} = ${volume}$ ${unitPhrase}.`,
