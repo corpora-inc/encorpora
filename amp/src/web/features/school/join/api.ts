@@ -127,10 +127,10 @@ export const finishingSignIn = () => finishing;
 export function useFinishSignIn() {
   const navigate = useNavigate();
   return useCallback(
-    async (grant: StudentGrant, handed = false) => {
+    async (grant: StudentGrant, handed = false, returnTo?: string) => {
       const session = { accountId: grant.accountId, token: grant.token };
       finishing = true;
-      rememberStudentSession(session, grant.mode, handed);
+      rememberStudentSession(session, grant.mode, handed, returnTo);
       notifyAccountSessionChanged(session);
       // The app remounts for a new identity, and that would cancel a `/me`
       // started during the move. Wait here, so practice opens with it in hand.

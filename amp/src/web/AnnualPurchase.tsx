@@ -16,6 +16,8 @@ import { paymentUrl } from "./features/billing/payment-url";
 import { FocusDialog } from "./PracticeWorkspace";
 import { analyticsVisitorHeaders } from "./lib/analytics";
 import { Loading } from "./ui/Loading";
+import { useNavigate } from "@tanstack/react-router";
+import { continuationPaid, readContinuation } from "./features/continue/memory";
 export interface AnnualPurchaseProps {
   token: string;
   preferredInterval?: "year" | "month";
@@ -52,6 +54,8 @@ class BillingRequestError extends Error {
 const messages: Record<string, string> = {
   parent_consent_required:
     "Recorded parent consent is required before purchase. Review consent in Family.",
+  license_ready_for_assignment:
+    "A paid plan is waiting for a learner. Choose who it’s for in Family before buying another.",
   learner_already_licensed:
     "This learner already has current or scheduled access. Check access before buying again.",
   checkout_expired_retry_with_new_request:
@@ -96,6 +100,8 @@ function PurchasePanel({
   const [fullOffers, setOffers] = useState<AnnualOffer[]>([]);
   const [extraOffers, setExtraOffers] = useState<AnnualOffer[]>([]);
   const family = useFamilyCache(identity);
+  const navigate = useNavigate();
+  const polls = useRef(0);
   const [available, setAvailable] = useState<boolean>();
   const [learnerId, setLearnerId] = useState("");
   const [status, setStatus] = useState<PurchaseStatus>();
@@ -236,8 +242,8 @@ function PurchasePanel({
           );
       });
   }, []);
-  async function refresh(id: string, stamp: number) {
-    setChecking(true);
+  async function refresh(id: string, stamp: number, quiet = false) {
+    if (!quiet) setChecking(true);
     setError("");
     try {
       const next = await api<PurchaseStatus>(
@@ -257,6 +263,12 @@ function PurchasePanel({
       if (next.phase === "licensed") {
         setNotice("Verified access is ready for this learner.");
         onAccessChanged?.();
+        // Opened from "Continue with AMP": back to the screen it came from.
+        const continuation = readContinuation(identity);
+        if (continuation?.learnerId === id) {
+          continuationPaid(identity);
+          void navigate({ href: continuation.returnTo, replace: true });
+        }
       }
     } catch (failure) {
       if (alive.current && stamp === revision.current)
@@ -273,8 +285,30 @@ function PurchasePanel({
     const stamp = ++revision.current;
     requestId.current = undefined;
     setStatus(undefined);
+    polls.current = 0;
     if (learnerId && available) void refresh(learnerId, stamp);
   }, [learnerId, available]);
+  // Back from a paid checkout, access arrives once the payment is verified:
+  // check again on a calm cadence rather than asking to be checked.
+  useEffect(() => {
+    if (
+      returnState !== "processing" ||
+      !learnerId ||
+      (status?.phase !== "payment-processing" &&
+        status?.phase !== "awaiting-payment") ||
+      polls.current >= 40
+    )
+      return;
+    const stamp = revision.current;
+    const timer = setTimeout(
+      () => {
+        polls.current++;
+        void refresh(learnerId, stamp, true);
+      },
+      polls.current < 20 ? 2000 : 8000,
+    );
+    return () => clearTimeout(timer);
+  }, [status, learnerId, returnState]);
   async function checkout() {
     if (!offer || !learnerId || busy) return;
     const stamp = revision.current;
@@ -342,10 +376,12 @@ function PurchasePanel({
       if (alive.current && epoch === generation.current) setBusy(false);
     }
   }
-  // A plan is for a child; the adult's own practice comes with it.
+  // A plan is for a child; the adult's own practice comes with it, unless
+  // the adult is buying for their own practice.
   const choices =
     family?.learners.filter(
-      (learner) => !learner.deletedAt && !learner.adult,
+      (learner) =>
+        !learner.deletedAt && (!learner.adult || learner.id === learnerId),
     ) ?? [];
   const phase = status?.phase;
   const canPurchase =

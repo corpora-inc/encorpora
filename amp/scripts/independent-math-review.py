@@ -7,6 +7,7 @@ from geometry_proof_math_oracle import GEOMETRY_PROOF, solve_geometry_proof, rev
 from radical_equation_math_oracle import RADICAL_EQUATION, RADICAL_EQUATION_CHOICE, solve_radical_equation, review_radical_equation_fixtures, review_radical_equation_problem
 import decimal
 import clause_coverage_oracle
+import fraction_clause_math_oracle
 import importlib
 import json
 import math
@@ -19,6 +20,18 @@ import clause_variants_oracle
 from clause_variants_oracle import self_test as review_clause_fixtures
 from collections import Counter
 from fractions import Fraction
+
+
+def slot_key(public, labels):
+    """Canonical multi-part answer: blank id to the option whose label matches."""
+    key = {}
+    blanks = public['response']['blanks']
+    require(len(blanks) == len(labels), 'Slot count')
+    for blank, label in zip(blanks, labels):
+        hits = [option['id'] for option in blank['options'] if option['label'] == label]
+        require(len(hits) == 1, f'Slot {blank["id"]} should show {label} once')
+        key[blank['id']] = hits[0]
+    return json.dumps(key, separators=(',', ':'))
 from rational_expression_math_oracle import RATIONAL_EXPRESSION, solve_rational_expression, review_rational_expression_fixtures, review_rational_expression_problem
 from nonlinear_system_math_oracle import NONLINEAR_SYSTEM, solve_nonlinear_system, review_nonlinear_system_fixtures, review_nonlinear_system_problem
 from elementary_math_oracle import ELEMENTARY, solve_elementary
@@ -330,6 +343,9 @@ def solve(public):
 def solve_family(public):
     if clause_coverage_oracle.recognizes(public):
         return clause_coverage_oracle.solve(public)
+    clause_answer = fraction_clause_math_oracle.solve_clause(public)
+    if clause_answer is not None:
+        return clause_answer
     if is_clause_variant(public):
         return solve_clause_variant(public)
     oracle = FAMILY_ORACLE_FOR.get(public["templateId"])
@@ -541,8 +557,49 @@ def solve_family(public):
         require(left != right, 'Distance question needs distinct points')
         return abs(right-left)
     if template == 'count-objects':
-        require(figure['kind'] == 'collection' and 1 <= figure['count'] <= 10, 'Invalid counting representation')
-        return figure['count']
+        def drawn_count(scene_figure):
+            require(scene_figure['kind'] == 'scene', 'Scene required')
+            total = 0
+            found = False
+            for element in scene_figure['scene']['elements']:
+                if element['type'] == 'array':
+                    total += element['rows'] * element['columns']
+                    found = True
+                elif element['type'] == 'tenFrame':
+                    total += sum(group['count'] for group in element['groups'])
+                    found = True
+            require(found and 1 <= total <= 20, 'No counted objects')
+            return total
+        if figure['kind'] == 'collection':
+            require(prompt == 'How many dots are shown?' and 1 <= figure['count'] <= 10, 'Invalid counting representation')
+            return figure['count']
+        require(figure['kind'] == 'scene', 'Count objects are a collection or a scene')
+        settled = re.search(r'There (?:is|are) (\d+)', prompt)
+        if 'One more' in prompt:
+            require(settled is not None, 'The settled count is missing')
+            n = int(settled.group(1))
+            require(1 <= n <= 19 and drawn_count(figure) == n + 1, 'One more is not drawn')
+            return n + 1
+        if 'leaves' in prompt:
+            require(settled is not None, 'The settled count is missing')
+            n = int(settled.group(1))
+            require(2 <= n <= 20 and drawn_count(figure) == n, 'The group that loses one is not drawn')
+            return n - 1
+        if prompt.startswith('Ana counted'):
+            labels = re.search(r'Her labels are ([0-9, ]+)\.', prompt)
+            require(labels is not None, 'Ana\'s labels are missing')
+            count = len([part for part in labels.group(1).split(',') if part.strip()])
+            require(drawn_count(figure) == count and 6 <= count <= 10, 'The row and the labels disagree')
+            return count
+        require(prompt.startswith('How many ') and prompt.endswith(' are shown?') and 'dots' not in prompt,
+                'Unexpected count prompt')
+        return drawn_count(figure)
+    if template == 'add-within-20' and public['response']['kind'] != 'number':
+        found = re.search(r'double (\d+) \+ \1, and what is (\d+) \+ (\d+)\?', prompt)
+        require(found is not None, 'Near-double wording')
+        double = 2 * int(found[1])
+        total = int(found[2]) + int(found[3])
+        return slot_key(public, [str(double), str(total)])
     if template == 'add-within-20':
         require(len(numbers) == 2 and min(numbers) >= 0 and sum(numbers) <= 20, 'Addition bounds')
         # The scene: a 0–20 number line marked at the greater addend, with
@@ -666,6 +723,20 @@ def solve_family(public):
         # Cramer's rule, distinct from generated elimination explanations.
         return f(e*d-b*total, a*d-b*c)
     if template == 'simple-probability':
+        if 'equal sections labeled' in prompt:
+            labels = [part.strip() for part in re.search(r'labeled ([A-D, ]+)\.', prompt)[1].split(',')]
+            asked = re.search(r'landing on ([A-D])\?', prompt)[1]
+            require(labels and len(labels) == numbers[0] and asked in labels, 'Spinner sections')
+            return f(labels.count(asked), len(labels))
+        if prompt.startswith('A class has'):
+            size, girls = numbers[:2]
+            require(18 <= size <= 32 and 7 <= girls <= size - 7, 'Class size')
+            if 'Jane is chosen' in prompt:
+                return f(1, size)
+            if 'not a girl' in prompt:
+                return f(size - girls, size)
+            require('is a girl' in prompt, 'Class event')
+            return f(girls, size)
         red, blue = numbers
         return f(red, red+blue)
     if template == 'arithmetic-term':
@@ -744,6 +815,10 @@ def review(stream):
         template, seed = public['templateId'], public['seed']
         if clause_coverage_oracle.recognizes(public):
             clause_coverage_oracle.review_problem(problem)
+            return
+        clause_answer = fraction_clause_math_oracle.solve_clause(public)
+        if clause_answer is not None:
+            require(problem['answer'] == clause_answer, f'Mismatch {template}/{seed}: {public["prompt"]!r}; got {problem["answer"]}, expected {clause_answer}')
             return
         if is_clause_variant(public):
             review_clause_variant(problem)
@@ -861,9 +936,19 @@ def review(stream):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
-        elif isinstance(solved, str):
+        elif public['response']['kind'] not in ('number', 'fraction'):
             expected = solved
             actual = problem['answer']
+            require(isinstance(expected, str) and isinstance(actual, str), 'Non-numeric answer must be text')
+        elif isinstance(solved, str):
+            # A string solution is text when it is not a number. A fraction
+            # string such as 27/2 still matches a decimal answer such as 13.5.
+            try:
+                expected = Fraction(solved)
+                actual = Fraction(problem['answer'])
+            except (ValueError, ZeroDivisionError):
+                expected = solved
+                actual = problem['answer']
         else:
             expected = Fraction(solved)
             actual = Fraction(problem['answer'])

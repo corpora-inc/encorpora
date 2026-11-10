@@ -152,19 +152,28 @@ export function BirthYearPicker({
   value,
   onChange,
   disabled,
+  label = "Birth year",
+  adult = true,
+  className,
 }: {
   value: string;
   onChange: (value: string) => void;
   disabled?: boolean;
+  /** Names the picker and its list, for example "Birth year, first child". */
+  label?: string;
+  /** Offer "Adult" after the school years. */
+  adult?: boolean;
+  className?: string;
 }) {
   const year = new Date().getFullYear();
   return (
     <Select
       hideEmpty
-      aria-label="Birth year"
+      aria-label={label}
       value={value}
       disabled={disabled}
       onValueChange={onChange}
+      className={className}
     >
       <option value="">Choose birth year</option>
       {Array.from({ length: 16 }, (_, i) => year - 4 - i).map((y) => (
@@ -172,7 +181,7 @@ export function BirthYearPicker({
           {y}
         </option>
       ))}
-      <option value={year - 25}>Adult</option>
+      {adult && <option value={year - 25}>Adult</option>}
     </Select>
   );
 }

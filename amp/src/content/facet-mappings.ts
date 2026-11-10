@@ -2385,6 +2385,34 @@ export const actualFacetMappings: readonly FacetMapping[] = [
       "Decide similarity by AA from two stated angles of each triangle, name the vertex correspondence, find a missing angle, and choose the matching proportion of sides. Does not assess the proof that AA follows from similarity transformations or other similarity criteria.",
   },
   ...grade4MeasurementMoneyFacetMappings,
+  {
+    templateId: "polygon-show-the-pieces",
+    facetId: "triangle-area.polygon-decomposition",
+    extent: "partial",
+    rationale:
+      "Choose the area of each piece when a trapezoid, parallelogram, or right triangle is split or doubled into rectangles and triangles. Does not assess finding one number for the whole figure.",
+  },
+  {
+    templateId: "polygon-which-expression",
+    facetId: "triangle-area.polygon-decomposition",
+    extent: "partial",
+    rationale:
+      "Choose the expression that adds a trapezoid's middle rectangle and its two end triangles. Does not assess evaluating that expression.",
+  },
+  {
+    templateId: "count-then-size-then-check",
+    facetId: "fractional-prism-volume.unit-fraction-packing",
+    extent: "partial",
+    rationale:
+      "Count the unit-fraction cubes along each edge of a box, then find the volume from that count and again from the edge lengths. Does not assess an edge that is not a multiple of the cube edge.",
+  },
+  {
+    templateId: "net-name-the-solid",
+    facetId: "surface-area.core",
+    extent: "partial",
+    rationale:
+      "Name the solid a net of rectangles and triangles folds into: cube, rectangular prism, triangular prism, or square pyramid. Does not assess adding the face areas.",
+  },
   // Frozen legacy entries above; families append from src/families/.
   ...familyRegistry.facetMappings,
 ];

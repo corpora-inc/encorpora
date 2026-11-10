@@ -8,7 +8,7 @@ import { finish, rng } from "./number-geometry-clause-kit";
 import { signedClause } from "./clause-signed-variants";
 import { realClause } from "./clause-real-variants";
 import { geometryClause } from "./clause-geometry-variants";
-import { legacySurfacesOnly } from "./number-domain-axes";
+import { forcingLegacySurfaces } from "./number-domain-axes";
 import {
   statisticsClause,
   statisticsClauses,
@@ -256,7 +256,7 @@ export function generateClauseVariant(
       trigonometryClause(meta, seed, force) ??
       undefined
     );
-  if (legacySurfacesOnly()) return;
+  if (forcingLegacySurfaces()) return;
   const needs = Object.fromEntries(
     e.values
       .filter((v) => v !== "legacy")

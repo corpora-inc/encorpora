@@ -106,8 +106,8 @@ const rows: Record<string, MethodRow> = {
     "Write a direct rule from a starting term and repeated addition.",
     "A recursive rule reaches the next term. An explicit rule computes a named term directly. Reaching term $n$ from the first term takes $n-1$ steps.",
     "Identify the first term and the amount added each step.",
-    "Add $(n-1)$ copies of the step to the first term because reaching term $n$ takes $n-1$ steps.",
-    "Check the first and third terms using both rules. They must give the same values.",
+    "Add $(n-1)$ copies of the step to the first term, because reaching term $n$ takes $n-1$ additions.",
+    "Check the first and third terms with both rules. The values must agree.",
     "Using $n$ steps moves once too far.",
   ],
   "from-graph": [

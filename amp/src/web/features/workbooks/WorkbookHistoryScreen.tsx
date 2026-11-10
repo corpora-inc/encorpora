@@ -7,7 +7,7 @@ import { Button, buttonClass } from "../../ui/Button";
 import { TextField } from "../../ui/TextField";
 import { workbookByCode, workbookHistoryOptions } from "./api";
 import { canMakeWorkbook, localDate, workbookMessage } from "./model";
-import { FreeWorkbooksUsed } from "./FreeWorkbooksUsed";
+import { AllowancePause } from "../continue/AllowancePause";
 import { WorkbookFrame, type WorkbookLearner } from "./WorkbookFrame";
 import { WorkbookList } from "./WorkbookList";
 import styles from "./Workbooks.module.css";
@@ -51,7 +51,12 @@ function History({
           Today's workbook
         </Link>
       ) : (
-        <FreeWorkbooksUsed next={learner.freeWorkbooksNext} />
+        <AllowancePause
+          kind="workbooks"
+          compact
+          viewer={learner.pauseViewer}
+          learner={learner}
+        />
       )}
       <CodeEntry session={session} learnerId={learner.id} />
       {history.data && !history.data.workbooks.length ? (

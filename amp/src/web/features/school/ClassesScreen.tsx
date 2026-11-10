@@ -1,3 +1,4 @@
+import { canAddStudents } from "./permissions";
 import {
   keepPreviousData,
   useInfiniteQuery,
@@ -46,7 +47,6 @@ import {
   PageHead,
   gradeLabel,
 } from "./parts";
-import { classTabs } from "./classes/ClassFrame";
 import { yearsOptions } from "./org/org-api";
 import { classPath, orgPath } from "./paths";
 import { compareClassNames } from "./sort";
@@ -553,8 +553,7 @@ export function ClassScreen() {
     });
   const canEdit =
     org?.can?.includes("classes.update") || org?.teaches?.includes(classId);
-  const canAdd =
-    org?.can?.includes("students.add") || org?.teaches?.includes(classId);
+  const canAdd = canAddStudents(org, classId);
   const [notice, setNotice] = useState("");
   const [error, setError] = useState("");
   useLoggedError(error);
@@ -600,8 +599,6 @@ export function ClassScreen() {
       nav={`class:${classId}`}
       title={klass.name}
       crumbs={[{ label: klass.name }]}
-      tabs={classTabs(orgId, classId)}
-      activeTab="settings"
     >
       <PageHead
         title={klass.name}

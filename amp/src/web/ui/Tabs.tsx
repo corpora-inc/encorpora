@@ -35,7 +35,8 @@ export function Tabs({
     if (!strip || !tab) return;
     const from = strip.getBoundingClientRect(),
       box = tab.getBoundingClientRect();
-    if (box.right > from.right - 28) strip.scrollLeft += box.left - from.left;
+    if (box.left < from.left || box.right > from.right - 28)
+      strip.scrollLeft += box.left - from.left;
   }, [active]);
   // A strip wider than its row fades at its trailing edge, so a cut label
   // reads as "more"; a strip that fits has no soft edge.

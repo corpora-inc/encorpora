@@ -84,7 +84,7 @@ test(
       );
       assert.ok(me.signedIn);
       assert.equal(me.account.email, email);
-      assert.equal(me.next, "add-learner");
+      assert.equal(me.next, "start");
       assert.deepEqual(me.learners, []);
       assert.ok(!("trial" in me));
       const cookies = ([] as string[])

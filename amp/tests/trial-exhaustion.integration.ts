@@ -71,7 +71,8 @@ test(
           response: string;
         };
         for (const [index, [templateId, seed]] of fixture.entries()) {
-          const problem = generateProblem(templateId, seed);
+          // Replay the recorded version and its original answer format.
+          const problem = generateProblem(templateId, seed, 1);
           // Persisted instance ids are globally unique across learner accounts.
           problem.public.id = `${problem.public.id}:${trial.learnerId}`;
           await repository.transaction(account, trial.learnerId, (tx) =>

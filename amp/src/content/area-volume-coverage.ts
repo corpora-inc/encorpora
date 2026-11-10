@@ -16,11 +16,6 @@ export const areaVolumeFacetMappings: readonly FacetMapping[] = [
     "Count unit-fraction cubes along a prism's edges and compare the volume from the cube count with the product of its edge lengths. Does not assess physical packing.",
   ],
   [
-    "net-name-the-solid",
-    "surface-area.core",
-    "Identify the cube, rectangular prism, triangular prism, or square pyramid made by a displayed net. Does not assess drawing nets or calculating surface area.",
-  ],
-  [
     "triangle-area-base-height",
     "triangle-area.base-height-triangles",
     "Find the area of acute, right and obtuse triangles drawn to scale with whole-number bases of 3 to 24 and heights of 3 to 15, choosing the perpendicular height over labeled slanted sides; heights may fall outside the triangle. Does not assess fractional dimensions, finding a missing base or height, or coordinates.",

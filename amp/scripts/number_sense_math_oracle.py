@@ -133,9 +133,26 @@ def number_line(figure):
     return lines[0]
 
 
+def solve_length_or_zero(prompt):
+    if prompt.startswith('Start at 0. Hop forward'):
+        found = re.fullmatch(r'Start at 0\. Hop forward (\d+), then forward (\d+)\. Where do you land\?', prompt)
+        require(found is not None, 'Forward hops from 0')
+        return int(found[1]) + int(found[2])
+    if prompt.startswith('Start at 0, hop to'):
+        found = re.fullmatch(r'Start at 0, hop to (\d+), then hop back (\d+)\. Where are you\?', prompt)
+        require(found is not None, 'Back hop from 0')
+        return int(found[1]) - int(found[2])
+    nums = [int(n) for n in re.findall(r'\d+', prompt)]
+    require(len(nums) >= 2, 'Two lengths')
+    if 'ties' in prompt or ('now' in prompt and 'cuts' not in prompt and 'longer' not in prompt and 'shorter' not in prompt):
+        return nums[0] + nums[1]
+    return abs(nums[0] - nums[1])
+
+
 def solve_number_sense(public):
     name, prompt, figure = public['templateId'], public['prompt'], public.get('figure')
-    require(public['response']['kind'] == 'number', 'Numeric response expected')
+    kind = public['response']['kind']
+    require(kind == 'number' or (name == 'number-line-hops' and kind == 'point-plot'), 'Numeric response expected')
     if name == 'count-sequence-missing':
         m = re.fullmatch(r'Count by (ones|tens): (.+)\. What number is missing\?', prompt)
         require(m is not None, f'Unexpected count prompt {prompt!r}')
@@ -171,9 +188,19 @@ def solve_number_sense(public):
         return chart(bx, by)
     if name == 'numeral-for-quantity':
         require(figure and figure['kind'] == 'ten-frame' and figure['second'] == 0, 'Missing frames')
+        if prompt == 'How many counters are in the frame? Write the number.':
+            require(figure['first'] == 0 and figure['capacity'] == 10, 'An empty frame is the zero count')
+            return 0
         require(prompt == 'How many counters are in the frames? Write the number.', 'Unexpected prompt')
         require((figure['capacity'] == 20) == (figure['first'] > 10), 'Second frame only past ten')
         return figure['first']
+    if name == 'number-line-hops' and public['response']['kind'] != 'number':
+        import json
+        shown = re.search(r'Show (\d+) as a length from 0', prompt)
+        require(shown is not None, 'Point-plot length wording')
+        return json.dumps([[int(shown[1]), 0]], separators=(',', ':'))
+    if name == 'number-line-hops' and not re.match(r'Start at [1-9]', prompt):
+        return solve_length_or_zero(prompt)
     if name == 'number-line-hops':
         m = re.fullmatch(r'Start at (\d+)\. Hop (forward|back) (\d+), then (forward|back) (\d+)\. Where do you land\?', prompt)
         require(m is not None and m[2] == m[4], f'Unexpected hop prompt {prompt!r}')
@@ -298,6 +325,9 @@ class NumberSenseCorpus:
             n = public['figure']['first']
             tags.add('zero' if n == 0 else 'teen' if n > 10 else 'small')
         elif name in ('number-line-hops', 'number-line-missing-hop'):
+            if name == 'number-line-hops' and not re.match(r'Start at [1-9]', prompt):
+                tags.add('clause')
+                return
             hops = number_line(public['figure'])['hops']
             tags.add('forward' if hops[0]['by'] > 0 else 'back')
         else:

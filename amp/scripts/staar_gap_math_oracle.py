@@ -44,6 +44,9 @@ def to_python(text):
         s = re.sub(r'\\frac\{([^{}]*)\}\{([^{}]*)\}', r'((\1)/(\2))', s)
     s = re.sub(r'\^\{([^{}]*)\}', r'**(\1)', s)
     s = re.sub(r'\^(\d)', r'**(\1)', s)
+    # Braces group exactly as parentheses do, after fractions and powers
+    # have consumed their own braces.
+    s = s.replace('{', '(').replace('}', ')')
     s = re.sub(r'\s+', '', s)
     s = re.sub(r'(\d|\))([a-z])', r'\1*\2', s)
     s = re.sub(r'(\d|\)|[a-z])\(', r'\1*(', s)

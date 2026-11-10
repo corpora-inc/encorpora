@@ -21,6 +21,7 @@ import { triangleConstructionBank } from "../src/math/clause-geometry-variants";
 import { decimalExpansion } from "../src/math/clause-real-variants";
 import { layoutScene } from "../src/math/scene";
 import { buildCoverageManifest } from "../src/content/coverage";
+import { problemLesson } from "../src/content/problem-lessons";
 import {
   guessChance,
   guessChanceTable,
@@ -97,6 +98,30 @@ test("worked examples can request each signed-number and geometry clause", () =>
       assert.ok(gradeAnswer(problem!, problem!.answer), `${id}/${variant}`);
     }
   }
+});
+
+test("root lessons keep legacy examples and clause examples on their own tasks", () => {
+  const id = "root-nearest-tenth";
+  const meta = templates.find((template) => template.id === id)!;
+  const legacy = generateProblem(id, "lesson-task", 1);
+  const clause = generateClauseVariant(meta, "lesson-task", "narrow-interval")!;
+  const lessonFor = (problem: typeof legacy) =>
+    problemLesson(
+      id,
+      "lesson-task",
+      problem.public.prompt,
+      problem.public.response,
+      problem,
+    );
+  const legacyLesson = lessonFor(legacy);
+  assert.match(legacyLesson.example.prompt, /nearest tenth/);
+  assert.ok(legacyLesson.example.givens);
+  const clauseLesson = lessonFor(clause);
+  assert.match(
+    clauseLesson.example.prompt,
+    /Choose the whole-number|What should you do next/,
+  );
+  assert.equal(clauseLesson.example.givens, undefined);
 });
 
 test("saved catalog versions keep the pre-clause surfaces", () => {

@@ -8,12 +8,14 @@ import { multiPartGuessChance } from "./multi-part-choice";
 import { figureChoiceGuessChance } from "./figure-choice";
 import { structuredWorkGuessChance } from "./structured-work";
 import { generateProblem, templates } from "./engine";
+import { clauseTasks, forcedClause } from "./clause-gap";
 import { historicalTemplates } from "./historical-templates";
 
 /** Instances sampled to read a choice family's option count from its answer
  * schema. tests/frontier-guessing.test.ts checks far more seeds against it. */
 const SAMPLE_SEEDS = 16;
 const STRUCTURED_SEEDS = 128;
+const CLAUSE_SEEDS = 64;
 /** Floors for variable-response families whose high-guessability variants
  * are rarer than the deterministic sample. Keep these in sync with the
  * generator-variation audit in frontier-guessing.test.ts. */
@@ -42,6 +44,8 @@ const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
   // Two factors among three or four choices, or three multiples among four or five.
   "factor-pairs-select": 1 / 3,
   "multiples-select": 1 / 4,
+  // Two identical wrong bounds collapse to one: 4 shares × 3 bounds × 4 checks.
+  "whole-sharing-fraction": 1 / 48,
 };
 /** An unregistered choice family is scored as the most guessable choice: two
  * options. Overstating the guess chance only discounts a correct answer. */
@@ -98,15 +102,15 @@ export function guessChance(
     "id" | "requiredResponseCapability" | "requiredResponseCapabilities"
   >,
 ): number {
-  if (
-    !template.requiredResponseCapability &&
-    !template.requiredResponseCapabilities?.length
-  )
-    return 0;
   const known = cache.get(template.id);
   if (known !== undefined) return known;
-  let chance = UNKNOWN_CHOICE_GUESS;
+  let chance =
+    template.requiredResponseCapability || template.requiredResponseCapabilities?.length
+      ? UNKNOWN_CHOICE_GUESS
+      : 0;
   if (byId.has(template.id)) {
+    // Admission capabilities describe what old clients can receive, not all
+    // current answer forms. Even a typed family can have choice clauses.
     // Structured work mixes typed steps (never guessed) with orderings and
     // proofs built from banks; sample more, and a family whose every
     // sampled instance has a typed field cannot be guessed.
@@ -120,22 +124,30 @@ export function guessChance(
         greatest,
         problemGuessChance(generateProblem(template.id, `guess-chance:${i}`)),
       );
-    if (greatest > 0 || structured) chance = greatest;
+    // Clause tasks are drawn by weight, so a rare one can miss the sample.
+    // Sample each task directly; card trays vary by seed, so sample each task well.
+    for (const task of clauseTasks(template.id))
+      for (let i = 0; i < CLAUSE_SEEDS; i++)
+        greatest = Math.max(
+          greatest,
+          problemGuessChance(
+            forcedClause(template.id, task, `guess-chance:${task}:${i}`),
+          ),
+        );
+    chance = greatest;
   }
   cache.set(template.id, chance);
   return chance;
 }
 
-/** Guessing chances for the build to inline: families answered by typing are
- * always 0 and need no entry. */
+/** Inline every family's chance, including zero, so typed families do not
+ * pay for schema sampling on a production request. */
 export function guessChanceTable(
   families: Iterable<TemplateMetadata> = byId.values(),
 ): Record<string, number> {
-  const answered = [...families].filter(
-    (t) =>
-      t.requiredResponseCapability || t.requiredResponseCapabilities?.length,
+  return Object.fromEntries(
+    [...families].map((t) => [t.id, guessChance(t)] as const),
   );
-  return Object.fromEntries(answered.map((t) => [t.id, guessChance(t)]));
 }
 
 /** One instance's guessing chance, using its private rule where needed. */

@@ -1,5 +1,5 @@
 import { generateProblemFor, gradeAnswer, templates } from "../math/engine";
-import { clauseProblem } from "../math/clause-extensions";
+import { clauseExtensions, clauseProblem } from "../math/clause-extensions";
 import { clauseMethods } from "./clause-methods";
 import {
   historicalTemplates,
@@ -43,7 +43,11 @@ import { glossaryEntry } from "../glossary/index";
 import { termsIn } from "../glossary/link";
 import type { GradeBand } from "../curriculum/types";
 import { gradeBandOrder } from "./lesson-text";
-import { clauseVariants, generateClauseVariant } from "../math/clause-variants";
+import {
+  clauseEntries,
+  clauseVariants,
+  generateClauseVariant,
+} from "../math/clause-variants";
 import { clauseVariantMethods } from "./clause-variant-methods";
 
 /** One short lesson per problem type: what is given, what to find, how to
@@ -167,16 +171,40 @@ export function problemLesson(
   const template = byId.get(templateId);
   if (!template) throw new Error(`Unknown problem type ${templateId}`);
   const activeClause = learnerProblem?.variant?.axes?.clause;
+  // A legacy exercise needs a legacy example even when its family also has
+  // construction or explanation clauses with different methods and formats.
+  const entry = clauseEntries[templateId];
+  const legacyVersion = entry
+    ? entry.introducedVersion - 1
+    : clauseVariants[templateId]
+      ? 1
+      : clauseExtensions[templateId]
+        ? template.version - 1
+        : undefined;
+  // These clause tasks replace the figured number problem the lesson
+  // animation teaches. The worked example stays on the reprint unless
+  // the learner is already on that clause.
+  const classicFigure =
+    !!entry ||
+    templateId === "number-bond-missing" ||
+    templateId === "three-addend-story" ||
+    templateId === "unknown-addend-story";
+  const exampleVersion =
+    !activeClause && classicFigure
+      ? (legacyVersion ?? 1)
+      : learnerProblem && (!activeClause || activeClause === "legacy")
+        ? legacyVersion
+        : undefined;
   const generateProblem = (id: string, exampleSeed: string) =>
     (activeClause && activeClause !== "legacy"
-      ? clauseProblem(template, exampleSeed, activeClause) ??
-        generateClauseVariant(template, exampleSeed, activeClause)
+      ? (clauseProblem(template, exampleSeed, activeClause) ??
+        generateClauseVariant(template, exampleSeed, activeClause))
       : null) ??
     generateProblemFor(
       id,
       exampleSeed,
       lessonFigures(template),
-      learnerProblem && clauseVariants[id] && !activeClause ? 1 : undefined,
+      exampleVersion,
       responseCapabilities,
     );
   // The learner may see a newer figure surface than the example (which is
@@ -274,7 +302,9 @@ export function problemLesson(
     clauseMethod ??
     clauseVariantMethods[example.variant?.axes?.clause ?? ""] ??
     methods[lessonTemplateId];
-  const givens = realNumberGivens(templateId, example.public.seed);
+  const givens = example.variant?.axes?.clause
+    ? undefined
+    : realNumberGivens(templateId, example.public.seed);
   const reference = lessons.find((lesson) =>
     lesson.templateIds.includes(lessonTemplateId),
   );

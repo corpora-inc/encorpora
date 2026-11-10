@@ -739,7 +739,7 @@ function deriveCircle(r: Rng): Item {
   return {
     prompt: short
       ? `A circle has center $C(${h},${k})$ and radius $${rt}$. Which equation describes it?`
-      : `A circle has center $C(${h},${k})$ and radius $${rt}$. Let $P(x,y)$ be any point on the circle above and to the right of $C$. Segment $CP$ and the horizontal and vertical lines through these points form a right triangle. Name its legs and apply the Pythagorean theorem.`,
+      : `A circle has center $C(${h},${k})$ and radius $${rt}$. On it, $P(x,y)$ lies above and right of $C$. Name the right triangle's legs and the circle equation.`,
     figure: { kind: "scene", scene: scene(...elements).build() },
     ...(short
       ? choice(r, math(equation), wrong.map(math))

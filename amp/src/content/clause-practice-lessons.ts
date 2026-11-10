@@ -85,7 +85,10 @@ export const clauseLessons = [
     method: clauseMethods["angle-recognize"]!.method,
     formalTitle: "Angles and vertices",
     formal: [clausePrinciples["angle-recognize"]!],
-    pitfalls: [clauseMethods["angle-recognize"]!.watch!],
+    pitfalls: [
+      "The rays must share a starting point; crossing elsewhere does not make that crossing their vertex.",
+      "Count each pair once, including pairs of rays that are not neighbors.",
+    ],
     parentGuide:
       "Ask the learner to point to the two starting points before naming an angle.",
   }),
@@ -96,6 +99,7 @@ export const clauseLessons = [
     templateIds: ["triangle-construct-plot"],
     objectives: [
       "Construct a triangle on a coordinate grid from given conditions.",
+      "Check each given side length and angle at its named vertex.",
     ],
     openingTitle: "One point, several conditions",
     opening: [clauseMethods["triangle-construct-plot"]!.intuition!],
@@ -114,7 +118,10 @@ export const clauseLessons = [
     method: clauseMethods["triangle-construct-plot"]!.method,
     formalTitle: "Distances determine the point",
     formal: [clausePrinciples["triangle-construct-plot"]!],
-    pitfalls: [clauseMethods["triangle-construct-plot"]!.watch!],
+    pitfalls: [
+      clauseMethods["triangle-construct-plot"]!.watch!,
+      "A point below the base can have the correct distances but does not satisfy a request to place it above.",
+    ],
     parentGuide:
       "Ask which distance must be measured from each endpoint, and why the point below the base is excluded here.",
   }),
@@ -145,7 +152,10 @@ export const clauseLessons = [
     method: clauseMethods["fraction-to-decimal-long-division"]!.method,
     formalTitle: "Only finitely many remainders",
     formal: [clausePrinciples["fraction-to-decimal-long-division"]!],
-    pitfalls: [clauseMethods["fraction-to-decimal-long-division"]!.watch!],
+    pitfalls: [
+      "A rounded display is not the exact decimal. Mark repeating digits with a bar.",
+      "Start the bar at the digit produced from the returning remainder; earlier digits need not repeat.",
+    ],
     parentGuide:
       "Ask which remainder came back and which digits were produced from that remainder onward.",
   }),

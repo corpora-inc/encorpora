@@ -15,23 +15,79 @@ test("all reference families are deterministic and independently solve from disp
   assert.ok(templates.length >= 10);
   for (const template of templates)
     for (let i = 0; i < 150; i++) {
-      const problem = generateProblem(template.id, `case-${i}`),
+      // The base right-triangle audit checks its labeled-leg surface; story
+      // variants are independently reviewed in clause-practice.test.ts.
+      const version = template.id === "right-triangle" ? 1 : undefined;
+      const problem = generateProblem(template.id, `case-${i}`, version),
         p = problem.public;
-      assert.deepEqual(problem, generateProblem(template.id, `case-${i}`));
+      assert.deepEqual(
+        problem,
+        generateProblem(template.id, `case-${i}`, version),
+      );
       assert.match(p.id, /^[a-f0-9]{64}$/);
       assert.ok(problem.hint.length && problem.explanation.length);
       assert.equal("answer" in p, false);
       const numbers = p.prompt.match(/-?\d+/g)?.map(Number) ?? [];
       let expected: number;
       switch (template.id) {
-        case "count-objects":
-          assert.equal(p.figure?.kind, "collection");
-          expected = p.figure!.kind === "collection" ? p.figure!.count : NaN;
+        case "count-objects": {
+          const fig = p.figure;
+          if (fig?.kind === "collection") {
+            assert.equal(p.prompt, "How many dots are shown?");
+            expected = fig.count;
+            break;
+          }
+          assert.equal(fig?.kind, "scene");
+          const settled = /There (?:is|are) (\d+)/.exec(p.prompt);
+          if (p.prompt.includes("One more"))
+            expected = Number(settled?.[1]) + 1;
+          else if (p.prompt.includes("leaves"))
+            expected = Number(settled?.[1]) - 1;
+          else if (p.prompt.startsWith("Ana counted")) {
+            const labels = /Her labels are ([0-9, ]+)\./.exec(p.prompt);
+            expected = labels?.[1]?.split(",").filter((part) => part.trim()).length ?? NaN;
+          } else {
+            assert.match(p.prompt, /^How many \S+ are shown\?$/);
+            expected = 0;
+            for (const element of fig?.kind === "scene" ? fig.scene.elements : []) {
+              if (element.type === "array") expected += element.rows * element.columns;
+              if (element.type === "tenFrame")
+                expected += element.groups.reduce((sum, group) => sum + group.count, 0);
+            }
+          }
           break;
-        case "add-within-20":
+        }
+        case "add-within-20": {
+          if (p.response.kind !== "number") {
+            const found =
+              /the double (\d+) \+ \1, and what is (\d+) \+ (\d+)\?/.exec(
+                p.prompt,
+              );
+            assert.ok(found, p.prompt);
+            const double = 2 * Number(found[1]);
+            const total = Number(found[2]) + Number(found[3]);
+            assert.ok(total <= 20, p.prompt);
+            const response = p.response as {
+              blanks: { id: string; options: { id: string; label: string }[] }[];
+            };
+            const key = JSON.parse(problem.answer) as Record<string, string>;
+            const chosen = (id: string) =>
+              response.blanks
+                .find((blank) => blank.id === id)!
+                .options.find((option) => option.id === key[id])!.label;
+            assert.equal(chosen("dbl"), String(double), p.prompt);
+            assert.equal(chosen("sum"), String(total), p.prompt);
+            assert.equal(gradeAnswer(problem, problem.answer), true);
+            assert.equal(
+              gradeAnswer(problem, JSON.stringify({ ...key, sum: "nope" })),
+              false,
+            );
+            continue;
+          }
           expected = numbers[0]! + numbers[1]!;
           assert.ok(expected <= 20);
           break;
+        }
         case "subtract-within-20":
           expected = numbers[0]! - numbers[1]!;
           assert.ok(expected >= 0);

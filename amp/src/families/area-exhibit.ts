@@ -13,12 +13,6 @@ const ids = areaExhibitTemplates.map((t) => t.id);
 
 export const family = {
   id: "area-exhibit",
-  facetMappings: areaExhibitTemplates.map(({ id, skillId, description }) => ({
-    templateId: id,
-    facetId: `${skillId}.core`,
-    extent: "partial",
-    rationale: description,
-  })),
   practice: {
     templates: areaExhibitTemplates,
     generate: generateAreaExhibit,
@@ -31,4 +25,20 @@ export const family = {
   principles: Object.fromEntries(
     ids.map((id) => [id, areaClausePrinciples[id]!]),
   ),
+  facetMappings: [
+    {
+      templateId: "exhibit-same-perimeter",
+      facetId: "area-perimeter-models.composite-formulas",
+      extent: "partial",
+      rationale:
+        "Give a different whole-number rectangle with the same perimeter as the one shown, and give its area. Does not assess composite figures or a missing side of an L.",
+    },
+    {
+      templateId: "exhibit-same-area",
+      facetId: "area-perimeter-models.composite-formulas",
+      extent: "partial",
+      rationale:
+        "Give a different whole-number rectangle with the same area as the one shown, and give its perimeter. Does not assess fractional side lengths.",
+    },
+  ],
 } satisfies ContentFamily;

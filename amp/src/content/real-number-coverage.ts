@@ -33,22 +33,27 @@ export const realNumberFacetMappings: readonly FacetMapping[] = [
   [
     "scientific-to-standard",
     "scientific-notation.standard-form",
-    "Write a × 10ⁿ with one to four significant digits and n from −7 to 9 (not 0) in standard form. Does not assess negative numbers or calculator notation such as 3.07E5.",
+    "Write a × 10ⁿ with one to four significant digits and n from −7 to 9 (not 0) in standard form, and read a calculator E or superscript display, including a product or quotient the display could not fit. Does not assess negative numbers.",
   ],
   [
     "standard-to-scientific",
     "scientific-notation.standard-form",
-    "Choose the scientific notation of a positive number with one to four significant digits and exponent from −7 to 9 (not 0), against sign, place-count and coefficient-form errors. Does not assess negative numbers or choosing units.",
+    "Choose the scientific notation of a positive number with one to four significant digits and exponent from −7 to 9 (not 0), against sign, place-count and coefficient-form errors, and estimate it as one digit times a power of 10. Does not assess negative numbers.",
   ],
   [
     "scientific-times-larger",
     "scientific-notation.compare-magnitude",
-    "Find exactly how many times as large one number a × 10ᵐ is as another b × 10ⁿ, with coefficients from a fixed set and exponent differences of 1 to 8. Does not assess estimating with rounded single-digit coefficients or real-world data.",
+    "Find exactly how many times as large one number a × 10ᵐ is as another b × 10ⁿ, and estimate each of two quantities as one digit times a power of 10 before dividing those estimates. The ratio of the digits has at most one decimal place.",
   ],
   [
     "scientific-operations",
     "scientific-notation.operations",
-    "Multiply, divide, add or subtract two positive numbers in scientific notation (exponents −8 to 9; sums with exponents up to 3 apart) and choose the result in scientific notation. Does not assess mixed standard and scientific forms, choosing units, or calculator notation.",
+    "Multiply, divide, add or subtract two positive numbers in scientific notation (exponents −8 to 9; sums with exponents up to 3 apart) and choose the result in scientific notation. Does not assess mixed standard and scientific forms or calculator notation.",
+  ],
+  [
+    "choose-unit-size",
+    "scientific-notation.standard-form",
+    "Choose the unit, on a ladder of thousands, that writes a very large or very small measure as a number from 1 up to 1,000, then choose that number. Does not assess a free numeric entry or a ladder whose steps are not 1,000.",
   ],
 ].map(([templateId, facetId, rationale]) => ({
   templateId: templateId!,

@@ -313,11 +313,8 @@ export function SignInScreen() {
     });
   }
   const returnTo = continuationUrl(carry, "/");
-  // A parent who chose Buy continues to the plan's checkout, not a pause.
-  const newUserReturn = continuationUrl(
-    carry,
-    buying ? "/start" : "/account/ready",
-  );
+  // A new account answers "What brings you to AMP?" first.
+  const newUserReturn = continuationUrl(carry, "/start");
   const done = async () => {
     const session = await measureAuth("session", accessSession);
     if (!session) throw new Error("Sign-in didn’t finish. Please try again.");
@@ -343,9 +340,7 @@ export function SignInScreen() {
               : isFundedReturn(carry.return)
                 ? fundedPrograms[carry.return].path
                 : step === "create"
-                  ? buying
-                    ? "/start"
-                    : "/account/ready"
+                  ? "/start"
                   : "/",
         search: carry,
         replace: true,

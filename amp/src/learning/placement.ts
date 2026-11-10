@@ -237,7 +237,7 @@ export const openerSlots: OpenerSlots = [
       "grouped-linear-equation",
       "line-slope",
     ],
-    ["two-way-missing", "two-way-row-percent", "median-data", "range-data"],
+    ["two-way-row-percent", "median-data", "range-data"],
     [
       "circle-area-coefficient",
       "circle-circumference-coefficient",
@@ -249,8 +249,9 @@ export const openerSlots: OpenerSlots = [
   ],
   // High school: a linear or quadratic equation, the Pythagorean theorem or
   // similar triangles and circles, a function's value, vertex or exponential
-  // growth, then a two-way table (joint, marginal or conditional relative
-  // frequency). No probability item fits yet: `event-set-count` runs past
+  // growth, then a conditional percentage from a two-way table. Construction
+  // variants of two-way-missing and relative-frequency-percent exceed the
+  // opener's 160-character limit. No probability item fits: event-set-count runs past
   // 160 characters on about a third of its variants, and the counting items
   // are grade 12.
   [
@@ -276,7 +277,7 @@ export const openerSlots: OpenerSlots = [
       "exponential-model-rule",
       "parabola-vertex",
     ],
-    ["two-way-row-percent", "two-way-missing", "relative-frequency-percent"],
+    ["two-way-row-percent"],
   ],
 ];
 

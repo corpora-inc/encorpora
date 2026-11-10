@@ -921,8 +921,65 @@ def name_set(text):
     return frozenset(n.strip() for n in text.split(','))
 
 
+def number_set(text):
+    body = text.strip()
+    if not body:
+        return frozenset()
+    return frozenset(int(n.strip()) for n in body.split(','))
+
+
+def char_members(text, n):
+    space = range(1, n + 1)
+    prime = lambda x: x >= 2 and all(x % d for d in range(2, int(x ** 0.5) + 1))
+    preds = {
+        'the number is even': lambda x: x % 2 == 0,
+        'the number is odd': lambda x: x % 2 == 1,
+        'the number is a multiple of 3': lambda x: x % 3 == 0,
+        'the number is a multiple of 4': lambda x: x % 4 == 0,
+        'the number is a multiple of 6': lambda x: x % 6 == 0,
+        'the number is prime': prime,
+        'the number is greater than 6': lambda x: x > 6,
+        'the number is less than 5': lambda x: x < 5,
+        'the number is not a multiple of 3': lambda x: x % 3 != 0,
+        'the number is a multiple of 3 or 4': lambda x: x % 3 == 0 or x % 4 == 0,
+    }
+    require(text in preds, f'Unknown characteristic: {text}')
+    return frozenset(x for x in space if preds[text](x))
+
+
 def solve_event_complement(public, prompt):
     options = options_of(public)
+    described = re.fullmatch(r'The sample space is the whole numbers from 1 to (\d+)\. Which description gives the event \{(.+?)\} by a characteristic of the number\?', prompt)
+    if described:
+        n = int(described[1])
+        target = number_set(described[2])
+        require(target and target <= set(range(1, n + 1)) and len(target) < n, 'Event must be a proper subset')
+        keys = [char_members(plain(o['label']), n) for o in options]
+        require(len(set(keys)) == 4, 'The four descriptions must give different sets')
+        return one_correct(options, keys, target, lambda p, q: p == q)
+    selected = re.fullmatch(r'The sample space is the whole numbers from 1 to (\d+)\. Event \$A\$ is the characteristic "the number is even"\. '
+                            r'Event \$B\$ is the characteristic "the number is a multiple of 3"\. Which set lists the numbers (.+)\?', prompt)
+    if selected:
+        n = int(selected[1])
+        space = set(range(1, n + 1))
+        a = {x for x in space if x % 2 == 0}
+        b = {x for x in space if x % 3 == 0}
+        ops = {
+            'in A and not in B': a - b,
+            'not in A': space - a,
+            'in A or in B': a | b,
+            'not in A or B': space - (a | b),
+            'not in both A and B': space - (a & b),
+        }
+        require(selected[2] in ops, 'Unknown set description')
+        target = frozenset(ops[selected[2]])
+        keys = []
+        for o in options:
+            mm = re.fullmatch(r'\{(.*)\}', plain(o['label']))
+            require(mm, f'Unreadable choice {o["label"]!r}')
+            keys.append(number_set(mm[1]) if mm[1] else frozenset())
+        require(len(set(keys)) == 4, 'The four sets must differ')
+        return one_correct(options, keys, target, lambda p, q: p == q)
     m = re.fullmatch(r'The sample space is \$S\$ = \{(.+?)\}\. Event \$A\$ = \{(.+?)\} and event \$B\$ = \{(.+?)\}\. '
                      r'Which set is \$(?:\(A\\(cup|cap) B\)|([AB]))\'\$\?', prompt)
     require(m, f'Unrecognised event prompt {prompt!r}')

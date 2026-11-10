@@ -129,7 +129,11 @@ test(
           const state = await me(session);
           assert.ok(state.signedIn);
           assert.equal(state.account.confirmationRequired, true);
-          assert.equal(state.next, "try", "the trial does not wait for email");
+          assert.equal(
+            state.next,
+            "start",
+            "the starter does not wait for email",
+          );
           // The confirmation link was sent immediately.
           const link = mail
             .join("\n")

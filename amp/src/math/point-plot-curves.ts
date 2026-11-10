@@ -1,5 +1,7 @@
+import { nounFor } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import { random, shuffle, type Random } from "./distribution-practice";
+import { chooseAxes, defineAxis } from "./variation/axes";
 import {
   curveValue,
   latticeOnCurve,
@@ -19,13 +21,14 @@ const plot = { requiredResponseCapability: "point-plot-v1" as const };
 export const pointPlotCurveTemplates: readonly TemplateMetadata[] = [
   {
     id: "graph-quadratic-points",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Graph a parabola by placing points",
     skillId: "quadratic-graphs",
     gradeBand: "9–12",
     ...plot,
     description:
-      "Graph a quadratic function from vertex or standard form by placing three of its lattice points, sometimes including the vertex or the $y$-intercept; any three distinct points on the parabola are accepted.",
+      "Graph a quadratic from its equation, or place the start, vertex and landing (or break-even) points named in a verbal description. Figure choice is a different response kind and is not asked here.",
   },
   {
     id: "graph-absolute-value-points",
@@ -210,8 +213,142 @@ const list = (items: string[]) =>
     : `${items.slice(0, -1).join(", ")} and ${items.at(-1)}`;
 
 /* ---------- parabolas ---------- */
+const quadraticSourceAxes = {
+  source: defineAxis("source", ["equation", "from-description"] as const, {
+    legacy: "equation",
+    silentLegacy: true,
+    since: 2,
+    weights: [4, 1],
+  }),
+};
+const descriptionStoryAxes = {
+  story: defineAxis("story", ["ball", "return", "profit"] as const, {
+    legacy: "ball",
+    silentLegacy: true,
+    since: 2,
+  }),
+};
+/** k = 25 does not fit a point-plot grid, whose coordinates stop at 20. */
+function descriptionParts(id: string, seed: string): CurveParts {
+  const story = chooseAxes(id, seed, descriptionStoryAxes).story;
+  const r = random(id, `${seed}#description`);
+  const heights = [9, 16] as const;
+  if (story === "profit") {
+    let r0 = 1;
+    let s = 3;
+    for (let attempt = 0; attempt < 40; attempt++) {
+      r0 = r(1, 8);
+      s = r(r0 + 2, 14);
+      if ((r0 + s) % 2 === 0 && s - r0 <= 8 && s - r0 >= 2) break;
+    }
+    if ((r0 + s) % 2 !== 0 || s - r0 > 8) {
+      r0 = 2;
+      s = 8;
+    }
+    const h = (r0 + s) / 2;
+    const k = ((s - r0) / 2) ** 2;
+    const points: LatticePoint[] = [
+      [r0, 0],
+      [s, 0],
+      [h, k],
+    ];
+    const answer = sortPoints(points);
+    const grid: PointPlotGrid = {
+      xMin: 0,
+      xMax: 16,
+      yMin: 0,
+      yMax: 18,
+      step: 1,
+      xLabel: "x",
+      yLabel: "P",
+    };
+    return {
+      prompt: `A shop's profit, in dollars, follows a downward parabola. It breaks even at ${r0} items and at ${s} items. The greatest profit is ${k} ${nounFor(k, "dollar")}, halfway between those counts. From this description, place the two break-even points and the highest point.`,
+      response: {
+        kind: "point-plot",
+        label: "Place the 3 points from the description",
+        grid,
+        pointCount: 3,
+        ordered: false,
+        connect: "curve",
+      },
+      answer,
+      grading: {
+        mode: "on-curve",
+        curve: { kind: "quadratic", a: [-1, 1], h: int(h), k: int(k) },
+        required: answer,
+      },
+      hint: `Start with the break-even counts ${r0} and ${s}. Break-even means profit 0, so pair each count with 0 on the graph.`,
+      explanation: [
+        `Break-even is profit 0 at ${r0} items and at ${s} items: ${pointTex([r0, 0])} and ${pointTex([s, 0])}.`,
+        `The highest point is halfway between them, at ${h} items. Its height is ${k} ${nounFor(k, "dollar")}: ${pointTex([h, k])}.`,
+        "Place those three points. Swapping a count with a profit puts the point off the parabola.",
+      ],
+    };
+  }
+  const k = heights[r(0, heights.length - 1)]!;
+  const tvMax = Math.floor(Math.sqrt(k) - 1);
+  const tv = r(1, Math.max(1, tvMax));
+  const c = k - tv * tv;
+  const land = tv + Math.round(Math.sqrt(k));
+  const curve: PlotCurve = {
+    kind: "quadratic",
+    a: [-1, 1],
+    h: int(tv),
+    k: int(k),
+  };
+  const points: LatticePoint[] =
+    story === "return"
+      ? [
+          [0, c],
+          [tv, k],
+          [2 * tv, c],
+        ]
+      : [
+          [0, c],
+          [tv, k],
+          [land, 0],
+        ];
+  const answer = sortPoints(points);
+  const grid: PointPlotGrid = {
+    xMin: 0,
+    xMax: 8,
+    yMin: 0,
+    yMax: 18,
+    step: 1,
+    xLabel: "t (s)",
+    yLabel: "h (m)",
+  };
+  const prompt =
+    story === "return"
+      ? `A ball is thrown upward from a height of ${c} m. Its greatest height is ${k} m after ${tv} ${tv === 1 ? "second" : "seconds"}. It returns to its starting height after ${2 * tv} seconds. From this description, place the start, the highest point and the return point. This graph is height against time, not the ball's path.`
+      : `A ball is thrown from a height of ${c} m. It reaches its greatest height, ${k} m, ${tv} ${tv === 1 ? "second" : "seconds"} after the throw, and lands ${land} seconds after the throw. From this description, place the starting point, the highest point and the landing point. This graph is height against time, not the ball's path.`;
+  return {
+    prompt,
+    response: {
+      kind: "point-plot",
+      label: "Place the 3 points from the description",
+      grid,
+      pointCount: 3,
+      ordered: false,
+      connect: "curve",
+    },
+    answer,
+    grading: { mode: "on-curve", curve, required: answer },
+    hint: `The starting height ${c} m is a vertical coordinate. Time goes on the horizontal axis; identify the time of the throw first.`,
+    explanation: [
+      story === "return"
+        ? `The throw starts at ${pointTex([0, c])}. The highest point is ${pointTex([tv, k])}. The return to that height is ${pointTex([2 * tv, c])}.`
+        : `The throw starts at ${pointTex([0, c])}. The highest point is ${pointTex([tv, k])}. Landing is height 0, at ${pointTex([land, 0])}.`,
+      `The two points at height ${c} m sit equally far from time ${tv} s.`,
+      "Place those three points. Swapping height with time misses the parabola.",
+    ],
+  };
+}
 function quadraticParts(seed: string): CurveParts {
   const id = pointPlotCurveTemplates[0]!.id;
+  const source = chooseAxes(id, seed, quadraticSourceAxes).source;
+  if (source === "from-description") return descriptionParts(id, seed);
   const r = random(id, seed);
   const variant = r(0, 5);
   const standard = variant >= 3;
