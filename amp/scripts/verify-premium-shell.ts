@@ -393,7 +393,7 @@ try {
       });
       await page.goto(`${origin}/family/privacy`);
       await page
-        .getByRole("heading", { name: "Privacy and records" })
+        .getByRole("heading", { name: "Privacy", exact: true })
         .waitFor();
       await fits(page);
       await page.screenshot({ path: `${shots}/privacy-${width}-${theme}.png` });

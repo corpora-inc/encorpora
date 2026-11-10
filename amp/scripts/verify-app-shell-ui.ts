@@ -670,7 +670,7 @@ async function verifyDrawerLearner() {
         try {
           await page.goto(`${origin}/family/security`);
           await page
-            .getByRole("heading", { name: /Sign-in & security/ })
+            .getByRole("heading", { name: "Sign-in", exact: true })
             .waitFor();
           await page.getByRole("button", { name: "Open AMP menu" }).click();
           const drawer = page.getByRole("dialog", {

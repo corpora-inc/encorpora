@@ -105,6 +105,41 @@ const messages: Record<string, string> = {
   "Too Many Requests":
     "Too many requests from this network. Wait a few minutes, then try again.",
 };
+/** What a request was for, so a failure without its own message still says
+ * what failed: what didn't load, or what didn't go through. */
+const areas: [RegExp, string, string][] = [
+  [/^\/billing\/(prices|offer)/, "The plans", "Choosing a plan"],
+  [/^\/billing\/status\//, "This learner’s plan", "Checking the plan"],
+  [/^\/billing\/checkout/, "Checkout", "Opening checkout"],
+  [/^\/billing\//, "Billing", "The billing change"],
+  [/^\/family\/second-parent/, "The second parent", "The invitation"],
+  [/^\/family\/approvals/, "The approval", "The approval"],
+  [/^\/family\//, "Family details", "The family change"],
+  [/^\/me\/profiles/, "Practice profiles", "The profile change"],
+  [/^\/me\/practice/, "Your practice", "Starting your practice"],
+  [/^\/me(\/|$)/, "Your account", "The account change"],
+  [/^\/start/, "Getting started", "Getting started"],
+  [/^\/school\//, "School details", "The school change"],
+  [/^\/learners\/[^/]+\/workbooks/, "Workbooks", "The workbook"],
+  [/^\/learners\//, "This learner", "The learner change"],
+  [/^\/(problems|practice|attempts|batches)/, "Practice", "Your answer"],
+  [/^\/access/, "Your access", "Activating access"],
+  [/^\/(funding|invoices)/, "The funding request", "The funding request"],
+];
+/** The message for a failure the server gave no known code for. */
+export function failureMessage(path: string, method: string, status: number) {
+  const read = method === "GET";
+  const [, thing, change] = areas.find(([pattern]) => pattern.test(path)) ?? [
+    null,
+    "This page",
+    "That change",
+  ];
+  if (status >= 500)
+    return `${read ? thing : change} isn’t available right now. Try again in a moment.`;
+  return read
+    ? `${thing} didn’t load. Try again.`
+    : `${change} didn’t go through. Check what you entered, then try again.`;
+}
 const errorCode = (data: unknown) =>
   data &&
   typeof data === "object" &&
@@ -207,10 +242,7 @@ export async function request<T>(
             : "unavailable";
     const error = new AppError(
       kind,
-      messages[code] ??
-        (response.status >= 500
-          ? "This service is temporarily unavailable. Try again."
-          : "This request could not be completed. Check the details and try again."),
+      messages[code] ?? failureMessage(path, method, response.status),
       response.status >= 500,
       requestId,
       code || null,

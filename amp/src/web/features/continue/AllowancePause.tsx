@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { useNavigate, useRouterState } from "@tanstack/react-router";
+import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { track } from "../../lib/analytics";
 import { sessionOptions } from "../../lib/query";
 import { TalkToUs } from "../schools/TalkToUs";
-import { Button } from "../../ui/Button";
+import { Button, buttonClass } from "../../ui/Button";
 import { Sheet } from "../../ui/Sheet";
 import { rememberContinuation } from "./memory";
+import { RecapLine } from "./Recap";
 import styles from "./Continue.module.css";
 
 /** Who is looking at a learner whose free allowance ended. `profile`: an
@@ -116,6 +117,9 @@ export function AllowancePause({
         {words.fact}
       </Heading>
       {words.detail && <p className={styles.detail}>{words.detail}</p>}
+      {kind === "problems" && viewer === "adult" && learner && (
+        <RecapLine learnerId={learner.id} withAnswered={false} />
+      )}
       {(viewer === "parent" || viewer === "adult" || viewer === "profile") &&
         learner && (
           <Button
@@ -145,6 +149,11 @@ export function AllowancePause({
         )}
       {viewer === "staff" && (
         <TalkToUsButton variant="primary" className={styles.action} />
+      )}
+      {viewer === "adult" && !compact && (
+        <Link to="/me" className={buttonClass("quiet")}>
+          See your progress
+        </Link>
       )}
     </section>
   );
