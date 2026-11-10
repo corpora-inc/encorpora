@@ -170,6 +170,7 @@ test("guess chance comes from each family's answer schema and is never understat
     "multi-select-v1": "multi-select",
     "point-plot-v1": "point-plot",
     "line-plot-build-v1": "line-plot-build",
+    "shape-composer-v1": "shape-composer",
     "multi-part-choice-v1": "multi-part-choice",
     "multi-part-cards-v1": "multi-part-choice",
     "figure-choice-v1": "figure-choice",
@@ -195,7 +196,9 @@ test("guess chance comes from each family's answer schema and is never understat
     if (chance > 0) choiceFamilies++;
     assert.ok(chance >= 0 && chance <= 1 / 2, `${template.id}: ${chance}`);
     const capabilities = [
-      ...(template.requiredResponseCapability ? [template.requiredResponseCapability] : []),
+      ...(template.requiredResponseCapability
+        ? [template.requiredResponseCapability]
+        : []),
       ...(template.requiredResponseCapabilities ?? []),
     ];
     // Typed answers are supported without a response capability.
@@ -211,7 +214,11 @@ test("guess chance comes from each family's answer schema and is never understat
       // The transport must fall back for a client declaring only that format.
       const compatible = problem.variant?.axes?.clause
         ? generateProblemFor(
-            template.id, `audit:${i}`, figureCapabilities, undefined, capabilities,
+            template.id,
+            `audit:${i}`,
+            figureCapabilities,
+            undefined,
+            capabilities,
           )
         : problem;
       if (capabilities.length)

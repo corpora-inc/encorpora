@@ -20,6 +20,9 @@ const CLAUSE_SEEDS = 64;
  * are rarer than the deterministic sample. Keep these in sync with the
  * generator-variation audit in frontier-guessing.test.ts. */
 const FAMILY_GUESS_FLOOR: Readonly<Record<string, number>> = {
+  // The most guessable recipe places two labelled squares in two spaces:
+  // two accepted orders among 21^2 unused-or-grid-position choices.
+  "compose-flat-shape": 2 / 441,
   "circle-estimate-blanks": 1 / 8,
   "round-decimal-blanks": 1 / 8,
   "quotient-remainder-blanks": 1 / 8,
@@ -84,6 +87,7 @@ export function responseGuessChance(response: ProblemResponse): number {
       1 /
       (response.maxPerValue + 1) ** (response.axis.max - response.axis.min + 1)
     );
+  if (response.kind === "shape-composer") return response.guessChance;
   if (response.kind === "structured-work") return UNKNOWN_CHOICE_GUESS;
   if (response.kind === "choice") return 1 / response.options.length;
   if (response.kind === "point-plot") return pointPlotGuessChance(response);
@@ -112,7 +116,8 @@ export function guessChance(
   const known = cache.get(template.id);
   if (known !== undefined) return known;
   let chance =
-    template.requiredResponseCapability || template.requiredResponseCapabilities?.length
+    template.requiredResponseCapability ||
+    template.requiredResponseCapabilities?.length
       ? UNKNOWN_CHOICE_GUESS
       : 0;
   if (byId.has(template.id)) {

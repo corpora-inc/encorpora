@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import { shapeComposerScene } from "../math/shape-composer-scene";
 import React, { type ReactNode } from "react";
 import { Figure } from "../web/Figure";
 import type { GeneratedProblem } from "../math/contracts";
@@ -501,6 +502,37 @@ export function PrintExerciseBody({
           />
           <figcaption>{problem.public.response.axis.unit}</figcaption>
         </figure>
+      )}
+      {problem.public.response.kind === "shape-composer" && (
+        <div className="print-shape-composer">
+          {problem.public.response.stages.map((stage, i) => {
+            const response = {
+              ...problem.public.response,
+              stages: [stage],
+            } as import("../math/shape-composer").ShapeComposerResponse;
+            return (
+              <div key={i}>
+                <p>
+                  {problem.public.response.kind === "shape-composer" &&
+                  problem.public.response.stages.length > 1
+                    ? `Shape ${i + 1}. `
+                    : ""}
+                  {stage.prompt}
+                </p>
+                <SceneFigure
+                  medium="print"
+                  reveal
+                  scene={shapeComposerScene(
+                    response,
+                    solutions
+                      ? JSON.stringify([JSON.parse(problem.answer)[i]])
+                      : undefined,
+                  )}
+                />
+              </div>
+            );
+          })}
+        </div>
       )}
       {problem.public.response.kind === "point-plot" && (
         // The workbook prints the empty grid to plot on by hand; the

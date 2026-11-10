@@ -138,6 +138,7 @@ export function syntheticProbability(
     template.requiredResponseCapability &&
     template.requiredResponseCapability !== "point-plot-v1" &&
     template.requiredResponseCapability !== "line-plot-build-v1" &&
+    template.requiredResponseCapability !== "shape-composer-v1" &&
     template.requiredResponseCapability !== "multi-part-choice-v1" &&
     template.requiredResponseCapability !== "structured-work-v1"
       ? Math.max(0.2, population.guess)
