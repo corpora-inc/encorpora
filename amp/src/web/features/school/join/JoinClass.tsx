@@ -96,7 +96,7 @@ export function JoinClass({
             {shown}
           </strong>
         </span>
-        <span className={styles.group}>
+        <span className={`${styles.group} ${styles.wide}`}>
           <CopyButton
             text={link}
             label="Copy link"
@@ -114,6 +114,8 @@ export function JoinClass({
               Full screen
             </Link>
           )}
+        </span>
+        <span className={`${styles.group} ${styles.icons}`}>
           <button
             type="button"
             className={`${styles.act} ${styles.iconOnly}`}
