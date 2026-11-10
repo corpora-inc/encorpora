@@ -207,6 +207,11 @@ export function problemLesson(
   let example = generateProblem(templateId, `${seed}:lesson:0`);
   const repeatsProblem = (p: typeof example) => {
     if (
+      learnerProblem?.public.response.kind === "shape-composer" &&
+      p.public.response.kind === "shape-composer"
+    )
+      return learnerProblem.variant?.axes?.recipe === p.variant?.axes?.recipe;
+    if (
       learnerProblem?.public.response.kind === "point-plot" &&
       learnerProblem.public.templateId === p.public.templateId &&
       gradeAnswer(learnerProblem, p.answer)
@@ -279,6 +284,7 @@ export function problemLesson(
     response.kind === "multi-select" ||
     response.kind === "point-plot" ||
     response.kind === "trend-line-fit" ||
+    response.kind === "shape-composer" ||
     response.kind === "multi-part-choice" ||
     response.kind === "figure-choice" ||
     response.kind === "structured-work"

@@ -1,0 +1,2754 @@
+[
+  {
+    "tag": "triangles",
+    "width": 320,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          186.9,
+          288,
+          49.4
+        ],
+        ".shape-board": [
+          16,
+          299.5,
+          288,
+          233
+        ],
+        ".shape-tray": [
+          16,
+          532.5,
+          288,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          652.5,
+          288,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          783.4,
+          288,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "triangles",
+    "width": 320,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          186.9,
+          288,
+          49.4
+        ],
+        ".shape-board": [
+          16,
+          299.5,
+          288,
+          233
+        ],
+        ".shape-tray": [
+          16,
+          532.5,
+          288,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          652.5,
+          288,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          783.4,
+          288,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "joined-circle",
+    "width": 320,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          160.9,
+          288,
+          49.4
+        ],
+        ".shape-board": [
+          16,
+          325.5,
+          288,
+          233
+        ],
+        ".shape-tray": [
+          16,
+          558.5,
+          288,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          678.5,
+          288,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          783.4,
+          288,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "joined-circle",
+    "width": 320,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          160.9,
+          288,
+          49.4
+        ],
+        ".shape-board": [
+          16,
+          325.5,
+          288,
+          233
+        ],
+        ".shape-tray": [
+          16,
+          558.5,
+          288,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          678.5,
+          288,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          783.4,
+          288,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "flip-trapezoid",
+    "width": 320,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          186.9,
+          288,
+          49.4
+        ],
+        ".shape-board": [
+          16,
+          299.5,
+          288,
+          233
+        ],
+        ".shape-tray": [
+          16,
+          532.5,
+          288,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          652.5,
+          288,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          783.4,
+          288,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "flip-trapezoid",
+    "width": 320,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          186.9,
+          288,
+          49.4
+        ],
+        ".shape-board": [
+          16,
+          299.5,
+          288,
+          233
+        ],
+        ".shape-tray": [
+          16,
+          532.5,
+          288,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          652.5,
+          288,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          783.4,
+          288,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "house",
+    "width": 320,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          131.9,
+          288,
+          49.4
+        ],
+        ".shape-board": [
+          16,
+          244.5,
+          288,
+          233
+        ],
+        ".shape-tray": [
+          16,
+          477.5,
+          288,
+          230
+        ],
+        ".shape-tools": [
+          16,
+          707.5,
+          288,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          783.4,
+          288,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "house",
+    "width": 320,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          131.9,
+          288,
+          49.4
+        ],
+        ".shape-board": [
+          16,
+          244.5,
+          288,
+          233
+        ],
+        ".shape-tray": [
+          16,
+          477.5,
+          288,
+          230
+        ],
+        ".shape-tools": [
+          16,
+          707.5,
+          288,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          783.4,
+          288,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "triangles",
+    "width": 390,
+    "height": 844,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          142.6,
+          358,
+          25.3
+        ],
+        ".shape-board": [
+          16,
+          231.1,
+          358,
+          289.7
+        ],
+        ".shape-tray": [
+          16,
+          520.8,
+          358,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          640.8,
+          358,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          727.4,
+          358,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "triangles",
+    "width": 390,
+    "height": 844,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          142.6,
+          358,
+          25.3
+        ],
+        ".shape-board": [
+          16,
+          231.1,
+          358,
+          289.7
+        ],
+        ".shape-tray": [
+          16,
+          520.8,
+          358,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          640.8,
+          358,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          727.4,
+          358,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "joined-circle",
+    "width": 390,
+    "height": 844,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          116.6,
+          358,
+          25.3
+        ],
+        ".shape-board": [
+          16,
+          257.1,
+          358,
+          289.7
+        ],
+        ".shape-tray": [
+          16,
+          546.8,
+          358,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          666.8,
+          358,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          727.4,
+          358,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "joined-circle",
+    "width": 390,
+    "height": 844,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          116.6,
+          358,
+          25.3
+        ],
+        ".shape-board": [
+          16,
+          257.1,
+          358,
+          289.7
+        ],
+        ".shape-tray": [
+          16,
+          546.8,
+          358,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          666.8,
+          358,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          727.4,
+          358,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "flip-trapezoid",
+    "width": 390,
+    "height": 844,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          142.6,
+          358,
+          25.3
+        ],
+        ".shape-board": [
+          16,
+          231.1,
+          358,
+          289.7
+        ],
+        ".shape-tray": [
+          16,
+          520.8,
+          358,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          640.8,
+          358,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          727.4,
+          358,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "flip-trapezoid",
+    "width": 390,
+    "height": 844,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          142.6,
+          358,
+          25.3
+        ],
+        ".shape-board": [
+          16,
+          231.1,
+          358,
+          289.7
+        ],
+        ".shape-tray": [
+          16,
+          520.8,
+          358,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          640.8,
+          358,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          727.4,
+          358,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "house",
+    "width": 390,
+    "height": 844,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          142.6,
+          358,
+          25.3
+        ],
+        ".shape-board": [
+          16,
+          231.1,
+          358,
+          289.7
+        ],
+        ".shape-tray": [
+          16,
+          520.8,
+          358,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          640.8,
+          358,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          727.4,
+          358,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "house",
+    "width": 390,
+    "height": 844,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          142.6,
+          358,
+          25.3
+        ],
+        ".shape-board": [
+          16,
+          231.1,
+          358,
+          289.7
+        ],
+        ".shape-tray": [
+          16,
+          520.8,
+          358,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          640.8,
+          358,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          727.4,
+          358,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "triangles",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          67,
+          148.9,
+          634,
+          31.1
+        ],
+        ".shape-board": [
+          144,
+          243.2,
+          480,
+          388.4
+        ],
+        ".shape-tray": [
+          144,
+          631.5,
+          480,
+          120
+        ],
+        ".shape-tools": [
+          144,
+          751.5,
+          480,
+          44
+        ],
+        ".answer-dock": [
+          74,
+          867.4,
+          620,
+          121.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "triangles",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          67,
+          148.9,
+          634,
+          31.1
+        ],
+        ".shape-board": [
+          144,
+          243.2,
+          480,
+          388.4
+        ],
+        ".shape-tray": [
+          144,
+          631.5,
+          480,
+          120
+        ],
+        ".shape-tools": [
+          144,
+          751.5,
+          480,
+          44
+        ],
+        ".answer-dock": [
+          74,
+          867.4,
+          620,
+          121.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "joined-circle",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          67,
+          122.9,
+          634,
+          31.1
+        ],
+        ".shape-board": [
+          144,
+          269.2,
+          480,
+          388.4
+        ],
+        ".shape-tray": [
+          144,
+          657.5,
+          480,
+          120
+        ],
+        ".shape-tools": [
+          144,
+          777.5,
+          480,
+          44
+        ],
+        ".answer-dock": [
+          74,
+          867.4,
+          620,
+          121.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "joined-circle",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          67,
+          122.9,
+          634,
+          31.1
+        ],
+        ".shape-board": [
+          144,
+          269.2,
+          480,
+          388.4
+        ],
+        ".shape-tray": [
+          144,
+          657.5,
+          480,
+          120
+        ],
+        ".shape-tools": [
+          144,
+          777.5,
+          480,
+          44
+        ],
+        ".answer-dock": [
+          74,
+          867.4,
+          620,
+          121.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "flip-trapezoid",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          67,
+          148.9,
+          634,
+          31.1
+        ],
+        ".shape-board": [
+          144,
+          243.2,
+          480,
+          388.4
+        ],
+        ".shape-tray": [
+          144,
+          631.5,
+          480,
+          120
+        ],
+        ".shape-tools": [
+          144,
+          751.5,
+          480,
+          44
+        ],
+        ".answer-dock": [
+          74,
+          867.4,
+          620,
+          121.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "flip-trapezoid",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          67,
+          148.9,
+          634,
+          31.1
+        ],
+        ".shape-board": [
+          144,
+          243.2,
+          480,
+          388.4
+        ],
+        ".shape-tray": [
+          144,
+          631.5,
+          480,
+          120
+        ],
+        ".shape-tools": [
+          144,
+          751.5,
+          480,
+          44
+        ],
+        ".answer-dock": [
+          74,
+          867.4,
+          620,
+          121.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "house",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          67,
+          148.9,
+          634,
+          31.1
+        ],
+        ".shape-board": [
+          144,
+          243.2,
+          480,
+          388.4
+        ],
+        ".shape-tray": [
+          144,
+          631.5,
+          480,
+          120
+        ],
+        ".shape-tools": [
+          144,
+          751.5,
+          480,
+          44
+        ],
+        ".answer-dock": [
+          74,
+          867.4,
+          620,
+          121.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "house",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          67,
+          148.9,
+          634,
+          31.1
+        ],
+        ".shape-board": [
+          144,
+          243.2,
+          480,
+          388.4
+        ],
+        ".shape-tray": [
+          144,
+          631.5,
+          480,
+          120
+        ],
+        ".shape-tools": [
+          144,
+          751.5,
+          480,
+          44
+        ],
+        ".answer-dock": [
+          74,
+          867.4,
+          620,
+          121.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "triangles",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          103,
+          171.3,
+          659,
+          40.5
+        ],
+        ".shape-board": [
+          232.5,
+          275,
+          400,
+          323.7
+        ],
+        ".shape-tray": [
+          232.5,
+          598.7,
+          400,
+          120
+        ],
+        ".shape-tools": [
+          232.5,
+          718.7,
+          400,
+          44
+        ],
+        ".answer-dock": [
+          792,
+          77,
+          391,
+          780
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "triangles",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          103,
+          171.3,
+          659,
+          40.5
+        ],
+        ".shape-board": [
+          232.5,
+          275,
+          400,
+          323.7
+        ],
+        ".shape-tray": [
+          232.5,
+          598.7,
+          400,
+          120
+        ],
+        ".shape-tools": [
+          232.5,
+          718.7,
+          400,
+          44
+        ],
+        ".answer-dock": [
+          792,
+          77,
+          391,
+          780
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "joined-circle",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          103,
+          145.3,
+          659,
+          40.5
+        ],
+        ".shape-board": [
+          232.5,
+          301,
+          400,
+          323.7
+        ],
+        ".shape-tray": [
+          232.5,
+          624.7,
+          400,
+          120
+        ],
+        ".shape-tools": [
+          232.5,
+          744.7,
+          400,
+          44
+        ],
+        ".answer-dock": [
+          792,
+          77,
+          391,
+          780
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "joined-circle",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          103,
+          145.3,
+          659,
+          40.5
+        ],
+        ".shape-board": [
+          232.5,
+          301,
+          400,
+          323.7
+        ],
+        ".shape-tray": [
+          232.5,
+          624.7,
+          400,
+          120
+        ],
+        ".shape-tools": [
+          232.5,
+          744.7,
+          400,
+          44
+        ],
+        ".answer-dock": [
+          792,
+          77,
+          391,
+          780
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "flip-trapezoid",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          103,
+          171.3,
+          659,
+          40.5
+        ],
+        ".shape-board": [
+          232.5,
+          275,
+          400,
+          323.7
+        ],
+        ".shape-tray": [
+          232.5,
+          598.7,
+          400,
+          120
+        ],
+        ".shape-tools": [
+          232.5,
+          718.7,
+          400,
+          44
+        ],
+        ".answer-dock": [
+          792,
+          77,
+          391,
+          780
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "flip-trapezoid",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          103,
+          171.3,
+          659,
+          40.5
+        ],
+        ".shape-board": [
+          232.5,
+          275,
+          400,
+          323.7
+        ],
+        ".shape-tray": [
+          232.5,
+          598.7,
+          400,
+          120
+        ],
+        ".shape-tools": [
+          232.5,
+          718.7,
+          400,
+          44
+        ],
+        ".answer-dock": [
+          792,
+          77,
+          391,
+          780
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "house",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          103,
+          171.3,
+          659,
+          40.5
+        ],
+        ".shape-board": [
+          232.5,
+          275,
+          400,
+          323.7
+        ],
+        ".shape-tray": [
+          232.5,
+          598.7,
+          400,
+          120
+        ],
+        ".shape-tools": [
+          232.5,
+          718.7,
+          400,
+          44
+        ],
+        ".answer-dock": [
+          792,
+          77,
+          391,
+          780
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "house",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          103,
+          171.3,
+          659,
+          40.5
+        ],
+        ".shape-board": [
+          232.5,
+          275,
+          400,
+          323.7
+        ],
+        ".shape-tray": [
+          232.5,
+          598.7,
+          400,
+          120
+        ],
+        ".shape-tools": [
+          232.5,
+          718.7,
+          400,
+          44
+        ],
+        ".answer-dock": [
+          792,
+          77,
+          391,
+          780
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "triangles",
+    "width": 320,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          186.9,
+          288,
+          49.4
+        ],
+        ".shape-board": [
+          16,
+          299.5,
+          288,
+          233
+        ],
+        ".shape-tray": [
+          16,
+          532.5,
+          288,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          652.5,
+          288,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          783.4,
+          288,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "triangles",
+    "width": 320,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          186.9,
+          288,
+          49.4
+        ],
+        ".shape-board": [
+          16,
+          299.5,
+          288,
+          233
+        ],
+        ".shape-tray": [
+          16,
+          532.5,
+          288,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          652.5,
+          288,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          783.4,
+          288,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "joined-circle",
+    "width": 320,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          160.9,
+          288,
+          49.4
+        ],
+        ".shape-board": [
+          16,
+          325.5,
+          288,
+          233
+        ],
+        ".shape-tray": [
+          16,
+          558.5,
+          288,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          678.5,
+          288,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          783.4,
+          288,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "joined-circle",
+    "width": 320,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          160.9,
+          288,
+          49.4
+        ],
+        ".shape-board": [
+          16,
+          325.5,
+          288,
+          233
+        ],
+        ".shape-tray": [
+          16,
+          558.5,
+          288,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          678.5,
+          288,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          783.4,
+          288,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "flip-trapezoid",
+    "width": 320,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          186.9,
+          288,
+          49.4
+        ],
+        ".shape-board": [
+          16,
+          299.5,
+          288,
+          233
+        ],
+        ".shape-tray": [
+          16,
+          532.5,
+          288,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          652.5,
+          288,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          783.4,
+          288,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "flip-trapezoid",
+    "width": 320,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          186.9,
+          288,
+          49.4
+        ],
+        ".shape-board": [
+          16,
+          299.5,
+          288,
+          233
+        ],
+        ".shape-tray": [
+          16,
+          532.5,
+          288,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          652.5,
+          288,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          783.4,
+          288,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "house",
+    "width": 320,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          131.9,
+          288,
+          49.4
+        ],
+        ".shape-board": [
+          16,
+          244.5,
+          288,
+          233
+        ],
+        ".shape-tray": [
+          16,
+          477.5,
+          288,
+          230
+        ],
+        ".shape-tools": [
+          16,
+          707.5,
+          288,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          783.4,
+          288,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "house",
+    "width": 320,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          131.9,
+          288,
+          49.4
+        ],
+        ".shape-board": [
+          16,
+          244.5,
+          288,
+          233
+        ],
+        ".shape-tray": [
+          16,
+          477.5,
+          288,
+          230
+        ],
+        ".shape-tools": [
+          16,
+          707.5,
+          288,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          783.4,
+          288,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "triangles",
+    "width": 390,
+    "height": 844,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          142.6,
+          358,
+          25.3
+        ],
+        ".shape-board": [
+          16,
+          231.1,
+          358,
+          289.7
+        ],
+        ".shape-tray": [
+          16,
+          520.8,
+          358,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          640.8,
+          358,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          727.4,
+          358,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "triangles",
+    "width": 390,
+    "height": 844,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          142.6,
+          358,
+          25.3
+        ],
+        ".shape-board": [
+          16,
+          231.1,
+          358,
+          289.7
+        ],
+        ".shape-tray": [
+          16,
+          520.8,
+          358,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          640.8,
+          358,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          727.4,
+          358,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "joined-circle",
+    "width": 390,
+    "height": 844,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          116.6,
+          358,
+          25.3
+        ],
+        ".shape-board": [
+          16,
+          257.1,
+          358,
+          289.7
+        ],
+        ".shape-tray": [
+          16,
+          546.8,
+          358,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          666.8,
+          358,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          727.4,
+          358,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "joined-circle",
+    "width": 390,
+    "height": 844,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          116.6,
+          358,
+          25.3
+        ],
+        ".shape-board": [
+          16,
+          257.1,
+          358,
+          289.7
+        ],
+        ".shape-tray": [
+          16,
+          546.8,
+          358,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          666.8,
+          358,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          727.4,
+          358,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "flip-trapezoid",
+    "width": 390,
+    "height": 844,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          142.6,
+          358,
+          25.3
+        ],
+        ".shape-board": [
+          16,
+          231.1,
+          358,
+          289.7
+        ],
+        ".shape-tray": [
+          16,
+          520.8,
+          358,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          640.8,
+          358,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          727.4,
+          358,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "flip-trapezoid",
+    "width": 390,
+    "height": 844,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          142.6,
+          358,
+          25.3
+        ],
+        ".shape-board": [
+          16,
+          231.1,
+          358,
+          289.7
+        ],
+        ".shape-tray": [
+          16,
+          520.8,
+          358,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          640.8,
+          358,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          727.4,
+          358,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "house",
+    "width": 390,
+    "height": 844,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          142.6,
+          358,
+          25.3
+        ],
+        ".shape-board": [
+          16,
+          231.1,
+          358,
+          289.7
+        ],
+        ".shape-tray": [
+          16,
+          520.8,
+          358,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          640.8,
+          358,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          727.4,
+          358,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "house",
+    "width": 390,
+    "height": 844,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          16,
+          142.6,
+          358,
+          25.3
+        ],
+        ".shape-board": [
+          16,
+          231.1,
+          358,
+          289.7
+        ],
+        ".shape-tray": [
+          16,
+          520.8,
+          358,
+          120
+        ],
+        ".shape-tools": [
+          16,
+          640.8,
+          358,
+          44
+        ],
+        ".answer-dock": [
+          16,
+          727.4,
+          358,
+          116.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "triangles",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          67,
+          148.9,
+          634,
+          31.1
+        ],
+        ".shape-board": [
+          144,
+          243.2,
+          480,
+          388.4
+        ],
+        ".shape-tray": [
+          144,
+          631.5,
+          480,
+          120
+        ],
+        ".shape-tools": [
+          144,
+          751.5,
+          480,
+          44
+        ],
+        ".answer-dock": [
+          74,
+          867.4,
+          620,
+          121.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "triangles",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          67,
+          148.9,
+          634,
+          31.1
+        ],
+        ".shape-board": [
+          144,
+          243.2,
+          480,
+          388.4
+        ],
+        ".shape-tray": [
+          144,
+          631.5,
+          480,
+          120
+        ],
+        ".shape-tools": [
+          144,
+          751.5,
+          480,
+          44
+        ],
+        ".answer-dock": [
+          74,
+          867.4,
+          620,
+          121.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "joined-circle",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          67,
+          122.9,
+          634,
+          31.1
+        ],
+        ".shape-board": [
+          144,
+          269.2,
+          480,
+          388.4
+        ],
+        ".shape-tray": [
+          144,
+          657.5,
+          480,
+          120
+        ],
+        ".shape-tools": [
+          144,
+          777.5,
+          480,
+          44
+        ],
+        ".answer-dock": [
+          74,
+          867.4,
+          620,
+          121.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "joined-circle",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          67,
+          122.9,
+          634,
+          31.1
+        ],
+        ".shape-board": [
+          144,
+          269.2,
+          480,
+          388.4
+        ],
+        ".shape-tray": [
+          144,
+          657.5,
+          480,
+          120
+        ],
+        ".shape-tools": [
+          144,
+          777.5,
+          480,
+          44
+        ],
+        ".answer-dock": [
+          74,
+          867.4,
+          620,
+          121.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "flip-trapezoid",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          67,
+          148.9,
+          634,
+          31.1
+        ],
+        ".shape-board": [
+          144,
+          243.2,
+          480,
+          388.4
+        ],
+        ".shape-tray": [
+          144,
+          631.5,
+          480,
+          120
+        ],
+        ".shape-tools": [
+          144,
+          751.5,
+          480,
+          44
+        ],
+        ".answer-dock": [
+          74,
+          867.4,
+          620,
+          121.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "flip-trapezoid",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          67,
+          148.9,
+          634,
+          31.1
+        ],
+        ".shape-board": [
+          144,
+          243.2,
+          480,
+          388.4
+        ],
+        ".shape-tray": [
+          144,
+          631.5,
+          480,
+          120
+        ],
+        ".shape-tools": [
+          144,
+          751.5,
+          480,
+          44
+        ],
+        ".answer-dock": [
+          74,
+          867.4,
+          620,
+          121.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "house",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          67,
+          148.9,
+          634,
+          31.1
+        ],
+        ".shape-board": [
+          144,
+          243.2,
+          480,
+          388.4
+        ],
+        ".shape-tray": [
+          144,
+          631.5,
+          480,
+          120
+        ],
+        ".shape-tools": [
+          144,
+          751.5,
+          480,
+          44
+        ],
+        ".answer-dock": [
+          74,
+          867.4,
+          620,
+          121.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "house",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          67,
+          148.9,
+          634,
+          31.1
+        ],
+        ".shape-board": [
+          144,
+          243.2,
+          480,
+          388.4
+        ],
+        ".shape-tray": [
+          144,
+          631.5,
+          480,
+          120
+        ],
+        ".shape-tools": [
+          144,
+          751.5,
+          480,
+          44
+        ],
+        ".answer-dock": [
+          74,
+          867.4,
+          620,
+          121.6
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "triangles",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          103,
+          171.3,
+          659,
+          40.5
+        ],
+        ".shape-board": [
+          232.5,
+          275,
+          400,
+          323.7
+        ],
+        ".shape-tray": [
+          232.5,
+          598.7,
+          400,
+          120
+        ],
+        ".shape-tools": [
+          232.5,
+          718.7,
+          400,
+          44
+        ],
+        ".answer-dock": [
+          792,
+          77,
+          391,
+          780
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "triangles",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          103,
+          171.3,
+          659,
+          40.5
+        ],
+        ".shape-board": [
+          232.5,
+          275,
+          400,
+          323.7
+        ],
+        ".shape-tray": [
+          232.5,
+          598.7,
+          400,
+          120
+        ],
+        ".shape-tools": [
+          232.5,
+          718.7,
+          400,
+          44
+        ],
+        ".answer-dock": [
+          792,
+          77,
+          391,
+          780
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "joined-circle",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          103,
+          145.3,
+          659,
+          40.5
+        ],
+        ".shape-board": [
+          232.5,
+          301,
+          400,
+          323.7
+        ],
+        ".shape-tray": [
+          232.5,
+          624.7,
+          400,
+          120
+        ],
+        ".shape-tools": [
+          232.5,
+          744.7,
+          400,
+          44
+        ],
+        ".answer-dock": [
+          792,
+          77,
+          391,
+          780
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "joined-circle",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          103,
+          145.3,
+          659,
+          40.5
+        ],
+        ".shape-board": [
+          232.5,
+          301,
+          400,
+          323.7
+        ],
+        ".shape-tray": [
+          232.5,
+          624.7,
+          400,
+          120
+        ],
+        ".shape-tools": [
+          232.5,
+          744.7,
+          400,
+          44
+        ],
+        ".answer-dock": [
+          792,
+          77,
+          391,
+          780
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "flip-trapezoid",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          103,
+          171.3,
+          659,
+          40.5
+        ],
+        ".shape-board": [
+          232.5,
+          275,
+          400,
+          323.7
+        ],
+        ".shape-tray": [
+          232.5,
+          598.7,
+          400,
+          120
+        ],
+        ".shape-tools": [
+          232.5,
+          718.7,
+          400,
+          44
+        ],
+        ".answer-dock": [
+          792,
+          77,
+          391,
+          780
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "flip-trapezoid",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          103,
+          171.3,
+          659,
+          40.5
+        ],
+        ".shape-board": [
+          232.5,
+          275,
+          400,
+          323.7
+        ],
+        ".shape-tray": [
+          232.5,
+          598.7,
+          400,
+          120
+        ],
+        ".shape-tools": [
+          232.5,
+          718.7,
+          400,
+          44
+        ],
+        ".answer-dock": [
+          792,
+          77,
+          391,
+          780
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "house",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          103,
+          171.3,
+          659,
+          40.5
+        ],
+        ".shape-board": [
+          232.5,
+          275,
+          400,
+          323.7
+        ],
+        ".shape-tray": [
+          232.5,
+          598.7,
+          400,
+          120
+        ],
+        ".shape-tools": [
+          232.5,
+          718.7,
+          400,
+          44
+        ],
+        ".answer-dock": [
+          792,
+          77,
+          391,
+          780
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "tag": "house",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "boxes": {
+        "#problem-prompt": [
+          103,
+          171.3,
+          659,
+          40.5
+        ],
+        ".shape-board": [
+          232.5,
+          275,
+          400,
+          323.7
+        ],
+        ".shape-tray": [
+          232.5,
+          598.7,
+          400,
+          120
+        ],
+        ".shape-tools": [
+          232.5,
+          718.7,
+          400,
+          44
+        ],
+        ".answer-dock": [
+          792,
+          77,
+          391,
+          780
+        ]
+      },
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  }
+]

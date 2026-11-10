@@ -8,7 +8,7 @@ const oldApi = () =>
     JSON.stringify({
       error: "Invalid request",
       details: [
-        { path: ["responseCapabilities", 3], message: "Unsupported value" },
+        { path: ["responseCapabilities", 8], message: "Unsupported value" },
         { path: ["responseCapabilities"], message: "Too many values" },
       ],
     }),
@@ -56,6 +56,7 @@ test("trial transport retries an older API without its newest format, keeping au
       "figure-choice-v1",
       "structured-work-v1",
       "multi-part-cards-v1",
+      "shape-composer-v1",
       "trend-line-fit-v1",
     ],
   });
@@ -70,6 +71,7 @@ test("trial transport retries an older API without its newest format, keeping au
       "figure-choice-v1",
       "structured-work-v1",
       "multi-part-cards-v1",
+      "shape-composer-v1",
     ],
   });
 });

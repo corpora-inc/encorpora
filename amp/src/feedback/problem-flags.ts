@@ -96,6 +96,7 @@ export type ProblemFlag = {
     | "multi-select"
     | "point-plot"
     | "trend-line-fit"
+    | "shape-composer"
     | "multi-part-choice"
     | "figure-choice"
     | "structured-work";
