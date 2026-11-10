@@ -26,6 +26,11 @@
   padding: var(--space-4) 0;
   border-block: 1px solid var(--color-border);
 }
+/* On a phone the list's own hairline closes the section: never two. */
+.code:has(+ [data-grid-mode="cards"]) {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
 .codeText {
   flex: 1 1 260px;
 }
