@@ -17,13 +17,21 @@ import { historicalTemplates } from "./historical-templates";
 const SAMPLE_SEEDS = 16;
 const STRUCTURED_SEEDS = 128;
 const CLAUSE_SEEDS = 64;
-/** Floors for variable multi-part families whose high-guessability variants
+/** Floors for variable-response families whose high-guessability variants
  * are rarer than the deterministic sample. Keep these in sync with the
  * generator-variation audit in frontier-guessing.test.ts. */
 const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
   // Older clients answer the same family through four picture choices.
   // The family estimator conservatively covers those attempts as well.
   "build-the-number-sentence": 1 / 4,
+  // Clause choices can have three options after duplicate distractors are removed.
+  "graphical-solution-table": 1 / 3,
+  // A rate of two leaves 3, 3 and 4 choices in the ordered-pair slots.
+  "dependent-variable-value": 1 / 36,
+  // Four reusable slots can share a tray with only four distinct cards.
+  "tile-then-multiply": 1 / 256,
+  // Split rectangles use four reusable slots and at least five distinct cards.
+  "split-tiled-count": 1 / 625,
   // The most guessable recipe places two labelled squares in two spaces:
   // two accepted orders among 21^2 unused-or-grid-position choices.
   "compose-flat-shape": 2 / 441,
@@ -43,14 +51,6 @@ const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
   // Two factors among three or four choices, or three multiples among four or five.
   "factor-pairs-select": 1 / 3,
   "multiples-select": 1 / 4,
-  // Clause intersection variants can offer three distinct choices; the
-  // fixed sample can draw only their four-choice or typed-answer variants.
-  "graphical-solution-table": 1 / 3,
-  // At rate 2, the three blanks have 3, 3 and 4 distinct options.
-  "dependent-variable-value": 1 / 36,
-  // Four reusable boxes share a numeric tray with at least four/five cards.
-  "tile-then-multiply": 1 / 4 ** 4,
-  "split-tiled-count": 1 / 5 ** 4,
   // Two identical wrong bounds collapse to one: 4 shares × 3 bounds × 4 checks.
   "whole-sharing-fraction": 1 / 48,
 };
@@ -121,7 +121,8 @@ export function guessChance(
   const known = cache.get(template.id);
   if (known !== undefined) return known;
   let chance =
-    template.requiredResponseCapability || template.requiredResponseCapabilities?.length
+    template.requiredResponseCapability ||
+    template.requiredResponseCapabilities?.length
       ? UNKNOWN_CHOICE_GUESS
       : 0;
   if (byId.has(template.id)) {

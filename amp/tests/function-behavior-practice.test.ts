@@ -50,7 +50,13 @@ for (const [id, make] of Object.entries(cases)) {
       const one = make(key);
       const two = make(key);
       assert.deepEqual(one.problem, two.problem);
-      const generated = generateProblem(id, key);
+      // Compare the original closure surface with its independent base case.
+      // Clause variants have their own prompt-based oracle in clause-practice.
+      const generated = generateProblem(
+        id,
+        key,
+        id === "number-system-closure-classify" ? 1 : undefined,
+      );
       assert.equal(generated.answer, one.problem.answer);
       assert.equal(generated.public.prompt, one.problem.public.prompt);
       assert.deepEqual(generated.public.response, one.problem.public.response);

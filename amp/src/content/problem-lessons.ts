@@ -43,7 +43,11 @@ import { glossaryEntry } from "../glossary/index";
 import { termsIn } from "../glossary/link";
 import type { GradeBand } from "../curriculum/types";
 import { gradeBandOrder } from "./lesson-text";
-import { clauseVariants, generateClauseVariant } from "../math/clause-variants";
+import {
+  clauseEntries,
+  clauseVariants,
+  generateClauseVariant,
+} from "../math/clause-variants";
 import { clauseVariantMethods } from "./clause-variant-methods";
 
 /** One short lesson per problem type: what is given, what to find, how to
@@ -169,21 +173,25 @@ export function problemLesson(
   const activeClause = learnerProblem?.variant?.axes?.clause;
   // A legacy exercise needs a legacy example even when its family also has
   // construction or explanation clauses with different methods and formats.
-  const legacyVersion = clauseVariants[templateId]
-    ? 1
-    : clauseExtensions[templateId]
-      ? template.version - 1
-      : undefined;
+  const entry = clauseEntries[templateId];
+  const legacyVersion = entry
+    ? entry.introducedVersion - 1
+    : clauseVariants[templateId]
+      ? 1
+      : clauseExtensions[templateId]
+        ? template.version - 1
+        : undefined;
   // These clause tasks replace the figured number problem the lesson
   // animation teaches. The worked example stays on the reprint unless
   // the learner is already on that clause.
   const classicFigure =
+    !!entry ||
     templateId === "number-bond-missing" ||
     templateId === "three-addend-story" ||
     templateId === "unknown-addend-story";
   const exampleVersion =
     !activeClause && classicFigure
-      ? 1
+      ? (legacyVersion ?? 1)
       : learnerProblem && (!activeClause || activeClause === "legacy")
         ? legacyVersion
         : undefined;
@@ -308,7 +316,9 @@ export function problemLesson(
     clauseMethod ??
     clauseVariantMethods[example.variant?.axes?.clause ?? ""] ??
     methods[lessonTemplateId];
-  const givens = realNumberGivens(templateId, example.public.seed);
+  const givens = example.variant?.axes?.clause
+    ? undefined
+    : realNumberGivens(templateId, example.public.seed);
   const reference = lessons.find((lesson) =>
     lesson.templateIds.includes(lessonTemplateId),
   );
