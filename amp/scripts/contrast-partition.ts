@@ -24,6 +24,7 @@ export const contrastStates = [
   "/start/plan",
   "/start",
   "/start/parent",
+  "/start/school",
   "/family/learners",
   "/family/access",
   "/family/privacy",

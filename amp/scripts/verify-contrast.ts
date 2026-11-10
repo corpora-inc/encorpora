@@ -466,6 +466,7 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
     "/start/plan",
     "/start",
     "/start/parent",
+    "/start/school",
     "/family/learners",
     "/family/access",
     "/family/privacy",
