@@ -26,6 +26,8 @@
   gap: var(--column-gap);
   box-sizing: content-box;
   max-width: 720px;
+  /* A focused column, centred in the viewport (docs/design/ia.md). */
+  margin-inline: auto;
   padding: var(--page-top) var(--gutter) var(--space-8);
 }
 @media (max-width: 639px) {

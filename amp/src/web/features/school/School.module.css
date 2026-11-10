@@ -813,10 +813,19 @@ button.copy[data-done="copied"] {
 
 /* Settings: one page of sections, each a heading with its facts and
    controls, separated by space and a hairline (docs/design/ia.md). */
+/* A settings page is one focused column, centred (docs/design/ia.md). */
 .settingsPage {
   display: grid;
   gap: var(--space-7);
-  max-width: 960px;
+  max-width: 880px;
+  margin-inline: auto;
+}
+.settingsPage > :first-child {
+  margin-bottom: calc(-1 * var(--space-4));
+}
+.classSettings {
+  max-width: 880px;
+  margin-inline: auto;
 }
 .settingsSection {
   display: grid;

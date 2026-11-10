@@ -631,6 +631,7 @@ export function ClassScreen() {
       title={klass.name}
       crumbs={[{ label: klass.name }]}
     >
+      <div className={styles.classSettings}>
       <PageHead
         title="Settings"
         detail={
@@ -803,6 +804,7 @@ export function ClassScreen() {
       {family && klass.studentCount <= SMALL_CLASS && (
         <SmallClassGrades orgId={orgId} classId={classId} />
       )}
+      </div>
       <Toast tone="status" message={notice} onDismiss={() => setNotice("")} />
       <Toast message={error} onDismiss={() => setError("")} />
     </OrgFrame>

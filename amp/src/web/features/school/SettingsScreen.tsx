@@ -34,8 +34,8 @@ export function OrgSettingsScreen() {
   ].filter(Boolean) as { path: string; title: string; detail: string }[];
   return (
     <OrgFrame orgId={orgId} nav="settings" title="Settings">
-      <PageHead title="Settings" detail={org?.name ?? " "} />
       <div className={styles.settingsPage}>
+        <PageHead title="Settings" detail={org?.name ?? " "} />
         {can.has("calendar.read") && <YearCalendar orgId={orgId} section />}
         {can.has("settings.read") && <OrgExperienceSection orgId={orgId} />}
         {can.has("license.read") && <LicenseSection orgId={orgId} />}
