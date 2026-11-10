@@ -7,6 +7,7 @@ import {
 import {
   generateProblem,
   generateProblemFor,
+  gradeAnswer,
   templates,
 } from "../src/math/engine";
 import { parseSelection } from "../src/math/selection-response";
@@ -32,10 +33,33 @@ const all = (id: string) => {
   if (!cache.has(id))
     cache.set(
       id,
-      seedList.map((s) => generateProblem(id, s)),
+      // This suite decodes the original multi-select statements. The root
+      // location clause uses figure choices and has a separate oracle.
+      seedList.map((s) =>
+        generateProblem(
+          id,
+          s,
+          id === "root-approximation-select" ? 1 : undefined,
+        ),
+      ),
     );
   return cache.get(id)!;
 };
+
+test("current root approximation includes statement and location formats", () => {
+  const variants = new Set<string>();
+  const formats = new Set<string>();
+  for (const seed of seedList) {
+    const problem = generateProblem("root-approximation-select", seed);
+    generatedProblemSchema.parse(problem);
+    variants.add(problem.variant!.id);
+    formats.add(problem.public.response.kind);
+    assert.equal(gradeAnswer(problem, problem.answer), true);
+    assert.equal(gradeAnswer(problem, "not-an-answer"), false);
+  }
+  assert.deepEqual([...variants].sort(), ["locate-root", "tenths-line"]);
+  assert.deepEqual([...formats].sort(), ["figure-choice", "multi-select"]);
+});
 
 /* ----------------------------------------------- displayed statements */
 

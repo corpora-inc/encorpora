@@ -152,7 +152,12 @@ test("guess chance comes from each family's answer schema and is never understat
   let choiceFamilies = 0;
   for (const template of templates) {
     const chance = guessChance(template);
-    if (template.requiredResponseCapability === "structured-work-v1") {
+    if (
+      template.requiredResponseCapability === "structured-work-v1" &&
+      !template.requiredResponseCapabilities?.some(
+        (capability) => capability !== "structured-work-v1",
+      )
+    ) {
       // Typed steps cannot be guessed; orderings and bank-built proofs can.
       // The family's chance covers every instance's exact chance.
       assert.ok(chance >= 0 && chance <= 1 / 2, `${template.id}: ${chance}`);
@@ -166,6 +171,8 @@ test("guess chance comes from each family's answer schema and is never understat
       }
       continue;
     }
+    // Versioned families can add formats to a structured-work legacy surface.
+    // Check every declared format through the shared schema audit below.
     if (chance > 0) choiceFamilies++;
     assert.ok(chance >= 0 && chance <= 1 / 2, `${template.id}: ${chance}`);
     const capabilities = [
