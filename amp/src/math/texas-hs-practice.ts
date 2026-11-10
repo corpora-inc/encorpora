@@ -776,7 +776,7 @@ export function lineRelationshipEquationsCase(seed: string): TexasHsCase {
           },
           {
             ...si(q(1, mag), interceptThrough(q(1, mag), x1, y1)),
-            feedback: `The reciprocal ${qTex(q(1, mag))} has the wrong sign. A perpendicular slope is the negative reciprocal.`,
+            feedback: `The reciprocal $${qTex(q(1, mag))}$ has the wrong sign. A perpendicular slope is the negative reciprocal.`,
           },
           {
             ...si(target, q(y1)),

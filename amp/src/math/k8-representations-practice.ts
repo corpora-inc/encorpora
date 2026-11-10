@@ -474,7 +474,7 @@ function proportionalGraph(r: Random): Built {
       ],
       [
         M(`y = \\frac{x}{${rate}}`),
-        `This divides by the rate. At ${M(`x = ${k}`)} it gives ${fracTex(k, rate)}, not ${y}.`,
+        `This divides by the rate. At ${M(`x = ${k}`)} it gives $${fracTex(k, rate)}$, not ${y}.`,
       ],
       [
         M(`y = x + ${rate}`),
