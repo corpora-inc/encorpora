@@ -1,4 +1,5 @@
 import type { GlossaryLexicon, TermId } from "./types";
+import { idiomInsteadOfTerm } from "./senses";
 
 /** Word matching shared by the server linker (every glossary form) and the
  * client (one payload's lexicon). It imports no glossary data, so a client
@@ -61,7 +62,7 @@ export function linkProse(
   let at = 0;
   for (const { start, end, form } of scanForms(prose, pattern)) {
     const id = lexicon[form];
-    if (!id) continue;
+    if (!id || idiomInsteadOfTerm(prose, start, end, form)) continue;
     if (start > at) out.push({ text: prose.slice(at, start) });
     out.push({ text: prose.slice(start, end), id });
     at = end;
