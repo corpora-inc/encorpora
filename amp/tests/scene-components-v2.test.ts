@@ -146,6 +146,10 @@ test("the schemas reject out-of-range components", () => {
   assert.ok(!valid(thermometer({ minor: 5, major: 5 })), "major = minor");
   assert.ok(!valid(thermometer({ min: -100, minor: 1 })), "too many ticks");
   assert.ok(valid(ruler()));
+  assert.ok(
+    valid(ruler({ parts: 2, object: { from: 2, to: 5.6 } })),
+    "nearest-unit end between half-unit ticks",
+  );
   assert.ok(!valid(ruler({ parts: 10 })), "inches in tenths");
   assert.ok(!valid(ruler({ unit: "cm", parts: 8 })), "centimeters in eighths");
   assert.ok(!valid(ruler({ object: { from: 0, to: 33 } })), "off the ruler");
@@ -311,6 +315,17 @@ test("the thermometer's liquid ends on its reading tick, and 0 is emphasized", (
   const derived = one(thermometer({ derived: true }));
   assert.doesNotMatch(describeScene(derived), /64/);
   assert.match(describeScene(derived, true), /64 degrees Fahrenheit/);
+});
+
+test("nearest-unit ruler ends draw between ticks without changing the scale", () => {
+  const s = one(ruler({ parts: 2, object: { from: 2, to: 5.6 } }));
+  const layout = layoutScene({ ...s, width: 288 });
+  const x = (id: string) =>
+    (item(layout.items, id) as Extract<Drawn, { k: "line" }>).x1;
+  const half = x("r.tick.6") - x("r.tick.5");
+  assert.ok(Math.abs(x("r.guide.end") - (x("r.tick.5") + 0.6 * half)) < 0.01);
+  assert.equal(x("r.guide.start"), x("r.tick.2"));
+  assert.match(describeScene(s), /2.8 inches/);
 });
 
 test("ruler ticks shorten with the part, and the object ends on ticks", () => {

@@ -4,8 +4,8 @@ import { generateProblemFor, templates } from "../src/math/engine.js";
 import {
   clientCanDraw,
   figureCapabilities,
-  responseCapabilities,
   generatedProblemSchema,
+  responseCapabilities,
 } from "../src/math/contracts.js";
 import { sceneCapabilitiesIn } from "../src/math/scene/index.js";
 import { problemLesson } from "../src/content/problem-lessons.js";
@@ -28,6 +28,8 @@ test("no template sends a scenes-v2 figure to a client without it", () => {
         template.id,
         `negotiation:${i}`,
         older.figureCapabilities,
+        undefined,
+        older.responseCapabilities,
       );
       assert.deepEqual(
         sceneCapabilitiesIn(problem.public),

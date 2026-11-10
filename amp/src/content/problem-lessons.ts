@@ -209,9 +209,10 @@ export function problemLesson(
     );
   // The learner may see a newer figure surface than the example (which is
   // drawn for the oldest client); its legacy twin has the example's wording.
-  const twinPrompt = learnerProblem
-    ? generateProblem(templateId, learnerProblem.public.seed).public.prompt
+  const twin = learnerProblem
+    ? generateProblem(templateId, learnerProblem.public.seed)
     : undefined;
+  const twinPrompt = twin?.public.prompt;
   let example = generateProblem(templateId, `${seed}:lesson:0`);
   const repeatsProblem = (p: typeof example) => {
     if (
@@ -220,7 +221,8 @@ export function problemLesson(
     )
       return learnerProblem.variant?.axes?.recipe === p.variant?.axes?.recipe;
     if (
-      learnerProblem?.public.response.kind === "point-plot" &&
+      (learnerProblem?.public.response.kind === "point-plot" ||
+        learnerProblem?.public.response.kind === "line-plot-build") &&
       learnerProblem.public.templateId === p.public.templateId &&
       gradeAnswer(learnerProblem, p.answer)
     )
@@ -234,6 +236,12 @@ export function problemLesson(
         answerText(learnerProblem.public.response, learnerProblem.answer)
     )
       return true;
+    // A different object or story must not work the active counter model.
+    if (
+      twin?.public.response.kind === "counter-builder" &&
+      p.public.response.kind === "counter-builder"
+    )
+      return gradeAnswer(twin, p.answer);
     // Structured work: the same givens asked in another mode (build, fill
     // or order) is the same problem, and the lesson would work it.
     if (
@@ -287,13 +295,32 @@ export function problemLesson(
       }
     }
   const response = example.public.response;
+  // A completed plot replaces the source figure in its worked example.
+  // Keep table measurements in the prompt so the example stands on its own.
+  const plotSource =
+    response.kind === "line-plot-build" &&
+    example.public.figure?.kind === "scene"
+      ? example.public.figure.scene.elements.find((e) => e.type === "lineTable")
+      : undefined;
+  const examplePrompt =
+    plotSource?.type === "lineTable"
+      ? `${example.public.prompt} Lengths: ${plotSource.rows
+          .slice(1)
+          .map((row) => (typeof row[1] === "string" ? row[1] : row[1]?.text))
+          .join(
+            ", ",
+          )} ${response.kind === "line-plot-build" ? response.axis.unit : ""}.`
+      : example.public.prompt;
   const answer =
     response.kind === "choice" ||
     response.kind === "multi-select" ||
     response.kind === "point-plot" ||
+    response.kind === "line-plot-build" ||
+    response.kind === "trend-line-fit" ||
     response.kind === "shape-composer" ||
     response.kind === "multi-part-choice" ||
     response.kind === "figure-choice" ||
+    response.kind === "counter-builder" ||
     response.kind === "structured-work"
       ? answerText(response, example.answer)
       : skills.find((skill) => skill.id === template.skillId)?.strand ===
@@ -364,7 +391,7 @@ export function problemLesson(
       watch ?? "",
       principle ?? "",
       ...terms.map((t) => t.meaning),
-      example.public.prompt,
+      examplePrompt,
       ...(choices ?? []),
       ...examplePartsTexts(parts),
       ...steps,
@@ -406,7 +433,7 @@ export function problemLesson(
     method,
     watch,
     example: {
-      prompt: example.public.prompt,
+      prompt: examplePrompt,
       ...(choices ? { choices } : {}),
       ...(parts ? { parts } : {}),
       // A private walkthrough of the example, when it has one, replaces its

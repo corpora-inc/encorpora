@@ -4,7 +4,7 @@ import { randomUUID } from "node:crypto";
 import { migrate } from "../scripts/migrate";
 import { PostgresRepository } from "../src/server/repository";
 import { buildApp } from "../src/server/app";
-import { generateProblem } from "../src/math/engine";
+import { generateProblemFor } from "../src/math/engine";
 import { skills } from "../src/curriculum/catalog";
 const url = process.env.AMP_TEST_DATABASE_URL;
 test(
@@ -40,15 +40,21 @@ test(
       const batch = await app.inject({
         method: "POST",
         url: `${path}/batches`,
-        payload: { templateId: "add-within-20", count: 2 },
+        payload: {
+          templateId: "add-within-20",
+          count: 2,
+          figureCapabilities: ["scenes-v1"],
+        },
       });
       assert.equal(batch.statusCode, 200);
       const publicProblem = batch.json().problems[0];
       assert.ok(!("answer" in publicProblem));
       assert.ok(!("explanation" in publicProblem));
-      const answer = generateProblem(
+      // No response formats are declared; match the requested scene support.
+      const answer = generateProblemFor(
         publicProblem.templateId,
         publicProblem.seed,
+        ["scenes-v1"],
       ).answer;
       const input = {
         problemId: publicProblem.id,
@@ -99,7 +105,9 @@ test(
         payload: {
           problemId: second.id,
           requestId: randomUUID(),
-          response: generateProblem(second.templateId, second.seed).answer,
+          response: generateProblemFor(second.templateId, second.seed, [
+            "scenes-v1",
+          ]).answer,
         },
       });
       assert.equal(helped.json().assisted, true);
@@ -162,9 +170,10 @@ test(
         payload: {
           problemId: supportProblem.id,
           requestId: randomUUID(),
-          response: generateProblem(
+          response: generateProblemFor(
             supportProblem.templateId,
             supportProblem.seed,
+            [],
           ).answer,
         },
       });
