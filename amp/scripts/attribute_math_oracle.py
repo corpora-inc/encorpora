@@ -82,6 +82,23 @@ def solve_attribute(public):
         good = [p['label'] for p in figure['panels'] if proper_layout(p)]
         require(len(good) == 1, 'Exactly one correct layout')
         return option(public, lambda l: l == f'Picture {good[0]}')
+    if template == 'order-lengths' and 'shortest to longest' in prompt:
+        import json
+        facts = re.findall(r'The (\w+) ribbon is (longer|shorter) than the (\w+) ribbon\.', prompt)
+        require(len(facts) == 2, 'Two comparisons')
+        longer = [(a, b) if rel == 'longer' else (b, a) for a, rel, b in facts]
+        names = {n for pair in longer for n in pair}
+        require(len(names) == 3, 'Three ribbons')
+        longest = [n for n in names if all(b != n for _, b in longer)]
+        shortest = [n for n in names if all(a != n for a, _ in longer)]
+        require(len(longest) == 1 and len(shortest) == 1, 'The comparisons must chain')
+        middle = (names - {longest[0], shortest[0]}).pop()
+        key = {}
+        for blank, color in zip(public['response']['blanks'], [shortest[0], middle, longest[0]]):
+            hits = [o['id'] for o in blank['options'] if o['label'] == color]
+            require(len(hits) == 1, color)
+            key[blank['id']] = hits[0]
+        return json.dumps(key, separators=(',', ':'))
     if template == 'order-lengths':
         facts = re.findall(r'The (\w+) ribbon is (longer|shorter) than the (\w+) ribbon\.', prompt)
         ask = re.search(r'Which ribbon is the (longest|shortest)\?$', prompt)

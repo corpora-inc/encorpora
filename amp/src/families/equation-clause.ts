@@ -221,7 +221,7 @@ const pack = formatLessons([
       "A different plain number with the same x-count is no solution, not one solution.",
     ],
     parentGuide:
-      "Ask two questions: do the x's cancel, and if they do, is the leftover sentence true?",
+      "Ask two questions: do the $x$ terms cancel, and if they do, is the leftover sentence true?",
   },
   {
     id: "system-intersection-reason",
