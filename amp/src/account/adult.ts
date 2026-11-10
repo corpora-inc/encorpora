@@ -18,7 +18,11 @@ import { readProgress, shiftDay } from "../schools/teacher-reads.js";
 import { skillStrandOf, skillTitleOf } from "../schools/term-grades.js";
 import { timezone } from "../schools/contracts.js";
 import { adultStartFor } from "../learning/frontier.js";
-import { adultStarts, ownPracticeAllowed } from "../learning/starting-point.js";
+import {
+  adultStarts,
+  ownPracticeAllowed,
+  type AdultStart,
+} from "../learning/starting-point.js";
 import type { FamilyRepository } from "../family/repository.js";
 import type { OwnPractice } from "./adult-contracts.js";
 
@@ -32,10 +36,15 @@ export const ownBirthYear = z
     "A birth year",
   );
 
+/** Where an adult past school age begins when they give a birth year but
+ * choose no start (a screen loaded before the choice was asked): the middle of
+ * the scale, the shortest climb in either direction. */
+export const UNCHOSEN_ADULT_START: AdultStart = "middle-school";
+
 export const startPracticeSchema = z.strictObject({
-  /** Where they begin. Without one, the birth year they give sets it
-   * (`adultStartFor`); without either, practice begins at its default level
-   * and adapts from the first answer. */
+  /** Where they begin. Without one, a school-age birth year sets it
+   * (`adultStartFor`) and an adult's starts mid-scale; without either,
+   * practice begins at its default level and adapts from the first answer. */
   start: z.enum(adultStarts).optional(),
   birthYear: ownBirthYear.optional(),
   timezone,
@@ -82,7 +91,7 @@ export async function startAdultPractice(
     input.start ??
     (input.birthYear === undefined
       ? undefined
-      : adultStartFor(input.birthYear));
+      : (adultStartFor(input.birthYear) ?? UNCHOSEN_ADULT_START));
   return families.transaction(accountId, async (client) => {
     const existing = await client.query<{ id: string }>(
       "SELECT id FROM amp_learners WHERE account_id=$1 AND adult AND NOT simulation AND deleted_at IS NULL",

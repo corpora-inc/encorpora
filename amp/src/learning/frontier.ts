@@ -1,10 +1,14 @@
 import type { GradeBand } from "../curriculum/types";
 import {
   adultStarts,
+  completedGrade,
+  pastSchoolAge,
   startingLevels,
   type AdultStart,
   type StartingChoice,
 } from "./starting-point";
+
+export { completedGrade };
 import {
   assertFrontierPolicy,
   DEFAULT_FRONTIER_POLICY,
@@ -59,23 +63,22 @@ export type Frontier = {
   adaptive?: Estimate;
   /** Preserve the injected prior when looking up an untouched strand. */
   strandPriorSd?: number;
-  /** A scheduling ceiling supported by independent, varied retrieval.
-   * This is not mastery credit or a calibrated probability. */
+  /** A scheduling ceiling supported by independent, varied success: the
+   * highest grade shown (in any area, or the start before anything is shown)
+   * plus a rise. Not mastery credit or a calibrated probability. */
   confirmation?: Record<
     string,
     { level: number; foundationConfirmed: boolean; foundationLevel?: number }
   >;
+  /** The same ceiling, and foundation, for an area with no answers of its
+   * own. */
   unconfirmedCeiling?: number;
+  foundationLevel?: number;
+  /** Still climbing: recent independent work has not yet found where the
+   * learner stops succeeding (`placedAfterMisses`). Practice probes more and
+   * holds back foundation checks until it has. */
+  climbing?: boolean;
 };
-
-/** Grades a learner born in `birthYear` should have completed by `now`.
- * US school years begin in August; a child starts kindergarten the fall after
- * turning five, so someone born in 2016 has finished grade 3 by October 2026. */
-export function completedGrade(birthYear: number, now = Date.now()): number {
-  const date = new Date(now);
-  const schoolYear = date.getUTCFullYear() - (date.getUTCMonth() < 7 ? 1 : 0);
-  return schoolYear - birthYear - 7;
-}
 
 /** The grade a learner is typically working in now: born 2016 → grade 4.
  * Without a birth year, the starting choice (a family band, or where an adult
@@ -96,10 +99,15 @@ export function initialLevel(options: {
 
 /** Where an account holder's own practice begins from the birth year they
  * give: the start nearest the level that year implies (`initialLevel`). Their
- * learner is an adult and keeps no birth year, so the year becomes one of
- * `adultStarts`: born 2011 → Algebra (grade 9 by `startingLevels`), born 1985
- * → Precalculus, the top of the scale. */
-export function adultStartFor(birthYear: number, now?: number): AdultStart {
+ * learner keeps no birth year, so the year becomes one of `adultStarts`: born
+ * 2011 → Algebra (grade 9 by `startingLevels`). Past school age the year says
+ * nothing about where someone's math is, so there is none (`pastSchoolAge`):
+ * an adult chooses where to begin. */
+export function adultStartFor(
+  birthYear: number,
+  now?: number,
+): AdultStart | null {
+  if (pastSchoolAge(birthYear, now)) return null;
   const level = initialLevel({ birthYear, now });
   return adultStarts.reduce((nearest, start) =>
     Math.abs(startingLevels[start] - level) <
@@ -379,7 +387,16 @@ export type FrontierState = {
   adaptive: FrontierFold;
   strands: Record<string, FrontierStrandState>;
   confirmation: Record<string, FrontierConfirmationState>;
+  /** Every area's independent answers together: what the learner has shown
+   * anywhere, which a new area starts from instead of the starting guess. */
+  pooled: FrontierConfirmationState;
 };
+
+const emptyConfirmation = (): FrontierConfirmationState => ({
+  seen: 0,
+  successes: [],
+  buckets: [],
+});
 
 export function createFrontierState(
   start: number,
@@ -393,6 +410,7 @@ export function createFrontierState(
     adaptive: startFold(prior(start, policy.prior.overallSd)),
     strands: {},
     confirmation: {},
+    pooled: emptyConfirmation(),
   };
 }
 
@@ -499,12 +517,19 @@ export function advanceFrontierState(
       };
   }
   if (!policy.confirmation.enabled) return;
-  const confirmation = (state.confirmation[item.strand] ??= {
-    seen: 0,
-    successes: [],
-    buckets: [],
-  });
+  const confirmation = (state.confirmation[item.strand] ??=
+    emptyConfirmation());
   if (item.assisted || item.weight < 1) return;
+  record(confirmation, item, policy);
+  record(state.pooled, item, policy);
+}
+
+/** Notes one independent, full-weight answer for confirmation. */
+function record(
+  confirmation: FrontierConfirmationState,
+  item: Evidence,
+  policy: FrontierPolicy,
+) {
   if (item.success) {
     const known = confirmation.successes.find(([g]) => g === item.grade);
     if (known) known[1] += 1;
@@ -526,70 +551,108 @@ export function advanceFrontierState(
     bucket.items.shift();
 }
 
-function strandConfirmation(
+/** Whether independent answers show `grade`: enough varied successes at or
+ * above it, mostly right among the answers that bear on it. Success on harder
+ * material supports a grade, and a harder miss does not refute it. A
+ * foundation needs direct work near it, not inferred mastery from harder
+ * answers. */
+function shows(
   state: FrontierConfirmationState,
-  start: number,
+  grade: number,
+  policy: FrontierPolicy,
+  foundation = false,
+) {
+  const c = policy.confirmation;
+  const relevant = state.buckets
+    .filter(
+      (b) =>
+        b.grade >= grade - c.gradeTolerance &&
+        (foundation
+          ? b.grade <= grade + c.foundationReach
+          : b.success || b.grade <= grade + c.gradeTolerance),
+    )
+    .flatMap((b) => b.items.map((item) => ({ ...item, success: b.success })))
+    .sort((x, y) => x.order - y.order)
+    .slice(-c.evidenceWindow);
+  const successes = relevant.filter((e) => e.success);
+  // Small catalogs can show a grade through more successes with their one
+  // available family.
+  const varied =
+    new Set(successes.map((e) => e.templateId)).size >= c.distinctFamilies ||
+    successes.length >=
+      c.independentSuccesses * c.singleFamilySuccessMultiplier;
+  return (
+    successes.length >= c.independentSuccesses &&
+    successes.length / relevant.length >= c.minimumSuccessRate &&
+    varied
+  );
+}
+/** The highest grade the answers show (`shows`), or null. */
+function demonstrated(
+  state: FrontierConfirmationState,
+  policy: FrontierPolicy,
+): number | null {
+  let level: number | null = null;
+  for (const [grade] of state.successes)
+    if ((level === null || grade > level) && shows(state, grade, policy))
+      level = grade;
+  return level;
+}
+/** Still climbing until recent independent work misses at or above the
+ * learner's level (anything, before a grade is shown) `placedAfterMisses`
+ * times: where the learner stops succeeding. A miss stops counting once later
+ * successes at or above its grade outnumber it (`independentSuccesses`), as
+ * a slip on the way up, and older answers age out of the window, so a run of
+ * success climbs again. */
+function stillClimbing(
+  state: FrontierConfirmationState,
+  level: number | null,
   policy: FrontierPolicy,
 ) {
   const c = policy.confirmation;
-  const supports = (grade: number, spaced: boolean, foundation = false) => {
-    // Success on harder material supports a working band. A harder miss
-    // does not refute easier knowledge; foundation checks need direct work
-    // near that foundation, not inferred mastery from downstream answers.
-    const relevant = state.buckets
-      .filter(
-        (b) =>
-          b.grade >= grade - c.gradeTolerance &&
-          (foundation
-            ? b.grade <= grade + c.foundationReach
-            : b.success || b.grade <= grade + c.gradeTolerance),
-      )
-      .flatMap((b) => b.items.map((item) => ({ ...item, success: b.success })))
-      .sort((x, y) => x.order - y.order)
-      .slice(-c.evidenceWindow);
-    const successes = relevant.filter((e) => e.success);
-    const times = successes.map((e) => e.at).sort((a, b) => a - b);
-    const separated =
-      successes.length > 0 &&
-      times.at(-1)! - times[0]! >= c.separationHours * 3600000;
-    const varied =
-      new Set(successes.map((e) => e.templateId)).size >= c.distinctFamilies;
-    // Small catalogs can demonstrate a band through more separated
-    // retrievals of their one available family, without a permanent gate.
-    if (
-      successes.length < c.independentSuccesses ||
-      successes.length / relevant.length < c.minimumSuccessRate ||
-      (!varied &&
-        !(
-          separated &&
-          successes.length >=
-            c.independentSuccesses * c.singleFamilySuccessMultiplier
-        ))
-    )
-      return false;
-    return !spaced || separated;
-  };
-  const baseline = Math.min(MAX_GRADE, start + c.sameSessionRise);
-  // Provisional placement advances gradually within a session; spacing
-  // strengthens a demonstrated band without imposing a time or age gate.
-  const higherSuccesses = state.successes.reduce(
-    (sum, [grade, count]) =>
-      grade >= baseline - c.gradeTolerance ? sum + count : sum,
-    0,
+  const recent = state.seen - c.evidenceWindow;
+  const successes = state.buckets.filter((b) => b.success);
+  let misses = 0;
+  for (const bucket of state.buckets) {
+    if (bucket.success) continue;
+    if (level !== null && bucket.grade < level - c.gradeTolerance) continue;
+    for (const miss of bucket.items) {
+      if (miss.order < recent) continue;
+      const later = successes
+        .filter((b) => b.grade >= bucket.grade)
+        .reduce(
+          (sum, b) => sum + b.items.filter((i) => i.order > miss.order).length,
+          0,
+        );
+      if (later < c.independentSuccesses) misses += 1;
+    }
+  }
+  return misses < c.placedAfterMisses;
+}
+
+/** A strand's working ceiling and foundation. The ceiling is `rise` above
+ * the highest grade shown here or in any other area, and never below
+ * `startRise` above the start: the start is a guess, not a limit. The
+ * foundation is the start, or `foundationDepth` below the highest grade shown
+ * once the learner has climbed well past it, and it is confirmed by direct,
+ * varied, independent success near it in this strand. */
+function strandConfirmation(
+  state: FrontierConfirmationState,
+  floor: number,
+  shownPooled: number | null,
+  rise: number,
+  foundation: number,
+  policy: FrontierPolicy,
+) {
+  const shown = Math.max(
+    shownPooled ?? -Infinity,
+    demonstrated(state, policy) ?? -Infinity,
   );
-  const provisional =
-    baseline + Math.floor(higherSuccesses / c.provisionalSuccessesPerGrade);
-  let level = baseline;
-  for (const [grade] of state.successes)
-    if (grade > level && supports(grade, false))
-      level = Math.min(
-        MAX_GRADE,
-        Math.max(
-          level,
-          supports(grade, true) ? grade : Math.min(grade, provisional),
-        ),
-      );
-  return { level, foundationConfirmed: supports(start, true, true) };
+  return {
+    level: Math.max(floor, shown + rise),
+    foundationConfirmed: shows(state, foundation, policy, true),
+    foundationLevel: foundation,
+  };
 }
 
 /** The estimate at `now`. Reading changes nothing, so a state can be read at any
@@ -611,22 +674,49 @@ export function readFrontierState(
       policy,
       policy.strand,
     );
+  if (!policy.confirmation.enabled)
+    return {
+      expected: state.start,
+      overall,
+      adaptive,
+      strands,
+      strandPriorSd: policy.prior.strandSd,
+    };
+  const c = policy.confirmation;
+  const shown = demonstrated(state.pooled, policy);
+  const foundation = Math.max(
+    state.start,
+    (shown ?? -Infinity) - c.foundationDepth,
+  );
+  // Misses at the learner's current estimate count even when lucky harder
+  // successes have shown more.
+  const climbing = stillClimbing(
+    state.pooled,
+    shown === null ? null : Math.min(shown, adaptive.level),
+    policy,
+  );
+  const floor = state.start + c.startRise;
+  const rise = climbing ? c.climbRise : c.placedRise;
   const confirmation: NonNullable<Frontier["confirmation"]> = {};
-  if (policy.confirmation.enabled)
-    for (const [name, strand] of Object.entries(state.confirmation))
-      confirmation[name] = strandConfirmation(strand, state.start, policy);
+  for (const [name, strand] of Object.entries(state.confirmation))
+    confirmation[name] = strandConfirmation(
+      strand,
+      floor,
+      shown,
+      rise,
+      foundation,
+      policy,
+    );
   return {
     expected: state.start,
     overall,
     adaptive,
     strands,
     strandPriorSd: policy.prior.strandSd,
-    ...(policy.confirmation.enabled
-      ? {
-          confirmation,
-          unconfirmedCeiling: state.start + policy.confirmation.sameSessionRise,
-        }
-      : {}),
+    confirmation,
+    unconfirmedCeiling: Math.max(floor, (shown ?? -Infinity) + rise),
+    foundationLevel: foundation,
+    climbing,
   };
 }
 

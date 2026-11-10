@@ -287,3 +287,10 @@
 .yearCell[data-adult] {
   grid-column: 1 / -1;
 }
+/* "Where do you want to begin?", under the years once an adult year is
+   chosen. */
+.where {
+  display: grid;
+  gap: var(--space-3);
+  width: 100%;
+}

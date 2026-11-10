@@ -1,7 +1,7 @@
 /**
  * "What brings you to AMP?" → "I'm learning for myself": the birth-year grid,
- * the note for a learner under 13 with the parent's way in one tap away, and
- * practice that starts where the year puts it. At 320, 390, 768 and 1280 px,
+ * the note for a learner under 13 with the parent's way in one tap away, an
+ * adult's "Where do you want to begin?", and the first problem straight after. At 320, 390, 768 and 1280 px,
  * light and dark: no horizontal overflow, and nothing moves as a year is
  * chosen. Screenshots go to artifacts/starter-ui.
  *
@@ -71,15 +71,37 @@ try {
       await page.getByText(/^Under 13, a parent sets up AMP for you/).waitFor();
       await settle(page);
       await shot("myself-under-13");
-      await page.getByRole("radio", { name: "Adult", exact: true }).click();
-      await page.getByRole("button", { name: "Start practicing" }).waitFor();
-      await settle(page);
-      await shot("myself-adult");
-      const record = await shellRecord(page);
+      const year = await shellRecord(page);
       check(
         `${tag} nothing moves as a year is chosen`,
-        record.shifts.length === 0 && record.cls === 0,
-        record,
+        year.shifts.length === 0 && year.cls === 0,
+        year,
+      );
+      // An adult year opens the next question below the years.
+      await page.getByRole("radio", { name: "Adult", exact: true }).click();
+      await page
+        .getByRole("heading", { name: "Where do you want to begin?" })
+        .waitFor();
+      check(
+        `${tag} an adult's action waits for where to begin`,
+        !(await page
+          .getByRole("button", { name: "Start practicing" })
+          .isEnabled()),
+      );
+      await settle(page);
+      await shot("myself-adult");
+      await resetRecord(page);
+      await page.getByRole("radio", { name: /^Geometry/ }).click();
+      await page.getByText("Choose where to begin.").waitFor({
+        state: "hidden",
+      });
+      await settle(page);
+      await shot("myself-adult-start");
+      const start = await shellRecord(page);
+      check(
+        `${tag} nothing moves as a start is chosen`,
+        start.shifts.length === 0 && start.cls === 0,
+        start,
       );
       check(`${tag} no horizontal overflow`, (await overflow(page)) <= 0);
       await context.close();
@@ -99,8 +121,8 @@ try {
     await context.close();
   }
 
-  // Last, since the account then has its own practice: an adult starts at
-  // the top of the scale.
+  // Last, since the account then has its own practice: an adult chooses
+  // where to begin and goes straight to the first problem there.
   for (const theme of ["light", "dark"] as const) {
     const context = await f.context(browser, "new", {
       viewport: { width: 390, height: 900 },
@@ -109,13 +131,9 @@ try {
     const page = await context.newPage();
     await myself(page);
     await page.getByRole("radio", { name: "Adult", exact: true }).click();
+    await page.getByRole("radio", { name: /^Precalculus/ }).click();
     await page.getByRole("button", { name: "Start practicing" }).click();
-    await page.waitForURL(/\/me$/);
-    await page.getByText("Began at Precalculus", { exact: true }).waitFor();
-    await settle(page);
-    await page.screenshot({ path: `${shots}/me-390-${theme}.png` });
-    // The first problem is at that level, not a first-grade fact.
-    await page.goto(`${f.origin}/practice`);
+    await page.waitForURL(/\/practice$/);
     await page.locator("[data-problem-id]").first().waitFor();
     await settle(page);
     await page.screenshot({ path: `${shots}/first-problem-390-${theme}.png` });

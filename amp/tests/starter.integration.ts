@@ -382,9 +382,11 @@ test(
 );
 
 test(
-  // The old free trial's seeding (`initialLevel`), stored as the adult start
-  // nearest it: an adult learner keeps no birth year.
-  "learning for myself starts where the birth year puts it",
+  // A school-age year seeds it as the old free trial did (`initialLevel`),
+  // stored as the adult start nearest it: an adult learner keeps no birth
+  // year. Past school age the year says nothing about level: an adult
+  // chooses where to begin.
+  "learning for myself starts where the birth year puts it, or where an adult chooses",
   database,
   async (t) => {
     const f = await fixture(t);
@@ -409,7 +411,7 @@ test(
     await f.started(adult, {
       as: "myself",
       timezone: "America/Denver",
-      birthYear: 1985,
+      start: "precalculus",
     });
     const born1985 = await startOf(adult);
     assert.equal(born1985.adult, true);
@@ -419,6 +421,15 @@ test(
     assert.equal(born1985.start, 12);
     const practice = await f.get("/api/v1/me/practice", adult);
     assert.equal(practice.json().learner.start, "precalculus");
+    // An adult's birth year alone (a screen loaded before the choice) starts
+    // mid-scale, not at the top.
+    const unchosen = await f.user("Kit Fixture");
+    await f.started(unchosen, {
+      as: "myself",
+      timezone: "America/Denver",
+      birthYear: 1985,
+    });
+    assert.equal((await startOf(unchosen)).starting_band, "middle-school");
 
     // A teenager starts at the course nearest their grade: 15 → Algebra.
     const teen = await f.user("Sam Fixture");
@@ -459,7 +470,7 @@ test(
     await f.started(earlier, {
       as: "myself",
       timezone: "America/Denver",
-      birthYear: 1990,
+      start: "precalculus",
     });
     const after = await startOf(earlier);
     assert.equal(after.starting_band, "precalculus");
