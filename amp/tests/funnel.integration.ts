@@ -10,7 +10,11 @@ import {
   EVENT_RATE_LIMIT,
 } from "../src/analytics/routes.js";
 import { purgeFunnelEvents } from "../src/analytics/retention.js";
-import { funnelReport, formatFunnelReport } from "../src/analytics/report.js";
+import {
+  FUNNEL_STEPS,
+  funnelReport,
+  formatFunnelReport,
+} from "../src/analytics/report.js";
 import {
   recordEventBatch,
   recordVerifiedPurchase,
@@ -440,7 +444,9 @@ test(
       const step = (e: string) => report.steps.find((s) => s.event === e)!;
       assert.equal(report.visitors, 2);
       assert.equal(step("landing_view").visitors, 2);
-      assert.equal(step("try_click").fromPrevious, 1);
+      const legacy = (name: string) =>
+        report.legacy!.find((s) => s.event === name)!;
+      assert.equal(legacy("try_click").fromPrevious, 1);
       assert.equal(
         step("checkout_return").visitors,
         1,
@@ -448,7 +454,7 @@ test(
       );
       assert.equal(step("purchase").visitors, 1);
       assert.equal(step("purchase").fromFirst, 0.5);
-      assert.equal(step("placement_answer").dropOff, 1);
+      assert.equal(legacy("placement_answer").dropOff, 1);
       const pitch = (name: string) =>
         report.pitch.find((s) => s.step === name)!;
       assert.equal(pitch("pitch_view").visitors, 2);
@@ -506,7 +512,7 @@ test(
       assert.match(text, /purchase\s+1\s+/);
       assert.match(text, /buy_click:card\s+1\s+50\.0%/);
       assert.equal(text.includes(buyer), false, "aggregates only");
-      // Free practice has no Try button: a rendered problem is a try.
+      // A rendered problem is the first problem, with no trial step behind it.
       await visit(40, randomUUID(), [
         { event: "landing_view", props: { referrer: "search" } },
         { event: "video_play", props: { mix: "a" } },
@@ -516,13 +522,132 @@ test(
         from: new Date(start.getTime() + 40 * DAY),
         to: new Date(start.getTime() + 41 * DAY),
       });
+      assert.equal(practised.legacy, null);
       assert.deepEqual(
-        practised.breakdowns.source.map((r) => [r.key, r.visitors, r.tried]),
-        [["search", 1, 1]],
+        practised.breakdowns.source.map((r) => [
+          r.key,
+          r.visitors,
+          r.signedUp,
+          r.firstProblem,
+        ]),
+        [["search", 1, 0, 1]],
       );
       assert.equal(
         practised.filmMixes.find((m) => m.mix === "a")!.triedFree,
         1,
+      );
+    }),
+);
+
+test(
+  "report: one visitor through the product journey; the retired trial table only when a trial event is in range",
+  enabled,
+  async () =>
+    fixture(async ({ pool }) => {
+      const start = new Date("2026-09-01T00:00:00Z");
+      const visit = async (
+        days: number,
+        visitorId: string,
+        events: { event: string; props?: object }[],
+      ) =>
+        recordEventBatch(
+          pool,
+          {
+            visitorId,
+            events: events.map((e, i) => ({
+              event: e.event as "landing_view",
+              props: (e.props ?? {}) as Record<string, never>,
+              at: i + 1,
+            })),
+          },
+          new Date(start.getTime() + days * DAY + 3_600_000),
+        );
+      const journey = randomUUID();
+      await visit(0, journey, [
+        {
+          event: "landing_view",
+          props: { referrer: "direct", device: "phone" },
+        },
+        { event: "account_session" },
+        { event: "starter_choice", props: { answer: "parent" } },
+        { event: "problem_rendered", props: { mode: "practice" } },
+        { event: "practice_answer", props: { index: 0 } },
+        { event: "allowance_pause_view", props: { for: "family" } },
+        { event: "continue_click" },
+        { event: "checkout_start", props: { interval: "year" } },
+        { event: "checkout_return", props: { outcome: "success" } },
+        { event: "paid_practice_first" },
+      ]);
+      const checkout = randomUUID();
+      await pool.query(
+        "INSERT INTO amp_stripe_checkouts(id,namespace,account_id,request_id) VALUES($1,'test',$2,$3)",
+        [checkout, randomUUID(), randomUUID()],
+      );
+      await pool.query(
+        "INSERT INTO amp_funnel_checkouts(checkout_id,visitor_id) VALUES($1,$2)",
+        [checkout, journey],
+      );
+      await recordVerifiedPurchase(
+        pool,
+        checkout,
+        "year",
+        new Date(start.getTime() + 3_600_000),
+      );
+      const alone = await funnelReport(pool, {
+        from: start,
+        to: new Date(start.getTime() + DAY),
+      });
+      assert.equal(alone.visitors, 1);
+      assert.equal(alone.legacy, null);
+      for (const event of FUNNEL_STEPS)
+        assert.equal(
+          alone.steps.find((step) => step.event === event)?.visitors,
+          1,
+          event,
+        );
+      assert.equal(
+        alone.steps.find((step) => step.event === "account_session")
+          ?.fromPrevious,
+        1,
+      );
+      const aloneText = formatFunnelReport(alone);
+      assert.equal(aloneText.includes("Legacy free trial"), false);
+      assert.match(aloneText, /signed up\s+1\s+100\.0%/);
+      assert.deepEqual(
+        alone.breakdowns.source.map((row) => [
+          row.key,
+          row.signedUp,
+          row.firstProblem,
+          row.purchased,
+        ]),
+        [["direct", 1, 1, 1]],
+      );
+      await visit(2, randomUUID(), [
+        {
+          event: "landing_view",
+          props: { referrer: "search", device: "desktop" },
+        },
+        { event: "try_click" },
+        { event: "placement_answer", props: { index: 0 } },
+        { event: "placement_done", props: { gradeBand: "3" } },
+        { event: "map_view" },
+        { event: "paywall_view", props: { reason: "limit" } },
+      ]);
+      const older = await funnelReport(pool, {
+        from: new Date(start.getTime() + 2 * DAY),
+        to: new Date(start.getTime() + 3 * DAY),
+      });
+      assert.equal(
+        older.legacy?.find((step) => step.event === "try_click")?.visitors,
+        1,
+      );
+      assert.match(
+        formatFunnelReport(older),
+        /Legacy free trial \(retired\)/,
+      );
+      assert.equal(
+        formatFunnelReport(alone).includes("Legacy free trial"),
+        false,
       );
     }),
 );

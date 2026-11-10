@@ -61,6 +61,9 @@ export const FUNNEL_EVENTS = [
   "video_seconds",
   "first_interaction",
   "pitch_buy_seen",
+  "starter_choice",
+  "allowance_pause_view",
+  "continue_click",
 ] as const;
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];
 
@@ -129,6 +132,17 @@ export const BUY_PATHS = ["funded", "card"] as const;
 export const BUY_PLACES = ["pitch", "chrome", "invite"] as const;
 /** Where a free-trial invitation to buy appeared. */
 export const INVITE_PLACES = ["map", "workbook"] as const;
+/** "What brings you to AMP?": the five answers on `/start`. */
+export const STARTER_ANSWERS = [
+  "myself",
+  "parent",
+  "tutor",
+  "teacher",
+  "school",
+] as const;
+/** Who an allowance pause is for. A parent or a child is the family; a
+ * teacher looking at a class is the class. */
+export const PAUSE_FOR = ["family", "adult", "class"] as const;
 
 const index = z.number().int().min(0).max(100_000);
 const none = z.strictObject({});
@@ -154,6 +168,16 @@ export const funnelPropsSchemas = {
     ]),
   }),
   account_session: none,
+  /** The answer chosen on "What brings you to AMP?". */
+  starter_choice: z.strictObject({
+    answer: z.enum(STARTER_ANSWERS),
+  }),
+  /** The pause when a free allowance ends. */
+  allowance_pause_view: z.strictObject({
+    for: z.enum(PAUSE_FOR),
+  }),
+  /** "Continue with AMP" on that pause. */
+  continue_click: none,
   problem_rendered: z.strictObject({ mode: z.enum(["trial", "practice"]) }),
   learning_request: z.strictObject({
     attemptId: z.uuidv4(),

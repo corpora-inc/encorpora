@@ -2,8 +2,37 @@ import type { Pool } from "pg";
 import { FILM_MIXES, type FilmMix, type FunnelEvent } from "./events.js";
 import { funnelDay } from "./repository.js";
 
-/** The ordered path from first visit to paid practice. */
+/** The one-product path from the pitch to paid practice. */
 export const FUNNEL_STEPS = [
+  "landing_view",
+  "account_session",
+  "starter_choice",
+  "problem_rendered",
+  "practice_answer",
+  "allowance_pause_view",
+  "continue_click",
+  "checkout_start",
+  "checkout_return",
+  "purchase",
+  "paid_practice_first",
+] as const satisfies readonly FunnelEvent[];
+const FUNNEL_LABELS = {
+  landing_view: "landing",
+  account_session: "signed up",
+  starter_choice: "starter choice",
+  problem_rendered: "first problem",
+  practice_answer: "first answer",
+  allowance_pause_view: "pause shown",
+  continue_click: "Continue",
+  checkout_start: "checkout start",
+  checkout_return: "checkout return",
+  purchase: "purchase",
+  paid_practice_first: "paid practice",
+} as const satisfies Record<(typeof FUNNEL_STEPS)[number], string>;
+/** The retired free-trial path. Printed only when the cohort still has one
+ * of its trial-only steps, with the shared later steps kept so an older
+ * range reads as it did before. */
+export const LEGACY_FUNNEL_STEPS = [
   "landing_view",
   "try_click",
   "placement_answer",
@@ -18,6 +47,16 @@ export const FUNNEL_STEPS = [
   "purchase",
   "learner_added",
   "paid_practice_first",
+] as const satisfies readonly FunnelEvent[];
+const LEGACY_MARKERS = [
+  "try_click",
+  "placement_answer",
+  "placement_done",
+  "map_view",
+  "paywall_view",
+  "plan_view",
+  "plan_select",
+  "learner_added",
 ] as const satisfies readonly FunnelEvent[];
 
 /** The signed-out pitch at `/`, then each way in. Buy splits by route; the
@@ -79,7 +118,8 @@ export type PitchStep = {
 };
 
 export type FunnelStep = {
-  event: (typeof FUNNEL_STEPS)[number];
+  event: string;
+  label: string;
   visitors: number;
   /** Share of the previous step's visitors who also reached this one. */
   fromPrevious: number | null;
@@ -90,7 +130,8 @@ export type FunnelStep = {
 export type Breakdown = {
   key: string;
   visitors: number;
-  tried: number;
+  signedUp: number;
+  firstProblem: number;
   purchased: number;
   conversion: number | null;
 };
@@ -99,6 +140,8 @@ export type FunnelReport = {
   to: string;
   visitors: number;
   steps: FunnelStep[];
+  /** The retired trial path, or null when this range has none of its events. */
+  legacy: FunnelStep[] | null;
   pitch: PitchStep[];
   filmMixes: FilmMixResult[];
   trialBuy: TrialBuyStep[];
@@ -164,27 +207,42 @@ export async function funnelReport(
   const paths = visitorPaths.map((r) => new Set(r.events));
   const reachedCount = (...events: string[]) =>
     paths.filter((path) => events.every((e) => path.has(e))).length;
-  const first = reachedCount(FUNNEL_STEPS[0]);
-  const steps: FunnelStep[] = FUNNEL_STEPS.map((event, i) => {
-    const count = reachedCount(event);
-    if (i === 0)
+  const stepsFor = (
+    events: readonly string[],
+    labelOf: (event: string) => string,
+  ): FunnelStep[] => {
+    const first = reachedCount(events[0]);
+    return events.map((event, i) => {
+      const count = reachedCount(event);
+      const label = labelOf(event);
+      if (i === 0)
+        return {
+          event,
+          label,
+          visitors: count,
+          fromPrevious: null,
+          fromFirst: ratio(count, first),
+          dropOff: 0,
+        };
+      const previous = reachedCount(events[i - 1]);
+      const continued = reachedCount(events[i - 1], event);
       return {
         event,
+        label,
         visitors: count,
-        fromPrevious: null,
+        fromPrevious: ratio(continued, previous),
         fromFirst: ratio(count, first),
-        dropOff: 0,
+        dropOff: previous - continued,
       };
-    const previous = reachedCount(FUNNEL_STEPS[i - 1]);
-    const continued = reachedCount(FUNNEL_STEPS[i - 1], event);
-    return {
-      event,
-      visitors: count,
-      fromPrevious: ratio(continued, previous),
-      fromFirst: ratio(count, first),
-      dropOff: previous - continued,
-    };
-  });
+    });
+  };
+  const steps = stepsFor(
+    FUNNEL_STEPS,
+    (event) => FUNNEL_LABELS[event as (typeof FUNNEL_STEPS)[number]],
+  );
+  const legacy = LEGACY_MARKERS.some((event) => reachedCount(event) > 0)
+    ? stepsFor(LEGACY_FUNNEL_STEPS, (event) => event)
+    : null;
   // A browser that cleared its storage can hear two mixes; it counts for neither.
   const filmMixes: FilmMixResult[] = FILM_MIXES.map((mix) => {
     const heard = visitorPaths
@@ -231,18 +289,29 @@ export async function funnelReport(
       await q<{
         key: string;
         visitors: number;
-        tried: number;
+        signed_up: number;
+        first_problem: number;
         purchased: number;
       }>(
         `SELECT COALESCE(${column},'unknown') AS key,count(*)::int AS visitors,
            count(*) FILTER (WHERE EXISTS(SELECT 1 FROM amp_funnel_events e
              WHERE e.visitor_id=v.visitor_id
-               AND e.event IN ('try_click','problem_rendered')))::int AS tried,
+               AND e.event='account_session'))::int AS signed_up,
+           count(*) FILTER (WHERE EXISTS(SELECT 1 FROM amp_funnel_events e
+             WHERE e.visitor_id=v.visitor_id
+               AND e.event='problem_rendered'))::int AS first_problem,
            count(*) FILTER (WHERE v.converted_on IS NOT NULL)::int AS purchased
          FROM amp_funnel_visitors v WHERE ${cohort}
          GROUP BY 1 ORDER BY visitors DESC,key`,
       )
-    ).map((r) => ({ ...r, conversion: ratio(r.purchased, r.visitors) }));
+    ).map((r) => ({
+      key: r.key,
+      visitors: r.visitors,
+      signedUp: r.signed_up,
+      firstProblem: r.first_problem,
+      purchased: r.purchased,
+      conversion: ratio(r.purchased, r.visitors),
+    }));
   const breakdowns = {
     source: await breakdown("COALESCE(v.utm_source,v.referrer)"),
     device: await breakdown("v.device"),
@@ -310,6 +379,7 @@ export async function funnelReport(
     to: range[1],
     visitors,
     steps,
+    legacy,
     pitch,
     filmMixes,
     trialBuy,
@@ -367,7 +437,7 @@ export function formatFunnelReport(report: FunnelReport): string {
     table(
       ["Step", "Visitors", "From previous", "From landing", "Lost"],
       report.steps.map((s) => [
-        s.event,
+        s.label,
         s.visitors,
         percent(s.fromPrevious),
         percent(s.fromFirst),
@@ -375,6 +445,21 @@ export function formatFunnelReport(report: FunnelReport): string {
       ]),
     ),
   ];
+  if (report.legacy)
+    out.push(
+      "",
+      "Legacy free trial (retired)",
+      table(
+        ["Step", "Visitors", "From previous", "From landing", "Lost"],
+        report.legacy.map((s) => [
+          s.event,
+          s.visitors,
+          percent(s.fromPrevious),
+          percent(s.fromFirst),
+          s.dropOff,
+        ]),
+      ),
+    );
   if (report.pitch[0]?.visitors)
     out.push(
       "",
@@ -436,14 +521,16 @@ export function formatFunnelReport(report: FunnelReport): string {
         [
           titles[key as keyof typeof titles],
           "Visitors",
-          "Tried",
+          "Signed up",
+          "First problem",
           "Purchased",
           "Conversion",
         ],
         rows.map((r) => [
           r.key,
           r.visitors,
-          r.tried,
+          r.signedUp,
+          r.firstProblem,
           r.purchased,
           percent(r.conversion),
         ]),

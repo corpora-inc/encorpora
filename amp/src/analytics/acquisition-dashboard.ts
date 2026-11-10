@@ -95,13 +95,15 @@ export function acquisitionDashboard(s: AcquisitionSnapshot): string {
     [
       "Source label",
       "Browser IDs",
-      "Browsers clicking Try",
-      "Browsers with card purchase",
+      "Signed up",
+      "First problem",
+      "Purchased",
     ],
     s.funnel.breakdowns.source.map((r) => [
       r.key,
       number(r.visitors),
-      number(r.tried),
+      number(r.signedUp),
+      number(r.firstProblem),
       number(r.purchased),
     ]),
   );
@@ -203,7 +205,7 @@ export function acquisitionDashboard(s: AcquisitionSnapshot): string {
   );
   const progress = table(
     ["Milestone", "Browsers reaching it"],
-    s.funnel.steps.map((r) => [r.event, number(r.visitors)]),
+    s.funnel.steps.map((r) => [r.label, number(r.visitors)]),
   );
   const purchaseAttempts = table(
     [
