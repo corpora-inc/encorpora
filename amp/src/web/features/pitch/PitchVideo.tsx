@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { trackOnce } from "../../lib/analytics";
 import { useLoggedError } from "../../feedback";
+import { mediaMatches, onMediaChange } from "../../lib/media-query";
 import {
   browserFilmMix,
   chooseSource,
@@ -43,14 +44,13 @@ export function PitchVideo({ video }: { video: Video }) {
   const duration = formatDuration(video.durationSeconds);
   const hasPhone = !!video.phone;
   const [onPhone, setOnPhone] = useState(
-    () => hasPhone && matchMedia(phoneVideoQuery).matches,
+    () => hasPhone && mediaMatches(phoneVideoQuery),
   );
   useEffect(() => {
     if (!hasPhone) return;
-    const media = matchMedia(phoneVideoQuery);
-    const update = () => setOnPhone(media.matches);
-    media.addEventListener("change", update);
-    return () => media.removeEventListener("change", update);
+    return onMediaChange(phoneVideoQuery, () =>
+      setOnPhone(mediaMatches(phoneVideoQuery)),
+    );
   }, [hasPhone]);
   const [held, setHeld] = useState<PitchVideoFraming | null>(null);
   const framing = held ?? (onPhone ? video.phone : undefined) ?? video;

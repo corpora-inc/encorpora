@@ -1,5 +1,8 @@
 import { errorDetails } from "../../analytics/error-details";
-import { entryContext as captureEntryContext } from "../../analytics/entry-context";
+import {
+  entryContext as captureEntryContext,
+  type EntryContext,
+} from "../../analytics/entry-context";
 export { referrerCategory, deviceClass } from "../../analytics/entry-context";
 import {
   browserIdentity,
@@ -21,6 +24,8 @@ import type { TrafficKind } from "../../analytics/engagement";
 import { nativeRuntime } from "../native-runtime";
 import { createGoogleAnalytics } from "../../analytics/google-analytics";
 import { isStudentDevice } from "./student-device";
+import { currentBrowserKind } from "../../analytics/browser-kind";
+import { keepaliveFetch } from "./keepalive";
 
 let pitchShown = false;
 /** Set by the `/` route before it resolves: a signed-out web visitor there
@@ -208,15 +213,17 @@ let timer: ReturnType<typeof setTimeout> | null = null;
 let identity: ReturnType<typeof browserIdentity> | undefined;
 const currentIdentity = () => (identity ??= browserIdentity());
 let listening = false;
-let entryContext: FunnelProps<"landing_view"> | undefined;
+let entryContext: EntryContext | undefined;
 export const trafficKey = TRAFFIC_KEY;
 export function analyticsTraffic(): TrafficKind {
   if (currentIdentity().internal()) return "internal";
   return navigator.webdriver ? "automated" : "external";
 }
 export function initializeAnalyticsContext(): void {
-  if (analyticsAllowed())
-    entryContext ??= currentIdentity().context(landingProps());
+  if (!analyticsAllowed()) return;
+  // First touch is shared with corpora.inc; the browser stays on the event.
+  const { browser: _browser, ...landing } = landingProps();
+  entryContext ??= currentIdentity().context(landing);
 }
 export function analyticsAllowed(): boolean {
   return (
@@ -351,10 +358,9 @@ export function flush(unloading = false): void {
     }
     const ids = new Set(events.map((e) => e.id));
     sending++;
-    void fetch(endpoint, {
+    void keepaliveFetch(endpoint, {
       method: "POST",
       body,
-      keepalive: true,
       headers: {
         "Content-Type": "application/json",
         ...(first.scope && account
@@ -399,20 +405,45 @@ function listen(): void {
     if (document.visibilityState === "hidden") flush(true);
   });
   // Fixed categories and app bundle coordinates; no error text or private URLs.
-  window.addEventListener("error", (event) =>
-    track("client_error", {
+  window.addEventListener("error", (event) => {
+    // Resize observers skipping a frame is a notice, not a failure.
+    if (!event.error && /^ResizeObserver loop/.test(String(event.message)))
+      return;
+    trackClientError({
       ...errorDetails(event.error, event, location.origin),
       kind: "error",
       screen: screenOf(location.pathname),
-    }),
-  );
+    });
+  });
   window.addEventListener("unhandledrejection", (event) =>
-    track("client_error", {
+    trackClientError({
       ...errorDetails(event.reason, undefined, location.origin),
       kind: "unhandled_rejection",
       screen: screenOf(location.pathname),
     }),
   );
+}
+
+/** Per page load: the first few of each error (kind, origin and position) are
+ * enough to find it; a loop or a webview's polling bridge must not flood the
+ * queue or the collector. The rest are only counted here. */
+const ERRORS_PER_KIND = 3;
+const errorCounts = new Map<string, number>();
+/** Record a `client_error`, tagged with the kind of browser it happened in. */
+export function trackClientError(
+  props: Omit<FunnelProps<"client_error">, "browser">,
+): void {
+  const key = JSON.stringify([
+    props.kind,
+    props.source,
+    props.asset,
+    props.line,
+    props.column,
+  ]);
+  const count = (errorCounts.get(key) ?? 0) + 1;
+  errorCounts.set(key, count);
+  if (count > ERRORS_PER_KIND) return;
+  track("client_error", { ...props, browser: currentBrowserKind() });
 }
 
 /** Whole days since this browser's first visit. */
@@ -443,16 +474,25 @@ export function trackSessionStart(): void {
 export function landingProps(
   location: Pick<Location, "search" | "hostname"> = window.location,
   referrer = document.referrer,
-): FunnelProps<"landing_view"> {
-  return captureEntryContext({
-    search: location.search,
-    hostname: location.hostname,
-    referrer,
-    width: window.innerWidth,
-    coarse:
-      typeof matchMedia === "function" &&
-      matchMedia("(pointer: coarse)").matches,
-  });
+): FunnelProps<"landing_view"> & EntryContext {
+  return {
+    ...captureEntryContext({
+      search: location.search,
+      hostname: location.hostname,
+      referrer,
+      width: window.innerWidth,
+      coarse: coarsePointer(),
+    }),
+    browser: currentBrowserKind(),
+  };
+}
+/** A webview's `matchMedia` may be missing or a bare stub. */
+function coarsePointer(): boolean {
+  try {
+    return matchMedia("(pointer: coarse)").matches === true;
+  } catch {
+    return false;
+  }
 }
 
 /** Test seam: forget buffered events and the in-memory visitor. */
@@ -472,4 +512,5 @@ export function resetAnalyticsForTests(): void {
   identity = undefined;
   entryContext = undefined;
   pitchShown = false;
+  errorCounts.clear();
 }

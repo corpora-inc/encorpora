@@ -5,6 +5,8 @@ import {
 } from "./purchase-attempt.js";
 import { entryContextSchema } from "./entry-context.js";
 export { REFERRER_CATEGORIES, DEVICE_CLASSES } from "./entry-context.js";
+import { BROWSER_KINDS } from "./browser-kind.js";
+export { BROWSER_KINDS } from "./browser-kind.js";
 import { z } from "zod";
 import { siteActionSchema } from "./site-actions.js";
 import { engagementSchema, TRAFFIC_KINDS, SCREENS } from "./engagement.js";
@@ -181,6 +183,8 @@ export const funnelPropsSchemas = {
     kind: z.enum(["error", "unhandled_rejection", "render"]),
     screen: z.enum(SCREENS),
     boundary: z.enum(["caught", "uncaught"]).optional(),
+    /** In-app webview or standard browser, from user-agent markers. */
+    browser: z.enum(BROWSER_KINDS).optional(),
   }),
   auth_request: z.strictObject({
     attemptId: z.uuidv4(),
@@ -198,7 +202,9 @@ export const funnelPropsSchemas = {
     ...errorDetailsSchema.pick({ exception: true, category: true }).shape,
   }),
   site_action: siteActionSchema,
-  landing_view: entryContextSchema,
+  landing_view: entryContextSchema.extend({
+    browser: z.enum(BROWSER_KINDS).optional(),
+  }),
   try_click: none,
   /** The signed-out parent pitch at `/`, with the funded program it names. */
   pitch_view: z.strictObject({ program: z.enum(PITCH_PROGRAMS).optional() }),
@@ -310,7 +316,7 @@ export const eventBatchSchema = z.strictObject({
   visitorId: visitorIdSchema,
   accountScope: z.string().min(1).max(256).optional(),
   accountGeneration: z.union([z.literal("initial"), z.uuidv4()]).optional(),
-  context: funnelPropsSchemas.landing_view.optional(),
+  context: entryContextSchema.optional(),
   traffic: z.enum(TRAFFIC_KINDS).optional(),
   trial: z
     .string()
