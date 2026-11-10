@@ -328,31 +328,19 @@ try {
             practice,
             `causal-claim-account-${authenticated}-${theme}-375x667`,
           );
+        // The one app frame (#2064): one 44 px menu control, the bar's first
+        // cell. The skill title's readability is app-shell's practice-title.
         const treatment = await practice
-          .locator(".workspace-toolbar")
-          .evaluate((toolbar) => {
-            const trigger = toolbar.querySelector<HTMLElement>(
+          .locator("[data-app-bar]")
+          .evaluate((bar) => {
+            const trigger = bar.querySelector<HTMLElement>(
               "[data-navigation-trigger]",
             )!;
-            const title = toolbar.querySelector<HTMLElement>(
-              ".workspace-topic-text",
-            )!;
             const rect = trigger.getBoundingClientRect();
-            const titleBox = title.getBoundingClientRect();
-            const range = document.createRange();
-            range.selectNodeContents(title);
             return {
               width: rect.width,
               height: rect.height,
-              first: toolbar.firstElementChild === trigger,
-              titleWrap: getComputedStyle(title).whiteSpace,
-              titleVisible: [...range.getClientRects()].every(
-                (r) =>
-                  r.left >= titleBox.left - 1 &&
-                  r.right <= titleBox.right + 1 &&
-                  r.top >= titleBox.top - 1 &&
-                  r.bottom <= titleBox.bottom + 1,
-              ),
+              first: !!bar.firstElementChild?.contains(trigger),
             };
           });
         assert(treatment.width >= 44 && treatment.height >= 44);
@@ -361,8 +349,6 @@ try {
           true,
           "one navigation control at the left",
         );
-        assert.notEqual(treatment.titleWrap, "nowrap");
-        assert(treatment.titleVisible, "full skill title is readable");
         await practice.screenshot({
           path: `${output}/practice-${authenticated ? "signed-in" : "guest"}-${theme}-${width}.png`,
           animations: "disabled",
