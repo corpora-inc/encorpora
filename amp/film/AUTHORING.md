@@ -18,9 +18,9 @@ The voice takes care of itself. Every take is transcribed and compared with your
 
 ## The test
 
-**After watching, a learner who knew nothing can do every variant of this problem type.** That beats everything else here.
+**Make the math beautiful and obvious.** After watching, a learner sees the idea so clearly that this type's problems feel easy, and wants to see more. That beats everything else here.
 
-- Teach the idea and why it works, then work real problems step by step.
+- Teach the idea and why it works, with the picture and its motion carrying it: engaging, a pleasure to watch, never stale. The type's problems show what a learner must be able to do; they are the scope, not the spine. A learner who understands the idea and knows what the words mean, and reads carefully, solves the problems. Work a problem on screen only when how to solve it is itself worth learning (a method, a trap), and then work it step by step.
 - **Concise and complete.** Shorter is better as long as nothing is missing: these films are served and stored by the thousand. A lesson is as long as its content needs, and lengths vary; a short lesson is fine.
 - **Every example is a different case.** Never work a second example of the same case. Choose the cases that can trip a learner up: the larger fraction with the smaller numerator (5/8 and 3/4), unit fractions (2/9 and 1/3), a fraction greater than one; a negative leading coefficient (a maximum, so there is no minimum); a harder form (ax² + bx + c instead of vertex form). Go beyond the variants `facts.ts` lists when the learner will meet the case soon: the lesson builds the idea, not just this one template.
 - **Show the way to see it.** Lead with the simple idea a learner can see and use at a glance ("the square is smallest when it is zero", "make the pieces the same size") before, or instead of, letters and formal statements. Formal notation is welcome when it helps; never as clutter.
@@ -28,9 +28,9 @@ The voice takes care of itself. Every take is transcribed and compared with your
 - **Strike out only the mistake the lesson warns about.** One struck line, on the line it corrects or inside the `watch` card. Never cross out answer choices one by one, never leave a struck number floating under the answer, and in the early grades (K to 2) do not strike out at all: say what to do instead.
 - **Count your cases before writing.** Two examples with the same kind of answer (two negative answers, two "more than ten ones", two bags of counters) are one case shown twice: keep the clearer one.
 - **One phrase to remember.** When a short phrase captures how to think ("rise over run"), say it once, at the moment it applies, and put it on the board or in the recap.
-- **One problem per screen.** Each problem is stated on its own screen (a `problem` after a `clear`), worked in full, and answered once. After the answer, only a check of that answer. Never write, say or recite another problem's answer at the end of an example. Variants that share a method are covered by the method; they need no example of their own.
+- **One problem per screen**, when you work one. Each problem is stated on its own screen (a `problem` after a `clear`), worked in full, and answered once. After the answer, only a check of that answer. Never write, say or recite another problem's answer at the end of an example. Variants that share a method are covered by the method; they need no example of their own.
 - Define every word and symbol the problem uses, the moment it appears, in a few words.
-- Use the problem's own notation, so the film looks like the problem.
+- Use the notation the problems use, so the learner recognises it when they meet it.
 - Short is good and rushed is bad. Say each thing once, plainly, then stop.
 - One full example per distinct method. A different case that uses the same method is a quick example: its picture, two or three lines, the answer, in three or four beats. A case already shown is never shown again with new numbers.
 - At most two `term` cards in a lesson, for words the problem uses that a learner at this grade may not know. Say other definitions in passing.
