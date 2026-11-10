@@ -227,21 +227,20 @@ input.finalInput {
   min-height: 44px;
   margin: 0;
   padding: 0 var(--space-2);
-  border: 0;
-  border-bottom: 1px solid var(--color-answer-border);
-  border-radius: 0;
-  background: transparent;
-  color: var(--color-on-surface);
+  /* The one field style (tokens.css), at a table row's size. */
+  border: 1px solid var(--field-border);
+  border-radius: var(--field-radius);
+  background: var(--field-surface);
+  color: var(--field-on);
   font-size: var(--text-dense);
   font-variant-numeric: var(--numeric);
   font-weight: 650;
   text-align: center;
 }
 input.finalInput:hover {
-  border-bottom-color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 input.finalInput:focus-visible {
-  border-radius: var(--radius-small);
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 1px;
 }
@@ -273,7 +272,6 @@ input.finalInput:focus-visible {
 }
 .gradeCardTop .finalInput {
   width: 64px;
-  color: var(--color-on-surface-raised);
 }
 .gradeCardSuggested {
   font-size: var(--text-dense);
@@ -407,7 +405,7 @@ input.finalInput:focus-visible {
   opacity: 1;
 }
 .finalCell[data-state="failed"] input.finalInput {
-  border-bottom-color: var(--color-danger-accent);
+  border-color: var(--color-danger-accent);
 }
 .liveRegion {
   position: absolute;
