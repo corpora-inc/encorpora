@@ -108,7 +108,14 @@ export function errorDetails(
     if (reactCode) result.reactCode = Number(reactCode[1]);
     source ??= origin ? appFrame(error, origin) : undefined;
     if (source) {
-      result.source = source.filename ? "unknown" : "inline";
+      // No script URL and no error object: the browser withheld a cross-origin
+      // script's details ("Script error."). No URL with an error: code the
+      // browser or app ran itself; AMP's policy allows no inline script or eval.
+      result.source = source.filename
+        ? "unknown"
+        : error == null
+          ? "external"
+          : "inline";
       if (source.filename && origin) {
         const url = new URL(source.filename);
         result.source = url.origin === origin ? "app" : "external";

@@ -57,8 +57,12 @@ const tags = [
 ];
 if (!shell.includes("</head>"))
   throw new Error("build-home-document: the shell has no </head>");
-await writeFile(
-  new URL("home.html", dist),
-  shell.replace("</head>", `${tags.join("\n    ")}\n  </head>`),
-);
+const home = shell.replace("</head>", `${tags.join("\n    ")}\n  </head>`);
+// Every script AMP serves has a URL, so an error report can always say whose
+// code failed: one with no URL ("inline") is a browser's or app's own. The
+// content policy blocks inline scripts too; this keeps the document honest.
+for (const [tag] of home.matchAll(/<script\b[^>]*>/gi))
+  if (!/\bsrc=/.test(tag) && !/\btype="application\/ld\+json"/.test(tag))
+    throw new Error(`build-home-document: inline script ${tag}`);
+await writeFile(new URL("home.html", dist), home);
 console.log("Built the home document.");
