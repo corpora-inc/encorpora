@@ -48,8 +48,18 @@ async function playAndSeek(page: Page) {
     target,
   );
   assert.ok(await page.locator("#film .film-shot").count());
-  await page.waitForFunction(() => document.querySelector(".live-toggle")?.getAttribute("aria-label") === "Play");
-  assert.equal(await page.locator(".live").evaluate((node) => node.classList.contains("playing")), false, "Paused narration must show the play control");
+  await page.waitForFunction(
+    () =>
+      document.querySelector(".live-toggle")?.getAttribute("aria-label") ===
+      "Play",
+  );
+  assert.equal(
+    await page
+      .locator(".live")
+      .evaluate((node) => node.classList.contains("playing")),
+    false,
+    "Paused narration must show the play control",
+  );
   assert.deepEqual(
     await geometry(page),
     before,
@@ -63,7 +73,11 @@ try {
       { width: 390, height: 844 },
       { width: 768, height: 1024 },
       { width: 1280, height: 800 },
-    ].filter((viewport) => !argument("widths") || argument("widths")!.split(",").includes(String(viewport.width)))) {
+    ].filter(
+      (viewport) =>
+        !argument("widths") ||
+        argument("widths")!.split(",").includes(String(viewport.width)),
+    )) {
       const context = await fixture.context(browser, "paid", {
         viewport,
         colorScheme: theme,
