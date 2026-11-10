@@ -110,6 +110,7 @@ import { LoadingScreen } from "../ui/LoadingScreen";
 import { Loading } from "../ui/Loading";
 import { Menu, MenuItem } from "../ui/Menu";
 import { LandingView } from "../lib/LandingView";
+import { track, trackOnce } from "../lib/analytics";
 import { useLearnerStore } from "../learner-store";
 import { calculatorAllowed } from "../../math/calculator";
 import { gradeNumber } from "../../learning/frontier";
@@ -1091,6 +1092,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   const upcoming = useRef<{ learnerId: string; batch: Promise<Batch> } | null>(
     null,
   );
+  const practiceAnswers = useRef(0);
   useLayoutEffect(() => {
     upcoming.current = null;
     setQueue([]);
@@ -1220,6 +1222,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       if (learnerRef.current !== learner.id) return;
       setOutcome(result);
       setPending(null);
+      track("practice_answer", { index: practiceAnswers.current });
+      if (practiceAnswers.current < 100_000) practiceAnswers.current += 1;
       upcoming.current = { learnerId: learner.id, batch: requestBatch("") };
       upcoming.current.batch.catch(() => undefined);
       void refreshProgress().catch((error) =>
@@ -1456,6 +1460,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     !error &&
     !loadFailed &&
     !catalogFailed;
+  // The first problem shown under a paid plan. Once per tab; a re-render
+  // of the same problem does not send it again.
+  useEffect(() => {
+    if (!problem || !learnerEntry?.hasAccess) return;
+    trackOnce("paid-practice-first", "paid_practice_first", {});
+  }, [problem?.id, learnerEntry?.hasAccess]);
   if (student && (route.familyOpen || route.purchaseView || route.consentOpen))
     return <Navigate to="/" replace />;
   // The adult's home is their own record.

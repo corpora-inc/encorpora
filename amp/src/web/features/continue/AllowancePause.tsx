@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useRouterState } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { track } from "../../lib/analytics";
 import { sessionOptions } from "../../lib/query";
 import { TalkToUs } from "../schools/TalkToUs";
 import { Button } from "../../ui/Button";
@@ -11,6 +12,16 @@ import styles from "./Continue.module.css";
 /** Who is looking at a learner whose free allowance ended. `profile`: an
  * adult practicing as one of their practice profiles. */
 export type PauseViewer = "parent" | "adult" | "profile" | "student" | "staff";
+
+/** A parent or a child is the family's pause; a teacher is the class. */
+const pauseFor = {
+  parent: "family",
+  student: "family",
+  adult: "adult",
+  // An adult practicing as one of their profiles.
+  profile: "adult",
+  staff: "class",
+} as const satisfies Record<PauseViewer, "family" | "adult" | "class">;
 
 /** The words the pause says, by who is looking and what ended. */
 export function pauseWords(
@@ -65,6 +76,30 @@ export function AllowancePause({
   const words = pauseWords(kind, viewer, learner?.name ?? "");
   const headingId = `pause-${kind}-${learner?.id ?? viewer}`;
   const Heading = compact ? "h2" : "h1";
+  const continued = useRef(false);
+  // One record per showing. The second frame cancels the first, so strict
+  // mode and a re-render do not count the pause twice. A new learner, kind,
+  // or viewer is a new showing.
+  useEffect(() => {
+    let frame = 0,
+      sent = false;
+    const visible = () => {
+      if (document.visibilityState !== "visible" || sent) return;
+      frame = requestAnimationFrame(() => {
+        frame = requestAnimationFrame(() => {
+          if (sent || document.visibilityState !== "visible") return;
+          sent = true;
+          track("allowance_pause_view", { for: pauseFor[viewer] });
+        });
+      });
+    };
+    visible();
+    document.addEventListener("visibilitychange", visible);
+    return () => {
+      cancelAnimationFrame(frame);
+      document.removeEventListener("visibilitychange", visible);
+    };
+  }, [kind, viewer, learner?.id]);
   return (
     <section
       className={compact ? styles.pauseCompact : styles.pause}
@@ -90,6 +125,10 @@ export function AllowancePause({
             disabled={!session}
             onClick={() => {
               if (!session) return;
+              if (!continued.current) {
+                continued.current = true;
+                track("continue_click");
+              }
               rememberContinuation({
                 accountId: session.accountId,
                 learnerId: learner.id,

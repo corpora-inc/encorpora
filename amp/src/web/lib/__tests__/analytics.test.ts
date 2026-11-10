@@ -67,6 +67,21 @@ test("does not send a stored trial credential with diagnostics", async () => {
   expect(batch.trial).toBeUndefined();
 });
 
+test("accepts the one-product journey events and drops a bad starter answer", async () => {
+  vi.spyOn(console, "warn").mockImplementation(() => {});
+  track("starter_choice", { answer: "parent" });
+  track("allowance_pause_view", { for: "adult" });
+  track("continue_click");
+  track("starter_choice", { answer: "friend" } as never);
+  flush();
+  const [batch] = await sentBatches();
+  expect(batch.events.map((e) => [e.event, e.props])).toEqual([
+    ["starter_choice", { answer: "parent" }],
+    ["allowance_pause_view", { for: "adult" }],
+    ["continue_click", {}],
+  ]);
+});
+
 test("drops invalid props instead of throwing into the UI", () => {
   vi.spyOn(console, "warn").mockImplementation(() => {});
   expect(() =>
