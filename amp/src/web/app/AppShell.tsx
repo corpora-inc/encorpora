@@ -78,8 +78,16 @@ export function AppShell({ children }: { children: ReactNode }) {
   if (settled !== null) last.current = settled;
   const shown = settled ?? last.current;
   const pathname = shown ?? "";
+  const fromClass = useRouterState({
+    select: (state) => {
+      const value = (state.location.search as Record<string, unknown>).class;
+      return typeof value === "string" ? value : undefined;
+    },
+  });
   const frame =
-    !nativeRuntime && session.data && shown ? shellFrame(pathname) : null;
+    !nativeRuntime && session.data && shown
+      ? shellFrame(pathname, fromClass)
+      : null;
   const setDrawerOpen = useShellSlots((state) => state.setDrawerOpen);
   // A screen change closes the drawer (a link inside it, or Back).
   useEffect(() => setDrawerOpen(false), [pathname, setDrawerOpen]);

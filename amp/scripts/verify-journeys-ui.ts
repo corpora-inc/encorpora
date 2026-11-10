@@ -936,9 +936,9 @@ async function tutorJourney(
   check(`${label} three picture students`, names.length === 3, names);
   await measured(page, `${label} today`);
   await shot(page, 4, "today", width, theme);
-  // A tutor's students, each from another family, are on People.
+  // A tutor’s students, each from another family, are on Students.
   await page.goto(page.url().replace(/\/today$/, "/roster"));
-  await heading(page, "People");
+  await heading(page, "Students");
   const others = page.getByRole("region", { name: "From other families" });
   for (const name of names)
     await others.getByText(name, { exact: true }).waitFor();
@@ -1001,7 +1001,7 @@ async function tutorJourney(
 
   last.page = page;
   await reloaded(page);
-  await heading(page, "People");
+  await heading(page, "Students");
   const ana = others.locator("li", { hasText: "Ana" });
   await ana.waitFor();
   check(

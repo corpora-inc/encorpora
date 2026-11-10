@@ -323,7 +323,7 @@ export function RosterScreen() {
         <div className={styles.page}>
           <header className={styles.head}>
             <div>
-              <h1>{family ? "People" : "Roster"}</h1>
+              <h1>{family ? "Students" : "Roster"}</h1>
               {data.students.length > 0 && (
                 <p className={styles.count}>
                   {data.students.length === 1

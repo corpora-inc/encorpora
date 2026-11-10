@@ -28,8 +28,22 @@ const under = (pathname: string, path: string) =>
   pathname === path || pathname.startsWith(`${path}/`);
 
 /** The frame for a signed-in screen at `pathname`, or null for its own. */
-export function shellFrame(pathname: string): ShellFrame | null {
+export function shellFrame(
+  pathname: string,
+  /** The class a screen was opened from (`?class=`): a student's record
+   * keeps that class's tabs, so opening a student never leaves the class. */
+  fromClass?: string,
+): ShellFrame | null {
   const path = pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
+  const record = path.match(/^\/school\/([^/]+)\/students\/([^/]+)$/);
+  if (record && fromClass)
+    return {
+      kind: "class",
+      org: record[1]!,
+      classId: fromClass,
+      active: "map",
+      board: false,
+    };
   if (path === "/school/new") return null;
   if (path === "/school/invite") return { kind: "plain" };
   const klass = path.match(
@@ -160,8 +174,10 @@ export const SMALL_CLASS = 6;
 
 /** The one place a class's tabs are decided (docs/design/ia.md). Class
  * sub-screens keep their parent tab selected; past years retain grades and
- * time. A family's class puts Workbooks after Map, calls its people People
- * and keeps its calendar in Settings; a small one also drops Grades. */
+ * time. A family's or tutor's class keeps its calendar in Settings, and a
+ * small one (six or fewer) has no Grades tab: each learner's grade is a line
+ * on the Map, and report cards, export and the weekly target are in
+ * Settings. */
 export function classTabs(
   org: string,
   id: string,
@@ -170,26 +186,15 @@ export function classTabs(
   learners = Infinity,
 ): TabItem[] {
   const small = family && learners <= SMALL_CLASS;
-  const tabs = family
-    ? [
-        ["today", "Today"],
-        ["map", "Map"],
-        ["workbooks", "Workbooks"],
-        ["gradebook", "Grades"],
-        ["time", "Time"],
-        ["roster", "People"],
-        ["settings", "Settings"],
-      ]
-    : [
-        ["today", "Today"],
-        ["map", "Map"],
-        ["gradebook", "Grades"],
-        ["time", "Time"],
-        ["workbooks", "Workbooks"],
-        ["roster", "Students"],
-        ["settings", "Settings"],
-      ];
-  return tabs
+  return [
+    ["today", "Today"],
+    ["map", "Map"],
+    ["gradebook", "Grades"],
+    ["time", "Time"],
+    ["workbooks", "Workbooks"],
+    ["roster", "Students"],
+    ["settings", "Settings"],
+  ]
     .filter(([leaf]) => !small || leaf !== "gradebook")
     .filter(([leaf]) => !past || leaf === "gradebook" || leaf === "time")
     .map(([leaf, label]) => ({

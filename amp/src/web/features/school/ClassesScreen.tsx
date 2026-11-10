@@ -380,26 +380,17 @@ const rosterColumns = (
     header: family ? "Child" : "Student",
     width: 220,
     compare: (a, b) => displayName(a).localeCompare(displayName(b), "en"),
-    cell: (row) =>
-      family ? (
-        <Link
-          to="/$"
-          params={{ _splat: studentUrl(orgId, row.id) }}
-          search={{ class: classId } as never}
-          className={`${styles.person} ${styles.rowLink}`}
-        >
-          <span>{displayName(row)}</span>
-        </Link>
-      ) : (
-        <Link
-          to="/$"
-          params={{ _splat: orgPath(orgId, "students") }}
-          search={{ student: row.id } as never}
-          className={`${styles.person} ${styles.rowLink}`}
-        >
-          <span>{displayName(row)}</span>
-        </Link>
-      ),
+    // A student opens in the class, never on the school's Students page.
+    cell: (row) => (
+      <Link
+        to="/$"
+        params={{ _splat: studentUrl(orgId, row.id) }}
+        search={{ class: classId } as never}
+        className={`${styles.person} ${styles.rowLink}`}
+      >
+        <span>{displayName(row)}</span>
+      </Link>
+    ),
   },
   {
     id: "grade",
@@ -706,14 +697,8 @@ export function ClassScreen() {
             card={(row) => (
               <Link
                 to="/$"
-                params={{
-                  _splat: family
-                    ? studentUrl(orgId, row.id)
-                    : orgPath(orgId, "students"),
-                }}
-                search={
-                  (family ? { class: classId } : { student: row.id }) as never
-                }
+                params={{ _splat: studentUrl(orgId, row.id) }}
+                search={{ class: classId } as never}
                 className={styles.studentCard}
               >
                 <span className={styles.studentCardText}>

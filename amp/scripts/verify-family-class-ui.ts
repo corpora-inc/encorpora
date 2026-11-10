@@ -278,10 +278,10 @@ async function family(
   await schoolShellReview(page);
   await classShellJourney(page);
 
-  // The parent invites a co-teacher from People; "Copy link" stays on the row.
+  // The parent invites a co-teacher from Students; "Copy link" stays on the row.
   const classUrl = page.url();
   await page.goto(classUrl.replace(/\/today$/, "/roster"));
-  await heading(page, "People");
+  await heading(page, "Students");
   await page.getByRole("button", { name: "Invite a co-teacher" }).click();
   await page.getByLabel("Email").fill("rafael@vega.example");
   await shot(page, "co-teacher-invite", width, theme);

@@ -442,7 +442,12 @@ export function GradebookScreen() {
           action={
             <Link
               to="/$"
-              params={{ _splat: `school/${place.org}/calendar` }}
+              params={{
+                // A family's calendar is a section of its class's Settings.
+                _splat: family
+                  ? classUrl(place.org, place.class, "settings")
+                  : `school/${place.org}/calendar`,
+              }}
               className={buttonClass("primary")}
             >
               Open the calendar

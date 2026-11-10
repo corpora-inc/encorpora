@@ -44,17 +44,39 @@ function ClassToday({
   onLesson: (templateId: string) => void;
 }) {
   const [done, setDone] = useChecks(place.class, data.today);
+  const entries = todoEntries({
+    todos: data.todos,
+    place,
+    canPrint: data.canPrint,
+    onLesson,
+    people: true,
+  });
+  // Before anyone has started, the next step after the board: cards for
+  // the students who sign in on a device of their own.
+  const starting = data.todos.some((todo) => todo.id === "start-class");
+  if (starting && data.canPrint)
+    entries.push({
+      id: "cards",
+      title: `Print sign-in cards for ${data.students.length === 1 ? "your student" : `your ${data.students.length} students`}`,
+      detail:
+        "A card signs a student in with one scan, on a shared device or their own.",
+      mark: "check",
+      actions: (
+        <Link
+          to="/school/$org/classes/$class/cards"
+          params={place}
+          search={{}}
+          className={buttonClass("secondary")}
+        >
+          Print cards
+        </Link>
+      ),
+    });
   return (
     <>
       <Feed
         label="What needs you today"
-        entries={todoEntries({
-          todos: data.todos,
-          place,
-          canPrint: data.canPrint,
-          onLesson,
-          people: true,
-        })}
+        entries={entries}
         done={done}
         onDone={setDone}
       />

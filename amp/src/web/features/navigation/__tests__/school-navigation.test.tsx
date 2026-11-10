@@ -82,19 +82,18 @@ function navigation({
 }
 
 test.each([["admin", "teacher"], ["teacher"]] as OrgResource["roles"][])(
-  "a family's class row, for roles %j: its own order, People, no Calendar tab and no Start class",
+  "a family's class row, for roles %j: no Grades, no Calendar tab and no Start class",
   (...roles) => {
     const { tabs, start } = navigation({ kind: "family", roles });
     // The fixture's class has no students yet: a small family class.
     expect(tabs.map((tab) => tab.id)).toEqual([
       "today",
       "map",
-      "workbooks",
       "time",
+      "workbooks",
       "roster",
       "settings",
     ]);
-    expect(tabs.find((tab) => tab.id === "roster")?.label).toBe("People");
     expect(start).toBe(false);
   },
 );

@@ -246,10 +246,10 @@ async function journey(
     teacher,
     /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
   );
-  // Children from other families live on People, beside the family's own.
+  // Children from other families live on Students, beside the family’s own.
   const classUrl = teacher.url().replace(/\/today$/, "/roster");
   await teacher.goto(classUrl);
-  await heading(teacher, "People");
+  await heading(teacher, "Students");
   await teacher
     .getByRole("button", { name: "Add a child from another family" })
     .click();
@@ -344,7 +344,7 @@ async function journey(
   ]);
   last.page = teacher;
   await teacher.reload();
-  await heading(teacher, "People");
+  await heading(teacher, "Students");
   await anaRow(teacher).getByText("Used the 100 free problems").waitFor();
   await measured(teacher, `${label} Ana approved`);
   await shot(teacher, "teacher-needs-access", width, theme);

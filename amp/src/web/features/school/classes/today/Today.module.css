@@ -108,9 +108,14 @@
   text-decoration: none;
   white-space: nowrap;
 }
+/* Hover tints, never underlines. */
+.inlineLink {
+  margin-inline: -4px;
+  padding: 2px 4px;
+  border-radius: var(--radius-small);
+}
 .inlineLink:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  background: var(--color-surface-hover);
 }
 @container (min-width: 720px) {
   .head .signIn {
