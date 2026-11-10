@@ -27,8 +27,10 @@ def chunks(items):
     return groups
 
 
-def submit_cohort(root, items, label, secrets):
+def submit_cohort(root, items, label, secrets, *, attempt=1):
     root = Path(root)
+    if attempt not in (1, 2):
+        raise ValueError('Reviews permit only two attempts')
     if not label or any(c not in 'abcdefghijklmnopqrstuvwxyz0123456789-_' for c in label):
         raise ValueError('Unsafe batch label')
     for provider in API_REVIEWERS:
@@ -37,16 +39,23 @@ def submit_cohort(root, items, label, secrets):
         for number, group in enumerate(chunks(items), 1):
             specs = []
             for item in group:
-                receipt = root/'runs'/item['id']/f'review-{provider}-1.json'
+                receipt = root/'runs'/item['id']/f'review-{provider}-{attempt}.json'
                 if receipt.exists() or (root/'reviews'/item['id']/(provider+'.json')).exists():
                     continue
+                if attempt == 2:
+                    previous = read_json(root/'runs'/item['id']/f'review-{provider}-1.json', {})
+                    if previous.get('status') in ('running', 'queued'):
+                        continue
+                    if previous.get('status') != 'failed' and not previous.get('artifact_error'):
+                        continue
                 images = [Path(p) for p in item['images']]
                 payload = read_json(item['payload'])
                 specs.append({'id': item['id'], 'prompt': review_prompt(payload, [p.name for p in images]),
                               'images': images, 'receipt': receipt})
             if not specs:
                 continue
-            manifest = root/'batches'/f'{label}-{provider}-{number}.json'
+            suffix = '' if attempt == 1 else '-retry'
+            manifest = root/'batches'/f'{label}-{provider}-{number}{suffix}.json'
             existing = read_json(manifest)
             if existing and not {s['id'] for s in specs} <= {e['id'] for e in existing['entries']}:
                 raise RuntimeError('Cohort changed after its batch submission')
