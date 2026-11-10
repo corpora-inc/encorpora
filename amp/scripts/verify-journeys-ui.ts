@@ -746,7 +746,7 @@ async function adultJourney(
   await page.waitForURL(/\/start\/myself$/);
   // Past school age the next tap is where to begin; then the first problem.
   await page.getByRole("radio", { name: "Adult", exact: true }).click();
-  await heading(page, "Where do you want to begin?", 3);
+  await heading(page, "Where do you want to begin?", 2);
   await page.getByRole("radio", { name: /^Algebra 2/ }).click();
   await page.getByRole("button", { name: "Start practicing" }).click();
   await practicing(page);

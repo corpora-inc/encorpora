@@ -461,9 +461,9 @@ function Myself({
       </div>
       {adult && (
         <div ref={where} className={styles.where}>
-          <h3 id="starter-where" className={styles.question}>
+          <h2 id="starter-where" className={styles.question}>
             Where do you want to begin?
-          </h3>
+          </h2>
           <p className={styles.note}>
             Practice adjusts to you from your first answer, so any start works.
           </p>

@@ -600,10 +600,10 @@ function demonstrated(
 }
 /** Still climbing until recent independent work misses at or above the
  * learner's level (anything, before a grade is shown) `placedAfterMisses`
- * times: where the learner stops succeeding. A miss stops counting once later
- * successes at or above its grade outnumber it (`independentSuccesses`), as
- * a slip on the way up, and older answers age out of the window, so a run of
- * success climbs again. */
+ * times: where the learner stops succeeding. A miss stops counting once the
+ * learner goes on to succeed above its grade (`independentSuccesses` times),
+ * as a slip on the way up, and older answers age out of the window, so a run
+ * of success climbs again. */
 function stillClimbing(
   state: FrontierConfirmationState,
   level: number | null,
@@ -619,7 +619,7 @@ function stillClimbing(
     for (const miss of bucket.items) {
       if (miss.order < recent) continue;
       const later = successes
-        .filter((b) => b.grade >= bucket.grade)
+        .filter((b) => b.grade >= bucket.grade + c.gradeTolerance)
         .reduce(
           (sum, b) => sum + b.items.filter((i) => i.order > miss.order).length,
           0,
