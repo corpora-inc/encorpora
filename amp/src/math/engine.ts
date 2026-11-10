@@ -40,6 +40,8 @@ import {
   gradeCounterBuilder,
   normalizeCounterBuilder,
 } from "./counter-builder";
+import { normalizeEqualAddends, gradeEqualAddends } from "./equal-addends";
+import { generateEqualAddendsFallback } from "./equal-addends-practice";
 import { generateCounterBuilderFallback } from "./counter-builder-practice";
 import { gradeShapeComposer, normalizeShapeAnswer } from "./shape-composer";
 import { gradeMultiPart, normalizeMultiPart } from "./multi-part-choice";
@@ -723,6 +725,8 @@ export function isValidResponse(
   problem: PublicProblem,
   response: string,
 ): boolean {
+  if (problem.response.kind === "equal-addends")
+    return normalizeEqualAddends(problem.response, response) !== null;
   if (problem.response.kind === "counter-builder")
     return normalizeCounterBuilder(problem.response, response) !== null;
   if (problem.response.kind === "shape-composer")
@@ -750,6 +754,8 @@ export function gradeAnswer(
   problem: GeneratedProblem,
   response: string,
 ): boolean {
+  if (problem.public.response.kind === "equal-addends")
+    return gradeEqualAddends(problem.public.response, problem.answer, response);
   if (problem.public.response.kind === "counter-builder")
     return gradeCounterBuilder(
       problem.public.response,
@@ -955,6 +961,14 @@ export function generateProblemFor(
   responseCapabilities: readonly string[] = [],
 ): GeneratedProblem {
   const generateForClient = () => {
+    if (
+      templateId === "array-equal-addends-equation" &&
+      !responseCapabilities.includes("equal-addends-v1")
+    ) {
+      if (!responseCapabilities.includes("single-choice-v1"))
+        throw new Error("Array fallback requires single-choice-v1");
+      return generateEqualAddendsFallback(seed);
+    }
     if (
       templateId === "build-the-number-sentence" &&
       !responseCapabilities.includes("counter-builder-v1")

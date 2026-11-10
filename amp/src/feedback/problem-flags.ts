@@ -98,6 +98,7 @@ export type ProblemFlag = {
     | "shape-composer"
     | "multi-part-choice"
     | "figure-choice"
+    | "equal-addends"
     | "counter-builder"
     | "structured-work"
     | "line-plot-build"

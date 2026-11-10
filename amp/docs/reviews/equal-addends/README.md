@@ -1,0 +1,30 @@
+# Arrays and equal addends
+
+`array-equal-addends-equation` practices 2.OA.C.4 in the `arrays` skill. Learners set rows and columns to build a story's array, or group a given array by tapping its rows or columns. They build an addition sentence with one equal addend per group and enter the total. Problems include rectangular arrays, squares, a columns-only prompt, and array-building stories. Each dimension is at most five.
+
+The control shares the counter builder's object drawings, sentence slots, sign drawings, and number keypad. The array occupies a fixed area. Five addend positions and the total have reserved space, so resizing the array, growing the sentence, and grading do not move the layout. Reset clears the learner's work. Switching grouping direction starts a fresh sum; selecting a group with a different count also starts that count's sum.
+
+Tab selects a sentence slot. Number keys fill it; arrow keys move between slots. Backspace removes an addend or erases a total digit. The number keypad dims other addend values after the first choice. Live announcements describe the array and the sentence. Incorrect feedback identifies the dimension, addend, count, or addition error in one sentence.
+
+Server grading requires the story's exact array dimensions, equal addends matching the permitted row or column grouping, the correct number of addends, and the correct total. Both directions earn credit when the prompt allows either. Complete wrong models, including directly submitted mixed addends, are recorded as incorrect attempts.
+
+`equal-addends-v1` gates the interaction. Clients supporting `single-choice-v1` and `scenes-v1` can receive four equations for the same array instead. The declared interactive guessing bound uses five addend values, five counts, and 100 total entries; array-building also has 25 possible dimension pairs. One or two sentences are accepted depending on orientation and whether the array is square. The family estimate covers the fallback's 1/4 guessing chance.
+
+## Verification
+
+`tests/equal-addends.test.ts` checks every permitted dimension and orientation, malformed input, complete wrong answers, deterministic generation over 2,000 seeds, fallback uniqueness, guessing, printing, and lesson examples that do not solve the active array. The Python oracle derives sums from public dimensions or the story and rejects corrupted dimensions, addends, and totals. Reporting-migration tests cover fresh installs and upgrades while retaining other response formats.
+
+Run `npm run test:equal-addends-ui` with a disposable `AMP_TEST_DATABASE_URL`; set `AMP_EVIDENCE_DIR` for screenshots and geometry receipts. Add `-- --webkit` for WebKit or `-- --smoke` for the phone smoke check. The browser test uses real practice routes and API grading. It checks horizontal overflow, fixed geometry while resizing/building/grading, 44-pixel targets, keyboard entry, reset, grouping, announcements, exact grading, idempotent retries, older-client fallback, and stored problem reports. It also exports the lesson in Letter and A4 formats.
+
+## Representative screens
+
+All screenshots use synthetic problems.
+
+| Width | Light | Dark |
+| --- | --- | --- |
+| 320 | [Build an array](chromium-build-array-320-light-right-filled.png) | [Build an array](chromium-build-array-320-dark-right-filled.png) |
+| 390 | [Group an array](chromium-rows-or-columns-390-light-right-filled.png) | [Group an array](chromium-rows-or-columns-390-dark-right-filled.png) |
+| 768 | [Build an array](chromium-build-array-768-light-right-filled.png) | [Build an array](chromium-build-array-768-dark-right-filled.png) |
+| 1280 | [Build an array](chromium-build-array-1280-light-right-filled.png) | [Build an array](chromium-build-array-1280-dark-right-filled.png) |
+
+[Empty](chromium-build-array-320-light-empty.png) · [Correct](chromium-build-array-320-light-correct.png) · [Incorrect](chromium-rows-or-columns-390-light-incorrect.png) · [Five by five](chromium-square-390-dark-right-control.png) · [Columns](chromium-by-columns-390-light-right-control.png)

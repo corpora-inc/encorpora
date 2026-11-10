@@ -10,6 +10,7 @@ import {
 } from "../src/math/engine";
 import { plotPoints, serializePlot } from "../src/math/point-plot";
 import { linePlotCounts, linePlotValues } from "../src/math/line-plot-build";
+import { fillEqualAddends } from "./ui-equal-addends";
 import { fillCounterBuilder } from "./ui-counter-builder";
 import {
   parseWorkDraft,
@@ -95,6 +96,11 @@ export async function preparePracticeAnswer(
     });
   const response = practiceResponse(solution, correct);
   const submit = async () => {
+    if (schema.kind === "equal-addends") {
+      await fillEqualAddends(page, schema, response);
+      await page.getByRole("button", { name: "Check", exact: true }).click();
+      return;
+    }
     if (schema.kind === "counter-builder") {
       await fillCounterBuilder(page, schema, response);
       await page.getByRole("button", { name: "Check", exact: true }).click();
@@ -299,6 +305,11 @@ export function practiceResponse(solution: GeneratedProblem, correct: boolean) {
   const schema = problem.response;
   let response = solution.answer;
   if (!correct) {
+    if (schema.kind === "equal-addends") {
+      const a = JSON.parse(response);
+      a.total++;
+      return JSON.stringify(a);
+    }
     if (schema.kind === "counter-builder") {
       const answer = JSON.parse(response);
       answer.sentence[3] = (answer.sentence[3] + 1) % 11;

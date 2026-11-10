@@ -1,3 +1,8 @@
+import {
+  equalAddendsResponseSchema,
+  equalAddendsKeyFits,
+  type EqualAddendsResponse,
+} from "./equal-addends";
 import type { GlossaryPayload } from "../glossary/types";
 import {
   counterBuilderResponseSchema,
@@ -297,6 +302,7 @@ export const responseCapabilities = [
   "line-plot-build-v1",
   "unit-square-marking-v1",
   "counter-builder-v1",
+  "equal-addends-v1",
 ] as const;
 export type ResponseCapability = (typeof responseCapabilities)[number];
 /** The response and figure families a client declares it can show. */
@@ -389,6 +395,7 @@ export type ProblemResponse =
   | PointPlotResponse
   | MultiPartChoiceResponse
   | FigureChoiceResponse
+  | EqualAddendsResponse
   | CounterBuilderResponse
   | StructuredWorkResponse
   | LinePlotBuildResponse
@@ -1034,6 +1041,7 @@ export const problemResponseSchema: z.ZodType<ProblemResponse> = z.union([
   figureChoiceResponseSchema,
   structuredWorkResponseSchema,
   counterBuilderResponseSchema,
+  equalAddendsResponseSchema,
 ]);
 export const publicProblemSchema: z.ZodType<PublicProblem> = z
   .object({
@@ -1126,6 +1134,13 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
         response.guessChance === shapeGuessChance(response)
       );
     if (problem.workGrading || problem.answer.length > 100) return false;
+    if (response.kind === "equal-addends")
+      return (
+        !problem.choiceFeedback &&
+        !problem.entryPolicy &&
+        !problem.pointGrading &&
+        equalAddendsKeyFits(response, problem.answer)
+      );
     if (response.kind === "counter-builder")
       return (
         !problem.choiceFeedback &&

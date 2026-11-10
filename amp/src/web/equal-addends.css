@@ -1,0 +1,108 @@
+.equal-addends {
+  max-width: 32rem;
+}
+.equal-array-tools {
+  display: grid;
+  gap: var(--space-1);
+}
+.equal-stepper {
+  display: grid;
+  grid-template-columns: 1fr 44px 44px 44px;
+  align-items: center;
+  gap: var(--space-1);
+  max-width: 19rem;
+  width: 100%;
+  margin: auto;
+}
+.equal-stepper > span {
+  font-weight: 600;
+  white-space: nowrap;
+}
+.equal-stepper output {
+  text-align: center;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.equal-stepper svg {
+  margin: auto;
+}
+.equal-directions {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+}
+.equal-directions button {
+  min-width: 108px;
+}
+.equal-array-area {
+  height: 228px;
+  padding-top: var(--space-1);
+}
+.equal-array {
+  display: grid;
+  grid-template-columns: repeat(5, 44px);
+  grid-template-rows: repeat(5, 44px);
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: auto;
+}
+.equal-object {
+  display: grid;
+  place-items: center;
+}
+.equal-addends .equal-group {
+  position: absolute;
+  background: transparent;
+  border: 2px solid transparent;
+  padding: 0;
+  border-radius: var(--radius-small);
+}
+.equal-addends .equal-group[data-outlined="true"] {
+  border-color: var(--color-figure-accent);
+  outline: none;
+}
+.equal-addends .equal-group:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+}
+.equal-addends .equal-instruction {
+  text-align: center;
+  min-height: 2.8em;
+  margin: var(--space-1) 0;
+}
+/* Reserve all five addend positions and the total. Existing tiles never move
+   as a child grows the sum; the total stays in the lower-right position. */
+.equal-addends .counter-sentence {
+  display: grid;
+  grid-template-columns: repeat(3, 72px);
+  grid-template-rows: repeat(2, 48px);
+  justify-content: center;
+  gap: var(--space-1);
+}
+.equal-addends .counter-sentence-part:first-child {
+  padding-left: 28px;
+}
+.equal-addends .counter-sentence-part:last-child {
+  grid-column: 3;
+  grid-row: 2;
+}
+.equal-count-tools {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-3);
+  margin-block: var(--space-2);
+}
+.equal-count-tools > span {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.equal-addends[data-resolved="true"] .equal-count-tools {
+  visibility: hidden;
+}
+.equal-addends[data-resolved="true"] .equal-stepper button {
+  visibility: hidden;
+}
+.equal-addends .counter-tiles {
+  width: 100%;
+}

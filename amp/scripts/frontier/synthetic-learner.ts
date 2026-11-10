@@ -141,6 +141,7 @@ export function syntheticProbability(
     template.requiredResponseCapability !== "unit-square-marking-v1" &&
     template.requiredResponseCapability !== "shape-composer-v1" &&
     template.requiredResponseCapability !== "multi-part-choice-v1" &&
+    template.requiredResponseCapability !== "equal-addends-v1" &&
     template.requiredResponseCapability !== "counter-builder-v1" &&
     template.requiredResponseCapability !== "structured-work-v1"
       ? Math.max(0.2, population.guess)
