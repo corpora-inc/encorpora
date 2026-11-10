@@ -16,6 +16,7 @@ import { useFinishSignIn } from "../join/api";
 import styles from "./Family.module.css";
 import { CoTeachers } from "./CoTeachers";
 import { OtherFamilies } from "./OtherFamilies";
+import { SecondParent } from "../../second-parent/SecondParent";
 
 const DAY = new Intl.DateTimeFormat("en-US", {
   month: "long",
@@ -31,7 +32,9 @@ const failures: Record<string, string> = {
 
 /** A family's class (docs/families.md): each child with their own access,
  * and the way to hand this device to one of them. Access is each child's own,
- * so it reads as dates rather than seats. */
+ * so it reads as dates rather than seats. The family's second parent sees the
+ * children and hands over her device too; inviting, other families and
+ * co-teachers are the account holder's. */
 export function FamilyPanel({ classId }: { classId: string }) {
   const session = currentSession();
   const me = useQuery(meOptions(session)).data;
@@ -41,8 +44,13 @@ export function FamilyPanel({ classId }: { classId: string }) {
   const here = useRouterState({
     select: (state) => state.location.pathname + state.location.searchStr,
   });
-  if (!me?.signedIn || me.familyClass?.classId !== classId) return null;
-  const family = me.familyClass;
+  if (!me?.signedIn) return null;
+  const held = me.familyClass?.classId === classId ? me.familyClass : null;
+  const shared = held
+    ? null
+    : me.secondParentOf?.find((entry) => entry.classId === classId);
+  if (!held && !shared) return null;
+  const children = held ? me.learners : shared!.learners;
   const handOver = async (learner: SignedInMe["learners"][number]) => {
     setStarting(learner.id);
     try {
@@ -64,10 +72,11 @@ export function FamilyPanel({ classId }: { classId: string }) {
     }
   };
   const dismiss = () => {
+    if (!held) return;
     // Gone at once; the server keeps it gone on every device.
     queryClient.setQueryData(meKey(session.accountId), {
       ...me,
-      familyClass: { ...family, notice: false },
+      familyClass: { ...held, notice: false },
     });
     void request("/family/class-notice/dismiss", z.unknown(), {
       token: session.token,
@@ -79,9 +88,9 @@ export function FamilyPanel({ classId }: { classId: string }) {
   return (
     <section
       className={styles.family}
-      aria-labelledby={me.learners.length ? "family-children" : undefined}
+      aria-labelledby={children.length ? "family-children" : undefined}
     >
-      {family.notice && (
+      {held?.notice && (
         <p className={styles.notice}>
           <span>
             Your children now sign in on their own devices with this class’s
@@ -100,13 +109,13 @@ export function FamilyPanel({ classId }: { classId: string }) {
         </p>
       )}
       {/* A tutor's class has children from other families only. */}
-      {me.learners.length > 0 && (
+      {children.length > 0 && (
         <>
           <h2 id="family-children" className={styles.heading}>
             Practice on this device
           </h2>
           <ul className={styles.children}>
-            {me.learners.map((learner) => (
+            {children.map((learner) => (
               <li key={learner.id} className={styles.child}>
                 <span className={styles.who}>
                   <span className={styles.name}>{learner.name}</span>
@@ -132,7 +141,7 @@ export function FamilyPanel({ classId }: { classId: string }) {
                   >
                     Let {learner.name} practice here
                   </Button>
-                ) : (
+                ) : !held ? null : (
                   <Link
                     to="/continue/$learnerId"
                     params={{ learnerId: learner.id }}
@@ -153,12 +162,17 @@ export function FamilyPanel({ classId }: { classId: string }) {
           </ul>
         </>
       )}
-      <OtherFamilies session={session} />
-      <CoTeachers
-        session={session}
-        orgId={family.orgId}
-        classId={family.classId}
-      />
+      {held && (
+        <>
+          <SecondParent session={session} />
+          <OtherFamilies session={session} />
+          <CoTeachers
+            session={session}
+            orgId={held.orgId}
+            classId={held.classId}
+          />
+        </>
+      )}
       <Toast message={error} onDismiss={() => setError("")} />
     </section>
   );

@@ -26,7 +26,11 @@ type Props = {
   frontier: FrontierMap | null;
   strands: readonly string[];
   busy: boolean;
-  go: () => void;
+  /** Absent when practice isn't this screen's to start: a second parent's
+   * family's child who can't practice yet. */
+  go?: () => void;
+  /** The action's own words, instead of Go or Continue. */
+  goLabel?: string;
   /** Absent for a school student, whose school manages this. */
   changeBirthYear?: () => void;
   /** Free problems left, for a learner no plan covers yet. */
@@ -50,14 +54,16 @@ export function Home(props: Props) {
           )}
           {shown && <HomeLevel frontier={f} />}
         </div>
-        <button
-          className="go-button"
-          disabled={props.busy}
-          aria-busy={props.busy}
-          onClick={props.go}
-        >
-          {props.resuming ? "Continue" : "Go"}
-        </button>
+        {props.go && (
+          <button
+            className="go-button"
+            disabled={props.busy}
+            aria-busy={props.busy}
+            onClick={props.go}
+          >
+            {props.goLabel ?? (props.resuming ? "Continue" : "Go")}
+          </button>
+        )}
       </section>
       <CurriculumDetailsControl />
       <FrontierMap

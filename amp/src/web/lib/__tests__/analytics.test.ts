@@ -11,6 +11,8 @@ import {
   visitorKey,
   setAnalyticsSession,
   captureAnalyticsTracker,
+  trackClientError,
+  initializeAnalyticsContext,
 } from "../analytics";
 import { eventBatchSchema } from "../../../analytics/events";
 
@@ -67,6 +69,21 @@ test("does not send a stored trial credential with diagnostics", async () => {
   expect(batch.trial).toBeUndefined();
 });
 
+test("accepts the one-product journey events and drops a bad starter answer", async () => {
+  vi.spyOn(console, "warn").mockImplementation(() => {});
+  track("starter_choice", { answer: "parent" });
+  track("allowance_pause_view", { for: "adult" });
+  track("continue_click");
+  track("starter_choice", { answer: "friend" } as never);
+  flush();
+  const [batch] = await sentBatches();
+  expect(batch.events.map((e) => [e.event, e.props])).toEqual([
+    ["starter_choice", { answer: "parent" }],
+    ["allowance_pause_view", { for: "adult" }],
+    ["continue_click", {}],
+  ]);
+});
+
 test("drops invalid props instead of throwing into the UI", () => {
   vi.spyOn(console, "warn").mockImplementation(() => {});
   expect(() =>
@@ -87,6 +104,84 @@ test("uses acknowledged keepalive delivery", async () => {
     "/api/v1/events",
     expect.objectContaining({ keepalive: true, method: "POST" }),
   );
+});
+
+test("a webview that refuses keepalive still receives every batch", async () => {
+  const fetchMock = vi.fn((_url: string, init: RequestInit) => {
+    if (init.keepalive) throw new TypeError("keepalive is not supported");
+    return Promise.resolve(new Response(null, { status: 202 }));
+  });
+  vi.stubGlobal("fetch", fetchMock);
+  track("plan_view");
+  expect(() => flush()).not.toThrow();
+  await settle();
+  track("try_click");
+  expect(() => flush(true)).not.toThrow();
+  await settle();
+  const sent = fetchMock.mock.calls
+    .filter(([, init]) => !init.keepalive)
+    .flatMap(
+      ([, init]) =>
+        eventBatchSchema.parse(JSON.parse(init.body as string)).events,
+    )
+    .map((e) => e.event);
+  expect(sent).toEqual(["plan_view", "try_click"]);
+});
+
+test("records the first three of each error, tagged with the browser", async () => {
+  vi.stubGlobal("navigator", {
+    ...navigator,
+    userAgent:
+      "Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Instagram 355.0.0.29.82",
+  });
+  const error = {
+    kind: "error",
+    source: "app",
+    asset: "index-ABCdef12.js",
+    line: 1,
+    column: 2,
+    screen: "pitch",
+  } as const;
+  for (let i = 0; i < 42; i++) trackClientError(error);
+  trackClientError({ ...error, column: 3 });
+  trackClientError({ kind: "error", source: "external", screen: "pitch" });
+  flush();
+  const errors = (await sentBatches())
+    .flatMap((b) => b.events)
+    .filter((e) => e.event === "client_error")
+    .map((e) => e.props as Record<string, unknown>);
+  expect(errors.map((e) => [e.source, e.column])).toEqual([
+    ["app", 2],
+    ["app", 2],
+    ["app", 2],
+    ["app", 3],
+    ["external", undefined],
+  ]);
+  expect(new Set(errors.map((e) => e.browser))).toEqual(
+    new Set(["inapp-instagram"]),
+  );
+  // A new page load starts counting again.
+  resetAnalyticsForTests();
+  trackClientError(error);
+  flush();
+  expect((await sentBatches()).at(-1)!.events.map((e) => e.event)).toEqual([
+    "client_error",
+  ]);
+});
+
+test("the landing names the browser; the first-touch context shared with corpora.inc does not", async () => {
+  vi.stubGlobal("navigator", {
+    ...navigator,
+    userAgent:
+      "Mozilla/5.0 (Linux; Android 14; Pixel 8 Build/AP2A; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/130.0 Mobile Safari/537.36 trill_370404 BytedanceWebview/d8a21c6",
+  });
+  expect(landingProps().browser).toBe("inapp-tiktok");
+  initializeAnalyticsContext();
+  track("landing_view", landingProps());
+  flush();
+  const [batch] = await sentBatches();
+  expect(batch.context).not.toHaveProperty("browser");
+  expect(batch.events[0].props).toMatchObject({ browser: "inapp-tiktok" });
 });
 
 test("sends a full batch without waiting", () => {

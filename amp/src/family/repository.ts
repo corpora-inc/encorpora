@@ -217,7 +217,11 @@ export class FamilyRepository {
   }
   /** "Let Maya practice here": a shared-mode student session for one child,
    * when that child can practice now. */
-  async practiceHere(accountId: string, learnerId: string) {
+  async practiceHere(
+    accountId: string,
+    learnerId: string,
+    startedBy = accountId,
+  ) {
     return this.transaction(accountId, async (client) => {
       const canPractice =
         (await learningConsentActive(
@@ -235,7 +239,14 @@ export class FamilyRepository {
               [learnerId, accountId],
             )
           ).rowCount);
-      return practiceHere(client, this.pool, accountId, learnerId, canPractice);
+      return practiceHere(
+        client,
+        this.pool,
+        accountId,
+        learnerId,
+        canPractice,
+        startedBy,
+      );
     });
   }
   async rename(

@@ -51,6 +51,7 @@ import { usePathwaysMetadata } from "./usePathwaysMetadata";
 import "./pathways.css";
 import { Loading } from "../../ui/Loading";
 import { adultLearner, practicingAsAdult } from "../../lib/adult-learner";
+import { secondParentChild, secondParentChildren } from "../second-parent/api";
 const emptyEvidence: Evidence[] = [];
 const bandOptions: ListboxOption[] = [
   { value: "", label: "All grades & courses" },
@@ -105,7 +106,12 @@ function LearnerMap({ session }: { session: AuthSession }) {
   const own = practicingAsAdult(account, learnerId)
     ? adultLearner(account)
     : null;
-  const learners = own ? [own] : (account?.learners ?? []);
+  // A second parent's family's children follow the family's own: their
+  // progress, read-only.
+  const learners = own
+    ? [own]
+    : [...(account?.learners ?? []), ...secondParentChildren(account)];
+  const viewOnly = !own && !!secondParentChild(account, learnerId);
   const learner = learners.find((l) => l.id === learnerId);
   const progress = useQuery({
     queryKey: ["account", session.accountId, "pathways", learner?.id],
@@ -153,6 +159,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
     <MapView
       evidence={progress.data?.skills ?? emptyEvidence}
       start={learner ? "/practice" : "/start"}
+      readOnly={viewOnly}
       key={learner?.id ?? "none"}
       canPractice={canPractice}
       recordLoading={me.isPending || (!!learner && progress.isPending)}
@@ -221,6 +228,7 @@ export function MapView({
   actionLabel = "Start learning",
   noticeImportant = false,
   recordLoading = false,
+  readOnly = false,
 }: {
   evidence: Evidence[];
   start: "/sign-up" | "/practice" | "/start";
@@ -235,6 +243,8 @@ export function MapView({
   noticeImportant?: boolean;
   /** The learner's record is still on its way: counts wait for it. */
   recordLoading?: boolean;
+  /** A second parent's family's child: progress to read, no practice. */
+  readOnly?: boolean;
 }) {
   const catalog = useQuery({
     ...skillCatalogOptions,
@@ -590,7 +600,7 @@ export function MapView({
                 {families.length ? (
                   <>
                     <div className="pathways-detail-actions">
-                      {canPractice ? (
+                      {readOnly ? null : canPractice ? (
                         <Link
                           className="pathways-go"
                           to="/$"

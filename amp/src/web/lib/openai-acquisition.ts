@@ -6,6 +6,7 @@ import {
 } from "../../advertising/click-identifiers";
 import { fundedAttribution } from "./funded-entry";
 import { nativeRuntime } from "../native-runtime";
+import { keepaliveFetch } from "./keepalive";
 
 export let entryCapture: Promise<unknown> = Promise.resolve();
 export function captureOpenAIEntry(): void {
@@ -34,10 +35,9 @@ export function captureOpenAIEntry(): void {
       (navigator as Navigator & { globalPrivacyControl?: boolean })
         .globalPrivacyControl;
     if (optedOut) {
-      void fetch("/api/v1/advertising/acquisition", {
+      void keepaliveFetch("/api/v1/advertising/acquisition", {
         method: "POST",
         credentials: "same-origin",
-        keepalive: true,
         signal: AbortSignal.timeout(1500),
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ optOut: true }),
@@ -72,10 +72,9 @@ export function captureOpenAIEntry(): void {
         clicks.push({ provider: "meta", identifiers: meta.data });
     }
     if (!clicks.length) return;
-    entryCapture = fetch("/api/v1/advertising/acquisition", {
+    entryCapture = keepaliveFetch("/api/v1/advertising/acquisition", {
       method: "POST",
       credentials: "same-origin",
-      keepalive: true,
       signal: AbortSignal.timeout(1500),
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

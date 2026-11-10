@@ -10,6 +10,10 @@ import {
   frontierSchema,
 } from "../features/pathways/model";
 import type { AuthSession } from "../auth";
+import {
+  secondParentChild,
+  secondParentChildren,
+} from "../features/second-parent/api";
 
 export const skillCatalogOptions = queryOptions({
   queryKey: ["pathways-catalog"],
@@ -60,6 +64,8 @@ export function useLearningView({
       ? me.data
       : null;
   const learners = account?.learners ?? [];
+  // A second parent's family's children: their progress, read-only.
+  const shared = secondParentChildren(account);
   const selectedId = useLearnerStore((s) => s.learnerId);
   // The adult's own learner, when it's the one chosen: their own practice.
   const own = practicingAsAdult(account, selectedId)
@@ -68,7 +74,9 @@ export function useLearningView({
   const learner =
     own ??
     learners.find((l) => l.id === selectedId) ??
+    shared.find((l) => l.id === selectedId) ??
     (learners.length === 1 ? learners[0] : undefined);
+  const viewOnly = !own && !!secondParentChild(account, learner?.id);
   useEffect(() => {
     if (own) return;
     if (learners.length === 1 && selectedId !== learners[0]?.id)
@@ -92,6 +100,7 @@ export function useLearningView({
   const active = !!learner;
   const canPractice =
     !!learner &&
+    !viewOnly &&
     !!account?.family.learners.find((l) => l.id === learner.id)?.canPractice;
   const identityError = session.error || (session.data && me.error);
   const loading =
@@ -104,8 +113,13 @@ export function useLearningView({
     identityLoading: loadingIdentity,
     identityError,
     account,
-    learners,
+    /** The learners to choose between: the family's, then those of a family
+     * this account is the second parent of. */
+    learners: [...learners, ...shared],
     learner,
+    /** The chosen child is a second parent's family's: their progress is
+     * read here, and practice is the family's class. */
+    viewOnly,
     /** The chosen learner is the adult's own: their own practice. */
     ownPractice: !!own,
     active,
@@ -114,9 +128,15 @@ export function useLearningView({
     frontier: active ? frontier.data : undefined,
     loading,
     error,
-    // Practice, or the pause in practice when the free problems are used;
-    // with no learner yet, the starter.
-    practiceHref: learner ? "/practice" : "/start",
+    // A second parent's family's child practises from the family's class.
+    // Otherwise practice, or the pause in practice when the free problems
+    // are used; with no learner yet, the starter.
+    practiceHref:
+      learner && viewOnly
+        ? `/${secondParentChild(account, learner.id)!.classPath}`
+        : learner
+          ? "/practice"
+          : "/start",
     retry: () => {
       void session.refetch();
       if (session.data) void me.refetch();

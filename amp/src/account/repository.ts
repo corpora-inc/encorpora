@@ -6,6 +6,38 @@ import { activeToday, isSchoolAccount } from "../schools/principal.js";
 import { familyClassOf } from "../family/family-class.js";
 import { pendingApprovalOf } from "../family/approvals.js";
 import { absorbLiveTrial } from "../server/absorb-trial.js";
+import { secondParentFamilies } from "../family/second-parent.js";
+import type { FamilySummary } from "../family/contracts.js";
+
+/** A family's children as `/me` lists them: each with their access. */
+function childEntries(family: FamilySummary) {
+  return family.learners
+    .filter((l) => !l.deletedAt && !l.adult)
+    .map((l) => {
+      const grant = l.access
+        .filter(
+          (a) =>
+            a.status === "active" &&
+            Date.parse(a.startsAt) <= Date.now() &&
+            Date.parse(a.endsAt) > Date.now(),
+        )
+        .sort((a, b) => b.endsAt.localeCompare(a.endsAt))[0];
+      return {
+        id: l.id,
+        name: l.name,
+        birthYear: l.birthYear ?? null,
+        namePending: l.namePending,
+        pictureIdentity: l.pictureIdentity,
+        freeAllowance: l.freeAllowance,
+        entitlement: {
+          active: l.canPractice === true,
+          licensed: l.hasAccess ?? !!grant,
+          plan: grant?.channel ?? null,
+          endsAt: grant?.endsAt ?? null,
+        },
+      };
+    });
+}
 /** One authenticated account snapshot. No trial capability or child draft is stored here. */
 export async function accountSummary(
   pool: Pool,
@@ -71,32 +103,7 @@ export async function accountSummary(
       : undefined;
   // The family's learners; the adult's own learner is its own place.
   const adult = family.learners.find((l) => l.adult && !l.deletedAt);
-  const learners = family.learners
-    .filter((l) => !l.deletedAt && !l.adult)
-    .map((l) => {
-      const grant = l.access
-        .filter(
-          (a) =>
-            a.status === "active" &&
-            Date.parse(a.startsAt) <= Date.now() &&
-            Date.parse(a.endsAt) > Date.now(),
-        )
-        .sort((a, b) => b.endsAt.localeCompare(a.endsAt))[0];
-      return {
-        id: l.id,
-        name: l.name,
-        birthYear: l.birthYear ?? null,
-        namePending: l.namePending,
-        pictureIdentity: l.pictureIdentity,
-        freeAllowance: l.freeAllowance,
-        entitlement: {
-          active: l.canPractice === true,
-          licensed: l.hasAccess ?? !!grant,
-          plan: grant?.channel ?? null,
-          endsAt: grant?.endsAt ?? null,
-        },
-      };
-    });
+  const learners = childEntries(family);
   const gift = await availableGift(pool, accountId);
   // In parallel. A fixture at an earlier migration boundary has no schools,
   // and reads as none: no extra round trip to check first on the path every
@@ -107,32 +114,48 @@ export async function accountSummary(
       if (error.code && codes.includes(error.code)) return { rows: [] };
       throw error;
     };
-  const [staffRows, familyClass, familyApproval] = await Promise.all([
-    pool
-      .query<{
-        orgId: string;
-        orgName: string;
-        role: string;
-        setupPending: boolean;
-        demo: boolean;
-      }>(
-        `SELECT DISTINCT ON (o.id) o.id AS "orgId",o.name AS "orgName",r.role,
+  const [staffRows, familyClass, familyApproval, coParented] =
+    await Promise.all([
+      pool
+        .query<{
+          orgId: string;
+          orgName: string;
+          role: string;
+          setupPending: boolean;
+          demo: boolean;
+        }>(
+          `SELECT DISTINCT ON (o.id) o.id AS "orgId",o.name AS "orgName",r.role,
          o.setup_pending AND r.role='admin' AS "setupPending",o.demo
        FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
        JOIN amp_orgs o ON o.id=r.org_id AND (o.kind<>'family' OR o.created_by<>$1)
        WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")}
        ORDER BY o.id,array_position(ARRAY['admin','teacher','aide','viewer'],r.role)`,
-        [accountId],
-      )
-      .catch(missing("42P01")),
-    // The family's class, which `families.summary` above keeps current. It's
-    // this account's family side, so it isn't among the places above; a
-    // co-teacher from another account finds it there.
-    familyClassOf(pool, accountId),
-    // A link from another family's teacher this parent opened and hasn't
-    // approved yet: after consent, approving is the next step.
-    pendingApprovalOf(pool, accountId),
-  ]);
+          [accountId],
+        )
+        .catch(missing("42P01")),
+      // The family's class, which `families.summary` above keeps current. It's
+      // this account's family side, so it isn't among the places above; a
+      // co-teacher from another account finds it there.
+      familyClassOf(pool, accountId),
+      // A link from another family's teacher this parent opened and hasn't
+      // approved yet: after consent, approving is the next step.
+      pendingApprovalOf(pool, accountId),
+      // Families this account is the second parent of, with their children.
+      isSchoolAccount(accountId)
+        ? Promise.resolve([])
+        : secondParentFamilies(pool, accountId).catch(
+            (error: { code?: string }) => {
+              if (error.code === "42P01" || error.code === "42703") return [];
+              throw error;
+            },
+          ),
+    ]);
+  const secondParentOf = await Promise.all(
+    coParented.map(async ({ holder, ...place }) => ({
+      ...place,
+      learners: childEntries(await families.summary(holder)),
+    })),
+  );
   const adultPractice = {
     eligible: adult ? adult.canPractice === true : true,
     learner: adult
@@ -170,6 +193,7 @@ export async function accountSummary(
     ...(staffOf.length ? { staffOf } : {}),
     ...(familyClass ? { familyClass } : {}),
     ...(familyApproval ? { familyApproval } : {}),
+    ...(secondParentOf.length ? { secondParentOf } : {}),
     ...(adultPractice ? { adultPractice } : {}),
     ...(gift ? { availableAccessGrant: gift } : {}),
     ...(unassigned

@@ -4,6 +4,7 @@ import { z } from "zod";
 import type { Authenticator } from "../server/auth.js";
 import { AccessGiftError } from "./contracts.js";
 import { AccessGiftRepository } from "./repository.js";
+import { secondParentOwner } from "../family/second-parent.js";
 
 export async function registerAccessGiftRoutes(
   app: FastifyInstance,
@@ -36,13 +37,19 @@ export async function registerAccessGiftRoutes(
         error: unauthorized ? "sign_in_required" : "gift_service_unavailable",
       });
     });
-    scope.post("/api/v1/access-grants/:id/activate", async (request) => {
+    scope.post("/api/v1/access-grants/:id/activate", async (request, reply) => {
       const account = await options.authenticate(request);
       const { id } = z.strictObject({ id: z.uuid() }).parse(request.params);
       // A family gift covers every child, so it needs no learner.
       const { learnerId } = z
         .strictObject({ learnerId: z.string().min(1).max(200).optional() })
         .parse(request.body ?? {});
+      // A family's access is its account holder's (docs/families.md).
+      if (
+        learnerId &&
+        (await secondParentOwner(options.pool, account, learnerId))
+      )
+        return reply.code(403).send({ error: "family_holder_only" });
       return repository.activate(account, id, learnerId);
     });
   });

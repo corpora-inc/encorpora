@@ -74,6 +74,7 @@ export function defineSignInRoutes(define: typeof defineSchoolRoute) {
       new SchoolSignIn(repository).roster(
         target.classId,
         can(actor, "signin.manage", target),
+        can(actor, "share.manage", target),
       ),
   });
   define({
