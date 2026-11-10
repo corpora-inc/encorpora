@@ -127,6 +127,7 @@ async function fixture(t: TestContext) {
   return {
     app,
     db,
+    repository,
     accounts,
     user,
     start,
@@ -385,6 +386,98 @@ test(
 );
 
 test(
+  // The old free trial's seeding (`initialLevel`), stored as the adult start
+  // nearest it: an adult learner keeps no birth year.
+  "learning for myself starts where the birth year puts it",
+  database,
+  async (t) => {
+    const f = await fixture(t);
+    const startOf = async (account: string) => {
+      const row = (
+        await f.db.query(
+          "SELECT id,adult,birth_year,starting_band FROM amp_learners WHERE account_id=$1",
+          [account],
+        )
+      ).rows[0];
+      const frontier = await f.repository.transaction(account, row.id, (tx) =>
+        tx.frontier(),
+      );
+      return {
+        ...row,
+        start: frontier.expected,
+        level: frontier.overall.level,
+      };
+    };
+
+    const adult = await f.user("Robin Fixture");
+    await f.started(adult, {
+      as: "myself",
+      timezone: "America/Denver",
+      birthYear: 1985,
+    });
+    const born1985 = await startOf(adult);
+    assert.equal(born1985.adult, true);
+    assert.equal(born1985.birth_year, null);
+    assert.equal(born1985.starting_band, "precalculus");
+    // Precalculus is grade 12, the top of the scale.
+    assert.equal(born1985.start, 12);
+    const practice = await f.get("/api/v1/me/practice", adult);
+    assert.equal(practice.json().learner.start, "precalculus");
+
+    // A teenager starts at the course nearest their grade: 15 → Algebra.
+    const teen = await f.user("Sam Fixture");
+    await f.started(teen, {
+      as: "myself",
+      timezone: "America/Denver",
+      birthYear: year - 15,
+    });
+    const fifteen = await startOf(teen);
+    assert.ok(
+      ["algebra-1", "geometry"].includes(fifteen.starting_band),
+      fifteen.starting_band,
+    );
+    assert.ok(fifteen.start >= 9 && fifteen.start < 12, `${fifteen.start}`);
+    assert.ok(fifteen.level < born1985.level);
+
+    // Under 13, a parent sets AMP up; nothing is made.
+    const young = await f.user("Ari Fixture");
+    for (const birthYear of [year - 10, year - 13]) {
+      const refused = await f.start(young, {
+        as: "myself",
+        timezone: "America/Denver",
+        birthYear,
+      });
+      assert.equal(refused.statusCode, 403, refused.body);
+      assert.equal(refused.json().error, "own_practice_too_young");
+    }
+    assert.equal(await f.count("amp_learners WHERE account_id=$1", [young]), 0);
+
+    // Begun before the question was asked: the year sets the start once,
+    // and a start already set stays.
+    const earlier = await f.user("Lee Fixture");
+    await f.started(earlier, { as: "myself", timezone: "America/Denver" });
+    const before = await startOf(earlier);
+    assert.equal(before.starting_band, null);
+    assert.equal(before.start, 2, "the default the founder met: grade 2");
+    assert.ok(before.level < born1985.level - 6, `${before.level}`);
+    await f.started(earlier, {
+      as: "myself",
+      timezone: "America/Denver",
+      birthYear: 1990,
+    });
+    const after = await startOf(earlier);
+    assert.equal(after.starting_band, "precalculus");
+    assert.equal(after.start, 12);
+    await f.started(earlier, {
+      as: "myself",
+      timezone: "America/Denver",
+      birthYear: year - 14,
+    });
+    assert.equal((await startOf(earlier)).starting_band, "precalculus");
+  },
+);
+
+test(
   "refusals: invalid answers, withdrawn consent, and student or trial accounts",
   database,
   async (t) => {
@@ -401,6 +494,7 @@ test(
       // A teacher or a school starts with a demo, not with the starter.
       { as: "teacher", timezone: "America/New_York" },
       { as: "myself" },
+      { as: "myself", timezone: "America/New_York", birthYear: year + 1 },
       { as: "someone" },
     ]) {
       const refused = await f.start(account, body);

@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 import { z } from "zod";
 import { semanticFigureSchema } from "../src/math/contracts";
 import { scriptSchema } from "./schema";
-import { APPROVED, resolveCast, templateOf, voiceBindings } from "./cast";
+import { APPROVED, requireVoices, resolveCast, templateOf, voiceBindings } from "./cast";
 import {
   FILM_CAPABILITY,
   FILM_CDN,
@@ -191,6 +191,7 @@ export function planFilm(
   if (script.cast && !timing.voices)
     throw new Error(`Missing recorded cast: ${id}`);
   const cast = resolveCast(script, timing.voices);
+  requireVoices(cast);
   const teacher = cast.roles.find(
     (r) => r.kind === "teacher" || r.kind === "narrator",
   );

@@ -1,6 +1,6 @@
 import type { PoolClient } from "pg";
 import { z } from "zod";
-import { startAdultPractice } from "./adult.js";
+import { ownBirthYear, startAdultPractice } from "./adult.js";
 import { FamilyError } from "../family/contracts.js";
 import { ensureFamilyClass, familyClassOf } from "../family/family-class.js";
 import type { FamilyRepository } from "../family/repository.js";
@@ -45,7 +45,13 @@ const student = z.strictObject({
 });
 
 export const starterSchema = z.discriminatedUnion("as", [
-  z.strictObject({ as: z.literal("myself"), timezone }),
+  // The birth year sets where their own practice starts. Optional only for
+  // a screen loaded before it was asked.
+  z.strictObject({
+    as: z.literal("myself"),
+    timezone,
+    birthYear: ownBirthYear.optional(),
+  }),
   z.strictObject({
     as: z.literal("parent"),
     children: z.array(child).min(1).max(MAX_STARTER_CHILDREN),
@@ -81,6 +87,7 @@ export async function startPlace(
   if (input.as === "myself") {
     const { learnerId } = await startAdultPractice(families, accountId, {
       timezone: input.timezone,
+      birthYear: input.birthYear,
     });
     return { home: "me", learnerId };
   }

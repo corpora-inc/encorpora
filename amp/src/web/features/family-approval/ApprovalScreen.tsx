@@ -12,6 +12,8 @@ import {
 } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
 import { Loading } from "../../ui/Loading";
+import controls from "../../ui/Controls.module.css";
+import { BirthYearPicker } from "../../ui/Select";
 import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { useClaimEnrollment } from "../billing/api";
@@ -47,6 +49,8 @@ export function ApprovalScreen() {
   const claim = useClaimEnrollment(session);
   const [name, setName] = useState("");
   const [nameError, setNameError] = useState("");
+  const [birthYear, setBirthYear] = useState("");
+  const [birthYearError, setBirthYearError] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   useLoggedError(error);
@@ -61,6 +65,10 @@ export function ApprovalScreen() {
       setNameError("Enter your child’s first name.");
       return;
     }
+    if (view.asksBirthYear && !birthYear) {
+      setBirthYearError("Choose your child’s birth year.");
+      return;
+    }
     setBusy(true);
     setError("");
     try {
@@ -68,6 +76,7 @@ export function ApprovalScreen() {
         session,
         view.id,
         name.trim(),
+        view.asksBirthYear ? Number(birthYear) : undefined,
       );
       // A license bought on the way here is for this child.
       const bought = me?.signedIn ? me.unassignedPurchase : undefined;
@@ -220,6 +229,25 @@ export function ApprovalScreen() {
                   setNameError("");
                 }}
               />
+              {/* It sets where their practice starts. */}
+              {view.asksBirthYear && (
+                <div className={controls.field}>
+                  <span aria-hidden="true">Your child’s birth year</span>
+                  <BirthYearPicker
+                    label="Your child’s birth year"
+                    adult={false}
+                    value={birthYear}
+                    disabled={busy}
+                    onChange={(value) => {
+                      setBirthYear(value);
+                      setBirthYearError("");
+                    }}
+                  />
+                  <span className={controls.fieldError} aria-live="polite">
+                    {birthYearError}
+                  </span>
+                </div>
+              )}
               <Button
                 variant="primary"
                 type="submit"

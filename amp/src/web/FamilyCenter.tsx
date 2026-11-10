@@ -915,6 +915,7 @@ export function FamilyCenter({
                         />
                       </label>
                       <p className="family-name-basis">{PARENT_ENTRY_LINE}</p>
+                      {/* The birth year sets where practice starts. */}
                       <button disabled={busy || !newBirthYear}>
                         Add learner
                       </button>
@@ -940,6 +941,8 @@ export function FamilyCenter({
                                   learnerId: string;
                                 }>("/me/practice", {
                                   timezone: deviceTimeZone(),
+                                  // Sets where their own practice starts.
+                                  birthYear: Number(newBirthYear),
                                 });
                                 useLearnerStore.getState().select(learnerId);
                                 rememberPlace(identity, "me");

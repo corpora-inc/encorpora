@@ -69,7 +69,19 @@ export const openApprovalSchema = z.strictObject({
   token,
   proof: token.optional(),
 });
-export const approveSchema = z.strictObject({ name: firstName });
+/** A child the approval adds (none yet in the class) brings a birth year:
+ * it sets where their practice starts. */
+export const approveSchema = z.strictObject({
+  name: firstName,
+  birthYear: z
+    .number()
+    .int()
+    .refine((year) => {
+      const now = new Date().getUTCFullYear();
+      return year >= now - 21 && year <= now - 2;
+    }, "A child’s birth year")
+    .optional(),
+});
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const approvalId = (id: string) => {
   if (!UUID.test(id)) throw new FamilyError(404, "approval_not_found");
@@ -620,9 +632,10 @@ export async function readApproval(
         given_name: string | null;
         learner_id: string | null;
         deleted_at: Date | null;
+        person_id: string | null;
       }>(
         `SELECT a.child_name,a.expires_at,a.approved_at,a.ended_at,a.class_id,c.name AS class_name,
-           p.given_name,p.learner_id,p.deleted_at
+           p.given_name,p.learner_id,p.deleted_at,a.person_id
          FROM amp_family_approvals a JOIN amp_classes c ON c.id=a.class_id
          LEFT JOIN amp_people p ON p.id=a.person_id
          WHERE a.id=$1 AND a.account_id=$2`,
@@ -669,6 +682,8 @@ export async function readApproval(
         consentActive && (!!ends || (allowance?.problems.remaining ?? 0) > 0),
       freeAllowance: allowance,
       learnerId: here ? row.learner_id : null,
+      // A child new to the class: the parent gives their birth year too.
+      asksBirthYear: status === "open" && !row.person_id,
       access: { active: !!ends, endsAt: ends?.toISOString() ?? null },
     };
   } finally {
@@ -712,7 +727,7 @@ async function approveInside(
   sourceAccount?: string,
 ) {
   const id = approvalId(rawId);
-  const { name } = approveSchema.parse(raw);
+  const { name, birthYear } = approveSchema.parse(raw);
   const peek = (
     await client.query<{ family_account_id: string }>(
       "SELECT family_account_id FROM amp_family_approvals WHERE id=$1 AND account_id=$2",
@@ -790,8 +805,8 @@ async function approveInside(
       throw new FamilyError(403, "too_many_learners");
     learnerId = randomUUID();
     await client.query(
-      "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,$3,NULL)",
-      [learnerId, accountId, name],
+      "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,$3,$4)",
+      [learnerId, accountId, name, birthYear ?? null],
     );
     await client.query(
       `INSERT INTO amp_people(id,tenant_id,given_name,handle,grade_level,learner_id,timezone)
