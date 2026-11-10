@@ -93,7 +93,11 @@ test("every template is deterministic, reachable through the engine and stamps a
       seen.add(a.variant);
       assert.equal(a.problem.public.skillId, template.skillId, id);
       if (seed < 40) {
-        const viaEngine = generateProblem(id, `s${seed}`);
+        const viaEngine = generateProblem(
+          id,
+          `s${seed}`,
+          id === "signed-context-order" ? 1 : undefined,
+        );
         assert.equal(viaEngine.public.id, a.problem.public.id);
         assert.equal(viaEngine.answer, a.problem.answer);
       }
@@ -382,7 +386,7 @@ test("signed order statements are mathematically true", () => {
       "signed-context-order",
       `n${seed}`,
     );
-    const g = generateProblem("signed-context-order", `n${seed}`);
+    const g = generateProblem("signed-context-order", `n${seed}`, 1);
     const options = labels(g);
     const correct = options.find((o) => o.id === g.answer)!.label;
     const p = problem.public.prompt;

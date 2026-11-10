@@ -44,7 +44,9 @@ test("a built server answers from the table without generating a problem", async
     "guess.mjs",
   );
   await build({
-    entryPoints: [new URL("../src/math/guess-chance.ts", import.meta.url).pathname],
+    entryPoints: [
+      new URL("../src/math/guess-chance.ts", import.meta.url).pathname,
+    ],
     bundle: true,
     platform: "node",
     format: "esm",

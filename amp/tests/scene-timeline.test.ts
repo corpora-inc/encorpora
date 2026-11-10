@@ -127,7 +127,9 @@ for (const id of [
 ]) {
   test(`${id}: the learner's scene walks its own numbers and never shows the answer`, () => {
     for (let i = 0; i < 300; i++) {
-      const p = generateProblem(id, `scene-${i}`);
+      // Version 1 is the scene walkthrough; later clauses can ask for a
+      // numeric or card response without this animation.
+      const p = generateProblem(id, `scene-${i}`, 1);
       assert.equal(generatedProblemSchema.safeParse(p).success, true);
       const f = p.public.figure;
       assert.ok(f?.kind === "scene");
