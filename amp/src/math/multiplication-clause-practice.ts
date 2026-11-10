@@ -245,7 +245,7 @@ export const multiplicationClauseTemplates: readonly TemplateMetadata[] = [
     "List every factor pair",
     "factors-multiples",
     "3–5",
-    "List every factor pair of a number from 12 to 100, smaller factor first, in increasing order.",
+    "List every factor pair of a number from 12 to 100, smallest first, each pair once.",
     "structured-work-v1",
   ),
   meta(
@@ -1760,7 +1760,7 @@ function listAllPairs(r: Random) {
   const work = { ...fixed, response };
   return {
     family: pairs.length >= 3 ? "several-pairs" : pairs.length === 1 ? "prime" : "two-pairs",
-    prompt: `List every factor pair of ${n}, smaller number first, in increasing order of the smaller factor. A square pair is entered once. Do not list a turned pair again.`,
+    prompt: `List every factor pair of ${n}, smallest first. Write each pair once.`,
     hint: `Try 1, then 2, then 3, and so on. When a number divides ${n}, its partner is ${n} divided by that number. Stop when the partner would be smaller than the number you are trying. ${n} is not tested by multiplying two numbers that do not divide it.`,
     explanation: [
       `The factor pairs of ${n} are ${pairText(pairs)}.`,
