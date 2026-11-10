@@ -110,11 +110,14 @@ export function CopyButton({
   label,
   copied = "Copied",
   className,
+  icon,
 }: {
   text: string;
   label: string;
   copied?: string;
   className?: string;
+  /** A glyph before the words, kept through Copied. */
+  icon?: ReactNode;
 }) {
   const [done, setDone] = useState<"copied" | "failed" | null>(null);
   return (
@@ -136,14 +139,18 @@ export function CopyButton({
       }}
     >
       <span className={styles.copySizer} aria-hidden="true">
+        {icon}
         {label.length > copied.length ? label : copied}
       </span>
-      <span className={styles.copyText} aria-live="polite">
-        {done === "copied"
-          ? copied
-          : done === "failed"
-            ? "Press to retry"
-            : label}
+      <span className={styles.copyText}>
+        {icon}
+        <span aria-live="polite">
+          {done === "copied"
+            ? copied
+            : done === "failed"
+              ? "Press to retry"
+              : label}
+        </span>
       </span>
     </button>
   );

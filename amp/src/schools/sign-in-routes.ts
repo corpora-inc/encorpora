@@ -73,8 +73,11 @@ export function defineSignInRoutes(define: typeof defineSchoolRoute) {
     url: `${CLASS}/presence`,
     action: "signin.read",
     target: classParam,
-    handler: ({ target, repository }) =>
-      new SchoolSignIn(repository).presence(target.classId),
+    handler: ({ actor, target, repository }) =>
+      new SchoolSignIn(repository).presence(
+        target.classId,
+        can(actor, "signin.manage", target),
+      ),
   });
   define({
     method: "GET",

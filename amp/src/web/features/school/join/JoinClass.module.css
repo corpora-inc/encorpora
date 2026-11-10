@@ -54,9 +54,6 @@
   overflow-wrap: anywhere;
 }
 .actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
   margin-top: var(--space-1);
 }
 .fallback {
@@ -73,28 +70,137 @@
   border-radius: var(--radius-control);
   background: var(--color-figure-paper);
 }
-/* Today's header: the same element on one line. */
+/* The header form: the code, then one group of equal controls. */
 .compact {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
-  gap: var(--space-2) var(--space-3);
+  gap: var(--space-2) var(--space-4);
+}
+.codeGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
 }
 .compact .code {
   font-size: 20px;
-}
-.inlineLink {
-  color: var(--color-primary);
-  font-size: var(--text-label);
-  font-weight: 600;
-  text-decoration: none;
-}
-.inlineLink:hover {
-  text-decoration: underline;
+  line-height: 1;
 }
 @media (max-width: 559px) {
   .compact {
     justify-content: flex-start;
   }
+}
+
+/* One action group, wherever the element appears: every control the same
+   height and outline, an icon before its words, equal gaps, centred on one
+   line. Two classes outrank the copy button's and the menu trigger's own. */
+.group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+.group .act {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-sizing: border-box;
+  height: var(--target-size);
+  min-height: var(--target-size);
+  min-width: var(--target-size);
+  margin: 0;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-primary);
+  font: inherit;
+  font-size: var(--text-label);
+  font-weight: 650;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.group .act:hover:not(:disabled),
+.group .act[data-state="open"],
+.group .act[data-state="open"]:hover:not(:disabled) {
+  filter: none;
+  background: var(--color-secondary);
+  color: var(--color-primary);
+}
+.group .act:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.group .act[data-done="copied"] {
+  border-color: var(--color-success-accent);
+  background: var(--color-success);
+  color: var(--color-on-success);
+}
+.group .iconOnly {
+  width: var(--target-size);
+  padding: 0;
+}
+.group .primaryAct,
+.group .quietAct {
+  box-sizing: border-box;
+  height: var(--target-size);
+  min-height: var(--target-size);
+  padding-block: 0;
+  font-size: var(--text-label);
+  line-height: 1;
+}
+.glyph {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.glyph[data-glyph="more"] {
+  fill: currentColor;
+  stroke: none;
+}
+
+/* The QR, large, for a device's camera. Dark on white in every theme. */
+.qrSheet {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+.qrSheet p {
+  max-width: 34ch;
+  margin: 0;
+  color: var(--color-muted-text);
+}
+.qrLarge {
+  width: min(280px, 72vw);
+  height: min(280px, 72vw);
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-figure-paper);
+}
+
+.confirm {
+  display: grid;
+  gap: var(--space-5);
+  line-height: 1.5;
+}
+.confirm p {
+  margin: 0;
+}
+.confirmActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-2);
 }

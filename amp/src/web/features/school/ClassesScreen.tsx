@@ -47,12 +47,7 @@ import { OrgFrame } from "./OrgFrame";
 import { YearCalendar } from "./CalendarScreen";
 import { JoinClass } from "./join/JoinClass";
 import { ClassExperienceSection } from "./classroom/ExperienceScreens";
-import {
-  FormNote,
-  GradePicker,
-  PageHead,
-  gradeLabel,
-} from "./parts";
+import { FormNote, GradePicker, PageHead, gradeLabel } from "./parts";
 import { yearsOptions } from "./org/org-api";
 import { classPath, orgPath } from "./paths";
 import { compareClassNames } from "./sort";
@@ -633,157 +628,167 @@ export function ClassScreen() {
       narrow
     >
       <div className={styles.classSettings}>
-      <PageHead
-        title="Settings"
-        detail={
-          family
-            ? "Each child works at their own grade"
-            : klass.studentCount
-              ? `${klass.studentCount} ${klass.studentCount === 1 ? "student" : "students"}, ${courseLabel(klass.courseBands).toLowerCase()}`
-              : courseLabel(klass.courseBands)
-        }
-        action={
-          org?.can?.includes("roster.import") ? (
-            <Link
-              to="/$"
-              params={{ _splat: orgPath(orgId, "import") }}
-              className={buttonClass("secondary")}
-            >
-              Import students
-            </Link>
-          ) : undefined
-        }
-      />
-      <section className={styles.classMeta}>
-        <JoinClass
-          code={klass.joinCode}
-          place={{ org: orgId, class: classId }}
-          family={family}
-        />
-        {canEdit && !small && (
-          <div className={styles.field}>
-            <span className={styles.fieldLabel}>Grading periods</span>
-            <Segmented
-              label="Grading periods"
-              compact
-              dense
-              value={klass.gradingKind}
-              onChange={pick}
-              options={GRADING.map((value) => ({
-                value,
-                label: gradingLabel(value),
-              }))}
-            />
-          </div>
-        )}
-      </section>
-      {small && org?.can?.includes("calendar.read") && (
-        <YearCalendar
-          orgId={orgId}
-          compact
-          grading={{ value: klass.gradingKind, onChange: pick, disabled: !canEdit }}
-        />
-      )}
-      <ClassExperienceSection classId={classId} family={family} />
-      {schoolSettings && (
-        <ul className={styles.settingsLinks}>
-          {schoolSettings && (
-            <li>
+        <PageHead
+          title="Settings"
+          detail={
+            family
+              ? "Each child works at their own grade"
+              : klass.studentCount
+                ? `${klass.studentCount} ${klass.studentCount === 1 ? "student" : "students"}, ${courseLabel(klass.courseBands).toLowerCase()}`
+                : courseLabel(klass.courseBands)
+          }
+          action={
+            org?.can?.includes("roster.import") ? (
               <Link
                 to="/$"
-                params={{ _splat: orgPath(orgId, "settings") }}
-                className={styles.settingsLink}
+                params={{ _splat: orgPath(orgId, "import") }}
+                className={buttonClass("secondary")}
               >
-                <span>
-                  <strong>{org?.name ?? "School"} settings</strong>
-                  <span className={styles.quiet}>
-                    {small
-                      ? "License, privacy and what students see"
-                      : "School year and terms, license, privacy and what students see"}
-                  </span>
-                </span>
-                <span aria-hidden="true">›</span>
+                Import students
               </Link>
-            </li>
+            ) : undefined
+          }
+        />
+        <section className={styles.classMeta}>
+          <JoinClass
+            code={klass.joinCode}
+            place={{ org: orgId, class: classId }}
+            family={family}
+            manage={
+              org?.can?.includes("signin.manage") ||
+              org?.teaches?.includes(classId)
+            }
+          />
+          {canEdit && !small && (
+            <div className={styles.field}>
+              <span className={styles.fieldLabel}>Grading periods</span>
+              <Segmented
+                label="Grading periods"
+                compact
+                dense
+                value={klass.gradingKind}
+                onChange={pick}
+                options={GRADING.map((value) => ({
+                  value,
+                  label: gradingLabel(value),
+                }))}
+              />
+            </div>
           )}
-        </ul>
-      )}
-      {!family && (
-      <section className={styles.classRoster}>
-        <div className={styles.rosterHead}>
-          <h2>Students</h2>
-          {(canAdd || familyAdd) && (
-            <Button variant="secondary" onClick={() => setAdding(true)}>
-              {familyAdd ? familyAddLabel(familyAdd) : "Add student"}
-            </Button>
-          )}
-        </div>
-        {query.isPending ? (
-          <Loading>Loading students</Loading>
-        ) : rows.length ? (
-          <DataGrid
-            label={`Students in ${klass.name}`}
-            columns={rosterColumns(orgId, classId, family)}
-            rows={rows}
-            rowKey={(row) => row.id}
-            defaultSort={{ column: "name", direction: "ascending" }}
-            cardLayout="row"
-            cardEstimate={72}
-            card={(row) => (
-              <Link
-                to="/$"
-                params={{ _splat: studentUrl(orgId, row.id, classId) }}
-                className={styles.studentCard}
-              >
-                <span className={styles.studentCardText}>
-                  <strong>{displayName(row)}</strong>
+        </section>
+        {small && org?.can?.includes("calendar.read") && (
+          <YearCalendar
+            orgId={orgId}
+            compact
+            grading={{
+              value: klass.gradingKind,
+              onChange: pick,
+              disabled: !canEdit,
+            }}
+          />
+        )}
+        <ClassExperienceSection classId={classId} family={family} />
+        {schoolSettings && (
+          <ul className={styles.settingsLinks}>
+            {schoolSettings && (
+              <li>
+                <Link
+                  to="/$"
+                  params={{ _splat: orgPath(orgId, "settings") }}
+                  className={styles.settingsLink}
+                >
                   <span>
-                    {row.gradeLevel === null
-                      ? "Grade not set"
-                      : `Grade ${gradeLabel(row.gradeLevel)}`}
+                    <strong>{org?.name ?? "School"} settings</strong>
+                    <span className={styles.quiet}>
+                      {small
+                        ? "License, privacy and what students see"
+                        : "School year and terms, license, privacy and what students see"}
+                    </span>
                   </span>
-                </span>
-                {family ? null : row.seated ? (
-                  <Badge tone="success">Seated</Badge>
-                ) : (
-                  <Badge tone="warning">Needs a seat</Badge>
-                )}
-              </Link>
+                  <span aria-hidden="true">›</span>
+                </Link>
+              </li>
             )}
-          />
-        ) : (
-          <EmptyState title={family ? "No children yet" : "No students yet"}>
-            {family
-              ? "Add a child in Family and they appear here with their grade."
-              : canAdd
-                ? "Add them one at a time, or import a file."
-                : "Students added to this class appear here."}
-          </EmptyState>
+          </ul>
         )}
-        {familyAdd && session ? (
-          <AddChildSheet
-            session={session}
-            kind={familyAdd}
-            open={adding}
-            onOpenChange={setAdding}
-          />
-        ) : (
-          canAdd && (
-            <AddStudentSheet
-              orgId={orgId}
-              classId={classId}
-              className={klass.name}
-              open={adding}
-              onOpenChange={setAdding}
-            />
-          )
+        {!family && (
+          <section className={styles.classRoster}>
+            <div className={styles.rosterHead}>
+              <h2>Students</h2>
+              {(canAdd || familyAdd) && (
+                <Button variant="secondary" onClick={() => setAdding(true)}>
+                  {familyAdd ? familyAddLabel(familyAdd) : "Add student"}
+                </Button>
+              )}
+            </div>
+            {query.isPending ? (
+              <Loading>Loading students</Loading>
+            ) : rows.length ? (
+              <DataGrid
+                label={`Students in ${klass.name}`}
+                columns={rosterColumns(orgId, classId, family)}
+                rows={rows}
+                rowKey={(row) => row.id}
+                defaultSort={{ column: "name", direction: "ascending" }}
+                cardLayout="row"
+                cardEstimate={72}
+                card={(row) => (
+                  <Link
+                    to="/$"
+                    params={{ _splat: studentUrl(orgId, row.id, classId) }}
+                    className={styles.studentCard}
+                  >
+                    <span className={styles.studentCardText}>
+                      <strong>{displayName(row)}</strong>
+                      <span>
+                        {row.gradeLevel === null
+                          ? "Grade not set"
+                          : `Grade ${gradeLabel(row.gradeLevel)}`}
+                      </span>
+                    </span>
+                    {family ? null : row.seated ? (
+                      <Badge tone="success">Seated</Badge>
+                    ) : (
+                      <Badge tone="warning">Needs a seat</Badge>
+                    )}
+                  </Link>
+                )}
+              />
+            ) : (
+              <EmptyState
+                title={family ? "No children yet" : "No students yet"}
+              >
+                {family
+                  ? "Add a child in Family and they appear here with their grade."
+                  : canAdd
+                    ? "Add them one at a time, or import a file."
+                    : "Students added to this class appear here."}
+              </EmptyState>
+            )}
+            {familyAdd && session ? (
+              <AddChildSheet
+                session={session}
+                kind={familyAdd}
+                open={adding}
+                onOpenChange={setAdding}
+              />
+            ) : (
+              canAdd && (
+                <AddStudentSheet
+                  orgId={orgId}
+                  classId={classId}
+                  className={klass.name}
+                  open={adding}
+                  onOpenChange={setAdding}
+                />
+              )
+            )}
+          </section>
         )}
-      </section>
-      )}
-      {/* A small class has no Grades tab: its target and records are here. */}
-      {family && klass.studentCount <= SMALL_CLASS && (
-        <SmallClassGrades orgId={orgId} classId={classId} />
-      )}
+        {/* A small class has no Grades tab: its target and records are here. */}
+        {family && klass.studentCount <= SMALL_CLASS && (
+          <SmallClassGrades orgId={orgId} classId={classId} />
+        )}
       </div>
       <Toast tone="status" message={notice} onDismiss={() => setNotice("")} />
       <Toast message={error} onDismiss={() => setError("")} />

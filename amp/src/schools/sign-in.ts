@@ -361,7 +361,7 @@ export class SchoolSignIn {
 
   /** Who's here: a session seen since midnight at the school. A device that
    * stayed signed in counts once it's been used today. */
-  async presence(classId: string): Promise<Presence> {
+  async presence(classId: string, canManage = false): Promise<Presence> {
     const found = await this.classInfo(classId);
     const { rows } = await this.pool.query(
       `SELECT p.id,${STUDENT_NAME} AS name,
@@ -372,7 +372,13 @@ export class SchoolSignIn {
       [classId],
     );
     return {
-      class: { id: found.id, name: found.name, joinCode: found.joinCode },
+      class: {
+        id: found.id,
+        name: found.name,
+        joinCode: found.joinCode,
+        joinLockedUntil: found.lockedUntil?.toISOString() ?? null,
+      },
+      canManage,
       students: rows,
     };
   }

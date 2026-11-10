@@ -166,6 +166,8 @@ export function TodayScreen() {
                 // (its bar leads to the real class) and a family (no class
                 // to start).
                 board={family || demo}
+                manage={presence.data?.canManage ?? false}
+                locked={!!presence.data?.class.joinLockedUntil}
               />
             )}
           </header>

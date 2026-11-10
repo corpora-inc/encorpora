@@ -19,7 +19,6 @@
   gap: var(--space-3);
 }
 .code {
-  --tile: 44px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -41,15 +40,6 @@
   color: var(--color-muted-text);
   font-size: var(--text-table);
 }
-.tiles {
-  display: inline-flex;
-  flex: none;
-}
-.codeActions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
 .student {
   display: inline-flex;
   align-items: center;
@@ -68,11 +58,6 @@
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: var(--space-3);
-}
-@media (max-width: 400px) {
-  .code {
-    --tile: 40px;
-  }
 }
 /* The empty roster's one made-up line. */
 .example {
