@@ -277,6 +277,13 @@ export default function DrawerContents({
           nav(overviewPath(context), "Progress", "level", {
             current: here?.kind === "progress",
           })}
+        {/* Practicing at another grade and pace: a page of its own, never a
+            place in the switcher (docs/design/ia.md). */}
+        {own &&
+          !profile &&
+          nav("/me/profiles", "Practice as someone else", "level", {
+            current: location.pathname.startsWith("/me/profiles"),
+          })}
         {view.learner &&
           !view.viewOnly &&
           nav("/lessons", "Lessons", "lessons", {
