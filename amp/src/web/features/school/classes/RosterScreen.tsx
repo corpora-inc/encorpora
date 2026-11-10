@@ -301,7 +301,9 @@ export function RosterScreen() {
                   Print cards
                 </Link>
               )}
-              {canManage && data.students.length > 0 && (
+              {/* A family's own class has no parent links: its parents
+                  see the children's progress themselves. */}
+              {data.canShare === true && data.students.length > 0 && (
                 <Button
                   variant="secondary"
                   onClick={() => setPending({ kind: "links" })}

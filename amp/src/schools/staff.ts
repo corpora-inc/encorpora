@@ -34,6 +34,17 @@ const inviteProof = (keys: InviteKeys, credentialId: string) =>
   derive(keys, "proof", credentialId);
 const copyUrl = (keys: InviteKeys, credentialId: string) =>
   `${keys.origin}/school/invite#${inviteToken(keys, credentialId)}`;
+/** The "Copy link" form of a live invitation, or null when it lapsed or the
+ * key changed and it has to be sent again. */
+export function liveInviteUrl(
+  keys: InviteKeys,
+  invite: { id: string; lookup_hash: string; expires_at: Date | string } | null,
+) {
+  if (!invite || new Date(invite.expires_at) <= new Date()) return null;
+  return hash(inviteToken(keys, invite.id)) === invite.lookup_hash
+    ? copyUrl(keys, invite.id)
+    : null;
+}
 export const mailedInviteUrl = (keys: InviteKeys, credentialId: string) =>
   `${copyUrl(keys, credentialId)}.${inviteProof(keys, credentialId)}`;
 
@@ -95,20 +106,25 @@ export async function inviteStaffIn(
     familyName?: string;
     classIds?: string[];
     personId?: string;
+    /** Always a new person with an invitation to accept, never the role
+     * applied to whoever already has this address here: a family's second
+     * parent (src/family/second-parent.ts) accepts with that address. */
+    newPerson?: boolean;
   },
   actorPersonId: string | null,
 ): Promise<IssuedInvite> {
   const org = await repo.org(client, orgId);
   const tenantId = org.path[0]!;
-  const found = input.email
-    ? (
-        await client.query(
-          `SELECT id,account_id FROM amp_people WHERE tenant_id=$1 AND lower(email)=$2
+  const found =
+    input.email && !input.newPerson
+      ? (
+          await client.query(
+            `SELECT id,account_id FROM amp_people WHERE tenant_id=$1 AND lower(email)=$2
            AND deleted_at IS NULL AND learner_id IS NULL ORDER BY created_at,id LIMIT 1`,
-          [tenantId, input.email],
-        )
-      ).rows[0]
-    : undefined;
+            [tenantId, input.email],
+          )
+        ).rows[0]
+      : undefined;
   const personId: string = found?.id ?? input.personId ?? randomUUID();
   if (!found)
     await client.query(
@@ -173,24 +189,47 @@ export async function reissueInvite(
   orgId: string,
   personId: string,
 ) {
-  return repo.transaction(async (client) => {
-    const person = await staffPerson(client, repo, orgId, personId);
-    if (person.account_id)
-      throw new SchoolError(409, "invite_already_accepted");
-    const credentialId = await issueCredential(client, keys, personId);
-    await recordEvent(client, {
-      orgId,
-      action: "staff.invited",
-      targetKind: "person",
-      targetId: personId,
-      detail: { after: { resent: true } },
-    });
-    return {
-      personId,
-      credentialId,
-      email: person.email as string | null,
-    };
+  return repo.transaction((client) =>
+    reissueInviteIn(client, repo, keys, orgId, personId),
+  );
+}
+
+/** `reissueInvite` in a transaction the caller holds. Its live link and then
+ * the person are locked, in the order accepting takes them, so a link is
+ * never renewed or issued again for a person someone has just become. */
+export async function reissueInviteIn(
+  client: PoolClient,
+  repo: SchoolRepository,
+  keys: InviteKeys,
+  orgId: string,
+  personId: string,
+) {
+  await client.query(
+    `SELECT id FROM amp_person_credentials WHERE person_id=$1 AND kind='invite'
+     AND revoked_at IS NULL ORDER BY id FOR UPDATE`,
+    [personId],
+  );
+  const person = await staffPerson(client, repo, orgId, personId);
+  const accepted = (
+    await client.query(
+      "SELECT account_id FROM amp_people WHERE id=$1 FOR UPDATE",
+      [personId],
+    )
+  ).rows[0]?.account_id;
+  if (accepted) throw new SchoolError(409, "invite_already_accepted");
+  const credentialId = await issueCredential(client, keys, personId);
+  await recordEvent(client, {
+    orgId,
+    action: "staff.invited",
+    targetKind: "person",
+    targetId: personId,
+    detail: { after: { resent: true } },
   });
+  return {
+    personId,
+    credentialId,
+    email: person.email as string | null,
+  };
 }
 
 /** A person with a staff role along this org, or not found. */
@@ -231,7 +270,8 @@ export async function listStaff(
          ARRAY(SELECT e.class_id FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs eo ON eo.id=c.org_id
            WHERE e.person_id=p.id AND e.role<>'student' AND c.archived_at IS NULL AND ${activeToday("e", "eo")}) AS "classIds",
          (SELECT row_to_json(i) FROM (SELECT c.id,c.lookup_hash,c.expires_at FROM amp_person_credentials c
-           WHERE c.person_id=p.id AND c.kind='invite' AND c.revoked_at IS NULL ORDER BY c.created_at DESC,c.id LIMIT 1) i) AS invite
+           WHERE c.person_id=p.id AND c.kind='invite' AND c.revoked_at IS NULL ORDER BY c.created_at DESC,c.id LIMIT 1) i) AS invite,
+         EXISTS(SELECT 1 FROM amp_families f WHERE f.second_parent=p.id) AS second_parent
        FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
        JOIN amp_orgs o ON o.id=r.org_id
        WHERE o.path @> ARRAY[$1]::uuid[] AND p.deleted_at IS NULL AND ${activeToday("r", "o")}
@@ -260,6 +300,7 @@ export async function listStaff(
           }
         : {}),
       self: row.account_id === options.accountId,
+      ...(row.second_parent ? { secondParent: true as const } : {}),
     };
   });
 }
@@ -272,47 +313,100 @@ export async function endStaff(
   personId: string,
   actorPersonId: string | null,
 ) {
-  return repo.transaction(async (client) => {
-    await staffPerson(client, repo, orgId, personId);
-    const org = await repo.org(client, orgId);
-    const others = await client.query(
+  return repo.transaction((client) =>
+    endStaffIn(client, repo, orgId, personId, actorPersonId),
+  );
+}
+
+/** `endStaff` in a transaction the caller holds. A family's second parent is
+ * one of its staff: ending her ends that too, and the family may invite
+ * another (src/family/second-parent.ts). */
+export async function endStaffIn(
+  client: PoolClient,
+  repo: SchoolRepository,
+  orgId: string,
+  personId: string,
+  actorPersonId: string | null,
+) {
+  // The family's row first, in the order inviting and accepting take it.
+  const family = (
+    await client.query<{
+      holder: string;
+      parent: string | null;
+      gone: boolean;
+    }>(
+      `SELECT f.account_id AS holder,p.account_id AS parent,p.deleted_at IS NOT NULL AS gone
+       FROM amp_families f JOIN amp_people p ON p.id=f.second_parent
+       WHERE f.second_parent=$1 FOR UPDATE OF f`,
+      [personId],
+    )
+  ).rows[0];
+  // A second parent's row an earlier fault removed still ends: her roles and
+  // the family's pointer to her go, so the family can invite again.
+  if (!family?.gone) await staffPerson(client, repo, orgId, personId);
+  const org = await repo.org(client, orgId);
+  const others = await client.query(
+    `SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
+     JOIN amp_people p ON p.id=r.person_id AND p.deleted_at IS NULL AND p.account_id IS NOT NULL
+     WHERE r.role='admin' AND r.person_id<>$1 AND o.path @> ARRAY[$2]::uuid[] AND ${activeToday("r", "o")} LIMIT 1`,
+    [personId, org.path[0]],
+  );
+  if (!others.rowCount) {
+    const isAdmin = await client.query(
       `SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
-       JOIN amp_people p ON p.id=r.person_id AND p.deleted_at IS NULL AND p.account_id IS NOT NULL
-       WHERE r.role='admin' AND r.person_id<>$1 AND o.path @> ARRAY[$2]::uuid[] AND ${activeToday("r", "o")} LIMIT 1`,
-      [personId, org.path[0]],
-    );
-    if (!others.rowCount) {
-      const isAdmin = await client.query(
-        `SELECT 1 FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
-         WHERE r.person_id=$1 AND r.role='admin' AND ${activeToday("r", "o")} LIMIT 1`,
-        [personId],
-      );
-      if (isAdmin.rowCount) throw new SchoolError(409, "last_admin");
-    }
-    const today = await repo.today(client, org.timezone);
-    await client.query(
-      `UPDATE amp_org_roles r SET end_on=$2 FROM amp_orgs o
-       WHERE r.person_id=$1 AND r.role<>'student' AND r.end_on IS NULL AND o.id=r.org_id AND o.path @> ARRAY[$3]::uuid[]`,
-      [personId, today, org.id],
-    );
-    await client.query(
-      `UPDATE amp_enrollments e SET end_on=$2 FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
-       WHERE e.person_id=$1 AND e.role<>'student' AND e.end_on IS NULL AND c.id=e.class_id AND o.path @> ARRAY[$3]::uuid[]`,
-      [personId, today, org.id],
-    );
-    await client.query(
-      "UPDATE amp_person_credentials SET revoked_at=now() WHERE person_id=$1 AND kind='invite' AND revoked_at IS NULL",
+       WHERE r.person_id=$1 AND r.role='admin' AND ${activeToday("r", "o")} LIMIT 1`,
       [personId],
     );
-    await recordEvent(client, {
-      orgId: org.id,
-      actorPersonId,
-      action: "staff.ended",
-      targetKind: "person",
-      targetId: personId,
-    });
-    return { ended: true };
+    if (isAdmin.rowCount) throw new SchoolError(409, "last_admin");
+  }
+  const today = await repo.today(client, org.timezone);
+  await client.query(
+    `UPDATE amp_org_roles r SET end_on=$2 FROM amp_orgs o
+     WHERE r.person_id=$1 AND r.role<>'student' AND r.end_on IS NULL AND o.id=r.org_id AND o.path @> ARRAY[$3]::uuid[]`,
+    [personId, today, org.id],
+  );
+  await client.query(
+    `UPDATE amp_enrollments e SET end_on=$2 FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
+     WHERE e.person_id=$1 AND e.role<>'student' AND e.end_on IS NULL AND c.id=e.class_id AND o.path @> ARRAY[$3]::uuid[]`,
+    [personId, today, org.id],
+  );
+  await client.query(
+    "UPDATE amp_person_credentials SET revoked_at=now() WHERE person_id=$1 AND kind='invite' AND revoked_at IS NULL",
+    [personId],
+  );
+  if (family) {
+    await client.query(
+      "UPDATE amp_families SET second_parent=NULL WHERE account_id=$1",
+      [family.holder],
+    );
+    if (family.parent)
+      await endSecondParentSessions(client, family.holder, family.parent);
+  }
+  await recordEvent(client, {
+    orgId: org.id,
+    actorPersonId,
+    action: "staff.ended",
+    targetKind: "person",
+    targetId: personId,
   });
+  return { ended: true };
+}
+
+/** "Let … practice here" sessions a family's second parent started for its
+ * children end with her place in the family. The account holder's and the
+ * children's own sessions stay. */
+export async function endSecondParentSessions(
+  client: Pick<PoolClient, "query">,
+  holder: string,
+  parent: string,
+) {
+  await client.query(
+    `UPDATE amp_student_sessions s SET revoked_at=now()
+     FROM amp_people p JOIN amp_learners l ON l.id=p.learner_id
+     WHERE s.person_id=p.id AND l.account_id=$1 AND s.started_by=$2
+       AND s.revoked_at IS NULL`,
+    [holder, parent],
+  );
 }
 
 /** Which classes a staff member teaches here. */
@@ -387,7 +481,9 @@ export async function lookupInvite(
   const { token } = inviteLookupSchema.parse(raw);
   const row = (
     await repo.pool.query(
-      `SELECT c.revoked_at,c.expires_at,p.email,p.account_id,o.name,r.role,o.setup_pending
+      `SELECT c.revoked_at,c.expires_at,p.email,p.account_id,o.name,r.role,o.setup_pending,
+         (SELECT k.name FROM amp_families f JOIN amp_classes k ON k.id=f.class_id
+           WHERE f.second_parent=p.id) AS family_class
        FROM amp_person_credentials c JOIN amp_people p ON p.id=c.person_id
        JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
        JOIN amp_orgs o ON o.id=r.org_id
@@ -409,6 +505,9 @@ export async function lookupInvite(
     role: row.role,
     email: row.email,
     setup: row.role === "admin" && row.setup_pending === true,
+    ...(row.family_class
+      ? { secondParent: { className: row.family_class } }
+      : {}),
   };
 }
 
@@ -423,6 +522,16 @@ export async function acceptInvite(
 ) {
   const input = acceptInviteSchema.parse(raw);
   return repo.transaction(async (client) => {
+    // A family's second parent: the family's row first, in the order
+    // inviting and removing her take it (src/family/second-parent.ts).
+    const family = (
+      await client.query<{ account_id: string; second_parent: string }>(
+        `SELECT f.account_id,f.second_parent FROM amp_families f
+         WHERE f.second_parent=(SELECT c.person_id FROM amp_person_credentials c
+           WHERE c.kind='invite' AND c.lookup_hash=$1) FOR UPDATE OF f`,
+        [hash(input.token)],
+      )
+    ).rows[0];
     const invite = (
       await client.query(
         `SELECT c.id,c.person_id,c.revoked_at,c.expires_at,c.secret_hash
@@ -444,6 +553,23 @@ export async function acceptInvite(
     }
     if (new Date(invite.expires_at) <= new Date())
       throw new SchoolError(410, "invite_expired");
+    // Already someone's: the link is spent, whoever holds it.
+    if (person.account_id) {
+      if (person.account_id !== accountId)
+        throw new SchoolError(410, "invite_used");
+      await client.query(
+        "UPDATE amp_person_credentials SET revoked_at=now() WHERE id=$1",
+        [invite.id],
+      );
+      return { accepted: true, ...(await joinedOrg(client, person.id)) };
+    }
+    if (family)
+      await secondParentMayAccept(client, {
+        holder: family.account_id,
+        invited: person.email,
+        accountId,
+        proven: !!input.proof && hash(input.proof) === invite.secret_hash,
+      });
     const already = (
       await client.query(
         "SELECT id FROM amp_people WHERE tenant_id=$1 AND account_id=$2 AND deleted_at IS NULL",
@@ -451,7 +577,7 @@ export async function acceptInvite(
       )
     ).rows[0];
     let personId: string = person.id;
-    if (already) {
+    if (already && already.id !== person.id) {
       await moveStaffRecords(client, person.id, already.id);
       personId = already.id;
     } else {
@@ -483,7 +609,15 @@ export async function acceptInvite(
          WHERE id=$1 AND lower(email)=lower($2) AND NOT "emailVerified"`,
         [accountId.slice(4), person.email],
       );
-    await markStaffAccount(client, accountId);
+    // Her family points at the person who holds her account here.
+    if (family)
+      await client.query(
+        "UPDATE amp_families SET second_parent=$2 WHERE account_id=$1",
+        [family.account_id, personId],
+      );
+    // A school's staff aren't new parents; a family's second parent is a
+    // parent, and her account stays as it was.
+    if (!family) await markStaffAccount(client, accountId);
     const org = await joinedOrg(client, personId);
     if (org.orgId)
       await recordEvent(client, {
@@ -498,12 +632,13 @@ export async function acceptInvite(
 }
 
 /** Where an accepted invitation leads: the school, and whether its admin is
- * still setting it up. */
+ * still setting it up; for a family's second parent, the family's class. */
 async function joinedOrg(client: PoolClient, personId: string) {
   const row = (
     await client.query(
       `SELECT r.org_id,o.setup_pending AND EXISTS(SELECT 1 FROM amp_org_roles a
-         WHERE a.person_id=r.person_id AND a.org_id=r.org_id AND a.role='admin' AND a.end_on IS NULL) AS setup
+         WHERE a.person_id=r.person_id AND a.org_id=r.org_id AND a.role='admin' AND a.end_on IS NULL) AS setup,
+         (SELECT f.class_id FROM amp_families f WHERE f.second_parent=r.person_id) AS family_class
        FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
        WHERE r.person_id=$1 AND r.role<>'student' AND r.end_on IS NULL
        ORDER BY r.created_at DESC LIMIT 1`,
@@ -513,7 +648,45 @@ async function joinedOrg(client: PoolClient, personId: string) {
   return {
     orgId: (row?.org_id as string | undefined) ?? null,
     setup: row?.setup === true,
+    ...(row?.family_class ? { familyClassId: row.family_class as string } : {}),
   };
+}
+
+/** A family's second parent accepts only as the address the invitation went
+ * to, confirmed by its provider, by its confirmation link, or by this mailed
+ * link's proof: her account sees the family's children and practices free.
+ * The account holder is already the family's first parent. */
+async function secondParentMayAccept(
+  client: PoolClient,
+  {
+    holder,
+    invited,
+    accountId,
+    proven,
+  }: {
+    holder: string;
+    invited: string | null;
+    accountId: string;
+    proven: boolean;
+  },
+) {
+  if (accountId === holder) throw new SchoolError(403, "invite_wrong_account");
+  const user = accountId.startsWith("amp|")
+    ? ((
+        await client.query<{ email: string; emailVerified: boolean }>(
+          'SELECT email,"emailVerified" FROM amp_auth_users WHERE id=$1',
+          [accountId.slice(4)],
+        )
+      ).rows[0] ?? null)
+    : null;
+  if (
+    !user ||
+    !invited ||
+    user.email.trim().toLowerCase() !== invited.trim().toLowerCase()
+  )
+    throw new SchoolError(403, "invite_wrong_account");
+  if (!user.emailVerified && !proven)
+    throw new SchoolError(403, "invite_email_unconfirmed");
 }
 
 /** An account that already has a person in this tenant keeps that one; the

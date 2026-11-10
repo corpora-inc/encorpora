@@ -35,6 +35,7 @@ import type { Authenticator } from "./auth";
 import { brand, brandTitle } from "../brand";
 import {
   invitationProvesAddress,
+  isFamilyInvitee,
   isSchoolSignup,
   isSchoolStaff,
 } from "../schools/staff-account.js";
@@ -463,9 +464,12 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
         // A school invitation already confirmed it: no second mail.
         if (user.emailVerified) return;
         const school =
-          isSchoolSignup(request?.headers.get("cookie")) ||
-          new URL(url).searchParams.get("callbackURL")?.startsWith("/school") ||
-          (await isSchoolStaff(pool, user.id));
+          !(await isFamilyInvitee(pool, user.email)) &&
+          (isSchoolSignup(request?.headers.get("cookie")) ||
+            new URL(url).searchParams
+              .get("callbackURL")
+              ?.startsWith("/school") ||
+            (await isSchoolStaff(pool, user.id)));
         await send(
           user.email,
           `Confirm your email for ${brand.name}`,

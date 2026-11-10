@@ -377,7 +377,11 @@ export class SchoolSignIn {
     };
   }
 
-  async roster(classId: string, canManage: boolean): Promise<SignInRoster> {
+  async roster(
+    classId: string,
+    canManage: boolean,
+    canShare = canManage,
+  ): Promise<SignInRoster> {
     const found = await this.classInfo(classId);
     const { rows } = await this.pool.query(
       `SELECT p.id,${STUDENT_NAME} AS name,
@@ -398,6 +402,7 @@ export class SchoolSignIn {
         joinLockedUntil: found.lockedUntil?.toISOString() ?? null,
       },
       canManage,
+      canShare,
       students: rows.map((row) => ({
         ...row,
         cardIssuedAt: row.cardIssuedAt?.toISOString() ?? null,

@@ -15,6 +15,7 @@ import {
   clearPurchaseReturn,
 } from "../../purchase-return";
 import styles from "./Navigation.module.css";
+import { secondParentChild } from "../second-parent/api";
 
 type Icon =
   | "learn"
@@ -122,7 +123,10 @@ export default function DrawerContents({
             ? "/pathways"
             : at === "/overview"
               ? "/overview"
-              : "/practice";
+              : // A second parent's family's child: their progress.
+                secondParentChild(account, id)
+                ? "/overview"
+                : "/practice";
     void navigate({ to: "/$", params: { _splat: destination.slice(1) } });
     close();
   }
@@ -223,14 +227,18 @@ export default function DrawerContents({
         </div>
       )}
       <nav aria-label="AMP navigation" className={styles.navigation}>
-        {nav(practiceHref, practiceLabel, "learn", {
-          current: here?.kind === "practice",
-        })}
+        {/* A second parent's family's child practices from its class
+            ("Let … practice here"), which is the Class link below. */}
+        {!view.viewOnly &&
+          nav(practiceHref, practiceLabel, "learn", {
+            current: here?.kind === "practice",
+          })}
         {hasProgress &&
           nav(overviewPath(context), "Progress", "level", {
             current: here?.kind === "progress",
           })}
         {view.learner &&
+          !view.viewOnly &&
           nav("/lessons", "Lessons", "lessons", {
             current:
               location.pathname === "/lessons" ||

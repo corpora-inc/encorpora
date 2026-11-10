@@ -345,6 +345,10 @@ button.copy[data-done="copied"] {
   line-height: 1.5;
   color: var(--color-muted-text);
 }
+.inviteCard p strong {
+  color: var(--color-on-surface);
+  font-weight: 600;
+}
 .inviteWait {
   min-height: 220px;
 }

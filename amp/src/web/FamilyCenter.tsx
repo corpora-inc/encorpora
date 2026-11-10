@@ -4,7 +4,7 @@ import { PurchaseMeasurement } from "./features/privacy/PurchaseMeasurement";
 import { Toast } from "./ui/Toast";
 import { useLoggedError, requestMessage } from "./feedback";
 import { useAppRoute, type FamilySection } from "./app-routes";
-import { useFamilyCache } from "./lib/family-cache";
+import { useAccountCache, useFamilyCache } from "./lib/family-cache";
 import { Select, BirthYearPicker } from "./PremiumControls";
 import { AccountSecurity } from "./AccountSecurity";
 import { PaymentHistoryCenter } from "./PaymentHistoryCenter";
@@ -25,6 +25,9 @@ import { useLearnerStore } from "./learner-store";
 import { refreshMe } from "./lib/query";
 import { rememberPlace } from "./features/onboarding/place-memory";
 import { deviceTimeZone } from "./features/onboarding/starter-api";
+import { SecondParent } from "./features/second-parent/SecondParent";
+import { SecondParentNote } from "./features/second-parent/SecondParentNote";
+import { secondParentOnly } from "./features/second-parent/api";
 interface Props {
   token: string;
   onSectionChange?: (section: FamilySection) => void;
@@ -80,6 +83,14 @@ export function FamilyCenter({
   onChoosePayment,
 }: Props) {
   const route = useAppRoute();
+  // The family's second parent (docs/families.md): the account holder invites
+  // her here; she, with no family of her own, finds hers described instead.
+  const session = { accountId: identity, token };
+  const account = useAccountCache(nativeRuntime ? null : identity);
+  const secondOnly = secondParentOnly(account);
+  const learnerSections =
+    (initialSection === "learners" || initialSection === "access") &&
+    !secondOnly;
   const paymentHistoryOpen = route.parts[2] === "records";
   const setPaymentHistoryOpen = (open: boolean) =>
     route.navigate(
@@ -521,7 +532,10 @@ export function FamilyCenter({
           </section>
         ) : (
           <>
-            {(section === "learners" || section === "access") && (
+            {(section === "learners" || section === "access") &&
+              secondOnly &&
+              account && <SecondParentNote me={account} />}
+            {learnerSections && (
               <section
                 className={`family-section family-focused-section ${!family.learners.length || adding ? "family-setup-section" : ""}`}
               >
@@ -750,6 +764,18 @@ export function FamilyCenter({
                       )}
                     </article>
                   ))}
+                  {/* After the learner, in the same scrolling list, so it
+                      never moves them. */}
+                  {section === "learners" &&
+                    !adding &&
+                    !nativeRuntime &&
+                    account?.familyClass && (
+                      <SecondParent
+                        session={session}
+                        className="family-second-parent"
+                        headingClassName=""
+                      />
+                    )}
                 </div>
                 {section === "access" && (
                   <div className="family-profile-actions">
@@ -917,11 +943,15 @@ export function FamilyCenter({
                       "Download your records",
                       "Keep a personal copy of your family’s data.",
                     ],
-                    [
-                      "consent",
-                      "Learning consent",
-                      "Review consent or pause new activity.",
-                    ],
+                    ...(secondOnly
+                      ? []
+                      : ([
+                          [
+                            "consent",
+                            "Learning consent",
+                            "Review consent or pause new activity.",
+                          ],
+                        ] as const)),
                     [
                       "delete",
                       "Delete learning data",
@@ -1019,7 +1049,11 @@ export function FamilyCenter({
                 </p>
               </section>
             )}
-            {section === "privacy" && privacy === "consent" && (
+            {section === "privacy" &&
+              privacy === "consent" &&
+              secondOnly &&
+              account && <SecondParentNote me={account} />}
+            {section === "privacy" && privacy === "consent" && !secondOnly && (
               <section className="family-section">
                 <h2 tabIndex={-1}>Consent for learning</h2>
                 <p className="family-consent-status">

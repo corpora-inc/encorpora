@@ -37,6 +37,18 @@
   max-width: 720px;
   line-height: 1.6;
 }
+/* The family's second parent, after the learner: the same rows as on the
+   class's Today. */
+.family-second-parent {
+  container-type: inline-size;
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}
+.family-second-parent h2 {
+  margin: 0;
+  font-size: 20px;
+}
 .family-learners {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));

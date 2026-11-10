@@ -311,6 +311,8 @@ export async function practiceHere(
   accountId: string,
   learnerId: string,
   canPractice: boolean,
+  /** Whose device: the account holder's, or the family's second parent's. */
+  startedBy = accountId,
 ) {
   await ensureFamilyClass(client, pool, accountId, { converting: true });
   // Their roster row in a family class: their own family's, or another
@@ -330,8 +332,8 @@ export async function practiceHere(
   const token = generateStudentToken();
   const expiresAt = studentSessionExpiry("shared");
   await client.query(
-    "INSERT INTO amp_student_sessions(id,token_hash,person_id,mode,expires_at) VALUES($1,$2,$3,'shared',$4)",
-    [randomUUID(), hashStudentToken(token), person.id, expiresAt],
+    "INSERT INTO amp_student_sessions(id,token_hash,person_id,mode,expires_at,started_by) VALUES($1,$2,$3,'shared',$4,$5)",
+    [randomUUID(), hashStudentToken(token), person.id, expiresAt, startedBy],
   );
   return {
     token,

@@ -52,6 +52,9 @@
 }
 .children {
   display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 .child {
   display: grid;
@@ -102,6 +105,14 @@
 }
 .add {
   justify-self: stretch;
+}
+/* A row's place while it loads: the height of its action. */
+.reserve {
+  display: grid;
+  height: 44px;
+}
+.reserve > span {
+  border-radius: var(--radius-control);
 }
 .sheetText {
   margin: 0;

@@ -19,6 +19,8 @@ import {
 } from "../lib/query";
 import type { Step } from "../../math/scene/timeline";
 import { useQuery } from "@tanstack/react-query";
+import { secondParentChild } from "../features/second-parent/api";
+import { ChildOverview } from "../features/second-parent/ChildOverview";
 import {
   useFamilyCache,
   setNativeFamilySnapshot,
@@ -290,6 +292,16 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   // learner-store.ts); this component derives the learner object from it.
   const learnerId = useLearnerStore((state) => state.learnerId);
   const selectLearner = useLearnerStore((state) => state.select);
+  // A child of a family this account is the second parent of, chosen to read
+  // their progress: their Overview is read-only (docs/families.md).
+  const account = useQuery({
+    ...meOptions(session ?? { accountId: "", token: "" }),
+    enabled: !!session && !nativeRuntime,
+  }).data;
+  const viewingChild =
+    !nativeRuntime && account?.signedIn
+      ? secondParentChild(account, learnerId)
+      : null;
   // The account snapshot can arrive before this device has a saved selection.
   // Resolve a learner from that snapshot immediately: redirecting to setup
   // while loadFamily is selecting one can continually restart navigation.
@@ -1754,6 +1766,13 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             Manage account
           </button>
         </section>
+      ) : viewingChild && session && route.location.pathname === "/overview" ? (
+        <ChildOverview
+          key={viewingChild.id}
+          session={session}
+          child={viewingChild}
+          strands={homeStrands}
+        />
       ) : studentWaiting ? (
         <section className="card welcome">
           <h2>Ask your teacher about your seat.</h2>

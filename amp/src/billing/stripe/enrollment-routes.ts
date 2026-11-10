@@ -11,6 +11,13 @@ import { annualOffer } from "./purchase.js";
 import type { StripeBilling } from "./service.js";
 import type { StripeRouteOptions } from "./routes.js";
 import { funnelVisitor } from "../../analytics/visitor-header.js";
+import {
+  isSecondParentOnly,
+  secondParentOwner,
+} from "../../family/second-parent.js";
+
+/** A family's purchases are its account holder's (docs/families.md). */
+const holderOnly = { error: "family_holder_only" } as const;
 
 export function registerEnrollmentRoutes(
   app: FastifyInstance,
@@ -117,6 +124,9 @@ export function registerEnrollmentRoutes(
       .safeParse(request.body);
     if (!parsed.success)
       return reply.code(400).send({ error: "invalid_checkout_request" });
+    // A second parent's family buys through its account holder.
+    if (await isSecondParentOnly(options.pool, account))
+      return reply.code(403).send(holderOnly);
     const body = parsed.data;
     if (body.offerId !== annualOffer(options.config, body.interval).id)
       throw new BillingError("offer_changed");
@@ -141,6 +151,8 @@ export function registerEnrollmentRoutes(
       .safeParse(request.body);
     if (!parsed.success)
       return reply.code(400).send({ error: "invalid_license_assignment" });
+    if (await secondParentOwner(options.pool, account, parsed.data.learnerId))
+      return reply.code(403).send(holderOnly);
     await claimEnrollment(
       billing,
       account,

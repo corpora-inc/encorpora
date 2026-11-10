@@ -3,7 +3,8 @@ import { activeToday } from "../schools/principal.js";
 
 /* An adult's own practice (docs/families.md). Every teaching adult practices
    free: a teacher at a school with a license in force (never a demo's), or a
-   parent of a child with access. `hasAccess` still reads only `amp_grants`: one grant per adult
+   parent of a child with access, the account holder and the family's second
+   parent alike. `hasAccess` still reads only `amp_grants`: one grant per adult
    learner, refreshed on account reads and learning transactions, carries the
    latest qualifying end. The separate free allowance creates no grant. */
 
@@ -12,7 +13,9 @@ export const adultGrantId = (learnerId: string) => `adult:${learnerId}`;
 
 /** Until when this account's adult practice is free: the latest end among the
  * licenses in force at orgs where it teaches (no later than a dated role's
- * last day) and the access of its children. Null when nothing qualifies. */
+ * last day), the access of its children, and the access of the children of a
+ * family it is the second parent of while that role lasts. Null when nothing
+ * qualifies. */
 export async function adultPracticeEnd(
   db: Database,
   accountId: string,
@@ -30,6 +33,15 @@ export async function adultPracticeEnd(
        SELECT g.ends_at FROM amp_learners c
        JOIN amp_grants g ON g.learner_id=c.id
        WHERE c.account_id=$1 AND NOT c.adult AND c.deleted_at IS NULL
+         AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()
+       UNION ALL
+       SELECT g.ends_at FROM amp_people sp
+       JOIN amp_families f ON f.second_parent=sp.id
+       JOIN amp_orgs fo ON fo.id=f.org_id
+       JOIN amp_org_roles fr ON fr.person_id=sp.id AND fr.org_id=f.org_id AND fr.role='teacher'
+       JOIN amp_learners c ON c.account_id=f.account_id AND NOT c.adult AND c.deleted_at IS NULL
+       JOIN amp_grants g ON g.learner_id=c.id
+       WHERE sp.account_id=$1 AND sp.deleted_at IS NULL AND ${activeToday("fr", "fo")}
          AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()
      ) q WHERE q.ends>now()`,
     [accountId],

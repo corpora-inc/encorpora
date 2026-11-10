@@ -32,6 +32,7 @@ import { Tabs } from "../ui/Tabs";
 import { AppLogo } from "../ui/AppLogo";
 import bar from "../ui/AppBar.module.css";
 import styles from "./AppShell.module.css";
+import { secondParentChild } from "../features/second-parent/api";
 
 const loadDrawer = () => import("../features/navigation/ShellDrawer");
 const ShellDrawer = lazy(loadDrawer);
@@ -309,6 +310,8 @@ function practiceTarget(
     return me.adultPractice?.learner
       ? { path: "/practice", label: "Practice" }
       : null;
+  // A second parent's family's child practices from its class.
+  if (secondParentChild(me, learnerId)) return null;
   const learners = me.family.learners.filter(
     (learner) => !learner.adult && !learner.deletedAt,
   );
