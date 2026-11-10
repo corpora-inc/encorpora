@@ -98,6 +98,8 @@ export const todayStudentResource = z.object({
   todayProblems: z.number(),
   weekMinutes: z.number(),
   weekProblems: z.number(),
+  /** The latest day with any practice in the last five weeks. */
+  lastActive: day.nullable().default(null),
 });
 export type TodayStudentResource = z.infer<typeof todayStudentResource>;
 export const todayResponse = z.object({
@@ -105,6 +107,8 @@ export const todayResponse = z.object({
   /** A family's class, whose screens speak to a parent. */
   family: z.boolean().default(false),
   students: z.array(todayStudentResource).default([]),
+  /** Minutes a week each learner aims for; null when none is set. */
+  weeklyTargetMinutes: z.number().nullable().default(null),
   teacherName: z.string().nullable(),
   /** This person can print workbooks for the class. */
   canPrint: z.boolean(),

@@ -190,7 +190,8 @@ function ExportSheet({
 /** The one number a teacher sets. Zero is no target, which reads as the class's
  * usual week. Changes settle before they save, so stepping isn't a stream of
  * writes. */
-function WeeklyTarget({
+/** Exported for Settings, where a small class sets it. */
+export function WeeklyTarget({
   session,
   place,
   book,
@@ -298,7 +299,13 @@ export function GradebookScreen() {
   const close = useCloseTerm(session, place);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  const [closing, setClosing] = useState(false);
+  const [closingHere, setClosing] = useState(false);
+  // Settings of a small class opens this with `?close=1`.
+  const closing = closingHere || search.close === 1 || search.close === "1";
+  const stopClosing = () => {
+    setClosing(false);
+    if (search.close) set({ close: undefined });
+  };
   const [announcement, setAnnouncement] = useState("");
   const data = book.data;
   const term = data?.term ?? null;
@@ -633,7 +640,7 @@ export function GradebookScreen() {
           <Dialog
             open={closing}
             onOpenChange={(next) => {
-              if (!next && !close.isPending) setClosing(false);
+              if (!next && !close.isPending) stopClosing();
             }}
             title={`Close ${term.name}?`}
           >
@@ -649,7 +656,7 @@ export function GradebookScreen() {
                 <Button
                   variant="secondary"
                   disabled={close.isPending}
-                  onClick={() => setClosing(false)}
+                  onClick={stopClosing}
                 >
                   Keep it open
                 </Button>
@@ -660,11 +667,11 @@ export function GradebookScreen() {
                   onClick={() =>
                     close.mutate(term.id, {
                       onSuccess: () => {
-                        setClosing(false);
+                        stopClosing();
                         setMessage(`${term.name} is closed.`);
                       },
                       onError: (failure) => {
-                        setClosing(false);
+                        stopClosing();
                         setError(
                           failureMessage(
                             failure,

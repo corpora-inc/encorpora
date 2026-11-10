@@ -1,12 +1,14 @@
-/* Today: the day's date, the week in one line, each child or the class, and
-   what needs the teacher. Rows on the page, never cards; shared tokens only. */
+/* Today (docs/design/ia.md, and the /schools product shot): the title, the
+   class code, a family's children on a line each, the feed of what to do and
+   why, then the week in a line. Rows on the page, never cards; tokens only. */
 .today {
   container-type: inline-size;
   display: grid;
   gap: var(--space-6);
 }
 
-/* The date, with the class code beside it from 720 px. */
+/* The title (a class's name over the date, or a family's date), with the
+   class code beside it from 720 px. */
 .head {
   display: grid;
   gap: var(--space-4);
@@ -15,25 +17,19 @@
 .head h1 {
   line-height: 1.1;
 }
+.title p {
+  margin-top: var(--space-1);
+  color: var(--color-muted-text);
+}
 @container (min-width: 720px) {
   .head {
     grid-template-columns: minmax(0, 1fr) auto;
   }
 }
 
+/* Section headings: serif, 12 px above their rows. */
 .sectionTitle {
-  margin: 0 0 var(--space-2);
-  color: var(--color-muted-text);
-  font-family: inherit;
-  font-size: var(--text-table);
-  font-weight: 600;
-  letter-spacing: 0;
-}
-.lead {
-  margin: calc(-1 * var(--space-1)) 0 var(--space-3);
-  color: var(--color-muted-text);
-  font-size: var(--text-table);
-  text-wrap: pretty;
+  margin: 0 0 var(--space-3);
 }
 
 /* One value over what it counts. */
@@ -94,8 +90,7 @@
 }
 /* Small to look at, 44 px to touch. */
 .signIn button.copy::after,
-.inlineLink::after,
-.hintAction::after {
+.inlineLink::after {
   content: "";
   position: absolute;
   inset: -6px -4px;
@@ -132,8 +127,14 @@
   display: grid;
   gap: var(--space-2);
 }
+/* The strip's label is a label, as in the product shot. */
 .week .sectionTitle {
-  margin: 0;
+  margin: 0 0 var(--space-1);
+  color: var(--color-muted-text);
+  font-family: inherit;
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0;
 }
 .weekFacts {
   display: grid;
@@ -168,7 +169,8 @@
   white-space: nowrap;
 }
 @container (min-width: 720px) {
-  .weekFacts {
+  .weekFacts,
+  .weekFacts:has(> div:nth-child(4)) {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-3) var(--space-7);
@@ -192,23 +194,6 @@
   font-size: var(--text-table);
   line-height: 1.45;
   text-wrap: pretty;
-}
-.hintAction {
-  position: relative;
-  display: inline;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--color-primary);
-  font: inherit;
-  font-weight: 650;
-  cursor: pointer;
-}
-.hintAction:hover:not(:disabled) {
-  filter: none;
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 .dismiss {
   display: grid;
@@ -235,8 +220,8 @@
   stroke-linecap: round;
 }
 
-/* Children: a row each. Phone: name and action, then level, then today, the
-   week and access side by side. From 760 px: one line, in columns. */
+/* Children: one line each (name, the week, last practiced, the action). On a
+   phone the action goes beside the name. Fixed tracks keep columns aligned. */
 .children {
   display: grid;
   margin: 0;
@@ -248,11 +233,11 @@
   grid-template-columns: minmax(0, 1fr) auto;
   grid-template-areas:
     "name action"
-    "level level"
     "facts facts";
   align-items: center;
-  gap: var(--space-3) var(--space-4);
-  padding-block: var(--space-4);
+  gap: var(--space-2) var(--space-4);
+  min-height: 48px;
+  padding-block: var(--space-3);
   box-shadow: inset 0 1px 0 var(--color-border);
 }
 .child:last-child {
@@ -260,29 +245,18 @@
     inset 0 1px 0 var(--color-border),
     inset 0 -1px 0 var(--color-border);
 }
-.childName {
-  grid-area: name;
-  display: grid;
-  gap: 1px;
-  min-width: 0;
-}
 .name {
+  grid-area: name;
+  min-width: 0;
   font-size: var(--text-heading-3);
   font-weight: 600;
   line-height: 1.25;
   overflow-wrap: anywhere;
 }
-.level {
-  grid-area: level;
-  display: grid;
-  gap: var(--space-2);
-  min-width: 0;
-  padding-top: 6px;
-}
 .facts {
   grid-area: facts;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-3);
 }
 .factWide {
@@ -293,40 +267,30 @@
   grid-area: action;
   justify-self: end;
 }
-.compactAction {
-  min-height: 40px;
+@container (min-width: 720px) {
+  .child {
+    grid-template-columns: minmax(96px, 1fr) minmax(280px, 2fr) 14rem;
+    grid-template-areas: "name facts action";
+    gap: var(--space-5);
+  }
+}
+
+/* A compact action: "Let Sam practice here", "Continue with AMP". */
+.practiceHere {
+  position: relative;
+  min-height: 44px;
   padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-small);
   font-size: var(--text-table);
   white-space: nowrap;
 }
-.compactAction::after {
-  content: "";
-  position: absolute;
-  inset: -2px;
-}
-.compactAction {
-  position: relative;
-}
-.compactAction svg {
+.practiceHere svg {
   width: 12px;
   height: 12px;
   fill: currentColor;
 }
-@container (min-width: 760px) {
-  .child {
-    grid-template-columns:
-      minmax(110px, 1fr) minmax(190px, 1.6fr) minmax(330px, 2.4fr)
-      minmax(150px, auto);
-    grid-template-areas: "name level facts action";
-    gap: var(--space-6);
-  }
-  .level {
-    padding-top: 4px;
-  }
-}
 
-/* What needs you: a check, the to-do, its action at the end of the line. */
+/* The feed: a check (or a dismiss), the title in the serif with its reason
+   under it, and the actions at the end of the line. */
 .todos {
   container-type: inline-size;
   display: grid;
@@ -337,22 +301,21 @@
 .todo {
   display: grid;
   grid-template-columns: 44px minmax(0, 1fr);
-  column-gap: var(--space-2);
+  column-gap: var(--space-3);
   row-gap: var(--space-3);
-  padding-block: var(--space-4);
+  padding-block: var(--space-5);
+}
+.todo + .todo {
   box-shadow: inset 0 1px 0 var(--color-border);
 }
-.todo:last-child {
-  box-shadow:
-    inset 0 1px 0 var(--color-border),
-    inset 0 -1px 0 var(--color-border);
-}
-.todo[data-plain] {
-  grid-template-columns: minmax(0, 1fr);
-}
 .todoCheck {
-  margin-top: -10px;
+  display: grid;
+  justify-items: start;
+  margin-top: -6px;
   margin-inline-start: -10px;
+}
+.todoCheck .dismiss {
+  margin-inline-start: -2px;
 }
 .todoBody {
   display: grid;
@@ -361,10 +324,11 @@
 }
 .todoTitle {
   margin: 0;
-  font-family: inherit;
-  font-size: var(--text-heading-3);
-  font-weight: 600;
-  line-height: 1.3;
+  font-family: var(--font-display);
+  font-size: var(--text-heading-2);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
   text-wrap: balance;
 }
 .todo[data-done] .todoTitle {
@@ -373,20 +337,27 @@
   text-decoration-thickness: 1px;
 }
 .todoDetail {
-  max-width: 68ch;
+  max-width: 64ch;
   color: var(--color-muted-text);
-  font-size: var(--text-table);
-  line-height: 1.45;
+  line-height: 1.5;
   text-wrap: pretty;
+}
+.todoPeople {
+  display: flex;
+  align-items: center;
+  margin-top: var(--space-2);
+}
+.morePeople {
+  margin-inline-start: var(--space-2);
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
 }
 .todoActions {
   grid-column: 2;
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
-}
-.todo[data-plain] .todoActions {
-  grid-column: 1;
 }
 .todoActions > * {
   white-space: nowrap;
@@ -396,29 +367,10 @@
     grid-template-columns: 44px minmax(0, 1fr) auto;
     align-items: start;
   }
-  .todo[data-plain] {
-    grid-template-columns: minmax(0, 1fr) auto;
-  }
-  .todoActions,
-  .todo[data-plain] .todoActions {
-    grid-column: auto;
+  .todoActions {
+    grid-column: 3;
+    flex-wrap: nowrap;
     justify-content: flex-end;
+    margin-inline-start: var(--space-5);
   }
-}
-
-/* The class map glance on a teacher's Today. */
-.mapHead {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--space-2) var(--space-5);
-  margin-bottom: var(--space-3);
-}
-.mapHead h2 {
-  font-family: inherit;
-  font-size: var(--text-table);
-  font-weight: 600;
-  color: var(--color-muted-text);
-  letter-spacing: 0;
 }

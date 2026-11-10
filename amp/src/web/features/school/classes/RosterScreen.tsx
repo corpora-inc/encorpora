@@ -371,6 +371,7 @@ export function RosterScreen() {
               )}
             </div>
           </header>
+          {family && <h2 className={styles.sectionTitle}>Children</h2>}
           <section className={styles.code} aria-label="Class code">
             <div className={styles.codeText}>
               <h2>Class code</h2>

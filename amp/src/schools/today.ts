@@ -138,6 +138,52 @@ function readyForMore(
   );
 }
 
+const plural = (count: number, one: string, many = `${one}s`) =>
+  `${count} ${count === 1 ? one : many}`;
+/** A family's day, as a parent reads it: everyone worked, or each child who
+ * did, by name. */
+function familyDay(
+  students: readonly TodayStudent[],
+  worked: readonly TodayStudent[],
+  minutesToday: number,
+  objectives: number,
+): TodayTodo[] {
+  if (worked.length >= 2 && worked.length === students.length)
+    return [
+      {
+        id: "good-day",
+        kind: "good-day",
+        title:
+          worked.length === 2
+            ? "Both children worked today"
+            : `All ${worked.length} children worked today`,
+        detail: `That’s ${plural(minutesToday, "active minute")} so far${objectives ? `, and ${plural(objectives, "new objective")} this week` : ""}.`,
+        students: people(worked),
+        action: { kind: "tab", tab: "time", label: "See the time report" },
+      },
+    ];
+  return worked.map((student) => {
+    const minutes = Math.round(student.todayMinutes);
+    return {
+      id: `worked:${student.id}`,
+      kind: "good-day",
+      title:
+        minutes > 0
+          ? `${student.first} practiced ${plural(minutes, "minute")} today`
+          : `${student.first} practiced today`,
+      detail: student.objectivesThisWeek
+        ? `${plural(student.objectivesThisWeek, "new objective")} this week.`
+        : `${plural(Math.round(student.weekMinutes), "minute")} so far this week.`,
+      students: people([student]),
+      action: {
+        kind: "student",
+        personId: student.id,
+        label: `See ${possessive(student.first)} work`,
+      },
+    };
+  });
+}
+
 /**
  * What needs the teacher today, most useful first, each with one action. Pure.
  * A list of deficits isn't a day anyone wants to open: what's going well keeps
@@ -248,6 +294,35 @@ export function todayTodos(
     .slice(0, rules.maximumStuck)
     .map((row): TodayTodo => {
       const student = byId.get(row.studentId)!;
+      // A parent teaches it at the table: the lesson, then a sheet on paper.
+      if (input.family) {
+        const lesson = input.lessonFor(
+          row.skillId,
+          row.recent.flatMap((outcome) =>
+            !outcome.correct && outcome.templateId ? [outcome.templateId] : [],
+          ),
+        );
+        return {
+          id: `stuck:${row.studentId}:${row.skillId}`,
+          kind: "stuck",
+          title: `${student.first} is stuck on ${inSentence(input.skillTitle(row.skillId))}`,
+          detail: `${student.first} keeps missing it without help. A short lesson together, then a sheet on paper, should clear it.`,
+          students: people([student]),
+          action: lesson
+            ? {
+                kind: "lesson",
+                templateId: lesson,
+                skillId: row.skillId,
+                label: "Teach this lesson",
+              }
+            : {
+                kind: "student",
+                personId: student.id,
+                label: `See ${possessive(student.first)} work`,
+              },
+          groupSheet: { skillId: row.skillId, label: "Print a sheet" },
+        };
+      }
       return {
         id: `stuck:${row.studentId}:${row.skillId}`,
         kind: "stuck",
@@ -379,29 +454,31 @@ export function todayTodos(
   const goodDay =
     worked.length >= rules.goodDayStudents &&
     worked.length / students.length >= rules.goodDayShare;
-  const going: TodayTodo[] = goodDay
-    ? [
-        {
-          id: "good-day",
-          kind: "good-day",
-          title: `A good day: ${worked.length} of ${students.length} ${plural} worked today`,
-          detail: `That’s ${minutesToday.toLocaleString("en-US")} active minutes so far${objectives ? `, and ${objectives} new ${objectives === 1 ? "objective" : "objectives"} this week` : ""}.`,
-          students: people(worked),
-          action: { kind: "tab", tab: "time", label: "See the time report" },
-        },
-      ]
-    : objectives > 0
+  const going: TodayTodo[] = input.family
+    ? familyDay(students, worked, minutesToday, objectives)
+    : goodDay
       ? [
           {
-            id: "going-well",
+            id: "good-day",
             kind: "good-day",
-            title: `${objectives} new ${objectives === 1 ? "objective" : "objectives"} this week`,
-            detail: `${joinNames(gained.slice(0, 3).map((student) => student.first))} ${gained.length === 1 ? "is" : "are"} leading the way.`,
-            students: people(gained.slice(0, 6)),
-            action: { kind: "tab", tab: "map", label: "See the class map" },
+            title: `A good day: ${worked.length} of ${students.length} ${plural} worked today`,
+            detail: `That’s ${minutesToday.toLocaleString("en-US")} active minutes so far${objectives ? `, and ${objectives} new ${objectives === 1 ? "objective" : "objectives"} this week` : ""}.`,
+            students: people(worked),
+            action: { kind: "tab", tab: "time", label: "See the time report" },
           },
         ]
-      : [];
+      : objectives > 0
+        ? [
+            {
+              id: "going-well",
+              kind: "good-day",
+              title: `${objectives} new ${objectives === 1 ? "objective" : "objectives"} this week`,
+              detail: `${joinNames(gained.slice(0, 3).map((student) => student.first))} ${gained.length === 1 ? "is" : "are"} leading the way.`,
+              students: people(gained.slice(0, 6)),
+              action: { kind: "tab", tab: "map", label: "See the class map" },
+            },
+          ]
+        : [];
 
   const positives = [...readyTodo, ...going];
   // One of each kind before a second of any: a teacher can act on a shared gap

@@ -242,6 +242,7 @@ export async function readToday(
   return {
     class: classSummaryOf(context),
     family,
+    weeklyTargetMinutes: target.minutes,
     students: named.map((student, index) => {
       const stored = levelRows.get(student.id);
       const day = dayRows.get(student.id);
@@ -259,6 +260,7 @@ export async function readToday(
         todayProblems: day?.problems ?? 0,
         weekMinutes: Math.round(students[index]!.weekMinutes),
         weekProblems: students[index]!.weekProblems,
+        lastActive: students[index]!.lastActive,
       };
     }),
     teacherName,

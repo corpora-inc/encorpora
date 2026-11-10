@@ -49,6 +49,9 @@ import {
 import { yearsOptions } from "./org/org-api";
 import { classPath, orgPath } from "./paths";
 import { compareClassNames } from "./sort";
+import { CalendarSection } from "./CalendarScreen";
+import { SmallClassGrades } from "./classes/SmallClassGrades";
+import { SMALL_CLASS } from "../navigation/shell-frame";
 import { meOptions } from "../../lib/query";
 import { studentUrl } from "./classes/teacher-shared";
 import styles from "./School.module.css";
@@ -730,9 +733,13 @@ export function ClassScreen() {
             )}
           />
         ) : (
-          <p className={styles.quiet}>
-            No students yet. Add them one at a time, or import a file.
-          </p>
+          <EmptyState title={family ? "No children yet" : "No students yet"}>
+            {family
+              ? "Add a child in Family and they appear here with their grade."
+              : canAdd
+                ? "Add them one at a time, or import a file."
+                : "Students added to this class appear here."}
+          </EmptyState>
         )}
         {canAdd && (
           <AddStudentSheet
@@ -744,6 +751,14 @@ export function ClassScreen() {
           />
         )}
       </section>
+      {/* A small class has no Grades tab: its target and records are here. */}
+      {family && klass.studentCount <= SMALL_CLASS && (
+        <SmallClassGrades orgId={orgId} classId={classId} />
+      )}
+      {/* A family's or a lone class's year is the class's own. */}
+      {(family || org?.solo) && org?.can?.includes("calendar.read") && (
+        <CalendarSection orgId={orgId} />
+      )}
       <Toast tone="status" message={notice} onDismiss={() => setNotice("")} />
       <Toast message={error} onDismiss={() => setError("")} />
     </OrgFrame>

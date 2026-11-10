@@ -1,22 +1,30 @@
 import { Link } from "@tanstack/react-router";
 import type { SignedInMe } from "../../../../../account/contracts";
-import { levelRange } from "../../../../../learning/level-check";
 import type { TodayStudentResource } from "../../../../../schools/teacher-contracts";
 import { Button, buttonClass } from "../../../../ui/Button";
-import { LevelTrack, levelScale } from "../../../../ui/LevelChart";
-import { gradeLabel } from "../../parts";
 import styles from "./Today.module.css";
 
 type Learner = SignedInMe["learners"][number];
-/** Before any work, a wide dashed band around their grade. */
-const UNKNOWN_SD = 0.9;
 const DAY = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
+  timeZone: "UTC",
 });
-const one = (value: number) => value.toFixed(1);
+const DAY_MS = 86_400_000;
+const count = (n: number, one: string) => `${n} ${n === 1 ? one : `${one}s`}`;
 
-/** One value and what it counts, stacked: "12 min" over "18 problems today". */
+/** "Today", "Yesterday", or the day: when they last practiced. */
+export function lastPracticed(day: string, today: string) {
+  const ago = Math.round(
+    (Date.parse(`${today}T00:00:00Z`) - Date.parse(`${day}T00:00:00Z`)) /
+      DAY_MS,
+  );
+  if (ago <= 0) return "Today";
+  if (ago === 1) return "Yesterday";
+  return DAY.format(new Date(`${day}T12:00:00Z`));
+}
+
+/** One value over what it counts. */
 function Fact({ value, label }: { value: string; label: string }) {
   return (
     <span className={styles.fact}>
@@ -26,54 +34,43 @@ function Fact({ value, label }: { value: string; label: string }) {
   );
 }
 
-/** Where a child works: a band for the likely range with a dot for the best
- * guess, the tick at their own grade. With too little work, dashed. */
-function ChildLevel({ student }: { student: TodayStudentResource }) {
-  const known = student.level && !student.provisional ? student.level : null;
-  const grade = student.gradeLevel;
-  const estimate = student.level ?? {
-    level: grade ?? 5,
-    sd: UNKNOWN_SD,
-  };
-  const scale = levelScale(grade ?? estimate.level, [estimate]);
-  const [from, to] = levelRange(estimate);
+/** "Let Sam practice here": the child's own session on this device, straight
+ * into practice (docs/families.md). Compact, wherever it appears. */
+export function PracticeHere({
+  learnerId,
+  name,
+  starting,
+  primary = false,
+  onPracticeHere,
+}: {
+  learnerId: string;
+  name: string;
+  starting: string | null;
+  primary?: boolean;
+  onPracticeHere: (learnerId: string) => void;
+}) {
   return (
-    <span className={styles.level}>
-      <LevelTrack
-        estimate={estimate}
-        scale={scale}
-        estimated={!known}
-        reference={grade !== null}
-      />
-      <span className={styles.factLabel}>
-        {known
-          ? `Likely grade ${one(from)} to ${one(to)}`
-          : "Not enough work yet"}
-      </span>
-    </span>
+    <Button
+      variant={primary ? "primary" : "secondary"}
+      className={styles.practiceHere}
+      aria-busy={starting === learnerId || undefined}
+      disabled={starting !== null && starting !== learnerId}
+      onClick={() => onPracticeHere(learnerId)}
+    >
+      <svg viewBox="0 0 16 16" aria-hidden="true">
+        <path d="M4.5 2.8v10.4L13 8 4.5 2.8Z" />
+      </svg>
+      Let {name} practice here
+    </Button>
   );
 }
 
-/** Access in a few words: dates once paid for, else the free problems. */
-function access(learner: Learner): { value: string; label: string } | null {
-  if (learner.entitlement.licensed && learner.entitlement.endsAt)
-    return {
-      value: DAY.format(new Date(learner.entitlement.endsAt)),
-      label: "access through",
-    };
-  const left = learner.freeAllowance?.problems.remaining;
-  if (left === undefined) return null;
-  return {
-    value: String(left),
-    label: left === 1 ? "free problem left" : "free problems left",
-  };
-}
-
-/** A child on the family's Today: their level, today's work, their access and
- * the one thing to do (practice here, or continue once the free problems are
- * used). A child from another family has no actions here. */
+/** A child on the family's Today, on one line: their week, when they last
+ * practiced, and the one action that works now (docs/design/ia.md). Levels
+ * are the Map's; access dates are Billing's. */
 export function ChildRow({
   student,
+  today,
   learner,
   holder,
   starting,
@@ -81,73 +78,56 @@ export function ChildRow({
   onContinue,
 }: {
   student: TodayStudentResource;
+  /** Today in the class's zone. */
+  today: string;
   /** This reader's own child (or, for the second parent, the family's). */
   learner?: Learner;
   /** The family's account holder, who alone buys access. */
   holder: boolean;
-  /** The child whose practice is starting on this device. */
   starting: string | null;
   onPracticeHere: (learnerId: string) => void;
   onContinue: (learnerId: string) => void;
 }) {
-  const worked = student.todayMinutes > 0 || student.todayProblems > 0;
-  const status = learner ? access(learner) : null;
-  // The name the class shows everywhere, as the API gives it.
   const name = student.name;
+  const week = student.weekMinutes > 0 || student.weekProblems > 0;
   return (
     <li className={styles.child} data-child={student.id}>
-      <span className={styles.childName}>
-        <span className={styles.name}>{name}</span>
-        <span className={styles.factLabel}>
-          {student.gradeLevel === null
-            ? "Grade not set"
-            : student.gradeLevel === 0
-              ? "Kindergarten"
-              : `Grade ${gradeLabel(student.gradeLevel)}`}
-        </span>
-      </span>
-      <ChildLevel student={student} />
+      <span className={styles.name}>{name}</span>
       <span className={styles.facts}>
-        {!worked && student.weekMinutes <= 0 && student.weekProblems <= 0 ? (
-          // Nothing yet this week: one fact, not two "Not yet"s.
+        {!student.lastActive ? (
           <span className={styles.factWide}>
-            <Fact value="No practice yet" label="this week" />
+            <Fact value="Not started" label="no practice yet" />
           </span>
         ) : (
           <>
-            {worked ? (
-              <Fact
-                value={`${student.todayMinutes} min`}
-                label={`${student.todayProblems} ${student.todayProblems === 1 ? "problem" : "problems"} today`}
-              />
-            ) : (
-              <Fact value="Not yet" label="today" />
-            )}
-            <Fact value={`${student.weekMinutes} min`} label="this week" />
+            <Fact
+              value={week ? `${student.weekMinutes} min` : "None"}
+              label={
+                week
+                  ? `${count(student.weekProblems, "problem")} this week`
+                  : "this week"
+              }
+            />
+            <Fact
+              value={lastPracticed(student.lastActive, today)}
+              label="last practiced"
+            />
           </>
         )}
-        {status ? <Fact value={status.value} label={status.label} /> : <span />}
       </span>
       <span className={styles.childAction}>
         {!learner ? null : learner.entitlement.active ? (
-          <Button
-            variant="secondary"
-            className={styles.compactAction}
-            aria-label={`Let ${name} practice here`}
-            aria-busy={starting === learner.id || undefined}
-            disabled={starting !== null && starting !== learner.id}
-            onClick={() => onPracticeHere(learner.id)}
-          >
-            <svg viewBox="0 0 16 16" aria-hidden="true">
-              <path d="M4.5 2.8v10.4L13 8 4.5 2.8Z" />
-            </svg>
-            Practice here
-          </Button>
+          <PracticeHere
+            learnerId={learner.id}
+            name={name}
+            starting={starting}
+            onPracticeHere={onPracticeHere}
+          />
         ) : holder ? (
           <Link
             to="/continue/$learnerId"
             params={{ learnerId: learner.id }}
-            className={buttonClass("primary", styles.compactAction)}
+            className={buttonClass("primary", styles.practiceHere)}
             onClick={() => onContinue(learner.id)}
           >
             Continue with AMP

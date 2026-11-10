@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense } from "react";
+import type { TodayResponse } from "../../../../schools/teacher-contracts";
 import { buttonClass } from "../../../ui/Button";
 import { EmptyState } from "../../../ui/EmptyState";
 import { Loading } from "../../../ui/Loading";
@@ -20,26 +21,57 @@ import {
   LoadFailed,
   useClassSearch,
 } from "./teacher-shared";
-import { ChildList } from "./today/ChildList";
 import { FamilyNotice } from "./today/FamilyNotice";
-import {
-  SecondParentHint,
-  secondParentHintDismissed,
-} from "./today/SecondParentHint";
+import { FamilyToday } from "./today/FamilyToday";
+import { Feed } from "./today/Feed";
 import { SignInCode } from "./today/SignInCode";
-import { TodoList } from "./today/TodoList";
+import { todoEntries, useChecks } from "./today/todo-entries";
 import { WeekFacts } from "./today/WeekFacts";
 import todayStyles from "./today/Today.module.css";
 import styles from "./Teacher.module.css";
 
 const SkillLesson = lazy(() => import("../../pathways/SkillLesson"));
-/** On Today the map is a glance; its own tab shows every strand. */
-const TODAY_STRANDS = 5;
 
-/** Today for one class, about today: the date and the class code, the week
- * in a line, then a family's children one row each (level, today, the week,
- * access, practice here) or a class's to-dos and its map. Who else teaches or
- * belongs lives on People; Today carries at most one quiet line about it. */
+/** A class's Today (the /schools product shot): a feed of what to do and
+ * why, then the week in a line. No map: Map is its own tab. */
+function ClassToday({
+  data,
+  place,
+  onLesson,
+}: {
+  data: TodayResponse;
+  place: { org: string; class: string };
+  onLesson: (templateId: string) => void;
+}) {
+  const [done, setDone] = useChecks(place.class, data.today);
+  return (
+    <>
+      <Feed
+        label="What needs you today"
+        entries={todoEntries({
+          todos: data.todos,
+          place,
+          canPrint: data.canPrint,
+          onLesson,
+          people: true,
+        })}
+        done={done}
+        onDone={setDone}
+      />
+      <WeekFacts
+        week={data.week}
+        family={false}
+        target={data.weeklyTargetMinutes}
+      />
+    </>
+  );
+}
+
+/** Today for one class, about today (docs/design/ia.md). A class's: its name
+ * and the date, the class code, the feed, the week. A family's: the date
+ * (never the parent's own name), the code, each child on a line, the same
+ * feed in a parent's words, the week. Who else teaches or belongs lives on
+ * People. */
 export function TodayScreen() {
   const place = useParams({ from: "/school/$org/classes/$class/today" });
   const session = useStaffSession();
@@ -50,11 +82,6 @@ export function TodayScreen() {
   });
   const family = org.data?.kind === "family";
   const today = useQuery(todayOptions(session, place));
-  // A family's rows show each child's level; a class's Today has the map.
-  const map = useQuery({
-    ...mapOptions(session, place),
-    enabled: !!session && org.isSuccess && !family,
-  });
   // The class code, for a student's own device: with Today, never after it.
   const presence = useQuery(presenceOptions(session, place));
   const code = presence.data?.class.joinCode;
@@ -65,9 +92,6 @@ export function TodayScreen() {
     ...secondParentOptions(account),
     enabled: holder,
   });
-  const [hintGone, setHintGone] = useState(() =>
-    secondParentHintDismissed(account.accountId),
-  );
   const [search, set] = useClassSearch();
   const lesson =
     typeof search.lesson === "string" ? search.lesson.slice(0, 100) : undefined;
@@ -81,8 +105,8 @@ export function TodayScreen() {
     org.isPending ||
     today.isPending ||
     presence.isPending ||
-    (!family && map.isPending) ||
     (holder && secondParent.isPending);
+  const onLesson = (templateId: string) => set({ lesson: templateId });
   return (
     <ClassFrame
       org={place.org}
@@ -90,19 +114,22 @@ export function TodayScreen() {
       className={data?.class.name}
       loading={loading}
       tab="today"
+      // The class's name is this page's title.
+      place={false}
     >
-      {!data || (!family && !map.data) ? (
-        <LoadFailed
-          what="Today"
-          onRetry={() => {
-            void today.refetch();
-            void map.refetch();
-          }}
-        />
+      {!data ? (
+        <LoadFailed what="Today" onRetry={() => void today.refetch()} />
       ) : (
         <div className={todayStyles.today}>
           <header className={todayStyles.head}>
-            <h1>{fullDay(data.today)}</h1>
+            {family ? (
+              <h1>{fullDay(data.today)}</h1>
+            ) : (
+              <div className={todayStyles.title}>
+                <h1>{data.class.name}</h1>
+                <p>{fullDay(data.today)}</p>
+              </div>
+            )}
             {code && (
               <SignInCode
                 code={code}
@@ -118,40 +145,17 @@ export function TodayScreen() {
           {signedIn && holder && (
             <FamilyNotice session={account} me={signedIn} />
           )}
-          <WeekFacts week={data.week} family={family} />
-          {holder &&
-            secondParent.isSuccess &&
-            !secondParent.data &&
-            !hintGone && (
-              <SecondParentHint
-                session={account}
-                onDismiss={() => setHintGone(true)}
-              />
-            )}
-          {family && (
-            <ChildList
-              students={data.students}
+          {family ? (
+            <FamilyToday
+              data={data}
+              place={place}
               session={account}
               me={signedIn}
-              classId={place.class}
+              secondParent={holder ? secondParent.data : undefined}
+              onLesson={onLesson}
             />
-          )}
-          <TodoList
-            todos={data.todos}
-            today={data.today}
-            place={place}
-            canPrint={data.canPrint}
-            onLesson={(templateId) => set({ lesson: templateId })}
-          />
-          {/* The map once someone can be placed on it: never empty axes. */}
-          {!family && map.data?.students.some((student) => student.level) && (
-            <section aria-labelledby="school-map">
-              <div className={todayStyles.mapHead}>
-                <h2 id="school-map">Class map</h2>
-                <MapKey data={map.data} />
-              </div>
-              <ClassMap data={map.data} limitStrands={TODAY_STRANDS} />
-            </section>
+          ) : (
+            <ClassToday data={data} place={place} onLesson={onLesson} />
           )}
         </div>
       )}

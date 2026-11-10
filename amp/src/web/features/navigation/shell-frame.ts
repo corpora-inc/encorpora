@@ -153,37 +153,50 @@ export function overviewPath(context: ProgressContext) {
   return `/${progressTabs(context)[0]!.path}`;
 }
 
-/** Class sub-screens keep their parent tab selected. Past years retain grades and time. */
+/** A class this size or smaller, in a family's org (a family or a tutor),
+ * has no Grades tab: each learner's grade is a line on the Map, and report
+ * cards and exports are in Settings. */
+export const SMALL_CLASS = 6;
+
+/** The one place a class's tabs are decided (docs/design/ia.md). Class
+ * sub-screens keep their parent tab selected; past years retain grades and
+ * time. A family's class puts Workbooks after Map, calls its people People
+ * and keeps its calendar in Settings; a small one also drops Grades. */
 export function classTabs(
   org: string,
   id: string,
   past = false,
-  familyCalendar = false,
   family = false,
+  learners = Infinity,
 ): TabItem[] {
-  const tabs = [
-    ["today", "Today"],
-    ["map", "Map"],
-    ["gradebook", "Grades"],
-    ["time", "Time"],
-    ["workbooks", "Workbooks"],
-    // A family's children and the grown-ups who teach them.
-    ["roster", family ? "People" : "Students"],
-    ["settings", "Settings"],
-  ]
+  const small = family && learners <= SMALL_CLASS;
+  const tabs = family
+    ? [
+        ["today", "Today"],
+        ["map", "Map"],
+        ["workbooks", "Workbooks"],
+        ["gradebook", "Grades"],
+        ["time", "Time"],
+        ["roster", "People"],
+        ["settings", "Settings"],
+      ]
+    : [
+        ["today", "Today"],
+        ["map", "Map"],
+        ["gradebook", "Grades"],
+        ["time", "Time"],
+        ["workbooks", "Workbooks"],
+        ["roster", "Students"],
+        ["settings", "Settings"],
+      ];
+  return tabs
+    .filter(([leaf]) => !small || leaf !== "gradebook")
     .filter(([leaf]) => !past || leaf === "gradebook" || leaf === "time")
     .map(([leaf, label]) => ({
       id: leaf!,
       label: label!,
       path: `school/${org}/classes/${id}/${leaf}`,
     }));
-  if (familyCalendar && !past)
-    tabs.push({
-      id: "calendar",
-      label: "Calendar",
-      path: `school/${org}/calendar`,
-    });
-  return tabs;
 }
 
 /** The school's navigation follows exactly the capabilities supplied by its API. */

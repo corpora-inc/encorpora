@@ -28,9 +28,8 @@ export function useSchoolNavigation(frame: ShellFrame) {
   // The year endpoint authorizes this class independently of the paginated roster.
   const available = frame.kind === "class" && year !== undefined;
   const family = org?.kind === "family";
-  const calendar = family && !!org?.can?.includes("calendar.read");
-  // A family has one class, and its Calendar is one of that class's tabs:
-  // the row stays the class's own on the org's calendar screen too.
+  // A family has one class: on any of its org's screens (an old link to its
+  // calendar, say) the row stays the class's own.
   const familyClass =
     family && frame.kind === "school" && classes?.length === 1
       ? classes[0]
@@ -44,12 +43,19 @@ export function useSchoolNavigation(frame: ShellFrame) {
               frame.org,
               frame.classId,
               year?.past === true,
-              calendar,
               family,
+              classes?.find((entry) => entry.id === frame.classId)
+                ?.studentCount,
             )
           : []
         : familyClass
-          ? classTabs(org.id, familyClass.id, false, calendar, true)
+          ? classTabs(
+              org.id,
+              familyClass.id,
+              false,
+              true,
+              familyClass.studentCount,
+            )
           : schoolTabs(org, classes?.length ?? 0),
     // A family's Today has its children and the code itself: no class to
     // start.

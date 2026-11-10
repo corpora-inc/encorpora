@@ -22,11 +22,9 @@
   gap: var(--space-2);
   min-width: 0;
 }
+/* Serif section headings, as on every screen (docs/design/ia.md). */
 .title {
-  font-family: inherit;
-  font-size: var(--text-dense);
-  font-weight: 600;
-  letter-spacing: 0;
+  margin-bottom: var(--space-1);
 }
 .lead {
   max-width: 52ch;

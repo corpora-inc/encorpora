@@ -10,9 +10,12 @@ const PROBLEMS_WORTH_STATING = 1000;
 export function WeekFacts({
   week,
   family,
+  target = null,
 }: {
   week: TodayResponse["week"];
   family: boolean;
+  /** The weekly target for each learner, set in Settings. */
+  target?: number | null;
 }) {
   if (week.minutes <= 0 && week.problems <= 0) return null;
   return (
@@ -44,6 +47,15 @@ export function WeekFacts({
               {week.objectives === 1 ? "new objective" : "new objectives"}
             </dt>
             <dd>{number(week.objectives)}</dd>
+          </div>
+        )}
+        {target !== null && week.students > 0 && (
+          <div>
+            <dt>minutes each, of the target</dt>
+            <dd>
+              {number(Math.round(week.minutes / week.students))} of{" "}
+              {number(target)}
+            </dd>
           </div>
         )}
         <div>

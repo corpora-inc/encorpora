@@ -65,6 +65,15 @@
 [data-align="end"] {
   text-align: end;
 }
+/* A sort chevron may use the cell's inset on its side, so a name that fits
+   the column never wraps to make room for it. */
+.columnHeader > button {
+  max-width: calc(100% + var(--grid-inline));
+  margin-inline-end: calc(-1 * var(--grid-inline));
+}
+.columnHeader[data-align="end"] > button {
+  margin-inline: calc(-1 * var(--grid-inline)) 0;
+}
 .cell {
   padding: 0 var(--grid-inline);
   background: var(--grid-surface);

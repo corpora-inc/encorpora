@@ -98,8 +98,8 @@ function EditSheet({
 }
 
 /** Terms, as the bar and as a list: a class picks which of them it grades by. */
-export function CalendarScreen() {
-  const { org: orgId } = useParams({ strict: false }) as { org: string };
+/** The calendar's state: the year, its terms, the one shown and editing. */
+function useCalendar(orgId: string) {
   const search = useSearch({ strict: false }) as {
     view?: unknown;
     edit?: unknown;
@@ -147,6 +147,155 @@ export function CalendarScreen() {
       )
       .finally(() => setBusy(false));
   };
+  return {
+    org,
+    calendar,
+    year,
+    shown,
+    parts,
+    canEdit,
+    busy,
+    error,
+    editing,
+    setSearch,
+    pick,
+  };
+}
+type Calendar = ReturnType<typeof useCalendar>;
+
+/** Terms as a picker, the year as a ribbon with today on it, and the terms
+ * as a list. */
+function CalendarBody({ state }: { state: Calendar }) {
+  const { org, year, shown, parts, canEdit, busy, error, setSearch, pick } =
+    state;
+  if (state.calendar.isError)
+    return (
+      <EmptyState
+        title="The calendar didn’t load"
+        action={
+          <Button
+            variant="secondary"
+            onClick={() => void state.calendar.refetch()}
+          >
+            Try again
+          </Button>
+        }
+      />
+    );
+  if (!year)
+    return (
+      <EmptyState title="No school year yet">
+        A default year appears when the first class is added.
+      </EmptyState>
+    );
+  return (
+    <div className={styles.calendarBody}>
+      <div className={styles.calendarControl}>
+        <span className={styles.fieldLabel} aria-hidden="true">
+          Split the year into
+        </span>
+        <Segmented
+          label="Terms"
+          compact
+          dense
+          disabled={busy}
+          value={shown}
+          onChange={pick}
+          options={divisionKinds.map((kind) => ({
+            value: kind,
+            label: divisionLabels[kind].plural,
+          }))}
+        />
+        <p className={styles.fieldHelp}>
+          {org?.kind === "family"
+            ? "Grades follow the class’s grading periods."
+            : "Each class chooses which of these it grades by."}
+        </p>
+      </div>
+      <YearRibbon
+        startsOn={year.startsOn}
+        endsOn={year.endsOn}
+        division={shown}
+        sessions={parts.length ? parts : undefined}
+        list={!parts.length}
+        today={new Date().toLocaleDateString("en-CA", {
+          timeZone: org?.timezone,
+        })}
+      />
+      {parts.length > 0 && (
+        <ul className={styles.sessionList}>
+          {parts.map((part) => (
+            <li key={part.id}>
+              <span>
+                <strong>{part.name}</strong>
+                <span className={styles.quiet}>
+                  {formatDay(part.startsOn, false)} to{" "}
+                  {formatDay(part.endsOn, false)}
+                </span>
+              </span>
+              {canEdit && !part.inherited && (
+                <Button
+                  variant="quiet"
+                  onClick={() => setSearch({ edit: part.id })}
+                >
+                  Edit
+                </Button>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+      <FormNote error={error} />
+    </div>
+  );
+}
+
+function CalendarEdit({ orgId, state }: { orgId: string; state: Calendar }) {
+  return state.editing ? (
+    <EditSheet
+      key={state.editing.id}
+      orgId={orgId}
+      session={state.editing}
+      onClose={() => state.setSearch({ edit: undefined })}
+    />
+  ) : null;
+}
+
+/** The calendar as a section of a class's Settings (docs/design/ia.md): for a
+ * family and a lone class, whose year is the class's own. */
+export function CalendarSection({ orgId }: { orgId: string }) {
+  const state = useCalendar(orgId);
+  const { year, canEdit, setSearch } = state;
+  return (
+    <section className={styles.calendarSection} aria-labelledby="calendar">
+      <div className={styles.calendarSectionHead}>
+        <div>
+          <h2 id="calendar">Calendar</h2>
+          {year && (
+            <p className={styles.quiet}>
+              {formatDay(year.startsOn)} to {formatDay(year.endsOn)}
+            </p>
+          )}
+        </div>
+        {canEdit && year && (
+          <Button
+            variant="secondary"
+            onClick={() => setSearch({ edit: year.id })}
+          >
+            Change year dates
+          </Button>
+        )}
+      </div>
+      <CalendarBody state={state} />
+      <CalendarEdit orgId={orgId} state={state} />
+    </section>
+  );
+}
+
+export function CalendarScreen() {
+  const { org: orgId } = useParams({ strict: false }) as { org: string };
+  const state = useCalendar(orgId);
+  const { org, year, canEdit, setSearch } = state;
   return (
     <OrgFrame orgId={orgId} nav="calendar" title="Calendar">
       <PageHead
@@ -154,7 +303,7 @@ export function CalendarScreen() {
         detail={
           year
             ? `${formatDay(year.startsOn)} to ${formatDay(year.endsOn)}`
-            : " "
+            : " "
         }
         action={
           canEdit && year ? (
@@ -178,86 +327,8 @@ export function CalendarScreen() {
           ) : undefined
         }
       />
-      {calendar.isError ? (
-        <EmptyState
-          title="The calendar didn’t load"
-          action={
-            <Button variant="secondary" onClick={() => void calendar.refetch()}>
-              Try again
-            </Button>
-          }
-        />
-      ) : !year ? (
-        <EmptyState title="No school year yet">
-          A default year appears when the first class is added.
-        </EmptyState>
-      ) : (
-        <div className={styles.calendarBody}>
-          <div className={styles.calendarControl}>
-            <span className={styles.fieldLabel} aria-hidden="true">
-              Split the year into
-            </span>
-            <Segmented
-              label="Terms"
-              compact
-              disabled={busy}
-              value={shown}
-              onChange={pick}
-              options={divisionKinds.map((kind) => ({
-                value: kind,
-                label: divisionLabels[kind].plural,
-              }))}
-            />
-            <p className={styles.fieldHelp}>
-              {org?.kind === "family"
-                ? "Your class grades by the periods chosen in its Settings."
-                : "Each class chooses which of these it grades by."}
-            </p>
-          </div>
-          <YearRibbon
-            startsOn={year.startsOn}
-            endsOn={year.endsOn}
-            division={shown}
-            sessions={parts.length ? parts : undefined}
-            list={!parts.length}
-            today={new Date().toLocaleDateString("en-CA", {
-              timeZone: org?.timezone,
-            })}
-          />
-          {parts.length > 0 && (
-            <ul className={styles.sessionList}>
-              {parts.map((part) => (
-                <li key={part.id}>
-                  <span>
-                    <strong>{part.name}</strong>
-                    <span className={styles.quiet}>
-                      {formatDay(part.startsOn, false)} to{" "}
-                      {formatDay(part.endsOn, false)}
-                    </span>
-                  </span>
-                  {canEdit && !part.inherited && (
-                    <Button
-                      variant="quiet"
-                      onClick={() => setSearch({ edit: part.id })}
-                    >
-                      Edit
-                    </Button>
-                  )}
-                </li>
-              ))}
-            </ul>
-          )}
-          <FormNote error={error} />
-        </div>
-      )}
-      {editing && (
-        <EditSheet
-          key={editing.id}
-          orgId={orgId}
-          session={editing}
-          onClose={() => setSearch({ edit: undefined })}
-        />
-      )}
+      <CalendarBody state={state} />
+      <CalendarEdit orgId={orgId} state={state} />
     </OrgFrame>
   );
 }

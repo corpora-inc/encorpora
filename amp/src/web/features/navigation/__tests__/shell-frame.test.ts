@@ -116,18 +116,23 @@ test("class sub-screens retain their tab and existing URLs", () => {
     "Students",
     "Settings",
   ]);
+  // A family's class: Workbooks after Map, People, and no Calendar tab (its
+  // calendar is in Settings).
   expect(
-    classTabs("org", "class", false, true, true).map((tab) => tab.label),
+    classTabs("org", "class", false, true, 12).map((tab) => tab.label),
   ).toEqual([
     "Today",
     "Map",
+    "Workbooks",
     "Grades",
     "Time",
-    "Workbooks",
     "People",
     "Settings",
-    "Calendar",
   ]);
+  // A small one (a family, a tutor's few): Grades is a line on the Map.
+  expect(
+    classTabs("org", "class", false, true, 2).map((tab) => tab.label),
+  ).toEqual(["Today", "Map", "Workbooks", "Time", "People", "Settings"]);
   expect(shellFrame("/learners/child/workbooks/2026-11-09/results")).toEqual({
     kind: "plain",
   });

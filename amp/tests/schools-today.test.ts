@@ -146,6 +146,31 @@ test("a family's Today speaks of children and never asks to start a class", () =
   );
   assert.ok(todos.every((todo) => todo.kind !== "start"));
   assert.ok(todos.every((todo) => !/\bstudents?\b/.test(todo.title)));
+  // Each child who worked, by name; everyone, as one line.
+  assert.ok(
+    todos.some((todo) => todo.title === "Ben practiced 20 minutes today"),
+  );
+  const all = todayTodos(
+    input({
+      family: true,
+      students: [
+        student("Ada", { workedToday: true, todayMinutes: 12 }),
+        student("Ben", { workedToday: true, todayMinutes: 20 }),
+      ],
+    }),
+  );
+  assert.ok(all.some((todo) => todo.title === "Both children worked today"));
+  // Stuck at home: teach the lesson, then a sheet on paper.
+  const stuck = todayTodos(
+    input({
+      family: true,
+      students: [student("Ada"), student("Ben")],
+      skills: [gap("ada", [miss(4), miss(2), miss(1)])],
+    }),
+  ).find((todo) => todo.kind === "stuck");
+  assert.equal(stuck?.title, "Ada is stuck on fraction addition");
+  assert.equal(stuck?.action.label, "Teach this lesson");
+  assert.equal(stuck?.groupSheet?.label, "Print a sheet");
 });
 
 test("a shared gap can also go on paper, for those students and that skill", () => {

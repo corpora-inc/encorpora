@@ -576,6 +576,27 @@ button.copy[data-done="copied"] {
   display: grid;
   gap: var(--space-5);
 }
+/* The calendar inside a class's Settings. */
+.calendarSection {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+.calendarSectionHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+}
+.targetRow {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+.calendarSectionHead p {
+  margin-top: var(--space-1);
+}
 .calendarControl {
   display: grid;
   gap: var(--space-2);
