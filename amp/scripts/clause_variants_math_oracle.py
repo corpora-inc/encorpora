@@ -784,6 +784,53 @@ def circle_derivation(public):
     return compact(answer)
 
 
+def linear_in_x(text):
+    """(coefficient, constant) of a linear expression in x, read exactly."""
+    at = [value(text, {"x": F(v)}) for v in (0, 1, 2)]
+    require(at[2] - at[1] == at[1] - at[0], f"Not linear in x: {text}")
+    return at[1] - at[0], at[0]
+
+
+def equation_sides(text):
+    sides = plain(text).replace(" ", "").split("=")
+    require(len(sides) == 2 and all(sides), f"One equation: {text}")
+    return tuple(linear_in_x(side) for side in sides)
+
+
+def solution_count(public):
+    """Grouped both-sides equation, solution-count clause: its sides as linear
+    expressions, and what is left once the x terms are gathered."""
+    found = re.fullmatch(r"Transform \$(.+)\$ one stage at a time until you reach x = a, a = a, or a = b\. Then say how many solutions it has\.",
+                         public["prompt"])
+    require(found is not None, "A grouped equation to transform")
+    (a, b), (c, d) = start = equation_sides(found[1])
+    net, const = a - c, d - b
+    if net:
+        last, outcome = ((F(1), F(0)), (F(0), const / net)), "one"
+    else:
+        last, outcome = ((F(0), b), (F(0), d)), "none" if const else "infinite"
+    labels = {"one": ("Exactly one solution", f"One solution, x = {const / net if net else ''}"),
+              "none": ("No solution",), "infinite": ("Infinitely many",)}[outcome]
+    options = public["response"]["banks"][0]["options"]
+    choice = choose(options, lambda label: label in labels[:2] if outcome == "one" else label.startswith(labels[0]))
+    return {"start": start, "last": last, "choice": choice}
+
+
+def review_solution_count(problem):
+    expected = solution_count(problem["public"])
+    rows = json.loads(problem["answer"])
+    require(len(rows) == 4 and all(len(row) == 1 for row in rows), "Expanded, combined, last line and conclusion")
+    for stage in rows[:2]:
+        require(equation_sides(stage[0]) == expected["start"], f"{stage[0]} is the starting equation, rewritten")
+    require(equation_sides(rows[2][0]) == expected["last"], f"{rows[2][0]} is the last line")
+    require(rows[3][0] == expected["choice"], f"Conclusion {rows[3][0]}, expected {expected['choice']}")
+    fields = problem["workGrading"]["fields"]
+    require([[rule.get("value", rule.get("accept")) for rule in rules] for rules in fields] ==
+            [[rows[0][0]], [rows[1][0]], [rows[2][0]], [[expected["choice"]]]], "Grading agrees with the work")
+    require(problem.get("hint", "").strip() and problem.get("explanation"), "Hint and worked explanation")
+    return problem["answer"]
+
+
 LINE_POINTS = r"\((-?\d+), (-?\d+)\) and \((-?\d+), (-?\d+)\)"
 
 
@@ -828,6 +875,7 @@ SIGNED_SOLVERS = {
     "triangle-construct-plot": construct_triangle, "angle-recognize": recognize_angle,
     "fraction-to-decimal-long-division": decimal_division,
     "linear-system-solution-count": lines_through_points,
+    "grouped-both-sides-steps": solution_count,
 }
 
 
@@ -882,6 +930,7 @@ def handles_public(public):
         "adjacent-angle-equation": ("A folding fan opens through",),
         "circle-equation": ("A circle has center $C(",),
         "linear-system-solution-count": ("Do the lines intersect?",),
+        "grouped-both-sides-steps": ("one stage at a time until you reach",),
     }
     if template in ("right-triangle", "right-triangle-missing-leg"):
         return not prompt.startswith("A right triangle")
@@ -892,6 +941,9 @@ def handles_public(public):
 
 def review_problem(problem):
     public = problem["public"]
+    if public["templateId"] == "grouped-both-sides-steps":
+        # Stages are checked as equations, not as the author's exact text.
+        return review_solution_count(problem)
     expected = solve(public)
     require(canonical(problem["answer"]) == canonical(expected), f"Wrong answer: got {problem['answer']}, expected {expected}")
     response = public["response"]
