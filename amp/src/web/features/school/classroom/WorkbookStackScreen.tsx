@@ -17,7 +17,7 @@ import { EmptyState } from "../../../ui/EmptyState";
 import { Wave } from "../../../ui/Loading";
 import { Segmented } from "../../../ui/Segmented";
 import { meOptions } from "../../../lib/query";
-import { FreeWorkbooksUsed } from "../../workbooks/FreeWorkbooksUsed";
+import { AllowancePause } from "../../continue/AllowancePause";
 import { dateLabel, defaultPaper } from "../../workbooks/model";
 import { currentSession } from "../api";
 import { useStaffSession } from "../classes/api";
@@ -231,9 +231,14 @@ function Stack({
   const me = useQuery(meOptions(currentSession())).data;
   // A family's own parent continues with AMP; a class or school has no
   // checkout, so its next step is to talk to us.
-  const next =
-    me?.signedIn && me.familyClass?.classId === classId ? "purchase" : "talk";
   const used = data.students.filter(freeWorkbooksUsed);
+  // A family's own child continues with AMP; any other class talks to us.
+  const family = me?.signedIn && me.familyClass?.classId === classId;
+  const child = family
+    ? me.learners.find((learner) =>
+        used.some((student) => student.name === learner.name),
+      )
+    : undefined;
   const date =
     search.date && search.date >= data.today && search.date <= data.lastDate
       ? search.date
@@ -487,10 +492,11 @@ function Stack({
         {/* From the class's data on first paint, whatever set is chosen, so
             choosing never moves what follows. */}
         {data.canPrint && used.length > 0 && (
-          <FreeWorkbooksUsed
-            next={next}
-            variant="secondary"
-            className={styles.used}
+          <AllowancePause
+            kind="workbooks"
+            compact
+            viewer={child ? "parent" : "staff"}
+            learner={child ? { id: child.id, name: child.name } : undefined}
           />
         )}
       </section>

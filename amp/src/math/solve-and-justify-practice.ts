@@ -1,6 +1,16 @@
 import type { TemplateMetadata } from "./contracts";
-import { chainFamily, dispatch, pick } from "./chain-kit";
-import type { Move } from "./structured-work";
+import { chainFamily, dispatch, gcd, pick } from "./chain-kit";
+import { shuffle } from "./distribution-practice";
+import {
+  gradeStructuredWork,
+  gradingFits,
+  normalizeStructuredWork,
+  structuralProblem,
+  type Move,
+  type StructuredWorkResponse,
+  type WorkGrading,
+  type WorkRow,
+} from "./structured-work";
 import {
   derivationWork,
   tex,
@@ -11,6 +21,7 @@ import {
 } from "./structured-work-kit";
 import { defineAxis, type Random } from "./variation/axes";
 import type { ParseOptions } from "./expression";
+import type { Surface } from "./variation/compose";
 
 /**
  * Solve and justify: write each line of a solution and name the property
@@ -56,14 +67,15 @@ export const solveJustifyTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "solve-justify-quadratic",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Solve a quadratic equation by factoring and justify each step",
     skillId: "quadratic-equations",
     gradeBand: "9–12",
     difficultyOffset: 0.4,
     requiredResponseCapability: capability,
     description:
-      "Solve a quadratic equation with integer roots by moving every term to one side, factoring, using the zero-product property and solving each factor, typing each line and naming its reason.",
+      "Solve a quadratic equation with integer roots by factoring, or derive the quadratic formula by completing the square, choosing each line and its reason.",
   },
 ];
 
@@ -649,6 +661,7 @@ const formulaFamily = chainFamily({
 
 type QuadraticForm = "standard" | "move-constant" | "common-factor";
 interface QuadraticModel extends DerivationModel {
+  kind: "factor";
   form: QuadraticForm;
   bank: typeof quadraticReasons;
   roots: [number, number];
@@ -668,6 +681,7 @@ function quadraticModel(r: Random, form: QuadraticForm): QuadraticModel {
   const solved = `x=${lo} or x=${hi}`;
   const solveReason = lo > 0 ? "ad" : "su";
   const base = {
+    kind: "factor" as const,
     variable: "x",
     line: quadraticLine,
     reasons: [...quadraticReasons],
@@ -711,6 +725,307 @@ function quadraticModel(r: Random, form: QuadraticForm): QuadraticModel {
     ],
   };
 }
+/* ------------------------------------ quadratic formula derivation */
+/** The derivation grader accepts a solved numeric variable, not a radical
+ * formula in a and b. Lines are choices (proof layout) so the key still grades. */
+const formulaReasons = [
+  { id: "da", label: "Divide both sides by the leading coefficient" },
+  { id: "su", label: "Do the same thing to both sides" },
+  { id: "cs", label: "Add the square of half the linear coefficient" },
+  { id: "fa", label: "Factor a perfect square" },
+  { id: "cf", label: "Use a common denominator" },
+  { id: "sr", label: "Take square roots of both sides, with both signs" },
+] as const;
+const formulaReasonIds = ["da", "su", "cs", "fa", "sr", "su"] as const;
+type FormulaPiece = "numeric" | "letters" | "match";
+interface GeneralModel {
+  kind: "general";
+  piece: FormulaPiece;
+  a: number;
+  b: number;
+  c: number;
+}
+type SolveModel = QuadraticModel | GeneralModel;
+const rq = (n: number, d = 1) => {
+  if (d < 0) {
+    n = -n;
+    d = -d;
+  }
+  const g = gcd(Math.abs(n), d) || 1;
+  return { n: n / g, d: d / g };
+};
+const rqTex = (q: { n: number; d: number }) => {
+  if (q.d === 1) return `${q.n}`;
+  const body = `\\frac{${Math.abs(q.n)}}{${q.d}}`;
+  return q.n < 0 ? `-${body}` : body;
+};
+const math = (body: string) => `$${body}$`;
+function signedTerm(n: number, d: number, body: string, first: boolean) {
+  const q = rq(n, d);
+  if (q.n === 0) return "";
+  const mag =
+    q.d === 1
+      ? `${Math.abs(q.n) === 1 && body ? "" : Math.abs(q.n)}${body}`
+      : `\\frac{${Math.abs(q.n)}}{${q.d}}${body}`;
+  if (first) return q.n < 0 ? `-${mag}` : mag;
+  return `${q.n < 0 ? "-" : "+"}${mag}`;
+}
+function xPlus(n: number, d: number) {
+  const q = rq(n, d);
+  if (q.n === 0) return "x";
+  if (q.d === 1) return `x${q.n < 0 ? "" : "+"}${q.n}`;
+  const mag = `\\frac{${Math.abs(q.n)}}{${q.d}}`;
+  return q.n < 0 ? `x-${mag}` : `x+${mag}`;
+}
+function sqShift(n: number, d: number) {
+  const q = rq(n, d);
+  if (q.n === 0) return "x^2";
+  const inside =
+    q.d === 1
+      ? `${q.n < 0 ? "-" : "+"}${Math.abs(q.n)}`
+      : `${q.n < 0 ? "-" : "+"}\\frac{${Math.abs(q.n)}}{${q.d}}`;
+  return `\\left(x${inside}\\right)^2`;
+}
+const letterLines = [
+  math("x^2+\\frac{b}{a}x+\\frac{c}{a}=0"),
+  math("x^2+\\frac{b}{a}x=-\\frac{c}{a}"),
+  math(
+    "x^2+\\frac{b}{a}x+\\frac{b^2}{4a^2}=-\\frac{c}{a}+\\frac{b^2}{4a^2}",
+  ),
+  math("\\left(x+\\frac{b}{2a}\\right)^2=\\frac{b^2-4ac}{4a^2}"),
+  math("x+\\frac{b}{2a}=\\pm\\frac{\\sqrt{b^2-4ac}}{2a}"),
+  math("x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}"),
+];
+const letterDistractors: [string, string][] = [
+  ["a4", math("\\left(x+\\frac{b}{2a}\\right)^2=\\frac{b^2-4c}{4a^2}")],
+  ["b4", math("\\left(x+\\frac{b}{2a}\\right)^2=\\frac{b^2-4ac}{4a}")],
+  ["c4", math("\\left(x+\\frac{b}{a}\\right)^2=\\frac{b^2-4ac}{4a^2}")],
+  ["a5", math("x+\\frac{b}{2a}=\\frac{\\sqrt{b^2-4ac}}{2a}")],
+  ["b5", math("x+\\frac{b}{2a}=\\pm\\frac{\\sqrt{b^2-4ac}}{4a^2}")],
+  ["a6", math("x=-b\\pm\\frac{\\sqrt{b^2-4ac}}{2a}")],
+];
+function numericLines(a: number, b: number, c: number): string[] {
+  const disc = b * b - 4 * a * c;
+  const den2 = 2 * a;
+  const den4 = 4 * a * a;
+  const head = -b;
+  const radical =
+    head === 0
+      ? `\\pm\\sqrt{${disc}}`
+      : `${head < 0 ? "-" : ""}${Math.abs(head)}\\pm\\sqrt{${disc}}`;
+  return [
+    math(`x^2${signedTerm(b, a, "x", false)}${signedTerm(c, a, "", false)}=0`),
+    math(`x^2${signedTerm(b, a, "x", false)}=${signedTerm(-c, a, "", true)}`),
+    math(
+      `x^2${signedTerm(b, a, "x", false)}${signedTerm(b * b, den4, "", false)}=${signedTerm(-c, a, "", true)}${signedTerm(b * b, den4, "", false)}`,
+    ),
+    math(`${sqShift(b, den2)}=${rqTex(rq(disc, den4))}`),
+    math(`${xPlus(b, den2)}=\\pm\\frac{\\sqrt{${disc}}}{${den2}}`),
+    math(`x=\\frac{${radical}}{${den2}}`),
+  ];
+}
+function numericDistractors(a: number, b: number, c: number, lines: string[]) {
+  const disc = b * b - 4 * a * c;
+  const den2 = 2 * a;
+  const den4 = 4 * a * a;
+  const head = -b;
+  const partial =
+    head < 0
+      ? `x=-${Math.abs(head)}\\pm\\frac{\\sqrt{${disc}}}{${den2}}`
+      : `x=${head}\\pm\\frac{\\sqrt{${disc}}}{${den2}}`;
+  const raw: [string, string][] = [
+    ["a4", math(`${sqShift(b, den2)}=${rqTex(rq(b * b - 4 * c, den4))}`)],
+    ["b4", math(`${sqShift(b, den2)}=${rqTex(rq(disc, 4 * a))}`)],
+    ["c4", math(`${sqShift(b, a)}=${rqTex(rq(disc, den4))}`)],
+    ["a5", math(`${xPlus(b, den2)}=\\frac{\\sqrt{${disc}}}{${den2}}`)],
+    ["b5", math(`${xPlus(b, den2)}=\\pm\\frac{\\sqrt{${disc}}}{${den4}}`)],
+    ["a6", math(partial)],
+  ];
+  const used = new Set(lines);
+  return raw
+    .filter(([, label]) => !used.has(label))
+    .map(([id, label]) => ({ id, label }));
+}
+function isSquare(n: number) {
+  const s = Math.round(Math.sqrt(n));
+  return s * s === n;
+}
+function numericCoeffs(r: Random): { a: number; b: number; c: number } {
+  for (let i = 0; i < 40; i++) {
+    const a = pick(r, [2, 3, 5]);
+    const b = r(-9, 9);
+    const c = r(-9, 9);
+    if (b === 0 || c === 0) continue;
+    const disc = b * b - 4 * a * c;
+    if (disc <= 0 || isSquare(disc)) continue;
+    return { a, b, c };
+  }
+  throw new Error("Need three retry");
+}
+const chainClaims: WorkGrading = {
+  mode: "proof",
+  goal: "l6",
+  claims: {
+    l1: { da: [[]] },
+    l2: { su: [["l1"]] },
+    l3: { cs: [["l2"]] },
+    l4: { fa: [["l3"]], cf: [["l3"]] },
+    l5: { sr: [["l4"]] },
+    l6: { su: [["l5"]] },
+  },
+};
+function formulaSurface(
+  m: GeneralModel,
+  mode: "build" | "fill" | "order",
+  fill: DerivationFill,
+  r: Random,
+): Surface {
+  const match = m.piece === "match";
+  const lines = match || m.piece === "letters" ? letterLines : numericLines(m.a, m.b, m.c);
+  const shown = m.piece === "letters" ? letterLines : numericLines(m.a, m.b, m.c);
+  const distractors = match
+    ? letterDistractors.map(([id, label]) => ({ id, label }))
+    : m.piece === "letters"
+      ? letterDistractors.map(([id, label]) => ({ id, label }))
+      : numericDistractors(m.a, m.b, m.c, lines);
+  if (distractors.length < 3) throw new Error("Need three retry");
+  const statements = [
+    ...lines.map((label, i) => ({ id: `l${i + 1}`, label })),
+    ...distractors,
+  ];
+  if (
+    statements.length > 12 ||
+    new Set(statements.map((s) => s.label)).size !== statements.length ||
+    new Set(statements.map((s) => s.id)).size !== statements.length
+  )
+    throw new Error("Need three retry");
+  const path: [string, string][] = match
+    ? [["l4", "fa"]]
+    : formulaReasonIds.map((reason, i) => [`l${i + 1}`, reason]);
+  const grading: WorkGrading = match
+    ? { mode: "proof", goal: "l4", claims: { l4: { fa: [[]], cf: [[]] } } }
+    : chainClaims;
+  const givenRow = (i: number) =>
+    !match && fill === "alternate" && (path.length - 1 - i) % 2 === 1;
+  const rows: WorkRow[] = path.map(([line, reason], i) => {
+    const showLine = mode === "order" || (mode === "fill" && !match && (fill === "reasons" || givenRow(i)));
+    const showReason =
+      mode === "order" || (mode === "fill" && (match || givenRow(i)));
+    return {
+      id: `r${i + 1}`,
+      fields: [
+        {
+          kind: "choice" as const,
+          label: "Line",
+          bank: "lines",
+          ...(showLine ? { given: line } : {}),
+        },
+        {
+          kind: "choice" as const,
+          label: "Reason",
+          bank: "reasons",
+          ...(showReason ? { given: reason } : {}),
+        },
+      ],
+    };
+  });
+  const banks = [
+    { id: "lines", label: "Line", options: statements },
+    {
+      id: "reasons",
+      label: "Reason",
+      options: formulaReasons.map(({ id, label }) => ({ id, label })),
+    },
+  ];
+  const start =
+    m.piece === "letters"
+      ? math("ax^2+bx+c=0")
+      : math(`${quad(m.a, m.b, m.c)}=0`);
+  const goalTex = "A solved equation for $x$.";
+  const base = {
+    kind: "structured-work" as const,
+    label: match ? "Choose the matching line" : "Your solution",
+    layout: "proof" as const,
+    mode,
+    start,
+    goal: goalTex,
+    banks,
+  };
+  let response: StructuredWorkResponse;
+  let answer: string;
+  if (mode === "order") {
+    const renumber = (order: WorkRow[]) => {
+      const display = new Map(order.map((row, j) => [row.id, `r${j + 1}`]));
+      return {
+        shown: order.map((row) => ({ ...row, id: display.get(row.id)! })),
+        key: JSON.stringify(rows.map((row) => display.get(row.id)!)),
+      };
+    };
+    let found: { shown: WorkRow[]; key: string } | undefined;
+    for (let i = 0; i < 60 && !found; i++) {
+      const out = renumber(shuffle(r, [...rows]));
+      const shownKey = JSON.stringify(out.shown.map((row) => row.id));
+      const trial: StructuredWorkResponse = { ...base, rows: out.shown };
+      if (
+        !gradeStructuredWork(trial, grading, shownKey) &&
+        gradeStructuredWork(trial, grading, out.key)
+      )
+        found = out;
+    }
+    if (!found) throw new Error("Need three retry");
+    response = { ...base, rows: found.shown };
+    answer = found.key;
+  } else {
+    response = { ...base, rows };
+    answer = JSON.stringify(
+      path.map(([line, reason], i) => {
+        const row = rows[i]!;
+        return [
+          row.fields[0]!.given ? "" : line,
+          row.fields[1]!.given ? "" : reason,
+        ];
+      }),
+    );
+  }
+  const broken = structuralProblem(response);
+  if (broken) throw new Error(broken);
+  if (!gradingFits(response, grading)) throw new Error("Rule does not fit");
+  if (normalizeStructuredWork(response, answer) !== answer)
+    throw new Error(`Answer key is not canonical: ${answer}`);
+  if (!gradeStructuredWork(response, grading, answer))
+    throw new Error("Answer key is not credited");
+  const equation = start;
+  const prompt = match
+    ? `Line 4 of completing the square on ${equation} is ${shown[3]}. Which line of the general derivation is it an instance of? Choose that line and its reason.`
+    : m.piece === "letters"
+      ? `Solve ${equation}, $a \\ne 0$, by completing the square. Choose each line and its reason.`
+      : `Solve ${equation} by completing the square. Choose each line and its reason.`;
+  const hint = match
+    ? "A finished square set equal to one fraction is the step that uses a common denominator."
+    : "Divide by the leading coefficient first, then move the constant. Add the square of half the new $x$ coefficient.";
+  const explanation = match
+    ? [
+        `${lines[3]} is the finished square, with the right side over one denominator.`,
+        "That is the general line $\\left(x+\\frac{b}{2a}\\right)^2=\\frac{b^2-4ac}{4a^2}$.",
+        "Factoring the square and combining the right side are the two reasons for that line.",
+      ]
+    : [
+        `Start from ${equation}. Divide by the leading coefficient first.`,
+        "Move the constant, then add the square of half the linear coefficient.",
+        "Factor the square and write the right side over one denominator.",
+        "Take both square roots, then move the extra term.",
+        "The first part, $-\\frac{b}{2a}$, is the axis. The rest is half the gap between the zeros.",
+        "Under the root: positive means two real zeros, zero means one, and negative means none.",
+      ];
+  return {
+    prompt,
+    hint,
+    explanation,
+    response,
+    answer,
+    workGrading: grading,
+  };
+}
 const quadraticFamily = chainFamily({
   template: solveJustifyTemplates[3]!,
   axes: {
@@ -721,9 +1036,30 @@ const quadraticFamily = chainFamily({
       "move-constant",
       "common-factor",
     ] as const),
+    family: defineAxis(
+      "family",
+      ["factoring", "general-coefficients"] as const,
+      { legacy: "factoring", silentLegacy: true, since: 2 },
+    ),
+    piece: defineAxis("piece", ["numeric", "letters", "match"] as const, {
+      legacy: "numeric",
+      silentLegacy: true,
+      since: 2,
+      weights: [5, 1, 2],
+    }),
   },
-  model: (r, axes) => quadraticModel(r, axes.form),
+  model: (r, axes): SolveModel => {
+    if (axes.family !== "general-coefficients")
+      return quadraticModel(r, axes.form);
+    const piece: FormulaPiece =
+      axes.mode === "order" && axes.piece === "match" ? "numeric" : axes.piece;
+    if (piece === "letters")
+      return { kind: "general", piece, a: 0, b: 0, c: 0 };
+    return { kind: "general", piece, ...numericCoeffs(r) };
+  },
   render: (m, axes, r) => {
+    if (m.kind === "general")
+      return formulaSurface(m, axes.mode, axes.fill, r);
     const startTex = `$${tex(m.start, m.line)}$`;
     const [lo, hi] = m.roots;
     const c = lo * hi,
@@ -740,14 +1076,22 @@ const quadraticFamily = chainFamily({
       check: `Check: $x=${lo}$ and $x=${hi}$ each make ${startTex} true.`,
     });
   },
-  variant: (m) => m.form,
+  variant: (m) => (m.kind === "general" ? `general-${m.piece}` : m.form),
 });
 
 export const solveJustifyGenerate = dispatch(solveJustifyTemplates, {
   "solve-justify-linear": (seed) => linear.generate(seed).problem,
   "solve-justify-inequality": (seed) => inequalityFamily.generate(seed).problem,
   "solve-justify-formula": (seed) => formulaFamily.generate(seed).problem,
-  "solve-justify-quadratic": (seed) => quadraticFamily.generate(seed).problem,
+  "solve-justify-quadratic": (seed) => {
+    const problem = quadraticFamily.generate(seed).problem;
+    const axes = { ...(problem.variant?.axes ?? {}) };
+    if (axes.family === "factoring") delete axes.family;
+    if (!axes.family || axes.piece === "numeric") delete axes.piece;
+    return problem.variant
+      ? { ...problem, variant: { ...problem.variant, axes } }
+      : problem;
+  },
 });
 /** Generators with axis control, for tests and lesson examples. */
 export const solveJustifyCases = {

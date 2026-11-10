@@ -109,7 +109,58 @@ def figure_region(public):
     return lambda x, y: all(OPS[h['op']](h['a'] * x + h['b'] * y, h['c']) for h in halves)
 
 
+def _edge(a, b, c):
+    def n(v):
+        require(v.denominator == 1, 'Intercept is not a lattice point')
+        return int(v)
+    if b == 0:
+        return f'vertical line x = {n(c / a)}'
+    if a == 0:
+        return f'horizontal line y = {n(c / b)}'
+    return f'line through ({n(c / a)}, 0) and (0, {n(c / b)})'
+
+
+def _inequality(text):
+    m = re.fullmatch(r'(.+) (<|>|≤|≥) (-?\d+)', text.strip())
+    require(m is not None, 'Not an inequality: ' + text)
+    a, b, const = linear2(m[1])
+    return a, b, Fraction(int(m[3])) - const, m[2]
+
+
+def solve_description(public):
+    body = re.search(r'of (.+)\? Use \(0, 0\)', public['prompt'])
+    require(body is not None, 'Missing described inequality')
+    pieces = [_inequality(part) for part in body[1].split(' and ')]
+    if len(pieces) == 2:
+        (a1, b1, c1, op1), (a2, b2, c2, op2) = pieces
+        require(holdsOp_origin(op1, c1) and holdsOp_origin(op2, c2), 'Origin must be inside both')
+        s1 = 'Dashed' if op1 in '<>' else 'Solid'
+        s2 = 'dashed' if op2 in '<>' else 'solid'
+
+        def truth(label):
+            return (label.startswith(f'{s1} line for the first')
+                    and f'{s2} line for the second' in label
+                    and 'only the overlap' in label
+                    and 'is included' in label)
+        return only(public, truth)
+    a, b, c, op = pieces[0]
+    strict = op in '<>'
+    style = 'Dashed' if strict else 'Solid'
+    side = 'includes' if holdsOp_origin(op, c) else 'excludes'
+    edge = _edge(a, b, c)
+
+    def truth(label):
+        return label.startswith(f'{style} {edge}') and f'that {side} (0, 0)' in label
+    return only(public, truth)
+
+
+def holdsOp_origin(op, c):
+    return OPS[op](0, c)
+
+
 def solve_half_plane(public):
+    if public['prompt'].startswith('Which description shows'):
+        return solve_description(public)
     require(public['prompt'] in ('Which inequality does the shaded region show?', 'Which system of inequalities does the shaded region show?'), 'Unrecognized region prompt')
     shaded = figure_region(public)
     truth = [shaded(x, y) for x, y in LATTICE]

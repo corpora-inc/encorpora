@@ -22,6 +22,7 @@ import {
   useStaffSession,
 } from "./api";
 import { ClassFrame } from "./ClassFrame";
+import { PracticeAs, useDemoOrg } from "../demo/DemoPlace";
 import styles from "./Roster.module.css";
 
 type Row = SignInRoster["students"][number];
@@ -86,6 +87,8 @@ export function RosterScreen() {
     [experience.data],
   );
   const [making, setMaking] = useState(false);
+  // A demo's owner can open practice as any of its made-up students.
+  const demo = useDemoOrg(params.org);
   const busy =
     making || rotate.isPending || reset.isPending || revoke.isPending;
 
@@ -135,6 +138,16 @@ export function RosterScreen() {
             <span className={styles.none}>Not yet</span>
           ),
       },
+      ...(demo && canManage
+        ? ([
+            {
+              id: "practice",
+              header: "Student view",
+              width: 150,
+              cell: (row) => <PracticeAs student={row} />,
+            },
+          ] satisfies DataGridColumn<Row>[])
+        : []),
       ...(canManage
         ? ([
             {
@@ -200,7 +213,15 @@ export function RosterScreen() {
           ] satisfies DataGridColumn<Row>[])
         : []),
     ],
-    [canManage, navigate, params, experience.data?.canEdit, leaveOff, leftOff],
+    [
+      canManage,
+      demo,
+      navigate,
+      params,
+      experience.data?.canEdit,
+      leaveOff,
+      leftOff,
+    ],
   );
 
   async function confirm() {
@@ -256,6 +277,13 @@ export function RosterScreen() {
               </p>
             </div>
             <div className={styles.actions}>
+              <Link
+                to="/school/$org/classes/$class/experience"
+                params={params}
+                className={buttonClass("secondary")}
+              >
+                Student experience
+              </Link>
               <Link
                 to="/school/$org/classes/$class/start"
                 params={params}

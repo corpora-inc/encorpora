@@ -1,14 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { FREE_ONLINE_PROBLEMS } from "../../../learning/free-allowance";
 import type { AdultStart } from "../../../learning/starting-point";
 import { Avatar } from "../../ui/Avatar";
-import { Badge } from "../../ui/Badge";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
 import { Loading } from "../../ui/Loading";
 import { currentSession } from "../school/api";
+import { meOptions } from "../../lib/query";
+import { freeLeft, freeProblemsLeft } from "../../lib/free-allowance";
+import { AllowancePause } from "../continue/AllowancePause";
 import "../school/SchoolFrame.module.css";
 import {
   RecordLevels,
@@ -47,6 +48,12 @@ export function OwnRecordScreen() {
   const session = currentSession();
   const record = useQuery(ownPracticeOptions(session));
   const data = record.data;
+  const me = useQuery(meOptions(session)).data;
+  // Their free allowance, from the account's one store (`/me`).
+  const own = me?.signedIn
+    ? me.family.learners.find((entry) => entry.adult && !entry.deletedAt)
+    : undefined;
+  const left = freeLeft(own);
   return (
     <OwnPage>
       {record.isPending ? (
@@ -73,12 +80,14 @@ export function OwnRecordScreen() {
                   ? `Began at ${startNames[data.learner.start]}`
                   : "Your own practice"}
               </p>
+              {left != null && left > 0 && (
+                <p className={styles.free} data-free-left={left}>
+                  {freeProblemsLeft(left)}
+                </p>
+              )}
             </div>
             <div className={teacher.recordAction}>
-              {/* Practice is the bar's action; workbooks are theirs here,
-                  with their own allowance, so they stay when practice
-                  pauses. */}
-              {!data.learner.active && <Badge>Practice paused</Badge>}
+              {/* Practice is the bar's action; workbooks are theirs here. */}
               <Link
                 to="/$"
                 params={{
@@ -94,14 +103,15 @@ export function OwnRecordScreen() {
             </div>
           </div>
           {/* Paused only when no access covers them and their free problems
-              are used: say both plainly. No plan exists for an adult's own
-              practice, so nothing here offers one. */}
+              are used: the one pause, with Continue with AMP for their own
+              practice. */}
           {!data.learner.active && (
-            <p className={styles.paused}>
-              Your {FREE_ONLINE_PROBLEMS} free problems are used. Your own
-              practice is free while you teach a class at a school with AMP, or
-              while a child of yours practices. Your progress stays here.
-            </p>
+            <AllowancePause
+              kind="problems"
+              viewer="adult"
+              learner={{ id: data.learner.id, name: data.learner.name }}
+              compact
+            />
           )}
           <div className={teacher.recordColumns}>
             <section className={teacher.recordSection}>

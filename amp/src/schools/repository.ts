@@ -91,6 +91,10 @@ function learnerName(person: {
   );
 }
 
+/** Only a demo says so. */
+const withDemo = ({ demo, ...org }: OrgResource & { demo?: boolean }) =>
+  (demo ? { ...org, demo: true as const } : org) as OrgResource;
+
 export class SchoolRepository {
   constructor(readonly pool: Pool) {}
 
@@ -791,7 +795,7 @@ export class SchoolRepository {
   async myOrgs(accountId: string): Promise<OrgResource[]> {
     return (
       await this.pool.query(
-        `SELECT o.id,o.kind,o.name,o.parent_id AS "parentId",o.timezone,o.solo,o.setup_pending AS "setupPending",
+        `SELECT o.id,o.kind,o.name,o.parent_id AS "parentId",o.timezone,o.solo,o.setup_pending AS "setupPending",o.demo,
            array_agg(DISTINCT r.role ORDER BY r.role) AS roles
          FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
          JOIN amp_orgs o ON o.id=r.org_id AND (o.kind<>'family' OR o.created_by<>$1)
@@ -799,12 +803,12 @@ export class SchoolRepository {
          GROUP BY o.id ORDER BY o.name,o.id`,
         [accountId],
       )
-    ).rows;
+    ).rows.map(withDemo);
   }
   async orgFor(accountId: string, orgId: string): Promise<OrgResource | null> {
     const row = (
       await this.pool.query(
-        `SELECT o.id,o.kind,o.name,o.parent_id AS "parentId",o.timezone,o.solo,o.setup_pending AS "setupPending",
+        `SELECT o.id,o.kind,o.name,o.parent_id AS "parentId",o.timezone,o.solo,o.setup_pending AS "setupPending",o.demo,
            COALESCE(array_agg(DISTINCT r.role) FILTER (WHERE r.id IS NOT NULL),'{}') AS roles
          FROM amp_orgs o
          LEFT JOIN amp_people p ON p.account_id=$1 AND p.deleted_at IS NULL
@@ -813,7 +817,7 @@ export class SchoolRepository {
         [accountId, orgId],
       )
     ).rows[0];
-    return row ?? null;
+    return row ? withDemo(row) : null;
   }
   /** Classes at this org and below; `classIds` narrows to a teacher's own. The
    * year in use, unless `year` asks for another. */

@@ -5,6 +5,7 @@ import {
   startPracticeSchema,
 } from "../account/adult.js";
 import { accountSummary } from "../account/repository.js";
+import { startPlace } from "../account/starter.js";
 import { studentBearer } from "../schools/principal.js";
 import { studentMe } from "../schools/student-me.js";
 import { Readable } from "node:stream";
@@ -105,6 +106,18 @@ export async function registerFamilyRoutes(
         .code(201)
         .send(await startAdultPractice(repository, account, input));
     });
+    // "What brings you to AMP?": the place that answer needs, in one call.
+    scope.post(
+      "/api/v1/start",
+      {
+        bodyLimit: 4096,
+        config: { rateLimit: { max: 30, timeWindow: "1 hour" } },
+      },
+      async (request) => {
+        const account = await options.authenticate(request);
+        return startPlace(repository, account, request.body);
+      },
+    );
     scope.post(
       "/api/v1/me/practice/activity",
       { bodyLimit: 4096 },

@@ -163,9 +163,54 @@ def compare_event(op, k, dist):
     return sum(p for x, p in dist.items() if keep(x))
 
 
+def listed_distribution(label):
+    """Map value -> probability from a choice that lists P(k)=n/d."""
+    pairs = re.findall(r'P\((\d+)\)=(\d+)(?:/(\d+))?', clean(label))
+    require(pairs, f'No distribution list: {label}')
+    dist = {int(k): Fraction(int(n), int(d) if d else 1) for k, n, d in pairs}
+    require(len(dist) == len(pairs), 'Repeated value in a distribution list')
+    return dist
+
+
 def solve_random_variable(public):
     prompt = clean(public['prompt'])
     options = options_of(public)
+    if 'Which list is the probability distribution' in prompt:
+        if (m := re.fullmatch(r'A fair coin is tossed (\d+) times\. Let X be the number of heads\. Which list is the probability distribution of X\?', prompt)):
+            n = int(m[1])
+            require(n in (3, 4), 'Coin toss count')
+            values = list(range(n + 1))
+            counts = {k: comb(n, k) for k in values}
+            total = 2 ** n
+        elif re.fullmatch(r'Two fair 4-sided dice are rolled\. Let X be the sum of the two numbers\. Which list is the probability distribution of X\?', prompt):
+            counts = {}
+            for a in range(1, 5):
+                for b in range(1, 5):
+                    counts[a + b] = counts.get(a + b, 0) + 1
+            values = list(range(2, 9))
+            total = 16
+        elif re.fullmatch(r'Two fair six-sided dice are rolled\. Let X be the larger of the two numbers, or that number if they match\. Which list is the probability distribution of X\?', prompt):
+            counts = {}
+            for a in range(1, 7):
+                for b in range(1, 7):
+                    k = max(a, b)
+                    counts[k] = counts.get(k, 0) + 1
+            values = list(range(1, 7))
+            total = 36
+        elif (m := re.fullmatch(r'A bag has (\d+) red marbles and (\d+) blue marbles\. Two marbles are drawn at random at the same time\. Let X be the number of red marbles drawn\. Which list is the probability distribution of X\?', prompt)):
+            red, blue = int(m[1]), int(m[2])
+            require(red != blue and red >= 2 and blue >= 2, 'Bag must be uneven and large enough to draw two')
+            values = [0, 1, 2]
+            counts = {k: comb(red, k) * comb(blue, 2 - k) if 0 <= k <= red and 0 <= 2 - k <= blue else 0 for k in values}
+            total = comb(red + blue, 2)
+        else:
+            raise ValueError('Distribution prompt not recognised')
+        require(sum(counts[v] for v in values) == total and total > 0, 'Counts must fill the sample space')
+        expected = {v: Fraction(counts[v], total) for v in values}
+        require(sum(expected.values()) == 1, 'Distribution must sum to 1')
+        dists = [listed_distribution(o['label']) for o in options]
+        require(len({tuple(sorted(d.items())) for d in dists}) == 4, 'Distribution choices must differ')
+        return pick(options, lambda label: listed_distribution(label) == expected, 'graphed distribution')
     if 'Which definition gives a numerical random variable' in prompt:
         require(public.get('figure') is None, 'Unexpected figure')
 

@@ -1,3 +1,4 @@
+import { canAddStudents } from "./permissions";
 import {
   keepPreviousData,
   useInfiniteQuery,
@@ -476,8 +477,7 @@ export function StudentsScreen() {
     [classNames, rows],
   );
   const can = org?.can ?? [];
-  const canAdd =
-    can.includes("students.add") || (org?.teaches?.length ?? 0) > 0;
+  const canAdd = canAddStudents(org);
   const open = rows.find((row) => row.id === search.student);
   const adding = search.add === 1 || search.add === "1";
   const opener = useRef<HTMLDivElement>(null);

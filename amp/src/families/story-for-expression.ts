@@ -84,4 +84,20 @@ export const family = {
     "story-both-interpretations":
       "total ÷ divisor is both a sharing question and a grouping question. They name the same three numbers.",
   },
+  facetMappings: [
+    {
+      templateId: "story-for-expression",
+      facetId: "division-meaning.core",
+      extent: "partial",
+      rationale:
+        "Choose the equal-groups story or the expression that matches a product or a quotient. The cards share the printed numbers, so the choice is the structure. Does not assess computing the value.",
+    },
+    {
+      templateId: "story-both-interpretations",
+      facetId: "division-meaning.core",
+      extent: "partial",
+      rationale:
+        "Select both the sharing story and the grouping story for one division. Does not assess a product story or computing the quotient.",
+    },
+  ],
 } satisfies ContentFamily;

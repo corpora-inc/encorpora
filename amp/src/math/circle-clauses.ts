@@ -323,7 +323,10 @@ function cyclicProof(rng: Random): ClauseSurface {
         : []),
     ],
     `For angle $${a}$, follow the arc between its two ray endpoints that does not contain $${a}$. ${numeric ? `Start with the arc measuring ${measure}°.` : "Relate both intercepted arcs to the target sum of 180°."}`,
-    picture(scene(els)),
+    picture({
+      ...scene(els),
+      note: `Quadrilateral ${L.join("")} has all four vertices on a circle. Arcs ${arc} and ${other} together form the circle.${numeric ? ` Their measures are ${measure}° and ${360 - measure}°.` : ""}`,
+    }),
   );
 }
 

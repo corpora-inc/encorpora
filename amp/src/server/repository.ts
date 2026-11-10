@@ -60,7 +60,7 @@ import {
   learningConsentActive,
   namingConsentActive,
 } from "./account-access.js";
-import { allocatePictureIdentity } from "./picture-identity.js";
+import { insertUnnamedChild } from "./picture-identity.js";
 import {
   familyHasLearnerRoom,
   freeAllowance,
@@ -343,31 +343,28 @@ export class PostgresRepository implements Repository {
         throw new ApiError(403, "Learning consent has been withdrawn");
       if (!(await familyHasLearnerRoom(client, accountId)))
         throw new ApiError(403, TOO_MANY_LEARNERS);
-      const identity =
-        name === undefined
-          ? await allocatePictureIdentity(client, `family:${accountId}`)
-          : null;
-      const learner = {
-        id: randomUUID(),
-        name: name ?? identity!.name,
-        birthYear: birthYear ?? null,
-        namePending: identity !== null,
-        pictureIdentity: identity?.picture ?? null,
+      let learner: {
+        id: string;
+        name: string;
+        birthYear: number | null;
+        namePending: boolean;
+        pictureIdentity: string | null;
       };
-      await client.query(
-        `INSERT INTO amp_learners(id,account_id,name,birth_year,name_pending,picture_identity,picture_number,identity_scope)
-         VALUES($1,$2,$3,$4,$5,$6,$7,$8)`,
-        [
-          learner.id,
-          accountId,
-          learner.name,
-          learner.birthYear,
-          learner.namePending,
-          identity?.picture ?? null,
-          identity?.number ?? null,
-          identity?.scope ?? null,
-        ],
-      );
+      if (name === undefined)
+        learner = await insertUnnamedChild(client, accountId, birthYear!);
+      else {
+        learner = {
+          id: randomUUID(),
+          name,
+          birthYear: birthYear ?? null,
+          namePending: false,
+          pictureIdentity: null,
+        };
+        await client.query(
+          "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,$3,$4)",
+          [learner.id, accountId, learner.name, learner.birthYear],
+        );
+      }
       // A child is a student of their family's class from the start.
       await ensureFamilyClass(client, this.pool, accountId, {
         converting: false,

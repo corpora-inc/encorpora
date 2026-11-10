@@ -712,9 +712,13 @@ def solve_root_count(public):
     match = re.fullmatch(r'Which statement correctly shows that \$p\(x\) = (.+?)\$ has exactly two complex roots, counting multiplicity\?', prompt)
     if match:
         text = plain(match[1]).replace('−', '-').replace(' ', '')
-        parsed = re.fullmatch(r'x\^2(?:([+-])(\d+)x)?(?:([+-])(\d+))?', text)
+        # A linear coefficient of 1 is written as +x or -x, not +1x.
+        parsed = re.fullmatch(r'x\^2(?:([+-])(\d*)x)?(?:([+-])(\d+))?', text)
         require(parsed is not None, f'Not a monic quadratic: {text}')
-        b = int(parsed[2] or 0) * (-1 if parsed[1] == '-' else 1)
+        if parsed[1] is None:
+            b = 0
+        else:
+            b = int(parsed[2] or 1) * (-1 if parsed[1] == '-' else 1)
         c = int(parsed[4] or 0) * (-1 if parsed[3] == '-' else 1)
         expected = plain(quadratic_fta_statement(b, c))
         return pick(public, plain, expected)

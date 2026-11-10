@@ -18,6 +18,7 @@ import {
   type Choice,
   type Random,
 } from "./algebra-one-kit";
+import { axisRecord, chooseAxes, defineAxis, isLegacy } from "./variation/axes";
 
 /** Algebra 1: equations, inequalities and systems in two variables — models
  * with two unknowns and with constraints, half-plane regions, literal
@@ -50,11 +51,13 @@ export const twoVariableTemplates: readonly TemplateMetadata[] = [
   },
   {
     ...hs,
+    version: 2,
+    reprintsFrom: 1,
     id: "half-plane-inequality",
     title: "Which inequality is graphed?",
     skillId: "inequality-regions",
     description:
-      "Read a shaded half-plane, or the overlap of two: the boundary line, solid or dashed, and the side that is shaded.",
+      "Read a shaded half-plane, or the overlap of two. Also choose the verbal description of the graph of one inequality or of a system: boundary style, side, and intercepts.",
     ...choice,
     ...scenes,
   },
@@ -1292,6 +1295,164 @@ const pt = (v: number, s: string) =>
   v < 0 ? `(${termText(v, s)})` : termText(v, s);
 const p1 = (v: number) => (v < 0 ? `(${n(v)})` : n(v));
 
+/** Read a drawn region, or choose a verbal description of the graph.
+ * Figure-choice graphs are not this template's response kind. */
+export const halfPlaneViewAxes = {
+  view: defineAxis(
+    "view",
+    ["read-region", "choose-graph", "choose-system"] as const,
+    { legacy: "read-region", silentLegacy: true, since: 2, weights: [2, 2, 2] },
+  ),
+};
+
+const texOp: Record<Op, string> = {
+  "<": "<",
+  "<=": "\\le",
+  ">": ">",
+  ">=": "\\ge",
+};
+function ineqTex(a: number, b: number, op: Op, c: number) {
+  const left = twoTerm(a, b).replaceAll("−", "-");
+  return `$${left} ${texOp[op]} ${c}$`;
+}
+function edgeWords(a: number, b: number, c: number) {
+  if (b === 0) return `vertical line x = ${c / a}`;
+  if (a === 0) return `horizontal line y = ${c / b}`;
+  return `line through (${c / a}, 0) and (0, ${c / b})`;
+}
+function chooseOneGraph(r: Random): Case {
+  const axis = r(0, 19) < 3;
+  let a: number;
+  let b: number;
+  let c: number;
+  if (axis) {
+    const vertical = r(0, 1) === 0;
+    const k = nonzero(r, -5, 5);
+    a = vertical ? 1 : 0;
+    b = vertical ? 0 : 1;
+    c = k;
+  } else {
+    const xi = nonzero(r, -5, 5);
+    const yi = nonzero(r, -5, 5);
+    a = yi;
+    b = xi;
+    c = xi * yi;
+    if (b > 0 && r(0, 1) === 0) {
+      b = -b;
+      a = -a;
+      c = -c;
+    }
+  }
+  if (c === 0 || !Number.isInteger(c / (a || 1)) || !Number.isInteger(c / (b || 1)))
+    return chooseOneGraph(r);
+  const op = pick(r, ["<", "<=", ">", ">="] as const);
+  const origin = holdsOp(0, op, c);
+  const style = strict(op) ? "Dashed" : "Solid";
+  const other = strict(op) ? "Solid" : "Dashed";
+  const side = origin ? "includes" : "excludes";
+  const flipSide = origin ? "excludes" : "includes";
+  const edge = edgeWords(a, b, c);
+  const lost = edgeWords(a, b, -c);
+  if (edge === lost) return chooseOneGraph(r);
+  const key = `${style} ${edge}; shade the side that ${side} (0, 0).`;
+  const choices: Choice[] = [
+    { label: key, correct: true },
+    {
+      label: `${style} ${edge}; shade the side that ${flipSide} (0, 0).`,
+      feedback:
+        "The line is right, but that side fails at (0, 0). Shade the side where the test is true.",
+    },
+    {
+      label: `${other} ${edge}; shade the side that ${side} (0, 0).`,
+      feedback: strict(op)
+        ? "The inequality is strict, so the boundary is dashed. A solid line would include the boundary."
+        : "The inequality includes equals, so the boundary is solid. A dashed line leaves the boundary out.",
+    },
+    {
+      label: `${style} ${lost}; shade the side that ${side} (0, 0).`,
+      feedback:
+        "The test-point side is right, but the intercepts have the constant's sign reversed.",
+    },
+  ];
+  if (new Set(choices.map((item) => item.label)).size !== 4)
+    return chooseOneGraph(r);
+  return {
+    prompt: `Which description shows the solutions of ${ineqTex(a, b, op, c)}? Use (0, 0) as the test point.`,
+    choices,
+    scene: graph({ id: "g", x: [-6, 6], y: [-6, 6], grid: 1 }).scene({
+      title: "Unit grid from -6 to 6",
+    }),
+    explanation: [
+      `The boundary is ${edge}. ${strict(op) ? "The inequality is strict, so the line is dashed." : "Equality is included, so the line is solid."}`,
+      `Test (0, 0): the inequality is ${origin ? "true" : "false"}, so shade the side that ${side} (0, 0).`,
+      `The description is: ${key}`,
+      "Test a point. True: shade its side. Dashed means the line is not included.",
+    ],
+    hint: "Name the intercepts, then test (0, 0). A true test shades that side. Dashed means strict.",
+    tags: ["choose-graph", strict(op) ? "strict" : "inclusive"],
+  };
+}
+function chooseSystemGraph(r: Random): Case {
+  for (let attempt = 0; attempt < 40; attempt++) {
+    const m = nonzero(r, -3, 3);
+    const b = nonzero(r, -5, 5);
+    const a2 = nonzero(r, -3, 3);
+    const c2 = nonzero(r, -5, 5);
+    if (m + a2 === 0) continue;
+    const cross = (c2 - b) / (m + a2);
+    const yCross = m * cross + b;
+    if (cross <= -6 || cross >= 6 || yCross <= -6 || yCross >= 6) continue;
+    const op1: Op = b > 0 ? pick(r, ["<", "<="] as const) : pick(r, [">", ">="] as const);
+    const op2: Op = c2 > 0 ? pick(r, ["<", "<="] as const) : pick(r, [">", ">="] as const);
+    if (!holdsOp(0, op1, b) || !holdsOp(0, op2, c2)) continue;
+    const s1 = strict(op1) ? "Dashed" : "Solid";
+    const s2 = strict(op2) ? "Dashed" : "Solid";
+    const both =
+      s1 === "Solid" && s2 === "Solid" ? "Dashed line for both boundaries" : "Solid line for both boundaries";
+    const key = `${s1} line for the first boundary and ${s2.toLowerCase()} line for the second; shade only the overlap; (0, 0) is included.`;
+    const choices: Choice[] = [
+      { label: key, correct: true },
+      {
+        label: `${s1} line for the first boundary and ${s2.toLowerCase()} line for the second; shade the union of both sides; (0, 0) is included.`,
+        feedback:
+          "A system shades only where both inequalities are true. The union includes points that fail one of them.",
+      },
+      {
+        label: `${both}; shade only the overlap; (0, 0) is included.`,
+        feedback:
+          "The overlap is right, but a strict inequality is dashed and an inclusive one is solid.",
+      },
+      {
+        label: `${s1} line for the first boundary and ${s2.toLowerCase()} line for the second; shade only the overlap; (0, 0) is excluded.`,
+        feedback:
+          "(0, 0) makes both inequalities true, so it is inside the overlap. Do not exclude it.",
+      },
+    ];
+    if (new Set(choices.map((item) => item.label)).size !== 4) continue;
+    const first = ineqTex(m, -1, op1, -b); // y ? m x + b → -m x + y ? b, wait
+    // Want y (op) m x + b, which is -m x + y (op) b if op doesn't flip... 
+    // y ≤ m x + b means -m x + y ≤ b. twoTerm(-m, 1) and c = b. op stays.
+    void first;
+    return {
+      prompt: `Which description shows the solution set of ${ineqTex(-m, 1, op1, b)} and ${ineqTex(a2, 1, op2, c2)}? Use (0, 0) as the test point.`,
+      choices,
+      scene: graph({ id: "g", x: [-6, 6], y: [-6, 6], grid: 1 }).scene({
+        title: "Unit grid from -6 to 6",
+      }),
+      explanation: [
+        `The first boundary is ${strict(op1) ? "dashed" : "solid"}. The second is ${strict(op2) ? "dashed" : "solid"}.`,
+        "Shade only the overlap of the two half-planes, not the union.",
+        "Test (0, 0): both inequalities are true, so the origin is included.",
+        `The lines cross near (${cross}, ${yCross}), inside the grid.`,
+        "Draw each boundary with its style. Shade only where both tests pass.",
+      ],
+      hint: "Mark each line solid or dashed from its sign. Shade only the overlap. Test (0, 0) in both.",
+      tags: ["choose-system"],
+    };
+  }
+  return chooseOneGraph(r);
+}
+
 const builders: Record<string, (r: Random) => Case> = {
   "system-model-value": systemModelValue,
   "constraint-feasible": constraintFeasible,
@@ -1319,6 +1480,23 @@ export function twoVariablePrintCase(id: string, seed: string) {
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
   const r = seeded(id, seed);
+  if (id === "half-plane-inequality") {
+    const view = chooseAxes(id, seed, halfPlaneViewAxes);
+    if (!isLegacy(halfPlaneViewAxes, view)) {
+      const built = assemble(
+        meta,
+        seed,
+        view.view === "choose-system" ? chooseSystemGraph(r) : chooseOneGraph(r),
+        r,
+        labels[id]!,
+      );
+      built.problem.variant = {
+        id: view.view,
+        axes: axisRecord(view),
+      };
+      return built;
+    }
+  }
   return assemble(meta, seed, builders[id]!(r), r, labels[id]!);
 }
 export const generateTwoVariableProblem = (

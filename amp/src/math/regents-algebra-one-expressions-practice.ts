@@ -8,7 +8,7 @@ import {
   type ChoiceOption,
 } from "./chain-kit";
 import { shuffle } from "./distribution-practice";
-import { quad, sgn } from "./regents-algebra-one-kit";
+import { gcd, quad, sgn } from "./regents-algebra-one-kit";
 
 type R = (lo: number, hi: number) => number;
 const meta = (
@@ -45,15 +45,19 @@ export const combineUnlikeRadicalsTemplate = meta({
   description:
     "Simplify one square root so it matches another radicand, add the like radicals, and keep the unlike radical as a separate term.",
 });
-export const completeSquareEquationTemplate = meta({
-  id: "complete-square-equation",
-  title: "Choose the completed-square equation with the same solutions",
-  skillId: "complete-square",
-  difficultyOffset: 0.45,
-  requiredResponseCapability: "single-choice-v1",
-  description:
-    "Complete the square on a monic quadratic equation with an even middle coefficient, adding the same number to both sides, and choose the equivalent equation.",
-});
+export const completeSquareEquationTemplate: TemplateMetadata = {
+  ...meta({
+    id: "complete-square-equation",
+    title: "Choose the completed-square equation with the same solutions",
+    skillId: "complete-square",
+    difficultyOffset: 0.45,
+    requiredResponseCapability: "single-choice-v1",
+    description:
+      "Complete the square on a quadratic equation, including a leading coefficient other than 1, and choose the equivalent equation $(x-p)^2=q$.",
+  }),
+  version: 2,
+  reprintsFrom: 1,
+};
 export const completeSquareStepPropertyTemplate = meta({
   id: "complete-square-step-property",
   title: "Name the property that justifies a step of completing the square",
@@ -280,22 +284,177 @@ export const combineUnlikeRadicals = chainFamily({
 /* ------------------------------------------------ complete the square */
 const csAxes = {
   form: defineAxis("form", ["zero-form", "constant-on-right"] as const),
+  /** Monic equations are the stored surface. A non-1 leading coefficient
+   * is its own stream and is omitted from the variant when it is not drawn. */
+  leading: defineAxis("leading", ["monic", "nonmonic-equation"] as const, {
+    legacy: "monic",
+    silentLegacy: true,
+    since: 2,
+  }),
 };
+type RQ = { n: number; d: number };
+const rq = (n: number, d = 1): RQ => {
+  if (d < 0) {
+    n = -n;
+    d = -d;
+  }
+  const g = gcd(Math.abs(n), d) || 1;
+  return { n: n / g, d: d / g };
+};
+const rqEq = (a: RQ, b: RQ) => a.n === b.n && a.d === b.d;
+const rqNeg = (q: RQ) => q.n < 0;
+const rqTex = (q: RQ) => {
+  if (q.d === 1) return `${q.n}`;
+  const body = `\\frac{${Math.abs(q.n)}}{${q.d}}`;
+  return q.n < 0 ? `-${body}` : body;
+};
+const sqLabel = (h: number, q: RQ) => {
+  const left =
+    h === 0 ? "x^2" : `(x ${h < 0 ? "-" : "+"} ${Math.abs(h)})^2`;
+  return `$${left} = ${rqTex(q)}$`;
+};
+/** Same real solution set for two completed squares. A negative right side
+ * has none, so two negative right sides are the same (empty) set. */
+const sameRealSet = (h1: number, q1: RQ, h2: number, q2: RQ) =>
+  (rqNeg(q1) && rqNeg(q2)) || (h1 === h2 && rqEq(q1, q2));
 interface CsModel {
-  h: number; // half the middle coefficient with sign: x^2 + 2h x
+  kind: "monic" | "nonmonic";
+  h: number; // half the middle coefficient after dividing by a
   c: number;
+  a: number;
+  b: number;
+}
+function nonmonicModel(r: R): CsModel {
+  // 15% have no real solution; half do not divide the constant evenly.
+  const negative = r(0, 19) < 3;
+  const fraction = r(0, 1) === 1;
+  const feasible: { a: number; p: number; c: number }[] = [];
+  for (const aAbs of [2, 3, 4, 5])
+    for (const aSign of [1, -1])
+      for (const pAbs of [1, 2, 3, 4, 5, 6])
+        for (const pSign of [1, -1]) {
+          const a = aSign * aAbs;
+          const p = pSign * pAbs;
+          for (let c = -12; c <= 12; c++) {
+            if (c === 0 || (c % aAbs === 0) === fraction) continue;
+            const qNum = a * p * p - c;
+            // q = qNum/a is negative when the two factors have opposite signs.
+            const qNeg = qNum !== 0 && (qNum < 0) !== (a < 0);
+            if (qNum === 0 || qNeg !== negative) continue;
+            feasible.push({ a, p, c });
+          }
+        }
+  if (!feasible.length) fail();
+  const picked = feasible[r(0, feasible.length - 1)]!;
+  return {
+    kind: "nonmonic",
+    h: picked.p,
+    c: picked.c,
+    a: picked.a,
+    b: 2 * picked.a * picked.p,
+  };
+}
+function nonmonicSurface(
+  m: CsModel,
+  form: "zero-form" | "constant-on-right",
+  r: R,
+) {
+  const { a, b, c, h: p } = m;
+  const correctQ = rq(a * p * p - c, a);
+  const halfB = b / 2;
+  const spec: { h: number; q: RQ; feedback: string }[] = [
+    {
+      h: halfB,
+      q: rq(-c + halfB * halfB),
+      feedback:
+        "The square was completed on the undivided equation. Divide every term by the leading coefficient first.",
+    },
+    {
+      h: p,
+      q: rq(-c, a),
+      feedback:
+        "The constant was moved, but the corner number was never added on the right side.",
+    },
+    {
+      h: p,
+      q: rq(-c + p * p),
+      feedback:
+        "The $x$ terms were divided by the leading coefficient, but the constant was not.",
+    },
+    {
+      h: p + (p >= 0 ? 1 : -1),
+      q: correctQ,
+      feedback:
+        "The number inside the bracket is not half the linear coefficient after dividing.",
+    },
+    {
+      h: p,
+      q: rq(correctQ.n + correctQ.d, correctQ.d),
+      feedback:
+        "The right side is one more than the value that keeps both sides equal.",
+    },
+    {
+      h: -p || 1,
+      q: rq(1),
+      feedback:
+        "The bracket takes the sign of the linear coefficient, and the right side is not 1.",
+    },
+  ];
+  const correct = sqLabel(p, correctQ);
+  const seen = new Set([correct]);
+  const wrong = spec.filter((item) => {
+    if (rqNeg(item.q) || sameRealSet(p, correctQ, item.h, item.q))
+      return false;
+    if (item.q.n === 0 && a * item.h * item.h - b * item.h + c === 0)
+      return false;
+    const label = sqLabel(item.h, item.q);
+    if (seen.has(label)) return false;
+    seen.add(label);
+    return true;
+  });
+  if (wrong.length < 3) fail();
+  const eq =
+    form === "zero-form"
+      ? `${quad(a, b, c)} = 0`
+      : `${quad(a, b, 0)} = ${-c}`;
+  const dividedB = 2 * p;
+  const corner = p * p;
+  const moved = rq(-c, a);
+  const xTerms = `x^2 ${dividedB < 0 ? "-" : "+"} ${Math.abs(dividedB)}x`;
+  return choiceSurface(r, {
+    prompt: `Which equation has the same solutions as $${eq}$?`,
+    label: "Choose the equation",
+    options: [
+      { label: correct, correct: true },
+      ...wrong.slice(0, 3).map((item) => ({
+        label: sqLabel(item.h, item.q),
+        feedback: item.feedback,
+      })),
+    ],
+    hint: `Divide every term by the leading coefficient ${a} first. An equation keeps its solutions. Then add the square of half the new $x$ coefficient to both sides.`,
+    explanation: [
+      `Divide every term by ${a}. An equation keeps its solutions when you do.`,
+      `The $x$ terms become $${xTerms}$. Move the constant to get $${xTerms} = ${rqTex(moved)}$.`,
+      `Half of ${dividedB} is ${p}, and $${Math.abs(p)}^2 = ${corner}$. Add ${corner} to both sides.`,
+      rqNeg(correctQ)
+        ? `The finished square is ${correct}. A negative right side means no real solution, and the original has none either.`
+        : `The left side is a finished square: ${correct}. Each step kept both sides equal, so the solutions match.`,
+    ],
+  });
 }
 export const completeSquareEquation = chainFamily({
   template: completeSquareEquationTemplate,
   axes: csAxes,
-  model: (r: R): CsModel => {
+  model: (r: R, ax): CsModel => {
+    if (ax.leading === "nonmonic-equation") return nonmonicModel(r);
     const h = r(1, 6) * (r(0, 1) ? 1 : -1);
     const c = r(-12, 12);
     if (c === 0) fail();
-    return { h, c };
+    return { kind: "monic", h, c, a: 1, b: 2 * h };
   },
   variant: (m) => (m.h < 0 ? "negative-middle" : "positive-middle"),
   render: (m, ax, r) => {
+    if (m.kind === "nonmonic") return nonmonicSurface(m, ax.form, r);
     const b = 2 * m.h;
     const rhs = m.h * m.h - m.c;
     const sq = (hh: number, k: number) =>
@@ -560,8 +719,14 @@ export const regentsAlgebraOneExpressionGenerate = dispatch(
     "rate-unit-chain": (s) => rateUnitChain.generate(s).problem,
     "negative-monomial-power": (s) => negativeMonomialPower.generate(s).problem,
     "combine-unlike-radicals": (s) => combineUnlikeRadicals.generate(s).problem,
-    "complete-square-equation": (s) =>
-      completeSquareEquation.generate(s).problem,
+    "complete-square-equation": (s) => {
+      const problem = completeSquareEquation.generate(s).problem;
+      const axes = { ...(problem.variant?.axes ?? {}) };
+      if (axes.leading === "monic") delete axes.leading;
+      return problem.variant
+        ? { ...problem, variant: { ...problem.variant, axes } }
+        : problem;
+    },
     "complete-square-step-property": (s) =>
       completeSquareStepProperty.generate(s).problem,
     "polynomial-structure": (s) => polynomialStructure.generate(s).problem,

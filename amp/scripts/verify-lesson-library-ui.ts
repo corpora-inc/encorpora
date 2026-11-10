@@ -56,7 +56,9 @@ async function queryReady(page: Page, query: string) {
   // the committed result list. Wait for that query's summary, not elapsed time.
   await summary(page)
     .filter({
-      hasText: query ? `“${query}”` : /^\d+ lessons? · \d+ problem types?$/,
+      hasText: query
+        ? `“${query}”`
+        : /^\d{1,3}(?:,\d{3})* lessons? · \d{1,3}(?:,\d{3})* problem types?$/,
     })
     .waitFor();
 }

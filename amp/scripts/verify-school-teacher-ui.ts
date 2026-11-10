@@ -1,3 +1,4 @@
+import { schoolShellReview } from "./school-shell-review";
 /**
  * The teacher's product in real browsers, against the real API and a real
  * database: a class of 24 provisioned the real way, with real answers through
@@ -68,7 +69,7 @@ const sweepWidths = (argument("--widths") ?? "320,390,768,1280")
   .split(",")
   .map(Number);
 const themes = ["light", "dark"] as const;
-const REVIEW = "docs/reviews/school-teacher";
+const REVIEW = process.env.AMP_UI_REVIEW ?? "docs/reviews/school-teacher";
 const ARTIFACTS = "artifacts/school-teacher";
 const webPort = Number(argument("--port") ?? 4400),
   apiPort = webPort + 1,
@@ -457,9 +458,17 @@ async function journey(browser: Browser, engine: string, width: number) {
   await gap.waitFor();
   const body = await page.locator("main").innerText();
   check(`${label} gap names students`, /Noor|Diego|Lena/.test(body));
+  // The product waits until Wednesday before calling a week quiet.
+  const schoolDay = new Intl.DateTimeFormat("en-US", {
+    weekday: "short",
+    timeZone: "America/New_York",
+  }).format(new Date());
+  const quiet =
+    /(behind this week’s target|practiced this week)[^]*Marcus/.test(body);
   check(
-    `${label} a quiet week shows`,
-    /(behind this week’s target|practiced this week)[^]*Marcus/.test(body),
+    `${label} quiet-week warning follows the school day`,
+    schoolDay === "Mon" || schoolDay === "Tue" ? !quiet : quiet,
+    { schoolDay, quiet },
   );
   check(
     `${label} what's going well shows`,
@@ -496,10 +505,7 @@ async function journey(browser: Browser, engine: string, width: number) {
   await settle(page, 200);
 
   // The gradebook, by its tab: a real route.
-  await page
-    .getByRole("link", { name: "Gradebook", exact: true })
-    .first()
-    .click();
+  await page.getByRole("link", { name: "Grades", exact: true }).first().click();
   await page.getByRole("heading", { name: "Quarter 2 grades" }).waitFor();
   const mode = await page
     .locator("[data-grid-mode]")
@@ -790,6 +796,10 @@ async function sweep(browser: Browser, engine: string) {
       for (const screen of screens) {
         const label = `${engine} ${screen.id} ${width}-${theme}`;
         await open(page, screen.path, screen.heading);
+        await schoolShellReview(
+          page,
+          screen.id === "today" ? "class-today" : undefined,
+        );
         await geometry(page, label);
         await stable(page, label);
         await shot(page, screen.id, width, theme, width >= 1024);

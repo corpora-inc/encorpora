@@ -6,9 +6,31 @@ import type { Step } from "./scene/timeline.js";
 import { equalGroupsDefinitions } from "../content/equal-groups-definitions.js";
 import type {
   GeneratedProblem,
+  ProblemVariant,
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts.js";
+import {
+  chooseAxes,
+  defineAxis,
+  surfaceStream,
+  versionGatedAxes,
+} from "./variation/axes.js";
+
+/** Count the objects by twos, or name odd and even from the leftover.
+ * Legacy still asks how many counters are left over. The answer stays a number. */
+export const pairingAxes = {
+  family: defineAxis(
+    "family",
+    ["legacy", "count-by-twos-total", "name-odd-or-even"] as const,
+    {
+      legacy: "legacy",
+      weights: [4, 3, 3],
+      silentLegacy: true,
+      since: 2,
+    },
+  ),
+} as const;
 import {
   isSweepId,
   recordedSweepVariant,
@@ -25,6 +47,7 @@ const reprintsFromV1 = new Set([
   "comparison-amount",
   "full-kits",
   "kit-leftovers",
+  "pairing-leftover",
   "seats-needed",
 ]);
 export const equalGroupsTemplates: readonly TemplateMetadata[] =
@@ -72,7 +95,8 @@ export function generateEqualGroupsProblem(
     hint = "",
     explanation: string[] = [],
     figure: SemanticFigure | undefined,
-    hintCue: Step[] | undefined;
+    hintCue: Step[] | undefined,
+    pairingVariant: ProblemVariant | undefined;
   const counters = (
     total: number,
     groupSize: number,
@@ -238,6 +262,69 @@ export function generateEqualGroupsProblem(
       break;
     }
     case "pairing-leftover": {
+      const family = chooseAxes(templateId, seed, pairingAxes).family;
+      if (family === "count-by-twos-total") {
+        const s = surfaceStream(templateId, `${seed}:twos`);
+        const total = s(5, 16);
+        const pairs = Math.floor(total / 2);
+        const odd = total % 2 === 1;
+        figure = counters(total, 2, "cups");
+        prompt = "Count the cups by 2s. How many cups are there?";
+        answer = total;
+        label = "Cups";
+        hint =
+          "Count by 2s. Touch the cups two at a time, starting at 2. A leftover cup still counts.";
+        const counted = Array.from({ length: pairs }, (_, i) => 2 * (i + 1));
+        explanation = [
+          `Count by 2s: ${counted.join(", ")}.`,
+          odd
+            ? `That uses ${pairs * 2} cups, and one more cup makes ${total}.`
+            : `The last number is ${total}. Every cup is in a pair.`,
+          `Counting the pairs as ones gives ${pairs}. That is not the number of cups.`,
+          odd
+            ? `Leaving out the leftover gives ${total - 1}. Counting the leftover as two gives ${total + 1}.`
+            : "There is no leftover to drop or to count as two.",
+          "The step is 2, and 2 is not how many cups there are.",
+          `There are ${total} cups. ${pairs} pairs${odd ? " and one left" : ""}.`,
+        ];
+        pairingVariant = {
+          id: "count-by-twos-total",
+          axes: { family: "count-by-twos-total" },
+        };
+        break;
+      }
+      if (family === "name-odd-or-even") {
+        const s = surfaceStream(templateId, `${seed}:parity`);
+        const band = s(1, 5);
+        const total =
+          band <= 2
+            ? [12, 14, 16, 18, 20][s(0, 4)]!
+            : band === 3
+              ? s(12, 20)
+              : s(1, 20);
+        if (total <= 16) figure = counters(total, 2, "cups");
+        const leftover = total % 2;
+        prompt = `Put the ${count(total, "cup")} into pairs. How many are left without a partner?`;
+        answer = leftover;
+        label = "Unpaired cups";
+        hint = `Make pairs from the ${total} cups, two at a time. A cup without a partner is a leftover. The leftover tells odd or even.`;
+        explanation = [
+          `A pair is a group of 2. Make as many pairs as you can from the ${total} cups.`,
+          `${count(Math.floor(total / 2), "pair")} ${Math.floor(total / 2) === 1 ? "uses" : "use"} ${2 * Math.floor(total / 2)} cups.`,
+          leftover
+            ? `${total} − ${2 * Math.floor(total / 2)} = 1. One cup is left, so ${total} is an odd number.`
+            : `${total} − ${2 * Math.floor(total / 2)} = 0. No cup is left, so ${total} is an even number.`,
+          leftover
+            ? "Calling it even is wrong because the leftover is one, not a pair."
+            : "Calling it odd is wrong because the leftover is zero.",
+          `The ones digit of ${total} is ${total % 10}. ${[0, 2, 4, 6, 8].includes(total % 10) ? "That digit is even, so the number is even." : "That digit is odd, so the number is odd."}`,
+        ];
+        pairingVariant = {
+          id: "name-odd-or-even",
+          axes: { family: "name-odd-or-even" },
+        };
+        break;
+      }
       const total = r(1, 20);
       figure = counters(total, 2, "counters");
       if (total > 16) figure = undefined;
@@ -550,14 +637,20 @@ export function generateEqualGroupsProblem(
   }
   const variant = axes
     ? recordedSweepVariant(templateId, "comparison", axes)
-    : undefined;
+    : pairingVariant;
+  const pairingVersion =
+    templateId === "pairing-leftover" &&
+    !versionGatedAxes().some((axis) => axis.id === "family")
+      ? 2
+      : 1;
   return {
     public: {
       id: createHash("sha256")
         .update(JSON.stringify([templateId, 1, seed]))
         .digest("hex"),
       templateId,
-      templateVersion: 1,
+      templateVersion:
+        templateId === "pairing-leftover" ? pairingVersion : 1,
       seed,
       prompt,
       skillId: template.skillId,

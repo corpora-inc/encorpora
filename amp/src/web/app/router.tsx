@@ -15,7 +15,8 @@ import {
 } from "@tanstack/react-router";
 import { z } from "zod";
 import { useQuery } from "@tanstack/react-query";
-import { Suspense, useEffect, useRef } from "react";
+import { lazy, Suspense, useEffect, useRef } from "react";
+import { readContinuation } from "../features/continue/memory";
 import type { AuthSession } from "../auth";
 import { setPitchShown } from "../lib/analytics";
 import { CurriculumDetailsProvider } from "../features/curriculum/CurriculumDetails";
@@ -37,6 +38,7 @@ import { LoadingScreen, RouteError } from "../ui/LoadingScreen";
 import {
   familyClassPath,
   homePlace,
+  isStarterChoice,
   placeOfPath,
   startDestination,
   startNavigation,
@@ -114,12 +116,35 @@ function RouterError({ error }: { error: unknown }) {
   const router = useRouter();
   return <RouteError error={error} reset={() => void router.invalidate()} />;
 }
+/** "Add Fox's name", once "Continue with AMP" has made access active. Its
+ * chunk loads only on the screen the purchase returned to. */
+const AfterPurchase = lazy(() =>
+  import("../features/continue/AfterPurchase").then((module) => ({
+    default: module.AfterPurchase,
+  })),
+);
+function AfterPurchaseGate() {
+  const session = useQuery(sessionOptions).data;
+  const pathname = useRouterState({
+    select: (state) => state.location.pathname,
+  });
+  const waiting =
+    !!session &&
+    readContinuation(session.accountId)?.stage === "naming" &&
+    !!pathname;
+  return waiting ? (
+    <Suspense fallback={null}>
+      <AfterPurchase />
+    </Suspense>
+  ) : null;
+}
 const root = createRootRoute({
   component: () => (
     <CurriculumDetailsProvider>
       <AppShell>
         <Outlet />
       </AppShell>
+      <AfterPurchaseGate />
     </CurriculumDetailsProvider>
   ),
   validateSearch: (search): z.infer<typeof searchSchema> & CampaignSearch => {
@@ -406,7 +431,7 @@ const home = createRoute({
       if (session) {
         const me = await queryClient
           .fetchQuery({ ...meOptions(session), staleTime: 0 })
-          .catch(() => undefined);
+          .catch(() => queryClient.getQueryData(meOptions(session).queryKey));
         // Explicit handoffs select their screen before mounting home. Merely
         // skipping the default redirect would let home's setup effect race them.
         if (hasInitialConsentChallenge())
@@ -540,17 +565,61 @@ const reset = createRoute({
   loader: loadAuthConfig,
   component: auth,
 });
-const startIndex = createRoute({
+/** "What brings you to AMP?", at `/start` and `/start/<choice>`, the same
+ * screen. Any signed-in adult may open it to add a place; an unknown choice
+ * opens the question itself. */
+async function beforeStarter({ params }: { params: { choice?: string } }) {
+  notForStudents();
+  if (nativeRuntime) throw redirect({ to: "/", replace: true });
+  const session = await queryClient.ensureQueryData(sessionOptions);
+  if (!session) throw redirect({ to: "/sign-in" });
+  if (params.choice !== undefined && !isStarterChoice(params.choice))
+    throw redirect({ to: "/start", replace: true });
+}
+const starter = lazyRouteComponent(
+  () => import("../features/onboarding/Starter"),
+  "Starter",
+);
+const starterIndex = createRoute({
   getParentRoute: () => root,
   path: "/start",
-  beforeLoad: beforeStart,
-  component: start,
+  beforeLoad: beforeStarter,
+  component: starter,
 });
+const starterChoice = createRoute({
+  getParentRoute: () => root,
+  path: "/start/$choice",
+  beforeLoad: beforeStarter,
+  component: starter,
+});
+/** The plan before any learner, for a parent approving another family's
+ * child: their payment is the consent the approval needs. Anyone else who
+ * opens a saved link to it goes where the first-run guard says. */
 const startPlan = createRoute({
   getParentRoute: () => root,
   path: "/start/plan",
   beforeLoad: beforeStart,
   component: start,
+});
+/** "Continue with AMP" for one learner: the plan, then Stripe, then back to
+ * the screen it was opened from. */
+const continueWithAmp = createRoute({
+  getParentRoute: () => root,
+  path: "/continue/$learnerId",
+  validateSearch: (search: Record<string, unknown>) =>
+    search.interval === "year" || search.interval === "month"
+      ? { interval: search.interval as "year" | "month" }
+      : {},
+  beforeLoad: async () => {
+    notForStudents();
+    if (nativeRuntime) throw redirect({ to: "/", replace: true });
+    const session = await queryClient.ensureQueryData(sessionOptions);
+    if (!session) throw redirect({ to: "/sign-in" });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/continue/ContinueScreen"),
+    "ContinueScreen",
+  ),
 });
 /** Stripe Checkout's success and cancel URL for parent enrollment. */
 const startPurchase = createRoute({
@@ -1052,8 +1121,10 @@ export const router = createRouter({
     accessGift,
     signInStep,
     reset,
-    startIndex,
+    starterIndex,
+    starterChoice,
     startPlan,
+    continueWithAmp,
     startPurchase,
     startName,
     startYear,
