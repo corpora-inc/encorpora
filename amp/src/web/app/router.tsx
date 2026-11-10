@@ -932,6 +932,15 @@ const schoolClassCards = createRoute({
   component: lazyRouteComponent(classScreens, "CardsScreen"),
 });
 const classroomScreens = () => import("../features/school/classroom");
+/** Any other address inside a class: not found, in the class's frame. */
+const schoolClassMissing = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "$",
+  component: lazyRouteComponent(
+    () => import("../features/school/MissingScreen"),
+    "SchoolMissingScreen",
+  ),
+});
 const schoolClassExperience = createRoute({
   getParentRoute: () => schoolClass,
   path: "experience",
@@ -1223,6 +1232,7 @@ export const router = createRouter({
       schoolClassExperience,
       schoolClassWorkbooks,
       schoolClassMarks,
+      schoolClassMissing,
     ]),
     standings,
     ownRecord,

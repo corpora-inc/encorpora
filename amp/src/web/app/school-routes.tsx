@@ -314,6 +314,14 @@ export function schoolRoutes(root: AnyRoute) {
     ]),
     toSettings("/license", "license"),
     orgScreen("/import", screens.importer),
+    // Any other address in a school: not found, in the school's frame.
+    orgScreen(
+      "/$",
+      screen(
+        () => import("../features/school/MissingScreen"),
+        "SchoolMissingScreen",
+      ),
+    ),
     toSettings("/experience", "student-experience"),
   ];
 }
