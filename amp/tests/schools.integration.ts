@@ -284,8 +284,7 @@ test(
               ["GET", "/api/v1/billing/offer"],
               ["GET", "/api/v1/billing/enrollment"],
               ["GET", "/api/v1/session"],
-              ["POST", "/api/v1/trials/current"],
-              ["POST", "/api/v1/trials/adopt"],
+              ["POST", "/api/v1/start"],
               ["GET", "/api/v1/school/orgs"],
             ] as const) {
               const response = await app.inject({

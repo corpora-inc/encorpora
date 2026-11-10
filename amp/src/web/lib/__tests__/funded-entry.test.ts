@@ -171,7 +171,7 @@ test("free account sign-in preserves a fixed practice destination and funding co
       ...campaign,
     }),
   ).toBe(
-    "/try?utm_campaign=ar-efa-launch&utm_source=facebook&utm_medium=paid-social&program=az-esa&return=free-practice",
+    "/start?utm_campaign=ar-efa-launch&utm_source=facebook&utm_medium=paid-social&program=az-esa&return=free-practice",
   );
   expect(
     continuationSearch({ return: "free-practice", program: "bad" }),
@@ -187,7 +187,7 @@ test("a shared-state card retains its identity without inventing a funding progr
   });
   expect(
     continuationUrl({ return: "free-practice", entry: "openai-math-plans" }),
-  ).toBe("/try?entry=openai-math-plans&return=free-practice");
+  ).toBe("/start?entry=openai-math-plans&return=free-practice");
   expect(
     continuationSearch({
       return: "free-practice",
@@ -209,7 +209,7 @@ test("NH free practice retains its program and attribution through authenticatio
   };
   expect(continuationSearch(nh)).toEqual(nh);
   expect(continuationUrl(nh)).toBe(
-    "/try?utm_campaign=nh-efa-launch&utm_source=google&utm_medium=cpc&utm_content=nh-efa-adaptive-v1&program=nh-efa&return=free-practice",
+    "/start?utm_campaign=nh-efa-launch&utm_source=google&utm_medium=cpc&utm_content=nh-efa-adaptive-v1&program=nh-efa&return=free-practice",
   );
   expect(
     fundedAttribution(nh, { programId: "nh-efa", jurisdiction: "NH" }),

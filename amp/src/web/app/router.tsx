@@ -100,7 +100,6 @@ const searchSchema = z
     filter: z.string().max(100).optional(),
     skill: z.string().max(100).optional(),
     template: z.string().max(100).optional(),
-    context: z.enum(["trial"]).optional().catch(undefined),
     page: z.coerce.number().int().nonnegative().optional(),
     state: z.string().max(200).optional(),
     purchase: z.string().max(200).optional(),
@@ -291,7 +290,7 @@ const start = lazyRouteComponent(
   () => import("../features/onboarding/StartScreen"),
   "StartScreen",
 );
-/** A school sets its students up; setup, trials and paper self-marking are for
+/** A school sets its students up; setup and paper self-marking are for
  * families, so a student's URL goes back to practice. */
 function notForStudents() {
   if (studentSession()) throw redirect({ to: "/", replace: true });
@@ -317,17 +316,25 @@ async function beforeStart({
   if (target)
     throw redirect({ ...startNavigation(target), search, replace: true });
 }
-const trial = (name: "TryStart" | "TrialPractice" | "TrialMap" | "Paywall") =>
-  lazyRouteComponent(() => import("../features/trial"), name);
-/** A parent signs in before the account-owned free assessment. */
-async function beforeTrial({ search }: { search: Record<string, unknown> }) {
+/** The separate free trial is retired: one product, one way in. Links to
+ * `/try` from ads and email still work: signed out, they sign up (and the
+ * starter follows); signed in, `/` opens their place or the starter. */
+async function retiredTrial({ search }: { search: Record<string, unknown> }) {
   notForStudents();
-  const session = await queryClient.ensureQueryData(sessionOptions);
-  if (!session)
+  const session = await queryClient
+    .ensureQueryData(sessionOptions)
+    .catch(() => null);
+  if (!session) {
+    // An old free-practice link signs up as one, keeping a funded program's
+    // context (the funding pages link here); an explicit return stays.
+    const carry = continuationSearch(search);
     throw redirect({
       to: "/sign-up",
-      search: { ...continuationSearch(search), return: "free-practice" },
+      search: { ...carry, return: carry.return ?? "free-practice" },
+      replace: true,
     });
+  }
+  // A follow-up email's way back, now signed in: the follow-up is done.
   if (search.return === "free-practice")
     void fetch("/api/v1/parent-followup/complete", {
       signal: AbortSignal.timeout(10000),
@@ -336,64 +343,17 @@ async function beforeTrial({ search }: { search: Record<string, unknown> }) {
       headers: { "Content-Type": "application/json" },
       body: "{}",
     }).catch(() => undefined);
+  throw redirect({ to: "/", replace: true });
 }
 const tryStart = createRoute({
   getParentRoute: () => root,
   path: "/try",
-  beforeLoad: beforeTrial,
-  component: trial("TryStart"),
+  beforeLoad: retiredTrial,
 });
-/** Trial screens show Buy from their first paint: its prices load first. */
-async function loadTrialBuy({ location }: { location: { search: unknown } }) {
-  if (nativeRuntime) return;
-  const { loadBuyData } = await import("../features/pitch/BuyOptions");
-  await loadBuyData(location.search as Record<string, unknown>);
-}
-const tryPractice = createRoute({
+const tryAnything = createRoute({
   getParentRoute: () => root,
-  path: "/try/practice",
-  beforeLoad: beforeTrial,
-  loader: loadTrialBuy,
-  component: trial("TrialPractice"),
-});
-const tryMap = createRoute({
-  getParentRoute: () => root,
-  path: "/try/map",
-  beforeLoad: beforeTrial,
-  loader: {
-    staleReloadMode: "blocking",
-    handler: async (args) => {
-      const { progressOptions, trialSessionOptions } =
-        await import("../features/trial/api");
-      await Promise.all([
-        loadTrialBuy(args),
-        queryClient
-          .ensureQueryData(trialSessionOptions)
-          .then((session) =>
-            session
-              ? queryClient.fetchQuery({
-                  ...progressOptions(session),
-                  // Answers mark this resource stale. Await the new count before
-                  // deciding whether an empty assessment should return to practice.
-                  // A just-loaded checkpoint is shared with its destination.
-                  staleTime: MOUNT_REFETCH_AFTER_MS,
-                })
-              : null,
-          )
-          .catch(() => {
-            // The destination owns retry and expired-assessment recovery through
-            // these query errors; the route only waits for the read to settle.
-          }),
-      ]);
-    },
-  },
-  component: trial("TrialMap"),
-});
-const tryPlans = createRoute({
-  getParentRoute: () => root,
-  path: "/try/plans",
-  beforeLoad: beforeTrial,
-  component: trial("Paywall"),
+  path: "/try/$",
+  beforeLoad: retiredTrial,
 });
 const appScreen = createRoute({
   getParentRoute: () => root,
@@ -483,24 +443,14 @@ const home = createRoute({
               replace: true,
             });
         }
-        // Resolve first-run routing before mounting the app shell. Otherwise
-        // returning trial users briefly see home and setup before practice.
+        // Resolve first-run routing before mounting the app shell, so a new
+        // account never sees home before the starter.
         if (
           me?.signedIn &&
           me.next !== "practice" &&
           me.next !== "accept-gift"
         ) {
           const target = startDestination(me, "/", !!chosenPlan());
-          if (target === "/try") {
-            const { trialSessionOptions } =
-              await import("../features/trial/api");
-            const trial =
-              await queryClient.ensureQueryData(trialSessionOptions);
-            throw redirect({
-              to: trial ? "/try/practice" : "/try",
-              replace: true,
-            });
-          }
           if (target)
             throw redirect({ ...startNavigation(target), replace: true });
         }
@@ -1131,9 +1081,7 @@ export const router = createRouter({
     startConsent,
     startVerify,
     tryStart,
-    tryPractice,
-    tryMap,
-    tryPlans,
+    tryAnything,
     inventory,
     pathways,
     pathwaySkill,
@@ -1210,7 +1158,6 @@ onSignedOut(() => {
           } finally {
             queryClient.setQueryData(sessionOptions.queryKey, null);
             queryClient.removeQueries({ queryKey: ["account"] });
-            queryClient.removeQueries({ queryKey: ["trial"] });
             leavingStudent = false;
           }
         })
@@ -1237,27 +1184,13 @@ onSignedOut(() => {
     leaving = false;
     queryClient.setQueryData(sessionOptions.queryKey, null);
     queryClient.removeQueries({ queryKey: ["account"] });
-    void queryClient.cancelQueries({ queryKey: ["trial"] });
-    queryClient.removeQueries({ queryKey: ["trial"] });
   };
-  if (pathname === "/try" || pathname.startsWith("/try/")) {
-    const target = {
-      to: "/sign-up",
-      search: { ...carry, return: "free-practice" },
-    } as const;
-    void router
-      .preloadRoute(target)
-      .catch(() => undefined)
-      .then(() => router.navigate({ ...target, replace: true }))
-      .finally(clear);
-  } else {
-    const target = { to: "/sign-in", search: carry } as const;
-    void router
-      .preloadRoute(target)
-      .catch(() => undefined)
-      .then(() => router.navigate({ ...target, replace: true }))
-      .finally(clear);
-  }
+  const target = { to: "/sign-in", search: carry } as const;
+  void router
+    .preloadRoute(target)
+    .catch(() => undefined)
+    .then(() => router.navigate({ ...target, replace: true }))
+    .finally(clear);
   return true;
 });
 declare module "@tanstack/react-router" {

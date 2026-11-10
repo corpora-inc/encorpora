@@ -3,6 +3,7 @@ export {
   enrollmentOptions,
   emailConsentOptions,
   offerOptions,
+  pricesOptions,
   refreshEnrollment,
   refreshMeAfter,
   useBillingPortal,

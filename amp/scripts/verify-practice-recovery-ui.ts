@@ -7,9 +7,18 @@ import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
 import { developmentAuth } from "../src/server/auth";
 import { PostgresRepository } from "../src/server/repository";
+import { registerFamilyRoutes } from "../src/family/routes.js";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 
+/** Practice's adjustments and recovery for a signed-in learner, in Chromium
+ * and WebKit: the drawer's Working together and Reset practice level, Try
+ * easier after a skip, and a failed reset that retries in place. Optional
+ * `--port` (the API takes the next port). */
+const argument = (name: string) => {
+  const at = process.argv.indexOf(name);
+  return at >= 0 ? process.argv[at + 1] : undefined;
+};
 const url = process.env.AMP_TEST_DATABASE_URL!;
 assertTestDatabaseTarget(url);
 await migrate(url);
@@ -22,8 +31,13 @@ const app = buildApp({
   authenticate: developmentAuth(),
   development: true,
 });
-const apiPort = 4487,
-  port = 4486,
+await registerFamilyRoutes(app, {
+  pool: repository.pool,
+  authenticate: developmentAuth(),
+  development: true,
+});
+const port = Number(argument("--port") ?? 4486),
+  apiPort = port + 1,
   origin = `http://127.0.0.1:${port}`;
 await app.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
@@ -62,16 +76,19 @@ try {
             viewport: { width, height: width === 320 ? 568 : 844 },
             colorScheme,
           });
-          const trial = (
-            await app.inject({
-              method: "POST",
-              url: "/api/v1/trials",
-              payload: { birthYear: 2016 },
-            })
-          ).json();
+          // A learner of its own for each case, chosen on this device.
+          const learner = await repository.create(
+            "development-household",
+            "Recovery learner",
+            2016,
+          );
           await context.addInitScript(
-            (token) => localStorage.setItem("amp.trial", token),
-            trial.token,
+            (id) =>
+              localStorage.setItem(
+                "amp.learner",
+                JSON.stringify({ state: { learnerId: id }, version: 1 }),
+              ),
+            learner.id,
           );
           const page = await context.newPage();
           page.on("pageerror", (e) => errors.push(`${label}: ${e.message}`));
@@ -85,7 +102,7 @@ try {
               });
             } else await route.continue();
           });
-          await page.goto(`${origin}/try/practice`);
+          await page.goto(`${origin}/practice`);
           await page.locator(".question").waitFor();
           assert.equal(
             await page.getByText("Working together", { exact: true }).count(),
@@ -166,8 +183,8 @@ try {
           const state = (
             await app.inject({
               method: "GET",
-              url: `/api/v1/learners/${trial.learnerId}/practice-state`,
-              headers: { authorization: `Trial ${trial.token}` },
+              url: `/api/v1/learners/${learner.id}/practice-state`,
+              headers: { authorization: "Bearer amp-local-development" },
             })
           ).json();
           assert.equal(state.epoch, 1, "retry reset once");

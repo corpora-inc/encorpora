@@ -30,9 +30,6 @@ try {
   await page.route("**/api/v1/events**", (route) =>
     route.fulfill({ json: {} }),
   );
-  await page.route("**/api/v1/trials/current", (route) =>
-    route.fulfill({ json: { trial: null } }),
-  );
   await page.goto(
     "http://127.0.0.1:4394/?sign-in&return=security&error=link_failed",
   );
@@ -154,10 +151,6 @@ try {
     }, state);
     let accountReads = 0;
     await publicPage.route("**/api/v1/me", (route) => {
-      accountReads++;
-      return route.fulfill({ status: 401, json: { error: "Session ended" } });
-    });
-    await publicPage.route("**/api/v1/trials/current", (route) => {
       accountReads++;
       return route.fulfill({ status: 401, json: { error: "Session ended" } });
     });

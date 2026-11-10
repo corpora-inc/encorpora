@@ -176,7 +176,6 @@ async function open(
     sessionStorage.setItem("fixture-seeded", "1");
     sessionStorage.setItem("amp.student", saved);
     localStorage.setItem("amp.learner", "kept-until-sign-out");
-    localStorage.setItem("amp.trial", "kept-until-sign-out");
   }, JSON.stringify(session));
   if (options.slowJoin)
     await context.route(
@@ -204,7 +203,6 @@ async function noOverflow(page: Page, label: string) {
 }
 function noParentCalls(requests: string[]) {
   for (const refused of [
-    /trials\/current/,
     /\/api\/v1\/family/,
     /\/api\/v1\/events/,
     /\/api\/v1\/session/,
@@ -415,6 +413,7 @@ try {
     "/family/learners",
     "/purchase/choose",
     "/consent",
+    // The retired trial's addresses still redirect; a student stays put.
     "/try",
     "/try/practice",
     "/start/name",
@@ -458,9 +457,8 @@ try {
       await page.evaluate(() => [
         sessionStorage.getItem("amp.student"),
         localStorage.getItem("amp.learner"),
-        localStorage.getItem("amp.trial"),
       ]),
-      [null, null, null],
+      [null, null],
     );
     assert.equal(requests.includes("/api/auth/sign-out"), false);
     await close();

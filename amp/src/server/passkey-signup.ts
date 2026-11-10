@@ -226,7 +226,7 @@ export function passkeySignup(config: {
             await verify?.sendVerificationEmail?.(
               {
                 user: created.user,
-                url: `${ctx.context.baseURL}/verify-email?token=${emailToken}&callbackURL=${encodeURIComponent(ctx.body.freePractice ? `/try?return=free-practice${ctx.body.program ? `&program=${ctx.body.program}` : ""}` : "/start")}`,
+                url: `${ctx.context.baseURL}/verify-email?token=${emailToken}&callbackURL=${encodeURIComponent(ctx.body.freePractice ? `/start?return=free-practice${ctx.body.program ? `&program=${ctx.body.program}` : ""}` : "/start")}`,
                 token: emailToken,
               },
               ctx.request,

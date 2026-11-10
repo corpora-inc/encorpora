@@ -334,7 +334,7 @@ export function SignInScreen() {
       await navigate({
         to:
           carry.return === "free-practice"
-            ? "/try"
+            ? "/start"
             : carry.return === "access"
               ? "/access"
               : isFundedReturn(carry.return)
@@ -563,8 +563,8 @@ export function SignInScreen() {
         {freeEntry && showProviders && !pitchCopy && (
           <div className={styles.pitch} data-free-parent-signup>
             <p>
-              Your child moves forward in the free assessment, with adaptive
-              practice and printable workbooks. No credit card, no obligation.
+              Each learner starts with 100 free problems and five free
+              workbooks. No card needed.
             </p>
             {carry.program && (
               <p className={styles.funding}>

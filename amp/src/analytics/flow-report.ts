@@ -23,6 +23,7 @@ const LADDER = [
   "chose",
   "account_session",
   "trial_problem_view",
+  "problem_rendered",
   "invoice",
   "checkout_start",
   "purchase",
@@ -104,7 +105,8 @@ function row(visitors: Visitor[]): FlowRow {
     buyCard: count("buy_click:card"),
     buyFunded: count("buy_click:funded"),
     accounts: count("account_session"),
-    firstProblem: count("trial_problem_view"),
+    // The separate free trial's view until it was retired; practice since.
+    firstProblem: count("trial_problem_view", "problem_rendered"),
     invoice: people.filter((v) => has(v, "invoice")).length,
     checkout: count("checkout_start"),
     purchased: count("purchase"),

@@ -3,14 +3,17 @@ import AxeBuilder from "@axe-core/playwright";
 import assert from "node:assert/strict";
 import { realpathSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
-import { chromium as rawChromium, type Page } from "playwright";
+import {
+  chromium as rawChromium,
+  type BrowserContext,
+  type Page,
+} from "playwright";
 const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
 import { developmentAuth } from "../src/server/auth";
 import { PostgresRepository } from "../src/server/repository";
 import { registerFamilyRoutes } from "../src/family/routes.js";
-import { trialKey } from "../src/web/lib/pending-trial";
 import { migrate } from "./migrate";
 import { chooseLearner } from "./ui-controls";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
@@ -22,9 +25,11 @@ import { assertTestDatabaseTarget } from "./test-database-preflight";
  * send explains itself in reserved space; a sent report closes the sheet and
  * confirms with a fixed toast. Nothing on the feedback sheet moves (bounding
  * boxes and the browser's layout-shift entries), nothing overflows, and axe
- * is clean. A trial chooses reasons only; an adult learner in a parent's
- * account also gets the note. Runs at 384x700, 390x844 and 1280x800, light
- * and dark, and writes screenshots.
+ * is clean. A child under 13 chooses reasons only; an adult learner in a
+ * parent's account also gets the note. Each child context practices as a new
+ * signed-in learner (development auth) at `/practice`. Runs at 384x700,
+ * 390x844, both tablet orientations and 1280x800, light and dark, and writes
+ * screenshots. `--port` moves the web server (the API takes the next port).
  */
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url)
@@ -49,8 +54,9 @@ await registerFamilyRoutes(app, {
   authenticate: developmentAuth(),
   development: true,
 });
-const apiPort = 4453,
-  port = 4452,
+const portFlag = process.argv.indexOf("--port");
+const port = portFlag >= 0 ? Number(process.argv[portFlag + 1]) : 4452,
+  apiPort = port + 1,
   origin = `http://127.0.0.1:${port}`;
 await app.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
@@ -302,6 +308,31 @@ async function flagFlow(
   await page.screenshot({ path: `${shots}${label}-5-sent.png` });
 }
 
+/** A new child in the development account, chosen on this device. */
+const children: string[] = [];
+async function newChild(context: BrowserContext, birthYear: number) {
+  const response = await fetch(`http://127.0.0.1:${apiPort}/api/v1/learners`, {
+    method: "POST",
+    headers: {
+      authorization: "Bearer amp-local-development",
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ name: "Flag child", birthYear }),
+  });
+  assert.equal(response.status, 201, await response.clone().text());
+  const { id } = (await response.json()) as { id: string };
+  children.push(id);
+  await context.addInitScript(
+    (learnerId) =>
+      localStorage.setItem(
+        "amp.learner",
+        JSON.stringify({ state: { learnerId }, version: 1 }),
+      ),
+    id,
+  );
+  return id;
+}
+
 const errors: string[] = [];
 try {
   for (const viewport of [
@@ -319,30 +350,20 @@ try {
         colorScheme,
         hasTouch: viewport.width < 1100,
       });
-      // A trial: anonymous, so reasons only.
-      const created = await (
-        await fetch(`http://127.0.0.1:${apiPort}/api/v1/trials`, {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify({ birthYear: 2016 }),
-        })
-      ).json();
-      await context.addInitScript(
-        ([key, token]) => localStorage.setItem(key!, token!),
-        [trialKey, created.token],
-      );
+      // A child under 13 (src/feedback/problem-flags.ts): reasons only.
+      const learnerId = await newChild(context, 2016);
       await context.addInitScript(observeShifts);
       const page = await context.newPage();
       page.on("pageerror", (error) => errors.push(error.message));
-      await page.goto(`${origin}/try/practice`);
+      await page.goto(`${origin}/practice`);
       await page.locator(".question").waitFor();
-      await flagFlow(page, `trial-${label}`, {
+      await flagFlow(page, `child-${label}`, {
         note: false,
         failFirst: colorScheme === "light",
       });
       const stored = await repository.pool.query(
         "SELECT reasons,outcome,viewport_width,client_kind,note FROM amp_problem_flags WHERE learner_id=$1",
-        [created.learnerId],
+        [learnerId],
       );
       assert.equal(stored.rowCount, 1, `${label}: one report, not two`);
       assert.deepEqual(stored.rows[0].reasons, ["wrong-answer"]);
@@ -393,5 +414,10 @@ try {
   await browser.close();
   await vite.close();
   await app.close();
+  // The development account is shared: leave it as this run found it.
+  if (children.length)
+    await repository.pool.query("DELETE FROM amp_learners WHERE id=ANY($1)", [
+      children,
+    ]);
   await repository.close();
 }

@@ -7,8 +7,10 @@ import { secureChromium } from "../browser-security.mjs";
  *
  * - `paid`: consent, two learners with access, weeks of mixed practice for
  *   Jordan and none for Avery;
- * - `fresh`: just signed up;
- * - `trial`: in the free assessment with a few problems seen.
+ * - `new`: just signed up, so `/` opens "What brings you to AMP?";
+ * - `starter`: answered it as a parent of one child (an unnamed learner in
+ *   the family's class, on the free problems) and skipped a few problems as
+ *   that child.
  *
  * Every screen a test visits reads this data through the real routes.
  */
@@ -31,7 +33,7 @@ import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { shiftRecorder } from "./app-shell-probe";
 
-export type ShellState = "guest" | "new" | "trial" | "paid";
+export type ShellState = "guest" | "new" | "starter" | "paid";
 type StorageState = Awaited<ReturnType<BrowserContext["storageState"]>>;
 
 function startApi(url: string, origin: string, apiPort: number) {
@@ -83,6 +85,11 @@ function startApi(url: string, origin: string, apiPort: number) {
     child.on("exit", (code) => reject(Error(`API exited ${code}`)));
   });
 }
+
+/** An init script that makes `learnerId` this device's current learner
+ * (learner-store.ts). */
+const chooseLearner = (learnerId: string) =>
+  `localStorage.setItem('amp.learner', JSON.stringify({state:{learnerId:${JSON.stringify(learnerId)}},version:1}))`;
 
 export async function startShellFixture({
   production = false,
@@ -195,16 +202,33 @@ export async function startShellFixture({
     );
   const practised = await seedPractice(paidParent.account, jordan.id);
   const fresh = await signUp(setup, "new");
-  const trial = await signUp(setup, "trial");
+  const starter = await signUp(setup, "starter");
+  let starterLearner: string;
   {
-    // The trial parent picks a birth year and skips a few problems, so the
-    // map and the plan screen have evidence to show.
-    const context = await setup.newContext({ storageState: trial.state });
+    // The starter parent answers "What brings you to AMP?" with one child,
+    // then skips a few problems as that child, so the Overview has evidence
+    // to show.
+    const context = await setup.newContext({ storageState: starter.state });
+    const session = await (
+      await context.request.get(`${origin}/api/auth/get-session`)
+    ).json();
+    const answered = await context.request.post(`${origin}/api/v1/start`, {
+      headers: {
+        authorization: `Bearer ${session.session.token as string}`,
+        Origin: origin,
+      },
+      data: { as: "parent", children: [{ birthYear: 2014 }] },
+    });
+    if (!answered.ok())
+      throw Error(`starter ${answered.status()} ${await answered.text()}`);
+    const chosen = ((await answered.json()) as { learnerId?: string })
+      .learnerId;
+    if (!chosen) throw Error("The starter made no learner");
+    starterLearner = chosen;
+    await context.addInitScript(chooseLearner(starterLearner));
     const page = await context.newPage();
     page.setDefaultTimeout(30000);
-    await page.goto(`${origin}/try`);
-    await page.getByRole("button", { name: "2014", exact: true }).click();
-    await page.getByRole("button", { name: "Start practicing" }).click();
+    await page.goto(`${origin}/practice`);
     for (let i = 0; i < 5; i++) {
       await page.getByRole("button", { name: /^Skip/ }).click();
       await page.getByRole("button", { name: /^Next/ }).click();
@@ -215,13 +239,13 @@ export async function startShellFixture({
         .catch(() => false);
       if (!more) break;
     }
-    trial.state = await context.storageState();
+    starter.state = await context.storageState();
     await context.close();
   }
   const states: Record<ShellState, StorageState | undefined> = {
     guest: undefined,
     new: fresh.state,
-    trial: trial.state,
+    starter: starter.state,
     paid: paidParent.state,
   };
   // Sign-in endpoints allow 60 requests a minute per address, which a sweep
@@ -240,6 +264,7 @@ export async function startShellFixture({
     origin,
     pool,
     paid: { ...paidParent, jordan, avery },
+    starter: { ...starter, learnerId: starterLearner },
     practisedSkill: practised[3]!,
     lessonId:
       lessons.find((l) => l.id.includes("fraction"))?.id ?? lessons[0]!.id,
@@ -258,9 +283,9 @@ export async function startShellFixture({
         route.fulfill({ json: sessions[state] }),
       );
       if (state === "paid")
-        await context.addInitScript(
-          `localStorage.setItem('amp.learner', JSON.stringify({state:{learnerId:${JSON.stringify(jordan.id)}},version:1}))`,
-        );
+        await context.addInitScript(chooseLearner(jordan.id));
+      if (state === "starter")
+        await context.addInitScript(chooseLearner(starterLearner));
       return context;
     },
     async close() {
@@ -314,11 +339,12 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       ready: heading(/Reset your password/),
     },
     {
-      // A visitor without an account opens /try and is taken to sign-up first.
+      // Ads and email still link to /try: a visitor without an account
+      // signs up.
       id: "try-start",
       path: "/try",
       state: "guest",
-      ready: heading(/Try AMP free/),
+      ready: heading(/Create your account/),
     },
     {
       id: "account-ready",
@@ -327,22 +353,19 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       ready: heading(/account is ready/),
     },
     {
+      // Signed in, /try opens `/`, which asks a new account the starter's
+      // question.
       id: "try-start-signed-in",
       path: "/try",
       state: "new",
-      ready: heading(/See how AMP adapts/),
+      ready: heading(/What brings you to AMP\?/),
     },
     {
-      id: "trial-map",
-      path: "/try/map",
-      state: "trial",
-      ready: (p) => p.locator(".frontier-map").waitFor(),
-    },
-    {
-      id: "trial-plans",
-      path: "/try/plans",
-      state: "trial",
-      ready: heading(/Choose a plan/),
+      // A parent's first child, a few problems in: their Overview.
+      id: "starter-overview",
+      path: "/overview",
+      state: "starter",
+      ready: (p) => p.locator('.frontier-map[aria-busy="false"]').waitFor(),
     },
     {
       // The Overview has its own address; `/` opens a family's class.

@@ -198,7 +198,7 @@ export async function funnelReport(
       played: heard.length,
       watchedHalf: did("video_progress:50"),
       finished: did("video_progress:100"),
-      triedFree: did("try_click"),
+      triedFree: did("try_click", "problem_rendered"),
       signedUp: did("account_session"),
       buyClicks: did(
         "buy_click:card",
@@ -236,7 +236,8 @@ export async function funnelReport(
       }>(
         `SELECT COALESCE(${column},'unknown') AS key,count(*)::int AS visitors,
            count(*) FILTER (WHERE EXISTS(SELECT 1 FROM amp_funnel_events e
-             WHERE e.visitor_id=v.visitor_id AND e.event='try_click'))::int AS tried,
+             WHERE e.visitor_id=v.visitor_id
+               AND e.event IN ('try_click','problem_rendered')))::int AS tried,
            count(*) FILTER (WHERE v.converted_on IS NOT NULL)::int AS purchased
          FROM amp_funnel_visitors v WHERE ${cohort}
          GROUP BY 1 ORDER BY visitors DESC,key`,

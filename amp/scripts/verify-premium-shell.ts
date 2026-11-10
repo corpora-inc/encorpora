@@ -418,6 +418,8 @@ try {
           .waitFor();
       }
       if (width === 320 && theme === "light") {
+        // A parent approving another family's child pays for the plan before
+        // any learner of their own; an unconfirmed email is confirmed first.
         const actual = await (
           await context.request.get(`${origin}/api/v1/me`)
         ).json();
@@ -425,7 +427,8 @@ try {
           route.fulfill({
             json: {
               ...actual,
-              next: "try",
+              next: "start",
+              familyApproval: { id: "synthetic-approval" },
               consent: { status: "none", method: null },
               account: {
                 ...actual.account,

@@ -45,13 +45,7 @@ test(
         payload: object,
       ): Promise<LightMyRequestResponse> =>
         app.inject({ method: "POST", url: path, headers, payload });
-      const trial = (
-        await app.inject({
-          method: "POST",
-          url: "/api/v1/trials",
-          payload: { birthYear: 2014 },
-        })
-      ).json();
+      const trial = await repository.createTrial(2014);
       const auth = { authorization: `Trial ${trial.token}` };
       const base = `/api/v1/learners/${trial.learnerId}`;
       const serve = async () => {
@@ -193,13 +187,7 @@ test(
       );
       // A fresh assessment must keep moving when every offered item is skipped.
       // Use ordinary batches: a focused family intentionally bypasses selection.
-      const fresh = (
-        await app.inject({
-          method: "POST",
-          url: "/api/v1/trials",
-          payload: { birthYear: 2000 },
-        })
-      ).json();
+      const fresh = await repository.createTrial(2000);
       const freshAuth = { authorization: `Trial ${fresh.token}` };
       const freshBase = `/api/v1/learners/${fresh.learnerId}`;
       const readFresh = async () =>
