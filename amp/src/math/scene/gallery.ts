@@ -32,6 +32,7 @@ import {
 } from "../exponential-scenes";
 import { completeSquareTiles, vertexGraph } from "../quadratic-scenes";
 import { sceneV2Cases } from "./gallery-v2";
+import { thingsCases } from "./gallery-things";
 
 /** Reference scenes for every component: the gallery renders them at four
  * widths in both themes, and the unit tests lay every one of them out. */
@@ -1059,6 +1060,7 @@ export const galleryCases: GalleryCase[] = [
     }).scene({ title: "Tangent PT and radius OT" }),
   },
   ...sceneV2Cases,
+  ...thingsCases,
 ];
 
 /** Legacy figures drawn through both renderers for screenshot parity. */
