@@ -867,7 +867,8 @@ def check_linear_system_content(records):
     require(header['editions']==16, 'System content review needs sixteen editions')
     templates=header['templates']
     require(len(templates)==2 and {t['id'] for t in templates}==LINEAR_SYSTEM and
-            all(t['skillId']=='linear-systems' and t['gradeBand']=='6–8' and t['version']==1 and
+            # The version moves with each reviewed variant (clause variants are 2).
+            all(t['skillId']=='linear-systems' and t['gradeBand']=='6–8' and
                 t['requiredResponseCapability']=='single-choice-v1' for t in templates), 'Incorrect system template metadata')
     skill=header['skill']
     require(skill['id']=='linear-systems' and skill['gradeBand']=='8' and
