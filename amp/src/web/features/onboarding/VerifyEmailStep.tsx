@@ -11,7 +11,7 @@ import { FrameBrand, frameCard } from "../../ui/PageFrame";
 import { Toast } from "../../ui/Toast";
 import styles from "./Start.module.css";
 
-/** Confirm the parent's address on the way into the plan: consent and payment
+/** Confirm the parent's address before consent or a funded purchase: they
  * need it, nothing before them does. One primary action, nothing shifts. */
 export function VerifyEmailStep({
   session,
@@ -30,7 +30,7 @@ export function VerifyEmailStep({
         email,
         callbackURL: invitation
           ? "/access"
-          : continuationUrl(location.search, "/start/plan"),
+          : continuationUrl(location.search, "/"),
       });
       if (result.error) {
         const error = new AppError(
@@ -97,8 +97,8 @@ export function VerifyEmailStep({
         >
           {verification.isPending ? "Sending email…" : "Send another email"}
         </Button>
-        <Link to="/try" className={buttonClass("quiet")}>
-          Keep practicing free
+        <Link to="/" className={buttonClass("quiet")}>
+          Not now
         </Link>
       </div>
     </section>

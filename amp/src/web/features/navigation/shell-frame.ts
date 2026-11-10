@@ -100,6 +100,14 @@ export function shellFrame(pathname: string): ShellFrame | null {
   )
     return { kind: "account", active: "access" };
   if (path === "/consent") return { kind: "account", active: "privacy" };
+  // "Continue with AMP" for one learner is a step of Billing.
+  if (under(path, "/continue")) return { kind: "account", active: "access" };
+  // "What brings you to AMP?" and each answer's question.
+  if (
+    path === "/start" ||
+    /^\/start\/(myself|parent|tutor|teacher|school)$/.test(path)
+  )
+    return { kind: "plain" };
   if (path === "/practice") return { kind: "practice" };
   if (
     path === "/" ||

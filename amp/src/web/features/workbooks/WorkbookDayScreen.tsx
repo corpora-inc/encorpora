@@ -48,7 +48,7 @@ import {
   workbookMessage,
   type WorkbookSearch,
 } from "./model";
-import { FreeWorkbooksUsed } from "./FreeWorkbooksUsed";
+import { AllowancePause } from "../continue/AllowancePause";
 import { WorkbookFrame, type WorkbookLearner } from "./WorkbookFrame";
 import { WorkbookList } from "./WorkbookList";
 import styles from "./Workbooks.module.css";
@@ -427,7 +427,12 @@ function Today({
         areaName={areaName}
         used={
           unavailable && !workbook.data ? (
-            <FreeWorkbooksUsed next={learner.freeWorkbooksNext} />
+            <AllowancePause
+              kind="workbooks"
+              compact
+              viewer={learner.pauseViewer}
+              learner={learner}
+            />
           ) : undefined
         }
         failure={
@@ -549,7 +554,14 @@ function PastDay({
   return (
     <>
       <Head learner={learner} date={date} />
-      {used && <FreeWorkbooksUsed next={learner.freeWorkbooksNext} />}
+      {used && (
+        <AllowancePause
+          kind="workbooks"
+          compact
+          viewer={learner.pauseViewer}
+          learner={learner}
+        />
+      )}
       {history.data && !history.data.workbooks.length ? (
         used ? null : (
           <div className={styles.notice}>

@@ -37,6 +37,8 @@ import {
   registerInvitePreview,
 } from "./setup-routes.js";
 import { activeToday, studentBearer } from "./principal.js";
+import { registerDemoRoutes, defineDemoRoutes } from "./demo/routes.js";
+import { touchDemo } from "./demo/remove.js";
 import {
   classRoster,
   levels,
@@ -123,14 +125,23 @@ async function loadTarget(
   if (ref.orgId !== undefined && !isId(ref.orgId)) return null;
   if (ref.kind === "org") {
     const org = (
-      await pool.query("SELECT path FROM amp_orgs WHERE id=$1", [ref.orgId!])
+      await pool.query("SELECT path,demo FROM amp_orgs WHERE id=$1", [
+        ref.orgId!,
+      ])
     ).rows[0];
-    return org ? { kind: "org", orgId: ref.orgId!, path: org.path } : null;
+    return org
+      ? {
+          kind: "org",
+          orgId: ref.orgId!,
+          path: org.path,
+          ...(org.demo ? { demo: true } : {}),
+        }
+      : null;
   }
   if (!isId(ref.classId)) return null;
   const found = (
     await pool.query(
-      `SELECT c.org_id,o.path FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
+      `SELECT c.org_id,o.path,o.demo FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id
        WHERE c.id=$1 AND c.archived_at IS NULL AND ($2::uuid IS NULL OR o.path @> ARRAY[$2]::uuid[])`,
       [ref.classId, ref.orgId ?? null],
     )
@@ -141,6 +152,7 @@ async function loadTarget(
         classId: ref.classId,
         orgId: found.org_id,
         path: found.path,
+        ...(found.demo ? { demo: true } : {}),
       }
     : null;
 }
@@ -153,7 +165,7 @@ async function loadStudent(
   if (!isId(personId)) return null;
   const home = (
     await pool.query(
-      `SELECT o.id,o.path FROM amp_people p
+      `SELECT o.id,o.path,o.demo FROM amp_people p
        JOIN amp_org_roles r ON r.person_id=p.id AND r.role='student'
        JOIN amp_orgs o ON o.id=r.org_id
        WHERE p.id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")}
@@ -174,6 +186,7 @@ async function loadStudent(
     orgId: home.id,
     path: home.path,
     classIds: classes.rows.map((row) => row.class_id),
+    ...(home.demo ? { demo: true } : {}),
   };
 }
 const statusOf = (error: unknown) =>
@@ -241,6 +254,11 @@ export async function registerSchoolRoutes(
     registerShareExchange(scope, options.pool);
     registerCurriculumRoutes(scope, services);
     registerInquiryRoute(scope, services);
+    registerDemoRoutes(scope, {
+      pool: options.pool,
+      authenticate: options.authenticate,
+      learning: services.learning,
+    });
     // Students only: a staff or parent credential is never a student's.
     scope.post(
       "/api/v1/school/student/activity",
@@ -272,6 +290,11 @@ export async function registerSchoolRoutes(
           );
           if (!target || !can(actor, route.action, target))
             throw new SchoolError(404, "not_found");
+          // An opened demo stays: idle ones go after 30 days.
+          if ("demo" in target && target.demo)
+            void touchDemo(options.pool, target.orgId).catch((error) =>
+              request.log.error({ code: error?.code }, "Demo visit not kept"),
+            );
           return route.handler({
             request,
             reply,
@@ -473,3 +496,4 @@ defineTeacherRoutes(defineSchoolRoute);
 defineOrgRoutes(defineSchoolRoute);
 defineClassroomRoutes(defineSchoolRoute);
 defineShareRoutes(defineSchoolRoute);
+defineDemoRoutes(defineSchoolRoute);

@@ -16,6 +16,7 @@ import { purgeExpiredPrivacyRecords } from "../src/family/retention.js";
 import { purgeExpiredTrials } from "../src/server/trials.js";
 import { purgeFunnelEvents } from "../src/analytics/retention.js";
 import { purgeProblemFlags } from "../src/feedback/retention.js";
+import { purgeIdleDemos } from "../src/schools/demo/remove.js";
 import {
   purgeFinancialRecords,
   purgeInactiveLearners,
@@ -47,6 +48,7 @@ try {
       ...(await purgeProblemFlags(pool)),
       expiredParentFeedback: await purgeParentFeedback(pool),
       expiredFamilyApprovals: await purgeFamilyApprovals(pool),
+      ...(await purgeIdleDemos(pool)),
       ...(await purgeInactiveLearners(pool)),
       ...(await purgeFinancialRecords(pool)),
     }),

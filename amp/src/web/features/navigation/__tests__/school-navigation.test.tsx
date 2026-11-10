@@ -136,7 +136,9 @@ test("past classes keep records without Start class; an unresolved year grants n
   expect(
     navigation({ past: true, listed: false }).tabs.map((tab) => tab.id),
   ).toEqual(["gradebook", "time"]);
-  expect(navigation({ past: null, listed: false })).toEqual({
+  // An unresolved year grants no tabs and no Start class (the hook also
+  // reports whether the place is a demo or a one-class school).
+  expect(navigation({ past: null, listed: false })).toMatchObject({
     tabs: [],
     start: false,
   });

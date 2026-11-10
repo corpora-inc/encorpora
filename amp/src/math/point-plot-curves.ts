@@ -263,7 +263,7 @@ function descriptionParts(id: string, seed: string): CurveParts {
       yLabel: "P",
     };
     return {
-      prompt: `A shop's profit, in dollars, follows a downward parabola. It breaks even at ${r0} items and at ${s} items. The greatest profit is halfway between those counts. From this description, place the two break-even points and the highest point.`,
+      prompt: `A shop's profit, in dollars, follows a downward parabola. It breaks even at ${r0} items and at ${s} items. The greatest profit is ${k} ${nounFor(k, "dollar")}, halfway between those counts. From this description, place the two break-even points and the highest point.`,
       response: {
         kind: "point-plot",
         label: "Place the 3 points from the description",
@@ -278,7 +278,7 @@ function descriptionParts(id: string, seed: string): CurveParts {
         curve: { kind: "quadratic", a: [-1, 1], h: int(h), k: int(k) },
         required: answer,
       },
-      hint: "Break-even means profit 0, so those counts sit on the horizontal axis. The greatest profit is the high point halfway between them, not a count by itself.",
+      hint: `Start with the break-even counts ${r0} and ${s}. Break-even means profit 0, so pair each count with 0 on the graph.`,
       explanation: [
         `Break-even is profit 0 at ${r0} items and at ${s} items: ${pointTex([r0, 0])} and ${pointTex([s, 0])}.`,
         `The highest point is halfway between them, at ${h} items. Its height is ${k} ${nounFor(k, "dollar")}: ${pointTex([h, k])}.`,
@@ -335,7 +335,7 @@ function descriptionParts(id: string, seed: string): CurveParts {
     },
     answer,
     grading: { mode: "on-curve", curve, required: answer },
-    hint: "Time runs along the horizontal axis and height along the vertical axis. The greatest height is not the landing, and the starting height is not a time.",
+    hint: `The starting height ${c} m is a vertical coordinate. Time goes on the horizontal axis; identify the time of the throw first.`,
     explanation: [
       story === "return"
         ? `The throw starts at ${pointTex([0, c])}. The highest point is ${pointTex([tv, k])}. The return to that height is ${pointTex([2 * tv, c])}.`
