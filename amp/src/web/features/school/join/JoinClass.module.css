@@ -93,3 +93,8 @@
 .inlineLink:hover {
   text-decoration: underline;
 }
+@media (max-width: 559px) {
+  .compact {
+    justify-content: flex-start;
+  }
+}
