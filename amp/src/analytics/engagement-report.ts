@@ -1,5 +1,6 @@
 import type { Pool } from "pg";
 import { RETENTION } from "../privacy/retention-periods.js";
+import { errorOriginSql } from "./error-origin.js";
 
 /** Aggregate first-party observations. No visitor/session IDs leave the report. */
 export async function engagementReport(pool: Pool, days: number) {
@@ -80,6 +81,24 @@ export async function engagementReport(pool: Pool, days: number) {
       WHERE p.${range} AND ${audience} AND p.visit_order IS NOT NULL)
       SELECT screen,coalesce(next_screen,'last_observed') AS next_screen,count(*)::int AS transitions
       FROM pages GROUP BY 1,2 ORDER BY transitions DESC,screen,next_screen`);
+    // Browser errors, ours apart from the in-app browsers' own. Bundle
+    // coordinates are kept for ours only; another script's position is noise.
+    const errors = await q(`SELECT ${errorOriginSql("e.props")} AS origin,
+      coalesce(e.props->>'browser','unknown') AS browser,
+      e.props->>'screen' AS screen,e.props->>'kind' AS kind,
+      coalesce(e.props->>'category','unknown') AS category,
+      coalesce(e.props->>'source','none') AS source,
+      CASE WHEN ${errorOriginSql("e.props")}='ours' THEN e.props->>'asset' END AS asset,
+      CASE WHEN ${errorOriginSql("e.props")}='ours' THEN (e.props->>'line')::int END AS line,
+      CASE WHEN ${errorOriginSql("e.props")}='ours' THEN (e.props->>'column')::int END AS "column",
+      count(*)::int AS errors,count(DISTINCT e.visitor_id)::int AS browsers
+      FROM amp_funnel_events e JOIN amp_funnel_visitors v USING(visitor_id)
+      WHERE e.event='client_error' AND e.${range} AND ${audience}
+      GROUP BY 1,2,3,4,5,6,7,8,9 ORDER BY browsers DESC,errors DESC,1,2,3,4,5,6,7,8,9`);
+    const byOrigin = (origin: string) =>
+      errors
+        .filter((row) => row.origin === origin)
+        .map(({ origin: _origin, ...row }) => row);
     await c.query("COMMIT");
     return {
       days,
@@ -93,7 +112,11 @@ export async function engagementReport(pool: Pool, days: number) {
       purchaseActions,
       cardPurchases,
       journeys,
+      ourErrors: byOrigin("ours"),
+      externalErrors: byOrigin("external"),
+      unattributedErrors: byOrigin("unattributed"),
       definitions: [
+        "Our errors are React render failures and errors with a frame in an AMP bundle; each has its bundle asset, line and column. External errors come from another origin's script or from code with no URL, which an in-app browser, extension or tag injected (AMP allows no inline script or eval); they do not stop AMP. Unattributed errors, such as a rejected promise with no stack frame, could be either. Each page load records at most three of one error. Browser is a category from user-agent markers (in-app TikTok, Instagram, Facebook, Snapchat, other, or standard); unknown means a client from before it was recorded.",
         "Card purchases are server-verified purchase events in the selected UTC days, grouped by the browser's first-touch campaign and creative. Multiple purchases by one browser remain separate sales. Unattributed payments are shown separately; purchases do not imply net revenue or current active access. Refunds cannot be allocated to these campaign rows from the anonymous event records.",
         "Purchase attempts are client-observed requests grouped by stage and outcome. Repeated delivery of the same attempt/outcome counts once. A successful invoice, checkout or claim request does not prove payment. Missing terminal events may reflect navigation or failed delivery, not abandonment.",
         "Marketing actions are deduplicated by event ID; opening an invoice form is not invoice creation or payment. Marketing and AMP share an opaque first-party browser ID on HTTPS Corpora domains.",

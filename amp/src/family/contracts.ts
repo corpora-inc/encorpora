@@ -25,6 +25,9 @@ export interface FamilyLearner {
   freeAllowance?: FreeAllowance;
   /** The account holder's own learner (docs/families.md), not a child. */
   adult?: true;
+  /** One of the adult's practice profiles (docs/families.md): marked adult as
+   * well, never a child and never the adult's own learner. */
+  simulation?: true;
 }
 export interface FamilySummary {
   purchaseMeasurement?: PurchaseMeasurement;

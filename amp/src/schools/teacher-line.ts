@@ -42,7 +42,7 @@ export async function classTeachers(
      JOIN amp_classes c ON c.id=e.class_id AND c.archived_at IS NULL
      JOIN amp_orgs o ON o.id=c.org_id
      JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL AND p.account_id IS NOT NULL
-     JOIN amp_learners l ON l.account_id=p.account_id AND l.adult AND l.deleted_at IS NULL
+     JOIN amp_learners l ON l.account_id=p.account_id AND l.adult AND NOT l.simulation AND l.deleted_at IS NULL
      WHERE e.class_id=$1 AND e.role='teacher' AND ${activeToday("e", "o")}
        AND EXISTS(SELECT 1 FROM amp_org_roles r WHERE r.person_id=p.id AND r.role<>'student'
          AND r.org_id=ANY(o.path) AND ${activeToday("r", "o")})

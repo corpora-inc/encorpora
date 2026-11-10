@@ -8,6 +8,7 @@ import {
 import { metaContextResultSchema } from "../../../advertising/meta-context-contracts";
 import { AppError } from "../../lib/AppError";
 import { nativeRuntime } from "../../native-runtime";
+import { keepaliveFetch } from "../../lib/keepalive";
 
 /** Only the adult payment-confirmation screen calls this. A local request,
  * never a Meta browser SDK; server-owned payment evidence is authoritative. */
@@ -40,9 +41,8 @@ export function useMetaPurchaseContext(
     // Let this small, account-bound request finish when the parent continues
     // to learner setup. Its response never updates account or learner state.
     let observing = true;
-    void fetch("/api/v1/advertising/meta/purchase-context", {
+    void keepaliveFetch("/api/v1/advertising/meta/purchase-context", {
       method: "POST",
-      keepalive: true,
       headers: {
         Authorization: `Bearer ${session.token}`,
         "Content-Type": "application/json",

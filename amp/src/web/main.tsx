@@ -2,7 +2,7 @@ import "./card-entry";
 import "./share-entry";
 import "./lib/zod-config";
 import { errorDetails } from "../analytics/error-details";
-import { screenOf, track } from "./lib/analytics";
+import { screenOf, trackClientError } from "./lib/analytics";
 import "./consent-entry";
 import { createRoot } from "react-dom/client";
 import { RouterView } from "./app/RouterView";
@@ -34,14 +34,14 @@ trackSessionStart();
 watchForNewRelease();
 createRoot(document.getElementById("root")!, {
   onCaughtError: (error) =>
-    track("client_error", {
+    trackClientError({
       ...errorDetails(error, undefined, location.origin),
       kind: "render",
       boundary: "caught",
       screen: screenOf(location.pathname),
     }),
   onUncaughtError: (error) =>
-    track("client_error", {
+    trackClientError({
       ...errorDetails(error, undefined, location.origin),
       kind: "render",
       boundary: "uncaught",

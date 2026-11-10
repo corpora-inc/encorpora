@@ -13,7 +13,7 @@ import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { request } from "../../lib/api";
 import { analyticsVisitorHeaders, flush } from "../../lib/analytics";
-import { meOptions, sessionOptions } from "../../lib/query";
+import { meOptions, refreshMe, sessionOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
 import { EmptyState } from "../../ui/EmptyState";
 import { Loading } from "../../ui/Loading";
@@ -105,6 +105,48 @@ function Continue({ session }: { session: AuthSession }) {
     continuationPaid(session.accountId);
     return <Return href={returnTo} />;
   }
+  // A practice profile has no plan of its own (docs/families.md). The
+  // family's plan, for its first child without access, covers that child,
+  // the adult and every profile, so that is what continues; the adult's own
+  // plan only for an account with no children.
+  const pausedChild = learner.simulation
+    ? account.family.learners.find(
+        (entry) => !entry.adult && !entry.deletedAt && !entry.hasAccess,
+      )
+    : undefined;
+  if (pausedChild)
+    return (
+      <ForChild
+        session={session}
+        learnerId={pausedChild.id}
+        returnTo={returnTo}
+        interval={interval}
+      />
+    );
+  if (learner.simulation)
+    return (
+      <Page>
+        <header className={styles.head}>
+          <h1 className={styles.title}>Continue with AMP</h1>
+          <p className={styles.for}>For your own practice</p>
+        </header>
+        <p className={styles.covers}>
+          It covers practicing as {learner.name} and every level you try.
+        </p>
+        <OwnPracticeCheckout
+          session={session}
+          account={account}
+          interval={interval}
+          returnTo={returnTo}
+        />
+        <Link
+          to={returnTo.split("?")[0] as never}
+          className={`${buttonClass("quiet")} ${styles.back}`}
+        >
+          Not now
+        </Link>
+      </Page>
+    );
   const adult = learner.adult === true;
   const consented = account.consent.status === "active";
   return (
@@ -156,6 +198,88 @@ function Continue({ session }: { session: AuthSession }) {
   );
 }
 
+/** Continue with AMP for a child of the family instead, coming back to where
+ * the profile's pause was: that plan covers the adult and every profile too. */
+function ForChild({
+  session,
+  learnerId,
+  returnTo,
+  interval,
+}: {
+  session: AuthSession;
+  learnerId: string;
+  returnTo: string;
+  interval?: "year" | "month";
+}) {
+  const navigate = useNavigate();
+  useEffect(() => {
+    rememberContinuation({ accountId: session.accountId, learnerId, returnTo });
+    void navigate({
+      to: "/continue/$learnerId",
+      params: { learnerId },
+      search: interval ? ({ interval } as never) : undefined,
+      replace: true,
+    });
+  }, [learnerId]);
+  return <Page busy />;
+}
+
+/** The adult's own practice, bought for a profile's sake by an account with
+ * no children: the same plan and checkout as their own "Continue with AMP".
+ * Without a learner of their own yet, it starts only when they check out. */
+function OwnPracticeCheckout({
+  session,
+  account,
+  interval,
+  returnTo,
+}: {
+  session: AuthSession;
+  account: SignedInMe;
+  interval?: "year" | "month";
+  returnTo: string;
+}) {
+  const own = account.family.learners.find(
+    (entry) => entry.adult && !entry.simulation && !entry.deletedAt,
+  );
+  // Starting is idempotent on the server: a second start returns the same.
+  const startOwn = async () => {
+    const { learnerId } = await request(
+      "/me/practice",
+      z.object({ learnerId: z.string() }),
+      {
+        token: session.token,
+        body: {
+          timezone:
+            Intl.DateTimeFormat().resolvedOptions().timeZone ||
+            "America/New_York",
+        },
+      },
+    );
+    await refreshMe(session);
+    return learnerId;
+  };
+  if (own?.hasAccess) {
+    continuationPaid(session.accountId);
+    return <Return href={returnTo} />;
+  }
+  return account.unassignedPurchase ? (
+    <UsePaidPlan
+      session={session}
+      purchaseId={account.unassignedPurchase.id}
+      learner={own ?? { id: null, name: "your own practice" }}
+      prepare={startOwn}
+      returnTo={returnTo}
+    />
+  ) : (
+    <LearnerCheckout
+      session={session}
+      learnerId={own?.id ?? null}
+      prepare={startOwn}
+      interval={interval}
+    />
+  );
+}
+
 /** Back to the screen "Continue with AMP" was opened from. */
 function Return({ href }: { href: string }) {
   const navigate = useNavigate();
@@ -184,41 +308,66 @@ function UsePaidPlan({
   session,
   purchaseId,
   learner,
+  prepare,
   returnTo,
 }: {
   session: AuthSession;
   purchaseId: string;
-  learner: SignedInMe["family"]["learners"][number];
+  /** No id yet: the adult's own learner, started by `prepare` on the click. */
+  learner: { id: string | null; name: string };
+  prepare?: () => Promise<string>;
   returnTo: string;
 }) {
   const claim = useClaimEnrollment(session);
+  const [preparing, setPreparing] = useState(false);
+  const [failed, setFailed] = useState("");
   const [done, setDone] = useState(false);
   if (done) return <Return href={returnTo} />;
   return (
     <section className={styles.panel}>
       <Toast
-        message={claim.error?.message ?? ""}
-        onDismiss={() => claim.reset()}
+        message={claim.error?.message ?? failed}
+        onDismiss={() => {
+          claim.reset();
+          setFailed("");
+        }}
       />
       <p className={styles.text}>
-        Your plan is paid and isn’t anyone’s yet. It can be {learner.name}’s.
+        {learner.id
+          ? `Your plan is paid and isn’t anyone’s yet. It can be ${learner.name}’s.`
+          : "Your plan is paid and isn’t anyone’s yet. It can be for your own practice."}
       </p>
       <Button
         variant="primary"
         className={styles.go}
-        aria-busy={claim.isPending || undefined}
-        disabled={claim.isPending}
-        onClick={() =>
+        aria-busy={claim.isPending || preparing || undefined}
+        disabled={claim.isPending || preparing}
+        onClick={async () => {
+          let learnerId = learner.id;
+          if (!learnerId) {
+            setPreparing(true);
+            try {
+              learnerId = await prepare!();
+            } catch (error) {
+              console.error("Own practice did not start", error);
+              setFailed(
+                "Your own practice didn’t start. Check your connection, then try again.",
+              );
+              return;
+            } finally {
+              setPreparing(false);
+            }
+          }
           claim.mutate(
-            { purchaseId, learnerId: learner.id },
+            { purchaseId, learnerId },
             {
               onSuccess: () => {
                 continuationPaid(session.accountId);
                 setDone(true);
               },
             },
-          )
-        }
+          );
+        }}
       >
         Use it for {learner.name}
       </Button>
@@ -249,18 +398,23 @@ const statusSchema = z.object({
 function LearnerCheckout({
   session,
   learnerId,
+  prepare,
   interval: initial,
 }: {
   session: AuthSession;
-  learnerId: string;
+  /** Null: the adult's own learner, not started yet. `prepare` starts it
+   * when they check out, and its plan is always the full price. */
+  learnerId: string | null;
+  prepare?: () => Promise<string>;
   interval?: "year" | "month";
 }) {
   const offers = useQuery(offerOptions(session));
-  const status = useQuery({
+  const fetched = useQuery({
     queryKey: ["account", session.accountId, "billing", "status", learnerId],
+    enabled: !!learnerId,
     queryFn: ({ signal }) =>
       request(
-        `/billing/status/${encodeURIComponent(learnerId)}`,
+        `/billing/status/${encodeURIComponent(learnerId!)}`,
         statusSchema,
         {
           token: session.token,
@@ -268,16 +422,28 @@ function LearnerCheckout({
         },
       ),
   });
+  const status = learnerId
+    ? fetched
+    : {
+        ...fetched,
+        data: {
+          learnerId: "",
+          phase: "ready",
+          tier: "full",
+        } as z.infer<typeof statusSchema>,
+        error: null,
+      };
   const [interval, setInterval] = useState<"year" | "month">(initial ?? "year");
   const requests = useRef<Partial<Record<"year" | "month", string>>>({});
   const checkout = useMutation({
     mutationFn: async (offer: { id: string; interval: "year" | "month" }) => {
+      const buyer = learnerId ?? (await prepare!());
       const send = (requestId: string) =>
         request("/billing/checkout", z.object({ url: z.string() }), {
           token: session.token,
           headers: analyticsVisitorHeaders(),
           body: {
-            learnerId,
+            learnerId: buyer,
             requestId,
             offerId: offer.id,
             interval: offer.interval,
@@ -317,8 +483,8 @@ function LearnerCheckout({
     },
     onError: (error) => {
       console.error("Checkout didn’t open", error);
-      if (error instanceof AppError && error.kind === "validation")
-        void status.refetch();
+      if (learnerId && error instanceof AppError && error.kind === "validation")
+        void fetched.refetch();
     },
   });
   const phase = status.data?.phase;
@@ -343,7 +509,7 @@ function LearnerCheckout({
           className={styles.go}
           onClick={() => {
             void offers.refetch();
-            void status.refetch();
+            if (learnerId) void fetched.refetch();
           }}
         >
           Try again

@@ -73,6 +73,31 @@ test("diagnostics explain failures without copying their private content", () =>
   );
 });
 
+test("an error event without a script URL is never blamed on AMP", () => {
+  const origin = "https://amp.corpora.inc";
+  // The browser withheld a cross-origin script's details ("Script error.").
+  assert.equal(
+    errorDetails(null, { filename: "", lineno: 0, colno: 0 }, origin).source,
+    "external",
+  );
+  // Code an in-app webview ran itself: it has no URL. AMP's policy allows no
+  // inline script or eval, so this is not AMP's code either.
+  assert.equal(
+    errorDetails(new ReferenceError("x"), { filename: "", lineno: 1 }, origin)
+      .source,
+    "inline",
+  );
+  // A webview's own script URL (`user-script:`) is another origin.
+  assert.equal(
+    errorDetails(
+      new Error("x"),
+      { filename: "user-script:3", lineno: 1 },
+      origin,
+    ).source,
+    "external",
+  );
+});
+
 test("React and rejected-promise stacks retain only a public app frame", () => {
   const origin = "https://amp.example.test";
   for (const frame of [

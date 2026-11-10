@@ -138,3 +138,10 @@
 .nameActions > * {
   flex: 1 1 160px;
 }
+/* What the adult's own plan covers, said once under the heading. */
+.covers {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.45;
+}

@@ -341,13 +341,14 @@ async function familyThenSchool(
   const items = await fromHome.getByRole("menuitem").allInnerTexts();
   check(
     `${label} the switcher lists the family, own practice, the school and the learner`,
-    items.length === 5 &&
+    items.length === 6 &&
       items[0]!.includes(family.name) &&
       /Start my own practice/.test(items[1]!) &&
-      items[2]!.includes(school) &&
-      /Finish setting up/.test(items[2]!) &&
-      /\nLearner$/.test(items[3]!) &&
-      /Add a place/.test(items[4]!),
+      /Try a level/.test(items[2]!) &&
+      items[3]!.includes(school) &&
+      /Finish setting up/.test(items[3]!) &&
+      /\nLearner$/.test(items[4]!) &&
+      /Add a place/.test(items[5]!),
     items,
   );
   await measured(page, `${label} family switcher`);
@@ -520,7 +521,8 @@ async function practiceAndSchool(browser: Browser, width: number) {
     items[0]?.includes(family.name) === true &&
       /Jordan/.test(items[0] ?? "") &&
       /Start my own practice/.test(items[1] ?? "") &&
-      /Admin/.test(items[2] ?? ""),
+      /Try a level/.test(items[2] ?? "") &&
+      /Admin/.test(items[3] ?? ""),
     items,
   );
   await choose(page, toSchool, /Birch Road School/);

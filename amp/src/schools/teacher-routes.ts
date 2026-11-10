@@ -1,4 +1,8 @@
 import type { FastifyReply } from "fastify";
+import { z } from "zod";
+import { createProfile, studentLevels } from "../account/practice-profiles.js";
+import { FamilyRepository } from "../family/repository.js";
+import { profileLabelSchema } from "../learning/practice-profiles.js";
 import type { Readable } from "node:stream";
 import { actorPerson, can, type Actor, type SchoolTarget } from "./authz.js";
 import { perDay } from "./evidence.js";
@@ -327,7 +331,32 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
       return record;
     },
   });
+  // "Try problems as this student" (docs/families.md): a practice profile of
+  // the reader's own account, copied once from the student's levels now.
+  // Whoever can read the record can copy it; the copy holds whole levels and
+  // the reader's label, never the student's name, and practicing as it never
+  // touches the student.
+  define({
+    method: "POST",
+    url: "/api/v1/school/students/:student/practice-profile",
+    action: "students.read",
+    target: ({ params }) =>
+      ({ kind: "student", personId: params.student! }) as const,
+    bodyLimit: 1024,
+    handler: async ({ actor, target, pool, request, reply }) => {
+      const { label } = copyStudentSchema.parse(request.body ?? {});
+      const levels = await studentLevels(pool, target.personId);
+      if (!levels) throw new SchoolError(404, "not_found");
+      const created = await createProfile(
+        new FamilyRepository(pool),
+        actor.accountId,
+        { label, levels },
+      );
+      return reply.code(201).send({ ...created, levels });
+    },
+  });
 }
+const copyStudentSchema = z.strictObject({ label: profileLabelSchema });
 
 /** Of the classes a student is in today, the ones this person can open. */
 async function visibleClasses(

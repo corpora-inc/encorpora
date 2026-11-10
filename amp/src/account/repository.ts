@@ -7,6 +7,7 @@ import { familyClassOf } from "../family/family-class.js";
 import { pendingApprovalOf } from "../family/approvals.js";
 import { absorbLiveTrial } from "../server/absorb-trial.js";
 import { secondParentFamilies } from "../family/second-parent.js";
+import { listProfiles } from "./practice-profiles.js";
 import type { FamilySummary } from "../family/contracts.js";
 
 /** A family's children as `/me` lists them: each with their access. */
@@ -101,8 +102,11 @@ export async function accountSummary(
           )
         ).rows[0]
       : undefined;
-  // The family's learners; the adult's own learner is its own place.
-  const adult = family.learners.find((l) => l.adult && !l.deletedAt);
+  // The family's learners; the adult's own learner is its own place, and
+  // their practice profiles are theirs beside it.
+  const adult = family.learners.find(
+    (l) => l.adult && !l.simulation && !l.deletedAt,
+  );
   const learners = childEntries(family);
   const gift = await availableGift(pool, accountId);
   // In parallel. A fixture at an earlier migration boundary has no schools,
@@ -114,7 +118,7 @@ export async function accountSummary(
       if (error.code && codes.includes(error.code)) return { rows: [] };
       throw error;
     };
-  const [staffRows, familyClass, familyApproval, coParented] =
+  const [staffRows, familyClass, familyApproval, coParented, profiles] =
     await Promise.all([
       pool
         .query<{
@@ -149,6 +153,10 @@ export async function accountSummary(
               throw error;
             },
           ),
+      // The adult practicing as someone else (docs/families.md).
+      isSchoolAccount(accountId)
+        ? Promise.resolve([])
+        : listProfiles(pool, accountId),
     ]);
   const secondParentOf = await Promise.all(
     coParented.map(async ({ holder, ...place }) => ({
@@ -195,6 +203,7 @@ export async function accountSummary(
     ...(familyApproval ? { familyApproval } : {}),
     ...(secondParentOf.length ? { secondParentOf } : {}),
     ...(adultPractice ? { adultPractice } : {}),
+    ...(profiles.length ? { practiceProfiles: profiles } : {}),
     ...(gift ? { availableAccessGrant: gift } : {}),
     ...(unassigned
       ? {

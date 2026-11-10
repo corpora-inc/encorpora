@@ -21,6 +21,7 @@ The practice loop (one problem at a time, adaptive across strands) is the produc
 - **Adults hold several places at once.** A person can be a parent, a teacher at a school, the head of a district and their own learner. The **place switcher**, one shared menu in the app drawer and setup, moves between them. `/` opens where the person last worked. With nothing remembered, it opens the family side if they have learners or a family class, and the school if they are staff only. An account with no place yet answers "What brings you to AMP?" first. A school setup in progress never takes over `/`.
 - **A child's session is bound to their one learner.** On a shared device (the default) it lives in session storage and signs out after 30 idle minutes. On a personal device it lasts until the teacher revokes it. Parent-only routes refuse a child's session even when a parent cookie is present. A child's session never reaches a sibling's learner.
 - **"Let Maya practice here".** From the family class, a parent hands their own device to a child: it starts that child's session, and the parent's view returns when the child signs out.
+- **Practice profiles:** any adult who practices can practice as someone else: a grade K–12 at a pace (behind, on level, ahead), adjusted strand by strand and saved under a name, or a one-time copy of a student's levels from their record. Nobody's record changes. A profile is the adult's own learner marked as a simulation, left out of every list a real learner counts in; the account's access covers it, and otherwise it has its own free allowance ([families](families.md#practicing-as-someone-else-practice-profiles)).
 - **Adult learners** are marked adult, have no birth year and need no parental consent. The adult chooses where to start (Counting through Precalculus) and always sees their levels. In their class, a teacher's adult learner appears on the map and standings as a separate "Teacher" line. It sits in place by value with no rank number, is never counted in grades, seats, rosters, exports or Today, and the teacher can hide it per class.
 
 ## Places
@@ -80,6 +81,7 @@ Media, videos and ads carry no price; they lead to the Buy button.
   - `/family/approvals/$id`: a parent approving another family's class.
 - **Adult practice:**
   - `/me/start`: choose where to begin.
+  - `/me/profiles/new`: "Try a level…", a grade and pace (`?grade=4&pace=behind`), adjusted by strand and saved under a name; `/me/profiles/$id`: one profile's levels, name and Delete. Both from the place switcher under "My practice"; `/me` has one quiet link. A student's record adds "Try problems as this student".
   - `/me`: their own record, with levels per strand, 12 weeks of time, time by day and skill, objectives and recent work.
   - `/practice` and `/pathways`.
 - **Child:**
@@ -93,7 +95,7 @@ Media, videos and ads carry no price; they lead to the Buy button.
   - `staff`, `calendar`, `experience`, `import`, `integrations`, `license`, `privacy`, `activity`, and `schools` for districts.
   - `/school/new?org=…`: guided setup, reached only from a setup invitation; without one it goes to `/schools`.
 
-Screenshots of most of these, at 390 and 1280 px in light and dark, are under `docs/reviews/`. The relevant folders are `schools-public`, `school-setup`, `school-places`, `school-classroom`, `school-teacher`, `school-org`, `adult-practice`, `teacher-in-class`, `family-class`, `family-approval`, `second-parent` and `extra-child-price`.
+Screenshots of most of these, at 390 and 1280 px in light and dark, are under `docs/reviews/`. The relevant folders are `schools-public`, `school-setup`, `school-places`, `school-classroom`, `school-teacher`, `school-org`, `adult-practice`, `teacher-in-class`, `family-class`, `family-approval`, `second-parent`, `extra-child-price` and `practice-profiles`.
 
 ## Settled decisions to keep
 

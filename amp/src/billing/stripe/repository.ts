@@ -70,7 +70,7 @@ export class StripeRepository {
   ): Promise<boolean> {
     return !!(
       await client.query(
-        "SELECT 1 FROM amp_learners l WHERE l.id=$1 AND l.account_id=$2 AND l.deleted_at IS NULL AND COALESCE((to_jsonb(l)->>'adult')::boolean,false)",
+        "SELECT 1 FROM amp_learners l WHERE l.id=$1 AND l.account_id=$2 AND l.deleted_at IS NULL AND COALESCE((to_jsonb(l)->>'adult')::boolean,false) AND NOT COALESCE((to_jsonb(l)->>'simulation')::boolean,false)",
         [learnerId, accountId],
       )
     ).rowCount;
@@ -98,8 +98,10 @@ export class StripeRepository {
     accountId: string,
     learnerId: string,
   ): Promise<PurchaseFor> {
+    // A practice profile is never bought for: the account's access covers
+    // it (docs/families.md), so it isn't a learner a purchase can name.
     const learner = await client.query(
-      "SELECT account_id FROM amp_learners WHERE id=$1 AND deleted_at IS NULL FOR SHARE",
+      "SELECT account_id FROM amp_learners l WHERE id=$1 AND deleted_at IS NULL AND NOT COALESCE((to_jsonb(l)->>'simulation')::boolean,false) FOR SHARE",
       [learnerId],
     );
     if (
