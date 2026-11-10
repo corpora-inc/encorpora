@@ -89,12 +89,26 @@
   gap: var(--space-2);
 }
 .inlineAction {
+  position: relative;
   padding: 0;
+  border: 0;
+  /* Text in the sentence, not the default filled button. */
+  background: none;
   color: var(--color-primary);
   font: inherit;
   font-weight: 600;
   text-decoration: underline;
   cursor: pointer;
+}
+/* A 44 px target around the words, without changing the line. */
+.inlineAction::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: max(100%, 44px);
+  height: 44px;
+  transform: translate(-50%, -50%);
 }
 /* Rail foot and org name. */
 button.accountTrigger {

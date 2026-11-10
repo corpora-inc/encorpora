@@ -126,6 +126,11 @@ class FactsCorpus:
             'mental-ten-hundred': {'up-10', 'down-10', 'up-100', 'down-100', 'cross-hundred-up', 'cross-hundred-down'},
         }
         for name, tags in required.items():
-            missing = tags - self.seen.get(name, set())
+            # mental-ten-hundred is now served wholly as its clause variant
+            # (clause-variants.ts, hardened): no classic case to cover, and
+            # the clause oracle reviews every case it has.
+            if name not in self.seen:
+                continue
+            missing = tags - self.seen[name]
             require(not missing, f'{name} never reaches {sorted(missing)}')
         return {name: len(tags) for name, tags in sorted(self.seen.items())}

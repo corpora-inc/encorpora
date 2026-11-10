@@ -1,6 +1,5 @@
 import { secureChromium } from "../browser-security.mjs";
 import { leaveSettings } from "./ui-controls";
-import { exitPractice } from "./ui-practice";
 import { createOTP } from "@better-auth/utils/otp";
 import { base32 } from "@better-auth/utils/base32";
 import assert from "node:assert/strict";
@@ -179,13 +178,15 @@ try {
   await page.getByLabel("Email").fill(email);
   await page.getByLabel("Password").fill(password);
   await page.getByRole("button", { name: "Create account" }).click();
-  await page.getByRole("heading", { name: "Your account is ready" }).waitFor();
-  await page.getByRole("link", { name: "Continue setup" }).click();
-  await page.getByLabel("Learner name").fill("Sample learner");
+  // A new account answers the starter (#2100); a parent gives a child's birth
+  // year and lands on the family class. verify-journeys-ui owns that path.
+  await page
+    .getByRole("heading", { name: "What brings you to AMP?" })
+    .waitFor();
+  await page.getByRole("link", { name: /^I’m a parent/ }).click();
+  await page.getByRole("button", { name: "Birth year, your child" }).click();
+  await page.getByRole("option", { name: "2016", exact: true }).click();
   await page.getByRole("button", { name: "Continue", exact: true }).click();
-  await page.getByRole("button", { name: "2016", exact: true }).click();
-  await page.locator(".problem-stage").waitFor();
-  await exitPractice(page);
   await signedIn(page, email);
 
   // Sign out, then back in; a wrong password is reported in place.

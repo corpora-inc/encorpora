@@ -287,8 +287,20 @@ export function generateSlopeCriteriaProof(
       [px - b, py],
       [px - b, py + a],
     ];
-    if (pts.some(([x, y]) => Math.abs(x) > 6 || Math.abs(y) > 6))
-      return generateSlopeCriteriaProof(templateId, `${seed}~`);
+    if (pts.some(([x, y]) => Math.abs(x) > 6 || Math.abs(y) > 6)) {
+      // A redraw changes only the numbers: the problem keeps its own seed.
+      const again = generateSlopeCriteriaProof(templateId, `${seed}~`);
+      return {
+        ...again,
+        public: {
+          ...again.public,
+          id: createHash("sha256")
+            .update(JSON.stringify([templateId, 1, seed]))
+            .digest("hex"),
+          seed,
+        },
+      };
+    }
     steps = perpSteps(a, b);
     prompt = `Line l through P(${px}, ${py}) has run ${a} and rise ${b}, so its slope is ${b}/${a}. Line m is l turned 90 degrees about P. Complete the proof that the slope of m is -${a}/${b}. Choose that slope as a number too.`;
     scene = graph({ id: "g", x: [-6, 6], y: [-6, 6], grid: 1, aspect: 1 })

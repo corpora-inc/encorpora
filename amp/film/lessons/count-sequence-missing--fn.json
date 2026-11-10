@@ -1,0 +1,1321 @@
+{
+  "id": "count-sequence-missing--fn",
+  "title": "Find the missing count",
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -0.5,
+          -0.9,
+          11.6,
+          12.4
+        ],
+        "points": {
+          "F1": [
+            0.4,
+            8.55
+          ],
+          "F2": [
+            0.4,
+            5.4
+          ],
+          "F3": [
+            0.4,
+            2.25
+          ],
+          "N": [
+            10.05,
+            7.17
+          ],
+          "T10": [
+            2,
+            10.05
+          ],
+          "T20": [
+            4.7,
+            10.05
+          ],
+          "T30": [
+            7.4,
+            10.05
+          ]
+        },
+        "parts": [
+          {
+            "id": "fa",
+            "start": true,
+            "grid": [
+              5,
+              2
+            ],
+            "at": "F1",
+            "size": [
+              1.52,
+              1.38
+            ]
+          },
+          {
+            "id": "fb",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "F2",
+            "size": [
+              1.52,
+              1.38
+            ]
+          },
+          {
+            "id": "fc",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "F3",
+            "size": [
+              1.52,
+              1.38
+            ]
+          },
+          {
+            "id": "da",
+            "counters": "fa",
+            "n": 10,
+            "ink": "accent"
+          },
+          {
+            "id": "db",
+            "counters": "fb",
+            "n": 10,
+            "ink": "accent"
+          },
+          {
+            "id": "dc",
+            "counters": "fc",
+            "n": 10,
+            "ink": "accent"
+          },
+          {
+            "id": "cnt",
+            "label": "@n",
+            "at": "N",
+            "dir": "c",
+            "ink": "accent",
+            "size": "xl",
+            "of": "fa"
+          },
+          {
+            "id": "n10",
+            "label": "10",
+            "at": "T10",
+            "dir": "c",
+            "ink": "accent",
+            "size": "xl"
+          },
+          {
+            "id": "n20",
+            "label": "20",
+            "at": "T20",
+            "dir": "c",
+            "ink": "accent",
+            "size": "xl"
+          },
+          {
+            "id": "n30",
+            "label": "30",
+            "at": "T30",
+            "dir": "c",
+            "ink": "accent",
+            "size": "xl"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "This box has ten spaces.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "fa",
+              "at": "ten"
+            }
+          ]
+        },
+        {
+          "say": "Five spaces on top. Five spaces below.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "fa",
+              "at": "Five"
+            }
+          ]
+        },
+        {
+          "say": "One, two, three, four, five.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "cnt",
+                "da1"
+              ],
+              "at": "One"
+            },
+            {
+              "do": "show",
+              "target": "da2",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "da3",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "da4",
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": "da5",
+              "at": "five"
+            }
+          ]
+        },
+        {
+          "say": "Six, seven, eight, nine, ten.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "da6",
+              "at": "Six"
+            },
+            {
+              "do": "show",
+              "target": "da7",
+              "at": "seven"
+            },
+            {
+              "do": "show",
+              "target": "da8",
+              "at": "eight"
+            },
+            {
+              "do": "show",
+              "target": "da9",
+              "at": "nine"
+            },
+            {
+              "do": "show",
+              "target": "da10",
+              "at": "ten"
+            }
+          ]
+        },
+        {
+          "say": "Ten ones fill the box.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "fa",
+              "at": "fill"
+            }
+          ]
+        },
+        {
+          "say": "Ten ones make one ten.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "text",
+              "text": "Ten ones make one ten.",
+              "id": "ones",
+              "at": "Ten"
+            },
+            {
+              "do": "hide",
+              "target": "cnt",
+              "at": "one"
+            },
+            {
+              "do": "show",
+              "target": "n10",
+              "at": "ten",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "Count by tens means one more full box each time.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "term",
+              "word": "count by tens",
+              "meaning": "One more full box each time.",
+              "id": "byten",
+              "at": "tens"
+            }
+          ]
+        },
+        {
+          "say": "One more full box. The count is twenty.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "fb",
+                "db"
+              ],
+              "at": "more"
+            },
+            {
+              "do": "show",
+              "target": "n20",
+              "at": "twenty"
+            }
+          ]
+        },
+        {
+          "say": "One more full box. The count is thirty.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "fc",
+                "dc"
+              ],
+              "at": "more"
+            },
+            {
+              "do": "show",
+              "target": "n30",
+              "at": "thirty"
+            }
+          ]
+        },
+        {
+          "say": "Start from the number you have. Do not go back to one.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "n10",
+                "n20",
+                "n30"
+              ],
+              "at": "Start"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.45,
+          0.1,
+          14,
+          7.55
+        ],
+        "points": {
+          "R": [
+            0.3,
+            6.85
+          ],
+          "G": [
+            6.9,
+            6.85
+          ],
+          "C1": {
+            "cell": [
+              "row",
+              1
+            ]
+          },
+          "C2": {
+            "cell": [
+              "row",
+              2
+            ]
+          },
+          "C3": {
+            "cell": [
+              "row",
+              3
+            ]
+          },
+          "C4": {
+            "cell": [
+              "row",
+              4
+            ]
+          },
+          "F": [
+            3.25,
+            4.2
+          ],
+          "U": [
+            11.05,
+            4.2
+          ],
+          "P": [
+            3.15,
+            4.78
+          ],
+          "Q": [
+            4.45,
+            4.78
+          ],
+          "N": [
+            1.65,
+            2.92
+          ],
+          "M": [
+            11.76,
+            2.15
+          ],
+          "W": [
+            6.8,
+            0.72
+          ]
+        },
+        "parts": [
+          {
+            "id": "row",
+            "start": true,
+            "grid": [
+              4,
+              1
+            ],
+            "at": "R",
+            "size": [
+              3.3,
+              1.62
+            ]
+          },
+          {
+            "id": "gap",
+            "start": true,
+            "grid": [
+              1,
+              1
+            ],
+            "at": "G",
+            "size": [
+              3.3,
+              1.62
+            ],
+            "ink": "gold",
+            "w": 8
+          },
+          {
+            "id": "fa",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "F",
+            "size": [
+              1.42,
+              1.28
+            ]
+          },
+          {
+            "id": "da",
+            "counters": "fa",
+            "n": 10,
+            "ink": "accent"
+          },
+          {
+            "id": "one",
+            "grid": [
+              1,
+              1
+            ],
+            "at": "U",
+            "size": [
+              1.42,
+              1.28
+            ],
+            "ink": "warm"
+          },
+          {
+            "id": "db",
+            "counters": "one",
+            "n": 1,
+            "shape": "square",
+            "ink": "warm"
+          },
+          {
+            "id": "step",
+            "vector": [
+              "P",
+              "Q"
+            ],
+            "ink": "gold",
+            "w": 8
+          },
+          {
+            "id": "k30",
+            "start": true,
+            "label": "30",
+            "at": "C1",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "halo": true
+          },
+          {
+            "id": "k40",
+            "start": true,
+            "label": "40",
+            "at": "C2",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "halo": true
+          },
+          {
+            "id": "k41",
+            "label": "41",
+            "at": "C3",
+            "dir": "c",
+            "ink": "warm",
+            "size": "l",
+            "halo": true
+          },
+          {
+            "id": "k50",
+            "label": "50",
+            "at": "C3",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "halo": true
+          },
+          {
+            "id": "k60",
+            "start": true,
+            "label": "60",
+            "at": "C4",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "halo": true
+          },
+          {
+            "id": "cnt",
+            "label": "@n",
+            "at": "N",
+            "dir": "c",
+            "ink": "accent",
+            "size": "xl",
+            "of": "fa"
+          },
+          {
+            "id": "oneN",
+            "label": "@n",
+            "at": "M",
+            "dir": "c",
+            "ink": "warm",
+            "size": "xl",
+            "of": "one"
+          },
+          {
+            "id": "cap",
+            "label": "\\text{one ten}",
+            "at": "W",
+            "dir": "c",
+            "ink": "accent",
+            "size": "m"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Count by tens. Thirty, forty, an empty square, sixty.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Count by tens: $30, 40, \\square, 60$. What number is missing?",
+              "id": "prob",
+              "at": "Count"
+            },
+            {
+              "do": "highlight",
+              "target": "gap",
+              "at": "empty"
+            }
+          ]
+        },
+        {
+          "say": "What number is missing?",
+          "pause": 0.8,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "term",
+              "word": "missing",
+              "meaning": "Left out. The empty square holds that number.",
+              "id": "miss",
+              "at": "missing"
+            }
+          ]
+        },
+        {
+          "say": "The step is one full box. Ten counters.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "text",
+              "text": "The step is one full box.",
+              "id": "step",
+              "at": "step"
+            },
+            {
+              "do": "show",
+              "target": [
+                "fa",
+                "da",
+                "cnt",
+                "cap"
+              ],
+              "at": "Ten"
+            }
+          ]
+        },
+        {
+          "say": "From thirty to forty, one full box arrived.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "step",
+              "at": "thirty"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "k30",
+                "k40"
+              ],
+              "at": "forty"
+            }
+          ]
+        },
+        {
+          "say": "Forty-one. That is one more than forty.",
+          "pause": 0.7,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "show",
+              "target": "k41",
+              "at": "Forty-one"
+            },
+            {
+              "do": "show",
+              "target": [
+                "one",
+                "db",
+                "oneN"
+              ],
+              "at": "one"
+            }
+          ]
+        },
+        {
+          "say": "Look. A full box has ten counters.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "fa",
+                "cnt"
+              ],
+              "at": "ten"
+            }
+          ]
+        },
+        {
+          "say": "Forty-one is one counter. One is not ten.",
+          "pause": 0.8,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "one",
+                "oneN"
+              ],
+              "at": "one"
+            }
+          ]
+        },
+        {
+          "say": "Forty-one is the next number when you count by ones.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "k41",
+                "one",
+                "db",
+                "oneN"
+              ],
+              "at": "Forty-one"
+            },
+            {
+              "do": "highlight",
+              "target": "fa",
+              "at": "ones"
+            }
+          ]
+        },
+        {
+          "say": "This count is by tens. Start at forty, not at one.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "text",
+              "text": "Start at $\\ca{40}$.",
+              "id": "from",
+              "at": "forty"
+            },
+            {
+              "do": "move",
+              "points": {
+                "P": [
+                  6.4,
+                  4.78
+                ],
+                "Q": [
+                  7.7,
+                  4.78
+                ]
+              },
+              "at": "Start"
+            }
+          ]
+        },
+        {
+          "say": "Forty and one full box is fifty.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": "gap",
+              "at": "Fifty"
+            },
+            {
+              "do": "show",
+              "target": "k50",
+              "at": "fifty"
+            },
+            {
+              "do": "text",
+              "text": "One full box more is $\\ca{50}$.",
+              "id": "got",
+              "at": "fifty"
+            }
+          ]
+        },
+        {
+          "say": "Check. Fifty and one full box is sixty.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "P": [
+                  9.7,
+                  4.78
+                ],
+                "Q": [
+                  11.05,
+                  4.78
+                ]
+              },
+              "at": "Check"
+            },
+            {
+              "do": "highlight",
+              "target": "k60",
+              "at": "sixty"
+            },
+            {
+              "do": "text",
+              "text": "One more full box lands on $\\ca{60}$.",
+              "id": "chk",
+              "at": "sixty"
+            }
+          ]
+        },
+        {
+          "say": "The missing number is fifty.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "answer",
+              "tex": "50",
+              "id": "ans",
+              "at": "fifty"
+            },
+            {
+              "do": "watch",
+              "text": "For tens, add one full box. One counter means count by ones.",
+              "id": "see",
+              "at": "missing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.55,
+          -0.75,
+          14.4,
+          7.9
+        ],
+        "points": {
+          "R": [
+            0.25,
+            7.2
+          ],
+          "G": [
+            6.85,
+            7.2
+          ],
+          "C1": {
+            "cell": [
+              "row",
+              1
+            ]
+          },
+          "C2": {
+            "cell": [
+              "row",
+              2
+            ]
+          },
+          "C3": {
+            "cell": [
+              "row",
+              3
+            ]
+          },
+          "C4": {
+            "cell": [
+              "row",
+              4
+            ]
+          },
+          "F": [
+            3.15,
+            3.85
+          ],
+          "E": [
+            11.15,
+            2.5
+          ],
+          "N": [
+            1.35,
+            3.25
+          ],
+          "Cap": [
+            1.35,
+            1.4
+          ],
+          "Bad": [
+            8.5,
+            4.7
+          ],
+          "Ten": [
+            6.8,
+            0.35
+          ]
+        },
+        "parts": [
+          {
+            "id": "row",
+            "start": true,
+            "grid": [
+              4,
+              1
+            ],
+            "at": "R",
+            "size": [
+              3.3,
+              1.5
+            ]
+          },
+          {
+            "id": "gap",
+            "start": true,
+            "grid": [
+              1,
+              1
+            ],
+            "at": "G",
+            "size": [
+              3.3,
+              1.5
+            ],
+            "ink": "gold",
+            "w": 8
+          },
+          {
+            "id": "fd",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "F",
+            "size": [
+              1.48,
+              1.32
+            ]
+          },
+          {
+            "id": "be",
+            "grid": [
+              1,
+              1
+            ],
+            "at": "E",
+            "size": [
+              1.48,
+              1.32
+            ],
+            "ink": "accent"
+          },
+          {
+            "id": "d8",
+            "counters": "fd",
+            "n": 8,
+            "ink": "accent"
+          },
+          {
+            "id": "d9",
+            "counters": "fd",
+            "n": 1,
+            "from": 9,
+            "ink": "accent"
+          },
+          {
+            "id": "d10",
+            "counters": "fd",
+            "n": 1,
+            "from": 10,
+            "ink": "accent"
+          },
+          {
+            "id": "extra",
+            "counters": "be",
+            "n": 1,
+            "ink": "accent"
+          },
+          {
+            "id": "k38",
+            "start": true,
+            "label": "38",
+            "at": "C1",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "halo": true
+          },
+          {
+            "id": "k39",
+            "start": true,
+            "label": "39",
+            "at": "C2",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "halo": true
+          },
+          {
+            "id": "bad",
+            "label": "\\text{thirty-ten}",
+            "at": "Bad",
+            "dir": "c",
+            "ink": "warm",
+            "size": "s"
+          },
+          {
+            "id": "k40",
+            "label": "40",
+            "at": "C3",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "halo": true
+          },
+          {
+            "id": "k41",
+            "start": true,
+            "label": "41",
+            "at": "C4",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "halo": true
+          },
+          {
+            "id": "tens",
+            "label": "30",
+            "at": "N",
+            "dir": "c",
+            "ink": "accent",
+            "size": "xl"
+          },
+          {
+            "id": "cap",
+            "label": "\\text{three tens}",
+            "at": "Cap",
+            "dir": "c",
+            "ink": "accent",
+            "size": "s"
+          },
+          {
+            "id": "cnt",
+            "label": "@n",
+            "at": "Ten",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "of": "fd"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Count by ones. Thirty-eight, thirty-nine, an empty square, forty-one.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Count by ones: $38, 39, \\square, 41$. What number is missing?",
+              "id": "prob3",
+              "at": "Count"
+            },
+            {
+              "do": "highlight",
+              "target": "gap",
+              "at": "empty"
+            }
+          ]
+        },
+        {
+          "say": "What number is missing?",
+          "pause": 0.7,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "gap",
+              "at": "missing"
+            }
+          ]
+        },
+        {
+          "say": "Count by ones means one more counter each time.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "text",
+              "text": "The step is one counter.",
+              "id": "step3",
+              "at": "one"
+            }
+          ]
+        },
+        {
+          "say": "Thirty is three full boxes.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "tens",
+                "cap"
+              ],
+              "at": "Thirty"
+            }
+          ]
+        },
+        {
+          "say": "Eight ones sit in the next box. That is thirty-eight.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "fd",
+                "d8",
+                "cnt"
+              ],
+              "at": "Eight"
+            },
+            {
+              "do": "highlight",
+              "target": "k38",
+              "at": "thirty-eight"
+            }
+          ]
+        },
+        {
+          "say": "One more counter makes thirty-nine.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "d9",
+              "at": "One"
+            },
+            {
+              "do": "highlight",
+              "target": "k39",
+              "at": "thirty-nine"
+            }
+          ]
+        },
+        {
+          "say": "Thirty-ten. The ones go up again.",
+          "pause": 0.7,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "show",
+              "target": "bad",
+              "at": "Thirty-ten"
+            }
+          ]
+        },
+        {
+          "say": "Test it. One more counter.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "d10",
+              "at": "One"
+            },
+            {
+              "do": "highlight",
+              "target": "d10",
+              "at": "counter"
+            }
+          ]
+        },
+        {
+          "say": "The box is full. Ten ones make one new ten.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": "bad",
+              "at": "full"
+            },
+            {
+              "do": "highlight",
+              "target": "fd",
+              "at": "Ten"
+            }
+          ]
+        },
+        {
+          "say": "Three tens and one new ten is forty.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "gap",
+                "cnt"
+              ],
+              "at": "forty"
+            },
+            {
+              "do": "show",
+              "target": "k40",
+              "at": "forty"
+            },
+            {
+              "do": "text",
+              "text": "Start at $\\ca{39}$. One more is $\\ca{40}$.",
+              "id": "got3",
+              "at": "forty"
+            }
+          ]
+        },
+        {
+          "say": "Check. One more counter after forty.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "be",
+                "extra"
+              ],
+              "at": "One"
+            }
+          ]
+        },
+        {
+          "say": "It does not fit in the full box. The next number is forty-one.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "k41",
+              "at": "forty-one"
+            },
+            {
+              "do": "text",
+              "text": "One more counter lands on $\\ca{41}$.",
+              "id": "chk3",
+              "at": "forty-one"
+            }
+          ]
+        },
+        {
+          "say": "The missing number is forty.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "answer",
+              "tex": "40",
+              "id": "ans3",
+              "at": "forty"
+            },
+            {
+              "do": "watch",
+              "text": "After nine ones, one more fills the box. Say the new ten.",
+              "id": "see3",
+              "at": "missing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "One step past the number before the empty square.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "overview",
+              "of": "prob",
+              "at": "One"
+            }
+          ]
+        },
+        {
+          "say": "Read the step. One counter, or one full box.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Read the step. One counter, or one full box.",
+              "marks": [
+                "step",
+                "step3"
+              ],
+              "at": "Read"
+            }
+          ]
+        },
+        {
+          "say": "Start at the number before the empty square. Do not start at one.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Start at the number before the empty square.",
+              "marks": [
+                "from",
+                "got3"
+              ],
+              "at": "Start"
+            }
+          ]
+        },
+        {
+          "say": "One step makes the missing number.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "recap",
+              "text": "One step makes the missing number.",
+              "marks": [
+                "got",
+                "ans"
+              ],
+              "at": "One"
+            }
+          ]
+        },
+        {
+          "say": "One more step lands on the next number.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "recap",
+              "text": "One more step lands on the next number.",
+              "marks": [
+                "chk",
+                "chk3"
+              ],
+              "at": "One"
+            }
+          ]
+        },
+        {
+          "say": "After nine ones, say the new ten.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "recap",
+              "text": "After nine ones, say the new ten.",
+              "marks": [
+                "see3"
+              ],
+              "at": "nine"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

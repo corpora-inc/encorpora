@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
-import { clauseTask, linesThroughPoints } from "./equation-clause";
+import { clauseTask, keepSeed, linesThroughPoints } from "./equation-clause";
 
 type Q = { n: number; d: number };
 type Point = [Q, Q];
@@ -481,9 +481,9 @@ export const generateLinearSystemProblem = (
     let last = "";
     for (let attempt = 0; attempt < 40; attempt++)
       try {
-        return linesThroughPoints(
-          meta,
-          attempt ? `${seed}#${attempt}` : seed,
+        return keepSeed(
+          linesThroughPoints(meta, attempt ? `${seed}#${attempt}` : seed),
+          seed,
         );
       } catch (error) {
         last = error instanceof Error ? error.message : "";

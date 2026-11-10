@@ -617,7 +617,9 @@ async function parentStarts(
   await context.close();
 }
 
-/** Neither teaching nor a parent with access: no place of their own. */
+/** Neither teaching nor a parent: every account may start its own practice
+ * ("I'm learning for myself"; account/repository adultPractice.eligible), so
+ * /me/start opens and /me leads there. */
 async function nobody(browser: Browser) {
   const context = await newContext(browser, 1280, "light");
   const page = await context.newPage();
@@ -630,11 +632,11 @@ async function nobody(browser: Browser) {
     "Quinn",
   );
   await page.goto(`${origin}/me/start`);
-  await page.waitForURL((at) => !at.pathname.startsWith("/me"));
-  check("no place, /me/start goes home", !path(page).startsWith("/me"));
+  await heading(page, "Where do you want to begin?");
+  check("no place yet, /me/start opens", path(page) === "/me/start");
   await page.goto(`${origin}/me`);
-  await page.waitForURL((at) => !at.pathname.startsWith("/me"));
-  check("no place, /me goes home", !path(page).startsWith("/me"));
+  await page.waitForURL((at) => at.pathname === "/me/start");
+  check("no place yet, /me starts", path(page) === "/me/start");
   await context.close();
 }
 

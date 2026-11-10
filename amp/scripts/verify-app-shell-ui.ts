@@ -468,7 +468,8 @@ async function verifyShell() {
     );
     await context.close();
   }
-  for (const id of ["account-ready", "workbooks"]) {
+  // Workbooks are on the one app shell, whose logo is the menu itself.
+  for (const id of ["account-ready"]) {
     // The branded bar keeps the wordmark beside the menu.
     const { page, context } = await open(
       id,

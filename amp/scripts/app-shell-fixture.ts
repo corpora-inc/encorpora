@@ -340,11 +340,11 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
     },
     {
       // Ads and email still link to /try: a visitor without an account
-      // signs up.
+      // signs up, under the free-practice heading.
       id: "try-start",
       path: "/try",
       state: "guest",
-      ready: heading(/Create your account/),
+      ready: heading(/Try AMP free/),
     },
     {
       id: "account-ready",

@@ -201,7 +201,10 @@ def read_plainly(check):
                 raise
             try:
                 return check(*readings, **kwargs)
-            except (ValueError, TypeError, KeyError, AttributeError, StopIteration) as fallback:
+            # The plain reading is only a second chance: however it fails
+            # (a lookup that finds no typeset span, say), the typeset
+            # reading's own error is the verdict.
+            except (ValueError, TypeError, KeyError, AttributeError, StopIteration, IndexError) as fallback:
                 raise original from fallback
         return check(*readings, **kwargs)
     check_typeset.__wrapped__ = check
@@ -1093,7 +1096,7 @@ def review(stream):
     print('Independent Algebra 1 function content: ' + json.dumps(review_linear_function_content()), file=sys.stderr)
     print('Independent quadratic-structure content: ' + json.dumps(review_quadratic_structure_content()), file=sys.stderr)
     print('Independent function-toolkit content: ' + json.dumps(review_function_toolkit_content()), file=sys.stderr)
-    print('Independent pattern/function content: ' + json.dumps(review_pattern_function_content()), file=sys.stderr)
+    print('Independent pattern/function content: ' + json.dumps(review_pattern_function_content(solve=solve_family)), file=sys.stderr)
     print('Independent equation content: ' + json.dumps(review_equation_content()), file=sys.stderr)
     print('Independent add-subtract coverage: ' + json.dumps(add_subtract_corpus.finish()), file=sys.stderr)
     print('Independent facts coverage: ' + json.dumps(facts_corpus.finish()), file=sys.stderr)
@@ -1114,7 +1117,7 @@ def review(stream):
     print('Independent percent-change review: ' + json.dumps(review_percent_change_content()), file=sys.stderr)
     print('Independent inequality worksheet/registry review: ' + json.dumps(review_inequality_content()), file=sys.stderr)
     print('Independent inequality coverage: ' + json.dumps(inequality_review.finish(count)), file=sys.stderr)
-    print('Independent linear-system coverage: ' + json.dumps(system_review.finish(count)), file=sys.stderr)
+    print('Independent linear-system coverage: ' + json.dumps(system_review.finish(count, legacy_counts)), file=sys.stderr)
     print('Independent linear-system worksheet/figure review: ' + json.dumps(review_linear_system_content()), file=sys.stderr)
     print('Independent right-triangle coverage: ' + json.dumps(right_triangles.finish(count, legacy_counts)), file=sys.stderr)
     print('Known polynomial choice shortcuts: ' + json.dumps(polynomial_shortcuts.finish(count)), file=sys.stderr)

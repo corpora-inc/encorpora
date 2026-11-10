@@ -226,10 +226,11 @@ try {
       assert.equal(await sheet.locator(".result-mark").textContent(), "→");
       await sheet.getByText("Skipped. Your progress is unchanged.").waitFor();
       await sheet.getByText("Answer:").waitFor();
-      assert.ok(
-        (await sheet.locator(".feedback-steps li").count()) > 0,
-        `${label}: the worked steps are shown`,
-      );
+      // Kinds that mark their answer in the problem keep the worked steps one
+      // "See why" away on stacked layouts (PracticeWorkspace deferSteps);
+      // those open after the sheet's own checks below.
+      const stepsInline =
+        (await sheet.locator(".feedback-steps li").count()) > 0;
       // No red: the sheet and its mark paint from neutral tokens.
       const paints = await sheet.evaluate((element) => {
         const style = getComputedStyle(element);
@@ -294,6 +295,16 @@ try {
         await freeUsed(learnerId),
         freeBefore + (SKIP_USES_FREE_PROBLEM ? 1 : 0),
         `${label}: the free allowance counts the skip`,
+      );
+
+      if (!stepsInline)
+        await page
+          .getByRole("button", { name: "See why", exact: true })
+          .click();
+      await page.locator(".feedback-steps li").first().waitFor();
+      assert.ok(
+        (await page.locator(".feedback-steps li").count()) > 0,
+        `${label}: the worked steps are shown`,
       );
 
       // Next continues with a new problem.

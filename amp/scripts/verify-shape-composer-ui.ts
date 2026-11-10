@@ -166,8 +166,10 @@ async function visibleLayout(page: Page, resolved = false) {
         innerHeight !== 844 ||
         resolved ||
         (stage.scrollHeight <= stage.clientHeight + 1 && stage.scrollTop === 0),
+      // The stage's content width: Linux Chromium reserves classic
+      // scrollbar gutters there (scrollbar-gutter), phones do not.
       boardUsesWidth:
-        resolved || innerWidth > 390 || board.width >= bounds.width - 2,
+        resolved || innerWidth > 390 || board.width >= stage.clientWidth - 2,
       outlineInset:
         target.x > view.x &&
         target.y > view.y &&

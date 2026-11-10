@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import type { Page } from "playwright";
 import { fillShapeStage } from "./ui-shape-composer";
 import type { ShapeAnswer } from "../src/math/shape-composer";
+import { stickKey, type PegBoardAnswer } from "../src/math/peg-board";
 import type { GeneratedProblem, PublicProblem } from "../src/math/contracts";
 import {
   generateProblem,
@@ -105,6 +106,18 @@ export async function preparePracticeAnswer(
     }
     if (schema.kind === "counter-builder") {
       await fillCounterBuilder(page, schema, response);
+      await page.getByRole("button", { name: "Check", exact: true }).click();
+      return;
+    }
+    if (schema.kind === "peg-board") {
+      // Each stick the board does not start with: its two pegs, in turn.
+      const given = new Set(schema.given.map(stickKey));
+      for (const stick of (JSON.parse(response) as PegBoardAnswer).sticks)
+        if (!given.has(stickKey(stick)))
+          for (const id of stick) {
+            await page.locator(`[data-peg="${id}"]`).focus();
+            await page.keyboard.press("Enter");
+          }
       await page.getByRole("button", { name: "Check", exact: true }).click();
       return;
     }
@@ -320,6 +333,16 @@ export function practiceResponse(solution: GeneratedProblem, correct: boolean) {
     if (schema.kind === "counter-builder") {
       const answer = JSON.parse(response);
       answer.sentence[3] = (answer.sentence[3] + 1) % 11;
+      return JSON.stringify(answer);
+    }
+    if (schema.kind === "peg-board") {
+      // One stick short: an open shape, graded wrong.
+      const answer = JSON.parse(response) as PegBoardAnswer;
+      const given = new Set(schema.given.map(stickKey));
+      const built = answer.sticks.filter(
+        (stick) => !given.has(stickKey(stick)),
+      );
+      answer.sticks = answer.sticks.filter((stick) => stick !== built.at(-1));
       return JSON.stringify(answer);
     }
     if (schema.kind === "line-plot-build")

@@ -93,3 +93,7 @@ Removing every approval writes an empty manifest, withdrawing all film links.
 If more than one edition of a problem type is approved, choose one on the review
 page before publishing. Review records, notes, voiced data and audio stay outside
 Git. Clients without `lesson-film-v1` receive written lessons only.
+
+Approvals without a screenplay committed in Git HEAD are reported and skipped.
+Commit those screenplays and rerun the command to include them. Uncommitted
+changes to an existing screenplay or mismatched reviewed media stop publication.

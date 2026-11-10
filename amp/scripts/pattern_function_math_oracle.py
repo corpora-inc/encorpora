@@ -554,7 +554,10 @@ WORKSHEET_BREADTH = {
     'related-patterns-relationship': lambda ps: has(ps, 'how many times') and has(ps, 'The patterns continue'),
     'dependent-variable-equation': lambda ps: has(ps, 'always') and has(ps, 'car') and has(ps, 'printer'),
     'dependent-variable-value': lambda ps: has(ps, 'How many hours') and has(ps, 'How old') and has(ps, 'How many pages'),
-    'compare-function-rates': lambda ps: all(has(ps, t) for t in ('the table', 'the graph', 'the equation', 'a description')),
+    # An equation is "given by the equation y = …" or, in the rate-pair
+    # variants, typeset directly ("Car B is given by $d = 51t$").
+    'compare-function-rates': lambda ps: all(has(ps, t) for t in ('the table', 'the graph', 'a description'))
+    and (has(ps, 'the equation') or has(ps, 'given by $')),
     'linear-function-choice': lambda ps: has(ps, 'not linear') and has(ps, 'a linear function?'),
 }
 
@@ -649,7 +652,9 @@ def review_figures(figures):
     return checked
 
 
-def review_pattern_function_content(data=None):
+def review_pattern_function_content(data=None, solve=None):
+    """`solve`: the inventory review's router. A worksheet can print a clause
+    variant this oracle does not read; the router's oracle checks it."""
     data = content(data)
     checked = 0
     for sheet in data['worksheets']:
@@ -660,9 +665,15 @@ def review_pattern_function_content(data=None):
         require(len(keys) == 12, 'Repeated worksheet problem')
         require(WORKSHEET_BREADTH[sheet['templateId']](prompts), 'Worksheet lacks required breadth: ' + sheet['templateId'])
         for p in problems:
-            solved = solve_pattern_function(p['public'])
+            try:
+                own = solve_pattern_function(p['public'])
+            except ValueError:
+                require(solve is not None, 'Unrecognized worksheet problem')
+                own = None
+            solved = own if own is not None else solve(p['public'])
             require((p['answer'] == solved) if isinstance(solved, str) else Fraction(p['answer']) == solved, 'Worksheet answer mismatch')
-            checked += review_problem(p)
+            if own is not None:
+                checked += review_problem(p)
     lessons = {lesson['id']: lesson for lesson in data['lessons']}
     require(set(lessons) == PATTERN_FUNCTION, 'Missing standalone lesson')
     for lesson in lessons.values():
