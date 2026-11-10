@@ -133,6 +133,8 @@ What exists: `grid` (a ten-frame is `[5, 2]`, a hundred chart `[10, 10]`, a path
 
 ### 4.1 `counters` that are things, in any arrangement, with a `count` that touches
 
+**Built, as the `things` part** ([AUTHORING.md](../../AUTHORING.md), "Things to count"). The drawings are the app's `things` scene component (24 kinds). A group sits in a row, a grid, a seeded scatter or a grid's cells; `count` finds its own words in the beat, lights one thing at a time, ticks the group's live count, and can slide each thing into another group; things also `arrive`, `leave` and are sent between groups. Still a proposal from the text below: the `circle` layout, `rearrange`, `settle`, and nearest-first order in a scatter.
+
 ```json
 { "id": "c", "counters": "fa", "n": 7, "shape": "dog", "ink": "accent",
   "layout": "scatter", "region": "R", "seed": 3 }

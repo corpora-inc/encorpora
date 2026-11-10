@@ -14,7 +14,7 @@ import { afterAll, beforeAll, expect, test } from "vitest";
 import { secureChromium } from "../browser-security.mjs";
 
 const FIX = fileURLToPath(new URL("./fixtures/frame/", import.meta.url));
-const FILMS = ["frequency-table-build--pr", "line-slope", "bar-chart-total", "decimal-line-point"];
+const FILMS = ["frequency-table-build--pr", "line-slope", "bar-chart-total", "decimal-line-point", "count-out-objects--things"];
 const STABLE = [...FILMS, "divide-facts--pf", "count-sequence-missing--fn", "flat-or-solid-name--md", "pick-flat-or-solid--as"];
 const VIEWS = [
   { width: 390, height: 844, layout: "tall" },
@@ -509,7 +509,7 @@ test("elements stay put unless a motion is authored, and a highlight does not co
             const rest = { l: cx - grown.width / k / 2, t: cy - grown.height / k / 2, r: cx + grown.width / k / 2, b: cy + grown.height / k / 2 };
             const gb = { l: grown.left, t: grown.top, r: grown.right, b: grown.bottom };
             for (const other of others) {
-              if (other.el === el || el.contains(other.el) || other.el.contains(el)) continue;
+              if (other.el === el || el.contains(other.el) || other.el.contains(el) || other.el.classList.contains("film-things-extent")) continue;
               const o = other.box;
               const ocx = (o.left + o.right) / 2, ocy = (o.top + o.bottom) / 2;
               if (ocx > rest.l && ocx < rest.r && ocy > rest.t && ocy < rest.b) continue;
