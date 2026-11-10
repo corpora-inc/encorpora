@@ -170,6 +170,7 @@ test(
           const batch = await post(`${path}/batches`, as(student.token), {
             templateId: "add-within-20",
             count: 1,
+            figureCapabilities: ["scenes-v1"],
           });
           assert.equal(batch.statusCode, 200);
           const problem = batch.json().problems[0];
