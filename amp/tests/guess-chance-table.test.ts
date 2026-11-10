@@ -16,7 +16,10 @@ test("the table holds each family's computed chance, including typed and mixed f
   // add-within-20 gained choice clauses, so a family that is still typed only.
   const typed = templates.find((t) => t.id === "prism-volume-edges")!;
   const answered = templates
-    .filter((t) => t.requiredResponseCapability)
+    .filter(
+      (t) =>
+        t.requiredResponseCapability || t.requiredResponseCapabilities?.length,
+    )
     .slice(0, 6);
   // These legacy typed families gained choice variants through different
   // extension paths; admission metadata alone cannot identify them.
@@ -45,7 +48,9 @@ test("a built server answers from the table without generating a problem", async
     "guess.mjs",
   );
   await build({
-    entryPoints: [new URL("../src/math/guess-chance.ts", import.meta.url).pathname],
+    entryPoints: [
+      new URL("../src/math/guess-chance.ts", import.meta.url).pathname,
+    ],
     bundle: true,
     platform: "node",
     format: "esm",

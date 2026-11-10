@@ -197,9 +197,10 @@ class RightTriangleCorpusReview:
         position = next(i for i, option in enumerate(options) if option['id'] == independent_answer)
         self.keys[category, position] += 1
 
-    def finish(self, count):
+    def finish(self, count, expected_counts=None):
         require(type(count) is int and count >= 256, 'Triangle review requires at least 256 cases per family')
-        require(all(self.counts[template] == count for template in RIGHT_TRIANGLE),
+        expected_counts = expected_counts or {}
+        require(all(self.counts[template] == expected_counts.get(template, count) for template in RIGHT_TRIANGLE),
                 'Incomplete right-triangle corpus')
         require(self.missing <= MISSING_DOMAIN and self.right <= RIGHT_DOMAIN,
                 'Observed case outside independent finite domain')
@@ -217,7 +218,7 @@ class RightTriangleCorpusReview:
             for i in range(3):
                 balanced(self.positions[category, i], self.unique_longest[category],
                          1/3, f'{category}/longest-side position {i}')
-        if count >= 4096:
+        if min(expected_counts.get(template, count) for template in RIGHT_TRIANGLE) >= 4096:
             require(self.missing == MISSING_DOMAIN and self.right == RIGHT_DOMAIN,
                     'Large triangle sweep omitted a finite missing-leg or right-triangle case')
         return {'casesPerFamily': count, 'missingLegPairs': len(self.missing),

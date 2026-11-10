@@ -19,13 +19,15 @@ const ids = addSubtractTemplates.map((t) => t.id);
 const parse = (text: string) => Number(text.replaceAll(",", ""));
 const numbersIn = (prompt: string) =>
   (prompt.match(/\d[\d,]*\d|\d/g) ?? []).map(parse);
+// These prompt and operand assertions describe the original numeric edition.
+// Current clause formats are checked separately below.
 const sample = (id: string, n = 300) =>
-  Array.from({ length: n }, (_, i) => generateProblem(id, `as-${i}`));
+  Array.from({ length: n }, (_, i) => generateProblem(id, `as-${i}`, 1));
 
-test("addition and subtraction families are deterministic, valid and exact", () => {
+test("version 1 addition and subtraction families are deterministic, valid and exact", () => {
   for (const id of ids)
     for (const [i, p] of sample(id).entries()) {
-      assert.deepEqual(p, generateProblem(id, `as-${i}`));
+      assert.deepEqual(p, generateProblem(id, `as-${i}`, 1));
       generatedProblemSchema.parse(p);
       assert.equal(templateRole(id), "assessment");
       assert.equal(p.public.response.kind, "number");
@@ -50,7 +52,7 @@ test("addition and subtraction families are deterministic, valid and exact", () 
     }
 });
 
-test("operands stay in each skill's range", () => {
+test("version 1 operands stay in each skill's range", () => {
   const bounds: Record<string, [number, number, number]> = {
     "add-two-digit-regroup": [10, 99, 100],
     "subtract-two-digit-regroup": [10, 100, 100],
@@ -72,7 +74,50 @@ test("operands stay in each skill's range", () => {
     });
 });
 
-test("hard cases appear: regrouping in each place, zeros, and controls", () => {
+test("current addition and subtraction formats preserve the arithmetic result", () => {
+  const formats = {
+    "add-three-digit": "multi-part-choice",
+    "subtract-three-digit": "multi-part-choice",
+    "add-multidigit": "structured-work",
+    "subtract-multidigit": "structured-work",
+  } as const;
+  for (const [id, format] of Object.entries(formats)) {
+    const seen = new Set<string>();
+    for (let i = 0; i < 120; i++) {
+      const seed = `as-current-${i}`;
+      const p = generateProblem(id, seed);
+      assert.deepEqual(p, generateProblem(id, seed));
+      generatedProblemSchema.parse(p);
+      const response = p.public.response;
+      seen.add(response.kind);
+      assert.ok(["number", format].includes(response.kind), id);
+      const [a, b] = numbersIn(p.public.prompt) as [number, number];
+      const expected = id.startsWith("add-") ? a + b : a - b;
+      let actual = Number(p.answer);
+      if (response.kind === "multi-part-choice") {
+        const key = JSON.parse(p.answer) as Record<string, string>;
+        const result = response.blanks.find((blank) =>
+          blank.id === (id.startsWith("add-") ? "sum" : "diff"),
+        )!;
+        actual = Number(
+          result.options.find((option) => option.id === key[result.id])!.label,
+        );
+      } else if (response.kind === "structured-work") {
+        const rows = JSON.parse(p.answer) as string[][];
+        actual = rows.reduce(
+          (sum, row, place) => sum + Number(row[0]) * 10 ** place,
+          0,
+        );
+      }
+      assert.equal(actual, expected, p.public.prompt);
+      assert.equal(gradeAnswer(p, p.answer), true);
+      assert.equal(gradeAnswer(p, "not-an-answer"), false);
+    }
+    assert.deepEqual([...seen].sort(), ["number", format].sort(), id);
+  }
+});
+
+test("version 1 hard cases appear: regrouping in each place, zeros, and controls", () => {
   const share = (id: string, has: (a: number, b: number) => boolean) =>
     sample(id, 400).filter((p) => {
       const [a, b] = numbersIn(p.public.prompt) as [number, number];
