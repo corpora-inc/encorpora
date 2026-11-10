@@ -26,11 +26,18 @@ import { MathText } from "./MathText";
 import {
   attachTerms,
   buildLibrary,
-  matchingTerms,
   visibleIds,
   type LibraryItem,
 } from "./lib/lesson-library";
 import { useUrlSearchText } from "./lib/url-search-text";
+import { lessonFilms } from "../content/lesson-films";
+import { buildCorpus, type SearchDoc } from "../search/corpus";
+import { useLessonSearch, type SearchResult } from "./lib/lesson-search";
+import {
+  resultKeys,
+  SearchResults,
+  type SearchActions,
+} from "./features/search/SearchResults";
 import styles from "./LessonLibrary.module.css";
 
 export type LibrarySkillRow = {
@@ -58,6 +65,31 @@ export function loadGlossary() {
     },
   );
   return glossaryRequest;
+}
+
+// The search corpus, built once per catalog and glossary (they keep their
+// identity for the session), so returning to Lessons is instant.
+let corpusCache:
+  { key: readonly unknown[]; docs: readonly SearchDoc[] } | undefined;
+function searchCorpus(
+  references: readonly Lesson[],
+  templates: readonly TemplateMetadata[],
+  skills: readonly LibrarySkillRow[],
+  glossary: readonly GlossaryEntry[],
+) {
+  const key = [references, templates, skills, glossary];
+  if (corpusCache?.key.every((part, i) => part === key[i]))
+    return corpusCache.docs;
+  const docs = buildCorpus({
+    lessons: references,
+    templates,
+    skills,
+    terms: glossary,
+    films: Object.values(lessonFilms),
+    bandOrder: gradeOrder,
+  });
+  corpusCache = { key, docs };
+  return docs;
 }
 
 type LibraryProps = {
@@ -229,14 +261,16 @@ function Library({
     [props.references, props.templates, props.skills],
   );
   const items = useMemo(() => attachTerms(base, glossary), [base, glossary]);
-  const shown = useMemo(
-    () => visibleIds(items, query, strand),
-    [items, query, strand],
+  // The library below lists by area only. A query shows ranked results in
+  // its place (the library stays mounted, hidden), so typing never
+  // re-renders the 2,000-odd library rows.
+  const shown = useMemo(() => visibleIds(items, "", strand), [items, strand]);
+  const docs = useMemo(
+    () =>
+      searchCorpus(props.references, props.templates, props.skills, glossary),
+    [props.references, props.templates, props.skills, glossary],
   );
-  const words = useMemo(
-    () => (query ? matchingTerms(glossary, query) : []),
-    [glossary, query],
-  );
+  const search = useLessonSearch(docs, query, strand);
   const bands = useMemo(() => {
     const byBand = new Map<string, LibraryItem[]>();
     for (const item of items) {
@@ -266,7 +300,7 @@ function Library({
   useEffect(
     // Unchanged when nothing is closed, so a keystroke re-renders no rows.
     () => setClosed((current) => (current.size ? new Set() : current)),
-    [query, strand],
+    [strand],
   );
   const lessonById = useMemo(
     () => new Map(props.references.map((lesson) => [lesson.id, lesson])),
@@ -301,15 +335,58 @@ function Library({
   // The field shows the whole query; the count names a long one shortened,
   // so the line stays within its two reserved lines.
   const named = query.length > 24 ? `${query.slice(0, 23).trimEnd()}…` : query;
+  const found = { lessons: 0, skills: 0, glossary: 0 };
+  for (const result of search.results) found[result.group]++;
+  // Each group holds its best 20; more than that reads "20+".
+  const many = (n: number, one: string, more: string) =>
+    n >= 20 ? `20+ ${more}` : plural(n, one, more);
+  const foundText = [
+    found.lessons && many(found.lessons, "lesson", "lessons"),
+    found.skills && many(found.skills, "skill", "skills"),
+    found.glossary && many(found.glossary, "math word", "math words"),
+  ].filter(Boolean) as string[];
   const summary = !query
     ? `${plural(lessons, "lesson", "lessons")} · ${plural(types, "problem type", "problem types")}`
-    : lessons + types
-      ? `${plural(lessons, "lesson", "lessons")} and ${plural(types, "problem type", "problem types")} match “${named}”`
-      : `Nothing matches “${named}”. Try fewer letters or another word.`;
+    : foundText.length
+      ? `${foundText.length > 1 ? `${foundText.slice(0, -1).join(", ")} and ${foundText[foundText.length - 1]}` : foundText[0]} match “${named}”`
+      : search.pending
+        ? `Searching for “${named}”…`
+        : `Nothing matches “${named}”. Try fewer letters or another word.`;
+  const input = useRef<HTMLInputElement>(null);
+  const resultList = useRef<HTMLDivElement>(null);
+  const navigateRef = useRef(navigate);
+  navigateRef.current = navigate;
+  const actions = useMemo<SearchActions>(() => {
+    const href = (result: SearchResult) =>
+      result.kind === "lesson"
+        ? `/lessons/${encodeURIComponent(result.target)}`
+        : result.kind === "type"
+          ? `/lessons?topic=${encodeURIComponent(result.target)}`
+          : result.kind === "film"
+            ? `/lessons/${encodeURIComponent(result.target)}/watch?from=${encodeURIComponent(window.location.pathname + window.location.search)}`
+            : `/pathways/${encodeURIComponent(result.target)}`;
+    return {
+      href,
+      open: (result, trigger) => {
+        if (result.kind === "lesson") openLesson(result.target, trigger);
+        else if (result.kind === "type") openTopic(result.target);
+        else navigateRef.current(href(result));
+      },
+    };
+  }, [openLesson, openTopic]);
+  const suggest = (words: string) => {
+    pinResults();
+    field.set(words);
+    input.current?.focus();
+  };
   return (
     <section className={`lesson-index ${styles.library}`} aria-label="Lessons">
       <h1 className={styles.title}>Lessons</h1>
-      <div ref={body} className={styles.body}>
+      <div
+        ref={body}
+        className={styles.body}
+        onKeyDown={(event) => resultKeys(event, input, resultList)}
+      >
         <div ref={controls} className={styles.bar} role="search">
           <label className={styles.search}>
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -317,6 +394,7 @@ function Library({
               <path d="m16 16 4.5 4.5" />
             </svg>
             <input
+              ref={input}
               type="search"
               className={styles.input}
               aria-label="Search lessons"
@@ -379,8 +457,37 @@ function Library({
         <p className={styles.summary} role="status" aria-live="polite">
           {summary}
         </p>
+        {query && (
+          <div ref={resultList}>
+            <SearchResults
+              results={search.results}
+              pending={search.pending}
+              actions={actions}
+            />
+            {!search.results.length && !search.pending && (
+              <div className={styles.suggestions}>
+                <p>Try one of these</p>
+                <ul>
+                  {[
+                    "fractions",
+                    "times tables",
+                    "order of operations",
+                    "area",
+                    "slope",
+                  ].map((words) => (
+                    <li key={words}>
+                      <button type="button" onClick={() => suggest(words)}>
+                        {words}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
         <Results
-          words={words}
+          hidden={!!query}
           bands={bands}
           shown={shown}
           closed={closed}
@@ -405,7 +512,7 @@ type Band = {
  * only, so typing re-renders the search bar and nothing else.
  */
 const Results = memo(function Results({
-  words,
+  hidden,
   bands,
   shown,
   closed,
@@ -414,7 +521,7 @@ const Results = memo(function Results({
   openLesson,
   openTopic,
 }: {
-  words: readonly GlossaryEntry[];
+  hidden: boolean;
   bands: readonly Band[];
   shown: ReadonlySet<string>;
   closed: ReadonlySet<string>;
@@ -424,16 +531,7 @@ const Results = memo(function Results({
   openTopic: (id: string) => void;
 }) {
   return (
-    <>
-      {words.length > 0 && (
-        <ul className={styles.words} aria-label="Math words">
-          {words.map((entry) => (
-            <li key={entry.id}>
-              <strong>{entry.term}</strong> <MathText text={entry.plain} />
-            </li>
-          ))}
-        </ul>
-      )}
+    <div hidden={hidden}>
       {bands.map(({ band, lessons: bandLessons, types: bandTypes }) => {
         const visibleLessons = bandLessons.filter((item) =>
           shown.has(`lesson:${item.id}`),
@@ -525,7 +623,7 @@ const Results = memo(function Results({
           </section>
         );
       })}
-    </>
+    </div>
   );
 });
 

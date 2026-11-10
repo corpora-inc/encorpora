@@ -175,23 +175,38 @@
   margin: 0;
   line-height: 1.5;
 }
-.words {
+/* No results: a few searches that always find lessons, as quiet chips. */
+.suggestions {
   display: grid;
   gap: var(--space-2);
-  margin: 0 0 var(--space-3);
+  padding: var(--space-2) 0 var(--space-6);
+}
+.suggestions p {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+}
+.suggestions ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
   padding: 0;
   list-style: none;
 }
-.words li {
-  padding: var(--space-3) var(--space-4);
-  border-radius: var(--radius-control);
-  background: var(--color-info);
-  color: var(--color-on-info);
-  font-size: 15px;
-  line-height: 1.5;
+.suggestions button {
+  min-height: 44px;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 999px;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  font: inherit;
+  white-space: nowrap;
 }
-.words strong {
-  margin-right: var(--space-1);
+.suggestions button:hover {
+  filter: none;
+  background: var(--color-surface-raised-hover);
 }
 .band {
   border-top: 1px solid var(--color-border);
