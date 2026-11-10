@@ -15,6 +15,7 @@ import { gradeName, levelDetails, levelRange } from "../learning/level-check";
 import { LevelAxis, levelPositionDescription } from "./ui/LevelChart";
 import { fitScale, LevelRange, LevelRangeStart } from "./ui/level-range";
 import { sessionOptions } from "./lib/query";
+import { useHeroAction } from "./lib/shell-slots";
 import { levelTrendOptions } from "./features/level/api";
 import { freeProblemsLeft } from "./lib/free-allowance";
 export { gradeName } from "../learning/level-check";
@@ -67,14 +68,20 @@ export function Home(props: Props) {
     props.birthYear != null && f
       ? ([f.expected - 0.5, f.expected + 0.5] as const)
       : null;
-  const go = props.go && (
+  // One Practice per screen: the bar's, once there is a level to read. On
+  // day 0 the page's own start is the one, and the bar's steps back. A
+  // labelled action that isn't Practice (a second parent's "Let … practice
+  // here") always stays: the bar has none for it.
+  const ownStart = !!props.go && !props.goLabel && !!f && !measured;
+  useHeroAction(ownStart);
+  const go = props.go && (props.goLabel || ownStart) && (
     <button
       className="go-button"
       disabled={props.busy}
       aria-busy={props.busy}
       onClick={props.go}
     >
-      {props.goLabel ?? (props.resuming ? "Continue" : "Go")}
+      {props.goLabel ?? (props.resuming ? "Continue" : "Start practicing")}
     </button>
   );
   const areas = f

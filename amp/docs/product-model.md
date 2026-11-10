@@ -77,12 +77,12 @@ Media, videos and ads carry no price; they lead to the Buy button.
   - "Invite a co-teacher", with a copyable link. A co-teacher teaches the class but doesn't invite other families or buy access.
   - The full class screens, as for any teacher (below), plus Calendar in the class tab row and Family in the drawer for learners, purchases, consent and privacy.
   - `/family/…`: settings, consent and billing.
-  - `/learners/$id/workbooks`: the learner’s workbooks, a Workbooks tab of their Progress group (Overview, Pathways, Inventory, Workbooks). The URL names the learner, and arriving there chooses them, so the group's other tabs are theirs too. Today's workbook is a sheet-of-paper preview with its options beside it (a sheet on phones).
+  - `/learners/$id/workbooks`: the learner’s workbooks: My practice's Workbooks tab for the adult's own; a child's keep the Progress tabs with Overview marked. The URL names the learner, and arriving there chooses them, so the group's other tabs are theirs too. A day's workbook opens in a sheet over the list (its own URL): the workbook as paper, then its options.
   - `/family/approvals/$id`: a parent approving another family's class.
 - **Adult practice:**
   - `/me/start`: choose where to begin.
   - `/me/profiles/new`: "Try a level…", a grade and pace (`?grade=4&pace=behind`), adjusted by strand and saved under a name; `/me/profiles/$id`: one profile's levels, name and Delete. Both from the place switcher under "My practice"; `/me` has one quiet link. A student's record adds "Try problems as this student".
-  - `/me`: their own practice, mathematics first and never their name: the level view (best guess, likely range, how it narrowed, every area with its error bar; before the first problem, the starting estimate and Start practicing), then quiet Workbooks, Print and "Practice as someone else", then 12 weeks of time, time by day and skill, objectives and recent work.
+  - `/me`: their own practice, mathematics first and never their name: one centred column titled "Where you are" (the free count quietly beside it on a wide screen), then the level view (best guess, likely range, every area with its error bar, and how the range narrowed once it really has; the working-level decimals only with grade numbers on). Before the first problem, the starting estimate and Start practicing, which stands in for the bar's Practice; after, the bar's Practice is the one. Then "This week" as a line (the 12-week strip from two weeks), objectives gained (kept once earned) and recent work, each once it has something. Cmd+P prints it as a report. My practice's tabs are Overview, Pathways, Inventory and Workbooks; "Practice as someone else" is in the drawer.
   - `/practice` and `/pathways`.
 - **Child:**
   - `/join`, `/join/$code` and `/join/$code/$person`: sign-in.

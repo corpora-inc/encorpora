@@ -175,12 +175,21 @@ function ShellBar({
       if (opening) setDrawerOpen(true);
     }
   }, [pendingFrame, opening, placesLoading, setDrawerOpen]);
+  const progress =
+    frame.kind === "progress"
+      ? progressTabs(context, me?.adultPractice?.learner?.id)
+      : [];
   const tabs =
     frame.kind === "progress" ? (
       <Tabs
         label="Progress"
-        items={progressTabs(context)}
-        active={frame.active}
+        items={progress}
+        // A child's workbooks keep the Overview marked: theirs has no tab.
+        active={
+          progress.some((tab) => tab.id === frame.active)
+            ? frame.active
+            : "overview"
+        }
       />
     ) : frame.kind === "account" ? (
       <Tabs label="Account" items={accountTabs} active={frame.active} />
@@ -266,8 +275,10 @@ function ProgressAction({
   me: SignedInMe | null;
 }) {
   const learnerId = useLearnerStore((state) => state.learnerId);
+  // A day-0 hero on the screen is its one Practice; the bar's holds its place.
+  const hero = useShellSlots((state) => state.heroAction);
   const target = practiceTarget(context, me, learnerId);
-  if (target === undefined)
+  if (target === undefined || (hero && target))
     return (
       <span
         className={bar.actionLink}

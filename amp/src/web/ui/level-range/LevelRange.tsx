@@ -63,6 +63,7 @@ export function LevelRange({
   action,
   footer,
   numbers = true,
+  decimals = numbers,
   who,
 }: {
   overall: Estimate;
@@ -84,6 +85,9 @@ export function LevelRange({
   /** Grade names and numbers; off where a learner's levels are hidden, which
    * leaves the bars, their bands and the learner's own grade. */
   numbers?: boolean;
+  /** The working level's decimals ("10.69", "8.02–13.00") beside the grade
+   * names: only where grade numbers are switched on. */
+  decimals?: boolean;
   /** The learner's name when someone else reads it. */
   who?: string;
 }) {
@@ -93,9 +97,10 @@ export function LevelRange({
     minSpan: 5,
     include: grade ? [...grade] : [],
   });
-  // The path says something once it has a few points; before that it would
-  // be a lone segment, so it waits.
-  const pathShown = answered >= PATH_FROM;
+  // The path says something once the range has really narrowed; before
+  // that it would be a lone segment or a flat band, so it waits.
+  const pathShown =
+    answered >= PATH_FROM && !!path && pathState === "ready" && narrowed(path);
   return (
     <section
       className={styles.view}
@@ -115,13 +120,17 @@ export function LevelRange({
               <span className={styles.bestName}>
                 {gradeName(overall.level)}
               </span>
-              <span className={styles.bestPoint}>{detail.point}</span>
+              {decimals && (
+                <span className={styles.bestPoint}>{detail.point}</span>
+              )}
             </p>
             <p className={styles.likely}>
               {words.likely(gradeName(from), gradeName(to))}
-              <span className={styles.likelyNumbers}>
-                {detail.from}–{detail.to}
-              </span>
+              {decimals && (
+                <span className={styles.likelyNumbers}>
+                  {detail.from}–{detail.to}
+                </span>
+              )}
             </p>
             <p className={styles.summary}>
               {words.summary(answered, gradeName(from), gradeName(to), who)}
@@ -147,6 +156,7 @@ export function LevelRange({
           scale={scale}
           grade={grade}
           numbers={numbers}
+          decimals={decimals}
         />
       </div>
       {pathShown && (
@@ -163,6 +173,18 @@ export function LevelRange({
 
 /** Answers before the path of the estimate is drawn: two steps of five. */
 const PATH_FROM = 10;
+/** Grades the likely range must have narrowed by for its path to be worth
+ * a chart. */
+const NARROWED_BY = 0.75;
+function narrowed(path: readonly PathPoint[]) {
+  const width = (point: PathPoint) => {
+    const [from, to] = likelyRange(point);
+    return to - from;
+  };
+  return (
+    path.length >= 3 && width(path[0]!) - width(path.at(-1)!) >= NARROWED_BY
+  );
+}
 
 /**
  * Every area as an error bar on one scale, the overall estimate first and
@@ -176,6 +198,7 @@ export function LevelRows({
   scale,
   grade = null,
   numbers = true,
+  decimals = numbers,
   overallEstimated = false,
   axis = true,
 }: {
@@ -185,13 +208,15 @@ export function LevelRows({
   scale: RangeScale;
   grade?: readonly [from: number, to: number] | null;
   numbers?: boolean;
+  /** Each row's likely range in numbers, at the row's end. */
+  decimals?: boolean;
   /** The overall estimate is a starting guess, drawn dashed. */
   overallEstimated?: boolean;
   axis?: boolean;
 }) {
   return (
     <>
-      <ul className={styles.rows}>
+      <ul className={`${styles.rows} ${decimals ? "" : styles.rowsBare}`}>
         <AreaRow
           area={{
             id: "",
@@ -202,6 +227,7 @@ export function LevelRows({
           scale={scale}
           grade={grade}
           numbers={numbers}
+          decimals={decimals}
           strong
         />
         {areas.map((area) => (
@@ -211,11 +237,12 @@ export function LevelRows({
             scale={scale}
             grade={grade}
             numbers={numbers}
+            decimals={decimals}
           />
         ))}
       </ul>
       {numbers && axis && (
-        <div className={styles.axisRow}>
+        <div className={`${styles.axisRow} ${decimals ? "" : styles.rowsBare}`}>
           <span />
           <LevelAxis scale={scale} />
           <span />
@@ -230,12 +257,14 @@ function AreaRow({
   scale,
   grade,
   numbers,
+  decimals,
   strong = false,
 }: {
   area: LevelRangeArea;
   scale: RangeScale;
   grade: readonly [number, number] | null;
   numbers: boolean;
+  decimals: boolean;
   strong?: boolean;
 }) {
   const [from, to] = likelyRange(area.estimate);
@@ -273,7 +302,9 @@ function AreaRow({
             ? strong
               ? "Starting"
               : "Not yet"
-            : `${from.toFixed(1)}–${to.toFixed(1)}`}
+            : decimals
+              ? `${from.toFixed(1)}–${to.toFixed(1)}`
+              : ""}
       </span>
     </li>
   );
