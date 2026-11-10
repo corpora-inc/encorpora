@@ -26,11 +26,11 @@ describe("resolveCast", () => {
     const before = JSON.stringify(play);
     const c = resolveCast(play, { teacher: "paul" });
     expect(c.named).toBe(true);
-    expect(c.roles.map((r) => [r.role, r.name, r.voice.id])).toEqual([
+    expect(c.roles.map((r) => [r.role, r.name, r.voice?.id])).toEqual([
       ["teacher", "Paul", "J3Ei0Lj6fAobhIqY5ySH"],
       ["learner", "Champ", "SYXbTJsLE7zmSjr1DchT"],
     ]);
-    expect(c.roles[1]!.voice.tag).toBe("[energetic]");
+    expect(c.roles[1]?.voice?.tag).toBe("[energetic]");
     expect(JSON.stringify(play)).toBe(before);
     expect(resolveCast(play, voiceBindings(c))).toEqual(c);
   });
@@ -52,7 +52,7 @@ describe("resolveCast", () => {
     expect(() => resolveCast(flat, { narrator: "champ" })).toThrow(/not approved for the narrator/);
     expect(() => approvedVoice("someone", "x")).toThrow(/not an approved voice/);
     expect(() => approvedVoice("constructor", "x")).toThrow(/not an approved voice/);
-    expect(Object.keys(APPROVED)).toHaveLength(4);
+    expect(Object.keys(APPROVED)).toEqual([NARRATOR_ID, "J3Ei0Lj6fAobhIqY5ySH", "SYXbTJsLE7zmSjr1DchT"]);
   });
   it("rejects people and voice bindings in the screenplay", () => {
     expect(scriptSchema.safeParse({ ...play, cast: { teacher: { voice: "paul" }, learner: {} } }).success).toBe(false);
