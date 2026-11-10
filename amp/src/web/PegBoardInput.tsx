@@ -115,21 +115,11 @@ export function PegBoardInput({
       <div className="peg-workbench">
         {r.copy && (
           <figure className="peg-reference">
-            <figcaption>Copy this shape</figcaption>
             <svg
               viewBox="0 0 100 100"
               role="img"
               aria-label={`Shape to copy. Corners at ${r.copy.pegs.map(pegName).join("; ")}. ${r.copy.allowRotation ? "You may turn it." : "Keep it the same way up."}`}
             >
-              {Array.from({ length: 25 }, (_, i) => (
-                <circle
-                  key={i}
-                  cx={position(i)[0]}
-                  cy={position(i)[1]}
-                  r="1.3"
-                  className="peg-reference-dot"
-                />
-              ))}
               {loopSticks(r.copy.pegs).map(([a, b], i) => (
                 <line
                   key={i}
@@ -138,6 +128,15 @@ export function PegBoardInput({
                   x2={position(b)[0]}
                   y2={position(b)[1]}
                   className="peg-reference-side"
+                />
+              ))}
+              {Array.from({ length: 25 }, (_, i) => (
+                <circle
+                  key={i}
+                  cx={position(i)[0]}
+                  cy={position(i)[1]}
+                  r="2.6"
+                  className="peg-reference-dot"
                 />
               ))}
             </svg>

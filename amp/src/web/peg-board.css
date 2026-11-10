@@ -25,6 +25,9 @@
   max-width: 290px;
   aspect-ratio: 1;
   flex: none;
+}
+.peg-board,
+.peg-reference {
   border-radius: var(--radius-panel);
   background: var(--color-surface-raised);
   box-shadow: inset 0 0 0 1px var(--color-border-strong);
@@ -37,7 +40,8 @@
   pointer-events: none;
   overflow: visible;
 }
-.peg-stick {
+.peg-stick,
+.peg-reference-side {
   stroke: var(--color-figure-accent);
   stroke-width: 3;
   stroke-linecap: round;
@@ -49,7 +53,8 @@
   pointer-events: stroke;
   cursor: pointer;
 }
-.peg-builder[data-skin="draw"] .peg-stick {
+.peg-builder[data-skin="draw"] .peg-stick,
+.peg-builder[data-skin="draw"] .peg-reference-side {
   stroke: var(--color-figure-ink);
   stroke-width: 1.3;
 }
@@ -137,23 +142,14 @@
   width: 128px;
   flex: none;
 }
-.peg-reference figcaption {
-  text-align: center;
-  font-size: 0.875rem;
-  line-height: 1.4;
-}
 .peg-reference svg {
   display: block;
   width: 100%;
 }
 .peg-reference-dot {
-  fill: var(--color-muted-text);
-}
-.peg-reference-side {
+  fill: var(--color-figure-warm);
   stroke: var(--color-figure-ink);
-  stroke-width: 2;
-  fill: none;
-  stroke-linecap: round;
+  stroke-width: 0.5;
 }
 .peg-board-form {
   display: grid;

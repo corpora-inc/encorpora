@@ -30,7 +30,7 @@ assert.ok(database, "AMP_TEST_DATABASE_URL required");
 assertTestDatabaseTarget(database);
 const engine = process.argv.includes("--webkit") ? "webkit" : "chromium",
   smoke = process.argv.includes("--smoke");
-const port = engine === "webkit" ? 4586 : 4584,
+const port = engine === "webkit" ? 4596 : 4584,
   baseUrl = `http://127.0.0.1:${port}`;
 const shots =
   process.env.AMP_EVIDENCE_DIR ??
@@ -171,9 +171,7 @@ try {
       await chooseLearner(page, learner.id);
       for (const variant of smoke
         ? ["square", "copy", "draw", "finish"]
-        : width === 390
-          ? [...fixtures.keys()]
-          : ["square", "count", "copy"])
+        : [...fixtures.keys()])
         for (const correct of [true, false]) {
           const p = structuredClone(fixtures.get(variant)!);
           p.public.id = randomUUID();
