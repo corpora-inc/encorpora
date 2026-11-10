@@ -61,7 +61,7 @@ export async function startAdultPractice(
 ): Promise<{ learnerId: string }> {
   return families.transaction(accountId, async (client) => {
     const existing = await client.query<{ id: string }>(
-      "SELECT id FROM amp_learners WHERE account_id=$1 AND adult AND deleted_at IS NULL",
+      "SELECT id FROM amp_learners WHERE account_id=$1 AND adult AND NOT simulation AND deleted_at IS NULL",
       [accountId],
     );
     if (existing.rows[0]) {
@@ -105,7 +105,7 @@ export async function readOwnPractice(
   const learner = await families.transaction(accountId, async (client) => {
     const own = (
       await client.query<{ id: string }>(
-        "SELECT id FROM amp_learners WHERE account_id=$1 AND adult AND deleted_at IS NULL",
+        "SELECT id FROM amp_learners WHERE account_id=$1 AND adult AND NOT simulation AND deleted_at IS NULL",
         [accountId],
       )
     ).rows[0];
@@ -118,7 +118,7 @@ export async function readOwnPractice(
          to_char(now() AT TIME ZONE COALESCE(l.timezone,'America/New_York'),'YYYY-MM-DD') AS today,
          (SELECT max(g.ends_at) FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active'
             AND g.starts_at<=now() AND g.ends_at>now()) AS "endsAt"
-       FROM amp_learners l WHERE l.account_id=$1 AND l.adult AND l.deleted_at IS NULL`,
+       FROM amp_learners l WHERE l.account_id=$1 AND l.adult AND NOT l.simulation AND l.deleted_at IS NULL`,
         [accountId],
       )
     ).rows[0];
@@ -189,7 +189,7 @@ export async function recordAdultActivity(
     `WITH live AS (
        SELECT l.id AS learner_id,COALESCE(l.timezone,'America/New_York') AS timezone,a.seen_at AS previous
        FROM amp_learners l JOIN amp_adult_activity a ON a.learner_id=l.id
-       WHERE l.account_id=$4 AND l.adult AND l.deleted_at IS NULL
+       WHERE l.account_id=$4 AND l.adult AND NOT l.simulation AND l.deleted_at IS NULL
        FOR UPDATE OF a
      ), room AS (
        SELECT LEAST($2::bigint,

@@ -16,6 +16,7 @@ import {
 } from "../../purchase-return";
 import styles from "./Navigation.module.css";
 import { secondParentChild } from "../second-parent/api";
+import { ProfilePlace } from "../profiles/ProfileBar";
 
 type Icon =
   | "learn"
@@ -73,6 +74,9 @@ export default function DrawerContents({
   const { account, learner } = view;
   const student = account?.account.kind === "student";
   const own = view.ownPractice;
+  // Practicing as one of their profiles: someone else's level, their own
+  // practice (features/profiles).
+  const profile = view.profile;
   const here = frame ?? shellFrame(location.pathname);
   const context = own ? "own" : "learner";
   const learnerChoices: ListboxOption[] = view.learners.map((l) => ({
@@ -157,21 +161,29 @@ export default function DrawerContents({
   const workbookLearner = location.pathname.match(
     /^\/learners\/([^/]+)\/workbooks/,
   );
-  const currentPlace = workbookLearner
-    ? workbookLearner[1] === account?.adultPractice?.learner?.id
-      ? "me"
-      : (`learner:${workbookLearner[1]}` as const)
-    : here?.kind === "class"
-      ? account?.familyClass?.classId === here.classId
-        ? "home"
-        : currentClass
-      : here?.kind === "school"
-        ? (`school:${here.org}` as const)
-        : own
-          ? "me"
-          : learner && (here?.kind === "progress" || here?.kind === "practice")
-            ? (`learner:${learner.id}` as const)
-            : "home";
+  const profileScreen = location.pathname.match(/^\/me\/profiles\/([^/]+)/);
+  const currentPlace = profileScreen
+    ? profileScreen[1] === "new"
+      ? ("try-level" as const)
+      : (`profile:${profileScreen[1]}` as const)
+    : workbookLearner
+      ? workbookLearner[1] === account?.adultPractice?.learner?.id
+        ? "me"
+        : (`learner:${workbookLearner[1]}` as const)
+      : here?.kind === "class"
+        ? account?.familyClass?.classId === here.classId
+          ? "home"
+          : currentClass
+        : here?.kind === "school"
+          ? (`school:${here.org}` as const)
+          : profile && here?.kind === "practice"
+            ? (`profile:${profile.id}` as const)
+            : own && !profile
+              ? "me"
+              : learner &&
+                  (here?.kind === "progress" || here?.kind === "practice")
+                ? (`learner:${learner.id}` as const)
+                : "home";
   const learnerName = own ? (view.learner?.name ?? "") : (learner?.name ?? "");
   const practiceLabel = view.learner || student ? "Practice" : "Get started";
   const practiceHref = view.practiceHref;
@@ -188,7 +200,9 @@ export default function DrawerContents({
               onNavigate={close}
             />
           )}
-          {learnerChoices.length > 1 && !own ? (
+          {profile ? (
+            <ProfilePlace onNavigate={close} />
+          ) : learnerChoices.length > 1 && !own ? (
             <ChoicePicker
               label="Current learner"
               placeholder="Choose a learner"
@@ -233,7 +247,9 @@ export default function DrawerContents({
           nav(practiceHref, practiceLabel, "learn", {
             current: here?.kind === "practice",
           })}
+        {/* A profile's progress is its practice; its levels are its editor. */}
         {hasProgress &&
+          !profile &&
           nav(overviewPath(context), "Progress", "level", {
             current: here?.kind === "progress",
           })}

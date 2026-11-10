@@ -5,7 +5,11 @@ import { hasAccountContext } from "../../lib/account-page";
 import { useLearnerStore } from "../../learner-store";
 import { nativeRuntime } from "../../native-runtime";
 import { useFamilyCache } from "../../lib/family-cache";
-import { practiceLearners, practicingAsAdult } from "../../lib/adult-learner";
+import {
+  practiceLearners,
+  practicingAsAdult,
+  practicingAsProfile,
+} from "../../lib/adult-learner";
 
 /** Resolve presentation identity without loading progress or assessment evidence. */
 export function useCurriculumScope() {
@@ -36,8 +40,10 @@ export function useCurriculumScope() {
     };
   }
   const account = me.data?.signedIn ? me.data : null;
-  // An adult always sees their own levels.
-  const own = practicingAsAdult(account, selected);
+  // An adult always sees their own levels, and a profile's.
+  const own =
+    practicingAsAdult(account, selected) ||
+    practicingAsProfile(account, selected);
   return {
     ...resolveCurriculumScope({
       session: session.data,

@@ -231,6 +231,24 @@ test(
         return { accepted: "practising" };
       });
 
+      // Practice profiles alone are no place: the link still starts free
+      // practice.
+      await parent("profiling");
+      await pool.query(
+        "INSERT INTO amp_learners(id,account_id,name,adult,simulation) VALUES($1,'amp|profiling','4th grade · behind',true,true)",
+        [randomUUID()],
+      );
+      let profiled = { to: "", text: "" };
+      await deliverParentFollowup(pool, config, async (mail) => {
+        profiled = mail;
+        return { accepted: "profiling" };
+      });
+      assert.equal(profiled.to, "profiling@example.com");
+      assert.match(
+        profiled.text,
+        /Continue free practice:\nhttps:\/\/amp\.example\.com\/sign-in\?return=free-practice/,
+      );
+
       const client = await pool.connect();
       let click;
       try {

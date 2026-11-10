@@ -310,6 +310,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     learners.find((entry) => entry.id === learnerId) ??
     childLearners[0] ??
     null;
+  // The adult's own learner, or one of their practice profiles: both learn
+  // on the account's own terms, with no birth year.
   const ownLearner = learner?.adult === true;
   const adjustments = usePracticeAdjustment({
     identity: accountId ?? "guest",
@@ -406,7 +408,13 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     !!learner &&
     !learnerEntry?.hasAccess &&
     (allowanceSpent || pausedFor === learner.id);
-  const pauseViewer = student ? "student" : ownLearner ? "adult" : "parent";
+  const pauseViewer = student
+    ? "student"
+    : learner?.simulation
+      ? "profile"
+      : ownLearner
+        ? "adult"
+        : "parent";
   const studentWaiting =
     student && !allowanceSpent && learnerEntry?.canPractice === false;
   const [family, setFamily] = useState(""),
@@ -1111,7 +1119,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         if (route.location.pathname !== "/practice") navigate("/practice");
       }
       // Otherwise learning is paused for consent; Family says why.
-      else if (!student) navigate(ownLearner ? "/me" : "/family/learners");
+      else if (!student)
+        navigate(
+          ownLearner && !learner.simulation ? "/me" : "/family/learners",
+        );
       return;
     }
     upcoming.current = null;
@@ -1458,7 +1469,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   if (student && (route.familyOpen || route.purchaseView || route.consentOpen))
     return <Navigate to="/" replace />;
   // The adult's home is their own record.
-  if (ownLearner && !nativeRuntime && route.location.pathname === "/")
+  if (
+    ownLearner &&
+    !learner?.simulation &&
+    !nativeRuntime &&
+    route.location.pathname === "/"
+  )
     return <Navigate to="/me" replace />;
   if (
     firstRunHome ||
@@ -2264,6 +2280,13 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             apply={adjustPractice}
             close={closeShellDrawer}
             canReset={!student}
+            resetFrom={
+              learner.simulation
+                ? "Start again from this profile’s levels."
+                : ownLearner
+                  ? "Start again from where you chose to begin."
+                  : undefined
+            }
           />,
           drawerSettings,
         )}

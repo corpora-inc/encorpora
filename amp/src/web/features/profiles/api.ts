@@ -1,0 +1,147 @@
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { useNavigate } from "@tanstack/react-router";
+import { z } from "zod";
+import type { SignedInMe } from "../../../account/contracts";
+import {
+  practiceProfileSchema,
+  type ProfileLevels,
+} from "../../../learning/practice-profiles";
+import type { AuthSession } from "../../auth";
+import { useLearnerStore } from "../../learner-store";
+import { practiceProfile } from "../../lib/adult-learner";
+import { request } from "../../lib/api";
+import { meOptions, refreshMe, sessionOptions } from "../../lib/query";
+
+/* Practice profiles (docs/families.md): the adult practicing as someone else.
+   Every change refreshes `/me`, the one store the switcher, the drawer and
+   practice read. */
+
+const created = z.object({ learnerId: z.string() });
+
+/** Practice as this profile: it becomes the learner practicing, and practice
+ * opens on it. The place they came from stays the one `/` remembers. */
+export function choosePracticeProfile(id: string) {
+  useLearnerStore.getState().select(id);
+}
+
+/** Saves a new profile and makes it the learner practicing. */
+export function useCreateProfile(session: AuthSession) {
+  return useMutation({
+    mutationFn: async (input: { label: string; levels: ProfileLevels }) => {
+      const { learnerId } = await request("/me/profiles", created, {
+        token: session.token,
+        body: input,
+      });
+      await refreshMe(session);
+      choosePracticeProfile(learnerId);
+      return learnerId;
+    },
+    onError: (error) => console.error("The profile wasn’t saved", error),
+  });
+}
+
+/** Renames a profile or moves its strands. */
+export function useUpdateProfile(session: AuthSession, id: string) {
+  return useMutation({
+    mutationFn: async (input: { label: string; levels: ProfileLevels }) => {
+      const saved = await request(
+        `/me/profiles/${encodeURIComponent(id)}`,
+        practiceProfileSchema,
+        { token: session.token, body: input, method: "PATCH" },
+      );
+      await refreshMe(session);
+      return saved;
+    },
+    onError: (error) => console.error("The profile wasn’t saved", error),
+  });
+}
+
+/** Deletes a profile and what it practiced. */
+export function useDeleteProfile(session: AuthSession, id: string) {
+  return useMutation({
+    mutationFn: async () => {
+      await request(`/me/profiles/${encodeURIComponent(id)}`, z.unknown(), {
+        token: session.token,
+        method: "DELETE",
+      });
+      await refreshMe(session);
+    },
+    onError: (error) => console.error("The profile wasn’t deleted", error),
+  });
+}
+
+/** "Try problems as this student": a profile of this account, copied once
+ * from a student's levels now, then practice as it. */
+export function useCopyStudent(session: AuthSession, personId: string) {
+  return useMutation({
+    mutationFn: async (label: string) => {
+      const { learnerId } = await request(
+        `/school/students/${encodeURIComponent(personId)}/practice-profile`,
+        created,
+        { token: session.token, body: { label } },
+      );
+      await refreshMe(session);
+      choosePracticeProfile(learnerId);
+      return learnerId;
+    },
+    onError: (error) =>
+      console.error("The student’s levels weren’t copied", error),
+  });
+}
+
+/** The label a copied student's profile starts with: never their name, which
+ * stays with their school or family. The adult can rename it. */
+export function copiedLabel(now = new Date()) {
+  return `Student levels · ${now.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+  })}`;
+}
+
+/** The way back from a profile: the adult's own practice, or their normal
+ * home when they have no learner of their own. */
+export function leaveTarget(me: SignedInMe | null | undefined) {
+  const own = me?.adultPractice?.learner ?? null;
+  // Without their own, the family's first child is chosen again, as `/`
+  // would choose.
+  const first = me?.learners[0]?.id ?? null;
+  return own
+    ? {
+        own: own.id,
+        first,
+        label: "Back to my own practice",
+        short: "My practice",
+      }
+    : { own: null, first, label: "Back home", short: "Home" };
+}
+
+/** The profile being practiced as, and the one tap back out of it. */
+export function usePracticingProfile() {
+  const session = useQuery(sessionOptions).data;
+  const me = useQuery({
+    ...meOptions(session ?? { accountId: "", token: "" }),
+    enabled: !!session,
+  }).data;
+  const account =
+    me?.signedIn && me.account.id === session?.accountId ? me : null;
+  const learnerId = useLearnerStore((state) => state.learnerId);
+  const profile = practiceProfile(account, learnerId);
+  const navigate = useNavigate();
+  const target = leaveTarget(account);
+  return {
+    profile,
+    back: target,
+    leave: () => {
+      const store = useLearnerStore.getState();
+      if (target.own) {
+        store.select(target.own);
+        void navigate({ to: "/$", params: { _splat: "practice" } });
+        return;
+      }
+      // Their normal home: the family's first child, if any, and `/` opens
+      // the place they work.
+      store.select(target.first);
+      void navigate({ to: "/" });
+    },
+  };
+}

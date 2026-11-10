@@ -3,6 +3,7 @@ import {
   revokeAdvertisingPermission,
 } from "../advertising/permission.js";
 import { refreshAdultAccess } from "../account/adult-access.js";
+import { profilesCovered } from "../account/practice-profiles.js";
 import { ensureFamilyClass, practiceHere } from "./family-class.js";
 import { cancelPendingConsent } from "../parent-consent/lifecycle.js";
 import {
@@ -87,7 +88,7 @@ export class FamilyRepository {
       const adult = (
         await client.query<{ id: string }>(
           `SELECT l.id FROM amp_learners l WHERE l.account_id=$1 AND l.deleted_at IS NULL
-           AND to_jsonb(l)->'adult'='true'::jsonb`,
+           AND to_jsonb(l)->'adult'='true'::jsonb AND NOT COALESCE((to_jsonb(l)->>'simulation')::boolean,false)`,
           [accountId],
         )
       ).rows[0];
@@ -100,10 +101,17 @@ export class FamilyRepository {
       ).rows[0];
       const learners = (
         await client.query(
-          "SELECT l.id,l.name,l.birth_year,l.sat_math_focus,l.deleted_at,l.name_pending,l.picture_identity,l.free_online_used,l.free_workbooks_used,EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()) AS has_access,COALESCE(to_jsonb(l)->'adult'='true'::jsonb,false) AS adult FROM amp_learners l WHERE l.account_id=$1 ORDER BY l.created_at,l.id",
+          "SELECT l.id,l.name,l.birth_year,l.sat_math_focus,l.deleted_at,l.name_pending,l.picture_identity,l.free_online_used,l.free_workbooks_used,EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()) AS has_access,COALESCE(to_jsonb(l)->'adult'='true'::jsonb,false) AS adult,COALESCE((to_jsonb(l)->>'simulation')::boolean,false) AS simulation FROM amp_learners l WHERE l.account_id=$1 AND NOT (COALESCE((to_jsonb(l)->>'simulation')::boolean,false) AND l.deleted_at IS NOT NULL) ORDER BY l.created_at,l.id",
           [accountId],
         )
       ).rows;
+      // Practice profiles have no grants: the account's own access covers
+      // them all (docs/families.md), read once.
+      if (learners.some((row) => row.simulation)) {
+        const covered = await profilesCovered(client, accountId);
+        for (const row of learners)
+          if (row.simulation) row.has_access = covered;
+      }
       const grants = (
         await client.query(
           "SELECT g.* FROM amp_grants g JOIN amp_learners l ON l.id=g.learner_id WHERE l.account_id=$1 ORDER BY g.starts_at,g.id",
@@ -202,6 +210,7 @@ export class FamilyRepository {
             permitted.has(row.id) &&
             (this.development || row.has_access || row.free_online_used < 100),
           ...(row.adult ? { adult: true as const } : {}),
+          ...(row.simulation ? { simulation: true as const } : {}),
           access: grants
             .filter((g) => g.learner_id === row.id)
             .map((g) => ({

@@ -92,9 +92,11 @@ export function WorkbookFrame({
       pauseViewer:
         data.account.kind === "student"
           ? "student"
-          : learner.adult
-            ? "adult"
-            : "parent",
+          : learner.simulation
+            ? "profile"
+            : learner.adult
+              ? "adult"
+              : "parent",
     });
   return (
     <main className={styles.page} aria-busy={!data || busy}>

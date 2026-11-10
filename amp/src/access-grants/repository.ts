@@ -95,7 +95,7 @@ async function grantFamilyChild(
 async function refreshFamilyAdult(db: PoolClient, accountId: string) {
   const adult = (
     await db.query<{ id: string }>(
-      "SELECT id FROM amp_learners WHERE account_id=$1 AND adult AND deleted_at IS NULL",
+      "SELECT id FROM amp_learners WHERE account_id=$1 AND adult AND NOT simulation AND deleted_at IS NULL",
       [accountId],
     )
   ).rows[0];
@@ -237,7 +237,8 @@ export async function activateGiftInTransaction(
     throw new AccessGiftError(403, "consent_required");
   if (learnerId !== undefined) {
     const learner = await db.query(
-      "SELECT id FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL FOR UPDATE",
+      // A practice profile has no access of its own: the account's covers it.
+      "SELECT id FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL AND NOT simulation FOR UPDATE",
       [learnerId, accountId],
     );
     if (!learner.rowCount)
