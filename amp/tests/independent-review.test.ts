@@ -1,7 +1,17 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { spawnSync } from "node:child_process";
-import { writeSync } from "node:fs";
+import {
+  closeSync,
+  mkdtempSync,
+  openSync,
+  readSync,
+  rmSync,
+  writeSync,
+} from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { StringDecoder } from "node:string_decoder";
 import { fileURLToPath } from "node:url";
 const root = fileURLToPath(new URL("../", import.meta.url));
 const exporter = fileURLToPath(
@@ -10,8 +20,9 @@ const exporter = fileURLToPath(
 const oracle = fileURLToPath(
   new URL("../scripts/independent-math-review.py", import.meta.url),
 );
-// The full inventory export exceeds 256 MiB; the cap only bounds child output.
-const maxBuffer = 1024 * 1024 * 1024;
+// Only stderr and the oracle's one-line summary come back as strings: the
+// export itself (over 512 MiB, past V8's longest string) stays in a file.
+const maxBuffer = 64 * 1024 * 1024;
 function timed<T>(name: string, run: () => T): T {
   const started = performance.now();
   writeSync(2, `[inventory] ${name}: started\n`);
@@ -22,35 +33,84 @@ function timed<T>(name: string, run: () => T): T {
     writeSync(2, `[inventory] ${name}: completed in ${seconds}s\n`);
   }
 }
-function review(name: string, input: string) {
-  return timed(name, () =>
-    spawnSync("python3", [oracle], {
-      cwd: root,
-      encoding: "utf8",
-      input,
-      maxBuffer,
-      // Hermetic: review:math rebuilds and reviews the print publications; here
-      // stale files on disk must neither fail nor pass this inventory test.
-      env: {
-        ...process.env,
-        AMP_PUBLICATIONS_DIR: "/nonexistent/amp-publications",
-      },
-    }),
-  );
+function review(name: string, input: string | { file: string }) {
+  const stdin = typeof input === "string" ? "pipe" : openSync(input.file, "r");
+  try {
+    return timed(name, () =>
+      spawnSync("python3", [oracle], {
+        cwd: root,
+        encoding: "utf8",
+        input: typeof input === "string" ? input : undefined,
+        stdio: [stdin, "pipe", "pipe"],
+        maxBuffer,
+        // Hermetic: review:math rebuilds and reviews the print publications; here
+        // stale files on disk must neither fail nor pass this inventory test.
+        env: {
+          ...process.env,
+          AMP_PUBLICATIONS_DIR: "/nonexistent/amp-publications",
+        },
+      }),
+    );
+  } finally {
+    if (typeof stdin === "number") closeSync(stdin);
+  }
+}
+/** The export's lines, one at a time, until `visit` returns true. */
+function scan(file: string, visit: (line: string, index: number) => boolean) {
+  const fd = openSync(file, "r");
+  const chunk = Buffer.alloc(1 << 20);
+  const decoder = new StringDecoder("utf8");
+  let rest = "",
+    index = 0,
+    read: number;
+  try {
+    while ((read = readSync(fd, chunk, 0, chunk.length, null)) > 0) {
+      const lines = (rest + decoder.write(chunk.subarray(0, read))).split("\n");
+      rest = lines.pop()!;
+      for (const line of lines) if (visit(line, index++)) return;
+    }
+    if (rest) visit(rest, index);
+  } finally {
+    closeSync(fd);
+  }
 }
 
-test("independent exact oracle checks the complete inventory and rejects corrupt or missing coverage", () => {
+test("independent exact oracle checks the complete inventory and rejects corrupt or missing coverage", (t) => {
+  const directory = mkdtempSync(join(tmpdir(), "amp-inventory-"));
+  t.after(() => rmSync(directory, { recursive: true, force: true }));
+  const file = join(directory, "cases.jsonl");
+  const output = openSync(file, "w");
   const exported = timed("export complete inventory", () =>
     spawnSync(process.execPath, ["--import", "tsx", exporter], {
       cwd: root,
       encoding: "utf8",
+      stdio: ["ignore", output, "pipe"],
       maxBuffer,
     }),
   );
+  closeSync(output);
   assert.equal(exported.status, 0, exported.stderr || String(exported.error));
-  const lines = exported.stdout.trimEnd().split("\n");
+  // The manifest, the first case, and one case of each family the
+  // rejections below corrupt.
+  const wanted = new Map([
+    ["graphed-line-slope", ""],
+    ["fraction-equivalence-choice", ""],
+  ]);
+  const lines: string[] = [];
+  scan(file, (line, index) => {
+    if (index < 2) lines.push(line);
+    else
+      for (const [id, found] of wanted)
+        if (
+          !found &&
+          line.includes(`"templateId":"${id}"`) &&
+          JSON.parse(line).problem.public.templateId === id
+        )
+          wanted.set(id, line);
+    return index >= 2 && [...wanted.values()].every(Boolean);
+  });
   const manifest = JSON.parse(lines[0]!);
-  const valid = review("accept complete inventory", exported.stdout);
+  const valid = review("accept complete inventory", { file });
   assert.equal(valid.status, 0, valid.stderr || String(valid.error));
   assert.deepEqual(JSON.parse(valid.stdout), {
     cases: manifest.templates.length * 256,
@@ -59,30 +119,24 @@ test("independent exact oracle checks the complete inventory and rejects corrupt
     seedStart: 0,
     mismatches: 0,
   });
+  // The oracle streams and stops at the first bad record, so each rejection
+  // needs only the manifest and that record.
+  const reject = (name: string, ...records: string[]) =>
+    review(name, [lines[0], ...records].join("\n") + "\n");
   const first = JSON.parse(lines[1]!);
-  const wrongAnswer = {
-    ...first,
-    problem: { ...first.problem, answer: "-999999" },
-  };
-  const corrupted = review(
+  const corrupted = reject(
     "reject wrong answer",
-    [lines[0], JSON.stringify(wrongAnswer), ...lines.slice(2)].join("\n") +
-      "\n",
+    JSON.stringify({
+      ...first,
+      problem: { ...first.problem, answer: "-999999" },
+    }),
   );
   assert.notEqual(corrupted.status, 0);
   assert.match(corrupted.stderr, /Mismatch/);
-  const missing = review(
-    "reject missing final record",
-    lines.slice(0, -1).join("\n") + "\n",
-  );
+  const missing = reject("reject missing coverage", lines[1]!);
   assert.notEqual(missing.status, 0);
   assert.match(missing.stderr, /Incomplete coverage/);
-  // Rejection checks need their adversarial record first, not another full
-  // successful pass through the cases that precede it in exporter order.
-  const duplicate = review(
-    "reject duplicate record",
-    [lines[0], lines[1], ...lines.slice(1)].join("\n") + "\n",
-  );
+  const duplicate = reject("reject duplicate record", lines[1]!, lines[1]!);
   assert.notEqual(duplicate.status, 0);
   assert.match(duplicate.stderr, /Duplicate case/);
   const unknown = review(
@@ -94,59 +148,32 @@ test("independent exact oracle checks the complete inventory and rejects corrupt
   );
   assert.notEqual(unknown.status, 0);
   assert.match(unknown.stderr, /inventory mismatch/);
-  const graphIndex = lines.findIndex(
-    (line, index) =>
-      index > 0 &&
-      JSON.parse(line).problem.public.templateId === "graphed-line-slope",
-  );
+  const graphLine = wanted.get("graphed-line-slope");
   assert.ok(
-    graphIndex > 0,
+    graphLine,
     "The graphical consistency regression must visit a slope case",
   );
-  const graph = JSON.parse(lines[graphIndex]!);
+  const graph = JSON.parse(graphLine);
   graph.problem.public.figure.lines[0].m += 0.5;
-  const wrongLine = review(
-    "reject inconsistent graph",
-    [
-      lines[0],
-      JSON.stringify(graph),
-      ...lines.slice(1, graphIndex),
-      ...lines.slice(graphIndex + 1),
-    ].join("\n") + "\n",
-  );
+  const wrongLine = reject("reject inconsistent graph", JSON.stringify(graph));
   assert.notEqual(wrongLine.status, 0);
   assert.match(wrongLine.stderr, /Line slope contradicts points/);
-  const choiceIndex = lines.findIndex(
-    (line, index) =>
-      index > 0 &&
-      JSON.parse(line).problem.public.templateId ===
-        "fraction-equivalence-choice",
-  );
-  assert.ok(choiceIndex > 0);
-  const choice = JSON.parse(lines[choiceIndex]!);
+  const choiceLine = wanted.get("fraction-equivalence-choice");
+  assert.ok(choiceLine);
+  const choice = JSON.parse(choiceLine);
   choice.problem.public.response.options[1].label =
     choice.problem.public.response.options[0].label;
-  const duplicateChoice = review(
+  const duplicateChoice = reject(
     "reject duplicate choice",
-    [
-      lines[0],
-      JSON.stringify(choice),
-      ...lines.slice(1, choiceIndex),
-      ...lines.slice(choiceIndex + 1),
-    ].join("\n") + "\n",
+    JSON.stringify(choice),
   );
   assert.notEqual(duplicateChoice.status, 0);
   assert.match(duplicateChoice.stderr, /duplicate choice|exactly one/i);
-  const wrongChoice = JSON.parse(lines[choiceIndex]!);
+  const wrongChoice = JSON.parse(choiceLine);
   wrongChoice.problem.answer = "option-z";
-  const choiceMismatch = review(
+  const choiceMismatch = reject(
     "reject wrong choice",
-    [
-      lines[0],
-      JSON.stringify(wrongChoice),
-      ...lines.slice(1, choiceIndex),
-      ...lines.slice(choiceIndex + 1),
-    ].join("\n") + "\n",
+    JSON.stringify(wrongChoice),
   );
   assert.notEqual(choiceMismatch.status, 0);
   assert.match(choiceMismatch.stderr, /Mismatch/);
