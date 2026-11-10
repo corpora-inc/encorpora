@@ -23,6 +23,7 @@ export type NavId =
   | "license"
   | "sign-in-help"
   | "experience"
+  | "settings"
   | "family"
   | `class:${string}`;
 
@@ -85,10 +86,7 @@ export function OrgFrame({
   }
   const can = new Set(org.data.can ?? []);
   const related =
-    nav === "classes" ||
-    nav === "students" ||
-    nav === "import" ||
-    nav === "experience"
+    nav === "classes" || nav === "students" || nav === "import"
       ? [
           ["classes", "Classes", "classes.read"],
           ...(org.data.kind !== "family"
@@ -97,15 +95,19 @@ export function OrgFrame({
           ...(org.data.kind === "school"
             ? [["import", "Import students", "roster.import"]]
             : []),
-          ["experience", "Student experience", "settings.read"],
         ]
-      : nav === "staff" || nav === "integrations" || nav === "sign-in-help"
+      : nav === "staff" || nav === "sign-in-help"
         ? [
             ["staff", "Staff", "staff.read"],
             ["sign-in-help", "Sign-in help", "staff.read"],
-            ["integrations", "Integrations", "integrations.read"],
           ]
-        : [];
+        : nav === "settings" || nav === "privacy" || nav === "integrations"
+          ? [
+              ["settings", "Settings", "classes.read"],
+              ["privacy", "Privacy and data", "privacy.read"],
+              ["integrations", "Integrations", "integrations.read"],
+            ]
+          : [];
   // The group's screens as one row of sub-tabs, the open one marked, so the
   // row never changes shape between them.
   const links = related.filter(([, , permission]) =>

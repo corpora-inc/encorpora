@@ -40,6 +40,7 @@ import {
   studentsKey,
 } from "./api";
 import { OrgFrame } from "./OrgFrame";
+import { YearCalendar } from "./CalendarScreen";
 import {
   CopyButton,
   FormNote,
@@ -593,6 +594,16 @@ export function ClassScreen() {
         ),
       );
   const joinPath = `/join/${klass.joinCode}`;
+  // A family, a tutor or a lone class keeps its year here; a school's classes
+  // pick only their grading periods, and the year is the school's
+  // (docs/design/ia.md, "Where settings live").
+  const small = org?.kind === "family" || org?.solo === true;
+  const family = org?.kind === "family";
+  const schoolSettings =
+    !family &&
+    ["calendar.read", "license.read", "privacy.read", "settings.read"].some(
+      (permission) => org?.can?.includes(permission as never),
+    );
   return (
     <OrgFrame
       orgId={orgId}
@@ -601,7 +612,7 @@ export function ClassScreen() {
       crumbs={[{ label: klass.name }]}
     >
       <PageHead
-        title={klass.name}
+        title="Settings"
         detail={`${klass.studentCount} ${klass.studentCount === 1 ? "student" : "students"}, ${courseLabel(klass.courseBands).toLowerCase()}`}
         action={
           org?.can?.includes("roster.import") ? (
@@ -624,7 +635,7 @@ export function ClassScreen() {
             label="Copy join link"
           />
         </div>
-        {canEdit && (
+        {canEdit && !small && (
           <div className={styles.field}>
             <span className={styles.fieldLabel}>Grading periods</span>
             <Segmented
@@ -641,6 +652,56 @@ export function ClassScreen() {
           </div>
         )}
       </section>
+      {small && org?.can?.includes("calendar.read") && (
+        <YearCalendar
+          orgId={orgId}
+          compact
+          grading={{ value: klass.gradingKind, onChange: pick, disabled: !canEdit }}
+        />
+      )}
+      {(schoolSettings || !family) && (
+        <ul className={styles.settingsLinks}>
+          {!family && (
+            <li>
+              <Link
+                to="/$"
+                params={{
+                  _splat: `school/${orgId}/classes/${classId}/experience`,
+                }}
+                className={styles.settingsLink}
+              >
+                <span>
+                  <strong>Student experience</strong>
+                  <span className={styles.quiet}>
+                    Levels, standings and devices for this class
+                  </span>
+                </span>
+                <span aria-hidden="true">›</span>
+              </Link>
+            </li>
+          )}
+          {schoolSettings && (
+            <li>
+              <Link
+                to="/$"
+                params={{ _splat: orgPath(orgId, "settings") }}
+                className={styles.settingsLink}
+              >
+                <span>
+                  <strong>{org?.name ?? "School"} settings</strong>
+                  <span className={styles.quiet}>
+                    {small
+                      ? "License, privacy and what students see"
+                      : "School year and terms, license, privacy and what students see"}
+                  </span>
+                </span>
+                <span aria-hidden="true">›</span>
+              </Link>
+            </li>
+          )}
+        </ul>
+      )}
+      {!family && (
       <section className={styles.classRoster}>
         <div className={styles.rosterHead}>
           <h2>Students</h2>
@@ -700,6 +761,7 @@ export function ClassScreen() {
           />
         )}
       </section>
+      )}
       <Toast tone="status" message={notice} onDismiss={() => setNotice("")} />
       <Toast message={error} onDismiss={() => setError("")} />
     </OrgFrame>

@@ -133,19 +133,28 @@ export function schoolRoutes(root: AnyRoute) {
       () => import("../features/school/CalendarScreen"),
       "CalendarScreen",
     ),
-    license: screen(
-      () => import("../features/school/LicenseScreen"),
-      "LicenseScreen",
-    ),
     importer: screen(
       () => import("../features/school/ImportScreen"),
       "ImportScreen",
     ),
-    experience: screen(
-      () => import("../features/school/classroom"),
-      "OrgExperienceScreen",
+    settings: screen(
+      () => import("../features/school/SettingsScreen"),
+      "OrgSettingsScreen",
     ),
   };
+  /** An address from before Settings: it opens that section of Settings. */
+  const toSettings = (path: string, hash: string) =>
+    createRoute({
+      getParentRoute: () => root,
+      path: `/school/$org${path}`,
+      beforeLoad: ({ params }) => {
+        throw redirect({
+          to: `/school/${(params as unknown as { org: string }).org}/settings`,
+          hash,
+          replace: true,
+        } as never);
+      },
+    });
   return [
     createRoute({
       getParentRoute: () => root,
@@ -299,10 +308,12 @@ export function schoolRoutes(root: AnyRoute) {
     orgScreen("/calendar", screens.calendar, (session, orgId) => [
       preload(calendarOptions(session, orgId)),
     ]),
-    orgScreen("/license", screens.license, (session, orgId) => [
+    orgScreen("/settings", screens.settings, (session, orgId) => [
+      preload(calendarOptions(session, orgId)),
       preload(licenseOptions(session, orgId)),
     ]),
+    toSettings("/license", "license"),
     orgScreen("/import", screens.importer),
-    orgScreen("/experience", screens.experience),
+    toSettings("/experience", "student-experience"),
   ];
 }

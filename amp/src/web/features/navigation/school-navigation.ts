@@ -36,7 +36,8 @@ export function useSchoolNavigation(frame: ShellFrame) {
               frame.org,
               frame.classId,
               year?.past === true,
-              org.kind === "family" && org.can?.includes("calendar.read"),
+              // A family's or tutor's year lives in the class's Settings.
+              false,
             )
           : []
         : schoolTabs(org, classes?.length ?? 0),

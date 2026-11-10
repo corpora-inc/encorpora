@@ -45,7 +45,8 @@ export function shellFrame(pathname: string): ShellFrame | null {
           start: "today",
           "report-cards": "gradebook",
           cards: "roster",
-          experience: "roster",
+          // A class's own overrides of what students see.
+          experience: "settings",
         } as Record<string, string>
       )[leaf] ?? leaf;
     return {
@@ -64,10 +65,14 @@ export function shellFrame(pathname: string): ShellFrame | null {
         {
           students: "classes",
           import: "classes",
-          experience: "classes",
           "sign-in-help": "staff",
-          integrations: "staff",
-          year: "calendar",
+          // One configuration home (docs/design/ia.md).
+          calendar: "settings",
+          license: "settings",
+          privacy: "settings",
+          experience: "settings",
+          integrations: "settings",
+          year: "settings",
         } as Record<string, string>
       )[leaf] ?? leaf;
     return { kind: "school", org: school[1]!, active };
@@ -190,6 +195,19 @@ export function classTabs(
   return tabs;
 }
 
+/** Settings shows when any of its sections does. */
+function settingsPermission(can: Set<string>) {
+  return (
+    [
+      "calendar.read",
+      "settings.read",
+      "license.read",
+      "privacy.read",
+      "integrations.read",
+    ].find((permission) => can.has(permission)) ?? "calendar.read"
+  );
+}
+
 /** The school's navigation follows exactly the capabilities supplied by its API. */
 export function schoolTabs(org: OrgResource, classCount: number): TabItem[] {
   const can = new Set(org.can ?? []);
@@ -206,13 +224,10 @@ export function schoolTabs(org: OrgResource, classCount: number): TabItem[] {
     ...[
       ["classes", "Classes", "classes.read"],
       ...(!family && !lone ? [["staff", "Staff", "staff.read"]] : []),
-      ["calendar", "Calendar", "calendar.read"],
+      ...(!family && !lone ? [["activity", "Activity", "activity.read"]] : []),
+      // Year and terms, student experience, license, privacy, integrations.
       ...(!family
-        ? [
-            ["license", "License", "license.read"],
-            ["privacy", "Privacy", "privacy.read"],
-            ...(!lone ? [["activity", "Activity", "activity.read"]] : []),
-          ]
+        ? [["settings", "Settings", settingsPermission(can)]]
         : []),
     ]
       .filter(([, , permission]) => can.has(permission as never))

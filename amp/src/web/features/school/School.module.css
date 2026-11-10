@@ -587,7 +587,42 @@ button.copy[data-done="copied"] {
 .calendarBody {
   display: grid;
   gap: var(--space-5);
-  max-width: 880px;
+}
+/* The terms sit side by side under the year on a wide screen, each a column
+   with its dates, so the year reads as one view rather than a list. */
+@media (min-width: 768px) {
+  .sessionList {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    column-gap: var(--space-5);
+  }
+}
+/* The year inside a small class's Settings: one compact section. */
+.yearSection {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 720px;
+  margin-top: var(--space-6);
+}
+.yearSection + .settingsLinks,
+.classMeta + .settingsLinks {
+  max-width: 720px;
+  margin-top: var(--space-6);
+}
+.yearSection h2 {
+  margin: 0;
+  font-size: var(--text-heading-2);
+}
+.yearSection .quiet {
+  margin: var(--space-1) 0 0;
+}
+.yearHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+.calendarBody[data-compact] {
+  gap: var(--space-4);
 }
 .calendarControl {
   display: grid;
@@ -728,4 +763,87 @@ button.copy[data-done="copied"] {
   max-width: var(--width-form);
   min-height: calc(100dvh - var(--shell-bar, 56px));
   padding-top: var(--space-5);
+}
+
+/* Settings: one page of sections, each a heading with its facts and
+   controls, separated by space and a hairline (docs/design/ia.md). */
+.settingsPage {
+  display: grid;
+  gap: var(--space-7);
+  max-width: 960px;
+}
+.settingsSection {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+.settingsSection h2 {
+  margin: 0;
+  font-size: var(--text-heading-2);
+}
+.settingsSection .quiet {
+  margin: var(--space-1) 0 0;
+}
+.sectionLead {
+  max-width: 64ch;
+  margin: calc(-1 * var(--space-2)) 0 0;
+  color: var(--color-muted-text);
+}
+.settingsHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-4);
+}
+.settingsActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.termSet {
+  display: grid;
+  gap: var(--space-3);
+}
+.termSet h3 {
+  margin: 0;
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--color-muted-text);
+}
+.settingsLinks {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-shadow: inset 0 1px 0 var(--color-border);
+}
+.settingsLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 64px;
+  padding: var(--space-3) 0;
+  color: inherit;
+  text-decoration: none;
+  box-shadow: inset 0 -1px 0 var(--color-border);
+}
+.settingsLink > span:first-child {
+  display: grid;
+  gap: 2px;
+}
+.settingsLink strong {
+  font-weight: 600;
+}
+.settingsLink > span:last-child {
+  color: var(--color-muted-text);
+  font-size: 22px;
+}
+.settingsLink:hover {
+  background: var(--color-surface-hover);
+}
+.settingsLink:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
 }
