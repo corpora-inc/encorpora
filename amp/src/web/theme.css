@@ -918,6 +918,17 @@ header {
   border-radius: 0;
   background: transparent;
 }
+/* Day 0's Start practicing: prominent, at its natural width. */
+.home [data-level-start] .go-button {
+  width: auto;
+  min-height: 56px;
+  padding-inline: 32px;
+  font-size: var(--text-heading-3);
+}
+/* The free problems left, quiet under the learner's label. */
+.home-free-line {
+  margin: 6px 0 0;
+}
 /* A learner's own Overview: the page's title, not a label. */
 .home-hero h1.home-learner-own {
   font-family: var(--font-display);

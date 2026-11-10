@@ -443,87 +443,63 @@ h3.caption {
   }
 }
 
-/* ── Before the first answer ───────────────────────────────────────────── */
-.start {
-  align-items: center;
-}
-@media (min-width: 768px) {
-  .start {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: var(--space-7);
-  }
-}
-.startText {
+/* ── Day 0: the centred hero ────────────────────────────────────────────── */
+.hero {
   display: grid;
-  justify-items: start;
+  justify-items: center;
+  gap: var(--space-4);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 640px;
+  /* Centred in the first screen too, not stranded at its top. */
+  min-height: min(560px, 62dvh);
+  align-content: center;
+  margin-inline: auto;
+  padding-block: var(--space-5);
+  text-align: center;
 }
-.startTitle {
+.hero .heroTitle {
   margin: 0;
   font-family: var(--font-display);
-  font-size: var(--text-heading-2);
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+  font-size: clamp(30px, 7vw, var(--text-title-max));
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
   text-wrap: balance;
 }
-.startBody {
-  max-width: 42ch;
-  margin: var(--space-3) 0 0;
-  color: var(--color-muted-text);
-  font-size: var(--text-dense);
-  line-height: 1.5;
-  text-wrap: pretty;
-}
-.startAction {
-  margin-top: var(--space-5);
-}
-.startFigure {
+.heroFigure {
   display: grid;
   gap: var(--space-2);
+  width: 100%;
+  margin: var(--space-3) 0 0;
+  text-align: start;
+}
+.heroBar {
+  height: 64px;
+}
+.heroBar .bar {
+  --rail: 14px;
+  --dot: 26px;
+}
+.heroBody {
+  max-width: 40ch;
   margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+  line-height: 1.5;
+  text-wrap: balance;
 }
-.startBar {
-  height: 56px;
+.heroAction {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-2);
 }
-.startBar .bar {
-  --dot: 22px;
-}
-.startNote {
+.heroSecondary {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  gap: var(--space-2);
-  margin: var(--space-2) 0 0;
+  gap: var(--space-1) var(--space-4);
   color: var(--color-muted-text);
-  font-size: 12px;
-  font-weight: 600;
-}
-.startNote svg {
-  width: 20px;
-  height: 10px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-/* A wide dashed range now, a narrow solid one later: the legend of what
-   practice does to it. */
-.startNoteBefore,
-.startNoteAfter {
-  display: inline-block;
-  height: 8px;
-  border-radius: 999px;
-}
-.startNoteBefore {
-  width: 36px;
-  background: repeating-linear-gradient(
-    90deg,
-    color-mix(in srgb, var(--color-primary) 34%, transparent) 0 4px,
-    transparent 4px 7px
-  );
-}
-.startNoteAfter {
-  width: 14px;
-  margin-left: var(--space-2);
-  background: color-mix(in srgb, var(--color-primary) 45%, transparent);
+  font-size: var(--text-label);
 }
