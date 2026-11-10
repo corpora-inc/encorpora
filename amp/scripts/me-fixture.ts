@@ -24,7 +24,8 @@ export function fixtureMe(family: FamilySummary, identity = "fixture") {
         },
       })),
     // As the server: a family with children opens practice whatever its
-    // consent; one without opens the starter.
+    // consent. Without children, a consenting family adds one; any other
+    // opens the starter. ("choose-plan" left the contract.)
     next: family.learners.some((learner) => !learner.deletedAt)
       ? "practice"
       : active
