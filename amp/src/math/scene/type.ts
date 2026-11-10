@@ -48,6 +48,37 @@ export function advance(
 }
 
 const ext = fontMetrics.extent;
+
+/**
+ * Half a line of this type, in figure pixels. A shaded or boxed region keeps
+ * at least this much room, equal on every side, around the text it holds.
+ */
+export function regionMargin(
+  sizeName: TypeSize = "md",
+  font: "sans" | "math" = "sans",
+) {
+  const size = typeSizes[sizeName];
+  const face = font === "sans" ? ext.sans : ext.math;
+  return 0.5 * (face.ascent + face.descent) * size;
+}
+
+/** The label fits in the box with that margin on every side. */
+export function textClearsBox(
+  text: string,
+  font: "math" | "sans",
+  sizeName: TypeSize,
+  boxW: number,
+  boxH: number,
+  bold = false,
+) {
+  const set = typeset(text, font, sizeName, bold);
+  const margin = regionMargin(sizeName, font);
+  return (
+    set.width + 2 * margin <= boxW + 0.5 &&
+    set.ascent + set.descent + 2 * margin <= boxH + 0.5
+  );
+}
+
 /** Typeset a plain or math label. Math labels: letters italic, `-` becomes a
  * minus, `a/b` and `w a/b` stack, `x^2` and `x^{-1}` raise exponents. */
 export function typeset(

@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { base, color, label, num as zNum, small } from "../base";
 import { registerComponent, type Prim } from "../layout";
-import { typeset } from "../type";
+import { regionMargin, typeset } from "../type";
 import { num } from "./format";
 
 const tableCell = z.union([
@@ -150,9 +150,13 @@ export function completeTable(t: {
 export type Table = z.infer<typeof tableSchema>;
 
 /** Table geometry in figure pixels; compile divides by the scale. */
-const PAD = 12,
-  ROW = 36,
-  HEADER = 34,
+const MARGIN = regionMargin("md", "sans"),
+  /** One line of the cell type. */
+  LINE = 2 * MARGIN,
+  PAD = Math.max(12, Math.ceil(MARGIN)),
+  /** The cell holds one line with the margin above and below. */
+  ROW = Math.ceil(LINE + 2 * MARGIN),
+  HEADER = ROW,
   TITLE = 30,
   MIN_COLUMN = 56;
 const isNumber = (v: unknown): v is number => typeof v === "number";
@@ -167,6 +171,7 @@ const heading = (t: Table, text: string) =>
 
 /** Column widths and row positions, in figure pixels from the top left. */
 export function tableGeometry(t: Table) {
+  const filled = t.sums ? completeTable(t) : null;
   const labelWidth =
     Math.max(
       ...t.rows.map((r) => heading(t, r.label)),
@@ -177,16 +182,22 @@ export function tableGeometry(t: Table) {
     Math.max(
       MIN_COLUMN,
       heading(t, c) + 2 * PAD,
-      ...t.rows.map((r) => {
+      ...t.rows.map((r, i) => {
         const v = r.cells[j];
-        return v === null || v === undefined
-          ? 0
-          : typeset(
-              isNumber(v) ? num(v) : v,
-              isNumber(v) ? "math" : "sans",
-              "md",
-            ).width +
-              2 * PAD;
+        // A blank holds its digit with the margin, and the cell holds the blank with the same margin.
+        if (v === null || v === undefined) {
+          const shown = filled?.[i]?.[j];
+          return (
+            typeset(shown === undefined ? "?" : num(shown), "math", "md", true)
+              .width +
+            2 * PAD
+          );
+        }
+        return (
+          typeset(isNumber(v) ? num(v) : v, isNumber(v) ? "math" : "sans", "md")
+            .width +
+          2 * PAD
+        );
       }),
     ),
   );
@@ -279,7 +290,7 @@ registerComponent("table", {
       prims.push({
         type: "text",
         id: "corner",
-        at: P(PAD, g.headerTop + HEADER / 2 + 2),
+        at: P(PAD, g.headerTop + HEADER / 2),
         text: t.corner,
         font: words ? "sans" : "math",
         bold: words || undefined,
@@ -289,7 +300,7 @@ registerComponent("table", {
       prims.push({
         type: "text",
         id: `column.${j}`,
-        at: P(g.lefts[j]! + g.widths[j]! / 2, g.headerTop + HEADER / 2 + 2),
+        at: P(g.lefts[j]! + g.widths[j]! / 2, g.headerTop + HEADER / 2),
         text: c,
         font: words ? "sans" : "math",
         bold: words || undefined,
@@ -351,12 +362,14 @@ registerComponent("table", {
         const bold = t.sums && (i === lastRow || j === lastColumn);
         const find = derived.has(`${i},${j}`);
         if (v === null) {
-          const box = Math.min(52, g.widths[j]! - 12);
+          // The dashed blank sits just inside the grid. The digit keeps the margin from that line.
+          const boxW = g.widths[j]! - 4,
+            boxH = ROW - 4;
           prims.push({
             type: "rect",
             id: `cell.${i}.${j}.box`,
-            at: P(cx - box / 2, cy + ROW / 2 - 6),
-            size: size(box, ROW - 12),
+            at: P(cx - boxW / 2, top + ROW - 2),
+            size: size(boxW, boxH),
             radius: 5,
             fill: "none",
             stroke: find ? "warm" : "axis",
@@ -421,8 +434,8 @@ registerComponent("table", {
       prims.push({
         type: "rect",
         id: `mark.${i}.${j}`,
-        at: P(g.lefts[j]! + 4, g.rowTop(i) + ROW - 4),
-        size: size(g.widths[j]! - 8, ROW - 8),
+        at: P(g.lefts[j]! + 2, g.rowTop(i) + ROW - 2),
+        size: size(g.widths[j]! - 4, ROW - 4),
         radius: 6,
         fill: "none",
         stroke: "gold",
