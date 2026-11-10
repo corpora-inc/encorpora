@@ -169,20 +169,23 @@ export function generatePegBoard(id: string, seed: string): GeneratedProblem {
     const [x, y] = pegPoint(i);
     return `row ${y + 1}, peg ${x + 1}`;
   });
-  const first = pegPoint(ids[0]!),
-    second = pegPoint(ids[1]!);
-  const dx = second[0] - first[0],
-    dy = second[1] - first[1];
-  const firstMove = [
-    dx
-      ? `${Math.abs(dx)} ${Math.abs(dx) === 1 ? "space" : "spaces"} ${dx > 0 ? "right" : "left"}`
-      : "",
-    dy
-      ? `${Math.abs(dy)} ${Math.abs(dy) === 1 ? "space" : "spaces"} ${dy > 0 ? "down" : "up"}`
-      : "",
-  ]
-    .filter(Boolean)
-    .join(" and ");
+  const sideMoves = ids.map((id, i) => {
+    const first = pegPoint(id),
+      second = pegPoint(ids[(i + 1) % ids.length]!);
+    const dx = second[0] - first[0],
+      dy = second[1] - first[1];
+    const move = [
+      dx
+        ? `${Math.abs(dx)} ${Math.abs(dx) === 1 ? "space" : "spaces"} ${dx > 0 ? "right" : "left"}`
+        : "",
+      dy
+        ? `${Math.abs(dy)} ${Math.abs(dy) === 1 ? "space" : "spaces"} ${dy > 0 ? "down" : "up"}`
+        : "",
+    ]
+      .filter(Boolean)
+      .join(" and ");
+    return `For side ${i + 1}, count ${move}. Join those pegs with one straight side.${i === ids.length - 1 ? " This joins back to the first peg and closes the shape." : ""}`;
+  });
   const shapeDefinition =
     name === "triangle"
       ? "A triangle is a closed shape with 3 straight sides."
@@ -222,16 +225,15 @@ export function generatePegBoard(id: string, seed: string): GeneratedProblem {
       ...(!copyTask && !countTask ? [shapeDefinition] : []),
       "Count rows from the top. In each row, count pegs from the left.",
       `One way starts at ${walk[0]}.`,
-      `Count ${firstMove}. Join the starting and ending pegs with one straight side.`,
-      ...walk.slice(2).map((where) => `Join the last peg to ${where}.`),
-      "Join back to the first peg to close the shape.",
+      ...sideMoves,
       `There are ${sides} sides and ${sides} corners. The sides meet without crossing and close the shape.`,
       ...(response.check.rightCorners
         ? ["Each corner fits the corner of a page. These are square corners."]
         : []),
       ...(response.check.equalSides
         ? [
-            "Length means how long a side is. Mark one side's length on paper and turn it to check the others.",
+            "Length means how long a side is. Put the edge of a paper beside one side. Mark both ends on the paper.",
+            "Move and turn the paper beside each other side. Both marks line up with its ends, so all 4 sides are equally long.",
             "All 4 sides match and all 4 corners fit a page corner. This is a square.",
           ]
         : []),
@@ -239,7 +241,7 @@ export function generatePegBoard(id: string, seed: string): GeneratedProblem {
         ? ["A square is a rectangle too: it has four square corners."]
         : []),
       copyTask
-        ? `Compare each side with the shown shape. The same counts across and down put the ends on matching pegs.${allowRotation ? " You may also turn the whole shape." : " Move it without turning it."}`
+        ? `Choose matching starting corners on both shapes. Follow the sides in the same order. For each side, match the counts and directions across and down.${allowRotation ? " To check a turned copy, trace the shown shape on paper. Turn and move the tracing over your copy. Every side and corner must line up." : " Move the shape without turning it."}`
         : "Moving or turning the shape does not change its name.",
       "Try this with toothpicks and dough at home.",
     ],
