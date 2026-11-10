@@ -17,7 +17,7 @@ import { lessons } from "../src/content/lessons";
 import { methods } from "../src/content/problem-methods";
 import { principles } from "../src/content/problem-principles";
 import {
-  problemLesson,
+  hasProblemLesson,
   lessonGlossaryContext,
 } from "../src/content/problem-lessons";
 import { publicationProblems } from "../src/content/publications";
@@ -109,9 +109,15 @@ for (const template of templates) {
     assert.deepEqual(contextConflicts(context), [], "lesson glossary context");
     for (const sense of Object.values(context.senses))
       assert.ok(hasGlossaryEntry(sense), `glossary sense ${sense}`);
-    const teaching = problemLesson(id, seed);
-    assert.equal(teaching.templateId, id);
-    assert.ok(teaching.example.steps.length > 0, "worked example");
+    // problemLesson searches up to 24 seeds for a preferred animation. Check
+    // its route and authored inputs here; problem-lessons.test.ts builds the
+    // full examples. Worksheet construction below still runs without sampling.
+    assert.ok(hasProblemLesson(id), "worked lesson route");
+    assert.ok(
+      problem.explanation.length &&
+        problem.explanation.every((step) => step.trim()),
+      "worked answer explanation",
+    );
     const bound = instruction.get(id)!;
     assert.ok(
       bound.length || bookTypes.has(id),

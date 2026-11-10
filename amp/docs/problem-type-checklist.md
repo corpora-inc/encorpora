@@ -26,7 +26,10 @@ merge-queue candidate through the existing `amp-core` / `ci-gate` checks.
 
 The completeness test calls the production worksheet builder and print
 components, plus the actual independent oracle dispatcher. It collects failures
-per type. It does not render PDFs or exhaust generator seeds. The image build
+per type. Worked lessons have their routes, methods, principles and explanation
+inputs checked; `problem-lessons.test.ts` builds their animated examples, whose
+seed search is too slow for this preflight. It does not render PDFs or exhaust
+generator seeds. The image build
 also computes `guessChanceTable()` in `scripts/build-server.ts` and renders and
 verifies PDFs through `scripts/build-pdf-release.ts` and `scripts/pdf-release.ts`.
 Post-merge deep checks add typography, grammar, hint quality, 256-seed oracle
