@@ -149,7 +149,12 @@ test("strict inequalities never include the boundary", () => {
     if (sign === "<" && c > 0) {
       const greatest = Number.isInteger(c) ? c - 1 : Math.floor(c);
       const count = greatest + 1;
-      assert.match(finite, new RegExp(`there are ${count} solutions`));
+      assert.match(
+        finite,
+        count === 1
+          ? /there (?:is 1 solution|are 1 solutions)/
+          : new RegExp(`there are ${count} solutions`),
+      );
     } else assert.match(finite, /no whole number/);
     const probe = sign === "<" ? (c > 0 ? 0 : c - 1) : c + 1;
     const reversed = options
