@@ -14,6 +14,7 @@ import {
 } from "./clause-kit";
 import { f, graph } from "./scene/author";
 import type { Fn, Point, Scene } from "./scene/spec";
+import { count, term } from "./agreement";
 import type { Random } from "./variation/axes";
 
 const grid = (xMax = 10, yMax = 10, xLabel = "x", yLabel = "y") => ({
@@ -108,7 +109,7 @@ function tableProperty(r: Random): ClauseSurface {
         `Because the table has 10 rows.`,
       ],
       [
-        `For any column, split ${sum} groups into ${p} groups and ${q} groups. The size of each group stays the same.`,
+        `For any column, split ${count(sum, "group")} into ${count(p, "group")} and ${count(q, "group")}. The size of each group stays the same.`,
         `This is the distributive property: $(p+q)n=pn+qn$.`,
       ],
       `In column ${n}, count groups of ${n}, not separate factors.`,
@@ -216,7 +217,7 @@ function contextPlot(r: Random): ClauseSurface {
     let y = r(1, 9);
     if (y >= x) y++;
     return plot(
-      `Plot the point showing that after ${x} weeks, ${y} dollars have been saved.`,
+      `Plot the point showing that after ${count(x, "week")}, ${count(y, "dollar")} ${y === 1 ? "has" : "have"} been saved.`,
       [[x, y]],
       grid(10, 10, "Weeks", "Dollars saved"),
       [
@@ -362,7 +363,7 @@ function story(r: Random, variant: string): ClauseSurface {
     ];
     return figures(
       r,
-      `A tub starts empty, fills steadily for ${up} minutes to ${level} liters, stays there for ${flat} minutes, then drains steadily to empty in ${down} minutes. Choose its graph.`,
+      `A tub starts empty, fills steadily for ${count(up, "minute")} to ${level} liters, stays there for ${count(flat, "minute")}, then drains steadily to empty in ${count(down, "minute")}. Choose its graph.`,
       [
         {
           label: `Rises to (${up}, ${level}), stays level to ${up + flat}, falls to (${end}, 0).`,
@@ -723,11 +724,11 @@ function recursion(r: Random): ClauseSurface {
   if (a === d) d++;
   return choice(
     r,
-    `A sequence has $a_1=${a}$ and $a_n=a_{n-1}+(${d})$ for $n\\ge2$. Which explicit rule gives $a_n$?`,
-    m(`a_n=${a}+(${d})(n-1)`),
+    `A sequence has $a_1=${a}$ and $a_n=a_{n-1}+${term(d)}$ for $n\\ge2$. Which explicit rule gives $a_n$?`,
+    m(`a_n=${a}+${term(d)}(n-1)`),
     [
-      m(`a_n=${a}+(${d})n`),
-      m(`a_n=${d}+(${a})(n-1)`),
+      m(`a_n=${a}+${term(d)}n`),
+      m(`a_n=${d}+${term(a)}(n-1)`),
       m(`a_n=${a}(${d})^{n-1}`),
     ],
     [
@@ -824,19 +825,19 @@ function inverseCompose(r: Random): ClauseSurface {
   if (kind === 0)
     return choice(
       r,
-      `Which function is the inverse of $f(x)=${a}x+(${b})$? Check $f(g(x))=x$.`,
-      m(`g(x)=\\frac{x-(${b})}{${a}}`),
+      `Which function is the inverse of $f(x)=${a}x+${term(b)}$? Check $f(g(x))=x$.`,
+      m(`g(x)=\\frac{x-${term(b)}}{${a}}`),
       [
-        m(`g(x)=\\frac{x+(${b})}{${a}}`),
-        m(`g(x)=\\frac{x}{${a}}-(${b})`),
-        m(`g(x)=\\frac{1}{${a}x+(${b})}`),
+        m(`g(x)=\\frac{x+${term(b)}}{${a}}`),
+        m(`g(x)=\\frac{x}{${a}}-${term(b)}`),
+        m(`g(x)=\\frac{1}{${a}x+${term(b)}}`),
       ],
       [
         `Undo the addition of ${b}, then divide by ${a}.`,
-        `$f((x-(${b}))/${a})=x$. The plus-sign candidate gives $x+(${2 * b})$.`,
-        `Subtracting ${b} after dividing gives $x+(${round(b * (1 - a))})$. Taking a reciprocal does not undo the original operations.`,
+        `$f((x-${term(b)})/${a})=x$. The plus-sign candidate gives $x+${term(2 * b)}$.`,
+        `Subtracting ${b} after dividing gives $x+${term(round(b * (1 - a)))}$. Taking a reciprocal does not undo the original operations.`,
       ],
-      `In $${a}x+(${b})$, undo the last operation first.`,
+      `In $${a}x+${term(b)}$, undo the last operation first.`,
     );
   const cubic = kind === 2,
     self = kind === 3;
@@ -844,7 +845,7 @@ function inverseCompose(r: Random): ClauseSurface {
     ? "Let $f(x)=2x^3$ and $g(x)=\\sqrt[3]{x/2}$. Complete the inverse check."
     : self
       ? "Let $f(x)=(x+1)/(x-1)$ for $x\\ne1$. Complete the inverse check with $g=f$."
-      : `Let $f(x)=${a}x+(${b})$ and $g(x)=(x-(${b}))/${a}$. Complete the inverse check.`;
+      : `Let $f(x)=${a}x+${term(b)}$ and $g(x)=(x-${term(b)})/${a}$. Complete the inverse check.`;
   return blanks(
     r,
     prompt,
@@ -863,14 +864,14 @@ function inverseCompose(r: Random): ClauseSurface {
         ? "$2(\\sqrt[3]{x/2})^3=x$ and $\\sqrt[3]{2x^3/2}=x$ for every real input."
         : self
           ? "$f(f(x))=\\frac{(x+1)+(x-1)}{(x+1)-(x-1)}=x$ for $x\\ne1$. Also $f(x)\\ne1$, so the second application is defined."
-          : `$f(g(x))=${a}((x-(${b}))/${a})+(${b})=x$ and $g(f(x))=(${a}x+(${b})-(${b}))/${a}=x$.`,
+          : `$f(g(x))=${a}((x-${term(b)})/${a})+${term(b)}=x$ and $g(f(x))=(${a}x+${term(b)}-${term(b)})/${a}=x$.`,
       "Both compositions return the original input. That verifies the inverse on the stated domains.",
     ],
     cubic
       ? "Cube the cube root, then multiply by 2."
       : self
         ? "Substitute the full fraction into both occurrences of the input. The input cannot be 1 because the denominator would vanish."
-        : `Substitute $g(x)$ into $${a}x+(${b})$.`,
+        : `Substitute $g(x)$ into $${a}x+${term(b)}$.`,
   );
 }
 function interpretStatement(r: Random): ClauseSurface {
@@ -898,15 +899,15 @@ function interpretStatement(r: Random): ClauseSurface {
     lead +
       (kind === 0
         ? `What does $C(${hours})=${total}$ mean?`
-        : `Which statement says ${hours} hours costs ${total} dollars?`),
+        : `Which statement says ${count(hours, "hour")} costs ${count(total, "dollar")}?`),
     kind === 0
-      ? `The charge for ${hours} hours is ${total} dollars.`
+      ? `The charge for ${count(hours, "hour")} is ${count(total, "dollar")}.`
       : m(`C(${hours})=${total}`),
     kind === 0
       ? [
-          `The charge for ${total} hours is ${hours} dollars.`,
+          `The charge for ${count(total, "hour")} is ${count(hours, "dollar")}.`,
           `$C$ times ${hours} equals ${total}.`,
-          `The hourly rate is ${hours} dollars.`,
+          `The hourly rate is ${count(hours, "dollar")}.`,
         ]
       : [
           m(`C(${total})=${hours}`),
@@ -914,7 +915,7 @@ function interpretStatement(r: Random): ClauseSurface {
           m(`C(${hours})=${rate}`),
         ],
     [
-      `The input is time: ${hours} hours. The output is cost: ${fixed} + ${rate} × ${hours} = ${total} dollars.`,
+      `The input is time: ${count(hours, "hour")}. The output is cost: ${fixed} + ${rate} × ${hours} = ${count(total, "dollar")}.`,
       "Function notation names the output at a given input; it is not multiplication.",
     ],
     `Label the ${hours} inside the parentheses with the input unit, hours.`,
@@ -968,7 +969,7 @@ function quadraticPlot(r: Random): ClauseSurface {
     h = (p + q) / 2,
     k = a * (h - p) * (h - q);
   return plot(
-    `Graph $y=${a === 1 ? "" : "-"}(x-(${p}))(x-(${q}))$ by placing its two horizontal-axis intercepts, vertex and vertical-axis intercept.`,
+    `Graph $y=${a === 1 ? "" : "-"}(x-${term(p)})(x-${term(q)})$ by placing its two horizontal-axis intercepts, vertex and vertical-axis intercept.`,
     [
       [p, 0],
       [q, 0],
@@ -989,7 +990,7 @@ function quadraticPlot(r: Random): ClauseSurface {
       `The vertex input is halfway: $(${p}+${q})/2=${h}$. Substitution gives ${k}.`,
       `At $x=0$, $y=${a * p * q}$.`,
     ],
-    `Set each factor equal to 0; $x-(${p})=0$ means $x=${p}$.`,
+    `Set each factor equal to 0; $x-${term(p)}=0$ means $x=${p}$.`,
   );
 }
 function cubeRoot(r: Random): ClauseSurface {
@@ -997,7 +998,7 @@ function cubeRoot(r: Random): ClauseSurface {
     k = r(-5, 5),
     a = pick(r, [-2, -1, 1, 2]);
   return plot(
-    `Graph $y=${a}\\sqrt[3]{x-(${h})}+(${k})$. Place its center point and the points exactly one horizontal unit to its left and right.`,
+    `Graph $y=${a}\\sqrt[3]{x-${term(h)}}+${term(k)}$. Place its center point and the points exactly one horizontal unit to its left and right.`,
     [
       [h, k],
       [h - 1, k - a],
@@ -1009,7 +1010,7 @@ function cubeRoot(r: Random): ClauseSurface {
       `Since $\\sqrt[3]{-1}=-1$ and $\\sqrt[3]{1}=1$, the neighboring points are $(${h - 1},${k - a})$ and $(${h + 1},${k + a})$.`,
       "A cube-root curve continues in both directions; it has no starting endpoint.",
     ],
-    `First set $x-(${h})=0$. Then apply the outside multiplier ${a} and vertical shift ${k}.`,
+    `First set $x-${term(h)}=0$. Then apply the outside multiplier ${a} and vertical shift ${k}.`,
   );
 }
 function piecewiseGraph(r: Random): ClauseSurface {
@@ -1089,7 +1090,7 @@ function piecewiseGraph(r: Random): ClauseSurface {
     r,
     steps
       ? `Which graph shows $f(x)=\\begin{cases}${a}&0\\le x<1\\\\${2 * a}&1\\le x<2\\\\${3 * a}&2\\le x<3\\end{cases}$?`
-      : `Which graph shows $f(x)=\\begin{cases}-x+(${b})&x\\le${b}\\\\2x+(${1 - 2 * b})&x>${b}\\end{cases}$?`,
+      : `Which graph shows $f(x)=\\begin{cases}-x+${term(b)}&x\\le${b}\\\\2x+${term(1 - 2 * b)}&x>${b}\\end{cases}$?`,
     opts,
     [
       "Draw each formula only on its stated interval. A filled endpoint includes the boundary; an open endpoint excludes it.",
@@ -1099,7 +1100,7 @@ function piecewiseGraph(r: Random): ClauseSurface {
     ],
     steps
       ? "Read the first interval: it includes 0 and excludes 1."
-      : `At the boundary ${b}, compare $-x+(${b})$ and $2x+(${1 - 2 * b})$; check which inequality includes equality.`,
+      : `At the boundary ${b}, compare $-x+${term(b)}$ and $2x+${term(1 - 2 * b)}$; check which inequality includes equality.`,
   );
 }
 const multiply = (a: number[], b: number[]) => {
@@ -1139,7 +1140,7 @@ function polynomialGraph(r: Random): ClauseSurface {
   if (p === -q) configs[3] = [p - 1, q - 1, a, e, other];
   return figures(
     r,
-    `Which graph shows $P(x)=${a < 0 ? "-" : ""}(x-(${p}))^{${e}}(x-(${q}))^{${other}}$?`,
+    `Which graph shows $P(x)=${a < 0 ? "-" : ""}(x-${term(p)})^{${e}}(x-${term(q)})^{${other}}$?`,
     configs.map(([u, v, lead, ep, eq]) => ({
       label: `Zeros ${u} (${ep! % 2 ? "cross" : "touch"}) and ${v} (${eq! % 2 ? "cross" : "touch"}); right end ${lead! > 0 ? "rises" : "falls"}.`,
       scene: curveScene(fn(u!, v!, lead!, ep!, eq!), [-6, 6], [-40, 40]),
@@ -1148,7 +1149,7 @@ function polynomialGraph(r: Random): ClauseSurface {
       `The zeros are ${p} and ${q}. An even exponent touches; an odd exponent crosses.`,
       `The degree is ${e + other}, and the leading sign is ${a > 0 ? "positive" : "negative"}. The right end ${a > 0 ? "rises" : "falls"}.`,
     ],
-    `Set each factor, $x-(${p})$ and $x-(${q})$, to 0. Use the exponents ${e} and ${other} to decide whether the graph crosses or touches at each zero.`,
+    `Set each factor, $x-${term(p)}$ and $x-${term(q)}$, to 0. Use the exponents ${e} and ${other} to decide whether the graph crosses or touches at each zero.`,
   );
 }
 function rationalGraph(r: Random): ClauseSurface {
@@ -1178,7 +1179,7 @@ function rationalGraph(r: Random): ClauseSurface {
   ];
   return figures(
     r,
-    `Which graph shows $f(x)=\\frac{${a}(x-(${z}))}{${two ? `(x-(${v}))(x-(${w}))` : `x-(${v})`}}$?`,
+    `Which graph shows $f(x)=\\frac{${a}(x-${term(z)})}{${two ? `(x-${term(v)})(x-${term(w)})` : `x-${term(v)}`}}$?`,
     configs.map(([zero, p, q, k, offset]) => ({
       label: `Poles at ${p}${two ? ` and ${q}` : ""}; horizontal asymptote ${two ? offset : k! + offset!}; numerator built from zero ${zero}${offset ? ` with vertical shift ${offset}` : ""}.`,
       scene: curveScene(fn(zero!, p!, q!, k!, offset), [-6, 6], [-8, 8]),
@@ -1189,7 +1190,7 @@ function rationalGraph(r: Random): ClauseSurface {
         ? "The denominator has higher degree, so both ends approach 0."
         : `The leading coefficients have ratio ${a}, so both ends approach ${a}.`,
     ],
-    `In $${a}(x-(${z}))$, find the numerator's zero; compare it with the denominator factors $x-(${v})$${two ? ` and $x-(${w})$` : ""}.`,
+    `In $${a}(x-${term(z)})$, find the numerator's zero; compare it with the denominator factors $x-${term(v)}$${two ? ` and $x-${term(w)}$` : ""}.`,
   );
 }
 function trigGraph(r: Random): ClauseSurface {
@@ -1200,7 +1201,7 @@ function trigGraph(r: Random): ClauseSurface {
     b = (2 * Math.PI) / period;
   return figures(
     r,
-    `Which graph shows $y=${a}\\${cosine ? "cos" : "sin"}(${period === Math.PI ? "2x" : period === 2 * Math.PI ? "x" : period === 2 ? "\\pi x" : `\\pi x/${period / 2}`})+(${k})$?`,
+    `Which graph shows $y=${a}\\${cosine ? "cos" : "sin"}(${period === Math.PI ? "2x" : period === 2 * Math.PI ? "x" : period === 2 ? "\\pi x" : `\\pi x/${period / 2}`})+${term(k)}$?`,
     [
       [a, period, k],
       [a, period, -k],

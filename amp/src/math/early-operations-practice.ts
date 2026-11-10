@@ -319,8 +319,8 @@ export function generateEarlyOperationsProblem(
           ],
           end: null,
         };
-        prompt = `A bus has ${start} people. At a stop, ${off} ${off === 1 ? "gets" : "get"} off and then ${on} ${on === 1 ? "gets" : "get"} on. How many people are on the bus now?`;
-        hint = `First find how many are left after ${off} get off: ${start} − ${off}.`;
+        prompt = `A bus has ${start} people. At a stop, ${count(off, "person")} ${off === 1 ? "gets" : "get"} off and then ${count(on, "person")} ${on === 1 ? "gets" : "get"} on. How many people are on the bus now?`;
+        hint = `First find how many are left after ${count(off, "person")} ${off === 1 ? "gets" : "get"} off: ${start} − ${off}.`;
         explanation = [
           `Follow the changes in order: first people get off, then people get on.`,
           `Getting off makes fewer, so subtract: ${start} − ${off} = ${start - off}.`,

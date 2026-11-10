@@ -67,3 +67,10 @@ export function nounFor(
   const value = typeof n === "number" ? n : Number(n.replace(/[$\s{}]/g, ""));
   return value === 1 ? one : many;
 }
+
+/** A factor or addend next to an operation. Only a negative is wrapped, so
+ * "+(3)" and "x-(2)" print as "+3" and "x-2", while "-3" stays "(-3)". */
+export function term(value: number | string): string {
+  const text = String(value);
+  return text.startsWith("-") || text.startsWith("−") ? `(${text})` : text;
+}

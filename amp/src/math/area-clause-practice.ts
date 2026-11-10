@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { count, nounFor } from "./agreement";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -31,7 +32,6 @@ import {
   type LatticePoint,
   type PointPlotResponse,
 } from "./point-plot";
-import { nounFor } from "./agreement";
 import { graph, scene } from "./scene/author";
 import type { Element, PathOp, Point, Scene } from "./scene/spec";
 
@@ -886,16 +886,16 @@ function chooseSplit(seed: string, r: Random): GeneratedProblem {
     if (other === b || other === c || other >= cols || other < 1) continue;
     const options: FigureOption[] = [
       {
-        description: `The tiled rectangle with a heavy line after ${b} columns.`,
+        description: `The tiled rectangle with a heavy line after ${count(b, "column")}.`,
         scene: splitCard(a, cols, { col: b }, ""),
         correct: true,
       },
       {
-        description: `The tiled rectangle with a heavy line after ${rowK} rows.`,
+        description: `The tiled rectangle with a heavy line after ${count(rowK, "row")}.`,
         scene: splitCard(a, cols, { row: rowK }, ""),
       },
       {
-        description: `The tiled rectangle with a heavy line after ${other} columns.`,
+        description: `The tiled rectangle with a heavy line after ${count(other, "column")}.`,
         scene: splitCard(a, cols, { col: other }, ""),
       },
     ];
@@ -908,13 +908,13 @@ function chooseSplit(seed: string, r: Random): GeneratedProblem {
       r,
       hint: `The ${b} in ${a} × ${b} is a number of columns, not a number of rows. The other part is the remaining ${c} columns.`,
       explanation: (name) => [
-        `${a} × ${b} is ${a} rows of ${b} columns, and ${a} × ${c} is ${a} rows of ${c} columns.`,
-        `Together that is a line after ${b} columns. A line after ${c} columns is the same split read from the other end, so it is not offered.`,
-        `A line after ${rowK} rows splits the side of length ${a}, which gives a different sum. ${name} is the column split after ${b}.`,
+        `${a} × ${b} is ${count(a, "row")} of ${count(b, "column")}, and ${a} × ${c} is ${count(a, "row")} of ${count(c, "column")}.`,
+        `Together that is a line after ${count(b, "column")}. A line after ${count(c, "column")} is the same split read from the other end, so it is not offered.`,
+        `A line after ${count(rowK, "row")} splits the side of length ${a}, which gives a different sum. ${name} is the column split after ${b}.`,
       ],
       feedback: [
         `That line splits the ${a} rows. ${rowK} × ${cols} + ${a - rowK} × ${cols} is not ${a} × ${b} + ${a} × ${c}.`,
-        `That line is after ${other} columns, so the parts are ${a} × ${other} and ${a} × ${cols - other}, not ${a} × ${b} and ${a} × ${c}.`,
+        `That line is after ${count(other, "column")}, so the parts are ${a} × ${other} and ${a} × ${cols - other}, not ${a} × ${b} and ${a} × ${c}.`,
       ],
     });
   }
@@ -1460,7 +1460,7 @@ export function generateSolidSection(templateId: string, seed: string) {
         hint: `The scale from the apex is ${level} out of ${height}. Area scales by that fraction squared, then multiply the base area ${base}.`,
         explanation: [
           `The plane is ${level} from the apex and the height is ${height}, so the scale is ${level}/${height}.`,
-          `Area uses the square of the scale: (${level}/${height})² = ${(level / height) ** 2}.`,
+          `Area uses the square of the scale: $\\frac{${level}}{${height}}^2 = ${(level / height) ** 2}$.`,
           `${base} × ${(level / height) ** 2} = ${area}.`,
         ],
       });
@@ -1490,11 +1490,11 @@ export function generateSolidSection(templateId: string, seed: string) {
     const volume = (count * tenths) / 10;
     const each = tenths % 10 === 0 ? String(tenths / 10) : (tenths / 10).toFixed(1);
     return assemble(meta, seed, r, {
-      prompt: `A stack of ${count} coins, each of volume ${each} cubic centimeters, is pushed into a slanted stack. What is the volume of the slanted stack, in cubic centimeters?`,
+      prompt: `A stack of ${count} coins, each of volume ${each} ${nounFor(Number(each), "cubic centimeter")}, is pushed into a slanted stack. What is the volume of the slanted stack, in cubic centimeters?`,
       answer: String(volume),
       hint: `There are ${count} coins, and each has volume ${each} ${nounFor(each, "cubic centimeter")}. The slant does not change any layer. Multiply the number of coins by the volume of one coin.`,
       explanation: [
-        `Each coin has volume ${each} cubic centimeters, and there are ${count} coins.`,
+        `Each coin has volume ${each} ${nounFor(Number(each), "cubic centimeter")}, and there are ${count} coins.`,
         `Pushing the stack sideways keeps every coin. The volume is ${count} × ${each} = ${volume}.`,
       ],
     });
@@ -1650,7 +1650,7 @@ export function generateTiltedRectangle(templateId: string, seed: string) {
             ? `The vertices are ${coord("A", fact.A)}, ${coord("B", fact.B)}, ${coord("C", fact.C)} and ${coord("D", fact.D)}. Adjacent sides are perpendicular when the product of their slopes is −1, or when their direction vectors have dot product 0. Multiply the two side lengths.`
             : `The vertices are ${coord("A", fact.A)}, ${coord("B", fact.B)}, ${coord("C", fact.C)} and ${coord("D", fact.D)}. Find the two different side lengths with the distance formula, add them, and double. A grid path along the coordinate gaps is longer than the straight side.`,
         explanation: [
-          `Side AB runs ${m} steps of (${p}, ${q}), so its length is ${fact.ab}. Side AD runs ${n} steps of (${-q}, ${p}), so its length is ${fact.ad}.`,
+          `Side AB runs ${count(m, "step")} of (${p}, ${q}), so its length is ${fact.ab}. Side AD runs ${count(n, "step")} of (${-q}, ${p}), so its length is ${fact.ad}.`,
           `The direction vectors have dot product 0, so the angle at A is a right angle.`,
           ask === "area"
             ? `Area = ${fact.ab} × ${fact.ad} = ${fact.area}. The bounding box has area ${fact.box}, which counts squares outside the rectangle.`

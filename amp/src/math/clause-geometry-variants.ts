@@ -1,3 +1,4 @@
+import { count, term } from "./agreement";
 import {
   choice,
   clean,
@@ -84,15 +85,15 @@ function degreeCount(r: Rng): Item {
     hint:
       form === 0
         ? "Count tens from the heavy ticks, then ones. A complete turn contains 360 equal one-degree angles."
-        : `A full turn contains 360 one-degree angles. Relate ${n} degrees to those equal parts.`,
+        : `A full turn contains 360 one-degree angles. Relate ${count(n, "degree")} to those equal parts.`,
     explanation: [
-      `One degree is $1/360$ of a full turn. ${n} such units measure ${n} degrees.`,
+      `One degree is $1/360$ of a full turn. ${count(n, "such unit")} ${n === 1 ? "measures" : "measure"} ${count(n, "degree")}.`,
       ...(form === 0
         ? [
-            `Count ${Math.floor(n / 10)} groups of ten and ${n % 10} more: $${Math.floor(n / 10) * 10}+${n % 10}=${n}$.`,
+            `Count ${count(Math.floor(n / 10), "group")} of ten and ${n % 10} more: $${Math.floor(n / 10) * 10}+${n % 10}=${n}$.`,
           ]
         : []),
-      `${n} degrees is $${n}/360$ of a full circle. The remaining ${360 - n} degrees complete the 360-degree turn.`,
+      `${count(n, "degree")} is $${n}/360$ of a full circle. The remaining ${count(360 - n, "degree")} complete the 360-degree turn.`,
     ],
   };
 }
@@ -762,8 +763,8 @@ function deriveCircle(r: Rng): Item {
         ])),
     hint: `The horizontal and vertical distances from center $(${h},${k})$ are differences of coordinates. The radius is the triangle's hypotenuse.`,
     explanation: [
-      `The horizontal leg is $x-(${h})=${lx}$; the vertical leg is $y-(${k})=${ly}$. The signs come from subtracting the center coordinates.`,
-      `Segment $CP$ is a radius, the hypotenuse. Squaring the leg lengths gives $(${lx})^2+(${ly})^2=(${rt})^2=${n}$.`,
+      `The horizontal leg is $x-${term(h)}=${lx}$; the vertical leg is $y-${term(k)}=${ly}$. The signs come from subtracting the center coordinates.`,
+      `Segment $CP$ is a radius, the hypotenuse. Squaring the leg lengths gives $(${lx})^2+(${ly})^2=${term(rt)}^2=${n}$.`,
       `The diagram's offsets are $3r/5$ and $4r/5$: their squared sum is $(9/25+16/25)r^2=r^2$.`,
       `For points in other directions the coordinate differences may be negative, but squaring gives the same distances. Thus this equation holds exactly for all points $${rt}$ units from the center.`,
     ],

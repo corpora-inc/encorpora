@@ -16,6 +16,7 @@ import {
   figureSegment,
 } from "./geometry-teaching-figures";
 import type { Element, Point } from "./scene/spec";
+import { count } from "./agreement";
 import type { Random } from "./variation/axes";
 
 const slot = (label: string, correct: string, ...wrong: string[]) => ({
@@ -138,7 +139,7 @@ function wedges(rng: Random): ClauseSurface {
       "The rim is shared between the top and bottom: each long edge is half the circumference. As the wedges become thinner, the height approaches the radius.",
       `Area is half the distance around, times the radius: $\\tfrac12 C r=\\tfrac12(2\\pi r)r=\\pi r^2$.`,
       `Here the width is ${width} cm and the area is ${area} square centimeters.`,
-      `Using 3.14 gives ${round(3.14 * r * r)}, a little more than three ${r}-by-${r} squares (${3 * r * r}).`,
+      `Using 3.14 gives ${round(3.14 * r * r)}, a little more than three ${r}-by-${r} squares, ${3 * r * r}.`,
     ],
     `Split the circumference ${circumference} between the two long edges.`,
     picture(scene(elements, "Rearranging equal wedges")),
@@ -433,7 +434,7 @@ function sectorFormula(rng: Random): ClauseSurface {
       ? m(`${degrees}^\\circ`)
       : mode === 1
         ? m(`\\pi/${den}`)
-        : String(plain);
+        : count(plain, "radian");
   const thetaDeg = mode === 2 ? (plain * 180) / Math.PI : degrees;
   const answer =
     mode === 0
@@ -467,7 +468,7 @@ function sectorFormula(rng: Random): ClauseSurface {
     );
   parts.push(
     slot(
-      `Check: radius ${r}, angle ${thetaText}${mode ? " radians" : ""}`,
+      `Check: radius ${r}, angle ${thetaText}${mode === 1 ? " radians" : ""}`,
       answer,
       mode === 2
         ? String(r * r * plain)
@@ -479,7 +480,7 @@ function sectorFormula(rng: Random): ClauseSurface {
   );
   return blanks(
     rng,
-    `A sector is part of a disk cut by a central angle. Derive its area formula with $\\theta$ measured in ${mode === 0 ? "degrees" : "radians"}, then check it for radius ${r} and angle ${thetaText}${mode ? " radians" : ""}.`,
+    `A sector is part of a disk cut by a central angle. Derive its area formula with $\\theta$ measured in ${mode === 0 ? "degrees" : "radians"}, then check it for radius ${r} and angle ${thetaText}${mode === 1 ? " radians" : ""}.`,
     parts,
     [
       mode === 0

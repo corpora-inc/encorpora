@@ -84,8 +84,11 @@ test("extended families solve independently from their displayed givens across 1
         case "simple-probability":
           assert.equal(p.public.templateVersion, 2);
           if (q.includes("equal sections labeled")) {
-            const labels = q.match(/labeled ([A-D, ]+)\./)![1]!.split(", ");
-            const asked = q.match(/landing on ([A-D])\?/)![1]!;
+            const labels = q
+              .match(/labeled ([A-D, $]+)\./)![1]!
+              .split(", ")
+              .map((label) => label.replaceAll("$", ""));
+            const asked = q.match(/landing on \$([A-D])\$\?/)![1]!;
             const counts = new Map<string, number>();
             for (const label of labels)
               counts.set(label, (counts.get(label) ?? 0) + 1);

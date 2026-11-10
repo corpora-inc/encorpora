@@ -835,8 +835,8 @@ function wideMidpoint(r: Random): Spec {
       explanation: [
         COMPLEX,
         "The midpoint is the point halfway between two points. Its coordinates are the averages: add and divide by 2.",
-        `Average the real parts: $\\frac{${a}+(${c})}{2}=${signed(mx)}$.`,
-        `Average the imaginary parts: $\\frac{${b}+(${d})}{2}=${signed(my)}$.`,
+        `Average the real parts: $\\frac{${a}+${c < 0 ? `(${c})` : c}}{2}=${signed(mx)}$.`,
+        `Average the imaginary parts: $\\frac{${b}+${d < 0 ? `(${d})` : d}}{2}=${signed(my)}$.`,
         `An odd sum does not divide evenly, so the average keeps a denominator of 2.`,
         `So the midpoint is $\\frac{z+w}{2}=${cx(mx, my)}$.`,
       ],
@@ -930,8 +930,8 @@ function distanceCase(r: Random, wide = false): Spec {
       explanation: [
         COMPLEX,
         "The midpoint is the point halfway between two points. Its coordinates are the averages: add and divide by 2.",
-        `Average the real parts: $\\frac{${a}+(${c})}{2}=${mx}$.`,
-        `Average the imaginary parts: $\\frac{${b}+(${d})}{2}=${my}$.`,
+        `Average the real parts: $\\frac{${a}+${c < 0 ? `(${c})` : c}}{2}=${mx}$.`,
+        `Average the imaginary parts: $\\frac{${b}+${d < 0 ? `(${d})` : d}}{2}=${my}$.`,
         `So the midpoint is $\\frac{z+w}{2}=${lab(mx, my)}$.`,
       ],
       correct: M(lab(mx, my)),

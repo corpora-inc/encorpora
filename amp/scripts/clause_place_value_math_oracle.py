@@ -169,6 +169,10 @@ def structured(public, expected):
     return json.dumps(rows, separators=(',', ':'))
 
 
+def agreed(n, one, many):
+    return f"{n} {one if int(n) == 1 else many}"
+
+
 def solve(public):
     require(handles(public), 'Not a place-value clause surface')
     ident, prompt, response = public['templateId'], plain(public['prompt']), public['response']
@@ -189,8 +193,8 @@ def solve(public):
         return c + 1
     if ident in {'tens-ones-model', 'place-value-digit'}:
         if kind == 'number':
-            match = re.fullmatch(r'What number is (\d+) (hundreds|ten|tens) (?:0 tens and )?0 ones\?', prompt)
-            return int(match[1]) * (100 if match[2] == 'hundreds' else 10)
+            match = re.fullmatch(r'What number is (\d+) (hundreds?|tens?) (?:0 tens and )?0 ones\?', prompt)
+            return int(match[1]) * (100 if match[2].startswith('hundred') else 10)
         numeral = re.match(r'(\d+) (?:has which digits|is)', prompt)
         n = int(numeral[1]) if numeral else base_ten_value(public.get('figure'))
         if public.get('figure'):
@@ -203,8 +207,8 @@ def solve(public):
         if right.isdigit():
             b = int(right)
         else:
-            b = sum(int(n) * {'hundreds': 100, 'tens': 10, 'ones': 1}[unit]
-                    for n, unit in re.findall(r'(\d+) (hundreds|tens|ones)', right))
+            b = sum(int(n) * {'hundred': 100, 'hundreds': 100, 'ten': 10, 'tens': 10, 'one': 1, 'ones': 1}[unit]
+                    for n, unit in re.findall(r'(\d+) (hundreds?|tens?|ones?)', right))
         comparison = '<' if a < b else '>' if a > b else '='
         if a == b:
             reason = 'All corresponding place digits match so the numbers are equal.'
@@ -216,11 +220,11 @@ def solve(public):
         direction, n = re.match(r'What is 10 (more|less) than (\d+)\?', prompt).groups()
         n, sign = int(n), 1 if direction == 'more' else -1
         require(base_ten_value(public['figure']) == n, 'Ten-more picture')
-        reason = f'{"Add" if sign > 0 else "Remove"} one ten; {n // 10} tens becomes {n // 10 + sign}. Keep {n % 10} ones.'
+        reason = f'{"Add" if sign > 0 else "Remove"} one ten; {agreed(n // 10, "ten", "tens")} becomes {n // 10 + sign}. Keep {agreed(n % 10, "one", "ones")}.'
         return multipart(public, {'value': n + 10 * sign, 'reason': reason})
     if ident == 'subtract-whole-tens':
         if prompt.startswith('The model'):
-            a, b = map(int, re.match(r'The model shows (\d+) rods of ten\. Take away (\d+) rods\.', prompt).groups())
+            a, b = map(int, re.match(r'The model shows (\d+) rods? of ten\. Take away (\d+) rods?\.', prompt).groups())
         else:
             removed, total = map(int, re.match(r'(\d+)\+□=(\d+)\.', prompt).groups())
             require(removed % 10 == total % 10 == 0, 'Whole-ten relation')
@@ -234,7 +238,7 @@ def solve(public):
         require(len(crosses) == 2*b, 'Exactly the removed rods are crossed out')
         return multipart(public, {
             'equation': f'{10 * a}-{10 * b}={10 * (a-b)}',
-            'reason': f'Each rod is ten. Remove {b} tens; {a-b} tens are left.',
+            'reason': f'Each rod is ten. Remove {agreed(b, "ten", "tens")}; {agreed(a - b, "ten", "tens")} {"is" if a - b == 1 else "are"} left.',
         })
     if ident == 'expanded-form-missing':
         if kind == 'number':
@@ -250,7 +254,8 @@ def solve(public):
         large, factor, small = match.groups()
         factor = int(factor)
         require((large, small, factor) in {('kg', 'g', 1000), ('L', 'mL', 1000), ('lb', 'oz', 16), ('gal', 'qt', 4), ('qt', 'cups', 4)}, 'Correct conversion fact')
-        mixed = re.findall(r'(\d+) ' + large + r' (\d+) ' + small, prompt)
+        unit = small[:-1] + 's?' if small.endswith('s') else small
+        mixed = re.findall(r'(\d+) ' + large + r' (\d+) ' + unit, prompt)
         quantities = [int(a) * factor + int(b) for a, b in mixed]
         require(quantities and int(mixed[0][0]) > 0, 'Every story needs a larger-unit conversion')
         if prompt.startswith('One '):
@@ -263,7 +268,7 @@ def solve(public):
             count = int(re.search(r'among (\d+)', prompt)[1])
             answer = Fraction(quantities[0], count)
         else:
-            removed = int(re.search(r'\. (\d+) ' + small + r' is removed', prompt)[1])
+            removed = int(re.search(r'\. (\d+) ' + unit + r' is removed', prompt)[1])
             answer = quantities[0] - removed
         require(Fraction(answer).denominator == 1 and 0 <= answer <= 20000, 'Exact whole-unit answer within range')
         return answer
@@ -346,7 +351,7 @@ def solve(public):
         multiply, whole = sign == '*', '.' not in base_text
         reasons = {f'Each digit becomes {10**exponent} times {"as much; move left" if multiply else "smaller; move right"}.'}
         if whole and multiply:
-            reasons.add(f'Move digits {exponent} places left; fill empty places with {exponent} zeros.')
+            reasons.add(f'Move digits {agreed(exponent, "place", "places")} left; fill empty places with {agreed(exponent, "zero", "zeros")}.')
         return multipart(public, {'value': answer, 'reason': lambda label: label in reasons})
     if ident == 'decimal-multiplication':
         if prompt.startswith('Fabric costs'):
