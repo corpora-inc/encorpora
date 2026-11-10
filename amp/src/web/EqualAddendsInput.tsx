@@ -126,6 +126,7 @@ export function EqualAddendsInput({
   return (
     <section
       className="counter-builder equal-addends"
+      data-mode={r.mode}
       data-resolved={resolved}
       aria-labelledby={`${id}-label`}
     >

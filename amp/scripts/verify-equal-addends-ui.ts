@@ -16,6 +16,7 @@ import type {
   EqualAddendsResponse,
 } from "../src/math/equal-addends";
 import { equalAddendsVariants } from "../src/math/equal-addends-practice";
+import { counterThings } from "../src/math/counter-builder";
 import { equalAddendsLesson } from "../src/content/equal-addends-lessons";
 import { publicationHtml } from "../src/content/publications";
 import { migrate } from "./migrate";
@@ -88,6 +89,18 @@ for (let i = 0; i < 1000 && fixtures.size < 4; i++) {
   fixtures.set(p.variant!.id, p);
 }
 assert.equal(fixtures.size, 4);
+// Inspect every shared drawing at its smallest rendered size in a dense array.
+for (let i = 0; i < 3000 && fixtures.size < 4 + counterThings.length; i++) {
+  const p = generateProblem("array-equal-addends-equation", `object-${i}`);
+  const a = JSON.parse(p.answer) as EqualAddendsAnswer;
+  if (p.variant!.id !== "build-array" || a.rows !== 4 || a.columns !== 5)
+    continue;
+  fixtures.set(
+    `object-${(p.public.response as EqualAddendsResponse).thing}`,
+    p,
+  );
+}
+assert.equal(fixtures.size, 4 + counterThings.length);
 const errors: string[] = [],
   evidence: object[] = [];
 async function geometry(page: Page) {
@@ -126,6 +139,72 @@ async function stable(
   );
   assert.equal(after.overflow, 0);
   assert.equal(after.stageOverflow, 0);
+  await sentenceFits(page);
+}
+async function sentenceFits(page: Page) {
+  const layout = await page
+    .locator(".counter-sentence")
+    .evaluate((sentence) => {
+      const bounds = sentence.getBoundingClientRect();
+      return [...sentence.querySelectorAll("button, .counter-equals")].map(
+        (n) => {
+          const b = n.getBoundingClientRect();
+          return {
+            center: b.top + b.height / 2,
+            contained: b.left >= bounds.left - 1 && b.right <= bounds.right + 1,
+          };
+        },
+      );
+    });
+  assert.ok(
+    layout.every((b) => b.contained),
+    "Entire equation fits its row",
+  );
+  assert.ok(
+    layout.every((b) => Math.abs(b.center - layout[0]!.center) < 1),
+    "Every tile and operator stays on one line",
+  );
+}
+async function keypadReachable(page: Page, fitsWithoutScrolling: boolean) {
+  await page.locator(".problem-stage").evaluate((stage, fits) => {
+    stage.scrollTop = fits ? 0 : stage.scrollHeight;
+  }, fitsWithoutScrolling);
+  const layout = await page.evaluate(() => {
+    const stage = document
+      .querySelector(".problem-stage")!
+      .getBoundingClientRect();
+    const dock = document
+      .querySelector(".answer-dock")!
+      .getBoundingClientRect();
+    const pad = document
+      .querySelector(".counter-tiles")!
+      .getBoundingClientRect();
+    const sameColumn = stage.left < dock.right && stage.right > dock.left;
+    return {
+      padVisible: pad.top >= stage.top && pad.bottom <= stage.bottom,
+      dockClear: !sameColumn || stage.bottom <= dock.top,
+      dockVisible: dock.top >= 0 && dock.bottom <= innerHeight + 1,
+      buttons: [...document.querySelectorAll(".counter-tiles button")]
+        .filter((n) => !(n as HTMLButtonElement).disabled)
+        .every((n) => {
+          const b = n.getBoundingClientRect();
+          return (
+            document.elementFromPoint(b.x + b.width / 2, b.y + b.height / 2) ===
+            n
+          );
+        }),
+    };
+  });
+  assert.deepEqual(
+    layout,
+    {
+      padVisible: true,
+      dockClear: true,
+      dockVisible: true,
+      buttons: true,
+    },
+    "Whole keypad must be visible and clickable above the dock",
+  );
 }
 async function promptVisible(page: Page) {
   await page.locator(".problem-stage").evaluate((n) => {
@@ -157,12 +236,14 @@ try {
     ? (["light"] as const)
     : (["light", "dark"] as const))
     for (const [width, height] of smoke
-      ? [[390, 900]]
+      ? [[390, 844]]
       : [
           [320, 900],
-          [390, 900],
+          [390, 844],
           [768, 1024],
           [1280, 900],
+          [320, 568],
+          [844, 390],
         ]) {
       const context = await browser.newContext({
         viewport: { width: width!, height: height! },
@@ -176,7 +257,12 @@ try {
       page.on("pageerror", (e) => errors.push(e.message));
       await page.goto(`${baseUrl}/overview`);
       await chooseLearner(page, learner.id);
-      for (const variant of equalAddendsVariants)
+      for (const variant of [
+        ...equalAddendsVariants,
+        ...(width === 320
+          ? counterThings.map((thing) => `object-${thing}`)
+          : []),
+      ])
         for (const correct of [true, false]) {
           const p = structuredClone(fixtures.get(variant)!);
           p.public.id = randomUUID();
@@ -216,7 +302,9 @@ try {
           const before = await geometry(page);
           await stable(page, before);
           await promptVisible(page);
-          const tag = `${engine}-${variant}-${width}-${theme}`;
+          const size =
+            height === 568 || height === 390 ? `${width}x${height}` : width;
+          const tag = `${engine}-${variant}-${size}-${theme}`;
           await page.screenshot({ path: `${shots}/${tag}-empty.png` });
           assert.equal(
             await page
@@ -272,6 +360,18 @@ try {
               await stable(page, before);
             }
             assert.equal(await page.locator(".equal-object svg").count(), 25);
+            for (let i = 0; i < 3; i++) {
+              await page
+                .getByRole("button", {
+                  name: "Add another addend",
+                  exact: true,
+                })
+                .click();
+              await stable(page, before);
+            }
+            await keypadReachable(page, width === 390);
+            await promptVisible(page);
+            await page.screenshot({ path: `${shots}/${tag}-five-by-five.png` });
             assert.ok(
               await page
                 .getByRole("button", { name: "More rows", exact: true })
@@ -339,6 +439,10 @@ try {
           });
           await page.locator(".equal-addends").screenshot({
             path: `${shots}/${tag}-${correct ? "right" : "wrong"}-control.png`,
+          });
+          await keypadReachable(page, width === 390);
+          await page.screenshot({
+            path: `${shots}/${tag}-${correct ? "right" : "wrong"}-keypad.png`,
           });
           const [reply] = await Promise.all([
             page.waitForResponse(
@@ -424,7 +528,14 @@ try {
             );
             assert.equal(saved.rows[0].response_kind, "equal-addends");
           }
-          evidence.push({ variant, width, theme, correct, geometry: before });
+          evidence.push({
+            variant,
+            width,
+            height,
+            theme,
+            correct,
+            geometry: before,
+          });
         }
       await context.close();
     }

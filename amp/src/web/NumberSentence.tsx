@@ -29,8 +29,7 @@ export function CounterSign({ sign }: { sign: "+" | "-" }) {
 export const spokenNumberTile = (value: number | "+" | "-" | null) =>
   value === "+" ? "plus" : value === "-" ? "minus" : (value ?? "blank");
 
-/** Variable-length sentences share the same large slots, focus movement and
- * signs. Prefixes stay attached to their number when the sentence wraps. */
+/** Variable-length sentences share accessible slots, focus movement and signs. */
 export function NumberSentence({
   slots,
   selected,

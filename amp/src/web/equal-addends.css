@@ -1,20 +1,29 @@
 .equal-addends {
   max-width: 32rem;
+  --equal-cell: 44px;
 }
 .equal-array-tools {
   display: grid;
   gap: var(--space-1);
 }
+.equal-addends[data-mode="build"] .equal-array-tools {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 19rem;
+  margin: auto;
+}
 .equal-stepper {
   display: grid;
-  grid-template-columns: 1fr 44px 44px 44px;
+  grid-template-columns: repeat(3, 44px);
   align-items: center;
+  justify-content: center;
   gap: var(--space-1);
   max-width: 19rem;
   width: 100%;
   margin: auto;
 }
 .equal-stepper > span {
+  grid-column: 1 / -1;
+  text-align: center;
   font-weight: 600;
   white-space: nowrap;
 }
@@ -35,16 +44,16 @@
   min-width: 108px;
 }
 .equal-array-area {
-  height: 228px;
+  height: calc(5 * var(--equal-cell) + var(--space-1));
   padding-top: var(--space-1);
 }
 .equal-array {
   display: grid;
-  grid-template-columns: repeat(5, 44px);
-  grid-template-rows: repeat(5, 44px);
+  grid-template-columns: repeat(5, var(--equal-cell));
+  grid-template-rows: repeat(5, var(--equal-cell));
   position: relative;
-  width: 220px;
-  height: 220px;
+  width: calc(5 * var(--equal-cell));
+  height: calc(5 * var(--equal-cell));
   margin: auto;
 }
 .equal-object {
@@ -67,24 +76,28 @@
 }
 .equal-addends .equal-instruction {
   text-align: center;
-  min-height: 2.8em;
   margin: var(--space-1) 0;
 }
-/* Reserve all five addend positions and the total. Existing tiles never move
-   as a child grows the sum; the total stays in the lower-right position. */
+/* Six 44px targets plus five compact operators fit even at 320px. Size for
+   the longest sentence so adding a term never changes the row's height. */
 .equal-addends .counter-sentence {
-  display: grid;
-  grid-template-columns: repeat(3, 72px);
-  grid-template-rows: repeat(2, 48px);
-  justify-content: center;
-  gap: var(--space-1);
+  --equal-sign: clamp(8px, calc(12cqw - 28.48px), 24px);
+  --equal-tile: clamp(44px, calc((100cqw - 5 * var(--equal-sign)) / 6), 56px);
+  flex-wrap: nowrap;
+  gap: 0;
+  height: 48px;
 }
-.equal-addends .counter-sentence-part:first-child {
-  padding-left: 28px;
+.equal-addends .counter-sentence-part {
+  flex: none;
+  gap: 0;
 }
-.equal-addends .counter-sentence-part:last-child {
-  grid-column: 3;
-  grid-row: 2;
+.equal-addends .counter-slot {
+  width: var(--equal-tile);
+}
+.equal-addends .counter-equals {
+  width: var(--equal-sign);
+  font-size: clamp(14px, calc(12cqw - 22.48px), 24px);
+  line-height: 1;
 }
 .equal-count-tools {
   display: flex;
@@ -105,4 +118,43 @@
 }
 .equal-addends .counter-tiles {
   width: 100%;
+}
+.equal-addends .counter-numbers {
+  grid-template-columns: repeat(6, minmax(44px, 1fr));
+}
+.equal-addends .counter-ten {
+  grid-column: 6;
+  grid-row: 1 / span 2;
+  height: 100%;
+}
+.practice-surface:has(.equal-addends) .problem-stage {
+  min-height: 0;
+  scroll-padding-block: var(--space-2);
+}
+.practice-surface:has(.equal-addends) .problem-content {
+  padding-bottom: var(--space-3);
+}
+@media (max-width: 650px), (max-height: 620px) {
+  /* Build arrays have no group hit targets. Given arrays keep 44px rows. */
+  .equal-addends[data-mode="build"] {
+    --equal-cell: 32px;
+  }
+  .equal-addends[data-mode="build"] .counter-object {
+    width: 28px;
+    height: 28px;
+  }
+}
+@media (max-width: 380px) {
+  .practice-surface:has(.equal-addends) .problem-stage {
+    /* Let the equation use the screen width without widening the dock or title. */
+    margin-inline: -16px;
+    scrollbar-gutter: auto;
+    scrollbar-width: thin;
+  }
+  .practice-surface:has(.equal-addends) .problem-content {
+    padding-inline: 3px;
+  }
+  .practice-surface:has(.equal-addends) .question {
+    padding-inline: 11px;
+  }
 }
