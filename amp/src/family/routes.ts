@@ -50,6 +50,12 @@ import {
   secondParentOwner,
 } from "./second-parent.js";
 import { SchoolError } from "../schools/contracts.js";
+import { fileName, paperQuery, renderReportPdf } from "../reports/print.js";
+import {
+  adultStartNames,
+  progressReportHtml,
+} from "../reports/progress-report.js";
+import type { WorkbookRenderer } from "../workbook/pdf.js";
 export interface FamilyRouteOptions {
   pool: Pool;
   authenticate: Authenticator;
@@ -60,6 +66,8 @@ export interface FamilyRouteOptions {
    * the key that derives them, where they point and the account mail path.
    * Absent: no approval links. */
   approvals?: ApprovalKeys & { mail?: ApprovalMail };
+  /** Prints the adult's progress report. Absent: that PDF answers 503. */
+  renderer?: WorkbookRenderer | null;
 }
 export async function registerFamilyRoutes(
   app: FastifyInstance,
@@ -119,6 +127,44 @@ export async function registerFamilyRoutes(
       const practice = await readOwnPractice(repository, account);
       if (!practice) throw new FamilyError(404, "adult_practice_not_started");
       return practice;
+    });
+    // The adult's own record as a printed progress report, rendered for this
+    // request and never stored.
+    scope.get("/api/v1/me/practice/report.pdf", async (request, reply) => {
+      const account = await options.authenticate(request);
+      const { format } = paperQuery.parse(request.query);
+      const practice = await readOwnPractice(repository, account);
+      if (!practice) throw new FamilyError(404, "adult_practice_not_started");
+      const today = practice.time.range.to;
+      // An account with no name practices as "Me" (adultLearnerName).
+      const named = practice.learner.name !== "Me";
+      const { html, footer } = progressReportHtml({
+        paper: format,
+        own: true,
+        name: named ? practice.learner.name : null,
+        first: practice.learner.first,
+        subtitle: practice.learner.start
+          ? `Own practice, began at ${adultStartNames[practice.learner.start]}`
+          : "Own practice",
+        facts: [],
+        today,
+        record: practice.record,
+        time: practice.time,
+      });
+      const pdf = await renderReportPdf(
+        options.renderer,
+        { html, format, footer },
+        request.log,
+        "Progress report",
+      );
+      if (!pdf) throw new FamilyError(503, "report_unavailable");
+      return reply
+        .type("application/pdf")
+        .header(
+          "Content-Disposition",
+          `attachment; filename="${fileName("amp-progress", named ? practice.learner.name : "", today)}.pdf"`,
+        )
+        .send(pdf);
     });
     scope.post("/api/v1/me/practice", async (request, reply) => {
       const account = await options.authenticate(request);

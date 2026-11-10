@@ -127,6 +127,11 @@ import { practicingAsAdult } from "../lib/adult-learner";
 import { freeLeft } from "../lib/free-allowance";
 import { FREE_ONLINE_PROBLEMS } from "../../learning/free-allowance";
 import { AllowancePause } from "../features/continue/AllowancePause";
+import {
+  LessonDownloadMenu,
+  LessonPause,
+  useLessonPrint,
+} from "../features/lessons/LessonPrint";
 import { strandNames } from "../BirthYearPrompt";
 import type { ProblemLessonView } from "../../content/problem-lessons";
 class HttpError extends Error {
@@ -150,6 +155,9 @@ const allowanceEnded = (error: unknown) =>
 type Catalog = {
   templates: TemplateMetadata[];
   lessons: Lesson[];
+  /** Lessons this server has no PDFs for (src/server/publications.ts). An
+   * older server leaves it out; its lessons all have them. */
+  unpublishedLessons?: string[];
   skills: {
     id: string;
     title: string;
@@ -498,6 +506,33 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     accountRef = useRef<string | null>(null);
   const learnerRef = useRef<string | undefined>(undefined);
   learnerRef.current = learner?.id;
+  // Printing a lesson hands over its typeset PDF, never a browser print of
+  // the page. A lesson without PDFs on this server offers no print at all.
+  const lessonPrintState = useLessonPrint({
+    learnerId: learner?.id ?? "",
+    lessonId: readingLesson?.id ?? "",
+    token: token ?? "",
+    // Signed out or switched accounts while it downloaded: not saved.
+    keep: () => tokenRef.current === token,
+    onAllowanceEnded: () => {
+      if (!learner) return;
+      setPausedFor(learner.id);
+      // The pause takes the downloads' place, after the lesson.
+      requestAnimationFrame(() =>
+        document
+          .querySelector("[data-lesson-downloads]")
+          ?.scrollIntoView({ block: "center" }),
+      );
+    },
+  });
+  const lessonPrint =
+    !nativeRuntime &&
+    learner &&
+    token &&
+    readingLesson &&
+    !catalog?.unpublishedLessons?.includes(readingLesson.id)
+      ? lessonPrintState
+      : null;
   useLayoutEffect(
     () => () => {
       // Account-keyed unmounts must also invalidate work outside React: an old
@@ -1368,27 +1403,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     link.click();
     URL.revokeObjectURL(url);
   }
-  async function download(kind: "lesson" | "workbook" | "solutions") {
-    if (nativeRuntime)
-      throw new Error("PDF downloads require the configured web application.");
-    const publicationLesson = readingLesson ?? lesson;
-    if (!learner || !publicationLesson || !token) return;
-    const epoch = authEpoch.current;
-    const result = await fetch(
-      `/api/v1/learners/${learner.id}/publications/${publicationLesson.id}/${kind}`,
-      { headers: { authorization: `Bearer ${token}` } },
-    );
-    if (!result.ok)
-      throw new Error((await result.json()).error ?? "Download unavailable");
-    const blob = await result.blob();
-    if (epoch !== authEpoch.current) return;
-    const url = URL.createObjectURL(blob),
-      a = document.createElement("a");
-    a.href = url;
-    a.download = `${publicationLesson.id}-${kind}.pdf`;
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  }
   // Home shows where the learner stands in each strand; refresh it on return.
   // LegacyScreen is keyed by account. Bind each response to the learner and
   // birth-year context too, so a switch cannot display the preceding map.
@@ -2218,30 +2232,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                     ? "← Your idea"
                     : "← All lessons"}
                 </button>
-                {/* One compact control for the lesson's printable copies,
-                    each a PDF made for paper. */}
-                {!nativeRuntime && (
-                  <Menu
-                    label="Download"
-                    aria-label="Download PDFs of this lesson"
-                    triggerClassName="reader-download-trigger"
-                  >
-                    {(
-                      [
-                        ["lesson", "Lesson"],
-                        ["workbook", "Workbook"],
-                        ["solutions", "Solutions"],
-                      ] as const
-                    ).map(([kind, label]) => (
-                      <MenuItem
-                        key={kind}
-                        disabled={busy}
-                        onSelect={() => void action(() => download(kind))}
-                      >
-                        {label} PDF
-                      </MenuItem>
-                    ))}
-                  </Menu>
+                {/* One compact control for the lesson's typeset PDFs. A
+                    lesson without them on this server offers none. */}
+                {lessonPrint && !paused && (
+                  <LessonDownloadMenu print={lessonPrint} />
                 )}
               </div>
               <h2 ref={readerHeading} tabIndex={-1}>
@@ -2249,7 +2243,18 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
               </h2>
               {/* The partner note speaks to a parent about a child: an adult
                   learning on their own, or as a profile, has no use for it. */}
-              <ReferenceLesson lesson={readingLesson} partner={!ownLearner && !learner?.simulation} />
+              <ReferenceLesson
+                lesson={readingLesson}
+                partner={!ownLearner && !learner?.simulation}
+              />
+              {/* Free problems spent: the pause says why there is no
+                  download, after the lesson. */}
+              {lessonPrint && learner && paused && (
+                <LessonPause
+                  viewer={pauseViewer}
+                  learner={{ id: learner.id, name: learner.name }}
+                />
+              )}
             </article>
           )}
         </main>

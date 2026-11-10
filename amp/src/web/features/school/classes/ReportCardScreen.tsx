@@ -1,7 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
 import type { ReportCardsResponse } from "../../../../schools/teacher-contracts";
-import { Button, buttonClass } from "../../../ui/Button";
+import { buttonClass } from "../../../ui/Button";
+import { PrintButton } from "../../../ui/PrintButton";
+import { downloadPdf, paperFormat } from "../../../lib/pdf-download";
 import { EmptyState } from "../../../ui/EmptyState";
 import { LoadingScreen } from "../../../ui/LoadingScreen";
 import { useStaffSession } from "./api";
@@ -164,9 +166,25 @@ export function ReportCardScreen() {
             </div>
             <div className={styles.toolbarActions}>
               {back}
-              <Button variant="primary" onClick={() => window.print()}>
+              <PrintButton
+                variant="primary"
+                disabled={!session}
+                download={() =>
+                  downloadPdf({
+                    path: `/school/classes/${encodeURIComponent(place.class)}/report-cards.pdf?${new URLSearchParams(
+                      {
+                        term,
+                        ...(only ? { student: only } : {}),
+                        format: paperFormat(),
+                      },
+                    )}`,
+                    token: session!.token,
+                    name: "amp-report-cards.pdf",
+                  })
+                }
+              >
                 Print
-              </Button>
+              </PrintButton>
             </div>
           </div>
           <div className={styles.cards}>

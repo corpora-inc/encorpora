@@ -3,6 +3,8 @@ import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { strandNames } from "../../BirthYearPrompt";
 import { Button, buttonClass } from "../../ui/Button";
+import { PrintButton } from "../../ui/PrintButton";
+import { downloadPdf, paperFormat } from "../../lib/pdf-download";
 import { EmptyState } from "../../ui/EmptyState";
 import { Loading } from "../../ui/Loading";
 import { currentSession } from "../school/api";
@@ -151,14 +153,20 @@ export function OwnRecordScreen() {
               Workbooks
             </Link>
             {started && (
-              <Button
+              <PrintButton
                 variant="quiet"
                 className={styles.quiet}
-                onClick={() => window.print()}
+                download={() =>
+                  downloadPdf({
+                    path: `/me/practice/report.pdf?format=${paperFormat()}`,
+                    token: session.token,
+                    name: "amp-progress-report.pdf",
+                  })
+                }
               >
                 <PrintIcon />
                 Print report
-              </Button>
+              </PrintButton>
             )}
           </div>
         </header>

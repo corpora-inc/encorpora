@@ -50,6 +50,7 @@ export function Menu({
   triggerClassName,
   align = "end",
   showChevron = true,
+  busy = false,
 }: {
   /** The trigger's visible text. */
   label: ReactNode;
@@ -63,6 +64,8 @@ export function Menu({
   align?: "start" | "center" | "end";
   /** Icon-only controls already identify their menu without a second glyph. */
   showChevron?: boolean;
+  /** An action chosen from it is running: the trigger shows the busy wave. */
+  busy?: boolean;
 }) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
   const [padding, setPadding] = useState<Insets>(() =>
@@ -96,6 +99,7 @@ export function Menu({
           type="button"
           ref={triggerRef}
           aria-label={ariaLabel}
+          aria-busy={busy || undefined}
           className={`${styles.trigger} ${triggerClassName ?? ""}`}
         >
           {label}

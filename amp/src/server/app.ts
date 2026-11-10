@@ -67,6 +67,7 @@ import {
 } from "../content/problem-lessons";
 import { glossaryPayload } from "../glossary/resolve";
 import { lessons } from "../content/lessons";
+import { publicationFile, unpublishedLessonIds } from "./publications";
 import { startingBands } from "../learning/starting-point";
 import { buildInfo } from "./build-info";
 import { brand } from "../brand";
@@ -388,9 +389,17 @@ function routes(app: FastifyInstance, options: AppOptions) {
   });
   let catalogCache: PublicJson | undefined;
   app.get("/api/v1/catalog", async (request, reply) => {
+    // The image ships every lesson's PDFs (scripts/build-pdf-release.ts); a
+    // lesson listed here has none on this server, so it offers no print.
+    const unpublishedLessons = catalogCache
+      ? []
+      : await unpublishedLessonIds((message, error) =>
+          app.log.warn({ err: error }, message),
+        );
     catalogCache ??= publicJson({
       templates,
       lessons,
+      unpublishedLessons,
       skills,
       coverage: auditCurriculum(),
       mode: options.development ? "development" : "hosted",
@@ -780,9 +789,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
       });
       const filename = `${lessonId}-${kind}-${format}.pdf`;
       try {
-        const pdf = await readFile(
-          new URL(`../../artifacts/publications/${filename}`, import.meta.url),
-        );
+        const pdf = await readFile(publicationFile(filename));
         return reply
           .type("application/pdf")
           .header("Content-Disposition", `attachment; filename="${filename}"`)

@@ -5,6 +5,8 @@ import { currentSession, orgOptions } from "../api";
 import { OrgFrame } from "../OrgFrame";
 import { TransferSheet, useCanMove } from "../org/TransferSheet";
 import { Button, buttonClass } from "../../../ui/Button";
+import { PrintButton } from "../../../ui/PrintButton";
+import { downloadPdf, paperFormat } from "../../../lib/pdf-download";
 import { EmptyState } from "../../../ui/EmptyState";
 import { Loading } from "../../../ui/Loading";
 import { AppError } from "../../../lib/AppError";
@@ -106,9 +108,17 @@ export function StudentScreen() {
                   Move to another school
                 </Button>
               )}
-              <Button variant="secondary" onClick={() => window.print()}>
+              <PrintButton
+                download={() =>
+                  downloadPdf({
+                    path: `/school/students/${encodeURIComponent(params.student)}/record.pdf?format=${paperFormat()}`,
+                    token: session.token,
+                    name: "amp-progress-report.pdf",
+                  })
+                }
+              >
                 Print progress report
-              </Button>
+              </PrintButton>
             </div>
           </div>
           <p className={styles.printOnly}>

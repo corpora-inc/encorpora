@@ -3,6 +3,8 @@ import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 import type { TodayResponse } from "../../../../schools/teacher-contracts";
 import { Button, buttonClass } from "../../../ui/Button";
+import { PrintButton } from "../../../ui/PrintButton";
+import { downloadPdf, paperFormat } from "../../../lib/pdf-download";
 import { EmptyState } from "../../../ui/EmptyState";
 import { Loading } from "../../../ui/Loading";
 import { Sheet } from "../../../ui/Sheet";
@@ -339,9 +341,18 @@ function MapStudentSheet({
               session={currentSession()}
               personId={data.student.id}
             />
-            <Button variant="quiet" onClick={() => window.print()}>
+            <PrintButton
+              variant="quiet"
+              download={() =>
+                downloadPdf({
+                  path: `/school/students/${encodeURIComponent(data.student.id)}/record.pdf?format=${paperFormat()}`,
+                  token: currentSession().token,
+                  name: "amp-progress-report.pdf",
+                })
+              }
+            >
               Print progress report
-            </Button>
+            </PrintButton>
           </div>
           <StudentSections data={data} org={org} single />
         </div>
