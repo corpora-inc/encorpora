@@ -10,6 +10,9 @@
   margin-top: var(--space-1);
   color: var(--color-muted-text);
 }
+.startClass {
+  margin-top: var(--space-4);
+}
 .todos {
   container-type: inline-size;
   display: grid;
