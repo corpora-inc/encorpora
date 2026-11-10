@@ -100,7 +100,12 @@ const minutes: SegmentedOption<string>[] = [
   { value: "60", label: "60 min" },
 ];
 const plans: SegmentedOption<string>[] = [
-  { value: "year", label: "Yearly", detail: "$599 per year", badge: "Save $109" },
+  {
+    value: "year",
+    label: "Yearly",
+    detail: "$599 per year",
+    badge: "Save $109",
+  },
   { value: "month", label: "Monthly", detail: "$59 per month" },
 ];
 /** The adult start ladder (features/me/OwnStartScreen.tsx). */
@@ -116,8 +121,16 @@ const courses: SegmentedOption<string>[] = [
     label: "Middle school",
     detail: "Ratios, negatives, equations",
   },
-  { value: "algebra-1", label: "Algebra", detail: "Linear, quadratic, functions" },
-  { value: "precalculus", label: "Precalculus", detail: "Functions, trigonometry, vectors" },
+  {
+    value: "algebra-1",
+    label: "Algebra",
+    detail: "Linear, quadratic, functions",
+  },
+  {
+    value: "precalculus",
+    label: "Precalculus",
+    detail: "Functions, trigonometry, vectors",
+  },
 ];
 const roles: SegmentedOption<string>[] = [
   { value: "parent", label: "Parent" },
@@ -352,8 +365,8 @@ function ChoiceSection() {
           <Live initial={false}>
             {(value, set) => (
               <Checkbox checked={value} onChange={set}>
-                I am this child's parent or legal guardian, and I agree to
-                AMP's collection of the information described in the notice.
+                I am this child's parent or legal guardian, and I agree to AMP's
+                collection of the information described in the notice.
               </Checkbox>
             )}
           </Live>
@@ -490,7 +503,11 @@ function FieldSection() {
         <TextField label="Class code" value="K7M-24Q" disabled readOnly />
       </Specimen>
       <Specimen label="Text area with its count" wide>
-        <Live initial={"The fraction model on problem 3 shows quarters, but the question asks about eighths."}>
+        <Live
+          initial={
+            "The fraction model on problem 3 shows quarters, but the question asks about eighths."
+          }
+        >
           {(value, set) => (
             <TextArea
               label="What's wrong with this problem?"

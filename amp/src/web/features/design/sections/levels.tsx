@@ -35,7 +35,7 @@ const estimates: [string, LevelEstimate, boolean, string?][] = [
   ["Estimated, not practiced yet (dashed)", { level: 4, sd: 1.4 }, true],
   ["Far below the age reference", { level: 0.4, sd: 0.4 }, false],
   ["Past the end of the scale", { level: 11.5, sd: 0.5 }, false],
-  ["Strand colour (fractions)", { level: 3.4, sd: 0.45 }, false, "fractions"],
+  ["Strand color (fractions)", { level: 3.4, sd: 0.45 }, false, "fractions"],
 ];
 
 function Tracks({ size }: { size?: "large" }) {
@@ -99,7 +99,7 @@ export function LevelSections() {
         id="level-track"
         title="Level track and axis"
         source={["ui/LevelChart.tsx", "ui/LevelChart.module.css"]}
-        note="Band: the likely range. Dot: the best guess. Tick: typical for the learner's age. Scale centred on grade 4."
+        note="Band: the likely range. Dot: the best guess. Tick: typical for the learner's age. Scale centered on grade 4."
       >
         <Specimen label="Regular" wide>
           <Tracks />

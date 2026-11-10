@@ -91,7 +91,9 @@ export function WorkbookSections() {
             <WorkbookList
               session={session}
               learnerId={learner({ hasAccess: true }).id}
-              query={query({ data: { workbooks: workbooks.slice(0, 2), pdf: true } })}
+              query={query({
+                data: { workbooks: workbooks.slice(0, 2), pdf: true },
+              })}
               showDates={false}
             />
           </div>

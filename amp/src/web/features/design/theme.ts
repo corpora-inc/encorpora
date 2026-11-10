@@ -36,8 +36,7 @@ export function useDesignTheme(initial: DesignTheme) {
     const listen = channel();
     if (!listen) return;
     listen.onmessage = (event: MessageEvent<unknown>) => {
-      if (event.data === "light" || event.data === "dark")
-        setTheme(event.data);
+      if (event.data === "light" || event.data === "dark") setTheme(event.data);
     };
     return () => listen.close();
   }, []);

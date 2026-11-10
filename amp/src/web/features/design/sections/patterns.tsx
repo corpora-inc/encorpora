@@ -121,7 +121,10 @@ export function PatternSections() {
       <Section
         id="grade-pickers"
         title="Grade pickers (two of them)"
-        source={["features/profiles/GradePicker.tsx", "features/school/parts.tsx"]}
+        source={[
+          "features/profiles/GradePicker.tsx",
+          "features/school/parts.tsx",
+        ]}
         note="Two components with one name and different controls."
       >
         <Specimen label="Profiles: a radio row" wide>

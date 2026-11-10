@@ -61,8 +61,8 @@ export const overlaySpecimens = {
       <Sheet open onOpenChange={noop} title="Invite a co-teacher">
         <div className={styles.column}>
           <p className={styles.text}>
-            They see this class and can hand a device to a child. They can’t
-            add children from other families or buy access.
+            They see this class and can hand a device to a child. They can’t add
+            children from other families or buy access.
           </p>
           <TextField
             label="Email"
@@ -83,8 +83,8 @@ export const overlaySpecimens = {
           age reference. Striped bands mark areas not practiced yet.
         </p>
         <p>
-          Grades describe each skill’s curriculum placement, not your
-          estimated level.
+          Grades describe each skill’s curriculum placement, not your estimated
+          level.
         </p>
       </Dialog>
     </>
@@ -94,8 +94,8 @@ export const overlaySpecimens = {
       <Backdrop />
       <FocusDialog title="Hint" close={noop}>
         <p>
-          Each tray holds the same number of muffins. What operation joins
-          equal groups?
+          Each tray holds the same number of muffins. What operation joins equal
+          groups?
         </p>
       </FocusDialog>
     </>

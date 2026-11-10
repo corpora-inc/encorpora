@@ -154,7 +154,11 @@ export function StateSections() {
         <Specimen label="Stat row" wide>
           <StatRow label="This week">
             <StatTile label="active minutes" value="312" />
-            <StatTile label="problems" value="1,204" detail="+18% on last week" />
+            <StatTile
+              label="problems"
+              value="1,204"
+              detail="+18% on last week"
+            />
             <StatTile label="days worked" value="5" />
             <StatTile label="objectives gained" value="0" />
           </StatRow>
@@ -177,10 +181,7 @@ export function Backdrop() {
 export const stateSpecimens = {
   "loading-screen": () => <LoadingScreen />,
   "loading-error": () => (
-    <LoadingScreen
-      error="This screen could not be loaded."
-      retry={() => {}}
-    />
+    <LoadingScreen error="This screen could not be loaded." retry={() => {}} />
   ),
   "toast-alert": () => (
     <>

@@ -148,7 +148,8 @@ export const practiceFixtures = {
     explanation: typedExplanation,
     response: "36",
     outcome: null,
-    error: "Your answer didn't send. Check your connection, then press Check again.",
+    error:
+      "Your answer didn't send. Check your connection, then press Check again.",
   },
 } satisfies Record<string, PracticeFixture>;
 export type PracticeFixtureId = keyof typeof practiceFixtures;
@@ -273,7 +274,8 @@ const work: WorkItem[] = [
   {
     id: "w1",
     day: day(0),
-    prompt: "A baker fills 3 trays with 12 muffins on each tray. How many muffins?",
+    prompt:
+      "A baker fills 3 trays with 12 muffins on each tray. How many muffins?",
     answer: "36",
     response: "36",
     result: "independent",
@@ -502,11 +504,19 @@ export const workbooks: WorkbookSummary[] = [
     code: "K7M-24Q",
     createdAt: `${day(0)}T15:00:00.000Z`,
     estimatedMinutes: 42,
-    choices: { areas: ["fractions", "measurement"], lean: "stretch", lesson: true },
+    choices: {
+      areas: ["fractions", "measurement"],
+      lean: "stretch",
+      lesson: true,
+    },
     problems: 24,
     sections: [
       { kind: "warm-up", problems: 4, title: null },
-      { kind: "lesson", problems: 3, title: "Equal fractions on a number line" },
+      {
+        kind: "lesson",
+        problems: 3,
+        title: "Equal fractions on a number line",
+      },
       { kind: "practice", problems: 12, title: null },
       { kind: "review", problems: 5, title: null },
     ],
