@@ -27,7 +27,8 @@ import { request } from "../../lib/api";
 import { useUrlSearchText } from "../../lib/url-search-text";
 import { useLearnerStore } from "../../learner-store";
 import type { AuthSession } from "../../auth";
-import { FrontierMap, gradeName } from "../../Home";
+import { gradeName } from "../../Home";
+import { fitScale, LevelRows } from "../../ui/level-range";
 import { strandNames } from "../../BirthYearPrompt";
 import { Graph } from "./Graph";
 import { ConnectionList } from "./ConnectionList";
@@ -742,14 +743,7 @@ export function MapView({
                   )}
                 </p>
               )}
-              {frontier && learnerName && (
-                <FrontierMap
-                  name={learnerName}
-                  frontier={frontier}
-                  birthYear={birthYear}
-                  strands={Object.keys(frontier.strands)}
-                />
-              )}
+              {frontier && <PathwayLevels frontier={frontier} />}
             </details>
           </footer>
         </>
@@ -786,4 +780,25 @@ export function MapView({
       </Dialog>
     </main>
   );
+}
+
+/** Where the learner is by area, as every level view draws it
+ * (ui/level-range): the overall estimate, then each area practiced. */
+function PathwayLevels({
+  frontier,
+}: {
+  frontier: { overall: { level: number; sd: number }; strands: Record<string, { level: number; sd: number; answered?: number }> };
+}) {
+  const areas = Object.entries(frontier.strands)
+    .filter(([, estimate]) => (estimate.answered ?? 1) > 0)
+    .map(([id, estimate]) => ({
+      id,
+      label: strandNames[id] ?? id,
+      estimate,
+    }));
+  const scale = fitScale(
+    [frontier.overall, ...areas.map((area) => area.estimate)],
+    { minSpan: 5 },
+  );
+  return <LevelRows overall={frontier.overall} areas={areas} scale={scale} />;
 }
