@@ -1997,7 +1997,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             requestLesson={async () =>
               (
                 await api<{ lesson: ProblemLessonView }>(
-                  `/learners/${learner.id}/lesson-support`,
+                  `/learners/${learner.id}/lesson-support?film=lesson-film-v1`,
                   { problemId: problem.id },
                 )
               ).lesson
@@ -2106,7 +2106,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                 loadLesson={async (templateId) =>
                   (
                     await api<{ lesson: ProblemLessonView }>(
-                      `/problem-lessons/${templateId}`,
+                      `/problem-lessons/${templateId}?film=lesson-film-v1`,
                     )
                   ).lesson
                 }

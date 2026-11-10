@@ -1,0 +1,19 @@
+.film-route {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+}
+.film-unavailable {
+  max-width: 480px;
+  padding: 24px;
+}
+.film-unavailable a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+}

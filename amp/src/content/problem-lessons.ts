@@ -35,6 +35,7 @@ import { answerText } from "../math/selection-response";
 import type { MultiPartChoiceResponse } from "../math/multi-part-choice";
 import { examplePartsTexts, type ExampleParts } from "./example-parts";
 import { lessonVideoFor, type LessonVideo } from "./lesson-videos";
+import type { LessonFilm } from "./lesson-films";
 import type {
   GlossaryCard,
   GlossaryLexicon,
@@ -63,6 +64,7 @@ export type ProblemLessonView = {
   /** Plain-language meaning before the example; no unexplained notation. */
   intuition?: string;
   video?: LessonVideo;
+  film?: LessonFilm;
   /** The named property or definition the method rests on. */
   principle: string | null;
   /** The method's terms with their glossary definitions; the same shape

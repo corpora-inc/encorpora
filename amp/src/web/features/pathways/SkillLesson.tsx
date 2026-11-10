@@ -20,7 +20,7 @@ export default function SkillLesson({
     queryKey: ["pathways-lesson", templateId],
     queryFn: ({ signal }) =>
       request(
-        `/problem-lessons/${encodeURIComponent(templateId)}`,
+        `/problem-lessons/${encodeURIComponent(templateId)}?film=lesson-film-v1`,
         z.object({
           lesson: z.custom<ProblemLessonView>(
             (v) =>

@@ -125,6 +125,37 @@ async function measure(page: Page, t: number) {
   }, t);
 }
 
+test("review actions keep the displayed edition when using the shared player", async () => {
+  const page = await browser.newPage();
+  const id = "frequency-table-build--pr", added = "2026-01-01T00:00:00Z";
+  let submitted: unknown;
+  try {
+    await page.route("**/data/index.json?*", (route) => route.fulfill({ json: [{ id, title: "Review fixture", added }] }));
+    await page.route("**/data/grades.json?*", (route) => route.fulfill({ json: {} }));
+    await page.route("**/grade", async (route) => {
+      submitted = route.request().postDataJSON();
+      await route.fulfill({ json: { ...(submitted as object), at: added } });
+    });
+    await page.goto(`${origin}/live.html?id=${id}`);
+    await page.waitForSelector(".live.ready");
+    await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent("pagehide", { persisted: true })));
+    expect(await page.locator(".live.ready").count()).toBe(1);
+    await page.waitForFunction(() => document.querySelector<HTMLButtonElement>('.live-grade-btn.is-approve')?.disabled === false);
+    await page.getByRole("button", { name: "Approve", exact: true }).click();
+    await page.getByRole("textbox", { name: "Note", exact: true }).fill("Synthetic review");
+    await page.locator(".live-sheet-save").click();
+    await page.waitForFunction(() => document.querySelector('.live-grade-btn.is-approve')?.getAttribute("aria-pressed") === "true");
+    expect(submitted).toEqual({ id, grade: "approved", note: "Synthetic review", added });
+    await page.getByRole("button", { name: /Playback speed/ }).click();
+    await page.getByRole("menuitemradio", { name: "1.25×", exact: true }).click();
+    expect(await page.locator("audio").evaluate((audio: HTMLAudioElement) => audio.playbackRate)).toBe(1.25);
+    await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent("pagehide", { persisted: false })));
+    expect(await page.locator(".live").count()).toBe(0);
+  } finally {
+    await page.close();
+  }
+}, 60_000);
+
 test("centres figure ink, keeps a margin, and draws no name tags", async () => {
   const page = await browser.newPage();
   try {

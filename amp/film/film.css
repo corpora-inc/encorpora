@@ -1,5 +1,5 @@
 /* The film wears the app's own tokens; there is not one color literal for a surface here. */
-html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--color-surface); }
+html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--color-surface); }
 #film { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: var(--color-surface); color: var(--color-on-surface); }
 .film-shot { position: absolute; inset: 0; }
 .film-figure {
@@ -111,7 +111,7 @@ html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; backgro
 .film-block-pointline { fill: none; stroke: var(--color-muted-text); stroke-width: 2.5; stroke-dasharray: 7 9; stroke-linecap: round; }
 .film-blocks-head { font-size: 30px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-muted-text); font-weight: 600; }
 .film-blocks-digit { color: var(--color-figure-ink); }
-.film-blocks-digit.pad { color: #20776d; }
+.film-blocks-digit.pad { color: var(--color-figure-accent); }
 .film-blocks-count { color: var(--color-figure-accent); }
 
 /* The table: a light grid, a heavier rule before the totals, a gold band for the given row or column. */
@@ -177,12 +177,12 @@ html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; backgro
 .film-stack-cell { position: relative; text-align: center; min-width: 0.62em; padding: 0 0.04em; z-index: 1; }
 .film-stack-cell.point { min-width: 0.24em; }
 .film-stack-cell.op { padding-right: 0.22em; }
-.film-stack-cell.pad { color: #20776d; }
+.film-stack-cell.pad { color: var(--color-figure-accent); }
 .film-stack-cell.mark { font-size: 0.5em; line-height: 1.5; align-self: end; color: #9a5c12; font-weight: 600; }
 .film-stack-cell.mark.borrow { color: #9c4420; }
 .film-stack-rule { border-top: 0.06em solid currentColor; z-index: 1; }
-.film-stack-cell.answer { color: #20776d; z-index: 1; }
-.film-stack-band { background: color-mix(in srgb, #20776d 12%, transparent); border-radius: 0.16em; margin: -0.04em 0; z-index: 0; }
+.film-stack-cell.answer { color: var(--color-figure-accent); z-index: 1; }
+.film-stack-band { background: color-mix(in srgb, var(--color-figure-accent) 12%, transparent); border-radius: 0.16em; margin: -0.04em 0; z-index: 0; }
 .film-strike { position: absolute; left: 8%; right: 8%; top: 50%; height: 0.06em; background: #9c4420; transform: rotate(-24deg); }
 
 /* a stack with headers is the place-value chart: place names on top, even columns, the point line through every row */

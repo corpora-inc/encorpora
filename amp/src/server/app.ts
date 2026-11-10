@@ -1,4 +1,5 @@
 import type { Frontier } from "../learning/frontier";
+import { lessonFilmFor } from "../content/lesson-films";
 import {
   diagnoseLinePlotBuild,
   normalizeLinePlotBuild,
@@ -368,10 +369,18 @@ function routes(app: FastifyInstance, options: AppOptions) {
       .parse(request.params);
     if (!hasProblemLesson(templateId))
       throw new ApiError(404, "Lesson not found");
-    let cached = lessonCache.get(templateId);
+    const capability = (request.query as Record<string, unknown>).film;
+    const film = lessonFilmFor(templateId, capability);
+    const cacheKey = `${templateId}:${film?.version ?? "written"}`;
+    let cached = lessonCache.get(cacheKey);
     if (!cached) {
-      cached = publicJson({ lesson: problemLesson(templateId, "library") });
-      lessonCache.set(templateId, cached);
+      cached = publicJson({
+        lesson: {
+          ...problemLesson(templateId, "library"),
+          ...(film ? { film } : {}),
+        },
+      });
+      lessonCache.set(cacheKey, cached);
     }
     return sendPublicJson(request, reply, cached);
   });
@@ -827,15 +836,22 @@ function routes(app: FastifyInstance, options: AppOptions) {
         problem.lessonViewed = true;
         await tx.saveProblem(problem);
       }
+      const film = lessonFilmFor(
+        problem.public.templateId,
+        (request.query as Record<string, unknown>).film,
+      );
       return {
         recorded: true,
-        lesson: problemLesson(
-          problem.public.templateId,
-          problem.public.seed,
-          problem.public.prompt,
-          problem.public.response,
-          problem,
-        ),
+        lesson: {
+          ...problemLesson(
+            problem.public.templateId,
+            problem.public.seed,
+            problem.public.prompt,
+            problem.public.response,
+            problem,
+          ),
+          ...(film ? { film } : {}),
+        },
       };
     });
   });

@@ -1,0 +1,4383 @@
+{
+  "id": "staar-dot-plot-threshold--rr",
+  "title": "Counting dots on a dot plot",
+  "seed": "20261110:staar-dot-plot-threshold:7",
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -2,
+          -4.3,
+          20,
+          12
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "E": [
+            18,
+            0
+          ],
+          "Title": [
+            9,
+            8.5
+          ],
+          "Unit": [
+            9,
+            -2.35
+          ],
+          "Key": [
+            9,
+            -3.6
+          ],
+          "Ptitle": [
+            9,
+            10.5
+          ],
+          "Punit": [
+            9,
+            -2.35
+          ],
+          "Pkey": [
+            9,
+            -3.6
+          ],
+          "A0": [
+            0,
+            -0.18
+          ],
+          "B0": [
+            0,
+            0.18
+          ],
+          "Pv0": [
+            0,
+            -0.9
+          ],
+          "Pn0": [
+            0,
+            1.1
+          ],
+          "A1": [
+            3,
+            -0.18
+          ],
+          "B1": [
+            3,
+            0.18
+          ],
+          "Pv1": [
+            3,
+            -0.9
+          ],
+          "Pn1": [
+            3,
+            1.1
+          ],
+          "A2": [
+            6,
+            -0.18
+          ],
+          "B2": [
+            6,
+            0.18
+          ],
+          "Pv2": [
+            6,
+            -0.9
+          ],
+          "D2_1": [
+            6,
+            1.05
+          ],
+          "Pn2": [
+            6,
+            2.1500000000000004
+          ],
+          "A3": [
+            9,
+            -0.18
+          ],
+          "B3": [
+            9,
+            0.18
+          ],
+          "Pv3": [
+            9,
+            -0.9
+          ],
+          "D3_1": [
+            9,
+            1.05
+          ],
+          "D3_2": [
+            9,
+            2.1
+          ],
+          "Pn3": [
+            9,
+            3.2
+          ],
+          "A4": [
+            12,
+            -0.18
+          ],
+          "B4": [
+            12,
+            0.18
+          ],
+          "Pv4": [
+            12,
+            -0.9
+          ],
+          "Pn4": [
+            12,
+            1.1
+          ],
+          "A5": [
+            15,
+            -0.18
+          ],
+          "B5": [
+            15,
+            0.18
+          ],
+          "Pv5": [
+            15,
+            -0.9
+          ],
+          "D5_1": [
+            15,
+            1.05
+          ],
+          "Pn5": [
+            15,
+            2.1500000000000004
+          ],
+          "A6": [
+            18,
+            -0.18
+          ],
+          "B6": [
+            18,
+            0.18
+          ],
+          "Pv6": [
+            18,
+            -0.9
+          ],
+          "Pn6": [
+            18,
+            1.1
+          ],
+          "R0": [
+            3.5,
+            7
+          ],
+          "L0": [
+            3.5,
+            8.3
+          ],
+          "R1": [
+            7.1,
+            7
+          ],
+          "L1": [
+            7.1,
+            8.3
+          ],
+          "R2": [
+            10.7,
+            7
+          ],
+          "L2": [
+            10.7,
+            8.3
+          ],
+          "R3": [
+            14.3,
+            7
+          ],
+          "L3": [
+            14.3,
+            8.3
+          ],
+          "Count": [
+            9,
+            3.65
+          ]
+        },
+        "parts": [
+          {
+            "id": "axis",
+            "start": true,
+            "seg": [
+              "O",
+              "E"
+            ],
+            "ink": "muted",
+            "w": 5
+          },
+          {
+            "id": "title",
+            "start": true,
+            "label": "\\text{Four people's ratings}",
+            "at": "Ptitle",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "unit",
+            "start": true,
+            "label": "\\text{Rating (stars)}",
+            "at": "Punit",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "key",
+            "start": true,
+            "label": "\\text{1 dot = 1 person}",
+            "at": "Pkey",
+            "dir": "c",
+            "ink": "muted",
+            "size": "s"
+          },
+          {
+            "id": "tick0",
+            "start": true,
+            "seg": [
+              "A0",
+              "B0"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v0",
+            "start": true,
+            "label": "0",
+            "at": "Pv0",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "tick1",
+            "start": true,
+            "seg": [
+              "A1",
+              "B1"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v1",
+            "start": true,
+            "label": "1",
+            "at": "Pv1",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "tick2",
+            "start": true,
+            "seg": [
+              "A2",
+              "B2"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v2",
+            "start": true,
+            "label": "2",
+            "at": "Pv2",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "tick3",
+            "start": true,
+            "seg": [
+              "A3",
+              "B3"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v3",
+            "start": true,
+            "label": "3",
+            "at": "Pv3",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "tick4",
+            "start": true,
+            "seg": [
+              "A4",
+              "B4"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v4",
+            "start": true,
+            "label": "4",
+            "at": "Pv4",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "tick5",
+            "start": true,
+            "seg": [
+              "A5",
+              "B5"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v5",
+            "start": true,
+            "label": "5",
+            "at": "Pv5",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "tick6",
+            "start": true,
+            "seg": [
+              "A6",
+              "B6"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v6",
+            "start": true,
+            "label": "6",
+            "at": "Pv6",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "person0",
+            "start": true,
+            "dot": "R0",
+            "ink": "accent",
+            "r": 13
+          },
+          {
+            "id": "value0",
+            "start": true,
+            "label": "2",
+            "at": "L0",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l"
+          },
+          {
+            "id": "person1",
+            "start": true,
+            "dot": "R1",
+            "ink": "accent",
+            "r": 13
+          },
+          {
+            "id": "value1",
+            "start": true,
+            "label": "3",
+            "at": "L1",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l"
+          },
+          {
+            "id": "person2",
+            "start": true,
+            "dot": "R2",
+            "ink": "accent",
+            "r": 13
+          },
+          {
+            "id": "value2",
+            "start": true,
+            "label": "3",
+            "at": "L2",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l"
+          },
+          {
+            "id": "person3",
+            "start": true,
+            "dot": "R3",
+            "ink": "accent",
+            "r": 13
+          },
+          {
+            "id": "value3",
+            "start": true,
+            "label": "5",
+            "at": "L3",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l"
+          },
+          {
+            "id": "twoPeople",
+            "label": "\\text{2 people}",
+            "at": "Count",
+            "dir": "c",
+            "ink": "gold",
+            "size": "s"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Four people gave these ratings: two, three, three, and five stars.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "text",
+              "text": "Ratings: 2, 3, 3, 5 stars.",
+              "at": "Four"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "value0",
+                "value1",
+                "value2",
+                "value3"
+              ],
+              "at": "ratings"
+            }
+          ]
+        },
+        {
+          "say": "Collected numbers like these are called data. Each dot stands for one person.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "text",
+              "text": "Data are collected facts or numbers.",
+              "at": "data"
+            },
+            {
+              "do": "highlight",
+              "target": "key",
+              "at": "Each"
+            }
+          ]
+        },
+        {
+          "say": "How do those numbers become a dot plot?",
+          "pause": 0.7,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "person0",
+                "person1",
+                "person2",
+                "person3"
+              ],
+              "at": "numbers"
+            }
+          ]
+        },
+        {
+          "say": "Put each person's dot above their rating on this number line.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "axis",
+              "at": "number"
+            },
+            {
+              "do": "highlight",
+              "target": "v2",
+              "at": "rating"
+            }
+          ]
+        },
+        {
+          "say": "The first rating is two. Place its dot above two.",
+          "pause": 0.5,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "R0": [
+                  6,
+                  1.05
+                ]
+              },
+              "at": "Place"
+            },
+            {
+              "do": "hide",
+              "target": "value0",
+              "at": "Place"
+            }
+          ]
+        },
+        {
+          "say": "The next rating is three. Place that dot above three.",
+          "pause": 0.5,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "R1": [
+                  9,
+                  1.05
+                ]
+              },
+              "at": "Place"
+            },
+            {
+              "do": "hide",
+              "target": "value1",
+              "at": "Place"
+            }
+          ]
+        },
+        {
+          "say": "Another person gave three stars. Stack that person's dot above the first.",
+          "pause": 0.7,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "R2": [
+                  9,
+                  2.1
+                ]
+              },
+              "at": "Stack"
+            },
+            {
+              "do": "hide",
+              "target": "value2",
+              "at": "Stack"
+            }
+          ]
+        },
+        {
+          "say": "The last person gave five stars. Their dot goes above five.",
+          "pause": 0.5,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "R3": [
+                  15,
+                  1.05
+                ]
+              },
+              "at": "goes"
+            },
+            {
+              "do": "hide",
+              "target": "value3",
+              "at": "goes"
+            }
+          ]
+        },
+        {
+          "say": "This is a dot plot: one dot for each recorded value.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "term",
+              "word": "dot plot",
+              "meaning": "Each dot stands above its value. Repeated values stack.",
+              "at": "dot"
+            }
+          ]
+        },
+        {
+          "say": "Read across for the rating. Count up a stack for how many people.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "v3",
+              "at": "rating"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "person1",
+                "person2"
+              ],
+              "at": "Count"
+            },
+            {
+              "do": "show",
+              "target": "twoPeople",
+              "at": "people"
+            }
+          ]
+        },
+        {
+          "say": "The three names the rating. The two dots mean two people gave that rating.",
+          "pause": 0.7,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "v3",
+              "at": "three"
+            },
+            {
+              "do": "highlight",
+              "target": "twoPeople",
+              "at": "two"
+            },
+            {
+              "do": "text",
+              "text": "Value below. People in the stack.",
+              "at": "rating"
+            }
+          ]
+        },
+        {
+          "say": "A question can ask us to count several stacks together.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "person0",
+                "person1",
+                "person2",
+                "person3"
+              ],
+              "at": "several"
+            },
+            {
+              "do": "hide",
+              "target": "twoPeople",
+              "at": "several"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2,
+          -4.3,
+          23.599999999999998,
+          9.5
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "E": [
+            21.599999999999998,
+            0
+          ],
+          "Title": [
+            10.799999999999999,
+            8.5
+          ],
+          "Unit": [
+            10.799999999999999,
+            -2.35
+          ],
+          "Key": [
+            10.799999999999999,
+            -3.6
+          ],
+          "Ptitle": [
+            10.799999999999999,
+            8.5
+          ],
+          "Punit": [
+            10.799999999999999,
+            -2.35
+          ],
+          "Pkey": [
+            10.799999999999999,
+            -3.6
+          ],
+          "A0": [
+            0,
+            -0.18
+          ],
+          "B0": [
+            0,
+            0.18
+          ],
+          "Pv0": [
+            0,
+            -0.9
+          ],
+          "D0_1": [
+            0,
+            1.05
+          ],
+          "D0_2": [
+            0,
+            2.1
+          ],
+          "D0_3": [
+            0,
+            3.1500000000000004
+          ],
+          "D0_4": [
+            0,
+            4.2
+          ],
+          "Pn0": [
+            0,
+            5.300000000000001
+          ],
+          "A1": [
+            2.4,
+            -0.18
+          ],
+          "B1": [
+            2.4,
+            0.18
+          ],
+          "Pv1": [
+            2.4,
+            -0.9
+          ],
+          "D1_1": [
+            2.4,
+            1.05
+          ],
+          "Pn1": [
+            2.4,
+            2.1500000000000004
+          ],
+          "A2": [
+            4.8,
+            -0.18
+          ],
+          "B2": [
+            4.8,
+            0.18
+          ],
+          "Pv2": [
+            4.8,
+            -0.9
+          ],
+          "D2_1": [
+            4.8,
+            1.05
+          ],
+          "D2_2": [
+            4.8,
+            2.1
+          ],
+          "Pn2": [
+            4.8,
+            3.2
+          ],
+          "A3": [
+            7.199999999999999,
+            -0.18
+          ],
+          "B3": [
+            7.199999999999999,
+            0.18
+          ],
+          "Pv3": [
+            7.199999999999999,
+            -0.9
+          ],
+          "D3_1": [
+            7.199999999999999,
+            1.05
+          ],
+          "D3_2": [
+            7.199999999999999,
+            2.1
+          ],
+          "Pn3": [
+            7.199999999999999,
+            3.2
+          ],
+          "A4": [
+            9.6,
+            -0.18
+          ],
+          "B4": [
+            9.6,
+            0.18
+          ],
+          "Pv4": [
+            9.6,
+            -0.9
+          ],
+          "D4_1": [
+            9.6,
+            1.05
+          ],
+          "D4_2": [
+            9.6,
+            2.1
+          ],
+          "D4_3": [
+            9.6,
+            3.1500000000000004
+          ],
+          "Pn4": [
+            9.6,
+            4.25
+          ],
+          "A5": [
+            12,
+            -0.18
+          ],
+          "B5": [
+            12,
+            0.18
+          ],
+          "Pv5": [
+            12,
+            -0.9
+          ],
+          "D5_1": [
+            12,
+            1.05
+          ],
+          "Pn5": [
+            12,
+            2.1500000000000004
+          ],
+          "A6": [
+            14.399999999999999,
+            -0.18
+          ],
+          "B6": [
+            14.399999999999999,
+            0.18
+          ],
+          "Pv6": [
+            14.399999999999999,
+            -0.9
+          ],
+          "D6_1": [
+            14.399999999999999,
+            1.05
+          ],
+          "D6_2": [
+            14.399999999999999,
+            2.1
+          ],
+          "Pn6": [
+            14.399999999999999,
+            3.2
+          ],
+          "A7": [
+            16.8,
+            -0.18
+          ],
+          "B7": [
+            16.8,
+            0.18
+          ],
+          "Pv7": [
+            16.8,
+            -0.9
+          ],
+          "Pn7": [
+            16.8,
+            1.1
+          ],
+          "A8": [
+            19.2,
+            -0.18
+          ],
+          "B8": [
+            19.2,
+            0.18
+          ],
+          "Pv8": [
+            19.2,
+            -0.9
+          ],
+          "D8_1": [
+            19.2,
+            1.05
+          ],
+          "D8_2": [
+            19.2,
+            2.1
+          ],
+          "Pn8": [
+            19.2,
+            3.2
+          ],
+          "A9": [
+            21.599999999999998,
+            -0.18
+          ],
+          "B9": [
+            21.599999999999998,
+            0.18
+          ],
+          "Pv9": [
+            21.599999999999998,
+            -0.9
+          ],
+          "Pn9": [
+            21.599999999999998,
+            1.1
+          ],
+          "CutLow": [
+            14.399999999999999,
+            0.35
+          ],
+          "CutHigh": [
+            14.399999999999999,
+            6.4
+          ],
+          "RangeA": [
+            14.399999999999999,
+            -1.6
+          ],
+          "RangeB": [
+            21.599999999999998,
+            -1.6
+          ]
+        },
+        "parts": [
+          {
+            "id": "axis",
+            "start": true,
+            "seg": [
+              "O",
+              "E"
+            ],
+            "ink": "muted",
+            "w": 5
+          },
+          {
+            "id": "title",
+            "start": true,
+            "label": "\\text{Quiz scores: 17 students}",
+            "at": "Ptitle",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "unit",
+            "start": true,
+            "label": "\\text{Score (points)}",
+            "at": "Punit",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "key",
+            "start": true,
+            "label": "\\text{1 dot = 1 student}",
+            "at": "Pkey",
+            "dir": "c",
+            "ink": "muted",
+            "size": "s"
+          },
+          {
+            "id": "tick0",
+            "start": true,
+            "seg": [
+              "A0",
+              "B0"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v0",
+            "start": true,
+            "label": "0",
+            "at": "Pv0",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "d0_1",
+            "group": "stack0",
+            "start": true,
+            "dot": "D0_1",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g0_1",
+            "group": "gold0",
+            "dot": "D0_1",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d0_2",
+            "group": "stack0",
+            "start": true,
+            "dot": "D0_2",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g0_2",
+            "group": "gold0",
+            "dot": "D0_2",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d0_3",
+            "group": "stack0",
+            "start": true,
+            "dot": "D0_3",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g0_3",
+            "group": "gold0",
+            "dot": "D0_3",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d0_4",
+            "group": "stack0",
+            "start": true,
+            "dot": "D0_4",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g0_4",
+            "group": "gold0",
+            "dot": "D0_4",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "n0",
+            "group": "counts",
+            "label": "4",
+            "at": "Pn0",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "tick1",
+            "start": true,
+            "seg": [
+              "A1",
+              "B1"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v1",
+            "start": true,
+            "label": "1",
+            "at": "Pv1",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "d1_1",
+            "group": "stack1",
+            "start": true,
+            "dot": "D1_1",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g1_1",
+            "group": "gold1",
+            "dot": "D1_1",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "n1",
+            "group": "counts",
+            "label": "1",
+            "at": "Pn1",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "tick2",
+            "start": true,
+            "seg": [
+              "A2",
+              "B2"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v2",
+            "start": true,
+            "label": "2",
+            "at": "Pv2",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "d2_1",
+            "group": "stack2",
+            "start": true,
+            "dot": "D2_1",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g2_1",
+            "group": "gold2",
+            "dot": "D2_1",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d2_2",
+            "group": "stack2",
+            "start": true,
+            "dot": "D2_2",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g2_2",
+            "group": "gold2",
+            "dot": "D2_2",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "n2",
+            "group": "counts",
+            "label": "2",
+            "at": "Pn2",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "tick3",
+            "start": true,
+            "seg": [
+              "A3",
+              "B3"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v3",
+            "start": true,
+            "label": "3",
+            "at": "Pv3",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "d3_1",
+            "group": "stack3",
+            "start": true,
+            "dot": "D3_1",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g3_1",
+            "group": "gold3",
+            "dot": "D3_1",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d3_2",
+            "group": "stack3",
+            "start": true,
+            "dot": "D3_2",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g3_2",
+            "group": "gold3",
+            "dot": "D3_2",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "n3",
+            "group": "counts",
+            "label": "2",
+            "at": "Pn3",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "tick4",
+            "start": true,
+            "seg": [
+              "A4",
+              "B4"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v4",
+            "start": true,
+            "label": "4",
+            "at": "Pv4",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "d4_1",
+            "group": "stack4",
+            "start": true,
+            "dot": "D4_1",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g4_1",
+            "group": "gold4",
+            "dot": "D4_1",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d4_2",
+            "group": "stack4",
+            "start": true,
+            "dot": "D4_2",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g4_2",
+            "group": "gold4",
+            "dot": "D4_2",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d4_3",
+            "group": "stack4",
+            "start": true,
+            "dot": "D4_3",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g4_3",
+            "group": "gold4",
+            "dot": "D4_3",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "n4",
+            "group": "counts",
+            "label": "3",
+            "at": "Pn4",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "tick5",
+            "start": true,
+            "seg": [
+              "A5",
+              "B5"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v5",
+            "start": true,
+            "label": "5",
+            "at": "Pv5",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "d5_1",
+            "group": "stack5",
+            "start": true,
+            "dot": "D5_1",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g5_1",
+            "group": "gold5",
+            "dot": "D5_1",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "n5",
+            "group": "counts",
+            "label": "1",
+            "at": "Pn5",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "tick6",
+            "start": true,
+            "seg": [
+              "A6",
+              "B6"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v6",
+            "start": true,
+            "label": "6",
+            "at": "Pv6",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "d6_1",
+            "group": "stack6",
+            "start": true,
+            "dot": "D6_1",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g6_1",
+            "group": "gold6",
+            "dot": "D6_1",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d6_2",
+            "group": "stack6",
+            "start": true,
+            "dot": "D6_2",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g6_2",
+            "group": "gold6",
+            "dot": "D6_2",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "n6",
+            "group": "counts",
+            "label": "2",
+            "at": "Pn6",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "tick7",
+            "start": true,
+            "seg": [
+              "A7",
+              "B7"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v7",
+            "start": true,
+            "label": "7",
+            "at": "Pv7",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n7",
+            "group": "counts",
+            "label": "0",
+            "at": "Pn7",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "tick8",
+            "start": true,
+            "seg": [
+              "A8",
+              "B8"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v8",
+            "start": true,
+            "label": "8",
+            "at": "Pv8",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "d8_1",
+            "group": "stack8",
+            "start": true,
+            "dot": "D8_1",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g8_1",
+            "group": "gold8",
+            "dot": "D8_1",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d8_2",
+            "group": "stack8",
+            "start": true,
+            "dot": "D8_2",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g8_2",
+            "group": "gold8",
+            "dot": "D8_2",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "n8",
+            "group": "counts",
+            "label": "2",
+            "at": "Pn8",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "tick9",
+            "start": true,
+            "seg": [
+              "A9",
+              "B9"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v9",
+            "start": true,
+            "label": "9",
+            "at": "Pv9",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n9",
+            "group": "counts",
+            "label": "0",
+            "at": "Pn9",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "stretch",
+            "seg": [
+              "RangeA",
+              "RangeB"
+            ],
+            "ink": "gold",
+            "w": 8
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "This dot plot shows the quiz scores of seventeen students.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "The dot plot shows the quiz scores of 17 students. Each dot is one of the students. How many had a score at least 6?",
+              "id": "quizProblem"
+            },
+            {
+              "do": "highlight",
+              "target": "title",
+              "at": "seventeen"
+            }
+          ]
+        },
+        {
+          "say": "Each dot is one student. The numbers below are score points.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "key",
+              "at": "Each"
+            },
+            {
+              "do": "highlight",
+              "target": "unit",
+              "at": "points"
+            }
+          ]
+        },
+        {
+          "say": "How many students had a score at least six?",
+          "pause": 1,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "v6",
+              "at": "six"
+            },
+            {
+              "do": "write",
+              "tex": "\\cg{\\text{at least }6}",
+              "fresh": true,
+              "id": "quizRule",
+              "at": "least"
+            }
+          ]
+        },
+        {
+          "say": "My guess is two. I counted only the dots above six.",
+          "pause": 0.6,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "show",
+              "target": "gold6",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "n6",
+              "at": "counted"
+            }
+          ]
+        },
+        {
+          "say": "That counts students who scored exactly six. At least six also allows larger scores.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "gold6",
+              "at": "exactly"
+            },
+            {
+              "do": "text",
+              "text": "At least 6 means 6 or more.",
+              "at": "also"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "v7",
+                "v8",
+                "v9"
+              ],
+              "at": "larger"
+            }
+          ]
+        },
+        {
+          "say": "So keep six, and continue to the right through the whole scale.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "v6",
+              "at": "six"
+            },
+            {
+              "do": "draw",
+              "target": "stretch",
+              "at": "right"
+            }
+          ]
+        },
+        {
+          "say": "Gold will mark every dot we count. At six: one, two.",
+          "pause": 0.5,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "key",
+              "at": "dot"
+            },
+            {
+              "do": "highlight",
+              "target": "g6_1",
+              "at": "one"
+            },
+            {
+              "do": "highlight",
+              "target": "g6_2",
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "say": "Seven has no dots. Does the count stop there?",
+          "pause": 0.7,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "v7",
+              "at": "Seven"
+            },
+            {
+              "do": "show",
+              "target": "n7",
+              "at": "no"
+            }
+          ]
+        },
+        {
+          "say": "An empty position adds zero. Keep going: eight is also at least six.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "n7",
+              "at": "zero"
+            },
+            {
+              "do": "show",
+              "target": "gold8",
+              "at": "eight"
+            },
+            {
+              "do": "highlight",
+              "target": "v8",
+              "at": "eight"
+            }
+          ]
+        },
+        {
+          "say": "At eight, count one, two more students. Nine has no dots.",
+          "pause": 0.6,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "g8_1",
+              "at": "one"
+            },
+            {
+              "do": "highlight",
+              "target": "g8_2",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "n8",
+              "at": "students"
+            },
+            {
+              "do": "show",
+              "target": "n9",
+              "at": "no"
+            }
+          ]
+        },
+        {
+          "say": "Add the dot counts from six through nine: two, zero, two, zero.",
+          "pause": 0.8,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cg{2}+0+\\cg{2}+0=\\cg{4}",
+              "fresh": true,
+              "id": "quizSum",
+              "at": "two"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "gold6",
+                "gold8"
+              ],
+              "at": "counts"
+            }
+          ]
+        },
+        {
+          "say": "Six and eight are two scores, but they hold four students.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "v6",
+                "v8"
+              ],
+              "at": "scores"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "gold6",
+                "gold8"
+              ],
+              "at": "four"
+            },
+            {
+              "do": "text",
+              "text": "Count every dot in the chosen stacks.",
+              "at": "students"
+            }
+          ]
+        },
+        {
+          "say": "Four students scored at least six points.",
+          "pause": 0.8,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "answer",
+              "tex": "4\\ \\text{students}",
+              "id": "quizAnswer",
+              "at": "Four"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "gold6",
+                "gold8"
+              ],
+              "at": "students"
+            }
+          ]
+        },
+        {
+          "say": "Check the other stacks. Their counts are four, one, two, two, three, and one.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "n0",
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": "n1",
+              "at": "one"
+            },
+            {
+              "do": "show",
+              "target": "n2",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "n3",
+              "at": "two",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": "n4",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "n5",
+              "at": "one",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "Those are thirteen other students. Thirteen plus four equals all seventeen.",
+          "pause": 0.8,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "13+4=17",
+              "fresh": true,
+              "id": "quizCheck",
+              "at": "Thirteen"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "gold6",
+                "gold8"
+              ],
+              "at": "four"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2,
+          -4.3,
+          20,
+          11.850000000000001
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "E": [
+            18,
+            0
+          ],
+          "Title": [
+            9,
+            9.850000000000001
+          ],
+          "Unit": [
+            9,
+            -2.35
+          ],
+          "Key": [
+            9,
+            -3.6
+          ],
+          "Ptitle": [
+            9,
+            10.850000000000001
+          ],
+          "Punit": [
+            9,
+            -2.35
+          ],
+          "Pkey": [
+            9,
+            -3.6
+          ],
+          "A0": [
+            0,
+            -0.18
+          ],
+          "B0": [
+            0,
+            0.18
+          ],
+          "Pv0": [
+            0,
+            -0.9
+          ],
+          "Pn0": [
+            0,
+            1.1
+          ],
+          "A1": [
+            3,
+            -0.18
+          ],
+          "B1": [
+            3,
+            0.18
+          ],
+          "Pv1": [
+            3,
+            -0.9
+          ],
+          "D1_1": [
+            3,
+            1.05
+          ],
+          "D1_2": [
+            3,
+            2.1
+          ],
+          "D1_3": [
+            3,
+            3.1500000000000004
+          ],
+          "D1_4": [
+            3,
+            4.2
+          ],
+          "Pn1": [
+            3,
+            5.300000000000001
+          ],
+          "A2": [
+            6,
+            -0.18
+          ],
+          "B2": [
+            6,
+            0.18
+          ],
+          "Pv2": [
+            6,
+            -0.9
+          ],
+          "D2_1": [
+            6,
+            1.05
+          ],
+          "D2_2": [
+            6,
+            2.1
+          ],
+          "Pn2": [
+            6,
+            3.2
+          ],
+          "A3": [
+            9,
+            -0.18
+          ],
+          "B3": [
+            9,
+            0.18
+          ],
+          "Pv3": [
+            9,
+            -0.9
+          ],
+          "D3_1": [
+            9,
+            1.05
+          ],
+          "D3_2": [
+            9,
+            2.1
+          ],
+          "D3_3": [
+            9,
+            3.1500000000000004
+          ],
+          "D3_4": [
+            9,
+            4.2
+          ],
+          "D3_5": [
+            9,
+            5.25
+          ],
+          "D3_6": [
+            9,
+            6.300000000000001
+          ],
+          "D3_7": [
+            9,
+            7.3500000000000005
+          ],
+          "Pn3": [
+            9,
+            8.450000000000001
+          ],
+          "A4": [
+            12,
+            -0.18
+          ],
+          "B4": [
+            12,
+            0.18
+          ],
+          "Pv4": [
+            12,
+            -0.9
+          ],
+          "D4_1": [
+            12,
+            1.05
+          ],
+          "D4_2": [
+            12,
+            2.1
+          ],
+          "D4_3": [
+            12,
+            3.1500000000000004
+          ],
+          "Pn4": [
+            12,
+            4.25
+          ],
+          "A5": [
+            15,
+            -0.18
+          ],
+          "B5": [
+            15,
+            0.18
+          ],
+          "Pv5": [
+            15,
+            -0.9
+          ],
+          "D5_1": [
+            15,
+            1.05
+          ],
+          "D5_2": [
+            15,
+            2.1
+          ],
+          "Pn5": [
+            15,
+            3.2
+          ],
+          "A6": [
+            18,
+            -0.18
+          ],
+          "B6": [
+            18,
+            0.18
+          ],
+          "Pv6": [
+            18,
+            -0.9
+          ],
+          "Pn6": [
+            18,
+            1.1
+          ],
+          "CutLow": [
+            12,
+            0.35
+          ],
+          "CutHigh": [
+            12,
+            8.65
+          ],
+          "RangeA": [
+            0,
+            -1.6
+          ],
+          "RangeB": [
+            10.65,
+            -1.6
+          ]
+        },
+        "parts": [
+          {
+            "id": "axis",
+            "start": true,
+            "seg": [
+              "O",
+              "E"
+            ],
+            "ink": "muted",
+            "w": 5
+          },
+          {
+            "id": "title",
+            "start": true,
+            "label": "\\text{Trail ratings: 18 riders}",
+            "at": "Ptitle",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "unit",
+            "start": true,
+            "label": "\\text{Rating (stars)}",
+            "at": "Punit",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "key",
+            "start": true,
+            "label": "\\text{1 dot = 1 rider}",
+            "at": "Pkey",
+            "dir": "c",
+            "ink": "muted",
+            "size": "s"
+          },
+          {
+            "id": "tick0",
+            "start": true,
+            "seg": [
+              "A0",
+              "B0"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v0",
+            "start": true,
+            "label": "0",
+            "at": "Pv0",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n0",
+            "group": "counts",
+            "label": "0",
+            "at": "Pn0",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "tick1",
+            "start": true,
+            "seg": [
+              "A1",
+              "B1"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v1",
+            "start": true,
+            "label": "1",
+            "at": "Pv1",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "d1_1",
+            "group": "stack1",
+            "start": true,
+            "dot": "D1_1",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g1_1",
+            "group": "gold1",
+            "dot": "D1_1",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d1_2",
+            "group": "stack1",
+            "start": true,
+            "dot": "D1_2",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g1_2",
+            "group": "gold1",
+            "dot": "D1_2",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d1_3",
+            "group": "stack1",
+            "start": true,
+            "dot": "D1_3",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g1_3",
+            "group": "gold1",
+            "dot": "D1_3",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d1_4",
+            "group": "stack1",
+            "start": true,
+            "dot": "D1_4",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g1_4",
+            "group": "gold1",
+            "dot": "D1_4",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "n1",
+            "group": "counts",
+            "label": "4",
+            "at": "Pn1",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "tick2",
+            "start": true,
+            "seg": [
+              "A2",
+              "B2"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v2",
+            "start": true,
+            "label": "2",
+            "at": "Pv2",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "d2_1",
+            "group": "stack2",
+            "start": true,
+            "dot": "D2_1",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g2_1",
+            "group": "gold2",
+            "dot": "D2_1",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d2_2",
+            "group": "stack2",
+            "start": true,
+            "dot": "D2_2",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g2_2",
+            "group": "gold2",
+            "dot": "D2_2",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "n2",
+            "group": "counts",
+            "label": "2",
+            "at": "Pn2",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "tick3",
+            "start": true,
+            "seg": [
+              "A3",
+              "B3"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v3",
+            "start": true,
+            "label": "3",
+            "at": "Pv3",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "d3_1",
+            "group": "stack3",
+            "start": true,
+            "dot": "D3_1",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g3_1",
+            "group": "gold3",
+            "dot": "D3_1",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d3_2",
+            "group": "stack3",
+            "start": true,
+            "dot": "D3_2",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g3_2",
+            "group": "gold3",
+            "dot": "D3_2",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d3_3",
+            "group": "stack3",
+            "start": true,
+            "dot": "D3_3",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g3_3",
+            "group": "gold3",
+            "dot": "D3_3",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d3_4",
+            "group": "stack3",
+            "start": true,
+            "dot": "D3_4",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g3_4",
+            "group": "gold3",
+            "dot": "D3_4",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d3_5",
+            "group": "stack3",
+            "start": true,
+            "dot": "D3_5",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g3_5",
+            "group": "gold3",
+            "dot": "D3_5",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d3_6",
+            "group": "stack3",
+            "start": true,
+            "dot": "D3_6",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g3_6",
+            "group": "gold3",
+            "dot": "D3_6",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d3_7",
+            "group": "stack3",
+            "start": true,
+            "dot": "D3_7",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g3_7",
+            "group": "gold3",
+            "dot": "D3_7",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "n3",
+            "group": "counts",
+            "label": "7",
+            "at": "Pn3",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "tick4",
+            "start": true,
+            "seg": [
+              "A4",
+              "B4"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v4",
+            "start": true,
+            "label": "4",
+            "at": "Pv4",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "d4_1",
+            "group": "stack4",
+            "start": true,
+            "dot": "D4_1",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g4_1",
+            "group": "gold4",
+            "dot": "D4_1",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d4_2",
+            "group": "stack4",
+            "start": true,
+            "dot": "D4_2",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g4_2",
+            "group": "gold4",
+            "dot": "D4_2",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d4_3",
+            "group": "stack4",
+            "start": true,
+            "dot": "D4_3",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g4_3",
+            "group": "gold4",
+            "dot": "D4_3",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "n4",
+            "group": "counts",
+            "label": "3",
+            "at": "Pn4",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "tick5",
+            "start": true,
+            "seg": [
+              "A5",
+              "B5"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v5",
+            "start": true,
+            "label": "5",
+            "at": "Pv5",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "d5_1",
+            "group": "stack5",
+            "start": true,
+            "dot": "D5_1",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g5_1",
+            "group": "gold5",
+            "dot": "D5_1",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d5_2",
+            "group": "stack5",
+            "start": true,
+            "dot": "D5_2",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g5_2",
+            "group": "gold5",
+            "dot": "D5_2",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "n5",
+            "group": "counts",
+            "label": "2",
+            "at": "Pn5",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "tick6",
+            "start": true,
+            "seg": [
+              "A6",
+              "B6"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v6",
+            "start": true,
+            "label": "6",
+            "at": "Pv6",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n6",
+            "group": "counts",
+            "label": "0",
+            "at": "Pn6",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "stretch",
+            "seg": [
+              "RangeA",
+              "RangeB"
+            ],
+            "ink": "gold",
+            "w": 8
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Eighteen riders rated a trail. Each dot is one rider.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "The dot plot shows the ratings that 18 riders gave a trail. Each dot is one rider. How many had a rating less than 4?",
+              "id": "trailProblem"
+            },
+            {
+              "do": "highlight",
+              "target": "key",
+              "at": "dot"
+            }
+          ]
+        },
+        {
+          "say": "How many riders gave a rating less than four? Less than means smaller than.",
+          "pause": 0.7,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cg{\\text{less than }4}",
+              "fresh": true,
+              "id": "trailRule",
+              "at": "less"
+            },
+            {
+              "do": "highlight",
+              "target": "v4",
+              "at": "four"
+            },
+            {
+              "do": "text",
+              "text": "Less than 4 means smaller than 4.",
+              "at": "smaller"
+            }
+          ]
+        },
+        {
+          "say": "My guess is to keep four, like we kept six before.",
+          "pause": 0.5,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "gold1",
+                "gold2",
+                "gold3",
+                "gold4"
+              ],
+              "at": "keep"
+            },
+            {
+              "do": "highlight",
+              "target": "v4",
+              "at": "four"
+            }
+          ]
+        },
+        {
+          "say": "Test that guess. Is a four-star rating smaller than four?",
+          "pause": 1,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "gold4",
+              "at": "four-star"
+            },
+            {
+              "do": "highlight",
+              "target": "v4",
+              "at": "smaller"
+            }
+          ]
+        },
+        {
+          "say": "No. Four equals four. These three dots must stay out.",
+          "pause": 0.7,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "g4_1",
+                "g4_2",
+                "g4_3"
+              ],
+              "at": "three"
+            },
+            {
+              "do": "hide",
+              "target": "gold4",
+              "at": "out"
+            }
+          ]
+        },
+        {
+          "say": "Leave four out. Choose the values to its left: zero, one, two, and three.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "v4",
+              "at": "four"
+            },
+            {
+              "do": "draw",
+              "target": "stretch",
+              "at": "left"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "v0",
+                "v1",
+                "v2",
+                "v3"
+              ],
+              "at": "zero"
+            }
+          ]
+        },
+        {
+          "say": "No rider gave zero. Above one, count one, two, three, four riders.",
+          "pause": 0.6,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "n0",
+              "at": "zero"
+            },
+            {
+              "do": "highlight",
+              "target": "g1_1",
+              "at": "one",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": "g1_2",
+              "at": "two"
+            },
+            {
+              "do": "highlight",
+              "target": "g1_3",
+              "at": "three"
+            },
+            {
+              "do": "highlight",
+              "target": "g1_4",
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": "n1",
+              "at": "riders"
+            }
+          ]
+        },
+        {
+          "say": "Above two, count one, two riders.",
+          "pause": 0.5,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "g2_1",
+              "at": "one"
+            },
+            {
+              "do": "highlight",
+              "target": "g2_2",
+              "at": "two",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": "n2",
+              "at": "riders"
+            }
+          ]
+        },
+        {
+          "say": "Above three, count one, two, three, four...",
+          "pause": 0.6,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "g3_1",
+              "at": "one"
+            },
+            {
+              "do": "highlight",
+              "target": "g3_2",
+              "at": "two"
+            },
+            {
+              "do": "highlight",
+              "target": "g3_3",
+              "at": "three",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": "g3_4",
+              "at": "four"
+            }
+          ]
+        },
+        {
+          "say": "Five, six, seven riders in that stack.",
+          "pause": 0.7,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "g3_5",
+              "at": "Five"
+            },
+            {
+              "do": "highlight",
+              "target": "g3_6",
+              "at": "six"
+            },
+            {
+              "do": "highlight",
+              "target": "g3_7",
+              "at": "seven"
+            },
+            {
+              "do": "show",
+              "target": "n3",
+              "at": "stack"
+            }
+          ]
+        },
+        {
+          "say": "Add those counts: four plus two plus seven equals thirteen.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cg{4}+\\cg{2}+\\cg{7}=\\cg{13}",
+              "fresh": true,
+              "id": "trailSum",
+              "at": "four"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "gold1",
+                "gold2",
+                "gold3"
+              ],
+              "at": "counts"
+            }
+          ]
+        },
+        {
+          "say": "Thirteen riders gave fewer than four stars.",
+          "pause": 0.8,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "answer",
+              "tex": "13\\ \\text{riders}",
+              "id": "trailAnswer",
+              "at": "Thirteen"
+            }
+          ]
+        },
+        {
+          "say": "Check: three riders gave four stars, and two gave five stars.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "n4",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "n5",
+              "at": "two"
+            },
+            {
+              "do": "highlight",
+              "target": "stack4",
+              "at": "four"
+            },
+            {
+              "do": "highlight",
+              "target": "stack5",
+              "at": "five"
+            }
+          ]
+        },
+        {
+          "say": "Those five riders, with our thirteen, account for all eighteen.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "13+5=18",
+              "fresh": true,
+              "id": "trailCheck",
+              "at": "five"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "gold1",
+                "gold2",
+                "gold3"
+              ],
+              "at": "thirteen"
+            }
+          ]
+        },
+        {
+          "say": "Greater than means larger than. It also leaves the named value out.",
+          "pause": 1,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "watch",
+              "text": "At least includes the named value. Less than and greater than leave it out.",
+              "id": "boundaryRule",
+              "at": "Greater"
+            },
+            {
+              "do": "highlight",
+              "target": "v4",
+              "at": "out"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2,
+          -4.3,
+          20,
+          9.5
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "E": [
+            18,
+            0
+          ],
+          "Title": [
+            9,
+            8.5
+          ],
+          "Unit": [
+            9,
+            -2.35
+          ],
+          "Key": [
+            9,
+            -3.6
+          ],
+          "Ptitle": [
+            9,
+            8.5
+          ],
+          "Punit": [
+            9,
+            -2.35
+          ],
+          "Pkey": [
+            9,
+            -3.6
+          ],
+          "A0": [
+            0,
+            -0.18
+          ],
+          "B0": [
+            0,
+            0.18
+          ],
+          "Pv0": [
+            0,
+            -0.9
+          ],
+          "Pn0": [
+            0,
+            1.1
+          ],
+          "A1": [
+            3,
+            -0.18
+          ],
+          "B1": [
+            3,
+            0.18
+          ],
+          "Pv1": [
+            3,
+            -0.9
+          ],
+          "D1_1": [
+            3,
+            1.05
+          ],
+          "D1_2": [
+            3,
+            2.1
+          ],
+          "Pn1": [
+            3,
+            3.2
+          ],
+          "A2": [
+            6,
+            -0.18
+          ],
+          "B2": [
+            6,
+            0.18
+          ],
+          "Pv2": [
+            6,
+            -0.9
+          ],
+          "D2_1": [
+            6,
+            1.05
+          ],
+          "D2_2": [
+            6,
+            2.1
+          ],
+          "D2_3": [
+            6,
+            3.1500000000000004
+          ],
+          "D2_4": [
+            6,
+            4.2
+          ],
+          "D2_5": [
+            6,
+            5.25
+          ],
+          "Pn2": [
+            6,
+            6.35
+          ],
+          "A3": [
+            9,
+            -0.18
+          ],
+          "B3": [
+            9,
+            0.18
+          ],
+          "Pv3": [
+            9,
+            -0.9
+          ],
+          "D3_1": [
+            9,
+            1.05
+          ],
+          "D3_2": [
+            9,
+            2.1
+          ],
+          "Pn3": [
+            9,
+            3.2
+          ],
+          "A4": [
+            12,
+            -0.18
+          ],
+          "B4": [
+            12,
+            0.18
+          ],
+          "Pv4": [
+            12,
+            -0.9
+          ],
+          "D4_1": [
+            12,
+            1.05
+          ],
+          "D4_2": [
+            12,
+            2.1
+          ],
+          "D4_3": [
+            12,
+            3.1500000000000004
+          ],
+          "D4_4": [
+            12,
+            4.2
+          ],
+          "D4_5": [
+            12,
+            5.25
+          ],
+          "Pn4": [
+            12,
+            6.35
+          ],
+          "A5": [
+            15,
+            -0.18
+          ],
+          "B5": [
+            15,
+            0.18
+          ],
+          "Pv5": [
+            15,
+            -0.9
+          ],
+          "D5_1": [
+            15,
+            1.05
+          ],
+          "D5_2": [
+            15,
+            2.1
+          ],
+          "Pn5": [
+            15,
+            3.2
+          ],
+          "A6": [
+            18,
+            -0.18
+          ],
+          "B6": [
+            18,
+            0.18
+          ],
+          "Pv6": [
+            18,
+            -0.9
+          ],
+          "Pn6": [
+            18,
+            1.1
+          ],
+          "CutLow": [
+            9,
+            0.35
+          ],
+          "CutHigh": [
+            9,
+            6.55
+          ],
+          "RangeA": [
+            10.35,
+            -1.6
+          ],
+          "RangeB": [
+            18,
+            -1.6
+          ]
+        },
+        "parts": [
+          {
+            "id": "axis",
+            "start": true,
+            "seg": [
+              "O",
+              "E"
+            ],
+            "ink": "muted",
+            "w": 5
+          },
+          {
+            "id": "title",
+            "start": true,
+            "label": "\\text{Lunch ratings: 16 customers}",
+            "at": "Ptitle",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "unit",
+            "start": true,
+            "label": "\\text{Rating (stars)}",
+            "at": "Punit",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "key",
+            "start": true,
+            "label": "\\text{1 dot = 1 customer}",
+            "at": "Pkey",
+            "dir": "c",
+            "ink": "muted",
+            "size": "s"
+          },
+          {
+            "id": "tick0",
+            "start": true,
+            "seg": [
+              "A0",
+              "B0"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v0",
+            "start": true,
+            "label": "0",
+            "at": "Pv0",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n0",
+            "group": "counts",
+            "label": "0",
+            "at": "Pn0",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "tick1",
+            "start": true,
+            "seg": [
+              "A1",
+              "B1"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v1",
+            "start": true,
+            "label": "1",
+            "at": "Pv1",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "d1_1",
+            "group": "stack1",
+            "start": true,
+            "dot": "D1_1",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g1_1",
+            "group": "gold1",
+            "dot": "D1_1",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d1_2",
+            "group": "stack1",
+            "start": true,
+            "dot": "D1_2",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g1_2",
+            "group": "gold1",
+            "dot": "D1_2",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "n1",
+            "group": "counts",
+            "label": "2",
+            "at": "Pn1",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "tick2",
+            "start": true,
+            "seg": [
+              "A2",
+              "B2"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v2",
+            "start": true,
+            "label": "2",
+            "at": "Pv2",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "d2_1",
+            "group": "stack2",
+            "start": true,
+            "dot": "D2_1",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g2_1",
+            "group": "gold2",
+            "dot": "D2_1",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d2_2",
+            "group": "stack2",
+            "start": true,
+            "dot": "D2_2",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g2_2",
+            "group": "gold2",
+            "dot": "D2_2",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d2_3",
+            "group": "stack2",
+            "start": true,
+            "dot": "D2_3",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g2_3",
+            "group": "gold2",
+            "dot": "D2_3",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d2_4",
+            "group": "stack2",
+            "start": true,
+            "dot": "D2_4",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g2_4",
+            "group": "gold2",
+            "dot": "D2_4",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d2_5",
+            "group": "stack2",
+            "start": true,
+            "dot": "D2_5",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g2_5",
+            "group": "gold2",
+            "dot": "D2_5",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "n2",
+            "group": "counts",
+            "label": "5",
+            "at": "Pn2",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "tick3",
+            "start": true,
+            "seg": [
+              "A3",
+              "B3"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v3",
+            "start": true,
+            "label": "3",
+            "at": "Pv3",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "d3_1",
+            "group": "stack3",
+            "start": true,
+            "dot": "D3_1",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g3_1",
+            "group": "gold3",
+            "dot": "D3_1",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d3_2",
+            "group": "stack3",
+            "start": true,
+            "dot": "D3_2",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g3_2",
+            "group": "gold3",
+            "dot": "D3_2",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "n3",
+            "group": "counts",
+            "label": "2",
+            "at": "Pn3",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "tick4",
+            "start": true,
+            "seg": [
+              "A4",
+              "B4"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v4",
+            "start": true,
+            "label": "4",
+            "at": "Pv4",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "d4_1",
+            "group": "stack4",
+            "start": true,
+            "dot": "D4_1",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g4_1",
+            "group": "gold4",
+            "dot": "D4_1",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d4_2",
+            "group": "stack4",
+            "start": true,
+            "dot": "D4_2",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g4_2",
+            "group": "gold4",
+            "dot": "D4_2",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d4_3",
+            "group": "stack4",
+            "start": true,
+            "dot": "D4_3",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g4_3",
+            "group": "gold4",
+            "dot": "D4_3",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d4_4",
+            "group": "stack4",
+            "start": true,
+            "dot": "D4_4",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g4_4",
+            "group": "gold4",
+            "dot": "D4_4",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d4_5",
+            "group": "stack4",
+            "start": true,
+            "dot": "D4_5",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g4_5",
+            "group": "gold4",
+            "dot": "D4_5",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "n4",
+            "group": "counts",
+            "label": "5",
+            "at": "Pn4",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "tick5",
+            "start": true,
+            "seg": [
+              "A5",
+              "B5"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v5",
+            "start": true,
+            "label": "5",
+            "at": "Pv5",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "d5_1",
+            "group": "stack5",
+            "start": true,
+            "dot": "D5_1",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g5_1",
+            "group": "gold5",
+            "dot": "D5_1",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "d5_2",
+            "group": "stack5",
+            "start": true,
+            "dot": "D5_2",
+            "ink": "muted",
+            "r": 12
+          },
+          {
+            "id": "g5_2",
+            "group": "gold5",
+            "dot": "D5_2",
+            "ink": "gold",
+            "r": 12
+          },
+          {
+            "id": "n5",
+            "group": "counts",
+            "label": "2",
+            "at": "Pn5",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "tick6",
+            "start": true,
+            "seg": [
+              "A6",
+              "B6"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "v6",
+            "start": true,
+            "label": "6",
+            "at": "Pv6",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n6",
+            "group": "counts",
+            "label": "0",
+            "at": "Pn6",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "stretch",
+            "seg": [
+              "RangeA",
+              "RangeB"
+            ],
+            "ink": "gold",
+            "w": 8
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Champ, sixteen customers rated a lunch. Each dot is one customer.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "The dot plot shows the ratings that 16 customers gave a lunch. Each dot is one customer. How many had a rating greater than 3?",
+              "id": "lunchProblem"
+            },
+            {
+              "do": "highlight",
+              "target": "key",
+              "at": "dot"
+            }
+          ]
+        },
+        {
+          "say": "Greater than means larger than. How many customers gave a rating greater than three?",
+          "pause": 1.2,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "text",
+              "text": "Greater than 3 means larger than 3.",
+              "id": "lunchRule",
+              "at": "larger"
+            },
+            {
+              "do": "highlight",
+              "target": "v3",
+              "at": "three"
+            }
+          ]
+        },
+        {
+          "say": "Larger ratings are to the right of three. I choose four, five, and six.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "v3",
+              "at": "three"
+            },
+            {
+              "do": "draw",
+              "target": "stretch",
+              "at": "right"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "v4",
+                "v5",
+                "v6"
+              ],
+              "at": "choose"
+            },
+            {
+              "do": "write",
+              "tex": "\\cg{\\text{ratings: }4,\\ 5,\\ 6}",
+              "fresh": true,
+              "id": "lunchValues",
+              "at": "four"
+            }
+          ]
+        },
+        {
+          "say": "What about the dots on three?",
+          "pause": 1,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "stack3",
+              "at": "dots"
+            }
+          ]
+        },
+        {
+          "say": "They show exactly three stars. Greater than three leaves both of them out.",
+          "pause": 0.7,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "v3",
+              "at": "exactly"
+            },
+            {
+              "do": "show",
+              "target": [
+                "gold4",
+                "gold5"
+              ],
+              "at": "out"
+            },
+            {
+              "do": "text",
+              "text": "Leave the two dots on 3 out.",
+              "id": "lunchBoundary",
+              "at": "out"
+            }
+          ]
+        },
+        {
+          "say": "Above four: one, two, three, four, five customers.",
+          "pause": 0.7,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "g4_1",
+              "at": "one"
+            },
+            {
+              "do": "highlight",
+              "target": "g4_2",
+              "at": "two"
+            },
+            {
+              "do": "highlight",
+              "target": "g4_3",
+              "at": "three"
+            },
+            {
+              "do": "highlight",
+              "target": "g4_4",
+              "at": "four",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": "g4_5",
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": "n4",
+              "at": "customers"
+            }
+          ]
+        },
+        {
+          "say": "Above five: one, two customers. Above six: zero.",
+          "pause": 0.7,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "g5_1",
+              "at": "one"
+            },
+            {
+              "do": "highlight",
+              "target": "g5_2",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "n5",
+              "at": "customers"
+            },
+            {
+              "do": "show",
+              "target": "n6",
+              "at": "zero"
+            }
+          ]
+        },
+        {
+          "say": "Five plus two plus zero equals seven customers.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cg{5}+\\cg{2}+0=\\cg{7}",
+              "fresh": true,
+              "id": "lunchSum",
+              "at": "Five"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "gold4",
+                "gold5"
+              ],
+              "at": "seven"
+            }
+          ]
+        },
+        {
+          "say": "Seven customers gave a rating greater than three stars.",
+          "pause": 0.8,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "answer",
+              "tex": "7\\ \\text{customers}",
+              "id": "lunchAnswer",
+              "at": "Seven"
+            }
+          ]
+        },
+        {
+          "say": "Can you check against the total?",
+          "pause": 1,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "title",
+              "at": "total"
+            }
+          ]
+        },
+        {
+          "say": "Outside my count: two at one, five at two, and two at three.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "show",
+              "target": "n1",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "n2",
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": "n3",
+              "at": "two",
+              "nth": 3
+            }
+          ]
+        },
+        {
+          "say": "That's nine outside. Nine plus seven equals all sixteen customers.",
+          "pause": 0.7,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "write",
+              "tex": "9+7=16",
+              "fresh": true,
+              "id": "lunchCheck",
+              "at": "Nine"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "gold4",
+                "gold5"
+              ],
+              "at": "seven"
+            }
+          ]
+        },
+        {
+          "say": "I use the words to choose the values. Then I count every dot above those values.",
+          "pause": 0.8,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "v4",
+                "v5",
+                "v6"
+              ],
+              "at": "values"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "gold4",
+                "gold5"
+              ],
+              "at": "dot"
+            },
+            {
+              "do": "text",
+              "text": "Choose values. Count dots.",
+              "id": "method",
+              "at": "choose"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2,
+          -4,
+          18,
+          9
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "E": [
+            16,
+            0
+          ],
+          "Title": [
+            8,
+            7.2
+          ],
+          "Unit": [
+            8,
+            -2.3
+          ],
+          "Key": [
+            8,
+            -3.5
+          ],
+          "A0": [
+            0,
+            -0.2
+          ],
+          "B0": [
+            0,
+            0.2
+          ],
+          "A1": [
+            4,
+            -0.2
+          ],
+          "B1": [
+            4,
+            0.2
+          ],
+          "A2": [
+            8,
+            -0.2
+          ],
+          "B2": [
+            8,
+            0.2
+          ],
+          "A3": [
+            12,
+            -0.2
+          ],
+          "B3": [
+            12,
+            0.2
+          ],
+          "A4": [
+            16,
+            -0.2
+          ],
+          "B4": [
+            16,
+            0.2
+          ],
+          "V0": [
+            0,
+            -1
+          ],
+          "V1": [
+            4,
+            -1
+          ],
+          "V2": [
+            8,
+            -1
+          ],
+          "V3": [
+            12,
+            -1
+          ],
+          "V4": [
+            16,
+            -1
+          ],
+          "D1": [
+            4,
+            1.2
+          ],
+          "D2": [
+            8,
+            1.2
+          ],
+          "D3": [
+            12,
+            1.2
+          ]
+        },
+        "parts": [
+          {
+            "id": "line",
+            "start": true,
+            "seg": [
+              "O",
+              "E"
+            ],
+            "ink": "muted",
+            "w": 5
+          },
+          {
+            "id": "title",
+            "start": true,
+            "label": "\\text{Object lengths}",
+            "at": "Title",
+            "dir": "c"
+          },
+          {
+            "id": "unit",
+            "start": true,
+            "label": "\\text{Length (inches)}",
+            "at": "Unit",
+            "dir": "c"
+          },
+          {
+            "id": "key",
+            "label": "\\text{1 dot = 1 object}",
+            "at": "Key",
+            "dir": "c",
+            "ink": "muted",
+            "size": "s"
+          },
+          {
+            "id": "tick0",
+            "start": true,
+            "seg": [
+              "A0",
+              "B0"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "tick1",
+            "seg": [
+              "A1",
+              "B1"
+            ],
+            "ink": "gold",
+            "w": 4
+          },
+          {
+            "id": "tick2",
+            "start": true,
+            "seg": [
+              "A2",
+              "B2"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "tick3",
+            "seg": [
+              "A3",
+              "B3"
+            ],
+            "ink": "gold",
+            "w": 4
+          },
+          {
+            "id": "tick4",
+            "start": true,
+            "seg": [
+              "A4",
+              "B4"
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "label0",
+            "start": true,
+            "label": "0",
+            "at": "V0",
+            "dir": "c",
+            "ink": "ink"
+          },
+          {
+            "id": "label1",
+            "label": "\\tfrac12",
+            "at": "V1",
+            "dir": "c",
+            "ink": "gold"
+          },
+          {
+            "id": "label2",
+            "start": true,
+            "label": "1",
+            "at": "V2",
+            "dir": "c",
+            "ink": "ink"
+          },
+          {
+            "id": "label3",
+            "label": "1\\tfrac12",
+            "at": "V3",
+            "dir": "c",
+            "ink": "gold"
+          },
+          {
+            "id": "label4",
+            "start": true,
+            "label": "2",
+            "at": "V4",
+            "dir": "c",
+            "ink": "ink"
+          },
+          {
+            "id": "dot1",
+            "dot": "D1",
+            "ink": "accent",
+            "r": 13
+          },
+          {
+            "id": "dot2",
+            "dot": "D2",
+            "ink": "accent",
+            "r": 13
+          },
+          {
+            "id": "dot3",
+            "dot": "D3",
+            "ink": "accent",
+            "r": 13
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "A half is one of two equal parts. Half an inch is halfway from zero to one.",
+          "pause": 0.8,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Lengths can fall between whole numbers.",
+              "at": "half"
+            },
+            {
+              "do": "show",
+              "target": [
+                "tick1",
+                "label1"
+              ],
+              "at": "halfway"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "label0",
+                "label2"
+              ],
+              "at": "zero"
+            }
+          ]
+        },
+        {
+          "say": "Length plots can use half-inch labels. Each dot still records one object's length.",
+          "pause": 0.8,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "tick3",
+                "label3"
+              ],
+              "at": "labels"
+            },
+            {
+              "do": "show",
+              "target": [
+                "dot1",
+                "dot2",
+                "dot3",
+                "key"
+              ],
+              "at": "dot"
+            },
+            {
+              "do": "text",
+              "text": "The labels name lengths. Count dots to count objects.",
+              "at": "Each"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "First, the words tell me which side, and whether the named value counts.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "overview",
+              "of": "lunchProblem"
+            },
+            {
+              "do": "recap",
+              "text": "Choose the side. Include the named value only for “at least.”",
+              "marks": [
+                "lunchRule",
+                "lunchValues",
+                "lunchBoundary"
+              ],
+              "at": "First"
+            }
+          ]
+        },
+        {
+          "say": "Then I count the dots in those stacks and add the counts.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Count every dot in the chosen stacks. Empty positions add 0.",
+              "marks": [
+                "lunchSum",
+                "lunchAnswer"
+              ],
+              "at": "count"
+            }
+          ]
+        },
+        {
+          "say": "The counted dots and the other dots must account for everyone.",
+          "pause": 1,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Check that counted dots + other dots = everyone.",
+              "marks": [
+                "lunchCheck"
+              ],
+              "at": "counted"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
