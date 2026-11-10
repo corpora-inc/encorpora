@@ -1,4 +1,11 @@
 import type { GlossaryPayload } from "../glossary/types";
+import {
+  shapeComposerResponseSchema,
+  gradeShapeComposer,
+  normalizeShapeAnswer,
+  shapeGuessChance,
+  type ShapeComposerResponse,
+} from "./shape-composer";
 import { z } from "zod";
 import {
   unitSquareMarkingResponseSchema,
@@ -273,6 +280,7 @@ export const responseCapabilities = [
   "figure-choice-v1",
   "structured-work-v1",
   "multi-part-cards-v1",
+  "shape-composer-v1",
   "unit-square-marking-v1",
 ] as const;
 export type ResponseCapability = (typeof responseCapabilities)[number];
@@ -345,6 +353,7 @@ export type {
   WorkGrading,
 };
 export type ProblemResponse =
+  | ShapeComposerResponse
   | { kind: "number" | "fraction"; label: string }
   | { kind: "choice"; label: string; options: { id: string; label: string }[] }
   | MultiSelectResponse
@@ -923,6 +932,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   ]);
 const choiceIdSchema = z.string().regex(/^option-[a-d]$/);
 export const problemResponseSchema: z.ZodType<ProblemResponse> = z.union([
+  shapeComposerResponseSchema,
   z
     .object({
       kind: z.enum(["number", "fraction"]),
@@ -1016,9 +1026,9 @@ export const problemVariantSchema: z.ZodType<ProblemVariant> = z
 export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
   .object({
     public: publicProblemSchema,
-    // A worked structured response (every row of the key) may run to 200
-    // characters; every other answer stays within 100.
-    answer: z.string().min(1).max(200),
+    // Lattice placements include both stages; the response-specific refinement
+    // preserves the shorter limits for older answer protocols.
+    answer: z.string().min(1).max(4000),
     explanation: z.array(z.string().min(1).max(4000)).min(1).max(20),
     hint: z.string().min(1).max(4000),
     hintCue: stepsSchema.optional(),
@@ -1034,6 +1044,8 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
   .strict()
   .refine((problem) => {
     const response = problem.public.response;
+    if (response.kind !== "shape-composer" && problem.answer.length > 200)
+      return false;
     if (response.kind === "unit-square-marking")
       return (
         !problem.choiceFeedback &&
@@ -1053,6 +1065,16 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
         gradingFits(response, problem.workGrading) &&
         normalizeStructuredWork(response, problem.answer) === problem.answer &&
         gradeStructuredWork(response, problem.workGrading, problem.answer)
+      );
+    if (response.kind === "shape-composer")
+      return (
+        !problem.workGrading &&
+        !problem.pointGrading &&
+        !problem.entryPolicy &&
+        !problem.choiceFeedback &&
+        normalizeShapeAnswer(response, problem.answer) === problem.answer &&
+        gradeShapeComposer(response, problem.answer) &&
+        response.guessChance === shapeGuessChance(response)
       );
     if (problem.workGrading || problem.answer.length > 100) return false;
     // A plotted answer is canonical, complete, and accepted by its own rule.

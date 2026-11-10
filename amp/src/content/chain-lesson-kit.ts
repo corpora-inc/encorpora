@@ -14,7 +14,7 @@ export interface ChainLessonSpec {
   objectives: string[];
   openingTitle: string;
   opening: string[];
-  example: { prompt: string; steps: string[]; answer: string };
+  example: Lesson["workedExample"];
   methodTitle: string;
   method: string[];
   formalTitle: string;

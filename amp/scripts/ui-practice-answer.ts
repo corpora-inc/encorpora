@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import type { Page } from "playwright";
+import { fillShapeStage } from "./ui-shape-composer";
+import type { ShapeAnswer } from "../src/math/shape-composer";
 import type { GeneratedProblem, PublicProblem } from "../src/math/contracts";
 import {
   generateProblem,
@@ -91,7 +93,17 @@ export async function preparePracticeAnswer(
     });
   const response = practiceResponse(solution, correct);
   const submit = async () => {
-    if (schema.kind === "structured-work") {
+    if (schema.kind === "shape-composer") {
+      const stages = JSON.parse(response) as ShapeAnswer;
+      for (const [i, placements] of stages.entries()) {
+        await fillShapeStage(page, placements);
+        if (i < stages.length - 1)
+          await page
+            .getByRole("button", { name: "Join pieces", exact: true })
+            .click();
+      }
+      await page.locator(".shape-answer .choice-submit").click();
+    } else if (schema.kind === "structured-work") {
       const plan = parseWorkDraft(response)!;
       if (schema.mode === "order") {
         const order = schema.rows.map((row) => row.id);
@@ -272,7 +284,11 @@ export function practiceResponse(solution: GeneratedProblem, correct: boolean) {
   const schema = problem.response;
   let response = solution.answer;
   if (!correct) {
-    if (schema.kind === "choice" || schema.kind === "figure-choice")
+    if (schema.kind === "shape-composer") {
+      const stages = JSON.parse(response) as ShapeAnswer;
+      stages.at(-1)!.pop();
+      response = JSON.stringify(stages);
+    } else if (schema.kind === "choice" || schema.kind === "figure-choice")
       response = schema.options.find((o) => o.id !== solution.answer)!.id;
     else if (schema.kind === "multi-select") {
       const ids = parseSelection(solution.answer)!;
