@@ -130,13 +130,6 @@ test("after a verified payment no learner holds, the parent chooses who it is fo
   });
 });
 
-test("a free assessment from before the starter continues until it moves into the family", () => {
-  const trial = me({ next: "try", trial: true });
-  expect(startDestination(trial, "/")).toBe("/try");
-  expect(startDestination(trial, "/start/name")).toBe("/try");
-  expect(startDestination(trial, "/start")).toBeNull();
-});
-
 test("a parent approving another family's child pays first; the plan before any learner is theirs", () => {
   const approving = me({ next: "start", familyApproval: { id: "approval" } });
   expect(startDestination(approving, "/")).toBe("/family/approvals/approval");
@@ -192,7 +185,7 @@ test("funded entry requires confirmation and active consent before learner detai
 test("funded setup returns to Arkansas purchase without requiring a Stripe checkout", () => {
   const consent = { status: "active" as const, method: "verified" };
   expect(
-    startDestination(me({ consent, next: "try" }), "/start", false, true),
+    startDestination(me({ consent, next: "start" }), "/start", false, true),
   ).toBe("/start/name");
   const learner = {
     id: "sample",
@@ -314,14 +307,19 @@ const jordan = {
   entitlement: { active: true, plan: "annual", endsAt: null },
 };
 
-test("a teacher with a free assessment under way keeps it at `/`, and the school a tap away", () => {
+test("a teacher who tutors keeps their family class at `/`, and the school a tap away", () => {
   const teacher = me({
     staffOf: [school(alder, "Alder Street School")],
-    trial: true,
-    next: "try",
+    familyClass: {
+      orgId: birch,
+      classId: birch,
+      className: "Casey’s class",
+      notice: false,
+    },
+    next: "practice",
   });
-  expect(startDestination(teacher, "/")).toBe("/try");
-  expect(startDestination(teacher, "/start/plan")).toBe("/try");
+  expect(startDestination(teacher, "/")).toBeNull();
+  expect(startDestination(teacher, "/start/plan")).toBe("/");
   expect(homePlace(teacher, null)).toBe("home");
   expect(placesFor(teacher)).toEqual(["home", `school:${alder}`]);
   // Last worked at the school: `/` goes back there.
@@ -367,8 +365,17 @@ test("staff only start at their school; with several they choose", () => {
 
 test("a half-finished setup never captures `/` from someone with a family side", () => {
   const pending = school(alder, "Alder Street School", { setupPending: true });
-  const founder = me({ staffOf: [pending], trial: true, next: "try" });
-  expect(startDestination(founder, "/")).toBe("/try");
+  const founder = me({
+    staffOf: [pending],
+    familyClass: {
+      orgId: birch,
+      classId: birch,
+      className: "Casey’s class",
+      notice: false,
+    },
+    next: "practice",
+  });
+  expect(startDestination(founder, "/")).toBeNull();
   expect(homePlace(founder, null)).toBe("home");
   expect(homePlace(founder, `school:${alder}`)).toBe("home");
   // Still in the switcher, to finish whenever they choose.
@@ -396,7 +403,6 @@ test("each screen belongs to a place, or to neither", () => {
   for (const path of [
     "/",
     "/practice",
-    "/try/practice",
     "/start/plan",
     "/family/learners",
     "/pathways/n-1",

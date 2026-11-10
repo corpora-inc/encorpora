@@ -93,14 +93,11 @@ const messages: Record<string, string> = {
     "No billing account exists yet. Complete a checkout first.",
   billing_unavailable:
     "Billing is temporarily unavailable. Try again in a moment; you won’t be charged twice.",
-  "trial-complete": "All free problems are used. Choose a plan to continue.",
   "free-allowance-complete": "Continue with AMP to practice more.",
   too_many_learners:
     "This account has 1,000 learners, the most one account can hold. Delete a learner to add another.",
   "free-workbooks-complete": "Continue with AMP to make more workbooks.",
   free_workbooks_unavailable: "This learner has no workbook available yet.",
-  trial_ended:
-    "That free practice has ended on this device. Continue to add the learner and choose a starting point.",
   "Too Many Requests":
     "Too many requests from this network. Wait a few minutes, then try again.",
 };
@@ -116,8 +113,6 @@ export async function request<T>(
   schema: z.ZodType<T>,
   options: {
     token?: string | null;
-    /** An anonymous free-trial token, sent instead of a parent token. */
-    trial?: string | null;
     body?: unknown;
     signal?: AbortSignal;
     method?: string;
@@ -148,11 +143,7 @@ export async function request<T>(
       method,
       headers: {
         ...options.headers,
-        ...(options.trial
-          ? { Authorization: `Trial ${options.trial}` }
-          : options.token
-            ? { Authorization: `Bearer ${options.token}` }
-            : {}),
+        ...(options.token ? { Authorization: `Bearer ${options.token}` } : {}),
         ...(options.body === undefined
           ? {}
           : { "Content-Type": "application/json" }),
@@ -190,13 +181,7 @@ export async function request<T>(
     if (reloading) return reloading;
   }
   // The server ended this parent's sign-in: go to sign-in instead of failing.
-  // A free-practice request reports the parent's sign-in the same way; only
-  // "This free trial has ended" belongs to the practice screens.
-  if (
-    response.status === 401 &&
-    (!options.trial || errorCode(data) === "Sign in to continue") &&
-    signedOut()
-  ) {
+  if (response.status === 401 && signedOut()) {
     observe("cancelled");
     return new Promise<never>(() => {});
   }

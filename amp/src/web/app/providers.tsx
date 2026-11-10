@@ -88,9 +88,6 @@ function SessionProviders({
         if (previous?.accountId !== session?.accountId) {
           clearOnboardingDraft();
           setIdentityVersion((version) => version + 1);
-          void queryClient.cancelQueries({ queryKey: ["trial"] });
-          queryClient.setQueryData(["trial", "session"], null);
-          queryClient.removeQueries({ queryKey: ["trial"] });
           void queryClient.cancelQueries({ queryKey: ["account"] });
           queryClient.removeQueries({ queryKey: ["account"] });
         }

@@ -29,20 +29,8 @@ test(
     try {
       await admin.query(`CREATE SCHEMA ${schema}`);
       await migrate(scoped.href);
-      const trial = (
-        await app.inject({
-          method: "POST",
-          url: "/api/v1/trials",
-          payload: { birthYear: 2016 },
-        })
-      ).json();
-      const second = (
-        await app.inject({
-          method: "POST",
-          url: "/api/v1/trials",
-          payload: { birthYear: 2016 },
-        })
-      ).json();
+      const trial = await repository.createTrial(2016);
+      const second = await repository.createTrial(2016);
       const headers = { authorization: `Trial ${trial.token}` };
       const base = `/api/v1/learners/${trial.learnerId}`;
       const get = (path: string) =>

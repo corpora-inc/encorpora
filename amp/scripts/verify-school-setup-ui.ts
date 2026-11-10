@@ -650,7 +650,7 @@ async function journey(
     (await teacher.getByRole("link", { name: "License" }).count()) === 0 &&
       (await teacher.getByRole("link", { name: "Import" }).count()) === 0,
   );
-  // A staff account with no learners starts at /school, not the parent trial.
+  // A staff account with no learners starts at /school, not the starter.
   await teacher.goto(`${origin}/`);
   await teacher.waitForURL(/\/school\//);
   // The same link, again, from someone else: it has been used.
@@ -758,7 +758,7 @@ async function teacherWhoIsAParent(browser: Browser, width: number) {
   page.setDefaultTimeout(30_000);
   await page.goto(`${origin}/sign-up`);
   await signUp(page, `parent-${randomUUID().slice(0, 8)}@example.com`);
-  await page.waitForURL(/\/account\/ready|\/try|\/start/);
+  await page.waitForURL(/\/account\/ready|\/start/);
   const session = await (
     await context.request.get(`${origin}/api/auth/get-session`)
   ).json();
@@ -1134,7 +1134,7 @@ try {
       const pending = await issue("Cedar Lane School", pendingEmail);
       await page.goto(`${origin}/sign-up`);
       await signUp(page, pendingEmail);
-      await page.waitForURL(/\/account\/ready|\/try|\/start/);
+      await page.waitForURL(/\/account\/ready|\/start/);
       const accepted = await context.request.post(
         `${origin}/api/v1/school/invites/accept`,
         {

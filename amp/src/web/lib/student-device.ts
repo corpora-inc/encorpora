@@ -1,5 +1,3 @@
-import { trialKey } from "./pending-trial";
-
 /** A school student's sign-in on this device. Shared devices keep it in session
  * storage, so it ends with the tab; personal devices in local storage. It wins
  * over any parent session until the student signs out.
@@ -82,7 +80,7 @@ export function handedReturnPath(): string {
 export function clearStudentDevice() {
   for (const [store, keys] of [
     [() => sessionStorage, [studentKey, activeKey, handedKey, returnKey]],
-    [() => localStorage, [studentKey, learnerKey, trialKey]],
+    [() => localStorage, [studentKey, learnerKey]],
   ] as const)
     try {
       for (const key of keys) store().removeItem(key);

@@ -1,6 +1,6 @@
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
-import { createHash, randomUUID } from "node:crypto";
+import { createHash } from "node:crypto";
 import { mkdir } from "node:fs/promises";
 import { chromium as rawChromium, webkit, type Page } from "playwright";
 const chromium = secureChromium(rawChromium);
@@ -25,7 +25,11 @@ if (!database) throw new Error("AMP_TEST_DATABASE_URL is required");
 assertTestDatabaseTarget(database);
 const templateId = "quadrilateral-hierarchy-multiselect";
 const graphTemplateId = "slope-triangle-statements";
-const origin = "http://127.0.0.1:4420";
+// Optional `--port` for the web server; the API takes the next port.
+const portAt = process.argv.indexOf("--port");
+const webPort = portAt >= 0 ? Number(process.argv[portAt + 1]) : 4420;
+const apiPort = webPort + 1;
+const origin = `http://127.0.0.1:${webPort}`;
 await migrate(database);
 const repository = new PostgresRepository(database, {
   development: true,
@@ -57,14 +61,14 @@ await registerFamilyRoutes(app, {
   authenticate: developmentAuth(),
   development: true,
 });
-await app.listen({ host: "127.0.0.1", port: 4421 });
+await app.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
   server: {
     host: "127.0.0.1",
-    port: 4420,
+    port: webPort,
     strictPort: true,
-    proxy: { "/api": { target: "http://127.0.0.1:4421" } },
+    proxy: { "/api": { target: `http://127.0.0.1:${apiPort}` } },
   },
 });
 await vite.listen();
@@ -77,7 +81,7 @@ const shots = new URL(
 ).pathname;
 await mkdir(shots, { recursive: true });
 const errors: string[] = [];
-let trialLearner: string | null = null;
+let draftLearner: string | null = null;
 
 async function openAnswers(page: Page, count: number) {
   const form = page.locator(".multi-select-form:visible");
@@ -601,99 +605,73 @@ try {
     await graphContext.close();
   }
 
-  // A trial keeps an incomplete selection when the learner checks the map.
-  const trial = await app.inject({
-    method: "POST",
-    url: "/api/v1/trials",
-    payload: { birthYear: 2015 },
-  });
-  assert.equal(trial.statusCode, 201, trial.body);
-  const { token, learnerId } = trial.json() as {
-    token: string;
-    learnerId: string;
-  };
-  trialLearner = learnerId;
-  // The level map needs one graded answer; an untouched trial returns to practice.
-  const headers = { authorization: `Trial ${token}` };
-  const initialBatch = await app.inject({
-    method: "POST",
-    url: `/api/v1/learners/${learnerId}/batches`,
-    headers,
-    payload: { count: 1 },
-  });
-  assert.equal(initialBatch.statusCode, 200, initialBatch.body);
-  const initialProblem = initialBatch.json().problems[0];
-  const initialAttempt = await app.inject({
-    method: "POST",
-    url: `/api/v1/learners/${learnerId}/attempts`,
-    headers,
-    payload: {
-      problemId: initialProblem.id,
-      requestId: randomUUID(),
-      response: generateProblem(initialProblem.templateId, initialProblem.seed)
-        .answer,
-    },
-  });
-  assert.equal(initialAttempt.statusCode, 200, initialAttempt.body);
-  assert.equal(initialAttempt.json().correct, true);
-  const initialProgress = await app.inject({
-    method: "GET",
-    url: `/api/v1/learners/${learnerId}/trial-progress`,
-    headers,
-  });
-  assert.equal(initialProgress.statusCode, 200, initialProgress.body);
-  assert.equal(initialProgress.json().totals.answered, 1);
+  // A learner keeps an incomplete selection while checking their progress.
+  const draft = await repository.create(
+    "development-household",
+    "Draft reviewer",
+    2015,
+  );
+  draftLearner = draft.id;
   const context = await browser.newContext({
     viewport: { width: 390, height: 844 },
   });
   await context.addInitScript(
-    (value) => localStorage.setItem("amp.trial", value),
-    token,
+    (id) =>
+      localStorage.setItem(
+        "amp.learner",
+        JSON.stringify({ state: { learnerId: id }, version: 1 }),
+      ),
+    draft.id,
   );
   const page = await context.newPage();
   page.setDefaultTimeout(20_000);
   page.on("pageerror", (error) => errors.push(error.message));
+  await page.goto(`${origin}/overview`);
+  await openTopicLesson(page, templateId);
   const focused = page.waitForResponse(
     (response) =>
       response.url().endsWith("/batches") &&
+      response.request().method() === "POST" &&
       response.request().postDataJSON()?.templateId === templateId,
   );
-  await page.goto(
-    `${origin}/try/practice?skill=shape-hierarchy&template=${templateId}`,
-  );
-  const trialBatch = await focused;
+  await page
+    .getByRole("button", { name: "Practice this", exact: true })
+    .click();
+  const draftBatch = await focused;
   assert.ok(
-    trialBatch
+    draftBatch
       .request()
       .postDataJSON()
       .responseCapabilities.includes("multi-select-v1"),
   );
-  const trialProblem = (await trialBatch.json()).problems[0];
-  assert.equal(trialProblem.templateId, templateId);
-  assert.notEqual(trialProblem.id, initialProblem.id);
+  assert.ok(draftBatch.url().includes(`/learners/${draft.id}/`));
+  const draftProblem = (await draftBatch.json()).problems[0];
+  assert.equal(draftProblem.templateId, templateId);
   await page.locator(`[data-template="${templateId}"]`).waitFor();
-  const trialCount = trialProblem.response.selectionCount as number;
-  let form = await openAnswers(page, trialCount);
+  const draftCount = draftProblem.response.selectionCount as number;
+  let form = await openAnswers(page, draftCount);
   await form.getByRole("checkbox").first().check();
   assert.match(
     (await form.textContent()) ?? "",
-    new RegExp(`1 of ${trialCount} selected`),
+    new RegExp(`1 of ${draftCount} selected`),
   );
   const prompt = await page.locator("#problem-prompt").textContent();
   await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page.getByRole("link", { name: "Progress" }).click();
   for (let visit = 0; visit < 2; visit++) {
     if (visit > 0) await page.goForward();
-    await page.waitForURL(/\/try\/map(?:\?|$)/);
-    await page.getByRole("heading", { name: "Your progress" }).waitFor();
+    await page.waitForURL(/\/overview(?:\?|$)/);
+    await page
+      .getByRole("heading", { name: "Draft reviewer", exact: true })
+      .waitFor();
     await page.goBack();
-    await page.waitForURL(/\/try\/practice(?:\?|$)/);
+    await page.waitForURL(/\/practice(?:\?|$)/);
     assert.equal(await page.locator("#problem-prompt").textContent(), prompt);
-    form = await openAnswers(page, trialCount);
+    form = await openAnswers(page, draftCount);
     assert.ok(await form.getByRole("checkbox").first().isChecked());
     assert.match(
       (await form.textContent()) ?? "",
-      new RegExp(`1 of ${trialCount} selected`),
+      new RegExp(`1 of ${draftCount} selected`),
     );
     assert.ok(
       await form
@@ -708,11 +686,11 @@ try {
   const skipAnswer =
     (await page.locator(".solution-answer").getAttribute("data-text")) ?? "";
   const trueIds = parseSelection(
-    generateProblem(templateId, trialProblem.seed).answer,
+    generateProblem(templateId, draftProblem.seed).answer,
   );
-  assert.ok(trueIds && trueIds.length === trialCount);
+  assert.ok(trueIds && trueIds.length === draftCount);
   for (const id of trueIds) {
-    const label = trialProblem.response.options.find(
+    const label = draftProblem.response.options.find(
       (option: { id: string; label: string }) => option.id === id,
     )?.label;
     assert.ok(label && skipAnswer.includes(label), `Skip explains ${id}`);
@@ -722,7 +700,7 @@ try {
 
   assert.deepEqual(errors, [], "No browser page errors");
   console.log(
-    "Multi-select: exact-count checkbox, keyboard, hint, feedback, trial draft and skip passed at 320/390/768/1280 in both themes.",
+    "Multi-select: exact-count checkbox, keyboard, hint, feedback, kept draft and skip passed at 320/390/768/1280 in both themes.",
   );
 } finally {
   await browser.close();
@@ -731,9 +709,9 @@ try {
   await repository.pool.query("DELETE FROM amp_learners WHERE id=$1", [
     learner.id,
   ]);
-  if (trialLearner)
+  if (draftLearner)
     await repository.pool.query("DELETE FROM amp_learners WHERE id=$1", [
-      trialLearner,
+      draftLearner,
     ]);
   await repository.close();
 }

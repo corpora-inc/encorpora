@@ -12,7 +12,6 @@ export type PracticeScope = {
   identity: string;
   learnerId: string;
   token?: string;
-  trial?: string;
 };
 export type PracticeIntent = PracticeChange extends infer C
   ? C extends PracticeChange
@@ -26,7 +25,7 @@ export const practiceSettingsOptions = (scope: PracticeScope) =>
       request(
         `/learners/${encodeURIComponent(scope.learnerId)}/practice-state`,
         practiceSettingsSchema,
-        { token: scope.token, trial: scope.trial, signal },
+        { token: scope.token, signal },
       ),
     staleTime: 0,
   });
@@ -75,7 +74,7 @@ export function usePracticeAdjustment(scope: PracticeScope) {
       const result = await request(
         `/learners/${encodeURIComponent(scope.learnerId)}/practice-state`,
         practiceSettingsSchema,
-        { token: scope.token, trial: scope.trial, body: saved.change },
+        { token: scope.token, body: saved.change },
       );
       if (!active()) return null;
       pending.current = null;

@@ -24,7 +24,11 @@ const enabled = { skip: !process.env.AMP_TEST_DATABASE_URL };
 const DAY = 86_400_000;
 
 async function fixture(
-  run: (f: { pool: Pool; app: ReturnType<typeof buildApp> }) => Promise<void>,
+  run: (f: {
+    pool: Pool;
+    app: ReturnType<typeof buildApp>;
+    repository: PostgresRepository;
+  }) => Promise<void>,
 ) {
   const url = process.env.AMP_TEST_DATABASE_URL!;
   const schema = `amp_funnel_${randomUUID().replaceAll("-", "")}`;
@@ -44,7 +48,7 @@ async function fixture(
       pool: repository.pool,
       authenticate: async () => "parent",
     });
-    await run({ pool: repository.pool, app });
+    await run({ pool: repository.pool, app, repository });
   } finally {
     await app.close();
     await repository.close();
@@ -71,13 +75,10 @@ test(
   "events: writes a validated batch with first-touch attribution and a trial link",
   enabled,
   async () =>
-    fixture(async ({ pool, app }) => {
-      const trial = await app.inject({
-        method: "POST",
-        url: "/api/v1/trials",
-        payload: { birthYear: new Date().getUTCFullYear() - 8 },
-      });
-      const { token } = trial.json();
+    fixture(async ({ pool, app, repository }) => {
+      const { token } = await repository.createTrial(
+        new Date().getUTCFullYear() - 8,
+      );
       const visitorId = randomUUID();
       const sent = await post(app, {
         visitorId,
@@ -505,6 +506,24 @@ test(
       assert.match(text, /purchase\s+1\s+/);
       assert.match(text, /buy_click:card\s+1\s+50\.0%/);
       assert.equal(text.includes(buyer), false, "aggregates only");
+      // Free practice has no Try button: a rendered problem is a try.
+      await visit(40, randomUUID(), [
+        { event: "landing_view", props: { referrer: "search" } },
+        { event: "video_play", props: { mix: "a" } },
+        { event: "problem_rendered", props: { mode: "practice" } },
+      ]);
+      const practised = await funnelReport(pool, {
+        from: new Date(start.getTime() + 40 * DAY),
+        to: new Date(start.getTime() + 41 * DAY),
+      });
+      assert.deepEqual(
+        practised.breakdowns.source.map((r) => [r.key, r.visitors, r.tried]),
+        [["search", 1, 1]],
+      );
+      assert.equal(
+        practised.filmMixes.find((m) => m.mix === "a")!.triedFree,
+        1,
+      );
     }),
 );
 

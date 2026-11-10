@@ -464,9 +464,9 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
   await page.unroute("**/batches");
   for (const route of [
     "/start/plan",
-    "/try",
-    "/try/map",
-    "/try/plans",
+    "/start",
+    "/start/parent",
+    "/start/school",
     "/family/learners",
     "/family/access",
     "/family/privacy",

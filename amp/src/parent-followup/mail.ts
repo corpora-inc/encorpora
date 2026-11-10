@@ -20,6 +20,8 @@ export function followupMail(
     program: string | null;
     token: string;
     stage: FollowupStage;
+    /** The account has a place to open (`me.next` isn't "start"). */
+    hasPlace: boolean;
   },
 ): FollowupMail {
   const program =
@@ -42,12 +44,15 @@ export function followupMail(
               path: "new-hampshire-efa",
             }
           : null;
-  const trial = new URL("/sign-in", config.origin);
-  trial.searchParams.set("return", "free-practice");
-  if (input.program) trial.searchParams.set("program", input.program);
+  // Free practice begins at the starter; an account past it opens its place.
+  const practice = new URL(input.hasPlace ? "/" : "/sign-in", config.origin);
+  if (!input.hasPlace) {
+    practice.searchParams.set("return", "free-practice");
+    if (input.program) practice.searchParams.set("program", input.program);
+  }
   const funding = program
     ? new URL(`/purchase/${program.path}`, config.origin).href
-    : new URL("/try/plans", config.origin).href;
+    : new URL("/", config.origin).href;
   const optout = new URL(
     `/api/v1/parent-followup/unsubscribe/${input.token}`,
     config.origin,
@@ -57,8 +62,8 @@ export function followupMail(
     ? [
         "Your free AMP account is ready.",
         "AMP — Adaptive Math Pathways — is a complete math curriculum, from counting to precalculus. It finds the right level and chooses the next lesson as you answer. Try up to 100 free problems, with explanations when you need them. No payment card required.",
-        `Continue free practice:\n${trial.href}`,
-        "Sign in on any device to continue. Free practice is saved for 14 days from when you start.",
+        `Continue free practice:\n${practice.href}`,
+        "Sign in on any device to continue. Your free problems stay on your account.",
         ...(program
           ? [
               `Have ${program.short} funds? Corpora Inc is an approved vendor. Eligible, available funds can cover the full cost of AMP. We’ll help with the purchase steps:\n${funding}`,
@@ -70,13 +75,13 @@ export function followupMail(
           ? `Put your ${program.short} funds toward a complete math curriculum that plans the next lesson for you.`
           : "Ready for another look at AMP?",
         "Catch up or get ahead, from counting to precalculus. AMP adapts question by question, so you can spend time learning instead of deciding what to work on next.",
-        `Continue free practice:\n${trial.href}`,
+        `Continue free practice:\n${practice.href}`,
         ...(program
           ? [
               `Corpora Inc, the maker of AMP, is an approved vendor for the ${program.name} program. You can use eligible, available scholarship funds to cover AMP. Get your invoice and the payment steps here:\n${funding}`,
             ]
           : [`See learning options:\n${funding}`]),
-        "Sign in on any device to continue. Free practice is saved for 14 days from when you start.",
+        "Sign in on any device to continue. Your free problems stay on your account.",
       ];
   paragraphs.push(
     "Need a hand choosing a level or paying with your funds? Reply to this email or write to support@corpora.inc. We’re happy to help.",

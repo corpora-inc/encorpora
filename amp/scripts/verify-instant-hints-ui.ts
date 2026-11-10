@@ -7,27 +7,43 @@ import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
 import { developmentAuth } from "../src/server/auth";
 import { PostgresRepository } from "../src/server/repository";
-import { trialKey } from "../src/web/lib/pending-trial";
-import { fixtureMe } from "./me-fixture";
-import { retentionNotice } from "../src/family/contracts";
+import { registerFamilyRoutes } from "../src/family/routes.js";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import {
   preparePracticeAnswer,
   trackPracticeProblems,
 } from "./ui-practice-answer";
+/**
+ * Instant hints, in Chromium and Firefox against the real learning API. Each
+ * journey practices as a new signed-in learner (development auth) at
+ * `/practice`:
+ *
+ * - `preloaded`: hints arrive with the batch, so Hint needs no request; a
+ *   trip to Progress and Back keeps the problem and its revealed hint; a lost
+ *   attempt response retries with the same answer and assistance.
+ * - `fallback`: a batch without hints falls back to the hint request, after
+ *   a skip and the same trip to Progress and Back.
+ * - `opening`: the first problem is the hinted one.
+ *
+ * `--port` moves the web server (the API takes the next port).
+ */
 const families = {
   chromium: {
-    trial: ["hierarchy-statement", "polygon-sides-select"],
+    preloaded: ["hierarchy-statement", "polygon-sides-select"],
     fallback: ["proportional-match-table", "graph-of-proportional-rate"],
-    account: ["scientific-notation-work", "unit-piece-size"],
+    opening: ["scientific-notation-work", "unit-piece-size"],
   },
   firefox: {
-    trial: ["plot-points", "hierarchy-statement"],
+    preloaded: ["plot-points", "hierarchy-statement"],
     fallback: ["polygon-sides-select", "proportional-match-table"],
-    account: ["unit-piece-size", "scientific-notation-work"],
+    opening: ["unit-piece-size", "scientific-notation-work"],
   },
 } as const;
+const portFlag = process.argv.indexOf("--port");
+const port = portFlag >= 0 ? Number(process.argv[portFlag + 1]) : 4462,
+  apiPort = port + 1,
+  origin = `http://127.0.0.1:${port}`;
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url) throw new Error("AMP_TEST_DATABASE_URL is required");
 assertTestDatabaseTarget(url);
@@ -38,33 +54,37 @@ const app = buildApp({
   authenticate: developmentAuth(),
   development: true,
 });
-await app.listen({ host: "127.0.0.1", port: 4463 });
+// The signed-in app reads the account (`/api/v1/me`) from the family routes.
+await registerFamilyRoutes(app, {
+  pool: repository.pool,
+  authenticate: developmentAuth(),
+  development: true,
+});
+await app.listen({ host: "127.0.0.1", port: apiPort });
 const root = new URL("../", import.meta.url).pathname;
 const vite = await createServer({
   root,
   configFile: root + "vite.config.ts",
   cacheDir: "node_modules/.vite-instant-hints",
-  plugins: [
-    {
-      name: "hint-test-auth",
-      enforce: "pre",
-      load(id) {
-        // Route guards require a parent session. Trial/fallback keep the
-        // local development trial token; account mode uses its /me fixture.
-        if (id.split("?")[0] === root + "src/web/auth.ts")
-          return `export async function accessSession(){return {token:"amp-local-development",accountId:"development-household"};}export function onSessionChanged(){return()=>{}}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return localStorage.getItem("fixture.parent")?{mode:"accounts",passwords:true,providers:[]}:{mode:"development"}}`;
-      },
-    },
-  ],
   server: {
     host: "127.0.0.1",
-    port: 4462,
+    port,
     strictPort: true,
     fs: { allow: [root, realpathSync(root + "node_modules")] },
-    proxy: { "/api": { target: "http://127.0.0.1:4463" } },
+    proxy: { "/api": { target: `http://127.0.0.1:${apiPort}` } },
   },
 });
 await vite.listen();
+/** The development account is shared: these are removed at the end. */
+const learners: string[] = [];
+/** Answers and skips the server has counted against the free problems. */
+async function freeUsed(learnerId: string) {
+  const { rows } = await repository.pool.query<{ used: number }>(
+    "SELECT free_online_used AS used FROM amp_learners WHERE id=$1",
+    [learnerId],
+  );
+  return rows[0]!.used;
+}
 async function attempt(page: Page) {
   const { problem, submit } = await preparePracticeAnswer(page, true);
   const [response] = await Promise.all([
@@ -100,26 +120,32 @@ try {
     console.log(`${name}: starting hint browser`);
     const browser = await engine.launch();
     try {
-      for (const mode of ["trial", "fallback", "account"] as const) {
+      for (const mode of ["preloaded", "fallback", "opening"] as const) {
         console.log(`${name}/${mode}: opening hint journey`);
         const fallback = mode === "fallback";
         const [hintedFamily, independentFamily] =
           families[name as keyof typeof families][mode];
         let servingFamily =
-          mode === "account" ? hintedFamily : "multiply-facts";
+          mode === "opening" ? hintedFamily : "multiply-facts";
         const created = await app.inject({
           method: "POST",
-          url: "/api/v1/trials",
-          payload: { birthYear: 2016 },
+          url: "/api/v1/learners",
+          headers: { authorization: "Bearer amp-local-development" },
+          payload: { name: "Hint learner", birthYear: 2016 },
         });
-        assert.equal(created.statusCode, 201);
-        const { token, learnerId } = created.json();
+        assert.equal(created.statusCode, 201, created.body);
+        const { id: learnerId } = created.json() as { id: string };
+        learners.push(learnerId);
         const context = await browser.newContext({
           viewport: { width: 390, height: 844 },
         });
         await context.addInitScript(
-          ([key, token]) => localStorage.setItem(key!, token!),
-          [trialKey, token],
+          (id) =>
+            localStorage.setItem(
+              "amp.learner",
+              JSON.stringify({ state: { learnerId: id }, version: 1 }),
+            ),
+          learnerId,
         );
         const page = await context.newPage();
         const served = trackPracticeProblems(page);
@@ -134,41 +160,6 @@ try {
               (request.headers().authorization ?? "").split(" ")[0]!,
             );
         });
-        if (mode === "account") {
-          const learner = await repository.create(
-            "development-household",
-            "Hint learner",
-            2016,
-          );
-          await context.addInitScript(() =>
-            localStorage.setItem("fixture.parent", "1"),
-          );
-          await page.route("**/api/v1/me", (route) =>
-            route.fulfill({
-              json: fixtureMe(
-                {
-                  consent: {
-                    status: "development",
-                    policyVersion: "fixture",
-                    recordedAt: null,
-                    withdrawnAt: null,
-                  },
-                  learners: [
-                    {
-                      ...learner,
-                      deletedAt: null,
-                      stripeLinked: false,
-                      canPractice: true,
-                      access: [],
-                    },
-                  ],
-                  retained: retentionNotice,
-                },
-                "development-household",
-              ),
-            }),
-          );
-        }
         const errors: string[] = [];
         page.on("pageerror", (e) => errors.push(e.message));
         let hintRequests = 0;
@@ -190,9 +181,7 @@ try {
           if (fallback) delete body.hints;
           await route.fulfill({ response, json: body });
         });
-        await page.goto(
-          `http://127.0.0.1:4462/${mode === "account" ? "practice" : "try/practice"}`,
-        );
+        await page.goto(`${origin}/practice`);
         await page
           .locator(".question")
           .waitFor()
@@ -202,22 +191,18 @@ try {
               { cause: error },
             );
           });
-        if (mode !== "account") {
-          // A placement map needs a recorded answer; an empty placement
-          // intentionally redirects to practice instead of showing the map.
+        if (mode !== "opening") {
           // Arm the next family before answering can start its prefetch.
           servingFamily = hintedFamily;
           if (fallback) {
             await page.getByRole("button", { name: /^Skip/ }).click();
             await page.locator(".next-action").waitFor();
           } else await attempt(page);
-          const progress = await app.inject({
-            method: "GET",
-            url: `/api/v1/learners/${learnerId}/trial-progress`,
-            headers: { authorization: `Trial ${token}` },
-          });
-          assert.equal(progress.statusCode, 200);
-          assert.equal(progress.json().totals.answered, 1);
+          assert.equal(
+            await freeUsed(learnerId),
+            1,
+            `${name}/${mode}: the server counted the first problem`,
+          );
           await nextProblem(page);
         }
         assert.equal(
@@ -240,43 +225,28 @@ try {
         });
         const hintText = await dialog.locator(".hint").textContent();
         await page.keyboard.press("Escape");
-        if (mode !== "account") {
-          let mapUnavailable = fallback;
-          if (fallback)
-            await page.route("**/trial-progress", (route) =>
-              mapUnavailable
-                ? route.fulfill({ status: 503, json: { error: "Unavailable" } })
-                : route.fallback(),
-            );
+        if (mode !== "opening") {
+          // Progress, from the drawer, and Back: practice is where it was.
           await page.getByRole("button", { name: "Open AMP menu" }).click();
           await page
             .getByRole("link", { name: "Progress" })
             .click({ noWaitAfter: true });
           await page
-            .waitForURL((url) => url.pathname === "/try/map")
+            .waitForURL((url) => url.pathname === "/overview")
             .catch((error) => {
               throw new Error(
                 `${name}/${mode}: progress navigation reached ${page.url()}`,
                 { cause: error },
               );
             });
-          if (fallback) {
-            const retry = page.getByRole("button", {
-              name: "Try again",
-              exact: true,
-            });
-            await retry.waitFor();
-            mapUnavailable = false;
-            await retry.click();
-          }
           await page
-            .getByRole("heading", { name: "Your progress", exact: true })
+            .locator(".frontier-map")
             .waitFor()
             .catch(async (error) => {
-              // Say what the map showed instead: a skeleton, an error, or a
+              // Say what Progress showed instead: a skeleton, an error, or a
               // redirect back to practice each have a different cause.
               throw new Error(
-                `${name}/${mode}: no "Your progress" heading at ${page.url()}; page errors=${JSON.stringify(errors)}; navigations=${JSON.stringify(navigations.slice(-6))}; screen=${await page
+                `${name}/${mode}: no level map at ${page.url()}; page errors=${JSON.stringify(errors)}; navigations=${JSON.stringify(navigations.slice(-6))}; screen=${await page
                   .locator("body")
                   .innerText({ timeout: 1000 })
                   .then((text) => text.slice(0, 600))
@@ -284,11 +254,6 @@ try {
                 { cause: error },
               );
             });
-          await page.locator(".frontier-map").waitFor();
-          await page
-            .getByText(/^1 of \d+ free problems used$/, { exact: true })
-            .waitFor();
-          if (fallback) await page.unroute("**/trial-progress");
           console.log(`${name}/${mode}: returning from progress`);
           await page
             .goBack({ waitUntil: "domcontentloaded" })
@@ -298,7 +263,7 @@ try {
                 { cause: error },
               );
             });
-          await page.waitForURL((url) => url.pathname === "/try/practice");
+          await page.waitForURL((url) => url.pathname === "/practice");
           await page.locator(".question").waitFor();
         }
         assert.equal(
@@ -322,7 +287,7 @@ try {
         );
         // Arm the family before an answer or retry can prefetch the next problem.
         servingFamily = independentFamily;
-        if (mode === "trial") {
+        if (mode === "preloaded") {
           const submitted: unknown[] = [];
           await page.route("**/attempts", async (route) => {
             submitted.push(route.request().postDataJSON());
@@ -391,13 +356,13 @@ try {
         assert.deepEqual(errors, []);
         assert.deepEqual(
           [...learningAuth],
-          [mode === "account" ? "Bearer" : "Trial"],
-          `${name}/${mode}: learning requests use the intended identity`,
+          ["Bearer"],
+          `${name}/${mode}: learning requests use the account's session`,
         );
         await page.unrouteAll({ behavior: "wait" });
         await context.close();
         console.log(
-          `${name}/${mode}: ${fallback ? "legacy fallback" : "preloaded hints without a hint request"}, ${mode === "account" ? "" : "map/back, "}assisted ${hintedKind}, independent ${independentKind}`,
+          `${name}/${mode}: ${fallback ? "legacy fallback" : "preloaded hints without a hint request"}, ${mode === "opening" ? "" : "progress/back, "}assisted ${hintedKind}, independent ${independentKind}`,
         );
       }
     } finally {
@@ -407,5 +372,9 @@ try {
 } finally {
   await vite.close();
   await app.close();
+  if (learners.length)
+    await repository.pool.query("DELETE FROM amp_learners WHERE id=ANY($1)", [
+      learners,
+    ]);
   await repository.close();
 }

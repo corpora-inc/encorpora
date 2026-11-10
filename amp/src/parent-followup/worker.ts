@@ -22,7 +22,15 @@ export async function deliverParentFollowup(
       EXISTS(SELECT 1 FROM amp_account_classifications k WHERE k.user_id=o.user_id AND k.category<>'prospect') AS non_prospect,
       EXISTS(SELECT 1 FROM amp_commerce_orders c WHERE c.account_id='amp|'||p.user_id AND c.grant_state IS NOT NULL)
       OR EXISTS(SELECT 1 FROM amp_payment_records r WHERE r.account_id='amp|'||p.user_id AND r.status='verified')
-      OR EXISTS(SELECT 1 FROM amp_access_gifts g WHERE g.account_id='amp|'||p.user_id AND g.activated_at IS NOT NULL) AS purchased
+      OR EXISTS(SELECT 1 FROM amp_access_gifts g WHERE g.account_id='amp|'||p.user_id AND g.activated_at IS NOT NULL) AS purchased,
+      -- A place to open, as accountSummary decides next: learners, the
+      -- family's class, a school role, or a gift waiting to be accepted.
+      EXISTS(SELECT 1 FROM amp_learners l WHERE l.account_id='amp|'||p.user_id AND l.deleted_at IS NULL)
+      OR EXISTS(SELECT 1 FROM amp_families f WHERE f.account_id='amp|'||p.user_id)
+      OR EXISTS(SELECT 1 FROM amp_people pe JOIN amp_org_roles r ON r.person_id=pe.id AND r.role<>'student'
+        WHERE pe.account_id='amp|'||p.user_id AND pe.deleted_at IS NULL)
+      OR EXISTS(SELECT 1 FROM amp_access_gifts g WHERE g.recipient_email=u.email AND g.activated_at IS NULL
+        AND g.revoked_at IS NULL AND (g.claim_by IS NULL OR g.claim_by>now())) AS has_place
       FROM amp_parent_followup_outbox o JOIN amp_parent_followups p ON p.user_id=o.user_id
       JOIN amp_auth_users u ON u.id=p.user_id
       WHERE o.accepted_at IS NULL AND o.stopped_at IS NULL AND o.available_at<=now()
@@ -70,6 +78,7 @@ export async function deliverParentFollowup(
         program: row.program,
         token: row.unsubscribe_token,
         stage: row.stage,
+        hasPlace: row.has_place,
       });
     const lease = randomUUID();
     await db.query(

@@ -136,8 +136,6 @@ async function serve(page: Page, s: State) {
   await page.route("**/api/v1/**", async (route) => {
     const req = route.request(),
       path = new URL(req.url()).pathname.replace("/api/v1", "");
-    if (path === "/trials/current")
-      return route.fulfill({ json: { trial: null } });
     if (path === "/events/context")
       return route.fulfill({ json: { generation: "initial" } });
     if (path === "/events")

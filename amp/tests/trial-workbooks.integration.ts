@@ -11,6 +11,30 @@ import { purgeExpiredTrials } from "../src/server/trials.js";
  * (not development): a trial makes only what it has earned, reaches only its
  * own learner, never enters results, and after adoption the learner follows
  * the separate workbook allowance. Expired trials take their workbooks with them. */
+/** The trial's adoption, now only the server's own move (no route). */
+async function adoptTrial(
+  repository: {
+    adoptTrial(account: string, token: string, name: string): Promise<unknown>;
+  },
+  account: string,
+  token: string,
+  name: string,
+) {
+  try {
+    const learner = await repository.adoptTrial(account, token, name);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return { statusCode: 200, body: "", json: () => learner as any };
+  } catch (error) {
+    const failure = error as { statusCode?: number; message: string };
+    if (!failure.statusCode) throw error;
+    return {
+      statusCode: failure.statusCode,
+      body: failure.message,
+      json: () => ({ error: failure.message }),
+    };
+  }
+}
+
 test(
   "a free assessment offers an immediate workbook then earns more, for its own learner only",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
@@ -56,17 +80,10 @@ test(
         [parent],
       );
       const start = async (owner: string) => {
-        const created = await app.inject({
-          method: "POST",
-          url: "/api/v1/trials",
-          headers: { "x-test-account": owner },
-          payload: { birthYear: 2016 },
-        });
-        assert.equal(created.statusCode, 201, created.body);
-        const { token, learnerId } = created.json();
+        const { token, learnerId } = await repository.createTrial(2016, owner);
         return {
-          learnerId: learnerId as string,
-          token: token as string,
+          learnerId,
+          token,
           headers: { authorization: `Trial ${token}`, "x-test-account": owner },
         };
       };
@@ -275,12 +292,7 @@ test(
 
       // Adoption keeps the five issued workbooks readable. A sixth requires
       // access because the separate free workbook allowance is spent.
-      const adopted = await app.inject({
-        method: "POST",
-        url: "/api/v1/trials/adopt",
-        headers: { "x-test-account": parent },
-        payload: { token: trial.token, name: "Ada" },
-      });
+      const adopted = await adoptTrial(repository, parent, trial.token, "Ada");
       assert.equal(adopted.statusCode, 200, adopted.body);
       assert.equal(adopted.json().id, trial.learnerId);
       assert.equal((await make()).statusCode, 401, "the trial token ended");

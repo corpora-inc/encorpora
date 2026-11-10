@@ -149,8 +149,8 @@ test(
             contentType: "text/html",
             body:
               u.hostname === "corpora.inc"
-                ? '<!doctype html><button data-invoice-form="open" onclick="document.querySelector(&quot;dialog&quot;).showModal()">Invoice</button><dialog data-invoice-dialog><button data-invoice-close onclick="document.querySelector(&quot;dialog&quot;).close()">Close</button></dialog><a href="https://amp.corpora.inc/try">Start assessment</a><script src="/client.js" data-engagement-endpoint="https://amp.corpora.inc/api/v1/site-events" defer></script>'
-                : '<!doctype html><p>Assessment fixture</p><script src="/client.js" defer></script>',
+                ? '<!doctype html><button data-invoice-form="open" onclick="document.querySelector(&quot;dialog&quot;).showModal()">Invoice</button><dialog data-invoice-dialog><button data-invoice-close onclick="document.querySelector(&quot;dialog&quot;).close()">Close</button></dialog><a href="https://amp.corpora.inc/sign-up">Try it free</a><script src="/client.js" data-engagement-endpoint="https://amp.corpora.inc/api/v1/site-events" defer></script>'
+                : '<!doctype html><p>Sign-up fixture</p><script src="/client.js" defer></script>',
           });
         });
         const page = await context.newPage();
@@ -184,16 +184,16 @@ test(
             .getByRole("button", { name: "Close", exact: true })
             .click();
         }
-        await page.getByRole("link", { name: "Start assessment" }).click();
-        await page.waitForURL("https://amp.corpora.inc/try");
-        await page.getByText("Assessment fixture").waitFor();
+        await page.getByRole("link", { name: "Try it free" }).click();
+        await page.waitForURL("https://amp.corpora.inc/sign-up");
+        await page.getByText("Sign-up fixture").waitFor();
         if (mode !== "gpc") {
           const until = Date.now() + 10000;
           while (
             Date.now() < until &&
             !(
               await repository.pool.query(
-                "SELECT 1 FROM amp_engagement_pages WHERE screen='assessment' AND visitor_id=$1",
+                "SELECT 1 FROM amp_engagement_pages WHERE screen='auth' AND visitor_id=$1",
                 [marketingId],
               )
             ).rowCount

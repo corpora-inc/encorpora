@@ -4,7 +4,7 @@
  *
  *   AMP_TEST_DATABASE_URL=postgres://…/amp_journeys \
  *     npx tsx scripts/verify-journeys-ui.ts [--engine webkit] [--widths 390,1280]
- *       [--themes light,dark] [--journeys 1,2,3,4,5,6] [--port 4500]
+ *       [--themes light,dark] [--journeys 1,2,3,4,5,6,7] [--port 4500]
  *
  * Real accounts, learning, school, family and billing routes against a fresh
  * schema. Stripe is test mode: the gateway is a local fake, Checkout is a
@@ -25,6 +25,7 @@ import {
 import { createServer } from "vite";
 import { secureChromium } from "../browser-security.mjs";
 import { registerFamilyRoutes } from "../src/family/routes";
+import { registerParentFollowupRoutes } from "../src/parent-followup/routes";
 import { registerSchoolRoutes } from "../src/schools/routes";
 import { registerStripeRoutes } from "../src/billing/stripe/routes";
 import { StripeGateway } from "../src/billing/stripe/gateway";
@@ -63,12 +64,9 @@ const widths = (argument("--widths") ?? "390,1280").split(",").map(Number);
 const themes = (argument("--themes") ?? "light,dark").split(",") as (
   "light" | "dark"
 )[];
-/** Journeys 3 and 5 (teacher, school) wait for the school demo; journey 7
- * (old `/try` links) belongs to the trial's retirement. */
 const journeys = new Set(
-  (argument("--journeys") ?? "1,2,4,6").split(",").map(Number),
+  (argument("--journeys") ?? "1,2,3,4,5,6,7").split(",").map(Number),
 );
-const pending = new Set<number>();
 const apiPort = webPort + 1;
 const origin = `http://127.0.0.1:${webPort}`;
 const committed = `docs/reviews/journeys/${engine}`;
@@ -95,6 +93,8 @@ const accounts = await createAccounts(
     // A fresh secret each run: nothing here outlives the process.
     AMP_ACCOUNTS_SECRET: randomBytes(32).toString("hex"),
     NODE_ENV: "development",
+    // Sign-up records its follow-up intent, which carries a funded program.
+    AMP_PARENT_FOLLOWUP: "enabled",
   } as unknown as NodeJS.ProcessEnv),
 );
 const authenticate = refuseStudentTokens(accountsAuth(accounts));
@@ -194,6 +194,12 @@ const app = buildApp({
 /** The account mail path, captured: a parent's approval link comes from here. */
 const mail: { to: string; url: string }[] = [];
 await registerAccountRoutes(app, accounts, authenticate);
+await registerParentFollowupRoutes(app, {
+  pool: db,
+  authenticate,
+  origin,
+  enabled: true,
+});
 await registerFamilyRoutes(app, {
   pool: db,
   authenticate,
@@ -336,9 +342,21 @@ async function measured(page: Page, label: string) {
   const { cls } = await shellRecord(page);
   check(`${label} CLS`, cls <= 0.01, cls);
 }
-async function signUp(page: Page, name: string) {
+/** A reload the app may itself interrupt with a replace (WebKit reports
+ * "Frame load interrupted"): the page that results is the one under test. */
+async function reloaded(page: Page) {
+  await page
+    .reload({ waitUntil: "domcontentloaded" })
+    .catch(async (error: unknown) => {
+      if (!/interrupted/i.test(String(error))) throw error;
+      await page.waitForLoadState("domcontentloaded");
+    });
+}
+/** Creates an account on the sign-up form; `here` signs up on the page
+ * already open (its search, such as a funded program, carries on). */
+async function signUp(page: Page, name: string, here = false) {
   const email = `${name.split(" ")[0]!.toLowerCase()}-${randomUUID().slice(0, 8)}@journeys.example`;
-  await page.goto(`${origin}/sign-up`);
+  if (!here) await page.goto(`${origin}/sign-up`);
   const fallback = page.getByRole("button", { name: "Use a password instead" });
   const password = page.getByLabel("AMP password");
   await Promise.race([
@@ -349,7 +367,7 @@ async function signUp(page: Page, name: string) {
   await page.getByLabel("Email").fill(email);
   await password.fill(PASSWORD);
   await page.getByRole("button", { name: "Create account" }).click();
-  await page.waitForURL(/\/start$|\/family\/approve/);
+  await page.waitForURL(/\/start(\?|$)|\/family\/approve/);
   const session = await (
     await page.context().request.get(`${origin}/api/auth/get-session`)
   ).json();
@@ -642,7 +660,7 @@ async function parentJourney(
 
   // The child on their own device sees it too, with nothing to buy.
   await freeUsed(moon.id, 100);
-  await device.reload();
+  await reloaded(device);
   await device.locator("[data-allowance-pause]").first().waitFor();
   await pauseSays(
     device,
@@ -773,15 +791,82 @@ async function adultJourney(
   await context.close();
 }
 
-/** 3. A teacher: pending the school demo branch (`add-school-demo`). A
- * teacher's tile now opens a demo class (`POST /school/demo`), alive with
- * students' work, before any agreement or payment. */
+/** 3. A teacher: "I’m a teacher" opens a demo class, alive with made-up
+ * students’ work, before any agreement or payment. They practice as a demo
+ * student, are handed back to the roster, and "Set up your real class" leads
+ * to the real onboarding, which begins at "Talk to us" (white-glove). */
 async function teacherJourney(
-  _browser: Browser,
-  _width: number,
-  _theme: "light" | "dark",
+  browser: Browser,
+  width: number,
+  theme: "light" | "dark",
 ) {
-  pending.add(3);
+  const label = `${engine} ${width} ${theme} teacher`;
+  const context = await newContext(browser, width, theme);
+  const page = await opened(context, label);
+  const { account } = await signUp(page, "Dana Fixture");
+  await page.getByRole("button", { name: /^I’m a teacher/ }).click();
+  await page.waitForURL(CLASS_TODAY);
+  await heading(page, /^Good (morning|afternoon|evening)/);
+  check(
+    `${label} the demo is theirs`,
+    (
+      await db.query(
+        "SELECT count(*)::int AS n FROM amp_orgs WHERE demo AND created_by=$1",
+        [account],
+      )
+    ).rows[0].n === 1,
+  );
+  const classPath = new URL(page.url()).pathname.replace(/\/today$/, "");
+  // Alive: made-up students’ work, marked Demo, with the class code and
+  // Start class on Today, and the bar’s one action to the real class.
+  await page
+    .getByText(/Noor|Diego|Lena/)
+    .first()
+    .waitFor();
+  check(
+    `${label} says Demo`,
+    (await page
+      .locator("[data-demo-mark]")
+      .filter({ visible: true })
+      .count()) >= 1,
+  );
+  await page.locator("[data-class-code]").waitFor();
+  await page.getByRole("link", { name: "Start class" }).waitFor();
+  await measured(page, `${label} demo today`);
+  await shot(page, 3, "demo-today", width, theme);
+
+  // Practice as a demo student, then back to the roster.
+  await page.goto(`${origin}${classPath}/roster`);
+  await heading(page, "Roster");
+  const practice = page.getByRole("button", { name: /^Practice as / }).first();
+  await practice.waitFor();
+  const roster = page.url();
+  await practice.click();
+  await practicing(page);
+  await measured(page, `${label} practice as`);
+  await shot(page, 3, "practice-as", width, theme);
+  await page
+    .getByRole("button", { name: "Open AMP menu" })
+    .filter({ visible: true })
+    .first()
+    .click();
+  await page.getByRole("button", { name: "Sign out" }).click();
+  await page.waitForURL((at) => at.href === roster);
+  await heading(page, "Roster");
+
+  // The real class: "Set up your real class" opens the real onboarding.
+  await page.goto(`${origin}${classPath}/today`);
+  await heading(page, /^Good (morning|afternoon|evening)/);
+  const real = page.locator("[data-demo-action]").filter({ visible: true });
+  check(
+    `${label} the action names the real class`,
+    (await real.getAttribute("aria-label")) === "Set up your real class",
+  );
+  await real.click();
+  await page.waitForURL(/\/schools#talk$/);
+  await page.getByRole("heading", { name: "Talk to us." }).waitFor();
+  await shot(page, 3, "real-class", width, theme);
+  await context.close();
 }
 
 /** 4. A tutor: three unnamed students; one parent's link names one child,
@@ -875,7 +960,7 @@ async function tutorJourney(
     "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES($1,'fixture','verified','synthetic')",
     [parentAccount],
   );
-  await parent.reload();
+  await reloaded(parent);
   const childName = parent.getByLabel("Your child’s first name");
   await childName.waitFor();
   await childName.fill("Ana");
@@ -885,7 +970,7 @@ async function tutorJourney(
   await parentContext.close();
 
   last.page = page;
-  await page.reload();
+  await reloaded(page);
   await heading(page, /^Good (morning|afternoon|evening)/);
   const ana = others.locator("li", { hasText: "Ana" });
   await ana.waitFor();
@@ -905,14 +990,45 @@ async function tutorJourney(
   await context.close();
 }
 
-/** 5. A school: pending the school demo branch (`add-school-demo`). The
- * pitch inline, then "Explore a demo school" or "Talk to us". */
+/** 5. A school: the pitch inline, "Explore a demo school" (six classes and
+ * demo teachers), then "Talk to us". */
 async function schoolJourney(
-  _browser: Browser,
-  _width: number,
-  _theme: "light" | "dark",
+  browser: Browser,
+  width: number,
+  theme: "light" | "dark",
 ) {
-  pending.add(5);
+  const label = `${engine} ${width} ${theme} school`;
+  const context = await newContext(browser, width, theme);
+  const page = await opened(context, label);
+  await signUp(page, "Ruth Fixture");
+  await page.getByRole("link", { name: /^I run a school/ }).click();
+  await page.waitForURL(/\/start\/school$/);
+  await heading(page, "AMP for your school", 2);
+  await page.getByText("objectives mapped to Common Core standards").waitFor();
+  await measured(page, `${label} pitch`);
+  await shot(page, 5, "pitch", width, theme);
+  await page.getByRole("button", { name: "Explore a demo school" }).click();
+  await page.waitForURL(/\/school\/[0-9a-f-]{36}$/);
+  await page.getByText("Grade 3 Math").first().waitFor();
+  check(
+    `${label} says Demo`,
+    (await page
+      .locator("[data-demo-mark]")
+      .filter({ visible: true })
+      .count()) >= 1,
+  );
+  await measured(page, `${label} demo school`);
+  await shot(page, 5, "demo-school", width, theme);
+  const talk = page.locator("[data-demo-action]").filter({ visible: true });
+  check(
+    `${label} the action is Talk to us`,
+    (await talk.getAttribute("aria-label")) === "Talk to us",
+  );
+  await talk.click();
+  await page.waitForURL(/\/schools#talk$/);
+  await page.getByRole("heading", { name: "Talk to us." }).waitFor();
+  await shot(page, 5, "talk", width, theme);
+  await context.close();
 }
 
 /** 6. A returning paid family signs in to the same home, with nothing to
@@ -1000,13 +1116,78 @@ async function returningJourney(
   await again.close();
 }
 
-/** 7. Old `/try` links: retired with the separate trial (PR B). */
+/** Opening an address the app redirects at once: WebKit may report the
+ * first navigation as interrupted by the second, which is the point. */
+async function visit(page: Page, url: string) {
+  await page.goto(url).catch((error: unknown) => {
+    if (!/interrupted/i.test(String(error))) throw error;
+  });
+}
+/** 7. Old `/try` links from ads and email: never a 404. Signed out, they
+ * sign up (and the starter follows); signed in, `/` opens the place. */
 async function journey7(
-  _browser: Browser,
-  _width: number,
-  _theme: "light" | "dark",
+  browser: Browser,
+  width: number,
+  theme: "light" | "dark",
 ) {
-  throw new Error("Journey 7 lands with the trial's retirement");
+  const label = `${engine} ${width} ${theme} old link`;
+  const context = await newContext(browser, width, theme);
+  const page = await opened(context, label);
+  for (const path of [
+    "/try",
+    "/try/practice?utm_source=google",
+    "/try/plans",
+  ]) {
+    await visit(page, `${origin}${path}`);
+    await page.waitForURL(/\/sign-up(\?|$)/);
+    check(
+      `${label} ${path} signed out signs up`,
+      new URL(page.url()).pathname === "/sign-up",
+      page.url(),
+    );
+  }
+  // A funded program's link keeps its program through sign-up: the vendor
+  // line shows, and the follow-up records it.
+  await visit(page, `${origin}/try?program=ar-efa`);
+  await page.waitForURL(/\/sign-up\?/);
+  const carried = new URL(page.url()).searchParams;
+  check(
+    `${label} a funded link keeps its program`,
+    carried.get("program") === "ar-efa" &&
+      carried.get("return") === "free-practice",
+    page.url(),
+  );
+  await page.getByText("Approved Arkansas EFA vendor.").waitFor();
+  await shot(page, 7, "signed-out", width, theme);
+  // Signed up: the same link opens the starter (no place yet), then home.
+  const { account } = await signUp(page, "Robin Fixture", true);
+  check(
+    `${label} the follow-up records the funded program`,
+    (
+      await db.query(
+        "SELECT program FROM amp_parent_followups WHERE user_id=$1",
+        [account.slice(4)],
+      )
+    ).rows[0]?.program === "ar-efa",
+  );
+  await visit(page, `${origin}/try`);
+  await page.waitForURL(/\/start$/);
+  await heading(page, "What brings you to AMP?");
+  await page.getByRole("link", { name: /I’m a parent/ }).click();
+  await page.getByRole("button", { name: "Birth year, your child" }).click();
+  await page.getByRole("option").first().click();
+  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  await page.waitForURL(CLASS_TODAY);
+  await visit(page, `${origin}/try/map`);
+  await page.waitForURL(CLASS_TODAY);
+  check(
+    `${label} signed in goes home`,
+    CLASS_TODAY.test(new URL(page.url()).pathname),
+    page.url(),
+  );
+  await measured(page, `${label} home`);
+  await shot(page, 7, "signed-in", width, theme);
+  await context.close();
 }
 
 const run: Record<number, typeof parentJourney> = {
@@ -1047,11 +1228,5 @@ if (failures.length) {
   for (const failure of failures.slice(0, 80)) console.error(failure);
   process.exit(1);
 }
-if (pending.size)
-  console.log(
-    `${engine}: journeys ${[...pending].join(", ")} pending the school demo branch.`,
-  );
-console.log(
-  `${engine}: journeys ${[...journeys].filter((n) => !pending.has(n)).join(", ")} passed.`,
-);
+console.log(`${engine}: journeys ${[...journeys].sort().join(", ")} passed.`);
 process.exit(0);

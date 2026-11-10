@@ -3,13 +3,17 @@ import AxeBuilder from "@axe-core/playwright";
 import assert from "node:assert/strict";
 import { realpathSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
-import { chromium as rawChromium, type Page } from "playwright";
+import {
+  chromium as rawChromium,
+  type BrowserContext,
+  type Page,
+} from "playwright";
 const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
 import { developmentAuth } from "../src/server/auth";
 import { PostgresRepository } from "../src/server/repository";
-import { trialKey } from "../src/web/lib/pending-trial";
+import { registerFamilyRoutes } from "../src/family/routes.js";
 import { SKIP_USES_FREE_PROBLEM } from "../src/learning/skip";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
@@ -20,8 +24,10 @@ import { assertTestDatabaseTarget } from "./test-database-preflight";
  * and by keyboard. It reveals the worked answer on a neutral sheet: no red,
  * no miss mark, no celebration. Nothing on the problem moves (bounding boxes
  * and the browser's layout-shift entries), nothing overflows, axe is clean,
- * no attempt is stored, and Next continues. Runs at 384x700, 390x844 and
- * 1280x800, light and dark, and writes screenshots.
+ * no attempt is stored, and Next continues. Each context practices as a new
+ * signed-in learner (development auth) at `/practice`. Runs at 384x700,
+ * 390x844, both tablet orientations and 1280x800, light and dark, and writes
+ * screenshots. `--port` moves the web server (the API takes the next port).
  */
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url)
@@ -34,8 +40,15 @@ const app = buildApp({
   authenticate: developmentAuth(),
   development: true,
 });
-const apiPort = 4457,
-  port = 4456,
+// The signed-in app reads the account (`/api/v1/me`) from the family routes.
+await registerFamilyRoutes(app, {
+  pool: repository.pool,
+  authenticate: developmentAuth(),
+  development: true,
+});
+const portFlag = process.argv.indexOf("--port");
+const port = portFlag >= 0 ? Number(process.argv[portFlag + 1]) : 4456,
+  apiPort = port + 1,
   origin = `http://127.0.0.1:${port}`;
 await app.listen({ host: "127.0.0.1", port: apiPort });
 const vite = await createServer({
@@ -108,6 +121,40 @@ const observeShifts = () => {
   }).observe({ type: "layout-shift", buffered: true });
 };
 
+/** A new learner in the development account, chosen on this device. */
+const learners: string[] = [];
+async function newLearner(context: BrowserContext, birthYear: number) {
+  const response = await fetch(`http://127.0.0.1:${apiPort}/api/v1/learners`, {
+    method: "POST",
+    headers: {
+      authorization: "Bearer amp-local-development",
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ name: "Skip learner", birthYear }),
+  });
+  assert.equal(response.status, 201, await response.clone().text());
+  const { id } = (await response.json()) as { id: string };
+  learners.push(id);
+  await context.addInitScript(
+    (learnerId) =>
+      localStorage.setItem(
+        "amp.learner",
+        JSON.stringify({ state: { learnerId }, version: 1 }),
+      ),
+    id,
+  );
+  return id;
+}
+
+/** The learner's free online problems used, as the server counts them. */
+async function freeUsed(learnerId: string) {
+  const { rows } = await repository.pool.query<{ used: number }>(
+    "SELECT free_online_used AS used FROM amp_learners WHERE id=$1",
+    [learnerId],
+  );
+  return rows[0]!.used;
+}
+
 const errors: string[] = [];
 try {
   for (const viewport of [
@@ -126,21 +173,11 @@ try {
         colorScheme,
         hasTouch: touch,
       });
-      const created = await (
-        await fetch(`http://127.0.0.1:${apiPort}/api/v1/trials`, {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify({ birthYear: 2014 }),
-        })
-      ).json();
-      await context.addInitScript(
-        ([key, token]) => localStorage.setItem(key!, token!),
-        [trialKey, created.token],
-      );
+      const learnerId = await newLearner(context, 2014);
       await context.addInitScript(observeShifts);
       const page = await context.newPage();
       page.on("pageerror", (error) => errors.push(error.message));
-      await page.goto(`${origin}/try/practice`);
+      await page.goto(`${origin}/practice`);
       await page.locator(".question").waitFor();
       await settle(page);
       const skip = page.getByRole("button", {
@@ -166,7 +203,7 @@ try {
       await noOverflow(page, `${label} open`);
       await page.screenshot({ path: `${shots}${label}-1-open.png` });
       const question = await box(page, ".question");
-      const meter = await page.locator(".practice-shell").textContent();
+      const freeBefore = await freeUsed(learnerId);
       await shifts(page);
 
       // Touch on phones; the keyboard on the desktop.
@@ -243,26 +280,27 @@ try {
       // Stored as a skip, never as an attempt.
       const attempts = await repository.pool.query(
         "SELECT count(*)::int AS n FROM amp_attempts WHERE learner_id=$1",
-        [created.learnerId],
+        [learnerId],
       );
       assert.equal(attempts.rows[0].n, 0, `${label}: no attempt`);
       const skipped = await repository.pool.query(
         "SELECT count(*)::int AS n FROM amp_instances WHERE learner_id=$1 AND (content->>'skipped')::boolean",
-        [created.learnerId],
+        [learnerId],
       );
       assert.equal(skipped.rows[0].n, 1, `${label}: one skip`);
+      // The answer was revealed, so the skip uses one of the learner's free
+      // problems (src/learning/skip.ts).
+      assert.equal(
+        await freeUsed(learnerId),
+        freeBefore + (SKIP_USES_FREE_PROBLEM ? 1 : 0),
+        `${label}: the free allowance counts the skip`,
+      );
 
-      // Next continues with a new problem; the meter counts the skip.
+      // Next continues with a new problem.
       await page.locator(".next-action").click();
       await page.locator(".feedback").waitFor({ state: "detached" });
       await page.locator(".question").waitFor();
       await settle(page);
-      if (SKIP_USES_FREE_PROBLEM)
-        assert.notEqual(
-          await page.locator(".practice-shell").textContent(),
-          meter,
-          `${label}: the meter counts the skip`,
-        );
       await page.screenshot({ path: `${shots}${label}-3-next.png` });
       await context.close();
     }
@@ -272,5 +310,10 @@ try {
   await browser.close();
   await vite.close();
   await app.close();
+  // The development account is shared: leave it as this run found it.
+  if (learners.length)
+    await repository.pool.query("DELETE FROM amp_learners WHERE id=ANY($1)", [
+      learners,
+    ]);
   await repository.close();
 }

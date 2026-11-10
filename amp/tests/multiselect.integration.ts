@@ -38,16 +38,11 @@ test(
       await admin.query(`CREATE SCHEMA ${schema}`);
       await migrate(scoped.href);
       const create = async () => {
-        const r = await app.inject({
-          method: "POST",
-          url: "/api/v1/trials",
-          payload: { birthYear: 2015 },
-        });
-        assert.equal(r.statusCode, 201, r.body);
+        const r = await repository.createTrial(2015);
         return {
-          base: `/api/v1/learners/${r.json().learnerId}`,
-          learnerId: r.json().learnerId as string,
-          headers: { authorization: `Trial ${r.json().token}` },
+          base: `/api/v1/learners/${r.learnerId}`,
+          learnerId: r.learnerId,
+          headers: { authorization: `Trial ${r.token}` },
         };
       };
       const trial = await create(),
