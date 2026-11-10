@@ -29,8 +29,14 @@ export type Actor = {
 };
 export type SchoolTarget =
   | { kind: "self" }
-  | { kind: "org"; orgId: string; path: string[] }
-  | { kind: "class"; classId: string; orgId: string; path: string[] }
+  | { kind: "org"; orgId: string; path: string[]; demo?: boolean }
+  | {
+      kind: "class";
+      classId: string;
+      orgId: string;
+      path: string[];
+      demo?: boolean;
+    }
   /** A rostered student, reached through the org they attend and the classes
    * they are in today. */
   | {
@@ -39,6 +45,7 @@ export type SchoolTarget =
       orgId: string;
       path: string[];
       classIds: string[];
+      demo?: boolean;
     };
 
 /** Staff roles and staff enrollments in force today. A staff enrollment counts
@@ -148,6 +155,21 @@ const FAMILY = new Set<SchoolAction>([
   "staff.manage",
 ]);
 
+/** What a demo place never does (docs/schools.md#demo-places): add or move a
+ * person, import a roster, or write to anyone. Its students are made up, so a
+ * real child's name or address never enters one, and it sends no mail. */
+const NOT_IN_A_DEMO = new Set<SchoolAction>([
+  "students.add",
+  "students.transfer",
+  "roster.import",
+  "staff.manage",
+  "license.request",
+  "integrations.manage",
+  "schools.add",
+  "year.rollover",
+  "setup.write",
+]);
+
 /** The only authorization rule for school routes. Admin covers descendants
  * along the path, viewer reads them, and teacher and aide cover the classes
  * they're actively enrolled in as staff. A student never passes. */
@@ -159,6 +181,7 @@ export function can(
   if (isSchoolAccount(actor.accountId)) return false;
   if (target.kind === "self") return SELF.has(action);
   if (SELF.has(action)) return false;
+  if (target.demo && NOT_IN_A_DEMO.has(action)) return false;
   const roles = actor.roles.filter((role) => target.path.includes(role.orgId));
   const family =
     roles.some((role) => role.family) ||

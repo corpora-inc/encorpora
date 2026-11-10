@@ -192,28 +192,32 @@ async function practicing(page: Page) {
   await page.waitForURL(/\/practice/);
   await page.locator("[data-problem-id]").first().waitFor({ timeout: 30_000 });
 }
-const WORKBOOKS_USED =
-  "The five free workbooks are used. Past workbooks and their results stay here.";
-/** The visible link's address, or null without one. Never waits. */
-async function linkTo(page: Page, name: string) {
-  const link = page
-    .getByRole("link", { name, exact: true })
-    .filter({ visible: true });
-  return (await link.count()) ? await link.first().getAttribute("href") : null;
-}
-/** The calm line where the five free workbooks are used, followed by the step
- * that succeeds (or nothing), and never as an error. */
+/** The one pause where the five free workbooks are used
+ * (features/continue/AllowancePause): the fact, what stays, and the one action
+ * that succeeds for whoever is looking, never as an error. */
 async function workbooksUsed(
   page: Page,
   label: string,
-  next: { name: string; href: string } | null,
+  action: "Continue with AMP" | "Talk to us" | null,
 ) {
+  const pause = page
+    .locator('[data-allowance-pause="workbooks"]')
+    .filter({ visible: true });
+  await pause.first().waitFor();
   check(
     `${label} says the free workbooks are used`,
-    (await page
-      .getByText(WORKBOOKS_USED, { exact: true })
-      .filter({ visible: true })
-      .count()) === 1,
+    (await pause
+      .getByRole("heading", {
+        name: "The five free workbooks are used.",
+        exact: true,
+      })
+      .count()) === 1 &&
+      (await pause
+        .getByText("Past workbooks and their results stay here.", {
+          exact: true,
+        })
+        .count()) === 1,
+    await pause.first().innerText(),
   );
   check(
     `${label} is not an error`,
@@ -222,12 +226,12 @@ async function workbooksUsed(
       .filter({ hasText: /free workbooks/ })
       .count()) === 0,
   );
-  for (const name of ["Continue with AMP", "Talk to us"])
-    check(
-      `${label} ${name}`,
-      (await linkTo(page, name)) === (next?.name === name ? next.href : null),
-      await linkTo(page, name),
-    );
+  const buttons = await pause.getByRole("button").allInnerTexts();
+  check(
+    `${label} offers ${action ?? "nothing"}`,
+    JSON.stringify(buttons) === JSON.stringify(action ? [action] : []),
+    buttons,
+  );
 }
 
 async function journey(
@@ -399,7 +403,7 @@ async function journey(
       .isEnabled(),
     true,
   );
-  const purchase = { name: "Continue with AMP", href: "/purchase/choose" };
+  const purchase = "Continue with AMP" as const;
   check(
     `${label} the exhausted tile says why, calmly`,
     (
@@ -455,7 +459,7 @@ async function journey(
   // Today, with no workbook yet: the line first, and no controls that can
   // no longer make one.
   await page.goto(`${origin}/learners/${moon.id}/workbooks/${stack.today}`);
-  await page.locator("[data-free-workbooks-used]").waitFor();
+  await page.locator('[data-allowance-pause="workbooks"]').waitFor();
   await settle(page, 600);
   check(
     `${label} exhausted day offers nothing that fails`,
@@ -503,10 +507,7 @@ async function journey(
   );
   await page.getByRole("heading", { name: "Workbooks", exact: true }).waitFor();
   await page.locator(`button[aria-pressed]`).first().waitFor();
-  await workbooksUsed(page, `${label} school stack`, {
-    name: "Talk to us",
-    href: "/schools#talk",
-  });
+  await workbooksUsed(page, `${label} school stack`, "Talk to us");
   await page.evaluate(() =>
     window.scrollTo({ top: document.documentElement.scrollHeight }),
   );
@@ -554,9 +555,9 @@ async function journey(
   await own.close();
 }
 
-/** An adult whose own free problems run out mid-practice. There is no
- * purchase for an adult's own practice, so they return to their record, which
- * says plainly that the free problems are used; never the children's plans. */
+/** An adult whose own free problems run out mid-practice: the one pause, in
+ * place, with Continue with AMP for their own practice; their record says the
+ * same. */
 async function adultJourney(
   browser: Browser,
   width: number,
@@ -601,32 +602,44 @@ async function adultJourney(
     .getByText("Skipped. Your progress is unchanged.", { exact: true })
     .waitFor();
   await page.locator(".next-action").click();
-  await page.waitForURL(
-    (url) => url.pathname === "/me" || url.pathname === "/purchase/choose",
+  // The one pause, in place on practice, with their own plan to continue.
+  const pause = page
+    .locator('[data-allowance-pause="problems"]')
+    .filter({ visible: true });
+  await pause.first().waitFor();
+  check(
+    `${label} the pause stays on practice`,
+    new URL(page.url()).pathname === "/practice",
+    page.url(),
   );
   check(
-    `${label} returns to their own record`,
-    new URL(page.url()).pathname === "/me",
-    page.url(),
+    `${label} the pause says the free problems are used`,
+    (await pause
+      .getByRole("heading", {
+        name: "You’ve used the 100 free problems.",
+        exact: true,
+      })
+      .count()) === 1,
+    await pause.first().innerText(),
+  );
+  check(
+    `${label} the pause continues with AMP`,
+    JSON.stringify(await pause.getByRole("button").allInnerTexts()) ===
+      JSON.stringify(["Continue with AMP"]),
   );
   await page.goto(`${origin}/me`);
   await heading(page, "Avery Fixture");
   check(
-    `${label} the record says the free problems are used`,
+    `${label} the record shows the same pause`,
     (await page
-      .getByText(/^Your 100 free problems are used\./)
-      .filter({ visible: true })
+      .locator('[data-allowance-pause="problems"]')
+      .getByRole("button", { name: "Continue with AMP" })
       .count()) === 1,
-  );
-  check(
-    `${label} no plan for an adult's own practice`,
-    (await linkTo(page, "Continue with AMP")) === null &&
-      (await page.getByText(/Choose a plan/).count()) === 0,
   );
   await measured(page, `${label} record`);
   await shot(page, "adult-used", width, theme);
   // Their workbooks have their own allowance and stay one tap away: then the
-  // same line, with no purchase to offer.
+  // same pause, with their own plan to continue.
   await db.query("UPDATE amp_learners SET free_workbooks_used=5 WHERE id=$1", [
     learnerId,
   ]);
@@ -638,7 +651,7 @@ async function adultJourney(
   await page.waitForURL(`**/learners/${learnerId}/workbooks`);
   await page.getByLabel("Enter results with the workbook code").waitFor();
   await settle(page, 300);
-  await workbooksUsed(page, `${label} workbooks`, null);
+  await workbooksUsed(page, `${label} workbooks`, "Continue with AMP");
   await measured(page, `${label} workbooks`);
   await context.close();
 }

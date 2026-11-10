@@ -81,7 +81,9 @@ test("every template is registered, deterministic, reaches the engine and has al
       const c = floridaGapCase(id, `fl:${i}`);
       variants.add(c.variant);
       if (i < 25) {
-        const g = generateProblem(id, `fl:${i}`);
+        // The case model describes version 1; clause extensions have their
+        // own current-version checks in clause-variants-astra-3.test.ts.
+        const g = generateProblem(id, `fl:${i}`, 1);
         assert.deepEqual(g.public, c.problem.public);
         assert.equal(g.answer, c.problem.answer);
         assert.deepEqual(

@@ -13,6 +13,7 @@ import {
 import { gradeName, levelDetails, levelRange } from "../learning/level-check";
 import { LevelReadout } from "./ui/LevelReadout";
 import { LevelAxis, levelPositionDescription } from "./ui/LevelChart";
+import { freeProblemsLeft } from "./lib/free-allowance";
 export { gradeName } from "../learning/level-check";
 export type FrontierMap = Frontier;
 const COLLEGE = 13;
@@ -28,6 +29,8 @@ type Props = {
   go: () => void;
   /** Absent for a school student, whose school manages this. */
   changeBirthYear?: () => void;
+  /** Free problems left, for a learner no plan covers yet. */
+  freeLeft?: number | null;
 };
 
 /** Home: continue practice, with optional estimates and their uncertainty. */
@@ -40,6 +43,11 @@ export function Home(props: Props) {
       <section className="home-hero">
         <div>
           <h1>{props.name}</h1>
+          {props.freeLeft != null && (
+            <p className="home-free" data-free-left={props.freeLeft}>
+              {freeProblemsLeft(props.freeLeft)}
+            </p>
+          )}
           {shown && <HomeLevel frontier={f} />}
         </div>
         <button

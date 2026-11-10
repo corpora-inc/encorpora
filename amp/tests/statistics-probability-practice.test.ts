@@ -22,6 +22,7 @@ const variants: Record<string, string[]> = {
     "define-variable",
     "read-distribution",
     "missing-probability",
+    "graph-the-distribution",
   ],
   "theoretical-distribution-expectation": [
     "two-dice-probability",
@@ -249,4 +250,70 @@ test("each statistics template has registered lesson support bound to its skill"
     assert.ok(lesson.principle, meta.id);
     assert.ok(lesson.example.steps.length >= 3, meta.id);
   }
+});
+
+test("graph the distribution lists every value, and version 1 does not", () => {
+  let seen = 0;
+  for (let seed = 0; seed < 120; seed++) {
+    const id = `g${seed}`;
+    const old = generateProblem("random-variable-distribution", id, 1);
+    assert.equal(
+      old.public.prompt.includes("Which list is the probability distribution"),
+      false,
+    );
+    if (
+      statisticsProbabilityVariant("random-variable-distribution", id) !==
+      "graph-the-distribution"
+    )
+      continue;
+    seen++;
+    const problem = generateProblem("random-variable-distribution", id);
+    assert.equal(problem.variant?.id, "graph-the-distribution");
+    const response = problem.public.response;
+    assert.equal(response.kind, "choice");
+    if (response.kind !== "choice") continue;
+    const parse = (label: string) => {
+      const pairs = [...label.matchAll(/P\((\d+)\)=(\d+)(?:\/(\d+))?/g)];
+      const dist = new Map(
+        pairs.map((m) => [
+          Number(m[1]),
+          Number(m[2]) / (m[3] ? Number(m[3]) : 1),
+        ]),
+      );
+      return dist;
+    };
+    const correct = response.options.find((o) => o.id === problem.answer)!.label;
+    const dist = parse(correct);
+    let sum = 0;
+    for (const p of dist.values()) sum += p;
+    assert.ok(Math.abs(sum - 1) < 1e-6, correct);
+    const others = response.options.filter((o) => o.id !== problem.answer);
+    for (const other of others) {
+      const alt = parse(other.label);
+      const same =
+        alt.size === dist.size &&
+        [...dist].every(([k, v]) => alt.get(k) === v);
+      assert.equal(same, false, other.label);
+    }
+    assert.equal(problem.hint.includes(correct), false);
+  }
+  assert.ok(seen > 10);
+});
+
+test("strategy expected value compares strategies rather than pricing one option", () => {
+  const seen = new Set<string>();
+  for (let seed = 0; seed < 80; seed++) {
+    const id = `strategy-${seed}`;
+    const variant = statisticsProbabilityVariant("strategy-expected-value", id);
+    seen.add(variant);
+    const prompt = generateProblem("strategy-expected-value", id).public.prompt;
+    assert.match(
+      prompt,
+      /Which game has the greatest|comparing expected costs|sure .+ or a gamble/,
+    );
+  }
+  assert.deepEqual(
+    [...seen].sort(),
+    ["compare-games", "sure-or-gamble", "warranty"],
+  );
 });

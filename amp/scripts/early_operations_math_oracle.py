@@ -195,8 +195,30 @@ def solve_two_step(prompt, figure):
     return found[0], 'start-unknown'
 
 
+def solve_early_clause(public):
+    import json
+    name, prompt = public['templateId'], public['prompt']
+    if name == 'three-addend-story':
+        nums = [int(n) for n in re.findall(r'\d+', prompt)]
+        require(len(nums) == 3, 'Three story amounts')
+        a, b, c = nums
+        box_first = f'□ = {a} + {b} + {c}'
+        total_first = f'{a} + {b} + {c} = □'
+        label = box_first if any(o['label'] == box_first for o in public['response']['options']) else total_first
+        hits = [o['id'] for o in public['response']['options'] if o['label'] == label]
+        require(len(hits) == 1, 'One equation matches the story')
+        return hits[0]
+    found = re.search(r'Split (\d+)', prompt)
+    require(found is not None, 'Split wording')
+    whole = int(found[1])
+    return json.dumps([['1', str(whole - 1)], ['2', str(whole - 2)]], separators=(',', ':'))
+
+
 def solve_early_operations(public, tagged=False):
     name, prompt, figure = public['templateId'], public['prompt'], public.get('figure')
+    if public.get('response', {}).get('kind', 'number') != 'number':
+        value = solve_early_clause(public)
+        return (value, 'clause') if tagged else value
     require(figure is not None, 'Every item carries a figure')
     solver = {
         'number-bond-missing': solve_bond, 'unknown-addend-story': solve_addend,
@@ -228,6 +250,9 @@ class EarlyOperationsCorpus:
         self.seen = {}
 
     def record(self, public, _solved):
+        if public['response']['kind'] != 'number':
+            self.seen.setdefault(public['templateId'], set()).add('clause')
+            return
         value, tag = solve_early_operations(public, tagged=True)
         tags = self.seen.setdefault(public['templateId'], set())
         tags.add(tag)

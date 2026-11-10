@@ -59,6 +59,7 @@ const required: Record<string, string[]> = {
     "adjust",
     "no-adjust",
   ],
+  "choose-unit-size": ["length", "mass", "time", "data"],
 };
 
 /** Select ordinary replayable cases, then shuffle independently of their features. */

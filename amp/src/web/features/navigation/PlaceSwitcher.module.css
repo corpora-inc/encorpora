@@ -6,6 +6,12 @@
   max-width: 100%;
   min-width: 0;
 }
+.triggerLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
 .triggerText {
   overflow: hidden;
   min-width: 0;
@@ -18,6 +24,12 @@
   min-width: 0;
   margin-right: var(--space-3);
   padding-block: var(--space-2);
+}
+.nameLine {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
 }
 .name {
   overflow: hidden;

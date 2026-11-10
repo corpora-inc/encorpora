@@ -43,6 +43,8 @@ if (
     "progress-large-text",
     "review-loading",
     "review-edges",
+    "family-security",
+    "polish",
   ].includes(selectedCase)
 )
   throw new Error(`Unknown app-shell case: ${selectedCase}`);
@@ -604,6 +606,38 @@ async function verifyFrontierSwitch() {
   }
 }
 
+/** "Sign in again" on Security is a designed control, at least 44px tall. */
+async function verifySecurityTarget() {
+  for (const viewport of viewports)
+    for (const colorScheme of ["light", "dark"] as const) {
+      const tag = `family-security ${viewport.width} ${colorScheme}`;
+      const { page, context } = await open(
+        "family-security",
+        viewport,
+        colorScheme,
+      );
+      try {
+        const link = page.getByRole("link", {
+          name: "Sign in again",
+          exact: true,
+        });
+        await link.waitFor();
+        const box = await link.boundingBox();
+        check(
+          !!box && box.height >= 44,
+          `${tag}: Sign in again is ${box ? Math.round(box.height) : 0}px tall`,
+        );
+        if (shots)
+          await page.screenshot({
+            path: `${shots}/${engine}-family-security-${viewport.width}-${colorScheme}.png`,
+          });
+        console.log(`${tag}: ${box ? Math.round(box.height) : 0}px`);
+      } finally {
+        await context.close();
+      }
+    }
+}
+
 /** A trial lookup must not invent a learner choice while it is pending.
  * Hold that response across opening the drawer, then verify the same controls
  * and text survive its completion. The account already says whether it has
@@ -692,6 +726,12 @@ async function verifyDrawerTrialResolution() {
 try {
   if (
     !selectedCase ||
+    selectedCase === "family-security" ||
+    selectedCase === "polish"
+  )
+    await verifySecurityTarget();
+  if (
+    !selectedCase ||
     [
       "trial-refresh",
       "trial-return",
@@ -707,6 +747,7 @@ try {
       "progress-large-text",
       "review-loading",
       "review-edges",
+      "polish",
     ].includes(selectedCase)
   )
     await verifyShellReview({

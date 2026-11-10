@@ -1,0 +1,233 @@
+/* "What brings you to AMP?": one column at every width. The five choices
+   hold their place; the question for the chosen one appears beneath them. */
+.page {
+  box-sizing: border-box;
+  display: grid;
+  align-content: start;
+  gap: var(--space-5);
+  width: min(100%, 640px);
+  margin: 0 auto;
+  padding: var(--space-6) max(var(--space-4), env(safe-area-inset-right))
+    max(var(--space-7), env(safe-area-inset-bottom))
+    max(var(--space-4), env(safe-area-inset-left));
+  color: var(--color-on-surface);
+}
+@media (min-width: 768px) {
+  .page {
+    padding-top: var(--space-7);
+  }
+}
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(var(--text-title-min), 6vw, 40px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.choices {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.choice {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  min-height: 76px;
+  padding: var(--space-3) var(--space-4);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    border-color var(--motion-fast, 120ms) ease,
+    background-color var(--motion-fast, 120ms) ease;
+}
+/* Every tile looks the same at rest and under the pointer, a button or a
+   link: only the border answers (the global button hover darkens). */
+.choice:hover {
+  border-color: var(--color-border-strong);
+  filter: none;
+}
+.choice:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.choice[aria-current] {
+  border-color: var(--color-primary);
+}
+.choice:disabled,
+.choice[data-disabled] {
+  cursor: default;
+}
+.choice[aria-busy="true"] {
+  border-color: var(--color-primary);
+  cursor: progress;
+}
+.icon {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: var(--color-primary);
+}
+.words {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.label {
+  font-size: var(--text-body);
+  font-weight: 700;
+  line-height: 1.3;
+}
+.detail {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.4;
+}
+.followUp {
+  scroll-margin-top: calc(
+    56px + env(safe-area-inset-top, 0px) + var(--space-4)
+  );
+}
+.followUp:empty {
+  display: none;
+}
+.panel {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+}
+.panel > * {
+  max-width: 100%;
+}
+.question {
+  margin: 0;
+  font-size: var(--text-heading-2);
+  font-weight: 700;
+  line-height: 1.25;
+}
+.note,
+.lede {
+  margin: 0;
+  max-width: 60ch;
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+  line-height: 1.5;
+}
+.lede {
+  color: var(--color-on-surface);
+}
+.years {
+  display: grid;
+  gap: var(--space-2);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.year {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  align-items: center;
+  gap: var(--space-3);
+}
+.yearName {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 359px) {
+  .year {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+}
+.facts {
+  display: grid;
+  gap: var(--space-3);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 560px) {
+  .facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.facts li {
+  display: grid;
+  align-content: start;
+  gap: 2px;
+  min-height: 72px;
+}
+.facts strong {
+  font-family: var(--font-display);
+  font-size: var(--text-heading-2);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+.facts span {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.4;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.talk {
+  display: grid;
+  gap: var(--space-3);
+  width: 100%;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  scroll-margin-top: calc(
+    56px + env(safe-area-inset-top, 0px) + var(--space-4)
+  );
+}
+.talk h3 {
+  margin: 0;
+  font-size: var(--text-heading-3);
+}
+.go {
+  display: grid;
+  gap: var(--space-2);
+  width: 100%;
+}
+.goButton {
+  width: 100%;
+}
+@media (min-width: 560px) {
+  .goButton {
+    width: auto;
+    min-width: 240px;
+    justify-self: start;
+  }
+}
+/* The reason an action waits keeps its line, so nothing moves when it goes. */
+.hint {
+  min-height: 1.45em;
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.45;
+}

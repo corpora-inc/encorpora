@@ -18,7 +18,7 @@ The practice loop (one problem at a time, adaptive across strands) is the produc
 | Parent, teacher, tutor, admin | An account: email and password, passkey, Google, Microsoft or Apple                                                                        | Their own **adult learner**, if they have one |
 | Child                         | A class: class code → their picture label or name → 3 of 16 pictures; or a printed card's QR; or Google or Microsoft through the school (see Not built yet) | Their one learner                             |
 
-- **Adults hold several places at once.** A person can be a parent, a teacher at a school, the head of a district and their own learner. The **place switcher**, one shared menu in the family drawer, the school rail and setup, moves between them. `/` opens where the person last worked. With nothing remembered, it opens the family side if they have learners or a trial, and the school if they are staff only. A school setup in progress never takes over `/`.
+- **Adults hold several places at once.** A person can be a parent, a teacher at a school, the head of a district and their own learner. The **place switcher**, one shared menu in the app drawer and setup, moves between them. `/` opens where the person last worked. With nothing remembered, it opens the family side if they have learners or a trial, and the school if they are staff only. A school setup in progress never takes over `/`.
 - **A child's session is bound to their one learner.** On a shared device (the default) it lives in session storage and signs out after 30 idle minutes. On a personal device it lasts until the teacher revokes it. Parent-only routes refuse a child's session even when a parent cookie is present. A child's session never reaches a sibling's learner.
 - **"Let Maya practice here".** From the family class, a parent hands their own device to a child: it starts that child's session, and the parent's view returns when the child signs out.
 - **Adult learners** are marked adult, have no birth year and need no parental consent. The adult chooses where to start (Counting through Precalculus) and always sees their levels. In their class, a teacher's adult learner appears on the map and standings as a separate "Teacher" line. It sits in place by value with no rank number, is never counted in grades, seats, rosters, exports or Today, and the teacher can hide it per class.
@@ -30,6 +30,7 @@ The practice loop (one problem at a time, adaptive across strands) is the produc
 - **A child from another family** can begin as an unnamed learner in a tutor’s class. An emailed parent approval names and transfers that same learner to the parent after verified consent, preserving answers, class membership and the free balance. A new invitation collects only the parent’s email address; the parent supplies the child’s name after consent. The teacher sees the child’s work in the class and nothing of the other family’s account.
 - **A school** exists only once AMP issues it a license, after a contract and an invoice or PO. An operator runs `create-school`, which emails the admin a setup link, and the admin lands in guided setup. A school with "Just my class" collapses around that one class. Any admin can teach a class.
 - **A district** is the same screens rolled up, with policy it can set and lock.
+- **A demo class or school** ([demo places](schools.md#demo-places)) lets a teacher or school leader explore AMP fully alive before any agreement or payment: made-up students marked "Demo", twelve weeks of practice, and "Practice as" any of them. It is never billed, counted or mailed, goes after 30 idle days, and is never converted: the real class comes from the real onboarding.
 - **An adult on their own,** for example an 18-year-old preparing for the SAT, buys a license for themselves. Their home is their own progress record, and adding a child later makes them a family.
 
 ## Licenses and prices
@@ -60,9 +61,9 @@ Media, videos and ads carry no price; they lead to the Buy button.
 - **Parent:**
   - The family class: Today lists the parent's children, each with access dates and "Let … practice here", plus a "From other families" list.
   - "Invite a co-teacher" (for example the other parent), with a copyable link. A co-teacher teaches the class but doesn't invite other families or buy access.
-  - The full class screens, as for any teacher (below).
+  - The full class screens, as for any teacher (below), plus Calendar in the class tab row and Family in the drawer for learners, purchases, consent and privacy.
   - `/family/…`: settings, consent and billing.
-  - `/learners/$id/workbooks`.
+  - `/learners/$id/workbooks`: the learner’s workbook history, creation and results on the shared shell, without Progress tabs. The URL identifies the learner independently of the selection in Progress.
   - `/family/approvals/$id`: a parent approving another family's class.
 - **Adult practice:**
   - `/me/start`: choose where to begin.
@@ -73,9 +74,9 @@ Media, videos and ads carry no price; they lead to the Buy button.
   - `/c/…`: a printed card.
   - `/practice`.
   - `/standings`: only when their class turns standings on.
-- **Teacher:** `/school/$org/classes/$class/` with tabs `today`, `map`, `gradebook`, `time`, `workbooks`, `roster`, `experience`, `start` (the projected Start class board with the code and QR), `cards` and `report-cards`; plus `/school/$org/students/$student`.
+- **Teacher:** `/school/$org/classes/$class/` has Today, Map, Grades (`gradebook`), Time, Workbooks, Students (`roster`) and Settings tabs in the shared app bar. Today’s **Start class** action opens the code and QR board (`start`). Grades opens `report-cards`; Students opens sign-in `cards` and student-experience settings (`experience`). Student records use `/school/$org/students/$student`. Past classes keep Grades and Time.
 - **Admin and district:**
-  - `/school/$org`: the overview.
+  - `/school/$org`: the overview. The shared bar has Overview, Classes, Staff, Calendar, License, Privacy and Activity tabs, filtered by the person’s access. Districts and networks also have a Schools tab. A one-class solo school omits Overview, Staff and Activity. Classes opens students, imports and student-experience settings; Staff opens sign-in help and integrations; Calendar opens year rollover.
   - `staff`, `calendar`, `experience`, `import`, `integrations`, `license`, `privacy`, `activity`, and `schools` for districts.
   - `/school/new?org=…`: guided setup, reached only from a setup invitation; without one it goes to `/schools`.
 

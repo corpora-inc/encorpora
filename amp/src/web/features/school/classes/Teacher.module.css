@@ -10,6 +10,23 @@
   margin-top: var(--space-1);
   color: var(--color-muted-text);
 }
+/* The class code, for a student's own device (the board is Start class). */
+.greeting .code {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--space-2);
+  margin-top: var(--space-2);
+}
+.code strong {
+  color: var(--color-on-surface);
+  font-size: var(--text-heading-3);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+}
+.startClass {
+  margin-top: var(--space-4);
+}
 .todos {
   container-type: inline-size;
   display: grid;
@@ -630,6 +647,11 @@ label.columnPick {
 .heatTicks span {
   overflow: visible;
   min-width: 0;
+}
+/* Keep a date near the end of the strip inside its table column. */
+.heatTicks span:nth-last-child(-n + 3) {
+  justify-self: end;
+  width: max-content;
 }
 .heatCell[data-monday],
 .heatTicks [data-monday] {

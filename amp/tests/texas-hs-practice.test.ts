@@ -95,6 +95,10 @@ const expectedVariants: Record<string, string[]> = {
     "system-from-tables",
     "system-from-graph",
     "system-from-counts",
+    "inequality-bakery",
+    "inequality-meal",
+    "inequality-pages",
+    "inequality-cargo",
   ],
   "graph-estimate-system-solution": [
     "crossing-between-gridlines",

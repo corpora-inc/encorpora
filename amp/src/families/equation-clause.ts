@@ -221,7 +221,7 @@ const pack = formatLessons([
       "A different plain number with the same x-count is no solution, not one solution.",
     ],
     parentGuide:
-      "Ask two questions: do the x's cancel, and if they do, is the leftover sentence true?",
+      "Ask two questions: do the $x$ terms cancel, and if they do, is the leftover sentence true?",
   },
   {
     id: "system-intersection-reason",
@@ -446,6 +446,78 @@ export const family = {
   lessons: pack.lessons,
   methods: pack.methods,
   principles: pack.principles,
+  facetMappings: [
+    {
+      templateId: "variable-role-pair",
+      facetId: "simple-inequalities.context-inequality",
+      extent: "partial",
+      rationale:
+        "Tell a letter fixed by one fact from a letter that names every number allowed by at least, at most, more than, or fewer than. Does not assess solving a two-step inequality.",
+    },
+    {
+      templateId: "arithmetic-algebra-compare",
+      facetId: "two-step-equations.story-solve",
+      extent: "partial",
+      rationale:
+        "Undo a two-step fee-and-rate story, then match those operations to both sides of its equation. Does not assess a balance model.",
+    },
+    {
+      templateId: "fee-budget-number-line",
+      facetId: "linear-inequalities.core",
+      extent: "partial",
+      rationale:
+        "Choose the number line for a fee plus a rate compared with a budget: boundary, open or filled circle, and ray. Does not assess an exact algebraic solution set.",
+    },
+    {
+      templateId: "fee-budget-meaning",
+      facetId: "linear-inequalities.affine-solution-set",
+      extent: "partial",
+      rationale:
+        "Read a fee-plus-rate inequality as a whole-number count, moving a non-whole boundary into the ray. Does not assess graphing the ray.",
+    },
+    {
+      templateId: "equation-make-example",
+      facetId: "linear-equations.core",
+      extent: "partial",
+      rationale:
+        "Complete a right side so a linear equation has no solution, infinitely many solutions, or exactly one. Does not assess solving for x.",
+    },
+    {
+      templateId: "system-intersection-reason",
+      facetId: "linear-systems.ordered-pair-solutions",
+      extent: "partial",
+      rationale:
+        "Choose the intersection as the pair that satisfies both equations, and reject a point on only one line. Does not assess solving the system algebraically.",
+    },
+    {
+      templateId: "system-line-points",
+      facetId: "linear-systems.core",
+      extent: "partial",
+      rationale:
+        "Plot two lattice points on the first line of a system. Does not assess the intersection or the second line.",
+    },
+    {
+      templateId: "system-crossing-estimate",
+      facetId: "linear-systems.ordered-pair-solutions",
+      extent: "partial",
+      rationale:
+        "Estimate the intersection of two graphed lines to the nearest half unit. Does not assess an exact algebraic solution.",
+    },
+    {
+      templateId: "assume-solution-check",
+      facetId: "equation-reasoning.justify-steps",
+      extent: "partial",
+      rationale:
+        "Name the opening assumption of a linear solution, what the chain forces, and the substitution check that finishes it. Does not assess naming each equality property.",
+    },
+    {
+      templateId: "scaled-elimination",
+      facetId: "elimination-proof.HSA.REI.C.5",
+      extent: "partial",
+      rationale:
+        "Add a chosen multiple of one equation to the other and explain why the new system has the same solutions. Does not assess solving for both variables.",
+    },
+  ],
   archetypeLinks: {
     "variable-role-pair": ["inequality.context"],
     "arithmetic-algebra-compare": ["linear.context"],

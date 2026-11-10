@@ -31,7 +31,8 @@ const definitions = rows
 export const attributeTemplates: readonly TemplateMetadata[] = definitions.map(
   ({ id, title, skillId, gradeBand, response, description }) => ({
     id,
-    version: 1,
+    version: id === "order-lengths" ? 2 : 1,
+    ...(id === "order-lengths" ? { reprintsFrom: 1 as const } : {}),
     title,
     skillId,
     gradeBand,

@@ -1,10 +1,32 @@
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
+  ProblemVariant,
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts.js";
 import { count, wasWere, hasHave, isAre } from "./agreement.js";
+import {
+  chooseAxes,
+  defineAxis,
+  surfaceStream,
+  versionGatedAxes,
+} from "./variation/axes.js";
+
+/** Tens and hundreds within 1000, including off a multiple and a middle blank.
+ * Legacy stays a multiple of 5, 10, or 100 with the blank last. */
+export const skipCountAxes = {
+  family: defineAxis(
+    "family",
+    ["legacy", "by-10s-within-1000", "by-100s-within-1000"] as const,
+    {
+      legacy: "legacy",
+      weights: [2, 3, 3],
+      silentLegacy: true,
+      since: 2,
+    },
+  ),
+} as const;
 const definitions = [
   [
     "join-within-10",
@@ -130,7 +152,7 @@ const definitions = [
     "Find the next count",
     "skip-counting",
     "2",
-    "Continue a count by fives tens or hundreds within one thousand.",
+    "Continue a count by fives, tens, or hundreds within one thousand, including tens and hundreds off a multiple.",
   ],
   [
     "continue-count-to-120",
@@ -140,13 +162,22 @@ const definitions = [
     "Continue by ones from any supported starting point through 120.",
   ],
 ] as const;
+const clauseVersion = new Set([
+  "ten-frame-complement",
+  "add-ones-regroup",
+  "add-several-two-digit",
+  "add-with-regrouping",
+  "subtract-with-regrouping",
+  "skip-count-missing",
+]);
 export const elementaryTemplates: readonly TemplateMetadata[] = definitions.map(
   ([id, title, skillId, , description]) => ({
     id,
     title,
     skillId,
     description,
-    version: 1,
+    version: clauseVersion.has(id) ? 2 : 1,
+    ...(clauseVersion.has(id) ? { reprintsFrom: 1 as const } : {}),
     gradeBand: "K–2",
   }),
 );
@@ -168,6 +199,104 @@ function random(id: string, seed: string) {
     return min + (n % range);
   };
 }
+function skipWithin1000(
+  templateId: string,
+  seed: string,
+  step: 10 | 100,
+): { prompt: string; answer: number; hint: string; explanation: string[] } {
+  const s = surfaceStream(templateId, `${seed}:skip-${step}`);
+  const stated = s(1, 3) > 1;
+  let start: number;
+  let blankLast: boolean;
+  if (step === 100 && s(1, 5) === 1) {
+    start = 700;
+    blankLast = true;
+  } else if (step === 100) {
+    start = s(1, 699);
+    blankLast = s(1, 10) <= 7;
+  } else {
+    blankLast = s(1, 10) <= 7;
+    const multiple = s(1, 5) <= 3;
+    const cross = s(1, 10) <= 4;
+    const options: number[] = [];
+    if (multiple && cross) {
+      for (let hundred = 1; hundred <= 9; hundred++)
+        for (const residue of [70, 80, 90]) {
+          const value = hundred * 100 + residue;
+          if (value >= 100 && value + 30 <= 1000) options.push(value);
+        }
+    } else if (multiple && !cross) {
+      for (let hundred = 1; hundred <= 9; hundred++)
+        for (const residue of [0, 10, 20, 30, 40, 50, 60]) {
+          const value = hundred * 100 + residue;
+          if (value >= 100 && value + 30 <= 1000) options.push(value);
+        }
+    } else if (cross) {
+      for (let value = 100; value <= 970; value++)
+        if (value % 10 !== 0 && value % 100 >= 70) options.push(value);
+    } else {
+      for (let value = 100; value <= 970; value++)
+        if (value % 10 !== 0 && value % 100 < 70) options.push(value);
+    }
+    start = options[s(0, options.length - 1)]!;
+  }
+  const terms = [0, 1, 2, 3].map((i) => start + i * step);
+  const blankAt = blankLast ? 3 : 2;
+  const answer = terms[blankAt]!;
+  const before = terms[blankAt - 1]!;
+  const shown = terms.map((term, index) =>
+    index === blankAt ? "□" : String(term),
+  );
+  const list = shown.join(", ");
+  const prompt =
+    stated && blankLast
+      ? `Count by ${step}: ${list}. What comes next?`
+      : stated
+        ? `Count by ${step}: ${list}. What number is missing?`
+        : blankLast
+          ? `What comes next? ${list}.`
+          : `What number is missing? ${list}.`;
+  const ones = before + 1;
+  const wrongPlace = before + (step === 10 ? 100 : 10);
+  const stall =
+    step === 10
+      ? Math.floor(before / 100) * 100
+      : Math.floor(before / 100) * 100;
+  const crossed =
+    Math.floor(before / (step === 10 ? 100 : 1000)) !==
+    Math.floor(answer / (step === 10 ? 100 : 1000));
+  const dropped =
+    step === 10 && before % 100 + 10 >= 100
+      ? Number(`${Math.floor(before / 100)}${before % 100 + 10}`)
+      : before;
+  const hint = `Look at ${before} and the number before it. Find that jump, then add the same jump once. Do not add 1.`;
+  const explanation = [
+    step === 10
+      ? `Each jump is 10. The ones digit stays ${start % 10}.`
+      : `Each jump is 100. The last two digits stay ${String(start % 100).padStart(2, "0")}.`,
+    `${before} + ${step} = ${answer}.`,
+    `${before} + 1 = ${ones}, which counts by ones, not by ${step}.`,
+    wrongPlace <= 1000 && wrongPlace !== answer
+      ? step === 10
+        ? `${before} + 100 = ${wrongPlace}. That changes the hundreds, not the tens.`
+        : `${before} + 10 = ${wrongPlace}. That changes the tens, not the hundreds.`
+      : `Check the place you add. By ${step === 10 ? "tens" : "hundreds"}, only that place grows.`,
+  ];
+  if (crossed) {
+    explanation.push(
+      step === 10
+        ? `Ten tens make a hundred, so ${before} and ten more is ${answer}, not ${stall === answer ? "the hundred you left" : stall}.`
+        : `Ten hundreds make 1,000, so ${before} and one hundred more is ${answer}.`,
+    );
+    if (dropped !== answer && dropped !== before && step === 10)
+      explanation.push(
+        `${dropped} is not the next count. Do not say the hundred and then the old ending.`,
+      );
+  }
+  explanation.push(`The missing number is ${answer}.`);
+  return { prompt, answer, hint, explanation };
+}
+
 function blocks(n: number): SemanticFigure {
   return {
     kind: "base-ten",
@@ -190,6 +319,7 @@ export function generateElementaryProblem(
     hint = "",
     explanation: string[] = [];
   let figure: SemanticFigure | undefined;
+  let variant: ProblemVariant | undefined;
   switch (templateId) {
     case "join-within-10": {
       const a = r(1, 8),
@@ -515,17 +645,31 @@ export function generateElementaryProblem(
       break;
     }
     case "skip-count-missing": {
-      const step = [5, 10, 100][r(0, 2)]!,
-        start = r(0, Math.floor((1000 - 3 * step) / step)) * step;
-      prompt = `Count by ${step}: ${start}, ${start + step}, ${start + 2 * step}, □. What comes next?`;
-      answer = start + 3 * step;
-      hint = `Each number is ${step} more than the one before: ${start} + ${step} is ${start + step}. Go up ${step} more from ${start + 2 * step}.`;
-      explanation = [
-        `Counting by ${step} means each number is ${step} more than the one before.`,
-        `Check the pattern: ${start} + ${step} = ${start + step}, and ${start + step} + ${step} = ${start + 2 * step}.`,
-        `So add ${step} once more: ${start + 2 * step} + ${step} = ${answer}.`,
-        `The next number is ${answer}.`,
-      ];
+      const family = chooseAxes(templateId, seed, skipCountAxes).family;
+      if (family === "legacy") {
+        const step = [5, 10, 100][r(0, 2)]!,
+          start = r(0, Math.floor((1000 - 3 * step) / step)) * step;
+        prompt = `Count by ${step}: ${start}, ${start + step}, ${start + 2 * step}, □. What comes next?`;
+        answer = start + 3 * step;
+        hint = `Each number is ${step} more than the one before: ${start} + ${step} is ${start + step}. Go up ${step} more from ${start + 2 * step}.`;
+        explanation = [
+          `Counting by ${step} means each number is ${step} more than the one before.`,
+          `Check the pattern: ${start} + ${step} = ${start + step}, and ${start + step} + ${step} = ${start + 2 * step}.`,
+          `So add ${step} once more: ${start + 2 * step} + ${step} = ${answer}.`,
+          `The next number is ${answer}.`,
+        ];
+      } else {
+        const built = skipWithin1000(
+          templateId,
+          seed,
+          family === "by-10s-within-1000" ? 10 : 100,
+        );
+        prompt = built.prompt;
+        answer = built.answer;
+        hint = built.hint;
+        explanation = built.explanation;
+        variant = { id: family, axes: { family } };
+      }
       break;
     }
     case "continue-count-to-120": {
@@ -547,13 +691,24 @@ export function generateElementaryProblem(
       break;
     }
   }
+  const skipVersion =
+    templateId === "skip-count-missing" &&
+    !versionGatedAxes().some((axis) => axis.id === "family")
+      ? 2
+      : 1;
   return {
     public: {
       id: createHash("sha256")
-        .update(JSON.stringify([templateId, 1, seed]))
+        .update(
+          JSON.stringify([
+            templateId,
+            templateId === "skip-count-missing" ? skipVersion : 1,
+            seed,
+          ]),
+        )
         .digest("hex"),
       templateId,
-      templateVersion: 1,
+      templateVersion: templateId === "skip-count-missing" ? skipVersion : 1,
       seed,
       prompt,
       skillId: meta.skillId,
@@ -563,5 +718,6 @@ export function generateElementaryProblem(
     answer: String(answer),
     hint,
     explanation,
+    ...(variant ? { variant } : {}),
   };
 }

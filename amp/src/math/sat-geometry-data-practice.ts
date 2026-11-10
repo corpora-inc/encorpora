@@ -1,5 +1,6 @@
-import { article } from "./agreement";
+import { article, isAre } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
+import { chooseAxes, defineAxis } from "./variation/axes";
 import {
   assemble,
   random,
@@ -83,7 +84,8 @@ export const satGeometryDataTemplates: readonly TemplateMetadata[] = (
   ] as const
 ).map((meta) => ({
   ...meta,
-  version: 1 as const,
+  version: (meta.id === "independence-test" ? 2 : 1) as 1 | 2,
+  ...(meta.id === "independence-test" ? { reprintsFrom: 1 as const } : {}),
   gradeBand: "9–12" as const,
   requiredResponseCapability: "single-choice-v1" as const,
 }));
@@ -1586,6 +1588,14 @@ function freqCase(r: Random): SatGeometryDataCase {
 }
 
 /* ---------------------------------------------------------- independence */
+const independenceTaskAxes = {
+  task: defineAxis("task", ["standard", "both-directions"] as const, {
+    legacy: "standard",
+    weights: [1, 1],
+    silentLegacy: true,
+    since: 2,
+  }),
+} as const;
 const independenceVariants = [
   "independent-group",
   "relation-2x2",
@@ -1688,7 +1698,95 @@ const interpretations = [
     },
   },
 ] as const;
-function independenceCase(r: Random): SatGeometryDataCase {
+function bothDirections(r: Random): SatGeometryDataCase {
+  for (let attempt = 0; attempt <= 80; attempt++) {
+    // Preserve successful seeds. If rejection sampling exhausts its budget,
+    // use margins whose joint count is integral and whose four cells stay
+    // at least 3, including either dependent perturbation by 3.
+    const fallback = attempt === 80;
+    const N = fallback ? 40 : pick(r, [40, 60, 80, 100, 120, 200]);
+    const row = fallback ? 20 : r(Math.floor(N * 0.3), Math.floor(N * 0.7));
+    let col = fallback ? 12 : r(Math.floor(N * 0.25), Math.floor(N * 0.55));
+    if (row === col) col += row < N / 2 ? 4 : -4;
+    if (col < 4 || col >= N || row < 4 || row >= N || row === col) continue;
+    if ((row * col) % N !== 0) continue;
+    const base = (row * col) / N;
+    const independent = r(0, 1) === 1;
+    let joint = base;
+    if (!independent) {
+      const minD = Math.max(3, Math.ceil((0.1 * row * col) / N));
+      joint = base + (r(0, 1) === 0 ? minD : -minD);
+    }
+    const aOnly = row - joint;
+    const bOnly = col - joint;
+    const neither = N - row - col + joint;
+    // A cell of 1 would make isAre say "is", and the prompt contract requires "are".
+    if ([joint, aOnly, bOnly, neither].some((x) => x < 2)) continue;
+    if ((joint * N === row * col) !== independent) continue;
+    const equal =
+      "$P(A\\mid B)=P(A)$ and $P(B\\mid A)=P(B)$, so the events are independent.";
+    const neitherEq =
+      "Neither $P(A\\mid B)=P(A)$ nor $P(B\\mid A)=P(B)$, so the events are dependent.";
+    const oneWay =
+      "$P(A\\mid B)=P(A)$ but $P(B\\mid A)$ does not equal $P(B)$, so $A$ is independent of $B$ but $B$ depends on $A$.";
+    const wrongPair =
+      "$P(A\\mid B)$ does not equal $P(B\\mid A)$, so the events are dependent.";
+    const correct = independent ? equal : neitherEq;
+    const opposite = independent ? neitherEq : equal;
+    const choices = choose(correct, [
+      [
+        oneWay,
+        "The two comparisons are the same fact. One cannot hold while the other fails.",
+      ],
+      [
+        wrongPair,
+        `Here $P(A)=${rational(row, N)}$ and $P(B)=${rational(col, N)}$. Those two conditional probabilities differ whenever the events have different probabilities. Compare each one with its own event.`,
+      ],
+      [
+        opposite,
+        independent
+          ? "Both comparisons hold, so the events are independent."
+          : "Neither comparison holds, so the events are dependent.",
+      ],
+    ]);
+    if (!choices) continue;
+    const pa = rational(row, N);
+    const pb = rational(col, N);
+    const paB = rational(joint, col);
+    const pbA = rational(joint, row);
+    return {
+      tag: "both-directions",
+      draft: {
+        prompt: `A group of ${N} people is classified by events $A$ and $B$. ${joint} ${isAre(joint)} in both $A$ and $B$, ${aOnly} ${isAre(aOnly)} in $A$ only, ${bOnly} ${isAre(bOnly)} in $B$ only, and ${neither} ${isAre(neither)} in neither. Check both directions: compare $P(A\\mid B)$ with $P(A)$, and compare $P(B\\mid A)$ with $P(B)$. Which statement is true?`,
+        figure: twoByTwoFigure(
+          ["A", "Not A"],
+          ["B", "Not B"],
+          [
+            [joint, aOnly],
+            [bOnly, neither],
+          ],
+          "Counts of people",
+        ),
+        answer: "",
+        hint: `Restrict to the ${col} people in $B$ and compare $A$'s share with $A$'s share of all ${N}. Then restrict to the ${row} people in $A$ and compare $B$'s share with $B$'s share of everyone.`,
+        explanation: [
+          `$P(A)$ is ${row} of ${N}, or ${pa}. $P(A\\mid B)$ is ${joint} of the ${col} people in $B$, or ${paB}.`,
+          `$P(B)$ is ${pb} and $P(B\\mid A)$ is ${joint} of the ${row} people in $A$, or ${pbA}.`,
+          independent
+            ? "Both comparisons match, so knowing either event leaves the other's probability unchanged."
+            : "Neither comparison matches, so each event changes the probability of the other.",
+          independent
+            ? "The events are independent."
+            : "The events are dependent.",
+        ],
+        choices,
+      },
+    };
+  }
+  throw new Error("Need an independence table");
+}
+function independenceCase(r: Random, task = "standard"): SatGeometryDataCase {
+  if (task === "both-directions") return bothDirections(r);
   const tag = pick(r, independenceVariants);
   for (;;) {
     if (tag === "independent-group") {
@@ -1980,8 +2078,28 @@ export function satGeometryDataCase(
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
   const r = random(id, seed);
-  const built = builders[id]!(r);
-  return { problem: assemble(meta, seed, r, built.draft), tag: built.tag };
+  const task =
+    id === "independence-test"
+      ? chooseAxes(id, seed, independenceTaskAxes).task
+      : "standard";
+  const built =
+    id === "independence-test"
+      ? independenceCase(r, task)
+      : builders[id]!(r);
+  const problem = assemble(meta, seed, r, built.draft);
+  return {
+    problem:
+      task === "both-directions"
+        ? {
+            ...problem,
+            variant: {
+              id: "both-directions",
+              axes: { task: "both-directions" },
+            },
+          }
+        : problem,
+    tag: built.tag,
+  };
 }
 export function generateSatGeometryDataProblem(
   id: string,

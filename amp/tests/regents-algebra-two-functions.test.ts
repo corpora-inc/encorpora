@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { generateProblem } from "../src/math/engine";
 import { checkTemplate } from "./fixtures/regents-check";
 import {
   eventComplementSet,
@@ -159,20 +160,43 @@ test("parabola vertex: equidistant from focus and directrix", () => {
   }
 });
 
+const charPreds: Record<string, (x: number) => boolean> = {
+  "the number is even": (x) => x % 2 === 0,
+  "the number is odd": (x) => x % 2 === 1,
+  "the number is a multiple of 3": (x) => x % 3 === 0,
+  "the number is a multiple of 4": (x) => x % 4 === 0,
+  "the number is a multiple of 6": (x) => x % 6 === 0,
+  "the number is prime": (x) =>
+    x >= 2 && [...Array(x).keys()].slice(2).every((d) => x % d !== 0),
+  "the number is greater than 6": (x) => x > 6,
+  "the number is less than 5": (x) => x < 5,
+  "the number is not a multiple of 3": (x) => x % 3 !== 0,
+  "the number is a multiple of 3 or 4": (x) => x % 3 === 0 || x % 4 === 0,
+};
+const sentenceWords = (text: string) =>
+  text
+    .split(/(?<=[.!?])\s+/)
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .map((s) => s.split(/\s+/).length);
+
 test("event complement: independent set algebra", () => {
   checkTemplate("event-complement-set", {
     variants: [
       "complement",
       "complement-of-union",
       "complement-of-intersection",
+      "events-by-characteristic",
     ],
     axes: {
       ask: ["complement", "complement-of-union", "complement-of-intersection"],
+      task: ["events-by-characteristic"],
     },
     hintsMin: 15,
   });
   for (const s of SEEDS) {
     const { model: m, problem } = eventComplementSet.generate(s);
+    if (m.kind === "characteristic") continue;
     const lab = label(problem as Problem);
     const got = new Set(lab.slice(1, -1).split(", ").filter(Boolean));
     const expected = new Set(
@@ -188,4 +212,64 @@ test("event complement: independent set algebra", () => {
     );
     assert.deepEqual([...got].sort(), [...expected].sort());
   }
+});
+
+test("events by characteristic: descriptions differ and old versions stay named sets", () => {
+  let described = 0;
+  let selected = 0;
+  for (let i = 0; i < 200; i++) {
+    const old = generateProblem("event-complement-set", `char:${i}`, 1);
+    assert.equal(old.public.prompt.includes("characteristic"), false);
+    assert.equal(old.variant?.axes?.task, undefined);
+    const problem = generateProblem("event-complement-set", `char:${i}`);
+    if (!problem.public.prompt.includes("characteristic")) continue;
+    assert.equal(problem.variant?.id, "events-by-characteristic");
+    for (const text of [problem.public.prompt, problem.hint, ...problem.explanation])
+      for (const n of sentenceWords(text))
+        assert.ok(n <= 35, text);
+    const response = problem.public.response;
+    assert.equal(response.kind, "choice");
+    if (response.kind !== "choice") continue;
+    const correct = response.options.find((o) => o.id === problem.answer)!.label;
+    assert.equal(problem.hint.includes(correct), false);
+    const describedPrompt = /event \{(.+?)\} by a characteristic/.exec(
+      problem.public.prompt,
+    );
+    if (describedPrompt) {
+      described++;
+      const n = Number(/from 1 to (\d+)/.exec(problem.public.prompt)![1]);
+      const target = describedPrompt[1]!.split(", ").map(Number);
+      const sets = response.options.map((o) =>
+        [...Array(n).keys()]
+          .map((k) => k + 1)
+          .filter(charPreds[o.label]!),
+      );
+      assert.equal(new Set(sets.map((s) => s.join(","))).size, 4);
+      const key = [...Array(n).keys()]
+        .map((k) => k + 1)
+        .filter(charPreds[correct]!);
+      assert.deepEqual(key, target);
+    } else {
+      selected++;
+      const n = Number(/from 1 to (\d+)/.exec(problem.public.prompt)![1]);
+      const space = [...Array(n).keys()].map((k) => k + 1);
+      const A = new Set(space.filter((x) => x % 2 === 0));
+      const B = new Set(space.filter((x) => x % 3 === 0));
+      const words = /lists the numbers (.+)\?$/.exec(problem.public.prompt)![1]!;
+      const ops: Record<string, number[]> = {
+        "in A and not in B": space.filter((x) => A.has(x) && !B.has(x)),
+        "not in A": space.filter((x) => !A.has(x)),
+        "in A or in B": space.filter((x) => A.has(x) || B.has(x)),
+        "not in A or B": space.filter((x) => !A.has(x) && !B.has(x)),
+        "not in both A and B": space.filter((x) => !(A.has(x) && B.has(x))),
+      };
+      assert.deepEqual(
+        correct,
+        `{${ops[words]!.join(", ")}}`,
+      );
+      const sets = response.options.map((o) => o.label);
+      assert.equal(new Set(sets).size, 4);
+    }
+  }
+  assert.ok(described > 0 && selected > 0);
 });

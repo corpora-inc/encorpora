@@ -1,18 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
-import { Brand } from "./SchoolFrame";
+import frame from "./SchoolFrame.module.css";
 import { currentSession, orgsOptions } from "./api";
 import { orgHome } from "./paths";
-import { roleNames } from "./parts";
+import { PageHead, roleNames } from "./parts";
 import styles from "./School.module.css";
 
 /** More than one school: choose. One or none never reaches this screen. */
 export function ChooserScreen() {
   const orgs = useQuery(orgsOptions(currentSession())).data ?? [];
   return (
-    <main className={styles.chooser} data-dense>
-      <Brand />
-      <h1>Your schools</h1>
+    <main className={frame.content} data-dense>
+      <PageHead title="Your schools" />
       <ul className={styles.chooserList}>
         {orgs.map((org) => {
           const home = orgHome(org);

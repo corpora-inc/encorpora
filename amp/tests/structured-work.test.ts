@@ -907,11 +907,54 @@ test("a lesson never works the learner's own problem, and print keeps every step
   }
 });
 
+test("the quadratic-formula derivation chooses the six lines, and version 1 still factors", () => {
+  for (let i = 0; i < 40; i++) {
+    const old = generateProblem("solve-justify-quadratic", `formula-old-${i}`, 1);
+    assert.match(old.public.prompt, /by factoring/);
+    assert.doesNotMatch(old.public.prompt, /completing the square/);
+  }
+  const letters = solveJustifyCases["solve-justify-quadratic"]("quadratic-formula", {
+    family: "general-coefficients",
+    piece: "letters",
+    mode: "build",
+    fill: "reasons",
+    form: "standard",
+  }).problem;
+  assert.match(letters.public.prompt, /a \\ne 0/);
+  assert.equal(
+    letters.answer,
+    '[["l1","da"],["l2","su"],["l3","cs"],["l4","fa"],["l5","sr"],["l6","su"]]',
+  );
+  const withCf = letters.answer.replace('"fa"', '"cf"');
+  assert.equal(gradeAnswer(letters, withCf), true);
+  const swapped = letters.answer.replace('"l4","fa"', '"a4","fa"');
+  assert.equal(gradeAnswer(letters, swapped), false);
+  let numeric = 0;
+  for (let i = 0; i < 200; i++) {
+    const p = generateProblem("solve-justify-quadratic", `formula-${i}`);
+    if (!/Solve \$(\d+)x\^2([+-]\d*)x([+-]\d+)=0\$ by completing the square/.test(p.public.prompt))
+      continue;
+    numeric++;
+    const m = p.public.prompt.match(
+      /Solve \$(\d+)x\^2([+-]\d*)x([+-]\d+)=0\$/,
+    )!;
+    const a = Number(m[1]);
+    const b = m[2] === "+" || m[2] === "-" ? (m[2] === "-" ? -1 : 1) : Number(m[2]);
+    const c = Number(m[3]);
+    const disc = b * b - 4 * a * c;
+    assert.ok(disc > 0 && Math.round(Math.sqrt(disc)) ** 2 !== disc);
+    assert.equal(gradeAnswer(p, p.answer), true);
+  }
+  assert.ok(numeric >= 20, `${numeric} numeric derivations`);
+});
+
 test("answer text and keypad keys come from the public response", () => {
   const q = solveJustifyCases["solve-justify-quadratic"]("keys", {
     mode: "build",
     form: "standard",
     fill: "reasons",
+    family: "factoring",
+    piece: "numeric",
   }).problem;
   const r = q.public.response as StructuredWorkResponse;
   const keys = keypadKeys(r);

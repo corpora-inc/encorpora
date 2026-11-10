@@ -143,12 +143,13 @@ export function BuyOptions({
     variant === "full" ? styles.buyButton : styles.buyCompactButton;
   function buyByCard(next: "year" | "month") {
     track("buy_click", { path: "card", from });
+    // The plan waits for the learner it is for: after sign-up and "What
+    // brings you to AMP?", it opens for them with this plan chosen.
+    rememberPlanChoice(next);
     if (signedIn) {
-      void navigate({ to: "/start/plan", search: { interval: next } });
+      void navigate({ to: "/" });
       return;
     }
-    // Sign-up continues straight to this plan's checkout.
-    rememberPlanChoice(next);
     void navigate(pitchTarget("card", search));
   }
   if (program && fundedOffer) {

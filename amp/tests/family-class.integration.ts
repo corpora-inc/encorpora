@@ -113,7 +113,7 @@ test(
         set: true,
       });
       assert.equal(grant.statusCode, 200, grant.body);
-      return grant.json() as { token: string; accountId: string };
+      return grant.json() as { token: string; accountId: string; mode: string };
     };
 
     await t.test(
@@ -255,6 +255,8 @@ test(
         // A second device: the class code, her name and three pictures.
         const grant = await joinByPictures(code, "Maya");
         assert.match(grant.accountId, /^school:/);
+        // A family's child joins on a device of their own, and stays signed in.
+        assert.equal(grant.mode, "personal");
         const token = grant.token;
         const own = await me(token);
         assert.equal(own.account.kind, "student");

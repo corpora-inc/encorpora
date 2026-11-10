@@ -63,6 +63,50 @@ test("Algebra 1 two-variable items are valid, deterministic assessment items", (
   }
 });
 
+test("choose-graph descriptions match the inequality at the test point", () => {
+  let single = 0;
+  let systems = 0;
+  const holds = (a: number, b: number, op: string, c: number, x: number, y: number) => {
+    const left = a * x + b * y;
+    return op === "<" ? left < c : op === "<=" || op === "≤" ? left <= c : op === ">" ? left > c : left >= c;
+  };
+  for (let i = 0; i < 200; i++) {
+    const problem = generateProblem("half-plane-inequality", `graph-${i}`);
+    if (!problem.variant) continue;
+    const response = problem.public.response;
+    if (response.kind !== "choice") throw new Error("choice");
+    const key = response.options.find((o) => o.id === problem.answer)!.label;
+    if (problem.variant.id === "choose-graph") {
+      single++;
+      const tex = /\$([^$]+)\$/.exec(problem.public.prompt)![1]!;
+      const match = /(.+) (<=|>=|<|>|\\le|\\ge) (-?\d+)/.exec(tex.replaceAll("−", "-").replaceAll("\\le", "<=").replaceAll("\\ge", ">="))!;
+      const left = match[1]!.replace(/\s/g, "");
+      const coeff = (variable: string) => {
+        const found = new RegExp(`([+-]?)(\\d*)${variable}`).exec(left.startsWith("-") || left.startsWith("+") ? left : `+${left}`);
+        if (!found) return 0;
+        const sign = found[1] === "-" ? -1 : 1;
+        const mag = found[2] === "" ? 1 : Number(found[2]);
+        return sign * mag;
+      };
+      const op = match[2] === "\\le" ? "<=" : match[2] === "\\ge" ? ">=" : match[2]!;
+      const c = Number(match[3]);
+      const origin = holds(coeff("x"), coeff("y"), op, c, 0, 0);
+      const strict = op === "<" || op === ">";
+      assert.match(key, strict ? /^Dashed / : /^Solid /);
+      assert.match(key, origin ? /includes \(0, 0\)/ : /excludes \(0, 0\)/);
+      for (const option of response.options)
+        if (option.id !== problem.answer)
+          assert.notEqual(option.label, key);
+    } else if (problem.variant.id === "choose-system") {
+      systems++;
+      assert.match(key, /only the overlap/);
+      assert.match(key, /is included/);
+      assert.ok(response.options.some((o) => o.label.includes("union")));
+    }
+  }
+  assert.ok(single > 20 && systems > 20);
+});
+
 test("walkthroughs name only parts their scene has and never state the answer", () => {
   for (const id of ["inequality-solution-point", "elimination-equivalent"])
     for (let i = 0; i < 300; i++) {
