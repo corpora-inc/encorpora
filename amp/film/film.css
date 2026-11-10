@@ -114,6 +114,13 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
 .film-blocks-digit.pad { color: var(--color-figure-accent); }
 .film-blocks-count { color: var(--color-figure-accent); }
 
+/* Things to count: the app's drawings. A light is a gold disc and ring behind the thing, a counted thing takes a muted tick; only their opacity changes. */
+.film-thing-tick { fill: none; stroke: var(--color-muted-text); stroke-linecap: round; stroke-linejoin: round; }
+.film-things-extent { fill: none; stroke: none; pointer-events: none; }
+.film-thing-glow { fill: var(--color-figure-gold-fill); stroke: none; }
+.film-thing-ring { fill: none; stroke: var(--color-figure-gold); }
+.film-things-count { color: var(--color-figure-accent); }
+
 /* The table: a light grid, a heavier rule before the totals, a gold band for the given row or column. */
 .film-table-grid { fill: none; stroke: var(--color-figure-ink); stroke-width: 2.5; stroke-linejoin: round; }
 .film-table-rule { fill: none; stroke: var(--color-figure-ink); stroke-width: 5; }

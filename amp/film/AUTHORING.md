@@ -346,6 +346,7 @@ Parts:
 | `plot` | An expression in `x`, `from`, `to`, `ink`, `w` |
 | `grid` | `[columns, rows]`, `at` (its top-left corner), `size` (one cell, or `[w, h]`), `fill`, `ink`: a ten-frame is `[5, 2]`, a bar split into equal parts `[n, 1]`, an array, a hundred chart |
 | `counters` | A grid's id, `n`, `from` (first cell), `shape` (`round`, or `square` for the second addend as the app shows it), `ink`. Each counter is its own point and part, `id1`, `id2`, ...; showing `id` shows them all |
+| `things` | A kind of real thing (`apple`, `duck`, ...), `n`, `at` or `in` (a grid), `arrange`, `slots`, `size`, `count`. See "Things to count" |
 
 Fills: `accent-fill`, `warm-fill`, `gold-fill`, `blue-fill`, `violet-fill`, `paper`, `none`. Inks: `ink`, `muted`, `accent`, `warm`, `gold`, `blue`, `violet`.
 
@@ -414,6 +415,78 @@ Verify changes with `npx vitest run film/bar.test.ts`, then inspect both orienta
 ```
 
 `{"do":"move","points":{"b9":{"cell":["fa",10]}},"at":"three"}` slides a counter into another frame. Move them one at a time on the words that count them ("one, two, three"). A label `@n` with `of` a grid counts the counters in it, ticking as each one lands.
+
+### Things to count: `things`
+
+In kindergarten to grade 2, count real things a child knows before counters: apples, ducks, cookies. Use two or three different quick situations in a film, then the problem's own picture. A `things` part is one group. Its things are the app's drawings, each named `id1`, `id2`, … for the whole shot, wherever it goes. A group's places never move, so nothing shifts when a thing arrives, leaves or is lit.
+
+The kinds, and no others: `apple` `banana` `strawberry` `orange` `ball` `block` `bear` `balloon` `duck` `fish` `cat` `ladybug` `car` `bus` `boat` `pencil` `book` `backpack` `flower` `leaf` `star` `cookie` `egg` `carrot`.
+
+**Example 1. Count out five from a pile, and stop.** Each apple lights and slides to the row exactly as the voice says its number; the number under the row ticks with it.
+
+```json
+{ "figure": {
+    "view": [0, 0, 12, 11.4],
+    "points": { "P": [0, 11.4], "L": [0, 4.4] },
+    "parts": [
+      { "id": "pile", "things": "apple", "n": 7, "at": "P", "arrange": "scatter", "perRow": 4, "start": true },
+      { "id": "lunch", "things": "apple", "n": 0, "slots": 5, "at": "L", "count": true }
+    ] },
+  "beats": [
+    { "say": "Take an apple for each number. One, two, three, four, five.",
+      "do": [ { "do": "count", "target": "pile", "to": 5, "into": "lunch" } ] },
+    { "say": "Five. Now stop.", "do": [ { "do": "highlight", "target": "lunch", "at": "Five" } ] }
+  ] }
+```
+
+**Example 2. Things in a ten-frame, counted where they sit, then traded for counters.** `in` puts the things in a grid's cells. The same cells then hold the problem's counters.
+
+```json
+{ "figure": {
+    "view": [0, -2.2, 12, 4.8],
+    "points": { "T": [0, 4.8] },
+    "parts": [
+      { "id": "tray", "grid": [5, 2], "at": "T", "size": 2.4, "start": true },
+      { "id": "c", "things": "cookie", "n": 7, "in": "tray", "start": true, "count": true },
+      { "id": "k", "counters": "tray", "n": 7 }
+    ] },
+  "beats": [
+    { "say": "Count the cookies, not the places. One, two, three, four, five, six, seven.",
+      "do": [ { "do": "count", "target": "c" } ] },
+    { "say": "Trade each cookie for a dot. Still seven.",
+      "do": [ { "do": "hide", "target": "c", "at": "Trade" }, { "do": "show", "target": "k", "at": "Trade" } ] }
+  ] }
+```
+
+The part:
+
+- `things`: one kind with `n` (0 to 20), or each thing's kind in order with no `n`: `["bear", "bear", "ball"]`.
+- Where: `"at": "P"` (the group's top-left corner) with `arrange`: `row` (the default), `grid` (rows of `perRow`, default 5) or `scatter` (tidy, never overlapping; the same `seed` is always the same picture). Or `"in": "g"`, the cells of grid `g`: a five-frame is `[5, 1]`, a ten-frame `[5, 2]`; `from` is the first cell.
+- `slots`: how many places, when things will join later. An empty group that things are sent to is `"n": 0` with `slots`.
+- `size`: one thing's width in the figure's units (default 2). Places are 1.2 widths apart, so a row of five things of size 2 is 12 wide. Set `view` to just fit the groups.
+- `"count": true`: a live number under the group. It ticks as each number is said and shows nothing while the group is empty.
+- `"start": true`: on screen from the start. Otherwise the things wait for `arrive`, `count` or `show`.
+
+Names: `a` is the group (the things in it at that moment), `a3` is one thing for the whole shot, and `a.3` is whatever sits in the third place of `a` at that moment (use it after things have moved).
+
+| Action | Does |
+|---|---|
+| `{"do":"arrive","target":"a","at":"word"}` | The group's hidden things come in one by one. |
+| `{"do":"count","target":"a"}` | Count along: each thing lights exactly as its number is said in this beat. A thing not yet on screen arrives on its number. |
+| `{"do":"count","target":"pile","to":4,"into":"bowl"}` | Counting out: each counted thing slides to `bowl` on its number, and the count stops at four. |
+| `{"do":"count","target":"more","from":8}` | Counting on: the first number said is "eight". A group of three more things takes "eight, nine, ten"; a group that already has eight things picks up at its eighth. |
+| `{"do":"send","target":["a4","a5"],"to":"b"}` | Things go to the next free places of another group: joining, taking away. `"to": ["p", "q"]` deals them out in turn: sharing. |
+| `{"do":"leave","target":["a4","a5"]}` | Things go away one by one. |
+| `show`, `hide`, `highlight` | Work on a group or a thing, as on any part. |
+
+Rules for `count`:
+
+- Say every number in the same beat as the `count`, in order. Other words between the numbers are fine ("one duck, two ducks"). `at` is not needed; the count starts at the first number.
+- The numbers said must match the things counted: five things, "one" to "five". When the voice stops early on purpose, give `"to"`. When a later sentence of the beat goes on to the next number for another reason, also give `"to"`.
+- A learner who touches one thing twice, or skips one: list the things in the order touched, one per word: `"target": ["a1", "a2", "a2", "a3"]` with "one, two, three, four".
+- One light at a time. A thing counted where it sits takes a small tick; a thing that arrived or slid away needs none. A light never moves or resizes anything.
+
+`--dry` stops with a plain message, before any voice is paid for, when a kind is not in the list, when the numbers said and the things counted do not match, when a thing or group does not exist, or when a group has no room.
 
 ### Graphs
 
