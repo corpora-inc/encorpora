@@ -19,3 +19,22 @@
     padding-inline: max(var(--space-5), env(safe-area-inset-left));
   }
 }
+/* The one quiet way to practice as someone else (features/profiles). */
+.quietLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-primary);
+  font-size: var(--text-label);
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.quietLink:hover {
+  text-decoration-thickness: 2px;
+}
+.quietLink:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-small);
+}

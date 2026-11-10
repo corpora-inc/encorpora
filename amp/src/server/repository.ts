@@ -68,6 +68,7 @@ import {
   type FreeAllowance,
 } from "../learning/free-allowance.js";
 import { refreshAdultAccess } from "../account/adult-access.js";
+import { profilesCovered } from "../account/practice-profiles.js";
 import { secondParentOwner } from "../family/second-parent.js";
 import {
   resolveStudentSession,
@@ -179,8 +180,11 @@ export interface LearnerTransaction {
   saveLevelDay(frontier: Frontier): Promise<void>;
   /** Whether this learner is a school student (has an amp_people row). */
   onSchoolRoster(): Promise<boolean>;
-  /** Whether this is an adult's own learner (docs/families.md). */
+  /** Whether this is an adult's own learner (docs/families.md), or one of
+   * their practice profiles. */
   isAdult(): Promise<boolean>;
+  /** Whether this is a practice profile: an adult practicing as someone else. */
+  isSimulation(): Promise<boolean>;
   namePending(): Promise<boolean>;
   recentAttempts(): Promise<Outcome[]>;
   skillEvidence(): Promise<SkillEvidence[]>;
@@ -314,6 +318,9 @@ export class PostgresRepository implements Repository {
         and(
           eq(schema.learners.accountId, accountId),
           isNull(schema.learners.deletedAt),
+          // Practice profiles are the adult's own practice, never the
+          // family's learners.
+          eq(schema.learners.simulation, false),
         ),
       );
   }
@@ -747,6 +754,9 @@ export class PgTransaction implements LearnerTransaction {
   async isAdult() {
     return (await this.learner())?.adult === true;
   }
+  async isSimulation() {
+    return (await this.learner())?.simulation === true;
+  }
   async namePending() {
     return (await this.learner())?.name_pending === true;
   }
@@ -1139,6 +1149,9 @@ export class PgTransaction implements LearnerTransaction {
   }
   async hasAccess() {
     const learner = await this.learner();
+    // A practice profile has no grant: the account's own access covers it.
+    if (learner?.simulation)
+      return profilesCovered(this.db, learner.account_id as string);
     if (learner?.adult)
       await refreshAdultAccess(
         this.db,

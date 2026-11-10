@@ -231,7 +231,7 @@ export class FundingInvoiceRepository {
       if (!(await learningConsentActive(client, account)))
         throw new FundingPurchaseError(403, "verified_consent_required");
       const learner = await client.query(
-        "SELECT id FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL FOR SHARE",
+        "SELECT id FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL AND NOT simulation FOR SHARE",
         [learnerId, account],
       );
       if (!learner.rowCount)

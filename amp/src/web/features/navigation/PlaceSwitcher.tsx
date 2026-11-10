@@ -9,6 +9,7 @@ import { Menu, MenuItem, MenuLabel } from "../../ui/Menu";
 import { familyClassPath, placesFor, type PlaceId } from "../onboarding/guard";
 import { rememberPlace } from "../onboarding/place-memory";
 import { DemoMark } from "../school/demo/DemoMark";
+import { levelsRange } from "../../../learning/practice-profiles";
 import styles from "./PlaceSwitcher.module.css";
 
 const roleNames = {
@@ -19,7 +20,12 @@ const roleNames = {
 } as const;
 
 export type PlaceEntry = {
-  id: PlaceId | `class:${string}:${string}` | `learner:${string}`;
+  id:
+    | PlaceId
+    | `class:${string}:${string}`
+    | `learner:${string}`
+    | `profile:${string}`
+    | "try-level";
   name: string;
   /** The role here, or what's next. */
   detail: string;
@@ -29,58 +35,82 @@ export type PlaceEntry = {
   demo?: true;
 };
 
-/** Every place this account can open, named for the switcher. */
+/** Every place this account can open, named for the switcher. Under "My
+ * practice" come the adult's practice profiles and "Try a level…"
+ * (features/profiles). */
 export function placeEntries(me: SignedInMe): PlaceEntry[] {
-  return placesFor(me).map((id) => {
-    // A family's side is its class, which the parent teaches.
-    if (id === "home" && me.familyClass)
-      return {
-        id,
-        name: me.familyClass.className,
-        detail:
-          me.learners.length === 1
-            ? me.learners[0]!.name
-            : `${me.learners.length} students`,
-        path: familyClassPath(me.familyClass).replace(/^\//, ""),
-      };
-    if (id === "home")
-      return {
-        id,
-        name: "Family and practice",
-        detail:
-          me.learners.length === 1
-            ? me.learners[0]!.name
-            : me.learners.length > 1
-              ? `${me.learners.length} learners`
-              : "Getting started",
-        path: "",
-      };
-    if (id === "me") {
-      // Their own learner, by their name; or the way to start one.
-      const own = me.adultPractice?.learner;
-      return own
-        ? {
-            id,
-            name: "My practice",
-            detail: own.name,
-            path: "me",
-          }
-        : {
-            id,
-            name: "Start my own practice",
-            detail: "Free for you",
-            path: "me/start",
-          };
-    }
-    const org = me.staffOf!.find((entry) => `school:${entry.orgId}` === id)!;
+  return placesFor(me).flatMap((id): PlaceEntry[] =>
+    id === "me" ? [place(me, id), ...profileEntries(me)] : [place(me, id)],
+  );
+}
+
+/** Practicing as someone else: each saved profile, then a new one. */
+function profileEntries(me: SignedInMe): PlaceEntry[] {
+  return [
+    ...(me.practiceProfiles ?? []).map((profile) => ({
+      id: `profile:${profile.id}` as const,
+      name: profile.label,
+      detail: `Practice as · ${levelsRange(profile.levels)}`,
+      path: "practice",
+    })),
+    {
+      id: "try-level" as const,
+      name: "Try a level…",
+      detail: "Practice at any grade and pace",
+      path: "me/profiles/new",
+    },
+  ];
+}
+
+function place(me: SignedInMe, id: PlaceId): PlaceEntry {
+  // A family's side is its class, which the parent teaches.
+  if (id === "home" && me.familyClass)
     return {
       id,
-      name: org.orgName,
-      detail: org.setupPending ? "Finish setting up" : roleNames[org.role],
-      path: `school/${org.orgId}`,
-      ...(org.demo ? { demo: true as const } : {}),
+      name: me.familyClass.className,
+      detail:
+        me.learners.length === 1
+          ? me.learners[0]!.name
+          : `${me.learners.length} students`,
+      path: familyClassPath(me.familyClass).replace(/^\//, ""),
     };
-  });
+  if (id === "home")
+    return {
+      id,
+      name: "Family and practice",
+      detail:
+        me.learners.length === 1
+          ? me.learners[0]!.name
+          : me.learners.length > 1
+            ? `${me.learners.length} learners`
+            : "Getting started",
+      path: "",
+    };
+  if (id === "me") {
+    // Their own learner, by their name; or the way to start one.
+    const own = me.adultPractice?.learner;
+    return own
+      ? {
+          id,
+          name: "My practice",
+          detail: own.name,
+          path: "me",
+        }
+      : {
+          id,
+          name: "Start my own practice",
+          detail: "Free for you",
+          path: "me/start",
+        };
+  }
+  const org = me.staffOf!.find((entry) => `school:${entry.orgId}` === id)!;
+  return {
+    id,
+    name: org.orgName,
+    detail: org.setupPending ? "Finish setting up" : roleNames[org.role],
+    path: `school/${org.orgId}`,
+    ...(org.demo ? { demo: true as const } : {}),
+  };
 }
 
 /** The same switcher also lists the classes returned by each permitted org. */
@@ -272,12 +302,21 @@ export function PlaceSwitcher({
               if (isHere) return;
               if (place.id.startsWith("learner:"))
                 useLearnerStore.getState().select(place.id.slice(8));
-              else if (!place.id.startsWith("class:"))
+              // A profile is practiced as; trying a level is a step on the
+              // way to one. Neither is a place `/` returns to.
+              else if (place.id.startsWith("profile:"))
+                useLearnerStore.getState().select(place.id.slice(8));
+              else if (
+                place.id !== "try-level" &&
+                !place.id.startsWith("class:")
+              )
                 choosePlaceLearner(me, place.id as PlaceId);
               // Starting is a step on the way there; the place is theirs once
               // they have it.
               if (
                 place.path !== "me/start" &&
+                place.id !== "try-level" &&
+                !place.id.startsWith("profile:") &&
                 !place.id.startsWith("learner:") &&
                 !place.id.startsWith("class:")
               )

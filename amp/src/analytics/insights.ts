@@ -1,8 +1,14 @@
 import { demoLearnerSql } from "../schools/demo/sql.js";
+import { simulationLearnerSql } from "../account/practice-profiles.js";
 import type { Pool } from "pg";
 import { skills } from "../curriculum/catalog";
 import { templates } from "../math/engine";
 import { flagReasons, type FlagReason } from "../feedback/problem-flags";
+
+/** SQL: a learner no report counts: a demo's made-up student, or an adult's
+ * practice profile (someone else's level, practiced by the adult). */
+const uncountedLearnerSql = (learner: string) =>
+  `(${demoLearnerSql(learner)} OR ${simulationLearnerSql(learner)})`;
 
 /**
  * What learners get right, get wrong and leave, how they progress, and what
@@ -111,7 +117,7 @@ export async function insightsReport(
       (a.outcome->>'correct')::boolean AS correct,
       (a.outcome->>'assisted')::boolean AS assisted
     FROM amp_instances i LEFT JOIN amp_attempts a ON a.problem_id=i.id
-    WHERE i.created_at>=$1 AND i.created_at<$2 AND NOT ${demoLearnerSql("i.learner_id")}`;
+    WHERE i.created_at>=$1 AND i.created_at<$2 AND NOT ${uncountedLearnerSql("i.learner_id")}`;
   const perTemplate = await q<{
     template_id: string;
     served: number;
@@ -136,12 +142,12 @@ export async function insightsReport(
     count: number;
   }>(
     `SELECT template_id, unnest(reasons) AS reason, count(*)::int AS count
-     FROM amp_problem_flags WHERE created_at>=$1 AND created_at<$2 AND NOT ${demoLearnerSql("learner_id")}
+     FROM amp_problem_flags WHERE created_at>=$1 AND created_at<$2 AND NOT ${uncountedLearnerSql("learner_id")}
      GROUP BY 1,2 ORDER BY 3 DESC,2`,
   );
   const flagCounts = await q<{ template_id: string; flags: number }>(
     `SELECT template_id, count(*)::int AS flags FROM amp_problem_flags
-     WHERE created_at>=$1 AND created_at<$2 AND NOT ${demoLearnerSql("learner_id")} GROUP BY 1`,
+     WHERE created_at>=$1 AND created_at<$2 AND NOT ${uncountedLearnerSql("learner_id")} GROUP BY 1`,
   );
   const skipsRecorded = perTemplate.some((row) => row.skipped > 0);
   const templateMeta = new Map(templates.map((t) => [t.id, t]));
@@ -200,7 +206,7 @@ export async function insightsReport(
        percentile_cont(0.5) WITHIN GROUP (ORDER BY (e.state->>'attempts')::int)
          FILTER (WHERE e.state->>'status'='review-ready') AS median_attempts
      FROM amp_skill_evidence e JOIN amp_learners l ON l.id=e.learner_id
-     WHERE l.deleted_at IS NULL AND NOT ${demoLearnerSql("l.id")} AND (e.state->>'lastPracticedAt')::timestamptz>=$1
+     WHERE l.deleted_at IS NULL AND NOT ${uncountedLearnerSql("l.id")} AND (e.state->>'lastPracticedAt')::timestamptz>=$1
        AND (e.state->>'lastPracticedAt')::timestamptz<$2
      GROUP BY 1`,
   );
@@ -240,7 +246,7 @@ export async function insightsReport(
      FROM amp_instances i
      JOIN unnest($3::text[], $4::text[]) AS m(skill_id, strand)
        ON m.skill_id=i.content->'public'->>'skillId'
-     WHERE i.created_at>=$1 AND i.created_at<$2 AND NOT ${demoLearnerSql("i.learner_id")} GROUP BY 1`,
+     WHERE i.created_at>=$1 AND i.created_at<$2 AND NOT ${uncountedLearnerSql("i.learner_id")} GROUP BY 1`,
     [...range, skills.map((s) => s.id), skills.map((s) => s.strand)],
   );
   const strands = [
@@ -275,7 +281,7 @@ export async function insightsReport(
          l.free_online_used AS answered
        FROM amp_learners l
        WHERE l.created_at>=$1 AND l.created_at<$2 AND l.free_online_used>0
-         AND l.account_id NOT LIKE 'trial:%'
+         AND l.account_id NOT LIKE 'trial:%' AND NOT l.simulation
          AND NOT EXISTS(SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id)`,
     )
   ).map((row) => ({ answered: Number(row.answered), saved: row.saved }));
@@ -291,7 +297,7 @@ export async function insightsReport(
   );
   const startingBands = await q<{ band: string; count: number }>(
     `SELECT COALESCE(starting_band,'not chosen') AS band, count(*)::int AS count
-     FROM amp_learners WHERE deleted_at IS NULL AND account_id NOT LIKE 'trial:%' AND account_id NOT LIKE 'school:%'
+     FROM amp_learners WHERE deleted_at IS NULL AND NOT simulation AND account_id NOT LIKE 'trial:%' AND account_id NOT LIKE 'school:%'
        AND created_at>=$1 AND created_at<$2 GROUP BY 1 ORDER BY 2 DESC,1`,
   );
   const started = trialAnswers.length;
@@ -309,12 +315,12 @@ export async function insightsReport(
 
   const reasons = await q<{ reason: FlagReason; count: number }>(
     `SELECT unnest(reasons) AS reason, count(*)::int AS count FROM amp_problem_flags
-     WHERE created_at>=$1 AND created_at<$2 AND NOT ${demoLearnerSql("learner_id")} GROUP BY 1`,
+     WHERE created_at>=$1 AND created_at<$2 AND NOT ${uncountedLearnerSql("learner_id")} GROUP BY 1`,
   );
   const newest = await q<Record<string, unknown>>(
     `SELECT created_at, template_id, seed, outcome, response, reasons, prompt, figure_kind,
        client_kind, viewport_width, viewport_height, web_commit, api_commit${options.notes ? ", note" : ""}
-     FROM amp_problem_flags WHERE created_at>=$1 AND created_at<$2 AND NOT ${demoLearnerSql("learner_id")}
+     FROM amp_problem_flags WHERE created_at>=$1 AND created_at<$2 AND NOT ${uncountedLearnerSql("learner_id")}
      ORDER BY created_at DESC, id LIMIT $3`,
     [...range, options.newest ?? 20],
   );

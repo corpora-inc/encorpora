@@ -85,7 +85,8 @@ async function learnerPurchaseStatus(
   async function snapshot() {
     return repository.transaction(accountId, async (client) => {
       const learner = await client.query(
-        "SELECT deleted_at FROM amp_learners WHERE id=$1 AND account_id=$2",
+        // A practice profile is never a purchase's learner (docs/families.md).
+        "SELECT deleted_at FROM amp_learners l WHERE id=$1 AND account_id=$2 AND NOT COALESCE((to_jsonb(l)->>'simulation')::boolean,false)",
         [learnerId, accountId],
       );
       if (!learner.rowCount) throw new BillingError("learner_not_found", 404);

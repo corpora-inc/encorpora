@@ -73,6 +73,8 @@ export function shellFrame(pathname: string): ShellFrame | null {
   // Workbook URLs identify their learner independently of Progress selection.
   if (path === "/school" || /^\/learners\/[^/]+\/workbooks(?:\/|$)/.test(path))
     return { kind: "plain" };
+  // Practicing as someone else: "Try a level…" and a profile's levels.
+  if (under(path, "/me/profiles")) return { kind: "plain" };
   if (path === "/overview" || path === "/me")
     return { kind: "progress", active: "overview" };
   // Changing the birth year belongs to the Overview it is opened from.
