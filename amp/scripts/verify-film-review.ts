@@ -108,6 +108,7 @@ async function behavior() {
             const url = (req.url ?? "").split("?")[0];
             if (url === "/index.html") return send(res, 200, stub, "text/html; charset=utf-8");
             if (url === "/lab.html") return send(res, 200, lab, "text/html; charset=utf-8");
+            if (url === "/fresh.html") return send(res, 200, lab, "text/html; charset=utf-8");
             if (url === "/review" && req.method === "GET") return send(res, 200, JSON.stringify(reviews), "application/json");
             if (url === "/review" && req.method === "POST") {
               const body = JSON.parse(await readBody(req)) as Stored & { id: string };
@@ -219,6 +220,13 @@ async function behavior() {
     assert.equal(await page.locator(".score").getAttribute("data-set"), "false");
     assert.equal(await page.locator("#feedback").inputValue(), "");
     assert.equal(errors.length, 0, errors.join("\n"));
+    await page.goto(`http://127.0.0.1:${port}/review.html?id=alpha-film&list=fresh`);
+    await page.locator('a[href="fresh.html"]').waitFor();
+    assert.equal(await page.locator('a[href="fresh.html"]').innerText(), 'Fresh films');
+    await page.locator('.btn-next').click();
+    await page.waitForURL(/id=beta-film&list=fresh/);
+    await page.locator('a[href="fresh.html"]').waitFor();
+    assert.equal(await page.locator('.btn-next').isDisabled(), true, 'The other film is already scored');
   } finally {
     await browser.close();
     await vite.close();
