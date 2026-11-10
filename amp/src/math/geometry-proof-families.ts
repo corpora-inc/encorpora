@@ -2593,7 +2593,7 @@ const measurementFamily: Family = {
             "A right prism has no slant edges. Its side edges stay equal to the height.",
           ],
         ],
-        hint: "The prism and the cylinder share a height. Ask what happens to the base area as the polygon gains more sides, and how a prism's volume uses that base.",
+        hint: `The cylinder has radius ${rad} and height ${h}. The prism and the cylinder share that height. Ask what happens to the base area as the polygon gains more sides, and how a prism's volume uses that base.`,
         explanation: [
           `The prism has height ${h}, the same as the cylinder of radius ${rad}.`,
           "As the number of sides grows, the base area approaches $\\pi r^2$. A prism's volume is base area times height, so the volume approaches $\\pi r^2 h$.",
@@ -2622,7 +2622,7 @@ const measurementFamily: Family = {
           "Equal slant edges do not fix the base area. Volume follows from matching cross-sections, not from matching edges.",
         ],
       ],
-      hint: "The cube shows the one-third rule for one pyramid. A different pyramid needs a reason that its slices match that pyramid's slices.",
+      hint: "The cube shows $V = \\frac{1}{3}Bh$ for one pyramid. A different pyramid needs a reason that its slices match that pyramid's slices.",
       explanation: [
         "The three pyramids in the cube each have volume $\\frac{1}{3}Bh$ for that cube's face and edge.",
         "Any other pyramid with the same base area and height has the same cross-section area at every level. Cavalieri's principle gives it the same volume.",
@@ -2660,7 +2660,7 @@ const measurementFamily: Family = {
             "Matching cross-section areas fix the volume, not the surface area.",
           ],
         ],
-        hint: "The cone and the pyramid are given the same slice area at every height. Which fact turns matching slices into matching volumes?",
+        hint: `The cone and the pyramid both have base area ${base} and height ${h}, and the same slice area at every height. Which fact turns matching slices into matching volumes?`,
         explanation: [
           `The pyramid of base area ${base} and height ${h} has volume $\\frac{1}{3} \\times ${base} \\times ${h} = ${volume}$.`,
           "The cone matches that pyramid's cross-section area at every height, so the volumes are equal. The step does not claim the slices are congruent.",
@@ -2738,7 +2738,7 @@ const measurementFamily: Family = {
             "That is the base area. Volume multiplies the base area by the height.",
           ],
         ],
-        hint: "The slant does not change any layer. Use the right cylinder with the same radius and height, and keep $\\pi$ in the answer.",
+        hint: `The oblique cylinder has radius ${rad} and height ${h}. The slant does not change any layer. Use the right cylinder with that radius and height, and keep $\\pi$ in the answer.`,
         explanation: [
           `A right cylinder of radius ${rad} and height ${h} has volume $\\pi r^2 h = ${vol}\\pi$.`,
           "The oblique cylinder matches that base area at every height, so its volume is the same.",

@@ -1427,7 +1427,7 @@ function inContextTriangle(r: Random): Case {
       `Canvas costs $${price}$ for each square ${unitWords[u][0]}: $${shown(area)} \\times ${price} = ${shown(cost)}$.`,
       `The cost is ${plain(cost)} dollars.`,
     ],
-    hint: "Use the base and the height that meets it at a right angle. Halve that product, then multiply by the price of one square unit.",
+    hint: `Use the base and the height that meets it at a right angle. Halve that product, then multiply by $${price}$, the price of one square ${unitWords[u][0]}.`,
     figure: f,
     tags: ["in-context", "sail"],
     kind: "number",
@@ -1487,12 +1487,13 @@ function inContextPolygon(r: Random): Case {
     `${skin.goods} costs $${price}$ for each square ${unitWords[u][0]}: $${shown(base.answer)} \\times ${price} = ${shown(cost)}$.`,
     `The cost is ${plain(cost)} dollars.`,
   );
+  const priceStep = `Then multiply by $${price}$, the price of one square ${unitWords[u][0]}.`;
   const hint =
     shape === "parallelogram"
-      ? "The area is the base times the perpendicular height, not a slanted side. Then multiply by the price of one square unit."
+      ? `The area is the base times the perpendicular height, not a slanted side. ${priceStep}`
       : shape === "pentagon"
-        ? "Add the rectangle and half the roof's base times the roof's own height, then multiply by the price of one square unit."
-        : "Average the two parallel sides, multiply by the height between them, then multiply by the price of one square unit.";
+        ? `Add the rectangle and half the roof's base times the roof's own height. ${priceStep}`
+        : `Average the two parallel sides, multiply by the height between them. ${priceStep}`;
   return {
     prompt: `A ${skin.thing} is the ${skin.word} shown. ${skin.goods} costs $${price}$ for each square ${unitWords[u][0]}. What does ${skin.asked} cost, in dollars?`,
     answer: cost,
@@ -1522,7 +1523,7 @@ function houseCase(r: Random, u: LengthUnit): Case {
       `The triangle on top has base ${w} and height ${roof}: $\\tfrac{1}{2} \\times ${w} \\times ${roof} = ${tri}$.`,
       `Add the pieces: $${rect} + ${tri} = ${total}$. The area is ${total} ${A}.`,
     ],
-    hint: "Add the rectangle's area to half of the triangle's base times its own height. The roof's height is not the wall.",
+    hint: `The wall is a ${w} by ${wall} rectangle. Add its area to half of base ${w} times the roof height ${roof}. The roof's height is not the wall.`,
     figure: {
       kind: "measured-polygon",
       unit: u,
@@ -1604,7 +1605,7 @@ function rectTrapCase(r: Random, u: LengthUnit): Case {
       `The trapezoid has parallel sides ${W} and ${top} and height ${t}: $\\tfrac{1}{2} \\times (${W} + ${top}) \\times ${t} = ${trap}$.`,
       `Add the pieces: $${rect} + ${trap} = ${total}$. The area is ${total} ${A}.`,
     ],
-    hint: "Add the rectangle to the trapezoid. The trapezoid's area is the average of its parallel sides times its own height.",
+    hint: `Add the ${W} by ${H} rectangle to the trapezoid on top. The trapezoid's parallel sides are ${W} and ${top}, and its own height is ${t}: average those sides, then multiply by ${t}.`,
     figure: {
       kind: "measured-polygon",
       unit: u,
@@ -1656,7 +1657,7 @@ function stackedCubes(r: Random): Case {
       `The cubes meet on a square of side ${f}, hidden on each cube: $${f}^2 = ${hidden}$, and $2 \\times ${hidden} = ${2 * hidden}$.`,
       `Subtract both hidden faces: $${bottom} + ${top} - ${2 * hidden} = ${answer}$. The surface area is ${answer} ${A}.`,
     ],
-    hint: "Do not stop at 6 times each edge squared added together: the touching faces are hidden. Do not subtract the hidden square only once: it is hidden on both cubes.",
+    hint: `The bottom edge is ${e} and the top edge is ${f}. Six faces of each cube count, but the square of side ${f} where they touch is hidden on both cubes, so subtract that square twice.`,
     figure: {
       kind: "extruded-polygon",
       unit: u,
@@ -1731,7 +1732,7 @@ function fractionalBase(r: Random): Case {
         ...trap,
         `The volume is ${claim(volume)} cubic ${word(volume, u)}.`,
       ],
-      hint: "Multiply the base area by the depth. Adding those two measurements does not give the volume.",
+      hint: `Multiply the base area $${mixed(B)}$ by the depth $${mixed(h)}$. Adding those two measurements does not give the volume.`,
       figure,
       tags: ["fractional-base-height", "base-times-height"],
       kind: "fraction",
@@ -1746,7 +1747,7 @@ function fractionalBase(r: Random): Case {
       `$${frac(volume)} \\div ${frac(B)} = ${frac(volume)} \\times \\tfrac{${B.d}}{${B.n}} = ${shown(h)}$.`,
       `The depth is ${claim(h)} ${word(h, u)}.`,
     ],
-    hint: "Divide the volume by the base area. The depth is that missing factor.",
+    hint: `Divide the volume $${mixed(volume)}$ by the base area $${mixed(B)}$. The depth is that missing factor.`,
     figure,
     tags: ["fractional-base-height", "missing-base-height"],
     kind: "fraction",
@@ -1886,7 +1887,7 @@ function whichExpression(
         `The middle rectangle is $${t.b} \\times ${t.h} = ${t.rect}$. Each end triangle is $\\tfrac{1}{2} \\times ${t.o} \\times ${t.h} = ${t.tri}$.`,
         `Rectangle and both triangles: $${t.rect} + ${t.tri} + ${t.tri} = ${t.total}$. The area is ${t.total} ${square(t.u)}.`,
       ],
-      "The middle uses the shorter base times the height. Each end is half of the overhang times the height. Add the middle and both ends.",
+      `The parallel sides are ${t.B} and ${t.b}, and the height is ${t.h}. The middle uses the shorter base times the height. Each end is half of the overhang times the height. Add the middle and both ends.`,
       "Area expression",
     );
   }
@@ -1996,7 +1997,7 @@ function showPieces(r: Random, meta: TemplateMetadata, seed: string): GeneratedP
         `The middle rectangle is $${t.b} \\times ${t.h} = ${t.rect}$. Each triangle is $\\tfrac{1}{2} \\times ${t.o} \\times ${t.h} = ${t.tri}$.`,
         `Add the rectangle and both triangles: $${t.rect} + ${t.tri} + ${t.tri} = ${t.total}$. The area is ${t.total} square ${plural}.`,
       ],
-      "The middle uses the shorter base times the height. Each end is half of the overhang times the height.",
+      `The parallel sides are ${t.B} and ${t.b}, and the height is ${t.h}. The middle uses the shorter base times the height. Each end is half of the overhang times the height.`,
     );
   }
   if (shape === 1) {
@@ -2050,7 +2051,7 @@ function showPieces(r: Random, meta: TemplateMetadata, seed: string): GeneratedP
         `The slide keeps the base ${b} and the height ${h}, so the rectangle is ${b} by ${h}.`,
         `Its area is $${b} \\times ${h} = ${area}$. The parallelogram has the same area, ${area} square ${unitWords[u][1]}.`,
       ],
-      "The rectangle after the slide has the parallelogram's base and its perpendicular height. Multiply those.",
+      `The rectangle after the slide has this parallelogram's base ${b} and its perpendicular height ${h}. Multiply those.`,
     );
   }
   const u = pick(r, units);
@@ -2106,7 +2107,7 @@ function showPieces(r: Random, meta: TemplateMetadata, seed: string): GeneratedP
       `The rectangle's area is $${b} \\times ${h} = ${rect}$. The triangle is half: $${rect} \\div 2 = ${tri}$.`,
       `The triangle's area is ${tri} square ${unitWords[u][1]}.`,
     ],
-    "The two copies fill a rectangle with the triangle's two legs. The triangle is half of that rectangle.",
+    `The two copies fill a rectangle whose sides are the legs ${b} and ${h}. The triangle is half of that rectangle.`,
   );
 }
 
@@ -2252,7 +2253,7 @@ function countThenSize(
       `The count is not the volume. $${total} \\times ${frac(small)} = ${frac(volume)}$.`,
       `The three edges agree: $${edges.map(frac).join(" \\times ")} = ${frac(volume)}$. The volume is ${claim(volume)} cubic ${word(volume, u)}.`,
     ],
-    hint: "Divide each edge by the small cube's edge to count the cubes along it. A small cube's volume is its edge multiplied three times, not the edge itself. The count is not the volume.",
+    hint: `The box is ${list(edges.map((x, i) => `${len(x, u, true)} ${names[i]}`))}. Divide each of those edges by the small cube's edge, ${len(edge, u, true)}, to count the cubes along it. A small cube's volume is that edge multiplied three times, not the edge itself. The count is not the volume.`,
   };
 }
 
@@ -2272,6 +2273,7 @@ function nameTheSolid(
   let figure: SemanticFigure;
   let name: (typeof SOLID_NAMES)[number];
   let explanation: string[];
+  let hint: string;
   if (kind === 0) {
     const e = r(2, 5);
     figure = {
@@ -2287,6 +2289,7 @@ function nameTheSolid(
       `A rectangular prism also has six faces, but they are not all squares unless every edge matches.`,
       `Every face is a square, so the solid is a cube.`,
     ];
+    hint = `Every edge of this net is ${e} ${unitWords[u][1]}. Count the faces, then compare their shapes.`;
   } else if (kind === 1) {
     let l: number, w: number, h: number;
     do [l, w, h] = [r(2, 6), r(2, 6), r(2, 6)];
@@ -2298,6 +2301,7 @@ function nameTheSolid(
       `The three edges differ, so the faces are not all squares. It is not a cube.`,
       `Six rectangular faces fold into a rectangular prism.`,
     ];
+    hint = `The three edges of this net are ${l}, ${w} and ${h} ${unitWords[u][1]}. Count the faces, then compare their shapes.`;
   } else if (kind === 2) {
     const [a, b, c] = pick(r, [
       [3, 4, 5],
@@ -2318,6 +2322,7 @@ function nameTheSolid(
       `A square pyramid also has five faces, but they are one square and four triangles. Face shape separates the two.`,
       `Two triangles and three rectangles fold into a triangular prism.`,
     ];
+    hint = `The triangular faces use edges ${a}, ${b} and ${c}, and the rectangles are ${L} ${unitWords[u][1]} long. Count the faces, then compare their shapes.`;
   } else {
     const side = r(4, 8);
     const slant = r(Math.max(5, Math.floor(side / 2) + 1), 10);
@@ -2328,6 +2333,7 @@ function nameTheSolid(
       `A triangular prism also has five faces, but they are two triangles and three rectangles. Face shape separates the two.`,
       `One square and four triangles fold into a square pyramid.`,
     ];
+    hint = `The square in this net has side ${side} ${unitWords[u][1]}, and each triangle uses slant ${slant}. Count the faces, then compare their shapes.`;
   }
   const options = shuffle(
     r,
@@ -2347,7 +2353,7 @@ function nameTheSolid(
     figure,
     options,
     explanation,
-    "Count the faces, then name their shapes. Five faces can be two triangles and three rectangles, or one square and four triangles.",
+    hint,
     "Solid",
   );
 }

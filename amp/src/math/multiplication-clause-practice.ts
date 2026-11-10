@@ -672,7 +672,7 @@ function partitionFromMarks(r: Random) {
     family: "partition-from-marks",
     prompt:
       "Partition this rectangle into squares the size of the shaded one. How many rows? How many columns? How many squares in all?",
-    hint: "The marks on the left edge count the rows. The marks on the top edge count the columns. The total is those two counts multiplied, not added. The shaded square is one cell, not the whole rectangle.",
+    hint: `The left edge has ${rows} marks and the top edge has ${columns} marks. Those marks count the rows and the columns. The total is those two counts multiplied, not added. The shaded square is one cell, not the whole rectangle.`,
     explanation: [
       `The left edge has ${rows} marks, so the rectangle has ${rows} rows.`,
       `The top edge has ${columns} marks, so it has ${columns} columns.`,
@@ -786,7 +786,7 @@ function choosePartition(r: Random) {
   return {
     family: "choose-partition",
     prompt: `Which rectangle is partitioned into ${rows} rows and ${columns} columns of same-size squares?`,
-    hint: `Same-size squares means every piece has equal width and equal height, and the width matches the height. Count the rows down the side and the columns across the top. Swapping the counts inside the same outer rectangle stretches the pieces.`,
+    hint: `The question asks for ${rows} rows and ${columns} columns of same-size squares. Count the rows down the side and the columns across the top. Swapping those counts inside the same outer rectangle stretches the pieces.`,
     explanation: [
       `The rectangle is ${columns} units wide and ${rows} units tall, so ${rows} rows of ${columns} unit squares fill it.`,
       `Picture ${letter} shows ${rows} rows and ${columns} columns of equal squares.`,
