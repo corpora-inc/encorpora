@@ -49,6 +49,9 @@ function swallowNextClick() {
 export function Calculator(props: Props) {
   const [expression, setExpression] = useState("");
   const [result, setResult] = useState<string | null>(null);
+  /** The expression the result came from: it stays on the expression line
+   * (muted, as the field's placeholder) while the result shows below. */
+  const [evaluated, setEvaluated] = useState("");
   const [error, setError] = useState(false);
   const panel = useRef<HTMLElement>(null);
   const display = useRef<HTMLInputElement>(null);
@@ -121,6 +124,7 @@ export function Calculator(props: Props) {
     try {
       const value = formatResult(evaluate(expression));
       setResult(value);
+      setEvaluated(expression);
       caret.commit(clearField(), setExpression);
     } catch {
       setError(true);
@@ -141,7 +145,7 @@ export function Calculator(props: Props) {
           ref={display}
           aria-label="Calculator expression"
           value={expression}
-          placeholder={result ?? "0"}
+          placeholder={result === null ? "0" : evaluated || result}
           inputMode="none"
           autoComplete="off"
           spellCheck={false}

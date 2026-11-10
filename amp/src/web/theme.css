@@ -1448,8 +1448,9 @@ html[data-input="pointer"] :focus-visible {
   background: var(--color-secondary);
   color: var(--color-primary);
 }
-/* A status, not an action: the same footprint as the calculator button, so
-   the title never shifts between problems, but with no fill. */
+/* No calculator: the calculator button's footprint, so the title never
+   shifts between problems, but nothing drawn. A crossed-out icon in a
+   button's place read as a control that did nothing. */
 .no-calculator {
   flex: none;
   display: grid;
@@ -1457,6 +1458,7 @@ html[data-input="pointer"] :focus-visible {
   width: 44px;
   height: 44px;
   color: var(--color-subtle-text);
+  visibility: hidden;
 }
 .no-calculator svg {
   width: 22px;

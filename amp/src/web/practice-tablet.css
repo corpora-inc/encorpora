@@ -121,7 +121,8 @@
     flex-basis: 100%;
   }
   /* Absolutely placed in the answer column's grid area (as the feedback
-     sheet is, feedback-sheet.css): it covers the column it replaces. */
+     sheet is, feedback-sheet.css): a sheet rising from the screen's bottom
+     edge over the keypad it stands in for, as on a phone. */
   .practice-surface > .calculator {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
@@ -130,6 +131,9 @@
     bottom: 0;
     width: auto;
     margin: 0;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    border-width: 1px 0 0;
+    border-radius: var(--radius-panel) var(--radius-panel) 0 0;
   }
   /* The column is narrower than a stacked prompt line; one step smaller reads
      at the same distance and wraps less. */

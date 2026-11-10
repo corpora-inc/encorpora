@@ -1061,6 +1061,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   }
   function showProblem(p: HintedProblem) {
     noteActiveProblem(p.id);
+    if (learner) rememberOpenProblem(learner.id, p.id);
     setProblem(p);
     setResponse("");
     setOutcome(null);
@@ -1076,10 +1077,17 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   function requestBatch(templateId = family, recoveryStrand?: string) {
     const learnerId = learner!.id;
     const epoch = authEpoch.current;
+    // The problem still open in this tab (a reload, a restored tab, a trip
+    // to the map and back): the server serves it again if it is unanswered.
+    const resumeProblemId =
+      !templateId && !recoveryStrand && !nativeRuntime
+        ? openProblem(learnerId)
+        : null;
     return batchWithCapabilityFallback(
       {
         ...(templateId ? { templateId } : {}),
         ...(recoveryStrand ? { recoveryStrand } : {}),
+        ...(resumeProblemId ? { resumeProblemId } : {}),
         count: 1,
         responseCapabilities: [...clientResponseCapabilities],
         figureCapabilities: [...figureCapabilities],
@@ -1221,6 +1229,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         ...attempt,
       });
       if (learnerRef.current !== learner.id) return;
+      rememberOpenProblem(learner.id, null);
       setOutcome(result);
       setPending(null);
       track("practice_answer", { index: practiceAnswers.current });
@@ -1263,6 +1272,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       throw e;
     }
     if (learnerRef.current !== learner.id) return;
+    rememberOpenProblem(learner.id, null);
     setOutcome(result);
     upcoming.current = { learnerId: learner.id, batch: requestBatch("") };
     upcoming.current.batch.catch(() => undefined);
@@ -1906,6 +1916,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             key={problem.id}
             problem={problem}
             meta={meta}
+            skillTitle={
+              catalog?.skills.find((skill) => skill.id === problem.skillId)
+                ?.title
+            }
             satMathFocus={!!learner?.satMathFocus}
             strand={
               catalog?.skills.find((skill) => skill.id === problem.skillId)
@@ -2301,4 +2315,25 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       )}
     </div>
   );
+}
+
+/** The open (unanswered) problem per learner, for this tab only: a reload or
+ * a restored tab asks for it again instead of a new one. Storage that is
+ * unavailable only means a reload draws a new problem. */
+const openProblemKey = (learnerId: string) => `amp.open-problem.${learnerId}`;
+function openProblem(learnerId: string): string | null {
+  try {
+    return sessionStorage.getItem(openProblemKey(learnerId));
+  } catch (error) {
+    console.warn("The open problem could not be read", error);
+    return null;
+  }
+}
+function rememberOpenProblem(learnerId: string, problemId: string | null) {
+  try {
+    if (problemId) sessionStorage.setItem(openProblemKey(learnerId), problemId);
+    else sessionStorage.removeItem(openProblemKey(learnerId));
+  } catch (error) {
+    console.warn("The open problem could not be saved", error);
+  }
 }

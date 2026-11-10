@@ -195,6 +195,9 @@ type Props = {
   /** With the batch's hint, when it sent one (its term cards included). */
   problem: HintedProblem;
   meta?: TemplateMetadata;
+  /** The skill's catalog title: the one name for what is practised, shared
+   * by the bar's topic and the feedback's progress line. */
+  skillTitle?: string;
   lesson: Lesson | null;
   response: string;
   setResponse: (value: string) => void;
@@ -456,12 +459,15 @@ export function PracticeWorkspace(props: Props) {
   const counterKey =
     counters && outcome ? parseCounterBuilder(counters, outcome.answer) : null;
   const scrollFeedback = editorInDock || shortLinePlot;
+  // Answers drawn in the problem (plots, marks, built shapes) keep their
+  // review in view: stacked, their steps wait behind "See why". A multi-part
+  // answer's review is its head ("Answer: …, 1 of 2 parts correct"), so its
+  // steps show inline like any other wrong answer.
   const deferSteps =
     scrollFeedback ||
     ((!!plot ||
       !!lineBuild ||
       !!trend ||
-      !!parts ||
       !!figures ||
       !!work ||
       !!marking ||
@@ -586,27 +592,35 @@ export function PracticeWorkspace(props: Props) {
     const area = dock.current;
     const host = surface.current;
     if (!area || !host || typeof ResizeObserver === "undefined") return;
-    // `--question-room`: the space below the question, so a phone's sheet
-    // can rise over the figure but never over the question's words.
+    // `--problem-room`: the space below the whole problem (its question and
+    // figure), so a phone's sheet stops below the figure its explanation
+    // talks about whenever that leaves the sheet room for its controls.
     const measure = () => {
       const bottom = host.getBoundingClientRect().bottom;
       host.style.setProperty(
         "--dock-height",
         `${Math.ceil(bottom - area.getBoundingClientRect().top)}px`,
       );
-      const question = host.querySelector(".problem-stage .question");
-      if (question)
-        host.style.setProperty(
-          "--question-room",
-          `${Math.floor(bottom - question.getBoundingClientRect().bottom - 8)}px`,
+      const content = host.querySelector(".problem-stage .problem-content");
+      const stageBox = host.querySelector(".problem-stage");
+      if (content && stageBox) {
+        const end = Math.min(
+          content.getBoundingClientRect().bottom -
+            (parseFloat(getComputedStyle(content).paddingBottom) || 0),
+          stageBox.getBoundingClientRect().bottom,
         );
+        host.style.setProperty(
+          "--problem-room",
+          `${Math.floor(bottom - end - 8)}px`,
+        );
+      }
     };
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(area);
     observer.observe(host);
-    const question = host.querySelector(".problem-stage .question");
-    if (question) observer.observe(question);
+    const content = host.querySelector(".problem-stage .problem-content");
+    if (content) observer.observe(content);
     return () => observer.disconnect();
   }, []);
   // Stacked, the feedback sheet can rise above the dock it replaces. The
@@ -1570,10 +1584,11 @@ export function PracticeWorkspace(props: Props) {
           ? "Choose an answer"
           : "Enter your answer";
   const frameTools = useShellTools();
+  const title = props.skillTitle ?? meta?.title ?? "Practice";
   const topic = (
     <span className="workspace-topic-text">
       {props.satMathFocus ? "SAT Math · " : ""}
-      {meta?.title ?? "Practice"}
+      {title}
     </span>
   );
   const toolbarContents = (
@@ -1610,7 +1625,7 @@ export function PracticeWorkspace(props: Props) {
       <span
         className="workspace-topic"
         data-strand={props.strand}
-        title={meta?.title ?? "Practice"}
+        title={title}
       >
         {topic}
       </span>

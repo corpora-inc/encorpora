@@ -60,6 +60,16 @@
 }
 .feedback.incorrect {
   background: var(--color-danger);
+  /* Dark: the theme's own raised surface, barely warmed, so a miss reads
+     from the red mark and edge instead of a brown block. */
+  background: light-dark(
+    var(--color-danger),
+    color-mix(
+      in srgb,
+      var(--color-danger-accent) 7%,
+      var(--color-surface-raised)
+    )
+  );
   border-color: color-mix(
     in srgb,
     var(--color-danger-accent) 35%,
@@ -229,15 +239,25 @@
 }
 
 /* ── Steps: the worked explanation ───────────────────────────────────────── */
+/* A long explanation scrolls in place. Its edges fade over its own block
+   padding, so a line cut by the edge reads as "more below" and a short
+   explanation, which never reaches the padding, never fades. */
 .feedback-steps {
   flex: 0 1 auto;
   min-height: 0;
   overflow: auto;
   overscroll-behavior: contain;
-  margin: 0;
-  padding: 0 0 0 26px;
+  margin: calc(-1 * var(--space-2)) 0;
+  padding: var(--space-2) 0 var(--space-2) 26px;
   font-size: 15px;
   line-height: 1.55;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-on-surface) var(--space-2),
+    var(--color-on-surface) calc(100% - var(--space-2)),
+    transparent
+  );
 }
 .feedback-steps li {
   margin: 0;
@@ -383,12 +403,13 @@
     padding: var(--space-3);
   }
   /* Practice is full screen: the sheet meets the screen's edges. */
-  /* The sheet rises over the figure but stops below the question's words
-     (`--question-room`, measured with the dock), so the question stays
-     whole; a long explanation scrolls inside the sheet. It always keeps
-     room for its own controls (26rem: head, Next and the tools), which on
-     the smallest phones wins over the question. Never smaller than the
-     dock it replaces, so its top edge never jumps. */
+  /* The sheet stops below the problem, question and figure both
+     (`--problem-room`, measured with the dock), so the figure the
+     explanation talks about stays in view; a long explanation scrolls
+     inside the sheet. It always keeps room for its own controls (26rem:
+     head, Next and the tools), which wins over the figure's lower edge when
+     a tall figure leaves less. Never smaller than the dock it replaces, so
+     its top edge never jumps. */
   .shell.immersive .feedback {
     left: 0;
     right: 0;
@@ -396,7 +417,7 @@
     width: 100%;
     max-height: max(
       var(--dock-height, 0px),
-      min(78%, max(var(--question-room, 78%), 26rem))
+      min(78%, max(var(--problem-room, 78%), 26rem))
     );
     padding: var(--space-4) var(--space-4)
       calc(var(--space-3) + env(safe-area-inset-bottom, 0px));
@@ -519,13 +540,16 @@
 
   /* Beside a work or figure editor, the sheet keeps the editor's footer
      height; its details scroll and Next stays put. */
+  /* The footer's 184 px plus the column's bottom inset, so the sheet's top
+     meets the footer's top and never covers the editor above it. */
   .practice-surface:has(> .editor-dock) > .feedback {
     top: auto;
-    height: 184px;
-    max-height: 184px;
+    height: calc(184px + var(--space-5) + env(safe-area-inset-bottom, 0px));
+    max-height: calc(184px + var(--space-5) + env(safe-area-inset-bottom, 0px));
     overflow: auto;
     gap: 6px;
-    padding: 10px var(--space-5);
+    padding: 10px var(--space-5)
+      calc(var(--space-5) + env(safe-area-inset-bottom, 0px));
     border-top-width: 1px;
   }
   .practice-surface:has(> .editor-dock) > .feedback .feedback-head {

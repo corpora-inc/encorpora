@@ -547,6 +547,9 @@ function routes(app: FastifyInstance, options: AppOptions) {
       .object({
         templateId: z.string().max(100).optional(),
         recoveryStrand: z.string().min(1).max(100).optional(),
+        /** The problem that was open when the page reloaded: served again,
+         * unchanged, while it is unanswered and practice is unchanged. */
+        resumeProblemId: z.string().min(1).max(160).optional(),
         count: z.number().int().min(1).max(5).default(3),
         responseCapabilities: z
           .array(z.enum(responseCapabilities))
@@ -594,6 +597,38 @@ function routes(app: FastifyInstance, options: AppOptions) {
           : Math.min(input.count, trialRemaining);
       const satMathFocus = await tx.satMathFocus();
       const practice = await tx.practiceSettings();
+      // A reload (or a phone restoring the tab) returns to the open problem
+      // instead of drawing a new one. Only an unanswered, unskipped instance
+      // planned under the same practice settings, which this client can draw.
+      if (input.resumeProblemId && !focused && !input.recoveryStrand) {
+        const open = await tx.problem(input.resumeProblemId);
+        const chosen = open?.selection as
+          { reason?: string; strand?: string } | undefined;
+        if (
+          open &&
+          !open.skipped &&
+          open.practiceEpoch === practice.epoch &&
+          open.practiceRevision === practice.revision &&
+          supported.some((t) => t.id === open.public.templateId) &&
+          !(await tx.attemptByProblem(open.public.id))
+        )
+          return {
+            problems: [open.public],
+            hints: { [open.public.id]: hintSupport(open) },
+            ...(trialRemaining !== null ? { trialRemaining } : {}),
+            selection: [
+              {
+                problemId: open.public.id,
+                reason: chosen?.reason ?? "resume",
+                strand: chosen?.strand ?? "math",
+              },
+            ],
+            lesson:
+              lessons.find((l) =>
+                l.templateIds.includes(open.public.templateId),
+              ) ?? null,
+          };
+      }
       const focusedPool = practice.focusSkillId
         ? supported.filter((t) => t.skillId === practice.focusSkillId)
         : [];
