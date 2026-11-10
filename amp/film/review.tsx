@@ -268,7 +268,16 @@ async function openReview(filmId: string) {
   box.addEventListener("input", () => {
     review.summary = box.value;
     window.clearTimeout(textTimer);
-    textTimer = window.setTimeout(() => void flush(), 400);
+    textTimer = window.setTimeout(() => {
+      textTimer = 0;
+      void flush();
+    }, 400);
+  });
+  box.addEventListener("blur", () => {
+    if (!textTimer) return;
+    window.clearTimeout(textTimer);
+    textTimer = 0;
+    void flush();
   });
 
   paintScore();
