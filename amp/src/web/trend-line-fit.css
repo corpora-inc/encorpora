@@ -4,10 +4,17 @@
   margin-inline: auto;
 }
 .trend-instructions {
-  min-height: 3em;
+  display: grid;
   margin: 0 0 4px;
   font-size: 0.85rem;
   color: var(--color-muted-text);
+}
+.trend-instructions > span {
+  grid-area: 1 / 1;
+}
+.trend-instructions > span[hidden] {
+  display: block;
+  visibility: hidden;
 }
 .trend-canvas {
   position: relative;
