@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState, type ReactNode } from "react";
 import {
-  CurriculumDetailsControl,
   useCurriculumDetails,
 } from "./features/curriculum/CurriculumDetails";
 import { strandNames } from "./BirthYearPrompt";
@@ -157,7 +156,9 @@ export function Home(props: Props) {
           />
         )}
       </div>
-      <CurriculumDetailsControl />
+      {/* Grade numbers are a setting of the drawer (docs/design/ia.md,
+          "Where settings live"); the birth year, a quiet line under the
+          level, centred with it. */}
       {props.changeBirthYear && (
         <button
           className="text-button home-birth-year"

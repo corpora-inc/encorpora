@@ -1032,6 +1032,8 @@ header {
 }
 .home-birth-year {
   align-self: center;
+  justify-self: center;
+  margin-inline: auto;
   font-size: 13px;
 }
 /* The Overview under the app frame's bar: the learner and Go are the page's
