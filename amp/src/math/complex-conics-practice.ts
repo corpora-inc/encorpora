@@ -2574,7 +2574,7 @@ export function sameNumberSpec(input: SameNumberInput): Spec {
     return {
       variant: 5,
       prompt: `Is $${polar}$ another name for $${rect}$? Which statement decides it correctly?`,
-      hint: "Turn the polar name back into two parts and compare both. Matching the length is not enough.",
+      hint: `Compare $${polar}$ with $${rect}$. Turn the polar name back into two parts and compare both. Matching the length is not enough.`,
       explanation: [
         "A complex number is one point. Polar form and $a+bi$ name that point only when both parts agree: the real part is $r\\cos\\theta$ and the imaginary part is $r\\sin\\theta$.",
         `Here $\\sin ${theta}=${trigTex(shownT.s)}$, so $${radius}\\sin ${theta}=${signed(shownY)}$. The imaginary part of $${rect}$ is $${signed(y)}$.`,
@@ -2742,7 +2742,7 @@ export function axisNumberSpec(input: AxisNumberInput): Spec {
     return {
       variant: 6,
       prompt: `Write $${polarTex(input.r, deg)}$ in the form $a+bi$, using exact values.`,
-      hint: "Cosine gives the across part and sine gives the up part. On an axis, one of those parts is zero.",
+      hint: `Start from $${polarTex(input.r, deg)}$. Cosine gives the across part and sine gives the up part. On an axis, one of those parts is zero.`,
       explanation: [
         ...words,
         `Multiply the length by those cosine and sine values. The number is $${cxInt(a, b)}$.`,
@@ -2957,7 +2957,7 @@ function ftaArgument(r: Random): Spec {
   return {
     variant: 5,
     prompt: `Which statement correctly shows that $p(x) = ${poly}$ has exactly two complex roots, counting multiplicity?`,
-    hint: "Compute the discriminant b² − 4ac. Its sign says whether the two roots are real and distinct, a repeated real root, or a conjugate pair.",
+    hint: `For $p(x) = ${poly}$, compute the discriminant b² − 4ac. Its sign says whether the two roots are real and distinct, a repeated real root, or a conjugate pair.`,
     explanation: [
       `For p(x) = ${poly}, b = ${uni(b)} and c = ${uni(c)}, so D = b² − 4ac = ${uni(b * b - 4 * c)}.`,
       sentence,

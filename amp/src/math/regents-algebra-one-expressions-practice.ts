@@ -431,7 +431,7 @@ function nonmonicSurface(
         feedback: item.feedback,
       })),
     ],
-    hint: `Divide every term by the leading coefficient ${a} first. An equation keeps its solutions. Then add the square of half the new $x$ coefficient to both sides.`,
+    hint: `The equation is $${eq}$. Divide every term by the leading coefficient ${a} first. An equation keeps its solutions. Then add the square of half the new $x$ coefficient to both sides.`,
     explanation: [
       `Divide every term by ${a}. An equation keeps its solutions when you do.`,
       `The $x$ terms become $${xTerms}$. Move the constant to get $${xTerms} = ${rqTex(moved)}$.`,
