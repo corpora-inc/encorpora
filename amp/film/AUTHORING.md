@@ -107,7 +107,7 @@ The first role speaks beats with no `speaker`. A screenplay with no cast uses `n
 
 A stable hash of the film ID selects the default teacher, distributing films between Madeline and Paul independently of catalog order. Override a role with `--voice teacher=paul` or `--voice narrator=paul`. Paul cannot be the learner. Voice IDs, names, role eligibility and delivery tags live in `cast.ts`; adding eligible voices is a table change.
 
-Each production saves its exact voice bindings in `timing.json`. The renderer and live player use those bindings for speaker name tags, which show the person's name. Use a separate `--out` directory for each voice edition. Consecutive beats by one speaker form a take; a change of speaker adds a half-second breath. Cache keys include the voice ID, model, words and delivery tag.
+Each production saves its exact voice bindings in `timing.json`. The renderer and live player use those bindings to choose the recorded voice. Names are not drawn on the picture. Use a separate `--out` directory for each voice edition. Consecutive beats by one speaker form a take; a change of speaker adds a half-second breath. Cache keys include the voice ID, model, words and delivery tag.
 
 A cast serves the explanation: the learner asks a useful question, voices a plausible misconception, reads a second example or explains the recap. The teacher answers or clarifies. Avoid praise and chatter.
 
