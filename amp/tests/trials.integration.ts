@@ -7,7 +7,7 @@ import { migrate } from "../scripts/migrate.js";
 import { PostgresRepository } from "../src/server/repository.js";
 import { buildApp } from "../src/server/app.js";
 import { applyCommerceEvent } from "../src/commerce/postgres.js";
-import { generateProblem, templates } from "../src/math/engine.js";
+import { generateProblemFor, templates } from "../src/math/engine.js";
 import { purgeExpiredTrials, trialLimits } from "../src/server/trials.js";
 
 /** A small allowance keeps the run short; production defaults to 100. */
@@ -125,7 +125,8 @@ test(
         (t) =>
           !t.requiredResponseCapability &&
           !t.requiredFigureCapability &&
-          generateProblem(t.id, "probe").public.response.kind !== "choice",
+          generateProblemFor(t.id, "probe", []).public.response.kind !==
+            "choice",
       )!;
       const answer = async (
         payload: object,
@@ -154,7 +155,13 @@ test(
             ).statusCode,
             200,
           );
-        const solution = generateProblem(problem.templateId, problem.seed);
+        // Match the empty capabilities on this batch request, including legacy fallbacks.
+        const solution = generateProblemFor(
+          problem.templateId,
+          problem.seed,
+          [],
+        );
+        assert.deepEqual(solution.public.response, problem.response);
         const attempt = await app.inject({
           method: "POST",
           url: `${base}/attempts`,
@@ -212,8 +219,11 @@ test(
         payload: {
           problemId: stockpiled.id,
           requestId: randomUUID(),
-          response: generateProblem(stockpiled.templateId, stockpiled.seed)
-            .answer,
+          response: generateProblemFor(
+            stockpiled.templateId,
+            stockpiled.seed,
+            [],
+          ).answer,
         },
       });
       assert.equal(late.statusCode, 402);
