@@ -4,6 +4,7 @@ import argparse
 import json
 import os
 from pathlib import Path
+from statistics import median
 
 from providers import now
 
@@ -86,7 +87,7 @@ def build_report(root, review_url, status='running'):
             account_note += 'This account-wide snapshot is retained separately from per-request receipts; its request counts have not been reconciled with the ledger.'
     voiced = sum(bool(s.get('voiced')) for s in states.values())
     exported = sum(bool(s.get('exported')) for s in states.values())
-    out = [f'Grade the films on the [live review page]({review_url}), grouped by problem type. Approve or reject each version and leave a note. Grading even two types fully gives signal. The assignment key is private in `arms.json`.', '',
+    out = [f'Grade the films on the [live review page]({review_url}), grouped by problem type. Approve or reject each version and leave a note. Grading even two types fully gives signal. Grade before reading the model verdicts below.', '',
            f'Status: {status}. Updated {now()}.', '',
            f'Films voiced: **{voiced}**. Films exported: **{exported}**. Known Anthropic API charges at reported or published rates: **{money(known_api)}**. Anthropic API attempts with unavailable cost: **{unknown_api}**. ElevenLabs TTS input characters requested, including retries: **{tts_characters}**. Confirmed quota credits: **{quota.get("confirmed_characters", 0):g}**, including **{stt_credits:g}** for transcription checks. Conservatively reserved credits, including uncertain calls: **{quota.get("reserved_characters", 0):g}**. Successful transcription calls without a reported charge: **{unmetered_stt}**.', '',
            'ElevenLabs quota uses credits; its API retains the field name `character_count`. Text character counts and billed credits differ. '+('Initial transcription usage, before per-request instrumentation, is reconciled from the account product-usage response in `eleven-initial-stt-usage.json`; it is not assigned to individual films. ' if (root/'eleven-initial-stt-usage.json').exists() else '')+'[ElevenLabs credit accounting](https://elevenlabs.io/docs/help-center/account/general/have-characters-changed).', '',
@@ -141,6 +142,22 @@ def build_report(root, review_url, status='running'):
                       *token_sums]
             out.append('| '+' | '.join(map(cell, values))+' |')
     out += ['', 'Token totals include only reported usage. An incomplete receipt makes the corresponding total a lower bound. Claude streaming receipts retain deduplicated request inputs and completed raw output-usage events after interruption; any calculated partial cost is a lower bound, and the attempt still counts as missing its total cost. Mean wall time uses only attempts with a measured duration; batch queue elapsed time is retained separately in each receipt. Artifact validation failures are recorded in the receipts even when the provider completed normally.', '',
+            '## Review input sizes', '',
+            '| Cohort | Films with packets | Median beats | Maximum beats | Median duration, seconds | Median image pages | Maximum image pages |',
+            '| --- | ---: | ---: | ---: | ---: | ---: | ---: |']
+    input_sizes = {'Calibration': [], 'New films': []}
+    for path in (root/'review-items').glob('*.json'):
+        item = read(path)
+        payload = read(Path(item['payload']))
+        size = {'beats': sum(len(shot.get('beats', [])) for shot in payload['script']['shots']),
+                'seconds': payload['timing']['duration'], 'pages': len(item['images'])}
+        input_sizes['New films' if item['id'] in states else 'Calibration'].append(size)
+    for cohort, sizes in input_sizes.items():
+        if sizes:
+            out.append('| '+' | '.join(map(str, [cohort, len(sizes), median(s['beats'] for s in sizes),
+                max(s['beats'] for s in sizes), round(median(s['seconds'] for s in sizes), 1),
+                median(s['pages'] for s in sizes), max(s['pages'] for s in sizes)]))+' |')
+    out += ['', 'Every beat is captured in wide and phone layouts. New-film durations use estimated timing when narration did not complete. Calibration uses the frozen earlier films; differences in input length and format constrain comparisons of cost, time and completion rates between cohorts.', '',
             '## Failures and unvoiced films', '']
     failures = [(r, states[r['id']]) for r in rows if states[r['id']].get('status')=='failed']
     if failures:
