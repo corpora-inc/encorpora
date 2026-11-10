@@ -23,16 +23,16 @@ export type VoiceSpec = {
 /** Solo films keep Madeline, including takes already paid for. */
 export const NARRATOR_ID = "XescS24CsOySAkKrLAO3";
 
+/** Approved voices. Madeline, Paul, and Champ are the whole list. */
 export const VOICES: readonly VoiceSpec[] = [
   { id: NARRATOR_ID, name: "Madeline Brousseaux", short: "madeline", kinds: ["teacher", "narrator"] },
   { id: "J3Ei0Lj6fAobhIqY5ySH", name: "Paul", short: "paul", kinds: ["teacher", "narrator"] },
   { id: "SYXbTJsLE7zmSjr1DchT", name: "Champ", short: "champ", kinds: ["learner"], tag: "[energetic]" },
-  // A second learner, so two learners in one film are not given the same voice.
-  { id: "EXAVITQu4vr4xnSDxMaL", name: "Sarah", short: "sarah", kinds: ["learner"] },
 ];
 
 export const isRoleKind = (value: string): value is RoleKind =>
   (ROLE_KINDS as readonly string[]).includes(value);
 
 /** Registry order. The first voice of a kind is that kind's default, except teachers, who are hashed. */
-export const voicesFor = (kind: RoleKind) => VOICES.filter((voice) => voice.kinds.includes(kind));
+export const voicesFor = (kind: RoleKind, registry: readonly VoiceSpec[] = VOICES) =>
+  registry.filter((voice) => voice.kinds.includes(kind));

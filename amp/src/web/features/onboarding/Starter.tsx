@@ -5,6 +5,7 @@ import { create } from "zustand";
 import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { track } from "../../lib/analytics";
+import { ownPracticeAllowed } from "../../../learning/starting-point";
 import { sessionOptions } from "../../lib/query";
 import { chosenPlan } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
@@ -32,12 +33,15 @@ type StarterDraft = {
   childYears: string[];
   students: number;
   studentYears: string[];
+  /** "I'm learning for myself": the year they were born. */
+  ownYear: number | null;
 };
 const emptyDraft: StarterDraft = {
   children: 1,
   childYears: [],
   students: 1,
   studentYears: [],
+  ownYear: null,
 };
 const useStarterDraft = create<
   StarterDraft & {
@@ -62,7 +66,7 @@ const choices: {
   {
     id: "myself",
     label: "I’m learning for myself",
-    detail: "Your own practice, at your own level",
+    detail: "Practice for you, at your level",
     icon: (
       <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20a7.5 7.5 0 0 1 15 0" />
     ),
@@ -70,7 +74,7 @@ const choices: {
   {
     id: "parent",
     label: "I’m a parent",
-    detail: "Your children practice, and you see their work",
+    detail: "Your children practice, and you see their progress",
     icon: (
       <path d="M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM2.5 20a6.5 6.5 0 0 1 13 0M17 13a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM16 15.2a5 5 0 0 1 5.5 4.8" />
     ),
@@ -86,13 +90,13 @@ const choices: {
   {
     id: "teacher",
     label: "I’m a teacher",
-    detail: "A demo class, alive with students’ work",
+    detail: "A class you teach, with sample students to start",
     icon: <path d="M3.5 5h17v11h-17zM8 20l2-4M16 20l-2-4M7 9h6M7 12h4" />,
   },
   {
     id: "school",
     label: "I run a school",
-    detail: "Every class, set up with you",
+    detail: "Classes and teachers across your school",
     icon: <path d="M3 20h18M5 20V9l7-5 7 5v11M10 20v-5h4v5M12 9.5h.01" />,
   },
 ];
@@ -130,6 +134,7 @@ function StarterScreen({ session }: { session: AuthSession }) {
       draft.childYears,
       draft.students,
       draft.studentYears,
+      draft.ownYear,
     ]),
   );
   useEffect(() => setAlready(null), [answer, choice]);
@@ -229,25 +234,19 @@ function StarterScreen({ session }: { session: AuthSession }) {
           );
           return (
             <li key={entry.id}>
-              {entry.id === "myself" || entry.id === "teacher" ? (
-                // Nothing more to ask: one tap makes their own practice, or
-                // opens a demo class.
+              {entry.id === "teacher" ? (
+                // Nothing more to ask: one tap opens a demo class.
                 <button
                   type="button"
                   className={styles.choice}
                   data-choice={entry.id}
                   aria-busy={
-                    (entry.id === "myself"
-                      ? start.isPending && start.variables?.as === "myself"
-                      : demo.isPending && demo.variables === "class") ||
-                    undefined
+                    (demo.isPending && demo.variables === "class") || undefined
                   }
                   disabled={busy}
                   onClick={() => {
                     track("starter_choice", { answer: entry.id });
-                    if (entry.id === "myself")
-                      begin({ as: "myself", timezone: deviceTimeZone() });
-                    else explore("class");
+                    explore("class");
                   }}
                 >
                   {content}
@@ -273,7 +272,21 @@ function StarterScreen({ session }: { session: AuthSession }) {
         })}
       </ul>
       <div ref={followUp} className={styles.followUp}>
-        {choice === "parent" ? (
+        {choice === "myself" ? (
+          <Myself
+            session={session}
+            busy={busy}
+            onParent={() =>
+              void navigate({
+                to: "/start/$choice",
+                params: { choice: "parent" },
+              })
+            }
+            onStart={(birthYear) =>
+              begin({ as: "myself", timezone: deviceTimeZone(), birthYear })
+            }
+          />
+        ) : choice === "parent" ? (
           <Children
             session={session}
             busy={busy}
@@ -317,6 +330,113 @@ function StarterScreen({ session }: { session: AuthSession }) {
       </div>
       <Toast message={error} onDismiss={() => setError("")} />
     </main>
+  );
+}
+
+/** The years the grid offers, newest first, then "Adult" for anyone older:
+ * the old free trial's picker, starting at age 7. */
+const OWN_YEARS = 16;
+const OWN_YOUNGEST = 7;
+const ADULT_AGE = 25;
+
+/** "What year were you born?" for their own practice. The year sets where it
+ * starts (the server turns it into the nearest starting point). Under 13, a
+ * parent sets AMP up, and that way in is one tap away. */
+function Myself({
+  session,
+  busy,
+  onParent,
+  onStart,
+}: {
+  session: AuthSession;
+  busy: boolean;
+  onParent: () => void;
+  onStart: (birthYear: number) => void;
+}) {
+  const draft = useStarterDraft();
+  const picked = draft.owner === session.accountId ? draft.ownYear : null;
+  const thisYear = new Date().getFullYear();
+  const years = Array.from(
+    { length: OWN_YEARS },
+    (_, i) => thisYear - OWN_YOUNGEST - i,
+  );
+  const options = [
+    ...years.map((year) => ({ year, label: String(year) })),
+    { year: thisYear - ADULT_AGE, label: "Adult" },
+  ];
+  const young = picked !== null && !ownPracticeAllowed(picked, thisYear);
+  const refs = useRef<(HTMLButtonElement | null)[]>([]);
+  const current = Math.max(
+    0,
+    options.findIndex((option) => option.year === picked),
+  );
+  const pick = (index: number) => {
+    draft.set(session.accountId, { ownYear: options[index]!.year });
+    refs.current[index]?.focus();
+  };
+  return (
+    <section className={styles.panel} aria-labelledby="starter-myself">
+      <h2 id="starter-myself" className={styles.question}>
+        What year were you born?
+      </h2>
+      <p className={styles.note}>
+        Practice starts at the level for your age, then adjusts with every
+        answer.
+      </p>
+      <div
+        role="radiogroup"
+        aria-labelledby="starter-myself"
+        className={styles.yearGrid}
+      >
+        {options.map((option, index) => (
+          <button
+            key={option.label}
+            ref={(node) => {
+              refs.current[index] = node;
+            }}
+            type="button"
+            role="radio"
+            aria-checked={option.year === picked}
+            tabIndex={index === current ? 0 : -1}
+            data-adult={option.label === "Adult" || undefined}
+            className={styles.yearCell}
+            disabled={busy}
+            onClick={() => pick(index)}
+            onKeyDown={(event) => {
+              const step =
+                event.key === "ArrowRight" || event.key === "ArrowDown"
+                  ? 1
+                  : event.key === "ArrowLeft" || event.key === "ArrowUp"
+                    ? -1
+                    : 0;
+              if (!step) return;
+              event.preventDefault();
+              pick((index + step + options.length) % options.length);
+            }}
+          >
+            {option.label}
+          </button>
+        ))}
+      </div>
+      <Start
+        busy={busy}
+        ready={picked !== null}
+        missing="Choose the year you were born."
+        lines={2}
+        already={
+          young
+            ? {
+                label: "Set up as a parent",
+                note: "Under 13, a parent sets up AMP for you. Ask yours to choose “I’m a parent”.",
+                open: onParent,
+              }
+            : null
+        }
+        onClick={() => picked !== null && onStart(picked)}
+      >
+        Start practicing
+      </Start>
+    </section>
   );
 }
 
@@ -558,14 +678,18 @@ function Start({
   ready,
   missing = "",
   already,
+  lines = 1,
   onClick,
   children,
 }: {
   busy: boolean;
   ready: boolean;
   missing?: string;
-  /** Everyone named is already there: the place opens instead. */
-  already?: { note: string; open: () => void } | null;
+  /** Everyone named is already there, or the answer leads elsewhere: that
+   * opens instead, with its own label (by default, "Open your class"). */
+  already?: { note: string; open: () => void; label?: string } | null;
+  /** Lines the reason keeps, so a longer one doesn't move anything. */
+  lines?: 1 | 2;
   onClick: () => void;
   children: ReactNode;
 }) {
@@ -578,9 +702,13 @@ function Start({
         aria-busy={busy || undefined}
         onClick={already ? already.open : onClick}
       >
-        {already ? "Open your class" : children}
+        {already ? (already.label ?? "Open your class") : children}
       </Button>
-      <p className={styles.hint} aria-live="polite">
+      <p
+        className={styles.hint}
+        data-lines={lines === 2 ? 2 : undefined}
+        aria-live="polite"
+      >
         {already ? already.note : ready ? "" : missing}
       </p>
     </div>

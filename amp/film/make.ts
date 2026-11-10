@@ -23,14 +23,14 @@ import { audioProblems, envelope, fadeAround, FLOOR, quietRuns, SR, TAKE_FADE } 
 import { goodTake, pcmOf, type Alignment } from "./voice";
 import { scriptSchema, type BeatTime, type Script, type Timing, type WordTime } from "./schema";
 import { mathProblems } from "./mathcheck";
-import { isTagWord, neighbours, resolveCast, runsOf, templateOf, TURN_GAP, voiceBindings } from "./cast";
+import { isTagWord, neighbours, requireVoices, resolveCast, runsOf, templateOf, TURN_GAP, voiceBindings } from "./cast";
 import { FILM_OUT, FILM_VOICES, FILM_LOCKS } from "./paths";
 import { renderFormat } from "./render-format";
 
 const { values, positionals } = parseArgs({
   allowPositionals: true,
   options: {
-    /** Re-voice a speaker for this run: `--voice narrator=paul`, `--voice maya=sarah`. */
+    /** Re-voice a speaker for this run: `--voice narrator=paul`, `--voice learner=champ`. */
     voice: { type: "string", multiple: true, default: [] },
     res: { type: "string", default: "2160" },
     fps: { type: "string", default: "60" },
@@ -68,7 +68,7 @@ const overrides = Object.fromEntries(values.voice.map((v) => {
   if (!m) throw new Error(`--voice takes role=voice, not "${v}"`);
   return [m[1]!, m[2]!];
 }));
-// every voice is an approved one, every speaker is a role of the cast
+// Overrides name approved voices. A speaker left without a distinct one fails when the film is voiced, not in a dry check.
 const cast = resolveCast(script, overrides);
 const runs = runsOf(script, cast);
 
@@ -150,6 +150,7 @@ function even(src: Int16Array) {
 /** Notes about the voice that do not stop the film. */
 const voiceNotes: string[] = [];
 async function voice(): Promise<Timing> {
+  requireVoices(cast);
   const t0 = Date.now();
   const lead = 0.5, gapBetweenShots = 0.45;
   const chunks: Int16Array[] = [new Int16Array(Math.round(SR * lead))];
@@ -163,7 +164,7 @@ async function voice(): Promise<Timing> {
   await Promise.all([0, 1, 2].map(async () => {
     for (let ri; (ri = nextRun++) < runs.length; ) {
       const { prev, next } = neighbours(runs, ri);
-      made[ri] = await goodTake(VOICES, runs[ri]!.text, prev, next, runs[ri]!.role.voice);
+      made[ri] = await goodTake(VOICES, runs[ri]!.text, prev, next, runs[ri]!.role.voice!);
     }
   }));
   for (let ri = 0; ri < runs.length; ri++) {
