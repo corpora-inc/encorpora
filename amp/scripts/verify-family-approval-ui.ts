@@ -132,7 +132,7 @@ async function createAccount(page: Page, email: string) {
   const fallback = page.getByRole("button", {
     name: "Use a password instead",
   });
-  const password = page.getByLabel("AMP password");
+  const password = page.getByLabel("Password", { exact: true });
   await Promise.race([
     fallback.waitFor({ timeout: 20_000 }),
     password.waitFor({ timeout: 20_000 }),
@@ -242,8 +242,14 @@ async function journey(
   await teacherFamily(teacherAccount);
   await teacher.goto(`${origin}/`);
   await teacher.waitForURL(CLASS_TODAY);
-  await heading(teacher, /^Good (morning|afternoon|evening)/);
-  const classUrl = teacher.url();
+  await heading(
+    teacher,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
+  // Children from other families live on Students, beside the family’s own.
+  const classUrl = teacher.url().replace(/\/today$/, "/roster");
+  await teacher.goto(classUrl);
+  await heading(teacher, "Students");
   await teacher
     .getByRole("button", { name: "Add a child from another family" })
     .click();
@@ -306,7 +312,7 @@ async function journey(
   );
   await parent.reload();
   await heading(parent, "Your child is invited to Marisol’s class");
-  const name = parent.getByLabel("Your child’s first name");
+  const name = parent.getByLabel("Your child’s name");
   await name.waitFor();
   check(
     `${label} no child name collected by the teacher`,
@@ -338,7 +344,7 @@ async function journey(
   ]);
   last.page = teacher;
   await teacher.reload();
-  await heading(teacher, /^Good (morning|afternoon|evening)/);
+  await heading(teacher, "Students");
   await anaRow(teacher).getByText("Used the 100 free problems").waitFor();
   await measured(teacher, `${label} Ana approved`);
   await shot(teacher, "teacher-needs-access", width, theme);
@@ -402,7 +408,7 @@ async function journey(
     await own.close();
   }
   last.page = teacher;
-  await teacher.goto(classUrl.replace(/\/today$/, "/map"));
+  await teacher.goto(classUrl.replace(/\/roster$/, "/map"));
   await teacher.getByText("Ana", { exact: true }).first().waitFor();
   await measured(teacher, `${label} class map`);
   await shot(teacher, "teacher-map", width, theme);

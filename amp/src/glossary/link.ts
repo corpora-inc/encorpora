@@ -1,5 +1,6 @@
 import { segments } from "../content/math-segments";
 import { formPattern, normalizeForm, scanForms } from "./scan";
+import { idiomInsteadOfTerm } from "./senses";
 import { glossary, glossaryEntry } from "./index";
 import type {
   GlossaryEntry,
@@ -134,6 +135,11 @@ function scanProse(
   warnConflicts(context);
   const out: { start: number; end: number; id: TermId }[] = [];
   for (const { start, end, form } of scanForms(prose, matcher().pattern)) {
+    // "line the numbers up" and "the hand points at 4" are verbs. A sense
+    // cannot promote them: the geometry term is a different part of speech.
+    // Leave the form out of the lexicon here. A later noun use can still
+    // record the entry; the client skips this occurrence on its own.
+    if (idiomInsteadOfTerm(prose, start, end, form)) continue;
     const id = resolve(form, context);
     if (typeof id === "string") {
       onMatch?.(form, id);

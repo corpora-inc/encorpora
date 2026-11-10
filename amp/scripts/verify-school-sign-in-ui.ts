@@ -737,7 +737,20 @@ async function journeys(browser: Browser, engine: string) {
     await locked.page.waitForURL("**/join");
 
     // A new code: the old one fails, the board shows the new one.
-    await teacher.page.getByRole("button", { name: "New code" }).click();
+    // New code lives in More, unless sign-in is paused, when it shows itself.
+    const paused = teacher.page.getByRole("button", {
+      name: "New code",
+      exact: true,
+    });
+    if (await paused.count()) await paused.click();
+    else {
+      await teacher.page
+        .getByRole("button", { name: "More for the class code" })
+        .click();
+      await teacher.page
+        .getByRole("menuitem", { name: "New class code" })
+        .click();
+    }
     await teacher.page.getByRole("button", { name: "Make a new code" }).click();
     await teacher.page
       .getByText(/The new class code is/)

@@ -43,17 +43,23 @@ test("each group's screens share one frame and name their tab", () => {
     active: "privacy",
   });
   expect(shellFrame("/practice")).toEqual({ kind: "practice" });
-  expect(shellFrame("/lessons/fractions")).toEqual({ kind: "plain" });
+  expect(shellFrame("/lessons/fractions")).toEqual({
+    kind: "plain",
+    practice: true,
+  });
   expect(shellFrame("/school/invite")).toEqual({ kind: "plain" });
 });
 
 test("the starter and Continue with AMP sit on the app frame", () => {
-  for (const path of ["/start", "/start/parent", "/start/school"])
+  for (const path of [
+    "/start",
+    "/start/parent",
+    "/start/school",
+    "/start/parent/practice",
+    "/start/tutor/join",
+  ])
     expect(shellFrame(path), path).toEqual({ kind: "plain" });
-  expect(shellFrame("/continue/learner-1")).toEqual({
-    kind: "account",
-    active: "access",
-  });
+  expect(shellFrame("/continue/learner-1")).toEqual({ kind: "plain" });
   // The steps around it keep their own frame.
   for (const path of ["/start/purchase", "/start/verify-email", "/start/x"])
     expect(shellFrame(path), path).toBeNull();
@@ -82,10 +88,11 @@ test("the Overview tab follows whose progress it is; the URLs never move", () =>
     "inventory",
   ]);
   expect(progressTabs("own")[0]!.path).toBe("me");
+
   expect(overviewPath("learner")).toBe("/overview");
   expect(accountTabs.map((tab) => tab.label)).toEqual([
-    "Profile & sign-in",
-    "Family",
+    "Sign-in",
+    "Learners",
     "Billing",
     "Privacy",
   ]);
@@ -116,9 +123,50 @@ test("class sub-screens retain their tab and existing URLs", () => {
     "Students",
     "Settings",
   ]);
-  expect(shellFrame("/learners/child/workbooks/2026-11-09/results")).toEqual({
-    kind: "plain",
+  // A learner's workbooks are on the Progress frame (My practice's
+  // Workbooks tab for the adult's own).
+  for (const path of [
+    "/learners/child/workbooks",
+    "/learners/child/workbooks/2026-11-09",
+    "/learners/child/workbooks/2026-11-09/results",
+  ])
+    expect(shellFrame(path), path).toEqual({
+      kind: "progress",
+      active: "workbooks",
+    });
+  // A family's or tutor's class: Grades only past six learners.
+  expect(
+    classTabs("org", "class", false, true, 12).map((tab) => tab.label),
+  ).toEqual([
+    "Today",
+    "Map",
+    "Grades",
+    "Time",
+    "Workbooks",
+    "People",
+    "Settings",
+  ]);
+  expect(
+    classTabs("org", "class", false, true, 2).map((tab) => tab.label),
+  ).toEqual(["Today", "Map", "Time", "Workbooks", "People", "Settings"]);
+  // A student's record opened from a class keeps that class's tabs.
+  expect(shellFrame("/school/org/students/kai", "class")).toEqual({
+    kind: "class",
+    org: "org",
+    classId: "class",
+    active: "map",
+    board: false,
   });
+  expect(shellFrame("/school/org/students/kai")).toMatchObject({
+    kind: "school",
+  });
+  expect(progressTabs("own", "adult-1").map((tab) => tab.label)).toEqual([
+    "Overview",
+    "Pathways",
+    "Inventory",
+    "Workbooks",
+  ]);
+  expect(progressTabs("learner", "adult-1")).toHaveLength(3);
 });
 
 test("school sub-screens map to seven tabs and respect capabilities", () => {

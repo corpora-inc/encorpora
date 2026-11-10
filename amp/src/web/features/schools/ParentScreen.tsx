@@ -1,10 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { levelRange } from "../../../learning/level-check";
 import type { ParentView } from "../../../schools/share-contracts";
 import { shareToken, takeShareFragment } from "../../share-entry";
 import { Button } from "../../ui/Button";
-import { LevelAxis, levelScale, LevelTrack } from "../../ui/LevelChart";
+import { fitScale, LevelRows } from "../../ui/level-range";
 import { LoadingScreen } from "../../ui/LoadingScreen";
 import { WaveMark } from "../../ui/NavigationSheet";
 import { LinkEnded, readParentView } from "./api";
@@ -59,50 +58,28 @@ function Levels({ view }: { view: ParentView }) {
         This fills in once {view.student.first} has done some work.
       </p>
     );
-  const center = reference
-    ? (reference.from + reference.to) / 2
-    : level.overall.level;
-  const scale = levelScale(center, [
-    level.overall,
-    ...Object.values(level.strands),
-  ]);
-  const row = (id: string, label: string, strand?: string) => {
-    const estimate = strand ? level.strands[strand]! : level.overall;
-    const [from, to] = levelRange(estimate);
-    return (
-      <li key={id} className={styles.levelRow} data-strand={strand}>
-        <span className={styles.levelName}>{label}</span>
-        <span
-          className={styles.levelTrack}
-          role="img"
-          aria-label={`${label}: likely grade ${from.toFixed(1)} to ${to.toFixed(1)}`}
-        >
-          <LevelTrack
-            estimate={estimate}
-            scale={scale}
-            reference={!!reference}
-          />
-        </span>
-        <span className={styles.levelNumbers}>
-          {from.toFixed(1)}–{to.toFixed(1)}
-        </span>
-      </li>
-    );
-  };
+  const areas = view.strands.flatMap((strand) => {
+    const estimate = level.strands[strand.id];
+    return estimate ? [{ id: strand.id, label: strand.label, estimate }] : [];
+  });
+  const grade = reference ? ([reference.from, reference.to] as const) : null;
+  // The same level rows a teacher and a learner read (ui/level-range).
+  const scale = fitScale(
+    [level.overall, ...areas.map((area) => area.estimate)],
+    { minSpan: 5, include: grade ? [...grade] : [] },
+  );
   return (
     <>
-      <ul className={styles.levels}>
-        {row("overall", "Overall")}
-        {view.strands.map((strand) => row(strand.id, strand.label, strand.id))}
-      </ul>
-      <div className={styles.axisRow} aria-hidden="true">
-        <span className={styles.axisLabel}>Grade</span>
-        <LevelAxis scale={scale} name={gradeName} reference={!!reference} />
-      </div>
+      <LevelRows
+        overall={level.overall}
+        areas={areas}
+        scale={scale}
+        grade={grade}
+      />
       <p className={styles.key}>
         Each band is the likely grade level in that area of math, and the dot is
         the best estimate.
-        {reference ? ` The tick marks grade ${gradeName(center)}.` : ""}
+        {grade ? ` The shaded column is grade ${gradeName(grade[0])}.` : ""}
       </p>
     </>
   );

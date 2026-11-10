@@ -19,13 +19,17 @@
   gap: var(--space-3);
 }
 .code {
-  --tile: 44px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-3) var(--space-5);
   padding: var(--space-4) 0;
   border-block: 1px solid var(--color-border);
+}
+/* On a phone the list's own hairline closes the section: never two. */
+.code:has(+ [data-grid-mode="cards"]) {
+  padding-bottom: 0;
+  border-bottom: 0;
 }
 .codeText {
   flex: 1 1 260px;
@@ -40,10 +44,6 @@
   margin-top: 2px;
   color: var(--color-muted-text);
   font-size: var(--text-table);
-}
-.tiles {
-  display: inline-flex;
-  flex: none;
 }
 .student {
   display: inline-flex;
@@ -64,8 +64,59 @@
   justify-content: flex-end;
   gap: var(--space-3);
 }
-@media (max-width: 400px) {
-  .code {
-    --tile: 40px;
-  }
+/* The empty roster's one made-up line. */
+.example {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3) var(--space-5);
+  margin: 0;
+  font-size: var(--text-table);
+}
+.example dt {
+  margin-bottom: 2px;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+}
+.example dd {
+  margin: 0;
+  font-weight: 550;
+}
+.exampleName {
+  grid-column: 1 / -1;
+}
+.exampleName dt {
+  display: none;
+}
+.exampleName dd {
+  font-weight: 650;
+}
+/* A phone's row: name and Manage, then card, pictures and last seen. */
+.card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-1) var(--space-3);
+}
+.cardName {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.cardAction {
+  grid-row: span 2;
+}
+.cardFacts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1) var(--space-3);
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+}
+.cardPictures {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+.sectionTitle {
+  margin-bottom: calc(var(--space-3) - var(--space-5));
 }

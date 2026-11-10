@@ -1,16 +1,20 @@
 import { useMutation } from "@tanstack/react-query";
 import { z } from "zod";
+import type { AdultStart } from "../../../learning/starting-point";
 import type { AuthSession } from "../../auth";
 import { useLearnerStore } from "../../learner-store";
 import { request } from "../../lib/api";
 import { queryClient, refreshMe } from "../../lib/query";
 import { rememberPlace } from "./place-memory";
 
+/** Where their own practice starts: a school-age birth year, or, past
+ * school age, the start they chose (`pastSchoolAge`). */
+export type OwnStart = { birthYear: number } | { start: AdultStart };
 /** What the starter sends: one answer and only what that answer needs. */
 export type StarterAnswer =
-  | { as: "myself"; timezone: string; birthYear: number }
-  | { as: "parent"; children: { birthYear: number }[] }
-  | { as: "tutor"; students: { birthYear: number }[] };
+  | ({ as: "myself"; timezone: string } & OwnStart)
+  | { as: "parent"; children: { birthYear: number; name?: string }[] }
+  | { as: "tutor"; students: { birthYear: number; nickname?: string }[] };
 
 const result = z.object({
   home: z.string().min(1),

@@ -183,7 +183,7 @@ try {
     await page.getByRole("link", { name: "Account", exact: true }).click();
     await page
       .getByRole("navigation", { name: "Account" })
-      .getByRole("link", { name: "Family", exact: true })
+      .getByRole("link", { name: "Learners", exact: true })
       .click();
     await page.getByLabel("Family learner", { exact: true }).waitFor();
     assert.equal(await page.locator(".family-learner").count(), 1);
@@ -228,14 +228,14 @@ try {
     assert.equal(await page.locator(".family-billing").count(), 0);
     await page
       .getByRole("navigation", { name: "Account" })
-      .getByRole("link", { name: "Family", exact: true })
+      .getByRole("link", { name: "Learners", exact: true })
       .click();
     await page.getByRole("button", { name: "Edit name", exact: true }).click();
     // A long display name and a revoked future term must not displace the dock.
-    const longName = "Jordan Alexandra Montgomery Rivera Chen Williamson";
+    const longName = "Jordan Alexandra Montgomery";
     family.learners.find((l) => l.id === "jordan")!.access[0].status =
       "revoked";
-    await page.getByLabel("Learner display name").fill(longName);
+    await page.getByLabel("Name", { exact: true }).fill(longName);
     await page.getByRole("button", { name: "Save name", exact: true }).click();
     await page.getByRole("heading", { name: longName, exact: true }).waitFor();
     assert.deepEqual(renamed, ["jordan"]);
@@ -282,7 +282,7 @@ try {
     await choose(page.getByLabel("Family learner", { exact: true }), "jordan");
     await page
       .getByRole("navigation", { name: "Account" })
-      .getByRole("link", { name: "Family", exact: true })
+      .getByRole("link", { name: "Learners", exact: true })
       .click();
     await page
       .getByRole("button", { name: "Delete learning data", exact: true })

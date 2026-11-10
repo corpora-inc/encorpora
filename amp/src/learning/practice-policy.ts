@@ -42,14 +42,22 @@ export const practicePolicySchema = z
       .object({
         foundationEvery: z.number().int().min(2).max(20),
         probeEvery: z.number().int().min(2).max(20),
+        /** While the learner is still climbing (`Frontier.climbing`): a
+         * probe this often, and no foundation checks. */
+        climbProbeEvery: z.number().int().min(2).max(20),
         probeRise: grades,
+        /** A probe aims this many uncertainty widths above the estimate,
+         * within `probeRise` of the working ceiling. */
+        probeUncertainty: grades,
         workingReach: grades,
       })
       .strict()
       .default({
         foundationEvery: 4,
         probeEvery: 4,
+        climbProbeEvery: 2,
         probeRise: 2,
+        probeUncertainty: 1,
         workingReach: 0.5,
       }),
     support: z
@@ -186,11 +194,13 @@ export function assertPracticePolicy(policy: PracticePolicy): void {
  * set. Changing hypotheses requires a new object, not a global mutation. */
 export const DEFAULT_PRACTICE_POLICY = createPracticePolicy({
   schemaVersion: 1,
-  version: "pathways-budget-v3-confirmed-practice",
+  version: "pathways-budget-v4-fast-climb",
   challenge: {
     foundationEvery: 4,
     probeEvery: 4,
+    climbProbeEvery: 2,
     probeRise: 2,
+    probeUncertainty: 1,
     workingReach: 0.5,
   },
   sampling: { utilityWindow: 24, temperature: 12 },

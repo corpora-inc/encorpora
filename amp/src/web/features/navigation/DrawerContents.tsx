@@ -5,8 +5,7 @@ import { useLearningView } from "../../lib/learning-view";
 import { useLearnerStore } from "../../learner-store";
 import { useShellSlots } from "../../lib/shell-slots";
 import { FeedbackPreferences } from "../practice/FeedbackPreferences";
-import { ChoicePicker, type ListboxOption } from "../../ui/Listbox";
-import { SignedInEmail } from "./SignedInEmail";
+import { ChoicePicker, Listbox, type ListboxOption } from "../../ui/Listbox";
 import { PlaceSwitcher, usePlaceEntries } from "./PlaceSwitcher";
 import { overviewPath, shellFrame, type ShellFrame } from "./shell-frame";
 import { clearInitialConsentChallenge } from "../../consent-entry";
@@ -27,11 +26,15 @@ type Icon =
   | "plans"
   | "out"
   | "school"
-  | "standings";
+  | "standings"
+  | "someone";
 function NavIcon({ kind }: { kind: Icon }) {
   const paths: Record<Icon, string> = {
     learn: "m9 5 10 7-10 7V5Z",
     level: "M5 19h14M7 15v-3m5 3V8m5 7V4",
+    // A person and an arrow: practicing as someone else.
+    someone:
+      "M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3.5 19c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5M16 8h5m-2-2 2 2-2 2",
     lessons:
       "M4 5.5C6.5 4.5 9.5 4.5 12 6c2.5-1.5 5.5-1.5 8-.5V19c-2.5-1-5.5-1-8 .5-2.5-1.5-5.5-1.5-8-.5V5.5ZM12 6v13.5",
     class:
@@ -77,7 +80,14 @@ export default function DrawerContents({
   // Practicing as one of their profiles: someone else's level, their own
   // practice (features/profiles).
   const profile = view.profile;
-  const here = frame ?? shellFrame(location.pathname);
+  const here =
+    frame ??
+    shellFrame(
+      location.pathname,
+      typeof (location.search as Record<string, unknown>).class === "string"
+        ? ((location.search as Record<string, unknown>).class as string)
+        : undefined,
+    );
   const context = own ? "own" : "learner";
   const learnerChoices: ListboxOption[] = view.learners.map((l) => ({
     value: l.id,
@@ -134,7 +144,7 @@ export default function DrawerContents({
     void navigate({ to: "/$", params: { _splat: destination.slice(1) } });
     close();
   }
-  const { entries: places, currentOrg } = usePlaceEntries(
+  const { entries: places } = usePlaceEntries(
     account,
     here?.kind === "class" || here?.kind === "school" ? here.org : undefined,
   );
@@ -190,7 +200,9 @@ export default function DrawerContents({
   const hasProgress = !!view.learner;
   return (
     <>
-      {(places.length > 1 || learnerChoices.length > 1 || !!learnerName) && (
+      {(places.length > 1 ||
+        learnerChoices.length > 1 ||
+        (!!learnerName && !own)) && (
         <section className={styles.switcher} aria-label="Where you are">
           {account && places.length > 1 && (
             <PlaceSwitcher
@@ -203,22 +215,38 @@ export default function DrawerContents({
           {profile ? (
             <ProfilePlace onNavigate={close} />
           ) : learnerChoices.length > 1 && !own ? (
-            <ChoicePicker
-              label="Current learner"
-              placeholder="Choose a learner"
-              options={learnerChoices}
-              value={learner?.id ?? null}
-              onChange={chooseLearner}
-            />
+            // A few learners are quiet rows, the chosen one marked; a long
+            // list folds behind one button.
+            learnerChoices.length <= 6 ? (
+              <div className={styles.learnerChoice}>
+                <span className={styles.kicker}>Learner</span>
+                <Listbox
+                  label="Current learner"
+                  className={styles.learnerList}
+                  options={learnerChoices}
+                  value={learner?.id ?? null}
+                  onChange={chooseLearner}
+                />
+              </div>
+            ) : (
+              <ChoicePicker
+                label="Current learner"
+                placeholder="Choose a learner"
+                options={learnerChoices}
+                value={learner?.id ?? null}
+                onChange={chooseLearner}
+              />
+            )
           ) : (
-            learnerName && (
+            // Their own practice is named by the place above; the drawer
+            // never names a person to themselves.
+            learnerName &&
+            !own && (
               <div
                 className={styles.current}
                 data-learner={(own ? view.learner?.id : learner?.id) ?? ""}
               >
-                <span className={styles.kicker}>
-                  {own ? "Your own practice" : "Learner"}
-                </span>
+                <span className={styles.kicker}>Learner</span>
                 <strong>{learnerName}</strong>
                 {student && account?.school && (
                   <span className={styles.context}>
@@ -253,17 +281,24 @@ export default function DrawerContents({
           nav(overviewPath(context), "Progress", "level", {
             current: here?.kind === "progress",
           })}
-        {view.learner &&
-          !view.viewOnly &&
-          nav("/lessons", "Lessons", "lessons", {
-            current:
-              location.pathname === "/lessons" ||
-              location.pathname.startsWith("/lessons/"),
+        {/* Practicing at another grade and pace: a page of its own, never a
+            place in the switcher (docs/design/ia.md). */}
+        {own &&
+          !profile &&
+          nav("/me/profiles", "Practice as someone else", "someone", {
+            current: location.pathname.startsWith("/me/profiles"),
           })}
+        {/* Lessons are reached from Pathways, practice and search, never
+            as a destination of their own (docs/design/ia.md). */}
         {classPlace &&
           !student &&
           nav(`/${classPlace.path}`, "Class", "class", {
-            detail: classPlace.name,
+            // The place switcher above already names the place on screen.
+            detail:
+              classPlace.id === currentPlace ||
+              (classPlace.id === currentClass && currentPlace === "home")
+                ? undefined
+                : classPlace.name,
             current: here?.kind === "class",
           })}
         {schoolPlace &&
@@ -283,17 +318,16 @@ export default function DrawerContents({
           nav("/access", "Your gift of AMP", "plans", {
             detail: `${account.availableAccessGrant.months === 12 ? "A year" : "A month"} of access is ready`,
           })}
+        {/* A family's learners, purchases and consent are a tab of Account:
+            a parent in the family class opens Account there, one row. */}
         {view.session.data &&
           !student &&
-          here?.kind === "class" &&
-          (currentOrg?.kind === "family" ||
-            account?.familyClass?.classId === here.classId) &&
-          nav("/family", "Family", "class")}
-        {view.session.data &&
-          !student &&
-          nav("/family/security", "Account", "settings", {
-            current: here?.kind === "account",
-          })}
+          (here?.kind === "class" &&
+          account?.familyClass?.classId === here.classId
+            ? nav("/family", "Family & account", "settings")
+            : nav("/family/security", "Account", "settings", {
+                current: here?.kind === "account",
+              }))}
       </nav>
       <div className={styles.settings}>
         {practiceControls}
@@ -307,11 +341,9 @@ export default function DrawerContents({
 }
 
 /**
- * Who is signed in, and Sign out, at the foot of the drawer. Its rows are
- * always there, so nothing appears or changes while the drawer is open: the
- * address behind a fixed-length mask (screen recordings never show it) with a
- * button to reveal it, or a student's name. They end the drawer's list and
- * scroll with it.
+ * Sign out at the foot of the drawer, with a student's name above it on a
+ * shared device. Its rows are always there, so nothing appears or changes
+ * while the drawer is open. They end the drawer's list and scroll with it.
  */
 export function DrawerFooter({ close }: { close: () => void }) {
   const view = useLearningView({ records: false });
@@ -334,8 +366,9 @@ export function DrawerFooter({ close }: { close: () => void }) {
     );
   const account = view.account;
   const student = account?.account.kind === "student";
-  // A student has no address, so their name; everyone else, their address
-  // behind its mask, as the founder prefers.
+  // A child on a shared device sees whose session this is. An adult's
+  // address never shows here: screen recordings of the menu stay clean, and
+  // Account holds it.
   const name = student ? (account?.learners[0]?.name ?? "") : "";
   return (
     <section
@@ -343,14 +376,12 @@ export function DrawerFooter({ close }: { close: () => void }) {
       aria-label="Current account"
       data-signed-in
     >
-      <div className={styles.who}>
-        <span className={styles.kicker}>Signed in as</span>
-        {name ? (
+      {student && (
+        <div className={styles.who}>
+          <span className={styles.kicker}>Signed in as</span>
           <strong className={styles.email}>{name}</strong>
-        ) : (
-          <SignedInEmail email={account?.account.email ?? ""} />
-        )}
-      </div>
+        </div>
+      )}
       <div className={styles.signOut}>
         <button
           disabled={busy}

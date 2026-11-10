@@ -263,7 +263,12 @@ test("piece cards, expressions, packing, and naming the solid", () => {
       assert.equal(gradeAnswer(packed, mixed), false);
       assert.equal(gradeAnswer(packed, packed.answer), true);
     }
-    assert.ok(!packed.hint.includes(fromCount));
+    // The hint names this box's edges and the small cube's edge (its
+    // givens), so a one-digit answer can match a given. Past the givens it
+    // never states the answer.
+    const givens = packed.hint.indexOf("to count the cubes along it.");
+    assert.ok(givens >= 0, packed.hint);
+    assert.ok(!packed.hint.slice(givens).includes(fromCount), packed.hint);
   }
   assert.ok(halfInch >= 40, `half-inch cubes ${halfInch}`);
 

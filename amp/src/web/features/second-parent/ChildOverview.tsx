@@ -59,6 +59,8 @@ export function ChildOverview({
     <>
       <Home
         name={child.name}
+        learnerId={child.id}
+        reader="other"
         birthYear={child.birthYear}
         resuming={false}
         frontier={(frontier.data as FrontierMap | undefined) ?? null}

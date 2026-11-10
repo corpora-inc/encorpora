@@ -22,6 +22,29 @@ const created = z.object({ learnerId: z.string() });
  * opens on it. The place they came from stays the one `/` remembers. */
 export function choosePracticeProfile(id: string) {
   useLearnerStore.getState().select(id);
+  rememberProfileUse(id);
+}
+
+/** The profiles this device practiced as, newest first, so the list of them
+ * opens on the ones in use. Device-local and best effort. */
+const RECENT_KEY = "amp.profiles.recent";
+export function recentProfiles(): string[] {
+  try {
+    const raw = JSON.parse(localStorage.getItem(RECENT_KEY) ?? "[]");
+    return Array.isArray(raw) ? raw.filter((id) => typeof id === "string") : [];
+  } catch {
+    return [];
+  }
+}
+function rememberProfileUse(id: string) {
+  try {
+    localStorage.setItem(
+      RECENT_KEY,
+      JSON.stringify([id, ...recentProfiles().filter((old) => old !== id)].slice(0, 20)),
+    );
+  } catch (error) {
+    console.warn("The profile list order couldn’t be kept", error);
+  }
 }
 
 /** Saves a new profile and makes it the learner practicing. */

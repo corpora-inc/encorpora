@@ -54,9 +54,9 @@ test(
         );
         const learner = me.learners.find((row) => row.id === trial.learnerId);
         assert.ok(learner, "the moved learner is on /me at once");
-        assert.equal(learner.name, "Fox");
+        assert.equal(learner.name, "Child 1");
         assert.equal(learner.namePending, true);
-        assert.equal(learner.pictureIdentity, "fox");
+        assert.equal(learner.defaultName, true);
         assert.equal(learner.freeAllowance?.problems.used, 7);
         assert.equal(learner.freeAllowance?.workbooks.made, 1);
         // `/me` names no free assessment: the trial is gone from it.
@@ -66,10 +66,9 @@ test(
         const row = await learnerRow(f.db, trial.learnerId);
         assert.deepEqual(row, {
           account_id: account,
-          name: "Fox",
+          name: "Child 1",
           name_pending: true,
-          picture_identity: "fox",
-          picture_number: 1,
+          label_number: 1,
           identity_scope: `family:${account}`,
           free_online_used: 7,
           free_workbooks_used: 1,
@@ -122,7 +121,7 @@ test(
         );
         assert.equal(
           again.learners.find((item) => item.id === trial.learnerId)?.name,
-          "Fox",
+          "Child 1",
         );
         assert.deepEqual(await learnerRow(f.db, trial.learnerId), row);
         assert.deepEqual(await counts(f.db, trial.learnerId), before);
@@ -243,11 +242,11 @@ test(
     );
 
     await t.test(
-      "a family that already has a child gains the practised trial as another picture learner; an empty trial stays",
+      "a family that already has a child gains the practised trial as their next child; an empty trial stays",
       async () => {
         const account = await parent(f.db);
-        const fox = await f.repository.create(account, undefined, 2016);
-        assert.equal(fox.name, "Fox");
+        const first = await f.repository.create(account, undefined, 2016);
+        assert.equal(first.name, "Child 1");
         const trial = await f.repository.createTrial(2015, account);
         await f.db.query(
           "UPDATE amp_learners SET free_online_used=1 WHERE id=$1",
@@ -258,7 +257,7 @@ test(
         const client = await f.db.connect();
         try {
           // The trial screens are gone: a practised trial left behind would
-          // be out of reach, so it joins the family beside Fox.
+          // be out of reach, so it joins the family beside Child 1.
           assert.equal(await absorbLiveTrial(client, account), 1);
           // A trial nobody practised in carries nothing to keep.
           assert.equal(await absorbLiveTrial(client, emptyOwner), 0);
@@ -268,7 +267,7 @@ test(
         const moved = await learnerRow(f.db, trial.learnerId);
         assert.equal(moved.account_id, account);
         assert.equal(moved.name_pending, true);
-        assert.notEqual(moved.name, "Fox");
+        assert.equal(moved.name, "Child 2");
         assert.equal(moved.free_online_used, 1);
         assert.equal(await enrolled(f.db, trial.learnerId, account), 1);
         assert.ok(
@@ -295,7 +294,7 @@ test(
         }
         const moved = (
           await f.db.query(
-            "SELECT account_id,name,adult,birth_year,name_pending,picture_identity FROM amp_learners WHERE id=$1",
+            "SELECT account_id,name,adult,birth_year,name_pending,label_number FROM amp_learners WHERE id=$1",
             [trial.learnerId],
           )
         ).rows[0];
@@ -305,7 +304,7 @@ test(
           adult: true,
           birth_year: null,
           name_pending: false,
-          picture_identity: null,
+          label_number: null,
         });
         assert.deepEqual(await counts(f.db, trial.learnerId), before);
         assert.equal(
@@ -367,7 +366,7 @@ test(
         }
         const row = await learnerRow(f.db, trial.learnerId);
         assert.equal(row.account_id, account);
-        assert.equal(row.name, "Fox");
+        assert.equal(row.name, "Child 1");
         assert.equal(row.name_pending, true);
         assert.equal(await enrolled(f.db, trial.learnerId, account), 1);
         assert.equal(
@@ -562,7 +561,7 @@ async function ids(db: Pool, sql: string, learnerId: string) {
 async function learnerRow(db: Pool, learnerId: string) {
   const row = (
     await db.query(
-      `SELECT account_id,name,name_pending,picture_identity,picture_number,identity_scope,
+      `SELECT account_id,name,name_pending,label_number,identity_scope,
               free_online_used,free_workbooks_used
        FROM amp_learners WHERE id=$1`,
       [learnerId],
@@ -572,8 +571,7 @@ async function learnerRow(db: Pool, learnerId: string) {
     account_id: string;
     name: string;
     name_pending: boolean;
-    picture_identity: string | null;
-    picture_number: number | null;
+    label_number: number | null;
     identity_scope: string | null;
     free_online_used: number;
     free_workbooks_used: number;

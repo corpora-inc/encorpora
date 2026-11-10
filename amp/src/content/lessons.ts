@@ -201,6 +201,7 @@ export interface Lesson {
       | "dependent-variable-graph"
       | "compare-functions-graph"
       | "linear-nonlinear-graph"
+      | "slope-intercept-line"
       | "clock-hour-half"
       | "clock-five-minutes"
       | "coin-values"

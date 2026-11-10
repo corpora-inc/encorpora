@@ -92,20 +92,22 @@
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  padding: 0;
+  padding: 0 var(--space-2);
+  margin-inline: calc(-1 * var(--space-2)) 0;
+  border-radius: var(--radius-control);
   border: 0;
   background: none;
   color: var(--color-primary);
   font: inherit;
   font-size: var(--text-label);
   font-weight: 650;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  text-decoration: none;
   cursor: pointer;
 }
+/* A quiet action: a tint on hover, never an underline (docs/design/ia.md). */
 .placeLink:hover {
   filter: none;
-  text-decoration-thickness: 2px;
+  background: var(--color-surface-raised-hover);
 }
 .placeLink:focus-visible {
   outline: 3px solid var(--color-focus-ring);

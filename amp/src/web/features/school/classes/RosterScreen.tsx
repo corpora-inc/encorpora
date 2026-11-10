@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import type { SignInRoster } from "../../../../schools/contracts";
-import { Avatar } from "../../../ui/Avatar";
 import { Badge } from "../../../ui/Badge";
 import { Button, buttonClass } from "../../../ui/Button";
 import { DataGrid, type DataGridColumn } from "../../../ui/DataGrid";
@@ -13,16 +12,22 @@ import { Toast } from "../../../ui/Toast";
 import { downloadParentLinks } from "../../schools/share-api";
 import { say, useLeaveOff } from "../classroom/api";
 import { useClassExperience } from "../classroom/ExperienceSettings";
-import { CodeTiles } from "../join/CodeTiles";
+import { JoinClass } from "../join/JoinClass";
 import {
   rosterOptions,
   useResetPictures,
   useRevokeSessions,
-  useRotateCode,
   useStaffSession,
 } from "./api";
 import { ClassFrame } from "./ClassFrame";
 import { PracticeAs, useDemoOrg } from "../demo/DemoPlace";
+import { meOptions } from "../../../lib/query";
+import { currentSession, orgOptions } from "../api";
+import { ClassPeople } from "./people/ClassPeople";
+import { canAddStudents } from "../permissions";
+import { classUrl } from "./teacher-shared";
+import { approvalsOptions } from "../../family-approval/api";
+import { secondParentOptions } from "../../second-parent/api";
 import styles from "./Roster.module.css";
 
 type Row = SignInRoster["students"][number];
@@ -51,9 +56,34 @@ function PicturesBadge({ row }: { row: Row }) {
   );
 }
 
+/** One made-up line of sign-in status, for an empty class. */
+function ExampleSignIn() {
+  return (
+    <dl className={styles.example}>
+      <div className={styles.exampleName}>
+        <dt>Name</dt>
+        <dd>A student</dd>
+      </div>
+      <div>
+        <dt>Card</dt>
+        <dd>Issued Sep 3</dd>
+      </div>
+      <div>
+        <dt>Pictures</dt>
+        <dd>
+          <Badge tone="success">Set</Badge>
+        </dd>
+      </div>
+      <div>
+        <dt>Last seen</dt>
+        <dd>Today, 9:12 AM</dd>
+      </div>
+    </dl>
+  );
+}
+
 type Pending =
   | { kind: "links" }
-  | { kind: "rotate" }
   | { kind: "reset"; row: Row }
   | { kind: "revoke"; row: Row };
 
@@ -67,7 +97,6 @@ export function RosterScreen() {
     ...rosterOptions(session, place),
     refetchInterval: 15_000,
   });
-  const rotate = useRotateCode(session, place);
   const reset = useResetPictures(session, place);
   const revoke = useRevokeSessions(session, place);
   const experience = useClassExperience(session, params.class);
@@ -89,19 +118,39 @@ export function RosterScreen() {
   const [making, setMaking] = useState(false);
   // A demo's owner can open practice as any of its made-up students.
   const demo = useDemoOrg(params.org);
-  const busy =
-    making || rotate.isPending || reset.isPending || revoke.isPending;
+  // A family's class is its people: the children, then (for the account
+  // holder) the grown-ups who teach it and children from other families.
+  const account = currentSession();
+  const org = useQuery({
+    ...orgOptions(account, params.org),
+    refetchOnMount: false,
+  }).data;
+  const family = org?.kind === "family";
+  const me = useQuery(meOptions(account)).data;
+  const holder = !!me?.signedIn && me.familyClass?.classId === params.class;
+  const who = family ? "child" : "student";
+  // Its lists arrive with the page, so nothing below moves in after it.
+  const second = useQuery({
+    ...secondParentOptions(account),
+    enabled: holder && family,
+  });
+  const others = useQuery({
+    ...approvalsOptions(account),
+    enabled: holder && family,
+  });
+  const peoplePending =
+    holder && family && (second.isPending || others.isPending);
+  const busy = making || reset.isPending || revoke.isPending;
 
   const columns = useMemo<DataGridColumn<Row>[]>(
     () => [
       {
         id: "name",
-        header: "Student",
+        header: family ? "Child" : "Student",
         width: 200,
         compare: (a, b) => a.name.localeCompare(b.name),
         cell: (row) => (
           <span className={styles.student}>
-            <Avatar name={row.name} size="small" />
             <span>{row.name}</span>
           </span>
         ),
@@ -216,6 +265,7 @@ export function RosterScreen() {
     [
       canManage,
       demo,
+      family,
       navigate,
       params,
       experience.data?.canEdit,
@@ -231,11 +281,6 @@ export function RosterScreen() {
         setMaking(true);
         await downloadParentLinks(session, params.class);
         setStatus("Family links downloaded. Earlier links no longer work.");
-      } else if (pending.kind === "rotate") {
-        const { joinCode } = await rotate.mutateAsync();
-        setStatus(
-          `The new class code is ${joinCode.slice(0, 3)}-${joinCode.slice(3)}.`,
-        );
       } else if (pending.kind === "reset") {
         await reset.mutateAsync(pending.row.id);
         setStatus(
@@ -258,7 +303,7 @@ export function RosterScreen() {
       org={params.org}
       classId={params.class}
       className={data?.class.name}
-      loading={roster.isPending}
+      loading={roster.isPending || peoplePending}
       tab="roster"
     >
       {!data ? (
@@ -269,28 +314,25 @@ export function RosterScreen() {
         <div className={styles.page}>
           <header className={styles.head}>
             <div>
-              <h1>Roster</h1>
-              <p className={styles.count}>
-                {data.students.length === 1
-                  ? "1 student"
-                  : `${data.students.length} students`}
-              </p>
+              <h1>{family ? "People" : "Students"}</h1>
+              {data.students.length > 0 && (
+                <p className={styles.count}>
+                  {data.students.length === 1
+                    ? `1 ${who}`
+                    : `${data.students.length} ${family ? "children" : "students"}`}
+                </p>
+              )}
             </div>
             <div className={styles.actions}>
-              <Link
-                to="/school/$org/classes/$class/experience"
-                params={params}
-                className={buttonClass("secondary")}
-              >
-                Student experience
-              </Link>
-              <Link
-                to="/school/$org/classes/$class/start"
-                params={params}
-                className={buttonClass("primary")}
-              >
-                Start class
-              </Link>
+              {!family && (
+                <Link
+                  to="/school/$org/classes/$class/start"
+                  params={params}
+                  className={buttonClass("primary")}
+                >
+                  Start class
+                </Link>
+              )}
               {canManage && data.students.length > 0 && (
                 <Link
                   to="/school/$org/classes/$class/cards"
@@ -313,30 +355,30 @@ export function RosterScreen() {
               )}
             </div>
           </header>
+          {family && <h2 className={styles.sectionTitle}>Children</h2>}
           <section className={styles.code} aria-label="Class code">
             <div className={styles.codeText}>
               <h2>Class code</h2>
               <p>
                 {data.class.joinLockedUntil
                   ? "Sign-in is paused after many wrong pictures. A new code opens it now."
-                  : "Students type this at /join. Printed cards don’t need it."}
+                  : family
+                    ? "Children type this at /join on a device of their own. Printed cards don’t need it."
+                    : "Students type this at /join. Printed cards don’t need it."}
               </p>
             </div>
-            <span
-              className={styles.tiles}
-              role="img"
-              aria-label={[...data.class.joinCode].join(" ")}
-            >
-              <CodeTiles code={data.class.joinCode} />
-            </span>
-            {canManage && (
-              <Button
-                variant={data.class.joinLockedUntil ? "primary" : "secondary"}
-                onClick={() => setPending({ kind: "rotate" })}
-              >
-                New code
-              </Button>
-            )}
+            {/* The compact form of the one Join element: the code in its one
+                face, then Copy link, the board, the QR and More (New code). */}
+            <JoinClass
+              compact
+              code={data.class.joinCode}
+              place={params}
+              family={family}
+              boardLink={family}
+              label={false}
+              manage={canManage}
+              locked={!!data.class.joinLockedUntil}
+            />
           </section>
           {data.students.length ? (
             <DataGrid
@@ -346,12 +388,75 @@ export function RosterScreen() {
               rowKey={(row) => row.id}
               rowHeight={52}
               defaultSort={{ column: "name", direction: "ascending" }}
+              cardLayout="list"
+              cardsSort={data.students.length > 6}
+              cardEstimate={84}
+              card={(row) => (
+                <div className={styles.card}>
+                  <span className={styles.cardName}>{row.name}</span>
+                  {canManage && (
+                    <span className={styles.cardAction}>
+                      {columns
+                        .find((column) => column.id === "actions")
+                        ?.cell(row)}
+                    </span>
+                  )}
+                  <span className={styles.cardFacts}>
+                    <span>
+                      {row.cardIssuedAt
+                        ? `Card ${shortDate.format(new Date(row.cardIssuedAt))}`
+                        : "No card"}
+                    </span>
+                    <span className={styles.cardPictures}>
+                      Pictures <PicturesBadge row={row} />
+                    </span>
+                    <span>
+                      {row.lastSeenAt
+                        ? `Seen ${lastSeen(row.lastSeenAt)}`
+                        : "Not signed in yet"}
+                    </span>
+                  </span>
+                </div>
+              )}
             />
           ) : (
-            <EmptyState title="No students yet">
-              Students added to this class appear here with their sign-in
-              status.
+            <EmptyState
+              title={family ? "No children yet" : "No students yet"}
+              example={<ExampleSignIn />}
+              action={
+                family && holder ? (
+                  <Link
+                    to="/$"
+                    params={{ _splat: "family/learners" }}
+                    className={buttonClass("primary")}
+                  >
+                    Add a child
+                  </Link>
+                ) : !family && canAddStudents(org, params.class) ? (
+                  <Link
+                    to="/$"
+                    params={{
+                      _splat: classUrl(params.org, params.class, "settings"),
+                    }}
+                    search={{ add: 1 } as never}
+                    className={buttonClass("primary")}
+                  >
+                    Add students
+                  </Link>
+                ) : undefined
+              }
+            >
+              {family
+                ? "Each child appears here with their card, their pictures and when they last signed in."
+                : "Each student appears here with their card, their pictures and when they last signed in."}
             </EmptyState>
+          )}
+          {family && holder && (
+            <ClassPeople
+              session={account}
+              orgId={params.org}
+              classId={params.class}
+            />
           )}
         </div>
       )}
@@ -363,24 +468,20 @@ export function RosterScreen() {
         title={
           pending?.kind === "links"
             ? "Download new family links?"
-            : pending?.kind === "rotate"
-              ? "Make a new class code?"
-              : pending?.kind === "reset"
-                ? `Reset pictures for ${pending.row.name}?`
-                : pending?.kind === "revoke"
-                  ? `Sign out ${pending.row.name} everywhere?`
-                  : ""
+            : pending?.kind === "reset"
+              ? `Reset pictures for ${pending.row.name}?`
+              : pending?.kind === "revoke"
+                ? `Sign out ${pending.row.name} everywhere?`
+                : ""
         }
       >
         <div className={styles.dialog}>
           <p>
             {pending?.kind === "links"
               ? "You’ll get a CSV of each student’s name and a new read-only link, ready for your school’s mail system. Links sent before stop working."
-              : pending?.kind === "rotate"
-                ? "The old code stops working right away. Printed cards keep working."
-                : pending?.kind === "reset"
-                  ? "New pictures get chosen at the next sign-in. Devices already signed in stay signed in."
-                  : "Every device signed in as this student signs out on its next step. Cards and pictures keep working."}
+              : pending?.kind === "reset"
+                ? "New pictures get chosen at the next sign-in. Devices already signed in stay signed in."
+                : "Every device signed in as this student signs out on its next step. Cards and pictures keep working."}
           </p>
           <div className={styles.dialogActions}>
             <Button
@@ -398,11 +499,9 @@ export function RosterScreen() {
             >
               {pending?.kind === "links"
                 ? "Download new links"
-                : pending?.kind === "rotate"
-                  ? "Make a new code"
-                  : pending?.kind === "reset"
-                    ? "Reset pictures"
-                    : "Sign out everywhere"}
+                : pending?.kind === "reset"
+                  ? "Reset pictures"
+                  : "Sign out everywhere"}
             </Button>
           </div>
         </div>

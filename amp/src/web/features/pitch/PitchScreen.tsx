@@ -26,6 +26,8 @@ import { pitchCarry, pitchTarget } from "./targets";
 import { usePitchAttention } from "./usePitchAttention";
 import { pitchVideo } from "./video";
 import styles from "./Pitch.module.css";
+import { FREE_ONLINE_PROBLEMS } from "../../../learning/free-allowance";
+import { TRIAL_WORKBOOKS_MAX } from "../../../learning/trial-workbooks";
 
 /** Data the pitch renders with, loaded before it mounts so it paints once,
  * complete. */
@@ -157,8 +159,8 @@ export function PitchScreen() {
             <div className={styles.free}>
               {tryFree}
               <p className={styles.note}>
-                Free assessment, adaptive practice and printable workbooks.
-                No&nbsp;credit&nbsp;card.
+                {FREE_ONLINE_PROBLEMS} free problems and {TRIAL_WORKBOOKS_MAX}{" "}
+                workbooks. No&nbsp;credit&nbsp;card.
               </p>
             </div>
           </div>

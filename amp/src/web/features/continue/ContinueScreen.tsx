@@ -32,6 +32,7 @@ import {
   readContinuation,
   rememberContinuation,
 } from "./memory";
+import { Included, RecapLine } from "./Recap";
 import styles from "./Continue.module.css";
 
 /** `/continue/$learnerId`: "Continue with AMP" for one learner. The plan,
@@ -125,38 +126,47 @@ function Continue({ session }: { session: AuthSession }) {
     );
   if (learner.simulation)
     return (
-      <Page>
-        <header className={styles.head}>
-          <h1 className={styles.title}>Continue with AMP</h1>
-          <p className={styles.for}>For your own practice</p>
-        </header>
-        <p className={styles.covers}>
-          It covers practicing as {learner.name} and every level you try.
-        </p>
+      <Page
+        back={returnTo}
+        head={
+          <>
+            <h1 className={styles.title}>Continue with AMP</h1>
+            <p className={styles.for}>For your own practice</p>
+            <p className={styles.covers}>
+              It covers practicing as {learner.name} and every level you try.
+            </p>
+          </>
+        }
+        aside={<Included forChild={false} />}
+      >
         <OwnPracticeCheckout
           session={session}
           account={account}
           interval={interval}
           returnTo={returnTo}
         />
-        <Link
-          to={returnTo.split("?")[0] as never}
-          className={`${buttonClass("quiet")} ${styles.back}`}
-        >
-          Not now
-        </Link>
       </Page>
     );
   const adult = learner.adult === true;
   const consented = account.consent.status === "active";
   return (
-    <Page>
-      <header className={styles.head}>
-        <h1 className={styles.title}>Continue with AMP</h1>
-        <p className={styles.for}>
-          {adult ? "For your own practice" : `For ${learner.name}`}
-        </p>
-      </header>
+    <Page
+      back={returnTo}
+      head={
+        <>
+          <h1 className={styles.title}>Continue with AMP</h1>
+          <p className={styles.for}>
+            {adult ? "For your own practice" : `For ${learner.name}`}
+          </p>
+        </>
+      }
+      aside={
+        <>
+          <RecapLine learnerId={learner.id} />
+          <Included forChild={!adult} />
+        </>
+      }
+    >
       {account.unassignedPurchase ? (
         // Paid and no learner holds it yet: it becomes this learner's, never
         // a second checkout.
@@ -188,12 +198,6 @@ function Continue({ session }: { session: AuthSession }) {
           }
         />
       )}
-      <Link
-        to={returnTo.split("?")[0] as never}
-        className={`${buttonClass("quiet")} ${styles.back}`}
-      >
-        Not now
-      </Link>
     </Page>
   );
 }
@@ -289,18 +293,59 @@ function Return({ href }: { href: string }) {
   return <Page busy />;
 }
 
+/**
+ * Continue's page: the way back, the heading, then what they did and get
+ * beside the plan (one column on phones, the plan last).
+ */
 function Page({
   children,
   busy = false,
+  back,
+  head,
+  aside,
 }: {
   children?: React.ReactNode;
   busy?: boolean;
+  /** Where "Back" returns: the screen Continue was opened from. */
+  back?: string;
+  head?: React.ReactNode;
+  aside?: React.ReactNode;
 }) {
+  if (busy || !head)
+    return (
+      <main className={styles.page} aria-busy={busy || undefined}>
+        {busy ? <Loading /> : children}
+      </main>
+    );
   return (
-    <main className={styles.page} aria-busy={busy || undefined}>
-      {busy ? <Loading /> : children}
+    <main className={styles.page}>
+      {back && (
+        <Link
+          to={back.split("?")[0] as never}
+          className={`${buttonClass("quiet", "", "start")} ${styles.backLink}`}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m15 6-6 6 6 6" />
+          </svg>
+          {backLabel(back)}
+        </Link>
+      )}
+      <div className={styles.head}>{head}</div>
+      <div className={styles.columns}>
+        {aside && <div className={styles.aside}>{aside}</div>}
+        <div className={styles.checkout}>{children}</div>
+      </div>
     </main>
   );
+}
+/** "Back to practice" names where it goes when it can. */
+function backLabel(href: string) {
+  const path = href.split("?")[0]!;
+  if (path === "/practice") return "Back to practice";
+  if (path === "/me") return "Back to your progress";
+  if (path.startsWith("/family/access")) return "Back to billing";
+  if (/\/classes\/[^/]+\/today$/.test(path)) return "Back to Today";
+  return "Back";
 }
 
 /** A plan already paid for and not yet anyone's: it becomes this learner's. */

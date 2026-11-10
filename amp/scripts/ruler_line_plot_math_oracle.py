@@ -279,6 +279,8 @@ def solve_plot(public):
         require(len(table) == 1 and table[0]["type"] == "lineTable", "One table")
         rows = table[0]["rows"]
         require(rows[0][1] == f"Length ({unit})", "Length column")
+        # Row labels are a color ("Blue") under a short header ("Chain"), or the
+        # older "blue paper clip chain" wording. Either way the length is column 2.
         values = [int(row[1]) for row in rows[1:]]
         require(len({row[0] for row in rows[1:]}) == len(rows) - 1, "Distinct objects")
     require(len(values) == n and 5 <= n <= 9, "The stated count matches the list")

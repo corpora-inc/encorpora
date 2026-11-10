@@ -122,7 +122,7 @@ async function signUp(page: Page, email: string, name: string) {
   const fallback = page.getByRole("button", {
     name: "Use a password instead",
   });
-  const password = page.getByLabel("AMP password");
+  const password = page.getByLabel("Password", { exact: true });
   await Promise.race([
     fallback.waitFor({ timeout: 20_000 }),
     password.waitFor({ timeout: 20_000 }),
@@ -259,7 +259,10 @@ async function journey(
   const moon = await repository.create(account, undefined, 2018);
   await page.goto(`${origin}/`);
   await page.waitForURL(CLASS_TODAY);
-  await heading(page, /^Good (morning|afternoon|evening)/);
+  await heading(
+    page,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   await page
     .getByRole("button", { name: `Let ${fox.name} practice here` })
     .waitFor();
@@ -500,7 +503,10 @@ async function journey(
     classId: klass.id,
   });
   await page.goto(`${origin}/school/${school.id}/classes/${klass.id}/today`);
-  await heading(page, /^Good (morning|afternoon|evening)/);
+  await heading(
+    page,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   await measured(page, `${label} teacher`);
   await shot(page, "teacher", width, theme);
   // A class has no checkout: its next step is a conversation.
@@ -654,7 +660,9 @@ async function adultJourney(
     .first()
     .click();
   await page.waitForURL(`**/learners/${learnerId}/workbooks`);
-  await page.getByLabel("Enter results with the workbook code").waitFor();
+  await page
+    .getByRole("button", { name: "Enter results with a code" })
+    .waitFor();
   await settle(page, 300);
   await workbooksUsed(page, `${label} workbooks`, "Continue with AMP");
   await measured(page, `${label} workbooks`);

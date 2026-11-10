@@ -51,7 +51,7 @@ export function AccountSecurity() {
   const [summary, setSummary] = useState<Summary | null>(null);
   const [now, setNow] = useState(performance.now());
   const [freshUntil, setFreshUntil] = useState(0);
-  const [panel, setPanel] = useState("passkeys");
+  const [panel, setPanel] = useState("");
   const [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
     [notice, setNotice] = useState("");
@@ -170,11 +170,11 @@ export function AccountSecurity() {
       />
     </label>
   );
+  // Changes need a sign-in in the last few minutes; past that, the one action
+  // that works is signing in again.
+  const stale = !!summary && now >= freshUntil;
   return (
-    <section className="account-security" aria-labelledby="security-title">
-      <h2 id="security-title" tabIndex={-1}>
-        Sign-in &amp; security
-      </h2>
+    <section className="account-security" aria-label="How you sign in">
       {!summary && feedback}
       {!summary && !error ? (
         // The settings' own shape, held while they load, so nothing below
@@ -195,17 +195,19 @@ export function AccountSecurity() {
       ) : (
         <>
           <p className="security-email">{summary.email}</p>
-          <p className="security-fresh">
-            {now >= freshUntil
-              ? "Sign in again to change these settings."
-              : "Changes require a sign-in within the last five minutes."}
-          </p>
-          <a
-            className={buttonClass("secondary")}
-            href="/sign-in?return=security"
-          >
-            Sign in again
-          </a>
+          {stale && (
+            <div className="security-stale">
+              <p className="security-fresh">
+                To change how you sign in, confirm it’s you first.
+              </p>
+              <a
+                className={buttonClass("secondary")}
+                href="/sign-in?return=security"
+              >
+                Sign in again
+              </a>
+            </div>
+          )}
           <div className="security-panels">
             {(
               [
@@ -229,21 +231,32 @@ export function AccountSecurity() {
             ).map(([id, title, status]) => (
               <section className="security-panel" key={id}>
                 <h3>
-                  <button
-                    className="security-panel-toggle"
-                    disabled={busy}
-                    aria-expanded={panel === id}
-                    aria-controls={`security-${id}`}
-                    onClick={() => switchPanel(panel === id ? "" : id)}
-                  >
-                    <span>
-                      {title}
-                      <small>{status}</small>
+                  {stale ? (
+                    // Nothing here can change until they sign in again, so
+                    // each method is its status, not a control.
+                    <span className="security-panel-toggle security-panel-static">
+                      <span>
+                        {title}
+                        <small>{status}</small>
+                      </span>
                     </span>
-                    <span aria-hidden="true">{panel === id ? "−" : "+"}</span>
-                  </button>
+                  ) : (
+                    <button
+                      className="security-panel-toggle"
+                      disabled={busy}
+                      aria-expanded={panel === id}
+                      aria-controls={`security-${id}`}
+                      onClick={() => switchPanel(panel === id ? "" : id)}
+                    >
+                      <span>
+                        {title}
+                        <small>{status}</small>
+                      </span>
+                      <span aria-hidden="true">{panel === id ? "−" : "+"}</span>
+                    </button>
+                  )}
                 </h3>
-                {panel === id && (
+                {!stale && panel === id && (
                   <div className="security-panel-body" id={`security-${id}`}>
                     {id === "passkeys" && (
                       <>

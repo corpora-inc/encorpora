@@ -78,8 +78,16 @@ export function AppShell({ children }: { children: ReactNode }) {
   if (settled !== null) last.current = settled;
   const shown = settled ?? last.current;
   const pathname = shown ?? "";
+  const fromClass = useRouterState({
+    select: (state) => {
+      const value = (state.location.search as Record<string, unknown>).class;
+      return typeof value === "string" ? value : undefined;
+    },
+  });
   const frame =
-    !nativeRuntime && session.data && shown ? shellFrame(pathname) : null;
+    !nativeRuntime && session.data && shown
+      ? shellFrame(pathname, fromClass)
+      : null;
   const setDrawerOpen = useShellSlots((state) => state.setDrawerOpen);
   // A screen change closes the drawer (a link inside it, or Back).
   useEffect(() => setDrawerOpen(false), [pathname, setDrawerOpen]);
@@ -175,12 +183,21 @@ function ShellBar({
       if (opening) setDrawerOpen(true);
     }
   }, [pendingFrame, opening, placesLoading, setDrawerOpen]);
+  const progress =
+    frame.kind === "progress"
+      ? progressTabs(context, me?.adultPractice?.learner?.id)
+      : [];
   const tabs =
     frame.kind === "progress" ? (
       <Tabs
         label="Progress"
-        items={progressTabs(context)}
-        active={frame.active}
+        items={progress}
+        // A child's workbooks keep the Overview marked: theirs has no tab.
+        active={
+          progress.some((tab) => tab.id === frame.active)
+            ? frame.active
+            : "overview"
+        }
       />
     ) : frame.kind === "account" ? (
       <Tabs label="Account" items={accountTabs} active={frame.active} />
@@ -246,7 +263,8 @@ function ShellBar({
             <span className={bar.actionLabel}>Start class</span>
           </Link>
         )}
-        {frame.kind === "progress" && (
+        {(frame.kind === "progress" ||
+          (frame.kind === "plain" && frame.practice)) && (
           <ProgressAction context={context} me={me} />
         )}
         {/* Practicing as a profile: the way back, always one tap away. */}
@@ -266,8 +284,10 @@ function ProgressAction({
   me: SignedInMe | null;
 }) {
   const learnerId = useLearnerStore((state) => state.learnerId);
+  // A day-0 hero on the screen is its one Practice; the bar's holds its place.
+  const hero = useShellSlots((state) => state.heroAction);
   const target = practiceTarget(context, me, learnerId);
-  if (target === undefined)
+  if (target === undefined || (hero && target))
     return (
       <span
         className={bar.actionLink}
@@ -326,6 +346,10 @@ function practiceTarget(
   const learner =
     learners.find((entry) => entry.id === learnerId) ?? learners[0];
   if (learner && learner.learningAllowed !== false)
+    return { path: "/practice", label: "Practice" };
+  // An adult with no child, before this device has chosen a learner (a
+  // shared lesson link): their own practice, never "Get started" again.
+  if (!learner && me.adultPractice?.learner)
     return { path: "/practice", label: "Practice" };
   if (me.account.kind === "student") return null;
   return learner ? null : { path: "/start", label: "Get started" };

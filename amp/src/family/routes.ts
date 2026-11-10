@@ -4,8 +4,9 @@ import {
   startAdultPractice,
   startPracticeSchema,
 } from "../account/adult.js";
+import { optionalChildName } from "../learning/nickname.js";
 import { accountSummary } from "../account/repository.js";
-import { startPlace } from "../account/starter.js";
+import { addClassStudent, startPlace } from "../account/starter.js";
 import { isSchoolAccount, studentBearer } from "../schools/principal.js";
 import {
   createProfile,
@@ -49,6 +50,12 @@ import {
   secondParentOwner,
 } from "./second-parent.js";
 import { SchoolError } from "../schools/contracts.js";
+import { fileName, paperQuery, renderReportPdf } from "../reports/print.js";
+import {
+  adultStartNames,
+  progressReportHtml,
+} from "../reports/progress-report.js";
+import type { WorkbookRenderer } from "../workbook/pdf.js";
 export interface FamilyRouteOptions {
   pool: Pool;
   authenticate: Authenticator;
@@ -59,6 +66,8 @@ export interface FamilyRouteOptions {
    * the key that derives them, where they point and the account mail path.
    * Absent: no approval links. */
   approvals?: ApprovalKeys & { mail?: ApprovalMail };
+  /** Prints the adult's progress report. Absent: that PDF answers 503. */
+  renderer?: WorkbookRenderer | null;
 }
 export async function registerFamilyRoutes(
   app: FastifyInstance,
@@ -119,6 +128,44 @@ export async function registerFamilyRoutes(
       if (!practice) throw new FamilyError(404, "adult_practice_not_started");
       return practice;
     });
+    // The adult's own record as a printed progress report, rendered for this
+    // request and never stored.
+    scope.get("/api/v1/me/practice/report.pdf", async (request, reply) => {
+      const account = await options.authenticate(request);
+      const { format } = paperQuery.parse(request.query);
+      const practice = await readOwnPractice(repository, account);
+      if (!practice) throw new FamilyError(404, "adult_practice_not_started");
+      const today = practice.time.range.to;
+      // An account with no name practices as "Me" (adultLearnerName).
+      const named = practice.learner.name !== "Me";
+      const { html, footer } = progressReportHtml({
+        paper: format,
+        own: true,
+        name: named ? practice.learner.name : null,
+        first: practice.learner.first,
+        subtitle: practice.learner.start
+          ? `Own practice, began at ${adultStartNames[practice.learner.start]}`
+          : "Own practice",
+        facts: [],
+        today,
+        record: practice.record,
+        time: practice.time,
+      });
+      const pdf = await renderReportPdf(
+        options.renderer,
+        { html, format, footer },
+        request.log,
+        "Progress report",
+      );
+      if (!pdf) throw new FamilyError(503, "report_unavailable");
+      return reply
+        .type("application/pdf")
+        .header(
+          "Content-Disposition",
+          `attachment; filename="${fileName("amp-progress", named ? practice.learner.name : "", today)}.pdf"`,
+        )
+        .send(pdf);
+    });
     scope.post("/api/v1/me/practice", async (request, reply) => {
       const account = await options.authenticate(request);
       const input = startPracticeSchema.parse(request.body);
@@ -172,6 +219,21 @@ export async function registerFamilyRoutes(
       async (request) => {
         const account = await options.authenticate(request);
         return startPlace(repository, account, request.body);
+      },
+    );
+    // A tutor adds a student from another family to their class: a nickname
+    // or initials and a birth year. Their own parent names them by a link.
+    scope.post(
+      "/api/v1/family/class/students",
+      {
+        bodyLimit: 4096,
+        config: { rateLimit: { max: 120, timeWindow: "1 hour" } },
+      },
+      async (request, reply) => {
+        const account = await options.authenticate(request);
+        return reply
+          .code(201)
+          .send(await addClassStudent(repository, account, request.body));
       },
     );
     scope.post(
@@ -369,15 +431,9 @@ export async function registerFamilyRoutes(
       const account = await options.authenticate(request);
       const { learnerId } = learnerParams.parse(request.params);
       await refuseSecondParentFor(options.pool, account, learnerId);
+      // A parent's name for their own child; blank is "Child 2".
       const { name } = z
-        .strictObject({
-          name: z
-            .string()
-            .trim()
-            .min(1)
-            .max(80)
-            .refine((value) => !/[\u0000-\u001f\u007f]/.test(value)),
-        })
+        .strictObject({ name: optionalChildName })
         .parse(request.body);
       await repository.rename(account, learnerId, name);
       return { renamed: true };

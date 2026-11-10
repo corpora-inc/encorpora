@@ -9,10 +9,14 @@ export function ReferenceLesson({
   lesson,
   print = false,
   representation,
+  partner = true,
 }: {
   lesson: Lesson;
   print?: boolean;
   representation?: ReactNode;
+  /** The note for a parent or learning partner; off for an adult learning
+   * on their own. */
+  partner?: boolean;
 }) {
   const Heading = print ? "h2" : "h3";
   const Subheading = print ? "h3" : "h4";
@@ -104,12 +108,14 @@ export function ReferenceLesson({
           ))}
         </ul>
       </section>
-      <aside className="lesson-partner">
-        <Heading>For a parent or learning partner</Heading>
-        <p>
-          <PrintMathText text={lesson.parentGuide} />
-        </p>
-      </aside>
+      {partner && (
+        <aside className="lesson-partner">
+          <Heading>For a parent or learning partner</Heading>
+          <p>
+            <PrintMathText text={lesson.parentGuide} />
+          </p>
+        </aside>
+      )}
       {formal.length > 0 && (
         <section data-lesson-stage="formal">
           <Heading>Principle and definitions</Heading>

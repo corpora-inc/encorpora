@@ -54,9 +54,12 @@
     background-color var(--motion-fast, 120ms) ease;
 }
 /* Every tile looks the same at rest and under the pointer, a button or a
-   link: only the border answers (the global button hover darkens). */
-.choice:hover {
+   link: only the border answers. `:not(:disabled)` matches the global
+   `button:hover:not(:disabled)` darkening, so this rule outranks it on the
+   one tile that is a button ("I'm a teacher"). */
+.choice:hover:not(:disabled) {
   border-color: var(--color-border-strong);
+  background: var(--color-surface-raised);
   filter: none;
 }
 .choice:focus-visible {
@@ -122,6 +125,11 @@
   font-weight: 700;
   line-height: 1.25;
 }
+/* Focus lands on the question after a choice, for screen readers and the
+   next Tab; it isn't a control, so it draws no ring. */
+.question:focus {
+  outline: none;
+}
 .note,
 .lede {
   margin: 0;
@@ -132,32 +140,6 @@
 }
 .lede {
   color: var(--color-on-surface);
-}
-.years {
-  display: grid;
-  gap: var(--space-2);
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.year {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-  align-items: center;
-  gap: var(--space-3);
-}
-.yearName {
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-@media (max-width: 359px) {
-  .year {
-    grid-template-columns: 1fr;
-    gap: var(--space-1);
-  }
 }
 .facts {
   display: grid;
@@ -215,6 +197,11 @@
 }
 .goButton {
   width: 100%;
+  transition: opacity var(--motion-fast) var(--ease-standard);
+}
+.goButton[data-waiting] {
+  opacity: 0.38;
+  filter: none;
 }
 @media (min-width: 560px) {
   .goButton {
@@ -238,52 +225,12 @@
 }
 /* "What year were you born?": the years in one designed group, newest first,
    with "Adult" across the last row. Four to a row on a phone, eight wider. */
-.yearGrid {
-  box-sizing: border-box;
+/* The years are the shared tile grid (ui/TileChoice.module.css). */
+/* "Where do you want to begin?", under the years once an adult year is
+   chosen. */
+.where {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--space-1);
+  gap: var(--space-3);
   width: 100%;
-  padding: var(--space-1);
-  border: 1px solid var(--color-border);
-  border-radius: calc(var(--radius-control) + var(--space-1));
-  background: var(--color-surface-sunken);
-}
-@media (min-width: 560px) {
-  .yearGrid {
-    grid-template-columns: repeat(8, minmax(0, 1fr));
-  }
-}
-.yearCell {
-  min-width: 0;
-  min-height: var(--target-size, 44px);
-  padding: var(--space-2) var(--space-1);
-  border: 2px solid transparent;
-  border-radius: var(--radius-control);
-  background: transparent;
-  color: var(--color-on-surface);
-  font: inherit;
-  font-size: var(--text-body);
-  font-weight: 650;
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-  cursor: pointer;
-}
-.yearCell:hover:not(:disabled) {
-  filter: none;
-  background: var(--color-surface-raised);
-}
-.yearCell[aria-checked="true"] {
-  border-color: var(--color-primary);
-  background: var(--color-surface-raised);
-}
-.yearCell:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: 2px;
-}
-.yearCell:disabled {
-  cursor: default;
-}
-.yearCell[data-adult] {
-  grid-column: 1 / -1;
+  margin-top: var(--space-4);
 }

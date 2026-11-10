@@ -3,11 +3,11 @@
   align-items: center;
   width: 100%;
   max-width: 320px;
-  height: 44px;
-  border: 1px solid var(--color-answer-border);
-  border-radius: var(--radius-control);
-  background: var(--color-answer);
-  color: var(--color-on-answer);
+  height: var(--field-height);
+  border: 1px solid var(--field-border);
+  border-radius: var(--field-radius);
+  background: var(--field-surface);
+  color: var(--field-on);
 }
 .field:focus-within {
   outline: 3px solid var(--color-focus-ring);

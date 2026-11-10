@@ -63,19 +63,30 @@ test("a mistake does not trap the learner in immediate same-family retry", () =>
   assert.notEqual(choices[0].template.id, "integer-power");
   assert.ok(choices[0].strand !== "algebra");
 });
-test("early success permits bounded probes while retaining foundations and no ancestor mastery", () => {
+test("early success probes on alternate problems, foundation checks return once placed, and nothing grants ancestor mastery", () => {
   const attempts = [
     answer("integer-power", 0),
     answer("ratio-missing", 1),
     answer("line-slope", 2),
   ];
-  const choices = plan(attempts, 5);
-  assert.ok(new Set(choices.map((choice) => choice.strand)).size >= 3);
-  assert.ok(choices.some((choice) => choice.selection?.purpose === "probe"));
+  const climbing = plan(attempts, 5);
+  assert.ok(new Set(climbing.map((choice) => choice.strand)).size >= 3);
+  assert.ok(climbing.some((choice) => choice.selection?.purpose === "probe"));
   assert.ok(
-    choices.some((choice) => choice.selection?.purpose === "foundation"),
+    climbing.every((choice) => choice.selection?.purpose !== "foundation"),
   );
-  assert.ok(choices.every((choice) => choice.template.gradeBand !== "9–12"));
+  // Two misses at the top place the learner: foundation checks return.
+  const placed = plan(
+    [
+      ...attempts,
+      answer("linear-equation", 3, false),
+      answer("percent-of", 4, false),
+    ],
+    5,
+  );
+  assert.ok(
+    placed.some((choice) => choice.selection?.purpose === "foundation"),
+  );
   assert.equal(summarize(attempts, ["powers-of-ten"])[0].attempts, 0);
 });
 test("spacing credits separated retrievals, not a burst of same-minute answers", () => {

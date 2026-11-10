@@ -356,7 +356,7 @@ try {
         .getByLabel("Email", { exact: true })
         .fill("parent@example.com");
       await password.click();
-      await page.getByLabel(/^AMP password/).waitFor();
+      await page.getByLabel(/^Password/).waitFor();
       assert.equal(
         await page.getByLabel("Email", { exact: true }).inputValue(),
         "parent@example.com",
@@ -531,7 +531,7 @@ try {
   // Both a stalled redirect and a restored page must release the controls.
   await page.getByRole("button", { name: "Use a password instead" }).click();
   await page.getByLabel("Email", { exact: true }).fill("pending@example.com");
-  await page.getByLabel(/^AMP password/).fill("synthetic-password-123");
+  await page.getByLabel(/^Password/).fill("synthetic-password-123");
   let conflictingSubmissions = 0;
   await page.route("**/api/auth/sign-up/email", (route) => {
     conflictingSubmissions++;
@@ -671,7 +671,7 @@ try {
     for (const size of sizes.filter((s) => s.width !== 384)) {
       await page.setViewportSize(size);
       await page
-        .getByLabel("AMP password", { exact: true })
+        .getByLabel("Password", { exact: true })
         .fill("not-an-AMP-password");
       const positions = await measureStack(page, "before failed password");
       await page.getByRole("button", { name: "Sign in", exact: true }).click();
@@ -751,7 +751,9 @@ try {
   async function familyHome(tab: Page) {
     await tab.waitForURL(/\/school\/[^/]+\/classes\/[^/]+\/today$/);
     await tab
-      .getByRole("heading", { name: /^Good (morning|afternoon|evening)/ })
+      .getByRole("heading", {
+        name: /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+      })
       .waitFor();
     await tab
       .getByRole("button", {

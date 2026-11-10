@@ -176,3 +176,22 @@
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+
+/* A disclosure's trigger is a field like any other (tokens.css --field-*). */
+.disclosure .trigger {
+  min-height: var(--field-height);
+  font-weight: 400;
+  padding: 0 var(--space-3) 0 var(--field-padding-inline);
+  border: 1px solid var(--field-border);
+  border-radius: var(--field-radius);
+  background: var(--field-surface);
+  color: var(--field-on);
+}
+.disclosure .trigger:hover {
+  background: var(--field-surface);
+  color: var(--field-on);
+  border-color: var(--color-on-surface);
+}
+.disclosure .trigger * {
+  font-weight: inherit;
+}

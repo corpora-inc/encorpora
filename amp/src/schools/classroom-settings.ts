@@ -116,8 +116,12 @@ export async function experienceView(
     },
     canEdit: edit,
     canLock: edit && target.kind === "org",
-    standingsOptions: standingsScopes.filter(
-      (scope) => scope !== "district" || hasDistrict,
+    // A family's or tutor's class has only its own board: there is no
+    // school or district around it.
+    standingsOptions: standingsScopes.filter((scope) =>
+      org?.kind === "family"
+        ? scope === "off" || scope === "class"
+        : scope !== "district" || hasDistrict,
     ),
     settings: {
       levels: setting("levels"),

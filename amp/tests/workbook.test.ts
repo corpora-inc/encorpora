@@ -707,21 +707,29 @@ test("choices change the workbook deterministically and are stored in the spec",
   // A few areas still fill the time: practice shares out among them.
   const total = workbookMinutes(mixed);
   assert.ok(total <= 45 && total >= 35, `${total} minutes`);
-  // Easier review: more review, practice lower than a stretch.
+  // Easier review, against the same workbook number: never less review
+  // (more when the time allows; long problems can hit the 45-minute cap) and
+  // never harder practice. A stretch practices higher.
+  const same = compose("third-grade", { number: 4 });
   const easier = compose("third-grade", {
     number: 4,
     choices: { lean: "easier" },
   });
+  assert.deepEqual(
+    compose("third-grade", { number: 4, choices: { lean: "easier" } }),
+    easier,
+  );
   const stretch = compose("third-grade", {
     number: 4,
     choices: { lean: "stretch" },
   });
   const count = (spec: WorkbookSpec, kind: string) =>
     spec.sections.find((s) => s.kind === kind)?.items.length ?? 0;
-  assert.ok(count(easier, "review") > count(plain, "review"));
+  assert.ok(count(easier, "review") >= count(same, "review"));
   const meanGrade = (spec: WorkbookSpec) => {
     const list = spec.sections.find((s) => s.kind === "practice")!.items;
     return list.reduce((sum, i) => sum + i.grade, 0) / list.length;
   };
+  assert.ok(meanGrade(easier) <= meanGrade(same));
   assert.ok(meanGrade(easier) < meanGrade(stretch));
 });

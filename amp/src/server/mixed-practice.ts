@@ -188,6 +188,12 @@ export function planMixedPractice(options: {
     );
   }
   let purpose: "working" | "foundation" | "probe" = "working";
+  // An area with no answers of its own starts from the learner's foundation
+  // (`Frontier.confirmation`), the start before anything is shown.
+  const foundationOf = (strand: string) =>
+    frontier.confirmation?.[strand]?.foundationLevel ??
+    frontier.foundationLevel ??
+    frontier.expected;
   const targetOf = (strand: string) => {
     const estimate = strandEstimate(frontier, strand);
     let level =
@@ -200,11 +206,23 @@ export function planMixedPractice(options: {
         level,
         confirmed?.level ?? frontier.unconfirmedCeiling ?? frontier.expected,
       );
+      // A probe reaches past the ceiling toward the estimate. While still
+      // climbing it asks where the learner may be, at the upper edge of the
+      // likely range.
       level =
         purpose === "probe"
-          ? Math.min(level, working + policy.challenge.probeRise)
+          ? Math.min(
+              frontier.climbing
+                ? Math.max(
+                    level,
+                    estimate.level +
+                      policy.challenge.probeUncertainty * estimate.sd,
+                  )
+                : level,
+              working + policy.challenge.probeRise,
+            )
           : purpose === "foundation" && !confirmed?.foundationConfirmed
-            ? Math.min(working, confirmed?.foundationLevel ?? frontier.expected)
+            ? Math.min(working, foundationOf(strand))
             : working;
     }
     if (!policy.target.clampToAvailable) return level;
@@ -339,11 +357,15 @@ export function planMixedPractice(options: {
       lastSkip >= 0 && history.length - lastSkip <= variety.skipEaseProblems;
     const ease = recoveringFromSkip ? variety.skipEase : 0;
     const position = openingPosition + slot;
+    // While still climbing, every other problem probes and foundation checks
+    // wait: a wrong start costs a few problems. Once placed, a foundation
+    // check and a probe each take one problem in four.
+    const { foundationEvery, probeEvery, climbProbeEvery } = policy.challenge;
+    const probeCadence = frontier.climbing ? climbProbeEvery : probeEvery;
     purpose =
-      position % policy.challenge.foundationEvery === 0
+      !frontier.climbing && position % foundationEvery === 0
         ? "foundation"
-        : position % policy.challenge.probeEvery ===
-              Math.floor(policy.challenge.probeEvery / 2) &&
+        : position % probeCadence === Math.floor(probeCadence / 2) &&
             latest?.correct &&
             !latest.assisted &&
             !recoveringFromSkip
@@ -538,9 +560,7 @@ export function planMixedPractice(options: {
         (entry) =>
           !frontier.confirmation![entry.strand]?.foundationConfirmed &&
           gradeOfTemplate.get(entry.template.id)! <=
-            (frontier.confirmation![entry.strand]?.foundationLevel ??
-              frontier.expected) +
-              policy.challenge.workingReach,
+            foundationOf(entry.strand) + policy.challenge.workingReach,
       );
       // Reserve the purpose before support ranking; a due advanced review in
       // a confirmed strand cannot starve unconfirmed foundations elsewhere.

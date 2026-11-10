@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import {
-  Link,
   useNavigate,
   useParams,
   useSearch,
@@ -9,7 +8,6 @@ import { useState } from "react";
 import type { StaffResource } from "../../../schools/setup-contracts";
 import { AppError } from "../../lib/AppError";
 import { useLoggedError } from "../../feedback";
-import { Avatar } from "../../ui/Avatar";
 import { Badge } from "../../ui/Badge";
 import { Button, buttonClass } from "../../ui/Button";
 import { Checkbox } from "../../ui/Checkbox";
@@ -28,7 +26,6 @@ import {
 } from "./api";
 import { OrgFrame } from "./OrgFrame";
 import { CopyButton, FormNote, PageHead, roleNames } from "./parts";
-import { orgPath } from "./paths";
 import styles from "./School.module.css";
 import { compareClassNames } from "./sort";
 
@@ -241,34 +238,24 @@ function StaffRow({
   const shown = onlyAddress ? person.email! : person.name;
   return (
     <li className={styles.staffRow}>
-      <div className={styles.staffWho}>
-        <Avatar name={shown} />
-        <div className={styles.staffText}>
-          <strong>
-            {onlyAddress ? <Address email={shown} /> : shown}
-            {person.self ? " (you)" : ""}
-          </strong>
-          {!onlyAddress && (
-            <span>
-              {person.email ? (
-                <Address email={person.email} />
-              ) : (
-                "No email on file"
-              )}
-            </span>
-          )}
-          {teaches && (
-            <span className={styles.staffClasses}>
-              {classList || "No classes yet"}
-            </span>
-          )}
-        </div>
-        <div className={styles.staffBadges}>
-          {person.roles.map((role) => (
-            <Badge key={role}>{roleNames[role]}</Badge>
-          ))}
-          {person.status === "invited" && <Badge tone="warning">Invited</Badge>}
-        </div>
+      <div className={styles.staffText}>
+        <strong>
+          {person.self ? "You" : onlyAddress ? <Address email={shown} /> : shown}
+        </strong>
+        {!onlyAddress && person.email && (
+          <span>
+            <Address email={person.email} />
+          </span>
+        )}
+      </div>
+      <span className={styles.staffClasses}>
+        {teaches ? classList || "No classes yet" : ""}
+      </span>
+      <div className={styles.staffBadges}>
+        {person.roles.map((role) => (
+          <Badge key={role}>{roleNames[role]}</Badge>
+        ))}
+        {person.status === "invited" && <Badge tone="warning">Invited</Badge>}
       </div>
       {manages && (
         <div className={styles.staffActions}>
@@ -424,17 +411,8 @@ export function StaffScreen() {
       <PageHead
         title="Staff"
         detail={`${rows.length} ${rows.length === 1 ? "person" : "people"}`}
-        action={
-          <Link
-            to="/$"
-            params={{ _splat: orgPath(orgId, "sign-in-help") }}
-            className={buttonClass("secondary")}
-          >
-            Sign-in help for IT
-          </Link>
-        }
       />
-      <div className={styles.staffLayout}>
+      <div className={manages ? styles.staffLayout : undefined}>
         {manages && <InviteForm orgId={orgId} />}
         <section>
           {staff.isError ? (

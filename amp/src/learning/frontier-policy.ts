@@ -58,40 +58,42 @@ export const frontierPolicySchema = z
     confirmation: z
       .object({
         enabled: z.boolean(),
-        sameSessionRise: z.number().finite().min(0).max(4),
-        provisionalSuccessesPerGrade: z
-          .number()
-          .int()
-          .min(2)
-          .max(30)
-          .default(6),
-        independentSuccesses: z.number().int().min(2).max(20),
-        evidenceWindow: z.number().int().min(4).max(100).default(12),
-        minimumSuccessRate: z.number().min(0.5).max(1).default(0.75),
-        gradeTolerance: z.number().min(0).max(2).default(0.5),
-        foundationReach: z.number().min(0).max(2).default(1),
-        singleFamilySuccessMultiplier: z
-          .number()
-          .int()
-          .min(2)
-          .max(10)
-          .default(2),
+        /** How far working practice may reach: above the start, at least;
+         * above the highest grade shown once placed; and above it while still
+         * climbing (`Frontier.climbing`). */
+        startRise: z.number().finite().min(0).max(4),
+        placedRise: z.number().finite().min(0).max(4),
+        climbRise: z.number().finite().min(0).max(4),
+        /** Successes that show a grade, in `distinctFamilies` families. */
+        independentSuccesses: z.number().int().min(1).max(20),
+        evidenceWindow: z.number().int().min(4).max(100),
+        minimumSuccessRate: z.number().min(0.5).max(1),
+        gradeTolerance: z.number().min(0).max(2),
+        foundationReach: z.number().min(0).max(2),
+        /** How far below the highest grade shown a foundation check sits
+         * once the learner has climbed past the start. */
+        foundationDepth: z.number().min(0).max(6),
+        singleFamilySuccessMultiplier: z.number().int().min(1).max(10),
         distinctFamilies: z.number().int().min(1).max(10),
-        separationHours: z.number().finite().min(1).max(168),
+        /** Recent misses at or above the highest grade shown that end the
+         * climb (`Frontier.climbing`). */
+        placedAfterMisses: z.number().int().min(1).max(20),
       })
       .strict()
       .default({
         enabled: false,
+        startRise: 1,
+        placedRise: 0,
+        climbRise: 2,
+        independentSuccesses: 2,
         evidenceWindow: 12,
         minimumSuccessRate: 0.75,
         gradeTolerance: 0.5,
         foundationReach: 1,
-        sameSessionRise: 1,
-        provisionalSuccessesPerGrade: 6,
+        foundationDepth: 2,
         singleFamilySuccessMultiplier: 2,
-        independentSuccesses: 4,
         distinctFamilies: 2,
-        separationHours: 6,
+        placedAfterMisses: 2,
       }),
     overallUncertainty: z
       .object({
@@ -169,13 +171,23 @@ export const LEGACY_FRONTIER_POLICY = createFrontierPolicy({
  * A surprising miss does not make the next overall answer count extra. */
 export const DEFAULT_FRONTIER_POLICY = createFrontierPolicy({
   ...LEGACY_FRONTIER_POLICY,
-  version: "grade-frontier-v3-independent-confirmation",
+  version: "grade-frontier-v4-evidence-anchored-climb",
+  // The start is a guess: the ceiling stands on what the learner has shown
+  // anywhere, so a wrong start costs a few problems (founder, 2026-11-10).
   confirmation: {
     enabled: true,
-    sameSessionRise: 1,
-    independentSuccesses: 4,
+    startRise: 1,
+    placedRise: 0,
+    climbRise: 2,
+    independentSuccesses: 2,
+    evidenceWindow: 12,
+    minimumSuccessRate: 0.75,
+    gradeTolerance: 0.5,
+    foundationReach: 1,
+    foundationDepth: 2,
+    singleFamilySuccessMultiplier: 2,
     distinctFamilies: 2,
-    separationHours: 6,
+    placedAfterMisses: 2,
   },
   response: {
     typedGuess: 0.04,

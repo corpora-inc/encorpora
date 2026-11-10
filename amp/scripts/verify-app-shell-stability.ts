@@ -137,21 +137,21 @@ const screens: Screen[] = [
     state: "paid",
     group: "account",
     ready: (p) =>
-      p.getByRole("heading", { name: /Sign-in & security/ }).waitFor(),
+      p.getByRole("heading", { name: "Sign-in", exact: true }).waitFor(),
   },
   {
     id: "family",
     path: "/family/learners",
     state: "paid",
     group: "account",
-    ready: (p) => p.locator(".family-section").first().waitFor(),
+    ready: (p) => p.locator("[data-account-body]").first().waitFor(),
   },
   {
     id: "billing",
     path: "/family/access",
     state: "paid",
     group: "account",
-    ready: (p) => p.locator(".family-section").first().waitFor(),
+    ready: (p) => p.locator("[data-account-body]").first().waitFor(),
   },
   {
     id: "privacy",

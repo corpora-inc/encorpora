@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import type { ApprovalRowResource } from "../../../../family/approval-contracts";
 import { useLoggedError } from "../../../feedback";
@@ -8,8 +7,7 @@ import { Badge } from "../../../ui/Badge";
 import { Button } from "../../../ui/Button";
 import { Sheet } from "../../../ui/Sheet";
 import { TextField } from "../../../ui/TextField";
-import { Toast } from "../../../ui/Toast";
-import { approvals, approvalsOptions } from "../../family-approval/api";
+import { approvals } from "../../family-approval/api";
 import { CopyButton, FormNote } from "../parts";
 import { freeProblemsLeft } from "../../../lib/free-allowance";
 import { TalkToUsButton } from "../../continue/AllowancePause";
@@ -51,83 +49,44 @@ export const statusLine = (row: ApprovalRowResource) =>
                 : "Used the 100 free problems"
             : `Access through ${DAY.format(new Date(row.accessEndsAt!))}`;
 
-/** Children from other families in this family's class (docs/families.md,
- * step 5). Each one's own parent approves by a link, so the teacher sends the
- * link and sees where it stands; they never see the other family's account. */
-export function OtherFamilies({ session }: { session: AuthSession }) {
-  const list = useQuery(approvalsOptions(session));
-  const [adding, setAdding] = useState<
-    false | { personId?: string; name?: string }
-  >(false);
-  const [access, setAccess] = useState<ApprovalRowResource | null>(null);
-  const [error, setError] = useState("");
-  useLoggedError(error);
-  const rows = list.data ?? [];
+/** "Add access for Ana": their parent adds it on their own page, so the
+ * teacher sends them the link to it. */
+export function OtherFamilyAccessSheet({
+  row,
+  onClose,
+}: {
+  row: ApprovalRowResource;
+  onClose: () => void;
+}) {
   return (
-    <section className={styles.family} aria-labelledby="other-families">
-      <h2 id="other-families" className={styles.heading}>
-        From other families
-      </h2>
-      {rows.length > 0 && (
-        <ul className={styles.children}>
-          {rows.map((row) => (
-            <Row
-              key={row.id}
-              row={row}
-              session={session}
-              onAccess={() => setAccess(row)}
-              onSend={() =>
-                setAdding({ personId: row.personId, name: row.name })
-              }
-              onError={setError}
-            />
-          ))}
-        </ul>
-      )}
-      <Button
-        variant="secondary"
-        className={styles.add}
-        onClick={() => setAdding({})}
-      >
-        Add a child from another family
-      </Button>
-      {adding && (
-        <AddSheet
-          session={session}
-          rows={rows}
-          student={adding.personId ? adding : undefined}
-          onClose={() => setAdding(false)}
-        />
-      )}
-      {access && (
-        <Sheet
-          open
-          onOpenChange={(open) => {
-            if (!open) setAccess(null);
-          }}
-          title={`Add access for ${access.name}`}
-        >
-          <div className={school.sheetForm}>
-            <p className={styles.sheetText}>
-              {access.name}’s parent adds access on their page for {access.name}
-              , where they approved. Send them the link to it.
-            </p>
-            {access.parentPageUrl && (
-              <CopyButton
-                text={access.parentPageUrl}
-                label="Copy the link to their page"
-                copied="Link copied"
-              />
-            )}
-          </div>
-        </Sheet>
-      )}
-      <Toast message={error} onDismiss={() => setError("")} />
-    </section>
+    <Sheet
+      open
+      onOpenChange={(open) => {
+        if (!open) onClose();
+      }}
+      title={`Add access for ${row.name}`}
+    >
+      <div className={school.sheetForm}>
+        <p className={styles.sheetText}>
+          {row.name}’s parent adds access on their page for {row.name}, where
+          they approved. Send them the link to it.
+        </p>
+        {row.parentPageUrl && (
+          <CopyButton
+            text={row.parentPageUrl}
+            label="Copy the link to their page"
+            copied="Link copied"
+          />
+        )}
+      </div>
+    </Sheet>
   );
 }
 
-function Row({
+/** One child from another family in this family's class (docs/families.md,
+ * step 5). Each one's own parent approves by a link, so the teacher sends the
+ * link and sees where it stands; they never see the other family's account. */
+export function OtherFamilyRow({
   row,
   session,
   onAccess,
@@ -249,7 +208,9 @@ function Row({
   );
 }
 
-function AddSheet({
+/** "Add a child from another family": their parent's email, then the
+ * approval link. */
+export function OtherFamilyAddSheet({
   session,
   rows,
   student,

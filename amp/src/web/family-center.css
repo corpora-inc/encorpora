@@ -1,8 +1,16 @@
-.family-center {
-  width: min(100%, 900px);
-  margin: 0 auto;
-  padding: 24px 20px 48px;
-  color: var(--color-on-surface);
+/* Account's page geometry is features/account/AccountPages.module.css; the
+   legacy shell's 800 px flow column must not narrow it. */
+/* The legacy shell's one 832 px column, released for Account. */
+.shell.app-shell.family-shell:not(.flow):not(.reading-shell):not(.immersive) {
+  max-width: none;
+  padding-inline: 0;
+}
+.shell.app-shell.flow > section.family-center,
+.shell.family-shell > section.family-center {
+  width: 100%;
+  max-width: var(--width-content-wide);
+  height: auto;
+  margin-inline: auto;
 }
 .family-heading {
   display: flex;
@@ -43,7 +51,6 @@
   container-type: inline-size;
   display: grid;
   gap: var(--space-2);
-  margin-top: var(--space-5);
 }
 .family-second-parent h2 {
   margin: 0;
@@ -73,26 +80,26 @@
   align-items: center;
   margin-top: 16px;
 }
-.family-center button {
+:where(.family-center) button {
   min-height: 44px;
   padding: 10px 18px;
   white-space: normal;
 }
-.family-center button:focus-visible,
-.family-center input:focus-visible {
+:where(.family-center) button:focus-visible,
+:where(.family-center) input:focus-visible {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 3px;
 }
-.family-center button:disabled {
+:where(.family-center) button:disabled {
   opacity: 0.55;
   cursor: wait;
 }
-.family-center input {
+:where(.family-center) input {
   width: 100%;
   font-size: 16px;
   min-height: 44px;
 }
-.family-center label {
+:where(.family-center) label {
   display: block;
   margin: 12px 0 6px;
 }
@@ -186,9 +193,6 @@
     flex-direction: column;
     gap: 16px;
   }
-  .family-center {
-    padding: 16px 16px 36px;
-  }
   .family-section {
     padding: 24px 0;
   }
@@ -209,16 +213,7 @@
   flex: 1;
   height: auto;
 }
-/* Its heading is for screen readers and its tabs are the app frame's, so the
-   body is the one row. */
-.family-center {
-  height: 100dvh;
-  min-height: 0;
-  display: grid;
-  grid-template-rows: minmax(0, 1fr);
-  padding: 20px;
-  gap: 18px;
-}
+
 .family-heading {
   align-items: center;
   gap: 12px;
@@ -253,13 +248,7 @@
   color: var(--color-primary);
   box-shadow: 0 2px 8px var(--color-shadow);
 }
-.family-body {
-  min-height: 0;
-  overflow: auto;
-  overscroll-behavior: contain;
-  padding: 4px 4px 20px;
-  scrollbar-gutter: stable;
-}
+
 .family-section {
   padding: 8px 0;
   border: 0;
@@ -269,7 +258,7 @@
 }
 .family-notice,
 .family-error {
-  margin: 0 0 14px;
+  margin: 0;
 }
 .privacy-choices > p {
   margin: 0 0 20px;
@@ -304,10 +293,6 @@
   margin: 0 0 12px;
 }
 @media (max-width: 600px) {
-  .family-center {
-    padding: 12px;
-    gap: 12px;
-  }
   .family-heading {
     flex-direction: row;
   }
@@ -322,10 +307,6 @@
   }
 }
 @media (max-height: 650px) {
-  .family-center {
-    gap: 8px;
-    padding-top: 8px;
-  }
   .family-heading .eyebrow {
     display: none;
   }
@@ -380,18 +361,7 @@
   overflow-wrap: anywhere;
 }
 
-.family-purchase-options {
-  padding: 12px 0 18px;
-  border-bottom: 1px solid var(--color-border);
-}
-.family-purchase-options h2 {
-  margin: 0 0 6px;
-  font-size: 21px;
-}
-.family-purchase-options p {
-  margin: 0 0 12px;
-  font-size: 14px;
-}
+
 .family-purchase-buttons {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -573,10 +543,7 @@
   min-height: 0 !important;
 }
 
-/* Three purchase destinations retain readable labels in a bounded workspace. */
-.family-purchase-options {
-  padding-top: 4px;
-}
+
 .family-purchase-buttons button {
   padding: 10px 12px;
 }
@@ -636,4 +603,37 @@
 }
 .family-sheet-actions > * {
   flex: 1 1 160px;
+}
+/* A child's name, edited in place on their card. */
+.family-name-edit {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: 16px;
+}
+.family-center .family-name-edit label,
+.family-center .family-add-learner label {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+}
+/* A field's reason keeps its line, in the danger ink, in both forms. */
+.family-center .family-name-edit label > span[aria-live],
+.family-center .family-add-learner label > span[aria-live] {
+  min-height: 1.4em;
+  color: var(--color-danger-accent);
+  font-size: var(--text-label);
+  font-weight: 400;
+}
+.family-name-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+/* The basis for a parent's names: one quiet line beside the action. */
+.family-name-basis {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.45;
 }

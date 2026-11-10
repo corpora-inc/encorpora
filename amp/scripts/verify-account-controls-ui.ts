@@ -399,8 +399,11 @@ try {
       const identity = page
         .getByRole("dialog")
         .getByRole("region", { name: "Current account" });
-      await identity.getByRole("button", { name: "Show email" }).click();
-      await identity.getByText(email, { exact: true }).waitFor();
+      // The drawer never shows the address; Account does.
+      assert(
+        !(await identity.innerHTML()).includes(email),
+        "email rendered in the drawer",
+      );
       await fits(page, `menu ${theme} ${width}`);
       await page.screenshot({
         path: `${output}/ready-menu-${theme}-${width}.png`,

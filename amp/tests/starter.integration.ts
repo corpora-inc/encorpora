@@ -4,7 +4,6 @@ import { randomUUID, randomBytes } from "node:crypto";
 import { Pool } from "pg";
 import { migrate } from "../scripts/migrate.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
-import { schoolPictures } from "../src/schools/contracts.js";
 import { registerSchoolRoutes } from "../src/schools/routes.js";
 import { buildApp } from "../src/server/app.js";
 import { ApiError, PostgresRepository } from "../src/server/repository.js";
@@ -21,8 +20,6 @@ const fixtureSecret = randomBytes(32).toString("hex");
 const database = { skip: !process.env.AMP_TEST_DATABASE_URL };
 const year = new Date().getUTCFullYear();
 const HOME = /^school\/([0-9a-f-]{36})\/classes\/([0-9a-f-]{36})\/today$/;
-const pictureName = (index: number) =>
-  schoolPictures[index]![0]!.toUpperCase() + schoolPictures[index]!.slice(1);
 
 async function fixture(t: TestContext) {
   const url = process.env.AMP_TEST_DATABASE_URL!;
@@ -118,7 +115,7 @@ async function fixture(t: TestContext) {
   const studentsOf = async (classId: string) =>
     (
       await db.query(
-        `SELECT p.id AS person_id,l.id,l.account_id,l.name,l.birth_year,l.name_pending,l.picture_identity
+        `SELECT p.id AS person_id,l.id,l.account_id,l.name,l.birth_year,l.name_pending,l.label_number,l.name_basis
          FROM amp_enrollments e JOIN amp_people p ON p.id=e.person_id JOIN amp_learners l ON l.id=p.learner_id
          WHERE e.class_id=$1 AND e.role='student' AND e.end_on IS NULL AND l.deleted_at IS NULL
          ORDER BY l.name`,
@@ -144,7 +141,7 @@ async function fixture(t: TestContext) {
 }
 
 test(
-  "a parent's two unnamed children get the family class, once",
+  "a parent's two children, named or not, get the family class, once",
   database,
   async (t) => {
     const f = await fixture(t);
@@ -153,7 +150,7 @@ test(
 
     const body = {
       as: "parent",
-      children: [{ birthYear: year - 9 }, { birthYear: year - 7 }],
+      children: [{ birthYear: year - 9, name: "Sam" }, { birthYear: year - 7 }],
     };
     const first = await f.started(parent, body);
     const [, orgId, classId] = first.home.match(HOME) ?? [];
@@ -161,25 +158,28 @@ test(
 
     const learners = (
       await f.db.query(
-        "SELECT id,name,birth_year,name_pending,picture_identity,adult FROM amp_learners WHERE account_id=$1 AND deleted_at IS NULL ORDER BY name",
+        "SELECT id,name,birth_year,name_pending,label_number,name_basis,adult FROM amp_learners WHERE account_id=$1 AND deleted_at IS NULL ORDER BY created_at",
         [parent],
       )
     ).rows;
     assert.deepEqual(
       learners.map(({ id: _, ...l }) => l),
       [
+        // The parent's name, with its basis; blank goes by the number.
         {
-          name: pictureName(0),
+          name: "Sam",
           birth_year: year - 9,
           name_pending: true,
-          picture_identity: schoolPictures[0],
+          label_number: 1,
+          name_basis: "parent_entry",
           adult: false,
         },
         {
-          name: pictureName(1),
+          name: "Child 2",
           birth_year: year - 7,
           name_pending: true,
-          picture_identity: schoolPictures[1],
+          label_number: 2,
+          name_basis: null,
           adult: false,
         },
       ],
@@ -196,8 +196,8 @@ test(
       [{ org_id: orgId, class_id: classId }],
     );
     assert.deepEqual(
-      (await f.studentsOf(classId)).map((s) => s.id),
-      learners.map((l) => l.id),
+      (await f.studentsOf(classId)).map((s) => s.id).sort(),
+      learners.map((l) => l.id).sort(),
     );
 
     const after = await f.me(parent);
@@ -220,10 +220,7 @@ test(
     );
     assert.equal((await f.studentsOf(classId)).length, 2);
 
-    assert.deepEqual(await f.signInList(classId), [
-      pictureName(0),
-      pictureName(1),
-    ]);
+    assert.deepEqual(await f.signInList(classId), ["Child 2", "Sam"]);
 
     // "I'm a parent" again (Add a place) with three: the third is added to
     // the same class, with the birth year given for it.
@@ -271,7 +268,7 @@ test(
     const body = {
       as: "tutor",
       students: [
-        { birthYear: year - 10 },
+        { birthYear: year - 10, nickname: "KJ" },
         { birthYear: year - 10 },
         { birthYear: year - 12 },
       ],
@@ -295,9 +292,16 @@ test(
     assert.equal(students.length, 3);
     for (const student of students) {
       assert.equal(student.account_id, `school:${student.person_id}`);
+      // A tutor isn't the parent: no name, no basis, until the parent's
+      // approval.
       assert.equal(student.name_pending, true);
-      assert.ok(schoolPictures.includes(student.picture_identity));
+      assert.equal(student.name_basis, null);
     }
+    assert.deepEqual(students.map((s) => s.name).sort(), [
+      "KJ",
+      "Student 2",
+      "Student 3",
+    ]);
     assert.deepEqual(students.map((s) => s.birth_year).sort(), [
       year - 12,
       year - 10,
@@ -382,9 +386,11 @@ test(
 );
 
 test(
-  // The old free trial's seeding (`initialLevel`), stored as the adult start
-  // nearest it: an adult learner keeps no birth year.
-  "learning for myself starts where the birth year puts it",
+  // A school-age year seeds it as the old free trial did (`initialLevel`),
+  // stored as the adult start nearest it: an adult learner keeps no birth
+  // year. Past school age the year says nothing about level: an adult
+  // chooses where to begin.
+  "learning for myself starts where the birth year puts it, or where an adult chooses",
   database,
   async (t) => {
     const f = await fixture(t);
@@ -409,7 +415,7 @@ test(
     await f.started(adult, {
       as: "myself",
       timezone: "America/Denver",
-      birthYear: 1985,
+      start: "precalculus",
     });
     const born1985 = await startOf(adult);
     assert.equal(born1985.adult, true);
@@ -419,6 +425,15 @@ test(
     assert.equal(born1985.start, 12);
     const practice = await f.get("/api/v1/me/practice", adult);
     assert.equal(practice.json().learner.start, "precalculus");
+    // An adult's birth year alone (a screen loaded before the choice) starts
+    // mid-scale, not at the top.
+    const unchosen = await f.user("Kit Fixture");
+    await f.started(unchosen, {
+      as: "myself",
+      timezone: "America/Denver",
+      birthYear: 1985,
+    });
+    assert.equal((await startOf(unchosen)).starting_band, "middle-school");
 
     // A teenager starts at the course nearest their grade: 15 → Algebra.
     const teen = await f.user("Sam Fixture");
@@ -459,7 +474,7 @@ test(
     await f.started(earlier, {
       as: "myself",
       timezone: "America/Denver",
-      birthYear: 1990,
+      start: "precalculus",
     });
     const after = await startOf(earlier);
     assert.equal(after.starting_band, "precalculus");

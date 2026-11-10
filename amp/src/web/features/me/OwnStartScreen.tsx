@@ -7,42 +7,11 @@ import { AppError } from "../../lib/AppError";
 import { sessionOptions } from "../../lib/query";
 import { Button } from "../../ui/Button";
 import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
-import { Segmented, type SegmentedOption } from "../../ui/Segmented";
+import { Segmented } from "../../ui/Segmented";
 import { Toast } from "../../ui/Toast";
 import { useStartOwnPractice } from "./api";
+import { adultStartOptions } from "./start-options";
 import styles from "../onboarding/Start.module.css";
-
-/** Where an adult can begin, in course order. Each opens the same adaptive
- * practice at that point on the grade axis (`startingLevels`). */
-const starts: SegmentedOption<AdultStart>[] = [
-  { value: "counting", label: "Counting", detail: "Numbers, counting, shapes" },
-  {
-    value: "elementary",
-    label: "Elementary",
-    detail: "Operations, fractions, decimals",
-  },
-  {
-    value: "middle-school",
-    label: "Middle school",
-    detail: "Ratios, negatives, equations",
-  },
-  {
-    value: "algebra-1",
-    label: "Algebra",
-    detail: "Linear, quadratic, functions",
-  },
-  { value: "geometry", label: "Geometry", detail: "Proof, similarity, trig" },
-  {
-    value: "algebra-2",
-    label: "Algebra 2",
-    detail: "Polynomials, exponentials, logs",
-  },
-  {
-    value: "precalculus",
-    label: "Precalculus",
-    detail: "Functions, trigonometry, vectors",
-  },
-];
 
 /** `/me/start`: an adult who teaches, or whose child practices, chooses where
  * to begin, then goes straight into practice. */
@@ -91,7 +60,7 @@ function StartCard({ session }: { session: AuthSession }) {
           <Segmented
             stacked
             label="Where to begin"
-            options={starts}
+            options={adultStartOptions}
             value={choice}
             onChange={(value) => {
               start.reset();

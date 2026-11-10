@@ -119,7 +119,7 @@ async function signUp(page: Page) {
   const fallback = page.getByRole("button", {
     name: "Use a password instead",
   });
-  const password = page.getByLabel("AMP password");
+  const password = page.getByLabel("Password", { exact: true });
   await Promise.race([
     fallback.waitFor({ timeout: 20_000 }),
     password.waitFor({ timeout: 20_000 }),
@@ -227,7 +227,10 @@ async function demo(
 
   // 2. Today, the map, the gradebook and the roster are alive.
   await page.goto(`${origin}/${path}`);
-  await heading(page, /^Good (morning|afternoon|evening), Dana Whitfield\.$/);
+  await heading(
+    page,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   await page
     .getByText(/Noor|Diego|Lena/)
     .first()
@@ -302,7 +305,7 @@ async function demo(
 
   // 3. Practice as Priya, then back to the roster.
   await page.goto(`${origin}/${classPath}/roster`);
-  await heading(page, "Roster");
+  await heading(page, "Students");
   const practice = page.getByRole("button", { name: /^Practice as Priya/ });
   await practice.waitFor();
   await measured(page, `${label} roster`);
@@ -334,11 +337,14 @@ async function demo(
     .click();
   await page.getByRole("button", { name: "Sign out" }).click();
   await page.waitForURL((at) => at.href === rosterUrl);
-  await heading(page, "Roster");
+  await heading(page, "Students");
 
   // 4. The real class comes from the real onboarding.
   await page.goto(`${origin}/${path}`);
-  await heading(page, /^Good (morning|afternoon|evening)/);
+  await heading(
+    page,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   const action = page.locator("[data-demo-action]").filter({ visible: true });
   check(
     `${label} the action names the real class`,

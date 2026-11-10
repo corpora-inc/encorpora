@@ -19,6 +19,7 @@ export function PracticeControls({
   busy,
   close,
   canReset = true,
+  together = true,
   resetFrom = "Start from the learner’s birth year.",
 }: {
   scope: PracticeScope;
@@ -28,6 +29,9 @@ export function PracticeControls({
   close?: () => void;
   /** False for a school student, whose school manages the practice level. */
   canReset?: boolean;
+  /** "Working together" is a grown-up helping a child; an adult practicing
+   * on their own isn't offered it (unless it is already on). */
+  together?: boolean;
   /** Where a reset starts again, said in the confirmation. */
   resetFrom?: string;
 }) {
@@ -65,9 +69,12 @@ export function PracticeControls({
             Retry
           </button>
         </p>
-      ) : (
+      ) : !together && !state.data?.workingTogether ? null : (
         <label className={settings.toggle}>
-          <span>Working together</span>
+          <span className={settings.toggleText}>
+            Working together
+            <small>A grown-up is helping with these problems.</small>
+          </span>
           <CheckboxControl
             disabled={disabled}
             checked={state.data?.workingTogether ?? false}
@@ -132,7 +139,7 @@ export function PracticeControls({
           if (!saving) setConfirm(open);
         }}
       >
-        <p>{resetFrom} Keep all XP and skill history.</p>
+        <p>{resetFrom} Your XP and skill history stay.</p>
         {error && <p role="alert">{error}</p>}
         <div className={styles.actions}>
           <Button

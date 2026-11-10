@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import type { WorkItem } from "../../../../schools/teacher-contracts";
 import type { AuthSession } from "../../../auth";
 import { AppError } from "../../../lib/AppError";
-import { Avatar } from "../../../ui/Avatar";
 import { Button } from "../../../ui/Button";
 import { Loading } from "../../../ui/Loading";
 import { Meter } from "../../../ui/Meter";
@@ -65,14 +64,6 @@ export function EvidenceSheet({
       title={data?.student.name ?? "Evidence"}
       description={
         data ? `${data.class.name}, ${data.term.name}` : "Reading the evidence"
-      }
-      lead={
-        data ? (
-          <Avatar name={data.student.name} size="large" />
-        ) : (
-          // The avatar's place, kept while the evidence is on its way.
-          <span className={`${styles.leadWait} amp-skeleton`} aria-hidden />
-        )
       }
       returnFocus={() =>
         document.querySelector<HTMLElement>(`[data-student="${returnFocus}"]`)
@@ -173,8 +164,9 @@ export function EvidenceSheet({
           <div className={styles.sheetLinks}>
             <Link
               to="/$"
-              params={{ _splat: studentUrl(place.org, data.student.id) }}
-              search={{ class: place.class } as never}
+              params={{
+                _splat: studentUrl(place.org, data.student.id, place.class),
+              }}
               className={buttonClass("quiet", "", "start")}
             >
               Open {data.student.first}’s record

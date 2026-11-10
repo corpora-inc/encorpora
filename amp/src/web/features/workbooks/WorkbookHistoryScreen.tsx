@@ -4,11 +4,12 @@ import { useState, type FormEvent } from "react";
 import type { AuthSession } from "../../auth";
 import { sessionOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
+import { Sheet } from "../../ui/Sheet";
 import { TextField } from "../../ui/TextField";
 import { workbookByCode, workbookHistoryOptions } from "./api";
 import { canMakeWorkbook, localDate, workbookMessage } from "./model";
 import { AllowancePause } from "../continue/AllowancePause";
-import { WorkbookFrame, type WorkbookLearner } from "./WorkbookFrame";
+import { WorkbookFrame, whose, type WorkbookLearner } from "./WorkbookFrame";
 import { WorkbookList } from "./WorkbookList";
 import styles from "./Workbooks.module.css";
 
@@ -18,12 +19,15 @@ export function WorkbookHistoryScreen() {
   if (!session) return <Navigate to="/sign-in" replace />;
   return (
     <WorkbookFrame session={session} learnerId={learnerId}>
-      {(learner) => <History session={session} learner={learner} />}
+      {(learner) => <WorkbookHistory session={session} learner={learner} />}
     </WorkbookFrame>
   );
 }
 
-function History({
+/** A learner's workbooks: today's as the one primary action, the ones made
+ * before as a list, and results by code as a quiet second action. On the
+ * adult's own practice it speaks to them and never names them. */
+export function WorkbookHistory({
   session,
   learner,
 }: {
@@ -31,26 +35,44 @@ function History({
   learner: WorkbookLearner;
 }) {
   const history = useQuery(workbookHistoryOptions(session, learner.id));
+  const [entering, setEntering] = useState(false);
+  const who = whose(learner);
   return (
     <>
-      <div className={styles.head}>
-        <p className={styles.eyebrow}>Workbooks for {learner.name}</p>
-      </div>
-      <h1 className={styles.title}>Workbooks</h1>
-      <p className={styles.lede}>
-        Practice chosen from {learner.name}'s progress: a warm-up, today's idea,
-        practice, review and a challenge, with an answer key.
-      </p>
-      {/* Known from the account's data on first paint: one or the other. */}
-      {canMakeWorkbook(learner) ? (
-        <Link
-          to="/learners/$learnerId/workbooks/$date"
-          params={{ learnerId: learner.id, date: localDate() }}
-          className={buttonClass("primary", styles.today)}
-        >
-          Today's workbook
-        </Link>
-      ) : (
+      <header className={styles.listHead}>
+        <div className={styles.listTitle}>
+          {who.label && <p className={styles.learnerLabel}>{who.label}</p>}
+          <h1 className={styles.title}>
+            {who.own ? "Your workbooks" : "Workbooks"}
+          </h1>
+          <p className={styles.lede}>
+            {who.own
+              ? "Printable practice chosen from your progress, with an answer key."
+              : `Printable practice chosen from ${learner.name}’s progress, with an answer key.`}
+          </p>
+        </div>
+        <div className={styles.listActions}>
+          <Button
+            variant="secondary"
+            onClick={() => setEntering(true)}
+            data-results-code
+          >
+            Enter results with a code
+          </Button>
+          {/* Known from the account's data on first paint. */}
+          {canMakeWorkbook(learner) && (
+            <Link
+              to="/learners/$learnerId/workbooks/$date"
+              params={{ learnerId: learner.id, date: localDate() }}
+              className={buttonClass("primary", styles.today)}
+            >
+              <PlusIcon />
+              Today’s workbook
+            </Link>
+          )}
+        </div>
+      </header>
+      {!canMakeWorkbook(learner) && (
         <AllowancePause
           kind="workbooks"
           compact
@@ -58,27 +80,43 @@ function History({
           learner={learner}
         />
       )}
-      <CodeEntry session={session} learnerId={learner.id} />
-      {history.data && !history.data.workbooks.length ? (
-        <p className={styles.empty}>Workbooks you make appear here.</p>
-      ) : !history.data && !history.error ? (
-        // While the list loads, hold the empty line's place: an empty list
-        // then changes nothing, and saved workbooks extend the page below.
-        <p
-          className={styles.empty}
-          aria-hidden="true"
-          style={{ visibility: "hidden" }}
-        >
-          Workbooks you make appear here.
-        </p>
-      ) : (
-        <WorkbookList
-          session={session}
-          learnerId={learner.id}
-          query={history}
-        />
-      )}
+      <section className={styles.past} aria-labelledby="past-workbooks">
+        <h2 id="past-workbooks" className={styles.sectionTitle}>
+          Past workbooks
+        </h2>
+        {history.data && !history.data.workbooks.length ? (
+          <div className={styles.emptyPanel}>
+            <p>
+              {who.own
+                ? "Your workbooks appear here once you make one."
+                : "Workbooks appear here once you make one."}
+            </p>
+          </div>
+        ) : (
+          <WorkbookList
+            session={session}
+            learnerId={learner.id}
+            query={history}
+          />
+        )}
+      </section>
+      <Sheet
+        open={entering}
+        onOpenChange={setEntering}
+        title="Enter results"
+        description="Type the code printed on the workbook’s pages."
+      >
+        <CodeEntry session={session} learnerId={learner.id} />
+      </Sheet>
     </>
+  );
+}
+
+function PlusIcon() {
+  return (
+    <svg viewBox="0 0 20 20" aria-hidden="true" className={styles.buttonIcon}>
+      <path d="M10 4.5v11M4.5 10h11" />
+    </svg>
   );
 }
 
@@ -114,6 +152,7 @@ function CodeEntry({
         params: { learnerId, workbookId: found.id },
       });
     } catch (failure) {
+      console.error("A workbook code wasn't checked", failure);
       setError(
         workbookMessage(failure, "That code couldn't be checked. Try again."),
       );
@@ -124,7 +163,7 @@ function CodeEntry({
   return (
     <form className={styles.codeForm} onSubmit={(event) => void open(event)}>
       <TextField
-        label="Enter results with the workbook code"
+        label="Workbook code"
         placeholder="ABCD-EFGH"
         autoComplete="off"
         autoCapitalize="characters"
@@ -138,13 +177,13 @@ function CodeEntry({
         }}
       />
       <Button
-        variant="secondary"
+        variant="primary"
         type="submit"
         className={styles.codeButton}
         disabled={busy || !clean}
         aria-busy={busy}
       >
-        {busy ? "Opening…" : "Open"}
+        Open results
       </Button>
     </form>
   );

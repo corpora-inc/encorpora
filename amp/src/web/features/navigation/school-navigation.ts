@@ -27,6 +27,13 @@ export function useSchoolNavigation(frame: ShellFrame) {
   }).data;
   // The year endpoint authorizes this class independently of the paginated roster.
   const available = frame.kind === "class" && year !== undefined;
+  const family = org?.kind === "family";
+  // A family has one class: on any of its org's screens (an old link to its
+  // calendar, say) the row stays the class's own.
+  const familyClass =
+    family && frame.kind === "school" && classes?.length === 1
+      ? classes[0]
+      : undefined;
   return {
     tabs: !org
       ? []
@@ -36,11 +43,27 @@ export function useSchoolNavigation(frame: ShellFrame) {
               frame.org,
               frame.classId,
               year?.past === true,
-              org.kind === "family" && org.can?.includes("calendar.read"),
+              family,
+              classes?.find((entry) => entry.id === frame.classId)
+                ?.studentCount,
             )
           : []
-        : schoolTabs(org, classes?.length ?? 0),
-    start: frame.kind === "class" && available && !year?.past,
+        : familyClass
+          ? classTabs(
+              org.id,
+              familyClass.id,
+              false,
+              true,
+              familyClass.studentCount,
+            )
+          : schoolTabs(org, classes?.length ?? 0),
+    // A family's Today has its children and the code itself: no class to
+    // start.
+    start:
+      frame.kind === "class" &&
+      available &&
+      !year?.past &&
+      org?.kind !== "family",
     /** A demo place (docs/schools.md#demo-places), and whether it is a demo
      * class ("Just my class") rather than a demo school. */
     demo: active && org?.demo === true,

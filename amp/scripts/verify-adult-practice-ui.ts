@@ -121,7 +121,7 @@ async function signUp(page: Page, email: string, name: string) {
   const fallback = page.getByRole("button", {
     name: "Use a password instead",
   });
-  const password = page.getByLabel("AMP password");
+  const password = page.getByLabel("Password", { exact: true });
   await Promise.race([
     fallback.waitFor({ timeout: 20_000 }),
     password.waitFor({ timeout: 20_000 }),
@@ -572,7 +572,10 @@ async function parentStarts(
   const inClass = /\/school\/[^/]+\/classes\/[^/]+\/today$/;
   await page.goto(`${origin}/`);
   await page.waitForURL(inClass);
-  await heading(page, /^Good (morning|afternoon|evening)/);
+  await heading(
+    page,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   const fromHome = await openSwitcher(page, family, true);
   const items = await fromHome.getByRole("menuitem").allInnerTexts();
   check(
@@ -592,7 +595,10 @@ async function parentStarts(
   const fromOwn = await openSwitcher(page, "My practice", true);
   await choose(page, fromOwn, new RegExp(family));
   await page.waitForURL(inClass);
-  await heading(page, /^Good (morning|afternoon|evening)/);
+  await heading(
+    page,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   check(
     `${label} the family side is the child's class`,
     (await page
@@ -608,7 +614,10 @@ async function parentStarts(
   await page.evaluate(() => localStorage.clear());
   await page.goto(`${origin}/`);
   await page.waitForURL(inClass);
-  await heading(page, /^Good (morning|afternoon|evening)/);
+  await heading(
+    page,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   check(
     `${label} a new device stays on the family side`,
     inClass.test(path(page)),

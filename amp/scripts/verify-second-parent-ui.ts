@@ -144,7 +144,7 @@ async function createAccount(page: Page, email: string) {
   const fallback = page.getByRole("button", {
     name: "Use a password instead",
   });
-  const password = page.getByLabel("AMP password");
+  const password = page.getByLabel("Password", { exact: true });
   await Promise.race([
     fallback.waitFor({ timeout: 20_000 }),
     password.waitFor({ timeout: 20_000 }),
@@ -296,7 +296,10 @@ async function journey(
   const maya = await family(holderAccount);
   await go(holder, `${origin}/`);
   await holder.waitForURL(CLASS_TODAY);
-  await heading(holder, /^Good (morning|afternoon|evening)/);
+  await heading(
+    holder,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   const classUrl = holder.url();
   const add = holder.getByRole("button", { name: "Add a second parent" });
   await add.waitFor();
@@ -315,6 +318,12 @@ async function journey(
   await measured(holder, `${label} invitation sent`);
   await shot(holder, "holder-sent", width, theme, engine);
   await holder.getByRole("button", { name: "Done" }).click();
+  // Today's offer is gone; the row lives with the class's people.
+  await holder
+    .locator('[data-feed="second-parent"]')
+    .waitFor({ state: "detached" });
+  await go(holder, holder.url().replace(/\/today$/, "/roster"));
+  await heading(holder, "Students");
   const waiting = holder.locator('[data-second-parent-row="invited"]');
   await waiting.getByText("Waiting for r…@…").waitFor();
   for (const name of [/Copy link/, /^Send again$/, /^Remove$/])
@@ -398,7 +407,10 @@ async function journey(
     rowan.url() === classUrl,
     rowan.url(),
   );
-  await heading(rowan, /^Good (morning|afternoon|evening)/);
+  await heading(
+    rowan,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   const handOver = rowan.getByRole("button", {
     name: "Let Maya practice here",
   });
@@ -421,7 +433,10 @@ async function journey(
   await shot(rowan, "second-parent-today", width, theme, engine);
   await noParentLinks(rowan, classUrl, `${label} second parent`);
   await go(rowan, classUrl);
-  await heading(rowan, /^Good (morning|afternoon|evening)/);
+  await heading(
+    rowan,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
 
   // 4. Maya's progress, then her own practice.
   const toMaya = await openSwitcher(rowan, "Fern’s class");
@@ -454,9 +469,15 @@ async function journey(
     .first()
     .click();
   await rowan.waitForURL(/\/pathways/);
-  await heading(rowan, "Your pathways");
-  // Maya's record, named (a narrow screen keeps the line for readers).
-  await rowan.getByText(/^Maya · Crystals grow/).waitFor({ state: "attached" });
+  await heading(rowan, "Pathways");
+  // Maya's record: her name in the learner picker, the record's line loaded.
+  await rowan
+    .locator(".pathways-learner")
+    .getByText("Maya")
+    .waitFor({ state: "attached" });
+  await rowan
+    .getByText(/^Skills grow with independent successes/)
+    .waitFor({ state: "attached" });
   await measured(rowan, `${label} child pathways`);
   await shot(rowan, "child-pathways", width, theme, engine);
   await rowan
@@ -501,8 +522,8 @@ async function journey(
 
   // 5. The holder sees her joined.
   last.page = holder;
-  await go(holder, classUrl);
-  await heading(holder, /^Good (morning|afternoon|evening)/);
+  await go(holder, classUrl.replace(/\/today$/, "/roster"));
+  await heading(holder, "Students");
   const active = holder.locator('[data-second-parent-row="active"]');
   await active.getByText("Rowan Fixture").waitFor();
   check(

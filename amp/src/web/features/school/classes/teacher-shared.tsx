@@ -23,8 +23,13 @@ export const classUrl = (
   id: string,
   tab: ClassTabId | "start" | "report-cards",
 ) => `school/${org}/classes/${id}/${tab}`;
-export const studentUrl = (org: string, student: string) =>
-  `school/${org}/students/${student}`;
+/** A student's record. From a class it opens inside that class, over its
+ * map (`map/<student>`), so the class's tabs stay (docs/design/ia.md); only
+ * an admin coming from the school uses the school-level page. */
+export const studentUrl = (org: string, student: string, classId?: string) =>
+  classId
+    ? `school/${org}/classes/${classId}/map/${student}`
+    : `school/${org}/students/${student}`;
 export { buttonClass };
 
 /** A screen's state lives in the URL, so refresh, Back and a shared link all
@@ -145,6 +150,10 @@ export function LoadFailed({
   );
 }
 
+/** Who reads a record: a teacher or parent reads someone else's ("On their
+ * own"); a learner reading their own work reads it to them ("On your own").
+ * The other results read the same to both. */
+export type RecordReader = "other" | "self";
 const RESULTS: Record<WorkItem["result"], { label: string; tone: BadgeTone }> =
   {
     independent: { label: "On their own", tone: "success" },
@@ -152,8 +161,22 @@ const RESULTS: Record<WorkItem["result"], { label: string; tone: BadgeTone }> =
     paper: { label: "Marked on paper", tone: "neutral" },
     missed: { label: "Missed", tone: "danger" },
   };
+export function resultLabel(
+  result: WorkItem["result"],
+  reader: RecordReader = "other",
+) {
+  return result === "independent" && reader === "self"
+    ? "On your own"
+    : RESULTS[result].label;
+}
 /** Real problems a student worked, as they read them. */
-export function WorkList({ work }: { work: readonly WorkItem[] }) {
+export function WorkList({
+  work,
+  reader = "other",
+}: {
+  work: readonly WorkItem[];
+  reader?: RecordReader;
+}) {
   return (
     <ul className={styles.problems}>
       {work.map((item) => (
@@ -180,7 +203,7 @@ export function WorkList({ work }: { work: readonly WorkItem[] }) {
             )}
           </span>
           <Badge tone={RESULTS[item.result].tone}>
-            {RESULTS[item.result].label}
+            {resultLabel(item.result, reader)}
           </Badge>
         </li>
       ))}

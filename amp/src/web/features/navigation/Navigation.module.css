@@ -6,13 +6,6 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.emailRow {
-  display: flex;
-  min-width: 0;
-  align-items: center;
-  gap: var(--space-2);
-  min-height: var(--target-size);
-}
 .email {
   flex: 1;
   min-width: 0;
@@ -21,36 +14,6 @@
   font-weight: 600;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-.reveal {
-  display: grid;
-  place-items: center;
-  width: var(--target-size);
-  height: var(--target-size);
-  flex: none;
-  margin-right: calc(-1 * var(--space-3));
-  padding: 0;
-  border: 0;
-  border-radius: var(--radius-control);
-  background: transparent;
-  color: var(--color-muted-text);
-}
-.reveal:hover {
-  background: var(--color-surface-sunken);
-  filter: none;
-}
-.reveal:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: 1px;
-}
-.reveal svg {
-  width: 20px;
-  height: 20px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.5;
-  stroke-linejoin: round;
-  stroke-linecap: round;
 }
 .navigation {
   display: block;
@@ -228,4 +191,35 @@
 .authLinks a:focus-visible {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 1px;
+}
+
+/* The family's learners: quiet rows, the chosen one tinted with its check,
+   never a stack of outlined boxes. Doubled classes outrank the list's own. */
+.learnerChoice {
+  display: grid;
+  gap: var(--space-1);
+}
+.learnerChoice > .kicker {
+  padding: 0 var(--space-2);
+}
+.learnerList.learnerList {
+  gap: 0;
+}
+.learnerList.learnerList [role="option"] {
+  min-height: var(--target-size);
+  padding: var(--space-2);
+  border-color: transparent;
+  background: transparent;
+  color: var(--color-on-surface-raised);
+  font-size: var(--text-label);
+  font-weight: 650;
+}
+.learnerList.learnerList [role="option"]:hover {
+  background: var(--color-surface-raised-hover);
+  color: var(--color-on-surface-raised);
+}
+.learnerList.learnerList [role="option"][aria-selected="true"] {
+  border-color: transparent;
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
 }

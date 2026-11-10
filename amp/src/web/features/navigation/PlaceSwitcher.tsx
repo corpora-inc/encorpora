@@ -9,7 +9,6 @@ import { Menu, MenuItem, MenuLabel } from "../../ui/Menu";
 import { familyClassPath, placesFor, type PlaceId } from "../onboarding/guard";
 import { rememberPlace } from "../onboarding/place-memory";
 import { DemoMark } from "../school/demo/DemoMark";
-import { levelsRange } from "../../../learning/practice-profiles";
 import styles from "./PlaceSwitcher.module.css";
 
 const roleNames = {
@@ -35,31 +34,11 @@ export type PlaceEntry = {
   demo?: true;
 };
 
-/** Every place this account can open, named for the switcher. Under "My
- * practice" come the adult's practice profiles and "Try a level…"
- * (features/profiles). */
+/** Every place this account can open, named for the switcher: places only
+ * (docs/design/ia.md). Practice profiles live on /me/profiles; children and
+ * students are reached from their class. */
 export function placeEntries(me: SignedInMe): PlaceEntry[] {
-  return placesFor(me).flatMap((id): PlaceEntry[] =>
-    id === "me" ? [place(me, id), ...profileEntries(me)] : [place(me, id)],
-  );
-}
-
-/** Practicing as someone else: each saved profile, then a new one. */
-function profileEntries(me: SignedInMe): PlaceEntry[] {
-  return [
-    ...(me.practiceProfiles ?? []).map((profile) => ({
-      id: `profile:${profile.id}` as const,
-      name: profile.label,
-      detail: `Practice as · ${levelsRange(profile.levels)}`,
-      path: "practice",
-    })),
-    {
-      id: "try-level" as const,
-      name: "Try a level…",
-      detail: "Practice at any grade and pace",
-      path: "me/profiles/new",
-    },
-  ];
+  return placesFor(me).map((id) => place(me, id));
 }
 
 function place(me: SignedInMe, id: PlaceId): PlaceEntry {
@@ -93,7 +72,8 @@ function place(me: SignedInMe, id: PlaceId): PlaceEntry {
       ? {
           id,
           name: "My practice",
-          detail: own.name,
+          // Never their own name back to them (docs/design/ia.md).
+          detail: "Your practice and progress",
           path: "me",
         }
       : {
@@ -204,27 +184,6 @@ export function usePlaceEntries(me: SignedInMe | null, currentOrg?: string) {
       });
     }
   }
-  for (const learner of me?.account.kind !== "student"
-    ? (me?.learners ?? [])
-    : [])
-    entries.push({
-      id: `learner:${learner.id}`,
-      name: learner.name,
-      detail: "Learner",
-      path: "overview",
-    });
-  // The children of a family this account is the second parent of: their
-  // progress, by their family's class.
-  for (const family of me?.account.kind !== "student"
-    ? (me?.secondParentOf ?? [])
-    : [])
-    for (const learner of family.learners)
-      entries.push({
-        id: `learner:${learner.id}`,
-        name: learner.name,
-        detail: family.className,
-        path: "overview",
-      });
   return {
     entries,
     currentOrg: current,
@@ -248,6 +207,20 @@ export function choosePlaceLearner(me: SignedInMe, place: PlaceId) {
     !me.learners.some((learner) => learner.id === store.learnerId)
   )
     store.select(me.learners[0]?.id ?? null);
+}
+
+/** What "Add a place" can still add: never a place the account has. */
+function addPlaceDetail(me: SignedInMe) {
+  const options = [
+    ...(me.adultPractice?.learner ? [] : ["your own practice"]),
+    ...(me.familyClass || me.learners.length ? [] : ["a family"]),
+    "a class",
+  ];
+  const text =
+    options.length > 1
+      ? `${options.slice(0, -1).join(", ")} or ${options.at(-1)}`
+      : options[0]!;
+  return text[0]!.toUpperCase() + text.slice(1);
 }
 
 /**
@@ -358,9 +331,7 @@ export function PlaceSwitcher({
       >
         <span className={styles.item} data-place="add">
           <span className={styles.name}>Add a place</span>
-          <span className={styles.detail}>
-            Your own practice, a family or a class
-          </span>
+          <span className={styles.detail}>{addPlaceDetail(me)}</span>
         </span>
       </MenuItem>
     </Menu>

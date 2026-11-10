@@ -74,6 +74,7 @@ import {
   stackSearchSchema,
   standingsSearchSchema,
 } from "../features/school/classroom/search";
+import { designAllowed, designSearchSchema } from "../features/design/search";
 const searchSchema = z
   .object({
     return: z
@@ -116,7 +117,7 @@ function RouterError({ error }: { error: unknown }) {
   const router = useRouter();
   return <RouteError error={error} reset={() => void router.invalidate()} />;
 }
-/** "Add Fox's name", once "Continue with AMP" has made access active. Its
+/** "Add Child 2's name", once "Continue with AMP" has made access active. Its
  * chunk loads only on the screen the purchase returned to. */
 const AfterPurchase = lazy(() =>
   import("../features/continue/AfterPurchase").then((module) => ({
@@ -383,7 +384,13 @@ const home = createRoute({
     setPitchShown(shown);
     if (!shown) await legacy.preload?.();
     else {
-      const { loadPitch } = await import("../features/pitch/PitchScreen");
+      // The lazy screen's own chunk too: rendering it before it has loaded
+      // suspends inside TanStack's Lazy with `use()`, which React then
+      // reports as a conditional use() once it resolves.
+      const [{ loadPitch }] = await Promise.all([
+        import("../features/pitch/PitchScreen"),
+        pitch.preload?.(),
+      ]);
       await loadPitch(deps);
     }
     return { pitch: shown };
@@ -556,6 +563,18 @@ const starterChoice = createRoute({
   beforeLoad: beforeStarter,
   component: starter,
 });
+/** A parent's or a tutor's setup after its first step:
+ * `/start/parent/practice`, `/start/parent/second-parent`, `/start/parent/ready`,
+ * `/start/tutor/join` and `/start/tutor/ready`. */
+const starterStep = createRoute({
+  getParentRoute: () => root,
+  path: "/start/$choice/$step",
+  beforeLoad: beforeStarter,
+  component: lazyRouteComponent(
+    () => import("../features/onboarding/Starter"),
+    "StarterStep",
+  ),
+});
 /** The plan before any learner, for a parent approving another family's
  * child: their payment is the consent the approval needs. Anyone else who
  * opens a saved link to it goes where the first-run guard says. */
@@ -648,6 +667,21 @@ const pathways = createRoute({
     "PathwaysScreen",
   ),
 });
+/** The lessons library is no destination of its own (docs/design/ia.md):
+ * `/lessons` opens Pathways, its search carrying any query. A lesson's own
+ * address (`/lessons/<id>`) still opens its reader. */
+const lessonsHome = createRoute({
+  getParentRoute: () => root,
+  path: "/lessons",
+  beforeLoad: ({ location }) => {
+    const query = new URLSearchParams(location.searchStr).get("q")?.trim();
+    throw redirect({
+      to: "/pathways",
+      search: (query ? { topic: query } : {}) as never,
+      replace: true,
+    });
+  },
+});
 const pathwaySkill = createRoute({
   getParentRoute: () => root,
   path: "/pathways/$skillId",
@@ -657,14 +691,37 @@ const pathwaySkill = createRoute({
     "PathwaysScreen",
   ),
 });
+/** A learner's workbooks are a tab of their Progress: arriving chooses
+ * that learner (the account's own, never a practice profile), so the
+ * group's other tabs and Practice are theirs too. The server still decides
+ * what the account may open. */
+async function beforeWorkbooks<Params extends { learnerId: string }>({
+  params,
+}: {
+  params: Params;
+}) {
+  const { learnerId } = params;
+  if (nativeRuntime) throw redirect({ to: "/" });
+  notForStudents();
+  const session = await queryClient.ensureQueryData(sessionOptions);
+  if (!session) return;
+  const me = await queryClient
+    .ensureQueryData(meOptions(session))
+    .catch(() => null);
+  if (
+    me?.signedIn &&
+    me.family.learners.some(
+      (learner) =>
+        learner.id === learnerId && !learner.deletedAt && !learner.simulation,
+    )
+  )
+    useLearnerStore.getState().select(learnerId);
+}
 /** Daily paper workbooks for one learner (features/workbooks). */
 const workbookHistory = createRoute({
   getParentRoute: () => root,
   path: "/learners/$learnerId/workbooks",
-  beforeLoad: () => {
-    if (nativeRuntime) throw redirect({ to: "/" });
-    notForStudents();
-  },
+  beforeLoad: beforeWorkbooks,
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookHistoryScreen"),
     "WorkbookHistoryScreen",
@@ -674,10 +731,7 @@ const workbookDay = createRoute({
   getParentRoute: () => root,
   path: "/learners/$learnerId/workbooks/$date",
   validateSearch: (search) => workbookSearchSchema.parse(search),
-  beforeLoad: () => {
-    if (nativeRuntime) throw redirect({ to: "/" });
-    notForStudents();
-  },
+  beforeLoad: beforeWorkbooks,
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookDayScreen"),
     "WorkbookDayScreen",
@@ -686,10 +740,7 @@ const workbookDay = createRoute({
 const workbookResults = createRoute({
   getParentRoute: () => root,
   path: "/learners/$learnerId/workbooks/$workbookId/results",
-  beforeLoad: () => {
-    if (nativeRuntime) throw redirect({ to: "/" });
-    notForStudents();
-  },
+  beforeLoad: beforeWorkbooks,
   component: lazyRouteComponent(
     () => import("../features/workbooks/WorkbookResultsScreen"),
     "WorkbookResultsScreen",
@@ -831,6 +882,12 @@ const schoolClassMap = createRoute({
   path: "map",
   component: lazyRouteComponent(classScreens, "MapScreen"),
 });
+/** One student, in a sheet over the class map: the class's tabs stay. */
+const schoolClassMapStudent = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "map/$student",
+  component: lazyRouteComponent(classScreens, "MapScreen"),
+});
 const schoolClassGradebook = createRoute({
   getParentRoute: () => schoolClass,
   path: "gradebook",
@@ -941,10 +998,15 @@ const ownRecord = createRoute({
         replace: true,
       } as never);
     useLearnerStore.getState().select(own.id);
-    return { session };
+    return { session, learnerId: own.id };
   },
-  loader: ({ context }) =>
-    loadOwnPractice((context as { session: AuthSession }).session),
+  loader: ({ context }) => {
+    const { session, learnerId } = context as {
+      session: AuthSession;
+      learnerId: string;
+    };
+    return loadOwnPractice(session, learnerId);
+  },
   component: lazyRouteComponent(ownScreens, "OwnRecordScreen"),
 });
 const ownStart = createRoute({
@@ -961,6 +1023,14 @@ const ownStart = createRoute({
 /** Practicing as someone else (features/profiles): "Try a level…" and one
  * saved profile's levels. Any adult account; one chunk. */
 const profileScreens = () => import("../features/profiles");
+const profiles = createRoute({
+  getParentRoute: () => root,
+  path: "/me/profiles",
+  beforeLoad: async () => {
+    await ownPractice();
+  },
+  component: lazyRouteComponent(profileScreens, "ProfilesScreen"),
+});
 const newProfile = createRoute({
   getParentRoute: () => root,
   path: "/me/profiles/new",
@@ -977,11 +1047,29 @@ const editProfile = createRoute({
   },
   component: lazyRouteComponent(profileScreens, "EditProfileScreen"),
 });
-async function loadOwnPractice(session: AuthSession) {
-  const { ownPracticeOptions } = await import("../features/me/api");
-  await queryClient
-    .ensureQueryData(ownPracticeOptions(session))
-    .catch(() => undefined);
+/** The record, the level and its path arrive together, so `/me` paints
+ * whole: nothing below the level moves when it lands. A failure is the
+ * screen's to show. */
+async function loadOwnPractice(session: AuthSession, learnerId: string) {
+  const [
+    { ownPracticeOptions },
+    { levelTrendOptions },
+    { learnerFrontierOptions },
+  ] = await Promise.all([
+    import("../features/me/api"),
+    import("../features/level/api"),
+    import("../lib/learning-view"),
+  ]);
+  await Promise.all([
+    queryClient.ensureQueryData(ownPracticeOptions(session)),
+    queryClient
+      .ensureQueryData(learnerFrontierOptions(session, learnerId))
+      .then((frontier) =>
+        frontier.overall.answered > 0
+          ? queryClient.ensureQueryData(levelTrendOptions(session, learnerId))
+          : undefined,
+      ),
+  ]).catch((error) => console.warn("Your progress didn’t load ahead", error));
 }
 /** The public school pages, one chunk between them. */
 const schoolsPublic = () => import("../features/schools");
@@ -1046,6 +1134,20 @@ const familyApproval = createRoute({
     "ApprovalScreen",
   ),
 });
+/** Every shared component in its states, from fixtures (features/design): an
+ * internal tool for development and staff browsers, unlinked and unindexed. */
+const design = createRoute({
+  getParentRoute: () => root,
+  path: "/design",
+  validateSearch: (search) => designSearchSchema.parse(search),
+  beforeLoad: () => {
+    if (!designAllowed()) throw redirect({ to: "/", replace: true });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/design/DesignScreen"),
+    "DesignScreen",
+  ),
+});
 const fallback = createRoute({
   getParentRoute: () => appScreen,
   path: "/$",
@@ -1069,6 +1171,19 @@ const lessonFilm = createRoute({
     await legacy.preload?.();
   },
 });
+/** Development only: the design preview's persona switcher
+ * (`scripts/design-preview.sh`). `import.meta.env.DEV` is false in a build,
+ * so neither the route nor its chunk is in production. */
+const devPersonas = import.meta.env.DEV
+  ? createRoute({
+      getParentRoute: () => root,
+      path: "/dev/personas",
+      component: lazyRouteComponent(
+        () => import("../features/dev/PersonaSwitcher"),
+        "PersonaSwitcher",
+      ),
+    })
+  : null;
 const history = nativeRuntime
   ? createMemoryHistory({ initialEntries: ["/"] })
   : createBrowserHistory();
@@ -1095,6 +1210,7 @@ export const router = createRouter({
       schoolClassHome,
       schoolClassToday,
       schoolClassMap,
+      schoolClassMapStudent,
       schoolClassGradebook,
       schoolClassTime,
       schoolClassReportCards,
@@ -1109,6 +1225,7 @@ export const router = createRouter({
     standings,
     ownRecord,
     ownStart,
+    profiles,
     newProfile,
     editProfile,
     schoolsHome,
@@ -1117,6 +1234,7 @@ export const router = createRouter({
     familyLink,
     familyApprove,
     familyApproval,
+    design,
     signIn,
     signUp,
     accountReady,
@@ -1125,6 +1243,7 @@ export const router = createRouter({
     reset,
     starterIndex,
     starterChoice,
+    starterStep,
     startPlan,
     continueWithAmp,
     startPurchase,
@@ -1136,6 +1255,7 @@ export const router = createRouter({
     tryAnything,
     inventory,
     pathways,
+    lessonsHome,
     pathwaySkill,
     workbookHistory,
     workbookDay,
@@ -1149,6 +1269,7 @@ export const router = createRouter({
     // Linked to through the splat route, as every staff screen is, so their
     // URLs stay out of the typed route table.
     ...(schoolRoutes(root) as unknown as []),
+    ...((devPersonas ? [devPersonas] : []) as unknown as []),
   ]),
   history,
   defaultPendingComponent: LoadingScreen,

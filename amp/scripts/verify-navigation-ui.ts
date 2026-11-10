@@ -192,16 +192,15 @@ try {
   page.on("pageerror", (e) => errors.push(e.message));
   const drawer = page.getByRole("dialog", { name: "Adaptive Math Pathways" });
   const trigger = page.getByRole("button", { name: "Open AMP menu" });
-  const identity = drawer.getByRole("region", { name: "Current account" });
-  // Recorded sessions must never show the address: it is absent from the DOM
-  // until the eye button reveals it, and every menu opening starts hidden.
+  // Recorded sessions must never show the address: the drawer never
+  // renders it (Account holds it).
   async function assertEmailHidden(label: string) {
-    const show = identity.getByRole("button", { name: "Show email" });
-    await show.waitFor();
-    assert.equal(await show.getAttribute("aria-pressed"), "false", label);
+    await drawer
+      .getByRole("button", { name: "Sign out", exact: true })
+      .waitFor();
     assert(
       !(await drawer.innerHTML()).includes("parent@example.test"),
-      `${label}: email rendered while hidden`,
+      `${label}: email rendered in the drawer`,
     );
   }
   async function fits(label: string) {
@@ -447,34 +446,6 @@ try {
         path: `${output}/drawer-${theme}-${width}.png`,
         animations: "disabled",
       });
-      // The account rows end the scrolling drawer: bring them into view first,
-      // so the comparison measures layout, not the scroll the click needs.
-      await identity.scrollIntoViewIfNeeded();
-      const hiddenBox = await identity.boundingBox();
-      await identity.getByRole("button", { name: "Show email" }).click();
-      const hide = identity.getByRole("button", { name: "Hide email" });
-      assert.equal(await hide.getAttribute("aria-pressed"), "true");
-      const shown = identity.getByText("parent@example.test", { exact: true });
-      await shown.waitFor();
-      assert.equal(
-        await shown.evaluate((el) => {
-          const css = getComputedStyle(el);
-          return `${css.whiteSpace} ${css.textOverflow}`;
-        }),
-        "nowrap ellipsis",
-        "long addresses truncate on one line",
-      );
-      assert.deepEqual(
-        await identity.boundingBox(),
-        hiddenBox,
-        `drawer ${theme} ${width}: revealing the email shifted layout`,
-      );
-      await fits(`drawer revealed ${theme} ${width}`);
-      await page.mouse.move(0, 0);
-      await page.screenshot({
-        path: `${output}/drawer-revealed-${theme}-${width}.png`,
-        animations: "disabled",
-      });
       await page.keyboard.press("Escape");
       await page.waitForFunction(
         () =>
@@ -492,7 +463,7 @@ try {
         .getByRole("link", { name: "Inventory", exact: true })
         .click();
       await page
-        .getByRole("heading", { name: "Your inventory", exact: true })
+        .getByRole("heading", { name: "Inventory", exact: true })
         .waitFor();
       await page.locator('[data-strength="Strong"]').first().waitFor();
       assert.equal(new URL(page.url()).pathname, "/inventory");
@@ -512,18 +483,18 @@ try {
           );
         const row = page.getByRole("group", { name: "Skills to show" });
         const rowBefore = (await row.boundingBox())!;
-        const allSkills = await count("All skills");
+        const allSkills = await count("All");
         await page.getByRole("button", { name: /^Math area/ }).click();
         await page
           .getByRole("option", { name: "Number & operations", exact: true })
           .click();
         await page.waitForFunction(() => location.search.includes("area="));
-        const inArea = await count("All skills");
+        const inArea = await count("All");
         assert(
           inArea > 0 && inArea < allSkills,
           `all-skills count follows the area: ${inArea} of ${allSkills}`,
         );
-        for (const name of ["Tried", "Illuminated", "Strong"])
+        for (const name of ["Tried", "Earned", "Strong"])
           assert(
             (await count(name)) <= inArea,
             `${name} counts only the chosen area`,
@@ -541,7 +512,7 @@ try {
         await page.waitForFunction(() => !location.search.includes("area="));
       }
       const searchBox = await page
-        .getByRole("searchbox", { name: "Search your skills" })
+        .getByRole("searchbox", { name: "Find a skill" })
         .evaluate((el) => {
           const box = el.closest("label")!.getBoundingClientRect();
           return { y: box.y, height: box.height };
@@ -767,12 +738,10 @@ try {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.reload();
   await page.locator('[data-strength="Strong"]').first().waitFor();
-  await page.getByRole("searchbox", { name: "Search your skills" }).fill("L");
-  await page.getByRole("searchbox", { name: "Search your skills" }).fill("");
+  await page.getByRole("searchbox", { name: "Find a skill" }).fill("L");
+  await page.getByRole("searchbox", { name: "Find a skill" }).fill("");
   assert.equal(
-    await page
-      .getByRole("searchbox", { name: "Search your skills" })
-      .inputValue(),
+    await page.getByRole("searchbox", { name: "Find a skill" }).inputValue(),
     "",
   );
   await page.getByRole("button", { name: /^Strong/ }).click();
@@ -862,7 +831,8 @@ try {
   failProgress = true;
   await page.reload();
   await page
-    .getByRole("heading", { name: "Your inventory could not be loaded" })
+    .getByRole("alert")
+    .filter({ hasText: "Your skills didn’t load" })
     .waitFor();
   failProgress = false;
   await page.getByRole("button", { name: "Try again", exact: true }).click();

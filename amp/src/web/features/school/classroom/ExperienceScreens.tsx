@@ -5,10 +5,10 @@ import { Loading } from "../../../ui/Loading";
 import { Button } from "../../../ui/Button";
 import { useStaffSession } from "../classes/api";
 import { ClassFrame } from "../classes/ClassFrame";
-import { OrgFrame } from "../OrgFrame";
 import { PageHead } from "../parts";
 import { experienceOptions, say } from "./api";
 import { ExperienceSettings } from "./ExperienceSettings";
+import styles from "../School.module.css";
 
 /** `.../classes/$class/experience`: this class's own choices. */
 export function ClassExperienceScreen() {
@@ -50,18 +50,32 @@ export function ClassExperienceScreen() {
   );
 }
 
-/** `/school/$org/experience`: what a school or district decides for everyone. */
-export function OrgExperienceScreen() {
-  const params = useParams({ strict: false }) as { org: string };
+/** What a class's students (or a family's children) see: a section of the
+ * class's Settings (docs/design/ia.md, "Where settings live"), with what the
+ * school has locked shown as locked. */
+export function ClassExperienceSection({
+  classId,
+  family,
+}: {
+  classId: string;
+  family: boolean;
+}) {
   const session = useStaffSession();
-  const scope = { kind: "org", id: params.org } as const;
+  const scope = { kind: "class", id: classId } as const;
   const experience = useQuery(experienceOptions(session, scope));
   return (
-    <OrgFrame orgId={params.org} nav="experience" title="Student experience">
-      <PageHead
-        title="Student experience"
-        detail="What students see unless a class chooses otherwise. Lock a setting to decide it for everyone below."
-      />
+    <section
+      className={styles.settingsSection}
+      aria-labelledby="class-experience"
+    >
+      <h2 id="class-experience">
+        {family ? "What children see" : "Student experience"}
+      </h2>
+      <p className={styles.sectionLead}>
+        {family
+          ? "Levels, standings and devices for your children. The math they practice is the same either way."
+          : "What students in this class see. The math they practice is the same either way."}
+      </p>
       {experience.data ? (
         <ExperienceSettings
           session={session}
@@ -82,6 +96,46 @@ export function OrgExperienceScreen() {
           {say(experience.error, "The settings didn’t load.")}
         </EmptyState>
       )}
-    </OrgFrame>
+    </section>
+  );
+}
+
+/** What a school or district decides for everyone: a section of its Settings
+ * (docs/design/ia.md). */
+export function OrgExperienceSection({ orgId }: { orgId: string }) {
+  const session = useStaffSession();
+  const scope = { kind: "org", id: orgId } as const;
+  const experience = useQuery(experienceOptions(session, scope));
+  return (
+    <section
+      className={styles.settingsSection}
+      aria-labelledby="student-experience"
+    >
+      <h2 id="student-experience">Student experience</h2>
+      <p className={styles.sectionLead}>
+        What students see unless a class chooses otherwise. Lock a setting to
+        decide it for everyone below.
+      </p>
+      {experience.data ? (
+        <ExperienceSettings
+          session={session}
+          scope={scope}
+          experience={experience.data}
+        />
+      ) : experience.isPending ? (
+        <Loading>Loading these settings…</Loading>
+      ) : (
+        <EmptyState
+          title="These settings didn’t load"
+          action={
+            <Button variant="primary" onClick={() => void experience.refetch()}>
+              Try again
+            </Button>
+          }
+        >
+          {say(experience.error, "The settings didn’t load.")}
+        </EmptyState>
+      )}
+    </section>
   );
 }

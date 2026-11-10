@@ -13,6 +13,32 @@ export type WorkbookLearner = { id: string; name: string } & WorkbookAccess & {
     pauseViewer: PauseViewer;
   };
 
+/** Whose workbooks these are, as the screen says it: the adult's own are
+ * "yours" and never named; anyone else's carry a small, quiet label. */
+export function whose(learner: Pick<WorkbookLearner, "name" | "pauseViewer">) {
+  const own = learner.pauseViewer === "adult";
+  return { own, label: own ? null : learner.name };
+}
+
+/** The way back to the learner's workbooks, above a workbook's own title. */
+export function WorkbookTrail({ learner }: { learner: WorkbookLearner }) {
+  const who = whose(learner);
+  return (
+    <nav className={styles.trail} aria-label="Workbooks">
+      <Link
+        to="/learners/$learnerId/workbooks"
+        params={{ learnerId: learner.id }}
+        className={styles.trailLink}
+      >
+        <svg viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M10 3.5 5.5 8l4.5 4.5" />
+        </svg>
+        {who.own ? "Your workbooks" : `${learner.name}’s workbooks`}
+      </Link>
+    </nav>
+  );
+}
+
 /** Workbook content on AppShell for an account-owned learner with learning
  * permission; workbook history does not depend on a license. */
 export function WorkbookFrame({
@@ -70,10 +96,14 @@ export function WorkbookFrame({
   else if (!canReadWorkbooks(learner))
     body = (
       <div className={styles.notice}>
-        <h1 className={styles.title}>Workbooks for {learner.name}</h1>
+        {!(learner.adult && !learner.simulation) && (
+          <p className={styles.learnerLabel}>{learner.name}</p>
+        )}
+        <h1 className={styles.title}>Workbooks</h1>
         <p>
-          Workbooks come with {learner.name}'s practice. Finish setting up their
-          access to print one.
+          {learner.adult && !learner.simulation
+            ? "Workbooks come with your practice. Finish setting up your access to print one."
+            : `Workbooks come with ${learner.name}’s practice. Finish setting up their access to print one.`}
         </p>
         <Link
           to="/$"

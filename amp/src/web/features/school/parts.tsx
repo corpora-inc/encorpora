@@ -1,5 +1,5 @@
-import { useState, type ReactNode } from "react";
-import { Select } from "../../ui/Select";
+import { useId, useState, type ReactNode } from "react";
+import { TileChoice } from "../../ui/TileChoice";
 import styles from "./School.module.css";
 
 /** A screen's title and its one line, with its main action beside them. */
@@ -55,6 +55,19 @@ export const gradeLabel = (grade: number | null | undefined) =>
         : String(grade);
 
 /** Kindergarten through college-level, as the learning model has them. */
+const GRADES = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] as const;
+const gradeCell = (grade: number) =>
+  grade === 0 ? "K" : grade === 13 ? "College" : String(grade);
+const gradeName = (grade: number) =>
+  grade === 0
+    ? "Kindergarten"
+    : grade === 13
+      ? "College level"
+      : `Grade ${grade}`;
+
+/** Kindergarten to college, one tap each: a radio group drawn as a grid of
+ * equal cells, five to a row, with College across two. Arrow keys move along
+ * the grades. Where a grade is optional, tapping the chosen one clears it. */
 export function GradePicker({
   value,
   onChange,
@@ -66,23 +79,27 @@ export function GradePicker({
   label?: string;
   allowEmpty?: boolean;
 }) {
+  const id = useId();
   return (
     <div className={styles.field}>
-      <span className={styles.fieldLabel}>{label}</span>
-      <Select
-        aria-label={label}
-        value={value === null ? "" : String(value)}
-        onValueChange={(next) => onChange(next === "" ? null : Number(next))}
-      >
-        {allowEmpty && <option value="">Not set</option>}
-        <option value="0">Kindergarten</option>
-        {Array.from({ length: 12 }, (_, index) => index + 1).map((grade) => (
-          <option key={grade} value={String(grade)}>
-            Grade {grade}
-          </option>
-        ))}
-        <option value="13">College level</option>
-      </Select>
+      <span className={styles.fieldLabel} id={id}>
+        {label}
+        {allowEmpty && <span className={styles.optional}> (optional)</span>}
+      </span>
+      {/* The shared tile grid; an optional grade clears with a second tap. */}
+      <TileChoice
+        labelledBy={id}
+        tiles={GRADES.map((grade) => ({
+          value: grade,
+          label: gradeCell(grade),
+          name: gradeName(grade),
+          ...(grade === 13 ? { span: 2 as const } : {}),
+        }))}
+        value={value}
+        onChange={onChange}
+        columns={{ narrow: 5, wide: 7 }}
+        clearable={allowEmpty}
+      />
     </div>
   );
 }
@@ -93,11 +110,14 @@ export function CopyButton({
   label,
   copied = "Copied",
   className,
+  icon,
 }: {
   text: string;
   label: string;
   copied?: string;
   className?: string;
+  /** A glyph before the words, kept through Copied. */
+  icon?: ReactNode;
 }) {
   const [done, setDone] = useState<"copied" | "failed" | null>(null);
   return (
@@ -119,14 +139,18 @@ export function CopyButton({
       }}
     >
       <span className={styles.copySizer} aria-hidden="true">
+        {icon}
         {label.length > copied.length ? label : copied}
       </span>
-      <span className={styles.copyText} aria-live="polite">
-        {done === "copied"
-          ? copied
-          : done === "failed"
-            ? "Press to retry"
-            : label}
+      <span className={styles.copyText}>
+        {icon}
+        <span aria-live="polite">
+          {done === "copied"
+            ? copied
+            : done === "failed"
+              ? "Press to retry"
+              : label}
+        </span>
       </span>
     </button>
   );

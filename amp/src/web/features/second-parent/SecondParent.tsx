@@ -63,7 +63,11 @@ export function SecondParent({
         </p>
       ) : current ? (
         <ul className={styles.children}>
-          <Row session={session} parent={current} onError={setError} />
+          <SecondParentRow
+            session={session}
+            parent={current}
+            onError={setError}
+          />
         </ul>
       ) : (
         <Button
@@ -75,14 +79,18 @@ export function SecondParent({
         </Button>
       )}
       {inviting && (
-        <InviteSheet session={session} onClose={() => setInviting(false)} />
+        <SecondParentInviteSheet
+          session={session}
+          onClose={() => setInviting(false)}
+        />
       )}
       <Toast message={error} onDismiss={() => setError("")} />
     </section>
   );
 }
 
-function Row({
+/** The second parent's row: who, where it stands, and its actions. */
+export function SecondParentRow({
   session,
   parent,
   onError,
@@ -186,7 +194,8 @@ function Row({
   );
 }
 
-function InviteSheet({
+/** "Add a second parent": an email, then the invitation. */
+export function SecondParentInviteSheet({
   session,
   onClose,
 }: {

@@ -75,21 +75,32 @@ export function useLearningView({
   // The adult's own learner, when it's the one chosen: their own practice.
   // One of their practice profiles is their own practice too, as someone else.
   const profile = practiceProfile(account, selectedId);
+  // An adult who practices only as themselves has no one else to choose:
+  // their own record, whatever this device last chose.
+  const solo =
+    !learners.length && !shared.length ? adultLearner(account) : null;
   const own = practicingAsAdult(account, selectedId)
     ? adultLearner(account)
     : profile
       ? profileLearner(account, selectedId)
-      : null;
+      : solo;
   const learner =
     own ??
     learners.find((l) => l.id === selectedId) ??
     shared.find((l) => l.id === selectedId) ??
-    (learners.length === 1 ? learners[0] : undefined);
+    // Nobody chosen on this device yet: the first child, as practice
+    // (LegacyApp) already takes it, so every screen and the drawer agree.
+    learners[0];
   const viewOnly = !own && !!secondParentChild(account, learner?.id);
   useEffect(() => {
+    if (solo && own === solo && selectedId !== solo.id)
+      useLearnerStore.getState().select(solo.id);
     if (own) return;
-    if (learners.length === 1 && selectedId !== learners[0]?.id)
-      useLearnerStore.getState().select(learners[0]!.id);
+    const chosen =
+      learners.some((l) => l.id === selectedId) ||
+      shared.some((l) => l.id === selectedId);
+    if (!chosen && learners[0])
+      useLearnerStore.getState().select(learners[0].id);
   }, [account, selectedId]);
   const loadingIdentity = session.isPending || (!!session.data && me.isPending);
   const evidence = useQuery({

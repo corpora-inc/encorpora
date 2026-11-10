@@ -1,31 +1,39 @@
 /* ── Tablets and desktops in landscape: problem left, answer right ─────────
    Stacked, the prompt and the docked keypad left a landscape tablet about
    310 px for the problem, so figures started below the fold. Side by side,
-   the problem gets the card's full height and the answer field, Check and
-   keypad sit in a column of their own, under the right thumb.
+   the problem gets the screen's full height under the bar and the answer
+   field, Check and keypad sit in a column of their own, under the right
+   thumb.
 
+   Both columns run edge to edge and to the bottom of the screen: no card
+   around them, and only a rule between them. Each pads its own content.
    Everything that replaces or covers the answer (feedback, the calculator)
-   takes that column's grid area, so the problem never moves. Phones, short
-   landscape phones and portrait tablets keep the stacked layout. */
+   takes that column's grid area, flush to its edges, so the problem never
+   moves. Phones, short landscape phones and portrait tablets keep the
+   stacked layout. */
 @media (orientation: landscape) and (min-width: 900px) and (min-height: 500px) {
-  /* Two columns need the width a stacked problem left unused. */
+  /* Each column reserves the home indicator's inset itself, so the answer
+     column and what covers it reach the screen's bottom edge. */
   .shell.app-shell.immersive {
-    max-width: 1200px;
+    padding-bottom: 0;
   }
   .practice-surface {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) clamp(340px, 36%, 420px);
+    grid-template-columns: minmax(0, 1fr) clamp(360px, 42%, 560px);
     grid-template-rows: auto minmax(0, 1fr);
-    column-gap: var(--space-5);
-    padding: var(--space-3) var(--space-5) var(--space-5);
+    column-gap: 0;
+    padding: 0;
   }
   .practice-surface > .workspace-toolbar {
     grid-column: 1 / -1;
+    padding: var(--space-3) var(--space-5) 0;
   }
   .practice-surface > .problem-stage {
     grid-column: 1;
     grid-row: 2;
     min-height: 0;
+    padding: var(--space-3) var(--space-5)
+      calc(var(--space-5) + env(safe-area-inset-bottom, 0px));
   }
   /* The answer column: its controls centre beside the problem, divided from
      it by a rule rather than a second card. */
@@ -38,8 +46,14 @@
     min-height: 0;
     width: auto;
     margin: 0;
-    padding: 0 0 0 var(--space-5);
+    padding: var(--space-5) var(--space-5)
+      calc(var(--space-5) + env(safe-area-inset-bottom, 0px));
     border-left: 1px solid var(--color-border);
+  }
+  /* The column is wide for the explanation that replaces it; the field,
+     Check and keypad keep a 480 px hand span, centred. */
+  .practice-surface > .answer-dock:not(.editor-dock) {
+    padding-inline: max(var(--space-5), calc((100% - 480px) / 2));
   }
   /* Longer answers have their own scrollable workspace; the question and
      figure stay in the left column and Check stays within reach below. */
@@ -81,11 +95,11 @@
   .answer-editor .work-keypad {
     position: absolute;
     left: var(--space-5);
-    right: 0;
+    right: var(--space-5);
     width: auto;
     transform: none;
   }
-  /* The answer column has the card's height; a choice dock need not stop at
+  /* The answer column has the screen's height; a choice dock need not stop at
      the stacked layout's 62% (practice.css). Its options still scroll inside
      it before anything leaves the column. */
   .practice-surface > .answer-dock:has(.choice-form) {
@@ -107,7 +121,8 @@
     flex-basis: 100%;
   }
   /* Absolutely placed in the answer column's grid area (as the feedback
-     sheet is, feedback-sheet.css): it covers the column it replaces. */
+     sheet is, feedback-sheet.css): a sheet rising from the screen's bottom
+     edge over the keypad it stands in for, as on a phone. */
   .practice-surface > .calculator {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
@@ -116,6 +131,9 @@
     bottom: 0;
     width: auto;
     margin: 0;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    border-width: 1px 0 0;
+    border-radius: var(--radius-panel) var(--radius-panel) 0 0;
   }
   /* The column is narrower than a stacked prompt line; one step smaller reads
      at the same distance and wraps less. */
@@ -135,7 +153,7 @@
   .problem-content[data-template="line-plot-build-slots"] .question {
     font-size: 20px;
   }
-  /* The problem has the card's height to itself, so a figure may draw larger.
+  /* The problem has the column's height to itself, so a figure may draw larger.
      It still yields height down to its legible floor before the stage
      scrolls. */
   .problem-content .figure {

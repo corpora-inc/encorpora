@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import {
   Link,
+  Navigate,
   useNavigate,
   useParams,
   useSearch,
@@ -13,6 +14,7 @@ import {
   type DivisionKind,
 } from "../../../schools/calendar";
 import type { SessionResource } from "../../../schools/setup-contracts";
+import type { GradingKind } from "../../../schools/contracts";
 import { AppError } from "../../lib/AppError";
 import { useLoggedError } from "../../feedback";
 import { Button, buttonClass } from "../../ui/Button";
@@ -22,16 +24,24 @@ import { Segmented } from "../../ui/Segmented";
 import { Sheet } from "../../ui/Sheet";
 import {
   calendarOptions,
+  classesOptions,
   currentSession,
   orgOptions,
   refreshSchool,
   school,
 } from "./api";
-import { OrgFrame } from "./OrgFrame";
 import { FormNote, PageHead } from "./parts";
 import { orgPath } from "./paths";
 import { YearRibbon } from "./YearRibbon";
 import styles from "./School.module.css";
+
+/** The term choice of a small class: None is the whole year, no terms. */
+const TERM_CHOICES: ("year" | DivisionKind)[] = [
+  "year",
+  "semester",
+  "trimester",
+  "quarter",
+];
 
 const message = (failure: unknown, fallback: string) =>
   failure instanceof AppError ? failure.message : fallback;
@@ -97,9 +107,29 @@ function EditSheet({
   );
 }
 
-/** Terms, as the bar and as a list: a class picks which of them it grades by. */
-export function CalendarScreen() {
-  const { org: orgId } = useParams({ strict: false }) as { org: string };
+/** The school year and its terms: the dates, the kind of term, the year as a
+ * bar, and each term's dates. The school's Calendar screen shows it whole;
+ * a family's or a lone class's Settings shows it as one compact section
+ * (docs/design/ia.md), so a small place never opens a school-level page. */
+export function YearCalendar({
+  orgId,
+  compact = false,
+  section = false,
+  grading,
+}: {
+  orgId: string;
+  compact?: boolean;
+  /** In a small class's Settings, the class's own term choice drives the
+   * picker: None (the whole year) · Semesters · Trimesters · Quarters. */
+  grading?: {
+    value: GradingKind;
+    onChange: (kind: GradingKind) => void;
+    disabled?: boolean;
+  };
+  /** A section of the school's Settings: the year and every set of terms its
+   * classes grade by, with nothing to choose (a class chooses its own). */
+  section?: boolean;
+}) {
   const search = useSearch({ strict: false }) as {
     view?: unknown;
     edit?: unknown;
@@ -116,7 +146,11 @@ export function CalendarScreen() {
     ),
   );
   const asked = divisionKinds.find((kind) => kind === search.view);
-  const shown: DivisionKind | null = asked ?? kinds[0] ?? null;
+  const shown: DivisionKind | null = grading
+    ? divisionKinds.includes(grading.value as DivisionKind)
+      ? (grading.value as DivisionKind)
+      : null
+    : (asked ?? kinds[0] ?? null);
   const parts = sessions.filter(
     (entry) => entry.kind === shown && entry.parentId === year?.id,
   );
@@ -147,14 +181,232 @@ export function CalendarScreen() {
       )
       .finally(() => setBusy(false));
   };
+  const changeDates =
+    canEdit && year ? (
+      <Button
+        variant={compact ? "quiet" : "secondary"}
+        onClick={() => setSearch({ edit: year.id })}
+      >
+        Change year dates
+      </Button>
+    ) : null;
+  const body = calendar.isError ? (
+    <EmptyState
+      title="The calendar didn’t load"
+      action={
+        <Button variant="secondary" onClick={() => void calendar.refetch()}>
+          Try again
+        </Button>
+      }
+    />
+  ) : !year ? (
+    calendar.isPending ? null : (
+      <EmptyState title="No school year yet">
+        A default year appears when the first class is added.
+      </EmptyState>
+    )
+  ) : (
+    <div className={styles.calendarBody} data-compact={compact || undefined}>
+      <div className={styles.calendarControl}>
+        {grading ? (
+          <Segmented
+            label="Terms"
+            compact
+            dense
+            disabled={grading.disabled}
+            value={grading.value}
+            onChange={(kind) => grading.onChange(kind as GradingKind)}
+            options={TERM_CHOICES.map((kind) => ({
+              value: kind,
+              label: kind === "year" ? "None" : divisionLabels[kind].plural,
+            }))}
+          />
+        ) : (
+          <Segmented
+            label="Terms"
+            compact
+            dense={compact}
+            disabled={busy || (compact && !canEdit)}
+            value={shown}
+            onChange={pick}
+            options={divisionKinds.map((kind) => ({
+              value: kind,
+              label: divisionLabels[kind].plural,
+            }))}
+          />
+        )}
+        {!compact && (
+          <p className={styles.fieldHelp}>
+            Each class chooses which of these it grades by.
+          </p>
+        )}
+      </div>
+      <YearRibbon
+        startsOn={year.startsOn}
+        endsOn={year.endsOn}
+        division={shown}
+        sessions={parts.length ? parts : undefined}
+        list={!parts.length && !!shown}
+      />
+      {parts.length > 0 && !!shown && (
+        <ul className={styles.sessionList}>
+          {parts.map((part) => (
+            <li key={part.id}>
+              <span>
+                <strong>{part.name}</strong>
+                <span className={styles.quiet}>
+                  {formatDay(part.startsOn, false)} to{" "}
+                  {formatDay(part.endsOn, false)}
+                </span>
+              </span>
+              {canEdit && !part.inherited && (
+                <Button
+                  variant="quiet"
+                  onClick={() => setSearch({ edit: part.id })}
+                >
+                  Edit
+                </Button>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+      <FormNote error={error} />
+    </div>
+  );
+  if (section)
+    return (
+      <section className={styles.settingsSection} aria-labelledby="school-year">
+        <div className={styles.settingsHead}>
+          <div>
+            <h2 id="school-year">School year and terms</h2>
+            <p className={styles.quiet}>
+              {year
+                ? `${formatDay(year.startsOn)} to ${formatDay(year.endsOn)}`
+                : "\u00a0"}
+            </p>
+          </div>
+          {canEdit && year && (
+            <div className={styles.settingsActions}>
+              {org?.can?.includes("year.rollover") && (
+                <Link
+                  to="/$"
+                  params={{ _splat: orgPath(orgId, "year") }}
+                  className={buttonClass("quiet")}
+                >
+                  Start next year
+                </Link>
+              )}
+              {changeDates}
+            </div>
+          )}
+        </div>
+        {calendar.isError || !year ? (
+          body
+        ) : (
+          <div className={styles.calendarBody}>
+            {kinds.length === 0 ? (
+              <>
+                <YearRibbon
+                  startsOn={year.startsOn}
+                  endsOn={year.endsOn}
+                  division={null}
+                  list={false}
+                />
+                <p className={styles.quiet}>
+                  No terms: classes grade the whole year. A class that grades
+                  by semesters, trimesters or quarters adds them here.
+                </p>
+              </>
+            ) : (
+              kinds.map((kind) => {
+                const terms = sessions.filter(
+                  (entry) => entry.kind === kind && entry.parentId === year.id,
+                );
+                return (
+                  <div key={kind} className={styles.termSet}>
+                    <h3>{divisionLabels[kind].plural}</h3>
+                    <YearRibbon
+                      startsOn={year.startsOn}
+                      endsOn={year.endsOn}
+                      division={kind}
+                      sessions={terms}
+                      list={false}
+                    />
+                    <ul className={styles.sessionList}>
+                      {terms.map((part) => (
+                        <li key={part.id}>
+                          <span>
+                            <strong>{part.name}</strong>
+                            <span className={styles.quiet}>
+                              {formatDay(part.startsOn, false)} to{" "}
+                              {formatDay(part.endsOn, false)}
+                            </span>
+                          </span>
+                          {canEdit && !part.inherited && (
+                            <Button
+                              variant="quiet"
+                              onClick={() => setSearch({ edit: part.id })}
+                            >
+                              Edit
+                            </Button>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })
+            )}
+            <p className={styles.fieldHelp}>
+              Each class picks its own grading periods in its Settings.
+            </p>
+          </div>
+        )}
+        {editing && (
+          <EditSheet
+            key={editing.id}
+            orgId={orgId}
+            session={editing}
+            onClose={() => setSearch({ edit: undefined })}
+          />
+        )}
+      </section>
+    );
+  const sheet = editing && (
+    <EditSheet
+      key={editing.id}
+      orgId={orgId}
+      session={editing}
+      onClose={() => setSearch({ edit: undefined })}
+    />
+  );
+  if (compact)
+    return (
+      <section className={styles.yearSection} aria-labelledby="school-year">
+        <div className={styles.yearHead}>
+          <div>
+            <h2 id="school-year">School year</h2>
+            <p className={styles.quiet}>
+              {year
+                ? `${formatDay(year.startsOn)} to ${formatDay(year.endsOn)}`
+                : "\u00a0"}
+            </p>
+          </div>
+          {changeDates}
+        </div>
+        {body}
+        {sheet}
+      </section>
+    );
   return (
-    <OrgFrame orgId={orgId} nav="calendar" title="Calendar">
+    <>
       <PageHead
         title="Calendar"
         detail={
           year
             ? `${formatDay(year.startsOn)} to ${formatDay(year.endsOn)}`
-            : " "
+            : " "
         }
         action={
           canEdit && year ? (
@@ -168,88 +420,43 @@ export function CalendarScreen() {
                   Start next year
                 </Link>
               )}
-              <Button
-                variant="secondary"
-                onClick={() => setSearch({ edit: year.id })}
-              >
-                Change year dates
-              </Button>
+              {changeDates}
             </>
           ) : undefined
         }
       />
-      {calendar.isError ? (
-        <EmptyState
-          title="The calendar didn’t load"
-          action={
-            <Button variant="secondary" onClick={() => void calendar.refetch()}>
-              Try again
-            </Button>
-          }
-        />
-      ) : !year ? (
-        <EmptyState title="No school year yet">
-          A default year appears when the first class is added.
-        </EmptyState>
-      ) : (
-        <div className={styles.calendarBody}>
-          <div className={styles.calendarControl}>
-            <Segmented
-              label="Terms"
-              compact
-              disabled={busy}
-              value={shown}
-              onChange={pick}
-              options={divisionKinds.map((kind) => ({
-                value: kind,
-                label: divisionLabels[kind].plural,
-              }))}
-            />
-            <p className={styles.fieldHelp}>
-              Each class chooses which of these it grades by.
-            </p>
-          </div>
-          <YearRibbon
-            startsOn={year.startsOn}
-            endsOn={year.endsOn}
-            division={shown}
-            sessions={parts.length ? parts : undefined}
-            list={!parts.length}
-          />
-          {parts.length > 0 && (
-            <ul className={styles.sessionList}>
-              {parts.map((part) => (
-                <li key={part.id}>
-                  <span>
-                    <strong>{part.name}</strong>
-                    <span className={styles.quiet}>
-                      {formatDay(part.startsOn, false)} to{" "}
-                      {formatDay(part.endsOn, false)}
-                    </span>
-                  </span>
-                  {canEdit && !part.inherited && (
-                    <Button
-                      variant="quiet"
-                      onClick={() => setSearch({ edit: part.id })}
-                    >
-                      Edit
-                    </Button>
-                  )}
-                </li>
-              ))}
-            </ul>
-          )}
-          <FormNote error={error} />
-        </div>
-      )}
-      {editing && (
-        <EditSheet
-          key={editing.id}
-          orgId={orgId}
-          session={editing}
-          onClose={() => setSearch({ edit: undefined })}
-        />
-      )}
-    </OrgFrame>
+      {body}
+      {sheet}
+    </>
+  );
+}
+
+/** The old Calendar address: the year now lives in Settings, the school's or,
+ * for a family or a lone class, the class's (docs/design/ia.md). */
+export function CalendarScreen() {
+  const { org: orgId } = useParams({ strict: false }) as { org: string };
+  const session = currentSession();
+  const org = useQuery(orgOptions(session, orgId)).data;
+  const classes = useQuery({
+    ...classesOptions(session, orgId),
+    enabled: org?.kind === "family" || org?.solo === true,
+  }).data;
+  if (!org) return null;
+  const small = org.kind === "family" || org.solo === true;
+  if (small && !classes) return null;
+  return (
+    <Navigate
+      to={"/$" as never}
+      params={
+        {
+          _splat:
+            small && classes?.[0]
+              ? `school/${orgId}/classes/${classes[0].id}/settings`
+              : `school/${orgId}/settings`,
+        } as never
+      }
+      hash={small ? undefined : "school-year"}
+      replace
+    />
   );
 }

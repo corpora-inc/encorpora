@@ -115,7 +115,7 @@ export async function writeStudent(
     ]);
     if (changes.gradeLevel !== undefined && changes.gradeLevel !== null)
       await client.query(
-        `UPDATE amp_learners l SET birth_year=$2 WHERE l.id=$1 AND l.picture_identity IS NULL
+        `UPDATE amp_learners l SET birth_year=$2 WHERE l.id=$1 AND l.label_number IS NULL
          AND NOT EXISTS(SELECT 1 FROM amp_attempts a WHERE a.learner_id=l.id)`,
         [person.learner_id, birthYearForGrade(changes.gradeLevel)],
       );

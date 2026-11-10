@@ -123,9 +123,15 @@ import {
   loadGlossary,
 } from "../LessonLibrary";
 import { Home, type FrontierMap } from "../Home";
+import { practicingAsAdult } from "../lib/adult-learner";
 import { freeLeft } from "../lib/free-allowance";
 import { FREE_ONLINE_PROBLEMS } from "../../learning/free-allowance";
 import { AllowancePause } from "../features/continue/AllowancePause";
+import {
+  LessonDownloadMenu,
+  LessonPause,
+  useLessonPrint,
+} from "../features/lessons/LessonPrint";
 import { strandNames } from "../BirthYearPrompt";
 import type { ProblemLessonView } from "../../content/problem-lessons";
 class HttpError extends Error {
@@ -149,6 +155,9 @@ const allowanceEnded = (error: unknown) =>
 type Catalog = {
   templates: TemplateMetadata[];
   lessons: Lesson[];
+  /** Lessons this server has no PDFs for (src/server/publications.ts). An
+   * older server leaves it out; its lessons all have them. */
+  unpublishedLessons?: string[];
   skills: {
     id: string;
     title: string;
@@ -307,9 +316,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   // The account snapshot can arrive before this device has a saved selection.
   // Resolve a learner from that snapshot immediately: redirecting to setup
   // while loadFamily is selecting one can continually restart navigation.
+  // An adult on their own, on a device with no selection yet (a shared link
+  // to a lesson), learns as their own learner, never meets family setup.
   const learner =
     learners.find((entry) => entry.id === learnerId) ??
     childLearners[0] ??
+    learners.find((entry) => entry.adult && !entry.simulation) ??
     null;
   // The adult's own learner, or one of their practice profiles: both learn
   // on the account's own terms, with no birth year.
@@ -494,6 +506,33 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     accountRef = useRef<string | null>(null);
   const learnerRef = useRef<string | undefined>(undefined);
   learnerRef.current = learner?.id;
+  // Printing a lesson hands over its typeset PDF, never a browser print of
+  // the page. A lesson without PDFs on this server offers no print at all.
+  const lessonPrintState = useLessonPrint({
+    learnerId: learner?.id ?? "",
+    lessonId: readingLesson?.id ?? "",
+    token: token ?? "",
+    // Signed out or switched accounts while it downloaded: not saved.
+    keep: () => tokenRef.current === token,
+    onAllowanceEnded: () => {
+      if (!learner) return;
+      setPausedFor(learner.id);
+      // The pause takes the downloads' place, after the lesson.
+      requestAnimationFrame(() =>
+        document
+          .querySelector("[data-lesson-downloads]")
+          ?.scrollIntoView({ block: "center" }),
+      );
+    },
+  });
+  const lessonPrint =
+    !nativeRuntime &&
+    learner &&
+    token &&
+    readingLesson &&
+    !catalog?.unpublishedLessons?.includes(readingLesson.id)
+      ? lessonPrintState
+      : null;
   useLayoutEffect(
     () => () => {
       // Account-keyed unmounts must also invalidate work outside React: an old
@@ -1061,6 +1100,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   }
   function showProblem(p: HintedProblem) {
     noteActiveProblem(p.id);
+    if (learner) rememberOpenProblem(learner.id, p.id);
     setProblem(p);
     setResponse("");
     setOutcome(null);
@@ -1076,10 +1116,17 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   function requestBatch(templateId = family, recoveryStrand?: string) {
     const learnerId = learner!.id;
     const epoch = authEpoch.current;
+    // The problem still open in this tab (a reload, a restored tab, a trip
+    // to the map and back): the server serves it again if it is unanswered.
+    const resumeProblemId =
+      !templateId && !recoveryStrand && !nativeRuntime
+        ? openProblem(learnerId)
+        : null;
     return batchWithCapabilityFallback(
       {
         ...(templateId ? { templateId } : {}),
         ...(recoveryStrand ? { recoveryStrand } : {}),
+        ...(resumeProblemId ? { resumeProblemId } : {}),
         count: 1,
         responseCapabilities: [...clientResponseCapabilities],
         figureCapabilities: [...figureCapabilities],
@@ -1221,6 +1268,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         ...attempt,
       });
       if (learnerRef.current !== learner.id) return;
+      rememberOpenProblem(learner.id, null);
       setOutcome(result);
       setPending(null);
       track("practice_answer", { index: practiceAnswers.current });
@@ -1263,6 +1311,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       throw e;
     }
     if (learnerRef.current !== learner.id) return;
+    rememberOpenProblem(learner.id, null);
     setOutcome(result);
     upcoming.current = { learnerId: learner.id, batch: requestBatch("") };
     upcoming.current.batch.catch(() => undefined);
@@ -1353,27 +1402,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     link.download = `${id}.pdf`;
     link.click();
     URL.revokeObjectURL(url);
-  }
-  async function download(kind: "lesson" | "workbook" | "solutions") {
-    if (nativeRuntime)
-      throw new Error("PDF downloads require the configured web application.");
-    const publicationLesson = readingLesson ?? lesson;
-    if (!learner || !publicationLesson || !token) return;
-    const epoch = authEpoch.current;
-    const result = await fetch(
-      `/api/v1/learners/${learner.id}/publications/${publicationLesson.id}/${kind}`,
-      { headers: { authorization: `Bearer ${token}` } },
-    );
-    if (!result.ok)
-      throw new Error((await result.json()).error ?? "Download unavailable");
-    const blob = await result.blob();
-    if (epoch !== authEpoch.current) return;
-    const url = URL.createObjectURL(blob),
-      a = document.createElement("a");
-    a.href = url;
-    a.download = `${publicationLesson.id}-${kind}.pdf`;
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
   // Home shows where the learner stands in each strand; refresh it on return.
   // LegacyScreen is keyed by account. Bind each response to the learner and
@@ -1874,7 +1902,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           <h1>
             <Loading inline>Opening your book…</Loading>
           </h1>
-          <button onClick={() => navigate("/lessons")}>Back to lessons</button>
+          <button onClick={() => navigate("/pathways")}>Back to Pathways</button>
         </main>
       ) : tab === "practice" ? (
         paused && route.parts[0] === "practice" ? (
@@ -1906,6 +1934,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             key={problem.id}
             problem={problem}
             meta={meta}
+            skillTitle={
+              catalog?.skills.find((skill) => skill.id === problem.skillId)
+                ?.title
+            }
             satMathFocus={!!learner?.satMathFocus}
             strand={
               catalog?.skills.find((skill) => skill.id === problem.skillId)
@@ -2032,6 +2064,13 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             <Home
               key={learner.id}
               name={learner.name}
+              learnerId={learner.id}
+              reader={
+                student ||
+                (account?.signedIn && practicingAsAdult(account, learner.id))
+                  ? "self"
+                  : "other"
+              }
               birthYear={learner.birthYear}
               resuming={!!problem}
               frontier={frontierMap}
@@ -2086,9 +2125,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
               <div className="card-top">
                 <button
                   className="text-button"
-                  onClick={() => navigate("/lessons")}
+                  onClick={() => navigate("/pathways")}
                 >
-                  ← All lessons
+                  ← Pathways
                 </button>
               </div>
               {catalogFailed ? (
@@ -2119,7 +2158,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                   readerTriggerId.current = reference.id;
                   // Back returns to these results at this scroll position.
                   libraryReturn.current = {
-                    search: route.location.search,
+                    // The live URL: the search field writes its query after
+                    // a pause, which can land after this render.
+                    search: window.location.search,
                     scroll: window.scrollY,
                   };
                   void action(() => openReferenceLesson(reference, null));
@@ -2183,57 +2224,36 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                       );
                       return;
                     }
-                    requestAnimationFrame(() => {
-                      const trigger = document.querySelector<HTMLButtonElement>(
-                        `[data-lesson-id="${CSS.escape(readerTriggerId.current ?? "")}"]`,
-                      );
-                      window.scrollTo({
-                        top: libraryReturn.current.scroll,
-                        behavior: "instant",
-                      });
-                      trigger?.focus({ preventScroll: true });
-                    });
+                    // The library puts the card it opened from back in view
+                    // (rememberLibraryCard), as browser Back does.
                   }}
                 >
                   {progressLessonReturn.current
                     ? "← Your idea"
-                    : "← All lessons"}
+                    : "← Pathways"}
                 </button>
-                {!nativeRuntime && (
-                  <button
-                    className="text-button"
-                    onClick={() => window.print()}
-                  >
-                    Print lesson
-                  </button>
+                {/* One compact control for the lesson's typeset PDFs. A
+                    lesson without them on this server offers none. */}
+                {lessonPrint && !paused && (
+                  <LessonDownloadMenu print={lessonPrint} />
                 )}
               </div>
               <h2 ref={readerHeading} tabIndex={-1}>
                 {readingLesson.title}
               </h2>
-              <ReferenceLesson lesson={readingLesson} />
-              {/* The lesson comes first; its printable copies follow it. */}
-              {!nativeRuntime && (
-                <section
-                  className="reader-downloads"
-                  aria-label="Download and print"
-                >
-                  <h3>Download &amp; print</h3>
-                  <div className="downloads">
-                    {(["lesson", "workbook", "solutions"] as const).map(
-                      (kind) => (
-                        <button
-                          className="secondary"
-                          key={kind}
-                          disabled={busy}
-                          onClick={() => void action(() => download(kind))}
-                        >
-                          Download {kind} PDF
-                        </button>
-                      ),
-                    )}
-                  </div>
-                </section>
+              {/* The partner note speaks to a parent about a child: an adult
+                  learning on their own, or as a profile, has no use for it. */}
+              <ReferenceLesson
+                lesson={readingLesson}
+                partner={!ownLearner && !learner?.simulation}
+              />
+              {/* Free problems spent: the pause says why there is no
+                  download, after the lesson. */}
+              {lessonPrint && learner && paused && (
+                <LessonPause
+                  viewer={pauseViewer}
+                  learner={{ id: learner.id, name: learner.name }}
+                />
               )}
             </article>
           )}
@@ -2281,6 +2301,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             apply={adjustPractice}
             close={closeShellDrawer}
             canReset={!student}
+            together={!ownLearner}
             resetFrom={
               learner.simulation
                 ? "Start again from this profile’s levels."
@@ -2301,4 +2322,25 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       )}
     </div>
   );
+}
+
+/** The open (unanswered) problem per learner, for this tab only: a reload or
+ * a restored tab asks for it again instead of a new one. Storage that is
+ * unavailable only means a reload draws a new problem. */
+const openProblemKey = (learnerId: string) => `amp.open-problem.${learnerId}`;
+function openProblem(learnerId: string): string | null {
+  try {
+    return sessionStorage.getItem(openProblemKey(learnerId));
+  } catch (error) {
+    console.warn("The open problem could not be read", error);
+    return null;
+  }
+}
+function rememberOpenProblem(learnerId: string, problemId: string | null) {
+  try {
+    if (problemId) sessionStorage.setItem(openProblemKey(learnerId), problemId);
+    else sessionStorage.removeItem(openProblemKey(learnerId));
+  } catch (error) {
+    console.warn("The open problem could not be saved", error);
+  }
 }

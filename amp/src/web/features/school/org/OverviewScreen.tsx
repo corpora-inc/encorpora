@@ -141,7 +141,19 @@ function UsageCard({
   );
 }
 
-function ClassTable({ orgId, rows }: { orgId: string; rows: ClassUsage[] }) {
+/** Teachers by name, with the person reading it as "You". */
+const teacherNames = (teachers: readonly string[], self: string | null) =>
+  teachers.map((name) => (self && name === self ? "You" : name)).join(", ");
+
+function ClassTable({
+  orgId,
+  rows,
+  self,
+}: {
+  orgId: string;
+  rows: ClassUsage[];
+  self: string | null;
+}) {
   const navigate = useNavigate();
   const columns = useMemo<DataGridColumn<ClassUsage>[]>(
     () => [
@@ -168,14 +180,14 @@ function ClassTable({ orgId, rows }: { orgId: string; rows: ClassUsage[] }) {
           (a.teachers[0] ?? "").localeCompare(b.teachers[0] ?? "", "en"),
         cell: (row) =>
           row.teachers.length ? (
-            row.teachers.join(", ")
+            teacherNames(row.teachers, self)
           ) : (
             <span className={styles.none}>No teacher</span>
           ),
       },
       ...usageColumns<ClassUsage>(),
     ],
-    [orgId],
+    [orgId, self],
   );
   return (
     <DataGrid
@@ -197,7 +209,7 @@ function ClassTable({ orgId, rows }: { orgId: string; rows: ClassUsage[] }) {
         <UsageCard
           to={classPath(orgId, row.id)}
           name={row.name}
-          detail={row.teachers.join(", ") || "No teacher"}
+          detail={teacherNames(row.teachers, self) || "No teacher"}
           row={row}
         />
       )}
@@ -376,13 +388,10 @@ export function OverviewScreen() {
       ) : (
         <div className={styles.overview}>
           <header className={styles.greeting}>
-            <h1>
-              Good {view.partOfDay}
-              {view.personName ? `, ${view.personName}` : ""}.
-            </h1>
+            <h1>{view.org.name}</h1>
             <p>
               {fullDay(view.today)}
-              {termLine(view) ? `. ${termLine(view)}.` : "."}
+              {termLine(view) ? ` · ${termLine(view)}` : ""}
             </p>
           </header>
           {view.week.students === 0 && !district ? (
@@ -403,52 +412,55 @@ export function OverviewScreen() {
                 </div>
                 <Seats orgId={orgId} seats={view.seats} />
                 <section
-                  aria-labelledby="overview-attention"
-                  className={styles.sideColumn}
+                  aria-labelledby="overview-trend"
+                  className={styles.trend}
                 >
-                  <h2 id="overview-attention" className={styles.sectionTitle}>
-                    Needs attention
+                  <h2 id="overview-trend" className={styles.sectionTitle}>
+                    Weekly active minutes
+                    {view.term.name === "Last 12 weeks"
+                      ? ", last 12 weeks"
+                      : `, ${view.term.name}`}
                   </h2>
-                  <Attention items={view.attention} />
+                  <TrendChart weeks={view.trend} today={view.today} />
                 </section>
-                <div className={styles.mainColumn}>
-                  <section aria-labelledby="overview-trend">
-                    <h2 id="overview-trend" className={styles.sectionTitle}>
-                      Weekly active minutes
-                      {view.term.name === "Last 12 weeks"
-                        ? ", last 12 weeks"
-                        : `, ${view.term.name}`}
+                {view.attention.length > 0 && (
+                  <section
+                    aria-labelledby="overview-attention"
+                    className={styles.sideColumn}
+                  >
+                    <h2 id="overview-attention" className={styles.sectionTitle}>
+                      Needs attention
                     </h2>
-                    <TrendChart weeks={view.trend} today={view.today} />
+                    <Attention items={view.attention} />
                   </section>
-                  <section aria-labelledby="overview-standing">
-                    <h2 id="overview-standing" className={styles.sectionTitle}>
-                      Where students stand against grade level
-                    </h2>
-                    <StandingChart standing={view.standing} />
-                    <div className={styles.standingFacts}>
-                      <StatRow label="Students by standing">
-                        <StatTile
-                          value={number(view.standing.at)}
-                          label="at grade level"
-                        />
-                        <StatTile
-                          value={number(view.standing.ahead)}
-                          label="ahead"
-                        />
-                        <StatTile
-                          value={number(view.standing.behind)}
-                          label="behind"
-                        />
-                        {view.standing.unplaced > 0 && (
-                          <StatTile
-                            value={number(view.standing.unplaced)}
-                            label="not placed yet"
-                          />
-                        )}
-                      </StatRow>
-                    </div>
-                  </section>
+                )}
+                <section
+                  aria-labelledby="overview-standing"
+                  className={styles.standingSection}
+                >
+                  <h2 id="overview-standing" className={styles.sectionTitle}>
+                    Where students stand against grade level
+                  </h2>
+                  <StandingChart standing={view.standing} />
+                </section>
+                <div className={styles.standingFacts}>
+                  <StatRow label="Students by standing">
+                    <StatTile
+                      value={number(view.standing.at)}
+                      label="at grade level"
+                    />
+                    <StatTile value={number(view.standing.ahead)} label="ahead" />
+                    <StatTile
+                      value={number(view.standing.behind)}
+                      label="behind"
+                    />
+                    {view.standing.unplaced > 0 && (
+                      <StatTile
+                        value={number(view.standing.unplaced)}
+                        label="not placed yet"
+                      />
+                    )}
+                  </StatRow>
                 </div>
               </div>
               <section aria-labelledby="overview-usage">
@@ -469,7 +481,11 @@ export function OverviewScreen() {
                     </Link>
                   </p>
                 ) : view.classes?.length ? (
-                  <ClassTable orgId={orgId} rows={view.classes} />
+                  <ClassTable
+                    orgId={orgId}
+                    rows={view.classes}
+                    self={view.personName}
+                  />
                 ) : (
                   <p className={styles.quiet}>
                     No classes yet.{" "}

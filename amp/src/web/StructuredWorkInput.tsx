@@ -337,6 +337,14 @@ export function StructuredWorkInput({
   const markOf = (i: number): Mark =>
     marks ? (marks[i] ? "correct" : "incorrect") : undefined;
   const noun = NOUN(r);
+  // Rows of numbers only (a factor pair, a quotient and remainder) read as
+  // one inline line of small, equal fields: no card, no stacked boxes.
+  const compact =
+    r.layout === "steps" &&
+    r.mode !== "order" &&
+    r.rows.every((row) => row.fields.every((f) => f.kind === "number"));
+  // What an open list adds: its row label ("Pair") when it has one.
+  const item = r.open && r.rows[0]?.label ? r.rows[0].label : noun;
 
   function press(k: string) {
     if (!active || locked) return;
@@ -430,27 +438,44 @@ export function StructuredWorkInput({
             </span>
           )}
         </span>
-        {/* One reserved line: the typeset entry, or what to fix. */}
-        <span
-          className="work-note"
-          id={noteId}
-          data-tone={
-            showError ? "error" : p.kind === "error" ? "hint" : undefined
-          }
-        >
-          {p.kind === "math" ? (
-            <MathText text={`$${p.tex}$`} />
-          ) : p.kind === "error" ? (
-            p.text
-          ) : null}
-        </span>
+        {/* An expression reserves one line: its typeset form, or what to
+            fix. A number is its own preview, so it shows only what to fix,
+            overlaid below the field (nothing moves). */}
+        {f.kind === "number" ? (
+          <span
+            className="work-note"
+            id={noteId}
+            data-tone={showError ? "error" : undefined}
+            hidden={!showError}
+          >
+            {showError && p.kind === "error" ? p.text : null}
+          </span>
+        ) : (
+          <span
+            className="work-note"
+            id={noteId}
+            data-tone={
+              showError ? "error" : p.kind === "error" ? "hint" : undefined
+            }
+          >
+            {p.kind === "math" ? (
+              <MathText text={`$${p.tex}$`} />
+            ) : p.kind === "error" ? (
+              p.text
+            ) : null}
+          </span>
+        )}
       </span>
     );
   }
 
   function fieldControl(i: number, j: number, f: WorkField, row: WorkRow) {
     if (f.given !== undefined) return <Given r={r} field={f} />;
-    const rowLabel = row.label ? row.label : `${noun} ${i + 1}`;
+    const rowLabel = r.open
+      ? `${item} ${i + 1}`
+      : row.label
+        ? row.label
+        : `${noun} ${i + 1}`;
     if (f.kind === "choice")
       return (
         <ChoicePicker
@@ -462,7 +487,7 @@ export function StructuredWorkInput({
           label={`${noun} ${i + 1} ${f.label.toLowerCase()}`}
         />
       );
-    return entry(i, j, f, row.label ? rowLabel : "");
+    return entry(i, j, f, row.label || r.open ? rowLabel : "");
   }
 
   const markBadge = (i: number) => {
@@ -582,30 +607,47 @@ export function StructuredWorkInput({
         })}
       </ol>
     ) : (
-      <ol className="work-rows" data-layout={r.layout} data-mode={r.mode}>
+      <ol
+        className="work-rows"
+        data-layout={r.layout}
+        data-mode={r.mode}
+        data-compact={compact ? "" : undefined}
+      >
         {rows.map((_, i) => {
           const row = rowShape(r, i);
+          // An open list's row label names its item ("Pair"), not each row.
+          const label = r.open ? undefined : row.label;
           return (
             <li key={i} className="work-row" data-mark={markOf(i)}>
               <span className="work-number" aria-hidden="true">
                 {i + 1}
               </span>
               <span className="work-fields">
-                {row.label && (
+                {label && (
                   <span className="work-label">
-                    <MathText text={row.label} />
+                    <MathText text={label} />
                   </span>
                 )}
-                {row.fields.map((f, j) => (
-                  <span key={j} className="work-cell" data-field={f.kind}>
-                    {r.layout === "proof" && (
-                      <span className="work-cell-caption" aria-hidden="true">
-                        {f.label}
+                {compact ? (
+                  <span className="work-cells">
+                    {row.fields.map((f, j) => (
+                      <span key={j} className="work-cell" data-field={f.kind}>
+                        {fieldControl(i, j, f, row)}
                       </span>
-                    )}
-                    {fieldControl(i, j, f, row)}
+                    ))}
                   </span>
-                ))}
+                ) : (
+                  row.fields.map((f, j) => (
+                    <span key={j} className="work-cell" data-field={f.kind}>
+                      {r.layout === "proof" && (
+                        <span className="work-cell-caption" aria-hidden="true">
+                          {f.label}
+                        </span>
+                      )}
+                      {fieldControl(i, j, f, row)}
+                    </span>
+                  ))
+                )}
               </span>
               {markBadge(i)}
             </li>
@@ -646,10 +688,10 @@ export function StructuredWorkInput({
               next.push(r.rows[0]!.fields.map(() => ""));
               onChange(serializeDraft(next));
               pendingCaret.current = { key: `${next.length - 1}:0`, caret: 0 };
-              setAnnounce(`${noun} ${next.length} added.`);
+              setAnnounce(`${item} ${next.length} added.`);
             }}
           >
-            Add a step
+            Add a {item.toLowerCase()}
           </button>
           <button
             type="button"
@@ -660,10 +702,10 @@ export function StructuredWorkInput({
               next.pop();
               onChange(serializeDraft(next));
               setActive(null);
-              setAnnounce(`${noun} ${next.length + 1} removed.`);
+              setAnnounce(`${item} ${next.length + 1} removed.`);
             }}
           >
-            Remove last step
+            Remove last {item.toLowerCase()}
           </button>
         </div>
       )}
@@ -808,12 +850,22 @@ export function StructuredWorkAnswer({
   );
 }
 
+/** What one row is called: an open list's own label ("pair"), else a line
+ * of a proof or a step. */
+export function workItem(r: StructuredWorkResponse): string {
+  return r.open && r.rows[0]?.label
+    ? r.rows[0].label.toLowerCase()
+    : r.layout === "proof"
+      ? "line"
+      : "step";
+}
+
 /** "2 of 4 steps correct", from the server's marks. */
 export function workSummary(
   r: StructuredWorkResponse,
   parts: boolean[] | undefined,
 ): string {
-  const what = r.layout === "proof" ? "lines" : "steps";
+  const what = `${workItem(r)}s`;
   if (!parts?.length) return `Your ${what} are marked above`;
   return `${parts.filter(Boolean).length} of ${parts.length} ${what} correct`;
 }

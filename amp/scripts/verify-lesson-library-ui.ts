@@ -1,9 +1,11 @@
 import { secureChromium } from "../browser-security.mjs";
 /**
  * Lesson library findability, against the real API and catalog
- * (app-shell-fixture.ts): instant search over titles, summaries and glossary
- * terms, band sections, a sticky filter, the query and area in the URL, and
- * no movement of the controls while filtering.
+ * (app-shell-fixture.ts): instant search with ranked results grouped as
+ * Lessons, Skills and Glossary (lexical at once, blended with nearest
+ * neighbours by the API, lexical again offline), matched words marked,
+ * arrow-key navigation, band sections, a sticky filter, the query and area in
+ * the URL, and no movement of the controls while filtering.
  *
  *   AMP_TEST_DATABASE_URL=postgres://…/amp_fixture \
  *     npx tsx scripts/verify-lesson-library-ui.ts [--engine webkit]
@@ -53,15 +55,21 @@ async function queryReady(page: Page, query: string) {
     query ? url.searchParams.get("q") === query : !url.searchParams.has("q"),
   );
   // Search results use a deferred value, so the input/URL can be ahead of
-  // the committed result list. Wait for that query's summary, not elapsed time.
+  // the committed result list. Wait for that query's summary, not elapsed time,
+  // and for the API's answer (the results stop being busy).
   await summary(page)
     .filter({
       hasText: query
-        ? `“${query}”`
+        ? new RegExp(
+            `(match|matches) “${(query.length > 24 ? `${query.slice(0, 23).trimEnd()}…` : query).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}”`,
+          )
         : /^\d{1,3}(?:,\d{3})* lessons? · \d{1,3}(?:,\d{3})* problem types?$/,
     })
     .waitFor();
+  if (query)
+    await page.locator("[data-search-results][aria-busy=false]").waitFor();
 }
+const glossary = (page: Page) => page.getByRole("list", { name: "Glossary" });
 const visibleRows = (page: Page) =>
   page
     .locator("[data-lesson-id], [data-template]")
@@ -176,7 +184,7 @@ try {
     await queryReady(page, "slope");
     // The first search lazily loads glossary terms. Include that result set
     // before capturing the count that a reload must restore.
-    await page.getByRole("list", { name: "Math words" }).waitFor();
+    await glossary(page).waitFor();
     const sloped = await visibleRows(page);
     check(sloped > 0 && sloped < all, `"slope" narrows the list (${sloped})`);
     check(
@@ -186,7 +194,7 @@ try {
     await page.reload();
     await search(page).waitFor();
     await queryReady(page, "slope");
-    await page.getByRole("list", { name: "Math words" }).waitFor();
+    await glossary(page).waitFor();
     check(
       (await search(page).inputValue()) === "slope",
       "refresh keeps the query",
@@ -273,7 +281,7 @@ try {
   {
     const { page, context } = await open({ width: 1280, height: 800 }, "light");
     await search(page).fill("hypotenuse");
-    const words = page.getByRole("list", { name: "Math words" });
+    const words = glossary(page);
     await words.waitFor();
     check(
       /hypotenuse/i.test(await words.innerText()),
@@ -376,6 +384,119 @@ try {
     await page.getByRole("button", { name: "← All lessons" }).click();
     await page.waitForURL((url) => url.searchParams.get("strand") === "data");
     await search(page).waitFor();
+    await context.close();
+  }
+  // 7. Ranked search: groups in order, matched words marked, arrow keys move
+  //    through results, nearest neighbours answer a question with no shared
+  //    words, and with the API unreachable the device answers lexically.
+  for (const theme of ["light", "dark"] as const)
+    for (const viewport of viewports.filter((v) =>
+      [390, 1280].includes(v.width),
+    )) {
+      const tag = `${viewport.width} ${theme}`;
+      const { page, context } = await open(viewport, theme);
+      await search(page).fill("slope");
+      await queryReady(page, "slope");
+      const groups = await page
+        .locator("[data-search-results] h2")
+        .allInnerTexts();
+      check(
+        JSON.stringify(groups) ===
+          JSON.stringify(["LESSONS", "SKILLS", "GLOSSARY"]) ||
+          JSON.stringify(groups) ===
+            JSON.stringify(["Lessons", "Skills", "Glossary"]),
+        `${tag}: groups ${groups.join(", ")}`,
+      );
+      check(
+        (await page.locator("[data-result] mark").count()) > 0,
+        `${tag}: matched words are marked`,
+      );
+      const found = await probe(page);
+      check(
+        found.overflow === 0,
+        `${tag} results: overflows ${found.overflow}px`,
+      );
+      check(
+        !found.overlaps.length,
+        `${tag} results: overlaps ${found.overlaps.join("; ")}`,
+      );
+      check(
+        !found.midWordWraps.length,
+        `${tag} results: ${found.midWordWraps.join("; ")}`,
+      );
+      if (shots)
+        await page.screenshot({
+          path: `${shots}/search-slope-${viewport.width}-${theme}.png`,
+        });
+      // Arrow keys: into the results, along them, and back to the field.
+      await search(page).focus();
+      await page.keyboard.press("ArrowDown");
+      const first = await page.evaluate(() =>
+        document.activeElement?.hasAttribute("data-result"),
+      );
+      check(first, `${tag}: ArrowDown moves into the results`);
+      await page.keyboard.press("ArrowDown");
+      await page.keyboard.press("ArrowUp");
+      await page.keyboard.press("ArrowUp");
+      check(
+        await search(page).evaluate((el) => el === document.activeElement),
+        `${tag}: ArrowUp from the first result returns to the field`,
+      );
+      // A question that shares no word with its lessons.
+      const semantic = await page.evaluate(async () => {
+        const response = await fetch("/api/v1/search?q=pizza");
+        return ((await response.json()) as { semantic: boolean }).semantic;
+      });
+      if (semantic) {
+        await search(page).fill("how do I split a pizza fairly");
+        await queryReady(page, "how do I split a pizza fairly");
+        const lessons = await page
+          .locator("[data-search-results] section")
+          .first()
+          .locator("[data-result]")
+          .allInnerTexts();
+        check(
+          lessons
+            .slice(0, 5)
+            .some((text) => /half|halves|equal|share|part/i.test(text)),
+          `${tag}: the pizza question finds equal shares (${lessons.slice(0, 3).join(" | ")})`,
+        );
+        if (shots)
+          await page.screenshot({
+            path: `${shots}/search-pizza-${viewport.width}-${theme}.png`,
+          });
+      } else
+        console.log(
+          "The API has no search model here; skipped the neighbour check.",
+        );
+      // No results: what to try instead.
+      await search(page).fill("zzzq");
+      await queryReady(page, "zzzq");
+      check(
+        await page.getByRole("button", { name: "times tables" }).isVisible(),
+        `${tag}: no results suggest searches that work`,
+      );
+      if (shots)
+        await page.screenshot({
+          path: `${shots}/search-empty-${viewport.width}-${theme}.png`,
+        });
+      await context.close();
+    }
+  {
+    // Offline: the API's search fails, the device's index answers, and the
+    // failure is logged.
+    const { page, context, errors } = await open(
+      { width: 390, height: 844 },
+      "light",
+    );
+    await page.route("**/api/v1/search*", (route) => route.abort());
+    await search(page).fill("times tables");
+    await queryReady(page, "times tables");
+    check((await visibleRows(page)) > 0, "offline search still lists lessons");
+    check(
+      errors.some((e) => /answering from this device/.test(e)),
+      "the failed search request is logged",
+    );
     await context.close();
   }
 } finally {

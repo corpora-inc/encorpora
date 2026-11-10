@@ -1,4 +1,5 @@
 import type { Frontier } from "../learning/frontier";
+import { optionalChildName } from "../learning/nickname.js";
 import { lessonFilmFor } from "../content/lesson-films";
 import {
   diagnoseLinePlotBuild,
@@ -66,6 +67,7 @@ import {
 } from "../content/problem-lessons";
 import { glossaryPayload } from "../glossary/resolve";
 import { lessons } from "../content/lessons";
+import { publicationFile, unpublishedLessonIds } from "./publications";
 import { startingBands } from "../learning/starting-point";
 import { buildInfo } from "./build-info";
 import { brand } from "../brand";
@@ -387,9 +389,17 @@ function routes(app: FastifyInstance, options: AppOptions) {
   });
   let catalogCache: PublicJson | undefined;
   app.get("/api/v1/catalog", async (request, reply) => {
+    // The image ships every lesson's PDFs (scripts/build-pdf-release.ts); a
+    // lesson listed here has none on this server, so it offers no print.
+    const unpublishedLessons = catalogCache
+      ? []
+      : await unpublishedLessonIds((message, error) =>
+          app.log.warn({ err: error }, message),
+        );
     catalogCache ??= publicJson({
       templates,
       lessons,
+      unpublishedLessons,
       skills,
       coverage: auditCurriculum(),
       mode: options.development ? "development" : "hosted",
@@ -414,7 +424,8 @@ function routes(app: FastifyInstance, options: AppOptions) {
       throw new ApiError(403, "Create an account to add learners");
     const { name, birthYear } = z
       .object({
-        name: z.string().trim().min(1).max(60).optional(),
+        // The parent's name for their own child; blank is "Child 2".
+        name: optionalChildName,
         birthYear: birthYearSchema.optional(),
       })
       .strict()
@@ -445,6 +456,16 @@ function routes(app: FastifyInstance, options: AppOptions) {
       // Estimates, uncertainty and evidence counts per strand.
       return tx.frontier();
     });
+  });
+  /** How the overall estimate moved as answers came in: the best guess and
+   * its likely range from the start, then at even steps to the latest answer
+   * (at most `LEVEL_TREND_POINTS`), for the Overview's level view. */
+  app.get("/api/v1/learners/:learnerId/level-trend", async (request) => {
+    const account = await parent(request);
+    const { learnerId } = paramsSchema.parse(request.params);
+    return options.repository.transaction(account, learnerId, async (tx) => ({
+      trend: await tx.frontierTrend(LEVEL_TREND_POINTS),
+    }));
   });
   app.post("/api/v1/learners/:learnerId/practice-settings", async (request) => {
     const account = await parent(request);
@@ -547,6 +568,9 @@ function routes(app: FastifyInstance, options: AppOptions) {
       .object({
         templateId: z.string().max(100).optional(),
         recoveryStrand: z.string().min(1).max(100).optional(),
+        /** The problem that was open when the page reloaded: served again,
+         * unchanged, while it is unanswered and practice is unchanged. */
+        resumeProblemId: z.string().min(1).max(160).optional(),
         count: z.number().int().min(1).max(5).default(3),
         responseCapabilities: z
           .array(z.enum(responseCapabilities))
@@ -594,6 +618,38 @@ function routes(app: FastifyInstance, options: AppOptions) {
           : Math.min(input.count, trialRemaining);
       const satMathFocus = await tx.satMathFocus();
       const practice = await tx.practiceSettings();
+      // A reload (or a phone restoring the tab) returns to the open problem
+      // instead of drawing a new one. Only an unanswered, unskipped instance
+      // planned under the same practice settings, which this client can draw.
+      if (input.resumeProblemId && !focused && !input.recoveryStrand) {
+        const open = await tx.problem(input.resumeProblemId);
+        const chosen = open?.selection as
+          { reason?: string; strand?: string } | undefined;
+        if (
+          open &&
+          !open.skipped &&
+          open.practiceEpoch === practice.epoch &&
+          open.practiceRevision === practice.revision &&
+          supported.some((t) => t.id === open.public.templateId) &&
+          !(await tx.attemptByProblem(open.public.id))
+        )
+          return {
+            problems: [open.public],
+            hints: { [open.public.id]: hintSupport(open) },
+            ...(trialRemaining !== null ? { trialRemaining } : {}),
+            selection: [
+              {
+                problemId: open.public.id,
+                reason: chosen?.reason ?? "resume",
+                strand: chosen?.strand ?? "math",
+              },
+            ],
+            lesson:
+              lessons.find((l) =>
+                l.templateIds.includes(open.public.templateId),
+              ) ?? null,
+          };
+      }
       const focusedPool = practice.focusSkillId
         ? supported.filter((t) => t.skillId === practice.focusSkillId)
         : [];
@@ -733,9 +789,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
       });
       const filename = `${lessonId}-${kind}-${format}.pdf`;
       try {
-        const pdf = await readFile(
-          new URL(`../../artifacts/publications/${filename}`, import.meta.url),
-        );
+        const pdf = await readFile(publicationFile(filename));
         return reply
           .type("application/pdf")
           .header("Content-Disposition", `attachment; filename="${filename}"`)
@@ -1244,7 +1298,10 @@ export function withGlossary(outcome: Outcome): Outcome {
 const SECOND_PARENT_READS = new Set([
   "/api/v1/learners/:learnerId/progress",
   "/api/v1/learners/:learnerId/frontier",
+  "/api/v1/learners/:learnerId/level-trend",
 ]);
+/** Enough points to draw the level's path, however long the record. */
+const LEVEL_TREND_POINTS = 48;
 function requestLearnerIds(request: {
   params?: unknown;
   query?: unknown;

@@ -14,7 +14,7 @@ import {
 } from "playwright";
 const chromium = secureChromium(rawChromium);
 import { problemLesson } from "../src/content/problem-lessons";
-import { skills } from "../src/curriculum/catalog";
+import { skillTitle, skills } from "../src/curriculum/catalog";
 import { generateProblem, templates } from "../src/math/engine";
 import { retentionNotice } from "../src/family/contracts";
 import { fixtureMe } from "./me-fixture";
@@ -786,24 +786,25 @@ async function verifySearchFilters() {
       await page.waitForURL(
         (url) => url.searchParams.get("topic") === "linear",
       );
-      await input.fill("Count to 20");
+      const countingTitle = skillTitle("count-to-20");
+      await input.fill(countingTitle);
       await page.waitForURL(
-        (url) => url.searchParams.get("topic") === "Count to 20",
+        (url) => url.searchParams.get("topic") === countingTitle,
       );
-      await page.getByRole("link", { name: /Count to 20/ }).click();
+      await page.getByRole("link", { name: countingTitle }).click();
       await page.waitForURL((url) => url.pathname === "/pathways/count-to-20");
       await page.goBack();
       await input.waitFor();
       assert.equal(
         await input.inputValue(),
-        "Count to 20",
+        countingTitle,
         "Browser Back restores the search",
       );
       await page.goForward();
       await input.waitFor();
       assert.equal(
         await input.inputValue(),
-        "Count to 20",
+        countingTitle,
         "Browser Forward restores the search",
       );
       await input.fill("");
@@ -841,7 +842,8 @@ try {
       await page.goto(`${origin}/pathways`);
       await page.locator(".pathways-canvas canvas").waitFor();
       await page
-        .getByText("2 skills illuminated", { exact: false })
+        .getByText(/^2 of \d+ skills earned/)
+        .first()
         .waitFor({ state: "attached" });
       // The way to practice is the app frame's one action in its bar.
       const go = page.locator("[data-shell-action]");
@@ -1237,7 +1239,7 @@ try {
     // The phone row's count paints once the record is in.
     await pendingPhone
       .locator(".pathways-phone-summary", {
-        hasText: /^2 of \d+ skills illuminated$/,
+        hasText: /^2 of \d+ skills earned$/,
       })
       .waitFor();
   } finally {
@@ -1275,7 +1277,7 @@ try {
     await once.goto(`${origin}/pathways`);
     await once
       .locator(".pathways-phone-summary", {
-        hasText: /^2 of \d+ skills illuminated$/,
+        hasText: /^2 of \d+ skills earned$/,
       })
       .waitFor();
     await once.waitForLoadState("networkidle");
@@ -1386,11 +1388,13 @@ try {
   await fixture(page);
   await page.goto(`${origin}/pathways?skill=${target.id}`);
   await page
-    .getByText("2 skills illuminated", { exact: false })
+    .getByText(/^2 of \d+ skills earned/)
+    .first()
     .waitFor({ state: "attached" });
   await choose(page, "Learner", "parent-one-b");
   await page
-    .getByText("0 skills illuminated", { exact: false })
+    .getByText(/^0 of \d+ skills earned/)
+    .first()
     .waitFor({ state: "attached" });
   assert.equal(
     await page.getByRole("link", { name: "Try a problem" }).count(),
@@ -1398,7 +1402,8 @@ try {
   );
   await choose(page, "Learner", "parent-one-a");
   await page
-    .getByText("2 skills illuminated", { exact: false })
+    .getByText(/^2 of \d+ skills earned/)
+    .first()
     .waitFor({ state: "attached" });
   await page.evaluate(() => {
     (window as any).pathwaysAccount = "parent-two";
@@ -1409,7 +1414,7 @@ try {
     .waitFor();
   assert.equal(
     await page.locator(".pathways-summary").textContent(),
-    `0 skills illuminated · ${skills.length} mapped skills from kindergarten through precalculus`,
+    `0 of ${skills.length} skills earned · kindergarten through precalculus`,
   );
   assert.equal(
     await page.getByRole("link", { name: "Try a problem" }).count(),

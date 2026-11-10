@@ -398,8 +398,8 @@ function CalendarStep({ state, orgId }: { state: SetupState; orgId: string }) {
   const [endsOn, setEndsOn] = useState(
     state.calendar?.endsOn ?? suggested.endsOn,
   );
-  const [division, setDivision] = useState<DivisionKind>(
-    state.calendar?.division ?? "semester",
+  const [division, setDivision] = useState<DivisionKind | null>(
+    state.calendar ? state.calendar.division : "semester",
   );
   const [busy, setBusy] = useState<"save" | "later" | null>(null);
   const [error, setError] = useErrorState();
@@ -487,12 +487,17 @@ function CalendarStep({ state, orgId }: { state: SetupState; orgId: string }) {
         <Segmented
           label="How is it divided?"
           compact
-          value={division}
-          onChange={setDivision}
-          options={divisionKinds.map((kind) => ({
-            value: kind,
-            label: divisionLabels[kind].plural,
-          }))}
+          value={division ?? "none"}
+          onChange={(value) =>
+            setDivision(value === "none" ? null : (value as DivisionKind))
+          }
+          options={[
+            { value: "none", label: "None" },
+            ...divisionKinds.map((kind) => ({
+              value: kind,
+              label: divisionLabels[kind].plural,
+            })),
+          ]}
         />
       </div>
       <YearRibbon startsOn={startsOn} endsOn={endsOn} division={division} />

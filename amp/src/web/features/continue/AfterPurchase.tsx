@@ -7,14 +7,15 @@ import { meOptions, refreshMe, sessionOptions } from "../../lib/query";
 import { Button } from "../../ui/Button";
 import { Sheet } from "../../ui/Sheet";
 import { TextField } from "../../ui/TextField";
+import { CHILD_NAME_MAX, childNameProblem } from "../../../learning/nickname";
 import { forgetContinuation, readContinuation } from "./memory";
 import styles from "./Continue.module.css";
 
 /**
  * After "Continue with AMP": back on the screen it was opened from, with the
- * learner's access active, a parent may add the child's name. Paying was the
- * consent a name needs. It is offered once, over the screen, and never asked
- * again: "Not now" leaves the picture name, and Family can name them later.
+ * learner's access active, a parent who left a child unnamed ("Child 2") may
+ * add their name. It is offered once, over the screen, and never asked again:
+ * "Not now" keeps the number, and Family can name them any time.
  */
 export function AfterPurchase() {
   const session = useQuery(sessionOptions).data;
@@ -40,18 +41,17 @@ export function AfterPurchase() {
       naming &&
       learner &&
       learner.hasAccess &&
-      (!learner.namePending || learner.adult)
+      (!learner.defaultName || learner.adult)
     )
       forgetContinuation();
-  }, [naming, learner?.id, learner?.namePending]);
+  }, [naming, learner?.id, learner?.defaultName]);
   const shown =
     !dismissed &&
     naming &&
     !!learner &&
     !!learner.hasAccess &&
-    !!learner.namePending &&
-    !learner.adult &&
-    account?.consent.status === "active";
+    !!learner.defaultName &&
+    !learner.adult;
   if (!shown || !session || !learner) return null;
   return (
     <NameSheet
@@ -108,18 +108,21 @@ function NameSheet({
           event.preventDefault();
           const value = name.trim();
           if (!value) return setError("Enter a first name or nickname.");
+          const problem = childNameProblem(value);
+          if (problem) return setError(problem);
           if (!save.isPending) save.mutate(value);
         }}
       >
         <p className={styles.sheetText}>
-          {learner.name} is ready to practice. Add a first name or nickname, or
-          keep {learner.name} for now.
+          {learner.name} is ready to practice. Add their first name or
+          nickname, or keep {learner.name} for now.
         </p>
         <TextField
-          label="First name or nickname"
+          label="Name"
+          placeholder="First name or nickname"
           autoComplete="off"
           value={name}
-          maxLength={60}
+          maxLength={CHILD_NAME_MAX}
           error={error}
           onChange={(event) => {
             setName(event.target.value);

@@ -4,6 +4,15 @@ import { registerComponent, type Prim } from "../layout";
 import { typeset } from "../type";
 import { clean, num, signed, spoken } from "./format";
 
+/** Pixels between the arcs of overlapping hops: room for a label and a gap. */
+const HOP_LANE = 30;
+/** Narrower than this, a hop cannot hold its own label. */
+const HOP_NARROW = 44;
+/** Distance of a label beside a hop's foot. */
+const HOP_BESIDE = 22;
+/** A hop landing closer than this to a labeled point crowds its label. */
+const HOP_CROWDED = 46;
+
 /** A number line with ticks, marks, intervals and hops. */
 export const numberLineSchema = z
   .object({
@@ -81,6 +90,41 @@ export function ticks(min: number, max: number, step: number) {
   return Array.from({ length: last - first + 1 }, (_, i) =>
     clean((first + i) * step),
   );
+}
+
+type Place = [number, number, 0 | 1 | -1, 0 | 1 | -1];
+
+/**
+ * Candidate places for a point's label. Where hops start or land on the point,
+ * the label goes on the side no hop leaves toward, so no arc runs through it.
+ */
+function markPlacements(
+  hops: NonNullable<NumberLine["hops"]>,
+  at: number,
+): Place[] {
+  const sides = new Set<number>();
+  for (const hop of hops) {
+    if (hop.from === at) sides.add(Math.sign(hop.by));
+    if (clean(hop.from + hop.by) === at) sides.add(-Math.sign(hop.by));
+  }
+  const left: Place = [-7, -9, 1, 1];
+  const right: Place = [7, -9, -1, 1];
+  const above: Place = [0, -12, 0, 1];
+  const below: Place = [0, 12, 0, -1];
+  const high: Place = [0, -34, 0, 1];
+  // Past the head of a hop that lands just beside the point.
+  const farLeft: Place = [-20, -6, 1, 1];
+  const farRight: Place = [20, -6, -1, 1];
+  if (sides.size === 1)
+    return [
+      sides.has(1) ? left : right,
+      above,
+      high,
+      sides.has(1) ? farLeft : farRight,
+    ];
+  // Hops on both sides: below the axis, between the tick labels, if it fits.
+  if (sides.size === 2) return [below, above, left, right, high];
+  return [above, left, right, high, farLeft, farRight];
 }
 
 registerComponent("numberLine", {
@@ -184,9 +228,34 @@ registerComponent("numberLine", {
             shape: iv.open?.[j] ? "open" : "dot",
           });
     }
+    // Hops whose spans overlap would draw over one another, arcs and labels
+    // alike. A longer hop rises over the shorter hops it overlaps, one lane
+    // higher. A shorter hop under it carries its label on its own arc, on a
+    // paper backing; a hop too narrow for its label puts it beside the foot
+    // it shares with the longer hop, in the open.
+    const hops = c.hops ?? [];
+    const lo = hops.map((hop) => Math.min(hop.from, hop.from + hop.by));
+    const hi = hops.map((hop) => Math.max(hop.from, hop.from + hop.by));
+    const heights = hops.map((hop) =>
+      Math.min(64, Math.max(16, Math.abs(hop.by) * s * 0.3)),
+    );
+    const under: boolean[] = hops.map(() => false);
+    const beside: (number | undefined)[] = hops.map(() => undefined);
+    const shortestFirst = hops
+      .map((_, i) => i)
+      .sort((x, y) => hi[x]! - lo[x]! - (hi[y]! - lo[y]!) || x - y);
+    for (const [n, i] of shortestFirst.entries())
+      for (const j of shortestFirst.slice(0, n)) {
+        if (!(lo[j]! < hi[i]! && lo[i]! < hi[j]!)) continue;
+        under[j] = true;
+        heights[i] = Math.max(heights[i]!, heights[j]! + HOP_LANE);
+        if ((hi[j]! - lo[j]!) * s < HOP_NARROW)
+          beside[j] =
+            lo[j] === lo[i] ? lo[j] : hi[j] === hi[i] ? hi[j] : undefined;
+      }
     for (const [i, hop] of (c.hops ?? []).entries()) {
       const to = clean(hop.from + hop.by);
-      const h = Math.min(64, Math.max(16, Math.abs(hop.by) * s * 0.3));
+      const h = heights[i]!;
       const color = hop.color ?? "accent";
       prims.push({
         type: "arrow",
@@ -202,10 +271,14 @@ registerComponent("numberLine", {
         prims.push({
           type: "text",
           id: `hop.${i}.label`,
-          at: [hop.from + hop.by / 2, 0],
+          at: [beside[i] ?? hop.from + hop.by / 2, 0],
           text: hop.label ?? signed(hop.by),
-          offset: [0, -h - 4],
-          align: [0, 1],
+          offset:
+            beside[i] === undefined
+              ? [0, under[i] ? -h : -h - 4]
+              : [beside[i] === lo[i] ? -HOP_BESIDE : HOP_BESIDE, -14],
+          align: under[i] && beside[i] === undefined ? [0, 0] : [0, 1],
+          halo: (under[i] && beside[i] === undefined) || undefined,
           color,
           size: "sm",
         });
@@ -236,7 +309,19 @@ registerComponent("numberLine", {
         color: m.color ?? "warm",
         data: { mark: m.at },
       });
-      if (m.label !== undefined && m.label !== false)
+      if (m.label !== undefined && m.label !== false) {
+        // Another hop landing just beside the point leaves no room above the
+        // axis between the arcs and that hop's head. The value then reads in
+        // the number row, under its dot, in place of the tick numbers it
+        // covers (they are optional and give way).
+        const crowded = (c.hops ?? []).some((hop) => {
+          const to = clean(hop.from + hop.by);
+          return (
+            hop.from !== m.at &&
+            to !== m.at &&
+            Math.abs(to - m.at) * s < HOP_CROWDED
+          );
+        });
         prims.push({
           type: "text",
           id: `mark.${i}.label`,
@@ -245,14 +330,14 @@ registerComponent("numberLine", {
           derived: m.derived,
           bold: true,
           color: m.color ?? "warm",
-          align: [0, 1],
-          place: [
-            [0, -12, 0, 1],
-            [-7, -9, 1, 1],
-            [7, -9, -1, 1],
-            [0, -34, 0, 1],
-          ],
+          ...(crowded && m.label === true
+            ? { offset: [0, 10] as [number, number], align: [0, -1] as [0, -1] }
+            : {
+                align: [0, 1] as [0, 1],
+                place: markPlacements(c.hops ?? [], m.at),
+              }),
         });
+      }
     }
     return prims;
   },

@@ -70,7 +70,7 @@ try {
     await page.getByRole("link", { name: "Account", exact: true }).click();
     await page
       .getByRole("navigation", { name: "Account" })
-      .getByRole("link", { name: "Family", exact: true })
+      .getByRole("link", { name: "Learners", exact: true })
       .click();
     await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
     await page
@@ -175,7 +175,7 @@ try {
     await page.getByRole("link", { name: "Account", exact: true }).click();
     await page
       .getByRole("navigation", { name: "Account" })
-      .getByRole("link", { name: "Family", exact: true })
+      .getByRole("link", { name: "Learners", exact: true })
       .click();
     await page.getByRole("heading", { name: "Family", exact: true }).waitFor();
     assert.deepEqual(errors, []);

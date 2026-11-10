@@ -1,55 +1,56 @@
 import { Link } from "@tanstack/react-router";
-import { useMemo } from "react";
-import { levelRange } from "../../../../learning/level-check";
+import { useQuery } from "@tanstack/react-query";
+import { useMemo, useState, type ReactNode } from "react";
 import type {
+  GradeRow,
   MapResponse,
   MapStudent,
 } from "../../../../schools/teacher-contracts";
-import { Avatar } from "../../../ui/Avatar";
-import { DataGrid, type DataGridColumn } from "../../../ui/DataGrid";
+import { Toast } from "../../../ui/Toast";
+import { currentSession } from "../api";
+import { FinalField, Suggested } from "./grade-parts";
+import { gradebookOptions } from "./teacher-api";
 import {
+  fitScale,
   LevelAxis,
-  LevelBand,
-  levelScale,
-  type LevelEstimate,
-} from "../../../ui/LevelChart";
+  LevelBar,
+  LevelRows,
+  likelyRange,
+  type Estimate,
+  type RangeScale,
+} from "../../../ui/level-range";
+import { strandNames } from "../../../BirthYearPrompt";
 import { Menu, MenuItem } from "../../../ui/Menu";
-import {
-  parseSort,
-  studentUrl,
-  TipZone,
-  useClassSearch,
-} from "./teacher-shared";
-import styles from "./Teacher.module.css";
+import { classUrl, parseSort, useClassSearch } from "./teacher-shared";
+import styles from "./ClassMap.module.css";
 
-const axisName = (level: number) => String(level);
 /** Before any work, a wide band around where they should be, drawn dashed. */
 const UNKNOWN_SD = 0.9;
-const SCALE_SD = 0.3;
-const SCALE_MOST_SD = 1.2;
 const middleOf = (reference: MapStudent["reference"]) =>
   reference ? (reference.from + reference.to) / 2 : null;
-/** A row of the map: a student, or a teacher of the class who practices
- * themselves (docs/families.md), marked and never one of the students. */
-type MapLine = MapStudent & { teacher?: { you: boolean } };
 
-function estimateOf(
-  student: MapStudent,
-  strand: string,
-  center: number,
-): { estimate: LevelEstimate; estimated: boolean } {
+type Placed = {
+  student: MapStudent;
+  estimate: Estimate;
+  /** Too little work to place: a starting guess, drawn dashed. */
+  estimated: boolean;
+};
+
+function place(student: MapStudent, lens: string, center: number): Placed {
   const known =
-    strand === "overall"
+    lens === "overall"
       ? student.level?.overall
-      : (student.level?.strands[strand] ?? student.level?.overall);
+      : (student.level?.strands[lens] ?? student.level?.overall);
   return known
     ? {
+        student,
         estimate: known,
         estimated:
           student.provisional ||
-          (strand !== "overall" && !student.level?.strands[strand]),
+          (lens !== "overall" && !student.level?.strands[lens]),
       }
     : {
+        student,
         estimate: {
           level: middleOf(student.reference) ?? center,
           sd: UNKNOWN_SD,
@@ -58,249 +59,478 @@ function estimateOf(
       };
 }
 
-/** Every student a row, each strand a column, on one scale. The stripe down each
- * column is this course (or, in a mixed class, each student's own grade), so who
- * is behind it, on it or past it reads at a glance. On a phone: one strand at a
- * time, as flush rows. */
+/**
+ * The class on one scale: a row per student, one error bar each, for the
+ * whole of their work or one area at a time. The scale spans the class's
+ * real range, so a student far behind or far ahead has a whole bar like
+ * everyone else; the stripe behind each bar is this course, or in a mixed
+ * class the student's own grade. Only students: a teacher's own practice is
+ * theirs, on `/me`.
+ */
 export function ClassMap({
   data,
   limitStrands,
+  action,
 }: {
   data: MapResponse;
-  /** On Today the map is a glance, with the strands that have the most work. */
+  /** On Today the map is a glance, with the areas that have the most work. */
   limitStrands?: number;
+  /** Before anyone has practiced: the one step that starts it. */
+  action?: ReactNode;
 }) {
   const [search, set] = useClassSearch();
   const strands = limitStrands
     ? data.strands.slice(0, limitStrands)
     : data.strands;
-  const rows = useMemo<MapLine[]>(
-    () => [
-      ...data.students,
-      ...data.teachers.map(({ you, ...teacher }) => ({
-        ...teacher,
-        gradeLevel: null,
-        teacher: { you },
-      })),
-    ],
-    [data],
-  );
-  const org = data.class.orgId;
-  const classId = data.class.id;
-  const courseLevel = data.class.course?.level;
+  const lens =
+    typeof search.lens === "string" &&
+    strands.some((strand) => strand.id === search.lens)
+      ? search.lens
+      : "overall";
+  const label = (id: string) =>
+    data.strands.find((strand) => strand.id === id)?.label ?? "Overall";
   const center = useMemo(() => {
-    if (courseLevel !== undefined) return courseLevel;
+    const course = data.class.course?.level;
+    if (course !== undefined) return course;
     const middles = data.students
       .map((student) => middleOf(student.reference))
       .filter((value): value is number => value !== null)
       .sort((a, b) => a - b);
     return middles[Math.floor(middles.length / 2)] ?? 5;
-  }, [courseLevel, data.students]);
-  // Wide enough for every student's best guess: a strand with few answers has
-  // a wide band that runs off the edge rather than shrinking everyone else's,
-  // and so does a teacher far past the class, whose dot rests at the end.
+  }, [data]);
+  const placed = useMemo(
+    () => data.students.map((student) => place(student, lens, center)),
+    [data, lens, center],
+  );
+  // Every whole likely range and every own-grade stripe, so nobody's bar
+  // runs off an end; only a provisional guess too wide to mean much rests
+  // its band against an end, with its dot inside.
   const scale = useMemo(
     () =>
-      levelScale(
-        center,
-        data.students.flatMap((student) =>
-          student.level
-            ? [
-                student.level.overall,
-                ...strands.flatMap((strand) => {
-                  const known = student.level!.strands[strand.id];
-                  return known && known.sd <= SCALE_MOST_SD ? [known] : [];
-                }),
-              ].map(({ level, sd }) => ({
-                level,
-                sd: Math.min(sd, SCALE_SD),
-              }))
-            : [],
-        ),
+      fitScale(
+        placed
+          .filter((row) => !row.estimated || row.estimate.sd <= UNKNOWN_SD)
+          .map((row) => row.estimate),
+        {
+          minSpan: 4,
+          include: placed.flatMap((row) => [
+            row.estimate.level,
+            ...(row.student.reference
+              ? [row.student.reference.from, row.student.reference.to]
+              : []),
+          ]),
+        },
       ),
-    // `strands` is a slice of this response.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [center, data, limitStrands],
+    [placed],
   );
-  const label = (id: string) =>
-    data.strands.find((strand) => strand.id === id)?.label ?? "Overall";
-  const reading = (student: MapStudent, strand: string) => {
-    const { estimate, estimated } = estimateOf(student, strand, center);
-    if (estimated) return `${label(strand)}: not enough work yet`;
-    const [from, to] = levelRange(estimate);
-    const where = !student.reference
+  const starting = placed.every((row) => row.estimated);
+  const sort = parseSort(search.sort);
+  const byName = sort?.column === "student";
+  const direction = sort?.direction ?? (byName ? "ascending" : "descending");
+  const rows = useMemo(() => {
+    const sign = direction === "ascending" ? 1 : -1;
+    return [...placed].sort((a, b) => {
+      if (byName)
+        return sign * a.student.name.localeCompare(b.student.name, "en");
+      // Who has too little work to place goes after everyone who has.
+      if (a.estimated !== b.estimated) return a.estimated ? 1 : -1;
+      return (
+        sign * (a.estimate.level - b.estimate.level) ||
+        a.student.name.localeCompare(b.student.name, "en")
+      );
+    });
+  }, [placed, byName, direction]);
+  const sortBy = (column: "student" | "level") => {
+    const current = byName ? "student" : "level";
+    const next =
+      column === current
+        ? direction === "ascending"
+          ? "descending"
+          : "ascending"
+        : column === "student"
+          ? "ascending"
+          : "descending";
+    set({ sort: `${column}:${next}` }, { replace: true });
+  };
+  const reading = (row: Placed) => {
+    if (row.estimated) return "not enough work yet";
+    const [from, to] = likelyRange(row.estimate);
+    const reference = row.student.reference;
+    const where = !reference
       ? ""
-      : to < student.reference.from
+      : to < reference.from
         ? ", below this course"
-        : from > student.reference.to
+        : from > reference.to
           ? ", past this course"
           : ", around this course";
-    return `${label(strand)}: likely grade ${from.toFixed(1)} to ${to.toFixed(1)}${where}`;
+    return `likely grade ${from.toFixed(1)} to ${to.toFixed(1)}${where}`;
   };
-  const band = (student: MapStudent, strand: string) => {
-    const { estimate, estimated } = estimateOf(student, strand, center);
-    return (
-      <span
-        className={styles.bandCell}
-        data-strand={strand === "overall" ? undefined : strand}
-        data-tip={`${student.first}. ${reading(student, strand)}`}
-      >
-        <LevelBand
-          estimate={estimate}
-          scale={scale}
-          course={
-            student.reference
-              ? [student.reference.from, student.reference.to]
-              : undefined
-          }
-          estimated={estimated}
-          strong={strand === "overall"}
-        />
-      </span>
-    );
-  };
-  const name = (line: MapLine) => {
-    if (!line.teacher)
-      return (
-        <Link
-          to="/$"
-          params={{ _splat: studentUrl(org, line.id) }}
-          search={{ class: classId } as never}
-          className={styles.student}
-        >
-          <Avatar name={line.name} size="small" />
-          <span>{line.name}</span>
-        </Link>
-      );
-    const content = (
-      <>
-        <Avatar name={line.name} size="small" />
-        <span className={styles.teacherLine}>
-          <span>
-            {line.name}
-            <span className={styles.srOnly}>, </span>
-          </span>
-          <span className={styles.teacherRole}>Teacher</span>
-        </span>
-      </>
-    );
-    // Your own line opens your own record; a colleague's opens nothing.
-    return line.teacher.you ? (
-      <Link
-        to="/me"
-        className={styles.student}
-        data-teacher=""
-        aria-label={`${line.name}, Teacher`}
-      >
-        {content}
-      </Link>
-    ) : (
-      <span className={styles.student} data-teacher="">
-        {content}
-      </span>
-    );
-  };
-  // Who has too little work to place goes after everyone who has.
-  const level = (student: MapStudent, strand: string) =>
-    student.level && !student.provisional
-      ? strand === "overall"
-        ? student.level.overall.level
-        : (student.level.strands[strand]?.level ?? student.level.overall.level)
-      : -1;
-  const columns = useMemo<DataGridColumn<MapLine>[]>(
-    () => [
-      {
-        id: "student",
-        header: "Student",
-        width: 150,
-        compare: (a, b) => a.name.localeCompare(b.name, "en"),
-        cell: name,
-      },
-      {
-        id: "overall",
-        header: "Overall",
-        width: 100,
-        firstSort: "descending",
-        compare: (a, b) => level(a, "overall") - level(b, "overall"),
-        headerDetail: <LevelAxis scale={scale} name={axisName} />,
-        cell: (student) => band(student, "overall"),
-        cellLabel: (student) => reading(student, "overall"),
-      },
-      ...strands.map((strand): DataGridColumn<MapLine> => ({
-        id: strand.id,
-        header: strand.label,
-        width: 108,
-        firstSort: "descending",
-        compare: (a, b) => level(a, strand.id) - level(b, strand.id),
-        headerDetail: (
-          <LevelAxis
-            scale={scale}
-            name={(at) => (at === scale.center ? String(at) : "")}
-          />
-        ),
-        cell: (student) => band(student, strand.id),
-        cellLabel: (student) => reading(student, strand.id),
-      })),
-    ],
-    // The cells close over this response, and only change with it.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [data, scale],
-  );
-  const lens =
-    typeof search.lens === "string" &&
-    data.strands.some((strand) => strand.id === search.lens)
-      ? search.lens
-      : "overall";
   const lenses = ["overall", ...strands.map((strand) => strand.id)];
+  // A family or a small group: each learner's whole picture, every area,
+  // stacked down the page on one shared scale.
+  if (data.students.length <= SMALL_CLASS && !limitStrands)
+    return (
+      <SmallClassMap
+        data={data}
+        center={center}
+        starting={starting}
+        action={action}
+      />
+    );
   return (
-    <TipZone className={styles.mapGrid}>
-      <DataGrid
-        label="Class map"
-        columns={columns}
-        rows={rows}
-        rowKey={(line) => line.id}
-        sort={
-          parseSort(search.sort) ?? {
-            column: "overall",
-            direction: "descending",
-          }
-        }
-        onSortChange={(next) =>
-          set({ sort: `${next.column}:${next.direction}` }, { replace: true })
-        }
-        rules={false}
-        cardLayout="row"
-        cardsSort={false}
-        cardsToolbar={
-          <Menu align="start" label={`Showing ${label(lens)}`}>
-            {lenses.map((id) => (
-              <MenuItem
-                key={id}
-                onSelect={() =>
-                  set({ lens: id, sort: `${id}:descending` }, { replace: true })
-                }
-              >
-                {label(id)}
-              </MenuItem>
-            ))}
-          </Menu>
-        }
-        cardsHeader={
-          <div className={styles.mapRow} aria-hidden="true">
-            <span />
-            <LevelAxis scale={scale} name={axisName} />
+    <div className={styles.map}>
+      {starting && (
+        <div className={styles.starting}>
+          <div>
+            <p className={styles.startingTitle}>Starting estimates</p>
+            <p className={styles.startingBody}>
+              Each range starts from age and grade, and narrows as each one
+              practices.
+            </p>
           </div>
-        }
-        card={(student) => (
-          <div className={styles.mapRow}>
-            {name(student)}
-            <span aria-label={reading(student, lens)} role="img">
-              {band(student, lens)}
+          {action}
+        </div>
+      )}
+      <div className={styles.toolbar} hidden={starting || undefined}>
+        <Menu
+          align="start"
+          label={label(lens)}
+          aria-label={`Area: ${label(lens)}`}
+        >
+          {lenses.map((id) => (
+            <MenuItem
+              key={id}
+              onSelect={() => set({ lens: id }, { replace: true })}
+            >
+              {label(id)}
+            </MenuItem>
+          ))}
+        </Menu>
+      </div>
+      <div
+        className={styles.table}
+        role="table"
+        aria-label={`Class map, ${label(lens)}`}
+      >
+        <div className={styles.head} role="row">
+          <span role="columnheader" aria-sort={byName ? direction : "none"}>
+            <SortButton
+              label="Student"
+              active={byName}
+              direction={direction}
+              onClick={() => sortBy("student")}
+            />
+          </span>
+          <span
+            role="columnheader"
+            aria-sort={byName ? "none" : direction}
+            className={styles.levelHead}
+          >
+            <SortButton
+              label="Level"
+              active={!byName}
+              direction={direction}
+              onClick={() => sortBy("level")}
+            />
+            <span className={styles.headAxis}>
+              <LevelAxis scale={scale} />
+            </span>
+          </span>
+          <span role="columnheader" className={styles.numbersHead}>
+            Likely
+          </span>
+        </div>
+        {rows.map((row) => (
+          <div
+            key={row.student.id}
+            className={styles.row}
+            role="row"
+            data-strand={lens === "overall" ? undefined : lens}
+          >
+            <span role="cell" className={styles.name}>
+              <Link
+                to="/$"
+                params={{
+                  _splat: `${classUrl(data.class.orgId, data.class.id, "map")}/${row.student.id}`,
+                }}
+                className={styles.student}
+                data-map-student={row.student.id}
+              >
+                {row.student.name}
+              </Link>
+            </span>
+            <span
+              role="cell"
+              className={styles.bar}
+              aria-label={`${row.student.first}: ${reading(row)}`}
+            >
+              <LevelBar
+                estimate={row.estimate}
+                scale={scale}
+                band={
+                  row.student.reference
+                    ? [row.student.reference.from, row.student.reference.to]
+                    : null
+                }
+                estimated={row.estimated}
+              />
+            </span>
+            <span role="cell" className={styles.numbers}>
+              {row.estimated ? (
+                <span className={styles.notYet}>
+                  {starting ? "Starting" : "Not enough work"}
+                </span>
+              ) : (
+                likelyRange(row.estimate)
+                  .map((value) => value.toFixed(1))
+                  .join("–")
+              )}
             </span>
           </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** Up to this many learners, the map shows each one whole. */
+const SMALL_CLASS = 6;
+/** The curriculum's order of areas, for each learner's rows. */
+const AREA_ORDER = Object.keys(strandNames);
+
+/**
+ * A small class (a family, a tutor's group): a section per learner, with
+ * their overall level and every area as its own wide error bar, all on one
+ * scale that spans the whole group, each over their own grade. Before
+ * anyone has practiced, each learner's starting range alone.
+ */
+function SmallClassMap({
+  data,
+  center,
+  starting,
+  action,
+}: {
+  data: MapResponse;
+  center: number;
+  starting: boolean;
+  action?: ReactNode;
+}) {
+  // The grade, as a line in each learner's section: a small class needs no
+  // separate gradebook.
+  const session = currentSession();
+  const classPlace = { org: data.class.orgId, class: data.class.id };
+  const book = useQuery(gradebookOptions(session, classPlace, undefined));
+  const grades = new Map(
+    (book.data?.students ?? []).map((row) => [row.id, row]),
+  );
+  const [message, setMessage] = useState("");
+  const areas = [...data.strands].sort(
+    (a, b) =>
+      (AREA_ORDER.indexOf(a.id) + 1 || 99) -
+      (AREA_ORDER.indexOf(b.id) + 1 || 99),
+  );
+  const learners = data.students.map((student) => ({
+    student,
+    overall: place(student, "overall", center),
+    areas: student.level
+      ? areas.map((area) => {
+          const row = place(student, area.id, center);
+          return {
+            id: area.id,
+            label: area.label,
+            estimate: row.estimate,
+            estimated: row.estimated,
+          };
+        })
+      : [],
+  }));
+  const scale: RangeScale = fitScale(
+    learners.flatMap((learner) =>
+      [
+        learner.overall,
+        ...learner.areas.map((area) => ({
+          estimate: area.estimate,
+          estimated: !!area.estimated,
+        })),
+      ]
+        .filter((row) => !row.estimated || row.estimate.sd <= UNKNOWN_SD)
+        .map((row) => row.estimate),
+    ),
+    {
+      minSpan: 6,
+      include: learners.flatMap((learner) => [
+        learner.overall.estimate.level,
+        ...(learner.student.reference
+          ? [learner.student.reference.from, learner.student.reference.to]
+          : []),
+      ]),
+    },
+  );
+  return (
+    <div className={styles.map}>
+      <Toast message={message} onDismiss={() => setMessage("")} />
+      {starting && (
+        <div className={styles.starting}>
+          <div>
+            <p className={styles.startingTitle}>Starting estimates</p>
+            <p className={styles.startingBody}>
+              Each range starts from age and grade, and narrows as each one
+              practices.
+            </p>
+          </div>
+          {action}
+        </div>
+      )}
+      {learners.map((learner) => {
+        const { student, overall } = learner;
+        const [from, to] = likelyRange(overall.estimate);
+        return (
+          <section
+            key={student.id}
+            className={styles.learner}
+            aria-labelledby={`map-${student.id}`}
+          >
+            <div className={styles.learnerHead}>
+              <h2 id={`map-${student.id}`} className={styles.learnerName}>
+                <Link
+                  to="/$"
+                  params={{
+                    _splat: `${classUrl(data.class.orgId, data.class.id, "map")}/${student.id}`,
+                  }}
+                  className={styles.student}
+                  data-map-student={student.id}
+                >
+                  {student.name}
+                </Link>
+              </h2>
+              {!overall.estimated && (
+                <p className={styles.learnerLevel}>
+                  Likely {from.toFixed(1)}–{to.toFixed(1)}
+                </p>
+              )}
+            </div>
+            <LevelRows
+              overall={overall.estimate}
+              overallEstimated={overall.estimated}
+              areas={learner.areas}
+              scale={scale}
+              grade={
+                student.reference
+                  ? [student.reference.from, student.reference.to]
+                  : null
+              }
+            />
+            {book.data?.term && (
+              <GradeLine
+                session={session}
+                place={classPlace}
+                term={book.data.term}
+                editable={book.data.canEdit && book.data.term.state === "open"}
+                row={grades.get(student.id)}
+                student={student}
+                onMessage={setMessage}
+              />
+            )}
+          </section>
+        );
+      })}
+    </div>
+  );
+}
+
+const COMPONENT_NAMES = {
+  course: "Course progress",
+  growth: "Growth",
+  practice: "Practice",
+  retention: "Retention",
+} as const;
+
+/** A learner's grade for the open term, in one line: the suggestion and
+ * what it rests on once there is enough work, and the final grade. */
+function GradeLine({
+  session,
+  place,
+  term,
+  editable,
+  row,
+  student,
+  onMessage,
+}: {
+  session: ReturnType<typeof currentSession>;
+  place: { org: string; class: string };
+  term: { id: string; name: string };
+  editable: boolean;
+  row: GradeRow | undefined;
+  student: MapStudent;
+  onMessage: (message: string) => void;
+}) {
+  const ready = row?.suggestion.status === "ready";
+  return (
+    <div className={styles.gradeLine} data-grade-line>
+      <span className={styles.gradeTerm}>{term.name}</span>
+      <span className={styles.gradeSuggested}>
+        {row ? <Suggested suggestion={row.suggestion} /> : null}
+        {ready && (
+          <span className={styles.gradeParts}>
+            {row!.suggestion.components
+              .filter((part) => part.score !== null)
+              .map(
+                (part) =>
+                  `${COMPONENT_NAMES[part.id]} ${Math.round(part.score!)}`,
+              )
+              .join(" · ")}
+          </span>
         )}
-      />
-    </TipZone>
+      </span>
+      <span className={styles.gradeFinal}>
+        <span className={styles.gradeFinalLabel}>Final</span>
+        <FinalField
+          session={session}
+          place={place}
+          student={{
+            id: student.id,
+            name: student.name,
+            first: student.first,
+          }}
+          term={term.id}
+          final={row?.final ?? null}
+          editable={editable}
+          onError={onMessage}
+          onSaved={onMessage}
+        />
+      </span>
+    </div>
+  );
+}
+
+function SortButton({
+  label,
+  active,
+  direction,
+  onClick,
+}: {
+  label: string;
+  active: boolean;
+  direction: "ascending" | "descending";
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      className={styles.sort}
+      data-active={active || undefined}
+      onClick={onClick}
+    >
+      {label}
+      <svg
+        viewBox="0 0 12 12"
+        aria-hidden="true"
+        className={styles.chevron}
+        data-direction={active ? direction : undefined}
+      >
+        <path d="M3 4.5 6 7.5 9 4.5" />
+      </svg>
+    </button>
   );
 }
 

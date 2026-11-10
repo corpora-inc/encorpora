@@ -221,9 +221,11 @@ export async function readToday(
     };
   });
   const course = courseBand(context.courseBands);
+  const family = context.orgKind === "family";
   const todos = todayTodos(
     {
       today,
+      family,
       students,
       skills: evidence.map((row) => ({
         studentId: learnerToPerson.get(row.learner_id)!,
@@ -239,6 +241,28 @@ export async function readToday(
   );
   return {
     class: classSummaryOf(context),
+    family,
+    weeklyTargetMinutes: target.minutes,
+    students: named.map((student, index) => {
+      const stored = levelRows.get(student.id);
+      const day = dayRows.get(student.id);
+      return {
+        id: student.id,
+        // A family's own children are matched to their learners on screen.
+        ...(family ? { learnerId: student.learnerId } : {}),
+        name: student.name,
+        gradeLevel: student.gradeLevel,
+        level: stored
+          ? { level: stored.overall.level, sd: stored.overall.sd }
+          : null,
+        provisional: !stored || stored.overall.answered < PROVISIONAL_ANSWERS,
+        todayMinutes: Math.round(day?.activeMinutes ?? 0),
+        todayProblems: day?.problems ?? 0,
+        weekMinutes: Math.round(students[index]!.weekMinutes),
+        weekProblems: students[index]!.weekProblems,
+        lastActive: students[index]!.lastActive,
+      };
+    }),
     teacherName,
     today,
     partOfDay: partOfDay(context.hour),
@@ -663,6 +687,10 @@ export async function readProgress(
   timezone: string,
   today: string,
   reference: { from: number; to: number } | null,
+  /** "counted": objectives as a grade counts them (above the student's
+   * working level less the reach). "all": every one gained, for the
+   * learner's own record, where something earned never disappears. */
+  objectiveList: "counted" | "all" = "counted",
 ): Promise<ProgressRecord> {
   const roster: RosterMember[] = [
     { personId: member.personId, learnerId: member.learnerId },
@@ -726,7 +754,7 @@ export async function readProgress(
     })),
     objectives: countedObjectives(
       objectives.get(member.personId) ?? [],
-      level ? level.overall.level - 1 : null,
+      level && objectiveList === "counted" ? level.overall.level - 1 : null,
     )
       .slice(0, 10)
       .map(({ skillId, day }) => ({

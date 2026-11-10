@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { skills } from "../src/curriculum/catalog";
 import {
-  crystal,
+  skillLight,
   layout,
   frontierRange,
   connections,
@@ -12,7 +12,7 @@ import {
   catalogSchema,
 } from "../src/web/features/pathways/model";
 
-test("crystal growth survives a miss and a retrieval streak reset", () => {
+test("skill growth survives a miss and a retrieval streak reset", () => {
   const before = {
     skillId: "test",
     attempts: 20,
@@ -27,10 +27,10 @@ test("crystal growth survives a miss and a retrieval streak reset", () => {
     independentOccasions: 0,
     status: "practicing" as const,
   };
-  assert.equal(crystal(before).stage, 3);
-  assert.equal(crystal(after).stage, 3);
-  assert.equal(crystal(after).strong, false);
-  assert.equal(crystal(undefined).stage, 0);
+  assert.equal(skillLight(before).stage, 3);
+  assert.equal(skillLight(after).stage, 3);
+  assert.equal(skillLight(after).strong, false);
+  assert.equal(skillLight(undefined).stage, 0);
 });
 test("catalog layout is deterministic, finite, collision free, independent of input order", () => {
   const positions = layout(skills);
@@ -111,7 +111,7 @@ test("illumination accumulates separately from changing strength and does not in
     status: "practicing" as const,
   };
   assert.equal(illumination(miss), 5);
-  assert(!crystal(miss).strong);
+  assert(!skillLight(miss).strong);
   assert.equal(illumination({ ...miss, independentCorrect: 11 }), 5.5);
   assert.equal(illumination({ ...miss, independentCorrect: 100 }), 10);
 });

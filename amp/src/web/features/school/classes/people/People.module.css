@@ -1,0 +1,82 @@
+/* The family's other people on People: two lists side by side from 820 px,
+   rows with hairlines, a quiet "+ Add" at the foot of each. */
+.people {
+  container-type: inline-size;
+  padding-top: var(--space-3);
+}
+.lists {
+  display: grid;
+  gap: var(--space-6);
+}
+@container (min-width: 820px) {
+  .lists {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-7);
+    align-items: start;
+  }
+}
+.list {
+  container-type: inline-size;
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  min-width: 0;
+}
+/* Serif section headings, as on every screen (docs/design/ia.md). */
+.title {
+  margin-bottom: var(--space-1);
+}
+.lead {
+  max-width: 52ch;
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+.rows:empty {
+  display: none;
+}
+.rows > li {
+  box-shadow: inset 0 1px 0 var(--color-border);
+  padding-block: var(--space-3);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-4);
+  box-shadow: inset 0 1px 0 var(--color-border);
+  padding-top: var(--space-1);
+}
+.add {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  margin: 0 0 0 calc(-1 * var(--space-2));
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: var(--radius-small);
+  background: transparent;
+  color: var(--color-primary);
+  font: inherit;
+  font-size: var(--text-table);
+  font-weight: 650;
+  cursor: pointer;
+}
+/* Hover tints, never underlines. */
+.add:hover:not(:disabled) {
+  filter: none;
+  background: var(--color-surface-hover);
+}
+.add:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.add svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+}

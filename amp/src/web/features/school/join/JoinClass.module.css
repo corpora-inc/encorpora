@@ -1,0 +1,236 @@
+/* "Join this class" (JoinClass.tsx): the code in one face, the link with
+   Copy, a QR for it, the board and cards. One element wherever children are
+   brought in. */
+.join {
+  display: grid;
+  gap: var(--space-5);
+  align-items: start;
+}
+@media (min-width: 640px) {
+  .join {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-6);
+  }
+}
+.text {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: start;
+  min-width: 0;
+}
+.title {
+  margin: 0;
+  font-size: var(--text-heading-2);
+}
+.lead {
+  max-width: 52ch;
+  margin: 0;
+  color: var(--color-muted-text);
+}
+.codeRow,
+.linkRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+}
+.label {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  font-weight: 600;
+}
+/* The code in one face everywhere: tabular, spaced, with its hyphen. */
+.code {
+  font-size: 22px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.link {
+  min-width: 0;
+  color: var(--color-on-surface);
+  font-size: var(--text-label);
+  overflow-wrap: anywhere;
+}
+.actions {
+  margin-top: var(--space-1);
+}
+.fallback {
+  margin: 0;
+  color: var(--color-subtle-text);
+  font-size: var(--text-small);
+}
+.qr {
+  width: 168px;
+  height: 168px;
+  justify-self: center;
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-figure-paper);
+}
+/* The header form: the code, then one row of equal controls with equal
+   gaps. On a phone the code shares its line with the QR and More, and Copy
+   link and Full screen split the line below. */
+.compact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+.codeGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-inline-end: var(--space-3);
+}
+.compact .code {
+  font-size: 20px;
+  line-height: 1;
+}
+@media (max-width: 559px) {
+  .compact {
+    display: grid;
+    box-sizing: border-box;
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-3) var(--space-2);
+  }
+  .codeGroup {
+    grid-area: 1 / 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+    margin: 0;
+  }
+  .compact .icons {
+    grid-area: 1 / 2;
+    flex-wrap: nowrap;
+  }
+  .compact .wide {
+    grid-area: 2 / 1 / 3 / -1;
+    display: grid;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
+  }
+}
+
+/* One action group, wherever the element appears: every control the same
+   height and outline, an icon before its words, equal gaps, centred on one
+   line. Two classes outrank the copy button's and the menu trigger's own. */
+.group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+.group .act {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-sizing: border-box;
+  height: var(--target-size);
+  min-height: var(--target-size);
+  min-width: var(--target-size);
+  margin: 0;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-primary);
+  font: inherit;
+  font-size: var(--text-label);
+  font-weight: 650;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.group .act:hover:not(:disabled),
+.group .act[data-state="open"],
+.group .act[data-state="open"]:hover:not(:disabled) {
+  filter: none;
+  background: var(--color-secondary);
+  color: var(--color-primary);
+}
+.group .act:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.group .act[data-done="copied"] {
+  border-color: var(--color-success-accent);
+  background: var(--color-success);
+  color: var(--color-on-success);
+}
+/* Copy keeps one width whatever it says: its two labels share one cell. */
+.group .copyAct {
+  display: inline-grid;
+  align-items: center;
+  justify-items: center;
+}
+.group .iconOnly {
+  width: var(--target-size);
+  padding: 0;
+}
+.group .primaryAct,
+.group .quietAct {
+  box-sizing: border-box;
+  height: var(--target-size);
+  min-height: var(--target-size);
+  padding-block: 0;
+  font-size: var(--text-label);
+  line-height: 1;
+}
+.glyph {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.glyph[data-glyph="more"] {
+  fill: currentColor;
+  stroke: none;
+}
+
+/* The QR, large, for a device's camera. Dark on white in every theme. */
+.qrSheet {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+.qrSheet p {
+  max-width: 34ch;
+  margin: 0;
+  color: var(--color-muted-text);
+}
+.qrLarge {
+  width: min(280px, 72vw);
+  height: min(280px, 72vw);
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-figure-paper);
+}
+
+.confirm {
+  display: grid;
+  gap: var(--space-5);
+  line-height: 1.5;
+}
+.confirm p {
+  margin: 0;
+}
+.confirmActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}

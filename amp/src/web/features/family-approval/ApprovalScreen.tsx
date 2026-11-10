@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { CHILD_NAME_MAX, childNameProblem } from "../../../learning/nickname";
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useLoggedError } from "../../feedback";
@@ -56,13 +57,20 @@ export function ApprovalScreen() {
   useLoggedError(error);
   const view = page.data;
   useEffect(() => {
-    if (view?.childName && !name) setName(view.childName);
+    // A tutor's nickname is a start; their number ("Student 2") is not a name.
+    if (view?.childName && !name && !/^Student \d+$/.test(view.childName))
+      setName(view.childName);
   }, [view?.childName]);
   const child = view?.childName ?? "your child";
   const approve = async () => {
     if (!view) return;
     if (!name.trim()) {
-      setNameError("Enter your child’s first name.");
+      setNameError("Enter your child’s first name or nickname.");
+      return;
+    }
+    const problem = childNameProblem(name);
+    if (problem) {
+      setNameError(problem);
       return;
     }
     if (view.asksBirthYear && !birthYear) {
@@ -219,10 +227,11 @@ export function ApprovalScreen() {
               }}
             >
               <TextField
-                label="Your child’s first name"
+                label="Your child’s name"
+                placeholder="First name or nickname"
                 autoComplete="off"
                 value={name}
-                maxLength={60}
+                maxLength={CHILD_NAME_MAX}
                 error={nameError}
                 onChange={(event) => {
                   setName(event.target.value);

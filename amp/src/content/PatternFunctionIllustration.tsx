@@ -7,7 +7,8 @@ export type PatternFunctionIllustrationKind =
   | "related-patterns-graph"
   | "dependent-variable-graph"
   | "compare-functions-graph"
-  | "linear-nonlinear-graph";
+  | "linear-nonlinear-graph"
+  | "slope-intercept-line";
 
 const figureStyle = { margin: "24px 0", breakInside: "avoid" as const };
 const captionStyle = { marginTop: 12, lineHeight: 1.6 };
@@ -122,6 +123,30 @@ export const illustrationData: Record<
     },
     caption:
       "Round points: y = 2x + 1 rises 2 at every step and lies on a straight line. Square points: y = x² rises 1, then 3, then 5, so its points bend upward and are not on any one line.",
+  },
+  "slope-intercept-line": {
+    figure: {
+      kind: "function-display",
+      graph: {
+        xLabel: "x",
+        yLabel: "y",
+        xMax: 4,
+        yMax: 10,
+        xStep: 1,
+        yStep: 1,
+        series: [
+          {
+            points: [
+              { x: 0, y: 5 },
+              { x: 2, y: 9 },
+            ],
+            line: { rise: 2, run: 1, b: 5 },
+          },
+        ],
+      },
+    },
+    caption:
+      "The line crosses the vertical axis at (0, 5) and passes through (2, 9). It rises 4 while it runs 2, so the slope is 2, and the rule is y = 2x + 5.",
   },
 };
 

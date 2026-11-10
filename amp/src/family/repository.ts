@@ -11,6 +11,12 @@ import {
   namingConsentActive,
 } from "../server/account-access.js";
 import { freeAllowance } from "../learning/free-allowance.js";
+import {
+  goesByNumber,
+  numberedName,
+  PARENT_ENTRY,
+} from "../learning/nickname.js";
+import { allocateLabel } from "../server/learner-label.js";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import {
@@ -101,7 +107,7 @@ export class FamilyRepository {
       ).rows[0];
       const learners = (
         await client.query(
-          "SELECT l.id,l.name,l.birth_year,l.sat_math_focus,l.deleted_at,l.name_pending,l.picture_identity,l.free_online_used,l.free_workbooks_used,EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()) AS has_access,COALESCE(to_jsonb(l)->'adult'='true'::jsonb,false) AS adult,COALESCE((to_jsonb(l)->>'simulation')::boolean,false) AS simulation FROM amp_learners l WHERE l.account_id=$1 AND NOT (COALESCE((to_jsonb(l)->>'simulation')::boolean,false) AND l.deleted_at IS NOT NULL) ORDER BY l.created_at,l.id",
+          "SELECT l.id,l.name,l.birth_year,l.sat_math_focus,l.deleted_at,l.name_pending,l.identity_scope,l.label_number,l.free_online_used,l.free_workbooks_used,EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()) AS has_access,COALESCE(to_jsonb(l)->'adult'='true'::jsonb,false) AS adult,COALESCE((to_jsonb(l)->>'simulation')::boolean,false) AS simulation FROM amp_learners l WHERE l.account_id=$1 AND NOT (COALESCE((to_jsonb(l)->>'simulation')::boolean,false) AND l.deleted_at IS NOT NULL) ORDER BY l.created_at,l.id",
           [accountId],
         )
       ).rows;
@@ -193,7 +199,7 @@ export class FamilyRepository {
           name: row.name,
           birthYear: row.birth_year ?? null,
           namePending: row.name_pending,
-          pictureIdentity: row.picture_identity,
+          ...(goesByNumber(row) ? { defaultName: true as const } : {}),
           freeAllowance: freeAllowance(
             row.free_online_used,
             row.free_workbooks_used,
@@ -261,30 +267,65 @@ export class FamilyRepository {
   async rename(
     accountId: string,
     learnerId: string,
-    name: string,
+    /** Absent: back to their number ("Child 2"). */
+    name: string | undefined,
   ): Promise<void> {
     await this.transaction(accountId, async (client) => {
       const learner = (
-        await client.query(
-          "SELECT name_pending FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL FOR UPDATE",
+        await client.query<{
+          name_pending: boolean;
+          adult: boolean;
+          identity_scope: string | null;
+          label_number: number | null;
+        }>(
+          "SELECT name_pending,adult,identity_scope,label_number FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL FOR UPDATE",
           [learnerId, accountId],
         )
       ).rows[0];
       if (!learner) throw new FamilyError(404, "learner_not_found");
-      if (
+      // The parent names their own child, with or without verified consent
+      // (docs/parent-consent.md#childrens-names); the basis is recorded.
+      // Blank returns a child to their number in the family ("Child 2").
+      let label: { number: number; scope: string; name: string } | null = null;
+      if (name === undefined) {
+        if (learner.adult) throw new FamilyError(400, "name_required");
+        label =
+          learner.label_number !== null &&
+          learner.identity_scope === `family:${accountId}`
+            ? {
+                number: learner.label_number,
+                scope: learner.identity_scope,
+                name: numberedName(learner.identity_scope, learner.label_number),
+              }
+            : await allocateLabel(client, `family:${accountId}`);
+      }
+      // A name entered with verified consent leaves the restricted basis, as
+      // it always has. A parent may correct a name after withdrawal without
+      // resuming collection.
+      const consented =
         learner.name_pending &&
-        !(await namingConsentActive(
+        (await namingConsentActive(
           client,
           accountId,
           this.development,
           learnerId,
-        ))
-      )
-        throw new FamilyError(403, "parent_consent_required");
-      // A parent may correct a name after withdrawal without resuming collection.
+        ));
       const result = await client.query(
-        "UPDATE amp_learners SET name=$3,name_pending=false WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL RETURNING id",
-        [learnerId, accountId, name],
+        `UPDATE amp_learners SET name=$3,
+           name_pending=name_pending AND NOT $4::boolean,
+           label_number=COALESCE($5,label_number),identity_scope=COALESCE($6,identity_scope),
+           name_basis=$7,name_basis_version=$8,name_basis_at=CASE WHEN $7::text IS NULL THEN NULL ELSE now() END
+         WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL RETURNING id`,
+        [
+          learnerId,
+          accountId,
+          name ?? label!.name,
+          consented && name !== undefined,
+          label?.number ?? null,
+          label?.scope ?? null,
+          name === undefined ? null : PARENT_ENTRY.method,
+          name === undefined ? null : PARENT_ENTRY.version,
+        ],
       );
       if (!result.rowCount) throw new FamilyError(404, "learner_not_found");
       // The class roster follows by trigger (migration 0098).
@@ -400,6 +441,12 @@ export class FamilyRepository {
         "SELECT 1 FROM information_schema.columns WHERE table_schema=current_schema() AND table_name='amp_learners' AND column_name='name_pending'",
       )
     ).rowCount;
+    // Number labels and the name's basis (migration 0109).
+    const labelColumns = !!(
+      await client.query(
+        "SELECT 1 FROM information_schema.columns WHERE table_schema=current_schema() AND table_name='amp_learners' AND column_name='label_number'",
+      )
+    ).rowCount;
     const roster = !!(
       await client.query("SELECT to_regclass('amp_people') AS relation")
     ).rows[0]?.relation;
@@ -498,7 +545,7 @@ export class FamilyRepository {
             [row.id],
           );
         await client.query(
-          `UPDATE amp_learners SET name='Deleted learner',${unnamedColumns ? "name_pending=false,picture_identity=NULL,picture_number=NULL,identity_scope=NULL," : ""}birth_year=NULL,starting_band=NULL,starting_policy=NULL,starting_excluded_strands=NULL,deleted_at=COALESCE(deleted_at,now()),created_at=CASE WHEN deleted_at IS NULL THEN now() ELSE created_at END WHERE id=$1`,
+          `UPDATE amp_learners SET name='Deleted learner',${unnamedColumns ? "name_pending=false,picture_identity=NULL,picture_number=NULL,identity_scope=NULL," : ""}${labelColumns ? "label_number=NULL,name_basis=NULL,name_basis_version=NULL,name_basis_at=NULL," : ""}birth_year=NULL,starting_band=NULL,starting_policy=NULL,starting_excluded_strands=NULL,deleted_at=COALESCE(deleted_at,now()),created_at=CASE WHEN deleted_at IS NULL THEN now() ELSE created_at END WHERE id=$1`,
           [row.id],
         );
         retained++;

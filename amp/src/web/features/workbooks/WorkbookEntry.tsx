@@ -15,7 +15,12 @@ export function WorkbookEntry({
   learner,
   enabled = workbooksEnabled,
 }: {
-  learner: { id: string; name: string } & WorkbookAccess;
+  learner: {
+    id: string;
+    name: string;
+    adult?: boolean;
+    simulation?: boolean;
+  } & WorkbookAccess;
   enabled?: boolean;
 }) {
   if (!enabled || !canReadWorkbooks(learner)) return null;
@@ -24,8 +29,9 @@ export function WorkbookEntry({
       <div>
         <h4 id={`wb-${learner.id}`}>Workbooks</h4>
         <p>
-          Printable practice chosen from {learner.name}'s progress, with an
-          answer key.
+          {learner.adult && !learner.simulation
+            ? "Printable practice chosen from your progress, with an answer key."
+            : `Printable practice chosen from ${learner.name}’s progress, with an answer key.`}
         </p>
       </div>
       <div className={styles.links}>

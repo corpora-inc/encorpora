@@ -21,6 +21,8 @@ export function isStarterPath(pathname: string) {
   const path = pathname.replace(/\/+$/, "");
   if (path === "/start") return true;
   const choice = /^\/start\/([^/]+)$/.exec(path)?.[1];
+  // A parent's or a tutor's setup steps are the starter's too.
+  if (/^\/start\/(parent|tutor)\/[a-z-]+$/.test(path)) return true;
   return isStarterChoice(choice);
 }
 

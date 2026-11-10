@@ -1,73 +1,102 @@
-/* The same column and top spacing as the other Family sections. */
+/* Account → Sign-in: the methods as rows with hairlines, in the account
+   column (features/account/AccountPages.module.css). */
 .account-security {
+  display: grid;
+  gap: var(--space-4);
   margin: 0;
-  padding: 8px 0;
-}
-.account-security h2 {
-  margin: 0 0 8px;
-  font-size: 1.5rem;
+  padding: 0;
 }
 .account-security p {
+  margin: 0;
   line-height: 1.5;
 }
 .security-email {
   overflow-wrap: anywhere;
-  font-weight: 600;
+  color: var(--color-muted-text);
+  font-size: var(--text-body);
+}
+.security-stale {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
 }
 .security-fresh {
-  font-size: 0.875rem;
-  color: var(--color-muted-text);
-}
-.account-security > a {
-  margin-top: var(--space-3);
+  font-size: var(--text-body);
 }
 .security-panels {
   display: grid;
-  gap: 10px;
-  margin-top: 20px;
+  border-top: 1px solid var(--color-border);
 }
 .security-panel {
-  border: 1px solid var(--color-border);
-  border-radius: 14px;
-  background: var(--color-surface-raised);
-  overflow: hidden;
+  border-bottom: 1px solid var(--color-border);
 }
 .security-panel h3 {
   margin: 0;
+  font: inherit;
 }
 .security-panel-toggle {
-  width: 100%;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
-  text-align: left;
+  gap: var(--space-3);
+  width: calc(100% + 2 * var(--space-3));
+  min-height: 64px;
+  margin: 0 calc(-1 * var(--space-3));
+  padding: var(--space-3);
+  border: 0;
+  border-radius: var(--radius-control);
   background: transparent;
   color: var(--color-on-surface);
-  padding: 16px;
-  border-radius: 0;
-  font-size: 1.05rem;
+  font-size: var(--text-body);
+  font-weight: 650;
+  text-align: start;
+}
+button.security-panel-toggle:hover:not(:disabled) {
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface);
+}
+.security-panel-toggle > span[aria-hidden] {
+  color: var(--color-muted-text);
+  font-size: 20px;
+  font-weight: 400;
+}
+.security-panel-static {
+  cursor: default;
 }
 .security-panel-toggle small {
   display: block;
-  font-size: 0.8rem;
-  font-weight: 400;
-  margin-top: 4px;
+  margin-top: 2px;
   color: var(--color-muted-text);
+  font-size: var(--text-label);
+  font-weight: 400;
 }
 .security-panel-body {
-  padding: 0 16px 16px;
   display: grid;
-  gap: 12px;
+  gap: var(--space-3);
+  padding: 0 0 var(--space-5);
 }
 .security-panel-body p {
   margin: 0;
-  font-size: 0.9rem;
+  max-width: 62ch;
+  font-size: var(--text-label);
+  color: var(--color-muted-text);
+}
+.security-panel-body > button,
+.account-security form > button {
+  justify-self: start;
 }
 .account-security form,
 .account-security label {
   display: grid;
   gap: 8px;
+  max-width: 420px;
 }
 .account-security form {
   gap: 14px;
@@ -134,12 +163,11 @@
   font-size: 0.85rem;
 }
 .security-confirm {
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  background: var(--color-surface-raised);
-  padding: 12px;
-  margin-top: 16px;
-  box-shadow: 0 -4px 20px var(--color-shadow);
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken);
 }
 .family-tabs:has([data-security-tab]) {
   grid-template-columns: repeat(4, 1fr);
@@ -170,5 +198,5 @@
 
 /* Placeholder rows hold the closed panels' height while settings load. */
 .security-loading .security-panel {
-  height: 76px;
+  height: 64px;
 }

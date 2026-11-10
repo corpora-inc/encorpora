@@ -1,7 +1,7 @@
 /**
  * "What brings you to AMP?" → "I'm learning for myself": the birth-year grid,
- * the note for a learner under 13 with the parent's way in one tap away, and
- * practice that starts where the year puts it. At 320, 390, 768 and 1280 px,
+ * the note for a learner under 13 with the parent's way in one tap away, an
+ * adult's "Where do you want to begin?", and the first problem straight after. At 320, 390, 768 and 1280 px,
  * light and dark: no horizontal overflow, and nothing moves as a year is
  * chosen. Screenshots go to artifacts/starter-ui.
  *
@@ -71,19 +71,98 @@ try {
       await page.getByText(/^Under 13, a parent sets up AMP for you/).waitFor();
       await settle(page);
       await shot("myself-under-13");
-      await page.getByRole("radio", { name: "Adult", exact: true }).click();
-      await page.getByRole("button", { name: "Start practicing" }).waitFor();
-      await settle(page);
-      await shot("myself-adult");
-      const record = await shellRecord(page);
+      const year = await shellRecord(page);
       check(
         `${tag} nothing moves as a year is chosen`,
-        record.shifts.length === 0 && record.cls === 0,
-        record,
+        year.shifts.length === 0 && year.cls === 0,
+        year,
+      );
+      // An adult year opens the next question below the years.
+      await page.getByRole("radio", { name: "Adult", exact: true }).click();
+      await page
+        .getByRole("heading", { name: "Where do you want to begin?" })
+        .waitFor();
+      check(
+        `${tag} an adult's action waits for where to begin`,
+        !(await page
+          .getByRole("button", { name: "Start practicing" })
+          .isEnabled()),
+      );
+      await settle(page);
+      await shot("myself-adult");
+      await resetRecord(page);
+      await page.getByRole("radio", { name: /^Geometry/ }).click();
+      await page.getByText("Choose where to begin.").waitFor({
+        state: "hidden",
+      });
+      await settle(page);
+      await shot("myself-adult-start");
+      const start = await shellRecord(page);
+      check(
+        `${tag} nothing moves as a start is chosen`,
+        start.shifts.length === 0 && start.cls === 0,
+        start,
       );
       check(`${tag} no horizontal overflow`, (await overflow(page)) <= 0);
       await context.close();
     }
+
+  // On a phone or a tablet, tapping a choice brings its step into view and
+  // moves focus to its heading, smoothly or, with reduced motion, at once.
+  for (const [width, height] of [
+    [390, 844],
+    [768, 1024],
+  ] as const)
+    for (const theme of ["light", "dark"] as const)
+      for (const [choice, question, last] of [
+        [
+          /^I’m learning for myself/,
+          "What year were you born?",
+          "Start practicing",
+        ],
+        [/^I’m a parent/, "How many children?", "Continue"],
+      ] as const) {
+        const motion = width === 390 && theme === "dark" ? "reduce" : null;
+        const tag = `${width} ${theme} ${question}`;
+        const context = await f.context(browser, "new", {
+          viewport: { width, height },
+          colorScheme: theme,
+          reducedMotion: motion,
+        });
+        const page = await context.newPage();
+        await page.goto(`${f.origin}/start`);
+        await page
+          .getByRole("heading", { name: "What brings you to AMP?" })
+          .waitFor();
+        await settle(page);
+        await resetRecord(page);
+        await page.getByRole("link", { name: choice }).click();
+        const heading = page.getByRole("heading", { name: question });
+        await heading.waitFor();
+        await settle(page, motion ? 100 : 900);
+        const action = await page
+          .getByRole("button", { name: last })
+          .boundingBox();
+        const top = await heading.boundingBox();
+        check(
+          `${tag}: the step comes into view`,
+          !!action &&
+            !!top &&
+            top.y >= 56 &&
+            action.y + action.height <= height,
+          { top, action },
+        );
+        check(
+          `${tag}: focus is on its heading`,
+          await heading.evaluate((node) => node === document.activeElement),
+        );
+        const record = await shellRecord(page);
+        check(`${tag}: nothing shifts`, record.cls === 0, record);
+        await page.screenshot({
+          path: `${shots}/into-view-${question.startsWith("What") ? "myself" : "parent"}-${width}-${theme}.png`,
+        });
+        await context.close();
+      }
 
   // Under 13: the parent's way in is one tap.
   {
@@ -95,12 +174,12 @@ try {
     await page.getByRole("radio", { name: String(thisYear - 9) }).click();
     await page.getByRole("button", { name: "Set up as a parent" }).click();
     await page.waitForURL(/\/start\/parent$/);
-    await page.getByRole("heading", { name: "How many children?" }).waitFor();
+    await page.getByRole("heading", { name: "Your children" }).waitFor();
     await context.close();
   }
 
-  // Last, since the account then has its own practice: an adult starts at
-  // the top of the scale.
+  // Last, since the account then has its own practice: an adult chooses
+  // where to begin and goes straight to the first problem there.
   for (const theme of ["light", "dark"] as const) {
     const context = await f.context(browser, "new", {
       viewport: { width: 390, height: 900 },
@@ -109,13 +188,9 @@ try {
     const page = await context.newPage();
     await myself(page);
     await page.getByRole("radio", { name: "Adult", exact: true }).click();
+    await page.getByRole("radio", { name: /^Precalculus/ }).click();
     await page.getByRole("button", { name: "Start practicing" }).click();
-    await page.waitForURL(/\/me$/);
-    await page.getByText("Began at Precalculus", { exact: true }).waitFor();
-    await settle(page);
-    await page.screenshot({ path: `${shots}/me-390-${theme}.png` });
-    // The first problem is at that level, not a first-grade fact.
-    await page.goto(`${f.origin}/practice`);
+    await page.waitForURL(/\/practice$/);
     await page.locator("[data-problem-id]").first().waitFor();
     await settle(page);
     await page.screenshot({ path: `${shots}/first-problem-390-${theme}.png` });

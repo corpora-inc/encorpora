@@ -33,7 +33,7 @@ import {
 } from "./contracts.js";
 import { recordEvent } from "./events.js";
 import { YEAR_IN_USE } from "./years.js";
-import { allocatePictureIdentity } from "../server/picture-identity.js";
+import { allocateLabel } from "../server/learner-label.js";
 
 type Org = { id: string; path: string[]; timezone: string };
 const FROM_ORG = `SELECT id,path,timezone FROM amp_orgs WHERE id=$1`;
@@ -345,15 +345,17 @@ export class SchoolRepository {
     ).rows[0];
     if (agreement?.ended_at || (input.givenName !== undefined && !agreement))
       throw new SchoolError(409, "agreement_required");
-    const identity =
+    // Without a name, the student goes by a nickname or their number
+    // ("Student 3") until a parent or the school names them.
+    const label =
       input.givenName === undefined
-        ? await allocatePictureIdentity(client, `school:${org.path[0]}`)
+        ? await allocateLabel(client, `school:${org.path[0]}`)
         : null;
-    const givenName = input.givenName ?? identity!.name;
+    const givenName = input.givenName ?? input.nickname ?? label!.name;
     const learnerId = randomUUID();
     await client.query(
-      `INSERT INTO amp_learners(id,account_id,name,birth_year,name_pending,picture_identity,picture_number,identity_scope)
-       VALUES($1,$2,$3,$4,$5,$6,$7,$8)`,
+      `INSERT INTO amp_learners(id,account_id,name,birth_year,name_pending,label_number,identity_scope)
+       VALUES($1,$2,$3,$4,$5,$6,$7)`,
       [
         learnerId,
         schoolAccountId(personId),
@@ -362,10 +364,9 @@ export class SchoolRepository {
           (input.gradeLevel === undefined
             ? null
             : birthYearForGrade(input.gradeLevel, now)),
-        identity !== null,
-        identity?.picture ?? null,
-        identity?.number ?? null,
-        identity?.scope ?? null,
+        label !== null,
+        label?.number ?? null,
+        label?.scope ?? null,
       ],
     );
     await client.query(

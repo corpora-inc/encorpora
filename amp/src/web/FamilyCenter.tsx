@@ -1,15 +1,16 @@
 import { SatMathFocus } from "./features/practice/SatMathFocus";
-import { WorkbookEntry } from "./features/workbooks/WorkbookEntry";
+import { workbooksEnabled } from "./features/workbooks/config";
+import { canReadWorkbooks } from "./features/workbooks/model";
 import { PurchaseMeasurement } from "./features/privacy/PurchaseMeasurement";
 import { Toast } from "./ui/Toast";
 import { useLoggedError, requestMessage } from "./feedback";
 import { useAppRoute, type FamilySection } from "./app-routes";
 import { useAccountCache, useFamilyCache } from "./lib/family-cache";
-import { Select, BirthYearPicker } from "./PremiumControls";
+import { BirthYearPicker } from "./PremiumControls";
 import { AccountSecurity } from "./AccountSecurity";
 import { PaymentHistoryCenter } from "./PaymentHistoryCenter";
 import { FocusDialog } from "./PracticeWorkspace";
-import { licenseSummary, licenseChannel } from "./family-access";
+import { licenseChannel } from "./family-access";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import type {
   FamilySummary,
@@ -20,7 +21,17 @@ import "./family-center.css";
 import { nativeRuntime } from "./native-runtime";
 import { Loading } from "./ui/Loading";
 import { Sheet } from "./ui/Sheet";
-import { Button } from "./ui/Button";
+import { Button, buttonClass } from "./ui/Button";
+import { TextField } from "./ui/TextField";
+import { Link } from "@tanstack/react-router";
+import { BackRow, BillingList, Chevron } from "./features/account/BillingList";
+import { LearnerList } from "./features/account/LearnerList";
+import pages from "./features/account/AccountPages.module.css";
+import {
+  CHILD_NAME_MAX,
+  childNameProblem,
+  PARENT_ENTRY_LINE,
+} from "../learning/nickname";
 import { useLearnerStore } from "./learner-store";
 import { refreshMe } from "./lib/query";
 import { rememberPlace } from "./features/onboarding/place-memory";
@@ -100,7 +111,9 @@ export function FamilyCenter({
   const paymentWasOpen = useRef(false);
   const section = initialSection;
   const [localLearnerId, setLocalLearnerId] = useState("");
-  const [accessDetails, setAccessDetails] = useState(false);
+  const [historyFor, setHistoryFor] = useState<FamilyLearner | null>(null);
+  /** The child whose settings are open in Learners. */
+  const [openLearner, setOpenLearner] = useState<string | null>(null);
   const adding = route.parts[2] === "new";
   const setAdding = (open: boolean) =>
     route.navigate(open ? "/family/learners/new" : "/family/learners");
@@ -135,13 +148,22 @@ export function FamilyCenter({
       },
     [cached],
   );
+  // A parent adds a child with or without verified consent; withdrawal
+  // stops collection. With none yet, the starter's first step adds them.
+  const canAddChild =
+    !!family &&
+    family.consent.status !== "withdrawn" &&
+    (["active", "development"].includes(family.consent.status) ||
+      family.learners.some((entry) => !entry.deletedAt && !entry.adult));
   const [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
     [notice, setNotice] = useState("");
   useLoggedError(error);
   const [confirmation, setConfirmation] = useState<Confirmation | null>(null),
     [rename, setRename] = useState<string | null>(null),
-    [name, setName] = useState("");
+    [name, setName] = useState(""),
+    [nameError, setNameError] = useState(""),
+    [newNameError, setNewNameError] = useState("");
   const body = useRef<HTMLDivElement>(null);
   const previousPrivacy = useRef(privacy),
     previousRename = useRef(rename);
@@ -157,7 +179,7 @@ export function FamilyCenter({
     generation.current++;
 
     setLocalLearnerId("");
-    setAccessDetails(false);
+    setHistoryFor(null);
 
     setError("");
     setNotice("");
@@ -198,9 +220,7 @@ export function FamilyCenter({
   }
   useLayoutEffect(() => {
     if (purchaseChooser && !returnFocus)
-      document
-        .querySelector<HTMLElement>(".family-purchase-options h2")
-        ?.focus({ preventScroll: true });
+      heading.current?.focus({ preventScroll: true });
     if (body.current) body.current.scrollTop = 0;
   }, [purchaseChooser]);
   useLayoutEffect(() => {
@@ -217,7 +237,7 @@ export function FamilyCenter({
     setLocalLearnerId(id);
     onSelectLearner?.(id);
     setRename(null);
-    setAccessDetails(false);
+    setHistoryFor(null);
     setError("");
     setNotice("");
     if (body.current) body.current.scrollTop = 0;
@@ -228,7 +248,6 @@ export function FamilyCenter({
       onSelectLearner?.(selectedLearner.id);
     }
   }, [selectedLearner?.id, profileId, onSelectLearner]);
-  const access = licenseSummary(selectedLearner?.access ?? []);
   const current = (epoch: number) =>
     mounted.current && generation.current === epoch;
   const tokenRef = useRef(token);
@@ -291,7 +310,7 @@ export function FamilyCenter({
     previousPrivacy.current = privacy;
     if (body.current) body.current.scrollTop = 0;
     const target = privacy
-      ? body.current?.querySelector<HTMLElement>(".family-section h2")
+      ? heading.current
       : body.current?.querySelector<HTMLElement>(
           `[data-privacy-choice="${previous}"]`,
         );
@@ -437,33 +456,204 @@ export function FamilyCenter({
         onClose={() => setPaymentHistoryOpen(false)}
       />
     );
+  const ownLearner = cached?.learners.find(
+    (entry) => entry.adult && !entry.simulation && !entry.deletedAt,
+  );
+  const consentActive = ["active", "development"].includes(
+    family?.consent.status ?? "",
+  );
+  const hasChildren = !!family?.learners.some((entry) => !entry.deletedAt);
+  const title = purchaseChooser
+    ? "Purchases and records"
+    : privacy
+      ? {
+          export: "Download your records",
+          consent: "Learning consent",
+          delete: "Delete learning data",
+          retention: "What is kept",
+          measurement: "Purchase measurement",
+        }[privacy]
+      : section === "security"
+        ? "Sign-in"
+        : section === "learners"
+          ? "Learners"
+          : section === "access"
+            ? "Billing"
+            : "Privacy";
+  // A step inside a tab says the way back above its title.
+  const back = purchaseChooser
+    ? { label: "Billing", go: closeChooser }
+    : section === "privacy" && privacy
+      ? { label: "Privacy", go: () => route.navigate("/family/privacy") }
+      : null;
+  const addChild = () =>
+    consentActive ? setAdding(true) : route.navigate("/start/parent");
+  /** One child's settings, opened under their row in Learners. */
+  const learnerDetail = (learner: FamilyLearner) => {
+    const age = learner.birthYear
+      ? new Date().getFullYear() - learner.birthYear
+      : null;
+    const canName = !learner.namePending || consentActive;
+    return (
+      <>
+        {!nativeRuntime && (age === null || age >= 13) && (
+          <SatMathFocus
+            key={`${identity}:${learner.id}`}
+            learner={learner}
+            token={token}
+            identity={identity}
+            onSaved={refresh}
+          />
+        )}
+        {rename === learner.id ? (
+          <form
+            className={pages.renameForm}
+            noValidate
+            onSubmit={(event) => {
+              event.preventDefault();
+              const problem = childNameProblem(name);
+              if (problem) return setNotice(problem);
+              void action(async () => {
+                await api(
+                  `/family/learners/${encodeURIComponent(learner.id)}/rename`,
+                  { name },
+                );
+                setRename(null);
+                await refresh();
+                setNotice("Name saved.");
+              });
+            }}
+          >
+            <TextField
+              label={learner.namePending ? "Their name" : "Name"}
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+              maxLength={CHILD_NAME_MAX}
+              autoComplete="off"
+              placeholder="First name or nickname"
+              title={PARENT_ENTRY_LINE}
+              autoFocus
+              disabled={busy}
+            />
+            <div className={pages.detailActions}>
+              <Button variant="primary" disabled={busy || !name.trim()}>
+                Save name
+              </Button>
+              <Button
+                variant="quiet"
+                type="button"
+                onClick={() => setRename(null)}
+                disabled={busy}
+              >
+                Cancel
+              </Button>
+            </div>
+          </form>
+        ) : (
+          <div className={pages.detailActions}>
+            {!nativeRuntime &&
+              workbooksEnabled &&
+              canReadWorkbooks(learner) && (
+                <Link
+                  to="/learners/$learnerId/workbooks"
+                  params={{ learnerId: learner.id }}
+                  className={buttonClass("secondary")}
+                >
+                  Workbooks
+                </Link>
+              )}
+            {canName && (
+              <Button
+                variant="secondary"
+                data-rename-id={learner.id}
+                disabled={busy}
+                onClick={() => {
+                  setRename(learner.id);
+                  setName(learner.namePending ? "" : learner.name);
+                }}
+              >
+                {learner.namePending ? "Add their name" : "Edit name"}
+              </Button>
+            )}
+          </div>
+        )}
+        {rename !== learner.id && (
+          <div>
+            <Button
+              variant="quiet"
+              align="start"
+              className={pages.danger}
+              disabled={busy}
+              onClick={(event) =>
+                ask({ kind: "delete", learner }, event.currentTarget)
+              }
+            >
+              Delete {learner.name}’s learning data
+            </Button>
+          </div>
+        )}
+      </>
+    );
+  };
+  const privacyChoices = family
+    ? ([
+        [
+          "export",
+          "Download your records",
+          hasChildren
+            ? "A personal copy of your family’s data"
+            : "A personal copy of your data",
+        ],
+        ...(secondOnly ||
+        !(hasChildren || family.consent.status === "withdrawn")
+          ? []
+          : ([
+              [
+                "consent",
+                "Learning consent",
+                "Review consent or pause new activity",
+              ],
+            ] as const)),
+        [
+          "delete",
+          "Delete learning data",
+          "See what is removed first",
+        ],
+        ["retention", "What is kept", "Billing, sign-in and backups"],
+        ...((family.purchaseMeasurement?.available ||
+          family.metaPurchaseMeasurement?.available ||
+          family.openaiPurchaseMeasurement?.available) &&
+        !nativeRuntime
+          ? ([
+              [
+                "measurement",
+                "Purchase measurement",
+                "Whether Google, Meta or OpenAI receives purchase details",
+              ],
+            ] as const)
+          : []),
+      ] as const)
+    : [];
   return (
-    <section className="family-center" aria-labelledby="family-title">
-      {/* The app frame's bar names this group with its tabs (Profile &
-          sign-in, Family, Billing, Privacy) and the logo is the way around,
-          so the heading is for screen readers and focus only. */}
-      <h1 id="family-title" ref={heading} tabIndex={-1} className="sr-only">
-        {section === "security"
-          ? "Profile and sign-in"
-          : section === "learners"
-            ? "Family"
-            : section === "access"
-              ? "Billing"
-              : "Privacy"}
-      </h1>
-      {accessDetails && selectedLearner && (
+    <section
+      className={`family-center ${pages.page}`}
+      aria-labelledby="family-title"
+    >
+      {historyFor && (
         <FocusDialog
-          title="License history"
-          close={() => setAccessDetails(false)}
+          title="Plan dates"
+          close={() => setHistoryFor(null)}
           returnFocus={accessTrigger.current}
         >
           <p>
-            {selectedLearner.deletedAt
+            {historyFor.deletedAt
               ? "Retained billing reference"
-              : selectedLearner.name}
+              : historyFor.adult
+                ? "Your practice"
+                : historyFor.name}
           </p>
           <ul className="family-license-history">
-            {selectedLearner.access.map((entry, index) => (
+            {historyFor.access.map((entry, index) => (
               <li key={index}>
                 <strong>
                   {licenseChannel(entry.channel)}
@@ -476,528 +666,322 @@ export function FamilyCenter({
             ))}
           </ul>
           <p>
-            A license term does not confirm automatic renewal. Use your
-            provider’s billing controls to check or cancel renewal.
+            A plan’s dates don’t show whether it renews. Your payment
+            provider’s billing page shows renewal and lets you cancel it.
           </p>
         </FocusDialog>
       )}
-      <div className="family-body" ref={body}>
+      <Toast message={error} onDismiss={() => setError("")} />
+      <div className={pages.column} ref={body} data-account-body>
+        {back && family && <BackRow onClick={back.go}>{back.label}</BackRow>}
+        <div className={pages.head}>
+          <h1
+            id="family-title"
+            ref={heading}
+            tabIndex={-1}
+            className={pages.title}
+          >
+            {title}
+          </h1>
+        </div>
         {section === "security" && accountsEnabled && <AccountSecurity />}
-        <Toast message={error} onDismiss={() => setError("")} />
         {notice && (
           <p className="family-notice" role="status">
             {notice}
           </p>
         )}
-        {/* Profile & sign-in shows no family details: no family wait sits
-            below its settings to be pushed down when they arrive. */}
+        {/* Sign-in shows no family details: no family wait sits below its
+            settings to be pushed down when they arrive. */}
         {section === "security" && accountsEnabled ? null : !family ? (
-          <div aria-busy="true">
-            <Loading>Loading family details…</Loading>
+          <div aria-busy="true" className={pages.section}>
+            <div className={`${pages.reserve} amp-skeleton`} />
+            <div className={`${pages.reserve} amp-skeleton`} />
             {error && (
-              <button onClick={() => void action(refresh)}>Try again</button>
+              <div className={pages.footActions}>
+                <Button variant="secondary" onClick={() => void action(refresh)}>
+                  Try again
+                </Button>
+              </div>
             )}
           </div>
         ) : purchaseChooser ? (
+          <>
           <section
-            className="family-purchase-options"
-            aria-label="Purchase options"
+            className={`family-purchase-options ${pages.section}`}
+            aria-labelledby="family-title"
           >
-            <h2 tabIndex={-1}>Purchases and records</h2>
-            <p>
-              Review payment records or choose a purchase route for your
-              learner.
-            </p>
-            <div className="family-purchase-buttons">
-              <button
-                ref={paymentTrigger}
-                data-payment-history
-                onClick={() => setPaymentHistoryOpen(true)}
-              >
-                Payment records <span>Paid receipts and refund PDFs</span>
-              </button>
-              {onAnnualPurchase && (
-                <button data-purchase-entry="annual" onClick={onAnnualPurchase}>
-                  Annual subscription{" "}
-                  <span>Card payment · current price and terms</span>
+            <ul className={pages.list}>
+              <li className={pages.linkItem}>
+                <button
+                  type="button"
+                  ref={paymentTrigger}
+                  className={pages.linkRow}
+                  data-payment-history
+                  onClick={() => setPaymentHistoryOpen(true)}
+                >
+                  <span className={pages.rowText}>
+                    <span className={pages.rowTitle}>Payment records</span>
+                    <span className={pages.rowMeta}>
+                      Paid receipts and refund PDFs
+                    </span>
+                  </span>
+                  <Chevron />
                 </button>
+              </li>
+              {onAnnualPurchase && (
+                <li className={pages.linkItem}>
+                  <button
+                    type="button"
+                    className={pages.linkRow}
+                    data-purchase-entry="annual"
+                    onClick={onAnnualPurchase}
+                  >
+                    <span className={pages.rowText}>
+                      <span className={pages.rowTitle}>
+                        Annual subscription
+                      </span>
+                      <span className={pages.rowMeta}>
+                        Card payment, with the current price and terms
+                      </span>
+                    </span>
+                    <Chevron />
+                  </button>
+                </li>
               )}
               {onFundedPurchase && (
-                <button data-purchase-entry="funded" onClick={onFundedPurchase}>
-                  Education funds{" "}
-                  <span>Program options · quotes and requests</span>
-                </button>
+                <li className={pages.linkItem}>
+                  <button
+                    type="button"
+                    className={pages.linkRow}
+                    data-purchase-entry="funded"
+                    onClick={onFundedPurchase}
+                  >
+                    <span className={pages.rowText}>
+                      <span className={pages.rowTitle}>Education funds</span>
+                      <span className={pages.rowMeta}>
+                        Program options, quotes and requests
+                      </span>
+                    </span>
+                    <Chevron />
+                  </button>
+                </li>
               )}
-            </div>
+            </ul>
           </section>
+          </>
         ) : (
           <>
             {(section === "learners" || section === "access") &&
               secondOnly &&
               account && <SecondParentNote me={account} />}
-            {learnerSections && (
-              <section
-                className={`family-section family-focused-section ${!family.learners.length || adding ? "family-setup-section" : ""}`}
-              >
-                {/* Access repeats its selected tab's name, so its heading is for
-                    screen readers; the license fits a 320 px screen. */}
-                <h2
-                  tabIndex={-1}
-                  className={section === "access" ? "sr-only" : undefined}
-                >
-                  {section === "learners"
-                    ? "Who’s learning?"
-                    : "Learning access"}
-                </h2>
-                {!["active", "development"].includes(family.consent.status) &&
-                  section === "learners" &&
-                  (nativeRuntime ? (
-                    <div className="family-first-step">
-                      <h3>Finish setting up</h3>
-                      <p>
-                        Learning consent is completed in the AMP web
-                        application.
-                      </p>
-                      <button onClick={onContinueSetup ?? onConsentEnrollment}>
+            {learnerSections && section === "learners" && (
+              <section className={pages.section} aria-label="Learners">
+                {!consentActive && nativeRuntime ? (
+                  <div className={pages.section}>
+                    <p className={pages.lede}>
+                      Learning consent is completed in the AMP web
+                      application.
+                    </p>
+                    <div className={pages.footActions}>
+                      <Button
+                        variant="primary"
+                        onClick={onContinueSetup ?? onConsentEnrollment}
+                      >
                         Continue setup
-                      </button>
+                      </Button>
                     </div>
-                  ) : !family.learners.some(
-                      (entry) => !entry.deletedAt && !entry.adult,
-                    ) ? (
-                    <div className="family-first-step">
-                      <h3>Add a child</h3>
-                      <p>
-                        Each child practices with a picture, like Fox or Moon,
-                        until you add their name.
-                      </p>
-                      <button onClick={() => route.navigate("/start/parent")}>
-                        Add a child
-                      </button>
-                    </div>
-                  ) : selectedLearner &&
-                    !selectedLearner.deletedAt &&
-                    !selectedLearner.adult &&
-                    !selectedLearner.hasAccess ? (
-                    <div className="family-first-step">
-                      <h3>{selectedLearner.name}</h3>
-                      <p>
-                        Continue with AMP to keep practicing after the free
-                        problems, and to add {selectedLearner.name}’s name.
-                      </p>
-                      <button
-                        onClick={() =>
-                          route.navigate(`/continue/${selectedLearner.id}`)
-                        }
-                      >
-                        Continue with AMP
-                      </button>
-                    </div>
-                  ) : null)}
-                {!family.learners.length &&
-                  ["active", "development"].includes(family.consent.status) && (
-                    <p>No learner profiles are stored in this account.</p>
-                  )}
-                {!!family.learners.length && (
-                  <label className="family-profile-select">
-                    <span>Learner or billing reference</span>
-                    <Select
-                      aria-label="Family learner"
-                      value={selectedLearner?.id ?? ""}
+                  </div>
+                ) : null}
+                <LearnerList
+                  own={ownLearner}
+                  children={family.learners}
+                  selectedId={openLearner ?? undefined}
+                  onSelect={(id) => {
+                    setOpenLearner(id || null);
+                    if (id) selectLearner(id);
+                  }}
+                  detail={learnerDetail}
+                />
+                {!nativeRuntime && !adding && (
+                  <div className={pages.footActions}>
+                    <Button
+                      variant="secondary"
                       disabled={busy}
-                      onValueChange={(event) => selectLearner(event)}
+                      onClick={addChild}
                     >
-                      {family.learners.map((entry, index) => (
-                        <option key={entry.id} value={entry.id}>
-                          {entry.deletedAt
-                            ? `Deleted learner · reference ${index + 1}`
-                            : entry.name}
-                        </option>
-                      ))}
-                    </Select>
-                  </label>
-                )}
-                <div className="family-learners">
-                  {(selectedLearner ? [selectedLearner] : []).map((learner) => (
-                    <article className="family-learner" key={learner.id}>
-                      <h3
-                        className={section === "access" ? "sr-only" : undefined}
-                      >
-                        {learner.deletedAt
-                          ? "Deleted learner · billing reference"
-                          : learner.name}
-                      </h3>
-                      {section === "learners" &&
-                        !learner.deletedAt &&
-                        !nativeRuntime && (
-                          <SatMathFocus
-                            key={`${identity}:${learner.id}`}
-                            learner={learner}
-                            token={token}
-                            identity={identity}
-                            onSaved={refresh}
-                          />
-                        )}
-                      {section === "learners" &&
-                        !learner.deletedAt &&
-                        !nativeRuntime && <WorkbookEntry learner={learner} />}
-                      {learner.deletedAt ? (
-                        <p>
-                          Learning data was deleted. Billing records are
-                          retained.
-                        </p>
-                      ) : section !== "learners" ? null : rename ===
-                        learner.id ? (
-                        <form
-                          onSubmit={(event) => {
-                            event.preventDefault();
-                            void action(async () => {
-                              await api(
-                                `/family/learners/${encodeURIComponent(learner.id)}/rename`,
-                                { name },
-                              );
-                              setRename(null);
-                              await refresh();
-                              setNotice("Learner name updated.");
-                            });
-                          }}
-                        >
-                          <label htmlFor={`rename-${learner.id}`}>
-                            Learner display name
-                          </label>
-                          <input
-                            id={`rename-${learner.id}`}
-                            value={name}
-                            onChange={(event) => setName(event.target.value)}
-                            maxLength={80}
-                            autoComplete="off"
-                            autoFocus
-                            disabled={busy}
-                          />
-                          <div className="family-actions">
-                            <button disabled={busy || !name.trim()}>
-                              Save name
-                            </button>
-                            <button
-                              type="button"
-                              onClick={() => setRename(null)}
-                              disabled={busy}
-                            >
-                              Cancel
-                            </button>
-                          </div>
-                        </form>
-                      ) : (
-                        <div className="family-actions">
-                          {/* A quiet edit beside a destructive action: the
-                              card's one primary action is the workbook. A
-                              picture name becomes a name once there is the
-                              consent a name needs (a purchase is one). */}
-                          {(!learner.namePending ||
-                            ["active", "development"].includes(
-                              family.consent.status,
-                            )) && (
-                            <button
-                              className="secondary"
-                              data-rename-id={learner.id}
-                              disabled={busy}
-                              onClick={() => {
-                                setRename(learner.id);
-                                setName(
-                                  learner.namePending ? "" : learner.name,
-                                );
-                              }}
-                            >
-                              {learner.namePending ? "Add name" : "Edit name"}
-                            </button>
-                          )}
-                          <button
-                            className="family-danger-link"
-                            disabled={busy}
-                            onClick={(event) =>
-                              ask(
-                                { kind: "delete", learner },
-                                event.currentTarget,
-                              )
-                            }
-                          >
-                            Delete learning data
-                          </button>
-                        </div>
-                      )}
-                      {section === "access" && (
-                        <div className="family-license-summary">
-                          <strong>
-                            {access.kind === "active"
-                              ? "License active"
-                              : access.kind === "scheduled"
-                                ? "License scheduled"
-                                : "No current license"}
-                          </strong>
-                          {access.license && (
-                            <p>
-                              {licenseChannel(access.license.channel)} ·{" "}
-                              {access.kind === "scheduled"
-                                ? `Starts ${new Date(access.license.startsAt).toLocaleDateString()}`
-                                : `Ends ${new Date(access.license.endsAt).toLocaleDateString()}`}
-                            </p>
-                          )}
-                          {access.kind === "active" &&
-                            !(
-                              learner.learningAllowed ??
-                              ["active", "development"].includes(
-                                family.consent.status,
-                              )
-                            ) && <p>Learning paused: consent needed.</p>}
-                          {!!learner.access.length && (
-                            <button
-                              className="text-button"
-                              onClick={(event) => {
-                                accessTrigger.current = event.currentTarget;
-                                setAccessDetails(true);
-                              }}
-                            >
-                              License history and dates
-                            </button>
-                          )}
-                        </div>
-                      )}
-                    </article>
-                  ))}
-                  {/* After the learner, in the same scrolling list, so it
-                      never moves them. */}
-                  {section === "learners" &&
-                    !adding &&
-                    !nativeRuntime &&
-                    account?.familyClass && (
-                      <SecondParent
-                        session={session}
-                        className="family-second-parent"
-                        headingClassName=""
-                      />
-                    )}
-                </div>
-                {section === "access" && (
-                  <div className="family-profile-actions">
-                    {selectedLearner?.stripeLinked && (
-                      <div className="family-billing">
-                        <button
-                          aria-label="Manage billing and renewal"
-                          disabled={busy}
-                          onClick={() => void billing()}
-                        >
-                          Manage billing
-                        </button>
-                      </div>
-                    )}
-                    {onChoosePayment &&
-                      selectedLearner &&
-                      !selectedLearner.deletedAt &&
-                      access.kind === "none" && (
-                        <button
-                          className="go-button family-get-access"
-                          onClick={() =>
-                            nativeRuntime
-                              ? onChoosePayment()
-                              : route.navigate(
-                                  `/continue/${selectedLearner.id}`,
-                                )
-                          }
-                        >
-                          Continue with AMP
-                        </button>
-                      )}
-                    <button
-                      className="family-purchase-open"
-                      data-purchase-options
-                      onClick={() => setPurchaseChooser(true)}
-                    >
-                      Purchases &amp; records
-                    </button>
+                      Add a child
+                    </Button>
                   </div>
                 )}
-                {section === "learners" &&
-                  !nativeRuntime &&
-                  ["active", "development"].includes(family.consent.status) &&
-                  !adding && (
-                    <button
-                      className="secondary family-add-toggle"
-                      disabled={busy}
-                      onClick={() => setAdding(true)}
-                    >
-                      <span aria-hidden="true">+</span> Add learner
-                    </button>
-                  )}
-                {section === "learners" &&
-                  !nativeRuntime &&
-                  ["active", "development"].includes(family.consent.status) &&
-                  adding && (
-                    <form
-                      id="family-add-learner"
-                      className="family-add-learner"
-                      onSubmit={(event) => {
-                        event.preventDefault();
-                        const name = newName.trim();
-                        if (!name || !newBirthYear) return;
-                        // An adult may be adding themselves: their own
-                        // practice is their own learner, not a family one.
-                        if (
-                          askSelf === null &&
-                          newBirthYear &&
-                          Number(newBirthYear) <= new Date().getFullYear() - 18
-                        )
-                          return setAskSelf(name);
-                        setAskSelf(null);
-                        void action(async () => {
-                          await api("/learners", {
-                            name,
-                            birthYear: Number(newBirthYear),
-                          });
-                          await refresh();
-                          setNewName("");
-                          setNewBirthYear("");
-                          setAdding(false);
-                          setNotice(`${name} added.`);
+                {!nativeRuntime && adding && (
+                  <form
+                    id="family-add-learner"
+                    className={pages.addForm}
+                    onSubmit={(event) => {
+                      event.preventDefault();
+                      const name = newName.trim();
+                      if (!name || !newBirthYear) return;
+                      // An adult may be adding themselves: their own
+                      // practice is their own learner, not a family one.
+                      if (
+                        askSelf === null &&
+                        newBirthYear &&
+                        Number(newBirthYear) <= new Date().getFullYear() - 18
+                      )
+                        return setAskSelf(name);
+                      setAskSelf(null);
+                      void action(async () => {
+                        await api("/learners", {
+                          name,
+                          birthYear: Number(newBirthYear),
                         });
-                      }}
-                    >
-                      <label>
-                        <span>Name</span>
-                        <input
-                          value={newName}
-                          maxLength={60}
-                          placeholder="First name or nickname"
-                          onChange={(event) => setNewName(event.target.value)}
-                        />
-                      </label>
-                      <label>
-                        <span>Birth year</span>
-                        <BirthYearPicker
-                          value={newBirthYear}
-                          onChange={setNewBirthYear}
-                          disabled={busy}
-                        />
-                      </label>
-                      {/* The birth year sets where practice starts. */}
-                      <button
+                        await refresh();
+                        setNewName("");
+                        setNewBirthYear("");
+                        setAdding(false);
+                        setNotice(`${name} added.`);
+                      });
+                    }}
+                  >
+                    <h2 className={pages.sectionTitle}>Add a child</h2>
+                    <TextField
+                      label="Name"
+                      value={newName}
+                      maxLength={CHILD_NAME_MAX}
+                      placeholder="First name or nickname"
+                      onChange={(event) => setNewName(event.target.value)}
+                    />
+                    <label className={pages.fieldLabel}>
+                      <span>Birth year</span>
+                      <BirthYearPicker
+                        value={newBirthYear}
+                        onChange={setNewBirthYear}
+                        disabled={busy}
+                      />
+                    </label>
+                    {/* The birth year sets where practice starts. */}
+                    <div className={pages.detailActions}>
+                      <Button
+                        variant="primary"
                         disabled={busy || !newName.trim() || !newBirthYear}
                       >
-                        Add learner
-                      </button>
-                      <Sheet
-                        open={askSelf !== null}
-                        onOpenChange={(open) => {
-                          if (!open) setAskSelf(null);
-                        }}
-                        title="Is this you?"
+                        Add
+                      </Button>
+                      <Button
+                        variant="quiet"
+                        type="button"
+                        disabled={busy}
+                        onClick={() => setAdding(false)}
                       >
-                        <p className="family-sheet-text">
-                          Your own practice is yours, at your own level, beside
-                          the family’s learners.
-                        </p>
-                        <div className="family-sheet-actions">
-                          <Button
-                            variant="primary"
-                            type="button"
-                            disabled={busy}
-                            onClick={() =>
-                              void action(async () => {
-                                const { learnerId } = await api<{
-                                  learnerId: string;
-                                }>("/me/practice", {
-                                  timezone: deviceTimeZone(),
-                                  // Sets where their own practice starts.
-                                  birthYear: Number(newBirthYear),
-                                });
-                                useLearnerStore.getState().select(learnerId);
-                                rememberPlace(identity, "me");
-                                await refreshMe({ accountId: identity, token });
-                                setAskSelf(null);
-                                setAdding(false);
-                                setNewName("");
-                                setNewBirthYear("");
-                                route.navigate("/me");
-                              })
-                            }
-                          >
-                            Yes, it’s me
-                          </Button>
-                          <Button
-                            variant="secondary"
-                            type="submit"
-                            form="family-add-learner"
-                            disabled={busy}
-                          >
-                            No, add {askSelf ?? "them"}
-                          </Button>
-                        </div>
-                      </Sheet>
-                    </form>
-                  )}
+                        Cancel
+                      </Button>
+                    </div>
+                    <Sheet
+                      open={askSelf !== null}
+                      onOpenChange={(open) => {
+                        if (!open) setAskSelf(null);
+                      }}
+                      title="Is this you?"
+                    >
+                      <p className="family-sheet-text">
+                        Your own practice is yours, at your own level, beside
+                        the family’s learners.
+                      </p>
+                      <div className="family-sheet-actions">
+                        <Button
+                          variant="primary"
+                          type="button"
+                          disabled={busy}
+                          onClick={() =>
+                            void action(async () => {
+                              const { learnerId } = await api<{
+                                learnerId: string;
+                              }>("/me/practice", {
+                                timezone: deviceTimeZone(),
+                                // Sets where their own practice starts.
+                                birthYear: Number(newBirthYear),
+                              });
+                              useLearnerStore.getState().select(learnerId);
+                              rememberPlace(identity, "me");
+                              await refreshMe({ accountId: identity, token });
+                              setAskSelf(null);
+                              setAdding(false);
+                              setNewName("");
+                              setNewBirthYear("");
+                              route.navigate("/me");
+                            })
+                          }
+                        >
+                          Yes, it’s me
+                        </Button>
+                        <Button
+                          variant="secondary"
+                          type="submit"
+                          form="family-add-learner"
+                          disabled={busy}
+                        >
+                          No, add {askSelf ?? "them"}
+                        </Button>
+                      </div>
+                    </Sheet>
+                  </form>
+                )}
+              </section>
+            )}
+            {learnerSections &&
+              section === "learners" &&
+              !adding &&
+              !nativeRuntime &&
+              account?.familyClass && (
+                <SecondParent
+                  session={session}
+                  className="family-second-parent"
+                  headingClassName={pages.sectionTitle}
+                />
+              )}
+            {learnerSections && section === "access" && (
+              <section className={pages.section} aria-label="Billing">
+                <BillingList
+                  learners={cached?.learners ?? family.learners}
+                  consentActive={consentActive}
+                  busy={busy}
+                  recordsRef={paymentTrigger}
+                  onContinue={(learner) => {
+                    if (nativeRuntime && onChoosePayment) {
+                      selectLearner(learner.id);
+                      onChoosePayment();
+                    } else route.navigate(`/continue/${learner.id}`);
+                  }}
+                  onManage={() => void billing()}
+                  onHistory={(learner, trigger) => {
+                    accessTrigger.current = trigger;
+                    setHistoryFor(learner);
+                  }}
+                  onRecords={() => setPurchaseChooser(true)}
+                />
               </section>
             )}
             {section === "privacy" && !privacy && (
-              <section className="family-section privacy-choices">
-                <h2 tabIndex={-1}>Privacy and records</h2>
-                {(
-                  [
-                    [
-                      "export",
-                      "Download your records",
-                      "Keep a personal copy of your family’s data.",
-                    ],
-                    ...(secondOnly
-                      ? []
-                      : ([
-                          [
-                            "consent",
-                            "Learning consent",
-                            "Review consent or pause new activity.",
-                          ],
-                        ] as const)),
-                    [
-                      "delete",
-                      "Delete learning data",
-                      "Review what will be permanently removed.",
-                    ],
-                    [
-                      "retention",
-                      "What is retained?",
-                      "Understand billing, sign-in, and backups.",
-                    ],
-                    ...((family.purchaseMeasurement?.available ||
-                      family.metaPurchaseMeasurement?.available ||
-                      family.openaiPurchaseMeasurement?.available) &&
-                    !nativeRuntime
-                      ? [
-                          [
-                            "measurement",
-                            "Purchase measurement",
-                            "Choose whether Google, Meta or OpenAI receives adult purchase details.",
-                          ] as const,
-                        ]
-                      : []),
-                  ] as const
-                ).map(([key, title, detail]) => (
-                  <button
-                    key={key}
-                    data-privacy-choice={key}
-                    onClick={() => setPrivacy(key)}
-                  >
-                    <strong>{title}</strong>
-                    <span>{detail}</span>
-                    <b aria-hidden="true">›</b>
-                  </button>
-                ))}
+              <section className={pages.section} aria-label="Privacy choices">
+                <ul className={pages.list}>
+                  {privacyChoices.map(([key, choice, detail]) => (
+                    <li key={key} className={pages.linkItem}>
+                      <button
+                        type="button"
+                        className={pages.linkRow}
+                        data-privacy-choice={key}
+                        onClick={() => setPrivacy(key)}
+                      >
+                        <span className={pages.rowText}>
+                          <span className={pages.rowTitle}>{choice}</span>
+                          <span className={pages.rowMeta}>{detail}</span>
+                        </span>
+                        <Chevron />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
               </section>
-            )}
-            {section === "privacy" && privacy && (
-              <button
-                className="privacy-back text-button"
-                onClick={() => route.navigate("/family/privacy")}
-              >
-                ← Privacy choices
-              </button>
             )}
             {section === "privacy" &&
               privacy === "measurement" &&
@@ -1035,20 +1019,25 @@ export function FamilyCenter({
                 />
               )}
             {section === "privacy" && privacy === "export" && (
-              <section className="family-section">
-                <h2 tabIndex={-1}>Privacy and records</h2>
-                <p>
-                  Download an NDJSON file containing this account’s learners,
-                  problems, answers, licenses, orders and privacy activity. This
-                  is a data export, not a printable workbook.
+              <section className={`family-section ${pages.section}`}>
+                <p className={pages.prose}>
+                  One NDJSON file with {hasChildren ? "your learners’" : "your"}{" "}
+                  problems and answers, plans, orders and privacy activity.
+                  It is a data export, not a printable workbook.
                 </p>
-                <button disabled={busy} onClick={() => void exportData()}>
-                  Download family data
-                </button>
-                <p className="family-secondary">
-                  The browser saves the streamed file without loading your
-                  entire history into this page. A large history may take longer
-                  to download.
+                <div className={pages.footActions}>
+                  <Button
+                    variant="primary"
+                    disabled={busy}
+                    aria-busy={busy || undefined}
+                    onClick={() => void exportData()}
+                  >
+                    {hasChildren ? "Download family data" : "Download your data"}
+                  </Button>
+                </div>
+                <p className={pages.quietLine}>
+                  The file streams straight to your downloads, so a long history
+                  takes a little longer.
                 </p>
               </section>
             )}
@@ -1057,9 +1046,8 @@ export function FamilyCenter({
               secondOnly &&
               account && <SecondParentNote me={account} />}
             {section === "privacy" && privacy === "consent" && !secondOnly && (
-              <section className="family-section">
-                <h2 tabIndex={-1}>Consent for learning</h2>
-                <p className="family-consent-status">
+              <section className={`family-section ${pages.section}`}>
+                <p className={pages.rowTitle}>
                   {family.consent.status === "active"
                     ? "Consent is active."
                     : family.consent.status === "withdrawn"
@@ -1068,67 +1056,75 @@ export function FamilyCenter({
                         ? "Local development access. No verified consent record is present."
                         : "Verified parent consent is not recorded."}
                 </p>
-                {onConsentEnrollment && (
-                  <button data-consent-enrollment onClick={onConsentEnrollment}>
-                    {family.consent.status === "active"
-                      ? "Review consent enrollment"
-                      : "Review consent options"}
-                  </button>
-                )}
                 {family.consent.status === "active" ||
                 family.consent.status === "development" ? (
-                  <>
-                    <p>
-                      Withdrawal stops new learning activity. It does not delete
-                      existing records or cancel payment renewal.
-                    </p>
-                    <button
+                  <p className={pages.prose}>
+                    Withdrawing stops new learning activity. It doesn’t delete
+                    existing records or cancel a plan’s renewal.
+                  </p>
+                ) : (
+                  <p className={pages.prose}>
+                    Your billing controls and data export stay available.
+                    Pausing learning doesn’t cancel a paid plan.
+                  </p>
+                )}
+                <div className={pages.footActions}>
+                  {onConsentEnrollment && (
+                    <Button
+                      variant="secondary"
+                      data-consent-enrollment
+                      onClick={onConsentEnrollment}
+                    >
+                      {family.consent.status === "active"
+                        ? "Review consent"
+                        : "Consent options"}
+                    </Button>
+                  )}
+                  {(family.consent.status === "active" ||
+                    family.consent.status === "development") && (
+                    <Button
+                      variant="quiet"
+                      className={pages.danger}
                       disabled={busy}
                       onClick={(event) =>
                         ask({ kind: "withdraw" }, event.currentTarget)
                       }
                     >
                       Withdraw consent
-                    </button>
-                  </>
-                ) : (
-                  <p>
-                    Review consent options to check enrollment availability.
-                    Your billing controls and data export stay available.
-                    Pausing learning does not cancel paid subscriptions.
-                  </p>
-                )}
+                    </Button>
+                  )}
+                </div>
               </section>
             )}
             {section === "privacy" && privacy === "delete" && (
-              <section className="family-section family-delete">
-                <h2 tabIndex={-1}>Delete all learning data</h2>
-                <p>
-                  Remove every learner’s name, saved problems and answer history
-                  from the live application, and withdraw consent. This cannot
-                  be undone through AMP.
+              <section className={`family-section ${pages.section}`}>
+                <p className={pages.prose}>
+                  {hasChildren
+                    ? "Removes every learner’s name, saved problems and answer history from AMP, and withdraws consent. This can’t be undone."
+                    : "Removes your saved problems and answer history from AMP. This can’t be undone."}
                 </p>
-                <button
-                  className="family-danger"
-                  disabled={busy}
-                  onClick={(event) =>
-                    ask({ kind: "delete" }, event.currentTarget)
-                  }
-                >
-                  Review deletion
-                </button>
+                <div className={pages.footActions}>
+                  <Button
+                    variant="secondary"
+                    className={pages.danger}
+                    disabled={busy}
+                    onClick={(event) =>
+                      ask({ kind: "delete" }, event.currentTarget)
+                    }
+                  >
+                    Review deletion
+                  </Button>
+                </div>
               </section>
             )}
             {section === "privacy" && privacy === "retention" && (
-              <section className="family-section family-retention">
-                <h2 tabIndex={-1}>What these controls do not delete</h2>
-                <p>{family.retained.identity}</p>
-                <p>{family.retained.financial}</p>
-                <p>{family.retained.backups}</p>
-                <p>
-                  Privacy action records contain no learner names or answer
-                  history and expire after {family.retained.privacyAuditDays}{" "}
-                  days. An operational retention job removes expired records.
+              <section className={`family-section ${pages.section}`}>
+                <p className={pages.prose}>{family.retained.identity}</p>
+                <p className={pages.prose}>{family.retained.financial}</p>
+                <p className={pages.prose}>{family.retained.backups}</p>
+                <p className={pages.prose}>
+                  Privacy action records hold no learner names or answers and
+                  expire after {family.retained.privacyAuditDays} days.
                 </p>
               </section>
             )}
@@ -1151,7 +1147,9 @@ export function FamilyCenter({
                 ? "Pause new learning activity?"
                 : confirmation.learner
                   ? "Delete this learner’s data?"
-                  : "Delete all family learning data?"}
+                  : hasChildren
+                    ? "Delete all family learning data?"
+                    : "Delete your learning data?"}
             </h2>
             {confirmation.kind === "delete" && confirmation.learner && (
               <p className="family-confirm-learner">

@@ -108,14 +108,31 @@ function useClassMutation<Input, Output>(
     },
   });
 }
-export const useRotateCode = (session: Session, place: Place) =>
-  useClassMutation(session, place, (token, _: void) =>
-    request(
-      `${classPath(place)}/rotate-code`,
-      z.object({ joinCode: z.string() }),
-      { token, body: {} },
-    ),
-  );
+/** A new class code. Besides the roster and the board, every list that
+ * shows the code (class Settings, the org's classes) refreshes. */
+export function useRotateCode(session: Session, place: Place) {
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: () =>
+      request(
+        `${classPath(place)}/rotate-code`,
+        z.object({ joinCode: z.string() }),
+        { token: session?.token ?? "", body: {} },
+      ),
+    onSettled: async () => {
+      if (!session) return;
+      const account = ["account", session.accountId, "school"];
+      await Promise.all(
+        [
+          key(session, place, "roster"),
+          key(session, place, "presence"),
+          [...account, place.org, "classes"],
+          [...account, "org", place.org, "classes"],
+        ].map((queryKey) => client.invalidateQueries({ queryKey })),
+      );
+    },
+  });
+}
 export const useResetPictures = (session: Session, place: Place) =>
   useClassMutation(session, place, (token, person: string) =>
     request(

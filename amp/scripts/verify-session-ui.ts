@@ -293,7 +293,7 @@ try {
       await page.getByRole("link", { name: "Account", exact: true }).click();
       await page
         .getByRole("navigation", { name: "Account" })
-        .getByRole("link", { name: "Family", exact: true })
+        .getByRole("link", { name: "Learners", exact: true })
         .click();
       await held;
       await page
@@ -302,13 +302,13 @@ try {
       await page
         .getByRole("button", { name: "Edit name", exact: true })
         .click();
-      await page.getByLabel("Learner display name").fill("After rename");
+      await page.getByLabel("Name", { exact: true }).fill("After rename");
       await page
         .getByRole("button", { name: "Save name", exact: true })
         .click();
       await page
         .getByRole("status")
-        .filter({ hasText: "Learner name updated." })
+        .filter({ hasText: "Name saved." })
         .waitFor();
       await leaveSettings(page);
       await page.getByRole("heading", { name: /After rename/ }).waitFor();

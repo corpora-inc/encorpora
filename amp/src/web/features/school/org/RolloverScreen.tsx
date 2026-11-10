@@ -133,10 +133,10 @@ function DatesStep({
             })
           }
           options={[
+            { value: "none", label: "None" },
             { value: "semester", label: divisionLabels.semester.plural },
             { value: "trimester", label: divisionLabels.trimester.plural },
             { value: "quarter", label: divisionLabels.quarter.plural },
-            { value: "none", label: "Full year" },
           ]}
         />
       </div>

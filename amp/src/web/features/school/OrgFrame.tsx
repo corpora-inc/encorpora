@@ -23,6 +23,7 @@ export type NavId =
   | "license"
   | "sign-in-help"
   | "experience"
+  | "settings"
   | "family"
   | `class:${string}`;
 
@@ -31,11 +32,17 @@ export function OrgFrame({
   orgId,
   nav,
   title,
+  place = true,
+  narrow = false,
   children,
 }: {
   orgId: string;
   nav: NavId;
   title: string;
+  /** A class screen's eyebrow: the class's name. */
+  place?: boolean;
+  /** One focused, centred column: a Settings page. */
+  narrow?: boolean;
   crumbs?: readonly SchoolCrumb[];
   children: ReactNode;
 }) {
@@ -85,28 +92,32 @@ export function OrgFrame({
   }
   const can = new Set(org.data.can ?? []);
   const related =
-    nav === "classes" ||
-    nav === "students" ||
-    nav === "import" ||
-    nav === "experience"
+    nav === "classes" || nav === "students" || nav === "import"
       ? [
+          ["classes", "Classes", "classes.read"],
           ...(org.data.kind !== "family"
             ? [["students", "Students", "students.read"]]
             : []),
           ...(org.data.kind === "school"
             ? [["import", "Import students", "roster.import"]]
             : []),
-          ["experience", "Student experience", "settings.read"],
         ]
-      : nav === "staff" || nav === "integrations" || nav === "sign-in-help"
+      : nav === "staff" || nav === "sign-in-help"
         ? [
+            ["staff", "Staff", "staff.read"],
             ["sign-in-help", "Sign-in help", "staff.read"],
-            ["integrations", "Integrations", "integrations.read"],
           ]
-        : [];
-  const links = related.filter(
-    ([path, , permission]) =>
-      pathname !== `/school/${orgId}/${path}` && can.has(permission as never),
+        : nav === "settings" || nav === "privacy" || nav === "integrations"
+          ? [
+              ["settings", "Settings", "classes.read"],
+              ["privacy", "Privacy and data", "privacy.read"],
+              ["integrations", "Integrations", "integrations.read"],
+            ]
+          : [];
+  // The group's screens as one row of sub-tabs, the open one marked, so the
+  // row never changes shape between them.
+  const links = related.filter(([, , permission]) =>
+    can.has(permission as never),
   );
   return (
     <main
@@ -114,15 +125,32 @@ export function OrgFrame({
       tabIndex={-1}
       className={frame.content}
       data-dense
+      // Settings and its pages are one focused, centred column.
+      data-narrow={
+        narrow ||
+        nav === "settings" ||
+        nav === "privacy" ||
+        nav === "integrations"
+          ? ""
+          : undefined
+      }
     >
-      {nav.startsWith("class:") && <p className={frame.place}>{title}</p>}
-      {links.length > 0 && (
-        <nav className={frame.links} aria-label="Related school screens">
+      {/* Which class, for someone who teaches several; a family has one. */}
+      {place && nav.startsWith("class:") && org.data.kind !== "family" && (
+        <p className={frame.place}>{title}</p>
+      )}
+      {links.length > 1 && (
+        <nav className={frame.links} aria-label="In this section">
           {links.map(([path, label]) => (
             <Link
               key={path}
               to="/$"
               params={{ _splat: `school/${orgId}/${path}` }}
+              aria-current={
+                pathname.replace(/\/+$/, "") === `/school/${orgId}/${path}`
+                  ? "page"
+                  : undefined
+              }
             >
               {label}
             </Link>

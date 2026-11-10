@@ -2,14 +2,13 @@
  * The teacher in their class (docs/families.md) in real browsers, against the
  * real API and a real database. Everyone here is synthetic.
  *
- *   1. A teacher who practices sees their own line on the class map, marked
- *      Teacher, apart from the students, and it opens their own record. A
- *      colleague's line opens nothing, and the students are exactly as many.
+ *   1. The class map shows the students only: a teacher's own practice is
+ *      theirs, on `/me`, never a row among the class.
  *   2. A student opens standings: the teacher sits in place by value with no
  *      number, the students' numbers still run 1 to 10, and a colleague below
  *      the list shows after the student's own line.
  *   3. The teacher switches "Show me in my class" off on the Student experience
- *      tab: nothing on the screen moves, the map and the board drop the line,
+ *      tab: nothing on the screen moves, the board drops the line,
  *      a reload keeps the choice, a failed save puts it back and says so, and
  *      switching on brings the line back.
  *
@@ -423,33 +422,14 @@ const heading = (page: Page, name: string | RegExp) =>
 
 /** The map's lines, in order, as a screen reader names them (an avatar's
  * initials are decorative). */
-const mapNames = async (page: Page, width: number) => {
+const mapNames = async (page: Page) => {
   await page.evaluate("globalThis.__name ??= (f) => f");
-  return width < 640
-    ? page
-        .locator("[data-teacher], a[href*='/students/']")
-        .evaluateAll((elements) =>
-          elements.map((element) => {
-            const copy = element.cloneNode(true) as Element;
-            copy
-              .querySelectorAll("[aria-hidden=true]")
-              .forEach((e) => e.remove());
-            return (copy.textContent ?? "").replace(/\s+/g, " ").trim();
-          }),
-        )
-    : page
-        .getByRole("grid", { name: "Class map" })
-        .getByRole("row")
-        .evaluateAll((rows) =>
-          rows.slice(1).map((row) => {
-            const name = row.querySelector("a,[data-teacher]");
-            const copy = name?.cloneNode(true) as Element | undefined;
-            copy
-              ?.querySelectorAll("[aria-hidden=true]")
-              .forEach((e) => e.remove());
-            return (copy?.textContent ?? "").replace(/\s+/g, " ").trim();
-          }),
-        );
+  return page
+    .getByRole("table", { name: /^Class map/ })
+    .locator("[role=row] [role=cell]:first-child")
+    .evaluateAll((cells) =>
+      cells.map((cell) => (cell.textContent ?? "").replace(/\s+/g, " ").trim()),
+    );
 };
 /** The board as it reads: each line's number (blank for a teacher) and name. */
 const boardLines = (page: Page) =>
@@ -480,41 +460,17 @@ async function journeys(browser: Browser, engine: string, width: number) {
     student: onList,
   });
   try {
-    // 1. The map: her own line, marked, opening her own record.
+    // 1. The map: the students, exactly, and no teacher's line.
     await teacher.page.goto(classUrl("map"));
     await heading(teacher.page, "Class map").waitFor();
     await settled(teacher.page);
-    const names = await mapNames(teacher.page, width);
+    const names = await mapNames(teacher.page);
     check(
-      `${label} the map has both teachers, marked`,
-      names.includes("Ms. Rivera, Teacher") &&
-        names.includes("Mr. Chen, Teacher"),
+      `${label} the map's students are all there, once, and only them`,
+      names.length === NAMES.length &&
+        !names.some((name) => /Rivera|Chen/.test(name)),
       names,
     );
-    check(
-      `${label} the map's students are all there, once`,
-      names.filter((name) => !name.endsWith("Teacher")).length === NAMES.length,
-      names,
-    );
-    // Ms. Rivera at 6.6 sits among the students by level, not pinned.
-    const at = names.indexOf("Ms. Rivera, Teacher");
-    check(
-      `${label} her line sits in place`,
-      at > 0 && at < names.length - 1,
-      names,
-    );
-    check(
-      `${label} a colleague's line opens nothing`,
-      (await teacher.page.getByRole("link", { name: /Mr\. Chen/ }).count()) ===
-        0,
-    );
-    await teacher.page
-      .getByRole("link", { name: "Ms. Rivera, Teacher" })
-      .click();
-    await teacher.page.waitForURL(/\/me$/);
-    await heading(teacher.page, /.+/).waitFor();
-    await teacher.page.goBack();
-    await heading(teacher.page, "Class map").waitFor();
 
     // 2. The board: in place, no number; the students still 1 to 10.
     await child.page.goto(`${origin}/standings`);
@@ -602,33 +558,16 @@ async function journeys(browser: Browser, engine: string, width: number) {
         .getByRole("radio", { name: "Hidden" })
         .getAttribute("aria-checked")) === "true",
     );
-    await teacher.page.goto(classUrl("map"));
-    await heading(teacher.page, "Class map").waitFor();
-    await settled(teacher.page);
-    const hidden = await mapNames(teacher.page, width);
-    check(
-      `${label} off the map`,
-      !hidden.includes("Ms. Rivera, Teacher") &&
-        hidden.includes("Mr. Chen, Teacher"),
-      hidden,
-    );
     await child.page.reload();
     await child.page.getByRole("region", { name: "Your line" }).waitFor();
     check(
       `${label} off the board`,
       !(await boardLines(child.page)).some((line) => line.teacher),
     );
-    await teacher.page.goBack();
     await group.waitFor();
     await group.getByRole("radio", { name: "Shown" }).click();
     await teacher.page.waitForResponse((response) =>
       response.url().endsWith("/experience/me"),
-    );
-    await teacher.page.goto(classUrl("map"));
-    await heading(teacher.page, "Class map").waitFor();
-    check(
-      `${label} back on the map`,
-      (await mapNames(teacher.page, width)).includes("Ms. Rivera, Teacher"),
     );
   } catch (error) {
     for (const [who, page] of [
@@ -677,8 +616,8 @@ async function sweep(
   });
   try {
     for (const [name, leaf, title, ready] of [
-      ["map", "map", "Class map", "Ms. Rivera"],
-      ["today", "today", /^Good /, "Mr. Chen"],
+      ["map", "map", "Class map", `${NAMES[0]![0]} ${NAMES[0]![1]}`],
+      ["today", "today", /^Good /, `${NAMES[0]![0]} ${NAMES[0]![1]}`],
       ["experience", "experience", "Student experience", "Show me in my class"],
     ] as const) {
       await teacher.page.goto(classUrl(leaf));

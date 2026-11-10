@@ -42,7 +42,11 @@ import {
   type LearnerObservation,
 } from "./learner-frontier";
 import { workbookWorker } from "../workbook/off-thread";
-import { trendCounts, type TrendPoint } from "../learning/level-check";
+import {
+  trendCounts,
+  trendStep,
+  type TrendPoint,
+} from "../learning/level-check";
 const templateById = new Map(
   [...templates, ...historicalTemplates].map((t) => [t.id, t]),
 );
@@ -60,7 +64,8 @@ import {
   learningConsentActive,
   namingConsentActive,
 } from "./account-access.js";
-import { insertUnnamedChild } from "./picture-identity.js";
+import { insertFamilyChild } from "./learner-label.js";
+import { goesByNumber, PARENT_ENTRY } from "../learning/nickname.js";
 import {
   familyHasLearnerRoom,
   freeAllowance,
@@ -105,7 +110,8 @@ export type Learner = {
   name: string;
   birthYear: number | null;
   namePending?: boolean;
-  pictureIdentity?: string | null;
+  /** Goes by their number ("Child 2"): no nickname chosen yet. */
+  defaultName?: boolean;
 };
 export type Outcome = {
   ingestionSequence?: string;
@@ -210,8 +216,9 @@ export interface LearnerTransaction {
   /** The frontier as estimated from only the first `answers` answers. */
   frontierAfter(answers: number): Promise<Frontier>;
   /** The overall estimate after 0, every level-check step and all answers:
-   * how the level moved over the free run (learning/level-check.ts). */
-  frontierTrend(): Promise<TrendPoint[]>;
+   * how the level moved (learning/level-check.ts). With `points`, the step
+   * widens so a long record gives at most about that many. */
+  frontierTrend(points?: number): Promise<TrendPoint[]>;
   trialPaywall(): Promise<void>;
   /** The learner's birth year, or null when none was given. */
   birthYear(): Promise<number | null>;
@@ -304,12 +311,13 @@ export class PostgresRepository implements Repository {
   }
 
   async list(accountId: string) {
-    return drizzle(this.pool)
+    const rows = await drizzle(this.pool)
       .select({
         id: schema.learners.id,
         name: schema.learners.name,
         namePending: schema.learners.namePending,
-        pictureIdentity: schema.learners.pictureIdentity,
+        identityScope: schema.learners.identityScope,
+        labelNumber: schema.learners.labelNumber,
         birthYear: schema.learners.birthYear,
         satMathFocus: schema.learners.satMathFocus,
       })
@@ -323,6 +331,16 @@ export class PostgresRepository implements Repository {
           eq(schema.learners.simulation, false),
         ),
       );
+    return rows.map(({ identityScope, labelNumber, ...learner }) => ({
+      ...learner,
+      ...(goesByNumber({
+        name: learner.name,
+        identity_scope: identityScope,
+        label_number: labelNumber,
+      })
+        ? { defaultName: true }
+        : {}),
+    }));
   }
   async create(
     accountId: string,
@@ -333,20 +351,19 @@ export class PostgresRepository implements Repository {
     try {
       await client.query("BEGIN");
       await lockLearningAccount(client, accountId);
+      // A parent names their own child with or without verified consent
+      // (docs/parent-consent.md#childrens-names). Without it the child learns
+      // on the restricted basis, so a birth year is needed; blank is "Child 2".
       const canName = await namingConsentActive(
         client,
         accountId,
         this.options.development,
       );
-      if (name !== undefined && !canName)
-        throw new ApiError(
-          403,
-          "Parent consent is required before collecting learning data",
-        );
-      if (name === undefined && birthYear == null)
+      const restricted = !canName || name === undefined;
+      if (restricted && birthYear == null)
         throw new ApiError(400, "A birth year is required");
       if (
-        name === undefined &&
+        !canName &&
         (
           await client.query(
             "SELECT 1 FROM amp_parent_consents WHERE account_id=$1 AND withdrawn_at IS NOT NULL",
@@ -362,21 +379,32 @@ export class PostgresRepository implements Repository {
         name: string;
         birthYear: number | null;
         namePending: boolean;
-        pictureIdentity: string | null;
       };
-      if (name === undefined)
-        learner = await insertUnnamedChild(client, accountId, birthYear!);
+      if (restricted)
+        learner = await insertFamilyChild(
+          client,
+          accountId,
+          birthYear!,
+          name,
+        );
       else {
         learner = {
           id: randomUUID(),
           name,
           birthYear: birthYear ?? null,
           namePending: false,
-          pictureIdentity: null,
         };
         await client.query(
-          "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,$3,$4)",
-          [learner.id, accountId, learner.name, learner.birthYear],
+          `INSERT INTO amp_learners(id,account_id,name,birth_year,name_basis,name_basis_version,name_basis_at)
+           VALUES($1,$2,$3,$4,$5,$6,now())`,
+          [
+            learner.id,
+            accountId,
+            learner.name,
+            learner.birthYear,
+            PARENT_ENTRY.method,
+            PARENT_ENTRY.version,
+          ],
         );
       }
       // A child is a student of their family's class from the start.
@@ -887,12 +915,15 @@ export class PgTransaction implements LearnerTransaction {
       })[],
     };
   }
-  async frontierTrend(): Promise<TrendPoint[]> {
+  async frontierTrend(points?: number): Promise<TrendPoint[]> {
     const now = Date.now();
     const { start, observations } = await this.frontierInputs(now);
     return overallTrend(
       { start, observations, now, ...frontierCatalog },
-      trendCounts(observations.length),
+      trendCounts(
+        observations.length,
+        trendStep(observations.length, points),
+      ),
     );
   }
   async recentAttempts() {

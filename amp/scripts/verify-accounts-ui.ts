@@ -120,7 +120,9 @@ async function signedIn(page: Page, email: string) {
   );
   if (new URL(page.url()).pathname.startsWith("/school/")) {
     await page
-      .getByRole("heading", { name: /^Good (morning|afternoon|evening)/ })
+      .getByRole("heading", {
+        name: /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+      })
       .waitFor();
   }
   await page
@@ -133,12 +135,17 @@ async function signedIn(page: Page, email: string) {
       );
     });
   const identity = page.getByRole("region", { name: "Current account" });
-  await identity.getByRole("button", { name: "Show email" }).click();
-  await identity.getByText(email, { exact: true }).waitFor();
+  // The drawer never shows the address; Account does.
+  assert(
+    !(await identity.innerHTML()).includes(email),
+    "email rendered in the drawer",
+  );
   const signOut = page.getByRole("button", { name: "Sign out", exact: true });
   await signOut.waitFor();
   if (new URL(page.url()).pathname.startsWith("/school/")) {
-    await page.getByRole("link", { name: "Family", exact: true }).click();
+    await page
+      .getByRole("link", { name: "Family & account", exact: true })
+      .click();
     await page.waitForURL(`${origin}/family`);
     await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
   } else {
@@ -184,7 +191,7 @@ try {
     .getByRole("heading", { name: "What brings you to AMP?" })
     .waitFor();
   await page.getByRole("link", { name: /^I’m a parent/ }).click();
-  await page.getByRole("button", { name: "Birth year, your child" }).click();
+  await page.getByRole("button", { name: "Birth year, Child 1" }).click();
   await page.getByRole("option", { name: "2016", exact: true }).click();
   await page.getByRole("button", { name: "Continue", exact: true }).click();
   await signedIn(page, email);
@@ -293,7 +300,7 @@ try {
   // Recent authentication must retain the return route through the TOTP step.
   await page.getByRole("link", { name: "Sign in again", exact: true }).click();
   await page.getByLabel("Email").fill(email);
-  await page.getByLabel("AMP password", { exact: true }).fill(changed);
+  await page.getByLabel("Password", { exact: true }).fill(changed);
   await page.getByRole("button", { name: "Sign in", exact: true }).click();
   await page.waitForURL("**/sign-in/two-factor?return=security");
   await page
@@ -330,7 +337,7 @@ try {
   await sibling.getByRole("link", { name: "Account", exact: true }).click();
   await sibling
     .getByRole("navigation", { name: "Account" })
-    .getByRole("link", { name: "Family", exact: true })
+    .getByRole("link", { name: "Learners", exact: true })
     .click();
   await sibling
     .getByRole("button", { name: "Add learner", exact: false })
@@ -347,7 +354,7 @@ try {
   // Session rotation must update AMP's in-memory API bearer token too.
   await page
     .getByRole("navigation", { name: "Account" })
-    .getByRole("link", { name: "Family", exact: true })
+    .getByRole("link", { name: "Learners", exact: true })
     .click();
   await page.getByRole("button", { name: "Add learner", exact: false }).click();
   await page.getByRole("textbox", { name: "Name", exact: true }).fill("Maya");

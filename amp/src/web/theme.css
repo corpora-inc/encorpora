@@ -53,8 +53,11 @@ body,
   font-weight: 700;
   letter-spacing: -0.015em;
 }
-/* Display headings keep the editorial serif of the paper-and-green studio. */
+/* Display headings keep the editorial serif of the paper-and-green studio.
+   A lesson's title and its parts are page and section titles too. */
 .shell:not(.reading-shell) h1,
+.shell:not(.reading-shell) .lesson-reader > h2,
+.shell:not(.reading-shell) .reference-lesson h3,
 .lesson-sheet h2,
 .dialog-heading h2 {
   font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
@@ -173,9 +176,6 @@ header {
 .shell.immersive > header,
 .shell.immersive > nav {
   display: none;
-}
-.shell.immersive .practice-workspace {
-  padding-top: 8px;
 }
 /* "Your level": the way out of immersive practice leads to the level map,
    so it reads as a place to check, not a close button. A tinted pill with a
@@ -628,15 +628,55 @@ header {
   color: var(--color-on-primary);
 }
 
-/* Lessons tab */
+/* Lessons tab: plain sections on the page, no card around them
+   (docs/design/ia.md). */
 .lesson-index,
 .lesson-sheet,
 .book-list {
-  margin-bottom: 20px;
-  padding: 20px;
-  border: 1px solid var(--color-border);
-  border-radius: 20px;
-  background: var(--color-surface-raised);
+  margin-bottom: var(--space-6);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+/* The library browses at the content width; a lesson reads at a measure
+   from the same left edge. */
+.shell.app-shell.flow > main.library-main {
+  width: min(calc(100% - 32px), var(--width-content-wide));
+}
+@media (min-width: 768px) {
+  .shell.app-shell.flow > main.library-main {
+    width: min(calc(100% - 48px), var(--width-content-wide));
+  }
+}
+.library-main > .lesson-sheet,
+.library-main > .lesson-reader {
+  max-width: 720px;
+}
+.lesson-reader > h2 {
+  margin: var(--space-5) 0 var(--space-3);
+  font-size: var(--text-heading-1);
+  line-height: 1.15;
+}
+@media (max-width: 650px) {
+  .lesson-reader > h2 {
+    font-size: 28px;
+  }
+}
+/* Quiet actions in the lessons: a tint on hover, never an underline. */
+.lesson-reader .card-top .text-button,
+.book-list .text-button {
+  padding-inline: var(--space-2);
+  margin-inline: calc(-1 * var(--space-2));
+}
+.lesson-reader .card-top .text-button:hover,
+.book-list .text-button:hover {
+  text-decoration: none;
+  background: var(--color-surface-hover);
+}
+/* The download menu sits at the row's end, as quiet as "All lessons". */
+.lesson-reader .card-top {
+  align-items: center;
 }
 .lesson-sheet {
   max-width: 720px;
@@ -796,10 +836,7 @@ header {
   box-shadow: none;
 }
 @media (max-width: 650px) {
-  .start-card,
-  .lesson-index,
-  .lesson-sheet,
-  .book-list {
+  .start-card {
     padding: 16px;
     border-radius: 16px;
   }
@@ -901,6 +938,46 @@ header {
   font-size: clamp(32px, 6vw, 48px);
   line-height: 1.05;
 }
+/* Whose Overview: a quiet label, not a profile's title. The level leads. */
+.home-hero h1.home-learner {
+  font-family: inherit;
+  font-size: var(--text-heading-3);
+  font-weight: 650;
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+/* The level view's slot carries the old map's marker class, none of its
+   frame: the view draws its own. */
+.home > .frontier-map.home-level-slot,
+[data-shell-content] .home > .frontier-map.home-level-slot {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+/* Day 0's Start practicing: prominent, at its natural width. */
+.home [data-level-start] .go-button {
+  width: auto;
+  min-height: 56px;
+  padding-inline: 32px;
+  font-size: var(--text-heading-3);
+}
+/* The free problems left, quiet under the learner's label. */
+.home-free-line {
+  margin: 6px 0 0;
+}
+/* A learner's own Overview: the page's title, not a label. */
+.home-hero h1.home-learner-own {
+  font-family: var(--font-display);
+  font-size: var(--text-heading-1);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+/* The level's place while the estimate loads: the height of the view. */
+.home-level-wait {
+  min-height: 420px;
+  border-radius: var(--radius-panel);
+}
 .home-free {
   margin: 6px 0 0;
   color: var(--color-muted-text);
@@ -955,6 +1032,8 @@ header {
 }
 .home-birth-year {
   align-self: center;
+  justify-self: center;
+  margin-inline: auto;
   font-size: 13px;
 }
 /* The Overview under the app frame's bar: the learner and Go are the page's
@@ -1112,8 +1191,7 @@ button:focus:not(:focus-visible) {
   height: 44px;
 }
 
-/* Every screen shares one column so the header and tabs never move; practice
-   gets a wider, centred focus column. */
+/* Every screen shares one column so the header and tabs never move. */
 .shell.app-shell:not(.flow):not(.reading-shell):not(.immersive) {
   left: 0;
   right: 0;
@@ -1121,11 +1199,26 @@ button:focus:not(:focus-visible) {
   margin-inline: auto;
   padding-inline: 16px;
 }
+/* Practice is immersive at every width: the stage runs edge to edge under the
+   bar, inside the safe area, with no card, margin or radius around it. */
 .shell.app-shell.immersive {
   left: 0;
   right: 0;
-  max-width: 960px;
-  margin-inline: auto;
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: env(safe-area-inset-left, 0px) env(safe-area-inset-right, 0px);
+}
+.shell.immersive .practice-workspace {
+  padding: 0;
+}
+.shell.immersive .practice-surface {
+  border: 0;
+  border-radius: 0;
+  background: var(--color-surface);
+  box-shadow: none;
+}
+.shell.immersive .problem-stage {
+  --stage-paper: var(--color-surface);
 }
 
 /* One header geometry on every screen. Scrolling pages draw no window
@@ -1437,8 +1530,9 @@ html[data-input="pointer"] :focus-visible {
   background: var(--color-secondary);
   color: var(--color-primary);
 }
-/* A status, not an action: the same footprint as the calculator button, so
-   the title never shifts between problems, but with no fill. */
+/* No calculator: the calculator button's footprint, so the title never
+   shifts between problems, but nothing drawn. A crossed-out icon in a
+   button's place read as a control that did nothing. */
 .no-calculator {
   flex: none;
   display: grid;
@@ -1446,6 +1540,7 @@ html[data-input="pointer"] :focus-visible {
   width: 44px;
   height: 44px;
   color: var(--color-subtle-text);
+  visibility: hidden;
 }
 .no-calculator svg {
   width: 22px;
@@ -1979,27 +2074,17 @@ html[data-input="pointer"] :focus-visible {
   background: var(--color-secondary);
 }
 
-/* ── Phones: practice is full-bleed ───────────────────────────────────────
-   The paper card needs room around it; on a phone it only wastes the edges.
-   The problem runs edge to edge inside the safe area, and feedback rises as
-   a bottom sheet from the screen edge. Tablets and desktops keep the card. */
+/* ── Phones: one toolbar row, tighter insets ──────────────────────────────
+   The problem runs edge to edge inside the safe area (as at every width),
+   and feedback rises as a bottom sheet from the screen edge. */
 @media (max-width: 650px) {
   /* The practice surface, not the shell, reserves the home indicator's
      inset, so docked sheets (calculator, feedback) reach the screen's edge
      and pad their own controls above it: no band below them. */
   .shell.app-shell.immersive {
-    padding-inline: env(safe-area-inset-left, 0px)
-      env(safe-area-inset-right, 0px);
     padding-bottom: 0;
   }
-  .shell.immersive .practice-workspace {
-    padding: 0;
-  }
   .shell.immersive .practice-surface {
-    border: 0;
-    border-radius: 0;
-    background: var(--color-surface);
-    box-shadow: none;
     padding: 4px 16px env(safe-area-inset-bottom, 0px);
   }
   .shell.immersive .workspace-toolbar {

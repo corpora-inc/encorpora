@@ -361,7 +361,7 @@ export class SchoolSignIn {
 
   /** Who's here: a session seen since midnight at the school. A device that
    * stayed signed in counts once it's been used today. */
-  async presence(classId: string): Promise<Presence> {
+  async presence(classId: string, canManage = false): Promise<Presence> {
     const found = await this.classInfo(classId);
     const { rows } = await this.pool.query(
       `SELECT p.id,${STUDENT_NAME} AS name,
@@ -372,7 +372,13 @@ export class SchoolSignIn {
       [classId],
     );
     return {
-      class: { id: found.id, name: found.name, joinCode: found.joinCode },
+      class: {
+        id: found.id,
+        name: found.name,
+        joinCode: found.joinCode,
+        joinLockedUntil: found.lockedUntil?.toISOString() ?? null,
+      },
+      canManage,
       students: rows,
     };
   }
@@ -493,6 +499,43 @@ export class SchoolSignIn {
 
   /** Only a hash is kept, so this is the one moment a card's link exists: to
    * print again is to make new cards, and the old ones stop working. */
+  /** Cards this class's staff just made, checked again before they are
+   * printed: each token must be the student's working card, and the student
+   * in this class. Names come from the roster, never from the request. */
+  async cardsToPrint(
+    classId: string,
+    cards: readonly { personId: string; token: string }[],
+  ): Promise<{ className: string; cards: { name: string; token: string }[] }> {
+    const found = await this.classInfo(classId);
+    if (cards.some((card) => !CARD_TOKEN.test(card.token)))
+      throw new SchoolError(410, "card_replaced");
+    const { rows } = await this.pool.query(
+      `SELECT p.id,${STUDENT_NAME} AS name,k.lookup_hash AS hash FROM ${STUDENTS_OF_CLASS}
+       JOIN amp_person_credentials k ON k.person_id=p.id AND ${WORKING_CARD}
+       WHERE c.id=$1 AND ${IN_CLASS} AND p.id=ANY($2::uuid[]) AND k.lookup_hash=ANY($3::text[])`,
+      [
+        classId,
+        cards.map((card) => card.personId),
+        cards.map((card) => sha256(card.token)),
+      ],
+    );
+    const named = new Map(
+      (rows as { id: string; name: string; hash: string }[]).map((row) => [
+        `${row.id}:${row.hash}`,
+        row.name,
+      ]),
+    );
+    return {
+      className: found.name,
+      cards: cards.map((card) => {
+        const name = named.get(`${card.personId}:${sha256(card.token)}`);
+        // A newer card replaced it, or the student left the class.
+        if (name === undefined) throw new SchoolError(410, "card_replaced");
+        return { name, token: card.token };
+      }),
+    };
+  }
+
   async issueCards(
     target: { classId: string; orgId: string },
     raw: unknown,

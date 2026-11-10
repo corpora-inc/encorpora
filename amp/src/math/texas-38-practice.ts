@@ -941,7 +941,7 @@ function storyEquationChoice(r: Random): Built {
     ];
     steps = [
       `${name} starts with ${a + b} and gives away ${b}, so ${b} is taken away.`,
-      `What is left is ${a + b} − ${b} = $n$, or $n$ + ${b} = ${a + b}.`,
+      `What is left is ${a + b} − ${b} = $n$, or $n + ${b} = ${a + b}$.`,
     ];
     hint = `${name} starts with ${a + b}. Giving ${b} away takes it from that starting amount.`;
   } else if (variant === "join-start-unknown") {
@@ -964,7 +964,7 @@ function storyEquationChoice(r: Random): Built {
     ];
     steps = [
       `The start $n$ and the ${b} that is added make the new total.`,
-      `So $n$ + ${b} = ${a + b}.`,
+      `So $n + ${b} = ${a + b}$.`,
     ];
     hint = `$n$ is the amount before anything changes. Write what happens to $n$ when ${b} more arrive, then what it equals afterwards.`;
   } else if (variant === "separate-start-unknown") {
@@ -1062,7 +1062,7 @@ function storyEquationChoice(r: Random): Built {
     ];
     steps = [
       `Start with $n$, add the ${b} received and subtract the ${cc} given away.`,
-      `That leaves ${end}: $n$ + ${b} − ${cc} = ${end}.`,
+      `That leaves ${end}: $n + ${b} - ${cc} = ${end}$.`,
     ];
     hint = `Begin with $n$ and apply each change in order: one adds and one subtracts. The result is ${end}.`;
   }
@@ -1252,7 +1252,11 @@ function stripDiagramEquation(r: Random): Built {
 /* ---------------------------------------------------------------------- */
 
 /** Clause-family draw, off the content stream. Index 0 is the legacy model. */
-function clauseFamily(templateId: string, seed: string, weights: readonly number[]) {
+function clauseFamily(
+  templateId: string,
+  seed: string,
+  weights: readonly number[],
+) {
   const span = weights.reduce((a, b) => a + b, 0);
   const limit = Math.floor(0x100000000 / span) * span;
   let counter = 0;
@@ -2320,7 +2324,9 @@ function scalingDirectionChoice(r: Random, seed = ""): Built {
     ],
     choices: choicesFrom(
       correct,
-      seed && scalingMenu(seed) === "shuffled" ? shuffleScalingPool(seed, pool) : pool,
+      seed && scalingMenu(seed) === "shuffled"
+        ? shuffleScalingPool(seed, pool)
+        : pool,
     ),
   };
 }
@@ -3463,7 +3469,9 @@ function assertBrief(parts: string[]) {
   for (const part of parts)
     for (const sentence of part.split(/(?<=[.?!])\s+/))
       if (sentenceWords(sentence) > 35)
-        throw new Error(`Sentence has ${sentenceWords(sentence)} words: ${sentence}`);
+        throw new Error(
+          `Sentence has ${sentenceWords(sentence)} words: ${sentence}`,
+        );
 }
 
 function runAndRecord(r: Random): Built {
@@ -3597,11 +3605,24 @@ function discrepancySource(r: Random): Built {
   ] as const);
   const want = pick(r, ["few", "wrong", "good"] as const);
   const menus = {
-    cube: { few: [12, 18, 24, 30], wrong: [300, 360, 600], good: [240, 300, 360] },
-    spinner: { few: [8, 12, 16, 20, 28], wrong: [400, 600, 800], good: [200, 400, 600] },
-    coin: { few: [10, 16, 20, 24, 30], wrong: [400, 500, 600], good: [200, 300, 400] },
+    cube: {
+      few: [12, 18, 24, 30],
+      wrong: [300, 360, 600],
+      good: [240, 300, 360],
+    },
+    spinner: {
+      few: [8, 12, 16, 20, 28],
+      wrong: [400, 600, 800],
+      good: [200, 400, 600],
+    },
+    coin: {
+      few: [10, 16, 20, 24, 30],
+      wrong: [400, 500, 600],
+      good: [200, 300, 400],
+    },
   };
-  const menuKey = device.den === 6 ? "cube" : device.den === 4 ? "spinner" : "coin";
+  const menuKey =
+    device.den === 6 ? "cube" : device.den === 4 ? "spinner" : "coin";
   const n = pick(r, menus[menuKey][want]);
   const mean = n / device.den;
   const room: number[] = [];
@@ -3616,7 +3637,8 @@ function discrepancySource(r: Random): Built {
   const wrongKey = `${obs} of ${n} is far more than ordinary chance variation, so the equally likely model is wrong.`;
   const goodKey =
     "The agreement is good; the small difference is ordinary variation and needs no explanation.";
-  const correct = want === "few" ? fewKey : want === "wrong" ? wrongKey : goodKey;
+  const correct =
+    want === "few" ? fewKey : want === "wrong" ? wrongKey : goodKey;
   const ordinaryLarge = `With ${n} trials, this difference is ordinary chance variation.`;
   const prompt = [
     `${device.lead} ${n} times.`,
@@ -3628,9 +3650,7 @@ function discrepancySource(r: Random): Built {
   const above = obs >= mean;
   const explanation = [
     `${n} ÷ ${device.den} = ${mean}.`,
-    above
-      ? `${obs} − ${mean} = ${gap}.`
-      : `${mean} − ${obs} = ${gap}.`,
+    above ? `${obs} − ${mean} = ${gap}.` : `${mean} − ${obs} = ${gap}.`,
     want === "few"
       ? `With only ${n} ${device.unit}, a gap of ${gap} is ordinary chance variation.`
       : want === "wrong"
@@ -3645,8 +3665,14 @@ function discrepancySource(r: Random): Built {
   const wrongs =
     want === "few"
       ? [
-          { label: gambler, feedback: "Earlier misses do not make a later result due." },
-          { label: recorded, feedback: "Nothing in the results shows a recording error." },
+          {
+            label: gambler,
+            feedback: "Earlier misses do not make a later result due.",
+          },
+          {
+            label: recorded,
+            feedback: "Nothing in the results shows a recording error.",
+          },
           {
             label: wrongKey,
             feedback: `A gap of ${gap} in only ${n} ${device.unit} is still ordinary variation.`,
@@ -3654,22 +3680,40 @@ function discrepancySource(r: Random): Built {
         ]
       : want === "wrong"
         ? [
-            { label: gambler, feedback: "Earlier misses do not make a later result due." },
-            { label: recorded, feedback: "Nothing in the results shows a recording error." },
+            {
+              label: gambler,
+              feedback: "Earlier misses do not make a later result due.",
+            },
+            {
+              label: recorded,
+              feedback: "Nothing in the results shows a recording error.",
+            },
             {
               label: ordinaryLarge,
               feedback: `A gap of ${gap} in ${n} trials is too large to call ordinary variation.`,
             },
           ]
         : [
-            { label: gambler, feedback: "Earlier misses do not make a later result due." },
-            { label: recorded, feedback: "Nothing in the results shows a recording error." },
+            {
+              label: gambler,
+              feedback: "Earlier misses do not make a later result due.",
+            },
+            {
+              label: recorded,
+              feedback: "Nothing in the results shows a recording error.",
+            },
             {
               label: wrongKey,
               feedback: `A gap of ${gap} in ${n} trials is not far beyond ordinary variation.`,
             },
           ];
-  assertBrief([prompt, hint, correct, ...explanation, ...wrongs.map((w) => w.label)]);
+  assertBrief([
+    prompt,
+    hint,
+    correct,
+    ...explanation,
+    ...wrongs.map((w) => w.label),
+  ]);
   return {
     variant: "discrepancy-source",
     prompt,
@@ -3768,7 +3812,13 @@ function modelFromData(r: Random): Built {
       feedback: `The shares match the results, but the next run has ${next} ${process.per}, not ${total}.`,
     },
   ];
-  assertBrief([prompt, hint, correct, ...explanation, ...wrongs.map((w) => w.label)]);
+  assertBrief([
+    prompt,
+    hint,
+    correct,
+    ...explanation,
+    ...wrongs.map((w) => w.label),
+  ]);
   return {
     variant: "model-from-data",
     prompt,
@@ -3780,7 +3830,11 @@ function modelFromData(r: Random): Built {
 
 function equallyLikelyJudgment(r: Random): Built {
   const device = pick(r, [
-    { k: 2, names: ["heads", "tails"], lead: (n: number) => `A penny was spun ${n} times.` },
+    {
+      k: 2,
+      names: ["heads", "tails"],
+      lead: (n: number) => `A penny was spun ${n} times.`,
+    },
     {
       k: 3,
       names: ["open-end down", "open-end up", "on its side"],
@@ -3814,7 +3868,10 @@ function equallyLikelyJudgment(r: Random): Built {
     const rest = total - high;
     const base = Math.floor(rest / (device.k - 1));
     const extra = rest - base * (device.k - 1);
-    const low = Array.from({ length: device.k - 1 }, (_, i) => base + (i < extra ? 1 : 0));
+    const low = Array.from(
+      { length: device.k - 1 },
+      (_, i) => base + (i < extra ? 1 : 0),
+    );
     if (high < total && low.every((c) => c > 0) && Math.max(...low) < high)
       counts = [...low, high];
   } else {
@@ -3832,7 +3889,8 @@ function equallyLikelyJudgment(r: Random): Built {
   const kind =
     total <= 30 && counts.every((c) => Math.abs(c - mean) <= 2.5 * sig + 1e-9)
       ? "few"
-      : total >= 200 && counts.every((c) => Math.abs(c - mean) <= 1.5 * sig + 1e-9)
+      : total >= 200 &&
+          counts.every((c) => Math.abs(c - mean) <= 1.5 * sig + 1e-9)
         ? "yes"
         : total >= 200 && Math.max(...counts) >= mean + 4 * sig - 1e-9
           ? "no"
@@ -3841,7 +3899,9 @@ function equallyLikelyJudgment(r: Random): Built {
   const top = counts.indexOf(Math.max(...counts));
   const topName = device.names[top]!;
   const topCount = counts[top]!;
-  const listed = device.names.map((name, i) => `${name} ${counts[i]}`).join(", ");
+  const listed = device.names
+    .map((name, i) => `${name} ${counts[i]}`)
+    .join(", ");
   const yesKey = `Yes: each outcome came up about ${mean} times, which is what equally likely outcomes give.`;
   const noKey = `No: ${topName} came up ${topCount} of ${total} times, far more than the ${mean} expected; the outcomes do not appear equally likely.`;
   const fewKey = `Cannot tell: with only ${total} trials, ${listed} is ordinary variation.`;
@@ -3855,7 +3915,8 @@ function equallyLikelyJudgment(r: Random): Built {
       ? [
           {
             label: notExact,
-            feedback: "Equally likely outcomes are not expected to match exactly.",
+            feedback:
+              "Equally likely outcomes are not expected to match exactly.",
           },
           {
             label: tooSmall,
@@ -3863,18 +3924,21 @@ function equallyLikelyJudgment(r: Random): Built {
           },
           {
             label: addsUp,
-            feedback: "Counts of one experiment always add to the number of trials.",
+            feedback:
+              "Counts of one experiment always add to the number of trials.",
           },
         ]
       : want === "no"
         ? [
             {
               label: mustEqual,
-              feedback: "Two or more names do not force the outcomes to be equally likely.",
+              feedback:
+                "Two or more names do not force the outcomes to be equally likely.",
             },
             {
               label: addsUp,
-              feedback: "Counts of one experiment always add to the number of trials.",
+              feedback:
+                "Counts of one experiment always add to the number of trials.",
             },
             {
               label: tooSmall,
@@ -3884,15 +3948,18 @@ function equallyLikelyJudgment(r: Random): Built {
         : [
             {
               label: notExact,
-              feedback: "Unequal counts in a short run do not settle the question.",
+              feedback:
+                "Unequal counts in a short run do not settle the question.",
             },
             {
               label: mustEqual,
-              feedback: "Names alone do not show that the outcomes are equally likely.",
+              feedback:
+                "Names alone do not show that the outcomes are equally likely.",
             },
             {
               label: addsUp,
-              feedback: "Counts of one experiment always add to the number of trials.",
+              feedback:
+                "Counts of one experiment always add to the number of trials.",
             },
           ];
   const prompt = `${device.lead(total)} Counts: ${device.names.map((name, i) => `${name}=${counts[i]}`).join("; ")}. Based on these results, do the outcomes appear to be equally likely?`;
@@ -3909,7 +3976,13 @@ function equallyLikelyJudgment(r: Random): Built {
         ? `The gap of ${gap} fits ordinary variation in ${total} trials.`
         : `With only ${total} trials, a gap of ${gap} is ordinary variation.`,
   ];
-  assertBrief([prompt, hint, correct, ...explanation, ...wrongs.map((w) => w.label)]);
+  assertBrief([
+    prompt,
+    hint,
+    correct,
+    ...explanation,
+    ...wrongs.map((w) => w.label),
+  ]);
   return {
     variant: "equally-likely-judgment",
     prompt,
@@ -3918,7 +3991,6 @@ function equallyLikelyJudgment(r: Random): Built {
     choices: choicesFrom(correct, wrongs),
   };
 }
-
 
 const EXPERIMENTS = [
   {

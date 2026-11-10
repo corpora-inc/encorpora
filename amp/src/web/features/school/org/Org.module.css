@@ -44,24 +44,35 @@
   gap: var(--space-7);
 }
 @media (min-width: 1024px) {
+  /* Two columns of similar weight: the sentence beside the seats, the trend
+     beside what needs doing, where students stand beside the counts. A side
+     with nothing to say is left out and the chart takes the row. */
   .read {
-    grid-template-areas:
-      "lede seats"
-      "main side";
     grid-template-columns: minmax(0, 1fr) minmax(264px, 300px);
-    gap: var(--space-7);
+    column-gap: var(--space-7);
+    row-gap: var(--space-6);
   }
-  .read > .lede {
-    grid-area: lede;
+  .read > .lede,
+  .read > .trend,
+  .read > .standingSection {
+    grid-column: 1;
   }
-  .read > .seats {
-    grid-area: seats;
+  .read > .seats,
+  .read > .sideColumn,
+  .read > .standingFacts {
+    grid-column: 2;
   }
-  .read > .mainColumn {
-    grid-area: main;
+  .read > .trend:has(+ .standingSection) {
+    grid-column: 1 / -1;
   }
-  .read > .sideColumn {
-    grid-area: side;
+  .read > .standingFacts {
+    align-self: end;
+    margin-top: 0;
+  }
+  .read > .standingFacts > * {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5) var(--space-5);
   }
 }
 .tableNote {
@@ -338,8 +349,9 @@
   font-weight: 600;
   text-decoration: none;
 }
+/* The row's own hover tint marks it; the name never underlines. */
 .rowLink:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 .rowLink:focus-visible {
   outline: 3px solid var(--color-focus-ring);
@@ -715,11 +727,8 @@
   gap: var(--space-7);
   min-width: 0;
 }
-@media (min-width: 1024px) {
-  .privacy {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
+/* One focused column under Settings: the agreement, what AMP collects, then
+   export and deletion, read top to bottom. */
 .privacySection {
   display: grid;
   gap: var(--space-3);
@@ -855,11 +864,13 @@ button.danger:disabled {
 }
 
 /* Activity. */
+/* The filters span exactly the log they filter. */
 .filters {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-3);
   align-items: start;
+  max-width: 760px;
   margin-bottom: var(--space-6);
 }
 .filters > .filterField:nth-child(-n + 2) {

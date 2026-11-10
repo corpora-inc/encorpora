@@ -24,15 +24,28 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --ignore-scripts
 
+# The lesson search model (src/search/model.json): fetched once and verified by
+# SHA-256 in its own stage, so the layer is reused until a pin changes. The
+# API never downloads it.
+FROM node-base AS search-model
+WORKDIR /app
+COPY src/search/model.json ./src/search/model.json
+COPY scripts/fetch-search-model.mjs ./scripts/fetch-search-model.mjs
+RUN node scripts/fetch-search-model.mjs /app/models/search/all-minilm-l6-v2
+
 FROM dependencies AS build
 COPY . .
+COPY --from=search-model /app/models ./models
 # Public browser OIDC settings (never a client secret), baked per environment.
 ARG VITE_AMP_AUTHORITY=""
 ARG VITE_AMP_CLIENT_ID=""
 ARG VITE_AMP_SCOPES=""
 ARG VITE_AMP_RESOURCE=""
 # Type checking is CI's job; the image only bundles.
-RUN npx vite build && npm run build:public-pathways && npm run build:server
+# build:search embeds every search document with the vendored model (no
+# network), so the API serves nearest neighbours from its first request.
+RUN npx vite build && npm run build:public-pathways && npm run build:server \
+    && npm run build:search
 # The release this image is: the full source commit and the UTC build time,
 # passed by the deploy pipeline (public; see src/server/build-info.ts).
 # Declared after the bundle, so a new commit reuses every layer above. The web
@@ -102,7 +115,12 @@ FROM node-base AS api
 ENV NODE_ENV=production AMP_HOST=0.0.0.0 AMP_PORT=8080
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm ci --omit=dev --ignore-scripts && npm cache clean --force
+# onnxruntime-node ships every platform's runtime; keep this one's.
+RUN npm ci --omit=dev --ignore-scripts && npm cache clean --force \
+    && arch="$(node -p process.arch)" \
+    && find node_modules/onnxruntime-node/bin -mindepth 3 -maxdepth 3 -type d \
+         ! -path "*/linux/${arch}" -exec rm -rf {} + \
+    && test -f "node_modules/onnxruntime-node/bin/napi-v6/linux/${arch}/onnxruntime_binding.node"
 COPY --from=build /app/browser-security.mjs ./browser-security.mjs
 COPY --from=build /app/src ./src
 COPY --from=build /app/scripts ./scripts
@@ -110,6 +128,8 @@ COPY --from=build /app/scripts ./scripts
 COPY --from=build /app/infra ./infra
 COPY --from=build /app/migrations ./migrations
 COPY --from=build /app/books ./books
+# The search model and document vectors (npm run build:search).
+COPY --from=build /app/models ./models
 COPY --from=pdf-build /app/pdf-release ./artifacts
 COPY --from=build /app/tsconfig.json ./
 ARG SOURCE_COMMIT=""
@@ -118,6 +138,8 @@ ENV AMP_BUILD_COMMIT=${SOURCE_COMMIT} AMP_BUILD_TIME=${BUILT_AT}
 USER 65532:65532
 # Verify default delivery paths and access guards as the actual runtime user.
 RUN --network=none node_modules/.bin/tsx scripts/verify-pdf-delivery.ts
+# Search loads its model and vectors offline, and answers within budget.
+RUN --network=none node_modules/.bin/tsx scripts/verify-search.ts
 EXPOSE 8080
 # The compiled server: no TypeScript compiling in production. It stays in
 # src/server so the source's relative paths (artifacts, styles) still resolve.

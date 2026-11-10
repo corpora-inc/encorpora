@@ -14,7 +14,7 @@ or problem type for one problem, then returns to adaptive selection.
 ## Earned illumination
 
 The map uses saved learner evidence. There is no simulated-progress mode.
-Independent correct answers grow crystals permanently. `illumination-v1` assigns
+Independent correct answers grow a skill permanently (the screens say "skills"; never "crystals"). `illumination-v1` assigns
 0.5 illumination per independent success, capped at 10 after 20 successes.
 This is accumulated experience, not a calibrated mastery probability. Recent
 `review-ready` status adds brightness separately from cumulative growth.

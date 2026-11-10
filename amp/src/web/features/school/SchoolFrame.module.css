@@ -125,6 +125,9 @@
   line-height: 1.45;
   outline: none;
 }
+.content[data-narrow] {
+  max-width: calc(880px + 2 * var(--gutter));
+}
 /* A grid with its own scrollport keeps headings at that scrollport's top. */
 .content :global([data-scrolls]),
 .content :global([data-virtual]) {
@@ -135,17 +138,39 @@
     --gutter: var(--space-6);
   }
 }
+/* A tab's own screens: quiet sub-tabs under the bar, the open one marked by
+   an underline, never a second row of buttons. */
 .links {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2) var(--space-4);
-  margin-bottom: var(--space-4);
+  gap: var(--space-5);
+  margin: calc(-1 * var(--space-2)) 0 var(--space-5);
+  overflow-x: auto;
+  scrollbar-width: none;
+  box-shadow: inset 0 -1px 0 var(--color-border);
 }
 .links a {
   display: inline-flex;
+  flex: 0 0 auto;
   align-items: center;
   min-height: 44px;
-  color: var(--color-primary);
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: inset 0 -2px 0 transparent;
+}
+.links a:hover {
+  color: var(--color-on-surface);
+}
+.links a[aria-current="page"] {
+  color: var(--color-on-surface);
+  box-shadow: inset 0 -2px 0 var(--color-primary);
+}
+.links a:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+  border-radius: var(--radius-small);
 }
 @media print {
   .content {

@@ -37,6 +37,28 @@ function nums(text: string): number[] {
   return [...text.matchAll(/\d[\d,]*/g)].map((m) => Number(m[0].replace(/,/g, "")));
 }
 
+test("factor pairs are an open list: every pair, in order, nothing extra", () => {
+  for (let i = 0; i < 200; i++) {
+    const problem = generateProblem("list-all-pairs", `pairs-${i}`);
+    const r = problem.public.response;
+    assert.equal(r.kind, "structured-work");
+    if (r.kind !== "structured-work" || !problem.workGrading) return;
+    // The response never says how many pairs there are.
+    assert.equal(r.rows.length, 1);
+    assert.equal(r.open?.max, 6);
+    const key = JSON.parse(problem.answer) as string[][];
+    const grade = (rows: string[][]) =>
+      gradeStructuredWork(r, problem.workGrading!, JSON.stringify(rows));
+    assert.equal(grade(key), true);
+    if (key.length > 1) assert.equal(grade(key.slice(0, -1)), false);
+    if (key.length < 6) assert.equal(grade([...key, ["2", "1"]]), false);
+    assert.equal(
+      grade(key.map(([a, b]) => [b!, a!])),
+      key.every(([a, b]) => a === b),
+    );
+  }
+});
+
 test("bracket cells match the spec examples", () => {
   assert.deepEqual(bracketCells(15312, 48), [3, 144, 9, 91, 1, 48, 43, 432, 9, 432, 0]);
   assert.deepEqual(bracketCells(18672, 62), [3, 186, 0, 7, 0, 0, 7, 72, 1, 62, 10]);

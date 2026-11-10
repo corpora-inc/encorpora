@@ -101,6 +101,30 @@ export function CurriculumDetailsProvider({
   );
 }
 export const useCurriculumDetails = () => useContext(Details);
+/** Grade numbers shown or hidden by the caller, with nothing stored: the
+ * component gallery (`features/design`) shows both without touching a
+ * learner's choice. */
+export function CurriculumDetailsFixture({
+  shown,
+  children,
+}: {
+  shown: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <Details.Provider
+      value={{
+        shown,
+        ready: true,
+        scope: "design",
+        decided: false,
+        setShown: () => {},
+      }}
+    >
+      {children}
+    </Details.Provider>
+  );
+}
 /** `row` sets it as a settings row in the navigation drawer, on the inset
  * its neighbours use; elsewhere it is a quiet control in the page flow. */
 export function CurriculumDetailsControl({

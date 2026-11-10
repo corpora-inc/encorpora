@@ -1,4 +1,14 @@
-import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
+import {
+  memo,
+  useCallback,
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
 import { useAppRoute } from "./app-routes";
 import type { TemplateMetadata } from "../math/contracts";
 import type { Lesson } from "../content/lessons";
@@ -16,10 +26,24 @@ import { MathText } from "./MathText";
 import {
   attachTerms,
   buildLibrary,
-  matchingTerms,
   visibleIds,
   type LibraryItem,
 } from "./lib/lesson-library";
+import { useUrlSearchText } from "./lib/url-search-text";
+import { useLearningView } from "./lib/learning-view";
+import { lessonFilms } from "../content/lesson-films";
+import {
+  buildCorpus,
+  type SearchDoc,
+  type SearchGroupId,
+} from "../search/corpus";
+import { GROUP_LIMIT } from "../search/blend";
+import { useLessonSearch, type SearchResult } from "./lib/lesson-search";
+import {
+  resultKeys,
+  SearchResults,
+  type SearchActions,
+} from "./features/search/SearchResults";
 import styles from "./LessonLibrary.module.css";
 
 export type LibrarySkillRow = {
@@ -29,6 +53,59 @@ export type LibrarySkillRow = {
   title?: string;
   description?: string;
 };
+
+/** The card a reader left the library from, so Back (the browser's or "All
+ * lessons") lands on that card, wherever it now sits, rather than at a pixel
+ * offset that no longer points at it. Session-scoped: a refresh of the
+ * lesson still returns to it. */
+const RETURN_KEY = "amp.lessons.return";
+type LibraryReturn = { selector: string; search: string };
+export function rememberLibraryCard(trigger: HTMLElement) {
+  const selector = trigger.dataset.lessonId
+    ? `[data-lesson-id="${CSS.escape(trigger.dataset.lessonId)}"]`
+    : trigger.dataset.template
+      ? `[data-template="${CSS.escape(trigger.dataset.template)}"]`
+      : null;
+  if (!selector) return;
+  try {
+    sessionStorage.setItem(
+      RETURN_KEY,
+      JSON.stringify({ selector, search: location.search }),
+    );
+  } catch (error) {
+    console.warn("The lesson's place in the library couldn’t be kept", error);
+  }
+}
+function takeLibraryReturn(): LibraryReturn | null {
+  try {
+    const raw = sessionStorage.getItem(RETURN_KEY);
+    sessionStorage.removeItem(RETURN_KEY);
+    return raw ? (JSON.parse(raw) as LibraryReturn) : null;
+  } catch {
+    return null;
+  }
+}
+/** The band a learner works in: their level, or where their age puts them
+ * before they have answered anything. */
+function bandAt(level: number) {
+  return gradeOrder[Math.max(0, Math.min(gradeOrder.length - 1, Math.floor(level)))]!;
+}
+/** The library's top edge under the pinned bars: where a band or a card
+ * scrolled into place should sit. */
+function scrollToItem(element: HTMLElement, pinned: HTMLElement | null) {
+  // Where the search bar pins, not where it sits before the scroll.
+  const offset =
+    (pinned
+      ? (parseFloat(getComputedStyle(pinned).top) || 0) + pinned.offsetHeight
+      : 0) + 16;
+  window.scrollTo({
+    top: Math.max(
+      0,
+      Math.round(window.scrollY + element.getBoundingClientRect().top - offset),
+    ),
+    behavior: "instant",
+  });
+}
 
 // Glossary terms are part of the search index. They load with the catalog
 // (the placeholder below asks for them), so the first results of a search
@@ -49,6 +126,31 @@ export function loadGlossary() {
   return glossaryRequest;
 }
 
+// The search corpus, built once per catalog and glossary (they keep their
+// identity for the session), so returning to Lessons is instant.
+let corpusCache:
+  { key: readonly unknown[]; docs: readonly SearchDoc[] } | undefined;
+function searchCorpus(
+  references: readonly Lesson[],
+  templates: readonly TemplateMetadata[],
+  skills: readonly LibrarySkillRow[],
+  glossary: readonly GlossaryEntry[],
+) {
+  const key = [references, templates, skills, glossary];
+  if (corpusCache?.key.every((part, i) => part === key[i]))
+    return corpusCache.docs;
+  const docs = buildCorpus({
+    lessons: references,
+    templates,
+    skills,
+    terms: glossary,
+    films: Object.values(lessonFilms),
+    bandOrder: gradeOrder,
+  });
+  corpusCache = { key, docs };
+  return docs;
+}
+
 type LibraryProps = {
   templates: readonly TemplateMetadata[];
   skills: readonly LibrarySkillRow[];
@@ -61,8 +163,10 @@ type LibraryProps = {
  * `/lessons`: every reference lesson and every problem type's short lesson,
  * grouped by curriculum band, filtered by math area and found by instant
  * search. The query and area live in the URL (`?q=`, `?strand=`), so
- * refresh, Back and a shared link restore the same results. Rows stay
- * mounted and are hidden, not removed, so filtering never rebuilds the page.
+ * refresh, Back and a shared link restore the same results. The field owns
+ * its text while typing and the URL follows after a pause, so a keystroke
+ * never waits on the router. Rows stay mounted and are hidden, not removed,
+ * and each row re-renders only when its own visibility changes.
  * The library opens once its whole index (catalog and glossary) is here.
  */
 export function LessonLibrary(props: LibraryProps) {
@@ -174,26 +278,11 @@ function Library({
   const strand = strandNames[params.get("strand") ?? ""]
     ? params.get("strand")!
     : "";
-  // The field owns its text while typing; the URL follows (replacing the
-  // entry, so Back leaves the library rather than undoing keystrokes) and
-  // wins when it changes from outside (Back, Forward, a shared link).
-  const [text, setText] = useState(urlQuery);
-  // Values this field wrote itself. Navigation is asynchronous, so the URL
-  // can still show "sl" after "slo" has been typed; an echo of our own write
-  // must never overwrite newer typing. Only a value from elsewhere (Back,
-  // Forward, a shared link) replaces the field.
-  const written = useRef(new Set<string>());
   const body = useRef<HTMLDivElement>(null);
   const controls = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (written.current.has(urlQuery)) return;
-    setText((current) =>
-      current.trim() === urlQuery.trim() ? current : urlQuery,
-    );
-  }, [urlQuery]);
-  const write = (next: { q?: string; strand?: string }) => {
-    // A new filter starts at its results, with the search still pinned. Keeping
-    // a deeper offset would leave the summary and first matches under the bar.
+  // A new filter starts at its results, with the search still pinned. Keeping
+  // a deeper offset would leave the summary and first matches under the bar.
+  const pinResults = () => {
     const bodyTop = body.current?.getBoundingClientRect().top;
     const controlsTop = controls.current?.getBoundingClientRect().top;
     if (
@@ -207,16 +296,23 @@ function Library({
         top: Math.ceil(window.scrollY + bodyTop - controlsTop),
         behavior: "instant",
       });
-    const search = new URLSearchParams(location.search);
+  };
+  // Reads the live URL, not this render's copy: a write can land between a
+  // render and the next one.
+  const writeUrl = (next: { q: string; strand: string }) => {
+    const search = new URLSearchParams(window.location.search);
     for (const [key, value] of Object.entries(next))
       if (value) search.set(key, value);
       else search.delete(key);
-    if ("q" in next) written.current.add(next.q ?? "");
     navigate(
       { pathname: "/lessons", search: search.toString() },
-      { replace: "q" in next, resetScroll: false },
+      // Typing replaces the entry, so Back leaves the library rather than
+      // undoing keystrokes; a new area is a step Back can undo.
+      { replace: next.strand === strand, resetScroll: false },
     );
   };
+  const field = useUrlSearchText(urlQuery, (q) => writeUrl({ q, strand }));
+  const text = field.text;
   const query = useDeferredValue(text.trim());
   const base = useMemo(
     () =>
@@ -224,14 +320,16 @@ function Library({
     [props.references, props.templates, props.skills],
   );
   const items = useMemo(() => attachTerms(base, glossary), [base, glossary]);
-  const shown = useMemo(
-    () => visibleIds(items, query, strand),
-    [items, query, strand],
+  // The library below lists by area only. A query shows ranked results in
+  // its place (the library stays mounted, hidden), so typing never
+  // re-renders the 2,000-odd library rows.
+  const shown = useMemo(() => visibleIds(items, "", strand), [items, strand]);
+  const docs = useMemo(
+    () =>
+      searchCorpus(props.references, props.templates, props.skills, glossary),
+    [props.references, props.templates, props.skills, glossary],
   );
-  const words = useMemo(
-    () => (query ? matchingTerms(glossary, query) : []),
-    [glossary, query],
-  );
+  const search = useLessonSearch(docs, query, strand);
   const bands = useMemo(() => {
     const byBand = new Map<string, LibraryItem[]>();
     for (const item of items) {
@@ -258,29 +356,143 @@ function Library({
   }, [items]);
   // Sections the parent closed; a new search opens every section again.
   const [closed, setClosed] = useState<ReadonlySet<string>>(new Set());
-  useEffect(() => setClosed(new Set()), [query, strand]);
+  useEffect(
+    // Unchanged when nothing is closed, so a keystroke re-renders no rows.
+    () => setClosed((current) => (current.size ? new Set() : current)),
+    [strand],
+  );
   const lessonById = useMemo(
     () => new Map(props.references.map((lesson) => [lesson.id, lesson])),
     [props.references],
   );
-  const count = (kind: LibraryItem["kind"]) =>
-    [...shown].filter((key) => key.startsWith(`${kind}:`)).length;
-  const lessons = count("lesson"),
-    types = count("type");
+  // Arriving: back on the card the reader came from, or, with nothing asked
+  // for, at the learner's own level rather than at Kindergarten.
+  const view = useLearningView();
+  const level = view.frontier
+    ? view.frontier.overall.answered > 0
+      ? view.frontier.overall.level
+      : view.frontier.expected
+    : null;
+  const arrived = useRef<"pending" | "placed" | "left">("pending");
+  const mountedAt = useRef(performance.now());
+  useEffect(() => {
+    const back = takeLibraryReturn();
+    if (back && back.search === location.search) {
+      arrived.current = "placed";
+      // After the router settles its own scroll for this entry.
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => {
+          const card = document.querySelector<HTMLElement>(back.selector);
+          if (!card || card.closest("[hidden]")) return;
+          scrollToItem(card, controls.current);
+          card.focus({ preventScroll: true });
+        }),
+      );
+    }
+    // A reader who scrolls first has chosen where to be.
+    const leave = () => {
+      if (window.scrollY > 40 && arrived.current === "pending")
+        arrived.current = "left";
+    };
+    window.addEventListener("scroll", leave, { passive: true });
+    return () => window.removeEventListener("scroll", leave);
+  }, []);
+  useEffect(() => {
+    if (arrived.current !== "pending" || level === null) return;
+    arrived.current = "placed";
+    // A level that arrives late never moves a page someone is reading.
+    if (performance.now() - mountedAt.current > 2500) return;
+    if (query || strand || level < 1) return;
+    const band = document.querySelector<HTMLElement>(
+      `[data-band="${CSS.escape(bandAt(level))}"]`,
+    );
+    if (band && !band.hidden) scrollToItem(band, controls.current);
+  }, [level, query, strand]);
+  // Rows keep one handler for the page's life, so a re-render of the page
+  // around them never re-renders a row.
+  const handlers = useRef(props);
+  handlers.current = props;
+  const openLesson = useCallback(
+    (id: string, trigger: HTMLElement) => {
+      const lesson = lessonById.get(id);
+      if (!lesson) return;
+      rememberLibraryCard(trigger);
+      handlers.current.openReference(lesson, trigger);
+    },
+    [lessonById],
+  );
+  const openTopic = useCallback((id: string, trigger: HTMLElement) => {
+    rememberLibraryCard(trigger);
+    handlers.current.openTopic(id);
+  }, []);
+  const counts = useMemo(() => {
+    let lessons = 0,
+      types = 0;
+    for (const key of shown)
+      if (key.startsWith("lesson:")) lessons++;
+      else types++;
+    return { lessons, types };
+  }, [shown]);
+  const { lessons, types } = counts;
   const plural = (n: number, one: string, many: string) =>
     `${n.toLocaleString("en-US")} ${n === 1 ? one : many}`;
   // The field shows the whole query; the count names a long one shortened,
   // so the line stays within its two reserved lines.
   const named = query.length > 24 ? `${query.slice(0, 23).trimEnd()}…` : query;
+  const found = { lessons: 0, skills: 0, glossary: 0 };
+  for (const result of search.results) found[result.group]++;
+  // A group holds its best few (GROUP_LIMIT); a full group reads "20+".
+  const many = (group: SearchGroupId, one: string, more: string) =>
+    found[group] >= GROUP_LIMIT[group]
+      ? `${GROUP_LIMIT[group]}+ ${more}`
+      : plural(found[group], one, more);
+  const foundText = [
+    found.lessons && many("lessons", "lesson", "lessons"),
+    found.skills && many("skills", "skill", "skills"),
+    found.glossary && many("glossary", "math word", "math words"),
+  ].filter(Boolean) as string[];
   const summary = !query
     ? `${plural(lessons, "lesson", "lessons")} · ${plural(types, "problem type", "problem types")}`
-    : lessons + types
-      ? `${plural(lessons, "lesson", "lessons")} and ${plural(types, "problem type", "problem types")} match “${named}”`
-      : `Nothing matches “${named}”. Try fewer letters or another word.`;
+    : foundText.length
+      ? `${foundText.length > 1 ? `${foundText.slice(0, -1).join(", ")} and ${foundText[foundText.length - 1]}` : foundText[0]} match “${named}”`
+      : search.pending
+        ? `Searching for “${named}”…`
+        : `Nothing matches “${named}”. Try fewer letters or another word.`;
+  const input = useRef<HTMLInputElement>(null);
+  const resultList = useRef<HTMLDivElement>(null);
+  const navigateRef = useRef(navigate);
+  navigateRef.current = navigate;
+  const actions = useMemo<SearchActions>(() => {
+    const href = (result: SearchResult) =>
+      result.kind === "lesson"
+        ? `/lessons/${encodeURIComponent(result.target)}`
+        : result.kind === "type"
+          ? `/lessons?topic=${encodeURIComponent(result.target)}`
+          : result.kind === "film"
+            ? `/lessons/${encodeURIComponent(result.target)}/watch?from=${encodeURIComponent(window.location.pathname + window.location.search)}`
+            : `/pathways/${encodeURIComponent(result.target)}`;
+    return {
+      href,
+      open: (result, trigger) => {
+        if (result.kind === "lesson") openLesson(result.target, trigger);
+        else if (result.kind === "type") openTopic(result.target, trigger);
+        else navigateRef.current(href(result));
+      },
+    };
+  }, [openLesson, openTopic]);
+  const suggest = (words: string) => {
+    pinResults();
+    field.set(words);
+    input.current?.focus();
+  };
   return (
     <section className={`lesson-index ${styles.library}`} aria-label="Lessons">
       <h1 className={styles.title}>Lessons</h1>
-      <div ref={body} className={styles.body}>
+      <div
+        ref={body}
+        className={styles.body}
+        onKeyDown={(event) => resultKeys(event, input, resultList)}
+      >
         <div ref={controls} className={styles.bar} role="search">
           <label className={styles.search}>
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -288,6 +500,7 @@ function Library({
               <path d="m16 16 4.5 4.5" />
             </svg>
             <input
+              ref={input}
               type="search"
               className={styles.input}
               aria-label="Search lessons"
@@ -297,14 +510,16 @@ function Library({
               autoComplete="off"
               enterKeyHint="search"
               onChange={(event) => {
-                setText(event.target.value);
-                write({ q: event.target.value.trim() });
+                pinResults();
+                field.change(event.target.value);
               }}
+              onBlur={field.flush}
               onKeyDown={(event) => {
+                if (event.key === "Enter") field.flush();
                 if (event.key === "Escape" && text) {
                   event.preventDefault();
-                  setText("");
-                  write({ q: "" });
+                  pinResults();
+                  field.set("");
                 }
               }}
             />
@@ -314,8 +529,8 @@ function Library({
               aria-label="Clear search"
               hidden={!text}
               onClick={(event) => {
-                setText("");
-                write({ q: "" });
+                pinResults();
+                field.set("");
                 event.currentTarget
                   .closest("label")
                   ?.querySelector("input")
@@ -331,7 +546,10 @@ function Library({
             aria-label="Math area"
             className={styles.area}
             value={strand}
-            onValueChange={(value) => write({ strand: value })}
+            onValueChange={(value) => {
+              pinResults();
+              writeUrl({ q: field.carry(), strand: value });
+            }}
           >
             <option value="">Every math area</option>
             {Object.entries(strandNames).map(([key, name]) => (
@@ -345,130 +563,226 @@ function Library({
         <p className={styles.summary} role="status" aria-live="polite">
           {summary}
         </p>
-        {words.length > 0 && (
-          <ul className={styles.words} aria-label="Math words">
-            {words.map((entry) => (
-              <li key={entry.id}>
-                <strong>{entry.term}</strong> <MathText text={entry.plain} />
-              </li>
-            ))}
-          </ul>
-        )}
-        {bands.map(({ band, lessons: bandLessons, types: bandTypes }) => {
-          const visibleLessons = bandLessons.filter((item) =>
-            shown.has(`lesson:${item.id}`),
-          ).length;
-          const visibleTypes = bandTypes.reduce(
-            (sum, group) =>
-              sum +
-              group.list.filter((item) => shown.has(`type:${item.id}`)).length,
-            0,
-          );
-          const open = !detailsShown || !closed.has(band);
-          return (
-            <section
-              key={band}
-              className={styles.band}
-              data-band={band}
-              hidden={!visibleLessons && !visibleTypes}
-            >
-              <h2 className={styles.bandHeading} hidden={!detailsShown}>
-                <button
-                  type="button"
-                  aria-expanded={open}
-                  onClick={() =>
-                    setClosed((current) => {
-                      const next = new Set(current);
-                      if (open) next.add(band);
-                      else next.delete(band);
-                      return next;
-                    })
-                  }
-                >
-                  <span>{bandLabel(band)}</span>
-                  <span className={styles.bandCount}>
-                    {visibleLessons + visibleTypes}
-                  </span>
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="m6 9 6 6 6-6" />
-                  </svg>
-                </button>
-              </h2>
-              <div className={styles.bandBody} hidden={!open}>
-                <ul
-                  className={styles.lessons}
-                  aria-label={
-                    detailsShown ? `${bandLabel(band)} lessons` : "Lessons"
-                  }
-                  hidden={!visibleLessons}
-                >
-                  {bandLessons.map((item) => (
-                    <li key={item.id} hidden={!shown.has(`lesson:${item.id}`)}>
-                      <button
-                        type="button"
-                        data-lesson-id={item.id}
-                        data-strand={item.strand}
-                        onClick={(event) => {
-                          const lesson = lessonById.get(item.id);
-                          if (lesson)
-                            props.openReference(lesson, event.currentTarget);
-                        }}
-                      >
-                        <span className={styles.lessonTitle}>
-                          <MathText text={item.title} />
-                        </span>
-                        <span className={styles.lessonSummary}>
-                          <MathText text={item.summary} />
-                        </span>
+        {query && (
+          <div ref={resultList}>
+            <SearchResults
+              results={search.results}
+              pending={search.pending}
+              actions={actions}
+            />
+            {!search.results.length && !search.pending && (
+              <div className={styles.suggestions}>
+                <p>Try one of these</p>
+                <ul>
+                  {[
+                    "fractions",
+                    "times tables",
+                    "order of operations",
+                    "area",
+                    "slope",
+                  ].map((words) => (
+                    <li key={words}>
+                      <button type="button" onClick={() => suggest(words)}>
+                        {words}
                       </button>
                     </li>
                   ))}
                 </ul>
-                <div className={styles.types} hidden={!visibleTypes}>
-                  <h3>Practice by problem type</h3>
-                  {bandTypes.map((group) => {
-                    const visible = group.list.some((item) =>
-                      shown.has(`type:${item.id}`),
-                    );
-                    return (
-                      <ul
-                        key={group.strand}
-                        className="topic-list"
-                        data-strand={group.strand}
-                        aria-label={
-                          detailsShown
-                            ? `${strandNames[group.strand]}, ${bandLabel(band)}`
-                            : strandNames[group.strand]
-                        }
-                        hidden={!visible}
-                      >
-                        {group.list.map((item) => (
-                          <li
-                            key={item.id}
-                            hidden={!shown.has(`type:${item.id}`)}
-                          >
-                            <button
-                              type="button"
-                              data-template={item.id}
-                              onClick={() => props.openTopic(item.id)}
-                            >
-                              {/* One flex child: text and formulas wrap
-                                together as a line, never word by word. */}
-                              <span>
-                                <MathText text={item.title} />
-                              </span>
-                            </button>
-                          </li>
-                        ))}
-                      </ul>
-                    );
-                  })}
-                </div>
               </div>
-            </section>
-          );
-        })}
+            )}
+          </div>
+        )}
+        <Results
+          hidden={!!query}
+          bands={bands}
+          shown={shown}
+          closed={closed}
+          setClosed={setClosed}
+          detailsShown={detailsShown}
+          openLesson={openLesson}
+          openTopic={openTopic}
+        />
       </div>
     </section>
   );
 }
+
+type Band = {
+  band: string;
+  lessons: LibraryItem[];
+  types: { strand: string; list: LibraryItem[] }[];
+};
+
+/**
+ * The math words and every band's rows. It renders from the deferred query
+ * only, so typing re-renders the search bar and nothing else.
+ */
+const Results = memo(function Results({
+  hidden,
+  bands,
+  shown,
+  closed,
+  setClosed,
+  detailsShown,
+  openLesson,
+  openTopic,
+}: {
+  hidden: boolean;
+  bands: readonly Band[];
+  shown: ReadonlySet<string>;
+  closed: ReadonlySet<string>;
+  setClosed: Dispatch<SetStateAction<ReadonlySet<string>>>;
+  detailsShown: boolean;
+  openLesson: (id: string, trigger: HTMLElement) => void;
+  openTopic: (id: string, trigger: HTMLElement) => void;
+}) {
+  return (
+    <div hidden={hidden}>
+      {bands.map(({ band, lessons: bandLessons, types: bandTypes }) => {
+        const visibleLessons = bandLessons.filter((item) =>
+          shown.has(`lesson:${item.id}`),
+        ).length;
+        const visibleTypes = bandTypes.reduce(
+          (sum, group) =>
+            sum +
+            group.list.filter((item) => shown.has(`type:${item.id}`)).length,
+          0,
+        );
+        const open = !detailsShown || !closed.has(band);
+        return (
+          <section
+            key={band}
+            className={styles.band}
+            data-band={band}
+            hidden={!visibleLessons && !visibleTypes}
+          >
+            <h2 className={styles.bandHeading} hidden={!detailsShown}>
+              <button
+                type="button"
+                aria-expanded={open}
+                onClick={() =>
+                  setClosed((current) => {
+                    const next = new Set(current);
+                    if (open) next.add(band);
+                    else next.delete(band);
+                    return next;
+                  })
+                }
+              >
+                <span>{bandLabel(band)}</span>
+                <span className={styles.bandCount}>
+                  {visibleLessons + visibleTypes}
+                </span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+            </h2>
+            <div className={styles.bandBody} hidden={!open}>
+              <ul
+                className={styles.lessons}
+                aria-label={
+                  detailsShown ? `${bandLabel(band)} lessons` : "Lessons"
+                }
+                hidden={!visibleLessons}
+              >
+                {bandLessons.map((item) => (
+                  <LessonRow
+                    key={item.id}
+                    item={item}
+                    hidden={!shown.has(`lesson:${item.id}`)}
+                    open={openLesson}
+                  />
+                ))}
+              </ul>
+              <div className={styles.types} hidden={!visibleTypes}>
+                <h3>Practice by problem type</h3>
+                {bandTypes.map((group) => {
+                  const visible = group.list.some((item) =>
+                    shown.has(`type:${item.id}`),
+                  );
+                  return (
+                    <ul
+                      key={group.strand}
+                      className="topic-list"
+                      data-strand={group.strand}
+                      aria-label={
+                        detailsShown
+                          ? `${strandNames[group.strand]}, ${bandLabel(band)}`
+                          : strandNames[group.strand]
+                      }
+                      hidden={!visible}
+                    >
+                      {group.list.map((item) => (
+                        <TypeRow
+                          key={item.id}
+                          item={item}
+                          hidden={!shown.has(`type:${item.id}`)}
+                          open={openTopic}
+                        />
+                      ))}
+                    </ul>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        );
+      })}
+    </div>
+  );
+});
+
+const LessonRow = memo(function LessonRow({
+  item,
+  hidden,
+  open,
+}: {
+  item: LibraryItem;
+  hidden: boolean;
+  open: (id: string, trigger: HTMLElement) => void;
+}) {
+  return (
+    <li hidden={hidden}>
+      <button
+        type="button"
+        data-lesson-id={item.id}
+        data-strand={item.strand}
+        onClick={(event) => open(item.id, event.currentTarget)}
+      >
+        <span className={styles.lessonTitle}>
+          <MathText text={item.title} />
+        </span>
+        <span className={styles.lessonSummary}>
+          <MathText text={item.summary} />
+        </span>
+      </button>
+    </li>
+  );
+});
+
+const TypeRow = memo(function TypeRow({
+  item,
+  hidden,
+  open,
+}: {
+  item: LibraryItem;
+  hidden: boolean;
+  open: (id: string, trigger: HTMLElement) => void;
+}) {
+  return (
+    <li hidden={hidden}>
+      <button
+        type="button"
+        data-template={item.id}
+        onClick={(event) => open(item.id, event.currentTarget)}
+      >
+        {/* One flex child: text and formulas wrap together as a line, never
+            word by word. */}
+        <span>
+          <MathText text={item.title} />
+        </span>
+      </button>
+    </li>
+  );
+});

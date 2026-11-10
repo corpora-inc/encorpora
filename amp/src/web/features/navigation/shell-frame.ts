@@ -22,14 +22,30 @@ export type ShellFrame =
     }
   | { kind: "school"; org: string; active: string }
   | { kind: "practice" }
-  | { kind: "plain" };
+  /** `practice`: a learning screen (lessons, books) whose bar keeps the
+   * one way to practice, as the Progress tabs do. */
+  | { kind: "plain"; practice?: true };
 
 const under = (pathname: string, path: string) =>
   pathname === path || pathname.startsWith(`${path}/`);
 
 /** The frame for a signed-in screen at `pathname`, or null for its own. */
-export function shellFrame(pathname: string): ShellFrame | null {
+export function shellFrame(
+  pathname: string,
+  /** The class a screen was opened from (`?class=`): a student's record
+   * keeps that class's tabs, so opening a student never leaves the class. */
+  fromClass?: string,
+): ShellFrame | null {
   const path = pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
+  const record = path.match(/^\/school\/([^/]+)\/students\/([^/]+)$/);
+  if (record && fromClass)
+    return {
+      kind: "class",
+      org: record[1]!,
+      classId: fromClass,
+      active: "map",
+      board: false,
+    };
   if (path === "/school/new") return null;
   if (path === "/school/invite") return { kind: "plain" };
   const klass = path.match(
@@ -43,7 +59,8 @@ export function shellFrame(pathname: string): ShellFrame | null {
           start: "today",
           "report-cards": "gradebook",
           cards: "roster",
-          experience: "roster",
+          // A class's own overrides of what students see.
+          experience: "settings",
         } as Record<string, string>
       )[leaf] ?? leaf;
     return {
@@ -62,17 +79,23 @@ export function shellFrame(pathname: string): ShellFrame | null {
         {
           students: "classes",
           import: "classes",
-          experience: "classes",
           "sign-in-help": "staff",
-          integrations: "staff",
-          year: "calendar",
+          // One configuration home (docs/design/ia.md).
+          calendar: "settings",
+          license: "settings",
+          privacy: "settings",
+          experience: "settings",
+          integrations: "settings",
+          year: "settings",
         } as Record<string, string>
       )[leaf] ?? leaf;
     return { kind: "school", org: school[1]!, active };
   }
-  // Workbook URLs identify their learner independently of Progress selection.
-  if (path === "/school" || /^\/learners\/[^/]+\/workbooks(?:\/|$)/.test(path))
-    return { kind: "plain" };
+  if (path === "/school") return { kind: "plain" };
+  // A learner's workbooks belong to their Overview, where Workbooks is a
+  // quiet button (docs/design/ia.md): the Progress tabs stay, Overview marked.
+  if (/^\/learners\/[^/]+\/workbooks(?:\/|$)/.test(path))
+    return { kind: "progress", active: "overview" };
   // Practicing as someone else: "Try a level…" and a profile's levels.
   if (under(path, "/me/profiles")) return { kind: "plain" };
   if (path === "/overview" || path === "/me")
@@ -102,24 +125,26 @@ export function shellFrame(pathname: string): ShellFrame | null {
   )
     return { kind: "account", active: "access" };
   if (path === "/consent") return { kind: "account", active: "privacy" };
-  // "Continue with AMP" for one learner is a step of Billing.
-  if (under(path, "/continue")) return { kind: "account", active: "access" };
-  // "What brings you to AMP?" and each answer's question.
+  // "Continue with AMP" for one learner is a step of whatever led there
+  // (practice, Today, Billing), so it has the plain bar and its own way back.
+  if (under(path, "/continue")) return { kind: "plain" };
+  // "What brings you to AMP?", each answer's question, and the steps of a
+  // parent's or a tutor's setup.
   if (
     path === "/start" ||
-    /^\/start\/(myself|parent|tutor|teacher|school)$/.test(path)
+    /^\/start\/(myself|parent|tutor|teacher|school)$/.test(path) ||
+    /^\/start\/(parent|tutor)\/[a-z-]+$/.test(path)
   )
     return { kind: "plain" };
   if (path === "/practice") return { kind: "practice" };
   // The immersive film route supplies its own return and playback controls.
   if (/^\/lessons\/[^/]+\/watch$/.test(path)) return null;
   if (
-    path === "/" ||
-    path === "/progress" ||
     under(path, "/lessons") ||
     under(path, "/books")
   )
-    return { kind: "plain" };
+    return { kind: "plain", practice: true };
+  if (path === "/" || path === "/progress") return { kind: "plain" };
   return null;
 }
 
@@ -127,8 +152,13 @@ export function shellFrame(pathname: string): ShellFrame | null {
  * chosen child. */
 export type ProgressContext = "own" | "learner";
 
-/** The Progress tabs, one URL each. Paths have no leading slash. */
-export function progressTabs(context: ProgressContext): TabItem[] {
+/** The Progress tabs, one URL each. Paths have no leading slash. My
+ * practice (`own`, given the adult's learner) adds Workbooks
+ * (docs/design/ia.md). */
+export function progressTabs(
+  context: ProgressContext,
+  _ownLearner?: string | null,
+): TabItem[] {
   return [
     {
       id: "overview",
@@ -142,8 +172,8 @@ export function progressTabs(context: ProgressContext): TabItem[] {
 
 /** Account and family settings: one group of four tabs. */
 export const accountTabs: readonly TabItem[] = [
-  { id: "security", label: "Profile & sign-in", path: "family/security" },
-  { id: "learners", label: "Family", path: "family/learners" },
+  { id: "security", label: "Sign-in", path: "family/security" },
+  { id: "learners", label: "Learners", path: "family/learners" },
   { id: "access", label: "Billing", path: "family/access" },
   { id: "privacy", label: "Privacy", path: "family/privacy" },
 ];
@@ -153,14 +183,26 @@ export function overviewPath(context: ProgressContext) {
   return `/${progressTabs(context)[0]!.path}`;
 }
 
-/** Class sub-screens keep their parent tab selected. Past years retain grades and time. */
+/** A class this size or smaller, in a family's org (a family or a tutor),
+ * has no Grades tab: each learner's grade is a line on the Map, and report
+ * cards and exports are in Settings. */
+export const SMALL_CLASS = 6;
+
+/** The one place a class's tabs are decided (docs/design/ia.md). Class
+ * sub-screens keep their parent tab selected; past years retain grades and
+ * time. A family's or tutor's class keeps its calendar in Settings, and a
+ * small one (six or fewer) has no Grades tab: each learner's grade is a line
+ * on the Map, and report cards, export and the weekly target are in
+ * Settings. */
 export function classTabs(
   org: string,
   id: string,
   past = false,
-  familyCalendar = false,
+  family = false,
+  learners = Infinity,
 ): TabItem[] {
-  const tabs = [
+  const small = family && learners <= SMALL_CLASS;
+  return [
     ["today", "Today"],
     ["map", "Map"],
     ["gradebook", "Grades"],
@@ -169,19 +211,28 @@ export function classTabs(
     ["roster", "Students"],
     ["settings", "Settings"],
   ]
+    .filter(([leaf]) => !small || leaf !== "gradebook")
     .filter(([leaf]) => !past || leaf === "gradebook" || leaf === "time")
     .map(([leaf, label]) => ({
       id: leaf!,
-      label: label!,
+      // A family org's roster holds children, a second parent and
+      // co-teachers: People. A school's class lists Students.
+      label: leaf === "roster" && family ? "People" : label!,
       path: `school/${org}/classes/${id}/${leaf}`,
     }));
-  if (familyCalendar && !past)
-    tabs.push({
-      id: "calendar",
-      label: "Calendar",
-      path: `school/${org}/calendar`,
-    });
-  return tabs;
+}
+
+/** Settings shows when any of its sections does. */
+function settingsPermission(can: Set<string>) {
+  return (
+    [
+      "calendar.read",
+      "settings.read",
+      "license.read",
+      "privacy.read",
+      "integrations.read",
+    ].find((permission) => can.has(permission)) ?? "calendar.read"
+  );
 }
 
 /** The school's navigation follows exactly the capabilities supplied by its API. */
@@ -200,13 +251,10 @@ export function schoolTabs(org: OrgResource, classCount: number): TabItem[] {
     ...[
       ["classes", "Classes", "classes.read"],
       ...(!family && !lone ? [["staff", "Staff", "staff.read"]] : []),
-      ["calendar", "Calendar", "calendar.read"],
+      ...(!family && !lone ? [["activity", "Activity", "activity.read"]] : []),
+      // Year and terms, student experience, license, privacy, integrations.
       ...(!family
-        ? [
-            ["license", "License", "license.read"],
-            ["privacy", "Privacy", "privacy.read"],
-            ...(!lone ? [["activity", "Activity", "activity.read"]] : []),
-          ]
+        ? [["settings", "Settings", settingsPermission(can)]]
         : []),
     ]
       .filter(([, , permission]) => can.has(permission as never))

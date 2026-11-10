@@ -83,8 +83,8 @@
   color: var(--color-muted-text);
 }
 .premium-select {
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface);
+  background: var(--field-surface);
+  color: var(--field-on);
 }
 /* Transient feedback overlays the workspace; it never adds a layout row. */
 .shell .error,
@@ -114,13 +114,13 @@
   line-height: 1.5;
 }
 .shell input:not([type="checkbox"]):not([type="radio"]) {
-  min-height: 48px;
+  min-height: var(--field-height);
   min-width: 0;
-  border: 1px solid var(--color-answer-border);
-  border-radius: 12px;
-  background: var(--color-answer);
-  color: var(--color-on-answer);
-  padding: 10px 14px;
+  border: 1px solid var(--field-border);
+  border-radius: var(--field-radius);
+  background: var(--field-surface);
+  color: var(--field-on);
+  padding: 10px var(--field-padding-inline);
   font-size: 16px;
 }
 .shell .account .premium-select {
@@ -141,7 +141,8 @@
   grid-column: 1;
   grid-row: 1;
 }
-.shell.family-shell .family-center p {
+/* Low specificity: Account's own components set their text colors. */
+:where(.shell.family-shell .family-center) p {
   color: var(--color-muted-text);
 }
 .shell .go-button,

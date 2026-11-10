@@ -76,8 +76,9 @@
   font-weight: 600;
   text-decoration: none;
 }
+/* The row's own hover tint marks it; the name never underlines. */
 .rowLink:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 .rowLink:focus-visible {
   outline: 3px solid var(--color-focus-ring);
@@ -289,6 +290,10 @@ button.copy[data-done="copied"] {
 .copySizer,
 .copyText {
   grid-area: 1 / 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   text-align: center;
 }
 .copySizer {
@@ -396,9 +401,10 @@ button.copy[data-done="copied"] {
   margin-bottom: var(--space-6);
 }
 @media (min-width: 900px) {
+  /* The Join element runs the column; a school class's grading periods sit
+     under it. */
   .classMeta {
-    grid-template-columns: auto minmax(0, 460px);
-    justify-content: space-between;
+    grid-template-columns: minmax(0, 1fr);
     align-items: start;
   }
 }
@@ -460,20 +466,16 @@ button.copy[data-done="copied"] {
 .staffList {
   display: grid;
 }
+/* One row a person: who, their classes, their roles, then what can be done.
+   A table's columns from 768 px; stacked on a phone. */
 .staffRow {
   display: grid;
-  gap: var(--space-2);
-  padding-block: var(--space-4);
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-1) var(--space-4);
+  align-items: center;
+  min-height: 48px;
+  padding-block: var(--space-3);
   box-shadow: inset 0 -1px 0 var(--color-border);
-}
-.staffRow:first-child {
-  padding-top: 0;
-}
-.staffWho {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: var(--space-1) var(--space-3);
-  align-items: start;
 }
 .staffText {
   display: grid;
@@ -483,38 +485,53 @@ button.copy[data-done="copied"] {
 .staffText strong {
   font-weight: 600;
 }
-.staffText span {
+.staffText span,
+.staffClasses {
   color: var(--color-muted-text);
   font-size: var(--text-table);
   overflow-wrap: anywhere;
 }
+.staffClasses:empty {
+  display: none;
+}
+.staffClasses {
+  grid-column: 1;
+}
 .staffBadges {
+  grid-row: 1;
   grid-column: 2;
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-end;
   gap: var(--space-1);
 }
-@media (min-width: 640px) {
-  .staffWho {
-    grid-template-columns: auto minmax(0, 1fr) auto;
-  }
-  .staffBadges {
-    grid-column: 3;
-    justify-content: flex-end;
-  }
-}
-.staffClasses {
-  max-width: 56ch;
-}
 .staffActions {
+  grid-column: 1 / -1;
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
-  margin-inline-start: 52px;
 }
-@media (max-width: 480px) {
+.staffRow > :last-child:not(.staffActions):not(.staffBadges) {
+  grid-column: 1 / -1;
+}
+@media (min-width: 768px) {
+  .staffRow {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 0.8fr) auto;
+  }
+  .staffClasses,
+  .staffClasses:empty {
+    display: block;
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .staffBadges {
+    grid-column: 3;
+    justify-content: flex-start;
+  }
   .staffActions {
-    margin-inline-start: 0;
+    grid-row: 1;
+    grid-column: 4;
+    justify-content: flex-end;
   }
 }
 
@@ -575,7 +592,63 @@ button.copy[data-done="copied"] {
 .calendarBody {
   display: grid;
   gap: var(--space-5);
-  max-width: 880px;
+}
+/* The terms sit side by side under the year on a wide screen, each a column
+   with its dates, so the year reads as one view rather than a list. */
+@media (min-width: 768px) {
+  .sessionList {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    column-gap: var(--space-5);
+  }
+}
+/* The year inside a small class's Settings: one compact section. */
+.yearSection {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 720px;
+  margin-top: var(--space-6);
+}
+.yearSection + .settingsLinks,
+.classMeta + .settingsLinks {
+  max-width: 720px;
+  margin-top: var(--space-6);
+}
+.yearSection h2 {
+  margin: 0;
+  font-size: var(--text-heading-2);
+}
+.yearSection .quiet {
+  margin: var(--space-1) 0 0;
+}
+.yearHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+.calendarBody[data-compact] {
+  gap: var(--space-4);
+}
+/* The calendar inside a class's Settings. */
+.calendarSection {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+.calendarSectionHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+}
+.targetRow {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+.calendarSectionHead p {
+  margin-top: var(--space-1);
 }
 .calendarControl {
   display: grid;
@@ -607,11 +680,36 @@ button.copy[data-done="copied"] {
   min-width: 0;
 }
 .ribbonBar {
+  position: relative;
   display: flex;
   height: 40px;
   overflow: hidden;
   border-radius: var(--radius-small);
   background: var(--color-surface-sunken);
+}
+/* Today: its label over the bar, then a hairline across it. */
+.ribbonNow {
+  position: relative;
+  height: 18px;
+  margin-bottom: calc(-1 * var(--space-1));
+}
+.ribbonNow span {
+  position: absolute;
+  top: 0;
+  color: var(--color-primary);
+  font-size: var(--text-table-small);
+  font-weight: 650;
+  line-height: 18px;
+  white-space: nowrap;
+}
+.ribbonToday {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--color-surface);
 }
 .ribbonPart {
   display: block;
@@ -716,4 +814,103 @@ button.copy[data-done="copied"] {
   max-width: var(--width-form);
   min-height: calc(100dvh - var(--shell-bar, 56px));
   padding-top: var(--space-5);
+}
+
+/* Settings: one page of sections, each a heading with its facts and
+   controls, separated by space and a hairline (docs/design/ia.md). */
+/* A settings page is one focused column, centred (docs/design/ia.md). */
+.settingsPage {
+  display: grid;
+  gap: var(--space-7);
+}
+.settingsPage > :first-child {
+  margin-bottom: calc(-1 * var(--space-4));
+}
+.classSettings {
+  max-width: 880px;
+  margin-inline: auto;
+}
+.classSettings > .settingsSection {
+  margin-top: var(--space-7);
+}
+.settingsSection {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+.settingsSection h2 {
+  margin: 0;
+  font-size: var(--text-heading-2);
+}
+.settingsSection .quiet {
+  margin: var(--space-1) 0 0;
+}
+.sectionLead {
+  max-width: 64ch;
+  margin: calc(-1 * var(--space-2)) 0 0;
+  color: var(--color-muted-text);
+}
+.settingsHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-4);
+}
+.settingsActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.termSet {
+  display: grid;
+  gap: var(--space-3);
+}
+.termSet h3 {
+  margin: 0;
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--color-muted-text);
+}
+.settingsLinks {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-shadow: inset 0 1px 0 var(--color-border);
+}
+.settingsLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 64px;
+  padding: var(--space-3) 0;
+  color: inherit;
+  text-decoration: none;
+  box-shadow: inset 0 -1px 0 var(--color-border);
+}
+.settingsLink > span:first-child {
+  display: grid;
+  gap: 2px;
+}
+.settingsLink strong {
+  font-weight: 600;
+}
+.settingsLink > span:last-child {
+  color: var(--color-muted-text);
+  font-size: 22px;
+}
+.settingsLink:hover {
+  background: var(--color-surface-hover);
+}
+.settingsLink:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+/* The grade picker: kindergarten to college, a grid of equal cells, five to a
+   row, College across two. The chosen grade is outlined. */
+.optional {
+  color: var(--color-muted-text);
+  font-weight: 400;
 }
