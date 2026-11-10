@@ -20,6 +20,7 @@ export type PlayerOptions = {
   duration?: number;
   backHref: string;
   backLabel: string;
+  fullscreen?: boolean;
   onBack?: () => void;
 };
 export const filmClock = (s: number) =>
@@ -94,11 +95,17 @@ export function mountFilmPlayer(
     `0:00 / ${filmClock(options.duration ?? 0)}`,
   );
   const controls = el("div", "live-tools", bar);
-  const speed = el("button", "live-speed", controls, "1×");
+  const speedWrap = el("div", "live-speed-wrap", controls);
+  const speed = el("button", "live-speed", speedWrap, "1×");
   speed.title = "Change playback speed";
   speed.setAttribute("aria-label", "Playback speed: 1×");
+  speed.setAttribute("aria-haspopup", "menu");
+  speed.setAttribute("aria-expanded", "false");
+  const speedMenu = el("div", "live-speed-menu", speedWrap);
+  speedMenu.setAttribute("role", "menu");
+  speedMenu.hidden = true;
   const fullscreen = el("button", "live-fullscreen", controls, "Full screen");
-  fullscreen.hidden = !document.fullscreenEnabled;
+  fullscreen.hidden = options.fullscreen === false || !document.fullscreenEnabled;
   const back = el("a", "live-back", controls, options.backLabel);
   back.href = options.backHref;
   back.onclick = (event) => {
@@ -249,12 +256,44 @@ export function mountFilmPlayer(
     }
   };
   const rates = [0.75, 1, 1.25, 1.5, 2];
-  speed.onclick = () => {
-    audio.playbackRate =
-      rates[(rates.indexOf(audio.playbackRate) + 1) % rates.length]!;
-    speed.textContent = `${audio.playbackRate}×`;
-    speed.setAttribute("aria-label", `Playback speed: ${audio.playbackRate}×`);
+  const setRate = (rate: number) => {
+    audio.playbackRate = rate;
+    audio.preservesPitch = true;
+    speed.textContent = `${rate}×`;
+    speed.setAttribute("aria-label", `Playback speed: ${rate}×`);
+    for (const button of speedMenu.querySelectorAll("button"))
+      button.setAttribute("aria-checked", String(Number(button.dataset.rate) === rate));
+    try { localStorage.setItem("live-speed", String(rate)); } catch { /* Storage is optional. */ }
   };
+  const closeSpeed = () => {
+    speedMenu.hidden = true;
+    speedWrap.classList.remove("is-open");
+    speed.setAttribute("aria-expanded", "false");
+  };
+  for (const rate of rates) {
+    const button = el("button", "live-speed-option", speedMenu, `${rate}×`);
+    button.dataset.rate = String(rate);
+    button.setAttribute("role", "menuitemradio");
+    button.onclick = () => { setRate(rate); closeSpeed(); speed.focus(); };
+  }
+  let savedRate = 1;
+  try {
+    const value = Number(localStorage.getItem("live-speed"));
+    if (rates.includes(value)) savedRate = value;
+  } catch { /* Storage is optional. */ }
+  setRate(savedRate);
+  speed.onclick = () => {
+    const open = speedMenu.hidden;
+    speedMenu.hidden = !open;
+    speedWrap.classList.toggle("is-open", open);
+    speed.setAttribute("aria-expanded", String(open));
+  };
+  shell.addEventListener("pointerdown", (event) => {
+    if (!speedWrap.contains(event.target as Node)) closeSpeed();
+  });
+  speedWrap.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") { closeSpeed(); speed.focus(); event.stopPropagation(); }
+  });
   fullscreen.onclick = () => {
     const operation = document.fullscreenElement
       ? document.exitFullscreen()
@@ -314,6 +353,7 @@ export function mountFilmPlayer(
       shell.setAttribute("aria-label", data.title);
       build();
       draw(t);
+      shell.classList.add("ready");
       waiting("Loading narration…");
       audio.src = options.audioUrl;
       audio.load();

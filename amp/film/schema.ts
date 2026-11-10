@@ -497,8 +497,8 @@ export const scriptSchema = z
     seed: z.string().optional(),
     /**
      * The cast, in order: role → {}. The first role speaks every beat with
-     * no `speaker`. A lesson without a cast is read by the narrator. Two or
-     * more roles put their name tags above the cards, the speaker's lit.
+     * no `speaker`. A lesson without a cast is read by the narrator. Roles
+     * choose who speaks; their names are not drawn on the picture.
      */
     cast: z.partialRecord(z.enum(speakerRoles), roleSchema).optional(),
     shots: z.array(shotSchema).min(1),
