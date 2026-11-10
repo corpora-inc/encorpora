@@ -1,5 +1,5 @@
 import {
-  crystal,
+  skillLight,
   layout,
   neighborhood,
   neighborhoods,
@@ -54,7 +54,11 @@ export async function mapShareImage(
   ).length;
   ctx.fillStyle = ink;
   ctx.font = "400 22px system-ui, sans-serif";
-  ctx.fillText(`${earned} skills illuminated`, 56, 348);
+  ctx.fillText(
+    `${earned} ${earned === 1 ? "skill" : "skills"} earned`,
+    56,
+    348,
+  );
   ctx.fillStyle = muted;
   ctx.font = "400 15px system-ui, sans-serif";
   ctx.fillText(
@@ -107,7 +111,7 @@ export async function mapShareImage(
     }
   for (const p of points) {
     const point = project(p.position),
-      earned = crystal(stats.get(p.skill.id)),
+      earned = skillLight(stats.get(p.skill.id)),
       tint = color(neighborhoods[neighborhood(p.skill)]!.color);
     const radius = earned.stage
       ? (1.6 + earned.stage * 0.7) * (1 + earned.score / 20)

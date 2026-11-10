@@ -2,9 +2,9 @@ import {
   CurriculumDetailsControl,
   useCurriculumDetails,
 } from "../curriculum/CurriculumDetails";
-import { useMemo } from "react";
+import { useMemo, type CSSProperties } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Link, useNavigate, useSearch } from "@tanstack/react-router";
+import { useNavigate, useSearch, Link } from "@tanstack/react-router";
 import { skillCatalogOptions, useLearningView } from "../../lib/learning-view";
 import {
   bandLabel,
@@ -13,6 +13,7 @@ import {
   neighborhood,
   neighborhoods,
   type Evidence,
+  type MapSkill,
 } from "../pathways/model";
 import { gradeName } from "../../Home";
 import { buttonClass } from "../../ui/Button";
@@ -20,17 +21,32 @@ import { ListboxDisclosure, type ListboxOption } from "../../ui/Listbox";
 import styles from "./Inventory.module.css";
 import { Loading } from "../../ui/Loading";
 
-type Filter = "tried" | "illuminated" | "strong" | "all";
+/* Inventory: every skill the learner has met, how far each has grown and how
+   strong it is lately. The founder's reference for a dense screen: one flat
+   list across the page's width, filters whose counts follow the search and
+   the math area, and nothing that sits empty. A learner who hasn't answered
+   yet sees the whole curriculum they'll fill. */
+
+type Filter = "tried" | "earned" | "strong" | "all";
 const filters: { id: Filter; label: string }[] = [
   { id: "tried", label: "Tried" },
-  { id: "illuminated", label: "Illuminated" },
+  { id: "earned", label: "Earned" },
   { id: "strong", label: "Strong" },
-  { id: "all", label: "All skills" },
+  { id: "all", label: "All" },
 ];
 const areaOptions: ListboxOption[] = [
   { value: "", label: "Every math area" },
   ...neighborhoods.map((n) => ({ value: n.title, label: n.title })),
 ];
+/** Older links named the earned collection "illuminated". */
+const readFilter = (value: unknown): Filter | null =>
+  value === "illuminated"
+    ? "earned"
+    : filters.some((f) => f.id === value)
+      ? (value as Filter)
+      : null;
+const plural = (n: number, one: string, many = `${one}s`) =>
+  `${n.toLocaleString()} ${n === 1 ? one : many}`;
 function strength(e?: Evidence) {
   return !e?.attempts
     ? "Not tried"
@@ -40,6 +56,11 @@ function strength(e?: Evidence) {
         ? "Building"
         : "Getting started";
 }
+const shows = (filter: Filter, e?: Evidence) =>
+  filter === "all" ||
+  (filter === "tried" && !!e?.attempts) ||
+  (filter === "earned" && !!e?.independentCorrect) ||
+  (filter === "strong" && e?.status === "review-ready");
 
 export function InventoryScreen() {
   const view = useLearningView();
@@ -48,14 +69,33 @@ export function InventoryScreen() {
   const search = useSearch({ strict: false });
   const navigate = useNavigate();
   const query = typeof search.topic === "string" ? search.topic : "";
-  const filter = filters.some((f) => f.id === search.collection)
-    ? (search.collection as Filter)
-    : "tried";
   const area =
     typeof search.area === "string" &&
     neighborhoods.some((n) => n.title === search.area)
       ? search.area
       : "";
+  const evidence = useMemo(
+    () => new Map(view.evidence?.skills.map((e) => [e.skillId, e]) ?? []),
+    [view.evidence],
+  );
+  const allSkills = catalog.data?.skills ?? [];
+  // Counts follow the chosen math area and the search, so every number
+  // matches the list it opens.
+  const inArea = area
+    ? allSkills.filter((s) => neighborhoods[neighborhood(s)]?.title === area)
+    : allSkills;
+  const needle = query.trim().toLowerCase();
+  const matching = needle
+    ? inArea.filter((s) =>
+        `${s.title} ${s.description}`.toLowerCase().includes(needle),
+      )
+    : inArea;
+  const count = (filter: Filter) =>
+    matching.filter((s) => shows(filter, evidence.get(s.id))).length;
+  const triedAnything = (view.evidence?.skills ?? []).some((e) => e.attempts);
+  // Before the first answer the collection is the whole curriculum.
+  const filter =
+    readFilter(search.collection) ?? (triedAnything ? "tried" : "all");
   const update = (
     values: { topic?: string; collection?: string; area?: string },
     replace = false,
@@ -64,50 +104,24 @@ export function InventoryScreen() {
       to: "/inventory",
       search: {
         topic: query || undefined,
-        collection: filter === "tried" ? undefined : filter,
+        collection: search.collection ? filter : undefined,
         area: area || undefined,
         ...values,
       },
       replace,
     });
-  const evidence = useMemo(
-    () => new Map(view.evidence?.skills.map((e) => [e.skillId, e]) ?? []),
-    [view.evidence],
-  );
-  const allSkills = catalog.data?.skills ?? [];
-  // Every count follows the chosen math area, so the numbers match the list.
-  const skills = area
-    ? allSkills.filter((s) => neighborhoods[neighborhood(s)]?.title === area)
-    : allSkills;
-  const earned = skills.filter(
+  const earnedInArea = inArea.filter(
     (s) => (evidence.get(s.id)?.independentCorrect ?? 0) > 0,
   );
-  const tried = skills.filter((s) => (evidence.get(s.id)?.attempts ?? 0) > 0);
-  const strong = skills.filter(
+  const strongInArea = inArea.filter(
     (s) => evidence.get(s.id)?.status === "review-ready",
   );
-  const xp = area
-    ? earned.reduce(
-        (sum, s) => sum + (evidence.get(s.id)?.independentCorrect ?? 0),
-        0,
-      )
-    : (view.evidence?.skills ?? []).reduce(
-        (sum, e) => sum + e.independentCorrect,
-        0,
-      );
-  const visible = skills
-    .filter((s) => {
-      const e = evidence.get(s.id);
-      return (
-        `${s.title} ${s.description}`
-          .toLowerCase()
-          .includes(query.toLowerCase()) &&
-        (filter === "all" ||
-          (filter === "tried" && !!e?.attempts) ||
-          (filter === "illuminated" && !!e?.independentCorrect) ||
-          (filter === "strong" && e?.status === "review-ready"))
-      );
-    })
+  const xp = earnedInArea.reduce(
+    (sum, s) => sum + (evidence.get(s.id)?.independentCorrect ?? 0),
+    0,
+  );
+  const visible = matching
+    .filter((s) => shows(filter, evidence.get(s.id)))
     .sort(
       (a, b) =>
         bands.indexOf(a.gradeBand) - bands.indexOf(b.gradeBand) ||
@@ -115,110 +129,31 @@ export function InventoryScreen() {
     );
   const busy = catalog.isPending || view.loading;
   const failure = catalog.error || view.error;
-  const statsReady = !busy && !failure;
+  const level =
+    shown && view.frontier?.overall.answered
+      ? view.frontier.overall.level
+      : null;
   return (
     <main className={styles.page}>
       {/* The app frame's bar holds the logo, the Progress tabs and the way to
           practice; whose record this is shows in the drawer. */}
       <div className={styles.heading}>
-        <h1>Your inventory</h1>
-        <CurriculumDetailsControl />
-        {shown && view.frontier?.overall.answered ? (
-          <p className={styles.level}>
-            Estimated level{" "}
-            <strong>{gradeName(view.frontier.overall.level)}</strong>
-          </p>
-        ) : shown && !view.frontier ? (
-          // Holds the line's place while the estimate loads.
+        <h1>Inventory</h1>
+        {/* With grade numbers on, held while the estimate loads, so the
+            title row never moves. */}
+        {shown && (
           <p
             className={styles.level}
-            aria-hidden="true"
-            style={{ visibility: "hidden" }}
+            style={level === null ? { visibility: "hidden" } : undefined}
+            aria-hidden={level === null || undefined}
           >
-            Estimated level <strong>Grade 5</strong>
+            Estimated level <strong>{gradeName(level ?? 5)}</strong>
           </p>
-        ) : null}
-      </div>
-      <section
-        className={styles.summary}
-        aria-label="Inventory totals"
-        aria-busy={busy}
-      >
-        <div>
-          <strong>
-            {statsReady ? xp.toLocaleString() : "—"}
-            <small> XP</small>
-          </strong>
-          <span>XP earned</span>
-        </div>
-        <div>
-          <strong>{statsReady ? earned.length : "—"}</strong>
-          <span>Skills illuminated</span>
-        </div>
-        <div>
-          <strong>{statsReady ? strong.length : "—"}</strong>
-          <span>Strong skills</span>
-        </div>
-      </section>
-      <div className={styles.filters}>
-        <label className={styles.search}>
-          <span className={styles.srOnly}>Search your skills</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="10" cy="10" r="6" />
-            <path d="m15 15 5 5" />
-          </svg>
-          <input
-            type="search"
-            aria-label="Search your skills"
-            placeholder="Find a skill…"
-            value={query}
-            maxLength={100}
-            onChange={(e) =>
-              update({ topic: e.target.value || undefined }, true)
-            }
-          />
-        </label>
-        <ListboxDisclosure
-          label="Math area"
-          align="end"
-          options={areaOptions}
-          value={area}
-          onChange={(next) => update({ area: next || undefined })}
-        />
-      </div>
-      <div
-        className={styles.filterRow}
-        role="group"
-        aria-label="Skills to show"
-        aria-busy={!statsReady}
-      >
-        {filters.map((f) => (
-          <button
-            key={f.id}
-            aria-pressed={filter === f.id}
-            onClick={() =>
-              update({ collection: f.id === "tried" ? undefined : f.id })
-            }
-          >
-            {f.label}
-            <span>
-              {statsReady
-                ? f.id === "tried"
-                  ? tried.length
-                  : f.id === "illuminated"
-                    ? earned.length
-                    : f.id === "strong"
-                      ? strong.length
-                      : skills.length
-                : "—"}
-            </span>
-          </button>
-        ))}
+        )}
       </div>
       {failure ? (
-        <section className={styles.empty} role="alert">
-          <h2>Your inventory could not be loaded</h2>
-          <p>Try again to see your saved progress.</p>
+        <section className={styles.notice} role="alert">
+          <p>Your skills didn’t load. Try again to see the saved progress.</p>
           <button
             className={buttonClass("secondary")}
             onClick={() => {
@@ -230,125 +165,192 @@ export function InventoryScreen() {
           </button>
         </section>
       ) : busy ? (
-        <div className={styles.empty}>
-          <Loading>Loading your skills…</Loading>
+        <div className={styles.waiting}>
+          <Loading>Loading skills…</Loading>
         </div>
-      ) : !visible.length ? (
-        <section className={styles.empty}>
-          <span className={styles.emptyGem} aria-hidden="true">
-            ◇
-          </span>
-          <h2>
-            {query || area || filter === "strong" || filter === "illuminated"
-              ? "No skills in this view yet"
-              : "Your collection starts with a problem"}
-          </h2>
-          <p>
-            {!view.active && view.learners.length > 1
-              ? "Choose a learner from the AMP menu to see their skills."
-              : tried.length
-                ? "Try another filter or keep learning to build more strength."
-                : "As you practice, your skills and earned illumination appear here."}
-          </p>
-          {/* A second parent's family's child practices from its class. */}
-          {!view.viewOnly && (
-            <Link
-              className={buttonClass("primary")}
-              to="/$"
-              params={{ _splat: view.practiceHref.slice(1) }}
-            >
-              {view.canPractice ? "Keep learning" : "Start learning"}
-            </Link>
-          )}
-        </section>
+      ) : !view.active ? (
+        <p className={styles.lead}>
+          {view.learners.length > 1
+            ? "Choose a learner from the AMP menu to see their skills."
+            : "Skills appear here once someone practices."}
+        </p>
       ) : (
-        neighborhoods.map((n, i) => {
-          const rows = visible.filter((s) => neighborhood(s) === i);
-          if (!rows.length) return null;
-          return (
-            <section className={styles.group} key={n.title}>
-              <div className={styles.groupHeading}>
-                <h2>{n.title}</h2>
-                <span>
-                  {rows.length} {rows.length === 1 ? "skill" : "skills"}
-                </span>
-              </div>
-              <ul className={styles.list}>
-                {rows.map((skill) => {
-                  const e = evidence.get(skill.id),
-                    score = illumination(e);
-                  return (
-                    <li
-                      className={styles.skill}
-                      key={skill.id}
-                      data-strength={strength(e)}
-                    >
-                      <span
-                        className={styles.gem}
-                        data-lit={!!e?.independentCorrect}
-                        aria-hidden="true"
-                      >
-                        {e?.status === "review-ready"
-                          ? "✦"
-                          : e?.independentCorrect
-                            ? "◆"
-                            : "◇"}
-                      </span>
-                      <Link
-                        className={styles.skillName}
-                        to="/pathways/$skillId"
-                        params={{ skillId: skill.id }}
-                      >
-                        <strong>{skill.title}</strong>
-                        {shown && <small>{bandLabel(skill.gradeBand)}</small>}
-                      </Link>
-                      <div className={styles.illumination}>
-                        <div>
-                          <strong>
-                            {score.toFixed(1)}
-                            <small> / 10</small>
-                          </strong>
-                          <span>{e?.independentCorrect ?? 0} XP</span>
-                        </div>
-                        <div
-                          role="meter"
-                          aria-label={`${skill.title}: earned illumination`}
-                          aria-valuemin={0}
-                          aria-valuemax={10}
-                          aria-valuenow={score}
-                        >
-                          <i style={{ width: `${score * 10}%` }} />
-                        </div>
-                      </div>
-                      <div className={styles.strength}>
-                        <strong>{strength(e)}</strong>
-                        <small>{e?.attempts ?? 0} attempts</small>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
+        <>
+          {triedAnything ? (
+            <section className={styles.summary} aria-label="Totals">
+              <Stat value={xp} label="XP" />
+              <Stat
+                value={earnedInArea.length}
+                label={
+                  earnedInArea.length === 1 ? "skill earned" : "skills earned"
+                }
+              />
+              <Stat
+                value={strongInArea.length}
+                label={
+                  strongInArea.length === 1 ? "strong skill" : "strong skills"
+                }
+              />
             </section>
-          );
-        })
-      )}
-      {/* Follows the skills once they load, rather than sliding down from
-          under the loading line. */}
-      {!busy && (
-        <details className={styles.explainer}>
-          <summary>How XP, illumination and strength work</summary>
-          <p>
-            Each correct answer without help earns 1 XP and 0.5 illumination, up
-            to 10 illumination per skill. XP keeps accumulating. Illumination
-            matches your pathways map.
-          </p>
-          <p>
-            Strength reflects recorded practice; it can change when you need
-            review. Earned XP stays. Grade labels describe the skill’s
-            curriculum level; your estimated level is shown separately.
-          </p>
-        </details>
+          ) : (
+            <p className={styles.lead}>
+              Every skill from counting to precalculus. Each one fills in as
+              it’s answered without help.
+            </p>
+          )}
+          <div className={styles.filters}>
+            <label className={styles.search}>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="10" cy="10" r="6" />
+                <path d="m15 15 5 5" />
+              </svg>
+              <input
+                type="search"
+                aria-label="Find a skill"
+                placeholder="Find a skill…"
+                value={query}
+                maxLength={100}
+                onChange={(e) =>
+                  update({ topic: e.target.value || undefined }, true)
+                }
+              />
+            </label>
+            <ListboxDisclosure
+              label="Math area"
+              align="end"
+              options={areaOptions}
+              value={area}
+              onChange={(next) => update({ area: next || undefined })}
+            />
+          </div>
+          {triedAnything && (
+            <div
+              className={styles.filterRow}
+              role="group"
+              aria-label="Skills to show"
+            >
+              {filters.map((f) => (
+                <button
+                  key={f.id}
+                  type="button"
+                  aria-pressed={filter === f.id}
+                  onClick={() => update({ collection: f.id })}
+                >
+                  {f.label}
+                  <span>{count(f.id)}</span>
+                </button>
+              ))}
+            </div>
+          )}
+          {!visible.length ? (
+            <p className={styles.lead}>
+              {query || area
+                ? "No skills match. Try another search or math area."
+                : filter === "strong"
+                  ? "No strong skills yet. A skill turns strong after a run of correct answers without help."
+                  : "No skills here yet."}
+            </p>
+          ) : (
+            neighborhoods.map((n, i) => {
+              const rows = visible.filter((s) => neighborhood(s) === i);
+              if (!rows.length) return null;
+              return (
+                <section className={styles.group} key={n.title}>
+                  <div className={styles.groupHeading}>
+                    <h2>{n.title}</h2>
+                    <span>{plural(rows.length, "skill")}</span>
+                  </div>
+                  <ul className={styles.list}>
+                    {rows.map((skill) => (
+                      <SkillRow
+                        key={skill.id}
+                        skill={skill}
+                        evidence={evidence.get(skill.id)}
+                        grade={shown}
+                      />
+                    ))}
+                  </ul>
+                </section>
+              );
+            })
+          )}
+          <div className={styles.footer}>
+            <CurriculumDetailsControl />
+            <details className={styles.explainer}>
+              <summary>How XP and skill progress work</summary>
+              <p>
+                Each correct answer without help earns 1 XP and fills that
+                skill’s bar by a twentieth. XP and filled bars stay.
+              </p>
+              <p>
+                Strong means a strong record on the skill lately; it can go back
+                to Building when the skill is due for review. Grade labels give
+                the skill’s place in the curriculum, not the learner’s level.
+              </p>
+            </details>
+          </div>
+        </>
       )}
     </main>
+  );
+}
+
+function Stat({ value, label }: { value: number; label: string }) {
+  return (
+    <div>
+      <strong>{value.toLocaleString()}</strong>
+      <span>{label}</span>
+    </div>
+  );
+}
+
+/** One skill: its name, a bar that fills with independent successes in its
+ * strand's colour, and how strong it is lately. */
+function SkillRow({
+  skill,
+  evidence,
+  grade,
+}: {
+  skill: MapSkill;
+  evidence?: Evidence;
+  grade: boolean;
+}) {
+  const score = illumination(evidence);
+  const attempts = evidence?.attempts ?? 0;
+  const status = strength(evidence);
+  return (
+    <li
+      className={styles.skill}
+      data-strength={status}
+      style={
+        {
+          "--skill-hue": `var(--color-strand-${skill.strand}, var(--color-primary))`,
+        } as CSSProperties
+      }
+    >
+      <Link
+        className={styles.skillName}
+        to="/pathways/$skillId"
+        params={{ skillId: skill.id }}
+      >
+        <strong>{skill.title}</strong>
+        {grade && <small>{bandLabel(skill.gradeBand)}</small>}
+      </Link>
+      <div
+        className={styles.meter}
+        role="meter"
+        aria-label={`${skill.title}: skill progress`}
+        aria-valuemin={0}
+        aria-valuemax={10}
+        aria-valuenow={score}
+        aria-valuetext={`${evidence?.independentCorrect ?? 0} of 20 correct without help`}
+      >
+        <i style={{ width: `${score * 10}%` }} />
+      </div>
+      <div className={styles.strength}>
+        <strong>{status}</strong>
+        {attempts > 0 && <small>{plural(attempts, "attempt")}</small>}
+      </div>
+    </li>
   );
 }

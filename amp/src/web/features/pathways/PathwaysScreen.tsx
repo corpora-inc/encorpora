@@ -33,7 +33,7 @@ import { skillNeighbors, type Neighbor } from "./neighbors";
 import {
   bandLabel,
   bands,
-  crystal,
+  skillLight,
   neighborhoods,
   neighborhood,
   progressSchema,
@@ -107,9 +107,18 @@ function LearnerMap({ session }: { session: AuthSession }) {
   const account = me.data?.signedIn ? me.data : null;
   // The adult's own pathways, when their own learner is the one chosen: the
   // family's learners aren't theirs to switch to here.
+  // An adult who practices only as themselves sees their own map, whatever
+  // this device last chose.
+  const solo =
+    account && !account.learners.length && !secondParentChildren(account).length
+      ? adultLearner(account)
+      : null;
   const own = practicingAsAdult(account, learnerId)
     ? adultLearner(account)
-    : profileLearner(account, learnerId);
+    : (profileLearner(account, learnerId) ?? solo);
+  useEffect(() => {
+    if (solo && own === solo && learnerId !== solo.id) select(solo.id);
+  }, [solo?.id, learnerId]);
   // A second parent's family's children follow the family's own: their
   // progress, read-only.
   const learners = own
@@ -156,7 +165,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
   ) : progress.isError ? (
     "Progress could not be loaded. The map shows the curriculum without earned skills."
   ) : (
-    `${learner.name} · Crystals grow with independent successes. Bright crystals show strong recorded practice.`
+    "Skills grow with independent successes. Brighter means stronger recorded practice."
   );
   if (me.data && !me.data.signedIn) return <GuestMap />;
   return (
@@ -379,8 +388,7 @@ export function MapView({
       )}
       <div className="pathways-heading">
         <div>
-          <p className="pathways-eyebrow">THE CURRICULUM, CONNECTED</p>
-          <h1>Your pathways</h1>
+          <h1>Pathways</h1>
         </div>
         {/* The counts paint once, when both the map and the learner's
             record are in: their line is held until then, never rewritten. */}
@@ -389,8 +397,9 @@ export function MapView({
           aria-busy={!countsReady}
           style={countsReady ? undefined : { visibility: "hidden" }}
         >
-          {earned} skills illuminated · {skills?.length ?? 327} mapped skills
-          from kindergarten through precalculus
+          {guestMode
+            ? `${skills?.length ?? 335} skills, kindergarten through precalculus`
+            : `${earned} of ${skills?.length ?? 335} skills earned · kindergarten through precalculus`}
         </p>
       </div>
       {guestMode && (
@@ -416,7 +425,9 @@ export function MapView({
           aria-hidden="true"
           style={countsReady ? undefined : { visibility: "hidden" }}
         >
-          {earned} of {skills?.length ?? 327} skills illuminated
+          {guestMode
+            ? `${skills?.length ?? 335} skills, kindergarten to precalculus`
+            : `${earned} of ${skills?.length ?? 335} skills earned`}
         </p>
         <p role="status" data-priority={noticeImportant}>
           {notice}
@@ -517,7 +528,7 @@ export function MapView({
                       onClick={() => setBrowse(false)}
                     >
                       <span
-                        className={`pathways-gem stage-${crystal(stats.get(s.id)).stage}`}
+                        className={`pathways-gem stage-${skillLight(stats.get(s.id)).stage}`}
                         style={{
                           color: `var(--atlas-area-${Math.max(0, neighborhood(s))})`,
                         }}
@@ -571,18 +582,18 @@ export function MapView({
                 <p>{selected.description}</p>
                 <div className="pathways-earned">
                   <strong>
-                    {crystal(selectedEvidence).score.toFixed(1)}
+                    {skillLight(selectedEvidence).score.toFixed(1)}
                     <small>/ 10</small>
                   </strong>
                   <span>
-                    Earned illumination
+                    Skill progress
                     <small>
-                      {selectedEvidence?.independentCorrect ?? 0} independent
-                      successes ·{" "}
+                      {selectedEvidence?.independentCorrect ?? 0} correct
+                      without help ·{" "}
                       {selectedEvidence?.status === "review-ready"
-                        ? "Strong recorded practice"
+                        ? "Strong"
                         : selectedEvidence?.attempts
-                          ? "Building strength"
+                          ? "Building"
                           : "Not practiced yet"}
                     </small>
                   </span>
@@ -590,14 +601,14 @@ export function MapView({
                 <div
                   className="pathways-illumination-meter"
                   role="meter"
-                  aria-label="Earned illumination"
+                  aria-label="Skill progress"
                   aria-valuemin={0}
                   aria-valuemax={10}
-                  aria-valuenow={crystal(selectedEvidence).score}
+                  aria-valuenow={skillLight(selectedEvidence).score}
                 >
                   <i
                     style={{
-                      width: `${crystal(selectedEvidence).score * 10}%`,
+                      width: `${skillLight(selectedEvidence).score * 10}%`,
                     }}
                   />
                 </div>
@@ -700,13 +711,12 @@ export function MapView({
                 : "Each point is a skill. Each connection leads from a prerequisite to a skill that uses it."}
             </p>
             <details className="pathways-note">
-              <summary>About illumination & coverage</summary>
+              <summary>How skills grow</summary>
               <p>
-                Each independent correct answer adds 0.5 illumination, up to 10
-                per skill. Earned growth stays when a skill needs review.
-                Illumination records practice, not certification of a whole
-                grade. Prerequisites do not earn credit automatically. The map
-                includes skills whose practice is being developed.
+                Each correct answer without help fills a skill’s bar by a
+                twentieth. What is earned stays when a skill needs review. The
+                bar records practice; it does not certify a whole grade, and a
+                prerequisite fills only from its own answers.
               </p>
               {range && !selected && (
                 <p>

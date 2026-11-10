@@ -454,9 +454,15 @@ async function journey(
     .first()
     .click();
   await rowan.waitForURL(/\/pathways/);
-  await heading(rowan, "Your pathways");
-  // Maya's record, named (a narrow screen keeps the line for readers).
-  await rowan.getByText(/^Maya · Crystals grow/).waitFor({ state: "attached" });
+  await heading(rowan, "Pathways");
+  // Maya's record: her name in the learner picker, the record's line loaded.
+  await rowan
+    .locator(".pathways-learner")
+    .getByText("Maya")
+    .waitFor({ state: "attached" });
+  await rowan
+    .getByText(/^Skills grow with independent successes/)
+    .waitFor({ state: "attached" });
   await measured(rowan, `${label} child pathways`);
   await shot(rowan, "child-pathways", width, theme, engine);
   await rowan

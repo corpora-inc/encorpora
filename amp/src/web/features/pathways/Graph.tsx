@@ -6,7 +6,7 @@ import {
   bandLabel,
   bands,
   connections,
-  crystal,
+  skillLight,
   layout,
   neighborhood,
   neighborhoods,
@@ -176,7 +176,7 @@ export function Graph({
     const meshes: THREE.Mesh[] = [],
       glows: THREE.Sprite[] = [];
     for (const p of points) {
-      const earned = crystal(stats.get(p.skill.id));
+      const earned = skillLight(stats.get(p.skill.id));
       const color = colors[Math.max(0, neighborhood(p.skill))]!;
       const material = new THREE.MeshStandardMaterial({
         color: earned.stage
@@ -634,7 +634,7 @@ export function Graph({
           paths.prerequisites.has(idHere) ||
           paths.dependents.has(idHere) ||
           relatedIds.has(idHere);
-        const earned = crystal(stats.get(idHere));
+        const earned = skillLight(stats.get(idHere));
         (mesh.material as THREE.MeshStandardMaterial).emissiveIntensity = active
           ? earned.intensity
           : 0.015;

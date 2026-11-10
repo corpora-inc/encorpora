@@ -841,7 +841,8 @@ try {
       await page.goto(`${origin}/pathways`);
       await page.locator(".pathways-canvas canvas").waitFor();
       await page
-        .getByText("2 skills illuminated", { exact: false })
+        .getByText(/^2 of \d+ skills earned/)
+        .first()
         .waitFor({ state: "attached" });
       // The way to practice is the app frame's one action in its bar.
       const go = page.locator("[data-shell-action]");
@@ -1237,7 +1238,7 @@ try {
     // The phone row's count paints once the record is in.
     await pendingPhone
       .locator(".pathways-phone-summary", {
-        hasText: /^2 of \d+ skills illuminated$/,
+        hasText: /^2 of \d+ skills earned$/,
       })
       .waitFor();
   } finally {
@@ -1275,7 +1276,7 @@ try {
     await once.goto(`${origin}/pathways`);
     await once
       .locator(".pathways-phone-summary", {
-        hasText: /^2 of \d+ skills illuminated$/,
+        hasText: /^2 of \d+ skills earned$/,
       })
       .waitFor();
     await once.waitForLoadState("networkidle");
@@ -1386,11 +1387,13 @@ try {
   await fixture(page);
   await page.goto(`${origin}/pathways?skill=${target.id}`);
   await page
-    .getByText("2 skills illuminated", { exact: false })
+    .getByText(/^2 of \d+ skills earned/)
+    .first()
     .waitFor({ state: "attached" });
   await choose(page, "Learner", "parent-one-b");
   await page
-    .getByText("0 skills illuminated", { exact: false })
+    .getByText(/^0 of \d+ skills earned/)
+    .first()
     .waitFor({ state: "attached" });
   assert.equal(
     await page.getByRole("link", { name: "Try a problem" }).count(),
@@ -1398,7 +1401,8 @@ try {
   );
   await choose(page, "Learner", "parent-one-a");
   await page
-    .getByText("2 skills illuminated", { exact: false })
+    .getByText(/^2 of \d+ skills earned/)
+    .first()
     .waitFor({ state: "attached" });
   await page.evaluate(() => {
     (window as any).pathwaysAccount = "parent-two";
@@ -1409,7 +1413,7 @@ try {
     .waitFor();
   assert.equal(
     await page.locator(".pathways-summary").textContent(),
-    `0 skills illuminated · ${skills.length} mapped skills from kindergarten through precalculus`,
+    `0 of ${skills.length} skills earned · kindergarten through precalculus`,
   );
   assert.equal(
     await page.getByRole("link", { name: "Try a problem" }).count(),

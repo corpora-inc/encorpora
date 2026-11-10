@@ -75,11 +75,15 @@ export function useLearningView({
   // The adult's own learner, when it's the one chosen: their own practice.
   // One of their practice profiles is their own practice too, as someone else.
   const profile = practiceProfile(account, selectedId);
+  // An adult who practices only as themselves has no one else to choose:
+  // their own record, whatever this device last chose.
+  const solo =
+    !learners.length && !shared.length ? adultLearner(account) : null;
   const own = practicingAsAdult(account, selectedId)
     ? adultLearner(account)
     : profile
       ? profileLearner(account, selectedId)
-      : null;
+      : solo;
   const learner =
     own ??
     learners.find((l) => l.id === selectedId) ??
@@ -87,6 +91,8 @@ export function useLearningView({
     (learners.length === 1 ? learners[0] : undefined);
   const viewOnly = !own && !!secondParentChild(account, learner?.id);
   useEffect(() => {
+    if (solo && own === solo && selectedId !== solo.id)
+      useLearnerStore.getState().select(solo.id);
     if (own) return;
     if (learners.length === 1 && selectedId !== learners[0]?.id)
       useLearnerStore.getState().select(learners[0]!.id);

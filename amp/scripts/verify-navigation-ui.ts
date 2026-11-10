@@ -500,7 +500,7 @@ try {
         .getByRole("link", { name: "Inventory", exact: true })
         .click();
       await page
-        .getByRole("heading", { name: "Your inventory", exact: true })
+        .getByRole("heading", { name: "Inventory", exact: true })
         .waitFor();
       await page.locator('[data-strength="Strong"]').first().waitFor();
       assert.equal(new URL(page.url()).pathname, "/inventory");
@@ -520,18 +520,18 @@ try {
           );
         const row = page.getByRole("group", { name: "Skills to show" });
         const rowBefore = (await row.boundingBox())!;
-        const allSkills = await count("All skills");
+        const allSkills = await count("All");
         await page.getByRole("button", { name: /^Math area/ }).click();
         await page
           .getByRole("option", { name: "Number & operations", exact: true })
           .click();
         await page.waitForFunction(() => location.search.includes("area="));
-        const inArea = await count("All skills");
+        const inArea = await count("All");
         assert(
           inArea > 0 && inArea < allSkills,
           `all-skills count follows the area: ${inArea} of ${allSkills}`,
         );
-        for (const name of ["Tried", "Illuminated", "Strong"])
+        for (const name of ["Tried", "Earned", "Strong"])
           assert(
             (await count(name)) <= inArea,
             `${name} counts only the chosen area`,
@@ -549,7 +549,7 @@ try {
         await page.waitForFunction(() => !location.search.includes("area="));
       }
       const searchBox = await page
-        .getByRole("searchbox", { name: "Search your skills" })
+        .getByRole("searchbox", { name: "Find a skill" })
         .evaluate((el) => {
           const box = el.closest("label")!.getBoundingClientRect();
           return { y: box.y, height: box.height };
@@ -774,12 +774,10 @@ try {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.reload();
   await page.locator('[data-strength="Strong"]').first().waitFor();
-  await page.getByRole("searchbox", { name: "Search your skills" }).fill("L");
-  await page.getByRole("searchbox", { name: "Search your skills" }).fill("");
+  await page.getByRole("searchbox", { name: "Find a skill" }).fill("L");
+  await page.getByRole("searchbox", { name: "Find a skill" }).fill("");
   assert.equal(
-    await page
-      .getByRole("searchbox", { name: "Search your skills" })
-      .inputValue(),
+    await page.getByRole("searchbox", { name: "Find a skill" }).inputValue(),
     "",
   );
   await page.getByRole("button", { name: /^Strong/ }).click();
@@ -869,7 +867,8 @@ try {
   failProgress = true;
   await page.reload();
   await page
-    .getByRole("heading", { name: "Your inventory could not be loaded" })
+    .getByRole("alert")
+    .filter({ hasText: "Your skills didn’t load" })
     .waitFor();
   failProgress = false;
   await page.getByRole("button", { name: "Try again", exact: true }).click();

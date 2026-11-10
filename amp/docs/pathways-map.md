@@ -4,7 +4,7 @@ The web app’s `/pathways` screen shows the curriculum as a directed graph. Arr
 
 **Start learning** opens adaptive mixed practice. **Try a problem** opens one problem for the selected skill, then continues through the adaptive practice flow. Skills without an implemented problem family are labeled as practice in development. The graph describes the catalog; inclusion does not establish complete coverage of a standard or assessment.
 
-Signed-in families can choose a learner to see earned crystals. Crystal shapes grow at 1, 5, and 15 cumulative correct answers without help. A later incorrect or assisted attempt cannot reduce that shape. Brightness indicates a strong record among the most recent attempts, regardless of their age; it is not a retention estimate or mastery certificate. Anonymous visitors can browse the curriculum without learner evidence.
+Signed-in families can choose a learner to see their earned skills. A skill's point grows at 1, 5, and 15 cumulative correct answers without help. A later incorrect or assisted attempt cannot reduce that shape. Brightness indicates a strong record among the most recent attempts, regardless of their age; it is not a retention estimate or mastery certificate. Anonymous visitors can browse the curriculum without learner evidence.
 
 The shaded band shows the existing frontier estimate’s approximate 90% range, using the selected skill’s area when measured and the overall estimate when no skill is selected. Expand **Frontier estimates by area** to inspect the range bars. These estimates can extend beyond the grade or course labels drawn on the map. Neither grade labels nor individual successes certify completion of an entire grade.
 

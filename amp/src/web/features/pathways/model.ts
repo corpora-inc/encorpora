@@ -102,7 +102,7 @@ export function illumination(evidence?: Evidence) {
   );
 }
 /** Earned successes persist; recent strength changes independently. No mastery percentage. */
-export function crystal(evidence?: Evidence) {
+export function skillLight(evidence?: Evidence) {
   const successes = evidence?.independentCorrect ?? 0;
   const score = illumination(evidence),
     strong = evidence?.status === "review-ready";
