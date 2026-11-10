@@ -556,6 +556,18 @@ const starterChoice = createRoute({
   beforeLoad: beforeStarter,
   component: starter,
 });
+/** A parent's or a tutor's setup after its first step:
+ * `/start/parent/practice`, `/start/parent/second-parent`, `/start/parent/ready`,
+ * `/start/tutor/join` and `/start/tutor/ready`. */
+const starterStep = createRoute({
+  getParentRoute: () => root,
+  path: "/start/$choice/$step",
+  beforeLoad: beforeStarter,
+  component: lazyRouteComponent(
+    () => import("../features/onboarding/Starter"),
+    "StarterStep",
+  ),
+});
 /** The plan before any learner, for a parent approving another family's
  * child: their payment is the consent the approval needs. Anyone else who
  * opens a saved link to it goes where the first-run guard says. */
@@ -1125,6 +1137,7 @@ export const router = createRouter({
     reset,
     starterIndex,
     starterChoice,
+    starterStep,
     startPlan,
     continueWithAmp,
     startPurchase,

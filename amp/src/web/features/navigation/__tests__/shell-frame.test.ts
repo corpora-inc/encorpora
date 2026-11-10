@@ -48,7 +48,13 @@ test("each group's screens share one frame and name their tab", () => {
 });
 
 test("the starter and Continue with AMP sit on the app frame", () => {
-  for (const path of ["/start", "/start/parent", "/start/school"])
+  for (const path of [
+    "/start",
+    "/start/parent",
+    "/start/school",
+    "/start/parent/practice",
+    "/start/tutor/join",
+  ])
     expect(shellFrame(path), path).toEqual({ kind: "plain" });
   expect(shellFrame("/continue/learner-1")).toEqual({
     kind: "account",

@@ -104,10 +104,12 @@ export function shellFrame(pathname: string): ShellFrame | null {
   if (path === "/consent") return { kind: "account", active: "privacy" };
   // "Continue with AMP" for one learner is a step of Billing.
   if (under(path, "/continue")) return { kind: "account", active: "access" };
-  // "What brings you to AMP?" and each answer's question.
+  // "What brings you to AMP?", each answer's question, and the steps of a
+  // parent's or a tutor's setup.
   if (
     path === "/start" ||
-    /^\/start\/(myself|parent|tutor|teacher|school)$/.test(path)
+    /^\/start\/(myself|parent|tutor|teacher|school)$/.test(path) ||
+    /^\/start\/(parent|tutor)\/[a-z-]+$/.test(path)
   )
     return { kind: "plain" };
   if (path === "/practice") return { kind: "practice" };

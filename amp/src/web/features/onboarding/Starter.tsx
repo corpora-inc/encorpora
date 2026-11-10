@@ -9,15 +9,6 @@ import { ownPracticeAllowed } from "../../../learning/starting-point";
 import { sessionOptions } from "../../lib/query";
 import { chosenPlan } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
-import { BirthYearPicker } from "../../ui/Select";
-import {
-  CHILD_NAME_MAX,
-  childNameProblem,
-  NICKNAME_HINT,
-  NICKNAME_MAX,
-  PARENT_ENTRY_LINE,
-} from "../../../learning/nickname";
-import { Stepper } from "../../ui/Stepper";
 import { Toast } from "../../ui/Toast";
 import { loadCurriculum } from "../schools/api";
 import { TalkToUs } from "../schools/TalkToUs";
@@ -28,33 +19,15 @@ import {
   useStartPlace,
   type StarterAnswer,
 } from "./starter-api";
+import { FamilySetup, type SetupKind } from "./setup/FamilySetup";
 import styles from "./Starter.module.css";
-
-const MAX_CHILDREN = 6;
-const MAX_STUDENTS = 30;
 
 /** Unsent answers live only in this tab's memory, per account. */
 type StarterDraft = {
-  children: number;
-  childYears: string[];
-  /** The name each child goes by; blank is "Child 2". */
-  childNames: string[];
-  students: number;
-  studentYears: string[];
-  /** A tutor's nickname for each student; blank is "Student 2". */
-  studentNames: string[];
   /** "I'm learning for myself": the year they were born. */
   ownYear: number | null;
 };
-const emptyDraft: StarterDraft = {
-  children: 1,
-  childYears: [],
-  childNames: [],
-  students: 1,
-  studentYears: [],
-  studentNames: [],
-  ownYear: null,
-};
+const emptyDraft: StarterDraft = { ownYear: null };
 const useStarterDraft = create<
   StarterDraft & {
     owner: string | null;
@@ -122,8 +95,33 @@ let chosenHere = false;
  * the same screen, under the five choices, which never move. */
 export function Starter() {
   const { data: session } = useSuspenseQuery(sessionOptions);
+  const params = useParams({ strict: false }) as { choice?: string };
   if (!session) return <Navigate to="/sign-in" replace />;
+  // A parent or a tutor is walked through setting up their class.
+  if (isSetup(params.choice))
+    return <FamilySetup session={session} kind={params.choice} step="" />;
   return <StarterScreen session={session} />;
+}
+
+const isSetup = (choice: unknown): choice is SetupKind =>
+  choice === "parent" || choice === "tutor";
+
+/** `/start/<parent|tutor>/<step>`: a later step of that setup. */
+export function StarterStep() {
+  const { data: session } = useSuspenseQuery(sessionOptions);
+  const params = useParams({ strict: false }) as {
+    choice?: string;
+    step?: string;
+  };
+  if (!session) return <Navigate to="/sign-in" replace />;
+  if (!isSetup(params.choice)) return <Navigate to="/start" replace />;
+  return (
+    <FamilySetup
+      session={session}
+      kind={params.choice}
+      step={params.step ?? ""}
+    />
+  );
 }
 
 function StarterScreen({ session }: { session: AuthSession }) {
@@ -134,24 +132,6 @@ function StarterScreen({ session }: { session: AuthSession }) {
   const demo = useStartDemo(session);
   const busy = start.isPending || demo.isPending;
   const [error, setError] = useState("");
-  // Where the place opens, when an answer found everyone it named there.
-  const [already, setAlready] = useState<string | null>(null);
-  const openPlace = already
-    ? () => void navigate({ href: `/${already}` })
-    : null;
-  // A changed answer is a new question.
-  const answer = useStarterDraft((draft) =>
-    JSON.stringify([
-      draft.children,
-      draft.childYears,
-      draft.childNames,
-      draft.students,
-      draft.studentYears,
-      draft.studentNames,
-      draft.ownYear,
-    ]),
-  );
-  useEffect(() => setAlready(null), [answer, choice]);
   const followUp = useRef<HTMLDivElement>(null);
   // A choice made here brings its question into view; a choice the page
   // opened with (a refresh, a link, Back) leaves the page where it is.
@@ -188,26 +168,12 @@ function StarterScreen({ session }: { session: AuthSession }) {
   const begin = (answer: StarterAnswer) => {
     if (busy) return;
     setError("");
-    setAlready(null);
     start.mutate(answer, {
       onSuccess: (result) => {
         // A plan chosen on the pitch before signing up opens for the learner
         // just made; otherwise the new place opens.
-        // The place already had everyone this answer named: say so here,
-        // rather than carry on as if something was added.
-        if (
-          result.added === 0 &&
-          (answer.as === "parent" || answer.as === "tutor")
-        ) {
-          setAlready(result.home);
-          return;
-        }
         const plan = chosenPlan();
-        if (
-          plan &&
-          result.learnerId &&
-          (answer.as === "parent" || answer.as === "myself")
-        )
+        if (plan && result.learnerId && answer.as === "myself")
           void navigate({
             to: "/continue/$learnerId",
             params: { learnerId: result.learnerId },
@@ -298,46 +264,6 @@ function StarterScreen({ session }: { session: AuthSession }) {
             }
             onStart={(birthYear) =>
               begin({ as: "myself", timezone: deviceTimeZone(), birthYear })
-            }
-          />
-        ) : choice === "parent" ? (
-          <Children
-            session={session}
-            busy={busy}
-            already={
-              openPlace && {
-                note: "These children are already in your class.",
-                open: openPlace,
-              }
-            }
-            onStart={(people) =>
-              begin({
-                as: "parent",
-                children: people.map(({ birthYear, name }) => ({
-                  birthYear,
-                  ...(name ? { name } : {}),
-                })),
-              })
-            }
-          />
-        ) : choice === "tutor" ? (
-          <Students
-            session={session}
-            busy={busy}
-            already={
-              openPlace && {
-                note: "These students are already in your class.",
-                open: openPlace,
-              }
-            }
-            onStart={(people) =>
-              begin({
-                as: "tutor",
-                students: people.map(({ birthYear, name }) => ({
-                  birthYear,
-                  ...(name ? { nickname: name } : {}),
-                })),
-              })
             }
           />
         ) : choice === "school" ? (
@@ -455,271 +381,6 @@ function Myself({
         onClick={() => picked !== null && onStart(picked)}
       >
         Start practicing
-      </Start>
-    </section>
-  );
-}
-
-/** What a child is called beside their birth year: a parent's name for their
- * own child, or a tutor's nickname for a student from another family. */
-type NameField = { label: string; placeholder: string; max: number };
-
-/** `count` people, each with an optional name and a birth year. Each row is
- * labelled with the name it gets when the field is left blank ("Child 2").
- * Wide screens show the field names once, over the columns. */
-function People({
-  count,
-  rowName,
-  field,
-  names,
-  years,
-  invalid,
-  onNames,
-  onYears,
-  disabled,
-}: {
-  count: number;
-  rowName: (index: number) => string;
-  field: NameField;
-  names: string[];
-  years: string[];
-  /** The first row whose name can't be used: marked, its reason below. */
-  invalid: number | null;
-  onNames: (names: string[]) => void;
-  onYears: (years: string[]) => void;
-  disabled: boolean;
-}) {
-  const set = (list: string[], index: number, value: string) => {
-    const next = [...list];
-    next[index] = value;
-    return next;
-  };
-  return (
-    <div className={styles.people}>
-      <div className={styles.columns} aria-hidden="true">
-        <span />
-        <span>{field.label}</span>
-        <span>Birth year</span>
-      </div>
-      <ol className={styles.rows}>
-        {Array.from({ length: count }, (_, index) => (
-          <li key={index} className={styles.person}>
-            <span className={styles.personName}>{rowName(index)}</span>
-            <label className={styles.cell}>
-              <span className={styles.cellLabel}>{field.label}</span>
-              <input
-                className={styles.nameInput}
-                value={names[index] ?? ""}
-                placeholder={field.placeholder}
-                maxLength={field.max}
-                autoComplete="off"
-                autoCapitalize="words"
-                spellCheck={false}
-                aria-invalid={invalid === index || undefined}
-                aria-label={`${field.label}, ${rowName(index)}`}
-                disabled={disabled}
-                onChange={(event) =>
-                  onNames(set(names, index, event.target.value))
-                }
-              />
-            </label>
-            <div className={styles.cell}>
-              <span className={styles.cellLabel} aria-hidden="true">
-                Birth year
-              </span>
-              <BirthYearPicker
-                label={`Birth year, ${rowName(index)}`}
-                adult={false}
-                value={years[index] ?? ""}
-                disabled={disabled}
-                onChange={(value) => onYears(set(years, index, value))}
-              />
-            </div>
-          </li>
-        ))}
-      </ol>
-    </div>
-  );
-}
-
-const chosenYears = (years: string[], count: number) => {
-  const picked = years.slice(0, count).map(Number);
-  return picked.length === count && picked.every((year) => year > 0)
-    ? picked
-    : null;
-};
-
-/** Each row's birth year and name, once every year is chosen and every name
- * can be used; otherwise what's missing, in words for the hint line. */
-function answers(
-  count: number,
-  years: string[],
-  names: string[],
-  field: NameField,
-  rowName: (index: number) => string,
-  missingYear: string,
-) {
-  for (let index = 0; index < count; index++) {
-    const problem = childNameProblem(names[index] ?? "", field.max);
-    if (problem)
-      return { ready: null, invalid: index, why: `${rowName(index)}: ${problem}` };
-  }
-  const picked = chosenYears(years, count);
-  if (!picked) return { ready: null, invalid: null, why: missingYear };
-  return {
-    ready: picked.map((birthYear, index) => ({
-      birthYear,
-      name: names[index]?.trim() || undefined,
-    })),
-    invalid: null,
-    why: "",
-  };
-}
-
-const childField: NameField = {
-  label: "Name",
-  placeholder: "First name or nickname",
-  max: CHILD_NAME_MAX,
-};
-const studentField: NameField = {
-  label: "Nickname or initials",
-  placeholder: "Optional",
-  max: NICKNAME_MAX,
-};
-type Person = { birthYear: number; name?: string };
-
-function Children({
-  session,
-  busy,
-  already,
-  onStart,
-}: {
-  session: AuthSession;
-  busy: boolean;
-  already: { note: string; open: () => void } | null;
-  onStart: (people: Person[]) => void;
-}) {
-  const draft = useStarterDraft();
-  const mine = draft.owner === session.accountId;
-  const count = mine ? draft.children : 1;
-  const years = mine ? draft.childYears : [];
-  const names = mine ? draft.childNames : [];
-  const rowName = (index: number) => `Child ${index + 1}`;
-  const { ready, invalid, why } = answers(
-    count,
-    years,
-    names,
-    childField,
-    rowName,
-    "Choose a birth year for each child.",
-  );
-  return (
-    <section className={styles.panel} aria-labelledby="starter-children">
-      <h2 id="starter-children" className={styles.question}>
-        How many children?
-      </h2>
-      <Stepper
-        label="Children"
-        hideLabel
-        value={count}
-        min={1}
-        max={MAX_CHILDREN}
-        onChange={(value) => draft.set(session.accountId, { children: value })}
-      />
-      <People
-        count={count}
-        rowName={rowName}
-        field={childField}
-        names={names}
-        years={years}
-        invalid={invalid}
-        disabled={busy}
-        onNames={(next) => draft.set(session.accountId, { childNames: next })}
-        onYears={(next) => draft.set(session.accountId, { childYears: next })}
-      />
-      <p className={styles.basis}>{PARENT_ENTRY_LINE}</p>
-      <Start
-        busy={busy}
-        ready={!!ready}
-        missing={why}
-        already={already}
-        onClick={() => ready && onStart(ready)}
-      >
-        Continue
-      </Start>
-    </section>
-  );
-}
-
-function Students({
-  session,
-  busy,
-  already,
-  onStart,
-}: {
-  session: AuthSession;
-  busy: boolean;
-  already: { note: string; open: () => void } | null;
-  onStart: (people: Person[]) => void;
-}) {
-  const draft = useStarterDraft();
-  const mine = draft.owner === session.accountId;
-  const count = mine ? draft.students : 1;
-  const years = mine ? draft.studentYears : [];
-  const names = mine ? draft.studentNames : [];
-  const rowName = (index: number) => `Student ${index + 1}`;
-  const { ready, invalid, why } = answers(
-    count,
-    years,
-    names,
-    studentField,
-    rowName,
-    "Choose a birth year for each student.",
-  );
-  return (
-    <section className={styles.panel} aria-labelledby="starter-students">
-      <h2 id="starter-students" className={styles.question}>
-        How many students?
-      </h2>
-      <Stepper
-        label="Students"
-        hideLabel
-        value={count}
-        min={0}
-        max={MAX_STUDENTS}
-        onChange={(value) => draft.set(session.accountId, { students: value })}
-      />
-      {count > 0 && (
-        <People
-          count={count}
-          rowName={rowName}
-          field={studentField}
-          names={names}
-          years={years}
-          invalid={invalid}
-          disabled={busy}
-          onNames={(next) =>
-            draft.set(session.accountId, { studentNames: next })
-          }
-          onYears={(next) =>
-            draft.set(session.accountId, { studentYears: next })
-          }
-        />
-      )}
-      <p className={styles.note}>
-        {NICKNAME_HINT} Each student’s own parent adds their name through a
-        link you send.
-      </p>
-      <Start
-        busy={busy}
-        ready={count === 0 || !!ready}
-        missing={why}
-        already={already}
-        onClick={() =>
-          count === 0 ? onStart([]) : ready && onStart(ready)
-        }
-      >
-        Create my class
       </Start>
     </section>
   );
