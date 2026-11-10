@@ -1,4 +1,5 @@
 import { funnelVisitor } from "../analytics/visitor-header.js";
+import { secondParentOwner } from "../family/second-parent.js";
 import {
   FundingInvoiceRepository,
   invoiceDocument,
@@ -168,7 +169,7 @@ export async function registerFundingPurchaseRoutes(
     scope.get("/api/v1/funding/requests", async (request) => ({
       requests: await repository.list(await options.authenticate(request)),
     }));
-    scope.post("/api/v1/funding/requests", async (request) => {
+    scope.post("/api/v1/funding/requests", async (request, reply) => {
       const account = await options.authenticate(request);
       let body = request.body;
       if (
@@ -184,6 +185,9 @@ export async function registerFundingPurchaseRoutes(
         body = purchase;
       }
       const input = createFundingRequestSchema.parse(body);
+      // A family's purchases are its account holder's (docs/families.md).
+      if (await secondParentOwner(options.pool, account, input.learnerId))
+        return reply.code(403).send({ error: "family_holder_only" });
       const fundingRequest = await repository.create(
         account,
         input,

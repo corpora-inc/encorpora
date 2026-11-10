@@ -6,6 +6,38 @@ import { activeToday, isSchoolAccount } from "../schools/principal.js";
 import { familyClassOf } from "../family/family-class.js";
 import { pendingApprovalOf } from "../family/approvals.js";
 import { absorbLiveTrial } from "../server/absorb-trial.js";
+import { secondParentFamilies } from "../family/second-parent.js";
+import type { FamilySummary } from "../family/contracts.js";
+
+/** A family's children as `/me` lists them: each with their access. */
+function childEntries(family: FamilySummary) {
+  return family.learners
+    .filter((l) => !l.deletedAt && !l.adult)
+    .map((l) => {
+      const grant = l.access
+        .filter(
+          (a) =>
+            a.status === "active" &&
+            Date.parse(a.startsAt) <= Date.now() &&
+            Date.parse(a.endsAt) > Date.now(),
+        )
+        .sort((a, b) => b.endsAt.localeCompare(a.endsAt))[0];
+      return {
+        id: l.id,
+        name: l.name,
+        birthYear: l.birthYear ?? null,
+        namePending: l.namePending,
+        pictureIdentity: l.pictureIdentity,
+        freeAllowance: l.freeAllowance,
+        entitlement: {
+          active: l.canPractice === true,
+          licensed: l.hasAccess ?? !!grant,
+          plan: grant?.channel ?? null,
+          endsAt: grant?.endsAt ?? null,
+        },
+      };
+    });
+}
 /** One authenticated account snapshot. No trial capability or child draft is stored here. */
 export async function accountSummary(
   pool: Pool,
@@ -71,32 +103,7 @@ export async function accountSummary(
       : undefined;
   // The family's learners; the adult's own learner is its own place.
   const adult = family.learners.find((l) => l.adult && !l.deletedAt);
-  const learners = family.learners
-    .filter((l) => !l.deletedAt && !l.adult)
-    .map((l) => {
-      const grant = l.access
-        .filter(
-          (a) =>
-            a.status === "active" &&
-            Date.parse(a.startsAt) <= Date.now() &&
-            Date.parse(a.endsAt) > Date.now(),
-        )
-        .sort((a, b) => b.endsAt.localeCompare(a.endsAt))[0];
-      return {
-        id: l.id,
-        name: l.name,
-        birthYear: l.birthYear ?? null,
-        namePending: l.namePending,
-        pictureIdentity: l.pictureIdentity,
-        freeAllowance: l.freeAllowance,
-        entitlement: {
-          active: l.canPractice === true,
-          licensed: l.hasAccess ?? !!grant,
-          plan: grant?.channel ?? null,
-          endsAt: grant?.endsAt ?? null,
-        },
-      };
-    });
+  const learners = childEntries(family);
   const gift = await availableGift(pool, accountId);
   // Both in parallel. A fixture at an earlier migration boundary has no
   // schools, or trials without owners, and reads as none: no extra round trip
@@ -107,8 +114,8 @@ export async function accountSummary(
       if (error.code && codes.includes(error.code)) return { rows: [] };
       throw error;
     };
-  const [staffRows, trialRows, familyClass, familyApproval] = await Promise.all(
-    [
+  const [staffRows, trialRows, familyClass, familyApproval, coParented] =
+    await Promise.all([
       pool
         .query<{
           orgId: string;
@@ -140,7 +147,21 @@ export async function accountSummary(
       // A link from another family's teacher this parent opened and hasn't
       // approved yet: after consent, approving is the next step.
       pendingApprovalOf(pool, accountId),
-    ],
+      // Families this account is the second parent of, with their children.
+      isSchoolAccount(accountId)
+        ? Promise.resolve([])
+        : secondParentFamilies(pool, accountId).catch(
+            (error: { code?: string }) => {
+              if (error.code === "42P01" || error.code === "42703") return [];
+              throw error;
+            },
+          ),
+    ]);
+  const secondParentOf = await Promise.all(
+    coParented.map(async ({ holder, ...place }) => ({
+      ...place,
+      learners: childEntries(await families.summary(holder)),
+    })),
   );
   const adultPractice = {
     eligible: adult ? adult.canPractice === true : true,
@@ -179,6 +200,7 @@ export async function accountSummary(
     ...(staffOf.length ? { staffOf } : {}),
     ...(familyClass ? { familyClass } : {}),
     ...(familyApproval ? { familyApproval } : {}),
+    ...(secondParentOf.length ? { secondParentOf } : {}),
     ...(trialRows.rows.length ? { trial: true as const } : {}),
     ...(adultPractice ? { adultPractice } : {}),
     ...(gift ? { availableAccessGrant: gift } : {}),

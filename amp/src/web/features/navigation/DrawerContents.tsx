@@ -16,6 +16,7 @@ import {
   clearPurchaseReturn,
 } from "../../purchase-return";
 import styles from "./Navigation.module.css";
+import { secondParentChild } from "../second-parent/api";
 
 type Icon =
   | "learn"
@@ -140,11 +141,15 @@ export default function DrawerContents({
               ? isTrial
                 ? "/try/map"
                 : "/overview"
-              : isTrial
-                ? "/try/practice"
-                : account?.family.learners.find((l) => l.id === id)?.canPractice
-                  ? "/practice"
-                  : "/start";
+              : // A second parent's family's child: their progress.
+                secondParentChild(account, id)
+                ? "/overview"
+                : isTrial
+                  ? "/try/practice"
+                  : account?.family.learners.find((l) => l.id === id)
+                        ?.canPractice
+                    ? "/practice"
+                    : "/start";
     void navigate({
       to: "/$",
       params: { _splat: destination.slice(1) },
@@ -268,7 +273,10 @@ export default function DrawerContents({
       <nav aria-label="AMP navigation" className={styles.navigation}>
         {/* A paused practice of their own has no next step here: their
             record, under Progress, says why. */}
+        {/* A second parent's family's child practices from its class
+            ("Let … practice here"), which is the Class link below. */}
         {!(own && !view.canPractice) &&
+          !view.viewOnly &&
           nav(practiceHref, practiceLabel, "learn", {
             current: here?.kind === "practice",
           })}
@@ -283,6 +291,7 @@ export default function DrawerContents({
           )}
         {view.learner &&
           !trialMode &&
+          !view.viewOnly &&
           nav("/lessons", "Lessons", "lessons", {
             current:
               location.pathname === "/lessons" ||

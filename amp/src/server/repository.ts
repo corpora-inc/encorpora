@@ -68,6 +68,7 @@ import {
   type FreeAllowance,
 } from "../learning/free-allowance.js";
 import { refreshAdultAccess } from "../account/adult-access.js";
+import { secondParentOwner } from "../family/second-parent.js";
 import {
   resolveStudentSession,
   type StudentSession,
@@ -264,6 +265,12 @@ export interface Repository {
   trialAccount(token: string, owner?: string): Promise<string | null>;
   /** A live student token's learner and the account it acts as, or null. */
   studentAccount?(token: string): Promise<StudentSession | null>;
+  /** The account holder who owns this child, when `accountId` is that
+   * family's second parent (docs/families.md); otherwise null. */
+  secondParentOwner?(
+    accountId: string,
+    learnerId: string,
+  ): Promise<string | null>;
   /** Moves a trial learner, with all answers, into a parent's account. */
   adoptTrial(accountId: string, token: string, name: string): Promise<Learner>;
 }
@@ -529,6 +536,9 @@ export class PostgresRepository implements Repository {
   }
   studentAccount(token: string) {
     return resolveStudentSession(this.pool, token);
+  }
+  secondParentOwner(accountId: string, learnerId: string) {
+    return secondParentOwner(this.pool, accountId, learnerId);
   }
   async trialAccount(token: string, owner?: string) {
     const result = await this.pool.query(

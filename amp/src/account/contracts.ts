@@ -45,6 +45,23 @@ export const familySummarySchema = z.object({
     privacyAuditDays: z.number(),
   }),
 });
+/** A family's child as `/me` lists them. */
+const childSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  birthYear: z.number().nullable(),
+  namePending: z.boolean().optional(),
+  pictureIdentity: z.string().nullable().optional(),
+  freeAllowance: freeAllowanceSchema.optional(),
+  entitlement: z.object({
+    /** Permission for online practice, including a free allowance. */
+    active: z.boolean(),
+    /** Actual grant coverage; absent on older providers. */
+    licensed: z.boolean().optional(),
+    plan: z.string().nullable(),
+    endsAt: z.string().nullable(),
+  }),
+});
 const accountSchema = z.object({
   id: z.string(),
   email: z.string().nullable(),
@@ -65,24 +82,7 @@ export const meSchema = z.discriminatedUnion("signedIn", [
       status: z.enum(["none", "pending", "active", "withdrawn"]),
       method: z.string().nullable(),
     }),
-    learners: z.array(
-      z.object({
-        id: z.string(),
-        name: z.string(),
-        birthYear: z.number().nullable(),
-        namePending: z.boolean().optional(),
-        pictureIdentity: z.string().nullable().optional(),
-        freeAllowance: freeAllowanceSchema.optional(),
-        entitlement: z.object({
-          /** Permission for online practice, including a free allowance. */
-          active: z.boolean(),
-          /** Actual grant coverage; absent on older providers. */
-          licensed: z.boolean().optional(),
-          plan: z.string().nullable(),
-          endsAt: z.string().nullable(),
-        }),
-      }),
-    ),
+    learners: z.array(childSchema),
     family: familySummarySchema,
     availableAccessGrant: availableGiftSchema.optional(),
     unassignedPurchase: z
@@ -131,6 +131,20 @@ export const meSchema = z.discriminatedUnion("signedIn", [
     /** A link from another family's teacher (docs/families.md, step 5) this
      * parent opened and hasn't approved yet. */
     familyApproval: z.object({ id: z.string() }).optional(),
+    /** Families this account is the second parent of (docs/families.md): their
+     * class, which she teaches, and their children, whose progress she reads
+     * and whom she can let practice on her device. Their purchases, consent
+     * and names stay the account holder's. */
+    secondParentOf: z
+      .array(
+        z.object({
+          orgId: z.string(),
+          classId: z.string(),
+          className: z.string(),
+          learners: z.array(childSchema),
+        }),
+      )
+      .optional(),
     /** A free assessment in progress: the family side has something to open
      * even before there's a learner. */
     trial: z.literal(true).optional(),

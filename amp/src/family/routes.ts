@@ -29,6 +29,17 @@ import {
 import { FamilyError } from "./contracts.js";
 import { dismissFamilyNotice } from "./family-class.js";
 import { FamilyRepository } from "./repository.js";
+import {
+  inviteSecondParent,
+  mailSecondParent,
+  refuseSecondParentFor,
+  refuseSecondParentOnly,
+  removeSecondParent,
+  resendSecondParent,
+  secondParentOf,
+  secondParentOwner,
+} from "./second-parent.js";
+import { SchoolError } from "../schools/contracts.js";
 export interface FamilyRouteOptions {
   pool: Pool;
   authenticate: Authenticator;
@@ -51,7 +62,7 @@ export async function registerFamilyRoutes(
   });
   app.register(async (scope) => {
     scope.setErrorHandler((error, _request, reply) => {
-      if (error instanceof FamilyError)
+      if (error instanceof FamilyError || error instanceof SchoolError)
         return reply.code(error.statusCode).send({ error: error.code });
       if (error instanceof z.ZodError)
         return reply.code(400).send({ error: "invalid_family_request" });
@@ -136,9 +147,13 @@ export async function registerFamilyRoutes(
         const account = await options.authenticate(request);
         const { learnerId } = learnerParams.parse(request.params);
         empty.parse(request.body ?? {});
+        // The family's second parent hands her device to its child too.
+        const owner =
+          (await secondParentOwner(options.pool, account, learnerId)) ??
+          account;
         return reply
           .code(201)
-          .send(await repository.practiceHere(account, learnerId));
+          .send(await repository.practiceHere(owner, learnerId));
       },
     );
     scope.post("/api/v1/family/class-notice/dismiss", async (request) => {
@@ -149,6 +164,51 @@ export async function registerFamilyRoutes(
     });
     const keys = options.approvals;
     if (keys) {
+      // The family's second parent (docs/families.md): the account holder
+      // invites one, sends again and removes her.
+      scope.get("/api/v1/family/second-parent", async (request) => ({
+        secondParent: await secondParentOf(
+          options.pool,
+          keys,
+          await options.authenticate(request),
+        ),
+      }));
+      scope.post(
+        "/api/v1/family/second-parent",
+        {
+          bodyLimit: 1024,
+          config: { rateLimit: { max: 20, timeWindow: "1 hour" } },
+        },
+        async (request, reply) => {
+          const account = await options.authenticate(request);
+          const sent = await inviteSecondParent(
+            options.pool,
+            keys,
+            account,
+            request.body,
+          );
+          return reply.code(201).send({
+            mailed: await mailSecondParent(options.pool, keys, keys.mail, sent),
+          });
+        },
+      );
+      scope.post(
+        "/api/v1/family/second-parent/resend",
+        { config: { rateLimit: { max: 20, timeWindow: "1 hour" } } },
+        async (request) => {
+          const account = await options.authenticate(request);
+          empty.parse(request.body ?? {});
+          const sent = await resendSecondParent(options.pool, keys, account);
+          return {
+            mailed: await mailSecondParent(options.pool, keys, keys.mail, sent),
+          };
+        },
+      );
+      scope.post("/api/v1/family/second-parent/remove", async (request) => {
+        const account = await options.authenticate(request);
+        empty.parse(request.body ?? {});
+        return removeSecondParent(options.pool, account);
+      });
       const approvalParams = z.strictObject({
         approvalId: z.string().min(1).max(64),
       });
@@ -165,6 +225,7 @@ export async function registerFamilyRoutes(
         { bodyLimit: 1024 },
         async (request, reply) => {
           const account = await options.authenticate(request);
+          await refuseSecondParentOnly(options.pool, account);
           const sent = await createApproval(
             options.pool,
             keys,
@@ -255,12 +316,14 @@ export async function registerFamilyRoutes(
     scope.post("/api/v1/family/consent/withdraw", async (request) => {
       const account = await options.authenticate(request);
       empty.parse(request.body);
+      await refuseSecondParentOnly(options.pool, account);
       await repository.withdraw(account);
       return { withdrawn: true };
     });
     scope.post("/api/v1/family/learners/:learnerId/rename", async (request) => {
       const account = await options.authenticate(request);
       const { learnerId } = learnerParams.parse(request.params);
+      await refuseSecondParentFor(options.pool, account, learnerId);
       const { name } = z
         .strictObject({
           name: z
@@ -279,6 +342,7 @@ export async function registerFamilyRoutes(
       async (request) => {
         const account = await options.authenticate(request);
         const { learnerId } = learnerParams.parse(request.params);
+        await refuseSecondParentFor(options.pool, account, learnerId);
         z.strictObject({
           confirmation: z.literal("delete-learning-data"),
         }).parse(request.body);

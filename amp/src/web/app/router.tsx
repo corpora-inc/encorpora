@@ -65,6 +65,7 @@ import {
 import { workbookSearchSchema } from "../features/workbooks/model";
 import { preload } from "../features/school/api";
 import { approvalsOptions } from "../features/family-approval/api";
+import { secondParentOptions } from "../features/second-parent/api";
 import { classYearOptions } from "../features/school/org/org-api";
 import { frameData, schoolRoutes, staffScreen } from "./school-routes";
 import { loadCurriculum, loadScope } from "../features/schools/api";
@@ -855,7 +856,10 @@ const schoolClassToday = createRoute({
       .ensureQueryData(meOptions(session))
       .catch(() => null);
     if (me?.signedIn && me.familyClass?.classId === params.class)
-      await preload(approvalsOptions(session));
+      await Promise.all([
+        preload(approvalsOptions(session)),
+        preload(secondParentOptions(session)),
+      ]);
   },
   component: lazyRouteComponent(classScreens, "TodayScreen"),
 });

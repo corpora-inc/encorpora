@@ -251,13 +251,16 @@ export function InventoryScreen() {
                 ? "Try another filter or keep learning to build more strength."
                 : "As you practice, your skills and earned illumination appear here."}
           </p>
-          <Link
-            className={buttonClass("primary")}
-            to="/$"
-            params={{ _splat: view.practiceHref.slice(1) }}
-          >
-            {view.canPractice ? "Keep learning" : "Start learning"}
-          </Link>
+          {/* A second parent's family's child practices from its class. */}
+          {!view.viewOnly && (
+            <Link
+              className={buttonClass("primary")}
+              to="/$"
+              params={{ _splat: view.practiceHref.slice(1) }}
+            >
+              {view.canPractice ? "Keep learning" : "Start learning"}
+            </Link>
+          )}
         </section>
       ) : (
         neighborhoods.map((n, i) => {

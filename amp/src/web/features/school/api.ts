@@ -45,6 +45,10 @@ const messages: Record<string, string> = {
   invite_not_found:
     "This invitation link isn’t valid. Open the link from your email again, or ask your school’s admin for a new one.",
   invite_already_accepted: "This person has already accepted.",
+  invite_wrong_account:
+    "This invitation is for another email address. Use another account to sign in with it.",
+  invite_email_unconfirmed:
+    "Confirm your email address first, then open this invitation again.",
   class_staff_must_teach: "Only teachers and aides can be given classes.",
   mail_unavailable:
     "The request couldn’t be sent. Email support@corpora.inc and we’ll add the seats.",
@@ -355,6 +359,8 @@ export const school = {
         orgId: z.uuid().nullable(),
         /** The school's admin, still to set it up. */
         setup: z.boolean(),
+        /** A family's second parent: its class. */
+        familyClassId: z.uuid().optional(),
       }),
       session,
       { body },

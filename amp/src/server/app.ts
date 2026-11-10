@@ -269,7 +269,29 @@ function routes(app: FastifyInstance, options: AppOptions) {
     const trial = request.headers.authorization?.match(
       /^Trial ([A-Za-z0-9_-]{20,100})$/,
     )?.[1];
-    if (!trial) return options.authenticate(request);
+    if (!trial) {
+      const account = await options.authenticate(request);
+      // A family's second parent reads its children's progress as their
+      // account holder would; every decision about them is the holder's.
+      const learnerId = (request as { params?: { learnerId?: unknown } }).params
+        ?.learnerId;
+      if (
+        typeof learnerId !== "string" ||
+        !options.repository.secondParentOwner
+      )
+        return account;
+      const holder = await options.repository.secondParentOwner(
+        account,
+        learnerId,
+      );
+      if (!holder) return account;
+      if (
+        request.method === "GET" &&
+        SECOND_PARENT_READS.has(request.routeOptions.url ?? "")
+      )
+        return holder;
+      throw new ApiError(403, "The family’s account holder manages this.");
+    }
     const owner = !options.development
       ? await options.authenticate(request)
       : undefined;
@@ -1118,6 +1140,13 @@ export function withGlossary(outcome: Outcome): Outcome {
 
 /** Every learner id a request names, wherever it names one: the path, the
  * query or the body. */
+/** What a family's second parent reads of its children (docs/families.md):
+ * their progress, the same Overview, Pathways and Inventory the account
+ * holder sees. */
+const SECOND_PARENT_READS = new Set([
+  "/api/v1/learners/:learnerId/progress",
+  "/api/v1/learners/:learnerId/frontier",
+]);
 function requestLearnerIds(request: {
   params?: unknown;
   query?: unknown;

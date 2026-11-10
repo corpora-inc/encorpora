@@ -29,7 +29,10 @@ export function CoTeachers({
   const [inviting, setInviting] = useState(false);
   const [error, setError] = useState("");
   useLoggedError(error);
-  const others = (staff.data ?? []).filter((person) => !person.self);
+  // The family's second parent has her own row (`SecondParent`).
+  const others = (staff.data ?? []).filter(
+    (person) => !person.self && !person.secondParent,
+  );
   const resend = async (personId: string) => {
     try {
       const sent = await schoolApi.resendInvite(session, orgId, personId);

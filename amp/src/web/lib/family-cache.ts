@@ -27,6 +27,20 @@ export function useFamilyCache(identity: string | null) {
   }).data;
   return nativeRuntime ? (native ?? null) : me?.signedIn ? me.family : null;
 }
+/** The canonical account resource as already loaded, without fetching it
+ * again: a screen inside the app reads what the app holds. */
+export function useAccountCache(identity: string | null) {
+  const readAccount = useCallback(
+    () => queryClient.getQueryData<Me | null>(meKey(identity)),
+    [identity],
+  );
+  const me = useSyncExternalStore(
+    subscribeAccountCache,
+    readAccount,
+    readAccount,
+  );
+  return me?.signedIn ? me : null;
+}
 export function familyRevision(identity: string | null) {
   return (
     queryClient.getQueryState(

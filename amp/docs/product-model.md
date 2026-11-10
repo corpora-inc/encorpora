@@ -35,8 +35,8 @@ The practice loop (one problem at a time, adaptive across strands) is the produc
 
 ## Licenses and prices
 
-- **Family:** $599 a year or $59 a month covers one child, and the parent practices free. Each additional child is $399 a year or $39 a month. Prices show only from the server's offer and are never written into a screen.
-- **Free adult practice:** every teaching adult practices free. That means any parent with a paid child and any teacher at a licensed school.
+- **Family:** $599 a year or $59 a month covers one child, and both parents practice free: the account holder and one second parent they invite. Each additional child is $399 a year or $39 a month. Prices show only from the server's offer and are never written into a screen.
+- **Free adult practice:** every teaching adult practices free. That means any parent with a paid child, the family's second parent included, and any teacher at a licensed school.
 - **Existing subscriptions** keep the price they bought.
 - **Funded programs** (education savings accounts and similar) sell at the price each program's listing allows.
 - **Schools:** seats by license, issued by an operator. A school's students practice while it holds a seat. There is no self-serve school purchase yet; a self-serve seat pack is a possible second way later.
@@ -60,7 +60,8 @@ Media, videos and ads carry no price; they lead to the Buy button.
   - `/purchase` and `/access`.
 - **Parent:**
   - The family class: Today lists the parent's children, each with access dates and "Let … practice here", plus a "From other families" list.
-  - "Invite a co-teacher" (for example the other parent), with a copyable link. A co-teacher teaches the class but doesn't invite other families or buy access.
+  - "Add a second parent": one per family, invited by email with a copyable link, accepted only with that address. She teaches the class, sees the children's progress read-only, lets them practice on her device and practices free; buying, consent, names, deletion and inviting stay the account holder's. Also in Account → Family.
+  - "Invite a co-teacher", with a copyable link. A co-teacher teaches the class but doesn't invite other families or buy access.
   - The full class screens, as for any teacher (below), plus Calendar in the class tab row and Family in the drawer for learners, purchases, consent and privacy.
   - `/family/…`: settings, consent and billing.
   - `/learners/$id/workbooks`: the learner’s workbook history, creation and results on the shared shell, without Progress tabs. The URL identifies the learner independently of the selection in Progress.
@@ -80,7 +81,7 @@ Media, videos and ads carry no price; they lead to the Buy button.
   - `staff`, `calendar`, `experience`, `import`, `integrations`, `license`, `privacy`, `activity`, and `schools` for districts.
   - `/school/new?org=…`: guided setup, reached only from a setup invitation; without one it goes to `/schools`.
 
-Screenshots of most of these, at 390 and 1280 px in light and dark, are under `docs/reviews/`. The relevant folders are `schools-public`, `school-setup`, `school-places`, `school-classroom`, `school-teacher`, `school-org`, `adult-practice`, `teacher-in-class`, `family-class`, `family-approval` and `extra-child-price`.
+Screenshots of most of these, at 390 and 1280 px in light and dark, are under `docs/reviews/`. The relevant folders are `schools-public`, `school-setup`, `school-places`, `school-classroom`, `school-teacher`, `school-org`, `adult-practice`, `teacher-in-class`, `family-class`, `family-approval`, `second-parent` and `extra-child-price`.
 
 ## Settled decisions to keep
 

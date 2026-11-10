@@ -20,6 +20,7 @@ import { StripeGateway } from "./gateway.js";
 import { StripeRepository } from "./repository.js";
 import { StripeBilling } from "./service.js";
 import { funnelVisitor } from "../../analytics/visitor-header.js";
+import { secondParentOwner } from "../../family/second-parent.js";
 export interface StripeRouteOptions {
   pool: Pool;
   authenticate: Authenticator;
@@ -96,6 +97,15 @@ export async function registerStripeRoutes(
         reply.header("Cache-Control", "no-store");
         if (!request.params.learnerId || request.params.learnerId.length > 200)
           return reply.code(400).send({ error: "invalid_learner" });
+        // A family's purchases are its account holder's (docs/families.md).
+        if (
+          await secondParentOwner(
+            options.pool,
+            accountId,
+            request.params.learnerId,
+          )
+        )
+          return reply.code(403).send({ error: "family_holder_only" });
         return purchaseStatus(billing, accountId, request.params.learnerId);
       },
     );
@@ -112,6 +122,9 @@ export async function registerStripeRoutes(
       if (!body.success)
         return reply.code(400).send({ error: "invalid_checkout_request" });
       reply.header("Cache-Control", "no-store");
+      // A family's purchases are its account holder's (docs/families.md).
+      if (await secondParentOwner(options.pool, accountId, body.data.learnerId))
+        return reply.code(403).send({ error: "family_holder_only" });
       // Which of the plan's prices applies is decided under the account lock.
       if (
         body.data.offerId &&

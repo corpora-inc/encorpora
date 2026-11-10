@@ -191,6 +191,8 @@ export const staffResource = z.object({
   inviteUrl: z.string().nullable().optional(),
   inviteExpiresAt: z.string().nullable().optional(),
   self: z.boolean(),
+  /** The family's second parent (docs/families.md), not a co-teacher. */
+  secondParent: z.literal(true).optional(),
 });
 export type StaffResource = z.infer<typeof staffResource>;
 
@@ -201,6 +203,9 @@ export const inviteViewSchema = z.object({
   email: z.string().nullable(),
   /** The school's own admin, invited to set it up. */
   setup: z.boolean(),
+  /** A family's second parent (docs/families.md), invited to its class. She
+   * accepts with the address the invitation went to. */
+  secondParent: z.object({ className: z.string() }).optional(),
 });
 export type InviteView = z.infer<typeof inviteViewSchema>;
 

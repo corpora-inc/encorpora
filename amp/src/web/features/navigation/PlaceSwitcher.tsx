@@ -185,6 +185,18 @@ export function usePlaceEntries(me: SignedInMe | null, currentOrg?: string) {
       detail: "Learner",
       path: "overview",
     });
+  // The children of a family this account is the second parent of: their
+  // progress, by their family's class.
+  for (const family of me?.account.kind !== "student"
+    ? (me?.secondParentOf ?? [])
+    : [])
+    for (const learner of family.learners)
+      entries.push({
+        id: `learner:${learner.id}`,
+        name: learner.name,
+        detail: family.className,
+        path: "overview",
+      });
   return {
     entries,
     currentOrg: current,
