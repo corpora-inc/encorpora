@@ -1,0 +1,107 @@
+/* Lesson search results: groups of plain rows under small headings. No
+   cards: a row is a line of type with a hover and focus surface. */
+.results {
+  display: grid;
+  gap: var(--space-5);
+  padding-bottom: var(--space-6);
+}
+.group {
+  display: grid;
+  gap: var(--space-2);
+}
+/* A group's name is a label (ia.md: sans, 14 px, semibold, muted). */
+.heading {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  font-weight: 600;
+}
+/* Rows are separated by hairlines, never boxed. */
+.rows,
+.terms {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--color-border);
+  list-style: none;
+}
+.rows > li,
+.terms > li {
+  border-bottom: 1px solid var(--color-border);
+}
+.row {
+  display: grid;
+  gap: 2px;
+  min-height: var(--target-size);
+  margin: 0 calc(-1 * var(--space-2));
+  padding: var(--space-3) var(--space-2);
+  border-radius: var(--radius-control);
+  color: var(--color-on-surface-raised);
+  text-decoration: none;
+}
+.row:hover {
+  background: var(--color-surface-raised-hover);
+}
+.row:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
+.title {
+  font-weight: 650;
+  line-height: 1.35;
+  overflow-wrap: break-word;
+}
+.snippet {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.45;
+  overflow-wrap: break-word;
+}
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--space-3);
+  margin-top: 2px;
+  color: var(--color-subtle-text);
+  font-size: var(--text-small);
+  font-variant-numeric: tabular-nums;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+/* A matched word: heavier and in full ink, never a tint. */
+.results mark {
+  background: none;
+  color: var(--color-on-surface-raised);
+  font-weight: 700;
+}
+.term {
+  min-height: var(--target-size);
+  padding: var(--space-3) 0;
+  color: var(--color-on-surface-raised);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.term strong {
+  margin-right: var(--space-1);
+}
+/* Natural width: a quiet text action under its group. */
+.more {
+  justify-self: start;
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  margin-left: calc(-1 * var(--space-3));
+  border: 0;
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--color-primary);
+  font: inherit;
+  font-weight: 600;
+}
+.more:hover {
+  filter: none;
+  background: var(--color-surface-raised-hover);
+}

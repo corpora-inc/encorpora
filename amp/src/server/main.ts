@@ -41,6 +41,7 @@ import {
   registerUnavailableBilling,
 } from "../billing/stripe/routes.js";
 import { buildApp } from "./app";
+import { registerSearch } from "./search";
 import { workbookRendererFromEnv } from "../workbook/pdf.js";
 import { developmentAuth, oidcAuth, refuseStudentTokens } from "./auth";
 import {
@@ -262,6 +263,8 @@ await registerAcquisitionRoutes(app, {
   pool: repository.pool,
   origin: campaignOrigin(process.env.AMP_CAMPAIGN_SITE_ORIGIN),
 });
+// Lesson search: lexical plus nearest neighbours, loading in the background.
+registerSearch(app);
 app.addHook("onClose", () => repository.close());
 for (const signal of ["SIGINT", "SIGTERM"])
   process.once(signal, () => {

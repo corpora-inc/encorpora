@@ -4,3 +4,5 @@ artifacts/
 .env
 .env.*
 !.env.example
+# The vendored search model and document vectors (npm run build:search).
+models/
