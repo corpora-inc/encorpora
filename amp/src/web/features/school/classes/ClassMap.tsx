@@ -1,9 +1,15 @@
 import { Link } from "@tanstack/react-router";
-import { useMemo, type ReactNode } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useMemo, useState, type ReactNode } from "react";
 import type {
+  GradeRow,
   MapResponse,
   MapStudent,
 } from "../../../../schools/teacher-contracts";
+import { Toast } from "../../../ui/Toast";
+import { currentSession } from "../api";
+import { FinalField, Suggested } from "./grade-parts";
+import { gradebookOptions } from "./teacher-api";
 import {
   fitScale,
   LevelAxis,
@@ -15,7 +21,7 @@ import {
 } from "../../../ui/level-range";
 import { strandNames } from "../../../BirthYearPrompt";
 import { Menu, MenuItem } from "../../../ui/Menu";
-import { parseSort, studentUrl, useClassSearch } from "./teacher-shared";
+import { classUrl, parseSort, useClassSearch } from "./teacher-shared";
 import styles from "./ClassMap.module.css";
 
 /** Before any work, a wide band around where they should be, drawn dashed. */
@@ -245,10 +251,10 @@ export function ClassMap({
               <Link
                 to="/$"
                 params={{
-                  _splat: studentUrl(data.class.orgId, row.student.id),
+                  _splat: `${classUrl(data.class.orgId, data.class.id, "map")}/${row.student.id}`,
                 }}
-                search={{ class: data.class.id } as never}
                 className={styles.student}
+                data-map-student={row.student.id}
               >
                 {row.student.name}
               </Link>
@@ -309,6 +315,15 @@ function SmallClassMap({
   starting: boolean;
   action?: ReactNode;
 }) {
+  // The grade, as a line in each learner's section: a small class needs no
+  // separate gradebook.
+  const session = currentSession();
+  const classPlace = { org: data.class.orgId, class: data.class.id };
+  const book = useQuery(gradebookOptions(session, classPlace, undefined));
+  const grades = new Map(
+    (book.data?.students ?? []).map((row) => [row.id, row]),
+  );
+  const [message, setMessage] = useState("");
   const areas = [...data.strands].sort(
     (a, b) =>
       (AREA_ORDER.indexOf(a.id) + 1 || 99) -
@@ -353,6 +368,7 @@ function SmallClassMap({
   );
   return (
     <div className={styles.map}>
+      <Toast message={message} onDismiss={() => setMessage("")} />
       {starting && (
         <div className={styles.starting}>
           <div>
@@ -379,10 +395,10 @@ function SmallClassMap({
                 <Link
                   to="/$"
                   params={{
-                    _splat: studentUrl(data.class.orgId, student.id),
+                    _splat: `${classUrl(data.class.orgId, data.class.id, "map")}/${student.id}`,
                   }}
-                  search={{ class: data.class.id } as never}
                   className={styles.student}
+                  data-map-student={student.id}
                 >
                   {student.name}
                 </Link>
@@ -404,9 +420,85 @@ function SmallClassMap({
                   : null
               }
             />
+            {book.data?.term && (
+              <GradeLine
+                session={session}
+                place={classPlace}
+                term={book.data.term}
+                editable={book.data.canEdit && book.data.term.state === "open"}
+                row={grades.get(student.id)}
+                student={student}
+                onMessage={setMessage}
+              />
+            )}
           </section>
         );
       })}
+    </div>
+  );
+}
+
+const COMPONENT_NAMES = {
+  course: "Course progress",
+  growth: "Growth",
+  practice: "Practice",
+  retention: "Retention",
+} as const;
+
+/** A learner's grade for the open term, in one line: the suggestion and
+ * what it rests on once there is enough work, and the final grade. */
+function GradeLine({
+  session,
+  place,
+  term,
+  editable,
+  row,
+  student,
+  onMessage,
+}: {
+  session: ReturnType<typeof currentSession>;
+  place: { org: string; class: string };
+  term: { id: string; name: string };
+  editable: boolean;
+  row: GradeRow | undefined;
+  student: MapStudent;
+  onMessage: (message: string) => void;
+}) {
+  const ready = row?.suggestion.status === "ready";
+  return (
+    <div className={styles.gradeLine} data-grade-line>
+      <span className={styles.gradeTerm}>{term.name}</span>
+      <span className={styles.gradeSuggested}>
+        {row ? <Suggested suggestion={row.suggestion} /> : null}
+        {ready && (
+          <span className={styles.gradeParts}>
+            {row!.suggestion.components
+              .filter((part) => part.score !== null)
+              .map(
+                (part) =>
+                  `${COMPONENT_NAMES[part.id]} ${Math.round(part.score!)}`,
+              )
+              .join(" · ")}
+          </span>
+        )}
+      </span>
+      <span className={styles.gradeFinal}>
+        <span className={styles.gradeFinalLabel}>Final</span>
+        <FinalField
+          session={session}
+          place={place}
+          student={{
+            id: student.id,
+            name: student.name,
+            first: student.first,
+          }}
+          term={term.id}
+          final={row?.final ?? null}
+          editable={editable}
+          onError={onMessage}
+          onSaved={onMessage}
+        />
+      </span>
     </div>
   );
 }

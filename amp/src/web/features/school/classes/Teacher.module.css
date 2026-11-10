@@ -844,6 +844,17 @@ label.columnPick {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+/* A student's record in the class map's sheet: actions, then sections. */
+.sheetRecord {
+  display: grid;
+  gap: var(--space-5);
+  padding-top: var(--space-2);
+}
+/* One column, for a sheet. */
+.recordSingle {
+  display: grid;
+  gap: var(--space-6);
+}
 .recordSection {
   display: grid;
   gap: var(--space-4);

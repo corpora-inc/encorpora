@@ -848,6 +848,12 @@ const schoolClassMap = createRoute({
   path: "map",
   component: lazyRouteComponent(classScreens, "MapScreen"),
 });
+/** One student, in a sheet over the class map: the class's tabs stay. */
+const schoolClassMapStudent = createRoute({
+  getParentRoute: () => schoolClass,
+  path: "map/$student",
+  component: lazyRouteComponent(classScreens, "MapScreen"),
+});
 const schoolClassGradebook = createRoute({
   getParentRoute: () => schoolClass,
   path: "gradebook",
@@ -1003,12 +1009,15 @@ const editProfile = createRoute({
  * whole: nothing below the level moves when it lands. A failure is the
  * screen's to show. */
 async function loadOwnPractice(session: AuthSession, learnerId: string) {
-  const [{ ownPracticeOptions }, { levelTrendOptions }, { learnerFrontierOptions }] =
-    await Promise.all([
-      import("../features/me/api"),
-      import("../features/level/api"),
-      import("../lib/learning-view"),
-    ]);
+  const [
+    { ownPracticeOptions },
+    { levelTrendOptions },
+    { learnerFrontierOptions },
+  ] = await Promise.all([
+    import("../features/me/api"),
+    import("../features/level/api"),
+    import("../lib/learning-view"),
+  ]);
   await Promise.all([
     queryClient.ensureQueryData(ownPracticeOptions(session)),
     queryClient
@@ -1132,6 +1141,7 @@ export const router = createRouter({
       schoolClassHome,
       schoolClassToday,
       schoolClassMap,
+      schoolClassMapStudent,
       schoolClassGradebook,
       schoolClassTime,
       schoolClassReportCards,

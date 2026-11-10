@@ -118,13 +118,35 @@
   text-decoration: none;
   overflow-wrap: anywhere;
 }
-.student:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+/* The whole row opens the student: the name's link covers it, and the row
+   takes a quiet tint on hover instead of an underline. */
+.row,
+.learnerHead {
+  position: relative;
+}
+.row .student::after,
+.learnerHead .student::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-small);
+}
+.row:hover,
+.learnerHead:hover {
+  background: var(--color-surface-hover);
+  cursor: pointer;
+}
+.row,
+.learnerHead {
+  border-radius: var(--radius-small);
+  transition: background var(--motion-fast) var(--ease-standard);
 }
 .student:focus-visible {
+  outline: none;
+}
+.student:focus-visible::after {
   outline: 3px solid var(--color-focus-ring);
-  outline-offset: 2px;
+  outline-offset: 0;
 }
 .bar {
   display: block;
@@ -288,4 +310,40 @@ h2.learnerName .student {
   color: var(--color-muted-text);
   font-size: var(--text-table);
   font-variant-numeric: var(--numeric);
+}
+
+/* A learner's grade for the open term, under their levels. */
+.gradeLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+  padding-top: var(--space-2);
+  font-size: var(--text-table);
+}
+.gradeTerm {
+  color: var(--color-muted-text);
+  font-weight: 650;
+}
+.gradeSuggested {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-3);
+  flex: 1 1 240px;
+  min-width: 0;
+}
+.gradeParts {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+}
+.gradeFinal {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.gradeFinalLabel {
+  color: var(--color-muted-text);
+  font-weight: 600;
 }
