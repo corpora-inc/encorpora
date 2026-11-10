@@ -16,7 +16,9 @@
   color-scheme: light;
   --color-surface: #f7f6f0;
   --color-on-surface: #183e3a;
-  --color-surface-raised: #fffefa;
+  /* No white in the light theme (founder, 2026-11-10): a raised surface is
+     the page cream, set apart by its border and, when it floats, a shadow. */
+  --color-surface-raised: #f7f6f0;
   --color-on-surface-raised: #183e3a;
   --color-surface-sunken: #efeee5;
   --color-on-surface-sunken: #183e3a;
@@ -121,7 +123,7 @@
     color-scheme: dark;
     --color-surface: #122522;
     --color-on-surface: #e9f0e8;
-    --color-surface-raised: #1a302c;
+    --color-surface-raised: #122522;
     --color-on-surface-raised: #e9f0e8;
     --color-surface-sunken: #233c36;
     --color-on-surface-sunken: #e9f0e8;
@@ -221,7 +223,7 @@
   color-scheme: dark;
   --color-surface: #122522;
   --color-on-surface: #e9f0e8;
-  --color-surface-raised: #1a302c;
+  --color-surface-raised: #122522;
   --color-on-surface-raised: #e9f0e8;
   --color-surface-sunken: #233c36;
   --color-on-surface-sunken: #e9f0e8;
@@ -333,6 +335,12 @@
   --color-surface-active: color-mix(
     in srgb,
     var(--color-on-surface) var(--state-active),
+    var(--color-surface)
+  );
+  /* A chosen segment or tile: the accent's edge over a faint accent tint. */
+  --color-selected-tint: color-mix(
+    in srgb,
+    var(--color-primary) 9%,
     var(--color-surface)
   );
   --color-surface-raised-hover: color-mix(
@@ -462,8 +470,8 @@
   --field-height: 48px;
   --field-radius: var(--radius-control);
   --field-padding-inline: var(--space-4);
-  --field-surface: var(--color-answer);
-  --field-on: var(--color-on-answer);
+  --field-surface: var(--color-surface);
+  --field-on: var(--color-on-surface);
   --field-border: var(--color-answer-border);
   --field-placeholder: var(--color-subtle-text);
 }
