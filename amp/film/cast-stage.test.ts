@@ -4,7 +4,7 @@ import { Film } from "./stage";
 import { resolveCast, voiceBindings } from "./cast";
 import { scriptSchema, type Timing } from "./schema";
 
-it("renders the recorded speaker names and lights the learner on their turn", () => {
+it("keeps the recorded voices and draws no name tags", () => {
   const script = scriptSchema.parse({
     id: "cast-reference", title: "A learner's question",
     cast: { teacher: {}, learner: {} },
@@ -24,9 +24,9 @@ it("renders the recorded speaker names and lights the learner on their turn", ()
   const root = document.createElement("div");
   document.body.appendChild(root);
   const film = new Film(root, script, timing, undefined, { checks: false });
-  expect(film.tags.map(tag => tag.el.textContent)).toEqual(["Paul", "Champ"]);
+  expect(resolveCast(script, { teacher: "paul" }).roles.map((r) => r.name)).toEqual(["Paul", "Champ"]);
+  expect(root.querySelector(".film-cast, .film-cast-tag")).toBeNull();
   film.seek(2.5);
-  expect(film.tags[1]!.el.classList.contains("on")).toBe(true);
-  expect(film.tags[0]!.el.classList.contains("on")).toBe(false);
+  expect(root.querySelector(".film-cast, .film-cast-tag")).toBeNull();
   root.remove();
 });

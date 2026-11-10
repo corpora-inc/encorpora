@@ -11,6 +11,8 @@ html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; backgro
   overflow: hidden;
 }
 .film-geo { position: absolute; inset: 0; display: block; }
+/* The drawn figure, scaled and shifted so its ink sits in the card with a margin. */
+.film-fit { position: absolute; inset: 0; transform-origin: 0 0; }
 .film-shadow { fill: #10231f; }
 .film-labels { position: absolute; inset: 0; pointer-events: none; }
 .film-label { position: absolute; left: 0; top: 0; white-space: nowrap; line-height: 1; transform-origin: center; will-change: transform; }
@@ -20,25 +22,6 @@ html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; backgro
 .film-label.size-l { font-size: 72px; }
 .film-label.size-xl { font-size: 116px; }
 .film-label.halo { text-shadow: 0 0 10px var(--color-figure-paper), 0 0 10px var(--color-figure-paper), 0 0 18px var(--color-figure-paper), 0 0 18px var(--color-figure-paper); }
-
-/* The cast's name tags, in a band above the cards. The speaker's tag is lit (--lit from 0 to 1); the others rest. */
-.film-cast { position: absolute; display: flex; align-items: center; gap: 18px; z-index: 3; }
-.film-cast-tag {
-  --lit: 0;
-  display: inline-flex; align-items: center; gap: 14px; height: 100%; padding: 0 26px 0 20px;
-  border-radius: 999px; border: 1.5px solid var(--color-border);
-  background: var(--color-figure-paper);
-  color: color-mix(in srgb, var(--color-on-surface) calc(42% + var(--lit) * 58%), transparent);
-  font-family: var(--font-display); font-weight: 600; letter-spacing: 0.01em; white-space: nowrap;
-  font-size: 34px; line-height: 1;
-  box-shadow: 0 1px 3px color-mix(in srgb, var(--color-shadow) calc(var(--lit) * 100%), transparent);
-}
-[data-layout="tall"] .film-cast-tag { font-size: 44px; gap: 16px; padding: 0 30px 0 24px; }
-.film-cast-tag i { width: 0.42em; height: 0.42em; border-radius: 50%; background: var(--tag-ink); opacity: calc(0.35 + var(--lit) * 0.65); }
-.film-cast-tag:nth-child(1) { --tag-ink: #20776d; }
-.film-cast-tag:nth-child(2) { --tag-ink: #9c4420; }
-.film-cast-tag:nth-child(3) { --tag-ink: #6a5aa0; }
-.film-cast-tag.on { border-color: color-mix(in srgb, var(--tag-ink) calc(var(--lit) * 100%), var(--color-border)); }
 
 /* The whiteboard: a window onto one surface; the camera moves the surface. */
 .film-board {
