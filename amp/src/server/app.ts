@@ -371,7 +371,8 @@ function routes(app: FastifyInstance, options: AppOptions) {
       throw new ApiError(404, "Lesson not found");
     const capability = (request.query as Record<string, unknown>).film;
     const film = lessonFilmFor(templateId, capability);
-    const cacheKey = `${templateId}:${film?.version ?? "written"}`;
+    // v1 and v2 name the same bytes with different manifests, so they cannot share a cache entry.
+    const cacheKey = `${templateId}:${String(capability ?? "")}:${film?.version ?? "written"}`;
     let cached = lessonCache.get(cacheKey);
     if (!cached) {
       cached = publicJson({

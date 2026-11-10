@@ -38,6 +38,7 @@ import { useLoggedError, requestMessage } from "../feedback";
 import { Toast } from "../ui/Toast";
 import { AccountSessionChanged } from "../lib/account-session";
 import { loadFrontier } from "../lib/frontier-load";
+import { FILM_CAPABILITY } from "../../content/lesson-films";
 import { noteActiveProblem } from "../lib/student-activity";
 import { Navigate, useRouter } from "@tanstack/react-router";
 import { signedOut as reportSignedOut } from "../lib/app-recovery";
@@ -1997,7 +1998,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             requestLesson={async () =>
               (
                 await api<{ lesson: ProblemLessonView }>(
-                  `/learners/${learner.id}/lesson-support?film=lesson-film-v1`,
+                  `/learners/${learner.id}/lesson-support?film=${FILM_CAPABILITY}`,
                   { problemId: problem.id },
                 )
               ).lesson
@@ -2106,7 +2107,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                 loadLesson={async (templateId) =>
                   (
                     await api<{ lesson: ProblemLessonView }>(
-                      `/problem-lessons/${templateId}?film=lesson-film-v1`,
+                      `/problem-lessons/${templateId}?film=${FILM_CAPABILITY}`,
                     )
                   ).lesson
                 }

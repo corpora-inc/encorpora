@@ -1,0 +1,30 @@
+{
+  "id": "count-objects--speakers",
+  "title": "Two plus two",
+  "cast": {
+    "teacher": {},
+    "champ": { "kind": "learner" },
+    "maya": { "kind": "learner" }
+  },
+  "shots": [
+    {
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Two plus two is four.",
+          "do": [{ "do": "write", "tex": "2+2=4", "at": "Two", "id": "sum" }]
+        },
+        {
+          "speaker": "champ",
+          "say": "Is the answer four?",
+          "do": [{ "do": "text", "text": "Is it four?", "at": "four" }]
+        },
+        {
+          "speaker": "maya",
+          "say": "Yes. Four.",
+          "do": [{ "do": "answer", "tex": "4", "at": "Four" }]
+        }
+      ]
+    }
+  ]
+}
