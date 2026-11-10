@@ -65,6 +65,7 @@ import { figureChoiceName } from "../math/figure-choice";
 import {
   StructuredWorkAnswer,
   StructuredWorkInput,
+  workItem,
   workSummary,
 } from "./StructuredWorkInput";
 import {
@@ -1523,7 +1524,7 @@ export function PracticeWorkspace(props: Props) {
         {lineBuild
           ? "Correct counts are below the plot"
           : work
-            ? `Each ${work.layout === "proof" ? "line" : "step"} is marked`
+            ? `Each ${workItem(work)} is marked`
             : parts
               ? skipped
                 ? "The answer is filled in"

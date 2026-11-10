@@ -163,7 +163,8 @@ export async function preparePracticeAnswer(
         for (const [index, values] of (plan as WorkDraft).entries()) {
           if (schema.open && index > 0)
             await page
-              .getByRole("button", { name: "Add a step", exact: true })
+              // "Add a step", or an open list's own item ("Add a pair").
+              .getByRole("button", { name: /^Add a / })
               .click();
           const shape = rowShape(schema, index);
           for (const [fieldIndex, field] of shape.fields.entries()) {

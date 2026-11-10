@@ -188,6 +188,13 @@
   min-height: 4.5em;
   overflow-y: auto;
   overscroll-behavior: contain;
+  /* Like the steps: a cut last line fades, so it reads as more below. */
+  padding-bottom: var(--space-2);
+  mask-image: linear-gradient(
+    to bottom,
+    var(--color-on-surface) calc(100% - var(--space-2)),
+    transparent
+  );
 }
 .solution-rows {
   margin: var(--space-1) 0 0;
