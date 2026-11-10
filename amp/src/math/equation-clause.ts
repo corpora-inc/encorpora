@@ -126,6 +126,17 @@ const fnum = (a: Fr) => a.n / a.d;
 const ftxt = (a: Fr) => (a.d === 1 ? `${a.n}` : `${a.n}/${a.d}`);
 const signed = (n: number) => (n < 0 ? `−${-n}` : `${n}`);
 
+const instanceId = (templateId: string, seed: string) =>
+  createHash("sha256")
+    .update(JSON.stringify([templateId, SINCE, seed]))
+    .digest("hex");
+/** A retry with a salted seed changes only the draw: the problem keeps the
+ * seed it was asked for, as every other family's does. */
+export function keepSeed(made: GeneratedProblem, seed: string) {
+  made.public.seed = seed;
+  made.public.id = instanceId(made.public.templateId, seed);
+  return made;
+}
 function stamp(
   meta: TemplateMetadata,
   seed: string,
@@ -144,9 +155,7 @@ function stamp(
 ): GeneratedProblem {
   return {
     public: {
-      id: createHash("sha256")
-        .update(JSON.stringify([meta.id, SINCE, seed]))
-        .digest("hex"),
+      id: instanceId(meta.id, seed),
       templateId: meta.id,
       templateVersion: SINCE,
       seed,
@@ -1803,7 +1812,7 @@ export function generateEquationClauseProblem(
   let last = "";
   for (let attempt = 0; attempt < 40; attempt++)
     try {
-      return build(attempt ? `${seed}#${attempt}` : seed);
+      return keepSeed(build(attempt ? `${seed}#${attempt}` : seed), seed);
     } catch (error) {
       if (!(error instanceof Error)) throw error;
       last = error.message;
