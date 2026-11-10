@@ -311,9 +311,7 @@ export default function DrawerContents({
           !student &&
           (here?.kind === "class" &&
           account?.familyClass?.classId === here.classId
-            ? nav("/family", "Family & account", "settings", {
-                current: here?.kind === "account",
-              })
+            ? nav("/family", "Family & account", "settings")
             : nav("/family/security", "Account", "settings", {
                 current: here?.kind === "account",
               }))}

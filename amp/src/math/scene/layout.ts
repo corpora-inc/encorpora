@@ -795,7 +795,7 @@ function placeTexts(
           }
         }
       }
-      emit(t, ...chosen);
+      emit(t, ...chosen!);
     } else if (t.p.optional && !clear(inkBox(t.x, t.y, t.t)))
       // An optional label (a tick value) is dropped rather than drawn into
       // another label, a mark, or a stroke.
