@@ -203,9 +203,9 @@
 button.student:hover:not(:disabled) {
   filter: none;
 }
-.student:hover span:last-child {
-  text-decoration: underline;
-  text-underline-offset: 0.16em;
+/* A name that opens a student shows it with a quiet tint, never an underline. */
+.student:is(a, button):hover:not(:disabled) {
+  background: var(--color-surface-hover);
 }
 .student:focus-visible {
   outline: 3px solid var(--color-focus-ring);
@@ -221,14 +221,7 @@ span.student[data-teacher] {
   min-width: 0;
   line-height: 1.15;
 }
-/* Only a link underlines, and only the name. */
-.student[data-teacher]:hover span:last-child {
-  text-decoration: none;
-}
-a.student[data-teacher]:hover .teacherLine > span:first-child {
-  text-decoration: underline;
-  text-underline-offset: 0.16em;
-}
+
 .teacherRole {
   color: var(--color-muted-text);
   font-size: var(--text-table-small);

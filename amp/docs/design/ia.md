@@ -19,14 +19,16 @@ One drawer, one place switcher (`PlaceSwitcher`). A person may hold several plac
 | Place | Who | Tabs | Bar action |
 |---|---|---|---|
 | My practice | an adult learner | Overview · Pathways · Inventory | ▶ Practice |
-| Family | a parent, the second parent | Today · Map · Workbooks · Grades · Time · People · Settings | ▶ Practice (picks a child) |
-| Class (tutor, co-op) | a tutor | Today · Map · Workbooks · Grades · Time · Students · Settings | Start class |
+| Family | a parent, the second parent | Today · Map · Time · Workbooks · Students · Settings | ▶ Practice (picks a child) |
+| Class (tutor, co-op) | a tutor | Today · Map · Time · Workbooks · Students · Settings | Start class |
 | Class (school) | a teacher | Today · Map · Grades · Time · Workbooks · Students · Settings | Start class |
 | School | an admin | Overview · Classes · Staff · Calendar · License · Privacy · Activity | none |
 | Account | everyone, from the drawer | Sign-in · Learners · Billing · Privacy | none |
 
 - **A place with one class opens on that class's Today**, never on a list of one (teacher demo, family, second parent).
-- **Calendar** is a section of Settings for a family and a lone class; only a school with staff has it as a tab.
+- **Tabs follow the class's size.** A family or tutor class (6 or fewer learners) has no Grades tab. Grades are a line in each learner's Map panel, and the weekly target is set in Settings with its progress on Today. A teacher's class keeps Grades.
+- **Calendar** is a section of Settings for a family and a lone class, or a tab only where it is useful. A school with staff has it as a tab.
+- **Opening a student never leaves the class.** From a class, a student opens inside it (the Map's drill-in route), and the class tabs stay. The school-level student page (`/school/<org>/students/<id>`) is only for an admin who came from the school.
 - **Account tabs follow the account:** an adult with no child sees "Your practice", not "Who's learning?" with "Add a child"; Privacy says "your data", and Learning consent appears only once a child exists. The tab label and the page title are the same words.
 
 ## Each person
@@ -49,12 +51,12 @@ One drawer, one place switcher (`PlaceSwitcher`). A person may hold several plac
   1. One row per child: name, this week (minutes, problems, last practiced), and the one action that works now ("Let Pip practice here", or "Continue with AMP" when the free problems are used). No access dates on Today; they go to Billing.
   2. Needs attention, when there is something (a skill missed three times, no practice in a week). Absent otherwise.
   3. This week's work across the family, once there is any.
-- **People:** the children, the second parent, co-teachers, children from other families, and their invitations. None of these are on Today.
+- **Students:** the children, the second parent, co-teachers, children from other families, and their invitations. None of these are on Today.
 - **Map** shows the whole family on one K–12 axis, each child at their own level.
 
 ### Tutor (Class)
 
-As the family, with Students in place of People, and Start class (the code and QR board) as the bar action. Today leads with who practiced today and who needs attention. Students from other families waiting for a parent's approval appear as one line on Today ("2 waiting for a parent") linking to Students.
+As the family, with Start class (the code and QR board) as the bar action. Today leads with who practiced today and who needs attention. Students from other families waiting for a parent's approval appear as one line on Today ("2 waiting for a parent") linking to Students.
 
 ### Teacher (Class)
 
@@ -101,6 +103,7 @@ From 1024 px, a dashboard may use two columns when both carry data of similar we
 - **Buttons are their natural width.** A full-width button appears only on phones for the single primary action at the bottom of a first-run step or the practice answer bar.
 - **One primary button per screen.** Other actions are secondary (outline) or quiet (text). Rare actions go in an overflow menu or in Settings.
 - **Designed controls only:** segmented pickers, steppers, `Listbox` and `Menu`. Never a raw select. Code entry (a class code, a workbook code) is one designed field with its button inside or beside it, sized to the code, not the page.
+- **Rows and names never underline on hover.** A row that opens something gets a refined hover: a quiet surface tint across the whole row and the pointer. Text links in running prose may underline.
 - **A builder or a form for a secondary task opens in a sheet or dialog** over the screen it belongs to, with Back and Escape returning there. The workbook builder is an example.
 
 ### Empty states and first run

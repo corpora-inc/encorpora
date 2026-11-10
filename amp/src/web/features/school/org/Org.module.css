@@ -349,8 +349,9 @@
   font-weight: 600;
   text-decoration: none;
 }
+/* The row's own hover tint marks it; the name never underlines. */
 .rowLink:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 .rowLink:focus-visible {
   outline: 3px solid var(--color-focus-ring);
