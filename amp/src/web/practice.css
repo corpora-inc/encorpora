@@ -205,6 +205,10 @@ nav button {
   overflow-x: auto;
   overflow-y: hidden;
   vertical-align: middle;
+  /* Room for glyphs that reach past their box (a radical's sign), without
+     moving the line. */
+  padding-block: 0.25em;
+  margin-block: -0.25em;
 }
 /* This prompt introduces a separate table after its question. Keep the table
    centered on its own row instead of appending it to the last prose line. */
