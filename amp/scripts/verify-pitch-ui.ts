@@ -18,6 +18,7 @@ import {
 import { retentionNotice } from "../src/family/contracts";
 import { noticeDigest } from "../src/parent-consent/crypto";
 import { consentFixture } from "../tests/parent-consent.fixture";
+import { fixtureMe } from "./me-fixture";
 
 /**
  * The signed-out parent pitch at `/` against a synthetic API, in Chromium and
@@ -145,7 +146,43 @@ type Api = {
   intents: Record<string, unknown>[];
   events: { event: string; props?: Record<string, unknown> }[];
   pricesFail: boolean;
+  /** The child the starter adds, once the parent answers it. */
+  child?: string;
+  /** The plan each checkout asked Stripe for. */
+  checkouts?: string[];
 };
+const childId = "pitch-child";
+/** The parent's `/me`, as the server answers it before and after the starter. */
+const parentMe = (api: Api) => ({
+  ...fixtureMe(
+    {
+      consent: {
+        status: "not-recorded",
+        policyVersion: null,
+        recordedAt: null,
+        withdrawnAt: null,
+      },
+      learners: api.child
+        ? [
+            {
+              id: api.child,
+              name: "Fox",
+              birthYear: 2016,
+              deletedAt: null,
+              access: [],
+              stripeLinked: false,
+              // The free allowance; no plan yet.
+              canPractice: true,
+              hasAccess: false,
+            },
+          ]
+        : [],
+      retained: retentionNotice,
+    },
+    "amp|pitch-parent",
+  ),
+  consent: { status: "none", method: null },
+});
 async function serve(page: Page, api: Api) {
   await page.route("**/api/**", async (route) => {
     const request = route.request();
@@ -188,31 +225,20 @@ async function serve(page: Page, api: Api) {
       for (const event of request.postDataJSON().events) api.events.push(event);
       return route.fulfill({ status: 202, json: { accepted: 1 } });
     }
-    if (path === "/api/v1/me")
+    if (path === "/api/v1/me") return route.fulfill({ json: parentMe(api) });
+    // "I'm a parent" of one child: the family and its child, in one call.
+    if (path === "/api/v1/start") {
+      api.child = childId;
       return route.fulfill({
-        json: {
-          signedIn: true,
-          account: {
-            id: "amp|pitch-parent",
-            email: "parent@example.test",
-            emailVerified: true,
-            confirmationRequired: false,
-          },
-          consent: { status: "none", method: null },
-          family: {
-            consent: {
-              status: "not-recorded",
-              policyVersion: null,
-              recordedAt: null,
-              withdrawnAt: null,
-            },
-            learners: [],
-            retained: retentionNotice,
-          },
-          learners: [],
-          next: "start",
-        },
+        json: { home: "family/learners", learnerId: childId, added: 1 },
       });
+    }
+    if (path === "/api/v1/billing/enrollment/checkout") {
+      (api.checkouts ??= []).push(request.postDataJSON().interval);
+      return route.fulfill({
+        json: { url: "https://checkout.stripe.com/c/pay/cs_pitch_fixture" },
+      });
+    }
     if (path === "/api/v1/billing/enrollment")
       return route.fulfill({
         json: {
@@ -230,6 +256,12 @@ async function serve(page: Page, api: Api) {
       return route.fulfill({ json: { generation: "initial" } });
     return route.fulfill({ json: {} });
   });
+  await page.route("https://checkout.stripe.com/**", (route) =>
+    route.fulfill({
+      contentType: "text/html",
+      body: "<!doctype html><title>Stripe</title><h1>Stripe Checkout fixture</h1>",
+    }),
+  );
 }
 
 async function noOverflow(page: Page, tag: string) {
@@ -625,7 +657,14 @@ async function journeys(browser: Browser, engine: string) {
     act: (page: Page) => Promise<void>;
     signUpHeading: string;
     entry: string;
-    landing: (page: Page) => Promise<void>;
+    landing: (page: Page, api: Api) => Promise<void>;
+  };
+  // A new account answers "What brings you to AMP?" first.
+  const starter = async (page: Page) => {
+    await page.waitForURL((url) => url.pathname === "/start");
+    await page
+      .getByRole("heading", { name: "What brings you to AMP?" })
+      .waitFor();
   };
   const cases: Case[] = [
     {
@@ -637,16 +676,43 @@ async function journeys(browser: Browser, engine: string) {
       },
       signUpHeading: "Create your account to buy",
       entry: "pitch-buy",
-      landing: async (page) => {
-        await page.waitForURL("**/start/plan**");
-        await page.getByRole("radiogroup", { name: "Plan" }).waitFor();
+      // The plan waits for the learner it is for: the parent's one child,
+      // then "Continue with AMP" with the pitch's plan chosen, then Stripe.
+      landing: async (page, api) => {
+        await starter(page);
+        await page.getByRole("link", { name: /^I’m a parent/ }).click();
+        await page
+          .getByRole("button", { name: "Birth year, your child" })
+          .click();
+        await page.getByRole("option", { name: "2016", exact: true }).click();
+        await page
+          .getByRole("button", { name: "Continue", exact: true })
+          .click();
+        await page.waitForURL(
+          (url) =>
+            url.pathname === `/continue/${childId}` &&
+            url.searchParams.get("interval") === "month",
+        );
+        await page
+          .getByRole("heading", { name: "Continue with AMP" })
+          .waitFor();
         assert.equal(
           await page
             .getByRole("radio", { name: /Monthly/ })
             .getAttribute("aria-checked"),
           "true",
-          "the chosen plan is selected at checkout",
+          "the plan chosen on the pitch is selected",
         );
+        await noOverflow(page, "continue with AMP");
+        await page.screenshot({ path: `${shots}/journey-continue.png` });
+        await page.getByRole("checkbox").click();
+        await page
+          .getByRole("button", { name: "Continue to secure checkout" })
+          .click();
+        await page
+          .getByRole("heading", { name: "Stripe Checkout fixture" })
+          .waitFor();
+        assert.deepEqual(api.checkouts, ["month"], "one monthly checkout");
       },
     },
     {
@@ -656,10 +722,7 @@ async function journeys(browser: Browser, engine: string) {
         page.getByRole("button", { name: "Pay by card instead" }).click(),
       signUpHeading: "Create your account to buy",
       entry: "pitch-buy",
-      landing: async (page) => {
-        await page.waitForURL("**/start/plan**");
-        await page.getByRole("radiogroup", { name: "Plan" }).waitFor();
-      },
+      landing: starter,
     },
     {
       name: "try",
@@ -668,13 +731,7 @@ async function journeys(browser: Browser, engine: string) {
         page.getByRole("button", { name: "Try it free" }).first().click(),
       signUpHeading: "Try AMP free",
       entry: "pitch-try",
-      landing: async (page) => {
-        // A new account answers "What brings you to AMP?" first.
-        await page.waitForURL((url) => url.pathname === "/start");
-        await page
-          .getByRole("heading", { name: "What brings you to AMP?" })
-          .waitFor();
-      },
+      landing: starter,
     },
   ];
   for (const item of cases) {
@@ -706,7 +763,7 @@ async function journeys(browser: Browser, engine: string) {
     await page.getByLabel("Email").fill("parent@example.test");
     await page.getByLabel("AMP password").fill("correct horse battery");
     await page.getByRole("button", { name: "Create account" }).click();
-    await item.landing(page);
+    await item.landing(page, api);
     assert.equal(api.intents.length, 1, `${tag}: one signup intent`);
     assert.equal(api.intents[0]!.entry, item.entry);
     assert.equal(api.intents[0]!.notice, signupNotice);

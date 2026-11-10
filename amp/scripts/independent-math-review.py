@@ -1110,7 +1110,7 @@ def review(stream):
     legacy_counts = {template: count - clause_counts[template] for template in SUPPORTED}
     print('Independent clause coverage: ' + json.dumps(dict(clause_counts)), file=sys.stderr)
     print('Independent rational coverage: ' + json.dumps(rational_corpus.finish(count, legacy_counts)), file=sys.stderr)
-    print('Independent rational content: ' + json.dumps(review_rational_content()), file=sys.stderr)
+    print('Independent rational content: ' + json.dumps(review_rational_content(review_variant=review_clause_variant)), file=sys.stderr)
     print('Independent integer-exponent coverage: ' + json.dumps(exponent_review.finish(count)), file=sys.stderr)
     print('Independent integer-exponent content: ' + json.dumps(review_integer_exponent_content()), file=sys.stderr)
     print('Independent statistics content: '+json.dumps(review_descriptive_statistics_content()),file=sys.stderr)

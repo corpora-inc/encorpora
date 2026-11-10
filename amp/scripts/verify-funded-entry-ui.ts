@@ -152,11 +152,9 @@ function me(state: State) {
       })),
       retained: retentionNotice,
     },
-    next: state.consent
-      ? state.learners.length
-        ? "choose-plan"
-        : "add-learner"
-      : "start",
+    // As the server: a family with children opens practice, others the
+    // starter ("choose-plan" left the contract).
+    next: state.learners.length ? "practice" : "start",
   };
 }
 async function serve(page: Page, state: State, faults: string[]) {
