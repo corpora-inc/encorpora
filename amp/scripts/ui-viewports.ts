@@ -28,6 +28,21 @@ export function isTabletLandscape(size: Size): boolean {
   return size.width > size.height && size.width >= 900 && size.height >= 500;
 }
 
+/** After a resize, waits for practice to commit the answer surface for the
+ * new viewport: the compact answer action shows exactly where the problem's
+ * own answer-dialog query (`data-answer-dialog` on the dock) matches. */
+export async function answerSurfaceSettled(page: Page) {
+  await page.waitForFunction(() => {
+    const query = document
+      .querySelector(".answer-dock")
+      ?.getAttribute("data-answer-dialog");
+    return (
+      !!document.querySelector(".compact-answer-action") ===
+      (!!query && matchMedia(query).matches)
+    );
+  });
+}
+
 /** Wider than tall and shorter than the smallest tablet in landscape. */
 export function isPhoneLandscape(size: Size | readonly number[]): boolean {
   const [width, height] = Array.isArray(size)
