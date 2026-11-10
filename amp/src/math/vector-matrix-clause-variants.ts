@@ -177,7 +177,7 @@ export function vectorMatrixClause(
       return b.parts(
         {
           prompt: `Write this system as $AX=B$, with $X=(x,y,z)^T$: ${A.map((row, i) => math(equation(row, B[i]![0]!))).join(", ")}. A calculator supplies $A^{-1}=$ ${matrix(inv)}. Identify the coefficient matrix, then use the supplied inverse to solve.`,
-          hint: `In the first equation, read the coefficients in $x,y,z$ order: ${A[0]!.join(", ")}. These form the first row of $A$.`,
+          hint: `In the first equation, the coefficients in $x,y,z$ order are ${A[0]!.join(", ")}. The supplied inverse starts ${inv[0]!.join(", ")}. The coefficients form the first row of $A$; then multiply that inverse by $B$.`,
           explanation: [
             `Rows follow equations; columns follow $x,y,z$. Thus $A=$ ${matrix(A)} and $B=$ ${matrix(B)}.`,
             `Multiply on the left: $X=A^{-1}B=$ ${matrix(X)}. Each entry is a row of the inverse dotted with $B$.`,
@@ -713,7 +713,11 @@ export function vectorMatrixClause(
       const copy = {
         prompt: `Each arrow is a one-way road. Rows are FROM towns and columns are TO towns, both in order A, B, C, D. ${ask === 0 ? "Which matrix represents the network?" : ask === 1 ? "How many roads leave C?" : "Which town or towns have the most incoming roads?"}`,
         figure: sceneFigure(g.scene()),
-        hint: "Follow an arrow from its tail town to its head town; put 1 at that row and column.",
+        hint: ask === 0
+          ? "Follow an arrow from its tail town to its head town; put 1 at that row and column."
+          : ask === 1
+            ? "Follow each arrow that leaves C. Count those arrows; put 1 at each row and column where an arrow runs."
+            : "Follow each arrow into a town. The town with the most incoming arrows is the one to name.",
         explanation: [
           `The network matrix is ${matrix(M)}.`,
           `Row C sums to ${sum(M[2]!)}. The column totals are ${totals.join(", ")}, so the maximum is ${max}, for ${towns}.`,
@@ -755,7 +759,12 @@ export function vectorMatrixClause(
         ["Heads", ...P[0]!.map(String)],
         ["Tails", ...P[1]!.map(String)],
       ]),
-      hint: "In a zero-sum game, the other player's winnings are the negative of these winnings. An entry uses row first, column second.",
+      hint:
+        ask === 0
+          ? `The table starts at ${P[0]![0]}. In a zero-sum game, the other player's winnings are the negative of these winnings. An entry uses row first, column second.`
+          : ask === 1
+            ? `Read row ${i + 1}, column ${j + 1}. The table starts at ${P[0]![0]}. An entry uses row first, column second.`
+            : `Add the entries of ${ask === 2 ? "row" : "column"} ${i + 1}. The table starts at ${P[0]![0]}. An entry uses row first, column second.`,
       explanation: [
         `The row-player matrix is ${matrix(P)}; the column-player matrix is ${matrix(scale(P, -1))}.`,
         "A negative payoff is a loss. To total a row or column, add its signed entries.",
@@ -810,7 +819,7 @@ export function vectorMatrixClause(
     return b.choice(
       {
         prompt: `${stores.map((s, i) => `${s} has ${order.map((j) => `${A[i]![j]} ${items[j]}`).join(", ")}`).join("; ")}. Represent the data with stores as rows in order ${stores.join(", ")}, and items as columns in order ${items.join(", ")}.`,
-        hint: `The first row is ${stores[0]}; its first entry must count ${items[0]}.`,
+        hint: `${stores[0]} is the first row. Its sentence starts with ${A[0]![order[0]!]!} ${items[order[0]!]!}, and the first column must count ${items[0]}.`,
         explanation: [
           `Follow the requested order, even when the sentences list items differently.`,
           `Rows in order give ${matrix(A)}. A transpose swaps the roles of stores and items.`,
@@ -836,7 +845,7 @@ export function vectorMatrixClause(
     return b.choice(
       {
         prompt: `${stock ? "Rows are Eastside and Westside; columns are backpacks and lunch boxes. Half of every stock count remains." : `In a zero-sum game's payoff matrix, rows and columns are Heads then Tails. ${c === -1 ? "Report the other player's winnings, keeping the same row and column choices." : `Multiply every payoff by ${c}.`}`} The original matrix is ${matrix(P)}. What is the resulting matrix?`,
-        hint: `Apply the factor ${c} to every entry, including the first entry ${P[0]![0]}.`,
+        hint: `Apply the factor ${c} to every entry of ${matrix(P)}, including ${P[0]![0]} and ${P[0]![1]}.`,
         explanation: [
           `Multiply every entry by ${c}, without changing row or column labels.`,
           `For example, ${P[0]![0]} × ${c} = ${correct[0]![0]}. The complete matrix is ${matrix(correct)}.`,
@@ -869,7 +878,7 @@ export function vectorMatrixClause(
       return b.choice(
         {
           prompt: `Let $A=$ ${matrix(A)} and $B=$ ${matrix(B)}. Find $${operation}$.`,
-          hint: "Count rows and columns before subtracting. Each entry needs a corresponding entry in the other matrix.",
+          hint: `Compare ${matrix(A)} with ${matrix(B)}. Count rows and columns before subtracting. Each entry needs a corresponding entry in the other matrix.`,
           explanation: [
             "A is 2×3 and B is 3×2. Their dimensions differ, so subtraction is not defined.",
             "Multiplication would be a different operation; it cannot supply missing matching entries.",
@@ -889,7 +898,7 @@ export function vectorMatrixClause(
     const result = A.map((row, i) => row.map((x, j) => a * x - c * B[i]![j]!));
     const copy = {
       prompt: `Let $A=$ ${matrix(A)} and $B=$ ${matrix(B)}. Find $${operation}$.`,
-      hint: `The top-left entry is ${a}(${A[0]![0]}) − ${c}(${B[0]![0]}). Subtracting a negative adds its opposite.`,
+      hint: `Match entries of ${matrix(A)} with ${matrix(B)}. The top-left entry is ${a}(${A[0]![0]}) − ${c}(${B[0]![0]}). Subtracting a negative adds its opposite.`,
       explanation: [
         `The dimensions agree: ${rows}×${cols}. Match corresponding entries.`,
         `The top-left entry is ${a}(${A[0]![0]}) − ${c}(${B[0]![0]}) = ${result[0]![0]}.`,

@@ -106,6 +106,9 @@ const one = q(1);
 /** A fraction as text: "3/10", or a whole number. */
 const frac = (v: Rational) =>
   `${v.n < 0 ? "−" : ""}${Math.abs(v.n)}${v.d === 1 ? "" : `/${v.d}`}`;
+/** TeX so a factor such as 12/25 does not contain the product 2/25 as text. */
+const texProb = (v: Rational) =>
+  v.d === 1 ? `${v.n}` : `\\frac{${Math.abs(v.n)}}{${v.d}}`;
 /** A terminating decimal as text ("0.15"); other values as fractions. */
 function decimal(v: Rational) {
   let d = v.d,
@@ -931,7 +934,7 @@ function twoWaysCase(r: Random): Case {
         `Multiplying the two separate probabilities gives ${frac(other)}, which is not the overlap.`,
         `The probability of band and bus is ${frac(answer)}.`,
       ],
-      hint: `Multiply the probability of riding the bus by the probability of band among those bus riders. Do not multiply the two separate probabilities.`,
+      hint: `Multiply $${texProb(pBus)}$ by $${texProb(pGiven)}$, the chance of band among bus riders. Do not multiply that by the separate band probability $${texProb(pBand)}$.`,
       tags: ["two-ways"],
       figure: productTree(
         ["Bus", "Not bus"],
@@ -966,7 +969,7 @@ function jointInterpretation(r: Random): Case {
         `${frac(pDry)} × ${frac(pLateDry)} = ${frac(joint)}.`,
         `The fraction of mornings with no rain and a late bus is ${frac(joint)}.`,
       ],
-      hint: `Multiply the chance of no rain by the chance the bus is late when it does not rain. That product is both events, not the conditional chance alone.`,
+      hint: `Multiply $${texProb(pDry)}$, the chance of no rain, by $${texProb(pLateDry)}$, the chance the bus is late when it does not rain. That product is both events, not the conditional chance alone.`,
       tags: ["value-and-interpretation"],
       figure: productTree(
         ["Dry", "Rain"],

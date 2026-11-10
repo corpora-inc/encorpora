@@ -9,6 +9,7 @@ import { fixtureMe } from "./me-fixture";
 import { retentionNotice } from "../src/family/contracts";
 import { skills } from "../src/curriculum/catalog";
 import { templates, generateProblem } from "../src/math/engine";
+import { defaultPracticeSettings } from "../src/learning/practice-settings";
 import {
   assertProblemReachable,
   assertPhoneLandscapeSmoke,
@@ -143,6 +144,9 @@ try {
             },
           });
     if (path.endsWith("/frontier")) return route.fulfill({ json: frontier });
+    if (path.endsWith("/practice-state"))
+      return route.fulfill({ json: defaultPracticeSettings() });
+    if (path.endsWith("/books")) return route.fulfill({ json: { books: [] } });
     if (path.endsWith("/batches"))
       return route.fulfill({
         json: {
@@ -380,26 +384,14 @@ try {
         await page.getByRole("link", { name: "Your progress" }).count(),
         0,
       );
-      assert.equal(
-        await page
-          .locator(".workspace-toolbar > :first-child")
-          .getAttribute("data-navigation-trigger"),
-        "true",
-      );
+      // The one app frame (#2064): the menu is the bar's first cell. The
+      // skill title's readability is app-shell's practice-title.
       assert(
-        await page.locator(".workspace-topic-text").evaluate((el) => {
-          const r = el.getBoundingClientRect();
-          const range = document.createRange();
-          range.selectNodeContents(el);
-          return [...range.getClientRects()].every(
-            (t) =>
-              t.left >= r.left - 1 &&
-              t.right <= r.right + 1 &&
-              t.top >= r.top - 1 &&
-              t.bottom <= r.bottom + 1,
-          );
+        await page.locator("[data-app-bar]").evaluate((bar) => {
+          const trigger = bar.querySelector("[data-navigation-trigger]");
+          return !!trigger && !!bar.firstElementChild?.contains(trigger);
         }),
-        "full title readable",
+        "the menu is the app bar's first cell",
       );
       if (width === 375)
         await assertProblemReachable(page, `drawer-${width}-${theme}`);
@@ -727,7 +719,8 @@ try {
     await Promise.all(el.getAnimations().map((a) => a.finished));
   });
   assert.equal(await learnerButton.getAttribute("aria-expanded"), "true");
-  assert.equal(await crowded.getByRole("option").count(), 5);
+  // The four learners (the free-assessment row left with the trial, #2110).
+  assert.equal(await crowded.getByRole("option").count(), 4);
   assert.deepEqual(await card.boundingBox(), cardBox, "opening shifts card");
   assert.deepEqual(
     await navigation.boundingBox(),
@@ -905,16 +898,17 @@ try {
   const originalQuestion = await failedMenu
     .locator(".problem-stage .question")
     .textContent();
+  // The menu button says why it cannot open, in a toast over the problem.
   await failedMenu.getByRole("button", { name: "Open AMP menu" }).click();
   await failedMenu
     .getByRole("alert")
     .filter({ hasText: "Your menu could not be loaded" })
     .waitFor();
-  await failedMenu.getByRole("button", { name: "Close AMP menu" }).click();
-  await failedMenu.waitForFunction(
-    () =>
-      document.activeElement?.getAttribute("aria-label") === "Open AMP menu",
-  );
+  await failedMenu.getByRole("button", { name: "Dismiss message" }).click();
+  await failedMenu
+    .getByRole("alert")
+    .filter({ hasText: "Your menu could not be loaded" })
+    .waitFor({ state: "detached" });
   assert.equal(
     await failedMenu.locator(".problem-stage .question").textContent(),
     originalQuestion,
