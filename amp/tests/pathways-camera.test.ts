@@ -110,7 +110,13 @@ test("a region fits whole at the closest distance that shows all of it", () => {
   ];
   const plan = fit({ points, basis, view, near: 20, far: 200 });
   assert.equal(plan.complete, true);
-  const tighter = fit({ points, basis, view, near: 20, far: plan.distance * 0.9 });
+  const tighter = fit({
+    points,
+    basis,
+    view,
+    near: 20,
+    far: plan.distance * 0.9,
+  });
   assert.equal(tighter.complete, false);
 });
 

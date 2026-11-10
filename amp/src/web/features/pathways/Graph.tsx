@@ -820,7 +820,8 @@ export function Graph({
       const projected = node.clone().project(probe);
       const depth = goal.position.clone().sub(node).dot(back);
       const named =
-        !fitView && goal.position.distanceTo(goal.target) < labelDistance(height);
+        !fitView &&
+        goal.position.distanceTo(goal.target) < labelDistance(height);
       if (
         named &&
         isFramed(
@@ -1034,7 +1035,8 @@ export function Graph({
         };
       };
       place(move(pose()));
-      if (tween) tween = { ...tween, from: move(tween.from), to: move(tween.to) };
+      if (tween)
+        tween = { ...tween, from: move(tween.from), to: move(tween.to) };
     };
     const syncSize = () => {
       const box = el.getBoundingClientRect();

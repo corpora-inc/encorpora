@@ -1112,7 +1112,7 @@ try {
   await linked.getByRole("heading", { name: target.title }).waitFor();
   const related = linked
     .locator(".pathways-detail a")
-    .filter({ hasText: "Nonlinear intersection reading" });
+    .filter({ hasText: skillTitle("nonlinear-intersection-reading") });
   await related.click();
   await linked.waitForURL(/pathways\/nonlinear-intersection-reading/);
   await linked.goBack();
@@ -1176,7 +1176,7 @@ try {
   );
   const parentLink = guest
     .locator(".pathways-detail a")
-    .filter({ hasText: "Nonlinear intersection reading" });
+    .filter({ hasText: skillTitle("nonlinear-intersection-reading") });
   const parentUrl = new URL((await parentLink.getAttribute("href"))!, origin);
   assert.equal(parentUrl.pathname, "/pathways/nonlinear-intersection-reading");
   assert.equal(parentUrl.searchParams.get("topic"), "systems");

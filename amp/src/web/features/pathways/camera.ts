@@ -94,7 +94,11 @@ function span(size: number, start: number, end: number): [number, number] {
 }
 
 const dot = (a: Vec3, b: Vec3) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
-const minus = (a: Vec3, b: Vec3): Vec3 => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+const minus = (a: Vec3, b: Vec3): Vec3 => [
+  a[0] - b[0],
+  a[1] - b[1],
+  a[2] - b[2],
+];
 
 type Interval = [number, number];
 /** Where the target may sit on each camera axis so that every point shows. */
@@ -180,7 +184,11 @@ export function fit({
   ];
   const local = (p: Vec3) => {
     const d = minus(p, origin);
-    return { r: dot(d, basis.right), u: dot(d, basis.up), b: dot(d, basis.back) };
+    return {
+      r: dot(d, basis.right),
+      u: dot(d, basis.up),
+      b: dot(d, basis.back),
+    };
   };
   // Nearest first: the ones kept when not all fit.
   const others = points
