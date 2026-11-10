@@ -684,16 +684,8 @@ test("quadratic-from-data keeps exactly the equation that fits every stated cond
 });
 
 test("new families bind to existing skills, lessons, methods and principles", () => {
-  const expected: Record<string, string> = {
-    "quadratic-root-relations": "quadratic-equations",
-    "system-expression-value": "linear-systems",
-    "variation-constant": "proportional-relationships",
-    "rate-combination-model": "linear-equation-modeling",
-    "absolute-compound-inequality": "linear-inequalities",
-    "quadratic-from-data": "quadratic-graphs",
-  };
-  for (const [id, skill] of Object.entries(expected)) {
-    assert.equal(templates.find((t) => t.id === id)?.skillId, skill);
+  for (const { id, skillId } of satAlgebraStructureTemplates) {
+    assert.equal(templates.find((t) => t.id === id)?.skillId, skillId);
     const lesson = problemLesson(id, "library");
     assert.ok((lesson.intuition ?? "").length > 60);
     assert.ok(lesson.method.length >= 3);

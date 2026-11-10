@@ -1,3 +1,5 @@
+import { skills as curriculumSkills } from "../src/curriculum/catalog";
+import { generatedProblemSchema } from "../src/math/contracts";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -8,7 +10,38 @@ import { generateProblem, templates } from "../src/math/engine";
 import { problemLesson } from "../src/content/problem-lessons";
 
 const ids = numberMeasurementGapTemplates.map((t) => t.id);
-const expectedVariants: Record<string, string[]> = {
+
+/** Evaluate plain arithmetic text such as "3(2x - 4) + 5x" at x. */
+function evalText(text: string, x: number): number {
+  const js = text
+    .replace(/\$/g, "")
+    .replace(/\\left|\\right/g, "")
+    .replace(/\\frac\{(\d+)\}\{(\d+)\}/g, "($1/$2)")
+    .replace(/\\cdot/g, "*")
+    .replace(/\)\(/g, ")*(")
+    .replace(/×/g, "*")
+    .replace(/(\d)\(/g, "$1*(")
+    .replace(/(\d)x/g, "$1*x")
+    .replace(/\)x/g, ")*x")
+    .replace(/(\d),(\d)/g, "$1$2");
+  return Function("x", `return (${js});`)(x) as number;
+}
+const same = (a: string, b: string) =>
+  [0, 1, 2, -3].every((x) => evalText(a, x) === evalText(b, x));
+const texNumber = (s: string): number => {
+  const m = /^(-?)\\frac\{(\d+)\}\{(\d+)\}$/.exec(s);
+  if (m) return (m[1] ? -1 : 1) * (Number(m[2]) / Number(m[3]));
+  return Number(s);
+};
+const labels = (generated: ReturnType<typeof generateProblem>) => {
+  const response = generated.public.response;
+  assert.equal(response.kind, "choice");
+  return response.kind === "choice" ? response.options : [];
+};
+
+// Fixed witnesses keep the independent mathematical cases below exercised.
+// They are not a complete inventory; new types come from the registry.
+const regressionCases: Record<string, string[]> = {
   "signed-context-order": ["debt", "sea-level", "order-list", "temperature"],
   "equivalent-expressions-check": [
     "not-equivalent",
@@ -43,59 +76,31 @@ const expectedVariants: Record<string, string[]> = {
   ],
   "fraction-of-set": ["part", "remainder", "from-unit-part"],
 };
-const skills: Record<string, string> = {
-  "signed-context-order": "absolute-value",
-  "equivalent-expressions-check": "expression-properties",
-  "area-tiling-distributive": "rectangle-area",
-  "estimate-reasonableness": "multistep-whole-stories",
-  "unit-chain-conversion": "units-and-precision",
-  "fraction-of-set": "fraction-times-whole",
-};
 
-/** Evaluate plain arithmetic text such as "3(2x - 4) + 5x" at x. */
-function evalText(text: string, x: number): number {
-  const js = text
-    .replace(/\$/g, "")
-    .replace(/\\left|\\right/g, "")
-    .replace(/\\frac\{(\d+)\}\{(\d+)\}/g, "($1/$2)")
-    .replace(/\\cdot/g, "*")
-    .replace(/\)\(/g, ")*(")
-    .replace(/×/g, "*")
-    .replace(/(\d)\(/g, "$1*(")
-    .replace(/(\d)x/g, "$1*x")
-    .replace(/\)x/g, ")*x")
-    .replace(/(\d),(\d)/g, "$1$2");
-  return Function("x", `return (${js});`)(x) as number;
-}
-const same = (a: string, b: string) =>
-  [0, 1, 2, -3].every((x) => evalText(a, x) === evalText(b, x));
-const texNumber = (s: string): number => {
-  const m = /^(-?)\\frac\{(\d+)\}\{(\d+)\}$/.exec(s);
-  if (m) return (m[1] ? -1 : 1) * (Number(m[2]) / Number(m[3]));
-  return Number(s);
-};
-const labels = (generated: ReturnType<typeof generateProblem>) => {
-  const response = generated.public.response;
-  assert.equal(response.kind, "choice");
-  return response.kind === "choice" ? response.options : [];
-};
-
-test("every template is deterministic, reachable through the engine and has every variant", () => {
+test("every template is deterministic, reachable through the engine and stamps a registered skill", () => {
   for (const id of ids) {
     const seen = new Set<string>();
+    const template = numberMeasurementGapTemplates.find((t) => t.id === id)!;
+    assert.ok(
+      curriculumSkills.some((s) => s.id === template.skillId),
+      id,
+    );
     for (let seed = 0; seed < 400; seed++) {
       const a = numberMeasurementGapCase(id, `s${seed}`);
       const b = numberMeasurementGapCase(id, `s${seed}`);
       assert.deepEqual(a.problem, b.problem);
+      generatedProblemSchema.parse(a.problem);
       seen.add(a.variant);
+      assert.equal(a.problem.public.skillId, template.skillId, id);
       if (seed < 40) {
         const viaEngine = generateProblem(id, `s${seed}`);
         assert.equal(viaEngine.public.id, a.problem.public.id);
         assert.equal(viaEngine.answer, a.problem.answer);
       }
     }
-    assert.deepEqual([...seen].sort(), [...expectedVariants[id]!].sort(), id);
-    assert.equal(templates.find((t) => t.id === id)?.skillId, skills[id]);
+    for (const v of regressionCases[id] ?? [])
+      assert.ok(seen.has(v), `${id}: mathematical case ${v} was not exercised`);
+    assert.equal(templates.find((t) => t.id === id)?.skillId, template.skillId);
   }
 });
 

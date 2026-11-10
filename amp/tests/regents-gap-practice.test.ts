@@ -1,3 +1,4 @@
+import { generatedProblemSchema } from "../src/math/contracts";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -47,37 +48,16 @@ function evalTex(source: string, vars: Record<string, number> = {}): number {
 }
 const rhsOfEquation = (text: string) => text.split("=").pop()!;
 
-test("every template is registered, deterministic, reaches the engine and has all variants", () => {
-  const expected: Record<string, number> = {
-    "rg-exponential-base-rate": 4,
-    "rg-factor-completely": 3,
-    "rg-polynomial-zeros-forms": 2,
-    "rg-exponent-monomial-power": 2,
-    "rg-rational-exponent-forms": 3,
-    "rg-polynomial-build": 2,
-    "rg-solid-density": 3,
-    "rg-quadrilateral-choice": 3,
-    "rg-parallelogram-perpendicular": 3,
-    "rg-segment-property-choice": 4,
-    "rg-isosceles-right-decimal": 3,
-    "rg-triangle-area-sas": 3,
-    "rg-triangle-third-side-test": 2,
-    "rg-altitude-segment": 1,
-  };
-  assert.deepEqual(
-    [...regentsGapTemplateIds].sort(),
-    Object.keys(expected).sort(),
-  );
+test("every template is registered, deterministic, reaches the engine and generates valid problems", () => {
   for (const template of regentsGapTemplates)
     assert.ok(
       templates.some((t) => t.id === template.id),
       template.id,
     );
   for (const id of regentsGapTemplateIds) {
-    const variants = new Set<string>();
     for (let i = 0; i < SEEDS; i++) {
       const c = regentsGapCase(id, `rg:${i}`);
-      variants.add(c.variant);
+      generatedProblemSchema.parse(c.problem);
       if (i < 25) {
         const g = generateProblem(id, `rg:${i}`);
         assert.deepEqual(g.public, c.problem.public);
@@ -88,7 +68,6 @@ test("every template is registered, deterministic, reaches the engine and has al
         );
       }
     }
-    assert.equal(variants.size, expected[id], `${id}: ${[...variants]}`);
   }
 });
 

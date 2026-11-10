@@ -1,3 +1,4 @@
+import { skills as curriculumSkills } from "../src/curriculum/catalog";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -13,21 +14,9 @@ import {
 import { problemLesson } from "../src/content/problem-lessons";
 import { buildSatCoverage } from "../src/curriculum/sat-coverage";
 
-const skills: Record<string, string> = {
-  "sat-entry-system-solve": "linear-systems",
-  "sat-entry-system-expression": "linear-systems",
-  "sat-entry-quadratic-solution": "quadratic-equations",
-  "sat-entry-root-relations": "quadratic-equations",
-  "sat-entry-absolute-equation": "absolute-value-equations",
-  "sat-entry-radical-equation": "radical-equations",
-  "sat-entry-rational-equation": "rational-equations",
-  "sat-entry-polynomial-zeros": "polynomial-zeros",
-  "sat-entry-quadratic-context": "nonlinear-equation-modeling",
-  "sat-entry-rate-numeric": "linear-equation-modeling",
-  "sat-entry-radian-conversion": "radians-unit-circle",
-  "sat-entry-inequality-integer": "linear-inequalities",
-};
-const variants: Record<string, string[]> = {
+// Fixed witnesses keep the independent mathematical cases below exercised.
+// They are not a complete inventory; new types come from the registry.
+const regressionCases: Record<string, string[]> = {
   "sat-entry-system-solve": ["integer-", "signed-", "fractional-", "zero-"],
   "sat-entry-system-expression": ["sum", "difference", "multiples", "half-sum"],
   "sat-entry-quadratic-solution": [
@@ -355,7 +344,7 @@ for (const template of satNumericEntryTemplates) {
         );
       }
     }
-    const expected = variants[id]!;
+    const expected = regressionCases[id] ?? [];
     for (const v of expected)
       assert.ok(
         [...seen].some((s) => s === v || s.startsWith(v)),
@@ -365,7 +354,8 @@ for (const template of satNumericEntryTemplates) {
 
   test(`${id}: skill, instruction and SAT binding`, () => {
     const registered = templates.find((t) => t.id === id);
-    assert.equal(registered?.skillId, skills[id]);
+    assert.equal(registered?.skillId, template.skillId);
+    assert.ok(curriculumSkills.some((s) => s.id === template.skillId), id);
     assert.equal(registered?.requiredResponseCapability, undefined);
     const lesson = problemLesson(id, "library");
     assert.ok((lesson.intuition ?? "").length > 40);

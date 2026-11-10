@@ -4,6 +4,7 @@ import { generateProblemFor, templates } from "../src/math/engine.js";
 import {
   clientCanDraw,
   figureCapabilities,
+  responseCapabilities,
   generatedProblemSchema,
 } from "../src/math/contracts.js";
 import { sceneCapabilitiesIn } from "../src/math/scene/index.js";
@@ -12,14 +13,7 @@ import { sweepAxes } from "../src/math/number-domain-axes.js";
 
 /** A client released before scenes-v2: every other capability. */
 const older = {
-  responseCapabilities: [
-    "single-choice-v1",
-    "multi-select-v1",
-    "point-plot-v1",
-    "multi-part-choice-v1",
-    "figure-choice-v1",
-    "structured-work-v1",
-  ],
+  responseCapabilities,
   figureCapabilities: figureCapabilities.filter((c) => c !== "scenes-v2"),
 };
 

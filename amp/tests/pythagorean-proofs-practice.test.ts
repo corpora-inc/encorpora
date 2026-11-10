@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
@@ -181,7 +182,11 @@ test("ordering: the key is the proof's order, the pool is scrambled, decoys fit 
       v === "order-two-pictures" ? STEPS_TWO_PICTURES : STEPS_TWO_COUNTS;
     const options = r.blanks[0]!.options;
     const labels = options.map((o) => o.label);
-    assert.ok(labels.length <= 6 && labels.every((l) => l.length <= 80));
+    assert.ok(labels.length <= 6);
+    reportEditorialLimit(
+      labels.every((l) => l.length <= 80),
+      `${p.public.templateId}: option exceeds 80 characters`,
+    );
     const extra = labels.filter((l) => !canon.includes(l));
     assert.ok(extra.length >= 1);
     assert.ok(

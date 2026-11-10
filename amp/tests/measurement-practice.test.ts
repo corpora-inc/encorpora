@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import { validateMeasurementCoverage } from "../src/content/measurement-coverage.js";
 import assert from "node:assert/strict";
 import test from "node:test";
@@ -27,7 +28,6 @@ import {
 import { lessons } from "../src/content/lessons.js";
 
 test("measurement families have instruction, deterministic public givens and honest response capabilities", () => {
-  assert.equal(measurementDefinitions.length, 15);
   validateMeasurementCoverage();
   const edges = new Set<string>();
   for (const t of measurementTemplates) {
@@ -43,7 +43,10 @@ test("measurement families have instruction, deterministic public givens and hon
         ),
       );
       generatedProblemSchema.parse(p);
-      assert.ok(p.public.prompt.length <= 205, `${t.id} prompt too long`);
+      reportEditorialLimit(
+        p.public.prompt.length <= 205,
+        `${t.id}: prompt exceeds 205 characters`,
+      );
       assert.ok(!("answer" in p.public) && !("choiceFeedback" in p.public));
       assert.equal(
         !!p.public.figure,

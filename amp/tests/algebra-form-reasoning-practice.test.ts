@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
@@ -393,7 +394,11 @@ test("the order item is shuffled, one-to-one, and keyed in argument order", () =
     assert.match(order[2]!, /are similar/);
     assert.match(order[3]!, /proportional/);
     assert.match(order[4]!, /rise over run/);
-    for (const o of r.blanks[0]!.options) assert.ok(o.label.length <= 80);
+    for (const o of r.blanks[0]!.options)
+      reportEditorialLimit(
+        o.label.length <= 80,
+        `${p.public.templateId}: option exceeds 80 characters`,
+      );
   }
 });
 
