@@ -1,7 +1,16 @@
-import { useEffect, useLayoutEffect, useRef, type ReactNode } from "react";
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import { buttonClass } from "./Button";
 import { AppError } from "../lib/AppError";
 import { WAVE_PATH } from "./Loading";
+import { onMediaChange } from "../lib/media-query";
+import { errorDetails } from "../../analytics/error-details";
+import { buildIsStale, reloadIntoCurrentRelease } from "../lib/app-recovery";
 
 // Reuse the bootstrap animation's document-timeline start time. Every React
 // instance then joins the running wave instead of restarting it on navigation.
@@ -47,10 +56,9 @@ export function LoadingScreen({
         animation.startTime = waveStart;
     };
     sync();
-    const motion = matchMedia("(prefers-reduced-motion: no-preference)");
-    motion.addEventListener("change", sync);
+    const stop = onMediaChange("(prefers-reduced-motion: no-preference)", sync);
     return () => {
-      motion.removeEventListener("change", sync);
+      stop();
       markArrival();
     };
   }, [error]);
@@ -99,9 +107,23 @@ export function RouteError({
     window.location.pathname === "/pathways" ||
     window.location.pathname.startsWith("/pathways/");
   const mapHref = "/pathways";
+  // The screen's code or styles didn't load. When a newer release has replaced
+  // this tab's files, load it at this URL; the wave stays up meanwhile.
+  const chunk = errorDetails(error).category === "chunk";
+  const [checked, setChecked] = useState<unknown>(undefined);
   useEffect(() => {
     console.error("Application route failed to load or render.");
+    if (!chunk) return;
+    let current = true;
+    void buildIsStale(0).then((stale) => {
+      if (stale && reloadIntoCurrentRelease()) return;
+      if (current) setChecked(error);
+    });
+    return () => {
+      current = false;
+    };
   }, [error]);
+  if (chunk && checked !== error) return <LoadingScreen />;
   return (
     <LoadingScreen
       error={
@@ -109,7 +131,10 @@ export function RouteError({
           ? error.message
           : "This screen could not be loaded."
       }
-      retry={pathways ? undefined : reset}
+      // A file that failed to load is not fetched again in place: reload.
+      retry={
+        pathways ? undefined : chunk ? () => window.location.reload() : reset
+      }
       recovery={
         pathways && (
           <div
