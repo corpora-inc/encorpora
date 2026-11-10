@@ -81,7 +81,23 @@ def parse_json(text):
     text = text.strip()
     if text.startswith('```'):
         text = re.sub(r'^```[^\n]*\n|\n```\s*$', '', text).strip()
-    return json.loads(text)
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError as original:
+        # Agent CLIs can concatenate progress messages and their final answer.
+        # Accept only a complete trailing object; never repair truncated JSON
+        # or accept an earlier object followed by more prose.
+        decoder = json.JSONDecoder()
+        match = re.search(r'\{\s*(?:"|\})', text)
+        if match:
+            try:
+                value, end = decoder.raw_decode(text, match.start())
+            except json.JSONDecodeError:
+                pass
+            else:
+                if isinstance(value, dict) and text[end:].strip() in ('', '```'):
+                    return value
+        raise original
 
 
 def normalized_usage(provider, raw):

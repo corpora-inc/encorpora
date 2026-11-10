@@ -4,11 +4,22 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from providers import api_cost, claude_output, credentials, normalized_usage, redact, submit_review_batch
+from providers import api_cost, claude_output, credentials, normalized_usage, parse_json, redact, submit_review_batch
 from prompts import coverage_from_study, validate_review
 
 
 class EvidenceTests(unittest.TestCase):
+    def test_agent_progress_prefix_does_not_hide_a_complete_final_verdict(self):
+        verdict = {'ship': True, 'score': 7, 'reason': 'A literal { is harmless.'}
+        self.assertEqual(parse_json('I will inspect every frame.'+json.dumps(verdict)), verdict)
+        self.assertEqual(parse_json('I have finished.\n```json\n'+json.dumps(verdict)+'\n```'), verdict)
+        for invalid in ('Progress. {"ship": true', '{"ship": true} More prose.',
+                        'Progress. {"ship": true} {"score":',
+                        'Progress. {"unfinished": {"ship": true}',
+                        'Progress. {"first": 1} {"ship": true}'):
+            with self.assertRaises(json.JSONDecodeError):
+                parse_json(invalid)
+
     def test_api_key_file_is_parsed_not_executed(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory)/'env'
