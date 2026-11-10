@@ -3,8 +3,6 @@ import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { strandNames } from "../../BirthYearPrompt";
 import { Button, buttonClass } from "../../ui/Button";
-import { PrintButton } from "../../ui/PrintButton";
-import { downloadPdf, paperFormat } from "../../lib/pdf-download";
 import { EmptyState } from "../../ui/EmptyState";
 import { Loading } from "../../ui/Loading";
 import { currentSession } from "../school/api";
@@ -152,22 +150,6 @@ export function OwnRecordScreen() {
               <BookIcon />
               Workbooks
             </Link>
-            {started && (
-              <PrintButton
-                variant="quiet"
-                className={styles.quiet}
-                download={() =>
-                  downloadPdf({
-                    path: `/me/practice/report.pdf?format=${paperFormat()}`,
-                    token: session.token,
-                    name: "amp-progress-report.pdf",
-                  })
-                }
-              >
-                <PrintIcon />
-                Print report
-              </PrintButton>
-            )}
           </div>
         </header>
         {/* Paused only when no access covers them and their free problems
@@ -260,15 +242,6 @@ function BookIcon() {
     <svg viewBox="0 0 20 20" aria-hidden="true" className={styles.icon}>
       <path d="M3.5 4.5c2.2-.9 4.4-.9 6.5.6 2.1-1.5 4.3-1.5 6.5-.6v11c-2.2-.9-4.4-.9-6.5.6-2.1-1.5-4.3-1.5-6.5-.6z" />
       <path d="M10 5.1v11" />
-    </svg>
-  );
-}
-function PrintIcon() {
-  return (
-    <svg viewBox="0 0 20 20" aria-hidden="true" className={styles.icon}>
-      <path d="M6 7.5V3.5h8v4" />
-      <rect x="3" y="7.5" width="14" height="7" rx="2" />
-      <path d="M6 12.5h8v4H6z" />
     </svg>
   );
 }
