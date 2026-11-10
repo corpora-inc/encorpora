@@ -176,6 +176,7 @@ export function TodayScreen() {
             <FamilyToday
               data={data}
               place={place}
+              code={code ?? null}
               session={account}
               me={signedIn}
               secondParent={holder ? secondParent.data : undefined}

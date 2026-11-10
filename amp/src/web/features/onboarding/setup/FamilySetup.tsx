@@ -19,6 +19,8 @@ import { meOptions } from "../../../lib/query";
 import { chosenPlan } from "../../../lib/pending-trial";
 import { Button, buttonClass } from "../../../ui/Button";
 import { YearField } from "../../../ui/YearField";
+import { Loading } from "../../../ui/Loading";
+import { JoinClass } from "../../school/join/JoinClass";
 import { TextField } from "../../../ui/TextField";
 import { Toast } from "../../../ui/Toast";
 import { approvalsOptions } from "../../family-approval/api";
@@ -632,33 +634,16 @@ function JoinStep({ session, me, kind, index }: StepProps) {
             </p>
           </section>
         )}
-        <section className={styles.way} aria-labelledby="way-own">
-          <svg viewBox="0 0 24 24" className={styles.wayIcon} aria-hidden="true">
-            <path d="M3 5h18v11H3zM8 20h8M12 16v4" />
-          </svg>
-          <h2 id="way-own">
-            {parent ? "On their own device" : "On each student’s device"}
-          </h2>
-          <ol className={styles.howTo}>
-            <li>
-              Open <strong>{location.host}/join</strong>
-            </li>
-            <li>Type the class code</li>
-            <li>Tap their name, then pick three pictures</li>
-          </ol>
-          <p className={styles.code} aria-busy={presence.isPending || undefined}>
-            <span>Class code</span>
-            <strong data-class-code={code}>
-              {code ? `${code.slice(0, 3)}-${code.slice(3)}` : " "}
-            </strong>
-          </p>
-          <Link
-            to="/school/$org/classes/$class/cards"
-            params={{ org: place.orgId, class: place.classId }}
-            className={buttonClass("secondary")}
-          >
-            Print sign-in cards
-          </Link>
+        <section className={styles.way} aria-labelledby="join-class">
+          {code ? (
+            <JoinClass
+              code={code}
+              place={{ org: place.orgId, class: place.classId }}
+              family={parent}
+            />
+          ) : (
+            <Loading />
+          )}
         </section>
       </div>
       {!parent && (

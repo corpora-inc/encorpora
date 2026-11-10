@@ -1,0 +1,95 @@
+/* "Join this class" (JoinClass.tsx): the code in one face, the link with
+   Copy, a QR for it, the board and cards. One element wherever children are
+   brought in. */
+.join {
+  display: grid;
+  gap: var(--space-5);
+  align-items: start;
+}
+@media (min-width: 640px) {
+  .join {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-6);
+  }
+}
+.text {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: start;
+  min-width: 0;
+}
+.title {
+  margin: 0;
+  font-size: var(--text-heading-2);
+}
+.lead {
+  max-width: 52ch;
+  margin: 0;
+  color: var(--color-muted-text);
+}
+.codeRow,
+.linkRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+}
+.label {
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  font-weight: 600;
+}
+/* The code in one face everywhere: tabular, spaced, with its hyphen. */
+.code {
+  font-size: 22px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.link {
+  min-width: 0;
+  color: var(--color-on-surface);
+  font-size: var(--text-label);
+  overflow-wrap: anywhere;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+.fallback {
+  margin: 0;
+  color: var(--color-subtle-text);
+  font-size: var(--text-small);
+}
+.qr {
+  width: 168px;
+  height: 168px;
+  justify-self: center;
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-figure-paper);
+}
+/* Today's header: the same element on one line. */
+.compact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2) var(--space-3);
+}
+.compact .code {
+  font-size: 20px;
+}
+.inlineLink {
+  color: var(--color-primary);
+  font-size: var(--text-label);
+  font-weight: 600;
+  text-decoration: none;
+}
+.inlineLink:hover {
+  text-decoration: underline;
+}

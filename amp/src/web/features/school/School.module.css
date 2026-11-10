@@ -397,9 +397,10 @@ button.copy[data-done="copied"] {
   margin-bottom: var(--space-6);
 }
 @media (min-width: 900px) {
+  /* The Join element runs the column; a school class's grading periods sit
+     under it. */
   .classMeta {
-    grid-template-columns: auto minmax(0, 460px);
-    justify-content: space-between;
+    grid-template-columns: minmax(0, 1fr);
     align-items: start;
   }
 }

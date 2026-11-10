@@ -45,8 +45,8 @@ import {
 } from "./api";
 import { OrgFrame } from "./OrgFrame";
 import { YearCalendar } from "./CalendarScreen";
+import { JoinClass } from "./join/JoinClass";
 import {
-  CopyButton,
   FormNote,
   GradePicker,
   PageHead,
@@ -614,7 +614,6 @@ export function ClassScreen() {
             : "That change didn’t save. Try again.",
         ),
       );
-  const joinPath = `/join/${klass.joinCode}`;
   // A family, a tutor or a lone class keeps its year here; a school's classes
   // pick only their grading periods, and the year is the school's
   // (docs/design/ia.md, "Where settings live").
@@ -654,14 +653,11 @@ export function ClassScreen() {
         }
       />
       <section className={styles.classMeta}>
-        <div className={styles.joinCode}>
-          <span className={styles.fieldLabel}>Class code</span>
-          <strong>{klass.joinCode}</strong>
-          <CopyButton
-            text={`${location.origin}${joinPath}`}
-            label="Copy join link"
-          />
-        </div>
+        <JoinClass
+          code={klass.joinCode}
+          place={{ org: orgId, class: classId }}
+          family={family}
+        />
         {canEdit && !small && (
           <div className={styles.field}>
             <span className={styles.fieldLabel}>Grading periods</span>
