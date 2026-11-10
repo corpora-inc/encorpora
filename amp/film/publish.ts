@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 import { z } from "zod";
 import { templates } from "../src/math/engine";
 import {
-  approvedIds,
+  committedApprovalIds,
   assertReviewedFiles,
   canonical,
   planFilm,
@@ -38,7 +38,14 @@ const grades: Record<string, Approval> = await json(
   join(config.reviewDir, "grades.json"),
 );
 const rows: ReviewRow[] = await json(join(config.reviewDir, "index.json"));
-const ids = approvedIds(grades, rows);
+const committedPaths = new Set(
+  execFileSync("git", ["-C", root, "ls-tree", "-r", "--name-only", "HEAD", "--", "amp/film/lessons"], {
+    encoding: "utf8", stdio: ["ignore", "pipe", "ignore"],
+  }).trim().split("\n"),
+);
+const { ids, pending } = committedApprovalIds(grades, rows, committedPaths);
+if (pending.length)
+  console.warn(`Skipped ${pending.length} approved films until their screenplays are committed: ${pending.join(", ")}`);
 const plans = [];
 const snapshots = new Map<string, string>();
 async function snapshot(path: string, approval: Approval) {
@@ -175,7 +182,7 @@ if (process.argv.includes("--check")) {
           join(config.reviewDir, "index.json"),
         );
         if (
-          canonical(approvedIds(currentGrades, currentRows)) !==
+          canonical(committedApprovalIds(currentGrades, currentRows, committedPaths).ids) !==
             canonical(ids) ||
           ids.some((id) => currentGrades[id]?.added !== grades[id]?.added)
         )

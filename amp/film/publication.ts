@@ -54,6 +54,19 @@ export function approvedIds(
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([id]) => id);
 }
+/** Reviews can arrive while a committed release batch is being published. */
+export function committedApprovalIds(
+  grades: Record<string, Approval>,
+  rows: ReviewRow[],
+  committedPaths: ReadonlySet<string>,
+) {
+  const ids: string[] = [], pending: string[] = [];
+  for (const id of approvedIds(grades, rows)) {
+    if (!/^[a-z0-9-]+$/.test(id)) throw new Error("Invalid film ID");
+    (committedPaths.has(`amp/film/lessons/${id}.json`) ? ids : pending).push(id);
+  }
+  return { ids, pending };
+}
 const time = z.number().finite().nonnegative();
 const timingSchema = z
   .object({
