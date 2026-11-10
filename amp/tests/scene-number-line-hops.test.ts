@@ -62,3 +62,44 @@ test("overlapping jumps are drawn at different heights", () => {
   assert.equal(apex.length, 2);
   assert.ok(Math.abs(apex[0]! - apex[1]!) >= 40, `control heights ${apex}`);
 });
+
+/** Points along every hop's bow and the corners of its head, as drawn. */
+function hopInk(scene: Scene) {
+  const points: [number, number][] = [];
+  for (const d of layoutScene(scene, { reveal: false }).items) {
+    if (d.k !== "path" || !/\.hop\.\d+(\.head)?$/.test(d.id ?? "")) continue;
+    const n = (d as { d: string }).d.match(/-?\d+(\.\d+)?/g)!.map(Number);
+    if (d.id!.endsWith(".head"))
+      for (let i = 0; i + 1 < n.length; i += 2) points.push([n[i]!, n[i + 1]!]);
+    else if (n.length === 6)
+      for (let k = 0; k <= 32; k++) {
+        const t = k / 32;
+        const at = (a: number, c: number, b: number) =>
+          (1 - t) ** 2 * a + 2 * t * (1 - t) * c + t * t * b;
+        points.push([at(n[0]!, n[2]!, n[4]!), at(n[1]!, n[3]!, n[5]!)]);
+      }
+  }
+  return points;
+}
+
+test("the start label keeps clear of every hop's bow and arrowhead", () => {
+  for (const seeds of ["scene", "jumps"])
+    for (let i = 0; i < 60; i++) {
+      const p = generateProblem(
+        "number-line-jump-story",
+        `${seeds}-${i}`,
+      ).public;
+      if (p.figure?.kind !== "scene") continue;
+      const scene = p.figure.scene;
+      const start = labelBoxes(scene).find((b) =>
+        /mark\.\d+\.label$/.test(b.id),
+      )!;
+      for (const [x, y] of hopInk(scene))
+        assert.ok(
+          // Inside the label's em box is ink on ink (digits have no
+          // descenders, so its foot is already air).
+          x < start.x0 || x > start.x1 || y < start.y0 || y > start.y1,
+          `${seeds}-${i}: start label ${JSON.stringify(start)} touches a hop at ${x},${y}`,
+        );
+    }
+});

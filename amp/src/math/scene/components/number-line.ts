@@ -10,6 +10,8 @@ const HOP_LANE = 30;
 const HOP_NARROW = 44;
 /** Distance of a label beside a hop's foot. */
 const HOP_BESIDE = 22;
+/** A hop landing closer than this to a labeled point crowds its label. */
+const HOP_CROWDED = 46;
 
 /** A number line with ticks, marks, intervals and hops. */
 export const numberLineSchema = z
@@ -110,10 +112,19 @@ function markPlacements(
   const above: Place = [0, -12, 0, 1];
   const below: Place = [0, 12, 0, -1];
   const high: Place = [0, -34, 0, 1];
-  if (sides.size === 1) return [sides.has(1) ? left : right, above, high];
+  // Past the head of a hop that lands just beside the point.
+  const farLeft: Place = [-20, -6, 1, 1];
+  const farRight: Place = [20, -6, -1, 1];
+  if (sides.size === 1)
+    return [
+      sides.has(1) ? left : right,
+      above,
+      high,
+      sides.has(1) ? farLeft : farRight,
+    ];
   // Hops on both sides: below the axis, between the tick labels, if it fits.
   if (sides.size === 2) return [below, above, left, right, high];
-  return [above, left, right, high];
+  return [above, left, right, high, farLeft, farRight];
 }
 
 registerComponent("numberLine", {
@@ -298,7 +309,19 @@ registerComponent("numberLine", {
         color: m.color ?? "warm",
         data: { mark: m.at },
       });
-      if (m.label !== undefined && m.label !== false)
+      if (m.label !== undefined && m.label !== false) {
+        // Another hop landing just beside the point leaves no room above the
+        // axis between the arcs and that hop's head. The value then reads in
+        // the number row, under its dot, in place of the tick numbers it
+        // covers (they are optional and give way).
+        const crowded = (c.hops ?? []).some((hop) => {
+          const to = clean(hop.from + hop.by);
+          return (
+            hop.from !== m.at &&
+            to !== m.at &&
+            Math.abs(to - m.at) * s < HOP_CROWDED
+          );
+        });
         prims.push({
           type: "text",
           id: `mark.${i}.label`,
@@ -307,9 +330,14 @@ registerComponent("numberLine", {
           derived: m.derived,
           bold: true,
           color: m.color ?? "warm",
-          align: [0, 1],
-          place: markPlacements(c.hops ?? [], m.at),
+          ...(crowded && m.label === true
+            ? { offset: [0, 10] as [number, number], align: [0, -1] as [0, -1] }
+            : {
+                align: [0, 1] as [0, 1],
+                place: markPlacements(c.hops ?? [], m.at),
+              }),
         });
+      }
     }
     return prims;
   },

@@ -346,6 +346,38 @@ function draw(
           length: chord + Math.abs(bend) * 1.6,
         });
         items.push(head(`${id}.head`, x2, y2, tx, ty, stroke, w));
+        if (bend) {
+          // A placed label keeps off the whole bow and its head, not only
+          // the apex: a start label beside a hop's foot would otherwise sit
+          // on the next hop's arm or arrowhead.
+          const at = (t: number) => [
+            (1 - t) ** 2 * x1 + 2 * t * (1 - t) * cx + t * t * ex,
+            (1 - t) ** 2 * y1 + 2 * t * (1 - t) * cy + t * t * ey,
+          ];
+          for (let i = 0; i < 16; i++)
+            segments.push([...at(i / 16), ...at((i + 1) / 16)] as [
+              number,
+              number,
+              number,
+              number,
+            ]);
+          const len = 6 + 2 * w,
+            half = 2.4 + w;
+          const bx = x2 - tx * len,
+            by = y2 - ty * len;
+          const corners = [
+            [x2, y2],
+            [bx - ty * half, by + tx * half],
+            [bx + ty * half, by - tx * half],
+          ];
+          // A head reads as touching sooner than a thin stroke: 2px more air.
+          obstacles.push({
+            x0: Math.min(...corners.map((c) => c[0]!)) - 2,
+            y0: Math.min(...corners.map((c) => c[1]!)) - 2,
+            x1: Math.max(...corners.map((c) => c[0]!)) + 2,
+            y1: Math.max(...corners.map((c) => c[1]!)) + 2,
+          });
+        }
         // The bow's apex keeps labels away from the curve.
         const apex = { x: (x1 + 2 * cx + x2) / 4, y: (y1 + 2 * cy + y2) / 4 };
         obstacles.push({
@@ -745,11 +777,23 @@ function placeTexts(
         continue;
       }
       if (!chosen) {
-        const [dx, dy, cx, cy] = t.p.place[0]!;
-        chosen = [
-          anchorX + dx - ((cx + 1) / 2) * t.t.width,
-          anchorY + dy - ((cy + 1) / 2) * h + t.t.ascent,
-        ];
+        // Nowhere is clear: the candidate that touches least (another label
+        // worst, then a mark or head, then each piece of stroke it crosses),
+        // the author's order among equals.
+        let least = Infinity;
+        for (const [dx, dy, cx, cy] of t.p.place) {
+          const x = anchorX + dx - ((cx + 1) / 2) * t.t.width,
+            y = anchorY + dy - ((cy + 1) / 2) * h + t.t.ascent;
+          const b = inkBox(x, y, t.t);
+          const touches =
+            8 * placed.filter((o) => overlaps(o, b, 3)).length +
+            4 * obstacles.filter((o) => overlaps(o, b, 2)).length +
+            segments.filter((g) => segmentHitsBox(...g, grown(b, 2))).length;
+          if (touches < least) {
+            least = touches;
+            chosen = [x, y];
+          }
+        }
       }
       emit(t, ...chosen);
     } else if (t.p.optional && !clear(inkBox(t.x, t.y, t.t)))
