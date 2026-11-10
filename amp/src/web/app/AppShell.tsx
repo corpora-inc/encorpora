@@ -33,6 +33,7 @@ import {
   ProfileMark,
 } from "../features/profiles/ProfileBar";
 import { Tabs } from "../ui/Tabs";
+import { Toast } from "../ui/Toast";
 import { AppLogo } from "../ui/AppLogo";
 import bar from "../ui/AppBar.module.css";
 import styles from "./AppShell.module.css";
@@ -335,7 +336,8 @@ function practiceTarget(
   return learner ? null : { path: "/start", label: "Get started" };
 }
 
-/** A drawer that fails to load leaves the screen and its bar working. */
+/** A drawer that fails to load leaves the screen and its bar working, and
+ * the menu button says why it cannot open. */
 class DrawerRecovery extends Component<
   { children: ReactNode },
   { failed: boolean }
@@ -348,6 +350,20 @@ class DrawerRecovery extends Component<
     console.error("The menu could not be loaded", error.name);
   }
   render() {
-    return this.state.failed ? null : this.props.children;
+    return this.state.failed ? <MenuUnavailable /> : this.props.children;
   }
+}
+function MenuUnavailable() {
+  const open = useShellSlots((state) => state.drawerOpen);
+  const setOpen = useShellSlots((state) => state.setDrawerOpen);
+  return (
+    <Toast
+      message={
+        open
+          ? "Your menu could not be loaded. Reload the page to try again."
+          : ""
+      }
+      onDismiss={() => setOpen(false)}
+    />
+  );
 }

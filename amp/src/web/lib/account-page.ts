@@ -1,3 +1,6 @@
-/** Public information and sign-in do not load a private account snapshot. */
+/** Public information, sign-in and the component gallery (fixtures only) do
+ * not load a private account snapshot. */
 export const hasAccountContext = (pathname: string) =>
-  !/^\/(sign-in|sign-up|reset-password|join|c|schools|p)(\/|$)/.test(pathname);
+  !/^\/(sign-in|sign-up|reset-password|join|c|schools|p|design)(\/|$)/.test(
+    pathname,
+  );

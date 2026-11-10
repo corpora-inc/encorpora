@@ -295,7 +295,7 @@ export function buildAxisNumberPlot(
     },
     answer: serializePlot([point], false),
     explanation,
-    hint: "A real number sits on the across axis. A number that is only an imaginary part sits on the up axis. The sign chooses the direction.",
+    hint: `The number is $${cxInt(a, b)}$. A real number sits on the across axis. A number that is only an imaginary part sits on the up axis. The sign chooses the direction.`,
     pointGrading: { mode: "exact" },
     walkthrough: pointPlotScene(response, {
       answer: [point],

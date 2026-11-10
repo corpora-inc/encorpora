@@ -65,3 +65,9 @@ test("a family's progress link stays out of search and sends no referrer", () =>
     /amp-security-headers\.conf;[\s\S]*Referrer-Policy no-referrer always;/,
   );
 });
+
+test("the component gallery stays out of search", () => {
+  const block = /location = \/design \{([^}]*)\}/.exec(conf)?.[1] ?? "";
+  assert.match(block, /X-Robots-Tag "noindex, nofollow" always;/);
+  assert.match(block, /include \/etc\/nginx\/amp-security-headers\.conf;/);
+});

@@ -25,6 +25,7 @@ import {
 import { noticeDigest } from "../src/parent-consent/crypto";
 import { consentFixture } from "../tests/parent-consent.fixture";
 import { retentionNotice } from "../src/family/contracts";
+import { fixtureMe } from "./me-fixture";
 
 /**
  * A scripted browser walk through the funnel. The real web helper sends
@@ -109,7 +110,8 @@ const offers = ["year", "month"].map((interval, i) => ({
   learnerCount: 1,
 }));
 const checkoutVisitors: string[] = [];
-let phase: "ready" | "checkout-open" | "processing" | "paid" = "ready";
+let phase: "ready" | "checkout-open" | "processing" | "paid" | "assigned" =
+  "ready";
 
 async function serve(page: Page, faults: string[]) {
   // This fixture exercises customer reports. Automated exclusion has its own browser test.
@@ -151,29 +153,33 @@ async function serve(page: Page, faults: string[]) {
         body: await forwarded.text(),
       });
     }
+    // The starter's family: one child, practicing on the free allowance.
     if (path === "/me")
       return route.fulfill({
-        json: {
-          signedIn: true,
-          account: {
-            id: "synthetic-parent",
-            email: "parent@example.test",
-            emailVerified: true,
-          },
-          consent: { status: "none", method: null },
-          learners: [],
-          family: {
+        json: fixtureMe(
+          {
             consent: {
               status: "not-recorded",
               policyVersion: null,
               recordedAt: null,
               withdrawnAt: null,
             },
-            learners: [],
+            learners: [
+              {
+                id: "funnel-child",
+                name: "Fox",
+                birthYear: 2016,
+                deletedAt: null,
+                access: [],
+                stripeLinked: phase === "assigned",
+                canPractice: true,
+                hasAccess: phase === "assigned",
+              },
+            ],
             retained: retentionNotice,
           },
-          next: "choose-plan",
-        },
+          "synthetic-parent",
+        ),
       });
     if (path === "/billing/offer")
       return route.fulfill({
@@ -204,6 +210,11 @@ async function serve(page: Page, faults: string[]) {
                 },
         },
       });
+    }
+    // The paid plan becomes the child's.
+    if (path === "/billing/enrollment/claim") {
+      phase = "assigned";
+      return route.fulfill({ json: { assigned: true } });
     }
     if (path === "/billing/enrollment/checkout") {
       checkoutVisitors.push(req.headers()["x-amp-visitor"] ?? "");
@@ -312,8 +323,8 @@ try {
     ["paywall_view", { reason: "limit" }],
   ]);
   await settled(13);
-  // The parent opens the plan step after free practice.
-  await page.goto(`${origin}/start/plan`);
+  // After free practice the parent continues with AMP for their child.
+  await page.goto(`${origin}/continue/funnel-child`);
   await page.getByRole("radio", { name: /Monthly/ }).click();
   await page.getByRole("radio", { name: /Annual/ }).click();
   await page.getByRole("checkbox").click();
@@ -338,15 +349,20 @@ try {
   await page.goto(
     `${origin}/start/purchase?billing=processing&purchase=${purchaseId}`,
   );
-  await page
-    .getByRole("heading", { name: "Payment confirmed" })
-    .waitFor({ timeout: 15000 });
+  // Paid: the plan becomes the child's and the screen goes back.
+  await page.waitForURL((url) => !url.pathname.startsWith("/start"), {
+    timeout: 15000,
+  });
+  assert.equal(phase, "assigned", "the paid plan is claimed for the child");
   await recordVerifiedPurchase(pool, checkout, "year");
   await milestones(page, [
     ["learner_added", { ageBand: "6-8" }],
     ["paid_practice_first"],
   ]);
   await settled(13 + 4 + 1 + 1 + 2);
+  // Visitor 1 leaves. The home screen they returned to is past the walk;
+  // its fixture-ended requests must not slow the next visitor's load.
+  await buyer.close();
 
   // Visitor 2 tries free, dismisses an invitation to buy and leaves.
   const leaver = await browser.newContext({
