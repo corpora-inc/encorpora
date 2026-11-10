@@ -1,3 +1,4 @@
+import { count, isAre, nounFor } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { numberWords } from "./staar-gap-practice";
 import { array, numberLine, scene } from "./scene/author";
@@ -120,7 +121,7 @@ export function numberNames(c: Context): GeneratedProblem {
     c.r(0, 1) ? `Which number name means ${n}?` : `Write ${name} as a numeral.`,
     `The word hundred means a group of 100. Keep a place for each group and each extra one.`,
     [
-      `${n} has ${hundreds} hundreds, ${tens} tens and ${ones} ones.`,
+      `${n} has ${count(hundreds, "hundred")}, ${count(tens, "ten")} and ${count(ones, "one")}.`,
       `${tex(`${n}=${hundreds * 100}+${n % 100}`)}. Its number name is ${name}.`,
       "A zero keeps a place when there are no tens or no extra ones.",
     ],
@@ -180,16 +181,16 @@ export function generatePlaceClause(c: Context): GeneratedProblem {
       n = teen ? 10 + d : d * (hundred ? 100 : 10),
       mode = r(0, teen ? 1 : 2);
     const [h, tens, ones] = digits(n),
-      count = hundred ? h : tens;
+      groups = hundred ? h : tens;
     const t = teaching(
       mode === 1 && !teen
-        ? `What number is ${d} ${hundred ? "hundreds" : d === 1 ? "ten" : "tens"}, ${hundred ? "0 tens and " : ""}0 ones?`
+        ? `What number is ${count(d, hundred ? "hundred" : "ten")}, ${hundred ? "0 tens and " : ""}0 ones?`
         : mode === 1 || (mode === 0 && !teen)
           ? `${n} has which digits in its ${hundred ? "hundreds, tens and ones" : "tens and ones"} places?`
           : `Read the model. Fill the ${hundred ? "hundreds, tens and ones" : "tens and ones"} digits${(mode === 0 && teen) || mode === 2 ? " and the number" : ""}.`,
       `Each ${hundred ? "hundred" : "ten"} is ${hundred ? 100 : 10} ones. Count the groups and the extra ones separately.`,
       [
-        `${n} means ${hundred ? `${h} hundreds, ` : ""}${tens} ${tens === 1 ? "ten" : "tens"} and ${ones} ones.`,
+        `${n} means ${hundred ? `${count(h, "hundred")}, ` : ""}${count(tens, "ten")} and ${count(ones, "one")}.`,
         `${tex(`${n}=${h * 100}+${tens * 10}+${ones}`)}. A digit counts groups of its place value.`,
       ],
     );
@@ -199,7 +200,7 @@ export function generatePlaceClause(c: Context): GeneratedProblem {
       ...(hundred
         ? [numericSlot("hundreds", "Hundreds digit", h, [n, h * 10])]
         : []),
-      numericSlot("tens", "Tens digit", tens, [teen ? d : 0, count * 10, n]),
+      numericSlot("tens", "Tens digit", tens, [teen ? d : 0, groups * 10, n]),
       numericSlot("ones", "Ones digit", ones, [teen ? n : d, 10, teen ? 1 : n]),
       ...((mode === 0 && teen) || mode === 2
         ? [numericSlot("number", "Number", n, [d, d * 100, Number(`10${d}`)])]
@@ -239,8 +240,8 @@ export function generatePlaceClause(c: Context): GeneratedProblem {
       db = Math.floor(b / scale) % 10;
     const bText = equal
       ? three
-        ? `${Math.floor(b / 100)} hundreds, ${Math.floor(b / 10) % 10} tens and ${b % 10} ones`
-        : `${Math.floor(b / 10)} tens and ${b % 10} ones`
+        ? `${count(Math.floor(b / 100), "hundred")}, ${count(Math.floor(b / 10) % 10, "ten")} and ${count(b % 10, "one")}`
+        : `${count(Math.floor(b / 10), "ten")} and ${count(b % 10, "one")}`
       : String(b);
     const reason = equal
       ? "All corresponding place digits match, so the numbers are equal."
@@ -290,12 +291,12 @@ export function generatePlaceClause(c: Context): GeneratedProblem {
     const sign = more ? 1 : -1,
       ans = n + sign * 10,
       tens = Math.floor(n / 10);
-    const reason = `${more ? "Add" : "Remove"} one ten; ${tens} tens becomes ${tens + sign}. Keep ${n % 10} ones.`;
+    const reason = `${more ? "Add" : "Remove"} one ten; ${count(tens, "ten")} becomes ${tens + sign}. Keep ${count(n % 10, "one")}.`;
     const t = teaching(
       `What is 10 ${more ? "more" : "less"} than ${n}? Choose the answer and why.`,
       `Picture ${n} as rods of ten and separate ones. Change one rod.`,
       [
-        `${n} has ${tens} tens and ${n % 10} ones.`,
+        `${n} has ${count(tens, "ten")} and ${count(n % 10, "one")}.`,
         reason,
         `${tex(`${n}${more ? "+" : "-"}10=${ans}`)}.`,
       ],
@@ -321,12 +322,12 @@ export function generatePlaceClause(c: Context): GeneratedProblem {
       left = a - b;
     const relation = r(0, 2) === 0;
     const equation = tex(`${a * 10}-${b * 10}=${left * 10}`),
-      reason = `Each rod is ten. Remove ${b} tens; ${left} tens are left.`;
+      reason = `Each rod is ten. Remove ${count(b, "ten")}; ${count(left, "ten")} ${left === 1 ? "is" : "are"} left.`;
     const t = teaching(
       relation
         ? `${tex(`${b * 10}+\\square=${a * 10}`)}. Choose the matching take-away equation and its reason.`
-        : `The model shows ${a} rods of ten. Take away ${b} rods. Choose the equation and its reason.`,
-      `${a} rods are ${a * 10} ones. Each rod taken away is another ten.`,
+        : `The model shows ${count(a, "rod")} of ten. Take away ${count(b, "rod")}. Choose the equation and its reason.`,
+      `${count(a, "rod")} ${a === 1 ? "is" : "are"} ${a * 10} ones. Each rod taken away is another ten.`,
       [
         `Count the rods: ${tex(`${a}-${b}=${left}`)} tens.`,
         `${equation}, because each ten contains ten ones.`,
@@ -462,15 +463,17 @@ export function generatePlaceClause(c: Context): GeneratedProblem {
       first = r(1, 5) * factor + r(0, factor - 1),
       second = r(1, first - 1),
       groups = r(2, 6);
+    const unitAmount = (n: number, unit: string) =>
+      unit === "cups" ? count(n, "cup") : `${n} ${unit}`;
     const mixed = (n: number) =>
-      `${Math.floor(n / factor)} ${large} ${n % factor} ${small}`;
+      `${unitAmount(Math.floor(n / factor), large)} ${unitAmount(n % factor, small)}`;
     let prompt: string, answer: number, equation: string;
     if (op < 2) {
       answer = op === 0 ? first + second : first - second;
       prompt =
         op === 0
           ? `One ${object} contains ${mixed(first)} and another contains ${mixed(second)}. What is their total in ${small}?`
-          : `A ${object} contains ${mixed(first)}. ${second} ${small} is removed. How much is left in ${small}?`;
+          : `A ${object} contains ${mixed(first)}. ${unitAmount(second, small)} is removed. How much is left in ${small}?`;
       equation = `${first}${op === 0 ? "+" : "-"}${second}=${answer}`;
     } else if (op === 2) {
       const each = Math.min(first, Math.floor(20000 / groups));
@@ -490,7 +493,7 @@ export function generatePlaceClause(c: Context): GeneratedProblem {
         `Multiply the larger-unit amount by ${factor}, then add the remaining smaller units.`,
         [
           `Use 1 ${large} = ${factor} ${small} to express every measurement in the same unit.`,
-          `${tex(equation)}. The answer is ${answer} ${small}.`,
+          `${tex(equation)}. The answer is ${unitAmount(answer, small)}.`,
         ],
       ),
       answer,
@@ -505,10 +508,10 @@ export function generatePlaceClause(c: Context): GeneratedProblem {
       teaching(
         reverse
           ? `A board is ${dec(cm)} meters long. How many centimeters is that? Use 1 meter = 100 centimeters.`
-          : `A ribbon is ${cm} centimeters long. Write its length in meters. Use 1 meter = 100 centimeters.`,
+          : `A ribbon is ${count(cm, "centimeter")} long. Write its length in meters. Use 1 meter = 100 centimeters.`,
         `One centimeter is one hundredth of a meter. Use the factor 100 to change the unit.`,
         [
-          `${cm} centimeters is ${tex(`\\frac{${cm}}{100}`)} meters.`,
+          `${count(cm, "centimeter")} is ${tex(`\\frac{${cm}}{100}`)} meters.`,
           `${tex(`${cm}\\div100=${dec(cm)}`)}. In the other direction, multiply meters by 100.`,
         ],
       ),
@@ -560,7 +563,7 @@ export function generatePlaceClause(c: Context): GeneratedProblem {
       `Each small step is ${tex(`1/${d}`)} of the unit. Count those equal parts.`,
       [
         `Use parts of size ${tex(`1/${d}`)} throughout the calculation.`,
-        `${tex(`${expression}=${n}/${d}`)} ${unit}. Mark ${n} steps from zero.`,
+        `${tex(`${expression}=${n}/${d}`)} ${nounFor(n, singular, unit)}. Mark ${count(n, "step")} from zero.`,
       ],
     );
     const values = shuffle(r, [
@@ -734,11 +737,11 @@ export function generatePlaceClause(c: Context): GeneratedProblem {
         multiply ? 2 : 2 + exponent,
       );
     const reason = whole
-      ? `Move digits ${exponent} places left; fill empty places with ${exponent} zeros.`
+      ? `Move digits ${count(exponent, "place")} left; fill empty places with ${count(exponent, "zero")}.`
       : `Each digit becomes ${10 ** exponent} times ${multiply ? "as much; move left" : "smaller; move right"}.`;
     const t = teaching(
       `${tex(`${base}${multiply ? "\\times" : "\\div"}10^{${exponent}}=\\square`)}. Choose the value and its place-value reason.`,
-      `One factor of 10 changes every digit's value tenfold. There are ${exponent} such factors.`,
+      `One factor of 10 changes every digit's value tenfold. There ${isAre(exponent)} ${count(exponent, "such factor")}.`,
       [
         `${tex(`10^{${exponent}}=${10 ** exponent}`)}.`,
         reason,
@@ -774,7 +777,7 @@ export function generatePlaceClause(c: Context): GeneratedProblem {
               ]
             : []),
           `Multiply the number by the exponent ${exponent}.`,
-          `Move every digit ${exponent} places ${multiply ? "right" : "left"}.`,
+          `Move every digit ${count(exponent, "place")} ${multiply ? "right" : "left"}.`,
         ],
       },
     ]);
@@ -818,8 +821,8 @@ export function generatePlaceClause(c: Context): GeneratedProblem {
         : `${n} is 10 and how many more ones?`,
       `One full frame holds 10 ones. Count only the extra ones.`,
       [
-        `The full frame is ten ones. There are ${k} more ones.`,
-        `${tex(`10+${k}=${n}`)}. The number ${n} is one ten and ${k} extra ones.`,
+        `The full frame is ten ones. There ${isAre(k)} ${count(k, "more one")}.`,
+        `${tex(`10+${k}=${n}`)}. The number ${n} is one ten and ${count(k, "extra one")}.`,
       ],
     );
     if (family === "teen-decompose-picture") return problem(c, t, k);
