@@ -197,6 +197,11 @@
 }
 .goButton {
   width: 100%;
+  transition: opacity var(--motion-fast) var(--ease-standard);
+}
+.goButton[data-waiting] {
+  opacity: 0.38;
+  filter: none;
 }
 @media (min-width: 560px) {
   .goButton {
@@ -224,40 +229,43 @@
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--space-1);
+  gap: var(--space-2);
   width: 100%;
-  padding: var(--space-1);
-  border: 1px solid var(--color-border);
-  border-radius: calc(var(--radius-control) + var(--space-1));
-  background: var(--color-surface-sunken);
 }
 @media (min-width: 560px) {
   .yearGrid {
     grid-template-columns: repeat(8, minmax(0, 1fr));
   }
 }
+/* Each year is a tile of its own: paper on the page, a clear edge, the
+   number in tabular figures. The chosen one fills with the brand ink. */
 .yearCell {
   min-width: 0;
-  min-height: var(--target-size, 44px);
+  min-height: 52px;
   padding: var(--space-2) var(--space-1);
-  border: 2px solid transparent;
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-control);
-  background: transparent;
-  color: var(--color-on-surface);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
   font: inherit;
   font-size: var(--text-body);
-  font-weight: 650;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
   cursor: pointer;
+  transition:
+    border-color var(--motion-fast) var(--ease-standard),
+    background-color var(--motion-fast) var(--ease-standard);
 }
 .yearCell:hover:not(:disabled) {
   filter: none;
-  background: var(--color-surface-raised);
+  border-color: var(--color-border-strong);
 }
-.yearCell[aria-checked="true"] {
-  border-color: var(--color-primary);
-  background: var(--color-surface-raised);
+.yearCell[aria-checked="true"],
+.yearCell[aria-checked="true"]:hover:not(:disabled) {
+  border-color: var(--color-selected);
+  background: var(--color-selected);
+  color: var(--color-on-selected);
 }
 .yearCell:focus-visible {
   outline: 3px solid var(--color-focus-ring);
@@ -275,4 +283,5 @@
   display: grid;
   gap: var(--space-3);
   width: 100%;
+  margin-top: var(--space-4);
 }

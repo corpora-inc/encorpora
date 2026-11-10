@@ -431,11 +431,9 @@ function Myself({
       <Start
         busy={busy}
         ready={picked !== null && (!adult || chosenStart !== null)}
-        missing={
-          picked === null
-            ? "Choose the year you were born."
-            : "Choose where to begin."
-        }
+        // The question says what is needed; a hint appears only for the
+        // second step it can't see yet.
+        missing={picked === null ? "" : "Choose where to begin."}
         lines={2}
         already={
           young
@@ -561,6 +559,8 @@ function Start({
       <Button
         variant="primary"
         className={styles.goButton}
+        // Waits faintly in its place until the answer is whole, then comes up.
+        data-waiting={(!ready && !already && !busy) || undefined}
         disabled={busy || (!ready && !already)}
         aria-busy={busy || undefined}
         onClick={already ? already.open : onClick}
