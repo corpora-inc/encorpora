@@ -1,4 +1,6 @@
 import { createHash } from "node:crypto";
+import { canonicalJson } from "../math/canonical-json";
+export { canonicalJson };
 import type { GradeBand } from "../curriculum/types";
 import { strandEstimate, type Frontier } from "../learning/frontier";
 import { templateRole } from "../learning/placement";
@@ -669,22 +671,6 @@ export function workbookMinutes(spec: WorkbookSpec): number {
       (s.kind === "lesson" ? LESSON_READING_MINUTES : 0),
     0,
   );
-}
-
-/** JSON with object keys sorted, so a spec read back from storage (JSONB
- * reorders keys) hashes the same as the one composed. */
-export function canonicalJson(value: unknown): string {
-  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(",")}]`;
-  if (value && typeof value === "object")
-    return `{${Object.keys(value)
-      .filter((k) => (value as Record<string, unknown>)[k] !== undefined)
-      .sort()
-      .map(
-        (k) =>
-          `${JSON.stringify(k)}:${canonicalJson((value as Record<string, unknown>)[k])}`,
-      )
-      .join(",")}}`;
-  return JSON.stringify(value);
 }
 
 /** A short code printed on the workbook so results can be entered against
