@@ -3,7 +3,7 @@
  * same-origin, so this page can read the playback time and seek without
  * editing the player. Grade controls inside the player are hidden.
  *
- *   review.html?id=<film>&list=lab|prod|one
+ *   review.html?id=<film>&list=lab|prod|one|fresh
  */
 import "../src/web/ui/tokens.css";
 import "./review.css";
@@ -115,9 +115,9 @@ async function openReview(filmId: string) {
   let draftT: number | null = null;
   let ready = false;
   let listName = params.get("list") ?? "";
-  if (!["lab", "prod", "one"].includes(listName)) {
+  if (!["lab", "prod", "one", "fresh"].includes(listName)) {
     const ref = document.referrer;
-    listName = ref.includes("lab.html") ? "lab" : ref.includes("one.html") ? "one" : ref.includes("prod.html") ? "prod" : "";
+    listName = ref.includes("fresh.html") ? "fresh" : ref.includes("lab.html") ? "lab" : ref.includes("one.html") ? "one" : ref.includes("prod.html") ? "prod" : "";
   }
 
   const root = $("div", "review", app);
@@ -403,7 +403,7 @@ async function openReview(filmId: string) {
 
   paintScore();
 
-  const names = listName ? [listName] : ["prod", "lab", "one"];
+  const names = listName ? [listName] : ["prod", "lab", "one", "fresh"];
   const noReviews: Record<string, Review> = {};
   const [loaded, catalog, savedAll] = await Promise.all([
     Promise.all(names.map(async (name) => ({ name, rows: await loadList(name) }))),
@@ -427,7 +427,7 @@ async function openReview(filmId: string) {
   }
   if (listName) {
     back.href = `${listName}.html`;
-    back.textContent = listName === "lab" ? "Model comparison" : listName === "one" ? "One at a time" : "Lesson films";
+    back.textContent = listName === "fresh" ? "Fresh films" : listName === "lab" ? "Model comparison" : listName === "one" ? "One at a time" : "Lesson films";
   }
   review.added = row?.added ?? "";
 

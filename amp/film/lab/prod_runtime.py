@@ -123,7 +123,7 @@ def page_rows(config):
     return rows
 
 
-def grouped_page(config, *, rows=None, single=False):
+def grouped_page(config, *, rows=None, single=False, fresh=False):
     """Group by curriculum order and type; expose no model or sibling labels."""
     data = Path(config['live_data'])
     rows = page_rows(config) if rows is None else rows
@@ -138,11 +138,13 @@ def grouped_page(config, *, rows=None, single=False):
             for row in sorted(siblings, key=lambda value: value['id']):
                 identifier = row['id']
                 minutes, seconds = divmod(round(row['seconds']), 60)
-                cards.append(f'<article data-film="{identifier}"><a class="film" href="review.html?id={identifier}&list={"one" if single else "prod"}">'
+                cards.append(f'<article data-film="{identifier}"><a class="film" href="review.html?id={identifier}&list={"fresh" if fresh else "one" if single else "prod"}">'
                              f'<span>{html.escape(row["title"])}<small>{identifier[-2:].upper()}</small></span>'
                              f'<span class="duration">{minutes}:{seconds:02}</span></a>'
                              f'<p class="details"><span class="status" id="status-{identifier}">Unreviewed</span>'
                              f'<span class="new" id="new-{identifier}" hidden>New</span></p></article>')
+                if fresh:
+                    cards.append('<p class="details">'+html.escape(_grade_title(row['grade']))+'</p>')
             cards.append('</section>')
         cards.append('</section>')
     payload = json.dumps(rows, ensure_ascii=False).replace('<', '\\u003c')
@@ -164,7 +166,10 @@ setTimeout(()=>location.reload(),300000);
         page = page.replace('Lessons follow curriculum order. Versions of the same problem type appear together.',
                             'One film at a time, newest first.')
         page = page.replace('amp-production-films-seen', 'amp-one-films-seen')
-    path = data.parent/('one.html' if single else 'prod.html')
+    if fresh:
+        page = page.replace('amp-one-films-seen', 'amp-fresh-films-seen')
+        page = page.replace('watch, approve or reject it, and leave a note.', 'watch, score it, and leave feedback.')
+    path = data.parent/('fresh.html' if fresh else 'one.html' if single else 'prod.html')
     temporary = path.with_suffix('.html.tmp')
     temporary.write_text(page)
     temporary.replace(path)
@@ -176,6 +181,9 @@ def export_worker(config, row, workspace):
     result = read_json(Path(config['root'])/'films'/row['id']/'voice-run.json',{})
     if result.get('exit_code') != 0:
         raise RuntimeError('Voiced timing has no passing kit check; export stopped')
+    if config.get('fresh_film'):
+        from fresh import fresh_page
+        return export(config, row, workspace, page_builder=fresh_page)
     if config.get('single_film'):
         from one import one_page
         return export(config, row, workspace, page_builder=one_page)

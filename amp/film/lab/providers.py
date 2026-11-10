@@ -226,8 +226,10 @@ def grok_output(stdout):
 
 
 def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
-              check_command=None, images=(), timeout=1800, max_dollars=None):
+              check_command=None, images=(), timeout=1800, max_dollars=None, effort='xhigh'):
     """One measured attempt. The caller owns retry limits and concurrency."""
+    if provider not in MODELS or effort not in ('low', 'medium', 'high', 'xhigh'):
+        raise ValueError('Unsupported model or reasoning effort')
     workspace, receipt = Path(workspace).resolve(), Path(receipt)
     workspace.mkdir(parents=True, exist_ok=True)
     receipt.parent.mkdir(parents=True, exist_ok=True)
@@ -242,7 +244,7 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
              'Do not edit source code, run Git, voice audio, or render MP4. '
              'Run kit checks only using the exact supplied check command, which invokes the heavy-command gate.')
     if provider in ('astra', 'sol'):
-        command = ['codex', 'exec', '-m', MODELS[provider], '-c', 'model_reasoning_effort="xhigh"',
+        command = ['codex', 'exec', '-m', MODELS[provider], '-c', f'model_reasoning_effort="{effort}"',
                    '-c', 'mcp_servers={}', '--ignore-user-config',
                    '--dangerously-bypass-approvals-and-sandbox', '--skip-git-repo-check',
                    '--ephemeral', '--json', '-C', str(workspace)]
@@ -250,7 +252,7 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
             command += ['-i', str(Path(path).resolve())]
         command += ['-']
     elif provider == 'grok':
-        command = ['grok', '-m', MODELS[provider], '--reasoning-effort', 'xhigh',
+        command = ['grok', '-m', MODELS[provider], '--reasoning-effort', effort,
                    '--prompt-file', str(prompt_path), '--cwd', str(workspace),
                    '--always-approve', '--rules', house, '--no-subagents',
                    '--disable-web-search', '--output-format', 'streaming-json']
@@ -260,7 +262,7 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
         env['ANTHROPIC_API_KEY'] = secrets['ANTHROPIC_API_KEY']
         command = ['claude', '-p', '--bare', '--restricted', '--strict-mcp-config',
                    '--mcp-config', '{"mcpServers":{}}', '--model', MODELS[provider],
-                   '--effort', 'xhigh', '--output-format', 'stream-json', '--verbose', '--include-partial-messages',
+                   '--effort', effort, '--output-format', 'stream-json', '--verbose', '--include-partial-messages',
                    '--no-session-persistence', '--permission-mode', 'dontAsk',
                    '--disable-slash-commands', '--append-system-prompt', house]
         if max_dollars is not None:
@@ -275,7 +277,7 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
         else:
             command += ['--tools', '']
     record = {'provider': provider, 'model': MODELS[provider], 'role': role,
-              'reasoning_effort': 'xhigh',
+              'reasoning_effort': effort,
               'output_format': 'streaming-json' if provider == 'grok' else 'json' if provider in ('astra', 'sol') else 'stream-json',
               'started_at': now(), 'prompt_sha256': hashlib.sha256(prompt.encode()).hexdigest(),
               'image_sha256': [hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in images],

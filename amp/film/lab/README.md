@@ -1,5 +1,43 @@
 # Lesson-film model lab
 
+## Random fresh film
+
+Run from the repository root with a production configuration containing the
+private media, standards, credentials, heavy-command gate and live-player paths:
+
+```sh
+python3 amp/film/lab/prod.py --config /private/production.json --phase fresh
+python3 amp/film/lab/prod.py --config /private/production.json --phase fresh --model sol --effort high
+```
+
+Each invocation draws uniformly from the full catalog of drawable problem types
+without an approved film. The local lesson library and current live approvals
+exclude types; numerical review scores qualify at 6 or above. A current score
+takes precedence over a legacy approve/reject verdict. The seed and eligible
+population are recorded; `--seed` reproduces the draw for the same population.
+
+Model and effort are independent uniform draws: Fable 5.2, Opus 5.5, Sonnet 5.5,
+Grok 4.7, Astra, or Sol, and low, medium, high, or xhigh. `--model` accepts the
+lowercase model nickname; `--effort` overrides effort. One author gets 45 minutes
+to write and check the entire film. It receives verbatim standards, ten generated
+problems with answers, the written lesson, kit mechanics and three approved format
+references. It receives no separate study, grade plan, family design or teaching
+policy, and there is no model review stage. The ten examples are a sample, not an
+exhaustive enumeration of cases.
+
+Private state and authoring workspaces live in `_fresh/<film-id>/`, beside the
+production root. `recipe.json` records the seed, model, effort, exact prompt,
+standards, stage times, tokens, costs and voice IDs. Unreported costs stay null.
+Teachers alternate Madeline and Paul; Champ is the learner. Voice checks and the
+50,000-credit reserve apply. Failures preserve evidence and stop the invocation;
+another invocation draws a new film and may incur new charges.
+
+The live `fresh.html` list shows type titles and grades, newest first, without model
+attribution. Links use `review.html?id=<film-id>&list=fresh`; the review page advances
+to the next unscored film in that list. Install the review page build with fresh
+list support before using it. The coordinator invokes heavy commands through the
+configured gate; do not wrap the coordinator itself in another gate.
+
 ## One film for founder feedback
 
 Run from the repository root with an existing production configuration and queue:

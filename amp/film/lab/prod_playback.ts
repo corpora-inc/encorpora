@@ -12,7 +12,7 @@ const { values } = parseArgs({ options: {
 if (!process.env.FILM_LAB_HEAVY) throw new Error("Run playback checks through the heavy-command gate");
 if (!values.url || !values.out || !values.ids) throw new Error("Required: --url <player-url> --out <private-directory> --ids <comma-separated-blind-ids>");
 const base = new URL(values.url);
-if (!['prod.html', 'one.html'].includes(values.page)) throw new Error('Unsupported review page');
+if (!['prod.html', 'one.html', 'fresh.html'].includes(values.page)) throw new Error('Unsupported review page');
 if (!['127.0.0.1', 'localhost', '[::1]'].includes(base.hostname)) throw new Error("Playback checks require the local review server");
 const ids = values.ids.split(',');
 if (!ids.length || ids.some(id => !/^[a-z0-9]+(?:-[a-z0-9]+)*--[a-z]{2}$/.test(id))) throw new Error("Invalid blind film IDs");
@@ -51,27 +51,34 @@ try {
     page.on('response', response => {
       if (new URL(response.url()).pathname.endsWith('/'+id+'.m4a')) audioResponses.push({ status: response.status(), url: response.url() });
     });
-    const url = new URL(base);
+    const url = values.page === 'fresh.html' ? new URL('review.html', base) : new URL(base);
     url.searchParams.set('id', id);
+    if (values.page === 'fresh.html') url.searchParams.set('list', 'fresh');
     await page.goto(url.href, { waitUntil: 'domcontentloaded' });
-    await page.waitForSelector('.live.ready', { timeout: 60000 });
-    await page.locator('.live-toggle').click();
-    await page.waitForFunction(() => document.querySelector('.live')?.classList.contains('playing') && Number(document.querySelector<HTMLInputElement>('.live-scrub')?.value) >= 2, undefined, { timeout: 30000 });
-    const playback = await page.evaluate(() => ({
+    const film = values.page === 'fresh.html' ? await (await page.waitForSelector('iframe')).contentFrame() : page;
+    if (!film) throw new Error('Review player iframe unavailable');
+    await film.waitForSelector('.live.ready', { timeout: 60000 });
+    if (values.page === 'fresh.html') {
+      await page.locator('a[href="fresh.html"]').waitFor();
+      if (geometry.links.length === 1 && !(await page.locator('.btn-next').isDisabled())) throw new Error('Single fresh film must not navigate to another list');
+    }
+    await film.locator('.live-toggle').click();
+    await film.waitForFunction(() => document.querySelector('.live')?.classList.contains('playing') && Number(document.querySelector<HTMLInputElement>('.live-scrub')?.value) >= 2, undefined, { timeout: 30000 });
+    const playback = await film.evaluate(() => ({
       seconds: Number(document.querySelector<HTMLInputElement>('.live-scrub')?.value),
       duration: Number(document.querySelector<HTMLInputElement>('.live-scrub')?.max),
       playing: document.querySelector('.live')?.classList.contains('playing'),
       viewport: innerWidth, scrollWidth: document.documentElement.scrollWidth,
     }));
-    await page.locator('.live-cover').click();
+    await film.locator('.live-cover').click();
     const at = Math.min(20, playback.duration/3);
-    await page.evaluate(time => {
+    await film.evaluate(time => {
       const scrub = document.querySelector<HTMLInputElement>('.live-scrub')!;
       scrub.value = String(time);
       scrub.dispatchEvent(new Event('input', { bubbles: true }));
       scrub.dispatchEvent(new Event('change', { bubbles: true }));
     }, at);
-    await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+    await film.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
     await page.screenshot({ path: join(values.out, id+'-phone.png') });
     if (!audioResponses.some(response => [200, 206].includes(response.status))) throw new Error('No successful audio response for '+id);
     if (errors.length || playback.scrollWidth > playback.viewport) throw new Error('Playback failure for '+id+': '+errors.join('; '));

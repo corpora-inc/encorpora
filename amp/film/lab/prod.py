@@ -400,7 +400,10 @@ def ensure_facts(config, rows):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--config',required=True)
-    parser.add_argument('--phase',choices=('prepare','smoke','run','status','one'),required=True)
+    parser.add_argument('--phase',choices=('prepare','smoke','run','status','one','fresh'),required=True)
+    parser.add_argument('--model', choices=MODELS)
+    parser.add_argument('--effort', choices=('low','medium','high','xhigh'))
+    parser.add_argument('--seed', type=int)
     parser.add_argument('--type', dest='type_id')
     parser.add_argument('--study', choices=MODELS, default='sonnet')
     parser.add_argument('--writer', choices=MODELS, default='astra')
@@ -410,6 +413,10 @@ def main():
     parser.add_argument('--stickler', action='store_true')
     args = parser.parse_args()
     config = read_json(args.config)
+    if args.phase == 'fresh':
+        from fresh import run_fresh
+        run_fresh(config, args)
+        return
     if args.phase == 'one':
         from one import run_one
         run_one(config, args)
@@ -493,7 +500,7 @@ if __name__ == '__main__':
         main()
     except Exception as error:
         import sys
-        single = '--phase=one' in sys.argv or ('--phase' in sys.argv and sys.argv[sys.argv.index('--phase')+1] == 'one')
+        single = any('--phase='+p in sys.argv for p in ('one','fresh')) or ('--phase' in sys.argv and sys.argv[sys.argv.index('--phase')+1] in ('one','fresh'))
         if '--config' in sys.argv and not single:
             config = read_json(sys.argv[sys.argv.index('--config')+1])
             root = private_destination(config['root'],config['worktree'])

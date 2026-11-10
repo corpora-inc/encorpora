@@ -88,8 +88,9 @@ def workspace_for(config, identifier):
     if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*--[a-z]{2}', identifier):
         raise ValueError('Invalid blind film ID')
     path = Path(config['workspace_root']).resolve()/identifier
-    if not path.is_relative_to(Path(config['worktree']).resolve()):
-        raise ValueError('Authoring workspace must be inside the lab worktree')
+    boundary = Path(config['root'])/'workspace' if config.get('fresh_film') else Path(config['worktree'])
+    if not path.is_relative_to(boundary.resolve()):
+        raise ValueError('Authoring workspace is outside its configured authoring boundary')
     return path
 
 
@@ -109,6 +110,14 @@ def prepare_workspace(config, row, facts, study):
     references = REFERENCES.get(family, ['rectangle-area', 'line-slope', 'fraction-line-position', 'two-step-word-problem'])
     for name in references:
         fixed_file(workspace/'references'/(name+'.json'), (kit/'lessons'/(name+'.json')).read_text())
+    return prepare_runtime(config, row, workspace)
+
+
+def prepare_runtime(config, row, workspace):
+    """Freeze executable kit mechanics independently of authoring instructions."""
+    source = Path(config['worktree'])/'amp'
+    kit = source/'film'
+    verify_shared_source(config)
     manifest_path = Path(config['root'])/'films'/row['id']/'runtime-manifest.json'
     runtime = workspace/'runtime/amp'
     if not manifest_path.exists():

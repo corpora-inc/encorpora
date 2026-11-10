@@ -14,7 +14,7 @@ function check(command: string, args: string[]) {
 describe("model-lab offline safety and recovery checks", () => {
   it("verifies sampling, privacy, retries, calibration snapshots and accounting", () => {
     check("python3", ["-m", "unittest", "discover", "-s", ".", "-p", "test_*.py"]);
-  });
+  }, 65_000); // The subprocess has its own 60-second deadline.
   it("verifies the narration reserve without API calls", () => {
     check(process.execPath, ["--test", "quota-hook.test.mjs"]);
   });

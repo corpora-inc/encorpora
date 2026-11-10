@@ -17,6 +17,47 @@ ALLOWED = {'id', 'title', 'problemType', 'skill', 'skillTitle', 'grade', 'strand
 MARKER = '<!-- film-lab-navigation -->'
 
 
+def instrument_export_paths(source):
+    """File URLs must be decoded before reading a screenplay on disk."""
+    anchor = 'const here = new URL(".", import.meta.url).pathname;'
+    if source.count(anchor) != 1:
+        raise RuntimeError('Export directory anchor changed; inspect the kit')
+    return 'import { fileURLToPath } from "node:url";\n'+source.replace(
+        anchor, 'const here = fileURLToPath(new URL(".", import.meta.url));')
+
+
+def migrate_export_paths(config, row, workspace):
+    """Preserve frozen sources; record a narrowly scoped runtime path repair."""
+    from runtime import digest, fixed_file, verify_runtime
+    verify_runtime(config, row, workspace)
+    root = Path(config['root'])
+    path = root/'films'/row['id']/'runtime-manifest.json'
+    manifest = read_json(path)
+    if manifest.get('export_path_policy') == 'decoded-file-url':
+        return
+    for receipt in (root/'runs'/row['id']).glob('*.json'):
+        record = read_json(receipt, {})
+        if record.get('status') == 'running' and record.get('role') == 'screenplay':
+            raise RuntimeError('Finish the author before migrating its export runtime')
+    module = Path(workspace)/'runtime/amp/film/export-live.ts'
+    before = module.read_text()
+    after = instrument_export_paths(before)
+    archive = root/'runtime-migrations'/row['id']/'decoded-file-url'
+    fixed_file(archive/'export-live.before.ts', before)
+    fixed_file(archive/'runtime-manifest.before.json', path.read_text())
+    temporary = module.with_suffix('.ts.tmp')
+    temporary.write_text(after)
+    temporary.replace(module)
+    entry = next(e for e in manifest['files'] if e['relative'] == 'film/export-live.ts')
+    entry['runtime_sha256'] = digest(module)
+    manifest['export_path_policy'] = 'decoded-file-url'
+    write_json(path, manifest)
+    verify_runtime(config, row, workspace)
+    write_json(archive/'receipt.json', {'at': now(), 'policy': 'decoded-file-url',
+               'before_sha256': hashlib.sha256(before.encode()).hexdigest(),
+               'after_sha256': digest(module)})
+
+
 def player_copy(payload):
     value = {key: payload[key] for key in ALLOWED if key in payload}
     value = json.loads(json.dumps(value))
@@ -80,8 +121,8 @@ refresh();setInterval(refresh,60000);
 def export_worker(config, row, workspace, *, page_builder=grouped_page):
     if not os.environ.get('FILM_LAB_HEAVY'):
         raise RuntimeError('Audio export requires the heavy-command gate')
-    from runtime import verify_runtime, validate_cast
-    verify_runtime(config, row, workspace)
+    from runtime import validate_cast
+    migrate_export_paths(config, row, workspace)
     validate_cast(Path(workspace)/'screenplay.json', row['id'])
     root, data = Path(config['root']), Path(config['live_data'])
     stage = root/'export-staging'/row['id']
