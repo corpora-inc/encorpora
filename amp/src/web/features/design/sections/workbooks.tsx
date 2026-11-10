@@ -86,7 +86,7 @@ export function WorkbookSections() {
             />
           </div>
         </Specimen>
-        <Specimen label="Without dates (one day's list)" wide>
+        <Specimen label="Two workbooks" wide>
           <div inert>
             <WorkbookList
               session={session}
@@ -94,7 +94,6 @@ export function WorkbookSections() {
               query={query({
                 data: { workbooks: workbooks.slice(0, 2), pdf: true },
               })}
-              showDates={false}
             />
           </div>
         </Specimen>
