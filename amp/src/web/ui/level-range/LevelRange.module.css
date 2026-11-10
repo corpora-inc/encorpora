@@ -125,7 +125,7 @@
   --name-column: 132px;
   --numbers-column: 80px;
   display: grid;
-  gap: var(--space-6);
+  gap: var(--space-5);
 }
 /* One column: the best guess (with the next step beside it), every area,
    then the path the estimate took. */
@@ -184,7 +184,7 @@ h2.eyebrow {
   flex-wrap: wrap;
   align-items: baseline;
   gap: var(--space-1) var(--space-2);
-  margin: var(--space-3) 0 0;
+  margin: var(--space-2) 0 0;
   font-size: var(--text-heading-3);
   font-weight: 600;
 }
@@ -196,7 +196,7 @@ h2.eyebrow {
 }
 .summary {
   max-width: 44ch;
-  margin: var(--space-4) 0 0;
+  margin: var(--space-2) 0 0;
   color: var(--color-muted-text);
   font-size: var(--text-dense);
   line-height: 1.5;
@@ -215,10 +215,10 @@ h3.caption {
 /* The path of the estimate. */
 .pathFigure {
   display: grid;
-  gap: var(--space-3);
+  gap: var(--space-2);
   min-width: 0;
   margin: 0;
-  padding-top: var(--space-5);
+  padding-top: var(--space-4);
   border-top: 1px solid var(--color-border);
 }
 .path {
@@ -335,9 +335,14 @@ h3.caption {
 /* Every area on one scale, the overall estimate first and larger. */
 .areas {
   display: grid;
-  gap: var(--space-3);
-  padding-top: var(--space-5);
+  gap: var(--space-2);
+  padding-top: var(--space-4);
   border-top: 1px solid var(--color-border);
+}
+/* Without the range numbers the end column only says "Not yet": the bars
+   take the rest. Rows and axis share it, so they stay aligned. */
+.rowsBare {
+  --numbers-column: 64px;
 }
 /* Two classes deep, so a page's own list rules never reach the rows. */
 .rows,

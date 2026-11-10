@@ -27,6 +27,11 @@ import teacher from "../school/classes/Teacher.module.css";
 import type { OwnPractice } from "../../../account/adult-contracts";
 import type { Frontier } from "../pathways/model";
 import { ownPracticeOptions } from "./api";
+import { useHeroAction } from "../../lib/shell-slots";
+import {
+  useCurriculumDetails,
+  useCurriculumPreferences,
+} from "../curriculum/CurriculumDetails";
 import styles from "./Own.module.css";
 
 /** The adult's own place, under the app frame's bar (logo, the Progress tabs
@@ -86,6 +91,12 @@ export function OwnRecordScreen() {
       )
     : undefined;
   const left = freeLeft(own);
+  // An adult always sees their levels by name; the working level's decimals
+  // only when they have switched grade numbers on for this device.
+  const { scope } = useCurriculumDetails();
+  const numbersShown = useCurriculumPreferences(
+    (state) => state.shown[scope] === true,
+  );
   if (record.isPending || (data && frontier.isPending))
     return (
       <OwnPage>
@@ -116,41 +127,24 @@ export function OwnRecordScreen() {
   const level = frontier.data!;
   const started = level.overall.answered > 0;
   const shown = activityShown(data);
-  const practice = data.learner.active ? (
-    <Link
-      to="/$"
-      params={{ _splat: "practice" }}
-      className={buttonClass("primary", styles.practice)}
-    >
-      <svg viewBox="0 0 16 16" aria-hidden="true">
-        <path d="M4.5 2.8v10.4L13 8 4.5 2.8Z" />
-      </svg>
-      {started ? "Practice" : "Start practicing"}
-    </Link>
-  ) : undefined;
+  // Before the first answer the page's own Start practicing is the one
+  // Practice; after, the bar's is (one per screen).
+  const hero = !started && data.learner.active;
   return (
     <OwnPage>
-      <div className={styles.stack}>
-        {/* The title names the content; the rare actions sit quietly on its
-            row (docs/design/ia.md). Practicing as someone else is in the
-            drawer, under My practice. */}
+      <HeroAction active={hero} />
+      <div className={styles.stack} data-own-page>
+        {/* Just the title (docs/design/ia.md). Workbooks is a tab of My
+            practice, practicing as someone else is in the drawer, and the
+            page prints itself (Cmd+P). The free count is one quiet line,
+            on a wide screen only. */}
         <header className={styles.titleRow}>
           <h1 id="me-title">Where you are</h1>
-          <div className={styles.toolActions} data-own-tools>
-            {left != null && left > 0 && (
-              <span className={styles.free} data-free-left={left}>
-                {freeProblemsLeft(left)}
-              </span>
-            )}
-            <Link
-              to="/learners/$learnerId/workbooks"
-              params={{ learnerId: data.learner.id }}
-              className={buttonClass("quiet", styles.quiet)}
-            >
-              <BookIcon />
-              Workbooks
-            </Link>
-          </div>
+          {left != null && left > 0 && (
+            <span className={styles.free} data-free-left={left}>
+              {freeProblemsLeft(left)}
+            </span>
+          )}
         </header>
         {/* Paused only when no access covers them and their free problems
             are used: the one pause, with Continue with AMP for their own
@@ -174,14 +168,27 @@ export function OwnRecordScreen() {
             pathState={
               trend.isError ? "failed" : trend.data ? "ready" : "loading"
             }
-            action={practice}
+            decimals={numbersShown}
           />
         ) : (
           <LevelRangeStart
             title={null}
             labelledBy="me-title"
             start={level.overall}
-            action={practice}
+            action={
+              hero ? (
+                <Link
+                  to="/$"
+                  params={{ _splat: "practice" }}
+                  className={buttonClass("primary", styles.practice)}
+                >
+                  <svg viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M4.5 2.8v10.4L13 8 4.5 2.8Z" />
+                  </svg>
+                  Start practicing
+                </Link>
+              ) : undefined
+            }
           />
         )}
         {/* Their time and work, each part only once it has something to
@@ -237,11 +244,8 @@ export function activityShown(data: Pick<OwnPractice, "record" | "time">) {
   };
 }
 
-function BookIcon() {
-  return (
-    <svg viewBox="0 0 20 20" aria-hidden="true" className={styles.icon}>
-      <path d="M3.5 4.5c2.2-.9 4.4-.9 6.5.6 2.1-1.5 4.3-1.5 6.5-.6v11c-2.2-.9-4.4-.9-6.5.6-2.1-1.5-4.3-1.5-6.5-.6z" />
-      <path d="M10 5.1v11" />
-    </svg>
-  );
+/** Marks the bar's Practice as stood in for while `active`. */
+function HeroAction({ active }: { active: boolean }) {
+  useHeroAction(active);
+  return null;
 }

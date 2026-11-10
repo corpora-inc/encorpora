@@ -123,7 +123,8 @@ test("class sub-screens retain their tab and existing URLs", () => {
     "Students",
     "Settings",
   ]);
-  // A learner's workbooks belong to their Overview: the Progress tabs stay.
+  // A learner's workbooks are on the Progress frame (My practice's
+  // Workbooks tab for the adult's own).
   for (const path of [
     "/learners/child/workbooks",
     "/learners/child/workbooks/2026-11-09",
@@ -131,7 +132,7 @@ test("class sub-screens retain their tab and existing URLs", () => {
   ])
     expect(shellFrame(path), path).toEqual({
       kind: "progress",
-      active: "overview",
+      active: "workbooks",
     });
   // A family's or tutor's class: Grades only past six learners.
   expect(
@@ -159,6 +160,13 @@ test("class sub-screens retain their tab and existing URLs", () => {
   expect(shellFrame("/school/org/students/kai")).toMatchObject({
     kind: "school",
   });
+  expect(progressTabs("own", "adult-1").map((tab) => tab.label)).toEqual([
+    "Overview",
+    "Pathways",
+    "Inventory",
+    "Workbooks",
+  ]);
+  expect(progressTabs("learner", "adult-1")).toHaveLength(3);
 });
 
 test("school sub-screens map to seven tabs and respect capabilities", () => {
