@@ -21,7 +21,7 @@ export function filmReturn(value: unknown, templateId: string) {
     !/[\\\r\n]/.test(value)
   )
     return value;
-  return `/lessons?topic=${encodeURIComponent(templateId)}`;
+  return `/pathways?lesson=${encodeURIComponent(templateId)}`;
 }
 export function FilmScreen() {
   const { templateId } = useParams({ from: "/app/lessons/$templateId/watch" });

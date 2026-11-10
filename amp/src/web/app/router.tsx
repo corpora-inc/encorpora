@@ -681,10 +681,16 @@ const lessonsHome = createRoute({
   getParentRoute: () => root,
   path: "/lessons",
   beforeLoad: ({ location }) => {
-    const query = new URLSearchParams(location.searchStr).get("q")?.trim();
+    const params = new URLSearchParams(location.searchStr);
+    const query = params.get("q")?.trim();
+    // `?topic=` named a problem type's short lesson: Pathways opens it.
+    const lesson = params.get("topic")?.trim();
     throw redirect({
       to: "/pathways",
-      search: (query ? { topic: query } : {}) as never,
+      search: {
+        ...(query ? { topic: query } : {}),
+        ...(lesson ? { lesson } : {}),
+      } as never,
       replace: true,
     });
   },

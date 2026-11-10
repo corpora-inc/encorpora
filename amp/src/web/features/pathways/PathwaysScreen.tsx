@@ -19,6 +19,7 @@ import {
   Link,
   useNavigate,
   useParams,
+  useRouter,
   useSearch,
 } from "@tanstack/react-router";
 import { meOptions, sessionOptions } from "../../lib/query";
@@ -83,6 +84,9 @@ function matchesQuery(text: string, query: string) {
     (synonyms[q] ?? []).some((w) => haystack.includes(w))
   );
 }
+
+/** A problem type's id, as `?lesson=` carries it. */
+const LESSON_ID = /^[a-z0-9][a-z0-9-]{0,119}$/;
 
 /** On a phone a long list of results can leave the page scrolled past the
  * map, under the bar. A chosen skill shows on the map, so bring the map's
@@ -309,6 +313,7 @@ export function MapView({
       ? search.filter
       : "";
   const navigate = useNavigate();
+  const router = useRouter();
   const { shown } = useCurriculumDetails();
   // Arriving with a search (a link, or /lessons?q=) opens its results.
   // A shared search opens its results, unless the link names a skill: then
@@ -316,12 +321,30 @@ export function MapView({
   const [browse, setBrowse] = useState(
     () => urlQuery.trim().length > 0 && !selectedId,
   );
-  const [lesson, setLesson] = useState<string | null>(null);
-  useEffect(() => setLesson(null), [selectedId]);
+  // A problem type's short lesson has its own address (`?lesson=`), so a
+  // link, a refresh or Back opens it again. Opened here, closing goes back;
+  // arrived at by a link, closing leaves the address without it.
+  const lesson =
+    typeof search.lesson === "string" && LESSON_ID.test(search.lesson)
+      ? search.lesson
+      : null;
   const lessonTrigger = useRef<HTMLElement | null>(null);
+  const openedHere = useRef(false);
+  // Closed any way (Back, a link), the next close starts afresh.
+  useEffect(() => {
+    if (!lesson) openedHere.current = false;
+  }, [lesson]);
   const openLesson = (id: string, trigger: HTMLElement) => {
     lessonTrigger.current = trigger;
-    setLesson(id);
+    openedHere.current = true;
+    update({ lesson: id });
+  };
+  const closeLesson = () => {
+    if (!lesson) return;
+    if (openedHere.current) {
+      openedHere.current = false;
+      router.history.back();
+    } else update({ lesson: null }, true);
   };
   // The one search (docs/design/ia.md): skills, lessons, films and math
   // words, grouped, once there is something typed.
@@ -349,6 +372,12 @@ export function MapView({
   };
   const skills = catalog.data?.skills;
   const selected = skills?.find((s) => s.id === selectedId);
+  // The skill a short lesson practices: the selected one, or its own when
+  // the lesson was opened by its address.
+  const lessonSkill = lesson
+    ? (selected?.id ??
+      catalog.data?.templates.find((t) => t.id === lesson)?.skillId)
+    : undefined;
   const unknownSkill = !!skills && !!selectedId && !selected;
   usePathwaysMetadata(
     selected,
@@ -373,6 +402,8 @@ export function MapView({
       skill?: string;
       topic?: string;
       filter?: string;
+      /** A short lesson to open; any other change closes it. */
+      lesson?: string | null;
     },
     replace = false,
   ) => {
@@ -382,6 +413,7 @@ export function MapView({
         (values.topic === undefined ? field.carry() : values.topic) ||
         undefined,
       filter: (values.filter === undefined ? band : values.filter) || undefined,
+      lesson: values.lesson || undefined,
     };
     if (skillId)
       void navigate({
@@ -831,7 +863,7 @@ export function MapView({
       <Dialog
         open={!!lesson}
         onOpenChange={(open) => {
-          if (!open) setLesson(null);
+          if (!open) closeLesson();
         }}
         title="Explore a problem type"
         fullOnPhone
@@ -840,20 +872,20 @@ export function MapView({
           if (lessonTrigger.current?.isConnected) lessonTrigger.current.focus();
         }}
       >
-        {canPractice && selected && lesson && (
+        {canPractice && lessonSkill && lesson && (
           <Link
             className="pathways-lesson-practice"
             to="/$"
             params={{ _splat: "practice" }}
-            search={{ skill: selected.id, template: lesson }}
+            search={{ skill: lessonSkill, template: lesson }}
           >
             Try this problem type →
           </Link>
         )}
         {lesson && (
-          <LessonBoundary key={lesson} onBack={() => setLesson(null)}>
+          <LessonBoundary key={lesson} onBack={closeLesson}>
             <Suspense fallback={<Loading>Loading lesson…</Loading>}>
-              <SkillLesson templateId={lesson} onBack={() => setLesson(null)} />
+              <SkillLesson templateId={lesson} onBack={closeLesson} />
             </Suspense>
           </LessonBoundary>
         )}

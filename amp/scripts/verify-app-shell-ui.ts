@@ -30,12 +30,8 @@ if (
     "frontier-switch",
     "drawer-learner",
     "learner-return",
-    "library-search",
     "practice-title",
-    "library-loading",
     "library-reader-loading",
-    "library-retry",
-    "library-typing",
     "progress-loading",
     "progress-filters",
     "progress-large-text",
@@ -621,6 +617,17 @@ async function verifySecurityTarget() {
         colorScheme,
       );
       try {
+        // Sign in again is the one action once a sign-in is past its fresh
+        // window (it shows only then): the fixture's sign-in is new, so the
+        // summary says it has gone stale.
+        await page.route("**/api/auth/security/summary", async (route) => {
+          const response = await route.fetch();
+          await route.fulfill({
+            response,
+            json: { ...(await response.json()), freshForMs: 0 },
+          });
+        });
+        await page.reload();
         const link = page.getByRole("link", {
           name: "Sign in again",
           exact: true,
@@ -742,12 +749,8 @@ try {
     !selectedCase ||
     [
       "learner-return",
-      "library-search",
       "practice-title",
-      "library-loading",
       "library-reader-loading",
-      "library-retry",
-      "library-typing",
       "progress-loading",
       "progress-filters",
       "progress-large-text",

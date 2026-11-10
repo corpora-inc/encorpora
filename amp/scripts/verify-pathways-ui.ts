@@ -576,16 +576,26 @@ async function verifyLessonRecovery() {
       await dialog.getByText("Example", { exact: true }).waitFor();
     } else {
       await page.unroute(modulePattern);
+      // The lesson has its own address, so the reload reopens it.
       await dialog
         .getByRole("button", { name: "Reload page", exact: true })
-        .click();
-      await page
-        .getByRole("button", { name: "View lesson", exact: true })
         .click();
       await page
         .getByRole("dialog")
         .getByText("Example", { exact: true })
         .waitFor();
+    }
+    if (failure === "api") {
+      // Real routes: opening writes ?lesson=, Back closes, Forward reopens.
+      assert.match(page.url(), /[?&]lesson=[a-z0-9-]+/);
+      await page.goBack();
+      await dialog.waitFor({ state: "detached" });
+      assert.doesNotMatch(page.url(), /[?&]lesson=/);
+      await page.goForward();
+      await dialog.getByText("Example", { exact: true }).waitFor();
+      await dialog.getByRole("button", { name: "Close", exact: true }).click();
+      await dialog.waitFor({ state: "detached" });
+      assert.doesNotMatch(page.url(), /[?&]lesson=/);
     }
     await page.close();
   }
@@ -836,8 +846,116 @@ async function verifySearchFilters() {
   );
 }
 
+/** Typing a word letter by letter (premium rule 1): the field and the page
+ * never move, and once the results settle nothing in them moves again. Every
+ * animation frame records the field, the first result and the scroll. */
+async function verifySearchTyping() {
+  for (const [width, colorScheme] of [
+    [390, "light"],
+    [1280, "dark"],
+  ] as const) {
+    const tag = `search typing ${width} ${colorScheme}`;
+    const page = await browser.newPage({
+      viewport: { width, height: 844 },
+      colorScheme,
+    });
+    try {
+      // The frame recorder below names its function; tsx's keep-names helper
+      // must exist in the page too.
+      await page.addInitScript({ content: "window.__name = (f) => f;" });
+      await fixture(page, { signedIn: true });
+      await page.goto(`${origin}/pathways`);
+      const input = page.getByRole("searchbox", { name: SEARCH, exact: true });
+      await input.waitFor();
+      await page.locator(".pathways-canvas canvas").waitFor();
+      await page.waitForTimeout(300);
+      await page.evaluate(() => {
+        const record = window as unknown as {
+          __frames: unknown[];
+          __stop?: boolean;
+        };
+        record.__frames = [];
+        const tick = () => {
+          const field = document
+            .querySelector(".pathways-search input")
+            ?.getBoundingClientRect();
+          const first = document.querySelector(
+            "[data-search-results] [data-result]",
+          );
+          const box = first?.getBoundingClientRect();
+          record.__frames.push({
+            at: performance.now(),
+            field: field ? [field.x, field.y, field.width, field.height] : null,
+            first: first?.getAttribute("href") ?? null,
+            box: box ? [box.x, box.y, box.width, box.height] : null,
+            scroll: scrollY,
+          });
+          if (!record.__stop) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+      await input.click();
+      await page.keyboard.type("fraction", { delay: 90 });
+      const typed = await page.evaluate(() => performance.now());
+      await page.waitForURL(
+        (url) => url.searchParams.get("topic") === "fraction",
+      );
+      // Well past the search corpus's late arrival.
+      await page.waitForTimeout(1500);
+      type Frame = {
+        at: number;
+        field: number[] | null;
+        first: string | null;
+        box: number[] | null;
+        scroll: number;
+      };
+      const frames = await page.evaluate(() => {
+        const record = window as unknown as {
+          __frames: unknown[];
+          __stop?: boolean;
+        };
+        record.__stop = true;
+        return record.__frames as Frame[];
+      });
+      assert(frames.length > 30, `${tag}: too few frames recorded`);
+      assert(
+        await page.locator("[data-search-results] [data-result]").count(),
+        `${tag}: "fraction" finds results`,
+      );
+      const problems: string[] = [];
+      for (let i = 1; i < frames.length; i++) {
+        const [a, b] = [frames[i - 1]!, frames[i]!];
+        if (JSON.stringify(a.field) !== JSON.stringify(b.field))
+          problems.push(`frame ${i}: the search field moved`);
+        if (a.scroll !== b.scroll)
+          problems.push(`frame ${i}: the page scrolled while typing`);
+        // Settled: a quarter second after the last key, the results hold.
+        if (
+          a.at > typed + 250 &&
+          (a.first !== b.first ||
+            JSON.stringify(a.box) !== JSON.stringify(b.box))
+        )
+          problems.push(
+            `frame ${i}: the results moved after they settled: ${a.first} ${JSON.stringify(a.box)} → ${b.first} ${JSON.stringify(b.box)}`,
+          );
+      }
+      assert.deepEqual(
+        problems.slice(0, 6),
+        [],
+        `${tag}: ${problems.length} movement(s) while typing`,
+      );
+    } finally {
+      await page.close();
+    }
+  }
+  console.log(
+    "Pathways search: typing moves neither the field nor the page, and settled results hold still, at 390 and 1280.",
+  );
+}
+
 try {
   await verifySearchFilters();
+  if (!process.env.AMP_MAP_FOCUS) await verifySearchTyping();
   if (!process.env.AMP_MAP_FOCUS) await verifyLessonRecovery();
   for (const width of process.env.AMP_MAP_FOCUS ? [] : [320, 390, 768, 1280])
     for (const theme of ["light", "dark"] as const) {
@@ -947,7 +1065,17 @@ try {
         await page.getByRole("dialog").waitFor();
         await page.goBack();
         await page.getByRole("dialog").waitFor({ state: "hidden" });
+        // The lesson is a real route: Forward opens it again.
         await page.goForward();
+        await page
+          .getByRole("dialog")
+          .getByText("Example", { exact: true })
+          .waitFor();
+        await page
+          .getByRole("dialog")
+          .getByRole("button", { name: "Close", exact: true })
+          .click();
+        await page.getByRole("dialog").waitFor({ state: "hidden" });
         await page
           .getByRole("heading", { name: target.title, exact: true })
           .waitFor();
