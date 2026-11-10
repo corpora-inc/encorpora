@@ -162,6 +162,14 @@ nav button {
   flex: 0 1 auto;
   min-height: 0;
 }
+/* On a phone, a problem with a figure sits at the top of the stage rather
+   than in its middle, so the feedback sheet that rises from the foot never
+   covers the figure its explanation talks about. */
+@media (max-width: 599px) {
+  .problem-stage:has(.figure, .scene-figure, figure) > .problem-content {
+    margin: 0 auto auto;
+  }
+}
 /* A narrow ruler needs its numbered ticks at readable size. Keep room for
    the scrollbar without reserving an extra gutter on the opposite edge. */
 @media (max-width: 380px) {
