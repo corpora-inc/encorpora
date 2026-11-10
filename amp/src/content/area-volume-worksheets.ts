@@ -57,8 +57,19 @@ const required: Record<string, string[]> = {
   // Clause variants: one case kind each, drawn from hundreds of distinct cases.
   "polygon-show-the-pieces": ["show-the-pieces"],
   "polygon-which-expression": ["which-expression"],
-  "count-then-size-then-check": ["count-then-size-then-check"],
-  "net-name-the-solid": ["name-the-solid"],
+  "count-then-size-then-check": [
+    "edge-1/2",
+    "edge-1/3",
+    "edge-1/4",
+    "whole-volume",
+    "fraction-volume",
+  ],
+  "net-name-the-solid": [
+    "cube",
+    "rectangular-prism",
+    "triangular-prism",
+    "square-pyramid",
+  ],
   "cone-sphere-volume": [
     "cone",
     "sphere",

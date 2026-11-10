@@ -2362,13 +2362,35 @@ function clauseTemplateProblem(
     return { problem: showPieces(r, meta, seed), tags: ["show-the-pieces"] };
   if (id === "polygon-which-expression")
     return { problem: whichExpression(r, meta, seed), tags: ["which-expression"] };
-  if (id === "count-then-size-then-check")
+  if (id === "count-then-size-then-check") {
+    const problem = countThenSize(r, meta, seed);
+    const figure = problem.public.figure;
+    if (figure?.kind !== "fraction-box-prism" || !figure.cubeEdge ||
+        !figure.length || !figure.width || !figure.height)
+      throw new Error("Packing worksheet needs the box and cube edges");
+    const edges = [figure.length, figure.width, figure.height];
+    const numerator = edges.reduce((product, edge) => product * edge.n, 1);
+    const denominator = edges.reduce((product, edge) => product * edge.d, 1);
     return {
-      problem: countThenSize(r, meta, seed),
-      tags: ["count-then-size-then-check"],
+      problem,
+      tags: [
+        "count-then-size-then-check",
+        `edge-${figure.cubeEdge.n}/${figure.cubeEdge.d}`,
+        numerator % denominator === 0 ? "whole-volume" : "fraction-volume",
+      ],
     };
-  if (id === "net-name-the-solid")
-    return { problem: nameTheSolid(r, meta, seed), tags: ["name-the-solid"] };
+  }
+  if (id === "net-name-the-solid") {
+    const problem = nameTheSolid(r, meta, seed);
+    const figure = problem.public.figure;
+    const solid = figure?.kind === "rectangular-prism-net"
+      ? (figure.length === figure.width && figure.width === figure.height
+        ? "cube" : "rectangular-prism")
+      : figure?.kind === "triangular-prism-net" ? "triangular-prism"
+      : figure?.kind === "square-pyramid-net" ? "square-pyramid" : null;
+    if (!solid) throw new Error("Net worksheet needs a supported solid");
+    return { problem, tags: ["name-the-solid", solid] };
+  }
   return null;
 }
 

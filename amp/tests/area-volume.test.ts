@@ -165,3 +165,55 @@ test("lesson illustrations render with descriptions", () => {
         assert.doesNotMatch(html, /NaN|undefined/);
       }
 });
+
+test("packing and net worksheets include every cube size, volume form and solid", () => {
+  for (const edition of ["1", "2", "3", "4"]) {
+    const packing = areaVolumeWorksheet(
+      "count-then-size-then-check",
+      "unit-fraction-cube-packing",
+      edition,
+    );
+    const edges = new Set<number>();
+    const volumes = new Set<string>();
+    for (const problem of packing) {
+      const figure = problem.public.figure;
+      assert.ok(
+        figure?.kind === "fraction-box-prism" &&
+          figure.cubeEdge &&
+          figure.length &&
+          figure.width &&
+          figure.height,
+      );
+      edges.add(figure.cubeEdge.d);
+      const n = figure.length.n * figure.width.n * figure.height.n;
+      const d = figure.length.d * figure.width.d * figure.height.d;
+      volumes.add(n % d === 0 ? "whole" : "fraction");
+    }
+    assert.deepEqual(
+      [...edges].sort(),
+      [2, 3, 4],
+      `packing edition ${edition}`,
+    );
+    assert.deepEqual([...volumes].sort(), ["fraction", "whole"]);
+    const nets = areaVolumeWorksheet(
+      "net-name-the-solid",
+      "net-surface-area",
+      edition,
+    );
+    const solids = new Set(
+      nets.map((problem) => {
+        const response = problem.public.response;
+        assert.equal(response.kind, "choice");
+        if (response.kind !== "choice")
+          throw new Error("Expected solid choices");
+        return response.options.find((option) => option.id === problem.answer)!
+          .label;
+      }),
+    );
+    assert.deepEqual(
+      [...solids].sort(),
+      ["cube", "rectangular prism", "square pyramid", "triangular prism"],
+      `nets edition ${edition}`,
+    );
+  }
+});

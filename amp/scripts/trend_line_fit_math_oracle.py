@@ -6,7 +6,6 @@ candidate against independently computed sums, rather than one canonical key.
 """
 import copy
 import json
-import math
 import re
 from fractions import Fraction as F
 
@@ -70,8 +69,13 @@ def solve(public):
     require(match, 'Read prompt gives horizontal value')
     x = F(match[1])
     require(min(p[0] for p in data) <= x <= max(p[0] for p in data), 'Interpolation only')
-    y = math.floor(m*x+b+F(1, 2))
-    matches = [o['id'] for o in r['options'] if F(o['label'].split()[0]) == y]
+    estimate = m*x+b
+    # Scene endpoints serialize floating-point line arithmetic. At a half-unit
+    # boundary this can move the reconstructed value by a few ulps. Require a
+    # unique nearest offered integer, allowing only that serialization error.
+    matches = [o['id'] for o in r['options']
+               if (value := F(o['label'].split()[0])).denominator == 1
+               and abs(value - estimate) <= F(1, 2) + F(1, 10**9)]
     require(len(matches) == 1, 'One rounded estimate')
     return matches[0]
 
@@ -91,6 +95,27 @@ def review_problem(problem):
     return answer
 
 def self_test():
+    # A displayed 17.5 estimate can reconstruct just below the tie after the
+    # renderer serializes its endpoints. Larger errors and ambiguous choices
+    # must still fail, independently of the generated answer key.
+    reading = {'templateId': 'trend-line-read', 'prompt': 'Read at 7 years.',
+               'response': {'kind': 'choice', 'options': [
+                   {'id': 'a', 'label': '18 thousand dollars'},
+                   {'id': 'b', 'label': '23 thousand dollars'}]},
+               'figure': {'scene': {'elements': [{'type': 'graph',
+                   'scatter': {'points': [[2, 31], [12, 3]]},
+                   'lines': [{'line': {'through': [[0, 39.2], [13, -1.1000000000000014]]}}]}]}}}
+    require(solve(reading) == 'a', 'Serialized half-unit estimate')
+    for labels in [('20', '23'), ('17', '18'), ('17.5', '23')]:
+        bad_reading = copy.deepcopy(reading)
+        for option, label in zip(bad_reading['response']['options'], labels):
+            option['label'] = label + ' thousand dollars'
+        try:
+            solve(bad_reading)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError('Invalid or ambiguous rounded choices accepted')
     data = [[x, 3*x + (1 if x % 2 else -1)] for x in range(1, 11)]
     require(accepted(data, (F(3), F(0))), 'Hand fit accepted')
     require(not accepted(data, (F(-3), F(30))), 'Wrong trend rejected')
@@ -102,7 +127,7 @@ def self_test():
     try:
         review_problem(bad)
     except ValueError:
-        return {'fixtures': 3, 'mutations': 1}
+        return {'fixtures': 4, 'mutations': 4}
     raise AssertionError('Corrupt key accepted')
 
 if __name__ == '__main__':

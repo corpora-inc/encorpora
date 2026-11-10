@@ -137,7 +137,8 @@ def test_pull_request_behind_main_is_compared_from_its_fork_point(tmp_path, repo
     repo.git('checkout', '-q', 'main')
     main_tip = repo.commit(['corpan/plugins/tauri-plugin-tts/src/lib.rs', 'corpan/dja/app.py'])
     values = repo.select(tmp_path, 'pull_request', main_tip, head)
-    assert on(values) == {'amp'}, 'main\'s own changes leaked into the PR selection'
+    # Every AMP PR, including documentation changes, runs completeness in core.
+    assert on(values) == {'amp', 'amp_core'}, 'main\'s own changes leaked into the PR selection'
     assert fork != main_tip
 
 
