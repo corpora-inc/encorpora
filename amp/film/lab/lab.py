@@ -185,14 +185,48 @@ def report(config, status):
     print(json.dumps({'event': 'report', 'at': now(), **result}), flush=True)
 
 
-def produce_cohort(config, rows, secrets):
+def pathway_reviews(config, rows, secrets):
+    """Submit each complete, frozen pathway while later authoring continues.
+
+    The single voice worker calls this callback, so submission is serialized.
+    Failed production rows count as finished but have no review item.
+    """
+    from batches import submit_cohort
+    root = Path(config['root'])
+    groups = {}
+    for row in rows:
+        groups.setdefault(row['pathway'], []).append(row)
+    finished, submitted = set(), set()
+
+    def complete(row):
+        finished.add(row['id'])
+        label = row['pathway']
+        group = groups[label]
+        if label in submitted or not all(r['id'] in finished for r in group):
+            return
+        items = [read_json(root/'review-items'/(r['id']+'.json')) for r in group]
+        items = [item for item in items if item]
+        submit_cohort(root, items, label, secrets)
+        submitted.add(label)
+        print(json.dumps({'event': 'pathway-reviews-submitted', 'pathway': label,
+                          'films': len(items), 'at': now()}), flush=True)
+    return complete
+
+
+def produce_cohort(config, rows, secrets, on_postprocess=None):
+    def finish(row):
+        item = postprocess(config, row, secrets)
+        if on_postprocess:
+            on_postprocess(row)
+        return item
+
     with ThreadPoolExecutor(max_workers=3) as agents, ThreadPoolExecutor(max_workers=1) as voice:
         pending = {agents.submit(production, config, row, secrets): row for row in rows}
         voice_jobs = []
         try:
             for future in as_completed(pending):
                 row = future.result()
-                voice_jobs.append(voice.submit(postprocess, config, row, secrets))
+                voice_jobs.append(voice.submit(finish, row))
                 print(json.dumps({'event': 'screenplay-finished', 'id': row['id'], 'at': now()}), flush=True)
                 report(config, 'production running')
             for future in as_completed(voice_jobs):
@@ -259,14 +293,11 @@ def main():
                 review_cohort(config, [i for i in items if i], secrets)
                 write_json(root/'smoke-complete.json', {'completed_at': now(), 'pathway': first, 'types': len(rows)})
             else:
-                from batches import API_REVIEWERS, submit_cohort, wait_for_batches
+                from batches import API_REVIEWERS, wait_for_batches
                 # Keep the three authoring slots occupied across pathways. A
                 # slow final film in one pathway must not idle the other slots.
-                produce_cohort(config, rows, secrets)
-                for pathway in mapping['pathways'][1:]:
-                    group = [r for r in rows if r['pathway']==pathway['id']]
-                    items = [read_json(root/'review-items'/(r['id']+'.json')) for r in group]
-                    submit_cohort(root, [i for i in items if i], pathway['id'], secrets)
+                produce_cohort(config, rows, secrets,
+                               on_postprocess=pathway_reviews(config, rows, secrets))
                 # Include the frozen calibration cohort, whose API batches can run
                 # while the screenplay agents work. Completed smoke reviews are reused.
                 items = [read_json(p) for p in sorted((root/'review-items').glob('*.json'))]

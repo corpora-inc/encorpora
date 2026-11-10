@@ -45,7 +45,7 @@ Calibration preparation captures every beat of each exact graded export in wide 
 python3 film/lab/lab.py --config /private/lab.json --phase rest
 ```
 
-The remaining pathways run after the smoke phase. At most three local model agents run concurrently. Voice/export processing is serialized. Anthropic image reviews use the Messages Batch API where possible; Astra and Grok use their CLIs. Batches can remain pending for up to the provider's completion window. The harness waits for submitted results before retrying failed items, avoiding duplicate charges from a speculative fallback.
+The remaining pathways run after the smoke phase. At most three local model agents run concurrently. Voice/export processing is serialized. Each pathway enters Anthropic image-review batches after its production and voice outcomes are settled, while later pathways can continue authoring. Astra and Grok review through their CLIs after production. Batches can remain pending for up to the provider's completion window. The harness waits for submitted results before retrying failed items, avoiding duplicate charges from a speculative fallback.
 
 Every role uses one shared prompt across models. Study and screenplay attempts have a combined limit of two failures per assigned type. A failed arm is recorded and is not replaced with an easier type. Writers can inspect files, write their screenplay, run the bounded kit-check command and repair their own errors. The check command runs `make.ts --dry --board` and figure checks in both layouts. A separate final check verifies the artifact and detects edits to the copied kit.
 

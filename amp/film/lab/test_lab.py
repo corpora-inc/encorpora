@@ -1,11 +1,12 @@
 import json
 from pathlib import Path
 import tempfile
+import threading
 import types
 import unittest
 from unittest.mock import patch
 
-from lab import append_coverage, postprocess, production
+from lab import append_coverage, pathway_reviews, postprocess, produce_cohort, production
 from providers import write_json
 
 VALID_STUDY = 'A learner card.\n```coverage-json\n{"verdict":"sampled","sample_limits":"ten examples","gaps":[]}\n```'
@@ -72,6 +73,43 @@ class ProductionBudgetTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'verbatim'):
             append_coverage(self.root, self.row, facts, {'gaps': [gap]})
         self.assertFalse((self.root/'coverage-gaps.jsonl').exists())
+
+
+class PathwayOverlapTests(unittest.TestCase):
+    def test_frozen_pathway_submits_before_later_authoring_finishes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            rows = [{'id': 'ready-aa', 'pathway': 'early'},
+                    {'id': 'failed-bb', 'pathway': 'early'},
+                    {'id': 'later-cc', 'pathway': 'late'}]
+            early_submitted = threading.Event()
+            observed = []
+
+            def author(config, row, secrets):
+                if row['pathway'] == 'late':
+                    self.assertTrue(early_submitted.wait(5), 'Batch waited for all authoring')
+                return row
+
+            def finish(config, row, secrets):
+                if row['id'] == 'failed-bb':
+                    return None
+                item = {'id': row['id']}
+                write_json(root/'review-items'/(row['id']+'.json'), item)
+                return item
+
+            def submit(destination, items, label, secrets):
+                observed.append((label, [item['id'] for item in items]))
+                if label == 'early':
+                    early_submitted.set()
+
+            config = {'root': directory}
+            with patch('batches.submit_cohort', side_effect=submit), \
+                    patch('lab.production', side_effect=author), \
+                    patch('lab.postprocess', side_effect=finish), patch('lab.report'):
+                callback = pathway_reviews(config, rows, {})
+                produce_cohort(config, rows, {}, on_postprocess=callback)
+                callback(rows[0])
+            self.assertEqual(observed, [('early', ['ready-aa']), ('late', ['later-cc'])])
 
 
 class VoiceRecoveryTests(unittest.TestCase):
