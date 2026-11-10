@@ -114,9 +114,10 @@ export async function accountSummary(
         orgName: string;
         role: string;
         setupPending: boolean;
+        demo: boolean;
       }>(
         `SELECT DISTINCT ON (o.id) o.id AS "orgId",o.name AS "orgName",r.role,
-         o.setup_pending AND r.role='admin' AS "setupPending"
+         o.setup_pending AND r.role='admin' AS "setupPending",o.demo
        FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
        JOIN amp_orgs o ON o.id=r.org_id AND (o.kind<>'family' OR o.created_by<>$1)
        WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")}
@@ -142,10 +143,11 @@ export async function accountSummary(
         }
       : null,
   };
-  const staffOf = staffRows.rows.map(({ setupPending, ...place }) => ({
+  const staffOf = staffRows.rows.map(({ setupPending, demo, ...place }) => ({
     ...place,
     // Only an admin finishes setup, so only theirs says so.
     ...(setupPending ? { setupPending: true as const } : {}),
+    ...(demo ? { demo: true as const } : {}),
   }));
   const value = {
     signedIn: true as const,

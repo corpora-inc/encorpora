@@ -51,10 +51,37 @@ test("all reference families are deterministic and independently solve from disp
           }
           break;
         }
-        case "add-within-20":
+        case "add-within-20": {
+          if (p.response.kind !== "number") {
+            const found =
+              /the double (\d+) \+ \1, and what is (\d+) \+ (\d+)\?/.exec(
+                p.prompt,
+              );
+            assert.ok(found, p.prompt);
+            const double = 2 * Number(found[1]);
+            const total = Number(found[2]) + Number(found[3]);
+            assert.ok(total <= 20, p.prompt);
+            const response = p.response as {
+              blanks: { id: string; options: { id: string; label: string }[] }[];
+            };
+            const key = JSON.parse(problem.answer) as Record<string, string>;
+            const chosen = (id: string) =>
+              response.blanks
+                .find((blank) => blank.id === id)!
+                .options.find((option) => option.id === key[id])!.label;
+            assert.equal(chosen("dbl"), String(double), p.prompt);
+            assert.equal(chosen("sum"), String(total), p.prompt);
+            assert.equal(gradeAnswer(problem, problem.answer), true);
+            assert.equal(
+              gradeAnswer(problem, JSON.stringify({ ...key, sum: "nope" })),
+              false,
+            );
+            continue;
+          }
           expected = numbers[0]! + numbers[1]!;
           assert.ok(expected <= 20);
           break;
+        }
         case "subtract-within-20":
           expected = numbers[0]! - numbers[1]!;
           assert.ok(expected >= 0);

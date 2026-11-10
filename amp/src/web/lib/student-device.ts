@@ -12,6 +12,9 @@ const activeKey = "amp.student.active";
 /** A parent handed this device to their child ("Let Maya practice here"), so
  * signing out returns to the parent rather than to the class sign-in. */
 const handedKey = "amp.student.handed";
+/** Where a handed device goes back to, when the adult handed it over from a
+ * particular screen (a demo's roster, say); `/` otherwise. */
+const returnKey = "amp.student.return";
 export const STUDENT_IDLE_MS = 30 * 60_000;
 
 export type StudentSession = { accountId: string; token: string };
@@ -48,12 +51,14 @@ export function rememberStudentSession(
   session: StudentSession,
   mode: "shared" | "personal",
   handed = false,
+  returnTo?: string,
 ) {
   clearStudentDevice();
   const store = mode === "shared" ? sessionStorage : localStorage;
   store.setItem(studentKey, JSON.stringify(session));
   if (mode === "shared") store.setItem(activeKey, String(Date.now()));
   if (handed) sessionStorage.setItem(handedKey, "1");
+  if (handed && returnTo) sessionStorage.setItem(returnKey, returnTo);
 }
 /** This student's sign-in was handed over by a parent on their own device. */
 export function handedStudentDevice(): boolean {
@@ -63,9 +68,18 @@ export function handedStudentDevice(): boolean {
     return false;
   }
 }
+/** The screen a handed device returns to: a path on this site, or `/`. */
+export function handedReturnPath(): string {
+  try {
+    const path = sessionStorage.getItem(returnKey) ?? "/";
+    return /^\/(?!\/)[^\s\\]*$/.test(path) ? path : "/";
+  } catch {
+    return "/";
+  }
+}
 export function clearStudentDevice() {
   for (const [store, keys] of [
-    [() => sessionStorage, [studentKey, activeKey, handedKey]],
+    [() => sessionStorage, [studentKey, activeKey, handedKey, returnKey]],
     [() => localStorage, [studentKey, learnerKey]],
   ] as const)
     try {

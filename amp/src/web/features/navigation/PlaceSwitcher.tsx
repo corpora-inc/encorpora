@@ -8,6 +8,7 @@ import { useLearnerStore } from "../../learner-store";
 import { Menu, MenuItem, MenuLabel } from "../../ui/Menu";
 import { familyClassPath, placesFor, type PlaceId } from "../onboarding/guard";
 import { rememberPlace } from "../onboarding/place-memory";
+import { DemoMark } from "../school/demo/DemoMark";
 import styles from "./PlaceSwitcher.module.css";
 
 const roleNames = {
@@ -24,6 +25,8 @@ export type PlaceEntry = {
   detail: string;
   /** Its URL path, without the leading slash: `/` decides the family side. */
   path: string;
+  /** A demo place: made-up students, there to explore. */
+  demo?: true;
 };
 
 /** Every place this account can open, named for the switcher. */
@@ -75,6 +78,7 @@ export function placeEntries(me: SignedInMe): PlaceEntry[] {
       name: org.orgName,
       detail: org.setupPending ? "Finish setting up" : roleNames[org.role],
       path: `school/${org.orgId}`,
+      ...(org.demo ? { demo: true as const } : {}),
     };
   });
 }
@@ -148,6 +152,7 @@ export function usePlaceEntries(me: SignedInMe | null, currentOrg?: string) {
         name: org.name,
         detail: "School",
         path: `school/${org.id}`,
+        ...("demo" in org && org.demo ? { demo: true as const } : {}),
       });
   }
   for (const [index, org] of classOrgs.entries()) {
@@ -165,6 +170,7 @@ export function usePlaceEntries(me: SignedInMe | null, currentOrg?: string) {
           namedSchools.find((school) => school.id === klass.orgId)?.name ??
           org.name,
         path: `school/${klass.orgId}/classes/${klass.id}/today`,
+        ...(org.demo ? { demo: true as const } : {}),
       });
     }
   }
@@ -236,8 +242,11 @@ export function PlaceSwitcher({
       aria-label={`${name}: switch place`}
       triggerClassName={styles.trigger}
       label={
-        <span className={styles.triggerText} title={name}>
-          {name}
+        <span className={styles.triggerLabel}>
+          <span className={styles.triggerText} title={name}>
+            {name}
+          </span>
+          {here?.demo && <DemoMark />}
         </span>
       }
     >
@@ -270,7 +279,10 @@ export function PlaceSwitcher({
             }}
           >
             <span className={styles.item} data-place={place.id}>
-              <span className={styles.name}>{place.name}</span>
+              <span className={styles.nameLine}>
+                <span className={styles.name}>{place.name}</span>
+                {place.demo && <DemoMark />}
+              </span>
               <span className={styles.detail}>
                 {place.detail}
                 {isHere && <span className={styles.hidden}>, open now</span>}

@@ -4,7 +4,7 @@
  *
  *   AMP_TEST_DATABASE_URL=postgres://…/amp_journeys \
  *     npx tsx scripts/verify-journeys-ui.ts [--engine webkit] [--widths 390,1280]
- *       [--themes light,dark] [--journeys 1,2,3,4,5,6] [--port 4500]
+ *       [--themes light,dark] [--journeys 1,2,3,4,5,6,7] [--port 4500]
  *
  * Real accounts, learning, school, family and billing routes against a fresh
  * schema. Stripe is test mode: the gateway is a local fake, Checkout is a
@@ -64,11 +64,9 @@ const widths = (argument("--widths") ?? "390,1280").split(",").map(Number);
 const themes = (argument("--themes") ?? "light,dark").split(",") as (
   "light" | "dark"
 )[];
-/** Journeys 3 and 5 (teacher, school) wait for the school demo. */
 const journeys = new Set(
-  (argument("--journeys") ?? "1,2,4,6,7").split(",").map(Number),
+  (argument("--journeys") ?? "1,2,3,4,5,6,7").split(",").map(Number),
 );
-const pending = new Set<number>();
 const apiPort = webPort + 1;
 const origin = `http://127.0.0.1:${webPort}`;
 const committed = `docs/reviews/journeys/${engine}`;
@@ -793,15 +791,82 @@ async function adultJourney(
   await context.close();
 }
 
-/** 3. A teacher: pending the school demo branch (`add-school-demo`). A
- * teacher's tile now opens a demo class (`POST /school/demo`), alive with
- * students' work, before any agreement or payment. */
+/** 3. A teacher: "I’m a teacher" opens a demo class, alive with made-up
+ * students’ work, before any agreement or payment. They practice as a demo
+ * student, are handed back to the roster, and "Set up your real class" leads
+ * to the real onboarding, which begins at "Talk to us" (white-glove). */
 async function teacherJourney(
-  _browser: Browser,
-  _width: number,
-  _theme: "light" | "dark",
+  browser: Browser,
+  width: number,
+  theme: "light" | "dark",
 ) {
-  pending.add(3);
+  const label = `${engine} ${width} ${theme} teacher`;
+  const context = await newContext(browser, width, theme);
+  const page = await opened(context, label);
+  const { account } = await signUp(page, "Dana Fixture");
+  await page.getByRole("button", { name: /^I’m a teacher/ }).click();
+  await page.waitForURL(CLASS_TODAY);
+  await heading(page, /^Good (morning|afternoon|evening)/);
+  check(
+    `${label} the demo is theirs`,
+    (
+      await db.query(
+        "SELECT count(*)::int AS n FROM amp_orgs WHERE demo AND created_by=$1",
+        [account],
+      )
+    ).rows[0].n === 1,
+  );
+  const classPath = new URL(page.url()).pathname.replace(/\/today$/, "");
+  // Alive: made-up students’ work, marked Demo, with the class code and
+  // Start class on Today, and the bar’s one action to the real class.
+  await page
+    .getByText(/Noor|Diego|Lena/)
+    .first()
+    .waitFor();
+  check(
+    `${label} says Demo`,
+    (await page
+      .locator("[data-demo-mark]")
+      .filter({ visible: true })
+      .count()) >= 1,
+  );
+  await page.locator("[data-class-code]").waitFor();
+  await page.getByRole("link", { name: "Start class" }).waitFor();
+  await measured(page, `${label} demo today`);
+  await shot(page, 3, "demo-today", width, theme);
+
+  // Practice as a demo student, then back to the roster.
+  await page.goto(`${origin}${classPath}/roster`);
+  await heading(page, "Roster");
+  const practice = page.getByRole("button", { name: /^Practice as / }).first();
+  await practice.waitFor();
+  const roster = page.url();
+  await practice.click();
+  await practicing(page);
+  await measured(page, `${label} practice as`);
+  await shot(page, 3, "practice-as", width, theme);
+  await page
+    .getByRole("button", { name: "Open AMP menu" })
+    .filter({ visible: true })
+    .first()
+    .click();
+  await page.getByRole("button", { name: "Sign out" }).click();
+  await page.waitForURL((at) => at.href === roster);
+  await heading(page, "Roster");
+
+  // The real class: "Set up your real class" opens the real onboarding.
+  await page.goto(`${origin}${classPath}/today`);
+  await heading(page, /^Good (morning|afternoon|evening)/);
+  const real = page.locator("[data-demo-action]").filter({ visible: true });
+  check(
+    `${label} the action names the real class`,
+    (await real.getAttribute("aria-label")) === "Set up your real class",
+  );
+  await real.click();
+  await page.waitForURL(/\/schools#talk$/);
+  await page.getByRole("heading", { name: "Talk to us." }).waitFor();
+  await shot(page, 3, "real-class", width, theme);
+  await context.close();
 }
 
 /** 4. A tutor: three unnamed students; one parent's link names one child,
@@ -925,14 +990,45 @@ async function tutorJourney(
   await context.close();
 }
 
-/** 5. A school: pending the school demo branch (`add-school-demo`). The
- * pitch inline, then "Explore a demo school" or "Talk to us". */
+/** 5. A school: the pitch inline, "Explore a demo school" (six classes and
+ * demo teachers), then "Talk to us". */
 async function schoolJourney(
-  _browser: Browser,
-  _width: number,
-  _theme: "light" | "dark",
+  browser: Browser,
+  width: number,
+  theme: "light" | "dark",
 ) {
-  pending.add(5);
+  const label = `${engine} ${width} ${theme} school`;
+  const context = await newContext(browser, width, theme);
+  const page = await opened(context, label);
+  await signUp(page, "Ruth Fixture");
+  await page.getByRole("link", { name: /^I run a school/ }).click();
+  await page.waitForURL(/\/start\/school$/);
+  await heading(page, "AMP for your school", 2);
+  await page.getByText("objectives mapped to Common Core standards").waitFor();
+  await measured(page, `${label} pitch`);
+  await shot(page, 5, "pitch", width, theme);
+  await page.getByRole("button", { name: "Explore a demo school" }).click();
+  await page.waitForURL(/\/school\/[0-9a-f-]{36}$/);
+  await page.getByText("Grade 3 Math").first().waitFor();
+  check(
+    `${label} says Demo`,
+    (await page
+      .locator("[data-demo-mark]")
+      .filter({ visible: true })
+      .count()) >= 1,
+  );
+  await measured(page, `${label} demo school`);
+  await shot(page, 5, "demo-school", width, theme);
+  const talk = page.locator("[data-demo-action]").filter({ visible: true });
+  check(
+    `${label} the action is Talk to us`,
+    (await talk.getAttribute("aria-label")) === "Talk to us",
+  );
+  await talk.click();
+  await page.waitForURL(/\/schools#talk$/);
+  await page.getByRole("heading", { name: "Talk to us." }).waitFor();
+  await shot(page, 5, "talk", width, theme);
+  await context.close();
 }
 
 /** 6. A returning paid family signs in to the same home, with nothing to
@@ -1132,11 +1228,5 @@ if (failures.length) {
   for (const failure of failures.slice(0, 80)) console.error(failure);
   process.exit(1);
 }
-if (pending.size)
-  console.log(
-    `${engine}: journeys ${[...pending].join(", ")} pending the school demo branch.`,
-  );
-console.log(
-  `${engine}: journeys ${[...journeys].filter((n) => !pending.has(n)).join(", ")} passed.`,
-);
+console.log(`${engine}: journeys ${[...journeys].sort().join(", ")} passed.`);
 process.exit(0);

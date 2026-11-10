@@ -112,6 +112,8 @@ export const meSchema = z.discriminatedUnion("signedIn", [
           role: z.enum(["admin", "teacher", "aide", "viewer"]),
           /** This admin hasn't finished the school's guided setup. */
           setupPending: z.literal(true).optional(),
+          /** A demo place: made-up students, there to explore. */
+          demo: z.literal(true).optional(),
         }),
       )
       .optional(),
