@@ -47,29 +47,53 @@ specify extensions; they are not claims about implemented storage or inference.
 
 ## Practice recovery and confirmation
 
-Birth year supplies the initial estimate. Independent responses update a pooled
-estimate and strand estimates; answers marked as helped do not raise or lower
-independent ability. Earned practice and skill history are separate from those
-estimates. The menu’s **Working together** setting marks help without adding a
-step to each answer.
+A child's birth year supplies the initial estimate. An adult chooses where
+to begin (counting through precalculus), because age says little about an
+adult's level. Either is a guess, not a limit. Independent responses update a
+pooled estimate and strand estimates; answers marked as helped do not raise or
+lower independent ability. Earned practice and skill history are separate
+from those estimates. The menu’s **Working together** setting marks help
+without adding a step to each answer.
 
-The scheduler distinguishes ordinary work, foundation checks, and stretch
-probes. Before direct foundation retrieval has been confirmed, every fourth
-position targets that strand’s starting level or lower. On another fourth
-position, a recent independent success permits a bounded harder probe. Other
-positions stay near the strand’s working band. Prerequisite repair and due
-review compete within those bounds; explicitly chosen skills constrain the
-available content.
+**Climbing, then placed.** A new learner is *climbing* until recent
+independent work misses twice at or above their level (`placedAfterMisses`).
+A miss stops counting once two later successes at or above its grade outnumber
+it, as a slip on the way up, and misses age out after twelve answers, so a
+learner who keeps succeeding after being placed climbs again. While climbing,
+every other problem is a stretch probe at the upper edge of the likely range
+(one uncertainty width above the strand estimate), and foundation checks wait.
+Once placed, a foundation check and a probe each take one problem in four;
+other problems stay near the strand's working level, where prerequisite
+repair and due review compete within those bounds. Explicitly chosen skills
+constrain the available content.
 
-Initial ordinary work is bounded near the starting level. Varied independent
-successes permit gradual provisional advancement during the first session.
-Successful retrieval across separated occasions can confirm a higher band.
-A failed harder probe does not erase demonstrated lower readiness. Foundation
-confirmation requires direct work near the starting level, not inferred mastery
-from harder answers. These thresholds are versioned scheduling hypotheses in
-`frontier-policy.ts` and `practice-policy.ts`, not calibrated mastery probabilities.
-The displayed grade remains an uncertain summary rather than a guarantee about
-every skill.
+**The ceiling stands on evidence.** A grade is *shown* by two varied
+independent successes at or above it, mostly right among the answers that bear
+on it. Success on harder material supports a grade; a harder miss does not
+refute it. Work may reach two grades past the highest grade shown anywhere
+while climbing, and up to that grade once placed, never less than a grade
+above the start. Pooling across areas means an area the learner has not tried
+yet starts from what they showed elsewhere, not from the starting guess. A
+probe may reach two grades past the ceiling. Help shows nothing, so help never
+raises the ceiling. A failed harder probe does not erase demonstrated lower
+readiness.
+
+**Foundations.** The foundation is the start, or two grades below the highest
+grade shown once the learner has climbed past it. A strand's foundation is
+confirmed by two varied direct independent successes near it, not by inferred
+mastery from harder answers. Spacing belongs to retrieval and review (the
+skill schedule above), not to the frontier: a wrong start costs a few
+problems, not a session. These thresholds are versioned scheduling hypotheses
+in `frontier-policy.ts` and `practice-policy.ts`, not calibrated mastery
+probabilities. The displayed grade remains an uncertain summary rather than a
+guarantee about every skill.
+
+`npx tsx scripts/simulate-climb.ts` runs simulated learners through the real
+planner, estimator and grader (`tests/climb-simulation.fixture.ts`): adults
+whose start is wrong in either direction, and children whose birth year is
+right, too high or too low. It reports how many problems it takes for the
+work and the estimate to reach the learner's level. `tests/adaptive-climb.test.ts`
+holds two of those cases to fifteen problems.
 
 **Skip** reveals an answer without creating an attempt or changing ability.
 **Try easier**, available after skipping, gives that strand a lower starting

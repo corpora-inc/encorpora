@@ -5,11 +5,17 @@ import { create } from "zustand";
 import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { track } from "../../lib/analytics";
-import { ownPracticeAllowed } from "../../../learning/starting-point";
+import {
+  ownPracticeAllowed,
+  pastSchoolAge,
+  type AdultStart,
+} from "../../../learning/starting-point";
 import { sessionOptions } from "../../lib/query";
 import { chosenPlan } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
+import { Segmented } from "../../ui/Segmented";
 import { Toast } from "../../ui/Toast";
+import { adultStartOptions } from "../me/start-options";
 import { loadCurriculum } from "../schools/api";
 import { TalkToUs } from "../schools/TalkToUs";
 import { isStarterChoice, type StarterChoice } from "./guard";
@@ -17,6 +23,7 @@ import {
   deviceTimeZone,
   useStartDemo,
   useStartPlace,
+  type OwnStart,
   type StarterAnswer,
 } from "./starter-api";
 import { FamilySetup, type SetupKind } from "./setup/FamilySetup";
@@ -24,10 +31,12 @@ import styles from "./Starter.module.css";
 
 /** Unsent answers live only in this tab's memory, per account. */
 type StarterDraft = {
-  /** "I'm learning for myself": the year they were born. */
+  /** "I'm learning for myself": the year they were born, and, past school
+   * age, where they chose to begin. */
   ownYear: number | null;
+  ownStart: AdultStart | null;
 };
-const emptyDraft: StarterDraft = { ownYear: null };
+const emptyDraft: StarterDraft = { ownYear: null, ownStart: null };
 const useStarterDraft = create<
   StarterDraft & {
     owner: string | null;
@@ -183,6 +192,14 @@ function StarterScreen({ session }: { session: AuthSession }) {
             params: { learnerId: result.learnerId },
             search: { interval: plan },
           });
+        // Their own practice opens on its first problem; `/me` is where
+        // they come back to.
+        else if (answer.as === "myself")
+          void navigate({
+            to: "/$",
+            params: { _splat: "practice" },
+            replace: true,
+          });
         else void navigate({ href: `/${result.home}` });
       },
       onError: (failure) => {
@@ -267,8 +284,8 @@ function StarterScreen({ session }: { session: AuthSession }) {
                 params: { choice: "parent" },
               })
             }
-            onStart={(birthYear) =>
-              begin({ as: "myself", timezone: deviceTimeZone(), birthYear })
+            onStart={(start) =>
+              begin({ as: "myself", timezone: deviceTimeZone(), ...start })
             }
           />
         ) : choice === "school" ? (
@@ -290,9 +307,11 @@ const OWN_YEARS = 16;
 const OWN_YOUNGEST = 7;
 const ADULT_AGE = 25;
 
-/** "What year were you born?" for their own practice. The year sets where it
- * starts (the server turns it into the nearest starting point). Under 13, a
- * parent sets AMP up, and that way in is one tap away. */
+/** "What year were you born?" for their own practice. A school-age year sets
+ * where it starts (the server turns it into the nearest starting point). Past
+ * school age a year says little about someone's math, so the next tap is
+ * where they want to begin. Under 13, a parent sets AMP up, and that way in is
+ * one tap away. */
 function Myself({
   session,
   busy,
@@ -302,10 +321,12 @@ function Myself({
   session: AuthSession;
   busy: boolean;
   onParent: () => void;
-  onStart: (birthYear: number) => void;
+  onStart: (start: OwnStart) => void;
 }) {
   const draft = useStarterDraft();
-  const picked = draft.owner === session.accountId ? draft.ownYear : null;
+  const mine = draft.owner === session.accountId;
+  const picked = mine ? draft.ownYear : null;
+  const chosenStart = mine ? draft.ownStart : null;
   const thisYear = new Date().getFullYear();
   const years = Array.from(
     { length: OWN_YEARS },
@@ -316,13 +337,31 @@ function Myself({
     { year: thisYear - ADULT_AGE, label: "Adult" },
   ];
   const young = picked !== null && !ownPracticeAllowed(picked, thisYear);
+  const adult = picked !== null && pastSchoolAge(picked);
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
   const current = Math.max(
     0,
     options.findIndex((option) => option.year === picked),
   );
-  const pick = (index: number) => {
-    draft.set(session.accountId, { ownYear: options[index]!.year });
+  // A tap that opens "Where do you want to begin?" scrolls only as far as
+  // its action, so the choices above it are in view; arrowing through the
+  // years leaves the page still.
+  const where = useRef<HTMLDivElement>(null);
+  const reveal = useRef(false);
+  useEffect(() => {
+    if (!adult || !reveal.current) return;
+    reveal.current = false;
+    where.current?.nextElementSibling?.scrollIntoView({
+      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+      block: "nearest",
+    });
+  }, [adult]);
+  const pick = (index: number, tapped = false) => {
+    const year = options[index]!.year;
+    reveal.current = tapped && !adult && pastSchoolAge(year);
+    draft.set(session.accountId, { ownYear: year });
     refs.current[index]?.focus();
   };
   return (
@@ -352,7 +391,7 @@ function Myself({
             data-adult={option.label === "Adult" || undefined}
             className={styles.yearCell}
             disabled={busy}
-            onClick={() => pick(index)}
+            onClick={() => pick(index, true)}
             onKeyDown={(event) => {
               const step =
                 event.key === "ArrowRight" || event.key === "ArrowDown"
@@ -369,10 +408,34 @@ function Myself({
           </button>
         ))}
       </div>
+      {adult && (
+        <div ref={where} className={styles.where}>
+          <h2 id="starter-where" className={styles.question}>
+            Where do you want to begin?
+          </h2>
+          <p className={styles.note}>
+            Practice adjusts to you from your first answer, so any start works.
+          </p>
+          <Segmented
+            stacked
+            label="Where to begin"
+            options={adultStartOptions}
+            value={chosenStart}
+            disabled={busy}
+            onChange={(start) =>
+              draft.set(session.accountId, { ownStart: start })
+            }
+          />
+        </div>
+      )}
       <Start
         busy={busy}
-        ready={picked !== null}
-        missing="Choose the year you were born."
+        ready={picked !== null && (!adult || chosenStart !== null)}
+        missing={
+          picked === null
+            ? "Choose the year you were born."
+            : "Choose where to begin."
+        }
         lines={2}
         already={
           young
@@ -383,7 +446,11 @@ function Myself({
               }
             : null
         }
-        onClick={() => picked !== null && onStart(picked)}
+        onClick={() => {
+          if (picked === null) return;
+          if (!adult) onStart({ birthYear: picked });
+          else if (chosenStart) onStart({ start: chosenStart });
+        }}
       >
         Start practicing
       </Start>

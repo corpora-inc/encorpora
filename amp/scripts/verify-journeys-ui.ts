@@ -811,19 +811,22 @@ async function adultJourney(
   await heading(page, "What brings you to AMP?");
   await page.getByRole("link", { name: /^I’m learning for myself/ }).click();
   await page.waitForURL(/\/start\/myself$/);
-  // The birth year sets where their own practice starts.
+  // Past school age the next tap is where to begin; then the first problem.
   await page.getByRole("radio", { name: "Adult", exact: true }).click();
+  await heading(page, "Where do you want to begin?", 2);
+  await page.getByRole("radio", { name: /^Algebra 2/ }).click();
   await page.getByRole("button", { name: "Start practicing" }).click();
-  await page.waitForURL(/\/me$/);
+  await practicing(page);
   check(
-    `${label} an adult's birth year starts at the top of the scale`,
+    `${label} an adult begins where they chose`,
     (
       await db.query(
         "SELECT starting_band FROM amp_learners WHERE account_id=$1 AND adult",
         [account],
       )
-    ).rows[0]?.starting_band === "precalculus",
+    ).rows[0]?.starting_band === "algebra-2",
   );
+  await page.goto(`${origin}/me`);
   await heading(page, "Avery Fixture");
   await page.getByText("100 free problems left", { exact: true }).waitFor();
   await measured(page, `${label} record`);

@@ -88,37 +88,66 @@ test("a failed harder probe preserves established lower readiness", () => {
   );
   const before = estimate(history),
     after = estimate([...history, answer(9, 8, false, 60)]);
-  assert.equal(before.confirmation!.algebra!.level, 7);
-  assert.equal(after.confirmation!.algebra!.level, 7);
+  assert.ok(before.confirmation!.algebra!.level >= 7);
+  assert.equal(
+    after.confirmation!.algebra!.level,
+    before.confirmation!.algebra!.level,
+  );
   assert.equal(
     before.confirmation!.algebra!.foundationConfirmed,
     false,
     "hard success does not substitute for direct foundation checks",
   );
 });
-test("varied first-session success can advance without waiting, while spaced retrieval confirms a higher band", () => {
-  const oneSession = Array.from({ length: 12 }, (_, n) => answer(7, n));
+test("the ceiling stands on what independent work shows, not on the start", () => {
+  const right = Array.from({ length: 12 }, (_, n) => answer(7, n));
+  // Before anything is shown: a grade above the start (4).
+  assert.equal(estimate([]).unconfirmedCeiling, 5);
+  assert.equal(estimate(right.slice(0, 1)).confirmation!.algebra!.level, 5);
+  // Two varied successes at grade 7 show it, at once: while still climbing,
+  // practice reaches two grades past it, here and in areas not yet tried.
+  const shown = estimate(right.slice(0, 2));
+  assert.equal(shown.climbing, true);
+  assert.equal(shown.confirmation!.algebra!.level, 9);
+  assert.equal(shown.unconfirmedCeiling, 9);
+  // Two misses past it place the learner: the ceiling is what they showed.
+  const placed = estimate([
+    ...right.slice(0, 4),
+    answer(9, 4, false),
+    answer(9, 5, false),
+  ]);
+  assert.equal(placed.climbing, false);
+  assert.equal(placed.confirmation!.algebra!.level, 7);
+  // Help shows nothing: the ceiling stays a grade above the start.
   assert.equal(
-    estimate(oneSession.slice(0, 4)).confirmation!.algebra!.level,
-    5,
-  );
-  assert.equal(estimate(oneSession).confirmation!.algebra!.level, 7);
-  const later = oneSession.concat(
-    Array.from({ length: 4 }, (_, n) => answer(9, n, true, 24)),
-  );
-  assert.ok(estimate(later).confirmation!.algebra!.level >= 7);
-  const spaced = later.concat(
-    Array.from({ length: 4 }, (_, n) => answer(9, n, true, 48)),
-  );
-  assert.equal(
-    estimate(spaced).confirmation!.algebra!.level,
-    9,
-    "birth year is not a permanent ceiling",
-  );
-  assert.equal(
-    estimate(oneSession.map((o) => ({ ...o, assisted: true }))).confirmation!
+    estimate(right.map((o) => ({ ...o, assisted: true }))).confirmation!
       .algebra!.level,
     5,
+  );
+  // One family needs twice the successes.
+  const one = (n: number) => ({
+    ...answer(7, 0),
+    createdAt: answer(7, n).createdAt,
+  });
+  assert.equal(
+    estimate([one(0), one(1), one(2)]).confirmation!.algebra!.level,
+    5,
+  );
+  assert.equal(
+    estimate([one(0), one(1), one(2), one(3)]).confirmation!.algebra!.level,
+    9,
+  );
+});
+test("a slip on the way up does not end the climb; finding the edge does", () => {
+  const climb = [answer(5, 0), answer(5, 1), answer(6, 2), answer(6, 3)];
+  // A miss well below what is shown is a slip.
+  assert.equal(estimate([...climb, answer(3, 4, false)]).climbing, true);
+  // A miss at the top stops counting once later work succeeds past it.
+  const slip = [...climb, answer(6, 4, false), answer(6, 5, false)];
+  assert.equal(estimate(slip).climbing, false);
+  assert.equal(
+    estimate([...slip, answer(6, 6), answer(7, 7), answer(7, 8)]).climbing,
+    true,
   );
 });
 test("foundations require varied direct independent retrieval and tolerate one harder miss", () => {
@@ -141,7 +170,7 @@ test("foundations require varied direct independent retrieval and tolerate one h
   );
 });
 
-test("thirty correct mixed problems keep foundation checks alongside bounded probes", () => {
+test("thirty correct mixed problems climb with probes, and help climbs nowhere", () => {
   const nodes = new Map(skills.map((s) => [s.id, s]));
   const byId = new Map(templates.map((t) => [t.id, t]));
   for (const scenario of ["helped", "unmarked"] as const) {
@@ -155,6 +184,7 @@ test("thirty correct mixed problems keep foundation checks alongside bounded pro
     }).overall.level;
     let foundations = 0,
       probes = 0;
+    const ordinary: number[] = [];
     for (let n = 0; n < 32; n++) {
       const now = day + n * 60000;
       const frontier = estimateFrontier({
@@ -177,16 +207,16 @@ test("thirty correct mixed problems keep foundation checks alongside bounded pro
         now,
       })[0]!;
       const grade = templateGrade(selected.template, nodes);
-      if (selected.selection?.purpose === "foundation") {
-        foundations++;
-        assert.ok(grade <= 4.5, `foundation at ${grade}`);
+      if (selected.selection?.purpose === "foundation") foundations++;
+      if (selected.selection?.purpose === "probe") {
+        probes++;
+        if (scenario === "helped")
+          assert.ok(grade <= 7.5, `helped probe at ${grade}`);
+      } else {
+        ordinary.push(grade);
+        if (scenario === "helped")
+          assert.ok(grade <= 5.5, `helped work climbed to ${grade}`);
       }
-      if (selected.selection?.purpose === "probe") probes++;
-      else
-        assert.ok(
-          grade <= 6.5,
-          `ordinary work climbed to ${grade} after ${n} answers`,
-        );
       attempts.push({
         id: String(n),
         problemId: String(n),
@@ -202,7 +232,15 @@ test("thirty correct mixed problems keep foundation checks alongside bounded pro
       });
       if (scenario === "helped") assert.ok(frontier.overall.level === initial);
     }
-    assert.ok(foundations >= 5, `${scenario}: ${foundations} foundations`);
-    if (scenario === "unmarked") assert.ok(probes >= 5, `${probes} probes`);
+    // Every answer right: no edge found yet, so no foundation checks.
+    assert.equal(foundations, 0, `${scenario}: ${foundations} foundations`);
+    if (scenario === "unmarked") {
+      assert.ok(probes >= 10, `${probes} probes`);
+      const late = ordinary.slice(-8);
+      assert.ok(
+        late.reduce((a, b) => a + b, 0) / late.length >= 8,
+        `ordinary work after 32 right answers: ${ordinary.join(" ")}`,
+      );
+    }
   }
 });

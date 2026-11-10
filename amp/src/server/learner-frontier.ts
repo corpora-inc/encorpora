@@ -8,6 +8,7 @@ import {
   type Frontier,
   type FrontierCatalog,
   type FrontierFold,
+  type FrontierConfirmationState,
   type FrontierFoldItem,
   type FrontierObservation,
   type FrontierState,
@@ -28,7 +29,7 @@ import { templateGrade } from "./mixed-practice";
 export const CHECKPOINT_EVERY = 25;
 /** Longer replays go to the worker so they can't stall the API. */
 export const OFF_THREAD_ANSWERS = 300;
-const STATE_FORMAT = 1;
+const STATE_FORMAT = 2;
 
 const templateById = new Map(
   [...templates, ...historicalTemplates].map((t) => [t.id, t]),
@@ -232,7 +233,7 @@ export function applyStrandRestart(
         level: local.unconfirmedCeiling!,
         foundationConfirmed: false,
       }),
-      foundationLevel: level,
+      foundationLevel: local.foundationLevel ?? level,
     };
 }
 
@@ -292,6 +293,39 @@ const decodeItem = (encoded: number[]): FrontierFoldItem => ({
   weight: encoded[5]!,
 });
 // Family names repeat across a long history, so buckets name them by position.
+const encodeEvidence = (
+  strand: FrontierConfirmationState,
+  position: ReadonlyMap<string, number>,
+) => ({
+  seen: strand.seen,
+  successes: strand.successes,
+  buckets: strand.buckets.map((bucket) => ({
+    grade: bucket.grade,
+    success: bucket.success,
+    items: bucket.items.map((item) => [
+      position.get(item.templateId),
+      item.at,
+      item.order,
+    ]),
+  })),
+});
+type EncodedEvidence = ReturnType<typeof encodeEvidence>;
+const decodeEvidence = (
+  strand: EncodedEvidence,
+  families: readonly string[],
+): FrontierConfirmationState => ({
+  seen: strand.seen,
+  successes: strand.successes,
+  buckets: strand.buckets.map((bucket) => ({
+    grade: bucket.grade,
+    success: bucket.success,
+    items: (bucket.items as number[][]).map((item) => ({
+      templateId: families[item[0]!]!,
+      at: item[1]!,
+      order: item[2]!,
+    })),
+  })),
+});
 const encodeConfirmation = (
   confirmation: FrontierState["confirmation"],
   position: ReadonlyMap<string, number>,
@@ -299,19 +333,7 @@ const encodeConfirmation = (
   Object.fromEntries(
     Object.entries(confirmation).map(([name, strand]) => [
       name,
-      {
-        seen: strand.seen,
-        successes: strand.successes,
-        buckets: strand.buckets.map((bucket) => ({
-          grade: bucket.grade,
-          success: bucket.success,
-          items: bucket.items.map((item) => [
-            position.get(item.templateId),
-            item.at,
-            item.order,
-          ]),
-        })),
-      },
+      encodeEvidence(strand, position),
     ]),
   );
 type EncodedConfirmation = ReturnType<typeof encodeConfirmation>;
@@ -322,19 +344,7 @@ const decodeConfirmation = (
   Object.fromEntries(
     Object.entries(confirmation).map(([name, strand]) => [
       name,
-      {
-        seen: strand.seen,
-        successes: strand.successes,
-        buckets: strand.buckets.map((bucket) => ({
-          grade: bucket.grade,
-          success: bucket.success,
-          items: (bucket.items as number[][]).map((item) => ({
-            templateId: families[item[0]!]!,
-            at: item[1]!,
-            order: item[2]!,
-          })),
-        })),
-      },
+      decodeEvidence(strand, families),
     ]),
   );
 const encodeState = (
@@ -355,6 +365,7 @@ const encodeState = (
     ]),
   ),
   confirmation: encodeConfirmation(state.confirmation, position),
+  pooled: encodeEvidence(state.pooled, position),
 });
 type EncodedState = ReturnType<typeof encodeState>;
 const decodeState = (
@@ -375,6 +386,11 @@ const decodeState = (
     ]),
   ),
   confirmation: decodeConfirmation(encoded.confirmation, families),
+  // A state from before pooled evidence (format 1) decodes, then fails the
+  // fingerprint check and is replayed.
+  pooled: encoded.pooled
+    ? decodeEvidence(encoded.pooled, families)
+    : { seen: 0, successes: [], buckets: [] },
 });
 
 export function encodeLearnerFrontier(state: LearnerFrontierState) {

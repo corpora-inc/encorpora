@@ -5,6 +5,7 @@ import { FamilyError } from "../family/contracts.js";
 import { ensureFamilyClass, familyClassOf } from "../family/family-class.js";
 import type { FamilyRepository } from "../family/repository.js";
 import { MAX_FAMILY_LEARNERS } from "../learning/free-allowance.js";
+import { adultStarts } from "../learning/starting-point.js";
 import { timezone } from "../schools/contracts.js";
 import { SchoolRepository } from "../schools/repository.js";
 import { insertFamilyChild } from "../server/learner-label.js";
@@ -45,12 +46,14 @@ const student = z.strictObject({
 });
 
 export const starterSchema = z.discriminatedUnion("as", [
-  // The birth year sets where their own practice starts. Optional only for
-  // a screen loaded before it was asked.
+  // A school-age birth year sets where their own practice starts; an adult
+  // chooses the start instead (`pastSchoolAge`). Both optional for a screen
+  // loaded before either was asked.
   z.strictObject({
     as: z.literal("myself"),
     timezone,
     birthYear: ownBirthYear.optional(),
+    start: z.enum(adultStarts).optional(),
   }),
   z.strictObject({
     as: z.literal("parent"),
@@ -88,6 +91,7 @@ export async function startPlace(
     const { learnerId } = await startAdultPractice(families, accountId, {
       timezone: input.timezone,
       birthYear: input.birthYear,
+      start: input.start,
     });
     return { home: "me", learnerId };
   }
