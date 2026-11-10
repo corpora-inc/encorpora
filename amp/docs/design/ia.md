@@ -16,6 +16,10 @@ The rules every AMP screen follows, decided 2026-11-10 for the design pass. [The
 
 One drawer, one place switcher (`PlaceSwitcher`). A person may hold several places. The bar shows the place's tabs and one primary action. Everything rare lives in Settings, a row's overflow menu, or the drawer, never on the place's first tab.
 
+- **The place switcher holds places only:** My practice, each family or class, each school, and Add a place. It never lists practice profiles, "Try a level…", children or students. Children and students are reached from their class: the Map and Students tabs, and the drill-in.
+- **Practice as someone else** is a page reached from /me (`/me/profiles`). It holds the saved profiles, recently used ones, and "Try a level…". While practicing as a profile, the bar keeps "Back to my own practice".
+- **One tab header per place.** Navigating within a place never swaps in another place's tab bar. A family, a tutor or a lone teacher never lands on a school-level page.
+
 | Place | Who | Tabs | Bar action |
 |---|---|---|---|
 | My practice | an adult learner | Overview · Pathways · Inventory | ▶ Practice |
@@ -27,7 +31,7 @@ One drawer, one place switcher (`PlaceSwitcher`). A person may hold several plac
 
 - **A place with one class opens on that class's Today**, never on a list of one (teacher demo, family, second parent).
 - **Tabs follow the class's size.** A family or tutor class (6 or fewer learners) has no Grades tab. Grades are a line in each learner's Map panel, and the weekly target is set in Settings with its progress on Today. A teacher's class keeps Grades.
-- **Calendar** is a section of Settings for a family and a lone class, or a tab only where it is useful. A school with staff has it as a tab.
+- **Calendar:** for a family, a tutor or a lone class, the school year's dates and the term type are one compact section of the class's Settings. There is no Calendar tab and no school-level page. A school with staff keeps its Calendar tab, in the same frame and density as every other screen: a designed year view, without the vast empty space.
 - **Opening a student never leaves the class.** From a class, a student opens inside it (the Map's drill-in route), and the class tabs stay. The school-level student page (`/school/<org>/students/<id>`) is only for an admin who came from the school.
 - **Account tabs follow the account:** an adult with no child sees "Your practice", not "Who's learning?" with "Add a child"; Privacy says "your data", and Learning consent appears only once a child exists. The tab label and the page title are the same words.
 
