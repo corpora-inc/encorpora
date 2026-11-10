@@ -443,21 +443,20 @@ async function journey(browser: Browser, engine: string, width: number) {
     if (!CANCELLED_BY_NAVIGATION.test(error.message))
       failures.push(`${label} page error: ${error.message}`);
   });
-  await open(
-    page,
-    classUrl("today"),
-    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
-  );
-  const greeting = await page.getByRole("heading", { level: 1 }).textContent();
+  // Titled by the class, never a greeting or the teacher's own name
+  // (docs/design/ia.md).
+  await open(page, classUrl("today"), "Grade 5 Math");
+  const title = await page.getByRole("heading", { level: 1 }).textContent();
   check(
-    `${label} greets by name`,
-    /Ms\. Okafor/.test(greeting ?? ""),
-    greeting,
+    `${label} titled by the class, no name`,
+    title?.trim() === "Grade 5 Math" &&
+      !/Okafor/.test(await page.locator("main").innerText()),
+    title,
   );
 
   // A shared gap, named, with its students and the lesson.
   const gap = page.getByRole("heading", {
-    name: /\d+ students are stuck on fraction addition/,
+    name: /\d+ students are stuck on adding and subtracting unlike fractions/i,
   });
   await gap.waitFor();
   const body = await page.locator("main").innerText();
@@ -499,7 +498,7 @@ async function journey(browser: Browser, engine: string, width: number) {
 
   // Checking off survives a reload, today.
   const box = page.getByRole("checkbox", {
-    name: /Done: \d+ students are stuck on fraction addition/,
+    name: /Done: \d+ students are stuck on adding and subtracting unlike fractions/i,
   });
   await box.check();
   await page.reload();
@@ -546,10 +545,19 @@ async function journey(browser: Browser, engine: string, width: number) {
     `${label} evidence has real math`,
     (await sheet.locator(".katex").count()) >= 0 && /Answered/.test(sheetText),
   );
+  // How the sheet speaks of the student, not a word problem's own people
+  // (a problem's "She buys…" is the problem, shown as it was).
+  const ownWords = await sheet.evaluate((root) => {
+    const copy = root.cloneNode(true) as HTMLElement;
+    copy
+      .querySelectorAll("[data-evidence-problems]")
+      .forEach((n) => n.remove());
+    return copy.innerText || copy.textContent || "";
+  });
   check(
     `${label} no gendered pronouns in evidence`,
-    !/\b(he|she|his|her|hers|him)\b/i.test(sheetText),
-    sheetText.match(/\b(he|she|his|her|hers|him)\b/i)?.[0],
+    !/\b(he|she|his|her|hers|him)\b/i.test(ownWords),
+    ownWords.match(/\b(he|she|his|her|hers|him)\b/i)?.[0],
   );
   await page.keyboard.press("Escape");
   await sheet.waitFor({ state: "detached" });
@@ -728,7 +736,8 @@ async function journey(browser: Browser, engine: string, width: number) {
 async function sweep(browser: Browser, engine: string) {
   const amara = people.get("Amara")!.personId;
   const screens = [
-    { id: "today", path: classUrl("today"), heading: /^Good / },
+    // Titled by the class (docs/design/ia.md), never a greeting.
+    { id: "today", path: classUrl("today"), heading: "Grade 5 Math" },
     { id: "map", path: classUrl("map"), heading: "Class map" },
     {
       id: "gradebook",
@@ -760,12 +769,12 @@ async function sweep(browser: Browser, engine: string) {
       path: `${classUrl("report-cards")}?term=${terms.q2}&student=${amara}`,
       heading: "Amara Osei",
     },
-    { id: "settings", path: classUrl("settings"), heading: "Grade 5 Math" },
-    { id: "roster", path: classUrl("roster"), heading: "Roster" },
+    { id: "settings", path: classUrl("settings"), heading: "Settings" },
+    { id: "roster", path: classUrl("roster"), heading: "Students" },
     {
       id: "today-empty",
       path: `/school/${orgId}/classes/${emptyClassId}/today`,
-      heading: /^Good /,
+      heading: "Math Support",
     },
     {
       id: "gradebook-empty",

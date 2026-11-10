@@ -297,9 +297,9 @@ function StarterScreen({ session }: { session: AuthSession }) {
 /** "What year were you born?" for their own practice, and nothing else: the
  * year is always enough. A school-age year sets where it starts (the server
  * turns it into the nearest starting point); an adult's starts mid-scale, and
- * practice finds their level within a few problems. Where to begin stays
- * open later, from their own settings. Under 13, a parent sets AMP up, and
- * that way in is one tap away. */
+ * practice finds their level within a few problems (Reset and Try easier
+ * cover the rest). Under 13, a parent sets AMP up, and that way in is one
+ * tap away. */
 function Myself({
   session,
   busy,

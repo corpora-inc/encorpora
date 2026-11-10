@@ -149,11 +149,13 @@ export function TodayScreen() {
       ) : (
         <div className={todayStyles.today}>
           <header className={todayStyles.head}>
+            {/* The title is the day for a family and the class's name for
+                a class: never a greeting or the viewer's own name. */}
             {family ? (
-              <h1>{fullDay(data.today)}</h1>
+              <h1 data-today-title="">{fullDay(data.today)}</h1>
             ) : (
               <div className={todayStyles.title}>
-                <h1>{data.class.name}</h1>
+                <h1 data-today-title="">{data.class.name}</h1>
                 <p>{fullDay(data.today)}</p>
               </div>
             )}

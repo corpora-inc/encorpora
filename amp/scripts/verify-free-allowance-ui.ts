@@ -30,6 +30,7 @@ import { PostgresRepository } from "../src/server/repository";
 import { probe, settle, shellRecord, shiftRecorder } from "./app-shell-probe";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { todayTitle } from "./today-title";
 
 const chromium = secureChromium(rawChromium);
 const argument = (name: string) => {
@@ -259,10 +260,7 @@ async function journey(
   const moon = await repository.create(account, undefined, 2018);
   await page.goto(`${origin}/`);
   await page.waitForURL(CLASS_TODAY);
-  await heading(
-    page,
-    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
-  );
+  await todayTitle(page);
   await page
     .getByRole("button", { name: `Let ${fox.name} practice here` })
     .waitFor();
@@ -503,10 +501,7 @@ async function journey(
     classId: klass.id,
   });
   await page.goto(`${origin}/school/${school.id}/classes/${klass.id}/today`);
-  await heading(
-    page,
-    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
-  );
+  await todayTitle(page);
   await measured(page, `${label} teacher`);
   await shot(page, "teacher", width, theme);
   // A class has no checkout: its next step is a conversation.

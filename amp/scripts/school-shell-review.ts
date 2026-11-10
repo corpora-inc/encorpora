@@ -4,12 +4,16 @@ import type { Page } from "playwright";
 
 /** Check the actual shared frame, including its drawer and phone strip. */
 export async function schoolShellReview(page: Page, shot?: string) {
-  const path = new URL(page.url()).pathname;
-  const kind = path.includes("/classes/")
-    ? "class"
-    : path.startsWith("/school/")
-      ? "school"
-      : "plain";
+  const url = new URL(page.url());
+  const path = url.pathname;
+  // A student opened from a class (`?class=`) stays inside that class.
+  const kind =
+    path.includes("/classes/") ||
+    (/^\/school\/[^/]+\/students\//.test(path) && url.searchParams.has("class"))
+      ? "class"
+      : path.startsWith("/school/")
+        ? "school"
+        : "plain";
   assert.equal(
     await page.locator(`[data-app-frame="${kind}"]`).count(),
     1,
@@ -102,31 +106,12 @@ export async function schoolShellReview(page: Page, shot?: string) {
   }
 }
 
-/** Navigate every class tab, retaining the bar, logo and strip dimensions. */
+/** Navigate every class tab the bar offers (a family of six or fewer has no
+ * Grades), retaining the bar, logo and strip dimensions. Children are reached
+ * from the class (Map and its drill-in), never the place switcher, which
+ * holds places only (docs/design/ia.md). */
 export async function classShellJourney(page: Page) {
   const today = page.url();
-  await page.getByRole("button", { name: "Open AMP menu" }).click();
-  await page
-    .getByRole("dialog")
-    .getByRole("button", { name: /switch place$/ })
-    .click();
-  await page
-    .getByRole("menu")
-    .locator('[data-place^="learner:"]')
-    .filter({ hasText: "Maya" })
-    .click();
-  await page.waitForURL(/\/overview$/);
-  await page.locator('[data-app-frame="progress"]').waitFor();
-  await page.getByRole("button", { name: "Open AMP menu" }).click();
-  await page
-    .getByRole("dialog")
-    .getByRole("button", { name: "Maya: switch place" })
-    .waitFor();
-  await page
-    .getByRole("dialog")
-    .getByRole("link", { name: /^Class,/ })
-    .click();
-  await page.waitForURL(today);
   const snapshot = () =>
     page.evaluate(() => {
       const bar = document.querySelector("[data-app-bar]") as HTMLElement & {
@@ -152,7 +137,10 @@ export async function classShellJourney(page: Page) {
     ).shellMark = true;
   });
   const before = await snapshot();
-  for (const id of [
+  const offered = await page
+    .locator("[data-app-bar] [data-tab]")
+    .evaluateAll((tabs) => tabs.map((tab) => tab.getAttribute("data-tab")!));
+  const order = [
     "map",
     "gradebook",
     "time",
@@ -160,7 +148,8 @@ export async function classShellJourney(page: Page) {
     "roster",
     "settings",
     "today",
-  ]) {
+  ].filter((id) => offered.includes(id));
+  for (const id of order) {
     await page.locator(`[data-app-bar] [data-tab="${id}"]`).click();
     await page
       .locator(`[data-app-bar] [data-tab="${id}"][aria-current="page"]`)
@@ -175,10 +164,20 @@ export async function classShellJourney(page: Page) {
   await page.getByRole("button", { name: "Open AMP menu" }).click();
   const drawer = page.getByRole("dialog");
   await drawer.waitFor();
-  assert.equal(await drawer.getByRole("link", { name: /^Class,/ }).count(), 1);
+  assert.equal(
+    await drawer
+      .locator('nav[aria-label="AMP navigation"] [aria-current="page"]')
+      .count(),
+    1,
+    "the drawer marks exactly one current item",
+  );
   await drawer.getByRole("button", { name: "Sign out", exact: true }).waitFor();
   await drawer.getByRole("button", { name: /switch place$/ }).click();
-  await page.getByRole("menuitem", { name: /Maya/ }).first().waitFor();
+  assert.equal(
+    await page.getByRole("menu").locator('[data-place^="learner:"]').count(),
+    0,
+    "the place switcher holds places only",
+  );
   await page.keyboard.press("Escape");
   await page.keyboard.press("Escape");
   await drawer.waitFor({ state: "hidden" });
