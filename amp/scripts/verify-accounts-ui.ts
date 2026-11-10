@@ -133,12 +133,17 @@ async function signedIn(page: Page, email: string) {
       );
     });
   const identity = page.getByRole("region", { name: "Current account" });
-  await identity.getByRole("button", { name: "Show email" }).click();
-  await identity.getByText(email, { exact: true }).waitFor();
+  // The drawer never shows the address; Account does.
+  assert(
+    !(await identity.innerHTML()).includes(email),
+    "email rendered in the drawer",
+  );
   const signOut = page.getByRole("button", { name: "Sign out", exact: true });
   await signOut.waitFor();
   if (new URL(page.url()).pathname.startsWith("/school/")) {
-    await page.getByRole("link", { name: "Family", exact: true }).click();
+    await page
+      .getByRole("link", { name: "Family & account", exact: true })
+      .click();
     await page.waitForURL(`${origin}/family`);
     await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
   } else {

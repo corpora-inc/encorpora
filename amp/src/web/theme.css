@@ -666,6 +666,17 @@ header {
     font-size: 28px;
   }
 }
+/* Quiet actions in the lessons: a tint on hover, never an underline. */
+.lesson-reader .card-top .text-button,
+.book-list .text-button {
+  padding-inline: var(--space-2);
+  margin-inline: calc(-1 * var(--space-2));
+}
+.lesson-reader .card-top .text-button:hover,
+.book-list .text-button:hover {
+  text-decoration: none;
+  background: var(--color-surface-hover);
+}
 /* The download menu sits at the row's end, as quiet as "All lessons". */
 .lesson-reader .card-top {
   align-items: center;

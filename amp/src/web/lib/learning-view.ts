@@ -88,14 +88,19 @@ export function useLearningView({
     own ??
     learners.find((l) => l.id === selectedId) ??
     shared.find((l) => l.id === selectedId) ??
-    (learners.length === 1 ? learners[0] : undefined);
+    // Nobody chosen on this device yet: the first child, as practice
+    // (LegacyApp) already takes it, so every screen and the drawer agree.
+    learners[0];
   const viewOnly = !own && !!secondParentChild(account, learner?.id);
   useEffect(() => {
     if (solo && own === solo && selectedId !== solo.id)
       useLearnerStore.getState().select(solo.id);
     if (own) return;
-    if (learners.length === 1 && selectedId !== learners[0]?.id)
-      useLearnerStore.getState().select(learners[0]!.id);
+    const chosen =
+      learners.some((l) => l.id === selectedId) ||
+      shared.some((l) => l.id === selectedId);
+    if (!chosen && learners[0])
+      useLearnerStore.getState().select(learners[0].id);
   }, [account, selectedId]);
   const loadingIdentity = session.isPending || (!!session.data && me.isPending);
   const evidence = useQuery({

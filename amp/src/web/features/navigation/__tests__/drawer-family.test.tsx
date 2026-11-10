@@ -32,7 +32,7 @@ vi.mock("../PlaceSwitcher", () => ({
 
 afterEach(cleanup);
 
-test("review regression: a family class offers Family directly at /family", () => {
+test("review regression: a family class opens Family & account at /family, one row", () => {
   const learner = { id: "jordan", name: "Jordan" };
   learningView.mockReturnValue({
     account: {
@@ -59,9 +59,8 @@ test("review regression: a family class offers Family directly at /family", () =
     />,
   );
   expect(
-    screen.getByRole("link", { name: "Family" }).getAttribute("href"),
+    screen.getByRole("link", { name: "Family & account" }).getAttribute("href"),
   ).toBe("/family");
-  expect(
-    screen.getByRole("link", { name: "Account" }).getAttribute("href"),
-  ).toBe("/family/security");
+  expect(screen.queryByRole("link", { name: "Account" })).toBeNull();
+  expect(screen.queryByRole("link", { name: "Family" })).toBeNull();
 });

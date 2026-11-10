@@ -5,8 +5,7 @@ import { useLearningView } from "../../lib/learning-view";
 import { useLearnerStore } from "../../learner-store";
 import { useShellSlots } from "../../lib/shell-slots";
 import { FeedbackPreferences } from "../practice/FeedbackPreferences";
-import { ChoicePicker, type ListboxOption } from "../../ui/Listbox";
-import { SignedInEmail } from "./SignedInEmail";
+import { ChoicePicker, Listbox, type ListboxOption } from "../../ui/Listbox";
 import { PlaceSwitcher, usePlaceEntries } from "./PlaceSwitcher";
 import { overviewPath, shellFrame, type ShellFrame } from "./shell-frame";
 import { clearInitialConsentChallenge } from "../../consent-entry";
@@ -134,7 +133,7 @@ export default function DrawerContents({
     void navigate({ to: "/$", params: { _splat: destination.slice(1) } });
     close();
   }
-  const { entries: places, currentOrg } = usePlaceEntries(
+  const { entries: places } = usePlaceEntries(
     account,
     here?.kind === "class" || here?.kind === "school" ? here.org : undefined,
   );
@@ -205,13 +204,28 @@ export default function DrawerContents({
           {profile ? (
             <ProfilePlace onNavigate={close} />
           ) : learnerChoices.length > 1 && !own ? (
-            <ChoicePicker
-              label="Current learner"
-              placeholder="Choose a learner"
-              options={learnerChoices}
-              value={learner?.id ?? null}
-              onChange={chooseLearner}
-            />
+            // A few learners are quiet rows, the chosen one marked; a long
+            // list folds behind one button.
+            learnerChoices.length <= 6 ? (
+              <div className={styles.learnerChoice}>
+                <span className={styles.kicker}>Learner</span>
+                <Listbox
+                  label="Current learner"
+                  className={styles.learnerList}
+                  options={learnerChoices}
+                  value={learner?.id ?? null}
+                  onChange={chooseLearner}
+                />
+              </div>
+            ) : (
+              <ChoicePicker
+                label="Current learner"
+                placeholder="Choose a learner"
+                options={learnerChoices}
+                value={learner?.id ?? null}
+                onChange={chooseLearner}
+              />
+            )
           ) : (
             // Their own practice is named by the place above; the drawer
             // never names a person to themselves.
@@ -266,7 +280,12 @@ export default function DrawerContents({
         {classPlace &&
           !student &&
           nav(`/${classPlace.path}`, "Class", "class", {
-            detail: classPlace.name,
+            // The place switcher above already names the place on screen.
+            detail:
+              classPlace.id === currentPlace ||
+              (classPlace.id === currentClass && currentPlace === "home")
+                ? undefined
+                : classPlace.name,
             current: here?.kind === "class",
           })}
         {schoolPlace &&
@@ -286,17 +305,18 @@ export default function DrawerContents({
           nav("/access", "Your gift of AMP", "plans", {
             detail: `${account.availableAccessGrant.months === 12 ? "A year" : "A month"} of access is ready`,
           })}
+        {/* A family's learners, purchases and consent are a tab of Account:
+            a parent in the family class opens Account there, one row. */}
         {view.session.data &&
           !student &&
-          here?.kind === "class" &&
-          (currentOrg?.kind === "family" ||
-            account?.familyClass?.classId === here.classId) &&
-          nav("/family", "Family", "class")}
-        {view.session.data &&
-          !student &&
-          nav("/family/security", "Account", "settings", {
-            current: here?.kind === "account",
-          })}
+          (here?.kind === "class" &&
+          account?.familyClass?.classId === here.classId
+            ? nav("/family", "Family & account", "settings", {
+                current: here?.kind === "account",
+              })
+            : nav("/family/security", "Account", "settings", {
+                current: here?.kind === "account",
+              }))}
       </nav>
       <div className={styles.settings}>
         {practiceControls}
@@ -310,11 +330,9 @@ export default function DrawerContents({
 }
 
 /**
- * Who is signed in, and Sign out, at the foot of the drawer. Its rows are
- * always there, so nothing appears or changes while the drawer is open: the
- * address behind a fixed-length mask (screen recordings never show it) with a
- * button to reveal it, or a student's name. They end the drawer's list and
- * scroll with it.
+ * Sign out at the foot of the drawer, with a student's name above it on a
+ * shared device. Its rows are always there, so nothing appears or changes
+ * while the drawer is open. They end the drawer's list and scroll with it.
  */
 export function DrawerFooter({ close }: { close: () => void }) {
   const view = useLearningView({ records: false });
@@ -337,8 +355,9 @@ export function DrawerFooter({ close }: { close: () => void }) {
     );
   const account = view.account;
   const student = account?.account.kind === "student";
-  // A student has no address, so their name; everyone else, their address
-  // behind its mask, as the founder prefers.
+  // A child on a shared device sees whose session this is. An adult's
+  // address never shows here: screen recordings of the menu stay clean, and
+  // Account holds it.
   const name = student ? (account?.learners[0]?.name ?? "") : "";
   return (
     <section
@@ -346,14 +365,12 @@ export function DrawerFooter({ close }: { close: () => void }) {
       aria-label="Current account"
       data-signed-in
     >
-      <div className={styles.who}>
-        <span className={styles.kicker}>Signed in as</span>
-        {name ? (
+      {student && (
+        <div className={styles.who}>
+          <span className={styles.kicker}>Signed in as</span>
           <strong className={styles.email}>{name}</strong>
-        ) : (
-          <SignedInEmail email={account?.account.email ?? ""} />
-        )}
-      </div>
+        </div>
+      )}
       <div className={styles.signOut}>
         <button
           disabled={busy}
