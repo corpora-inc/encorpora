@@ -1,5 +1,10 @@
-import { useState, type ReactNode } from "react";
-import { Select } from "../../ui/Select";
+import {
+  useId,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type ReactNode,
+} from "react";
 import styles from "./School.module.css";
 
 /** A screen's title and its one line, with its main action beside them. */
@@ -55,6 +60,19 @@ export const gradeLabel = (grade: number | null | undefined) =>
         : String(grade);
 
 /** Kindergarten through college-level, as the learning model has them. */
+const GRADES = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] as const;
+const gradeCell = (grade: number) =>
+  grade === 0 ? "K" : grade === 13 ? "College" : String(grade);
+const gradeName = (grade: number) =>
+  grade === 0
+    ? "Kindergarten"
+    : grade === 13
+      ? "College level"
+      : `Grade ${grade}`;
+
+/** Kindergarten to college, one tap each: a radio group drawn as a grid of
+ * equal cells, five to a row, with College across two. Arrow keys move along
+ * the grades. Where a grade is optional, tapping the chosen one clears it. */
 export function GradePicker({
   value,
   onChange,
@@ -66,23 +84,48 @@ export function GradePicker({
   label?: string;
   allowEmpty?: boolean;
 }) {
+  const id = useId();
+  const refs = useRef<(HTMLButtonElement | null)[]>([]);
+  const focusable = value ?? 0;
+  const move = (event: KeyboardEvent, at: number) => {
+    const step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[
+      event.key
+    ];
+    if (step === undefined) return;
+    event.preventDefault();
+    const next = (at + step + GRADES.length) % GRADES.length;
+    onChange(GRADES[next]!);
+    refs.current[next]?.focus();
+  };
   return (
     <div className={styles.field}>
-      <span className={styles.fieldLabel}>{label}</span>
-      <Select
-        aria-label={label}
-        value={value === null ? "" : String(value)}
-        onValueChange={(next) => onChange(next === "" ? null : Number(next))}
-      >
-        {allowEmpty && <option value="">Not set</option>}
-        <option value="0">Kindergarten</option>
-        {Array.from({ length: 12 }, (_, index) => index + 1).map((grade) => (
-          <option key={grade} value={String(grade)}>
-            Grade {grade}
-          </option>
+      <span className={styles.fieldLabel} id={id}>
+        {label}
+        {allowEmpty && <span className={styles.optional}> (optional)</span>}
+      </span>
+      <div role="radiogroup" aria-labelledby={id} className={styles.grades}>
+        {GRADES.map((grade, at) => (
+          <button
+            key={grade}
+            ref={(node) => {
+              refs.current[at] = node;
+            }}
+            type="button"
+            role="radio"
+            aria-checked={grade === value}
+            aria-label={gradeName(grade)}
+            tabIndex={grade === focusable ? 0 : -1}
+            className={styles.grade}
+            data-wide={grade === 13 || undefined}
+            onClick={() =>
+              onChange(allowEmpty && grade === value ? null : grade)
+            }
+            onKeyDown={(event) => move(event, at)}
+          >
+            {gradeCell(grade)}
+          </button>
         ))}
-        <option value="13">College level</option>
-      </Select>
+      </div>
     </div>
   );
 }

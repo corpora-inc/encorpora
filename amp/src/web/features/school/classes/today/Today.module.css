@@ -1,0 +1,381 @@
+/* Today (docs/design/ia.md, and the /schools product shot): the title, the
+   class code, a family's children on a line each, the feed of what to do and
+   why, then the week in a line. Rows on the page, never cards; tokens only. */
+.today {
+  container-type: inline-size;
+  display: grid;
+  gap: var(--space-6);
+}
+
+/* The title (a class's name over the date, or a family's date), with the
+   class code beside it from 720 px. */
+.head {
+  display: grid;
+  gap: var(--space-4);
+  align-items: end;
+}
+.head h1 {
+  line-height: 1.1;
+}
+.title p {
+  margin-top: var(--space-1);
+  color: var(--color-muted-text);
+}
+@container (min-width: 720px) {
+  .head {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+
+/* Section headings: serif, 12 px above their rows. */
+.sectionTitle {
+  margin: 0 0 var(--space-3);
+}
+
+/* One value over what it counts. */
+.fact {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+}
+.factValue {
+  font-size: var(--text-heading-4);
+  font-weight: 600;
+  font-variant-numeric: var(--numeric);
+  line-height: 1.25;
+  white-space: nowrap;
+}
+.factLabel {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  line-height: 1.3;
+  font-variant-numeric: var(--numeric);
+}
+
+/* The class code: label, code and Copy link on one line, then how. */
+.signIn {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+}
+.codeLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+}
+.codeLabel {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-family: inherit;
+  font-size: var(--text-table);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.code {
+  color: var(--color-on-surface);
+  font-size: var(--text-heading-2);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.signIn button.copy {
+  place-items: center;
+  min-height: 34px;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-small);
+  font-size: var(--text-table);
+}
+/* Small to look at, 44 px to touch. */
+.signIn button.copy::after,
+.inlineLink::after {
+  content: "";
+  position: absolute;
+  inset: -6px -4px;
+}
+.note {
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+.inlineLink {
+  position: relative;
+  color: var(--color-primary);
+  font-weight: 650;
+  text-decoration: none;
+  white-space: nowrap;
+}
+/* Hover tints, never underlines. */
+.inlineLink {
+  margin-inline: -4px;
+  padding: 2px 4px;
+  border-radius: var(--radius-small);
+}
+.inlineLink:hover {
+  background: var(--color-surface-hover);
+}
+@container (min-width: 720px) {
+  .head .signIn {
+    justify-items: end;
+    text-align: end;
+  }
+  .head .codeLine {
+    justify-content: flex-end;
+  }
+}
+
+/* The week, in one line of figures; three to a row on a phone. */
+.week {
+  display: grid;
+  gap: var(--space-2);
+}
+/* The strip's label is a label, as in the product shot. */
+.week .sectionTitle {
+  margin: 0 0 var(--space-1);
+  color: var(--color-muted-text);
+  font-family: inherit;
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.weekFacts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3) var(--space-4);
+  margin: 0;
+}
+/* Four figures: two by two on a phone. */
+.weekFacts:has(> div:nth-child(4)) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.weekFacts > div {
+  display: grid;
+  align-content: start;
+  gap: 1px;
+  min-width: 0;
+}
+.weekFacts dt {
+  order: 2;
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  line-height: 1.3;
+}
+.weekFacts dd {
+  order: 1;
+  margin: 0;
+  font-size: var(--text-figure);
+  font-weight: 600;
+  font-variant-numeric: var(--numeric);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+@container (min-width: 720px) {
+  .weekFacts,
+  .weekFacts:has(> div:nth-child(4)) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-7);
+  }
+  .weekFacts dt {
+    white-space: nowrap;
+  }
+}
+
+/* A quiet, dismissible line. */
+.hint {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  padding: var(--space-1) var(--space-1) var(--space-1) var(--space-4);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+  font-size: var(--text-table);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+.dismiss {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-small);
+  background: transparent;
+  color: var(--color-muted-text);
+  cursor: pointer;
+}
+.dismiss:hover:not(:disabled) {
+  filter: none;
+  color: var(--color-on-surface);
+}
+.dismiss svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+}
+
+/* Children: one line each (name, the week, last practiced, the action). On a
+   phone the action goes beside the name. Fixed tracks keep columns aligned. */
+.children {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.child {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "name action"
+    "facts facts";
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+  min-height: 48px;
+  padding-block: var(--space-3);
+  box-shadow: inset 0 1px 0 var(--color-border);
+}
+.child:last-child {
+  box-shadow:
+    inset 0 1px 0 var(--color-border),
+    inset 0 -1px 0 var(--color-border);
+}
+.name {
+  grid-area: name;
+  min-width: 0;
+  font-size: var(--text-heading-3);
+  font-weight: 600;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+.facts {
+  grid-area: facts;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+.factWide {
+  grid-column: span 2;
+  min-width: 0;
+}
+.childAction {
+  grid-area: action;
+  justify-self: end;
+}
+@container (min-width: 720px) {
+  .child {
+    grid-template-columns: minmax(96px, 1fr) minmax(280px, 2fr) 14rem;
+    grid-template-areas: "name facts action";
+    gap: var(--space-5);
+  }
+}
+
+/* A compact action: "Let Sam practice here", "Continue with AMP". */
+.practiceHere {
+  position: relative;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-table);
+  white-space: nowrap;
+}
+.practiceHere svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+
+/* The feed: a check (or a dismiss), the title in the serif with its reason
+   under it, and the actions at the end of the line. */
+.todos {
+  container-type: inline-size;
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.todo {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  column-gap: var(--space-3);
+  row-gap: var(--space-3);
+  padding-block: var(--space-5);
+}
+.todo + .todo {
+  box-shadow: inset 0 1px 0 var(--color-border);
+}
+.todoCheck {
+  display: grid;
+  justify-items: start;
+  margin-top: -6px;
+  margin-inline-start: -10px;
+}
+.todoCheck .dismiss {
+  margin-inline-start: -2px;
+}
+.todoBody {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+}
+.todoTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-heading-2);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+.todo[data-done] .todoTitle {
+  color: var(--color-subtle-text);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+.todoDetail {
+  max-width: 64ch;
+  color: var(--color-muted-text);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+.todoPeople {
+  display: flex;
+  align-items: center;
+  margin-top: var(--space-2);
+}
+.morePeople {
+  margin-inline-start: var(--space-2);
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+}
+.todoActions {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.todoActions > * {
+  white-space: nowrap;
+}
+@container (min-width: 720px) {
+  .todo {
+    grid-template-columns: 44px minmax(0, 1fr) auto;
+    align-items: start;
+  }
+  .todoActions {
+    grid-column: 3;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    margin-inline-start: var(--space-5);
+  }
+}

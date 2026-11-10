@@ -624,6 +624,27 @@ button.copy[data-done="copied"] {
 .calendarBody[data-compact] {
   gap: var(--space-4);
 }
+/* The calendar inside a class's Settings. */
+.calendarSection {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+.calendarSectionHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+}
+.targetRow {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+.calendarSectionHead p {
+  margin-top: var(--space-1);
+}
 .calendarControl {
   display: grid;
   gap: var(--space-2);
@@ -654,11 +675,36 @@ button.copy[data-done="copied"] {
   min-width: 0;
 }
 .ribbonBar {
+  position: relative;
   display: flex;
   height: 40px;
   overflow: hidden;
   border-radius: var(--radius-small);
   background: var(--color-surface-sunken);
+}
+/* Today: its label over the bar, then a hairline across it. */
+.ribbonNow {
+  position: relative;
+  height: 18px;
+  margin-bottom: calc(-1 * var(--space-1));
+}
+.ribbonNow span {
+  position: absolute;
+  top: 0;
+  color: var(--color-primary);
+  font-size: var(--text-table-small);
+  font-weight: 650;
+  line-height: 18px;
+  white-space: nowrap;
+}
+.ribbonToday {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--color-surface);
 }
 .ribbonPart {
   display: block;
@@ -844,6 +890,54 @@ button.copy[data-done="copied"] {
   background: var(--color-surface-hover);
 }
 .settingsLink:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+/* The grade picker: kindergarten to college, a grid of equal cells, five to a
+   row, College across two. The chosen grade is outlined. */
+.optional {
+  color: var(--color-muted-text);
+  font-weight: 400;
+}
+.grades {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-1);
+  max-width: 420px;
+  padding: var(--space-1);
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius-control) + var(--space-1));
+  background: var(--color-surface-sunken);
+}
+.grade {
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-on-surface);
+  font: inherit;
+  font-size: var(--text-body);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+.grade[data-wide] {
+  grid-column: span 2;
+  font-size: var(--text-label);
+}
+.grade:hover {
+  filter: none;
+  background: var(--color-surface-raised);
+}
+.grade[aria-checked="true"] {
+  border-color: var(--color-primary);
+  background: var(--color-surface-raised);
+}
+.grade:focus-visible {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;
 }

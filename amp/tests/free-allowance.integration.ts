@@ -6,7 +6,6 @@ import { migrate } from "../scripts/migrate.js";
 import { buildApp } from "../src/server/app.js";
 import { ApiError, PostgresRepository } from "../src/server/repository.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
-import { schoolPictures } from "../src/schools/contracts.js";
 import { generateProblem } from "../src/math/engine.js";
 import { workbookProblems } from "../src/workbook/compose.js";
 import { registerSchoolRoutes } from "../src/schools/routes.js";
@@ -761,7 +760,7 @@ test(
 );
 
 test(
-  "an unnamed family learner has a picture identity and cannot be named by a grant alone",
+  "a family child goes by their number, and the parent names them with no consent step",
   database,
   async (t) => {
     const f = await fixture(t);
@@ -769,9 +768,8 @@ test(
     assert.equal(made.statusCode, 201, made.body);
     const learner = made.json();
     assert.equal(learner.namePending, true);
-    assert.ok(schoolPictures.includes(learner.pictureIdentity));
+    assert.equal(learner.name, "Child 1");
     assert.equal(learner.birthYear, 2016);
-    assert.ok(learner.name.length > 0, "a visible picture label is provided");
     const listed = await f.get("/api/v1/learners");
     assert.equal(listed.statusCode, 200, listed.body);
     assert.deepEqual(
@@ -816,19 +814,22 @@ test(
       0,
       "the learner is a real family learner, with no trial record",
     );
-    const rename = () =>
-      f.post(`/api/v1/family/learners/${learner.id}/rename`, {
-        name: "Rowan Fixture",
-      });
-    assert.equal((await rename()).statusCode, 403);
+    const rename = (name: string) =>
+      f.post(`/api/v1/family/learners/${learner.id}/rename`, { name });
+    const listed2 = async () => (await f.get("/api/v1/learners")).json().learners;
+    const early = await rename("Rowan");
+    assert.equal(early.statusCode, 200, early.body);
+    assert.equal((await listed2())[0].name, "Rowan");
+    assert.equal((await listed2())[0].namePending, true);
     await f.grant(learner.id);
+    assert.equal((await rename("Rowan F")).statusCode, 200);
     assert.equal(
-      (await rename()).statusCode,
-      403,
+      (await listed2())[0].namePending,
+      true,
       "access alone does not establish parental consent",
     );
     await f.consent();
-    const named = await rename();
+    const named = await rename("Rowan Fixture");
     assert.equal(named.statusCode, 200, named.body);
     const after = (await f.get("/api/v1/learners")).json().learners;
     assert.equal(after.length, 1);

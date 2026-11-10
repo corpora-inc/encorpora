@@ -176,11 +176,9 @@ try {
         .boundingBox();
       assert.ok(target && target.height >= 44, `${name} needs a 44px target`);
     }
-    for (const scheme of (
-      size.width === 320 || size.width === 1280
-        ? ["light", "dark"]
-        : ["light"]
-    ) as ("light" | "dark")[]) {
+    for (const scheme of (size.width === 320 || size.width === 1280
+      ? ["light", "dark"]
+      : ["light"]) as ("light" | "dark")[]) {
       await page.emulateMedia({ colorScheme: scheme });
       await assertProgressPolish(page, `progress ${size.width} ${scheme}`);
     }

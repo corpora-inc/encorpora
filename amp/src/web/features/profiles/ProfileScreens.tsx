@@ -237,7 +237,9 @@ function ProfileForm({
             variant="primary"
             className={styles.go}
             aria-busy={pending || undefined}
-            // Saving needs a name: a grade fills one in.
+            // Saving needs a name: a grade fills one in. Until then the action
+            // holds its place, quiet, and comes up as soon as it can work.
+            data-waiting={(empty && !pending) || undefined}
             disabled={pending || empty}
           >
             {submit}

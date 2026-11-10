@@ -9,8 +9,6 @@ import { ownPracticeAllowed } from "../../../learning/starting-point";
 import { sessionOptions } from "../../lib/query";
 import { chosenPlan } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
-import { BirthYearPicker } from "../../ui/Select";
-import { Stepper } from "../../ui/Stepper";
 import { Toast } from "../../ui/Toast";
 import { loadCurriculum } from "../schools/api";
 import { TalkToUs } from "../schools/TalkToUs";
@@ -21,28 +19,15 @@ import {
   useStartPlace,
   type StarterAnswer,
 } from "./starter-api";
+import { FamilySetup, type SetupKind } from "./setup/FamilySetup";
 import styles from "./Starter.module.css";
-
-const ORDINALS = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth"];
-const MAX_CHILDREN = 6;
-const MAX_STUDENTS = 30;
 
 /** Unsent answers live only in this tab's memory, per account. */
 type StarterDraft = {
-  children: number;
-  childYears: string[];
-  students: number;
-  studentYears: string[];
   /** "I'm learning for myself": the year they were born. */
   ownYear: number | null;
 };
-const emptyDraft: StarterDraft = {
-  children: 1,
-  childYears: [],
-  students: 1,
-  studentYears: [],
-  ownYear: null,
-};
+const emptyDraft: StarterDraft = { ownYear: null };
 const useStarterDraft = create<
   StarterDraft & {
     owner: string | null;
@@ -110,8 +95,33 @@ let chosenHere = false;
  * the same screen, under the five choices, which never move. */
 export function Starter() {
   const { data: session } = useSuspenseQuery(sessionOptions);
+  const params = useParams({ strict: false }) as { choice?: string };
   if (!session) return <Navigate to="/sign-in" replace />;
+  // A parent or a tutor is walked through setting up their class.
+  if (isSetup(params.choice))
+    return <FamilySetup session={session} kind={params.choice} step="" />;
   return <StarterScreen session={session} />;
+}
+
+const isSetup = (choice: unknown): choice is SetupKind =>
+  choice === "parent" || choice === "tutor";
+
+/** `/start/<parent|tutor>/<step>`: a later step of that setup. */
+export function StarterStep() {
+  const { data: session } = useSuspenseQuery(sessionOptions);
+  const params = useParams({ strict: false }) as {
+    choice?: string;
+    step?: string;
+  };
+  if (!session) return <Navigate to="/sign-in" replace />;
+  if (!isSetup(params.choice)) return <Navigate to="/start" replace />;
+  return (
+    <FamilySetup
+      session={session}
+      kind={params.choice}
+      step={params.step ?? ""}
+    />
+  );
 }
 
 function StarterScreen({ session }: { session: AuthSession }) {
@@ -122,22 +132,6 @@ function StarterScreen({ session }: { session: AuthSession }) {
   const demo = useStartDemo(session);
   const busy = start.isPending || demo.isPending;
   const [error, setError] = useState("");
-  // Where the place opens, when an answer found everyone it named there.
-  const [already, setAlready] = useState<string | null>(null);
-  const openPlace = already
-    ? () => void navigate({ href: `/${already}` })
-    : null;
-  // A changed answer is a new question.
-  const answer = useStarterDraft((draft) =>
-    JSON.stringify([
-      draft.children,
-      draft.childYears,
-      draft.students,
-      draft.studentYears,
-      draft.ownYear,
-    ]),
-  );
-  useEffect(() => setAlready(null), [answer, choice]);
   const followUp = useRef<HTMLDivElement>(null);
   // A choice made here brings its question into view and moves focus to its
   // heading; a choice the page opened with (a refresh, a link, Back) leaves
@@ -178,26 +172,12 @@ function StarterScreen({ session }: { session: AuthSession }) {
   const begin = (answer: StarterAnswer) => {
     if (busy) return;
     setError("");
-    setAlready(null);
     start.mutate(answer, {
       onSuccess: (result) => {
         // A plan chosen on the pitch before signing up opens for the learner
         // just made; otherwise the new place opens.
-        // The place already had everyone this answer named: say so here,
-        // rather than carry on as if something was added.
-        if (
-          result.added === 0 &&
-          (answer.as === "parent" || answer.as === "tutor")
-        ) {
-          setAlready(result.home);
-          return;
-        }
         const plan = chosenPlan();
-        if (
-          plan &&
-          result.learnerId &&
-          (answer.as === "parent" || answer.as === "myself")
-        )
+        if (plan && result.learnerId && answer.as === "myself")
           void navigate({
             to: "/continue/$learnerId",
             params: { learnerId: result.learnerId },
@@ -289,40 +269,6 @@ function StarterScreen({ session }: { session: AuthSession }) {
             }
             onStart={(birthYear) =>
               begin({ as: "myself", timezone: deviceTimeZone(), birthYear })
-            }
-          />
-        ) : choice === "parent" ? (
-          <Children
-            session={session}
-            busy={busy}
-            already={
-              openPlace && {
-                note: "These children are already in your class.",
-                open: openPlace,
-              }
-            }
-            onStart={(years) =>
-              begin({
-                as: "parent",
-                children: years.map((birthYear) => ({ birthYear })),
-              })
-            }
-          />
-        ) : choice === "tutor" ? (
-          <Students
-            session={session}
-            busy={busy}
-            already={
-              openPlace && {
-                note: "These students are already in your class.",
-                open: openPlace,
-              }
-            }
-            onStart={(years) =>
-              begin({
-                as: "tutor",
-                students: years.map((birthYear) => ({ birthYear })),
-              })
             }
           />
         ) : choice === "school" ? (
@@ -440,161 +386,6 @@ function Myself({
         onClick={() => picked !== null && onStart(picked)}
       >
         Start practicing
-      </Start>
-    </section>
-  );
-}
-
-/** Birth years for `count` people, each with its own designed picker. */
-function Years({
-  count,
-  years,
-  name,
-  onChange,
-  disabled,
-}: {
-  count: number;
-  years: string[];
-  name: (index: number) => string;
-  onChange: (years: string[]) => void;
-  disabled: boolean;
-}) {
-  return (
-    <ol className={styles.years}>
-      {Array.from({ length: count }, (_, index) => (
-        <li key={index} className={styles.year}>
-          <span className={styles.yearName}>{name(index)}</span>
-          <BirthYearPicker
-            label={`Birth year, ${name(index).toLowerCase()}`}
-            adult={false}
-            value={years[index] ?? ""}
-            disabled={disabled}
-            onChange={(value) => {
-              const next = [...years];
-              next[index] = value;
-              onChange(next);
-            }}
-          />
-        </li>
-      ))}
-    </ol>
-  );
-}
-
-const chosenYears = (years: string[], count: number) => {
-  const picked = years.slice(0, count).map(Number);
-  return picked.length === count && picked.every((year) => year > 0)
-    ? picked
-    : null;
-};
-
-function Children({
-  session,
-  busy,
-  already,
-  onStart,
-}: {
-  session: AuthSession;
-  busy: boolean;
-  already: { note: string; open: () => void } | null;
-  onStart: (years: number[]) => void;
-}) {
-  const draft = useStarterDraft();
-  const mine = draft.owner === session.accountId;
-  const count = mine ? draft.children : 1;
-  const years = mine ? draft.childYears : [];
-  const ready = chosenYears(years, count);
-  return (
-    <section className={styles.panel} aria-labelledby="starter-children">
-      <h2 id="starter-children" className={styles.question} tabIndex={-1}>
-        How many children?
-      </h2>
-      <Stepper
-        label="Children"
-        hideLabel
-        value={count}
-        min={1}
-        max={MAX_CHILDREN}
-        onChange={(value) => draft.set(session.accountId, { children: value })}
-      />
-      <Years
-        count={count}
-        years={years}
-        disabled={busy}
-        name={(index) =>
-          count === 1 ? "Your child" : `${ORDINALS[index]} child`
-        }
-        onChange={(next) => draft.set(session.accountId, { childYears: next })}
-      />
-      <p className={styles.note}>
-        Each child starts as a picture, like Fox or Moon, until you add their
-        name.
-      </p>
-      <Start
-        busy={busy}
-        ready={!!ready}
-        missing="Choose a birth year for each child."
-        already={already}
-        onClick={() => ready && onStart(ready)}
-      >
-        Continue
-      </Start>
-    </section>
-  );
-}
-
-function Students({
-  session,
-  busy,
-  already,
-  onStart,
-}: {
-  session: AuthSession;
-  busy: boolean;
-  already: { note: string; open: () => void } | null;
-  onStart: (years: number[]) => void;
-}) {
-  const draft = useStarterDraft();
-  const mine = draft.owner === session.accountId;
-  const count = mine ? draft.students : 1;
-  const years = mine ? draft.studentYears : [];
-  const ready = count === 0 ? [] : chosenYears(years, count);
-  return (
-    <section className={styles.panel} aria-labelledby="starter-students">
-      <h2 id="starter-students" className={styles.question} tabIndex={-1}>
-        How many students?
-      </h2>
-      <Stepper
-        label="Students"
-        hideLabel
-        value={count}
-        min={0}
-        max={MAX_STUDENTS}
-        onChange={(value) => draft.set(session.accountId, { students: value })}
-      />
-      {count > 0 && (
-        <Years
-          count={count}
-          years={years}
-          disabled={busy}
-          name={(index) => `Student ${index + 1}`}
-          onChange={(next) =>
-            draft.set(session.accountId, { studentYears: next })
-          }
-        />
-      )}
-      <p className={styles.note}>
-        Each student is a picture, like Fox or Moon. Their own parent adds their
-        name through a link you send.
-      </p>
-      <Start
-        busy={busy}
-        ready={!!ready}
-        missing="Choose a birth year for each student."
-        already={already}
-        onClick={() => ready && onStart(ready)}
-      >
-        Create my class
       </Start>
     </section>
   );

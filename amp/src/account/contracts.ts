@@ -33,7 +33,8 @@ export const familySummarySchema = z.object({
       learningAllowed: z.boolean().optional(),
       hasAccess: z.boolean().optional(),
       namePending: z.boolean().optional(),
-      pictureIdentity: z.string().nullable().optional(),
+      /** Goes by their number ("Child 2"): no nickname chosen yet. */
+      defaultName: z.literal(true).optional(),
       freeAllowance: freeAllowanceSchema.optional(),
       /** The account holder's own learner (docs/families.md), not a child. */
       adult: z.literal(true).optional(),
@@ -54,7 +55,7 @@ const childSchema = z.object({
   name: z.string(),
   birthYear: z.number().nullable(),
   namePending: z.boolean().optional(),
-  pictureIdentity: z.string().nullable().optional(),
+  defaultName: z.literal(true).optional(),
   freeAllowance: freeAllowanceSchema.optional(),
   entitlement: z.object({
     /** Permission for online practice, including a free allowance. */

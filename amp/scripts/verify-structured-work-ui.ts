@@ -623,12 +623,14 @@ try {
                     `${tag}: entry hidden by keypad`,
                   );
                 }
-                // The typeset preview shows the entry.
+                // An expression shows its typeset preview; a number is its
+                // own preview and is never echoed below the field.
                 const note = rowAt(page, i)
-                  .locator(".work-note")
+                  .locator(`.work-entry[data-kind="${f.kind}"] .work-note`)
                   .nth(fieldIndex);
-                assert.ok(
+                assert.equal(
                   (await note.locator(".katex").count()) > 0,
+                  f.kind !== "number",
                   `${tag}: preview of ${v}`,
                 );
               }

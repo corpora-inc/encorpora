@@ -28,7 +28,7 @@ function childEntries(family: FamilySummary) {
         name: l.name,
         birthYear: l.birthYear ?? null,
         namePending: l.namePending,
-        pictureIdentity: l.pictureIdentity,
+        ...(l.defaultName ? { defaultName: true as const } : {}),
         freeAllowance: l.freeAllowance,
         entitlement: {
           active: l.canPractice === true,

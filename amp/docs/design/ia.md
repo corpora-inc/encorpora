@@ -19,12 +19,12 @@ The rules every AMP screen follows, decided 2026-11-10 for the design pass. [The
 One drawer, one place switcher (`PlaceSwitcher`). A person may hold several places. The bar shows the place's tabs and one primary action. Everything rare lives in Settings, a row's overflow menu, or the drawer, never on the place's first tab.
 
 - **The place switcher holds places only:** My practice, each family or class, each school, and Add a place. It never lists practice profiles, "Try a level…", children or students. Children and students are reached from their class: the Map and Students tabs, and the drill-in.
-- **Practice as someone else** is a page reached from /me (`/me/profiles`). It holds the saved profiles, recently used ones, and "Try a level…". While practicing as a profile, the bar keeps "Back to my own practice".
+- **Practice as someone else** is a page (`/me/profiles`) reached from the drawer under My practice. It holds the saved profiles, recently used ones, and "Try a level…". While practicing as a profile, the bar keeps "Back to my own practice".
 - **One tab header per place.** Navigating within a place never swaps in another place's tab bar. A family, a tutor or a lone teacher never lands on a school-level page.
 
 | Place | Who | Tabs | Bar action |
 |---|---|---|---|
-| My practice | an adult learner | Overview · Pathways · Inventory | ▶ Practice |
+| My practice | an adult learner | Overview · Pathways · Inventory · Workbooks | ▶ Practice |
 | Family | a parent, the second parent | Today · Map · Time · Workbooks · People · Settings | ▶ Practice (picks a child) |
 | Class (tutor, co-op) | a tutor | Today · Map · Time · Workbooks · People · Settings | Start class |
 | Class (school) | a teacher | Today · Map · Grades · Time · Workbooks · Students · Settings | Start class |
@@ -62,7 +62,7 @@ Every setting lives in exactly one place, chosen by its scope: school (or distri
 | Plan, renewal, receipts | account | Account → Billing | the allowance pause and Continue lead there |
 | Sign-in methods and passkeys | account | Account → Sign-in | — |
 | Consent and the account's own data | account | Account → Privacy | — |
-| Practice profiles | adult | Practice as someone else (`/me/profiles`) | a quiet link on /me |
+| Practice profiles | adult | Practice as someone else (`/me/profiles`) | the drawer, under My practice |
 | Show grade numbers, sound, haptics | device | the drawer | — |
 
 **An optional choice always has a way back.** Every segmented control that sets something optional includes None or Off, so a choice can always be undone (terms: None · Semesters · Trimesters · Quarters; standings: Off · Class · School). A picker that only views something (a term in the gradebook, a period on Time) needs no None.
@@ -79,9 +79,10 @@ Each of these is that person's own composition of shared components (rule 6). Th
   - The left column has the best guess and likely range, then one row per area with its uncertainty bar. Under them sits "How it narrowed".
   - The right column has this week's line with the 12-week strip, then objectives gained.
   - Recent work runs full width below.
-  - Workbooks, Print report and "Practice as someone else" are quiet actions on the title row. The bar holds the one Practice button.
+  - The header is the title alone. Workbooks is a tab. Practice as someone else is in the drawer. A report prints with Cmd+P and a print stylesheet, not a Print button. The bar holds the one Practice button.
 - **Pathways and Inventory:** full width. On day 0 each is a centred hero over the whole curriculum.
-- **Practice as someone else (`/me/profiles`):** saved profiles, recent ones, and "Try a level…". It is never in the place switcher.
+- **Workbooks:** a tab of My practice, with the builder in a sheet.
+- **Practice as someone else (`/me/profiles`):** saved profiles, recent ones, and "Try a level…", reached from the drawer. It is never in the place switcher.
 - **Account:** Learners lists "Your practice" first. Billing shows the free problems left or the plan.
 
 ### Parent (Family)
@@ -141,7 +142,7 @@ Each of these is that person's own composition of shared components (rule 6). Th
 | The class map, gradebook and time grid | can use the full viewport less the gutters once the table needs it |
 | Practice | full screen, edge to edge, no card around the problem |
 
-Every screen in a place shares one left edge: the page title, the first section and the tab row's content line up. A narrow screen (reading, a form) aligns left to that edge on desktop, not centred in a sea of space. The exceptions are the one-step flows on `PageFrame` (sign-in, the starter), which stay centred.
+**A single-column page is centred in the viewport:** /me, the account pages, a reading page, a settings form, a lesson. A dashboard or table that uses the content width starts at the content column's left edge. Within a place, every page's title sits at the top of its own column, so moving between tabs never shifts the title vertically.
 
 ### Spacing and type
 
@@ -161,6 +162,8 @@ From 1024 px, a dashboard may use two columns when both carry data of similar we
 
 - **Buttons are their natural width.** A full-width button appears only on phones for the single primary action at the bottom of a first-run step or the practice answer bar.
 - **One primary button per screen.** Other actions are secondary (outline) or quiet (text). Rare actions go in an overflow menu or in Settings.
+- **Headers are compact: the title alone.** Secondary actions live in the place's tabs, the drawer or one overflow menu. A header never grows a second row of links on a phone.
+- **No Print buttons for screen reports.** A record, a progress report or a gradebook prints with Cmd+P through a print stylesheet that sets a title, the period, the person and white paper. Lessons, workbooks and report cards are real documents, so they download as TeX PDFs.
 - **Designed controls only:** segmented pickers, steppers, `Listbox` and `Menu`. Never a raw select. Code entry (a class code, a workbook code) is one designed field with its button inside or beside it, sized to the code, not the page.
 - **Rows and names never underline on hover.** A row that opens something gets a refined hover: a quiet surface tint across the whole row and the pointer. Text links in running prose may underline.
 - **A builder or a form for a secondary task opens in a sheet or dialog** over the screen it belongs to, with Back and Escape returning there. The workbook builder is an example.
@@ -175,7 +178,7 @@ From 1024 px, a dashboard may use two columns when both carry data of similar we
 
 - Errors follow `AGENTS.md`: inline beside their cause, or a fixed toast. The text says what failed and what to do, and it is logged. Never "This request could not be completed".
 - Waits use `Loading`, `LoadingScreen` and skeletons the size of the content.
-- Anything printable (lessons, workbooks, progress reports, report cards) is a TeX PDF. Never `window.print()` of a screen.
+- Lessons, workbooks and report cards are TeX PDFs. A screen report prints with the browser's own print (Cmd+P) through a print stylesheet; there is no Print button.
 
 ## Element finish (the `/design` gallery first)
 

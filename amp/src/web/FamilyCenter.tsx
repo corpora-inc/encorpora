@@ -27,6 +27,11 @@ import { Link } from "@tanstack/react-router";
 import { BackRow, BillingList, Chevron } from "./features/account/BillingList";
 import { LearnerList } from "./features/account/LearnerList";
 import pages from "./features/account/AccountPages.module.css";
+import {
+  CHILD_NAME_MAX,
+  childNameProblem,
+  PARENT_ENTRY_LINE,
+} from "../learning/nickname";
 import { useLearnerStore } from "./learner-store";
 import { refreshMe } from "./lib/query";
 import { rememberPlace } from "./features/onboarding/place-memory";
@@ -143,13 +148,22 @@ export function FamilyCenter({
       },
     [cached],
   );
+  // A parent adds a child with or without verified consent; withdrawal
+  // stops collection. With none yet, the starter's first step adds them.
+  const canAddChild =
+    !!family &&
+    family.consent.status !== "withdrawn" &&
+    (["active", "development"].includes(family.consent.status) ||
+      family.learners.some((entry) => !entry.deletedAt && !entry.adult));
   const [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
     [notice, setNotice] = useState("");
   useLoggedError(error);
   const [confirmation, setConfirmation] = useState<Confirmation | null>(null),
     [rename, setRename] = useState<string | null>(null),
-    [name, setName] = useState("");
+    [name, setName] = useState(""),
+    [nameError, setNameError] = useState(""),
+    [newNameError, setNewNameError] = useState("");
   const body = useRef<HTMLDivElement>(null);
   const previousPrivacy = useRef(privacy),
     previousRename = useRef(rename);
@@ -494,8 +508,11 @@ export function FamilyCenter({
         {rename === learner.id ? (
           <form
             className={pages.renameForm}
+            noValidate
             onSubmit={(event) => {
               event.preventDefault();
+              const problem = childNameProblem(name);
+              if (problem) return setNotice(problem);
               void action(async () => {
                 await api(
                   `/family/learners/${encodeURIComponent(learner.id)}/rename`,
@@ -511,9 +528,10 @@ export function FamilyCenter({
               label={learner.namePending ? "Their name" : "Name"}
               value={name}
               onChange={(event) => setName(event.target.value)}
-              maxLength={80}
+              maxLength={CHILD_NAME_MAX}
               autoComplete="off"
               placeholder="First name or nickname"
+              title={PARENT_ENTRY_LINE}
               autoFocus
               disabled={busy}
             />
@@ -795,7 +813,7 @@ export function FamilyCenter({
                     </Button>
                   </div>
                 )}
-                {!nativeRuntime && consentActive && adding && (
+                {!nativeRuntime && adding && (
                   <form
                     id="family-add-learner"
                     className={pages.addForm}
@@ -829,7 +847,7 @@ export function FamilyCenter({
                     <TextField
                       label="Name"
                       value={newName}
-                      maxLength={60}
+                      maxLength={CHILD_NAME_MAX}
                       placeholder="First name or nickname"
                       onChange={(event) => setNewName(event.target.value)}
                     />

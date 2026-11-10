@@ -1,5 +1,10 @@
 import { canAddStudents } from "./permissions";
 import {
+  AddChildSheet,
+  familyAddLabel,
+  useFamilyAdd,
+} from "../family-class/AddChildSheet";
+import {
   keepPreviousData,
   useInfiniteQuery,
   useQuery,
@@ -478,6 +483,8 @@ export function StudentsScreen() {
   );
   const can = org?.can ?? [];
   const canAdd = canAddStudents(org);
+  // A family's class adds a child (or a tutor's student) its own way.
+  const familyAdd = useFamilyAdd(session, org);
   const open = rows.find((row) => row.id === search.student);
   const adding = search.add === 1 || search.add === "1";
   const opener = useRef<HTMLDivElement>(null);
@@ -496,9 +503,9 @@ export function StudentsScreen() {
                 : `${total} ${total === 1 ? "student" : "students"}${total ? `, ${total - seated === 0 ? "all" : seated} with seats` : ""}`
         }
         action={
-          canAdd ? (
+          canAdd || familyAdd ? (
             <Button variant="primary" onClick={() => setSearch({ add: 1 })}>
-              Add student
+              {familyAdd ? familyAddLabel(familyAdd) : "Add student"}
             </Button>
           ) : undefined
         }
@@ -614,13 +621,22 @@ export function StudentsScreen() {
           onClose={() => setSearch({ student: undefined })}
         />
       )}
-      {canAdd && (
-        <AddStudentSheet
-          orgId={orgId}
+      {familyAdd && session ? (
+        <AddChildSheet
+          session={session}
+          kind={familyAdd}
           open={adding}
-          wholeSchool={can.includes("students.add")}
           onOpenChange={(next) => setSearch({ add: next ? 1 : undefined })}
         />
+      ) : (
+        canAdd && (
+          <AddStudentSheet
+            orgId={orgId}
+            open={adding}
+            wholeSchool={can.includes("students.add")}
+            onOpenChange={(next) => setSearch({ add: next ? 1 : undefined })}
+          />
+        )
       )}
     </OrgFrame>
   );

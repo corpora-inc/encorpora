@@ -76,7 +76,14 @@ export default function DrawerContents({
   // Practicing as one of their profiles: someone else's level, their own
   // practice (features/profiles).
   const profile = view.profile;
-  const here = frame ?? shellFrame(location.pathname);
+  const here =
+    frame ??
+    shellFrame(
+      location.pathname,
+      typeof (location.search as Record<string, unknown>).class === "string"
+        ? ((location.search as Record<string, unknown>).class as string)
+        : undefined,
+    );
   const context = own ? "own" : "learner";
   const learnerChoices: ListboxOption[] = view.learners.map((l) => ({
     value: l.id,
@@ -269,6 +276,13 @@ export default function DrawerContents({
           !profile &&
           nav(overviewPath(context), "Progress", "level", {
             current: here?.kind === "progress",
+          })}
+        {/* Practicing at another grade and pace: a page of its own, never a
+            place in the switcher (docs/design/ia.md). */}
+        {own &&
+          !profile &&
+          nav("/me/profiles", "Practice as someone else", "level", {
+            current: location.pathname.startsWith("/me/profiles"),
           })}
         {view.learner &&
           !view.viewOnly &&

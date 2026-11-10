@@ -12,6 +12,7 @@ import {
 import { enrollmentSettings } from "./enrollment-settings.js";
 import { studentLevelVisibility } from "./settings.js";
 import { hasOpenBoard } from "./standings.js";
+import { goesByNumber } from "../learning/nickname.js";
 
 /** `/me` for a student token, parent-shaped so the existing app runs unchanged.
  * An invalid token answers 401 rather than `signedIn:false`, which is how the
@@ -28,7 +29,7 @@ export async function studentMe(
   const { accountId, personId } = session;
   const learner = (
     await pool.query(
-      `SELECT l.id,l.name,l.birth_year,l.sat_math_focus,l.name_pending,l.picture_identity,l.free_online_used,l.free_workbooks_used FROM amp_people p
+      `SELECT l.id,l.name,l.birth_year,l.sat_math_focus,l.name_pending,l.identity_scope,l.label_number,l.free_online_used,l.free_workbooks_used FROM amp_people p
        JOIN amp_learners l ON l.id=p.learner_id AND l.deleted_at IS NULL WHERE p.id=$1`,
       [personId],
     )
@@ -94,7 +95,7 @@ export async function studentMe(
         name: learner.name,
         birthYear: learner.birth_year ?? null,
         namePending: learner.name_pending,
-        pictureIdentity: learner.picture_identity,
+        ...(goesByNumber(learner) ? { defaultName: true as const } : {}),
         freeAllowance: allowance,
         entitlement: {
           active: canPractice,
@@ -123,7 +124,7 @@ export async function studentMe(
           learningAllowed,
           hasAccess: !!current,
           namePending: learner.name_pending,
-          pictureIdentity: learner.picture_identity,
+          ...(goesByNumber(learner) ? { defaultName: true as const } : {}),
           freeAllowance: allowance,
           access: grants.map((grant) => ({
             channel: grant.channel,

@@ -132,7 +132,8 @@ export function LessonIllustration({
     kind === "related-patterns-graph" ||
     kind === "dependent-variable-graph" ||
     kind === "compare-functions-graph" ||
-    kind === "linear-nonlinear-graph"
+    kind === "linear-nonlinear-graph" ||
+    kind === "slope-intercept-line"
   )
     return <PatternFunctionIllustration kind={kind} />;
   if (

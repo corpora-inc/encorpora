@@ -7,12 +7,14 @@ import type { FamilyRepository } from "../family/repository.js";
 import { MAX_FAMILY_LEARNERS } from "../learning/free-allowance.js";
 import { timezone } from "../schools/contracts.js";
 import { SchoolRepository } from "../schools/repository.js";
-import { insertUnnamedChild } from "../server/picture-identity.js";
+import { insertFamilyChild } from "../server/learner-label.js";
+import { optionalChildName, optionalNickname } from "../learning/nickname.js";
 
 /* "What brings you to AMP?" (docs/product-model.md). One answer, one call, one
    transaction: it creates the place that answer needs and nothing else, and
-   says where that place opens. Children are unnamed picture identities with a
-   birth year until a name has its consent. Asking again for a place the
+   says where that place opens. A parent names their own children (or leaves
+   them "Child 1", "Child 2"); a tutor gives each student a nickname or
+   initials, and the student's own parent names them. Asking again for a place the
    account already has opens it instead of making a second one, so a retried
    request never duplicates anything. */
 
@@ -31,7 +33,16 @@ const childBirthYear = z
     const now = new Date().getUTCFullYear();
     return year >= now - 21 && year <= now - 2;
   }, "A child’s birth year");
-const child = z.strictObject({ birthYear: childBirthYear });
+/** A parent's own child: the name the parent enters, or blank. */
+const child = z.strictObject({
+  birthYear: childBirthYear,
+  name: optionalChildName,
+});
+/** A tutor's student from another family: a nickname or initials, or blank. */
+const student = z.strictObject({
+  birthYear: childBirthYear,
+  nickname: optionalNickname,
+});
 
 export const starterSchema = z.discriminatedUnion("as", [
   // The birth year sets where their own practice starts. Optional only for
@@ -47,7 +58,7 @@ export const starterSchema = z.discriminatedUnion("as", [
   }),
   z.strictObject({
     as: z.literal("tutor"),
-    students: z.array(child).max(MAX_STARTER_STUDENTS),
+    students: z.array(student).max(MAX_STARTER_STUDENTS),
   }),
 ]);
 export type StarterInput = z.infer<typeof starterSchema>;
@@ -95,7 +106,7 @@ async function startFamily(
   client: PoolClient,
   families: FamilyRepository,
   accountId: string,
-  children: { birthYear: number }[],
+  children: { birthYear: number; name?: string }[],
 ): Promise<StarterResult> {
   const live = async () =>
     (
@@ -121,8 +132,8 @@ async function startFamily(
     ).rows[0]!.n;
     if (all + missing.length > MAX_FAMILY_LEARNERS)
       throw new FamilyError(403, "too_many_learners");
-    for (const { birthYear } of missing)
-      await insertUnnamedChild(client, accountId, birthYear);
+    for (const { birthYear, name } of missing)
+      await insertFamilyChild(client, accountId, birthYear, name);
   }
   // The same child a retry would name: one order, read after the inserts.
   const first = (await live())[0]?.id;
@@ -138,14 +149,15 @@ async function startFamily(
 }
 
 /** A tutor's or co-op's class: the account's family class, with that many
- * unnamed students in all, the school way (owned by their roster person), so
- * each one's own parent can name them by an approval link. Asking again adds
+ * students in all, the school way (owned by their roster person), each with
+ * the tutor's nickname for them or "Student 3", so each one's own parent can
+ * name them by an approval link. Asking again adds
  * only the students missing from that count; a retry adds none. */
 async function startTutor(
   client: PoolClient,
   families: FamilyRepository,
   accountId: string,
-  students: { birthYear: number }[],
+  students: { birthYear: number; nickname?: string }[],
 ): Promise<StarterResult> {
   const family =
     (await familyClassOf(client, accountId)) ??
@@ -168,17 +180,48 @@ async function startTutor(
   const missing = students.slice(existing);
   const schools = new SchoolRepository(families.pool);
   const teacher = await teacherPerson(client, family.orgId, accountId);
-  for (const { birthYear } of missing)
+  for (const { birthYear, nickname } of missing)
     await schools.provisionStudentIn(
       client,
       family.orgId,
-      { birthYear, classId: family.classId },
+      { birthYear, nickname, classId: family.classId },
       teacher,
     );
   return {
     home: classToday(family.orgId, family.classId),
     added: missing.length,
   };
+}
+
+/** One more student in a tutor's class, after the starter: the tutor's
+ * nickname for them (or "Student 4") and a birth year, owned by their roster
+ * person the school way, so their own parent names them by a link. */
+export async function addClassStudent(
+  families: FamilyRepository,
+  accountId: string,
+  raw: unknown,
+) {
+  if (accountId.startsWith("school:") || accountId.startsWith("trial:"))
+    throw new FamilyError(403, "starter_unavailable");
+  const input = student.parse(raw);
+  return families.transaction(accountId, async (client) => {
+    const family = await familyClassOf(client, accountId);
+    if (!family) throw new FamilyError(409, "family_class_required");
+    const schools = new SchoolRepository(families.pool);
+    const added = await schools.provisionStudentIn(
+      client,
+      family.orgId,
+      { ...input, classId: family.classId },
+      await teacherPerson(client, family.orgId, accountId),
+    );
+    const { name } = (
+      await client.query<{ name: string }>(
+        "SELECT name FROM amp_learners WHERE id=$1",
+        [added.learnerId],
+      )
+    ).rows[0]!;
+    return { personId: added.personId, learnerId: added.learnerId, name };
+  });
 }
 
 /** This account's person in the org, as the actor of what the starter adds. */

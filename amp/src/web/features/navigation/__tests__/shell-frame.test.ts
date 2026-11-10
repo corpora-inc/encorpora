@@ -51,7 +51,13 @@ test("each group's screens share one frame and name their tab", () => {
 });
 
 test("the starter and Continue with AMP sit on the app frame", () => {
-  for (const path of ["/start", "/start/parent", "/start/school"])
+  for (const path of [
+    "/start",
+    "/start/parent",
+    "/start/school",
+    "/start/parent/practice",
+    "/start/tutor/join",
+  ])
     expect(shellFrame(path), path).toEqual({ kind: "plain" });
   expect(shellFrame("/continue/learner-1")).toEqual({ kind: "plain" });
   // The steps around it keep their own frame.
@@ -127,6 +133,32 @@ test("class sub-screens retain their tab and existing URLs", () => {
       kind: "progress",
       active: "overview",
     });
+  // A family's or tutor's class: Grades only past six learners.
+  expect(
+    classTabs("org", "class", false, true, 12).map((tab) => tab.label),
+  ).toEqual([
+    "Today",
+    "Map",
+    "Grades",
+    "Time",
+    "Workbooks",
+    "People",
+    "Settings",
+  ]);
+  expect(
+    classTabs("org", "class", false, true, 2).map((tab) => tab.label),
+  ).toEqual(["Today", "Map", "Time", "Workbooks", "People", "Settings"]);
+  // A student's record opened from a class keeps that class's tabs.
+  expect(shellFrame("/school/org/students/kai", "class")).toEqual({
+    kind: "class",
+    org: "org",
+    classId: "class",
+    active: "map",
+    board: false,
+  });
+  expect(shellFrame("/school/org/students/kai")).toMatchObject({
+    kind: "school",
+  });
 });
 
 test("school sub-screens map to seven tabs and respect capabilities", () => {

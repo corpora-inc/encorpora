@@ -128,7 +128,6 @@ function misreadings(h: number, m: number): Misread[] {
 }
 function readClockSteps(h: number, m: number): string[] {
   return [
-    "A clock has two hands: the long hand shows the minutes and the short hand shows the hour.",
     m === 0
       ? "The long minute hand points at 12: 0 minutes past the hour."
       : `The long minute hand points at ${numeral(m)}. Counting by fives from 12, that is ${m} minutes past the hour.`,
@@ -206,7 +205,11 @@ function digitalFace(r: Random, five: boolean): Draft {
     ],
     five
       ? [h, neighbor, "is one five off"]
-      : [h, neighbor, m === 30 ? "shows the hour, not half past" : "shows half past"],
+      : [
+          h,
+          neighbor,
+          m === 30 ? "shows the hour, not half past" : "shows half past",
+        ],
     five
       ? [nextH, m, "reads the short hand as the next number"]
       : [nextH, m, "reads the short hand as the next number"],

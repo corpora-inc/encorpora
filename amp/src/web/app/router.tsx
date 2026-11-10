@@ -117,7 +117,7 @@ function RouterError({ error }: { error: unknown }) {
   const router = useRouter();
   return <RouteError error={error} reset={() => void router.invalidate()} />;
 }
-/** "Add Fox's name", once "Continue with AMP" has made access active. Its
+/** "Add Child 2's name", once "Continue with AMP" has made access active. Its
  * chunk loads only on the screen the purchase returned to. */
 const AfterPurchase = lazy(() =>
   import("../features/continue/AfterPurchase").then((module) => ({
@@ -563,6 +563,18 @@ const starterChoice = createRoute({
   beforeLoad: beforeStarter,
   component: starter,
 });
+/** A parent's or a tutor's setup after its first step:
+ * `/start/parent/practice`, `/start/parent/second-parent`, `/start/parent/ready`,
+ * `/start/tutor/join` and `/start/tutor/ready`. */
+const starterStep = createRoute({
+  getParentRoute: () => root,
+  path: "/start/$choice/$step",
+  beforeLoad: beforeStarter,
+  component: lazyRouteComponent(
+    () => import("../features/onboarding/Starter"),
+    "StarterStep",
+  ),
+});
 /** The plan before any learner, for a parent approving another family's
  * child: their payment is the consent the approval needs. Anyone else who
  * opens a saved link to it goes where the first-run guard says. */
@@ -996,6 +1008,14 @@ const ownStart = createRoute({
 /** Practicing as someone else (features/profiles): "Try a level…" and one
  * saved profile's levels. Any adult account; one chunk. */
 const profileScreens = () => import("../features/profiles");
+const profiles = createRoute({
+  getParentRoute: () => root,
+  path: "/me/profiles",
+  beforeLoad: async () => {
+    await ownPractice();
+  },
+  component: lazyRouteComponent(profileScreens, "ProfilesScreen"),
+});
 const newProfile = createRoute({
   getParentRoute: () => root,
   path: "/me/profiles/new",
@@ -1190,6 +1210,7 @@ export const router = createRouter({
     standings,
     ownRecord,
     ownStart,
+    profiles,
     newProfile,
     editProfile,
     schoolsHome,
@@ -1207,6 +1228,7 @@ export const router = createRouter({
     reset,
     starterIndex,
     starterChoice,
+    starterStep,
     startPlan,
     continueWithAmp,
     startPurchase,

@@ -18,6 +18,7 @@ import {
 import {
   gradeStructuredWork,
   gradingFits,
+  MAX_WORK_ROWS,
   normalizeStructuredWork,
 } from "./structured-work";
 import { serializeSelection } from "./selection-response";
@@ -1731,7 +1732,31 @@ function listAllPairs(r: Random) {
       { label: "Partner", value: String(b) },
     ],
   }));
-  const work = numberWork("Factor pairs", rows);
+  const fixed = numberWork("Factor pairs", rows);
+  // The learner adds pairs one at a time ("Pair" names each row): the list
+  // never gives away how many pairs there are. Each row is one inline
+  // "[ ] × [ ]"; three digits cover every number from 12 to 100.
+  const response: StructuredWorkResponse = {
+    ...fixed.response,
+    rows: [
+      {
+        id: "r1",
+        label: "Pair",
+        fields: [
+          { kind: "number", label: "Smaller factor", unit: "×", maxLength: 3 },
+          { kind: "number", label: "Partner", maxLength: 3 },
+        ],
+      },
+    ],
+    open: { max: MAX_WORK_ROWS },
+  };
+  if (
+    !gradingFits(response, fixed.workGrading) ||
+    normalizeStructuredWork(response, fixed.answer) !== fixed.answer ||
+    !gradeStructuredWork(response, fixed.workGrading, fixed.answer)
+  )
+    throw new Error("factor-pair key");
+  const work = { ...fixed, response };
   return {
     family: pairs.length >= 3 ? "several-pairs" : pairs.length === 1 ? "prime" : "two-pairs",
     prompt: `List every factor pair of ${n}, smaller number first, in increasing order of the smaller factor. A square pair is entered once. Do not list a turned pair again.`,

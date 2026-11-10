@@ -840,7 +840,7 @@ export function generatePlaceClause(c: Context): GeneratedProblem {
           prompt: `Complete ${tex(`${n}=\\square+\\square`)} using a ten and extra ones.`,
         },
         [
-          numericSlot("ten", "Ten ones", 10, [1, k, n]),
+          numericSlot("ten", "Ten", 10, [1, k, n]),
           numericSlot("ones", "Extra ones", k, [10, n, k === 1 ? 2 : 1]),
         ],
       );

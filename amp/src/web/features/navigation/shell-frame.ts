@@ -30,8 +30,22 @@ const under = (pathname: string, path: string) =>
   pathname === path || pathname.startsWith(`${path}/`);
 
 /** The frame for a signed-in screen at `pathname`, or null for its own. */
-export function shellFrame(pathname: string): ShellFrame | null {
+export function shellFrame(
+  pathname: string,
+  /** The class a screen was opened from (`?class=`): a student's record
+   * keeps that class's tabs, so opening a student never leaves the class. */
+  fromClass?: string,
+): ShellFrame | null {
   const path = pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
+  const record = path.match(/^\/school\/([^/]+)\/students\/([^/]+)$/);
+  if (record && fromClass)
+    return {
+      kind: "class",
+      org: record[1]!,
+      classId: fromClass,
+      active: "map",
+      board: false,
+    };
   if (path === "/school/new") return null;
   if (path === "/school/invite") return { kind: "plain" };
   const klass = path.match(
@@ -116,10 +130,12 @@ export function shellFrame(pathname: string): ShellFrame | null {
   // "Continue with AMP" for one learner is a step of whatever led there
   // (practice, Today, Billing), so it has the plain bar and its own way back.
   if (under(path, "/continue")) return { kind: "plain" };
-  // "What brings you to AMP?" and each answer's question.
+  // "What brings you to AMP?", each answer's question, and the steps of a
+  // parent's or a tutor's setup.
   if (
     path === "/start" ||
-    /^\/start\/(myself|parent|tutor|teacher|school)$/.test(path)
+    /^\/start\/(myself|parent|tutor|teacher|school)$/.test(path) ||
+    /^\/start\/(parent|tutor)\/[a-z-]+$/.test(path)
   )
     return { kind: "plain" };
   if (path === "/practice") return { kind: "practice" };
@@ -164,14 +180,26 @@ export function overviewPath(context: ProgressContext) {
   return `/${progressTabs(context)[0]!.path}`;
 }
 
-/** Class sub-screens keep their parent tab selected. Past years retain grades and time. */
+/** A class this size or smaller, in a family's org (a family or a tutor),
+ * has no Grades tab: each learner's grade is a line on the Map, and report
+ * cards and exports are in Settings. */
+export const SMALL_CLASS = 6;
+
+/** The one place a class's tabs are decided (docs/design/ia.md). Class
+ * sub-screens keep their parent tab selected; past years retain grades and
+ * time. A family's or tutor's class keeps its calendar in Settings, and a
+ * small one (six or fewer) has no Grades tab: each learner's grade is a line
+ * on the Map, and report cards, export and the weekly target are in
+ * Settings. */
 export function classTabs(
   org: string,
   id: string,
   past = false,
-  familyCalendar = false,
+  family = false,
+  learners = Infinity,
 ): TabItem[] {
-  const tabs = [
+  const small = family && learners <= SMALL_CLASS;
+  return [
     ["today", "Today"],
     ["map", "Map"],
     ["gradebook", "Grades"],
@@ -180,19 +208,15 @@ export function classTabs(
     ["roster", "Students"],
     ["settings", "Settings"],
   ]
+    .filter(([leaf]) => !small || leaf !== "gradebook")
     .filter(([leaf]) => !past || leaf === "gradebook" || leaf === "time")
     .map(([leaf, label]) => ({
       id: leaf!,
-      label: label!,
+      // A family org's roster holds children, a second parent and
+      // co-teachers: People. A school's class lists Students.
+      label: leaf === "roster" && family ? "People" : label!,
       path: `school/${org}/classes/${id}/${leaf}`,
     }));
-  if (familyCalendar && !past)
-    tabs.push({
-      id: "calendar",
-      label: "Calendar",
-      path: `school/${org}/calendar`,
-    });
-  return tabs;
 }
 
 /** Settings shows when any of its sections does. */

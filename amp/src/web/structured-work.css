@@ -570,3 +570,103 @@
 .work-unit sup {
   font-size: 12px;
 }
+
+/* ---------- a number entry: no echo, a fix overlaid ---------- */
+/* A typed number is its own preview. What to fix floats just below the
+   field, over the space beneath it, so nothing moves when it appears. */
+.work-entry[data-kind="number"] {
+  position: relative;
+}
+.work-entry[data-kind="number"] > .work-note {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 2;
+  width: max-content;
+  max-width: 240px;
+  height: auto;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-control);
+  background: var(--color-danger);
+  box-shadow: 0 4px 16px var(--color-shadow);
+}
+.work-entry[data-kind="number"] > .work-note[hidden] {
+  display: none;
+}
+
+/* ---------- rows of numbers: one inline line each ---------- */
+/* A factor pair reads "[ 1 ] × [ 31 ]": small fields of one width side by
+   side, the joining sign between them, and the mark at the end. No card
+   around the row, at every width. */
+.work-rows[data-compact] {
+  gap: var(--space-3);
+}
+.work-rows[data-compact] .work-row {
+  grid-template-columns: auto 24px;
+  justify-content: start;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+/* The fields are the row; a count beside "1 × 31" would read as a value. */
+.work-rows[data-compact] .work-number {
+  display: none;
+}
+.work-rows[data-compact] .work-mark {
+  margin: 0;
+}
+.work-rows[data-compact] .work-fields {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+}
+.work-rows[data-compact] .work-label {
+  padding: 0;
+}
+.work-cells {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+.work-rows[data-compact] .work-cell {
+  display: block;
+}
+.work-rows[data-compact] .work-input {
+  flex: none;
+  width: 92px;
+  text-align: center;
+  padding-inline: var(--space-2);
+}
+.work-rows[data-compact] .work-input::placeholder {
+  color: transparent;
+}
+.work-rows[data-compact] .work-unit {
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--color-on-surface);
+}
+/* An open list's add and remove sit under the rows at their own width. */
+.work:has(> .work-rows[data-compact]) .work-list-actions button {
+  flex: 0 1 auto;
+  padding-inline: var(--space-4);
+}
+/* Wide: labels in one column and their fields in the next, so every row's
+   first field starts on the same line. */
+@container (min-width: 480px) {
+  .work-rows[data-compact] .work-fields:has(> .work-label) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    column-gap: var(--space-4);
+  }
+}
+/* A labeled row spans the column, so its label and field columns line up
+   with every other row's; an unlabeled row (a pair) keeps its mark beside
+   its fields. */
+.work-rows[data-compact] .work-row:has(.work-label) {
+  grid-template-columns: minmax(0, 1fr) 24px;
+}

@@ -5,120 +5,7 @@
   gap: var(--space-7);
 }
 
-/* Today */
-.greeting p {
-  margin-top: var(--space-1);
-  color: var(--color-muted-text);
-}
-/* The class code, for a student's own device (the board is Start class). */
-.greeting .code {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0 var(--space-2);
-  margin-top: var(--space-2);
-}
-.code strong {
-  color: var(--color-on-surface);
-  font-size: var(--text-heading-3);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.06em;
-}
-.startClass {
-  margin-top: var(--space-4);
-}
-.todos {
-  container-type: inline-size;
-  display: grid;
-  margin-top: calc(-1 * var(--space-4));
-}
-.todo {
-  display: grid;
-  grid-template-columns: 44px minmax(0, 1fr);
-  column-gap: var(--space-2);
-  padding-block: var(--space-5);
-}
-.todo + .todo {
-  box-shadow: inset 0 1px 0 var(--color-border);
-}
-.todo[data-plain] {
-  grid-template-columns: minmax(0, 1fr);
-}
-.todo[data-plain] .todoActions {
-  grid-column: 1;
-}
-.moreFaces {
-  align-self: center;
-  margin-inline-start: var(--space-2);
-  color: var(--color-muted-text);
-  font-size: var(--text-table-small);
-  font-variant-numeric: var(--numeric);
-}
-.todoCheck {
-  margin-top: -9px;
-  margin-inline-start: -10px;
-}
-.todoTitle {
-  font-size: var(--text-heading-2);
-  text-wrap: balance;
-  transition: color var(--motion-fast);
-}
-.todo[data-done] .todoTitle {
-  color: var(--color-subtle-text);
-  text-decoration: line-through;
-  text-decoration-thickness: 1px;
-}
-.todoDetail {
-  max-width: 60ch;
-  margin-top: var(--space-1);
-  color: var(--color-muted-text);
-  line-height: 1.45;
-  text-wrap: pretty;
-}
-.todoPeople {
-  display: flex;
-  margin-top: var(--space-3);
-}
-.todoActions {
-  grid-column: 2;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin-top: var(--space-4);
-}
-.todoActions > * {
-  white-space: nowrap;
-}
-@container (min-width: 760px) {
-  .todo {
-    grid-template-columns: 44px minmax(0, 1fr) auto;
-    column-gap: var(--space-2);
-  }
-  .todo[data-plain] {
-    grid-template-columns: minmax(0, 1fr) auto;
-  }
-  .todo[data-plain] .todoActions {
-    grid-column: 2;
-  }
-  .todoActions {
-    grid-column: 3;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-    margin: 0 0 0 var(--space-5);
-    align-self: start;
-  }
-}
-.week {
-  display: grid;
-  gap: var(--space-3);
-}
-.weekTitle {
-  color: var(--color-muted-text);
-  font-family: inherit;
-  font-size: var(--text-table);
-  font-weight: 600;
-  letter-spacing: 0;
-}
+/* The class map's head, on its own tab. */
 .mapHead {
   display: flex;
   flex-wrap: wrap;
@@ -565,7 +452,28 @@ input.finalInput:focus-visible {
   font-size: var(--text-table);
 }
 .gradeEmpty {
-  margin-top: var(--space-6);
+  margin-top: var(--space-5);
+}
+/* The empty gradebook's one made-up line. */
+.exampleGrade {
+  display: grid;
+  gap: var(--space-3);
+  font-size: var(--text-table);
+}
+.exampleGradeTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+}
+.exampleName {
+  font-weight: 600;
+}
+.exampleTime {
+  display: grid;
+  gap: var(--space-3);
+  font-size: var(--text-table);
 }
 .dialog {
   display: grid;
@@ -621,6 +529,17 @@ label.columnPick {
   justify-content: space-between;
   gap: var(--space-4) var(--space-5);
   margin-block: var(--space-5) var(--space-4);
+}
+/* Three figures to a row on a phone; a label may wrap between words. */
+@media (max-width: 640px) {
+  .timeFacts > dl {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+  }
+  .timeFacts dt {
+    white-space: normal;
+  }
 }
 .heatStrip,
 .heatTicks {
@@ -958,12 +877,4 @@ label.columnPick {
   .recordSection {
     break-inside: avoid;
   }
-}
-
-/* The evidence sheet's avatar, before the evidence arrives. */
-.leadWait {
-  flex: none;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
 }

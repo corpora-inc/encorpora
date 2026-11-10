@@ -10,6 +10,7 @@ import {
   type ReactNode,
 } from "react";
 import { Menu, MenuItem } from "./Menu";
+import { ariaSort, SortHeader } from "./SortHeader";
 import styles from "./DataGrid.module.css";
 
 export type GridSort = {
@@ -39,19 +40,6 @@ const WIDGETS =
   "a[href],button,input,textarea,[role=button],[role=spinbutton],[role=checkbox]";
 const isField = (element: EventTarget | null) =>
   element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement;
-
-function SortMark({ direction }: { direction?: GridSort["direction"] }) {
-  return (
-    <svg
-      className={styles.sortMark}
-      data-direction={direction ?? "none"}
-      viewBox="1 0 8 12"
-      aria-hidden="true"
-    >
-      <path d="M3 4.75 6 8l3-3.25" />
-    </svg>
-  );
-}
 
 /**
  * A table for real work. The header and first column stay in view; columns
@@ -96,8 +84,9 @@ export function DataGrid<Row>({
    * as labelled values. */
   card?: (row: Row) => ReactNode;
   cardsBelow?: number;
-  /** `row`: flush one-line rows, with no gap between them. */
-  cardLayout?: "card" | "row";
+  /** `row`: flush one-line rows, with no gap between them. `list`: flush
+   * rows of any height, a hairline between them, never a box. */
+  cardLayout?: "card" | "row" | "list";
   /** Beside the sort control above the cards: another way to view them. */
   cardsToolbar?: ReactNode;
   /** Directly above the cards: a key or scale for what they draw. */
@@ -350,12 +339,6 @@ function Table<Row>({
 
   const totalWidth = columns.reduce((sum, column) => sum + column.width, 0);
   const scrolls = totalWidth > available;
-  const ariaSort = (column: DataGridColumn<Row>) =>
-    !column.compare
-      ? undefined
-      : sort?.column === column.id
-        ? sort.direction
-        : "none";
   return (
     <div
       ref={scroller}
@@ -397,24 +380,22 @@ function Table<Row>({
                   scope="col"
                   role="columnheader"
                   aria-colindex={c + 1}
-                  aria-sort={ariaSort(column)}
+                  aria-sort={ariaSort(
+                    !!column.compare,
+                    sorted ? sort!.direction : undefined,
+                  )}
                   data-r={0}
                   data-c={c}
                   data-align={column.align}
                   className={`${styles.columnHeader} ${c === 0 ? styles.first : ""}`}
                 >
                   {column.compare ? (
-                    <button
-                      type="button"
-                      className={styles.sort}
-                      data-active={sorted || undefined}
-                      onClick={() => onSort(column)}
-                    >
-                      <span>{column.header}</span>
-                      <SortMark
-                        direction={sorted ? sort!.direction : undefined}
-                      />
-                    </button>
+                    <SortHeader
+                      label={column.header}
+                      direction={sorted ? sort!.direction : undefined}
+                      align={column.align}
+                      onSort={() => onSort(column)}
+                    />
                   ) : (
                     <span className={styles.headerText}>{column.header}</span>
                   )}
@@ -531,13 +512,13 @@ function Cards<Row>({
   rowKey: (row: Row) => string;
   columns: readonly DataGridColumn<Row>[];
   card?: (row: Row) => ReactNode;
-  layout: "card" | "row";
+  layout: "card" | "row" | "list";
   virtual: boolean;
   estimate: number;
 }) {
   const body = (row: Row) =>
     card ? card(row) : <DefaultCard row={row} columns={columns} />;
-  const className = `${styles.cards} ${layout === "row" ? styles.cardRows : ""}`;
+  const className = `${styles.cards} ${layout === "row" ? styles.cardRows : layout === "list" ? styles.cardList : ""}`;
   if (virtual)
     return (
       <WindowedCards

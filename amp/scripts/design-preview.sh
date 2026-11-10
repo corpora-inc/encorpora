@@ -8,6 +8,7 @@
 #   scripts/design-preview.sh stop     # stop what this script started
 #   scripts/design-preview.sh reseed   # stop, recreate the database, start, seed
 #   scripts/design-preview.sh status
+#   scripts/design-preview.sh check    # after a merge or a CSS/module edit
 #
 # Ports: AMP_WEB_PORT (4700) and AMP_API_PORT (4701). Never 4310.
 set -euo pipefail
@@ -83,5 +84,26 @@ case "${1:-start}" in
     running api && echo "api up (pid $(cat "$RUN/api.pid"))" || echo "api down"
     running web && echo "web up (pid $(cat "$RUN/web.pid"))" || echo "web down"
     echo "logs: $RUN" ;;
-  *) echo "start | restart | stop | reseed | status"; exit 1 ;;
+  check)
+    # Fast health check: no conflict markers, a production build (CSS and
+    # imports), types, the pages answering, one persona signing in.
+    fail=0
+    if git grep -nE '^(<<<<<<< |=======$|>>>>>>> )' -- . >/dev/null; then
+      echo "FAIL conflict markers:"; git grep -nE '^(<<<<<<< |=======$|>>>>>>> )' -- . | head; fail=1
+    fi
+    out="$RUN/check-build"
+    npx vite build --logLevel error --outDir "$out" --emptyOutDir >"$RUN/check-build.log" 2>&1 ||
+      { echo "FAIL vite build (see $RUN/check-build.log)"; tail -20 "$RUN/check-build.log"; fail=1; }
+    npm run -s tsc >"$RUN/check-tsc.log" 2>&1 ||
+      { echo "FAIL tsc"; grep "error TS" "$RUN/check-tsc.log" | head -20; fail=1; }
+    for path in / /dev/personas; do
+      code=$(curl -s -o /dev/null -w "%{http_code}" "$ORIGIN$path")
+      [ "$code" = 200 ] || { echo "FAIL $path answered $code"; fail=1; }
+    done
+    code=$(curl -s -o /dev/null -w "%{http_code}" -H "Origin: $ORIGIN" -H "Content-Type: application/json" \
+      -d '{"email":"family@personas.amp.test","password":"design pass persona passphrase"}' \
+      "$ORIGIN/api/auth/sign-in/email")
+    [ "$code" = 200 ] || { echo "FAIL persona sign-in answered $code"; fail=1; }
+    [ "$fail" = 0 ] && echo "check: healthy" || { echo "check: FAILED"; exit 1; } ;;
+  *) echo "start | restart | stop | reseed | status | check"; exit 1 ;;
 esac

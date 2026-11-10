@@ -23,8 +23,13 @@ export const classUrl = (
   id: string,
   tab: ClassTabId | "start" | "report-cards",
 ) => `school/${org}/classes/${id}/${tab}`;
-export const studentUrl = (org: string, student: string) =>
-  `school/${org}/students/${student}`;
+/** A student's record. From a class it opens inside that class, over its
+ * map (`map/<student>`), so the class's tabs stay (docs/design/ia.md); only
+ * an admin coming from the school uses the school-level page. */
+export const studentUrl = (org: string, student: string, classId?: string) =>
+  classId
+    ? `school/${org}/classes/${classId}/map/${student}`
+    : `school/${org}/students/${student}`;
 export { buttonClass };
 
 /** A screen's state lives in the URL, so refresh, Back and a shared link all

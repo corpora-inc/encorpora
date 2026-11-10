@@ -120,7 +120,9 @@ async function signedIn(page: Page, email: string) {
   );
   if (new URL(page.url()).pathname.startsWith("/school/")) {
     await page
-      .getByRole("heading", { name: /^Good (morning|afternoon|evening)/ })
+      .getByRole("heading", {
+        name: /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+      })
       .waitFor();
   }
   await page
@@ -189,7 +191,7 @@ try {
     .getByRole("heading", { name: "What brings you to AMP?" })
     .waitFor();
   await page.getByRole("link", { name: /^I’m a parent/ }).click();
-  await page.getByRole("button", { name: "Birth year, your child" }).click();
+  await page.getByRole("button", { name: "Birth year, Child 1" }).click();
   await page.getByRole("option", { name: "2016", exact: true }).click();
   await page.getByRole("button", { name: "Continue", exact: true }).click();
   await signedIn(page, email);

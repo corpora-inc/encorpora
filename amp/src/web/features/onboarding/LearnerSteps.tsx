@@ -1,4 +1,5 @@
 import { useActivateGift } from "../access/api";
+import { CHILD_NAME_MAX } from "../../../learning/nickname";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
 import type { SignedInMe } from "../../../account/contracts";
@@ -193,8 +194,7 @@ export function LearnerSteps({
       )}
       <h1>Who’s learning?</h1>
       <p>
-        A first name or nickname helps you keep each learner’s practice
-        separate.
+        Their first name or nickname keeps each learner’s practice separate.
       </p>
       {(purchase || gift) && waiting.length > 0 && (
         <div className={styles.claim}>
@@ -224,9 +224,10 @@ export function LearnerSteps({
       >
         <TextField
           label="Learner name"
+          placeholder="First name or nickname"
           autoComplete="off"
           value={name}
-          maxLength={60}
+          maxLength={CHILD_NAME_MAX}
           required
           onChange={(event) => draft.set(session.accountId, event.target.value)}
         />

@@ -6,7 +6,6 @@ import {
   type TimePeriod,
   type TimeResponse,
 } from "../../../../schools/teacher-contracts";
-import { Avatar } from "../../../ui/Avatar";
 import { Button } from "../../../ui/Button";
 import { DataGrid, type DataGridColumn } from "../../../ui/DataGrid";
 import { EmptyState } from "../../../ui/EmptyState";
@@ -15,6 +14,7 @@ import { Segmented } from "../../../ui/Segmented";
 import { Sheet } from "../../../ui/Sheet";
 import { StatRow, StatTile } from "../../../ui/StatTile";
 import { Toast } from "../../../ui/Toast";
+import { currentSession, orgOptions } from "../api";
 import { useStaffSession } from "./api";
 import { ClassFrame } from "./ClassFrame";
 import { TimeDetail } from "./ProgressRecord";
@@ -158,6 +158,37 @@ function Legend({ full, isDay }: { full: number; isDay: boolean }) {
   );
 }
 
+/** Four made-up weeks of one learner, for the empty state: what the grid of
+ * days looks like once there's work. */
+const EXAMPLE_DAYS = [
+  0, 3, 4, 0, 2, 0, 0, 4, 5, 3, 0, 4, 0, 0, 2, 4, 5, 5, 3, 0, 0, 5, 4, 0, 5, 3,
+  0, 0,
+];
+function ExampleTime() {
+  return (
+    <div className={styles.exampleTime}>
+      <div className={styles.heatCardTop}>
+        <span className={styles.exampleName}>A learner</span>
+        <span className={styles.heatTotal}>312 min</span>
+      </div>
+      <span
+        className={styles.heatStrip}
+        style={{ "--heat-columns": EXAMPLE_DAYS.length } as CSSProperties}
+      >
+        {EXAMPLE_DAYS.map((step, index) => (
+          <span
+            key={index}
+            className={styles.heatCell}
+            data-bin={step}
+            data-monday={index % 7 === 0 || undefined}
+          />
+        ))}
+      </span>
+      <Legend full={20} isDay />
+    </div>
+  );
+}
+
 /** One student's days and skills, from a row. */
 function DaySheet({
   place,
@@ -189,7 +220,6 @@ function DaySheet({
       description={
         data ? dayRange(data.range.from, data.range.to) : "Reading the days"
       }
-      lead={data ? <Avatar name={data.student.name} size="large" /> : undefined}
       returnFocus={() =>
         document.querySelector<HTMLElement>(`[data-student="${returnFocus}"]`)
       }
@@ -208,8 +238,9 @@ function DaySheet({
           <TimeDetail time={data} who={data.student.name} />
           <Link
             to="/$"
-            params={{ _splat: studentUrl(place.org, data.student.id) }}
-            search={{ class: place.class } as never}
+            params={{
+              _splat: studentUrl(place.org, data.student.id, place.class),
+            }}
             className={buttonClass("quiet", "", "start")}
           >
             Open {data.student.first}’s record
@@ -229,6 +260,11 @@ export function TimeScreen() {
   const period =
     timePeriods.find((entry) => entry === search.period) ?? "month";
   const time = useQuery(timeOptions(session, place, period));
+  const family =
+    useQuery({
+      ...orgOptions(currentSession(), place.org),
+      refetchOnMount: false,
+    }).data?.kind === "family";
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -250,7 +286,7 @@ export function TimeScreen() {
     () => [
       {
         id: "student",
-        header: "Student",
+        header: family ? "Child" : "Student",
         width: 160,
         compare: (a, b) => a.name.localeCompare(b.name, "en"),
         cell: (row) => (
@@ -260,7 +296,6 @@ export function TimeScreen() {
             data-student={row.id}
             onClick={() => set({ student: row.id })}
           >
-            <Avatar name={row.name} size="small" />
             <span>{row.name}</span>
           </button>
         ),
@@ -303,7 +338,7 @@ export function TimeScreen() {
     ],
     // Cells follow this response's rows and columns.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [data],
+    [data, family],
   );
   const totalMinutes = (data?.students ?? []).reduce(
     (sum, row) => sum + row.minutes,
@@ -351,7 +386,17 @@ export function TimeScreen() {
                   onChange={(value) => set({ period: value })}
                 />
               </div>
-              <div className={styles.export}>
+              {/* Nothing to export yet: the export holds its place unseen. */}
+              <div
+                className={styles.export}
+                style={{
+                  visibility:
+                    data.students.length === 0 ||
+                    data.students.every((row) => row.minutes === 0)
+                      ? "hidden"
+                      : undefined,
+                }}
+              >
                 <Button
                   variant="secondary"
                   aria-busy={busy || undefined}
@@ -379,21 +424,31 @@ export function TimeScreen() {
           {data.students.length === 0 || totalMinutes === 0 ? (
             <div className={styles.gradeEmpty}>
               <EmptyState
-                title="No practice time yet"
+                title={
+                  period === "week"
+                    ? "No practice time this week yet"
+                    : "No practice time yet"
+                }
+                example={<ExampleTime />}
                 action={
                   <Link
                     to="/$"
                     params={{
-                      _splat: classUrl(place.org, place.class, "start"),
+                      _splat: classUrl(
+                        place.org,
+                        place.class,
+                        family ? "today" : "start",
+                      ),
                     }}
                     className={buttonClass("primary")}
                   >
-                    Start class
+                    {family ? "Back to Today" : "Start class"}
                   </Link>
                 }
               >
-                Minutes appear here for each student as they work, by week, by
-                day and by skill.
+                {family
+                  ? "Each child’s active minutes appear here day by day as they practice, with the skills the time went to."
+                  : "Each student’s active minutes appear here day by day as they work, with the skills the time went to."}
               </EmptyState>
             </div>
           ) : (
@@ -406,7 +461,7 @@ export function TimeScreen() {
                   />
                   <StatTile
                     value={`${working.length} of ${data.students.length}`}
-                    label="students working"
+                    label={family ? "children practiced" : "students working"}
                   />
                   <StatTile
                     value={number(perStudent)}
@@ -435,6 +490,8 @@ export function TimeScreen() {
                   }
                   onRowActivate={(row) => set({ student: row.id })}
                   rules={false}
+                  cardLayout="list"
+                  cardsSort={data.students.length > 6}
                   cardEstimate={92}
                   card={(row) => (
                     <div className={styles.heatCard}>
@@ -445,7 +502,6 @@ export function TimeScreen() {
                           data-student={row.id}
                           onClick={() => set({ student: row.id })}
                         >
-                          <Avatar name={row.name} size="small" />
                           <span>{row.name}</span>
                         </button>
                         <span className={styles.heatTotal}>
