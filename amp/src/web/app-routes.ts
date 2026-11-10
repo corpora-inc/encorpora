@@ -1,10 +1,16 @@
 import { useLocation, useRouter } from "@tanstack/react-router";
+import { useRef } from "react";
 export type FamilySection = "learners" | "access" | "privacy" | "security";
 export type PurchaseScreen = "choose" | "annual" | "funded";
 /** URLs own screen identity. Private consent challenges live only in memory. */
 export function useAppRoute() {
-  const current = useLocation(),
+  const live = useLocation(),
     router = useRouter();
+  // A routed film covers the legacy screen. Keep its problem, answer draft,
+  // scroll position and lesson state mounted until the learner returns.
+  const saved = useRef(live);
+  if (!/^\/lessons\/[^/]+\/watch$/.test(live.pathname)) saved.current = live;
+  const current = saved.current;
   const location = {
     ...current,
     search: current.searchStr,

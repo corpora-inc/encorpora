@@ -1,0 +1,275 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { templates } from "../src/math/engine";
+import { buildApp } from "../src/server/app";
+import type { Repository } from "../src/server/repository";
+import { trialLimits } from "../src/server/trials";
+import {
+  filmManifestSchema,
+  FILM_CAPABILITY,
+  lessonFilmFor,
+  lessonFilms,
+} from "../src/content/lesson-films";
+import {
+  approvedIds,
+  assertReviewedFiles,
+  canonical,
+  planFilm,
+  publishFilms,
+  screenplayFromExport,
+} from "../film/publication";
+
+const script = {
+  id: "count-objects",
+  title: "Count objects",
+  shots: [
+    { beats: [{ say: "One dot.", do: [{ do: "text", text: "One dot." }] }] },
+  ],
+};
+const timing = {
+  duration: 3,
+  shots: [
+    [
+      {
+        start: 0.5,
+        end: 2,
+        words: [
+          { text: "One", start: 0.5, end: 1 },
+          { text: "dot.", start: 1.1, end: 2 },
+        ],
+      },
+    ],
+  ],
+};
+const exported = () => ({
+  id: script.id,
+  title: script.title,
+  problemType: script.id,
+  script: structuredClone(script),
+  timing: structuredClone(timing),
+  figure: null,
+  note: "Private review annotation",
+});
+const audio = Buffer.from("0000ftyp0000000000000000");
+const plan = (source: unknown = exported(), bytes = audio) =>
+  planFilm(script.id, source, script, bytes, new Set([script.id]));
+
+test("publication accepts only current explicit approvals", () => {
+  assert.deepEqual(
+    approvedIds(
+      {
+        approved: { grade: "approved", added: "a" },
+        stale: { grade: "approved", added: "old" },
+        rejected: { grade: "rejected", added: "a" },
+        missing: { grade: "approved" },
+      },
+      [
+        { id: "approved", added: "a" },
+        { id: "stale", added: "new" },
+        { id: "rejected", added: "a" },
+        { id: "missing" },
+      ],
+    ),
+    ["approved"],
+  );
+});
+test("a failed re-export cannot reuse approval for older bytes", () => {
+  const approval = {
+    added: "2026-01-01T10:00:00Z",
+    at: "2026-01-01T10:05:00Z",
+    grade: "approved",
+  };
+  assert.doesNotThrow(() =>
+    assertReviewedFiles(approval, [Date.parse(approval.added)]),
+  );
+  assert.throws(
+    () => assertReviewedFiles(approval, [Date.parse(approval.at) + 1]),
+    /reviewed edition/,
+  );
+  assert.throws(() => assertReviewedFiles({}, [0]), /timestamps/);
+  const archive = { ...approval, at: "2025-12-31T10:00:00Z" };
+  assert.doesNotThrow(() =>
+    assertReviewedFiles(archive, [Date.parse(archive.added) + 2000]),
+  );
+  assert.throws(
+    () => assertReviewedFiles(archive, [Date.parse(archive.added) + 6000]),
+    /reviewed edition/,
+  );
+});
+test("publication compares the actual committed screenplay and validates bindings and timing", () => {
+  const changed = exported();
+  changed.script.shots[0]!.beats[0]!.say = "Two dots.";
+  assert.throws(() => plan(changed), /committed screenplay/);
+  assert.throws(() => plan({ ...exported(), problemType: "other" }), /binding/);
+  const bad = exported();
+  bad.timing.shots[0]![0]!.end = 8;
+  assert.throws(() => plan(bad), /timing/);
+  assert.throws(() => plan(exported(), Buffer.from("bad")), /AAC/);
+});
+test("content versions change with data or audio, never with private annotations", () => {
+  const a = plan();
+  assert.equal(
+    a.film.version,
+    plan({ ...exported(), note: "different" }).film.version,
+  );
+  assert.ok(!a.data.toString().includes("Private"));
+  assert.notEqual(
+    a.film.version,
+    plan(exported(), Buffer.concat([audio, Buffer.from("x")])).film.version,
+  );
+  const changed = exported();
+  changed.timing.duration = 4;
+  assert.notEqual(a.film.version, plan(changed).film.version);
+});
+test("legacy cast descriptors require the exact recorded voice binding", () => {
+  const cast = { teacher: { voice: "J3Ei0Lj6fAobhIqY5ySH", name: "Paul" } };
+  const source = {
+    ...exported(),
+    script: { ...script, cast },
+    timing: { ...timing, voices: { teacher: "J3Ei0Lj6fAobhIqY5ySH" } },
+  };
+  assert.deepEqual(screenplayFromExport(source).cast, { teacher: {} });
+  assert.throws(
+    () => screenplayFromExport({ ...source, timing }),
+    /recorded voices/,
+  );
+});
+test("publication fails closed for unrecorded casts and unapproved voices", () => {
+  const source = {
+    ...exported(),
+    script: { ...script, cast: { teacher: {} } },
+  };
+  assert.throws(
+    () =>
+      planFilm(script.id, source, source.script, audio, new Set([script.id])),
+    /Missing recorded cast/,
+  );
+  assert.throws(
+    () =>
+      plan({
+        ...exported(),
+        timing: { ...timing, voices: { narrator: "unknown" } },
+      }),
+    /approved voice/,
+  );
+});
+test("all media readbacks precede the manifest write; failure preserves the previous manifest", async () => {
+  const events: string[] = [];
+  await publishFilms(
+    [plan()],
+    async () => {
+      events.push("upload");
+    },
+    async () => {
+      events.push("verify");
+    },
+    async () => {
+      events.push("manifest");
+    },
+  );
+  assert.deepEqual(events, [
+    "upload",
+    "upload",
+    "verify",
+    "verify",
+    "manifest",
+  ]);
+  let written = false;
+  await assert.rejects(
+    publishFilms(
+      [plan()],
+      async () => {},
+      async () => {
+        throw Error("CDN failed");
+      },
+      async () => {
+        written = true;
+      },
+    ),
+    /CDN failed/,
+  );
+  assert.equal(written, false);
+  let uploaded = false;
+  await assert.rejects(
+    publishFilms(
+      [plan(), plan()],
+      async () => {
+        uploaded = true;
+      },
+      async () => {},
+      async () => {},
+    ),
+    /Multiple approved/,
+  );
+  assert.equal(uploaded, false);
+  let empty: unknown;
+  await publishFilms(
+    [],
+    async () => {
+      assert.fail("No upload for an empty catalog");
+    },
+    async () => {},
+    async (manifest) => {
+      empty = manifest;
+    },
+  );
+  assert.deepEqual(
+    empty,
+    {},
+    "Rejecting all films can withdraw the published catalog",
+  );
+});
+test("committed manifest resolves real problem types, committed screenplays and immutable URLs", () => {
+  for (const [id, film] of Object.entries(lessonFilms)) {
+    assert.ok(
+      templates.some((t) => t.id === id),
+      id,
+    );
+    const committed = JSON.parse(
+      readFileSync(
+        new URL(`../film/lessons/${film.id}.json`, import.meta.url),
+        "utf8",
+      ),
+    );
+    assert.equal(committed.id, film.id);
+    assert.equal(committed.title, film.title);
+    assert.equal(lessonFilmFor(id), undefined);
+    assert.equal(lessonFilmFor(id, "future-unsupported"), undefined);
+    assert.equal(lessonFilmFor(id, FILM_CAPABILITY), film);
+  }
+  const film = plan().film;
+  assert.throws(() =>
+    filmManifestSchema.parse({
+      [script.id]: { ...film, audioUrl: "https://example.com/audio.m4a" },
+    }),
+  );
+  assert.equal(canonical({ a: 1, b: 2 }), canonical({ b: 2, a: 1 }));
+});
+test("lesson capability negotiates separate cached representations for new and older clients", async () => {
+  const server = buildApp({
+    repository: { limits: trialLimits() } as Repository,
+    authenticate: async () => {
+      throw Error("public endpoint");
+    },
+  });
+  try {
+    const path = "/api/v1/problem-lessons/count-objects";
+    const enhanced = await server.inject({
+      url: `${path}?film=${FILM_CAPABILITY}`,
+    });
+    assert.equal(enhanced.statusCode, 200);
+    assert.ok(enhanced.json().lesson.film);
+    const old = await server.inject({
+      url: path,
+      headers: { "if-none-match": String(enhanced.headers.etag) },
+    });
+    assert.equal(old.statusCode, 200);
+    assert.equal(old.json().lesson.film, undefined);
+    assert.notEqual(enhanced.headers.etag, old.headers.etag);
+    const unknown = await server.inject({ url: `${path}?film=unsupported` });
+    assert.deepEqual(unknown.json(), old.json());
+  } finally {
+    await server.close();
+  }
+});

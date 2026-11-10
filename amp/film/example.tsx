@@ -8,7 +8,7 @@ import { layoutScene } from "../src/math/scene";
 import { frameAt, type Step } from "../src/math/scene/timeline";
 
 /** A shot with figure {example:true} shows the template's own figure; `scene` actions drive its parts. */
-export function mountExample(figure: any, host: HTMLElement, shot: Shot, list: { a: any; t0: number; dur: number }[]) {
+export function mountExample(figure: any, host: HTMLElement, shot: Shot, list: { a: any; t0: number; dur: number }[], onUnmount?: (dispose: () => void) => void) {
   if (!figure) throw new Error("This template's example has no figure. Build one with geo.");
   const box = document.createElement("div");
   box.className = "film-real-figure";
@@ -17,6 +17,7 @@ export function mountExample(figure: any, host: HTMLElement, shot: Shot, list: {
   const inner = document.createElement("div");
   box.appendChild(inner);
   const r = createRoot(inner);
+  onUnmount?.(() => r.unmount());
   if (figure.kind === "scene") {
     const layout = layoutScene(figure.scene, { reveal: true });
     const acts = list.filter((e) => e.a.do === "scene");

@@ -109,6 +109,8 @@ export function shellFrame(pathname: string): ShellFrame | null {
   )
     return { kind: "plain" };
   if (path === "/practice") return { kind: "practice" };
+  // The immersive film route supplies its own return and playback controls.
+  if (/^\/lessons\/[^/]+\/watch$/.test(path)) return null;
   if (
     path === "/" ||
     path === "/progress" ||

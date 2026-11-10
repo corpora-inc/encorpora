@@ -1,0 +1,292 @@
+{
+  "bar-chart-total": {
+    "id": "bar-chart-total--hf",
+    "version": "b5eef4dfb5b22eb2d39de665c2fd920a51dfe885698f5a637612cde5526eb86b",
+    "title": "Bar graphs: the whole and the missing part",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/bar-chart-total--hf/b5eef4dfb5b22eb2d39de665c2fd920a51dfe885698f5a637612cde5526eb86b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/bar-chart-total--hf/b5eef4dfb5b22eb2d39de665c2fd920a51dfe885698f5a637612cde5526eb86b/audio.m4a",
+    "duration": 354.82,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "compare-decimals-hundredths": {
+    "id": "compare-decimals-hundredths",
+    "version": "e748f2b783afed74abc8c92a4a0ff09b5c07bdb0f8e6bcbd705f49aff66374ba",
+    "title": "Compare decimals to hundredths",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-decimals-hundredths/e748f2b783afed74abc8c92a4a0ff09b5c07bdb0f8e6bcbd705f49aff66374ba/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-decimals-hundredths/e748f2b783afed74abc8c92a4a0ff09b5c07bdb0f8e6bcbd705f49aff66374ba/audio.m4a",
+    "duration": 169.39,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "compare-unlike-fractions": {
+    "id": "compare-unlike-fractions",
+    "version": "18c45034e9678b97639e63a0967f19c79fc69f857e4a158180f53bd20930929a",
+    "title": "Compare unlike fractions",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-unlike-fractions/18c45034e9678b97639e63a0967f19c79fc69f857e4a158180f53bd20930929a/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-unlike-fractions/18c45034e9678b97639e63a0967f19c79fc69f857e4a158180f53bd20930929a/audio.m4a",
+    "duration": 123.4,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "complex-plane-forms": {
+    "id": "complex-plane-forms",
+    "version": "47416f20796d16b8c773193ecf30fbb1b14fdb45ef8356f674ad0f6f79146289",
+    "title": "Complex plane, modulus and polar form",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/complex-plane-forms/47416f20796d16b8c773193ecf30fbb1b14fdb45ef8356f674ad0f6f79146289/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/complex-plane-forms/47416f20796d16b8c773193ecf30fbb1b14fdb45ef8356f674ad0f6f79146289/audio.m4a",
+    "duration": 497.89,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "count-objects": {
+    "id": "count-objects",
+    "version": "d0ee9f1aba0fdfad5c0d3a825bd89711a671e7fbf444e78287858d51120b3a7b",
+    "title": "Count objects",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/count-objects/d0ee9f1aba0fdfad5c0d3a825bd89711a671e7fbf444e78287858d51120b3a7b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/count-objects/d0ee9f1aba0fdfad5c0d3a825bd89711a671e7fbf444e78287858d51120b3a7b/audio.m4a",
+    "duration": 90.01,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "decimal-fraction-locate": {
+    "id": "decimal-fraction-locate",
+    "version": "6fa646392960bc992a0110dd6bbdb7a5f637e3e9d150b23daa3d78901cdcee0c",
+    "title": "Locate a decimal or a fraction",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/decimal-fraction-locate/6fa646392960bc992a0110dd6bbdb7a5f637e3e9d150b23daa3d78901cdcee0c/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/decimal-fraction-locate/6fa646392960bc992a0110dd6bbdb7a5f637e3e9d150b23daa3d78901cdcee0c/audio.m4a",
+    "duration": 96.27,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "decimal-grid-read": {
+    "id": "decimal-grid-read",
+    "version": "6a0b3477e071a2fa862c614a33828260dd75978156d71577df20f756fe9957dd",
+    "title": "Name a shaded decimal",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/decimal-grid-read/6a0b3477e071a2fa862c614a33828260dd75978156d71577df20f756fe9957dd/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/decimal-grid-read/6a0b3477e071a2fa862c614a33828260dd75978156d71577df20f756fe9957dd/audio.m4a",
+    "duration": 73.2,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "decimal-place-value-hundredths": {
+    "id": "decimal-place-value-hundredths",
+    "version": "c2ac40ec33a020f148d6a17a61361dc382ab622091c745e391fd9d7c13f09899",
+    "title": "Decimal place value to hundredths",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/decimal-place-value-hundredths/c2ac40ec33a020f148d6a17a61361dc382ab622091c745e391fd9d7c13f09899/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/decimal-place-value-hundredths/c2ac40ec33a020f148d6a17a61361dc382ab622091c745e391fd9d7c13f09899/audio.m4a",
+    "duration": 204.62,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "decimal-sum-difference": {
+    "id": "decimal-sum-difference",
+    "version": "80246a9ef07e4d656d38b63d5a87212637d1170e149145f48581c2e985186cc4",
+    "title": "Add or subtract decimals to hundredths",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/decimal-sum-difference/80246a9ef07e4d656d38b63d5a87212637d1170e149145f48581c2e985186cc4/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/decimal-sum-difference/80246a9ef07e4d656d38b63d5a87212637d1170e149145f48581c2e985186cc4/audio.m4a",
+    "duration": 117.85,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "fl-trapezoid-consequences": {
+    "id": "fl-trapezoid-consequences",
+    "version": "b1596728a84e3823ac0c13de627c1249a72db3447926ec0468ef3d1e51b7224b",
+    "title": "Trapezoid midsegment, base angles and diagonals",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/fl-trapezoid-consequences/b1596728a84e3823ac0c13de627c1249a72db3447926ec0468ef3d1e51b7224b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/fl-trapezoid-consequences/b1596728a84e3823ac0c13de627c1249a72db3447926ec0468ef3d1e51b7224b/audio.m4a",
+    "duration": 277.99,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "fraction-line-position": {
+    "id": "fraction-line-position",
+    "version": "be6e36da2c326e8ab219b585f0bca04d6f21a3221eb540cbf4f332b03bd82c9f",
+    "title": "Read a fraction location",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/fraction-line-position/be6e36da2c326e8ab219b585f0bca04d6f21a3221eb540cbf4f332b03bd82c9f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/fraction-line-position/be6e36da2c326e8ab219b585f0bca04d6f21a3221eb540cbf4f332b03bd82c9f/audio.m4a",
+    "duration": 126.73,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "frequency-table-build": {
+    "id": "frequency-table-build--pr",
+    "version": "f775915089f6cf40755f4c8b4164a5265357b5488035c0e2e7172fa1032b9537",
+    "title": "Build a frequency table",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/frequency-table-build--pr/f775915089f6cf40755f4c8b4164a5265357b5488035c0e2e7172fa1032b9537/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/frequency-table-build--pr/f775915089f6cf40755f4c8b4164a5265357b5488035c0e2e7172fa1032b9537/audio.m4a",
+    "duration": 598.06,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "independence-test": {
+    "id": "independence-test",
+    "version": "3f44dadadd4117e82cfe519f3dbbad1aa2e1828fd2e663972b815462abe57a88",
+    "title": "Testing independence in a two-way table",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/independence-test/3f44dadadd4117e82cfe519f3dbbad1aa2e1828fd2e663972b815462abe57a88/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/independence-test/3f44dadadd4117e82cfe519f3dbbad1aa2e1828fd2e663972b815462abe57a88/audio.m4a",
+    "duration": 409.52,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "join-within-10": {
+    "id": "join-within-10",
+    "version": "895a0efbfc901fe6ff7edb6da0f46b170737bf4b193d29e7e744844f70ce9a06",
+    "title": "Join two small groups",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/join-within-10/895a0efbfc901fe6ff7edb6da0f46b170737bf4b193d29e7e744844f70ce9a06/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/join-within-10/895a0efbfc901fe6ff7edb6da0f46b170737bf4b193d29e7e744844f70ce9a06/audio.m4a",
+    "duration": 64.95,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "line-slope": {
+    "id": "line-slope",
+    "version": "f6644b174335c07787e4bfb0289536957fe170011c40c7e7d515e33be03b096a",
+    "title": "Slope through two points",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/line-slope/f6644b174335c07787e4bfb0289536957fe170011c40c7e7d515e33be03b096a/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/line-slope/f6644b174335c07787e4bfb0289536957fe170011c40c7e7d515e33be03b096a/audio.m4a",
+    "duration": 137.11,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "linked-division-equations": {
+    "id": "linked-division-equations",
+    "version": "00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0",
+    "title": "Choose the linked equations for a two-step sharing story",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linked-division-equations/00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/linked-division-equations/00e8483dde5e0a007aeb75c53ad6f28617bbf8cd2a6b888298b4a2273b386df0/audio.m4a",
+    "duration": 114.12,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "make-ten-remainder": {
+    "id": "make-ten-remainder",
+    "version": "e45fbf1587738daecc4f2b4350c98b14b0c32c46358900780e3200135dc3c450",
+    "title": "Split an addend to make ten",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/make-ten-remainder/e45fbf1587738daecc4f2b4350c98b14b0c32c46358900780e3200135dc3c450/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/make-ten-remainder/e45fbf1587738daecc4f2b4350c98b14b0c32c46358900780e3200135dc3c450/audio.m4a",
+    "duration": 81.05,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "mean-data": {
+    "id": "mean-data",
+    "version": "e9528f2012cdff763dce4265db75482ce3889776d48317dc128579756787b87e",
+    "title": "Mean of a dataset",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/mean-data/e9528f2012cdff763dce4265db75482ce3889776d48317dc128579756787b87e/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/mean-data/e9528f2012cdff763dce4265db75482ce3889776d48317dc128579756787b87e/audio.m4a",
+    "duration": 125.72,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "percent-amounts-blanks": {
+    "id": "percent-amounts-blanks",
+    "version": "93040392980e401d9f15c5863137a2b2ec328c7a20e643879de5ab1d4b93fa3f",
+    "title": "Two percents. One whole.",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/percent-amounts-blanks/93040392980e401d9f15c5863137a2b2ec328c7a20e643879de5ab1d4b93fa3f/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/percent-amounts-blanks/93040392980e401d9f15c5863137a2b2ec328c7a20e643879de5ab1d4b93fa3f/audio.m4a",
+    "duration": 268.63,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "quadratic-vertex": {
+    "id": "quadratic-vertex",
+    "version": "a2d7504cd11a6d41009616f2a34111171a33112e56d0671a41117f784d3ab198",
+    "title": "Quadratic minimum",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/quadratic-vertex/a2d7504cd11a6d41009616f2a34111171a33112e56d0671a41117f784d3ab198/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/quadratic-vertex/a2d7504cd11a6d41009616f2a34111171a33112e56d0671a41117f784d3ab198/audio.m4a",
+    "duration": 172.68,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "rational-two-denominators": {
+    "id": "rational-two-denominators",
+    "version": "9d371601611395f0177adc9d20d2b7a8a305755d0000d7debc3336a940dad95c",
+    "title": "Solve a rational equation with two denominators and reject an excluded value",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rational-two-denominators/9d371601611395f0177adc9d20d2b7a8a305755d0000d7debc3336a940dad95c/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rational-two-denominators/9d371601611395f0177adc9d20d2b7a8a305755d0000d7debc3336a940dad95c/audio.m4a",
+    "duration": 146.85,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "rectangle-area": {
+    "id": "rectangle-area",
+    "version": "cc598ab39b5e8661433c452ddda97da3ada60247ed86e21823e6814dfd2c14d8",
+    "title": "Rectangle area",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rectangle-area/cc598ab39b5e8661433c452ddda97da3ada60247ed86e21823e6814dfd2c14d8/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/rectangle-area/cc598ab39b5e8661433c452ddda97da3ada60247ed86e21823e6814dfd2c14d8/audio.m4a",
+    "duration": 90.93,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "round-to-hundred": {
+    "id": "round-to-hundred",
+    "version": "bda45c449524b87a663be6c8c631a73c6079b0081ecd5490b8f482f1e5a3ac7b",
+    "title": "Round to the nearest hundred",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/round-to-hundred/bda45c449524b87a663be6c8c631a73c6079b0081ecd5490b8f482f1e5a3ac7b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/round-to-hundred/bda45c449524b87a663be6c8c631a73c6079b0081ecd5490b8f482f1e5a3ac7b/audio.m4a",
+    "duration": 89.91,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "ruler-read-nearest-unit": {
+    "id": "ruler-read-nearest-unit--ws",
+    "version": "0ded1c40c00203e0f66cc9f9fae56b8313976f57531e0e405faaba981fd1890c",
+    "title": "Measure to the nearest whole unit",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ruler-read-nearest-unit--ws/0ded1c40c00203e0f66cc9f9fae56b8313976f57531e0e405faaba981fd1890c/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/ruler-read-nearest-unit--ws/0ded1c40c00203e0f66cc9f9fae56b8313976f57531e0e405faaba981fd1890c/audio.m4a",
+    "duration": 287.97,
+    "teacher": "Paul",
+    "capability": "lesson-film-v1"
+  },
+  "sinusoid-compare-rule": {
+    "id": "sinusoid-compare-rule",
+    "version": "5133ddacda4644759eca7a7a5cd8fea9c771bb5559c8cd44161e0a6877c3443b",
+    "title": "Compare a graphed sinusoid with a sine rule",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/sinusoid-compare-rule/5133ddacda4644759eca7a7a5cd8fea9c771bb5559c8cd44161e0a6877c3443b/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/sinusoid-compare-rule/5133ddacda4644759eca7a7a5cd8fea9c771bb5559c8cd44161e0a6877c3443b/audio.m4a",
+    "duration": 184.75,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "staar-dot-plot-threshold": {
+    "id": "staar-dot-plot-threshold--rr",
+    "version": "28b5ddd0e286f1145f11acc5b3dd031f62beccb0b52a9d6d2903a208eddba475",
+    "title": "Counting dots on a dot plot",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/staar-dot-plot-threshold--rr/28b5ddd0e286f1145f11acc5b3dd031f62beccb0b52a9d6d2903a208eddba475/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/staar-dot-plot-threshold--rr/28b5ddd0e286f1145f11acc5b3dd031f62beccb0b52a9d6d2903a208eddba475/audio.m4a",
+    "duration": 313.76,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "tenths-as-hundredths": {
+    "id": "tenths-as-hundredths",
+    "version": "5fbc7a0d9d8d568f7ae328953a50fd6d1920b950efc6d01b13826721196dbcd0",
+    "title": "Tenths as hundredths",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/tenths-as-hundredths/5fbc7a0d9d8d568f7ae328953a50fd6d1920b950efc6d01b13826721196dbcd0/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/tenths-as-hundredths/5fbc7a0d9d8d568f7ae328953a50fd6d1920b950efc6d01b13826721196dbcd0/audio.m4a",
+    "duration": 159.4,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "triangle-area-base-height": {
+    "id": "triangle-area-base-height",
+    "version": "08434bc2fc2e7e1a0c51dc72a407c9d0289737a4ab062a2b9257d4e87bdb2268",
+    "title": "Triangle area",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/triangle-area-base-height/08434bc2fc2e7e1a0c51dc72a407c9d0289737a4ab062a2b9257d4e87bdb2268/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/triangle-area-base-height/08434bc2fc2e7e1a0c51dc72a407c9d0289737a4ab062a2b9257d4e87bdb2268/audio.m4a",
+    "duration": 118.81,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "two-step-word-problem": {
+    "id": "two-step-word-problem",
+    "version": "27c7d6edffd35faf2f80b05bf91827da5b4ea2499584cceabc68af1f54d2d60c",
+    "title": "Solve a two-step equation story",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-step-word-problem/27c7d6edffd35faf2f80b05bf91827da5b4ea2499584cceabc68af1f54d2d60c/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/two-step-word-problem/27c7d6edffd35faf2f80b05bf91827da5b4ea2499584cceabc68af1f54d2d60c/audio.m4a",
+    "duration": 204.58,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  }
+}

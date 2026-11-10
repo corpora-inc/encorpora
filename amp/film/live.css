@@ -3,11 +3,24 @@ html:has(.live), html:has(.live) body, html:has(.live-index), html:has(.live-ind
   width: 100%; height: 100%; margin: 0; overflow: hidden; background: var(--color-surface);
 }
 html:has(.live-index), html:has(.live-index) body { overflow: auto; }
-#app { width: 100%; height: 100%; }
+#app:has(.live-index) { width: 100%; height: 100%; }
 
-.live { position: fixed; inset: 0; display: flex; flex-direction: column; background: var(--color-surface); opacity: 0; transition: opacity 0.3s; }
+.live { position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column; background: var(--color-surface); color: var(--color-on-surface); }
 .live.ready { opacity: 1; }
 .live-frame { position: relative; flex: 1; min-height: 0; overflow: hidden; }
+.live button, .live a { font-family: var(--font-body, system-ui); }
+.live button:focus-visible, .live a:focus-visible, .live input:focus-visible { outline: 3px solid var(--color-focus-ring); outline-offset: 3px; }
+.live button:disabled { cursor: wait; }
+.live-cover:disabled::after { opacity: 0; }
+.live-status { position: absolute; z-index: 3; left: 16px; right: 16px; bottom: 16px; margin: auto; max-width: 440px; padding: 12px 16px; border-radius: 16px; background: var(--color-surface-raised); box-shadow: 0 2px 14px var(--color-shadow); text-align: center; font: 500 15px/1.4 var(--font-body, system-ui); }
+.live-status[hidden], .live [hidden] { display: none; }
+.live-status p { margin: 0; }
+.live-status .amp-wave { margin: 0 auto 10px; }
+.live-retry, .live-fullscreen { min-height: 44px; padding: 0 14px; border: 1.5px solid var(--color-border-strong); border-radius: 22px; background: var(--color-surface); color: var(--color-on-surface); font: 600 14px/1 system-ui; cursor: pointer; white-space: nowrap; }
+.live-retry { margin-top: 10px; }
+.live-tools .live-back { font-size: 14px; color: var(--color-on-surface); }
+.live-bar { flex-shrink: 0; }
+.live:fullscreen { width: 100%; height: 100%; }
 .live-scale { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
 .live-scale #film { box-shadow: none; }
 

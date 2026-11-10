@@ -1,5 +1,5 @@
 /* The film wears the app's own tokens; there is not one color literal for a surface here. */
-html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--color-surface); }
+html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--color-surface); }
 #film { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: var(--color-surface); color: var(--color-on-surface); }
 .film-shot { position: absolute; inset: 0; }
 .film-figure {

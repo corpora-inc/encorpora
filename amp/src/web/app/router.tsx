@@ -245,6 +245,10 @@ function showsPitch(session: AuthSession | null | undefined) {
  * needed) before the screen changes, so a remount never shows the other
  * screen half-loaded. */
 function AppScreen() {
+  const watchingFilm = useMatch({
+    from: "/app/lessons/$templateId/watch",
+    shouldThrow: false,
+  });
   const session = useQuery(sessionOptions);
   const router = useRouter();
   const atHome = useMatch({
@@ -277,7 +281,16 @@ function AppScreen() {
   // the screen's own wait.
   return (
     <Suspense key={pending ? "deciding" : kind} fallback={<LoadingScreen />}>
-      {pending ? <Outlet /> : <Screen />}
+      {pending ? (
+        <Outlet />
+      ) : (
+        <>
+          <div style={{ display: watchingFilm ? "none" : "contents" }}>
+            <Screen />
+          </div>
+          {watchingFilm && <Outlet />}
+        </>
+      )}
     </Suspense>
   );
 }
@@ -1023,6 +1036,20 @@ const fallback = createRoute({
     await legacy.preload?.();
   },
 });
+const lessonFilm = createRoute({
+  getParentRoute: () => appScreen,
+  path: "/lessons/$templateId/watch",
+  validateSearch: (search) => ({
+    from: z.string().max(2048).optional().catch(undefined).parse(search.from),
+  }),
+  component: lazyRouteComponent(
+    () => import("../features/films/FilmScreen"),
+    "FilmScreen",
+  ),
+  loader: async () => {
+    await legacy.preload?.();
+  },
+});
 const history = nativeRuntime
   ? createMemoryHistory({ initialEntries: ["/"] })
   : createBrowserHistory();
@@ -1039,7 +1066,7 @@ function traversing() {
 }
 export const router = createRouter({
   routeTree: root.addChildren([
-    appScreen.addChildren([home, fallback]),
+    appScreen.addChildren([home, fallback, lessonFilm]),
     join,
     joinContinue,
     joinClass,
