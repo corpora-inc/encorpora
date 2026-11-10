@@ -1,11 +1,11 @@
 import { useLayoutEffect, useRef, useState, type FormEvent } from "react";
 import {
-  figureChoiceLetter,
   figureChoiceName,
   figureChoiceReview,
   figureOptionLetters,
   type FigureChoiceResponse,
 } from "../math/figure-choice";
+import { article } from "../math/figure-panels";
 import { spokenMath } from "./MathText";
 import { SceneFigure } from "./scene/SceneFigure";
 
@@ -156,10 +156,7 @@ export function FigureChoiceInput({
 export function FigureChoiceAnswer({
   response,
   value,
-  busy,
-  sending,
-  resolved,
-  submit,
+  ...rest
 }: {
   response: FigureChoiceResponse;
   value: string;
@@ -170,25 +167,55 @@ export function FigureChoiceAnswer({
   resolved: boolean;
   submit: () => void;
 }) {
-  const letter = figureChoiceLetter(response, value);
+  return (
+    <PickedAnswer
+      label={response.label}
+      chosen={figureChoiceName(response, value)}
+      noun={response.noun}
+      {...rest}
+    />
+  );
+}
+
+/** The dock of a choice made in the problem itself (figure cards, or the
+ * lettered panels of the problem's figure): what is chosen, and Check. */
+export function PickedAnswer({
+  label,
+  chosen,
+  noun,
+  busy,
+  sending,
+  resolved,
+  submit,
+}: {
+  label: string;
+  /** The chosen option's name ("Graph B"), or null before a choice. */
+  chosen: string | null;
+  /** What an option is called, for "Choose a graph above". */
+  noun: string;
+  busy: boolean;
+  sending: boolean;
+  resolved: boolean;
+  submit: () => void;
+}) {
   return (
     <form
       className="figure-choice-form"
-      aria-label={spokenMath(response.label)}
+      aria-label={spokenMath(label)}
       onSubmit={(event: FormEvent) => {
         event.preventDefault();
-        if (!busy && !resolved && letter) submit();
+        if (!busy && !resolved && chosen) submit();
       }}
     >
       <p className="figure-choice-status" role="status" aria-live="polite">
-        {letter
-          ? `${figureChoiceName(response, value)} selected`
-          : `Choose a ${response.noun.toLowerCase()} above`}
+        {chosen
+          ? `${spokenMath(chosen)} selected`
+          : `Choose ${article(noun)} ${noun.toLowerCase()} above`}
       </p>
       <button
         className="choice-submit figure-choice-check"
         type="submit"
-        disabled={busy || resolved || !letter}
+        disabled={busy || resolved || !chosen}
         aria-busy={sending}
       >
         Check

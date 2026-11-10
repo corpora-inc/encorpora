@@ -59,9 +59,12 @@ import { multiPartAnswerText } from "../math/multi-part-choice";
 import {
   FigureChoiceAnswer,
   FigureChoiceInput,
+  PickedAnswer,
   figureReview,
 } from "./FigureChoiceInput";
 import { figureChoiceName } from "../math/figure-choice";
+import { panelChoice } from "../math/figure-panels";
+import { FigurePanelChoice } from "./FigurePanelChoice";
 import {
   StructuredWorkAnswer,
   StructuredWorkInput,
@@ -76,6 +79,7 @@ import {
   useEffect,
   useId,
   useLayoutEffect,
+  useMemo,
   useRef,
   useState,
   type ReactNode,
@@ -334,6 +338,10 @@ export function PracticeWorkspace(props: Props) {
   // selection readout and Check.
   const figures =
     problem.response.kind === "figure-choice" ? problem.response : null;
+  // A choice among lettered panels of the problem's own figure ("Which
+  // triangle is isosceles?") is made by tapping the panels; the dock holds
+  // the selection readout and Check, as for figure cards.
+  const panels = useMemo(() => panelChoice(problem), [problem.id]);
   // Structured work is built in the problem: steps or proof lines, with
   // the keypad over the dock; the dock holds progress, Clear and Check.
   const work =
@@ -420,6 +428,7 @@ export function PracticeWorkspace(props: Props) {
     !!lineBuild ||
     !!parts ||
     !!figures ||
+    !!panels ||
     !!work ||
     !!equalAddends ||
     !!counters ||
@@ -470,6 +479,7 @@ export function PracticeWorkspace(props: Props) {
       !!lineBuild ||
       !!trend ||
       !!figures ||
+      !!panels ||
       !!work ||
       !!marking ||
       !!equalAddends ||
@@ -637,6 +647,7 @@ export function PracticeWorkspace(props: Props) {
     trend ||
     parts ||
     figures ||
+    panels ||
     work ||
     shapes
   );
@@ -910,6 +921,20 @@ export function PracticeWorkspace(props: Props) {
           submit={props.submit}
         />
       );
+    if (panels) {
+      const value = outcome ? outcome.response : response;
+      return (
+        <PickedAnswer
+          label={problem.response.label}
+          chosen={panels.options.find((o) => o.id === value)?.label ?? null}
+          noun={panels.noun}
+          busy={busy}
+          sending={sending}
+          resolved={!!outcome}
+          submit={submitAnswer}
+        />
+      );
+    }
     if (problem.response.kind === "multi-select") {
       const selected = selectedIds;
       const complete = selected.length === problem.response.selectionCount;
@@ -1746,6 +1771,22 @@ export function PracticeWorkspace(props: Props) {
                   }
                 />
               ))}
+            {panels && (
+              <FigurePanelChoice
+                problemId={problem.id}
+                choice={panels}
+                value={outcome ? outcome.response : response}
+                onChange={setResponse}
+                locked={locked}
+                review={
+                  outcome && !outcome.skipped
+                    ? { correct: outcome.answer, chosen: outcome.response }
+                    : outcome
+                      ? { correct: outcome.answer, chosen: null }
+                      : null
+                }
+              />
+            )}
             {marking && (
               <UnitSquareMarkingInput
                 key={problem.id}

@@ -166,3 +166,121 @@
   /* Choosing changes fill and text together, never a fade. */
   transition: none;
 }
+
+/* Lettered panels of the problem's own figure, chosen by tapping the panel
+   (FigurePanelChoice). A layer over the figure holds one radio per panel,
+   placed on the panel's frame; it takes no space, so choosing, checking and
+   resizing never move the figure. The figure's own cell outlines give way
+   to the panels' edges, which carry every state. */
+.problem-content:has(> .figure-panel-targets) {
+  position: relative;
+}
+.problem-content:has(> .figure-panel-targets) .figure [data-panel-frame],
+.problem-content:has(> .figure-panel-targets) .figure [data-panel-divider] {
+  visibility: hidden;
+}
+/* The figure is the answer: a figure drawn in its own view box takes the
+   stage's width at its natural proportions instead of the short strip a
+   prompt figure gets, and the stage scrolls rather than shrinking it. */
+.problem-content:has(> .figure-panel-targets) .figure:not(.scene-figure) {
+  flex: none;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: min(56dvh, 440px);
+}
+.figure-panel-targets {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+  pointer-events: none;
+}
+.figure-panel {
+  position: absolute;
+  box-sizing: border-box;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  pointer-events: auto;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  /* The selection edge is drawn inside the border: the box never grows. */
+  box-shadow: inset 0 0 0 1px transparent;
+  transition:
+    border-color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard),
+    background-color var(--motion-fast) var(--ease-standard);
+}
+@media (hover: hover) {
+  .figure-panel-targets:not(:disabled) .figure-panel:hover {
+    border-color: var(--color-primary);
+    background-color: color-mix(in srgb, var(--color-primary) 4%, transparent);
+  }
+}
+.figure-panel-radio {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  pointer-events: none;
+}
+.figure-panel:has(.figure-panel-radio:focus-visible) {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.figure-panel[data-selected] {
+  border-color: var(--color-primary);
+  box-shadow: inset 0 0 0 1px var(--color-primary);
+  background-color: color-mix(in srgb, var(--color-primary) 9%, transparent);
+}
+.figure-panel-targets:disabled .figure-panel {
+  cursor: default;
+}
+.figure-panel[data-mark="correct"] {
+  border-color: var(--color-success-accent);
+  box-shadow: inset 0 0 0 1px var(--color-success-accent);
+  background-color: color-mix(
+    in srgb,
+    var(--color-success-accent) 10%,
+    transparent
+  );
+}
+.figure-panel[data-mark="chosen"] {
+  border-color: var(--color-danger-accent);
+  box-shadow: inset 0 0 0 1px var(--color-danger-accent);
+  background-color: color-mix(
+    in srgb,
+    var(--color-danger-accent) 9%,
+    transparent
+  );
+}
+/* After checking, a small round mark in the panel's top corner: a tick on
+   the correct panel, a cross on a wrong choice. */
+.figure-panel-mark {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  visibility: hidden;
+}
+.figure-panel[data-mark] .figure-panel-mark {
+  visibility: visible;
+}
+.figure-panel[data-mark="correct"] .figure-panel-mark {
+  background: var(--color-success-accent);
+  color: var(--color-surface-raised);
+}
+.figure-panel[data-mark="chosen"] .figure-panel-mark {
+  background: var(--color-danger-accent);
+  color: var(--color-surface-raised);
+}
