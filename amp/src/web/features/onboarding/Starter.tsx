@@ -139,17 +139,21 @@ function StarterScreen({ session }: { session: AuthSession }) {
   );
   useEffect(() => setAlready(null), [answer, choice]);
   const followUp = useRef<HTMLDivElement>(null);
-  // A choice made here brings its question into view; a choice the page
-  // opened with (a refresh, a link, Back) leaves the page where it is.
+  // A choice made here brings its question into view and moves focus to its
+  // heading; a choice the page opened with (a refresh, a link, Back) leaves
+  // the page where it is. The choice's link keeps the router from resetting
+  // the scroll to the top afterwards (`resetScroll={false}`).
   useEffect(() => {
     if (!choice || !chosenHere) return;
     chosenHere = false;
-    followUp.current?.scrollIntoView({
+    const step = followUp.current;
+    step?.scrollIntoView({
       behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
         ? "auto"
         : "smooth",
       block: "nearest",
     });
+    step?.querySelector<HTMLElement>("h2")?.focus({ preventScroll: true });
   }, [choice]);
   /** A teacher or a school explores a demo first: nothing real is made
    * until an agreement or a purchase. */
@@ -259,6 +263,7 @@ function StarterScreen({ session }: { session: AuthSession }) {
                   data-choice={entry.id}
                   aria-current={selected ? "step" : undefined}
                   disabled={busy}
+                  resetScroll={false}
                   onClick={() => {
                     chosenHere = true;
                     track("starter_choice", { answer: entry.id });
@@ -376,7 +381,7 @@ function Myself({
   };
   return (
     <section className={styles.panel} aria-labelledby="starter-myself">
-      <h2 id="starter-myself" className={styles.question}>
+      <h2 id="starter-myself" className={styles.question} tabIndex={-1}>
         What year were you born?
       </h2>
       <p className={styles.note}>
@@ -501,7 +506,7 @@ function Children({
   const ready = chosenYears(years, count);
   return (
     <section className={styles.panel} aria-labelledby="starter-children">
-      <h2 id="starter-children" className={styles.question}>
+      <h2 id="starter-children" className={styles.question} tabIndex={-1}>
         How many children?
       </h2>
       <Stepper
@@ -556,7 +561,7 @@ function Students({
   const ready = count === 0 ? [] : chosenYears(years, count);
   return (
     <section className={styles.panel} aria-labelledby="starter-students">
-      <h2 id="starter-students" className={styles.question}>
+      <h2 id="starter-students" className={styles.question} tabIndex={-1}>
         How many students?
       </h2>
       <Stepper
@@ -614,7 +619,7 @@ function School({
   const count = (value: number) => value.toLocaleString("en-US");
   return (
     <section className={styles.panel} aria-labelledby="starter-school">
-      <h2 id="starter-school" className={styles.question}>
+      <h2 id="starter-school" className={styles.question} tabIndex={-1}>
         AMP for your school
       </h2>
       <p className={styles.lede}>

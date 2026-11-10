@@ -122,6 +122,11 @@
   font-weight: 700;
   line-height: 1.25;
 }
+/* Focus lands on the question after a choice, for screen readers and the
+   next Tab; it isn't a control, so it draws no ring. */
+.question:focus {
+  outline: none;
+}
 .note,
 .lede {
   margin: 0;
