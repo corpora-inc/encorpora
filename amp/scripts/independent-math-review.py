@@ -1117,7 +1117,7 @@ def review(stream):
     print('Independent percent-change review: ' + json.dumps(review_percent_change_content()), file=sys.stderr)
     print('Independent inequality worksheet/registry review: ' + json.dumps(review_inequality_content()), file=sys.stderr)
     print('Independent inequality coverage: ' + json.dumps(inequality_review.finish(count)), file=sys.stderr)
-    print('Independent linear-system coverage: ' + json.dumps(system_review.finish(count)), file=sys.stderr)
+    print('Independent linear-system coverage: ' + json.dumps(system_review.finish(count, legacy_counts)), file=sys.stderr)
     print('Independent linear-system worksheet/figure review: ' + json.dumps(review_linear_system_content()), file=sys.stderr)
     print('Independent right-triangle coverage: ' + json.dumps(right_triangles.finish(count, legacy_counts)), file=sys.stderr)
     print('Known polynomial choice shortcuts: ' + json.dumps(polynomial_shortcuts.finish(count)), file=sys.stderr)

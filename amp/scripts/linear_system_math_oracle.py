@@ -541,12 +541,14 @@ class LinearSystemReview:
                             'hoeffdingUpperBound':probability}
         return checks
 
-    def finish(self, expected_per_family):
+    def finish(self, expected_per_family, legacy_counts=None):
+        """`legacy_counts`: cases per family the clause-variant oracle took."""
         require(type(expected_per_family) is int and expected_per_family >= 256,
                 'System review requires at least 256 cases per family')
         report = {}
         for template,counts in self.coverage.items():
-            require(counts['cases'] == expected_per_family, f'Incomplete system corpus: {template}')
+            expected = (legacy_counts or {}).get(template, expected_per_family)
+            require(counts['cases'] == expected, f'Incomplete system corpus: {template}')
             required = ['horizontal','vertical','negative-coefficient','fractional-constant']
             required += [f'position:{i}' for i in range(4 if template == PAIR else 3)]
             if template == PAIR:
@@ -562,12 +564,12 @@ class LinearSystemReview:
                 required += [f'outcome:{outcome}/position:{i}' for outcome in ('one','none','infinite') for i in range(3)]
             require(all(counts[key] > 0 for key in required),
                     f'Missing system strata in {template}: {[key for key in required if not counts[key]]}')
-            require(len(self.systems[template]) >= min(64,expected_per_family//4), 'Insufficient distinct system givens')
+            require(len(self.systems[template]) >= min(64,expected//4), 'Insufficient distinct system givens')
             checks = self.choice_report(template)
             if template == COUNT:
                 for outcome in ('one','none','infinite'):
-                    deviation = abs(counts[f'outcome:{outcome}']/expected_per_family-1/3)
-                    require(not (deviation > .15 and 2*math.exp(-2*expected_per_family*deviation**2) < .001),
+                    deviation = abs(counts[f'outcome:{outcome}']/expected-1/3)
+                    require(not (deviation > .15 and 2*math.exp(-2*expected*deviation**2) < .001),
                             f'Unbalanced system solution-count outcomes: {outcome}')
             report[template] = {'coverage':dict(counts), 'distinctSystems':len(self.systems[template]),
                                 'namedChoiceOnlyChecks':checks}

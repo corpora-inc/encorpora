@@ -397,6 +397,18 @@ def solve_solution_set(public):
     options = choice_options(public, 4)
     strict = re.fullmatch(r'Which statement about the solutions of x ([<>]) (−?\d+(?:\.\d+)?) is true\?', prompt)
     if strict:
+        op, c = strict[1], number(strict[2])
+        figure = public.get('figure')
+        if figure is not None:
+            lines = [e for e in figure['scene']['elements'] if e['type'] == 'numberLine'] if figure.get('kind') == 'scene' else []
+            require(len(lines) == 1, 'One number line')
+            line = lines[0]
+            require([(Fraction(str(m['at'])), m.get('open')) for m in line.get('marks', [])] == [(c, True)],
+                    'An open circle at the boundary')
+            spans = [(s['from'], s['to']) for s in line.get('intervals', [])]
+            ray = (None, c) if op == '<' else (c, None)
+            require([tuple(None if v is None else Fraction(str(v)) for v in span) for span in spans] == [ray],
+                    'The ray points toward the solutions')
         good = [o['id'] for o in options if 'is not' in o['label'] and 'infinitely many' in o['label']]
         return only(good, 'Exactly one strict statement')
     m = re.fullmatch(r'Which statement about the solutions of x ([<>≤≥]) (\d+) is true\?', prompt)
@@ -495,7 +507,9 @@ def solve_equations(public):
     require(template in EQUATIONS, 'Unknown equation task')
     kind = public['response']['kind']
     require((kind == 'choice') == (template in EQUATIONS_CHOICE), 'Response kind')
-    if template not in ('balance-one-step', 'balance-two-step', 'inequality-from-number-line', 'inequality-number-line-choice'):
+    # The strict-form clause variant draws its ray; solve_solution_set checks it.
+    strict_ray = template == 'inequality-solution-set' and public['prompt'].startswith('Which statement')
+    if template not in ('balance-one-step', 'balance-two-step', 'inequality-from-number-line', 'inequality-number-line-choice') and not strict_ray:
         require(public.get('figure') is None, 'Unexpected figure')
     return {
         'one-step-equation': lambda p: solve_symbolic(p, False),

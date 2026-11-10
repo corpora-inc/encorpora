@@ -784,6 +784,32 @@ def circle_derivation(public):
     return compact(answer)
 
 
+LINE_POINTS = r"\((-?\d+), (-?\d+)\) and \((-?\d+), (-?\d+)\)"
+
+
+def lines_through_points(public):
+    """Two lines, each through two stated points: one crossing (where),
+    parallel, or the same line, from the slopes and intercepts alone."""
+    found = re.fullmatch(rf"Line 1 passes through {LINE_POINTS}\. Line 2 passes through {LINE_POINTS}\. Do the lines intersect\?",
+                         public["prompt"])
+    require(found is not None, "Two lines, each through two stated points")
+    p1, p2, q1, q2 = [(F(found[i]), F(found[i + 1])) for i in (1, 3, 5, 7)]
+    require(p1[0] != p2[0] and q1[0] != q2[0], "Neither line is vertical")
+    s1, s2 = (p2[1] - p1[1]) / (p2[0] - p1[0]), (q2[1] - q1[1]) / (q2[0] - q1[0])
+    i1, i2 = p1[1] - s1 * p1[0], q1[1] - s2 * q1[0]
+    options = public["response"]["options"]
+    if s1 != s2:
+        x = (i2 - i1) / (s1 - s2)
+        point = (x, s1 * x + i1)
+        def crossing(label):
+            at = re.fullmatch(r"Yes, at \((-?\d+(?:/\d+)?), (-?\d+(?:/\d+)?)\)", label)
+            return at is not None and (F(at[1]), F(at[2])) == point
+        return choose(options, crossing)
+    if i1 != i2:
+        return choose(options, lambda label: label.startswith("No; both have slope") and label.endswith("so they are parallel"))
+    return choose(options, lambda label: label.startswith("They are the same line"))
+
+
 SIGNED_SOLVERS = {
     "signed-quantity": zero_meaning, "opposite-on-line": opposite,
     "number-line-distance": distance,
@@ -801,6 +827,7 @@ SIGNED_SOLVERS = {
     "circle-equation": circle_derivation,
     "triangle-construct-plot": construct_triangle, "angle-recognize": recognize_angle,
     "fraction-to-decimal-long-division": decimal_division,
+    "linear-system-solution-count": lines_through_points,
 }
 
 
@@ -854,6 +881,7 @@ def handles_public(public):
         "angle-pair-measure": ("Ray $BD$ splits right angle $ABC$",),
         "adjacent-angle-equation": ("A folding fan opens through",),
         "circle-equation": ("A circle has center $C(",),
+        "linear-system-solution-count": ("Do the lines intersect?",),
     }
     if template in ("right-triangle", "right-triangle-missing-leg"):
         return not prompt.startswith("A right triangle")
