@@ -18,6 +18,8 @@ import {
   bandOpacity, checkGroups, CONTEXT, DIM, fits, guideLine, inRegion, mosaicAnchor, partBox, restBox, restriction, slabBox, tableAnchor, tableBox, tableCell,
   tableRegion, type Given, type MosaicSpec, type TableSpec,
 } from "./table";
+import { countRun, groupLayout, groupOf, IN_CELL, ThingsModel, type CountRun, type GroupLayout, type Seat } from "./things";
+import { thingArt, thingStroke } from "../src/math/scene/components/things-art";
 
 export type Frame = { w: number; h: number };
 const W = 1920;
@@ -116,12 +118,21 @@ const DEFAULT_DUR: Record<string, number> = {
   show: 0.4, hide: 0.35, draw: 0.8, highlight: 0.3, move: 1.2, turn: 2.2, flip: 2.2, slide: 1.1, view: 1.3,
   cut: 1.0, split: 0.9, zoom: 1.4, given: 0.7,
   partition: 1.5, shade: 1.3,
+  arrive: 0.5, count: 0.5, send: 0.9, leave: 0.45,
   problem: 0.45, write: 0.75, text: 0.45, term: 0.45, watch: 0.45, answer: 0.6, clear: 0.4, scene: 0.9,
 };
 
 /** `words`: later moments of the same action, by the words that name them (a stack column's trade and its written digit). */
-type Entry = { a: Action; t0: number; dur: number; beatEnd: number; words?: Record<string, number> };
+type Entry = { a: Action; t0: number; dur: number; beatEnd: number; words?: Record<string, number>; /** A count's numbers, as the voice says them. */ run?: CountRun };
 type P = [number, number];
+/** The app's figure roles, as the film's theme tokens: things are drawn in the same paints as in a problem. */
+const THING_PAINT: Record<string, string> = {
+  none: "none", ink: "var(--color-figure-ink)", axis: "var(--color-figure-axis)", grid: "var(--color-figure-grid)", muted: "var(--color-muted-text)",
+  paper: "var(--color-figure-paper)", empty: "var(--color-figure-empty)",
+  accent: "var(--color-figure-accent)", warm: "var(--color-figure-warm)", gold: "var(--color-figure-gold)",
+  "accent-fill": "var(--color-figure-accent-fill)", "warm-fill": "var(--color-figure-warm-fill)", "gold-fill": "var(--color-figure-gold-fill)",
+  "accent-strong": "var(--color-figure-accent-fill-strong)", "gold-strong": "var(--color-figure-gold-fill-strong)",
+};
 
 function wordTime(beat: BeatTime, word: string, nth = 1) {
   const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -145,6 +156,13 @@ function entries(shot: Shot, times: BeatTime[]) {
     let stagger = 0;
     for (const a of b.do ?? []) {
       const t = times[i]!;
+      if (a.do === "count") {
+        // each thing lights on its own number: the count's words are its moments
+        const run = countRun(t.words, a.from ?? 1, a.at, a.nth);
+        const counted = a.to === undefined ? run.times : run.times.slice(0, Math.max(1, a.to - (a.from ?? 1) + 1));
+        out.push({ a, t0: run.times[0]!, dur: a.dur ?? DEFAULT_DUR.count!, beatEnd: t.end, run, words: Object.fromEntries(counted.map((x, k) => [`n${k}`, x])) });
+        continue;
+      }
       const t0 = a.at ? wordTime(t, a.at, a.nth) : t.start + stagger;
       if (!a.at) stagger += 0.1;
       const entry: Entry = { a, t0, dur: a.dur ?? DEFAULT_DUR[a.do] ?? 0.5, beatEnd: t.end };
@@ -186,6 +204,9 @@ function expandCounters(geo: Geo): Geo {
   return { ...geo, points, parts };
 }
 type Blocks = Extract<Part, { blocks: unknown }>;
+type ThingsPart = Extract<Part, { things: unknown }>;
+/** One thing's elements: its layer, the art that a light grows, and its painted layers with their stroke weights. */
+type ThingView = { g: SVGElement; art: SVGElement; tick: SVGElement; layers: { el: SVGElement; w: number }[]; px: number };
 type Fade = { kind: string; t0: number; dur: number; end?: number };
 /** `b.n.tenths.3` is also part of `b.n.tenths`, `b.n` and `b`: a fade on any of them reaches it. */
 const prefixes = (id: string) => id.split(".").map((_, i, a) => a.slice(0, i + 1).join("."));
@@ -370,7 +391,7 @@ function coversNeighbour(el: Element, em: number) {
   const root = el.closest(".film-fit");
   if (!root) return false;
   const see = (node: Element, opac: number): boolean => {
-    if (node === el || node.classList.contains("film-em")) return false;
+    if (node === el || node.classList.contains("film-em") || node.classList.contains("film-things-extent")) return false;
     const cs = getComputedStyle(node);
     if (cs.display === "none" || cs.visibility === "hidden") return false;
     const o = opac * (Number.parseFloat(cs.opacity) || 0);
@@ -415,6 +436,11 @@ class GeoStage {
   barShades = new Map<string, BarShade[]>();
   /** Each place-value chart's model, by the part's id. */
   blocks = new Map<string, BlocksModel>();
+  /** Things to count: the plan, each group's places, and each thing's elements (in one layer above the other parts). */
+  thingsModel?: ThingsModel;
+  thingGroups = new Map<string, { p: ThingsPart; layout?: GroupLayout; extent?: SVGElement; count?: HTMLElement; countWide?: number; countTall?: number }>();
+  thingViews = new Map<string, ThingView>();
+  thingLayer?: SVGElement;
   /** Each table's or mosaic's "given" restrictions, by the part's id. */
   givens = new Map<string, Given[]>();
   /** Labels that did not fit their table cells, found while drawing. */
@@ -483,6 +509,19 @@ class GeoStage {
       if (m.digits.overflow) throw new Error(`blocks ${p.id}: the pieces add up to more than the chart's places can show.`);
       this.blocks.set(p.id, m);
     }
+    const thingParts = geo.parts.filter((p): p is ThingsPart => "things" in p);
+    if (thingParts.length) {
+      const cells = new Map(this.grids().map((g) => [g.id, g.grid[0] * g.grid[1]]));
+      const specs = thingParts.map((p) => {
+        const g = groupOf(p as unknown as Record<string, unknown>, cells);
+        if (typeof g === "string") throw new Error(g);
+        this.thingGroups.set(p.id, { p, layout: p.in ? undefined : groupLayout({ id: p.id, arrange: p.arrange, slots: g.slots, perRow: p.perRow, seed: p.seed, size: p.size }) });
+        return g;
+      });
+      this.thingsModel = new ThingsModel(specs);
+      for (const n of [...this.thingsModel.groups.keys(), ...this.thingsModel.things.keys()])
+        if (geo.points[n] || geo.parts.some((q) => q.id === n && !("things" in q))) throw new Error(`"${n}" names both a thing and a point or another part. Rename one.`);
+    }
     this.view0 = geo.view ?? [0, 0, 1, 1];
     for (const e of entriesList) this.addEntry(e);
     // every trade is known now: columns take the width of the widest pile they ever hold,
@@ -505,6 +544,8 @@ class GeoStage {
       prevTo = v.to;
     }
     for (const p of geo.parts) this.build(p);
+    // things paint above every other part: a frame, a plate or a line never covers one
+    if (this.thingLayer) this.svg.appendChild(this.thingLayer);
     this.size = (Math.abs(this.view0[2]! - this.view0[0]!)) / box.w;
   }
   fit() {
@@ -516,6 +557,12 @@ class GeoStage {
     for (const m of this.blocks.values()) {
       const v = chartView(m.layouts[0]!);
       pts.push([v[0], v[1]], [v[2], v[3]]);
+    }
+    for (const { p, layout } of this.thingGroups.values()) {
+      if (!layout) continue;
+      const a = this.base(p.at!);
+      // a live count sits under the group: about one thing's height
+      pts.push(a, [a[0] + layout.w, a[1] - layout.h - (p.count ? layout.thing : 0)]);
     }
     for (const p of this.geo.parts) {
       if ("bar" in p) {
@@ -613,21 +660,54 @@ class GeoStage {
     const c = (n - 1) % g.grid[0], r = Math.floor((n - 1) / g.grid[0]);
     return [a[0] + (c + 0.5) * cw, a[1] - (r + 0.5) * ch];
   }
-  /** How many dots sit in a grid's cells: a dot counts once it has landed near a cell's middle. */
+  /** Where a seat is at time t, and how wide a thing sitting there is, in the figure's units. */
+  seatAt(seat: Seat, t: number): { c: P; size: number } {
+    const g = this.thingGroups.get(seat.group)!;
+    if (g.p.in) {
+      const [cw, ch] = cellSize(this.grid(g.p.in));
+      return { c: this.cellAt(g.p.in, (g.p.from ?? 1) + seat.slot, t), size: IN_CELL * Math.min(cw, ch) };
+    }
+    const a = this.at(g.p.at!, t), q = g.layout!.slots[seat.slot]!;
+    return { c: [a[0] + q[0], a[1] - q[1]], size: g.layout!.thing };
+  }
+  /** A thing at time t: its state, its centre and its width. On its seat, or on the straight line between two seats. */
+  thingAt(name: string, t: number) {
+    const st = this.thingsModel!.stateAt(name, t);
+    const a = this.seatAt(st.from, t), b = st.to === st.from ? a : this.seatAt(st.to, t);
+    const c: P = [a.c[0] + (b.c[0] - a.c[0]) * st.u, a.c[1] + (b.c[1] - a.c[1]) * st.u];
+    return { st, c, size: a.size + (b.size - a.size) * st.u };
+  }
+  /** How many things sit in a group, or how many dots and things sit in a grid's cells: one counts once it has landed. */
   countIn(id: string, t: number) {
+    if (this.thingsModel?.groups.has(id)) return this.thingsModel.countAt(id, t);
     const g = this.grid(id), [cw, ch] = cellSize(g), a = this.at(g.at, t);
+    // things in this grid's cells: a cell counts once for whatever is in it, so a cookie
+    // traded for a counter in the same cell (one fades out as the other fades in) stays one
+    const held = this.thingsModel?.seatedAt(t).flatMap((s) => {
+      const tg = this.thingGroups.get(s.seat.group)!;
+      return tg.p.in === id ? [{ cell: (tg.p.from ?? 1) - 1 + s.seat.slot, o: s.o }] : [];
+    });
+    const cells = new Map<number, number>();
+    for (const h of held ?? []) cells.set(h.cell, (cells.get(h.cell) ?? 0) + h.o);
     let n = 0;
     for (const e of this.parts) {
-      if (!("dot" in e.p) || this.opacity(e.p, t).o < 0.5) continue;
+      if (!("dot" in e.p)) continue;
+      const o = this.opacity(e.p, t).o;
+      if (!held?.length && o < 0.5) continue;
       const q = this.at(e.p.dot, t);
       const x = (q[0] - a[0]) / cw - 0.5, y = (a[1] - q[1]) / ch - 0.5;
       const c = Math.round(x), r = Math.round(y);
-      if (c >= 0 && r >= 0 && c < g.grid[0] && r < g.grid[1] && Math.hypot(x - c, y - r) < 0.2) n++;
+      if (!(c >= 0 && r >= 0 && c < g.grid[0] && r < g.grid[1] && Math.hypot(x - c, y - r) < 0.2)) continue;
+      if (held?.length) cells.set(r * g.grid[0] + c, (cells.get(r * g.grid[0] + c) ?? 0) + o);
+      else n++;
     }
+    for (const o of cells.values()) if (o >= 0.5) n++;
     return n;
   }
   placed(name: string, t: number): P {
     const d = this.geo.points[name];
+    // a label can ride a thing: its name is a place too
+    if (!d && this.thingsModel?.isThing(name)) return this.thingAt(name, t).c;
     if (!d) throw new Error(`No point named ${name}`);
     if (Array.isArray(d)) return d as P;
     if ("cell" in d) return this.cellAt(d.cell[0], d.cell[1], t);
@@ -670,7 +750,11 @@ class GeoStage {
   addEntry(e: Entry) {
     const a = e.a as any;
     const list = (x: string | string[]) => (Array.isArray(x) ? x : [x]);
-    if (a.do === "partition" || a.do === "shade") {
+    if (a.do === "arrive" || a.do === "count" || a.do === "send" || a.do === "leave") {
+      if (!this.thingsModel) throw new Error(`"${a.do}" acts on things, but this figure has no things part.`);
+      // the plan owns the timing: one thing after another, or each on its counted word
+      e.dur = this.thingsModel.apply(a, { t0: e.t0, beatEnd: e.beatEnd, run: e.run });
+    } else if (a.do === "partition" || a.do === "shade") {
       const p = this.geo.parts.find(x => x.id === a.target);
       if (!p || !("bar" in p)) throw new Error(`${a.do}: ${a.target} is not a bar.`);
       if (a.do === "partition") {
@@ -723,6 +807,7 @@ class GeoStage {
     } else if (a.do === "move") {
       for (const [name, to] of Object.entries(a.points) as [string, Target][]) {
         const d = this.geo.points[name];
+        if (!d && this.thingsModel?.has(name)) throw new Error(`move: ${name} is a thing. Send it to a group: { "do": "send", "target": "${name}", "to": "<group>" }.`);
         if (!d) throw new Error(`move: no point named ${name}`);
         if (!Array.isArray(d) && !("cell" in d)) throw new Error(`Point ${name} is derived; move the points it is built from`);
         if (to === name) throw new Error(`move: ${name} cannot move to itself`);
@@ -733,6 +818,7 @@ class GeoStage {
     } else if (a.do === "view") {
       this.views.push({ t0: e.t0, dur: e.dur, from: this.view0, to: a.to });
     } else if (a.do === "turn" || a.do === "flip" || a.do === "slide") {
+      for (const n of list(a.target)) if (this.thingsModel?.has(n)) throw new Error(`${a.do}: ${n} is a thing. Things move with "send" (to another group), "arrive" and "leave".`);
       this.xforms.push({
         targets: new Set(list(a.target)),
         kind: a.do,
@@ -744,6 +830,11 @@ class GeoStage {
       });
     } else if (a.do === "show" || a.do === "hide" || a.do === "draw" || a.do === "highlight") {
       for (const n of list(a.target)) {
+        // a group of things, or one thing: the plan fades and lights them (a light is paint only)
+        if (this.thingsModel?.has(n)) {
+          this.thingsModel.apply({ do: a.do === "draw" ? "show" : a.do, target: n, dur: a.dur }, { t0: e.t0, beatEnd: e.beatEnd });
+          continue;
+        }
         // a table's or a mosaic's parts are named by pattern: a typo would fade nothing, silently
         const [id, ...rest] = n.split(".");
         const p = this.geo.parts.find((x) => x.id === id);
@@ -827,7 +918,7 @@ class GeoStage {
     const lists = [this.fades.get(part.id) ?? [], part.group ? (this.fades.get(part.group) ?? []) : []].flat();
     // a chart's frame (names, point) is there from the start; its pieces have their own fades.
     // A table or a mosaic works out its own cells' and slabs' visibility.
-    return this.fadeState(lists, !!part.start || "blocks" in part || "table" in part || "mosaic" in part || "bar" in part, t);
+    return this.fadeState(lists, !!part.start || "blocks" in part || "table" in part || "mosaic" in part || "bar" in part || "things" in part, t);
   }
   /** The state of something named by a path: fades on it or on anything it is part of. */
   chainState(ids: string[], start: boolean, t: number) {
@@ -852,6 +943,42 @@ class GeoStage {
   }
   build(p: Part) {
     const entry: GeoStage["parts"][number] = { p, el: svg("g"), a0: 0 };
+    if ("things" in p) {
+      const g = svg("g", "film-things"); this.svg.appendChild(g); entry.el = g;
+      const group = this.thingGroups.get(p.id)!;
+      // the group's whole footprint, including a thing that has not arrived yet, is ink from the first frame
+      group.extent = svg("rect", "film-things-extent"); g.appendChild(group.extent);
+      if (p.count) {
+        group.count = div("film-label size-xl film-things-count", this.labels);
+        entry.extraHtml = [group.count];
+      }
+      const layer = (this.thingLayer ??= svg("g", "film-things-top"));
+      for (const th of this.thingsModel!.things.values()) {
+        if (th.home.group !== p.id) continue;
+        const tg = svg("g", "film-thing");
+        tg.dataset.thing = th.kind;
+        tg.dataset.name = th.name;
+        // the art grows about its own centre when the thing is lit; the tick is spare ink
+        const art = svg("g", "film-thing-art");
+        const layers = thingArt[th.kind].map((l) => {
+          const el = svg("path");
+          el.setAttribute("d", l.d);
+          el.setAttribute("stroke-linejoin", "round"); el.setAttribute("stroke-linecap", "round");
+          el.style.fill = THING_PAINT[l.fill ?? "none"]!;
+          el.style.stroke = l.stroke ? THING_PAINT[l.stroke]! : "none";
+          art.appendChild(el);
+          return { el, w: l.w ?? 1 };
+        });
+        tg.appendChild(art);
+        // counted: a small muted tick at the thing's lower right, inside its own place
+        const tick = svg("path", "film-thing-tick film-em");
+        tick.setAttribute("d", "M77 94L85 102L98 86");
+        tg.appendChild(tick);
+        layer.appendChild(tg);
+        this.thingViews.set(th.name, { g: tg, art, tick, layers, px: 0 });
+      }
+      this.parts.push(entry); return;
+    }
     if ("bar" in p) {
       const g = svg("g", "film-bar"); this.svg.appendChild(g); entry.el = g;
       const path = (cls: string) => { const el = svg("path", cls); g.appendChild(el); return el; };
@@ -1114,6 +1241,8 @@ class GeoStage {
     for (const cuts of this.barCuts.values()) if (cuts.some((c) => hit(c.t0, c.dur))) return true;
     for (const shades of this.barShades.values()) if (shades.some((c) => hit(c.t0, c.dur))) return true;
     for (const list of this.fades.values()) if (list.some((f) => f.kind === "draw" && hit(f.t0, f.dur))) return true;
+    // arriving, leaving and flying are motion. A light is a highlight, not motion.
+    if (this.thingsModel?.movingAt(t)) return true;
     return false;
   }
   capturedNudges(host: HTMLElement) {
@@ -1149,6 +1278,7 @@ class GeoStage {
       if (e.table) { this.drawTable(e.table, e.el, t, map, s); continue; }
       if (e.mosaic) { this.drawMosaic(e.mosaic, e.el, t, map, s); continue; }
       if (e.bar) { this.drawBar(e.bar, e.el, t, map, s); continue; }
+      if ("things" in p) continue;
       const { o, drawn, em } = this.opacity(p, t);
       const show = o > 0.001;
       const set = (el: Element | undefined, v: string) => { if (el) (el as SVGElement).style.display = v; };
@@ -1465,13 +1595,82 @@ class GeoStage {
       if (em > 0.02 && !this.emphList.some((x) => x.el === e.el)) this.markEm(e.el, em);
       e.extra?.forEach((x) => { if (em > 0.02 && !x.classList.contains("film-em") && !this.emphList.some((q) => q.el === x)) this.markEm(x, em); });
     }
+    if (this.thingsModel) this.drawThings(t, map, s);
     this.finishEmphasis();
     const host = this.labels.parentElement;
     if (host) {
       limitGrow(host);
+      this.syncThingStrokes();
       if (this.nudgeReport) this.nudgeReport(this.capturedNudges(host));
       else this.applyNudges();
       host.dataset.moving = this.figureMoving(t) ? "1" : "0";
+    }
+  }
+  /**
+   * Things at time t. Each sits on its seat or flies between two; arriving and
+   * leaving it is a little smaller and higher, inside its own place. A light
+   * grows the thing about its own centre and boldens its stroke. The group's
+   * extent already holds every place a thing will use, so a light and an
+   * arrival do not change the shot's frame.
+   */
+  drawThings(t: number, map: (p: P) => P, s: number) {
+    for (const { p, layout, extent, count } of this.thingGroups.values()) {
+      if (!extent) continue;
+      // the group's box in pixels: its own places, or the grid it sits in
+      let tl: P, w: number, h: number, thingPx: number;
+      if (layout) { tl = map(this.at(p.at!, t)); w = layout.w * s; h = layout.h * s; thingPx = layout.thing * s; }
+      else { const g = this.grid(p.in!), [cw, ch] = cellSize(g); tl = map(this.at(g.at, t)); w = g.grid[0] * cw * s; h = g.grid[1] * ch * s; thingPx = IN_CELL * Math.min(cw, ch) * s; }
+      let room = 0, extra = 0;
+      if (count) {
+        // how many it holds now; in a grid, whatever is in the cells (a cookie traded for a counter is still one)
+        const n = this.countIn(p.in ?? p.id, t);
+        const text = String(n);
+        if (count.dataset.n !== text) { count.dataset.n = text; count.innerHTML = tex(text); }
+        const gap = 14;
+        // the widest and tallest numeral this count has shown, so a new digit never refits the shot
+        const group = this.thingGroups.get(p.id)!;
+        group.countWide = Math.max(count.offsetWidth, group.countWide ?? 0);
+        group.countTall = Math.max(count.offsetHeight, group.countTall ?? 0);
+        // (two pixels more than the numeral: its box must sit strictly inside the reserved room)
+        room = gap + group.countTall + 2;
+        extra = Math.max(0, group.countWide - w) / 2;
+        count.style.transform = `translate(${(tl[0] + w / 2 - count.offsetWidth / 2).toFixed(2)}px, ${(tl[1] + h + gap).toFixed(2)}px)`;
+        count.style.opacity = n > 0 ? "1" : "0";
+      }
+      // room for the arrival lift and the highlight's growth, so neither re-fits the shot
+      const pad = thingPx * 0.28 + extra;
+      extent.setAttribute("x", (tl[0] - pad).toFixed(2)); extent.setAttribute("y", (tl[1] - pad).toFixed(2));
+      extent.setAttribute("width", (w + pad * 2).toFixed(2)); extent.setAttribute("height", (h + room + pad * 2).toFixed(2));
+    }
+    const flying: { g: SVGElement; t0: number }[] = [];
+    for (const [name, v] of this.thingViews) {
+      const { st, c, size } = this.thingAt(name, t);
+      if (st.o < 0.002) { v.g.style.display = "none"; continue; }
+      v.g.style.display = "";
+      const q = map(c), px = size * s;
+      const k = (px / 100) * (1 - 0.3 * st.pose);
+      v.g.setAttribute("transform", `translate(${q[0].toFixed(2)} ${(q[1] - 0.2 * px * st.pose).toFixed(2)}) scale(${k.toFixed(4)}) translate(-50 -50)`);
+      v.g.style.opacity = String(st.o);
+      v.px = px;
+      v.tick.style.strokeWidth = ((Math.max(3, px * 0.036) * 100) / px).toFixed(3);
+      // one thing lit at a time: it grows about its own centre. A counted thing keeps a muted tick.
+      v.tick.style.opacity = String(st.mark);
+      if (st.lit > 0.02) this.markEm(v.art, st.lit);
+      if (st.flying) flying.push({ g: v.g, t0: st.flightStart });
+    }
+    // a thing in flight passes over the others; the one that set off last is on top
+    if (flying.length && this.thingLayer) {
+      flying.sort((a, b) => a.t0 - b.t0);
+      const kids = this.thingLayer.children, n = kids.length;
+      if (flying.some((f, i) => kids[n - flying.length + i] !== f.g)) for (const f of flying) this.thingLayer.appendChild(f.g);
+    }
+  }
+  /** Bolden a lit thing's outline to match the emphasis that survived the neighbour check. */
+  syncThingStrokes() {
+    for (const v of this.thingViews.values()) {
+      if (v.px <= 0) continue;
+      const bold = 1 + 0.75 * Number(v.art.dataset.em || 0);
+      for (const l of v.layers) l.el.style.strokeWidth = ((thingStroke(v.px, l.w) * 100) / v.px * bold).toFixed(3);
     }
   }
   /** A rectangle in pixels from a box in units. */
@@ -2591,6 +2790,8 @@ export class Film {
         if (e.a.do === "highlight") raw.push(e.t0 + EMPH_IN + 0.02, e.beatEnd);
         if (motion.has(e.a.do)) raw.push(e.t0 + e.dur * 0.33, e.t0 + e.dur * 0.66);
       }
+      // every thing this shot will show or move, including while it is in the air and while it is lit
+      if (s.geo?.thingsModel) for (const t of s.geo.thingsModel.sampleTimes()) raw.push(t);
       const times = [...new Set(raw.map((t) => Math.round(Math.min(Math.max(start, end), Math.max(start, t)) * 20) / 20))].sort((a, b) => a - b);
       const drawAt = (t: number) => { s.geo?.draw(t); s.extern?.(t); };
       root.style.transform = "none";
@@ -2763,6 +2964,8 @@ export class Film {
         out.push([e.t0 - 0.02, e.t0 + e.dur + 0.02]);
         if (e.a.do === "highlight") out.push([e.beatEnd + 0.02, e.beatEnd + 0.34]);
       }
+      // each thing's arrival, flight, leaving and light
+      if (s.geo?.thingsModel) out.push(...s.geo.thingsModel.ranges());
     }
     out.push([this.duration - 0.05, this.duration + 0.1]);
     return out;
