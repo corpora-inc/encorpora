@@ -19,6 +19,12 @@ import type {
 import "./family-center.css";
 import { nativeRuntime } from "./native-runtime";
 import { Loading } from "./ui/Loading";
+import { Sheet } from "./ui/Sheet";
+import { Button } from "./ui/Button";
+import { useLearnerStore } from "./learner-store";
+import { refreshMe } from "./lib/query";
+import { rememberPlace } from "./features/onboarding/place-memory";
+import { deviceTimeZone } from "./features/onboarding/starter-api";
 interface Props {
   token: string;
   onSectionChange?: (section: FamilySection) => void;
@@ -89,6 +95,8 @@ export function FamilyCenter({
     route.navigate(open ? "/family/learners/new" : "/family/learners");
   const [newName, setNewName] = useState("");
   const [newBirthYear, setNewBirthYear] = useState("");
+  /** An adult's birth year in Add learner: asked once whether it is them. */
+  const [askSelf, setAskSelf] = useState<string | null>(null);
   const accessTrigger = useRef<HTMLElement | null>(null);
   const purchaseChooser = route.parts[2] === "purchases";
   const setPurchaseChooser = (open: boolean) => {
@@ -528,18 +536,50 @@ export function FamilyCenter({
                     : "Learning access"}
                 </h2>
                 {!["active", "development"].includes(family.consent.status) &&
-                  section === "learners" && (
+                  section === "learners" &&
+                  (nativeRuntime ? (
                     <div className="family-first-step">
                       <h3>Finish setting up</h3>
                       <p>
-                        Choose a plan and review the parent notice. Then add
-                        your learner’s name and starting level.
+                        Learning consent is completed in the AMP web
+                        application.
                       </p>
                       <button onClick={onContinueSetup ?? onConsentEnrollment}>
                         Continue setup
                       </button>
                     </div>
-                  )}
+                  ) : !family.learners.some(
+                      (entry) => !entry.deletedAt && !entry.adult,
+                    ) ? (
+                    <div className="family-first-step">
+                      <h3>Add a child</h3>
+                      <p>
+                        Each child practices with a picture, like Fox or Moon,
+                        until you add their name.
+                      </p>
+                      <button onClick={() => route.navigate("/start/parent")}>
+                        Add a child
+                      </button>
+                    </div>
+                  ) : selectedLearner &&
+                    !selectedLearner.deletedAt &&
+                    !selectedLearner.adult &&
+                    !selectedLearner.hasAccess ? (
+                    <div className="family-first-step">
+                      <h3>{selectedLearner.name}</h3>
+                      <p>
+                        Continue with AMP to keep practicing after the free
+                        problems, and to add {selectedLearner.name}’s name.
+                      </p>
+                      <button
+                        onClick={() =>
+                          route.navigate(`/continue/${selectedLearner.id}`)
+                        }
+                      >
+                        Continue with AMP
+                      </button>
+                    </div>
+                  ) : null)}
                 {!family.learners.length &&
                   ["active", "development"].includes(family.consent.status) && (
                     <p>No learner profiles are stored in this account.</p>
@@ -636,27 +676,27 @@ export function FamilyCenter({
                       ) : (
                         <div className="family-actions">
                           {/* A quiet edit beside a destructive action: the
-                              card's one primary action is the workbook. */}
-                          <button
-                            className="secondary"
-                            data-rename-id={learner.id}
-                            disabled={busy}
-                            onClick={() => {
-                              if (
-                                learner.namePending &&
-                                !["active", "development"].includes(
-                                  family.consent.status,
-                                )
-                              ) {
-                                route.navigate("/start/plan");
-                                return;
-                              }
-                              setRename(learner.id);
-                              setName(learner.namePending ? "" : learner.name);
-                            }}
-                          >
-                            Edit name
-                          </button>
+                              card's one primary action is the workbook. A
+                              picture name becomes a name once there is the
+                              consent a name needs (a purchase is one). */}
+                          {(!learner.namePending ||
+                            ["active", "development"].includes(
+                              family.consent.status,
+                            )) && (
+                            <button
+                              className="secondary"
+                              data-rename-id={learner.id}
+                              disabled={busy}
+                              onClick={() => {
+                                setRename(learner.id);
+                                setName(
+                                  learner.namePending ? "" : learner.name,
+                                );
+                              }}
+                            >
+                              {learner.namePending ? "Add name" : "Edit name"}
+                            </button>
+                          )}
                           <button
                             className="family-danger-link"
                             disabled={busy}
@@ -726,12 +766,19 @@ export function FamilyCenter({
                     )}
                     {onChoosePayment &&
                       selectedLearner &&
+                      !selectedLearner.deletedAt &&
                       access.kind === "none" && (
                         <button
                           className="go-button family-get-access"
-                          onClick={onChoosePayment}
+                          onClick={() =>
+                            nativeRuntime
+                              ? onChoosePayment()
+                              : route.navigate(
+                                  `/continue/${selectedLearner.id}`,
+                                )
+                          }
                         >
-                          Choose an AMP plan
+                          Continue with AMP
                         </button>
                       )}
                     <button
@@ -760,11 +807,21 @@ export function FamilyCenter({
                   ["active", "development"].includes(family.consent.status) &&
                   adding && (
                     <form
+                      id="family-add-learner"
                       className="family-add-learner"
                       onSubmit={(event) => {
                         event.preventDefault();
                         const name = newName.trim();
                         if (!name) return;
+                        // An adult may be adding themselves: their own
+                        // practice is their own learner, not a family one.
+                        if (
+                          askSelf === null &&
+                          newBirthYear &&
+                          Number(newBirthYear) <= new Date().getFullYear() - 18
+                        )
+                          return setAskSelf(name);
+                        setAskSelf(null);
                         void action(async () => {
                           await api("/learners", {
                             name,
@@ -800,6 +857,52 @@ export function FamilyCenter({
                       <button disabled={busy || !newName.trim()}>
                         Add learner
                       </button>
+                      <Sheet
+                        open={askSelf !== null}
+                        onOpenChange={(open) => {
+                          if (!open) setAskSelf(null);
+                        }}
+                        title="Is this you?"
+                      >
+                        <p className="family-sheet-text">
+                          Your own practice is yours, at your own level, beside
+                          the family’s learners.
+                        </p>
+                        <div className="family-sheet-actions">
+                          <Button
+                            variant="primary"
+                            type="button"
+                            disabled={busy}
+                            onClick={() =>
+                              void action(async () => {
+                                const { learnerId } = await api<{
+                                  learnerId: string;
+                                }>("/me/practice", {
+                                  timezone: deviceTimeZone(),
+                                });
+                                useLearnerStore.getState().select(learnerId);
+                                rememberPlace(identity, "me");
+                                await refreshMe({ accountId: identity, token });
+                                setAskSelf(null);
+                                setAdding(false);
+                                setNewName("");
+                                setNewBirthYear("");
+                                route.navigate("/me");
+                              })
+                            }
+                          >
+                            Yes, it’s me
+                          </Button>
+                          <Button
+                            variant="secondary"
+                            type="submit"
+                            form="family-add-learner"
+                            disabled={busy}
+                          >
+                            No, add {askSelf ?? "them"}
+                          </Button>
+                        </div>
+                      </Sheet>
                     </form>
                   )}
               </section>

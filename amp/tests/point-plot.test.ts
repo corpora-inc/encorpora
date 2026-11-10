@@ -595,6 +595,7 @@ test("clients without point-plot-v1 are never served these families, online or o
       "figure-choice-v1",
       "structured-work-v1",
       "multi-part-cards-v1",
+      "trend-line-fit-v1",
     ],
   );
   for (const client of [
@@ -1026,6 +1027,7 @@ test("curve families keep their function private and state the required feature 
 
 test("a verbal quadratic description grades its three key points, and version 1 stays an equation", () => {
   let described = 0;
+  let profits = 0;
   for (let i = 0; i < 500; i++) {
     const old = generateProblem("graph-quadratic-points", `desc:${i}`, 1);
     assert.match(old.public.prompt, /^Graph \$/);
@@ -1039,12 +1041,34 @@ test("a verbal quadratic description grades its three key points, and version 1 
     assert.equal(grading.required?.length, 3);
     assert.equal(gradeAnswer(p, p.answer), true);
     const points = plotPoints(p.answer);
+    if (p.public.prompt.startsWith("A shop's profit")) {
+      profits++;
+      const givens = p.public.prompt.match(
+        /breaks even at (\d+) items and at (\d+) items\. The greatest profit is (\d+) dollars?,/,
+      );
+      assert.ok(
+        givens,
+        "the prompt must give the peak's height as well as the break-even counts",
+      );
+      const [left, right, height] = givens.slice(1).map(Number) as [
+        number,
+        number,
+        number,
+      ];
+      assert.deepEqual(points, [
+        [left, 0],
+        [(left + right) / 2, height],
+        [right, 0],
+      ]);
+      assert.ok(
+        p.hint.includes(String(left)) && p.hint.includes(String(right)),
+        "the hint names this shop's break-even counts",
+      );
+    }
     const swapped = points.map(([x, y]) => [y, x] as [number, number]);
     if (JSON.stringify(swapped) !== JSON.stringify(points))
-      assert.equal(
-        gradeAnswer(p, JSON.stringify(swapped)),
-        false,
-      );
+      assert.equal(gradeAnswer(p, JSON.stringify(swapped)), false);
   }
   assert.ok(described >= 60, `${described} descriptions`);
+  assert.ok(profits >= 20, `${profits} profit descriptions`);
 });

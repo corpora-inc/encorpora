@@ -56,6 +56,10 @@ const messages: Record<string, string> = {
   sign_in_required: "Your session ended. Sign in again to continue.",
   "Sign in to continue": "Your session ended. Sign in again to continue.",
   invalid_family_request: "Check the learner details and try again.",
+  consent_withdrawn:
+    "Learning is paused for this account. Open Family → Privacy to resume it.",
+  starter_unavailable: "Sign in with your own account to start a place.",
+  family_class_required: "Your family’s class couldn’t be made. Try again.",
   family_service_unavailable: "Family details could not be loaded. Try again.",
   notice_changed:
     "The parent notice was just updated. Review it and confirm again to continue.",

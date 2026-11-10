@@ -5,21 +5,15 @@ import {
   clientCanDraw,
   figureCapabilities,
   generatedProblemSchema,
+  responseCapabilities,
 } from "../src/math/contracts.js";
 import { sceneCapabilitiesIn } from "../src/math/scene/index.js";
 import { problemLesson } from "../src/content/problem-lessons.js";
 import { sweepAxes } from "../src/math/number-domain-axes.js";
 
-/** A client released before scenes-v2: every other capability. */
+/** A client with every response format but without scenes-v2. */
 const older = {
-  responseCapabilities: [
-    "single-choice-v1",
-    "multi-select-v1",
-    "point-plot-v1",
-    "multi-part-choice-v1",
-    "figure-choice-v1",
-    "structured-work-v1",
-  ],
+  responseCapabilities,
   figureCapabilities: figureCapabilities.filter((c) => c !== "scenes-v2"),
 };
 

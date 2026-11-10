@@ -282,7 +282,11 @@ test("invalid rows are refused by problem number and nothing is saved", async ()
     });
     assert.equal(response.statusCode, 400);
   }
-  rows[0]!.spec.sections[0]!.items[0]!.templateVersion -= 1;
+  const item = rows[0]!.spec.sections[0]!.items[0]!;
+  const meta = templates.find((t) => t.id === item.templateId)!;
+  // A prior version can be a supported reprint. Refuse a version below
+  // the template's explicit compatibility floor.
+  item.templateVersion = (meta.reprintsFrom ?? meta.version) - 1;
   const stale = await app.inject({ url: `${url}/${made.id}/results`, headers });
   assert.equal(stale.statusCode, 410);
 });

@@ -293,7 +293,7 @@ test(
           assert.equal(state.account.emailVerified, true);
           // No step is skipped: no consent yet, so practice is not reachable.
           assert.equal(state.consent.status, "none");
-          assert.equal(state.next, "try");
+          assert.equal(state.next, "start");
           assert.deepEqual(state.learners, []);
           // A password parent who has confirmed their email is in the same place.
           const signup = await post("/sign-up/email", {
@@ -302,9 +302,9 @@ test(
             name: "Password Parent",
           });
           assert.equal(signup.statusCode, 200);
-          // Unconfirmed: the trial is open; consent and purchase wait.
+          // Unconfirmed: the starter is open; consent and purchase wait.
           const unconfirmed = await me(cookies(signup));
-          assert.equal(unconfirmed.next, "try");
+          assert.equal(unconfirmed.next, "start");
           assert.ok(unconfirmed.signedIn);
           assert.equal(unconfirmed.account.confirmationRequired, true);
           await repo.pool.query(

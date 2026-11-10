@@ -9,7 +9,8 @@
  *   2. Her parent opens the mailed link signed out, creates an account,
  *      continues, reads about the class and, once consent is recorded,
  *      approves. Ana is their learner and needs access.
- *   3. The teacher sees her approved, with "Add access"; once access is in,
+ *   3. The teacher sees her approved; once her free problems are used, "Talk
+ *      to us"; once access is in,
  *      the parent's page shows it.
  *   4. Ana signs in by the class code and three pictures and practices, and
  *      the teacher finds her on the class map.
@@ -330,16 +331,20 @@ async function journey(
   check(`${label} Ana is her parent's learner, in the class`, !!learner);
   if (!learner) return;
 
-  // 3. The teacher sees her approved; access comes from either family.
+  // 3. The teacher sees her approved; once her free problems are used,
+  // access comes from either family.
+  await db.query("UPDATE amp_learners SET free_online_used=100 WHERE id=$1", [
+    learner,
+  ]);
   last.page = teacher;
   await teacher.reload();
   await heading(teacher, /^Good (morning|afternoon|evening)/);
-  await anaRow(teacher).getByText("Approved by their parent").waitFor();
+  await anaRow(teacher).getByText("Used the 100 free problems").waitFor();
   await measured(teacher, `${label} Ana approved`);
   await shot(teacher, "teacher-needs-access", width, theme);
-  await anaRow(teacher).getByRole("button", { name: "Add access" }).click();
-  await teacher.getByRole("heading", { name: "Add access for Ana" }).waitFor();
-  await measured(teacher, `${label} add access`);
+  await anaRow(teacher).getByRole("button", { name: "Talk to us" }).click();
+  await teacher.getByRole("heading", { name: "Talk to us" }).waitFor();
+  await measured(teacher, `${label} talk to us`);
   await shot(teacher, "teacher-add-access", width, theme);
   await teacher.keyboard.press("Escape");
   await db.query(
