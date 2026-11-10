@@ -153,6 +153,8 @@ The check runs as the image’s unprivileged user. It validates the complete cat
 
 Workbook PDFs are rendered on request, so they need a browser, and the API image has none. The `render` image (`docker build --target render`, `src/render-service/`) is a small internal service: HTML in, PDF out, through headless Chromium. The API checks the parent's access, builds the document and posts it with a shared secret. Rendered PDFs are not stored anywhere: each download renders afresh (about 0.4–1 s) and streams to the parent. Only the workbook spec, which is practice data, is kept.
 
+The same service prints every other document that names a learner, in the workbooks' type and colors (`src/reports/`): the progress report (`GET /api/v1/me/practice/report.pdf` and `GET /api/v1/school/students/:student/record.pdf`), a term's report cards (`GET /api/v1/school/classes/:class/report-cards.pdf?term=&student=`) and sign-in cards (`POST /api/v1/school/classes/:class/cards.pdf`). Each takes `format=Letter|A4`. They are rendered for the request, sent `no-store`, and never kept. Sign-in cards carry live card tokens: the screen posts back the cards it was just given, and the API prints a card only while its token is still that student's working card in that class, with the name from the roster, never from the request. No screen calls `window.print()`.
+
 | Setting | Where | Value |
 | --- | --- | --- |
 | `AMP_RENDER_URL` | API | The service's internal URL, for example `http://amp-render:8080`. Never public |

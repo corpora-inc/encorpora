@@ -162,6 +162,7 @@ await registerFamilyRoutes(app, {
   pool: repository.pool,
   authenticate,
   development,
+  renderer: workbookRenderer,
   billingNamespace: billingConfig ? stripeNamespace(billingConfig) : null,
   approvals: {
     secret: linkSecret,

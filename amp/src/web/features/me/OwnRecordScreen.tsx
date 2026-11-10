@@ -4,6 +4,8 @@ import type { ReactNode } from "react";
 import type { AdultStart } from "../../../learning/starting-point";
 import { Avatar } from "../../ui/Avatar";
 import { Button, buttonClass } from "../../ui/Button";
+import { PrintButton } from "../../ui/PrintButton";
+import { downloadPdf, paperFormat } from "../../lib/pdf-download";
 import { EmptyState } from "../../ui/EmptyState";
 import { Loading } from "../../ui/Loading";
 import { currentSession } from "../school/api";
@@ -108,9 +110,17 @@ export function OwnRecordScreen() {
               >
                 Workbooks
               </Link>
-              <Button variant="secondary" onClick={() => window.print()}>
+              <PrintButton
+                download={() =>
+                  downloadPdf({
+                    path: `/me/practice/report.pdf?format=${paperFormat()}`,
+                    token: session.token,
+                    name: "amp-progress-report.pdf",
+                  })
+                }
+              >
                 Print progress report
-              </Button>
+              </PrintButton>
             </div>
           </div>
           {/* Paused only when no access covers them and their free problems

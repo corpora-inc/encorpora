@@ -14,6 +14,9 @@ import {
   timeCsv,
 } from "./exports.js";
 import { SchoolError } from "./contracts.js";
+import { fileName, paperQuery, renderReportPdf } from "../reports/print.js";
+import { progressReportHtml } from "../reports/progress-report.js";
+import { reportCardsHtml } from "../reports/report-cards.js";
 import type { defineSchoolRoute } from "./routes.js";
 import {
   closeTerm,
@@ -48,6 +51,10 @@ import {
   readToday,
 } from "./teacher-reads.js";
 
+const reportCardsPdfQuery = paperQuery.extend({
+  term: z.uuid(),
+  student: z.uuid().optional(),
+});
 const classParam = ({ params }: { params: Record<string, string> }) =>
   ({ kind: "class", classId: params.class! }) as const;
 const CLASS = "/api/v1/school/classes/:class";
@@ -55,7 +62,7 @@ const download = (
   reply: FastifyReply,
   type: string,
   filename: string,
-  body: Readable,
+  body: Readable | Buffer,
 ) =>
   reply
     .type(type)
@@ -215,6 +222,45 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
       );
     },
   });
+  // The term's report cards as one PDF, a page each, or one student's.
+  define({
+    method: "GET",
+    url: `${CLASS}/report-cards.pdf`,
+    action: "grades.read",
+    target: classParam,
+    handler: async ({ request, reply, target, pool, services }) => {
+      const query = reportCardsPdfQuery.parse(request.query);
+      const context = await classContext(pool, target.classId);
+      const data = await readReportCards(pool, context, query.term);
+      const students = data.students.filter(
+        (student) => !query.student || student.id === query.student,
+      );
+      if (!students.length) throw new SchoolError(404, "not_found");
+      const { html, footer } = reportCardsHtml({
+        paper: query.format,
+        data,
+        students,
+        today: context.today,
+      });
+      const pdf = await renderReportPdf(
+        services.renderer,
+        { html, format: query.format, footer },
+        request.log,
+        "Report cards",
+      );
+      if (!pdf) throw new SchoolError(503, "report_unavailable", 30);
+      return download(
+        reply,
+        "application/pdf",
+        `${fileName(
+          "amp-report-card",
+          query.student ? students[0]!.name : context.name,
+          data.term.name,
+        )}.pdf`,
+        pdf,
+      );
+    },
+  });
   define({
     method: "GET",
     url: `${CLASS}/exports/gradebook.csv`,
@@ -313,22 +359,55 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     action: "students.read",
     target: ({ params }) =>
       ({ kind: "student", personId: params.student! }) as const,
-    handler: async ({ actor, target, pool }) => {
-      const classes = await visibleClasses(pool, actor, target);
-      const record = await readStudentRecord(
-        pool,
-        target.personId,
-        classes,
-        (classId) =>
-          can(actor, "grades.read", {
-            kind: "class",
-            classId,
-            orgId: classes.find((entry) => entry.id === classId)!.orgId,
-            path: classes.find((entry) => entry.id === classId)!.path,
-          }),
+    handler: ({ actor, target, pool }) => studentRecord(pool, actor, target),
+  });
+  // The record as a printed progress report, rendered for this request and
+  // never stored: it names the student.
+  define({
+    method: "GET",
+    url: "/api/v1/school/students/:student/record.pdf",
+    action: "students.read",
+    target: ({ params }) =>
+      ({ kind: "student", personId: params.student! }) as const,
+    handler: async ({ request, reply, actor, target, pool, services }) => {
+      const { format } = paperQuery.parse(request.query);
+      const record = await studentRecord(pool, actor, target);
+      const today = (
+        await pool.query(
+          "SELECT to_char(now() AT TIME ZONE COALESCE(timezone,'America/New_York'),'YYYY-MM-DD') AS today FROM amp_people WHERE id=$1",
+          [target.personId],
+        )
+      ).rows[0]?.today as string;
+      const { html, footer } = progressReportHtml({
+        paper: format,
+        name: record.student.name,
+        first: record.student.first,
+        subtitle: record.classes.map((entry) => entry.name).join(", "),
+        facts: [
+          ...(record.orgName
+            ? [{ label: "School", value: record.orgName }]
+            : []),
+          ...(record.student.identifier
+            ? [{ label: "Student ID", value: record.student.identifier }]
+            : []),
+        ],
+        today,
+        record,
+        grades: record.grades,
+      });
+      const pdf = await renderReportPdf(
+        services.renderer,
+        { html, format, footer },
+        request.log,
+        "Progress report",
       );
-      if (!record) throw new SchoolError(404, "not_found");
-      return record;
+      if (!pdf) throw new SchoolError(503, "report_unavailable", 30);
+      return download(
+        reply,
+        "application/pdf",
+        `${fileName("amp-progress", record.student.name, today)}.pdf`,
+        pdf,
+      );
     },
   });
   // "Try problems as this student" (docs/families.md): a practice profile of
@@ -359,6 +438,29 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
 const copyStudentSchema = z.strictObject({ label: profileLabelSchema });
 
 /** Of the classes a student is in today, the ones this person can open. */
+/** One student's record, as far as this reader may see it. */
+async function studentRecord(
+  pool: Parameters<typeof classContext>[0],
+  actor: Actor,
+  target: Extract<SchoolTarget, { kind: "student" }>,
+) {
+  const classes = await visibleClasses(pool, actor, target);
+  const record = await readStudentRecord(
+    pool,
+    target.personId,
+    classes,
+    (classId) =>
+      can(actor, "grades.read", {
+        kind: "class",
+        classId,
+        orgId: classes.find((entry) => entry.id === classId)!.orgId,
+        path: classes.find((entry) => entry.id === classId)!.path,
+      }),
+  );
+  if (!record) throw new SchoolError(404, "not_found");
+  return record;
+}
+
 async function visibleClasses(
   pool: Parameters<typeof classContext>[0],
   actor: Actor,
