@@ -140,30 +140,118 @@ async function stable(
   assert.equal(after.overflow, 0);
   assert.equal(after.stageOverflow, 0);
   await sentenceFits(page);
+  await arraySpacing(page);
 }
 async function sentenceFits(page: Page) {
   const layout = await page
     .locator(".counter-sentence")
     .evaluate((sentence) => {
       const bounds = sentence.getBoundingClientRect();
-      return [...sentence.querySelectorAll("button, .counter-equals")].map(
-        (n) => {
-          const b = n.getBoundingClientRect();
-          return {
-            center: b.top + b.height / 2,
-            contained: b.left >= bounds.left - 1 && b.right <= bounds.right + 1,
-          };
-        },
-      );
+      const sides = [
+        ...sentence.querySelectorAll(".counter-sentence-side"),
+      ].map((side) => {
+        const b = side.getBoundingClientRect();
+        return {
+          left: b.left,
+          right: b.right,
+          width: b.width,
+          center: b.top + b.height / 2,
+        };
+      });
+      return {
+        bounds: { left: bounds.left, right: bounds.right, width: bounds.width },
+        viewport: innerWidth,
+        sides,
+        parts: [...sentence.querySelectorAll("button, .counter-equals")].map(
+          (n) => {
+            const b = n.getBoundingClientRect();
+            return {
+              center: b.top + b.height / 2,
+              contained:
+                b.left >= bounds.left - 1 && b.right <= bounds.right + 1,
+            };
+          },
+        ),
+      };
     });
   assert.ok(
-    layout.every((b) => b.contained),
-    "Entire equation fits its row",
+    layout.parts.every((b) => b.contained),
+    "Entire equation fits inside the page gutter",
   );
   assert.ok(
-    layout.every((b) => Math.abs(b.center - layout[0]!.center) < 1),
-    "Every tile and operator stays on one line",
+    layout.bounds.left >= 16 && layout.bounds.right <= layout.viewport - 16,
+    "The sentence keeps the page's normal side gutter",
   );
+  const [addends, total] = layout.sides;
+  assert.equal(layout.sides.length, 2);
+  assert.ok(
+    layout.parts
+      .slice(0, -2)
+      .every((b) => Math.abs(b.center - addends!.center) < 1),
+    "Never break between addends",
+  );
+  assert.ok(
+    layout.parts.slice(-2).every((b) => Math.abs(b.center - total!.center) < 1),
+    "Equals and total stay together",
+  );
+  if (addends!.width + total!.width <= layout.bounds.width + 0.1) {
+    assert.ok(
+      Math.abs(addends!.center - total!.center) < 1,
+      "Keep the whole sentence on one line when it fits",
+    );
+    assert.ok(
+      Math.abs(
+        (addends!.left + total!.right) / 2 -
+          (layout.bounds.left + layout.bounds.right) / 2,
+      ) < 1,
+      "Center a single-line sentence",
+    );
+  } else {
+    assert.ok(
+      total!.center >= addends!.center + 48,
+      "Break only before the equals sign when the sentence cannot fit",
+    );
+    assert.ok(
+      layout.sides.every(
+        (s) =>
+          Math.abs(
+            (s.left + s.right) / 2 -
+              (layout.bounds.left + layout.bounds.right) / 2,
+          ) < 1,
+      ),
+      "Center both lines independently",
+    );
+  }
+}
+async function arraySpacing(page: Page) {
+  const drawings = await page
+    .locator(".equal-object svg")
+    .evaluateAll((nodes) =>
+      nodes.map((n) => {
+        const b = n.getBoundingClientRect();
+        return {
+          left: b.left,
+          right: b.right,
+          top: b.top,
+          bottom: b.bottom,
+          width: b.width,
+          height: b.height,
+        };
+      }),
+    );
+  for (const a of drawings)
+    for (const b of drawings) {
+      if (Math.abs(a.top - b.top) < 1 && b.left > a.left)
+        assert.ok(
+          b.left - a.right >= a.width / 4 - 0.1,
+          "Horizontal object gaps must be at least a quarter of the drawing width",
+        );
+      if (Math.abs(a.left - b.left) < 1 && b.top > a.top)
+        assert.ok(
+          b.top - a.bottom >= a.height / 4 - 0.1,
+          "Vertical object gaps must be at least a quarter of the drawing height",
+        );
+    }
 }
 async function keypadReachable(page: Page, fitsWithoutScrolling: boolean) {
   await page.locator(".problem-stage").evaluate((stage, fits) => {

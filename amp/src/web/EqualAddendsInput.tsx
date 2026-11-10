@@ -216,6 +216,7 @@ export function EqualAddendsInput({
           : "Rows go across. Columns go down."}
       </p>
       <NumberSentence
+        wrapBeforeEquals
         selected={slot}
         onSelect={select}
         locked={locked}

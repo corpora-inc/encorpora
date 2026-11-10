@@ -60,6 +60,11 @@
   display: grid;
   place-items: center;
 }
+.equal-object .counter-object {
+  /* Leave at least one quarter of the drawing's size between neighbours. */
+  width: min(32px, calc(var(--equal-cell) * 0.75));
+  height: min(32px, calc(var(--equal-cell) * 0.75));
+}
 .equal-addends .equal-group {
   position: absolute;
   background: transparent;
@@ -78,14 +83,19 @@
   text-align: center;
   margin: var(--space-1) 0;
 }
-/* Six 44px targets plus five compact operators fit even at 320px. Size for
-   the longest sentence so adding a term never changes the row's height. */
+/* Keep the addends together; only the equals/total group may wrap. Size and
+   reserve space for five addends so editing never moves the controls below. */
 .equal-addends .counter-sentence {
-  --equal-sign: clamp(8px, calc(12cqw - 28.48px), 24px);
+  --equal-sign: clamp(12px, calc(12cqw - 28.48px), 24px);
   --equal-tile: clamp(44px, calc((100cqw - 5 * var(--equal-sign)) / 6), 56px);
-  flex-wrap: nowrap;
-  gap: 0;
+  flex-wrap: wrap;
+  align-content: start;
+  gap: 8px 0;
   height: 48px;
+}
+.equal-addends .counter-sentence-side {
+  display: flex;
+  flex: none;
 }
 .equal-addends .counter-sentence-part {
   flex: none;
@@ -98,6 +108,11 @@
   width: var(--equal-sign);
   font-size: clamp(14px, calc(12cqw - 22.48px), 24px);
   line-height: 1;
+}
+@container (width < 324px) {
+  .equal-addends .counter-sentence {
+    height: 104px;
+  }
 }
 .equal-count-tools {
   display: flex;
@@ -139,22 +154,10 @@
   .equal-addends[data-mode="build"] {
     --equal-cell: 32px;
   }
-  .equal-addends[data-mode="build"] .counter-object {
-    width: 28px;
-    height: 28px;
-  }
 }
 @media (max-width: 380px) {
   .practice-surface:has(.equal-addends) .problem-stage {
-    /* Let the equation use the screen width without widening the dock or title. */
-    margin-inline: -16px;
     scrollbar-gutter: auto;
     scrollbar-width: thin;
-  }
-  .practice-surface:has(.equal-addends) .problem-content {
-    padding-inline: 3px;
-  }
-  .practice-surface:has(.equal-addends) .question {
-    padding-inline: 11px;
   }
 }

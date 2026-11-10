@@ -37,6 +37,7 @@ export function NumberSentence({
   locked,
   resolved,
   onKeyDown,
+  wrapBeforeEquals = false,
 }: {
   slots: {
     value: number | "+" | "-" | null;
@@ -48,6 +49,7 @@ export function NumberSentence({
   locked: boolean;
   resolved: boolean;
   onKeyDown?: (key: string) => boolean;
+  wrapBeforeEquals?: boolean;
 }) {
   const buttons = useRef<(HTMLButtonElement | null)[]>([]);
   useEffect(() => {
@@ -57,61 +59,72 @@ export function NumberSentence({
     )
       buttons.current[selected]?.focus({ preventScroll: true });
   }, [selected, locked]);
+  const parts = slots.map(({ value, label, prefix }, i) => (
+    <span className="counter-sentence-part" key={i}>
+      {prefix && (
+        <span
+          className="counter-equals"
+          aria-label={prefix === "=" ? "equals" : "plus"}
+        >
+          {prefix}
+        </span>
+      )}
+      <button
+        type="button"
+        className="counter-slot"
+        ref={(node) => {
+          buttons.current[i] = node;
+        }}
+        aria-pressed={!resolved && selected === i}
+        disabled={locked}
+        aria-label={`${label}: ${spokenNumberTile(value)}`}
+        onFocus={() => onSelect(i)}
+        onClick={() => onSelect(i)}
+        onKeyDown={(event) => {
+          if (locked) return;
+          if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+            event.preventDefault();
+            const next = Math.max(
+              0,
+              Math.min(
+                slots.length - 1,
+                i + (event.key === "ArrowRight" ? 1 : -1),
+              ),
+            );
+            onSelect(next);
+            buttons.current[next]?.focus();
+          } else if (onKeyDown?.(event.key)) event.preventDefault();
+        }}
+      >
+        {value === "+" || value === "-" ? (
+          <CounterSign sign={value} />
+        ) : (
+          (value ?? (
+            <span className="counter-blank" aria-hidden="true">
+              ?
+            </span>
+          ))
+        )}
+      </button>
+    </span>
+  ));
+  const equals = slots.findIndex(({ prefix }) => prefix === "=");
   return (
     <div
       className="counter-sentence"
       role="group"
       aria-label="Build the number sentence"
     >
-      {slots.map(({ value, label, prefix }, i) => (
-        <span className="counter-sentence-part" key={i}>
-          {prefix && (
-            <span
-              className="counter-equals"
-              aria-label={prefix === "=" ? "equals" : "plus"}
-            >
-              {prefix}
-            </span>
-          )}
-          <button
-            type="button"
-            className="counter-slot"
-            ref={(node) => {
-              buttons.current[i] = node;
-            }}
-            aria-pressed={!resolved && selected === i}
-            disabled={locked}
-            aria-label={`${label}: ${spokenNumberTile(value)}`}
-            onFocus={() => onSelect(i)}
-            onClick={() => onSelect(i)}
-            onKeyDown={(event) => {
-              if (locked) return;
-              if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
-                event.preventDefault();
-                const next = Math.max(
-                  0,
-                  Math.min(
-                    slots.length - 1,
-                    i + (event.key === "ArrowRight" ? 1 : -1),
-                  ),
-                );
-                onSelect(next);
-                buttons.current[next]?.focus();
-              } else if (onKeyDown?.(event.key)) event.preventDefault();
-            }}
-          >
-            {value === "+" || value === "-" ? (
-              <CounterSign sign={value} />
-            ) : (
-              (value ?? (
-                <span className="counter-blank" aria-hidden="true">
-                  ?
-                </span>
-              ))
-            )}
-          </button>
-        </span>
-      ))}
+      {wrapBeforeEquals && equals > 0 ? (
+        <>
+          <span className="counter-sentence-side">
+            {parts.slice(0, equals)}
+          </span>
+          <span className="counter-sentence-side">{parts.slice(equals)}</span>
+        </>
+      ) : (
+        parts
+      )}
     </div>
   );
 }
