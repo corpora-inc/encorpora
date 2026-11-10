@@ -957,19 +957,21 @@ function routes(app: FastifyInstance, options: AppOptions) {
               ? "Choose one of the displayed answers"
               : problem.public.response.kind === "shape-composer"
                 ? "Place pieces from the tray on the grid"
-                : problem.public.response.kind === "multi-select"
-                  ? `Choose ${problem.public.response.selectionCount} of the displayed answers`
-                  : problem.public.response.kind === "point-plot"
-                    ? `Place ${problem.public.response.pointCount} different ${problem.public.response.pointCount === 1 ? "point" : "points"} on the grid`
-                    : problem.public.response.kind === "multi-part-choice"
-                      ? `Choose one of the displayed options for each of the ${problem.public.response.blanks.length} parts`
-                      : problem.public.response.kind === "figure-choice"
-                        ? `Choose one of the displayed ${problem.public.response.noun === "Graph" ? "graphs" : problem.public.response.noun === "Picture" ? "pictures" : "number lines"}`
-                        : problem.public.response.kind === "structured-work"
-                          ? problem.public.response.mode === "order"
-                            ? "Place every step once, in an order"
-                            : "Complete every step with a valid entry"
-                          : "Enter a number, decimal, or fraction such as 3/4",
+                : problem.public.response.kind === "unit-square-marking"
+                  ? "Enter a whole number of square units, such as 12"
+                  : problem.public.response.kind === "multi-select"
+                    ? `Choose ${problem.public.response.selectionCount} of the displayed answers`
+                    : problem.public.response.kind === "point-plot"
+                      ? `Place ${problem.public.response.pointCount} different ${problem.public.response.pointCount === 1 ? "point" : "points"} on the grid`
+                      : problem.public.response.kind === "multi-part-choice"
+                        ? `Choose one of the displayed options for each of the ${problem.public.response.blanks.length} parts`
+                        : problem.public.response.kind === "figure-choice"
+                          ? `Choose one of the displayed ${problem.public.response.noun === "Graph" ? "graphs" : problem.public.response.noun === "Picture" ? "pictures" : "number lines"}`
+                          : problem.public.response.kind === "structured-work"
+                            ? problem.public.response.mode === "order"
+                              ? "Place every step once, in an order"
+                              : "Complete every step with a valid entry"
+                            : "Enter a number, decimal, or fraction such as 3/4",
         );
       const response =
         problem.public.response.kind === "line-plot-build"

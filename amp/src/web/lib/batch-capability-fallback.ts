@@ -53,6 +53,7 @@ export const clientResponseCapabilities = [
   "multi-part-cards-v1",
   "shape-composer-v1",
   "line-plot-build-v1",
+  "unit-square-marking-v1",
 ];
 /** Figure capabilities an API may predate. An older API rejects the value;
  * the client then asks without it and receives the legacy figure surfaces. */

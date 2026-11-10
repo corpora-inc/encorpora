@@ -597,6 +597,7 @@ test("clients without point-plot-v1 are never served these families, online or o
       "multi-part-cards-v1",
       "shape-composer-v1",
       "line-plot-build-v1",
+      "unit-square-marking-v1",
     ],
   );
   for (const client of [
