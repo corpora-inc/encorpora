@@ -6,7 +6,7 @@ const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { fixtureMe } from "./me-fixture";
 import { retentionNotice } from "../src/family/contracts";
-import { skills } from "../src/curriculum/catalog";
+import { skillTitle, skills } from "../src/curriculum/catalog";
 import { templates } from "../src/math/engine";
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 const source = `export async function accessSession(){if(window.routeSession==='failed')throw new Error('Synthetic session outage');return window.routeSession ? {token:'synthetic',accountId:'synthetic-parent'} : null;}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
@@ -121,9 +121,13 @@ try {
     }),
   );
   await map.goto("http://127.0.0.1:4394/pathways/count-to-20");
-  await map.waitForFunction(() => document.title.includes("Count to 20"));
-  const skillTitle = await map.title();
-  assert.match(skillTitle, /Count to 20/);
+  const countingTitle = skillTitle("count-to-20");
+  await map.waitForFunction(
+    (title) => document.title.includes(title),
+    countingTitle,
+  );
+  const pageTitle = await map.title();
+  assert.match(pageTitle, new RegExp(countingTitle));
   await map.locator(".pathways-brand").click();
   await map.waitForURL("http://127.0.0.1:4394/");
   // Signed out, / is the pitch, with one parameter-free canonical.
@@ -140,7 +144,7 @@ try {
   await map.goBack();
   await map.waitForFunction(
     (expected) => document.title === expected,
-    skillTitle,
+    pageTitle,
   );
   await map.close();
   // Public information does not depend on a working or current sign-in.

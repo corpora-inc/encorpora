@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   expectedHighSchoolStandardIds,
+  humanizedSkillId,
   skillTitle,
   skills,
   standards,
@@ -197,17 +198,47 @@ test("production queue fails closed on dangling prerequisites and cycles", () =>
   assert.throws(() => buildProductionQueue([skill]), /cycle/);
 });
 
-test("skill titles are sentence case, like problem-type titles", () => {
-  assert.equal(skillTitle("count-to-20"), "Count to 20");
-  assert.equal(skillTitle("pythagorean-theorem"), "Pythagorean theorem");
-  assert.equal(skillTitle("cavalieri-principle"), "Cavalieri principle");
-  assert.equal(skillTitle("gcf-lcm"), "GCF LCM");
+test("skill titles are editorial sentence case, never the id with spaces", () => {
+  assert.equal(skillTitle("compare-two-digit"), "Compare two-digit numbers");
+  assert.equal(skillTitle("add-two-digit"), "Add two-digit numbers");
+  assert.equal(skillTitle("ten-more-less"), "Ten more and ten less");
+  assert.equal(skillTitle("two-step-stories"), "Two-step word problems");
+  assert.equal(skillTitle("mean-median"), "Mean and median");
+  assert.equal(skillTitle("two-way-tables"), "Two-way tables");
+  assert.equal(skillTitle("complete-square"), "Completing the square");
+  assert.equal(
+    skillTitle("fundamental-theorem-algebra"),
+    "Fundamental theorem of algebra",
+  );
+  assert.equal(skillTitle("dilations-similarity"), "Dilations and similarity");
+  assert.equal(
+    skillTitle("residuals-correlation"),
+    "Residuals and correlation",
+  );
+  assert.equal(
+    skillTitle("rational-equation-one-denominator"),
+    "Rational equations with one denominator",
+  );
+  assert.equal(skillTitle("average-rate-change"), "Average rate of change");
   assert.equal(skillTitle("statistics-mean"), "Mean of a data set");
+  assert.equal(skillTitle("pythagorean-theorem"), "The Pythagorean theorem");
+  assert.equal(skillTitle("cavalieri-principle"), "Cavalieri's principle");
+  assert.equal(humanizedSkillId("compare-two-digit"), "Compare two digit");
+  assert.equal(humanizedSkillId("not-a-skill"), "Not a skill");
+  assert.equal(skillTitle("not-a-skill"), "Not a skill");
+  const seen = new Set<string>();
   for (const skill of skills) {
     assert.equal(skill.title, skillTitle(skill.id));
-    // Only names and initialisms keep capitals after the first letter.
+    assert.notEqual(
+      skill.title,
+      humanizedSkillId(skill.id),
+      `${skill.id} is still the slug with spaces`,
+    );
+    assert.equal(seen.has(skill.title), false, skill.title);
+    seen.add(skill.title);
+    // Only names keep capitals after the first letter.
     const rest = skill.title
-      .replace(/\b(Cavalieri|Pythagorean|GCF|LCM)\b/g, "")
+      .replace(/\b(Cavalieri|Pythagorean|Cartesian)\b/g, "")
       .slice(1);
     assert.doesNotMatch(rest, /[A-Z]/, skill.title);
   }

@@ -14,7 +14,7 @@ import {
 } from "playwright";
 const chromium = secureChromium(rawChromium);
 import { problemLesson } from "../src/content/problem-lessons";
-import { skills } from "../src/curriculum/catalog";
+import { skillTitle, skills } from "../src/curriculum/catalog";
 import { generateProblem, templates } from "../src/math/engine";
 import { retentionNotice } from "../src/family/contracts";
 import { fixtureMe } from "./me-fixture";
@@ -786,24 +786,25 @@ async function verifySearchFilters() {
       await page.waitForURL(
         (url) => url.searchParams.get("topic") === "linear",
       );
-      await input.fill("Count to 20");
+      const countingTitle = skillTitle("count-to-20");
+      await input.fill(countingTitle);
       await page.waitForURL(
-        (url) => url.searchParams.get("topic") === "Count to 20",
+        (url) => url.searchParams.get("topic") === countingTitle,
       );
-      await page.getByRole("link", { name: /Count to 20/ }).click();
+      await page.getByRole("link", { name: countingTitle }).click();
       await page.waitForURL((url) => url.pathname === "/pathways/count-to-20");
       await page.goBack();
       await input.waitFor();
       assert.equal(
         await input.inputValue(),
-        "Count to 20",
+        countingTitle,
         "Browser Back restores the search",
       );
       await page.goForward();
       await input.waitFor();
       assert.equal(
         await input.inputValue(),
-        "Count to 20",
+        countingTitle,
         "Browser Forward restores the search",
       );
       await input.fill("");

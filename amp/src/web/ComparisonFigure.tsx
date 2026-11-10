@@ -62,24 +62,28 @@ function CounterRows({
   );
 }
 
-/** Two numbers built from ten-rods and unit cubes, rows aligned by place. */
+/** Two numbers built from ten-rods and unit cubes, rows aligned by place.
+ * Units are large enough that, drawn at the stage width, a cube is about
+ * 15 px and the place labels at least 14 px. */
 function BaseTenPair({
   figure,
 }: {
   figure: Extract<ComparisonFigureData, { kind: "base-ten-pair" }>;
 }) {
-  const u = 9,
-    rodStep = 13,
-    label = 58,
-    tensX = label + 8,
-    onesX = tensX + 9 * rodStep + 18,
-    top = 26,
-    rowHeight = 10 * u + 22;
+  const u = 18,
+    rodStep = 22,
+    label = 64,
+    tensX = label + 10,
+    onesX = tensX + 8 * rodStep + u + 24,
+    top = 32,
+    rowHeight = 10 * u + 16,
+    width = onesX + 4 * rodStep + u + 12,
+    height = top + 2 * rowHeight;
   return (
     <svg
       className="figure comparison-figure"
       data-kind="base-ten-pair"
-      viewBox={`0 0 ${onesX + 5 * rodStep + 6} ${top + 2 * rowHeight}`}
+      viewBox={`0 0 ${width} ${height}`}
       role="img"
       aria-label={figure.values
         .map(
@@ -88,10 +92,10 @@ function BaseTenPair({
         )
         .join(" ")}
     >
-      <text x={tensX} y={16} className="fig-scale">
+      <text x={tensX} y={22} className="base-ten-label">
         Tens
       </text>
-      <text x={onesX} y={16} className="fig-scale">
+      <text x={onesX} y={22} className="base-ten-label">
         Ones
       </text>
       {figure.values.map((n, row) => {
@@ -101,11 +105,10 @@ function BaseTenPair({
         return (
           <g key={row} data-value={n}>
             <text
-              x={label - 6}
-              y={y + 5 * u + 8}
+              x={label - 8}
+              y={y + 5 * u}
               textAnchor="end"
-              className="fig-label"
-              style={{ fontSize: 22 }}
+              className="base-ten-label"
             >
               {n}
             </text>
@@ -116,7 +119,7 @@ function BaseTenPair({
                   y={y}
                   width={u}
                   height={10 * u}
-                  rx={1.5}
+                  rx={2}
                   className="base-block"
                 />
                 {Array.from({ length: 9 }, (_, j) => (
@@ -136,10 +139,10 @@ function BaseTenPair({
                 key={`o${i}`}
                 data-unit="one"
                 x={onesX + (i % 5) * rodStep}
-                y={y + 10 * u - (Math.floor(i / 5) + 1) * rodStep + 4}
+                y={y + 10 * u - (Math.floor(i / 5) + 1) * rodStep}
                 width={u}
                 height={u}
-                rx={1.5}
+                rx={2}
                 className="base-block"
               />
             ))}

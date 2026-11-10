@@ -273,6 +273,18 @@ nav button:hover {
   width: 100%;
   margin: 15px auto 28px;
 }
+/* Two rows of ten-rods need the stage width. A height cap shrinks the
+   cubes to dots and the place labels below 12 px. */
+.figure[data-kind="base-ten-pair"] {
+  height: auto;
+  max-height: none;
+  min-height: 0;
+}
+.figure[data-kind="base-ten-pair"] .base-ten-label {
+  fill: var(--color-figure-ink);
+  font-size: 18px;
+  font-weight: 600;
+}
 .answer-row {
   display: flex;
   align-items: stretch;

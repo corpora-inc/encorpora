@@ -2249,7 +2249,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
               </h2>
               {/* The partner note speaks to a parent about a child: an adult
                   learning on their own, or as a profile, has no use for it. */}
-              <ReferenceLesson lesson={readingLesson} partner={!ownLearner} />
+              <ReferenceLesson lesson={readingLesson} partner={!ownLearner && !learner?.simulation} />
             </article>
           )}
         </main>
