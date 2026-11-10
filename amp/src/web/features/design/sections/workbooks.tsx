@@ -39,10 +39,10 @@ export function WorkbookSections() {
           "features/workbooks/WorkbookEntry.module.css",
         ]}
       >
-        <Specimen label="Can make a workbook">
+        <Specimen label="Can make a workbook" plain>
           <WorkbookEntry learner={learner({ hasAccess: true })} />
         </Specimen>
-        <Specimen label="Free workbooks used: past ones only">
+        <Specimen label="Free workbooks used: past ones only" plain>
           <WorkbookEntry
             learner={{
               ...learner({ hasAccess: false }),
@@ -59,7 +59,7 @@ export function WorkbookSections() {
             }}
           />
         </Specimen>
-        <Specimen label="A long name" wide>
+        <Specimen label="A long name" wide plain>
           <WorkbookEntry
             learner={learner({
               hasAccess: true,

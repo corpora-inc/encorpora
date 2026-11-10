@@ -4,6 +4,7 @@ import { ControlSections } from "./sections/controls";
 import { LevelSections } from "./sections/levels";
 import { NavigationSections } from "./sections/navigation";
 import { OverlaySections, overlaySpecimens } from "./sections/overlays";
+import { PatternSections } from "./sections/patterns";
 import { PracticeSection, PracticeSpecimen } from "./sections/practice";
 import { StateSections, stateSpecimens } from "./sections/states";
 import { TableSections } from "./sections/tables";
@@ -72,6 +73,16 @@ export const contents: {
     sections: [
       { id: "overlays", title: "Sheets and dialogs" },
       { id: "navigation", title: "Logo, tabs, codes" },
+      { id: "page-parts", title: "Page heads and notes" },
+    ],
+  },
+  {
+    group: "Flows",
+    sections: [
+      { id: "grade-pickers", title: "Grade pickers" },
+      { id: "plan-choice", title: "Plan choice" },
+      { id: "sign-in-parts", title: "Sign-in parts" },
+      { id: "charts", title: "School charts" },
     ],
   },
 ];
@@ -87,6 +98,7 @@ export function GallerySections() {
       <WorkbookSections />
       <OverlaySections />
       <NavigationSections />
+      <PatternSections />
     </>
   );
 }

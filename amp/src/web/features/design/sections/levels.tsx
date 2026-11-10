@@ -207,7 +207,7 @@ export function LevelSections() {
         source={["Home.tsx", "theme.css"]}
         note="Draws its own track markup, a copy of LevelTrack's (see docs/components.md)."
       >
-        <Specimen label="Estimates by strand, grade numbers hidden" wide>
+        <Specimen label="Estimates by strand, grade numbers hidden" wide plain>
           <CurriculumDetailsFixture shown={false}>
             <FrontierMap
               name="Ada"
@@ -217,7 +217,7 @@ export function LevelSections() {
             />
           </CurriculumDetailsFixture>
         </Specimen>
-        <Specimen label="Grade numbers shown" wide>
+        <Specimen label="Grade numbers shown" wide plain>
           <CurriculumDetailsFixture shown>
             <FrontierMap
               name="Ada"
@@ -227,7 +227,7 @@ export function LevelSections() {
             />
           </CurriculumDetailsFixture>
         </Specimen>
-        <Specimen label="Loading" wide>
+        <Specimen label="Loading" wide plain>
           <CurriculumDetailsFixture shown={false}>
             <FrontierMap
               name="Ada"
