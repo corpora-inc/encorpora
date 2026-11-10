@@ -458,9 +458,11 @@
 
 /* ── Side by side: the answer column ─────────────────────────────────────── */
 @media (orientation: landscape) and (min-width: 900px) and (min-height: 500px) {
-  /* Absolutely placed in the answer column's grid area: the sheet covers the
-     column it replaces, whatever the answer form's height. Both lines are
-     explicit; an auto end line would mean the card's padding edge. */
+  /* Absolutely placed in the answer column's grid area: the panel covers the
+     column it replaces, flush to the screen's right and bottom edges and to
+     the bar above, whatever the answer form's height. Its tone and the rule
+     on its left divide it from the problem; no card, radius or shadow. Both
+     grid lines are explicit; an auto end line would mean the padding edge. */
   .practice-surface > .feedback {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
@@ -469,10 +471,11 @@
     max-height: none;
     margin: 0;
     overflow: hidden;
-  }
-  /* The sheet's rounded corners would show the rule beside it. */
-  .practice-surface:has(> .feedback) > .answer-dock {
-    border-left-color: transparent;
+    padding: var(--space-5) var(--space-5)
+      calc(var(--space-5) + env(safe-area-inset-bottom, 0px));
+    border-width: 0 0 0 1px;
+    border-radius: 0;
+    box-shadow: none;
   }
   /* The column's full height: the result reads at the top, the worked
      explanation fills the middle (scrolling when long) between two hairlines,
@@ -522,7 +525,8 @@
     max-height: 184px;
     overflow: auto;
     gap: 6px;
-    padding: 10px;
+    padding: 10px var(--space-5);
+    border-top-width: 1px;
   }
   .practice-surface:has(> .editor-dock) > .feedback .feedback-head {
     flex-direction: row;

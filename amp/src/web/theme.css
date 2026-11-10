@@ -174,9 +174,6 @@ header {
 .shell.immersive > nav {
   display: none;
 }
-.shell.immersive .practice-workspace {
-  padding-top: 8px;
-}
 /* "Your level": the way out of immersive practice leads to the level map,
    so it reads as a place to check, not a close button. A tinted pill with a
    chart glyph; the label drops below 384px and the pill becomes a circle. */
@@ -1112,8 +1109,7 @@ button:focus:not(:focus-visible) {
   height: 44px;
 }
 
-/* Every screen shares one column so the header and tabs never move; practice
-   gets a wider, centred focus column. */
+/* Every screen shares one column so the header and tabs never move. */
 .shell.app-shell:not(.flow):not(.reading-shell):not(.immersive) {
   left: 0;
   right: 0;
@@ -1121,11 +1117,26 @@ button:focus:not(:focus-visible) {
   margin-inline: auto;
   padding-inline: 16px;
 }
+/* Practice is immersive at every width: the stage runs edge to edge under the
+   bar, inside the safe area, with no card, margin or radius around it. */
 .shell.app-shell.immersive {
   left: 0;
   right: 0;
-  max-width: 960px;
-  margin-inline: auto;
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: env(safe-area-inset-left, 0px) env(safe-area-inset-right, 0px);
+}
+.shell.immersive .practice-workspace {
+  padding: 0;
+}
+.shell.immersive .practice-surface {
+  border: 0;
+  border-radius: 0;
+  background: var(--color-surface);
+  box-shadow: none;
+}
+.shell.immersive .problem-stage {
+  --stage-paper: var(--color-surface);
 }
 
 /* One header geometry on every screen. Scrolling pages draw no window
@@ -1979,27 +1990,17 @@ html[data-input="pointer"] :focus-visible {
   background: var(--color-secondary);
 }
 
-/* ── Phones: practice is full-bleed ───────────────────────────────────────
-   The paper card needs room around it; on a phone it only wastes the edges.
-   The problem runs edge to edge inside the safe area, and feedback rises as
-   a bottom sheet from the screen edge. Tablets and desktops keep the card. */
+/* ── Phones: one toolbar row, tighter insets ──────────────────────────────
+   The problem runs edge to edge inside the safe area (as at every width),
+   and feedback rises as a bottom sheet from the screen edge. */
 @media (max-width: 650px) {
   /* The practice surface, not the shell, reserves the home indicator's
      inset, so docked sheets (calculator, feedback) reach the screen's edge
      and pad their own controls above it: no band below them. */
   .shell.app-shell.immersive {
-    padding-inline: env(safe-area-inset-left, 0px)
-      env(safe-area-inset-right, 0px);
     padding-bottom: 0;
   }
-  .shell.immersive .practice-workspace {
-    padding: 0;
-  }
   .shell.immersive .practice-surface {
-    border: 0;
-    border-radius: 0;
-    background: var(--color-surface);
-    box-shadow: none;
     padding: 4px 16px env(safe-area-inset-bottom, 0px);
   }
   .shell.immersive .workspace-toolbar {
