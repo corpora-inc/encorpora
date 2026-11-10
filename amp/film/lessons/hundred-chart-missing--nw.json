@@ -1,0 +1,2243 @@
+{
+  "id": "hundred-chart-missing--nw",
+  "title": "Find the Missing Number on a Hundred Chart",
+  "seed": "20261110:hundred-chart-missing:1",
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -0.65,
+          -1.6,
+          20.65,
+          6.4
+        ],
+        "points": {
+          "G": [
+            0,
+            4
+          ],
+          "H": [
+            0,
+            2
+          ],
+          "RA": [
+            5,
+            5.3
+          ],
+          "RB": [
+            7,
+            5.3
+          ],
+          "RC": [
+            6,
+            6.1
+          ],
+          "P1": {
+            "cell": [
+              "rowOne",
+              1
+            ]
+          },
+          "P2": {
+            "cell": [
+              "rowOne",
+              2
+            ]
+          },
+          "P3": {
+            "cell": [
+              "rowOne",
+              3
+            ]
+          },
+          "P4": {
+            "cell": [
+              "rowOne",
+              4
+            ]
+          },
+          "P5": {
+            "cell": [
+              "rowOne",
+              5
+            ]
+          },
+          "P6": {
+            "cell": [
+              "rowOne",
+              6
+            ]
+          },
+          "P7": {
+            "cell": [
+              "rowOne",
+              7
+            ]
+          },
+          "P8": {
+            "cell": [
+              "rowOne",
+              8
+            ]
+          },
+          "P9": {
+            "cell": [
+              "rowOne",
+              9
+            ]
+          },
+          "P10": {
+            "cell": [
+              "rowOne",
+              10
+            ]
+          },
+          "P11": {
+            "cell": [
+              "rowTwo",
+              1
+            ]
+          },
+          "P12": {
+            "cell": [
+              "rowTwo",
+              2
+            ]
+          },
+          "P13": {
+            "cell": [
+              "rowTwo",
+              3
+            ]
+          },
+          "P14": {
+            "cell": [
+              "rowTwo",
+              4
+            ]
+          },
+          "P15": {
+            "cell": [
+              "rowTwo",
+              5
+            ]
+          },
+          "P16": {
+            "cell": [
+              "rowTwo",
+              6
+            ]
+          },
+          "P17": {
+            "cell": [
+              "rowTwo",
+              7
+            ]
+          },
+          "P18": {
+            "cell": [
+              "rowTwo",
+              8
+            ]
+          },
+          "P19": {
+            "cell": [
+              "rowTwo",
+              9
+            ]
+          },
+          "P20": {
+            "cell": [
+              "rowTwo",
+              10
+            ]
+          }
+        },
+        "parts": [
+          {
+            "id": "rowOne",
+            "start": true,
+            "grid": [
+              10,
+              1
+            ],
+            "at": "G",
+            "size": 2,
+            "fill": "none",
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "rowTwo",
+            "grid": [
+              10,
+              1
+            ],
+            "at": "H",
+            "size": 2,
+            "fill": "none",
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "rightArrow",
+            "vector": [
+              "RA",
+              "RB"
+            ],
+            "ink": "accent",
+            "w": 6
+          },
+          {
+            "id": "moreOne",
+            "label": "\\text{1 more}",
+            "at": "RC",
+            "dir": "c",
+            "ink": "accent",
+            "size": "s"
+          },
+          {
+            "id": "n1",
+            "label": "1",
+            "at": "P1",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n2",
+            "label": "2",
+            "at": "P2",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n3",
+            "label": "3",
+            "at": "P3",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n4",
+            "label": "4",
+            "at": "P4",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n5",
+            "label": "5",
+            "at": "P5",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n6",
+            "label": "6",
+            "at": "P6",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n7",
+            "label": "7",
+            "at": "P7",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n8",
+            "label": "8",
+            "at": "P8",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n9",
+            "label": "9",
+            "at": "P9",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n10",
+            "label": "10",
+            "at": "P10",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n11",
+            "label": "11",
+            "at": "P11",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n12",
+            "label": "12",
+            "at": "P12",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n13",
+            "label": "13",
+            "at": "P13",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n14",
+            "label": "14",
+            "at": "P14",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n15",
+            "label": "15",
+            "at": "P15",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n16",
+            "label": "16",
+            "at": "P16",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n17",
+            "label": "17",
+            "at": "P17",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n18",
+            "label": "18",
+            "at": "P18",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n19",
+            "label": "19",
+            "at": "P19",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n20",
+            "label": "20",
+            "at": "P20",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "A hundred chart puts the numbers from one to one hundred in order.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "term",
+              "word": "hundred chart",
+              "meaning": "The numbers 1 to 100 in order, ten in each row.",
+              "id": "chartTerm",
+              "at": "hundred"
+            },
+            {
+              "do": "highlight",
+              "target": "rowOne",
+              "at": "numbers"
+            }
+          ]
+        },
+        {
+          "say": "A row is a line of squares going across.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "term",
+              "word": "row",
+              "meaning": "A line of squares going across.",
+              "id": "rowTerm",
+              "at": "row"
+            },
+            {
+              "do": "highlight",
+              "target": "rowOne",
+              "at": "across"
+            }
+          ]
+        },
+        {
+          "say": "Count from left to right. One, two, three, four, five.",
+          "pause": 0.3,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "n1",
+              "at": "One"
+            },
+            {
+              "do": "show",
+              "target": "n2",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "n3",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "n4",
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": "n5",
+              "at": "five"
+            }
+          ]
+        },
+        {
+          "say": "Six, seven, eight, nine, ten.",
+          "pause": 0.5,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "n6",
+              "at": "Six"
+            },
+            {
+              "do": "show",
+              "target": "n7",
+              "at": "seven"
+            },
+            {
+              "do": "show",
+              "target": "n8",
+              "at": "eight"
+            },
+            {
+              "do": "show",
+              "target": "n9",
+              "at": "nine"
+            },
+            {
+              "do": "show",
+              "target": "n10",
+              "at": "ten"
+            }
+          ]
+        },
+        {
+          "say": "Ten fills this row. The next number starts at the left of the row below.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "n10",
+              "at": "Ten"
+            },
+            {
+              "do": "show",
+              "target": "rowTwo",
+              "at": "below"
+            }
+          ]
+        },
+        {
+          "say": "Eleven, twelve, thirteen, fourteen, fifteen.",
+          "pause": 0.3,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "n11",
+              "at": "Eleven"
+            },
+            {
+              "do": "show",
+              "target": "n12",
+              "at": "twelve"
+            },
+            {
+              "do": "show",
+              "target": "n13",
+              "at": "thirteen"
+            },
+            {
+              "do": "show",
+              "target": "n14",
+              "at": "fourteen"
+            },
+            {
+              "do": "show",
+              "target": "n15",
+              "at": "fifteen"
+            }
+          ]
+        },
+        {
+          "say": "Sixteen, seventeen, eighteen, nineteen, twenty.",
+          "pause": 0.4,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "n16",
+              "at": "Sixteen"
+            },
+            {
+              "do": "show",
+              "target": "n17",
+              "at": "seventeen"
+            },
+            {
+              "do": "show",
+              "target": "n18",
+              "at": "eighteen"
+            },
+            {
+              "do": "show",
+              "target": "n19",
+              "at": "nineteen"
+            },
+            {
+              "do": "show",
+              "target": "n20",
+              "at": "twenty"
+            }
+          ]
+        },
+        {
+          "say": "The chart continues to one hundred, with ten numbers in every row.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "text",
+              "text": "Every full row holds 10 numbers.",
+              "id": "rowsOfTen",
+              "at": "ten"
+            },
+            {
+              "do": "highlight",
+              "target": "rowTwo",
+              "at": "row"
+            }
+          ]
+        },
+        {
+          "say": "Moving right along a row gives the next number: one more.",
+          "pause": 0.5,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "draw",
+              "target": "rightArrow",
+              "at": "right"
+            },
+            {
+              "do": "show",
+              "target": "moreOne",
+              "at": "more"
+            },
+            {
+              "do": "text",
+              "text": "Right along a row: 1 more.",
+              "id": "introRight",
+              "at": "next"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.7,
+          -0.9,
+          8.7,
+          5.2
+        ],
+        "points": {
+          "G": [
+            0,
+            4
+          ],
+          "B0": [
+            4,
+            2
+          ],
+          "B1": [
+            6,
+            2
+          ],
+          "B2": [
+            6,
+            0
+          ],
+          "B3": [
+            4,
+            0
+          ],
+          "P34": {
+            "cell": [
+              "chartPiece",
+              1
+            ]
+          },
+          "P35": {
+            "cell": [
+              "chartPiece",
+              2
+            ]
+          },
+          "P36": {
+            "cell": [
+              "chartPiece",
+              3
+            ]
+          },
+          "P37": {
+            "cell": [
+              "chartPiece",
+              4
+            ]
+          },
+          "P44": {
+            "cell": [
+              "chartPiece",
+              5
+            ]
+          },
+          "P45": {
+            "cell": [
+              "chartPiece",
+              6
+            ]
+          },
+          "P46": {
+            "cell": [
+              "chartPiece",
+              7
+            ]
+          },
+          "P47": {
+            "cell": [
+              "chartPiece",
+              8
+            ]
+          }
+        },
+        "parts": [
+          {
+            "id": "chartPiece",
+            "start": true,
+            "grid": [
+              4,
+              2
+            ],
+            "at": "G",
+            "size": 2,
+            "fill": "none",
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "blank",
+            "start": true,
+            "poly": [
+              "B0",
+              "B1",
+              "B2",
+              "B3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 6
+          },
+          {
+            "id": "n34",
+            "start": true,
+            "label": "34",
+            "at": "P34",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "n35",
+            "start": true,
+            "label": "35",
+            "at": "P35",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "n36",
+            "start": true,
+            "label": "36",
+            "at": "P36",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "n37",
+            "start": true,
+            "label": "37",
+            "at": "P37",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "n44",
+            "start": true,
+            "label": "44",
+            "at": "P44",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "n45",
+            "start": true,
+            "label": "45",
+            "at": "P45",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "n46",
+            "label": "46",
+            "at": "P46",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "n47",
+            "start": true,
+            "label": "47",
+            "at": "P47",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "This is part of the hundred chart. What number belongs in the empty square?",
+          "pause": 0.8,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "This is part of the hundred chart. What number belongs in the $\\cg{empty}$ square?",
+              "id": "acrossProblem",
+              "at": "This"
+            },
+            {
+              "do": "highlight",
+              "target": "blank",
+              "at": "empty"
+            }
+          ]
+        },
+        {
+          "say": "Read the lower row: forty-four, forty-five, an empty square, forty-seven.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "n44",
+              "at": "forty-four"
+            },
+            {
+              "do": "highlight",
+              "target": "n45",
+              "at": "forty-five"
+            },
+            {
+              "do": "highlight",
+              "target": "blank",
+              "at": "empty"
+            },
+            {
+              "do": "highlight",
+              "target": "n47",
+              "at": "forty-seven"
+            }
+          ]
+        },
+        {
+          "say": "It's the third square. Could the answer be three?",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "blank",
+              "at": "third"
+            }
+          ]
+        },
+        {
+          "say": "We need the square's number. This row starts at forty-four, so start with a number you can read.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "text",
+              "text": "Start from a shown number.",
+              "id": "acrossStart",
+              "at": "number"
+            },
+            {
+              "do": "highlight",
+              "target": "n44",
+              "at": "forty-four"
+            }
+          ]
+        },
+        {
+          "say": "Forty-five is just left of the gap. Moving right means one more: forty-six.",
+          "pause": 0.4,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "n45",
+              "at": "Forty-five"
+            },
+            {
+              "do": "text",
+              "text": "Right along a row: 1 more.",
+              "id": "acrossRule",
+              "at": "right"
+            },
+            {
+              "do": "highlight",
+              "target": "blank",
+              "at": "forty-six"
+            }
+          ]
+        },
+        {
+          "say": "Forty-six belongs in the empty square.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "answer",
+              "tex": "46",
+              "id": "acrossAnswer",
+              "at": "Forty-six"
+            },
+            {
+              "do": "show",
+              "target": "n46",
+              "at": "Forty-six"
+            }
+          ]
+        },
+        {
+          "say": "I can check by reading across: forty-five, forty-six, forty-seven.",
+          "pause": 0.6,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "write",
+              "tex": "45,\\;46,\\;47",
+              "fresh": true,
+              "id": "acrossCheck",
+              "at": "reading"
+            },
+            {
+              "do": "highlight",
+              "target": "n45",
+              "at": "forty-five"
+            },
+            {
+              "do": "highlight",
+              "target": "blank",
+              "at": "forty-six"
+            },
+            {
+              "do": "highlight",
+              "target": "n47",
+              "at": "forty-seven"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.65,
+          -7.4,
+          20.65,
+          5.4
+        ],
+        "points": {
+          "W": [
+            10,
+            4
+          ],
+          "G": [
+            0,
+            4
+          ],
+          "T": [
+            0,
+            -2.4
+          ],
+          "Count": [
+            9,
+            -5.9
+          ],
+          "Caption": [
+            8,
+            -1.2
+          ],
+          "CountWord": [
+            12.1,
+            -5.9
+          ],
+          "Ring": [
+            11,
+            3
+          ],
+          "B0": [
+            10,
+            2
+          ],
+          "B1": [
+            12,
+            2
+          ],
+          "B2": [
+            12,
+            0
+          ],
+          "B3": [
+            10,
+            0
+          ],
+          "DA": [
+            11,
+            2.55
+          ],
+          "DB": [
+            11,
+            1.45
+          ],
+          "DL": [
+            11,
+            -1.2
+          ],
+          "P41": [
+            1,
+            3
+          ],
+          "P42": [
+            3,
+            3
+          ],
+          "P43": [
+            5,
+            3
+          ],
+          "P44": [
+            7,
+            3
+          ],
+          "P45": [
+            9,
+            3
+          ],
+          "P46": [
+            11,
+            3
+          ],
+          "P47": [
+            13,
+            3
+          ],
+          "P48": [
+            15,
+            3
+          ],
+          "P49": [
+            17,
+            3
+          ],
+          "P50": [
+            19,
+            3
+          ],
+          "P51": [
+            1,
+            1
+          ],
+          "P52": [
+            3,
+            1
+          ],
+          "P53": [
+            5,
+            1
+          ],
+          "P54": [
+            7,
+            1
+          ],
+          "P55": [
+            9,
+            1
+          ],
+          "P56": [
+            11,
+            1
+          ],
+          "P57": [
+            13,
+            1
+          ],
+          "P58": [
+            15,
+            1
+          ],
+          "P59": [
+            17,
+            1
+          ],
+          "P60": [
+            19,
+            1
+          ]
+        },
+        "parts": [
+          {
+            "id": "window",
+            "start": true,
+            "grid": [
+              5,
+              2
+            ],
+            "at": "W",
+            "size": 2,
+            "fill": "none",
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "surround",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "G",
+            "size": 2,
+            "fill": "none",
+            "ink": "muted",
+            "w": 3
+          },
+          {
+            "id": "blank",
+            "start": true,
+            "poly": [
+              "B0",
+              "B1",
+              "B2",
+              "B3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 6
+          },
+          {
+            "id": "ring",
+            "circle": "Ring",
+            "r": 0.82,
+            "fill": "none",
+            "ink": "accent",
+            "w": 6
+          },
+          {
+            "id": "steps",
+            "grid": [
+              10,
+              1
+            ],
+            "at": "T",
+            "size": 2,
+            "fill": "none",
+            "ink": "muted",
+            "w": 3
+          },
+          {
+            "id": "dots",
+            "counters": "steps",
+            "n": 10,
+            "ink": "accent"
+          },
+          {
+            "id": "count",
+            "label": "@n",
+            "at": "Count",
+            "dir": "c",
+            "ink": "accent",
+            "size": "xl",
+            "of": "steps"
+          },
+          {
+            "id": "stepCaption",
+            "label": "\\text{Steps after 46}",
+            "at": "Caption",
+            "dir": "c",
+            "ink": "accent",
+            "size": "s"
+          },
+          {
+            "id": "stepWord",
+            "label": "\\text{steps}",
+            "at": "CountWord",
+            "dir": "c",
+            "ink": "accent",
+            "size": "s"
+          },
+          {
+            "id": "downArrow",
+            "vector": [
+              "DA",
+              "DB"
+            ],
+            "ink": "accent",
+            "w": 6
+          },
+          {
+            "id": "tenMore",
+            "label": "\\text{10 more}",
+            "at": "DL",
+            "dir": "c",
+            "ink": "accent",
+            "size": "s"
+          },
+          {
+            "id": "n41",
+            "label": "41",
+            "at": "P41",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n42",
+            "label": "42",
+            "at": "P42",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n43",
+            "label": "43",
+            "at": "P43",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n44",
+            "label": "44",
+            "at": "P44",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n45",
+            "label": "45",
+            "at": "P45",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n46",
+            "start": true,
+            "label": "46",
+            "at": "P46",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n47",
+            "start": true,
+            "label": "47",
+            "at": "P47",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n48",
+            "start": true,
+            "label": "48",
+            "at": "P48",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n49",
+            "start": true,
+            "label": "49",
+            "at": "P49",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n50",
+            "start": true,
+            "label": "50",
+            "at": "P50",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n51",
+            "label": "51",
+            "at": "P51",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n52",
+            "label": "52",
+            "at": "P52",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n53",
+            "label": "53",
+            "at": "P53",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n54",
+            "label": "54",
+            "at": "P54",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n55",
+            "label": "55",
+            "at": "P55",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n56",
+            "label": "56",
+            "at": "P56",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n57",
+            "start": true,
+            "label": "57",
+            "at": "P57",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n58",
+            "start": true,
+            "label": "58",
+            "at": "P58",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n59",
+            "start": true,
+            "label": "59",
+            "at": "P59",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          },
+          {
+            "id": "n60",
+            "start": true,
+            "label": "60",
+            "at": "P60",
+            "dir": "c",
+            "ink": "ink",
+            "size": "m"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Here is another piece of the hundred chart. What number belongs in the empty square?",
+          "pause": 0.6,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "This is part of the hundred chart. What number belongs in the $\\cg{empty}$ square?",
+              "id": "downProblem",
+              "at": "Here"
+            },
+            {
+              "do": "highlight",
+              "target": "blank",
+              "at": "empty"
+            },
+            {
+              "do": "view",
+              "to": [
+                9.4,
+                -0.7,
+                20.6,
+                5.5
+              ],
+              "at": "Here"
+            }
+          ]
+        },
+        {
+          "say": "The empty square is straight below forty-six.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "n46",
+              "at": "forty-six"
+            },
+            {
+              "do": "highlight",
+              "target": "blank",
+              "at": "below"
+            }
+          ]
+        },
+        {
+          "say": "I think it's forty-seven, because that's the number after forty-six.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "n47",
+              "at": "forty-seven"
+            },
+            {
+              "do": "watch",
+              "text": "Possible mix-up: check the direction.",
+              "id": "inferredMixup",
+              "at": "think"
+            }
+          ]
+        },
+        {
+          "say": "Forty-seven is one square to the right. Our empty square is straight below.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "n47",
+              "at": "Forty-seven"
+            },
+            {
+              "do": "text",
+              "text": "Right along a row: 1 more.",
+              "id": "rightRule",
+              "at": "right"
+            },
+            {
+              "do": "highlight",
+              "target": "blank",
+              "at": "below"
+            }
+          ]
+        },
+        {
+          "say": "Show the rest of these rows. Each full row has ten squares.",
+          "pause": 0.6,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "view",
+              "to": [
+                -0.65,
+                -7.4,
+                20.65,
+                5.4
+              ],
+              "at": "rest"
+            },
+            {
+              "do": "show",
+              "target": "surround",
+              "at": "rest"
+            },
+            {
+              "do": "text",
+              "text": "Every full row holds 10 numbers.",
+              "id": "fullRow",
+              "at": "ten"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "window",
+                "surround"
+              ],
+              "at": "row"
+            }
+          ]
+        },
+        {
+          "say": "Start at forty-six. One dot will record each step after it.",
+          "pause": 0.5,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "ring",
+              "at": "Start"
+            },
+            {
+              "do": "highlight",
+              "target": "n46",
+              "at": "forty-six"
+            },
+            {
+              "do": "text",
+              "text": "Count on from 46.",
+              "id": "start46",
+              "at": "Start"
+            },
+            {
+              "do": "show",
+              "target": [
+                "steps",
+                "count",
+                "stepCaption",
+                "stepWord"
+              ],
+              "at": "dot"
+            }
+          ]
+        },
+        {
+          "say": "Forty-seven, forty-eight, forty-nine, fifty.",
+          "pause": 0.5,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "Ring": "P47"
+              },
+              "at": "Forty-seven"
+            },
+            {
+              "do": "show",
+              "target": "dots1",
+              "at": "Forty-seven"
+            },
+            {
+              "do": "move",
+              "points": {
+                "Ring": "P48"
+              },
+              "at": "forty-eight"
+            },
+            {
+              "do": "show",
+              "target": "dots2",
+              "at": "forty-eight"
+            },
+            {
+              "do": "move",
+              "points": {
+                "Ring": "P49"
+              },
+              "at": "forty-nine"
+            },
+            {
+              "do": "show",
+              "target": "dots3",
+              "at": "forty-nine"
+            },
+            {
+              "do": "move",
+              "points": {
+                "Ring": "P50"
+              },
+              "at": "fifty"
+            },
+            {
+              "do": "show",
+              "target": "dots4",
+              "at": "fifty"
+            }
+          ]
+        },
+        {
+          "say": "After fifty, go to the left of the next row. Fifty-one.",
+          "pause": 0.5,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "Ring": "P51"
+              },
+              "at": "Fifty-one"
+            },
+            {
+              "do": "show",
+              "target": "dots5",
+              "at": "Fifty-one"
+            },
+            {
+              "do": "show",
+              "target": "n51",
+              "at": "Fifty-one"
+            }
+          ]
+        },
+        {
+          "say": "Fifty-two, fifty-three, fifty-four, fifty-five.",
+          "pause": 0.5,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "Ring": "P52"
+              },
+              "at": "Fifty-two"
+            },
+            {
+              "do": "show",
+              "target": "dots6",
+              "at": "Fifty-two"
+            },
+            {
+              "do": "show",
+              "target": "n52",
+              "at": "Fifty-two"
+            },
+            {
+              "do": "move",
+              "points": {
+                "Ring": "P53"
+              },
+              "at": "fifty-three"
+            },
+            {
+              "do": "show",
+              "target": "dots7",
+              "at": "fifty-three"
+            },
+            {
+              "do": "show",
+              "target": "n53",
+              "at": "fifty-three"
+            },
+            {
+              "do": "move",
+              "points": {
+                "Ring": "P54"
+              },
+              "at": "fifty-four"
+            },
+            {
+              "do": "show",
+              "target": "dots8",
+              "at": "fifty-four"
+            },
+            {
+              "do": "show",
+              "target": "n54",
+              "at": "fifty-four"
+            },
+            {
+              "do": "move",
+              "points": {
+                "Ring": "P55"
+              },
+              "at": "fifty-five"
+            },
+            {
+              "do": "show",
+              "target": "dots9",
+              "at": "fifty-five"
+            },
+            {
+              "do": "show",
+              "target": "n55",
+              "at": "fifty-five"
+            }
+          ]
+        },
+        {
+          "say": "Fifty-six. The tenth step lands in the empty square.",
+          "pause": 0.7,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "Ring": "P56"
+              },
+              "at": "Fifty-six"
+            },
+            {
+              "do": "show",
+              "target": "dots10",
+              "at": "Fifty-six"
+            },
+            {
+              "do": "show",
+              "target": "n56",
+              "at": "Fifty-six"
+            },
+            {
+              "do": "highlight",
+              "target": "count",
+              "at": "tenth"
+            }
+          ]
+        },
+        {
+          "say": "Ten dots. Down is ten steps after forty-six.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "dots",
+              "at": "Ten"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "n46",
+                "n56"
+              ],
+              "at": "Down"
+            }
+          ]
+        },
+        {
+          "say": "Each row has ten squares. Down to the same place in the next row means ten more.",
+          "pause": 0.6,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": "ring",
+              "at": "Down"
+            },
+            {
+              "do": "draw",
+              "target": "downArrow",
+              "at": "Down"
+            },
+            {
+              "do": "show",
+              "target": "tenMore",
+              "at": "more"
+            },
+            {
+              "do": "text",
+              "text": "Down one row: 10 more.",
+              "id": "downRule",
+              "at": "Down"
+            },
+            {
+              "do": "hide",
+              "target": "stepCaption",
+              "at": "Down"
+            }
+          ]
+        },
+        {
+          "say": "Fifty-six belongs in the empty square.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "answer",
+              "tex": "56",
+              "id": "downAnswer",
+              "at": "Fifty-six"
+            },
+            {
+              "do": "highlight",
+              "target": "n56",
+              "at": "square"
+            }
+          ]
+        },
+        {
+          "say": "Check across: fifty-six, fifty-seven, fifty-eight. They follow in counting order.",
+          "pause": 0.6,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "56,\\;57,\\;58",
+              "fresh": true,
+              "id": "check56",
+              "at": "Check"
+            },
+            {
+              "do": "highlight",
+              "target": "n56",
+              "at": "fifty-six"
+            },
+            {
+              "do": "highlight",
+              "target": "n57",
+              "at": "fifty-seven"
+            },
+            {
+              "do": "highlight",
+              "target": "n58",
+              "at": "fifty-eight"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.7,
+          -2.1,
+          8.7,
+          7.3
+        ],
+        "points": {
+          "G": [
+            0,
+            6
+          ],
+          "B0": [
+            6,
+            4
+          ],
+          "B1": [
+            8,
+            4
+          ],
+          "B2": [
+            8,
+            2
+          ],
+          "B3": [
+            6,
+            2
+          ],
+          "RA": [
+            5.55,
+            3
+          ],
+          "RB": [
+            6.45,
+            3
+          ],
+          "LA": [
+            7,
+            4.55
+          ],
+          "LB": [
+            7,
+            3.45
+          ],
+          "More": [
+            4,
+            -0.95
+          ],
+          "P27": {
+            "cell": [
+              "chartPiece",
+              1
+            ]
+          },
+          "P28": {
+            "cell": [
+              "chartPiece",
+              2
+            ]
+          },
+          "P29": {
+            "cell": [
+              "chartPiece",
+              3
+            ]
+          },
+          "P30": {
+            "cell": [
+              "chartPiece",
+              4
+            ]
+          },
+          "P37": {
+            "cell": [
+              "chartPiece",
+              5
+            ]
+          },
+          "P38": {
+            "cell": [
+              "chartPiece",
+              6
+            ]
+          },
+          "P39": {
+            "cell": [
+              "chartPiece",
+              7
+            ]
+          },
+          "P40": {
+            "cell": [
+              "chartPiece",
+              8
+            ]
+          },
+          "P47": {
+            "cell": [
+              "chartPiece",
+              9
+            ]
+          },
+          "P48": {
+            "cell": [
+              "chartPiece",
+              10
+            ]
+          },
+          "P49": {
+            "cell": [
+              "chartPiece",
+              11
+            ]
+          },
+          "P50": {
+            "cell": [
+              "chartPiece",
+              12
+            ]
+          }
+        },
+        "parts": [
+          {
+            "id": "chartPiece",
+            "start": true,
+            "grid": [
+              4,
+              3
+            ],
+            "at": "G",
+            "size": 2,
+            "fill": "none",
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "blank",
+            "start": true,
+            "poly": [
+              "B0",
+              "B1",
+              "B2",
+              "B3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 6
+          },
+          {
+            "id": "rightArrow",
+            "vector": [
+              "RA",
+              "RB"
+            ],
+            "ink": "accent",
+            "w": 6
+          },
+          {
+            "id": "downArrow",
+            "vector": [
+              "LA",
+              "LB"
+            ],
+            "ink": "accent",
+            "w": 6
+          },
+          {
+            "id": "edgeMore",
+            "label": "\\text{1 more}",
+            "at": "More",
+            "dir": "c",
+            "ink": "accent",
+            "size": "s"
+          },
+          {
+            "id": "n27",
+            "start": true,
+            "label": "27",
+            "at": "P27",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "n28",
+            "start": true,
+            "label": "28",
+            "at": "P28",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "n29",
+            "start": true,
+            "label": "29",
+            "at": "P29",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "n30",
+            "start": true,
+            "label": "30",
+            "at": "P30",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "n37",
+            "start": true,
+            "label": "37",
+            "at": "P37",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "n38",
+            "start": true,
+            "label": "38",
+            "at": "P38",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "n39",
+            "start": true,
+            "label": "39",
+            "at": "P39",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "n40",
+            "label": "40",
+            "at": "P40",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "n47",
+            "start": true,
+            "label": "47",
+            "at": "P47",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "n48",
+            "start": true,
+            "label": "48",
+            "at": "P48",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "n49",
+            "start": true,
+            "label": "49",
+            "at": "P49",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "n50",
+            "start": true,
+            "label": "50",
+            "at": "P50",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "This piece has an empty square at the end of a row. What number belongs there?",
+          "pause": 0.8,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "What number belongs in the $\\cg{empty}$ square at the end of this row?",
+              "id": "edgeProblem",
+              "at": "This"
+            },
+            {
+              "do": "highlight",
+              "target": "blank",
+              "at": "empty"
+            }
+          ]
+        },
+        {
+          "say": "Thirty-seven, thirty-eight, thirty-nine. I need the next number.",
+          "pause": 0.6,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "n37",
+              "at": "Thirty-seven"
+            },
+            {
+              "do": "highlight",
+              "target": "n38",
+              "at": "thirty-eight"
+            },
+            {
+              "do": "highlight",
+              "target": "n39",
+              "at": "thirty-nine"
+            }
+          ]
+        },
+        {
+          "say": "After thirty-nine comes forty, a new ten word.",
+          "pause": 0.6,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "draw",
+              "target": "rightArrow",
+              "at": "After"
+            },
+            {
+              "do": "show",
+              "target": "n40",
+              "at": "forty"
+            },
+            {
+              "do": "show",
+              "target": "edgeMore",
+              "at": "forty"
+            },
+            {
+              "do": "text",
+              "text": "One more than 39 is 40.",
+              "id": "edgeNext",
+              "at": "forty"
+            }
+          ]
+        },
+        {
+          "say": "Forty belongs in the empty square.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "answer",
+              "tex": "40",
+              "id": "edgeAnswer",
+              "at": "Forty"
+            }
+          ]
+        },
+        {
+          "say": "Check from above. Thirty is directly above forty. Ten more than thirty is forty.",
+          "pause": 0.8,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": "rightArrow",
+              "at": "above"
+            },
+            {
+              "do": "highlight",
+              "target": "n30",
+              "at": "Thirty"
+            },
+            {
+              "do": "draw",
+              "target": "downArrow",
+              "at": "Ten"
+            },
+            {
+              "do": "text",
+              "text": "Ten more than 30 is 40.",
+              "id": "edgeCheck",
+              "at": "Ten"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Start from a number you can see.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "overview",
+              "of": "downProblem",
+              "at": "Start"
+            },
+            {
+              "do": "recap",
+              "text": "Start from a shown number.",
+              "marks": [
+                "start46"
+              ],
+              "at": "Start"
+            }
+          ]
+        },
+        {
+          "say": "Along a row, I say the next number: one more.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Right along a row: 1 more.",
+              "marks": [
+                "rightRule"
+              ],
+              "at": "Along"
+            }
+          ]
+        },
+        {
+          "say": "Straight down, ten more, because each row has ten squares.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Down one row: 10 more. Each full row has 10 squares.",
+              "marks": [
+                "fullRow",
+                "downRule"
+              ],
+              "at": "Straight"
+            }
+          ]
+        },
+        {
+          "say": "Then I read across the gap to check the order.",
+          "pause": 1,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Read across the gap to check the counting order.",
+              "marks": [
+                "check56",
+                "downAnswer"
+              ],
+              "at": "read"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

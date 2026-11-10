@@ -1,0 +1,2936 @@
+{
+  "id": "count-out-objects--va",
+  "title": "Which ten-frame shows that many?",
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -1.7,
+          0.4,
+          8.9,
+          10.9
+        ],
+        "points": {
+          "G1": [
+            0,
+            8.8
+          ],
+          "G2": [
+            0,
+            4.3
+          ],
+          "Q1": [
+            7.75,
+            7.7
+          ],
+          "Q2": [
+            7.75,
+            3.2
+          ],
+          "ML1": [
+            0,
+            7.7
+          ],
+          "BL1": [
+            0,
+            6.6
+          ]
+        },
+        "parts": [
+          {
+            "id": "f1",
+            "start": true,
+            "grid": [
+              5,
+              2
+            ],
+            "at": "G1",
+            "size": [
+              1.3,
+              1.1
+            ],
+            "ink": "ink",
+            "w": 5
+          },
+          {
+            "id": "f2",
+            "start": true,
+            "grid": [
+              5,
+              2
+            ],
+            "at": "G2",
+            "size": [
+              1.3,
+              1.1
+            ],
+            "ink": "ink",
+            "w": 5
+          },
+          {
+            "id": "u",
+            "counters": "f1",
+            "n": 10,
+            "ink": "accent"
+          },
+          {
+            "id": "v",
+            "counters": "f2",
+            "n": 3,
+            "ink": "accent"
+          },
+          {
+            "id": "nu1",
+            "label": "1",
+            "at": "u1",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nu2",
+            "label": "2",
+            "at": "u2",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nu3",
+            "label": "3",
+            "at": "u3",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nu4",
+            "label": "4",
+            "at": "u4",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nu5",
+            "label": "5",
+            "at": "u5",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nu6",
+            "label": "6",
+            "at": "u6",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nu7",
+            "label": "7",
+            "at": "u7",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nu8",
+            "label": "8",
+            "at": "u8",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nu9",
+            "label": "9",
+            "at": "u9",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nu10",
+            "label": "10",
+            "at": "u10",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nv1",
+            "label": "1",
+            "at": "v1",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nv2",
+            "label": "2",
+            "at": "v2",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nv3",
+            "label": "3",
+            "at": "v3",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "tot1",
+            "label": "10",
+            "at": "Q1",
+            "dir": "c",
+            "ink": "ink",
+            "size": "xl"
+          },
+          {
+            "id": "tot2",
+            "label": "3",
+            "at": "Q2",
+            "dir": "c",
+            "ink": "ink",
+            "size": "xl"
+          },
+          {
+            "id": "dTop",
+            "dim": [
+              "G1",
+              "ML1"
+            ],
+            "side": "w",
+            "tex": "5",
+            "ink": "gold"
+          },
+          {
+            "id": "dBot",
+            "dim": [
+              "ML1",
+              "BL1"
+            ],
+            "side": "w",
+            "tex": "5",
+            "ink": "gold"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "This is a ten-frame. It is a box with ten places.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "term",
+              "word": "ten-frame",
+              "meaning": "A box with ten places, five on top and five below.",
+              "id": "tTen",
+              "at": "ten-frame"
+            },
+            {
+              "do": "highlight",
+              "target": "f1",
+              "at": "places"
+            }
+          ]
+        },
+        {
+          "say": "Five places on top, five places below.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "dTop",
+              "at": "top"
+            },
+            {
+              "do": "show",
+              "target": "dBot",
+              "at": "below"
+            }
+          ]
+        },
+        {
+          "say": "A counter is a dot that stands for one thing. Each place holds one counter.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "term",
+              "word": "counter",
+              "meaning": "A dot that stands for one thing.",
+              "id": "tCounter",
+              "at": "counter"
+            },
+            {
+              "do": "show",
+              "target": "u1",
+              "at": "dot"
+            },
+            {
+              "do": "highlight",
+              "target": "u1",
+              "at": "holds"
+            }
+          ]
+        },
+        {
+          "say": "Say one number for each counter, in order.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "u1",
+              "at": "number"
+            }
+          ]
+        },
+        {
+          "say": "One, two, three, four, five.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "nu1",
+              "at": "One"
+            },
+            {
+              "do": "show",
+              "target": [
+                "u2",
+                "nu2"
+              ],
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": [
+                "u3",
+                "nu3"
+              ],
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": [
+                "u4",
+                "nu4"
+              ],
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": [
+                "u5",
+                "nu5"
+              ],
+              "at": "five"
+            }
+          ]
+        },
+        {
+          "say": "The top row is full. The frame is not. Six, seven, eight, nine, ten.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "f1",
+              "at": "frame"
+            },
+            {
+              "do": "show",
+              "target": [
+                "u6",
+                "nu6"
+              ],
+              "at": "Six"
+            },
+            {
+              "do": "show",
+              "target": [
+                "u7",
+                "nu7"
+              ],
+              "at": "seven"
+            },
+            {
+              "do": "show",
+              "target": [
+                "u8",
+                "nu8"
+              ],
+              "at": "eight"
+            },
+            {
+              "do": "show",
+              "target": [
+                "u9",
+                "nu9"
+              ],
+              "at": "nine"
+            },
+            {
+              "do": "show",
+              "target": [
+                "u10",
+                "nu10"
+              ],
+              "at": "ten"
+            }
+          ]
+        },
+        {
+          "say": "The last number is ten, so this frame shows ten. A full frame is ten.",
+          "pause": 0.4,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "nu10",
+              "at": "last"
+            },
+            {
+              "do": "show",
+              "target": "tot1",
+              "at": "ten"
+            },
+            {
+              "do": "highlight",
+              "target": "f1",
+              "at": "full"
+            }
+          ]
+        },
+        {
+          "say": "Here is another frame. It already has counters in it.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "f2",
+              "at": "another"
+            },
+            {
+              "do": "show",
+              "target": "v",
+              "at": "counters"
+            }
+          ]
+        },
+        {
+          "say": "It is a ten-frame, so it shows ten. Right?",
+          "pause": 0.4,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "f2",
+              "at": "ten-frame"
+            }
+          ]
+        },
+        {
+          "say": "A ten-frame has ten places, but it shows only the counters in it.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "f2",
+              "at": "places"
+            },
+            {
+              "do": "highlight",
+              "target": "v",
+              "at": "counters"
+            }
+          ]
+        },
+        {
+          "say": "Count them. One, two, three.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "nv1",
+              "at": "One"
+            },
+            {
+              "do": "show",
+              "target": "nv2",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "nv3",
+              "at": "three"
+            }
+          ]
+        },
+        {
+          "say": "The last number is three, so this frame shows three.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "nv3",
+              "at": "last"
+            },
+            {
+              "do": "show",
+              "target": "tot2",
+              "at": "three"
+            }
+          ]
+        },
+        {
+          "say": "Seven places are empty. An empty place is not a counter, so we do not count it.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "f2",
+              "at": "Seven"
+            },
+            {
+              "do": "highlight",
+              "target": "f2",
+              "at": "empty",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": "f2",
+              "at": "count"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.7,
+          -0.08,
+          8.7,
+          10.58
+        ],
+        "points": {
+          "GA": [
+            0,
+            10.3
+          ],
+          "GB": [
+            0,
+            7.6
+          ],
+          "GC": [
+            0,
+            4.9
+          ],
+          "GD": [
+            0,
+            2.2
+          ],
+          "LA": [
+            -0.85,
+            9.3
+          ],
+          "LB": [
+            -0.85,
+            6.6
+          ],
+          "LC": [
+            -0.85,
+            3.9
+          ],
+          "LD": [
+            -0.85,
+            1.2
+          ],
+          "NA": [
+            7.5,
+            9.3
+          ],
+          "NB": [
+            7.5,
+            6.6
+          ],
+          "NC": [
+            7.5,
+            3.9
+          ],
+          "ND": [
+            7.5,
+            1.2
+          ]
+        },
+        "parts": [
+          {
+            "id": "fa",
+            "start": true,
+            "grid": [
+              5,
+              2
+            ],
+            "at": "GA",
+            "size": [
+              1.25,
+              1
+            ],
+            "ink": "ink",
+            "w": 5
+          },
+          {
+            "id": "fb",
+            "start": true,
+            "grid": [
+              5,
+              2
+            ],
+            "at": "GB",
+            "size": [
+              1.25,
+              1
+            ],
+            "ink": "ink",
+            "w": 5
+          },
+          {
+            "id": "fc",
+            "start": true,
+            "grid": [
+              5,
+              2
+            ],
+            "at": "GC",
+            "size": [
+              1.25,
+              1
+            ],
+            "ink": "ink",
+            "w": 5
+          },
+          {
+            "id": "fd",
+            "start": true,
+            "grid": [
+              5,
+              2
+            ],
+            "at": "GD",
+            "size": [
+              1.25,
+              1
+            ],
+            "ink": "ink",
+            "w": 5
+          },
+          {
+            "id": "ca",
+            "start": true,
+            "counters": "fa",
+            "n": 8,
+            "ink": "accent"
+          },
+          {
+            "id": "cb",
+            "start": true,
+            "counters": "fb",
+            "n": 10,
+            "ink": "accent"
+          },
+          {
+            "id": "cc",
+            "start": true,
+            "counters": "fc",
+            "n": 9,
+            "ink": "accent"
+          },
+          {
+            "id": "lbA",
+            "start": true,
+            "label": "A",
+            "at": "LA",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "lbB",
+            "start": true,
+            "label": "B",
+            "at": "LB",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "lbC",
+            "start": true,
+            "label": "C",
+            "at": "LC",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "lbD",
+            "start": true,
+            "label": "D",
+            "at": "LD",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "ta",
+            "label": "8",
+            "at": "NA",
+            "dir": "c",
+            "ink": "ink",
+            "size": "xl"
+          },
+          {
+            "id": "tb",
+            "label": "10",
+            "at": "NB",
+            "dir": "c",
+            "ink": "ink",
+            "size": "xl"
+          },
+          {
+            "id": "tc",
+            "label": "9",
+            "at": "NC",
+            "dir": "c",
+            "ink": "ink",
+            "size": "xl"
+          },
+          {
+            "id": "td",
+            "label": "0",
+            "at": "ND",
+            "dir": "c",
+            "ink": "ink",
+            "size": "xl"
+          },
+          {
+            "id": "na1",
+            "label": "1",
+            "at": "ca1",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "na2",
+            "label": "2",
+            "at": "ca2",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "na3",
+            "label": "3",
+            "at": "ca3",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "na4",
+            "label": "4",
+            "at": "ca4",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "na5",
+            "label": "5",
+            "at": "ca5",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "na6",
+            "label": "6",
+            "at": "ca6",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "na7",
+            "label": "7",
+            "at": "ca7",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "na8",
+            "label": "8",
+            "at": "ca8",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nb1",
+            "label": "1",
+            "at": "cb1",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nb2",
+            "label": "2",
+            "at": "cb2",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nb3",
+            "label": "3",
+            "at": "cb3",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nb4",
+            "label": "4",
+            "at": "cb4",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nb5",
+            "label": "5",
+            "at": "cb5",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nb6",
+            "label": "6",
+            "at": "cb6",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nb7",
+            "label": "7",
+            "at": "cb7",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nb8",
+            "label": "8",
+            "at": "cb8",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nb9",
+            "label": "9",
+            "at": "cb9",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nb10",
+            "label": "10",
+            "at": "cb10",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nc1",
+            "label": "1",
+            "at": "cc1",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nc2",
+            "label": "2",
+            "at": "cc2",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nc3",
+            "label": "3",
+            "at": "cc3",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nc4",
+            "label": "4",
+            "at": "cc4",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nc5",
+            "label": "5",
+            "at": "cc5",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nc6",
+            "label": "6",
+            "at": "cc6",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nc7",
+            "label": "7",
+            "at": "cc7",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nc8",
+            "label": "8",
+            "at": "cc8",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          },
+          {
+            "id": "nc9",
+            "label": "9",
+            "at": "cc9",
+            "dir": "c",
+            "ink": "paper",
+            "size": "s"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Which frame shows nine counters? Here are four frames: A, B, C, D.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Which frame shows 9 counters?",
+              "choices": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "id": "p1",
+              "at": "Which"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "fa",
+                "ca"
+              ],
+              "at": "A"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "fb",
+                "cb"
+              ],
+              "at": "B"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "fc",
+                "cc"
+              ],
+              "at": "C"
+            },
+            {
+              "do": "highlight",
+              "target": "fd",
+              "at": "D"
+            }
+          ]
+        },
+        {
+          "say": "B. I counted to nine in B, so B shows nine.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "fb",
+                "cb"
+              ],
+              "at": "counted"
+            }
+          ]
+        },
+        {
+          "say": "When you fill a frame yourself, you stop at the number you want.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "fd",
+              "at": "fill"
+            }
+          ]
+        },
+        {
+          "say": "B is already filled. Count every counter, to the last one.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "fb",
+                "cb"
+              ],
+              "at": "already"
+            },
+            {
+              "do": "highlight",
+              "target": "cb10",
+              "at": "last"
+            }
+          ]
+        },
+        {
+          "say": "One, two, three, four, five, six, seven, eight, nine.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "nb1",
+              "at": "One"
+            },
+            {
+              "do": "show",
+              "target": "nb2",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "nb3",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "nb4",
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": "nb5",
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": "nb6",
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": "nb7",
+              "at": "seven"
+            },
+            {
+              "do": "show",
+              "target": "nb8",
+              "at": "eight"
+            },
+            {
+              "do": "show",
+              "target": "nb9",
+              "at": "nine"
+            }
+          ]
+        },
+        {
+          "say": "Nine is not the last counter. One counter is still left. Ten.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "nb9",
+              "at": "Nine"
+            },
+            {
+              "do": "highlight",
+              "target": "cb10",
+              "at": "left"
+            },
+            {
+              "do": "show",
+              "target": "nb10",
+              "at": "Ten"
+            }
+          ]
+        },
+        {
+          "say": "What number did the count end on?",
+          "pause": 0.5,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "nb10",
+              "at": "end"
+            }
+          ]
+        },
+        {
+          "say": "Ten. So B shows ten, not nine.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "show",
+              "target": "tb",
+              "at": "Ten"
+            }
+          ]
+        },
+        {
+          "say": "Ten is one after nine, so B has one counter too many.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "fb",
+                "cb"
+              ],
+              "at": "many"
+            }
+          ]
+        },
+        {
+          "say": "The last number you say tells how many. Count to the last counter.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "tb",
+              "at": "last"
+            },
+            {
+              "do": "watch",
+              "text": "Count every counter, to the last one. The last number said is how many.",
+              "id": "w1",
+              "at": "tells"
+            }
+          ]
+        },
+        {
+          "say": "Now count the other frames the same way.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "fa",
+                "fc",
+                "fd"
+              ],
+              "at": "other"
+            }
+          ]
+        },
+        {
+          "say": "Frame A: one, two, three, four, five, six, seven, eight.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "na1",
+              "at": "one"
+            },
+            {
+              "do": "show",
+              "target": "na2",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "na3",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "na4",
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": "na5",
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": "na6",
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": "na7",
+              "at": "seven"
+            },
+            {
+              "do": "show",
+              "target": "na8",
+              "at": "eight"
+            }
+          ]
+        },
+        {
+          "say": "A ends on eight, one before nine, so it has one counter too few.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "ta",
+              "at": "eight"
+            },
+            {
+              "do": "highlight",
+              "target": "ta",
+              "at": "few"
+            }
+          ]
+        },
+        {
+          "say": "Frame C: one, two, three, four, five, six, seven, eight, nine.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "nc1",
+              "at": "one"
+            },
+            {
+              "do": "show",
+              "target": "nc2",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "nc3",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "nc4",
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": "nc5",
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": "nc6",
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": "nc7",
+              "at": "seven"
+            },
+            {
+              "do": "show",
+              "target": "nc8",
+              "at": "eight"
+            },
+            {
+              "do": "show",
+              "target": "nc9",
+              "at": "nine"
+            }
+          ]
+        },
+        {
+          "say": "C ends on nine. That is the number we were asked for.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "tc",
+              "at": "nine"
+            },
+            {
+              "do": "highlight",
+              "target": "tc",
+              "at": "That"
+            },
+            {
+              "do": "highlight",
+              "target": "lbC",
+              "at": "asked"
+            }
+          ]
+        },
+        {
+          "say": "Frame D has no counters, so there is nothing to count. That is zero.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "fd",
+              "at": "no"
+            },
+            {
+              "do": "highlight",
+              "target": "fd",
+              "at": "nothing"
+            },
+            {
+              "do": "show",
+              "target": "td",
+              "at": "zero"
+            }
+          ]
+        },
+        {
+          "say": "Only C ends on nine. Frame C shows nine counters.",
+          "pause": 0.4,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "tc",
+                "lbC"
+              ],
+              "at": "Only"
+            },
+            {
+              "do": "answer",
+              "tex": "\\text{Frame C}",
+              "id": "a1",
+              "at": "Frame"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.2,
+          0.1,
+          12.15,
+          10.7
+        ],
+        "points": {
+          "GA1": [
+            0,
+            10.6
+          ],
+          "GA2": [
+            5.4,
+            10.6
+          ],
+          "GB1": [
+            0,
+            7.9
+          ],
+          "GB2": [
+            5.4,
+            7.9
+          ],
+          "GC1": [
+            0,
+            5.2
+          ],
+          "GD1": [
+            0,
+            2.5
+          ],
+          "GD2": [
+            5.4,
+            2.5
+          ],
+          "LA": [
+            -0.6,
+            9.45
+          ],
+          "LB": [
+            -0.6,
+            6.75
+          ],
+          "LC": [
+            -0.6,
+            4.05
+          ],
+          "LD": [
+            -0.6,
+            1.35
+          ],
+          "NA": [
+            11.4,
+            9.45
+          ],
+          "NB": [
+            11.4,
+            6.75
+          ],
+          "NC": [
+            11.4,
+            4.05
+          ],
+          "ND": [
+            11.4,
+            1.35
+          ],
+          "RA": {
+            "cell": [
+              "fA1",
+              10
+            ]
+          },
+          "RB": {
+            "cell": [
+              "fB1",
+              10
+            ]
+          },
+          "RC": {
+            "cell": [
+              "fC1",
+              1
+            ]
+          },
+          "RD": {
+            "cell": [
+              "fD1",
+              10
+            ]
+          }
+        },
+        "parts": [
+          {
+            "id": "fA1",
+            "start": true,
+            "grid": [
+              5,
+              2
+            ],
+            "at": "GA1",
+            "size": [
+              1,
+              1.15
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "fA2",
+            "start": true,
+            "grid": [
+              5,
+              2
+            ],
+            "at": "GA2",
+            "size": [
+              1,
+              1.15
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "fB1",
+            "start": true,
+            "grid": [
+              5,
+              2
+            ],
+            "at": "GB1",
+            "size": [
+              1,
+              1.15
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "fB2",
+            "start": true,
+            "grid": [
+              5,
+              2
+            ],
+            "at": "GB2",
+            "size": [
+              1,
+              1.15
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "fC1",
+            "start": true,
+            "grid": [
+              5,
+              2
+            ],
+            "at": "GC1",
+            "size": [
+              1,
+              1.15
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "fD1",
+            "start": true,
+            "grid": [
+              5,
+              2
+            ],
+            "at": "GD1",
+            "size": [
+              1,
+              1.15
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "fD2",
+            "start": true,
+            "grid": [
+              5,
+              2
+            ],
+            "at": "GD2",
+            "size": [
+              1,
+              1.15
+            ],
+            "ink": "ink",
+            "w": 4
+          },
+          {
+            "id": "ringA",
+            "dot": "RA",
+            "ink": "gold",
+            "r": 30
+          },
+          {
+            "id": "ringB",
+            "dot": "RB",
+            "ink": "gold",
+            "r": 30
+          },
+          {
+            "id": "ringC",
+            "dot": "RC",
+            "ink": "gold",
+            "r": 30
+          },
+          {
+            "id": "ringD",
+            "dot": "RD",
+            "ink": "gold",
+            "r": 30
+          },
+          {
+            "id": "kA",
+            "start": true,
+            "counters": "fA1",
+            "n": 10,
+            "ink": "accent"
+          },
+          {
+            "id": "mA",
+            "start": true,
+            "counters": "fA2",
+            "n": 8,
+            "shape": "square",
+            "ink": "warm"
+          },
+          {
+            "id": "kB",
+            "start": true,
+            "counters": "fB1",
+            "n": 10,
+            "ink": "accent"
+          },
+          {
+            "id": "mB",
+            "start": true,
+            "counters": "fB2",
+            "n": 6,
+            "shape": "square",
+            "ink": "warm"
+          },
+          {
+            "id": "kC",
+            "start": true,
+            "counters": "fC1",
+            "n": 7,
+            "ink": "accent"
+          },
+          {
+            "id": "kD",
+            "start": true,
+            "counters": "fD1",
+            "n": 10,
+            "ink": "accent"
+          },
+          {
+            "id": "mD",
+            "start": true,
+            "counters": "fD2",
+            "n": 7,
+            "shape": "square",
+            "ink": "warm"
+          },
+          {
+            "id": "lbA",
+            "start": true,
+            "label": "A",
+            "at": "LA",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "lbB",
+            "start": true,
+            "label": "B",
+            "at": "LB",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "lbC",
+            "start": true,
+            "label": "C",
+            "at": "LC",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "lbD",
+            "start": true,
+            "label": "D",
+            "at": "LD",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rC1",
+            "label": "1",
+            "at": "NC",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rC2",
+            "label": "2",
+            "at": "NC",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rC3",
+            "label": "3",
+            "at": "NC",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rC4",
+            "label": "4",
+            "at": "NC",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rC5",
+            "label": "5",
+            "at": "NC",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rC6",
+            "label": "6",
+            "at": "NC",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rC7",
+            "label": "7",
+            "at": "NC",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rD10",
+            "label": "10",
+            "at": "ND",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rD11",
+            "label": "11",
+            "at": "ND",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rD12",
+            "label": "12",
+            "at": "ND",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rD13",
+            "label": "13",
+            "at": "ND",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rD14",
+            "label": "14",
+            "at": "ND",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rD15",
+            "label": "15",
+            "at": "ND",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rD16",
+            "label": "16",
+            "at": "ND",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rD17",
+            "label": "17",
+            "at": "ND",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rA10",
+            "label": "10",
+            "at": "NA",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rA11",
+            "label": "11",
+            "at": "NA",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rA12",
+            "label": "12",
+            "at": "NA",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rA13",
+            "label": "13",
+            "at": "NA",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rA14",
+            "label": "14",
+            "at": "NA",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rA15",
+            "label": "15",
+            "at": "NA",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rA16",
+            "label": "16",
+            "at": "NA",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rA17",
+            "label": "17",
+            "at": "NA",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rA18",
+            "label": "18",
+            "at": "NA",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rB10",
+            "label": "10",
+            "at": "NB",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rB11",
+            "label": "11",
+            "at": "NB",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rB12",
+            "label": "12",
+            "at": "NB",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rB13",
+            "label": "13",
+            "at": "NB",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rB14",
+            "label": "14",
+            "at": "NB",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rB15",
+            "label": "15",
+            "at": "NB",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          },
+          {
+            "id": "rB16",
+            "label": "16",
+            "at": "NB",
+            "dir": "c",
+            "ink": "ink",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Which frame shows seventeen counters? Here are four frames: A, B, C, D.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Which frame shows 17 counters?",
+              "choices": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "id": "p2",
+              "at": "Which"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "fA1",
+                "fA2",
+                "kA",
+                "mA"
+              ],
+              "at": "A"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "fB1",
+                "fB2",
+                "kB",
+                "mB"
+              ],
+              "at": "B"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "fC1",
+                "kC"
+              ],
+              "at": "C"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "fD1",
+                "fD2",
+                "kD",
+                "mD"
+              ],
+              "at": "D"
+            }
+          ]
+        },
+        {
+          "say": "Seventeen starts with seven. So I pick C. It has seven counters.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "kC",
+              "at": "seven"
+            },
+            {
+              "do": "highlight",
+              "target": "fC1",
+              "at": "pick"
+            }
+          ]
+        },
+        {
+          "say": "Count every counter in C, to the last counter.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "ringC",
+              "at": "Count"
+            }
+          ]
+        },
+        {
+          "say": "One, two, three, four, five, six, seven.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "rC1",
+              "at": "One",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RC": "kC2"
+              },
+              "at": "two",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rC1",
+              "at": "two",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rC2",
+              "at": "two",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RC": "kC3"
+              },
+              "at": "three",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rC2",
+              "at": "three",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rC3",
+              "at": "three",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RC": "kC4"
+              },
+              "at": "four",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rC3",
+              "at": "four",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rC4",
+              "at": "four",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RC": "kC5"
+              },
+              "at": "five",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rC4",
+              "at": "five",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rC5",
+              "at": "five",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RC": "kC6"
+              },
+              "at": "six",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rC5",
+              "at": "six",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rC6",
+              "at": "six",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RC": "kC7"
+              },
+              "at": "seven",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rC6",
+              "at": "seven",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rC7",
+              "at": "seven",
+              "dur": 0.15
+            }
+          ]
+        },
+        {
+          "say": "The last number is seven. C shows seven counters, not seventeen.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "rC7",
+              "at": "last"
+            },
+            {
+              "do": "highlight",
+              "target": "kC",
+              "at": "shows"
+            },
+            {
+              "do": "hide",
+              "target": "ringC",
+              "at": "not"
+            }
+          ]
+        },
+        {
+          "say": "A frame holds only ten. How can seventeen fit?",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "fA1",
+                "fB1",
+                "fC1",
+                "fD1"
+              ],
+              "at": "ten"
+            }
+          ]
+        },
+        {
+          "say": "It does not fit in one frame. Seventeen needs a second frame.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "fD1",
+              "at": "fit"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "fA2",
+                "fB2",
+                "fD2"
+              ],
+              "at": "second"
+            }
+          ]
+        },
+        {
+          "say": "Look at D. Its first frame is full. A full frame is ten.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "lbD",
+              "at": "Look"
+            },
+            {
+              "do": "highlight",
+              "target": "fD1",
+              "at": "full"
+            },
+            {
+              "do": "show",
+              "target": "ringD",
+              "at": "ten",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rD10",
+              "at": "ten",
+              "dur": 0.15
+            }
+          ]
+        },
+        {
+          "say": "Keep counting in the second frame. Eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "fD2",
+              "at": "second"
+            },
+            {
+              "do": "move",
+              "points": {
+                "RD": "mD1"
+              },
+              "at": "Eleven",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rD10",
+              "at": "Eleven",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rD11",
+              "at": "Eleven",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RD": "mD2"
+              },
+              "at": "twelve",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rD11",
+              "at": "twelve",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rD12",
+              "at": "twelve",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RD": "mD3"
+              },
+              "at": "thirteen",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rD12",
+              "at": "thirteen",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rD13",
+              "at": "thirteen",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RD": "mD4"
+              },
+              "at": "fourteen",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rD13",
+              "at": "fourteen",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rD14",
+              "at": "fourteen",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RD": "mD5"
+              },
+              "at": "fifteen",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rD14",
+              "at": "fifteen",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rD15",
+              "at": "fifteen",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RD": "mD6"
+              },
+              "at": "sixteen",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rD15",
+              "at": "sixteen",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rD16",
+              "at": "sixteen",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RD": "mD7"
+              },
+              "at": "seventeen",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rD16",
+              "at": "seventeen",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rD17",
+              "at": "seventeen",
+              "dur": 0.15
+            }
+          ]
+        },
+        {
+          "say": "The last number is seventeen. D shows seventeen counters.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "rD17",
+              "at": "last"
+            },
+            {
+              "do": "hide",
+              "target": "ringD",
+              "at": "counters"
+            }
+          ]
+        },
+        {
+          "say": "How many counters are in the first frame? How many in the second?",
+          "pause": 0.5,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "kD",
+              "at": "counters"
+            },
+            {
+              "do": "highlight",
+              "target": "fD1",
+              "at": "first"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "fD2",
+                "mD"
+              ],
+              "at": "second"
+            }
+          ]
+        },
+        {
+          "say": "Ten in the first frame. Seven in the second. Ten and seven more is seventeen.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "kD",
+              "at": "Ten"
+            },
+            {
+              "do": "highlight",
+              "target": "mD",
+              "at": "Seven"
+            },
+            {
+              "do": "text",
+              "text": "$\\ca{10}$ and $\\cw{7}$ more is $17$.",
+              "id": "s2",
+              "at": "more"
+            }
+          ]
+        },
+        {
+          "say": "C has seven counters and no full ten. The full ten is part of seventeen.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "kC",
+              "at": "C"
+            },
+            {
+              "do": "highlight",
+              "target": "kD",
+              "at": "full",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "Now A. The first frame is full: ten. Then eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "lbA",
+              "at": "Now"
+            },
+            {
+              "do": "show",
+              "target": "ringA",
+              "at": "ten",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rA10",
+              "at": "ten",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RA": "mA1"
+              },
+              "at": "eleven",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rA10",
+              "at": "eleven",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rA11",
+              "at": "eleven",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RA": "mA2"
+              },
+              "at": "twelve",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rA11",
+              "at": "twelve",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rA12",
+              "at": "twelve",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RA": "mA3"
+              },
+              "at": "thirteen",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rA12",
+              "at": "thirteen",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rA13",
+              "at": "thirteen",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RA": "mA4"
+              },
+              "at": "fourteen",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rA13",
+              "at": "fourteen",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rA14",
+              "at": "fourteen",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RA": "mA5"
+              },
+              "at": "fifteen",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rA14",
+              "at": "fifteen",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rA15",
+              "at": "fifteen",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RA": "mA6"
+              },
+              "at": "sixteen",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rA15",
+              "at": "sixteen",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rA16",
+              "at": "sixteen",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RA": "mA7"
+              },
+              "at": "seventeen",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rA16",
+              "at": "seventeen",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rA17",
+              "at": "seventeen",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RA": "mA8"
+              },
+              "at": "eighteen",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rA17",
+              "at": "eighteen",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rA18",
+              "at": "eighteen",
+              "dur": 0.15
+            }
+          ]
+        },
+        {
+          "say": "A ends on eighteen, one after seventeen. It has one counter too many.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "rA18",
+              "at": "ends"
+            },
+            {
+              "do": "hide",
+              "target": "ringA",
+              "at": "It"
+            },
+            {
+              "do": "highlight",
+              "target": "mA",
+              "at": "many"
+            }
+          ]
+        },
+        {
+          "say": "Now B. Ten. Eleven, twelve, thirteen, fourteen, fifteen, sixteen.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "lbB",
+              "at": "Now"
+            },
+            {
+              "do": "show",
+              "target": "ringB",
+              "at": "Ten",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rB10",
+              "at": "Ten",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RB": "mB1"
+              },
+              "at": "Eleven",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rB10",
+              "at": "Eleven",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rB11",
+              "at": "Eleven",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RB": "mB2"
+              },
+              "at": "twelve",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rB11",
+              "at": "twelve",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rB12",
+              "at": "twelve",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RB": "mB3"
+              },
+              "at": "thirteen",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rB12",
+              "at": "thirteen",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rB13",
+              "at": "thirteen",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RB": "mB4"
+              },
+              "at": "fourteen",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rB13",
+              "at": "fourteen",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rB14",
+              "at": "fourteen",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RB": "mB5"
+              },
+              "at": "fifteen",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rB14",
+              "at": "fifteen",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rB15",
+              "at": "fifteen",
+              "dur": 0.15
+            },
+            {
+              "do": "move",
+              "points": {
+                "RB": "mB6"
+              },
+              "at": "sixteen",
+              "dur": 0.25
+            },
+            {
+              "do": "hide",
+              "target": "rB15",
+              "at": "sixteen",
+              "dur": 0.15
+            },
+            {
+              "do": "show",
+              "target": "rB16",
+              "at": "sixteen",
+              "dur": 0.15
+            }
+          ]
+        },
+        {
+          "say": "B ends on sixteen, one before seventeen. It has one counter too few.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "rB16",
+              "at": "ends"
+            },
+            {
+              "do": "hide",
+              "target": "ringB",
+              "at": "It"
+            },
+            {
+              "do": "highlight",
+              "target": "mB",
+              "at": "few"
+            }
+          ]
+        },
+        {
+          "say": "Only D ends on seventeen. Frame D shows seventeen counters.",
+          "pause": 0.4,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "rD17",
+                "lbD"
+              ],
+              "at": "Only"
+            },
+            {
+              "do": "answer",
+              "tex": "\\text{Frame D}",
+              "id": "a2",
+              "at": "Frame"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Every question like this goes the same way.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "overview",
+              "columns": "all",
+              "at": "Every"
+            }
+          ]
+        },
+        {
+          "say": "One. Count every counter, one number for each.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Count every counter, one number for each.",
+              "marks": [
+                "tCounter"
+              ],
+              "at": "One"
+            }
+          ]
+        },
+        {
+          "say": "Two. The last number I say is how many.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "recap",
+              "text": "The last number said is how many.",
+              "marks": [
+                "w1"
+              ],
+              "at": "Two"
+            }
+          ]
+        },
+        {
+          "say": "Three. An empty place is not a counter.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "recap",
+              "text": "An empty place is not a counter.",
+              "marks": [
+                "tTen"
+              ],
+              "at": "Three"
+            }
+          ]
+        },
+        {
+          "say": "Four. A full frame is ten. Keep counting from there.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "recap",
+              "text": "A full frame is ten. Past ten, keep counting in the second frame.",
+              "marks": [
+                "s2"
+              ],
+              "at": "Four"
+            }
+          ]
+        },
+        {
+          "say": "Five. Pick the frame whose last number is the number asked.",
+          "pause": 0.8,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Choose the frame whose last number is the number asked.",
+              "marks": [
+                "p1",
+                "a1",
+                "p2",
+                "a2"
+              ],
+              "at": "Five"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

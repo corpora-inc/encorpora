@@ -13,6 +13,7 @@ import {
 } from "../src/content/lesson-films";
 import {
   approvedIds,
+  committedApprovalIds,
   assertReviewedFiles,
   canonical,
   planFilm,
@@ -73,6 +74,32 @@ test("publication accepts only current explicit approvals", () => {
     ),
     ["approved"],
   );
+});
+test("new approvals cannot block or enter a committed publication batch", async () => {
+  const grades = {
+    "count-objects": { grade: "approved", added: "edition" },
+    "new-film": { grade: "approved", added: "edition" },
+    rejected: { grade: "rejected", added: "edition" },
+  };
+  const rows = Object.keys(grades).map((id) => ({ id, added: "edition" }));
+  const paths = new Set([
+    "amp/film/lessons/count-objects.json",
+    "amp/film/lessons/rejected.json",
+  ]);
+  const selection = committedApprovalIds(grades, rows, paths);
+  assert.deepEqual(selection, { ids: ["count-objects"], pending: ["new-film"] });
+  let written: unknown;
+  await publishFilms(
+    selection.ids.map(() => plan()),
+    async () => {},
+    async () => {},
+    async (manifest) => { written = Object.keys(manifest); },
+  );
+  assert.deepEqual(written, ["count-objects"]);
+  paths.add("amp/film/lessons/new-film.json");
+  assert.deepEqual(committedApprovalIds(grades, rows, paths), {
+    ids: ["count-objects", "new-film"], pending: [],
+  });
 });
 test("a failed re-export cannot reuse approval for older bytes", () => {
   const approval = {
