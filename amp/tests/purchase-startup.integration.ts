@@ -41,7 +41,9 @@ test(
         },
       );
       let ready = false;
-      for (let attempt = 0; attempt < 100; attempt++) {
+      // A cold start compiles the whole server; under a full parallel CI
+      // suite that can pass ten seconds. Readiness, not speed, is the point.
+      for (let attempt = 0; attempt < 300; attempt++) {
         if (child.exitCode !== null)
           throw new Error("API entrypoint exited before readiness");
         try {
@@ -52,7 +54,7 @@ test(
         } catch {}
         await delay(100);
       }
-      assert.ok(ready, "API became ready within ten seconds");
+      assert.ok(ready, "API became ready within thirty seconds");
       for (const [path, expected] of [
         ["billing/offer", { available: false }],
         ["funding/offers", { offers: [] }],
