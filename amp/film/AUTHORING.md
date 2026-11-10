@@ -83,7 +83,7 @@ A **beat** is one spoken phrase and what starts as it is spoken:
 
 ## A cast: who speaks
 
-Screenplays name roles. Voices are bound when a film is made, without changing its words:
+Screenplays name speakers. A speaker key maps to a role kind. Voices are bound when a film is made, without changing its words:
 
 ```json
 {
@@ -97,17 +97,27 @@ Screenplays name roles. Voices are bound when a film is made, without changing i
 }
 ```
 
-The first role speaks beats with no `speaker`. A screenplay with no cast uses `narrator`; existing solo films retain Madeline as their default.
+A speaker key that is itself a kind (`teacher`, `learner`, `narrator`) may leave the entry empty. Any other key names its kind:
 
-| Role | Voices |
+```json
+"cast": {
+  "teacher": {},
+  "champ": { "kind": "learner" },
+  "maya": { "kind": "learner" }
+}
+```
+
+A film may have several speakers of one kind. The first speaker says beats with no `speaker`. A screenplay with no cast uses `narrator`; existing solo films retain Madeline as their default. Existing `teacher` / `learner` / `narrator` screenplays stay valid as written.
+
+| Kind | Voices |
 |---|---|
 | Teacher | Madeline Brousseaux (`XescS24CsOySAkKrLAO3`) or Paul (`J3Ei0Lj6fAobhIqY5ySH`) |
-| Learner | Champ (`SYXbTJsLE7zmSjr1DchT`), with the `[energetic]` delivery tag |
+| Learner | Champ (`SYXbTJsLE7zmSjr1DchT`), with the `[energetic]` delivery tag, then Sarah (`EXAVITQu4vr4xnSDxMaL`) |
 | Narrator | Madeline or Paul |
 
-A stable hash of the film ID selects the default teacher, distributing films between Madeline and Paul independently of catalog order. Override a role with `--voice teacher=paul` or `--voice narrator=paul`. Paul cannot be the learner. Voice IDs, names, role eligibility and delivery tags live in `cast.ts`; adding eligible voices is a table change.
+A stable hash of the film ID selects the default teacher, distributing films between Madeline and Paul independently of catalog order. The first learner is Champ. A later learner, or a later teacher or narrator, takes the next eligible voice, and two speakers in one film never share a voice. Override a speaker with `--voice teacher=paul` or `--voice maya=sarah`. Paul cannot be the learner. Adding a voice is one entry in `voices.ts`. Adding a role kind is one name in that file's kind list.
 
-Each production saves its exact voice bindings in `timing.json`. The renderer and live player use those bindings to choose the recorded voice. Names are not drawn on the picture. Use a separate `--out` directory for each voice edition. Consecutive beats by one speaker form a take; a change of speaker adds a half-second breath. Cache keys include the voice ID, model, words and delivery tag.
+Each production saves its exact voice bindings in `timing.json`, keyed by speaker key. A two-speaker film's binding stays `{teacher, learner}`. The renderer and live player use those bindings to choose the recorded voice. Names are not drawn on the picture. Use a separate `--out` directory for each voice edition. Consecutive beats by one speaker form a take; a change of speaker adds a half-second breath. Cache keys include the voice ID, model, words and delivery tag.
 
 A cast serves the explanation: the learner asks a useful question, voices a plausible misconception, reads a second example or explains the recap. The teacher answers or clarifies. Avoid praise and chatter.
 
