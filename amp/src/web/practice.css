@@ -712,18 +712,40 @@ nav button {
 }
 .reader-downloads {
   margin: 12px 0 24px;
-  border-block: 1px solid var(--color-border);
 }
-.reader-downloads h3 {
-  margin: 14px 0;
+.reader-downloads .download-menu {
+  display: inline-block;
+  position: relative;
+}
+.reader-downloads .download-menu summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 6px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: transparent;
   color: var(--color-primary);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
 }
-.reader-downloads .downloads {
-  margin: 0 0 16px;
+.reader-downloads .download-menu summary::-webkit-details-marker {
+  display: none;
 }
-.reader-downloads .downloads button {
-  flex: 1 1 180px;
-  min-height: 44px;
+.reader-downloads .download-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.reader-downloads .download-options button {
+  flex: none;
+  width: auto;
+  min-height: 36px;
+  padding: 6px 12px;
+  font-size: 14px;
 }
 @media print {
   .reader-downloads {

@@ -181,6 +181,7 @@ export const choiceLessons: Lesson[] = [
       },
       {
         title: "Start where the input is zero",
+        illustration: "slope-intercept-line",
         paragraphs: [
           "The up-and-down axis is the set of points with $x = 0$. If a line crosses it at $(0, 5)$, the rule must give $y = 5$ when $x = 0$. In $y = mx + b$, the part $mx$ becomes 0 there, leaving $b$. The $y$-intercept is the value $b$ where the line crosses this axis.",
           "The height of a point is its $y$-coordinate, the up-down number. The intercept is a height. It is not a distance between two points. A line can cross high on the axis and climb slowly, or cross low and climb steeply. The rate of change is how fast the output changes, here the rise for each step right. The starting height and the rate of change do different jobs.",
@@ -213,6 +214,26 @@ export const choiceLessons: Lesson[] = [
     workedExample: {
       prompt:
         "Which rule passes through $(0, 5)$ and $(2, 9)$: $y = 2x + 5$ or $y = 5x + 2$?",
+      figure: {
+        kind: "function-display",
+        graph: {
+          xLabel: "x",
+          yLabel: "y",
+          xMax: 4,
+          yMax: 10,
+          xStep: 1,
+          yStep: 1,
+          series: [
+            {
+              points: [
+                { x: 0, y: 5 },
+                { x: 2, y: 9 },
+              ],
+              line: { rise: 2, run: 1, b: 5 },
+            },
+          ],
+        },
+      },
       steps: [
         "At $x = 0$, $y = 5$, so the number added at the end must be 5.",
         "The slope is the change in $y$ over the change in $x$: $\\frac{9 - 5}{2 - 0} = \\frac{4}{2} = 2$.",

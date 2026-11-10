@@ -2211,28 +2211,37 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
               <h2 ref={readerHeading} tabIndex={-1}>
                 {readingLesson.title}
               </h2>
-              <ReferenceLesson lesson={readingLesson} />
+              <ReferenceLesson
+                lesson={readingLesson}
+                showPartner={!ownLearner && !learner?.simulation}
+              />
               {/* The lesson comes first; its printable copies follow it. */}
               {!nativeRuntime && (
                 <section
                   className="reader-downloads"
                   aria-label="Download and print"
                 >
-                  <h3>Download &amp; print</h3>
-                  <div className="downloads">
-                    {(["lesson", "workbook", "solutions"] as const).map(
-                      (kind) => (
+                  <details className="download-menu">
+                    <summary>Download</summary>
+                    <div className="download-options">
+                      {(
+                        [
+                          ["lesson", "Lesson"],
+                          ["workbook", "Workbook"],
+                          ["solutions", "Solutions"],
+                        ] as const
+                      ).map(([kind, name]) => (
                         <button
                           className="secondary"
                           key={kind}
                           disabled={busy}
                           onClick={() => void action(() => download(kind))}
                         >
-                          Download {kind} PDF
+                          {name} PDF
                         </button>
-                      ),
-                    )}
-                  </div>
+                      ))}
+                    </div>
+                  </details>
                 </section>
               )}
             </article>
