@@ -209,9 +209,10 @@ export function problemLesson(
     );
   // The learner may see a newer figure surface than the example (which is
   // drawn for the oldest client); its legacy twin has the example's wording.
-  const twinPrompt = learnerProblem
-    ? generateProblem(templateId, learnerProblem.public.seed).public.prompt
+  const twin = learnerProblem
+    ? generateProblem(templateId, learnerProblem.public.seed)
     : undefined;
+  const twinPrompt = twin?.public.prompt;
   let example = generateProblem(templateId, `${seed}:lesson:0`);
   const repeatsProblem = (p: typeof example) => {
     if (
@@ -235,6 +236,12 @@ export function problemLesson(
         answerText(learnerProblem.public.response, learnerProblem.answer)
     )
       return true;
+    // A different object or story must not work the active counter model.
+    if (
+      twin?.public.response.kind === "counter-builder" &&
+      p.public.response.kind === "counter-builder"
+    )
+      return gradeAnswer(twin, p.answer);
     // Structured work: the same givens asked in another mode (build, fill
     // or order) is the same problem, and the lesson would work it.
     if (
@@ -312,6 +319,7 @@ export function problemLesson(
     response.kind === "shape-composer" ||
     response.kind === "multi-part-choice" ||
     response.kind === "figure-choice" ||
+    response.kind === "counter-builder" ||
     response.kind === "structured-work"
       ? answerText(response, example.answer)
       : skills.find((skill) => skill.id === template.skillId)?.strand ===

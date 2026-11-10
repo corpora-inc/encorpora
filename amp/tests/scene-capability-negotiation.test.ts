@@ -28,6 +28,8 @@ test("no template sends a scenes-v2 figure to a client without it", () => {
         template.id,
         `negotiation:${i}`,
         older.figureCapabilities,
+        undefined,
+        older.responseCapabilities,
       );
       assert.deepEqual(
         sceneCapabilitiesIn(problem.public),

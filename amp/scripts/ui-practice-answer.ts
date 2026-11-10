@@ -10,6 +10,7 @@ import {
 } from "../src/math/engine";
 import { plotPoints, serializePlot } from "../src/math/point-plot";
 import { linePlotCounts, linePlotValues } from "../src/math/line-plot-build";
+import { fillCounterBuilder } from "./ui-counter-builder";
 import {
   parseWorkDraft,
   rowShape,
@@ -94,6 +95,11 @@ export async function preparePracticeAnswer(
     });
   const response = practiceResponse(solution, correct);
   const submit = async () => {
+    if (schema.kind === "counter-builder") {
+      await fillCounterBuilder(page, schema, response);
+      await page.getByRole("button", { name: "Check", exact: true }).click();
+      return;
+    }
     if (schema.kind === "line-plot-build") {
       const counts = linePlotCounts(schema, response);
       for (const [i, v] of linePlotValues(schema).entries()) {
@@ -293,6 +299,11 @@ export function practiceResponse(solution: GeneratedProblem, correct: boolean) {
   const schema = problem.response;
   let response = solution.answer;
   if (!correct) {
+    if (schema.kind === "counter-builder") {
+      const answer = JSON.parse(response);
+      answer.sentence[3] = (answer.sentence[3] + 1) % 11;
+      return JSON.stringify(answer);
+    }
     if (schema.kind === "line-plot-build")
       response = JSON.stringify({ counts: { [schema.axis.min]: 1 } });
     else if (schema.kind === "shape-composer") {

@@ -1,0 +1,3282 @@
+[
+  {
+    "variant": "build-join",
+    "width": 320,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        121.2,
+        288,
+        50.3
+      ],
+      "boards": [
+        16,
+        215.1,
+        288,
+        288
+      ],
+      "sentence": [
+        16,
+        538.7,
+        288,
+        48
+      ],
+      "tiles": [
+        16,
+        622.3,
+        288,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-join",
+    "width": 320,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        121.2,
+        288,
+        50.3
+      ],
+      "boards": [
+        16,
+        215.1,
+        288,
+        288
+      ],
+      "sentence": [
+        16,
+        538.7,
+        288,
+        48
+      ],
+      "tiles": [
+        16,
+        622.3,
+        288,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-take",
+    "width": 320,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        185.4,
+        288,
+        50.3
+      ],
+      "boards": [
+        16,
+        298.9,
+        288,
+        140
+      ],
+      "sentence": [
+        16,
+        474.5,
+        288,
+        48
+      ],
+      "tiles": [
+        16,
+        558,
+        288,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-take",
+    "width": 320,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        185.4,
+        288,
+        50.3
+      ],
+      "boards": [
+        16,
+        298.9,
+        288,
+        140
+      ],
+      "sentence": [
+        16,
+        474.5,
+        288,
+        48
+      ],
+      "tiles": [
+        16,
+        558,
+        288,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-frame",
+    "width": 320,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        127.8,
+        288,
+        75
+      ],
+      "boards": [
+        16,
+        246.4,
+        288,
+        250
+      ],
+      "sentence": [
+        16,
+        532,
+        288,
+        48
+      ],
+      "tiles": [
+        16,
+        615.6,
+        288,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-frame",
+    "width": 320,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        127.8,
+        288,
+        75
+      ],
+      "boards": [
+        16,
+        246.4,
+        288,
+        250
+      ],
+      "sentence": [
+        16,
+        532,
+        288,
+        48
+      ],
+      "tiles": [
+        16,
+        615.6,
+        288,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-join",
+    "width": 320,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        110,
+        288,
+        74.1
+      ],
+      "boards": [
+        16,
+        227.7,
+        288,
+        288
+      ],
+      "sentence": [
+        16,
+        551.3,
+        288,
+        48
+      ],
+      "tiles": [
+        16,
+        634.8,
+        288,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-join",
+    "width": 320,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        110,
+        288,
+        74.1
+      ],
+      "boards": [
+        16,
+        227.7,
+        288,
+        288
+      ],
+      "sentence": [
+        16,
+        551.3,
+        288,
+        48
+      ],
+      "tiles": [
+        16,
+        634.8,
+        288,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-take",
+    "width": 320,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        173.5,
+        288,
+        74.1
+      ],
+      "boards": [
+        16,
+        310.7,
+        288,
+        140
+      ],
+      "sentence": [
+        16,
+        486.3,
+        288,
+        48
+      ],
+      "tiles": [
+        16,
+        569.9,
+        288,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-take",
+    "width": 320,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        173.5,
+        288,
+        74.1
+      ],
+      "boards": [
+        16,
+        310.7,
+        288,
+        140
+      ],
+      "sentence": [
+        16,
+        486.3,
+        288,
+        48
+      ],
+      "tiles": [
+        16,
+        569.9,
+        288,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-join",
+    "width": 390,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        120.5,
+        358,
+        51.6
+      ],
+      "boards": [
+        16,
+        215.7,
+        358,
+        288
+      ],
+      "sentence": [
+        16,
+        539.3,
+        358,
+        48
+      ],
+      "tiles": [
+        43,
+        622.9,
+        304,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-join",
+    "width": 390,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        120.5,
+        358,
+        51.6
+      ],
+      "boards": [
+        16,
+        215.7,
+        358,
+        288
+      ],
+      "sentence": [
+        16,
+        539.3,
+        358,
+        48
+      ],
+      "tiles": [
+        43,
+        622.9,
+        304,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-take",
+    "width": 390,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        194.5,
+        358,
+        51.6
+      ],
+      "boards": [
+        16,
+        289.7,
+        358,
+        140
+      ],
+      "sentence": [
+        16,
+        465.3,
+        358,
+        48
+      ],
+      "tiles": [
+        43,
+        548.9,
+        304,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-take",
+    "width": 390,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        194.5,
+        358,
+        51.6
+      ],
+      "boards": [
+        16,
+        289.7,
+        358,
+        140
+      ],
+      "sentence": [
+        16,
+        465.3,
+        358,
+        48
+      ],
+      "tiles": [
+        43,
+        548.9,
+        304,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-frame",
+    "width": 390,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        139.5,
+        358,
+        51.6
+      ],
+      "boards": [
+        16,
+        234.7,
+        358,
+        250
+      ],
+      "sentence": [
+        16,
+        520.3,
+        358,
+        48
+      ],
+      "tiles": [
+        43,
+        603.9,
+        304,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-frame",
+    "width": 390,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        139.5,
+        358,
+        51.6
+      ],
+      "boards": [
+        16,
+        234.7,
+        358,
+        250
+      ],
+      "sentence": [
+        16,
+        520.3,
+        358,
+        48
+      ],
+      "tiles": [
+        43,
+        603.9,
+        304,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-join",
+    "width": 390,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        110,
+        358,
+        76
+      ],
+      "boards": [
+        16,
+        229.6,
+        358,
+        288
+      ],
+      "sentence": [
+        16,
+        553.2,
+        358,
+        48
+      ],
+      "tiles": [
+        43,
+        636.8,
+        304,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-join",
+    "width": 390,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        110,
+        358,
+        76
+      ],
+      "boards": [
+        16,
+        229.6,
+        358,
+        288
+      ],
+      "sentence": [
+        16,
+        553.2,
+        358,
+        48
+      ],
+      "tiles": [
+        43,
+        636.8,
+        304,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-take",
+    "width": 390,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        182.3,
+        358,
+        76
+      ],
+      "boards": [
+        16,
+        301.9,
+        358,
+        140
+      ],
+      "sentence": [
+        16,
+        477.5,
+        358,
+        48
+      ],
+      "tiles": [
+        43,
+        561.1,
+        304,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-take",
+    "width": 390,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        182.3,
+        358,
+        76
+      ],
+      "boards": [
+        16,
+        301.9,
+        358,
+        140
+      ],
+      "sentence": [
+        16,
+        477.5,
+        358,
+        48
+      ],
+      "tiles": [
+        43,
+        561.1,
+        304,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-join",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        67,
+        234.9,
+        634,
+        31.9
+      ],
+      "boards": [
+        96,
+        310.3,
+        576,
+        140
+      ],
+      "sentence": [
+        96,
+        485.9,
+        576,
+        48
+      ],
+      "tiles": [
+        232,
+        569.5,
+        304,
+        140
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-join",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        67,
+        234.9,
+        634,
+        31.9
+      ],
+      "boards": [
+        96,
+        310.3,
+        576,
+        140
+      ],
+      "sentence": [
+        96,
+        485.9,
+        576,
+        48
+      ],
+      "tiles": [
+        232,
+        569.5,
+        304,
+        140
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-take",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        67,
+        234.9,
+        634,
+        31.9
+      ],
+      "boards": [
+        232,
+        310.3,
+        304,
+        140
+      ],
+      "sentence": [
+        96,
+        485.9,
+        576,
+        48
+      ],
+      "tiles": [
+        232,
+        569.5,
+        304,
+        140
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-take",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        67,
+        234.9,
+        634,
+        31.9
+      ],
+      "boards": [
+        232,
+        310.3,
+        304,
+        140
+      ],
+      "sentence": [
+        96,
+        485.9,
+        576,
+        48
+      ],
+      "tiles": [
+        232,
+        569.5,
+        304,
+        140
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-frame",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        67,
+        164.3,
+        634,
+        63
+      ],
+      "boards": [
+        96,
+        270.9,
+        576,
+        250
+      ],
+      "sentence": [
+        96,
+        556.5,
+        576,
+        48
+      ],
+      "tiles": [
+        232,
+        640.1,
+        304,
+        140
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-frame",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        67,
+        164.3,
+        634,
+        63
+      ],
+      "boards": [
+        96,
+        270.9,
+        576,
+        250
+      ],
+      "sentence": [
+        96,
+        556.5,
+        576,
+        48
+      ],
+      "tiles": [
+        232,
+        640.1,
+        304,
+        140
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-join",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        67,
+        219.7,
+        634,
+        62.2
+      ],
+      "boards": [
+        96,
+        325.5,
+        576,
+        140
+      ],
+      "sentence": [
+        96,
+        501.1,
+        576,
+        48
+      ],
+      "tiles": [
+        232,
+        584.7,
+        304,
+        140
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-join",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        67,
+        219.7,
+        634,
+        62.2
+      ],
+      "boards": [
+        96,
+        325.5,
+        576,
+        140
+      ],
+      "sentence": [
+        96,
+        501.1,
+        576,
+        48
+      ],
+      "tiles": [
+        232,
+        584.7,
+        304,
+        140
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-take",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        67,
+        219.7,
+        634,
+        62.2
+      ],
+      "boards": [
+        232,
+        325.5,
+        304,
+        140
+      ],
+      "sentence": [
+        96,
+        501.1,
+        576,
+        48
+      ],
+      "tiles": [
+        232,
+        584.7,
+        304,
+        140
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-take",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        67,
+        219.7,
+        634,
+        62.2
+      ],
+      "boards": [
+        232,
+        325.5,
+        304,
+        140
+      ],
+      "sentence": [
+        96,
+        501.1,
+        576,
+        48
+      ],
+      "tiles": [
+        232,
+        584.7,
+        304,
+        140
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-join",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        103,
+        204.9,
+        659,
+        81.4
+      ],
+      "boards": [
+        144.5,
+        329.9,
+        576,
+        140
+      ],
+      "sentence": [
+        144.5,
+        505.5,
+        576,
+        48
+      ],
+      "tiles": [
+        280.5,
+        589.1,
+        304,
+        140
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-join",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        103,
+        204.9,
+        659,
+        81.4
+      ],
+      "boards": [
+        144.5,
+        329.9,
+        576,
+        140
+      ],
+      "sentence": [
+        144.5,
+        505.5,
+        576,
+        48
+      ],
+      "tiles": [
+        280.5,
+        589.1,
+        304,
+        140
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-take",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        103,
+        204.9,
+        659,
+        81.4
+      ],
+      "boards": [
+        280.5,
+        329.9,
+        304,
+        140
+      ],
+      "sentence": [
+        144.5,
+        505.5,
+        576,
+        48
+      ],
+      "tiles": [
+        280.5,
+        589.1,
+        304,
+        140
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-take",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        103,
+        204.9,
+        659,
+        81.4
+      ],
+      "boards": [
+        280.5,
+        329.9,
+        304,
+        140
+      ],
+      "sentence": [
+        144.5,
+        505.5,
+        576,
+        48
+      ],
+      "tiles": [
+        280.5,
+        589.1,
+        304,
+        140
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-frame",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        103,
+        149.9,
+        659,
+        81.4
+      ],
+      "boards": [
+        144.5,
+        274.9,
+        576,
+        250
+      ],
+      "sentence": [
+        144.5,
+        560.5,
+        576,
+        48
+      ],
+      "tiles": [
+        280.5,
+        644.1,
+        304,
+        140
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-frame",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        103,
+        149.9,
+        659,
+        81.4
+      ],
+      "boards": [
+        144.5,
+        274.9,
+        576,
+        250
+      ],
+      "sentence": [
+        144.5,
+        560.5,
+        576,
+        48
+      ],
+      "tiles": [
+        280.5,
+        644.1,
+        304,
+        140
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-join",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        103,
+        205.1,
+        659,
+        81
+      ],
+      "boards": [
+        144.5,
+        329.7,
+        576,
+        140
+      ],
+      "sentence": [
+        144.5,
+        505.3,
+        576,
+        48
+      ],
+      "tiles": [
+        280.5,
+        588.9,
+        304,
+        140
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-join",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        103,
+        205.1,
+        659,
+        81
+      ],
+      "boards": [
+        144.5,
+        329.7,
+        576,
+        140
+      ],
+      "sentence": [
+        144.5,
+        505.3,
+        576,
+        48
+      ],
+      "tiles": [
+        280.5,
+        588.9,
+        304,
+        140
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-take",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        103,
+        205.1,
+        659,
+        81
+      ],
+      "boards": [
+        280.5,
+        329.7,
+        304,
+        140
+      ],
+      "sentence": [
+        144.5,
+        505.3,
+        576,
+        48
+      ],
+      "tiles": [
+        280.5,
+        588.9,
+        304,
+        140
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-take",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        103,
+        205.1,
+        659,
+        81
+      ],
+      "boards": [
+        280.5,
+        329.7,
+        304,
+        140
+      ],
+      "sentence": [
+        144.5,
+        505.3,
+        576,
+        48
+      ],
+      "tiles": [
+        280.5,
+        588.9,
+        304,
+        140
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-join",
+    "width": 320,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        121.2,
+        288,
+        50.3
+      ],
+      "boards": [
+        16,
+        215.1,
+        288,
+        288
+      ],
+      "sentence": [
+        16,
+        538.7,
+        288,
+        48
+      ],
+      "tiles": [
+        16,
+        622.3,
+        288,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-join",
+    "width": 320,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        121.2,
+        288,
+        50.3
+      ],
+      "boards": [
+        16,
+        215.1,
+        288,
+        288
+      ],
+      "sentence": [
+        16,
+        538.7,
+        288,
+        48
+      ],
+      "tiles": [
+        16,
+        622.3,
+        288,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-take",
+    "width": 320,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        185.4,
+        288,
+        50.3
+      ],
+      "boards": [
+        16,
+        298.9,
+        288,
+        140
+      ],
+      "sentence": [
+        16,
+        474.5,
+        288,
+        48
+      ],
+      "tiles": [
+        16,
+        558,
+        288,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-take",
+    "width": 320,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        185.4,
+        288,
+        50.3
+      ],
+      "boards": [
+        16,
+        298.9,
+        288,
+        140
+      ],
+      "sentence": [
+        16,
+        474.5,
+        288,
+        48
+      ],
+      "tiles": [
+        16,
+        558,
+        288,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-frame",
+    "width": 320,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        127.8,
+        288,
+        75
+      ],
+      "boards": [
+        16,
+        246.4,
+        288,
+        250
+      ],
+      "sentence": [
+        16,
+        532,
+        288,
+        48
+      ],
+      "tiles": [
+        16,
+        615.6,
+        288,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-frame",
+    "width": 320,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        127.8,
+        288,
+        75
+      ],
+      "boards": [
+        16,
+        246.4,
+        288,
+        250
+      ],
+      "sentence": [
+        16,
+        532,
+        288,
+        48
+      ],
+      "tiles": [
+        16,
+        615.6,
+        288,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-join",
+    "width": 320,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        110,
+        288,
+        74.1
+      ],
+      "boards": [
+        16,
+        227.7,
+        288,
+        288
+      ],
+      "sentence": [
+        16,
+        551.3,
+        288,
+        48
+      ],
+      "tiles": [
+        16,
+        634.8,
+        288,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-join",
+    "width": 320,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        110,
+        288,
+        74.1
+      ],
+      "boards": [
+        16,
+        227.7,
+        288,
+        288
+      ],
+      "sentence": [
+        16,
+        551.3,
+        288,
+        48
+      ],
+      "tiles": [
+        16,
+        634.8,
+        288,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-take",
+    "width": 320,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        173.5,
+        288,
+        74.1
+      ],
+      "boards": [
+        16,
+        310.7,
+        288,
+        140
+      ],
+      "sentence": [
+        16,
+        486.3,
+        288,
+        48
+      ],
+      "tiles": [
+        16,
+        569.9,
+        288,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-take",
+    "width": 320,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        173.5,
+        288,
+        74.1
+      ],
+      "boards": [
+        16,
+        310.7,
+        288,
+        140
+      ],
+      "sentence": [
+        16,
+        486.3,
+        288,
+        48
+      ],
+      "tiles": [
+        16,
+        569.9,
+        288,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-join",
+    "width": 390,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        120.5,
+        358,
+        51.6
+      ],
+      "boards": [
+        16,
+        215.7,
+        358,
+        288
+      ],
+      "sentence": [
+        16,
+        539.3,
+        358,
+        48
+      ],
+      "tiles": [
+        43,
+        622.9,
+        304,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-join",
+    "width": 390,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        120.5,
+        358,
+        51.6
+      ],
+      "boards": [
+        16,
+        215.7,
+        358,
+        288
+      ],
+      "sentence": [
+        16,
+        539.3,
+        358,
+        48
+      ],
+      "tiles": [
+        43,
+        622.9,
+        304,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-take",
+    "width": 390,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        194.5,
+        358,
+        51.6
+      ],
+      "boards": [
+        16,
+        289.7,
+        358,
+        140
+      ],
+      "sentence": [
+        16,
+        465.3,
+        358,
+        48
+      ],
+      "tiles": [
+        43,
+        548.9,
+        304,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-take",
+    "width": 390,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        194.5,
+        358,
+        51.6
+      ],
+      "boards": [
+        16,
+        289.7,
+        358,
+        140
+      ],
+      "sentence": [
+        16,
+        465.3,
+        358,
+        48
+      ],
+      "tiles": [
+        43,
+        548.9,
+        304,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-frame",
+    "width": 390,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        139.5,
+        358,
+        51.6
+      ],
+      "boards": [
+        16,
+        234.7,
+        358,
+        250
+      ],
+      "sentence": [
+        16,
+        520.3,
+        358,
+        48
+      ],
+      "tiles": [
+        43,
+        603.9,
+        304,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-frame",
+    "width": 390,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        139.5,
+        358,
+        51.6
+      ],
+      "boards": [
+        16,
+        234.7,
+        358,
+        250
+      ],
+      "sentence": [
+        16,
+        520.3,
+        358,
+        48
+      ],
+      "tiles": [
+        43,
+        603.9,
+        304,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-join",
+    "width": 390,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        110,
+        358,
+        76
+      ],
+      "boards": [
+        16,
+        229.6,
+        358,
+        288
+      ],
+      "sentence": [
+        16,
+        553.2,
+        358,
+        48
+      ],
+      "tiles": [
+        43,
+        636.8,
+        304,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-join",
+    "width": 390,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        110,
+        358,
+        76
+      ],
+      "boards": [
+        16,
+        229.6,
+        358,
+        288
+      ],
+      "sentence": [
+        16,
+        553.2,
+        358,
+        48
+      ],
+      "tiles": [
+        43,
+        636.8,
+        304,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-take",
+    "width": 390,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        182.3,
+        358,
+        76
+      ],
+      "boards": [
+        16,
+        301.9,
+        358,
+        140
+      ],
+      "sentence": [
+        16,
+        477.5,
+        358,
+        48
+      ],
+      "tiles": [
+        43,
+        561.1,
+        304,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-take",
+    "width": 390,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        182.3,
+        358,
+        76
+      ],
+      "boards": [
+        16,
+        301.9,
+        358,
+        140
+      ],
+      "sentence": [
+        16,
+        477.5,
+        358,
+        48
+      ],
+      "tiles": [
+        43,
+        561.1,
+        304,
+        140
+      ],
+      "dock": [
+        16,
+        783.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-join",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        67,
+        234.9,
+        634,
+        31.9
+      ],
+      "boards": [
+        96,
+        310.3,
+        576,
+        140
+      ],
+      "sentence": [
+        96,
+        485.9,
+        576,
+        48
+      ],
+      "tiles": [
+        232,
+        569.5,
+        304,
+        140
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-join",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        67,
+        234.9,
+        634,
+        31.9
+      ],
+      "boards": [
+        96,
+        310.3,
+        576,
+        140
+      ],
+      "sentence": [
+        96,
+        485.9,
+        576,
+        48
+      ],
+      "tiles": [
+        232,
+        569.5,
+        304,
+        140
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-take",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        67,
+        234.9,
+        634,
+        31.9
+      ],
+      "boards": [
+        232,
+        310.3,
+        304,
+        140
+      ],
+      "sentence": [
+        96,
+        485.9,
+        576,
+        48
+      ],
+      "tiles": [
+        232,
+        569.5,
+        304,
+        140
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-take",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        67,
+        234.9,
+        634,
+        31.9
+      ],
+      "boards": [
+        232,
+        310.3,
+        304,
+        140
+      ],
+      "sentence": [
+        96,
+        485.9,
+        576,
+        48
+      ],
+      "tiles": [
+        232,
+        569.5,
+        304,
+        140
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-frame",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        67,
+        164.3,
+        634,
+        63
+      ],
+      "boards": [
+        96,
+        270.9,
+        576,
+        250
+      ],
+      "sentence": [
+        96,
+        556.5,
+        576,
+        48
+      ],
+      "tiles": [
+        232,
+        640.1,
+        304,
+        140
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-frame",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        67,
+        164.3,
+        634,
+        63
+      ],
+      "boards": [
+        96,
+        270.9,
+        576,
+        250
+      ],
+      "sentence": [
+        96,
+        556.5,
+        576,
+        48
+      ],
+      "tiles": [
+        232,
+        640.1,
+        304,
+        140
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-join",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        67,
+        219.7,
+        634,
+        62.2
+      ],
+      "boards": [
+        96,
+        325.5,
+        576,
+        140
+      ],
+      "sentence": [
+        96,
+        501.1,
+        576,
+        48
+      ],
+      "tiles": [
+        232,
+        584.7,
+        304,
+        140
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-join",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        67,
+        219.7,
+        634,
+        62.2
+      ],
+      "boards": [
+        96,
+        325.5,
+        576,
+        140
+      ],
+      "sentence": [
+        96,
+        501.1,
+        576,
+        48
+      ],
+      "tiles": [
+        232,
+        584.7,
+        304,
+        140
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-take",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        67,
+        219.7,
+        634,
+        62.2
+      ],
+      "boards": [
+        232,
+        325.5,
+        304,
+        140
+      ],
+      "sentence": [
+        96,
+        501.1,
+        576,
+        48
+      ],
+      "tiles": [
+        232,
+        584.7,
+        304,
+        140
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-take",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        67,
+        219.7,
+        634,
+        62.2
+      ],
+      "boards": [
+        232,
+        325.5,
+        304,
+        140
+      ],
+      "sentence": [
+        96,
+        501.1,
+        576,
+        48
+      ],
+      "tiles": [
+        232,
+        584.7,
+        304,
+        140
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-join",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        103,
+        204.9,
+        659,
+        81.4
+      ],
+      "boards": [
+        144.5,
+        329.9,
+        576,
+        140
+      ],
+      "sentence": [
+        144.5,
+        505.5,
+        576,
+        48
+      ],
+      "tiles": [
+        280.5,
+        589.1,
+        304,
+        140
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-join",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        103,
+        204.9,
+        659,
+        81.4
+      ],
+      "boards": [
+        144.5,
+        329.9,
+        576,
+        140
+      ],
+      "sentence": [
+        144.5,
+        505.5,
+        576,
+        48
+      ],
+      "tiles": [
+        280.5,
+        589.1,
+        304,
+        140
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-take",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        103,
+        204.9,
+        659,
+        81.4
+      ],
+      "boards": [
+        280.5,
+        329.9,
+        304,
+        140
+      ],
+      "sentence": [
+        144.5,
+        505.5,
+        576,
+        48
+      ],
+      "tiles": [
+        280.5,
+        589.1,
+        304,
+        140
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-take",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        103,
+        204.9,
+        659,
+        81.4
+      ],
+      "boards": [
+        280.5,
+        329.9,
+        304,
+        140
+      ],
+      "sentence": [
+        144.5,
+        505.5,
+        576,
+        48
+      ],
+      "tiles": [
+        280.5,
+        589.1,
+        304,
+        140
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-frame",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        103,
+        149.9,
+        659,
+        81.4
+      ],
+      "boards": [
+        144.5,
+        274.9,
+        576,
+        250
+      ],
+      "sentence": [
+        144.5,
+        560.5,
+        576,
+        48
+      ],
+      "tiles": [
+        280.5,
+        644.1,
+        304,
+        140
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "build-frame",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        103,
+        149.9,
+        659,
+        81.4
+      ],
+      "boards": [
+        144.5,
+        274.9,
+        576,
+        250
+      ],
+      "sentence": [
+        144.5,
+        560.5,
+        576,
+        48
+      ],
+      "tiles": [
+        280.5,
+        644.1,
+        304,
+        140
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-join",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        103,
+        205.1,
+        659,
+        81
+      ],
+      "boards": [
+        144.5,
+        329.7,
+        576,
+        140
+      ],
+      "sentence": [
+        144.5,
+        505.3,
+        576,
+        48
+      ],
+      "tiles": [
+        280.5,
+        588.9,
+        304,
+        140
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-join",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        103,
+        205.1,
+        659,
+        81
+      ],
+      "boards": [
+        144.5,
+        329.7,
+        576,
+        140
+      ],
+      "sentence": [
+        144.5,
+        505.3,
+        576,
+        48
+      ],
+      "tiles": [
+        280.5,
+        588.9,
+        304,
+        140
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-take",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        103,
+        205.1,
+        659,
+        81
+      ],
+      "boards": [
+        280.5,
+        329.7,
+        304,
+        140
+      ],
+      "sentence": [
+        144.5,
+        505.3,
+        576,
+        48
+      ],
+      "tiles": [
+        280.5,
+        588.9,
+        304,
+        140
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "variant": "story-take",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        103,
+        205.1,
+        659,
+        81
+      ],
+      "boards": [
+        280.5,
+        329.7,
+        304,
+        140
+      ],
+      "sentence": [
+        144.5,
+        505.3,
+        576,
+        48
+      ],
+      "tiles": [
+        280.5,
+        588.9,
+        304,
+        140
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  }
+]

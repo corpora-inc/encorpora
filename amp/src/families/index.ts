@@ -22,6 +22,7 @@ export { family as coordinateVertexPlot } from "./coordinate-vertex-plot";
 export { family as countOutObjects } from "./count-out-objects";
 export { family as countRelationChain } from "./count-relation-chain";
 export { family as countSquareUnits } from "./count-square-units";
+export { family as counterBuilder } from "./counter-builder";
 export { family as dataList } from "./data-list";
 export { family as dataMeasure } from "./data-measure";
 export { family as distributionShapeFit } from "./distribution-shape-fit";

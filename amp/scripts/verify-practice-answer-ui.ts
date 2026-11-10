@@ -101,6 +101,7 @@ try {
       "multi-select",
       "point-plot",
       "line-plot-build",
+      "counter-builder",
       "multi-part-choice",
       "figure-choice",
       "structured-work",

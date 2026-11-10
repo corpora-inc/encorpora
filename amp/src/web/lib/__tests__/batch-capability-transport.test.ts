@@ -59,6 +59,7 @@ test("trial transport retries an older API without its newest format, keeping au
       "shape-composer-v1",
       "line-plot-build-v1",
       "unit-square-marking-v1",
+      "counter-builder-v1",
     ],
   });
   expect(first.figureCapabilities.length).toBeGreaterThan(0);
@@ -74,6 +75,7 @@ test("trial transport retries an older API without its newest format, keeping au
       "multi-part-cards-v1",
       "shape-composer-v1",
       "line-plot-build-v1",
+      "unit-square-marking-v1",
     ],
   });
 });

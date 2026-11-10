@@ -1,5 +1,10 @@
 import type { GlossaryPayload } from "../glossary/types";
 import {
+  counterBuilderResponseSchema,
+  counterBuilderKeyFits,
+  type CounterBuilderResponse,
+} from "./counter-builder";
+import {
   shapeComposerResponseSchema,
   gradeShapeComposer,
   normalizeShapeAnswer,
@@ -291,6 +296,7 @@ export const responseCapabilities = [
   "shape-composer-v1",
   "line-plot-build-v1",
   "unit-square-marking-v1",
+  "counter-builder-v1",
 ] as const;
 export type ResponseCapability = (typeof responseCapabilities)[number];
 /** The response and figure families a client declares it can show. */
@@ -307,19 +313,31 @@ export const clientCanDraw = (
     | "requiredFigureCapability"
     | "requiredResponseCapability"
     | "requiredResponseCapabilities"
+    | "fallbackCapabilities"
   >,
   client: ClientCapabilities,
 ): boolean =>
-  (!template.requiredResponseCapability ||
+  (!!template.fallbackCapabilities &&
+    client.responseCapabilities.includes(
+      template.fallbackCapabilities.response,
+    ) &&
+    client.figureCapabilities.includes(template.fallbackCapabilities.figure)) ||
+  ((!template.requiredResponseCapability ||
     client.responseCapabilities.includes(
       template.requiredResponseCapability,
     )) &&
-  (template.requiredResponseCapabilities ?? []).every((capability) =>
-    client.responseCapabilities.includes(capability),
-  ) &&
-  (!template.requiredFigureCapability ||
-    client.figureCapabilities.includes(template.requiredFigureCapability));
+    (template.requiredResponseCapabilities ?? []).every((capability) =>
+      client.responseCapabilities.includes(capability),
+    ) &&
+    (!template.requiredFigureCapability ||
+      client.figureCapabilities.includes(template.requiredFigureCapability)));
 export interface TemplateMetadata {
+  /** An implemented same-givens fallback in generateProblemFor. Admission
+   * requires both its response format and its figure format. */
+  fallbackCapabilities?: {
+    response: ResponseCapability;
+    figure: FigureCapability;
+  };
   /** Editorial local step on the curriculum-grade scale, not empirical calibration. */
   difficultyOffset?: number;
   requiredFigureCapability?: FigureCapability;
@@ -371,6 +389,7 @@ export type ProblemResponse =
   | PointPlotResponse
   | MultiPartChoiceResponse
   | FigureChoiceResponse
+  | CounterBuilderResponse
   | StructuredWorkResponse
   | LinePlotBuildResponse
   | UnitSquareMarkingResponse;
@@ -1014,6 +1033,7 @@ export const problemResponseSchema: z.ZodType<ProblemResponse> = z.union([
   multiPartChoiceResponseSchema,
   figureChoiceResponseSchema,
   structuredWorkResponseSchema,
+  counterBuilderResponseSchema,
 ]);
 export const publicProblemSchema: z.ZodType<PublicProblem> = z
   .object({
@@ -1106,6 +1126,13 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
         response.guessChance === shapeGuessChance(response)
       );
     if (problem.workGrading || problem.answer.length > 100) return false;
+    if (response.kind === "counter-builder")
+      return (
+        !problem.choiceFeedback &&
+        !problem.entryPolicy &&
+        !problem.pointGrading &&
+        counterBuilderKeyFits(response, problem.answer)
+      );
     // A plotted answer is canonical, complete, and accepted by its own rule.
     if (response.kind === "point-plot")
       return (

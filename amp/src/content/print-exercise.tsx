@@ -6,6 +6,7 @@ import type { GeneratedProblem } from "../math/contracts";
 import { answerText } from "../math/selection-response";
 import { plotPoints, pointPlotScene } from "../math/point-plot";
 import { LinePlotBuildDrawing } from "../web/LinePlotBuildInput";
+import { counterBuilderScene } from "../math/counter-objects";
 import {
   cardRows,
   draftChoices,
@@ -494,6 +495,23 @@ export function PrintExerciseBody({
         <PrintMathText text={problem.public.prompt} />
       </h2>
       {problem.public.figure && <Figure figure={problem.public.figure} />}
+      {problem.public.response.kind === "counter-builder" && (
+        <>
+          <SceneFigure
+            medium="print"
+            reveal
+            scene={counterBuilderScene(
+              problem.public.response,
+              solutions ? problem.answer : undefined,
+            )}
+          />
+          {!solutions && (
+            <p>
+              Number sentence: ____ &nbsp; ____ &nbsp; ____ &nbsp; = &nbsp; ____
+            </p>
+          )}
+        </>
+      )}
       {problem.public.response.kind === "line-plot-build" && (
         <figure>
           <LinePlotBuildDrawing

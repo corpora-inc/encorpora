@@ -29,6 +29,7 @@ import "../multi-part-choice.css";
 import "../figure-choice.css";
 import "../structured-work.css";
 import "../practice-tablet.css";
+import "../counter-builder.css";
 import "../lesson-video.css";
 // Lesson reading rhythm sets the reading surface over everything above.
 import "../lesson-reading.css";
