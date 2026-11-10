@@ -855,7 +855,8 @@ class GeoStage {
         const tg = svg("g", "film-thing");
         tg.dataset.thing = th.kind;
         tg.dataset.name = th.name;
-        const glow = svg("circle", "film-thing-glow"), ring = svg("circle", "film-thing-ring");
+        // the light and the tick are a highlight's ink (`film-em`): the framing never measures them
+        const glow = svg("circle", "film-thing-glow film-em"), ring = svg("circle", "film-thing-ring film-em");
         for (const c of [glow, ring]) { c.setAttribute("cx", "50"); c.setAttribute("cy", "50"); c.setAttribute("r", String(LIGHT_R * 100)); tg.appendChild(c); }
         const layers = thingArt[th.kind].map((l) => {
           const el = svg("path");
@@ -867,7 +868,7 @@ class GeoStage {
           return { el, w: l.w ?? 1 };
         });
         // counted: a small muted tick at the thing's lower right, inside its own place
-        const tick = svg("path", "film-thing-tick");
+        const tick = svg("path", "film-thing-tick film-em");
         tick.setAttribute("d", "M77 94L85 102L98 86");
         tg.appendChild(tick);
         layer.appendChild(tg);
