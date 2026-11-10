@@ -186,10 +186,18 @@ export class StripeRepository {
       if (grants.rowCount) throw new BillingError("learner_already_licensed");
       // A plan already paid for and held by no learner is assigned, never
       // bought twice.
-      const unassigned = await client.query(
-        "SELECT 1 FROM amp_account_entitlements e JOIN amp_stripe_checkouts c ON c.id=e.checkout_id WHERE c.account_id=$1 AND e.namespace=$2 AND c.learner_id IS NULL AND c.assigned_learner_id IS NULL AND e.status='active' AND e.ends_at>now() LIMIT 1",
-        [accountId, this.namespace],
-      );
+      // (Older test schemas predate unassigned plans.)
+      const entitlements = (
+        await client.query(
+          "SELECT to_regclass('amp_account_entitlements') AS relation",
+        )
+      ).rows[0].relation;
+      const unassigned = entitlements
+        ? await client.query(
+            "SELECT 1 FROM amp_account_entitlements e JOIN amp_stripe_checkouts c ON c.id=e.checkout_id WHERE c.account_id=$1 AND e.namespace=$2 AND c.learner_id IS NULL AND c.assigned_learner_id IS NULL AND e.status='active' AND e.ends_at>now() LIMIT 1",
+            [accountId, this.namespace],
+          )
+        : { rowCount: 0 };
       if (unassigned.rowCount)
         throw new BillingError("license_ready_for_assignment");
       const retry = await client.query(
