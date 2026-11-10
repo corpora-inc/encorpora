@@ -196,6 +196,16 @@ nav button {
   box-sizing: border-box;
   padding-inline-end: 2px;
 }
+/* An array (a derivation's lines, cases, a matrix) cannot wrap between its
+   columns. One wider than the stage scrolls sideways in place rather than
+   pushing the whole problem past the screen's edge. */
+.problem-content .question > .math:has(.mtable) {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  vertical-align: middle;
+}
 /* This prompt introduces a separate table after its question. Keep the table
    centered on its own row instead of appending it to the last prose line. */
 .problem-content[data-template="quadratic-from-data"]
