@@ -49,6 +49,26 @@
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v1"
   },
+  "count-out-objects": {
+    "id": "count-out-objects--va",
+    "version": "c3e4a3b5f4548a1095c52c362ac0daaf1978c768b0f10b6d721808a1caed82a5",
+    "title": "Which ten-frame shows that many?",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/count-out-objects--va/c3e4a3b5f4548a1095c52c362ac0daaf1978c768b0f10b6d721808a1caed82a5/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/count-out-objects--va/c3e4a3b5f4548a1095c52c362ac0daaf1978c768b0f10b6d721808a1caed82a5/audio.m4a",
+    "duration": 277.27,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "count-sequence-missing": {
+    "id": "count-sequence-missing--fn",
+    "version": "7241795a364e2d4cc194db6149ec098d611ff4004ab074d756a09d7c468fd1e2",
+    "title": "Find the missing count",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/count-sequence-missing--fn/7241795a364e2d4cc194db6149ec098d611ff4004ab074d756a09d7c468fd1e2/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/count-sequence-missing--fn/7241795a364e2d4cc194db6149ec098d611ff4004ab074d756a09d7c468fd1e2/audio.m4a",
+    "duration": 138.01,
+    "teacher": "Paul",
+    "capability": "lesson-film-v1"
+  },
   "decimal-fraction-locate": {
     "id": "decimal-fraction-locate",
     "version": "6fa646392960bc992a0110dd6bbdb7a5f637e3e9d150b23daa3d78901cdcee0c",
@@ -116,6 +136,16 @@
     "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/frequency-table-build--pr/f775915089f6cf40755f4c8b4164a5265357b5488035c0e2e7172fa1032b9537/data.json",
     "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/frequency-table-build--pr/f775915089f6cf40755f4c8b4164a5265357b5488035c0e2e7172fa1032b9537/audio.m4a",
     "duration": 598.06,
+    "teacher": "Madeline Brousseaux",
+    "capability": "lesson-film-v1"
+  },
+  "hundred-chart-missing": {
+    "id": "hundred-chart-missing--nw",
+    "version": "5a3800f3519fe3233e06fc7f6c3c05837cbfe45ffdce528711f4236896fec46a",
+    "title": "Find the Missing Number on a Hundred Chart",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/hundred-chart-missing--nw/5a3800f3519fe3233e06fc7f6c3c05837cbfe45ffdce528711f4236896fec46a/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/hundred-chart-missing--nw/5a3800f3519fe3233e06fc7f6c3c05837cbfe45ffdce528711f4236896fec46a/audio.m4a",
+    "duration": 192.38,
     "teacher": "Madeline Brousseaux",
     "capability": "lesson-film-v1"
   },
