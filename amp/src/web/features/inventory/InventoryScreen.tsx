@@ -408,7 +408,11 @@ function InventoryHero({
         All {total.toLocaleString("en-US")} skills, from counting to
         precalculus. Each one fills as it’s answered without help.
       </p>
-      <Link to="/practice" className={buttonClass("primary", styles.heroGo)}>
+      <Link
+        to="/$"
+        params={{ _splat: "practice" }}
+        className={buttonClass("primary", styles.heroGo)}
+      >
         Start practicing
       </Link>
       <Link
