@@ -23,14 +23,15 @@ One drawer, one place switcher (`PlaceSwitcher`). A person may hold several plac
 | Place | Who | Tabs | Bar action |
 |---|---|---|---|
 | My practice | an adult learner | Overview · Pathways · Inventory | ▶ Practice |
-| Family | a parent, the second parent | Today · Map · Time · Workbooks · Students · Settings | ▶ Practice (picks a child) |
-| Class (tutor, co-op) | a tutor | Today · Map · Time · Workbooks · Students · Settings | Start class |
+| Family | a parent, the second parent | Today · Map · Time · Workbooks · People · Settings | ▶ Practice (picks a child) |
+| Class (tutor, co-op) | a tutor | Today · Map · Time · Workbooks · People · Settings | Start class |
 | Class (school) | a teacher | Today · Map · Grades · Time · Workbooks · Students · Settings | Start class |
 | School | an admin | Overview · Classes · Staff · Calendar · License · Privacy · Activity | none |
 | Account | everyone, from the drawer | Sign-in · Learners · Billing · Privacy | none |
 
 - **A place with one class opens on that class's Today**, never on a list of one (teacher demo, family, second parent).
-- **Tabs follow the class's size.** A family or tutor class (6 or fewer learners) has no Grades tab. Grades are a line in each learner's Map panel, and the weekly target is set in Settings with its progress on Today. A teacher's class keeps Grades.
+- **The roster tab is named by the org's kind:** "People" in a family org (a family or a tutor's class), where it holds children, the second parent and co-teachers. It is "Students" in a school's class.
+- **Tabs follow the class's size.** A family or tutor class (6 or fewer learners) has no Grades tab and no Calendar tab. Grades are a line in each learner's Map panel, and the weekly target is set in Settings with its progress on Today. A teacher's class keeps Grades.
 - **Calendar:** for a family, a tutor or a lone class, the school year's dates and the term type are one compact section of the class's Settings. There is no Calendar tab and no school-level page. A school with staff keeps its Calendar tab, in the same frame and density as every other screen: a designed year view, without the vast empty space.
 - **Opening a student never leaves the class.** From a class, a student opens inside it (the Map's drill-in route), and the class tabs stay. The school-level student page (`/school/<org>/students/<id>`) is only for an admin who came from the school.
 - **Account tabs follow the account:** an adult with no child sees "Your practice", not "Who's learning?" with "Add a child"; Privacy says "your data", and Learning consent appears only once a child exists. The tab label and the page title are the same words.
@@ -55,7 +56,7 @@ One drawer, one place switcher (`PlaceSwitcher`). A person may hold several plac
   1. One row per child: name, this week (minutes, problems, last practiced), and the one action that works now ("Let Pip practice here", or "Continue with AMP" when the free problems are used). No access dates on Today; they go to Billing.
   2. Needs attention, when there is something (a skill missed three times, no practice in a week). Absent otherwise.
   3. This week's work across the family, once there is any.
-- **Students:** the children, the second parent, co-teachers, children from other families, and their invitations. None of these are on Today.
+- **People:** the children, the second parent, co-teachers, children from other families, and their invitations. None of these are on Today.
 - **Map** shows the whole family on one K–12 axis, each child at their own level.
 
 ### Tutor (Class)
