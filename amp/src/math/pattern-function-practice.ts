@@ -270,7 +270,7 @@ function featureCase(r: Random): Case {
         feedback: parityFeedback(key),
       });
     explanation.push(
-      `The start is ${start} = ${factor} × ${start / factor}, and the rule adds ${step} = ${factor} × ${step / factor}. A multiple of ${factor} plus a multiple of ${factor} is again a multiple of ${factor}, so every number is a multiple of ${factor}.`,
+      `The start is $${start} = ${factor} × ${start / factor}$, and the rule adds $${step} = ${factor} × ${step / factor}$. A multiple of ${factor} plus a multiple of ${factor} is again a multiple of ${factor}, so every number is a multiple of ${factor}.`,
     );
   } else {
     const ones = start % 10,

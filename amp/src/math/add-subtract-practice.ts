@@ -159,7 +159,7 @@ function additionSteps(a: number, b: number): string[] {
       ...(carry ? [carry] : []),
     ];
     const total = terms.reduce((s, t) => s + t, 0);
-    const sum = `${terms.join(" + ")} = ${total}`;
+    const sum = `$${terms.join(" + ")} = ${total}$`;
     carry = total >= 10 ? 1 : 0;
     steps.push(
       carry

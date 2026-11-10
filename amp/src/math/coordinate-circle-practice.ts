@@ -107,6 +107,8 @@ const frac = (v: Rational) =>
 const answerText = (v: Rational) => `${v.n}${v.d === 1 ? "" : `/${v.d}`}`;
 /** −3 with a typographic minus. */
 const n = (x: number) => String(x).replace("-", "−");
+/** A negative factor stays in parentheses, so a product never reads ·− or − −. */
+const factor = (x: number) => (x < 0 ? `(${n(x)})` : n(x));
 const pt = ([x, y]: Point) => `(${n(x)}, ${n(y)})`;
 /** "A, B and C". */
 const list = (items: string[]) =>
@@ -118,7 +120,7 @@ function shoelace(P: Point[]) {
   const terms = P.map((p, i) => {
     const q = P[(i + 1) % P.length]!;
     return {
-      text: `${n(p[0])}·${n(q[1])} − ${n(q[0])}·${n(p[1])}`,
+      text: `${factor(p[0])}·${factor(q[1])} − ${factor(q[0])}·${factor(p[1])}`,
       value: p[0] * q[1] - q[0] * p[1],
     };
   });

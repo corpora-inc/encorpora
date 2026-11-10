@@ -1052,7 +1052,7 @@ function polynomialBuild(r: Random): Built {
       hint: `Check one property at a time. Degree ${d} means the highest exponent is ${d}, the leading coefficient ${lead} multiplies that term, the constant term ${konst} has no variable, and a ${termWords[t]} has ${t} terms added.`,
       explanation: [
         `Degree ${d} means the highest exponent is ${d}, and the leading coefficient ${lead} multiplies ${tex(`x^{${d}}`)}.`,
-        `The constant term is ${konst}. A ${termWords[t]} has ${t} terms, so ${t - 2} more ${t - 2 === 1 ? "term sits" : "terms sit"} between them${t === 2 ? "" : ", each with an exponent below " + d}.`,
+        `The constant term is $${konst}$. A ${termWords[t]} has ${t} terms, so ${t - 2} more ${t - 2 === 1 ? "term sits" : "terms sit"} between them${t === 2 ? "" : ", each with an exponent below " + d}.`,
         `${correct} has all four properties.`,
       ],
       choices: choicesFrom(r, correct, wrongs),

@@ -1223,7 +1223,7 @@ function exhibitPerimeter(seed: string, r: Random): GeneratedProblem {
       given,
     },
     answer: JSON.stringify([[String(pick[0])], [String(pick[1])], [String(area)]]),
-    hint: `Half the trip around is ${given[0]} + ${given[1]}. A different pair of whole numbers with that same sum is a different rectangle. The area is the product, not the sum.`,
+    hint: `Half the trip around is $${given[0]} + ${given[1]}$. A different pair of whole numbers with that same sum is a different rectangle. The area is the product, not the sum.`,
     explanation: [
       `The perimeter is 2 × (${given[0]} + ${given[1]}) = ${2 * half} cm, so one of each side sums to ${half}.`,
       `${half} = ${given[0]} + ${given[1]} = ${pick[0]} + ${pick[1]}. ${pick[0]} by ${pick[1]} is not ${given[0]} by ${given[1]} turned.`,

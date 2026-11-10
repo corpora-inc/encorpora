@@ -762,7 +762,7 @@ export function statisticsClause(
     return b.figures(
       copy,
       lines.map((l) => ({
-        label: `Candidate line y = ${l.m}x + ${l.b}`,
+        label: `Candidate line y = ${l.m}x${l.b < 0 ? ` − ${-l.b}` : ` + ${l.b}`}`,
         scene: graph({
           x: [0, 11],
           y: [

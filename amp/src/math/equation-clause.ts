@@ -125,6 +125,25 @@ const fdiv = (a: Fr, b: Fr) => fr(a.n * b.d, a.d * b.n);
 const feq = (a: Fr, b: Fr) => a.n === b.n && a.d === b.d;
 const fnum = (a: Fr) => a.n / a.d;
 const ftxt = (a: Fr) => (a.d === 1 ? `${a.n}` : `${a.n}/${a.d}`);
+/** Add n, folding a negative into the operator: 3 + −2 is 3 − 2. */
+const plus = (n: number) => (n < 0 ? ` − ${-n}` : ` + ${n}`);
+const lineText = (m: Fr, b: number) => `y = ${ftxt(m)}x${plus(b)}`;
+/** Two labeled equations, each on its own line. */
+function shownSystem(rows: readonly [string, string][]) {
+  const body = rows
+    .map(([equation, label]) => `${equation} & \\text{${label}}`)
+    .join(" \\\\ ");
+  return `$\\begin{cases} ${body} \\end{cases}$`;
+}
+/** k·label, with a leading minus when k is negative. k is never 0. */
+function timesLabel(k: number, label: string) {
+  const mag = Math.abs(k);
+  const body = mag === 1 ? label : `${mag}·${label}`;
+  return k < 0 ? `−${body}` : body;
+}
+/** E2 + k·E1, so a negative k reads E2 − |k|·E1. */
+const addedToE2 = (k: number) =>
+  k < 0 ? `E2 − ${timesLabel(-k, "E1")}` : `E2 + ${timesLabel(k, "E1")}`;
 const signed = (n: number) => (n < 0 ? `−${-n}` : `${n}`);
 
 const instanceId = (templateId: string, seed: string) =>
@@ -744,8 +763,8 @@ export function linesThroughPoints(
     choiceFeedback: chosen.feedback,
     hint: `The first line passes through ${pair(p1)} and ${pair(p2)}. The second line passes through ${pair(q1)} and ${pair(q2)}. Subtract the y-coordinates and the x-coordinates of each pair to get the two slopes. Same slope means parallel or the same line; then test one point in the other line.`,
     explanation: [
-      `Slope of line 1: (${p2[1]} − ${p1[1]}) / (${p2[0]} − ${p1[0]}) = ${slopeText(s1)}.`,
-      `Slope of line 2: (${q2[1]} − ${q1[1]}) / (${q2[0]} − ${q1[0]}) = ${slopeText(s2)}.`,
+      `Slope of line 1: (${p2[1]} − ${term(p1[1])}) / (${p2[0]} − ${term(p1[0])}) = ${slopeText(s1)}.`,
+      `Slope of line 2: (${q2[1]} − ${term(q1[1])}) / (${q2[0]} − ${term(q1[0])}) = ${slopeText(s2)}.`,
       same
         ? `The slopes match and the y-intercepts both equal ${ftxt(i1)}, so the lines are the same.`
         : parallel
@@ -1495,11 +1514,14 @@ export function intersectionReason(seed: string): GeneratedProblem {
     },
   ]);
   return stamp(meta, seed, "intersection-reason", {
-    prompt: `Line 1 is y = ${ftxt(m1)}x + ${b1}. Line 2 is y = ${ftxt(m2)}x + ${b2}. P is (${P[0]}, ${P[1]}), Q is (${qx}, ${qy}), and R is (${R[0]}, ${R[1]}).`,
+    prompt: `${shownSystem([
+      [lineText(m1, b1), "Line 1"],
+      [lineText(m2, b2), "Line 2"],
+    ])} P is (${P[0]}, ${P[1]}), Q is (${qx}, ${qy}), and R is (${R[0]}, ${R[1]}).`,
     response: built.response,
     answer: built.answer,
     figure: { kind: "scene", scene },
-    hint: `Line 1 is y = ${ftxt(m1)}x + ${b1} and line 2 is y = ${ftxt(m2)}x + ${b2}. A solution of the system is on both lines. Test P (${P[0]}, ${P[1]}), Q (${qx}, ${qy}) and R (${R[0]}, ${R[1]}). A point on only one line makes only that equation true.`,
+    hint: `Line 1 is $${lineText(m1, b1)}$ and line 2 is $${lineText(m2, b2)}$. A solution of the system is on both lines. Test P (${P[0]}, ${P[1]}), Q (${qx}, ${qy}) and R $(${R[0]}, ${R[1]})$. A point on only one line makes only that equation true.`,
     explanation: [
       `Q (${qx}, ${qy}) is on both lines, so both equations are true there.`,
       `P is on line 1 only: ${P[1]} equals the first line and not the second.`,
@@ -1541,7 +1563,10 @@ export function plotLine(seed: string): GeneratedProblem {
   const m2 = pick(r, SLOPES.filter((s) => !feq(s, m)));
   const b2 = b + nz(r, 1, 3);
   return stamp(meta, seed, "plot-and-estimate", {
-    prompt: `The system is y = ${ftxt(m)}x + ${b} and y = ${ftxt(m2)}x + ${b2}. Plot two lattice points on the first line. The line through your points is the first equation; the crossing is a separate question.`,
+    prompt: `The system is ${shownSystem([
+      [lineText(m, b), "Line 1"],
+      [lineText(m2, b2), "Line 2"],
+    ])} Plot two lattice points on the first line. The line through your points is the first equation; the crossing is a separate question.`,
     response,
     answer: serializePlot(answerPoints, false),
     pointGrading: { mode: "on-line", ...line },
@@ -1551,9 +1576,9 @@ export function plotLine(seed: string): GeneratedProblem {
         .line({ m: fnum(m2), b: b2 }, { color: "warm", label: "Line 2" })
         .scene({ title: "Line 2 is drawn" }),
     },
-    hint: `The first line is $y = ${ftxt(m)}x + ${b}$. Pick two x-values the denominator of ${ftxt(m)} goes into. Multiply by that slope and add ${b}. Those points are on the first line.`,
+    hint: `The first line is $${lineText(m, b)}$. Pick two x-values the denominator of ${ftxt(m)} goes into. Multiply by that slope and add ${term(b)}. Those points are on the first line.`,
     explanation: [
-      `On y = ${ftxt(m)}x + ${b}, an x that ${m.d === 1 ? "is an integer" : `is a multiple of ${m.d}`} gives an integer y.`,
+      `On $${lineText(m, b)}$, an x that ${m.d === 1 ? "is an integer" : `is a multiple of ${m.d}`} gives an integer y.`,
       `One such point is (${answerPoints[0]![0]}, ${answerPoints[0]![1]}). Another is (${answerPoints[1]![0]}, ${answerPoints[1]![1]}).`,
       "Any two distinct lattice points on that line are accepted. Line 2 is already drawn and is not part of this plot.",
     ],
@@ -1610,7 +1635,10 @@ export function crossingEstimate(seed: string): GeneratedProblem {
     .line({ m: fnum(m2), b: b2 }, { color: "warm", label: "Line 2" })
     .scene({ title: "Estimate the crossing" });
   return stamp(meta, seed, "plot-and-estimate", {
-    prompt: `The lines are y = ${ftxt(m1)}x + ${b1} and y = ${ftxt(m2)}x + ${b2}. Which ordered pair best estimates where they cross?`,
+    prompt: `The lines are ${shownSystem([
+      [lineText(m1, b1), "Line 1"],
+      [lineText(m2, b2), "Line 2"],
+    ])} Which ordered pair best estimates where they cross?`,
     response: {
       kind: "choice",
       label: "Choose the estimate",
@@ -1619,7 +1647,7 @@ export function crossingEstimate(seed: string): GeneratedProblem {
     answer: chosen.answer,
     choiceFeedback: chosen.feedback,
     figure: { kind: "scene", scene },
-    hint: `The lines are y = ${ftxt(m1)}x + ${b1} and y = ${ftxt(m2)}x + ${b2}. Follow them to where they meet. Read x and y to the nearest half unit. A y-intercept and a swapped pair are not the crossing.`,
+    hint: `The lines are $${lineText(m1, b1)}$ and $${lineText(m2, b2)}$. Follow them to where they meet. Read x and y to the nearest half unit. A y-intercept and a swapped pair are not the crossing.`,
     explanation: [
       `Exactly, x = ${ftxt(x)} and y = ${ftxt(y)}.`,
       `The nearest half-unit pair is ${key}, within a quarter unit of the exact crossing.`,
@@ -1715,7 +1743,7 @@ export function assumeCheck(seed: string): GeneratedProblem {
         ]
       : [
           "We supposed a solution exists, so if there is one it must be the number the chain reached.",
-          `Substitute ${x} in the original: ${a}(${checkX} + ${b}) = ${sideL} and ${c}(${checkX}) + ${d} = ${sideR}.`,
+          `Substitute ${x} in the original: ${a}(${checkX}${plus(b)}) = ${sideL} and ${c}(${checkX})${plus(d)} = ${sideR}.`,
           "The two sides match, so the number really is a solution.",
         ],
   });
@@ -1723,8 +1751,6 @@ export function assumeCheck(seed: string): GeneratedProblem {
 
 const coef = (n: number, v: string) =>
   n === 1 ? v : n === -1 ? `-${v}` : `${n}${v}`;
-const plus = (n: number) => (n < 0 ? ` - ${-n}` : ` + ${n}`);
-
 export function scaledElimination(seed: string): GeneratedProblem {
   const meta = metaOf("scaled-elimination");
   const r = clauseStream(meta.id, seed);
@@ -1791,10 +1817,13 @@ export function scaledElimination(seed: string): GeneratedProblem {
     });
   const built = multi(r, parts);
   return stamp(meta, seed, "scaled-multiple", {
-    prompt: `E1: ${left1} = ${c}. E2: ${left2} = ${f}. The system is replaced by E1 and E2 + ${k}·E1.`,
+    prompt: `${shownSystem([
+      [`${left1} = ${c}`, "E1"],
+      [`${left2} = ${f}`, "E2"],
+    ])} The system is replaced by E1 and ${addedToE2(k)}.`,
     response: built.response,
     answer: built.answer,
-    hint: `E1 is ${left1} = ${c}, and the new system uses E2 + ${k}·E1. Multiply every term of E1 by ${k}, then add matching terms to E2. The new equation is reversible: subtract ${k}·E1 to get E2 back.`,
+    hint: `E1 is $${left1} = ${c}$, and the new system uses ${addedToE2(k)}. Multiply every term of E1 by ${term(k)}, then add matching terms to E2. The new equation is reversible: subtract ${term(k)}·E1 to get E2 back.`,
     explanation: [
       `${k}·E1 is ${coef(k * a, "x")} and ${coef(k * b, "y")} equal to ${k * c}.`,
       `Add E2: ${coef(nx, "x")} = ${nr}. The y terms are ${e} + ${term(k)}(${b}) = 0.`,

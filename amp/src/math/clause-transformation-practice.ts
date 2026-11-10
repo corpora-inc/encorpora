@@ -34,6 +34,9 @@ export type Motion =
       offset: number;
     };
 const add = ([x, y]: Pt, [a, b]: Pt): Pt => [x + a, y + b];
+/** a + b, with a negative b folded into the operator. */
+const signedSum = (a: number, b: number) =>
+  b < 0 ? `${a} − ${-b}` : `${a} + ${b}`;
 const scale = ([x, y]: Pt, k: number): Pt => [x * k, y * k];
 const sub = ([x, y]: Pt, [a, b]: Pt): Pt => [x - a, y - b];
 const clean = ([x, y]: Pt): Pt => [x === 0 ? 0 : x, y === 0 ? 0 : y];
@@ -200,7 +203,7 @@ export function generateTransformationClause(c: Context): GeneratedProblem {
           hint: `Add ${dx} to the first coordinate of $P${point(p)}$ and ${dy} to the second.`,
           explanation: [
             `A translation adds the same displacement to every point.`,
-            `$P'${point(q)}$ comes from $(${p[0]}+${dx},${p[1]}+${dy})$.`,
+            `$P'${point(q)}$ comes from $(${signedSum(p[0], dx)}, ${signedSum(p[1], dy)})$.`,
           ],
           figure: plane([p], undefined, { names: ["P"] }),
         },
