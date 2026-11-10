@@ -18,7 +18,7 @@ def fingerprint(payload, images):
     return digest.hexdigest()
 
 
-def review_one(item, provider, root, workspace_root, secrets):
+def review_one(item, provider, root, workspace_root, secrets, *, allow_new=True):
     """Run at most two attempts. The caller bounds concurrent model jobs."""
     root = Path(root)
     job_id = item['id']
@@ -59,6 +59,8 @@ def review_one(item, provider, root, workspace_root, secrets):
                 raise RuntimeError('Attempt inputs changed; use a new blind edition')
             if record.get('status') in ('running', 'queued'):
                 raise RuntimeError('Unfinished review receipt requires reconciliation before retry')
+        elif not allow_new:
+            return None
         elif provider in ('astra', 'grok'):
             record = run_agent(provider, 'review', prompt, workspace, receipt,
                                images=local_images, timeout=900)

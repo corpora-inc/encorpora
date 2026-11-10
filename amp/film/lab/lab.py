@@ -213,7 +213,7 @@ def pathway_reviews(config, rows, secrets):
     return complete
 
 
-def produce_cohort(config, rows, secrets, on_postprocess=None):
+def produce_cohort(config, rows, secrets, on_postprocess=None, queued_reviews=()):
     def finish(row):
         item = postprocess(config, row, secrets)
         if on_postprocess:
@@ -222,6 +222,11 @@ def produce_cohort(config, rows, secrets, on_postprocess=None):
 
     with ThreadPoolExecutor(max_workers=3) as agents, ThreadPoolExecutor(max_workers=1) as voice:
         pending = {agents.submit(production, config, row, secrets): row for row in rows}
+        # Submit after every authoring job. These reviews fill slots only once
+        # all authors have started, sharing the same three-agent bound.
+        review_jobs = {agents.submit(review_one, item, provider, config['root'],
+                                    config['workspace_root'], secrets): (item['id'], provider)
+                       for item, provider in queued_reviews}
         voice_jobs = []
         try:
             for future in as_completed(pending):
@@ -232,16 +237,22 @@ def produce_cohort(config, rows, secrets, on_postprocess=None):
             for future in as_completed(voice_jobs):
                 future.result()
                 report(config, 'voice/export processing')
+            for future in as_completed(review_jobs):
+                value = future.result()
+                identifier, provider = review_jobs[future]
+                print(json.dumps({'event': 'review-finished', 'id': identifier,
+                                  'provider': provider, 'valid': value is not None, 'at': now()}), flush=True)
+                report(config, 'calibration reviews running')
         except BaseException:
-            for future in pending:
+            for future in (*pending, *review_jobs):
                 future.cancel()
             raise
 
 
-def review_cohort(config, items, secrets, providers=REVIEWERS):
+def review_cohort(config, items, secrets, providers=REVIEWERS, *, allow_new=True):
     with ThreadPoolExecutor(max_workers=3) as agents:
         jobs = {agents.submit(review_one, item, provider, config['root'],
-                              config['workspace_root'], secrets): (item['id'], provider)
+                              config['workspace_root'], secrets, allow_new=allow_new): (item['id'], provider)
                 for item in items for provider in providers}
         for future in as_completed(jobs):
             value = future.result()
@@ -293,16 +304,35 @@ def main():
                 review_cohort(config, [i for i in items if i], secrets)
                 write_json(root/'smoke-complete.json', {'completed_at': now(), 'pathway': first, 'types': len(rows)})
             else:
-                from batches import API_REVIEWERS, wait_for_batches
+                from batches import API_REVIEWERS, collect, submit_cohort, wait_for_batches
                 # Keep the three authoring slots occupied across pathways. A
                 # slow final film in one pathway must not idle the other slots.
+                calibration = [read_json(path) for path in sorted((root/'review-items').glob('cal-*.json'))]
                 produce_cohort(config, rows, secrets,
-                               on_postprocess=pathway_reviews(config, rows, secrets))
+                               on_postprocess=pathway_reviews(config, rows, secrets),
+                               queued_reviews=[(item, provider) for item in calibration
+                                               for provider in ('astra', 'grok')])
                 # Include the frozen calibration cohort, whose API batches can run
                 # while the screenplay agents work. Completed smoke reviews are reused.
                 items = [read_json(p) for p in sorted((root/'review-items').glob('*.json'))]
+                def retry_batches():
+                    # Validate without making new requests, then batch only
+                    # completed failures. All first batches must be settled.
+                    review_cohort(config, items, secrets, providers=API_REVIEWERS, allow_new=False)
+                    for pathway in mapping['pathways'][1:]:
+                        group = [r for r in rows if r['pathway']==pathway['id']]
+                        cohort = [read_json(root/'review-items'/(r['id']+'.json')) for r in group]
+                        submit_cohort(root, [item for item in cohort if item], pathway['id'], secrets, attempt=2)
+
+                # Do not idle local CLI slots behind a pending remote batch.
+                # If the first batches are ready, their retries run alongside
+                # CLI reviews. Otherwise, submit retries after those reviews.
+                if not collect(root, secrets):
+                    retry_batches()
                 review_cohort(config, items, secrets, providers=('astra', 'grok'))
                 wait_for_batches(root, secrets, lambda: report(config, 'waiting for review batches'))
+                retry_batches()
+                wait_for_batches(root, secrets, lambda: report(config, 'waiting for review retry batches'))
                 review_cohort(config, items, secrets, providers=API_REVIEWERS)
         elif args.phase in ('calibration', 'calibration-prepare'):
             from runtime import prepare_calibration

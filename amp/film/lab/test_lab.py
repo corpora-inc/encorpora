@@ -76,6 +76,51 @@ class ProductionBudgetTests(unittest.TestCase):
 
 
 class PathwayOverlapTests(unittest.TestCase):
+    def test_calibration_uses_a_free_authoring_slot_before_the_last_author_finishes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            reviewed = threading.Event()
+            slow_started = threading.Event()
+            lock = threading.Lock()
+            active, peak = 0, 0
+
+            def enter():
+                nonlocal active, peak
+                with lock:
+                    active += 1
+                    peak = max(peak, active)
+
+            def leave():
+                nonlocal active
+                with lock:
+                    active -= 1
+
+            def author(config, row, secrets):
+                enter()
+                try:
+                    if row['id'] == 'slow':
+                        slow_started.set()
+                        self.assertTrue(reviewed.wait(5), 'Calibration waited for the slow author')
+                    return row
+                finally:
+                    leave()
+
+            def review(*_):
+                enter()
+                try:
+                    self.assertTrue(slow_started.is_set())
+                    reviewed.set()
+                    return {'ship': True}
+                finally:
+                    leave()
+
+            config = {'root': directory, 'workspace_root': directory}
+            with patch('lab.production', side_effect=author), patch('lab.postprocess'), \
+                    patch('lab.review_one', side_effect=review), patch('lab.report'):
+                produce_cohort(config, [{'id': name} for name in ('slow', 'fast-a', 'fast-b')], {},
+                               queued_reviews=[({'id': 'cal-aa'}, 'astra')])
+            self.assertTrue(reviewed.is_set())
+            self.assertLessEqual(peak, 3)
+
     def test_frozen_pathway_submits_before_later_authoring_finishes(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
