@@ -1,3 +1,4 @@
+import { term } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import {
   ClauseBuilder,
@@ -120,7 +121,7 @@ export function trigonometryClause(
         explanation: [
           square
             ? `$d^2=${k}^2+${k}^2=${2 * k * k}$, so $d=${first}$.`
-            : `$h^2=(${2 * k})^2-${k}^2=${3 * k * k}$, so $h=${first}$.`,
+            : `$h^2=${term(2 * k)}^2-${k}^2=${3 * k * k}$, so $h=${first}$.`,
           `At ${degrees}°, opposite is $${opposite}$, adjacent is $${adjacent}$, and hypotenuse is $${hyp}$.`,
           `$\\${fn}(${radians})=\\frac{${numerator}}{${denominator}}=${value}$.`,
           "The scale factor cancels. The ratio depends on the angle, not the size of the triangle.",
@@ -385,7 +386,7 @@ export function trigonometryClause(
         hint: `Use $\\tan(A${sign}B)=\\frac{\\tan A${sign}\\tan B}{1${sign === "+" ? "-" : "+"}\\tan A\\tan B}$. Substitute the known values at ${a}° and ${c}°.`,
         explanation: [
           `$\\tan ${a}^\\circ=${ta}$ and $\\tan ${c}^\\circ=${tc}$.`,
-          `$\\tan ${degrees}^\\circ=\\frac{(${ta})${sign}(${tc})}{1${sign === "+" ? "-" : "+"}(${ta})(${tc})}=${values[degrees]}$.`,
+          `$\\tan ${degrees}^\\circ=\\frac{${term(ta)}${sign}${term(tc)}}{1${sign === "+" ? "-" : "+"}${term(ta)}\\cdot ${term(tc)}}=${values[degrees]}$.`,
           "Rationalize a denominator containing a square root by multiplying above and below by its conjugate (the same terms with the middle sign reversed).",
           `Numerically the value is about ${round(Math.tan(rad(degrees)), 4)}, consistent with the angle's quadrant.`,
         ],
