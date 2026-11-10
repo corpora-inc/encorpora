@@ -363,6 +363,8 @@ export async function assertProblemReachable(page: Page, label: string) {
         ...content.querySelectorAll("svg:not(svg svg), table, img, canvas"),
       ];
       for (const part of new Set(parts)) {
+        // Content of a closed <details> (a figure's data table) is not shown.
+        if (!part.checkVisibility()) continue;
         const b = part.getBoundingClientRect();
         if (b.width < 2 || b.height < 2) continue;
         if (b.top < top - 1 || b.bottom > bottom + 1)
