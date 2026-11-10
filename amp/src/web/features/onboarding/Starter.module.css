@@ -54,9 +54,12 @@
     background-color var(--motion-fast, 120ms) ease;
 }
 /* Every tile looks the same at rest and under the pointer, a button or a
-   link: only the border answers (the global button hover darkens). */
-.choice:hover {
+   link: only the border answers. `:not(:disabled)` matches the global
+   `button:hover:not(:disabled)` darkening, so this rule outranks it on the
+   one tile that is a button ("I'm a teacher"). */
+.choice:hover:not(:disabled) {
   border-color: var(--color-border-strong);
+  background: var(--color-surface-raised);
   filter: none;
 }
 .choice:focus-visible {
