@@ -384,6 +384,7 @@ export function RosterScreen() {
               place={params}
               family={family}
               boardLink={family}
+              label={false}
             />
             <span className={styles.codeActions}>
               {canManage && (

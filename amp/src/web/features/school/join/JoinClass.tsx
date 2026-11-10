@@ -25,6 +25,7 @@ export function JoinClass({
   compact = false,
   cards = true,
   boardLink = true,
+  label = true,
 }: {
   code: string;
   place: { org: string; class: string };
@@ -34,6 +35,8 @@ export function JoinClass({
   cards?: boolean;
   /** Offer the full-screen board here (the bar's Start class may). */
   boardLink?: boolean;
+  /** "Class code" before the code; off where a heading already says it. */
+  label?: boolean;
 }) {
   const link = joinLink(code);
   const shown = formatJoinCode(code);
@@ -49,7 +52,7 @@ export function JoinClass({
   if (compact)
     return (
       <section className={styles.compact} aria-label="Join this class">
-        <span className={styles.label}>Class code</span>
+        {label && <span className={styles.label}>Class code</span>}
         <strong className={styles.code} data-class-code={code}>
           {shown}
         </strong>
