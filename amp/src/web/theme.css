@@ -2024,11 +2024,26 @@ html[data-input="pointer"] :focus-visible {
 .account-form input {
   margin: 0;
 }
-.account-form input {
+/* The one field style (tokens.css): on the page, never the answer paper's
+   white that bare inputs take. */
+.account-form input:not([type="checkbox"], [type="radio"]) {
+  box-sizing: border-box;
   width: 100%;
-  min-height: 48px;
-  padding: 0 12px;
+  min-height: var(--field-height);
+  padding: 0 var(--field-padding-inline);
+  border: 1px solid var(--field-border);
+  border-radius: var(--field-radius);
+  background: var(--field-surface);
+  color: var(--field-on);
   font-size: 16px;
+}
+.account-form input:not([type="checkbox"], [type="radio"])::placeholder {
+  color: var(--field-placeholder);
+}
+/* A field with its rule under it: as close as a label's own parts. */
+.account-field {
+  display: grid;
+  gap: 6px;
 }
 .account-form small {
   font-weight: 400;

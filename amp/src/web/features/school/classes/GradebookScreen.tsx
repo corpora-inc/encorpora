@@ -577,7 +577,10 @@ export function GradebookScreen() {
                       _splat: classUrl(place.org, place.class, "report-cards"),
                     }}
                     search={{ term: term.id } as never}
-                    className={buttonClass("quiet", "", "start")}
+                    // Beside Export, never pulled over it: a start-aligned
+                    // quiet button lines up with a column, and this one sits
+                    // in a row.
+                    className={buttonClass("quiet")}
                   >
                     Report cards
                   </Link>

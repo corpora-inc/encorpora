@@ -227,7 +227,8 @@ function EvidenceWork({
       .finally(() => setBusy(false));
   };
   return (
-    <section>
+    // The problems as the student saw them: their own words, not ours.
+    <section data-evidence-problems="">
       <h3>Problems</h3>
       {shown.length === 0 ? (
         <p className={styles.quietLine}>No problems in this term yet.</p>

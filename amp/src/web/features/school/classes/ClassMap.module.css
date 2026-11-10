@@ -58,7 +58,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  min-height: 40px;
+  min-height: 44px;
   margin-inline: calc(-1 * var(--space-2));
   padding: 0 var(--space-2);
   border: 0;
@@ -73,8 +73,10 @@
 .sort[data-active] {
   color: var(--color-on-surface);
 }
-.sort:hover {
-  background: var(--color-surface-hover);
+@media (hover: hover) {
+  .sort:hover {
+    background: var(--color-surface-hover);
+  }
 }
 .sort:focus-visible {
   outline: 3px solid var(--color-focus-ring);
@@ -190,9 +192,6 @@
     grid-template-rows: auto 26px;
     min-height: 0;
     padding-bottom: var(--space-2);
-  }
-  .student {
-    min-height: 36px;
   }
   .numbers {
     grid-column: 2;
