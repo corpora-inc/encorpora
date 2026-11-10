@@ -91,7 +91,14 @@ export function Home(props: Props) {
       {props.navigation}
       <section className="home-hero">
         <div>
-          <h1 className="home-learner">{props.name}</h1>
+          {/* Whose Overview, for someone reading another's; a learner's
+              own never names them (docs/design/ia.md). */}
+          <h1
+            id="home-title"
+            className={who ? "home-learner" : "home-learner home-learner-own"}
+          >
+            {who ? props.name : "Where you are"}
+          </h1>
           {props.freeLeft != null && (
             <p className="home-free" data-free-left={props.freeLeft}>
               {freeProblemsLeft(props.freeLeft)}
@@ -111,7 +118,8 @@ export function Home(props: Props) {
           />
         ) : measured ? (
           <LevelRange
-            title={who ? `Where ${who} is` : "Where you are"}
+            title={who ? `Where ${who} is` : null}
+            labelledBy={who ? undefined : "home-title"}
             overall={f.overall}
             answered={f.overall.answered}
             areas={areas}
@@ -125,7 +133,8 @@ export function Home(props: Props) {
           />
         ) : (
           <LevelRangeStart
-            title={who ? `Where ${who} is` : "Where you are"}
+            title={who ? `Where ${who} is` : null}
+            labelledBy={who ? undefined : "home-title"}
             start={f.overall}
             grade={grade}
             numbers={shown}

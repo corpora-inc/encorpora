@@ -958,6 +958,13 @@ header {
   border-radius: 0;
   background: transparent;
 }
+/* A learner's own Overview: the page's title, not a label. */
+.home-hero h1.home-learner-own {
+  font-family: var(--font-display);
+  font-size: var(--text-heading-1);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
 /* The level's place while the estimate loads: the height of the view. */
 .home-level-wait {
   min-height: 420px;
