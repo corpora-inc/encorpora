@@ -242,8 +242,14 @@ async function journey(
   await teacherFamily(teacherAccount);
   await teacher.goto(`${origin}/`);
   await teacher.waitForURL(CLASS_TODAY);
-  await heading(teacher, /^Good (morning|afternoon|evening)/);
-  const classUrl = teacher.url();
+  await heading(
+    teacher,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
+  // Children from other families live on People, beside the family's own.
+  const classUrl = teacher.url().replace(/\/today$/, "/roster");
+  await teacher.goto(classUrl);
+  await heading(teacher, "People");
   await teacher
     .getByRole("button", { name: "Add a child from another family" })
     .click();
@@ -338,7 +344,7 @@ async function journey(
   ]);
   last.page = teacher;
   await teacher.reload();
-  await heading(teacher, /^Good (morning|afternoon|evening)/);
+  await heading(teacher, "People");
   await anaRow(teacher).getByText("Used the 100 free problems").waitFor();
   await measured(teacher, `${label} Ana approved`);
   await shot(teacher, "teacher-needs-access", width, theme);
@@ -402,7 +408,7 @@ async function journey(
     await own.close();
   }
   last.page = teacher;
-  await teacher.goto(classUrl.replace(/\/today$/, "/map"));
+  await teacher.goto(classUrl.replace(/\/roster$/, "/map"));
   await teacher.getByText("Ana", { exact: true }).first().waitFor();
   await measured(teacher, `${label} class map`);
   await shot(teacher, "teacher-map", width, theme);

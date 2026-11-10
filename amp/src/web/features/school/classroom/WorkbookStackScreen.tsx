@@ -19,7 +19,7 @@ import { Segmented } from "../../../ui/Segmented";
 import { meOptions } from "../../../lib/query";
 import { AllowancePause } from "../../continue/AllowancePause";
 import { dateLabel, defaultPaper } from "../../workbooks/model";
-import { currentSession } from "../api";
+import { currentSession, orgOptions } from "../api";
 import { useStaffSession } from "../classes/api";
 import { ClassFrame } from "../classes/ClassFrame";
 import { PageHead } from "../parts";
@@ -159,6 +159,13 @@ export function WorkbookStackScreen() {
       replace: true,
     });
   const busy = run?.status === "running" || run?.status === "merging";
+  // A family's class is its children.
+  const family =
+    useQuery({
+      ...orgOptions(currentSession(), params.org),
+      refetchOnMount: false,
+    }).data?.kind === "family";
+  const who = family ? "child" : "student";
 
   // A print that just finished shows in "Mark" below.
   const status = run?.status;
@@ -177,7 +184,7 @@ export function WorkbookStackScreen() {
     >
       <PageHead
         title="Workbooks"
-        detail="A different workbook for each student, made from their own work."
+        detail={`A different workbook for each ${who}, made from their own work.`}
       />
       {!data ? (
         <EmptyState
@@ -191,8 +198,16 @@ export function WorkbookStackScreen() {
           {say(query.error, "The class’s list couldn’t be read.")}
         </EmptyState>
       ) : !data.students.length ? (
-        <EmptyState title="No students in this class yet">
-          Add students to the class, then print a workbook for each of them.
+        <EmptyState
+          title={
+            family
+              ? "No children in this class yet"
+              : "No students in this class yet"
+          }
+        >
+          {family
+            ? "Add a child, then print a workbook made from their own work."
+            : "Add students to the class, then print a workbook for each of them."}
         </EmptyState>
       ) : (
         <Stack
@@ -203,6 +218,7 @@ export function WorkbookStackScreen() {
           org={params.org}
           classId={params.class}
           session={session}
+          who={who}
         />
       )}
     </ClassFrame>
@@ -217,7 +233,10 @@ function Stack({
   org,
   classId,
   session,
+  who,
 }: {
+  /** What the class calls the people in it: "student", or "child". */
+  who: "student" | "child";
   data: StackView;
   search: StackSearch;
   set: (change: Partial<StackSearch>) => void;
@@ -413,9 +432,17 @@ function Stack({
           <h2 id="stack-students">
             {toggles
               ? selected === eligible.length
-                ? count(eligible.length, "student")
-                : `${selected} of ${eligible.length} students`
-              : count(ids.length, "student")}
+                ? count(
+                    eligible.length,
+                    who,
+                    who === "child" ? "children" : "students",
+                  )
+                : `${selected} of ${eligible.length} ${who === "child" ? "children" : "students"}`
+              : count(
+                  ids.length,
+                  who,
+                  who === "child" ? "children" : "students",
+                )}
           </h2>
           {data.canPrint &&
             (status === "done" ? (
@@ -512,7 +539,12 @@ function Stack({
                   <strong>{dateLabel(entry.date, "short")}</strong>
                   <span>
                     {entry.focus ? "Group sheet, " : ""}
-                    {entry.minutes} minutes, {count(entry.students, "student")}
+                    {entry.minutes} minutes,{" "}
+                    {count(
+                      entry.students,
+                      who,
+                      who === "child" ? "children" : "students",
+                    )}
                   </span>
                 </span>
                 <Badge

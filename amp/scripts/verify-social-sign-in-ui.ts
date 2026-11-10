@@ -751,7 +751,9 @@ try {
   async function familyHome(tab: Page) {
     await tab.waitForURL(/\/school\/[^/]+\/classes\/[^/]+\/today$/);
     await tab
-      .getByRole("heading", { name: /^Good (morning|afternoon|evening)/ })
+      .getByRole("heading", {
+        name: /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+      })
       .waitFor();
     await tab
       .getByRole("button", {

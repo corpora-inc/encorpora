@@ -82,8 +82,29 @@ export const todayTodoResource = z.object({
   groupSheet: z.object({ skillId: z.string(), label: z.string() }).optional(),
 });
 export type TodayTodo = z.infer<typeof todayTodoResource>;
+/** One student's day at a glance: where they work and what they did today. */
+export const todayStudentResource = z.object({
+  id,
+  /** Only in a family's class, where the reader's own children are matched
+   * to their learners (practice here, access). */
+  learnerId: z.string().optional(),
+  name: z.string(),
+  gradeLevel: z.number().nullable(),
+  /** Null until there is work to estimate from. */
+  level: estimateResource.nullable(),
+  /** So little work yet that the estimate is mostly a starting guess. */
+  provisional: z.boolean(),
+  todayMinutes: z.number(),
+  todayProblems: z.number(),
+  weekMinutes: z.number(),
+  weekProblems: z.number(),
+});
+export type TodayStudentResource = z.infer<typeof todayStudentResource>;
 export const todayResponse = z.object({
   class: classSummary,
+  /** A family's class, whose screens speak to a parent. */
+  family: z.boolean().default(false),
+  students: z.array(todayStudentResource).default([]),
   teacherName: z.string().nullable(),
   /** This person can print workbooks for the class. */
   canPrint: z.boolean(),

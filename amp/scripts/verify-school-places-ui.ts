@@ -294,7 +294,10 @@ async function familyThenSchool(
   );
   await page.getByRole("button", { name: "Continue", exact: true }).click();
   await page.waitForURL(/\/school\/[^/]+\/classes\/[^/]+\/today$/);
-  await heading(page, /^Good (morning|afternoon|evening)/);
+  await heading(
+    page,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   await settle(page, 300);
   const account = await accountOf(context);
   const family = await familyClass(account);

@@ -296,7 +296,10 @@ async function journey(
   const maya = await family(holderAccount);
   await go(holder, `${origin}/`);
   await holder.waitForURL(CLASS_TODAY);
-  await heading(holder, /^Good (morning|afternoon|evening)/);
+  await heading(
+    holder,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   const classUrl = holder.url();
   const add = holder.getByRole("button", { name: "Add a second parent" });
   await add.waitFor();
@@ -398,7 +401,10 @@ async function journey(
     rowan.url() === classUrl,
     rowan.url(),
   );
-  await heading(rowan, /^Good (morning|afternoon|evening)/);
+  await heading(
+    rowan,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   const handOver = rowan.getByRole("button", {
     name: "Let Maya practice here",
   });
@@ -421,7 +427,10 @@ async function journey(
   await shot(rowan, "second-parent-today", width, theme, engine);
   await noParentLinks(rowan, classUrl, `${label} second parent`);
   await go(rowan, classUrl);
-  await heading(rowan, /^Good (morning|afternoon|evening)/);
+  await heading(
+    rowan,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
 
   // 4. Maya's progress, then her own practice.
   const toMaya = await openSwitcher(rowan, "Fern’s class");
@@ -502,7 +511,10 @@ async function journey(
   // 5. The holder sees her joined.
   last.page = holder;
   await go(holder, classUrl);
-  await heading(holder, /^Good (morning|afternoon|evening)/);
+  await heading(
+    holder,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   const active = holder.locator('[data-second-parent-row="active"]');
   await active.getByText("Rowan Fixture").waitFor();
   check(

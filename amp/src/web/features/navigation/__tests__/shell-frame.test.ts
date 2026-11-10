@@ -116,6 +116,18 @@ test("class sub-screens retain their tab and existing URLs", () => {
     "Students",
     "Settings",
   ]);
+  expect(
+    classTabs("org", "class", false, true, true).map((tab) => tab.label),
+  ).toEqual([
+    "Today",
+    "Map",
+    "Grades",
+    "Time",
+    "Workbooks",
+    "People",
+    "Settings",
+    "Calendar",
+  ]);
   expect(shellFrame("/learners/child/workbooks/2026-11-09/results")).toEqual({
     kind: "plain",
   });

@@ -159,6 +159,7 @@ export function classTabs(
   id: string,
   past = false,
   familyCalendar = false,
+  family = false,
 ): TabItem[] {
   const tabs = [
     ["today", "Today"],
@@ -166,7 +167,8 @@ export function classTabs(
     ["gradebook", "Grades"],
     ["time", "Time"],
     ["workbooks", "Workbooks"],
-    ["roster", "Students"],
+    // A family's children and the grown-ups who teach them.
+    ["roster", family ? "People" : "Students"],
     ["settings", "Settings"],
   ]
     .filter(([leaf]) => !past || leaf === "gradebook" || leaf === "time")

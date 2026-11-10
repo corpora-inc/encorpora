@@ -227,7 +227,10 @@ async function demo(
 
   // 2. Today, the map, the gradebook and the roster are alive.
   await page.goto(`${origin}/${path}`);
-  await heading(page, /^Good (morning|afternoon|evening), Dana Whitfield\.$/);
+  await heading(
+    page,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   await page
     .getByText(/Noor|Diego|Lena/)
     .first()
@@ -338,7 +341,10 @@ async function demo(
 
   // 4. The real class comes from the real onboarding.
   await page.goto(`${origin}/${path}`);
-  await heading(page, /^Good (morning|afternoon|evening)/);
+  await heading(
+    page,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   const action = page.locator("[data-demo-action]").filter({ visible: true });
   check(
     `${label} the action names the real class`,

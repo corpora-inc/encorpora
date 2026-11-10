@@ -205,7 +205,9 @@ async function pressed(page: Page, name: RegExp, id: string) {
   alive("sign-in", signingIn);
   await page.waitForURL(/\/school\/[^/]+\/classes\/[^/]+\/today$/);
   await page
-    .getByRole("heading", { name: /^Good (morning|afternoon|evening)/ })
+    .getByRole("heading", {
+      name: /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+    })
     .waitFor();
   await page.goto(`${fixture.origin}/overview`);
   await page.locator('.frontier-map[aria-busy="false"]').waitFor();

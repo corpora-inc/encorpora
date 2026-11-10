@@ -239,7 +239,10 @@ async function family(
   // 1. `/` converts the family and opens its class, with one calm line.
   await page.goto(`${origin}/`);
   await page.waitForURL(CLASS_TODAY);
-  await heading(page, /^Good (morning|afternoon|evening)/);
+  await heading(
+    page,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   const notice = page.getByText(
     /Your children now sign in on their own devices/,
   );
@@ -248,18 +251,26 @@ async function family(
   await maya.waitFor();
   check(
     `${label} each child's access is dated`,
-    (await page.getByText(/^Access through /).count()) === 2,
+    (await page.getByText("access through", { exact: true }).count()) === 2,
   );
   check(
     `${label} the class is named for the parent`,
-    (await page.getByText("Marisol’s class").count()) > 0,
+    (
+      await db.query(
+        "SELECT c.name FROM amp_families f JOIN amp_classes c ON c.id=f.class_id WHERE f.account_id=$1",
+        [account],
+      )
+    ).rows[0]?.name === "Marisol’s class",
   );
   await measured(page, `${label} class with the line`);
   await shot(page, "class-notice", width, theme);
   await page.getByRole("button", { name: "Dismiss" }).click();
   await notice.waitFor({ state: "detached" });
   await page.reload();
-  await heading(page, /^Good (morning|afternoon|evening)/);
+  await heading(
+    page,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   await maya.waitFor();
   check(`${label} the line stays dismissed`, (await notice.count()) === 0);
   await measured(page, `${label} class`);
@@ -267,7 +278,10 @@ async function family(
   await schoolShellReview(page);
   await classShellJourney(page);
 
-  // The parent invites a co-teacher from the class; "Copy link" stays on the row.
+  // The parent invites a co-teacher from People; "Copy link" stays on the row.
+  const classUrl = page.url();
+  await page.goto(classUrl.replace(/\/today$/, "/roster"));
+  await heading(page, "People");
   await page.getByRole("button", { name: "Invite a co-teacher" }).click();
   await page.getByLabel("Email").fill("rafael@vega.example");
   await shot(page, "co-teacher-invite", width, theme);
@@ -280,7 +294,11 @@ async function family(
   );
   await measured(page, `${label} class with a co-teacher`);
   await shot(page, "co-teacher-invited", width, theme);
-  const classUrl = page.url();
+  await page.goto(classUrl);
+  await heading(
+    page,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   const code = (
     await db.query(
       "SELECT c.join_code FROM amp_families f JOIN amp_classes c ON c.id=f.class_id WHERE f.account_id=$1",
@@ -323,7 +341,10 @@ async function family(
     .click();
   await page.getByRole("button", { name: "Sign out" }).click();
   await page.waitForURL(CLASS_TODAY);
-  await heading(page, /^Good (morning|afternoon|evening)/);
+  await heading(
+    page,
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   check(`${label} back in the parent's class`, page.url() === classUrl, [
     page.url(),
     classUrl,

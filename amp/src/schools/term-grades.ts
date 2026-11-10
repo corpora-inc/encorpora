@@ -54,6 +54,8 @@ export type ClassContext = {
   /** Today in the school's timezone. */
   today: string;
   hour: number;
+  /** The org's kind: a family's class reads for a family. */
+  orgKind: string;
 };
 
 /** What a class is and when "today" is, in one read. */
@@ -64,7 +66,7 @@ export async function classContext(
   const row = (
     await db.query(
       `SELECT c.id,c.org_id AS "orgId",o.path,c.name,c.course_bands AS "courseBands",
-         c.grading_kind AS "gradingKind",c.session_id AS "sessionId",o.name AS "orgName",o.timezone,
+         c.grading_kind AS "gradingKind",c.session_id AS "sessionId",o.name AS "orgName",o.timezone,o.kind AS "orgKind",
          to_char(now() AT TIME ZONE o.timezone,'YYYY-MM-DD') AS today,
          extract(hour FROM now() AT TIME ZONE o.timezone)::int AS hour
        FROM amp_classes c JOIN amp_orgs o ON o.id=c.org_id WHERE c.id=$1`,

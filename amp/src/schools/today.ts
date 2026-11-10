@@ -36,6 +36,9 @@ export type TodayStudent = {
 };
 export type TodayInput = {
   today: string;
+  /** A family's class: its children, and each child's own row on Today is
+   * how they start, so there's no class to start. */
+  family?: boolean;
   students: readonly TodayStudent[];
   skills: readonly {
     studentId: string;
@@ -146,6 +149,10 @@ export function todayTodos(
 ): TodayTodo[] {
   const { students } = input;
   const rules = policy.today;
+  /** Who is in the class, as its teacher says it. */
+  const plural = input.family ? "children" : "students";
+  if (input.family && students.every((student) => !student.lastActive))
+    return [];
   if (students.length === 0)
     return [
       {
@@ -208,7 +215,7 @@ export function todayTodos(
       return {
         id: `gap:${skillId}`,
         kind: "shared-gap",
-        title: `${group.length} students are stuck on ${skill}`,
+        title: `${group.length} ${plural} are stuck on ${skill}`,
         detail: `${joinNames(group.map((student) => student.first))} keep missing it on their own. A short lesson together should clear it.`,
         students: people(group),
         action: lesson
@@ -304,8 +311,8 @@ export function todayTodos(
         kind: "no-practice",
         title:
           idle.length === behind.length
-            ? `${behind.length} students haven’t practiced this week`
-            : `${behind.length} students are behind this week’s target`,
+            ? `${behind.length} ${plural} haven’t practiced this week`
+            : `${behind.length} ${plural} are behind this week’s target`,
         detail:
           input.weeklyTargetMinutes === null
             ? `${joinNames(behind.map((student) => student.first))} have no time on the board since Monday.`
@@ -318,7 +325,7 @@ export function todayTodos(
   // On the roster, but they've never signed in.
   const waiting = students.filter((student) => student.lastActive === null);
   const notStarted: TodayTodo[] =
-    waiting.length === 0
+    waiting.length === 0 || input.family
       ? []
       : [
           {
@@ -377,7 +384,7 @@ export function todayTodos(
         {
           id: "good-day",
           kind: "good-day",
-          title: `A good day: ${worked.length} of ${students.length} students worked today`,
+          title: `A good day: ${worked.length} of ${students.length} ${plural} worked today`,
           detail: `That’s ${minutesToday.toLocaleString("en-US")} active minutes so far${objectives ? `, and ${objectives} new ${objectives === 1 ? "objective" : "objectives"} this week` : ""}.`,
           students: people(worked),
           action: { kind: "tab", tab: "time", label: "See the time report" },

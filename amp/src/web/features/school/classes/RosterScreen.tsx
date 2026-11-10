@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import type { SignInRoster } from "../../../../schools/contracts";
-import { Avatar } from "../../../ui/Avatar";
 import { Badge } from "../../../ui/Badge";
 import { Button, buttonClass } from "../../../ui/Button";
 import { DataGrid, type DataGridColumn } from "../../../ui/DataGrid";
@@ -23,6 +22,13 @@ import {
 } from "./api";
 import { ClassFrame } from "./ClassFrame";
 import { PracticeAs, useDemoOrg } from "../demo/DemoPlace";
+import { meOptions } from "../../../lib/query";
+import { currentSession, orgOptions } from "../api";
+import { ClassPeople } from "./people/ClassPeople";
+import { canAddStudents } from "../permissions";
+import { classUrl } from "./teacher-shared";
+import { approvalsOptions } from "../../family-approval/api";
+import { secondParentOptions } from "../../second-parent/api";
 import styles from "./Roster.module.css";
 
 type Row = SignInRoster["students"][number];
@@ -48,6 +54,32 @@ function PicturesBadge({ row }: { row: Row }) {
     <Badge tone="success">Set</Badge>
   ) : (
     <Badge>Not yet</Badge>
+  );
+}
+
+/** One made-up line of sign-in status, for an empty class. */
+function ExampleSignIn() {
+  return (
+    <dl className={styles.example}>
+      <div className={styles.exampleName}>
+        <dt>Name</dt>
+        <dd>A student</dd>
+      </div>
+      <div>
+        <dt>Card</dt>
+        <dd>Issued Sep 3</dd>
+      </div>
+      <div>
+        <dt>Pictures</dt>
+        <dd>
+          <Badge tone="success">Set</Badge>
+        </dd>
+      </div>
+      <div>
+        <dt>Last seen</dt>
+        <dd>Today, 9:12 AM</dd>
+      </div>
+    </dl>
   );
 }
 
@@ -89,6 +121,28 @@ export function RosterScreen() {
   const [making, setMaking] = useState(false);
   // A demo's owner can open practice as any of its made-up students.
   const demo = useDemoOrg(params.org);
+  // A family's class is its people: the children, then (for the account
+  // holder) the grown-ups who teach it and children from other families.
+  const account = currentSession();
+  const org = useQuery({
+    ...orgOptions(account, params.org),
+    refetchOnMount: false,
+  }).data;
+  const family = org?.kind === "family";
+  const me = useQuery(meOptions(account)).data;
+  const holder = !!me?.signedIn && me.familyClass?.classId === params.class;
+  const who = family ? "child" : "student";
+  // Its lists arrive with the page, so nothing below moves in after it.
+  const second = useQuery({
+    ...secondParentOptions(account),
+    enabled: holder && family,
+  });
+  const others = useQuery({
+    ...approvalsOptions(account),
+    enabled: holder && family,
+  });
+  const peoplePending =
+    holder && family && (second.isPending || others.isPending);
   const busy =
     making || rotate.isPending || reset.isPending || revoke.isPending;
 
@@ -96,12 +150,11 @@ export function RosterScreen() {
     () => [
       {
         id: "name",
-        header: "Student",
+        header: family ? "Child" : "Student",
         width: 200,
         compare: (a, b) => a.name.localeCompare(b.name),
         cell: (row) => (
           <span className={styles.student}>
-            <Avatar name={row.name} size="small" />
             <span>{row.name}</span>
           </span>
         ),
@@ -216,6 +269,7 @@ export function RosterScreen() {
     [
       canManage,
       demo,
+      family,
       navigate,
       params,
       experience.data?.canEdit,
@@ -258,7 +312,7 @@ export function RosterScreen() {
       org={params.org}
       classId={params.class}
       className={data?.class.name}
-      loading={roster.isPending}
+      loading={roster.isPending || peoplePending}
       tab="roster"
     >
       {!data ? (
@@ -269,12 +323,14 @@ export function RosterScreen() {
         <div className={styles.page}>
           <header className={styles.head}>
             <div>
-              <h1>Roster</h1>
-              <p className={styles.count}>
-                {data.students.length === 1
-                  ? "1 student"
-                  : `${data.students.length} students`}
-              </p>
+              <h1>{family ? "People" : "Roster"}</h1>
+              {data.students.length > 0 && (
+                <p className={styles.count}>
+                  {data.students.length === 1
+                    ? `1 ${who}`
+                    : `${data.students.length} ${family ? "children" : "students"}`}
+                </p>
+              )}
             </div>
             <div className={styles.actions}>
               <Link
@@ -282,15 +338,17 @@ export function RosterScreen() {
                 params={params}
                 className={buttonClass("secondary")}
               >
-                Student experience
+                {family ? "What children see" : "Student experience"}
               </Link>
-              <Link
-                to="/school/$org/classes/$class/start"
-                params={params}
-                className={buttonClass("primary")}
-              >
-                Start class
-              </Link>
+              {!family && (
+                <Link
+                  to="/school/$org/classes/$class/start"
+                  params={params}
+                  className={buttonClass("primary")}
+                >
+                  Start class
+                </Link>
+              )}
               {canManage && data.students.length > 0 && (
                 <Link
                   to="/school/$org/classes/$class/cards"
@@ -319,7 +377,9 @@ export function RosterScreen() {
               <p>
                 {data.class.joinLockedUntil
                   ? "Sign-in is paused after many wrong pictures. A new code opens it now."
-                  : "Students type this at /join. Printed cards don’t need it."}
+                  : family
+                    ? "Children type this at /join on a device of their own. Printed cards don’t need it."
+                    : "Students type this at /join. Printed cards don’t need it."}
               </p>
             </div>
             <span
@@ -329,14 +389,25 @@ export function RosterScreen() {
             >
               <CodeTiles code={data.class.joinCode} />
             </span>
-            {canManage && (
-              <Button
-                variant={data.class.joinLockedUntil ? "primary" : "secondary"}
-                onClick={() => setPending({ kind: "rotate" })}
-              >
-                New code
-              </Button>
-            )}
+            <span className={styles.codeActions}>
+              {family && (
+                <Link
+                  to="/school/$org/classes/$class/start"
+                  params={params}
+                  className={buttonClass("quiet")}
+                >
+                  Full screen
+                </Link>
+              )}
+              {canManage && (
+                <Button
+                  variant={data.class.joinLockedUntil ? "primary" : "secondary"}
+                  onClick={() => setPending({ kind: "rotate" })}
+                >
+                  New code
+                </Button>
+              )}
+            </span>
           </section>
           {data.students.length ? (
             <DataGrid
@@ -346,12 +417,75 @@ export function RosterScreen() {
               rowKey={(row) => row.id}
               rowHeight={52}
               defaultSort={{ column: "name", direction: "ascending" }}
+              cardLayout="list"
+              cardsSort={data.students.length > 6}
+              cardEstimate={84}
+              card={(row) => (
+                <div className={styles.card}>
+                  <span className={styles.cardName}>{row.name}</span>
+                  {canManage && (
+                    <span className={styles.cardAction}>
+                      {columns
+                        .find((column) => column.id === "actions")
+                        ?.cell(row)}
+                    </span>
+                  )}
+                  <span className={styles.cardFacts}>
+                    <span>
+                      {row.cardIssuedAt
+                        ? `Card ${shortDate.format(new Date(row.cardIssuedAt))}`
+                        : "No card"}
+                    </span>
+                    <span className={styles.cardPictures}>
+                      Pictures <PicturesBadge row={row} />
+                    </span>
+                    <span>
+                      {row.lastSeenAt
+                        ? `Seen ${lastSeen(row.lastSeenAt)}`
+                        : "Not signed in yet"}
+                    </span>
+                  </span>
+                </div>
+              )}
             />
           ) : (
-            <EmptyState title="No students yet">
-              Students added to this class appear here with their sign-in
-              status.
+            <EmptyState
+              title={family ? "No children yet" : "No students yet"}
+              example={<ExampleSignIn />}
+              action={
+                family && holder ? (
+                  <Link
+                    to="/$"
+                    params={{ _splat: "family/learners" }}
+                    className={buttonClass("primary")}
+                  >
+                    Add a child
+                  </Link>
+                ) : !family && canAddStudents(org, params.class) ? (
+                  <Link
+                    to="/$"
+                    params={{
+                      _splat: classUrl(params.org, params.class, "settings"),
+                    }}
+                    search={{ add: 1 } as never}
+                    className={buttonClass("primary")}
+                  >
+                    Add students
+                  </Link>
+                ) : undefined
+              }
+            >
+              {family
+                ? "Each child appears here with their card, their pictures and when they last signed in."
+                : "Each student appears here with their card, their pictures and when they last signed in."}
             </EmptyState>
+          )}
+          {family && holder && (
+            <ClassPeople
+              session={account}
+              orgId={params.org}
+              classId={params.class}
+            />
           )}
         </div>
       )}

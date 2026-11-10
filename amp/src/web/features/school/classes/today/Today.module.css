@@ -1,0 +1,424 @@
+/* Today: the day's date, the week in one line, each child or the class, and
+   what needs the teacher. Rows on the page, never cards; shared tokens only. */
+.today {
+  container-type: inline-size;
+  display: grid;
+  gap: var(--space-6);
+}
+
+/* The date, with the class code beside it from 720 px. */
+.head {
+  display: grid;
+  gap: var(--space-4);
+  align-items: end;
+}
+.head h1 {
+  line-height: 1.1;
+}
+@container (min-width: 720px) {
+  .head {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+
+.sectionTitle {
+  margin: 0 0 var(--space-2);
+  color: var(--color-muted-text);
+  font-family: inherit;
+  font-size: var(--text-table);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.lead {
+  margin: calc(-1 * var(--space-1)) 0 var(--space-3);
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  text-wrap: pretty;
+}
+
+/* One value over what it counts. */
+.fact {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+}
+.factValue {
+  font-size: var(--text-heading-4);
+  font-weight: 600;
+  font-variant-numeric: var(--numeric);
+  line-height: 1.25;
+  white-space: nowrap;
+}
+.factLabel {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  line-height: 1.3;
+  font-variant-numeric: var(--numeric);
+}
+
+/* The class code: label, code and Copy link on one line, then how. */
+.signIn {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+}
+.codeLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+}
+.codeLabel {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-family: inherit;
+  font-size: var(--text-table);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.code {
+  color: var(--color-on-surface);
+  font-size: var(--text-heading-2);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.signIn button.copy {
+  place-items: center;
+  min-height: 34px;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-small);
+  font-size: var(--text-table);
+}
+/* Small to look at, 44 px to touch. */
+.signIn button.copy::after,
+.inlineLink::after,
+.hintAction::after {
+  content: "";
+  position: absolute;
+  inset: -6px -4px;
+}
+.note {
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+.inlineLink {
+  position: relative;
+  color: var(--color-primary);
+  font-weight: 650;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.inlineLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@container (min-width: 720px) {
+  .head .signIn {
+    justify-items: end;
+    text-align: end;
+  }
+  .head .codeLine {
+    justify-content: flex-end;
+  }
+}
+
+/* The week, in one line of figures; three to a row on a phone. */
+.week {
+  display: grid;
+  gap: var(--space-2);
+}
+.week .sectionTitle {
+  margin: 0;
+}
+.weekFacts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3) var(--space-4);
+  margin: 0;
+}
+/* Four figures: two by two on a phone. */
+.weekFacts:has(> div:nth-child(4)) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.weekFacts > div {
+  display: grid;
+  align-content: start;
+  gap: 1px;
+  min-width: 0;
+}
+.weekFacts dt {
+  order: 2;
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  line-height: 1.3;
+}
+.weekFacts dd {
+  order: 1;
+  margin: 0;
+  font-size: var(--text-figure);
+  font-weight: 600;
+  font-variant-numeric: var(--numeric);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+@container (min-width: 720px) {
+  .weekFacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-7);
+  }
+  .weekFacts dt {
+    white-space: nowrap;
+  }
+}
+
+/* A quiet, dismissible line. */
+.hint {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  padding: var(--space-1) var(--space-1) var(--space-1) var(--space-4);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+  font-size: var(--text-table);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+.hintAction {
+  position: relative;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-primary);
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+.hintAction:hover:not(:disabled) {
+  filter: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.dismiss {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-small);
+  background: transparent;
+  color: var(--color-muted-text);
+  cursor: pointer;
+}
+.dismiss:hover:not(:disabled) {
+  filter: none;
+  color: var(--color-on-surface);
+}
+.dismiss svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+}
+
+/* Children: a row each. Phone: name and action, then level, then today, the
+   week and access side by side. From 760 px: one line, in columns. */
+.children {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.child {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "name action"
+    "level level"
+    "facts facts";
+  align-items: center;
+  gap: var(--space-3) var(--space-4);
+  padding-block: var(--space-4);
+  box-shadow: inset 0 1px 0 var(--color-border);
+}
+.child:last-child {
+  box-shadow:
+    inset 0 1px 0 var(--color-border),
+    inset 0 -1px 0 var(--color-border);
+}
+.childName {
+  grid-area: name;
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+}
+.name {
+  font-size: var(--text-heading-3);
+  font-weight: 600;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+.level {
+  grid-area: level;
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+  padding-top: 6px;
+}
+.facts {
+  grid-area: facts;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+.factWide {
+  grid-column: span 2;
+  min-width: 0;
+}
+.childAction {
+  grid-area: action;
+  justify-self: end;
+}
+.compactAction {
+  min-height: 40px;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-small);
+  font-size: var(--text-table);
+  white-space: nowrap;
+}
+.compactAction::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+}
+.compactAction {
+  position: relative;
+}
+.compactAction svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+@container (min-width: 760px) {
+  .child {
+    grid-template-columns:
+      minmax(110px, 1fr) minmax(190px, 1.6fr) minmax(330px, 2.4fr)
+      minmax(150px, auto);
+    grid-template-areas: "name level facts action";
+    gap: var(--space-6);
+  }
+  .level {
+    padding-top: 4px;
+  }
+}
+
+/* What needs you: a check, the to-do, its action at the end of the line. */
+.todos {
+  container-type: inline-size;
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.todo {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  column-gap: var(--space-2);
+  row-gap: var(--space-3);
+  padding-block: var(--space-4);
+  box-shadow: inset 0 1px 0 var(--color-border);
+}
+.todo:last-child {
+  box-shadow:
+    inset 0 1px 0 var(--color-border),
+    inset 0 -1px 0 var(--color-border);
+}
+.todo[data-plain] {
+  grid-template-columns: minmax(0, 1fr);
+}
+.todoCheck {
+  margin-top: -10px;
+  margin-inline-start: -10px;
+}
+.todoBody {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+}
+.todoTitle {
+  margin: 0;
+  font-family: inherit;
+  font-size: var(--text-heading-3);
+  font-weight: 600;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+.todo[data-done] .todoTitle {
+  color: var(--color-subtle-text);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+.todoDetail {
+  max-width: 68ch;
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+.todoActions {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.todo[data-plain] .todoActions {
+  grid-column: 1;
+}
+.todoActions > * {
+  white-space: nowrap;
+}
+@container (min-width: 720px) {
+  .todo {
+    grid-template-columns: 44px minmax(0, 1fr) auto;
+    align-items: start;
+  }
+  .todo[data-plain] {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .todoActions,
+  .todo[data-plain] .todoActions {
+    grid-column: auto;
+    justify-content: flex-end;
+  }
+}
+
+/* The class map glance on a teacher's Today. */
+.mapHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-5);
+  margin-bottom: var(--space-3);
+}
+.mapHead h2 {
+  font-family: inherit;
+  font-size: var(--text-table);
+  font-weight: 600;
+  color: var(--color-muted-text);
+  letter-spacing: 0;
+}

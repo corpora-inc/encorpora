@@ -443,7 +443,11 @@ async function journey(browser: Browser, engine: string, width: number) {
     if (!CANCELLED_BY_NAVIGATION.test(error.message))
       failures.push(`${label} page error: ${error.message}`);
   });
-  await open(page, classUrl("today"), /^Good (morning|afternoon|evening)/);
+  await open(
+    page,
+    classUrl("today"),
+    /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+  );
   const greeting = await page.getByRole("heading", { level: 1 }).textContent();
   check(
     `${label} greets by name`,

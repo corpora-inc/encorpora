@@ -575,7 +575,6 @@ button.copy[data-done="copied"] {
 .calendarBody {
   display: grid;
   gap: var(--space-5);
-  max-width: 880px;
 }
 .calendarControl {
   display: grid;
@@ -607,11 +606,36 @@ button.copy[data-done="copied"] {
   min-width: 0;
 }
 .ribbonBar {
+  position: relative;
   display: flex;
   height: 40px;
   overflow: hidden;
   border-radius: var(--radius-small);
   background: var(--color-surface-sunken);
+}
+/* Today: its label over the bar, then a hairline across it. */
+.ribbonNow {
+  position: relative;
+  height: 18px;
+  margin-bottom: calc(-1 * var(--space-1));
+}
+.ribbonNow span {
+  position: absolute;
+  top: 0;
+  color: var(--color-primary);
+  font-size: var(--text-table-small);
+  font-weight: 650;
+  line-height: 18px;
+  white-space: nowrap;
+}
+.ribbonToday {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--color-surface);
 }
 .ribbonPart {
   display: block;

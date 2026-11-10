@@ -53,78 +53,17 @@
   display: inline-flex;
   align-items: center;
   min-height: 44px;
+  color: var(--color-muted-text);
   line-height: 1.2;
 }
+/* A scale or unit under the name keeps a row of its own below the 44 px
+   target, so a focus ring or a long name never covers its labels. */
 .headerDetail {
   display: block;
-  margin-top: -6px;
-}
-/* The whole header is the target; its fill reaches into the cell's padding. */
-button.sort {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  min-width: 44px;
-  min-height: 44px;
-  margin: 0 calc(-1 * var(--grid-inline)) 0 calc(-1 * var(--space-1));
-  padding: 0 var(--space-2) 0 var(--space-1);
-  border: 0;
-  border-radius: var(--radius-small);
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  font-weight: 600;
-  line-height: 1.2;
-  text-align: start;
-  text-wrap: balance;
-  cursor: pointer;
-}
-button.sort:hover:not(:disabled) {
-  filter: none;
-  background: var(--color-surface-hover);
-}
-button.sort:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: -3px;
-}
-/* The mark sits in the button's padding: no column grows to make room. */
-.sortMark {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  width: 8px;
-  height: 12px;
-  margin-top: -6px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  opacity: 0;
-}
-button.sort:hover .sortMark {
-  opacity: 0.45;
-}
-.sortMark[data-direction="ascending"],
-.sortMark[data-direction="descending"],
-button.sort:hover .sortMark[data-direction="ascending"],
-button.sort:hover .sortMark[data-direction="descending"] {
-  opacity: 1;
+  padding-bottom: 2px;
 }
 [data-align="end"] {
   text-align: end;
-}
-[data-align="end"] button.sort {
-  margin: 0 calc(-1 * var(--space-1)) 0 calc(-1 * var(--grid-inline));
-  padding: 0 var(--space-1) 0 var(--space-2);
-}
-[data-align="end"] .sortMark {
-  right: auto;
-  left: 0;
-  transform: scaleX(-1);
-}
-.sortMark[data-direction="ascending"] {
-  rotate: 180deg;
 }
 .cell {
   padding: 0 var(--grid-inline);
@@ -195,6 +134,27 @@ tr[data-activates]:hover .cell {
   border-radius: 0;
   background: transparent;
   color: inherit;
+}
+/* Rows of any height on the page itself: a hairline above each, one below
+   the last, no fill and no corners. */
+.cardList {
+  gap: 0;
+}
+.cardList .card {
+  padding: var(--space-3) 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  box-shadow: inset 0 1px 0 var(--color-border);
+}
+.cardList > li:last-child > .card,
+.cardList > li:last-child.card {
+  box-shadow:
+    inset 0 1px 0 var(--color-border),
+    inset 0 -1px 0 var(--color-border);
+}
+.cardList .windowedItem {
+  padding-bottom: 0;
 }
 .windowed {
   position: relative;

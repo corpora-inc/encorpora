@@ -120,7 +120,9 @@ async function signedIn(page: Page, email: string) {
   );
   if (new URL(page.url()).pathname.startsWith("/school/")) {
     await page
-      .getByRole("heading", { name: /^Good (morning|afternoon|evening)/ })
+      .getByRole("heading", {
+        name: /^(Good (morning|afternoon|evening)|(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, )/,
+      })
       .waitFor();
   }
   await page

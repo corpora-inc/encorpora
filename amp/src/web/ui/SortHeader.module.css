@@ -1,0 +1,65 @@
+/* A sortable column header (SortHeader): text, then a chevron with its own
+   room. No fill on hover or focus: hover darkens the text and hints the
+   chevron, sorting colours both, focus draws the standard ring outside. */
+.sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-small);
+  background: transparent;
+  color: var(--color-muted-text);
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: start;
+  cursor: pointer;
+  transition: color var(--motion-fast) ease;
+}
+.sort[data-align="end"] {
+  flex-direction: row-reverse;
+  text-align: end;
+}
+.sort:hover:not(:disabled) {
+  filter: none;
+  color: var(--color-on-surface);
+}
+.sort:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.sort[data-sorted] {
+  color: var(--color-on-surface);
+}
+.label {
+  min-width: 0;
+  text-wrap: balance;
+}
+.chevron {
+  flex: 0 0 auto;
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  transition:
+    opacity var(--motion-fast) ease,
+    rotate var(--motion-fast) ease;
+}
+.sort:hover .chevron {
+  opacity: 0.5;
+}
+.sort[data-sorted] .chevron {
+  opacity: 1;
+  color: var(--color-primary);
+}
+.sort[data-sorted="ascending"] .chevron {
+  rotate: 180deg;
+}

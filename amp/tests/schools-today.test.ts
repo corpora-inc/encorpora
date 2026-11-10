@@ -127,6 +127,27 @@ test("no work yet: the next step is Start class, not an empty screen", () => {
   );
 });
 
+test("a family's Today speaks of children and never asks to start a class", () => {
+  const fresh = (first: string) =>
+    student(first, { lastActive: null, weekMinutes: 0, weekProblems: 0 });
+  assert.deepEqual(
+    todayTodos(input({ family: true, students: [fresh("Ada"), fresh("Ben")] })),
+    [],
+  );
+  const todos = todayTodos(
+    input({
+      family: true,
+      students: [
+        fresh("Ada"),
+        student("Ben", { workedToday: true, todayMinutes: 20 }),
+        student("Cy", { workedToday: true, todayMinutes: 15 }),
+      ],
+    }),
+  );
+  assert.ok(todos.every((todo) => todo.kind !== "start"));
+  assert.ok(todos.every((todo) => !/\bstudents?\b/.test(todo.title)));
+});
+
 test("a shared gap can also go on paper, for those students and that skill", () => {
   const todos = todayTodos(
     input({ skills: [gap("amara"), gap("diego"), gap("lena")] }),

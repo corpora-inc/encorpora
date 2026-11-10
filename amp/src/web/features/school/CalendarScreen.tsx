@@ -194,6 +194,9 @@ export function CalendarScreen() {
       ) : (
         <div className={styles.calendarBody}>
           <div className={styles.calendarControl}>
+            <span className={styles.fieldLabel} aria-hidden="true">
+              Split the year into
+            </span>
             <Segmented
               label="Terms"
               compact
@@ -206,7 +209,9 @@ export function CalendarScreen() {
               }))}
             />
             <p className={styles.fieldHelp}>
-              Each class chooses which of these it grades by.
+              {org?.kind === "family"
+                ? "Your class grades by the periods chosen in its Settings."
+                : "Each class chooses which of these it grades by."}
             </p>
           </div>
           <YearRibbon
@@ -215,6 +220,9 @@ export function CalendarScreen() {
             division={shown}
             sessions={parts.length ? parts : undefined}
             list={!parts.length}
+            today={new Date().toLocaleDateString("en-CA", {
+              timeZone: org?.timezone,
+            })}
           />
           {parts.length > 0 && (
             <ul className={styles.sessionList}>

@@ -115,7 +115,10 @@ export function OrgFrame({
       className={frame.content}
       data-dense
     >
-      {nav.startsWith("class:") && <p className={frame.place}>{title}</p>}
+      {/* Which class, for someone who teaches several; a family has one. */}
+      {nav.startsWith("class:") && org.data.kind !== "family" && (
+        <p className={frame.place}>{title}</p>
+      )}
       {links.length > 0 && (
         <nav className={frame.links} aria-label="Related school screens">
           {links.map(([path, label]) => (
