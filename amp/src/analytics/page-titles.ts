@@ -93,6 +93,7 @@ const appScreenTitles: Readonly<Record<string, string>> = {
   "/account/ready": "Your Account Is Ready | AMP",
   "/access": "Your Access | AMP",
   "/p": "Progress from School | AMP",
+  "/design": "Components | AMP",
 };
 
 /** A path with optional query and fragment, as a normalized path and its query. */

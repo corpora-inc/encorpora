@@ -74,6 +74,7 @@ import {
   stackSearchSchema,
   standingsSearchSchema,
 } from "../features/school/classroom/search";
+import { designAllowed, designSearchSchema } from "../features/design/search";
 const searchSchema = z
   .object({
     return: z
@@ -1046,6 +1047,20 @@ const familyApproval = createRoute({
     "ApprovalScreen",
   ),
 });
+/** Every shared component in its states, from fixtures (features/design): an
+ * internal tool for development and staff browsers, unlinked and unindexed. */
+const design = createRoute({
+  getParentRoute: () => root,
+  path: "/design",
+  validateSearch: (search) => designSearchSchema.parse(search),
+  beforeLoad: () => {
+    if (!designAllowed()) throw redirect({ to: "/", replace: true });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/design/DesignScreen"),
+    "DesignScreen",
+  ),
+});
 const fallback = createRoute({
   getParentRoute: () => appScreen,
   path: "/$",
@@ -1117,6 +1132,7 @@ export const router = createRouter({
     familyLink,
     familyApprove,
     familyApproval,
+    design,
     signIn,
     signUp,
     accountReady,
