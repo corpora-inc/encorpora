@@ -8,12 +8,14 @@ import { multiPartGuessChance } from "./multi-part-choice";
 import { figureChoiceGuessChance } from "./figure-choice";
 import { structuredWorkGuessChance } from "./structured-work";
 import { generateProblem, templates } from "./engine";
+import { clauseTasks, forcedClause } from "./clause-gap";
 import { historicalTemplates } from "./historical-templates";
 
 /** Instances sampled to read a choice family's option count from its answer
  * schema. tests/frontier-guessing.test.ts checks far more seeds against it. */
 const SAMPLE_SEEDS = 16;
 const STRUCTURED_SEEDS = 128;
+const CLAUSE_SEEDS = 64;
 /** Floors for variable multi-part families whose high-guessability variants
  * are rarer than the deterministic sample. Keep these in sync with the
  * generator-variation audit in frontier-guessing.test.ts. */
@@ -122,6 +124,16 @@ export function guessChance(
         greatest,
         problemGuessChance(generateProblem(template.id, `guess-chance:${i}`)),
       );
+    // Clause tasks are drawn by weight, so a rare one can miss the sample.
+    // Sample each task directly; card trays vary by seed, so sample each task well.
+    for (const task of clauseTasks(template.id))
+      for (let i = 0; i < CLAUSE_SEEDS; i++)
+        greatest = Math.max(
+          greatest,
+          problemGuessChance(
+            forcedClause(template.id, task, `guess-chance:${task}:${i}`),
+          ),
+        );
     chance = greatest;
   }
   cache.set(template.id, chance);

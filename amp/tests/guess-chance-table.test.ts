@@ -13,7 +13,8 @@ import {
 } from "../src/math/guess-chance";
 
 test("the table holds each family's computed chance, including typed and mixed families", () => {
-  const typed = templates.find((t) => t.id === "add-within-20")!;
+  // add-within-20 gained choice clauses, so a family that is still typed only.
+  const typed = templates.find((t) => t.id === "prism-volume-edges")!;
   const answered = templates
     .filter((t) => t.requiredResponseCapability)
     .slice(0, 6);

@@ -79,6 +79,11 @@ export function clauseVariantProblem(
   return build({ id, task, seed, r: clauseRandom(id, seed) });
 }
 
+/** Every clause task a family can draw, so estimators can cover rare ones. */
+export function clauseTasks(id: string): readonly string[] {
+  return families[id]?.tasks ?? [];
+}
+
 /** A named clause task, for tests. Ignores the production draw. */
 export function forcedClause(
   id: string,
