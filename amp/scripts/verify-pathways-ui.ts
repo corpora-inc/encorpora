@@ -1449,7 +1449,8 @@ try {
   });
   await evolving.clock.fastForward(300_100);
   await evolving
-    .getByText(`${skills.length + 1} mapped skills`, { exact: false })
+    .locator(".pathways-summary")
+    .filter({ hasText: `of ${skills.length + 1} skills earned` })
     .waitFor({ state: "attached" });
   await label.waitFor();
   const after = (await label.boundingBox())!;
@@ -1550,7 +1551,9 @@ try {
           1,
         );
 
-      const application = related.getByRole("link", { name: /Event sets/ });
+      const application = related.getByRole("link", {
+        name: skillTitle("event-sets"),
+      });
       assert.equal(
         await application.getAttribute("href"),
         "/pathways/event-sets",
@@ -1570,7 +1573,7 @@ try {
       await application.click();
       await parity.waitForURL("**/pathways/event-sets");
       await parity
-        .getByRole("heading", { name: "Event sets", exact: true })
+        .getByRole("heading", { name: skillTitle("event-sets"), exact: true })
         .waitFor();
       await parity
         .locator(".pathways-connections")
@@ -1578,7 +1581,10 @@ try {
         .click();
       await parity.waitForURL("**/pathways/odd-and-even");
       await parity
-        .getByRole("heading", { name: "Odd and even", exact: true })
+        .getByRole("heading", {
+          name: skillTitle("odd-and-even"),
+          exact: true,
+        })
         .waitFor();
       await parity.close();
     }

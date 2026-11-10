@@ -767,8 +767,8 @@ export function Graph({
       if (instant || !motion) {
         tween = null;
         place(to);
-        settleLabels();
         paint();
+        refreshLabels();
         return;
       }
       tween = {
