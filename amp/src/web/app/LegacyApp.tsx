@@ -104,7 +104,7 @@ import "../premium-controls.css";
 import "../app-shell.css";
 import { BirthYearPrompt } from "../BirthYearPrompt";
 import { ChooseHowToPay } from "../ChooseHowToPay";
-import { chosenPlan, storedTrial } from "../lib/pending-trial";
+
 import type { Me } from "../../account/contracts";
 import { LoadingScreen } from "../ui/LoadingScreen";
 import { Loading } from "../ui/Loading";
@@ -122,6 +122,7 @@ import {
 } from "../LessonLibrary";
 import { Home, type FrontierMap } from "../Home";
 import { freeLeft } from "../lib/free-allowance";
+import { FREE_ONLINE_PROBLEMS } from "../../learning/free-allowance";
 import { AllowancePause } from "../features/continue/AllowancePause";
 import { strandNames } from "../BirthYearPrompt";
 import type { ProblemLessonView } from "../../content/problem-lessons";
@@ -345,9 +346,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   // On the web the birth year belongs to the Overview it is changed from.
   const setChangingBirthYear = (open: boolean) =>
     navigate(open ? "/profile/birth-year" : nativeRuntime ? "/" : "/overview");
-  // "Try free" lives at /try (features/trial); a stored trial is adopted
-  // in the first-run learner step after purchase.
-  const [hasTrial] = useState(() => !!storedTrial());
   // Outside immersive practice: home, lessons, progress and family are visible.
 
   useLayoutEffect(() => {
@@ -872,9 +870,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       navigate("/", { replace: true });
   }, [token, route.signingIn]);
   const starting = false;
-  // A parent without a learner or consent continues in the first run (the
-  // free trial, until they buy). Home paints the frame only, never a setup
-  // card, while the account loads and while that redirect happens.
+  // A parent without a learner continues in the first run (the starter).
+  // Home paints the frame only, never a setup card, while the account loads
+  // and while that redirect happens.
   const firstRunHome =
     !nativeRuntime &&
     !!token &&
@@ -901,9 +899,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         ? `/family/approvals/${me.familyApproval.id}`
         : me?.signedIn && me.next === "start"
           ? "/start"
-          : me?.signedIn && me.next === "try"
-            ? "/try"
-            : "/start/name",
+          : "/start/name",
       { replace: true },
     );
   }, [accountId, familySummary, route.location.pathname]);
@@ -1724,12 +1720,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         <section className="card welcome">
           {!nativeRuntime && <LandingView />}
           <h2>
-            {nativeRuntime ? "Sign in to continue." : "Try one math problem."}
+            {nativeRuntime ? "Sign in to continue." : "Practice at your level."}
           </h2>
           <p>
             {nativeRuntime
               ? "Sign in as a parent to choose a learner."
-              : `Create your free parent account. AMP adjusts as you answer. Your free trial includes up to ${catalog?.trial?.free ?? 100} problems, with hints and lessons along the way.`}
+              : `Create your free account. AMP adjusts as you answer. Each learner starts with ${FREE_ONLINE_PROBLEMS} free problems, with hints and lessons along the way.`}
           </p>
           {hasPendingConsent && (
             <p>
@@ -1740,10 +1736,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           {!nativeRuntime && (
             <button
               className="go-button"
-              onClick={() => navigate("/try")}
+              onClick={() => navigate("/sign-up")}
               disabled={busy}
             >
-              {hasTrial ? "Continue free practice" : "Try free"}
+              Try it free
             </button>
           )}
           <button

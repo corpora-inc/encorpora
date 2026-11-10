@@ -597,6 +597,9 @@ try {
     }
     await within(
       (async () => {
+        // Read the current answer form where every surface is inline, before
+        // testing compact viewports that can hide it behind the answer dialog.
+        await page.setViewportSize({ width: 1280, height: 900 });
         await startTopic(page, template.id, { entry: "lesson-url" }).catch(
           async (failure) => {
             console.error(
@@ -610,10 +613,20 @@ try {
         );
         await page
           .locator(
-            "#answer, .choice-form, .point-plot-form, .multi-part-form, .figure-choice-form, .work-form, .compact-answer-action",
+            "#answer, .choice-form, .point-plot-form, .shape-composer, .multi-part-form, .figure-choice-form, .work-form, .compact-answer-action",
           )
           .first()
           .waitFor();
+        // Mixed-format families must be checked against this rendered instance.
+        const instanceSurface = await page.evaluate(() => ({
+          multiSelect: !!document.querySelector(
+            ".multi-select-form, .multi-select-entry-dialog",
+          ),
+          inline: !!document.querySelector(
+            ".point-plot-form, .shape-composer, .multi-part-form, .figure-choice-form, .work-form",
+          ),
+          structured: !!document.querySelector(".work-form"),
+        }));
         assert.ok(
           await page.evaluate(
             () => document.documentElement.scrollWidth <= innerWidth,
@@ -652,14 +665,7 @@ try {
                   !!document.querySelector(".compact-answer-action") === compact
                 );
               },
-              [
-                template.requiredResponseCapability === "multi-select-v1",
-                template.requiredResponseCapability === "point-plot-v1" ||
-                  template.requiredResponseCapability ===
-                    "multi-part-choice-v1" ||
-                  template.requiredResponseCapability === "figure-choice-v1" ||
-                  template.requiredResponseCapability === "structured-work-v1",
-              ],
+              [instanceSurface.multiSelect, instanceSurface.inline],
             )
             .catch(async (failure) => {
               // Name the problem type and viewport; the timeout alone does not.
@@ -693,8 +699,7 @@ try {
           );
           if (TABLETS.some((t) => t.width === size.width)) {
             const why = await problemInView(page, {
-              allowStructuredWorkScroll:
-                template.requiredResponseCapability === "structured-work-v1",
+              allowStructuredWorkScroll: instanceSurface.structured,
             });
             if (why.length) {
               const key = `${size.width}×${size.height}`;

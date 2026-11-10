@@ -4,7 +4,6 @@ import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useLearningView } from "../../lib/learning-view";
 import { useLearnerStore } from "../../learner-store";
 import { useShellSlots } from "../../lib/shell-slots";
-import { storedTrial } from "../../lib/pending-trial";
 import { FeedbackPreferences } from "../practice/FeedbackPreferences";
 import { ChoicePicker, type ListboxOption } from "../../ui/Listbox";
 import { SignedInEmail } from "./SignedInEmail";
@@ -71,30 +70,15 @@ export default function DrawerContents({
   const navigate = useNavigate();
   const location = useLocation();
   const setDrawerSettings = useShellSlots((state) => state.setDrawerSettings);
-  const { account, learner, trialMode } = view;
+  const { account, learner } = view;
   const student = account?.account.kind === "student";
   const own = view.ownPractice;
   const here = frame ?? shellFrame(location.pathname);
-  const context = trialMode ? "trial" : own ? "own" : "learner";
-  // A pending lookup is not evidence of an assessment. The account or a saved
-  // device token can name one before the lookup settles; its resolved result
-  // then decides. Otherwise a phantom option replaces a single learner's name
-  // with a picker, only to remove that control while someone is using it.
-  const assessmentChoice =
-    !own &&
-    !student &&
-    (!!view.trial.data ||
-      (view.trial.data === undefined && (!!account?.trial || !!storedTrial())));
-  // With no family learners, the account's own word that an assessment
-  // exists names it from the first frame.
-  const assessment =
-    !own &&
-    !student &&
-    (trialMode || (!view.learners.length && assessmentChoice));
-  const learnerChoices: ListboxOption[] = [
-    ...view.learners.map((l) => ({ value: l.id, label: l.name })),
-    ...(assessmentChoice ? [{ value: "trial", label: "Free assessment" }] : []),
-  ];
+  const context = own ? "own" : "learner";
+  const learnerChoices: ListboxOption[] = view.learners.map((l) => ({
+    value: l.id,
+    label: l.name,
+  }));
   const nav = (
     href: string,
     title: string,
@@ -126,35 +110,24 @@ export default function DrawerContents({
     </Link>
   );
   function chooseLearner(id: string) {
-    if (id !== "trial") useLearnerStore.getState().select(id);
-    const isTrial = id === "trial";
+    useLearnerStore.getState().select(id);
     const at = location.pathname;
-    // Progress screens stay on the same tab for the new learner.
+    // Progress screens stay on the same tab for the new learner; anywhere
+    // else, practice (with the pause, once their free problems are used).
     const destination =
-      at === "/progress" && !isTrial
+      at === "/progress"
         ? "/progress"
         : at === "/inventory"
           ? "/inventory"
           : at.startsWith("/pathways")
             ? "/pathways"
-            : at === "/overview" || at === "/try/map"
-              ? isTrial
-                ? "/try/map"
-                : "/overview"
+            : at === "/overview"
+              ? "/overview"
               : // A second parent's family's child: their progress.
                 secondParentChild(account, id)
                 ? "/overview"
-                : isTrial
-                  ? "/try/practice"
-                  : account?.family.learners.find((l) => l.id === id)
-                        ?.canPractice
-                    ? "/practice"
-                    : "/start";
-    void navigate({
-      to: "/$",
-      params: { _splat: destination.slice(1) },
-      search: isTrial ? { context: "trial" } : {},
-    });
+                : "/practice";
+    void navigate({ to: "/$", params: { _splat: destination.slice(1) } });
     close();
   }
   const { entries: places, currentOrg } = usePlaceEntries(
@@ -196,30 +169,13 @@ export default function DrawerContents({
         ? (`school:${here.org}` as const)
         : own
           ? "me"
-          : !assessment &&
-              learner &&
-              (here?.kind === "progress" || here?.kind === "practice")
+          : learner && (here?.kind === "progress" || here?.kind === "practice")
             ? (`learner:${learner.id}` as const)
             : "home";
-  const learnerName = own
-    ? (view.learner?.name ?? "")
-    : assessment
-      ? "Free assessment"
-      : (learner?.name ?? "");
-  const practiceLabel =
-    view.canPractice ||
-    student ||
-    (assessment && view.trialProgress?.remaining !== 0)
-      ? "Practice"
-      : assessment
-        ? "See plans"
-        : view.learner
-          ? "Continue setup"
-          : "Start learning";
-  // While the assessment's lookup is out, its practice is still the way on.
-  const practiceHref =
-    assessment && !trialMode ? "/try/practice" : view.practiceHref;
-  const hasProgress = assessment || !!view.learner;
+  const learnerName = own ? (view.learner?.name ?? "") : (learner?.name ?? "");
+  const practiceLabel = view.learner || student ? "Practice" : "Get started";
+  const practiceHref = view.practiceHref;
+  const hasProgress = !!view.learner;
   return (
     <>
       {(places.length > 1 || learnerChoices.length > 1 || !!learnerName) && (
@@ -237,7 +193,7 @@ export default function DrawerContents({
               label="Current learner"
               placeholder="Choose a learner"
               options={learnerChoices}
-              value={trialMode ? "trial" : (learner?.id ?? null)}
+              value={learner?.id ?? null}
               onChange={chooseLearner}
             />
           ) : (
@@ -271,26 +227,17 @@ export default function DrawerContents({
         </div>
       )}
       <nav aria-label="AMP navigation" className={styles.navigation}>
-        {/* A paused practice of their own has no next step here: their
-            record, under Progress, says why. */}
         {/* A second parent's family's child practices from its class
             ("Let … practice here"), which is the Class link below. */}
-        {!(own && !view.canPractice) &&
-          !view.viewOnly &&
+        {!view.viewOnly &&
           nav(practiceHref, practiceLabel, "learn", {
             current: here?.kind === "practice",
           })}
         {hasProgress &&
-          nav(
-            overviewPath(assessment ? "trial" : context),
-            "Progress",
-            "level",
-            {
-              current: here?.kind === "progress",
-            },
-          )}
+          nav(overviewPath(context), "Progress", "level", {
+            current: here?.kind === "progress",
+          })}
         {view.learner &&
-          !trialMode &&
           !view.viewOnly &&
           nav("/lessons", "Lessons", "lessons", {
             current:

@@ -25,6 +25,7 @@ NATIVE = ('amp/mobile/', 'amp/src/web/native-', 'amp/src/web/Native',
 # that name them, found by reference rather than by a hand-kept list.
 ORACLE = re.compile(r'amp/scripts/(independent-math-review|[a-z0-9_]+_oracle)\.py')
 SMOKE_CORE = ('tests/contracts.test.ts', 'tests/brand.test.ts', 'tests/test-suite.test.ts')
+COMPLETENESS_TEST = 'tests/problem-type-complete.test.ts'
 PROTECTED_DATABASE = {
     'amp/src/access-grants/': ('access-grants',),
     'amp/src/billing/': ('stripe', 'purchase-consent'),
@@ -167,6 +168,9 @@ def plan(paths, root=ROOT, full=False, quick=False):
             continue
         if not path.startswith('amp/'):
             continue
+        # The standalone film kit has its own unit job behind ci-gate.
+        if path.startswith('amp/film/'):
+            continue
         if path.startswith('amp/docs/') or path in ('amp/README.md', 'amp/AGENTS.md'):
             reasons.append('Documentation only')
             continue
@@ -239,9 +243,13 @@ def plan(paths, root=ROOT, full=False, quick=False):
                    for name, files in catalog.items()}
         if result['build']:
             changed['core'].extend(p for p in SMOKE_CORE if p in catalog['core'])
+        # Source-artifact completeness is cheap enough for every AMP PR and
+        # queue candidate, including oracle-, test- and documentation-only edits.
+        if result['affected']:
+            changed['core'].append(COMPLETENESS_TEST)
         api_changed = any(p.startswith(('amp/src/server/', 'amp/migrations/')) for p in paths)
         if api_changed:
-            changed['database'].extend(['tests/database.integration.ts', 'tests/trials.integration.ts'])
+            changed['database'].extend(['tests/database.integration.ts', 'tests/starter.integration.ts'])
         for prefix, names in PROTECTED_DATABASE.items():
             if any(p.startswith(prefix) for p in paths):
                 changed['database'].extend(f'tests/{name}.integration.ts' for name in names)

@@ -4,7 +4,6 @@ import { createHash } from "node:crypto";
 import { legacySurface } from "./fixtures/legacy-surface";
 import { readFileSync } from "node:fs";
 import {
-  generateProblem,
   gradeAnswer,
   templates,
   type GeneratedProblem,
@@ -17,6 +16,13 @@ import {
   withLegacySurfaces,
   type SweepId,
 } from "../src/math/number-domain-axes";
+import { clauseEntries } from "../src/math/clause-variants";
+import { generateBeforeClauses } from "./helpers/before-clause-variants";
+
+// This suite audits the original number-domain axes; the independently
+// versioned clause axes are exercised by the clause practice and oracle tests.
+const generateProblem = (id: string, seed: string) =>
+  generateBeforeClauses(id, seed, id in clauseEntries ? 1 : undefined);
 
 /** Digests of the pre-axis surface, seeds legacy:0..299, over canonical JSON
  * (sorted keys, floats to 9 decimals) of the legacy surface

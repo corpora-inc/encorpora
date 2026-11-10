@@ -7,7 +7,7 @@ import subprocess
 import pytest
 import yaml
 
-from amp_ci_plan import ROOT, browser_entries, plan, test_catalog as catalog
+from amp_ci_plan import COMPLETENESS_TEST, ROOT, browser_entries, plan, test_catalog as catalog
 
 
 def test_single_database_regression_does_not_rebuild_or_sweep_unrelated_suites():
@@ -116,6 +116,25 @@ def test_fast_checks_retain_focused_database_coverage_for_sensitive_paths(path, 
 def test_unrelated_changes_do_not_enable_amp_even_in_quick_mode():
     result = plan(['corpan/corpan-app/src/App.tsx'], quick=True)
     assert not result['affected'] and not result['core'] and not result['database']
+
+
+@pytest.mark.parametrize('path', [
+    'amp/src/math/engine.ts', 'amp/src/families/new-family.ts',
+    'amp/src/content/area-volume-worksheets.ts', 'amp/src/content/lessons.ts',
+    'amp/scripts/trend_line_fit_math_oracle.py', 'amp/tests/frontier.test.ts',
+    'amp/tests/trial-exhaustion.integration.ts', 'amp/AGENTS.md',
+])
+def test_every_amp_quick_plan_checks_problem_type_completeness(path):
+    assert COMPLETENESS_TEST in plan([path], quick=True)['core']
+
+
+def test_quick_plan_fails_closed_if_completeness_test_is_removed(tmp_path):
+    (tmp_path / 'amp/tests').mkdir(parents=True)
+    (tmp_path / 'amp/package.json').write_text('{"scripts":{}}')
+    (tmp_path / 'amp/tests/example.test.ts').write_text('')
+    (tmp_path / 'amp/tests/example.integration.ts').write_text('')
+    with pytest.raises(ValueError, match='required quick-check test is missing'):
+        plan(['amp/tests/problem-type-complete.test.ts'], root=tmp_path, quick=True)
 
 
 def test_new_test_is_discovered_and_a_reused_entrypoint_is_not_isolated(tmp_path):
@@ -340,8 +359,9 @@ def test_oracle_consumers_are_followed_through_python_imports(tmp_path):
     (tmp_path / 'amp/scripts/independent-math-review.py').write_text('from base_math_oracle import x\n')
     (tmp_path / 'amp/tests/review.test.ts').write_text("run('scripts/independent-math-review.py')")
     (tmp_path / 'amp/tests/other.test.ts').write_text('')
+    (tmp_path / 'amp' / COMPLETENESS_TEST).write_text('')
     result = plan(['amp/scripts/base_math_oracle.py'], root=tmp_path, quick=True)
-    assert result['core'] == ['tests/review.test.ts'] and not result['database']
+    assert result['core'] == [COMPLETENESS_TEST, 'tests/review.test.ts'] and not result['database']
     # An oracle that runtime code depends on is no longer an isolated input.
     (tmp_path / 'amp/src/server.ts').write_text("spawn('scripts/base_math_oracle.py')")
     result = plan(['amp/scripts/base_math_oracle.py'], root=tmp_path, quick=True)
@@ -357,6 +377,7 @@ def test_oracle_consumers_include_glob_discovery_and_transitive_helpers(tmp_path
     (tmp_path / 'amp/tests/account.integration.ts').write_text('')
     (tmp_path / 'amp/tests/review.test.ts').write_text("run('scripts/independent-math-review.py')")
     (tmp_path / 'amp/tests/other.test.ts').write_text('')
+    (tmp_path / 'amp' / COMPLETENESS_TEST).write_text('')
     (tmp_path / 'amp/scripts/shared_oracle.py').write_text('')
     (tmp_path / 'amp/scripts/new_math_oracle.py').write_text('from shared_oracle import solve\n')
     (tmp_path / 'amp/scripts/unrelated_oracle.py').write_text('')
@@ -365,10 +386,10 @@ def test_oracle_consumers_include_glob_discovery_and_transitive_helpers(tmp_path
         "    importlib.import_module(path.stem)\n")
     for path in ('new_math_oracle.py', 'shared_oracle.py'):
         result = plan(['amp/scripts/' + path], root=tmp_path, quick=quick)
-        assert result['core'] == ['tests/review.test.ts']
+        assert result['core'] == ([COMPLETENESS_TEST] if quick else []) + ['tests/review.test.ts']
         assert result['content'] and not result['content_force']
         assert not any(result[key] for key in ('database', 'build', 'typecheck', 'browser', 'native'))
-    assert not plan(['amp/scripts/unrelated_oracle.py'], root=tmp_path, quick=quick)['core']
+    assert plan(['amp/scripts/unrelated_oracle.py'], root=tmp_path, quick=quick)['core'] == ([COMPLETENESS_TEST] if quick else [])
     # A runtime consumer of the dynamic dispatcher must still force broad checks.
     (tmp_path / 'amp/src/server.ts').write_text("spawn('scripts/independent-math-review.py')")
     result = plan(['amp/scripts/new_math_oracle.py'], root=tmp_path, quick=quick)

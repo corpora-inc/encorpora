@@ -93,6 +93,8 @@ test(
       );
       assert.match(calls[0]!.text, /New Hampshire EFA/);
       assert.match(calls[0]!.text, /return=free-practice/);
+      assert.match(calls[0]!.text, /free problems stay on your account/);
+      assert.doesNotMatch(calls[0]!.text, /14 days/);
       assert.equal(
         await deliverParentFollowup(pool, config, async () =>
           assert.fail("reminder too early"),
@@ -212,6 +214,22 @@ test(
       await deliverParentFollowup(pool, config, async () =>
         assert.fail("paid/opted-out reminder"),
       );
+      // An account that already has a place is past the starter: its link
+      // opens the app, not free practice's first step.
+      await parent("practising");
+      await pool.query(
+        "INSERT INTO amp_learners(id,account_id,name) VALUES($1,'amp|practising','Robin')",
+        [randomUUID()],
+      );
+      await deliverParentFollowup(pool, config, async (mail) => {
+        assert.equal(mail.to, "practising@example.com");
+        assert.doesNotMatch(mail.text, /free-practice/);
+        assert.match(
+          mail.text,
+          /Continue free practice:\nhttps:\/\/amp\.example\.com\/\n/,
+        );
+        return { accepted: "practising" };
+      });
 
       const client = await pool.connect();
       let click;

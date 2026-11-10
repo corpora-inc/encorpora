@@ -5,21 +5,15 @@ import {
   clientCanDraw,
   figureCapabilities,
   generatedProblemSchema,
+  responseCapabilities,
 } from "../src/math/contracts.js";
 import { sceneCapabilitiesIn } from "../src/math/scene/index.js";
 import { problemLesson } from "../src/content/problem-lessons.js";
 import { sweepAxes } from "../src/math/number-domain-axes.js";
 
-/** A client released before scenes-v2: every other capability. */
+/** Isolate figure negotiation: every response format, but no scenes-v2. */
 const older = {
-  responseCapabilities: [
-    "single-choice-v1",
-    "multi-select-v1",
-    "point-plot-v1",
-    "multi-part-choice-v1",
-    "figure-choice-v1",
-    "structured-work-v1",
-  ],
+  responseCapabilities: [...responseCapabilities],
   figureCapabilities: figureCapabilities.filter((c) => c !== "scenes-v2"),
 };
 
@@ -34,6 +28,8 @@ test("no template sends a scenes-v2 figure to a client without it", () => {
         template.id,
         `negotiation:${i}`,
         older.figureCapabilities,
+        undefined,
+        older.responseCapabilities,
       );
       assert.deepEqual(
         sceneCapabilitiesIn(problem.public),

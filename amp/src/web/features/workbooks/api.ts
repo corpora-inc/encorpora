@@ -108,24 +108,6 @@ export function downloadWorkbook(
   );
 }
 
-/** The same download for a free assessment's own workbook, with its trial
- * token (and the owner's sign-in cookie, as every trial request). */
-export function downloadTrialWorkbook(
-  trialToken: string,
-  learnerId: string,
-  workbook: Pick<WorkbookSummary, "id" | "date" | "number">,
-  paper: WorkbookPaper,
-  pdf: boolean,
-) {
-  return downloadWorkbookFile(
-    `Trial ${trialToken}`,
-    learnerId,
-    workbook,
-    paper,
-    pdf,
-  );
-}
-
 async function downloadWorkbookFile(
   authorization: string,
   learnerId: string,

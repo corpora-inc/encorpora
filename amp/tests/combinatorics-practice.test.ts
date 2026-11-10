@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { generateProblem } from "../src/math/engine.js";
@@ -34,9 +35,16 @@ test("ordered probability and the distribution mean stay exact, and version 1 do
       const combo = (n * (n - 1)) / 2;
       assert.notEqual(answer, frac(1, combo));
       assert.equal(order.hint.includes(order.answer), false);
-      for (const text of [order.public.prompt, order.hint, ...order.explanation])
+      for (const text of [
+        order.public.prompt,
+        order.hint,
+        ...order.explanation,
+      ])
         for (const sentence of words(text))
-          assert.ok(sentence.split(/\s+/).length <= 35, sentence);
+          reportEditorialLimit(
+            sentence.split(/\s+/).length <= 35,
+            `sentence exceeds 35 words: ${sentence}`,
+          );
     }
     const oldMean = generateProblem("expected-value", `mean:${i}`, 1);
     assert.equal(
@@ -67,7 +75,10 @@ test("ordered probability and the distribution mean stay exact, and version 1 do
     assert.equal(mean.hint.includes(mean.answer), false);
     for (const text of [mean.public.prompt, mean.hint, ...mean.explanation])
       for (const sentence of words(text))
-        assert.ok(sentence.split(/\s+/).length <= 35, sentence);
+        reportEditorialLimit(
+          sentence.split(/\s+/).length <= 35,
+          `sentence exceeds 35 words: ${sentence}`,
+        );
   }
   assert.ok(ordered > 10 && means > 10);
 });

@@ -45,7 +45,6 @@ export type StartTarget =
   | "/access"
   | "/sign-in"
   | FundedPath
-  | "/try"
   | `/family/approvals/${string}`;
 const learnerSteps: readonly string[] = ["/start/name", "/start/birth-year"];
 
@@ -125,10 +124,6 @@ function route(
     case "add-learner":
       // Paid before any learner held it: choose or add who it is for.
       return stay(learnerSteps, "/start/name");
-    case "try":
-      // A free assessment from before the starter, until it moves into the
-      // family.
-      return "/try";
     case "start":
       return "/start";
     case "practice":
@@ -142,7 +137,6 @@ const isApproval = (
 ): target is `/family/approvals/${string}` =>
   target.startsWith("/family/approvals/");
 export function startNavigation(target: StartTarget) {
-  if (target === "/try") return { to: "/try" } as const;
   if (isApproval(target))
     return {
       to: "/family/approvals/$approvalId",
@@ -156,14 +150,13 @@ export function startNavigation(target: StartTarget) {
 export type PlaceId = "home" | "me" | `school:${string}`;
 
 /** A family or practice side to open: learners, the family's class (a
- * tutor's, before any child of their own), a free assessment under way,
- * or consent, a purchase or a gift on its way to a learner. One account can be a
- * parent, have a trial in progress and work at schools, all at once. */
+ * tutor's, before any child of their own), or consent, a purchase or a gift
+ * on its way to a learner. One account can be a parent and work at schools,
+ * all at once. */
 export function hasHome(me: SignedInMe) {
   return (
     me.learners.length > 0 ||
     !!me.familyClass ||
-    me.trial === true ||
     me.consent.status === "active" ||
     !!me.unassignedPurchase ||
     !!me.availableAccessGrant
@@ -232,7 +225,6 @@ const LEARNING_PATHS = [
 const HOME_PATHS = [
   "/overview",
   "/practice",
-  "/try",
   "/start",
   "/family",
   "/pathways",

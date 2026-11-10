@@ -19,7 +19,7 @@ CHANGES = WORKFLOW['jobs']['changes']
 SCRIPT = next(step['run'] for step in CHANGES['steps'] if step.get('id') == 'filter')
 AREAS = set(re.findall(r'^\s*set_output (\w+) ', SCRIPT, re.M))
 # Areas that are not AMP and must stay off for an AMP-only change.
-OTHER = AREAS - {'amp_native', 'corpora_site'}
+OTHER = AREAS - {'amp_native', 'amp_film', 'corpora_site'}
 
 # The shape of a typical AMP content PR (#1618 and its neighbours), using
 # files that exist so the planner can follow their consumers.
@@ -83,16 +83,24 @@ def on(values):
 
 
 @pytest.mark.parametrize('event', ['pull_request', 'merge_group', 'push'])
-def test_amp_content_change_runs_only_amp_core_build_and_the_site_that_imports_it(tmp_path, repo, event):
+def test_amp_content_change_runs_amp_and_its_film_and_site_consumers(tmp_path, repo, event):
     base = repo.git('rev-parse', 'HEAD')
     head = repo.commit(CONTENT_PR)
     values = repo.select(tmp_path, event, base, head)
     assert values['native'] == 'false'
     assert values['amp_native'] == 'false'
     assert not on(values) & OTHER
-    assert {'amp', 'amp_core', 'amp_build', 'corpora_site'} <= on(values)
+    assert {'amp', 'amp_core', 'amp_build', 'amp_film', 'corpora_site'} <= on(values)
     if event != 'push':
         assert values['amp_database'] == 'false'
+
+
+@pytest.mark.parametrize('event', ['pull_request', 'merge_group', 'push'])
+def test_film_only_change_runs_only_film_unit_tests(tmp_path, repo, event):
+    base = repo.git('rev-parse', 'HEAD')
+    head = repo.commit(['amp/film/cast.ts', 'amp/film/lessons/rectangle-area.json'])
+    values = repo.select(tmp_path, event, base, head)
+    assert on(values) == {'amp_film'}
 
 
 def test_oracle_only_change_runs_its_consumer_tests_without_build_or_database(tmp_path, repo):
@@ -129,7 +137,8 @@ def test_pull_request_behind_main_is_compared_from_its_fork_point(tmp_path, repo
     repo.git('checkout', '-q', 'main')
     main_tip = repo.commit(['corpan/plugins/tauri-plugin-tts/src/lib.rs', 'corpan/dja/app.py'])
     values = repo.select(tmp_path, 'pull_request', main_tip, head)
-    assert on(values) == {'amp'}, 'main\'s own changes leaked into the PR selection'
+    # Every AMP PR, including documentation changes, runs completeness in core.
+    assert on(values) == {'amp', 'amp_core'}, 'main\'s own changes leaked into the PR selection'
     assert fork != main_tip
 
 

@@ -199,15 +199,6 @@ async function mockApi(context: BrowserContext, templateId: string) {
     if (path === "/api/v1/auth-config")
       return json({ mode: "accounts", passwords: true, providers: [] });
     if (path === "/api/v1/me") return json(account);
-    if (path === "/api/v1/trials/current")
-      return json({
-        trial: {
-          token: "synthetic-trial",
-          learnerId: "trial-learner",
-          birthYear: 2014,
-          expiresAt: "2099-01-01T00:00:00.000Z",
-        },
-      });
     if (path === "/api/v1/catalog")
       return json({
         skills,
@@ -215,18 +206,6 @@ async function mockApi(context: BrowserContext, templateId: string) {
         lessons: [],
         mode: "hosted",
         trial: { free: 100, placement: 10 },
-      });
-    if (path === "/api/v1/learners")
-      return json({ learners: [{ id: "trial-learner", birthYear: 2014 }] });
-    if (path.endsWith("/trial-progress"))
-      return json({
-        phase: "practice",
-        free: 100,
-        placement: 10,
-        remaining: 58,
-        totals: { answered: 42, correct: 30, assisted: 0 },
-        mastered: [],
-        frontier: { placement: null, current: frontier },
       });
     if (path.endsWith("/progress"))
       return json({ asOf: new Date().toISOString(), skills: [] });
@@ -265,7 +244,6 @@ async function mockApi(context: BrowserContext, templateId: string) {
           },
         },
         lesson: null,
-        trialRemaining: 58,
       });
     }
     const problem = state.problems.get(body.problemId);
@@ -310,7 +288,6 @@ async function mockApi(context: BrowserContext, templateId: string) {
       });
     if (path.includes("/events") || path.includes("/engagement"))
       return route.fulfill({ status: 204, body: "" });
-    // The trial loads Buy's prices with the route (verify-trial-invitations-ui).
     if (path === "/api/v1/billing/prices")
       return json({ available: false, offers: [] });
     console.warn(`unmocked ${route.request().method()} ${path}`);
@@ -530,7 +507,7 @@ async function runCase(
   [label, templateId]: readonly [string, string],
   [width, height]: [number, number],
   theme: "light" | "dark",
-  mode: "account" | "trial",
+  mode: "account",
 ) {
   const phone = width < 600;
   const context = await browser.newContext({
@@ -545,7 +522,6 @@ async function runCase(
   await context.addInitScript("globalThis.__name ??= (f) => f");
   await context.addInitScript(
     ({ theme }) => {
-      localStorage.setItem("amp.trial", "synthetic-trial");
       localStorage.setItem("fixture.parent", "1");
       localStorage.setItem("amp.theme", theme);
       navigator.sendBeacon = () => true;
@@ -557,7 +533,7 @@ async function runCase(
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   page.setDefaultTimeout(10_000);
-  const dir = `${out}/${browserName}/${width}x${height}-${theme}${mode === "trial" ? "-trial" : ""}`;
+  const dir = `${out}/${browserName}/${width}x${height}-${theme}`;
   await mkdir(dir, { recursive: true });
   const record = async (
     state: string,
@@ -597,12 +573,7 @@ async function runCase(
     });
   };
   try {
-    await page.goto(
-      origin + (mode === "trial" ? "/try/practice" : "/practice"),
-      {
-        timeout: 120_000,
-      },
-    );
+    await page.goto(`${origin}/practice`, { timeout: 120_000 });
     await page
       .locator(".problem-content .question")
       .waitFor({ timeout: 60_000 });
@@ -1053,11 +1024,9 @@ try {
     await probeSelfTest(browser);
     const jobs: (() => Promise<void>)[] = [];
     for (const size of sizes)
-      for (const theme of themes) {
+      for (const theme of themes)
         for (const c of cases)
           jobs.push(() => runCase(browser, name, c, size, theme, "account"));
-        jobs.push(() => runCase(browser, name, CASES[0], size, theme, "trial"));
-      }
     // Long questions and answer rows must fit the narrow landscape column.
     // Explicit viewport filters already describe their own requested coverage.
     const landscapeCases = cases.filter(

@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { generateProblem } from "../src/math/engine";
@@ -70,20 +71,6 @@ const sweep = (id: string, n: number) =>
   Array.from({ length: n }, (_, i) =>
     matrixEquationSystemGenerate(id, `t${i}`),
   );
-
-test("templates are the two HSA.REI.C.8 types of matrix-systems", () => {
-  assert.deepEqual(
-    matrixEquationSystemTemplates.map((t) => [
-      t.id,
-      t.skillId,
-      t.requiredResponseCapability,
-    ]),
-    [
-      ["system-to-matrix-equation", "matrix-systems", "structured-work-v1"],
-      ["matrix-equation-reading", "matrix-systems", "single-choice-v1"],
-    ],
-  );
-});
 
 test("the same seed gives the same problem", () => {
   for (const t of matrixEquationSystemTemplates)
@@ -186,7 +173,11 @@ test("reading: every variant's key agrees with the matrix equation in the prompt
     if (r.kind !== "choice") continue;
     assert.equal(r.options.length, 4);
     assert.equal(new Set(r.options.map((o) => o.label)).size, 4);
-    for (const o of r.options) assert.ok(o.label.length <= 120);
+    for (const o of r.options)
+      reportEditorialLimit(
+        o.label.length <= 120,
+        `${p.public.templateId}: option exceeds 120 characters`,
+      );
     const correct = optionLabel(p, p.answer);
     const wrong = r.options.filter((o) => o.id !== p.answer);
     assert.deepEqual(

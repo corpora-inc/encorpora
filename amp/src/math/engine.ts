@@ -1,4 +1,9 @@
 import {
+  clauseMetadata,
+  generateClauseVariant,
+  withClauseMetadata,
+} from "./clause-variants";
+import {
   satCompletionTemplates,
   generateSatCompletionProblem,
 } from "./sat-completion-practice";
@@ -15,7 +20,7 @@ import { withTemplateGlossary } from "./template-glossary";
 import { historicalTrueEquationChoice } from "./operation-sentence-practice";
 import {
   clauseProblem as extendedClauseProblem,
-  withClauseMetadata,
+  withClauseMetadata as withExtendedClauseMetadata,
 } from "./clause-extensions";
 import { historicalEqualFactorFamily } from "./multiselect-number-practice";
 import { sceneCapabilitiesIn } from "./scene/capability";
@@ -26,6 +31,21 @@ import {
   withTemplateVersion,
 } from "./variation/axes";
 import { gradePointPlot, normalizePointPlot } from "./point-plot";
+import { gradeLinePlotBuild, normalizeLinePlotBuild } from "./line-plot-build";
+import {
+  gradeUnitSquareMarking,
+  normalizeUnitSquareMarking,
+} from "./unit-square-marking";
+import {
+  gradeCounterBuilder,
+  normalizeCounterBuilder,
+} from "./counter-builder";
+import { normalizeEqualAddends, gradeEqualAddends } from "./equal-addends";
+import { generateEqualAddendsFallback } from "./equal-addends-practice";
+import { generateCounterBuilderFallback } from "./counter-builder-practice";
+import { gradeTrendLine, normalizeTrendLine } from "./trend-line-fit";
+import { gradePegBoard, normalizePegBoard } from "./peg-board";
+import { gradeShapeComposer, normalizeShapeAnswer } from "./shape-composer";
 import { gradeMultiPart, normalizeMultiPart } from "./multi-part-choice";
 import {
   multiPartChoiceTemplates,
@@ -417,7 +437,6 @@ import { graphicalTemplates, generateGraphicalProblem } from "./graphical";
 import { extendedTemplates, generateExtendedProblem } from "./extended";
 import { familyRegistry } from "../families/registry";
 import { clauseVariantProblem } from "./clause-gap";
-import { clauseMetadata, generateClauseVariant } from "./clause-variants";
 import { createHash } from "node:crypto";
 import { makeTenHops } from "./scene/explanations";
 import { mathLabel, polish } from "./polish";
@@ -457,6 +476,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
     id: "add-within-20",
     version: 2,
     reprintsFrom: 1,
+    requiredFigureCapability: "scenes-v1",
     title: "Add within twenty",
     skillId: "addition-within-20",
     gradeBand: "K–2",
@@ -665,6 +685,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...familyRegistry.templates,
 ]
   .map(withClauseMetadata)
+  .map(withExtendedClauseMetadata)
   .map(clauseMetadata)
   .map(withTemplateGlossary);
 
@@ -707,6 +728,21 @@ export function isValidResponse(
   problem: PublicProblem,
   response: string,
 ): boolean {
+  if (problem.response.kind === "peg-board")
+    return normalizePegBoard(problem.response, response) !== null;
+  if (problem.response.kind === "equal-addends")
+    return normalizeEqualAddends(problem.response, response) !== null;
+  if (problem.response.kind === "counter-builder")
+    return normalizeCounterBuilder(problem.response, response) !== null;
+  if (problem.response.kind === "trend-line-fit")
+    return normalizeTrendLine(problem.response, response) !== null;
+  if (problem.response.kind === "shape-composer")
+    return normalizeShapeAnswer(problem.response, response) !== null;
+  if (response.length > 200) return false;
+  if (problem.response.kind === "line-plot-build")
+    return normalizeLinePlotBuild(problem.response, response) !== null;
+  if (problem.response.kind === "unit-square-marking")
+    return normalizeUnitSquareMarking(response) !== null;
   if (problem.response.kind === "multi-select")
     return normalizeSelection(problem.response, response) !== null;
   if (problem.response.kind === "point-plot")
@@ -725,6 +761,28 @@ export function gradeAnswer(
   problem: GeneratedProblem,
   response: string,
 ): boolean {
+  if (problem.public.response.kind === "peg-board")
+    return gradePegBoard(problem.public.response, response);
+  if (problem.public.response.kind === "equal-addends")
+    return gradeEqualAddends(problem.public.response, problem.answer, response);
+  if (problem.public.response.kind === "counter-builder")
+    return gradeCounterBuilder(
+      problem.public.response,
+      problem.answer,
+      response,
+    );
+  if (problem.public.response.kind === "line-plot-build")
+    return gradeLinePlotBuild(
+      problem.public.response,
+      problem.answer,
+      response,
+    );
+  if (problem.public.response.kind === "unit-square-marking")
+    return gradeUnitSquareMarking(problem.answer, response);
+  if (problem.public.response.kind === "trend-line-fit")
+    return gradeTrendLine(problem.public.response, response);
+  if (problem.public.response.kind === "shape-composer")
+    return gradeShapeComposer(problem.public.response, response);
   if (problem.public.response.kind === "multi-select") {
     const answer = normalizeSelection(problem.public.response, response);
     return (
@@ -901,8 +959,9 @@ export function generateProblem(
 /**
  * Generate a problem a client can draw. Figure-surface axes fall back to
  * their legacy value when the client lacks the capability a value needs
- * (variation/axes.ts). The result is then checked: should a family draw a
- * newer scene component without declaring it on its axis, the instance is
+ * (variation/axes.ts). Optional worked scenes are omitted if unsupported.
+ * The result is then checked: should a family draw an unsupported scene
+ * component without declaring it on its axis, the instance is
  * rebuilt on legacy surfaces, and a template that still needs more than the
  * client has is an error, never a figure the client cannot show.
  */
@@ -914,8 +973,25 @@ export function generateProblemFor(
   responseCapabilities: readonly string[] = [],
 ): GeneratedProblem {
   const generateForClient = () => {
+    if (
+      templateId === "array-equal-addends-equation" &&
+      !responseCapabilities.includes("equal-addends-v1")
+    ) {
+      if (!responseCapabilities.includes("single-choice-v1"))
+        throw new Error("Array fallback requires single-choice-v1");
+      return generateEqualAddendsFallback(seed);
+    }
+    if (
+      templateId === "build-the-number-sentence" &&
+      !responseCapabilities.includes("counter-builder-v1")
+    ) {
+      if (!responseCapabilities.includes("figure-choice-v1"))
+        throw new Error("Counter builder fallback requires figure-choice-v1");
+      return generateCounterBuilderFallback(seed);
+    }
     const problem = generateProblem(templateId, seed, version);
-    if (!problem.variant?.axes?.clause) return problem;
+    if (!problem.variant?.axes?.clause && !problem.variant?.axes?.task)
+      return problem;
     const kind = problem.public.response.kind;
     const required =
       kind === "choice"
@@ -923,8 +999,9 @@ export function generateProblemFor(
         : kind === "number" || kind === "fraction"
           ? null
           : `${kind}-v1`;
-    // A legacy template's admission capability cannot name the union of its
-    // added formats. Retain its exact original surface for older clients.
+    // Clause variants use either the `clause` or `task` axis. Admission
+    // capabilities describe the original formats; retain the original
+    // surface when a client cannot render an added response format.
     return required && !responseCapabilities.includes(required)
       ? generateProblem(templateId, seed, 1)
       : problem;
@@ -932,17 +1009,31 @@ export function generateProblemFor(
   const fits = (problem: GeneratedProblem) =>
     // The public problem, and what reaches the client beside it: the hint
     // cue's scene and a lesson's walkthrough.
-    sceneCapabilitiesIn([
-      problem.public,
-      problem.hintCue,
-      problem.walkthrough,
-    ]).every((needs) => figureCapabilities.includes(needs));
-  const problem = withClientFigures(figureCapabilities, () =>
-    generateForClient(),
+    sceneCapabilitiesIn(
+      [problem.public, problem.hintCue, problem.walkthrough],
+      { includeV1: true },
+    ).every((needs) => figureCapabilities.includes(needs));
+  const withoutUnsupportedWalkthrough = (problem: GeneratedProblem) => {
+    if (
+      !problem.walkthrough ||
+      sceneCapabilitiesIn(problem.walkthrough, { includeV1: true }).every(
+        (needs) => figureCapabilities.includes(needs),
+      )
+    )
+      return problem;
+    // Worked scenes supplement the textual explanation; they are not
+    // givens needed to answer the public problem.
+    const { walkthrough: _walkthrough, ...textExplanation } = problem;
+    return textExplanation;
+  };
+  const problem = withoutUnsupportedWalkthrough(
+    withClientFigures(figureCapabilities, generateForClient),
   );
   if (fits(problem)) return problem;
-  const legacy = withClientFigures(figureCapabilities, () =>
-    withLegacySurfaces(generateForClient),
+  const legacy = withoutUnsupportedWalkthrough(
+    withClientFigures(figureCapabilities, () =>
+      withLegacySurfaces(generateForClient),
+    ),
   );
   if (fits(legacy)) return legacy;
   throw new Error(
@@ -1020,6 +1111,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...multiPartChoiceTemplates,
   ].some((t) => t.id === problem.public.templateId);
   const keepAuthored =
+    problem.variant?.axes?.clause !== undefined ||
     preserveAlgebra ||
     ["true-equation-choice", "equal-factor-equations-select"].includes(
       problem.public.templateId,
@@ -1301,7 +1393,7 @@ function generateRawProblem(
     return generateGraphicalProblem(templateId, seed);
   if (extendedTemplates.some((t) => t.id === templateId))
     return generateExtendedProblem(templateId, seed);
-  const meta = templates.find((t) => t.id === templateId);
+  const meta = baseTemplates.find((t) => t.id === templateId);
   if (!meta) throw new Error(`Unknown template: ${templateId}`);
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");

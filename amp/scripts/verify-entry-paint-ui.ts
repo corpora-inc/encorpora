@@ -40,7 +40,8 @@ const me = fixtureMe(
   },
   "amp|synthetic-entry",
 );
-const trialMe = { ...me, next: "try" as const };
+// A new account: no place yet, so `/` opens the starter.
+const newMe = { ...me, next: "start" as const };
 const learnerMe = fixtureMe(
   {
     consent: {
@@ -95,7 +96,7 @@ try {
       for (const colorScheme of ["light", "dark"] as const) {
         for (const [width, scenario] of [
           [320, "guest"],
-          [390, "trial"],
+          [390, "new"],
           [768, "learner"],
           [1280, "error"],
         ] as const) {
@@ -186,11 +187,9 @@ try {
               accountStarted = true;
               await account.promise;
               return route.fulfill({
-                json: scenario === "learner" ? learnerMe : trialMe,
+                json: scenario === "learner" ? learnerMe : newMe,
               });
             }
-            if (path === "/api/v1/trials/current")
-              return route.fulfill({ json: { trial: null } });
             return route.fulfill({
               status: 503,
               json: { message: "Unavailable in synthetic entry fixture" },
@@ -236,7 +235,7 @@ try {
             path: `${shots}/${engine.name()}-${colorScheme}-${width}-pending.png`,
           });
           session.release();
-          if (scenario === "trial" || scenario === "learner") {
+          if (scenario === "new" || scenario === "learner") {
             await assertEventually(() => accountStarted);
             assert.deepEqual(
               await paint(page),
@@ -254,9 +253,11 @@ try {
             failSession = false;
             await page.getByRole("button", { name: "Try again" }).click();
           }
-          if (scenario === "trial") {
-            await page.waitForURL(`${origin}/try`);
-            await page.getByRole("group", { name: "Birth year" }).waitFor();
+          if (scenario === "new") {
+            await page.waitForURL(`${origin}/start`);
+            await page
+              .getByRole("heading", { name: "What brings you to AMP?" })
+              .waitFor();
           } else if (scenario === "learner") {
             await page
               .getByRole("heading", { name: "Test Learner", exact: true })

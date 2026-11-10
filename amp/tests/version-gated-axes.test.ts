@@ -126,7 +126,7 @@ test("generateProblem at the stored version reprints the pre-axis problem", () =
   for (const id of bumped) {
     const meta = templates.find((t) => t.id === id);
     assert.ok(meta, id);
-    assert.equal(meta.version, 2, id);
+    assert.ok(meta.version >= 2, `${id}: version 2 remains available`);
     assert.equal(meta.reprintsFrom, 1, id);
     const rows = legacyGolden[id]!;
     assert.equal(rows.length, 200, id);

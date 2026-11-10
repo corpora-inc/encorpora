@@ -90,6 +90,7 @@ const sectionCopy: Record<SectionKind, { title: string; note: string }> = {
 
 /** Responses answered in a box; the others are marked on the problem. */
 const boxed = (problem: GeneratedProblem) =>
+  problem.public.response.kind === "unit-square-marking" ||
   problem.public.response.kind === "number" ||
   problem.public.response.kind === "fraction" ||
   problem.public.response.kind === "choice";
@@ -114,7 +115,12 @@ function longestFormula(problem: GeneratedProblem): number {
 }
 /** Worked steps, tables and long formulas need the full width of the page. */
 const fullWidth = (problem: GeneratedProblem) =>
+  problem.public.response.kind === "equal-addends" ||
+  problem.public.response.kind === "counter-builder" ||
+  problem.public.response.kind === "peg-board" ||
+  problem.public.response.kind === "shape-composer" ||
   problem.public.response.kind === "structured-work" ||
+  problem.public.response.kind === "trend-line-fit" ||
   (problem.public.response.kind === "multi-part-choice" &&
     (problem.public.response.layout === "table" ||
       problem.public.response.blanks.length >= 4)) ||

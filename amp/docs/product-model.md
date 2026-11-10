@@ -18,7 +18,7 @@ The practice loop (one problem at a time, adaptive across strands) is the produc
 | Parent, teacher, tutor, admin | An account: email and password, passkey, Google, Microsoft or Apple                                                                        | Their own **adult learner**, if they have one |
 | Child                         | A class: class code → their picture label or name → 3 of 16 pictures; or a printed card's QR; or Google or Microsoft through the school (see Not built yet) | Their one learner                             |
 
-- **Adults hold several places at once.** A person can be a parent, a teacher at a school, the head of a district and their own learner. The **place switcher**, one shared menu in the app drawer and setup, moves between them. `/` opens where the person last worked. With nothing remembered, it opens the family side if they have learners or a trial, and the school if they are staff only. A school setup in progress never takes over `/`.
+- **Adults hold several places at once.** A person can be a parent, a teacher at a school, the head of a district and their own learner. The **place switcher**, one shared menu in the app drawer and setup, moves between them. `/` opens where the person last worked. With nothing remembered, it opens the family side if they have learners or a family class, and the school if they are staff only. An account with no place yet answers "What brings you to AMP?" first. A school setup in progress never takes over `/`.
 - **A child's session is bound to their one learner.** On a shared device (the default) it lives in session storage and signs out after 30 idle minutes. On a personal device it lasts until the teacher revokes it. Parent-only routes refuse a child's session even when a parent cookie is present. A child's session never reaches a sibling's learner.
 - **"Let Maya practice here".** From the family class, a parent hands their own device to a child: it starts that child's session, and the parent's view returns when the child signs out.
 - **Adult learners** are marked adult, have no birth year and need no parental consent. The adult chooses where to start (Counting through Precalculus) and always sees their levels. In their class, a teacher's adult learner appears on the map and standings as a separate "Teacher" line. It sits in place by value with no rank number, is never counted in grades, seats, rosters, exports or Today, and the teacher can hide it per class.
@@ -28,7 +28,7 @@ The practice loop (one problem at a time, adaptive across strands) is the produc
 - **Org tree:** `amp_orgs` with `kind` family, school, network or district. Every child learns in a class, and every class belongs to an org.
 - **A family** is the smallest org: one class, whose parent is its admin and teacher. The class can mix grades: with no course band, each child works at their own level. A child's learner stays owned by the parent's account, so purchases, consent and family settings stay where they were. Every family that existed was converted to this model on 2026-11-08.
 - **A child from another family** can begin as an unnamed learner in a tutor’s class. An emailed parent approval names and transfers that same learner to the parent after verified consent, preserving answers, class membership and the free balance. A new invitation collects only the parent’s email address; the parent supplies the child’s name after consent. The teacher sees the child’s work in the class and nothing of the other family’s account.
-- **A school** exists only once AMP issues it a license, after a contract and an invoice or PO. An operator runs `create-school`, which emails the admin a setup link, and the admin lands in guided setup. A school with "Just my class" collapses around that one class. Any admin can teach a class.
+- **A school** exists only once AMP issues it a license, after a contract and an invoice or PO. Before that, a teacher or a school explores a demo from the starter. An operator runs `create-school`, which emails the admin a setup link, and the admin lands in guided setup. A school with "Just my class" collapses around that one class. Any admin can teach a class.
 - **A district** is the same screens rolled up, with policy it can set and lock.
 - **A demo class or school** ([demo places](schools.md#demo-places)) lets a teacher or school leader explore AMP fully alive before any agreement or payment: made-up students marked "Demo", twelve weeks of practice, and "Practice as" any of them. It is never billed, counted or mailed, goes after 30 idle days, and is never converted: the real class comes from the real onboarding.
 - **An adult on their own,** for example an 18-year-old preparing for the SAT, buys a license for themselves. Their home is their own progress record, and adding a child later makes them a family.
@@ -43,6 +43,15 @@ The practice loop (one problem at a time, adaptive across strands) is the produc
 - **Free allowance:** every learner, including an adult, has 100 online answers or skips and five separate workbooks. All five workbooks are available immediately. Recording printed results spends neither allowance. Paid activity preserves the unused free balance.
 - **Access:** after checking ownership and learning permission, `canPractice = hasAccess || freeRemaining > 0`. An active grant also covers new workbooks; otherwise the separate workbook allowance applies. Issued workbooks and result entry stay available after either allowance is exhausted.
 - **Unnamed children:** picture identity and birth year establish a learner without collecting a name. Naming requires verified parental consent or an active school data agreement. Consent withdrawal or an ended school agreement stops further learning; a grant does not replace consent.
+- **One product:** trying AMP and paying for it are the same app. There is no separate trial: a learner is covered by the free allowance or by a paid grant, and nothing moves when someone pays.
+- **Starting:** a new account answers one question, "What brings you to AMP?" (`/start`), and the answer creates only the place it needs, in one call (`POST /api/v1/start`, `src/account/starter.ts`):
+  - **Myself:** the adult's own learner; home is `/me`.
+  - **Parent:** the family class with 1–6 unnamed children, each with a birth year; home is the class's Today.
+  - **Tutor or co-op:** the family class with unnamed students owned by their roster person, so each one's own parent names them by an approval link; home is the class's Today.
+  - **Teacher:** a demo class, alive with fictional students marked "Demo" and months of their work (`POST /api/v1/school/demo {kind:"class"}`); its bar offers "Set up your real class", which leads to the real onboarding: the data agreement, then the roster. No real student exists before that.
+  - **School:** the school pitch inline, with "Explore a demo school" (`{kind:"school"}`) and "Talk to us".
+  Asking again for a place the account already has opens it. Anyone can add another place from the place switcher's "Add a place".
+- **When the allowance ends:** the screen in use shows one pause (`features/continue/AllowancePause.tsx`) naming the learner and the fact, with the one action that works for whoever is looking. A parent or an adult continues with AMP for that learner (`/continue/<learner>`: the plan, with the parent notice when no consent is recorded yet, then Stripe, then back to the same screen with access active, then an optional "Add Fox's name"). A class's teacher, a tutor or a school talks to us. A student is told their grown-up can continue.
 
 Media, videos and ads carry no price; they lead to the Buy button.
 
@@ -54,12 +63,15 @@ Media, videos and ads carry no price; they lead to the Buy button.
   - `/schools/scope-and-sequence` and `/schools/trust`.
   - `/p/…`: a family progress link a teacher shares.
 - **Footer of the public pages:** the support address in full with a Copy button, and links to Instagram, YouTube, TikTok, Facebook and X. Nothing on these pages opens a mail app.
-- **New family:**
-  - `/try`, `/try/map` and `/try/practice`: the free assessment.
-  - `/start/…`: plan, consent, name, birth year and purchase.
+- **New account:**
+  - `/sign-up`, then `/start` and `/start/<choice>`: "What brings you to AMP?", on the app frame.
+  - `/continue/<learner>`: Continue with AMP for one learner.
+  - `/start/purchase`: Stripe's return for a purchase made before consent was recorded.
+  - `/start/plan`, `/start/consent`, `/start/name` and `/start/birth-year` remain only for a parent approving another family's child, a funded program, a gift, or a paid purchase no learner holds yet.
   - `/purchase` and `/access`.
+  - `/try` and `/try/…`, from older links: signed out, `/sign-up`; signed in, `/`.
 - **Parent:**
-  - The family class: Today lists the parent's children, each with access dates and "Let … practice here", plus a "From other families" list.
+  - The family class: Today lists the parent's children, each with access dates or the free problems left and "Let … practice here" (or "Continue with AMP" once those are used), plus a "From other families" list with a tutor's unnamed students and "Send to their parent".
   - "Add a second parent": one per family, invited by email with a copyable link, accepted only with that address. She teaches the class, sees the children's progress read-only, lets them practice on her device and practices free; buying, consent, names, deletion and inviting stay the account holder's. Also in Account → Family.
   - "Invite a co-teacher", with a copyable link. A co-teacher teaches the class but doesn't invite other families or buy access.
   - The full class screens, as for any teacher (below), plus Calendar in the class tab row and Family in the drawer for learners, purchases, consent and privacy.

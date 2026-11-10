@@ -20,8 +20,10 @@ import {
 } from "./structured-work";
 import {
   multiPartProblem,
+  type Built,
   type Slot,
 } from "./multi-part-support";
+import { generatingVersion } from "./variation/axes";
 import type { MultiPartSentence } from "./multi-part-choice";
 import {
   pointPlotResponseSchema,
@@ -618,7 +620,8 @@ export function generateCountSquare(templateId: string, seed: string) {
 export const areaTilingClauseTemplates: readonly TemplateMetadata[] = [
   {
     id: "tile-then-multiply",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Count the tiles, then multiply",
     skillId: "rectangle-area",
     gradeBand: band35,
@@ -630,7 +633,8 @@ export const areaTilingClauseTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "split-tiled-count",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Count both sides of a split rectangle",
     skillId: "rectangle-area",
     gradeBand: band35,
@@ -701,6 +705,43 @@ function tray(values: number[], extra: number[]): string[] {
   return labels;
 }
 
+/** Sorted trays have new option IDs; stored version 1 keeps its original key. */
+function tilingCardProblem(
+  meta: TemplateMetadata,
+  seed: string,
+  r: Random,
+  built: Built,
+): GeneratedProblem {
+  const version = generatingVersion() ?? meta.version;
+  const problem = multiPartProblem(
+    { ...meta, version, reprintsFrom: version },
+    seed,
+    r,
+    version === 1
+      ? built
+      : {
+          ...built,
+          slots: built.slots.map((slot) => ({
+            ...slot,
+            fixed: [...slot.fixed!].sort((a, b) => Number(a) - Number(b)),
+          })),
+        },
+  );
+  return {
+    ...problem,
+    public: { ...problem.public, templateVersion: version },
+  };
+}
+
+/** Numeric trays are ordered without changing the ids in saved answers. */
+function orderedCards(problem: GeneratedProblem): GeneratedProblem {
+  if (problem.public.response.kind !== "multi-part-choice")
+    throw new Error("Expected a card response");
+  for (const blank of problem.public.response.blanks)
+    blank.options.sort((a, b) => Number(a.label) - Number(b.label));
+  return problem;
+}
+
 export function tileCards(a: number, b: number, k: number) {
   const ab = a * b;
   const fixed = tray([b, a, ab], [k * b, a + b, 2 * (a + b), k * a]);
@@ -733,7 +774,7 @@ function tileThen(seed: string, r: Random): GeneratedProblem {
     const k = r(1, a - 1);
     try {
       const built = tileCards(a, b, k);
-      return multiPartProblem(meta, seed, r, {
+      return orderedCards(tilingCardProblem(meta, seed, r, {
         prompt: `The rectangle has ${a} rows and ${b} unit squares in each row. ${k} ${k === 1 ? "row is" : "rows are"} tiled and the rest are blank. Fill the cards for the whole rectangle.`,
         layout: "cards",
         reuse: true,
@@ -747,7 +788,7 @@ function tileThen(seed: string, r: Random): GeneratedProblem {
           `There are ${a} rows, so the running totals are ${Array.from({ length: a }, (_, i) => (i + 1) * b).join(", ")}.`,
           `That is ${a} × ${b} = ${built.ab}. The covering and the product are the same number.`,
         ],
-      });
+      }));
     } catch (error) {
       if (error instanceof Error && error.message === "retry") continue;
       throw error;
@@ -789,7 +830,7 @@ function splitTiled(seed: string, r: Random): GeneratedProblem {
     if (c === b) c = c === 8 ? 2 : c + 1;
     if (b === c || b + c > 12) continue;
     const built = splitCards(a, b, c);
-    return multiPartProblem(meta, seed, r, {
+    return orderedCards(tilingCardProblem(meta, seed, r, {
       prompt: `The rectangle is ${a} units tall and ${b + c} units wide. A line splits the width into ${b} and ${c}. Count the unit squares.`,
       layout: "cards",
       reuse: true,
@@ -808,7 +849,7 @@ function splitTiled(seed: string, r: Random): GeneratedProblem {
         `Total: ${built.left} + ${built.right} = ${built.total}.`,
         `The same squares are ${a} × (${b} + ${c}) = ${a} × ${b + c} = ${built.total}. So a × (b + c) = a × b + a × c.`,
       ],
-    });
+    }));
   }
   throw new Error("Could not build split-tiled-count");
 }

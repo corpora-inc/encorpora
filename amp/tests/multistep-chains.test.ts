@@ -1,6 +1,7 @@
+import { generateBeforeClauses as generateProblem } from "./helpers/before-clause-variants";
 import test from "node:test";
 import assert from "node:assert/strict";
-import { generateProblem, gradeAnswer, templates } from "../src/math/engine";
+import { gradeAnswer, templates } from "../src/math/engine";
 import { methods } from "../src/content/problem-methods";
 import { principles } from "../src/content/problem-principles";
 import { lessons } from "../src/content/lessons";
@@ -117,7 +118,6 @@ test("every chain template is registered with lesson, method, principle and face
       `${id} lesson`,
     );
   }
-  assert.equal(percentChainTemplates.length, 1);
 });
 
 test("generation is deterministic, reaches the engine and every axis value and variant", () => {

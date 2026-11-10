@@ -21,6 +21,14 @@ import { lessons } from "./lessons";
 import { skills } from "../curriculum/catalog";
 import { displayAnswer } from "../math/polish";
 import { methods } from "./problem-methods";
+import { clauseMethod, clausePrinciple } from "./clause-variant-lessons";
+import {
+  buildClause,
+  clauseEntries,
+  clauseFamilies,
+  clauseVariants,
+  generateClauseVariant,
+} from "../math/clause-variants";
 import { principles } from "./problem-principles";
 import { answerText } from "../math/selection-response";
 import type { MultiPartChoiceResponse } from "../math/multi-part-choice";
@@ -43,7 +51,6 @@ import { glossaryEntry } from "../glossary/index";
 import { termsIn } from "../glossary/link";
 import type { GradeBand } from "../curriculum/types";
 import { gradeBandOrder } from "./lesson-text";
-import { clauseVariants, generateClauseVariant } from "../math/clause-variants";
 import { clauseVariantMethods } from "./clause-variant-methods";
 
 /** One short lesson per problem type: what is given, what to find, how to
@@ -169,45 +176,65 @@ export function problemLesson(
   const activeClause = learnerProblem?.variant?.axes?.clause;
   // A legacy exercise needs a legacy example even when its family also has
   // construction or explanation clauses with different methods and formats.
-  const legacyVersion = clauseVariants[templateId]
-    ? 1
-    : clauseExtensions[templateId]
-      ? template.version - 1
-      : undefined;
+  const entry = clauseEntries[templateId];
+  const legacyVersion = entry
+    ? entry.introducedVersion - 1
+    : clauseVariants[templateId]
+      ? 1
+      : clauseExtensions[templateId] || clauseFamilies[templateId]
+        ? template.version - 1
+        : undefined;
   // These clause tasks replace the figured number problem the lesson
   // animation teaches. The worked example stays on the reprint unless
   // the learner is already on that clause.
   const classicFigure =
+    !!entry ||
+    !!clauseFamilies[templateId] ||
     templateId === "number-bond-missing" ||
     templateId === "three-addend-story" ||
     templateId === "unknown-addend-story";
   const exampleVersion =
     !activeClause && classicFigure
-      ? 1
+      ? (legacyVersion ?? 1)
       : learnerProblem && (!activeClause || activeClause === "legacy")
         ? legacyVersion
         : undefined;
   const generateProblem = (id: string, exampleSeed: string) =>
-    (activeClause && activeClause !== "legacy"
-      ? (clauseProblem(template, exampleSeed, activeClause) ??
-        generateClauseVariant(template, exampleSeed, activeClause))
-      : null) ??
-    generateProblemFor(
-      id,
-      exampleSeed,
-      lessonFigures(template),
-      exampleVersion,
-      responseCapabilities,
-    );
+    learnerProblem?.variant &&
+    clauseFamilies[id]?.includes(learnerProblem.variant.id)
+      ? buildClause(template, exampleSeed, learnerProblem.variant.id)
+      : ((activeClause && activeClause !== "legacy"
+          ? (clauseProblem(template, exampleSeed, activeClause) ??
+            generateClauseVariant(template, exampleSeed, activeClause))
+          : null) ??
+        generateProblemFor(
+          id,
+          exampleSeed,
+          lessonFigures(template),
+          exampleVersion,
+          responseCapabilities,
+        ));
   // The learner may see a newer figure surface than the example (which is
   // drawn for the oldest client); its legacy twin has the example's wording.
-  const twinPrompt = learnerProblem
-    ? generateProblem(templateId, learnerProblem.public.seed).public.prompt
+  const twin = learnerProblem
+    ? generateProblem(templateId, learnerProblem.public.seed)
     : undefined;
+  const twinPrompt = twin?.public.prompt;
   let example = generateProblem(templateId, `${seed}:lesson:0`);
   const repeatsProblem = (p: typeof example) => {
     if (
-      learnerProblem?.public.response.kind === "point-plot" &&
+      learnerProblem?.public.response.kind === "peg-board" &&
+      p.public.response.kind === "peg-board"
+    )
+      return gradeAnswer(learnerProblem, p.answer);
+    if (
+      learnerProblem?.public.response.kind === "shape-composer" &&
+      p.public.response.kind === "shape-composer"
+    )
+      return learnerProblem.variant?.axes?.recipe === p.variant?.axes?.recipe;
+    if (
+      (learnerProblem?.public.response.kind === "point-plot" ||
+        learnerProblem?.public.response.kind === "line-plot-build") &&
       learnerProblem.public.templateId === p.public.templateId &&
       gradeAnswer(learnerProblem, p.answer)
     )
@@ -221,6 +248,23 @@ export function problemLesson(
         answerText(learnerProblem.public.response, learnerProblem.answer)
     )
       return true;
+    if (
+      twin?.public.response.kind === "equal-addends" &&
+      p.public.response.kind === "equal-addends"
+    ) {
+      const a = JSON.parse(twin.answer),
+        b = JSON.parse(p.answer);
+      return (
+        (a.rows === b.rows && a.columns === b.columns) ||
+        (a.rows === b.columns && a.columns === b.rows)
+      );
+    }
+    // A different object or story must not work the active counter model.
+    if (
+      twin?.public.response.kind === "counter-builder" &&
+      p.public.response.kind === "counter-builder"
+    )
+      return gradeAnswer(twin, p.answer);
     // Structured work: the same givens asked in another mode (build, fill
     // or order) is the same problem, and the lesson would work it.
     if (
@@ -274,12 +318,34 @@ export function problemLesson(
       }
     }
   const response = example.public.response;
+  // A completed plot replaces the source figure in its worked example.
+  // Keep table measurements in the prompt so the example stands on its own.
+  const plotSource =
+    response.kind === "line-plot-build" &&
+    example.public.figure?.kind === "scene"
+      ? example.public.figure.scene.elements.find((e) => e.type === "lineTable")
+      : undefined;
+  const examplePrompt =
+    plotSource?.type === "lineTable"
+      ? `${example.public.prompt} Lengths: ${plotSource.rows
+          .slice(1)
+          .map((row) => (typeof row[1] === "string" ? row[1] : row[1]?.text))
+          .join(
+            ", ",
+          )} ${response.kind === "line-plot-build" ? response.axis.unit : ""}.`
+      : example.public.prompt;
   const answer =
     response.kind === "choice" ||
     response.kind === "multi-select" ||
     response.kind === "point-plot" ||
+    response.kind === "line-plot-build" ||
+    response.kind === "trend-line-fit" ||
+    response.kind === "shape-composer" ||
+    response.kind === "peg-board" ||
     response.kind === "multi-part-choice" ||
     response.kind === "figure-choice" ||
+    response.kind === "equal-addends" ||
+    response.kind === "counter-builder" ||
     response.kind === "structured-work"
       ? answerText(response, example.answer)
       : skills.find((skill) => skill.id === template.skillId)?.strand ===
@@ -287,14 +353,17 @@ export function problemLesson(
         ? example.answer
         : displayAnswer(example.answer);
   const lessonTemplateId = templateReplacements[templateId] ?? templateId;
-  const clauseMethod = example.variant?.axes?.clause
+  const extensionMethod = example.variant?.axes?.clause
     ? clauseMethods[example.variant.axes.clause]
     : undefined;
   const authored =
-    clauseMethod ??
+    clauseMethod(example.variant?.id) ??
+    extensionMethod ??
     clauseVariantMethods[example.variant?.axes?.clause ?? ""] ??
     methods[lessonTemplateId];
-  const givens = realNumberGivens(templateId, example.public.seed);
+  const givens = example.variant?.axes?.clause
+    ? undefined
+    : realNumberGivens(templateId, example.public.seed);
   const reference = lessons.find((lesson) =>
     lesson.templateIds.includes(lessonTemplateId),
   );
@@ -316,7 +385,10 @@ export function problemLesson(
     authored?.goal ??
     template.description;
   const principle =
-    clauseMethod?.intuition ?? principles[lessonTemplateId] ?? null;
+    clausePrinciple(example.variant?.id) ??
+    extensionMethod?.intuition ??
+    principles[lessonTemplateId] ??
+    null;
   const methodTerms = authored?.terms ?? [];
   // A hint names its own instance's numbers, so it is never a general method.
   const method = authored?.method ?? [template.description];
@@ -348,7 +420,7 @@ export function problemLesson(
       watch ?? "",
       principle ?? "",
       ...terms.map((t) => t.meaning),
-      example.public.prompt,
+      examplePrompt,
       ...(choices ?? []),
       ...examplePartsTexts(parts),
       ...steps,
@@ -390,7 +462,7 @@ export function problemLesson(
     method,
     watch,
     example: {
-      prompt: example.public.prompt,
+      prompt: examplePrompt,
       ...(choices ? { choices } : {}),
       ...(parts ? { parts } : {}),
       // A private walkthrough of the example, when it has one, replaces its

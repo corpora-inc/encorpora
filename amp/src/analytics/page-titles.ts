@@ -62,7 +62,6 @@ export const publicAppPageTitles: Readonly<Record<string, string>> = {
   "/purchase/arkansas-efa": "Pay with Arkansas EFA | AMP",
   "/purchase/arizona-esa": "Pay with Arizona ESA | AMP",
   "/purchase/new-hampshire-efa": "Pay with New Hampshire EFA | AMP",
-  "/try/plans": "Choose Your Plan | AMP",
   "/start/plan": "Choose Your Plan | AMP",
   "/start/purchase": "Complete Your Purchase | AMP",
   "/invoice/arkansas-efa": "Request an Arkansas EFA Invoice | AMP",
@@ -77,9 +76,6 @@ export const publicAppPageTitles: Readonly<Record<string, string>> = {
 const appHomeTitle = "AMP · Adaptive Math Pathways";
 
 const appScreenTitles: Readonly<Record<string, string>> = {
-  "/try": "Start Adaptive Practice | AMP",
-  "/try/practice": "Adaptive Practice | AMP",
-  "/try/map": "Your Math Map | AMP",
   "/reset-password": "Reset Your Password | AMP",
   "/sign-in/forgot": "Reset Your Password | AMP",
   "/sign-in/check-email": "Check Your Email | AMP",

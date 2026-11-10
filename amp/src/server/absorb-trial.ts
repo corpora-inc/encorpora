@@ -72,26 +72,21 @@ export async function absorbLiveTrial(
        FOR UPDATE OF t`,
       [ownerAccountId],
     );
-    // A family that already set up its children by name keeps them; a stale
-    // child trial would only appear beside them as a stranger.
-    const hasChildren = !!(
-      await client.query(
-        "SELECT 1 FROM amp_learners WHERE account_id=$1 AND NOT adult AND deleted_at IS NULL LIMIT 1",
-        [ownerAccountId],
-      )
-    ).rowCount;
     let moved = 0;
     let children = 0;
+    // The trial's screens are retired, so a practised trial is only
+    // reachable in the family: a child's joins it as another picture learner
+    // beside any children already there. Two rare cases still expire as
+    // before (`purgeExpiredTrials`): a trial with no birth year (migration
+    // 0101 refuses an unnamed learner without one) and an adult's trial when
+    // the account already has its adult learner.
     for (const trial of found.rows) {
-      // Migration 0101 refuses an unnamed learner with no birth year. Leave
-      // the trial for the existing expiry purge (`purgeExpiredTrials`).
       if (trial.birth_year == null) continue;
       if (!(await familyHasLearnerRoom(client, ownerAccountId))) break;
       if (new Date().getUTCFullYear() - trial.birth_year >= ADULT_AGE) {
         if (await moveAdultTrial(client, ownerAccountId, trial)) moved++;
         continue;
       }
-      if (hasChildren) continue;
       const identity = await allocatePictureIdentity(
         client,
         `family:${ownerAccountId}`,

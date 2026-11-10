@@ -4,25 +4,31 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
 import { build } from "esbuild";
-import { templates } from "../src/math/engine";
+import { generateProblem, templates } from "../src/math/engine";
 import {
   builtGuessChances,
   guessChance,
   guessChanceOf,
   guessChanceTable,
+  problemGuessChance,
 } from "../src/math/guess-chance";
 
-test("the table holds each answered family's computed chance, and no typed family", () => {
-  const typed = templates.find((t) => !t.requiredResponseCapability)!;
-  const answered = templates
-    .filter((t) => t.requiredResponseCapability)
-    .slice(0, 6);
-  const table = guessChanceTable([typed, ...answered]);
+test("the table holds each family's computed chance, including typed and mixed families", () => {
+  const table = guessChanceTable(templates);
   assert.deepEqual(
-    table,
-    Object.fromEntries(answered.map((t) => [t.id, guessChance(t)])),
+    Object.keys(table).sort(),
+    templates.map((t) => t.id).sort(),
   );
-  assert.equal(guessChanceOf(typed.id), 0);
+  for (const family of templates) {
+    assert.equal(table[family.id], guessChance(family), family.id);
+    assert.equal(guessChanceOf(family.id), table[family.id], family.id);
+    for (let i = 0; i < 6; i++)
+      assert.ok(
+        table[family.id]! >=
+          problemGuessChance(generateProblem(family.id, `table:${i}`)),
+        `${family.id} table:${i}: table understates guessing chance`,
+      );
+  }
 });
 
 test("without a build there is no table, so families are computed on demand", () => {
@@ -38,7 +44,9 @@ test("a built server answers from the table without generating a problem", async
     "guess.mjs",
   );
   await build({
-    entryPoints: [new URL("../src/math/guess-chance.ts", import.meta.url).pathname],
+    entryPoints: [
+      new URL("../src/math/guess-chance.ts", import.meta.url).pathname,
+    ],
     bundle: true,
     platform: "node",
     format: "esm",

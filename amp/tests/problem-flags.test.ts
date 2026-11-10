@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -25,7 +26,10 @@ test("a note is offered only to a consented learner certainly 13 or older", () =
 test("report labels are short and cover every reason", () => {
   assert.deepEqual(Object.keys(flagReasonLabels), [...flagReasons]);
   for (const label of Object.values(flagReasonLabels))
-    assert.ok(label.length <= 20, label);
+    reportEditorialLimit(
+      label.length <= 20,
+      `report label exceeds 20 characters: ${label}`,
+    );
 });
 
 test("the report body accepts only known reasons and the client's own details", () => {

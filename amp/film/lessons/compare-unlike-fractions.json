@@ -1,0 +1,304 @@
+{
+  "id": "compare-unlike-fractions",
+  "title": "Compare unlike fractions",
+  "shots": [
+    {
+      "figure": {
+        "view": [-0.3, 0.35, 11.35, 8.35],
+        "points": {
+          "TA": [0, 7.7],
+          "BA": [0, 4.2],
+          "A0": [0, 5.0],
+          "A1": [5, 5.0],
+          "A2": [5, 7.7],
+          "A3": [0, 7.7],
+          "B0": [0, 1.5],
+          "B1": [6, 1.5],
+          "B2": [6, 4.2],
+          "B3": [0, 4.2],
+          "M0": [5, 7.7],
+          "M1": [5, 1.5],
+          "LT": [8.2, 6.35],
+          "LB": [8.2, 2.85]
+        },
+        "parts": [
+          { "id": "sh5", "poly": ["A0", "A1", "A2", "A3"], "fill": "accent-fill", "start": true },
+          { "id": "sh6", "poly": ["B0", "B1", "B2", "B3"], "fill": "warm-fill", "start": true },
+          { "id": "g8", "grid": [8, 1], "at": "TA", "size": [1, 2.7], "fill": "none", "ink": "accent", "w": 5, "start": true },
+          { "id": "g4", "grid": [4, 1], "at": "BA", "size": [2, 2.7], "fill": "none", "ink": "warm", "w": 5, "start": true },
+          { "id": "g8b", "grid": [8, 1], "at": "BA", "size": [1, 2.7], "fill": "none", "ink": "warm", "w": 4 },
+          { "id": "mark", "seg": ["M0", "M1"], "ink": "ink", "w": 8 },
+          { "id": "l58", "label": "\\frac{5}{8}", "at": "LT", "dir": "e", "far": 0.55, "size": "l", "ink": "accent", "start": true },
+          { "id": "l34", "label": "\\frac{3}{4}", "at": "LB", "dir": "e", "far": 0.55, "size": "l", "ink": "warm", "start": true },
+          { "id": "l68", "label": "\\frac{6}{8}", "at": "LB", "dir": "e", "far": 0.55, "size": "l", "ink": "warm" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Which is greater: five eighths or three fourths of the same whole?",
+          "pause": 0.35,
+          "do": [
+            { "do": "problem", "text": "Which is greater: $5/8$ or $3/4$ of the same whole? Enter that fraction.", "at": "Which", "id": "p1" },
+            { "do": "highlight", "target": ["sh5", "g8"], "at": "eighths" },
+            { "do": "highlight", "target": ["sh6", "g4"], "at": "fourths" },
+            { "do": "highlight", "target": ["g8", "g4"], "at": "whole" }
+          ]
+        },
+        {
+          "say": "The numerator counts the shaded pieces. The denominator says how many equal pieces make the whole.",
+          "do": [
+            { "do": "highlight", "target": ["sh5", "sh6"], "at": "shaded" },
+            { "do": "highlight", "target": ["g8", "g4"], "at": "equal" }
+          ]
+        },
+        {
+          "say": "Five is more than three. The pieces are different sizes, so the top numbers do not decide it.",
+          "do": [
+            { "do": "write", "tex": "\\cancel{\\ca{5}>\\cw{3}}", "fresh": true, "at": "Five", "id": "bad1" },
+            { "do": "highlight", "target": "g8", "at": "different" },
+            { "do": "highlight", "target": "g4", "at": "sizes" },
+            { "do": "watch", "text": "Compare the top numbers only when the pieces are the same size. $5>3$ does not make $5/8$ greater than $3/4$.", "at": "not" }
+          ]
+        },
+        {
+          "say": "Make the pieces the same size.",
+          "do": [
+            { "do": "text", "text": "Make the pieces the same size.", "at": "Make", "id": "idea" },
+            { "do": "highlight", "target": ["g8", "g4"], "at": "pieces" }
+          ]
+        },
+        {
+          "say": "Eight is a common denominator. Four and eight both divide eight.",
+          "do": [
+            { "do": "term", "word": "common denominator", "meaning": "A bottom number both fractions can use, so the pieces are the same size. Here, $8$, because $4$ and $8$ both divide $8$.", "at": "common", "id": "cd" },
+            { "do": "highlight", "target": "g4", "at": "Four" },
+            { "do": "highlight", "target": "g8", "at": "eight", "nth": 2 }
+          ]
+        },
+        {
+          "say": "Five eighths already counts eighths. It stays five eighths.",
+          "do": [
+            { "do": "highlight", "target": "sh5", "at": "already" },
+            { "do": "write", "tex": "\\ca{5/8}=\\ca{5/8}", "fresh": true, "at": "stays", "id": "r58" }
+          ]
+        },
+        {
+          "say": "Cut each fourth into two eighths. The shaded length stays the same.",
+          "pause": 0.25,
+          "do": [
+            { "do": "draw", "target": "g8b", "at": "Cut" },
+            { "do": "highlight", "target": "sh6", "at": "stays" }
+          ]
+        },
+        {
+          "say": "Renaming multiplies the top and the bottom by two. Three fourths equals six eighths.",
+          "do": [
+            { "do": "hide", "target": "l34", "at": "six" },
+            { "do": "show", "target": "l68", "at": "six" },
+            { "do": "write", "tex": "\\cw{3/4}=\\cw{6/8}", "note": "\\times 2", "fresh": true, "at": "equals", "id": "r34" }
+          ]
+        },
+        {
+          "say": "Now the pieces match. Six eighths is more than five eighths, so the greater fraction is three fourths.",
+          "pause": 0.3,
+          "do": [
+            { "do": "highlight", "target": ["g8", "g8b"], "at": "match" },
+            { "do": "draw", "target": "mark", "at": "more" },
+            { "do": "write", "tex": "\\cw{6/8}>\\ca{5/8}", "at": "more", "id": "cmp" },
+            { "do": "answer", "tex": "\\cw{3/4}", "at": "three", "id": "ans" },
+            { "do": "highlight", "target": "sh6", "at": "fourths" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-0.25, 0.25, 11.55, 8.55],
+        "points": {
+          "TA": [0, 7.85],
+          "BA": [0, 4.25],
+          "A0": [0, 5.05],
+          "A1": [2, 5.05],
+          "A2": [2, 7.85],
+          "A3": [0, 7.85],
+          "B0": [0, 1.45],
+          "B1": [3, 1.45],
+          "B2": [3, 4.25],
+          "B3": [0, 4.25],
+          "M0": [2, 7.85],
+          "M1": [2, 1.45],
+          "LT": [9.15, 6.45],
+          "LB": [9.15, 2.85]
+        },
+        "parts": [
+          { "id": "sh2", "poly": ["A0", "A1", "A2", "A3"], "fill": "accent-fill", "start": true },
+          { "id": "sh3", "poly": ["B0", "B1", "B2", "B3"], "fill": "warm-fill", "start": true },
+          { "id": "g9", "grid": [9, 1], "at": "TA", "size": [1, 2.8], "fill": "none", "ink": "accent", "w": 5, "start": true },
+          { "id": "g3", "grid": [3, 1], "at": "BA", "size": [3, 2.8], "fill": "none", "ink": "warm", "w": 5, "start": true },
+          { "id": "g9b", "grid": [9, 1], "at": "BA", "size": [1, 2.8], "fill": "none", "ink": "warm", "w": 4 },
+          { "id": "mark", "seg": ["M0", "M1"], "ink": "ink", "w": 8 },
+          { "id": "l29", "label": "\\frac{2}{9}", "at": "LT", "dir": "e", "far": 0.5, "size": "l", "ink": "accent", "start": true },
+          { "id": "l13", "label": "\\frac{1}{3}", "at": "LB", "dir": "e", "far": 0.5, "size": "l", "ink": "warm", "start": true },
+          { "id": "l39", "label": "\\frac{3}{9}", "at": "LB", "dir": "e", "far": 0.5, "size": "l", "ink": "warm" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Which is less: two ninths or one third of the same whole?",
+          "pause": 0.3,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "Which is less: $2/9$ or $1/3$ of the same whole? Enter that fraction.", "at": "Which", "id": "p2" },
+            { "do": "highlight", "target": ["sh2", "g9"], "at": "ninths" },
+            { "do": "highlight", "target": ["sh3", "g3"], "at": "third" }
+          ]
+        },
+        {
+          "say": "Two is more than one. The pieces are different sizes, so the top numbers do not decide it.",
+          "do": [
+            { "do": "write", "tex": "\\cancel{\\ca{2}>\\cw{1}}", "fresh": true, "at": "Two", "id": "bad2" },
+            { "do": "highlight", "target": "g9", "at": "different" },
+            { "do": "highlight", "target": "g3", "at": "sizes" }
+          ]
+        },
+        {
+          "say": "Cut each third into three ninths. Two ninths stays two ninths. Times three, one third equals three ninths.",
+          "pause": 0.25,
+          "do": [
+            { "do": "draw", "target": "g9b", "at": "Cut" },
+            { "do": "write", "tex": "\\ca{2/9}=\\ca{2/9}", "fresh": true, "at": "stays", "id": "r29" },
+            { "do": "hide", "target": "l13", "at": "equals" },
+            { "do": "show", "target": "l39", "at": "equals" },
+            { "do": "write", "tex": "\\cw{1/3}=\\cw{3/9}", "note": "\\times 3", "fresh": true, "at": "equals", "id": "r13" }
+          ]
+        },
+        {
+          "say": "Three ninths is more than two ninths. The question asks which is less, so the answer is two ninths.",
+          "pause": 0.25,
+          "do": [
+            { "do": "draw", "target": "mark", "at": "more" },
+            { "do": "write", "tex": "\\cw{3/9}>\\ca{2/9}", "at": "more", "id": "cmp2" },
+            { "do": "highlight", "target": "sh2", "at": "less" },
+            { "do": "answer", "tex": "\\ca{2/9}", "at": "two", "nth": 2, "id": "ans2" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-0.3, 0.2, 15.9, 10.05],
+        "points": {
+          "TA": [0, 8.0],
+          "EA": [6.75, 8.0],
+          "BA": [0, 4.15],
+          "EB": [6.75, 4.15],
+          "A0": [0, 5.0],
+          "A1": [6, 5.0],
+          "A2": [6, 8.0],
+          "A3": [0, 8.0],
+          "C0": [6.75, 5.0],
+          "C1": [8.75, 5.0],
+          "C2": [8.75, 8.0],
+          "C3": [6.75, 8.0],
+          "B0": [0, 1.15],
+          "B1": [6, 1.15],
+          "B2": [6, 4.15],
+          "B3": [0, 4.15],
+          "D0": [6.75, 1.15],
+          "D1": [9.75, 1.15],
+          "D2": [9.75, 4.15],
+          "D3": [6.75, 4.15],
+          "M0": [8.75, 8.0],
+          "M1": [8.75, 1.15],
+          "WL": [3, 8.15],
+          "LT": [13.05, 6.5],
+          "LB": [13.05, 2.65]
+        },
+        "parts": [
+          { "id": "fullT", "poly": ["A0", "A1", "A2", "A3"], "fill": "accent-fill", "start": true },
+          { "id": "extraT", "poly": ["C0", "C1", "C2", "C3"], "fill": "accent-fill", "start": true },
+          { "id": "fullB", "poly": ["B0", "B1", "B2", "B3"], "fill": "warm-fill", "start": true },
+          { "id": "extraB", "poly": ["D0", "D1", "D2", "D3"], "fill": "warm-fill", "start": true },
+          { "id": "g3a", "grid": [3, 1], "at": "TA", "size": [2, 3], "fill": "none", "ink": "accent", "w": 5, "start": true },
+          { "id": "g3b", "grid": [3, 1], "at": "EA", "size": [2, 3], "fill": "none", "ink": "accent", "w": 5, "start": true },
+          { "id": "g2a", "grid": [2, 1], "at": "BA", "size": [3, 3], "fill": "none", "ink": "warm", "w": 5, "start": true },
+          { "id": "g2b", "grid": [2, 1], "at": "EB", "size": [3, 3], "fill": "none", "ink": "warm", "w": 5, "start": true },
+          { "id": "g6a", "grid": [6, 1], "at": "TA", "size": [1, 3], "fill": "none", "ink": "accent", "w": 4 },
+          { "id": "g6b", "grid": [6, 1], "at": "EA", "size": [1, 3], "fill": "none", "ink": "accent", "w": 4 },
+          { "id": "g6c", "grid": [6, 1], "at": "BA", "size": [1, 3], "fill": "none", "ink": "warm", "w": 4 },
+          { "id": "g6d", "grid": [6, 1], "at": "EB", "size": [1, 3], "fill": "none", "ink": "warm", "w": 4 },
+          { "id": "l1", "label": "1", "at": "WL", "dir": "n", "far": 0.4, "size": "l", "ink": "gold" },
+          { "id": "mark", "seg": ["M0", "M1"], "ink": "ink", "w": 8 },
+          { "id": "l43", "label": "\\frac{4}{3}", "at": "LT", "dir": "e", "far": 0.4, "size": "l", "ink": "accent", "start": true },
+          { "id": "l32", "label": "\\frac{3}{2}", "at": "LB", "dir": "e", "far": 0.4, "size": "l", "ink": "warm", "start": true },
+          { "id": "l86", "label": "\\frac{8}{6}", "at": "LT", "dir": "e", "far": 0.4, "size": "l", "ink": "accent" },
+          { "id": "l96", "label": "\\frac{9}{6}", "at": "LB", "dir": "e", "far": 0.4, "size": "l", "ink": "warm" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Which is greater: four thirds or three halves?",
+          "pause": 0.3,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "Which is greater: $4/3$ or $3/2$? Enter that fraction.", "at": "Which", "id": "p3" },
+            { "do": "highlight", "target": ["fullT", "extraT", "g3a", "g3b"], "at": "thirds" },
+            { "do": "highlight", "target": ["fullB", "extraB", "g2a", "g2b"], "at": "halves" }
+          ]
+        },
+        {
+          "say": "Each full bar is one whole. Both fractions pass it, so compare the extra pieces.",
+          "do": [
+            { "do": "show", "target": "l1", "at": "whole" },
+            { "do": "highlight", "target": ["fullT", "fullB"], "at": "full" },
+            { "do": "highlight", "target": ["extraT", "extraB"], "at": "extra" }
+          ]
+        },
+        {
+          "say": "Cut both into sixths. Times two, four thirds equals eight sixths. Times three, three halves equals nine sixths.",
+          "pause": 0.25,
+          "do": [
+            { "do": "draw", "target": ["g6a", "g6b", "g6c", "g6d"], "at": "Cut" },
+            { "do": "hide", "target": "l43", "at": "eight" },
+            { "do": "show", "target": "l86", "at": "eight" },
+            { "do": "write", "tex": "\\ca{4/3}=\\ca{8/6}", "note": "\\times 2", "fresh": true, "at": "equals", "id": "r43" },
+            { "do": "hide", "target": "l32", "at": "nine" },
+            { "do": "show", "target": "l96", "at": "nine" },
+            { "do": "write", "tex": "\\cw{3/2}=\\cw{9/6}", "note": "\\times 3", "fresh": true, "at": "equals", "nth": 2, "id": "r32" }
+          ]
+        },
+        {
+          "say": "Nine sixths is more than eight sixths. The greater fraction is three halves.",
+          "pause": 0.25,
+          "do": [
+            { "do": "draw", "target": "mark", "at": "more" },
+            { "do": "write", "tex": "\\cw{9/6}>\\ca{8/6}", "at": "more", "id": "cmp3" },
+            { "do": "highlight", "target": ["fullB", "extraB"], "at": "greater" },
+            { "do": "answer", "tex": "\\cw{3/2}", "at": "halves", "id": "ans3" }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Every comparison like this goes the same way.",
+          "do": [ { "do": "overview", "of": "p1", "at": "Every" } ]
+        },
+        {
+          "say": "One: make the pieces the same size. Use a common denominator.",
+          "do": [ { "do": "recap", "text": "Make the pieces the same size. Use a common denominator.", "marks": ["idea", "cd"], "at": "One" } ]
+        },
+        {
+          "say": "Two: rename both fractions. Multiply the top and the bottom by the same number.",
+          "do": [ { "do": "recap", "text": "Rename both fractions. Multiply the top and the bottom by the same number.", "marks": ["r58", "r34"], "at": "Two" } ]
+        },
+        {
+          "say": "Three: the pieces match, so the bigger numerator is greater. Enter the fraction the question asks for.",
+          "pause": 0.5,
+          "do": [ { "do": "recap", "text": "The pieces match, so the bigger numerator is greater. Enter the fraction the question asks for.", "marks": ["cmp", "ans"], "at": "Three" } ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,300 @@
+{
+  "id": "tenths-as-hundredths",
+  "title": "Tenths as hundredths",
+  "seed": "film",
+  "shots": [
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": ["ones", "tenths", "hundredths"],
+            "rows": [{ "id": "n", "pieces": { "ones": 1, "tenths": 1, "hundredths": 1 }, "shown": ["ones"] }],
+            "point": true,
+            "lines": "none",
+            "focus": "n.ones.1",
+            "labels": [
+              { "id": "lw", "on": "n.ones.1", "tex": "1", "dir": "n", "size": "l" },
+              { "id": "lt", "on": "n.ones.1.s10", "tex": "\\frac{1}{10}=0.1", "dir": "e" },
+              { "id": "lh", "on": "n.ones.1.c10", "tex": "\\frac{1}{100}=0.01", "dir": "e" }
+            ]
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "This square is one whole.",
+          "do": [{ "do": "show", "target": "lw", "at": "one" }]
+        },
+        {
+          "say": "Cut it into ten equal strips. Each strip is one tenth: one over ten, or zero point one.",
+          "do": [
+            { "do": "cut", "target": "b.n.ones.1", "into": "tenths", "at": "Cut" },
+            { "do": "highlight", "target": "b.n.ones.1.s10", "at": "Each" },
+            { "do": "show", "target": "lt", "at": "tenth" },
+            { "do": "term", "word": "tenth", "meaning": "One of $10$ equal parts of one whole: $\\frac{1}{10}$, written $0.1$.", "at": "tenth", "id": "t1" }
+          ]
+        },
+        {
+          "say": "Cut every strip into ten equal pieces. Each little piece is one hundredth: one over one hundred, or zero point zero one.",
+          "do": [
+            { "do": "cut", "target": "b.n.ones.1", "into": "hundredths", "at": "Cut" },
+            { "do": "highlight", "target": "b.n.ones.1.c10", "at": "Each" },
+            { "do": "show", "target": "lh", "at": "hundredth" },
+            { "do": "term", "word": "hundredth", "meaning": "One of $100$ equal parts of one whole: $\\frac{1}{100}$, written $0.01$.", "at": "hundredth", "id": "t2" }
+          ]
+        },
+        {
+          "say": "Ten little pieces fill one strip: ten hundredths make one tenth.",
+          "do": [
+            { "do": "highlight", "target": "b.n.ones.1.s10", "at": "Ten" },
+            { "do": "write", "tex": "10\\text{ hundredths}=1\\text{ tenth}", "fresh": true, "at": "ten", "nth": 2, "id": "d10" }
+          ]
+        },
+        {
+          "say": "A hundred little pieces fill the whole.",
+          "do": [
+            { "do": "highlight", "target": "b.n.ones.1", "at": "hundred" },
+            { "do": "write", "tex": "100\\text{ hundredths}=1\\text{ whole}", "fresh": true, "at": "hundred", "id": "d100" }
+          ]
+        },
+        {
+          "say": "A chart gives each size its own place: the whole in the ones, a tenth in the tenths, a hundredth in the hundredths.",
+          "do": [
+            { "do": "zoom", "target": "b", "at": "chart" },
+            { "do": "hide", "target": ["lw", "lt", "lh"], "at": "chart" },
+            { "do": "highlight", "target": "b.n.ones", "at": "whole" },
+            { "do": "show", "target": "b.n.tenths", "at": "tenth" },
+            { "do": "show", "target": "b.n.hundredths", "at": "hundredth" }
+          ]
+        },
+        {
+          "say": "The point sits beside the ones.",
+          "do": [
+            { "do": "highlight", "target": "b.point", "at": "point" },
+            { "do": "highlight", "target": "b.place.ones", "at": "ones" }
+          ]
+        },
+        {
+          "say": "Tenths come first after the point, then hundredths.",
+          "do": [
+            { "do": "highlight", "target": "b.place.tenths", "at": "Tenths" },
+            { "do": "highlight", "target": "b.place.hundredths", "at": "hundredths" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": ["ones", "tenths", "hundredths"],
+            "rows": [{ "id": "n", "pieces": { "tenths": 7 } }],
+            "point": true,
+            "digits": true,
+            "counts": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Zero point seven equals how many hundredths?",
+          "pause": 0.2,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "$0.7 = \\square/100$. What number belongs in the box?", "at": "Zero", "id": "p70" }
+          ]
+        },
+        {
+          "say": "Zero point seven: no ones, seven tenths. Seven rods.",
+          "do": [
+            { "do": "show", "target": "b.n.tenths", "at": "Seven", "nth": 3 },
+            { "do": "write", "tex": "0.7=7/10", "fresh": true, "at": "tenths", "id": "r7" }
+          ]
+        },
+        {
+          "say": "The question asks for hundredths, the little squares. A tenth is ten hundredths.",
+          "do": [
+            { "do": "highlight", "target": "b.place.hundredths", "at": "hundredths" },
+            { "do": "highlight", "target": "b.n.tenths", "at": "tenth" },
+            { "do": "text", "text": "A tenth is ten hundredths.", "at": "tenth", "id": "phrase" }
+          ]
+        },
+        {
+          "say": "Cut every rod into ten squares: ten, twenty, thirty, forty, fifty, sixty, seventy.",
+          "do": [
+            { "do": "split", "target": "b.n.tenths", "at": "ten", "nth": 2 },
+            { "do": "split", "target": "b.n.tenths", "at": "twenty" },
+            { "do": "split", "target": "b.n.tenths", "at": "thirty" },
+            { "do": "split", "target": "b.n.tenths", "at": "forty" },
+            { "do": "split", "target": "b.n.tenths", "at": "fifty" },
+            { "do": "split", "target": "b.n.tenths", "at": "sixty" },
+            { "do": "split", "target": "b.n.tenths", "at": "seventy" }
+          ]
+        },
+        {
+          "say": "Seventy squares: seventy hundredths. The amount is the same; only the pieces changed.",
+          "do": [
+            { "do": "highlight", "target": "b.n.hundredths", "at": "Seventy" },
+            { "do": "write", "tex": "7/10=70/100", "at": "hundredths", "id": "r70" }
+          ]
+        },
+        {
+          "say": "In the chart, a zero holds the hundredths place: zero point seven zero is zero point seven.",
+          "do": [
+            { "do": "show", "target": "b.digit.hundredths", "at": "zero" },
+            { "do": "write", "tex": "0.7=0.70", "fresh": true, "at": "is", "id": "eq70" }
+          ]
+        },
+        {
+          "say": "Seventy belongs in the box.",
+          "do": [{ "do": "answer", "tex": "70", "at": "Seventy", "id": "a70" }]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": ["ones", "tenths", "hundredths"],
+            "rows": [{ "id": "n", "pieces": { "ones": 4, "tenths": 5 } }],
+            "point": true,
+            "digits": true,
+            "counts": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Four point five zero equals four and how many hundredths?",
+          "pause": 0.2,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "A stopwatch shows seconds down to the hundredth. Each tenth of a second is 10 hundredths of a second. $4.50 = 4\\ \\square/100$. What number belongs in the box?", "at": "Four", "id": "p450" }
+          ]
+        },
+        {
+          "say": "Four wholes: four flats. Five tenths: five rods. Zero in the hundredths.",
+          "do": [
+            { "do": "show", "target": "b.n.ones", "at": "Four" },
+            { "do": "show", "target": "b.n.tenths", "at": "Five" },
+            { "do": "write", "tex": "4.50=4+5/10", "fresh": true, "at": "Five", "id": "m450" },
+            { "do": "show", "target": "b.digit.hundredths", "at": "Zero" }
+          ]
+        },
+        {
+          "say": "The wholes stay. Cut the five rods: ten, twenty, thirty, forty, fifty.",
+          "do": [
+            { "do": "highlight", "target": "b.n.ones", "at": "wholes" },
+            { "do": "split", "target": "b.n.tenths", "at": "ten" },
+            { "do": "split", "target": "b.n.tenths", "at": "twenty" },
+            { "do": "split", "target": "b.n.tenths", "at": "thirty" },
+            { "do": "split", "target": "b.n.tenths", "at": "forty" },
+            { "do": "split", "target": "b.n.tenths", "at": "fifty" }
+          ]
+        },
+        {
+          "say": "Four and fifty hundredths. Fifty belongs in the box.",
+          "do": [
+            { "do": "write", "tex": "4.50=4+50/100", "at": "fifty", "id": "m450b" },
+            { "do": "answer", "tex": "50", "at": "Fifty", "nth": 2, "id": "a50" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "points": {},
+        "parts": [
+          {
+            "id": "b",
+            "blocks": ["ones", "tenths", "hundredths"],
+            "rows": [{ "id": "n", "pieces": { "tenths": 2, "hundredths": 7 }, "inks": { "hundredths": "warm" } }],
+            "point": true,
+            "digits": true,
+            "counts": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "What is two tenths plus seven hundredths, written as a decimal?",
+          "pause": 0.2,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "The amount is in dollars. Each tenth of a dollar is 10 cents. What is $2/10 + 7/100$ written as a decimal?", "at": "What", "id": "p27" }
+          ]
+        },
+        {
+          "say": "Two tenths: two rods. Seven hundredths: seven squares.",
+          "do": [
+            { "do": "show", "target": "b.n.tenths", "at": "Two" },
+            { "do": "write", "tex": "\\ca{2/10}+\\cw{7/100}", "fresh": true, "at": "Two", "id": "q27" },
+            { "do": "show", "target": "b.n.hundredths", "at": "Seven" }
+          ]
+        },
+        {
+          "say": "Rods and squares are different sizes, so two plus seven is not nine of anything.",
+          "do": [
+            { "do": "highlight", "target": "b.n.tenths", "at": "Rods" },
+            { "do": "highlight", "target": "b.n.hundredths", "at": "squares" },
+            { "do": "watch", "text": "Do not add $2 + 7$: tenths and hundredths are different sizes. Cut the tenths into hundredths first.", "at": "not", "id": "w27" }
+          ]
+        },
+        {
+          "say": "Each rod is ten squares: ten, twenty.",
+          "do": [
+            { "do": "write", "tex": "\\ca{2/10}=\\ca{20/100}", "fresh": true, "at": "Each", "id": "r20" },
+            { "do": "split", "target": "b.n.tenths", "at": "ten", "nth": 2 },
+            { "do": "split", "target": "b.n.tenths", "at": "twenty" }
+          ]
+        },
+        {
+          "say": "Twenty and seven: twenty-seven squares, all the same size. Twenty-seven hundredths.",
+          "do": [
+            { "do": "write", "tex": "\\ca{20/100}+\\cw{7/100}=27/100", "at": "Twenty", "id": "s27" },
+            { "do": "highlight", "target": "b.n.hundredths", "at": "twenty-seven" }
+          ]
+        },
+        {
+          "say": "Twenty-seven hundredths: two in the tenths place, seven in the hundredths place.",
+          "do": [
+            { "do": "write", "tex": "27/100=0.27", "at": "two", "id": "d27" },
+            { "do": "highlight", "target": "b.digit.tenths", "at": "tenths" },
+            { "do": "highlight", "target": "b.digit.hundredths", "at": "hundredths", "nth": 2 }
+          ]
+        },
+        {
+          "say": "Zero point two seven.",
+          "do": [{ "do": "answer", "tex": "0.27", "at": "Zero", "id": "a27" }]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Every problem like this goes the same way.",
+          "do": [{ "do": "overview", "of": "p27", "at": "Every" }]
+        },
+        {
+          "say": "One: a tenth is ten hundredths. Cut each rod into ten squares.",
+          "do": [{ "do": "recap", "text": "A tenth is ten hundredths: cut each rod into ten squares.", "marks": ["r20"], "at": "One" }]
+        },
+        {
+          "say": "Two: add hundredths to hundredths, never tenths to hundredths.",
+          "do": [{ "do": "recap", "text": "Add hundredths to hundredths, never tenths to hundredths.", "marks": ["w27", "s27"], "at": "Two" }]
+        },
+        {
+          "say": "Three: read the digits after the point as one number. That is the hundredths.",
+          "pause": 0.4,
+          "do": [{ "do": "recap", "text": "Read the digits after the point as one number: that is the hundredths. $0.27$ is $27$ hundredths.", "marks": ["d27", "a27"], "at": "Three" }]
+        }
+      ]
+    }
+  ]
+}

@@ -8,7 +8,9 @@ import { generateProblem, templates } from "../src/math/engine";
 import { generatedProblemSchema } from "../src/math/contracts";
 import { problemLesson } from "../src/content/problem-lessons";
 
-const variants: Record<string, string[]> = {
+// Fixed witnesses keep the independent mathematical cases below exercised.
+// They are not a complete inventory; new types come from the registry.
+const regressionCases: Record<string, string[]> = {
   "normal-model-rule": [
     "between-symmetric",
     "between-asymmetric",
@@ -108,7 +110,11 @@ test("every statistics template has one correct distinct choice, no leaks and re
       assert.ok(generated.hint.length > 40);
       seen.add(variant);
     }
-    assert.deepEqual([...seen].sort(), [...variants[meta.id]!].sort(), meta.id);
+    for (const variant of regressionCases[meta.id] ?? [])
+      assert.ok(
+        seen.has(variant),
+        `${meta.id}: mathematical case ${variant} was not exercised`,
+      );
   }
 });
 

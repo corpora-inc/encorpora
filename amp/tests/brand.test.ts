@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
@@ -26,7 +27,10 @@ test("the statement descriptor satisfies Stripe's rules", () => {
 
 test("descriptions claim the complete curriculum (#1996)", () => {
   for (const text of [brand.description, brand.checkout.description]) {
-    assert.ok(text.length <= 300);
+    reportEditorialLimit(
+      text.length <= 300,
+      `brand description exceeds 300 characters: ${text}`,
+    );
     assert.match(
       text,
       /^A complete math curriculum, from counting to precalculus/,

@@ -178,7 +178,7 @@ test("real Google tag emits sanitized pages/actions and stops on learning routes
     assert.equal(tagLoads, 1);
     const count = hits.length;
     await page.evaluate(() => {
-      history.pushState({}, "", "/try/practice?learner=private");
+      history.pushState({}, "", "/practice?learner=private");
       (window as any).ga.navigate();
       (window as any).ga.event("checkout_start");
       document.dispatchEvent(new Event("visibilitychange"));

@@ -349,13 +349,14 @@ class RationalCorpus:
         require(solved is None or solved == answer, 'Independent rational result mismatch')
         self.rows[public['templateId']].append((expression_of(public), answer))
 
-    def finish(self, count):
+    def finish(self, count, expected_counts=None):
         report = {}
         for template, rows in self.rows.items():
-            require(len(rows) == count, 'Incomplete rational corpus')
+            expected = (expected_counts or {}).get(template, count)
+            require(len(rows) == expected, 'Incomplete rational corpus')
             sources = {source for source, _ in rows}
             # Exact nth-power bases bound the fractional-power space; the others draw from much larger spaces.
-            require(len(sources) >= count * (0.2 if template == 'rational-power' else 0.9), 'Insufficient rational variety')
+            require(len(sources) >= expected * (0.2 if template == 'rational-power' else 0.9), 'Insufficient rational variety')
             answers = [answer for _, answer in rows]
             require(any(a < 0 for a in answers) or template == 'rational-power', 'Missing negative results')
             require(any(a > 0 for a in answers) and all(a != 0 for a in answers), 'Missing positive or unexpected zero results')

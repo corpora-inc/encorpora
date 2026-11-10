@@ -61,7 +61,6 @@ const accounts = await createAccounts(repository.pool, {
   },
 });
 const authenticate = accountsAuth(accounts);
-// Use account-owned trials, as hosted deployments do.
 async function startAccountsServer() {
   const server = buildApp({ repository, authenticate, development: false });
   await registerAccountRoutes(server, accounts);
@@ -430,24 +429,16 @@ try {
     });
   });
 
-  let releaseBookkeeping!: () => void;
-  const bookkeeping = new Promise<void>(
-    (resolve) => (releaseBookkeeping = resolve),
-  );
-  await page.route("**/api/v1/parent-followup/complete", async (route) => {
-    await bookkeeping;
-    await route.continue();
-  });
+  // A new parent from a free-practice link answers "What brings you to AMP?"
+  // first, keeping the program.
   await page.goto(`${origin}/sign-up?return=free-practice&program=az-esa`);
   await page.getByRole("button", { name: "Continue with Google" }).click();
   await page.waitForURL(
-    /\/try\?return=free-practice&program=az-esa|\/try\?program=az-esa&return=free-practice/,
+    /\/start\?return=free-practice&program=az-esa|\/start\?program=az-esa&return=free-practice/,
   );
   await page
-    .getByRole("heading", { name: "See how AMP adapts" })
+    .getByRole("heading", { name: "What brings you to AMP?" })
     .waitFor({ timeout: 3000 });
-  releaseBookkeeping();
-  await page.unroute("**/api/v1/parent-followup/complete");
   const lead = (
     await repository.pool.query(
       "SELECT p.* FROM amp_parent_followups p JOIN amp_auth_users u ON u.id=p.user_id WHERE u.email=$1",
@@ -597,7 +588,7 @@ try {
   await page.unroute("**/api/auth/sign-in/social");
 
   // A provider can complete in another tab before this form is restored.
-  // Recovered identity B must discard trial/account state cached for A.
+  // Recovered identity B must discard account state cached for A.
   await page.goto(`${origin}/sign-up?return=free-practice`);
   await page.locator('[data-provider="google"]').waitFor();
   await page.evaluate(async () => {
@@ -607,7 +598,6 @@ try {
       accountId: "amp|previous-account",
       token: "previous-token",
     });
-    queryClient.setQueryData(["trial", "session"], { token: "previous-trial" });
     queryClient.setQueryData(["account", "amp|previous-account", "me"], {
       privateFixture: true,
     });
@@ -636,25 +626,19 @@ try {
     ),
   );
   await page
-    .getByRole("heading", { name: "See how AMP adapts" })
+    .getByRole("heading", { name: "What brings you to AMP?" })
     .waitFor({ timeout: 3000 });
   assert.equal(
     await page.evaluate(async () => {
       const queryModule = "/src/web/lib/query.ts";
       const { queryClient } = await import(queryModule);
       return (
-        JSON.stringify(
-          queryClient
-            .getQueryCache()
-            .getAll()
-            .map((q: { state: unknown }) => q.state),
-        ).includes("previous-trial") ||
         queryClient.getQueryData(["account", "amp|previous-account", "me"]) !==
-          undefined
+        undefined
       );
     }),
     false,
-    "recovery clears another account's cached trial and family data",
+    "recovery clears another account's cached family data",
   );
   await page.unroute("**/api/auth/sign-in/social");
   await page.request.post(`${origin}/api/auth/sign-out`, {
@@ -729,12 +713,12 @@ try {
   await page.setViewportSize(sizes[2]);
   await page.goto(`${origin}/sign-up`);
 
-  // A new account sees explicit success before continuing learner setup.
+  // A new account goes straight to "What brings you to AMP?".
   await page.getByRole("button", { name: "Continue with Google" }).click();
-  await page.getByRole("heading", { name: "Your account is ready" }).waitFor();
-  await page.getByRole("link", { name: "Continue setup" }).click();
-  await page.getByLabel("Learner name").waitFor();
-  assert.match(new URL(page.url()).pathname, /^\/start/);
+  await page.waitForURL(`${origin}/start`);
+  await page
+    .getByRole("heading", { name: "What brings you to AMP?" })
+    .waitFor();
   const me = await page.evaluate(async () => {
     const session = await fetch("/api/auth/get-session").then((r) => r.json());
     return session?.user?.email;
@@ -842,14 +826,17 @@ try {
   } finally {
     await safari.close();
   }
-  // First-run decisions use /me before rendering home. A returning assessment
-  // goes straight to its problem, without painting home or learner setup.
+  // First-run decisions use /me before rendering home. An account with no
+  // place yet goes straight to the starter, without painting home or any
+  // other setup step.
   const snapshot = await (await page.request.get(`${origin}/api/v1/me`)).json();
   let entry = {
     ...snapshot,
-    next: "try",
+    next: "start",
     learners: [],
     consent: { status: "none", method: null },
+    familyClass: undefined,
+    staffOf: undefined,
     family: {
       ...snapshot.family,
       learners: [],
@@ -857,15 +844,6 @@ try {
     },
   };
   await page.route("**/api/v1/me", (route) => route.fulfill({ json: entry }));
-  const trial = await (
-    await page.request.post(`${origin}/api/v1/trials`, {
-      data: { birthYear: 2012 },
-    })
-  ).json();
-  await page.evaluate(
-    (token) => localStorage.setItem("amp.trial", token),
-    trial.token,
-  );
   await page.addInitScript(() => {
     const destinations: string[] = [];
     (window as unknown as { __destinations: string[] }).__destinations =
@@ -880,14 +858,16 @@ try {
     }
   });
   await page.goto(`${origin}/`);
-  await page.waitForURL(`${origin}/try/practice`);
-  await page.locator("#problem-prompt").waitFor();
+  await page.waitForURL(`${origin}/start`);
+  await page
+    .getByRole("heading", { name: "What brings you to AMP?" })
+    .waitFor();
   const destinations = await page.evaluate(
     () => (window as unknown as { __destinations: string[] }).__destinations,
   );
   assert.ok(
-    !destinations.some((path) => path === "/try" || path.startsWith("/start")),
-    "assessment entry has no intermediate onboarding navigation",
+    destinations.every((path) => path === "/" || path === "/start"),
+    `a new account's entry has no intermediate navigation: ${destinations}`,
   );
 
   // Explicit consent and purchase handoffs must win over that default route.

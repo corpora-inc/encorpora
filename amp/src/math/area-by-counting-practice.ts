@@ -11,6 +11,7 @@ import { CARD, problemOf, type Candidate } from "./figure-choice-practice";
 import { scene } from "./scene/author";
 import type { Element, PathOp, Scene } from "./scene/spec";
 import { storyName, storyNameSet } from "./story-kit/names";
+import type { UnitSquareMarkingResponse } from "./unit-square-marking";
 
 /**
  * Area by counting unit squares (3.MD.C.6, with the gaps-and-overlaps edge
@@ -55,6 +56,30 @@ const senses = {
 };
 
 export const areaByCountingTemplates: readonly TemplateMetadata[] = [
+  {
+    id: "mark-unit-squares",
+    version: 1,
+    title: "Mark unit squares as you count",
+    skillId: SKILL,
+    gradeBand: band,
+    description:
+      "Count shaded unit squares in rectangles, joined shapes, irregular shapes and shapes with holes. Optional tap marks track the count; enter the area in square units.",
+    requiredResponseCapability: "unit-square-marking-v1",
+    ...scenes,
+    ...senses,
+  },
+  {
+    id: "mark-improvised-units",
+    version: 1,
+    title: "Mark square units as you count",
+    skillId: SKILL,
+    gradeBand: band,
+    description:
+      "Measure a surface covered by square sticky notes, tiles, cards, napkins or crackers. Optional tap marks track the count; enter the area in those units.",
+    requiredResponseCapability: "unit-square-marking-v1",
+    ...scenes,
+    ...senses,
+  },
   {
     id: "count-unit-squares",
     version: 1,
@@ -924,6 +949,7 @@ type Built = {
   answer: string;
   figure?: SemanticFigure;
   label?: string;
+  marking?: UnitSquareMarkingResponse;
   choices?: { label: string; correct?: true; feedback?: string }[];
   variant: ProblemVariant;
 };
@@ -935,7 +961,7 @@ function finish(
 ): GeneratedProblem {
   const meta = metaOf(id);
   let answer = built.answer;
-  let response: GeneratedProblem["public"]["response"] = {
+  let response: GeneratedProblem["public"]["response"] = built.marking ?? {
     kind: "number",
     label: built.label ?? "Answer",
   };
@@ -1013,9 +1039,15 @@ function contextOf(r: Random) {
 const ownerPhrase = (owner: string, noun: string) =>
   owner === "the" ? `the ${noun}` : `${owner} ${noun}`;
 
-function countUnitSquares(seed: string, r: Random): GeneratedProblem {
+function countUnitSquares(
+  seed: string,
+  r: Random,
+  marking = false,
+): GeneratedProblem {
   const variant = shapeVariant(r, true);
   const { cells, holes, kind } = drawShape(r, variant);
+  if (marking && boxOf(cells).cols > 5)
+    throw new Error("Need at most five columns for touch targets");
   const { unit, noun, owner } = contextOf(r);
   const n = cells.length;
   const counts = rowCounts(cells);
@@ -1028,7 +1060,20 @@ function countUnitSquares(seed: string, r: Random): GeneratedProblem {
       holes.length,
     ),
   };
-  return finish("count-unit-squares", seed, r, {
+  return finish(marking ? "mark-unit-squares" : "count-unit-squares", seed, r, {
+    ...(marking
+      ? {
+          marking: {
+            kind: "unit-square-marking" as const,
+            label: unit.many,
+            unit: `1 ${unit.one}`,
+            ...boxOf(cells),
+            cells: cells.map(([col, row]) => [col, row] as [number, number]),
+            tile: "square" as const,
+            showEmptyGrid: true,
+          },
+        }
+      : {}),
     prompt: `Each small square is 1 ${unit.one}. The shaded shape is ${ownerPhrase(owner, noun)}. What is the area of the ${noun}?`,
     label: unit.many,
     answer: String(n),
@@ -1118,10 +1163,16 @@ function areaStatement(seed: string, r: Random): GeneratedProblem {
   });
 }
 
-function improvisedCount(seed: string, r: Random): GeneratedProblem {
+function improvisedCount(
+  seed: string,
+  r: Random,
+  marking = false,
+): GeneratedProblem {
   const kind = pick(r, TILE_KINDS);
   const spec = pick(r, SURFACES[kind]);
   const { cells, shape } = surfaceShape(r, spec, 6, 30);
+  if (marking && boxOf(cells).cols > 5)
+    throw new Error("Need at most five columns for touch targets");
   const t = TILE[kind];
   const name = storyName((n) => r(0, n - 1));
   const n = cells.length;
@@ -1148,20 +1199,38 @@ function improvisedCount(seed: string, r: Random): GeneratedProblem {
       maxHeight: 320,
     }),
   };
-  return finish("improvised-unit-count", seed, r, {
-    prompt: `${name} covers the ${spec.name} with ${t.many}, with no gaps and no overlaps. What is the area of the ${spec.name}, in ${t.many}?`,
-    label: t.many,
-    answer: String(n),
-    figure,
-    hint: `Count the ${t.many} in the top row: ${counts[0]}. Then add each row below it, keeping a running total.`,
-    explanation: [
-      `Each ${t.one} is one unit of area. It is not a standard unit like a square foot, but it covers flat space the same way: no gaps and no overlaps.`,
-      ...rowLines(counts, t.one),
-      `${count(n, t.one)} cover the ${spec.name}, so its area is ${n} ${t.many}.`,
-      ...boxCheck(cells, spec.name, t.many),
-    ],
-    variant: { id: shape, axes: { unit: kind } },
-  });
+  return finish(
+    marking ? "mark-improvised-units" : "improvised-unit-count",
+    seed,
+    r,
+    {
+      ...(marking
+        ? {
+            marking: {
+              kind: "unit-square-marking" as const,
+              label: t.many,
+              unit: `1 ${t.one}`,
+              ...boxOf(cells),
+              cells: cells.map(([col, row]) => [col, row] as [number, number]),
+              tile: kind,
+              showEmptyGrid: false,
+            },
+          }
+        : {}),
+      prompt: `${name} covers the ${spec.name} with ${t.many}, with no gaps and no overlaps. What is the area of the ${spec.name}, in ${t.many}?`,
+      label: t.many,
+      answer: String(n),
+      figure,
+      hint: `Count the ${t.many} in the top row: ${counts[0]}. Then add each row below it, keeping a running total.`,
+      explanation: [
+        `Each ${t.one} is one unit of area. It is not a standard unit like a square foot, but it covers flat space the same way: no gaps and no overlaps.`,
+        ...rowLines(counts, t.one),
+        `${count(n, t.one)} cover the ${spec.name}, so its area is ${n} ${t.many}.`,
+        ...boxCheck(cells, spec.name, t.many),
+      ],
+      variant: { id: shape, axes: { unit: kind } },
+    },
+  );
 }
 
 type Place = "middle" | "top" | "bottom" | "left" | "right";
@@ -1428,6 +1497,8 @@ const generators: Record<
   string,
   (seed: string, r: Random) => GeneratedProblem
 > = {
+  "mark-unit-squares": (seed, r) => countUnitSquares(seed, r, true),
+  "mark-improvised-units": (seed, r) => improvisedCount(seed, r, true),
   "count-unit-squares": countUnitSquares,
   "unit-square-area-statement": areaStatement,
   "improvised-unit-count": improvisedCount,

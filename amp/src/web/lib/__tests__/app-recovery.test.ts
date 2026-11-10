@@ -69,25 +69,6 @@ test("a 401 nothing can recover says the session ended, never a generic failure"
   });
 });
 
-test("an ended free trial is left to the practice screens", async () => {
-  serve(401, "/assets/index-loaded.js", { error: "This free trial has ended" });
-  const handler = vi.fn(() => true);
-  onSignedOut(handler);
-  await expect(
-    request("/learners", z.unknown(), { trial: "device-token" }),
-  ).rejects.toMatchObject({ kind: "authentication" });
-  expect(handler).not.toHaveBeenCalled();
-});
-
-test("free practice whose parent sign-in ended goes to sign-in, keeping the trial", async () => {
-  serve(401, "/assets/index-loaded.js", { error: "Sign in to continue" });
-  const handler = vi.fn(() => true);
-  onSignedOut(handler);
-  const result = request("/learners", z.unknown(), { trial: "device-token" });
-  expect(await settled(result)).toBe(pending);
-  expect(handler).toHaveBeenCalledOnce();
-});
-
 test("a tab running an older release reloads instead of reporting the failure", async () => {
   serve(401, "/assets/index-current.js", { error: "Sign in to continue" });
   const handler = vi.fn(() => true);

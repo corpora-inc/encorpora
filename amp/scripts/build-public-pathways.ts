@@ -327,7 +327,7 @@ await writeFile(
     "Explore Math Skills | AMP Pathways",
     "Explore connected math skills from kindergarten through precalculus. Browse lessons and see how each skill builds on another.",
     "/pathways",
-    `<main class="pathways-static"><h1>Your pathways</h1><p>Explore connected math skills from kindergarten through precalculus. Each link opens a skill with its problem types and connections.</p>${listing}<p><a href="/try">Start free assessment</a></p></main>`,
+    `<main class="pathways-static"><h1>Your pathways</h1><p>Explore connected math skills from kindergarten through precalculus. Each link opens a skill with its problem types and connections.</p>${listing}<p><a href="/sign-up">Try it free</a></p></main>`,
     cardUrls.get("map")!,
   ),
 );

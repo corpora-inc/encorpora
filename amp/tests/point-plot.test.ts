@@ -1,13 +1,14 @@
+import { generateBeforeClauses as generateProblem } from "./helpers/before-clause-variants";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
   clientCanDraw,
+  figureCapabilities,
   generatedProblemSchema,
   publicProblemSchema,
   responseCapabilities,
 } from "../src/math/contracts";
 import { gradeAnswer, isValidResponse, templates } from "../src/math/engine";
-import { generateProblem } from "./fixtures/pre-clause-problem";
 import {
   canonicalPointSet,
   clipLineToGrid,
@@ -581,22 +582,13 @@ test("a grading rule must accept the stored answer and appear only on point plot
 });
 
 test("clients without point-plot-v1 are never served these families, online or offline", () => {
-  const plotTemplates = templates.filter((t) =>
-    families.includes(t.id as (typeof families)[number]),
+  const plotTemplates = templates.filter(
+    (t) =>
+      t.requiredResponseCapability === "point-plot-v1" ||
+      t.requiredResponseCapabilities?.includes("point-plot-v1"),
   );
-  assert.equal(plotTemplates.length, families.length);
-  assert.deepEqual(
-    [...responseCapabilities],
-    [
-      "single-choice-v1",
-      "multi-select-v1",
-      "point-plot-v1",
-      "multi-part-choice-v1",
-      "figure-choice-v1",
-      "structured-work-v1",
-      "multi-part-cards-v1",
-    ],
-  );
+  assert.ok(plotTemplates.length > 0);
+  assert.ok(responseCapabilities.includes("point-plot-v1"));
   for (const client of [
     { responseCapabilities: [], figureCapabilities: [] },
     { responseCapabilities: ["single-choice-v1"], figureCapabilities: [] },
@@ -628,8 +620,8 @@ test("clients without point-plot-v1 are never served these families, online or o
   for (const t of plotTemplates)
     assert.equal(
       clientCanDraw(t, {
-        responseCapabilities: ["point-plot-v1"],
-        figureCapabilities: [],
+        responseCapabilities,
+        figureCapabilities,
       }),
       true,
     );
@@ -761,7 +753,10 @@ test("a contextual line is graphed on labeled scaled axes", () => {
     if (problem.variant?.id !== "scaled-context") continue;
     models++;
     const response = problem.public.response;
-    if (response.kind !== "point-plot" || problem.pointGrading?.mode !== "on-line")
+    if (
+      response.kind !== "point-plot" ||
+      problem.pointGrading?.mode !== "on-line"
+    )
       throw new Error("point plot");
     const grid = response.grid;
     assert.ok(grid.step === 1 || grid.step === 2);
@@ -775,7 +770,10 @@ test("a contextual line is graphed on labeled scaled axes", () => {
     assert.ok(intercept);
     const up: LatticePoint = [0, intercept![1] + grid.step];
     if (onGrid(grid, up) && !on.some((p) => p[0] === up[0] && p[1] === up[1]))
-      assert.equal(gradeAnswer(problem, serializePlot([up, on[1]!], false)), false);
+      assert.equal(
+        gradeAnswer(problem, serializePlot([up, on[1]!], false)),
+        false,
+      );
   }
   assert.ok(models > 20);
 });

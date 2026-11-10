@@ -3,7 +3,6 @@ import { z } from "zod";
 import type { AuthSession } from "../../auth";
 import { useLearnerStore } from "../../learner-store";
 import { request } from "../../lib/api";
-import { AppError } from "../../lib/AppError";
 import { queryClient, refreshMe } from "../../lib/query";
 import { rememberPlace } from "./place-memory";
 
@@ -56,23 +55,20 @@ export function useStartPlace(session: AuthSession) {
   });
 }
 
-/** The demo a teacher or a school explores before any agreement or payment
- * (`POST /school/demo`). Read leniently: a `home` path, or the org and class
- * it opens on. */
-const demoResult = z
-  .object({
-    home: z.string().min(1).optional(),
-    orgId: z.string().optional(),
-    classId: z.string().optional(),
-  })
-  .passthrough();
-export function demoHome(result: z.infer<typeof demoResult>) {
-  const home = result.home?.replace(/^\/+/, "");
-  if (home) return home;
-  if (result.orgId && result.classId)
-    return `school/${result.orgId}/classes/${result.classId}/today`;
-  if (result.orgId) return `school/${result.orgId}`;
-  return null;
+/** The demo a teacher or a school explores before any agreement or payment:
+ * what `POST /school/demo` answers (src/schools/demo/routes.ts). */
+const demoResult = z.object({
+  demo: z.object({
+    kind: z.enum(["class", "school"]),
+    orgId: z.string().min(1),
+    path: z.string().min(1),
+  }),
+});
+/** Where a demo opens: a class on its Today, a school on its overview. */
+export function demoHome({ demo }: z.infer<typeof demoResult>) {
+  return demo.kind === "school"
+    ? `school/${demo.orgId}`
+    : demo.path.replace(/^\/+/, "");
 }
 /** Starts the class or school demo, remembers it as the place `/` opens, and
  * says where it opens. */
@@ -81,20 +77,12 @@ export function useStartDemo(session: AuthSession) {
     mutationFn: async (kind: "class" | "school") => {
       const result = await request("/school/demo", demoResult, {
         token: session.token,
-        body: { kind },
+        // The device's own zone, so the demo's today is the viewer's.
+        body: { kind, timezone: deviceTimeZone() },
       });
-      const home = demoHome(result);
-      if (!home)
-        throw new AppError(
-          "contract",
-          "The demo didn’t open. Try again in a moment.",
-          true,
-        );
-      const org =
-        result.orgId ?? /^school\/([0-9a-f-]{36})(\/|$)/i.exec(home)?.[1];
-      if (org) rememberPlace(session.accountId, `school:${org.toLowerCase()}`);
+      rememberPlace(session.accountId, `school:${result.demo.orgId}`);
       await refreshMe(session);
-      return home;
+      return demoHome(result);
     },
   });
 }

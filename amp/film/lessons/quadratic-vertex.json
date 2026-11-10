@@ -1,0 +1,1230 @@
+{
+  "id": "quadratic-vertex",
+  "title": "Quadratic minimum",
+  "seed": "film",
+  "shots": [
+    {
+      "figure": {
+        "stretch": true,
+        "view": [
+          0,
+          -5,
+          6.2,
+          38
+        ],
+        "points": {
+          "P": {
+            "on": "f",
+            "x": 5
+          },
+          "Q": {
+            "on": "kline",
+            "x": 5
+          },
+          "EQ": [
+            2.5,
+            33
+          ],
+          "RX": [
+            5.05,
+            6
+          ],
+          "RY": [
+            5.05,
+            3
+          ],
+          "VL": [
+            3.75,
+            13
+          ],
+          "H1": [
+            1.2,
+            9
+          ],
+          "H2": [
+            5.2,
+            9
+          ],
+          "X1": [
+            3,
+            0
+          ],
+          "X2": [
+            3,
+            9
+          ]
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 1,
+            "ystep": 5,
+            "yevery": 10,
+            "start": true
+          },
+          {
+            "id": "f",
+            "plot": "5(x-3)^2+9",
+            "ink": "accent",
+            "w": 7
+          },
+          {
+            "id": "kline",
+            "plot": "9",
+            "ink": "gold",
+            "w": 4
+          },
+          {
+            "id": "floor",
+            "seg": [
+              "H1",
+              "H2"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "dash": true
+          },
+          {
+            "id": "hx",
+            "seg": [
+              "X1",
+              "X2"
+            ],
+            "ink": "blue",
+            "w": 5,
+            "dash": true
+          },
+          {
+            "id": "gap",
+            "seg": [
+              "Q",
+              "P"
+            ],
+            "ink": "warm",
+            "w": 8
+          },
+          {
+            "id": "dP",
+            "dot": "P",
+            "ink": "gold",
+            "r": 14
+          },
+          {
+            "id": "lEq",
+            "label": "f(x)=\\ca{5}\\cw{(x-\\cb{3})^{2}}+\\cg{9}",
+            "at": "EQ",
+            "dir": "c",
+            "ink": "accent",
+            "size": "m",
+            "pin": true
+          },
+          {
+            "id": "lx",
+            "label": "x=@x",
+            "at": "RX",
+            "of": "P",
+            "dir": "c",
+            "ink": "blue",
+            "size": "s",
+            "pin": true
+          },
+          {
+            "id": "ly",
+            "label": "y=@y",
+            "at": "RY",
+            "of": "P",
+            "dir": "c",
+            "ink": "gold",
+            "size": "s",
+            "pin": true
+          },
+          {
+            "id": "lV",
+            "label": "(\\cb{3},\\cg{9})",
+            "at": "VL",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "For real x, what is the minimum value of f of x, five times the quantity x minus three, squared, plus nine?",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "problem",
+              "text": "For real $x$, what is the minimum value of $f(x)=5(x-3)^{2}+9$?",
+              "at": "For",
+              "id": "qProb"
+            },
+            {
+              "do": "draw",
+              "target": "f",
+              "at": "For"
+            },
+            {
+              "do": "show",
+              "target": "lEq",
+              "at": "For"
+            },
+            {
+              "do": "write",
+              "tex": "f(x)=\\ca{5}\\cw{(x-\\cb{3})^{2}}+\\cg{9}",
+              "fresh": true,
+              "at": "squared",
+              "id": "qFn"
+            },
+            {
+              "do": "highlight",
+              "target": "f",
+              "at": "squared"
+            }
+          ]
+        },
+        {
+          "say": "Real means any number on the number line. The square is zero or more, and zero only when x is three.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "ax",
+              "at": "number"
+            },
+            {
+              "do": "write",
+              "tex": "\\cw{(x-\\cb{3})^{2}}\\ge 0",
+              "fresh": true,
+              "at": "square",
+              "id": "qSq"
+            },
+            {
+              "do": "write",
+              "tex": "\\cw{(x-\\cb{3})^{2}}=0\\ \\text{at}\\ x=\\cb{3}",
+              "at": "only",
+              "id": "qZero"
+            },
+            {
+              "do": "show",
+              "target": "hx",
+              "at": "three"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "f",
+                "hx"
+              ],
+              "at": "zero"
+            }
+          ]
+        },
+        {
+          "say": "At five, five minus three is two. Five times two squared, plus nine, equals twenty-nine.",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "dP",
+                "lx",
+                "ly"
+              ],
+              "at": "five"
+            },
+            {
+              "do": "write",
+              "tex": "f(\\cb{5})=\\ca{5}\\cw{(5-\\cb{3})^{2}}+\\cg{9}",
+              "fresh": true,
+              "at": "five",
+              "id": "q5a"
+            },
+            {
+              "do": "show",
+              "target": [
+                "gap",
+                "floor"
+              ],
+              "at": "squared"
+            },
+            {
+              "do": "highlight",
+              "target": "gap",
+              "at": "squared"
+            },
+            {
+              "do": "write",
+              "tex": "=\\ca{5}\\cw{(2)^{2}}+\\cg{9}=29",
+              "at": "times",
+              "id": "q5b"
+            }
+          ]
+        },
+        {
+          "say": "Move to three and make the square zero. Three minus three is zero, so five times zero squared, plus nine, equals nine.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "glide",
+              "point": "P",
+              "x": 3,
+              "at": "Move"
+            },
+            {
+              "do": "glide",
+              "point": "Q",
+              "x": 3,
+              "at": "Move"
+            },
+            {
+              "do": "text",
+              "text": "Make the square zero.",
+              "at": "make",
+              "id": "qPhrase"
+            },
+            {
+              "do": "highlight",
+              "target": "gap",
+              "at": "square"
+            },
+            {
+              "do": "show",
+              "target": "lV",
+              "at": "zero"
+            },
+            {
+              "do": "write",
+              "tex": "f(\\cb{3})=\\ca{5}\\cw{(3-\\cb{3})^{2}}+\\cg{9}",
+              "fresh": true,
+              "at": "Three",
+              "nth": 2,
+              "id": "qAt"
+            },
+            {
+              "do": "write",
+              "tex": "=\\ca{5}\\cw{(0)^{2}}+\\cg{9}=\\cg{9}",
+              "at": "so",
+              "id": "qAt2"
+            }
+          ]
+        },
+        {
+          "say": "At one, five times negative two squared, plus nine, is twenty-nine again.",
+          "pause": 0.25,
+          "do": [
+            {
+              "do": "glide",
+              "point": "P",
+              "x": 1,
+              "at": "At"
+            },
+            {
+              "do": "glide",
+              "point": "Q",
+              "x": 1,
+              "at": "At"
+            },
+            {
+              "do": "highlight",
+              "target": "gap",
+              "at": "squared"
+            },
+            {
+              "do": "write",
+              "tex": "f(1)=\\ca{5}\\cw{(-2)^{2}}+\\cg{9}=29",
+              "fresh": true,
+              "at": "squared",
+              "id": "q1b"
+            }
+          ]
+        },
+        {
+          "say": "Back at three. That low point is the vertex, and nine is the lowest output.",
+          "pause": 0.25,
+          "do": [
+            {
+              "do": "glide",
+              "point": "P",
+              "x": 3,
+              "at": "Back"
+            },
+            {
+              "do": "glide",
+              "point": "Q",
+              "x": 3,
+              "at": "Back"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "lV",
+                "floor"
+              ],
+              "at": "vertex"
+            },
+            {
+              "do": "write",
+              "tex": "f(x)\\ge\\cg{9}",
+              "fresh": true,
+              "at": "lowest",
+              "id": "qGe"
+            }
+          ]
+        },
+        {
+          "say": "a is five, and it is positive. h is three, and k is nine. The minimum value is nine.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "a=\\ca{5},\\ h=\\cb{3},\\ k=\\cg{9}",
+              "fresh": true,
+              "at": "a",
+              "id": "qAhk"
+            },
+            {
+              "do": "term",
+              "word": "minimum value",
+              "meaning": "The smallest output the function can reach.",
+              "at": "minimum"
+            },
+            {
+              "do": "answer",
+              "tex": "\\cg{9}",
+              "at": "nine",
+              "nth": 2,
+              "id": "qAns"
+            }
+          ]
+        },
+        {
+          "say": "Three is the input where it happens, not the minimum.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "watch",
+              "text": "The minimum is the output, not the input where it happens.",
+              "at": "Three",
+              "id": "qWatch"
+            },
+            {
+              "do": "highlight",
+              "target": "hx",
+              "at": "input"
+            },
+            {
+              "do": "highlight",
+              "target": "floor",
+              "at": "minimum"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "stretch": true,
+        "view": [
+          0.5,
+          -18,
+          7.5,
+          12
+        ],
+        "points": {
+          "P": {
+            "on": "f",
+            "x": 6
+          },
+          "Q": {
+            "on": "kline",
+            "x": 6
+          },
+          "EQ": [
+            3.6,
+            10.3
+          ],
+          "RX": [
+            6.55,
+            11
+          ],
+          "RY": [
+            6.55,
+            8.3
+          ],
+          "VL": [
+            4.75,
+            8.5
+          ],
+          "H1": [
+            1.6,
+            7
+          ],
+          "H2": [
+            6.4,
+            7
+          ],
+          "X1": [
+            4,
+            -4
+          ],
+          "X2": [
+            4,
+            7
+          ]
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 1,
+            "ystep": 5,
+            "yevery": 5,
+            "start": true
+          },
+          {
+            "id": "f",
+            "plot": "-2(x-4)^2+7",
+            "ink": "violet",
+            "w": 7
+          },
+          {
+            "id": "kline",
+            "plot": "7",
+            "ink": "gold",
+            "w": 4
+          },
+          {
+            "id": "floor",
+            "seg": [
+              "H1",
+              "H2"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "dash": true
+          },
+          {
+            "id": "hx",
+            "seg": [
+              "X1",
+              "X2"
+            ],
+            "ink": "blue",
+            "w": 5,
+            "dash": true
+          },
+          {
+            "id": "gap",
+            "seg": [
+              "Q",
+              "P"
+            ],
+            "ink": "warm",
+            "w": 8
+          },
+          {
+            "id": "dP",
+            "dot": "P",
+            "ink": "violet",
+            "r": 14
+          },
+          {
+            "id": "lEq",
+            "label": "f(x)=\\cv{-2}\\cw{(x-\\cb{4})^{2}}+\\cg{7}",
+            "at": "EQ",
+            "dir": "c",
+            "ink": "violet",
+            "size": "m",
+            "pin": true
+          },
+          {
+            "id": "lx",
+            "label": "x=@x",
+            "at": "RX",
+            "of": "P",
+            "dir": "c",
+            "ink": "blue",
+            "size": "s",
+            "pin": true
+          },
+          {
+            "id": "ly",
+            "label": "y=@y",
+            "at": "RY",
+            "of": "P",
+            "dir": "c",
+            "ink": "gold",
+            "size": "s",
+            "pin": true
+          },
+          {
+            "id": "lV",
+            "label": "(\\cb{4},\\cg{7})",
+            "at": "VL",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "A negative a turns the graph over. f of x equals negative two times the quantity x minus four, squared, plus seven.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "For real $x$, what is the minimum value of $f(x)=-2(x-4)^{2}+7$?",
+              "at": "A",
+              "id": "nProb"
+            },
+            {
+              "do": "draw",
+              "target": "f",
+              "at": "A"
+            },
+            {
+              "do": "show",
+              "target": "lEq",
+              "at": "A"
+            },
+            {
+              "do": "write",
+              "tex": "f(x)=\\cv{-2}\\cw{(x-\\cb{4})^{2}}+\\cg{7}",
+              "fresh": true,
+              "at": "two",
+              "id": "nFn"
+            },
+            {
+              "do": "highlight",
+              "target": "f",
+              "at": "squared"
+            }
+          ]
+        },
+        {
+          "say": "At six, six minus four is two. Negative two times two squared, plus seven, equals negative one.",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "dP",
+                "lx",
+                "ly",
+                "gap"
+              ],
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": "floor",
+              "at": "seven"
+            },
+            {
+              "do": "highlight",
+              "target": "gap",
+              "at": "squared"
+            },
+            {
+              "do": "write",
+              "tex": "f(6)=\\cv{-2}\\cw{(6-\\cb{4})^{2}}+\\cg{7}",
+              "fresh": true,
+              "at": "minus",
+              "id": "n6a"
+            },
+            {
+              "do": "write",
+              "tex": "=\\cv{-2}\\cw{(2)^{2}}+\\cg{7}=-1",
+              "at": "times",
+              "id": "n6b"
+            }
+          ]
+        },
+        {
+          "say": "Move to four. Four minus four is zero, so negative two times zero squared, plus seven, equals seven.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "glide",
+              "point": "P",
+              "x": 4,
+              "at": "Move"
+            },
+            {
+              "do": "glide",
+              "point": "Q",
+              "x": 4,
+              "at": "Move"
+            },
+            {
+              "do": "show",
+              "target": [
+                "hx",
+                "lV"
+              ],
+              "at": "zero"
+            },
+            {
+              "do": "highlight",
+              "target": "gap",
+              "at": "zero"
+            },
+            {
+              "do": "write",
+              "tex": "f(\\cb{4})=\\cv{-2}\\cw{(4-\\cb{4})^{2}}+\\cg{7}",
+              "fresh": true,
+              "at": "Four",
+              "id": "n4a"
+            },
+            {
+              "do": "write",
+              "tex": "=\\cv{-2}\\cw{(0)^{2}}+\\cg{7}=\\cg{7}",
+              "at": "so",
+              "id": "n4b"
+            }
+          ]
+        },
+        {
+          "say": "That highest output is a maximum. a is negative two, h is four, and k is seven.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "lV",
+              "at": "highest"
+            },
+            {
+              "do": "write",
+              "tex": "a=\\cv{-2},\\ h=\\cb{4},\\ k=\\cg{7}",
+              "fresh": true,
+              "at": "negative",
+              "id": "nAhk"
+            }
+          ]
+        },
+        {
+          "say": "Farther from four, at fourteen. Fourteen minus four is ten. Negative two times ten squared, plus seven, equals negative one hundred ninety-three.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "view",
+              "to": [
+                -2,
+                -250,
+                22,
+                180
+              ],
+              "at": "Farther"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "lV",
+                "floor",
+                "hx"
+              ],
+              "at": "Farther"
+            },
+            {
+              "do": "glide",
+              "point": "P",
+              "x": 14,
+              "at": "fourteen"
+            },
+            {
+              "do": "glide",
+              "point": "Q",
+              "x": 14,
+              "at": "fourteen"
+            },
+            {
+              "do": "write",
+              "tex": "14-\\cb{4}=10",
+              "fresh": true,
+              "at": "Fourteen",
+              "nth": 2,
+              "id": "n14a"
+            },
+            {
+              "do": "write",
+              "tex": "=\\cv{-2}\\cw{(10)^{2}}+\\cg{7}",
+              "at": "times",
+              "id": "n14b"
+            },
+            {
+              "do": "write",
+              "tex": "=-193",
+              "at": "equals",
+              "id": "n14c"
+            }
+          ]
+        },
+        {
+          "say": "The arms keep falling off the window. A negative a makes k a maximum, so there is no minimum.",
+          "pause": 0.45,
+          "do": [
+            {
+              "do": "glide",
+              "point": "P",
+              "x": 16,
+              "at": "falling"
+            },
+            {
+              "do": "glide",
+              "point": "Q",
+              "x": 16,
+              "at": "falling"
+            },
+            {
+              "do": "highlight",
+              "target": "f",
+              "at": "falling"
+            },
+            {
+              "do": "watch",
+              "text": "When $a$ is negative, $k$ is a maximum. There is no minimum.",
+              "at": "negative",
+              "id": "nWatch"
+            },
+            {
+              "do": "answer",
+              "tex": "\\text{no minimum}",
+              "at": "no",
+              "id": "nAns"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "stretch": true,
+        "view": [
+          -0.4,
+          -2.5,
+          6.6,
+          16.5
+        ],
+        "points": {
+          "P": {
+            "on": "f",
+            "x": 5
+          },
+          "Q": {
+            "on": "kline",
+            "x": 5
+          },
+          "EQ": [
+            3.1,
+            14.6
+          ],
+          "RX": [
+            0.9,
+            11.6
+          ],
+          "RY": [
+            0.9,
+            8.6
+          ],
+          "VL": [
+            3.85,
+            4.2
+          ],
+          "H1": [
+            1.2,
+            2
+          ],
+          "H2": [
+            4.8,
+            2
+          ],
+          "X1": [
+            3,
+            -1
+          ],
+          "X2": [
+            3,
+            2
+          ]
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 1,
+            "ystep": 2,
+            "yevery": 2,
+            "start": true
+          },
+          {
+            "id": "f",
+            "plot": "x^2-6x+11",
+            "ink": "accent",
+            "w": 7
+          },
+          {
+            "id": "kline",
+            "plot": "2",
+            "ink": "gold",
+            "w": 4
+          },
+          {
+            "id": "floor",
+            "seg": [
+              "H1",
+              "H2"
+            ],
+            "ink": "gold",
+            "w": 5,
+            "dash": true
+          },
+          {
+            "id": "hx",
+            "seg": [
+              "X1",
+              "X2"
+            ],
+            "ink": "blue",
+            "w": 5,
+            "dash": true
+          },
+          {
+            "id": "gap",
+            "seg": [
+              "Q",
+              "P"
+            ],
+            "ink": "warm",
+            "w": 8
+          },
+          {
+            "id": "dP",
+            "dot": "P",
+            "ink": "gold",
+            "r": 14
+          },
+          {
+            "id": "lEq",
+            "label": "f(x)=x^{2}-6x+11",
+            "at": "EQ",
+            "dir": "c",
+            "ink": "accent",
+            "size": "m",
+            "pin": true
+          },
+          {
+            "id": "lForm",
+            "label": "f(x)=\\cw{(x-\\cb{3})^{2}}+\\cg{2}",
+            "at": "EQ",
+            "dir": "c",
+            "ink": "accent",
+            "size": "m",
+            "pin": true
+          },
+          {
+            "id": "lx",
+            "label": "x=@x",
+            "at": "RX",
+            "of": "P",
+            "dir": "c",
+            "ink": "blue",
+            "size": "s",
+            "pin": true
+          },
+          {
+            "id": "ly",
+            "label": "y=@y",
+            "at": "RY",
+            "of": "P",
+            "dir": "c",
+            "ink": "gold",
+            "size": "s",
+            "pin": true
+          },
+          {
+            "id": "lV",
+            "label": "(\\cb{3},\\cg{2})",
+            "at": "VL",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "This function hides the square. f of x equals x squared, minus six x, plus eleven.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "For real $x$, what is the minimum value of $f(x)=x^{2}-6x+11$?",
+              "at": "This",
+              "id": "sProb"
+            },
+            {
+              "do": "draw",
+              "target": "f",
+              "at": "This"
+            },
+            {
+              "do": "show",
+              "target": "lEq",
+              "at": "This"
+            },
+            {
+              "do": "write",
+              "tex": "f(x)=x^{2}-6x+11",
+              "fresh": true,
+              "at": "squared",
+              "id": "sFn"
+            }
+          ]
+        },
+        {
+          "say": "At five, twenty-five minus thirty plus eleven equals six.",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "dP",
+                "lx",
+                "ly"
+              ],
+              "at": "five"
+            },
+            {
+              "do": "write",
+              "tex": "25-30+11",
+              "fresh": true,
+              "at": "twenty-five",
+              "id": "s5b"
+            },
+            {
+              "do": "write",
+              "tex": "=6",
+              "at": "equals",
+              "id": "s5c"
+            }
+          ]
+        },
+        {
+          "say": "Complete the square. Half of negative six is negative three, and that squared is nine.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "-6\\div 2=\\cb{-3}",
+              "fresh": true,
+              "at": "Half",
+              "id": "sHalf"
+            },
+            {
+              "do": "write",
+              "tex": "(\\cb{-3})^{2}=9",
+              "at": "squared",
+              "id": "sNine"
+            }
+          ]
+        },
+        {
+          "say": "Add nine and subtract nine. The value stays the same.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "x^{2}-6x+\\cw{9}+11-\\cw{9}",
+              "fresh": true,
+              "at": "Add",
+              "id": "sAdd"
+            }
+          ]
+        },
+        {
+          "say": "x squared minus six x plus nine is the quantity x minus three, squared. Eleven minus nine is two.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cw{(x-\\cb{3})^{2}}+\\cg{2}",
+              "at": "quantity",
+              "id": "sVtx"
+            },
+            {
+              "do": "hide",
+              "target": "lEq",
+              "at": "quantity"
+            },
+            {
+              "do": "show",
+              "target": "lForm",
+              "at": "squared"
+            },
+            {
+              "do": "show",
+              "target": [
+                "floor",
+                "hx",
+                "gap"
+              ],
+              "at": "two"
+            },
+            {
+              "do": "highlight",
+              "target": "gap",
+              "at": "squared"
+            }
+          ]
+        },
+        {
+          "say": "The square is zero when x is three. f of three equals zero squared plus two, which is two.",
+          "pause": 0.35,
+          "do": [
+            {
+              "do": "glide",
+              "point": "P",
+              "x": 3,
+              "at": "zero"
+            },
+            {
+              "do": "glide",
+              "point": "Q",
+              "x": 3,
+              "at": "zero"
+            },
+            {
+              "do": "show",
+              "target": "lV",
+              "at": "three"
+            },
+            {
+              "do": "highlight",
+              "target": "gap",
+              "at": "zero"
+            },
+            {
+              "do": "write",
+              "tex": "f(\\cb{3})=\\cw{(3-\\cb{3})^{2}}+\\cg{2}",
+              "fresh": true,
+              "at": "f",
+              "id": "sAt"
+            },
+            {
+              "do": "write",
+              "tex": "=\\cw{0^{2}}+\\cg{2}=\\cg{2}",
+              "at": "which",
+              "id": "sAt2"
+            }
+          ]
+        },
+        {
+          "say": "Three squared, minus six times three, plus eleven. Nine minus eighteen plus eleven equals two.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "3^{2}-6\\cdot 3+11",
+              "fresh": true,
+              "at": "Three",
+              "id": "sChk"
+            },
+            {
+              "do": "write",
+              "tex": "=9-18+11=\\cg{2}",
+              "at": "Nine",
+              "id": "sChk2"
+            }
+          ]
+        },
+        {
+          "say": "a is one, and it is positive. h is three, k is two, and the minimum value is two.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "write",
+              "tex": "a=\\ca{1},\\ h=\\cb{3},\\ k=\\cg{2}",
+              "fresh": true,
+              "at": "a",
+              "id": "sAhk"
+            },
+            {
+              "do": "answer",
+              "tex": "\\cg{2}",
+              "at": "minimum",
+              "id": "sAns"
+            },
+            {
+              "do": "watch",
+              "text": "The minimum is $k$, the output. The input and the original constant are not the minimum.",
+              "at": "two",
+              "nth": 2,
+              "id": "sWatch"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Same three moves.",
+          "do": [
+            {
+              "do": "overview",
+              "of": "qFn",
+              "at": "Same"
+            }
+          ]
+        },
+        {
+          "say": "One. Get the square in sight. Complete the square when it is hidden.",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Get the square in sight: $a(x-h)^2+k$. Complete the square when it is hidden.",
+              "marks": [
+                "qFn",
+                "qSq"
+              ],
+              "at": "One"
+            }
+          ]
+        },
+        {
+          "say": "Two. Make the square zero. The output there is k.",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Make the square zero. The output there is $k$.",
+              "marks": [
+                "qPhrase",
+                "qZero",
+                "qAt",
+                "qAt2",
+                "qGe"
+              ],
+              "at": "Two"
+            }
+          ]
+        },
+        {
+          "say": "Three. A positive a makes k the minimum. A negative a means there is no minimum.",
+          "pause": 0.7,
+          "do": [
+            {
+              "do": "recap",
+              "text": "A positive $a$ makes $k$ the minimum. A negative $a$ means there is no minimum.",
+              "marks": [
+                "qAhk",
+                "qAns",
+                "qWatch"
+              ],
+              "at": "Three"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

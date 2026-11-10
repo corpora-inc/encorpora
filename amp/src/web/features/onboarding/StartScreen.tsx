@@ -73,7 +73,7 @@ function SignedInStart({ session }: { session: AuthSession }) {
             if (isFundedReturn(search.return)) {
               forgetFundedPurchase(session.accountId);
               void navigate({
-                to: "/try/plans",
+                to: "/",
                 search: {
                   ...search,
                   return: undefined,

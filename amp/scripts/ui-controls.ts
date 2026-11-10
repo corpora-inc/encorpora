@@ -28,16 +28,19 @@ export async function leaveSettings(page: Page) {
 export async function chooseLearner(page: Page, id: string) {
   const drawer = await openMenu(page);
   const only = drawer.locator('[aria-label="Where you are"] [data-learner]');
+  const folded = drawer.getByRole("button", { name: /^Current learner/ });
+  const listbox = drawer.getByRole("listbox", { name: "Current learner" });
+  // The drawer can open while account data loads. Wait for its learner
+  // control before deciding whether it shows one learner or a selector.
+  await only.or(folded).or(listbox).first().waitFor({ state: "visible" });
   if (await only.count()) {
     assert.equal(await only.getAttribute("data-learner"), id);
     await page.keyboard.press("Escape");
     await drawer.waitFor({ state: "detached" });
     return;
   }
-  const folded = drawer.getByRole("button", { name: /^Current learner/ });
   if (await folded.count()) await folded.click();
-  await drawer
-    .getByRole("listbox", { name: "Current learner" })
+  await listbox
     .locator(`[role="option"][data-value=${JSON.stringify(id)}]`)
     .click();
   // Choosing navigates and closes the drawer; a choice already current

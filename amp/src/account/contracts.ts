@@ -145,9 +145,6 @@ export const meSchema = z.discriminatedUnion("signedIn", [
         }),
       )
       .optional(),
-    /** A free assessment in progress: the family side has something to open
-     * even before there's a learner. */
-    trial: z.literal(true).optional(),
     /** The adult's own practice, with a free allowance and access supplied by
      * their children or school. It is separate from the family's children. */
     adultPractice: z
@@ -166,9 +163,8 @@ export const meSchema = z.discriminatedUnion("signedIn", [
     /** `start`: the account has no place yet, so it answers "What brings you
      * to AMP?". `practice`: it has one, and `/` opens it. `add-learner`: a
      * paid purchase no learner holds yet. `accept-gift`: an invitation's
-     * access to accept. `try`: a free assessment from before the starter,
-     * until it moves into the family. */
-    next: z.enum(["start", "try", "add-learner", "practice", "accept-gift"]),
+     * access to accept. */
+    next: z.enum(["start", "add-learner", "practice", "accept-gift"]),
   }),
 ]);
 export type Me = z.infer<typeof meSchema>;

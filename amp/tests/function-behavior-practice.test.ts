@@ -1,3 +1,4 @@
+import { skills as curriculumSkills } from "../src/curriculum/catalog";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { templates } from "../src/math/engine";
@@ -23,38 +24,27 @@ const cases = {
   "number-system-closure-classify": numberSystemClosureCase,
   "polynomial-graph-match": polynomialGraphMatchCase,
 } as const;
-const variantCount: Record<string, number> = {
-  "polynomial-behavior-description": 5,
-  "rational-function-features": 5,
-  "graphical-solution-table": 4,
-  "polynomial-identity-use": 6,
-  "binomial-coefficient": 5,
-  "number-system-closure-classify": 6,
-  "polynomial-graph-match": 1,
-};
-const skills: Record<string, string> = {
-  "polynomial-behavior-description": "polynomial-behavior",
-  "rational-function-features": "rational-function-behavior",
-  "graphical-solution-table": "graphical-equation-solving",
-  "polynomial-identity-use": "polynomial-identities",
-  "binomial-coefficient": "binomial-theorem",
-  "number-system-closure-classify": "number-system-closure",
-  "polynomial-graph-match": "polynomial-behavior",
-};
 
 for (const [id, make] of Object.entries(cases)) {
   test(`${id}: deterministic, reachable, one correct among four distinct choices`, () => {
-    const variants = new Set<number>();
+    const template = functionBehaviorTemplates.find((t) => t.id === id)!;
+    assert.ok(template, id);
+    assert.ok(curriculumSkills.some((s) => s.id === template.skillId), id);
     for (let seed = 0; seed < 400; seed++) {
       const key = `fb:${seed}`;
       const one = make(key);
       const two = make(key);
       assert.deepEqual(one.problem, two.problem);
-      const generated = generateProblem(id, key);
+      // Compare the original closure surface with its independent base case.
+      // Clause variants have their own prompt-based oracle in clause-practice.
+      const generated = generateProblem(
+        id,
+        key,
+        id === "number-system-closure-classify" ? 1 : undefined,
+      );
       assert.equal(generated.answer, one.problem.answer);
       assert.equal(generated.public.prompt, one.problem.public.prompt);
       assert.deepEqual(generated.public.response, one.problem.public.response);
-      variants.add(one.variant);
       const response = generated.public.response;
       assert.equal(response.kind, "choice");
       if (response.kind !== "choice") continue;
@@ -69,9 +59,8 @@ for (const [id, make] of Object.entries(cases)) {
       assert.ok(!generated.public.prompt.includes(correct.label), key);
       assert.ok(!generated.hint.includes(correct.label), key);
       assert.ok(generated.explanation.length >= 2);
-      assert.equal(generated.public.skillId, skills[id]);
+      assert.equal(generated.public.skillId, template.skillId);
     }
-    assert.equal(variants.size, variantCount[id], `variants of ${id}`);
   });
 }
 

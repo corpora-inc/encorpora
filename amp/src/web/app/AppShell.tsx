@@ -1,4 +1,4 @@
-import { skipToken, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { Link, useRouterState } from "@tanstack/react-router";
 import {
   Component,
@@ -66,19 +66,13 @@ export function AppShell({ children }: { children: ReactNode }) {
     select: (state) => {
       const leaf = state.matches.at(-1);
       if (!leaf || leaf.status !== "success") return null;
-      const trial =
-        (leaf.search as { context?: unknown }).context === "trial" ||
-        leaf.pathname === "/try" ||
-        leaf.pathname.startsWith("/try/");
-      return `${trial ? "trial" : "app"} ${leaf.pathname}`;
+      return leaf.pathname;
     },
   });
   const last = useRef<string | null>(null);
   if (settled !== null) last.current = settled;
   const shown = settled ?? last.current;
-  const space = shown?.indexOf(" ") ?? -1;
-  const pathname = shown ? shown.slice(space + 1) : "";
-  const explicitTrial = shown?.startsWith("trial ") ?? false;
+  const pathname = shown ?? "";
   const frame =
     !nativeRuntime && session.data && shown ? shellFrame(pathname) : null;
   const setDrawerOpen = useShellSlots((state) => state.setDrawerOpen);
@@ -89,7 +83,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (frame) void preloadScreens();
   }, [!!frame]);
-  const context = useProgressContext(!!frame, explicitTrial);
+  const context = useProgressContext(!!frame);
   return (
     <div
       className={frame ? styles.frame : styles.bare}
@@ -130,7 +124,7 @@ export function AppShell({ children }: { children: ReactNode }) {
 
 /** Whose progress the Progress group shows, from what is already known: the
  * account and the chosen learner. */
-function useProgressContext(active: boolean, explicitTrial: boolean) {
+function useProgressContext(active: boolean) {
   const session = useQuery(sessionOptions);
   const me = useQuery({
     ...meOptions(session.data ?? { accountId: "", token: "" }),
@@ -142,13 +136,7 @@ function useProgressContext(active: boolean, explicitTrial: boolean) {
       ? me.data
       : null;
   const own = practicingAsAdult(account, learnerId);
-  const kind: ProgressContext =
-    explicitTrial ||
-    (!!account && !account.learners.length && !own && !!account.trial)
-      ? "trial"
-      : own
-        ? "own"
-        : "learner";
+  const kind: ProgressContext = own ? "own" : "learner";
   return { kind, me: account };
 }
 
@@ -270,22 +258,7 @@ function ProgressAction({
   me: SignedInMe | null;
 }) {
   const learnerId = useLearnerStore((state) => state.learnerId);
-  // The assessment's budget, as the screen behind the bar loaded it (the
-  // trial's own queries, features/trial/api.ts): read, never fetched here.
-  const trialSession = useQuery<{ learnerId: string } | null>({
-    queryKey: ["trial", "session"],
-    queryFn: skipToken,
-    enabled: context === "trial",
-  });
-  const trialProgress = useQuery<{ remaining: number }>({
-    queryKey: ["trial", trialSession.data?.learnerId ?? "", "progress"],
-    queryFn: skipToken,
-    enabled: context === "trial" && !!trialSession.data,
-  });
-  const target =
-    context === "trial" && trialProgress.data?.remaining === 0
-      ? { path: "/try/plans", label: "See plans" }
-      : practiceTarget(context, me, learnerId);
+  const target = practiceTarget(context, me, learnerId);
   if (target === undefined)
     return (
       <span
@@ -306,7 +279,7 @@ function ProgressAction({
       data-shell-action
     >
       <svg viewBox="0 0 16 16" aria-hidden="true">
-        {target.path !== "/practice" && target.path !== "/try/practice" ? (
+        {target.path !== "/practice" ? (
           <path
             d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"
             fill="none"
@@ -331,10 +304,10 @@ function practiceTarget(
   me: SignedInMe | null,
   learnerId: string | null,
 ): { path: string; label: string } | null | undefined {
-  if (context === "trial") return { path: "/try/practice", label: "Practice" };
   if (!me) return undefined;
+  // Practice, where the one pause shows once the free problems are used.
   if (context === "own")
-    return me.adultPractice?.learner?.active
+    return me.adultPractice?.learner
       ? { path: "/practice", label: "Practice" }
       : null;
   // A second parent's family's child practices from its class.
@@ -344,9 +317,10 @@ function practiceTarget(
   );
   const learner =
     learners.find((entry) => entry.id === learnerId) ?? learners[0];
-  if (learner?.canPractice) return { path: "/practice", label: "Practice" };
+  if (learner && learner.learningAllowed !== false)
+    return { path: "/practice", label: "Practice" };
   if (me.account.kind === "student") return null;
-  return { path: "/start", label: "Continue setup" };
+  return learner ? null : { path: "/start", label: "Get started" };
 }
 
 /** A drawer that fails to load leaves the screen and its bar working. */

@@ -1,0 +1,114 @@
+{
+  "id": "decimal-sum-difference",
+  "title": "Add or subtract decimals to hundredths",
+  "seed": "film",
+  "shots": [
+    {
+      "beats": [
+        {
+          "say": "Find zero point eight plus nine point two six.",
+          "pause": 0.2,
+          "do": [{ "do": "problem", "text": "Find $0.8 + 9.26$.", "at": "Find", "id": "p1" }]
+        },
+        {
+          "say": "Estimate first. Zero point eight is almost one, so the sum is about one plus nine: about ten.",
+          "do": [{ "do": "write", "tex": "0.8+9.26\\approx 1+9=10", "fresh": true, "at": "Zero", "id": "e1" }]
+        },
+        {
+          "say": "Stack them so the points line up, not the last digits.",
+          "do": [{ "do": "stack", "rows": ["0.8", "9.26"], "op": "+", "headers": true, "id": "s1", "at": "Stack" }]
+        },
+        {
+          "say": "Then every place lines up: ones over ones, tenths over tenths, hundredths over hundredths.",
+          "do": [
+            { "do": "places", "of": "s1", "at": "place" },
+            { "do": "places", "of": "s1", "place": "ones", "at": "ones" },
+            { "do": "places", "of": "s1", "place": "tenths", "at": "tenths" },
+            { "do": "places", "of": "s1", "place": "hundredths", "at": "hundredths" }
+          ]
+        },
+        {
+          "say": "Zero point eight has no hundredths, so write a zero there. A zero on the end changes nothing: still eight tenths.",
+          "do": [{ "do": "zeros", "of": "s1", "at": "zero", "nth": 2 }]
+        },
+        {
+          "say": "Now add from the right, just like whole numbers. Hundredths: zero plus six is six.",
+          "do": [{ "do": "column", "of": "s1", "at": "right", "write": "is" }]
+        },
+        {
+          "say": "Tenths: eight plus two is ten tenths, and ten tenths make one whole. Write zero, carry the one to the ones.",
+          "do": [{ "do": "column", "of": "s1", "at": "Tenths", "write": "Write" }]
+        },
+        {
+          "say": "Ones: one plus zero plus nine is ten. That is one ten and zero ones.",
+          "do": [{ "do": "column", "of": "s1", "at": "Ones", "write": "ten" }]
+        },
+        {
+          "say": "The point comes straight down: ten point zero six.",
+          "do": [{ "do": "answer", "tex": "10.06", "at": "ten", "id": "a1" }]
+        },
+        {
+          "say": "That is about ten, as the estimate said.",
+          "do": [{ "do": "write", "tex": "10.06\\approx 10", "fresh": true, "at": "about", "id": "k1" }]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Find twelve point zero six minus two point two five.",
+          "pause": 0.2,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "Find $12.06 - 2.25$.", "at": "Find", "id": "p2" }
+          ]
+        },
+        {
+          "say": "Stack them, points lined up, the larger number on top.",
+          "do": [{ "do": "stack", "rows": ["12.06", "2.25"], "op": "-", "headers": true, "id": "s2", "at": "Stack" }]
+        },
+        {
+          "say": "Subtract from the right. Hundredths: six minus five is one.",
+          "do": [{ "do": "column", "of": "s2", "at": "right", "write": "is" }]
+        },
+        {
+          "say": "Tenths: zero minus two? Trade one of the two ones for ten tenths. Ten minus two is eight.",
+          "do": [{ "do": "column", "of": "s2", "at": "Tenths", "trade": "Trade", "write": "eight" }]
+        },
+        {
+          "say": "Ones: one minus two? Trade the ten for ten more ones: eleven ones. Eleven minus two is nine.",
+          "do": [{ "do": "column", "of": "s2", "at": "Ones", "trade": "Trade", "write": "nine" }]
+        },
+        {
+          "say": "Nothing is left in the tens. Nine point eight one.",
+          "do": [{ "do": "answer", "tex": "9.81", "at": "Nine", "id": "a2" }]
+        },
+        {
+          "say": "Check by adding back: nine point eight one plus two point two five is twelve point zero six.",
+          "do": [{ "do": "write", "tex": "9.81+2.25=12.06", "fresh": true, "at": "nine", "id": "k2" }]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Adding and subtracting decimals always goes the same way.",
+          "do": [{ "do": "overview", "columns": "all", "at": "Adding" }]
+        },
+        {
+          "say": "One: line up the points, not the last digits.",
+          "do": [{ "do": "recap", "text": "Line up the points, not the last digits.", "marks": ["s1", "s2"], "at": "One" }]
+        },
+        {
+          "say": "Two: fill in zeros on the end. They change nothing.",
+          "do": [{ "do": "recap", "text": "Fill in zeros on the end. They change nothing.", "marks": ["s1"], "at": "Two" }]
+        },
+        {
+          "say": "Three: then it is whole numbers. Work from the right, carrying and trading as always.",
+          "pause": 0.4,
+          "do": [{ "do": "recap", "text": "Then it is whole numbers: work from the right, carrying and trading.", "marks": ["s1", "s2", "a1", "a2"], "at": "Three" }]
+        }
+      ]
+    }
+  ]
+}

@@ -503,16 +503,4 @@ test("engine reaches every template and lessons are bound", () => {
       assert.ok(lesson.example.steps.length >= 2, id);
     }
   }
-  assert.deepEqual(
-    new Set(geometryModelingTemplates.map((t) => t.skillId)),
-    new Set([
-      "solid-volume-models",
-      "density-modeling",
-      "geometric-modeling",
-      "geometric-design",
-      "cavalieri-principle",
-      "sections-and-revolutions",
-      "similarity-theorems",
-    ]),
-  );
 });

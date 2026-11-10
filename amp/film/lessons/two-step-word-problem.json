@@ -1,0 +1,1947 @@
+{
+  "id": "two-step-word-problem",
+  "title": "Solve a two-step equation story",
+  "seed": "film-2",
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -0.8,
+          -3,
+          14.5,
+          4.8
+        ],
+        "points": {
+          "F0": [
+            0,
+            0
+          ],
+          "F1": [
+            2.3,
+            0
+          ],
+          "F2": [
+            2.3,
+            2.6
+          ],
+          "F3": [
+            0,
+            2.6
+          ],
+          "M0": [
+            2.3,
+            0
+          ],
+          "M1": [
+            13.7,
+            0
+          ],
+          "M2": [
+            13.7,
+            2.6
+          ],
+          "M3": [
+            2.3,
+            2.6
+          ],
+          "FC": [
+            1.15,
+            1.3
+          ],
+          "MC": [
+            8,
+            1.3
+          ],
+          "FU": [
+            1.15,
+            -0.75
+          ],
+          "MU": [
+            8,
+            -0.75
+          ],
+          "MB": [
+            8,
+            -2.1
+          ],
+          "c1": {
+            "cell": [
+              "g",
+              1
+            ]
+          },
+          "c2": {
+            "cell": [
+              "g",
+              2
+            ]
+          },
+          "c3": {
+            "cell": [
+              "g",
+              3
+            ]
+          },
+          "c4": {
+            "cell": [
+              "g",
+              4
+            ]
+          },
+          "c5": {
+            "cell": [
+              "g",
+              5
+            ]
+          },
+          "c6": {
+            "cell": [
+              "g",
+              6
+            ]
+          }
+        },
+        "parts": [
+          {
+            "id": "fee",
+            "poly": [
+              "F0",
+              "F1",
+              "F2",
+              "F3"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 4,
+            "group": "feeG"
+          },
+          {
+            "id": "lfee",
+            "label": "23",
+            "at": "FC",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm",
+            "group": "feeG"
+          },
+          {
+            "id": "lfeeU",
+            "label": "\\text{fee}",
+            "at": "FU",
+            "dir": "c",
+            "size": "s",
+            "ink": "warm",
+            "group": "feeG"
+          },
+          {
+            "id": "mon",
+            "poly": [
+              "M0",
+              "M1",
+              "M2",
+              "M3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 4
+          },
+          {
+            "id": "lmon",
+            "label": "19m",
+            "at": "MC",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          },
+          {
+            "id": "lmonU",
+            "label": "\\text{\\$19 each month}",
+            "at": "MU",
+            "dir": "c",
+            "size": "s",
+            "ink": "accent"
+          },
+          {
+            "id": "dTot",
+            "dim": [
+              "F3",
+              "M2"
+            ],
+            "side": "n",
+            "tex": "137"
+          },
+          {
+            "id": "dM",
+            "dim": [
+              "M3",
+              "M2"
+            ],
+            "side": "n",
+            "tex": "114",
+            "ink": "accent"
+          },
+          {
+            "id": "g",
+            "grid": [
+              6,
+              1
+            ],
+            "at": "M3",
+            "size": [
+              1.9,
+              2.6
+            ],
+            "fill": "none",
+            "ink": "accent",
+            "w": 4
+          },
+          {
+            "id": "n1",
+            "label": "19",
+            "at": "c1",
+            "dir": "c",
+            "ink": "accent",
+            "group": "ns"
+          },
+          {
+            "id": "n2",
+            "label": "19",
+            "at": "c2",
+            "dir": "c",
+            "ink": "accent",
+            "group": "ns"
+          },
+          {
+            "id": "n3",
+            "label": "19",
+            "at": "c3",
+            "dir": "c",
+            "ink": "accent",
+            "group": "ns"
+          },
+          {
+            "id": "n4",
+            "label": "19",
+            "at": "c4",
+            "dir": "c",
+            "ink": "accent",
+            "group": "ns"
+          },
+          {
+            "id": "n5",
+            "label": "19",
+            "at": "c5",
+            "dir": "c",
+            "ink": "accent",
+            "group": "ns"
+          },
+          {
+            "id": "n6",
+            "label": "19",
+            "at": "c6",
+            "dir": "c",
+            "ink": "accent",
+            "group": "ns"
+          },
+          {
+            "id": "lm6",
+            "label": "m=6",
+            "at": "MB",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "A gym charges a twenty-three dollar sign-up fee plus nineteen dollars per month. Ravi has paid one hundred thirty-seven dollars in all. For how many months has Ravi paid?",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "problem",
+              "text": "A gym charges a 23-dollar sign-up fee plus 19 dollars per month. Ravi has paid 137 dollars in all. For how many months has Ravi paid?",
+              "at": "A",
+              "id": "p1"
+            },
+            {
+              "do": "show",
+              "target": "feeG",
+              "at": "fee"
+            },
+            {
+              "do": "show",
+              "target": [
+                "mon",
+                "lmonU"
+              ],
+              "at": "month"
+            },
+            {
+              "do": "show",
+              "target": "dTot",
+              "at": "all"
+            }
+          ]
+        },
+        {
+          "say": "Let m be the number of months.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Let $m$ = the number of months.",
+              "at": "Let",
+              "id": "g0"
+            }
+          ]
+        },
+        {
+          "say": "Nineteen dollars for each of m months is nineteen times m.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "mon",
+              "at": "each"
+            },
+            {
+              "do": "show",
+              "target": "lmon",
+              "at": "times"
+            }
+          ]
+        },
+        {
+          "say": "The fee is paid only once, so it is added once.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "fee",
+              "at": "fee"
+            },
+            {
+              "do": "watch",
+              "text": "Multiply the repeated amount by the unknown. Add a one-time amount once.",
+              "at": "added"
+            }
+          ]
+        },
+        {
+          "say": "Together they make one hundred thirty-seven.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\ca{19m}+\\cw{23}=137",
+              "fresh": true,
+              "at": "Together",
+              "id": "g1"
+            },
+            {
+              "do": "highlight",
+              "target": "dTot",
+              "at": "hundred"
+            }
+          ]
+        },
+        {
+          "say": "To solve, undo the steps in reverse order. The fee was added last, so subtract twenty-three from both sides.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "fee",
+              "at": "last"
+            },
+            {
+              "do": "slide",
+              "target": "feeG",
+              "by": [
+                -0.3,
+                -3.4
+              ],
+              "at": "subtract"
+            },
+            {
+              "do": "hide",
+              "target": "feeG",
+              "at": "subtract",
+              "dur": 1.0
+            },
+            {
+              "do": "hide",
+              "target": "dTot",
+              "at": "subtract"
+            },
+            {
+              "do": "write",
+              "tex": "\\ca{19m}=114",
+              "note": "-23",
+              "at": "subtract",
+              "id": "g2"
+            },
+            {
+              "do": "show",
+              "target": "dM",
+              "at": "both"
+            }
+          ]
+        },
+        {
+          "say": "Nineteen times m is one hundred fourteen, so divide both sides by nineteen.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "dM",
+              "at": "hundred"
+            },
+            {
+              "do": "draw",
+              "target": "g",
+              "at": "divide"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "lmon",
+                "lmonU"
+              ],
+              "at": "divide"
+            },
+            {
+              "do": "show",
+              "target": "ns",
+              "at": "nineteen",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "Six nineteens make one hundred fourteen, so m is six.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "g",
+              "at": "Six"
+            },
+            {
+              "do": "write",
+              "tex": "m=6",
+              "note": "\\div 19",
+              "at": "so",
+              "id": "g3"
+            },
+            {
+              "do": "show",
+              "target": "lm6",
+              "at": "six",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "Check it in the story: six months at nineteen dollars is one hundred fourteen, plus the twenty-three dollar fee makes one hundred thirty-seven.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "19\\cdot 6=114",
+              "fresh": true,
+              "at": "Check",
+              "id": "g4"
+            },
+            {
+              "do": "write",
+              "tex": "114+23=137",
+              "fresh": true,
+              "at": "plus",
+              "id": "g4b"
+            }
+          ]
+        },
+        {
+          "say": "Ravi has paid for six months.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "m=6\\ \\text{months}",
+              "at": "six",
+              "id": "g5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Here, an amount is taken away each time. A tank holds seventy-two liters of water and drains ten liters each minute, down to forty-two liters. How many minutes does that take?",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "A tank holds 72 liters of water. It drains 10 liters each minute until it holds 42 liters. After how many minutes does the tank hold 42 liters?",
+              "at": "Here",
+              "id": "p2"
+            },
+            {
+              "do": "show",
+              "target": [
+                "water",
+                "d72"
+              ],
+              "at": "seventy-two"
+            },
+            {
+              "do": "show",
+              "target": "drained",
+              "at": "drains"
+            },
+            {
+              "do": "show",
+              "target": [
+                "lK",
+                "lKU"
+              ],
+              "at": "forty-two"
+            }
+          ]
+        },
+        {
+          "say": "Let t be the number of minutes. Seventy-two, minus ten liters for each of t minutes, leaves forty-two.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Let $t$ = the number of minutes.",
+              "at": "Let",
+              "id": "k0"
+            },
+            {
+              "do": "write",
+              "tex": "72-\\cw{10t}=\\cb{42}",
+              "fresh": true,
+              "at": "Seventy-two",
+              "id": "k1"
+            },
+            {
+              "do": "show",
+              "target": "lD",
+              "at": "each"
+            },
+            {
+              "do": "highlight",
+              "target": "lK",
+              "at": "leaves"
+            }
+          ]
+        },
+        {
+          "say": "Add ten t to both sides, then subtract forty-two from both sides.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "72=\\cb{42}+\\cw{10t}",
+              "note": "+10t",
+              "at": "Add",
+              "id": "k2"
+            },
+            {
+              "do": "write",
+              "tex": "\\cw{30}=\\cw{10t}",
+              "note": "-42",
+              "at": "subtract",
+              "id": "k3"
+            },
+            {
+              "do": "show",
+              "target": "dD",
+              "at": "subtract"
+            }
+          ]
+        },
+        {
+          "say": "Divide by ten: it takes three minutes.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "write",
+              "tex": "t=3",
+              "note": "\\div 10",
+              "at": "Divide",
+              "id": "k4"
+            },
+            {
+              "do": "answer",
+              "tex": "t=3\\ \\text{minutes}",
+              "at": "three",
+              "id": "k5"
+            },
+            {
+              "do": "draw",
+              "target": "gd",
+              "at": "Divide"
+            },
+            {
+              "do": "hide",
+              "target": "lD",
+              "at": "Divide"
+            },
+            {
+              "do": "show",
+              "target": "tens",
+              "at": "Divide"
+            },
+            {
+              "do": "show",
+              "target": "lt3",
+              "at": "three"
+            }
+          ]
+        }
+      ],
+      "figure": {
+        "view": [
+          -0.8,
+          -4.3,
+          15.2,
+          4.8
+        ],
+        "points": {
+          "W0": [
+            0,
+            0
+          ],
+          "W1": [
+            14.4,
+            0
+          ],
+          "W2": [
+            14.4,
+            2.6
+          ],
+          "W3": [
+            0,
+            2.6
+          ],
+          "K1": [
+            8.4,
+            0
+          ],
+          "K2": [
+            8.4,
+            2.6
+          ],
+          "KC": [
+            4.2,
+            1.3
+          ],
+          "DC": [
+            11.4,
+            1.3
+          ],
+          "KU": [
+            4.2,
+            -0.75
+          ],
+          "TB": [
+            11.4,
+            -3.4
+          ],
+          "e1": {
+            "cell": [
+              "gd",
+              1
+            ]
+          },
+          "e2": {
+            "cell": [
+              "gd",
+              2
+            ]
+          },
+          "e3": {
+            "cell": [
+              "gd",
+              3
+            ]
+          }
+        },
+        "parts": [
+          {
+            "id": "water",
+            "poly": [
+              "W0",
+              "W1",
+              "W2",
+              "W3"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 4
+          },
+          {
+            "id": "drained",
+            "poly": [
+              "K1",
+              "W1",
+              "W2",
+              "K2"
+            ],
+            "fill": "paper",
+            "ink": "warm",
+            "w": 4
+          },
+          {
+            "id": "lK",
+            "label": "42",
+            "at": "KC",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue"
+          },
+          {
+            "id": "lKU",
+            "label": "\\text{left}",
+            "at": "KU",
+            "dir": "c",
+            "size": "s",
+            "ink": "blue"
+          },
+          {
+            "id": "lD",
+            "label": "10t",
+            "at": "DC",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm"
+          },
+          {
+            "id": "d72",
+            "dim": [
+              "W3",
+              "W2"
+            ],
+            "side": "n",
+            "tex": "72"
+          },
+          {
+            "id": "dD",
+            "dim": [
+              "K1",
+              "W1"
+            ],
+            "side": "s",
+            "tex": "30",
+            "ink": "warm"
+          },
+          {
+            "id": "gd",
+            "grid": [
+              3,
+              1
+            ],
+            "at": "K2",
+            "size": [
+              2,
+              2.6
+            ],
+            "fill": "none",
+            "ink": "warm",
+            "w": 4
+          },
+          {
+            "id": "x1",
+            "label": "10",
+            "at": "e1",
+            "dir": "c",
+            "ink": "warm",
+            "group": "tens"
+          },
+          {
+            "id": "x2",
+            "label": "10",
+            "at": "e2",
+            "dir": "c",
+            "ink": "warm",
+            "group": "tens"
+          },
+          {
+            "id": "x3",
+            "label": "10",
+            "at": "e3",
+            "dir": "c",
+            "ink": "warm",
+            "group": "tens"
+          },
+          {
+            "id": "lt3",
+            "label": "t=3",
+            "at": "TB",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm"
+          }
+        ]
+      }
+    },
+    {
+      "figure": {
+        "view": [
+          -0.8,
+          -1.9,
+          15.2,
+          9.1
+        ],
+        "points": {
+          "T": [
+            0,
+            7.6
+          ],
+          "TR": [
+            14.4,
+            7.6
+          ],
+          "s1": {
+            "cell": [
+              "g",
+              1
+            ]
+          },
+          "s2": {
+            "cell": [
+              "g",
+              2
+            ]
+          },
+          "s3": {
+            "cell": [
+              "g",
+              3
+            ]
+          },
+          "s4": {
+            "cell": [
+              "g",
+              4
+            ]
+          },
+          "s5": {
+            "cell": [
+              "g",
+              5
+            ]
+          },
+          "s6": {
+            "cell": [
+              "g",
+              6
+            ]
+          },
+          "H0": [
+            0,
+            5.2
+          ],
+          "H1": [
+            2.4,
+            5.2
+          ],
+          "H2": [
+            2.4,
+            7.6
+          ],
+          "H3": [
+            0,
+            7.6
+          ],
+          "R0": [
+            0,
+            0
+          ],
+          "R1": [
+            12.7,
+            0
+          ],
+          "R2": [
+            12.7,
+            2.4
+          ],
+          "R3": [
+            0,
+            2.4
+          ],
+          "S0": [
+            12.7,
+            0
+          ],
+          "S1": [
+            14.4,
+            0
+          ],
+          "S2": [
+            14.4,
+            2.4
+          ],
+          "S3": [
+            12.7,
+            2.4
+          ],
+          "RC": [
+            6.35,
+            1.2
+          ],
+          "SC": [
+            13.55,
+            1.2
+          ]
+        },
+        "parts": [
+          {
+            "id": "g",
+            "grid": [
+              6,
+              1
+            ],
+            "at": "T",
+            "size": 2.4,
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 4
+          },
+          {
+            "id": "hl1",
+            "poly": [
+              "H0",
+              "H1",
+              "H2",
+              "H3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 7
+          },
+          {
+            "id": "q1",
+            "label": "c+2",
+            "at": "s1",
+            "dir": "c",
+            "group": "shares",
+            "size": "s"
+          },
+          {
+            "id": "q2",
+            "label": "c+2",
+            "at": "s2",
+            "dir": "c",
+            "group": "shares",
+            "size": "s"
+          },
+          {
+            "id": "q3",
+            "label": "c+2",
+            "at": "s3",
+            "dir": "c",
+            "group": "shares",
+            "size": "s"
+          },
+          {
+            "id": "q4",
+            "label": "c+2",
+            "at": "s4",
+            "dir": "c",
+            "group": "shares",
+            "size": "s"
+          },
+          {
+            "id": "q5",
+            "label": "c+2",
+            "at": "s5",
+            "dir": "c",
+            "group": "shares",
+            "size": "s"
+          },
+          {
+            "id": "q6",
+            "label": "c+2",
+            "at": "s6",
+            "dir": "c",
+            "group": "shares",
+            "size": "s"
+          },
+          {
+            "id": "d102",
+            "dim": [
+              "T",
+              "TR"
+            ],
+            "side": "n",
+            "tex": "102"
+          },
+          {
+            "id": "zl",
+            "seg": [
+              "H0",
+              "R3"
+            ],
+            "dash": true,
+            "ink": "gold",
+            "w": 3,
+            "group": "zoom"
+          },
+          {
+            "id": "zr",
+            "seg": [
+              "H1",
+              "S2"
+            ],
+            "dash": true,
+            "ink": "gold",
+            "w": 3,
+            "group": "zoom"
+          },
+          {
+            "id": "cb",
+            "poly": [
+              "R0",
+              "R1",
+              "R2",
+              "R3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 4,
+            "group": "row2"
+          },
+          {
+            "id": "lc",
+            "label": "c",
+            "at": "RC",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "group": "row2"
+          },
+          {
+            "id": "sn",
+            "poly": [
+              "S0",
+              "S1",
+              "S2",
+              "S3"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 4,
+            "group": "snack"
+          },
+          {
+            "id": "l2",
+            "label": "2",
+            "at": "SC",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm",
+            "group": "snack"
+          },
+          {
+            "id": "d17",
+            "dim": [
+              "R0",
+              "S1"
+            ],
+            "side": "s",
+            "tex": "17"
+          },
+          {
+            "id": "d15",
+            "dim": [
+              "R0",
+              "R1"
+            ],
+            "side": "s",
+            "tex": "15",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Each of six friends buys one movie ticket and one two-dollar snack. Together they spend one hundred two dollars. What does one ticket cost?",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Each of 6 friends buys one movie ticket and one 2-dollar snack. Together they spend 102 dollars. What does one ticket cost, in dollars?",
+              "at": "Each",
+              "id": "p3"
+            },
+            {
+              "do": "draw",
+              "target": "g",
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": "d102",
+              "at": "Together"
+            }
+          ]
+        },
+        {
+          "say": "Let c be the cost of one ticket. Each friend spends c plus two dollars.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Let $c$ = the cost of one ticket, in dollars.",
+              "at": "Let",
+              "id": "t0"
+            },
+            {
+              "do": "show",
+              "target": "shares",
+              "at": "plus"
+            }
+          ]
+        },
+        {
+          "say": "Six friends spend six times that. Parentheses keep c plus two together, so the six multiplies all of it.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "6(\\ca{c}+\\cw{2})=102",
+              "fresh": true,
+              "at": "six",
+              "nth": 2,
+              "id": "t1"
+            },
+            {
+              "do": "term",
+              "word": "parentheses",
+              "meaning": "Curved brackets that group a part. $6(c+2)$ means $6$ times all of $c+2$.",
+              "at": "Parentheses"
+            }
+          ]
+        },
+        {
+          "say": "Undo the last step first: divide both sides by six. One share is seventeen.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\ca{c}+\\cw{2}=17",
+              "note": "\\div 6",
+              "at": "divide",
+              "id": "t2"
+            },
+            {
+              "do": "show",
+              "target": "hl1",
+              "at": "One"
+            },
+            {
+              "do": "draw",
+              "target": "zoom",
+              "at": "One"
+            },
+            {
+              "do": "show",
+              "target": [
+                "row2",
+                "snack"
+              ],
+              "at": "share"
+            },
+            {
+              "do": "show",
+              "target": "d17",
+              "at": "seventeen"
+            }
+          ]
+        },
+        {
+          "say": "One share is a ticket and a two-dollar snack. Subtract two from both sides: the ticket costs fifteen.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "sn",
+              "at": "snack"
+            },
+            {
+              "do": "slide",
+              "target": "snack",
+              "by": [
+                1.4,
+                0
+              ],
+              "at": "Subtract"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "snack",
+                "d17"
+              ],
+              "at": "Subtract",
+              "dur": 0.9
+            },
+            {
+              "do": "write",
+              "tex": "\\ca{c}=15",
+              "note": "-2",
+              "at": "Subtract",
+              "id": "t3"
+            },
+            {
+              "do": "show",
+              "target": "d15",
+              "at": "fifteen"
+            }
+          ]
+        },
+        {
+          "say": "Check: six times seventeen is one hundred two.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "6\\cdot 17=102",
+              "fresh": true,
+              "at": "Check",
+              "id": "t4"
+            }
+          ]
+        },
+        {
+          "say": "One ticket costs fifteen dollars.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "c=15\\ \\text{dollars}",
+              "at": "fifteen",
+              "id": "t5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.8,
+          -1.9,
+          15.2,
+          9.1
+        ],
+        "points": {
+          "T": [
+            0,
+            7.6
+          ],
+          "TR": [
+            14.4,
+            7.6
+          ],
+          "s1": {
+            "cell": [
+              "g",
+              1
+            ]
+          },
+          "s2": {
+            "cell": [
+              "g",
+              2
+            ]
+          },
+          "s3": {
+            "cell": [
+              "g",
+              3
+            ]
+          },
+          "s4": {
+            "cell": [
+              "g",
+              4
+            ]
+          },
+          "H0": [
+            0,
+            5.2
+          ],
+          "H1": [
+            3.6,
+            5.2
+          ],
+          "H2": [
+            3.6,
+            7.6
+          ],
+          "H3": [
+            0,
+            7.6
+          ],
+          "R0": [
+            0,
+            0
+          ],
+          "R1": [
+            9.45,
+            0
+          ],
+          "R2": [
+            9.45,
+            2.4
+          ],
+          "R3": [
+            0,
+            2.4
+          ],
+          "RC": [
+            4.725,
+            1.2
+          ],
+          "Q0": [
+            9.45,
+            -1.2
+          ],
+          "Q1": [
+            14.4,
+            -1.2
+          ],
+          "Q2": [
+            14.4,
+            1.2
+          ],
+          "Q3": [
+            9.45,
+            1.2
+          ],
+          "QC": [
+            11.925,
+            0
+          ],
+          "Q1b": [
+            14.4,
+            0
+          ]
+        },
+        "parts": [
+          {
+            "id": "g",
+            "grid": [
+              4,
+              1
+            ],
+            "at": "T",
+            "size": [
+              3.6,
+              2.4
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 4
+          },
+          {
+            "id": "hl1",
+            "poly": [
+              "H0",
+              "H1",
+              "H2",
+              "H3"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 7
+          },
+          {
+            "id": "q1",
+            "label": "s-11",
+            "at": "s1",
+            "dir": "c",
+            "group": "shares"
+          },
+          {
+            "id": "q2",
+            "label": "s-11",
+            "at": "s2",
+            "dir": "c",
+            "group": "shares"
+          },
+          {
+            "id": "q3",
+            "label": "s-11",
+            "at": "s3",
+            "dir": "c",
+            "group": "shares"
+          },
+          {
+            "id": "q4",
+            "label": "s-11",
+            "at": "s4",
+            "dir": "c",
+            "group": "shares"
+          },
+          {
+            "id": "d84",
+            "dim": [
+              "T",
+              "TR"
+            ],
+            "side": "n",
+            "tex": "84"
+          },
+          {
+            "id": "zl",
+            "seg": [
+              "H0",
+              "R3"
+            ],
+            "dash": true,
+            "ink": "gold",
+            "w": 3,
+            "group": "zoom"
+          },
+          {
+            "id": "zr",
+            "seg": [
+              "H1",
+              "R2"
+            ],
+            "dash": true,
+            "ink": "gold",
+            "w": 3,
+            "group": "zoom"
+          },
+          {
+            "id": "sb",
+            "poly": [
+              "R0",
+              "R1",
+              "R2",
+              "R3"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 4,
+            "group": "row2"
+          },
+          {
+            "id": "l21",
+            "label": "21",
+            "at": "RC",
+            "dir": "c",
+            "size": "l",
+            "ink": "accent",
+            "group": "row2"
+          },
+          {
+            "id": "off",
+            "poly": [
+              "Q0",
+              "Q1",
+              "Q2",
+              "Q3"
+            ],
+            "fill": "warm-fill",
+            "ink": "warm",
+            "w": 4,
+            "group": "disc"
+          },
+          {
+            "id": "l11",
+            "label": "11",
+            "at": "QC",
+            "dir": "c",
+            "size": "l",
+            "ink": "warm",
+            "group": "disc"
+          },
+          {
+            "id": "d32",
+            "dim": [
+              "R0",
+              "Q1b"
+            ],
+            "side": "s",
+            "tex": "s=32",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "The extra can also be taken off. In a sale, every shirt is eleven dollars off its regular price. Four shirts cost eighty-four dollars. What is the regular price?",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "In a sale, every shirt is 11 dollars off its regular price. Jo buys 4 shirts at the sale price and pays 84 dollars. What is the regular price of one shirt, in dollars?",
+              "at": "extra",
+              "id": "p4"
+            },
+            {
+              "do": "draw",
+              "target": "g",
+              "at": "Four"
+            },
+            {
+              "do": "show",
+              "target": "d84",
+              "at": "eighty-four"
+            }
+          ]
+        },
+        {
+          "say": "Let s be the regular price. Each shirt costs s minus eleven, and four of them cost eighty-four.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Let $s$ = the regular price, in dollars.",
+              "at": "Let",
+              "id": "s0"
+            },
+            {
+              "do": "show",
+              "target": "shares",
+              "at": "minus"
+            },
+            {
+              "do": "write",
+              "tex": "4(\\ca{s}-\\cw{11})=84",
+              "fresh": true,
+              "at": "four",
+              "id": "s1"
+            }
+          ]
+        },
+        {
+          "say": "Divide both sides by four: each shirt costs twenty-one on sale.",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\ca{s}-\\cw{11}=21",
+              "note": "\\div 4",
+              "at": "Divide",
+              "id": "s2"
+            },
+            {
+              "do": "show",
+              "target": "hl1",
+              "at": "each"
+            },
+            {
+              "do": "draw",
+              "target": "zoom",
+              "at": "each"
+            },
+            {
+              "do": "show",
+              "target": "row2",
+              "at": "twenty-one"
+            }
+          ]
+        },
+        {
+          "say": "Add back the eleven dollars off: the regular price is thirty-two dollars.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "show",
+              "target": "disc",
+              "at": "Add"
+            },
+            {
+              "do": "move",
+              "points": {
+                "Q0": [
+                  9.45,
+                  0
+                ],
+                "Q1": [
+                  14.4,
+                  0
+                ],
+                "Q2": [
+                  14.4,
+                  2.4
+                ],
+                "Q3": [
+                  9.45,
+                  2.4
+                ],
+                "QC": [
+                  11.925,
+                  1.2
+                ]
+              },
+              "at": "Add"
+            },
+            {
+              "do": "write",
+              "tex": "\\ca{s}=32",
+              "note": "+11",
+              "at": "Add",
+              "id": "s3"
+            },
+            {
+              "do": "show",
+              "target": "d32",
+              "at": "thirty-two"
+            },
+            {
+              "do": "answer",
+              "tex": "s=32\\ \\text{dollars}",
+              "at": "thirty-two",
+              "id": "s4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -3,
+          -5.6,
+          22,
+          8.4
+        ],
+        "points": {
+          "A": [
+            0,
+            0
+          ],
+          "B": [
+            19,
+            0
+          ],
+          "C": [
+            19,
+            5
+          ],
+          "D": [
+            0,
+            5
+          ],
+          "P": [
+            9.5,
+            -4.1
+          ]
+        },
+        "parts": [
+          {
+            "id": "rect",
+            "poly": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ],
+            "fill": "accent-fill"
+          },
+          {
+            "id": "top",
+            "seg": [
+              "D",
+              "C"
+            ],
+            "ink": "accent",
+            "w": 8
+          },
+          {
+            "id": "right",
+            "seg": [
+              "C",
+              "B"
+            ],
+            "ink": "gold",
+            "w": 8
+          },
+          {
+            "id": "bottom",
+            "seg": [
+              "B",
+              "A"
+            ],
+            "ink": "accent",
+            "w": 8
+          },
+          {
+            "id": "left",
+            "seg": [
+              "A",
+              "D"
+            ],
+            "ink": "gold",
+            "w": 8
+          },
+          {
+            "id": "lwt",
+            "label": "w",
+            "at": "top",
+            "dir": "n",
+            "size": "l",
+            "ink": "accent",
+            "group": "ws"
+          },
+          {
+            "id": "lwb",
+            "label": "w",
+            "at": "bottom",
+            "dir": "s",
+            "size": "l",
+            "ink": "accent",
+            "group": "ws"
+          },
+          {
+            "id": "l5r",
+            "label": "5",
+            "at": "right",
+            "dir": "e",
+            "size": "l",
+            "ink": "gold",
+            "group": "fives"
+          },
+          {
+            "id": "l5l",
+            "label": "5",
+            "at": "left",
+            "dir": "w",
+            "size": "l",
+            "ink": "gold",
+            "group": "fives"
+          },
+          {
+            "id": "lP",
+            "label": "\\text{perimeter }48",
+            "at": "P",
+            "dir": "c",
+            "size": "m"
+          },
+          {
+            "id": "lw19",
+            "label": "w=19",
+            "at": "top",
+            "dir": "n",
+            "size": "l",
+            "ink": "accent"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "A perimeter works the same way. A rectangle has a perimeter of forty-eight centimeters and a length of five centimeters.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "A rectangle has a perimeter of 48 centimeters. Its length is 5 centimeters. What is the rectangle's width, in centimeters?",
+              "at": "perimeter",
+              "id": "p5"
+            },
+            {
+              "do": "show",
+              "target": "rect",
+              "at": "rectangle"
+            },
+            {
+              "do": "draw",
+              "target": "top",
+              "at": "perimeter",
+              "nth": 2,
+              "dur": 0.55
+            },
+            {
+              "do": "draw",
+              "target": "right",
+              "at": "of",
+              "dur": 0.55
+            },
+            {
+              "do": "draw",
+              "target": "bottom",
+              "at": "forty-eight",
+              "dur": 0.55
+            },
+            {
+              "do": "draw",
+              "target": "left",
+              "at": "centimeters",
+              "dur": 0.55
+            },
+            {
+              "do": "show",
+              "target": "lP",
+              "at": "forty-eight"
+            },
+            {
+              "do": "show",
+              "target": "fives",
+              "at": "five"
+            }
+          ]
+        },
+        {
+          "say": "Let w be the width. The perimeter is two widths and two lengths, which is two times the quantity w plus five.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Let $w$ = the width, in centimeters.",
+              "at": "Let",
+              "id": "w0"
+            },
+            {
+              "do": "show",
+              "target": "ws",
+              "at": "width"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "top",
+                "bottom"
+              ],
+              "at": "widths"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "left",
+                "right"
+              ],
+              "at": "lengths"
+            },
+            {
+              "do": "write",
+              "tex": "2(\\ca{w}+\\cg{5})=48",
+              "fresh": true,
+              "at": "which",
+              "id": "w1"
+            }
+          ]
+        },
+        {
+          "say": "Divide both sides by two, then subtract five: the width is nineteen centimeters.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\ca{w}+\\cg{5}=24",
+              "note": "\\div 2",
+              "at": "Divide",
+              "id": "w2"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "top",
+                "right"
+              ],
+              "at": "Divide"
+            },
+            {
+              "do": "write",
+              "tex": "\\ca{w}=19",
+              "note": "-5",
+              "at": "subtract",
+              "id": "w3"
+            },
+            {
+              "do": "hide",
+              "target": "lwt",
+              "at": "nineteen"
+            },
+            {
+              "do": "show",
+              "target": "lw19",
+              "at": "nineteen"
+            },
+            {
+              "do": "answer",
+              "tex": "w=19\\ \\text{cm}",
+              "at": "nineteen",
+              "id": "w4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Every story like this goes the same way.",
+          "do": [
+            {
+              "do": "overview",
+              "of": "g1",
+              "at": "Every"
+            }
+          ]
+        },
+        {
+          "say": "One: name the unknown with a letter.",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Name the unknown with a letter.",
+              "marks": [
+                "g0"
+              ],
+              "at": "One"
+            }
+          ]
+        },
+        {
+          "say": "Two: the repeated amount times the letter, plus or minus the one-time amount, equals the total.",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Repeated amount times the letter, plus or minus the one-time amount, equals the total.",
+              "marks": [
+                "g1"
+              ],
+              "at": "Two"
+            }
+          ]
+        },
+        {
+          "say": "Three: undo the steps in reverse order, doing the same to both sides.",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Undo the steps in reverse order, on both sides.",
+              "marks": [
+                "g2",
+                "g3"
+              ],
+              "at": "Three"
+            }
+          ]
+        },
+        {
+          "say": "Four: check the answer in the story.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "recap",
+              "text": "Check the answer in the story.",
+              "marks": [
+                "g4",
+                "g4b",
+                "g5"
+              ],
+              "at": "Four"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

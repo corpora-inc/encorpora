@@ -1259,7 +1259,7 @@ function switchPage(persona: PickerPersona, to: string) {
     ? `sessionStorage.setItem("amp.student",${JSON.stringify(JSON.stringify(persona.student))});`
     : 'sessionStorage.removeItem("amp.student");localStorage.removeItem("amp.student");';
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Signing in</title></head><body><script>
-sessionStorage.removeItem("amp.learner");sessionStorage.removeItem("amp.trial");${store}
+sessionStorage.removeItem("amp.learner");${store}
 location.replace(${JSON.stringify(to)});
 </script></body></html>`;
 }

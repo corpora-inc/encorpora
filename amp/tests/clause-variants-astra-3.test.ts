@@ -83,6 +83,13 @@ test("normal dispatch reaches every clause and mixed-format metadata excludes un
     choice: "single-choice-v1",
     "multi-select": "multi-select-v1",
     "point-plot": "point-plot-v1",
+    "line-plot-build": "line-plot-build-v1",
+    "unit-square-marking": "unit-square-marking-v1",
+    "counter-builder": "counter-builder-v1",
+    "trend-line-fit": "trend-line-fit-v1",
+    "equal-addends": "equal-addends-v1",
+    "shape-composer": "shape-composer-v1",
+    "peg-board": "peg-board-v1",
     "multi-part-choice": "multi-part-choice-v1",
     "figure-choice": "figure-choice-v1",
     "structured-work": "structured-work-v1",
@@ -183,5 +190,10 @@ test("clause hints name the current instance's givens", () => {
 
 test("triangle proof registration uses facets owned by its skill", () => {
   const manifest = buildCoverageManifest();
-  assert.deepEqual(manifest.errors.filter(error => error.includes("two-column-triangle-proof")), []);
+  assert.deepEqual(
+    manifest.errors.filter((error) =>
+      error.includes("two-column-triangle-proof"),
+    ),
+    [],
+  );
 });

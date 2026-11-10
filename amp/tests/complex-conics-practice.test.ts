@@ -1,3 +1,4 @@
+import { skills as curriculumSkills } from "../src/curriculum/catalog";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -112,18 +113,11 @@ test("independent checks of selected variants", () => {
 });
 
 test("every family is registered with its lesson, method and skill", () => {
-  const expected: Record<string, string> = {
-    "complex-plane-forms": "complex-plane",
-    "complex-conjugate-division": "complex-conjugates",
-    "complex-distance-midpoint": "complex-distance",
-    "complex-quadratic-factors": "complex-factorization",
-    "polynomial-root-count": "fundamental-theorem-algebra",
-    "polar-cartesian-conversion": "polar-coordinates",
-    "parametric-linear-motion": "parametric-models",
-    "conic-standard-form": "conic-sections",
-    "parabola-focus-directrix": "parabola-locus",
-  };
-  for (const [id, skillId] of Object.entries(expected)) {
+  for (const { id, skillId } of complexConicsTemplates) {
+    assert.ok(
+      curriculumSkills.some((s) => s.id === skillId),
+      id,
+    );
     assert.equal(templates.find((t) => t.id === id)?.skillId, skillId);
     const lesson = problemLesson(id, "library");
     assert.ok(lesson.intuition);

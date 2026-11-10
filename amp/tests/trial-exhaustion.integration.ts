@@ -20,6 +20,30 @@ const fixture: [string, string][] = JSON.parse(
   ),
 );
 
+/** The trial's adoption, now only the server's own move (no route). */
+async function adoptTrial(
+  repository: {
+    adoptTrial(account: string, token: string, name: string): Promise<unknown>;
+  },
+  account: string,
+  token: string,
+  name: string,
+) {
+  try {
+    const learner = await repository.adoptTrial(account, token, name);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return { statusCode: 200, body: "", json: () => learner as any };
+  } catch (error) {
+    const failure = error as { statusCode?: number; message: string };
+    if (!failure.statusCode) throw error;
+    return {
+      statusCode: failure.statusCode,
+      body: failure.message,
+      json: () => ({ error: failure.message }),
+    };
+  }
+}
+
 test(
   "below-catalog placement persists and adaptive practice continues with introductory material",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
@@ -71,7 +95,8 @@ test(
           response: string;
         };
         for (const [index, [templateId, seed]] of fixture.entries()) {
-          const problem = generateProblem(templateId, seed);
+          // Replay the recorded version and its original answer format.
+          const problem = generateProblem(templateId, seed, 1);
           // Persisted instance ids are globally unique across learner accounts.
           problem.public.id = `${problem.public.id}:${trial.learnerId}`;
           await repository.transaction(account, trial.learnerId, (tx) =>
@@ -222,12 +247,12 @@ test(
           (t) => t.id === batch.json().problems[0].templateId,
         )!;
         assertIntroductory(selected);
-        const saved = await app.inject({
-          method: "POST",
-          url: "/api/v1/trials/adopt",
-          headers: { authorization: "Bearer parent" },
-          payload: { token: trial.token, name: "Saved fixture" },
-        });
+        const saved = await adoptTrial(
+          repository,
+          "parent",
+          trial.token,
+          "Saved fixture",
+        );
         assert.equal(saved.statusCode, 200, saved.body);
       }
     } finally {

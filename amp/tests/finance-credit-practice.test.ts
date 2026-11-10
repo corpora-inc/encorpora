@@ -1,3 +1,4 @@
+import { skills as curriculumSkills } from "../src/curriculum/catalog";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -173,18 +174,12 @@ test("independent re-derivation of cent-exact results", () => {
 });
 
 test("finance families bind to existing skills and lessons", () => {
-  const skills: Record<string, string> = {
-    "interest-compare-years": "exponential-models",
-    "loan-total-cost": "linear-models",
-    "loan-compare-options": "linear-models",
-    "credit-card-balance": "percent-change",
-    "credit-cost-concepts": "percent-change",
-    "savings-plan-growth": "linear-models",
-    "interest-table-type": "percent-change",
-  };
-  assert.equal(financeCreditTemplates.length, 7);
-  for (const [id, skill] of Object.entries(skills)) {
-    assert.equal(templates.find((t) => t.id === id)?.skillId, skill);
+  for (const { id, skillId } of financeCreditTemplates) {
+    assert.ok(
+      curriculumSkills.some((s) => s.id === skillId),
+      id,
+    );
+    assert.equal(templates.find((t) => t.id === id)?.skillId, skillId);
     const lesson = problemLesson(id, "library");
     assert.ok(lesson.intuition && lesson.principle && lesson.watch);
     assert.ok(lesson.method.length >= 3);

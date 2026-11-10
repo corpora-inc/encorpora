@@ -1,0 +1,25 @@
+# Screenplays and source belong in Git; generated production data does not.
+dist/
+build/
+node_modules/
+.cache/
+__pycache__/
+*.pyc
+data/
+_review/
+_voice/
+_locks/
+renders/
+*.wav
+*.mp3
+*.m4a
+*.mp4
+*.webm
+*.jpg
+*.png
+*.srt
+*.vtt
+timing.json
+grades.json
+report.json
+.env*

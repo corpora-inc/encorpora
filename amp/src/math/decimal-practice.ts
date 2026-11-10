@@ -1,3 +1,4 @@
+import { withClauseVariants } from "./clause-variants";
 import { count } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
@@ -715,7 +716,7 @@ function draft(templateId: string, r: Random, seed: string): Draft {
   throw new Error(`Unknown decimal template: ${templateId}`);
 }
 
-export function generateDecimalProblem(
+export function generateDecimalProblemLegacy(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
@@ -755,3 +756,8 @@ export function generateDecimalProblem(
     ...(d.variant ? { variant: d.variant } : {}),
   };
 }
+
+export const generateDecimalProblem = withClauseVariants(
+  decimalTemplates,
+  generateDecimalProblemLegacy,
+);

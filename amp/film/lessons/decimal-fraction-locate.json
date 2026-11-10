@@ -1,0 +1,268 @@
+{
+  "id": "decimal-fraction-locate",
+  "title": "Locate a decimal or a fraction",
+  "seed": "film",
+  "shots": [
+    {
+      "figure": { "example": true },
+      "beats": [
+        {
+          "say": "Which point is at nine tenths?",
+          "pause": 0.3,
+          "do": [
+            { "do": "problem", "text": "Which point is at $\\frac{9}{10}$?", "choices": ["$C$", "$D$", "$A$", "$B$"], "at": "Which", "id": "p1" },
+            { "do": "scene", "actions": [{ "do": "highlight", "target": "line.label.0" }], "at": "point" },
+            { "do": "scene", "actions": [{ "do": "highlight", "target": "line.label.2" }], "at": "tenths" }
+          ]
+        },
+        {
+          "say": "Only the ends are numbered. The left end is zero. The right end is two.",
+          "do": [
+            { "do": "write", "tex": "\\text{left end}=0", "fresh": true, "at": "left", "id": "end0" },
+            { "do": "scene", "actions": [{ "do": "highlight", "target": "line.label.0" }], "at": "zero" },
+            { "do": "scene", "actions": [{ "do": "highlight", "target": "line.label.2" }], "at": "two" }
+          ]
+        },
+        {
+          "say": "Each step is one tenth. Count from the left end.",
+          "do": [
+            { "do": "text", "text": "Count from the left end.", "at": "Count", "id": "phrase" },
+            { "do": "write", "tex": "1\\ \\text{step}=\\frac{1}{10}", "fresh": true, "at": "tenth", "id": "step" },
+            { "do": "scene", "actions": [{ "do": "highlight", "target": "line.tick.0.1" }], "at": "step" }
+          ]
+        },
+        {
+          "say": "One, two, three, four, five.",
+          "do": [
+            { "do": "scene", "actions": [{ "do": "highlight", "target": "line.tick.0.1" }], "at": "One" },
+            { "do": "scene", "actions": [{ "do": "highlight", "target": "line.tick.0.2" }], "at": "two" },
+            { "do": "scene", "actions": [{ "do": "highlight", "target": "line.tick.0.3" }], "at": "three" },
+            { "do": "scene", "actions": [{ "do": "highlight", "target": "line.tick.0.4" }], "at": "four" },
+            { "do": "scene", "actions": [{ "do": "highlight", "target": "line.tick.0.5" }], "at": "five" }
+          ]
+        },
+        {
+          "say": "Six, seven, eight, nine. That mark is B.",
+          "do": [
+            { "do": "scene", "actions": [{ "do": "highlight", "target": "line.tick.0.6" }], "at": "Six" },
+            { "do": "scene", "actions": [{ "do": "highlight", "target": "line.tick.0.7" }], "at": "seven" },
+            { "do": "scene", "actions": [{ "do": "highlight", "target": "line.tick.0.8" }], "at": "eight" },
+            { "do": "scene", "actions": [{ "do": "highlight", "target": "line.mark.1" }], "at": "nine" },
+            { "do": "scene", "actions": [{ "do": "highlight", "target": "line.mark.1.label" }], "at": "B" }
+          ]
+        },
+        {
+          "say": "Nine tenths is zero point nine. The point there is B.",
+          "do": [
+            { "do": "write", "tex": "\\frac{9}{10}=0.9", "fresh": true, "at": "zero", "id": "eq1" },
+            { "do": "answer", "tex": "B", "at": "B", "id": "ans1" },
+            { "do": "scene", "actions": [{ "do": "highlight", "target": "line.mark.1.label" }], "at": "B" }
+          ]
+        },
+        {
+          "say": "Count from the left end, not from two.",
+          "do": [
+            { "do": "watch", "text": "Count from the left end. Do not start at the right end.", "at": "left", "id": "w1" },
+            { "do": "scene", "actions": [{ "do": "highlight", "target": "line.label.2" }], "at": "two" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-0.15, -0.42, 2.2, 0.72],
+        "points": {
+          "P": [0, 0.22],
+          "A": [1.1, 0.08], "LA": [1.1, 0.42],
+          "B": [0.3, 0.08], "LB": [0.3, 0.42],
+          "C": [0.7, 0.08], "LC": [0.7, 0.42],
+          "D": [1.5, 0.08], "LD": [1.5, 0.42]
+        },
+        "parts": [
+          { "id": "ax", "axes": true, "step": 0.1, "every": 0.5, "y": false, "start": true },
+          { "id": "dot", "dot": "P", "ink": "gold", "r": 16 },
+          { "id": "dA", "dot": "A", "ink": "accent", "r": 13 },
+          { "id": "dB", "dot": "B", "ink": "warm", "r": 13 },
+          { "id": "dC", "dot": "C", "ink": "blue", "r": 13 },
+          { "id": "dD", "dot": "D", "ink": "violet", "r": 13 },
+          { "id": "lA", "label": "A", "at": "LA", "dir": "c", "size": "l", "ink": "accent" },
+          { "id": "lB", "label": "B", "at": "LB", "dir": "c", "size": "l", "ink": "warm" },
+          { "id": "lC", "label": "C", "at": "LC", "dir": "c", "size": "l", "ink": "blue" },
+          { "id": "lD", "label": "D", "at": "LD", "dir": "c", "size": "l", "ink": "violet" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Which letter marks fifteen tenths?",
+          "pause": 0.25,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "Which letter marks $\\frac{15}{10}$?", "choices": ["$A$", "$B$", "$C$", "$D$"], "at": "Which", "id": "p2" },
+            { "do": "show", "target": ["dot", "dA", "dB", "dC", "dD", "lA", "lB", "lC", "lD"], "at": "letter" }
+          ]
+        },
+        {
+          "say": "Ten steps of one tenth reach one whole.",
+          "do": [
+            { "do": "move", "points": { "P": [1, 0.22] }, "at": "Ten" },
+            { "do": "write", "tex": "10\\times\\frac{1}{10}=1", "fresh": true, "at": "reach", "id": "ten" },
+            { "do": "highlight", "target": "dot", "at": "whole" }
+          ]
+        },
+        {
+          "say": "Five more steps reach fifteen tenths, which is one and five tenths.",
+          "do": [
+            { "do": "move", "points": { "P": [1.5, 0.22] }, "at": "Five" },
+            { "do": "write", "tex": "\\frac{15}{10}=1.5", "fresh": true, "at": "fifteen", "id": "eq2" },
+            { "do": "highlight", "target": ["dD", "lD"], "at": "five", "nth": 2 }
+          ]
+        },
+        {
+          "say": "The dot lands on D. Fifteen tenths is past one whole.",
+          "do": [
+            { "do": "answer", "tex": "D", "at": "D", "id": "ans2" },
+            { "do": "highlight", "target": "lD", "at": "past" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [0.288, -0.05, 0.412, 0.062],
+        "points": {
+          "P": [0.3, 0.02],
+          "A": [0.31, 0.008], "LA": [0.31, 0.038],
+          "B": [0.34, 0.008], "LB": [0.34, 0.038],
+          "C": [0.37, 0.008], "LC": [0.37, 0.038],
+          "D": [0.39, 0.008], "LD": [0.39, 0.038]
+        },
+        "parts": [
+          { "id": "ax", "axes": true, "step": 0.01, "every": 0.1, "y": false, "start": true },
+          { "id": "dot", "dot": "P", "ink": "gold", "r": 15 },
+          { "id": "dA", "dot": "A", "ink": "accent", "r": 12 },
+          { "id": "dB", "dot": "B", "ink": "warm", "r": 12 },
+          { "id": "dC", "dot": "C", "ink": "blue", "r": 12 },
+          { "id": "dD", "dot": "D", "ink": "violet", "r": 12 },
+          { "id": "lA", "label": "A", "at": "LA", "dir": "c", "size": "m", "ink": "accent" },
+          { "id": "lB", "label": "B", "at": "LB", "dir": "c", "size": "m", "ink": "warm" },
+          { "id": "lC", "label": "C", "at": "LC", "dir": "c", "size": "m", "ink": "blue" },
+          { "id": "lD", "label": "D", "at": "LD", "dir": "c", "size": "m", "ink": "violet" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Which letter marks zero point three seven?",
+          "pause": 0.25,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "Which letter marks $0.37$?", "choices": ["$B$", "$D$", "$C$", "$A$"], "at": "Which", "id": "p3" },
+            { "do": "show", "target": ["dot", "dA", "dB", "dC", "dD", "lA", "lB", "lC", "lD"], "at": "letter" },
+            { "do": "highlight", "target": "ax", "at": "three" }
+          ]
+        },
+        {
+          "say": "The left end is zero point three, not zero. Each step is one hundredth.",
+          "do": [
+            { "do": "write", "tex": "\\text{left end}=0.3", "fresh": true, "at": "left", "id": "end3" },
+            { "do": "write", "tex": "1\\ \\text{step}=0.01", "fresh": true, "at": "step", "id": "st3" },
+            { "do": "highlight", "target": "dot", "at": "three" }
+          ]
+        },
+        {
+          "say": "Seven hundredths past zero point three is zero point three seven.",
+          "do": [
+            { "do": "move", "points": { "P": [0.37, 0.02] }, "at": "Seven" },
+            { "do": "write", "tex": "0.3+0.07=0.37", "fresh": true, "at": "past", "id": "eq3" },
+            { "do": "highlight", "target": ["dC", "lC"], "at": "seven", "nth": 2 }
+          ]
+        },
+        {
+          "say": "The dot lands on C.",
+          "do": [
+            { "do": "answer", "tex": "C", "at": "C", "id": "ans3" },
+            { "do": "highlight", "target": "lC", "at": "C" }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [-0.008, -0.045, 0.112, 0.055],
+        "points": {
+          "P": [0, 0.018],
+          "A": [0.01, 0.006], "LA": [0.01, 0.032],
+          "B": [0.04, 0.006], "LB": [0.04, 0.032],
+          "C": [0.07, 0.006], "LC": [0.07, 0.032],
+          "D": [0.09, 0.006], "LD": [0.09, 0.032]
+        },
+        "parts": [
+          { "id": "ax", "axes": true, "step": 0.01, "every": 0.1, "y": false, "start": true },
+          { "id": "dot", "dot": "P", "ink": "gold", "r": 15 },
+          { "id": "dA", "dot": "A", "ink": "accent", "r": 12 },
+          { "id": "dB", "dot": "B", "ink": "warm", "r": 12 },
+          { "id": "dC", "dot": "C", "ink": "blue", "r": 12 },
+          { "id": "dD", "dot": "D", "ink": "violet", "r": 12 },
+          { "id": "lA", "label": "A", "at": "LA", "dir": "c", "size": "m", "ink": "accent" },
+          { "id": "lB", "label": "B", "at": "LB", "dir": "c", "size": "m", "ink": "warm" },
+          { "id": "lC", "label": "C", "at": "LC", "dir": "c", "size": "m", "ink": "blue" },
+          { "id": "lD", "label": "D", "at": "LD", "dir": "c", "size": "m", "ink": "violet" }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Which point is at zero point zero nine?",
+          "pause": 0.25,
+          "do": [
+            { "do": "clear" },
+            { "do": "problem", "text": "Which point is at $0.09$?", "choices": ["$C$", "$D$", "$B$", "$A$"], "at": "Which", "id": "p4" },
+            { "do": "show", "target": ["dot", "dA", "dB", "dC", "dD", "lA", "lB", "lC", "lD"], "at": "point" }
+          ]
+        },
+        {
+          "say": "The left end is zero. The right end is one tenth, zero point one. Each step is one hundredth.",
+          "do": [
+            { "do": "write", "tex": "\\text{left end}=0", "fresh": true, "at": "left", "id": "end4" },
+            { "do": "write", "tex": "1\\ \\text{step}=0.01", "fresh": true, "at": "step", "id": "st4" },
+            { "do": "highlight", "target": "ax", "at": "tenth" }
+          ]
+        },
+        {
+          "say": "Nine hundredths from zero is zero point zero nine. Not zero point nine.",
+          "do": [
+            { "do": "move", "points": { "P": [0.09, 0.018] }, "at": "Nine" },
+            { "do": "write", "tex": "9\\times 0.01=0.09", "fresh": true, "at": "zero", "nth": 2, "id": "eq4" },
+            { "do": "highlight", "target": ["dD", "lD"], "at": "nine", "nth": 2 }
+          ]
+        },
+        {
+          "say": "The dot lands on D, just before one tenth.",
+          "do": [
+            { "do": "answer", "tex": "D", "at": "D", "id": "ans4" },
+            { "do": "highlight", "target": "lD", "at": "before" }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "Every point is found the same way.",
+          "do": [ { "do": "overview", "of": "p1", "at": "Every" } ]
+        },
+        {
+          "say": "One: read the left end, and the size of one step.",
+          "do": [ { "do": "recap", "text": "Read the left end, and the size of one step.", "marks": ["end0", "step"], "at": "One" } ]
+        },
+        {
+          "say": "Two: count that many steps from the left end.",
+          "do": [ { "do": "recap", "text": "Count that many steps from the left end.", "marks": ["phrase", "eq1"], "at": "Two" } ]
+        },
+        {
+          "say": "Three: the letter on that mark is the answer.",
+          "pause": 0.4,
+          "do": [ { "do": "recap", "text": "The letter on that mark is the answer.", "marks": ["eq1", "ans1"], "at": "Three" } ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,13 +1,26 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { generateProblem, templates } from "../src/math/engine";
-import { clientCanDraw } from "../src/math/contracts";
+import {
+  generateProblem,
+  generateProblemFor,
+  templates,
+} from "../src/math/engine";
+import {
+  clientCanDraw,
+  figureCapabilities,
+  responseCapabilities,
+} from "../src/math/contracts";
 import { proofConstructionCase } from "../src/math/geometry-proof-families";
 import { satGeometryDataCase } from "../src/math/sat-geometry-data-practice";
 import { obliqueCase } from "../src/math/trigonometry-practice";
 import { triangleLawCase } from "../src/math/remaining-gap-practice";
 import { polynomialGraphMatchCase } from "../src/math/function-behavior-practice";
-import { describeScene, layoutScene, sceneSchema } from "../src/math/scene";
+import {
+  describeScene,
+  layoutScene,
+  sceneSchema,
+  sceneCapability,
+} from "../src/math/scene";
 import type { Scene } from "../src/math/scene";
 
 /** Teaching figures for geometry and trigonometry: each shows the prompt's
@@ -46,22 +59,52 @@ const sceneOf = (id: string, seed: string): Scene | undefined => {
   return p.public.figure?.kind === "scene" ? p.public.figure.scene : undefined;
 };
 
-test("figured templates need scene capability; old clients are never sent them", () => {
-  for (const id of FIGURED) {
-    const t = templates.find((x) => x.id === id)!;
-    assert.equal(
-      t.version,
-      ["oblique-triangle-solve", "triangle-law-reasoning"].includes(id) ? 2 : 1,
-    );
-    assert.equal(t.requiredFigureCapability, "scenes-v1", id);
-    assert.ok(
-      !clientCanDraw(t, {
-        responseCapabilities: ["single-choice-v1"],
-        figureCapabilities: [],
-      }),
-      id,
-    );
-  }
+test("scene-bearing problems require a capable client or a drawable fallback", () => {
+  const scenesIn = (value: unknown): Scene[] => {
+    if (!value || typeof value !== "object") return [];
+    if ("v" in value && "elements" in value) return [sceneSchema.parse(value)];
+    return Object.values(value).flatMap(scenesIn);
+  };
+  let checked = 0;
+  for (const t of templates)
+    for (let i = 0; i < 6; i++) {
+      const seed = `scene-client:${i}`;
+      const current = generateProblem(t.id, seed);
+      const scenes = scenesIn([
+        current.public,
+        current.hintCue,
+        current.walkthrough,
+      ]);
+      for (const capability of new Set(scenes.map(sceneCapability))) {
+        checked++;
+        const older = {
+          responseCapabilities,
+          figureCapabilities: figureCapabilities.filter((c) =>
+            capability === "scenes-v1"
+              ? !c.startsWith("scenes-")
+              : c !== capability,
+          ),
+        };
+        // Missing admission metadata must not silently omit a scene family.
+        if (!clientCanDraw(t, older)) continue;
+        const fallback = generateProblemFor(
+          t.id,
+          seed,
+          older.figureCapabilities,
+          undefined,
+          older.responseCapabilities,
+        );
+        assert.ok(
+          scenesIn([
+            fallback.public,
+            fallback.hintCue,
+            fallback.walkthrough,
+          ]).every((scene) => sceneCapability(scene) !== capability),
+          `${t.id} ${seed}: client without ${capability} receives that scene`,
+        );
+      }
+    }
+  assert.ok(checked > 0, "sampled scene-bearing problems");
 });
 
 test("figures leave prompts, answers and choices exactly as before per seed", () => {
@@ -72,7 +115,9 @@ test("figures leave prompts, answers and choices exactly as before per seed", ()
       const one = generateProblem(id, `fig:${i}`);
       const two = generateProblem(id, `fig:${i}`);
       assert.deepEqual(one, two);
-      assert.equal(one.public.templateVersion, 1);
+      const template = templates.find((t) => t.id === id)!;
+      assert.ok(one.public.templateVersion >= (template.reprintsFrom ?? 1));
+      assert.ok(one.public.templateVersion <= template.version);
     }
 });
 

@@ -16,7 +16,7 @@ const DrawerFooter = lazy(() =>
 
 /**
  * The drawer for frames outside the app frame (sign-in and first-run cards,
- * the free trial's practice, a student's standings): its own wave-mark
+ * a student's standings): its own wave-mark
  * trigger, the same contents as the app frame's drawer. The trigger stays
  * light; the contents load when it opens.
  */

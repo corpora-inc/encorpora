@@ -1,3 +1,4 @@
+import { withClauseVariants } from "./clause-variants";
 import type { TemplateMetadata } from "./contracts";
 import { chainFamily, dispatch, pick } from "./chain-kit";
 import { shuffle } from "./distribution-practice";
@@ -582,9 +583,17 @@ const family = chainFamily({
   variant: (c) => c.config,
 });
 
-export const similarityProofGenerate = dispatch(similarityProofTemplates, {
-  "similarity-proof-aa": (seed) => family.generate(seed).problem,
-});
+export const similarityProofGenerateLegacy = dispatch(
+  similarityProofTemplates,
+  {
+    "similarity-proof-aa": (seed) => family.generate(seed).problem,
+  },
+);
 export const similarityProofCases = {
   "similarity-proof-aa": family.generate,
 };
+
+export const similarityProofGenerate = withClauseVariants(
+  similarityProofTemplates,
+  similarityProofGenerateLegacy,
+);

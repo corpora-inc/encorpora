@@ -17,14 +17,7 @@ import { flatSolidComposeTemplates } from "../src/math/flat-solid-compose-practi
  */
 
 const IDS = flatSolidComposeTemplates.map((t) => t.id);
-const SKILLS: Record<string, string> = {
-  "flat-or-solid-name": "name-shapes",
-  "pick-flat-or-solid": "name-shapes",
-  "count-flat-or-solid": "name-shapes",
-  "composite-shape-name": "composite-shapes",
-  "composite-which-pieces": "composite-shapes",
-  "composite-which-solids": "composite-shapes",
-};
+const metadata = new Map(flatSolidComposeTemplates.map((t) => [t.id, t]));
 const sample = (id: string, n: number, prefix = "t") =>
   Array.from({ length: n }, (_, i) => generateProblem(id, `${prefix}-${i}`));
 const frequency = (problems: GeneratedProblem[]) => {
@@ -46,11 +39,10 @@ function python(script: string, input: unknown) {
 }
 
 test("every template is valid, deterministic and on its skill", () => {
-  assert.deepEqual(IDS, Object.keys(SKILLS));
   for (const id of IDS)
     for (const [i, p] of sample(id, 60).entries()) {
       assert.equal(generatedProblemSchema.safeParse(p).success, true, id);
-      assert.equal(p.public.skillId, SKILLS[id], id);
+      assert.equal(p.public.skillId, metadata.get(id)!.skillId, id);
       assert.deepEqual(generateProblem(id, `t-${i}`), p, `${id} repeats`);
       assert.equal(p.public.figure?.kind, "scene", id);
     }

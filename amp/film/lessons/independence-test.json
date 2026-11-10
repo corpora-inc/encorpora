@@ -1,0 +1,1714 @@
+{
+  "id": "independence-test",
+  "title": "Testing independence in a two-way table",
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -1.8,
+          12.6,
+          18.4,
+          21
+        ],
+        "points": {
+          "TL": [
+            0,
+            20
+          ],
+          "ML": [
+            4.4,
+            11.6
+          ],
+          "GE": {
+            "anchor": [
+              "m",
+              "guide:end"
+            ]
+          }
+        },
+        "parts": [
+          {
+            "id": "t",
+            "table": true,
+            "at": "TL",
+            "head": [
+              "Band",
+              "No band",
+              "Total"
+            ],
+            "rows": [
+              {
+                "label": "Sport",
+                "cells": [
+                  "3",
+                  "9",
+                  "12"
+                ]
+              },
+              {
+                "label": "No sport",
+                "cells": [
+                  "2",
+                  "6",
+                  "8"
+                ]
+              },
+              {
+                "label": "Total",
+                "cells": [
+                  "5",
+                  "15",
+                  "20"
+                ]
+              }
+            ],
+            "cell": [
+              4.4,
+              1.6
+            ],
+            "labelW": 4.6,
+            "totals": true
+          },
+          {
+            "id": "m",
+            "mosaic": "ML",
+            "w": 13.4,
+            "h": 9,
+            "slice": "rows",
+            "groups": [
+              {
+                "n": 12,
+                "k": 3
+              },
+              {
+                "n": 8,
+                "k": 2
+              }
+            ],
+            "names": [
+              "\\text{Sport}\\ (12)",
+              "\\text{No sport}\\ (8)"
+            ],
+            "counts": true,
+            "guide": true
+          },
+          {
+            "id": "lg",
+            "label": "\\cw{\\text{everyone: }\\tfrac{5}{20}=\\tfrac14}",
+            "at": "GE",
+            "dir": "s",
+            "size": "s",
+            "ink": "warm"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Twenty students answered two questions: do you play a sport, and are you in the band?",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "t.cell.1.0",
+                "t.cell.2.0"
+              ],
+              "at": "sport"
+            },
+            {
+              "do": "show",
+              "target": [
+                "t.cell.0.1",
+                "t.cell.0.2"
+              ],
+              "at": "band"
+            }
+          ]
+        },
+        {
+          "say": "A two-way table sorts every student by both answers at once: sport down the rows, band across the columns.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "term",
+              "word": "two-way table",
+              "meaning": "Counts people by two questions at once: one question down the rows, the other across the columns.",
+              "at": "two-way",
+              "id": "f0"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "t.cell.1.0",
+                "t.cell.2.0"
+              ],
+              "at": "rows"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "t.cell.0.1",
+                "t.cell.0.2"
+              ],
+              "at": "columns"
+            }
+          ]
+        },
+        {
+          "say": "Three students play a sport and are in the band. Nine play a sport but are not in the band.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "show",
+              "target": "t.cell.1.1",
+              "at": "Three"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.1.2",
+              "at": "Nine"
+            }
+          ]
+        },
+        {
+          "say": "Two are in the band but play no sport. Six do neither.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "show",
+              "target": "t.cell.2.1",
+              "at": "Two"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.2.2",
+              "at": "Six"
+            }
+          ]
+        },
+        {
+          "say": "Totals. Across: twelve play a sport, eight do not. Down: five are in the band, fifteen are not. Twenty students in all.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "t.cell.3.0",
+                "t.cell.0.3"
+              ],
+              "at": "Totals"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.1.3",
+              "at": "twelve"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.2.3",
+              "at": "eight"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.3.1",
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.3.2",
+              "at": "fifteen"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.3.3",
+              "at": "Twenty"
+            }
+          ]
+        },
+        {
+          "say": "Pick one student at random. The probability of band, P of B, is the band total over everyone: five out of twenty. One fourth.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "write",
+              "tex": "P(\\ca{B})=\\dfrac{\\ca{5}}{20}=\\dfrac{1}{4}",
+              "fresh": true,
+              "at": "probability",
+              "id": "f1"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.3.1",
+              "at": "five"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.3.3",
+              "at": "twenty"
+            }
+          ]
+        },
+        {
+          "say": "Now a question with a condition: the probability of band, given sport.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "write",
+              "tex": "P(\\ca{B}\\mid\\cg{S})",
+              "fresh": true,
+              "at": "condition",
+              "id": "f2"
+            }
+          ]
+        },
+        {
+          "say": "Given means you already know this student plays a sport. So look only at the sport row.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "given",
+              "target": "t.row.1",
+              "at": "already"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.1.0",
+              "at": "only"
+            }
+          ]
+        },
+        {
+          "say": "Twelve students. Three of them are in the band: three twelfths. One fourth again.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "t.cell.1.3",
+              "at": "Twelve"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.1.1",
+              "at": "Three"
+            },
+            {
+              "do": "write",
+              "tex": "P(\\ca{B}\\mid\\cg{S})=\\dfrac{\\ca{3}}{\\cg{12}}=\\dfrac{1}{4}",
+              "at": "three",
+              "nth": 2,
+              "id": "f3"
+            }
+          ]
+        },
+        {
+          "say": "The group after the bar is the group you divide by. Given sport: divide by the sport total, twelve, not by all twenty.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "watch",
+              "text": "Divide by the total of the group after the bar, not by everyone.",
+              "at": "The",
+              "id": "f4"
+            },
+            {
+              "do": "highlight",
+              "target": "t.row.1",
+              "at": "Given"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.1.3",
+              "at": "twelve"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.3.3",
+              "at": "twenty"
+            }
+          ]
+        },
+        {
+          "say": "One fourth inside the sport row, one fourth among everyone. Knowing that a student plays a sport did not change the chance of band. That is independence.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "given",
+              "target": "t",
+              "at": "everyone"
+            },
+            {
+              "do": "term",
+              "word": "independent",
+              "meaning": "Knowing one event does not change the chance of the other: $P(B\\mid S)=P(B)$.",
+              "at": "Knowing",
+              "id": "f5"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "t.cell.1.1",
+                "t.cell.3.1"
+              ],
+              "at": "change"
+            }
+          ]
+        },
+        {
+          "say": "A picture of the same table. The square is all twenty students.",
+          "do": [
+            {
+              "do": "view",
+              "to": [
+                -1.8,
+                -0.2,
+                18.4,
+                21
+              ],
+              "at": "picture"
+            },
+            {
+              "do": "show",
+              "target": [
+                "m.slab.1",
+                "m.slab.2"
+              ],
+              "at": "square"
+            }
+          ]
+        },
+        {
+          "say": "The sport players are twelve of the twenty: the top part. The eight others: the bottom part.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "m.slab.1",
+              "at": "top"
+            },
+            {
+              "do": "highlight",
+              "target": "m.slab.2",
+              "at": "bottom"
+            }
+          ]
+        },
+        {
+          "say": "Now color the band students in each part. Three of the twelve on top. Two of the eight below.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "show",
+              "target": "m.part.1",
+              "at": "Three"
+            },
+            {
+              "do": "show",
+              "target": "m.part.2",
+              "at": "Two"
+            }
+          ]
+        },
+        {
+          "say": "The colored edge is one straight line: the same share in both rows, one fourth, the same as for everyone. Independent events make a straight line.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "show",
+              "target": "m.guide",
+              "at": "straight"
+            },
+            {
+              "do": "show",
+              "target": "lg",
+              "at": "everyone"
+            },
+            {
+              "do": "text",
+              "text": "Independent: the same share in every row. One straight line.",
+              "at": "Independent",
+              "id": "f6"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "m.part.1",
+                "m.part.2"
+              ],
+              "at": "make"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.8,
+          13.2,
+          18.4,
+          21.8
+        ],
+        "points": {
+          "TL": [
+            0,
+            20.6
+          ],
+          "ML": [
+            6.2,
+            12
+          ],
+          "GS": {
+            "anchor": [
+              "m",
+              "guide:start"
+            ]
+          }
+        },
+        "parts": [
+          {
+            "id": "t",
+            "table": true,
+            "at": "TL",
+            "start": true,
+            "head": [
+              "$B$",
+              "Not $B$",
+              "Total"
+            ],
+            "rows": [
+              {
+                "label": "$A$",
+                "cells": [
+                  "1",
+                  "5",
+                  "6"
+                ]
+              },
+              {
+                "label": "Not $A$",
+                "cells": [
+                  "7",
+                  "11",
+                  "18"
+                ]
+              },
+              {
+                "label": "Total",
+                "cells": [
+                  "8",
+                  "16",
+                  "24"
+                ]
+              }
+            ],
+            "cell": [
+              4.4,
+              1.6
+            ],
+            "labelW": 4.6,
+            "totals": true
+          },
+          {
+            "id": "m",
+            "mosaic": "ML",
+            "w": 11.2,
+            "h": 10.8,
+            "slice": "cols",
+            "groups": [
+              {
+                "n": 8,
+                "k": 1
+              },
+              {
+                "n": 16,
+                "k": 5
+              }
+            ],
+            "names": [
+              "B\\ (8)",
+              "\\text{Not }B\\ (16)"
+            ],
+            "counts": true,
+            "guide": true
+          },
+          {
+            "id": "lg",
+            "label": "\\cw{\\text{everyone: }\\tfrac{6}{24}=\\tfrac14}",
+            "at": "GS",
+            "dir": "w",
+            "size": "s",
+            "ink": "warm"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "The table shows how twenty-four people are classified by two events, A and B. Which statement is true?",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "The table shows how 24 people are classified by two events, $A$ and $B$. Which statement is true?",
+              "choices": [
+                "$P(A\\mid B)=P(A)$, so the events are independent.",
+                "$P(A\\mid B)>P(A)$, so the events are not independent.",
+                "$P(A\\mid B)<P(A)$, so the events are not independent.",
+                "No person is in both $A$ and $B$, so the events are independent."
+              ],
+              "at": "The",
+              "id": "p0"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "t.cell.1.0",
+                "t.cell.2.0"
+              ],
+              "at": "A"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "t.cell.0.1",
+                "t.cell.0.2"
+              ],
+              "at": "B"
+            }
+          ]
+        },
+        {
+          "say": "Every choice compares P of A given B with P of A.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Find $P(A\\mid B)$ and $P(A)$, then compare.",
+              "tone": "muted",
+              "at": "Every",
+              "id": "p1"
+            }
+          ]
+        },
+        {
+          "say": "So find both, then compare. P of A, among everyone: the A row total, six, over twenty-four. One fourth.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "write",
+              "tex": "P(\\ca{A})=\\dfrac{\\ca{6}}{24}=\\dfrac{1}{4}",
+              "fresh": true,
+              "at": "P",
+              "id": "p2"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.1.3",
+              "at": "six"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.3.3",
+              "at": "twenty-four"
+            }
+          ]
+        },
+        {
+          "say": "P of A given B. The group after the bar is B, so shrink to the B column: eight people.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "write",
+              "tex": "P(\\ca{A}\\mid\\cg{B})",
+              "fresh": true,
+              "at": "P",
+              "id": "p3"
+            },
+            {
+              "do": "given",
+              "target": "t.col.1",
+              "at": "shrink"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.3.1",
+              "at": "eight"
+            }
+          ]
+        },
+        {
+          "say": "Of those eight, one is in A. One eighth.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "t.cell.1.1",
+              "at": "one"
+            },
+            {
+              "do": "write",
+              "tex": "P(\\ca{A}\\mid\\cg{B})=\\dfrac{\\ca{1}}{\\cg{8}}",
+              "at": "One",
+              "nth": 2,
+              "id": "p4"
+            }
+          ]
+        },
+        {
+          "say": "Compare. One eighth is less than one fourth. Knowing B lowered the chance of A, so A and B are not independent.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\dfrac{1}{8}<\\dfrac{1}{4}",
+              "fresh": true,
+              "at": "Compare",
+              "id": "p5"
+            },
+            {
+              "do": "given",
+              "target": "t",
+              "at": "Knowing"
+            },
+            {
+              "do": "text",
+              "text": "$P(A\\mid B)<P(A)$: not independent.",
+              "at": "so",
+              "id": "p6"
+            }
+          ]
+        },
+        {
+          "say": "In the picture, B slices the square: the B column is eight of the twenty-four, the rest sixteen.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "view",
+              "to": [
+                -1.8,
+                0.4,
+                18.4,
+                21.8
+              ],
+              "at": "picture"
+            },
+            {
+              "do": "show",
+              "target": "m.slab.1",
+              "at": "slices"
+            },
+            {
+              "do": "show",
+              "target": "m.slab.2",
+              "at": "rest"
+            }
+          ]
+        },
+        {
+          "say": "A colors from the top: one of eight in the B slab, five of sixteen in the other. The dashed line is everyone's share, one fourth. The colored edge is not straight: not independent.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "show",
+              "target": "m.part.1",
+              "at": "one"
+            },
+            {
+              "do": "show",
+              "target": "m.part.2",
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": [
+                "m.guide",
+                "lg"
+              ],
+              "at": "dashed"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "m.part.1",
+                "m.part.2"
+              ],
+              "at": "edge"
+            }
+          ]
+        },
+        {
+          "say": "Look at the last choice: one person is in both A and B, so it is out at a glance.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "t.cell.1.1",
+              "at": "one"
+            }
+          ]
+        },
+        {
+          "say": "Even with no one in both, the events would not be independent. That is mutually exclusive: a different idea.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "watch",
+              "text": "No one in both means mutually exclusive, not independent. Test independence by comparing shares.",
+              "at": "Even",
+              "id": "p7"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.1.1",
+              "at": "mutually"
+            }
+          ]
+        },
+        {
+          "say": "P of A given B is less than P of A: not independent.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "\\begin{array}{c}P(A\\mid B)<P(A)\\\\ \\text{not independent}\\end{array}",
+              "at": "P",
+              "id": "p8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.2,
+          -0.2,
+          13.4,
+          11.6
+        ],
+        "points": {
+          "ML": [
+            3,
+            7.6
+          ],
+          "P1": {
+            "anchor": [
+              "m",
+              "part:1"
+            ]
+          },
+          "LS": [
+            6.2,
+            10.6
+          ],
+          "LB": [
+            6.2,
+            9.5
+          ],
+          "LP": [
+            6.2,
+            8.4
+          ]
+        },
+        "parts": [
+          {
+            "id": "m",
+            "mosaic": "ML",
+            "w": 10,
+            "h": 7,
+            "slice": "rows",
+            "groups": [
+              {
+                "n": 10,
+                "k": 4
+              },
+              {
+                "n": 10,
+                "k": 3
+              }
+            ],
+            "names": [
+              "\\text{Sport}",
+              "\\text{No sport}"
+            ]
+          },
+          {
+            "id": "l40",
+            "label": "\\ca{40\\%}",
+            "at": "P1",
+            "dir": "c",
+            "size": "m",
+            "halo": true
+          },
+          {
+            "id": "lS",
+            "label": "\\cg{S}\\text{: plays a sport}",
+            "at": "LS",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "lB",
+            "label": "\\ca{B}\\text{: in the band}",
+            "at": "LB",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "lP",
+            "label": "P(\\ca{B}\\mid\\cg{S})=0.4",
+            "at": "LP",
+            "dir": "c",
+            "size": "m"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "In a survey of students, let S be the event that a randomly selected respondent plays a sport, and let B be the event that the respondent is in the band.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "In a survey of students, let $S$ be the event that a randomly selected respondent plays a sport, and let $B$ be the event that the respondent is in the band. It is known that $P(B\\mid S)=0.4$. Which statement correctly interprets this probability?",
+              "choices": [
+                "Among surveyed students who do not play a sport, 40% are in the band.",
+                "Among surveyed students who play a sport, 40% are in the band.",
+                "40% of all surveyed students play a sport and are in the band.",
+                "Among surveyed students who are in the band, 40% play a sport."
+              ],
+              "at": "In",
+              "id": "q0"
+            },
+            {
+              "do": "show",
+              "target": [
+                "m.slab.1",
+                "m.slab.2"
+              ],
+              "at": "students"
+            },
+            {
+              "do": "show",
+              "target": "lS",
+              "at": "plays"
+            },
+            {
+              "do": "highlight",
+              "target": "m.slab.1",
+              "at": "sport"
+            },
+            {
+              "do": "show",
+              "target": "lB",
+              "at": "band"
+            }
+          ]
+        },
+        {
+          "say": "It is known that P of B given S equals zero point four. Which statement correctly interprets this probability?",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "show",
+              "target": "lP",
+              "at": "P"
+            },
+            {
+              "do": "highlight",
+              "target": "lP",
+              "at": "Which"
+            }
+          ]
+        },
+        {
+          "say": "Read the bar as given. The event after the bar, S, names the group: students who play a sport. Look only at them.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "text",
+              "text": "Read $\\mid$ as “given”.",
+              "tone": "muted",
+              "at": "Read",
+              "id": "q1"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "m.name.1",
+                "lS"
+              ],
+              "at": "S"
+            },
+            {
+              "do": "given",
+              "target": "m.slab.1",
+              "at": "Look"
+            }
+          ]
+        },
+        {
+          "say": "The event before the bar, B, is the question inside that group.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "m.slab.1",
+              "at": "inside"
+            }
+          ]
+        },
+        {
+          "say": "Zero point four means forty percent of the sport players are in the band.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "m.part.1",
+                "l40"
+              ],
+              "at": "forty"
+            },
+            {
+              "do": "text",
+              "text": "Among students who play a sport, 40% are in the band.",
+              "at": "forty",
+              "id": "q4"
+            }
+          ]
+        },
+        {
+          "say": "Not forty percent of all students: that would be a share of the whole square.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "text",
+              "text": "Not 40% of everyone: the group is the sport players.",
+              "tone": "muted",
+              "at": "Not",
+              "id": "q5"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "m.slab.1",
+                "m.slab.2"
+              ],
+              "at": "whole"
+            }
+          ]
+        },
+        {
+          "say": "Not among band students: that reverses the bar, and P of S given B is a different number.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "text",
+              "text": "$P(S\\mid B)$ reverses the bar: then the band would be the group.",
+              "tone": "muted",
+              "at": "Not",
+              "id": "q6"
+            },
+            {
+              "do": "highlight",
+              "target": "lP",
+              "at": "reverses"
+            }
+          ]
+        },
+        {
+          "say": "And not the other row: those students do not play a sport.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "highlight",
+              "target": "m.slab.2",
+              "at": "other"
+            }
+          ]
+        },
+        {
+          "say": "Among surveyed students who play a sport, forty percent are in the band.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "\\begin{array}{c}\\text{Among students}\\\\ \\text{who play a sport,}\\\\ \\text{40\\% are in the band}\\end{array}",
+              "at": "Among",
+              "id": "q7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -2.4,
+          11.8,
+          15,
+          21.6
+        ],
+        "points": {
+          "TL": [
+            0,
+            21
+          ],
+          "ML": [
+            4,
+            11.2
+          ],
+          "GE": {
+            "anchor": [
+              "m",
+              "guide:end"
+            ]
+          }
+        },
+        "parts": [
+          {
+            "id": "t",
+            "table": true,
+            "at": "TL",
+            "start": true,
+            "head": [
+              "Yes",
+              "No",
+              "Total"
+            ],
+            "rows": [
+              {
+                "label": "North",
+                "cells": [
+                  "7",
+                  "3",
+                  "10"
+                ]
+              },
+              {
+                "label": "South",
+                "cells": [
+                  "16",
+                  "9",
+                  "25"
+                ]
+              },
+              {
+                "label": "East",
+                "cells": [
+                  "12",
+                  "8",
+                  "20"
+                ]
+              },
+              {
+                "label": "West",
+                "cells": [
+                  "13",
+                  "12",
+                  "25"
+                ]
+              },
+              {
+                "label": "Total",
+                "cells": [
+                  "48",
+                  "32",
+                  "80"
+                ]
+              }
+            ],
+            "cell": [
+              3.4,
+              1.4
+            ],
+            "labelW": 3.8,
+            "totals": true
+          },
+          {
+            "id": "m",
+            "mosaic": "ML",
+            "w": 10,
+            "h": 8.4,
+            "slice": "rows",
+            "groups": [
+              {
+                "n": 10,
+                "k": 7
+              },
+              {
+                "n": 25,
+                "k": 16
+              },
+              {
+                "n": 20,
+                "k": 12
+              },
+              {
+                "n": 25,
+                "k": 13
+              }
+            ],
+            "names": [
+              "\\text{North}",
+              "\\text{South}",
+              "\\text{East}",
+              "\\text{West}"
+            ],
+            "guide": true
+          },
+          {
+            "id": "lg",
+            "label": "\\cw{\\text{everyone: }\\tfrac{48}{80}=\\tfrac35}",
+            "at": "GE",
+            "dir": "s",
+            "size": "s",
+            "ink": "warm"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Employees in four groups were asked whether they bike to work. The table shows the counts. For which group is belonging to that group independent of answering Yes?",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Employees in four groups were asked whether they bike to work. The table shows the counts. For which group is belonging to that group independent of answering Yes?",
+              "choices": [
+                "East",
+                "West",
+                "North",
+                "South"
+              ],
+              "at": "Employees",
+              "id": "r0"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "t.cell.1.0",
+                "t.cell.2.0",
+                "t.cell.3.0",
+                "t.cell.4.0"
+              ],
+              "at": "groups"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "t.col.1",
+                "t.col.2"
+              ],
+              "at": "counts"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.0.1",
+              "at": "Yes"
+            }
+          ]
+        },
+        {
+          "say": "Independent means that group says Yes at the same rate as everyone. So first find everyone's rate.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Independent: the group says Yes at everyone's rate.",
+              "tone": "muted",
+              "at": "Independent",
+              "id": "r1"
+            },
+            {
+              "do": "highlight",
+              "target": "t.row.5",
+              "at": "everyone"
+            }
+          ]
+        },
+        {
+          "say": "Everyone: forty-eight Yes out of eighty. Three fifths.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "write",
+              "tex": "P(\\ca{\\text{Yes}})=\\dfrac{\\ca{48}}{80}=\\dfrac{3}{5}",
+              "fresh": true,
+              "at": "forty-eight",
+              "id": "r2"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.5.1",
+              "at": "forty-eight"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.5.3",
+              "at": "eighty"
+            }
+          ]
+        },
+        {
+          "say": "Now each group. North: at everyone's rate, three fifths of its ten would say Yes. That is six. North has seven: more. Not independent.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "given",
+              "target": "t.row.1",
+              "at": "North"
+            },
+            {
+              "do": "write",
+              "tex": "\\cm{\\text{North}}\\quad\\dfrac{3}{5}\\cdot\\cg{10}=6\\ne\\ca{7}",
+              "fresh": true,
+              "at": "three",
+              "id": "r3"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.1.3",
+              "at": "ten"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.1.1",
+              "at": "seven"
+            }
+          ]
+        },
+        {
+          "say": "South: three fifths of twenty-five is fifteen. South has sixteen. Not independent.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "given",
+              "target": "t.row.2",
+              "at": "South"
+            },
+            {
+              "do": "write",
+              "tex": "\\cm{\\text{South}}\\quad\\dfrac{3}{5}\\cdot\\cg{25}=15\\ne\\ca{16}",
+              "fresh": true,
+              "at": "three",
+              "id": "r4"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.2.1",
+              "at": "sixteen"
+            }
+          ]
+        },
+        {
+          "say": "East: three fifths of twenty is twelve. East has twelve. The same rate as everyone: independent.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "given",
+              "target": "t.row.3",
+              "at": "East"
+            },
+            {
+              "do": "write",
+              "tex": "\\cm{\\text{East}}\\quad\\dfrac{3}{5}\\cdot\\cg{20}=12=\\ca{12}",
+              "fresh": true,
+              "at": "three",
+              "id": "r5"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.3.1",
+              "at": "twelve",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "West: three fifths of twenty-five is fifteen. West has thirteen: fewer. Not independent.",
+          "pause": 0.4,
+          "do": [
+            {
+              "do": "given",
+              "target": "t.row.4",
+              "at": "West"
+            },
+            {
+              "do": "write",
+              "tex": "\\cm{\\text{West}}\\quad\\dfrac{3}{5}\\cdot\\cg{25}=15\\ne\\ca{13}",
+              "fresh": true,
+              "at": "three",
+              "id": "r6"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.4.1",
+              "at": "thirteen"
+            }
+          ]
+        },
+        {
+          "say": "In the picture, each row is a group and the dashed line is everyone's three fifths. Only East's colored edge lands on the line.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "view",
+              "to": [
+                -2.4,
+                -0.6,
+                15,
+                21.6
+              ],
+              "at": "picture"
+            },
+            {
+              "do": "given",
+              "target": "t",
+              "at": "In"
+            },
+            {
+              "do": "show",
+              "target": [
+                "m",
+                "m.parts"
+              ],
+              "at": "picture"
+            },
+            {
+              "do": "show",
+              "target": [
+                "m.guide",
+                "lg"
+              ],
+              "at": "dashed"
+            },
+            {
+              "do": "highlight",
+              "target": "m.part.3",
+              "at": "East's"
+            }
+          ]
+        },
+        {
+          "say": "East is the group: its share is everyone's share.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "\\text{East}",
+              "at": "East",
+              "id": "r7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -3,
+          -0.8,
+          14.4,
+          9.8
+        ],
+        "points": {
+          "ML": [
+            4,
+            9
+          ],
+          "GE": {
+            "anchor": [
+              "m",
+              "guide:end"
+            ]
+          }
+        },
+        "parts": [
+          {
+            "id": "m",
+            "mosaic": "ML",
+            "w": 10,
+            "h": 8,
+            "slice": "rows",
+            "groups": [
+              {
+                "n": 50,
+                "k": 5
+              },
+              {
+                "n": 150,
+                "k": 15
+              }
+            ],
+            "names": [
+              "\\text{Yes to 1}\\ (50)",
+              "\\text{No to 1}\\ (150)"
+            ],
+            "counts": true,
+            "guide": true
+          },
+          {
+            "id": "lg",
+            "label": "\\cw{\\text{everyone: }\\tfrac{20}{200}=\\tfrac{1}{10}}",
+            "at": "GE",
+            "dir": "s",
+            "size": "s",
+            "ink": "warm"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "A survey asked two hundred people two questions. Fifty people answered Yes to question one and twenty answered Yes to question two.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "A survey asked 200 people two questions. 50 people answered Yes to question 1 and 20 answered Yes to question 2. If the answers to the two questions are independent, how many people are expected to answer Yes to both?",
+              "choices": [
+                "5",
+                "1000",
+                "-130",
+                "20"
+              ],
+              "at": "A",
+              "id": "s0"
+            },
+            {
+              "do": "show",
+              "target": [
+                "m.slab.1",
+                "m.slab.2"
+              ],
+              "at": "Fifty"
+            },
+            {
+              "do": "show",
+              "target": [
+                "m.guide",
+                "lg"
+              ],
+              "at": "twenty"
+            }
+          ]
+        },
+        {
+          "say": "If the answers to the two questions are independent, how many people are expected to answer Yes to both?",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "text",
+              "text": "If independent: Yes to 2 at the same rate in every group.",
+              "tone": "muted",
+              "at": "independent",
+              "id": "s1"
+            }
+          ]
+        },
+        {
+          "say": "Everyone's rate: twenty out of two hundred, one tenth. So inside every group, one tenth say Yes to question two.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "write",
+              "tex": "P(\\ca{\\text{Yes to 2}})=\\dfrac{\\ca{20}}{200}=\\dfrac{1}{10}",
+              "fresh": true,
+              "at": "Everyone's",
+              "id": "s2"
+            },
+            {
+              "do": "highlight",
+              "target": "m.guide",
+              "at": "inside"
+            }
+          ]
+        },
+        {
+          "say": "Among the fifty who said Yes to question one, one tenth also say Yes to question two: five people.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "given",
+              "target": "m.slab.1",
+              "at": "fifty"
+            },
+            {
+              "do": "show",
+              "target": "m.part.1",
+              "at": "tenth"
+            },
+            {
+              "do": "write",
+              "tex": "\\dfrac{1}{10}\\cdot 50=5",
+              "fresh": true,
+              "at": "five",
+              "id": "s3"
+            }
+          ]
+        },
+        {
+          "say": "That is the product rule. For independent events, P of A and B equals P of A times P of B.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "text",
+              "text": "Product rule: $P(A\\text{ and }B)=P(A)\\cdot P(B)$.",
+              "at": "product",
+              "id": "s4"
+            },
+            {
+              "do": "given",
+              "target": "m",
+              "at": "independent"
+            },
+            {
+              "do": "show",
+              "target": "m.part.2",
+              "at": "independent"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "m.part.1",
+                "m.part.2"
+              ],
+              "at": "equals"
+            }
+          ]
+        },
+        {
+          "say": "Fifty over two hundred, times twenty over two hundred, is five over two hundred. Times two hundred people: five.",
+          "pause": 0.5,
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\dfrac{50}{200}\\cdot\\dfrac{20}{200}=\\dfrac{5}{200}",
+              "fresh": true,
+              "at": "Fifty",
+              "id": "s5"
+            },
+            {
+              "do": "write",
+              "tex": "\\dfrac{5}{200}\\cdot 200=5",
+              "at": "Times",
+              "nth": 2,
+              "id": "s6"
+            }
+          ]
+        },
+        {
+          "say": "Rule out the nonsense. Twenty would put every Yes to two inside Yes to one. One thousand is more than the two hundred asked; a count is never negative.",
+          "pause": 0.3,
+          "do": [
+            {
+              "do": "text",
+              "text": "20 would put every Yes to 2 inside Yes to 1.",
+              "tone": "muted",
+              "at": "Rule",
+              "id": "s7"
+            },
+            {
+              "do": "highlight",
+              "target": "m.part.1",
+              "at": "Twenty"
+            },
+            {
+              "do": "text",
+              "text": "1000 is more than 200 people; a count is never negative.",
+              "tone": "muted",
+              "at": "One",
+              "id": "s8"
+            }
+          ]
+        },
+        {
+          "say": "Five people.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "answer",
+              "tex": "5\\ \\text{people}",
+              "at": "Five",
+              "id": "s9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "The same reading every time.",
+          "do": [
+            {
+              "do": "overview",
+              "of": "p0",
+              "at": "same"
+            }
+          ]
+        },
+        {
+          "say": "One: given B: look only at the B group, and divide by its total.",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Given $B$: look only at the $B$ group, and divide by its total.",
+              "marks": [
+                "p3",
+                "p4"
+              ],
+              "at": "One"
+            }
+          ]
+        },
+        {
+          "say": "Two: independent means the group's share equals the overall share: one straight line.",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Independent: the group's share equals the overall share. One straight line.",
+              "marks": [
+                "p2",
+                "p4"
+              ],
+              "at": "Two"
+            }
+          ]
+        },
+        {
+          "say": "Three: different shares, not independent; less or greater says which way.",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Different shares: not independent. Less or greater says which way.",
+              "marks": [
+                "p5",
+                "p6",
+                "p8"
+              ],
+              "at": "Three"
+            }
+          ]
+        },
+        {
+          "say": "Four: independent events multiply: P of A times P of B.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "recap",
+              "text": "Independent events multiply: $P(\\text{both})=P(A)\\cdot P(B)$, as fractions or decimals.",
+              "at": "Four"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

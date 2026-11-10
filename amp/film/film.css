@@ -1,0 +1,213 @@
+/* The film wears the app's own tokens; there is not one color literal for a surface here. */
+html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--color-surface); }
+#film { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: var(--color-surface); color: var(--color-on-surface); }
+.film-shot { position: absolute; inset: 0; }
+.film-figure {
+  position: absolute;
+  background: var(--color-figure-paper);
+  border: 1.5px solid var(--color-border);
+  border-radius: 28px;
+  box-shadow: 0 2px 4px var(--color-shadow), 0 18px 48px -18px var(--color-shadow);
+  overflow: hidden;
+}
+.film-geo { position: absolute; inset: 0; display: block; }
+.film-shadow { fill: #10231f; }
+.film-labels { position: absolute; inset: 0; pointer-events: none; }
+.film-label { position: absolute; left: 0; top: 0; white-space: nowrap; line-height: 1; transform-origin: center; will-change: transform; }
+.film-label .katex { font-size: inherit; }
+.film-label.size-s { font-size: 44px; }
+.film-label.size-m { font-size: 56px; }
+.film-label.size-l { font-size: 72px; }
+.film-label.size-xl { font-size: 116px; }
+.film-label.halo { text-shadow: 0 0 10px var(--color-figure-paper), 0 0 10px var(--color-figure-paper), 0 0 18px var(--color-figure-paper), 0 0 18px var(--color-figure-paper); }
+
+/* The cast's name tags, in a band above the cards. The speaker's tag is lit (--lit from 0 to 1); the others rest. */
+.film-cast { position: absolute; display: flex; align-items: center; gap: 18px; z-index: 3; }
+.film-cast-tag {
+  --lit: 0;
+  display: inline-flex; align-items: center; gap: 14px; height: 100%; padding: 0 26px 0 20px;
+  border-radius: 999px; border: 1.5px solid var(--color-border);
+  background: var(--color-figure-paper);
+  color: color-mix(in srgb, var(--color-on-surface) calc(42% + var(--lit) * 58%), transparent);
+  font-family: var(--font-display); font-weight: 600; letter-spacing: 0.01em; white-space: nowrap;
+  font-size: 34px; line-height: 1;
+  box-shadow: 0 1px 3px color-mix(in srgb, var(--color-shadow) calc(var(--lit) * 100%), transparent);
+}
+[data-layout="tall"] .film-cast-tag { font-size: 44px; gap: 16px; padding: 0 30px 0 24px; }
+.film-cast-tag i { width: 0.42em; height: 0.42em; border-radius: 50%; background: var(--tag-ink); opacity: calc(0.35 + var(--lit) * 0.65); }
+.film-cast-tag:nth-child(1) { --tag-ink: #20776d; }
+.film-cast-tag:nth-child(2) { --tag-ink: #9c4420; }
+.film-cast-tag:nth-child(3) { --tag-ink: #6a5aa0; }
+.film-cast-tag.on { border-color: color-mix(in srgb, var(--tag-ink) calc(var(--lit) * 100%), var(--color-border)); }
+
+/* The whiteboard: a window onto one surface; the camera moves the surface. */
+.film-board {
+  position: absolute; overflow: hidden; z-index: 2;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+}
+.film-surface { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
+.film-col {
+  position: absolute; top: 0;
+  display: flex; flex-direction: column; align-items: center; gap: 34px;
+  --film-math: 84px;
+  font-size: calc(var(--film-math) * 0.66);
+  line-height: 1.28;
+}
+.film-line { position: relative; flex: none; max-width: var(--film-card, 1400px); }
+.film-line.write { align-self: stretch; max-width: none; display: block; }
+.film-line.answer { display: flex; align-items: center; justify-content: center; }
+.film-line.text { text-align: center; }
+.film-math { display: inline-block; font-size: var(--film-math); line-height: 1; white-space: nowrap; }
+.film-math .katex-display { margin: 0; text-align: left; }
+.film-math .katex-display > .katex { text-align: left; }
+.film-math .katex { font-size: 1em; }
+.film-note {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  color: var(--color-muted-text);
+  font-size: calc(var(--film-math) * 0.62);
+  white-space: nowrap;
+}
+.film-note .katex { font-size: 1em; }
+.film-line .katex { font-size: 1.08em; }
+.film-line.text.muted { color: var(--color-muted-text); }
+.film-line.answer {
+  padding: 22px 38px;
+  border-radius: 22px;
+  background: color-mix(in srgb, var(--color-success) calc(var(--film-box, 0) * 100%), transparent);
+  box-shadow: inset 0 0 0 calc(var(--film-box, 0) * 3px) var(--color-success-accent);
+  color: var(--color-on-success);
+}
+.film-line.problem {
+  width: var(--film-card, 1400px); box-sizing: border-box;
+  padding: 34px 44px;
+  background: var(--color-answer);
+  border: 2px solid var(--color-border);
+  border-radius: 22px;
+  font-size: calc(var(--film-math) * 0.74);
+  line-height: 1.34;
+}
+.film-line.term {
+  padding: 26px 36px;
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+  border-radius: 22px;
+  font-size: calc(var(--film-math) * 0.7);
+  line-height: 1.3;
+}
+.film-line.term b { display: block; font-family: var(--font-display); font-size: 1.16em; margin-bottom: 6px; }
+.film-line.watch {
+  padding: 26px 36px;
+  background: var(--color-warning);
+  color: var(--color-on-warning);
+  border-left: 10px solid var(--color-warning-accent);
+  border-radius: 16px;
+  font-size: calc(var(--film-math) * 0.7);
+  line-height: 1.3;
+}
+.film-line.problem.long { font-size: calc(var(--film-math) * 0.6); padding: 28px 36px; }
+.film-line.problem.long .film-display { font-size: calc(var(--film-math) * 0.8); margin: 14px 0 4px; }
+.film-line.problem.long .film-choices { gap: 10px 14px; margin-top: 16px; }
+.film-line.problem .film-display { font-size: calc(var(--film-math) * 0.95); margin: 22px 0 6px; text-align: center; }
+.film-line.problem .film-display .katex-display { margin: 0; }
+.film-line.problem .film-display .katex { font-size: 1em; }
+.film-choices { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 18px; margin-top: 22px; font-size: 0.86em; }
+.film-choices > span {
+  padding: 10px 26px; border-radius: 999px;
+  border: 2px solid var(--color-border); background: var(--color-surface);
+  /* a short choice stays on one line; a sentence-long one takes its own row and wraps inside its pill */
+  flex: 0 0 auto; max-width: 100%; box-sizing: border-box; text-align: center; line-height: 1.25;
+}
+
+.film-axis-num { font-size: 34px; color: var(--color-muted-text); }
+
+/* Base-ten blocks: the app's own look, solid accent with paper unit lines. */
+.film-block { stroke: var(--color-figure-ink); stroke-linejoin: round; }
+.film-block-lines { fill: none; stroke: var(--color-figure-paper); stroke-linecap: butt; }
+.film-block-overlay { fill: var(--color-figure-gold-fill); stroke: var(--color-figure-gold); stroke-width: 2.5; }
+.film-block-pointline { fill: none; stroke: var(--color-muted-text); stroke-width: 2.5; stroke-dasharray: 7 9; stroke-linecap: round; }
+.film-blocks-head { font-size: 30px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-muted-text); font-weight: 600; }
+.film-blocks-digit { color: var(--color-figure-ink); }
+.film-blocks-digit.pad { color: #20776d; }
+.film-blocks-count { color: var(--color-figure-accent); }
+
+/* The table: a light grid, a heavier rule before the totals, a gold band for the given row or column. */
+.film-table-grid { fill: none; stroke: var(--color-figure-ink); stroke-width: 2.5; stroke-linejoin: round; }
+.film-table-rule { fill: none; stroke: var(--color-figure-ink); stroke-width: 5; }
+.film-table-bg { stroke: none; }
+.film-table-band { fill: var(--color-figure-gold-fill); stroke: var(--color-figure-gold); stroke-width: 4; }
+.film-table-cell { color: var(--color-figure-ink); }
+.film-table-cell.head { font-weight: 600; }
+.film-table-cell.total { color: var(--color-muted-text); }
+/* The mosaic: slabs for the groups, a colored part for the event, a dashed guide at everyone's share. */
+.film-mosaic-base { stroke-width: 3; stroke-linejoin: round; }
+.film-mosaic-part { stroke-width: 2; stroke-linejoin: round; }
+.film-mosaic-edge { fill: none; stroke-linecap: round; }
+.film-mosaic-ring { fill: none; stroke: var(--color-figure-gold); stroke-width: 7; stroke-linejoin: round; }
+.film-mosaic-guide { fill: none; stroke: var(--color-figure-warm); stroke-dasharray: 18 14; stroke-linecap: round; }
+.film-mosaic-name { color: var(--color-figure-ink); }
+.film-mosaic-count.part { color: var(--color-figure-ink); }
+.film-mosaic-count.rest { color: var(--color-muted-text); }
+
+/* One whole, partitioned live; share and amount scales stay aligned. */
+.film-bar-base { fill: var(--color-figure-paper); stroke: var(--color-figure-ink); stroke-width: 3; }
+.film-bar-part { stroke: none; }
+.film-bar-cuts { fill: none; stroke: color-mix(in srgb, var(--color-muted-text) 45%, transparent); stroke-width: 1; }
+.film-bar-major { fill: none; stroke: var(--color-figure-ink); stroke-width: 2.5; }
+.film-bar-ring { fill: none; stroke: var(--color-figure-gold); stroke-width: 6; }
+.film-bar-unit { fill: var(--color-figure-gold-fill); stroke: var(--color-figure-gold); stroke-width: 3; }
+.film-bar-bracket, .film-bar-axis, .film-bar-tick { fill: none; stroke: var(--color-muted-text); stroke-width: 2.5; }
+.film-bar-guide { fill: none; stroke: var(--color-muted-text); stroke-width: 2; stroke-dasharray: 7 8; }
+.film-bar-leader { fill: none; stroke: var(--color-muted-text); stroke-width: 1.5; }
+.film-bar-title { color: var(--color-figure-ink); }
+.film-bar-caption { color: var(--color-muted-text); font-size: 30px; }
+
+/* Recap: numbered steps beside the overview of the whole board. */
+.film-recap {
+  position: absolute; z-index: 3; box-sizing: border-box;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.film-recap-list {
+  background: var(--color-figure-paper);
+  border: 1.5px solid var(--color-border);
+  border-radius: 28px;
+  box-shadow: 0 2px 4px var(--color-shadow), 0 18px 48px -18px var(--color-shadow);
+  padding: 44px 46px; display: flex; flex-direction: column; gap: 30px;
+  font-size: 48px; line-height: 1.3;
+}
+.film-recap-item { display: grid; grid-template-columns: 64px 1fr; align-items: start; }
+.film-recap-item b {
+  font-family: var(--font-display); color: var(--color-figure-accent); font-size: 1.15em; line-height: 1.1;
+}
+.film-recap-item .katex { font-size: 1.04em; }
+/* math and the punctuation that touches it never split across lines */
+.film-nowrap { white-space: nowrap; }
+/* an upright phone: the recap card sits under the board, a little smaller */
+.film-recap-tall .film-recap-list { font-size: 44px; }
+/* a column too narrow for a margin: each note sits under the end of its own line */
+.notes-below .film-line.has-note { padding-bottom: calc(var(--film-math) * 0.62); }
+.notes-below .film-note { top: auto; bottom: 0; transform: none; }
+/* column arithmetic: digits on a grid, carries and borrows above, a rule over the answer */
+.film-line.stack { display: flex; justify-content: center; }
+.film-stack { display: grid; grid-auto-rows: auto; column-gap: 0.06em; font-size: var(--film-math); line-height: 1.12; position: relative; }
+.film-stack .katex { font-size: 1em; }
+.film-stack-cell { position: relative; text-align: center; min-width: 0.62em; padding: 0 0.04em; z-index: 1; }
+.film-stack-cell.point { min-width: 0.24em; }
+.film-stack-cell.op { padding-right: 0.22em; }
+.film-stack-cell.pad { color: #20776d; }
+.film-stack-cell.mark { font-size: 0.5em; line-height: 1.5; align-self: end; color: #9a5c12; font-weight: 600; }
+.film-stack-cell.mark.borrow { color: #9c4420; }
+.film-stack-rule { border-top: 0.06em solid currentColor; z-index: 1; }
+.film-stack-cell.answer { color: #20776d; z-index: 1; }
+.film-stack-band { background: color-mix(in srgb, #20776d 12%, transparent); border-radius: 0.16em; margin: -0.04em 0; z-index: 0; }
+.film-strike { position: absolute; left: 8%; right: 8%; top: 50%; height: 0.06em; background: #9c4420; transform: rotate(-24deg); }
+
+/* a stack with headers is the place-value chart: place names on top, even columns, the point line through every row */
+.film-stack.headers { column-gap: 0.16em; }
+.film-stack.headers .film-stack-cell { justify-self: center; }
+.film-stack-cell.head {
+  align-self: end; padding: 0 0.1em 0.3em; white-space: nowrap;
+  font-size: 0.34em; line-height: 1; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-muted-text);
+}
+.film-stack-pointline { justify-self: center; width: 0; border-left: 0.03em dashed var(--color-muted-text); opacity: 0.7; z-index: 0; }

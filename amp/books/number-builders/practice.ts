@@ -5,10 +5,16 @@ export interface NumberPracticeBinding {
   skillId: string;
   bookId: string;
   pageIds: string[];
-  assessedResponse: "numeric-result-only";
+  assessedResponse: "numeric-result-only" | "mixed-response";
   practiceScope: string;
   unassessedRequirements: string[];
 }
+const mixedResponseTypes = new Set([
+  "teen-frame-compose",
+  "tens-ones-model",
+  "ten-more-or-less",
+  "subtract-whole-tens",
+]);
 const bind = (
   templateId: string,
   skillId: string,
@@ -20,10 +26,14 @@ const bind = (
   skillId,
   pageIds,
   bookId: numberBuilders.id,
-  assessedResponse: "numeric-result-only",
+  assessedResponse: mixedResponseTypes.has(templateId)
+    ? "mixed-response"
+    : "numeric-result-only",
   practiceScope,
   unassessedRequirements: [
-    "A numeric result does not assess oral counting, a constructed drawing, an explanation, fluency or complete standard mastery.",
+    mixedResponseTypes.has(templateId)
+      ? "Typed results and selected representations or reasons do not assess oral counting, a learner-created drawing or explanation, fluency or complete standard mastery."
+      : "A numeric result does not assess oral counting, a constructed drawing, an explanation, fluency or complete standard mastery.",
     ...limits,
   ],
 });
@@ -69,14 +79,14 @@ export const numberPracticeBindings: readonly NumberPracticeBinding[] = [
     "teen-frame-compose",
     "teen-place-value",
     ["teen-team", "teen-repair"],
-    "Count 10 plus 1–9 extras in two ten-frames.",
+    "Count ten plus extra ones, decompose a teen numeral, and select or complete its equation.",
     ["No learner-created unit explanation."],
   ),
   bind(
     "tens-ones-model",
     "tens-and-ones",
     ["one-new-unit", "name-twenty-four", "zero-ones"],
-    "Read 1–9 canonical tens and 0–9 loose ones; return the value 10–99.",
+    "Read 1–9 canonical tens and 0–9 loose ones; compose and decompose teen numbers and whole tens with numeric or selected place-value answers.",
     [
       "Book pictured rod examples reach six; runtime extends the same unit rule to nine. No noncanonical renaming response.",
     ],
@@ -85,14 +95,14 @@ export const numberPracticeBindings: readonly NumberPracticeBinding[] = [
     "ten-more-or-less",
     "ten-more-less",
     ["change-one-ten"],
-    "Return ten more or ten less than an integer 20–79, with base-ten model.",
+    "Find ten more or ten less and select a reason about changing the tens count while keeping the ones.",
     ["No hundreds boundary or written unit explanation."],
   ),
   bind(
     "subtract-whole-tens",
     "ten-more-less",
     ["tens-as-units"],
-    "Subtract a positive whole-ten amount from 10–90, allowingzero result.",
+    "Subtract whole tens from 10–90, including zero results; match removed tens rods to an equation and place-value reason.",
     ["No loose ones or ten-unpacking cases."],
   ),
   bind(
@@ -163,6 +173,7 @@ export function validateNumberPracticeBindings(
     id: string;
     skillId: string;
     requiredResponseCapability?: string;
+    requiredResponseCapabilities?: readonly string[];
   }[],
   bindings: readonly NumberPracticeBinding[] = numberPracticeBindings,
 ): void {
@@ -174,8 +185,9 @@ export function validateNumberPracticeBindings(
     if (!template || template.skillId !== b.skillId || seen.has(b.templateId))
       throw new Error(`Invalid number template/skill binding: ${b.templateId}`);
     seen.add(b.templateId);
-    const expected =
-      template.requiredResponseCapability === undefined
+    const expected = template.requiredResponseCapabilities
+      ? "mixed-response"
+      : template.requiredResponseCapability === undefined
         ? "numeric-result-only"
         : template.requiredResponseCapability === "single-choice-v1"
           ? "single-choice-selection"

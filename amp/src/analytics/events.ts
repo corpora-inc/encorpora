@@ -143,6 +143,7 @@ export const funnelPropsSchemas = {
       "trial-practice",
       "trial-map",
       "trial-plans",
+      "starter",
       "funding-az",
       "funding-ar",
       "funding-nh",

@@ -114,7 +114,8 @@ const clauseTemplates: readonly TemplateMetadata[] = [
     skillId: "triangle-area",
     description:
       "Choose the area of each piece when a trapezoid, parallelogram, or right triangle is split or doubled into rectangles and triangles.",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     gradeBand: "6–8",
     requiredResponseCapability: "multi-part-choice-v1",
     glossaryNoLink: ["base", "bases", "side", "part", "parts", "whole", "square"],
@@ -1893,7 +1894,10 @@ function whichExpression(
 }
 
 function trayOptions(labels: string[]): PartOption[] {
-  return labels.map((label, i) => ({ id: "abcdef"[i]!, label }));
+  // Assign ids before sorting so stored answers keep naming the same cards.
+  return labels
+    .map((label, i) => ({ id: "abcdef"[i]!, label }))
+    .sort((a, b) => Number(a.label) - Number(b.label));
 }
 function cardsProblem(
   meta: TemplateMetadata,
@@ -1908,7 +1912,10 @@ function cardsProblem(
 ): GeneratedProblem {
   if (new Set(tray).size !== tray.length || tray.length < 2 || tray.length > 6)
     throw new Error(`${meta.id} tray labels must be distinct`);
-  const options = trayOptions(tray);
+  const version = generatingVersion() ?? meta.version;
+  const options = trayOptions(
+    version === 1 ? tray : [...tray].sort((a, b) => Number(a) - Number(b)),
+  );
   const response: MultiPartChoiceResponse = {
     kind: "multi-part-choice",
     label: "Piece areas",
@@ -1930,9 +1937,9 @@ function cardsProblem(
   );
   return {
     public: {
-      id: problemHash(meta.id, seed, 1),
+      id: problemHash(meta.id, seed, version),
       templateId: meta.id,
-      templateVersion: 1,
+      templateVersion: version,
       seed,
       skillId: meta.skillId,
       prompt,
@@ -2355,13 +2362,35 @@ function clauseTemplateProblem(
     return { problem: showPieces(r, meta, seed), tags: ["show-the-pieces"] };
   if (id === "polygon-which-expression")
     return { problem: whichExpression(r, meta, seed), tags: ["which-expression"] };
-  if (id === "count-then-size-then-check")
+  if (id === "count-then-size-then-check") {
+    const problem = countThenSize(r, meta, seed);
+    const figure = problem.public.figure;
+    if (figure?.kind !== "fraction-box-prism" || !figure.cubeEdge ||
+        !figure.length || !figure.width || !figure.height)
+      throw new Error("Packing worksheet needs the box and cube edges");
+    const edges = [figure.length, figure.width, figure.height];
+    const numerator = edges.reduce((product, edge) => product * edge.n, 1);
+    const denominator = edges.reduce((product, edge) => product * edge.d, 1);
     return {
-      problem: countThenSize(r, meta, seed),
-      tags: ["count-then-size-then-check"],
+      problem,
+      tags: [
+        "count-then-size-then-check",
+        `edge-${figure.cubeEdge.n}/${figure.cubeEdge.d}`,
+        numerator % denominator === 0 ? "whole-volume" : "fraction-volume",
+      ],
     };
-  if (id === "net-name-the-solid")
-    return { problem: nameTheSolid(r, meta, seed), tags: ["name-the-solid"] };
+  }
+  if (id === "net-name-the-solid") {
+    const problem = nameTheSolid(r, meta, seed);
+    const figure = problem.public.figure;
+    const solid = figure?.kind === "rectangular-prism-net"
+      ? (figure.length === figure.width && figure.width === figure.height
+        ? "cube" : "rectangular-prism")
+      : figure?.kind === "triangular-prism-net" ? "triangular-prism"
+      : figure?.kind === "square-pyramid-net" ? "square-pyramid" : null;
+    if (!solid) throw new Error("Net worksheet needs a supported solid");
+    return { problem, tags: ["name-the-solid", solid] };
+  }
   return null;
 }
 

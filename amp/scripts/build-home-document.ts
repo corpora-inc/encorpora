@@ -51,7 +51,6 @@ const tags = [
   `<link rel="preload" as="image" type="image/webp" href="${asset(/^pitch-poster-square-.*\.webp$/)}" media="(max-width: 480px)" fetchpriority="high" />`,
   `<link rel="preload" as="image" type="image/webp" href="${asset(/^pitch-poster-wide-.*\.webp$/)}" media="(min-width: 481px)" fetchpriority="high" />`,
   `<link rel="modulepreload" crossorigin href="${asset(/^PitchScreen-.*\.js$/)}" />`,
-  `<link rel="modulepreload" crossorigin href="${asset(/^BuyOptions-.*\.js$/)}" />`,
   `<link rel="preload" as="fetch" crossorigin="anonymous" href="/api/v1/billing/prices" />`,
   // `<` can't appear in the values, but escaping keeps a data block a data block.
   `<script type="application/ld+json">${JSON.stringify(structured).replaceAll("<", "\\u003c")}</script>`,

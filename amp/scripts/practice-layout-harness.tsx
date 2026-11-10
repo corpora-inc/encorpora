@@ -4,7 +4,6 @@ import { useState } from "react";
 import { skills } from "../src/curriculum/catalog";
 import { gradeNumber } from "../src/learning/frontier";
 import { calculatorAllowed } from "../src/math/calculator";
-import { FreeMeter } from "../src/web/features/trial/FreeMeter";
 import {
   PracticeWorkspace,
   usePracticeViewport,
@@ -89,7 +88,6 @@ function CaseView({ value }: { value: Case }) {
         skill?.strand,
         skill ? gradeNumber[skill.gradeBand] : 0,
       )}
-      status={<FreeMeter answered={12} free={100} variant="pill" />}
       hintCue={
         problem.hintCue
           ? { problemId: problem.public.id, steps: problem.hintCue }

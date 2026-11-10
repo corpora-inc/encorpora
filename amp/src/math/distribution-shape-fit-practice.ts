@@ -29,9 +29,8 @@ import { axisRecord, chooseAxes, defineAxis } from "./variation/axes";
  * or 10, and stacks no taller than 6. Scatter clouds are whole-number points
  * around a hidden line with balanced noise; every line drawn and every claim
  * made about it is checked against the points before the problem is built.
- * Drawing a trend line by placing two points (8.SP.A.2 type 1) needs a
- * point-plot surface with a scatter backdrop and tolerance grading, and is
- * not built here.
+ * The interactive fitter in trend-line-fit-practice.ts shares these clouds;
+ * its separate response protocol grades informal fits by vertical closeness.
  */
 
 const band = "6–8" as const;

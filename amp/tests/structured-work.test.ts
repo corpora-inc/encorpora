@@ -1,19 +1,16 @@
+import { generateBeforeClauses as generateProblem } from "./helpers/before-clause-variants";
 import { test } from "node:test";
 import { spawnSync } from "node:child_process";
 import assert from "node:assert/strict";
 import {
   clientCanDraw,
+  figureCapabilities,
   generatedProblemSchema,
   publicProblemSchema,
   responseCapabilities,
   type GeneratedProblem,
 } from "../src/math/contracts";
-import {
-  generateProblem,
-  gradeAnswer,
-  isValidResponse,
-  templates,
-} from "../src/math/engine";
+import { gradeAnswer, isValidResponse, templates } from "../src/math/engine";
 import {
   evaluate,
   lineTex,
@@ -738,13 +735,13 @@ test("every family is reachable in every mode, valid, self-consistent and leaks 
 });
 
 test("clients without structured-work-v1 are never served these families, online or offline", () => {
-  const work = templates.filter((t) =>
-    families.includes(t.id as (typeof families)[number]),
+  const work = templates.filter(
+    (t) =>
+      t.requiredResponseCapability === "structured-work-v1" ||
+      t.requiredResponseCapabilities?.includes("structured-work-v1"),
   );
-  assert.equal(work.length, families.length);
+  assert.ok(work.length > 0);
   assert.ok(responseCapabilities.includes("structured-work-v1"));
-  for (const t of work)
-    assert.equal(t.requiredResponseCapability, "structured-work-v1");
   const older = [
     { responseCapabilities: [], figureCapabilities: [] },
     {
@@ -779,8 +776,8 @@ test("clients without structured-work-v1 are never served these families, online
   for (const t of work)
     assert.equal(
       clientCanDraw(t, {
-        responseCapabilities: ["structured-work-v1"],
-        figureCapabilities: ["scenes-v1"],
+        responseCapabilities,
+        figureCapabilities,
       }),
       true,
     );

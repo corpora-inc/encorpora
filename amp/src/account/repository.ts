@@ -105,16 +105,16 @@ export async function accountSummary(
   const adult = family.learners.find((l) => l.adult && !l.deletedAt);
   const learners = childEntries(family);
   const gift = await availableGift(pool, accountId);
-  // Both in parallel. A fixture at an earlier migration boundary has no
-  // schools, or trials without owners, and reads as none: no extra round trip
-  // to check first on the path every parent's `/me` takes.
+  // In parallel. A fixture at an earlier migration boundary has no schools,
+  // and reads as none: no extra round trip to check first on the path every
+  // parent's `/me` takes.
   const missing =
     (...codes: string[]) =>
     (error: { code?: string }) => {
       if (error.code && codes.includes(error.code)) return { rows: [] };
       throw error;
     };
-  const [staffRows, trialRows, familyClass, familyApproval, coParented] =
+  const [staffRows, familyClass, familyApproval, coParented] =
     await Promise.all([
       pool
         .query<{
@@ -133,13 +133,6 @@ export async function accountSummary(
           [accountId],
         )
         .catch(missing("42P01")),
-      // A free assessment this account started and hasn't made a learner yet.
-      pool
-        .query(
-          `SELECT 1 FROM amp_trials WHERE owner_account_id=$1 AND adopted_at IS NULL AND expires_at>now() LIMIT 1`,
-          [accountId],
-        )
-        .catch(missing("42P01", "42703")),
       // The family's class, which `families.summary` above keeps current. It's
       // this account's family side, so it isn't among the places above; a
       // co-teacher from another account finds it there.
@@ -201,7 +194,6 @@ export async function accountSummary(
     ...(familyClass ? { familyClass } : {}),
     ...(familyApproval ? { familyApproval } : {}),
     ...(secondParentOf.length ? { secondParentOf } : {}),
-    ...(trialRows.rows.length ? { trial: true as const } : {}),
     ...(adultPractice ? { adultPractice } : {}),
     ...(gift ? { availableAccessGrant: gift } : {}),
     ...(unassigned
@@ -225,9 +217,7 @@ export async function accountSummary(
           ? "add-learner"
           : learners.length || adult || familyClass || staffOf.length
             ? "practice"
-            : trialRows.rows.length
-              ? "try"
-              : "start",
+            : "start",
   };
   return meSchema.parse(value) as SignedInMe;
 }

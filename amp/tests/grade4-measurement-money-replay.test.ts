@@ -1,8 +1,9 @@
+import { generateBeforeClauses as generateProblem } from "./helpers/before-clause-variants";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import test from "node:test";
-import { generateProblem } from "../src/math/engine";
+import {} from "../src/math/engine";
 
 /**
  * Instances saved before the grade-4 measurement narrative axis.
