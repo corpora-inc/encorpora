@@ -9,6 +9,7 @@ import {
   isValidResponse,
 } from "../src/math/engine";
 import { plotPoints, serializePlot } from "../src/math/point-plot";
+import { linePlotCounts, linePlotValues } from "../src/math/line-plot-build";
 import {
   parseWorkDraft,
   rowShape,
@@ -93,7 +94,15 @@ export async function preparePracticeAnswer(
     });
   const response = practiceResponse(solution, correct);
   const submit = async () => {
-    if (schema.kind === "shape-composer") {
+    if (schema.kind === "line-plot-build") {
+      const counts = linePlotCounts(schema, response);
+      for (const [i, v] of linePlotValues(schema).entries()) {
+        await page.locator(".line-build-column").nth(i).focus();
+        for (let n = 0; n < (counts[v] ?? 0); n++)
+          await page.keyboard.press("Enter");
+      }
+      await page.locator(".choice-submit:visible").click();
+    } else if (schema.kind === "shape-composer") {
       const stages = JSON.parse(response) as ShapeAnswer;
       for (const [i, placements] of stages.entries()) {
         await fillShapeStage(page, placements);
@@ -284,7 +293,9 @@ export function practiceResponse(solution: GeneratedProblem, correct: boolean) {
   const schema = problem.response;
   let response = solution.answer;
   if (!correct) {
-    if (schema.kind === "shape-composer") {
+    if (schema.kind === "line-plot-build")
+      response = JSON.stringify({ counts: { [schema.axis.min]: 1 } });
+    else if (schema.kind === "shape-composer") {
       const stages = JSON.parse(response) as ShapeAnswer;
       stages.at(-1)!.pop();
       response = JSON.stringify(stages);

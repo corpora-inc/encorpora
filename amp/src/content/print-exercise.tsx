@@ -5,6 +5,7 @@ import { Figure } from "../web/Figure";
 import type { GeneratedProblem } from "../math/contracts";
 import { answerText } from "../math/selection-response";
 import { plotPoints, pointPlotScene } from "../math/point-plot";
+import { LinePlotBuildDrawing } from "../web/LinePlotBuildInput";
 import {
   cardRows,
   draftChoices,
@@ -493,6 +494,15 @@ export function PrintExerciseBody({
         <PrintMathText text={problem.public.prompt} />
       </h2>
       {problem.public.figure && <Figure figure={problem.public.figure} />}
+      {problem.public.response.kind === "line-plot-build" && (
+        <figure>
+          <LinePlotBuildDrawing
+            response={problem.public.response}
+            value={solutions ? problem.answer : '{"counts":{}}'}
+          />
+          <figcaption>{problem.public.response.axis.unit}</figcaption>
+        </figure>
+      )}
       {problem.public.response.kind === "shape-composer" && (
         <div className="print-shape-composer">
           {problem.public.response.stages.map((stage, i) => {

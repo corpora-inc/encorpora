@@ -52,6 +52,7 @@ export const clientResponseCapabilities = [
   "structured-work-v1",
   "multi-part-cards-v1",
   "shape-composer-v1",
+  "line-plot-build-v1",
   "unit-square-marking-v1",
 ];
 /** Figure capabilities an API may predate. An older API rejects the value;

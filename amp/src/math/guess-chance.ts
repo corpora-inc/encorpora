@@ -19,7 +19,7 @@ const CLAUSE_SEEDS = 64;
 /** Floors for variable-response families whose high-guessability variants
  * are rarer than the deterministic sample. Keep these in sync with the
  * generator-variation audit in frontier-guessing.test.ts. */
-const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
+const FAMILY_GUESS_FLOOR: Readonly<Record<string, number>> = {
   // Clause choices can have three options after duplicate distractors are removed.
   "graphical-solution-table": 1 / 3,
   // A rate of two leaves 3, 3 and 4 choices in the ordered-pair slots.
@@ -80,6 +80,13 @@ export const builtGuessChances = built.length;
  * Structured work needs its private rule to count valid orders and proofs
  * (`problemGuessChance`); from the public response alone it is unknown. */
 export function responseGuessChance(response: ProblemResponse): number {
+  // One exact count map: each column independently permits 0..maxPerValue.
+  // Omitted counts mean zero; measurementCount does not restrict submissions.
+  if (response.kind === "line-plot-build")
+    return (
+      1 /
+      (response.maxPerValue + 1) ** (response.axis.max - response.axis.min + 1)
+    );
   if (response.kind === "shape-composer") return response.guessChance;
   if (response.kind === "structured-work") return UNKNOWN_CHOICE_GUESS;
   if (response.kind === "choice") return 1 / response.options.length;
@@ -109,7 +116,8 @@ export function guessChance(
   const known = cache.get(template.id);
   if (known !== undefined) return known;
   let chance =
-    template.requiredResponseCapability || template.requiredResponseCapabilities?.length
+    template.requiredResponseCapability ||
+    template.requiredResponseCapabilities?.length
       ? UNKNOWN_CHOICE_GUESS
       : 0;
   if (byId.has(template.id)) {
@@ -122,7 +130,7 @@ export function guessChance(
       template.requiredResponseCapability === "structured-work-v1" ||
       template.requiredResponseCapabilities?.includes("structured-work-v1");
     // The sample can miss rare, more guessable variants in these generators.
-    let greatest = MULTI_PART_GUESS_FLOOR[template.id] ?? 0;
+    let greatest = FAMILY_GUESS_FLOOR[template.id] ?? 0;
     for (let i = 0; i < (structured ? STRUCTURED_SEEDS : SAMPLE_SEEDS); i++)
       greatest = Math.max(
         greatest,
