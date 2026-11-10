@@ -93,27 +93,33 @@ export function Home(props: Props) {
           estimate: f.strands[strand]!,
         }))
     : [];
+  const freeLine = props.freeLeft != null && (
+    <span className="home-free" data-free-left={props.freeLeft}>
+      {freeProblemsLeft(props.freeLeft)}
+    </span>
+  );
+  // Day 0 (docs/design/ia.md, rule 7): one centred hero, its start the only
+  // Practice on screen.
+  const dayZero = !!f && !measured;
   return (
     <main className="home">
       {props.navigation}
-      <section className="home-hero">
-        <div>
-          {/* Whose Overview, for someone reading another's; a learner's
-              own never names them (docs/design/ia.md). */}
-          <h1
-            id="home-title"
-            className={who ? "home-learner" : "home-learner home-learner-own"}
-          >
-            {who ? props.name : "Where you are"}
-          </h1>
-          {props.freeLeft != null && (
-            <p className="home-free" data-free-left={props.freeLeft}>
-              {freeProblemsLeft(props.freeLeft)}
-            </p>
-          )}
-        </div>
-        {go}
-      </section>
+      {!dayZero && (
+        <section className="home-hero">
+          <div>
+            {/* Whose Overview, for someone reading another's; a learner's
+                own never names them (docs/design/ia.md). */}
+            <h1
+              id="home-title"
+              className={who ? "home-learner" : "home-learner home-learner-own"}
+            >
+              {who ? props.name : "Where you are"}
+            </h1>
+            {freeLine && <p className="home-free-line">{freeLine}</p>}
+          </div>
+          {go}
+        </section>
+      )}
       {/* `.frontier-map` and `aria-busy` mark the level's place for the
           browser checks that wait on the Overview. */}
       <div className="frontier-map home-level-slot" aria-busy={!f}>
@@ -140,12 +146,14 @@ export function Home(props: Props) {
           />
         ) : (
           <LevelRangeStart
-            title={who ? `Where ${who} is` : null}
-            labelledBy={who ? undefined : "home-title"}
+            title={who ? `Where ${who} is` : "Where you are"}
+            heading={1}
             start={f.overall}
             grade={grade}
             numbers={shown}
             who={who}
+            action={go}
+            secondary={freeLine}
           />
         )}
       </div>
