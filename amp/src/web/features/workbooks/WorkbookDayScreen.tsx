@@ -12,7 +12,7 @@ import {
   useParams,
   useSearch,
 } from "@tanstack/react-router";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
 import type { AuthSession } from "../../auth";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
@@ -483,7 +483,9 @@ function Contents({
       aria-label="Workbook contents"
     >
       {workbook ? (
-        <>
+        // Keyed, so the contents mount fresh: an unkeyed fragment would reuse
+        // the skeleton's bars as its own nodes and count as a layout shift.
+        <Fragment key="workbook">
           <div className={styles.contentsHead}>
             <h2>No. {workbook.number}</h2>
             <span className={styles.code} aria-label="Workbook code">
@@ -519,7 +521,7 @@ function Contents({
           >
             Enter results
           </Link>
-        </>
+        </Fragment>
       ) : used ? (
         used
       ) : failure ? (
