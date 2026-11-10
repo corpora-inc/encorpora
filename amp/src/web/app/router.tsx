@@ -996,6 +996,14 @@ const ownStart = createRoute({
 /** Practicing as someone else (features/profiles): "Try a level…" and one
  * saved profile's levels. Any adult account; one chunk. */
 const profileScreens = () => import("../features/profiles");
+const profiles = createRoute({
+  getParentRoute: () => root,
+  path: "/me/profiles",
+  beforeLoad: async () => {
+    await ownPractice();
+  },
+  component: lazyRouteComponent(profileScreens, "ProfilesScreen"),
+});
 const newProfile = createRoute({
   getParentRoute: () => root,
   path: "/me/profiles/new",
@@ -1190,6 +1198,7 @@ export const router = createRouter({
     standings,
     ownRecord,
     ownStart,
+    profiles,
     newProfile,
     editProfile,
     schoolsHome,

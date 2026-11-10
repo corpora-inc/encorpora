@@ -286,3 +286,87 @@
 .levels[hidden] {
   display: none;
 }
+
+/* "Practice as someone else": the saved profiles as quiet rows. */
+.list {
+  display: grid;
+  gap: var(--space-5);
+  max-width: 720px;
+  padding-bottom: var(--space-7);
+}
+.listHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+.listHead h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-title-min), 7vw, var(--text-heading-1));
+  line-height: 1.15;
+}
+.listHead p {
+  margin: var(--space-2) 0 0;
+  color: var(--color-muted-text);
+}
+.profileRows {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-shadow: inset 0 1px 0 var(--color-border);
+}
+.profileRows li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  box-shadow: inset 0 -1px 0 var(--color-border);
+}
+.profileRow {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-width: 0;
+  min-height: 60px;
+  padding: var(--space-3) var(--space-2);
+  border: 0;
+  border-radius: var(--radius-small);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+.profileRow:hover:not(:disabled) {
+  filter: none;
+  background: var(--color-surface-hover);
+}
+.profileRow:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
+.profileRow > span:first-child {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.profileRow strong {
+  font-weight: 600;
+}
+.profileRow > span:first-child > span {
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+}
+.rowAction {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: var(--text-label);
+}
+.listEmpty {
+  margin: 0;
+  color: var(--color-muted-text);
+}

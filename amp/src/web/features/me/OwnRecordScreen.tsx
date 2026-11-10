@@ -132,8 +132,7 @@ export function OwnRecordScreen() {
     <OwnPage>
       <div className={styles.stack}>
         {/* The title names the content; the rare actions sit quietly on its
-            row (docs/design/ia.md). Practicing as someone else is in the
-            drawer, under My practice. */}
+            row (docs/design/ia.md), practicing as someone else among them. */}
         <header className={styles.titleRow}>
           <h1 id="me-title">Where you are</h1>
           <div className={styles.toolActions} data-own-tools>
@@ -159,6 +158,15 @@ export function OwnRecordScreen() {
                 <PrintIcon />
                 Print report
               </Button>
+            )}
+            {started && (
+              <Link
+                to="/$"
+                params={{ _splat: "me/profiles" }}
+                className={buttonClass("quiet", styles.quiet)}
+              >
+                Practice as someone else
+              </Link>
             )}
           </div>
         </header>
