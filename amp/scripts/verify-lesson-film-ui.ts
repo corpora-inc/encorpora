@@ -4,7 +4,7 @@ import { mkdir } from "node:fs/promises";
 import { chromium as rawChromium, type Page } from "playwright";
 import { secureChromium } from "../browser-security.mjs";
 import { startShellFixture } from "./app-shell-fixture";
-import { lessonFilms } from "../src/content/lesson-films";
+import { FILM_CAPABILITY, lessonFilms } from "../src/content/lesson-films";
 
 const argument = (key: string) => {
   const i = process.argv.indexOf(`--${key}`);
@@ -244,7 +244,7 @@ try {
         );
         // The current server's manifest is authoritative for an older open app.
         await page.route(
-          "**/api/v1/problem-lessons/browser-film-only?film=lesson-film-v1",
+          `**/api/v1/problem-lessons/browser-film-only?film=${FILM_CAPABILITY}`,
           (route) => route.fulfill({ json: { lesson: { film } } }),
         );
         await page.goto(`${fixture.origin}/lessons/browser-film-only/watch`);

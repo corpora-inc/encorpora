@@ -26,6 +26,7 @@ for (const id of ids) {
   const { template } = templateOf(id);
   const script = scriptSchema.parse(JSON.parse(readFileSync(join(here, "lessons", `${id}.json`), "utf8")));
   const timing = JSON.parse(readFileSync(join(films, id, "timing.json"), "utf8"));
+  // Speaker key → voice id, the same shape timing.json recorded. Two-speaker films stay {teacher, learner}.
   timing.voices = voiceBindings(resolveCast(script, timing.voices));
   const figure = problemLesson(template, script.seed ?? "film").example.figure ?? null;
   // the lesson knows the problem type it teaches, its skill and the standards that skill meets
