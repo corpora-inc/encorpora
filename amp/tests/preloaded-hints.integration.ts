@@ -29,7 +29,12 @@ test(
       const batch = await app.inject({
         method: "POST",
         url: `${base}/batches`,
-        payload: { templateId: "add-within-20", count: 3 },
+        // A current client: add-within-20 draws a scene (#2112).
+        payload: {
+          templateId: "add-within-20",
+          count: 3,
+          figureCapabilities: ["scenes-v1"],
+        },
       });
       assert.equal(batch.statusCode, 200);
       const { problems, hints } = batch.json();
