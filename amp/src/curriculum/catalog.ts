@@ -933,14 +933,14 @@ const skillTitles: Record<string, string> = {
     "Comparing functions given in different forms",
   "growth-comparison": "Linear growth against exponential growth",
   "special-angle-values": "Exact values at special angles",
-  "trigonometric-symmetry": "Odd, even, and periodic trigonometric relations",
+  "trigonometric-symmetry": "Odd, even, and periodic trig functions",
   "periodic-modeling": "Choosing a periodic model",
   "circle-similarity": "Why every circle is similar to every other",
   "triangle-circles": "The incircle and the circumcircle",
   "tangent-construction": "A tangent from a point outside a circle",
   "transformation-invariants": "What a transformation keeps",
   "polygon-symmetries":
-    "Rotations and reflections that leave a polygon in place",
+    "Symmetries of a polygon",
   "transformation-constructions": "Constructing the image of a figure",
   "line-angle-proofs": "Proofs about lines and angles",
   "triangle-proofs": "Proofs about triangles",
@@ -949,7 +949,7 @@ const skillTitles: Record<string, string> = {
   "measurement-formula-proofs": "Why the circle and solid formulas hold",
   "cavalieri-principle": "Cavalieri's principle",
   "solid-volume-models":
-    "Volume problems about cylinders, cones, pyramids, and spheres",
+    "Volumes of cylinders, cones, pyramids, spheres",
   "sections-and-revolutions": "Cross-sections and solids of revolution",
   "parabola-locus": "A parabola as points equally far from a focus and a line",
   "slope-proofs": "Slopes of parallel and perpendicular lines",
@@ -970,7 +970,7 @@ const skillTitles: Record<string, string> = {
   "sampling-margin-error": "A margin of error from simulated samples",
   "randomization-tests": "Testing a difference by randomization",
   "statistical-report-critique":
-    "Reading a statistical report for what it does not show",
+    "Reading a statistical report critically",
   "statistical-summary-comparison": "Comparing center, spread, and shape",
   "categorical-association": "Association in a two-way table",
   "regression-interpretation": "Reading slope and intercept in context",
@@ -982,7 +982,7 @@ const skillTitles: Record<string, string> = {
   "decision-strategies": "Comparing uncertain strategies",
   "build-and-draw-shapes": "Building and drawing closed shapes",
   "represent-join-separate":
-    "Pictures and equations for joining and separating",
+    "Join and separate: pictures, equations",
   "composite-shapes": "Shapes made by putting shapes together",
   "turn-around-facts": "Turnaround addition facts",
   "explain-strategies": "Explaining why a strategy works",

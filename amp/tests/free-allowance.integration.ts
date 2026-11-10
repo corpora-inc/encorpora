@@ -22,7 +22,7 @@ import { bookSummaries } from "../src/books/catalog.js";
 const database = { skip: !process.env.AMP_TEST_DATABASE_URL };
 
 test(
-  "concurrent family creation assigns distinct picture identities beyond the first sixteen",
+  "concurrent family creation numbers unnamed children distinctly",
   database,
   async (t) => {
     const f = await fixture(t);
@@ -33,13 +33,10 @@ test(
     );
     for (const response of responses)
       assert.equal(response.statusCode, 201, response.body);
-    assert.equal(
-      new Set(responses.map((response) => response.json().name)).size,
-      20,
-    );
-    assert.equal(
-      responses.filter((response) => / 2$/.test(response.json().name)).length,
-      4,
+    // Unnamed children are "Child 1" … "Child 20", each once, under concurrency.
+    assert.deepEqual(
+      responses.map((response) => response.json().name).sort(),
+      Array.from({ length: 20 }, (_, i) => `Child ${i + 1}`).sort(),
     );
     const first = responses[0].json();
     await assert.rejects(
