@@ -38,7 +38,10 @@ export function YearRibbon({
   cursor.setUTCDate(1);
   while (cursor.getTime() <= start + span) {
     const at = Math.max(0, (cursor.getTime() - start) / span);
-    if (at < 1)
+    // A month the year starts late in gets no letter: it would sit on top of
+    // the next one.
+    const partial = cursor.getTime() < start && new Date(start).getUTCDate() > 10;
+    if (at < 1 && !partial)
       ticks.push({
         label: MONTHS[cursor.getUTCMonth()]!,
         at,
