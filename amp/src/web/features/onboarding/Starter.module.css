@@ -183,6 +183,9 @@
   background: var(--color-answer);
   color: var(--color-on-answer);
   font: inherit;
+  /* Its own size and weight, not its label's. */
+  font-size: var(--text-body);
+  font-weight: 400;
 }
 .nameInput::placeholder {
   color: var(--color-subtle-text);
