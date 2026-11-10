@@ -24,6 +24,20 @@ import type { ProblemLessonView } from "../content/problem-lessons";
 import { ChoiceFigure } from "./ChoiceFigure";
 import { PointPlotAnswer, PointPlotInput, plotReview } from "./PointPlotInput";
 import { pointPlotAnswerText } from "../math/point-plot";
+import { linePlotBuildAnswerText } from "../math/line-plot-build";
+import { LinePlotBuildAnswer, LinePlotBuildInput } from "./LinePlotBuildInput";
+import { UnitSquareMarkingInput } from "./UnitSquareMarkingInput";
+import { normalizeUnitSquareMarking } from "../math/unit-square-marking";
+import { shapeAnswerText, shapeFeedbackSummary } from "../math/shape-composer";
+import { ShapeComposerInput, ShapeComposerAnswer } from "./ShapeComposerInput";
+import {
+  counterBuilderAnswerText,
+  parseCounterBuilder,
+} from "../math/counter-builder";
+import {
+  CounterBuilderInput,
+  CounterBuilderAnswer,
+} from "./CounterBuilderInput";
 import {
   MultiPartChoiceAnswer,
   MultiPartChoiceInput,
@@ -278,6 +292,19 @@ export function PracticeWorkspace(props: Props) {
   // Point plots answer on the grid in the problem itself; the dock holds
   // only the readout and Check, so they never use the answer dialog.
   const plot = problem.response.kind === "point-plot" ? problem.response : null;
+  const lineBuild =
+    problem.response.kind === "line-plot-build" ? problem.response : null;
+  const marking =
+    problem.response.kind === "unit-square-marking" ? problem.response : null;
+  const [markReset, setMarkReset] = useState(0);
+  const counters =
+    problem.response.kind === "counter-builder" ? problem.response : null;
+  const shapes =
+    problem.response.kind === "shape-composer" ? problem.response : null;
+  const [shapeStep, setShapeStep] = useState({ id: problem.id, index: 0 });
+  const shapeStage = shapeStep.id === problem.id ? shapeStep.index : 0;
+  const setShapeStage = (index: number) =>
+    setShapeStep({ id: problem.id, index });
   // Multi-part choices answer in the problem too: blanks, slots or a table.
   const parts =
     problem.response.kind === "multi-part-choice" ? problem.response : null;
@@ -302,6 +329,12 @@ export function PracticeWorkspace(props: Props) {
       ? problem.figure.scene
       : null;
   const displayResponse = (value: string) => {
+    if (problem.response.kind === "line-plot-build")
+      return linePlotBuildAnswerText(problem.response, value);
+    if (problem.response.kind === "counter-builder")
+      return counterBuilderAnswerText(problem.response, value);
+    if (problem.response.kind === "shape-composer")
+      return shapeAnswerText(problem.response, value);
     if (problem.response.kind === "point-plot") {
       try {
         return pointPlotAnswerText(problem.response, value);
@@ -348,29 +381,67 @@ export function PracticeWorkspace(props: Props) {
   // Diagram questions need room above a six-statement answer sheet. Below the
   // side-by-side workspace width, keep that sheet behind a clear answer action.
   const answerLayoutQuery =
-    multiResponse && problem.figure ? "(max-width: 899px)" : compactAnswerQuery;
+    (multiResponse && problem.figure) || marking
+      ? "(max-width: 899px)"
+      : compactAnswerQuery;
   const [compactQuery, setCompact] = useState(
     () => matchMedia(answerLayoutQuery).matches,
   );
-  const compact = compactQuery && !plot && !parts && !figures && !work;
+  const compact =
+    compactQuery &&
+    !plot &&
+    !lineBuild &&
+    !parts &&
+    !figures &&
+    !work &&
+    !counters &&
+    !shapes;
   // Side by side (practice-tablet.css), the feedback sheet has its own
   // column; stacked, it covers the dock only, so a plotted answer's grid and
   // its feedback overlay stay in view and the explanation opens on request.
+  const shortLinePlotQuery =
+    "(orientation: landscape) and (min-width: 560px) and (max-height: 499px)";
+  const [shortLinePlot, setShortLinePlot] = useState(
+    () => !!lineBuild && matchMedia(shortLinePlotQuery).matches,
+  );
   const [sideBySide, setSideBySide] = useState(
-    () => matchMedia(sideBySideQuery).matches,
+    () => matchMedia(sideBySideQuery).matches || shortLinePlot,
   );
   useEffect(() => {
     const media = matchMedia(sideBySideQuery);
-    const changed = () => setSideBySide(media.matches);
+    const short = matchMedia(shortLinePlotQuery);
+    const changed = () => {
+      const compactPlot = !!lineBuild && short.matches;
+      setShortLinePlot(compactPlot);
+      setSideBySide(media.matches || compactPlot);
+    };
+    changed();
     media.addEventListener("change", changed);
-    return () => media.removeEventListener("change", changed);
-  }, []);
+    short.addEventListener("change", changed);
+    return () => {
+      media.removeEventListener("change", changed);
+      short.removeEventListener("change", changed);
+    };
+  }, [!!lineBuild]);
   const editorInDock = sideBySide && (!!work || !!figures);
+  const counterCompact = !!counters && !sideBySide;
+  const counterKey =
+    counters && outcome ? parseCounterBuilder(counters, outcome.answer) : null;
+  const scrollFeedback = editorInDock || shortLinePlot;
   const deferSteps =
-    editorInDock || ((!!plot || !!parts || !!figures || !!work) && !sideBySide);
+    scrollFeedback ||
+    ((!!plot ||
+      !!lineBuild ||
+      !!parts ||
+      !!figures ||
+      !!work ||
+      !!marking ||
+      !!counters ||
+      !!shapes) &&
+      !sideBySide);
   // Side by side, the sheet has the answer column's full height, so the
   // worked explanation is part of every result rather than a "See why" away.
-  const fullColumn = sideBySide && !editorInDock;
+  const fullColumn = sideBySide && !scrollFeedback;
   useEffect(() => {
     const media = matchMedia(answerLayoutQuery);
     const changed = () => setCompact(media.matches);
@@ -435,7 +506,17 @@ export function PracticeWorkspace(props: Props) {
     // Typed answers start in the answer field. On touch it suppresses the
     // system keyboard (inputMode none), so AMP's keypad stays in charge; the
     // field announces the question through aria-describedby.
-    if (choice || plot || parts || figures || work)
+    if (
+      choice ||
+      plot ||
+      lineBuild ||
+      parts ||
+      figures ||
+      work ||
+      marking ||
+      counters ||
+      shapes
+    )
       prompt.current?.focus({ preventScroll: true });
     else input.current?.focus({ preventScroll: true });
   }, [problem.id]);
@@ -501,13 +582,25 @@ export function PracticeWorkspace(props: Props) {
   // above the sheet instead of staying hidden under it.
   const sheet = useRef<HTMLDivElement>(null);
   const spacer = useRef<HTMLDivElement>(null);
-  const reviewInProblem = !!(plot || parts || figures || work);
+  const reviewInProblem = !!(
+    plot ||
+    lineBuild ||
+    parts ||
+    figures ||
+    work ||
+    shapes
+  );
   useLayoutEffect(() => {
     const host = stage.current;
     const cover = sheet.current;
     const room = spacer.current;
     if (!host || !room) return;
     room.style.height = "0px";
+    // A line plot's measurements are in its prompt. Start review there even
+    // when editing a tall plot scrolled it away; the spacer below keeps the
+    // counts reachable above the feedback sheet by scrolling.
+    if (outcome && lineBuild) host.scrollTo({ top: 0, behavior: "instant" });
+    host.style.removeProperty("--shape-review-height");
     if (!outcome || !cover || sideBySide) return;
     // Layout offsets, not client rects: the sheet's entrance transform
     // must not shorten the overlap. A fixed sheet (very short screens)
@@ -531,11 +624,24 @@ export function PracticeWorkspace(props: Props) {
           Math.max(content.offsetHeight, content.scrollHeight)
         : 0;
     const update = () => {
+      // Keep the prompt and the entire shape above the review sheet. Scrolling
+      // to the bottom of a full-size board hides the prompt under the header.
+      const board =
+        shapes && content?.querySelector<HTMLElement>(".shape-board");
+      if (board && content) {
+        const otherContent = content.scrollHeight - board.offsetHeight;
+        host.style.setProperty(
+          "--shape-review-height",
+          `${Math.max(144, host.clientHeight - overlap() - otherContent - 16)}px`,
+        );
+        host.scrollTop = 0;
+      }
       room.style.top = `${end()}px`;
       room.style.height = `${overlap()}px`;
     };
     update();
-    if (reviewInProblem && !outcome.correct) {
+    if (counters) host.scrollTop = 0;
+    if (reviewInProblem && !lineBuild && !shapes && !outcome.correct) {
       const hidden = end() - host.scrollTop - (host.clientHeight - overlap());
       if (hidden > 0)
         host.scrollBy({
@@ -562,7 +668,15 @@ export function PracticeWorkspace(props: Props) {
   const sending = busy && !skipping && !(panel === "hint" && !hint);
   // AMP's keypad is always present for typed answers; touch devices never
   // raise the system keyboard, and a physical keyboard still types.
-  const keypad = !choice && !plot && !parts && !figures && !work;
+  const keypad =
+    !choice &&
+    !plot &&
+    !lineBuild &&
+    !parts &&
+    !figures &&
+    !work &&
+    !counters &&
+    !shapes;
   const caret = useKeypadCaret(input);
   function key(value: string) {
     if (locked) return;
@@ -609,10 +723,48 @@ export function PracticeWorkspace(props: Props) {
     );
   }
   function submitAnswer() {
+    if (marking) setMarkReset((value) => value + 1);
     prepareFeedbackSound();
     props.submit();
   }
   function answerControls(includeContext = false) {
+    if (counters)
+      return (
+        <CounterBuilderAnswer
+          response={counters}
+          value={outcome ? outcome.response : response}
+          onChange={setResponse}
+          locked={locked}
+          sending={sending}
+          submit={submitAnswer}
+        />
+      );
+    if (problem.response.kind === "line-plot-build")
+      return (
+        <LinePlotBuildAnswer
+          response={problem.response}
+          value={outcome ? outcome.response : response}
+          onChange={setResponse}
+          locked={locked}
+          busy={busy}
+          sending={sending}
+          resolved={!!outcome}
+          submit={submitAnswer}
+        />
+      );
+    if (shapes)
+      return (
+        <ShapeComposerAnswer
+          response={shapes}
+          value={outcome ? outcome.response : response}
+          onChange={setResponse}
+          locked={locked}
+          sending={sending}
+          submit={submitAnswer}
+          stageIndex={Math.min(shapeStage, shapes.stages.length - 1)}
+          setStage={setShapeStage}
+        />
+      );
     if (problem.response.kind === "point-plot")
       return (
         <PointPlotAnswer
@@ -797,9 +949,15 @@ export function PracticeWorkspace(props: Props) {
             if (busy || !(outcome || response.trim())) return;
             if (outcome) return advance();
             // Catch a malformed answer at the input, without a request.
-            if (!acceptedAnswer(response))
+            if (
+              marking
+                ? normalizeUnitSquareMarking(response) === null
+                : !acceptedAnswer(response)
+            )
               return setAnswerError(
-                "Enter a number, decimal, or fraction such as 3/4.",
+                marking
+                  ? "Enter a whole number of square units, such as 12."
+                  : "Enter a number, decimal, or fraction such as 3/4.",
               );
             submitAnswer();
           }}
@@ -845,8 +1003,9 @@ export function PracticeWorkspace(props: Props) {
             </button>
           </div>
           <span id="answer-format" className="sr-only">
-            Enter a number, decimal or fraction. Negative answers use a minus
-            sign.
+            {marking
+              ? "Enter a whole number of square units."
+              : "Enter a number, decimal or fraction. Negative answers use a minus sign."}
           </span>
         </form>
         {keypad && (
@@ -1004,7 +1163,9 @@ export function PracticeWorkspace(props: Props) {
           <span className="feedback-title">
             {skipped ? (
               <>
-                {answerLine(outcome.answer)}
+                {shapes
+                  ? "One way to fill the outline."
+                  : answerLine(outcome.answer)}
                 <small>Skipped. Your progress is unchanged.</small>
               </>
             ) : outcome.correct ? (
@@ -1012,6 +1173,8 @@ export function PracticeWorkspace(props: Props) {
                 Correct
                 {support && <small>{capitalize(support)}</small>}
               </>
+            ) : shapes ? (
+              shapeFeedbackSummary(shapes, outcome.response)
             ) : (
               <>
                 {answerLine(outcome.answer)}
@@ -1037,7 +1200,18 @@ export function PracticeWorkspace(props: Props) {
                     </span>
                     {support && `, ${support}`}
                   </small>
-                ) : plot ? (
+                ) : counters && counterKey ? (
+                  <small>
+                    {counters.canRemove
+                      ? `${counterKey.groups[0]} at the start; cross out ${counterKey.removed}.`
+                      : `Show groups of ${counterKey.groups[0]} and ${counterKey.groups[1]}.`}
+                    <span className="sr-only">
+                      {" "}
+                      You entered {displayResponse(outcome.response)}.
+                    </span>
+                    {support && ` ${capitalize(support)}.`}
+                  </small>
+                ) : plot || lineBuild ? (
                   // The grid shows the learner's points beside the
                   // correct ones; the sentence stays for screen readers.
                   <small>
@@ -1078,7 +1252,7 @@ export function PracticeWorkspace(props: Props) {
             </ol>
           </Glossary>
         )}
-        {!editorInDock && progressFeedback()}
+        {!editorInDock && !counterCompact && progressFeedback()}
       </>
     );
   }
@@ -1193,13 +1367,16 @@ export function PracticeWorkspace(props: Props) {
    * See why opens a panel instead. */
   const stepsInline =
     !!outcome &&
-    !editorInDock &&
+    !scrollFeedback &&
+    !counterCompact &&
     ((!outcome.correct && !deferSteps) || showWhy || fullColumn);
   const longAnswer =
     !!outcome &&
     !outcome.correct &&
     ((!!work && skipped) ||
       (!plot &&
+        !lineBuild &&
+        !shapes &&
         !(work && !skipped) &&
         !(parts && (skipped || parts.layout === "table")) &&
         displayResponse(outcome.answer).length > 24));
@@ -1207,22 +1384,32 @@ export function PracticeWorkspace(props: Props) {
    * the grid above the sheet, so the sheet names where to look and keeps the
    * coordinates for screen readers; the explanation lists them in full. */
   const answerLine = (raw: string) =>
-    plot ||
-    (work && !skipped) ||
-    (parts && (skipped || parts.layout === "table")) ? (
+    counters && counterKey ? (
+      <span className="solution-answer">
+        Answer:{" "}
+        <MathText
+          text={`$${counterKey.sentence[0]} ${counterKey.sentence[1]} ${counterKey.sentence[2]} = ${counterKey.sentence[3]}$`}
+        />
+      </span>
+    ) : plot ||
+      lineBuild ||
+      (work && !skipped) ||
+      (parts && (skipped || parts.layout === "table")) ? (
       <span
         className="solution-answer plot-answer"
         data-text={displayResponse(raw)}
       >
-        {work
-          ? `Each ${work.layout === "proof" ? "line" : "step"} is marked`
-          : parts
-            ? skipped
-              ? "The answer is filled in"
-              : "Each row’s answer is ringed"
-            : plot?.connect === "line"
-              ? "The answer is dashed"
-              : "The answer is circled"}
+        {lineBuild
+          ? "Correct counts are below the plot"
+          : work
+            ? `Each ${work.layout === "proof" ? "line" : "step"} is marked`
+            : parts
+              ? skipped
+                ? "The answer is filled in"
+                : "Each row’s answer is ringed"
+              : plot?.connect === "line"
+                ? "The answer is dashed"
+                : "The answer is circled"}
         <span className="sr-only">
           . Answer: {spokenMath(displayResponse(raw))}
         </span>
@@ -1318,7 +1505,13 @@ export function PracticeWorkspace(props: Props) {
       {props.status && <span className="workspace-status">{props.status}</span>}
       {/* Plotted answers are placed, not typed: the calculator's Use
               key has nothing to fill, and lattice arithmetic needs none. */}
-      {props.calculator && !plot && !parts && !figures && !work ? (
+      {props.calculator &&
+      !plot &&
+      !lineBuild &&
+      !parts &&
+      !figures &&
+      !work &&
+      !shapes ? (
         <button
           ref={calculatorToggle}
           className="calculator-toggle"
@@ -1353,7 +1546,12 @@ export function PracticeWorkspace(props: Props) {
   );
   return (
     <main className="practice-workspace" aria-label="Math practice">
-      <section className="practice-surface" ref={surface}>
+      <section
+        className="practice-surface"
+        data-line-plot-landscape={shortLinePlot || undefined}
+        ref={surface}
+        data-counter-compact={counterCompact || undefined}
+      >
         {props.toolbarInFrame ? (
           frameTools &&
           createPortal(
@@ -1375,6 +1573,7 @@ export function PracticeWorkspace(props: Props) {
         )}
         <div
           className="problem-stage"
+          data-shape-review={shapes && outcome && !sideBySide ? "" : undefined}
           ref={stage}
           tabIndex={0}
           aria-label="Problem workspace"
@@ -1394,8 +1593,12 @@ export function PracticeWorkspace(props: Props) {
               <MathText text={problem.prompt} />
             </h2>
             {problem.figure &&
-              (choice || plot || parts || figures || work ? (
-                <ChoiceFigure figure={problem.figure} />
+              !marking &&
+              (choice || plot || lineBuild || parts || figures || work ? (
+                <ChoiceFigure
+                  figure={problem.figure}
+                  maxHeight={lineBuild ? 900 : undefined}
+                />
               ) : (
                 <Figure
                   figure={problem.figure}
@@ -1406,6 +1609,15 @@ export function PracticeWorkspace(props: Props) {
                   }
                 />
               ))}
+            {marking && (
+              <UnitSquareMarkingInput
+                key={problem.id}
+                response={marking}
+                locked={locked}
+                resolved={!!outcome}
+                resetKey={markReset}
+              />
+            )}
             {parts && (
               <MultiPartChoiceInput
                 response={parts}
@@ -1428,7 +1640,61 @@ export function PracticeWorkspace(props: Props) {
               />
             )}
             {!sideBySide && work && responseEditor()}
+            {counters && (
+              <CounterBuilderInput
+                key={problem.id}
+                response={counters}
+                value={
+                  outcome
+                    ? outcome.skipped
+                      ? outcome.answer
+                      : outcome.response
+                    : response
+                }
+                onChange={setResponse}
+                locked={locked}
+                resolved={!!outcome}
+                skipped={outcome?.skipped}
+              />
+            )}
+            {shapes && (
+              <ShapeComposerInput
+                key={`${problem.id}:${shapeStage}`}
+                response={shapes}
+                value={
+                  outcome
+                    ? outcome.skipped
+                      ? outcome.answer
+                      : outcome.response
+                    : response
+                }
+                onChange={setResponse}
+                locked={locked}
+                resolved={!!outcome}
+                stageIndex={Math.min(shapeStage, shapes.stages.length - 1)}
+                setStage={setShapeStage}
+                answer={outcome?.answer}
+                skipped={outcome?.skipped}
+              />
+            )}
             {!sideBySide && figures && responseEditor()}
+            {lineBuild && (
+              <LinePlotBuildInput
+                key={problem.id}
+                response={lineBuild}
+                value={
+                  outcome
+                    ? outcome.skipped
+                      ? outcome.answer
+                      : outcome.response
+                    : response
+                }
+                onChange={setResponse}
+                locked={locked}
+                answer={outcome?.answer}
+                skipped={outcome?.skipped}
+              />
+            )}
             {plot && (
               <PointPlotInput
                 response={plot}
@@ -1498,7 +1764,7 @@ export function PracticeWorkspace(props: Props) {
                 />
               </svg>
             )}
-            {editorInDock ? (
+            {scrollFeedback ? (
               <div
                 className="feedback-details"
                 tabIndex={0}
@@ -1535,7 +1801,7 @@ export function PracticeWorkspace(props: Props) {
           </div>
         )}
       </section>
-      {outcome && editorInDock && showWhy && (
+      {outcome && (scrollFeedback || counterCompact) && showWhy && (
         <FocusDialog title="Explanation" close={() => setShowWhy(false)}>
           {progressFeedback()}
           <Glossary payload={outcome} texts={outcome.explanation}>

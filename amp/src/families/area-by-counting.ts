@@ -25,6 +25,8 @@ export const family = {
   principles: areaByCountingPrinciples,
   facetMappings: areaByCountingFacetMappings,
   archetypeLinks: {
+    "mark-unit-squares": ["measure.area"],
+    "mark-improvised-units": ["measure.area"],
     "count-unit-squares": ["measure.area"],
     "unit-square-area-statement": ["measure.area", "measure.area-vs-perimeter"],
     "improvised-unit-count": ["measure.area"],

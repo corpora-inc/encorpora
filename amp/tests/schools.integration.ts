@@ -10,7 +10,6 @@ import { registerUnavailableBilling } from "../src/billing/stripe/routes.js";
 import { FamilyRepository } from "../src/family/repository.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { initialLevel } from "../src/learning/frontier.js";
-import { generateProblem } from "../src/math/engine.js";
 import { purgeInactiveLearners } from "../src/privacy/retention.js";
 import { recordEvent } from "../src/schools/events.js";
 import { can, loadActor } from "../src/schools/authz.js";
@@ -174,10 +173,17 @@ test(
           });
           assert.equal(batch.statusCode, 200);
           const problem = batch.json().problems[0];
+          const stored = await learning.transaction(
+            schoolAccountId(student.personId),
+            student.learnerId,
+            (tx) => tx.problem(problem.id),
+          );
+          assert.ok(stored);
+          assert.deepEqual(stored.public, problem);
           const attempt = await post(`${path}/attempts`, as(student.token), {
             problemId: problem.id,
             requestId: randomUUID(),
-            response: generateProblem(problem.templateId, problem.seed).answer,
+            response: stored.answer,
           });
           assert.equal(attempt.statusCode, 200);
           assert.equal(attempt.json().correct, true);

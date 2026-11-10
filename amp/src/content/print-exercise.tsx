@@ -1,9 +1,12 @@
 import { readFileSync } from "node:fs";
+import { shapeComposerScene } from "../math/shape-composer-scene";
 import React, { type ReactNode } from "react";
 import { Figure } from "../web/Figure";
 import type { GeneratedProblem } from "../math/contracts";
 import { answerText } from "../math/selection-response";
 import { plotPoints, pointPlotScene } from "../math/point-plot";
+import { LinePlotBuildDrawing } from "../web/LinePlotBuildInput";
+import { counterBuilderScene } from "../math/counter-objects";
 import {
   cardRows,
   draftChoices,
@@ -492,6 +495,63 @@ export function PrintExerciseBody({
         <PrintMathText text={problem.public.prompt} />
       </h2>
       {problem.public.figure && <Figure figure={problem.public.figure} />}
+      {problem.public.response.kind === "counter-builder" && (
+        <>
+          <SceneFigure
+            medium="print"
+            reveal
+            scene={counterBuilderScene(
+              problem.public.response,
+              solutions ? problem.answer : undefined,
+            )}
+          />
+          {!solutions && (
+            <p>
+              Number sentence: ____ &nbsp; ____ &nbsp; ____ &nbsp; = &nbsp; ____
+            </p>
+          )}
+        </>
+      )}
+      {problem.public.response.kind === "line-plot-build" && (
+        <figure>
+          <LinePlotBuildDrawing
+            response={problem.public.response}
+            value={solutions ? problem.answer : '{"counts":{}}'}
+          />
+          <figcaption>{problem.public.response.axis.unit}</figcaption>
+        </figure>
+      )}
+      {problem.public.response.kind === "shape-composer" && (
+        <div className="print-shape-composer">
+          {problem.public.response.stages.map((stage, i) => {
+            const response = {
+              ...problem.public.response,
+              stages: [stage],
+            } as import("../math/shape-composer").ShapeComposerResponse;
+            return (
+              <div key={i}>
+                <p>
+                  {problem.public.response.kind === "shape-composer" &&
+                  problem.public.response.stages.length > 1
+                    ? `Shape ${i + 1}. `
+                    : ""}
+                  {stage.prompt}
+                </p>
+                <SceneFigure
+                  medium="print"
+                  reveal
+                  scene={shapeComposerScene(
+                    response,
+                    solutions
+                      ? JSON.stringify([JSON.parse(problem.answer)[i]])
+                      : undefined,
+                  )}
+                />
+              </div>
+            );
+          })}
+        </div>
+      )}
       {problem.public.response.kind === "point-plot" && (
         // The workbook prints the empty grid to plot on by hand; the
         // solutions print the same grid with the answer drawn.

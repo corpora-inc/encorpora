@@ -1,4 +1,9 @@
 import {
+  clauseMetadata,
+  generateClauseVariant,
+  withClauseMetadata,
+} from "./clause-variants";
+import {
   satCompletionTemplates,
   generateSatCompletionProblem,
 } from "./sat-completion-practice";
@@ -15,7 +20,7 @@ import { withTemplateGlossary } from "./template-glossary";
 import { historicalTrueEquationChoice } from "./operation-sentence-practice";
 import {
   clauseProblem as extendedClauseProblem,
-  withClauseMetadata,
+  withClauseMetadata as withExtendedClauseMetadata,
 } from "./clause-extensions";
 import { historicalEqualFactorFamily } from "./multiselect-number-practice";
 import { sceneCapabilitiesIn } from "./scene/capability";
@@ -26,6 +31,17 @@ import {
   withTemplateVersion,
 } from "./variation/axes";
 import { gradePointPlot, normalizePointPlot } from "./point-plot";
+import { gradeLinePlotBuild, normalizeLinePlotBuild } from "./line-plot-build";
+import {
+  gradeUnitSquareMarking,
+  normalizeUnitSquareMarking,
+} from "./unit-square-marking";
+import {
+  gradeCounterBuilder,
+  normalizeCounterBuilder,
+} from "./counter-builder";
+import { generateCounterBuilderFallback } from "./counter-builder-practice";
+import { gradeShapeComposer, normalizeShapeAnswer } from "./shape-composer";
 import { gradeMultiPart, normalizeMultiPart } from "./multi-part-choice";
 import {
   multiPartChoiceTemplates,
@@ -417,7 +433,6 @@ import { graphicalTemplates, generateGraphicalProblem } from "./graphical";
 import { extendedTemplates, generateExtendedProblem } from "./extended";
 import { familyRegistry } from "../families/registry";
 import { clauseVariantProblem } from "./clause-gap";
-import { clauseMetadata, generateClauseVariant } from "./clause-variants";
 import { createHash } from "node:crypto";
 import { makeTenHops } from "./scene/explanations";
 import { mathLabel, polish } from "./polish";
@@ -665,6 +680,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...familyRegistry.templates,
 ]
   .map(withClauseMetadata)
+  .map(withExtendedClauseMetadata)
   .map(clauseMetadata)
   .map(withTemplateGlossary);
 
@@ -707,6 +723,15 @@ export function isValidResponse(
   problem: PublicProblem,
   response: string,
 ): boolean {
+  if (problem.response.kind === "counter-builder")
+    return normalizeCounterBuilder(problem.response, response) !== null;
+  if (problem.response.kind === "shape-composer")
+    return normalizeShapeAnswer(problem.response, response) !== null;
+  if (response.length > 200) return false;
+  if (problem.response.kind === "line-plot-build")
+    return normalizeLinePlotBuild(problem.response, response) !== null;
+  if (problem.response.kind === "unit-square-marking")
+    return normalizeUnitSquareMarking(response) !== null;
   if (problem.response.kind === "multi-select")
     return normalizeSelection(problem.response, response) !== null;
   if (problem.response.kind === "point-plot")
@@ -725,6 +750,22 @@ export function gradeAnswer(
   problem: GeneratedProblem,
   response: string,
 ): boolean {
+  if (problem.public.response.kind === "counter-builder")
+    return gradeCounterBuilder(
+      problem.public.response,
+      problem.answer,
+      response,
+    );
+  if (problem.public.response.kind === "line-plot-build")
+    return gradeLinePlotBuild(
+      problem.public.response,
+      problem.answer,
+      response,
+    );
+  if (problem.public.response.kind === "unit-square-marking")
+    return gradeUnitSquareMarking(problem.answer, response);
+  if (problem.public.response.kind === "shape-composer")
+    return gradeShapeComposer(problem.public.response, response);
   if (problem.public.response.kind === "multi-select") {
     const answer = normalizeSelection(problem.public.response, response);
     return (
@@ -914,6 +955,14 @@ export function generateProblemFor(
   responseCapabilities: readonly string[] = [],
 ): GeneratedProblem {
   const generateForClient = () => {
+    if (
+      templateId === "build-the-number-sentence" &&
+      !responseCapabilities.includes("counter-builder-v1")
+    ) {
+      if (!responseCapabilities.includes("figure-choice-v1"))
+        throw new Error("Counter builder fallback requires figure-choice-v1");
+      return generateCounterBuilderFallback(seed);
+    }
     const problem = generateProblem(templateId, seed, version);
     if (!problem.variant?.axes?.clause) return problem;
     const kind = problem.public.response.kind;
@@ -1020,6 +1069,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...multiPartChoiceTemplates,
   ].some((t) => t.id === problem.public.templateId);
   const keepAuthored =
+    problem.variant?.axes?.clause !== undefined ||
     preserveAlgebra ||
     ["true-equation-choice", "equal-factor-equations-select"].includes(
       problem.public.templateId,
@@ -1301,7 +1351,7 @@ function generateRawProblem(
     return generateGraphicalProblem(templateId, seed);
   if (extendedTemplates.some((t) => t.id === templateId))
     return generateExtendedProblem(templateId, seed);
-  const meta = templates.find((t) => t.id === templateId);
+  const meta = baseTemplates.find((t) => t.id === templateId);
   if (!meta) throw new Error(`Unknown template: ${templateId}`);
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");

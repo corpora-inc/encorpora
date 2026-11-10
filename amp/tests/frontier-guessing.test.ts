@@ -2,7 +2,12 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { estimateFrontier, strandLevel } from "../src/learning/frontier";
-import { generateProblem, gradeAnswer, templates } from "../src/math/engine";
+import {
+  generateProblem,
+  generateProblemFor,
+  gradeAnswer,
+  templates,
+} from "../src/math/engine";
 import {
   guessChance,
   guessChanceOf,
@@ -10,6 +15,10 @@ import {
 } from "../src/math/guess-chance";
 import { skills } from "../src/curriculum/catalog";
 import { templateGrade } from "../src/server/mixed-practice";
+import {
+  figureCapabilities,
+  type ResponseCapability,
+} from "../src/math/contracts";
 
 const nodes = new Map(skills.map((skill) => [skill.id, skill]));
 const byId = new Map(templates.map((template) => [template.id, template]));
@@ -129,15 +138,101 @@ test("the recorded below-catalog trial no longer lifts fractions two grades on o
   assert.equal(after.adaptive!.level, before.adaptive!.level);
 });
 
+test("graphical solution estimates cover three-choice intersection variants", () => {
+  const problem = generateProblem("graphical-solution-table", "audit:13");
+  assert.equal(problem.public.response.kind, "choice");
+  if (problem.public.response.kind !== "choice") throw new Error("response");
+  assert.equal(problem.public.response.options.length, 3);
+  assert.equal(problemGuessChance(problem), 1 / 3);
+  assert.equal(guessChanceOf("graphical-solution-table"), 1 / 3);
+});
+
+for (const [id, seed, cards] of [
+  ["tile-then-multiply", "audit:95", 4],
+  ["split-tiled-count", "audit:5", 5],
+] as const) {
+  test(`${id} estimates cover ${cards}-card reusable trays`, () => {
+    const problem = generateProblem(id, seed);
+    const response = problem.public.response;
+    assert.equal(response.kind, "multi-part-choice");
+    if (response.kind !== "multi-part-choice") throw new Error("response");
+    assert.equal(response.reuse, true);
+    assert.equal(response.blanks.length, 4);
+    assert.ok(response.blanks.every((blank) => blank.options.length === cards));
+    assert.equal(problemGuessChance(problem), 1 / cards ** 4);
+    assert.equal(guessChanceOf(id), 1 / cards ** 4);
+  });
+}
+
+test("area card guessing floors cover every permitted set of dimensions", () => {
+  // Independently enumerate distinct numerical choices, then four reusable
+  // slots: n choices per slot give n^4 equally likely submitted answers.
+  let tileMinimum = Infinity,
+    splitMinimum = Infinity;
+  for (let a = 3; a <= 9; a++) {
+    for (let b = 3; b <= 10; b++) {
+      if (a === b) continue;
+      for (let k = 1; k < a; k++) {
+        const choices = Math.min(
+          6,
+          new Set([b, a, a * b, k * b, a + b, 2 * (a + b), k * a]).size,
+        );
+        tileMinimum = Math.min(tileMinimum, choices);
+      }
+    }
+    for (let b = 2; b <= 8; b++) {
+      for (let c = 2; c <= 8; c++) {
+        if (b === c || b + c > 12) continue;
+        const choices = Math.min(
+          6,
+          new Set([
+            a * b,
+            a * c,
+            a * (b + c),
+            a + b + c,
+            b * c,
+            a * b * c,
+            b + c,
+          ]).size,
+        );
+        splitMinimum = Math.min(splitMinimum, choices);
+      }
+    }
+  }
+  assert.equal(tileMinimum, 4);
+  assert.equal(splitMinimum, 5);
+  assert.equal(guessChanceOf("tile-then-multiply"), 1 / tileMinimum ** 4);
+  assert.equal(guessChanceOf("split-tiled-count"), 1 / splitMinimum ** 4);
+  const intersection = generateProblem("graphical-solution-table", "audit:13");
+  assert.equal(intersection.public.response.kind, "choice");
+  if (intersection.public.response.kind !== "choice")
+    throw new Error("response");
+  assert.equal(intersection.public.response.options.length, 3);
+  assert.equal(guessChanceOf("graphical-solution-table"), 1 / 3);
+});
 test("guess chance comes from each family's answer schema and is never understated", () => {
+  const kindForCapability: Record<ResponseCapability, string> = {
+    "single-choice-v1": "choice",
+    "multi-select-v1": "multi-select",
+    "point-plot-v1": "point-plot",
+    "line-plot-build-v1": "line-plot-build",
+    "shape-composer-v1": "shape-composer",
+    "multi-part-choice-v1": "multi-part-choice",
+    "multi-part-cards-v1": "multi-part-choice",
+    "figure-choice-v1": "figure-choice",
+    "structured-work-v1": "structured-work",
+    "unit-square-marking-v1": "unit-square-marking",
+    "counter-builder-v1": "counter-builder",
+  };
   let choiceFamilies = 0;
   for (const template of templates) {
     const chance = guessChance(template);
-    if (!template.requiredResponseCapability) {
-      assert.equal(chance, 0, template.id);
-      continue;
-    }
-    if (template.requiredResponseCapability === "structured-work-v1") {
+    if (
+      template.requiredResponseCapability === "structured-work-v1" &&
+      !template.requiredResponseCapabilities?.some(
+        (capability) => capability !== "structured-work-v1",
+      )
+    ) {
       // Typed steps cannot be guessed; orderings and bank-built proofs can.
       // The family's chance covers every instance's exact chance.
       assert.ok(chance >= 0 && chance <= 1 / 2, `${template.id}: ${chance}`);
@@ -151,23 +246,46 @@ test("guess chance comes from each family's answer schema and is never understat
       }
       continue;
     }
-    choiceFamilies++;
-    assert.ok(chance > 0 && chance <= 1 / 2, `${template.id}: ${chance}`);
+    // Versioned families can add formats to a structured-work legacy surface.
+    // Check every declared format through the shared schema audit below.
+    if (chance > 0) choiceFamilies++;
+    assert.ok(chance >= 0 && chance <= 1 / 2, `${template.id}: ${chance}`);
+    const capabilities = [
+      ...(template.requiredResponseCapability
+        ? [template.requiredResponseCapability]
+        : []),
+      ...(template.requiredResponseCapabilities ?? []),
+    ];
+    // Typed answers are supported without a response capability.
+    const declaredKinds = [
+      "number",
+      "fraction",
+      ...capabilities.map((capability) => kindForCapability[capability]),
+    ];
     for (let i = 0; i < 120; i++) {
-      const response = generateProblem(template.id, `audit:${i}`).public
-        .response;
-      assert.equal(
-        response.kind,
-        template.requiredResponseCapability === "multi-select-v1"
-          ? "multi-select"
-          : template.requiredResponseCapability === "point-plot-v1"
-            ? "point-plot"
-            : template.requiredResponseCapability === "multi-part-choice-v1"
-              ? "multi-part-choice"
-              : template.requiredResponseCapability === "figure-choice-v1"
-                ? "figure-choice"
-                : "choice",
-        template.id,
+      const problem = generateProblem(template.id, `audit:${i}`);
+      const response = problem.public.response;
+      // Clause variants can add formats beyond the legacy admission format.
+      // The transport must fall back for a client declaring only that format.
+      const compatible = problem.variant?.axes?.clause
+        ? generateProblemFor(
+            template.id,
+            `audit:${i}`,
+            figureCapabilities,
+            undefined,
+            capabilities,
+          )
+        : problem;
+      if (capabilities.length)
+        assert.ok(
+          declaredKinds.includes(compatible.public.response.kind),
+          `${template.id}: ${compatible.public.response.kind} must have a declared capability`,
+        );
+      // Audit the actual instance, including structured work with private
+      // grading rules; also independently enumerate its public answer space.
+      assert.ok(
+        chance >= problemGuessChance(problem) - 1e-12,
+        `${template.id} seed ${i}: ${problemGuessChance(problem)} > ${chance}`,
       );
       if (response.kind === "choice" || response.kind === "figure-choice")
         assert.ok(

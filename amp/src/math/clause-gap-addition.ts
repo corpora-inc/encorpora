@@ -460,6 +460,17 @@ function fromZero(ctx: ClauseCtx) {
   });
 }
 
+/** Four distinct, non-negative options: the listed distractors first, then the
+ * nearest unused values, so a coincidence never leaves a blank easy to guess. */
+function fourOptions(correct: number, distractors: readonly number[]): string[] {
+  const out: number[] = [correct];
+  for (const d of distractors) if (d >= 0 && !out.includes(d)) out.push(d);
+  for (let k = 1; out.length < 4; k++)
+    for (const d of [correct + k, correct - k])
+      if (out.length < 4 && d >= 0 && !out.includes(d)) out.push(d);
+  return out.slice(0, 4).map(String);
+}
+
 function tensThenOnes(ctx: ClauseCtx) {
   const { r } = ctx;
   const countN = r(0, 1) === 0 ? 3 : 4;
@@ -481,19 +492,19 @@ function tensThenOnes(ctx: ClauseCtx) {
       {
         id: "tens",
         label: `Tens: ${tensText}`,
-        options: [String(tens), String(tens + 10), String(tens - 10), String(ones)],
+        options: fourOptions(tens, [tens + 10, tens - 10, ones]),
         correct: String(tens),
       },
       {
         id: "ones",
         label: `Ones: ${onesText}`,
-        options: [String(ones), String(ones - 10), String(ones + 1), String(values[0]! % 10)],
+        options: fourOptions(ones, [ones - 10, ones + 1, values[0]! % 10]),
         correct: String(ones),
       },
       {
         id: "total",
         label: "Total",
-        options: [String(total), String(tens + (ones % 10)), String(total - 10), String(tens)],
+        options: fourOptions(total, [tens + (ones % 10), total - 10, tens]),
         correct: String(total),
       },
     ],

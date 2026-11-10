@@ -12,17 +12,27 @@ import {
   guessChanceTable,
 } from "../src/math/guess-chance";
 
-test("the table holds each answered family's computed chance, and no typed family", () => {
-  const typed = templates.find((t) => !t.requiredResponseCapability)!;
+test("the table holds each family's computed chance, including typed and mixed families", () => {
+  // add-within-20 gained choice clauses, so a family that is still typed only.
+  const typed = templates.find((t) => t.id === "prism-volume-edges")!;
   const answered = templates
-    .filter((t) => t.requiredResponseCapability)
+    .filter(
+      (t) =>
+        t.requiredResponseCapability || t.requiredResponseCapabilities?.length,
+    )
     .slice(0, 6);
+  // These legacy typed families gained choice variants through different
+  // extension paths; admission metadata alone cannot identify them.
+  for (const id of ["times-table-pattern", "add-fractions", "sample-proportion-estimate"])
+    answered.push(templates.find((t) => t.id === id)!);
   const table = guessChanceTable([typed, ...answered]);
   assert.deepEqual(
     table,
-    Object.fromEntries(answered.map((t) => [t.id, guessChance(t)])),
+    Object.fromEntries([typed, ...answered].map((t) => [t.id, guessChance(t)])),
   );
   assert.equal(guessChanceOf(typed.id), 0);
+  assert.equal(table[typed.id], 0);
+  for (const family of answered) assert.ok(table[family.id]! > 0, family.id);
 });
 
 test("without a build there is no table, so families are computed on demand", () => {
@@ -38,7 +48,9 @@ test("a built server answers from the table without generating a problem", async
     "guess.mjs",
   );
   await build({
-    entryPoints: [new URL("../src/math/guess-chance.ts", import.meta.url).pathname],
+    entryPoints: [
+      new URL("../src/math/guess-chance.ts", import.meta.url).pathname,
+    ],
     bundle: true,
     platform: "node",
     format: "esm",

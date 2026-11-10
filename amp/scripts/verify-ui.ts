@@ -655,6 +655,7 @@ try {
               [
                 template.requiredResponseCapability === "multi-select-v1",
                 template.requiredResponseCapability === "point-plot-v1" ||
+                  template.requiredResponseCapability === "shape-composer-v1" ||
                   template.requiredResponseCapability ===
                     "multi-part-choice-v1" ||
                   template.requiredResponseCapability === "figure-choice-v1" ||

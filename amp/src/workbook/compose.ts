@@ -109,7 +109,9 @@ export function minutesFor(
       ? 2 + (response.open?.max ?? response.rows.length)
       : response.kind === "multi-part-choice"
         ? 1 + response.blanks.length
-        : response.kind === "point-plot"
+        : response.kind === "point-plot" ||
+            response.kind === "counter-builder" ||
+            response.kind === "shape-composer"
           ? 3
           : response.kind === "multi-select" ||
               response.kind === "figure-choice"
@@ -263,6 +265,7 @@ export function composeWorkbook(options: {
     // Choosing or marking on the problem needs an answer line, not a page
     // of working; typed answers get room to work.
     const marked =
+      problem.public.response.kind !== "unit-square-marking" &&
       problem.public.response.kind !== "number" &&
       problem.public.response.kind !== "fraction";
     return {

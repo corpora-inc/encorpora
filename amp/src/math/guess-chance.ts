@@ -4,20 +4,37 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { pointPlotGuessChance } from "./point-plot";
+import { counterBuilderGuessChance } from "./counter-builder";
 import { multiPartGuessChance } from "./multi-part-choice";
 import { figureChoiceGuessChance } from "./figure-choice";
 import { structuredWorkGuessChance } from "./structured-work";
 import { generateProblem, templates } from "./engine";
+import { clauseTasks, forcedClause } from "./clause-gap";
 import { historicalTemplates } from "./historical-templates";
 
 /** Instances sampled to read a choice family's option count from its answer
  * schema. tests/frontier-guessing.test.ts checks far more seeds against it. */
 const SAMPLE_SEEDS = 16;
 const STRUCTURED_SEEDS = 128;
-/** Floors for variable multi-part families whose high-guessability variants
+const CLAUSE_SEEDS = 64;
+/** Floors for variable-response families whose high-guessability variants
  * are rarer than the deterministic sample. Keep these in sync with the
  * generator-variation audit in frontier-guessing.test.ts. */
-const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
+const FAMILY_GUESS_FLOOR: Readonly<Record<string, number>> = {
+  // Older clients answer the same family through four picture choices.
+  // The family estimator conservatively covers those attempts as well.
+  "build-the-number-sentence": 1 / 4,
+  // Clause choices can have three options after duplicate distractors are removed.
+  "graphical-solution-table": 1 / 3,
+  // A rate of two leaves 3, 3 and 4 choices in the ordered-pair slots.
+  "dependent-variable-value": 1 / 36,
+  // Four reusable slots can share a tray with only four distinct cards.
+  "tile-then-multiply": 1 / 256,
+  // Split rectangles use four reusable slots and at least five distinct cards.
+  "split-tiled-count": 1 / 625,
+  // The most guessable recipe places two labelled squares in two spaces:
+  // two accepted orders among 21^2 unused-or-grid-position choices.
+  "compose-flat-shape": 2 / 441,
   "circle-estimate-blanks": 1 / 8,
   "round-decimal-blanks": 1 / 8,
   "quotient-remainder-blanks": 1 / 8,
@@ -34,6 +51,8 @@ const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
   // Two factors among three or four choices, or three multiples among four or five.
   "factor-pairs-select": 1 / 3,
   "multiples-select": 1 / 4,
+  // Two identical wrong bounds collapse to one: 4 shares × 3 bounds × 4 checks.
+  "whole-sharing-fraction": 1 / 48,
 };
 /** An unregistered choice family is scored as the most guessable choice: two
  * options. Overstating the guess chance only discounts a correct answer. */
@@ -50,8 +69,7 @@ const byId = new Map(
 // is computed on first use. Sampling a family takes up to 2 s of CPU, too long
 // to pay on a request thread.
 declare const __AMP_GUESS_CHANCES__:
-  | Readonly<Record<string, number>>
-  | undefined;
+  Readonly<Record<string, number>> | undefined;
 const built =
   typeof __AMP_GUESS_CHANCES__ === "undefined"
     ? []
@@ -66,6 +84,16 @@ export const builtGuessChances = built.length;
  * Structured work needs its private rule to count valid orders and proofs
  * (`problemGuessChance`); from the public response alone it is unknown. */
 export function responseGuessChance(response: ProblemResponse): number {
+  // One exact count map: each column independently permits 0..maxPerValue.
+  // Omitted counts mean zero; measurementCount does not restrict submissions.
+  if (response.kind === "line-plot-build")
+    return (
+      1 /
+      (response.maxPerValue + 1) ** (response.axis.max - response.axis.min + 1)
+    );
+  if (response.kind === "counter-builder")
+    return counterBuilderGuessChance(response);
+  if (response.kind === "shape-composer") return response.guessChance;
   if (response.kind === "structured-work") return UNKNOWN_CHOICE_GUESS;
   if (response.kind === "choice") return 1 / response.options.length;
   if (response.kind === "point-plot") return pointPlotGuessChance(response);
@@ -86,43 +114,69 @@ export function responseGuessChance(response: ProblemResponse): number {
 /** Use the greatest sampled guessing chance when a family's answer forms vary.
  * Typed answers have chance 0, single choices 1/n, and k-of-n selections 1/C(n,k). */
 export function guessChance(
-  template: Pick<TemplateMetadata, "id" | "requiredResponseCapability">,
+  template: Pick<
+    TemplateMetadata,
+    "id" | "requiredResponseCapability" | "requiredResponseCapabilities"
+  >,
 ): number {
-  if (!template.requiredResponseCapability) return 0;
+  const capabilities = [
+    ...(template.requiredResponseCapability
+      ? [template.requiredResponseCapability]
+      : []),
+    ...(template.requiredResponseCapabilities ?? []),
+  ];
   const known = cache.get(template.id);
   if (known !== undefined) return known;
-  let chance = UNKNOWN_CHOICE_GUESS;
+  let chance =
+    template.requiredResponseCapability ||
+    template.requiredResponseCapabilities?.length
+      ? UNKNOWN_CHOICE_GUESS
+      : 0;
   if (byId.has(template.id)) {
+    // Admission capabilities describe what old clients can receive, not all
+    // current answer forms. Even a typed family can have choice clauses.
     // Structured work mixes typed steps (never guessed) with orderings and
     // proofs built from banks; sample more, and a family whose every
     // sampled instance has a typed field cannot be guessed.
-    const structured =
-      template.requiredResponseCapability === "structured-work-v1";
+    const structured = capabilities.includes("structured-work-v1");
     // The sample can miss rare, more guessable variants in these generators.
-    let greatest = MULTI_PART_GUESS_FLOOR[template.id] ?? 0;
+    let greatest = FAMILY_GUESS_FLOOR[template.id] ?? 0;
     for (let i = 0; i < (structured ? STRUCTURED_SEEDS : SAMPLE_SEEDS); i++)
       greatest = Math.max(
         greatest,
         problemGuessChance(generateProblem(template.id, `guess-chance:${i}`)),
       );
-    if (greatest > 0 || structured) chance = greatest;
+    // Clause tasks are drawn by weight, so a rare one can miss the sample.
+    // Sample each task directly; card trays vary by seed, so sample each task well.
+    for (const task of clauseTasks(template.id))
+      for (let i = 0; i < CLAUSE_SEEDS; i++)
+        greatest = Math.max(
+          greatest,
+          problemGuessChance(
+            forcedClause(template.id, task, `guess-chance:${task}:${i}`),
+          ),
+        );
+    chance = greatest;
   }
   cache.set(template.id, chance);
   return chance;
 }
 
-/** Guessing chances for the build to inline: families answered by typing are
- * always 0 and need no entry. */
+/** Inline every family's chance, including zero, so typed families do not
+ * pay for schema sampling on a production request. */
 export function guessChanceTable(
   families: Iterable<TemplateMetadata> = byId.values(),
 ): Record<string, number> {
-  const answered = [...families].filter((t) => t.requiredResponseCapability);
-  return Object.fromEntries(answered.map((t) => [t.id, guessChance(t)]));
+  return Object.fromEntries(
+    [...families].map((t) => [t.id, guessChance(t)] as const),
+  );
 }
 
 /** One instance's guessing chance, using its private rule where needed. */
 export function problemGuessChance(problem: GeneratedProblem): number {
   const response = problem.public.response;
+  if (response.kind === "counter-builder")
+    return counterBuilderGuessChance(response, problem.answer);
   if (response.kind === "structured-work")
     return problem.workGrading
       ? structuredWorkGuessChance(response, problem.workGrading)

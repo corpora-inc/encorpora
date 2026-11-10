@@ -1,0 +1,223 @@
+.line-build {
+  width: 100%;
+  flex: none;
+  max-width: 36rem;
+  margin: var(--space-4) auto 0;
+  color: var(--color-on-surface);
+}
+@media (max-width: 380px) {
+  .practice-surface:has(.line-build) {
+    padding-inline: var(--space-2);
+  }
+  .problem-stage:has(.line-build) {
+    scrollbar-gutter: stable;
+  }
+}
+.line-build h3 {
+  font-size: 1rem;
+  margin: 0 0 var(--space-2);
+}
+.line-build-help,
+.line-build-status {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  margin: var(--space-2) 0;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+.line-build-status {
+  min-height: 2.8em;
+}
+.line-build-canvas {
+  position: relative;
+  width: 100%;
+}
+.line-build-drawing {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.line-build-drawing line,
+.line-build-x {
+  stroke: var(--color-figure-ink);
+  stroke-width: 2;
+}
+.line-build-x {
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.line-build-drawing text {
+  text-anchor: middle;
+  fill: var(--color-on-surface);
+  font-size: 16px;
+  font-family: inherit;
+}
+.line-build-drawing .line-build-value {
+  font-size: 20px;
+  font-weight: 600;
+}
+.line-build-drawing .line-build-count,
+.line-build-drawing .line-build-expected {
+  font-size: 14px;
+}
+.line-build-columns {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 1.111%;
+  right: 1.111%;
+  height: 71.212%;
+}
+.line-build-column {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.line-build-column[data-selected="true"]::after {
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+  /* The hit area spans SVG y=0–188; the cursor encloses only y=178–222,
+     around the tick and number, below every data mark. */
+  top: calc(100% * 178 / 188);
+  height: calc(100% * 44 / 188);
+  left: 50%;
+  width: min(80%, 3rem);
+  transform: translateX(-50%);
+  border: 1px solid var(--color-focus-ring);
+  border-radius: var(--radius-small);
+  pointer-events: none;
+}
+.line-build-column:focus-visible {
+  outline: none;
+}
+.line-build-column:focus-visible::after {
+  border-width: 3px;
+}
+.line-build-column[aria-disabled="true"] {
+  cursor: default;
+}
+.line-build-unit {
+  text-align: center;
+  margin: 0 0 var(--space-3);
+  font-size: 0.875rem;
+}
+.line-build-stepper {
+  display: grid;
+  grid-template-columns: 44px 44px minmax(44px, 1fr) 44px 44px;
+  gap: var(--space-1);
+  align-items: center;
+  max-width: 22rem;
+  margin: auto;
+}
+.line-build-stepper button {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  font-size: 1.25rem;
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+}
+.line-build-stepper button:focus-visible,
+.line-build-form button:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.line-build-stepper span {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  white-space: nowrap;
+}
+.line-build-stepper small {
+  font-size: 0.75rem;
+}
+.line-build-form {
+  display: grid;
+  grid-template-columns: minmax(88px, 1fr) minmax(88px, 2fr);
+  gap: var(--space-3);
+  width: 100%;
+}
+.line-build-form button {
+  min-height: 44px;
+  white-space: nowrap;
+}
+
+/* A short landscape screen has room for two columns. Keep the prompt and
+   plot in their own scroller; feedback details scroll beside them while
+   Next and the tools stay within reach. */
+.practice-surface[data-line-plot-landscape] {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 40%);
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 0 var(--space-2);
+  padding: var(--space-2);
+}
+.practice-surface[data-line-plot-landscape] > .workspace-toolbar,
+.practice-surface[data-line-plot-landscape] > .practice-topic {
+  grid-column: 1 / -1;
+  grid-row: 1;
+}
+.practice-surface[data-line-plot-landscape] > .problem-stage {
+  grid-column: 1;
+  grid-row: 2;
+  min-height: 0;
+  scrollbar-gutter: stable;
+}
+.practice-surface[data-line-plot-landscape] .question {
+  font-size: clamp(18px, 2.5vw, 22px);
+}
+.practice-surface[data-line-plot-landscape] > .answer-dock {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+  width: auto;
+  margin: 0;
+  padding: var(--space-2);
+}
+.practice-surface[data-line-plot-landscape] > .feedback {
+  position: absolute;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  inset: 0;
+  width: auto;
+  max-height: none;
+  margin: 0;
+  padding: var(--space-3);
+  gap: var(--space-2);
+  overflow: hidden;
+}
+.practice-surface[data-line-plot-landscape] .feedback-details {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.practice-surface[data-line-plot-landscape] .feedback-details > *,
+.practice-surface[data-line-plot-landscape] .next-row,
+.practice-surface[data-line-plot-landscape] .practice-tools {
+  flex: none;
+}
+.practice-surface[data-line-plot-landscape] .next-row button {
+  font-size: var(--text-label);
+  padding-inline: var(--space-2);
+}
+.practice-surface[data-line-plot-landscape] .practice-tools button {
+  flex: 1 1 0;
+  min-width: 44px;
+  padding-inline: var(--space-1);
+  font-size: var(--text-label);
+}

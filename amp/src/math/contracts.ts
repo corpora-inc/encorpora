@@ -1,5 +1,30 @@
 import type { GlossaryPayload } from "../glossary/types";
+import {
+  counterBuilderResponseSchema,
+  counterBuilderKeyFits,
+  type CounterBuilderResponse,
+} from "./counter-builder";
+import {
+  shapeComposerResponseSchema,
+  gradeShapeComposer,
+  normalizeShapeAnswer,
+  shapeGuessChance,
+  type ShapeComposerResponse,
+} from "./shape-composer";
 import { z } from "zod";
+import {
+  linePlotBuildResponseSchema,
+  linePlotContextSchema,
+  normalizeLinePlotBuild,
+  type LinePlotBuildResponse,
+  type LinePlotBuildAnswer,
+  type LinePlotContext,
+} from "./line-plot-build";
+import {
+  unitSquareMarkingResponseSchema,
+  normalizeUnitSquareMarking,
+  type UnitSquareMarkingResponse,
+} from "./unit-square-marking";
 import {
   MAX_SELECTION_OPTIONS,
   normalizeSelection,
@@ -268,6 +293,10 @@ export const responseCapabilities = [
   "figure-choice-v1",
   "structured-work-v1",
   "multi-part-cards-v1",
+  "shape-composer-v1",
+  "line-plot-build-v1",
+  "unit-square-marking-v1",
+  "counter-builder-v1",
 ] as const;
 export type ResponseCapability = (typeof responseCapabilities)[number];
 /** The response and figure families a client declares it can show. */
@@ -284,26 +313,38 @@ export const clientCanDraw = (
     | "requiredFigureCapability"
     | "requiredResponseCapability"
     | "requiredResponseCapabilities"
+    | "fallbackCapabilities"
   >,
   client: ClientCapabilities,
 ): boolean =>
-  (!template.requiredResponseCapability ||
+  (!!template.fallbackCapabilities &&
+    client.responseCapabilities.includes(
+      template.fallbackCapabilities.response,
+    ) &&
+    client.figureCapabilities.includes(template.fallbackCapabilities.figure)) ||
+  ((!template.requiredResponseCapability ||
     client.responseCapabilities.includes(
       template.requiredResponseCapability,
     )) &&
-  (template.requiredResponseCapabilities ?? []).every((capability) =>
-    client.responseCapabilities.includes(capability),
-  ) &&
-  (!template.requiredFigureCapability ||
-    client.figureCapabilities.includes(template.requiredFigureCapability));
+    (template.requiredResponseCapabilities ?? []).every((capability) =>
+      client.responseCapabilities.includes(capability),
+    ) &&
+    (!template.requiredFigureCapability ||
+      client.figureCapabilities.includes(template.requiredFigureCapability)));
 export interface TemplateMetadata {
-  /** Every response protocol used by a type with mixed variant formats. */
-  requiredResponseCapabilities?: readonly ResponseCapability[];
+  /** An implemented same-givens fallback in generateProblemFor. Admission
+   * requires both its response format and its figure format. */
+  fallbackCapabilities?: {
+    response: ResponseCapability;
+    figure: FigureCapability;
+  };
   /** Editorial local step on the curriculum-grade scale, not empirical calibration. */
   difficultyOffset?: number;
   requiredFigureCapability?: FigureCapability;
   /** Absent for the original number/fraction protocol. */
   requiredResponseCapability?: ResponseCapability;
+  /** Additional protocols when a versioned family has several response surfaces. */
+  requiredResponseCapabilities?: readonly ResponseCapability[];
   id: string;
   /** Catalog version. A stored workbook names this on each problem. */
   version: number;
@@ -330,6 +371,9 @@ export type MultiSelectResponse = {
   selectionCount: number;
 };
 export type {
+  LinePlotBuildResponse,
+  LinePlotBuildAnswer,
+  UnitSquareMarkingResponse,
   PointPlotResponse,
   PointPlotGrading,
   MultiPartChoiceResponse,
@@ -338,13 +382,17 @@ export type {
   WorkGrading,
 };
 export type ProblemResponse =
+  | ShapeComposerResponse
   | { kind: "number" | "fraction"; label: string }
   | { kind: "choice"; label: string; options: { id: string; label: string }[] }
   | MultiSelectResponse
   | PointPlotResponse
   | MultiPartChoiceResponse
   | FigureChoiceResponse
-  | StructuredWorkResponse;
+  | CounterBuilderResponse
+  | StructuredWorkResponse
+  | LinePlotBuildResponse
+  | UnitSquareMarkingResponse;
 /** Safe teaching content delivered beside a problem; never grading data.
  * Its glossary fields carry the term cards the hint's words open. */
 export interface ProblemHint extends GlossaryPayload {
@@ -384,6 +432,7 @@ export interface GeneratedProblem {
   choiceFeedback?: Record<string, string>;
   /** Private grading rule of a point-plot response (point-plot.ts). */
   pointGrading?: PointPlotGrading;
+  linePlotContext?: LinePlotContext;
   /** Private grading rule of a structured-work response (structured-work.ts):
    * expected fields, the moves a derivation's reasons name and its
    * solutions, or a proof's justified claims. Never public. */
@@ -915,6 +964,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   ]);
 const choiceIdSchema = z.string().regex(/^option-[a-d]$/);
 export const problemResponseSchema: z.ZodType<ProblemResponse> = z.union([
+  shapeComposerResponseSchema,
   z
     .object({
       kind: z.enum(["number", "fraction"]),
@@ -978,9 +1028,12 @@ export const problemResponseSchema: z.ZodType<ProblemResponse> = z.union([
       "Select fewer than all options, using unique identifiers and labels",
     ),
   pointPlotResponseSchema,
+  linePlotBuildResponseSchema,
+  unitSquareMarkingResponseSchema,
   multiPartChoiceResponseSchema,
   figureChoiceResponseSchema,
   structuredWorkResponseSchema,
+  counterBuilderResponseSchema,
 ]);
 export const publicProblemSchema: z.ZodType<PublicProblem> = z
   .object({
@@ -1007,9 +1060,9 @@ export const problemVariantSchema: z.ZodType<ProblemVariant> = z
 export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
   .object({
     public: publicProblemSchema,
-    // A worked structured response (every row of the key) may run to 200
-    // characters; every other answer stays within 100.
-    answer: z.string().min(1).max(200),
+    // Lattice placements include both stages; the response-specific refinement
+    // preserves the shorter limits for older answer protocols.
+    answer: z.string().min(1).max(4000),
     explanation: z.array(z.string().min(1).max(4000)).min(1).max(20),
     hint: z.string().min(1).max(4000),
     hintCue: stepsSchema.optional(),
@@ -1018,6 +1071,7 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
       .record(choiceIdSchema, z.string().trim().min(1).max(1000))
       .optional(),
     pointGrading: pointPlotGradingSchema.optional(),
+    linePlotContext: linePlotContextSchema.optional(),
     workGrading: workGradingSchema.optional(),
     entryPolicy: z.literal("sat-spr").optional(),
     variant: problemVariantSchema.optional(),
@@ -1025,6 +1079,31 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
   .strict()
   .refine((problem) => {
     const response = problem.public.response;
+    if (response.kind !== "shape-composer" && problem.answer.length > 200)
+      return false;
+    if (response.kind === "line-plot-build")
+      return (
+        !problem.choiceFeedback &&
+        !problem.entryPolicy &&
+        !problem.pointGrading &&
+        !problem.workGrading &&
+        normalizeLinePlotBuild(response, problem.answer) === problem.answer &&
+        (!response.measurementCount ||
+          Object.values(
+            (JSON.parse(problem.answer) as { counts: Record<string, number> })
+              .counts,
+          ).reduce((a, b) => a + b, 0) === response.measurementCount)
+      );
+    if (problem.linePlotContext) return false;
+    if (response.kind === "unit-square-marking")
+      return (
+        !problem.choiceFeedback &&
+        !problem.entryPolicy &&
+        !problem.pointGrading &&
+        !problem.workGrading &&
+        normalizeUnitSquareMarking(problem.answer) === problem.answer &&
+        problem.answer === String(response.cells.length)
+      );
     // A worked key is canonical, fits its private rule and earns credit.
     if (response.kind === "structured-work")
       return (
@@ -1036,7 +1115,24 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
         normalizeStructuredWork(response, problem.answer) === problem.answer &&
         gradeStructuredWork(response, problem.workGrading, problem.answer)
       );
+    if (response.kind === "shape-composer")
+      return (
+        !problem.workGrading &&
+        !problem.pointGrading &&
+        !problem.entryPolicy &&
+        !problem.choiceFeedback &&
+        normalizeShapeAnswer(response, problem.answer) === problem.answer &&
+        gradeShapeComposer(response, problem.answer) &&
+        response.guessChance === shapeGuessChance(response)
+      );
     if (problem.workGrading || problem.answer.length > 100) return false;
+    if (response.kind === "counter-builder")
+      return (
+        !problem.choiceFeedback &&
+        !problem.entryPolicy &&
+        !problem.pointGrading &&
+        counterBuilderKeyFits(response, problem.answer)
+      );
     // A plotted answer is canonical, complete, and accepted by its own rule.
     if (response.kind === "point-plot")
       return (

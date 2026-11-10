@@ -671,8 +671,11 @@ test("grade-4 geometry answers match the figure over 200 seeds", () => {
   for (const id of Object.keys(SKILLS)) {
     for (let i = 0; i < SEEDS; i++) {
       const seed = `g4-${id}-${i}`;
-      const problem = generateProblem(id, seed);
-      assert.deepEqual(problem, generateProblem(id, seed));
+      // This solver audits the original part-unknown model. Whole-unknown
+      // clause variants have their own independent prompt/figure oracle.
+      const version = id === "adjacent-angle-equation" ? 1 : undefined;
+      const problem = generateProblem(id, seed, version);
+      assert.deepEqual(problem, generateProblem(id, seed, version));
       generatedProblemSchema.parse(problem);
       assert.equal(problem.public.skillId, SKILLS[id]);
       assert.equal(independent(problem), problem.answer, `${id} ${seed}`);
