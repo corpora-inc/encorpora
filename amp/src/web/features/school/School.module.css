@@ -890,6 +890,9 @@ button.copy[data-done="copied"] {
   background: var(--color-surface-hover);
 }
 .settingsLink:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
 /* The grade picker: kindergarten to college, a grid of equal cells, five to a
    row, College across two. The chosen grade is outlined. */
 .optional {
