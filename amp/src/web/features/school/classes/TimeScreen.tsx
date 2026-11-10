@@ -238,8 +238,9 @@ function DaySheet({
           <TimeDetail time={data} who={data.student.name} />
           <Link
             to="/$"
-            params={{ _splat: studentUrl(place.org, data.student.id) }}
-            search={{ class: place.class } as never}
+            params={{
+              _splat: studentUrl(place.org, data.student.id, place.class),
+            }}
             className={buttonClass("quiet", "", "start")}
           >
             Open {data.student.first}’s record

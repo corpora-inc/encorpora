@@ -164,8 +164,9 @@ export function EvidenceSheet({
           <div className={styles.sheetLinks}>
             <Link
               to="/$"
-              params={{ _splat: studentUrl(place.org, data.student.id) }}
-              search={{ class: place.class } as never}
+              params={{
+                _splat: studentUrl(place.org, data.student.id, place.class),
+              }}
               className={buttonClass("quiet", "", "start")}
             >
               Open {data.student.first}’s record

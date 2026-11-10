@@ -384,8 +384,7 @@ const rosterColumns = (
     cell: (row) => (
       <Link
         to="/$"
-        params={{ _splat: studentUrl(orgId, row.id) }}
-        search={{ class: classId } as never}
+        params={{ _splat: studentUrl(orgId, row.id, classId) }}
         className={`${styles.person} ${styles.rowLink}`}
       >
         <span>{displayName(row)}</span>
@@ -757,8 +756,7 @@ export function ClassScreen() {
             card={(row) => (
               <Link
                 to="/$"
-                params={{ _splat: studentUrl(orgId, row.id) }}
-                search={{ class: classId } as never}
+                params={{ _splat: studentUrl(orgId, row.id, classId) }}
                 className={styles.studentCard}
               >
                 <span className={styles.studentCardText}>

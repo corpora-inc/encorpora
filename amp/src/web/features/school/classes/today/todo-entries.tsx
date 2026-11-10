@@ -76,8 +76,8 @@ export function TodoAction({
       ? { to: `pathways/${action.skillId}`, search: {} }
       : action.kind === "student"
         ? {
-            to: studentUrl(org, action.personId),
-            search: { class: classId },
+            to: studentUrl(org, action.personId, classId),
+            search: {},
           }
         : {
             to: classUrl(org, classId, action.tab as ClassTabId | "start"),
