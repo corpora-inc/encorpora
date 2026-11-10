@@ -180,13 +180,15 @@ function writeUniformModel(r: (lo: number, hi: number) => number): {
       const pool = repeated.length ? repeated : askable;
       if (!pool.length) continue;
       const asked = pool[r(0, pool.length - 1)]!;
+      const letter = (name: string) => `$${name}$`;
       const pieces: string[] = [];
       counts.forEach((c, i) => {
-        for (let j = 0; j < c; j++) pieces.push(names[i]!);
+        for (let j = 0; j < c; j++) pieces.push(letter(names[i]!));
       });
-      const label = names[asked.i]!;
+      const label = letter(names[asked.i]!);
       const shares = names.map(
-        (name, i) => `${name} has probability ${fraction(counts[i]!, n)}`,
+        (name, i) =>
+          `${letter(name)} has probability ${fraction(counts[i]!, n)}`,
       );
       return {
         prompt: `A spinner has ${n} equal sections labeled ${pieces.join(", ")}. Each section is equally likely. What is the probability of landing on ${label}?`,
@@ -219,9 +221,9 @@ function writeUniformModel(r: (lo: number, hi: number) => number): {
           ? `The class has ${size} students, and ${girls} are girls. Jane is one of all ${size} students, so start from the whole class.`
           : `The class has ${size} students, and ${girls} are girls. Count the students who fit, then divide by ${size}.`,
       explanation: [
-        `One student is chosen from ${size}, so P(Jane) is ${fraction(1, size)}.`,
-        `P(a girl) is ${fraction(girls, size)}, and P(not a girl) is ${fraction(notGirls, size)}.`,
-        "P(a girl) and P(not a girl) add to 1.",
+        `One student is chosen from ${size}, so $P(\\text{Jane})$ is ${fraction(1, size)}.`,
+        `$P(\\text{a girl})$ is ${fraction(girls, size)}, and $P(\\text{not a girl})$ is ${fraction(notGirls, size)}.`,
+        "$P(\\text{a girl})$ and $P(\\text{not a girl})$ add to 1.",
         `The probability that ${question} is ${fraction(favorable, size)}.`,
       ],
     };

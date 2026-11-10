@@ -1,3 +1,4 @@
+import { count, nounFor, term } from "./agreement";
 import {
   choice,
   clean,
@@ -99,10 +100,20 @@ function zeroMeaning(r: Rng): Item {
   );
   const n = r(1, 40) * (r(0, 9) < 7 ? -1 : 1),
     both = r(0, 2) === 0;
-  const intro = `${subject} has a recorded value of ${show(n)} ${unit}. ${convention}`;
+  const unitOne: Record<string, string> = {
+    meters: "meter",
+    dollars: "dollar",
+    yards: "yard",
+    floors: "floor",
+    seconds: "second",
+    "charge units": "charge unit",
+    "strokes relative to par": "stroke relative to par",
+  };
+  const amount = `${show(n)} ${unitOne[unit] ? nounFor(Math.abs(n), unitOne[unit]!) : unit}`;
+  const intro = `${subject} has a recorded value of ${amount}. ${convention}`;
   const explanation = [
     `Zero represents ${reference}. The convention states the reference from which positive and negative values are measured.`,
-    `${show(n)} is ${Math.abs(n)} units on the ${n < 0 ? "negative" : "positive"} side of that reference. Zero is a reference value, not the absence of the object.`,
+    `${show(n)} is ${count(Math.abs(n), "unit")} on the ${n < 0 ? "negative" : "positive"} side of that reference. Zero is a reference value, not the absence of the object.`,
   ];
   return {
     prompt: `${intro} ${both ? "Choose the signed value and the meaning of 0." : "What does 0 represent?"}`,
@@ -112,7 +123,7 @@ function zeroMeaning(r: Rng): Item {
           { label: "Meaning of 0", correct: reference, wrong: [...wrong] },
         ])
       : choice(r, reference, [...wrong])),
-    hint: `Use the positive and negative convention to find the dividing reference for ${show(n)} ${unit}.`,
+    hint: `Use the positive and negative convention to find the dividing reference for ${amount}.`,
     explanation,
   };
 }
@@ -237,9 +248,9 @@ function distance(r: Rng, variant: string): Item {
       ? multi(
           r,
           [
-            math(`|${a}-(${b})|`),
-            math(`|${b}-(${a})|`),
-            math(`-|${a}-(${b})|`),
+            math(`|${a}-${term(b)}|`),
+            math(`|${b}-${term(a)}|`),
+            math(`-|${a}-${term(b)}|`),
             math(`|${a}+${b}|`),
           ],
           [0, 1],
@@ -258,8 +269,8 @@ function distance(r: Rng, variant: string): Item {
       : {}),
     hint: `Subtract one endpoint from the other, then take the nonnegative distance. Start with ${show(b)} minus ${show(a)}.`,
     explanation: [
-      `The distance is $|${b}-(${a})| = |${value}| = ${value}$.`,
-      `Reversing the subtraction gives $|${a}-(${b})| = |${-value}| = ${value}$. Either order inside the absolute-value bars gives the same distance.`,
+      `The distance is $|${b}-${term(a)}| = |${value}| = ${value}$.`,
+      `Reversing the subtraction gives $|${a}-${term(b)}| = |${-value}| = ${value}$. Either order inside the absolute-value bars gives the same distance.`,
     ],
   };
 }
@@ -504,12 +515,12 @@ function jumps(r: Rng): Item {
   return {
     prompt: vertical
       ? `Which vertical number line shows a temperature of ${show(p)}°C ${walk > 0 ? "rising" : "falling"} ${Math.abs(walk)}°C?`
-      : `Which number line represents $${p} ${subtract ? "-" : "+"} (${q})$?`,
+      : `Which number line represents $${p} ${subtract ? "-" : "+"}${term(q)}$?`,
     ...figures(r, options[0]!, options.slice(1)),
     hint: `Start at ${show(p)}. ${subtract ? "Subtracting reverses the second number's direction." : "The second number tells the signed change."}`,
     explanation: [
-      `Start at ${show(p)} and move ${Math.abs(walk)} units ${vertical ? (walk > 0 ? "up" : "down") : walk > 0 ? "right" : "left"}.`,
-      `The endpoint is $${p}+(${walk})=${clean(p + walk)}$. The initial position and the change have different jobs.`,
+      `Start at ${show(p)} and move ${count(Math.abs(walk), "unit")} ${vertical ? (walk > 0 ? "up" : "down") : walk > 0 ? "right" : "left"}.`,
+      `The endpoint is $${p}+${term(walk)}=${clean(p + walk)}$. The initial position and the change have different jobs.`,
     ],
   };
 }
@@ -592,21 +603,21 @@ function inverse(r: Rng, fractional: boolean): Item {
   return {
     prompt:
       form === 0
-        ? `What is $${t}+(${opp})$?`
+        ? `What is $${t}+${term(opp)}$?`
         : form === 1
           ? `What number must be added to $${t}$ to get 0?`
           : "Which sum equals 0?",
     ...(form === 2
-      ? choice(r, math(`${t}+(${opp})`), [
-          math(`${t}+(${t})`),
-          math(`${opp}+(${opp})`),
+      ? choice(r, math(`${t}+${term(opp)}`), [
+          math(`${t}+${term(t)}`),
+          math(`${opp}+${term(opp)}`),
           math(`${t}+0`),
         ])
       : numeric(form === 0 ? 0 : fraction(-negative, d))),
     hint: `${form === 2 ? "A sum of 0 requires equal sizes and opposite signs. " : ""}${fractional ? `Keep the size of $${t}$ and reverse its sign. For a fraction, the denominator stays the same.` : `Opposites have equal sizes and opposite signs. Find the opposite of $${t}$.`}`,
     explanation: [
       `The opposite of $${t}$ is $${opp}$.`,
-      `Together, $${t}+(${opp})=0$. These numbers are called additive inverses because their sum is 0.`,
+      `Together, $${t}+${term(opp)}=0$. These numbers are called additive inverses because their sum is 0.`,
     ],
   };
 }
@@ -622,19 +633,19 @@ function rewrite(r: Rng): Item {
     np = text(-pn),
     nq = text(-qn);
   const reverse = r(0, 1) === 0;
-  const correct = reverse ? `${p}-(${nq})` : `${p}+(${nq})`;
+  const correct = reverse ? `${p}-${term(nq)}` : `${p}+${term(nq)}`;
   const wrong = reverse
-    ? [`${p}-(${q})`, `${np}-(${nq})`, `${nq}-(${p})`]
-    : [`${p}+(${q})`, `${np}+(${nq})`, `${np}+(${q})`];
+    ? [`${p}-${term(q)}`, `${np}-${term(nq)}`, `${nq}-${term(p)}`]
+    : [`${p}+${term(q)}`, `${np}+${term(nq)}`, `${np}+${term(q)}`];
   return {
     prompt: reverse
-      ? `Which subtraction expression has the same value as $${p}+(${q})$?`
-      : `Which addition expression has the same value as $${p}-(${q})$?`,
+      ? `Which subtraction expression has the same value as $${p}+${term(q)}$?`
+      : `Which addition expression has the same value as $${p}-${term(q)}$?`,
     ...choice(r, math(correct), wrong.map(math)),
     hint: `Keep $${p}$ fixed. Changing between subtraction and addition reverses the sign of the second number, $${q}$.`,
     explanation: [
       `Subtracting a number means adding its opposite: $p-q=p+(-q)$.`,
-      `Here, $${reverse ? `${p}+(${q})` : `${p}-(${q})`}=${correct}=${fracTex(reverse ? pn + qn : pn - qn, d)}$.`,
+      `Here, $${reverse ? `${p}+${term(q)}` : `${p}-${term(q)}`}=${correct}=${fracTex(reverse ? pn + qn : pn - qn, d)}$.`,
     ],
   };
 }
@@ -773,7 +784,7 @@ function multiply(r: Rng, variant: string): Item {
             `A debt of ${total} dollars is split into debts of ${b} dollars; find the number of people.`,
           ],
     ),
-    hint: `Division finds a missing factor: $(${duration ? -b : a})\\times ?=${-total}$.`,
+    hint: `Division finds a missing factor: $${term(duration ? -b : a)}\\times ?=${-total}$.`,
     explanation: [
       `The matching situation requires $${-total}\\div(${duration ? -b : a})=${duration ? a : -b}$.`,
       duration
