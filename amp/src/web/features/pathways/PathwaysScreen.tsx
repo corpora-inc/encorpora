@@ -30,10 +30,7 @@ import type { AuthSession } from "../../auth";
 import { gradeName } from "../../Home";
 import { fitScale, LevelRows } from "../../ui/level-range";
 import { useLessonSearch, type SearchResult } from "../../lib/lesson-search";
-import {
-  SearchResults,
-  type SearchActions,
-} from "../search/SearchResults";
+import { SearchResults, type SearchActions } from "../search/SearchResults";
 import { useSearchCorpus } from "../search/search-corpus";
 import { strandNames } from "../../BirthYearPrompt";
 import { Graph } from "./Graph";
@@ -85,6 +82,24 @@ function matchesQuery(text: string, query: string) {
     haystack.includes(q) ||
     (synonyms[q] ?? []).some((w) => haystack.includes(w))
   );
+}
+
+/** On a phone a long list of results can leave the page scrolled past the
+ * map, under the bar. A chosen skill shows on the map, so bring the map's
+ * top back into view (a cut under reduced motion). */
+function showMap() {
+  requestAnimationFrame(() => {
+    const map = document.querySelector<HTMLElement>(".pathways-viewport");
+    if (!map || !matchMedia("(max-width: 650px)").matches) return;
+    const margin = parseFloat(getComputedStyle(map).scrollMarginTop) || 0;
+    if (map.getBoundingClientRect().top >= margin) return;
+    map.scrollIntoView({
+      block: "start",
+      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+    });
+  });
 }
 
 export function PathwaysScreen() {
@@ -296,7 +311,11 @@ export function MapView({
   const navigate = useNavigate();
   const { shown } = useCurriculumDetails();
   // Arriving with a search (a link, or /lessons?q=) opens its results.
-  const [browse, setBrowse] = useState(() => urlQuery.trim().length > 0);
+  // A shared search opens its results, unless the link names a skill: then
+  // the skill is what it shows, its search kept in the field.
+  const [browse, setBrowse] = useState(
+    () => urlQuery.trim().length > 0 && !selectedId,
+  );
   const [lesson, setLesson] = useState<string | null>(null);
   useEffect(() => setLesson(null), [selectedId]);
   const lessonTrigger = useRef<HTMLElement | null>(null);
@@ -383,6 +402,7 @@ export function MapView({
   const select = (id: string) => {
     setBrowse(false);
     update({ skill: id });
+    showMap();
   };
   const filtered =
     skills?.filter(
@@ -592,7 +612,10 @@ export function MapView({
                       params={{ skillId: s.id }}
                       search={linkSearch()}
                       aria-current={selectedId === s.id ? "page" : undefined}
-                      onClick={() => setBrowse(false)}
+                      onClick={() => {
+                        setBrowse(false);
+                        showMap();
+                      }}
                     >
                       <span
                         className={`pathways-gem stage-${skillLight(stats.get(s.id)).stage}`}
@@ -844,7 +867,10 @@ export function MapView({
 function PathwayLevels({
   frontier,
 }: {
-  frontier: { overall: { level: number; sd: number }; strands: Record<string, { level: number; sd: number; answered?: number }> };
+  frontier: {
+    overall: { level: number; sd: number };
+    strands: Record<string, { level: number; sd: number; answered?: number }>;
+  };
 }) {
   const areas = Object.entries(frontier.strands)
     .filter(([, estimate]) => (estimate.answered ?? 1) > 0)

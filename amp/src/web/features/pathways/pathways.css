@@ -1109,6 +1109,10 @@
 
 /* Give the map the first screen on a phone, with progress and controls nearby. */
 @media (max-width: 650px) {
+  /* Scrolled back into view below the app bar, never under it. */
+  .pathways-viewport {
+    scroll-margin-top: calc(var(--shell-bar, 0px) + var(--space-2));
+  }
   .pathways-heading {
     display: block;
     padding: 8px 0 0;

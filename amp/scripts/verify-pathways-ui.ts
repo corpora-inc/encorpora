@@ -601,6 +601,16 @@ async function choose(page: Page, label: string, value: string) {
   await list.waitFor({ state: "detached" });
   assert.equal(await button.getAttribute("data-value"), value);
 }
+/** The one search's field (docs/design/ia.md): skills, lessons, films and
+ * math words, grouped once something is typed. */
+const SEARCH = "Search skills, lessons and math words";
+/** A skill among the grouped search results. */
+const skillResult = (page: Page, id: string) =>
+  page
+    .locator(
+      `[data-search-results] a[href="/pathways/${encodeURIComponent(id)}"]`,
+    )
+    .first();
 async function verifySearchFilters() {
   for (const [width, colorScheme] of [
     [320, "light"],
@@ -617,7 +627,7 @@ async function verifySearchFilters() {
       await fixture(page, { signedIn: width !== 390 });
       await page.goto(`${origin}/pathways/${target.id}?topic=L&filter=K`);
       const input = page.getByRole("searchbox", {
-        name: "Find a skill",
+        name: SEARCH,
         exact: true,
       });
       await input.waitFor();
@@ -791,7 +801,7 @@ async function verifySearchFilters() {
       await page.waitForURL(
         (url) => url.searchParams.get("topic") === countingTitle,
       );
-      await page.getByRole("link", { name: countingTitle }).click();
+      await skillResult(page, "count-to-20").click();
       await page.waitForURL((url) => url.pathname === "/pathways/count-to-20");
       await page.goBack();
       await input.waitFor();
@@ -888,12 +898,9 @@ try {
         "no simulated learner progress in the product",
       );
       await page
-        .getByRole("searchbox", { name: "Find a skill", exact: true })
+        .getByRole("searchbox", { name: SEARCH, exact: true })
         .fill(target.title);
-      const button = page
-        .locator(".pathways-skill-list a")
-        .filter({ hasText: target.title });
-      await button.click();
+      await skillResult(page, target.id).click();
       await page
         .getByRole("heading", { name: target.title, exact: true })
         .waitFor();
@@ -996,7 +1003,7 @@ try {
         .waitFor();
       assert.equal(
         await page
-          .getByRole("searchbox", { name: "Find a skill", exact: true })
+          .getByRole("searchbox", { name: SEARCH, exact: true })
           .inputValue(),
         target.title,
       );
@@ -1016,15 +1023,27 @@ try {
     await page.locator(".pathways-canvas canvas").waitFor();
     await noOverflow(page);
     await page
-      .getByRole("searchbox", { name: "Find a skill", exact: true })
+      .getByRole("searchbox", { name: SEARCH, exact: true })
       .fill(target.title);
-    await page
-      .locator(".pathways-skill-list a")
-      .filter({ hasText: target.title })
-      .click();
+    // Reading results can scroll a phone's page past the map; choosing one
+    // brings the map back into view below the bar.
+    await page.evaluate(() =>
+      window.scrollTo(0, document.documentElement.scrollHeight),
+    );
+    await skillResult(page, target.id).click();
     await page
       .getByRole("heading", { name: target.title, exact: true })
       .waitFor();
+    if (viewport.width <= 650)
+      await page.waitForFunction(
+        () => {
+          const map = document.querySelector(".pathways-viewport")!;
+          const margin = parseFloat(getComputedStyle(map).scrollMarginTop);
+          return map.getBoundingClientRect().top >= margin - 1;
+        },
+        undefined,
+        { timeout: 3000 },
+      );
     await noOverflow(page);
     {
       const map = page.locator(".pathways-viewport");
