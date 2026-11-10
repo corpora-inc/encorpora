@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { article } from "./agreement";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -1523,7 +1524,7 @@ function houseCase(r: Random, u: LengthUnit): Case {
       `The triangle on top has base ${w} and height ${roof}: $\\tfrac{1}{2} \\times ${w} \\times ${roof} = ${tri}$.`,
       `Add the pieces: $${rect} + ${tri} = ${total}$. The area is ${total} ${A}.`,
     ],
-    hint: `The wall is a ${w} by ${wall} rectangle. Add its area to half of base ${w} times the roof height ${roof}. The roof's height is not the wall.`,
+    hint: `The wall is ${article(w)} ${w} by ${wall} rectangle. Add its area to half of base ${w} times the roof height ${roof}. The roof's height is not the wall.`,
     figure: {
       kind: "measured-polygon",
       unit: u,

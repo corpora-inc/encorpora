@@ -1,4 +1,4 @@
-import { count as agreeCount } from "./agreement";
+import { count as agreeCount, nounFor } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { numberWords } from "./staar-gap-practice";
 import { array, numberLine, scene } from "./scene/author";
@@ -121,7 +121,7 @@ export function numberNames(c: Context): GeneratedProblem {
   const t = teaching(
     askName ? `Which number name means ${n}?` : `Write ${name} as a numeral.`,
     askName
-      ? `${n} has ${hundreds} hundreds, ${tens} tens and ${ones} ones. Match those groups to the number name.`
+      ? `${n} has ${agreeCount(hundreds, "hundred")}, ${agreeCount(tens, "ten")} and ${agreeCount(ones, "one")}. Match those groups to the number name.`
       : `The number name is ${name}. Keep a place for the hundreds, the tens and the ones, including a zero when a place is empty.`,
     [
       `${n} has ${hundreds} hundreds, ${tens} tens and ${ones} ones.`,
@@ -513,8 +513,8 @@ export function generatePlaceClause(c: Context): GeneratedProblem {
           ? `A board is ${dec(cm)} meters long. How many centimeters is that? Use 1 meter = 100 centimeters.`
           : `A ribbon is ${cm} centimeters long. Write its length in meters. Use 1 meter = 100 centimeters.`,
         reverse
-          ? `The board is ${dec(cm)} meters. One centimeter is one hundredth of a meter, so multiply ${dec(cm)} by the 100 in the conversion.`
-          : `The ribbon is ${cm} centimeters. One centimeter is one hundredth of a meter, so divide ${cm} by the 100 in the conversion.`,
+          ? `The board is ${dec(cm)} ${nounFor(dec(cm), "meter")}. One centimeter is one hundredth of a meter, so multiply ${dec(cm)} by the 100 in the conversion.`
+          : `The ribbon is ${agreeCount(cm, "centimeter")}. One centimeter is one hundredth of a meter, so divide ${cm} by the 100 in the conversion.`,
         [
           `${cm} centimeters is ${tex(`\\frac{${cm}}{100}`)} meters.`,
           `${tex(`${cm}\\div100=${dec(cm)}`)}. In the other direction, multiply meters by 100.`,

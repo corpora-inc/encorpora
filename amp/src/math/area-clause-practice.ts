@@ -31,6 +31,7 @@ import {
   type LatticePoint,
   type PointPlotResponse,
 } from "./point-plot";
+import { nounFor } from "./agreement";
 import { graph, scene } from "./scene/author";
 import type { Element, PathOp, Point, Scene } from "./scene/spec";
 
@@ -1491,7 +1492,7 @@ export function generateSolidSection(templateId: string, seed: string) {
     return assemble(meta, seed, r, {
       prompt: `A stack of ${count} coins, each of volume ${each} cubic centimeters, is pushed into a slanted stack. What is the volume of the slanted stack, in cubic centimeters?`,
       answer: String(volume),
-      hint: `There are ${count} coins, and each has volume ${each} cubic centimeters. The slant does not change any layer. Multiply the number of coins by the volume of one coin.`,
+      hint: `There are ${count} coins, and each has volume ${each} ${nounFor(each, "cubic centimeter")}. The slant does not change any layer. Multiply the number of coins by the volume of one coin.`,
       explanation: [
         `Each coin has volume ${each} cubic centimeters, and there are ${count} coins.`,
         `Pushing the stack sideways keeps every coin. The volume is ${count} × ${each} = ${volume}.`,

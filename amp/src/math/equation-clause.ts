@@ -736,7 +736,7 @@ export function linesThroughPoints(
     },
     answer: chosen.answer,
     choiceFeedback: chosen.feedback,
-    hint: `Line 1 uses ${pair(p1)} and ${pair(p2)}; line 2 uses ${pair(q1)} and ${pair(q2)}. Subtract the y-coordinates and the x-coordinates of each pair to get the two slopes. Same slope means parallel or the same line; then test one point in the other line.`,
+    hint: `The first line passes through ${pair(p1)} and ${pair(p2)}. The second line passes through ${pair(q1)} and ${pair(q2)}. Subtract the y-coordinates and the x-coordinates of each pair to get the two slopes. Same slope means parallel or the same line; then test one point in the other line.`,
     explanation: [
       `Slope of line 1: (${p2[1]} − ${p1[1]}) / (${p2[0]} − ${p1[0]}) = ${slopeText(s1)}.`,
       `Slope of line 2: (${q2[1]} − ${q1[1]}) / (${q2[0]} − ${q1[0]}) = ${slopeText(s2)}.`,
@@ -1545,7 +1545,7 @@ export function plotLine(seed: string): GeneratedProblem {
         .line({ m: fnum(m2), b: b2 }, { color: "warm", label: "Line 2" })
         .scene({ title: "Line 2 is drawn" }),
     },
-    hint: `The first line is y = ${ftxt(m)}x + ${b}. Pick two x-values that the denominator of ${ftxt(m)} divides. Multiply by that slope and add ${b}. Those points are on the first line.`,
+    hint: `The first line is $y = ${ftxt(m)}x + ${b}$. Pick two x-values the denominator of ${ftxt(m)} goes into. Multiply by that slope and add ${b}. Those points are on the first line.`,
     explanation: [
       `On y = ${ftxt(m)}x + ${b}, an x that ${m.d === 1 ? "is an integer" : `is a multiple of ${m.d}`} gives an integer y.`,
       `One such point is (${answerPoints[0]![0]}, ${answerPoints[0]![1]}). Another is (${answerPoints[1]![0]}, ${answerPoints[1]![1]}).`,
