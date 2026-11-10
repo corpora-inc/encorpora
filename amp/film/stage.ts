@@ -2025,6 +2025,15 @@ class Board {
         ext = this.measure(ci);
         fit();
       }
+      // A card taller than the window shrinks its type. The padding stays in pixels, so the camera does not have to scale that padding down to a sliver.
+      const winH = (this.home[ci] ?? this.L.full).h - 2 * EDGE_PAD;
+      while (size > this.L.minType) {
+        const h = Math.max(0, ...this.items.filter((i) => i.col === ci).map((i) => i.el.offsetHeight));
+        if (h <= winH) break;
+        size -= 4;
+        c.style.setProperty("--film-math", `${size}px`);
+        ext = this.measure(ci);
+      }
       if (ext.r - ext.l > room) {
         const its = this.items.filter((i) => i.col === ci);
         // cards wrap to the column, so the cause is a line of math (with its note)
