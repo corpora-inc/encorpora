@@ -29,6 +29,7 @@ export const PAPER_MARK_WEIGHT = 0.5;
 /** Responses a parent can type or pick exactly as printed; every other kind
  * (multi-part, plotting, ordered steps, several choices) is marked. */
 const answerable = (problem: GeneratedProblem) =>
+  problem.public.response.kind === "unit-square-marking" ||
   problem.public.response.kind === "number" ||
   problem.public.response.kind === "fraction" ||
   problem.public.response.kind === "choice";
@@ -179,7 +180,9 @@ export async function recordPaperResults(
           entry.n,
           found.problem.public.response.kind === "choice"
             ? `Choose one of the printed letters for problem ${entry.n}.`
-            : `Enter a number, decimal or fraction such as 3/4 for problem ${entry.n}.`,
+            : found.problem.public.response.kind === "unit-square-marking"
+              ? `Enter a whole number of square units for problem ${entry.n}.`
+              : `Enter a number, decimal or fraction such as 3/4 for problem ${entry.n}.`,
         );
     }
     pending.push({ entry, problem: found.problem });

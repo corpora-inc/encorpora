@@ -278,6 +278,10 @@ test("problem lessons keep the terms wire shape and carry the glossary they use"
       );
       assert.equal(typeof term.term, "string");
       assert.ok(term.meaning.length > 0, lesson.templateId);
+      assert.ok(
+        lesson.glossary.some((card) => card.term === term.term),
+        `${lesson.templateId}: ${term.term}`,
+      );
     }
     const ids = new Set(lesson.glossary.map((card) => card.id));
     for (const term of expected.terms ?? [])

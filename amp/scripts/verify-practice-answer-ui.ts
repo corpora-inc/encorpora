@@ -100,10 +100,12 @@ try {
       "choice",
       "multi-select",
       "point-plot",
+      "line-plot-build",
       "counter-builder",
       "multi-part-choice",
       "figure-choice",
       "structured-work",
+      "unit-square-marking",
     ].sort(),
   );
   await page.goto("http://127.0.0.1:4954/overview");

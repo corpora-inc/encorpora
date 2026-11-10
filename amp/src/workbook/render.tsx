@@ -90,6 +90,7 @@ const sectionCopy: Record<SectionKind, { title: string; note: string }> = {
 
 /** Responses answered in a box; the others are marked on the problem. */
 const boxed = (problem: GeneratedProblem) =>
+  problem.public.response.kind === "unit-square-marking" ||
   problem.public.response.kind === "number" ||
   problem.public.response.kind === "fraction" ||
   problem.public.response.kind === "choice";

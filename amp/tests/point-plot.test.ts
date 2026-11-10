@@ -596,6 +596,8 @@ test("clients without point-plot-v1 are never served these families, online or o
       "structured-work-v1",
       "multi-part-cards-v1",
       "shape-composer-v1",
+      "line-plot-build-v1",
+      "unit-square-marking-v1",
       "counter-builder-v1",
     ],
   );
@@ -763,7 +765,10 @@ test("a contextual line is graphed on labeled scaled axes", () => {
     if (problem.variant?.id !== "scaled-context") continue;
     models++;
     const response = problem.public.response;
-    if (response.kind !== "point-plot" || problem.pointGrading?.mode !== "on-line")
+    if (
+      response.kind !== "point-plot" ||
+      problem.pointGrading?.mode !== "on-line"
+    )
       throw new Error("point plot");
     const grid = response.grid;
     assert.ok(grid.step === 1 || grid.step === 2);
@@ -777,7 +782,10 @@ test("a contextual line is graphed on labeled scaled axes", () => {
     assert.ok(intercept);
     const up: LatticePoint = [0, intercept![1] + grid.step];
     if (onGrid(grid, up) && !on.some((p) => p[0] === up[0] && p[1] === up[1]))
-      assert.equal(gradeAnswer(problem, serializePlot([up, on[1]!], false)), false);
+      assert.equal(
+        gradeAnswer(problem, serializePlot([up, on[1]!], false)),
+        false,
+      );
   }
   assert.ok(models > 20);
 });

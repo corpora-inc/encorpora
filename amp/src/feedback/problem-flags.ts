@@ -99,7 +99,9 @@ export type ProblemFlag = {
     | "multi-part-choice"
     | "figure-choice"
     | "counter-builder"
-    | "structured-work";
+    | "structured-work"
+    | "line-plot-build"
+    | "unit-square-marking";
   response: string | null;
   outcome: FlagOutcome;
   assisted: boolean;

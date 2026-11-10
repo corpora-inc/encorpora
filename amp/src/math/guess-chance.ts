@@ -20,7 +20,7 @@ const CLAUSE_SEEDS = 64;
 /** Floors for variable-response families whose high-guessability variants
  * are rarer than the deterministic sample. Keep these in sync with the
  * generator-variation audit in frontier-guessing.test.ts. */
-const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
+const FAMILY_GUESS_FLOOR: Readonly<Record<string, number>> = {
   // Older clients answer the same family through four picture choices.
   // The family estimator conservatively covers those attempts as well.
   "build-the-number-sentence": 1 / 4,
@@ -84,6 +84,13 @@ export const builtGuessChances = built.length;
  * Structured work needs its private rule to count valid orders and proofs
  * (`problemGuessChance`); from the public response alone it is unknown. */
 export function responseGuessChance(response: ProblemResponse): number {
+  // One exact count map: each column independently permits 0..maxPerValue.
+  // Omitted counts mean zero; measurementCount does not restrict submissions.
+  if (response.kind === "line-plot-build")
+    return (
+      1 /
+      (response.maxPerValue + 1) ** (response.axis.max - response.axis.min + 1)
+    );
   if (response.kind === "counter-builder")
     return counterBuilderGuessChance(response);
   if (response.kind === "shape-composer") return response.guessChance;
@@ -133,7 +140,7 @@ export function guessChance(
     // sampled instance has a typed field cannot be guessed.
     const structured = capabilities.includes("structured-work-v1");
     // The sample can miss rare, more guessable variants in these generators.
-    let greatest = MULTI_PART_GUESS_FLOOR[template.id] ?? 0;
+    let greatest = FAMILY_GUESS_FLOOR[template.id] ?? 0;
     for (let i = 0; i < (structured ? STRUCTURED_SEEDS : SAMPLE_SEEDS); i++)
       greatest = Math.max(
         greatest,
