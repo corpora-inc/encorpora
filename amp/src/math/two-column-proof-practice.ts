@@ -1,3 +1,4 @@
+import { withClauseVariants } from "./clause-variants";
 import type { TemplateMetadata } from "./contracts";
 import { chainFamily, dispatch, pick } from "./chain-kit";
 import { shuffle } from "./distribution-practice";
@@ -1200,7 +1201,7 @@ const angles = chainFamily({
   variant: (c) => c.config,
 });
 
-export const twoColumnProofGenerate = dispatch(twoColumnProofTemplates, {
+export const twoColumnProofGenerateLegacy = dispatch(twoColumnProofTemplates, {
   "two-column-congruence-proof": (seed) => congruence.generate(seed).problem,
   "two-column-angle-proof": (seed) => angles.generate(seed).problem,
 });
@@ -1208,3 +1209,8 @@ export const twoColumnProofCases = {
   "two-column-congruence-proof": congruence.generate,
   "two-column-angle-proof": angles.generate,
 };
+
+export const twoColumnProofGenerate = withClauseVariants(
+  twoColumnProofTemplates,
+  twoColumnProofGenerateLegacy,
+);

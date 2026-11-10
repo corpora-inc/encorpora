@@ -1,3 +1,4 @@
+import { withClauseVariants } from "./clause-variants";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -305,7 +306,7 @@ function blocks(n: number): SemanticFigure {
     ones: n % 10,
   };
 }
-export function generateElementaryProblem(
+export function generateElementaryProblemLegacy(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
@@ -721,3 +722,8 @@ export function generateElementaryProblem(
     ...(variant ? { variant } : {}),
   };
 }
+
+export const generateElementaryProblem = withClauseVariants(
+  elementaryTemplates,
+  generateElementaryProblemLegacy,
+);

@@ -33,7 +33,12 @@ test("early-number book has complete task keys and bounded real curriculum links
   validateNumberPracticeBindings(templates);
   assert.equal(numberPracticeBindings.length, 17);
   for (const b of numberPracticeBindings) {
-    assert.equal(b.assessedResponse, "numeric-result-only");
+    assert.equal(
+      b.assessedResponse,
+      templates.find((t) => t.id === b.templateId)?.requiredResponseCapabilities
+        ? "mixed-response"
+        : "numeric-result-only",
+    );
     assert.ok(b.unassessedRequirements.length >= 2);
   }
   const sample = numberAlignments[0]!;

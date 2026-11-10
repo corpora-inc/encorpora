@@ -11,6 +11,7 @@ import { lessons as catalogLessons } from "./lessons.js";
 
 export interface CoverageTemplate {
   requiredResponseCapability?: string;
+  requiredResponseCapabilities?: readonly string[];
   id: string;
   skillId: string;
   version: number;
@@ -57,7 +58,8 @@ export interface CoverageBookBinding {
   skillId: string;
   bookId: string;
   pageIds: readonly string[];
-  assessedResponse: "numeric-result-only" | "single-choice-selection";
+  assessedResponse:
+    "numeric-result-only" | "single-choice-selection" | "mixed-response";
   unassessedRequirements: readonly string[];
 }
 export interface CoverageInput {
@@ -165,11 +167,13 @@ export function buildCoverageManifest(input: CoverageInput = {}) {
       new Set(binding.pageIds).size !== binding.pageIds.length ||
       binding.pageIds.some((id) => !book.pageIds.includes(id)) ||
       binding.assessedResponse !==
-        (template.requiredResponseCapability === undefined
-          ? "numeric-result-only"
-          : template.requiredResponseCapability === "single-choice-v1"
-            ? "single-choice-selection"
-            : null) ||
+        (template.requiredResponseCapabilities
+          ? "mixed-response"
+          : template.requiredResponseCapability === undefined
+            ? "numeric-result-only"
+            : template.requiredResponseCapability === "single-choice-v1"
+              ? "single-choice-selection"
+              : null) ||
       !binding.unassessedRequirements.length ||
       binding.unassessedRequirements.some((requirement) => !requirement.trim())
     ) {

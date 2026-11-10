@@ -20,6 +20,8 @@ import clause_variants_oracle
 from clause_variants_oracle import self_test as review_clause_fixtures
 from collections import Counter
 from fractions import Fraction
+import clause_place_value_math_oracle as clause_place_value
+import clause_transformation_math_oracle as clause_transformation
 
 
 def slot_key(public, labels):
@@ -341,6 +343,9 @@ def solve(public):
 
 
 def solve_family(public):
+    for clause in (clause_place_value, clause_transformation):
+        if clause.handles(public):
+            return clause.solve(public)
     if clause_coverage_oracle.recognizes(public):
         return clause_coverage_oracle.solve(public)
     clause_answer = fraction_clause_math_oracle.solve_clause(public)
@@ -813,6 +818,10 @@ def review(stream):
         nonlocal area_volume_equalities
         public = problem['public']
         template, seed = public['templateId'], public['seed']
+        for clause in (clause_place_value, clause_transformation):
+            if clause.handles(public):
+                clause.review_problem(problem)
+                return
         if clause_coverage_oracle.recognizes(public):
             clause_coverage_oracle.review_problem(problem)
             return

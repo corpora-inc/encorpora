@@ -1,3 +1,4 @@
+import { generateBeforeClauses as generateProblem } from "./helpers/before-clause-variants";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -8,7 +9,6 @@ import {
   responseCapabilities,
 } from "../src/math/contracts";
 import { gradeAnswer, isValidResponse, templates } from "../src/math/engine";
-import { generateProblem } from "./fixtures/pre-clause-problem";
 import {
   canonicalPointSet,
   clipLineToGrid,

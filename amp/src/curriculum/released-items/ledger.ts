@@ -14,6 +14,8 @@ export interface LedgerTemplate {
   id: string;
   skillId: string;
   requiredResponseCapability?: string;
+  requiredResponseCapabilities?: readonly string[];
+  hasNumericVariants?: true;
 }
 export interface ReleasedItemInput {
   /** Stable order: the saturation curve reads sources in this order. */
@@ -30,6 +32,13 @@ const digest = /^[a-f0-9]{64}$/;
 const sat = new Set<string>(satSkills);
 export const templateResponse = (t: LedgerTemplate): TemplateResponse =>
   (t.requiredResponseCapability as TemplateResponse | undefined) ?? "numeric";
+export const templateResponses = (t: LedgerTemplate): TemplateResponse[] => [
+  ...new Set([
+    templateResponse(t),
+    ...((t.requiredResponseCapabilities ?? []) as TemplateResponse[]),
+    ...(t.hasNumericVariants ? ["numeric" as const] : []),
+  ]),
+];
 export const itemKey = (
   i: Pick<ReleasedItem, "sourceId" | "section" | "item">,
 ) => `${i.sourceId} / ${i.section} / ${i.item.number}`;
@@ -139,8 +148,8 @@ export function buildReleasedItemReport(input: ReleasedItemInput) {
       item.status === "covered" &&
       !known.some(
         (t) =>
-          acceptedResponses[item.responseFormat]?.includes(
-            templateResponse(t),
+          templateResponses(t).some((response) =>
+            acceptedResponses[item.responseFormat]?.includes(response),
           ) &&
           input.templateArchetypes[t.id]?.some((a) =>
             item.archetypeIds.includes(a),
@@ -157,7 +166,9 @@ export function buildReleasedItemReport(input: ReleasedItemInput) {
       const t = templateById.get(id);
       return (
         !!t &&
-        acceptedResponses[item.responseFormat].includes(templateResponse(t))
+        templateResponses(t).some((response) =>
+          acceptedResponses[item.responseFormat].includes(response),
+        )
       );
     });
   const responseFormatGaps = responseFormats
@@ -179,7 +190,8 @@ export function buildReleasedItemReport(input: ReleasedItemInput) {
             !i.templateIds.some((id) => {
               const t = templateById.get(id);
               return (
-                !!t && templateResponse(t) === acceptedResponses[format][0]
+                !!t &&
+                templateResponses(t).includes(acceptedResponses[format][0]!)
               );
             }),
         ).length,

@@ -38,6 +38,11 @@ import { ShapeComposerInput, ShapeComposerAnswer } from "./ShapeComposerInput";
 import { PegBoardInput, PegBoardAnswer } from "./PegBoardInput";
 import { pegBoardAnswerText, pegBoardFeedback } from "../math/peg-board";
 import {
+  EqualAddendsInput,
+  EqualAddendsAnswerControls,
+} from "./EqualAddendsInput";
+import { equalAddendsAnswerText } from "../math/equal-addends";
+import {
   counterBuilderAnswerText,
   parseCounterBuilder,
 } from "../math/counter-builder";
@@ -304,6 +309,8 @@ export function PracticeWorkspace(props: Props) {
   const marking =
     problem.response.kind === "unit-square-marking" ? problem.response : null;
   const [markReset, setMarkReset] = useState(0);
+  const equalAddends =
+    problem.response.kind === "equal-addends" ? problem.response : null;
   const counters =
     problem.response.kind === "counter-builder" ? problem.response : null;
   const trend =
@@ -343,6 +350,8 @@ export function PracticeWorkspace(props: Props) {
     if (pegs) return pegBoardAnswerText(pegs, value);
     if (problem.response.kind === "line-plot-build")
       return linePlotBuildAnswerText(problem.response, value);
+    if (problem.response.kind === "equal-addends")
+      return equalAddendsAnswerText(problem.response, value);
     if (problem.response.kind === "counter-builder")
       return counterBuilderAnswerText(problem.response, value);
     if (trend) return trendLineAnswerText(trend, value);
@@ -408,6 +417,7 @@ export function PracticeWorkspace(props: Props) {
     !parts &&
     !figures &&
     !work &&
+    !equalAddends &&
     !counters &&
     !pegs &&
     !shapes;
@@ -440,7 +450,7 @@ export function PracticeWorkspace(props: Props) {
   }, [!!lineBuild]);
   const editorInDock = sideBySide && (!!work || !!figures);
   const trendCompact = !!trend && !sideBySide;
-  const counterCompact = !!counters && !sideBySide;
+  const counterCompact = (!!counters || !!equalAddends) && !sideBySide;
   const pegCompact = !!pegs && !sideBySide;
   const counterKey =
     counters && outcome ? parseCounterBuilder(counters, outcome.answer) : null;
@@ -454,6 +464,7 @@ export function PracticeWorkspace(props: Props) {
       !!figures ||
       !!work ||
       !!marking ||
+      !!equalAddends ||
       !!counters ||
       !!pegs ||
       !!shapes) &&
@@ -534,6 +545,7 @@ export function PracticeWorkspace(props: Props) {
       figures ||
       work ||
       marking ||
+      equalAddends ||
       counters ||
       pegs ||
       shapes
@@ -662,7 +674,7 @@ export function PracticeWorkspace(props: Props) {
       room.style.height = `${overlap()}px`;
     };
     update();
-    if (counters) host.scrollTop = 0;
+    if (counters || equalAddends) host.scrollTop = 0;
     if (
       reviewInProblem &&
       !lineBuild &&
@@ -704,6 +716,7 @@ export function PracticeWorkspace(props: Props) {
     !parts &&
     !figures &&
     !work &&
+    !equalAddends &&
     !counters &&
     !pegs &&
     !shapes;
@@ -758,6 +771,17 @@ export function PracticeWorkspace(props: Props) {
     props.submit();
   }
   function answerControls(includeContext = false) {
+    if (equalAddends)
+      return (
+        <EqualAddendsAnswerControls
+          response={equalAddends}
+          value={outcome ? outcome.response : response}
+          onChange={setResponse}
+          locked={locked}
+          sending={sending}
+          submit={submitAnswer}
+        />
+      );
     if (pegs)
       return (
         <PegBoardAnswer
@@ -1259,6 +1283,13 @@ export function PracticeWorkspace(props: Props) {
                     </span>
                     {support && `, ${support}`}
                   </small>
+                ) : equalAddends ? (
+                  <small>
+                    <span className="sr-only">
+                      You entered {displayResponse(outcome.response)}.
+                    </span>
+                    {support && capitalize(support)}
+                  </small>
                 ) : counters && counterKey ? (
                   <small>
                     {counters.canRemove
@@ -1443,6 +1474,7 @@ export function PracticeWorkspace(props: Props) {
         !lineBuild &&
         !trend &&
         !shapes &&
+        !equalAddends &&
         !pegs &&
         !(work && !skipped) &&
         !(parts && (skipped || parts.layout === "table")) &&
@@ -1451,7 +1483,13 @@ export function PracticeWorkspace(props: Props) {
    * the grid above the sheet, so the sheet names where to look and keeps the
    * coordinates for screen readers; the explanation lists them in full. */
   const answerLine = (raw: string) =>
-    counters && counterKey ? (
+    equalAddends ? (
+      <span className="solution-answer">
+        {outcome?.skipped
+          ? "One way to show the array."
+          : outcome?.explanation[0]}
+      </span>
+    ) : counters && counterKey ? (
       <span className="solution-answer">
         Answer:{" "}
         <MathText
@@ -1722,6 +1760,22 @@ export function PracticeWorkspace(props: Props) {
               />
             )}
             {!sideBySide && work && responseEditor()}
+            {equalAddends && (
+              <EqualAddendsInput
+                key={problem.id}
+                response={equalAddends}
+                value={
+                  outcome
+                    ? outcome.skipped
+                      ? outcome.answer
+                      : outcome.response
+                    : response
+                }
+                onChange={setResponse}
+                locked={locked}
+                resolved={!!outcome}
+              />
+            )}
             {counters && (
               <CounterBuilderInput
                 key={problem.id}

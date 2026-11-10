@@ -1,3 +1,4 @@
+import { withClauseVariants } from "./clause-variants";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -306,7 +307,7 @@ function threeDigitPair(r: Random, allowEqual: boolean) {
   return r(0, 1) ? pair : ([pair[1], pair[0]] as const);
 }
 
-export function generateComparisonProblem(
+export function generateComparisonProblemLegacy(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
@@ -689,3 +690,8 @@ function comparisonProblem(
     ...(variant ? { variant } : {}),
   };
 }
+
+export const generateComparisonProblem = withClauseVariants(
+  comparisonTemplates,
+  generateComparisonProblemLegacy,
+);

@@ -1,8 +1,9 @@
+import { generateBeforeClauses as generateProblem } from "./helpers/before-clause-variants";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
-import { generateProblem, type GeneratedProblem } from "../src/math/engine";
+import { type GeneratedProblem } from "../src/math/engine";
 import { generatedProblemSchema } from "../src/math/contracts";
 import { methods } from "../src/content/problem-methods";
 import { describeScene } from "../src/math/scene";

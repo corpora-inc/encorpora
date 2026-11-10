@@ -1,10 +1,11 @@
+import { generateBeforeClauses as generateProblem } from "./helpers/before-clause-variants";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
   generatedProblemSchema,
   publicProblemSchema,
 } from "../src/math/contracts";
-import { generateProblem, gradeAnswer, templates } from "../src/math/engine";
+import { gradeAnswer, templates } from "../src/math/engine";
 import {
   cardRows,
   chooseOption,

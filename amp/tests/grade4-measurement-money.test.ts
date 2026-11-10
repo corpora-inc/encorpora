@@ -1,10 +1,11 @@
+import { generateBeforeClauses as generateProblem } from "./helpers/before-clause-variants";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { skills } from "../src/curriculum/catalog";
 import { curriculumConnections } from "../src/curriculum/connections";
 import { selectionObjectives } from "../src/curriculum/selection";
 import type { GeneratedProblem } from "../src/math/contracts";
-import { generateProblem, templates } from "../src/math/engine";
+import { templates } from "../src/math/engine";
 import {
   grade4MeasurementMoneyCase,
   grade4MeasurementMoneyTemplates,
