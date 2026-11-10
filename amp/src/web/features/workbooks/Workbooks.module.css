@@ -9,7 +9,7 @@
   max-width: var(--width-content-wide);
   margin-inline: auto;
   padding: var(--space-5) max(var(--space-4), env(safe-area-inset-right))
-    max(var(--space-8), env(safe-area-inset-bottom))
+    max(var(--space-7), env(safe-area-inset-bottom))
     max(var(--space-4), env(safe-area-inset-left));
   min-height: calc(100dvh - var(--shell-bar, 56px));
 }
@@ -168,9 +168,15 @@ h2.sectionTitle {
   font-weight: 700;
   text-decoration: none;
 }
-.rowTitle:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+/* A row takes a quiet tint on hover, never an underline. */
+.row {
+  margin-inline: calc(-1 * var(--space-2));
+  padding-inline: var(--space-2);
+  border-radius: var(--radius-small);
+  transition: background var(--motion-fast) var(--ease-standard);
+}
+.row:hover {
+  background: var(--color-surface-hover);
 }
 /* The whole row is the title's target on a pointer. */
 .rowNumber {
