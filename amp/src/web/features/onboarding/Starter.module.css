@@ -228,9 +228,3 @@
 /* The years are the shared tile grid (ui/TileChoice.module.css). */
 /* "Where do you want to begin?", under the years once an adult year is
    chosen. */
-.where {
-  display: grid;
-  gap: var(--space-3);
-  width: 100%;
-  margin-top: var(--space-4);
-}

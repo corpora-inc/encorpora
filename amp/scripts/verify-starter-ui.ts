@@ -1,7 +1,7 @@
 /**
  * "What brings you to AMP?" → "I'm learning for myself": the birth-year grid,
  * the note for a learner under 13 with the parent's way in one tap away, an
- * adult's "Where do you want to begin?", and the first problem straight after. At 320, 390, 768 and 1280 px,
+ * adult's year alone (no level to choose), and the first problem straight after. At 320, 390, 768 and 1280 px,
  * light and dark: no horizontal overflow, and nothing moves as a year is
  * chosen. Screenshots go to artifacts/starter-ui.
  *
@@ -77,31 +77,26 @@ try {
         year.shifts.length === 0 && year.cls === 0,
         year,
       );
-      // An adult year opens the next question below the years.
-      await page.getByRole("radio", { name: "Adult", exact: true }).click();
-      await page
-        .getByRole("heading", { name: "Where do you want to begin?" })
-        .waitFor();
-      check(
-        `${tag} an adult's action waits for where to begin`,
-        !(await page
-          .getByRole("button", { name: "Start practicing" })
-          .isEnabled()),
-      );
-      await settle(page);
-      await shot("myself-adult");
+      // An adult year is enough: AMP finds the level from the first answers,
+      // so there is no second question, and nothing moves.
       await resetRecord(page);
-      await page.getByRole("radio", { name: /^Geometry/ }).click();
-      await page.getByText("Choose where to begin.").waitFor({
-        state: "hidden",
-      });
+      await page.getByRole("radio", { name: "Adult", exact: true }).click();
       await settle(page);
-      await shot("myself-adult-start");
-      const start = await shellRecord(page);
       check(
-        `${tag} nothing moves as a start is chosen`,
-        start.shifts.length === 0 && start.cls === 0,
-        start,
+        `${tag} an adult's year is enough to start`,
+        (await page
+          .getByRole("button", { name: "Start practicing" })
+          .isEnabled()) &&
+          (await page
+            .getByRole("heading", { name: "Where do you want to begin?" })
+            .count()) === 0,
+      );
+      await shot("myself-adult");
+      const adult = await shellRecord(page);
+      check(
+        `${tag} nothing moves as an adult year is chosen`,
+        adult.shifts.length === 0 && adult.cls === 0,
+        adult,
       );
       check(`${tag} no horizontal overflow`, (await overflow(page)) <= 0);
       await context.close();
@@ -114,13 +109,13 @@ try {
     [768, 1024],
   ] as const)
     for (const theme of ["light", "dark"] as const)
+      // (A parent's answer opens guided setup, a page of its own.)
       for (const [choice, question, last] of [
         [
           /^I’m learning for myself/,
           "What year were you born?",
           "Start practicing",
         ],
-        [/^I’m a parent/, "How many children?", "Continue"],
       ] as const) {
         const motion = width === 390 && theme === "dark" ? "reduce" : null;
         const tag = `${width} ${theme} ${question}`;
@@ -159,7 +154,7 @@ try {
         const record = await shellRecord(page);
         check(`${tag}: nothing shifts`, record.cls === 0, record);
         await page.screenshot({
-          path: `${shots}/into-view-${question.startsWith("What") ? "myself" : "parent"}-${width}-${theme}.png`,
+          path: `${shots}/into-view-myself-${width}-${theme}.png`,
         });
         await context.close();
       }
@@ -178,8 +173,8 @@ try {
     await context.close();
   }
 
-  // Last, since the account then has its own practice: an adult chooses
-  // where to begin and goes straight to the first problem there.
+  // Last, since the account then has its own practice: an adult's year is
+  // enough, and the first problem comes straight after.
   for (const theme of ["light", "dark"] as const) {
     const context = await f.context(browser, "new", {
       viewport: { width: 390, height: 900 },
@@ -188,7 +183,6 @@ try {
     const page = await context.newPage();
     await myself(page);
     await page.getByRole("radio", { name: "Adult", exact: true }).click();
-    await page.getByRole("radio", { name: /^Precalculus/ }).click();
     await page.getByRole("button", { name: "Start practicing" }).click();
     await page.waitForURL(/\/practice$/);
     await page.locator("[data-problem-id]").first().waitFor();

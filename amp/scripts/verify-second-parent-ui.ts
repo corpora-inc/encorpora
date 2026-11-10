@@ -493,8 +493,8 @@ async function journey(
     .getByRole("menuitem")
     .filter({ has: rowan.locator('[data-place="me"]') })
     .click();
-  await heading(rowan, "Where do you want to begin?");
-  await rowan.getByRole("radio", { name: /^Algebra Linear/ }).click();
+  await heading(rowan, "What year were you born?");
+  await rowan.getByRole("radio", { name: "Adult", exact: true }).click();
   await rowan.getByRole("button", { name: "Start practicing" }).click();
   await rowan.waitForURL(/\/practice/);
   await rowan.locator("[data-problem-id]").first().waitFor();

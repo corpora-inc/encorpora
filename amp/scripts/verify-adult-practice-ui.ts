@@ -412,17 +412,18 @@ async function teacherStarts(
   await measured(page, `${label} school switcher`);
   await shot(page, "switcher-start", width, theme, engine);
   await choose(page, fromSchool, /Start my own practice/);
-  await heading(page, "Where do you want to begin?");
+  // The year is all it asks (founder: birth year is always enough).
+  await heading(page, "What year were you born?");
   check(`${label} start has a URL`, path(page) === "/me/start", path(page));
   const start = page.getByRole("button", { name: "Start practicing" });
-  check(`${label} start waits for a choice`, await start.isDisabled());
+  check(`${label} start waits for a year`, await start.isDisabled());
   await measured(page, `${label} start`);
-  await page.getByRole("radio", { name: /^Algebra Linear/ }).click();
+  await page.getByRole("radio", { name: "Adult", exact: true }).click();
   await shot(page, "start", width, theme, engine);
   // Reload keeps the screen; Back returns to the school.
   await page.reload();
-  await heading(page, "Where do you want to begin?");
-  await page.getByRole("radio", { name: /^Algebra Linear/ }).click();
+  await heading(page, "What year were you born?");
+  await page.getByRole("radio", { name: "Adult", exact: true }).click();
   const box = await start.boundingBox();
   await start.click();
   const after = await start.boundingBox().catch(() => null);
@@ -587,8 +588,8 @@ async function parentStarts(
   await measured(page, `${label} family switcher`);
   await shot(page, "family-switcher", width, theme);
   await choose(page, fromHome, /Start my own practice/);
-  await heading(page, "Where do you want to begin?");
-  await page.getByRole("radio", { name: /^Geometry/ }).click();
+  await heading(page, "What year were you born?");
+  await page.getByRole("radio", { name: "Adult", exact: true }).click();
   await page.getByRole("button", { name: "Start practicing" }).click();
   await practicing(page);
   // Back to the family: its class, with the child in it.
@@ -641,7 +642,7 @@ async function nobody(browser: Browser) {
     "Quinn",
   );
   await page.goto(`${origin}/me/start`);
-  await heading(page, "Where do you want to begin?");
+  await heading(page, "What year were you born?");
   check("no place yet, /me/start opens", path(page) === "/me/start");
   await page.goto(`${origin}/me`);
   await page.waitForURL((at) => at.pathname === "/me/start");

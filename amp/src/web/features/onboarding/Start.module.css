@@ -30,6 +30,12 @@
   display: grid;
   gap: var(--space-3);
 }
+/* A reason under the choices, its line kept so nothing moves. */
+.step .hint {
+  min-height: 1.45em;
+  font-size: var(--text-small);
+  line-height: 1.45;
+}
 .step label {
   font-size: var(--text-label);
   font-weight: 600;
