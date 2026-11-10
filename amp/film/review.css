@@ -1,4 +1,4 @@
-/* The review desk. The film plays in an embedded player; this page only scores and notes. */
+/* The review desk. The film plays in an embedded player; this page scores it and takes one note. */
 html, body { margin: 0; height: 100%; overflow: hidden; background: var(--color-surface); color: var(--color-on-surface); }
 #app { height: 100%; }
 
@@ -14,12 +14,13 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: var(--color-
 
 .panel {
   flex: 1; min-height: 0; overflow: auto; -webkit-overflow-scrolling: touch;
+  display: flex; flex-direction: column;
   padding: 14px 16px max(16px, env(safe-area-inset-bottom));
   box-sizing: border-box;
   font: 16px/1.4 system-ui, sans-serif;
 }
 
-.panel-head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.panel-head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; flex: none; }
 .panel-titles { flex: 1; min-width: 0; }
 .panel-kicker { margin: 0; font-size: 13px; font-weight: 600; color: var(--color-muted-text); }
 .panel-kicker a { color: var(--color-figure-accent); text-decoration: none; }
@@ -32,14 +33,11 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: var(--color-
 }
 .btn:disabled { opacity: 0.45; cursor: default; }
 .btn-next { flex: none; background: var(--color-primary); color: var(--color-on-primary); }
-.btn-add { flex: none; background: var(--color-secondary); color: var(--color-on-secondary); }
-.btn-quiet { background: transparent; color: var(--color-muted-text); padding: 0 10px; }
-.btn-danger { background: var(--color-danger); color: var(--color-on-danger); }
-.btn:focus-visible, .score-slider:focus-visible, .note-time:focus-visible, .field:focus-visible, a:focus-visible {
+.btn:focus-visible, .score-slider:focus-visible, .field:focus-visible, a:focus-visible {
   outline: 3px solid var(--color-focus-ring); outline-offset: 2px;
 }
 
-.score { margin: 0 0 18px; }
+.score { margin: 0 0 18px; flex: none; }
 .score-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; min-height: 36px; }
 .score-kicker { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-muted-text); }
 .score-num { font: 700 32px/1 system-ui, sans-serif; font-variant-numeric: tabular-nums; color: var(--color-muted-text); }
@@ -66,39 +64,21 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: var(--color-
 .score[data-set="true"] .score-thumb { box-shadow: 0 1px 4px var(--color-shadow), inset 0 0 0 2.5px var(--color-figure-accent); }
 .score-ends { display: flex; justify-content: space-between; margin-top: 2px; font-size: 13px; font-weight: 600; color: var(--color-muted-text); font-variant-numeric: tabular-nums; }
 
-.block-label { display: block; margin: 16px 0 6px; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-muted-text); }
-.draft { display: flex; flex-direction: column; align-items: stretch; gap: 8px; }
-.draft .btn-add { align-self: flex-end; }
+.feedback { flex: 1 1 auto; display: flex; flex-direction: column; min-height: 0; }
+.block-label { display: block; margin: 0 0 6px; flex: none; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-muted-text); }
 .field {
   display: block; width: 100%; box-sizing: border-box; margin: 0;
+  flex: 1 1 auto; min-height: 180px;
   padding: 12px 14px; border-radius: 12px; border: 1.5px solid var(--color-border-strong);
   background: var(--color-answer); color: var(--color-on-answer);
-  font: 16px/1.4 system-ui, sans-serif; resize: none;
+  font: 16px/1.45 system-ui, sans-serif; resize: none;
 }
-.draft .field { flex: 1; min-height: 72px; }
-.summary { min-height: 88px; }
-.stamp { margin: 6px 0 0; min-height: 1.4em; font-size: 14px; font-weight: 600; color: var(--color-figure-accent); font-variant-numeric: tabular-nums; }
-
-.notes { list-style: none; margin: 8px 0 0; padding: 0; }
-.note {
-  display: grid; grid-template-columns: auto 1fr auto auto; gap: 4px 8px; align-items: center;
-  padding: 8px 0; border-top: 1px solid var(--color-border);
-}
-.note-time {
-  grid-column: 1; grid-row: 1; min-width: 64px; height: 44px; padding: 0 10px;
-  border: 0; border-radius: 12px; background: var(--color-secondary); color: var(--color-on-secondary);
-  font: 700 15px/1 system-ui, sans-serif; font-variant-numeric: tabular-nums; cursor: pointer;
-}
-.note-edit { grid-column: 3; grid-row: 1; }
-.note-delete { grid-column: 4; grid-row: 1; }
-.note-text { grid-column: 1 / -1; margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
-.note-edit-field { grid-column: 1 / -1; min-height: 72px; }
 
 .save-line {
-  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px;
-  min-height: 44px; margin-top: 8px;
+  flex: none; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px;
+  height: 44px; margin-top: 8px;
 }
-.save-text { font-size: 14px; font-weight: 600; color: var(--color-muted-text); }
+.save-text { font-size: 14px; font-weight: 600; color: var(--color-muted-text); white-space: nowrap; }
 .save-line.is-bad .save-text { color: var(--color-on-danger); }
 .save-retry { justify-self: end; background: var(--color-danger); color: var(--color-on-danger); }
 
