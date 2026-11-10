@@ -1894,7 +1894,10 @@ function whichExpression(
 }
 
 function trayOptions(labels: string[]): PartOption[] {
-  return labels.map((label, i) => ({ id: "abcdef"[i]!, label }));
+  // Assign ids before sorting so stored answers keep naming the same cards.
+  return labels
+    .map((label, i) => ({ id: "abcdef"[i]!, label }))
+    .sort((a, b) => Number(a.label) - Number(b.label));
 }
 function cardsProblem(
   meta: TemplateMetadata,

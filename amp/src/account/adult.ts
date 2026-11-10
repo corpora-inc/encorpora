@@ -22,7 +22,9 @@ import type { FamilyRepository } from "../family/repository.js";
 import type { OwnPractice } from "./adult-contracts.js";
 
 export const startPracticeSchema = z.strictObject({
-  start: z.enum(adultStarts),
+  /** Where they begin. Without one (the starter's "I'm learning for myself"),
+   * practice begins at its default level and adapts from the first answer. */
+  start: z.enum(adultStarts).optional(),
   timezone,
 });
 
@@ -72,8 +74,17 @@ export async function startAdultPractice(
     const learnerId = randomUUID();
     await client.query(
       `INSERT INTO amp_learners(id,account_id,name,adult,timezone,starting_band,starting_policy,starting_excluded_strands)
-       VALUES($1,$2,$3,true,$4,$5,1,ARRAY[]::text[])`,
-      [learnerId, accountId, name, input.timezone, input.start],
+       VALUES($1,$2,$3,true,$4,$5,$6,$7::text[])`,
+      // A starting point is all three or none (amp_starting_point_valid).
+      [
+        learnerId,
+        accountId,
+        name,
+        input.timezone,
+        input.start ?? null,
+        input.start ? 1 : null,
+        input.start ? [] : null,
+      ],
     );
     await client.query(
       "INSERT INTO amp_adult_activity(learner_id,seen_at) VALUES($1,now())",

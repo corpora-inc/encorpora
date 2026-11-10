@@ -733,6 +733,15 @@ function tilingCardProblem(
   };
 }
 
+/** Numeric trays are ordered without changing the ids in saved answers. */
+function orderedCards(problem: GeneratedProblem): GeneratedProblem {
+  if (problem.public.response.kind !== "multi-part-choice")
+    throw new Error("Expected a card response");
+  for (const blank of problem.public.response.blanks)
+    blank.options.sort((a, b) => Number(a.label) - Number(b.label));
+  return problem;
+}
+
 export function tileCards(a: number, b: number, k: number) {
   const ab = a * b;
   const fixed = tray([b, a, ab], [k * b, a + b, 2 * (a + b), k * a]);
@@ -765,7 +774,7 @@ function tileThen(seed: string, r: Random): GeneratedProblem {
     const k = r(1, a - 1);
     try {
       const built = tileCards(a, b, k);
-      return tilingCardProblem(meta, seed, r, {
+      return orderedCards(tilingCardProblem(meta, seed, r, {
         prompt: `The rectangle has ${a} rows and ${b} unit squares in each row. ${k} ${k === 1 ? "row is" : "rows are"} tiled and the rest are blank. Fill the cards for the whole rectangle.`,
         layout: "cards",
         reuse: true,
@@ -779,7 +788,7 @@ function tileThen(seed: string, r: Random): GeneratedProblem {
           `There are ${a} rows, so the running totals are ${Array.from({ length: a }, (_, i) => (i + 1) * b).join(", ")}.`,
           `That is ${a} × ${b} = ${built.ab}. The covering and the product are the same number.`,
         ],
-      });
+      }));
     } catch (error) {
       if (error instanceof Error && error.message === "retry") continue;
       throw error;
@@ -821,7 +830,7 @@ function splitTiled(seed: string, r: Random): GeneratedProblem {
     if (c === b) c = c === 8 ? 2 : c + 1;
     if (b === c || b + c > 12) continue;
     const built = splitCards(a, b, c);
-    return tilingCardProblem(meta, seed, r, {
+    return orderedCards(tilingCardProblem(meta, seed, r, {
       prompt: `The rectangle is ${a} units tall and ${b + c} units wide. A line splits the width into ${b} and ${c}. Count the unit squares.`,
       layout: "cards",
       reuse: true,
@@ -840,7 +849,7 @@ function splitTiled(seed: string, r: Random): GeneratedProblem {
         `Total: ${built.left} + ${built.right} = ${built.total}.`,
         `The same squares are ${a} × (${b} + ${c}) = ${a} × ${b + c} = ${built.total}. So a × (b + c) = a × b + a × c.`,
       ],
-    });
+    }));
   }
   throw new Error("Could not build split-tiled-count");
 }

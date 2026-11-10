@@ -51,11 +51,12 @@ test("number-sense families are deterministic, valid and gradeable", () => {
       assert.equal(templateRole(id), "assessment");
       assert.equal(gradeAnswer(problem, problem.answer), true, id);
       assert.equal(gradeAnswer(problem, `${problem.answer}1`), false, id);
-      assert.doesNotMatch(
-        problem.answer,
-        /,/,
-        "answers are typed without commas",
-      );
+      if (problem.public.response.kind !== "point-plot")
+        assert.doesNotMatch(
+          problem.answer,
+          /,/,
+          "answers are typed without commas",
+        );
     }
 });
 
@@ -132,7 +133,10 @@ const lineOf = (scene: Scene) => {
 };
 
 test("number-line hops agree with their scenes and stay on the line", () => {
+  let scenes = 0;
   for (const p of sample("number-line-hops")) {
+    if (p.public.figure?.kind !== "scene") continue;
+    scenes++;
     const scene = sceneOf(p),
       line = lineOf(scene);
     const [start, tens, ones] = numbersIn(p.public.prompt);
@@ -158,6 +162,7 @@ test("number-line hops agree with their scenes and stay on the line", () => {
     if (Number(p.answer) % 10)
       assert.ok(!labels.includes(p.answer), "The landing is masked");
   }
+  assert.ok(scenes > 0);
   for (const p of sample("number-line-missing-hop")) {
     const line = lineOf(sceneOf(p));
     const [a, b] = numbersIn(p.public.prompt);

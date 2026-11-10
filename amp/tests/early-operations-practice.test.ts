@@ -15,8 +15,10 @@ import {
 import { lessons } from "../src/content/lessons";
 
 const ids = earlyOperationsTemplates.map((t) => t.id);
+// Figure checks belong to the reprint. The current catalog also draws
+// clause tasks whose answer is a choice or structured work.
 const sample = (id: string, n = 300) =>
-  Array.from({ length: n }, (_, i) => generateProblem(id, `early-${i}`));
+  Array.from({ length: n }, (_, i) => generateProblem(id, `early-${i}`, 1));
 const unknowns = (value: unknown): number =>
   value === null
     ? 1
@@ -29,7 +31,7 @@ const unknowns = (value: unknown): number =>
 test("early-operation families are deterministic, figured, valid and gradeable", () => {
   for (const id of ids)
     for (const [i, problem] of sample(id).entries()) {
-      assert.deepEqual(problem, generateProblem(id, `early-${i}`));
+      assert.deepEqual(problem, generateProblem(id, `early-${i}`, 1));
       generatedProblemSchema.parse(problem);
       assert.ok(problem.public.figure, id);
       assert.equal(templateRole(id), "assessment");
@@ -143,6 +145,32 @@ test("balance, tape and make-ten animations follow the example's figure", () => 
     const frames = animationFrames(m);
     assert.match(frames[2]!.math, new RegExp(`= ${lesson.example.answer}\\$$`));
   }
+});
+
+test("current draws grade, and clause tasks use their own answer format", () => {
+  const seen = new Set<string>();
+  for (const id of [
+    "number-bond-missing",
+    "three-addend-story",
+    "unknown-addend-story",
+  ])
+    for (let i = 0; i < 80; i++) {
+      const problem = generateProblem(id, `live-${i}`);
+      assert.equal(gradeAnswer(problem, problem.answer), true, id);
+      const task = problem.variant?.axes?.clause;
+      if (typeof task === "string" && task !== "legacy")
+        seen.add(`${id}:${task}`);
+      else {
+        assert.ok(problem.public.figure, id);
+        assert.equal(
+          gradeAnswer(problem, String(Number(problem.answer) + 1)),
+          false,
+        );
+      }
+    }
+  assert.ok(seen.has("number-bond-missing:two-ways"));
+  assert.ok(seen.has("three-addend-story:which-equation"));
+  assert.ok(seen.has("unknown-addend-story:subtraction-unknown"));
 });
 
 test("every early-operation family has one illustrated lesson", () => {

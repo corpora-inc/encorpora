@@ -167,11 +167,13 @@ export const numberSenseTemplates: readonly TemplateMetadata[] =
     version:
       id === "round-large" ||
       id === "digit-value-ratio" ||
+      id === "number-line-hops" ||
       id === "numeral-for-quantity"
         ? 2
         : 1,
     ...(id === "round-large" ||
     id === "digit-value-ratio" ||
+    id === "number-line-hops" ||
     id === "numeral-for-quantity"
       ? { reprintsFrom: 1 }
       : {}),

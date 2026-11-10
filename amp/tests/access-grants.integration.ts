@@ -225,6 +225,8 @@ test(
           await gifts.activate(owner, active.id, id);
           await gifts.revoke(active.id);
           await gifts.revoke(active.id);
+          // The revoked gift no longer covers the learner; their own free
+          // allowance still does (docs/families.md).
           assert.equal(
             (await snapshot(owner)).learners[0].entitlement.licensed,
             false,

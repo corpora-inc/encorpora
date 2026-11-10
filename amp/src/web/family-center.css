@@ -611,3 +611,17 @@
 .sat-focus-setting p {
   margin-block: 0.5rem;
 }
+/* "Is this you?" for an adult birth year in Add learner. */
+.family-sheet-text {
+  margin: 0 0 var(--space-4);
+  color: var(--color-muted-text);
+  line-height: 1.5;
+}
+.family-sheet-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.family-sheet-actions > * {
+  flex: 1 1 160px;
+}

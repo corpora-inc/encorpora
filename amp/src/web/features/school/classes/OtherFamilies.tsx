@@ -11,6 +11,8 @@ import { TextField } from "../../../ui/TextField";
 import { Toast } from "../../../ui/Toast";
 import { approvals, approvalsOptions } from "../../family-approval/api";
 import { CopyButton, FormNote } from "../parts";
+import { freeProblemsLeft } from "../../../lib/free-allowance";
+import { TalkToUsButton } from "../../continue/AllowancePause";
 import school from "../School.module.css";
 import styles from "./Family.module.css";
 
@@ -28,23 +30,35 @@ const failures: Record<string, string> = {
 const why = (failure: unknown, fallback: string) =>
   (failure instanceof AppError && failure.code && failures[failure.code]) ||
   fallback;
-const statusLine = (row: ApprovalRowResource) =>
-  row.status === "waiting"
-    ? "Waiting for their parent"
-    : row.status === "expired"
-      ? "The link expired"
-      : row.status === "paused"
-        ? "Paused by their parent"
-        : row.status === "needs-access"
-          ? "Approved by their parent"
-          : `Access through ${DAY.format(new Date(row.accessEndsAt!))}`;
+export const statusLine = (row: ApprovalRowResource) =>
+  row.status === "unnamed"
+    ? row.freeLeft === undefined
+      ? "Access active"
+      : row.freeLeft > 0
+        ? freeProblemsLeft(row.freeLeft)
+        : "Used the 100 free problems"
+    : row.status === "waiting"
+      ? "Waiting for their parent"
+      : row.status === "expired"
+        ? "The link expired"
+        : row.status === "paused"
+          ? "Paused by their parent"
+          : row.status === "needs-access"
+            ? row.freeLeft === undefined
+              ? "Approved by their parent"
+              : row.freeLeft > 0
+                ? freeProblemsLeft(row.freeLeft)
+                : "Used the 100 free problems"
+            : `Access through ${DAY.format(new Date(row.accessEndsAt!))}`;
 
 /** Children from other families in this family's class (docs/families.md,
  * step 5). Each one's own parent approves by a link, so the teacher sends the
  * link and sees where it stands; they never see the other family's account. */
 export function OtherFamilies({ session }: { session: AuthSession }) {
   const list = useQuery(approvalsOptions(session));
-  const [adding, setAdding] = useState(false);
+  const [adding, setAdding] = useState<
+    false | { personId?: string; name?: string }
+  >(false);
   const [access, setAccess] = useState<ApprovalRowResource | null>(null);
   const [error, setError] = useState("");
   useLoggedError(error);
@@ -62,6 +76,9 @@ export function OtherFamilies({ session }: { session: AuthSession }) {
               row={row}
               session={session}
               onAccess={() => setAccess(row)}
+              onSend={() =>
+                setAdding({ personId: row.personId, name: row.name })
+              }
               onError={setError}
             />
           ))}
@@ -70,7 +87,7 @@ export function OtherFamilies({ session }: { session: AuthSession }) {
       <Button
         variant="secondary"
         className={styles.add}
-        onClick={() => setAdding(true)}
+        onClick={() => setAdding({})}
       >
         Add a child from another family
       </Button>
@@ -78,6 +95,7 @@ export function OtherFamilies({ session }: { session: AuthSession }) {
         <AddSheet
           session={session}
           rows={rows}
+          student={adding.personId ? adding : undefined}
           onClose={() => setAdding(false)}
         />
       )}
@@ -113,11 +131,14 @@ function Row({
   row,
   session,
   onAccess,
+  onSend,
   onError,
 }: {
   row: ApprovalRowResource;
   session: AuthSession;
   onAccess: () => void;
+  /** An unnamed student: send their parent the link that names them. */
+  onSend: () => void;
   onError: (message: string) => void;
 }) {
   const [busy, setBusy] = useState<"resend" | "remove" | null>(null);
@@ -146,7 +167,7 @@ function Row({
       <span className={styles.who}>
         <span className={styles.name}>
           {row.name}{" "}
-          {row.status === "needs-access" && (
+          {row.status === "needs-access" && row.freeLeft === undefined && (
             <Badge tone="warning">Needs access</Badge>
           )}
           {row.status === "paused" && <Badge tone="warning">Paused</Badge>}
@@ -157,7 +178,16 @@ function Row({
         )}
       </span>
       <span className={styles.rowActions}>
-        {confirming ? (
+        {row.status === "unnamed" ? (
+          <>
+            <Button variant="secondary" onClick={onSend}>
+              Send to their parent
+            </Button>
+            {/* Their free problems are used: a class's access is set up
+                with us. */}
+            {row.freeLeft === 0 && <TalkToUsButton />}
+          </>
+        ) : confirming ? (
           <>
             <button
               type="button"
@@ -195,10 +225,15 @@ function Row({
                 {sent ? "Sent" : "Send again"}
               </Button>
             )}
-            {row.status === "needs-access" && (
+            {row.status === "needs-access" && row.freeLeft === undefined && (
               <Button variant="secondary" onClick={onAccess}>
                 Add access
               </Button>
+            )}
+            {/* Their free problems are used: a class's access is set up
+                with us. */}
+            {row.status === "needs-access" && row.freeLeft === 0 && (
+              <TalkToUsButton variant="secondary" />
             )}
             <Button
               variant="quiet"
@@ -217,10 +252,13 @@ function Row({
 function AddSheet({
   session,
   rows,
+  student,
   onClose,
 }: {
   session: AuthSession;
   rows: ApprovalRowResource[];
+  /** An unnamed student of the class whose parent the link is for. */
+  student?: { personId?: string; name?: string };
   onClose: () => void;
 }) {
   const [parentEmail, setParentEmail] = useState("");
@@ -244,6 +282,7 @@ function AddSheet({
     setError("");
     try {
       const result = await approvals.send(session, {
+        ...(student?.personId ? { personId: student.personId } : {}),
         parentEmail: parentEmail.trim(),
       });
       setDone({ id: result.id!, mailed: result.mailed });
@@ -260,13 +299,19 @@ function AddSheet({
       onOpenChange={(open) => {
         if (!open) onClose();
       }}
-      title="Add a child from another family"
+      title={
+        student?.name
+          ? `Send ${student.name}’s parent a link`
+          : "Add a child from another family"
+      }
     >
       {done ? (
         <div className={school.sheetForm}>
           <p className={styles.sheetText}>
             {done.mailed
-              ? `We sent ${parentEmail.trim()} a link. Their child joins your class once they approve.`
+              ? student?.name
+                ? `We sent ${parentEmail.trim()} a link. ${student.name}’s name shows here once they approve.`
+                : `We sent ${parentEmail.trim()} a link. Their child joins your class once they approve.`
               : `The email didn’t send. Copy the link and send it to ${parentEmail.trim()} yourself.`}
           </p>
           {link && (
@@ -289,8 +334,9 @@ function AddSheet({
           }}
         >
           <p className={styles.sheetText}>
-            Their parent gets a link to approve. The child can sign in and
-            practice once they do.
+            {student?.name
+              ? `${student.name}’s parent gets a link to approve and add ${student.name}’s name. ${student.name} keeps practicing meanwhile.`
+              : "Their parent gets a link to approve. The child can sign in and practice once they do."}
           </p>
           <TextField
             label="Their parent’s email"

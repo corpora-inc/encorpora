@@ -375,10 +375,11 @@ test("expected-count surveys state whole numbers of people", () => {
 
 test("both directions: the two equalities agree, and version 1 keeps the old prompt", () => {
   let seen = 0;
-  for (let i = 0; i < 200; i++) {
-    const old = generateProblem("independence-test", `both:${i}`, 1);
+  const seeds = ["audit:54", ...Array.from({ length: 200 }, (_, i) => `both:${i}`)];
+  for (const seed of seeds) {
+    const old = generateProblem("independence-test", seed, 1);
     assert.equal(old.public.prompt.includes("Check both directions"), false);
-    const problem = generateProblem("independence-test", `both:${i}`);
+    const problem = generateProblem("independence-test", seed);
     if (!problem.public.prompt.includes("Check both directions")) continue;
     seen++;
     assert.equal(problem.variant?.id, "both-directions");
@@ -391,6 +392,10 @@ test("both directions: the two equalities agree, and version 1 keeps the old pro
     const both = Number(counts[1]);
     const aOnly = Number(counts[2]);
     const bOnly = Number(counts[3]);
+    const neither = Number(counts[4]);
+    for (const count of [both, aOnly, bOnly, neither])
+      assert.ok(Number.isInteger(count) && count >= 2, seed);
+    assert.equal(both + aOnly + bOnly + neither, n, seed);
     const row = both + aOnly;
     const col = both + bOnly;
     assert.notEqual(row, col);
