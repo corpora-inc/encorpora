@@ -1,0 +1,4323 @@
+{
+  "id": "bar-chart-total--hf",
+  "title": "Bar graphs: the whole and the missing part",
+  "seed": "20261110:bar-chart-total:3",
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -1.6,
+          -2,
+          14.5,
+          8.4
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "E": [
+            13.7,
+            0
+          ],
+          "Title": [
+            6.5,
+            7.8
+          ],
+          "Unit": [
+            0,
+            7
+          ],
+          "L0": [
+            0,
+            0
+          ],
+          "R0": [
+            13.7,
+            0
+          ],
+          "L1": [
+            0,
+            1
+          ],
+          "R1": [
+            13.7,
+            1
+          ],
+          "L2": [
+            0,
+            2
+          ],
+          "R2": [
+            13.7,
+            2
+          ],
+          "L3": [
+            0,
+            3
+          ],
+          "R3": [
+            13.7,
+            3
+          ],
+          "L4": [
+            0,
+            4
+          ],
+          "R4": [
+            13.7,
+            4
+          ],
+          "L5": [
+            0,
+            5
+          ],
+          "R5": [
+            13.7,
+            5
+          ],
+          "L6": [
+            0,
+            6
+          ],
+          "R6": [
+            13.7,
+            6
+          ],
+          "b0A": [
+            1.85,
+            0
+          ],
+          "b0B": [
+            3.15,
+            0
+          ],
+          "b0C": [
+            3.15,
+            3
+          ],
+          "b0D": [
+            1.85,
+            3
+          ],
+          "b0N": [
+            2.5,
+            -0.9
+          ],
+          "b0V": [
+            2.5,
+            3.6
+          ],
+          "b0G": [
+            1.85,
+            3
+          ],
+          "b1A": [
+            6.05,
+            0
+          ],
+          "b1B": [
+            7.3500000000000005,
+            0
+          ],
+          "b1C": [
+            7.3500000000000005,
+            5
+          ],
+          "b1D": [
+            6.05,
+            5
+          ],
+          "b1N": [
+            6.7,
+            -0.9
+          ],
+          "b1V": [
+            6.7,
+            5.6
+          ],
+          "b1G": [
+            6.05,
+            5
+          ],
+          "b2A": [
+            10.25,
+            0
+          ],
+          "b2B": [
+            11.55,
+            0
+          ],
+          "b2C": [
+            11.55,
+            2
+          ],
+          "b2D": [
+            10.25,
+            2
+          ],
+          "b2N": [
+            10.9,
+            -0.9
+          ],
+          "b2V": [
+            10.9,
+            2.6
+          ],
+          "b2G": [
+            10.25,
+            2
+          ],
+          "Total": [
+            2.1,
+            -0.1
+          ],
+          "TotalN": [
+            6.6,
+            -1.3
+          ],
+          "TotalKey": [
+            6.6,
+            -1.3
+          ]
+        },
+        "parts": [
+          {
+            "id": "title",
+            "start": true,
+            "label": "\\text{Trees by kind}",
+            "at": "Title",
+            "dir": "c",
+            "size": "m"
+          },
+          {
+            "id": "unit",
+            "start": true,
+            "label": "\\text{Trees}",
+            "at": "Unit",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "line0",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L0",
+              "R0"
+            ],
+            "ink": "muted",
+            "w": 4
+          },
+          {
+            "id": "num0",
+            "group": "scale",
+            "start": true,
+            "label": "0",
+            "at": "L0",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "line1",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L1",
+              "R1"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "line2",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L2",
+              "R2"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "num2",
+            "group": "scale",
+            "start": true,
+            "label": "2",
+            "at": "L2",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "line3",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L3",
+              "R3"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "line4",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L4",
+              "R4"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "num4",
+            "group": "scale",
+            "start": true,
+            "label": "4",
+            "at": "L4",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "line5",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L5",
+              "R5"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "line6",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L6",
+              "R6"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "num6",
+            "group": "scale",
+            "start": true,
+            "label": "6",
+            "at": "L6",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "b0bar",
+            "poly": [
+              "b0A",
+              "b0B",
+              "b0C",
+              "b0D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 4
+          },
+          {
+            "id": "b0name",
+            "start": true,
+            "label": "\\text{Oak}",
+            "at": "b0N",
+            "dir": "c",
+            "ink": "accent",
+            "size": "s"
+          },
+          {
+            "id": "b0value",
+            "label": "3",
+            "at": "b0V",
+            "dir": "c",
+            "ink": "accent",
+            "size": "m"
+          },
+          {
+            "id": "b0grid",
+            "grid": [
+              1,
+              3
+            ],
+            "at": "b0G",
+            "size": [
+              1.3,
+              1
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 1
+          },
+          {
+            "id": "b0c",
+            "start": true,
+            "counters": "b0grid",
+            "n": 3,
+            "ink": "accent"
+          },
+          {
+            "id": "b1bar",
+            "poly": [
+              "b1A",
+              "b1B",
+              "b1C",
+              "b1D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 4
+          },
+          {
+            "id": "b1name",
+            "start": true,
+            "label": "\\text{Pine}",
+            "at": "b1N",
+            "dir": "c",
+            "ink": "blue",
+            "size": "s"
+          },
+          {
+            "id": "b1value",
+            "label": "5",
+            "at": "b1V",
+            "dir": "c",
+            "ink": "blue",
+            "size": "m"
+          },
+          {
+            "id": "b1grid",
+            "grid": [
+              1,
+              5
+            ],
+            "at": "b1G",
+            "size": [
+              1.3,
+              1
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 1
+          },
+          {
+            "id": "b1c",
+            "start": true,
+            "counters": "b1grid",
+            "n": 5,
+            "ink": "blue"
+          },
+          {
+            "id": "b2bar",
+            "poly": [
+              "b2A",
+              "b2B",
+              "b2C",
+              "b2D"
+            ],
+            "fill": "violet-fill",
+            "ink": "violet",
+            "w": 4
+          },
+          {
+            "id": "b2name",
+            "start": true,
+            "label": "\\text{Maple}",
+            "at": "b2N",
+            "dir": "c",
+            "ink": "violet",
+            "size": "s"
+          },
+          {
+            "id": "b2value",
+            "label": "2",
+            "at": "b2V",
+            "dir": "c",
+            "ink": "violet",
+            "size": "m"
+          },
+          {
+            "id": "b2grid",
+            "grid": [
+              1,
+              2
+            ],
+            "at": "b2G",
+            "size": [
+              1.3,
+              1
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 1
+          },
+          {
+            "id": "b2c",
+            "start": true,
+            "counters": "b2grid",
+            "n": 2,
+            "ink": "violet"
+          },
+          {
+            "id": "total",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "Total",
+            "size": [
+              1.8,
+              1
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 2
+          },
+          {
+            "id": "totalN",
+            "label": "@n\\ \\text{trees}",
+            "at": "TotalN",
+            "dir": "c",
+            "size": "m",
+            "of": "total"
+          },
+          {
+            "id": "totalKey",
+            "label": "\\text{All the trees}",
+            "at": "TotalKey",
+            "dir": "c",
+            "size": "s"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Each dot stands for one tree. The trees are sorted into three kinds: oak, pine and maple.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "problem",
+              "text": "How many trees are shown altogether across the three categories?",
+              "id": "pIntro"
+            },
+            {
+              "do": "text",
+              "text": "One dot stands for one tree.",
+              "id": "dotKey",
+              "at": "dot"
+            },
+            {
+              "do": "highlight",
+              "target": "b0c",
+              "at": "oak"
+            },
+            {
+              "do": "highlight",
+              "target": "b1c",
+              "at": "pine"
+            },
+            {
+              "do": "highlight",
+              "target": "b2c",
+              "at": "maple"
+            }
+          ]
+        },
+        {
+          "say": "A category is one kind. Oak is a category. Altogether asks for every tree in all the categories.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b0name",
+              "at": "Oak"
+            },
+            {
+              "do": "text",
+              "text": "Category = kind. Altogether = in all.",
+              "id": "words",
+              "at": "Altogether"
+            }
+          ]
+        },
+        {
+          "say": "The numbers up the side form the scale. They tell how many trees each height means.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "scale",
+              "at": "scale"
+            }
+          ]
+        },
+        {
+          "say": "Start at zero. Two equal steps reach two, so each step up counts one tree.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "num0",
+              "at": "zero"
+            },
+            {
+              "do": "highlight",
+              "target": "line1",
+              "at": "steps"
+            },
+            {
+              "do": "highlight",
+              "target": "num2",
+              "at": "two"
+            },
+            {
+              "do": "text",
+              "text": "One step up = one tree.",
+              "id": "unitStep",
+              "at": "one"
+            }
+          ]
+        },
+        {
+          "say": "Draw a rectangle around each pile. These rectangles are bars. Together they make a bar graph.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "draw",
+              "target": "b0bar",
+              "at": "rectangle"
+            },
+            {
+              "do": "draw",
+              "target": "b1bar",
+              "at": "each"
+            },
+            {
+              "do": "draw",
+              "target": "b2bar",
+              "at": "bars"
+            }
+          ]
+        },
+        {
+          "say": "The dots can fade. A bar keeps the pile's height, so it still tells how many trees.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "b0c",
+                "b1c",
+                "b2c"
+              ],
+              "at": "fade"
+            },
+            {
+              "do": "highlight",
+              "target": "b1bar",
+              "at": "height"
+            }
+          ]
+        },
+        {
+          "say": "I counted each picture before. Could I count these three bars and say three trees?",
+          "pause": 0.6,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "b0bar",
+                "b1bar",
+                "b2bar"
+              ],
+              "at": "three"
+            }
+          ]
+        },
+        {
+          "say": "Three counts the categories. Look inside the bars: each one stands for several trees.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "text",
+              "text": "3 categories",
+              "id": "threeKinds",
+              "at": "Three"
+            },
+            {
+              "do": "show",
+              "target": [
+                "b0c",
+                "b1c",
+                "b2c"
+              ],
+              "at": "inside"
+            }
+          ]
+        },
+        {
+          "say": "Oak reaches three. Pine reaches five. Maple reaches two.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "line3",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "b0value",
+              "at": "three"
+            },
+            {
+              "do": "highlight",
+              "target": "line5",
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": "b1value",
+              "at": "five"
+            },
+            {
+              "do": "highlight",
+              "target": "line2",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "b2value",
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "say": "To find the total, the number in all, bring all the dots together. Count each tree once.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "view",
+              "to": [
+                -1.6,
+                -7.4,
+                14.5,
+                9.3
+              ],
+              "at": "together"
+            },
+            {
+              "do": "move",
+              "points": {
+                "Total": [
+                  2.1,
+                  -3
+                ],
+                "TotalN": [
+                  6.6,
+                  -6
+                ],
+                "TotalKey": [
+                  6.6,
+                  -2.1
+                ]
+              },
+              "at": "together"
+            },
+            {
+              "do": "show",
+              "target": [
+                "total",
+                "totalN",
+                "totalKey"
+              ],
+              "at": "together"
+            }
+          ]
+        },
+        {
+          "say": "Three oak trees and two maple trees fill one row of five.",
+          "pause": 0.5,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "b0c1": {
+                  "cell": [
+                    "total",
+                    1
+                  ]
+                },
+                "b0c2": {
+                  "cell": [
+                    "total",
+                    2
+                  ]
+                },
+                "b0c3": {
+                  "cell": [
+                    "total",
+                    3
+                  ]
+                }
+              },
+              "at": "Three"
+            },
+            {
+              "do": "move",
+              "points": {
+                "b2c1": {
+                  "cell": [
+                    "total",
+                    4
+                  ]
+                },
+                "b2c2": {
+                  "cell": [
+                    "total",
+                    5
+                  ]
+                }
+              },
+              "at": "two"
+            },
+            {
+              "do": "write",
+              "tex": "\\ca{3}+\\cv{2}=5",
+              "fresh": true,
+              "id": "introFive",
+              "at": "fill"
+            }
+          ]
+        },
+        {
+          "say": "The five pine trees fill the other row. Five plus five is ten.",
+          "pause": 0.7,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "b1c1": {
+                  "cell": [
+                    "total",
+                    6
+                  ]
+                },
+                "b1c2": {
+                  "cell": [
+                    "total",
+                    7
+                  ]
+                },
+                "b1c3": {
+                  "cell": [
+                    "total",
+                    8
+                  ]
+                },
+                "b1c4": {
+                  "cell": [
+                    "total",
+                    9
+                  ]
+                },
+                "b1c5": {
+                  "cell": [
+                    "total",
+                    10
+                  ]
+                }
+              },
+              "at": "five"
+            },
+            {
+              "do": "write",
+              "tex": "5+\\cb{5}=10",
+              "fresh": true,
+              "id": "introTen",
+              "at": "plus"
+            }
+          ]
+        },
+        {
+          "say": "Three is how many kinds. Ten is how many trees altogether.",
+          "pause": 1,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "b0name",
+                "b1name",
+                "b2name"
+              ],
+              "at": "kinds"
+            },
+            {
+              "do": "answer",
+              "tex": "10\\ \\text{trees}",
+              "id": "aIntro",
+              "at": "Ten"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.6,
+          -2,
+          14.5,
+          15.5
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "E": [
+            13.7,
+            0
+          ],
+          "Title": [
+            6.5,
+            13.8
+          ],
+          "Unit": [
+            0,
+            13
+          ],
+          "L0": [
+            0,
+            0
+          ],
+          "R0": [
+            13.7,
+            0
+          ],
+          "L1": [
+            0,
+            1
+          ],
+          "R1": [
+            13.7,
+            1
+          ],
+          "L2": [
+            0,
+            2
+          ],
+          "R2": [
+            13.7,
+            2
+          ],
+          "L3": [
+            0,
+            3
+          ],
+          "R3": [
+            13.7,
+            3
+          ],
+          "L4": [
+            0,
+            4
+          ],
+          "R4": [
+            13.7,
+            4
+          ],
+          "L5": [
+            0,
+            5
+          ],
+          "R5": [
+            13.7,
+            5
+          ],
+          "L6": [
+            0,
+            6
+          ],
+          "R6": [
+            13.7,
+            6
+          ],
+          "L7": [
+            0,
+            7
+          ],
+          "R7": [
+            13.7,
+            7
+          ],
+          "L8": [
+            0,
+            8
+          ],
+          "R8": [
+            13.7,
+            8
+          ],
+          "L9": [
+            0,
+            9
+          ],
+          "R9": [
+            13.7,
+            9
+          ],
+          "L10": [
+            0,
+            10
+          ],
+          "R10": [
+            13.7,
+            10
+          ],
+          "L11": [
+            0,
+            11
+          ],
+          "R11": [
+            13.7,
+            11
+          ],
+          "L12": [
+            0,
+            12
+          ],
+          "R12": [
+            13.7,
+            12
+          ],
+          "b0A": [
+            1.85,
+            0
+          ],
+          "b0B": [
+            3.15,
+            0
+          ],
+          "b0C": [
+            3.15,
+            6
+          ],
+          "b0D": [
+            1.85,
+            6
+          ],
+          "b0N": [
+            2.5,
+            -0.9
+          ],
+          "b0V": [
+            2.5,
+            6.6
+          ],
+          "b0G": [
+            1.85,
+            6
+          ],
+          "b1A": [
+            6.05,
+            0
+          ],
+          "b1B": [
+            7.3500000000000005,
+            0
+          ],
+          "b1C": [
+            7.3500000000000005,
+            7
+          ],
+          "b1D": [
+            6.05,
+            7
+          ],
+          "b1N": [
+            6.7,
+            -0.9
+          ],
+          "b1V": [
+            6.7,
+            7.6
+          ],
+          "b1G": [
+            6.05,
+            7
+          ],
+          "b2A": [
+            10.25,
+            0
+          ],
+          "b2B": [
+            11.55,
+            0
+          ],
+          "b2C": [
+            11.55,
+            11
+          ],
+          "b2D": [
+            10.25,
+            11
+          ],
+          "b2N": [
+            10.9,
+            -0.9
+          ],
+          "b2V": [
+            10.9,
+            11.6
+          ],
+          "b2G": [
+            10.25,
+            11
+          ]
+        },
+        "parts": [
+          {
+            "id": "title",
+            "start": true,
+            "label": "\\text{Trees by kind}",
+            "at": "Title",
+            "dir": "c",
+            "size": "m"
+          },
+          {
+            "id": "unit",
+            "start": true,
+            "label": "\\text{Trees}",
+            "at": "Unit",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "line0",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L0",
+              "R0"
+            ],
+            "ink": "muted",
+            "w": 4
+          },
+          {
+            "id": "num0",
+            "group": "scale",
+            "start": true,
+            "label": "0",
+            "at": "L0",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "line1",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L1",
+              "R1"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "line2",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L2",
+              "R2"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "num2",
+            "group": "scale",
+            "start": true,
+            "label": "2",
+            "at": "L2",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "line3",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L3",
+              "R3"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "line4",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L4",
+              "R4"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "num4",
+            "group": "scale",
+            "start": true,
+            "label": "4",
+            "at": "L4",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "line5",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L5",
+              "R5"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "line6",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L6",
+              "R6"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "num6",
+            "group": "scale",
+            "start": true,
+            "label": "6",
+            "at": "L6",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "line7",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L7",
+              "R7"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "line8",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L8",
+              "R8"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "num8",
+            "group": "scale",
+            "start": true,
+            "label": "8",
+            "at": "L8",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "line9",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L9",
+              "R9"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "line10",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L10",
+              "R10"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "num10",
+            "group": "scale",
+            "start": true,
+            "label": "10",
+            "at": "L10",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "line11",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L11",
+              "R11"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "line12",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L12",
+              "R12"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "num12",
+            "group": "scale",
+            "start": true,
+            "label": "12",
+            "at": "L12",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "b0bar",
+            "start": true,
+            "poly": [
+              "b0A",
+              "b0B",
+              "b0C",
+              "b0D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 4
+          },
+          {
+            "id": "b0name",
+            "start": true,
+            "label": "\\text{Oak}",
+            "at": "b0N",
+            "dir": "c",
+            "ink": "accent",
+            "size": "s"
+          },
+          {
+            "id": "b0value",
+            "label": "6",
+            "at": "b0V",
+            "dir": "c",
+            "ink": "accent",
+            "size": "m"
+          },
+          {
+            "id": "b0grid",
+            "grid": [
+              1,
+              6
+            ],
+            "at": "b0G",
+            "size": [
+              1.3,
+              1
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 1
+          },
+          {
+            "id": "b0c",
+            "counters": "b0grid",
+            "n": 6,
+            "ink": "accent"
+          },
+          {
+            "id": "b1bar",
+            "start": true,
+            "poly": [
+              "b1A",
+              "b1B",
+              "b1C",
+              "b1D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 4
+          },
+          {
+            "id": "b1name",
+            "start": true,
+            "label": "\\text{Pine}",
+            "at": "b1N",
+            "dir": "c",
+            "ink": "blue",
+            "size": "s"
+          },
+          {
+            "id": "b1value",
+            "label": "7",
+            "at": "b1V",
+            "dir": "c",
+            "ink": "blue",
+            "size": "m"
+          },
+          {
+            "id": "b1grid",
+            "grid": [
+              1,
+              7
+            ],
+            "at": "b1G",
+            "size": [
+              1.3,
+              1
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 1
+          },
+          {
+            "id": "b1c",
+            "counters": "b1grid",
+            "n": 7,
+            "ink": "blue"
+          },
+          {
+            "id": "b2bar",
+            "start": true,
+            "poly": [
+              "b2A",
+              "b2B",
+              "b2C",
+              "b2D"
+            ],
+            "fill": "violet-fill",
+            "ink": "violet",
+            "w": 4
+          },
+          {
+            "id": "b2name",
+            "start": true,
+            "label": "\\text{Maple}",
+            "at": "b2N",
+            "dir": "c",
+            "ink": "violet",
+            "size": "s"
+          },
+          {
+            "id": "b2value",
+            "label": "11",
+            "at": "b2V",
+            "dir": "c",
+            "ink": "violet",
+            "size": "m"
+          },
+          {
+            "id": "b2grid",
+            "grid": [
+              1,
+              11
+            ],
+            "at": "b2G",
+            "size": [
+              1.3,
+              1
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 1
+          },
+          {
+            "id": "b2c",
+            "counters": "b2grid",
+            "n": 11,
+            "ink": "violet"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "This graph shows oak, pine and maple trees. How many trees are shown altogether across the three categories?",
+          "pause": 0.7,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "How many trees are shown altogether across the three categories?",
+              "id": "pTotal"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "unit"
+              ],
+              "at": "trees"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b0name",
+                "b1name",
+                "b2name"
+              ],
+              "at": "categories"
+            }
+          ]
+        },
+        {
+          "say": "The scale has a line for every one tree. The printed numbers go zero, two, four, and so on.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "line1"
+              ],
+              "at": "one"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "num0",
+                "num2",
+                "num4"
+              ],
+              "at": "printed"
+            }
+          ]
+        },
+        {
+          "say": "Oak's top meets six. There are six oak trees.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "b0bar",
+                "line6"
+              ],
+              "at": "top"
+            },
+            {
+              "do": "text",
+              "text": "Oak: 6",
+              "id": "oakSix",
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": "b0value",
+              "at": "six"
+            }
+          ]
+        },
+        {
+          "say": "Pine ends between the printed six and eight. Which number do I use?",
+          "pause": 0.8,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "b1bar",
+                "num6",
+                "num8"
+              ],
+              "at": "between"
+            }
+          ]
+        },
+        {
+          "say": "From six, move up one step. That line means seven, even without a printed seven.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "line6"
+              ],
+              "at": "six"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "line7"
+              ],
+              "at": "step"
+            },
+            {
+              "do": "text",
+              "text": "Pine: 7",
+              "id": "pineSeven",
+              "at": "seven"
+            },
+            {
+              "do": "show",
+              "target": "b1value",
+              "at": "seven"
+            }
+          ]
+        },
+        {
+          "say": "Maple ends one step above ten. That is eleven maple trees.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "b2bar",
+                "line10"
+              ],
+              "at": "ten"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "line11"
+              ],
+              "at": "eleven"
+            },
+            {
+              "do": "text",
+              "text": "Maple: 11",
+              "id": "mapleEleven",
+              "at": "eleven"
+            },
+            {
+              "do": "show",
+              "target": "b2value",
+              "at": "eleven"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1,
+          -9.5,
+          19,
+          7.4
+        ],
+        "points": {
+          "All": [
+            3,
+            -0.7
+          ],
+          "AllKey": [
+            9,
+            0.1
+          ],
+          "AllN": [
+            9,
+            -8.2
+          ],
+          "G0": [
+            0,
+            4.4
+          ],
+          "N0": [
+            2.75,
+            5.7
+          ],
+          "G1": [
+            6.3,
+            4.4
+          ],
+          "N1": [
+            9.05,
+            5.7
+          ],
+          "G2": [
+            12.6,
+            4.4
+          ],
+          "N2": [
+            15.35,
+            5.7
+          ],
+          "SepL2": [
+            3,
+            -2.9000000000000004
+          ],
+          "SepR2": [
+            15,
+            -2.9000000000000004
+          ],
+          "SepL4": [
+            3,
+            -5.1000000000000005
+          ],
+          "SepR4": [
+            15,
+            -5.1000000000000005
+          ]
+        },
+        "parts": [
+          {
+            "id": "b0name",
+            "start": true,
+            "label": "\\text{Oak: }6",
+            "at": "N0",
+            "dir": "c",
+            "ink": "accent",
+            "size": "s"
+          },
+          {
+            "id": "b0grid",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "G0",
+            "size": 1.1,
+            "fill": "none",
+            "ink": "muted"
+          },
+          {
+            "id": "b0c",
+            "counters": "b0grid",
+            "n": 6,
+            "ink": "accent"
+          },
+          {
+            "id": "b1name",
+            "start": true,
+            "label": "\\text{Pine: }7",
+            "at": "N1",
+            "dir": "c",
+            "ink": "blue",
+            "size": "s"
+          },
+          {
+            "id": "b1grid",
+            "grid": [
+              5,
+              2
+            ],
+            "at": "G1",
+            "size": 1.1,
+            "fill": "none",
+            "ink": "muted"
+          },
+          {
+            "id": "b1c",
+            "counters": "b1grid",
+            "n": 7,
+            "ink": "blue"
+          },
+          {
+            "id": "b2name",
+            "start": true,
+            "label": "\\text{Maple: }11",
+            "at": "N2",
+            "dir": "c",
+            "ink": "violet",
+            "size": "s"
+          },
+          {
+            "id": "b2grid",
+            "grid": [
+              5,
+              3
+            ],
+            "at": "G2",
+            "size": 1.1,
+            "fill": "none",
+            "ink": "muted"
+          },
+          {
+            "id": "b2c",
+            "counters": "b2grid",
+            "n": 11,
+            "ink": "violet"
+          },
+          {
+            "id": "all",
+            "grid": [
+              5,
+              6
+            ],
+            "at": "All",
+            "size": [
+              2.4,
+              1.1
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 2
+          },
+          {
+            "id": "allKey",
+            "label": "\\text{Each pair of rows holds ten}",
+            "at": "AllKey",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "allN",
+            "label": "@n\\ \\text{trees}",
+            "at": "AllN",
+            "dir": "c",
+            "size": "m",
+            "of": "all"
+          },
+          {
+            "id": "sep2",
+            "seg": [
+              "SepL2",
+              "SepR2"
+            ],
+            "ink": "ink",
+            "w": 5
+          },
+          {
+            "id": "sep4",
+            "seg": [
+              "SepL4",
+              "SepR4"
+            ],
+            "ink": "ink",
+            "w": 5
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "These dots stand for the same six, seven and eleven trees. Put those counts together.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "b0c",
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": "b1c",
+              "at": "seven"
+            },
+            {
+              "do": "show",
+              "target": "b2c",
+              "at": "eleven"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b0name",
+                "b1name",
+                "b2name"
+              ],
+              "at": "counts"
+            }
+          ]
+        },
+        {
+          "say": "Each pair of rows has ten places. Move the same dots here; no tree is added or lost.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "all",
+                "allKey",
+                "allN",
+                "sep2",
+                "sep4"
+              ],
+              "at": "rows"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b0c",
+                "b1c",
+                "b2c"
+              ],
+              "at": "same"
+            }
+          ]
+        },
+        {
+          "say": "Move the six oak dots first. Then the seven pine dots.",
+          "pause": 0.7,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "b0c1": {
+                  "cell": [
+                    "all",
+                    1
+                  ]
+                },
+                "b0c2": {
+                  "cell": [
+                    "all",
+                    2
+                  ]
+                },
+                "b0c3": {
+                  "cell": [
+                    "all",
+                    3
+                  ]
+                },
+                "b0c4": {
+                  "cell": [
+                    "all",
+                    4
+                  ]
+                },
+                "b0c5": {
+                  "cell": [
+                    "all",
+                    5
+                  ]
+                },
+                "b0c6": {
+                  "cell": [
+                    "all",
+                    6
+                  ]
+                }
+              },
+              "at": "six"
+            },
+            {
+              "do": "move",
+              "points": {
+                "b1c1": {
+                  "cell": [
+                    "all",
+                    7
+                  ]
+                },
+                "b1c2": {
+                  "cell": [
+                    "all",
+                    8
+                  ]
+                },
+                "b1c3": {
+                  "cell": [
+                    "all",
+                    9
+                  ]
+                },
+                "b1c4": {
+                  "cell": [
+                    "all",
+                    10
+                  ]
+                },
+                "b1c5": {
+                  "cell": [
+                    "all",
+                    11
+                  ]
+                },
+                "b1c6": {
+                  "cell": [
+                    "all",
+                    12
+                  ]
+                },
+                "b1c7": {
+                  "cell": [
+                    "all",
+                    13
+                  ]
+                }
+              },
+              "at": "seven"
+            }
+          ]
+        },
+        {
+          "say": "Bring the eleven maple dots too. Every tree is counted once.",
+          "pause": 0.8,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "b2c1": {
+                  "cell": [
+                    "all",
+                    14
+                  ]
+                },
+                "b2c2": {
+                  "cell": [
+                    "all",
+                    15
+                  ]
+                },
+                "b2c3": {
+                  "cell": [
+                    "all",
+                    16
+                  ]
+                },
+                "b2c4": {
+                  "cell": [
+                    "all",
+                    17
+                  ]
+                },
+                "b2c5": {
+                  "cell": [
+                    "all",
+                    18
+                  ]
+                },
+                "b2c6": {
+                  "cell": [
+                    "all",
+                    19
+                  ]
+                },
+                "b2c7": {
+                  "cell": [
+                    "all",
+                    20
+                  ]
+                },
+                "b2c8": {
+                  "cell": [
+                    "all",
+                    21
+                  ]
+                },
+                "b2c9": {
+                  "cell": [
+                    "all",
+                    22
+                  ]
+                },
+                "b2c10": {
+                  "cell": [
+                    "all",
+                    23
+                  ]
+                },
+                "b2c11": {
+                  "cell": [
+                    "all",
+                    24
+                  ]
+                }
+              },
+              "at": "eleven"
+            }
+          ]
+        },
+        {
+          "say": "The first two rows hold ten. The next two make twenty. Four more gives twenty-four.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "b0c",
+                "b1c1",
+                "b1c2",
+                "b1c3",
+                "b1c4"
+              ],
+              "at": "ten"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b1c5",
+                "b1c6",
+                "b1c7",
+                "b2c1",
+                "b2c2",
+                "b2c3",
+                "b2c4",
+                "b2c5",
+                "b2c6",
+                "b2c7"
+              ],
+              "at": "twenty"
+            },
+            {
+              "do": "write",
+              "tex": "10+10+4=24",
+              "fresh": true,
+              "id": "twoTens",
+              "at": "Four"
+            }
+          ]
+        },
+        {
+          "say": "Six plus seven plus eleven gives the total: twenty-four trees.",
+          "pause": 0.8,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "6+7+11=24",
+              "fresh": true,
+              "id": "totalSum",
+              "at": "Six"
+            },
+            {
+              "do": "answer",
+              "tex": "24\\ \\text{trees}",
+              "id": "aTotal",
+              "at": "twenty-four"
+            }
+          ]
+        },
+        {
+          "say": "The total includes every group. Twenty-four trees can be more than the top number on the graph.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "allN",
+              "at": "Twenty-four"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.6,
+          -8,
+          14.5,
+          9.5
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "E": [
+            13.7,
+            0
+          ],
+          "Title": [
+            6.5,
+            7.8
+          ],
+          "Unit": [
+            0,
+            7
+          ],
+          "L0": [
+            0,
+            0
+          ],
+          "R0": [
+            13.7,
+            0
+          ],
+          "L1": [
+            0,
+            1
+          ],
+          "R1": [
+            13.7,
+            1
+          ],
+          "L2": [
+            0,
+            2
+          ],
+          "R2": [
+            13.7,
+            2
+          ],
+          "L3": [
+            0,
+            3
+          ],
+          "R3": [
+            13.7,
+            3
+          ],
+          "L4": [
+            0,
+            4
+          ],
+          "R4": [
+            13.7,
+            4
+          ],
+          "L5": [
+            0,
+            5
+          ],
+          "R5": [
+            13.7,
+            5
+          ],
+          "L6": [
+            0,
+            6
+          ],
+          "R6": [
+            13.7,
+            6
+          ],
+          "b0A": [
+            1.85,
+            0
+          ],
+          "b0B": [
+            3.15,
+            0
+          ],
+          "b0C": [
+            3.15,
+            5
+          ],
+          "b0D": [
+            1.85,
+            5
+          ],
+          "b0N": [
+            2.5,
+            -0.9
+          ],
+          "b0V": [
+            2.5,
+            5.6
+          ],
+          "b0G": [
+            1.85,
+            5
+          ],
+          "b1A": [
+            6.05,
+            0
+          ],
+          "b1B": [
+            7.3500000000000005,
+            0
+          ],
+          "b1C": [
+            7.3500000000000005,
+            4
+          ],
+          "b1D": [
+            6.05,
+            4
+          ],
+          "b1N": [
+            6.7,
+            -0.9
+          ],
+          "b1V": [
+            6.7,
+            4.6
+          ],
+          "b1G": [
+            6.05,
+            4
+          ],
+          "b2A": [
+            10.25,
+            0
+          ],
+          "b2B": [
+            11.55,
+            0
+          ],
+          "b2C": [
+            11.55,
+            4
+          ],
+          "b2D": [
+            10.25,
+            4
+          ],
+          "b2N": [
+            10.9,
+            -0.9
+          ],
+          "b2V": [
+            10.9,
+            4.6
+          ],
+          "b2G": [
+            10.25,
+            4
+          ],
+          "Query": [
+            10.9,
+            1.3
+          ],
+          "Pool": [
+            2.1,
+            -3
+          ],
+          "PoolLabel": [
+            6.6,
+            -7
+          ],
+          "PoolKey": [
+            6.6,
+            -2.1
+          ]
+        },
+        "parts": [
+          {
+            "id": "title",
+            "start": true,
+            "label": "\\text{Students' pets}",
+            "at": "Title",
+            "dir": "c",
+            "size": "m"
+          },
+          {
+            "id": "unit",
+            "start": true,
+            "label": "\\text{Pets}",
+            "at": "Unit",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "line0",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L0",
+              "R0"
+            ],
+            "ink": "muted",
+            "w": 4
+          },
+          {
+            "id": "num0",
+            "group": "scale",
+            "start": true,
+            "label": "0",
+            "at": "L0",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "line1",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L1",
+              "R1"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "line2",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L2",
+              "R2"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "num2",
+            "group": "scale",
+            "start": true,
+            "label": "2",
+            "at": "L2",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "line3",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L3",
+              "R3"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "line4",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L4",
+              "R4"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "num4",
+            "group": "scale",
+            "start": true,
+            "label": "4",
+            "at": "L4",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "line5",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L5",
+              "R5"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "line6",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L6",
+              "R6"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "num6",
+            "group": "scale",
+            "start": true,
+            "label": "6",
+            "at": "L6",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "b0bar",
+            "start": true,
+            "poly": [
+              "b0A",
+              "b0B",
+              "b0C",
+              "b0D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 4
+          },
+          {
+            "id": "b0name",
+            "start": true,
+            "label": "\\text{cat}",
+            "at": "b0N",
+            "dir": "c",
+            "ink": "accent",
+            "size": "s"
+          },
+          {
+            "id": "b0value",
+            "label": "5",
+            "at": "b0V",
+            "dir": "c",
+            "ink": "accent",
+            "size": "m"
+          },
+          {
+            "id": "b0grid",
+            "grid": [
+              1,
+              5
+            ],
+            "at": "b0G",
+            "size": [
+              1.3,
+              1
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 1
+          },
+          {
+            "id": "b0c",
+            "counters": "b0grid",
+            "n": 5,
+            "ink": "accent"
+          },
+          {
+            "id": "b1bar",
+            "start": true,
+            "poly": [
+              "b1A",
+              "b1B",
+              "b1C",
+              "b1D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 4
+          },
+          {
+            "id": "b1name",
+            "start": true,
+            "label": "\\text{fish}",
+            "at": "b1N",
+            "dir": "c",
+            "ink": "blue",
+            "size": "s"
+          },
+          {
+            "id": "b1value",
+            "label": "4",
+            "at": "b1V",
+            "dir": "c",
+            "ink": "blue",
+            "size": "m"
+          },
+          {
+            "id": "b1grid",
+            "grid": [
+              1,
+              4
+            ],
+            "at": "b1G",
+            "size": [
+              1.3,
+              1
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 1
+          },
+          {
+            "id": "b1c",
+            "counters": "b1grid",
+            "n": 4,
+            "ink": "blue"
+          },
+          {
+            "id": "b2bar",
+            "poly": [
+              "b2A",
+              "b2B",
+              "b2C",
+              "b2D"
+            ],
+            "fill": "violet-fill",
+            "ink": "violet",
+            "w": 4
+          },
+          {
+            "id": "b2name",
+            "start": true,
+            "label": "\\text{dog}",
+            "at": "b2N",
+            "dir": "c",
+            "ink": "violet",
+            "size": "s"
+          },
+          {
+            "id": "b2value",
+            "label": "4",
+            "at": "b2V",
+            "dir": "c",
+            "ink": "violet",
+            "size": "m"
+          },
+          {
+            "id": "b2grid",
+            "grid": [
+              1,
+              4
+            ],
+            "at": "b2G",
+            "size": [
+              1.3,
+              1
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 1
+          },
+          {
+            "id": "b2c",
+            "counters": "b2grid",
+            "n": 4,
+            "ink": "violet"
+          },
+          {
+            "id": "query",
+            "start": true,
+            "label": "?",
+            "at": "Query",
+            "dir": "c",
+            "ink": "gold",
+            "size": "l"
+          },
+          {
+            "id": "pool",
+            "grid": [
+              5,
+              3
+            ],
+            "at": "Pool",
+            "size": [
+              1.8,
+              1
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 2
+          },
+          {
+            "id": "poolDots",
+            "counters": "pool",
+            "n": 13,
+            "ink": "gold"
+          },
+          {
+            "id": "poolKey",
+            "label": "\\text{One dot = one student}",
+            "at": "PoolKey",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "poolLabel",
+            "label": "\\text{Unplaced: }@n",
+            "at": "PoolLabel",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m",
+            "of": "pool"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "The bar graph shows the pets of thirteen students. Each student has one pet.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "13 students. Each has one pet. The dog bar is not drawn yet. How many students have a dog?",
+              "id": "pMissing"
+            },
+            {
+              "do": "show",
+              "target": [
+                "pool",
+                "poolDots",
+                "poolKey",
+                "poolLabel"
+              ],
+              "at": "thirteen"
+            }
+          ]
+        },
+        {
+          "say": "The dog bar is not drawn yet. How many students have a dog?",
+          "pause": 1,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "query",
+              "at": "dog"
+            }
+          ]
+        },
+        {
+          "say": "There is no dog bar. Does that mean no one has a dog?",
+          "pause": 0.5,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "query",
+              "at": "no"
+            }
+          ]
+        },
+        {
+          "say": "Not drawn yet means unknown. Zero would mean we know there are none. Use the thirteen students to find out.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "text",
+              "text": "Not drawn yet = count unknown.",
+              "id": "unknown",
+              "at": "unknown"
+            },
+            {
+              "do": "highlight",
+              "target": "poolDots",
+              "at": "thirteen"
+            }
+          ]
+        },
+        {
+          "say": "One pet for each student means one group for each student. Each dot is one student.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "poolKey",
+              "at": "One"
+            },
+            {
+              "do": "text",
+              "text": "The whole is 13 students.",
+              "id": "wholeThirteen",
+              "at": "group"
+            },
+            {
+              "do": "highlight",
+              "target": "poolDots",
+              "at": "dot"
+            }
+          ]
+        },
+        {
+          "say": "Cat reaches five, one step above four. Fish reaches four.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "num4",
+              "at": "four"
+            },
+            {
+              "do": "highlight",
+              "target": "line5",
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": "b0value",
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": "b1value",
+              "at": "Fish"
+            }
+          ]
+        },
+        {
+          "say": "Place five of the thirteen students in the cat bar, and four in the fish bar.",
+          "pause": 0.8,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "poolDots1": {
+                  "cell": [
+                    "b0grid",
+                    1
+                  ]
+                },
+                "poolDots2": {
+                  "cell": [
+                    "b0grid",
+                    2
+                  ]
+                },
+                "poolDots3": {
+                  "cell": [
+                    "b0grid",
+                    3
+                  ]
+                },
+                "poolDots4": {
+                  "cell": [
+                    "b0grid",
+                    4
+                  ]
+                },
+                "poolDots5": {
+                  "cell": [
+                    "b0grid",
+                    5
+                  ]
+                }
+              },
+              "at": "five"
+            },
+            {
+              "do": "move",
+              "points": {
+                "poolDots6": {
+                  "cell": [
+                    "b1grid",
+                    1
+                  ]
+                },
+                "poolDots7": {
+                  "cell": [
+                    "b1grid",
+                    2
+                  ]
+                },
+                "poolDots8": {
+                  "cell": [
+                    "b1grid",
+                    3
+                  ]
+                },
+                "poolDots9": {
+                  "cell": [
+                    "b1grid",
+                    4
+                  ]
+                }
+              },
+              "at": "four"
+            }
+          ]
+        },
+        {
+          "say": "Five plus four is nine students placed. The dots left below must belong in the missing dog group.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "5+4=9",
+              "fresh": true,
+              "id": "knownNine",
+              "at": "Five"
+            },
+            {
+              "do": "highlight",
+              "target": "poolLabel",
+              "at": "left"
+            }
+          ]
+        },
+        {
+          "say": "Should I add the thirteen students to the nine?",
+          "pause": 0.5,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "poolDots",
+              "at": "thirteen"
+            }
+          ]
+        },
+        {
+          "say": "The thirteen already includes those nine. We separated them from the whole. We need only the students left.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "poolDots1",
+                "poolDots2",
+                "poolDots3",
+                "poolDots4",
+                "poolDots5",
+                "poolDots6",
+                "poolDots7",
+                "poolDots8",
+                "poolDots9"
+              ],
+              "at": "nine"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "poolDots10",
+                "poolDots11",
+                "poolDots12",
+                "poolDots13"
+              ],
+              "at": "left"
+            }
+          ]
+        },
+        {
+          "say": "Count on from nine: ten, eleven, twelve, thirteen. Four more students complete the whole.",
+          "pause": 0.8,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "poolDots10",
+              "at": "ten"
+            },
+            {
+              "do": "highlight",
+              "target": "poolDots11",
+              "at": "eleven"
+            },
+            {
+              "do": "highlight",
+              "target": "poolDots12",
+              "at": "twelve"
+            },
+            {
+              "do": "highlight",
+              "target": "poolDots13",
+              "at": "thirteen"
+            },
+            {
+              "do": "write",
+              "tex": "9+4=13",
+              "fresh": true,
+              "id": "countOn",
+              "at": "Four"
+            }
+          ]
+        },
+        {
+          "say": "Taking the nine known students from thirteen leaves four. Thirteen minus nine equals four.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "13-9=4",
+              "fresh": true,
+              "id": "missingFour",
+              "at": "Taking"
+            },
+            {
+              "do": "highlight",
+              "target": "poolLabel",
+              "at": "four"
+            }
+          ]
+        },
+        {
+          "say": "The dog bar must reach four. Four students have a dog.",
+          "pause": 0.7,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": "query",
+              "at": "dog"
+            },
+            {
+              "do": "move",
+              "points": {
+                "poolDots10": {
+                  "cell": [
+                    "b2grid",
+                    1
+                  ]
+                },
+                "poolDots11": {
+                  "cell": [
+                    "b2grid",
+                    2
+                  ]
+                },
+                "poolDots12": {
+                  "cell": [
+                    "b2grid",
+                    3
+                  ]
+                },
+                "poolDots13": {
+                  "cell": [
+                    "b2grid",
+                    4
+                  ]
+                }
+              },
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": "b2bar",
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": "b2value",
+              "at": "four"
+            },
+            {
+              "do": "answer",
+              "tex": "4\\ \\text{students}",
+              "id": "aMissing",
+              "at": "Four"
+            }
+          ]
+        },
+        {
+          "say": "Check every group: five plus four plus four is thirteen. All thirteen students have a place.",
+          "pause": 1,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "5+4+4=13",
+              "fresh": true,
+              "id": "checkThirteen",
+              "at": "Check"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b0bar",
+                "b1bar",
+                "b2bar"
+              ],
+              "at": "All"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.8,
+          -2.4,
+          10.2,
+          9.2
+        ],
+        "points": {
+          "T": [
+            4.5,
+            8.2
+          ],
+          "Key": [
+            4.5,
+            -1.5
+          ],
+          "G": [
+            3.1,
+            6
+          ],
+          "A": [
+            3.1,
+            0
+          ],
+          "B": [
+            5.9,
+            0
+          ],
+          "C": [
+            5.9,
+            6
+          ],
+          "D": [
+            3.1,
+            6
+          ],
+          "N": [
+            4.5,
+            6.8
+          ],
+          "L0": [
+            0,
+            0
+          ],
+          "R0": [
+            8,
+            0
+          ],
+          "L1": [
+            0,
+            2
+          ],
+          "R1": [
+            8,
+            2
+          ],
+          "L2": [
+            0,
+            4
+          ],
+          "R2": [
+            8,
+            4
+          ],
+          "L3": [
+            0,
+            6
+          ],
+          "R3": [
+            8,
+            6
+          ]
+        },
+        "parts": [
+          {
+            "id": "title",
+            "start": true,
+            "label": "\\text{Oak trees}",
+            "at": "T",
+            "dir": "c",
+            "size": "m"
+          },
+          {
+            "id": "bar",
+            "start": true,
+            "poly": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 4
+          },
+          {
+            "id": "dotsGrid",
+            "grid": [
+              2,
+              3
+            ],
+            "at": "G",
+            "size": [
+              1.4,
+              2
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 2
+          },
+          {
+            "id": "dots",
+            "counters": "dotsGrid",
+            "n": 6,
+            "ink": "accent"
+          },
+          {
+            "id": "key",
+            "label": "\\text{One step = two trees}",
+            "at": "Key",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "n",
+            "label": "6",
+            "at": "N",
+            "dir": "c",
+            "ink": "accent",
+            "size": "m"
+          },
+          {
+            "id": "line0",
+            "start": true,
+            "seg": [
+              "L0",
+              "R0"
+            ],
+            "ink": "muted",
+            "w": 2
+          },
+          {
+            "id": "n0",
+            "start": true,
+            "label": "0",
+            "at": "L0",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "line1",
+            "start": true,
+            "seg": [
+              "L1",
+              "R1"
+            ],
+            "ink": "muted",
+            "w": 2
+          },
+          {
+            "id": "n1",
+            "start": true,
+            "label": "2",
+            "at": "L1",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "line2",
+            "start": true,
+            "seg": [
+              "L2",
+              "R2"
+            ],
+            "ink": "muted",
+            "w": 2
+          },
+          {
+            "id": "n2",
+            "start": true,
+            "label": "4",
+            "at": "L2",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "line3",
+            "start": true,
+            "seg": [
+              "L3",
+              "R3"
+            ],
+            "ink": "muted",
+            "w": 2
+          },
+          {
+            "id": "n3",
+            "start": true,
+            "label": "6",
+            "at": "L3",
+            "dir": "w",
+            "size": "s"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "A scale can count in bigger steps. How many oak trees does this bar show?",
+          "pause": 0.7,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "How many oak trees does this bar show?",
+              "id": "pScale"
+            },
+            {
+              "do": "highlight",
+              "target": "bar",
+              "at": "bar"
+            }
+          ]
+        },
+        {
+          "say": "Read this scale: zero, two, four, six. Each step up counts two trees.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "n0",
+              "at": "zero"
+            },
+            {
+              "do": "highlight",
+              "target": "n1",
+              "at": "two"
+            },
+            {
+              "do": "highlight",
+              "target": "n2",
+              "at": "four"
+            },
+            {
+              "do": "highlight",
+              "target": "n3",
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": [
+                "key",
+                "dotsGrid",
+                "dots"
+              ],
+              "at": "Each"
+            }
+          ]
+        },
+        {
+          "say": "I see three steps, with two trees in each. Two, four, six trees.",
+          "pause": 0.7,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "dots5",
+                "dots6"
+              ],
+              "at": "Two"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "dots3",
+                "dots4"
+              ],
+              "at": "four"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "dots1",
+                "dots2"
+              ],
+              "at": "six"
+            },
+            {
+              "do": "show",
+              "target": "n",
+              "at": "six"
+            },
+            {
+              "do": "answer",
+              "tex": "6\\ \\text{trees}",
+              "id": "aScale",
+              "at": "six"
+            }
+          ]
+        },
+        {
+          "say": "The six dots confirm it. Always read what a step counts before reading the bars.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "dots",
+              "at": "dots"
+            },
+            {
+              "do": "text",
+              "text": "Read the scale before the bars.",
+              "id": "scaleRule",
+              "at": "Always"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.6,
+          -8,
+          14.5,
+          9.5
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "E": [
+            13.7,
+            0
+          ],
+          "Title": [
+            6.5,
+            7.8
+          ],
+          "Unit": [
+            0,
+            7
+          ],
+          "L0": [
+            0,
+            0
+          ],
+          "R0": [
+            13.7,
+            0
+          ],
+          "L1": [
+            0,
+            1
+          ],
+          "R1": [
+            13.7,
+            1
+          ],
+          "L2": [
+            0,
+            2
+          ],
+          "R2": [
+            13.7,
+            2
+          ],
+          "L3": [
+            0,
+            3
+          ],
+          "R3": [
+            13.7,
+            3
+          ],
+          "L4": [
+            0,
+            4
+          ],
+          "R4": [
+            13.7,
+            4
+          ],
+          "L5": [
+            0,
+            5
+          ],
+          "R5": [
+            13.7,
+            5
+          ],
+          "L6": [
+            0,
+            6
+          ],
+          "R6": [
+            13.7,
+            6
+          ],
+          "b0A": [
+            1.15,
+            0
+          ],
+          "b0B": [
+            2.45,
+            0
+          ],
+          "b0C": [
+            2.45,
+            2
+          ],
+          "b0D": [
+            1.15,
+            2
+          ],
+          "b0N": [
+            1.8,
+            -0.9
+          ],
+          "b0V": [
+            1.8,
+            2.6
+          ],
+          "b0G": [
+            1.15,
+            2
+          ],
+          "b1A": [
+            4.449999999999999,
+            0
+          ],
+          "b1B": [
+            5.75,
+            0
+          ],
+          "b1C": [
+            5.75,
+            3
+          ],
+          "b1D": [
+            4.449999999999999,
+            3
+          ],
+          "b1N": [
+            5.1,
+            -0.9
+          ],
+          "b1V": [
+            5.1,
+            3.6
+          ],
+          "b1G": [
+            4.449999999999999,
+            3
+          ],
+          "b2A": [
+            7.75,
+            0
+          ],
+          "b2B": [
+            9.05,
+            0
+          ],
+          "b2C": [
+            9.05,
+            5
+          ],
+          "b2D": [
+            7.75,
+            5
+          ],
+          "b2N": [
+            8.4,
+            -0.9
+          ],
+          "b2V": [
+            8.4,
+            5.6
+          ],
+          "b2G": [
+            7.75,
+            5
+          ],
+          "b3A": [
+            11.049999999999999,
+            0
+          ],
+          "b3B": [
+            12.35,
+            0
+          ],
+          "b3C": [
+            12.35,
+            3
+          ],
+          "b3D": [
+            11.049999999999999,
+            3
+          ],
+          "b3N": [
+            11.7,
+            -0.9
+          ],
+          "b3V": [
+            11.7,
+            3.6
+          ],
+          "b3G": [
+            11.049999999999999,
+            3
+          ],
+          "Query": [
+            11.7,
+            1.3
+          ],
+          "Pool": [
+            2.1,
+            -3
+          ],
+          "PoolLabel": [
+            6.6,
+            -7
+          ],
+          "PoolKey": [
+            6.6,
+            -2.1
+          ]
+        },
+        "parts": [
+          {
+            "id": "title",
+            "start": true,
+            "label": "\\text{Students' pets}",
+            "at": "Title",
+            "dir": "c",
+            "size": "m"
+          },
+          {
+            "id": "unit",
+            "start": true,
+            "label": "\\text{Pets}",
+            "at": "Unit",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "line0",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L0",
+              "R0"
+            ],
+            "ink": "muted",
+            "w": 4
+          },
+          {
+            "id": "num0",
+            "group": "scale",
+            "start": true,
+            "label": "0",
+            "at": "L0",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "line1",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L1",
+              "R1"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "line2",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L2",
+              "R2"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "num2",
+            "group": "scale",
+            "start": true,
+            "label": "2",
+            "at": "L2",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "line3",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L3",
+              "R3"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "line4",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L4",
+              "R4"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "num4",
+            "group": "scale",
+            "start": true,
+            "label": "4",
+            "at": "L4",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "line5",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L5",
+              "R5"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "line6",
+            "group": "scale",
+            "start": true,
+            "seg": [
+              "L6",
+              "R6"
+            ],
+            "ink": "muted",
+            "w": 1.5
+          },
+          {
+            "id": "num6",
+            "group": "scale",
+            "start": true,
+            "label": "6",
+            "at": "L6",
+            "dir": "w",
+            "size": "s"
+          },
+          {
+            "id": "b0bar",
+            "start": true,
+            "poly": [
+              "b0A",
+              "b0B",
+              "b0C",
+              "b0D"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 4
+          },
+          {
+            "id": "b0name",
+            "start": true,
+            "label": "\\text{dog}",
+            "at": "b0N",
+            "dir": "c",
+            "ink": "accent",
+            "size": "s"
+          },
+          {
+            "id": "b0value",
+            "label": "2",
+            "at": "b0V",
+            "dir": "c",
+            "ink": "accent",
+            "size": "m"
+          },
+          {
+            "id": "b0grid",
+            "grid": [
+              1,
+              2
+            ],
+            "at": "b0G",
+            "size": [
+              1.3,
+              1
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 1
+          },
+          {
+            "id": "b0c",
+            "counters": "b0grid",
+            "n": 2,
+            "ink": "accent"
+          },
+          {
+            "id": "b1bar",
+            "start": true,
+            "poly": [
+              "b1A",
+              "b1B",
+              "b1C",
+              "b1D"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 4
+          },
+          {
+            "id": "b1name",
+            "start": true,
+            "label": "\\text{cat}",
+            "at": "b1N",
+            "dir": "c",
+            "ink": "blue",
+            "size": "s"
+          },
+          {
+            "id": "b1value",
+            "label": "3",
+            "at": "b1V",
+            "dir": "c",
+            "ink": "blue",
+            "size": "m"
+          },
+          {
+            "id": "b1grid",
+            "grid": [
+              1,
+              3
+            ],
+            "at": "b1G",
+            "size": [
+              1.3,
+              1
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 1
+          },
+          {
+            "id": "b1c",
+            "counters": "b1grid",
+            "n": 3,
+            "ink": "blue"
+          },
+          {
+            "id": "b2bar",
+            "start": true,
+            "poly": [
+              "b2A",
+              "b2B",
+              "b2C",
+              "b2D"
+            ],
+            "fill": "violet-fill",
+            "ink": "violet",
+            "w": 4
+          },
+          {
+            "id": "b2name",
+            "start": true,
+            "label": "\\text{bird}",
+            "at": "b2N",
+            "dir": "c",
+            "ink": "violet",
+            "size": "s"
+          },
+          {
+            "id": "b2value",
+            "label": "5",
+            "at": "b2V",
+            "dir": "c",
+            "ink": "violet",
+            "size": "m"
+          },
+          {
+            "id": "b2grid",
+            "grid": [
+              1,
+              5
+            ],
+            "at": "b2G",
+            "size": [
+              1.3,
+              1
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 1
+          },
+          {
+            "id": "b2c",
+            "counters": "b2grid",
+            "n": 5,
+            "ink": "violet"
+          },
+          {
+            "id": "b3bar",
+            "poly": [
+              "b3A",
+              "b3B",
+              "b3C",
+              "b3D"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 4
+          },
+          {
+            "id": "b3name",
+            "start": true,
+            "label": "\\text{fish}",
+            "at": "b3N",
+            "dir": "c",
+            "ink": "gold",
+            "size": "s"
+          },
+          {
+            "id": "b3value",
+            "label": "3",
+            "at": "b3V",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m"
+          },
+          {
+            "id": "b3grid",
+            "grid": [
+              1,
+              3
+            ],
+            "at": "b3G",
+            "size": [
+              1.3,
+              1
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 1
+          },
+          {
+            "id": "b3c",
+            "counters": "b3grid",
+            "n": 3,
+            "ink": "gold"
+          },
+          {
+            "id": "query",
+            "start": true,
+            "label": "?",
+            "at": "Query",
+            "dir": "c",
+            "ink": "gold",
+            "size": "l"
+          },
+          {
+            "id": "pool",
+            "grid": [
+              5,
+              3
+            ],
+            "at": "Pool",
+            "size": [
+              1.8,
+              1
+            ],
+            "fill": "none",
+            "ink": "muted",
+            "w": 2
+          },
+          {
+            "id": "poolDots",
+            "counters": "pool",
+            "n": 13,
+            "ink": "gold"
+          },
+          {
+            "id": "poolKey",
+            "label": "\\text{One dot = one student}",
+            "at": "PoolKey",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "poolLabel",
+            "label": "\\text{Unplaced: }@n",
+            "at": "PoolLabel",
+            "dir": "c",
+            "ink": "gold",
+            "size": "m",
+            "of": "pool"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "This graph shows thirteen students' pets. Each student has one pet. The fish bar is not drawn yet.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "13 students. Each has one pet. The fish bar is not drawn yet. How many students have a fish?",
+              "id": "pChamp"
+            },
+            {
+              "do": "show",
+              "target": [
+                "pool",
+                "poolDots",
+                "poolKey",
+                "poolLabel"
+              ],
+              "at": "thirteen"
+            },
+            {
+              "do": "highlight",
+              "target": "query",
+              "at": "fish"
+            }
+          ]
+        },
+        {
+          "say": "How many students have a fish? Champ, what does the scale tell you?",
+          "pause": 1.2,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "scale",
+              "at": "scale"
+            }
+          ]
+        },
+        {
+          "say": "Two steps go from zero to two, so each step is one pet. Dog reaches two.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "num0",
+              "at": "zero"
+            },
+            {
+              "do": "highlight",
+              "target": "num2",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "b0value",
+              "at": "Dog"
+            },
+            {
+              "do": "move",
+              "points": {
+                "poolDots1": {
+                  "cell": [
+                    "b0grid",
+                    1
+                  ]
+                },
+                "poolDots2": {
+                  "cell": [
+                    "b0grid",
+                    2
+                  ]
+                }
+              },
+              "at": "Dog"
+            }
+          ]
+        },
+        {
+          "say": "Cat is one step above two: three. Bird is one step above four: five.",
+          "pause": 0.8,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "line3",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "b1value",
+              "at": "three"
+            },
+            {
+              "do": "move",
+              "points": {
+                "poolDots3": {
+                  "cell": [
+                    "b1grid",
+                    1
+                  ]
+                },
+                "poolDots4": {
+                  "cell": [
+                    "b1grid",
+                    2
+                  ]
+                },
+                "poolDots5": {
+                  "cell": [
+                    "b1grid",
+                    3
+                  ]
+                }
+              },
+              "at": "three"
+            },
+            {
+              "do": "highlight",
+              "target": "line5",
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": "b2value",
+              "at": "five"
+            },
+            {
+              "do": "move",
+              "points": {
+                "poolDots6": {
+                  "cell": [
+                    "b2grid",
+                    1
+                  ]
+                },
+                "poolDots7": {
+                  "cell": [
+                    "b2grid",
+                    2
+                  ]
+                },
+                "poolDots8": {
+                  "cell": [
+                    "b2grid",
+                    3
+                  ]
+                },
+                "poolDots9": {
+                  "cell": [
+                    "b2grid",
+                    4
+                  ]
+                },
+                "poolDots10": {
+                  "cell": [
+                    "b2grid",
+                    5
+                  ]
+                }
+              },
+              "at": "five"
+            }
+          ]
+        },
+        {
+          "say": "Each student has one pet. Two plus three is five. Five plus five is ten students in the drawn bars.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "write",
+              "tex": "2+3=5",
+              "fresh": true,
+              "id": "champFive",
+              "at": "Two"
+            },
+            {
+              "do": "write",
+              "tex": "5+5=10",
+              "fresh": true,
+              "id": "champTen",
+              "at": "Five"
+            }
+          ]
+        },
+        {
+          "say": "Where is the whole?",
+          "pause": 1,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "poolDots",
+              "at": "whole"
+            }
+          ]
+        },
+        {
+          "say": "Thirteen is the whole, including those ten. I need the students left for fish.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "text",
+              "text": "Whole: 13. Placed: 10.",
+              "id": "champWhole",
+              "at": "Thirteen"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "poolDots11",
+                "poolDots12",
+                "poolDots13"
+              ],
+              "at": "left"
+            }
+          ]
+        },
+        {
+          "say": "Ten and three more make thirteen. Thirteen minus ten is three, so three students have a fish.",
+          "pause": 0.8,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "poolDots11",
+              "at": "three"
+            },
+            {
+              "do": "write",
+              "tex": "13-10=3",
+              "fresh": true,
+              "id": "champSubtract",
+              "at": "minus"
+            },
+            {
+              "do": "hide",
+              "target": "query",
+              "at": "fish"
+            },
+            {
+              "do": "move",
+              "points": {
+                "poolDots11": {
+                  "cell": [
+                    "b3grid",
+                    1
+                  ]
+                },
+                "poolDots12": {
+                  "cell": [
+                    "b3grid",
+                    2
+                  ]
+                },
+                "poolDots13": {
+                  "cell": [
+                    "b3grid",
+                    3
+                  ]
+                }
+              },
+              "at": "fish"
+            },
+            {
+              "do": "show",
+              "target": [
+                "b3bar",
+                "b3value"
+              ],
+              "at": "fish"
+            },
+            {
+              "do": "answer",
+              "tex": "3\\ \\text{students}",
+              "id": "aChamp",
+              "at": "fish"
+            }
+          ]
+        },
+        {
+          "say": "How can you check?",
+          "pause": 1,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "b0bar",
+                "b1bar",
+                "b2bar",
+                "b3bar"
+              ],
+              "at": "check"
+            }
+          ]
+        },
+        {
+          "say": "Put every group back together. Two plus three plus five plus three is thirteen. Every student is included once.",
+          "pause": 1,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "write",
+              "tex": "2+3+5+3=13",
+              "fresh": true,
+              "id": "champCheck",
+              "at": "Two"
+            },
+            {
+              "do": "highlight",
+              "target": "poolDots",
+              "at": "Every"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "The height tells how many are in a group. First I read what one step counts.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "overview",
+              "of": "champSubtract"
+            },
+            {
+              "do": "recap",
+              "text": "Read the scale, then each bar's height.",
+              "marks": [
+                "champFive",
+                "champTen"
+              ],
+              "at": "First"
+            }
+          ]
+        },
+        {
+          "say": "If the total is missing, I put all the groups together.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Total unknown: add all the groups.",
+              "at": "total"
+            }
+          ]
+        },
+        {
+          "say": "If the total is given, I take out the known groups. What is left fills the missing bar.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Group unknown: total minus known groups.",
+              "marks": [
+                "champWhole",
+                "champSubtract"
+              ],
+              "at": "given"
+            }
+          ]
+        },
+        {
+          "say": "I check that every group together makes the whole.",
+          "pause": 1,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Check: all groups together make the whole.",
+              "marks": [
+                "champCheck",
+                "aChamp"
+              ],
+              "at": "check"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

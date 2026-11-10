@@ -1,0 +1,4845 @@
+{
+  "id": "frequency-table-build--pr",
+  "title": "Build a frequency table",
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -1.7,
+          -2,
+          5.7,
+          6.9
+        ],
+        "points": {
+          "TW": [
+            -0.7,
+            4.8
+          ],
+          "TB": [
+            1.3,
+            4.8
+          ],
+          "TC": [
+            3.3,
+            4.8
+          ],
+          "B0": [
+            -1.3,
+            0
+          ],
+          "B1": [
+            5.3,
+            0
+          ],
+          "NW": [
+            0,
+            -0.85
+          ],
+          "NB": [
+            2,
+            -0.85
+          ],
+          "NC": [
+            4,
+            -0.85
+          ],
+          "CW": [
+            0,
+            5.5
+          ],
+          "CB": [
+            2,
+            5.5
+          ],
+          "CC": [
+            4,
+            5.5
+          ],
+          "TT": [
+            2,
+            6.3
+          ]
+        },
+        "parts": [
+          {
+            "id": "bl",
+            "start": true,
+            "seg": [
+              "B0",
+              "B1"
+            ],
+            "ink": "muted",
+            "w": 8
+          },
+          {
+            "id": "lnW",
+            "start": true,
+            "label": "\\text{Walk}",
+            "at": "NW",
+            "dir": "c",
+            "size": "m"
+          },
+          {
+            "id": "lnB",
+            "start": true,
+            "label": "\\text{Bus}",
+            "at": "NB",
+            "dir": "c",
+            "size": "m"
+          },
+          {
+            "id": "lnC",
+            "start": true,
+            "label": "\\text{Car}",
+            "at": "NC",
+            "dir": "c",
+            "size": "m"
+          },
+          {
+            "id": "ttl",
+            "start": true,
+            "label": "\\text{How students get to school}",
+            "at": "TT",
+            "dir": "c",
+            "ink": "muted",
+            "size": "s"
+          },
+          {
+            "id": "gW",
+            "grid": [
+              1,
+              4
+            ],
+            "at": "TW",
+            "size": [
+              1.4,
+              1.2
+            ]
+          },
+          {
+            "id": "gB",
+            "grid": [
+              1,
+              4
+            ],
+            "at": "TB",
+            "size": [
+              1.4,
+              1.2
+            ]
+          },
+          {
+            "id": "gC",
+            "grid": [
+              1,
+              4
+            ],
+            "at": "TC",
+            "size": [
+              1.4,
+              1.2
+            ]
+          },
+          {
+            "id": "kW",
+            "counters": "gW",
+            "n": 4,
+            "from": 1,
+            "ink": "accent"
+          },
+          {
+            "id": "kB",
+            "counters": "gB",
+            "n": 3,
+            "from": 2,
+            "ink": "accent"
+          },
+          {
+            "id": "kC",
+            "counters": "gC",
+            "n": 2,
+            "from": 3,
+            "ink": "accent"
+          },
+          {
+            "id": "cW",
+            "label": "@n",
+            "at": "CW",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "of": "gW"
+          },
+          {
+            "id": "cB",
+            "label": "@n",
+            "at": "CB",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "of": "gB"
+          },
+          {
+            "id": "cC",
+            "label": "@n",
+            "at": "CC",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "of": "gC"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Nine students each say how they get to school: walk, bus, or car.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "lnW",
+              "at": "walk"
+            },
+            {
+              "do": "highlight",
+              "target": "lnB",
+              "at": "bus"
+            },
+            {
+              "do": "highlight",
+              "target": "lnC",
+              "at": "car"
+            }
+          ]
+        },
+        {
+          "say": "One dot is one student. Four students walk. Count the dots: one, two, three, four.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "text",
+              "text": "One dot is one student.",
+              "at": "One"
+            },
+            {
+              "do": "show",
+              "target": "cW",
+              "at": "Count"
+            },
+            {
+              "do": "show",
+              "target": "kW4",
+              "at": "one",
+              "nth": 3
+            },
+            {
+              "do": "show",
+              "target": "kW3",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "kW2",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "kW1",
+              "at": "four",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "Three students ride the bus: one, two, three.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "cB",
+              "at": "bus"
+            },
+            {
+              "do": "show",
+              "target": "kB3",
+              "at": "one"
+            },
+            {
+              "do": "show",
+              "target": "kB2",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "kB1",
+              "at": "three",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "Two come by car: one, two.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "cC",
+              "at": "car"
+            },
+            {
+              "do": "show",
+              "target": "kC2",
+              "at": "one"
+            },
+            {
+              "do": "show",
+              "target": "kC1",
+              "at": "two",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "How many students is that in all? Add the three piles.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "cW",
+              "at": "Add"
+            },
+            {
+              "do": "highlight",
+              "target": "cB",
+              "at": "three"
+            },
+            {
+              "do": "highlight",
+              "target": "cC",
+              "at": "piles"
+            }
+          ]
+        },
+        {
+          "say": "Four plus three plus two is nine. Each student is in one pile, so no one is counted twice or left out.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\ca{4}+\\ca{3}+\\ca{2}=9",
+              "fresh": true,
+              "at": "nine"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "kW",
+                "kB",
+                "kC"
+              ],
+              "at": "pile"
+            }
+          ]
+        },
+        {
+          "say": "So the piles always add up to the number of students. Keep that as a check.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "cW",
+                "cB",
+                "cC"
+              ],
+              "at": "always"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -3.7,
+          -3.2,
+          4.2,
+          6.1
+        ],
+        "points": {
+          "G0": [
+            -0.5,
+            3
+          ],
+          "G1": [
+            0.5,
+            3
+          ],
+          "G2": [
+            1.5,
+            3
+          ],
+          "LS": [
+            -2,
+            5.3
+          ],
+          "N1": [
+            -1.5,
+            5.7
+          ],
+          "N2": [
+            -0.5,
+            5.7
+          ],
+          "N3": [
+            0.5,
+            5.7
+          ],
+          "N4": [
+            1.5,
+            5.7
+          ],
+          "N5": [
+            2.5,
+            5.7
+          ],
+          "N6": [
+            3.5,
+            5.7
+          ],
+          "C0": [
+            0,
+            3.65
+          ],
+          "C1": [
+            1,
+            3.65
+          ],
+          "C2": [
+            2,
+            3.65
+          ],
+          "TB": [
+            -3.5,
+            -1.15
+          ]
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 1,
+            "y": false,
+            "xrange": [
+              -0.5,
+              2.5
+            ]
+          },
+          {
+            "id": "g0",
+            "grid": [
+              1,
+              3
+            ],
+            "at": "G0",
+            "size": [
+              1,
+              1
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "g1",
+            "grid": [
+              1,
+              3
+            ],
+            "at": "G1",
+            "size": [
+              1,
+              1
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "g2",
+            "grid": [
+              1,
+              3
+            ],
+            "at": "G2",
+            "size": [
+              1,
+              1
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ls",
+            "grid": [
+              6,
+              1
+            ],
+            "at": "LS",
+            "size": [
+              1,
+              1
+            ]
+          },
+          {
+            "id": "d",
+            "counters": "ls",
+            "n": 6,
+            "ink": "accent"
+          },
+          {
+            "id": "nl1",
+            "group": "nl",
+            "label": "2",
+            "at": "N1",
+            "dir": "c",
+            "size": "m"
+          },
+          {
+            "id": "nl2",
+            "group": "nl",
+            "label": "1",
+            "at": "N2",
+            "dir": "c",
+            "size": "m"
+          },
+          {
+            "id": "nl3",
+            "group": "nl",
+            "label": "2",
+            "at": "N3",
+            "dir": "c",
+            "size": "m"
+          },
+          {
+            "id": "nl4",
+            "group": "nl",
+            "label": "0",
+            "at": "N4",
+            "dir": "c",
+            "size": "m"
+          },
+          {
+            "id": "nl5",
+            "group": "nl",
+            "label": "2",
+            "at": "N5",
+            "dir": "c",
+            "size": "m"
+          },
+          {
+            "id": "nl6",
+            "group": "nl",
+            "label": "1",
+            "at": "N6",
+            "dir": "c",
+            "size": "m"
+          },
+          {
+            "id": "c0",
+            "label": "@n",
+            "at": "C0",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "of": "g0"
+          },
+          {
+            "id": "c1",
+            "label": "@n",
+            "at": "C1",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "of": "g1"
+          },
+          {
+            "id": "c2",
+            "label": "@n",
+            "at": "C2",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "of": "g2"
+          },
+          {
+            "id": "t",
+            "table": true,
+            "at": "TB",
+            "head": [
+              "0",
+              "1",
+              "2"
+            ],
+            "rows": [
+              {
+                "label": "frequency",
+                "cells": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "cell": [
+              1,
+              0.9
+            ],
+            "labelW": 3,
+            "corner": "pets"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Now each student answers with a number: how many pets does the student have? Six students answered.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "How many pets does each student have?",
+              "at": "pets"
+            },
+            {
+              "do": "show",
+              "target": "d",
+              "at": "Six"
+            }
+          ]
+        },
+        {
+          "say": "The answers are two, one, two, zero, two, one.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "nl1",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "nl2",
+              "at": "one"
+            },
+            {
+              "do": "show",
+              "target": "nl3",
+              "at": "two",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": "nl4",
+              "at": "zero"
+            },
+            {
+              "do": "show",
+              "target": "nl5",
+              "at": "two",
+              "nth": 3
+            },
+            {
+              "do": "show",
+              "target": "nl6",
+              "at": "one",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "Numbers have an order, so numbers can name piles too. Here is a number line: marks in order, evenly spaced, each with its number.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "ax",
+              "at": "line"
+            },
+            {
+              "do": "highlight",
+              "target": "ax",
+              "at": "evenly"
+            }
+          ]
+        },
+        {
+          "say": "Each dot drops above its student's number. The first answer is two.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "nl1",
+              "at": "first"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d1": {
+                  "cell": [
+                    "g2",
+                    3
+                  ]
+                }
+              },
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "say": "One. Two again: it lands on top of the first two.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "nl2",
+              "at": "One"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d2": {
+                  "cell": [
+                    "g1",
+                    3
+                  ]
+                }
+              },
+              "at": "One"
+            },
+            {
+              "do": "highlight",
+              "target": "nl3",
+              "at": "again"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d3": {
+                  "cell": [
+                    "g2",
+                    2
+                  ]
+                }
+              },
+              "at": "again"
+            }
+          ]
+        },
+        {
+          "say": "The next answer is zero.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "nl4",
+              "at": "zero"
+            }
+          ]
+        },
+        {
+          "say": "Zero pets means nothing. Does that student get a dot?",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "d4",
+              "at": "dot"
+            }
+          ]
+        },
+        {
+          "say": "A dot is one student, not one pet. This student has no pets, but is still one student. So one dot goes above zero.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "d4",
+              "at": "dot"
+            },
+            {
+              "do": "highlight",
+              "target": "nl4",
+              "at": "pets"
+            },
+            {
+              "do": "show",
+              "target": "g0",
+              "at": "above"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d4": {
+                  "cell": [
+                    "g0",
+                    3
+                  ]
+                }
+              },
+              "at": "above"
+            }
+          ]
+        },
+        {
+          "say": "Two again, and one again.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": "g0",
+              "at": "Two"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d5": {
+                  "cell": [
+                    "g2",
+                    1
+                  ]
+                }
+              },
+              "at": "Two"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d6": {
+                  "cell": [
+                    "g1",
+                    2
+                  ]
+                }
+              },
+              "at": "one"
+            }
+          ]
+        },
+        {
+          "say": "This is a dot plot: one dot for each student, standing above that student's number.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "d",
+              "at": "dot"
+            },
+            {
+              "do": "highlight",
+              "target": "ax",
+              "at": "number"
+            }
+          ]
+        },
+        {
+          "say": "Count the dots above each number. Above zero, one. Above one, two. Above two, three.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "g0",
+                "c0"
+              ],
+              "at": "zero"
+            },
+            {
+              "do": "hide",
+              "target": "g0",
+              "at": "one",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": [
+                "g1",
+                "c1"
+              ],
+              "at": "one",
+              "nth": 2
+            },
+            {
+              "do": "hide",
+              "target": "g1",
+              "at": "two",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": [
+                "g2",
+                "c2"
+              ],
+              "at": "two",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "That count is the frequency of the number: how many times the number appears in the list.",
+          "pause": 0.6,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": "g2",
+              "at": "That"
+            },
+            {
+              "do": "term",
+              "word": "frequency",
+              "meaning": "How many times a number appears in the list. Here the number two appears three times, so its frequency is three.",
+              "at": "frequency"
+            }
+          ]
+        },
+        {
+          "say": "The number itself, zero, one or two, is called the value.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "ax",
+              "at": "itself"
+            },
+            {
+              "do": "highlight",
+              "target": "ax",
+              "at": "value"
+            }
+          ]
+        },
+        {
+          "say": "A frequency table writes the same thing in numerals. The top row lists the values: zero, one, two.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "t.cell.0.0",
+              "at": "table"
+            },
+            {
+              "do": "show",
+              "target": "t.row.0",
+              "at": "top"
+            }
+          ]
+        },
+        {
+          "say": "The bottom row gives each value's frequency: one, two, three.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "t.cell.1.0",
+              "at": "bottom"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.1.1",
+              "at": "one"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.1.2",
+              "at": "two"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.1.3",
+              "at": "three"
+            }
+          ]
+        },
+        {
+          "say": "So every column has two numbers. The top one tells which pile, and the bottom one tells how many are in it.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "t.cell.0.3",
+              "at": "top"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.1.3",
+              "at": "bottom"
+            }
+          ]
+        },
+        {
+          "say": "Yes. Add the frequencies: one plus two plus three is six. That is the same six students.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "c0",
+                "c1",
+                "c2"
+              ],
+              "at": "Add"
+            },
+            {
+              "do": "write",
+              "tex": "\\ca{1}+\\ca{2}+\\ca{3}=6",
+              "fresh": true,
+              "at": "plus"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.8,
+          -1.75,
+          7.8,
+          7.5
+        ],
+        "points": {
+          "G0": [
+            -0.5,
+            4
+          ],
+          "G1": [
+            0.5,
+            4
+          ],
+          "G3": [
+            2.5,
+            4
+          ],
+          "G4": [
+            3.5,
+            4
+          ],
+          "G5": [
+            4.5,
+            4
+          ],
+          "G6": [
+            5.5,
+            4
+          ],
+          "LS": [
+            -1.4,
+            6.5
+          ],
+          "N1": [
+            -1,
+            7.05
+          ],
+          "N2": [
+            -0.2,
+            7.05
+          ],
+          "N3": [
+            0.6,
+            7.05
+          ],
+          "N4": [
+            1.4,
+            7.05
+          ],
+          "N5": [
+            2.2,
+            7.05
+          ],
+          "N6": [
+            3,
+            7.05
+          ],
+          "N7": [
+            3.8,
+            7.05
+          ],
+          "N8": [
+            4.6,
+            7.05
+          ],
+          "N9": [
+            5.4,
+            7.05
+          ],
+          "N10": [
+            6.2,
+            7.05
+          ],
+          "N11": [
+            7,
+            7.05
+          ],
+          "C5": [
+            5,
+            4.65
+          ],
+          "C6": [
+            6,
+            4.65
+          ],
+          "NT": [
+            3,
+            -1.4
+          ]
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 1,
+            "y": false,
+            "xrange": [
+              -0.5,
+              6.5
+            ]
+          },
+          {
+            "id": "g0",
+            "grid": [
+              1,
+              4
+            ],
+            "at": "G0",
+            "size": [
+              1,
+              1
+            ]
+          },
+          {
+            "id": "g1",
+            "grid": [
+              1,
+              4
+            ],
+            "at": "G1",
+            "size": [
+              1,
+              1
+            ]
+          },
+          {
+            "id": "g3",
+            "grid": [
+              1,
+              4
+            ],
+            "at": "G3",
+            "size": [
+              1,
+              1
+            ]
+          },
+          {
+            "id": "g4",
+            "grid": [
+              1,
+              4
+            ],
+            "at": "G4",
+            "size": [
+              1,
+              1
+            ]
+          },
+          {
+            "id": "g5",
+            "grid": [
+              1,
+              4
+            ],
+            "at": "G5",
+            "size": [
+              1,
+              1
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "g6",
+            "grid": [
+              1,
+              4
+            ],
+            "at": "G6",
+            "size": [
+              1,
+              1
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "ls",
+            "grid": [
+              11,
+              1
+            ],
+            "at": "LS",
+            "size": [
+              0.8,
+              1
+            ]
+          },
+          {
+            "id": "d",
+            "counters": "ls",
+            "n": 11,
+            "ink": "accent"
+          },
+          {
+            "id": "nl1",
+            "group": "nl",
+            "label": "1",
+            "at": "N1",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl2",
+            "group": "nl",
+            "label": "6",
+            "at": "N2",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl3",
+            "group": "nl",
+            "label": "0",
+            "at": "N3",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl4",
+            "group": "nl",
+            "label": "6",
+            "at": "N4",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl5",
+            "group": "nl",
+            "label": "5",
+            "at": "N5",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl6",
+            "group": "nl",
+            "label": "5",
+            "at": "N6",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl7",
+            "group": "nl",
+            "label": "6",
+            "at": "N7",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl8",
+            "group": "nl",
+            "label": "3",
+            "at": "N8",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl9",
+            "group": "nl",
+            "label": "4",
+            "at": "N9",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl10",
+            "group": "nl",
+            "label": "5",
+            "at": "N10",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl11",
+            "group": "nl",
+            "label": "5",
+            "at": "N11",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "c5",
+            "label": "@n",
+            "at": "C5",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "of": "g5"
+          },
+          {
+            "id": "c6",
+            "label": "@n",
+            "at": "C6",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "of": "g6"
+          },
+          {
+            "id": "note",
+            "label": "\\text{each dot is one game}",
+            "at": "NT",
+            "dir": "c",
+            "ink": "muted",
+            "size": "s"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "A team scored goals in each of eleven games. The list shows the goals in each game. How many games have exactly five goals?",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "These are data about the goals a team scored in each game, for 11 games: 1, 6, 0, 6, 5, 5, 6, 3, 4, 5, 5. How many games have exactly 5 goals?",
+              "choices": [
+                "20",
+                "7",
+                "4",
+                "3"
+              ],
+              "id": "pA"
+            },
+            {
+              "do": "show",
+              "target": [
+                "nl",
+                "d"
+              ],
+              "at": "list"
+            }
+          ]
+        },
+        {
+          "say": "One dot is one game, so eleven dots. Drop each dot above its number, going through the list once: one, six, zero, six, five, five, six, three, four, five, five.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "note",
+              "at": "dot"
+            },
+            {
+              "do": "show",
+              "target": "ax",
+              "at": "above"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d1": {
+                  "cell": [
+                    "g1",
+                    4
+                  ]
+                }
+              },
+              "at": "one",
+              "nth": 3
+            },
+            {
+              "do": "move",
+              "points": {
+                "d2": {
+                  "cell": [
+                    "g6",
+                    4
+                  ]
+                }
+              },
+              "at": "six",
+              "nth": 1
+            },
+            {
+              "do": "move",
+              "points": {
+                "d3": {
+                  "cell": [
+                    "g0",
+                    4
+                  ]
+                }
+              },
+              "at": "zero"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d4": {
+                  "cell": [
+                    "g6",
+                    3
+                  ]
+                }
+              },
+              "at": "six",
+              "nth": 2
+            },
+            {
+              "do": "move",
+              "points": {
+                "d5": {
+                  "cell": [
+                    "g5",
+                    4
+                  ]
+                }
+              },
+              "at": "five",
+              "nth": 1
+            },
+            {
+              "do": "move",
+              "points": {
+                "d6": {
+                  "cell": [
+                    "g5",
+                    3
+                  ]
+                }
+              },
+              "at": "five",
+              "nth": 2
+            },
+            {
+              "do": "move",
+              "points": {
+                "d7": {
+                  "cell": [
+                    "g6",
+                    2
+                  ]
+                }
+              },
+              "at": "six",
+              "nth": 3
+            },
+            {
+              "do": "move",
+              "points": {
+                "d8": {
+                  "cell": [
+                    "g3",
+                    4
+                  ]
+                }
+              },
+              "at": "three"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d9": {
+                  "cell": [
+                    "g4",
+                    4
+                  ]
+                }
+              },
+              "at": "four"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d10": {
+                  "cell": [
+                    "g5",
+                    2
+                  ]
+                }
+              },
+              "at": "five",
+              "nth": 3
+            },
+            {
+              "do": "move",
+              "points": {
+                "d11": {
+                  "cell": [
+                    "g5",
+                    1
+                  ]
+                }
+              },
+              "at": "five",
+              "nth": 4
+            }
+          ]
+        },
+        {
+          "say": "Exactly five means the number five and no other number.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "ax",
+              "at": "five"
+            }
+          ]
+        },
+        {
+          "say": "Four dots above five. Four games, five goals each. Five, ten, fifteen, twenty. Twenty.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "d5",
+                "d6",
+                "d10",
+                "d11"
+              ],
+              "at": "dots"
+            },
+            {
+              "do": "highlight",
+              "target": "d5",
+              "at": "five",
+              "nth": 3
+            },
+            {
+              "do": "highlight",
+              "target": "d6",
+              "at": "ten"
+            },
+            {
+              "do": "highlight",
+              "target": "d10",
+              "at": "fifteen"
+            },
+            {
+              "do": "highlight",
+              "target": "d11",
+              "at": "twenty",
+              "nth": 1
+            }
+          ]
+        },
+        {
+          "say": "Test twenty. Light the stack above five and count games, not goals: one, two, three, four.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "g5",
+              "at": "Light"
+            },
+            {
+              "do": "highlight",
+              "target": "d5",
+              "at": "one"
+            },
+            {
+              "do": "highlight",
+              "target": "d6",
+              "at": "two"
+            },
+            {
+              "do": "highlight",
+              "target": "d10",
+              "at": "three"
+            },
+            {
+              "do": "highlight",
+              "target": "d11",
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": "c5",
+              "at": "four"
+            }
+          ]
+        },
+        {
+          "say": "Four dots are four games. Five, ten, fifteen, twenty is how many goals those games scored in all. The question asks how many games.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\cw{5+5+5+5=20\\ \\text{goals}}",
+              "fresh": true,
+              "at": "Five",
+              "nth": 1
+            },
+            {
+              "do": "write",
+              "tex": "\\ca{4}\\ \\text{games}",
+              "fresh": true,
+              "at": "asks"
+            }
+          ]
+        },
+        {
+          "say": "Check twenty against the picture. There are only eleven dots in all, so twenty games cannot be.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "d",
+              "at": "eleven"
+            }
+          ]
+        },
+        {
+          "say": "Then why not seven? Five or more goals is four dots at five and three dots at six.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "d5",
+                "d6",
+                "d10",
+                "d11"
+              ],
+              "at": "four"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "d2",
+                "d4",
+                "d7"
+              ],
+              "at": "three"
+            }
+          ]
+        },
+        {
+          "say": "Seven counts the stack above six as well. That stack is the games with six goals: three games, a different value.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "g6",
+                "c6"
+              ],
+              "at": "six"
+            },
+            {
+              "do": "highlight",
+              "target": "c6",
+              "at": "three"
+            }
+          ]
+        },
+        {
+          "say": "Exactly five is only the stack above five: four games.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "g6",
+                "c6"
+              ],
+              "at": "Exactly"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "g5",
+                "c5"
+              ],
+              "at": "four"
+            },
+            {
+              "do": "answer",
+              "tex": "4\\ \\text{games}",
+              "at": "games"
+            }
+          ]
+        },
+        {
+          "say": "A frequency is a count of dots. It is never the values added up.",
+          "pause": 0.6,
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "c5",
+              "at": "frequency"
+            },
+            {
+              "do": "watch",
+              "text": "Count the dots above the value. Do not add the values.",
+              "at": "never"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -3.6,
+          -3.75,
+          6.7,
+          5.6
+        ],
+        "points": {
+          "G0": [
+            -0.5,
+            3
+          ],
+          "G1": [
+            0.5,
+            3
+          ],
+          "G2": [
+            1.5,
+            3
+          ],
+          "G3": [
+            2.5,
+            3
+          ],
+          "G4": [
+            3.5,
+            3
+          ],
+          "G5": [
+            4.5,
+            3
+          ],
+          "G6": [
+            5.5,
+            3
+          ],
+          "C0": [
+            0,
+            3.65
+          ],
+          "C1": [
+            1,
+            3.65
+          ],
+          "C2": [
+            2,
+            3.65
+          ],
+          "C3": [
+            3,
+            3.65
+          ],
+          "C4": [
+            4,
+            3.65
+          ],
+          "C5": [
+            5,
+            3.65
+          ],
+          "C6": [
+            6,
+            3.65
+          ],
+          "TT": [
+            3,
+            5.2
+          ],
+          "NT": [
+            3,
+            4.6
+          ],
+          "TB": [
+            -3.4,
+            -1.1
+          ],
+          "SL": [
+            3,
+            -3.4
+          ]
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "start": true,
+            "axes": true,
+            "step": 1,
+            "every": 1,
+            "y": false,
+            "xrange": [
+              -0.5,
+              6.5
+            ]
+          },
+          {
+            "id": "g0",
+            "grid": [
+              1,
+              3
+            ],
+            "at": "G0",
+            "size": [
+              1,
+              1
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "g1",
+            "grid": [
+              1,
+              3
+            ],
+            "at": "G1",
+            "size": [
+              1,
+              1
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "g2",
+            "grid": [
+              1,
+              3
+            ],
+            "at": "G2",
+            "size": [
+              1,
+              1
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "g3",
+            "grid": [
+              1,
+              3
+            ],
+            "at": "G3",
+            "size": [
+              1,
+              1
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "g4",
+            "grid": [
+              1,
+              3
+            ],
+            "at": "G4",
+            "size": [
+              1,
+              1
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "g5",
+            "grid": [
+              1,
+              3
+            ],
+            "at": "G5",
+            "size": [
+              1,
+              1
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "g6",
+            "grid": [
+              1,
+              3
+            ],
+            "at": "G6",
+            "size": [
+              1,
+              1
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "k0",
+            "start": true,
+            "counters": "g0",
+            "n": 2,
+            "from": 2,
+            "ink": "accent"
+          },
+          {
+            "id": "k1",
+            "start": true,
+            "counters": "g1",
+            "n": 1,
+            "from": 3,
+            "ink": "accent"
+          },
+          {
+            "id": "k3",
+            "start": true,
+            "counters": "g3",
+            "n": 2,
+            "from": 2,
+            "ink": "accent"
+          },
+          {
+            "id": "k5",
+            "start": true,
+            "counters": "g5",
+            "n": 3,
+            "from": 1,
+            "ink": "accent"
+          },
+          {
+            "id": "k6",
+            "start": true,
+            "counters": "g6",
+            "n": 3,
+            "from": 1,
+            "ink": "accent"
+          },
+          {
+            "id": "c0",
+            "label": "@n",
+            "at": "C0",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "of": "g0"
+          },
+          {
+            "id": "c1",
+            "label": "@n",
+            "at": "C1",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "of": "g1"
+          },
+          {
+            "id": "c2",
+            "label": "@n",
+            "at": "C2",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "of": "g2"
+          },
+          {
+            "id": "c3",
+            "label": "@n",
+            "at": "C3",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "of": "g3"
+          },
+          {
+            "id": "c4",
+            "label": "@n",
+            "at": "C4",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "of": "g4"
+          },
+          {
+            "id": "c5",
+            "label": "@n",
+            "at": "C5",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "of": "g5"
+          },
+          {
+            "id": "c6",
+            "label": "@n",
+            "at": "C6",
+            "dir": "c",
+            "ink": "accent",
+            "size": "l",
+            "of": "g6"
+          },
+          {
+            "id": "ttl",
+            "start": true,
+            "label": "\\text{Goals in each game}",
+            "at": "TT",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "note",
+            "start": true,
+            "label": "\\text{each dot is one game}",
+            "at": "NT",
+            "dir": "c",
+            "ink": "muted",
+            "size": "s"
+          },
+          {
+            "id": "sum",
+            "label": "\\text{frequencies add to }11",
+            "at": "SL",
+            "dir": "c",
+            "ink": "accent",
+            "size": "s"
+          },
+          {
+            "id": "t",
+            "table": true,
+            "at": "TB",
+            "head": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6"
+            ],
+            "rows": [
+              {
+                "label": "frequency",
+                "cells": [
+                  "2",
+                  "1",
+                  "0",
+                  "2",
+                  "0",
+                  "3",
+                  "3"
+                ]
+              }
+            ],
+            "cell": [
+              1,
+              0.9
+            ],
+            "labelW": 2.9,
+            "corner": "goals"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Here is a new set of games. The dot plot shows the goals a team scored in each of eleven games. Which frequency table matches it?",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "The dot plot shows the goals a team scored in each game, for 11 games. Which frequency table matches it? The frequency of a value is how many times it appears. Each choice is written as value: frequency.",
+              "choices": [
+                "0: 1, 1: 2, 2: 0, 3: 2, 4: 0, 5: 3, 6: 3",
+                "0: 2, 1: 1, 2: 0, 3: 2, 4: 0, 5: 3, 6: 2",
+                "0: 3, 1: 1, 2: 0, 3: 2, 4: 0, 5: 3, 6: 3",
+                "0: 2, 1: 1, 2: 0, 3: 2, 4: 0, 5: 3, 6: 3"
+              ],
+              "id": "pB"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "k0",
+                "k1",
+                "k3",
+                "k5",
+                "k6"
+              ],
+              "at": "dot"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "k0",
+                "k1",
+                "k3",
+                "k5",
+                "k6"
+              ],
+              "at": "eleven"
+            }
+          ]
+        },
+        {
+          "say": "Each choice is written value, colon, frequency. Look at five colon three: the value five has frequency three, so three dots stand above five.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "ax",
+              "at": "value"
+            },
+            {
+              "do": "show",
+              "target": "g5",
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": "c5",
+              "at": "dots"
+            }
+          ]
+        },
+        {
+          "say": "Build the table first. Make a column for every number on the line, from zero to six.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "g5",
+                "c5"
+              ],
+              "at": "Build"
+            },
+            {
+              "do": "highlight",
+              "target": "ax",
+              "at": "line"
+            }
+          ]
+        },
+        {
+          "say": "I would only make columns where dots stand: zero, one, three, five and six. Two and four have nothing above them.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "k0",
+              "at": "zero"
+            },
+            {
+              "do": "highlight",
+              "target": "k1",
+              "at": "one"
+            },
+            {
+              "do": "highlight",
+              "target": "k3",
+              "at": "three"
+            },
+            {
+              "do": "highlight",
+              "target": "k5",
+              "at": "five"
+            },
+            {
+              "do": "highlight",
+              "target": "k6",
+              "at": "six"
+            }
+          ]
+        },
+        {
+          "say": "Test it. Light the line at two and count the dots above it.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "g2",
+              "at": "Light"
+            },
+            {
+              "do": "show",
+              "target": "c2",
+              "at": "count"
+            }
+          ]
+        },
+        {
+          "say": "None. Zero games scored two goals, and zero is a count. So two still gets a column, with frequency zero.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "text",
+              "text": "A column for every number on the line.",
+              "id": "rB",
+              "at": "column"
+            },
+            {
+              "do": "show",
+              "target": "t.row.0",
+              "at": "So"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.0.3",
+              "at": "two",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "Four is the same: nothing above it, frequency zero.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "g2",
+                "c2"
+              ],
+              "at": "Four"
+            },
+            {
+              "do": "show",
+              "target": [
+                "g4",
+                "c4"
+              ],
+              "at": "Four"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.0.5",
+              "at": "frequency"
+            }
+          ]
+        },
+        {
+          "say": "Now count from the left. Zero has two dots: frequency two. One has one dot. Two has none.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "g4",
+                "c4"
+              ],
+              "at": "Now"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.1.0",
+              "at": "count"
+            },
+            {
+              "do": "show",
+              "target": [
+                "g0",
+                "c0"
+              ],
+              "at": "Zero"
+            },
+            {
+              "do": "text",
+              "text": "Frequency: the dots above a number.",
+              "id": "cB",
+              "at": "frequency"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.1.1",
+              "at": "two",
+              "nth": 2
+            },
+            {
+              "do": "hide",
+              "target": [
+                "g0",
+                "c0"
+              ],
+              "at": "One"
+            },
+            {
+              "do": "show",
+              "target": [
+                "g1",
+                "c1"
+              ],
+              "at": "One"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.1.2",
+              "at": "one",
+              "nth": 2
+            },
+            {
+              "do": "hide",
+              "target": [
+                "g1",
+                "c1"
+              ],
+              "at": "two",
+              "nth": 3
+            },
+            {
+              "do": "show",
+              "target": [
+                "g2",
+                "c2"
+              ],
+              "at": "two",
+              "nth": 3
+            },
+            {
+              "do": "show",
+              "target": "t.cell.1.3",
+              "at": "none"
+            }
+          ]
+        },
+        {
+          "say": "Three has two. Four has none. Five has three. Six has three.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "g2",
+                "c2"
+              ],
+              "at": "Three"
+            },
+            {
+              "do": "show",
+              "target": [
+                "g3",
+                "c3"
+              ],
+              "at": "Three"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.1.4",
+              "at": "two"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "g3",
+                "c3"
+              ],
+              "at": "Four"
+            },
+            {
+              "do": "show",
+              "target": [
+                "g4",
+                "c4"
+              ],
+              "at": "Four"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.1.5",
+              "at": "none"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "g4",
+                "c4"
+              ],
+              "at": "Five"
+            },
+            {
+              "do": "show",
+              "target": [
+                "g5",
+                "c5"
+              ],
+              "at": "Five"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.1.6",
+              "at": "three",
+              "nth": 2
+            },
+            {
+              "do": "hide",
+              "target": [
+                "g5",
+                "c5"
+              ],
+              "at": "Six"
+            },
+            {
+              "do": "show",
+              "target": [
+                "g6",
+                "c6"
+              ],
+              "at": "Six"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.1.7",
+              "at": "three",
+              "nth": 3
+            }
+          ]
+        },
+        {
+          "say": "Add the frequencies: two, one, zero, two, zero, three, three. That makes eleven, the number of games.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "g6",
+                "c6"
+              ],
+              "at": "Add"
+            },
+            {
+              "do": "write",
+              "tex": "\\ca{2}{+}\\ca{1}{+}\\ca{0}{+}\\ca{2}{+}\\ca{0}{+}\\ca{3}{+}\\ca{3}=11",
+              "fresh": true,
+              "id": "sB",
+              "at": "That"
+            },
+            {
+              "do": "show",
+              "target": "sum",
+              "at": "eleven"
+            }
+          ]
+        },
+        {
+          "say": "Now the choices. The frequencies must add to eleven, so check each total first.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "t.row.1",
+              "at": "frequencies"
+            },
+            {
+              "do": "highlight",
+              "target": "sum",
+              "at": "total"
+            }
+          ]
+        },
+        {
+          "say": "The second choice adds to ten, one short. The third adds to twelve, one too many. Neither can match eleven games.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "text",
+              "text": "Second choice: adds to 10. One short.",
+              "at": "second"
+            },
+            {
+              "do": "text",
+              "text": "Third choice: adds to 12. One too many.",
+              "at": "third"
+            },
+            {
+              "do": "highlight",
+              "target": "sum",
+              "at": "eleven"
+            }
+          ]
+        },
+        {
+          "say": "The first and the fourth both add to eleven. Do they both match?",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "text",
+              "text": "First and fourth: both add to 11.",
+              "at": "first"
+            },
+            {
+              "do": "highlight",
+              "target": "sum",
+              "at": "eleven"
+            }
+          ]
+        },
+        {
+          "say": "A total cannot catch a swap. These two differ only at zero and one. Count the dots above zero.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "sum",
+              "at": "total"
+            },
+            {
+              "do": "highlight",
+              "target": "t.col.1",
+              "at": "zero"
+            },
+            {
+              "do": "highlight",
+              "target": "t.col.2",
+              "at": "one"
+            },
+            {
+              "do": "show",
+              "target": [
+                "g0",
+                "c0"
+              ],
+              "at": "zero",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "Two dots, so zero has frequency two. The first choice says one. The fourth says two.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "k01",
+                "k02"
+              ],
+              "at": "Two"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.1.1",
+              "at": "two",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "The fourth choice matches the table.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "g0",
+                "c0"
+              ],
+              "at": "The"
+            },
+            {
+              "do": "highlight",
+              "target": "t.row.1",
+              "at": "table"
+            },
+            {
+              "do": "answer",
+              "tex": "\\text{the fourth choice}",
+              "id": "aB",
+              "at": "fourth"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.7,
+          -6.9,
+          14.7,
+          5.8
+        ],
+        "points": {
+          "LS": [
+            0,
+            4.8
+          ],
+          "TB": [
+            1.3,
+            -3.5
+          ],
+          "SL": [
+            7.2,
+            -6.2
+          ],
+          "N1": [
+            0.5,
+            5.2
+          ],
+          "N2": [
+            1.5,
+            5.2
+          ],
+          "N3": [
+            2.5,
+            5.2
+          ],
+          "N4": [
+            3.5,
+            5.2
+          ],
+          "N5": [
+            4.5,
+            5.2
+          ],
+          "N6": [
+            5.5,
+            5.2
+          ],
+          "N7": [
+            6.5,
+            5.2
+          ],
+          "N8": [
+            7.5,
+            5.2
+          ],
+          "N9": [
+            8.5,
+            5.2
+          ],
+          "N10": [
+            9.5,
+            5.2
+          ],
+          "N11": [
+            10.5,
+            5.2
+          ],
+          "N12": [
+            11.5,
+            5.2
+          ],
+          "N13": [
+            12.5,
+            5.2
+          ],
+          "PL": [
+            -0.5,
+            2
+          ],
+          "Q0": [
+            -0.5,
+            0
+          ],
+          "Q1": [
+            4.5,
+            0
+          ],
+          "Q2": [
+            9.5,
+            0
+          ],
+          "Q3": [
+            14.5,
+            0
+          ],
+          "U0": [
+            -0.5,
+            2
+          ],
+          "U1": [
+            4.5,
+            2
+          ],
+          "U2": [
+            9.5,
+            2
+          ],
+          "U3": [
+            14.5,
+            2
+          ],
+          "BA1": [
+            -0.45,
+            -1.3
+          ],
+          "BA2": [
+            4.45,
+            -1.3
+          ],
+          "BB1": [
+            4.55,
+            -1.3
+          ],
+          "BB2": [
+            9.45,
+            -1.3
+          ],
+          "BC1": [
+            9.55,
+            -1.3
+          ],
+          "BC2": [
+            14.45,
+            -1.3
+          ]
+        },
+        "parts": [
+          {
+            "id": "a1",
+            "poly": [
+              "Q0",
+              "Q1",
+              "U1",
+              "U0"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 4
+          },
+          {
+            "id": "a2",
+            "poly": [
+              "Q1",
+              "Q2",
+              "U2",
+              "U1"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 4
+          },
+          {
+            "id": "a3",
+            "poly": [
+              "Q2",
+              "Q3",
+              "U3",
+              "U2"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 4
+          },
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 1,
+            "y": false,
+            "xrange": [
+              -0.5,
+              14.5
+            ]
+          },
+          {
+            "id": "pl",
+            "grid": [
+              15,
+              2
+            ],
+            "at": "PL",
+            "size": [
+              1,
+              1
+            ]
+          },
+          {
+            "id": "ls",
+            "grid": [
+              13,
+              1
+            ],
+            "at": "LS",
+            "size": [
+              1,
+              1
+            ]
+          },
+          {
+            "id": "d",
+            "counters": "ls",
+            "n": 13,
+            "ink": "accent"
+          },
+          {
+            "id": "nl1",
+            "group": "nl",
+            "label": "10",
+            "at": "N1",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl2",
+            "group": "nl",
+            "label": "3",
+            "at": "N2",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl3",
+            "group": "nl",
+            "label": "2",
+            "at": "N3",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl4",
+            "group": "nl",
+            "label": "5",
+            "at": "N4",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl5",
+            "group": "nl",
+            "label": "10",
+            "at": "N5",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl6",
+            "group": "nl",
+            "label": "4",
+            "at": "N6",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl7",
+            "group": "nl",
+            "label": "3",
+            "at": "N7",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl8",
+            "group": "nl",
+            "label": "7",
+            "at": "N8",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl9",
+            "group": "nl",
+            "label": "4",
+            "at": "N9",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl10",
+            "group": "nl",
+            "label": "0",
+            "at": "N10",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl11",
+            "group": "nl",
+            "label": "6",
+            "at": "N11",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl12",
+            "group": "nl",
+            "label": "8",
+            "at": "N12",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl13",
+            "group": "nl",
+            "label": "5",
+            "at": "N13",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "b1",
+            "dim": [
+              "BA1",
+              "BA2"
+            ],
+            "side": "s",
+            "tex": "0\\text{–}4",
+            "ink": "muted"
+          },
+          {
+            "id": "b2",
+            "dim": [
+              "BB1",
+              "BB2"
+            ],
+            "side": "s",
+            "tex": "5\\text{–}9",
+            "ink": "muted"
+          },
+          {
+            "id": "b3",
+            "dim": [
+              "BC1",
+              "BC2"
+            ],
+            "side": "s",
+            "tex": "10\\text{–}14",
+            "ink": "muted"
+          },
+          {
+            "id": "sum",
+            "label": "\\text{frequencies add to }13",
+            "at": "SL",
+            "dir": "c",
+            "ink": "accent",
+            "size": "s"
+          },
+          {
+            "id": "t",
+            "table": true,
+            "at": "TB",
+            "head": [
+              "0–4",
+              "5–9",
+              "10–14"
+            ],
+            "rows": [
+              {
+                "label": "frequency",
+                "cells": [
+                  "6",
+                  "5",
+                  "2"
+                ]
+              }
+            ],
+            "cell": [
+              2.6,
+              1
+            ],
+            "labelW": 4,
+            "corner": "minutes"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "Now the numbers are grouped. These are the minutes thirteen students spent on homework. Which table groups them into intervals?",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "These are data about the minutes each student spent on homework, for 13 students: 10, 3, 2, 5, 10, 4, 3, 7, 4, 0, 6, 8, 5. Which frequency table groups them into intervals? Each interval includes both of its end values. The frequency of a value is how many times it appears. Each choice is written as value: frequency.",
+              "choices": [
+                "0–4: 7, 5–9: 5, 10–14: 2",
+                "0–4: 7, 5–9: 5, 10–14: 0",
+                "0–4: 6, 5–9: 5, 10–14: 1",
+                "0–4: 6, 5–9: 5, 10–14: 2"
+              ],
+              "id": "pD"
+            },
+            {
+              "do": "show",
+              "target": [
+                "nl",
+                "d"
+              ],
+              "at": "minutes"
+            },
+            {
+              "do": "highlight",
+              "target": "d",
+              "at": "thirteen"
+            }
+          ]
+        },
+        {
+          "say": "First, the dot plot again. Drop one dot for each student above its number: ten, three, two, five, ten, four, three, seven, four, zero, six, eight, five.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "ax",
+              "at": "plot"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d1": {
+                  "cell": [
+                    "pl",
+                    26
+                  ]
+                }
+              },
+              "at": "ten",
+              "nth": 1
+            },
+            {
+              "do": "move",
+              "points": {
+                "d2": {
+                  "cell": [
+                    "pl",
+                    19
+                  ]
+                }
+              },
+              "at": "three",
+              "nth": 1
+            },
+            {
+              "do": "move",
+              "points": {
+                "d3": {
+                  "cell": [
+                    "pl",
+                    18
+                  ]
+                }
+              },
+              "at": "two"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d4": {
+                  "cell": [
+                    "pl",
+                    21
+                  ]
+                }
+              },
+              "at": "five",
+              "nth": 1
+            },
+            {
+              "do": "move",
+              "points": {
+                "d5": {
+                  "cell": [
+                    "pl",
+                    11
+                  ]
+                }
+              },
+              "at": "ten",
+              "nth": 2
+            },
+            {
+              "do": "move",
+              "points": {
+                "d6": {
+                  "cell": [
+                    "pl",
+                    20
+                  ]
+                }
+              },
+              "at": "four",
+              "nth": 1
+            },
+            {
+              "do": "move",
+              "points": {
+                "d7": {
+                  "cell": [
+                    "pl",
+                    4
+                  ]
+                }
+              },
+              "at": "three",
+              "nth": 2
+            },
+            {
+              "do": "move",
+              "points": {
+                "d8": {
+                  "cell": [
+                    "pl",
+                    23
+                  ]
+                }
+              },
+              "at": "seven"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d9": {
+                  "cell": [
+                    "pl",
+                    5
+                  ]
+                }
+              },
+              "at": "four",
+              "nth": 2
+            },
+            {
+              "do": "move",
+              "points": {
+                "d10": {
+                  "cell": [
+                    "pl",
+                    16
+                  ]
+                }
+              },
+              "at": "zero"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d11": {
+                  "cell": [
+                    "pl",
+                    22
+                  ]
+                }
+              },
+              "at": "six"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d12": {
+                  "cell": [
+                    "pl",
+                    24
+                  ]
+                }
+              },
+              "at": "eight"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d13": {
+                  "cell": [
+                    "pl",
+                    6
+                  ]
+                }
+              },
+              "at": "five",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "An interval is a stretch of numbers, with both end numbers included.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "term",
+              "word": "interval",
+              "meaning": "A stretch of numbers from one value to another, with both end values included. The interval 0–4 holds 0, 1, 2, 3 and 4.",
+              "at": "interval"
+            }
+          ]
+        },
+        {
+          "say": "The interval zero to four holds zero, one, two, three and four.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "b1",
+                "a1"
+              ],
+              "at": "zero"
+            },
+            {
+              "do": "highlight",
+              "target": "a1",
+              "at": "holds"
+            }
+          ]
+        },
+        {
+          "say": "The table uses three intervals, all the same width.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": "a1",
+              "at": "table"
+            },
+            {
+              "do": "show",
+              "target": "t.row.0",
+              "at": "three"
+            },
+            {
+              "do": "highlight",
+              "target": "b1",
+              "at": "width"
+            }
+          ]
+        },
+        {
+          "say": "Each one has a bracket under the line: zero to four, five to nine, ten to fourteen.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b1",
+              "at": "bracket"
+            },
+            {
+              "do": "show",
+              "target": "b2",
+              "at": "five"
+            },
+            {
+              "do": "show",
+              "target": "b3",
+              "at": "ten"
+            }
+          ]
+        },
+        {
+          "say": "Counting by fives: zero to five, five to ten. So the fives go in the first group, and the tens in the second. Eight, five, zero.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "d4",
+                "d13"
+              ],
+              "at": "five",
+              "nth": 1
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "d1",
+                "d5"
+              ],
+              "at": "ten"
+            },
+            {
+              "do": "highlight",
+              "target": "b1",
+              "at": "first"
+            },
+            {
+              "do": "highlight",
+              "target": "b2",
+              "at": "second"
+            }
+          ]
+        },
+        {
+          "say": "Test it on the brackets. The first interval is zero to four, so it ends at four.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "a1",
+              "at": "first"
+            },
+            {
+              "do": "highlight",
+              "target": "b1",
+              "at": "ends"
+            }
+          ]
+        },
+        {
+          "say": "The dots above five stand under the next bracket, five to nine. Each number belongs to exactly one interval.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": "a1",
+              "at": "The"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "d4",
+                "d13"
+              ],
+              "at": "dots"
+            },
+            {
+              "do": "show",
+              "target": "a2",
+              "at": "five",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "Now count each interval. Zero to four: zero, two, three, three, four, four. That is six dots.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": "a2",
+              "at": "Now"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.1.0",
+              "at": "count"
+            },
+            {
+              "do": "show",
+              "target": "a1",
+              "at": "Zero"
+            },
+            {
+              "do": "highlight",
+              "target": "d10",
+              "at": "zero",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": "d3",
+              "at": "two"
+            },
+            {
+              "do": "highlight",
+              "target": "d2",
+              "at": "three",
+              "nth": 1
+            },
+            {
+              "do": "highlight",
+              "target": "d7",
+              "at": "three",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": "d6",
+              "at": "four",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": "d9",
+              "at": "four",
+              "nth": 3
+            },
+            {
+              "do": "show",
+              "target": "t.cell.1.1",
+              "at": "six"
+            }
+          ]
+        },
+        {
+          "say": "Five to nine: five, five, six, seven, eight. That is five dots.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": "a1",
+              "at": "Five"
+            },
+            {
+              "do": "show",
+              "target": "a2",
+              "at": "Five"
+            },
+            {
+              "do": "highlight",
+              "target": "d4",
+              "at": "five",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": "d13",
+              "at": "five",
+              "nth": 3
+            },
+            {
+              "do": "highlight",
+              "target": "d11",
+              "at": "six"
+            },
+            {
+              "do": "highlight",
+              "target": "d8",
+              "at": "seven"
+            },
+            {
+              "do": "highlight",
+              "target": "d12",
+              "at": "eight"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.1.2",
+              "at": "five",
+              "nth": 4
+            }
+          ]
+        },
+        {
+          "say": "Ten to fourteen: ten, ten. That is two dots.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": "a2",
+              "at": "Ten"
+            },
+            {
+              "do": "show",
+              "target": "a3",
+              "at": "Ten"
+            },
+            {
+              "do": "highlight",
+              "target": "d1",
+              "at": "ten",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": "d5",
+              "at": "ten",
+              "nth": 3
+            },
+            {
+              "do": "show",
+              "target": "t.cell.1.3",
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "say": "Six, five, two. That is thirteen, the number of students. But my eight, five, zero is thirteen too.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "hide",
+              "target": "a3",
+              "at": "Six"
+            },
+            {
+              "do": "write",
+              "tex": "\\ca{6}+\\ca{5}+\\ca{2}=13",
+              "fresh": true,
+              "id": "sD",
+              "at": "thirteen"
+            },
+            {
+              "do": "show",
+              "target": "sum",
+              "at": "students"
+            }
+          ]
+        },
+        {
+          "say": "A total cannot see which interval a dot is in. The brackets can. The total still catches a dot that is missed or counted twice.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "sum",
+              "at": "total"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b1",
+                "b2",
+                "b3"
+              ],
+              "at": "brackets"
+            },
+            {
+              "do": "highlight",
+              "target": "sum",
+              "at": "missed"
+            }
+          ]
+        },
+        {
+          "say": "Now the choices. The first adds to fourteen. The second and third add to twelve. Only the fourth adds to thirteen.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\text{1st: }7+5+2=14",
+              "fresh": true,
+              "at": "first"
+            },
+            {
+              "do": "write",
+              "tex": "\\text{2nd: }7+5+0=12",
+              "fresh": true,
+              "at": "second"
+            },
+            {
+              "do": "write",
+              "tex": "\\text{3rd: }6+5+1=12",
+              "fresh": true,
+              "at": "third"
+            },
+            {
+              "do": "write",
+              "tex": "\\text{4th: }6+5+2=13",
+              "fresh": true,
+              "at": "fourth"
+            }
+          ]
+        },
+        {
+          "say": "The fourth choice matches: zero to four, six; five to nine, five; ten to fourteen, two.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "answer",
+              "tex": "\\text{the fourth choice}",
+              "id": "aD",
+              "at": "fourth"
+            },
+            {
+              "do": "highlight",
+              "target": "t.row.1",
+              "at": "six"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.7,
+          -6,
+          14.7,
+          7.4
+        ],
+        "points": {
+          "LS": [
+            0,
+            6.5
+          ],
+          "TB": [
+            1.3,
+            -3.7
+          ],
+          "PL": [
+            -0.5,
+            3
+          ],
+          "BN1": [
+            1.5,
+            4.5
+          ],
+          "BN2": [
+            6.5,
+            4.5
+          ],
+          "BN3": [
+            11.5,
+            4.5
+          ],
+          "N1": [
+            0.5,
+            6.9
+          ],
+          "N2": [
+            1.5,
+            6.9
+          ],
+          "N3": [
+            2.5,
+            6.9
+          ],
+          "N4": [
+            3.5,
+            6.9
+          ],
+          "N5": [
+            4.5,
+            6.9
+          ],
+          "N6": [
+            5.5,
+            6.9
+          ],
+          "N7": [
+            6.5,
+            6.9
+          ],
+          "N8": [
+            7.5,
+            6.9
+          ],
+          "N9": [
+            8.5,
+            6.9
+          ],
+          "N10": [
+            9.5,
+            6.9
+          ],
+          "N11": [
+            10.5,
+            6.9
+          ],
+          "N12": [
+            11.5,
+            6.9
+          ],
+          "N13": [
+            12.5,
+            6.9
+          ],
+          "N14": [
+            13.5,
+            6.9
+          ],
+          "Q0": [
+            -0.5,
+            0
+          ],
+          "Q1": [
+            4.5,
+            0
+          ],
+          "Q2": [
+            9.5,
+            0
+          ],
+          "Q3": [
+            14.5,
+            0
+          ],
+          "X0": [
+            -0.5,
+            3
+          ],
+          "X1": [
+            4.5,
+            3
+          ],
+          "X2": [
+            9.5,
+            3
+          ],
+          "X3": [
+            14.5,
+            3
+          ],
+          "U0": [
+            -0.5,
+            4.5
+          ],
+          "U1": [
+            4.5,
+            4.5
+          ],
+          "V1": [
+            4.5,
+            2.25
+          ],
+          "V2": [
+            9.5,
+            2.25
+          ],
+          "W2": [
+            9.5,
+            3.75
+          ],
+          "W3": [
+            14.5,
+            3.75
+          ],
+          "BA1": [
+            -0.45,
+            -1.3
+          ],
+          "BA2": [
+            4.45,
+            -1.3
+          ],
+          "BB1": [
+            4.55,
+            -1.3
+          ],
+          "BB2": [
+            9.45,
+            -1.3
+          ],
+          "BC1": [
+            9.55,
+            -1.3
+          ],
+          "BC2": [
+            14.45,
+            -1.3
+          ]
+        },
+        "parts": [
+          {
+            "id": "a1",
+            "poly": [
+              "Q0",
+              "Q1",
+              "X1",
+              "X0"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 4
+          },
+          {
+            "id": "a2",
+            "poly": [
+              "Q1",
+              "Q2",
+              "X2",
+              "X1"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 4
+          },
+          {
+            "id": "a3",
+            "poly": [
+              "Q2",
+              "Q3",
+              "X3",
+              "X2"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 4
+          },
+          {
+            "id": "bar1",
+            "poly": [
+              "Q0",
+              "Q1",
+              "U1",
+              "U0"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "bar2",
+            "poly": [
+              "Q1",
+              "Q2",
+              "V2",
+              "V1"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "bar3",
+            "poly": [
+              "Q2",
+              "Q3",
+              "W3",
+              "W2"
+            ],
+            "fill": "accent-fill",
+            "ink": "accent",
+            "w": 5
+          },
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 1,
+            "y": false,
+            "xrange": [
+              -0.5,
+              14.5
+            ]
+          },
+          {
+            "id": "pl",
+            "grid": [
+              15,
+              3
+            ],
+            "at": "PL",
+            "size": [
+              1,
+              1
+            ]
+          },
+          {
+            "id": "ls",
+            "grid": [
+              14,
+              1
+            ],
+            "at": "LS",
+            "size": [
+              1,
+              1
+            ]
+          },
+          {
+            "id": "bn1",
+            "grid": [
+              1,
+              6
+            ],
+            "at": "BN1",
+            "size": [
+              1,
+              0.75
+            ]
+          },
+          {
+            "id": "bn2",
+            "grid": [
+              1,
+              6
+            ],
+            "at": "BN2",
+            "size": [
+              1,
+              0.75
+            ]
+          },
+          {
+            "id": "bn3",
+            "grid": [
+              1,
+              6
+            ],
+            "at": "BN3",
+            "size": [
+              1,
+              0.75
+            ]
+          },
+          {
+            "id": "d",
+            "counters": "ls",
+            "n": 14,
+            "ink": "accent"
+          },
+          {
+            "id": "nl1",
+            "group": "nl",
+            "label": "3",
+            "at": "N1",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl2",
+            "group": "nl",
+            "label": "3",
+            "at": "N2",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl3",
+            "group": "nl",
+            "label": "3",
+            "at": "N3",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl4",
+            "group": "nl",
+            "label": "13",
+            "at": "N4",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl5",
+            "group": "nl",
+            "label": "1",
+            "at": "N5",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl6",
+            "group": "nl",
+            "label": "12",
+            "at": "N6",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl7",
+            "group": "nl",
+            "label": "14",
+            "at": "N7",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl8",
+            "group": "nl",
+            "label": "4",
+            "at": "N8",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl9",
+            "group": "nl",
+            "label": "2",
+            "at": "N9",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl10",
+            "group": "nl",
+            "label": "10",
+            "at": "N10",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl11",
+            "group": "nl",
+            "label": "13",
+            "at": "N11",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl12",
+            "group": "nl",
+            "label": "7",
+            "at": "N12",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl13",
+            "group": "nl",
+            "label": "7",
+            "at": "N13",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "nl14",
+            "group": "nl",
+            "label": "6",
+            "at": "N14",
+            "dir": "c",
+            "size": "s"
+          },
+          {
+            "id": "b1",
+            "dim": [
+              "BA1",
+              "BA2"
+            ],
+            "side": "s",
+            "tex": "0\\text{–}4",
+            "ink": "muted"
+          },
+          {
+            "id": "b2",
+            "dim": [
+              "BB1",
+              "BB2"
+            ],
+            "side": "s",
+            "tex": "5\\text{–}9",
+            "ink": "muted"
+          },
+          {
+            "id": "b3",
+            "dim": [
+              "BC1",
+              "BC2"
+            ],
+            "side": "s",
+            "tex": "10\\text{–}14",
+            "ink": "muted"
+          },
+          {
+            "id": "t",
+            "table": true,
+            "at": "TB",
+            "head": [
+              "0–4",
+              "5–9",
+              "10–14"
+            ],
+            "rows": [
+              {
+                "label": "frequency",
+                "cells": [
+                  "6",
+                  "3",
+                  "5"
+                ]
+              }
+            ],
+            "cell": [
+              2.6,
+              1
+            ],
+            "labelW": 4,
+            "corner": "laps"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "say": "One more problem, and this time Champ does the work. Fourteen runners each ran some laps. How many of them are in the interval zero to four?",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "These are data about the number of laps each runner finished, for 14 runners: 3, 3, 3, 13, 1, 12, 14, 4, 2, 10, 13, 7, 7, 6. Each interval includes both of its end values. How many are in the interval 0–4?",
+              "choices": [
+                "3",
+                "14",
+                "9",
+                "6"
+              ],
+              "id": "pE"
+            },
+            {
+              "do": "show",
+              "target": [
+                "nl",
+                "d"
+              ],
+              "at": "Fourteen"
+            },
+            {
+              "do": "highlight",
+              "target": "d",
+              "at": "laps"
+            }
+          ]
+        },
+        {
+          "say": "Champ, start with the dot plot.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "ax",
+              "at": "plot"
+            }
+          ]
+        },
+        {
+          "say": "One dot for each runner, above its number: three, three, three, thirteen, one, twelve, fourteen, four, two, ten, thirteen, seven, seven, six.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "d1": {
+                  "cell": [
+                    "pl",
+                    34
+                  ]
+                }
+              },
+              "at": "three",
+              "nth": 1
+            },
+            {
+              "do": "move",
+              "points": {
+                "d2": {
+                  "cell": [
+                    "pl",
+                    19
+                  ]
+                }
+              },
+              "at": "three",
+              "nth": 2
+            },
+            {
+              "do": "move",
+              "points": {
+                "d3": {
+                  "cell": [
+                    "pl",
+                    4
+                  ]
+                }
+              },
+              "at": "three",
+              "nth": 3
+            },
+            {
+              "do": "move",
+              "points": {
+                "d4": {
+                  "cell": [
+                    "pl",
+                    44
+                  ]
+                }
+              },
+              "at": "thirteen",
+              "nth": 1
+            },
+            {
+              "do": "move",
+              "points": {
+                "d5": {
+                  "cell": [
+                    "pl",
+                    32
+                  ]
+                }
+              },
+              "at": "one",
+              "nth": 2
+            },
+            {
+              "do": "move",
+              "points": {
+                "d6": {
+                  "cell": [
+                    "pl",
+                    43
+                  ]
+                }
+              },
+              "at": "twelve"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d7": {
+                  "cell": [
+                    "pl",
+                    45
+                  ]
+                }
+              },
+              "at": "fourteen"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d8": {
+                  "cell": [
+                    "pl",
+                    35
+                  ]
+                }
+              },
+              "at": "four"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d9": {
+                  "cell": [
+                    "pl",
+                    33
+                  ]
+                }
+              },
+              "at": "two"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d10": {
+                  "cell": [
+                    "pl",
+                    41
+                  ]
+                }
+              },
+              "at": "ten"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d11": {
+                  "cell": [
+                    "pl",
+                    29
+                  ]
+                }
+              },
+              "at": "thirteen",
+              "nth": 2
+            },
+            {
+              "do": "move",
+              "points": {
+                "d12": {
+                  "cell": [
+                    "pl",
+                    38
+                  ]
+                }
+              },
+              "at": "seven",
+              "nth": 1
+            },
+            {
+              "do": "move",
+              "points": {
+                "d13": {
+                  "cell": [
+                    "pl",
+                    23
+                  ]
+                }
+              },
+              "at": "seven",
+              "nth": 2
+            },
+            {
+              "do": "move",
+              "points": {
+                "d14": {
+                  "cell": [
+                    "pl",
+                    37
+                  ]
+                }
+              },
+              "at": "six"
+            }
+          ]
+        },
+        {
+          "say": "Now the interval zero to four. Which numbers does it hold?",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "t.row.0",
+              "at": "interval"
+            },
+            {
+              "do": "show",
+              "target": [
+                "b1",
+                "a1"
+              ],
+              "at": "zero"
+            }
+          ]
+        },
+        {
+          "say": "Zero, one, two, three and four. Both ends are in, so the dots at zero and at four count.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "a1",
+              "at": "Zero"
+            },
+            {
+              "do": "highlight",
+              "target": "b1",
+              "at": "ends"
+            }
+          ]
+        },
+        {
+          "say": "Count the dots inside it.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "a1",
+              "at": "Count"
+            }
+          ]
+        },
+        {
+          "say": "One dot at one, one at two, three at three, one at four. That makes six.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "show",
+              "target": "t.cell.1.0",
+              "at": "One"
+            },
+            {
+              "do": "highlight",
+              "target": "d5",
+              "at": "one",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": "d9",
+              "at": "two"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "d1",
+                "d2",
+                "d3"
+              ],
+              "at": "three",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": "d8",
+              "at": "four"
+            },
+            {
+              "do": "show",
+              "target": "t.cell.1.1",
+              "at": "six"
+            }
+          ]
+        },
+        {
+          "say": "Do the other two intervals the same way.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": "a1",
+              "at": "other"
+            }
+          ]
+        },
+        {
+          "say": "Five to nine holds six, seven, seven: three dots. Ten to fourteen holds ten, twelve, thirteen, thirteen, fourteen: five dots.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "b2",
+                "a2"
+              ],
+              "at": "Five",
+              "nth": 1
+            },
+            {
+              "do": "highlight",
+              "target": "d14",
+              "at": "six"
+            },
+            {
+              "do": "highlight",
+              "target": "d12",
+              "at": "seven",
+              "nth": 1
+            },
+            {
+              "do": "highlight",
+              "target": "d13",
+              "at": "seven",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": "t.cell.1.2",
+              "at": "three"
+            },
+            {
+              "do": "hide",
+              "target": "a2",
+              "at": "Ten"
+            },
+            {
+              "do": "show",
+              "target": [
+                "b3",
+                "a3"
+              ],
+              "at": "Ten"
+            },
+            {
+              "do": "highlight",
+              "target": "d10",
+              "at": "ten",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": "d6",
+              "at": "twelve"
+            },
+            {
+              "do": "highlight",
+              "target": "d4",
+              "at": "thirteen",
+              "nth": 1
+            },
+            {
+              "do": "highlight",
+              "target": "d11",
+              "at": "thirteen",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": "d7",
+              "at": "fourteen",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": "t.cell.1.3",
+              "at": "five",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "say": "Now the other choices. What do fourteen, nine and three count?",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": "a3",
+              "at": "Now"
+            }
+          ]
+        },
+        {
+          "say": "Fourteen counts every runner. Nine counts zero to four and five to nine together. Three counts only the dots above the value three.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "d",
+              "at": "every"
+            },
+            {
+              "do": "show",
+              "target": [
+                "a1",
+                "a2"
+              ],
+              "at": "Nine"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "a1",
+                "a2"
+              ],
+              "at": "Three"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "d1",
+                "d2",
+                "d3"
+              ],
+              "at": "dots"
+            }
+          ]
+        },
+        {
+          "say": "Now answer the question that was asked.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "t.cell.1.1",
+              "at": "question"
+            }
+          ]
+        },
+        {
+          "say": "The question asked about the interval zero to four. Six runners are in it.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "answer",
+              "tex": "6\\ \\text{runners}",
+              "id": "aE",
+              "at": "Six"
+            },
+            {
+              "do": "highlight",
+              "target": "t.cell.1.1",
+              "at": "interval"
+            }
+          ]
+        },
+        {
+          "say": "Check the total.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "t.row.1",
+              "at": "total"
+            }
+          ]
+        },
+        {
+          "say": "Six plus three plus five is fourteen, the number of runners. Each runner is in exactly one interval.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\ca{6}+\\ca{3}+\\ca{5}=14",
+              "fresh": true,
+              "at": "six"
+            },
+            {
+              "do": "highlight",
+              "target": "t.row.1",
+              "at": "exactly"
+            }
+          ]
+        },
+        {
+          "say": "Now pour the dots in each interval into one pile.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "hide",
+              "target": "nl",
+              "at": "Now"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d5": {
+                  "cell": [
+                    "bn1",
+                    6
+                  ]
+                },
+                "d9": {
+                  "cell": [
+                    "bn1",
+                    5
+                  ]
+                },
+                "d1": {
+                  "cell": [
+                    "bn1",
+                    4
+                  ]
+                },
+                "d2": {
+                  "cell": [
+                    "bn1",
+                    3
+                  ]
+                },
+                "d3": {
+                  "cell": [
+                    "bn1",
+                    2
+                  ]
+                },
+                "d8": {
+                  "cell": [
+                    "bn1",
+                    1
+                  ]
+                }
+              },
+              "at": "pour"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d14": {
+                  "cell": [
+                    "bn2",
+                    6
+                  ]
+                },
+                "d12": {
+                  "cell": [
+                    "bn2",
+                    5
+                  ]
+                },
+                "d13": {
+                  "cell": [
+                    "bn2",
+                    4
+                  ]
+                }
+              },
+              "at": "each"
+            },
+            {
+              "do": "move",
+              "points": {
+                "d10": {
+                  "cell": [
+                    "bn3",
+                    6
+                  ]
+                },
+                "d6": {
+                  "cell": [
+                    "bn3",
+                    5
+                  ]
+                },
+                "d4": {
+                  "cell": [
+                    "bn3",
+                    4
+                  ]
+                },
+                "d11": {
+                  "cell": [
+                    "bn3",
+                    3
+                  ]
+                },
+                "d7": {
+                  "cell": [
+                    "bn3",
+                    2
+                  ]
+                }
+              },
+              "at": "pile"
+            }
+          ]
+        },
+        {
+          "say": "Each pile is as tall as its frequency. Draw an outline around each pile. The outline is a bar.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "show",
+              "target": "bar1",
+              "at": "Draw"
+            },
+            {
+              "do": "show",
+              "target": "bar2",
+              "at": "around"
+            },
+            {
+              "do": "show",
+              "target": "bar3",
+              "at": "bar"
+            }
+          ]
+        },
+        {
+          "say": "The bars touch, because the intervals touch. Four and five are neighbors, with no number between them.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "bar1",
+                "bar2"
+              ],
+              "at": "touch"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b1",
+                "b2"
+              ],
+              "at": "neighbors"
+            }
+          ]
+        },
+        {
+          "say": "This picture is a histogram. Its bar heights are the numbers in the frequency table: six, three, five.",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "bar1",
+                "bar2",
+                "bar3"
+              ],
+              "at": "histogram"
+            },
+            {
+              "do": "highlight",
+              "target": "t.row.1",
+              "at": "frequency"
+            },
+            {
+              "do": "highlight",
+              "target": "bar1",
+              "at": "six"
+            },
+            {
+              "do": "highlight",
+              "target": "bar2",
+              "at": "three"
+            },
+            {
+              "do": "highlight",
+              "target": "bar3",
+              "at": "five"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "say": "One dot is one thing. Champ, how do you build the table?",
+          "speaker": "teacher",
+          "do": [
+            {
+              "do": "overview",
+              "of": "pB",
+              "at": "One"
+            }
+          ]
+        },
+        {
+          "say": "First, I make a column for every number on the line, even where no dots stand.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Make a column for every number on the line, even where no dots stand.",
+              "marks": [
+                "rB"
+              ],
+              "at": "First"
+            }
+          ]
+        },
+        {
+          "say": "Next, I count the dots above each number. That count is its frequency.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Count the dots above each number: that is its frequency.",
+              "marks": [
+                "cB"
+              ],
+              "at": "Next"
+            }
+          ]
+        },
+        {
+          "say": "With intervals, I count the dots under each bracket, and both end numbers are in.",
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "recap",
+              "text": "For intervals, count the dots under each bracket. Both ends are in.",
+              "marks": [
+                "cB"
+              ],
+              "at": "intervals"
+            }
+          ]
+        },
+        {
+          "say": "Last, I add the frequencies. The total has to be the number of dots.",
+          "pause": 0.8,
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "recap",
+              "text": "Add the frequencies. The total is the number of dots.",
+              "marks": [
+                "sB",
+                "aB"
+              ],
+              "at": "Last"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
