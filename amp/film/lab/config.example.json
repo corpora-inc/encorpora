@@ -1,0 +1,15 @@
+{
+  "root": "/private/film-lab",
+  "worktree": "/workspace/wt/add-film-model-lab",
+  "workspace_root": "/workspace/wt/add-film-model-lab/amp/film/lab/.work",
+  "env_file": "/private/credentials.env",
+  "standards": "/private/standards/ccss-math.json",
+  "heavy": "/private/standards/heavy.sh",
+  "live_data": "/private/lesson-films/_review/live/data",
+  "player_url": "http://127.0.0.1:28941/live/",
+  "review_url": "http://127.0.0.1:28941/live/lab.html",
+  "voice_cache": "/private/lesson-films/_voice",
+  "seed": 42,
+  "study_timeout": 900,
+  "screenplay_timeout": 1800
+}
