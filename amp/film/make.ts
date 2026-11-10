@@ -30,7 +30,7 @@ import { renderFormat } from "./render-format";
 const { values, positionals } = parseArgs({
   allowPositionals: true,
   options: {
-    /** Re-voice a role for this run: `--voice narrator=paul`, `--voice learner=champ`. */
+    /** Re-voice a speaker for this run: `--voice narrator=paul`, `--voice maya=sarah`. */
     voice: { type: "string", multiple: true, default: [] },
     res: { type: "string", default: "2160" },
     fps: { type: "string", default: "60" },

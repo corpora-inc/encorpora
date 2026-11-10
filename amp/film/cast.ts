@@ -1,77 +1,119 @@
 /**
  * The cast: who speaks each beat, and which voice says it.
  *
- * A lesson may name a cast (roles mapped to approved voices) and give each
- * beat a speaker; a lesson without one is read by the narrator. The voice
- * mapping is separate from the words: `--voice role=voice` on make.ts re-voices
- * a role without touching the screenplay, so the same lesson can be read by a
- * different narrator. Everything here is pure (and free of node modules, so
- * the stage can import it in the browser), so it is tested with vitest.
+ * A lesson may name speakers (open keys, each a role kind) and give each beat
+ * a speaker key. A lesson without a cast is read by the narrator. Voices are
+ * chosen when the film is made: `--voice speaker=voice` re-voices one speaker
+ * without touching the screenplay, and `--out` keeps another edition. The same
+ * voice is never given to two speakers of one film. Everything here is pure
+ * (and free of node modules, so the stage can import it in the browser).
  */
-import type { Script, SpeakerRole } from "./schema";
+import type { Script } from "./schema";
+import { isRoleKind, NARRATOR_ID, VOICES, voicesFor, type RoleKind, type VoiceSpec } from "./voices";
 
-/** Role eligibility, display names and delivery tags are casting data. */
-export const APPROVED: Record<string, { short: string; name: string; roles: SpeakerRole[]; tag?: string }> = {
-  XescS24CsOySAkKrLAO3: { short: "madeline", name: "Madeline Brousseaux", roles: ["teacher", "narrator"] },
-  J3Ei0Lj6fAobhIqY5ySH: { short: "paul", name: "Paul", roles: ["teacher", "narrator"] },
-  SYXbTJsLE7zmSjr1DchT: { short: "champ", name: "Champ", roles: ["learner"], tag: "[energetic]" },
-};
-/** Preserve the voice of existing solo screenplays. */
-export const NARRATOR_ID = "XescS24CsOySAkKrLAO3";
+export { NARRATOR_ID };
 export const MODEL = "eleven_v4";
 /** Silence between two speakers' turns: a breath, like a real exchange. */
 export const TURN_GAP = 0.5;
 
+/** Derived from `voices.ts` so older callers can look a voice up by id. */
+export const APPROVED: Record<string, { short: string; name: string; roles: RoleKind[]; tag?: string }> =
+  Object.fromEntries(VOICES.map((voice) => [voice.id, {
+    short: voice.short,
+    name: voice.name,
+    roles: [...voice.kinds],
+    ...(voice.tag ? { tag: voice.tag } : {}),
+  }]));
+
 export type Voice = { id: string; tag?: string };
-export type Role = { role: SpeakerRole; name: string; voice: Voice };
+/** `role` is the speaker key. `kind` is teacher, learner, narrator, or a later kind. */
+export type Role = { role: string; kind: RoleKind; name: string; voice: Voice };
 export type Cast = { roles: Role[]; named: boolean };
+
+const voiceById = (id: string): VoiceSpec | undefined => VOICES.find((voice) => voice.id === id);
 
 /** A voice by id or short name; throws when it is not approved. */
 export function approvedVoice(v: string, where: string): string {
   if (Object.hasOwn(APPROVED, v)) return v;
-  const byShort = Object.entries(APPROVED).find(([, a]) => a.short === v.toLowerCase());
-  if (byShort) return byShort[0];
-  throw new Error(`${where}: "${v}" is not an approved voice. Use one of: ${Object.entries(APPROVED).map(([id, a]) => `${a.short} (${id})`).join(", ")}.`);
+  const byShort = VOICES.find((voice) => voice.short === v.toLowerCase());
+  if (byShort) return byShort.id;
+  throw new Error(`${where}: "${v}" is not an approved voice. Use one of: ${VOICES.map((voice) => `${voice.short} (${voice.id})`).join(", ")}.`);
 }
 
 /** FNV-1a over the film ID gives a stable choice independent of catalog order. */
-export function defaultVoice(role: SpeakerRole, filmId: string): string {
-  if (role === "narrator") return NARRATOR_ID;
-  const eligible = Object.entries(APPROVED).filter(([, voice]) => voice.roles.includes(role));
-  if (!eligible.length) throw new Error(`No approved voices for ${role}`);
+export function defaultVoice(kind: RoleKind, filmId: string): string {
+  if (kind === "narrator") return NARRATOR_ID;
+  const eligible = voicesFor(kind);
+  if (!eligible.length) throw new Error(`No approved voices for ${kind}`);
+  // The first learner voice stays Champ, so a one-learner film is unchanged
+  // when another learner voice is added. Teachers are balanced across films.
+  if (kind !== "teacher") return eligible[0]!.id;
   let hash = 2166136261;
   for (const char of filmId) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619) >>> 0;
-  return eligible[hash % eligible.length]![0];
+  return eligible[hash % eligible.length]!.id;
+}
+
+/** The next eligible voice for this kind that this film has not used yet. */
+function distinctVoice(kind: RoleKind, filmId: string, used: ReadonlySet<string>): string {
+  const eligible = voicesFor(kind);
+  if (!eligible.length) throw new Error(`No approved voices for ${kind}`);
+  const preferred = defaultVoice(kind, filmId);
+  const start = Math.max(0, eligible.findIndex((voice) => voice.id === preferred));
+  for (let i = 0; i < eligible.length; i++) {
+    const id = eligible[(start + i) % eligible.length]!.id;
+    if (!used.has(id)) return id;
+  }
+  throw new Error(`No distinct approved voice left for ${kind}`);
+}
+
+type SpeakerDecl = { key: string; kind: RoleKind };
+
+function speakersOf(script: Pick<Script, "cast">): SpeakerDecl[] {
+  const cast = script.cast;
+  if (!cast || !Object.keys(cast).length) return [{ key: "narrator", kind: "narrator" }];
+  return Object.entries(cast).map(([key, entry]) => {
+    const kind = entry.kind ?? (isRoleKind(key) ? key : undefined);
+    if (!kind) throw new Error(`cast.${key} needs a role kind`);
+    return { key, kind };
+  });
 }
 
 /**
- * The roles of a script, in order, each with its on-screen name and voice.
- * `overrides` (role → voice id or short name) re-voice roles for this run; the
- * role `narrator` is the single voice of a script without a cast.
+ * The speakers of a script, in cast order, each with its voice.
+ * `overrides` (speaker key → voice id or short name) re-voice this run.
+ * A script without a cast has the single speaker `narrator`.
  */
 export function resolveCast(script: Pick<Script, "id" | "cast" | "shots">, overrides: Record<string, string> = {}): Cast {
-  const keys = script.cast && Object.keys(script.cast).length ? Object.keys(script.cast) : ["narrator"];
-  const roles: Role[] = keys.map((key) => {
-    if (!["teacher", "learner", "narrator"].includes(key)) throw new Error(`Unknown cast role "${key}"`);
-    const role = key as SpeakerRole;
-    const id = approvedVoice(overrides[role] ?? defaultVoice(role, script.id), `cast.${role}`);
-    const voice = APPROVED[id]!;
-    if (!voice.roles.includes(role)) throw new Error(`${voice.name} is not approved for the ${role} role`);
-    return { role, name: voice.name, voice: { id, ...(voice.tag ? { tag: voice.tag } : {}) } };
+  const speakers = speakersOf(script);
+  const used = new Set<string>();
+  const roles: Role[] = speakers.map((speaker) => {
+    const requested = overrides[speaker.key];
+    const id = requested ? approvedVoice(requested, `cast.${speaker.key}`) : distinctVoice(speaker.kind, script.id, used);
+    const spec = voiceById(id);
+    if (!spec) throw new Error(`cast.${speaker.key}: missing voice`);
+    if (!spec.kinds.includes(speaker.kind)) throw new Error(`${spec.name} is not approved for the ${speaker.kind} role`);
+    if (used.has(id)) throw new Error(`${spec.name} is already assigned to another speaker`);
+    used.add(id);
+    return { role: speaker.key, kind: speaker.kind, name: spec.name, voice: { id, ...(spec.tag ? { tag: spec.tag } : {}) } };
   });
-  for (const k of Object.keys(overrides)) if (!roles.some((r) => r.role === k)) throw new Error(`--voice ${k}: the lesson has no role "${k}". Roles: ${roles.map((r) => r.role).join(", ")}.`);
-  script.shots.forEach((s, si) => s.beats.forEach((b, bi) => {
-    if (b.speaker && !roles.some((r) => r.role === b.speaker))
-      throw new Error(`Shot ${si + 1}, beat ${bi + 1}: speaker "${b.speaker}" is not in the cast (${roles.map((r) => r.role).join(", ")}).`);
+  for (const key of Object.keys(overrides)) {
+    if (!speakers.some((speaker) => speaker.key === key))
+      throw new Error(`--voice ${key}: the lesson has no role "${key}". Roles: ${roles.map((role) => role.role).join(", ")}.`);
+  }
+  script.shots.forEach((shot, si) => shot.beats.forEach((beat, bi) => {
+    if (beat.speaker && !roles.some((role) => role.role === beat.speaker))
+      throw new Error(`Shot ${si + 1}, beat ${bi + 1}: speaker "${beat.speaker}" is not in the cast (${roles.map((role) => role.role).join(", ")}).`);
   }));
   return { roles, named: roles.length > 1 };
 }
 
-/** Persist with timing so render and playback name the voices that were recorded. */
-export const voiceBindings = (cast: Cast): Record<string, string> => Object.fromEntries(cast.roles.map((r) => [r.role, r.voice.id]));
+/** Persist with timing so render and playback use the voices that were recorded. Keyed by speaker key. */
+export const voiceBindings = (cast: Cast): Record<string, string> =>
+  Object.fromEntries(cast.roles.map((role) => [role.role, role.voice.id]));
 
-/** The role that speaks a beat: its `speaker`, or the first role. */
-export const speakerOf = (cast: Cast, beat: { speaker?: string }) => cast.roles.find((r) => r.role === beat.speaker) ?? cast.roles[0]!;
+/** The speaker of a beat: its `speaker`, or the first speaker. */
+export const speakerOf = (cast: Cast, beat: { speaker?: string }) =>
+  cast.roles.find((role) => role.role === beat.speaker) ?? cast.roles[0]!;
 
 export type Run = { shot: number; from: number; to: number; role: Role; text: string };
 /**
@@ -82,10 +124,10 @@ export function runsOf(script: Pick<Script, "shots">, cast: Cast): Run[] {
   const out: Run[] = [];
   script.shots.forEach((shot, si) => {
     let cur: Run | undefined;
-    shot.beats.forEach((b, bi) => {
-      const role = speakerOf(cast, b);
-      if (cur && cur.role.role === role.role) { cur.to = bi; cur.text += ` ${b.say}`; return; }
-      cur = { shot: si, from: bi, to: bi, role, text: b.say };
+    shot.beats.forEach((beat, bi) => {
+      const role = speakerOf(cast, beat);
+      if (cur && cur.role.role === role.role) { cur.to = bi; cur.text += ` ${beat.say}`; return; }
+      cur = { shot: si, from: bi, to: bi, role, text: beat.say };
       out.push(cur);
     });
   });
@@ -123,5 +165,3 @@ export function templateOf(id: string) {
   const m = id.match(/^(.+?)--([\w-]+)$/);
   return { template: m ? m[1]! : id, variant: m ? m[2] : undefined };
 }
-
-

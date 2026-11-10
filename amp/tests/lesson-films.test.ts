@@ -264,6 +264,12 @@ test("committed manifest resolves real problem types, committed screenplays and 
     assert.equal(lessonFilmFor(id), undefined);
     assert.equal(lessonFilmFor(id, "future-unsupported"), undefined);
     assert.equal(lessonFilmFor(id, FILM_CAPABILITY), film);
+    const v1 = lessonFilmFor(id, "lesson-film-v1");
+    assert.ok(v1);
+    assert.equal(v1.capability, "lesson-film-v1");
+    assert.equal("editions" in v1, false);
+    assert.equal(v1.dataUrl, film.dataUrl);
+    assert.equal(film.editions[0]?.voices && Object.keys(film.editions[0].voices).length > 0, true);
   }
   const film = plan().film;
   assert.throws(() =>
@@ -285,10 +291,15 @@ test("native CSP permits every published film's data and narration", () => {
       }),
     );
     for (const film of Object.values(lessonFilms)) {
-      for (const [directive, value] of [
+      const urls = [
         ["connect-src", film.dataUrl],
         ["media-src", film.audioUrl],
-      ] as const) {
+        ...film.editions.flatMap((edition) => [
+          ["connect-src", edition.dataUrl],
+          ["media-src", edition.audioUrl],
+        ] as const),
+      ] as const;
+      for (const [directive, value] of urls) {
         const destination = new URL(value);
         assert.ok(
           directives.get(directive)?.some((source) => {
@@ -318,7 +329,14 @@ test("lesson capability negotiates separate cached representations for new and o
       url: `${path}?film=${FILM_CAPABILITY}`,
     });
     assert.equal(enhanced.statusCode, 200);
-    assert.ok(enhanced.json().lesson.film);
+    assert.ok(enhanced.json().lesson.film.editions?.length);
+    const previous = await server.inject({
+      url: `${path}?film=lesson-film-v1`,
+    });
+    assert.equal(previous.statusCode, 200);
+    assert.equal(previous.json().lesson.film.capability, "lesson-film-v1");
+    assert.equal(previous.json().lesson.film.editions, undefined);
+    assert.equal(previous.json().lesson.film.dataUrl, enhanced.json().lesson.film.dataUrl);
     const old = await server.inject({
       url: path,
       headers: { "if-none-match": String(enhanced.headers.etag) },

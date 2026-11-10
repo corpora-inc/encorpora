@@ -19,7 +19,7 @@ describe("resolveCast", () => {
   it("preserves the narrator and take identity of existing solo films", () => {
     const c = resolveCast(flat);
     expect(c.named).toBe(false);
-    expect(c.roles).toEqual([{ role: "narrator", name: "Madeline Brousseaux", voice: { id: NARRATOR_ID } }]);
+    expect(c.roles).toEqual([{ role: "narrator", kind: "narrator", name: "Madeline Brousseaux", voice: { id: NARRATOR_ID } }]);
     expect(resolveCast({ ...flat, shots: [{ beats: [{ say: "One.", speaker: "narrator" }] }] })).toEqual(c);
   });
   it("binds role-only screenplays to real speaker names without mutating them", () => {
@@ -52,7 +52,7 @@ describe("resolveCast", () => {
     expect(() => resolveCast(flat, { narrator: "champ" })).toThrow(/not approved for the narrator/);
     expect(() => approvedVoice("someone", "x")).toThrow(/not an approved voice/);
     expect(() => approvedVoice("constructor", "x")).toThrow(/not an approved voice/);
-    expect(Object.keys(APPROVED)).toHaveLength(3);
+    expect(Object.keys(APPROVED)).toHaveLength(4);
   });
   it("rejects people and voice bindings in the screenplay", () => {
     expect(scriptSchema.safeParse({ ...play, cast: { teacher: { voice: "paul" }, learner: {} } }).success).toBe(false);
