@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import type {
+  FigureCapability,
   GeneratedProblem,
   SemanticFigure,
   TemplateMetadata,
@@ -41,7 +42,11 @@ import { chooseAxes, defineAxis, type Random } from "./variation/axes";
  */
 
 const SINCE = 2;
-type ClauseSpec = { values: readonly string[]; weights: readonly number[] };
+type ClauseSpec = {
+  values: readonly string[];
+  weights: readonly number[];
+  needs?: Partial<Record<string, FigureCapability>>;
+};
 const clauseSpecs: Record<string, ClauseSpec> = {
   "unknown-addend-story": {
     values: ["subtraction-unknown"],
@@ -51,7 +56,11 @@ const clauseSpecs: Record<string, ClauseSpec> = {
     values: ["values-from-set"],
     weights: [1, 1],
   },
-  "inequality-solution-set": { values: ["strict-form"], weights: [1, 1] },
+  "inequality-solution-set": {
+    values: ["strict-form"],
+    weights: [1, 1],
+    needs: { "strict-form": "scenes-v1" },
+  },
   "grouped-both-sides-steps": {
     values: ["solution-count-steps"],
     weights: [1, 1],
@@ -70,6 +79,7 @@ export function clauseTask(id: string, seed: string): string {
     silentLegacy: true,
     since: SINCE,
     weights: spec.weights,
+    needs: spec.needs,
   });
   return chooseAxes(id, seed, { clause: axis }).clause;
 }

@@ -1,3 +1,5 @@
+import { k8RepresentationTemplates } from "../src/math/k8-representations-practice";
+import { skills } from "../src/curriculum/catalog";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { templates } from "../src/math/engine";
@@ -7,96 +9,78 @@ import { problemLesson } from "../src/content/problem-lessons";
 import { lessons } from "../src/content/lessons";
 import { actualFacetMappings } from "../src/content/facet-mappings";
 
-const expected: Record<string, { skill: string; tags: string[] }> = {
-  "proportional-graph": {
-    skill: "proportional-relationships",
-    tags: [
-      "unit-rate",
-      "point-meaning",
-      "origin",
-      "start-value",
-      "is-proportional/through",
-      "is-proportional/offset",
-      "is-proportional/curve",
-      "equation",
-    ],
-  },
-  "story-graph-match": {
-    skill: "qualitative-graphs",
-    tags: [
-      "graph-to-story",
-      "story-to-description",
-      "graph-to-description",
-      "find-interval/up",
-      "find-interval/flat",
-      "find-interval/down",
-      "fastest-slowest/fastest",
-      "fastest-slowest/slowest",
-    ],
-  },
-  "coordinate-context-points": {
-    skill: "coordinate-first-quadrant",
-    tags: [
-      "read-meaning",
-      "pair-from-story",
-      "find-the-point",
-      "compare-same-x",
-    ],
-  },
-  "pattern-pair-relationship": {
-    skill: "related-patterns",
-    tags: [
-      "nth-pair",
-      "times-relationship",
-      "plus-relationship",
-      "predict-term",
-    ],
-  },
-  "triangle-uniqueness": {
-    skill: "triangle-construction",
-    tags: [
-      "ssa-two",
-      "ssa-none",
-      "ssa-right",
-      "ssa-long",
-      "ssa-obtuse",
-      "which-set/sas",
-      "which-set/asa",
-      "which-set/sss",
-    ],
-  },
-  "percent-applications": {
-    skill: "percent-change",
-    tags: [
-      "tax-total",
-      "tip-total",
-      "commission-total",
-      "markup-price",
-      "markdown-price",
-      "markdown-rate",
-      "interest-amount",
-      "interest-balance",
-      "interest-rate",
-      "percent-error",
-    ],
-  },
-  "compound-event-simulation": {
-    skill: "compound-probability",
-    tags: [
-      "sample-space/dice",
-      "sample-space/coin-die",
-      "sample-space/coins",
-      "sample-space/spinners",
-      "simulation/family",
-      "simulation/free-throws",
-      "experimental-vs-theoretical",
-      "represent-sample-space",
-      "event-outcomes",
-      "design-and-run",
-    ],
-  },
+// Fixed witnesses keep the independent mathematical cases below exercised.
+// They are not a complete inventory; new types come from the registry.
+const regressionCases: Record<string, string[]> = {
+  "proportional-graph": [
+    "unit-rate",
+    "point-meaning",
+    "origin",
+    "start-value",
+    "is-proportional/through",
+    "is-proportional/offset",
+    "is-proportional/curve",
+    "equation",
+  ],
+  "story-graph-match": [
+    "graph-to-story",
+    "story-to-description",
+    "graph-to-description",
+    "find-interval/up",
+    "find-interval/flat",
+    "find-interval/down",
+    "fastest-slowest/fastest",
+    "fastest-slowest/slowest",
+  ],
+  "coordinate-context-points": [
+    "read-meaning",
+    "pair-from-story",
+    "find-the-point",
+    "compare-same-x",
+  ],
+  "pattern-pair-relationship": [
+    "nth-pair",
+    "times-relationship",
+    "plus-relationship",
+    "predict-term",
+  ],
+  "triangle-uniqueness": [
+    "ssa-two",
+    "ssa-none",
+    "ssa-right",
+    "ssa-long",
+    "ssa-obtuse",
+    "which-set/sas",
+    "which-set/asa",
+    "which-set/sss",
+  ],
+  "percent-applications": [
+    "tax-total",
+    "tip-total",
+    "commission-total",
+    "markup-price",
+    "markdown-price",
+    "markdown-rate",
+    "interest-amount",
+    "interest-balance",
+    "interest-rate",
+    "percent-error",
+  ],
+  "compound-event-simulation": [
+    "sample-space/dice",
+    "sample-space/coin-die",
+    "sample-space/coins",
+    "sample-space/spinners",
+    "simulation/family",
+    "simulation/free-throws",
+    "experimental-vs-theoretical",
+    "represent-sample-space",
+    "event-outcomes",
+    "design-and-run",
+  ],
 };
-const ids = Object.keys(expected);
+const ids = k8RepresentationTemplates.map((t) => t.id);
+const metadata = new Map(k8RepresentationTemplates.map((t) => [t.id, t]));
 const seeds = Array.from({ length: 400 }, (_, i) => `k8:${i}`);
 
 function parts(id: string, seed: string) {
@@ -120,7 +104,7 @@ test("every family is deterministic, reaches every variant, and has one correct 
       assert.deepEqual(generateProblem(id, seed), generated);
       const direct = k8RepresentationCase(id, seed);
       assert.equal(direct.problem.answer, generated.answer);
-      assert.equal(generated.public.skillId, expected[id]!.skill);
+      assert.equal(generated.public.skillId, metadata.get(id)!.skillId);
       assert.equal(new Set(labels).size, 4, `${id} ${seed}`);
       assert.equal(
         response.options.filter((o) => o.id === generated.answer).length,
@@ -142,14 +126,22 @@ test("every family is deterministic, reaches every variant, and has one correct 
           );
       seen.add(direct.tags.join("/"));
     }
-    assert.deepEqual([...seen].sort(), [...expected[id]!.tags].sort(), id);
+    for (const tag of regressionCases[id] ?? [])
+      assert.ok(
+        seen.has(tag),
+        `${id}: mathematical case ${tag} was not exercised`,
+      );
   }
 });
 
 test("templates, lessons, methods, principles and facet mappings are registered", () => {
   for (const id of ids) {
     const template = templates.find((t) => t.id === id);
-    assert.equal(template?.skillId, expected[id]!.skill);
+    assert.equal(template?.skillId, metadata.get(id)!.skillId);
+    assert.ok(
+      skills.some((s) => s.id === metadata.get(id)!.skillId),
+      id,
+    );
     assert.equal(template?.requiredResponseCapability, "single-choice-v1");
     assert.ok(
       lessons.some((l) => l.templateIds.includes(id)),

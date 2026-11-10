@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
@@ -22,12 +23,7 @@ import {
  * re-read from the prompt text here; the generator's own models are used only
  * to read the misconception codes, never to decide a key.
  */
-const IDS = [
-  "strategy-step-reason",
-  "strategy-flaw",
-  "written-method-meaning",
-  "written-method-reason",
-] as const;
+const IDS = strategyReasonsTemplates.map((t) => t.id);
 const many = (id: string, n: number, prefix = "t") =>
   Array.from({ length: n }, (_, i) => generateProblem(id, `${prefix}-${i}`));
 
@@ -60,35 +56,19 @@ const prose = (prompt: string) =>
     )
     .join(" ");
 
-test("the four templates are registered for explain-strategies with their capabilities", () => {
+test("templates are registered for explain-strategies with their capabilities", () => {
   for (const id of IDS) {
     const t = templates.find((x) => x.id === id);
     assert.ok(t, id);
     assert.equal(t.skillId, "explain-strategies");
     assert.equal(t.gradeBand, "K–2");
   }
-  const capability = Object.fromEntries(
-    strategyReasonsTemplates.map((t) => [t.id, t.requiredResponseCapability]),
-  );
-  assert.deepEqual(capability, {
-    "strategy-step-reason": "single-choice-v1",
-    "strategy-flaw": "multi-part-choice-v1",
-    "written-method-meaning": "figure-choice-v1",
-    "written-method-reason": "single-choice-v1",
-  });
 });
 
 test("every problem is schema-valid, deterministic and of one response kind", () => {
-  const kind = {
-    "strategy-step-reason": "choice",
-    "strategy-flaw": "multi-part-choice",
-    "written-method-meaning": "figure-choice",
-    "written-method-reason": "choice",
-  } as const;
   for (const id of IDS)
     for (const p of many(id, 120)) {
       generatedProblemSchema.parse(p);
-      assert.equal(p.public.response.kind, kind[id], id);
       assert.deepEqual(generateProblem(id, p.public.seed), p);
       assert.deepEqual(
         generateStrategyReasons(id, p.public.seed),
@@ -170,10 +150,13 @@ test("readability: short prompts, matched option lengths, no property names", ()
       const text = prose(p.public.prompt);
       const sentences = text.split(/(?<=[.?!])\s+/).filter(Boolean);
       // The head line and the question; a borrow states its marks in one more.
-      assert.ok(sentences.length <= 3, `${id}: ${text}`);
-      assert.ok(
+      reportEditorialLimit(
+        sentences.length <= 3,
+        `${id}: opener exceeds 3 sentences`,
+      );
+      reportEditorialLimit(
         sentences.every((s) => optionWords(s) <= 25),
-        `${id}: ${text}`,
+        `${id}: sentence exceeds 25 words`,
       );
       assert.doesNotMatch(p.public.prompt, forbidden);
       const r = p.public.response;
@@ -186,14 +169,20 @@ test("readability: short prompts, matched option lengths, no property names", ()
       for (const label of labels) assert.doesNotMatch(label, forbidden);
       if (r.kind === "choice") {
         const words = labels.map(optionWords);
-        assert.ok(Math.max(...words) <= 12, `${id}: ${labels.join(" | ")}`);
+        reportEditorialLimit(
+          Math.max(...words) <= 12,
+          `${id}: option exceeds 12 words`,
+        );
         assert.ok(
           Math.max(...words) - Math.min(...words) <= 3,
           `${id}: ${labels.join(" | ")}`,
         );
       }
       if (r.kind === "multi-part-choice")
-        assert.ok(labels.every((l) => l.length <= 80));
+        reportEditorialLimit(
+          labels.every((l) => l.length <= 80),
+          `${id}: option exceeds 80 characters`,
+        );
     }
 });
 

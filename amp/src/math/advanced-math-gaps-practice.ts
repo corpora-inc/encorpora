@@ -21,6 +21,7 @@ const meta = (
   skillId: string,
   difficultyOffset: number,
   description: string,
+  requiredFigureCapability?: TemplateMetadata["requiredFigureCapability"],
 ): TemplateMetadata => ({
   id,
   version: 1,
@@ -29,6 +30,7 @@ const meta = (
   gradeBand: "9–12",
   difficultyOffset,
   requiredResponseCapability: "single-choice-v1",
+  ...(requiredFigureCapability ? { requiredFigureCapability } : {}),
   description,
 });
 
@@ -38,6 +40,7 @@ export const seriesRecursionTemplate = meta(
   "arithmetic-sequences",
   0.3,
   "Sum an arithmetic series, convert between recursive and explicit rules, read a term from a table, or compute a term from a recursive rule.",
+  "scenes-v1",
 );
 export const compoundGrowthTemplate = meta(
   "compound-growth",
@@ -59,6 +62,7 @@ export const residualFunctionFitTemplate = meta(
   "regression-interpretation",
   0.4,
   "Use a residual plot or a table to choose a model type, and compute or interpret a residual from a nonlinear model and a data point.",
+  "scenes-v1",
 );
 export const graphFeaturesTemplate = meta(
   "function-graph-features",
@@ -66,6 +70,7 @@ export const graphFeaturesTemplate = meta(
   "logarithms",
   0.4,
   "Read intercepts, asymptotes, domain, range, direction and end behavior of exponential and logarithmic functions from an equation or a graph.",
+  "scenes-v1",
 );
 export const advancedMathGapTemplates: readonly TemplateMetadata[] = [
   seriesRecursionTemplate,

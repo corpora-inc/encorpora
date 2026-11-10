@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
   clientCanDraw,
+  figureCapabilities,
   generatedProblemSchema,
   problemResponseSchema,
   publicProblemSchema,
@@ -283,12 +284,14 @@ test("a stored answer must name a displayed option; feedback names only distract
 });
 
 test("clients without figure-choice-v1 are never served these families, online or offline", () => {
-  const figureTemplates = templates.filter((t) =>
-    families.includes(t.id as (typeof families)[number]),
+  const figureTemplates = templates.filter(
+    (t) =>
+      t.requiredResponseCapability === "figure-choice-v1" ||
+      t.requiredResponseCapabilities?.includes("figure-choice-v1"),
   );
-  assert.equal(figureTemplates.length, families.length);
+  assert.ok(figureTemplates.length > 0);
   assert.ok(responseCapabilities.includes("figure-choice-v1"));
-  const allFigures = ["function-displays-v1", "scenes-v1"];
+  const allFigures = figureCapabilities;
   for (const client of [
     { responseCapabilities: [], figureCapabilities: allFigures },
     {
@@ -326,8 +329,8 @@ test("clients without figure-choice-v1 are never served these families, online o
   for (const t of figureTemplates) {
     assert.equal(
       clientCanDraw(t, {
-        responseCapabilities: ["figure-choice-v1"],
-        figureCapabilities: ["scenes-v1"],
+        responseCapabilities,
+        figureCapabilities,
       }),
       true,
     );

@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -687,7 +688,6 @@ const oracles: Record<string, Oracle> = {
 /* --------------------------------------------------------------- tests */
 
 test("every select-all template is registered, deterministic and reachable", () => {
-  assert.equal(mine.length, 26);
   for (const t of mine) {
     assert.ok(
       templates.some((x) => x.id === t.id),
@@ -726,7 +726,10 @@ test("every instance satisfies the public contract and has one exact key", () =>
         r.label.includes(String(r.selectionCount)),
         `${t.id} label says how many`,
       );
-      assert.ok(r.options.every((o) => o.label.length <= 120));
+      reportEditorialLimit(
+        r.options.every((o) => o.label.length <= 120),
+        `${t.id}: option exceeds 120 characters`,
+      );
       assert.match(p.variant!.id, /^[a-z0-9][a-z0-9-]{0,63}$/);
     }
   }

@@ -4,35 +4,31 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
 import { build } from "esbuild";
-import { templates } from "../src/math/engine";
+import { generateProblem, templates } from "../src/math/engine";
 import {
   builtGuessChances,
   guessChance,
   guessChanceOf,
   guessChanceTable,
+  problemGuessChance,
 } from "../src/math/guess-chance";
 
 test("the table holds each family's computed chance, including typed and mixed families", () => {
-  // add-within-20 gained choice clauses, so a family that is still typed only.
-  const typed = templates.find((t) => t.id === "prism-volume-edges")!;
-  const answered = templates
-    .filter(
-      (t) =>
-        t.requiredResponseCapability || t.requiredResponseCapabilities?.length,
-    )
-    .slice(0, 6);
-  // These legacy typed families gained choice variants through different
-  // extension paths; admission metadata alone cannot identify them.
-  for (const id of ["times-table-pattern", "add-fractions", "sample-proportion-estimate"])
-    answered.push(templates.find((t) => t.id === id)!);
-  const table = guessChanceTable([typed, ...answered]);
+  const table = guessChanceTable(templates);
   assert.deepEqual(
-    table,
-    Object.fromEntries([typed, ...answered].map((t) => [t.id, guessChance(t)])),
+    Object.keys(table).sort(),
+    templates.map((t) => t.id).sort(),
   );
-  assert.equal(guessChanceOf(typed.id), 0);
-  assert.equal(table[typed.id], 0);
-  for (const family of answered) assert.ok(table[family.id]! > 0, family.id);
+  for (const family of templates) {
+    assert.equal(table[family.id], guessChance(family), family.id);
+    assert.equal(guessChanceOf(family.id), table[family.id], family.id);
+    for (let i = 0; i < 6; i++)
+      assert.ok(
+        table[family.id]! >=
+          problemGuessChance(generateProblem(family.id, `table:${i}`)),
+        `${family.id} table:${i}: table understates guessing chance`,
+      );
+  }
 });
 
 test("without a build there is no table, so families are computed on demand", () => {

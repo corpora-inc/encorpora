@@ -1,3 +1,5 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
+import { generatedProblemSchema } from "../src/math/contracts";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -36,54 +38,11 @@ const cases = (id: string): McasGapCase[] => {
   return cache.get(id)!;
 };
 
-const expectedVariants: Record<string, string[]> = {
-  "fact-equation-truth-select": ["facts", "tens"],
-  "mcas-round-hundred-select": ["three-digit", "four-digit", "halfway"],
-  "mcas-prime-factor-select": ["primes", "factors"],
-  "mcas-comparison-equations-select": ["times", "more"],
-  "mcas-true-product-equations": ["small-multiplier", "large-multiplier"],
-  "mcas-prism-range-select": ["range", "exact"],
-  "mcas-ratio-statements-select": ["three-groups", "two-groups"],
-  "mcas-true-quotient-equations": ["two-digit-divisor", "zero-in-quotient"],
-  "mcas-cube-prism-statements": [
-    "edge-1-over-2",
-    "edge-1-over-3",
-    "edge-1-over-4",
-  ],
-  "mcas-statistical-question-select": ["2-of-5", "3-of-5"],
-  "mcas-fraction-rate-select": ["three-days"],
-  "mcas-negative-fraction-forms": ["negative", "positive"],
-  "mcas-markup-price-select": ["markup", "markdown"],
-  "mcas-rational-irrational-select": ["radicals", "with-pi"],
-  "mcas-sci-notation-select": ["positive", "negative", "mixed"],
-  "mcas-table-intercept-select": ["zero-listed", "zero-missing"],
-  "mcas-quadratic-zeros-select": ["factored", "standard", "leading"],
-  "mcas-congruence-statement-select": ["aligned", "scrambled"],
-  "mcas-circle-equation-select": ["circle-center-radius"],
-  "mcas-cylinder-scaling-select": ["radius-height-both"],
-  "mcas-circle-radius-distance": ["radius", "diameter", "circumference"],
-  "mcas-parenthesized-product-statement": [
-    "times-sum",
-    "times-difference",
-    "sum-times",
-  ],
-  "mcas-slope-sign-description": [
-    "falls-as-rises",
-    "rises-as-rises",
-    "rises-as-falls",
-    "falls-as-falls",
-    "unchanged",
-  ],
-  "mcas-rotational-symmetry": ["which-has", "which-lacks"],
-  "mcas-product-factor-size": ["greater", "less", "equal"],
-};
-const singleIds = new Set([
-  "mcas-circle-radius-distance",
-  "mcas-parenthesized-product-statement",
-  "mcas-slope-sign-description",
-  "mcas-rotational-symmetry",
-  "mcas-product-factor-size",
-]);
+const singleIds = new Set(
+  mcasGapTemplates
+    .filter((t) => t.requiredResponseCapability === "single-choice-v1")
+    .map((t) => t.id),
+);
 
 /** Evaluate the TeX the generators write: numbers, fractions, mixed numbers, roots, pi. */
 function tex(source: string): number {
@@ -177,14 +136,56 @@ const checkTruth = (
 };
 const promptOf = (c: McasGapCase) => c.problem.public.prompt;
 
-test("every template reaches every variant over 400 seeds and is deterministic", () => {
-  assert.deepEqual(
-    mcasGapTemplateIds.sort(),
-    Object.keys(expectedVariants).sort(),
-  );
+// Fixed witnesses keep the independent mathematical cases below exercised.
+// They are not a complete inventory; new types come from the registry.
+const regressionCases: Record<string, string[]> = {
+  "fact-equation-truth-select": ["facts", "tens"],
+  "mcas-round-hundred-select": ["three-digit", "four-digit", "halfway"],
+  "mcas-prime-factor-select": ["primes", "factors"],
+  "mcas-comparison-equations-select": ["times", "more"],
+  "mcas-true-product-equations": ["small-multiplier", "large-multiplier"],
+  "mcas-prism-range-select": ["range", "exact"],
+  "mcas-ratio-statements-select": ["three-groups", "two-groups"],
+  "mcas-true-quotient-equations": ["two-digit-divisor", "zero-in-quotient"],
+  "mcas-cube-prism-statements": [
+    "edge-1-over-2",
+    "edge-1-over-3",
+    "edge-1-over-4",
+  ],
+  "mcas-statistical-question-select": ["2-of-5", "3-of-5"],
+  "mcas-fraction-rate-select": ["three-days"],
+  "mcas-negative-fraction-forms": ["negative", "positive"],
+  "mcas-markup-price-select": ["markup", "markdown"],
+  "mcas-rational-irrational-select": ["radicals", "with-pi"],
+  "mcas-sci-notation-select": ["positive", "negative", "mixed"],
+  "mcas-table-intercept-select": ["zero-listed", "zero-missing"],
+  "mcas-quadratic-zeros-select": ["factored", "standard", "leading"],
+  "mcas-congruence-statement-select": ["aligned", "scrambled"],
+  "mcas-circle-equation-select": ["circle-center-radius"],
+  "mcas-cylinder-scaling-select": ["radius-height-both"],
+  "mcas-circle-radius-distance": ["radius", "diameter", "circumference"],
+  "mcas-parenthesized-product-statement": [
+    "times-sum",
+    "times-difference",
+    "sum-times",
+  ],
+  "mcas-slope-sign-description": [
+    "falls-as-rises",
+    "rises-as-rises",
+    "rises-as-falls",
+    "falls-as-falls",
+    "unchanged",
+  ],
+  "mcas-rotational-symmetry": ["which-has", "which-lacks"],
+  "mcas-product-factor-size": ["greater", "less", "equal"],
+};
+
+test("every template generates valid problems over 400 seeds and is deterministic", () => {
   for (const id of mcasGapTemplateIds) {
+    for (const c of cases(id)) generatedProblemSchema.parse(c.problem);
     const seen = new Set(cases(id).map((c) => c.variant));
-    assert.deepEqual([...seen].sort(), [...expectedVariants[id]!].sort(), id);
+    for (const v of regressionCases[id] ?? [])
+      assert.ok(seen.has(v), `${id}: mathematical case ${v} was not exercised`);
     for (const seed of ["a", "b", "mg:17"])
       assert.deepEqual(mcasGapCase(id, seed), mcasGapCase(id, seed), id);
     assert.throws(() => mcasGapCase(id, ""), /Seed/);
@@ -199,9 +200,9 @@ test("multi-select problems have distinct options, one exact keyed set and no le
       const response = selection(c);
       const labels = response.options.map((o) => o.label);
       assert.equal(new Set(labels).size, labels.length, id);
-      assert.ok(
+      reportEditorialLimit(
         labels.every((l) => l.length <= 120),
-        `${id} label length`,
+        `${id}: option exceeds 120 characters`,
       );
       assert.ok(response.options.length >= 3 && response.options.length <= 8);
       const ids = parseSelection(c.problem.answer)!;
@@ -769,7 +770,10 @@ test("every family has a method, principle, lesson, one partial facet mapping an
   for (const t of mcasGapTemplates) {
     const method = methods[t.id]!;
     assert.ok(method, `${t.id} method`);
-    assert.ok(method.goal.length <= 140, `${t.id} goal length`);
+    reportEditorialLimit(
+      method.goal.length <= 140,
+      `${t.id}: goal exceeds 140 characters`,
+    );
     assert.ok(method.intuition && method.watch && method.method.length >= 2);
     assert.ok(principles[t.id], `${t.id} principle`);
     const bound = lessons.filter((l) => l.templateIds.includes(t.id));

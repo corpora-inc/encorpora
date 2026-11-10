@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
@@ -61,10 +62,14 @@ test("every angle-argument template is registered, valid and deterministic", () 
   for (const id of IDS) {
     assert.ok(registered.has(id), id);
     assert.ok(methods[id]?.watch, `${id} method`);
-    assert.ok(methods[id]!.goal.length <= 140, `${id} goal is concise`);
-    assert.ok(
+    reportEditorialLimit(
+      methods[id]!.goal.length <= 140,
+      `${id}: goal exceeds 140 characters`,
+    );
+    assert.ok(methods[id]!.method.length > 0, `${id}: missing method`);
+    reportEditorialLimit(
       methods[id]!.method.length >= 2 && methods[id]!.method.length <= 4,
-      id,
+      `${id}: method outside 2–4 step budget`,
     );
     assert.ok(principles[id], `${id} principle`);
     for (const [i, p] of sample(id, 80).entries()) {

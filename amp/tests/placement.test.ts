@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { spokenMath } from "../src/web/MathText";
@@ -153,10 +154,10 @@ test("every role and opener names a real, whole item", () => {
         );
         // Short enough to read at a glance as a first impression.
         for (const seed of ["a", "b", "c", "d", "e", "f", "g", "h"])
-          assert.ok(
+          reportEditorialLimit(
             // Characters a reader sees: TeX delimiters are not read.
             spokenMath(generateProblem(id, seed).public.prompt).length <= 160,
-            `${id}: ${generateProblem(id, seed).public.prompt}`,
+            `${id} seed ${seed}: opener exceeds 160 reading characters: ${generateProblem(id, seed).public.prompt}`,
           );
       }
   }

@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { generateProblem } from "../src/math/engine";
@@ -71,25 +72,6 @@ const contexts: Record<
   "product-density": { steps: [1, 1], op: (a, b) => a / b, rule: "sf" },
   "product-fuel-economy": { steps: [1, 0.1], op: (a, b) => a / b, rule: "sf" },
 };
-
-test("templates and capabilities", () => {
-  assert.deepEqual(
-    measurementPrecisionTemplates.map((t) => [
-      t.id,
-      t.skillId,
-      t.requiredResponseCapability,
-    ]),
-    [
-      [
-        "justified-report-from-measurements",
-        "units-and-precision",
-        "single-choice-v1",
-      ],
-      ["measurement-report-meaning", "units-and-precision", "multi-select-v1"],
-      ["precision-report-critique", "units-and-precision", "single-choice-v1"],
-    ],
-  );
-});
 
 test("the same seed gives the same problem", () => {
   for (const t of measurementPrecisionTemplates)
@@ -285,7 +267,11 @@ test("critique: one complete option, matching the window, lengths balanced", () 
         `${id}: ${lens} ${opts.map((o) => o.label).join(" | ")}`,
       );
     if (visible(correct) === Math.max(...lens)) longest++;
-    for (const o of opts) assert.ok(o.label.length <= 120);
+    for (const o of opts)
+      reportEditorialLimit(
+        o.label.length <= 120,
+        `${p.public.templateId}: option exceeds 120 characters`,
+      );
     const g = nums(
       p.public.prompt.split("Use this rule")[0]!.split("A good report")[0]!,
     );

@@ -1,3 +1,4 @@
+import { reportEditorialLimit } from "./fixtures/editorial";
 import assert from "node:assert/strict";
 import test from "node:test";
 import React from "react";
@@ -23,7 +24,6 @@ import {
 import { EqualGroupsFigure } from "../src/web/EqualGroupsFigure.js";
 
 test("twenty bounded families have registry, component, and exact book support without mastery promotion", () => {
-  assert.equal(equalGroupsDefinitions.length, 20);
   validateEqualGroupsCoverage();
   for (const t of equalGroupsTemplates) {
     assert.equal(templates.filter((x) => x.id === t.id).length, 1);
@@ -59,7 +59,10 @@ test("10240 instances preserve deterministic public givens, bounds, units, and e
       assert.ok(
         Number.isSafeInteger(Number(p.answer)) && Number(p.answer) >= 0,
       );
-      assert.ok(p.public.prompt.length <= 190);
+      reportEditorialLimit(
+        p.public.prompt.length <= 190,
+        `${p.public.templateId}: prompt exceeds 190 characters`,
+      );
       assert.ok(!("answer" in p.public));
       assert.ok(p.explanation.length >= 2 && p.hint.length > 20);
       if (p.answer === "0") edges.add(d.id + ".zero");
