@@ -403,10 +403,15 @@ export async function verifyShellReview({
             });
             const problems: string[] = [];
             assert.ok(frames.length > 30, `${tag}: too few frames recorded`);
+            // The settled page, read directly: WebKit can stop running
+            // animation frames before the last one is recorded.
+            const settled = await page
+              .locator(".lesson-index [role=status]")
+              .textContent();
             assert.equal(
-              frames.at(-1)!.query,
+              /“(.*)”/.exec(settled ?? "")?.[1],
               "fraction",
-              `${tag}: the last frame shows the typed query`,
+              `${tag}: the result summary names the typed query`,
             );
             for (let i = 1; i < frames.length; i++) {
               const [a, b] = [frames[i - 1]!, frames[i]!];
