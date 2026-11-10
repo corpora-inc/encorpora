@@ -23,7 +23,9 @@ export function LessonIndex(props: Props) {
   const params = new URLSearchParams(location.search);
   const topic = params.get("topic");
   const select = (key: "strand" | "topic", value: string | null) => {
-    const next = new URLSearchParams(location.search);
+    // The live URL: the search field writes its query after a pause, which
+    // can land after this render.
+    const next = new URLSearchParams(window.location.search);
     if (value) next.set(key, value);
     else next.delete(key);
     navigate({ pathname: "/lessons", search: next.toString() });

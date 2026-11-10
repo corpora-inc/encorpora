@@ -1,4 +1,14 @@
-import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
+import {
+  memo,
+  useCallback,
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
 import { useAppRoute } from "./app-routes";
 import type { TemplateMetadata } from "../math/contracts";
 import type { Lesson } from "../content/lessons";
@@ -20,6 +30,7 @@ import {
   visibleIds,
   type LibraryItem,
 } from "./lib/lesson-library";
+import { useUrlSearchText } from "./lib/url-search-text";
 import styles from "./LessonLibrary.module.css";
 
 export type LibrarySkillRow = {
@@ -61,8 +72,10 @@ type LibraryProps = {
  * `/lessons`: every reference lesson and every problem type's short lesson,
  * grouped by curriculum band, filtered by math area and found by instant
  * search. The query and area live in the URL (`?q=`, `?strand=`), so
- * refresh, Back and a shared link restore the same results. Rows stay
- * mounted and are hidden, not removed, so filtering never rebuilds the page.
+ * refresh, Back and a shared link restore the same results. The field owns
+ * its text while typing and the URL follows after a pause, so a keystroke
+ * never waits on the router. Rows stay mounted and are hidden, not removed,
+ * and each row re-renders only when its own visibility changes.
  * The library opens once its whole index (catalog and glossary) is here.
  */
 export function LessonLibrary(props: LibraryProps) {
@@ -174,26 +187,11 @@ function Library({
   const strand = strandNames[params.get("strand") ?? ""]
     ? params.get("strand")!
     : "";
-  // The field owns its text while typing; the URL follows (replacing the
-  // entry, so Back leaves the library rather than undoing keystrokes) and
-  // wins when it changes from outside (Back, Forward, a shared link).
-  const [text, setText] = useState(urlQuery);
-  // Values this field wrote itself. Navigation is asynchronous, so the URL
-  // can still show "sl" after "slo" has been typed; an echo of our own write
-  // must never overwrite newer typing. Only a value from elsewhere (Back,
-  // Forward, a shared link) replaces the field.
-  const written = useRef(new Set<string>());
   const body = useRef<HTMLDivElement>(null);
   const controls = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (written.current.has(urlQuery)) return;
-    setText((current) =>
-      current.trim() === urlQuery.trim() ? current : urlQuery,
-    );
-  }, [urlQuery]);
-  const write = (next: { q?: string; strand?: string }) => {
-    // A new filter starts at its results, with the search still pinned. Keeping
-    // a deeper offset would leave the summary and first matches under the bar.
+  // A new filter starts at its results, with the search still pinned. Keeping
+  // a deeper offset would leave the summary and first matches under the bar.
+  const pinResults = () => {
     const bodyTop = body.current?.getBoundingClientRect().top;
     const controlsTop = controls.current?.getBoundingClientRect().top;
     if (
@@ -207,16 +205,23 @@ function Library({
         top: Math.ceil(window.scrollY + bodyTop - controlsTop),
         behavior: "instant",
       });
-    const search = new URLSearchParams(location.search);
+  };
+  // Reads the live URL, not this render's copy: a write can land between a
+  // render and the next one.
+  const writeUrl = (next: { q: string; strand: string }) => {
+    const search = new URLSearchParams(window.location.search);
     for (const [key, value] of Object.entries(next))
       if (value) search.set(key, value);
       else search.delete(key);
-    if ("q" in next) written.current.add(next.q ?? "");
     navigate(
       { pathname: "/lessons", search: search.toString() },
-      { replace: "q" in next, resetScroll: false },
+      // Typing replaces the entry, so Back leaves the library rather than
+      // undoing keystrokes; a new area is a step Back can undo.
+      { replace: next.strand === strand, resetScroll: false },
     );
   };
+  const field = useUrlSearchText(urlQuery, (q) => writeUrl({ q, strand }));
+  const text = field.text;
   const query = useDeferredValue(text.trim());
   const base = useMemo(
     () =>
@@ -258,15 +263,39 @@ function Library({
   }, [items]);
   // Sections the parent closed; a new search opens every section again.
   const [closed, setClosed] = useState<ReadonlySet<string>>(new Set());
-  useEffect(() => setClosed(new Set()), [query, strand]);
+  useEffect(
+    // Unchanged when nothing is closed, so a keystroke re-renders no rows.
+    () => setClosed((current) => (current.size ? new Set() : current)),
+    [query, strand],
+  );
   const lessonById = useMemo(
     () => new Map(props.references.map((lesson) => [lesson.id, lesson])),
     [props.references],
   );
-  const count = (kind: LibraryItem["kind"]) =>
-    [...shown].filter((key) => key.startsWith(`${kind}:`)).length;
-  const lessons = count("lesson"),
-    types = count("type");
+  // Rows keep one handler for the page's life, so a re-render of the page
+  // around them never re-renders a row.
+  const handlers = useRef(props);
+  handlers.current = props;
+  const openLesson = useCallback(
+    (id: string, trigger: HTMLElement) => {
+      const lesson = lessonById.get(id);
+      if (lesson) handlers.current.openReference(lesson, trigger);
+    },
+    [lessonById],
+  );
+  const openTopic = useCallback(
+    (id: string) => handlers.current.openTopic(id),
+    [],
+  );
+  const counts = useMemo(() => {
+    let lessons = 0,
+      types = 0;
+    for (const key of shown)
+      if (key.startsWith("lesson:")) lessons++;
+      else types++;
+    return { lessons, types };
+  }, [shown]);
+  const { lessons, types } = counts;
   const plural = (n: number, one: string, many: string) =>
     `${n.toLocaleString("en-US")} ${n === 1 ? one : many}`;
   // The field shows the whole query; the count names a long one shortened,
@@ -297,14 +326,16 @@ function Library({
               autoComplete="off"
               enterKeyHint="search"
               onChange={(event) => {
-                setText(event.target.value);
-                write({ q: event.target.value.trim() });
+                pinResults();
+                field.change(event.target.value);
               }}
+              onBlur={field.flush}
               onKeyDown={(event) => {
+                if (event.key === "Enter") field.flush();
                 if (event.key === "Escape" && text) {
                   event.preventDefault();
-                  setText("");
-                  write({ q: "" });
+                  pinResults();
+                  field.set("");
                 }
               }}
             />
@@ -314,8 +345,8 @@ function Library({
               aria-label="Clear search"
               hidden={!text}
               onClick={(event) => {
-                setText("");
-                write({ q: "" });
+                pinResults();
+                field.set("");
                 event.currentTarget
                   .closest("label")
                   ?.querySelector("input")
@@ -331,7 +362,10 @@ function Library({
             aria-label="Math area"
             className={styles.area}
             value={strand}
-            onValueChange={(value) => write({ strand: value })}
+            onValueChange={(value) => {
+              pinResults();
+              writeUrl({ q: field.carry(), strand: value });
+            }}
           >
             <option value="">Every math area</option>
             {Object.entries(strandNames).map(([key, name]) => (
@@ -345,130 +379,206 @@ function Library({
         <p className={styles.summary} role="status" aria-live="polite">
           {summary}
         </p>
-        {words.length > 0 && (
-          <ul className={styles.words} aria-label="Math words">
-            {words.map((entry) => (
-              <li key={entry.id}>
-                <strong>{entry.term}</strong> <MathText text={entry.plain} />
-              </li>
-            ))}
-          </ul>
-        )}
-        {bands.map(({ band, lessons: bandLessons, types: bandTypes }) => {
-          const visibleLessons = bandLessons.filter((item) =>
-            shown.has(`lesson:${item.id}`),
-          ).length;
-          const visibleTypes = bandTypes.reduce(
-            (sum, group) =>
-              sum +
-              group.list.filter((item) => shown.has(`type:${item.id}`)).length,
-            0,
-          );
-          const open = !detailsShown || !closed.has(band);
-          return (
-            <section
-              key={band}
-              className={styles.band}
-              data-band={band}
-              hidden={!visibleLessons && !visibleTypes}
-            >
-              <h2 className={styles.bandHeading} hidden={!detailsShown}>
-                <button
-                  type="button"
-                  aria-expanded={open}
-                  onClick={() =>
-                    setClosed((current) => {
-                      const next = new Set(current);
-                      if (open) next.add(band);
-                      else next.delete(band);
-                      return next;
-                    })
-                  }
-                >
-                  <span>{bandLabel(band)}</span>
-                  <span className={styles.bandCount}>
-                    {visibleLessons + visibleTypes}
-                  </span>
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="m6 9 6 6 6-6" />
-                  </svg>
-                </button>
-              </h2>
-              <div className={styles.bandBody} hidden={!open}>
-                <ul
-                  className={styles.lessons}
-                  aria-label={
-                    detailsShown ? `${bandLabel(band)} lessons` : "Lessons"
-                  }
-                  hidden={!visibleLessons}
-                >
-                  {bandLessons.map((item) => (
-                    <li key={item.id} hidden={!shown.has(`lesson:${item.id}`)}>
-                      <button
-                        type="button"
-                        data-lesson-id={item.id}
-                        data-strand={item.strand}
-                        onClick={(event) => {
-                          const lesson = lessonById.get(item.id);
-                          if (lesson)
-                            props.openReference(lesson, event.currentTarget);
-                        }}
-                      >
-                        <span className={styles.lessonTitle}>
-                          <MathText text={item.title} />
-                        </span>
-                        <span className={styles.lessonSummary}>
-                          <MathText text={item.summary} />
-                        </span>
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-                <div className={styles.types} hidden={!visibleTypes}>
-                  <h3>Practice by problem type</h3>
-                  {bandTypes.map((group) => {
-                    const visible = group.list.some((item) =>
-                      shown.has(`type:${item.id}`),
-                    );
-                    return (
-                      <ul
-                        key={group.strand}
-                        className="topic-list"
-                        data-strand={group.strand}
-                        aria-label={
-                          detailsShown
-                            ? `${strandNames[group.strand]}, ${bandLabel(band)}`
-                            : strandNames[group.strand]
-                        }
-                        hidden={!visible}
-                      >
-                        {group.list.map((item) => (
-                          <li
-                            key={item.id}
-                            hidden={!shown.has(`type:${item.id}`)}
-                          >
-                            <button
-                              type="button"
-                              data-template={item.id}
-                              onClick={() => props.openTopic(item.id)}
-                            >
-                              {/* One flex child: text and formulas wrap
-                                together as a line, never word by word. */}
-                              <span>
-                                <MathText text={item.title} />
-                              </span>
-                            </button>
-                          </li>
-                        ))}
-                      </ul>
-                    );
-                  })}
-                </div>
-              </div>
-            </section>
-          );
-        })}
+        <Results
+          words={words}
+          bands={bands}
+          shown={shown}
+          closed={closed}
+          setClosed={setClosed}
+          detailsShown={detailsShown}
+          openLesson={openLesson}
+          openTopic={openTopic}
+        />
       </div>
     </section>
   );
 }
+
+type Band = {
+  band: string;
+  lessons: LibraryItem[];
+  types: { strand: string; list: LibraryItem[] }[];
+};
+
+/**
+ * The math words and every band's rows. It renders from the deferred query
+ * only, so typing re-renders the search bar and nothing else.
+ */
+const Results = memo(function Results({
+  words,
+  bands,
+  shown,
+  closed,
+  setClosed,
+  detailsShown,
+  openLesson,
+  openTopic,
+}: {
+  words: readonly GlossaryEntry[];
+  bands: readonly Band[];
+  shown: ReadonlySet<string>;
+  closed: ReadonlySet<string>;
+  setClosed: Dispatch<SetStateAction<ReadonlySet<string>>>;
+  detailsShown: boolean;
+  openLesson: (id: string, trigger: HTMLElement) => void;
+  openTopic: (id: string) => void;
+}) {
+  return (
+    <>
+      {words.length > 0 && (
+        <ul className={styles.words} aria-label="Math words">
+          {words.map((entry) => (
+            <li key={entry.id}>
+              <strong>{entry.term}</strong> <MathText text={entry.plain} />
+            </li>
+          ))}
+        </ul>
+      )}
+      {bands.map(({ band, lessons: bandLessons, types: bandTypes }) => {
+        const visibleLessons = bandLessons.filter((item) =>
+          shown.has(`lesson:${item.id}`),
+        ).length;
+        const visibleTypes = bandTypes.reduce(
+          (sum, group) =>
+            sum +
+            group.list.filter((item) => shown.has(`type:${item.id}`)).length,
+          0,
+        );
+        const open = !detailsShown || !closed.has(band);
+        return (
+          <section
+            key={band}
+            className={styles.band}
+            data-band={band}
+            hidden={!visibleLessons && !visibleTypes}
+          >
+            <h2 className={styles.bandHeading} hidden={!detailsShown}>
+              <button
+                type="button"
+                aria-expanded={open}
+                onClick={() =>
+                  setClosed((current) => {
+                    const next = new Set(current);
+                    if (open) next.add(band);
+                    else next.delete(band);
+                    return next;
+                  })
+                }
+              >
+                <span>{bandLabel(band)}</span>
+                <span className={styles.bandCount}>
+                  {visibleLessons + visibleTypes}
+                </span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+            </h2>
+            <div className={styles.bandBody} hidden={!open}>
+              <ul
+                className={styles.lessons}
+                aria-label={
+                  detailsShown ? `${bandLabel(band)} lessons` : "Lessons"
+                }
+                hidden={!visibleLessons}
+              >
+                {bandLessons.map((item) => (
+                  <LessonRow
+                    key={item.id}
+                    item={item}
+                    hidden={!shown.has(`lesson:${item.id}`)}
+                    open={openLesson}
+                  />
+                ))}
+              </ul>
+              <div className={styles.types} hidden={!visibleTypes}>
+                <h3>Practice by problem type</h3>
+                {bandTypes.map((group) => {
+                  const visible = group.list.some((item) =>
+                    shown.has(`type:${item.id}`),
+                  );
+                  return (
+                    <ul
+                      key={group.strand}
+                      className="topic-list"
+                      data-strand={group.strand}
+                      aria-label={
+                        detailsShown
+                          ? `${strandNames[group.strand]}, ${bandLabel(band)}`
+                          : strandNames[group.strand]
+                      }
+                      hidden={!visible}
+                    >
+                      {group.list.map((item) => (
+                        <TypeRow
+                          key={item.id}
+                          item={item}
+                          hidden={!shown.has(`type:${item.id}`)}
+                          open={openTopic}
+                        />
+                      ))}
+                    </ul>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        );
+      })}
+    </>
+  );
+});
+
+const LessonRow = memo(function LessonRow({
+  item,
+  hidden,
+  open,
+}: {
+  item: LibraryItem;
+  hidden: boolean;
+  open: (id: string, trigger: HTMLElement) => void;
+}) {
+  return (
+    <li hidden={hidden}>
+      <button
+        type="button"
+        data-lesson-id={item.id}
+        data-strand={item.strand}
+        onClick={(event) => open(item.id, event.currentTarget)}
+      >
+        <span className={styles.lessonTitle}>
+          <MathText text={item.title} />
+        </span>
+        <span className={styles.lessonSummary}>
+          <MathText text={item.summary} />
+        </span>
+      </button>
+    </li>
+  );
+});
+
+const TypeRow = memo(function TypeRow({
+  item,
+  hidden,
+  open,
+}: {
+  item: LibraryItem;
+  hidden: boolean;
+  open: (id: string) => void;
+}) {
+  return (
+    <li hidden={hidden}>
+      <button
+        type="button"
+        data-template={item.id}
+        onClick={() => open(item.id)}
+      >
+        {/* One flex child: text and formulas wrap together as a line, never
+            word by word. */}
+        <span>
+          <MathText text={item.title} />
+        </span>
+      </button>
+    </li>
+  );
+});
