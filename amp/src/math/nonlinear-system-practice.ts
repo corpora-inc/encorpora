@@ -201,7 +201,7 @@ function plotIntersections(
     {
       prompt: `The graphs of ${eqs} are shown on the grid from $x=-8$ to $8$ and $y=-10$ to $10$. Plot every solution of the system. ${question}`,
       answer: rat(value),
-      hint: "The solutions are where the graphs meet, not a curve's zeros and not its vertex. A second crossing still counts.",
+      hint: `The equations are ${eqs}. The solutions are where the graphs meet, not a curve's zeros and not its vertex. A second crossing still counts.`,
       explanation: [
         `The curves meet at ${listed}.`,
         points.length === 1

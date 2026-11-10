@@ -263,8 +263,10 @@ export function subtractionUnknown(
     answer: String(answer),
     figure,
     hint: startUnknown
-      ? `The minus sign does not mean to take the two numbers you can see apart. The number before the minus sign is the start of the whole bar.`
-      : `The number before the minus sign is the whole bar. One part left, and the other part is what remains. Do not add the two numbers you can see, and do not copy the result into the box.`,
+      ? `In ${equation}, the box is the start, the number before the minus sign. ${P} left and ${R} stayed, so join those two parts. Do not subtract them.`
+      : which === 0
+        ? `${W} is the whole bar in ${equation}. The box is the part that left, and ${R} stayed. Take ${R} away from ${W}.`
+        : `${W} is the whole bar in ${equation}. ${P} left. The box is what remains, so take ${P} away from ${W}.`,
     explanation: startUnknown
       ? [
           `The number before the minus sign is the whole bar, the start. In ${equation} the start is the box: ${P} left it and ${R} remain.`,
@@ -374,7 +376,7 @@ export function valuesFromSet(
     prompt: `Which numbers from the set {${shown}} make $${sentence}$ true? Mark each.`,
     response: built.response,
     answer: built.answer,
-    hint: `Put each number in for x and work out both sides. A strict sign is false when the two sides match. Then count how many numbers from the set worked.`,
+    hint: `Try each number from {${shown}} in $${sentence}$. Work out both sides. A strict sign is false when the two sides match, then count how many from the set worked.`,
     explanation: [
       `Try each number in $${sentence}$.`,
       ...values.map((k, i) => {
@@ -469,7 +471,7 @@ export function strictInequality(
         ])
         .scene({ width: 280, title: `x ${sign} ${cText}` }),
     },
-    hint: `The sign is strict, so the boundary itself fails. The solutions run forever along the ray, not just through the whole numbers.`,
+    hint: `The inequality is $x ${sign} ${cText}$. The sign is strict, so ${cText} itself fails. The solutions run forever along the ray, not just through the whole numbers.`,
     explanation: [
       `An open circle at ${cText} and a ray to the ${sign === "<" ? "left" : "right"}: every number ${word} ${cText} works, and ${cText} does not.`,
       `Test ${signed(probe)}: ${signed(probe)} ${sign} ${cText} is ${probe < c === (sign === "<") || probe > c === (sign === ">") ? "true" : "false"}.`,
@@ -620,7 +622,7 @@ export function solutionCountSteps(
     response,
     answer,
     workGrading,
-    hint: "Expand the parentheses first. Combine like terms on the left. Then clear the x terms and read whether what is left names one x, a true number sentence, or a false one.",
+    hint: `Expand $${a}(x${b >= 0 ? "+" : ""}${b})$ first. Combine like terms on the left, then clear the x terms and read whether what is left names one x, a true number sentence, or a false one.`,
     explanation: [
       `Distribute ${a}: the left side becomes ${expand.split("=")[0]}.`,
       `Combining like terms gives ${combined}.`,
@@ -734,7 +736,7 @@ export function linesThroughPoints(
     },
     answer: chosen.answer,
     choiceFeedback: chosen.feedback,
-    hint: "Subtract the y-coordinates and the x-coordinates of each pair to get the two slopes. Same slope means parallel or the same line; then test one point in the other line.",
+    hint: `Line 1 uses ${pair(p1)} and ${pair(p2)}; line 2 uses ${pair(q1)} and ${pair(q2)}. Subtract the y-coordinates and the x-coordinates of each pair to get the two slopes. Same slope means parallel or the same line; then test one point in the other line.`,
     explanation: [
       `Slope of line 1: (${p2[1]} − ${p1[1]}) / (${p2[0]} − ${p1[0]}) = ${slopeText(s1)}.`,
       `Slope of line 2: (${q2[1]} − ${q1[1]}) / (${q2[0]} − ${q1[0]}) = ${slopeText(s2)}.`,
@@ -948,7 +950,7 @@ export function variableRole(seed: string): GeneratedProblem {
       "Each sentence uses a letter. For each sentence, choose the role of the letter.",
     response: built.response,
     answer: built.answer,
-    hint: "If a fact pins the letter to one number, it is one unknown. If every number that meets a condition is allowed, the letter stands for that whole set.",
+    hint: `${name} gives away ${gave} ${thing} and has ${left} left. If a fact pins the letter to one number, it is one unknown. ${formula ? "A side length can be any positive number." : `The other sentence uses ${bound}.`} If every number that meets a condition is allowed, the letter stands for that whole set.`,
     explanation: [
       `${fixed} Giving away ${gave} and having ${left} left pins ${letter} at ${start}, one number.`,
       formula
@@ -1057,7 +1059,7 @@ export function arithmeticAlgebra(seed: string): GeneratedProblem {
     prompt: story,
     response: built.response,
     answer: built.answer,
-    hint: "Undo the last operation first. The arithmetic steps and the algebra steps use those same two operations in that same order.",
+    hint: `The story uses ${p} and ${q} to reach ${total}. Undo the last operation first. The arithmetic steps and the algebra steps use those same two operations in that same order.`,
     explanation: grouped
       ? [
           `Divide first: ${total} ÷ ${p} = ${total / p}. Then subtract ${q}: ${total / p} − ${q} = ${x}.`,
@@ -1177,7 +1179,7 @@ export function feeGraph(seed: string): GeneratedProblem {
     response,
     answer,
     choiceFeedback: feedback,
-    hint: "Solve for the boundary, then test x = 0 in the original inequality. Shade toward 0 only when 0 makes the inequality true. A strict sign uses an open circle.",
+    hint: `Start from $${m.fee} + ${m.rate}x ${sym} ${m.budget}$. Solve for the boundary, then test x = 0 in that inequality. Shade toward 0 only when 0 makes it true. A strict sign uses an open circle.`,
     explanation: [
       `The boundary is (${m.budget} − ${m.fee}) / ${m.rate} = ${m.b}.`,
       `${m.fee} ${sym} ${m.budget} is ${m.toward0 ? "true" : "false"} at x = 0, so the ray goes ${left ? "left, toward 0" : "right, away from 0"}.`,
@@ -1244,7 +1246,7 @@ export function feeMeaning(seed: string): GeneratedProblem {
     },
     answer: chosen.answer,
     choiceFeedback: chosen.feedback,
-    hint: "Find the boundary, then see whether 0 is allowed. A whole-number count uses the next whole number inside the ray when the boundary is not a whole number.",
+    hint: `The cost $${m.fee} + ${m.rate}x$ must satisfy $${m.fee} + ${m.rate}x ${sym} ${m.budget}$. Find the boundary, then see whether 0 ${unit} is allowed. A whole-number count uses the next whole number inside the ray when the boundary is not a whole number.`,
     explanation: [
       `The boundary is ${m.b}. The sign ${sym} is ${strict ? "strict" : "inclusive"}.`,
       m.toward0
@@ -1298,7 +1300,7 @@ export function makeExample(seed: string): GeneratedProblem {
       response,
       answer,
       workGrading,
-      hint: "Expand the left side. Infinitely many solutions means the two sides are the same expression, including the plain number.",
+      hint: `Expand the left side $${k}(x − ${h})$. Infinitely many solutions means the two sides are the same expression, including the plain number.`,
       explanation: [
         `${k}(x − ${h}) = ${k}x − ${box}.`,
         `The right side ${k}x − □ matches when the box is ${box}.`,
@@ -1378,7 +1380,7 @@ export function makeExample(seed: string): GeneratedProblem {
     response,
     answer,
     workGrading,
-    hint: "Compare x counts first. The same count with a different plain number has no solution. The same expression has every number. A different x count has one number.",
+    hint: `The left side is $${axb(p, q)}$, so compare its x-count ${p} first. The same count with a different plain number has no solution. The same expression has every number. A different x count has one number.`,
     explanation: [
       `The left side is $${axb(p, q)}$. Its x-count is ${p} and its plain number is ${q}.`,
       "Same x-count and a different plain number: no number works.",
@@ -1491,7 +1493,7 @@ export function intersectionReason(seed: string): GeneratedProblem {
     response: built.response,
     answer: built.answer,
     figure: { kind: "scene", scene },
-    hint: "A solution of the system is on both lines. A point on only one line makes only that equation true.",
+    hint: `Line 1 is y = ${ftxt(m1)}x + ${b1} and line 2 is y = ${ftxt(m2)}x + ${b2}. A solution of the system is on both lines. Test P (${P[0]}, ${P[1]}), Q (${qx}, ${qy}) and R (${R[0]}, ${R[1]}). A point on only one line makes only that equation true.`,
     explanation: [
       `Q (${qx}, ${qy}) is on both lines, so both equations are true there.`,
       `P is on line 1 only: ${P[1]} equals the first line and not the second.`,
@@ -1543,7 +1545,7 @@ export function plotLine(seed: string): GeneratedProblem {
         .line({ m: fnum(m2), b: b2 }, { color: "warm", label: "Line 2" })
         .scene({ title: "Line 2 is drawn" }),
     },
-    hint: "Pick two x-values that the slope's denominator divides. Multiply by the slope and add the intercept. Those points are on the first line.",
+    hint: `The first line is y = ${ftxt(m)}x + ${b}. Pick two x-values that the denominator of ${ftxt(m)} divides. Multiply by that slope and add ${b}. Those points are on the first line.`,
     explanation: [
       `On y = ${ftxt(m)}x + ${b}, an x that ${m.d === 1 ? "is an integer" : `is a multiple of ${m.d}`} gives an integer y.`,
       `One such point is (${answerPoints[0]![0]}, ${answerPoints[0]![1]}). Another is (${answerPoints[1]![0]}, ${answerPoints[1]![1]}).`,
@@ -1611,7 +1613,7 @@ export function crossingEstimate(seed: string): GeneratedProblem {
     answer: chosen.answer,
     choiceFeedback: chosen.feedback,
     figure: { kind: "scene", scene },
-    hint: "Follow the two lines to where they meet. Read x and y to the nearest half unit. A y-intercept and a swapped pair are not the crossing.",
+    hint: `The lines are y = ${ftxt(m1)}x + ${b1} and y = ${ftxt(m2)}x + ${b2}. Follow them to where they meet. Read x and y to the nearest half unit. A y-intercept and a swapped pair are not the crossing.`,
     explanation: [
       `Exactly, x = ${ftxt(x)} and y = ${ftxt(y)}.`,
       `The nearest half-unit pair is ${key}, within a quarter unit of the exact crossing.`,
@@ -1698,7 +1700,7 @@ export function assumeCheck(seed: string): GeneratedProblem {
       : `Suppose x is a number with ${eq}. The chain reaches x = ${x}.`,
     response: built.response,
     answer: built.answer,
-    hint: "The first line is an assumption, not a property and not an identity. Follow what must be true, then test the result in the original equation.",
+    hint: `The first line assumes a solution of ${eq}. It is an assumption, not a property and not an identity. Follow what must be true, then test the result in that equation.`,
     explanation: none
       ? [
           "We supposed a solution exists. Each step keeps the truth of the line before it.",
@@ -1786,7 +1788,7 @@ export function scaledElimination(seed: string): GeneratedProblem {
     prompt: `E1: ${left1} = ${c}. E2: ${left2} = ${f}. The system is replaced by E1 and E2 + ${k}·E1.`,
     response: built.response,
     answer: built.answer,
-    hint: "Multiply every term of E1 by k, then add matching terms to E2. The new equation is reversible: subtract k·E1 to get E2 back.",
+    hint: `E1 is ${left1} = ${c}, and the new system uses E2 + ${k}·E1. Multiply every term of E1 by ${k}, then add matching terms to E2. The new equation is reversible: subtract ${k}·E1 to get E2 back.`,
     explanation: [
       `${k}·E1 is ${coef(k * a, "x")} and ${coef(k * b, "y")} equal to ${k * c}.`,
       `Add E2: ${coef(nx, "x")} = ${nr}. The y terms are ${e} + (${k})(${b}) = 0.`,
