@@ -15,6 +15,8 @@ const noLink = ["part", "parts", "whole", "row", "rows", "note", "notes"];
 export const areaClauseMethods: Record<string, ProblemMethod> = {
   "define-unit-square": {
     goal: "State the area of a square whose sides are each 1 unit long.",
+    watch:
+      "Count the covered surface in square units; side length and perimeter measure lengths.",
     senses,
     noLink,
     method: [
@@ -25,6 +27,8 @@ export const areaClauseMethods: Record<string, ProblemMethod> = {
   },
   "which-is-a-unit-square": {
     goal: "Choose the figure that is a square one unit on each side.",
+    watch:
+      "Check both side lengths: a square with sides longer than 1 unit is not a unit square.",
     senses,
     noLink,
     method: [
@@ -35,6 +39,8 @@ export const areaClauseMethods: Record<string, ProblemMethod> = {
   },
   "count-square-units": {
     goal: "Count the unit squares that cover a region with no gaps or overlaps.",
+    watch:
+      "Count each shaded square once, and leave empty squares out of the total.",
     senses,
     noLink,
     method: [
@@ -45,6 +51,8 @@ export const areaClauseMethods: Record<string, ProblemMethod> = {
   },
   "gaps-overlaps": {
     goal: "Choose the covering that has one tile on every cell and no tile on another.",
+    watch:
+      "Check the entire covering for both empty spaces and tiles placed on top of each other.",
     senses,
     noLink,
     method: [
@@ -55,6 +63,8 @@ export const areaClauseMethods: Record<string, ProblemMethod> = {
   },
   "tile-then-multiply": {
     goal: "Count one row of a partly tiled rectangle, then multiply by every row.",
+    watch:
+      "Include the rows that need tiles, not just the rows already filled.",
     senses,
     noLink,
     method: [
@@ -65,6 +75,8 @@ export const areaClauseMethods: Record<string, ProblemMethod> = {
   },
   "split-tiled-count": {
     goal: "Count both parts of a split rectangle and match the product a(b + c).",
+    watch:
+      "Multiply each part's width by the shared height before adding the two areas.",
     senses,
     noLink,
     method: [
@@ -75,6 +87,8 @@ export const areaClauseMethods: Record<string, ProblemMethod> = {
   },
   "choose-the-split": {
     goal: "Choose the column split that matches a times b plus a times c.",
+    watch:
+      "Match the split to the number of columns in each part, not the number of rows.",
     senses,
     noLink,
     method: [
@@ -85,6 +99,8 @@ export const areaClauseMethods: Record<string, ProblemMethod> = {
   },
   "your-own-cut": {
     goal: "Cut an L with no seam into two rectangles and add their areas.",
+    watch:
+      "The two rectangles must cover the L exactly, without overlapping or filling its missing corner.",
     senses,
     noLink,
     method: [
@@ -95,6 +111,8 @@ export const areaClauseMethods: Record<string, ProblemMethod> = {
   },
   "which-cut": {
     goal: "Choose the cut that splits an L into two rectangles with no shared area.",
+    watch:
+      "Check that both resulting pieces are rectangles and that neither covers part of the other.",
     senses,
     noLink,
     method: [
@@ -105,6 +123,8 @@ export const areaClauseMethods: Record<string, ProblemMethod> = {
   },
   "exhibit-same-perimeter": {
     goal: "Give a different rectangle with the same perimeter, and its area.",
+    watch:
+      "Keep the sum of one length and one width fixed; turning the original rectangle does not make a new one.",
     senses,
     noLink,
     method: [
@@ -115,6 +135,8 @@ export const areaClauseMethods: Record<string, ProblemMethod> = {
   },
   "exhibit-same-area": {
     goal: "Give a different rectangle with the same area, and its perimeter.",
+    watch:
+      "Keep the product of the side lengths fixed, then add all four sides to find the new perimeter.",
     senses,
     noLink,
     method: [
@@ -125,6 +147,8 @@ export const areaClauseMethods: Record<string, ProblemMethod> = {
   },
   "plot-the-polygon": {
     goal: "Plot the four vertices of a rectangle from their coordinates.",
+    watch:
+      "Read each pair across first and up or down second; keep the two coordinates in that order.",
     method: [
       "The first number of a pair is the x-coordinate.",
       "The second number is the y-coordinate.",
@@ -133,6 +157,8 @@ export const areaClauseMethods: Record<string, ProblemMethod> = {
   },
   "missing-vertex": {
     goal: "Plot the fourth vertex of a rectangle from the other three.",
+    watch:
+      "Match one coordinate with the corner above or below and the other with the corner beside it.",
     method: [
       "The missing vertex shares its x-coordinate with the one above or below it.",
       "It shares its y-coordinate with the one beside it.",
@@ -141,6 +167,8 @@ export const areaClauseMethods: Record<string, ProblemMethod> = {
   },
   "cone-section-area": {
     goal: "Find a halfway cross-section, or the volume of a cone with that base and height.",
+    watch:
+      "Halving lengths makes the cross-section's area one quarter as large, not one half.",
     method: [
       "A plane halfway from the apex uses scale 1/2.",
       "Cross-section area multiplies the base area by the square of the scale.",
@@ -149,6 +177,8 @@ export const areaClauseMethods: Record<string, ProblemMethod> = {
   },
   "cavalieri-coin-stack": {
     goal: "Find the volume of a stack of coins after it is pushed slanted.",
+    watch:
+      "A sideways shift changes the stack's shape, but it adds or removes no coin material.",
     method: [
       "Each coin is one layer of the stack.",
       "A slant does not change a layer's volume.",
@@ -157,6 +187,8 @@ export const areaClauseMethods: Record<string, ProblemMethod> = {
   },
   "tilted-rectangle": {
     goal: "Find the area or perimeter of a rectangle that is not aligned with the axes.",
+    watch:
+      "Use the actual side lengths, not their horizontal or vertical changes alone.",
     method: [
       "Check that adjacent sides are perpendicular: their direction vectors have dot product 0.",
       "Use the distance formula on the two different sides.",
@@ -235,7 +267,12 @@ export const areaClauseLessons: Lesson[] = [
     "count-square-units-lesson",
     "Unit squares and counting area",
     "A unit square covers one square unit. Count the squares that cover a figure, with no gaps and no overlaps.",
-    ["define-unit-square", "which-is-a-unit-square", "count-square-units", "gaps-overlaps"],
+    [
+      "define-unit-square",
+      "which-is-a-unit-square",
+      "count-square-units",
+      "gaps-overlaps",
+    ],
     [
       "Say what area one unit square covers.",
       "Count a non-rectangular region and reject a covering with gaps or overlaps.",
@@ -245,7 +282,8 @@ export const areaClauseLessons: Lesson[] = [
       "If n unit squares cover a figure with no gaps and no overlaps, the area is n square units.",
     ],
     {
-      prompt: "A figure is covered by 14 unit squares with no gaps or overlaps. What is its area?",
+      prompt:
+        "A figure is covered by 14 unit squares with no gaps or overlaps. What is its area?",
       steps: [
         "Each unit square covers 1 square unit.",
         "There are 14 of them, and none is missing or stacked.",
@@ -267,7 +305,13 @@ export const areaClauseLessons: Lesson[] = [
     "area-tiling-clause-lesson",
     "Tiling, splitting, and cutting",
     "Counting the tiles in a rectangle matches multiplying the sides. An L can be cut into two rectangles.",
-    ["tile-then-multiply", "split-tiled-count", "choose-the-split", "your-own-cut", "which-cut"],
+    [
+      "tile-then-multiply",
+      "split-tiled-count",
+      "choose-the-split",
+      "your-own-cut",
+      "which-cut",
+    ],
     [
       "Match a tile count to a product.",
       "Split a rectangle to show the distributive property, and cut an L into two rectangles.",
@@ -277,7 +321,8 @@ export const areaClauseLessons: Lesson[] = [
       "A split after b columns shows a × (b + c) = a × b + a × c.",
     ],
     {
-      prompt: "A rectangle has 4 rows of 6. Two rows are tiled. How many unit squares cover the whole rectangle?",
+      prompt:
+        "A rectangle has 4 rows of 6. Two rows are tiled. How many unit squares cover the whole rectangle?",
       steps: [
         "One row holds 6 squares.",
         "There are 4 rows, not only the 2 that are drawn.",
@@ -306,7 +351,8 @@ export const areaClauseLessons: Lesson[] = [
       "One area has many factor pairs. Their perimeters need not match.",
     ],
     {
-      prompt: "A rectangle is 2 cm by 8 cm. Give a different rectangle with the same perimeter.",
+      prompt:
+        "A rectangle is 2 cm by 8 cm. Give a different rectangle with the same perimeter.",
       steps: [
         "Half the perimeter is 2 + 8 = 10.",
         "4 + 6 = 10, and 4 by 6 is not 2 by 8 turned.",
@@ -318,7 +364,9 @@ export const areaClauseLessons: Lesson[] = [
       "Keep the sum of the sides, or keep the product, as the question asks.",
       "Do not turn the same rectangle and call it new.",
     ],
-    ["Same perimeter does not mean same area, and same area does not mean same perimeter."],
+    [
+      "Same perimeter does not mean same area, and same area does not mean same perimeter.",
+    ],
   ),
   lesson(
     "coordinate-vertex-plot-lesson",
@@ -361,7 +409,8 @@ export const areaClauseLessons: Lesson[] = [
       "A cone has one third the volume of the prism or cylinder with the same base and height.",
     ],
     {
-      prompt: "A pyramid has base area 60 and height 10. What is the cross-section area halfway up, and the volume of a cone with that base and height?",
+      prompt:
+        "A pyramid has base area 60 and height 10. What is the cross-section area halfway up, and the volume of a cone with that base and height?",
       steps: [
         "The scale from the apex is 5/10 = 1/2.",
         "The cross-section has area 60 × (1/2)² = 15.",
@@ -390,7 +439,8 @@ export const areaClauseLessons: Lesson[] = [
       "The side lengths are whole multiples of the same square root. Multiply them for the area.",
     ],
     {
-      prompt: "A(0, 0), B(4, 2), C(3, 4), D(−1, 2). Find the area and the perimeter.",
+      prompt:
+        "A(0, 0), B(4, 2), C(3, 4), D(−1, 2). Find the area and the perimeter.",
       steps: [
         "AB = 2√5 and AD = √5. Their directions (4, 2) and (−1, 2) have dot product 0.",
         "Area = 2√5 × √5 = 10.",

@@ -96,12 +96,13 @@ const workbookTallExerciseCss =
   ".exercise:has(>.print-work,>.print-work-order){break-inside:auto}" +
   ".exercise>h2,.exercise>.figure,.exercise>.print-work,.exercise>.print-work-order,.exercise>.print-work-start,.exercise>.print-work-bank,.exercise>.print-work-order-line,.exercise>.writing{break-inside:avoid}" +
   ".exercise>h2,.exercise>.figure,.exercise>.print-work-start{break-after:avoid}";
-function buildPublicationHtml(
-  lesson: Lesson,
-  kind: PublicationKind,
-  edition: string,
-) {
-  const problems = lesson.templateIds.flatMap((id) =>
+/** The exact worksheet input used by every publication kind. Kept separate
+ * from HTML/PDF rendering so completeness can be checked on pull requests. */
+export const publicationProblems = (lesson: Lesson, edition = "1") =>
+  withLegacySurfaces(() => buildPublicationProblems(lesson, edition));
+
+function buildPublicationProblems(lesson: Lesson, edition: string) {
+  return lesson.templateIds.flatMap((id) =>
     areaVolumeTemplates.some((t) => t.id === id)
       ? areaVolumeWorksheet(id, lesson.id, edition)
       : transformationTemplates.some((t) => t.id === id)
@@ -258,6 +259,14 @@ function buildPublicationHtml(
                                                                     ),
                                                                 ))),
   );
+}
+
+function buildPublicationHtml(
+  lesson: Lesson,
+  kind: PublicationKind,
+  edition: string,
+) {
+  const problems = publicationProblems(lesson, edition);
   const kindLabel =
     kind === "lesson"
       ? "Reference lesson"
