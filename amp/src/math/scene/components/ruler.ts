@@ -11,8 +11,8 @@ import { atSchema, shifted } from "./shapes";
  * than an eighth. Whole units are numbered from 0.
  *
  * The object spans `from`/`to`, counted in parts (eighths, millimeters…), so
- * every end is exactly on a tick; dashed guides drop from its ends to the
- * scale.
+ * fractional part counts put an end between ticks for nearest-unit reading.
+ * Dashed guides drop from its ends to the scale.
  */
 export const rulerSchema = z
   .object({
@@ -35,8 +35,8 @@ export const rulerSchema = z
     style: z.enum(["ruler", "tape"]).optional(),
     object: z
       .object({
-        from: z.number().int().min(0).max(240),
-        to: z.number().int().min(1).max(240),
+        from: z.number().finite().min(0).max(240),
+        to: z.number().finite().min(0.1).max(240),
         shape: z.enum(["bar", "pencil", "ribbon"]).optional(),
         label: label.optional(),
       })
@@ -241,9 +241,11 @@ registerComponent("ruler", {
     const what = r.object.label ?? `A ${r.object.shape ?? "bar"}`;
     // The description gives the ends as tick counts, never the length.
     const at = (k: number) =>
-      k % r.parts === 0
-        ? `the ${k / r.parts} mark`
-        : `${k % r.parts} small ${k % r.parts === 1 ? "mark" : "marks"} past ${Math.floor(k / r.parts)}`;
+      !Number.isInteger(k)
+        ? `${Number((k / r.parts).toFixed(4))} ${unit === "inch" ? "inches" : "centimeters"}`
+        : k % r.parts === 0
+          ? `the ${k / r.parts} mark`
+          : `${k % r.parts} small ${k % r.parts === 1 ? "mark" : "marks"} past ${Math.floor(k / r.parts)}`;
     return `${ruler} ${what} lies along it from ${at(r.object.from)} to ${at(r.object.to)}.`;
   },
 });

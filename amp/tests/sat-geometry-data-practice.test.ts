@@ -402,18 +402,22 @@ test("both directions: the two equalities agree, and version 1 keeps the old pro
     const independent = both * n === row * col;
     const response = problem.public.response;
     if (response.kind !== "choice") continue;
-    const correct = response.options.find((o) => o.id === problem.answer)!.label;
-    assert.equal(
-      correct.includes("independent."),
-      independent,
-    );
+    const correct = response.options.find(
+      (o) => o.id === problem.answer,
+    )!.label;
+    assert.equal(correct.includes("independent."), independent);
     assert.equal(correct.includes("Neither"), !independent);
     assert.equal(
       response.options.some((o) => o.label.includes("but $B$ depends")),
       true,
     );
     assert.equal(problem.hint.includes(correct), false);
-    for (const text of [problem.public.prompt, problem.hint, ...problem.explanation, ...response.options.map((o) => o.label)])
+    for (const text of [
+      problem.public.prompt,
+      problem.hint,
+      ...problem.explanation,
+      ...response.options.map((o) => o.label),
+    ])
       for (const sentence of text.split(/(?<=[.!?])\s+/))
         assert.ok(sentence.split(/\s+/).length <= 35, sentence);
   }

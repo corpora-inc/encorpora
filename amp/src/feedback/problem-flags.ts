@@ -99,7 +99,10 @@ export type ProblemFlag = {
     | "shape-composer"
     | "multi-part-choice"
     | "figure-choice"
-    | "structured-work";
+    | "counter-builder"
+    | "structured-work"
+    | "line-plot-build"
+    | "unit-square-marking";
   response: string | null;
   outcome: FlagOutcome;
   assisted: boolean;

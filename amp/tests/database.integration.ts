@@ -4,7 +4,7 @@ import { randomUUID } from "node:crypto";
 import { migrate } from "../scripts/migrate";
 import { PostgresRepository } from "../src/server/repository";
 import { buildApp } from "../src/server/app";
-import { generateProblem } from "../src/math/engine";
+import { generateProblemFor } from "../src/math/engine";
 import { skills } from "../src/curriculum/catalog";
 const url = process.env.AMP_TEST_DATABASE_URL;
 test(
@@ -46,9 +46,11 @@ test(
       const publicProblem = batch.json().problems[0];
       assert.ok(!("answer" in publicProblem));
       assert.ok(!("explanation" in publicProblem));
-      const answer = generateProblem(
+      // These requests declare no capabilities, so solve the served legacy surface.
+      const answer = generateProblemFor(
         publicProblem.templateId,
         publicProblem.seed,
+        [],
       ).answer;
       const input = {
         problemId: publicProblem.id,
@@ -99,7 +101,8 @@ test(
         payload: {
           problemId: second.id,
           requestId: randomUUID(),
-          response: generateProblem(second.templateId, second.seed).answer,
+          response: generateProblemFor(second.templateId, second.seed, [])
+            .answer,
         },
       });
       assert.equal(helped.json().assisted, true);
@@ -162,9 +165,10 @@ test(
         payload: {
           problemId: supportProblem.id,
           requestId: randomUUID(),
-          response: generateProblem(
+          response: generateProblemFor(
             supportProblem.templateId,
             supportProblem.seed,
+            [],
           ).answer,
         },
       });

@@ -1,0 +1,1730 @@
+[
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 568,
+    "height": 320,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        104,
+        536,
+        81.9
+      ],
+      "grid": [
+        149,
+        260.3,
+        270,
+        322.8
+      ],
+      "tools": [
+        124,
+        591.1,
+        320,
+        44
+      ],
+      "dock": [
+        16,
+        203.4,
+        536,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 568,
+    "height": 320,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        104,
+        536,
+        81.9
+      ],
+      "grid": [
+        149,
+        260.3,
+        270,
+        322.8
+      ],
+      "tools": [
+        124,
+        591.1,
+        320,
+        44
+      ],
+      "dock": [
+        16,
+        203.4,
+        536,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 568,
+    "height": 320,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        104,
+        536,
+        81.9
+      ],
+      "grid": [
+        149,
+        260.3,
+        270,
+        270
+      ],
+      "tools": [
+        124,
+        538.3,
+        320,
+        44
+      ],
+      "dock": [
+        16,
+        203.4,
+        536,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 568,
+    "height": 320,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        104,
+        536,
+        81.9
+      ],
+      "grid": [
+        149,
+        260.3,
+        270,
+        270
+      ],
+      "tools": [
+        124,
+        538.3,
+        320,
+        44
+      ],
+      "dock": [
+        16,
+        203.4,
+        536,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 320,
+    "height": 740,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        104,
+        288,
+        98.8
+      ],
+      "grid": [
+        47,
+        297.5,
+        226,
+        270
+      ],
+      "tools": [
+        16,
+        575.5,
+        288,
+        44
+      ],
+      "dock": [
+        16,
+        623.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 320,
+    "height": 740,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        104,
+        288,
+        98.8
+      ],
+      "grid": [
+        47,
+        297.5,
+        226,
+        270
+      ],
+      "tools": [
+        16,
+        575.5,
+        288,
+        44
+      ],
+      "dock": [
+        16,
+        623.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 320,
+    "height": 740,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        113.6,
+        288,
+        123.4
+      ],
+      "grid": [
+        47,
+        331.8,
+        226,
+        226
+      ],
+      "tools": [
+        16,
+        565.8,
+        288,
+        44
+      ],
+      "dock": [
+        16,
+        623.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 320,
+    "height": 740,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        113.6,
+        288,
+        123.4
+      ],
+      "grid": [
+        47,
+        331.8,
+        226,
+        226
+      ],
+      "tools": [
+        16,
+        565.8,
+        288,
+        44
+      ],
+      "dock": [
+        16,
+        623.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 320,
+    "height": 568,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        104,
+        288,
+        98.8
+      ],
+      "grid": [
+        47,
+        297.5,
+        226,
+        270
+      ],
+      "tools": [
+        16,
+        575.5,
+        288,
+        44
+      ],
+      "dock": [
+        16,
+        451.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 320,
+    "height": 568,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        104,
+        288,
+        98.8
+      ],
+      "grid": [
+        47,
+        297.5,
+        226,
+        270
+      ],
+      "tools": [
+        16,
+        575.5,
+        288,
+        44
+      ],
+      "dock": [
+        16,
+        451.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 320,
+    "height": 568,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        104,
+        288,
+        123.4
+      ],
+      "grid": [
+        47,
+        322.2,
+        226,
+        226
+      ],
+      "tools": [
+        16,
+        556.2,
+        288,
+        44
+      ],
+      "dock": [
+        16,
+        451.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 320,
+    "height": 568,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        104,
+        288,
+        123.4
+      ],
+      "grid": [
+        47,
+        322.2,
+        226,
+        226
+      ],
+      "tools": [
+        16,
+        556.2,
+        288,
+        44
+      ],
+      "dock": [
+        16,
+        451.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 390,
+    "height": 844,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        138.4,
+        358,
+        101.4
+      ],
+      "grid": [
+        60,
+        314.2,
+        270,
+        322.8
+      ],
+      "tools": [
+        35,
+        645,
+        320,
+        44
+      ],
+      "dock": [
+        16,
+        727.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 390,
+    "height": 844,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        138.4,
+        358,
+        101.4
+      ],
+      "grid": [
+        60,
+        314.2,
+        270,
+        322.8
+      ],
+      "tools": [
+        35,
+        645,
+        320,
+        44
+      ],
+      "dock": [
+        16,
+        727.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 390,
+    "height": 844,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        164.8,
+        358,
+        101.4
+      ],
+      "grid": [
+        60,
+        340.6,
+        270,
+        270
+      ],
+      "tools": [
+        35,
+        618.6,
+        320,
+        44
+      ],
+      "dock": [
+        16,
+        727.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 390,
+    "height": 844,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        164.8,
+        358,
+        101.4
+      ],
+      "grid": [
+        60,
+        340.6,
+        270,
+        270
+      ],
+      "tools": [
+        35,
+        618.6,
+        320,
+        44
+      ],
+      "dock": [
+        16,
+        727.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        67,
+        201,
+        634,
+        93.3
+      ],
+      "grid": [
+        249,
+        368.7,
+        270,
+        322.8
+      ],
+      "tools": [
+        224,
+        699.5,
+        320,
+        44
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        67,
+        201,
+        634,
+        93.3
+      ],
+      "grid": [
+        249,
+        368.7,
+        270,
+        322.8
+      ],
+      "tools": [
+        224,
+        699.5,
+        320,
+        44
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        67,
+        227.4,
+        634,
+        93.3
+      ],
+      "grid": [
+        249,
+        395.1,
+        270,
+        270
+      ],
+      "tools": [
+        224,
+        673.1,
+        320,
+        44
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 768,
+    "height": 1024,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        67,
+        227.4,
+        634,
+        93.3
+      ],
+      "grid": [
+        249,
+        395.1,
+        270,
+        270
+      ],
+      "tools": [
+        224,
+        673.1,
+        320,
+        44
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        103,
+        181.7,
+        659,
+        121.5
+      ],
+      "grid": [
+        297.5,
+        377.6,
+        270,
+        322.8
+      ],
+      "tools": [
+        272.5,
+        708.3,
+        320,
+        44
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        103,
+        181.7,
+        659,
+        121.5
+      ],
+      "grid": [
+        297.5,
+        377.6,
+        270,
+        322.8
+      ],
+      "tools": [
+        272.5,
+        708.3,
+        320,
+        44
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        103,
+        208.1,
+        659,
+        121.5
+      ],
+      "grid": [
+        297.5,
+        404,
+        270,
+        270
+      ],
+      "tools": [
+        272.5,
+        681.9,
+        320,
+        44
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 1280,
+    "height": 900,
+    "theme": "light",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        103,
+        208.1,
+        659,
+        121.5
+      ],
+      "grid": [
+        297.5,
+        404,
+        270,
+        270
+      ],
+      "tools": [
+        272.5,
+        681.9,
+        320,
+        44
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 568,
+    "height": 320,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        104,
+        536,
+        81.9
+      ],
+      "grid": [
+        149,
+        260.3,
+        270,
+        322.8
+      ],
+      "tools": [
+        124,
+        591.1,
+        320,
+        44
+      ],
+      "dock": [
+        16,
+        203.4,
+        536,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 568,
+    "height": 320,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        104,
+        536,
+        81.9
+      ],
+      "grid": [
+        149,
+        260.3,
+        270,
+        322.8
+      ],
+      "tools": [
+        124,
+        591.1,
+        320,
+        44
+      ],
+      "dock": [
+        16,
+        203.4,
+        536,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 568,
+    "height": 320,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        104,
+        536,
+        81.9
+      ],
+      "grid": [
+        149,
+        260.3,
+        270,
+        270
+      ],
+      "tools": [
+        124,
+        538.3,
+        320,
+        44
+      ],
+      "dock": [
+        16,
+        203.4,
+        536,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 568,
+    "height": 320,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        104,
+        536,
+        81.9
+      ],
+      "grid": [
+        149,
+        260.3,
+        270,
+        270
+      ],
+      "tools": [
+        124,
+        538.3,
+        320,
+        44
+      ],
+      "dock": [
+        16,
+        203.4,
+        536,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 320,
+    "height": 740,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        104,
+        288,
+        98.8
+      ],
+      "grid": [
+        47,
+        297.5,
+        226,
+        270
+      ],
+      "tools": [
+        16,
+        575.5,
+        288,
+        44
+      ],
+      "dock": [
+        16,
+        623.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 320,
+    "height": 740,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        104,
+        288,
+        98.8
+      ],
+      "grid": [
+        47,
+        297.5,
+        226,
+        270
+      ],
+      "tools": [
+        16,
+        575.5,
+        288,
+        44
+      ],
+      "dock": [
+        16,
+        623.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 320,
+    "height": 740,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        113.6,
+        288,
+        123.4
+      ],
+      "grid": [
+        47,
+        331.8,
+        226,
+        226
+      ],
+      "tools": [
+        16,
+        565.8,
+        288,
+        44
+      ],
+      "dock": [
+        16,
+        623.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 320,
+    "height": 740,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        113.6,
+        288,
+        123.4
+      ],
+      "grid": [
+        47,
+        331.8,
+        226,
+        226
+      ],
+      "tools": [
+        16,
+        565.8,
+        288,
+        44
+      ],
+      "dock": [
+        16,
+        623.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 320,
+    "height": 568,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        104,
+        288,
+        98.8
+      ],
+      "grid": [
+        47,
+        297.5,
+        226,
+        270
+      ],
+      "tools": [
+        16,
+        575.5,
+        288,
+        44
+      ],
+      "dock": [
+        16,
+        451.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 320,
+    "height": 568,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        104,
+        288,
+        98.8
+      ],
+      "grid": [
+        47,
+        297.5,
+        226,
+        270
+      ],
+      "tools": [
+        16,
+        575.5,
+        288,
+        44
+      ],
+      "dock": [
+        16,
+        451.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 320,
+    "height": 568,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        104,
+        288,
+        123.4
+      ],
+      "grid": [
+        47,
+        322.2,
+        226,
+        226
+      ],
+      "tools": [
+        16,
+        556.2,
+        288,
+        44
+      ],
+      "dock": [
+        16,
+        451.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 320,
+    "height": 568,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        104,
+        288,
+        123.4
+      ],
+      "grid": [
+        47,
+        322.2,
+        226,
+        226
+      ],
+      "tools": [
+        16,
+        556.2,
+        288,
+        44
+      ],
+      "dock": [
+        16,
+        451.4,
+        288,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 390,
+    "height": 844,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        138.4,
+        358,
+        101.4
+      ],
+      "grid": [
+        60,
+        314.2,
+        270,
+        322.8
+      ],
+      "tools": [
+        35,
+        645,
+        320,
+        44
+      ],
+      "dock": [
+        16,
+        727.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 390,
+    "height": 844,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        138.4,
+        358,
+        101.4
+      ],
+      "grid": [
+        60,
+        314.2,
+        270,
+        322.8
+      ],
+      "tools": [
+        35,
+        645,
+        320,
+        44
+      ],
+      "dock": [
+        16,
+        727.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 390,
+    "height": 844,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        16,
+        164.8,
+        358,
+        101.4
+      ],
+      "grid": [
+        60,
+        340.6,
+        270,
+        270
+      ],
+      "tools": [
+        35,
+        618.6,
+        320,
+        44
+      ],
+      "dock": [
+        16,
+        727.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 390,
+    "height": 844,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        16,
+        164.8,
+        358,
+        101.4
+      ],
+      "grid": [
+        60,
+        340.6,
+        270,
+        270
+      ],
+      "tools": [
+        35,
+        618.6,
+        320,
+        44
+      ],
+      "dock": [
+        16,
+        727.4,
+        358,
+        116.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        67,
+        201,
+        634,
+        93.3
+      ],
+      "grid": [
+        249,
+        368.7,
+        270,
+        322.8
+      ],
+      "tools": [
+        224,
+        699.5,
+        320,
+        44
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        67,
+        201,
+        634,
+        93.3
+      ],
+      "grid": [
+        249,
+        368.7,
+        270,
+        322.8
+      ],
+      "tools": [
+        224,
+        699.5,
+        320,
+        44
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        67,
+        227.4,
+        634,
+        93.3
+      ],
+      "grid": [
+        249,
+        395.1,
+        270,
+        270
+      ],
+      "tools": [
+        224,
+        673.1,
+        320,
+        44
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 768,
+    "height": 1024,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        67,
+        227.4,
+        634,
+        93.3
+      ],
+      "grid": [
+        249,
+        395.1,
+        270,
+        270
+      ],
+      "tools": [
+        224,
+        673.1,
+        320,
+        44
+      ],
+      "dock": [
+        74,
+        867.4,
+        620,
+        121.6
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        103,
+        181.7,
+        659,
+        121.5
+      ],
+      "grid": [
+        297.5,
+        377.6,
+        270,
+        322.8
+      ],
+      "tools": [
+        272.5,
+        708.3,
+        320,
+        44
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-unit-squares",
+    "seed": "browser-71",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        103,
+        181.7,
+        659,
+        121.5
+      ],
+      "grid": [
+        297.5,
+        377.6,
+        270,
+        322.8
+      ],
+      "tools": [
+        272.5,
+        708.3,
+        320,
+        44
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": true,
+    "geometry": {
+      "prompt": [
+        103,
+        208.1,
+        659,
+        121.5
+      ],
+      "grid": [
+        297.5,
+        404,
+        270,
+        270
+      ],
+      "tools": [
+        272.5,
+        681.9,
+        320,
+        44
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  },
+  {
+    "template": "mark-improvised-units",
+    "seed": "browser-0",
+    "width": 1280,
+    "height": 900,
+    "theme": "dark",
+    "correct": false,
+    "geometry": {
+      "prompt": [
+        103,
+        208.1,
+        659,
+        121.5
+      ],
+      "grid": [
+        297.5,
+        404,
+        270,
+        270
+      ],
+      "tools": [
+        272.5,
+        681.9,
+        320,
+        44
+      ],
+      "dock": [
+        792,
+        77,
+        391,
+        780
+      ],
+      "overflow": 0,
+      "stageOverflow": 0
+    }
+  }
+]

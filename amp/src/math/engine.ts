@@ -31,6 +31,16 @@ import {
   withTemplateVersion,
 } from "./variation/axes";
 import { gradePointPlot, normalizePointPlot } from "./point-plot";
+import { gradeLinePlotBuild, normalizeLinePlotBuild } from "./line-plot-build";
+import {
+  gradeUnitSquareMarking,
+  normalizeUnitSquareMarking,
+} from "./unit-square-marking";
+import {
+  gradeCounterBuilder,
+  normalizeCounterBuilder,
+} from "./counter-builder";
+import { generateCounterBuilderFallback } from "./counter-builder-practice";
 import { gradeTrendLine, normalizeTrendLine } from "./trend-line-fit";
 import { gradeShapeComposer, normalizeShapeAnswer } from "./shape-composer";
 import { gradeMultiPart, normalizeMultiPart } from "./multi-part-choice";
@@ -714,11 +724,17 @@ export function isValidResponse(
   problem: PublicProblem,
   response: string,
 ): boolean {
+  if (problem.response.kind === "counter-builder")
+    return normalizeCounterBuilder(problem.response, response) !== null;
   if (problem.response.kind === "trend-line-fit")
     return normalizeTrendLine(problem.response, response) !== null;
   if (problem.response.kind === "shape-composer")
     return normalizeShapeAnswer(problem.response, response) !== null;
   if (response.length > 200) return false;
+  if (problem.response.kind === "line-plot-build")
+    return normalizeLinePlotBuild(problem.response, response) !== null;
+  if (problem.response.kind === "unit-square-marking")
+    return normalizeUnitSquareMarking(response) !== null;
   if (problem.response.kind === "multi-select")
     return normalizeSelection(problem.response, response) !== null;
   if (problem.response.kind === "point-plot")
@@ -737,6 +753,20 @@ export function gradeAnswer(
   problem: GeneratedProblem,
   response: string,
 ): boolean {
+  if (problem.public.response.kind === "counter-builder")
+    return gradeCounterBuilder(
+      problem.public.response,
+      problem.answer,
+      response,
+    );
+  if (problem.public.response.kind === "line-plot-build")
+    return gradeLinePlotBuild(
+      problem.public.response,
+      problem.answer,
+      response,
+    );
+  if (problem.public.response.kind === "unit-square-marking")
+    return gradeUnitSquareMarking(problem.answer, response);
   if (problem.public.response.kind === "trend-line-fit")
     return gradeTrendLine(problem.public.response, response);
   if (problem.public.response.kind === "shape-composer")
@@ -930,6 +960,14 @@ export function generateProblemFor(
   responseCapabilities: readonly string[] = [],
 ): GeneratedProblem {
   const generateForClient = () => {
+    if (
+      templateId === "build-the-number-sentence" &&
+      !responseCapabilities.includes("counter-builder-v1")
+    ) {
+      if (!responseCapabilities.includes("figure-choice-v1"))
+        throw new Error("Counter builder fallback requires figure-choice-v1");
+      return generateCounterBuilderFallback(seed);
+    }
     const problem = generateProblem(templateId, seed, version);
     if (!problem.variant?.axes?.clause) return problem;
     const kind = problem.public.response.kind;

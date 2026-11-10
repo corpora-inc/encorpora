@@ -5,6 +5,8 @@ import { Figure } from "../web/Figure";
 import type { GeneratedProblem } from "../math/contracts";
 import { answerText } from "../math/selection-response";
 import { plotPoints, pointPlotScene } from "../math/point-plot";
+import { LinePlotBuildDrawing } from "../web/LinePlotBuildInput";
+import { counterBuilderScene } from "../math/counter-objects";
 import {
   trendLineScene,
   trendPoints,
@@ -511,6 +513,32 @@ export function PrintExerciseBody({
             distances: solutions,
           })}
         />
+      )}
+      {problem.public.response.kind === "counter-builder" && (
+        <>
+          <SceneFigure
+            medium="print"
+            reveal
+            scene={counterBuilderScene(
+              problem.public.response,
+              solutions ? problem.answer : undefined,
+            )}
+          />
+          {!solutions && (
+            <p>
+              Number sentence: ____ &nbsp; ____ &nbsp; ____ &nbsp; = &nbsp; ____
+            </p>
+          )}
+        </>
+      )}
+      {problem.public.response.kind === "line-plot-build" && (
+        <figure>
+          <LinePlotBuildDrawing
+            response={problem.public.response}
+            value={solutions ? problem.answer : '{"counts":{}}'}
+          />
+          <figcaption>{problem.public.response.axis.unit}</figcaption>
+        </figure>
       )}
       {problem.public.response.kind === "shape-composer" && (
         <div className="print-shape-composer">
