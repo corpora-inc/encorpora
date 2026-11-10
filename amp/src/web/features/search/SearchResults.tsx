@@ -60,8 +60,11 @@ export function resultKeys(
   const links = [
     ...(list.current?.querySelectorAll<HTMLElement>("[data-result]") ?? []),
   ];
-  const at = links.indexOf(document.activeElement as HTMLElement);
   const fromInput = event.target === input.current;
+  // Only the field and the results: other controls keep their own keys.
+  if (!fromInput && !(event.target as HTMLElement).hasAttribute("data-result"))
+    return;
+  const at = links.indexOf(document.activeElement as HTMLElement);
   let next: HTMLElement | null | undefined;
   if (event.key === "ArrowDown") next = fromInput ? links[0] : links[at + 1];
   else if (event.key === "ArrowUp" && !fromInput)

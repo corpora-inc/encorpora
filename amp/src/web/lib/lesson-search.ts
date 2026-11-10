@@ -82,9 +82,13 @@ export function useLessonSearch(
   );
   useEffect(() => {
     let current = true;
-    void indexFor(docs).then((ready) => {
-      if (current) setIndex(ready);
-    });
+    indexFor(docs).then(
+      (ready) => {
+        if (current) setIndex(ready);
+      },
+      // Already logged; the API's results still answer.
+      () => {},
+    );
     return () => {
       current = false;
     };
