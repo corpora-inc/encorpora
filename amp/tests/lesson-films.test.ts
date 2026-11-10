@@ -246,6 +246,38 @@ test("committed manifest resolves real problem types, committed screenplays and 
   );
   assert.equal(canonical({ a: 1, b: 2 }), canonical({ b: 2, a: 1 }));
 });
+test("native CSP permits every published film's data and narration", () => {
+  const { app } = JSON.parse(
+    readFileSync(new URL("../mobile/tauri.conf.json", import.meta.url), "utf8"),
+  );
+  for (const policy of [app.security.csp, app.security.devCsp] as string[]) {
+    const directives = new Map(
+      policy.split(";").map((directive) => {
+        const [name, ...sources] = directive.trim().split(/\s+/);
+        return [name, sources];
+      }),
+    );
+    for (const film of Object.values(lessonFilms)) {
+      for (const [directive, value] of [
+        ["connect-src", film.dataUrl],
+        ["media-src", film.audioUrl],
+      ] as const) {
+        const destination = new URL(value);
+        assert.ok(
+          directives.get(directive)?.some((source) => {
+            if (!source.startsWith("https://")) return false;
+            const allowed = new URL(source);
+            return (
+              allowed.origin === destination.origin &&
+              destination.pathname.startsWith(allowed.pathname)
+            );
+          }),
+          `${directive} blocks ${film.id}`,
+        );
+      }
+    }
+  }
+});
 test("lesson capability negotiates separate cached representations for new and older clients", async () => {
   const server = buildApp({
     repository: { limits: trialLimits() } as Repository,
