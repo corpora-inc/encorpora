@@ -213,7 +213,7 @@ export function choosePlaceLearner(me: SignedInMe, place: PlaceId) {
 /**
  * The one way between the places a person works: their family and practice
  * side, their own practice, and each school with their role there. It lists
- * only places this account can open, and shows nothing when there's only one.
+ * only places this account can open, then "Add a place" (the starter).
  * Choosing a place remembers it, so `/` opens there next time.
  */
 export function PlaceSwitcher({
@@ -234,7 +234,8 @@ export function PlaceSwitcher({
 }) {
   const navigate = useNavigate();
   const places = entries ?? placeEntries(me);
-  if (places.length < 2) return null;
+  // One place still shows the menu: it is where another place is added.
+  if (!places.length) return null;
   const here = places.find((place) => place.id === current);
   const name = label ?? here?.name ?? "Your places";
   return (
@@ -300,6 +301,19 @@ export function PlaceSwitcher({
           </MenuItem>
         );
       })}
+      <MenuItem
+        onSelect={() => {
+          onNavigate?.();
+          void navigate({ to: "/start" });
+        }}
+      >
+        <span className={styles.item} data-place="add">
+          <span className={styles.name}>Add a place</span>
+          <span className={styles.detail}>
+            Your own practice, a family or a class
+          </span>
+        </span>
+      </MenuItem>
     </Menu>
   );
 }

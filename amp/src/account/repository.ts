@@ -191,24 +191,21 @@ export async function accountSummary(
           },
         }
       : {}),
-    // Purchase-first enrollment: plan and payment (the verified consent) come
-    // before any learner profile; a paid, unassigned purchase resumes there.
-    // An unconfirmed address does not block the trial; the consent steps ask
-    // for it (`confirmationRequired`), and the server refuses them without it.
+    // A place to open: the family's children or class, the adult's own
+    // practice, or a school. Without one, the account answers the starter
+    // (another family's approval link it opened is not a place: the first
+    // run opens it first). A paid purchase no learner holds yet goes to a
+    // learner first.
     next:
       gift && !unassigned
         ? "accept-gift"
         : active && unassigned
           ? "add-learner"
-          : learners.some((l) => l.entitlement.active)
+          : learners.length || adult || familyClass || staffOf.length
             ? "practice"
-            : !active
-              ? family.consent.status === "withdrawn"
-                ? "choose-plan"
-                : "try"
-              : !learners.length
-                ? "add-learner"
-                : "choose-plan",
+            : trialRows.rows.length
+              ? "try"
+              : "start",
   };
   return meSchema.parse(value) as SignedInMe;
 }

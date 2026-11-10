@@ -1,7 +1,7 @@
 import { SupportHelp } from "../support/SupportHelp";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Link, Navigate, useSearch } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { signOut, type AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { chosenPlan, forgetPlanChoice } from "../../lib/pending-trial";
@@ -20,7 +20,6 @@ import {
   useEnrollmentCheckout,
 } from "../billing";
 import { Progress } from "./Progress";
-import { TrialPathwaysOffer } from "../pathways/TrialPathwaysOffer";
 import styles from "./Start.module.css";
 import { track } from "../../lib/analytics";
 
@@ -31,16 +30,26 @@ const names = { year: "annual", month: "monthly" } as const;
 /**
  * Plan choice with the direct notice and an explicit parent acknowledgement.
  * Paying is the verified parental consent; no learner details are asked for.
+ * At `/start/plan` it is a step of its own; inside "Continue with AMP" it is
+ * that screen's plan for one learner (`embedded`), whose paid enrollment the
+ * checkout return assigns to them.
  */
 export function PlanStep({
   session,
-  trial = false,
+  embedded = false,
+  interval: initialInterval,
+  onCheckout,
 }: {
   session: AuthSession;
-  /** The parent has no purchase yet and can return to free practice. */
-  trial?: boolean;
+  /** Inside another screen, which has the heading and frame. */
+  embedded?: boolean;
+  /** The plan to show first. */
+  interval?: "year" | "month";
+  /** Just before leaving for Stripe. */
+  onCheckout?: () => void;
 }) {
-  const search = useSearch({ from: "/start/plan" });
+  const search = useSearch({ strict: false }) as { interval?: unknown };
+  const Frame = embedded ? EmbeddedFrame : CardFrame;
   const enrollment = useQuery(enrollmentOptions(session));
   const available = enrollment.data?.available;
   const offers = useQuery({
@@ -58,7 +67,13 @@ export function PlanStep({
   });
   // The plan chosen on the free-trial paywall, if any, stays selected.
   const [interval, chooseInterval] = useState<"year" | "month">(
-    () => search.interval ?? chosenPlan() ?? "year",
+    () =>
+      initialInterval ??
+      (search.interval === "month" || search.interval === "year"
+        ? search.interval
+        : null) ??
+      chosenPlan() ??
+      "year",
   );
   const [acknowledged, setAcknowledged] = useState<string | null>(null);
   const requests = useRef<Partial<Record<"year" | "month", string>>>({});
@@ -87,10 +102,8 @@ export function PlanStep({
     enrollment.error ?? (available ? offers.error : emailPlus.error);
   if (failed)
     return (
-      <section className={`${frameCard} ${styles.step}`} key="error">
-        <FrameBrand expanded />
-        <Progress step={1} />
-        <h1>Choose your plan</h1>
+      <Frame key="error">
+        {!embedded && <h1>Choose your plan</h1>}
         <p role="alert">
           {failed instanceof AppError
             ? failed.message
@@ -108,13 +121,11 @@ export function PlanStep({
             Try again
           </Button>
         </div>
-      </section>
+      </Frame>
     );
   if (available === false && emailPlus.data)
     return emailPlus.data.available ? (
-      <section className={`${frameCard} ${styles.step}`} key="email-plus">
-        <FrameBrand expanded />
-        <Progress step={1} />
+      <Frame key="email-plus">
         <h1>Confirm by email first</h1>
         <p>
           Card enrollment isn’t available for this service. Confirm parent
@@ -125,10 +136,9 @@ export function PlanStep({
             Continue with email
           </Link>
         </div>
-      </section>
+      </Frame>
     ) : (
-      <section className={`${frameCard} ${styles.step}`} key="unavailable">
-        <FrameBrand expanded />
+      <Frame key="unavailable">
         <Toast message={exit.error ? exitFailed : ""} onDismiss={exit.reset} />
         <h1>Enrollment isn’t open yet</h1>
         <p>
@@ -148,22 +158,22 @@ export function PlanStep({
             Sign out
           </Button>
         </div>
-      </section>
+      </Frame>
     );
   const notice = enrollment.data?.notice;
   const digest = enrollment.data?.noticeDigest;
   const plans = offers.data?.offers ?? [];
   if (!notice || !digest || !plans.length)
     return (
-      <section
-        className={`${frameCard} ${styles.step}`}
-        key="loading"
-        aria-busy="true"
-      >
-        <FrameBrand expanded />
-        <Progress step={1} />
-        <h1>Choose your plan</h1>
-        <p>Adaptive practice, lessons and printable books for one learner.</p>
+      <Frame key="loading" busy>
+        {!embedded && (
+          <>
+            <h1>Choose your plan</h1>
+            <p>
+              Adaptive practice, lessons and printable books for one learner.
+            </p>
+          </>
+        )}
         <div
           className={`${styles.skeleton} amp-skeleton`}
           aria-label="Loading plans"
@@ -173,7 +183,7 @@ export function PlanStep({
           <span style={{ height: 66 }} />
           <span style={{ height: 48 }} />
         </div>
-      </section>
+      </Frame>
     );
   // An open checkout fixes the plan. With a verified Stripe link it resumes;
   // without one (Stripe failed after the reservation) the same plan retries.
@@ -184,16 +194,17 @@ export function PlanStep({
   const offer = plans.find((entry) => entry.interval === chosen) ?? plans[0]!;
   const agreed = acknowledged === digest;
   return (
-    <section className={`${frameCard} ${styles.step}`} key="ready">
-      <FrameBrand expanded />
+    <Frame key="ready">
       <Toast
         message={checkout.error?.message ?? ""}
         onDismiss={() => checkout.reset()}
       />
-      <Progress step={1} />
-      <h1>Choose your plan</h1>
-      <p>Adaptive practice, lessons and printable books for one learner.</p>
-      <TrialPathwaysOffer hideWithoutTrial />
+      {!embedded && (
+        <>
+          <h1>Choose your plan</h1>
+          <p>Adaptive practice, lessons and printable books for one learner.</p>
+        </>
+      )}
       <PlanChoice
         offers={plans}
         extra={offers.data?.extraOffers}
@@ -241,6 +252,7 @@ export function PlanStep({
                 track("checkout_start", { interval: offer.interval });
                 const requestId = (requests.current[offer.interval] ??=
                   crypto.randomUUID());
+                onCheckout?.();
                 checkout.mutate(
                   {
                     requestId,
@@ -271,21 +283,46 @@ export function PlanStep({
             </Button>
           </div>
           <p className={styles.fine}>
-            Stripe handles payment. You’ll add your learner right after.
+            {embedded
+              ? "Stripe handles payment. You’ll come back here right after."
+              : "Stripe handles payment. You’ll add your learner right after."}
           </p>
-          {trial && (
-            <Link
-              to="/try/map"
-              className={`${buttonClass("quiet")} ${styles.textLink}`}
-              onClick={forgetPlanChoice}
-            >
-              Back to free practice
-            </Link>
-          )}
         </>
       )}
       <SupportHelp context="plans" contact={false} />
+    </Frame>
+  );
+}
+
+function CardFrame({
+  children,
+  busy,
+}: {
+  children: ReactNode;
+  busy?: boolean;
+}) {
+  return (
+    <section
+      className={`${frameCard} ${styles.step}`}
+      aria-busy={busy || undefined}
+    >
+      <FrameBrand expanded />
+      <Progress step={1} />
+      {children}
     </section>
+  );
+}
+function EmbeddedFrame({
+  children,
+  busy,
+}: {
+  children: ReactNode;
+  busy?: boolean;
+}) {
+  return (
+    <div className={styles.step} aria-busy={busy || undefined}>
+      {children}
+    </div>
   );
 }
 function safeCheckout(url: string): string | null {

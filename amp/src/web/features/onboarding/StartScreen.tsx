@@ -85,7 +85,7 @@ function SignedInStart({ session }: { session: AuthSession }) {
                 to:
                   me.availableAccessGrant || search.return === "access"
                     ? "/access"
-                    : "/start/plan",
+                    : "/",
                 search,
               });
           }}
@@ -97,7 +97,7 @@ function SignedInStart({ session }: { session: AuthSession }) {
       {step === "/start/verify-email" ? (
         <VerifyEmailStep session={session} me={me} />
       ) : step === "/start/plan" ? (
-        <PlanStep session={session} trial={me.next === "try"} />
+        <PlanStep session={session} />
       ) : step === "/start/purchase" ? (
         <PurchaseStep
           session={session}

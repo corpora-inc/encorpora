@@ -8,12 +8,23 @@ import { freeAllowanceSchema } from "../learning/free-allowance.js";
 export const approvalRowSchema = z.object({
   id: z.string(),
   name: z.string(),
-  status: z.enum(["waiting", "expired", "paused", "needs-access", "active"]),
+  status: z.enum([
+    "waiting",
+    "expired",
+    "paused",
+    "needs-access",
+    "active",
+    "unnamed",
+  ]),
   parentEmail: z.string().nullable(),
   inviteUrl: z.string().nullable(),
   parentPageUrl: z.string().nullable(),
   expiresAt: z.string().nullable(),
   accessEndsAt: z.string().nullable(),
+  /** An unnamed student of the class: their roster person, for the link. */
+  personId: z.string().optional(),
+  /** Free problems left, while no plan covers them. */
+  freeLeft: z.number().int().min(0).optional(),
 });
 export type ApprovalRowResource = z.infer<typeof approvalRowSchema>;
 
