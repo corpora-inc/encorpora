@@ -8,7 +8,7 @@ import { rememberPlace } from "./place-memory";
 
 /** What the starter sends: one answer and only what that answer needs. */
 export type StarterAnswer =
-  | { as: "myself"; timezone: string }
+  | { as: "myself"; timezone: string; birthYear: number }
   | { as: "parent"; children: { birthYear: number }[] }
   | { as: "tutor"; students: { birthYear: number }[] };
 

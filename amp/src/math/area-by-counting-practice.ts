@@ -1078,7 +1078,9 @@ function countUnitSquares(
     label: unit.many,
     answer: String(n),
     figure,
-    hint: `Count the shaded squares one row at a time, starting with the top row of ${count(counts[0]!, "square")}. Keep a running total, and count each square only once.`,
+    hint: marking
+      ? `Tap each shaded square of the ${noun} as you count it, starting with the top row of ${count(counts[0]!, "square")}. The area, in ${unit.many}, is how many squares you mark.`
+      : `Count the shaded squares of the ${noun} one row at a time, starting with the top row of ${count(counts[0]!, "square")}. Keep a running total, and count each square only once.`,
     explanation: [
       `Each small square is 1 ${unit.one}. The area is the number of squares that cover the ${noun}, with no gaps and no overlaps.`,
       ...rowLines(counts, "shaded square"),
@@ -1221,7 +1223,9 @@ function improvisedCount(
       label: t.many,
       answer: String(n),
       figure,
-      hint: `Count the ${t.many} in the top row: ${counts[0]}. Then add each row below it, keeping a running total.`,
+      hint: marking
+        ? `Tap each ${t.one} on the ${spec.name} as you count, starting with ${counts[0]} in the top row. The area is how many ${t.many} you mark.`
+        : `Count the ${t.many} on the ${spec.name}, starting with ${counts[0]} in the top row. Then add each row below it, keeping a running total.`,
       explanation: [
         `Each ${t.one} is one unit of area. It is not a standard unit like a square foot, but it covers flat space the same way: no gaps and no overlaps.`,
         ...rowLines(counts, t.one),

@@ -1105,7 +1105,7 @@ function inequalityStory(meta: TemplateMetadata, seed: string): TexasHsCase {
   return finish(meta, seed, r, {
     variant: `inequality-${context}`,
     prompt,
-    hint: "One limit counts the items and uses at most. The other uses the two rates and at least. Match each number to its unit.",
+    hint: `One limit is at most ${cap}. The other uses the rates ${small} and ${large} and at least ${goal}. Match each number to its unit.`,
     explanation: [
       `The count limit is at most ${cap}, so $x+y\\le ${cap}$.`,
       `The value limit uses ${small} for $x$ and ${large} for $y$, and at least ${goal} means $\\ge$.`,
