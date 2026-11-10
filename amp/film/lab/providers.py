@@ -403,6 +403,22 @@ def submit_review_batch(provider, specs, manifest_path, key):
     return manifest
 
 
+def batch_timing(metadata, started_at, collected_at):
+    """Keep provider batch duration separate from client polling delay."""
+    created, ended = metadata.get('created_at'), metadata.get('ended_at')
+    elapsed = None
+    if created and ended:
+        elapsed = (dt.datetime.fromisoformat(ended)-dt.datetime.fromisoformat(created)).total_seconds()
+        if elapsed < 0:
+            raise ValueError('Provider batch ended before it was created')
+    collection = (dt.datetime.fromisoformat(collected_at)-dt.datetime.fromisoformat(started_at)).total_seconds()
+    return {'wall_seconds': None,
+            'batch_elapsed_seconds': None if elapsed is None else round(elapsed, 3),
+            'collection_elapsed_seconds': round(collection, 3),
+            'provider_created_at': created, 'provider_ended_at': ended,
+            'timing_note': 'Per-request execution time is unavailable. Provider batch duration includes queueing; collection elapsed also includes client polling delay.'}
+
+
 def collect_review_batch(manifest_path, key):
     """One nonblocking status check and collection. Caller controls polling."""
     manifest_path = Path(manifest_path)
@@ -412,7 +428,8 @@ def collect_review_batch(manifest_path, key):
     if not manifest.get('batch_id'):
         raise RuntimeError('Unreconciled batch submission')
     response = anthropic_request('messages/batches/'+manifest['batch_id'], key)
-    manifest.update(status=response['processing_status'], request_counts=response.get('request_counts'))
+    manifest.update(status=response['processing_status'], request_counts=response.get('request_counts'),
+                    provider_created_at=response.get('created_at'), provider_ended_at=response.get('ended_at'))
     write_json(manifest_path, manifest)
     if response['processing_status'] != 'ended':
         return manifest
@@ -425,7 +442,8 @@ def collect_review_batch(manifest_path, key):
     entries = {x['custom_id']: x for x in manifest['entries']}
     collected = set()
     provider = manifest['provider']
-    elapsed = (dt.datetime.now(dt.timezone.utc)-dt.datetime.fromisoformat(manifest['started_at'])).total_seconds()
+    finished = now()
+    timing = batch_timing(response, manifest['started_at'], finished)
     for line in lines.splitlines():
         if not line.strip():
             continue
@@ -434,10 +452,9 @@ def collect_review_batch(manifest_path, key):
         result = item['result']
         record = {'provider': provider, 'model': MODELS[provider], 'role': 'review',
                   'transport': 'messages-batch-api', 'started_at': manifest['started_at'],
-                  'finished_at': now(), 'batch_id': manifest['batch_id'],
+                  'finished_at': finished, 'batch_id': manifest['batch_id'],
                   'prompt_sha256': entry['prompt_sha256'], 'image_sha256': entry['image_sha256'],
-                  'wall_seconds': None, 'batch_elapsed_seconds': round(elapsed, 3),
-                  'timing_note': 'Provider does not report per-request execution time; batch elapsed includes queueing.',
+                  **timing,
                   'status': 'failed', 'api_dollars': None, 'usage_complete': False}
         if result['type'] == 'succeeded':
             message = result['message']

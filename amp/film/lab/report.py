@@ -121,7 +121,7 @@ def build_report(root, review_url, status='running'):
             money(grok_cost/produced) if produced and any(r.get('provider')=='grok' for r in runs) else 'n/a',
             f'{seconds/produced:.1f}' if produced else 'n/a',
             f'{production_seconds/produced:.1f}' if produced else 'n/a', unknown]))+' |')
-    out += ['', 'Means include study and screenplay retries, divided by the number of checked screenplays. Agent time measures provider calls; production time also includes kit checks and local waiting. Both exclude review and voice processing. A cost with unknown attempts is a lower bound. A checked screenplay is not a founder approval.', '',
+    out += ['', 'Means include study and screenplay retries, divided by the number of checked screenplays. Agent time measures complete provider or CLI invocations, including writer tool calls and waiting inside them. Production time adds independent kit checks and coordinator overhead. Both exclude review and voice processing. A cost with unknown attempts is a lower bound. A checked screenplay is not a founder approval.', '',
             '## Usage by model and role', '',
             '| Model | Role | Attempts | Provider failures | Complete usage receipts | Mean wall seconds | API dollars | Grok reported dollars | Uncached input | Cached input | Cache writes | Output |',
             '| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |']
@@ -141,7 +141,7 @@ def build_report(root, review_url, status='running'):
                       money(sum(r.get('reported_dollars') or 0 for r in runs)) if provider=='grok' else 'n/a',
                       *token_sums]
             out.append('| '+' | '.join(map(cell, values))+' |')
-    out += ['', 'Token totals include only reported usage. An incomplete receipt makes the corresponding total a lower bound. Claude streaming receipts retain deduplicated request inputs and completed raw output-usage events after interruption; any calculated partial cost is a lower bound, and the attempt still counts as missing its total cost. Mean wall time uses only attempts with a measured duration; batch queue elapsed time is retained separately in each receipt. Artifact validation failures are recorded in the receipts even when the provider completed normally.', '',
+    out += ['', 'Token totals include only reported usage. An incomplete receipt makes the corresponding total a lower bound. Claude streaming receipts retain deduplicated request inputs and completed raw output-usage events after interruption; any calculated partial cost is a lower bound, and the attempt still counts as missing its total cost. Mean wall time uses only attempts with a measured duration. Each batch receipt separately retains provider batch duration, including queueing, and client collection elapsed time, including polling delay; neither is a per-item execution measurement. Artifact validation failures are recorded in the receipts even when the provider completed normally.', '',
             '## Review input sizes', '',
             '| Cohort | Films with packets | Median beats | Maximum beats | Median duration, seconds | Median image pages | Maximum image pages |',
             '| --- | ---: | ---: | ---: | ---: | ---: | ---: |']

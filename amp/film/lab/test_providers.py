@@ -4,11 +4,21 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from providers import api_cost, claude_output, credentials, normalized_usage, parse_json, redact, submit_review_batch
+from providers import api_cost, batch_timing, claude_output, credentials, normalized_usage, parse_json, redact, submit_review_batch
 from prompts import coverage_from_study, validate_review
 
 
 class EvidenceTests(unittest.TestCase):
+    def test_batch_duration_excludes_polling_delay_and_never_claims_item_runtime(self):
+        metadata = {'created_at': '2026-01-01T00:00:05Z', 'ended_at': '2026-01-01T00:01:05Z'}
+        timing = batch_timing(metadata, '2026-01-01T00:00:00+00:00', '2026-01-01T00:03:00+00:00')
+        self.assertEqual(timing['batch_elapsed_seconds'], 60)
+        self.assertEqual(timing['collection_elapsed_seconds'], 180)
+        self.assertIsNone(timing['wall_seconds'])
+        metadata.pop('ended_at')
+        self.assertIsNone(batch_timing(metadata, '2026-01-01T00:00:00Z',
+                                     '2026-01-01T00:03:00Z')['batch_elapsed_seconds'])
+
     def test_agent_progress_prefix_does_not_hide_a_complete_final_verdict(self):
         verdict = {'ship': True, 'score': 7, 'reason': 'A literal { is harmless.'}
         self.assertEqual(parse_json('I will inspect every frame.'+json.dumps(verdict)), verdict)
