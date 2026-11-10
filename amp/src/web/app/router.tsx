@@ -661,8 +661,12 @@ const pathwaySkill = createRoute({
  * that learner (the account's own, never a practice profile), so the
  * group's other tabs and Practice are theirs too. The server still decides
  * what the account may open. */
-async function beforeWorkbooks({ params }: { params: unknown }) {
-  const { learnerId } = params as { learnerId: string };
+async function beforeWorkbooks<Params extends { learnerId: string }>({
+  params,
+}: {
+  params: Params;
+}) {
+  const { learnerId } = params;
   if (nativeRuntime) throw redirect({ to: "/" });
   notForStudents();
   const session = await queryClient.ensureQueryData(sessionOptions);

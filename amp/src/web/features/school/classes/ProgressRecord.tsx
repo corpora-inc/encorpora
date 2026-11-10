@@ -1,9 +1,8 @@
-import { levelRange } from "../../../../learning/level-check";
 import type {
   ProgressRecord,
   StudentTimeResponse,
 } from "../../../../schools/teacher-contracts";
-import { levelScale, LevelTrack } from "../../../ui/LevelChart";
+import { fitScale, LevelRows } from "../../../ui/level-range";
 import { StatRow, StatTile } from "../../../ui/StatTile";
 import {
   fullDay,
@@ -19,7 +18,9 @@ import styles from "./Teacher.module.css";
    an adult's own record are the same parts on the same facts; only who reads
    them differs. */
 
-/** Levels on every strand: overall first, then each strand by the work in it. */
+/** Levels on every strand: overall first, then each strand by the work in
+ * it, as error bars on one fitted scale (ui/level-range), over the
+ * student's own grade when there is one. */
 export function RecordLevels({
   record,
   empty,
@@ -30,41 +31,22 @@ export function RecordLevels({
 }) {
   const { level, reference } = record;
   if (!level) return <p className={styles.quietLine}>{empty}</p>;
-  const center = reference
-    ? (reference.from + reference.to) / 2
-    : level.overall.level;
-  const scale = levelScale(center, [
-    level.overall,
-    ...Object.values(level.strands),
-  ]);
-  const row = (id: string, label: string, strand?: string) => {
-    const estimate = strand ? level.strands[strand]! : level.overall;
-    const [from, to] = levelRange(estimate);
-    return (
-      <li key={id} className={styles.levelRow} data-strand={strand}>
-        <span className={styles.levelName}>{label}</span>
-        <span
-          className={styles.levelTrack}
-          role="img"
-          aria-label={`${label}: likely grade ${from.toFixed(1)} to ${to.toFixed(1)}`}
-        >
-          <LevelTrack
-            estimate={estimate}
-            scale={scale}
-            reference={!!reference}
-          />
-        </span>
-        <span className={styles.levelNumbers}>
-          {from.toFixed(1)}–{to.toFixed(1)}
-        </span>
-      </li>
-    );
-  };
+  const areas = record.strands.flatMap((strand) => {
+    const estimate = level.strands[strand.id];
+    return estimate ? [{ id: strand.id, label: strand.label, estimate }] : [];
+  });
+  const grade = reference ? ([reference.from, reference.to] as const) : null;
+  const scale = fitScale(
+    [level.overall, ...areas.map((area) => area.estimate)],
+    { minSpan: 5, include: grade ? [...grade] : [] },
+  );
   return (
-    <ul className={styles.levelRows}>
-      {row("overall", "Overall")}
-      {record.strands.map((strand) => row(strand.id, strand.label, strand.id))}
-    </ul>
+    <LevelRows
+      overall={level.overall}
+      areas={areas}
+      scale={scale}
+      grade={grade}
+    />
   );
 }
 

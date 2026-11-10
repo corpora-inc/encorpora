@@ -123,6 +123,7 @@ import {
   loadGlossary,
 } from "../LessonLibrary";
 import { Home, type FrontierMap } from "../Home";
+import { practicingAsAdult } from "../lib/adult-learner";
 import { freeLeft } from "../lib/free-allowance";
 import { FREE_ONLINE_PROBLEMS } from "../../learning/free-allowance";
 import { AllowancePause } from "../features/continue/AllowancePause";
@@ -2032,6 +2033,13 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             <Home
               key={learner.id}
               name={learner.name}
+              learnerId={learner.id}
+              reader={
+                student ||
+                (account?.signedIn && practicingAsAdult(account, learner.id))
+                  ? "self"
+                  : "other"
+              }
               birthYear={learner.birthYear}
               resuming={!!problem}
               frontier={frontierMap}

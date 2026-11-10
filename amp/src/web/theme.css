@@ -901,6 +901,28 @@ header {
   font-size: clamp(32px, 6vw, 48px);
   line-height: 1.05;
 }
+/* Whose Overview: a quiet label, not a profile's title. The level leads. */
+.home-hero h1.home-learner {
+  font-family: inherit;
+  font-size: var(--text-heading-3);
+  font-weight: 650;
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+/* The level view's slot carries the old map's marker class, none of its
+   frame: the view draws its own. */
+.home > .frontier-map.home-level-slot,
+[data-shell-content] .home > .frontier-map.home-level-slot {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+/* The level's place while the estimate loads: the height of the view. */
+.home-level-wait {
+  min-height: 420px;
+  border-radius: var(--radius-panel);
+}
 .home-free {
   margin: 6px 0 0;
   color: var(--color-muted-text);

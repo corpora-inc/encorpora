@@ -16,8 +16,11 @@ export type PathPoint = { answered: number; level: number; sd: number };
 export function LevelPath({
   points,
   state = "ready",
+  labels = true,
 }: {
   points: readonly PathPoint[] | null;
+  /** Grade names beside the gridlines; off where levels are hidden. */
+  labels?: boolean;
   /** While the path loads its space shows a wait; a failure says so there. */
   state?: "ready" | "loading" | "failed";
 }) {
@@ -66,7 +69,11 @@ export function LevelPath({
     <div
       className={styles.path}
       role="img"
-      aria-label={`Best guess over ${last.answered} problems, from ${gradeName(first.level)} to ${gradeName(last.level)}. The likely range went from ${gradeName(startFrom)}–${gradeName(startTo)} to ${gradeName(nowFrom)}–${gradeName(nowTo)}.`}
+      aria-label={
+        labels
+          ? `Best guess over ${last.answered} problems, from ${gradeName(first.level)} to ${gradeName(last.level)}. The likely range went from ${gradeName(startFrom)}–${gradeName(startTo)} to ${gradeName(nowFrom)}–${gradeName(nowTo)}.`
+          : `How the likely range narrowed over ${last.answered} problems.`
+      }
     >
       <div className={styles.pathPlot}>
         {ticks.map((g) => (
@@ -76,7 +83,9 @@ export function LevelPath({
             style={{ top: percent(y(g) / 100) }}
             aria-hidden="true"
           >
-            <span className={styles.pathLabel}>{shortGrade(g)}</span>
+            {labels && (
+              <span className={styles.pathLabel}>{shortGrade(g)}</span>
+            )}
           </span>
         ))}
         <svg

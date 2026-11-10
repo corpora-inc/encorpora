@@ -14,16 +14,36 @@ export type LevelRangeArea = {
   estimated?: boolean;
 };
 
-/** Whole sentences with named slots, so each translates as a unit. */
+/** Whole sentences with named slots, so each translates as a unit. `who`
+ * is a learner's name when someone else reads their level; without it the
+ * sentences speak to the learner. */
+const problems = (n: number) => `${n} ${n === 1 ? "problem" : "problems"}`;
 const words = {
   likely: (from: string, to: string) =>
     from === to ? `Likely ${from}` : `Likely ${from} to ${to}`,
-  summary: (answered: number, from: string, to: string) =>
+  summary: (answered: number, from: string, to: string, who?: string) =>
     from === to
-      ? `After ${answered} ${answered === 1 ? "problem" : "problems"}, our estimate is near ${from}.`
-      : `After ${answered} ${answered === 1 ? "problem" : "problems"}, we think you’re somewhere between ${from} and ${to}.`,
+      ? `After ${problems(answered)}, our estimate is near ${from}.`
+      : who
+        ? `After ${problems(answered)}, we think ${who} is somewhere between ${from} and ${to}.`
+        : `After ${problems(answered)}, we think you’re somewhere between ${from} and ${to}.`,
+  /** With grade numbers hidden: what the bars mean, without a grade. */
+  unnumbered: (answered: number, who?: string) =>
+    who
+      ? `${problems(answered)} answered. Each band is where ${who} is likely working, and it narrows with every answer.`
+      : `${problems(answered)} answered. Each band is where you’re likely working, and it narrows with every answer.`,
   row: (area: string, level: string, from: string, to: string) =>
     `${area}: best guess ${level}, likely ${from} to ${to}`,
+  rowUnnumbered: (area: string) =>
+    `${area}: a likely range, narrowing with practice`,
+  start: (level: string, from: string, to: string, who?: string) =>
+    who
+      ? `AMP starts ${who} near ${level}, somewhere between ${from} and ${to}. Every answer narrows the range.`
+      : `AMP starts near ${level}, somewhere between ${from} and ${to}. Every answer narrows the range.`,
+  startUnnumbered: (who?: string) =>
+    who
+      ? `AMP starts from ${who}’s age and narrows the range with every answer.`
+      : "AMP starts from a first guess and narrows the range with every answer.",
 };
 
 /**
@@ -39,8 +59,11 @@ export function LevelRange({
   pathState = "ready",
   grade = null,
   title = "Where you are",
+  labelledBy,
   action,
   footer,
+  numbers = true,
+  who,
 }: {
   overall: Estimate;
   /** Problems the estimate rests on. */
@@ -51,10 +74,18 @@ export function LevelRange({
   pathState?: "ready" | "loading" | "failed";
   /** The learner's own grade, painted behind every bar. */
   grade?: readonly [from: number, to: number] | null;
-  title?: string;
+  /** The view's own heading; null where the page title already names it
+   * (then `labelledBy` names the page title's id). */
+  title?: string | null;
+  labelledBy?: string;
   /** The next step, beside the best guess: Practice. */
   action?: ReactNode;
   footer?: ReactNode;
+  /** Grade names and numbers; off where a learner's levels are hidden, which
+   * leaves the bars, their bands and the learner's own grade. */
+  numbers?: boolean;
+  /** The learner's name when someone else reads it. */
+  who?: string;
 }) {
   const [from, to] = likelyRange(overall);
   const detail = levelDetails(overall);
@@ -66,52 +97,62 @@ export function LevelRange({
   // be a lone segment, so it waits.
   const pathShown = answered >= PATH_FROM;
   return (
-    <section className={styles.view} aria-labelledby="level-range-title">
+    <section
+      className={styles.view}
+      aria-labelledby={labelledBy ?? "level-range-title"}
+      data-level-view
+    >
       <div className={styles.head}>
-        <div className={styles.estimate}>
-          <h2 id="level-range-title" className={styles.eyebrow}>
-            {title}
-          </h2>
-          <p className={styles.bestLabel}>Best guess</p>
-          <p className={styles.best} data-testid="level-best">
-            <span className={styles.bestName}>{gradeName(overall.level)}</span>
-            <span className={styles.bestPoint}>{detail.point}</span>
-          </p>
-          <p className={styles.likely}>
-            {words.likely(gradeName(from), gradeName(to))}
-            <span className={styles.likelyNumbers}>
-              {detail.from}–{detail.to}
-            </span>
-          </p>
-          <p className={styles.summary}>
-            {words.summary(answered, gradeName(from), gradeName(to))}
-          </p>
-        </div>
+        {numbers ? (
+          <div className={styles.estimate} data-testid="level-readout">
+            {title && (
+              <h2 id="level-range-title" className={styles.eyebrow}>
+                {title}
+              </h2>
+            )}
+            <p className={styles.bestLabel}>Best guess</p>
+            <p className={styles.best}>
+              <span className={styles.bestName}>
+                {gradeName(overall.level)}
+              </span>
+              <span className={styles.bestPoint}>{detail.point}</span>
+            </p>
+            <p className={styles.likely}>
+              {words.likely(gradeName(from), gradeName(to))}
+              <span className={styles.likelyNumbers}>
+                {detail.from}–{detail.to}
+              </span>
+            </p>
+            <p className={styles.summary}>
+              {words.summary(answered, gradeName(from), gradeName(to), who)}
+            </p>
+          </div>
+        ) : (
+          <div className={styles.estimate}>
+            {title && (
+              <h2 id="level-range-title" className={styles.eyebrow}>
+                {title}
+              </h2>
+            )}
+            <p className={styles.summary}>{words.unnumbered(answered, who)}</p>
+          </div>
+        )}
         {action && <div className={styles.action}>{action}</div>}
       </div>
       <div className={styles.areas}>
         <h3 className={styles.caption}>By area</h3>
-        <ul className={styles.rows}>
-          <AreaRow
-            area={{ id: "", label: "Overall", estimate: overall }}
-            scale={scale}
-            grade={grade}
-            strong
-          />
-          {areas.map((area) => (
-            <AreaRow key={area.id} area={area} scale={scale} grade={grade} />
-          ))}
-        </ul>
-        <div className={styles.axisRow}>
-          <span />
-          <LevelAxis scale={scale} />
-          <span />
-        </div>
+        <LevelRows
+          overall={overall}
+          areas={areas}
+          scale={scale}
+          grade={grade}
+          numbers={numbers}
+        />
       </div>
       {pathShown && (
         <figure className={styles.pathFigure}>
           <figcaption className={styles.caption}>How it narrowed</figcaption>
-          <LevelPath points={path} state={pathState} />
+          <LevelPath points={path} state={pathState} labels={numbers} />
           <Legend grade={!!grade} />
         </figure>
       )}
@@ -123,15 +164,78 @@ export function LevelRange({
 /** Answers before the path of the estimate is drawn: two steps of five. */
 const PATH_FROM = 10;
 
+/**
+ * Every area as an error bar on one scale, the overall estimate first and
+ * larger, with the grade axis under them. The parts of `LevelRange`, for a
+ * place that shows several learners on one shared scale (the class map).
+ */
+export function LevelRows({
+  overall,
+  overallLabel = "Overall",
+  areas,
+  scale,
+  grade = null,
+  numbers = true,
+  overallEstimated = false,
+  axis = true,
+}: {
+  overall: Estimate;
+  overallLabel?: string;
+  areas: readonly LevelRangeArea[];
+  scale: RangeScale;
+  grade?: readonly [from: number, to: number] | null;
+  numbers?: boolean;
+  /** The overall estimate is a starting guess, drawn dashed. */
+  overallEstimated?: boolean;
+  axis?: boolean;
+}) {
+  return (
+    <>
+      <ul className={styles.rows}>
+        <AreaRow
+          area={{
+            id: "",
+            label: overallLabel,
+            estimate: overall,
+            estimated: overallEstimated,
+          }}
+          scale={scale}
+          grade={grade}
+          numbers={numbers}
+          strong
+        />
+        {areas.map((area) => (
+          <AreaRow
+            key={area.id}
+            area={area}
+            scale={scale}
+            grade={grade}
+            numbers={numbers}
+          />
+        ))}
+      </ul>
+      {numbers && axis && (
+        <div className={styles.axisRow}>
+          <span />
+          <LevelAxis scale={scale} />
+          <span />
+        </div>
+      )}
+    </>
+  );
+}
+
 function AreaRow({
   area,
   scale,
   grade,
+  numbers,
   strong = false,
 }: {
   area: LevelRangeArea;
   scale: RangeScale;
   grade: readonly [number, number] | null;
+  numbers: boolean;
   strong?: boolean;
 }) {
   const [from, to] = likelyRange(area.estimate);
@@ -139,12 +243,16 @@ function AreaRow({
     <li
       className={`${styles.row} ${strong ? styles.rowStrong : ""}`}
       data-strand={area.id || undefined}
-      aria-label={words.row(
-        area.label,
-        gradeName(area.estimate.level),
-        gradeName(from),
-        gradeName(to),
-      )}
+      aria-label={
+        numbers
+          ? words.row(
+              area.label,
+              gradeName(area.estimate.level),
+              gradeName(from),
+              gradeName(to),
+            )
+          : words.rowUnnumbered(area.label)
+      }
     >
       <span className={styles.rowName} aria-hidden="true">
         {area.label}
@@ -159,7 +267,13 @@ function AreaRow({
         />
       </span>
       <span className={styles.rowNumbers} aria-hidden="true">
-        {from.toFixed(1)}–{to.toFixed(1)}
+        {!numbers
+          ? ""
+          : area.estimated
+            ? strong
+              ? "Starting"
+              : "Not yet"
+            : `${from.toFixed(1)}–${to.toFixed(1)}`}
       </span>
     </li>
   );
@@ -195,30 +309,55 @@ export function LevelRangeStart({
   start,
   action,
   title = "Where you are",
-  body,
+  labelledBy,
+  numbers = true,
+  who,
+  grade = null,
 }: {
   /** Where AMP begins: from a birth year, or the start an adult chose. */
   start: Estimate;
   action?: ReactNode;
-  title?: string;
-  /** Instead of the default line, for someone reading another's level. */
-  body?: ReactNode;
+  title?: string | null;
+  labelledBy?: string;
+  /** Grade names and numbers; off where a learner's levels are hidden. */
+  numbers?: boolean;
+  /** The learner's name when someone else reads it. */
+  who?: string;
+  /** The learner's own grade, painted behind the bar. */
+  grade?: readonly [from: number, to: number] | null;
 }) {
   const [from, to] = likelyRange(start);
-  const scale = fitScale([start], { minSpan: 6, pad: 1 });
+  const scale = fitScale([start], {
+    minSpan: 6,
+    pad: 1,
+    include: grade ? [...grade] : [],
+  });
   return (
     <section
       className={`${styles.view} ${styles.start}`}
-      aria-labelledby="level-range-title"
+      aria-labelledby={labelledBy ?? "level-range-title"}
+      data-level-view
     >
       <div className={styles.startText}>
-        <h2 id="level-range-title" className={styles.eyebrow}>
-          {title}
-        </h2>
-        <p className={styles.startTitle}>Your level appears as you practice</p>
+        {title && (
+          <h2 id="level-range-title" className={styles.eyebrow}>
+            {title}
+          </h2>
+        )}
+        <p className={styles.startTitle}>
+          {who
+            ? `${who}’s level appears with practice`
+            : "Your level appears as you practice"}
+        </p>
         <p className={styles.startBody}>
-          {body ??
-            `AMP starts near ${gradeName(start.level)}, somewhere between ${gradeName(from)} and ${gradeName(to)}. Every answer narrows the range.`}
+          {numbers
+            ? words.start(
+                gradeName(start.level),
+                gradeName(from),
+                gradeName(to),
+                who,
+              )
+            : words.startUnnumbered(who)}
         </p>
         {action && <div className={styles.startAction}>{action}</div>}
       </div>
@@ -227,11 +366,21 @@ export function LevelRangeStart({
         <div
           className={styles.startBar}
           role="img"
-          aria-label={`Starting estimate: ${gradeName(start.level)}, likely ${gradeName(from)} to ${gradeName(to)}`}
+          aria-label={
+            numbers
+              ? `Starting estimate: ${gradeName(start.level)}, likely ${gradeName(from)} to ${gradeName(to)}`
+              : "Starting estimate: a wide range that narrows with practice"
+          }
         >
-          <LevelBar estimate={start} scale={scale} estimated size="large" />
+          <LevelBar
+            estimate={start}
+            scale={scale}
+            band={grade}
+            estimated
+            size="large"
+          />
         </div>
-        <LevelAxis scale={scale} />
+        {numbers && <LevelAxis scale={scale} />}
         <p className={styles.startNote}>
           <span className={styles.startNoteBefore} aria-hidden="true" />
           Now

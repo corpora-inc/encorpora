@@ -9,11 +9,7 @@ import { TextField } from "../../ui/TextField";
 import { workbookByCode, workbookHistoryOptions } from "./api";
 import { canMakeWorkbook, localDate, workbookMessage } from "./model";
 import { AllowancePause } from "../continue/AllowancePause";
-import {
-  WorkbookFrame,
-  whose,
-  type WorkbookLearner,
-} from "./WorkbookFrame";
+import { WorkbookFrame, whose, type WorkbookLearner } from "./WorkbookFrame";
 import { WorkbookList } from "./WorkbookList";
 import styles from "./Workbooks.module.css";
 
@@ -23,7 +19,7 @@ export function WorkbookHistoryScreen() {
   if (!session) return <Navigate to="/sign-in" replace />;
   return (
     <WorkbookFrame session={session} learnerId={learnerId}>
-      {(learner) => <History session={session} learner={learner} />}
+      {(learner) => <WorkbookHistory session={session} learner={learner} />}
     </WorkbookFrame>
   );
 }
@@ -31,7 +27,7 @@ export function WorkbookHistoryScreen() {
 /** A learner's workbooks: today's as the one primary action, the ones made
  * before as a list, and results by code as a quiet second action. On the
  * adult's own practice it speaks to them and never names them. */
-function History({
+export function WorkbookHistory({
   session,
   learner,
 }: {

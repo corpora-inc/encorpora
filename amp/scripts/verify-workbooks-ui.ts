@@ -382,7 +382,7 @@ const controlBoxes = (page: Page) =>
   page.evaluate(() =>
     [
       ...document.querySelectorAll(
-        "main [role=radiogroup], main [data-workbook-actions] button, main [aria-label='Workbook contents']",
+        "[role=dialog] [role=radiogroup], [role=dialog] [data-workbook-actions] button, [role=dialog] [aria-label='Workbook contents']",
       ),
     ].map((el) => {
       const box = el.getBoundingClientRect();
@@ -390,24 +390,12 @@ const controlBoxes = (page: Page) =>
     }),
   );
 
-/** The workbook's options: beside it from 900 px, in a sheet below that.
- * Runs `act` with them open, then closes the sheet, so the page is in reach. */
+/** The workbook's options, in the day's sheet over the list. */
 async function withOptions<T>(
   page: Page,
   act: (options: ReturnType<Page["locator"]>) => Promise<T>,
 ) {
-  const opener = page.getByRole("button", { name: "Options", exact: true });
-  const sheet = await opener.isVisible();
-  if (sheet) await opener.click();
-  const options = sheet
-    ? page.getByRole("dialog", { name: "Workbook options" })
-    : page.getByRole("complementary", { name: "Workbook options" });
-  const result = await act(options);
-  if (sheet) {
-    await page.keyboard.press("Escape");
-    await options.waitFor({ state: "detached" });
-  }
-  return result;
+  return act(page.getByRole("dialog"));
 }
 
 const engine = process.argv.includes("--webkit") ? "webkit" : "chromium";
@@ -631,9 +619,8 @@ try {
       );
 
       // History lists every stored workbook, newest first.
-      await page
-        .getByRole("link", { name: /’s workbooks$|^Your workbooks$/ })
-        .click();
+      // Closing the day's sheet returns to the list under it.
+      await page.keyboard.press("Escape");
       await page.waitForURL(new RegExp(`/learners/${learnerId}/workbooks$`));
       await page.getByRole("list", { name: "Workbooks" }).waitFor();
       const items = await page

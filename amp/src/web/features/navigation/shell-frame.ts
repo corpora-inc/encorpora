@@ -8,7 +8,7 @@ import type { TabItem } from "../../ui/Tabs";
  * the screen keeps a frame of its own (the pitch, sign-in, first-run steps,
  * joining a class, school setup).
  */
-export type ProgressTab = "overview" | "pathways" | "inventory" | "workbooks";
+export type ProgressTab = "overview" | "pathways" | "inventory";
 export type AccountTab = "security" | "learners" | "access" | "privacy";
 export type ShellFrame =
   | { kind: "progress"; active: ProgressTab }
@@ -71,11 +71,12 @@ export function shellFrame(pathname: string): ShellFrame | null {
     return { kind: "school", org: school[1]!, active };
   }
   if (path === "/school") return { kind: "plain" };
-  // A learner's workbooks are a tab of their Progress. The URL names the
-  // learner; arriving there chooses them (app/router.tsx), so the group's
-  // other tabs are theirs too.
+  // A learner's workbooks belong to their Overview, where Workbooks is a
+  // quiet action (docs/design/ia.md): the Progress tabs stay, Overview
+  // marked, so the way back is one tap. The URL names the learner; arriving
+  // there chooses them (app/router.tsx), so the tabs are theirs too.
   if (/^\/learners\/[^/]+\/workbooks(?:\/|$)/.test(path))
-    return { kind: "progress", active: "workbooks" };
+    return { kind: "progress", active: "overview" };
   // Practicing as someone else: "Try a level…" and a profile's levels.
   if (under(path, "/me/profiles")) return { kind: "plain" };
   if (path === "/overview" || path === "/me")
@@ -130,13 +131,8 @@ export function shellFrame(pathname: string): ShellFrame | null {
  * chosen child. */
 export type ProgressContext = "own" | "learner";
 
-/** The Progress tabs, one URL each. Paths have no leading slash.
- * `workbooks` is the learner whose workbooks the account may open; without
- * one (a student's own session, a second parent's view) there is no tab. */
-export function progressTabs(
-  context: ProgressContext,
-  workbooks?: string | null,
-): TabItem[] {
+/** The Progress tabs, one URL each. Paths have no leading slash. */
+export function progressTabs(context: ProgressContext): TabItem[] {
   return [
     {
       id: "overview",
@@ -145,15 +141,6 @@ export function progressTabs(
     },
     { id: "pathways", label: "Pathways", path: "pathways" },
     { id: "inventory", label: "Inventory", path: "inventory" },
-    ...(workbooks
-      ? [
-          {
-            id: "workbooks",
-            label: "Workbooks",
-            path: `learners/${encodeURIComponent(workbooks)}/workbooks`,
-          },
-        ]
-      : []),
   ];
 }
 

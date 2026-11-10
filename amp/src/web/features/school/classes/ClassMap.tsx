@@ -8,9 +8,12 @@ import {
   fitScale,
   LevelAxis,
   LevelBar,
+  LevelRows,
   likelyRange,
   type Estimate,
+  type RangeScale,
 } from "../../../ui/level-range";
+import { strandNames } from "../../../BirthYearPrompt";
 import { Menu, MenuItem } from "../../../ui/Menu";
 import { parseSort, studentUrl, useClassSearch } from "./teacher-shared";
 import styles from "./ClassMap.module.css";
@@ -117,8 +120,7 @@ export function ClassMap({
   const starting = placed.every((row) => row.estimated);
   const sort = parseSort(search.sort);
   const byName = sort?.column === "student";
-  const direction =
-    sort?.direction ?? (byName ? "ascending" : "descending");
+  const direction = sort?.direction ?? (byName ? "ascending" : "descending");
   const rows = useMemo(() => {
     const sign = direction === "ascending" ? 1 : -1;
     return [...placed].sort((a, b) => {
@@ -158,6 +160,17 @@ export function ClassMap({
     return `likely grade ${from.toFixed(1)} to ${to.toFixed(1)}${where}`;
   };
   const lenses = ["overall", ...strands.map((strand) => strand.id)];
+  // A family or a small group: each learner's whole picture, every area,
+  // stacked down the page on one shared scale.
+  if (data.students.length <= SMALL_CLASS && !limitStrands)
+    return (
+      <SmallClassMap
+        data={data}
+        center={center}
+        starting={starting}
+        action={action}
+      />
+    );
   return (
     <div className={styles.map}>
       {starting && (
@@ -173,7 +186,11 @@ export function ClassMap({
         </div>
       )}
       <div className={styles.toolbar} hidden={starting || undefined}>
-        <Menu align="start" label={label(lens)} aria-label={`Area: ${label(lens)}`}>
+        <Menu
+          align="start"
+          label={label(lens)}
+          aria-label={`Area: ${label(lens)}`}
+        >
           {lenses.map((id) => (
             <MenuItem
               key={id}
@@ -227,7 +244,9 @@ export function ClassMap({
             <span role="cell" className={styles.name}>
               <Link
                 to="/$"
-                params={{ _splat: studentUrl(data.class.orgId, row.student.id) }}
+                params={{
+                  _splat: studentUrl(data.class.orgId, row.student.id),
+                }}
                 search={{ class: data.class.id } as never}
                 className={styles.student}
               >
@@ -264,6 +283,130 @@ export function ClassMap({
           </div>
         ))}
       </div>
+    </div>
+  );
+}
+
+/** Up to this many learners, the map shows each one whole. */
+const SMALL_CLASS = 6;
+/** The curriculum's order of areas, for each learner's rows. */
+const AREA_ORDER = Object.keys(strandNames);
+
+/**
+ * A small class (a family, a tutor's group): a section per learner, with
+ * their overall level and every area as its own wide error bar, all on one
+ * scale that spans the whole group, each over their own grade. Before
+ * anyone has practiced, each learner's starting range alone.
+ */
+function SmallClassMap({
+  data,
+  center,
+  starting,
+  action,
+}: {
+  data: MapResponse;
+  center: number;
+  starting: boolean;
+  action?: ReactNode;
+}) {
+  const areas = [...data.strands].sort(
+    (a, b) =>
+      (AREA_ORDER.indexOf(a.id) + 1 || 99) -
+      (AREA_ORDER.indexOf(b.id) + 1 || 99),
+  );
+  const learners = data.students.map((student) => ({
+    student,
+    overall: place(student, "overall", center),
+    areas: student.level
+      ? areas.map((area) => {
+          const row = place(student, area.id, center);
+          return {
+            id: area.id,
+            label: area.label,
+            estimate: row.estimate,
+            estimated: row.estimated,
+          };
+        })
+      : [],
+  }));
+  const scale: RangeScale = fitScale(
+    learners.flatMap((learner) =>
+      [
+        learner.overall,
+        ...learner.areas.map((area) => ({
+          estimate: area.estimate,
+          estimated: !!area.estimated,
+        })),
+      ]
+        .filter((row) => !row.estimated || row.estimate.sd <= UNKNOWN_SD)
+        .map((row) => row.estimate),
+    ),
+    {
+      minSpan: 6,
+      include: learners.flatMap((learner) => [
+        learner.overall.estimate.level,
+        ...(learner.student.reference
+          ? [learner.student.reference.from, learner.student.reference.to]
+          : []),
+      ]),
+    },
+  );
+  return (
+    <div className={styles.map}>
+      {starting && (
+        <div className={styles.starting}>
+          <div>
+            <p className={styles.startingTitle}>Starting estimates</p>
+            <p className={styles.startingBody}>
+              Each range starts from age and grade, and narrows as each one
+              practices.
+            </p>
+          </div>
+          {action}
+        </div>
+      )}
+      {learners.map((learner) => {
+        const { student, overall } = learner;
+        const [from, to] = likelyRange(overall.estimate);
+        return (
+          <section
+            key={student.id}
+            className={styles.learner}
+            aria-labelledby={`map-${student.id}`}
+          >
+            <div className={styles.learnerHead}>
+              <h2 id={`map-${student.id}`} className={styles.learnerName}>
+                <Link
+                  to="/$"
+                  params={{
+                    _splat: studentUrl(data.class.orgId, student.id),
+                  }}
+                  search={{ class: data.class.id } as never}
+                  className={styles.student}
+                >
+                  {student.name}
+                </Link>
+              </h2>
+              <p className={styles.learnerLevel}>
+                {overall.estimated
+                  ? "Starting estimate"
+                  : `Likely ${from.toFixed(1)}–${to.toFixed(1)}`}
+              </p>
+            </div>
+            <LevelRows
+              overall={overall.estimate}
+              overallEstimated={overall.estimated}
+              areas={learner.areas}
+              scale={scale}
+              grade={
+                student.reference
+                  ? [student.reference.from, student.reference.to]
+                  : null
+              }
+            />
+          </section>
+        );
+      })}
     </div>
   );
 }

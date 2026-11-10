@@ -22,7 +22,6 @@ import {
   RecordObjectives,
   RecordWeeks,
   RecordWork,
-  TimeDetail,
 } from "../school/classes/ProgressRecord";
 import teacher from "../school/classes/Teacher.module.css";
 import type { OwnPractice } from "../../../account/adult-contracts";
@@ -129,56 +128,20 @@ export function OwnRecordScreen() {
       {started ? "Practice" : "Start practicing"}
     </Link>
   ) : undefined;
-  const tryLevel = (
-    <Link
-      to="/$"
-      params={{ _splat: "me/profiles/new" }}
-      className={buttonClass("quiet", styles.quiet)}
-      data-try-level
-    >
-      <PersonIcon />
-      Practice as someone else
-    </Link>
-  );
   return (
     <OwnPage>
       <div className={styles.stack}>
-        {/* Paused only when no access covers them and their free problems
-            are used: the one pause, with Continue with AMP for their own
-            practice. */}
-        {!data.learner.active && (
-          <AllowancePause
-            kind="problems"
-            viewer="adult"
-            learner={{ id: data.learner.id, name: data.learner.name }}
-            compact
-          />
-        )}
-        {started ? (
-          <LevelRange
-            overall={level.overall}
-            answered={level.overall.answered}
-            areas={levelAreas(level, data)}
-            path={trend.data ?? null}
-            pathState={
-              trend.isError ? "failed" : trend.data ? "ready" : "loading"
-            }
-            action={practice}
-          />
-        ) : (
-          <LevelRangeStart start={level.overall} action={practice} />
-        )}
-        <div className={styles.tools} data-own-tools>
-          {/* Early on, what they did, in one line instead of a chart; and
-              the free problems left, quietly. */}
-          <p className={styles.free}>
-            {shown.line && <span data-activity-line>{shown.line}</span>}
+        {/* The title names the content; the rare actions sit quietly on its
+            row (docs/design/ia.md). Practicing as someone else is in the
+            drawer, under My practice. */}
+        <header className={styles.titleRow}>
+          <h1 id="me-title">Where you are</h1>
+          <div className={styles.toolActions} data-own-tools>
             {left != null && left > 0 && (
-              <span data-free-left={left}>{freeProblemsLeft(left)}</span>
+              <span className={styles.free} data-free-left={left}>
+                {freeProblemsLeft(left)}
+              </span>
             )}
-          </p>
-          <div className={styles.toolActions}>
-            {/* Practice is the bar's action; workbooks are theirs here. */}
             <Link
               to="/learners/$learnerId/workbooks"
               params={{ learnerId: data.learner.id }}
@@ -194,80 +157,91 @@ export function OwnRecordScreen() {
                 onClick={() => window.print()}
               >
                 <PrintIcon />
-                Print progress report
+                Print report
               </Button>
             )}
-            {tryLevel}
           </div>
-        </div>
-        {/* Their time and work, each part only once it has enough to say.
-            Never an empty chart. */}
-        {(shown.weeks || shown.days || shown.objectives || shown.work) && (
-          <div className={styles.record}>
-            {shown.weeks && (
-              <section className={teacher.recordSection}>
-                <h2>Time, last 12 weeks</h2>
-                <RecordWeeks record={data.record} />
-              </section>
-            )}
-            {shown.days && (
-              <section className={teacher.recordSection}>
-                <h2>Time by day and skill</h2>
-                <div className={teacher.evidence}>
-                  <TimeDetail time={data.time} who="You" />
-                </div>
-              </section>
-            )}
-            {shown.objectives && (
-              <section className={teacher.recordSection}>
-                <h2>Objectives gained</h2>
-                <RecordObjectives record={data.record} />
-              </section>
-            )}
-            {shown.work && (
-              <section className={teacher.recordSection}>
-                <h2>Recent work</h2>
-                <RecordWork record={data.record} reader="self" />
-              </section>
-            )}
-          </div>
+        </header>
+        {/* Paused only when no access covers them and their free problems
+            are used: the one pause, with Continue with AMP for their own
+            practice. */}
+        {!data.learner.active && (
+          <AllowancePause
+            kind="problems"
+            viewer="adult"
+            learner={{ id: data.learner.id, name: data.learner.name }}
+            compact
+          />
+        )}
+        {started ? (
+          <LevelRange
+            title={null}
+            labelledBy="me-title"
+            overall={level.overall}
+            answered={level.overall.answered}
+            areas={levelAreas(level, data)}
+            path={trend.data ?? null}
+            pathState={
+              trend.isError ? "failed" : trend.data ? "ready" : "loading"
+            }
+            action={practice}
+          />
+        ) : (
+          <LevelRangeStart
+            title={null}
+            labelledBy="me-title"
+            start={level.overall}
+            action={practice}
+          />
+        )}
+        {/* Their time and work, each part only once it has something to
+            say. Never an empty chart. */}
+        {shown.week && (
+          <section className={teacher.recordSection} data-this-week>
+            <h2>This week</h2>
+            <p className={styles.weekLine}>{shown.week}</p>
+            {shown.weeks && <RecordWeeks record={data.record} />}
+          </section>
+        )}
+        {shown.objectives && (
+          <section className={teacher.recordSection}>
+            <h2>Objectives gained</h2>
+            <RecordObjectives record={data.record} />
+          </section>
+        )}
+        {shown.work && (
+          <section className={teacher.recordSection}>
+            <h2>Recent work</h2>
+            <RecordWork record={data.record} reader="self" />
+          </section>
         )}
       </div>
     </OwnPage>
   );
 }
 
-/** Practice settled enough for charts: three days and half an hour. */
-const SETTLED_DAYS = 3;
-const SETTLED_MINUTES = 30;
-/** Weeks with time before the 12-week chart has a shape. */
-const WEEKS_FOR_CHART = 3;
-
-/** Which parts of their time and work have enough to show. Early on, one
- * compact line says what they did; each chart joins once it has a shape. */
+/** Which parts of their time and work have something to show: this week as
+ * one line (with the 12-week strip once two weeks have time), objectives
+ * once one is gained, recent work once there is some. */
 export function activityShown(data: Pick<OwnPractice, "record" | "time">) {
-  const minutes = Math.round(
-    data.time.days.reduce((sum, day) => sum + day.minutes, 0),
+  const thisWeek = data.record.weeks.at(-1);
+  const days = data.time.days.filter(
+    (day) => !thisWeek || day.day >= thisWeek.week,
   );
-  const problems = data.time.days.reduce((sum, day) => sum + day.problems, 0);
-  const today = data.time.days.find((day) => day.day === data.time.range.to);
-  const settled =
-    data.time.days.length >= SETTLED_DAYS && minutes >= SETTLED_MINUTES;
+  const minutes = Math.round(days.reduce((sum, day) => sum + day.minutes, 0));
+  const problems = days.reduce((sum, day) => sum + day.problems, 0);
   const count = (n: number, one: string, many: string) =>
     `${n} ${n === 1 ? one : many}`;
-  const line =
-    settled || (!minutes && !problems)
-      ? null
-      : today && (today.minutes > 0 || today.problems > 0)
-        ? `${count(Math.round(today.minutes), "minute", "minutes")} today · ${count(today.problems, "problem", "problems")}`
-        : `${count(minutes, "minute", "minutes")} · ${count(problems, "problem", "problems")} so far`;
   return {
-    line,
-    weeks:
-      settled &&
-      data.record.weeks.filter((week) => week.minutes > 0).length >=
-        WEEKS_FOR_CHART,
-    days: settled,
+    week:
+      minutes > 0 || problems > 0
+        ? [
+            count(minutes, "minute", "minutes"),
+            count(days.length, "day", "days"),
+            count(problems, "problem", "problems"),
+          ].join(" · ")
+        : null,
+    weeks: data.record.weeks.filter((week) => week.minutes > 0).length >= 2,
     objectives: data.record.objectives.length > 0,
     work: data.record.work.length > 0,
   };
@@ -287,14 +261,6 @@ function PrintIcon() {
       <path d="M6 7.5V3.5h8v4" />
       <rect x="3" y="7.5" width="14" height="7" rx="2" />
       <path d="M6 12.5h8v4H6z" />
-    </svg>
-  );
-}
-function PersonIcon() {
-  return (
-    <svg viewBox="0 0 20 20" aria-hidden="true" className={styles.icon}>
-      <circle cx="10" cy="6.5" r="3" />
-      <path d="M4 16.5c.8-3 3.2-4.6 6-4.6s5.2 1.6 6 4.6" />
     </svg>
   );
 }

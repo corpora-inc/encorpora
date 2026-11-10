@@ -97,26 +97,19 @@ h2.sectionTitle {
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-2) var(--space-3);
-  min-height: 96px;
-  box-sizing: border-box;
-  padding: var(--space-5);
-  border: 1px dashed var(--color-border-strong);
-  border-radius: var(--radius-panel);
   color: var(--color-muted-text);
 }
 .emptyPanel p {
   margin: 0;
 }
+/* Rows separated by a hairline, on the page (docs/design/ia.md). */
 .list {
   display: grid;
   margin: 0;
   padding: 0;
   list-style: none;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-panel);
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface-raised);
-  overflow: hidden;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
 .row {
   display: grid;
@@ -125,7 +118,7 @@ h2.sectionTitle {
   gap: var(--space-2) var(--space-4);
   min-height: 92px;
   box-sizing: border-box;
-  padding: var(--space-3) var(--space-4) var(--space-3) var(--space-4);
+  padding: var(--space-3) 0;
 }
 .row + .row {
   border-top: 1px solid var(--color-border);
@@ -171,7 +164,7 @@ h2.sectionTitle {
   justify-self: start;
   gap: 0 var(--space-2);
   border-radius: var(--radius-small);
-  color: var(--color-on-surface-raised);
+  color: var(--color-on-surface);
   font-weight: 700;
   text-decoration: none;
 }
@@ -310,60 +303,18 @@ h2.sectionTitle {
   stroke: none;
 }
 
-/* The workbook and its options: side by side from 900 px, the options in
-   a sheet below that. */
+/* In the day's sheet: the two actions, the workbook as paper, then its
+   options, one column. */
 .builder {
   display: grid;
   gap: var(--space-5);
-  align-items: start;
+  padding-top: var(--space-3);
 }
 .optionsPanel {
-  display: none;
+  display: grid;
+  gap: var(--space-4);
 }
-.optionsBar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-control);
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface-raised);
-}
-.optionsSummary {
-  min-width: 0;
-  margin: 0;
-  color: var(--color-muted-text);
-  font-size: var(--text-small);
-  line-height: 1.35;
-}
-.optionsButton {
-  flex: none;
-  min-height: 44px;
-  padding-block: var(--space-2);
-}
-@media (min-width: 900px) {
-  .builder {
-    grid-template-columns: minmax(0, 1fr) 360px;
-    gap: var(--space-6);
-  }
-  .optionsBar {
-    display: none;
-  }
-  .optionsPanel {
-    position: sticky;
-    top: calc(var(--shell-bar, 56px) + var(--space-4));
-    display: grid;
-    gap: var(--space-4);
-    padding: var(--space-5);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-panel);
-    background: var(--color-surface-raised);
-    color: var(--color-on-surface-raised);
-  }
-}
-h2.optionsTitle {
+h3.optionsTitle {
   margin: 0;
   font-family: inherit;
   font-size: var(--text-heading-4);
@@ -393,7 +344,9 @@ h2.optionsTitle {
   border-radius: var(--radius-panel);
   background: var(--color-figure-paper);
   color: var(--color-on-surface-raised);
-  box-shadow: 0 1px 2px var(--color-shadow), 0 12px 32px -18px var(--color-shadow);
+  box-shadow:
+    0 1px 2px var(--color-shadow),
+    0 12px 32px -18px var(--color-shadow);
   transition: opacity var(--motion-fast) var(--ease-standard);
 }
 /* Focus moves here only to keep a retry's place; it is not a control. */
@@ -546,7 +499,7 @@ h2.optionsTitle {
   .row {
     grid-template-columns: auto minmax(0, 1fr);
     align-items: start;
-    padding: var(--space-4);
+    padding: var(--space-4) 0;
   }
   .rowActions {
     grid-column: 1 / -1;

@@ -158,7 +158,6 @@ function ShellBar({
   const open = useShellSlots((state) => state.drawerOpen);
   const setDrawerOpen = useShellSlots((state) => state.setDrawerOpen);
   const setTools = useShellSlots((state) => state.setTools);
-  const learnerId = useLearnerStore((state) => state.learnerId);
   const school = useSchoolNavigation(frame);
   // Prepare every place before opening the menu: later class responses must
   // not insert destinations under the pointer. The logo keeps its fixed box.
@@ -179,7 +178,7 @@ function ShellBar({
     frame.kind === "progress" ? (
       <Tabs
         label="Progress"
-        items={progressTabs(context, workbookLearner(context, me, learnerId))}
+        items={progressTabs(context)}
         active={frame.active}
       />
     ) : frame.kind === "account" ? (
@@ -303,27 +302,6 @@ function ProgressAction({
       <span className={bar.actionLabel}>{target.label}</span>
     </Link>
   );
-}
-
-/** Whose workbooks the Progress group's Workbooks tab opens: the learner the
- * group shows, when the account may open their workbooks. None for a
- * student's own session or a child the account only reads. */
-function workbookLearner(
-  context: ProgressContext,
-  me: SignedInMe | null,
-  learnerId: string | null,
-): string | null {
-  if (!me || me.account.kind === "student") return null;
-  if (context === "own") return me.adultPractice?.learner?.id ?? null;
-  const children = me.family.learners.filter(
-    (learner) => !learner.adult && !learner.deletedAt,
-  );
-  const learner =
-    children.find((entry) => entry.id === learnerId) ?? children[0];
-  // As `canReadWorkbooks` (features/workbooks/model), without its chunk.
-  return learner && (learner.learningAllowed ?? !!learner.canPractice)
-    ? learner.id
-    : null;
 }
 
 /** Where practice is for this context: `undefined` while the account loads,

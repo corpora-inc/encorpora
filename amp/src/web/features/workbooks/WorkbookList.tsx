@@ -21,7 +21,12 @@ const dateParts = (date: string) => {
     month: part({ month: "short" }),
     day: part({ day: "numeric" }),
     weekday: part({ weekday: "long" }),
-    full: part({ weekday: "long", month: "long", day: "numeric", year: "numeric" }),
+    full: part({
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    }),
   };
 };
 
@@ -62,7 +67,10 @@ export function WorkbookList({
     return (
       <div className={styles.emptyPanel} role="alert">
         <p>
-          {workbookMessage(query.error, "Past workbooks didn't load. Try again.")}
+          {workbookMessage(
+            query.error,
+            "Past workbooks didn't load. Try again.",
+          )}
         </p>
         <button
           type="button"

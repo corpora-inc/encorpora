@@ -42,7 +42,6 @@ import {
   dateLabel,
   defaultPaper,
   isDate,
-  leanNames,
   localDate,
   sameChoices,
   searchChoices,
@@ -51,11 +50,8 @@ import {
   type WorkbookSearch,
 } from "./model";
 import { AllowancePause } from "../continue/AllowancePause";
-import {
-  WorkbookFrame,
-  WorkbookTrail,
-  type WorkbookLearner,
-} from "./WorkbookFrame";
+import { WorkbookFrame, whose, type WorkbookLearner } from "./WorkbookFrame";
+import { WorkbookHistory } from "./WorkbookHistoryScreen";
 import { WorkbookList } from "./WorkbookList";
 import styles from "./Workbooks.module.css";
 
@@ -76,8 +72,48 @@ export function WorkbookDayScreen() {
     );
   return (
     <WorkbookFrame session={session} learnerId={learnerId}>
-      {(learner) =>
-        date === localDate() ? (
+      {(learner) => (
+        <DaySheet session={session} learner={learner} date={date} />
+      )}
+    </WorkbookFrame>
+  );
+}
+
+/** A day's workbook opens in a sheet over the learner's workbooks, the
+ * screen it belongs to (docs/design/ia.md): the sheet has its own URL, and
+ * Back, Escape and the close button all return to the list. */
+function DaySheet({
+  session,
+  learner,
+  date,
+}: {
+  session: AuthSession;
+  learner: WorkbookLearner;
+  date: string;
+}) {
+  const navigate = useNavigate();
+  const who = whose(learner);
+  return (
+    <>
+      <WorkbookHistory session={session} learner={learner} />
+      <Sheet
+        open
+        tall
+        title={dateLabel(date)}
+        description={who.label ?? undefined}
+        onOpenChange={(open) => {
+          if (!open)
+            void navigate({
+              to: "/learners/$learnerId/workbooks",
+              params: { learnerId: learner.id },
+              replace: true,
+            });
+        }}
+        returnFocus={() =>
+          document.querySelector<HTMLElement>("main h1") ?? null
+        }
+      >
+        {date === localDate() ? (
           <TodayOrUsed
             key={learner.id}
             session={session}
@@ -86,30 +122,9 @@ export function WorkbookDayScreen() {
           />
         ) : (
           <PastDay session={session} learner={learner} date={date} />
-        )
-      }
-    </WorkbookFrame>
-  );
-}
-
-function Head({
-  learner,
-  date,
-  actions,
-}: {
-  learner: WorkbookLearner;
-  date: string;
-  /** The day's own actions, at the end of the title row on a wide screen. */
-  actions?: ReactNode;
-}) {
-  return (
-    <header className={styles.dayHead}>
-      <div className={styles.dayTitle}>
-        <WorkbookTrail learner={learner} />
-        <h1 className={styles.title}>{dateLabel(date)}</h1>
-      </div>
-      {actions}
-    </header>
+        )}
+      </Sheet>
+    </>
   );
 }
 
@@ -207,7 +222,6 @@ function Today({
     }
   }, [current?.id, current?.paper, history.data]);
   const [message, setMessage] = useState("");
-  const [optionsOpen, setOptionsOpen] = useState(false);
   const [downloading, setDownloading] = useState(false);
   // A failed history load means no PDF flag: the printable copy still works.
   const ready = !!current && (!!history.data || !!history.error);
@@ -300,78 +314,38 @@ function Today({
   );
   return (
     <>
-      <Head
-        learner={learner}
-        date={date}
-        actions={
-          <div className={styles.dayActions} data-workbook-actions>
-            <Button
-              variant="secondary"
-              className={styles.another}
-              title="Roll another"
-              disabled={choosing}
-              aria-busy={another.isPending}
-              onClick={() => roll(choices)}
-            >
-              <svg
-                viewBox="0 0 20 20"
-                aria-hidden="true"
-                className={styles.dice}
-              >
-                <rect x="2.5" y="2.5" width="15" height="15" rx="3.5" />
-                <circle cx="7" cy="7" r="1.3" />
-                <circle cx="13" cy="13" r="1.3" />
-                <circle cx="10" cy="10" r="1.3" />
-              </svg>
-              <span className={styles.anotherLabel}>Roll another</span>
-            </Button>
-            <Button
-              variant="primary"
-              className={styles.download}
-              disabled={!ready || downloading}
-              aria-busy={downloading || (!ready && !loadError && !unavailable)}
-              onClick={() => void download()}
-            >
-              <svg
-                viewBox="0 0 20 20"
-                aria-hidden="true"
-                className={styles.buttonIcon}
-              >
-                <path d="M10 3.5v9M6 9l4 4 4-4M4 16.5h12" />
-              </svg>
-              Download workbook
-            </Button>
-          </div>
-        }
-      />
-      {/* On a phone or a narrow tablet the options open in a sheet; the bar
-          says what this workbook is made with. */}
-      <div className={styles.optionsBar}>
-        <p className={styles.optionsSummary}>
-          {[
-            `${minutes} min`,
-            paper === "a4" ? "A4" : "Letter",
-            leanNames[choices.lean],
-            choices.areas.length
-              ? choices.areas.map(areaName).join(", ")
-              : "Mixed areas",
-            choices.lesson ? "" : "Problems only",
-          ]
-            .filter(Boolean)
-            .join(" · ")}
-        </p>
+      <div className={styles.dayActions} data-workbook-actions>
         <Button
           variant="secondary"
-          className={styles.optionsButton}
-          onClick={() => setOptionsOpen(true)}
-          aria-haspopup="dialog"
+          className={styles.another}
+          title="Roll another"
+          disabled={choosing}
+          aria-busy={another.isPending}
+          onClick={() => roll(choices)}
         >
-          <svg viewBox="0 0 20 20" aria-hidden="true" className={styles.buttonIcon}>
-            <path d="M3.5 6h8M15 6h1.5M3.5 14h2M9 14h7.5" />
-            <circle cx="13" cy="6" r="2" />
-            <circle cx="7" cy="14" r="2" />
+          <svg viewBox="0 0 20 20" aria-hidden="true" className={styles.dice}>
+            <rect x="2.5" y="2.5" width="15" height="15" rx="3.5" />
+            <circle cx="7" cy="7" r="1.3" />
+            <circle cx="13" cy="13" r="1.3" />
+            <circle cx="10" cy="10" r="1.3" />
           </svg>
-          Options
+          <span className={styles.anotherLabel}>Roll another</span>
+        </Button>
+        <Button
+          variant="primary"
+          className={styles.download}
+          disabled={!ready || downloading}
+          aria-busy={downloading || (!ready && !loadError && !unavailable)}
+          onClick={() => void download()}
+        >
+          <svg
+            viewBox="0 0 20 20"
+            aria-hidden="true"
+            className={styles.buttonIcon}
+          >
+            <path d="M10 3.5v9M6 9l4 4 4-4M4 16.5h12" />
+          </svg>
+          Download workbook
         </Button>
       </div>
       <div className={styles.builder}>
@@ -410,19 +384,11 @@ function Today({
               : undefined
           }
         />
-        <aside className={styles.optionsPanel} aria-label="Workbook options">
-          <h2 className={styles.optionsTitle}>Options</h2>
+        <section className={styles.optionsPanel} aria-label="Workbook options">
+          <h3 className={styles.optionsTitle}>Options</h3>
           {options}
-        </aside>
+        </section>
       </div>
-      <Sheet
-        open={optionsOpen}
-        onOpenChange={setOptionsOpen}
-        title="Workbook options"
-        description="Changes make a new workbook for today."
-      >
-        {options}
-      </Sheet>
       {/* An action that fails says so in the shared toast, over the page. */}
       <Toast message={message} onDismiss={() => setMessage("")} />
     </>
@@ -592,8 +558,7 @@ function Contents({
           <div className={styles.contentsHead}>
             <h2>Workbook No.&nbsp;{workbook.number}</h2>
             <p className={styles.summary}>
-              About{" "}
-              {Math.max(5, Math.round(workbook.estimatedMinutes / 5) * 5)}{" "}
+              About {Math.max(5, Math.round(workbook.estimatedMinutes / 5) * 5)}{" "}
               minutes · {workbook.problems}{" "}
               {workbook.problems === 1 ? "problem" : "problems"} · answer key
               included
@@ -666,7 +631,6 @@ function PastDay({
   const history = useQuery(workbookHistoryOptions(session, learner.id, date));
   return (
     <>
-      <Head learner={learner} date={date} />
       {used && (
         <AllowancePause
           kind="workbooks"

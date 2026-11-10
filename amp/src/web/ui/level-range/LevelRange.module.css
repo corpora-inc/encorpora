@@ -68,7 +68,7 @@
   width: var(--dot);
   height: var(--dot);
   box-sizing: border-box;
-  border: 3px solid var(--color-surface-raised);
+  border: 3px solid var(--color-surface);
   border-radius: 50%;
   background: var(--level-hue);
   box-shadow: 0 0 0 1px var(--level-hue);
@@ -87,8 +87,8 @@
 }
 .estimated .dot {
   border: 2.5px solid var(--level-hue);
-  background: var(--color-surface-raised);
-  box-shadow: 0 0 0 2px var(--color-surface-raised);
+  background: var(--color-surface);
+  box-shadow: 0 0 0 2px var(--color-surface);
 }
 
 /* ── The axis under a column of bars ───────────────────────────────────── */
@@ -119,16 +119,13 @@
 }
 
 /* ── The level view ────────────────────────────────────────────────────── */
+/* No card: the view sits on the page, its parts separated by space and a
+   hairline (docs/design/ia.md). */
 .view {
   --name-column: 132px;
   --numbers-column: 80px;
   display: grid;
   gap: var(--space-6);
-  padding: var(--space-6);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-panel);
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface-raised);
 }
 /* One column: the best guess (with the next step beside it), every area,
    then the path the estimate took. */
@@ -208,7 +205,7 @@ h2.eyebrow {
 .caption,
 h3.caption {
   margin: 0;
-  color: var(--color-on-surface-raised);
+  color: var(--color-on-surface);
   font-family: inherit;
   font-size: var(--text-label);
   font-weight: 650;
@@ -285,7 +282,7 @@ h3.caption {
   width: 14px;
   height: 14px;
   box-sizing: border-box;
-  border: 3px solid var(--color-surface-raised);
+  border: 3px solid var(--color-surface);
   border-radius: 50%;
   background: var(--color-primary);
   box-shadow: 0 0 0 1px var(--color-primary);
@@ -342,13 +339,16 @@ h3.caption {
   padding-top: var(--space-5);
   border-top: 1px solid var(--color-border);
 }
-.rows {
+/* Two classes deep, so a page's own list rules never reach the rows. */
+.rows,
+.areas .rows {
   display: grid;
+  gap: 0;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.row,
+.rows > .row,
 .axisRow {
   display: grid;
   grid-template-columns: var(--name-column) minmax(0, 1fr) var(--numbers-column);
@@ -397,9 +397,8 @@ h3.caption {
 @media (max-width: 599.98px) {
   .view {
     gap: var(--space-5);
-    padding: var(--space-5) var(--space-4);
   }
-  .row {
+  .rows > .row {
     grid-template-columns: minmax(0, 1fr) auto;
     grid-template-rows: auto 28px;
     column-gap: var(--space-3);
@@ -453,7 +452,7 @@ h3.caption {
 .startTitle {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(28px, 6vw, var(--text-heading-1));
+  font-size: var(--text-heading-2);
   line-height: 1.15;
   letter-spacing: -0.01em;
   text-wrap: balance;
@@ -473,10 +472,6 @@ h3.caption {
   display: grid;
   gap: var(--space-2);
   margin: 0;
-  padding: var(--space-5);
-  border-radius: var(--radius-control);
-  background: var(--color-surface-sunken);
-  color: var(--color-on-surface-sunken);
 }
 .startBar {
   height: 56px;
