@@ -196,8 +196,8 @@ test(
       [{ org_id: orgId, class_id: classId }],
     );
     assert.deepEqual(
-      (await f.studentsOf(classId)).map((s) => s.id),
-      learners.map((l) => l.id),
+      (await f.studentsOf(classId)).map((s) => s.id).sort(),
+      learners.map((l) => l.id).sort(),
     );
 
     const after = await f.me(parent);
