@@ -3,6 +3,7 @@ import { normalizePointPlot, pointPlotAnswerText } from "./point-plot";
 import { multiPartAnswerText, normalizeMultiPart } from "./multi-part-choice";
 import { figureChoiceAnswerText } from "./figure-choice";
 import { structuredWorkAnswerText } from "./structured-work";
+import { shapeAnswerText } from "./shape-composer";
 
 export const MAX_SELECTION_OPTIONS = 8;
 export const MAX_SELECTION_RESPONSE_LENGTH = 200;
@@ -84,6 +85,7 @@ export function joinAnswerLabels(labels: readonly string[]): string {
 
 /** Completed worked answers are readable labels, never the transport format. */
 export function answerText(response: ProblemResponse, raw: string): string {
+  if (response.kind === "shape-composer") return shapeAnswerText(response, raw);
   if (response.kind === "point-plot") {
     if (normalizePointPlot(response, raw) === null)
       throw new Error("Worked answer must place the required grid points");

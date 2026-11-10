@@ -11,9 +11,9 @@ import { sceneCapabilitiesIn } from "../src/math/scene/index.js";
 import { problemLesson } from "../src/content/problem-lessons.js";
 import { sweepAxes } from "../src/math/number-domain-axes.js";
 
-/** A client released before scenes-v2: every other capability. */
+/** Isolate figure negotiation: every response format, but no scenes-v2. */
 const older = {
-  responseCapabilities,
+  responseCapabilities: [...responseCapabilities],
   figureCapabilities: figureCapabilities.filter((c) => c !== "scenes-v2"),
 };
 
