@@ -5,7 +5,6 @@ import {
   figureOptionLetters,
   type FigureChoiceResponse,
 } from "../math/figure-choice";
-import { article } from "../math/figure-panels";
 import { spokenMath } from "./MathText";
 import { SceneFigure } from "./scene/SceneFigure";
 
@@ -172,6 +171,7 @@ export function FigureChoiceAnswer({
       label={response.label}
       chosen={figureChoiceName(response, value)}
       noun={response.noun}
+      count={response.options.length}
       {...rest}
     />
   );
@@ -183,6 +183,7 @@ export function PickedAnswer({
   label,
   chosen,
   noun,
+  count,
   busy,
   sending,
   resolved,
@@ -191,8 +192,9 @@ export function PickedAnswer({
   label: string;
   /** The chosen option's name ("Graph B"), or null before a choice. */
   chosen: string | null;
-  /** What an option is called, for "Choose a graph above". */
+  /** What an option is called, for "Choose one of the 4 graphs". */
   noun: string;
+  count: number;
   busy: boolean;
   sending: boolean;
   resolved: boolean;
@@ -210,7 +212,7 @@ export function PickedAnswer({
       <p className="figure-choice-status" role="status" aria-live="polite">
         {chosen
           ? `${spokenMath(chosen)} selected`
-          : `Choose ${article(noun)} ${noun.toLowerCase()} above`}
+          : `Choose one of the ${count} ${noun.toLowerCase()}s`}
       </p>
       <button
         className="choice-submit figure-choice-check"

@@ -99,12 +99,6 @@
     width: auto;
     transform: none;
   }
-  /* The answer column has the screen's height; a choice dock need not stop at
-     the stacked layout's 62% (practice.css). Its options still scroll inside
-     it before anything leaves the column. */
-  .practice-surface > .answer-dock:has(.choice-form) {
-    max-height: none;
-  }
   /* Hint, Skip and Lesson (Lesson and the flag on feedback) share the
      column's width evenly, as on a phone, instead of overflowing it. */
   .practice-surface .practice-tools button {
