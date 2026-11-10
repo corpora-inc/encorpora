@@ -346,6 +346,8 @@ export const clientCanDraw = (
     (!template.requiredFigureCapability ||
       client.figureCapabilities.includes(template.requiredFigureCapability)));
 export interface TemplateMetadata {
+  /** A family with specialized answers also emits typed number/fraction answers. */
+  hasNumericVariants?: true;
   /** An implemented same-givens fallback in generateProblemFor. Admission
    * requires both its response format and its figure format. */
   fallbackCapabilities?: {

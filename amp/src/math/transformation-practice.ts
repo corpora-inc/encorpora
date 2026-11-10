@@ -1,3 +1,4 @@
+import { withClauseVariants } from "./clause-variants";
 import { createHash } from "node:crypto";
 import type {
   CoordinateGeometryFigure,
@@ -1422,7 +1423,7 @@ function instanceHint(id: string, c: Case, numeric: boolean): string {
   }
   return hints[id]!;
 }
-export const generateTransformationProblem = (
+export const generateTransformationProblemLegacy = (
   id: string,
   seed: string,
 ): GeneratedProblem =>
@@ -1433,3 +1434,8 @@ export const generateTransformationProblem = (
       ? sweepChoose("coordinate-distance-exact", seed)
       : undefined,
   ).problem;
+
+export const generateTransformationProblem = withClauseVariants(
+  transformationTemplates,
+  generateTransformationProblemLegacy,
+);

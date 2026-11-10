@@ -21,6 +21,10 @@ const CLAUSE_SEEDS = 64;
  * are rarer than the deterministic sample. Keep these in sync with the
  * generator-variation audit in frontier-guessing.test.ts. */
 const FAMILY_GUESS_FLOOR: Readonly<Record<string, number>> = {
+  // Equivalent power-of-ten results collapse to three distinct values;
+  // a whole-number pattern can likewise have three distinct reasons.
+  "multiply-power-of-ten": 1 / 9,
+  "tens-ones-model": 1 / 9,
   // A random closed walk chooses one of six side counts (3–8). This is an
   // upper bound even for the easiest triangle/count/finish/copy instance.
   "build-shape-sticks-balls": 1 / 6,
@@ -136,11 +140,7 @@ export function guessChance(
   ];
   const known = cache.get(template.id);
   if (known !== undefined) return known;
-  let chance =
-    template.requiredResponseCapability ||
-    template.requiredResponseCapabilities?.length
-      ? UNKNOWN_CHOICE_GUESS
-      : 0;
+  let chance = capabilities.length ? UNKNOWN_CHOICE_GUESS : 0;
   if (byId.has(template.id)) {
     // Admission capabilities describe what old clients can receive, not all
     // current answer forms. Even a typed family can have choice clauses.

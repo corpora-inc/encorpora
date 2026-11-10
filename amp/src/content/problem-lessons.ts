@@ -21,6 +21,14 @@ import { lessons } from "./lessons";
 import { skills } from "../curriculum/catalog";
 import { displayAnswer } from "../math/polish";
 import { methods } from "./problem-methods";
+import { clauseMethod, clausePrinciple } from "./clause-variant-lessons";
+import {
+  buildClause,
+  clauseEntries,
+  clauseFamilies,
+  clauseVariants,
+  generateClauseVariant,
+} from "../math/clause-variants";
 import { principles } from "./problem-principles";
 import { answerText } from "../math/selection-response";
 import type { MultiPartChoiceResponse } from "../math/multi-part-choice";
@@ -43,11 +51,6 @@ import { glossaryEntry } from "../glossary/index";
 import { termsIn } from "../glossary/link";
 import type { GradeBand } from "../curriculum/types";
 import { gradeBandOrder } from "./lesson-text";
-import {
-  clauseEntries,
-  clauseVariants,
-  generateClauseVariant,
-} from "../math/clause-variants";
 import { clauseVariantMethods } from "./clause-variant-methods";
 
 /** One short lesson per problem type: what is given, what to find, how to
@@ -178,7 +181,7 @@ export function problemLesson(
     ? entry.introducedVersion - 1
     : clauseVariants[templateId]
       ? 1
-      : clauseExtensions[templateId]
+      : clauseExtensions[templateId] || clauseFamilies[templateId]
         ? template.version - 1
         : undefined;
   // These clause tasks replace the figured number problem the lesson
@@ -186,6 +189,7 @@ export function problemLesson(
   // the learner is already on that clause.
   const classicFigure =
     !!entry ||
+    !!clauseFamilies[templateId] ||
     templateId === "number-bond-missing" ||
     templateId === "three-addend-story" ||
     templateId === "unknown-addend-story";
@@ -196,17 +200,20 @@ export function problemLesson(
         ? legacyVersion
         : undefined;
   const generateProblem = (id: string, exampleSeed: string) =>
-    (activeClause && activeClause !== "legacy"
-      ? (clauseProblem(template, exampleSeed, activeClause) ??
-        generateClauseVariant(template, exampleSeed, activeClause))
-      : null) ??
-    generateProblemFor(
-      id,
-      exampleSeed,
-      lessonFigures(template),
-      exampleVersion,
-      responseCapabilities,
-    );
+    learnerProblem?.variant &&
+    clauseFamilies[id]?.includes(learnerProblem.variant.id)
+      ? buildClause(template, exampleSeed, learnerProblem.variant.id)
+      : ((activeClause && activeClause !== "legacy"
+          ? (clauseProblem(template, exampleSeed, activeClause) ??
+            generateClauseVariant(template, exampleSeed, activeClause))
+          : null) ??
+        generateProblemFor(
+          id,
+          exampleSeed,
+          lessonFigures(template),
+          exampleVersion,
+          responseCapabilities,
+        ));
   // The learner may see a newer figure surface than the example (which is
   // drawn for the oldest client); its legacy twin has the example's wording.
   const twin = learnerProblem
@@ -334,11 +341,12 @@ export function problemLesson(
         ? example.answer
         : displayAnswer(example.answer);
   const lessonTemplateId = templateReplacements[templateId] ?? templateId;
-  const clauseMethod = example.variant?.axes?.clause
+  const extensionMethod = example.variant?.axes?.clause
     ? clauseMethods[example.variant.axes.clause]
     : undefined;
   const authored =
-    clauseMethod ??
+    clauseMethod(example.variant?.id) ??
+    extensionMethod ??
     clauseVariantMethods[example.variant?.axes?.clause ?? ""] ??
     methods[lessonTemplateId];
   const givens = example.variant?.axes?.clause
@@ -365,7 +373,10 @@ export function problemLesson(
     authored?.goal ??
     template.description;
   const principle =
-    clauseMethod?.intuition ?? principles[lessonTemplateId] ?? null;
+    clausePrinciple(example.variant?.id) ??
+    extensionMethod?.intuition ??
+    principles[lessonTemplateId] ??
+    null;
   const methodTerms = authored?.terms ?? [];
   // A hint names its own instance's numbers, so it is never a general method.
   const method = authored?.method ?? [template.description];

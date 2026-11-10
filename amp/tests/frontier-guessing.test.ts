@@ -229,8 +229,10 @@ test("guess chance comes from each family's answer schema and is never understat
   let choiceFamilies = 0;
   for (const template of templates) {
     const chance = guessChance(template);
+    // Mixed families declare every response capability and are checked below.
     if (
       template.requiredResponseCapability === "structured-work-v1" &&
+      !template.hasNumericVariants &&
       !template.requiredResponseCapabilities?.some(
         (capability) => capability !== "structured-work-v1",
       )
@@ -240,7 +242,11 @@ test("guess chance comes from each family's answer schema and is never understat
       assert.ok(chance >= 0 && chance <= 1 / 2, `${template.id}: ${chance}`);
       for (let i = 0; i < 120; i++) {
         const problem = generateProblem(template.id, `audit:${i}`);
-        assert.equal(problem.public.response.kind, "structured-work");
+        assert.equal(
+          problem.public.response.kind,
+          "structured-work",
+          `${template.id} seed ${i}`,
+        );
         assert.ok(
           chance >= problemGuessChance(problem) - 1e-12,
           `${template.id} seed ${i}: ${problemGuessChance(problem)} > ${chance}`,

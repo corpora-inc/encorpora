@@ -3,7 +3,17 @@ import type {
   ResponseCapability,
   TemplateMetadata,
 } from "./contracts";
-import { chooseAxes, defineAxis } from "./variation/axes";
+import {
+  generatePlaceClause,
+  placeClauseFamilies,
+} from "./clause-place-value-practice";
+import {
+  generateTransformationClause,
+  transformationClauseFamilies,
+} from "./clause-transformation-practice";
+import { chooseAxes, defineAxis, versionGatedAxes } from "./variation/axes";
+import { random } from "./clause-support";
+
 import { finish, rng } from "./number-geometry-clause-kit";
 import { signedClause } from "./clause-signed-variants";
 import { realClause } from "./clause-real-variants";
@@ -381,24 +391,150 @@ const descriptions: Record<string, string> = {
     "Choose justified steps in deriving the laws of sines and cosines and explain their right-triangle reductions.",
 };
 
-/** The new axis is gated at catalog version 2; version 1 still follows its
- * original generator, content stream, answer format and lesson example. */
+export const clauseFamilies = {
+  ...placeClauseFamilies,
+  ...transformationClauseFamilies,
+};
+const capabilities: Record<string, ResponseCapability[]> = {
+  "sample-proportion-estimate": ["single-choice-v1"],
+  "sample-estimates-plot": ["single-choice-v1", "structured-work-v1"],
+  "scatter-association-choice": ["multi-select-v1", "point-plot-v1"],
+  "two-way-missing": ["structured-work-v1"],
+  "study-design-classify": ["multi-part-choice-v1"],
+  "margin-of-error-interval": ["structured-work-v1"],
+  "relative-frequency-percent": ["structured-work-v1"],
+  "nonlinear-data-model": ["point-plot-v1"],
+  "residual-function-fit": [
+    "structured-work-v1",
+    "point-plot-v1",
+    "figure-choice-v1",
+  ],
+  "vector-components": [
+    "point-plot-v1",
+    "figure-choice-v1",
+    "multi-part-choice-v1",
+  ],
+  "vector-resultant": ["multi-part-choice-v1"],
+  "matrix-operations": ["structured-work-v1"],
+  "matrix-laws": ["multi-part-choice-v1"],
+  "matrix-linear-system": ["multi-part-choice-v1"],
+  "special-angle-exact-value": ["multi-part-choice-v1"],
+  "trig-identity-value": ["multi-part-choice-v1"],
+  "complementary-trig": ["single-choice-v1"],
+  "oblique-triangle-solve": ["structured-work-v1"],
+  "triangle-law-reasoning": ["structured-work-v1"],
+  "tens-ones-model": ["multi-part-choice-v1"],
+  "two-digit-symbol": ["multi-part-choice-v1"],
+  "ten-more-or-less": ["multi-part-choice-v1"],
+  "subtract-whole-tens": ["multi-part-choice-v1"],
+  "place-value-digit": ["multi-part-choice-v1"],
+  "expanded-form-missing": ["multi-part-choice-v1"],
+  "three-digit-symbol": ["multi-part-choice-v1"],
+  "measurement-line-fraction-story": ["figure-choice-v1"],
+  "compare-decimals-symbol-blanks": [
+    "multi-part-choice-v1",
+    "single-choice-v1",
+  ],
+  "multiply-power-of-ten": ["multi-part-choice-v1"],
+  "compare-decimals-thousandths": ["multi-part-choice-v1"],
+  "multidigit-decimal-product": ["structured-work-v1"],
+  "multidigit-decimal-quotient": ["structured-work-v1"],
+  "multidigit-decimal-sum": ["structured-work-v1"],
+  "teen-frame-compose": ["single-choice-v1", "multi-part-choice-v1"],
+  "similarity-by-transformation": ["single-choice-v1", "multi-select-v1"],
+  "transformation-rule-slots": ["multi-part-choice-v1", "structured-work-v1"],
+  "dilation-measure": ["structured-work-v1"],
+};
+
+/** Catalog revision only. Original generator metadata stays untouched so
+ * stored versions reproduce their old bytes and random streams. */
 export function clauseMetadata(meta: TemplateMetadata): TemplateMetadata {
-  return clauseVariants[meta.id]
-    ? {
-        ...meta,
-        version: 2,
-        reprintsFrom: 1,
-        description: descriptions[meta.id]!,
-        requiredResponseCapabilities: [
-          ...new Set([
-            ...(meta.requiredResponseCapabilities ?? []),
-            ...clauseResponses[meta.id]!,
-          ]),
-        ],
-        ...(meta.id === "vector-resultant"
-          ? { title: "Resultants of velocities and forces" }
-          : {}),
-      }
-    : meta;
+  const extended = Boolean(clauseVariants[meta.id]);
+  if (!extended && !clauseFamilies[meta.id]) return meta;
+  const needs = [
+    ...new Set([
+      ...(meta.requiredResponseCapability
+        ? [meta.requiredResponseCapability]
+        : []),
+      ...(meta.requiredResponseCapabilities ?? []),
+      ...(clauseResponses[meta.id] ?? []),
+      ...(capabilities[meta.id] ?? []),
+    ]),
+  ];
+  return {
+    ...meta,
+    version: extended ? 2 : meta.version + 1,
+    ...(!meta.requiredResponseCapability
+      ? { hasNumericVariants: true as const }
+      : {}),
+    reprintsFrom: extended ? 1 : (meta.reprintsFrom ?? meta.version),
+    ...(needs.includes("figure-choice-v1") && !meta.requiredFigureCapability
+      ? { requiredFigureCapability: "scenes-v1" as const }
+      : {}),
+    ...(extended
+      ? {
+          description: descriptions[meta.id]!,
+          ...(meta.id === "vector-resultant"
+            ? { title: "Resultants of velocities and forces" }
+            : {}),
+        }
+      : {}),
+    ...(needs.length
+      ? {
+          requiredResponseCapability: needs[0],
+          requiredResponseCapabilities: needs,
+        }
+      : {}),
+  };
+}
+
+export function buildClause(
+  meta: TemplateMetadata,
+  seed: string,
+  family: string,
+): GeneratedProblem {
+  const c = { meta, seed, family, r: random(`${meta.id}:${family}`, seed) };
+  return placeClauseFamilies[meta.id] || family === "model-to-written-method"
+    ? generatePlaceClause(c)
+    : generateTransformationClause(c);
+}
+
+/** Existing entrypoints share the new draw; print-only case functions keep
+ * their legacy surfaces. Version-gated axes leave stored problems unchanged. */
+export function withClauseVariants(
+  templates: readonly TemplateMetadata[],
+  legacy: (id: string, seed: string) => GeneratedProblem,
+) {
+  return (id: string, seed: string): GeneratedProblem => {
+    if (typeof seed !== "string" || !seed.length || seed.length > 128)
+      throw new Error("Seed must contain 1–128 characters");
+    if (forcingLegacySurfaces()) return legacy(id, seed);
+    const families = clauseFamilies[id],
+      base = templates.find((t) => t.id === id);
+    if (!families || !base) return legacy(id, seed);
+    const meta = clauseMetadata(base),
+      values = ["legacy", ...families.map((s) => s.slice(0, 31))];
+    const selected = chooseAxes(id, seed, {
+      clause: defineAxis("clause", values, {
+        legacy: "legacy",
+        weights: [2, ...families.map(() => 3)],
+        since: meta.version,
+        needs: Object.fromEntries(
+          values.slice(1).map((v) => [v, "scenes-v1" as const]),
+        ),
+      }),
+    }).clause;
+    const gated = versionGatedAxes().some((a) => a.id === "clause");
+    if (gated) return legacy(id, seed);
+    const hardened =
+      id === "continue-count-to-120" || id === "mental-ten-hundred";
+    if (selected === "legacy" && !hardened) {
+      return legacy(id, seed);
+    }
+    return buildClause(
+      meta,
+      seed,
+      hardened ? families[0]! : families[values.indexOf(selected) - 1]!,
+    );
+  };
 }
