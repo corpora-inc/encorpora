@@ -242,6 +242,12 @@ def main():
             'models': MODELS, 'api_rates_usd_per_million': {key: list(value) for key, value in RATES.items()},
             'reviewers': list(REVIEWERS), 'agent_limit': 3, 'failure_limit': 2,
         })
+        freeze_protocol(root/'execution-settings.json', {
+            'study_timeout_seconds': config.get('study_timeout', 900),
+            'screenplay_timeout_seconds': config.get('screenplay_timeout', 1800),
+            'cli_review_timeout_seconds': 900,
+            'api_review_max_output_tokens': 12000,
+        })
         if args.phase in ('smoke', 'rest'):
             first = mapping['pathways'][0]['id']
             rows = [r for r in mapping['assignments'] if (r['pathway']==first)==(args.phase=='smoke')]
@@ -254,9 +260,11 @@ def main():
                 write_json(root/'smoke-complete.json', {'completed_at': now(), 'pathway': first, 'types': len(rows)})
             else:
                 from batches import API_REVIEWERS, submit_cohort, wait_for_batches
+                # Keep the three authoring slots occupied across pathways. A
+                # slow final film in one pathway must not idle the other slots.
+                produce_cohort(config, rows, secrets)
                 for pathway in mapping['pathways'][1:]:
                     group = [r for r in rows if r['pathway']==pathway['id']]
-                    produce_cohort(config, group, secrets)
                     items = [read_json(root/'review-items'/(r['id']+'.json')) for r in group]
                     submit_cohort(root, [i for i in items if i], pathway['id'], secrets)
                 # Include the frozen calibration cohort, whose API batches can run

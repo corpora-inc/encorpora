@@ -157,6 +157,7 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
     record = {'provider': provider, 'model': MODELS[provider], 'role': role,
               'started_at': now(), 'prompt_sha256': hashlib.sha256(prompt.encode()).hexdigest(),
               'image_sha256': [hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in images],
+              'timeout_seconds': timeout,
               'transport': 'account-cli' if provider in ('astra', 'grok') else 'api-cli',
               'api_dollars': None, 'reported_dollars': None, 'status': 'running'}
     write_json(receipt, record)

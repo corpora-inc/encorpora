@@ -35,16 +35,25 @@ def build_report(root, review_url, status='running'):
     known_api = sum(r.get('api_dollars') or 0 for _, r in receipts) + sum(r.get('total_cost_usd') or 0 for r in preflights)
     unknown_api = sum(r.get('transport') in ('api-cli', 'messages-api', 'messages-batch-api') and r.get('api_dollars') is None for _, r in receipts)
     nominal_grok = sum(r.get('reported_dollars') or 0 for _, r in receipts if r.get('provider') == 'grok')
+    unknown_grok = sum(r.get('provider') == 'grok' and r.get('reported_dollars') is None for _, r in receipts)
     grok_probe = root/'grok-preflight.stdout'
     if grok_probe.exists():
         nominal_grok += read(grok_probe, {}).get('total_cost_usd', 0)
     quota = read(root/'voice-quota.json', {})
+    ledger_path = root/'voice-ledger.jsonl'
+    voice_events = [json.loads(line) for line in ledger_path.read_text().splitlines() if line.strip()] if ledger_path.exists() else []
+    tts_characters = sum(e.get('input_characters', e.get('characters', 0)) for e in voice_events
+                         if e.get('kind') == 'reserved' and e.get('operation', 'tts') == 'tts')
+    stt_credits = sum(e.get('charged_characters') or 0 for e in voice_events
+                      if e.get('operation') == 'stt' and e.get('kind') in ('succeeded', 'usage-reconciliation'))
+    unmetered_stt = sum(e.get('operation') == 'stt' and e.get('kind') == 'unmetered-success' for e in voice_events)
     voiced = sum(bool(s.get('voiced')) for s in states.values())
     exported = sum(bool(s.get('exported')) for s in states.values())
     out = [f'Grade the films on the [live review page]({review_url}), grouped by problem type. Approve or reject each version and leave a note. Grading even two types fully gives signal. The assignment key is private in `arms.json`.', '',
            f'Status: {status}. Updated {now()}.', '',
-           f'Films voiced: **{voiced}**. Films exported: **{exported}**. Known Anthropic API charges at reported or published rates: **{money(known_api)}**. Anthropic API attempts with unavailable cost: **{unknown_api}**. ElevenLabs confirmed characters: **{quota.get("confirmed_characters", 0)}**; conservatively reserved characters, including uncertain calls: **{quota.get("reserved_characters", 0)}**.', '',
-           f'Grok reported {money(nominal_grok)} usage cost through its CLI. This is kept separate from measured Anthropic API-key charges; CLI billing statements were not checked. Codex reports tokens without a dollar figure. Batch elapsed time includes queueing; per-request execution time is unavailable from the Batch API. Missing usage is not treated as zero.', '',
+           f'Films voiced: **{voiced}**. Films exported: **{exported}**. Known Anthropic API charges at reported or published rates: **{money(known_api)}**. Anthropic API attempts with unavailable cost: **{unknown_api}**. ElevenLabs TTS input characters requested, including retries: **{tts_characters}**. Confirmed quota credits: **{quota.get("confirmed_characters", 0):g}**, including **{stt_credits:g}** for transcription checks. Conservatively reserved credits, including uncertain calls: **{quota.get("reserved_characters", 0):g}**. Successful transcription calls without a reported charge: **{unmetered_stt}**.', '',
+           'ElevenLabs quota uses credits; its API retains the field name `character_count`. Text character counts and billed credits differ. '+('Initial transcription usage, before per-request instrumentation, is reconciled from the account product-usage response in `eleven-initial-stt-usage.json`; it is not assigned to individual films. ' if (root/'eleven-initial-stt-usage.json').exists() else '')+'[ElevenLabs credit accounting](https://elevenlabs.io/docs/help-center/account/general/have-characters-changed).', '',
+           f'Grok reported {money(nominal_grok)} usage cost through its CLI; **{unknown_grok}** attempts have no reported dollar figure. This is kept separate from measured Anthropic API-key charges; CLI billing statements were not checked. Codex reports tokens without a dollar figure. Batch elapsed time includes queueing; per-request execution time is unavailable from the Batch API. Missing usage is not treated as zero.', '',
            '## Types and sampling', '', f'Seed: `{mapping["seed"]}`. Intended design: six pathways of nine different types, one type per arm per pathway, 54 distinct types. Comparisons are across neighboring types, not matched copies of one type. No winner is selected before founder grading.', '']
     for pathway in mapping['pathways']:
         out += [f'**{cell(pathway["id"])}: {cell(pathway.get("family", ""))}**', '',
@@ -52,8 +61,8 @@ def build_report(root, review_url, status='running'):
                 ', '.join('`'+t+'`' for t in pathway['types']), '']
     out += ['The full eligible candidate pool, exclusions, random draws and arm assignment are in `arms.json` and `selection.json`. The review page contains no assignment metadata.', '',
             '## Production by arm', '',
-            '| Arm | Types | Checked screenplays | Voiced | Exported | Terminal failures | API dollars per checked film | Grok reported dollars per checked film | Agent seconds per checked film | Unknown-cost attempts |',
-            '| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |']
+            '| Arm | Types | Checked screenplays | Voiced | Exported | Terminal failures | API dollars per checked film | Grok reported dollars per checked film | Agent seconds per checked film | Production seconds per checked film | Unknown-cost attempts |',
+            '| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |']
     for arm in ARM_ORDER:
         ids = {r['id'] for r in rows if r['arm'] == arm}
         ss = [states[i] for i in ids]
@@ -62,13 +71,16 @@ def build_report(root, review_url, status='running'):
         cost = sum(r.get('api_dollars') or 0 for r in runs)
         grok_cost = sum(r.get('reported_dollars') or 0 for r in runs if r.get('provider') == 'grok')
         seconds = sum(r.get('wall_seconds') or 0 for r in runs)
-        unknown = sum(r.get('transport') == 'api-cli' and r.get('api_dollars') is None for r in runs)
+        production_seconds = sum(s.get('production_wall_seconds') or 0 for s in ss)
+        unknown = sum((r.get('transport') == 'api-cli' and r.get('api_dollars') is None)
+                      or (r.get('provider') == 'grok' and r.get('reported_dollars') is None) for r in runs)
         out.append('| '+' | '.join(map(str, [arm, len(ids), produced,
             sum(bool(s.get('voiced')) for s in ss), sum(bool(s.get('exported')) for s in ss),
             sum(s.get('status')=='failed' for s in ss), money(cost/produced) if produced else 'n/a',
             money(grok_cost/produced) if produced and any(r.get('provider')=='grok' for r in runs) else 'n/a',
-            f'{seconds/produced:.1f}' if produced else 'n/a', unknown]))+' |')
-    out += ['', 'Means include study and screenplay retries, divided by the number of checked screenplays. They exclude review and voice processing. A cost with unknown attempts is a lower bound. A checked screenplay is not a founder approval.', '',
+            f'{seconds/produced:.1f}' if produced else 'n/a',
+            f'{production_seconds/produced:.1f}' if produced else 'n/a', unknown]))+' |')
+    out += ['', 'Means include study and screenplay retries, divided by the number of checked screenplays. Agent time measures provider calls; production time also includes kit checks and local waiting. Both exclude review and voice processing. A cost with unknown attempts is a lower bound. A checked screenplay is not a founder approval.', '',
             '## Usage by model and role', '',
             '| Model | Role | Attempts | Provider failures | Complete usage receipts | Mean wall seconds | API dollars | Grok reported dollars | Uncached input | Cached input | Cache writes | Output |',
             '| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |']
@@ -95,7 +107,9 @@ def build_report(root, review_url, status='running'):
         out += [f'- `{r["type"]}`: {cell(s.get("failure", "See state.json"))}' for r, s in failures]
     else:
         out.append('No terminal production failures recorded.')
-    out += ['', 'Checked films left unvoiced:', '']
+    timeouts = [r for _, r in receipts if r.get('timed_out')]
+    out += ['', f'{len(timeouts)} CLI attempts reached their wall-time limit. These failures are separate from a reviewer rejecting a completed film.']
+    out += ['', 'Checked films left unvoiced (reviewers receive estimated timing for these films):', '']
     unvoiced = [r for r in rows if states[r['id']].get('checked') and not states[r['id']].get('voiced')]
     out += [f'- `{r["id"]}`: {cell(states[r["id"]].get("voice_status", "pending"))}' for r in unvoiced] or ['None recorded.']
     out += ['', 'Voiced films awaiting export:', '']
@@ -159,12 +173,20 @@ def build_report(root, review_url, status='running'):
     out += ['', '## Evidence and limits', '',
             '- `runs/`: per-attempt model, role, wall time, tokens, cached tokens, cost, raw responses and failures.',
             '- `calibration-source/` and `calibration-labels.json`: frozen exact live payloads, version checks and private founder labels.',
-            '- `voice-ledger.jsonl` and `voice-quota.json`: every voice request and retry, exact voice IDs, quota checks and the 50,000-character reserve.',
+            '- `voice-ledger.jsonl` and `voice-quota.json`: narration requests and retries, exact voice IDs, transcription requests, quota checks and the 50,000-credit reserve. Uncertain charges retain their conservative reservation.',
             '- API prices: https://platform.claude.com/docs/en/about-claude/pricing (checked 2026-11-10). CLI API costs use the provider-reported total. Messages API costs are calculated from returned usage and the published rate, not an invoice export.',
             '- Storyboards and timing do not measure audible voice quality. The founder watches the voiced exports.', '']
+    settings = read(root/'execution-settings.json')
+    if settings:
+        out += [f'Execution limits: {settings["study_timeout_seconds"]} seconds per study attempt, '
+                f'{settings["screenplay_timeout_seconds"]} seconds per screenplay attempt, '
+                f'{settings["cli_review_timeout_seconds"]} seconds per CLI review attempt, and '
+                f'{settings["api_review_max_output_tokens"]} output tokens per API review. '
+                'Timeouts count as failed attempts; an unfinished CLI response may omit usage. These limits constrain the measured completion rate.', '']
     (root/'RESULTS.md').write_text('\n'.join(out))
     return {'voiced': voiced, 'exported': exported, 'known_api_dollars': known_api,
-            'unknown_api_attempts': unknown_api, 'elevenlabs_characters': quota.get('confirmed_characters', 0)}
+            'unknown_api_attempts': unknown_api, 'unknown_grok_attempts': unknown_grok,
+            'elevenlabs_characters': tts_characters, 'elevenlabs_credits': quota.get('confirmed_characters', 0)}
 
 
 if __name__ == '__main__':
