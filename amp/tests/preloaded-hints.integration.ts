@@ -29,9 +29,13 @@ test(
       const batch = await app.inject({
         method: "POST",
         url: `${base}/batches`,
-        payload: { templateId: "add-within-20", count: 3 },
+        payload: {
+          templateId: "add-within-20",
+          count: 3,
+          figureCapabilities: ["scenes-v1"],
+        },
       });
-      assert.equal(batch.statusCode, 200);
+      assert.equal(batch.statusCode, 200, batch.body);
       const { problems, hints } = batch.json();
       const served = new Map<string, GeneratedProblem>();
       assert.deepEqual(
