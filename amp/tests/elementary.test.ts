@@ -8,6 +8,7 @@ import {
   elementaryTemplates,
   elementaryGrades,
   generateElementaryProblem,
+  generateElementaryProblemLegacy,
 } from "../src/math/elementary.js";
 import {
   templates,
@@ -49,7 +50,12 @@ test("bounded public models validate across generated variants, with important e
   const seen = new Set<string>();
   for (const template of elementaryTemplates)
     for (let seed = 0; seed < 512; seed++) {
-      const problem = generateElementaryProblem(template.id, `domain-${seed}`);
+      // These bounds describe the original numeric models. Clause oracles
+      // independently check the versioned choice and structured responses.
+      const problem = generateElementaryProblemLegacy(
+        template.id,
+        `domain-${seed}`,
+      );
       generatedProblemSchema.parse(problem);
       const answer = Number(problem.answer);
       assert.ok(Number.isInteger(answer) && answer >= 0 && answer <= 1000);

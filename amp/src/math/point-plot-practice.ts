@@ -1,3 +1,4 @@
+import { withClauseVariants } from "./clause-variants";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -831,7 +832,7 @@ function placeTransformedImage(seed: string): GeneratedProblem {
   throw new Error("No rigid-motion figure fits the grid");
 }
 
-export function generatePointPlotProblem(
+export function generatePointPlotProblemLegacy(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
@@ -850,3 +851,8 @@ export function generatePointPlotProblem(
   if (curve && meta) return problemOf(meta, seed, curve);
   throw new Error(`Unknown point-plot family ${templateId}`);
 }
+
+export const generatePointPlotProblem = withClauseVariants(
+  pointPlotTemplates,
+  generatePointPlotProblemLegacy,
+);

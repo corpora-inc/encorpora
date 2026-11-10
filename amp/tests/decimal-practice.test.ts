@@ -1,7 +1,8 @@
+import { generateBeforeClauses as generateProblem } from "./helpers/before-clause-variants";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { generateProblem, gradeAnswer, templates } from "../src/math/engine";
+import { gradeAnswer, templates } from "../src/math/engine";
 import { decimalTemplates } from "../src/math/decimal-practice";
 import { decimal, fixed } from "../src/math/decimal-models";
 import { generatedProblemSchema } from "../src/math/contracts";
@@ -239,8 +240,13 @@ test("decimal animations fill a hundredths grid and align a comparison", () => {
       const lesson = problemLesson(id, `dec-animation-${i}`);
       const model = animationModel(lesson);
       if (!model) {
-        // Tenths strips keep the ordinary figure.
-        assert.equal(id, "decimal-grid-read");
+        // Tenths strips and equal decimals keep their ordinary figures.
+        if (lesson.example.figure?.kind === "place-value-chart") {
+          const [a, b] = lesson.example.figure.rows.map(
+            (r) => `${r.ones}.${r.decimals}`,
+          );
+          assert.equal(exact(a!), exact(b!));
+        } else assert.equal(id, "decimal-grid-read");
         continue;
       }
       kinds.add(model.kind);

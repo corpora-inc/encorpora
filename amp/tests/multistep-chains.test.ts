@@ -1,6 +1,7 @@
+import { generateBeforeClauses as generateProblem } from "./helpers/before-clause-variants";
 import test from "node:test";
 import assert from "node:assert/strict";
-import { generateProblem, gradeAnswer, templates } from "../src/math/engine";
+import { gradeAnswer, templates } from "../src/math/engine";
 import { methods } from "../src/content/problem-methods";
 import { principles } from "../src/content/problem-principles";
 import { lessons } from "../src/content/lessons";

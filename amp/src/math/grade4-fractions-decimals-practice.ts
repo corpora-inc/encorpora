@@ -1,3 +1,4 @@
+import { withClauseVariants } from "./clause-variants";
 import { createHash } from "node:crypto";
 import { count } from "./agreement";
 import { choiceSurface, type ChoiceOption } from "./chain-kit";
@@ -1334,7 +1335,7 @@ const builders: Record<string, (seed: string) => GeneratedProblem> = {
   "decimal-place-value-hundredths": placeValue,
 };
 
-export function grade4FractionsDecimalsGenerate(
+export function grade4FractionsDecimalsGenerateLegacy(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
@@ -1345,3 +1346,8 @@ export function grade4FractionsDecimalsGenerate(
     throw new Error("Seed must contain 1–128 characters");
   return build(seed);
 }
+
+export const grade4FractionsDecimalsGenerate = withClauseVariants(
+  grade4FractionsDecimalsTemplates,
+  grade4FractionsDecimalsGenerateLegacy,
+);

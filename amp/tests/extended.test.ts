@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   extendedTemplates,
-  generateExtendedProblem,
+  generateExtendedProblemLegacy as generateExtendedProblem,
 } from "../src/math/extended.js";
 import { generateProblem, gradeAnswer } from "../src/math/engine.js";
 const value = (s: string) => {

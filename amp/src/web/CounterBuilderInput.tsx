@@ -7,37 +7,20 @@ import {
   type CounterBuilderDraft,
   type CounterBuilderResponse,
 } from "../math/counter-builder";
-import { counterObjectPaths, counterSvgPath } from "../math/counter-objects";
+import {
+  CounterObject,
+  CounterSign,
+  NumberSentence,
+  NumberTilePad,
+  spokenNumberTile as spoken,
+} from "./NumberSentence";
 
-function CounterObject({ thing }: { thing: CounterBuilderResponse["thing"] }) {
-  return (
-    <svg viewBox="0 0 32 32" aria-hidden="true" className="counter-object">
-      {counterObjectPaths[thing].map((d, i) => (
-        <path
-          key={i}
-          d={counterSvgPath(d)}
-          fill={i ? "none" : "currentColor"}
-        />
-      ))}
-    </svg>
-  );
-}
-function CounterSign({ sign }: { sign: "+" | "-" }) {
-  return (
-    <svg className="counter-sign" viewBox="0 0 24 24" aria-hidden="true">
-      <path d={sign === "+" ? "M5 12h14M12 5v14" : "M5 12h14"} />
-    </svg>
-  );
-}
 const slotNames = [
   "First number",
   "Plus or minus",
   "Second number",
   "Number after equals",
 ];
-const spoken = (value: number | "+" | "-" | null) =>
-  value === "+" ? "plus" : value === "-" ? "minus" : (value ?? "blank");
-
 export function CounterBuilderInput({
   response: r,
   value,
@@ -65,7 +48,6 @@ export function CounterBuilderInput({
     crossed.size === a.removed && [...crossed].every((i) => i < total)
       ? crossed
       : new Set(Array.from({ length: a.removed }, (_, i) => total - 1 - i));
-  const slots = useRef<(HTMLButtonElement | null)[]>([]);
   const cells = useRef(new Map<string, HTMLButtonElement>());
   const [cursor, setCursor] = useState([0, 0]);
   const id = useId();
@@ -307,53 +289,17 @@ export function CounterBuilderInput({
           </>
         )}
       </p>
-      <div
-        className="counter-sentence"
-        role="group"
-        aria-label="Build the number sentence"
-      >
-        {a.sentence.map((v, i) => (
-          <span className="counter-sentence-part" key={i}>
-            {i === 3 && (
-              <span className="counter-equals" aria-label="equals">
-                =
-              </span>
-            )}
-            <button
-              type="button"
-              ref={(node) => {
-                slots.current[i] = node;
-              }}
-              className="counter-slot"
-              aria-pressed={!resolved && slot === i}
-              disabled={locked}
-              aria-label={`${slotNames[i]}: ${spoken(v)}`}
-              onClick={() => setSlot(i)}
-              onKeyDown={(event) => {
-                if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
-                  event.preventDefault();
-                  const next = Math.max(
-                    0,
-                    Math.min(3, i + (event.key === "ArrowRight" ? 1 : -1)),
-                  );
-                  setSlot(next);
-                  slots.current[next]?.focus();
-                }
-              }}
-            >
-              {v === "+" || v === "-" ? (
-                <CounterSign sign={v} />
-              ) : (
-                (v ?? (
-                  <span className="counter-blank" aria-hidden="true">
-                    ?
-                  </span>
-                ))
-              )}
-            </button>
-          </span>
-        ))}
-      </div>
+      <NumberSentence
+        slots={a.sentence.map((value, i) => ({
+          value,
+          label: slotNames[i]!,
+          ...(i === 3 ? { prefix: "=" as const } : {}),
+        }))}
+        selected={slot}
+        onSelect={setSlot}
+        locked={locked}
+        resolved={resolved}
+      />
       <p className="counter-tile-help">
         {resolved
           ? skipped
@@ -363,40 +309,24 @@ export function CounterBuilderInput({
             ? "Choose plus or minus."
             : `Choose ${slot === 0 ? "the first number" : slot === 2 ? "the second number" : "the number after equals"}.`}
       </p>
-      <div
-        className="counter-tiles"
-        role="group"
-        aria-label="Number and sign tiles"
-        aria-hidden={resolved || undefined}
-      >
-        <div className="counter-signs" role="group" aria-label="Signs">
-          {(["+", "-"] as const).map((sign) => (
-            <button
-              type="button"
-              key={sign}
-              disabled={locked}
-              onClick={() => put(sign)}
-              aria-label={sign === "+" ? "Plus" : "Minus"}
-            >
-              <CounterSign sign={sign} />
-            </button>
-          ))}
-        </div>
-        <div className="counter-numbers" role="group" aria-label="Numbers">
-          {Array.from({ length: 11 }, (_, n) => (
-            <button
-              type="button"
-              className={n === 10 ? "counter-ten" : undefined}
-              disabled={locked || slot === 1}
-              key={n}
-              onClick={() => put(n)}
-              aria-label={`Number ${n}`}
-            >
-              {n}
-            </button>
-          ))}
-        </div>
-      </div>
+      <NumberTilePad
+        numbers={Array.from({ length: 11 }, (_, n) => n)}
+        onNumber={put}
+        locked={locked}
+        resolved={resolved}
+        disabledNumber={() => slot === 1}
+        operators={(["+", "-"] as const).map((sign) => (
+          <button
+            type="button"
+            key={sign}
+            disabled={locked}
+            onClick={() => put(sign)}
+            aria-label={sign === "+" ? "Plus" : "Minus"}
+          >
+            <CounterSign sign={sign} />
+          </button>
+        ))}
+      />
       <span
         className="sr-only"
         role="status"
