@@ -117,11 +117,15 @@ async function play(app: HTMLElement, id: string) {
     backLabel: "All",
     fullscreen: false,
   });
-  window.addEventListener("pagehide", dispose, { once: true });
   // Review actions surround the shared player; learner routes never mount them.
   const shell = app.querySelector<HTMLElement>(".live")!;
   const controls = shell.querySelector<HTMLElement>(".live-tools")!;
   const audio = shell.querySelector<HTMLAudioElement>("audio")!;
+  window.addEventListener("pagehide", (event) => {
+    audio.pause();
+    // A cached document resumes without rerunning this module on Back/Forward.
+    if (!event.persisted) dispose();
+  });
   const back = controls.querySelector(".live-back")!;
   const approve = $<HTMLButtonElement>("button", "live-grade-btn is-approve", controls);
   approve.setAttribute("aria-label", "Approve");

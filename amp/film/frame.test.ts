@@ -138,6 +138,8 @@ test("review actions keep the displayed edition when using the shared player", a
     });
     await page.goto(`${origin}/live.html?id=${id}`);
     await page.waitForSelector(".live.ready");
+    await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent("pagehide", { persisted: true })));
+    expect(await page.locator(".live.ready").count()).toBe(1);
     await page.waitForFunction(() => document.querySelector<HTMLButtonElement>('.live-grade-btn.is-approve')?.disabled === false);
     await page.getByRole("button", { name: "Approve", exact: true }).click();
     await page.getByRole("textbox", { name: "Note", exact: true }).fill("Synthetic review");
@@ -147,6 +149,8 @@ test("review actions keep the displayed edition when using the shared player", a
     await page.getByRole("button", { name: /Playback speed/ }).click();
     await page.getByRole("menuitemradio", { name: "1.25×", exact: true }).click();
     expect(await page.locator("audio").evaluate((audio: HTMLAudioElement) => audio.playbackRate)).toBe(1.25);
+    await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent("pagehide", { persisted: false })));
+    expect(await page.locator(".live").count()).toBe(0);
   } finally {
     await page.close();
   }

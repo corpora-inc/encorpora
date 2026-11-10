@@ -136,6 +136,12 @@ html:has(.live-index), html:has(.live-index) body { overflow: auto; }
   .live-speed-wrap.is-open .live-speed-menu { transform: none; }
 }
 
+@media (max-width: 380px) {
+  .live-tools { gap: 8px; }
+  .live-speed { width: 56px; }
+  .live-fullscreen { padding-inline: 10px; }
+}
+
 /* before the first play: title and length, centered above the play mark */
 .live-poster { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 0 24px 260px; text-align: center; background: var(--color-surface); pointer-events: none; transition: opacity 0.3s; box-sizing: border-box; }
 .live-poster-title { margin: 0; max-width: 18em; font: 700 clamp(22px, 4vw, 34px)/1.2 system-ui, sans-serif; color: var(--color-on-surface); text-wrap: balance; }
