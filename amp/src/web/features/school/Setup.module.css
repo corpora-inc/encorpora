@@ -288,6 +288,9 @@ li[data-state="next"] .ledgerName {
 }
 .inlineAction {
   padding: 0;
+  border: 0;
+  /* Text in the sentence, not the default filled button. */
+  background: none;
   color: var(--color-primary);
   font: inherit;
   font-weight: 600;
