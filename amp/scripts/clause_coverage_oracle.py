@@ -37,6 +37,24 @@ def num(text):
     return F(str(text).replace(',', ''))
 
 
+# term() wraps only a negative: "3" and "(-3)". Older prompts wrapped every
+# integer, so "(3)" remains valid. The two groups are the wrapped and bare forms.
+TERM = r'(?:\((-?\d+)\)|(\d+))'
+
+
+def term_value(parenthesized, bare):
+    # search() leaves the unused alternative as None. findall() leaves it as ''.
+    raw = parenthesized or bare
+    require(raw, 'Missing numeric term')
+    return int(raw)
+
+
+def agreed_count(n, singular):
+    """Both the agreed noun and the older always-plural noun."""
+    plural = singular + 's'
+    return {f'{n} {plural}', f'{n} {singular}' if n == 1 else f'{n} {plural}'}
+
+
 def evaluate(text, x=0, variable='x'):
     text = plain(text).replace('\\tfrac', '\\frac')
     if '=' in text:
@@ -245,7 +263,9 @@ def solve(public):
         return choose(public, lambda o: correct(o['label']))
     if tid == 'coordinate-context-points':
         if 'after ' in text:
-            x, y = map(int, re.search(r'after (\d+) weeks, (\d+) dollars', text).groups())
+            found = re.search(r'after (\d+) weeks?, (\d+) dollars?', text)
+            require(found is not None, 'Unreadable savings point')
+            x, y = map(int, found.groups())
             return js([[x, y]])
         rate = int(re.search(r'holds (\d+) pencils', text)[1])
         points = [[x, rate * x] for x in (1, 2, 3)]
@@ -265,7 +285,9 @@ def solve(public):
         if kind == 'figure-choice':
             if 'nonlinear function' in text:
                 return choose(public, lambda o: any(c != 0 for c in next(e for e in o['scene']['elements'] if e['type'] == 'graph')['curves'][0]['fn']['c'][2:]))
-            up, level, flat, down = map(int, re.search(r'for (\d+) minutes to (\d+) liters, stays there for (\d+) minutes, then drains steadily to empty in (\d+)', text).groups())
+            found = re.search(r'for (\d+) minutes? to (\d+) liters?, stays there for (\d+) minutes?, then drains steadily to empty in (\d+)', text)
+            require(found is not None, 'Unreadable tub story')
+            up, level, flat, down = map(int, found.groups())
             points = [[0, 0], [up, level], [up + flat, level], [up + flat + down, 0]]
             def matches(o):
                 g = next(e for e in o['scene']['elements'] if e['type'] == 'graph')
@@ -316,7 +338,9 @@ def solve(public):
             return exact_choice(public, f'The temperature at the balloon {time} minutes after launch.')
         return choose(public, lambda o: 'y' not in plain(o['label']) and all(evaluate(o['label'], x, 't') == temp - lapse * (h + climb * x) for x in (0, 1, 2)))
     if tid == 'series-recursion':
-        first, step = map(F, re.search(r'a_1=(-?\d+).*?a_n=a_\{n-1\}\+\((-?\d+)\)', text).groups())
+        found = re.search(r'a_1=(-?\d+).*?a_n=a_\{n-1\}\+' + TERM, text)
+        require(found is not None, 'Unreadable recursive rule')
+        first, step = F(found[1]), F(term_value(found[2], found[3]))
         distinct_expressions(response['options'], 'n')
         return choose(public, lambda o: all(evaluate(o['label'], n, 'n') == first + step * (n - 1) for n in (1, 2, 3, 4)))
     if tid == 'fl-even-odd-classify':
@@ -332,7 +356,9 @@ def solve(public):
         return choose(public, lambda o: o['label'].startswith(prefix))
     if tid == 'inverse-expression':
         if kind == 'choice':
-            a, b = map(F, re.search(r'f\(x\)=(-?[\d.]+)x\+\((-?\d+)\)', text).groups())
+            found = re.search(r'f\(x\)=(-?[\d.]+)x\+' + TERM, text)
+            require(found is not None, 'Unreadable linear inverse')
+            a, b = F(found[1]), F(term_value(found[2], found[3]))
             distinct_expressions(response['options'])
             return choose(public, lambda o: all(a * evaluate(o['label'], x) + b == x for x in (0, 1, 2, 3, 4)))
         f = re.search(r'f\(x\)=(.*?) (?:and|for)', text)[1]
@@ -358,8 +384,15 @@ def solve(public):
         if match:
             hours, charge = map(int, match.groups())
             require(fixed + rate * hours == charge, 'Function statement is false')
-            return exact_choice(public, f'The charge for {hours} hours is {charge} dollars.')
-        hours, charge = map(int, re.search(r'says (\d+) hours costs (\d+) dollars', text).groups())
+            accepted = {
+                compact(f'The charge for {hours_text} is {charge_text}.')
+                for hours_text in agreed_count(hours, 'hour')
+                for charge_text in agreed_count(charge, 'dollar')
+            }
+            return choose(public, lambda o: compact(o['label']) in accepted)
+        said = re.search(r'says (\d+) hours? costs (\d+) dollars?', text)
+        require(said is not None, 'Unreadable charge statement')
+        hours, charge = map(int, said.groups())
         require(fixed + rate * hours == charge, 'Reverse function statement is false')
         return exact_choice(public, f'C({hours})={charge}')
     if tid == 'average-rate-table-rounded':
@@ -371,13 +404,17 @@ def solve(public):
         direction = 'grew' if rate > 0 else 'declined'
         return choose(public, lambda o: f'Population {direction}' in o['label'] and 'on average' in o['label'] and F(re.search(r'by ([\d,]+)', o['label'])[1].replace(',', '')) == abs(rate))
     if tid == 'graph-quadratic-points':
-        sign, p, q = re.search(r'y=(-?)\(x-\((-?\d+)\)\)\(x-\((-?\d+)\)\)', text).groups()
-        a, p, q = (-1 if sign else 1), int(p), int(q)
+        found = re.search(r'y=(-?)\(x-' + TERM + r'\)\(x-' + TERM + r'\)', text)
+        require(found is not None, 'Unreadable quadratic factors')
+        a = -1 if found[1] else 1
+        p, q = term_value(found[2], found[3]), term_value(found[4], found[5])
         h = F(p + q, 2)
         require(h.denominator == 1, 'Nonlattice vertex')
         return js(sorted([[p, 0], [q, 0], [int(h), int(a * (h - p) * (h - q))], [0, a * p * q]]))
     if tid == 'graph-sqrt-points':
-        a, h, k = map(int, re.search(r'y=(-?\d+)\\sqrt\[3\]\{x-\((-?\d+)\)\}\+\((-?\d+)\)', text).groups())
+        found = re.search(r'y=(-?\d+)\\sqrt\[3\]\{x-' + TERM + r'\}\+' + TERM, text)
+        require(found is not None, 'Unreadable cube-root graph')
+        a, h, k = int(found[1]), term_value(found[2], found[3]), term_value(found[4], found[5])
         return js(sorted([[h, k], [h - 1, k - a], [h + 1, k + a]]))
     if tid in ('piecewise-reading', 'polynomial-graph-match', 'rational-function-features', 'sinusoid-parameters'):
         return graph_choice(public)
@@ -430,20 +467,28 @@ def graph_choice(public):
                 curves = option_graph(o)['curves']
                 return len(curves) == 3 and all(c['domain'] == [i, i + 1] and c['ends'] == ['closed', 'open'] and fn_value(c['fn'], F(2 * i + 1, 2)) == values[i] for i, c in enumerate(curves))
         else:
-            b, intercept = map(int, re.search(r'-x\+\((-?\d+)\).*?2x\+\((-?\d+)\)', prompt).groups())
+            found = re.search(r'-x\+' + TERM + r'.*?2x\+' + TERM, prompt)
+            require(found is not None, 'Unreadable piecewise rule')
+            b, intercept = term_value(found[1], found[2]), term_value(found[3], found[4])
             def matches(o):
                 curves = option_graph(o)['curves']
                 return len(curves) == 2 and curves[0]['domain'][1] == b and curves[1]['domain'][0] == b and curves[0]['ends'][1] == 'closed' and curves[1]['ends'][0] == 'open' and all(fn_value(curves[0]['fn'], x) == -x + b for x in (b - 1, b)) and all(fn_value(curves[1]['fn'], x) == 2 * x + intercept for x in (b, b + 1))
         return choose(public, matches)
     if tid == 'polynomial-graph-match':
-        sign, p, ep, q, eq = re.search(r'P\(x\)=(-?)\(x-\((-?\d+)\)\)\^\{(\d+)\}\(x-\((-?\d+)\)\)\^\{(\d+)\}', prompt).groups()
-        a, p, ep, q, eq = -1 if sign else 1, int(p), int(ep), int(q), int(eq)
+        found = re.search(r'P\(x\)=(-?)\(x-' + TERM + r'\)\^\{(\d+)\}\(x-' + TERM + r'\)\^\{(\d+)\}', prompt)
+        require(found is not None, 'Unreadable polynomial factors')
+        a = -1 if found[1] else 1
+        p, ep = term_value(found[2], found[3]), int(found[4])
+        q, eq = term_value(found[5], found[6]), int(found[7])
         require(ep + eq <= 5, 'Polynomial-degree check requires more samples')
         expected = lambda x: a * (x - p) ** ep * (x - q) ** eq
         return choose(public, lambda o: all(fn_value(option_graph(o)['curves'][0]['fn'], x) == expected(x) for x in range(-6, 7)))
     if tid == 'rational-function-features':
-        a, z = map(int, re.search(r'\\frac\{(-?\d+)\(x-\((-?\d+)\)\)\}', prompt).groups())
-        poles = list(map(int, re.findall(r'x-\((-?\d+)\)', prompt)))[1:]
+        found = re.search(r'\\frac\{(-?\d+)\(x-' + TERM + r'\)\}\{([^}]*)\}', prompt)
+        require(found is not None, 'Unreadable rational function')
+        a, z = int(found[1]), term_value(found[2], found[3])
+        poles = [term_value(hit[0], hit[1]) for hit in re.findall(r'x-' + TERM, found[4])]
+        require(poles, 'Rational function has no poles')
         def expected(x):
             d = 1
             for v in poles:
@@ -462,8 +507,10 @@ def graph_choice(public):
             return True
         # There is no tolerance: equality at enough exact samples establishes these low-degree rational identities.
         return choose(public, matches)
-    a, trig, argument, k = re.search(r'y=(-?\d+)\\(sin|cos)\(([^)]+)\)\+\((-?\d+)\)', prompt).groups()
-    a, k = int(a), int(k)
+    found = re.search(r'y=(-?\d+)\\(sin|cos)\(([^)]+)\)\+' + TERM, prompt)
+    require(found is not None, 'Unreadable sinusoid')
+    a, trig, argument = int(found[1]), found[2], found[3]
+    k = term_value(found[4], found[5])
     argument = compact(argument)
     pi_factor = re.fullmatch(r'\\pix(?:/(\d+))?', argument)
     numeric_factor = re.fullmatch(r'(\d*)x', argument)
@@ -843,6 +890,17 @@ def self_test():
     require(evaluate('$a_n=6+4(n-1)$', 3, 'n') == 14, 'Recursion expression parser')
     public = {'templateId': 'coordinate-context-points', 'prompt': 'Plot the point showing that after 6 weeks, 4 dollars have been saved.', 'response': {'kind': 'point-plot'}}
     require(solve(public) == '[[6,4]]', 'Coordinate axes reversed')
+    singular = {'templateId': 'coordinate-context-points', 'prompt': 'Plot the point showing that after 1 week, 1 dollar has been saved.', 'response': {'kind': 'point-plot'}}
+    require(solve(singular) == '[[1,1]]', 'Singular count wording')
+    wrapped = {'templateId': 'graph-quadratic-points', 'prompt': 'Graph $y=(x-(1))(x-(5))$ by placing its two horizontal-axis intercepts, vertex and vertical-axis intercept.', 'response': {'kind': 'point-plot'}}
+    bare = {'templateId': 'graph-quadratic-points', 'prompt': 'Graph $y=(x-1)(x-5)$ by placing its two horizontal-axis intercepts, vertex and vertical-axis intercept.', 'response': {'kind': 'point-plot'}}
+    mixed = {'templateId': 'graph-quadratic-points', 'prompt': 'Graph $y=-(x-(-3))(x-1)$ by placing its two horizontal-axis intercepts, vertex and vertical-axis intercept.', 'response': {'kind': 'point-plot'}}
+    require(solve(wrapped) == solve(bare) == '[[0,5],[1,0],[3,-4],[5,0]]', 'Quadratic parentheses')
+    require(solve(mixed) == '[[-3,0],[-1,4],[0,3],[1,0]]', 'Mixed quadratic signs')
+    old_root = {'templateId': 'graph-sqrt-points', 'prompt': r'Graph $y=2\sqrt[3]{x-(-1)}+(3)$. Place its center point and the points exactly one horizontal unit to its left and right.', 'response': {'kind': 'point-plot'}}
+    new_root = {'templateId': 'graph-sqrt-points', 'prompt': r'Graph $y=-1\sqrt[3]{x-4}+(-2)$. Place its center point and the points exactly one horizontal unit to its left and right.', 'response': {'kind': 'point-plot'}}
+    require(solve(old_root) == '[[-2,1],[-1,3],[0,5]]', 'Wrapped cube root')
+    require(solve(new_root) == '[[3,-1],[4,-2],[5,-3]]', 'Bare cube root')
     reject(lambda: review_problem({'public': public, 'answer': '[[4,6]]'}))
     p = {'templateId': 'circle-angles', 'prompt': 'Tangents from $P$ touch circle $O$ at $A$ and $B$. Which equation always connects the circumscribed angle and the central angle on the minor arc?', 'response': {'kind': 'choice', 'options': [{'id': 'a', 'label': '$m\\angle APB+m\\angle AOB=180^\\circ$'}, {'id': 'b', 'label': '$m\\angle APB=m\\angle AOB$'}]}}
     require(solve(p) == 'a', 'Tangent sum theorem')

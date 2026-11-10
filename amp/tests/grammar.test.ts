@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { templates, generateProblem } from "../src/math/engine";
-import { article, count, nounFor, plural } from "../src/math/agreement";
+import { article, count, nounFor, plural, term } from "../src/math/agreement";
 import { keptAfterOne } from "../src/math/polish";
 import {
   agreementIssues,
@@ -201,6 +201,10 @@ test("count, plural, nounFor and article build agreeing phrases", () => {
   assert.equal(plural("blue marble"), "blue marbles");
   assert.equal(nounFor("$1$", "mile"), "mile");
   assert.equal(nounFor("\\frac{3}{2}", "mile"), "miles");
+  assert.equal(term(3), "3");
+  assert.equal(term(0), "0");
+  assert.equal(term(-3), "(-3)");
+  assert.equal(term("−2"), "(−2)");
   for (const [n, a] of [
     [8, "an"],
     [11, "an"],

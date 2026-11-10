@@ -338,7 +338,10 @@ def solve(public):
         require(min(cells) > 0, 'Empty table cell')
         return work(cells)
     if tid == 'relative-frequency-percent':
-        total, junior, a, c = map(int, groups(r'surveyed (\d+) students.*?are (\d+) juniors.*?juniors, (\d+) have.*?; (\d+) seniors', p))
+        total, junior, a, c = map(int, groups(
+            r'surveyed (\d+) students?.*?(?:are|is) (\d+) juniors?.*?juniors?, (\d+) (?:students? )?ha(?:s|ve).*?; (\d+) seniors?',
+            p,
+        ))
         senior = total-junior
         require(0 < a < junior and 0 < c < senior, 'Invalid survey counts')
         return work([a, junior-a, c, senior-c, Fraction(100*c, senior)])
@@ -651,6 +654,16 @@ def review_problem(problem):
 
 
 def self_test():
+    def survey(prompt):
+        return solve({
+            'templateId': 'relative-frequency-percent',
+            'prompt': prompt,
+            'response': {'kind': 'structured-work'},
+        })
+    old_survey = 'A school surveyed 100 students. There are 60 juniors. Of the juniors, 21 have a part-time job; 10 seniors have a job. Complete the table, then find the percent of seniors who have a job.'
+    new_survey = 'A school surveyed 100 students. There are 60 juniors. Of the juniors, 1 student has a part-time job; 10 seniors have a job. Complete the table, then find the percent of seniors who have a job.'
+    require(survey(old_survey) == '[["21"],["39"],["10"],["30"],["25"]]', 'Older junior-count wording')
+    require(survey(new_survey) == '[["1"],["59"],["10"],["30"],["25"]]', 'Agreed junior-count wording')
     require(close(linear_solve([[1,2,0],[0,1,-1],[2,3,2]],[5,1,10]),[1,2,1]),'Gaussian elimination fixture')
     require(close(mmul([[1,2],[3,4]],[[0,1],[1,0]]),[[2,1],[4,3]]),'Matrix multiply fixture')
     require(close(fitted_line(r'The fitted line is $\hat y=x+3$.'),[1,3]),'Omitted unit slope fixture')

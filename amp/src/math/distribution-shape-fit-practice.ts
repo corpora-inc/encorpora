@@ -1,4 +1,20 @@
 import { createHash } from "node:crypto";
+import { nounFor } from "./agreement";
+
+/** A measured gap with a unit that agrees: "1 hour", "2 hours". */
+export function yAmount(n: number | string, unit: string): string {
+  const singular: Record<string, string> = {
+    hours: "hour",
+    cups: "cup",
+    inches: "inch",
+    centimeters: "centimeter",
+    "thousand dollars": "thousand dollar",
+    "test-score points": "test-score point",
+  };
+  const value = typeof n === "number" ? n : Number(n);
+  const one = singular[unit];
+  return `${n} ${one ? nounFor(value, one, unit) : nounFor(value, unit)}`;
+}
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -1093,8 +1109,8 @@ export const scatterContexts: readonly ScatterContext[] = [
     id: "car",
     members: "cars",
     xAt: (x) => `${x} ${x === 1 ? "year" : "years"}`,
-    xName: "Age (years)",
-    yName: "Value (thousand dollars)",
+    xName: "Age in years",
+    yName: "Value in thousand dollars",
     describe: (n) => `the age and the value of each of ${n} used cars`,
     yUnit: "thousand dollars",
     xs: range(1, 12, 1),
@@ -1113,8 +1129,8 @@ export const scatterContexts: readonly ScatterContext[] = [
     id: "arm-span",
     members: "students",
     xAt: (x) => `${x} inches`,
-    xName: "Height (inches)",
-    yName: "Arm span (inches)",
+    xName: "Height in inches",
+    yName: "Arm span in inches",
     describe: (n) => `the height and the arm span of each of ${n} students`,
     yUnit: "inches",
     xs: range(55, 70, 1),
@@ -1133,8 +1149,8 @@ export const scatterContexts: readonly ScatterContext[] = [
     id: "tv",
     members: "students",
     xAt: (x) => `${x} minutes`,
-    xName: "TV each day (minutes)",
-    yName: "Reading each week (hours)",
+    xName: "TV each day, in minutes",
+    yName: "Reading each week, in hours",
     describe: (n) =>
       `how many minutes of TV each of ${n} students watches each day and how many hours each one reads each week`,
     yUnit: "hours",
@@ -1154,8 +1170,8 @@ export const scatterContexts: readonly ScatterContext[] = [
     id: "plant",
     members: "plants",
     xAt: (x) => `${x} ${x === 1 ? "week" : "weeks"}`,
-    xName: "Age (weeks)",
-    yName: "Height (centimeters)",
+    xName: "Age in weeks",
+    yName: "Height in centimeters",
     describe: (n) => `the age and the height of each of ${n} bean plants`,
     yUnit: "centimeters",
     xs: range(1, 10, 1),
@@ -1607,7 +1623,7 @@ function bestFitChoice(seed: string): GeneratedProblem {
         ...card(correct),
         correct: true,
         line: (name) =>
-          `${name} fits best: ${sidesText(c.points, correct)}, and every point is close. The farthest is about ${short(far.d)} ${ctx.yUnit} away.`,
+          `${name} fits best: ${sidesText(c.points, correct)}, and every point is close. The farthest is about ${yAmount(short(far.d), ctx.yUnit)} away.`,
       },
       ...lines.map(({ tag, line }) => ({
         ...card(line),
@@ -1768,7 +1784,7 @@ function fitAssess(seed: string): GeneratedProblem {
     const explanation = [
       `Each dot is one of the ${c.n} ${ctx.members}. The line is a model of the pattern in the points.`,
       `Check both sides: ${sideCount}${onLine ? `, and ${onLine} ${onLine === 1 ? "is" : "are"} on it` : ""}.`,
-      `Check closeness: the farthest point, at ${ctx.xAt(far.x)}, is about ${short(far.d)} ${ctx.yUnit} from the line.`,
+      `Check closeness: the farthest point, at ${ctx.xAt(far.x)}, is about ${yAmount(short(far.d), ctx.yUnit)} from the line.`,
       fit === "good-fit"
         ? `The points are on both sides and close all along, so the line fits well. Fit is how close the points are, not which points the line touches.`
         : fit === "shifted"

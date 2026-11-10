@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { count, isAre } from "./agreement";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -431,10 +432,14 @@ function nameWhole(
   const correct = `${countWord} ${share}, the whole ${shape}`;
   const wrongShares = ["halves", "thirds", "fourths", "quarters"].filter((s) => s !== share);
   const wrongCounts = ["one", "two", "three", "four"].filter((c) => c !== countWord);
+  const oneShare = (name: string) =>
+    name === "halves" ? "half" : name.replace(/s$/, "");
+  const countedShare = (word: string, name: string) =>
+    word === "one" ? `only ${oneShare(name)}` : `${word} ${name}`;
   const pool = [
-    `one ${share === "halves" ? "half" : share.replace(/s$/, "")}`,
+    `one ${oneShare(share)}`,
     countWord,
-    `${wrongCounts[0]} ${share}`,
+    countedShare(wrongCounts[0]!, share),
     `${countWord} ${wrongShares[0]}`,
     `one half`,
   ];
@@ -667,7 +672,7 @@ function grade3Reason(
         : `Both fractions have denominator ${b}. Compare the numerators ${a} and ${c}.`,
       explanation: sameNum
         ? [
-            `Both bars count ${a} pieces, and the wholes are the same width.`,
+            `Both bars count ${count(a, "piece")}, and the wholes are the same width.`,
             `The smaller denominator cuts larger pieces, so ${tex(greater[0]!, greater[1]!)} is greater.`,
           ]
         : [
@@ -871,9 +876,9 @@ function pictureDecomposition(
     answer,
     hint: `Count the teal pieces, then the rust pieces. The strip has ${b} equal pieces in all. An equation matches when the two counts add to the shaded pieces.`,
     explanation: [
-      `There are ${t} teal pieces and ${rust} rust pieces. Together that is ${t} + ${rust} = ${a} shaded pieces.`,
+      `There ${isAre(t)} ${count(t, "teal piece")} and ${count(rust, "rust piece")}. Together that is ${t} + ${rust} = ${count(a, "shaded piece")}.`,
       `Each piece is 1/${b} of the strip, so ${t}/${b} + ${rust}/${b} = ${a}/${b}.`,
-      `${t} copies of 1/${b}, then ${rust} more, is the same shaded amount.`,
+      `${count(t, "copy")} of 1/${b}, then ${rust} more, is the same shaded amount.`,
     ],
     variant: { id: "picture", axes: { task: "picture" } },
   };
@@ -1327,12 +1332,12 @@ function modelOfQuantity(
   const total = r(2, 4);
   const pictures = [
     {
-      description: `${total} bars, each cut into ${d}, with ${n} pieces shaded.`,
+      description: `${total} bars, each cut into ${d}, with ${count(n, "piece")} shaded.`,
       scene: barScene(Array.from({ length: total }, () => ({ parts: d, shaded: n }))),
       value: (total * n) / d,
     },
     {
-      description: `One bar cut into ${d}, with ${n} pieces shaded.`,
+      description: `One bar cut into ${d}, with ${count(n, "piece")} shaded.`,
       scene: barScene([{ parts: d, shaded: n }]),
       value: n / d,
     },

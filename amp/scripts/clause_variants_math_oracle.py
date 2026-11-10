@@ -571,12 +571,12 @@ def decimal_division(public):
                 return False
             require(value(spans(label)[0]) == fraction, "Reason includes the correct expansion")
             if repeat:
-                return f"remainder {repeat} returns" in label
+                return f"the remainder is {repeat}" in label or f"remainder {repeat} returns" in label
             return "remainder reaches 0" in label
         return choose(response["options"], correct)
     if prompt.startswith("Why must the decimal"):
         require(repeat != 0, "A must-repeat question uses a nonterminating fraction")
-        return choose(response["options"], lambda label: (f"1 through {fraction.denominator-1}" in label or f"1–{fraction.denominator-1}" in label) and ("remainder must return" in label or "one returns" in label))
+        return choose(response["options"], lambda label: (f"1 through {fraction.denominator-1}" in label or f"1–{fraction.denominator-1}" in label) and ("remainder must return" in label or "one returns" in label or "a remainder comes back" in label))
     return choose(response["options"], lambda label: value(label) == fraction)
 
 

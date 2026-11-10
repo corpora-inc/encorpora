@@ -179,7 +179,7 @@ export function generateLinePlotBuild(
         note: readings
           .map(
             (item, i) =>
-              `${object} ${i + 1} starts at ${item.start} and ends at ${item.end}.`,
+              `${object} ${i + 1} has its start at ${item.start} and its end at ${item.end}.`,
           )
           .join(" "),
       }),
@@ -189,7 +189,7 @@ export function generateLinePlotBuild(
       const nearest = Math.round(item.end),
         floor = Math.floor(item.end);
       measuring.push(
-        `${object[0]!.toUpperCase() + object.slice(1)} ${i + 1} starts at ${item.start}. ${item.end === floor ? `Its end is at ${nearest}.` : `Its end is between ${floor} and ${floor + 1}, closer to ${nearest}.`} Count from ${item.start}: $${nearest} - ${item.start} = ${values[i]}$ ${many}.`,
+        `${object[0]!.toUpperCase() + object.slice(1)} ${i + 1} has its start at ${item.start}. ${item.end === floor ? `Its end is at ${nearest}.` : `Its end is between ${floor} and ${floor + 1}, closer to ${nearest}.`} Count from ${item.start}: $${nearest} - ${item.start} = ${values[i]}$ ${values[i] === 1 ? one : many}.`,
       );
     });
   } else if (family === "given-table") {

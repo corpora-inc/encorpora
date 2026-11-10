@@ -1,3 +1,4 @@
+import { term } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import {
   ClauseBuilder,
@@ -183,7 +184,7 @@ export function vectorMatrixClause(
             `Multiply on the left: $X=A^{-1}B=$ ${matrix(X)}. Each entry is a row of the inverse dotted with $B$.`,
             ...A.map(
               (row, i) =>
-                `Equation ${i + 1}: ${row.map((v, j) => `(${v})(${X[j]![0]})`).join(" + ")} = ${B[i]![0]}, as required.`,
+                `Equation ${i + 1}: ${row.map((v, j) => `${term(v)}(${X[j]![0]})`).join(" + ")} = ${B[i]![0]}, as required.`,
             ),
           ],
         },
@@ -311,7 +312,7 @@ export function vectorMatrixClause(
     ];
     return b.parts(
       {
-        prompt: `Let $u=${vector(u).slice(1, -1)}$ and $v=${vector(v).slice(1, -1)}$. Find the three magnitudes (lengths), then compare the length of the sum with the sum of the lengths.`,
+        prompt: `Let $u=${vector(u).slice(1, -1)}$ and $v=${vector(v).slice(1, -1)}$. Find the three magnitudes, which are the lengths, then compare the length of the sum with the sum of the lengths.`,
         figure: sceneFigure(arrows([0, 0], [u, v], uv).scene()),
         hint: `For $u$, square its components ${a} and ${c}, add, then take the square root. Add components before finding the length of $u+v$.`,
         explanation: [
@@ -540,7 +541,7 @@ export function vectorMatrixClause(
       ];
     const explanation = [
       "Adding the zero matrix O changes no entry, just as adding 0 changes no number.",
-      "Multiplying by I leaves every column unchanged, just as multiplying by 1 does. Multiplying by O gives O.",
+      "Multiplying by I leaves every column unchanged, just as the number 1 leaves a product unchanged. Multiplying by O gives O.",
     ];
     if (ask === 0)
       return b.choice(

@@ -1,3 +1,4 @@
+import { count } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import {
   ClauseBuilder,
@@ -505,7 +506,7 @@ export function statisticsClause(
       c = (senior * percent) / 100;
     return b.work(
       {
-        prompt: `A school surveyed ${junior + senior} students. There are ${junior} juniors. Of the juniors, ${a} have a part-time job; ${c} seniors have a job. Complete the table, then find the percent of seniors who have a job.`,
+        prompt: `A school surveyed ${junior + senior} students. There are ${junior} juniors. Of the juniors, ${count(a, "student")} ${a === 1 ? "has" : "have"} a part-time job; ${count(c, "senior")} ${c === 1 ? "has" : "have"} a job. Complete the table, then find the percent of seniors who have a job.`,
         figure: table([
           ["", "Job: yes", "Job: no", "Total"],
           ["Juniors", "?", "?", `${junior}`],
