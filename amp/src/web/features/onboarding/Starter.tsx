@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { create } from "zustand";
 import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
+import { track } from "../../lib/analytics";
 import { sessionOptions } from "../../lib/query";
 import { chosenPlan } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
@@ -242,11 +243,12 @@ function StarterScreen({ session }: { session: AuthSession }) {
                     undefined
                   }
                   disabled={busy}
-                  onClick={() =>
-                    entry.id === "myself"
-                      ? begin({ as: "myself", timezone: deviceTimeZone() })
-                      : explore("class")
-                  }
+                  onClick={() => {
+                    track("starter_choice", { answer: entry.id });
+                    if (entry.id === "myself")
+                      begin({ as: "myself", timezone: deviceTimeZone() });
+                    else explore("class");
+                  }}
                 >
                   {content}
                 </button>
@@ -260,6 +262,7 @@ function StarterScreen({ session }: { session: AuthSession }) {
                   disabled={busy}
                   onClick={() => {
                     chosenHere = true;
+                    track("starter_choice", { answer: entry.id });
                   }}
                 >
                   {content}
