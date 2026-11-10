@@ -1,23 +1,6 @@
-/** The trial token lives on this device only; it holds no personal data. */
-export const trialKey = "amp.trial";
-export function storedTrial(): string | null {
-  try {
-    return localStorage.getItem(trialKey);
-  } catch {
-    return null;
-  }
-}
-export function clearStoredTrial() {
-  try {
-    localStorage.removeItem(trialKey);
-  } catch (error) {
-    console.warn("Trial token not cleared", error);
-  }
-}
-
-/** A plan chosen on the free-trial paywall before the parent had an account.
- * It is only an interval and a time, so sign-up can continue straight to that
- * plan. After a day it no longer redirects anyone. */
+/** A plan chosen on the pitch before the parent had an account. It is only an
+ * interval and a time, so the plan opens with it once the learner exists.
+ * After a day it no longer applies. */
 const planKey = "amp.trial.plan";
 const planDays = 1;
 export function rememberPlanChoice(interval: "year" | "month") {

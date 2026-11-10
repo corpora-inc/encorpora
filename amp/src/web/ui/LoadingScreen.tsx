@@ -98,10 +98,7 @@ export function RouteError({
   const pathways =
     window.location.pathname === "/pathways" ||
     window.location.pathname.startsWith("/pathways/");
-  const mapHref =
-    new URLSearchParams(window.location.search).get("context") === "trial"
-      ? "/pathways?context=trial"
-      : "/pathways";
+  const mapHref = "/pathways";
   useEffect(() => {
     console.error("Application route failed to load or render.");
   }, [error]);

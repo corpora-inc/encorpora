@@ -175,16 +175,3 @@ export async function markSignupVerified(pool: Pool, userId: string) {
     [userId],
   );
 }
-
-/** Parent-selected demo context, not a confirmed child's age or a learner profile. */
-export async function recordParentAssessmentStart(
-  pool: Pool,
-  accountId: string,
-  birthYear: number,
-) {
-  if (!accountId.startsWith("amp|")) return;
-  await pool.query(
-    "INSERT INTO amp_parent_assessment_entries(id,user_id,selected_birth_year) VALUES($1,$2,$3)",
-    [randomUUID(), accountId.slice(4), birthYear],
-  );
-}

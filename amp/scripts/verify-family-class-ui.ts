@@ -124,7 +124,7 @@ async function signUp(page: Page, email: string, name: string) {
   await page.getByLabel("Email").fill(email);
   await password.fill(PASSWORD);
   await page.getByRole("button", { name: "Create account" }).click();
-  await page.waitForURL(/\/account\/ready|\/try|\/start|\/school/);
+  await page.waitForURL(/\/account\/ready|\/start|\/school/);
   if (new URL(page.url()).pathname === "/account/ready")
     await page.locator('[data-account-ready][aria-busy="false"]').waitFor();
   const session = await (

@@ -1,3 +1,4 @@
+import { FREE_ONLINE_PROBLEMS } from "../../../learning/free-allowance";
 import {
   CurriculumDetailsControl,
   useCurriculumDetails,
@@ -42,16 +43,10 @@ import {
   type Evidence,
   type MapSkill,
 } from "./model";
-import {
-  trialSessionOptions,
-  type TrialSession,
-  progressOptions as trialProgressOptions,
-} from "../trial/api";
 import { Dialog } from "../../ui/Dialog";
 import { ListboxDisclosure, type ListboxOption } from "../../ui/Listbox";
 import { LessonBoundary } from "./LessonRecovery";
 const SkillLesson = lazy(() => import("./SkillLesson"));
-import { trialEvidenceOptions } from "./queries";
 import { usePathwaysMetadata } from "./usePathwaysMetadata";
 import "./pathways.css";
 import { Loading } from "../../ui/Loading";
@@ -82,86 +77,21 @@ export function PathwaysScreen() {
   // This public resource outlives the keyed learner view. Keep its in-flight
   // read alive when the account resolves and that view changes learner.
   useQuery(skillCatalogOptions);
-  const search = useSearch({ strict: false });
-  return session && search.context !== "trial" ? (
+  return session ? (
     <LearnerMap key={session.accountId} session={session} />
   ) : (
     <GuestMap />
   );
 }
+/** Signed out: the whole curriculum, and the way in. */
 function GuestMap() {
-  const trial = useQuery(trialSessionOptions);
-  return trial.data ? (
-    <TrialAtlas key={trial.data.learnerId} session={trial.data} />
-  ) : (
-    <MapView
-      evidence={emptyEvidence}
-      start="/try"
-      actionLabel="Start free assessment"
-      guestMode
-      recordLoading={trial.isPending}
-      notice={
-        trial.isError ? (
-          "Your assessment could not be loaded. Retry to see your progress."
-        ) : trial.isPending ? (
-          <Loading inline>Loading your assessment…</Loading>
-        ) : (
-          "Explore the curriculum. Start a free assessment to illuminate your skills."
-        )
-      }
-      noticeImportant={trial.isError || trial.isPending}
-      controls={
-        trial.isError ? (
-          <button onClick={() => void trial.refetch()}>Retry</button>
-        ) : undefined
-      }
-    />
-  );
-}
-function TrialAtlas({ session }: { session: TrialSession }) {
-  const progress = useQuery(trialEvidenceOptions(session));
-  const trial = useQuery(trialProgressOptions(session));
   return (
     <MapView
-      evidence={progress.data?.skills ?? emptyEvidence}
-      start={trial.data?.remaining === 0 ? "/try/plans" : "/try/practice"}
-      actionLabel={
-        trial.data?.remaining === 0 ? "See plans" : "Resume free assessment"
-      }
-      canPractice={!!trial.data?.remaining}
-      trialMode
-      recordLoading={progress.isPending}
-      noticeImportant={
-        progress.isError ||
-        progress.isPending ||
-        trial.isError ||
-        trial.data?.remaining === 0
-      }
-      frontier={trial.data?.frontier.current}
-      notice={
-        progress.isError ? (
-          "Progress could not be loaded. Retry to see your illumination."
-        ) : trial.isError ? (
-          "Your assessment status could not be loaded. Retry to continue."
-        ) : progress.isPending ? (
-          <Loading inline>Loading earned skills…</Loading>
-        ) : trial.data?.remaining === 0 ? (
-          "Your free practice lit up this map. Explore your skills and lessons, or choose a plan for more adaptive practice."
-        ) : (
-          "Your free assessment and practice are lighting up this map."
-        )
-      }
-      controls={
-        progress.isError || trial.isError ? (
-          <button
-            onClick={() =>
-              void Promise.all([progress.refetch(), trial.refetch()])
-            }
-          >
-            Retry
-          </button>
-        ) : undefined
-      }
+      evidence={emptyEvidence}
+      start="/sign-up"
+      actionLabel="Try it free"
+      guestMode
+      notice="Explore the curriculum. Practice lights up each skill you earn."
     />
   );
 }
@@ -176,10 +106,6 @@ function LearnerMap({ session }: { session: AuthSession }) {
     ? adultLearner(account)
     : null;
   const learners = own ? [own] : (account?.learners ?? []);
-  const savedTrial = useQuery({
-    ...trialSessionOptions,
-    enabled: !!me.data?.signedIn && learners.length === 0,
-  });
   const learner = learners.find((l) => l.id === learnerId);
   const progress = useQuery({
     queryKey: ["account", session.accountId, "pathways", learner?.id],
@@ -211,10 +137,6 @@ function LearnerMap({ session }: { session: AuthSession }) {
     <Loading inline>Loading learners…</Loading>
   ) : me.isError ? (
     "Learners could not be loaded. Retry to view progress."
-  ) : savedTrial.isError && me.data?.signedIn && learners.length === 0 ? (
-    "Your assessment could not be loaded. Retry to see your progress."
-  ) : savedTrial.isPending && me.data?.signedIn && learners.length === 0 ? (
-    <Loading inline>Loading your assessment…</Loading>
   ) : me.data?.signedIn && learners.length === 0 ? (
     "Add a learner to see earned skills."
   ) : !learner ? (
@@ -227,12 +149,10 @@ function LearnerMap({ session }: { session: AuthSession }) {
     `${learner.name} · Crystals grow with independent successes. Bright crystals show strong recorded practice.`
   );
   if (me.data && !me.data.signedIn) return <GuestMap />;
-  if (savedTrial.data && me.data?.signedIn && learners.length === 0)
-    return <TrialAtlas session={savedTrial.data} />;
   return (
     <MapView
       evidence={progress.data?.skills ?? emptyEvidence}
-      start={canPractice ? "/practice" : own ? "/me" : "/start"}
+      start={learner ? "/practice" : "/start"}
       key={learner?.id ?? "none"}
       canPractice={canPractice}
       recordLoading={me.isPending || (!!learner && progress.isPending)}
@@ -266,25 +186,18 @@ function LearnerMap({ session }: { session: AuthSession }) {
           {me.data?.signedIn &&
             learners.length === 0 &&
             !me.isPending &&
-            !me.isError &&
-            !savedTrial.isError &&
-            !savedTrial.isPending && <Link to="/start">Add a learner →</Link>}
+            !me.isError && <Link to="/start">Add a learner →</Link>}
           {frontier.isError && (
             <p role="status" data-priority="true">
               The frontier estimate could not be loaded. Retry to refresh it.
             </p>
           )}
-          {(me.isError ||
-            savedTrial.isError ||
-            progress.isError ||
-            frontier.isError) && (
+          {(me.isError || progress.isError || frontier.isError) && (
             <button
               onClick={() =>
                 void (me.isError
                   ? me.refetch()
-                  : savedTrial.isError
-                    ? savedTrial.refetch()
-                    : Promise.all([progress.refetch(), frontier.refetch()]))
+                  : Promise.all([progress.refetch(), frontier.refetch()]))
               }
             >
               Retry
@@ -304,22 +217,19 @@ export function MapView({
   frontier,
   learnerName,
   birthYear,
-  trialMode = false,
   guestMode = false,
   actionLabel = "Start learning",
   noticeImportant = false,
   recordLoading = false,
 }: {
   evidence: Evidence[];
-  start:
-    "/try" | "/practice" | "/start" | "/me" | "/try/practice" | "/try/plans";
+  start: "/sign-up" | "/practice" | "/start";
   notice: ReactNode;
   canPractice?: boolean;
   controls?: ReactNode;
   frontier?: Frontier;
   learnerName?: string;
   birthYear?: number | null;
-  trialMode?: boolean;
   guestMode?: boolean;
   actionLabel?: string;
   noticeImportant?: boolean;
@@ -336,7 +246,6 @@ export function MapView({
   const selectedId =
     routeSkillId || (typeof search.skill === "string" ? search.skill : "");
   const query = typeof search.topic === "string" ? search.topic : "";
-  const assessmentContext = trialMode || search.context === "trial";
   const band =
     typeof search.filter === "string" && bands.includes(search.filter)
       ? search.filter
@@ -361,7 +270,6 @@ export function MapView({
   const linkSearch = () => ({
     topic: query || undefined,
     filter: band || undefined,
-    context: assessmentContext ? ("trial" as const) : undefined,
   });
   const detailHeading = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
@@ -385,7 +293,6 @@ export function MapView({
     const nextSearch = {
       topic: (values.topic === undefined ? query : values.topic) || undefined,
       filter: (values.filter === undefined ? band : values.filter) || undefined,
-      context: assessmentContext ? ("trial" as const) : undefined,
     };
     if (skillId)
       void navigate({
@@ -475,10 +382,7 @@ export function MapView({
       {guestMode && (
         <div className="pathways-guest-intro">
           <p>
-            Free parent account
-            {catalog.data?.trial?.free
-              ? ` · ${catalog.data.trial.free} free problems`
-              : ""}
+            Free account · {FREE_ONLINE_PROBLEMS} free problems for each learner
           </p>
           <a
             href="https://www.facebook.com/reel/2346490016085488"
@@ -690,9 +594,7 @@ export function MapView({
                         <Link
                           className="pathways-go"
                           to="/$"
-                          params={{
-                            _splat: trialMode ? "try/practice" : "practice",
-                          }}
+                          params={{ _splat: "practice" }}
                           search={{ skill: selected.id }}
                         >
                           Try a problem
@@ -833,7 +735,7 @@ export function MapView({
           <Link
             className="pathways-lesson-practice"
             to="/$"
-            params={{ _splat: trialMode ? "try/practice" : "practice" }}
+            params={{ _splat: "practice" }}
             search={{ skill: selected.id, template: lesson }}
           >
             Try this problem type →

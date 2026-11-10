@@ -112,11 +112,6 @@ async function fixturePage(family: (token: string) => FamilySummary) {
           strands: {},
         },
       });
-    if (
-      path === "/api/v1/trials/current" &&
-      route.request().method() === "POST"
-    )
-      return route.fulfill({ json: { trial: null } });
     if (path === "/api/v1/events/context" && route.request().method() === "GET")
       return route.fulfill({ json: { generation: "initial" } });
     // First-party funnel beacons (verified in verify-funnel-ui).

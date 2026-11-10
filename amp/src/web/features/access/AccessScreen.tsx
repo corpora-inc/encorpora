@@ -206,10 +206,8 @@ export function AccessScreen() {
                 Continue learning
               </Link>
             ) : !active ? (
-              <Link to="/try" className={buttonClass("quiet")}>
-                {gift
-                  ? "Keep practicing for now"
-                  : "Explore the free assessment"}
+              <Link to="/" className={buttonClass("quiet")}>
+                Not now
               </Link>
             ) : null}
           </>

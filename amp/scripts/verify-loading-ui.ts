@@ -131,7 +131,7 @@ const routes = [
     .filter((scenario) => scenario.state !== "guest")
     .map(({ id, path, state }) => ({ id, path, state })),
   { id: "paid-practice", path: "/practice", state: "paid" as const },
-  { id: "trial-practice", path: "/try/practice", state: "trial" as const },
+  { id: "starter-practice", path: "/practice", state: "starter" as const },
 ];
 for (const route of routes) {
   const context = await fixture.context(browser, route.state, { viewport });
@@ -225,10 +225,10 @@ async function pressed(page: Page, name: RegExp, id: string) {
 
 // While a problem loads, and over a frame: what a parent actually sees.
 if (shots) {
-  const context = await fixture.context(browser, "trial", { viewport });
+  const context = await fixture.context(browser, "starter", { viewport });
   const page = await context.newPage();
   await slow(page);
-  void page.goto(`${fixture.origin}/try/practice`).catch(() => undefined);
+  void page.goto(`${fixture.origin}/practice`).catch(() => undefined);
   await page.locator(".app-loading-overlay").waitFor({ timeout: 25_000 });
   await page.waitForTimeout(200);
   await shot(page, "first-problem");

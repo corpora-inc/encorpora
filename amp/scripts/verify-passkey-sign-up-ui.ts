@@ -20,8 +20,9 @@ import { migrate } from "./migrate";
 
 /**
  * Passkey-first parent sign-up in a real browser with Chromium's virtual
- * authenticator: email → "Create account with a passkey" → the free trial,
- * with the address unconfirmed; the plan asks for confirmation in place and
+ * authenticator: email → "Create account with a passkey" → "What brings you
+ * to AMP?", with the address unconfirmed; a parent's child starts practicing
+ * without it, and "Continue with AMP" asks for confirmation in place and
  * continues once the emailed link is opened; sign out; sign in with the
  * passkey alone. Also an email that already has an account, routed to
  * sign-in. Screens at 320, 384x700, 390x844, 768 and 1280 in both themes,
@@ -209,19 +210,15 @@ try {
   await page
     .getByRole("button", { name: "Create account with a passkey" })
     .click();
-  // Confirm successful registration before continuing the free assessment.
-  await page.getByRole("heading", { name: "Your account is ready" }).waitFor();
-  await page.getByRole("link", { name: "Continue free assessment" }).click();
-  await page.waitForURL(`${origin}/try`);
-  await page.getByRole("heading", { name: "See how AMP adapts" }).waitFor();
-  await page.getByRole("group", { name: "Birth year", exact: true }).waitFor();
+  // A new account goes straight to the starter.
+  await page.waitForURL(`${origin}/start`);
+  await page
+    .getByRole("heading", { name: "What brings you to AMP?" })
+    .waitFor();
   assert.equal(
-    await page
-      .getByRole("group", { name: "Birth year", exact: true })
-      .getByRole("button", { name: "Adult", exact: true })
-      .isEnabled(),
+    await page.locator('[data-choice="myself"]').isEnabled(),
     true,
-    "the trial starting-point controls are usable after passkey signup",
+    "the starter's choices are usable after passkey signup",
   );
   const { credentials } = await cdp.send("WebAuthn.getCredentials", {
     authenticatorId,
@@ -242,9 +239,19 @@ try {
     fullPage: true,
   });
 
-  // The plan asks for the confirmation first, as a step of the same flow.
-  await page.goto(`${origin}/start/plan`);
-  await page.waitForURL(`${origin}/start/verify-email`);
+  // A parent's child starts without a confirmed address: the starter's
+  // answer, as its Continue sends it.
+  const started = await page.evaluate(() =>
+    fetch("/api/v1/start", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ as: "parent", children: [{ birthYear: 2016 }] }),
+    }).then((r) => r.json()),
+  );
+  const child = started.learnerId as string;
+  assert.ok(child, "the starter made the child");
+  // "Continue with AMP" asks for the confirmation first, in place.
+  await page.goto(`${origin}/continue/${child}`);
   await page.getByRole("heading", { name: "Confirm your email" }).waitFor();
   await page.getByText(email, { exact: true }).waitFor();
   await check(page, "confirm step");
@@ -292,7 +299,11 @@ try {
   await inbox.goto(link!);
   await inbox.close();
   await page.getByRole("button", { name: "I confirmed my email" }).click();
-  await page.waitForURL(`${origin}/start/plan`);
+  await page
+    .getByRole("heading", { name: "Confirm your email" })
+    .waitFor({ state: "detached" });
+  assert.equal(new URL(page.url()).pathname, `/continue/${child}`);
+  await page.getByRole("heading", { name: "Continue with AMP" }).waitFor();
 
   // Sign out, then back in with the passkey alone.
   await page.evaluate(() =>

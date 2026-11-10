@@ -18,6 +18,7 @@ import { skills } from "../src/curriculum/catalog";
 import { generateProblem, templates } from "../src/math/engine";
 import { retentionNotice } from "../src/family/contracts";
 import { fixtureMe } from "./me-fixture";
+import { FREE_ONLINE_PROBLEMS } from "../src/learning/free-allowance";
 import {
   defaultPracticeSettings,
   practiceChangeSchema,
@@ -93,49 +94,25 @@ async function fixture(
   {
     signedIn = true,
     failProgress = false,
-    trial = false,
     catalogSkills = skills,
-    catalogFree = 100,
-    trialRemaining = 70,
     learnerCount = 2,
     selectedLearnerId = "parent-one-a" as string | null,
-    failTrialLookup = false,
   } = {},
 ) {
   const batches: { templateId?: string }[] = [];
   const practice = new Map<string, PracticeSettings>();
   await page.addInitScript(
-    ({ signedIn, trial, selectedLearnerId }) => {
-      if (trial)
-        localStorage.setItem("amp.trial", "atlas-synthetic-trial-token-1413");
+    ({ signedIn, selectedLearnerId }) => {
       (window as any).pathwaysAccount = signedIn ? "parent-one" : null;
       localStorage.setItem(
         "amp.learner",
         JSON.stringify({ state: { learnerId: selectedLearnerId }, version: 1 }),
       );
     },
-    { signedIn, trial, selectedLearnerId },
+    { signedIn, selectedLearnerId },
   );
   await page.route("**/api/v1/**", async (route) => {
     const pathname = new URL(route.request().url()).pathname;
-    if (pathname.endsWith("/trials/current"))
-      return route.fulfill(
-        failTrialLookup
-          ? { status: 503, json: { error: "unavailable" } }
-          : {
-              json: {
-                trial:
-                  trial && signedIn
-                    ? {
-                        token: "atlas-synthetic-trial-token-1413",
-                        learnerId: "trial-learner",
-                        birthYear: 2016,
-                        expiresAt: "2099-01-01T00:00:00Z",
-                      }
-                    : null,
-              },
-            },
-      );
     if (pathname.endsWith("/practice-state")) {
       const learnerId = pathname.split("/").at(-2)!;
       let state = practice.get(learnerId) ?? defaultPracticeSettings();
@@ -156,38 +133,6 @@ async function fixture(
       }
       return route.fulfill({ json: state });
     }
-    if (pathname.endsWith("/learners"))
-      return route.fulfill({
-        json: {
-          learners: [
-            {
-              id: route.request().headers().authorization?.startsWith("Trial ")
-                ? "trial-learner"
-                : "parent-one-a",
-              birthYear: 2016,
-            },
-          ],
-        },
-      });
-    if (pathname.endsWith("/trial-progress"))
-      return route.fulfill({
-        json: {
-          phase: "practice",
-          free: catalogFree,
-          placement: 20,
-          remaining: trialRemaining,
-          totals: { answered: 30, correct: 24, assisted: 0 },
-          mastered: [],
-          frontier: {
-            placement: null,
-            current: {
-              expected: 4,
-              overall: { level: 7, sd: 0.7, answered: 30, independent: 24 },
-              strands: {},
-            },
-          },
-        },
-      });
     if (pathname.endsWith("/catalog"))
       return route.fulfill({
         json: {
@@ -195,7 +140,7 @@ async function fixture(
           templates,
           lessons: [],
           mode: "hosted",
-          trial: { free: catalogFree, placement: 20 },
+          trial: { free: 100, placement: 20 },
         },
       });
     if (pathname.endsWith("/auth-config"))
@@ -250,37 +195,26 @@ async function fixture(
           : {
               json: {
                 asOf: new Date().toISOString(),
-                skills: pathname.includes("trial-learner")
+                skills: pathname.includes("parent-one-a")
                   ? [
                       {
                         skillId: target.id,
-                        attempts: 4,
-                        independentCorrect: 3,
-                        independentOccasions: 1,
+                        attempts: 25,
+                        independentCorrect: 20,
+                        independentOccasions: 0,
                         status: "practicing",
                         reviewDueAt: null,
                       },
+                      {
+                        skillId: other.id,
+                        attempts: 6,
+                        independentCorrect: 5,
+                        independentOccasions: 2,
+                        status: "review-ready",
+                        reviewDueAt: null,
+                      },
                     ]
-                  : pathname.includes("parent-one-a")
-                    ? [
-                        {
-                          skillId: target.id,
-                          attempts: 25,
-                          independentCorrect: 20,
-                          independentOccasions: 0,
-                          status: "practicing",
-                          reviewDueAt: null,
-                        },
-                        {
-                          skillId: other.id,
-                          attempts: 6,
-                          independentCorrect: 5,
-                          independentOccasions: 2,
-                          status: "review-ready",
-                          reviewDueAt: null,
-                        },
-                      ]
-                    : [],
+                  : [],
               },
             },
       );
@@ -537,7 +471,7 @@ async function verifyLessonRecovery() {
     Object.defineProperty(globalThis, "window", {
       configurable: true,
       value: {
-        location: new URL(`${origin}/pathways/some-skill?context=trial`),
+        location: new URL(`${origin}/pathways/some-skill`),
       },
     });
     const html = renderToStaticMarkup(
@@ -546,7 +480,7 @@ async function verifyLessonRecovery() {
         reset: () => {},
       }),
     );
-    assert.match(html, /href="\/pathways\?context=trial"/);
+    assert.match(html, /href="\/pathways"/);
     assert.match(html, /Reload page/);
     assert.doesNotMatch(html, /Try again/);
   } finally {
@@ -559,7 +493,7 @@ async function verifyLessonRecovery() {
       viewport: { width: 390, height: 844 },
       reducedMotion: "reduce",
     });
-    await fixture(page, { trial: true });
+    await fixture(page);
     const modulePattern =
       failure === "route" ? "**/PathwaysScreen.tsx*" : "**/SkillLesson.tsx*";
     if (failure === "chunk")
@@ -581,7 +515,7 @@ async function verifyLessonRecovery() {
           json: { error: "synthetic unavailable" },
         }),
       );
-    await page.goto(`${origin}/pathways?context=trial&skill=${target.id}`);
+    await page.goto(`${origin}/pathways?skill=${target.id}`);
     if (failure === "route") {
       await page
         .getByRole("button", { name: "Reload page", exact: true })
@@ -593,7 +527,7 @@ async function verifyLessonRecovery() {
         0,
       );
       const back = page.getByRole("link", { name: "Back to map", exact: true });
-      assert.equal(await back.getAttribute("href"), "/pathways?context=trial");
+      assert.equal(await back.getAttribute("href"), "/pathways");
       await page.unroute(modulePattern);
       await back.click();
       await page.locator(".pathways-canvas canvas").waitFor();
@@ -652,7 +586,6 @@ async function verifyLessonRecovery() {
         .getByRole("dialog")
         .getByText("Example", { exact: true })
         .waitFor();
-      assert.equal(new URL(page.url()).searchParams.get("context"), "trial");
     }
     await page.close();
   }
@@ -1161,81 +1094,60 @@ try {
   await typed.locator("#problem-prompt").waitFor();
   assert.equal(typedBatches[0]?.templateId, exactType.id);
   await typed.close();
-  // A signed-in parent can explore the account's trial progress.
-  const trialPage = await browser.newPage({
+  // A signed-in learner follows a connection, comes Back, and practices the
+  // skill's problem type from its lesson.
+  const linked = await browser.newPage({
     viewport: { width: 390, height: 844 },
     reducedMotion: "reduce",
   });
-  const trialBatches = await fixture(trialPage, { trial: true });
-  await trialPage.goto(`${origin}/pathways?context=trial&skill=${target.id}`);
-  await trialPage
-    .getByText("Your free assessment and practice are lighting up this map.", {
-      exact: true,
-    })
-    .waitFor({ state: "attached" });
-  await trialPage
-    .getByText("1 skills illuminated", { exact: false })
-    .waitFor({ state: "attached" });
-  assert.match(
-    (await trialPage.locator(".pathways-earned").textContent()) ?? "",
-    /3 independent successes/,
-    "the trial's earned evidence must not be replaced by parent evidence",
-  );
-  assert.equal(
-    await trialPage.getByRole("button", { name: /^Learner/ }).count(),
-    0,
-  );
-  const related = trialPage
+  const linkedBatches = await fixture(linked);
+  await linked.goto(`${origin}/pathways?skill=${target.id}`);
+  await linked.getByRole("heading", { name: target.title }).waitFor();
+  const related = linked
     .locator(".pathways-detail a")
     .filter({ hasText: "Nonlinear intersection reading" });
-  assert.match((await related.getAttribute("href")) ?? "", /context=trial/);
   await related.click();
-  await trialPage.waitForURL(/pathways\/nonlinear-intersection-reading/);
-  assert.equal(new URL(trialPage.url()).searchParams.get("context"), "trial");
-  await trialPage.goBack();
-  await trialPage.getByRole("heading", { name: target.title }).waitFor();
-  await trialPage
+  await linked.waitForURL(/pathways\/nonlinear-intersection-reading/);
+  await linked.goBack();
+  await linked.getByRole("heading", { name: target.title }).waitFor();
+  await linked
     .getByRole("button", { name: "View lesson", exact: true })
     .click();
-  await trialPage
+  await linked
     .getByRole("dialog")
     .getByRole("link", { name: "Try this problem type →", exact: true })
     .click();
-  await trialPage.locator("#problem-prompt").waitFor();
+  await linked.locator("#problem-prompt").waitFor();
   assert.equal(
-    trialBatches[0]?.templateId,
+    linkedBatches[0]?.templateId,
     templates.find((t) => t.skillId === target.id)?.id,
   );
-  await trialPage.waitForURL(`${origin}/try/practice`);
-  await trialPage.close();
+  await linked.waitForURL(`${origin}/practice`);
+  await linked.close();
 
-  // Public entry copy uses the catalog allowance and never creates a trial.
+  // Signed out, the map states the free allowance and its way in is sign-up.
   const guest = await browser.newPage({
     viewport: { width: 320, height: 568 },
   });
-  const trialStarts: string[] = [];
   const reelRequests: string[] = [];
   guest.on("request", (request) => {
-    if (request.method() !== "GET" && /\/trials?$/.test(request.url()))
-      trialStarts.push(request.url());
     if (request.url().includes("facebook.com/reel/2346490016085488"))
       reelRequests.push(request.url());
   });
-  await fixture(guest, { signedIn: false, trial: true, catalogFree: 37 });
+  await fixture(guest, { signedIn: false });
   await guest.goto(`${origin}/pathways?utm_source=example`);
-  await guest.getByText("37 free problems", { exact: false }).waitFor();
-  assert.equal(
-    await guest.getByText("1 skills illuminated", { exact: false }).count(),
-    0,
-    "a stored trial token does not expose saved progress while signed out",
-  );
+  await guest
+    .getByText(
+      `Free account · ${FREE_ONLINE_PROBLEMS} free problems for each learner`,
+      { exact: true },
+    )
+    .waitFor();
   assert.equal(
     await guest
-      .getByRole("link", { name: "Start free assessment →" })
+      .getByRole("link", { name: "Try it free →" })
       .getAttribute("href"),
-    "/try",
+    "/sign-up",
   );
-  assert.deepEqual(trialStarts, []);
   assert.deepEqual(reelRequests, []);
   assert.equal(
     await guest
@@ -1285,28 +1197,7 @@ try {
   await noOverflow(guest);
   await guest.close();
 
-  // An exhausted assessment keeps earned evidence and goes straight to plans.
-  const exhausted = await browser.newPage({
-    viewport: { width: 390, height: 844 },
-  });
-  await fixture(exhausted, { trial: true, trialRemaining: 0 });
-  await exhausted.goto(`${origin}/pathways?context=trial&skill=${target.id}`);
-  await exhausted.getByText("choose a plan", { exact: false }).waitFor();
-  // The bar's one action leads to plans; so does the notice's own link.
-  assert.equal(
-    await exhausted.locator("[data-shell-action]").getAttribute("href"),
-    "/try/plans",
-  );
-  for (const href of await exhausted
-    .getByRole("link", { name: "See plans", exact: true })
-    .evaluateAll((links) => links.map((a) => a.getAttribute("href"))))
-    assert.equal(href, "/try/plans");
-  await exhausted
-    .getByText("1 skills illuminated", { exact: false })
-    .waitFor({ state: "attached" });
-  await exhausted.close();
-
-  // Zero learners use the authorized add-learner flow; a saved assessment wins.
+  // Zero learners use the authorized add-learner flow.
   const empty = await browser.newPage({
     viewport: { width: 320, height: 568 },
   });
@@ -1324,100 +1215,73 @@ try {
     "/start",
   );
   await empty.close();
-  const saved = await browser.newPage({
-    viewport: { width: 320, height: 568 },
-  });
-  await fixture(saved, { learnerCount: 0, trial: true });
-  await saved.goto(`${origin}/pathways`);
-  await saved.getByText("1 skills illuminated", { exact: false }).waitFor();
-  assert.equal(
-    await saved.getByText("Choose a learner to see earned skills.").count(),
-    0,
-  );
-  assert.equal(
-    await saved.getByText("Add a learner to see earned skills.").count(),
-    0,
-  );
-  await saved.close();
-  const savedError = await browser.newPage({
-    viewport: { width: 320, height: 568 },
-  });
-  await fixture(savedError, {
-    learnerCount: 0,
-    trial: true,
-    failTrialLookup: true,
-  });
-  await savedError.goto(`${origin}/pathways`);
-  await savedError
-    .getByText("Your assessment could not be loaded.", { exact: false })
-    .waitFor();
-  assert.equal(
-    await savedError.getByRole("link", { name: "Add a learner →" }).count(),
-    0,
-  );
-  assert.equal(
-    await savedError.getByRole("button", { name: "Retry" }).count(),
-    1,
-  );
-  await savedError.close();
-  const assessmentLoading = await browser.newPage({
-    viewport: { width: 320, height: 568 },
-  });
-  await fixture(assessmentLoading, { trial: true, failTrialLookup: true });
-  await assessmentLoading.goto(`${origin}/pathways?context=trial`);
-  await assessmentLoading
-    .getByRole("button", { name: "Browse skills" })
-    .click();
-  const loadingLink = assessmentLoading
-    .locator(".pathways-skill-list a")
-    .filter({ hasText: target.title });
-  await loadingLink.waitFor();
-  assert.equal(
-    new URL((await loadingLink.getAttribute("href"))!, origin).searchParams.get(
-      "context",
-    ),
-    "trial",
-  );
-  await assessmentLoading.close();
-
-  // Compact phone headers keep pending assessment and progress notices visible.
+  // Compact phone headers keep a pending progress notice visible.
   const pendingPhone = await browser.newPage({
     viewport: { width: 320, height: 568 },
   });
-  await fixture(pendingPhone, { trial: true });
-  let releaseLookup!: () => void;
+  await fixture(pendingPhone);
   let releaseProgress!: () => void;
-  const lookupGate = new Promise<void>((resolve) => {
-    releaseLookup = resolve;
-  });
   const progressGate = new Promise<void>((resolve) => {
     releaseProgress = resolve;
-  });
-  await pendingPhone.route("**/api/v1/trials/current", async (route) => {
-    await lookupGate;
-    await route.fallback();
   });
   await pendingPhone.route("**/api/v1/learners/*/progress", async (route) => {
     await progressGate;
     await route.fallback();
   });
   try {
-    await pendingPhone.goto(`${origin}/pathways?context=trial`);
-    await pendingPhone
-      .getByText("Loading your assessment…", { exact: true })
-      .waitFor();
-    releaseLookup();
+    await pendingPhone.goto(`${origin}/pathways`);
     await pendingPhone
       .getByText("Loading earned skills…", { exact: true })
       .waitFor();
     releaseProgress();
+    // The phone row's count paints once the record is in.
     await pendingPhone
-      .getByText("1 skills illuminated", { exact: false })
+      .locator(".pathways-phone-summary", {
+        hasText: /^2 of \d+ skills illuminated$/,
+      })
       .waitFor();
   } finally {
-    releaseLookup();
     releaseProgress();
     await pendingPhone.close();
+  }
+
+  // The map remounts when the family's learner arrives. The catalog is asked
+  // for once, even when its first request is still on its way then.
+  const once = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  await fixture(once);
+  let catalogRequests = 0;
+  let catalogAsked!: () => void;
+  const asked = new Promise<void>((resolve) => {
+    catalogAsked = resolve;
+  });
+  once.on("request", (r) => {
+    if (!new URL(r.url()).pathname.endsWith("/catalog")) return;
+    catalogRequests++;
+    catalogAsked();
+  });
+  const learnersLoaded = once.waitForResponse((r) =>
+    new URL(r.url()).pathname.endsWith("/me"),
+  );
+  await once.route("**/api/v1/me", async (route) => {
+    await asked;
+    await route.fallback();
+  });
+  await once.route("**/api/v1/catalog", async (route) => {
+    await learnersLoaded;
+    await once.waitForTimeout(300);
+    await route.fallback().catch(() => undefined);
+  });
+  try {
+    await once.goto(`${origin}/pathways`);
+    await once
+      .locator(".pathways-phone-summary", {
+        hasText: /^2 of \d+ skills illuminated$/,
+      })
+      .waitFor();
+    await once.waitForLoadState("networkidle");
+    assert.equal(catalogRequests, 1, "the map asks for the catalog once");
+  } finally {
+    await once.close();
   }
 
   // Invalid direct and legacy skill URLs do not advertise an indexable skill.
@@ -1612,9 +1476,9 @@ try {
     .waitFor();
   assert.equal(
     await fallback
-      .getByRole("link", { name: "Start free assessment →" })
+      .getByRole("link", { name: "Try it free →" })
       .getAttribute("href"),
-    "/try",
+    "/sign-up",
   );
   await noOverflow(fallback);
   await fallback.close();
@@ -1709,8 +1573,8 @@ try {
   }
   console.log(
     process.env.AMP_MAP_FOCUS
-      ? "Pathways focused cases: guest/trial entry, canonical links, learner states, and phone card scrolling passed."
-      : "Pathways: camera gesture/settle checks, 8 viewport/theme cases, guest/trial entry, canonical links, learner states, phone card scrolling, durable crystals, URL restoration, WebGL fallback, and error recovery passed.",
+      ? "Pathways focused cases: guest entry, canonical links, learner states, and phone card scrolling passed."
+      : "Pathways: camera gesture/settle checks, 8 viewport/theme cases, guest entry, canonical links, learner states, phone card scrolling, durable crystals, URL restoration, WebGL fallback, and error recovery passed.",
   );
 } finally {
   await browser.close();

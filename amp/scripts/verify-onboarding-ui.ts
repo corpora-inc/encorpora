@@ -69,7 +69,7 @@ const offers = [
 ];
 type Learner = { id: string; name: string; birthYear: number; paid: boolean };
 type State = {
-  next: "try" | "choose-plan" | "add-learner" | "practice";
+  next: "start" | "choose-plan" | "add-learner" | "practice";
   /** The parent has not confirmed the account email yet. */
   confirm: boolean;
   consent: boolean;
@@ -211,8 +211,6 @@ async function serve(page: Page, state: State, faults: string[]) {
       return route.fulfill({ json: { recorded: true } });
     }
     if (path === "/me") return route.fulfill({ json: me(state) });
-    if (path === "/trials/current")
-      return route.fulfill({ json: { trial: null } });
     if (path === "/billing/offer")
       return route.fulfill({
         json: { available: true, offer: offers[0], offers },

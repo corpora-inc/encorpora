@@ -1,12 +1,9 @@
 import { useEffect } from "react";
 import { useQuery, queryOptions } from "@tanstack/react-query";
-import { useLocation, useSearch } from "@tanstack/react-router";
 import { meOptions, sessionOptions } from "./query";
 import { useLearnerStore } from "../learner-store";
 import { adultLearner, practicingAsAdult } from "./adult-learner";
 import { request } from "./api";
-import { trialSessionOptions, progressOptions } from "../features/trial/api";
-import { trialEvidenceOptions } from "../features/pathways/queries";
 import {
   catalogSchema,
   progressSchema,
@@ -46,15 +43,13 @@ export const learnerFrontierOptions = (
       ),
   });
 
-/** One explicit learning context for navigation and inventory. Account identity
- * never silently replaces the anonymous assessment currently on screen.
+/** One explicit learning context for navigation and inventory: the chosen
+ * learner of the signed-in account, or the adult's own.
  * `records: false` (the drawer) asks only who and where, never the learner's
  * evidence, so opening it fetches nothing the screen behind it hasn't. */
 export function useLearningView({
   records = true,
 }: { records?: boolean } = {}) {
-  const location = useLocation();
-  const search = useSearch({ strict: false });
   const session = useQuery(sessionOptions);
   const me = useQuery({
     ...meOptions(session.data ?? { accountId: "", token: "" }),
@@ -79,109 +74,55 @@ export function useLearningView({
     if (learners.length === 1 && selectedId !== learners[0]?.id)
       useLearnerStore.getState().select(learners[0]!.id);
   }, [account, selectedId]);
-  const explicitTrial =
-    location.pathname.startsWith("/try") || search.context === "trial";
-  const trial = useQuery(trialSessionOptions);
   const loadingIdentity = session.isPending || (!!session.data && me.isPending);
-  const trialMode =
-    explicitTrial ||
-    (!loadingIdentity &&
-      !session.error &&
-      !me.error &&
-      !learners.length &&
-      !own &&
-      !!trial.data);
-  const activeLearner = trialMode ? undefined : learner;
-  const trialSession = trial.data ?? { token: "", learnerId: "" };
-  const trialProgress = useQuery({
-    ...progressOptions(trialSession),
-    enabled: records && trialMode && !!trial.data,
-  });
-  const trialEvidence = useQuery({
-    ...trialEvidenceOptions(trialSession),
-    enabled: records && trialMode && !!trial.data,
-    refetchInterval: false,
-  });
-  const accountEvidence = useQuery({
+  const evidence = useQuery({
     ...learnerEvidenceOptions(
       session.data ?? { accountId: "", token: "" },
-      activeLearner?.id ?? "",
+      learner?.id ?? "",
     ),
-    enabled: records && !!session.data && !!activeLearner,
+    enabled: records && !!session.data && !!learner,
   });
-  const accountFrontier = useQuery({
+  const frontier = useQuery({
     ...learnerFrontierOptions(
       session.data ?? { accountId: "", token: "" },
-      activeLearner?.id ?? "",
+      learner?.id ?? "",
     ),
-    enabled: records && !!session.data && !!activeLearner,
+    enabled: records && !!session.data && !!learner,
   });
-  const evidence = trialMode ? trialEvidence : accountEvidence;
-  const frontier = trialMode
-    ? trialProgress.data?.frontier.current
-    : accountFrontier.data;
-  const active = trialMode ? !!trial.data : !!activeLearner;
-  const canPractice = trialMode
-    ? !!trialProgress.data && trialProgress.data.remaining > 0
-    : !!activeLearner &&
-      !!account?.family.learners.find((l) => l.id === activeLearner.id)
-        ?.canPractice;
+  const active = !!learner;
+  const canPractice =
+    !!learner &&
+    !!account?.family.learners.find((l) => l.id === learner.id)?.canPractice;
   const identityError = session.error || (session.data && me.error);
   const loading =
-    (!explicitTrial && loadingIdentity) ||
-    ((explicitTrial || !learners.length) && trial.isPending) ||
-    (active &&
-      ((records && evidence.isPending) ||
-        (trialMode
-          ? trialProgress.isPending
-          : records && accountFrontier.isPending)));
+    loadingIdentity ||
+    (active && records && (evidence.isPending || frontier.isPending));
   const error =
-    (!explicitTrial && identityError) ||
-    ((explicitTrial || !learners.length) && trial.error) ||
-    (active &&
-      ((records && evidence.error) ||
-        (trialMode ? trialProgress.error : records && accountFrontier.error)));
+    identityError || (active && records && (evidence.error || frontier.error));
   return {
     session,
     identityLoading: loadingIdentity,
     identityError,
     account,
     learners,
-    learner: activeLearner,
+    learner,
     /** The chosen learner is the adult's own: their own practice. */
-    ownPractice: !trialMode && !!own,
-    trial,
-    trialMode,
-    trialProgress: trialMode ? trialProgress.data : undefined,
-    /** The assessment's budget is on its way: the lookup or its progress. */
-    trialProgressLoading:
-      trialMode &&
-      (trial.isPending || (!!trial.data && trialProgress.isPending)),
+    ownPractice: !!own,
     active,
     canPractice,
     evidence: active ? evidence.data : undefined,
-    frontier: active ? frontier : undefined,
+    frontier: active ? frontier.data : undefined,
     loading,
     error,
-    contextSearch: trialMode ? { context: "trial" as const } : {},
-    practiceHref: trialMode
-      ? trialProgress.data?.remaining === 0
-        ? "/try/plans"
-        : trial.data
-          ? "/try/practice"
-          : "/try"
-      : activeLearner
-        ? canPractice
-          ? "/practice"
-          : "/start"
-        : "/try",
+    // Practice, or the pause in practice when the free problems are used;
+    // with no learner yet, the starter.
+    practiceHref: learner ? "/practice" : "/start",
     retry: () => {
       void session.refetch();
       if (session.data) void me.refetch();
-      void trial.refetch();
       if (active) {
         void evidence.refetch();
-        void (trialMode ? trialProgress.refetch() : accountFrontier.refetch());
+        void frontier.refetch();
       }
     },
   };

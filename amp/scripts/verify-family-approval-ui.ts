@@ -237,7 +237,7 @@ async function journey(
     teacher,
     `teacher-${randomUUID().slice(0, 8)}@vega.example`,
   );
-  await teacher.waitForURL(/\/account\/ready|\/try|\/start/);
+  await teacher.waitForURL(/\/account\/ready|\/start/);
   const teacherAccount = await accountOf(teacher, "Marisol Vega");
   await teacherFamily(teacherAccount);
   await teacher.goto(`${origin}/`);

@@ -2,7 +2,6 @@ import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { Link, Navigate, useSearch } from "@tanstack/react-router";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { continuationSearch } from "../../lib/funded-entry";
-import { chosenPlan } from "../../lib/pending-trial";
 import { PageFrame, FrameBrand, frameCard } from "../../ui/PageFrame";
 import { Button, buttonClass } from "../../ui/Button";
 import styles from "./Account.module.css";
@@ -26,7 +25,6 @@ export function AccountReady() {
   const active = account?.learners.some(
     (learner) => learner.entitlement.active,
   );
-  const setup = !!account && (account.next !== "try" || !!chosenPlan());
   return (
     <PageFrame centered>
       <section
@@ -68,16 +66,8 @@ export function AccountReady() {
             <p>
               {active
                 ? "Your learner profile and learning access are ready."
-                : setup
-                  ? "Continue your learner setup. Your sign-in is saved."
-                  : "Your sign-in is saved. You can continue the free assessment without paying."}
+                : "Your sign-in is saved. One question, and you’re practicing."}
             </p>
-            {!active && !setup && (
-              <p>
-                Assessment progress stays on this device until you save it to a
-                learner profile.
-              </p>
-            )}
             <div className={styles.actions}>
               {active ? (
                 <Link
@@ -87,21 +77,13 @@ export function AccountReady() {
                 >
                   Continue learning →
                 </Link>
-              ) : setup ? (
+              ) : (
                 <Link
                   className={buttonClass("primary")}
                   to="/start"
                   search={carry}
                 >
-                  Continue setup →
-                </Link>
-              ) : (
-                <Link
-                  className={buttonClass("primary")}
-                  to="/try"
-                  search={carry}
-                >
-                  Continue free assessment →
+                  Continue →
                 </Link>
               )}
               {!active && (
