@@ -1,0 +1,7114 @@
+{
+  "script": {
+    "id": "divide-facts--pf",
+    "title": "Division finds the missing factor",
+    "seed": "film",
+    "cast": {
+      "teacher": {
+        "voice": "J3Ei0Lj6fAobhIqY5ySH",
+        "name": "Paul"
+      },
+      "learner": {
+        "voice": "SYXbTJsLE7zmSjr1DchT",
+        "name": "Champ",
+        "tag": "[energetic]"
+      }
+    },
+    "shots": [
+      {
+        "figure": {
+          "view": [
+            -3.8,
+            -3.2,
+            5.4,
+            5.4
+          ],
+          "points": {
+            "G": [
+              0,
+              3
+            ],
+            "BL": [
+              0,
+              0
+            ],
+            "TL": [
+              0,
+              3
+            ],
+            "TR": [
+              4,
+              3
+            ],
+            "BR": [
+              4,
+              0
+            ],
+            "Top": [
+              2,
+              4.25
+            ],
+            "Bottom": [
+              2,
+              -1.2
+            ],
+            "Count": [
+              2,
+              -2.4
+            ],
+            "R0": [
+              0,
+              2
+            ],
+            "R1": [
+              4,
+              2
+            ]
+          },
+          "parts": [
+            {
+              "id": "g",
+              "grid": [
+                4,
+                3
+              ],
+              "at": "G",
+              "size": 1,
+              "fill": "none",
+              "ink": "muted"
+            },
+            {
+              "id": "d",
+              "counters": "g",
+              "n": 12,
+              "ink": "accent"
+            },
+            {
+              "id": "rowBand",
+              "poly": [
+                "TL",
+                "TR",
+                "R1",
+                "R0"
+              ],
+              "fill": "none",
+              "ink": "gold",
+              "w": 5
+            },
+            {
+              "id": "rows",
+              "start": false,
+              "dim": [
+                "BL",
+                "TL"
+              ],
+              "side": "w",
+              "tex": "\\cb{3}\\text{ rows}",
+              "ink": "blue",
+              "far": 1.2
+            },
+            {
+              "id": "each",
+              "start": false,
+              "label": "\\text{? in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "gold",
+              "size": "m"
+            },
+            {
+              "id": "total",
+              "start": true,
+              "label": "12\\text{ dots in all}",
+              "at": "Bottom",
+              "dir": "c",
+              "ink": "accent",
+              "size": "m"
+            },
+            {
+              "id": "eachAnswer",
+              "label": "4\\text{ in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "violet",
+              "size": "m"
+            },
+            {
+              "id": "rowsAnswer",
+              "dim": [
+                "BL",
+                "TL"
+              ],
+              "side": "w",
+              "tex": "\\cb{3}\\text{ rows}",
+              "ink": "blue",
+              "far": 1.2
+            }
+          ]
+        },
+        "beats": [
+          {
+            "say": "Twelve dots are shared into three equal rows. How many dots belong in each row?",
+            "pause": 0.7,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "clear"
+              },
+              {
+                "do": "problem",
+                "text": "12 dots in 3 equal rows. How many dots are in each row?",
+                "id": "foundationProblem"
+              },
+              {
+                "do": "show",
+                "target": "rows",
+                "at": "three"
+              },
+              {
+                "do": "show",
+                "target": "each",
+                "at": "many"
+              }
+            ]
+          },
+          {
+            "say": "A row runs across. Put four dots in the first row.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "show",
+                "target": [
+                  "d1",
+                  "d2",
+                  "d3",
+                  "d4"
+                ],
+                "at": "four"
+              },
+              {
+                "do": "show",
+                "target": "rowBand",
+                "at": "row"
+              },
+              {
+                "do": "write",
+                "tex": "\\cv{4}",
+                "fresh": true,
+                "at": "four"
+              }
+            ]
+          },
+          {
+            "say": "Equal rows have the same number of dots. Four here, and four here.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "show",
+                "target": [
+                  "d5",
+                  "d6",
+                  "d7",
+                  "d8"
+                ],
+                "at": "Four"
+              },
+              {
+                "do": "show",
+                "target": [
+                  "d9",
+                  "d10",
+                  "d11",
+                  "d12"
+                ],
+                "at": "and"
+              },
+              {
+                "do": "hide",
+                "target": "rowBand",
+                "at": "Equal"
+              }
+            ]
+          },
+          {
+            "say": "Dots lined up in equal rows form an array. The total is all the dots together.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "term",
+                "word": "array",
+                "meaning": "Objects lined up in equal rows.",
+                "at": "array"
+              },
+              {
+                "do": "highlight",
+                "target": "d",
+                "at": "lined"
+              },
+              {
+                "do": "highlight",
+                "target": "total",
+                "at": "total"
+              }
+            ]
+          },
+          {
+            "say": "Four plus four plus four is twelve. Multiplication counts the equal rows: three times four is twelve.",
+            "pause": 0.7,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "write",
+                "tex": "\\cv{4}+\\cv{4}+\\cv{4}=\\ca{12}",
+                "fresh": true,
+                "at": "Four"
+              },
+              {
+                "do": "write",
+                "tex": "\\cb{3}\\times\\cv{4}=\\ca{12}",
+                "fresh": true,
+                "id": "foundationFact",
+                "at": "Multiplication"
+              }
+            ]
+          },
+          {
+            "say": "Three counts the rows. Four counts the dots in each row.",
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "highlight",
+                "target": "rows",
+                "at": "Three"
+              },
+              {
+                "do": "show",
+                "target": "rowBand",
+                "at": "Four"
+              },
+              {
+                "do": "hide",
+                "target": "each",
+                "at": "Four"
+              },
+              {
+                "do": "show",
+                "target": "eachAnswer",
+                "at": "Four"
+              }
+            ]
+          },
+          {
+            "say": "Division finds the missing row size from the total and the number of equal rows. The sign means divided by.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "write",
+                "tex": "\\ca{12}\\div\\cb{3}=\\square",
+                "fresh": true,
+                "at": "Division"
+              },
+              {
+                "do": "highlight",
+                "target": "total",
+                "at": "total"
+              },
+              {
+                "do": "highlight",
+                "target": "rows",
+                "at": "rows"
+              }
+            ]
+          },
+          {
+            "say": "Twelve divided by three is four. Three rows of four use all twelve dots.",
+            "pause": 0.8,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "answer",
+                "tex": "\\ca{12}\\div\\cb{3}=\\cv{4}",
+                "id": "foundationAnswer",
+                "at": "four"
+              },
+              {
+                "do": "highlight",
+                "target": "d",
+                "at": "all"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "figure": {
+          "view": [
+            -3.8,
+            -3.2,
+            6.4,
+            8.4
+          ],
+          "points": {
+            "G": [
+              0,
+              6
+            ],
+            "BL": [
+              0,
+              0
+            ],
+            "TL": [
+              0,
+              6
+            ],
+            "TR": [
+              5,
+              6
+            ],
+            "BR": [
+              5,
+              0
+            ],
+            "Top": [
+              2.5,
+              7.25
+            ],
+            "Bottom": [
+              2.5,
+              -1.2
+            ],
+            "Count": [
+              2.5,
+              -2.4
+            ],
+            "R0": [
+              0,
+              5
+            ],
+            "R1": [
+              5,
+              5
+            ],
+            "CL": [
+              1,
+              6.15
+            ],
+            "CR": [
+              6,
+              6.15
+            ],
+            "CB": [
+              6,
+              -0.15
+            ],
+            "CA": [
+              1,
+              -0.15
+            ]
+          },
+          "parts": [
+            {
+              "id": "g",
+              "grid": [
+                5,
+                6
+              ],
+              "at": "G",
+              "size": 1,
+              "fill": "none",
+              "ink": "muted"
+            },
+            {
+              "id": "d",
+              "start": true,
+              "counters": "g",
+              "n": 30,
+              "ink": "accent"
+            },
+            {
+              "id": "rowBand",
+              "poly": [
+                "TL",
+                "TR",
+                "R1",
+                "R0"
+              ],
+              "fill": "none",
+              "ink": "gold",
+              "w": 5
+            },
+            {
+              "id": "rows",
+              "start": true,
+              "dim": [
+                "BL",
+                "TL"
+              ],
+              "side": "w",
+              "tex": "\\cb{6}\\text{ rows}",
+              "ink": "blue",
+              "far": 1.2
+            },
+            {
+              "id": "each",
+              "start": true,
+              "label": "\\text{? in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "gold",
+              "size": "m"
+            },
+            {
+              "id": "total",
+              "start": true,
+              "label": "30\\text{ dots in all}",
+              "at": "Bottom",
+              "dir": "c",
+              "ink": "accent",
+              "size": "m"
+            },
+            {
+              "id": "eachAnswer",
+              "label": "5\\text{ in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "violet",
+              "size": "m"
+            },
+            {
+              "id": "rowsAnswer",
+              "dim": [
+                "BL",
+                "TL"
+              ],
+              "side": "w",
+              "tex": "\\cb{6}\\text{ rows}",
+              "ink": "blue",
+              "far": 1.2
+            },
+            {
+              "id": "cover",
+              "start": true,
+              "poly": [
+                "CL",
+                "CR",
+                "CB",
+                "CA"
+              ],
+              "fill": "paper",
+              "ink": "muted",
+              "w": 4
+            },
+            {
+              "id": "each1",
+              "label": "1\\text{ in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "violet",
+              "size": "m"
+            },
+            {
+              "id": "count1",
+              "label": "6\\text{ dots visible}",
+              "at": "Count",
+              "dir": "c",
+              "ink": "accent",
+              "size": "m"
+            },
+            {
+              "id": "each2",
+              "label": "2\\text{ in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "violet",
+              "size": "m"
+            },
+            {
+              "id": "count2",
+              "label": "12\\text{ dots visible}",
+              "at": "Count",
+              "dir": "c",
+              "ink": "accent",
+              "size": "m"
+            },
+            {
+              "id": "each3",
+              "label": "3\\text{ in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "violet",
+              "size": "m"
+            },
+            {
+              "id": "count3",
+              "label": "18\\text{ dots visible}",
+              "at": "Count",
+              "dir": "c",
+              "ink": "accent",
+              "size": "m"
+            },
+            {
+              "id": "each4",
+              "label": "4\\text{ in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "violet",
+              "size": "m"
+            },
+            {
+              "id": "count4",
+              "label": "24\\text{ dots visible}",
+              "at": "Count",
+              "dir": "c",
+              "ink": "accent",
+              "size": "m"
+            },
+            {
+              "id": "each5",
+              "label": "5\\text{ in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "violet",
+              "size": "m"
+            },
+            {
+              "id": "count5",
+              "label": "30\\text{ dots visible}",
+              "at": "Count",
+              "dir": "c",
+              "ink": "accent",
+              "size": "m"
+            }
+          ]
+        },
+        "beats": [
+          {
+            "say": "This array has thirty dots in six equal rows. How many dots are in each row?",
+            "pause": 0.8,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "clear"
+              },
+              {
+                "do": "problem",
+                "text": "This array has 30 dots in 6 equal rows. How many dots are in each row?",
+                "id": "mainProblem"
+              },
+              {
+                "do": "highlight",
+                "target": "total",
+                "at": "thirty"
+              },
+              {
+                "do": "highlight",
+                "target": "rows",
+                "at": "six"
+              },
+              {
+                "do": "highlight",
+                "target": "each",
+                "at": "many"
+              }
+            ]
+          },
+          {
+            "say": "I count six visible dots. My guess is six in each row.",
+            "pause": 0.4,
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "highlight",
+                "target": [
+                  "d1",
+                  "d6",
+                  "d11",
+                  "d16",
+                  "d21",
+                  "d26"
+                ],
+                "at": "six"
+              }
+            ]
+          },
+          {
+            "say": "Those dots run down, one per row. Six counts the rows.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "highlight",
+                "target": [
+                  "d1",
+                  "d6",
+                  "d11",
+                  "d16",
+                  "d21",
+                  "d26"
+                ],
+                "at": "down"
+              },
+              {
+                "do": "highlight",
+                "target": "rows",
+                "at": "Six"
+              }
+            ]
+          },
+          {
+            "say": "We need the number across each row. The box stands for that missing number.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "write",
+                "tex": "\\ca{30}\\div\\cb{6}=\\square",
+                "fresh": true,
+                "id": "mainDivision",
+                "at": "need"
+              },
+              {
+                "do": "text",
+                "text": "The box stands for a missing number.",
+                "at": "box"
+              }
+            ]
+          },
+          {
+            "say": "Thirty divided by six asks: six rows of how many make thirty?",
+            "pause": 0.6,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "write",
+                "tex": "\\cb{6}\\times\\square=\\ca{30}",
+                "fresh": true,
+                "id": "mainUnknown",
+                "at": "asks"
+              },
+              {
+                "do": "highlight",
+                "target": "each",
+                "at": "many"
+              }
+            ]
+          },
+          {
+            "say": "I cannot see across. Can we count by six?",
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "highlight",
+                "target": "cover",
+                "at": "see"
+              }
+            ]
+          },
+          {
+            "say": "A column runs down. Each new column gives every row one more dot, adding six dots altogether.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "highlight",
+                "target": [
+                  "d1",
+                  "d6",
+                  "d11",
+                  "d16",
+                  "d21",
+                  "d26"
+                ],
+                "at": "column"
+              },
+              {
+                "do": "text",
+                "text": "One more in every row adds 6 dots.",
+                "at": "adding"
+              }
+            ]
+          },
+          {
+            "say": "One in each row uses six dots.",
+            "pause": 0.5,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "hide",
+                "target": "each"
+              },
+              {
+                "do": "show",
+                "target": [
+                  "each1",
+                  "count1"
+                ]
+              },
+              {
+                "do": "highlight",
+                "target": [
+                  "d1",
+                  "d6",
+                  "d11",
+                  "d16",
+                  "d21",
+                  "d26"
+                ],
+                "at": "six"
+              }
+            ]
+          },
+          {
+            "say": "Two in each row uses twelve dots.",
+            "pause": 0.6,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "move",
+                "points": {
+                  "CL": [
+                    2,
+                    6.15
+                  ],
+                  "CA": [
+                    2,
+                    -0.15
+                  ]
+                },
+                "dur": 1
+              },
+              {
+                "do": "hide",
+                "target": [
+                  "each1",
+                  "count1"
+                ]
+              },
+              {
+                "do": "show",
+                "target": [
+                  "each2",
+                  "count2"
+                ]
+              },
+              {
+                "do": "highlight",
+                "target": [
+                  "d2",
+                  "d7",
+                  "d12",
+                  "d17",
+                  "d22",
+                  "d27"
+                ],
+                "at": "twelve"
+              }
+            ]
+          },
+          {
+            "say": "Three in each row uses eighteen dots.",
+            "pause": 0.6,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "move",
+                "points": {
+                  "CL": [
+                    3,
+                    6.15
+                  ],
+                  "CA": [
+                    3,
+                    -0.15
+                  ]
+                },
+                "dur": 1
+              },
+              {
+                "do": "hide",
+                "target": [
+                  "each2",
+                  "count2"
+                ]
+              },
+              {
+                "do": "show",
+                "target": [
+                  "each3",
+                  "count3"
+                ]
+              },
+              {
+                "do": "highlight",
+                "target": [
+                  "d3",
+                  "d8",
+                  "d13",
+                  "d18",
+                  "d23",
+                  "d28"
+                ],
+                "at": "eighteen"
+              }
+            ]
+          },
+          {
+            "say": "Four in each row uses twenty-four dots.",
+            "pause": 0.6,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "move",
+                "points": {
+                  "CL": [
+                    4,
+                    6.15
+                  ],
+                  "CA": [
+                    4,
+                    -0.15
+                  ]
+                },
+                "dur": 1
+              },
+              {
+                "do": "hide",
+                "target": [
+                  "each3",
+                  "count3"
+                ]
+              },
+              {
+                "do": "show",
+                "target": [
+                  "each4",
+                  "count4"
+                ]
+              },
+              {
+                "do": "highlight",
+                "target": [
+                  "d4",
+                  "d9",
+                  "d14",
+                  "d19",
+                  "d24",
+                  "d29"
+                ],
+                "at": "twenty-four"
+              }
+            ]
+          },
+          {
+            "say": "Five in each row uses thirty dots. All the dots are used.",
+            "pause": 0.8,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "hide",
+                "target": "cover"
+              },
+              {
+                "do": "hide",
+                "target": [
+                  "each4",
+                  "count4"
+                ]
+              },
+              {
+                "do": "show",
+                "target": [
+                  "each5",
+                  "count5"
+                ]
+              },
+              {
+                "do": "show",
+                "target": "rowBand",
+                "at": "Five"
+              },
+              {
+                "do": "highlight",
+                "target": "total",
+                "at": "All"
+              }
+            ]
+          },
+          {
+            "say": "Five is the number across each row. Six was the number of rows.",
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "highlight",
+                "target": [
+                  "d1",
+                  "d2",
+                  "d3",
+                  "d4",
+                  "d5"
+                ],
+                "at": "Five"
+              },
+              {
+                "do": "highlight",
+                "target": "rows",
+                "at": "Six"
+              }
+            ]
+          },
+          {
+            "say": "A factor is a number we multiply. Six times five makes thirty, so five is the missing factor.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "write",
+                "tex": "\\cb{6}\\times\\cv{5}=\\ca{30}",
+                "fresh": true,
+                "id": "mainFact",
+                "at": "Six"
+              },
+              {
+                "do": "highlight",
+                "target": "each5",
+                "at": "missing"
+              }
+            ]
+          },
+          {
+            "say": "The answer to a division is called the quotient. Here, it is five dots in each row.",
+            "pause": 0.8,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "term",
+                "word": "quotient",
+                "meaning": "The answer to a division.",
+                "at": "quotient"
+              },
+              {
+                "do": "answer",
+                "tex": "\\ca{30}\\div\\cb{6}=\\cv{5}",
+                "id": "mainAnswer",
+                "at": "five"
+              }
+            ]
+          },
+          {
+            "say": "Check by multiplying: six rows of five dots make thirty dots in all.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "write",
+                "tex": "\\cb{6}\\times\\cv{5}=\\ca{30}",
+                "fresh": true,
+                "id": "mainCheck",
+                "at": "multiplying"
+              },
+              {
+                "do": "highlight",
+                "target": "d",
+                "at": "all"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "figure": {
+          "view": [
+            -3.8,
+            -3.2,
+            7.4,
+            5.4
+          ],
+          "points": {
+            "G": [
+              0,
+              3
+            ],
+            "BL": [
+              0,
+              0
+            ],
+            "TL": [
+              0,
+              3
+            ],
+            "TR": [
+              6,
+              3
+            ],
+            "BR": [
+              6,
+              0
+            ],
+            "Top": [
+              3,
+              4.25
+            ],
+            "Bottom": [
+              3,
+              -1.2
+            ],
+            "Count": [
+              3,
+              -2.4
+            ],
+            "R0": [
+              0,
+              2
+            ],
+            "R1": [
+              6,
+              2
+            ]
+          },
+          "parts": [
+            {
+              "id": "g",
+              "grid": [
+                6,
+                3
+              ],
+              "at": "G",
+              "size": 1,
+              "fill": "none",
+              "ink": "muted"
+            },
+            {
+              "id": "d",
+              "counters": "g",
+              "n": 18,
+              "ink": "accent"
+            },
+            {
+              "id": "rowBand",
+              "poly": [
+                "TL",
+                "TR",
+                "R1",
+                "R0"
+              ],
+              "fill": "none",
+              "ink": "gold",
+              "w": 5
+            },
+            {
+              "id": "rows",
+              "start": true,
+              "dim": [
+                "BL",
+                "TL"
+              ],
+              "side": "w",
+              "tex": "\\cb{3}\\text{ rows}",
+              "ink": "blue",
+              "far": 1.2
+            },
+            {
+              "id": "each",
+              "start": true,
+              "label": "\\text{? in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "gold",
+              "size": "m"
+            },
+            {
+              "id": "total",
+              "start": true,
+              "label": "18\\text{ chairs in all}",
+              "at": "Bottom",
+              "dir": "c",
+              "ink": "accent",
+              "size": "m"
+            },
+            {
+              "id": "eachAnswer",
+              "label": "6\\text{ in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "violet",
+              "size": "m"
+            },
+            {
+              "id": "rowsAnswer",
+              "dim": [
+                "BL",
+                "TL"
+              ],
+              "side": "w",
+              "tex": "\\cb{3}\\text{ rows}",
+              "ink": "blue",
+              "far": 1.2
+            }
+          ]
+        },
+        "beats": [
+          {
+            "say": "A teacher sets out eighteen chairs in three equal rows. How many chairs are in each row?",
+            "pause": 0.7,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "clear"
+              },
+              {
+                "do": "problem",
+                "text": "A teacher sets out 18 chairs in 3 equal rows. How many chairs are in each row?",
+                "id": "chairsProblem"
+              },
+              {
+                "do": "highlight",
+                "target": "total",
+                "at": "eighteen"
+              },
+              {
+                "do": "highlight",
+                "target": "rows",
+                "at": "three"
+              },
+              {
+                "do": "highlight",
+                "target": "each",
+                "at": "many"
+              }
+            ]
+          },
+          {
+            "say": "One dot stands for one chair. Three rows are given; the number in each row is missing.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "show",
+                "target": [
+                  "d1",
+                  "d7",
+                  "d13"
+                ],
+                "at": "dot"
+              },
+              {
+                "do": "write",
+                "tex": "\\ca{18}\\div\\cb{3}=\\square",
+                "fresh": true,
+                "at": "Three"
+              },
+              {
+                "do": "highlight",
+                "target": "each",
+                "at": "missing"
+              }
+            ]
+          },
+          {
+            "say": "So I need three times some number to make eighteen.",
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "write",
+                "tex": "\\cb{3}\\times\\square=\\ca{18}",
+                "fresh": true,
+                "at": "three"
+              }
+            ]
+          },
+          {
+            "say": "Three times six is eighteen. See six chairs across every row.",
+            "pause": 0.6,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "show",
+                "target": "d",
+                "at": "six"
+              },
+              {
+                "do": "hide",
+                "target": "each",
+                "at": "six"
+              },
+              {
+                "do": "show",
+                "target": "eachAnswer",
+                "at": "six"
+              },
+              {
+                "do": "write",
+                "tex": "\\cb{3}\\times\\cv{6}=\\ca{18}",
+                "fresh": true,
+                "at": "Three"
+              },
+              {
+                "do": "show",
+                "target": "rowBand",
+                "at": "across"
+              }
+            ]
+          },
+          {
+            "say": "There are six chairs in each row.",
+            "pause": 0.6,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "answer",
+                "tex": "\\cv{6}\\text{ chairs per row}",
+                "id": "chairsAnswer",
+                "at": "six"
+              }
+            ]
+          },
+          {
+            "say": "Check the story: three equal rows of six chairs use all eighteen chairs.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "highlight",
+                "target": "d",
+                "at": "rows"
+              },
+              {
+                "do": "write",
+                "tex": "\\cb{3}\\times\\cv{6}=\\ca{18}",
+                "fresh": true,
+                "at": "all"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "figure": {
+          "view": [
+            -3.8,
+            -3.2,
+            3.4,
+            11.4
+          ],
+          "points": {
+            "G": [
+              0,
+              9
+            ],
+            "BL": [
+              0,
+              0
+            ],
+            "TL": [
+              0,
+              9
+            ],
+            "TR": [
+              2,
+              9
+            ],
+            "BR": [
+              2,
+              0
+            ],
+            "Top": [
+              1,
+              10.25
+            ],
+            "Bottom": [
+              1,
+              -1.2
+            ],
+            "Count": [
+              1,
+              -2.4
+            ],
+            "R0": [
+              0,
+              8
+            ],
+            "R1": [
+              2,
+              8
+            ],
+            "CL": [
+              1,
+              9.15
+            ],
+            "CR": [
+              3,
+              9.15
+            ],
+            "CB": [
+              3,
+              -0.15
+            ],
+            "CA": [
+              1,
+              -0.15
+            ]
+          },
+          "parts": [
+            {
+              "id": "g",
+              "grid": [
+                2,
+                9
+              ],
+              "at": "G",
+              "size": 1,
+              "fill": "none",
+              "ink": "muted"
+            },
+            {
+              "id": "d",
+              "start": true,
+              "counters": "g",
+              "n": 18,
+              "ink": "accent"
+            },
+            {
+              "id": "rowBand",
+              "poly": [
+                "TL",
+                "TR",
+                "R1",
+                "R0"
+              ],
+              "fill": "none",
+              "ink": "gold",
+              "w": 5
+            },
+            {
+              "id": "rows",
+              "start": true,
+              "dim": [
+                "BL",
+                "TL"
+              ],
+              "side": "w",
+              "tex": "\\cb{9}\\text{ rows}",
+              "ink": "blue",
+              "far": 1.2
+            },
+            {
+              "id": "each",
+              "start": true,
+              "label": "\\text{? in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "gold",
+              "size": "m"
+            },
+            {
+              "id": "total",
+              "start": true,
+              "label": "18\\text{ dots in all}",
+              "at": "Bottom",
+              "dir": "c",
+              "ink": "accent",
+              "size": "m"
+            },
+            {
+              "id": "eachAnswer",
+              "label": "2\\text{ in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "violet",
+              "size": "m"
+            },
+            {
+              "id": "rowsAnswer",
+              "dim": [
+                "BL",
+                "TL"
+              ],
+              "side": "w",
+              "tex": "\\cb{9}\\text{ rows}",
+              "ink": "blue",
+              "far": 1.2
+            },
+            {
+              "id": "cover",
+              "start": true,
+              "poly": [
+                "CL",
+                "CR",
+                "CB",
+                "CA"
+              ],
+              "fill": "paper",
+              "ink": "muted",
+              "w": 4
+            }
+          ]
+        },
+        "beats": [
+          {
+            "say": "What is eighteen divided by nine?",
+            "pause": 1,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "clear"
+              },
+              {
+                "do": "problem",
+                "text": "What is $18\\div9$?",
+                "id": "bareProblem"
+              },
+              {
+                "do": "highlight",
+                "target": "total",
+                "at": "eighteen"
+              },
+              {
+                "do": "highlight",
+                "target": "rows",
+                "at": "nine"
+              }
+            ]
+          },
+          {
+            "say": "There is no story. Which number is the total?",
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "highlight",
+                "target": "total",
+                "at": "total"
+              }
+            ]
+          },
+          {
+            "say": "The total goes first: eighteen. We can share it into nine equal rows and find how many in each.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "write",
+                "tex": "\\ca{18}\\div\\cb{9}=\\square",
+                "fresh": true,
+                "at": "first"
+              },
+              {
+                "do": "highlight",
+                "target": "rows",
+                "at": "nine"
+              },
+              {
+                "do": "highlight",
+                "target": "each",
+                "at": "each"
+              }
+            ]
+          },
+          {
+            "say": "Nine times what number makes eighteen? One column uses nine dots. A second uses all eighteen.",
+            "pause": 0.8,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "write",
+                "tex": "\\cb{9}\\times\\square=\\ca{18}",
+                "fresh": true,
+                "at": "Nine"
+              },
+              {
+                "do": "highlight",
+                "target": [
+                  "d1",
+                  "d3",
+                  "d5",
+                  "d7",
+                  "d9",
+                  "d11",
+                  "d13",
+                  "d15",
+                  "d17"
+                ],
+                "at": "One"
+              },
+              {
+                "do": "hide",
+                "target": "cover",
+                "at": "second"
+              },
+              {
+                "do": "hide",
+                "target": "each",
+                "at": "second"
+              },
+              {
+                "do": "show",
+                "target": "eachAnswer",
+                "at": "second"
+              }
+            ]
+          },
+          {
+            "say": "Two dots in every row. Eighteen divided by nine is two.",
+            "pause": 0.6,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "show",
+                "target": "rowBand",
+                "at": "Two"
+              },
+              {
+                "do": "answer",
+                "tex": "\\ca{18}\\div\\cb{9}=\\cv{2}",
+                "id": "bareAnswer",
+                "at": "two"
+              }
+            ]
+          },
+          {
+            "say": "Nine rows of two make eighteen, so the multiplication checks the division.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "write",
+                "tex": "\\cb{9}\\times\\cv{2}=\\ca{18}",
+                "fresh": true,
+                "at": "Nine"
+              },
+              {
+                "do": "highlight",
+                "target": "d",
+                "at": "checks"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "figure": {
+          "view": [
+            -3.8,
+            -3.2,
+            10.4,
+            8.4
+          ],
+          "points": {
+            "G": [
+              0,
+              6
+            ],
+            "BL": [
+              0,
+              0
+            ],
+            "TL": [
+              0,
+              6
+            ],
+            "TR": [
+              9,
+              6
+            ],
+            "BR": [
+              9,
+              0
+            ],
+            "Top": [
+              4.5,
+              7.25
+            ],
+            "Bottom": [
+              4.5,
+              -1.2
+            ],
+            "Count": [
+              4.5,
+              -2.4
+            ],
+            "R0": [
+              0,
+              5
+            ],
+            "R1": [
+              9,
+              5
+            ]
+          },
+          "parts": [
+            {
+              "id": "g",
+              "grid": [
+                9,
+                6
+              ],
+              "at": "G",
+              "size": 1,
+              "fill": "none",
+              "ink": "muted"
+            },
+            {
+              "id": "d",
+              "counters": "g",
+              "n": 54,
+              "ink": "accent"
+            },
+            {
+              "id": "rowBand",
+              "poly": [
+                "TL",
+                "TR",
+                "R1",
+                "R0"
+              ],
+              "fill": "none",
+              "ink": "gold",
+              "w": 5
+            },
+            {
+              "id": "rows",
+              "start": true,
+              "dim": [
+                "BL",
+                "TL"
+              ],
+              "side": "w",
+              "tex": "\\cg{?}\\text{ rows}",
+              "ink": "gold",
+              "far": 1.2
+            },
+            {
+              "id": "each",
+              "start": true,
+              "label": "\\text{9 in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "violet",
+              "size": "m"
+            },
+            {
+              "id": "total",
+              "start": true,
+              "label": "54\\text{ dots in all}",
+              "at": "Bottom",
+              "dir": "c",
+              "ink": "accent",
+              "size": "m"
+            },
+            {
+              "id": "eachAnswer",
+              "label": "9\\text{ in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "violet",
+              "size": "m"
+            },
+            {
+              "id": "rowsAnswer",
+              "dim": [
+                "BL",
+                "TL"
+              ],
+              "side": "w",
+              "tex": "\\cb{6}\\text{ rows}",
+              "ink": "blue",
+              "far": 1.2
+            }
+          ]
+        },
+        "beats": [
+          {
+            "say": "Six times nine equals fifty-four. Use this fact to find fifty-four divided by nine.",
+            "pause": 0.8,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "show",
+                "target": [
+                  "d1",
+                  "d2",
+                  "d3",
+                  "d4",
+                  "d5",
+                  "d6",
+                  "d7",
+                  "d8",
+                  "d9"
+                ],
+                "at": "divided"
+              },
+              {
+                "do": "clear"
+              },
+              {
+                "do": "problem",
+                "text": "$6\\times9=54$. Use this fact to find $54\\div9$.",
+                "id": "givenProblem"
+              },
+              {
+                "do": "highlight",
+                "target": "total",
+                "at": "fifty-four"
+              },
+              {
+                "do": "highlight",
+                "target": "each",
+                "at": "nine"
+              }
+            ]
+          },
+          {
+            "say": "We were dividing by the row count. Is nine the number of rows here?",
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "highlight",
+                "target": "rows",
+                "at": "rows"
+              }
+            ]
+          },
+          {
+            "say": "Here, make rows with nine dots in each. We want how many rows use all fifty-four dots.",
+            "pause": 0.7,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "show",
+                "target": [
+                  "d1",
+                  "d2",
+                  "d3",
+                  "d4",
+                  "d5",
+                  "d6",
+                  "d7",
+                  "d8",
+                  "d9"
+                ],
+                "at": "nine"
+              },
+              {
+                "do": "write",
+                "tex": "\\square\\times\\cv{9}=\\ca{54}",
+                "fresh": true,
+                "id": "givenUnknown",
+                "at": "want"
+              },
+              {
+                "do": "highlight",
+                "target": "rows",
+                "at": "many"
+              }
+            ]
+          },
+          {
+            "say": "The given fact tells us: six rows of nine make fifty-four. These are those six rows.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "show",
+                "target": "d",
+                "at": "six"
+              },
+              {
+                "do": "hide",
+                "target": "rows",
+                "at": "six"
+              },
+              {
+                "do": "show",
+                "target": "rowsAnswer",
+                "at": "six"
+              },
+              {
+                "do": "write",
+                "tex": "\\cb{6}\\times\\cv{9}=\\ca{54}",
+                "fresh": true,
+                "id": "givenFact",
+                "at": "fact"
+              },
+              {
+                "do": "highlight",
+                "target": "d",
+                "at": "These"
+              }
+            ]
+          },
+          {
+            "say": "Six counts the rows. Nine counts the dots in each row. This time the missing number counts rows.",
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "highlight",
+                "target": "rowsAnswer",
+                "at": "Six"
+              },
+              {
+                "do": "show",
+                "target": "rowBand",
+                "at": "Nine"
+              },
+              {
+                "do": "highlight",
+                "target": "rowsAnswer",
+                "at": "missing"
+              }
+            ]
+          },
+          {
+            "say": "A letter can stand for a missing number too. Here, x stands for the number of rows.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "text",
+                "text": "$x$ stands for the number of rows.",
+                "at": "letter"
+              },
+              {
+                "do": "write",
+                "tex": "x\\times\\cv{9}=\\ca{54}",
+                "fresh": true,
+                "id": "letterEquation",
+                "at": "x"
+              }
+            ]
+          },
+          {
+            "say": "Solving an equation means finding a number that makes both sides equal. Six makes both sides fifty-four.",
+            "pause": 0.6,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "highlight",
+                "target": "rowsAnswer",
+                "at": "equation"
+              },
+              {
+                "do": "text",
+                "text": "Both sides name the same amount.",
+                "at": "both"
+              },
+              {
+                "do": "write",
+                "tex": "x=\\cb{6}",
+                "fresh": true,
+                "id": "letterAnswer",
+                "at": "Six"
+              }
+            ]
+          },
+          {
+            "say": "Fifty-four divided by nine is six. Six rows hold all the dots when each row holds nine.",
+            "pause": 0.7,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "answer",
+                "tex": "\\ca{54}\\div\\cv{9}=\\cb{6}",
+                "id": "givenAnswer",
+                "at": "six"
+              },
+              {
+                "do": "highlight",
+                "target": "rowsAnswer",
+                "at": "rows"
+              },
+              {
+                "do": "highlight",
+                "target": "each",
+                "at": "each"
+              }
+            ]
+          },
+          {
+            "say": "Check: six rows of nine dots make fifty-four dots in all.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "write",
+                "tex": "\\cb{6}\\times\\cv{9}=\\ca{54}",
+                "fresh": true,
+                "at": "Check"
+              },
+              {
+                "do": "highlight",
+                "target": "d",
+                "at": "all"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "figure": {
+          "view": [
+            -3.8,
+            -3.2,
+            4.4,
+            5.4
+          ],
+          "points": {
+            "G": [
+              0,
+              3
+            ],
+            "BL": [
+              0,
+              0
+            ],
+            "TL": [
+              0,
+              3
+            ],
+            "TR": [
+              3,
+              3
+            ],
+            "BR": [
+              3,
+              0
+            ],
+            "Top": [
+              1.5,
+              4.25
+            ],
+            "Bottom": [
+              1.5,
+              -1.2
+            ],
+            "Count": [
+              1.5,
+              -2.4
+            ],
+            "R0": [
+              0,
+              2
+            ],
+            "R1": [
+              3,
+              2
+            ]
+          },
+          "parts": [
+            {
+              "id": "g",
+              "grid": [
+                3,
+                3
+              ],
+              "at": "G",
+              "size": 1,
+              "fill": "none",
+              "ink": "muted"
+            },
+            {
+              "id": "d",
+              "counters": "g",
+              "n": 9,
+              "ink": "accent"
+            },
+            {
+              "id": "rowBand",
+              "poly": [
+                "TL",
+                "TR",
+                "R1",
+                "R0"
+              ],
+              "fill": "none",
+              "ink": "gold",
+              "w": 5
+            },
+            {
+              "id": "rows",
+              "start": true,
+              "dim": [
+                "BL",
+                "TL"
+              ],
+              "side": "w",
+              "tex": "\\cb{3}\\text{ rows}",
+              "ink": "blue",
+              "far": 1.2
+            },
+            {
+              "id": "each",
+              "start": true,
+              "label": "\\text{? in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "gold",
+              "size": "m"
+            },
+            {
+              "id": "total",
+              "start": true,
+              "label": "9\\text{ dots in all}",
+              "at": "Bottom",
+              "dir": "c",
+              "ink": "accent",
+              "size": "m"
+            },
+            {
+              "id": "eachAnswer",
+              "label": "3\\text{ in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "violet",
+              "size": "m"
+            },
+            {
+              "id": "rowsAnswer",
+              "dim": [
+                "BL",
+                "TL"
+              ],
+              "side": "w",
+              "tex": "\\cb{3}\\text{ rows}",
+              "ink": "blue",
+              "far": 1.2
+            }
+          ]
+        },
+        "beats": [
+          {
+            "say": "Nine dots go into three equal rows. How many dots are in each row?",
+            "pause": 0.8,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "clear"
+              },
+              {
+                "do": "problem",
+                "text": "9 dots in 3 equal rows. How many dots are in each row?",
+                "id": "squareProblem"
+              },
+              {
+                "do": "show",
+                "target": [
+                  "d1",
+                  "d4",
+                  "d7"
+                ],
+                "at": "three"
+              },
+              {
+                "do": "write",
+                "tex": "\\cb{3}\\times\\square=\\ca{9}",
+                "fresh": true,
+                "at": "many"
+              }
+            ]
+          },
+          {
+            "say": "Could the missing factor also be three?",
+            "pause": 0.5,
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "highlight",
+                "target": "rows",
+                "at": "three"
+              }
+            ]
+          },
+          {
+            "say": "Test it. Three in the first row, three in the second, and three in the third use nine dots.",
+            "pause": 0.7,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "show",
+                "target": [
+                  "d1",
+                  "d2",
+                  "d3"
+                ],
+                "at": "first"
+              },
+              {
+                "do": "show",
+                "target": [
+                  "d4",
+                  "d5",
+                  "d6"
+                ],
+                "at": "second"
+              },
+              {
+                "do": "show",
+                "target": [
+                  "d7",
+                  "d8",
+                  "d9"
+                ],
+                "at": "third"
+              },
+              {
+                "do": "hide",
+                "target": "each",
+                "at": "nine"
+              },
+              {
+                "do": "show",
+                "target": "eachAnswer",
+                "at": "nine"
+              },
+              {
+                "do": "write",
+                "tex": "\\cb{3}\\times\\cv{3}=\\ca{9}",
+                "fresh": true,
+                "at": "use"
+              }
+            ]
+          },
+          {
+            "say": "Three times three is nine. Nine divided by three is three.",
+            "pause": 0.6,
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "show",
+                "target": "rowBand",
+                "at": "Three"
+              },
+              {
+                "do": "answer",
+                "tex": "\\ca{9}\\div\\cb{3}=\\cv{3}",
+                "id": "squareAnswer",
+                "at": "divided"
+              }
+            ]
+          },
+          {
+            "say": "The two factors can have the same value. Three rows of three use all nine dots.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "highlight",
+                "target": "rows",
+                "at": "factors"
+              },
+              {
+                "do": "highlight",
+                "target": "eachAnswer",
+                "at": "same"
+              },
+              {
+                "do": "highlight",
+                "target": "d",
+                "at": "all"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "figure": {
+          "view": [
+            -3.8,
+            -3.2,
+            8.4,
+            10.4
+          ],
+          "points": {
+            "G": [
+              0,
+              8
+            ],
+            "BL": [
+              0,
+              0
+            ],
+            "TL": [
+              0,
+              8
+            ],
+            "TR": [
+              7,
+              8
+            ],
+            "BR": [
+              7,
+              0
+            ],
+            "Top": [
+              3.5,
+              9.25
+            ],
+            "Bottom": [
+              3.5,
+              -1.2
+            ],
+            "Count": [
+              3.5,
+              -2.4
+            ],
+            "R0": [
+              0,
+              7
+            ],
+            "R1": [
+              7,
+              7
+            ],
+            "CL": [
+              1,
+              8.15
+            ],
+            "CR": [
+              8,
+              8.15
+            ],
+            "CB": [
+              8,
+              -0.15
+            ],
+            "CA": [
+              1,
+              -0.15
+            ]
+          },
+          "parts": [
+            {
+              "id": "g",
+              "grid": [
+                7,
+                8
+              ],
+              "at": "G",
+              "size": 1,
+              "fill": "none",
+              "ink": "muted"
+            },
+            {
+              "id": "d",
+              "start": true,
+              "counters": "g",
+              "n": 56,
+              "ink": "accent"
+            },
+            {
+              "id": "rowBand",
+              "poly": [
+                "TL",
+                "TR",
+                "R1",
+                "R0"
+              ],
+              "fill": "none",
+              "ink": "gold",
+              "w": 5
+            },
+            {
+              "id": "rows",
+              "start": true,
+              "dim": [
+                "BL",
+                "TL"
+              ],
+              "side": "w",
+              "tex": "\\cb{8}\\text{ rows}",
+              "ink": "blue",
+              "far": 1.2
+            },
+            {
+              "id": "each",
+              "start": true,
+              "label": "\\text{? in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "gold",
+              "size": "m"
+            },
+            {
+              "id": "total",
+              "start": true,
+              "label": "56\\text{ dots in all}",
+              "at": "Bottom",
+              "dir": "c",
+              "ink": "accent",
+              "size": "m"
+            },
+            {
+              "id": "eachAnswer",
+              "label": "7\\text{ in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "violet",
+              "size": "m"
+            },
+            {
+              "id": "rowsAnswer",
+              "dim": [
+                "BL",
+                "TL"
+              ],
+              "side": "w",
+              "tex": "\\cb{8}\\text{ rows}",
+              "ink": "blue",
+              "far": 1.2
+            },
+            {
+              "id": "cover",
+              "start": true,
+              "poly": [
+                "CL",
+                "CR",
+                "CB",
+                "CA"
+              ],
+              "fill": "paper",
+              "ink": "muted",
+              "w": 4
+            },
+            {
+              "id": "each5",
+              "label": "5\\text{ in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "violet",
+              "size": "m"
+            },
+            {
+              "id": "count5",
+              "label": "40\\text{ dots visible}",
+              "at": "Count",
+              "dir": "c",
+              "ink": "accent",
+              "size": "m"
+            },
+            {
+              "id": "each6",
+              "label": "6\\text{ in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "violet",
+              "size": "m"
+            },
+            {
+              "id": "count6",
+              "label": "48\\text{ dots visible}",
+              "at": "Count",
+              "dir": "c",
+              "ink": "accent",
+              "size": "m"
+            },
+            {
+              "id": "each7",
+              "label": "7\\text{ in each row}",
+              "at": "Top",
+              "dir": "c",
+              "ink": "violet",
+              "size": "m"
+            },
+            {
+              "id": "count7",
+              "label": "56\\text{ dots visible}",
+              "at": "Count",
+              "dir": "c",
+              "ink": "accent",
+              "size": "m"
+            }
+          ]
+        },
+        "beats": [
+          {
+            "say": "What is fifty-six divided by eight? Champ, use the array to explain your answer.",
+            "pause": 1.2,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "clear"
+              },
+              {
+                "do": "problem",
+                "text": "What is $56\\div8$?",
+                "id": "finalProblem"
+              },
+              {
+                "do": "highlight",
+                "target": "total",
+                "at": "fifty-six"
+              },
+              {
+                "do": "highlight",
+                "target": "rows",
+                "at": "eight"
+              }
+            ]
+          },
+          {
+            "say": "Fifty-six is the total. Eight is the number of rows. I need the number in each row.",
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "write",
+                "tex": "\\ca{56}\\div\\cb{8}=\\square",
+                "fresh": true,
+                "id": "finalDivision",
+                "at": "total"
+              },
+              {
+                "do": "write",
+                "tex": "\\cb{8}\\times\\square=\\ca{56}",
+                "fresh": true,
+                "id": "finalUnknown",
+                "at": "need"
+              },
+              {
+                "do": "highlight",
+                "target": "each",
+                "at": "each"
+              }
+            ]
+          },
+          {
+            "say": "I know eight times five is forty. That gives five dots to each row.",
+            "pause": 0.7,
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "write",
+                "tex": "\\cb{8}\\times\\cv{5}=\\ca{40}",
+                "fresh": true,
+                "id": "finalKnown",
+                "at": "eight"
+              },
+              {
+                "do": "move",
+                "points": {
+                  "CL": [
+                    5,
+                    8.15
+                  ],
+                  "CA": [
+                    5,
+                    -0.15
+                  ]
+                },
+                "at": "five",
+                "dur": 1.3
+              },
+              {
+                "do": "hide",
+                "target": "each",
+                "at": "five"
+              },
+              {
+                "do": "show",
+                "target": [
+                  "each5",
+                  "count5"
+                ],
+                "at": "five"
+              }
+            ]
+          },
+          {
+            "say": "One more in every row adds eight dots: forty-eight.",
+            "pause": 0.7,
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "move",
+                "points": {
+                  "CL": [
+                    6,
+                    8.15
+                  ],
+                  "CA": [
+                    6,
+                    -0.15
+                  ]
+                },
+                "at": "more"
+              },
+              {
+                "do": "hide",
+                "target": [
+                  "each5",
+                  "count5"
+                ],
+                "at": "more"
+              },
+              {
+                "do": "show",
+                "target": [
+                  "each6",
+                  "count6"
+                ],
+                "at": "more"
+              },
+              {
+                "do": "write",
+                "tex": "\\ca{40}+\\cb{8}=\\ca{48}",
+                "fresh": true,
+                "id": "finalSix",
+                "at": "adds"
+              }
+            ]
+          },
+          {
+            "say": "Another eight makes fifty-six. That is seven in each row, with no dots left over.",
+            "pause": 0.8,
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "hide",
+                "target": "cover",
+                "at": "Another"
+              },
+              {
+                "do": "hide",
+                "target": [
+                  "each6",
+                  "count6"
+                ],
+                "at": "Another"
+              },
+              {
+                "do": "show",
+                "target": [
+                  "each7",
+                  "count7"
+                ],
+                "at": "Another"
+              },
+              {
+                "do": "write",
+                "tex": "\\ca{48}+\\cb{8}=\\ca{56}",
+                "fresh": true,
+                "id": "finalSeven",
+                "at": "makes"
+              },
+              {
+                "do": "show",
+                "target": "rowBand",
+                "at": "seven"
+              }
+            ]
+          },
+          {
+            "say": "How can you check the whole array at once?",
+            "pause": 0.7,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "highlight",
+                "target": "d",
+                "at": "whole"
+              }
+            ]
+          },
+          {
+            "say": "Eight times seven is fifty-six, so fifty-six divided by eight is seven.",
+            "pause": 1,
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "write",
+                "tex": "\\cb{8}\\times\\cv{7}=\\ca{56}",
+                "fresh": true,
+                "id": "finalCheck",
+                "at": "Eight"
+              },
+              {
+                "do": "answer",
+                "tex": "\\ca{56}\\div\\cb{8}=\\cv{7}",
+                "id": "finalAnswer",
+                "at": "so"
+              },
+              {
+                "do": "highlight",
+                "target": "total",
+                "at": "fifty-six"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "beats": [
+          {
+            "say": "Explain how division and multiplication fit together.",
+            "pause": 0.5,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "overview",
+                "of": "finalUnknown",
+                "at": "Explain"
+              }
+            ]
+          },
+          {
+            "say": "I start with the total and one side of the array.",
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "recap",
+                "text": "Find the total and the side you know.",
+                "marks": [
+                  "finalProblem",
+                  "finalDivision"
+                ],
+                "at": "start"
+              }
+            ]
+          },
+          {
+            "say": "Division asks for the missing side. I find the factor that makes the total.",
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "recap",
+                "text": "Find the missing factor.",
+                "marks": [
+                  "finalUnknown",
+                  "finalKnown",
+                  "finalSeven"
+                ],
+                "at": "Division"
+              }
+            ]
+          },
+          {
+            "say": "I multiply the two sides to check that they make the whole total.",
+            "pause": 1,
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "recap",
+                "text": "Multiply back to check the total.",
+                "marks": [
+                  "finalCheck",
+                  "finalAnswer"
+                ],
+                "at": "multiply"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "id": "divide-facts--pf",
+  "problemType": "divide-facts",
+  "standards": [
+    {
+      "standardId": "3.OA.B.6",
+      "facet": "Use related multiplication facts to find quotients",
+      "basis": "editorial"
+    },
+    {
+      "standardId": "3.OA.C.7",
+      "facet": "Use related multiplication facts to find quotients",
+      "basis": "editorial"
+    },
+    {
+      "standardId": "3.OA.A.2",
+      "facet": "Use related multiplication facts to find quotients",
+      "basis": "editorial"
+    },
+    {
+      "standardId": "3.OA.A.3",
+      "facet": "Use related multiplication facts to find quotients",
+      "basis": "editorial"
+    }
+  ],
+  "figure": {
+    "kind": "dot-array",
+    "show": "first-column",
+    "rows": 6,
+    "total": 30
+  },
+  "title": "Division finds the missing factor",
+  "strand": "operations",
+  "grade": "3",
+  "skillTitle": "Division facts",
+  "timing": {
+    "duration": 341.18,
+    "shots": [
+      [
+        {
+          "start": 0.5,
+          "end": 5.66,
+          "words": [
+            {
+              "text": "Twelve",
+              "start": 0.5,
+              "end": 0.8200000000000001
+            },
+            {
+              "text": "dots",
+              "start": 0.9,
+              "end": 1.22
+            },
+            {
+              "text": "are",
+              "start": 1.3,
+              "end": 1.38
+            },
+            {
+              "text": "shared",
+              "start": 1.46,
+              "end": 1.78
+            },
+            {
+              "text": "into",
+              "start": 1.94,
+              "end": 2.1
+            },
+            {
+              "text": "three",
+              "start": 2.1799999999999997,
+              "end": 2.5
+            },
+            {
+              "text": "equal",
+              "start": 2.58,
+              "end": 2.82
+            },
+            {
+              "text": "rows.",
+              "start": 2.98,
+              "end": 3.46
+            },
+            {
+              "text": "How",
+              "start": 3.82,
+              "end": 3.9
+            },
+            {
+              "text": "many",
+              "start": 3.98,
+              "end": 4.14
+            },
+            {
+              "text": "dots",
+              "start": 4.22,
+              "end": 4.46
+            },
+            {
+              "text": "belong",
+              "start": 4.54,
+              "end": 4.86
+            },
+            {
+              "text": "in",
+              "start": 4.9399999999999995,
+              "end": 5.02
+            },
+            {
+              "text": "each",
+              "start": 5.1,
+              "end": 5.26
+            },
+            {
+              "text": "row?",
+              "start": 5.34,
+              "end": 5.66
+            }
+          ]
+        },
+        {
+          "start": 6.659999999999999,
+          "end": 10.23,
+          "words": [
+            {
+              "text": "A",
+              "start": 6.659999999999999,
+              "end": 6.740000000000001
+            },
+            {
+              "text": "row",
+              "start": 6.819999999999999,
+              "end": 7.14
+            },
+            {
+              "text": "runs",
+              "start": 7.2200000000000015,
+              "end": 7.46
+            },
+            {
+              "text": "across.",
+              "start": 7.54,
+              "end": 8.100000000000001
+            },
+            {
+              "text": "Put",
+              "start": 8.469999999999999,
+              "end": 8.629999999999999
+            },
+            {
+              "text": "four",
+              "start": 8.79,
+              "end": 8.95
+            },
+            {
+              "text": "dots",
+              "start": 9.030000000000001,
+              "end": 9.350000000000001
+            },
+            {
+              "text": "in",
+              "start": 9.43,
+              "end": 9.510000000000002
+            },
+            {
+              "text": "the",
+              "start": 9.55,
+              "end": 9.59
+            },
+            {
+              "text": "first",
+              "start": 9.670000000000002,
+              "end": 9.91
+            },
+            {
+              "text": "row.",
+              "start": 9.989999999999998,
+              "end": 10.23
+            }
+          ]
+        },
+        {
+          "start": 10.620011337868482,
+          "end": 15.04001133786848,
+          "words": [
+            {
+              "text": "Equal",
+              "start": 10.620011337868482,
+              "end": 10.86001133786848
+            },
+            {
+              "text": "rows",
+              "start": 11.020011337868484,
+              "end": 11.340011337868484
+            },
+            {
+              "text": "have",
+              "start": 11.420011337868482,
+              "end": 11.50001133786848
+            },
+            {
+              "text": "the",
+              "start": 11.580011337868482,
+              "end": 11.660011337868484
+            },
+            {
+              "text": "same",
+              "start": 11.740011337868482,
+              "end": 11.980011337868481
+            },
+            {
+              "text": "number",
+              "start": 12.060011337868483,
+              "end": 12.300011337868481
+            },
+            {
+              "text": "of",
+              "start": 12.340011337868484,
+              "end": 12.380011337868483
+            },
+            {
+              "text": "dots.",
+              "start": 12.460011337868481,
+              "end": 12.940011337868482
+            },
+            {
+              "text": "Four",
+              "start": 13.36001133786848,
+              "end": 13.600011337868482
+            },
+            {
+              "text": "here,",
+              "start": 13.68001133786848,
+              "end": 14.00001133786848
+            },
+            {
+              "text": "and",
+              "start": 14.32001133786848,
+              "end": 14.400011337868479
+            },
+            {
+              "text": "four",
+              "start": 14.480011337868481,
+              "end": 14.72001133786848
+            },
+            {
+              "text": "here.",
+              "start": 14.800011337868481,
+              "end": 15.04001133786848
+            }
+          ]
+        },
+        {
+          "start": 15.480000000000002,
+          "end": 20.730000000000004,
+          "words": [
+            {
+              "text": "Dots",
+              "start": 15.480000000000002,
+              "end": 15.799999999999999
+            },
+            {
+              "text": "lined",
+              "start": 15.920000000000003,
+              "end": 16.04
+            },
+            {
+              "text": "up",
+              "start": 16.119999999999997,
+              "end": 16.200000000000003
+            },
+            {
+              "text": "in",
+              "start": 16.28,
+              "end": 16.36
+            },
+            {
+              "text": "equal",
+              "start": 16.439999999999998,
+              "end": 16.759999999999998
+            },
+            {
+              "text": "rows",
+              "start": 16.840000000000003,
+              "end": 17.240000000000002
+            },
+            {
+              "text": "form",
+              "start": 17.4,
+              "end": 17.64
+            },
+            {
+              "text": "an",
+              "start": 17.72,
+              "end": 17.800000000000004
+            },
+            {
+              "text": "array.",
+              "start": 18.04,
+              "end": 18.28
+            },
+            {
+              "text": "The",
+              "start": 18.65,
+              "end": 18.730000000000004
+            },
+            {
+              "text": "total",
+              "start": 18.810000000000002,
+              "end": 19.21
+            },
+            {
+              "text": "is",
+              "start": 19.29,
+              "end": 19.53
+            },
+            {
+              "text": "all",
+              "start": 19.65,
+              "end": 19.769999999999996
+            },
+            {
+              "text": "the",
+              "start": 19.810000000000002,
+              "end": 19.85
+            },
+            {
+              "text": "dots",
+              "start": 19.93,
+              "end": 20.17
+            },
+            {
+              "text": "together.",
+              "start": 20.25,
+              "end": 20.730000000000004
+            }
+          ]
+        },
+        {
+          "start": 21.100011337868484,
+          "end": 28.380011337868485,
+          "words": [
+            {
+              "text": "Four",
+              "start": 21.100011337868484,
+              "end": 21.34001133786848
+            },
+            {
+              "text": "plus",
+              "start": 21.500011337868482,
+              "end": 21.660011337868486
+            },
+            {
+              "text": "four",
+              "start": 21.820011337868483,
+              "end": 22.060011337868477
+            },
+            {
+              "text": "plus",
+              "start": 22.22001133786848,
+              "end": 22.380011337868485
+            },
+            {
+              "text": "four",
+              "start": 22.460011337868483,
+              "end": 22.780011337868476
+            },
+            {
+              "text": "is",
+              "start": 23.020011337868485,
+              "end": 23.100011337868484
+            },
+            {
+              "text": "twelve.",
+              "start": 23.180011337868482,
+              "end": 23.660011337868486
+            },
+            {
+              "text": "Multiplication",
+              "start": 23.97001133786848,
+              "end": 24.850011337868484
+            },
+            {
+              "text": "counts",
+              "start": 25.01001133786848,
+              "end": 25.33001133786848
+            },
+            {
+              "text": "the",
+              "start": 25.410011337868486,
+              "end": 25.490011337868484
+            },
+            {
+              "text": "equal",
+              "start": 25.570011337868483,
+              "end": 25.810011337868477
+            },
+            {
+              "text": "rows:",
+              "start": 25.890011337868483,
+              "end": 26.37001133786848
+            },
+            {
+              "text": "three",
+              "start": 26.86001133786848,
+              "end": 27.020011337868485
+            },
+            {
+              "text": "times",
+              "start": 27.100011337868484,
+              "end": 27.34001133786848
+            },
+            {
+              "text": "four",
+              "start": 27.420011337868477,
+              "end": 27.660011337868486
+            },
+            {
+              "text": "is",
+              "start": 27.740011337868484,
+              "end": 27.820011337868483
+            },
+            {
+              "text": "twelve.",
+              "start": 27.98001133786848,
+              "end": 28.380011337868485
+            }
+          ]
+        },
+        {
+          "start": 29.9,
+          "end": 33.1,
+          "words": [
+            {
+              "text": "Three",
+              "start": 29.9,
+              "end": 30.06
+            },
+            {
+              "text": "counts",
+              "start": 30.139999999999997,
+              "end": 30.459999999999997
+            },
+            {
+              "text": "the",
+              "start": 30.5,
+              "end": 30.54
+            },
+            {
+              "text": "rows.",
+              "start": 30.619999999999997,
+              "end": 31.099999999999998
+            },
+            {
+              "text": "Four",
+              "start": 31.419999999999998,
+              "end": 31.58
+            },
+            {
+              "text": "counts",
+              "start": 31.659999999999997,
+              "end": 31.979999999999997
+            },
+            {
+              "text": "the",
+              "start": 32.059999999999995,
+              "end": 32.14
+            },
+            {
+              "text": "dots",
+              "start": 32.22,
+              "end": 32.54
+            },
+            {
+              "text": "in",
+              "start": 32.58,
+              "end": 32.62
+            },
+            {
+              "text": "each",
+              "start": 32.699999999999996,
+              "end": 32.78
+            },
+            {
+              "text": "row.",
+              "start": 32.86,
+              "end": 33.1
+            }
+          ]
+        },
+        {
+          "start": 33.6,
+          "end": 40.86,
+          "words": [
+            {
+              "text": "Division",
+              "start": 33.6,
+              "end": 34.08
+            },
+            {
+              "text": "finds",
+              "start": 34.24,
+              "end": 34.56
+            },
+            {
+              "text": "the",
+              "start": 34.64,
+              "end": 34.72
+            },
+            {
+              "text": "missing",
+              "start": 34.800000000000004,
+              "end": 35.120000000000005
+            },
+            {
+              "text": "row",
+              "start": 35.2,
+              "end": 35.36
+            },
+            {
+              "text": "size",
+              "start": 35.440000000000005,
+              "end": 35.84
+            },
+            {
+              "text": "from",
+              "start": 35.92,
+              "end": 36
+            },
+            {
+              "text": "the",
+              "start": 36.08,
+              "end": 36.160000000000004
+            },
+            {
+              "text": "total",
+              "start": 36.24,
+              "end": 36.72
+            },
+            {
+              "text": "and",
+              "start": 36.800000000000004,
+              "end": 36.88
+            },
+            {
+              "text": "the",
+              "start": 36.92,
+              "end": 36.96
+            },
+            {
+              "text": "number",
+              "start": 37.04,
+              "end": 37.28
+            },
+            {
+              "text": "of",
+              "start": 37.36,
+              "end": 37.44
+            },
+            {
+              "text": "equal",
+              "start": 37.52,
+              "end": 37.760000000000005
+            },
+            {
+              "text": "rows.",
+              "start": 37.84,
+              "end": 38.32
+            },
+            {
+              "text": "The",
+              "start": 38.7,
+              "end": 38.78
+            },
+            {
+              "text": "sign",
+              "start": 38.86,
+              "end": 39.18
+            },
+            {
+              "text": "means",
+              "start": 39.260000000000005,
+              "end": 39.660000000000004
+            },
+            {
+              "text": "divided",
+              "start": 39.78,
+              "end": 40.22
+            },
+            {
+              "text": "by.",
+              "start": 40.7,
+              "end": 40.86
+            }
+          ]
+        },
+        {
+          "start": 40.94,
+          "end": 46.980000000000004,
+          "words": [
+            {
+              "text": "Twelve",
+              "start": 40.94,
+              "end": 41.34
+            },
+            {
+              "text": "divided",
+              "start": 41.42,
+              "end": 41.82
+            },
+            {
+              "text": "by",
+              "start": 41.94,
+              "end": 42.06
+            },
+            {
+              "text": "three",
+              "start": 42.14,
+              "end": 42.620000000000005
+            },
+            {
+              "text": "is",
+              "start": 42.7,
+              "end": 42.86
+            },
+            {
+              "text": "four.",
+              "start": 42.94,
+              "end": 43.540000000000006
+            },
+            {
+              "text": "Three",
+              "start": 43.620000000000005,
+              "end": 43.86
+            },
+            {
+              "text": "rows",
+              "start": 43.94,
+              "end": 44.18
+            },
+            {
+              "text": "of",
+              "start": 44.260000000000005,
+              "end": 44.34
+            },
+            {
+              "text": "four",
+              "start": 44.42,
+              "end": 44.82
+            },
+            {
+              "text": "use",
+              "start": 44.980000000000004,
+              "end": 45.22
+            },
+            {
+              "text": "all",
+              "start": 45.300000000000004,
+              "end": 45.540000000000006
+            },
+            {
+              "text": "twelve",
+              "start": 45.620000000000005,
+              "end": 45.86
+            },
+            {
+              "text": "dots.",
+              "start": 45.94,
+              "end": 46.980000000000004
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "start": 48.23,
+          "end": 54.089999999999996,
+          "words": [
+            {
+              "text": "This",
+              "start": 48.23,
+              "end": 48.47
+            },
+            {
+              "text": "array",
+              "start": 48.669999999999995,
+              "end": 48.87
+            },
+            {
+              "text": "has",
+              "start": 48.949999999999996,
+              "end": 49.19
+            },
+            {
+              "text": "thirty",
+              "start": 49.269999999999996,
+              "end": 49.51
+            },
+            {
+              "text": "dots",
+              "start": 49.589999999999996,
+              "end": 49.989999999999995
+            },
+            {
+              "text": "in",
+              "start": 50.07,
+              "end": 50.309999999999995
+            },
+            {
+              "text": "six",
+              "start": 50.47,
+              "end": 50.629999999999995
+            },
+            {
+              "text": "equal",
+              "start": 50.709999999999994,
+              "end": 51.029999999999994
+            },
+            {
+              "text": "rows.",
+              "start": 51.11,
+              "end": 51.849999999999994
+            },
+            {
+              "text": "How",
+              "start": 51.93,
+              "end": 52.01
+            },
+            {
+              "text": "many",
+              "start": 52.129999999999995,
+              "end": 52.25
+            },
+            {
+              "text": "dots",
+              "start": 52.33,
+              "end": 52.56999999999999
+            },
+            {
+              "text": "are",
+              "start": 52.65,
+              "end": 52.73
+            },
+            {
+              "text": "in",
+              "start": 52.809999999999995,
+              "end": 52.89
+            },
+            {
+              "text": "each",
+              "start": 53.01,
+              "end": 53.129999999999995
+            },
+            {
+              "text": "row?",
+              "start": 53.209999999999994,
+              "end": 54.089999999999996
+            }
+          ]
+        },
+        {
+          "start": 55.522999999999996,
+          "end": 59.22999999999999,
+          "words": [
+            {
+              "text": "I",
+              "start": 55.522999999999996,
+              "end": 55.54999999999999
+            },
+            {
+              "text": "count",
+              "start": 55.709999999999994,
+              "end": 55.86999999999999
+            },
+            {
+              "text": "six",
+              "start": 56.029999999999994,
+              "end": 56.269999999999996
+            },
+            {
+              "text": "visible",
+              "start": 56.349999999999994,
+              "end": 56.669999999999995
+            },
+            {
+              "text": "dots.",
+              "start": 56.74999999999999,
+              "end": 57.14999999999999
+            },
+            {
+              "text": "My",
+              "start": 57.55,
+              "end": 57.709999999999994
+            },
+            {
+              "text": "guess",
+              "start": 57.82999999999999,
+              "end": 57.949999999999996
+            },
+            {
+              "text": "is",
+              "start": 58.029999999999994,
+              "end": 58.269999999999996
+            },
+            {
+              "text": "six",
+              "start": 58.349999999999994,
+              "end": 58.589999999999996
+            },
+            {
+              "text": "in",
+              "start": 58.669999999999995,
+              "end": 58.74999999999999
+            },
+            {
+              "text": "each",
+              "start": 58.82999999999999,
+              "end": 58.91
+            },
+            {
+              "text": "row.",
+              "start": 58.989999999999995,
+              "end": 59.22999999999999
+            }
+          ]
+        },
+        {
+          "start": 60.28999999999999,
+          "end": 65.03999999999999,
+          "words": [
+            {
+              "text": "Those",
+              "start": 60.28999999999999,
+              "end": 60.60999999999999
+            },
+            {
+              "text": "dots",
+              "start": 60.68999999999999,
+              "end": 60.92999999999999
+            },
+            {
+              "text": "run",
+              "start": 61.00999999999999,
+              "end": 61.24999999999999
+            },
+            {
+              "text": "down,",
+              "start": 61.32999999999999,
+              "end": 61.72999999999999
+            },
+            {
+              "text": "one",
+              "start": 62.129999999999995,
+              "end": 62.28999999999999
+            },
+            {
+              "text": "per",
+              "start": 62.36999999999999,
+              "end": 62.529999999999994
+            },
+            {
+              "text": "row.",
+              "start": 62.60999999999999,
+              "end": 62.92999999999999
+            },
+            {
+              "text": "Six",
+              "start": 63.36999999999999,
+              "end": 63.76999999999999
+            },
+            {
+              "text": "counts",
+              "start": 63.849999999999994,
+              "end": 64.08999999999999
+            },
+            {
+              "text": "the",
+              "start": 64.16999999999999,
+              "end": 64.24999999999999
+            },
+            {
+              "text": "rows.",
+              "start": 64.33,
+              "end": 65.03999999999999
+            }
+          ]
+        },
+        {
+          "start": 65.16,
+          "end": 69.67999999999999,
+          "words": [
+            {
+              "text": "We",
+              "start": 65.16,
+              "end": 65.19999999999999
+            },
+            {
+              "text": "need",
+              "start": 65.27999999999999,
+              "end": 65.44
+            },
+            {
+              "text": "the",
+              "start": 65.47999999999999,
+              "end": 65.52
+            },
+            {
+              "text": "number",
+              "start": 65.6,
+              "end": 65.83999999999999
+            },
+            {
+              "text": "across",
+              "start": 65.99999999999999,
+              "end": 66.47999999999999
+            },
+            {
+              "text": "each",
+              "start": 66.55999999999999,
+              "end": 66.72
+            },
+            {
+              "text": "row.",
+              "start": 66.8,
+              "end": 67.32
+            },
+            {
+              "text": "The",
+              "start": 67.39999999999999,
+              "end": 67.47999999999999
+            },
+            {
+              "text": "box",
+              "start": 67.55999999999999,
+              "end": 68.03999999999999
+            },
+            {
+              "text": "stands",
+              "start": 68.11999999999999,
+              "end": 68.35999999999999
+            },
+            {
+              "text": "for",
+              "start": 68.44,
+              "end": 68.52
+            },
+            {
+              "text": "that",
+              "start": 68.6,
+              "end": 68.67999999999999
+            },
+            {
+              "text": "missing",
+              "start": 68.75999999999999,
+              "end": 68.99999999999999
+            },
+            {
+              "text": "number.",
+              "start": 69.07999999999998,
+              "end": 69.67999999999999
+            }
+          ]
+        },
+        {
+          "start": 69.83999999999999,
+          "end": 74.8,
+          "words": [
+            {
+              "text": "Thirty",
+              "start": 69.83999999999999,
+              "end": 70.08
+            },
+            {
+              "text": "divided",
+              "start": 70.19999999999999,
+              "end": 70.47999999999999
+            },
+            {
+              "text": "by",
+              "start": 70.55999999999999,
+              "end": 70.8
+            },
+            {
+              "text": "six",
+              "start": 70.88,
+              "end": 71.19999999999999
+            },
+            {
+              "text": "asks:",
+              "start": 71.35999999999999,
+              "end": 72.08
+            },
+            {
+              "text": "six",
+              "start": 72.16,
+              "end": 72.39999999999999
+            },
+            {
+              "text": "rows",
+              "start": 72.47999999999999,
+              "end": 72.8
+            },
+            {
+              "text": "of",
+              "start": 72.88,
+              "end": 73.03999999999999
+            },
+            {
+              "text": "how",
+              "start": 73.16,
+              "end": 73.27999999999999
+            },
+            {
+              "text": "many",
+              "start": 73.35999999999999,
+              "end": 73.67999999999999
+            },
+            {
+              "text": "make",
+              "start": 73.8,
+              "end": 73.91999999999999
+            },
+            {
+              "text": "thirty?",
+              "start": 74,
+              "end": 74.8
+            }
+          ]
+        },
+        {
+          "start": 76.03299999999999,
+          "end": 78.8,
+          "words": [
+            {
+              "text": "I",
+              "start": 76.03299999999999,
+              "end": 76.05999999999999
+            },
+            {
+              "text": "cannot",
+              "start": 76.13999999999999,
+              "end": 76.46
+            },
+            {
+              "text": "see",
+              "start": 76.53999999999999,
+              "end": 76.61999999999999
+            },
+            {
+              "text": "across.",
+              "start": 76.74,
+              "end": 77.25999999999999
+            },
+            {
+              "text": "Can",
+              "start": 77.67999999999999,
+              "end": 77.75999999999999
+            },
+            {
+              "text": "we",
+              "start": 77.83999999999999,
+              "end": 77.91999999999999
+            },
+            {
+              "text": "count",
+              "start": 78.03999999999999,
+              "end": 78.16
+            },
+            {
+              "text": "by",
+              "start": 78.27999999999999,
+              "end": 78.39999999999999
+            },
+            {
+              "text": "six?",
+              "start": 78.47999999999999,
+              "end": 78.8
+            }
+          ]
+        },
+        {
+          "start": 79.77999999999999,
+          "end": 86.78999999999999,
+          "words": [
+            {
+              "text": "A",
+              "start": 79.77999999999999,
+              "end": 79.89999999999999
+            },
+            {
+              "text": "column",
+              "start": 80.01999999999998,
+              "end": 80.33999999999999
+            },
+            {
+              "text": "runs",
+              "start": 80.41999999999999,
+              "end": 80.65999999999998
+            },
+            {
+              "text": "down.",
+              "start": 80.73999999999998,
+              "end": 81.13999999999999
+            },
+            {
+              "text": "Each",
+              "start": 81.60999999999999,
+              "end": 81.76999999999998
+            },
+            {
+              "text": "new",
+              "start": 81.85,
+              "end": 82.00999999999999
+            },
+            {
+              "text": "column",
+              "start": 82.08999999999999,
+              "end": 82.48999999999998
+            },
+            {
+              "text": "gives",
+              "start": 82.57,
+              "end": 82.80999999999999
+            },
+            {
+              "text": "every",
+              "start": 82.88999999999999,
+              "end": 83.12999999999998
+            },
+            {
+              "text": "row",
+              "start": 83.21,
+              "end": 83.52999999999999
+            },
+            {
+              "text": "one",
+              "start": 83.60999999999999,
+              "end": 83.76999999999998
+            },
+            {
+              "text": "more",
+              "start": 83.85,
+              "end": 84.00999999999999
+            },
+            {
+              "text": "dot,",
+              "start": 84.08999999999999,
+              "end": 84.72999999999999
+            },
+            {
+              "text": "adding",
+              "start": 84.80999999999999,
+              "end": 85.12999999999998
+            },
+            {
+              "text": "six",
+              "start": 85.24999999999999,
+              "end": 85.36999999999999
+            },
+            {
+              "text": "dots",
+              "start": 85.44999999999999,
+              "end": 85.76999999999998
+            },
+            {
+              "text": "altogether.",
+              "start": 85.85,
+              "end": 86.78999999999999
+            }
+          ]
+        },
+        {
+          "start": 86.86999999999999,
+          "end": 89.29999999999998,
+          "words": [
+            {
+              "text": "One",
+              "start": 86.86999999999999,
+              "end": 87.02999999999999
+            },
+            {
+              "text": "in",
+              "start": 87.10999999999999,
+              "end": 87.18999999999998
+            },
+            {
+              "text": "each",
+              "start": 87.26999999999998,
+              "end": 87.42999999999999
+            },
+            {
+              "text": "row",
+              "start": 87.50999999999999,
+              "end": 87.82999999999998
+            },
+            {
+              "text": "uses",
+              "start": 87.90999999999998,
+              "end": 88.22999999999999
+            },
+            {
+              "text": "six",
+              "start": 88.30999999999999,
+              "end": 88.54999999999998
+            },
+            {
+              "text": "dots.",
+              "start": 88.99,
+              "end": 89.29999999999998
+            }
+          ]
+        },
+        {
+          "start": 89.87999999999997,
+          "end": 92.29999999999997,
+          "words": [
+            {
+              "text": "Two",
+              "start": 89.87999999999997,
+              "end": 90.03999999999998
+            },
+            {
+              "text": "in",
+              "start": 90.11999999999998,
+              "end": 90.19999999999997
+            },
+            {
+              "text": "each",
+              "start": 90.31999999999996,
+              "end": 90.43999999999997
+            },
+            {
+              "text": "row",
+              "start": 90.59999999999997,
+              "end": 90.75999999999998
+            },
+            {
+              "text": "uses",
+              "start": 90.91999999999997,
+              "end": 91.23999999999997
+            },
+            {
+              "text": "twelve",
+              "start": 91.31999999999996,
+              "end": 91.55999999999997
+            },
+            {
+              "text": "dots.",
+              "start": 91.63999999999997,
+              "end": 92.29999999999997
+            }
+          ]
+        },
+        {
+          "start": 92.97999999999996,
+          "end": 95.67999999999996,
+          "words": [
+            {
+              "text": "Three",
+              "start": 92.97999999999996,
+              "end": 93.21999999999997
+            },
+            {
+              "text": "in",
+              "start": 93.25999999999996,
+              "end": 93.29999999999997
+            },
+            {
+              "text": "each",
+              "start": 93.37999999999997,
+              "end": 93.53999999999996
+            },
+            {
+              "text": "row",
+              "start": 93.61999999999996,
+              "end": 93.85999999999997
+            },
+            {
+              "text": "uses",
+              "start": 94.01999999999997,
+              "end": 94.33999999999996
+            },
+            {
+              "text": "eighteen",
+              "start": 94.41999999999997,
+              "end": 94.81999999999996
+            },
+            {
+              "text": "dots.",
+              "start": 94.97999999999996,
+              "end": 95.67999999999996
+            }
+          ]
+        },
+        {
+          "start": 96.43999999999996,
+          "end": 98.96999999999996,
+          "words": [
+            {
+              "text": "Four",
+              "start": 96.43999999999996,
+              "end": 96.59999999999997
+            },
+            {
+              "text": "in",
+              "start": 96.67999999999996,
+              "end": 96.75999999999996
+            },
+            {
+              "text": "each",
+              "start": 96.87999999999995,
+              "end": 96.99999999999996
+            },
+            {
+              "text": "row",
+              "start": 97.15999999999995,
+              "end": 97.31999999999996
+            },
+            {
+              "text": "uses",
+              "start": 97.39999999999996,
+              "end": 97.71999999999996
+            },
+            {
+              "text": "twenty-four",
+              "start": 97.87999999999995,
+              "end": 98.27999999999996
+            },
+            {
+              "text": "dots.",
+              "start": 98.67999999999996,
+              "end": 98.96999999999996
+            }
+          ]
+        },
+        {
+          "start": 99.72999999999995,
+          "end": 104.31999999999995,
+          "words": [
+            {
+              "text": "Five",
+              "start": 99.72999999999995,
+              "end": 99.96999999999996
+            },
+            {
+              "text": "in",
+              "start": 100.04999999999995,
+              "end": 100.12999999999995
+            },
+            {
+              "text": "each",
+              "start": 100.24999999999996,
+              "end": 100.36999999999996
+            },
+            {
+              "text": "row",
+              "start": 100.52999999999996,
+              "end": 100.68999999999996
+            },
+            {
+              "text": "uses",
+              "start": 100.76999999999995,
+              "end": 101.16999999999996
+            },
+            {
+              "text": "thirty",
+              "start": 101.24999999999996,
+              "end": 101.48999999999995
+            },
+            {
+              "text": "dots.",
+              "start": 101.56999999999995,
+              "end": 102.23999999999995
+            },
+            {
+              "text": "All",
+              "start": 102.39999999999996,
+              "end": 102.55999999999996
+            },
+            {
+              "text": "the",
+              "start": 102.63999999999996,
+              "end": 102.71999999999996
+            },
+            {
+              "text": "dots",
+              "start": 102.83999999999996,
+              "end": 102.95999999999995
+            },
+            {
+              "text": "are",
+              "start": 103.03999999999995,
+              "end": 103.19999999999995
+            },
+            {
+              "text": "used.",
+              "start": 103.35999999999996,
+              "end": 104.31999999999995
+            }
+          ]
+        },
+        {
+          "start": 105.77999999999994,
+          "end": 109.64999999999995,
+          "words": [
+            {
+              "text": "Five",
+              "start": 105.77999999999994,
+              "end": 106.01999999999995
+            },
+            {
+              "text": "is",
+              "start": 106.09999999999995,
+              "end": 106.17999999999995
+            },
+            {
+              "text": "the",
+              "start": 106.21999999999994,
+              "end": 106.25999999999995
+            },
+            {
+              "text": "number",
+              "start": 106.33999999999995,
+              "end": 106.57999999999994
+            },
+            {
+              "text": "across",
+              "start": 106.65999999999995,
+              "end": 106.97999999999995
+            },
+            {
+              "text": "each",
+              "start": 107.05999999999995,
+              "end": 107.21999999999994
+            },
+            {
+              "text": "row.",
+              "start": 107.29999999999995,
+              "end": 107.61999999999995
+            },
+            {
+              "text": "Six",
+              "start": 108.04999999999995,
+              "end": 108.36999999999995
+            },
+            {
+              "text": "was",
+              "start": 108.44999999999995,
+              "end": 108.60999999999994
+            },
+            {
+              "text": "the",
+              "start": 108.68999999999994,
+              "end": 108.76999999999995
+            },
+            {
+              "text": "number",
+              "start": 108.92999999999995,
+              "end": 109.08999999999995
+            },
+            {
+              "text": "of",
+              "start": 109.16999999999994,
+              "end": 109.24999999999994
+            },
+            {
+              "text": "rows.",
+              "start": 109.44999999999995,
+              "end": 109.64999999999995
+            }
+          ]
+        },
+        {
+          "start": 110.30999999999995,
+          "end": 117.28999999999995,
+          "words": [
+            {
+              "text": "A",
+              "start": 110.30999999999995,
+              "end": 110.42999999999995
+            },
+            {
+              "text": "factor",
+              "start": 110.54999999999994,
+              "end": 111.02999999999994
+            },
+            {
+              "text": "is",
+              "start": 111.10999999999994,
+              "end": 111.18999999999994
+            },
+            {
+              "text": "a",
+              "start": 111.26999999999994,
+              "end": 111.34999999999995
+            },
+            {
+              "text": "number",
+              "start": 111.50999999999995,
+              "end": 111.66999999999994
+            },
+            {
+              "text": "we",
+              "start": 111.74999999999994,
+              "end": 111.82999999999994
+            },
+            {
+              "text": "multiply.",
+              "start": 112.42999999999995,
+              "end": 112.75999999999995
+            },
+            {
+              "text": "Six",
+              "start": 112.91999999999994,
+              "end": 113.07999999999994
+            },
+            {
+              "text": "times",
+              "start": 113.15999999999994,
+              "end": 113.47999999999995
+            },
+            {
+              "text": "five",
+              "start": 113.55999999999995,
+              "end": 113.87999999999994
+            },
+            {
+              "text": "makes",
+              "start": 113.95999999999995,
+              "end": 114.19999999999995
+            },
+            {
+              "text": "thirty,",
+              "start": 114.27999999999994,
+              "end": 114.91999999999994
+            },
+            {
+              "text": "so",
+              "start": 114.99999999999994,
+              "end": 115.39999999999995
+            },
+            {
+              "text": "five",
+              "start": 115.47999999999995,
+              "end": 115.87999999999994
+            },
+            {
+              "text": "is",
+              "start": 115.95999999999995,
+              "end": 116.03999999999995
+            },
+            {
+              "text": "the",
+              "start": 116.11999999999995,
+              "end": 116.19999999999995
+            },
+            {
+              "text": "missing",
+              "start": 116.35999999999994,
+              "end": 116.51999999999995
+            },
+            {
+              "text": "factor.",
+              "start": 116.59999999999994,
+              "end": 117.28999999999995
+            }
+          ]
+        },
+        {
+          "start": 117.36999999999995,
+          "end": 122.68999999999996,
+          "words": [
+            {
+              "text": "The",
+              "start": 117.36999999999995,
+              "end": 117.44999999999995
+            },
+            {
+              "text": "answer",
+              "start": 117.52999999999994,
+              "end": 117.84999999999995
+            },
+            {
+              "text": "to",
+              "start": 117.92999999999995,
+              "end": 118.00999999999995
+            },
+            {
+              "text": "a",
+              "start": 118.08999999999995,
+              "end": 118.12999999999995
+            },
+            {
+              "text": "division",
+              "start": 118.16999999999994,
+              "end": 118.72999999999995
+            },
+            {
+              "text": "is",
+              "start": 118.80999999999995,
+              "end": 118.88999999999994
+            },
+            {
+              "text": "called",
+              "start": 118.96999999999994,
+              "end": 119.12999999999995
+            },
+            {
+              "text": "the",
+              "start": 119.20999999999995,
+              "end": 119.28999999999995
+            },
+            {
+              "text": "quotient.",
+              "start": 119.36999999999995,
+              "end": 120.19999999999995
+            },
+            {
+              "text": "Here,",
+              "start": 120.27999999999994,
+              "end": 120.59999999999995
+            },
+            {
+              "text": "it",
+              "start": 120.67999999999995,
+              "end": 120.75999999999995
+            },
+            {
+              "text": "is",
+              "start": 120.87999999999995,
+              "end": 120.99999999999996
+            },
+            {
+              "text": "five",
+              "start": 121.07999999999994,
+              "end": 121.31999999999995
+            },
+            {
+              "text": "dots",
+              "start": 121.39999999999993,
+              "end": 121.63999999999994
+            },
+            {
+              "text": "in",
+              "start": 121.71999999999996,
+              "end": 121.79999999999994
+            },
+            {
+              "text": "each",
+              "start": 121.87999999999995,
+              "end": 122.03999999999995
+            },
+            {
+              "text": "row.",
+              "start": 122.11999999999993,
+              "end": 122.68999999999996
+            }
+          ]
+        },
+        {
+          "start": 123.56999999999994,
+          "end": 128.44999999999993,
+          "words": [
+            {
+              "text": "Check",
+              "start": 123.56999999999994,
+              "end": 123.72999999999993
+            },
+            {
+              "text": "by",
+              "start": 123.80999999999995,
+              "end": 123.88999999999993
+            },
+            {
+              "text": "multiplying:",
+              "start": 123.96999999999994,
+              "end": 124.92999999999995
+            },
+            {
+              "text": "six",
+              "start": 125.08999999999995,
+              "end": 125.32999999999993
+            },
+            {
+              "text": "rows",
+              "start": 125.40999999999994,
+              "end": 125.64999999999995
+            },
+            {
+              "text": "of",
+              "start": 125.72999999999993,
+              "end": 125.80999999999995
+            },
+            {
+              "text": "five",
+              "start": 125.88999999999993,
+              "end": 126.12999999999994
+            },
+            {
+              "text": "dots",
+              "start": 126.36999999999995,
+              "end": 126.60999999999993
+            },
+            {
+              "text": "make",
+              "start": 126.68999999999994,
+              "end": 126.92999999999995
+            },
+            {
+              "text": "thirty",
+              "start": 127.00999999999993,
+              "end": 127.24999999999994
+            },
+            {
+              "text": "dots",
+              "start": 127.32999999999993,
+              "end": 127.56999999999994
+            },
+            {
+              "text": "in",
+              "start": 127.64999999999995,
+              "end": 127.72999999999993
+            },
+            {
+              "text": "all.",
+              "start": 127.80999999999995,
+              "end": 128.44999999999993
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "start": 128.89999999999992,
+          "end": 135.0999999999999,
+          "words": [
+            {
+              "text": "A",
+              "start": 128.89999999999992,
+              "end": 129.05999999999992
+            },
+            {
+              "text": "teacher",
+              "start": 129.25999999999993,
+              "end": 129.45999999999992
+            },
+            {
+              "text": "sets",
+              "start": 129.57999999999993,
+              "end": 129.69999999999993
+            },
+            {
+              "text": "out",
+              "start": 129.77999999999992,
+              "end": 130.01999999999992
+            },
+            {
+              "text": "eighteen",
+              "start": 130.0999999999999,
+              "end": 130.57999999999993
+            },
+            {
+              "text": "chairs",
+              "start": 130.6599999999999,
+              "end": 131.13999999999993
+            },
+            {
+              "text": "in",
+              "start": 131.25999999999993,
+              "end": 131.3799999999999
+            },
+            {
+              "text": "three",
+              "start": 131.5399999999999,
+              "end": 131.69999999999993
+            },
+            {
+              "text": "equal",
+              "start": 131.77999999999992,
+              "end": 132.0999999999999
+            },
+            {
+              "text": "rows.",
+              "start": 132.17999999999992,
+              "end": 132.9099999999999
+            },
+            {
+              "text": "How",
+              "start": 132.98999999999992,
+              "end": 133.0699999999999
+            },
+            {
+              "text": "many",
+              "start": 133.14999999999992,
+              "end": 133.38999999999993
+            },
+            {
+              "text": "chairs",
+              "start": 133.4699999999999,
+              "end": 133.7899999999999
+            },
+            {
+              "text": "are",
+              "start": 133.86999999999992,
+              "end": 133.94999999999993
+            },
+            {
+              "text": "in",
+              "start": 134.02999999999992,
+              "end": 134.10999999999993
+            },
+            {
+              "text": "each",
+              "start": 134.1899999999999,
+              "end": 134.3499999999999
+            },
+            {
+              "text": "row?",
+              "start": 134.42999999999992,
+              "end": 135.0999999999999
+            }
+          ]
+        },
+        {
+          "start": 135.8799999999999,
+          "end": 142.0199999999999,
+          "words": [
+            {
+              "text": "One",
+              "start": 135.8799999999999,
+              "end": 136.0399999999999
+            },
+            {
+              "text": "dot",
+              "start": 136.11999999999992,
+              "end": 136.4399999999999
+            },
+            {
+              "text": "stands",
+              "start": 136.5199999999999,
+              "end": 136.83999999999992
+            },
+            {
+              "text": "for",
+              "start": 136.95999999999992,
+              "end": 137.0799999999999
+            },
+            {
+              "text": "one",
+              "start": 137.1599999999999,
+              "end": 137.3199999999999
+            },
+            {
+              "text": "chair.",
+              "start": 137.39999999999992,
+              "end": 138.0399999999999
+            },
+            {
+              "text": "Three",
+              "start": 138.11999999999992,
+              "end": 138.3599999999999
+            },
+            {
+              "text": "rows",
+              "start": 138.4399999999999,
+              "end": 138.67999999999992
+            },
+            {
+              "text": "are",
+              "start": 138.7599999999999,
+              "end": 138.83999999999992
+            },
+            {
+              "text": "given;",
+              "start": 139.1999999999999,
+              "end": 139.5399999999999
+            },
+            {
+              "text": "the",
+              "start": 139.6469999999999,
+              "end": 139.6999999999999
+            },
+            {
+              "text": "number",
+              "start": 139.8599999999999,
+              "end": 140.0199999999999
+            },
+            {
+              "text": "in",
+              "start": 140.0999999999999,
+              "end": 140.2599999999999
+            },
+            {
+              "text": "each",
+              "start": 140.33999999999992,
+              "end": 140.49999999999991
+            },
+            {
+              "text": "row",
+              "start": 140.5799999999999,
+              "end": 140.8199999999999
+            },
+            {
+              "text": "is",
+              "start": 140.89999999999992,
+              "end": 141.05999999999992
+            },
+            {
+              "text": "missing.",
+              "start": 141.5399999999999,
+              "end": 142.0199999999999
+            }
+          ]
+        },
+        {
+          "start": 142.67999999999992,
+          "end": 145.63999999999993,
+          "words": [
+            {
+              "text": "So",
+              "start": 142.67999999999992,
+              "end": 142.75999999999993
+            },
+            {
+              "text": "I",
+              "start": 142.91999999999993,
+              "end": 143.02699999999993
+            },
+            {
+              "text": "need",
+              "start": 143.13299999999992,
+              "end": 143.23999999999992
+            },
+            {
+              "text": "three",
+              "start": 143.39999999999992,
+              "end": 143.55999999999992
+            },
+            {
+              "text": "times",
+              "start": 143.75999999999993,
+              "end": 143.95999999999992
+            },
+            {
+              "text": "some",
+              "start": 144.03999999999994,
+              "end": 144.27999999999992
+            },
+            {
+              "text": "number",
+              "start": 144.47999999999993,
+              "end": 144.67999999999992
+            },
+            {
+              "text": "to",
+              "start": 144.75999999999993,
+              "end": 144.83999999999992
+            },
+            {
+              "text": "make",
+              "start": 144.95999999999992,
+              "end": 145.07999999999993
+            },
+            {
+              "text": "eighteen.",
+              "start": 145.19999999999993,
+              "end": 145.63999999999993
+            }
+          ]
+        },
+        {
+          "start": 146.61999999999992,
+          "end": 151.63999999999993,
+          "words": [
+            {
+              "text": "Three",
+              "start": 146.61999999999992,
+              "end": 146.85999999999993
+            },
+            {
+              "text": "times",
+              "start": 146.9399999999999,
+              "end": 147.2599999999999
+            },
+            {
+              "text": "six",
+              "start": 147.33999999999992,
+              "end": 147.73999999999992
+            },
+            {
+              "text": "is",
+              "start": 147.8199999999999,
+              "end": 147.97999999999993
+            },
+            {
+              "text": "eighteen.",
+              "start": 148.05999999999992,
+              "end": 148.69999999999993
+            },
+            {
+              "text": "See",
+              "start": 149.14999999999992,
+              "end": 149.38999999999993
+            },
+            {
+              "text": "six",
+              "start": 149.4699999999999,
+              "end": 149.70999999999992
+            },
+            {
+              "text": "chairs",
+              "start": 149.7899999999999,
+              "end": 150.10999999999993
+            },
+            {
+              "text": "across",
+              "start": 150.1899999999999,
+              "end": 150.58999999999992
+            },
+            {
+              "text": "every",
+              "start": 150.66999999999993,
+              "end": 150.9099999999999
+            },
+            {
+              "text": "row.",
+              "start": 150.98999999999992,
+              "end": 151.63999999999993
+            }
+          ]
+        },
+        {
+          "start": 152.29299999999992,
+          "end": 154.54999999999993,
+          "words": [
+            {
+              "text": "There",
+              "start": 152.29299999999992,
+              "end": 152.3199999999999
+            },
+            {
+              "text": "are",
+              "start": 152.39999999999992,
+              "end": 152.55999999999992
+            },
+            {
+              "text": "six",
+              "start": 152.6399999999999,
+              "end": 152.8799999999999
+            },
+            {
+              "text": "chairs",
+              "start": 152.95999999999992,
+              "end": 153.4399999999999
+            },
+            {
+              "text": "in",
+              "start": 153.55999999999992,
+              "end": 153.67999999999992
+            },
+            {
+              "text": "each",
+              "start": 153.7599999999999,
+              "end": 153.9199999999999
+            },
+            {
+              "text": "row.",
+              "start": 153.99999999999991,
+              "end": 154.54999999999993
+            }
+          ]
+        },
+        {
+          "start": 155.22999999999993,
+          "end": 160.84999999999994,
+          "words": [
+            {
+              "text": "Check",
+              "start": 155.22999999999993,
+              "end": 155.38999999999993
+            },
+            {
+              "text": "the",
+              "start": 155.46999999999994,
+              "end": 155.54999999999993
+            },
+            {
+              "text": "story:",
+              "start": 155.62999999999994,
+              "end": 156.28999999999994
+            },
+            {
+              "text": "three",
+              "start": 156.36999999999995,
+              "end": 156.68999999999994
+            },
+            {
+              "text": "equal",
+              "start": 156.76999999999992,
+              "end": 157.00999999999993
+            },
+            {
+              "text": "rows",
+              "start": 157.08999999999995,
+              "end": 157.40999999999994
+            },
+            {
+              "text": "of",
+              "start": 157.48999999999992,
+              "end": 157.64999999999995
+            },
+            {
+              "text": "six",
+              "start": 157.80999999999995,
+              "end": 157.96999999999994
+            },
+            {
+              "text": "chairs",
+              "start": 158.04999999999993,
+              "end": 158.52999999999994
+            },
+            {
+              "text": "use",
+              "start": 158.68999999999994,
+              "end": 158.92999999999995
+            },
+            {
+              "text": "all",
+              "start": 159.08999999999995,
+              "end": 159.32999999999993
+            },
+            {
+              "text": "eighteen",
+              "start": 159.40999999999994,
+              "end": 159.88999999999993
+            },
+            {
+              "text": "chairs.",
+              "start": 159.96999999999994,
+              "end": 160.84999999999994
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "start": 161.29999999999993,
+          "end": 163.45999999999992,
+          "words": [
+            {
+              "text": "What",
+              "start": 161.29999999999993,
+              "end": 161.45999999999992
+            },
+            {
+              "text": "is",
+              "start": 161.57999999999993,
+              "end": 161.69999999999993
+            },
+            {
+              "text": "eighteen",
+              "start": 161.77999999999992,
+              "end": 162.25999999999993
+            },
+            {
+              "text": "divided",
+              "start": 162.33999999999992,
+              "end": 162.73999999999992
+            },
+            {
+              "text": "by",
+              "start": 162.81999999999994,
+              "end": 162.97999999999993
+            },
+            {
+              "text": "nine?",
+              "start": 163.05999999999992,
+              "end": 163.45999999999992
+            }
+          ]
+        },
+        {
+          "start": 165.67999999999995,
+          "end": 168.36999999999995,
+          "words": [
+            {
+              "text": "There",
+              "start": 165.67999999999995,
+              "end": 165.83999999999995
+            },
+            {
+              "text": "is",
+              "start": 165.99999999999994,
+              "end": 166.15999999999994
+            },
+            {
+              "text": "no",
+              "start": 166.23999999999992,
+              "end": 166.31999999999994
+            },
+            {
+              "text": "story.",
+              "start": 166.39999999999995,
+              "end": 166.87999999999994
+            },
+            {
+              "text": "Which",
+              "start": 167.16999999999993,
+              "end": 167.32999999999993
+            },
+            {
+              "text": "number",
+              "start": 167.40999999999994,
+              "end": 167.64999999999995
+            },
+            {
+              "text": "is",
+              "start": 167.72999999999993,
+              "end": 167.80999999999995
+            },
+            {
+              "text": "the",
+              "start": 167.84999999999994,
+              "end": 167.88999999999993
+            },
+            {
+              "text": "total?",
+              "start": 167.96999999999994,
+              "end": 168.36999999999995
+            }
+          ]
+        },
+        {
+          "start": 169.02999999999994,
+          "end": 175.81999999999994,
+          "words": [
+            {
+              "text": "The",
+              "start": 169.02999999999994,
+              "end": 169.10999999999996
+            },
+            {
+              "text": "total",
+              "start": 169.18999999999994,
+              "end": 169.42999999999995
+            },
+            {
+              "text": "goes",
+              "start": 169.50999999999993,
+              "end": 169.74999999999994
+            },
+            {
+              "text": "first:",
+              "start": 169.82999999999996,
+              "end": 170.30999999999995
+            },
+            {
+              "text": "eighteen.",
+              "start": 170.69999999999993,
+              "end": 171.33999999999995
+            },
+            {
+              "text": "We",
+              "start": 171.69999999999993,
+              "end": 171.77999999999994
+            },
+            {
+              "text": "can",
+              "start": 171.85999999999996,
+              "end": 171.93999999999994
+            },
+            {
+              "text": "share",
+              "start": 172.01999999999995,
+              "end": 172.25999999999993
+            },
+            {
+              "text": "it",
+              "start": 172.33999999999995,
+              "end": 172.41999999999993
+            },
+            {
+              "text": "into",
+              "start": 172.49999999999994,
+              "end": 172.73999999999995
+            },
+            {
+              "text": "nine",
+              "start": 172.81999999999994,
+              "end": 173.13999999999993
+            },
+            {
+              "text": "equal",
+              "start": 173.21999999999994,
+              "end": 173.45999999999995
+            },
+            {
+              "text": "rows",
+              "start": 173.53999999999994,
+              "end": 174.09999999999994
+            },
+            {
+              "text": "and",
+              "start": 174.17999999999995,
+              "end": 174.25999999999993
+            },
+            {
+              "text": "find",
+              "start": 174.37999999999994,
+              "end": 174.49999999999994
+            },
+            {
+              "text": "how",
+              "start": 174.57999999999996,
+              "end": 174.73999999999995
+            },
+            {
+              "text": "many",
+              "start": 174.85999999999996,
+              "end": 174.97999999999993
+            },
+            {
+              "text": "in",
+              "start": 175.05999999999995,
+              "end": 175.13999999999993
+            },
+            {
+              "text": "each.",
+              "start": 175.21999999999994,
+              "end": 175.81999999999994
+            }
+          ]
+        },
+        {
+          "start": 175.97999999999993,
+          "end": 183.35999999999996,
+          "words": [
+            {
+              "text": "Nine",
+              "start": 175.97999999999993,
+              "end": 176.21999999999994
+            },
+            {
+              "text": "times",
+              "start": 176.29999999999995,
+              "end": 176.69999999999993
+            },
+            {
+              "text": "what",
+              "start": 176.77999999999994,
+              "end": 177.01999999999995
+            },
+            {
+              "text": "number",
+              "start": 177.09999999999994,
+              "end": 177.49999999999994
+            },
+            {
+              "text": "makes",
+              "start": 177.57999999999996,
+              "end": 177.81999999999994
+            },
+            {
+              "text": "eighteen?",
+              "start": 177.89999999999995,
+              "end": 178.81999999999994
+            },
+            {
+              "text": "One",
+              "start": 178.89999999999995,
+              "end": 179.05999999999995
+            },
+            {
+              "text": "column",
+              "start": 179.13999999999996,
+              "end": 179.45999999999995
+            },
+            {
+              "text": "uses",
+              "start": 179.61999999999995,
+              "end": 179.93999999999994
+            },
+            {
+              "text": "nine",
+              "start": 180.01999999999995,
+              "end": 180.25999999999993
+            },
+            {
+              "text": "dots.",
+              "start": 180.33999999999995,
+              "end": 181.10999999999996
+            },
+            {
+              "text": "A",
+              "start": 181.21699999999996,
+              "end": 181.26999999999995
+            },
+            {
+              "text": "second",
+              "start": 181.50999999999993,
+              "end": 181.74999999999994
+            },
+            {
+              "text": "uses",
+              "start": 181.82999999999996,
+              "end": 182.14999999999995
+            },
+            {
+              "text": "all",
+              "start": 182.22999999999993,
+              "end": 182.38999999999996
+            },
+            {
+              "text": "eighteen.",
+              "start": 182.46999999999994,
+              "end": 183.35999999999996
+            }
+          ]
+        },
+        {
+          "start": 184.23999999999998,
+          "end": 188.57999999999998,
+          "words": [
+            {
+              "text": "Two",
+              "start": 184.23999999999998,
+              "end": 184.39999999999998
+            },
+            {
+              "text": "dots",
+              "start": 184.55999999999997,
+              "end": 184.71999999999997
+            },
+            {
+              "text": "in",
+              "start": 184.79999999999998,
+              "end": 184.95999999999998
+            },
+            {
+              "text": "every",
+              "start": 185.04,
+              "end": 185.27999999999997
+            },
+            {
+              "text": "row.",
+              "start": 185.35999999999999,
+              "end": 185.95999999999998
+            },
+            {
+              "text": "Eighteen",
+              "start": 186.04,
+              "end": 186.44
+            },
+            {
+              "text": "divided",
+              "start": 186.51999999999998,
+              "end": 186.83999999999997
+            },
+            {
+              "text": "by",
+              "start": 186.92,
+              "end": 187.07999999999998
+            },
+            {
+              "text": "nine",
+              "start": 187.16,
+              "end": 187.64
+            },
+            {
+              "text": "is",
+              "start": 187.76,
+              "end": 187.88
+            },
+            {
+              "text": "two.",
+              "start": 188.32,
+              "end": 188.57999999999998
+            }
+          ]
+        },
+        {
+          "start": 189.25999999999996,
+          "end": 194.05999999999995,
+          "words": [
+            {
+              "text": "Nine",
+              "start": 189.25999999999996,
+              "end": 189.49999999999994
+            },
+            {
+              "text": "rows",
+              "start": 189.57999999999996,
+              "end": 189.73999999999995
+            },
+            {
+              "text": "of",
+              "start": 189.81999999999994,
+              "end": 189.97999999999996
+            },
+            {
+              "text": "two",
+              "start": 190.17999999999995,
+              "end": 190.37999999999994
+            },
+            {
+              "text": "make",
+              "start": 190.49999999999994,
+              "end": 190.61999999999995
+            },
+            {
+              "text": "eighteen,",
+              "start": 190.69999999999996,
+              "end": 191.49999999999994
+            },
+            {
+              "text": "so",
+              "start": 191.57999999999996,
+              "end": 191.65999999999994
+            },
+            {
+              "text": "the",
+              "start": 191.73999999999995,
+              "end": 191.81999999999994
+            },
+            {
+              "text": "multiplication",
+              "start": 191.93999999999994,
+              "end": 192.69999999999996
+            },
+            {
+              "text": "checks",
+              "start": 192.77999999999994,
+              "end": 193.01999999999995
+            },
+            {
+              "text": "the",
+              "start": 193.09999999999997,
+              "end": 193.17999999999995
+            },
+            {
+              "text": "division.",
+              "start": 193.61999999999995,
+              "end": 194.05999999999995
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "start": 194.50999999999993,
+          "end": 200.97999999999993,
+          "words": [
+            {
+              "text": "Six",
+              "start": 194.50999999999993,
+              "end": 194.82999999999993
+            },
+            {
+              "text": "times",
+              "start": 194.90999999999994,
+              "end": 195.22999999999993
+            },
+            {
+              "text": "nine",
+              "start": 195.30999999999995,
+              "end": 195.70999999999992
+            },
+            {
+              "text": "equals",
+              "start": 195.78999999999994,
+              "end": 196.10999999999993
+            },
+            {
+              "text": "fifty-four.",
+              "start": 196.18999999999994,
+              "end": 196.90999999999994
+            },
+            {
+              "text": "Use",
+              "start": 197.37999999999994,
+              "end": 197.53999999999994
+            },
+            {
+              "text": "this",
+              "start": 197.61999999999995,
+              "end": 197.77999999999994
+            },
+            {
+              "text": "fact",
+              "start": 197.85999999999993,
+              "end": 198.17999999999992
+            },
+            {
+              "text": "to",
+              "start": 198.25999999999993,
+              "end": 198.33999999999995
+            },
+            {
+              "text": "find",
+              "start": 198.49999999999994,
+              "end": 198.65999999999994
+            },
+            {
+              "text": "fifty-four",
+              "start": 198.73999999999992,
+              "end": 199.37999999999994
+            },
+            {
+              "text": "divided",
+              "start": 199.49999999999994,
+              "end": 199.85999999999993
+            },
+            {
+              "text": "by",
+              "start": 199.93999999999994,
+              "end": 200.09999999999994
+            },
+            {
+              "text": "nine.",
+              "start": 200.53999999999994,
+              "end": 200.97999999999993
+            }
+          ]
+        },
+        {
+          "start": 202.35999999999996,
+          "end": 206.23999999999995,
+          "words": [
+            {
+              "text": "We",
+              "start": 202.35999999999996,
+              "end": 202.43999999999994
+            },
+            {
+              "text": "were",
+              "start": 202.51999999999995,
+              "end": 202.59999999999994
+            },
+            {
+              "text": "dividing",
+              "start": 202.71999999999994,
+              "end": 203.07999999999996
+            },
+            {
+              "text": "by",
+              "start": 203.15999999999994,
+              "end": 203.23999999999995
+            },
+            {
+              "text": "the",
+              "start": 203.31999999999994,
+              "end": 203.39999999999995
+            },
+            {
+              "text": "row",
+              "start": 203.51999999999995,
+              "end": 203.63999999999996
+            },
+            {
+              "text": "count.",
+              "start": 203.95999999999995,
+              "end": 204.23999999999995
+            },
+            {
+              "text": "Is",
+              "start": 204.31999999999994,
+              "end": 204.47999999999993
+            },
+            {
+              "text": "nine",
+              "start": 204.55999999999995,
+              "end": 204.79999999999995
+            },
+            {
+              "text": "the",
+              "start": 204.83999999999995,
+              "end": 204.87999999999994
+            },
+            {
+              "text": "number",
+              "start": 204.95999999999995,
+              "end": 205.11999999999995
+            },
+            {
+              "text": "of",
+              "start": 205.19999999999993,
+              "end": 205.27999999999994
+            },
+            {
+              "text": "rows",
+              "start": 205.35999999999996,
+              "end": 205.59999999999994
+            },
+            {
+              "text": "here?",
+              "start": 205.91999999999993,
+              "end": 206.23999999999995
+            }
+          ]
+        },
+        {
+          "start": 206.73999999999995,
+          "end": 213.49999999999994,
+          "words": [
+            {
+              "text": "Here,",
+              "start": 206.73999999999995,
+              "end": 207.13999999999996
+            },
+            {
+              "text": "make",
+              "start": 207.53999999999996,
+              "end": 207.77999999999994
+            },
+            {
+              "text": "rows",
+              "start": 207.97999999999996,
+              "end": 208.17999999999995
+            },
+            {
+              "text": "with",
+              "start": 208.29999999999995,
+              "end": 208.41999999999996
+            },
+            {
+              "text": "nine",
+              "start": 208.53999999999996,
+              "end": 208.65999999999994
+            },
+            {
+              "text": "dots",
+              "start": 208.73999999999995,
+              "end": 209.05999999999995
+            },
+            {
+              "text": "in",
+              "start": 209.13999999999996,
+              "end": 209.21999999999994
+            },
+            {
+              "text": "each.",
+              "start": 209.29999999999995,
+              "end": 209.61999999999995
+            },
+            {
+              "text": "We",
+              "start": 210.05999999999995,
+              "end": 210.13999999999996
+            },
+            {
+              "text": "want",
+              "start": 210.29999999999995,
+              "end": 210.45999999999995
+            },
+            {
+              "text": "how",
+              "start": 210.57999999999996,
+              "end": 210.69999999999996
+            },
+            {
+              "text": "many",
+              "start": 210.81999999999996,
+              "end": 210.93999999999994
+            },
+            {
+              "text": "rows",
+              "start": 211.01999999999995,
+              "end": 211.41999999999996
+            },
+            {
+              "text": "use",
+              "start": 211.49999999999994,
+              "end": 211.73999999999995
+            },
+            {
+              "text": "all",
+              "start": 211.81999999999996,
+              "end": 212.05999999999995
+            },
+            {
+              "text": "fifty-four",
+              "start": 212.13999999999996,
+              "end": 212.69999999999996
+            },
+            {
+              "text": "dots.",
+              "start": 213.21999999999994,
+              "end": 213.49999999999994
+            }
+          ]
+        },
+        {
+          "start": 214.2530113378684,
+          "end": 220.3900113378684,
+          "words": [
+            {
+              "text": "The",
+              "start": 214.2530113378684,
+              "end": 214.28001133786842
+            },
+            {
+              "text": "given",
+              "start": 214.3600113378684,
+              "end": 214.6000113378684
+            },
+            {
+              "text": "fact",
+              "start": 214.68001133786842,
+              "end": 214.9200113378684
+            },
+            {
+              "text": "tells",
+              "start": 214.96001133786842,
+              "end": 215.1600113378684
+            },
+            {
+              "text": "us:",
+              "start": 215.24001133786842,
+              "end": 215.80001133786843
+            },
+            {
+              "text": "six",
+              "start": 215.8800113378684,
+              "end": 216.12001133786842
+            },
+            {
+              "text": "rows",
+              "start": 216.2000113378684,
+              "end": 216.4400113378684
+            },
+            {
+              "text": "of",
+              "start": 216.52001133786843,
+              "end": 216.6000113378684
+            },
+            {
+              "text": "nine",
+              "start": 216.68001133786842,
+              "end": 217.08001133786843
+            },
+            {
+              "text": "make",
+              "start": 217.2000113378684,
+              "end": 217.3200113378684
+            },
+            {
+              "text": "fifty-four.",
+              "start": 217.40001133786842,
+              "end": 218.3900113378684
+            },
+            {
+              "text": "These",
+              "start": 218.5500113378684,
+              "end": 218.7900113378684
+            },
+            {
+              "text": "are",
+              "start": 218.87001133786842,
+              "end": 218.9500113378684
+            },
+            {
+              "text": "those",
+              "start": 219.03001133786842,
+              "end": 219.1900113378684
+            },
+            {
+              "text": "six",
+              "start": 219.27001133786843,
+              "end": 219.5100113378684
+            },
+            {
+              "text": "rows.",
+              "start": 219.9500113378684,
+              "end": 220.3900113378684
+            }
+          ]
+        },
+        {
+          "start": 221.12999999999994,
+          "end": 227.24999999999994,
+          "words": [
+            {
+              "text": "Six",
+              "start": 221.12999999999994,
+              "end": 221.36999999999992
+            },
+            {
+              "text": "counts",
+              "start": 221.44999999999993,
+              "end": 221.68999999999994
+            },
+            {
+              "text": "the",
+              "start": 221.76999999999992,
+              "end": 221.80999999999992
+            },
+            {
+              "text": "rows.",
+              "start": 221.84999999999994,
+              "end": 222.32999999999993
+            },
+            {
+              "text": "Nine",
+              "start": 222.72999999999993,
+              "end": 222.96999999999994
+            },
+            {
+              "text": "counts",
+              "start": 223.12999999999994,
+              "end": 223.36999999999992
+            },
+            {
+              "text": "the",
+              "start": 223.40999999999994,
+              "end": 223.44999999999993
+            },
+            {
+              "text": "dots",
+              "start": 223.60999999999993,
+              "end": 223.92999999999992
+            },
+            {
+              "text": "in",
+              "start": 223.96999999999994,
+              "end": 224.00999999999993
+            },
+            {
+              "text": "each",
+              "start": 224.08999999999992,
+              "end": 224.24999999999994
+            },
+            {
+              "text": "row.",
+              "start": 224.36999999999992,
+              "end": 224.48999999999992
+            },
+            {
+              "text": "This",
+              "start": 224.84999999999994,
+              "end": 225.00999999999993
+            },
+            {
+              "text": "time",
+              "start": 225.08999999999992,
+              "end": 225.32999999999993
+            },
+            {
+              "text": "the",
+              "start": 225.40999999999994,
+              "end": 225.56999999999994
+            },
+            {
+              "text": "missing",
+              "start": 225.72999999999993,
+              "end": 225.88999999999993
+            },
+            {
+              "text": "number",
+              "start": 225.96999999999994,
+              "end": 226.20999999999992
+            },
+            {
+              "text": "counts",
+              "start": 226.36999999999992,
+              "end": 226.68999999999994
+            },
+            {
+              "text": "rows.",
+              "start": 226.76999999999992,
+              "end": 227.24999999999994
+            }
+          ]
+        },
+        {
+          "start": 227.90999999999994,
+          "end": 233.74999999999994,
+          "words": [
+            {
+              "text": "A",
+              "start": 227.90999999999994,
+              "end": 227.98999999999995
+            },
+            {
+              "text": "letter",
+              "start": 228.06999999999994,
+              "end": 228.30999999999995
+            },
+            {
+              "text": "can",
+              "start": 228.38999999999993,
+              "end": 228.54999999999993
+            },
+            {
+              "text": "stand",
+              "start": 228.62999999999994,
+              "end": 228.86999999999995
+            },
+            {
+              "text": "for",
+              "start": 228.94999999999993,
+              "end": 229.02999999999994
+            },
+            {
+              "text": "a",
+              "start": 229.10999999999993,
+              "end": 229.14999999999995
+            },
+            {
+              "text": "missing",
+              "start": 229.18999999999994,
+              "end": 229.50999999999993
+            },
+            {
+              "text": "number",
+              "start": 229.58999999999995,
+              "end": 229.82999999999993
+            },
+            {
+              "text": "too.",
+              "start": 229.90999999999994,
+              "end": 230.22999999999993
+            },
+            {
+              "text": "Here,",
+              "start": 230.65999999999994,
+              "end": 230.89999999999995
+            },
+            {
+              "text": "x",
+              "start": 231.61999999999995,
+              "end": 231.77999999999994
+            },
+            {
+              "text": "stands",
+              "start": 231.85999999999993,
+              "end": 232.17999999999995
+            },
+            {
+              "text": "for",
+              "start": 232.21999999999994,
+              "end": 232.25999999999993
+            },
+            {
+              "text": "the",
+              "start": 232.33999999999995,
+              "end": 232.41999999999993
+            },
+            {
+              "text": "number",
+              "start": 232.57999999999993,
+              "end": 232.73999999999995
+            },
+            {
+              "text": "of",
+              "start": 232.81999999999994,
+              "end": 232.89999999999995
+            },
+            {
+              "text": "rows.",
+              "start": 232.97999999999993,
+              "end": 233.74999999999994
+            }
+          ]
+        },
+        {
+          "start": 233.82999999999993,
+          "end": 240.61999999999995,
+          "words": [
+            {
+              "text": "Solving",
+              "start": 233.82999999999993,
+              "end": 234.14999999999995
+            },
+            {
+              "text": "an",
+              "start": 234.18999999999994,
+              "end": 234.22999999999993
+            },
+            {
+              "text": "equation",
+              "start": 234.30999999999995,
+              "end": 234.86999999999995
+            },
+            {
+              "text": "means",
+              "start": 234.94999999999993,
+              "end": 235.18999999999994
+            },
+            {
+              "text": "finding",
+              "start": 235.26999999999995,
+              "end": 235.58999999999995
+            },
+            {
+              "text": "a",
+              "start": 235.66999999999993,
+              "end": 235.74999999999994
+            },
+            {
+              "text": "number",
+              "start": 235.90999999999994,
+              "end": 236.06999999999994
+            },
+            {
+              "text": "that",
+              "start": 236.14999999999995,
+              "end": 236.22999999999993
+            },
+            {
+              "text": "makes",
+              "start": 236.30999999999995,
+              "end": 236.62999999999994
+            },
+            {
+              "text": "both",
+              "start": 236.74999999999994,
+              "end": 236.86999999999995
+            },
+            {
+              "text": "sides",
+              "start": 236.94999999999993,
+              "end": 237.34999999999994
+            },
+            {
+              "text": "equal.",
+              "start": 237.42999999999995,
+              "end": 238.09999999999994
+            },
+            {
+              "text": "Six",
+              "start": 238.25999999999993,
+              "end": 238.65999999999994
+            },
+            {
+              "text": "makes",
+              "start": 238.81999999999994,
+              "end": 238.97999999999993
+            },
+            {
+              "text": "both",
+              "start": 239.09999999999994,
+              "end": 239.21999999999994
+            },
+            {
+              "text": "sides",
+              "start": 239.29999999999995,
+              "end": 239.61999999999995
+            },
+            {
+              "text": "fifty-four.",
+              "start": 239.69999999999993,
+              "end": 240.61999999999995
+            }
+          ]
+        },
+        {
+          "start": 241.29999999999993,
+          "end": 247.99999999999991,
+          "words": [
+            {
+              "text": "Fifty-four",
+              "start": 241.29999999999993,
+              "end": 241.93999999999994
+            },
+            {
+              "text": "divided",
+              "start": 242.05999999999995,
+              "end": 242.33999999999995
+            },
+            {
+              "text": "by",
+              "start": 242.41999999999993,
+              "end": 242.57999999999993
+            },
+            {
+              "text": "nine",
+              "start": 242.65999999999994,
+              "end": 243.13999999999993
+            },
+            {
+              "text": "is",
+              "start": 243.21999999999994,
+              "end": 243.37999999999994
+            },
+            {
+              "text": "six.",
+              "start": 243.89999999999995,
+              "end": 244.20999999999995
+            },
+            {
+              "text": "Six",
+              "start": 244.28999999999994,
+              "end": 244.52999999999994
+            },
+            {
+              "text": "rows",
+              "start": 244.60999999999993,
+              "end": 244.92999999999992
+            },
+            {
+              "text": "hold",
+              "start": 245.00999999999996,
+              "end": 245.32999999999996
+            },
+            {
+              "text": "all",
+              "start": 245.40999999999994,
+              "end": 245.48999999999992
+            },
+            {
+              "text": "the",
+              "start": 245.56999999999996,
+              "end": 245.64999999999995
+            },
+            {
+              "text": "dots",
+              "start": 245.72999999999993,
+              "end": 246.04999999999993
+            },
+            {
+              "text": "when",
+              "start": 246.1299999999999,
+              "end": 246.28999999999994
+            },
+            {
+              "text": "each",
+              "start": 246.36999999999992,
+              "end": 246.60999999999993
+            },
+            {
+              "text": "row",
+              "start": 246.72999999999993,
+              "end": 246.84999999999994
+            },
+            {
+              "text": "holds",
+              "start": 246.92999999999992,
+              "end": 247.24999999999991
+            },
+            {
+              "text": "nine.",
+              "start": 247.72999999999993,
+              "end": 247.99999999999991
+            }
+          ]
+        },
+        {
+          "start": 248.7800113378684,
+          "end": 253.04001133786838,
+          "words": [
+            {
+              "text": "Check:",
+              "start": 248.7800113378684,
+              "end": 249.4500113378684
+            },
+            {
+              "text": "six",
+              "start": 249.5300113378684,
+              "end": 249.7700113378684
+            },
+            {
+              "text": "rows",
+              "start": 249.85001133786838,
+              "end": 250.0900113378684
+            },
+            {
+              "text": "of",
+              "start": 250.17001133786837,
+              "end": 250.3300113378684
+            },
+            {
+              "text": "nine",
+              "start": 250.4500113378684,
+              "end": 250.5700113378684
+            },
+            {
+              "text": "dots",
+              "start": 250.6500113378684,
+              "end": 251.05001133786837
+            },
+            {
+              "text": "make",
+              "start": 251.1300113378684,
+              "end": 251.37001133786842
+            },
+            {
+              "text": "fifty-four",
+              "start": 251.4500113378684,
+              "end": 251.93001133786842
+            },
+            {
+              "text": "dots",
+              "start": 252.0100113378684,
+              "end": 252.25001133786841
+            },
+            {
+              "text": "in",
+              "start": 252.3300113378684,
+              "end": 252.41001133786838
+            },
+            {
+              "text": "all.",
+              "start": 252.49001133786842,
+              "end": 253.04001133786838
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "start": 253.4899999999999,
+          "end": 258.5699999999999,
+          "words": [
+            {
+              "text": "Nine",
+              "start": 253.4899999999999,
+              "end": 253.8099999999999
+            },
+            {
+              "text": "dots",
+              "start": 253.8899999999999,
+              "end": 254.2099999999999
+            },
+            {
+              "text": "go",
+              "start": 254.2899999999999,
+              "end": 254.3699999999999
+            },
+            {
+              "text": "into",
+              "start": 254.4499999999999,
+              "end": 254.7699999999999
+            },
+            {
+              "text": "three",
+              "start": 254.96999999999989,
+              "end": 255.1699999999999
+            },
+            {
+              "text": "equal",
+              "start": 255.2499999999999,
+              "end": 255.4899999999999
+            },
+            {
+              "text": "rows.",
+              "start": 255.5699999999999,
+              "end": 256.4099999999999
+            },
+            {
+              "text": "How",
+              "start": 256.5169999999999,
+              "end": 256.5699999999999
+            },
+            {
+              "text": "many",
+              "start": 256.6899999999999,
+              "end": 256.8099999999999
+            },
+            {
+              "text": "dots",
+              "start": 256.8899999999999,
+              "end": 257.1299999999999
+            },
+            {
+              "text": "are",
+              "start": 257.2099999999999,
+              "end": 257.2899999999999
+            },
+            {
+              "text": "in",
+              "start": 257.3699999999999,
+              "end": 257.4499999999999
+            },
+            {
+              "text": "each",
+              "start": 257.5699999999999,
+              "end": 257.6899999999999
+            },
+            {
+              "text": "row?",
+              "start": 257.76999999999987,
+              "end": 258.5699999999999
+            }
+          ]
+        },
+        {
+          "start": 260.0029999999999,
+          "end": 262.0299999999999,
+          "words": [
+            {
+              "text": "Could",
+              "start": 260.0029999999999,
+              "end": 260.0299999999999
+            },
+            {
+              "text": "the",
+              "start": 260.0699999999999,
+              "end": 260.1099999999999
+            },
+            {
+              "text": "missing",
+              "start": 260.1899999999999,
+              "end": 260.4299999999999
+            },
+            {
+              "text": "factor",
+              "start": 260.5899999999999,
+              "end": 260.9899999999999
+            },
+            {
+              "text": "also",
+              "start": 261.14999999999986,
+              "end": 261.4699999999999
+            },
+            {
+              "text": "be",
+              "start": 261.5499999999999,
+              "end": 261.6299999999999
+            },
+            {
+              "text": "three?",
+              "start": 261.70999999999987,
+              "end": 262.0299999999999
+            }
+          ]
+        },
+        {
+          "start": 263.1899999999999,
+          "end": 269.71999999999986,
+          "words": [
+            {
+              "text": "Test",
+              "start": 263.1899999999999,
+              "end": 263.5099999999999
+            },
+            {
+              "text": "it.",
+              "start": 263.6299999999999,
+              "end": 263.7499999999999
+            },
+            {
+              "text": "Three",
+              "start": 264.1799999999999,
+              "end": 264.2999999999999
+            },
+            {
+              "text": "in",
+              "start": 264.33999999999986,
+              "end": 264.3799999999999
+            },
+            {
+              "text": "the",
+              "start": 264.45999999999987,
+              "end": 264.5399999999999
+            },
+            {
+              "text": "first",
+              "start": 264.6999999999999,
+              "end": 264.8599999999999
+            },
+            {
+              "text": "row,",
+              "start": 265.01999999999987,
+              "end": 265.1799999999999
+            },
+            {
+              "text": "three",
+              "start": 265.6799999999999,
+              "end": 265.7999999999999
+            },
+            {
+              "text": "in",
+              "start": 265.83999999999986,
+              "end": 265.8799999999999
+            },
+            {
+              "text": "the",
+              "start": 265.95999999999987,
+              "end": 266.0399999999999
+            },
+            {
+              "text": "second,",
+              "start": 266.2399999999999,
+              "end": 266.4399999999999
+            },
+            {
+              "text": "and",
+              "start": 266.7999999999999,
+              "end": 266.9199999999999
+            },
+            {
+              "text": "three",
+              "start": 267.0399999999999,
+              "end": 267.1599999999999
+            },
+            {
+              "text": "in",
+              "start": 267.1999999999999,
+              "end": 267.2399999999999
+            },
+            {
+              "text": "the",
+              "start": 267.3199999999999,
+              "end": 267.39999999999986
+            },
+            {
+              "text": "third",
+              "start": 267.4799999999999,
+              "end": 268.1199999999999
+            },
+            {
+              "text": "use",
+              "start": 268.1999999999999,
+              "end": 268.4399999999999
+            },
+            {
+              "text": "nine",
+              "start": 268.51999999999987,
+              "end": 268.83999999999986
+            },
+            {
+              "text": "dots.",
+              "start": 269.3599999999999,
+              "end": 269.71999999999986
+            }
+          ]
+        },
+        {
+          "start": 270.99999999999983,
+          "end": 274.6399999999999,
+          "words": [
+            {
+              "text": "Three",
+              "start": 270.99999999999983,
+              "end": 271.15999999999985
+            },
+            {
+              "text": "times",
+              "start": 271.23999999999984,
+              "end": 271.55999999999983
+            },
+            {
+              "text": "three",
+              "start": 271.67999999999984,
+              "end": 271.79999999999984
+            },
+            {
+              "text": "is",
+              "start": 271.91999999999985,
+              "end": 272.03999999999985
+            },
+            {
+              "text": "nine.",
+              "start": 272.23999999999984,
+              "end": 272.4399999999998
+            },
+            {
+              "text": "Nine",
+              "start": 272.79999999999984,
+              "end": 272.95999999999987
+            },
+            {
+              "text": "divided",
+              "start": 273.03999999999985,
+              "end": 273.4399999999998
+            },
+            {
+              "text": "by",
+              "start": 273.55999999999983,
+              "end": 273.67999999999984
+            },
+            {
+              "text": "three",
+              "start": 273.83999999999986,
+              "end": 273.99999999999983
+            },
+            {
+              "text": "is",
+              "start": 274.07999999999987,
+              "end": 274.23999999999984
+            },
+            {
+              "text": "three.",
+              "start": 274.3199999999998,
+              "end": 274.6399999999999
+            }
+          ]
+        },
+        {
+          "start": 275.89999999999986,
+          "end": 281.8899999999999,
+          "words": [
+            {
+              "text": "The",
+              "start": 275.89999999999986,
+              "end": 276.0599999999999
+            },
+            {
+              "text": "two",
+              "start": 276.17999999999984,
+              "end": 276.29999999999984
+            },
+            {
+              "text": "factors",
+              "start": 276.3799999999999,
+              "end": 276.77999999999986
+            },
+            {
+              "text": "can",
+              "start": 276.85999999999984,
+              "end": 276.9399999999999
+            },
+            {
+              "text": "have",
+              "start": 277.01999999999987,
+              "end": 277.17999999999984
+            },
+            {
+              "text": "the",
+              "start": 277.2599999999999,
+              "end": 277.33999999999986
+            },
+            {
+              "text": "same",
+              "start": 277.41999999999985,
+              "end": 277.65999999999985
+            },
+            {
+              "text": "value.",
+              "start": 277.73999999999984,
+              "end": 278.52999999999986
+            },
+            {
+              "text": "Three",
+              "start": 278.60999999999984,
+              "end": 278.84999999999985
+            },
+            {
+              "text": "rows",
+              "start": 278.92999999999984,
+              "end": 279.16999999999985
+            },
+            {
+              "text": "of",
+              "start": 279.2499999999999,
+              "end": 279.32999999999987
+            },
+            {
+              "text": "three",
+              "start": 279.40999999999985,
+              "end": 279.8899999999999
+            },
+            {
+              "text": "use",
+              "start": 279.96999999999986,
+              "end": 280.20999999999987
+            },
+            {
+              "text": "all",
+              "start": 280.28999999999985,
+              "end": 280.52999999999986
+            },
+            {
+              "text": "nine",
+              "start": 280.60999999999984,
+              "end": 280.84999999999985
+            },
+            {
+              "text": "dots.",
+              "start": 280.92999999999984,
+              "end": 281.8899999999999
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "start": 282.33999999999986,
+          "end": 288.22999999999985,
+          "words": [
+            {
+              "text": "What",
+              "start": 282.33999999999986,
+              "end": 282.4999999999999
+            },
+            {
+              "text": "is",
+              "start": 282.61999999999983,
+              "end": 282.73999999999984
+            },
+            {
+              "text": "fifty-six",
+              "start": 282.8199999999999,
+              "end": 283.53999999999985
+            },
+            {
+              "text": "divided",
+              "start": 283.61999999999983,
+              "end": 284.01999999999987
+            },
+            {
+              "text": "by",
+              "start": 284.1399999999999,
+              "end": 284.2599999999999
+            },
+            {
+              "text": "eight?",
+              "start": 284.33999999999986,
+              "end": 284.57999999999987
+            },
+            {
+              "text": "Champ,",
+              "start": 285.03999999999985,
+              "end": 285.35999999999984
+            },
+            {
+              "text": "use",
+              "start": 285.7499999999999,
+              "end": 285.90999999999985
+            },
+            {
+              "text": "the",
+              "start": 285.98999999999984,
+              "end": 286.0699999999999
+            },
+            {
+              "text": "array",
+              "start": 286.26999999999987,
+              "end": 286.46999999999986
+            },
+            {
+              "text": "to",
+              "start": 286.54999999999984,
+              "end": 286.6299999999999
+            },
+            {
+              "text": "explain",
+              "start": 286.86999999999983,
+              "end": 287.10999999999984
+            },
+            {
+              "text": "your",
+              "start": 287.1899999999999,
+              "end": 287.26999999999987
+            },
+            {
+              "text": "answer.",
+              "start": 287.34999999999985,
+              "end": 288.22999999999985
+            }
+          ]
+        },
+        {
+          "start": 290.0099999999998,
+          "end": 295.08999999999986,
+          "words": [
+            {
+              "text": "Fifty-six",
+              "start": 290.0099999999998,
+              "end": 290.5699999999998
+            },
+            {
+              "text": "is",
+              "start": 290.64999999999986,
+              "end": 290.72999999999985
+            },
+            {
+              "text": "the",
+              "start": 290.80999999999983,
+              "end": 290.8899999999998
+            },
+            {
+              "text": "total.",
+              "start": 290.96999999999986,
+              "end": 291.28999999999985
+            },
+            {
+              "text": "Eight",
+              "start": 291.65999999999985,
+              "end": 291.89999999999986
+            },
+            {
+              "text": "is",
+              "start": 291.97999999999985,
+              "end": 292.05999999999983
+            },
+            {
+              "text": "the",
+              "start": 292.1399999999998,
+              "end": 292.21999999999986
+            },
+            {
+              "text": "number",
+              "start": 292.33999999999986,
+              "end": 292.4599999999998
+            },
+            {
+              "text": "of",
+              "start": 292.53999999999985,
+              "end": 292.61999999999983
+            },
+            {
+              "text": "rows.",
+              "start": 292.6999999999998,
+              "end": 293.09999999999985
+            },
+            {
+              "text": "I",
+              "start": 293.48999999999984,
+              "end": 293.5699999999998
+            },
+            {
+              "text": "need",
+              "start": 293.64999999999986,
+              "end": 293.72999999999985
+            },
+            {
+              "text": "the",
+              "start": 293.80999999999983,
+              "end": 293.8899999999998
+            },
+            {
+              "text": "number",
+              "start": 294.04999999999984,
+              "end": 294.2099999999998
+            },
+            {
+              "text": "in",
+              "start": 294.3299999999998,
+              "end": 294.4499999999998
+            },
+            {
+              "text": "each",
+              "start": 294.52999999999986,
+              "end": 294.6899999999998
+            },
+            {
+              "text": "row.",
+              "start": 294.7699999999998,
+              "end": 295.08999999999986
+            }
+          ]
+        },
+        {
+          "start": 295.40999999999985,
+          "end": 299.71999999999986,
+          "words": [
+            {
+              "text": "I",
+              "start": 295.40999999999985,
+              "end": 295.48999999999984
+            },
+            {
+              "text": "know",
+              "start": 295.60999999999984,
+              "end": 295.72999999999985
+            },
+            {
+              "text": "eight",
+              "start": 295.80999999999983,
+              "end": 295.8899999999998
+            },
+            {
+              "text": "times",
+              "start": 295.96999999999986,
+              "end": 296.2099999999998
+            },
+            {
+              "text": "five",
+              "start": 296.36999999999983,
+              "end": 296.60999999999984
+            },
+            {
+              "text": "is",
+              "start": 296.6899999999998,
+              "end": 296.84999999999985
+            },
+            {
+              "text": "forty.",
+              "start": 296.92999999999984,
+              "end": 297.48999999999984
+            },
+            {
+              "text": "That",
+              "start": 297.64999999999986,
+              "end": 297.72999999999985
+            },
+            {
+              "text": "gives",
+              "start": 297.7699999999998,
+              "end": 298.04999999999984
+            },
+            {
+              "text": "five",
+              "start": 298.1299999999998,
+              "end": 298.36999999999983
+            },
+            {
+              "text": "dots",
+              "start": 298.4499999999998,
+              "end": 298.6899999999998
+            },
+            {
+              "text": "to",
+              "start": 298.7699999999998,
+              "end": 298.92999999999984
+            },
+            {
+              "text": "each",
+              "start": 299.0099999999998,
+              "end": 299.08999999999986
+            },
+            {
+              "text": "row.",
+              "start": 299.24999999999983,
+              "end": 299.71999999999986
+            }
+          ]
+        },
+        {
+          "start": 300.61999999999983,
+          "end": 304.05999999999983,
+          "words": [
+            {
+              "text": "One",
+              "start": 300.61999999999983,
+              "end": 300.73999999999984
+            },
+            {
+              "text": "more",
+              "start": 300.85999999999984,
+              "end": 300.97999999999985
+            },
+            {
+              "text": "in",
+              "start": 301.05999999999983,
+              "end": 301.2199999999998
+            },
+            {
+              "text": "every",
+              "start": 301.29999999999984,
+              "end": 301.53999999999985
+            },
+            {
+              "text": "row",
+              "start": 301.61999999999983,
+              "end": 301.9399999999998
+            },
+            {
+              "text": "adds",
+              "start": 302.0199999999998,
+              "end": 302.3399999999998
+            },
+            {
+              "text": "eight",
+              "start": 302.4599999999998,
+              "end": 302.5799999999998
+            },
+            {
+              "text": "dots:",
+              "start": 302.7799999999998,
+              "end": 302.97999999999985
+            },
+            {
+              "text": "forty-eight.",
+              "start": 303.3799999999998,
+              "end": 304.05999999999983
+            }
+          ]
+        },
+        {
+          "start": 304.8399999999998,
+          "end": 310.49999999999983,
+          "words": [
+            {
+              "text": "Another",
+              "start": 304.8399999999998,
+              "end": 305.3199999999998
+            },
+            {
+              "text": "eight",
+              "start": 305.4399999999998,
+              "end": 305.55999999999983
+            },
+            {
+              "text": "makes",
+              "start": 305.6399999999998,
+              "end": 305.8799999999998
+            },
+            {
+              "text": "fifty-six.",
+              "start": 305.9599999999998,
+              "end": 306.9799999999998
+            },
+            {
+              "text": "That",
+              "start": 307.05999999999983,
+              "end": 307.1399999999998
+            },
+            {
+              "text": "is",
+              "start": 307.2199999999998,
+              "end": 307.3799999999998
+            },
+            {
+              "text": "seven",
+              "start": 307.4599999999998,
+              "end": 307.7799999999998
+            },
+            {
+              "text": "in",
+              "start": 307.8999999999998,
+              "end": 308.0199999999998
+            },
+            {
+              "text": "each",
+              "start": 308.1399999999998,
+              "end": 308.2599999999998
+            },
+            {
+              "text": "row,",
+              "start": 308.3399999999998,
+              "end": 308.6599999999998
+            },
+            {
+              "text": "with",
+              "start": 308.8199999999998,
+              "end": 308.8999999999998
+            },
+            {
+              "text": "no",
+              "start": 308.9799999999998,
+              "end": 309.1399999999998
+            },
+            {
+              "text": "dots",
+              "start": 309.2199999999998,
+              "end": 309.4599999999998
+            },
+            {
+              "text": "left",
+              "start": 309.5399999999998,
+              "end": 309.7799999999998
+            },
+            {
+              "text": "over.",
+              "start": 309.8599999999998,
+              "end": 310.49999999999983
+            }
+          ]
+        },
+        {
+          "start": 311.79999999999984,
+          "end": 314.1999999999998,
+          "words": [
+            {
+              "text": "How",
+              "start": 311.79999999999984,
+              "end": 311.95999999999987
+            },
+            {
+              "text": "can",
+              "start": 312.03999999999985,
+              "end": 312.1999999999998
+            },
+            {
+              "text": "you",
+              "start": 312.27999999999986,
+              "end": 312.35999999999984
+            },
+            {
+              "text": "check",
+              "start": 312.47999999999985,
+              "end": 312.59999999999985
+            },
+            {
+              "text": "the",
+              "start": 312.71999999999986,
+              "end": 312.83999999999986
+            },
+            {
+              "text": "whole",
+              "start": 312.99999999999983,
+              "end": 313.15999999999985
+            },
+            {
+              "text": "array",
+              "start": 313.35999999999984,
+              "end": 313.55999999999983
+            },
+            {
+              "text": "at",
+              "start": 313.6399999999998,
+              "end": 313.71999999999986
+            },
+            {
+              "text": "once?",
+              "start": 313.79999999999984,
+              "end": 314.1999999999998
+            }
+          ]
+        },
+        {
+          "start": 316.1599999999998,
+          "end": 320.7599999999998,
+          "words": [
+            {
+              "text": "Eight",
+              "start": 316.1599999999998,
+              "end": 316.1999999999998
+            },
+            {
+              "text": "times",
+              "start": 316.3599999999998,
+              "end": 316.5199999999998
+            },
+            {
+              "text": "seven",
+              "start": 316.5999999999998,
+              "end": 316.8399999999998
+            },
+            {
+              "text": "is",
+              "start": 316.9199999999998,
+              "end": 317.0799999999998
+            },
+            {
+              "text": "fifty-six,",
+              "start": 317.1599999999998,
+              "end": 317.8799999999998
+            },
+            {
+              "text": "so",
+              "start": 318.1999999999998,
+              "end": 318.3599999999998
+            },
+            {
+              "text": "fifty-six",
+              "start": 318.4399999999998,
+              "end": 318.99999999999983
+            },
+            {
+              "text": "divided",
+              "start": 319.0799999999998,
+              "end": 319.4799999999998
+            },
+            {
+              "text": "by",
+              "start": 319.55999999999983,
+              "end": 319.7199999999998
+            },
+            {
+              "text": "eight",
+              "start": 319.7999999999998,
+              "end": 320.11999999999983
+            },
+            {
+              "text": "is",
+              "start": 320.2399999999998,
+              "end": 320.3599999999998
+            },
+            {
+              "text": "seven.",
+              "start": 320.4399999999998,
+              "end": 320.7599999999998
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "start": 322.4499999999998,
+          "end": 325.6499999999998,
+          "words": [
+            {
+              "text": "Explain",
+              "start": 322.4499999999998,
+              "end": 322.92999999999984
+            },
+            {
+              "text": "how",
+              "start": 323.0099999999998,
+              "end": 323.16999999999985
+            },
+            {
+              "text": "division",
+              "start": 323.4499999999998,
+              "end": 323.7299999999998
+            },
+            {
+              "text": "and",
+              "start": 323.80999999999983,
+              "end": 323.8899999999998
+            },
+            {
+              "text": "multiplication",
+              "start": 323.9699999999998,
+              "end": 324.8499999999998
+            },
+            {
+              "text": "fit",
+              "start": 325.0099999999998,
+              "end": 325.16999999999985
+            },
+            {
+              "text": "together.",
+              "start": 325.24999999999983,
+              "end": 325.6499999999998
+            }
+          ]
+        },
+        {
+          "start": 327.04999999999984,
+          "end": 329.60999999999984,
+          "words": [
+            {
+              "text": "I",
+              "start": 327.04999999999984,
+              "end": 327.1299999999998
+            },
+            {
+              "text": "start",
+              "start": 327.24999999999983,
+              "end": 327.36999999999983
+            },
+            {
+              "text": "with",
+              "start": 327.4499999999998,
+              "end": 327.5299999999998
+            },
+            {
+              "text": "the",
+              "start": 327.60999999999984,
+              "end": 327.6899999999998
+            },
+            {
+              "text": "total",
+              "start": 327.8899999999998,
+              "end": 328.0899999999998
+            },
+            {
+              "text": "and",
+              "start": 328.1699999999998,
+              "end": 328.4099999999998
+            },
+            {
+              "text": "one",
+              "start": 328.48999999999984,
+              "end": 328.6499999999998
+            },
+            {
+              "text": "side",
+              "start": 328.7299999999998,
+              "end": 328.9699999999998
+            },
+            {
+              "text": "of",
+              "start": 329.04999999999984,
+              "end": 329.1299999999998
+            },
+            {
+              "text": "the",
+              "start": 329.1699999999998,
+              "end": 329.2099999999998
+            },
+            {
+              "text": "array.",
+              "start": 329.4099999999998,
+              "end": 329.60999999999984
+            }
+          ]
+        },
+        {
+          "start": 330.1299999999998,
+          "end": 334.3299999999998,
+          "words": [
+            {
+              "text": "Division",
+              "start": 330.1299999999998,
+              "end": 330.4099999999998
+            },
+            {
+              "text": "asks",
+              "start": 330.48999999999984,
+              "end": 330.80999999999983
+            },
+            {
+              "text": "for",
+              "start": 330.8899999999998,
+              "end": 330.9699999999998
+            },
+            {
+              "text": "the",
+              "start": 331.04999999999984,
+              "end": 331.1299999999998
+            },
+            {
+              "text": "missing",
+              "start": 331.3299999999998,
+              "end": 331.5299999999998
+            },
+            {
+              "text": "side.",
+              "start": 331.8899999999998,
+              "end": 332.0899999999998
+            },
+            {
+              "text": "I",
+              "start": 332.19699999999983,
+              "end": 332.24999999999983
+            },
+            {
+              "text": "find",
+              "start": 332.3299999999998,
+              "end": 332.48999999999984
+            },
+            {
+              "text": "the",
+              "start": 332.5699999999998,
+              "end": 332.6499999999998
+            },
+            {
+              "text": "factor",
+              "start": 332.8499999999998,
+              "end": 333.04999999999984
+            },
+            {
+              "text": "that",
+              "start": 333.1699999999998,
+              "end": 333.2899999999998
+            },
+            {
+              "text": "makes",
+              "start": 333.4099999999998,
+              "end": 333.5299999999998
+            },
+            {
+              "text": "the",
+              "start": 333.60999999999984,
+              "end": 333.6899999999998
+            },
+            {
+              "text": "total.",
+              "start": 334.1299999999998,
+              "end": 334.3299999999998
+            }
+          ]
+        },
+        {
+          "start": 334.4369920634919,
+          "end": 337.7699920634919,
+          "words": [
+            {
+              "text": "I",
+              "start": 334.4369920634919,
+              "end": 334.4899920634919
+            },
+            {
+              "text": "multiply",
+              "start": 334.72999206349186,
+              "end": 334.9699920634919
+            },
+            {
+              "text": "the",
+              "start": 335.0499920634919,
+              "end": 335.1299920634919
+            },
+            {
+              "text": "two",
+              "start": 335.2099920634919,
+              "end": 335.4499920634919
+            },
+            {
+              "text": "sides",
+              "start": 335.4899920634919,
+              "end": 335.84999206349187
+            },
+            {
+              "text": "to",
+              "start": 335.9699920634919,
+              "end": 336.0899920634919
+            },
+            {
+              "text": "check",
+              "start": 336.2099920634919,
+              "end": 336.3299920634919
+            },
+            {
+              "text": "that",
+              "start": 336.40999206349187,
+              "end": 336.4899920634919
+            },
+            {
+              "text": "they",
+              "start": 336.5699920634919,
+              "end": 336.72999206349186
+            },
+            {
+              "text": "make",
+              "start": 336.84999206349187,
+              "end": 336.9699920634919
+            },
+            {
+              "text": "the",
+              "start": 337.0499920634919,
+              "end": 337.1299920634919
+            },
+            {
+              "text": "whole",
+              "start": 337.2099920634919,
+              "end": 337.4499920634919
+            },
+            {
+              "text": "total.",
+              "start": 337.5299920634919,
+              "end": 337.7699920634919
+            }
+          ]
+        }
+      ]
+    ],
+    "voices": {
+      "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+      "learner": "SYXbTJsLE7zmSjr1DchT"
+    }
+  },
+  "skill": "division-facts"
+}
