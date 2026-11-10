@@ -266,8 +266,13 @@ export function subtractionUnknown(
     hint: startUnknown
       ? `In ${equation}, the box is the start, the number before the minus sign. ${P} left and ${R} stayed, so join those two parts. Do not subtract them.`
       : which === 0
-        ? `${W} is the whole bar in ${equation}. The box is the part that left, and ${R} stayed. Take ${R} away from ${W}.`
-        : `${W} is the whole bar in ${equation}. ${P} left. The box is what remains, so take ${P} away from ${W}.`,
+        ? // When what stayed equals the answer, quoting it would give the box away.
+          R === answer
+          ? `${W} is the whole bar. The box is the part that left, and the rest of the bar stayed. Take what stayed away from ${W}.`
+          : `${W} is the whole bar in ${equation}. The box is the part that left, and ${R} stayed. Take ${R} away from ${W}.`
+        : P === answer
+          ? `${W} is the whole bar. Part of it left, and the box is what remains. Take the part that left away from ${W}.`
+          : `${W} is the whole bar in ${equation}. ${P} left. The box is what remains, so take ${P} away from ${W}.`,
     explanation: startUnknown
       ? [
           `The number before the minus sign is the whole bar, the start. In ${equation} the start is the box: ${P} left it and ${R} remain.`,
