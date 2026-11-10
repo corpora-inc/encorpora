@@ -2,6 +2,7 @@
 from __future__ import annotations
 import argparse
 import json
+import os
 from pathlib import Path
 
 from providers import now
@@ -23,6 +24,11 @@ def money(value):
     return f'${value:.6f}'
 
 
+def recorded_api_cost(receipt):
+    cost = receipt.get('api_dollars')
+    return cost if cost is not None else receipt.get('partial_api_dollars') or 0
+
+
 def build_report(root, review_url, status='running'):
     root = Path(root)
     mapping = read(root/'arms.json', {'pathways': [], 'assignments': [], 'seed': 'not selected'})
@@ -32,7 +38,7 @@ def build_report(root, review_url, status='running'):
     # Job metadata and provider batch manifests are outside runs/.
     receipts = [(p, r) for p, r in receipts if 'role' in r and 'provider' in r]
     preflights = [read(p, {}) for p in root.glob('claude-*-preflight.json')]
-    known_api = sum(r.get('api_dollars') or 0 for _, r in receipts) + sum(r.get('total_cost_usd') or 0 for r in preflights)
+    known_api = sum(recorded_api_cost(r) for _, r in receipts) + sum(r.get('total_cost_usd') or 0 for r in preflights)
     unknown_api = sum(r.get('transport') in ('api-cli', 'messages-api', 'messages-batch-api') and r.get('api_dollars') is None for _, r in receipts)
     nominal_grok = sum(r.get('reported_dollars') or 0 for _, r in receipts if r.get('provider') == 'grok')
     unknown_grok = sum(r.get('provider') == 'grok' and r.get('reported_dollars') is None for _, r in receipts)
@@ -68,7 +74,7 @@ def build_report(root, review_url, status='running'):
         ss = [states[i] for i in ids]
         runs = [r for p, r in receipts if p.parent.name in ids and r['role'] in ('study', 'screenplay')]
         produced = sum(bool(s.get('checked')) for s in ss)
-        cost = sum(r.get('api_dollars') or 0 for r in runs)
+        cost = sum(recorded_api_cost(r) for r in runs)
         grok_cost = sum(r.get('reported_dollars') or 0 for r in runs if r.get('provider') == 'grok')
         seconds = sum(r.get('wall_seconds') or 0 for r in runs)
         production_seconds = sum(s.get('production_wall_seconds') or 0 for s in ss)
@@ -96,11 +102,11 @@ def build_report(root, review_url, status='running'):
             values = [provider, role, len(runs), sum(r.get('status')=='failed' for r in runs),
                       sum(bool(r.get('usage_complete')) for r in runs),
                       f'{sum(walls)/len(walls):.1f}' if walls else 'unavailable',
-                      money(sum(r.get('api_dollars') or 0 for r in runs)) if provider in ('fable', 'opus', 'sonnet') else 'n/a',
+                      money(sum(recorded_api_cost(r) for r in runs)) if provider in ('fable', 'opus', 'sonnet') else 'n/a',
                       money(sum(r.get('reported_dollars') or 0 for r in runs)) if provider=='grok' else 'n/a',
                       *token_sums]
             out.append('| '+' | '.join(map(cell, values))+' |')
-    out += ['', 'Token totals include only reported usage. An incomplete receipt makes the corresponding total a lower bound. Mean wall time uses only attempts with a measured duration; batch queue elapsed time is retained separately in each receipt. Artifact validation failures are recorded in the receipts even when the provider completed normally.', '',
+    out += ['', 'Token totals include only reported usage. An incomplete receipt makes the corresponding total a lower bound. Claude streaming receipts retain deduplicated request inputs and completed raw output-usage events after interruption; any calculated partial cost is a lower bound, and the attempt still counts as missing its total cost. Mean wall time uses only attempts with a measured duration; batch queue elapsed time is retained separately in each receipt. Artifact validation failures are recorded in the receipts even when the provider completed normally.', '',
             '## Failures and unvoiced films', '']
     failures = [(r, states[r['id']]) for r in rows if states[r['id']].get('status')=='failed']
     if failures:
@@ -174,7 +180,7 @@ def build_report(root, review_url, status='running'):
             '- `runs/`: per-attempt model, role, wall time, tokens, cached tokens, cost, raw responses and failures.',
             '- `calibration-source/` and `calibration-labels.json`: frozen exact live payloads, version checks and private founder labels.',
             '- `voice-ledger.jsonl` and `voice-quota.json`: narration requests and retries, exact voice IDs, transcription requests, quota checks and the 50,000-credit reserve. Uncertain charges retain their conservative reservation.',
-            '- API prices: https://platform.claude.com/docs/en/about-claude/pricing (checked 2026-11-10). CLI API costs use the provider-reported total. Messages API costs are calculated from returned usage and the published rate, not an invoice export.',
+            '- API prices: https://platform.claude.com/docs/en/about-claude/pricing (checked 2026-11-10). CLI API costs use the client-reported estimate; interrupted streams retain a partial usage-cost lower bound when available. Messages API costs are calculated from returned usage and the published rate. These are not invoice exports. [Claude Code usage accounting](https://code.claude.com/docs/en/agent-sdk/cost-tracking).',
             '- Storyboards and timing do not measure audible voice quality. The founder watches the voiced exports.', '']
     settings = read(root/'execution-settings.json')
     if settings:
@@ -183,7 +189,9 @@ def build_report(root, review_url, status='running'):
                 f'{settings["cli_review_timeout_seconds"]} seconds per CLI review attempt, and '
                 f'{settings["api_review_max_output_tokens"]} output tokens per API review. '
                 'Timeouts count as failed attempts; an unfinished CLI response may omit usage. These limits constrain the measured completion rate.', '']
-    (root/'RESULTS.md').write_text('\n'.join(out))
+    temporary = root/f'RESULTS.md.{os.getpid()}.tmp'
+    temporary.write_text('\n'.join(out))
+    temporary.replace(root/'RESULTS.md')
     return {'voiced': voiced, 'exported': exported, 'known_api_dollars': known_api,
             'unknown_api_attempts': unknown_api, 'unknown_grok_attempts': unknown_grok,
             'elevenlabs_characters': tts_characters, 'elevenlabs_credits': quota.get('confirmed_characters', 0)}

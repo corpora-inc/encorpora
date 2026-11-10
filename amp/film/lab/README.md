@@ -53,6 +53,8 @@ Teachers alternate the approved Madeline and Paul voice IDs; Champ uses the kit'
 
 The type-grouped `live/lab.html` page links blind exports into the existing grading player. It contains no assignment key. Existing grades, exports and JavaScript bundles are preserved. Export receipts verify the served JSON, audio length and index entry.
 
+The isolated voice runtime permits the kit's existing third take after repeated acoustic faults, such as a truncated ending. Repeated transcript mismatches retain the kit's early stop. This correction changes neither the three-take ceiling nor the audio gate; its source and instrumented hashes are recorded in each runtime manifest. Record any mid-experiment harness corrections with their affected cohorts when interpreting completion rates.
+
 ## Recovery and results
 
 Repeat the same phase with the same private configuration to resume. Completed artifacts and usage receipts are reused. A running process, changed prompt, changed assignment or changed review input blocks an unsafe resume. An ambiguous Batch API submission must be reconciled against the provider before resubmission. Do not delete receipts to force a retry.
@@ -62,7 +64,7 @@ python3 film/lab/lab.py --config /private/lab.json --phase reviews
 python3 film/lab/lab.py --config /private/lab.json --phase report
 ```
 
-`RESULTS.md` includes arm production/failure counts, measured cost and time, reviewer calibration with paired reasons, every new verdict, coverage gaps and documented kit/prompt findings. Anthropic API-key charges are distinct from CLI-reported costs, whose billing statements are not checked. Missing usage is unknown, not zero. Batch queue duration is not per-item execution time. Storyboards and timing do not assess audible voice quality.
+`RESULTS.md` includes arm production/failure counts, measured cost and time, reviewer calibration with paired reasons, every new verdict, coverage gaps and documented kit/prompt findings. API-key usage costs are distinct from account-CLI costs; both use reported usage or client estimates rather than billing statements. Claude streams preserve deduplicated request inputs and completed output-usage events after interruption. Their partial costs are lower bounds; missing usage is unknown, not zero. Batch queue duration is not per-item execution time. Storyboards and timing do not assess audible voice quality.
 
 Private evidence includes `runs/`, `films/`, `boards/`, `calibration-source/`, `calibration-labels.json`, `coverage-gaps.jsonl`, `voice-ledger.jsonl` and `voice-quota.json`. Never commit these, the assignment key, credentials, founder grades or unapproved screenplays. Preserve useful artifacts outside the worktree before cleaning ignored workspaces.
 

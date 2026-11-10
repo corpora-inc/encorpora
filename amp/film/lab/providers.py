@@ -109,6 +109,60 @@ def api_cost(provider, usage, batch=False):
     return cost * (.5 if batch else 1)
 
 
+def claude_output(stdout, provider):
+    """Prefer the final result; retain reported request usage after interruption.
+
+    Assistant events repeat per content block and their output count is a
+    placeholder. Deduplicate inputs by message ID; accept output counts only
+    from raw message_delta events or the final result.
+    https://code.claude.com/docs/en/agent-sdk/cost-tracking
+    """
+    results, messages = [], {}
+    current = None
+    malformed = 0
+    for line in stdout.splitlines():
+        try:
+            event = json.loads(line)
+        except ValueError:
+            malformed += bool(line.strip())
+            continue
+        if not isinstance(event, dict):
+            continue
+        if event.get('type') == 'result' or ('result' in event and 'usage' in event):
+            results.append(event)
+        if event.get('parent_tool_use_id'):
+            continue
+        raw = event.get('event', {}) if event.get('type') == 'stream_event' else {}
+        message = raw.get('message') if raw.get('type') == 'message_start' else event.get('message') if event.get('type') == 'assistant' else None
+        if message and message.get('id'):
+            identifier = message['id']
+            usage = messages.setdefault(identifier, {})
+            for key, value in (message.get('usage') or {}).items():
+                if key != 'output_tokens':
+                    usage[key] = value
+            if raw.get('type') == 'message_start':
+                current = identifier
+        elif raw.get('type') == 'message_delta' and current:
+            messages[current].update(raw.get('usage') or {})
+        elif raw.get('type') == 'message_stop':
+            current = None
+    final = results[-1] if results else None
+    # A crash can emit a zeroed final result despite earlier billable requests.
+    crashed_zero = final and final.get('subtype') == 'error_during_execution' and not final.get('total_cost_usd') and messages
+    if final and not crashed_zero:
+        return {**final, 'usage_partial': False, 'malformed_stream_lines': malformed}
+    usage = {}
+    for request in messages.values():
+        for key in ('input_tokens', 'output_tokens', 'cache_read_input_tokens', 'cache_creation_input_tokens'):
+            if isinstance(request.get(key), (int, float)):
+                usage[key] = usage.get(key, 0)+request[key]
+        for key, value in (request.get('cache_creation') or {}).items():
+            usage.setdefault('cache_creation', {})[key] = usage.get('cache_creation', {}).get(key, 0)+value
+    return {'result': '', 'usage': usage, 'is_error': True, 'usage_partial': True,
+            'reported_requests': len(messages), 'malformed_stream_lines': malformed,
+            'partial_api_dollars': sum(api_cost(provider, value) for value in messages.values()) if messages else None}
+
+
 def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
               check_command=None, images=(), timeout=1800):
     """One measured attempt. The caller owns retry limits and concurrency."""
@@ -144,7 +198,7 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
         env['ANTHROPIC_API_KEY'] = secrets['ANTHROPIC_API_KEY']
         command = ['claude', '-p', '--bare', '--restricted', '--strict-mcp-config',
                    '--mcp-config', '{"mcpServers":{}}', '--model', MODELS[provider],
-                   '--effort', 'xhigh', '--output-format', 'json',
+                   '--effort', 'xhigh', '--output-format', 'stream-json', '--verbose', '--include-partial-messages',
                    '--no-session-persistence', '--permission-mode', 'dontAsk',
                    '--disable-slash-commands', '--append-system-prompt', house]
         if role == 'screenplay':
@@ -204,16 +258,21 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
                         raw_usage[key] = raw_usage.get(key, 0)+value
             record['api_dollars'] = None  # This CLI reports tokens, not an API-key charge.
         else:
-            response = json.loads(stdout)
+            response = json.loads(stdout) if provider == 'grok' else claude_output(stdout, provider)
             result = response.get('text' if provider == 'grok' else 'result', '')
             raw_usage = response.get('usage', {})
             record['model_usage'] = response.get('modelUsage')
             record['reported_dollars'] = response.get('total_cost_usd')
             record['api_dollars'] = None if provider == 'grok' else response.get('total_cost_usd')
             record['provider_error'] = bool(response.get('is_error'))
+            if provider != 'grok':
+                record['usage_partial'] = response.get('usage_partial', False)
+                record['partial_api_dollars'] = response.get('partial_api_dollars')
+                record['reported_requests'] = response.get('reported_requests')
+                record['malformed_stream_lines'] = response.get('malformed_stream_lines', 0)
         record['raw_usage'] = raw_usage
         record['tokens'] = normalized_usage(provider, raw_usage)
-        record['usage_complete'] = bool(raw_usage) and not timed_out
+        record['usage_complete'] = bool(raw_usage) and not timed_out and not record.get('usage_partial')
     except (ValueError, KeyError, TypeError) as error:
         record['parse_error'] = type(error).__name__
         record['usage_complete'] = False

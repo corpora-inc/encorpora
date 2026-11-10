@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from providers import api_cost, credentials, normalized_usage, redact, submit_review_batch
+from providers import api_cost, claude_output, credentials, normalized_usage, redact, submit_review_batch
 from prompts import coverage_from_study, validate_review
 
 
@@ -29,6 +29,43 @@ class EvidenceTests(unittest.TestCase):
                  'cache_creation': {'ephemeral_5m_input_tokens': 200, 'ephemeral_1h_input_tokens': 100}}
         self.assertAlmostEqual(api_cost('fable', usage), .016)
         self.assertAlmostEqual(api_cost('fable', usage, batch=True), .008)
+
+    def test_interrupted_stream_deduplicates_inputs_and_ignores_placeholder_outputs(self):
+        message = {'id': 'request-one', 'usage': {'input_tokens': 20,
+                   'cache_read_input_tokens': 100, 'output_tokens': 1}}
+        events = [
+            {'type': 'stream_event', 'event': {'type': 'message_start', 'message': message}},
+            {'type': 'assistant', 'message': message},
+            {'type': 'assistant', 'message': message},
+            {'type': 'stream_event', 'event': {'type': 'message_delta', 'usage': {'output_tokens': 40}}},
+            {'type': 'stream_event', 'event': {'type': 'message_stop'}},
+            {'type': 'stream_event', 'event': {'type': 'message_start', 'message': {
+                'id': 'request-two', 'usage': {'input_tokens': 10, 'output_tokens': 1}}}},
+        ]
+        stream = '\n'.join(json.dumps(e) for e in events)+'\n{"type":'
+        result = claude_output(stream, 'fable')
+        self.assertTrue(result['usage_partial'])
+        self.assertTrue(result['is_error'])
+        self.assertEqual(result['reported_requests'], 2)
+        self.assertEqual(result['usage'], {'input_tokens': 30, 'output_tokens': 40, 'cache_read_input_tokens': 100})
+        self.assertAlmostEqual(result['partial_api_dollars'], .00186)
+        self.assertEqual(result['malformed_stream_lines'], 1)
+
+    def test_final_result_overrides_partial_stream_but_zeroed_crash_does_not(self):
+        event = {'type': 'assistant', 'message': {'id': 'request-one',
+                 'usage': {'input_tokens': 100, 'output_tokens': 1}}}
+        final = {'type': 'result', 'result': 'Finished.', 'usage': {'input_tokens': 100, 'output_tokens': 200},
+                 'total_cost_usd': .75, 'is_error': False}
+        stream = json.dumps(event)+'\n'+json.dumps(final)
+        result = claude_output(stream, 'sonnet')
+        self.assertFalse(result['usage_partial'])
+        self.assertEqual(result['usage']['output_tokens'], 200)
+        self.assertEqual(result['total_cost_usd'], .75)
+        final.update(subtype='error_during_execution', total_cost_usd=0, usage={})
+        partial = claude_output(json.dumps(event)+'\n'+json.dumps(final), 'sonnet')
+        self.assertTrue(partial['usage_partial'])
+        self.assertNotIn('output_tokens', partial['usage'])
+        self.assertAlmostEqual(partial['partial_api_dollars'], .0002)
 
     def test_ambiguous_batch_submission_is_not_retried(self):
         with tempfile.TemporaryDirectory() as directory:

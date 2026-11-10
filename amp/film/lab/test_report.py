@@ -14,7 +14,7 @@ class AccountingReportTests(unittest.TestCase):
             write_json(root/'runs/film/study-fable-1.json', {'provider': 'fable', 'role': 'study',
                        'transport': 'api-cli', 'status': 'succeeded', 'api_dollars': 1.25})
             write_json(root/'runs/film/study-fable-2.json', {'provider': 'fable', 'role': 'study',
-                       'transport': 'api-cli', 'status': 'failed', 'api_dollars': None})
+                       'transport': 'api-cli', 'status': 'failed', 'api_dollars': None, 'partial_api_dollars': .10})
             write_json(root/'runs/film/review-grok-1.json', {'provider': 'grok', 'role': 'review',
                        'transport': 'subscription-cli', 'status': 'succeeded', 'reported_dollars': 7.0, 'api_dollars': 0})
             write_json(root/'runs/film/review-grok-2.json', {'provider': 'grok', 'role': 'review',
@@ -28,7 +28,7 @@ class AccountingReportTests(unittest.TestCase):
             (root/'voice-ledger.jsonl').write_text('\n'.join(json.dumps(e) for e in events)+'\n')
             write_json(root/'claude-sonnet-preflight.json', {'total_cost_usd': .25})
             result = build_report(root, 'http://localhost/live/lab.html')
-            self.assertEqual(result['known_api_dollars'], 1.5)
+            self.assertEqual(result['known_api_dollars'], 1.6)
             self.assertEqual(result['unknown_api_attempts'], 1)
             self.assertEqual(result['unknown_grok_attempts'], 1)
             self.assertEqual(result['elevenlabs_characters'], 100)

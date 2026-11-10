@@ -1,9 +1,11 @@
 import json
 from pathlib import Path
+import shutil
+import subprocess
 import tempfile
 import unittest
 
-from runtime import prepare_workspace, validate_cast, verify_runtime
+from runtime import instrument_voice_retry, prepare_workspace, validate_cast, verify_runtime
 
 
 class RuntimeBoundaryTests(unittest.TestCase):
@@ -65,6 +67,21 @@ class RuntimeBoundaryTests(unittest.TestCase):
         path.write_text(json.dumps(script))
         with self.assertRaisesRegex(ValueError, 'attribution'):
             validate_cast(path, 'example--aa')
+
+
+class AcousticRetryTests(unittest.TestCase):
+    def test_actual_kit_uses_third_take_only_for_acoustic_faults(self):
+        lab = Path(__file__).resolve().parent
+        kit = lab.parent
+        with tempfile.TemporaryDirectory() as directory:
+            destination = Path(directory)
+            for name in ('audio.ts', 'cast.ts', 'paths.ts'):
+                shutil.copyfile(kit/name, destination/name)
+            (destination/'voice.ts').write_text(instrument_voice_retry((kit/'voice.ts').read_text()))
+            (destination/'package.json').write_text('{"type":"module"}')
+            result = subprocess.run(['node', '--import', 'tsx', str(lab/'check-voice-retry.mjs'), directory],
+                                    cwd=kit.parent, text=True, capture_output=True, timeout=30)
+            self.assertEqual(result.returncode, 0, result.stdout+result.stderr)
 
 
 if __name__ == '__main__':

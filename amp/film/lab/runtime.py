@@ -70,6 +70,20 @@ def fixed_file(path, content):
         path.write_text(content)
 
 
+def instrument_voice_retry(text):
+    """A repeated acoustic fault may need the kit's third take.
+
+    Only a repeated transcript mismatch supports the kit's existing early-stop
+    assumption that another generated take will not help. Keep its three-take
+    ceiling and all audio checks intact.
+    """
+    anchor = 'if (k > 0 && faults.some((f) => last.includes(gist(f)))) break;'
+    if text.count(anchor) != 1:
+        raise RuntimeError('Kit voice retry anchor changed; inspect the upstream policy')
+    return text.replace(anchor,
+        'if (k > 0 && faults.some((f) => /^at [\\d.]+ s the script says /.test(f) && last.includes(gist(f)))) break;')
+
+
 def workspace_for(config, identifier):
     if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*--[a-z]{2}', identifier):
         raise ValueError('Invalid blind film ID')
@@ -106,6 +120,8 @@ def prepare_workspace(config, row, facts, study):
             relative = path.relative_to(source)
             target = runtime/relative
             text = path.read_text()
+            if path.name == 'voice.ts':
+                text = instrument_voice_retry(text)
             if path.name == 'make.ts':
                 anchor = 'const suffix = values.tall ? "-tall" : "";'
                 if text.count(anchor) != 1:
@@ -127,7 +143,8 @@ def prepare_workspace(config, row, facts, study):
         script_link = runtime/'film/lessons'/(row['id']+'.json')
         if not script_link.is_symlink():
             script_link.symlink_to(workspace/'screenplay.json')
-        write_json(manifest_path, {'files': entries, 'instrumentation': 'JSON payload snapshot and local Vite access to the shared source/dependency links; kit checks unchanged.'})
+        write_json(manifest_path, {'files': entries, 'voice_retry_policy': 'three takes; early stop only for repeated transcript mismatches',
+            'instrumentation': 'JSON payload snapshot, local Vite access to shared links, and acoustic-fault retries within the existing three-take ceiling; kit checks unchanged.'})
     verify_runtime(config, row, workspace)
     return workspace
 
