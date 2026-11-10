@@ -1,5 +1,6 @@
 import type { MultiSelectResponse, ProblemResponse } from "./contracts";
 import { counterBuilderAnswerText } from "./counter-builder";
+import { pegBoardAnswerText } from "./peg-board";
 import { normalizePointPlot, pointPlotAnswerText } from "./point-plot";
 import { multiPartAnswerText, normalizeMultiPart } from "./multi-part-choice";
 import { figureChoiceAnswerText } from "./figure-choice";
@@ -95,6 +96,7 @@ export function answerText(response: ProblemResponse, raw: string): string {
   if (response.kind === "trend-line-fit")
     return trendLineAnswerText(response, raw);
   if (response.kind === "shape-composer") return shapeAnswerText(response, raw);
+  if (response.kind === "peg-board") return pegBoardAnswerText(response, raw);
   if (response.kind === "point-plot") {
     if (normalizePointPlot(response, raw) === null)
       throw new Error("Worked answer must place the required grid points");

@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { shapeComposerScene } from "../math/shape-composer-scene";
+import { pegBoardScene } from "../math/peg-board-scene";
 import React, { type ReactNode } from "react";
 import { Figure } from "../web/Figure";
 import type { GeneratedProblem } from "../math/contracts";
@@ -500,6 +501,16 @@ export function PrintExerciseBody({
         <PrintMathText text={problem.public.prompt} />
       </h2>
       {problem.public.figure && <Figure figure={problem.public.figure} />}
+      {problem.public.response.kind === "peg-board" && (
+        <SceneFigure
+          medium="print"
+          reveal
+          scene={pegBoardScene(
+            problem.public.response,
+            solutions ? problem.answer : undefined,
+          )}
+        />
+      )}
       {problem.public.response.kind === "trend-line-fit" && (
         <SceneFigure
           medium="print"
