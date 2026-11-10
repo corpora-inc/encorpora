@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { APPROVED, approvedVoice, defaultVoice, isTagWord, NARRATOR_ID, neighbours, resolveCast, runsOf, speakerChanges, takeKeyParts, templateOf, TURN_GAP, withBand, voiceBindings } from "./cast";
+import { APPROVED, approvedVoice, defaultVoice, isTagWord, NARRATOR_ID, neighbours, resolveCast, runsOf, takeKeyParts, templateOf, TURN_GAP, voiceBindings } from "./cast";
 import { takeKey } from "./voice";
-import { WIDE, TALL } from "./stage";
 import { scriptSchema } from "./schema";
 import { createHash } from "node:crypto";
 import { readdirSync, readFileSync } from "node:fs";
@@ -121,15 +120,6 @@ describe("takeKey", () => {
   });
 });
 
-describe("speakerChanges", () => {
-  it("one change per turn, at the first word of the new speaker", () => {
-    const timing = { shots: [[{ start: 0.5 }, { start: 2 }, { start: 4 }, { start: 5 }], [{ start: 8 }]] };
-    expect(speakerChanges(play, resolveCast(play), timing)).toEqual([
-      { t: 0.5, role: "teacher" }, { t: 2, role: "learner" }, { t: 4, role: "teacher" }, { t: 8, role: "learner" },
-    ]);
-  });
-});
-
 describe("templateOf", () => {
   it("a variant takes its facts from its template; a plain id is its own template", () => {
     expect(templateOf("sinusoid-compare-rule--cast")).toEqual({ template: "sinusoid-compare-rule", variant: "cast" });
@@ -138,21 +128,3 @@ describe("templateOf", () => {
   });
 });
 
-describe("withBand", () => {
-  it("moves the top-margin cards down by the band and keeps the frame, the lower cards and the widths", () => {
-    for (const L of [WIDE, TALL]) {
-      const B = withBand(L);
-      expect([B.w, B.h, B.name]).toEqual([L.w, L.h, L.name]);
-      for (const k of ["fig", "panel", "full", "side", "recap"] as const) {
-        expect(B[k].w).toBe(L[k].w);
-        expect(B[k].x).toBe(L[k].x);
-        // the bottom edge never moves, so nothing below is crowded
-        expect(B[k].y + B[k].h).toBe(L[k].y + L[k].h);
-        if (L[k].y <= 60) expect(B[k].y).toBeGreaterThan(L[k].y + 60); else expect(B[k]).toEqual(L[k]);
-      }
-    }
-    // the tall layout's panel sits under the figure and stays where it was
-    expect(withBand(TALL).panel).toEqual(TALL.panel);
-    expect(withBand(TALL).fig.h).toBeLessThan(TALL.fig.h);
-  });
-});

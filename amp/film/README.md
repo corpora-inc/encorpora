@@ -57,7 +57,7 @@ Screenplays use `teacher`, `learner` and `narrator` roles. The
 [cast table](cast.ts) binds teachers to Madeline or Paul and learners to Champ.
 The film ID chooses a stable default teacher. Use `--voice teacher=paul`
 for an explicit edition; exact voice IDs are saved with timing so playback
-shows the recorded speaker's name. Solo films retain their narrator behavior.
+uses the recorded voice. Solo films retain their narrator behavior.
 
 The optional `critic.py` and `judge.py` tools produce private review reports.
 The former requires `FILM_CRITIC_URL` and `FILM_CRITIC_MODEL`; the latter

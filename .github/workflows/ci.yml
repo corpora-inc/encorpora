@@ -1861,7 +1861,9 @@ jobs:
           cache: npm
           cache-dependency-path: amp/package-lock.json
       - run: npm ci
-      - name: Lesson-film kit unit tests (no rendering or voice)
+      - name: Patched Chrome for the film frame check
+        run: npx playwright install-deps chromium && node scripts/install-browser.mjs --configure-linux-sandbox
+      - name: Lesson-film kit tests
         run: npm run film:test
   amp-core:
     name: amp-core
