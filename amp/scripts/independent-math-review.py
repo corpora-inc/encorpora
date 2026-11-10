@@ -1096,7 +1096,7 @@ def review(stream):
     print('Independent Algebra 1 function content: ' + json.dumps(review_linear_function_content()), file=sys.stderr)
     print('Independent quadratic-structure content: ' + json.dumps(review_quadratic_structure_content()), file=sys.stderr)
     print('Independent function-toolkit content: ' + json.dumps(review_function_toolkit_content()), file=sys.stderr)
-    print('Independent pattern/function content: ' + json.dumps(review_pattern_function_content()), file=sys.stderr)
+    print('Independent pattern/function content: ' + json.dumps(review_pattern_function_content(solve=solve_family)), file=sys.stderr)
     print('Independent equation content: ' + json.dumps(review_equation_content()), file=sys.stderr)
     print('Independent add-subtract coverage: ' + json.dumps(add_subtract_corpus.finish()), file=sys.stderr)
     print('Independent facts coverage: ' + json.dumps(facts_corpus.finish()), file=sys.stderr)
