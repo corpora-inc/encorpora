@@ -172,29 +172,31 @@ tr[data-activates]:hover .cell {
   gap: var(--space-2);
   margin-bottom: var(--space-3);
 }
+/* On a phone each row stacks: no card around it, a hairline between rows,
+   the name first and the other columns as one wrapping line of label and
+   value (docs/design/ia.md: no card wrappers). */
 .cards {
   display: grid;
-  gap: var(--space-3);
+  gap: 0;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 .card {
-  --avatar-ring: var(--color-surface-raised);
+  --avatar-ring: var(--color-surface);
   margin: 0;
-  padding: var(--space-4);
-  border-radius: var(--radius-control);
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface-raised);
+  padding: var(--space-3) 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  box-shadow: inset 0 -1px 0 var(--color-border);
 }
 .cardRows {
   gap: 0;
 }
 .cardRows .card {
   padding: 0;
-  border-radius: 0;
-  background: transparent;
-  color: inherit;
+  box-shadow: none;
 }
 .windowed {
   position: relative;
@@ -206,25 +208,24 @@ tr[data-activates]:hover .cell {
   left: 0;
   width: 100%;
   margin: 0;
-  padding-bottom: var(--space-3);
-}
-.cardRows .windowedItem {
   padding-bottom: 0;
 }
 .cardTitle {
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-1);
   font-weight: 600;
 }
 .cardFields {
-  display: grid;
-  gap: var(--space-2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
   margin: 0;
+  font-size: var(--text-table);
 }
 .cardField {
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-  align-items: center;
-  gap: var(--space-3);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  min-width: 0;
 }
 .cardField dt {
   color: var(--color-muted-text);
