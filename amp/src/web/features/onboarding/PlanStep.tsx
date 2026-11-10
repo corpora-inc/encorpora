@@ -132,7 +132,11 @@ export function PlanStep({
           consent by email instead. Then add your learner and choose a plan.
         </p>
         <div className={styles.actions}>
-          <Link to="/start/consent" className={buttonClass("primary")}>
+          <Link
+            to="/$"
+            params={{ _splat: "consent" }}
+            className={buttonClass("primary")}
+          >
             Continue with email
           </Link>
         </div>
