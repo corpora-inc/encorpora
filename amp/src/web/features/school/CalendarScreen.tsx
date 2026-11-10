@@ -36,7 +36,12 @@ import { YearRibbon } from "./YearRibbon";
 import styles from "./School.module.css";
 
 /** The term choice of a small class: None is the whole year, no terms. */
-const TERM_CHOICES: GradingKind[] = ["year", "semester", "trimester", "quarter"];
+const TERM_CHOICES: ("year" | DivisionKind)[] = [
+  "year",
+  "semester",
+  "trimester",
+  "quarter",
+];
 
 const message = (failure: unknown, fallback: string) =>
   failure instanceof AppError ? failure.message : fallback;
@@ -142,9 +147,9 @@ export function YearCalendar({
   );
   const asked = divisionKinds.find((kind) => kind === search.view);
   const shown: DivisionKind | null = grading
-    ? grading.value === "year"
-      ? null
-      : (grading.value as DivisionKind)
+    ? divisionKinds.includes(grading.value as DivisionKind)
+      ? (grading.value as DivisionKind)
+      : null
     : (asked ?? kinds[0] ?? null);
   const parts = sessions.filter(
     (entry) => entry.kind === shown && entry.parentId === year?.id,
@@ -210,7 +215,7 @@ export function YearCalendar({
             dense
             disabled={grading.disabled}
             value={grading.value}
-            onChange={grading.onChange}
+            onChange={(kind) => grading.onChange(kind as GradingKind)}
             options={TERM_CHOICES.map((kind) => ({
               value: kind,
               label: kind === "year" ? "None" : divisionLabels[kind].plural,

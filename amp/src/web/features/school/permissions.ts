@@ -13,7 +13,7 @@ export function canAddStudents(
   // (`useFamilyAdd`), never by this form.
   if (org.kind === "family") return false;
   if (org.can?.includes("students.add")) return true;
-  if (org.demo || org.kind === "family") return false;
+  if (org.demo) return false;
   return classId
     ? (org.teaches?.includes(classId) ?? false)
     : (org.teaches?.length ?? 0) > 0;
