@@ -4,8 +4,8 @@ import { generateProblemFor, templates } from "../src/math/engine.js";
 import {
   clientCanDraw,
   figureCapabilities,
-  responseCapabilities,
   generatedProblemSchema,
+  responseCapabilities,
 } from "../src/math/contracts.js";
 import { sceneCapabilitiesIn } from "../src/math/scene/index.js";
 import { problemLesson } from "../src/content/problem-lessons.js";

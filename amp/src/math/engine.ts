@@ -41,6 +41,7 @@ import {
   normalizeCounterBuilder,
 } from "./counter-builder";
 import { generateCounterBuilderFallback } from "./counter-builder-practice";
+import { gradeTrendLine, normalizeTrendLine } from "./trend-line-fit";
 import { gradeShapeComposer, normalizeShapeAnswer } from "./shape-composer";
 import { gradeMultiPart, normalizeMultiPart } from "./multi-part-choice";
 import {
@@ -725,6 +726,8 @@ export function isValidResponse(
 ): boolean {
   if (problem.response.kind === "counter-builder")
     return normalizeCounterBuilder(problem.response, response) !== null;
+  if (problem.response.kind === "trend-line-fit")
+    return normalizeTrendLine(problem.response, response) !== null;
   if (problem.response.kind === "shape-composer")
     return normalizeShapeAnswer(problem.response, response) !== null;
   if (response.length > 200) return false;
@@ -764,6 +767,8 @@ export function gradeAnswer(
     );
   if (problem.public.response.kind === "unit-square-marking")
     return gradeUnitSquareMarking(problem.answer, response);
+  if (problem.public.response.kind === "trend-line-fit")
+    return gradeTrendLine(problem.public.response, response);
   if (problem.public.response.kind === "shape-composer")
     return gradeShapeComposer(problem.public.response, response);
   if (problem.public.response.kind === "multi-select") {

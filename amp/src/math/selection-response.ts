@@ -5,6 +5,7 @@ import { multiPartAnswerText, normalizeMultiPart } from "./multi-part-choice";
 import { figureChoiceAnswerText } from "./figure-choice";
 import { structuredWorkAnswerText } from "./structured-work";
 import { linePlotBuildAnswerText } from "./line-plot-build";
+import { trendLineAnswerText } from "./trend-line-fit";
 import { shapeAnswerText } from "./shape-composer";
 
 export const MAX_SELECTION_OPTIONS = 8;
@@ -91,6 +92,8 @@ export function answerText(response: ProblemResponse, raw: string): string {
     return linePlotBuildAnswerText(response, raw);
   if (response.kind === "counter-builder")
     return counterBuilderAnswerText(response, raw);
+  if (response.kind === "trend-line-fit")
+    return trendLineAnswerText(response, raw);
   if (response.kind === "shape-composer") return shapeAnswerText(response, raw);
   if (response.kind === "point-plot") {
     if (normalizePointPlot(response, raw) === null)
