@@ -2,10 +2,11 @@ import {
   CurriculumDetailsControl,
   useCurriculumDetails,
 } from "../curriculum/CurriculumDetails";
-import { useMemo, type CSSProperties } from "react";
+import { useDeferredValue, useMemo, type CSSProperties } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useSearch, Link } from "@tanstack/react-router";
 import { skillCatalogOptions, useLearningView } from "../../lib/learning-view";
+import { useUrlSearchText } from "../../lib/url-search-text";
 import {
   bandLabel,
   bands,
@@ -68,7 +69,12 @@ export function InventoryScreen() {
   const catalog = useQuery(skillCatalogOptions);
   const search = useSearch({ strict: false });
   const navigate = useNavigate();
-  const query = typeof search.topic === "string" ? search.topic : "";
+  const urlQuery = typeof search.topic === "string" ? search.topic : "";
+  // The field owns its text while typing; the URL follows after a pause.
+  const field = useUrlSearchText(urlQuery, (topic) =>
+    update({ topic: topic || undefined }, true),
+  );
+  const query = useDeferredValue(field.text.trim());
   const area =
     typeof search.area === "string" &&
     neighborhoods.some((n) => n.title === search.area)
@@ -103,7 +109,7 @@ export function InventoryScreen() {
     void navigate({
       to: "/inventory",
       search: {
-        topic: query || undefined,
+        topic: field.carry() || undefined,
         collection: search.collection ? filter : undefined,
         area: area || undefined,
         ...values,
@@ -208,11 +214,13 @@ export function InventoryScreen() {
                 type="search"
                 aria-label="Find a skill"
                 placeholder="Find a skill…"
-                value={query}
+                value={field.text}
                 maxLength={100}
-                onChange={(e) =>
-                  update({ topic: e.target.value || undefined }, true)
-                }
+                onChange={(e) => field.change(e.target.value)}
+                onBlur={field.flush}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") field.flush();
+                }}
               />
             </label>
             <ListboxDisclosure

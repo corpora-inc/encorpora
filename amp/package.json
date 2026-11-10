@@ -46,6 +46,7 @@
     "test:loading-ui": "tsx scripts/verify-loading-ui.ts && tsx scripts/verify-loading-ui.ts --engine webkit",
     "audit:app-shell": "tsx scripts/audit-app-shell-ui.ts",
     "test:lesson-library-ui": "tsx scripts/verify-lesson-library-ui.ts && tsx scripts/verify-lesson-library-ui.ts --engine webkit --widths 390,1280",
+    "test:search-typing-ui": "tsx scripts/verify-search-typing-ui.ts",
     "tsc": "node --max-old-space-size=6144 node_modules/typescript/bin/tsc --noEmit",
     "workbook:samples": "tsx scripts/workbook-samples.ts",
     "workbook:audit": "tsx scripts/workbook-paper-audit.ts",

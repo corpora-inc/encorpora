@@ -151,10 +151,16 @@ export function attachTerms(
   });
 }
 
+/** The query's words, each with the space that makes it a word start. */
+const queryTokens = (query: string) =>
+  normalize(query)
+    .split(" ")
+    .filter(Boolean)
+    .map((token) => ` ${token}`);
+
 /** Every query word begins a word of the item. */
 export function matches(item: { words: string }, query: string) {
-  const tokens = normalize(query).split(" ").filter(Boolean);
-  return tokens.every((token) => item.words.includes(` ${token}`));
+  return queryTokens(query).every((token) => item.words.includes(token));
 }
 
 /** Glossary entries the query names: its words begin the term or a form. */
@@ -185,9 +191,15 @@ export function visibleIds(
   query: string,
   strand: string,
 ) {
+  // The query is read once; each item is a few substring checks against
+  // its precomputed words.
+  const tokens = queryTokens(query);
   const shown = new Set<string>();
   for (const item of items)
-    if ((!strand || item.strand === strand) && matches(item, query))
+    if (
+      (!strand || item.strand === strand) &&
+      tokens.every((token) => item.words.includes(token))
+    )
       shown.add(`${item.kind}:${item.id}`);
   return shown;
 }

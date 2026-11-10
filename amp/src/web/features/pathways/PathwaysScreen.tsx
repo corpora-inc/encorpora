@@ -5,6 +5,7 @@ import {
 } from "../curriculum/CurriculumDetails";
 import { NavigationDrawer } from "../navigation/NavigationDrawer";
 import {
+  useDeferredValue,
   useMemo,
   useRef,
   useEffect,
@@ -23,6 +24,7 @@ import {
 import { meOptions, sessionOptions } from "../../lib/query";
 import { skillCatalogOptions } from "../../lib/learning-view";
 import { request } from "../../lib/api";
+import { useUrlSearchText } from "../../lib/url-search-text";
 import { useLearnerStore } from "../../learner-store";
 import type { AuthSession } from "../../auth";
 import { FrontierMap, gradeName } from "../../Home";
@@ -268,7 +270,10 @@ export function MapView({
   const routeSkillId = typeof params.skillId === "string" ? params.skillId : "";
   const selectedId =
     routeSkillId || (typeof search.skill === "string" ? search.skill : "");
-  const query = typeof search.topic === "string" ? search.topic : "";
+  const urlQuery = typeof search.topic === "string" ? search.topic : "";
+  // The field owns its text while typing; the URL follows after a pause.
+  const field = useUrlSearchText(urlQuery, (topic) => update({ topic }, true));
+  const query = useDeferredValue(field.text);
   const band =
     typeof search.filter === "string" && bands.includes(search.filter)
       ? search.filter
@@ -291,7 +296,7 @@ export function MapView({
     !!selectedId && (unknownSkill || catalog.isError),
   );
   const linkSearch = () => ({
-    topic: query || undefined,
+    topic: field.text.trim() || undefined,
     filter: band || undefined,
   });
   const detailHeading = useRef<HTMLHeadingElement>(null);
@@ -314,7 +319,9 @@ export function MapView({
   ) => {
     const skillId = values.skill === undefined ? selectedId : values.skill;
     const nextSearch = {
-      topic: (values.topic === undefined ? query : values.topic) || undefined,
+      topic:
+        (values.topic === undefined ? field.carry() : values.topic) ||
+        undefined,
       filter: (values.filter === undefined ? band : values.filter) || undefined,
     };
     if (skillId)
@@ -460,11 +467,15 @@ export function MapView({
             aria-label="Find a skill"
             placeholder="Find a skill…"
             maxLength={100}
-            value={query}
+            value={field.text}
             onFocus={() => setBrowse(true)}
             onChange={(e) => {
               setBrowse(true);
-              update({ topic: e.target.value }, true);
+              field.change(e.target.value);
+            }}
+            onBlur={field.flush}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") field.flush();
             }}
           />
         </label>

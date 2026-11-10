@@ -2130,7 +2130,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                   readerTriggerId.current = reference.id;
                   // Back returns to these results at this scroll position.
                   libraryReturn.current = {
-                    search: route.location.search,
+                    // The live URL: the search field writes its query after
+                    // a pause, which can land after this render.
+                    search: window.location.search,
                     scroll: window.scrollY,
                   };
                   void action(() => openReferenceLesson(reference, null));
