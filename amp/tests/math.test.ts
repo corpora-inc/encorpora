@@ -15,9 +15,15 @@ test("all reference families are deterministic and independently solve from disp
   assert.ok(templates.length >= 10);
   for (const template of templates)
     for (let i = 0; i < 150; i++) {
-      const problem = generateProblem(template.id, `case-${i}`),
+      // The base right-triangle audit checks its labeled-leg surface; story
+      // variants are independently reviewed in clause-practice.test.ts.
+      const version = template.id === "right-triangle" ? 1 : undefined;
+      const problem = generateProblem(template.id, `case-${i}`, version),
         p = problem.public;
-      assert.deepEqual(problem, generateProblem(template.id, `case-${i}`));
+      assert.deepEqual(
+        problem,
+        generateProblem(template.id, `case-${i}`, version),
+      );
       assert.match(p.id, /^[a-f0-9]{64}$/);
       assert.ok(problem.hint.length && problem.explanation.length);
       assert.equal("answer" in p, false);

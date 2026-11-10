@@ -2,8 +2,15 @@ import type { ProblemMethod } from "./problem-lessons";
 
 /** The added surfaces teach their own operation, rather than inheriting
  * numeric-entry instructions from an older surface of the same type. */
-// Goal, intuition, at least two method steps, then the watch line.
-const rows: Record<string, [string, string, string, string, string, ...string[]]> = {
+type MethodRow = [
+  goal: string,
+  intuition: string,
+  first: string,
+  second: string,
+  ...otherSteps: string[],
+  watch: string,
+];
+const rows: Record<string, MethodRow> = {
   "explain-with-property": [
     "Explain why a table pattern holds for every entry.",
     "Splitting equal groups or changing the order of addends explains a whole row. Checking one cell only checks one case.",

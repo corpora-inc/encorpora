@@ -314,13 +314,13 @@ export const clientCanDraw = (
   (!template.requiredFigureCapability ||
     client.figureCapabilities.includes(template.requiredFigureCapability));
 export interface TemplateMetadata {
-  /** Every response protocol used by a type with mixed variant formats. */
-  requiredResponseCapabilities?: readonly ResponseCapability[];
   /** Editorial local step on the curriculum-grade scale, not empirical calibration. */
   difficultyOffset?: number;
   requiredFigureCapability?: FigureCapability;
   /** Absent for the original number/fraction protocol. */
   requiredResponseCapability?: ResponseCapability;
+  /** Additional protocols when a versioned family has several response surfaces. */
+  requiredResponseCapabilities?: readonly ResponseCapability[];
   id: string;
   /** Catalog version. A stored workbook names this on each problem. */
   version: number;
