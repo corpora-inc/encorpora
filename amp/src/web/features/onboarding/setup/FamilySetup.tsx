@@ -91,7 +91,7 @@ export function FamilySetup({
 }) {
   const me = useQuery(meOptions(session)).data;
   const index = STEPS[kind].findIndex((entry) => entry.id === step);
-  if (index < 0) return <Navigate href={stepUrl(kind, "")} replace />;
+  if (index < 0) return <Navigate to={stepUrl(kind, "") as never} replace />;
   if (!me?.signedIn)
     return (
       <Frame kind={kind} index={index} title={STEPS[kind][index]!.label}>
@@ -100,7 +100,7 @@ export function FamilySetup({
     );
   // Every later step needs the class step one makes.
   if (index > 0 && !me.familyClass)
-    return <Navigate href={stepUrl(kind, "")} replace />;
+    return <Navigate to={stepUrl(kind, "") as never} replace />;
   const props = { session, me, kind, index };
   if (index === 0)
     return kind === "parent" ? (
