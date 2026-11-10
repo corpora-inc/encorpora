@@ -192,7 +192,7 @@ function findEqualShares(r: Random, targets: number[], counts: number[]) {
     `Shape ${labels[roles.findIndex((x) => x.role === role)]}`;
   const draft: Draft = {
     prompt: `Which shape is cut into ${units(n)}?`,
-    hint: `${capital(units(n))} are ${parts(n)} of one whole. Check each shape two ways: are there exactly ${WORDS[n]} parts, and are they all the same size?`,
+    hint: `${capital(units(n))} are ${parts(n)} of one whole. ${targets.includes(3) ? "Halves, thirds and quarters are all possible here." : "Look only for halves or quarters."} Check each shape two ways: are there exactly ${WORDS[n]} parts, and are they all the same size?`,
     figure: { kind: "partitioned-shapes", shapes },
     explanation: [
       `${capital(units(n))} means the whole is cut into ${parts(n)}. Equal parts are all the same size.`,
