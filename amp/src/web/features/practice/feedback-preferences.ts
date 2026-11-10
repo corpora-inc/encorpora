@@ -6,12 +6,14 @@ type Preferences = {
   haptics: boolean;
   set: (name: "sound" | "haptics", enabled: boolean) => void;
 };
-/** Device preferences only; no learning or account information is stored. */
+/** Device preferences only; no learning or account information is stored.
+ * Both are on until someone turns one off on this device; a saved choice
+ * always stands. Haptics play only where the browser can vibrate. */
 export const useFeedbackPreferences = create<Preferences>()(
   persist(
     (set) => ({
-      sound: false,
-      haptics: false,
+      sound: true,
+      haptics: true,
       set: (name, enabled) => set({ [name]: enabled }),
     }),
     {
@@ -44,8 +46,12 @@ export const useFeedbackPreferences = create<Preferences>()(
         const value = saved as Partial<Preferences> | null;
         return {
           ...current,
-          sound: value?.sound === true,
-          haptics: value?.haptics === true,
+          sound:
+            typeof value?.sound === "boolean" ? value.sound : current.sound,
+          haptics:
+            typeof value?.haptics === "boolean"
+              ? value.haptics
+              : current.haptics,
         };
       },
     },

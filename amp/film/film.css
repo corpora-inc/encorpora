@@ -110,12 +110,17 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
 /* Base-ten blocks: the app's own look, solid accent with paper unit lines. */
 .film-block { stroke: var(--color-figure-ink); stroke-linejoin: round; }
 .film-block-lines { fill: none; stroke: var(--color-figure-paper); stroke-linecap: butt; }
-.film-block-overlay { fill: var(--color-figure-gold-fill); stroke: var(--color-figure-gold); stroke-width: 2.5; }
+.film-block-overlay { fill: none; stroke: var(--color-figure-gold); stroke-width: 3.5; }
 .film-block-pointline { fill: none; stroke: var(--color-muted-text); stroke-width: 2.5; stroke-dasharray: 7 9; stroke-linecap: round; }
 .film-blocks-head { font-size: 30px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-muted-text); font-weight: 600; }
 .film-blocks-digit { color: var(--color-figure-ink); }
 .film-blocks-digit.pad { color: var(--color-figure-accent); }
 .film-blocks-count { color: var(--color-figure-accent); }
+
+/* Things to count: the app's drawings. A light grows the thing in place. A counted thing keeps a muted tick. The extent reserves every place a thing will use. */
+.film-thing-tick { fill: none; stroke: var(--color-muted-text); stroke-linecap: round; stroke-linejoin: round; }
+.film-things-extent { fill: transparent; stroke: none; pointer-events: none; }
+.film-things-count { color: var(--color-figure-accent); }
 
 /* The table: a light grid, a heavier rule before the totals, a gold band for the given row or column. */
 .film-table-grid { fill: none; stroke: var(--color-figure-ink); stroke-width: 2.5; stroke-linejoin: round; }

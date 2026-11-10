@@ -272,7 +272,7 @@ function twoStep(c: Context): GeneratedProblem {
       c,
       {
         prompt: `Triangle $ABC$: ${named(a)}. Its image: ${named(image, ["A'", "B'", "C'"])}. Which sequence maps every vertex onto its image?`,
-        hint: `Apply the first proposed step to $A${point(a[0]!)}$, then the second. Check the other vertices too.`,
+        hint: `Apply the first proposed step to $A${point(a[0]!)}$, then the second, and compare with $A'${point(image[0]!)}$, $B'${point(image[1]!)}$ and $C'${point(image[2]!)}$.`,
         explanation: [
           `First ${mtext(sequence[0]!)}: ${named(ghost)}.`,
           `Then ${mtext(sequence[1]!)}: ${named(image, ["A'", "B'", "C'"])}.`,
@@ -332,7 +332,7 @@ function congruent(c: Context): GeneratedProblem {
     c,
     {
       prompt: `Triangle $ABC$: ${named(a)}. Triangle $DEF$: ${named(image, ["D", "E", "F"])}. Which rigid motion maps $ABC$ onto $DEF$, or are they not congruent?`,
-      hint: `Compare the horizontal side from $A${point(a[0]!)}$ to $B${point(a[1]!)}$ with its matching side.`,
+      hint: `Compare the side from $A${point(a[0]!)}$ to $B${point(a[1]!)}$ with the side from $D${point(image[0]!)}$ to $E${point(image[1]!)}$.`,
       explanation: [
         `Corresponding squared side lengths are $${l.join(", ")}$ and $${q.join(", ")}$.`,
         kind < 5
@@ -370,7 +370,10 @@ function similar(c: Context): GeneratedProblem {
     c,
     {
       prompt: `Triangle $ABC$: ${named(a)}. Triangle $A'B'C'$: ${named(image, ["A'", "B'", "C'"])}. Are they similar? Choose a sequence that proves it, or the reason they are not.`,
-      hint: `Compare the lengths of two matching sides of the triangle with $A${point(a[0]!)}$. A single scale factor must work for both.`,
+      hint:
+        c.meta.id === "similarity-by-transformation-grade-8"
+          ? `Compare $AB$, from $A${point(a[0]!)}$ to $B${point(a[1]!)}$, with $A'${point(image[0]!)}$ and $C'${point(image[2]!)}$. If one scale factor fits a second pair as well, the map is a dilation about the origin followed by a rigid motion.`
+          : `Compare $AB$, from $A${point(a[0]!)}$ to $B${point(a[1]!)}$, with $A'${point(image[0]!)}$ and $C'${point(image[2]!)}$. A single scale factor must work for both pairs before you name the dilation and the rigid motion.`,
       explanation: [
         `Original squared side lengths: ${lengths(a).join(", ")}$.`,
         `Image squared side lengths: ${lengths(image).join(", ")}$.`,
@@ -521,7 +524,7 @@ function functionNotation(c: Context): GeneratedProblem {
     c,
     {
       prompt: `$T(x,y)=(${rules[i]})$. Find $T${point(input)}$. Then find $P$ if $T(P)=${point(output)}$. Finally classify $T$.`,
-      hint: `Substitute ${input[0]} for $x$ and ${input[1]} for $y$. For the unknown input, undo the rule.`,
+      hint: `Substitute ${input[0]} for $x$ and ${input[1]} for $y$ to find $T${point(input)}$. Then undo the rule to find the input whose image is ${point(output)}.`,
       explanation: [
         `Substitution gives $T${point(input)}=${point(answer)}$.`,
         `Undoing each coordinate operation gives $P${point(preimage)}$; substituting it returns $${point(output)}$.`,
@@ -903,7 +906,9 @@ function pythagoras(c: Context): GeneratedProblem {
   ];
   const t: Teaching = {
     prompt: `Right triangle $${a}${b}${cc}$ has right angle $${cc}$. Altitude $${cc}${d}$ meets hypotenuse $${a}${b}$. Prove $${a}${cc}^2+${b}${cc}^2=${a}${b}^2$. Given: $\\angle ${a}${d}${cc}$ and $\\angle ${cc}${d}${b}$ are right angles; each small triangle shares an acute angle with the large triangle.${coda ? ` Finally use $${a}${d}=${ad}$ and $${d}${b}=${db}$ to find the two leg squares.` : ""}`,
-    hint: `Match each small triangle's right angle and shared angle with those of $${a}${b}${cc}$.`,
+    hint: coda
+      ? `Match each small triangle's right angle and shared angle with those of $${a}${b}${cc}$. Then use $${a}${d}=${ad}$ and $${d}${b}=${db}$.`
+      : `Match each small triangle's right angle and shared angle with those of $${a}${b}${cc}$.`,
     explanation: [
       "Two equal angle pairs give AA similarity. Corresponding sides then give the two proportions.",
       "Cross-multiply each proportion, add the results, and factor out the hypotenuse.",

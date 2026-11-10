@@ -1194,7 +1194,7 @@ function proportionalCase(r: Random, pair: PairValue): Case {
       ];
   return {
     prompt,
-    hint: "Through the origin, divide one output by its input. Do that for each relationship, then subtract the two rates.",
+    hint: `${told.A.text} ${told.B.text} Through the origin, divide one output by its input. Do that for each relationship, then subtract the two rates.`,
     choices,
     explanation,
     figure,
@@ -1288,7 +1288,7 @@ function nonlinearCase(r: Random, judge: JudgeValue): Case {
   ];
   return {
     prompt: `${spec.story} The table shows ${listed}. Why is this not a linear function of the input?`,
-    hint: "Subtract consecutive outputs. A linear function changes by the same amount on equal input steps.",
+    hint: `The points are ${listed}. Subtract consecutive outputs. A linear function changes by the same amount on equal input steps.`,
     choices,
     explanation: [
       "Linear means the same output change for each equal step of the input, so the points lie on one straight line.",

@@ -1,0 +1,5133 @@
+{
+  "figure": {
+    "kind": "scene",
+    "scene": {
+      "v": 1,
+      "title": "One shape",
+      "note": "It is an outline with 3 straight sides.",
+      "width": 280,
+      "elements": [
+        {
+          "id": "c0box",
+          "stroke": "grid",
+          "width": 1.25,
+          "type": "rect",
+          "at": [
+            -1.9,
+            -2.05
+          ],
+          "size": [
+            3.8,
+            4.1
+          ],
+          "fill": "none",
+          "radius": 10
+        },
+        {
+          "id": "c0p",
+          "stroke": "ink",
+          "width": 3,
+          "type": "polygon",
+          "points": [
+            [
+              -0.675,
+              0.9
+            ],
+            [
+              -0.675,
+              -0.9
+            ],
+            [
+              0.675,
+              0.9
+            ]
+          ],
+          "fill": "accent-fill"
+        }
+      ]
+    }
+  },
+  "grade": "K",
+  "skillTitle": "Name shapes",
+  "script": {
+    "id": "flat-or-solid-name--md",
+    "title": "Flat or solid? Name the whole shape",
+    "seed": "20261110:flat-or-solid-name:7",
+    "cast": {
+      "teacher": {
+        "voice": "XescS24CsOySAkKrLAO3",
+        "name": "Madeline"
+      },
+      "learner": {
+        "voice": "SYXbTJsLE7zmSjr1DchT",
+        "name": "Champ",
+        "tag": "[energetic]"
+      }
+    },
+    "shots": [
+      {
+        "figure": {
+          "view": [
+            -6.1,
+            -3.2,
+            5.4,
+            3
+          ],
+          "points": {
+            "A": [
+              1,
+              -1.4
+            ],
+            "B": [
+              3.8,
+              -1.4
+            ],
+            "C": [
+              3.8,
+              1.4
+            ],
+            "D": [
+              1,
+              1.4
+            ],
+            "E": [
+              2.1,
+              -0.35
+            ],
+            "F": [
+              4.9,
+              -0.35
+            ],
+            "G": [
+              4.9,
+              2.45
+            ],
+            "H": [
+              2.1,
+              2.45
+            ],
+            "S1": [
+              -5.1,
+              -1.4
+            ],
+            "S2": [
+              -2.3,
+              -1.4
+            ],
+            "S3": [
+              -2.3,
+              1.4
+            ],
+            "S4": [
+              -5.1,
+              1.4
+            ],
+            "Q1": [
+              1,
+              -1.4
+            ],
+            "Q2": [
+              3.8,
+              -1.4
+            ],
+            "Q3": [
+              3.8,
+              1.4
+            ],
+            "Q4": [
+              1,
+              1.4
+            ],
+            "LS": [
+              -3.7,
+              -2.65
+            ],
+            "LC": [
+              2.95,
+              -2.65
+            ],
+            "PL": [
+              -5.55,
+              -1.85
+            ],
+            "PR": [
+              -1.8499999999999996,
+              -1.85
+            ],
+            "PT": [
+              -1.8499999999999996,
+              1.85
+            ],
+            "PU": [
+              -5.55,
+              1.85
+            ]
+          },
+          "parts": [
+            {
+              "id": "paper",
+              "start": true,
+              "poly": [
+                "PL",
+                "PR",
+                "PT",
+                "PU"
+              ],
+              "fill": "paper",
+              "ink": "muted",
+              "w": 5
+            },
+            {
+              "id": "square",
+              "start": true,
+              "poly": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "fill": "warm-fill",
+              "ink": "warm",
+              "w": 5
+            },
+            {
+              "id": "front",
+              "group": "block",
+              "poly": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "fill": "accent-fill",
+              "ink": "accent",
+              "w": 5
+            },
+            {
+              "id": "top",
+              "group": "block",
+              "poly": [
+                "D",
+                "C",
+                "G",
+                "H"
+              ],
+              "fill": "accent-fill",
+              "ink": "accent",
+              "w": 5
+            },
+            {
+              "id": "right",
+              "group": "block",
+              "poly": [
+                "B",
+                "F",
+                "G",
+                "C"
+              ],
+              "fill": "accent-fill",
+              "ink": "accent",
+              "w": 5
+            },
+            {
+              "id": "faceCopy",
+              "poly": [
+                "Q1",
+                "Q2",
+                "Q3",
+                "Q4"
+              ],
+              "fill": "gold-fill",
+              "ink": "gold",
+              "w": 5
+            },
+            {
+              "id": "squareName",
+              "label": "\\text{square}",
+              "at": "LS",
+              "dir": "c",
+              "ink": "warm",
+              "size": "m"
+            },
+            {
+              "id": "cubeName",
+              "label": "\\text{cube}",
+              "at": "LC",
+              "dir": "c",
+              "ink": "accent",
+              "size": "m"
+            }
+          ]
+        },
+        "beats": [
+          {
+            "say": "Here is a square drawn on paper.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "view",
+                "to": [
+                  -6,
+                  -3.2,
+                  -1.4,
+                  2.3
+                ],
+                "at": "Here"
+              },
+              {
+                "do": "highlight",
+                "target": "square",
+                "at": "square"
+              },
+              {
+                "do": "show",
+                "target": "squareName",
+                "at": "square"
+              }
+            ]
+          },
+          {
+            "say": "Flat means no thickness: just across and up.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "term",
+                "word": "flat",
+                "meaning": "No thickness.",
+                "at": "Flat"
+              },
+              {
+                "do": "highlight",
+                "target": "square",
+                "at": "thickness"
+              }
+            ]
+          },
+          {
+            "say": "This toy block has thickness too. Its shape is solid.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "view",
+                "to": [
+                  -6.1,
+                  -3.2,
+                  5.4,
+                  3
+                ],
+                "at": "block"
+              },
+              {
+                "do": "show",
+                "target": "block",
+                "at": "block"
+              },
+              {
+                "do": "term",
+                "word": "solid",
+                "meaning": "Takes up room, including thickness.",
+                "at": "solid"
+              }
+            ]
+          },
+          {
+            "say": "We name the shape the picture shows.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "highlight",
+                "target": [
+                  "top",
+                  "right"
+                ],
+                "at": "shape"
+              }
+            ]
+          },
+          {
+            "say": "A face is a flat part on the outside.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "highlight",
+                "target": "front",
+                "at": "face"
+              }
+            ]
+          },
+          {
+            "say": "Champ, is the whole block flat or solid? What is its name?",
+            "pause": 0.8,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "clear"
+              },
+              {
+                "do": "problem",
+                "text": "Look at the whole block. Is it flat or solid? What is its name?",
+                "choices": [
+                  "square",
+                  "cube",
+                  "circle",
+                  "sphere"
+                ],
+                "id": "cubeProblem"
+              },
+              {
+                "do": "highlight",
+                "target": "block",
+                "at": "whole"
+              }
+            ]
+          },
+          {
+            "say": "Square? I see a square here.",
+            "pause": 0.3,
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "highlight",
+                "target": "front",
+                "at": "square"
+              }
+            ]
+          },
+          {
+            "say": "That face is square. Look at the whole block.",
+            "pause": 0.8,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "show",
+                "target": "faceCopy",
+                "at": "face"
+              },
+              {
+                "do": "slide",
+                "target": "faceCopy",
+                "by": [
+                  -6.1,
+                  0
+                ],
+                "at": "square"
+              },
+              {
+                "do": "text",
+                "text": "One face: square",
+                "id": "cubeFace",
+                "at": "square"
+              },
+              {
+                "do": "highlight",
+                "target": "block",
+                "at": "whole"
+              }
+            ]
+          },
+          {
+            "say": "It has six square faces, all the same size. That solid is a cube.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "highlight",
+                "target": [
+                  "front",
+                  "top",
+                  "right"
+                ],
+                "at": "faces"
+              },
+              {
+                "do": "show",
+                "target": "cubeName",
+                "at": "cube"
+              },
+              {
+                "do": "text",
+                "text": "Whole shape: cube",
+                "id": "cubeWhole",
+                "at": "cube"
+              }
+            ]
+          },
+          {
+            "say": "The square is one flat face. The whole block is a solid cube.",
+            "pause": 0.8,
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "highlight",
+                "target": "square",
+                "at": "face"
+              },
+              {
+                "do": "highlight",
+                "target": "block",
+                "at": "whole"
+              },
+              {
+                "do": "answer",
+                "tex": "\\text{solid, cube}",
+                "id": "cubeAnswer",
+                "at": "solid"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "figure": {
+          "view": [
+            -6.1,
+            -3.2,
+            5.8,
+            2.7
+          ],
+          "points": {
+            "C": [
+              -3.5,
+              0
+            ],
+            "B": [
+              3.4,
+              0
+            ],
+            "SC": [
+              -3.5,
+              -2.65
+            ],
+            "SB": [
+              3.4,
+              -2.65
+            ],
+            "HL": [
+              2.8,
+              0.8
+            ],
+            "PL": [
+              -5.6,
+              -2.1
+            ],
+            "PR": [
+              -1.3999999999999995,
+              -2.1
+            ],
+            "PT": [
+              -1.3999999999999995,
+              2.1
+            ],
+            "PU": [
+              -5.6,
+              2.1
+            ],
+            "ballBeltP0": [
+              1.7999999999999998,
+              5.878304635907295e-17
+            ],
+            "ballBeltP1": [
+              1.830743551354831,
+              -0.0936433545677414
+            ],
+            "ballBeltP2": [
+              1.9217927479819408,
+              -0.18368804753524282
+            ],
+            "ballBeltP3": [
+              2.0696486203159274,
+              -0.2666737118494091
+            ],
+            "ballBeltP4": [
+              2.268629150101524,
+              -0.3394112549695428
+            ],
+            "ballBeltP5": [
+              2.511087627168635,
+              -0.3991054139052215
+            ],
+            "ballBeltP6": [
+              2.7877065082158565,
+              -0.4434621756054177
+            ],
+            "ballBeltP7": [
+              3.087855484774194,
+              -0.4707769345935505
+            ],
+            "ballBeltP8": [
+              3.3999999999999995,
+              -0.48
+            ],
+            "ballBeltP9": [
+              3.7121445152258055,
+              -0.4707769345935506
+            ],
+            "ballBeltP10": [
+              4.012293491784144,
+              -0.44346217560541756
+            ],
+            "ballBeltP11": [
+              4.288912372831363,
+              -0.3991054139052218
+            ],
+            "ballBeltP12": [
+              4.531370849898476,
+              -0.3394112549695429
+            ],
+            "ballBeltP13": [
+              4.730351379684072,
+              -0.266673711849409
+            ],
+            "ballBeltP14": [
+              4.8782072520180595,
+              -0.18368804753524298
+            ],
+            "ballBeltP15": [
+              4.969256448645169,
+              -0.09364335456774178
+            ],
+            "ballBeltP16": [
+              5,
+              -1.175660927181459e-16
+            ],
+            "ballSeamP0": [
+              3.4,
+              1.6
+            ],
+            "ballSeamP1": [
+              3.275142193909678,
+              1.569256448645169
+            ],
+            "ballSeamP2": [
+              3.1550826032863424,
+              1.478207252018059
+            ],
+            "ballSeamP3": [
+              3.0444350508674543,
+              1.3303513796840722
+            ],
+            "ballSeamP4": [
+              2.9474516600406098,
+              1.1313708498984762
+            ],
+            "ballSeamP5": [
+              2.867859448126371,
+              0.8889123728313635
+            ],
+            "ballSeamP6": [
+              2.8087170991927763,
+              0.6122934917841438
+            ],
+            "ballSeamP7": [
+              2.7722974205419324,
+              0.3121445152258051
+            ],
+            "ballSeamP8": [
+              2.76,
+              1.9594348786357652e-16
+            ],
+            "ballSeamP9": [
+              2.7722974205419324,
+              -0.31214451522580466
+            ],
+            "ballSeamP10": [
+              2.8087170991927763,
+              -0.6122934917841428
+            ],
+            "ballSeamP11": [
+              2.867859448126371,
+              -0.8889123728313637
+            ],
+            "ballSeamP12": [
+              2.9474516600406093,
+              -1.131370849898476
+            ],
+            "ballSeamP13": [
+              3.0444350508674543,
+              -1.3303513796840718
+            ],
+            "ballSeamP14": [
+              3.155082603286343,
+              -1.4782072520180591
+            ],
+            "ballSeamP15": [
+              3.2751421939096774,
+              -1.5692564486451686
+            ],
+            "ballSeamP16": [
+              3.4,
+              -1.6
+            ]
+          },
+          "parts": [
+            {
+              "id": "paper",
+              "start": true,
+              "poly": [
+                "PL",
+                "PR",
+                "PT",
+                "PU"
+              ],
+              "fill": "paper",
+              "ink": "muted",
+              "w": 5
+            },
+            {
+              "id": "circleOutline",
+              "start": true,
+              "circle": "C",
+              "r": 1.6,
+              "fill": "none",
+              "ink": "accent",
+              "w": 6
+            },
+            {
+              "id": "circleColour",
+              "start": true,
+              "circle": "C",
+              "r": 1.6,
+              "fill": "accent-fill",
+              "ink": "accent",
+              "w": 6
+            },
+            {
+              "id": "ball",
+              "group": "sphere",
+              "circle": "B",
+              "r": 1.6,
+              "fill": "warm-fill",
+              "ink": "warm",
+              "w": 6
+            },
+            {
+              "id": "shine",
+              "group": "sphere",
+              "circle": "HL",
+              "r": 0.22,
+              "fill": "paper",
+              "ink": "paper"
+            },
+            {
+              "id": "circleName",
+              "label": "\\text{circle}",
+              "at": "SC",
+              "dir": "c",
+              "ink": "accent",
+              "size": "m"
+            },
+            {
+              "id": "sphereName",
+              "label": "\\text{sphere}",
+              "at": "SB",
+              "dir": "c",
+              "ink": "warm",
+              "size": "m"
+            },
+            {
+              "id": "ballBelt",
+              "group": "sphere",
+              "curve": [
+                "ballBeltP0",
+                "ballBeltP1",
+                "ballBeltP2",
+                "ballBeltP3",
+                "ballBeltP4",
+                "ballBeltP5",
+                "ballBeltP6",
+                "ballBeltP7",
+                "ballBeltP8",
+                "ballBeltP9",
+                "ballBeltP10",
+                "ballBeltP11",
+                "ballBeltP12",
+                "ballBeltP13",
+                "ballBeltP14",
+                "ballBeltP15",
+                "ballBeltP16"
+              ],
+              "ink": "warm",
+              "w": 5
+            },
+            {
+              "id": "ballSeam",
+              "group": "sphere",
+              "curve": [
+                "ballSeamP0",
+                "ballSeamP1",
+                "ballSeamP2",
+                "ballSeamP3",
+                "ballSeamP4",
+                "ballSeamP5",
+                "ballSeamP6",
+                "ballSeamP7",
+                "ballSeamP8",
+                "ballSeamP9",
+                "ballSeamP10",
+                "ballSeamP11",
+                "ballSeamP12",
+                "ballSeamP13",
+                "ballSeamP14",
+                "ballSeamP15",
+                "ballSeamP16"
+              ],
+              "ink": "warm",
+              "w": 5
+            }
+          ]
+        },
+        "beats": [
+          {
+            "say": "Look at this round drawing. Is it flat or solid? What is its name?",
+            "pause": 0.8,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "view",
+                "to": [
+                  -6,
+                  -2.7,
+                  -1,
+                  2.7
+                ],
+                "at": "Look"
+              },
+              {
+                "do": "clear"
+              },
+              {
+                "do": "problem",
+                "text": "Look at the shape on the paper. Is it flat or solid? What is its name?",
+                "choices": [
+                  "cone",
+                  "cylinder",
+                  "sphere",
+                  "circle"
+                ],
+                "id": "circleProblem"
+              },
+              {
+                "do": "highlight",
+                "target": "circleOutline",
+                "at": "round"
+              }
+            ]
+          },
+          {
+            "say": "It's coloured in. Does that make it solid?",
+            "pause": 0.4,
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "highlight",
+                "target": "circleColour",
+                "at": "coloured"
+              }
+            ]
+          },
+          {
+            "say": "Colour fills the drawing. It adds no thickness.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "hide",
+                "target": "circleColour",
+                "at": "no"
+              },
+              {
+                "do": "text",
+                "text": "Colour does not add thickness.",
+                "at": "thickness"
+              }
+            ]
+          },
+          {
+            "say": "Compare a ball. It has thickness and is round every way.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "view",
+                "to": [
+                  -6.1,
+                  -3.2,
+                  5.8,
+                  2.7
+                ],
+                "at": "ball"
+              },
+              {
+                "do": "show",
+                "target": "sphere",
+                "at": "ball"
+              },
+              {
+                "do": "highlight",
+                "target": "ballSeam",
+                "at": "every"
+              }
+            ]
+          },
+          {
+            "say": "The ball's solid shape is called a sphere.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "show",
+                "target": "sphereName",
+                "at": "sphere"
+              },
+              {
+                "do": "highlight",
+                "target": "ball",
+                "at": "solid"
+              }
+            ]
+          },
+          {
+            "say": "The shape on the paper is flat and round. It's a circle.",
+            "pause": 0.8,
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "highlight",
+                "target": "circleOutline",
+                "at": "paper"
+              },
+              {
+                "do": "show",
+                "target": "circleName",
+                "at": "circle"
+              },
+              {
+                "do": "answer",
+                "tex": "\\text{flat, circle}",
+                "id": "circleAnswer",
+                "at": "circle"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "figure": {
+          "view": [
+            -1.65,
+            -2.6,
+            1.65,
+            2.6
+          ],
+          "points": {
+            "A": [
+              -1.05,
+              -2
+            ],
+            "B": [
+              1.05,
+              -2
+            ],
+            "C": [
+              1.05,
+              2
+            ],
+            "D": [
+              -1.05,
+              2
+            ]
+          },
+          "parts": [
+            {
+              "id": "rectangle",
+              "start": true,
+              "poly": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "fill": "none",
+              "ink": "accent",
+              "w": 5
+            },
+            {
+              "id": "bottom",
+              "seg": [
+                "A",
+                "B"
+              ],
+              "ink": "accent",
+              "w": 7
+            },
+            {
+              "id": "right",
+              "seg": [
+                "B",
+                "C"
+              ],
+              "ink": "accent",
+              "w": 7
+            },
+            {
+              "id": "top",
+              "seg": [
+                "C",
+                "D"
+              ],
+              "ink": "accent",
+              "w": 7
+            },
+            {
+              "id": "left",
+              "seg": [
+                "D",
+                "A"
+              ],
+              "ink": "accent",
+              "w": 7
+            },
+            {
+              "id": "cornerA",
+              "group": "corners",
+              "angle": [
+                "B",
+                "A",
+                "D"
+              ],
+              "fill": "none",
+              "ink": "gold",
+              "r": 30,
+              "right": true
+            },
+            {
+              "id": "cornerB",
+              "group": "corners",
+              "angle": [
+                "A",
+                "B",
+                "C"
+              ],
+              "fill": "none",
+              "ink": "gold",
+              "r": 30,
+              "right": true
+            },
+            {
+              "id": "cornerC",
+              "group": "corners",
+              "angle": [
+                "B",
+                "C",
+                "D"
+              ],
+              "fill": "none",
+              "ink": "gold",
+              "r": 30,
+              "right": true
+            },
+            {
+              "id": "cornerD",
+              "group": "corners",
+              "angle": [
+                "C",
+                "D",
+                "A"
+              ],
+              "fill": "none",
+              "ink": "gold",
+              "r": 30,
+              "right": true
+            }
+          ]
+        },
+        "beats": [
+          {
+            "say": "A door's outline makes this shape. Flat or solid? What is its name?",
+            "pause": 0.8,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "clear"
+              },
+              {
+                "do": "problem",
+                "text": "Look at this shape. Is it flat or solid? What is its name?",
+                "choices": [
+                  "rectangle",
+                  "cube",
+                  "circle",
+                  "cylinder"
+                ],
+                "id": "rectangleProblem"
+              },
+              {
+                "do": "highlight",
+                "target": "rectangle",
+                "at": "outline"
+              },
+              {
+                "do": "highlight",
+                "target": "rectangle",
+                "at": "name"
+              }
+            ]
+          },
+          {
+            "say": "A side is a straight piece of the outline. Two are long; two are short.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "draw",
+                "target": [
+                  "left",
+                  "right"
+                ],
+                "at": "long"
+              },
+              {
+                "do": "draw",
+                "target": [
+                  "top",
+                  "bottom"
+                ],
+                "at": "short"
+              }
+            ]
+          },
+          {
+            "say": "Square corners fit a paper corner. This shape has four.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "show",
+                "target": "corners",
+                "at": "corners"
+              },
+              {
+                "do": "text",
+                "text": "4 square corners",
+                "at": "four"
+              }
+            ]
+          },
+          {
+            "say": "It's flat. The name is rectangle, even standing tall.",
+            "pause": 0.6,
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "highlight",
+                "target": "rectangle",
+                "at": "flat"
+              },
+              {
+                "do": "answer",
+                "tex": "\\text{flat, rectangle}",
+                "id": "rectangleAnswer",
+                "at": "rectangle"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "figure": {
+          "view": [
+            -2.15,
+            -2.15,
+            2.15,
+            2.15
+          ],
+          "points": {
+            "A": [
+              0,
+              -1.65
+            ],
+            "B": [
+              1.65,
+              0
+            ],
+            "C": [
+              0,
+              1.65
+            ],
+            "D": [
+              -1.65,
+              0
+            ]
+          },
+          "parts": [
+            {
+              "id": "square",
+              "start": true,
+              "poly": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "fill": "accent-fill",
+              "ink": "accent",
+              "w": 5
+            },
+            {
+              "id": "sideA",
+              "group": "sides",
+              "seg": [
+                "A",
+                "B"
+              ],
+              "ink": "gold",
+              "w": 7
+            },
+            {
+              "id": "sideB",
+              "group": "sides",
+              "seg": [
+                "B",
+                "C"
+              ],
+              "ink": "gold",
+              "w": 7
+            },
+            {
+              "id": "sideC",
+              "group": "sides",
+              "seg": [
+                "C",
+                "D"
+              ],
+              "ink": "gold",
+              "w": 7
+            },
+            {
+              "id": "sideD",
+              "group": "sides",
+              "seg": [
+                "D",
+                "A"
+              ],
+              "ink": "gold",
+              "w": 7
+            },
+            {
+              "id": "cornerA",
+              "group": "corners",
+              "angle": [
+                "B",
+                "A",
+                "D"
+              ],
+              "fill": "none",
+              "ink": "gold",
+              "r": 24,
+              "right": true
+            },
+            {
+              "id": "cornerB",
+              "group": "corners",
+              "angle": [
+                "A",
+                "B",
+                "C"
+              ],
+              "fill": "none",
+              "ink": "gold",
+              "r": 24,
+              "right": true
+            },
+            {
+              "id": "cornerC",
+              "group": "corners",
+              "angle": [
+                "B",
+                "C",
+                "D"
+              ],
+              "fill": "none",
+              "ink": "gold",
+              "r": 24,
+              "right": true
+            },
+            {
+              "id": "cornerD",
+              "group": "corners",
+              "angle": [
+                "C",
+                "D",
+                "A"
+              ],
+              "fill": "none",
+              "ink": "gold",
+              "r": 24,
+              "right": true
+            }
+          ]
+        },
+        "beats": [
+          {
+            "say": "This shape is tilted. Flat or solid? What is its name?",
+            "pause": 0.8,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "clear"
+              },
+              {
+                "do": "problem",
+                "text": "Look at this shape. Is it flat or solid? What is its name?",
+                "choices": [
+                  "square",
+                  "triangle",
+                  "cube",
+                  "sphere"
+                ],
+                "id": "squareProblem"
+              },
+              {
+                "do": "highlight",
+                "target": "square",
+                "at": "tilted"
+              }
+            ]
+          },
+          {
+            "say": "Its four sides have equal lengths, and its four corners are square.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "draw",
+                "target": "sides",
+                "at": "sides"
+              },
+              {
+                "do": "show",
+                "target": "corners",
+                "at": "corners"
+              }
+            ]
+          },
+          {
+            "say": "Flat, square. Turning it doesn't give it thickness.",
+            "pause": 1,
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "answer",
+                "tex": "\\text{flat, square}",
+                "id": "squareAnswer",
+                "at": "square"
+              },
+              {
+                "do": "move",
+                "points": {
+                  "A": [
+                    -1.1667261889578033,
+                    -1.1667261889578033
+                  ],
+                  "B": [
+                    1.1667261889578033,
+                    -1.1667261889578033
+                  ],
+                  "C": [
+                    1.1667261889578033,
+                    1.1667261889578033
+                  ],
+                  "D": [
+                    -1.1667261889578033,
+                    1.1667261889578033
+                  ]
+                },
+                "at": "Turning"
+              },
+              {
+                "do": "view",
+                "to": [
+                  -1.7,
+                  -1.7,
+                  1.7,
+                  1.7
+                ],
+                "at": "thickness"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "figure": {
+          "view": [
+            -6,
+            -3.2,
+            5.3,
+            2.8
+          ],
+          "points": {
+            "T1": [
+              -5.3,
+              -1.45
+            ],
+            "T2": [
+              -2.3,
+              -1.45
+            ],
+            "T3": [
+              -3.8,
+              1.65
+            ],
+            "A": [
+              2.9,
+              2.2
+            ],
+            "L": [
+              1.25,
+              -1.2
+            ],
+            "R": [
+              4.55,
+              -1.2
+            ],
+            "LT": [
+              -3.8,
+              -2.7
+            ],
+            "LC": [
+              2.9,
+              -2.7
+            ],
+            "rim0": [
+              1.25,
+              -1.2
+            ],
+            "rim1": [
+              1.2641159787332126,
+              -1.2652630961100255
+            ],
+            "rim2": [
+              1.3062223866230371,
+              -1.32940952255126
+            ],
+            "rim3": [
+              1.3755987713563764,
+              -1.3913417161825445
+            ],
+            "rim4": [
+              1.4710580837556764,
+              -1.45
+            ],
+            "rim5": [
+              1.590966988519462,
+              -1.5043807145043604
+            ],
+            "rim6": [
+              1.7332738110421964,
+              -1.5535533905932737
+            ],
+            "rim7": [
+              1.8955436421356104,
+              -1.5966766701456174
+            ],
+            "rim8": [
+              2.0749999999999993,
+              -1.6330127018922191
+            ],
+            "rim9": [
+              2.268572336597602,
+              -1.6619397662556434
+            ],
+            "rim10": [
+              2.472948575580841,
+              -1.682962913144534
+            ],
+            "rim11": [
+              2.684631782836915,
+              -1.6957224306869052
+            ],
+            "rim12": [
+              2.8999999999999995,
+              -1.7
+            ],
+            "rim13": [
+              3.115368217163086,
+              -1.6957224306869052
+            ],
+            "rim14": [
+              3.32705142441916,
+              -1.682962913144534
+            ],
+            "rim15": [
+              3.531427663402398,
+              -1.6619397662556432
+            ],
+            "rim16": [
+              3.725,
+              -1.6330127018922194
+            ],
+            "rim17": [
+              3.9044563578643885,
+              -1.5966766701456176
+            ],
+            "rim18": [
+              4.066726188957803,
+              -1.5535533905932737
+            ],
+            "rim19": [
+              4.209033011480537,
+              -1.5043807145043604
+            ],
+            "rim20": [
+              4.3289419162443235,
+              -1.4500000000000002
+            ],
+            "rim21": [
+              4.424401228643623,
+              -1.3913417161825448
+            ],
+            "rim22": [
+              4.493777613376962,
+              -1.3294095225512603
+            ],
+            "rim23": [
+              4.535884021266787,
+              -1.2652630961100257
+            ],
+            "rim24": [
+              4.55,
+              -1.2000000000000002
+            ],
+            "rimFrontP0": [
+              1.25,
+              -1.2
+            ],
+            "rimFrontP1": [
+              1.2817042873346696,
+              -1.297545161008064
+            ],
+            "rimFrontP2": [
+              1.3755987713563764,
+              -1.3913417161825445
+            ],
+            "rimFrontP3": [
+              1.5280751397008003,
+              -1.477785116509801
+            ],
+            "rimFrontP4": [
+              1.7332738110421964,
+              -1.5535533905932737
+            ],
+            "rimFrontP5": [
+              1.9833091155176552,
+              -1.6157348061512724
+            ],
+            "rimFrontP6": [
+              2.268572336597602,
+              -1.6619397662556434
+            ],
+            "rimFrontP7": [
+              2.578100968673388,
+              -1.6903926402016152
+            ],
+            "rimFrontP8": [
+              2.8999999999999995,
+              -1.7
+            ],
+            "rimFrontP9": [
+              3.2218990313266116,
+              -1.6903926402016152
+            ],
+            "rimFrontP10": [
+              3.531427663402398,
+              -1.6619397662556432
+            ],
+            "rimFrontP11": [
+              3.816690884482343,
+              -1.6157348061512726
+            ],
+            "rimFrontP12": [
+              4.066726188957803,
+              -1.5535533905932737
+            ],
+            "rimFrontP13": [
+              4.271924860299199,
+              -1.477785116509801
+            ],
+            "rimFrontP14": [
+              4.424401228643623,
+              -1.3913417161825448
+            ],
+            "rimFrontP15": [
+              4.51829571266533,
+              -1.2975451610080644
+            ],
+            "rimFrontP16": [
+              4.55,
+              -1.2000000000000002
+            ],
+            "h0a": [
+              4.55,
+              -1.2
+            ],
+            "h0b": [
+              4.515717637525913,
+              -1.0986063523217438
+            ],
+            "h1a": [
+              4.469243251887003,
+              -1.0454915028125262
+            ],
+            "h1b": [
+              4.3332419988230155,
+              -0.9522706657837963
+            ],
+            "h2a": [
+              4.234878040718663,
+              -0.9061073738537634
+            ],
+            "h2b": [
+              4.010470647291126,
+              -0.8301844525106952
+            ],
+            "h3a": [
+              3.8698456662825804,
+              -0.7954915028125262
+            ],
+            "h3b": [
+              3.5789986916984295,
+              -0.7442983616822774
+            ],
+            "h4a": [
+              3.409878040718663,
+              -0.7244717418524231
+            ],
+            "h4b": [
+              3.081061613300225,
+              -0.70301952227241
+            ],
+            "h5a": [
+              2.9,
+              -0.7
+            ],
+            "h5b": [
+              2.5654009626617547,
+              -0.7103885946891171
+            ],
+            "h6a": [
+              2.3901219592813367,
+              -0.7244717418524231
+            ],
+            "h6b": [
+              2.0824931970865275,
+              -0.7656842427809043
+            ],
+            "h7a": [
+              1.9301543337174194,
+              -0.7954915028125262
+            ],
+            "h7b": [
+              1.6796086932852938,
+              -0.8634937432451133
+            ],
+            "h8a": [
+              1.5651219592813368,
+              -0.9061073738537633
+            ],
+            "h8b": [
+              1.3961845935515154,
+              -0.9942428206974456
+            ],
+            "h9a": [
+              1.3307567481129967,
+              -1.0454915028125262
+            ],
+            "h9b": [
+              1.2599644234989535,
+              -1.1451328444544773
+            ]
+          },
+          "parts": [
+            {
+              "id": "cone",
+              "start": true,
+              "poly": [
+                "A",
+                "rim0",
+                "rim1",
+                "rim2",
+                "rim3",
+                "rim4",
+                "rim5",
+                "rim6",
+                "rim7",
+                "rim8",
+                "rim9",
+                "rim10",
+                "rim11",
+                "rim12",
+                "rim13",
+                "rim14",
+                "rim15",
+                "rim16",
+                "rim17",
+                "rim18",
+                "rim19",
+                "rim20",
+                "rim21",
+                "rim22",
+                "rim23",
+                "rim24"
+              ],
+              "fill": "accent-fill",
+              "ink": "accent",
+              "w": 5
+            },
+            {
+              "id": "triangle",
+              "poly": [
+                "T1",
+                "T2",
+                "T3"
+              ],
+              "fill": "warm-fill",
+              "ink": "warm",
+              "w": 5
+            },
+            {
+              "id": "triangleName",
+              "label": "\\text{triangle}",
+              "at": "LT",
+              "dir": "c",
+              "ink": "warm",
+              "size": "m"
+            },
+            {
+              "id": "coneName",
+              "label": "\\text{cone}",
+              "at": "LC",
+              "dir": "c",
+              "ink": "accent",
+              "size": "m"
+            },
+            {
+              "id": "rimFront",
+              "start": true,
+              "curve": [
+                "rimFrontP0",
+                "rimFrontP1",
+                "rimFrontP2",
+                "rimFrontP3",
+                "rimFrontP4",
+                "rimFrontP5",
+                "rimFrontP6",
+                "rimFrontP7",
+                "rimFrontP8",
+                "rimFrontP9",
+                "rimFrontP10",
+                "rimFrontP11",
+                "rimFrontP12",
+                "rimFrontP13",
+                "rimFrontP14",
+                "rimFrontP15",
+                "rimFrontP16"
+              ],
+              "ink": "accent",
+              "w": 5
+            },
+            {
+              "id": "hidden0",
+              "group": "rimBack",
+              "start": true,
+              "seg": [
+                "h0a",
+                "h0b"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "hidden1",
+              "group": "rimBack",
+              "start": true,
+              "seg": [
+                "h1a",
+                "h1b"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "hidden2",
+              "group": "rimBack",
+              "start": true,
+              "seg": [
+                "h2a",
+                "h2b"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "hidden3",
+              "group": "rimBack",
+              "start": true,
+              "seg": [
+                "h3a",
+                "h3b"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "hidden4",
+              "group": "rimBack",
+              "start": true,
+              "seg": [
+                "h4a",
+                "h4b"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "hidden5",
+              "group": "rimBack",
+              "start": true,
+              "seg": [
+                "h5a",
+                "h5b"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "hidden6",
+              "group": "rimBack",
+              "start": true,
+              "seg": [
+                "h6a",
+                "h6b"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "hidden7",
+              "group": "rimBack",
+              "start": true,
+              "seg": [
+                "h7a",
+                "h7b"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "hidden8",
+              "group": "rimBack",
+              "start": true,
+              "seg": [
+                "h8a",
+                "h8b"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "hidden9",
+              "group": "rimBack",
+              "start": true,
+              "seg": [
+                "h9a",
+                "h9b"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "tip",
+              "dot": "A",
+              "ink": "gold",
+              "r": 9
+            }
+          ]
+        },
+        "beats": [
+          {
+            "say": "A party hat has this shape. Flat or solid? What is its name?",
+            "pause": 0.8,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "view",
+                "to": [
+                  0.5,
+                  -3.1,
+                  5.3,
+                  2.8
+                ],
+                "at": "A"
+              },
+              {
+                "do": "clear"
+              },
+              {
+                "do": "problem",
+                "text": "Look at the party-hat shape. Is it flat or solid? What is its name?",
+                "choices": [
+                  "triangle",
+                  "cone",
+                  "circle",
+                  "cube"
+                ],
+                "id": "coneProblem"
+              },
+              {
+                "do": "highlight",
+                "target": "cone",
+                "at": "hat"
+              }
+            ]
+          },
+          {
+            "say": "Triangle? It comes to a point.",
+            "pause": 0.3,
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "show",
+                "target": "tip",
+                "at": "point"
+              }
+            ]
+          },
+          {
+            "say": "A triangle is flat, with three straight sides.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "view",
+                "to": [
+                  -6,
+                  -3.2,
+                  5.3,
+                  2.8
+                ],
+                "at": "triangle"
+              },
+              {
+                "do": "show",
+                "target": "triangle",
+                "at": "triangle"
+              },
+              {
+                "do": "show",
+                "target": "triangleName",
+                "at": "triangle"
+              },
+              {
+                "do": "highlight",
+                "target": "triangle",
+                "at": "sides"
+              }
+            ]
+          },
+          {
+            "say": "The hat curves around a circular end and narrows to a point.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "highlight",
+                "target": [
+                  "rimFront",
+                  "rimBack"
+                ],
+                "at": "circular"
+              },
+              {
+                "do": "highlight",
+                "target": "tip",
+                "at": "point"
+              }
+            ]
+          },
+          {
+            "say": "That solid shape is a cone.",
+            "pause": 0.8,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "show",
+                "target": "coneName",
+                "at": "cone"
+              },
+              {
+                "do": "answer",
+                "tex": "\\text{solid, cone}",
+                "id": "coneAnswer",
+                "at": "cone"
+              },
+              {
+                "do": "highlight",
+                "target": "cone",
+                "at": "solid"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "figure": {
+          "view": [
+            -1.05,
+            -1.35,
+            1.05,
+            1.35
+          ],
+          "points": {
+            "c0sP0": [
+              -0.65,
+              -0.6798
+            ],
+            "c0sP1": [
+              -0.6469,
+              -0.7067
+            ],
+            "c0sP2": [
+              -0.6375,
+              -0.7334
+            ],
+            "c0sP3": [
+              -0.622,
+              -0.7595
+            ],
+            "c0sP4": [
+              -0.6005,
+              -0.7849
+            ],
+            "c0sP5": [
+              -0.5732,
+              -0.8092
+            ],
+            "c0sP6": [
+              -0.5405,
+              -0.8324
+            ],
+            "c0sP7": [
+              -0.5025,
+              -0.854
+            ],
+            "c0sP8": [
+              -0.4596,
+              -0.874
+            ],
+            "c0sP9": [
+              -0.4124,
+              -0.892
+            ],
+            "c0sP10": [
+              -0.3611,
+              -0.9081
+            ],
+            "c0sP11": [
+              -0.3064,
+              -0.922
+            ],
+            "c0sP12": [
+              -0.2487,
+              -0.9336
+            ],
+            "c0sP13": [
+              -0.1887,
+              -0.9427
+            ],
+            "c0sP14": [
+              -0.1268,
+              -0.9491
+            ],
+            "c0sP15": [
+              -0.0637,
+              -0.9531
+            ],
+            "c0sP16": [
+              0,
+              -0.9544
+            ],
+            "c0sP17": [
+              0.0637,
+              -0.9531
+            ],
+            "c0sP18": [
+              0.1268,
+              -0.9491
+            ],
+            "c0sP19": [
+              0.1887,
+              -0.9427
+            ],
+            "c0sP20": [
+              0.2487,
+              -0.9336
+            ],
+            "c0sP21": [
+              0.3064,
+              -0.922
+            ],
+            "c0sP22": [
+              0.3611,
+              -0.9081
+            ],
+            "c0sP23": [
+              0.4124,
+              -0.892
+            ],
+            "c0sP24": [
+              0.4596,
+              -0.874
+            ],
+            "c0sP25": [
+              0.5025,
+              -0.854
+            ],
+            "c0sP26": [
+              0.5405,
+              -0.8324
+            ],
+            "c0sP27": [
+              0.5732,
+              -0.8092
+            ],
+            "c0sP28": [
+              0.6005,
+              -0.7849
+            ],
+            "c0sP29": [
+              0.622,
+              -0.7595
+            ],
+            "c0sP30": [
+              0.6375,
+              -0.7334
+            ],
+            "c0sP31": [
+              0.6469,
+              -0.7067
+            ],
+            "c0sP32": [
+              0.65,
+              -0.6798
+            ],
+            "c0sP33": [
+              0.65,
+              0.6797
+            ],
+            "c0sP34": [
+              0.6469,
+              0.6528
+            ],
+            "c0sP35": [
+              0.6375,
+              0.6262
+            ],
+            "c0sP36": [
+              0.622,
+              0.6001
+            ],
+            "c0sP37": [
+              0.6005,
+              0.5746
+            ],
+            "c0sP38": [
+              0.5732,
+              0.5502
+            ],
+            "c0sP39": [
+              0.5405,
+              0.5272
+            ],
+            "c0sP40": [
+              0.5025,
+              0.5055
+            ],
+            "c0sP41": [
+              0.4596,
+              0.4855
+            ],
+            "c0sP42": [
+              0.4124,
+              0.4674
+            ],
+            "c0sP43": [
+              0.3611,
+              0.4513
+            ],
+            "c0sP44": [
+              0.3064,
+              0.4374
+            ],
+            "c0sP45": [
+              0.2487,
+              0.4259
+            ],
+            "c0sP46": [
+              0.1887,
+              0.4168
+            ],
+            "c0sP47": [
+              0.1268,
+              0.4104
+            ],
+            "c0sP48": [
+              0.0637,
+              0.4064
+            ],
+            "c0sP49": [
+              0,
+              0.405
+            ],
+            "c0sP50": [
+              -0.0637,
+              0.4064
+            ],
+            "c0sP51": [
+              -0.1268,
+              0.4104
+            ],
+            "c0sP52": [
+              -0.1887,
+              0.4168
+            ],
+            "c0sP53": [
+              -0.2487,
+              0.4259
+            ],
+            "c0sP54": [
+              -0.3064,
+              0.4374
+            ],
+            "c0sP55": [
+              -0.3611,
+              0.4513
+            ],
+            "c0sP56": [
+              -0.4124,
+              0.4674
+            ],
+            "c0sP57": [
+              -0.4596,
+              0.4855
+            ],
+            "c0sP58": [
+              -0.5025,
+              0.5055
+            ],
+            "c0sP59": [
+              -0.5405,
+              0.5272
+            ],
+            "c0sP60": [
+              -0.5732,
+              0.5502
+            ],
+            "c0sP61": [
+              -0.6005,
+              0.5746
+            ],
+            "c0sP62": [
+              -0.622,
+              0.6001
+            ],
+            "c0sP63": [
+              -0.6375,
+              0.6262
+            ],
+            "c0sP64": [
+              -0.6469,
+              0.6528
+            ],
+            "c0sP65": [
+              -0.65,
+              0.6797
+            ],
+            "c0tP0": [
+              0.65,
+              0.6797
+            ],
+            "c0tP1": [
+              0.6469,
+              0.7067
+            ],
+            "c0tP2": [
+              0.6375,
+              0.7333
+            ],
+            "c0tP3": [
+              0.622,
+              0.7595
+            ],
+            "c0tP4": [
+              0.6005,
+              0.7848
+            ],
+            "c0tP5": [
+              0.5732,
+              0.8093
+            ],
+            "c0tP6": [
+              0.5405,
+              0.8324
+            ],
+            "c0tP7": [
+              0.5025,
+              0.8541
+            ],
+            "c0tP8": [
+              0.4596,
+              0.874
+            ],
+            "c0tP9": [
+              0.4124,
+              0.8921
+            ],
+            "c0tP10": [
+              0.3611,
+              0.9082
+            ],
+            "c0tP11": [
+              0.3064,
+              0.922
+            ],
+            "c0tP12": [
+              0.2487,
+              0.9335
+            ],
+            "c0tP13": [
+              0.1887,
+              0.9427
+            ],
+            "c0tP14": [
+              0.1268,
+              0.9492
+            ],
+            "c0tP15": [
+              0.0637,
+              0.9532
+            ],
+            "c0tP16": [
+              0,
+              0.9545
+            ],
+            "c0tP17": [
+              -0.0637,
+              0.9532
+            ],
+            "c0tP18": [
+              -0.1268,
+              0.9492
+            ],
+            "c0tP19": [
+              -0.1887,
+              0.9427
+            ],
+            "c0tP20": [
+              -0.2487,
+              0.9335
+            ],
+            "c0tP21": [
+              -0.3064,
+              0.922
+            ],
+            "c0tP22": [
+              -0.3611,
+              0.9082
+            ],
+            "c0tP23": [
+              -0.4124,
+              0.8921
+            ],
+            "c0tP24": [
+              -0.4596,
+              0.874
+            ],
+            "c0tP25": [
+              -0.5025,
+              0.8541
+            ],
+            "c0tP26": [
+              -0.5405,
+              0.8324
+            ],
+            "c0tP27": [
+              -0.5732,
+              0.8093
+            ],
+            "c0tP28": [
+              -0.6005,
+              0.7848
+            ],
+            "c0tP29": [
+              -0.622,
+              0.7595
+            ],
+            "c0tP30": [
+              -0.6375,
+              0.7333
+            ],
+            "c0tP31": [
+              -0.6469,
+              0.7067
+            ],
+            "c0tP32": [
+              -0.65,
+              0.6797
+            ],
+            "c0tP33": [
+              -0.6469,
+              0.6528
+            ],
+            "c0tP34": [
+              -0.6375,
+              0.6262
+            ],
+            "c0tP35": [
+              -0.622,
+              0.6001
+            ],
+            "c0tP36": [
+              -0.6005,
+              0.5746
+            ],
+            "c0tP37": [
+              -0.5732,
+              0.5502
+            ],
+            "c0tP38": [
+              -0.5405,
+              0.5272
+            ],
+            "c0tP39": [
+              -0.5025,
+              0.5055
+            ],
+            "c0tP40": [
+              -0.4596,
+              0.4855
+            ],
+            "c0tP41": [
+              -0.4124,
+              0.4674
+            ],
+            "c0tP42": [
+              -0.3611,
+              0.4513
+            ],
+            "c0tP43": [
+              -0.3064,
+              0.4374
+            ],
+            "c0tP44": [
+              -0.2487,
+              0.4259
+            ],
+            "c0tP45": [
+              -0.1887,
+              0.4168
+            ],
+            "c0tP46": [
+              -0.1268,
+              0.4104
+            ],
+            "c0tP47": [
+              -0.0637,
+              0.4064
+            ],
+            "c0tP48": [
+              0,
+              0.405
+            ],
+            "c0tP49": [
+              0.0637,
+              0.4064
+            ],
+            "c0tP50": [
+              0.1268,
+              0.4104
+            ],
+            "c0tP51": [
+              0.1887,
+              0.4168
+            ],
+            "c0tP52": [
+              0.2487,
+              0.4259
+            ],
+            "c0tP53": [
+              0.3064,
+              0.4374
+            ],
+            "c0tP54": [
+              0.3611,
+              0.4513
+            ],
+            "c0tP55": [
+              0.4124,
+              0.4674
+            ],
+            "c0tP56": [
+              0.4596,
+              0.4855
+            ],
+            "c0tP57": [
+              0.5025,
+              0.5055
+            ],
+            "c0tP58": [
+              0.5405,
+              0.5272
+            ],
+            "c0tP59": [
+              0.5732,
+              0.5502
+            ],
+            "c0tP60": [
+              0.6005,
+              0.5746
+            ],
+            "c0tP61": [
+              0.622,
+              0.6001
+            ],
+            "c0tP62": [
+              0.6375,
+              0.6262
+            ],
+            "c0tP63": [
+              0.6469,
+              0.6528
+            ],
+            "c0bP0": [
+              0.65,
+              -0.6798
+            ],
+            "c0bP1": [
+              0.6469,
+              -0.6528
+            ],
+            "c0bP2": [
+              0.6375,
+              -0.6262
+            ],
+            "c0bP3": [
+              0.622,
+              -0.6001
+            ],
+            "c0bP4": [
+              0.6005,
+              -0.5747
+            ],
+            "c0bP5": [
+              0.5732,
+              -0.5503
+            ],
+            "c0bP6": [
+              0.5405,
+              -0.5271
+            ],
+            "c0bP7": [
+              0.5025,
+              -0.5055
+            ],
+            "c0bP8": [
+              0.4596,
+              -0.4855
+            ],
+            "c0bP9": [
+              0.4124,
+              -0.4675
+            ],
+            "c0bP10": [
+              0.3611,
+              -0.4514
+            ],
+            "c0bP11": [
+              0.3064,
+              -0.4375
+            ],
+            "c0bP12": [
+              0.2487,
+              -0.426
+            ],
+            "c0bP13": [
+              0.1887,
+              -0.4169
+            ],
+            "c0bP14": [
+              0.1268,
+              -0.4104
+            ],
+            "c0bP15": [
+              0.0637,
+              -0.4064
+            ],
+            "c0bP16": [
+              0,
+              -0.4051
+            ],
+            "c0bP17": [
+              -0.0637,
+              -0.4064
+            ],
+            "c0bP18": [
+              -0.1268,
+              -0.4104
+            ],
+            "c0bP19": [
+              -0.1887,
+              -0.4169
+            ],
+            "c0bP20": [
+              -0.2487,
+              -0.426
+            ],
+            "c0bP21": [
+              -0.3064,
+              -0.4375
+            ],
+            "c0bP22": [
+              -0.3611,
+              -0.4514
+            ],
+            "c0bP23": [
+              -0.4124,
+              -0.4675
+            ],
+            "c0bP24": [
+              -0.4596,
+              -0.4855
+            ],
+            "c0bP25": [
+              -0.5025,
+              -0.5055
+            ],
+            "c0bP26": [
+              -0.5405,
+              -0.5271
+            ],
+            "c0bP27": [
+              -0.5732,
+              -0.5503
+            ],
+            "c0bP28": [
+              -0.6005,
+              -0.5747
+            ],
+            "c0bP29": [
+              -0.622,
+              -0.6001
+            ],
+            "c0bP30": [
+              -0.6375,
+              -0.6262
+            ],
+            "c0bP31": [
+              -0.6469,
+              -0.6528
+            ],
+            "c0bP32": [
+              -0.65,
+              -0.6798
+            ]
+          },
+          "parts": [
+            {
+              "id": "c0s",
+              "start": true,
+              "poly": [
+                "c0sP0",
+                "c0sP1",
+                "c0sP2",
+                "c0sP3",
+                "c0sP4",
+                "c0sP5",
+                "c0sP6",
+                "c0sP7",
+                "c0sP8",
+                "c0sP9",
+                "c0sP10",
+                "c0sP11",
+                "c0sP12",
+                "c0sP13",
+                "c0sP14",
+                "c0sP15",
+                "c0sP16",
+                "c0sP17",
+                "c0sP18",
+                "c0sP19",
+                "c0sP20",
+                "c0sP21",
+                "c0sP22",
+                "c0sP23",
+                "c0sP24",
+                "c0sP25",
+                "c0sP26",
+                "c0sP27",
+                "c0sP28",
+                "c0sP29",
+                "c0sP30",
+                "c0sP31",
+                "c0sP32",
+                "c0sP33",
+                "c0sP34",
+                "c0sP35",
+                "c0sP36",
+                "c0sP37",
+                "c0sP38",
+                "c0sP39",
+                "c0sP40",
+                "c0sP41",
+                "c0sP42",
+                "c0sP43",
+                "c0sP44",
+                "c0sP45",
+                "c0sP46",
+                "c0sP47",
+                "c0sP48",
+                "c0sP49",
+                "c0sP50",
+                "c0sP51",
+                "c0sP52",
+                "c0sP53",
+                "c0sP54",
+                "c0sP55",
+                "c0sP56",
+                "c0sP57",
+                "c0sP58",
+                "c0sP59",
+                "c0sP60",
+                "c0sP61",
+                "c0sP62",
+                "c0sP63",
+                "c0sP64",
+                "c0sP65"
+              ],
+              "fill": "accent-fill",
+              "ink": "accent",
+              "w": 5
+            },
+            {
+              "id": "c0t",
+              "start": true,
+              "poly": [
+                "c0tP0",
+                "c0tP1",
+                "c0tP2",
+                "c0tP3",
+                "c0tP4",
+                "c0tP5",
+                "c0tP6",
+                "c0tP7",
+                "c0tP8",
+                "c0tP9",
+                "c0tP10",
+                "c0tP11",
+                "c0tP12",
+                "c0tP13",
+                "c0tP14",
+                "c0tP15",
+                "c0tP16",
+                "c0tP17",
+                "c0tP18",
+                "c0tP19",
+                "c0tP20",
+                "c0tP21",
+                "c0tP22",
+                "c0tP23",
+                "c0tP24",
+                "c0tP25",
+                "c0tP26",
+                "c0tP27",
+                "c0tP28",
+                "c0tP29",
+                "c0tP30",
+                "c0tP31",
+                "c0tP32",
+                "c0tP33",
+                "c0tP34",
+                "c0tP35",
+                "c0tP36",
+                "c0tP37",
+                "c0tP38",
+                "c0tP39",
+                "c0tP40",
+                "c0tP41",
+                "c0tP42",
+                "c0tP43",
+                "c0tP44",
+                "c0tP45",
+                "c0tP46",
+                "c0tP47",
+                "c0tP48",
+                "c0tP49",
+                "c0tP50",
+                "c0tP51",
+                "c0tP52",
+                "c0tP53",
+                "c0tP54",
+                "c0tP55",
+                "c0tP56",
+                "c0tP57",
+                "c0tP58",
+                "c0tP59",
+                "c0tP60",
+                "c0tP61",
+                "c0tP62",
+                "c0tP63"
+              ],
+              "fill": "accent-fill",
+              "ink": "accent",
+              "w": 5
+            },
+            {
+              "id": "c0bS0",
+              "group": "c0b",
+              "start": true,
+              "seg": [
+                "c0bP0",
+                "c0bP1"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "c0bS2",
+              "group": "c0b",
+              "start": true,
+              "seg": [
+                "c0bP2",
+                "c0bP3"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "c0bS4",
+              "group": "c0b",
+              "start": true,
+              "seg": [
+                "c0bP4",
+                "c0bP5"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "c0bS6",
+              "group": "c0b",
+              "start": true,
+              "seg": [
+                "c0bP6",
+                "c0bP7"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "c0bS8",
+              "group": "c0b",
+              "start": true,
+              "seg": [
+                "c0bP8",
+                "c0bP9"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "c0bS10",
+              "group": "c0b",
+              "start": true,
+              "seg": [
+                "c0bP10",
+                "c0bP11"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "c0bS12",
+              "group": "c0b",
+              "start": true,
+              "seg": [
+                "c0bP12",
+                "c0bP13"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "c0bS14",
+              "group": "c0b",
+              "start": true,
+              "seg": [
+                "c0bP14",
+                "c0bP15"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "c0bS16",
+              "group": "c0b",
+              "start": true,
+              "seg": [
+                "c0bP16",
+                "c0bP17"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "c0bS18",
+              "group": "c0b",
+              "start": true,
+              "seg": [
+                "c0bP18",
+                "c0bP19"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "c0bS20",
+              "group": "c0b",
+              "start": true,
+              "seg": [
+                "c0bP20",
+                "c0bP21"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "c0bS22",
+              "group": "c0b",
+              "start": true,
+              "seg": [
+                "c0bP22",
+                "c0bP23"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "c0bS24",
+              "group": "c0b",
+              "start": true,
+              "seg": [
+                "c0bP24",
+                "c0bP25"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "c0bS26",
+              "group": "c0b",
+              "start": true,
+              "seg": [
+                "c0bP26",
+                "c0bP27"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "c0bS28",
+              "group": "c0b",
+              "start": true,
+              "seg": [
+                "c0bP28",
+                "c0bP29"
+              ],
+              "ink": "muted",
+              "w": 3
+            },
+            {
+              "id": "c0bS30",
+              "group": "c0b",
+              "start": true,
+              "seg": [
+                "c0bP30",
+                "c0bP31"
+              ],
+              "ink": "muted",
+              "w": 3
+            }
+          ]
+        },
+        "beats": [
+          {
+            "say": "Here is a shape like a soup can. Flat or solid? What is its name?",
+            "pause": 1,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "clear"
+              },
+              {
+                "do": "problem",
+                "text": "Look at this shape. Is it flat or solid? What is its name?",
+                "choices": [
+                  "rectangle",
+                  "circle",
+                  "cylinder",
+                  "cube"
+                ],
+                "id": "canProblem"
+              },
+              {
+                "do": "highlight",
+                "target": "c0s",
+                "at": "can"
+              }
+            ]
+          },
+          {
+            "say": "Solid. Two matching circle ends, with a curved surface between them.",
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "text",
+                "text": "Kind: solid",
+                "id": "canKind",
+                "at": "Solid"
+              },
+              {
+                "do": "highlight",
+                "target": "c0t",
+                "at": "ends"
+              },
+              {
+                "do": "highlight",
+                "target": "c0b",
+                "at": "ends"
+              },
+              {
+                "do": "highlight",
+                "target": "c0s",
+                "at": "curved"
+              }
+            ]
+          },
+          {
+            "say": "That solid is a cylinder.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "text",
+                "text": "Whole shape: cylinder",
+                "id": "canName",
+                "at": "cylinder"
+              }
+            ]
+          },
+          {
+            "say": "The dashed line shows the hidden part of its bottom edge.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "highlight",
+                "target": "c0b",
+                "at": "dashed"
+              }
+            ]
+          },
+          {
+            "say": "The ends are circles. The whole can shape is a cylinder.",
+            "pause": 0.8,
+            "speaker": "learner",
+            "do": [
+              {
+                "do": "highlight",
+                "target": "c0t",
+                "at": "ends"
+              },
+              {
+                "do": "answer",
+                "tex": "\\text{solid, cylinder}",
+                "id": "canAnswer",
+                "at": "cylinder"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "beats": [
+          {
+            "say": "First, decide whether the picture shows a flat shape or a solid.",
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "overview",
+                "of": "canAnswer"
+              },
+              {
+                "do": "recap",
+                "text": "Decide: flat or solid.",
+                "at": "First"
+              }
+            ]
+          },
+          {
+            "say": "Then name the whole shape. A flat face can belong to a solid.",
+            "pause": 1.2,
+            "speaker": "teacher",
+            "do": [
+              {
+                "do": "recap",
+                "text": "Name the whole shape.",
+                "at": "Then"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "timing": {
+    "duration": 160.69,
+    "shots": [
+      [
+        {
+          "start": 0.5,
+          "end": 2.66,
+          "words": [
+            {
+              "text": "Here",
+              "start": 0.5,
+              "end": 0.74
+            },
+            {
+              "text": "is",
+              "start": 0.8200000000000001,
+              "end": 0.9
+            },
+            {
+              "text": "a",
+              "start": 0.98,
+              "end": 1.06
+            },
+            {
+              "text": "square",
+              "start": 1.1400000000000001,
+              "end": 1.62
+            },
+            {
+              "text": "drawn",
+              "start": 1.7,
+              "end": 2.02
+            },
+            {
+              "text": "on",
+              "start": 2.1,
+              "end": 2.1799999999999997
+            },
+            {
+              "text": "paper.",
+              "start": 2.26,
+              "end": 2.66
+            }
+          ]
+        },
+        {
+          "start": 3.0400000000000005,
+          "end": 6.32,
+          "words": [
+            {
+              "text": "Flat",
+              "start": 3.0400000000000005,
+              "end": 3.440000000000001
+            },
+            {
+              "text": "means",
+              "start": 3.52,
+              "end": 3.7600000000000002
+            },
+            {
+              "text": "no",
+              "start": 3.9200000000000004,
+              "end": 4.08
+            },
+            {
+              "text": "thickness:",
+              "start": 4.16,
+              "end": 4.720000000000001
+            },
+            {
+              "text": "just",
+              "start": 5.040000000000001,
+              "end": 5.200000000000001
+            },
+            {
+              "text": "across",
+              "start": 5.280000000000001,
+              "end": 5.76
+            },
+            {
+              "text": "and",
+              "start": 5.84,
+              "end": 6
+            },
+            {
+              "text": "up.",
+              "start": 6.08,
+              "end": 6.32
+            }
+          ]
+        },
+        {
+          "start": 6.71001133786848,
+          "end": 10.39001133786848,
+          "words": [
+            {
+              "text": "This",
+              "start": 6.71001133786848,
+              "end": 6.87001133786848
+            },
+            {
+              "text": "toy",
+              "start": 6.950011337868482,
+              "end": 7.19001133786848
+            },
+            {
+              "text": "block",
+              "start": 7.270011337868482,
+              "end": 7.59001133786848
+            },
+            {
+              "text": "has",
+              "start": 7.67001133786848,
+              "end": 7.830011337868481
+            },
+            {
+              "text": "thickness",
+              "start": 7.910011337868481,
+              "end": 8.310011337868481
+            },
+            {
+              "text": "too.",
+              "start": 8.390011337868481,
+              "end": 8.710011337868481
+            },
+            {
+              "text": "Its",
+              "start": 9.03001133786848,
+              "end": 9.19001133786848
+            },
+            {
+              "text": "shape",
+              "start": 9.27001133786848,
+              "end": 9.59001133786848
+            },
+            {
+              "text": "is",
+              "start": 9.67001133786848,
+              "end": 9.83001133786848
+            },
+            {
+              "text": "solid.",
+              "start": 9.91001133786848,
+              "end": 10.39001133786848
+            }
+          ]
+        },
+        {
+          "start": 10.949999999999998,
+          "end": 12.949999999999998,
+          "words": [
+            {
+              "text": "We",
+              "start": 10.949999999999998,
+              "end": 11.03
+            },
+            {
+              "text": "name",
+              "start": 11.110000000000001,
+              "end": 11.35
+            },
+            {
+              "text": "the",
+              "start": 11.390000000000002,
+              "end": 11.430000000000001
+            },
+            {
+              "text": "shape",
+              "start": 11.51,
+              "end": 11.83
+            },
+            {
+              "text": "the",
+              "start": 11.87,
+              "end": 11.909999999999998
+            },
+            {
+              "text": "picture",
+              "start": 11.99,
+              "end": 12.31
+            },
+            {
+              "text": "shows.",
+              "start": 12.390000000000002,
+              "end": 12.949999999999998
+            }
+          ]
+        },
+        {
+          "start": 13.32001133786848,
+          "end": 15.800011337868481,
+          "words": [
+            {
+              "text": "A",
+              "start": 13.32001133786848,
+              "end": 13.400011337868483
+            },
+            {
+              "text": "face",
+              "start": 13.480011337868481,
+              "end": 13.88001133786848
+            },
+            {
+              "text": "is",
+              "start": 13.960011337868481,
+              "end": 14.040011337868483
+            },
+            {
+              "text": "a",
+              "start": 14.120011337868482,
+              "end": 14.20001133786848
+            },
+            {
+              "text": "flat",
+              "start": 14.280011337868482,
+              "end": 14.52001133786848
+            },
+            {
+              "text": "part",
+              "start": 14.600011337868482,
+              "end": 14.84001133786848
+            },
+            {
+              "text": "on",
+              "start": 14.920011337868479,
+              "end": 15.00001133786848
+            },
+            {
+              "text": "the",
+              "start": 15.080011337868482,
+              "end": 15.120011337868482
+            },
+            {
+              "text": "outside.",
+              "start": 15.16001133786848,
+              "end": 15.800011337868481
+            }
+          ]
+        },
+        {
+          "start": 16.17001133786848,
+          "end": 20.360011337868478,
+          "words": [
+            {
+              "text": "Champ,",
+              "start": 16.17001133786848,
+              "end": 16.49001133786848
+            },
+            {
+              "text": "is",
+              "start": 16.970011337868478,
+              "end": 17.050011337868483
+            },
+            {
+              "text": "the",
+              "start": 17.13001133786848,
+              "end": 17.21001133786848
+            },
+            {
+              "text": "whole",
+              "start": 17.290011337868478,
+              "end": 17.45001133786848
+            },
+            {
+              "text": "block",
+              "start": 17.53001133786848,
+              "end": 17.85001133786848
+            },
+            {
+              "text": "flat",
+              "start": 17.93001133786848,
+              "end": 18.330011337868477
+            },
+            {
+              "text": "or",
+              "start": 18.49001133786848,
+              "end": 18.57001133786848
+            },
+            {
+              "text": "solid?",
+              "start": 18.730011337868483,
+              "end": 19.13001133786848
+            },
+            {
+              "text": "What",
+              "start": 19.480011337868483,
+              "end": 19.56001133786848
+            },
+            {
+              "text": "is",
+              "start": 19.64001133786848,
+              "end": 19.720011337868478
+            },
+            {
+              "text": "its",
+              "start": 19.800011337868483,
+              "end": 19.88001133786848
+            },
+            {
+              "text": "name?",
+              "start": 19.96001133786848,
+              "end": 20.360011337868478
+            }
+          ]
+        },
+        {
+          "start": 21.98,
+          "end": 23.97,
+          "words": [
+            {
+              "text": "Square?",
+              "start": 21.98,
+              "end": 22.38
+            },
+            {
+              "text": "I",
+              "start": 22.85,
+              "end": 22.93
+            },
+            {
+              "text": "see",
+              "start": 23.01,
+              "end": 23.09
+            },
+            {
+              "text": "a",
+              "start": 23.17,
+              "end": 23.25
+            },
+            {
+              "text": "square",
+              "start": 23.45,
+              "end": 23.65
+            },
+            {
+              "text": "here.",
+              "start": 23.73,
+              "end": 23.97
+            }
+          ]
+        },
+        {
+          "start": 24.93,
+          "end": 27.93,
+          "words": [
+            {
+              "text": "That",
+              "start": 24.93,
+              "end": 25.09
+            },
+            {
+              "text": "face",
+              "start": 25.25,
+              "end": 25.65
+            },
+            {
+              "text": "is",
+              "start": 25.73,
+              "end": 25.89
+            },
+            {
+              "text": "square.",
+              "start": 26.169999999999998,
+              "end": 26.45
+            },
+            {
+              "text": "Look",
+              "start": 26.81,
+              "end": 26.89
+            },
+            {
+              "text": "at",
+              "start": 26.97,
+              "end": 27.05
+            },
+            {
+              "text": "the",
+              "start": 27.09,
+              "end": 27.13
+            },
+            {
+              "text": "whole",
+              "start": 27.21,
+              "end": 27.45
+            },
+            {
+              "text": "block.",
+              "start": 27.689999999999998,
+              "end": 27.93
+            }
+          ]
+        },
+        {
+          "start": 29.070000000000004,
+          "end": 34.849999999999994,
+          "words": [
+            {
+              "text": "It",
+              "start": 29.070000000000004,
+              "end": 29.150000000000002
+            },
+            {
+              "text": "has",
+              "start": 29.23,
+              "end": 29.470000000000002
+            },
+            {
+              "text": "six",
+              "start": 29.55,
+              "end": 29.790000000000003
+            },
+            {
+              "text": "square",
+              "start": 29.87,
+              "end": 30.27
+            },
+            {
+              "text": "faces,",
+              "start": 30.349999999999998,
+              "end": 30.91
+            },
+            {
+              "text": "all",
+              "start": 31.23,
+              "end": 31.389999999999997
+            },
+            {
+              "text": "the",
+              "start": 31.470000000000002,
+              "end": 31.55
+            },
+            {
+              "text": "same",
+              "start": 31.669999999999998,
+              "end": 31.790000000000003
+            },
+            {
+              "text": "size.",
+              "start": 31.87,
+              "end": 32.69
+            },
+            {
+              "text": "That",
+              "start": 32.769999999999996,
+              "end": 33.010000000000005
+            },
+            {
+              "text": "solid",
+              "start": 33.09,
+              "end": 33.489999999999995
+            },
+            {
+              "text": "is",
+              "start": 33.57000000000001,
+              "end": 33.650000000000006
+            },
+            {
+              "text": "a",
+              "start": 33.81,
+              "end": 33.849999999999994
+            },
+            {
+              "text": "cube.",
+              "start": 33.89,
+              "end": 34.849999999999994
+            }
+          ]
+        },
+        {
+          "start": 35.43,
+          "end": 39.910000000000004,
+          "words": [
+            {
+              "text": "The",
+              "start": 35.43,
+              "end": 35.51
+            },
+            {
+              "text": "square",
+              "start": 35.59,
+              "end": 35.99
+            },
+            {
+              "text": "is",
+              "start": 36.07,
+              "end": 36.31
+            },
+            {
+              "text": "one",
+              "start": 36.39,
+              "end": 36.63
+            },
+            {
+              "text": "flat",
+              "start": 36.71,
+              "end": 36.95
+            },
+            {
+              "text": "face.",
+              "start": 37.11,
+              "end": 37.75
+            },
+            {
+              "text": "The",
+              "start": 37.83,
+              "end": 37.910000000000004
+            },
+            {
+              "text": "whole",
+              "start": 37.99,
+              "end": 38.230000000000004
+            },
+            {
+              "text": "block",
+              "start": 38.43,
+              "end": 38.63
+            },
+            {
+              "text": "is",
+              "start": 38.71,
+              "end": 38.79
+            },
+            {
+              "text": "a",
+              "start": 38.95,
+              "end": 38.99
+            },
+            {
+              "text": "solid",
+              "start": 39.03,
+              "end": 39.43
+            },
+            {
+              "text": "cube.",
+              "start": 39.510000000000005,
+              "end": 39.910000000000004
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "start": 41.32,
+          "end": 45.88,
+          "words": [
+            {
+              "text": "Look",
+              "start": 41.32,
+              "end": 41.48
+            },
+            {
+              "text": "at",
+              "start": 41.56,
+              "end": 41.64
+            },
+            {
+              "text": "this",
+              "start": 41.76,
+              "end": 41.88
+            },
+            {
+              "text": "round",
+              "start": 41.96,
+              "end": 42.28
+            },
+            {
+              "text": "drawing.",
+              "start": 42.36,
+              "end": 42.84
+            },
+            {
+              "text": "Is",
+              "start": 43.08,
+              "end": 43.160000000000004
+            },
+            {
+              "text": "it",
+              "start": 43.24,
+              "end": 43.4
+            },
+            {
+              "text": "flat",
+              "start": 43.68,
+              "end": 43.96
+            },
+            {
+              "text": "or",
+              "start": 44.04,
+              "end": 44.12
+            },
+            {
+              "text": "solid?",
+              "start": 44.2,
+              "end": 44.92
+            },
+            {
+              "text": "What",
+              "start": 45,
+              "end": 45.08
+            },
+            {
+              "text": "is",
+              "start": 45.16,
+              "end": 45.24
+            },
+            {
+              "text": "its",
+              "start": 45.36,
+              "end": 45.48
+            },
+            {
+              "text": "name?",
+              "start": 45.68,
+              "end": 45.88
+            }
+          ]
+        },
+        {
+          "start": 47.873,
+          "end": 49.919999999999995,
+          "words": [
+            {
+              "text": "It's",
+              "start": 47.873,
+              "end": 47.94
+            },
+            {
+              "text": "coloured",
+              "start": 47.98,
+              "end": 48.3
+            },
+            {
+              "text": "in.",
+              "start": 48.379999999999995,
+              "end": 48.53999999999999
+            },
+            {
+              "text": "Does",
+              "start": 48.879999999999995,
+              "end": 48.959999999999994
+            },
+            {
+              "text": "that",
+              "start": 49.03999999999999,
+              "end": 49.12
+            },
+            {
+              "text": "make",
+              "start": 49.199999999999996,
+              "end": 49.279999999999994
+            },
+            {
+              "text": "it",
+              "start": 49.35999999999999,
+              "end": 49.519999999999996
+            },
+            {
+              "text": "solid?",
+              "start": 49.71999999999999,
+              "end": 49.919999999999995
+            }
+          ]
+        },
+        {
+          "start": 50.98,
+          "end": 54.099999999999994,
+          "words": [
+            {
+              "text": "Colour",
+              "start": 50.98,
+              "end": 51.3
+            },
+            {
+              "text": "fills",
+              "start": 51.459999999999994,
+              "end": 51.779999999999994
+            },
+            {
+              "text": "the",
+              "start": 51.82,
+              "end": 51.86
+            },
+            {
+              "text": "drawing.",
+              "start": 51.94,
+              "end": 52.419999999999995
+            },
+            {
+              "text": "It",
+              "start": 52.739999999999995,
+              "end": 52.82
+            },
+            {
+              "text": "adds",
+              "start": 52.9,
+              "end": 53.14
+            },
+            {
+              "text": "no",
+              "start": 53.22,
+              "end": 53.379999999999995
+            },
+            {
+              "text": "thickness.",
+              "start": 53.459999999999994,
+              "end": 54.099999999999994
+            }
+          ]
+        },
+        {
+          "start": 54.63001133786848,
+          "end": 58.35001133786848,
+          "words": [
+            {
+              "text": "Compare",
+              "start": 54.63001133786848,
+              "end": 54.830011337868484
+            },
+            {
+              "text": "a",
+              "start": 54.87001133786848,
+              "end": 54.91001133786848
+            },
+            {
+              "text": "ball.",
+              "start": 54.99001133786848,
+              "end": 55.39001133786848
+            },
+            {
+              "text": "It",
+              "start": 55.790011337868485,
+              "end": 55.87001133786848
+            },
+            {
+              "text": "has",
+              "start": 55.95001133786848,
+              "end": 56.110011337868485
+            },
+            {
+              "text": "thickness",
+              "start": 56.190011337868484,
+              "end": 56.750011337868486
+            },
+            {
+              "text": "and",
+              "start": 56.830011337868484,
+              "end": 56.91001133786848
+            },
+            {
+              "text": "is",
+              "start": 56.99001133786848,
+              "end": 57.150011337868484
+            },
+            {
+              "text": "round",
+              "start": 57.35001133786848,
+              "end": 57.55001133786848
+            },
+            {
+              "text": "every",
+              "start": 57.63001133786848,
+              "end": 57.95001133786848
+            },
+            {
+              "text": "way.",
+              "start": 58.03001133786848,
+              "end": 58.35001133786848
+            }
+          ]
+        },
+        {
+          "start": 58.93000000000001,
+          "end": 61.57000000000001,
+          "words": [
+            {
+              "text": "The",
+              "start": 58.93000000000001,
+              "end": 59.010000000000005
+            },
+            {
+              "text": "ball's",
+              "start": 59.129999999999995,
+              "end": 59.41
+            },
+            {
+              "text": "solid",
+              "start": 59.49000000000001,
+              "end": 59.81
+            },
+            {
+              "text": "shape",
+              "start": 59.89,
+              "end": 60.290000000000006
+            },
+            {
+              "text": "is",
+              "start": 60.370000000000005,
+              "end": 60.53
+            },
+            {
+              "text": "called",
+              "start": 60.69,
+              "end": 60.85000000000001
+            },
+            {
+              "text": "a",
+              "start": 60.93000000000001,
+              "end": 61.010000000000005
+            },
+            {
+              "text": "sphere.",
+              "start": 61.09,
+              "end": 61.57000000000001
+            }
+          ]
+        },
+        {
+          "start": 62.683,
+          "end": 65.99,
+          "words": [
+            {
+              "text": "The",
+              "start": 62.683,
+              "end": 62.709999999999994
+            },
+            {
+              "text": "shape",
+              "start": 62.79,
+              "end": 63.029999999999994
+            },
+            {
+              "text": "on",
+              "start": 63.07,
+              "end": 63.11
+            },
+            {
+              "text": "the",
+              "start": 63.15,
+              "end": 63.19
+            },
+            {
+              "text": "paper",
+              "start": 63.269999999999996,
+              "end": 63.589999999999996
+            },
+            {
+              "text": "is",
+              "start": 63.709999999999994,
+              "end": 63.83
+            },
+            {
+              "text": "flat",
+              "start": 63.91,
+              "end": 64.23
+            },
+            {
+              "text": "and",
+              "start": 64.31,
+              "end": 64.47
+            },
+            {
+              "text": "round.",
+              "start": 64.55,
+              "end": 65.03
+            },
+            {
+              "text": "It's",
+              "start": 65.22999999999999,
+              "end": 65.35
+            },
+            {
+              "text": "a",
+              "start": 65.42999999999999,
+              "end": 65.50999999999999
+            },
+            {
+              "text": "circle.",
+              "start": 65.75,
+              "end": 65.99
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "start": 67.39999999999999,
+          "end": 72.49999999999999,
+          "words": [
+            {
+              "text": "A",
+              "start": 67.39999999999999,
+              "end": 67.47999999999999
+            },
+            {
+              "text": "door's",
+              "start": 67.55999999999999,
+              "end": 67.96
+            },
+            {
+              "text": "outline",
+              "start": 68.03999999999999,
+              "end": 68.6
+            },
+            {
+              "text": "makes",
+              "start": 68.67999999999999,
+              "end": 68.91999999999999
+            },
+            {
+              "text": "this",
+              "start": 68.99999999999999,
+              "end": 69.16
+            },
+            {
+              "text": "shape.",
+              "start": 69.24,
+              "end": 69.55999999999999
+            },
+            {
+              "text": "Flat",
+              "start": 70.10999999999999,
+              "end": 70.30999999999999
+            },
+            {
+              "text": "or",
+              "start": 70.38999999999999,
+              "end": 70.55
+            },
+            {
+              "text": "solid?",
+              "start": 70.99,
+              "end": 71.3
+            },
+            {
+              "text": "What",
+              "start": 71.38,
+              "end": 71.46
+            },
+            {
+              "text": "is",
+              "start": 71.53999999999999,
+              "end": 71.61999999999999
+            },
+            {
+              "text": "its",
+              "start": 71.69999999999999,
+              "end": 71.77999999999999
+            },
+            {
+              "text": "name?",
+              "start": 71.85999999999999,
+              "end": 72.49999999999999
+            }
+          ]
+        },
+        {
+          "start": 73.40699999999998,
+          "end": 78.36999999999999,
+          "words": [
+            {
+              "text": "A",
+              "start": 73.40699999999998,
+              "end": 73.46
+            },
+            {
+              "text": "side",
+              "start": 73.53999999999999,
+              "end": 73.93999999999998
+            },
+            {
+              "text": "is",
+              "start": 74.01999999999998,
+              "end": 74.1
+            },
+            {
+              "text": "a",
+              "start": 74.25999999999999,
+              "end": 74.29999999999998
+            },
+            {
+              "text": "straight",
+              "start": 74.33999999999999,
+              "end": 74.65999999999998
+            },
+            {
+              "text": "piece",
+              "start": 74.77999999999999,
+              "end": 74.89999999999999
+            },
+            {
+              "text": "of",
+              "start": 74.97999999999999,
+              "end": 75.05999999999999
+            },
+            {
+              "text": "the",
+              "start": 75.13999999999999,
+              "end": 75.21999999999998
+            },
+            {
+              "text": "outline.",
+              "start": 75.29999999999998,
+              "end": 76.03999999999999
+            },
+            {
+              "text": "Two",
+              "start": 76.11999999999999,
+              "end": 76.27999999999999
+            },
+            {
+              "text": "are",
+              "start": 76.35999999999999,
+              "end": 76.43999999999998
+            },
+            {
+              "text": "long;",
+              "start": 76.79999999999998,
+              "end": 77.15999999999998
+            },
+            {
+              "text": "two",
+              "start": 77.23999999999998,
+              "end": 77.39999999999999
+            },
+            {
+              "text": "are",
+              "start": 77.47999999999999,
+              "end": 77.55999999999999
+            },
+            {
+              "text": "short.",
+              "start": 77.63999999999999,
+              "end": 78.36999999999999
+            }
+          ]
+        },
+        {
+          "start": 78.44999999999999,
+          "end": 82.57999999999998,
+          "words": [
+            {
+              "text": "Square",
+              "start": 78.44999999999999,
+              "end": 78.76999999999998
+            },
+            {
+              "text": "corners",
+              "start": 78.84999999999998,
+              "end": 79.32999999999998
+            },
+            {
+              "text": "fit",
+              "start": 79.40999999999998,
+              "end": 79.49
+            },
+            {
+              "text": "a",
+              "start": 79.64999999999999,
+              "end": 79.78299999999999
+            },
+            {
+              "text": "paper",
+              "start": 79.91699999999999,
+              "end": 80.04999999999998
+            },
+            {
+              "text": "corner.",
+              "start": 80.44999999999999,
+              "end": 80.74
+            },
+            {
+              "text": "This",
+              "start": 80.82,
+              "end": 80.97999999999999
+            },
+            {
+              "text": "shape",
+              "start": 81.05999999999999,
+              "end": 81.29999999999998
+            },
+            {
+              "text": "has",
+              "start": 81.37999999999998,
+              "end": 81.61999999999999
+            },
+            {
+              "text": "four.",
+              "start": 82.09999999999998,
+              "end": 82.57999999999998
+            }
+          ]
+        },
+        {
+          "start": 83.14699999999998,
+          "end": 86.81999999999998,
+          "words": [
+            {
+              "text": "It's",
+              "start": 83.14699999999998,
+              "end": 83.23999999999998
+            },
+            {
+              "text": "flat.",
+              "start": 83.31999999999998,
+              "end": 83.71999999999998
+            },
+            {
+              "text": "The",
+              "start": 84.13999999999999,
+              "end": 84.17999999999998
+            },
+            {
+              "text": "name",
+              "start": 84.25999999999999,
+              "end": 84.49999999999999
+            },
+            {
+              "text": "is",
+              "start": 84.57999999999998,
+              "end": 84.73999999999998
+            },
+            {
+              "text": "rectangle,",
+              "start": 84.81999999999998,
+              "end": 85.45999999999998
+            },
+            {
+              "text": "even",
+              "start": 85.69999999999999,
+              "end": 85.93999999999998
+            },
+            {
+              "text": "standing",
+              "start": 86.01999999999998,
+              "end": 86.41999999999999
+            },
+            {
+              "text": "tall.",
+              "start": 86.49999999999999,
+              "end": 86.81999999999998
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "start": 88.02999999999999,
+          "end": 92.30999999999999,
+          "words": [
+            {
+              "text": "This",
+              "start": 88.02999999999999,
+              "end": 88.26999999999998
+            },
+            {
+              "text": "shape",
+              "start": 88.34999999999998,
+              "end": 88.58999999999999
+            },
+            {
+              "text": "is",
+              "start": 88.66999999999999,
+              "end": 88.82999999999998
+            },
+            {
+              "text": "tilted.",
+              "start": 88.90999999999998,
+              "end": 89.38999999999999
+            },
+            {
+              "text": "Flat",
+              "start": 89.79999999999998,
+              "end": 90.19999999999999
+            },
+            {
+              "text": "or",
+              "start": 90.35999999999999,
+              "end": 90.43999999999998
+            },
+            {
+              "text": "solid?",
+              "start": 90.59999999999998,
+              "end": 91.07999999999998
+            },
+            {
+              "text": "What",
+              "start": 91.42999999999999,
+              "end": 91.50999999999999
+            },
+            {
+              "text": "is",
+              "start": 91.58999999999999,
+              "end": 91.66999999999999
+            },
+            {
+              "text": "its",
+              "start": 91.78999999999999,
+              "end": 91.90999999999998
+            },
+            {
+              "text": "name?",
+              "start": 92.10999999999999,
+              "end": 92.30999999999999
+            }
+          ]
+        },
+        {
+          "start": 93.52999999999997,
+          "end": 97.88999999999999,
+          "words": [
+            {
+              "text": "Its",
+              "start": 93.52999999999997,
+              "end": 93.64999999999998
+            },
+            {
+              "text": "four",
+              "start": 93.72999999999999,
+              "end": 93.96999999999997
+            },
+            {
+              "text": "sides",
+              "start": 94.04999999999998,
+              "end": 94.44999999999999
+            },
+            {
+              "text": "have",
+              "start": 94.56999999999996,
+              "end": 94.68999999999997
+            },
+            {
+              "text": "equal",
+              "start": 94.76999999999998,
+              "end": 95.00999999999996
+            },
+            {
+              "text": "lengths,",
+              "start": 95.08999999999997,
+              "end": 95.72999999999999
+            },
+            {
+              "text": "and",
+              "start": 95.78299999999999,
+              "end": 95.80999999999997
+            },
+            {
+              "text": "its",
+              "start": 95.88999999999999,
+              "end": 96.04999999999998
+            },
+            {
+              "text": "four",
+              "start": 96.12999999999997,
+              "end": 96.36999999999998
+            },
+            {
+              "text": "corners",
+              "start": 96.52999999999997,
+              "end": 96.92999999999998
+            },
+            {
+              "text": "are",
+              "start": 97.00999999999996,
+              "end": 97.08999999999997
+            },
+            {
+              "text": "square.",
+              "start": 97.16999999999999,
+              "end": 97.88999999999999
+            }
+          ]
+        },
+        {
+          "start": 98.54999999999997,
+          "end": 101.87999999999997,
+          "words": [
+            {
+              "text": "Flat,",
+              "start": 98.54999999999997,
+              "end": 98.94999999999997
+            },
+            {
+              "text": "square.",
+              "start": 99.26999999999997,
+              "end": 99.74999999999997
+            },
+            {
+              "text": "Turning",
+              "start": 100.03999999999998,
+              "end": 100.43999999999997
+            },
+            {
+              "text": "it",
+              "start": 100.51999999999997,
+              "end": 100.59999999999997
+            },
+            {
+              "text": "doesn't",
+              "start": 100.71999999999997,
+              "end": 100.91999999999997
+            },
+            {
+              "text": "give",
+              "start": 100.99999999999997,
+              "end": 101.07999999999997
+            },
+            {
+              "text": "it",
+              "start": 101.15999999999997,
+              "end": 101.23999999999997
+            },
+            {
+              "text": "thickness.",
+              "start": 101.31999999999998,
+              "end": 101.87999999999997
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "start": 103.48999999999998,
+          "end": 108.00999999999998,
+          "words": [
+            {
+              "text": "A",
+              "start": 103.48999999999998,
+              "end": 103.56999999999998
+            },
+            {
+              "text": "party",
+              "start": 103.64999999999998,
+              "end": 103.96999999999998
+            },
+            {
+              "text": "hat",
+              "start": 104.04999999999998,
+              "end": 104.28999999999998
+            },
+            {
+              "text": "has",
+              "start": 104.36999999999998,
+              "end": 104.60999999999999
+            },
+            {
+              "text": "this",
+              "start": 104.68999999999998,
+              "end": 104.84999999999998
+            },
+            {
+              "text": "shape.",
+              "start": 104.92999999999998,
+              "end": 105.24999999999999
+            },
+            {
+              "text": "Flat",
+              "start": 105.80999999999997,
+              "end": 106.00999999999998
+            },
+            {
+              "text": "or",
+              "start": 106.08999999999997,
+              "end": 106.16999999999999
+            },
+            {
+              "text": "solid?",
+              "start": 106.32999999999998,
+              "end": 106.72999999999998
+            },
+            {
+              "text": "What",
+              "start": 107.12999999999998,
+              "end": 107.20999999999998
+            },
+            {
+              "text": "is",
+              "start": 107.28999999999998,
+              "end": 107.36999999999998
+            },
+            {
+              "text": "its",
+              "start": 107.44999999999997,
+              "end": 107.52999999999999
+            },
+            {
+              "text": "name?",
+              "start": 107.60999999999999,
+              "end": 108.00999999999998
+            }
+          ]
+        },
+        {
+          "start": 110.33699999999997,
+          "end": 111.86999999999998,
+          "words": [
+            {
+              "text": "Triangle?",
+              "start": 110.33699999999997,
+              "end": 110.42999999999998
+            },
+            {
+              "text": "It",
+              "start": 110.82999999999997,
+              "end": 110.90999999999998
+            },
+            {
+              "text": "comes",
+              "start": 111.02999999999997,
+              "end": 111.14999999999998
+            },
+            {
+              "text": "to",
+              "start": 111.18999999999997,
+              "end": 111.22999999999998
+            },
+            {
+              "text": "a",
+              "start": 111.30999999999997,
+              "end": 111.38999999999997
+            },
+            {
+              "text": "point.",
+              "start": 111.46999999999997,
+              "end": 111.86999999999998
+            }
+          ]
+        },
+        {
+          "start": 112.82999999999997,
+          "end": 116.18999999999997,
+          "words": [
+            {
+              "text": "A",
+              "start": 112.82999999999997,
+              "end": 112.90999999999997
+            },
+            {
+              "text": "triangle",
+              "start": 112.98999999999997,
+              "end": 113.54999999999997
+            },
+            {
+              "text": "is",
+              "start": 113.62999999999997,
+              "end": 113.78999999999996
+            },
+            {
+              "text": "flat,",
+              "start": 113.86999999999998,
+              "end": 114.34999999999997
+            },
+            {
+              "text": "with",
+              "start": 114.58999999999997,
+              "end": 114.74999999999997
+            },
+            {
+              "text": "three",
+              "start": 114.82999999999997,
+              "end": 115.14999999999996
+            },
+            {
+              "text": "straight",
+              "start": 115.22999999999998,
+              "end": 115.54999999999997
+            },
+            {
+              "text": "sides.",
+              "start": 115.62999999999997,
+              "end": 116.18999999999997
+            }
+          ]
+        },
+        {
+          "start": 116.78999999999996,
+          "end": 121.11999999999998,
+          "words": [
+            {
+              "text": "The",
+              "start": 116.78999999999996,
+              "end": 116.82999999999997
+            },
+            {
+              "text": "hat",
+              "start": 116.90999999999997,
+              "end": 117.22999999999998
+            },
+            {
+              "text": "curves",
+              "start": 117.34999999999997,
+              "end": 117.62999999999997
+            },
+            {
+              "text": "around",
+              "start": 117.70999999999997,
+              "end": 118.02999999999997
+            },
+            {
+              "text": "a",
+              "start": 118.10999999999997,
+              "end": 118.18999999999997
+            },
+            {
+              "text": "circular",
+              "start": 118.22999999999998,
+              "end": 118.74999999999997
+            },
+            {
+              "text": "end",
+              "start": 118.82999999999997,
+              "end": 119.14999999999998
+            },
+            {
+              "text": "and",
+              "start": 119.22999999999998,
+              "end": 119.38999999999997
+            },
+            {
+              "text": "narrows",
+              "start": 119.46999999999997,
+              "end": 119.86999999999998
+            },
+            {
+              "text": "to",
+              "start": 119.94999999999997,
+              "end": 120.02999999999997
+            },
+            {
+              "text": "a",
+              "start": 120.06999999999996,
+              "end": 120.10999999999997
+            },
+            {
+              "text": "point.",
+              "start": 120.18999999999997,
+              "end": 121.11999999999998
+            }
+          ]
+        },
+        {
+          "start": 121.19999999999997,
+          "end": 123.67999999999996,
+          "words": [
+            {
+              "text": "That",
+              "start": 121.19999999999997,
+              "end": 121.43999999999998
+            },
+            {
+              "text": "solid",
+              "start": 121.51999999999997,
+              "end": 121.91999999999997
+            },
+            {
+              "text": "shape",
+              "start": 122.11999999999996,
+              "end": 122.31999999999998
+            },
+            {
+              "text": "is",
+              "start": 122.39999999999996,
+              "end": 122.47999999999998
+            },
+            {
+              "text": "a",
+              "start": 122.63999999999997,
+              "end": 122.98699999999998
+            },
+            {
+              "text": "cone.",
+              "start": 123.33299999999996,
+              "end": 123.67999999999996
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "start": 124.92999999999996,
+          "end": 130.14999999999998,
+          "words": [
+            {
+              "text": "Here",
+              "start": 124.92999999999996,
+              "end": 125.16999999999996
+            },
+            {
+              "text": "is",
+              "start": 125.24999999999996,
+              "end": 125.32999999999997
+            },
+            {
+              "text": "a",
+              "start": 125.40999999999997,
+              "end": 125.48999999999997
+            },
+            {
+              "text": "shape",
+              "start": 125.64999999999996,
+              "end": 125.80999999999996
+            },
+            {
+              "text": "like",
+              "start": 125.88999999999996,
+              "end": 125.96999999999997
+            },
+            {
+              "text": "a",
+              "start": 126.04999999999997,
+              "end": 126.12999999999997
+            },
+            {
+              "text": "soup",
+              "start": 126.20999999999997,
+              "end": 126.44999999999996
+            },
+            {
+              "text": "can.",
+              "start": 126.52999999999996,
+              "end": 127.07999999999997
+            },
+            {
+              "text": "Flat",
+              "start": 127.15999999999997,
+              "end": 127.63999999999996
+            },
+            {
+              "text": "or",
+              "start": 127.71999999999997,
+              "end": 127.87999999999997
+            },
+            {
+              "text": "solid?",
+              "start": 128.35999999999996,
+              "end": 128.54999999999995
+            },
+            {
+              "text": "What",
+              "start": 128.62999999999997,
+              "end": 128.70999999999995
+            },
+            {
+              "text": "is",
+              "start": 128.78999999999996,
+              "end": 128.86999999999998
+            },
+            {
+              "text": "its",
+              "start": 128.98999999999995,
+              "end": 129.10999999999996
+            },
+            {
+              "text": "name?",
+              "start": 129.62999999999997,
+              "end": 130.14999999999998
+            }
+          ]
+        },
+        {
+          "start": 131.89,
+          "end": 135.80999999999997,
+          "words": [
+            {
+              "text": "Solid.",
+              "start": 131.89,
+              "end": 132.36999999999998
+            },
+            {
+              "text": "Two",
+              "start": 132.60999999999999,
+              "end": 132.76999999999998
+            },
+            {
+              "text": "matching",
+              "start": 132.84999999999997,
+              "end": 133.17
+            },
+            {
+              "text": "circle",
+              "start": 133.24999999999997,
+              "end": 133.56999999999996
+            },
+            {
+              "text": "ends,",
+              "start": 133.64999999999998,
+              "end": 133.96999999999997
+            },
+            {
+              "text": "with",
+              "start": 134.12999999999997,
+              "end": 134.20999999999998
+            },
+            {
+              "text": "a",
+              "start": 134.28999999999996,
+              "end": 134.36999999999998
+            },
+            {
+              "text": "curved",
+              "start": 134.45,
+              "end": 134.76999999999998
+            },
+            {
+              "text": "surface",
+              "start": 134.84999999999997,
+              "end": 135.17
+            },
+            {
+              "text": "between",
+              "start": 135.24999999999997,
+              "end": 135.56999999999996
+            },
+            {
+              "text": "them.",
+              "start": 135.64999999999998,
+              "end": 135.80999999999997
+            }
+          ]
+        },
+        {
+          "start": 136.46999999999997,
+          "end": 138.30999999999997,
+          "words": [
+            {
+              "text": "That",
+              "start": 136.46999999999997,
+              "end": 136.70999999999998
+            },
+            {
+              "text": "solid",
+              "start": 136.86999999999998,
+              "end": 137.34999999999997
+            },
+            {
+              "text": "is",
+              "start": 137.42999999999998,
+              "end": 137.50999999999996
+            },
+            {
+              "text": "a",
+              "start": 137.58999999999997,
+              "end": 137.66999999999996
+            },
+            {
+              "text": "cylinder.",
+              "start": 137.74999999999997,
+              "end": 138.30999999999997
+            }
+          ]
+        },
+        {
+          "start": 138.60001133786844,
+          "end": 141.64001133786843,
+          "words": [
+            {
+              "text": "The",
+              "start": 138.60001133786844,
+              "end": 138.68001133786845
+            },
+            {
+              "text": "dashed",
+              "start": 138.72001133786844,
+              "end": 139.00001133786844
+            },
+            {
+              "text": "line",
+              "start": 139.08001133786846,
+              "end": 139.48001133786843
+            },
+            {
+              "text": "shows",
+              "start": 139.56001133786845,
+              "end": 139.80001133786845
+            },
+            {
+              "text": "the",
+              "start": 139.88001133786844,
+              "end": 139.96001133786845
+            },
+            {
+              "text": "hidden",
+              "start": 140.12001133786845,
+              "end": 140.28001133786844
+            },
+            {
+              "text": "part",
+              "start": 140.40001133786845,
+              "end": 140.52001133786845
+            },
+            {
+              "text": "of",
+              "start": 140.60001133786844,
+              "end": 140.68001133786845
+            },
+            {
+              "text": "its",
+              "start": 140.76001133786843,
+              "end": 140.84001133786845
+            },
+            {
+              "text": "bottom",
+              "start": 140.92001133786843,
+              "end": 141.16001133786844
+            },
+            {
+              "text": "edge.",
+              "start": 141.32001133786844,
+              "end": 141.64001133786843
+            }
+          ]
+        },
+        {
+          "start": 143.153,
+          "end": 146.54,
+          "words": [
+            {
+              "text": "The",
+              "start": 143.153,
+              "end": 143.17999999999998
+            },
+            {
+              "text": "ends",
+              "start": 143.26,
+              "end": 143.42
+            },
+            {
+              "text": "are",
+              "start": 143.49999999999997,
+              "end": 143.65999999999997
+            },
+            {
+              "text": "circles.",
+              "start": 143.73999999999998,
+              "end": 144.29999999999998
+            },
+            {
+              "text": "The",
+              "start": 144.67299999999997,
+              "end": 144.72699999999998
+            },
+            {
+              "text": "whole",
+              "start": 144.77999999999997,
+              "end": 144.93999999999997
+            },
+            {
+              "text": "can",
+              "start": 145.01999999999998,
+              "end": 145.26
+            },
+            {
+              "text": "shape",
+              "start": 145.33999999999997,
+              "end": 145.65999999999997
+            },
+            {
+              "text": "is",
+              "start": 145.73999999999998,
+              "end": 145.82
+            },
+            {
+              "text": "a",
+              "start": 145.89999999999998,
+              "end": 145.98
+            },
+            {
+              "text": "cylinder.",
+              "start": 146.05999999999997,
+              "end": 146.54
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "start": 147.95,
+          "end": 152.41,
+          "words": [
+            {
+              "text": "First,",
+              "start": 147.95,
+              "end": 148.42999999999998
+            },
+            {
+              "text": "decide",
+              "start": 148.82999999999998,
+              "end": 149.14999999999998
+            },
+            {
+              "text": "whether",
+              "start": 149.23,
+              "end": 149.47
+            },
+            {
+              "text": "the",
+              "start": 149.54999999999998,
+              "end": 149.63
+            },
+            {
+              "text": "picture",
+              "start": 149.79,
+              "end": 149.95
+            },
+            {
+              "text": "shows",
+              "start": 150.03,
+              "end": 150.26999999999998
+            },
+            {
+              "text": "a",
+              "start": 150.35,
+              "end": 150.42999999999998
+            },
+            {
+              "text": "flat",
+              "start": 150.51,
+              "end": 150.75
+            },
+            {
+              "text": "shape",
+              "start": 150.91,
+              "end": 151.39
+            },
+            {
+              "text": "or",
+              "start": 151.47,
+              "end": 151.54999999999998
+            },
+            {
+              "text": "a",
+              "start": 151.63,
+              "end": 151.70999999999998
+            },
+            {
+              "text": "solid.",
+              "start": 152.23,
+              "end": 152.41
+            }
+          ]
+        },
+        {
+          "start": 152.73,
+          "end": 157.07999999999998,
+          "words": [
+            {
+              "text": "Then",
+              "start": 152.73,
+              "end": 152.97
+            },
+            {
+              "text": "name",
+              "start": 153.04999999999998,
+              "end": 153.29
+            },
+            {
+              "text": "the",
+              "start": 153.36999999999998,
+              "end": 153.53
+            },
+            {
+              "text": "whole",
+              "start": 153.69,
+              "end": 153.85
+            },
+            {
+              "text": "shape.",
+              "start": 153.92999999999998,
+              "end": 154.67999999999998
+            },
+            {
+              "text": "A",
+              "start": 154.83999999999997,
+              "end": 154.92
+            },
+            {
+              "text": "flat",
+              "start": 155.07999999999998,
+              "end": 155.23999999999998
+            },
+            {
+              "text": "face",
+              "start": 155.32,
+              "end": 155.72
+            },
+            {
+              "text": "can",
+              "start": 155.79999999999998,
+              "end": 155.88
+            },
+            {
+              "text": "belong",
+              "start": 156,
+              "end": 156.28
+            },
+            {
+              "text": "to",
+              "start": 156.35999999999999,
+              "end": 156.44
+            },
+            {
+              "text": "a",
+              "start": 156.48,
+              "end": 156.51999999999998
+            },
+            {
+              "text": "solid.",
+              "start": 156.6,
+              "end": 157.07999999999998
+            }
+          ]
+        }
+      ]
+    ],
+    "voices": {
+      "teacher": "XescS24CsOySAkKrLAO3",
+      "learner": "SYXbTJsLE7zmSjr1DchT"
+    }
+  },
+  "strand": "geometry",
+  "skill": "name-shapes",
+  "id": "flat-or-solid-name--md",
+  "title": "Flat or solid? Name the whole shape",
+  "standards": [
+    {
+      "standardId": "K.G.A.1",
+      "facet": "Identify flat and solid shapes across orientations",
+      "basis": "editorial"
+    },
+    {
+      "standardId": "K.G.A.2",
+      "facet": "Identify flat and solid shapes across orientations",
+      "basis": "editorial"
+    },
+    {
+      "standardId": "K.G.A.3",
+      "facet": "Identify flat and solid shapes across orientations",
+      "basis": "editorial"
+    }
+  ],
+  "problemType": "flat-or-solid-name"
+}

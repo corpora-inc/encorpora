@@ -177,7 +177,7 @@ function clauseGraphical(
         figure: { kind: "number-line", min: 0, max: 180, points: [0] },
       },
       answer: String(sum),
-      hint: "Add the parts of the trip. Each part is a hop on a minute line.",
+      hint: `Add the parts of the trip: ${clipped.join(" minutes, then ")} minutes. Each part is a hop on a minute line.`,
       explanation: [
         `Add the intervals: ${clipped.join(" + ")} = ${sum}.`,
         sum >= 60
@@ -209,7 +209,10 @@ function clauseGraphical(
       figure: { kind: "number-line", min: 0, max: 180, points: [0] },
     },
     answer: String(shape === 2 ? big - small : left),
-    hint: "The whole time minus the known part is what is left. A comparison is the larger time minus the smaller.",
+    hint:
+      shape === 2
+        ? `Compare ${big} minutes with ${small} minutes. A comparison is the larger time minus the smaller.`
+        : `The whole time is ${whole} minutes and the known part is ${part} minutes. The whole time minus the known part is what is left.`,
     explanation: [
       shape === 2
         ? `The longer time minus the shorter time: ${big} − ${small} = ${big - small}.`
