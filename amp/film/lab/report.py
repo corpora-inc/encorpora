@@ -24,6 +24,26 @@ def money(value):
     return f'${value:.6f}'
 
 
+def failure_summary(value):
+    text = str(value)
+    try:
+        record = json.loads(text)
+        if isinstance(record, dict):
+            text = record.get('stderr') or record.get('stdout') or text
+    except ValueError:
+        pass
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    start = next((i for i, line in enumerate(lines) if line.startswith(('Error:', 'RuntimeError:', 'ValueError:'))), None)
+    if start is None:
+        return text[:1000]
+    details = []
+    for line in lines[start:]:
+        if line.startswith(('at ', 'Node.js')):
+            break
+        details.append(line)
+    return ' '.join(details[:4])[:1000]
+
+
 def recorded_api_cost(receipt):
     cost = receipt.get('api_dollars')
     return cost if cost is not None else receipt.get('partial_api_dollars') or 0
@@ -53,6 +73,17 @@ def build_report(root, review_url, status='running'):
     stt_credits = sum(e.get('charged_characters') or 0 for e in voice_events
                       if e.get('operation') == 'stt' and e.get('kind') in ('succeeded', 'usage-reconciliation'))
     unmetered_stt = sum(e.get('operation') == 'stt' and e.get('kind') == 'unmetered-success' for e in voice_events)
+    account = read(root/'eleven-usage-readback.json', {})
+    account_note = ''
+    if account.get('metrics', {}).get('credits', {}).get('status') == 200:
+        products = account['metrics']['credits']['data']['usage']
+        account_credits = sum(sum(values) for values in products.values())
+        account_note = f'Latest ElevenLabs account usage readback ({account["at"]}): **{account_credits:g} credits** in the window beginning at this run\'s first voice request. '
+        if account.get('counts_match_ledger'):
+            difference = account_credits-account['ledger_snapshot']['confirmed_credits']
+            account_note += f'Request counts and TTS character counts match the ledger; the account credit total differs from the receipt total at readback by **{difference:g}**. Both sources are retained in `eleven-usage-readback.json`; this is not an additional charge.'
+        else:
+            account_note += 'This account-wide snapshot is retained separately from per-request receipts; its request counts have not been reconciled with the ledger.'
     voiced = sum(bool(s.get('voiced')) for s in states.values())
     exported = sum(bool(s.get('exported')) for s in states.values())
     out = [f'Grade the films on the [live review page]({review_url}), grouped by problem type. Approve or reject each version and leave a note. Grading even two types fully gives signal. The assignment key is private in `arms.json`.', '',
@@ -61,6 +92,9 @@ def build_report(root, review_url, status='running'):
            'ElevenLabs quota uses credits; its API retains the field name `character_count`. Text character counts and billed credits differ. '+('Initial transcription usage, before per-request instrumentation, is reconciled from the account product-usage response in `eleven-initial-stt-usage.json`; it is not assigned to individual films. ' if (root/'eleven-initial-stt-usage.json').exists() else '')+'[ElevenLabs credit accounting](https://elevenlabs.io/docs/help-center/account/general/have-characters-changed).', '',
            f'Grok reported {money(nominal_grok)} usage cost through its CLI; **{unknown_grok}** attempts have no reported dollar figure. This is kept separate from measured Anthropic API-key charges; CLI billing statements were not checked. Codex reports tokens without a dollar figure. Batch elapsed time includes queueing; per-request execution time is unavailable from the Batch API. Missing usage is not treated as zero.', '',
            '## Types and sampling', '', f'Seed: `{mapping["seed"]}`. Intended design: six pathways of nine different types, one type per arm per pathway, 54 distinct types. Comparisons are across neighboring types, not matched copies of one type. No winner is selected before founder grading.', '']
+    if account_note:
+        index = out.index('## Types and sampling')
+        out[index:index] = [account_note, '']
     for pathway in mapping['pathways']:
         out += [f'**{cell(pathway["id"])}: {cell(pathway.get("family", ""))}**', '',
                 cell(pathway.get('reason', '')), '',
@@ -117,15 +151,15 @@ def build_report(root, review_url, status='running'):
     out += ['', f'{len(timeouts)} CLI attempts reached their wall-time limit. These failures are separate from a reviewer rejecting a completed film.']
     out += ['', 'Checked films left unvoiced (reviewers receive estimated timing for these films):', '']
     unvoiced = [r for r in rows if states[r['id']].get('checked') and not states[r['id']].get('voiced')]
-    out += [f'- `{r["id"]}`: {cell(states[r["id"]].get("voice_status", "pending"))}' for r in unvoiced] or ['None recorded.']
+    out += [f'- `{r["id"]}`: {cell(failure_summary(states[r["id"]].get("voice_status", "pending")))}' for r in unvoiced] or ['None recorded.']
     out += ['', 'Voiced films awaiting export:', '']
     unexported = [r for r in rows if states[r['id']].get('voiced') and not states[r['id']].get('exported')]
-    out += [f'- `{r["id"]}`: {cell(states[r["id"]].get("export_result", {}).get("error", "pending"))}'
+    out += [f'- `{r["id"]}`: {cell(failure_summary(states[r["id"]].get("export_result", {}).get("error", "pending")))}'
             for r in unexported] or ['None recorded.']
     out += ['', 'Completed narration with a failed voiced-timing check:', '']
     timing_failed = [r for r in rows if states[r['id']].get('voiced')
                      and states[r['id']].get('voice_result', {}).get('check_passed') is False]
-    out += [f'- `{r["id"]}`: {cell(states[r["id"]]["voice_result"].get("error", "See voice-run.json"))}'
+    out += [f'- `{r["id"]}`: {cell(failure_summary(states[r["id"]]["voice_result"].get("error", "See voice-run.json")))}'
             for r in timing_failed] or ['None recorded.']
     labels = read(root/'calibration-labels.json', {'records': []})['records']
     calibration_map = read(root/'calibration-map.json', {})
