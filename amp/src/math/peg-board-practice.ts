@@ -184,7 +184,7 @@ export function generatePegBoard(id: string, seed: string): GeneratedProblem {
     ]
       .filter(Boolean)
       .join(" and ");
-    return `For side ${i + 1}, count ${move}. Join those pegs with one straight side.${i === ids.length - 1 ? " This joins back to the first peg and closes the shape." : ""}`;
+    return `${copyTask ? `The next shown side goes ${move}. Copy it to make side ${i + 1}.` : `For side ${i + 1}, count ${move}.`} Join those pegs with one straight side.${i === ids.length - 1 ? " This joins back to the first peg and closes the shape." : ""}`;
   });
   const shapeDefinition =
     name === "triangle"
@@ -224,6 +224,11 @@ export function generatePegBoard(id: string, seed: string): GeneratedProblem {
         : []),
       ...(!copyTask && !countTask ? [shapeDefinition] : []),
       "Count rows from the top. In each row, count pegs from the left.",
+      ...(copyTask
+        ? [
+            `Start at ${walk[0]} on the shown shape and follow its sides in order.`,
+          ]
+        : []),
       `One way starts at ${walk[0]}.`,
       ...sideMoves,
       `There are ${sides} sides and ${sides} corners. The sides meet without crossing and close the shape.`,
@@ -241,7 +246,7 @@ export function generatePegBoard(id: string, seed: string): GeneratedProblem {
         ? ["A square is a rectangle too: it has four square corners."]
         : []),
       copyTask
-        ? `Choose matching starting corners on both shapes. Follow the sides in the same order. For each side, match the counts and directions across and down.${allowRotation ? " To check a turned copy, trace the shown shape on paper. Turn and move the tracing over your copy. Every side and corner must line up." : " Move the shape without turning it."}`
+        ? `Choose matching starting corners on both shapes. Follow the sides in the same order. If your copy faces the same way, match each side's counts and directions across and down.${allowRotation ? " To check a turned copy, lay thin paper over the shown shape so you can see its sides. Draw over each side on the paper. Turn and move the paper over your copy. Every side and corner must line up." : " Move the shape without turning it."}`
         : "Moving or turning the shape does not change its name.",
       "Try this with toothpicks and dough at home.",
     ],
