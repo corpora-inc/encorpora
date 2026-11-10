@@ -239,6 +239,16 @@
     "teacher": "Paul",
     "capability": "lesson-film-v1"
   },
+  "share-whole-items": {
+    "id": "share-whole-items--bc",
+    "version": "cda031807d65ad632f0c3c1f50636d9444951c0fff4f6c4039401fe8ee13abf6",
+    "title": "Share equally among trays: find how many on each",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/share-whole-items--bc/cda031807d65ad632f0c3c1f50636d9444951c0fff4f6c4039401fe8ee13abf6/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/share-whole-items--bc/cda031807d65ad632f0c3c1f50636d9444951c0fff4f6c4039401fe8ee13abf6/audio.m4a",
+    "duration": 513.73,
+    "teacher": "Paul",
+    "capability": "lesson-film-v1"
+  },
   "sinusoid-compare-rule": {
     "id": "sinusoid-compare-rule",
     "version": "5133ddacda4644759eca7a7a5cd8fea9c771bb5559c8cd44161e0a6877c3443b",
