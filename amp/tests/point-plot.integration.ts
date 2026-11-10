@@ -6,13 +6,12 @@ import { assertTestDatabaseTarget } from "../scripts/test-database-preflight";
 import { migrate } from "../scripts/migrate";
 import { buildApp } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";
-import { generateProblem } from "../src/math/engine";
 import {
   latticeOnCurve,
   latticeOnLine,
   plotPoints,
 } from "../src/math/point-plot";
-import type { PublicProblem } from "../src/math/contracts";
+import type { GeneratedProblem, PublicProblem } from "../src/math/contracts";
 
 const url = process.env.AMP_TEST_DATABASE_URL;
 assertTestDatabaseTarget(url);
@@ -55,6 +54,16 @@ test(
       const learnerId = created.json().learnerId as string;
       const base = `/api/v1/learners/${learnerId}`;
       const headers = { authorization: `Trial ${created.json().token}` };
+      const storedProblem = async (problem: PublicProblem) => {
+        const result = await repository.pool.query(
+          "SELECT content FROM amp_instances WHERE learner_id=$1 AND id=$2",
+          [learnerId, problem.id],
+        );
+        const stored = result.rows[0]?.content as GeneratedProblem | undefined;
+        assert.ok(stored);
+        assert.deepEqual(stored.public, problem);
+        return stored;
+      };
       const instances = async () =>
         Number(
           (
@@ -141,10 +150,7 @@ test(
 
       // A graphed line: any two of its lattice points are correct.
       const lineProblem = await serve("graph-linear-equation");
-      const lineSecret = generateProblem(
-        lineProblem.templateId,
-        lineProblem.seed,
-      );
+      const lineSecret = await storedProblem(lineProblem);
       assert.equal(lineSecret.pointGrading?.mode, "on-line");
       if (
         lineProblem.response.kind !== "point-plot" ||
@@ -156,7 +162,14 @@ test(
         lineSecret.pointGrading,
       );
       const exemplar = plotPoints(lineSecret.answer);
+      assert.ok(onLine.length >= 3, "The line has an alternative pair");
       const alternate = [onLine.at(-1)!, onLine[0]!];
+      if (
+        alternate.every((p) =>
+          exemplar.some((q) => q[0] === p[0] && q[1] === p[1]),
+        )
+      )
+        alternate[0] = onLine[1]!;
       assert.notDeepEqual(
         [...alternate].sort((a, b) => a[0] - b[0] || a[1] - b[1]),
         exemplar,
@@ -170,7 +183,10 @@ test(
         "[]",
         JSON.stringify([alternate[0]]),
         JSON.stringify([alternate[0], alternate[0]]),
-        JSON.stringify([alternate[0], [7, 0]]),
+        JSON.stringify([
+          alternate[0],
+          [lineProblem.response.grid.xMax + lineProblem.response.grid.step, 0],
+        ]),
         JSON.stringify([alternate[0], null]),
         JSON.stringify([...alternate, onLine[1]]),
         "malformed",
@@ -212,9 +228,23 @@ test(
 
       // A wrong line is graded incorrect, not rejected.
       const another = await serve("graph-linear-equation");
-      const anotherSecret = generateProblem(another.templateId, another.seed);
+      const anotherSecret = await storedProblem(another);
+      assert.ok(
+        another.response.kind === "point-plot" &&
+          anotherSecret.pointGrading?.mode === "on-line",
+      );
       const [p] = plotPoints(anotherSecret.answer);
-      const off = JSON.stringify([p, [p![0], p![1] === 6 ? 5 : p![1] + 1]]);
+      const grid = another.response.grid;
+      const onAnother = latticeOnLine(grid, anotherSecret.pointGrading);
+      let offPoint: [number, number] | undefined;
+      for (let x = grid.xMin; x <= grid.xMax && !offPoint; x += grid.step)
+        for (let y = grid.yMin; y <= grid.yMax; y += grid.step)
+          if (!onAnother.some((q) => q[0] === x && q[1] === y)) {
+            offPoint = [x, y];
+            break;
+          }
+      assert.ok(offPoint, "The grid has a point off the line");
+      const off = JSON.stringify([p, offPoint]);
       const miss = await send({
         problemId: another.id,
         requestId: randomUUID(),
@@ -230,7 +260,7 @@ test(
       const byXY = (a: readonly number[], b: readonly number[]) =>
         a[0]! - b[0]! || a[1]! - b[1]!;
       let image = await serve("place-transformed-image");
-      let imageSecret = generateProblem(image.templateId, image.seed);
+      let imageSecret = await storedProblem(image);
       for (let tries = 0; tries < 300; tries++) {
         const pts = plotPoints(imageSecret.answer);
         const swappedPts = [pts[1]!, pts[0]!, ...pts.slice(2)];
@@ -239,7 +269,7 @@ test(
         )
           break;
         image = await serve("place-transformed-image");
-        imageSecret = generateProblem(image.templateId, image.seed);
+        imageSecret = await storedProblem(image);
       }
       const correctImages = plotPoints(imageSecret.answer);
       const swapped = [
@@ -271,7 +301,7 @@ test(
 
       // Exact sets: the given points in any order.
       const plotted = await serve("plot-points");
-      const plottedSecret = generateProblem(plotted.templateId, plotted.seed);
+      const plottedSecret = await storedProblem(plotted);
       const plottedReply = await send({
         problemId: plotted.id,
         requestId: randomUUID(),
@@ -336,90 +366,80 @@ test(
       assert.equal(flag.response_kind, "point-plot");
       assert.equal(flag.response, first.json().response);
 
-      // A graphed curve: any distinct lattice points of the function, with a
-      // required vertex or intercept among them; the function never leaves the server.
-      const curveProblem = await serve("graph-quadratic-points");
-      const curveSecret = generateProblem(
-        curveProblem.templateId,
-        curveProblem.seed,
-      );
-      if (
-        curveProblem.response.kind !== "point-plot" ||
-        curveSecret.pointGrading?.mode !== "on-curve"
-      )
-        throw new Error("Expected a graphed curve");
-      assert.equal(curveProblem.response.connect, "curve");
-      assert.equal(JSON.stringify(curveProblem).includes("on-curve"), false);
-      const required = curveSecret.pointGrading.required ?? [];
-      const onCurve = latticeOnCurve(
-        curveProblem.response.grid,
-        curveSecret.pointGrading.curve,
-      );
-      const others = onCurve.filter(
-        (p) => !required.some((q) => q[0] === p[0] && q[1] === p[1]),
-      );
-      const curveAnswer = [
-        ...required,
-        ...others.slice(-(3 - required.length)),
-      ];
-      const wrongSet = others.slice(0, 3);
-      if (required.length) {
-        // The right curve without the required feature point is wrong.
-        const without = await send({
-          problemId: curveProblem.id,
-          requestId: randomUUID(),
-          response: JSON.stringify(wrongSet),
-        });
-        assert.equal(without.statusCode, 200, without.body);
-        assert.equal(without.json().correct, false);
-        assert.equal(await attempts(), 5);
-      }
-      const curveInput = {
-        problemId: curveProblem.id,
-        requestId: randomUUID(),
-        response: JSON.stringify(
-          required.length ? curveAnswer : others.slice(-3),
-        ),
+      // Exercise each grading contract, including descriptions that require
+      // all three points. A missing variant
+      // fails the test instead of silently omitting its grading assertions.
+      const quadratic = async (requiredCount: 0 | 1 | 3) => {
+        for (let tries = 0; tries < 100; tries++) {
+          const problem = await serve("graph-quadratic-points");
+          const secret = await storedProblem(problem);
+          assert.ok(problem.response.kind === "point-plot");
+          if (secret.pointGrading?.mode !== "on-curve") continue;
+          const required = secret.pointGrading.required ?? [];
+          if (required.length !== requiredCount) continue;
+          const others = latticeOnCurve(
+            problem.response.grid,
+            secret.pointGrading.curve,
+          ).filter(
+            (p) => !required.some((q) => q[0] === p[0] && q[1] === p[1]),
+          );
+          const count = problem.response.pointCount;
+          // Keep all but one required feature, then fill with other curve
+          // points. Some narrow grids have no alternative; select one that does.
+          if (
+            others.length <
+            count - required.length + (required.length ? 1 : 0)
+          )
+            continue;
+          const answer = [
+            ...required,
+            ...others.slice(0, count - required.length),
+          ];
+          const wrong = required.length
+            ? [
+                ...required.slice(1),
+                ...others.slice(0, count - required.length + 1),
+              ]
+            : undefined;
+          assert.equal(answer.length, count);
+          if (wrong) assert.equal(wrong.length, count);
+          assert.equal(problem.response.connect, "curve");
+          assert.equal(JSON.stringify(problem).includes("on-curve"), false);
+          return { problem, secret, answer, wrong };
+        }
+        throw new Error(
+          `No quadratic with ${requiredCount} required points in 100 serves`,
+        );
       };
-      if (required.length) {
-        // One attempt per problem: serve another for the accepted answer.
-        assert.equal((await send(curveInput)).statusCode, 409);
-      } else {
-        const accepted = await send(curveInput);
-        assert.equal(accepted.statusCode, 200, accepted.body);
-        assert.equal(accepted.json().correct, true);
-        assert.equal(accepted.json().answer, curveSecret.answer);
+      for (const count of [1, 3, 0] as const) {
+        let served = await quadratic(count);
+        if (served.wrong) {
+          // A full, valid set on the curve that omits a required point is wrong.
+          const without = await send({
+            problemId: served.problem.id,
+            requestId: randomUUID(),
+            response: JSON.stringify(served.wrong),
+          });
+          assert.equal(without.statusCode, 200, without.body);
+          assert.equal(without.json().correct, false);
+          if (count === 1) assert.equal(await attempts(), 5);
+          const conflict = await send({
+            problemId: served.problem.id,
+            requestId: randomUUID(),
+            response: JSON.stringify(served.answer),
+          });
+          assert.equal(conflict.statusCode, 409, conflict.body);
+          served = await quadratic(count);
+        }
+        const good = await send({
+          problemId: served.problem.id,
+          requestId: randomUUID(),
+          response: JSON.stringify([...served.answer].reverse()),
+        });
+        assert.equal(good.statusCode, 200, good.body);
+        assert.equal(good.json().correct, true);
+        assert.equal(good.json().answer, served.secret.answer);
       }
-      const secondCurve = await serve("graph-quadratic-points");
-      const secondSecret = generateProblem(
-        secondCurve.templateId,
-        secondCurve.seed,
-      );
-      if (
-        secondCurve.response.kind !== "point-plot" ||
-        secondSecret.pointGrading?.mode !== "on-curve"
-      )
-        throw new Error("Expected a graphed curve");
-      const secondPoints = latticeOnCurve(
-        secondCurve.response.grid,
-        secondSecret.pointGrading.curve,
-      );
-      const secondRequired = secondSecret.pointGrading.required ?? [];
-      const secondRest = secondPoints.filter(
-        (p) => !secondRequired.some((q) => q[0] === p[0] && q[1] === p[1]),
-      );
-      const secondAnswer = [
-        ...secondRequired,
-        ...secondRest.slice(0, 3 - secondRequired.length),
-      ];
-      const good = await send({
-        problemId: secondCurve.id,
-        requestId: randomUUID(),
-        response: JSON.stringify([...secondAnswer].reverse()),
-      });
-      assert.equal(good.statusCode, 200, good.body);
-      assert.equal(good.json().correct, true);
-      assert.equal(good.json().answer, secondSecret.answer);
 
       // Mixed practice for an older client never issues a plotted problem.
       for (let i = 0; i < 6; i++) {

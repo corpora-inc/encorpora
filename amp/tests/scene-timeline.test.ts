@@ -126,35 +126,67 @@ for (const id of [
   "number-line-missing-hop",
 ]) {
   test(`${id}: the learner's scene walks its own numbers and never shows the answer`, () => {
-    for (let i = 0; i < 300; i++) {
-      const p = generateProblem(id, `scene-${i}`);
-      assert.equal(generatedProblemSchema.safeParse(p).success, true);
-      const f = p.public.figure;
-      assert.ok(f?.kind === "scene");
-      const scene = f.scene;
-      const masked = layoutScene(scene);
-      const revealed = layoutScene(scene, { reveal: true });
-      assert.deepEqual(missingTargets(masked, scene.steps!), []);
-      const given = new Set(numbers(p.public.prompt));
-      // Hint captions and every masked derived label stay free of the answer
-      // unless the prompt itself states that number.
-      const steps = p.hintCue ?? visibleSteps(scene.steps!, "hint");
-      if (p.hintCue) assert.deepEqual(missingTargets(masked, p.hintCue), []);
-      for (const s of steps) {
-        const caption = captionText(masked, s.caption);
-        if (!given.has(p.answer))
-          assert.ok(
-            !numbers(caption).includes(p.answer),
-            `${id} ${i}: ${caption}`,
-          );
+    const seen = new Set<string>();
+    for (const version of [1, undefined])
+      for (let i = 0; i < 300; i++) {
+        const p = generateProblem(id, `scene-${i}`, version);
+        assert.equal(generatedProblemSchema.safeParse(p).success, true);
+        const clause = p.variant?.axes?.clause;
+        seen.add(clause ?? "legacy");
+        const f = p.public.figure;
+        // These tasks ask for reasoning or a plotted response without a scene.
+        // Legacy draws and the within-ten scene must keep all masking checks.
+        if (
+          version === undefined &&
+          clause &&
+          ((id === "add-within-20" && clause === "near-double") ||
+            (id === "number-line-hops" &&
+              ["length-story", "from-zero"].includes(clause)))
+        ) {
+          assert.equal(f, undefined);
+          assert.equal(p.hintCue, undefined);
+          if (clause === "near-double")
+            assert.equal(p.public.response.kind, "multi-part-choice");
+          else if (clause === "length-story")
+            assert.equal(p.public.response.kind, "number");
+          else
+            assert.ok(
+              ["number", "point-plot"].includes(p.public.response.kind),
+            );
+          continue;
+        }
+        assert.ok(f?.kind === "scene");
+        const scene = f.scene;
+        const masked = layoutScene(scene);
+        const revealed = layoutScene(scene, { reveal: true });
+        assert.deepEqual(missingTargets(masked, scene.steps!), []);
+        const given = new Set(numbers(p.public.prompt));
+        // Hint captions and every masked derived label stay free of the answer
+        // unless the prompt itself states that number.
+        const steps = p.hintCue ?? visibleSteps(scene.steps!, "hint");
+        if (p.hintCue) assert.deepEqual(missingTargets(masked, p.hintCue), []);
+        for (const s of steps) {
+          const caption = captionText(masked, s.caption);
+          if (!given.has(p.answer))
+            assert.ok(
+              !numbers(caption).includes(p.answer),
+              `${id} ${i}: ${caption}`,
+            );
+        }
+        for (const d of masked.items)
+          if (d.k === "text" && d.masked) assert.equal(d.plain, "?");
+        assert.ok(!JSON.stringify(f).includes(`"${p.answer}"`));
+        // The revealed final caption states the result.
+        const final = captionText(revealed, scene.steps!.at(-1)!.caption);
+        assert.ok(!final.includes("?"), final);
       }
-      for (const d of masked.items)
-        if (d.k === "text" && d.masked) assert.equal(d.plain, "?");
-      assert.ok(!JSON.stringify(f).includes(`"${p.answer}"`));
-      // The revealed final caption states the result.
-      const final = captionText(revealed, scene.steps!.at(-1)!.caption);
-      assert.ok(!final.includes("?"), final);
-    }
+    assert.ok(seen.has("legacy"));
+    if (id === "add-within-20")
+      for (const clause of ["near-double", "within-10-fluency"])
+        assert.ok(seen.has(clause));
+    if (id === "number-line-hops")
+      for (const clause of ["length-story", "from-zero"])
+        assert.ok(seen.has(clause));
   });
 }
 
