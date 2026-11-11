@@ -166,6 +166,15 @@ test(
     const senior = await add(alder.id, "Gia", "Lane", 8, grade5.id);
     const waiting = await add(alder.id, "Wen", "Liu", 4, untaught.id);
     await add(birch.id, "Bo", "Birch", 5, birchClass.id);
+    const rostered = [amara, caleb, senior, waiting].map((student) => student.personId);
+    await db.query(
+      `UPDATE amp_org_roles SET begin_on=$1 WHERE person_id=ANY($2::uuid[])`,
+      [iso(-120), rostered],
+    );
+    await db.query(
+      `UPDATE amp_enrollments SET begin_on=$1 WHERE person_id=ANY($2::uuid[])`,
+      [iso(-120), rostered],
+    );
 
     const week = (() => {
       const now = new Date();
@@ -282,13 +291,11 @@ test(
           assert.equal(math.students, 3);
           assert.equal(math.active, 2);
           assert.equal(math.minutes, 21);
-          // The growth median and how many it's over: Amara's 0.6 and Caleb's
-          // 0, whose only reading starts and ends his term.
-          assert.equal(math.growth, 0.3);
-          assert.equal(math.placed, 2);
-          // With where that median sits: two students at sd 0.4 a reading.
-          assert.ok(math.growthLow < 0.3 && math.growthHigh > 0.3);
-          // Amara went from 5.2 to 5.8 in the window; only she has two readings.
+          // Amara settled across two days. Caleb and Gia have one reading each,
+          // so they have no growth figure rather than a zero.
+          assert.equal(math.placed, 1);
+          assert.ok(math.growth > 0.6 && math.growth < 1);
+          assert.ok(math.growthLow < math.growth && math.growthHigh > math.growth);
           assert.equal(view.schools, null);
           const ids = view.attention.map((item: { id: string }) => item.id);
           assert.ok(ids.includes("seats"));
@@ -329,8 +336,9 @@ test(
             klass.students.map((row: { name: string }) => row.name),
             ["Caleb Ortiz", "Gia Lane", "Amara Osei"],
           );
-          assert.equal(klass.growth.n, 2);
-          assert.ok(klass.growth.low < 0.3 && klass.growth.high > 0.3);
+          assert.equal(klass.growth.n, 1);
+          assert.ok(klass.growth.low < klass.growth.median);
+          assert.ok(klass.growth.high > klass.growth.median);
         },
       );
 

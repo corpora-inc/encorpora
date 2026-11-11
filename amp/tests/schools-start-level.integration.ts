@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { Pool } from "pg";
 import { migrate } from "../scripts/migrate.js";
-import { PLACEMENT_ATTEMPTS } from "../src/learning/placement.js";
+import { termGrowth } from "../src/schools/growth.js";
 import { studentFacts, usageOf } from "../src/schools/org-reads.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import { studentBoard } from "../src/schools/standings.js";
@@ -16,7 +16,7 @@ const two = (value: number | null | undefined) =>
   value === null || value === undefined ? value : Math.round(value * 100) / 100;
 
 test(
-  "A term's growth starts where placement settled, in the overview, the grade model and the standings alike",
+  "A term's growth is the settled pace, in the overview, the grade model and the standings alike",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async () => {
     const url = process.env.AMP_TEST_DATABASE_URL!;
@@ -74,6 +74,7 @@ test(
         offset: number,
         value: number,
         answered: number,
+        sd = 0.4,
       ) =>
         db.query(
           `INSERT INTO amp_level_days(learner_id,day,frontier,policy_version) VALUES($1,$2,$3,'fixture')`,
@@ -81,24 +82,33 @@ test(
             learnerId,
             day(offset),
             JSON.stringify({
-              overall: { level: value, sd: 0.4, answered, independent: 0 },
+              overall: { level: value, sd, answered, independent: 0 },
               strands: {},
             }),
           ],
         );
-      // Placement guesses high, drops as it settles, then the student climbs.
-      await level(settles.learnerId, -59, 6.8, 6);
-      await level(settles.learnerId, -57, 5.6, PLACEMENT_ATTEMPTS - 1);
-      await level(settles.learnerId, -55, 4.4, PLACEMENT_ATTEMPTS);
-      await level(settles.learnerId, -30, 4.9, 120);
-      await level(settles.learnerId, -2, 5.3, 260);
-      // Still placing: no start level, so no growth figure.
-      await level(placing.learnerId, -3, 5.0, 8);
-      await level(placing.learnerId, -1, 5.2, PLACEMENT_ATTEMPTS - 2);
-      // Placed long before the term: the term's first reading is the start.
-      await level(continuing.learnerId, -80, 2.6, 280);
-      await level(continuing.learnerId, -58, 3.0, 300);
-      await level(continuing.learnerId, -1, 3.4, 400);
+      // The roster opened with the term, so the window includes these days.
+      await db.query(
+        `UPDATE amp_org_roles SET begin_on=$1 WHERE org_id=$2 AND role='student'`,
+        [day(-60), org.id],
+      );
+      await db.query(`UPDATE amp_enrollments SET begin_on=$1 WHERE class_id=$2`, [
+        day(-60),
+        klass.id,
+      ]);
+      // The estimate is still wide, then it settles and the student climbs.
+      await level(settles.learnerId, -59, 6.8, 6, 1.5);
+      await level(settles.learnerId, -57, 5.6, 19, 1.2);
+      await level(settles.learnerId, -55, 4.4, 40, 0.4);
+      await level(settles.learnerId, -30, 4.9, 120, 0.4);
+      await level(settles.learnerId, -2, 5.3, 260, 0.4);
+      // Still wide: no settled pace, so no growth figure.
+      await level(placing.learnerId, -3, 5.0, 8, 1.4);
+      await level(placing.learnerId, -1, 5.2, 18, 1.1);
+      // Settled before the term: the term's first settled day is the start.
+      await level(continuing.learnerId, -80, 2.6, 280, 0.3);
+      await level(continuing.learnerId, -58, 3.0, 300, 0.4);
+      await level(continuing.learnerId, -1, 3.4, 400, 0.4);
 
       // Independent work this term, which a growth board counts.
       for (const person of [settles, placing, continuing])
@@ -111,14 +121,30 @@ test(
       const facts = await studentFacts(db, org.id, term, day(0));
       const fact = (personId: string) =>
         facts.find((row) => row.id === personId)!;
+      const settlesGrowth = termGrowth(
+        [
+          { day: 5, level: 4.4, sd: 0.4 },
+          { day: 30, level: 4.9, sd: 0.4 },
+          { day: 58, level: 5.3, sd: 0.4 },
+        ],
+        60,
+      )!;
+      const continuingGrowth = termGrowth(
+        [
+          { day: 2, level: 3.0, sd: 0.4 },
+          { day: 59, level: 3.4, sd: 0.4 },
+        ],
+        60,
+      )!;
       assert.equal(two(fact(settles.personId).startLevel), 4.4);
       assert.equal(two(fact(settles.personId).level), 5.3);
       assert.equal(fact(placing.personId).startLevel, null);
+      assert.equal(fact(placing.personId).growthMu, null);
       assert.equal(two(fact(continuing.personId).startLevel), 3);
       assert.equal(
         usageOf([fact(settles.personId)]).growth,
-        0.9,
-        "the climb, not the fall from placement's first guess",
+        two(settlesGrowth.mu),
+        "the settled pace, not the fall from the wide first guesses",
       );
       assert.equal(
         usageOf([fact(placing.personId)]).growth,
@@ -151,12 +177,16 @@ test(
       // The board a student sees agrees with the teacher: the same start.
       const growth = async (person: typeof settles) =>
         (await studentBoard(db, person.personId, klass.id)).you.value;
-      assert.equal(await growth(settles), 90, "the climb from 4.4 to 5.3");
-      assert.equal(await growth(placing), 0, "nothing shown while placing");
+      assert.equal(
+        await growth(settles),
+        Math.round(settlesGrowth.mu * 100),
+        "the same pace the overview shows",
+      );
+      assert.equal(await growth(placing), 0, "nothing shown while unsettled");
       assert.equal(
         await growth(continuing),
-        40,
-        "from the term's first reading, 3.0, not last term's 2.6",
+        Math.round(continuingGrowth.mu * 100),
+        "from this term's settled days, not last term's 2.6",
       );
     } finally {
       await db.end();

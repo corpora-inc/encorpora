@@ -8,8 +8,9 @@ import type {
 import { joinNames, weekStart } from "./today.js";
 import { PERSON_NAME } from "./term-grades.js";
 import { YEAR_IN_USE } from "./years.js";
+import { growthArraySql } from "./growth.js";
 import { startLevelSql } from "./start-level.js";
-import { growthOf, medianInterval } from "./standing-math.js";
+import { medianInterval } from "./standing-math.js";
 import { levelSdSql } from "./student-sd.js";
 import { PLACEMENT_ATTEMPTS } from "../learning/placement.js";
 import { medianOf, practiced, practicedSql } from "./practice-rules.js";
@@ -100,9 +101,12 @@ export type StudentFact = {
   lastAttempts: number;
   level: number | null;
   startLevel: number | null;
-  /** Each reading's sd, for growth's interval. */
+  /** Each reading's sd. Growth's own interval is `growthSd`. */
   levelSd: number | null;
   startSd: number | null;
+  /** The shared term-growth figure. Null until the estimate has settled. */
+  growthMu: number | null;
+  growthSd: number | null;
   seated: boolean;
   signedIn: boolean;
   /** On the roster here since. */
@@ -117,10 +121,9 @@ export const SQL_ACTIVE_STUDENTS = `
   JOIN amp_people p ON p.id=r.person_id AND p.deleted_at IS NULL AND p.learner_id IS NOT NULL
   WHERE o.path @> ARRAY[$1]::uuid[]
   ORDER BY p.id,r.begin_on DESC`;
-/** One row per student here today: this week, last week, where they stand and
- * where they stood when the term began, both once placement settled: a level
- * from fewer answers is still the starting guess, so it isn't a standing. Read from the learner's week, and from
- * two stored level days, never from replaying the frontier. */
+/** One row per student here today: this week, last week, where they stand,
+ * and growth this term from the shared pace (`growth.ts`). Read from the
+ * learner's week and from stored level days, never from replaying the frontier. */
 export async function studentFacts(
   db: Database,
   orgId: string,
@@ -128,6 +131,7 @@ export async function studentFacts(
   today: string,
 ): Promise<StudentFact[]> {
   const thisWeek = weekStart(today);
+  const through = term.endsOn < today ? term.endsOn : today;
   const { rows } = await db.query(
     `WITH roster AS MATERIALIZED (${SQL_ACTIVE_STUDENTS})
      SELECT r.id,r.learner_id AS learner,r.org_id AS org,r.grade_level AS grade,
@@ -135,6 +139,7 @@ export async function studentFacts(
        COALESCE(w."thisAttempts",0)::int AS "thisAttempts",COALESCE(w."lastAttempts",0)::int AS "lastAttempts",
        latest.overall_level::float8 AS level,first.overall_level::float8 AS "startLevel",
        latest.sd AS "levelSd",first.sd AS "startSd",
+       growth.mu AS "growthMu",growth.sd AS "growthSd",
        r.begin_on::text AS since,seat.person_id IS NOT NULL AS seated,
        session.id IS NOT NULL AS "signedIn"
      FROM roster r
@@ -154,9 +159,18 @@ export async function studentFacts(
        ORDER BY d.day DESC LIMIT 1
      ) latest ON true
      LEFT JOIN LATERAL (
-       SELECT ${startLevelSql({ select: "d.overall_level", learner: "r.learner_id", from: "$2::date" })} AS overall_level,
-         ${startLevelSql({ select: levelSdSql("d"), learner: "r.learner_id", from: "$2::date" })} AS sd
+       SELECT ${startLevelSql({ select: "d.overall_level", learner: "r.learner_id", from: "GREATEST($2::date, r.begin_on)", to: "$5::date" })} AS overall_level,
+         ${startLevelSql({ select: levelSdSql("d"), learner: "r.learner_id", from: "GREATEST($2::date, r.begin_on)", to: "$5::date" })} AS sd
      ) first ON true
+     LEFT JOIN LATERAL (
+       SELECT g.mu, g.sd FROM (
+         SELECT ${growthArraySql({
+           learner: "r.learner_id",
+           from: "GREATEST($2::date, r.begin_on)",
+           to: "$5::date",
+         })} AS pair
+       ) raw, LATERAL (SELECT raw.pair[1] AS mu, raw.pair[2] AS sd) g
+     ) growth ON growth.mu IS NOT NULL
      LEFT JOIN (
        SELECT s.person_id FROM amp_seats s JOIN amp_school_licenses l ON l.id=s.license_id
        WHERE s.released_at IS NULL AND l.status='active' AND l.starts_at<=now() AND l.ends_at>now()
@@ -164,9 +178,13 @@ export async function studentFacts(
      LEFT JOIN LATERAL (
        SELECT n.id FROM amp_student_sessions n WHERE n.person_id=r.id LIMIT 1
      ) session ON true`,
-    [orgId, term.startsOn, thisWeek, shift(thisWeek, -7)],
+    [orgId, term.startsOn, thisWeek, shift(thisWeek, -7), through],
   );
-  return rows;
+  return rows.map((row) => ({
+    ...row,
+    growthMu: row.growthMu === null ? null : Number(row.growthMu),
+    growthSd: row.growthSd === null ? null : Number(row.growthSd),
+  }));
 }
 
 const minutesOf = (ms: number) => ms / 60_000;
@@ -181,17 +199,12 @@ export function usageOf(students: readonly StudentFact[]) {
   for (const student of students) {
     if (isActive(student.thisMs, student.thisAttempts)) active++;
     minutes += minutesOf(student.thisMs);
-    if (student.level !== null && student.startLevel !== null)
-      gains.push(
-        growthOf(
-          { mu: student.startLevel, sd: student.startSd ?? 0 },
-          { mu: student.level, sd: student.levelSd ?? 0 },
-        ),
-      );
+    if (student.growthMu !== null && student.growthSd !== null)
+      gains.push({ mu: student.growthMu, sd: student.growthSd });
   }
   const growth = middle(gains.map((gain) => gain.mu));
-  // Where that median sits (95%): students resampled, each drawn from their
-  // own growth N(Δμ, σ_start² + σ_end²) (`standing-math.ts`).
+  // Where that median sits (95%): students resampled, each drawn from the
+  // pace's own N(μ, σ²) (`growth.ts`).
   const interval = medianInterval(gains, { mode: "bootstrap" });
   const hundredth = (value: number) => Math.round(value * 100) / 100;
   return {

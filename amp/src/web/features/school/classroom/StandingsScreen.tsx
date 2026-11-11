@@ -67,7 +67,9 @@ const TeacherTag = () => (
 /** Your own line, in your own terms: never a place on a list. */
 function yourLine({ board, you }: StandingsBoard) {
   if (!you.value)
-    return "Your line starts with your first problem done without help.";
+    return board.measure === "growth"
+      ? "Not settled yet."
+      : "Your line starts with your first problem done without help.";
   const week = you.thisWeek;
   const place = you.rank ? `You’re number ${you.rank}. ` : "";
   if (board.measure === "growth")

@@ -1,6 +1,7 @@
 import type { Pool, PoolClient } from "pg";
-import { PLACEMENT_ATTEMPTS } from "../learning/placement.js";
 import type { PracticeCell, PracticeResponse } from "./org-contracts.js";
+import { SETTLED_SD, termGrowth, type GrowthDay } from "./growth.js";
+import { levelSdSql } from "./student-sd.js";
 import {
   classesHere,
   classMembers,
@@ -60,36 +61,35 @@ async function learnerWeeks(
   return weeks;
 }
 
-/** Each learner's last placed level in each week of the term: one backward
- * probe of the (learner, day) index, which carries the level and its answer
- * count, per learner-week. No sort and no heap, at 10,000 students. */
-async function levelWeeks(
+/** Settled level days in the window, day 0 being `from`. */
+async function settledDays(
   db: Database,
   learners: readonly string[],
-  weeks: readonly string[],
   from: string,
   to: string,
 ) {
-  const levels = new Map<string, Map<string, number>>();
-  if (!learners.length || !weeks.length) return levels;
+  const days = new Map<string, GrowthDay[]>();
+  if (!learners.length) return days;
   const { rows } = await db.query(
-    `SELECT l.learner,w.week::text AS week,x.level
-     FROM unnest($1::text[]) l(learner)
-     CROSS JOIN unnest($2::date[]) w(week)
-     CROSS JOIN LATERAL (
-       SELECT d.overall_level::float8 AS level FROM amp_level_days d
-       WHERE d.learner_id=l.learner AND d.day BETWEEN w.week AND w.week+6
-         AND d.day BETWEEN $3::date AND $4::date AND d.overall_answered>=${PLACEMENT_ATTEMPTS}
-       ORDER BY d.day DESC LIMIT 1
-     ) x`,
-    [learners, weeks, from, to],
+    `SELECT d.learner_id AS learner,(d.day-$2::date)::int AS day,
+       d.overall_level::float8 AS level,${levelSdSql("d")} AS sd
+     FROM amp_level_days d
+     WHERE d.learner_id=ANY($1::text[]) AND d.day BETWEEN $2::date AND $3::date
+       AND ${levelSdSql("d")} > 0 AND ${levelSdSql("d")} <= ${SETTLED_SD}
+     ORDER BY d.learner_id,d.day`,
+    [learners, from, to],
   );
-  for (const row of rows as { learner: string; week: string; level: number }[]) {
-    const byWeek = levels.get(row.learner) ?? new Map<string, number>();
-    byWeek.set(row.week, row.level);
-    levels.set(row.learner, byWeek);
+  for (const row of rows as {
+    learner: string;
+    day: number;
+    level: number;
+    sd: number;
+  }[]) {
+    const list = days.get(row.learner) ?? [];
+    list.push({ day: row.day, level: row.level, sd: Number(row.sd) });
+    days.set(row.learner, list);
   }
-  return levels;
+  return days;
 }
 
 const statOf = (values: readonly number[]) => {
@@ -155,13 +155,7 @@ export async function readPractice(
 
   const [byWeek, levels, groups] = await Promise.all([
     learnerWeeks(pool, learners, first, current),
-    levelWeeks(
-      pool,
-      learners,
-      weeks.filter((week) => week <= current),
-      term.startsOn,
-      lastDay,
-    ),
+    settledDays(pool, learners, term.startsOn, lastDay),
     school ? classGroups(pool, orgId, students) : schoolGroups(pool, orgId, students),
   ]);
 
@@ -206,9 +200,9 @@ export async function readPractice(
     perWeek.set(student.id, minutes / weeksIn);
   }
   const placed = students.filter(
-    (student) => student.level !== null && student.startLevel !== null,
+    (student) => student.growthMu !== null && student.growthSd !== null,
   );
-  const growthOf = (student: StudentFact) => student.level! - student.startLevel!;
+  const growthOf = (student: StudentFact) => student.growthMu!;
   const points: Point[] = placed.map((student) => [
     round(perWeek.get(student.id)!, 1),
     round(growthOf(student), 2),
@@ -216,7 +210,7 @@ export async function readPractice(
   const groupPoints = groups.flatMap((group) => {
     const inGroup = group.members
       .map((member) => member.student)
-      .filter((student) => student.level !== null && student.startLevel !== null);
+      .filter((student) => student.growthMu !== null);
     if (inGroup.length < GROUP_STUDENTS) return [];
     return [
       {
@@ -242,8 +236,21 @@ export async function readPractice(
             weeks: weeks.map((week) => {
               if (week > current) return null;
               const growths = group.items.flatMap((student) => {
-                const level = levelAt(levels.get(student.learner), week);
-                return level === null ? [] : [level - student.startLevel!];
+                const window =
+                  student.since > term.startsOn ? student.since : term.startsOn;
+                const end = shift(week, 6) < lastDay ? shift(week, 6) : lastDay;
+                if (end < window) return [];
+                const origin = Math.round(
+                  (dayAt(window) - dayAt(term.startsOn)) / DAY,
+                );
+                const elapsed = Math.round(
+                  (dayAt(end) - dayAt(window)) / DAY,
+                );
+                const days = (levels.get(student.learner) ?? [])
+                  .filter((point) => point.day >= origin && point.day <= origin + elapsed)
+                  .map((point) => ({ ...point, day: point.day - origin }));
+                const figure = termGrowth(days, elapsed);
+                return figure ? [figure.mu] : [];
               });
               if (!growths.length) return null;
               return { n: growths.length, ...statOf(growths) };
@@ -286,18 +293,6 @@ const roundFit = (fit: NonNullable<ReturnType<typeof fitLine>>) => ({
     high: round(row.high, 3),
   })),
 });
-
-/** The latest placed level by the end of `week`, carried forward. */
-function levelAt(
-  byWeek: Map<string, number> | undefined,
-  week: string,
-): number | null {
-  if (!byWeek) return null;
-  let latest: string | null = null;
-  for (const at of byWeek.keys())
-    if (at <= week && (latest === null || at > latest)) latest = at;
-  return latest === null ? null : byWeek.get(latest)!;
-}
 
 type Group = {
   id: string;

@@ -11,15 +11,14 @@ import type {
   ClassStandingResponse,
   OrgStandingResponse,
 } from "./standing-contracts.js";
+import { growthArraySql } from "./growth.js";
 import {
   gridFor,
-  growthOf,
   medianInterval,
   seedOf,
   type Normal,
 } from "./standing-math.js";
 import { curveOf, round, standingNormal } from "./standing-curve.js";
-import { startLevelSql } from "./start-level.js";
 import { levelSdSql } from "./student-sd.js";
 import { PERSON_NAME } from "./term-grades.js";
 
@@ -163,12 +162,12 @@ export async function readClassStanding(
   const klass = classRows[0] as { id: string; name: string; org: string };
   const org = await orgScope(db, klass.org, now);
   const term = await termInUse(db, org);
+  const through = term.endsOn < org.today ? term.endsOn : org.today;
   const { rows } = await db.query(
     `SELECT p.id,${PERSON_NAME} AS name,p.grade_level AS grade,l.birth_year AS "birthYear",
        latest.overall_level::float8 AS level,latest.sd,
        COALESCE(latest.overall_answered,0)::int AS answered,
-       placed.level AS "placedLevel",placed.sd AS "placedSd",
-       ${startLevelSql({ select: `ARRAY[d.overall_level::float8,${levelSdSql("d")}]`, learner: "p.learner_id", from: "$2::date" })} AS start
+       growth.mu AS "growthMu",growth.sd AS "growthSd"
      FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs o ON o.id=c.org_id
      JOIN amp_people p ON p.id=e.person_id AND p.deleted_at IS NULL AND p.learner_id IS NOT NULL
      JOIN amp_learners l ON l.id=p.learner_id
@@ -177,33 +176,31 @@ export async function readClassStanding(
        WHERE d.learner_id=p.learner_id ORDER BY d.day DESC LIMIT 1
      ) latest ON true
      LEFT JOIN LATERAL (
-       SELECT d.overall_level::float8 AS level,${levelSdSql("d")} AS sd FROM amp_level_days d
-       WHERE d.learner_id=p.learner_id AND d.overall_answered>=${PLACEMENT_ATTEMPTS}
-       ORDER BY d.day DESC LIMIT 1
-     ) placed ON true
+       SELECT g.mu, g.sd FROM (
+         SELECT ${growthArraySql({
+           learner: "p.learner_id",
+           from: "GREATEST($2::date, e.begin_on)",
+           to: "$3::date",
+         })} AS pair
+       ) raw, LATERAL (SELECT raw.pair[1] AS mu, raw.pair[2] AS sd) g
+     ) growth ON growth.mu IS NOT NULL
      WHERE e.class_id=$1 AND e.role='student'
        AND e.begin_on<=(now() AT TIME ZONE o.timezone)::date
        AND (e.end_on IS NULL OR e.end_on>(now() AT TIME ZONE o.timezone)::date)`,
-    [classId, term.startsOn],
+    [classId, term.startsOn, through],
   );
   type Row = StandingRow & {
     name: string;
-    placedLevel: number | null;
-    placedSd: number | null;
-    start: [number, number] | null;
+    growthMu: number | null;
+    growthSd: number | null;
   };
   const at = now.getTime();
   const students = (rows as Row[])
     .map((row) => {
       const normal = standingNormal(row, at);
-      // Growth runs between two placed readings, the same rule as the
-      // overview's (`start-level.ts`).
       const growth =
-        row.start && row.placedLevel !== null && row.placedSd !== null
-          ? growthOf(
-              { mu: row.start[0], sd: row.start[1] },
-              { mu: row.placedLevel, sd: row.placedSd },
-            )
+        row.growthMu !== null && row.growthSd !== null
+          ? { mu: Number(row.growthMu), sd: Number(row.growthSd) }
           : null;
       return { row, normal, growth };
     })

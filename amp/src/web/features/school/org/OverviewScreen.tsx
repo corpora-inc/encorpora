@@ -114,8 +114,8 @@ function GrowthCell({ row }: { row: Usage }) {
 }
 const growthTip = (row: Usage) =>
   row.placed
-    ? `Median of ${number(row.placed)} placed ${row.placed === 1 ? "student" : "students"}`
-    : "No placed students yet";
+    ? `Median of ${number(row.placed)} ${row.placed === 1 ? "student" : "students"} whose estimate has settled`
+    : "Not settled yet";
 const usageColumns = <Row extends Usage>(): DataGridColumn<Row>[] => [
   {
     id: "students",
@@ -636,10 +636,12 @@ export function OverviewScreen() {
                   </p>
                 )}
                 <p className={styles.tableNote}>
-                  Growth is each {district ? "school" : "class"}’s median change
-                  in grade level this term, with its 95% range, from{" "}
-                  {number(placed)} placed{" "}
-                  {placed === 1 ? "student" : "students"} (20 or more answers).
+                  Growth is each {district ? "school" : "class"}’s median pace of
+                  level on the days its uncertainty was at most 0.6 grades,
+                  across the days the term has run, with its 95% range, from{" "}
+                  {number(placed)}{" "}
+                  {placed === 1 ? "student" : "students"}. Not settled yet
+                  shows as —.
                   Practiced means at least 5 active minutes or 5 problems this
                   week.
                 </p>

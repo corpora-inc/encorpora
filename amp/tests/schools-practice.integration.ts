@@ -261,8 +261,8 @@ test(
           assert.ok(quarters[0]!.to <= quarters[1]!.from);
           const last = quarters.map((group) => group.weeks[WEEKS - 1]!.mean);
           assert.ok(last[0]! < last[1]! && last[1]! < last[2]! && last[2]! < last[3]!, `${last}`);
-          // Every quarter starts at zero growth in the week it's first placed.
-          assert.equal(quarters[3]!.weeks[0]!.mean, 0);
+          // The first week has one settled day, so there is no pace yet.
+          assert.equal(quarters[3]!.weeks[0], null);
           assert.equal(quarters[0]!.weeks[WEEKS + 2], null);
         },
       );

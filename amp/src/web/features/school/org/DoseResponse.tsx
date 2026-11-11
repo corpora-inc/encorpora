@@ -185,7 +185,7 @@ function Scatter({
   const message = fit
     ? undefined
     : students
-      ? `A line needs ${needed} students with a growth reading this term (20 or more answers at the start and now). ${number(dose.placed)} so far.`
+      ? `A line needs ${needed} students whose estimate has settled. ${number(dose.placed)} so far.`
       : `A line needs ${needed} ${rowWord === "class" ? "classes" : "schools"} with 3 or more students with a growth reading. ${number(dose.groups.length)} so far.`;
   const xs = points.map((point) => point.x);
   const ys = points.map((point) => point.y);
@@ -473,9 +473,9 @@ export function DoseResponse({
               })}
             </ul>
             <p className={styles.tableNote}>
-              Growth is each student’s latest level minus their first this term
-              with 20 or more answers. Quarters are by active minutes a week
-              this term.
+              Growth is the pace of each student’s level on the days its
+              uncertainty was at most 0.6 grades, across the days the term has
+              run. Quarters are by active minutes a week this term.
             </p>
           </figcaption>
         )}

@@ -11,8 +11,7 @@ import {
   type SettingsScope,
 } from "./settings.js";
 import { STUDENT_NAME } from "./sign-in.js";
-import { PLACEMENT_ATTEMPTS } from "../learning/placement.js";
-import { startLevelSql } from "./start-level.js";
+import { growthArraySql } from "./growth.js";
 import { shownTeachers } from "./teacher-line.js";
 
 /** Standings read from `amp_skill_days` and `amp_level_days`, independent work
@@ -185,8 +184,8 @@ const shiftDays = (day: string, days: number) =>
 
 /** One number per student, for students with something to show. Growth is a
  * hundredth of a grade per point, so it reads as a whole number and says nothing
- * of the level itself. A term's growth starts where the teacher's does
- * (`start-level.ts`); a week's runs from the last settled level before it. */
+ * of the level itself. A term and a week both use the shared pace (`growth.ts`)
+ * over that window. No settled pace is absent, not a zero. */
 async function measured(
   db: Database,
   roster: Roster[],
@@ -229,29 +228,24 @@ async function measured(
   const worked = new Set(independent.rows.map((row) => row.learner_id));
   const ends = await db.query(
     `SELECT l.learner_id,
-       (SELECT d.overall_level::float8 FROM amp_level_days d
-        WHERE d.learner_id=l.learner_id AND d.day<=$3::date ORDER BY d.day DESC LIMIT 1) AS latest,
-       ${
-         span === "term"
-           ? startLevelSql({
-               select: "d.overall_level::float8",
-               learner: "l.learner_id",
-               from: "$2::date",
-               to: "$3::date",
-             })
-           : `COALESCE(
-         (SELECT d.overall_level::float8 FROM amp_level_days d
-          WHERE d.learner_id=l.learner_id AND d.day<$2::date AND d.overall_answered>=${PLACEMENT_ATTEMPTS} ORDER BY d.day DESC LIMIT 1),
-         ${startLevelSql({ select: "d.overall_level::float8", learner: "l.learner_id", from: "$2::date", to: "$3::date" })}
-       )`
-       } AS start
+       ${growthArraySql({
+         learner: "l.learner_id",
+         from: span === "term"
+           ? `GREATEST($2::date, COALESCE((
+               SELECT min(r.begin_on) FROM amp_org_roles r
+               JOIN amp_people p ON p.id=r.person_id
+               WHERE p.learner_id=l.learner_id AND r.role='student' AND r.begin_on<=$3::date
+             ), $2::date))`
+           : "$2::date",
+         to: "$3::date",
+       })} AS growth
      FROM unnest($1::text[]) AS l(learner_id)`,
     [[...worked], from, to],
   );
   for (const row of ends.rows) {
-    // Still placing: no start, so nothing to show rather than a zero.
-    if (row.start === null || row.latest === null) continue;
-    const points = Math.round((row.latest - row.start) * 100);
+    const pair = row.growth as [number, number] | null;
+    if (!pair) continue;
+    const points = Math.round(Number(pair[0]) * 100);
     if (points > 0) values.set(person.get(row.learner_id)!, points);
   }
   return values;

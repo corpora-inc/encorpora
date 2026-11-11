@@ -188,7 +188,7 @@ export function assertGradePolicy(policy: GradePolicy): void {
 
 export const DEFAULT_GRADE_POLICY = createGradePolicy({
   schemaVersion: 1,
-  version: "school-grades-v2",
+  version: "school-grades-v4",
   weights: { course: 40, growth: 30, practice: 20, retention: 10 },
   course: {
     onPaceScore: 84,
@@ -304,9 +304,15 @@ export type GradeInput = {
   /** The course on the level axis. Null grades against the student's own level. */
   course: CourseBand | null;
   gradeLevel: number | null;
-  /** The level on the term-start level day, and the latest within the term. */
+  /** The level on the first settled day, and the latest within the term. */
   start: StudentLevel | null;
   end: StudentLevel | null;
+  /**
+   * Growth from `termGrowth` (`growth.ts`). Null means the estimate has not
+   * settled, so there is no level gain. Absent only for a caller that still
+   * passes two levels and wants their difference.
+   */
+  termGrowth?: { mu: number; sd: number } | null;
   objectivesGained: number;
   activity: GradeActivity;
   weeklyTargetMinutes: number | null;
@@ -476,9 +482,11 @@ function growthScore(input: GradeInput, policy: GradePolicy) {
   // Shown as it is, either sign; a level lower than at the start scores as no
   // gain, never below it, since two estimates a term apart carry noise.
   const levelsGained =
-    input.start && input.end
-      ? input.end.overall.level - input.start.overall.level
-      : null;
+    input.termGrowth !== undefined
+      ? (input.termGrowth?.mu ?? null)
+      : input.start && input.end
+        ? input.end.overall.level - input.start.overall.level
+        : null;
   const capped = (pace: number) => Math.min(growth.maximumPace, pace);
   const observed =
     growth.levelShare * capped(Math.max(0, levelsGained ?? 0) / expected) +
@@ -574,11 +582,15 @@ export type CompositeModel = {
   end: Estimate;
   /** Reviews right, as a Beta; null where reviews don't count. */
   retention: { right: number; wrong: number } | null;
+  /** Set when the shared pace supplied the growth. Null: not settled. */
+  termGrowth?: { mu: number; sd: number } | null;
   score(
     strandLevels: ArrayLike<number>,
     startLevel: number | null,
     endLevel: number,
     retentionShare: number | null,
+    /** A draw of the shared pace. Absent: use the two levels. */
+    growthGain?: number,
   ): number;
 };
 export function compositeModel(
@@ -612,7 +624,8 @@ export function compositeModel(
     start: input.start?.overall ?? null,
     end: input.end.overall,
     retention: retentionPosterior(input, policy),
-    score(strandLevels, startLevel, endLevel, retentionShare) {
+    termGrowth: input.termGrowth,
+    score(strandLevels, startLevel, endLevel, retentionShare, growthGain) {
       // As courseScore: without a course, the student's own start.
       const expected = fixedExpected ?? startLevel ?? endLevel;
       let scored = 0;
@@ -634,7 +647,11 @@ export function compositeModel(
       const courseScore = scored / totalPrecision;
       // As growthScore.
       const gained =
-        startLevel === null ? 0 : Math.max(0, endLevel - startLevel);
+        growthGain !== undefined
+          ? Math.max(0, growthGain)
+          : startLevel === null
+            ? 0
+            : Math.max(0, endLevel - startLevel);
       const observed =
         growth.levelShare * capped(gained / expectedGain) +
         (1 - growth.levelShare) * objectivePace;
@@ -675,6 +692,7 @@ export function compositeScore(
     draw.start?.overall.level ?? null,
     draw.end.overall.level,
     draw.retentionShare,
+    input.termGrowth === undefined ? undefined : (input.termGrowth?.mu ?? 0),
   );
 }
 
@@ -891,7 +909,7 @@ export function componentSentence(component: GradeComponent): string {
       const { objectivesGained, levelsGained } = component;
       const objectives = skillsShownWords(objectivesGained);
       return levelsGained === null
-        ? `${objectives} this term.`
+        ? `${objectives} this term. The level has not settled yet.`
         : `${objectives}, and ${levelChangeWords(levelsGained)}, this term.`;
     }
     case "practice": {

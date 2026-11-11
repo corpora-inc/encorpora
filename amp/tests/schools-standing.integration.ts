@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { Pool } from "pg";
 import { migrate } from "../scripts/migrate.js";
+import { termGrowth } from "../src/schools/growth.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import {
   readClassStanding,
@@ -78,6 +79,14 @@ test(
             }),
           ],
         );
+      await db.query(
+        `UPDATE amp_org_roles SET begin_on=$1 WHERE org_id=$2 AND role='student'`,
+        [day(-30), org.id],
+      );
+      await db.query(
+        `UPDATE amp_enrollments SET begin_on=$1 WHERE class_id=$2`,
+        [day(-30), klass.id],
+      );
       for (const student of students.slice(0, 6))
         await level(student.learnerId, -20, 5, 2.5, 0);
 
@@ -117,13 +126,20 @@ test(
         [...drill.students.map((row) => row.mu)].sort((a, b) => a - b),
       );
       assert.ok(drill.students.every((row) => row.sd === 0.3));
+      const pace = termGrowth(
+        [
+          { day: 15, level: 4.5, sd: 0.45 },
+          { day: 29, level: 4.8, sd: 0.3 },
+        ],
+        30,
+      )!;
+      const hundredth = (value: number) => Math.round(value * 100) / 100;
       assert.equal(drill.growth!.n, 12);
-      // Every student gained 0.3 between placed readings.
-      assert.equal(drill.growth!.median, 0.3);
-      assert.ok(drill.growth!.low < 0.3 && drill.growth!.high > 0.3);
+      assert.equal(drill.growth!.median, hundredth(pace.mu));
+      assert.ok(drill.growth!.low < pace.mu && drill.growth!.high > pace.mu);
       for (const row of drill.students) {
-        assert.equal(row.growth!.mu, 0.3);
-        assert.equal(row.growth!.sd, 0.54);
+        assert.equal(row.growth!.mu, hundredth(pace.mu));
+        assert.equal(row.growth!.sd, hundredth(pace.sd));
       }
       // One grade 5 class: the axis stops at K and at 13.
       assert.ok(drill.grid.from >= -6 && drill.grid.to <= 8);
