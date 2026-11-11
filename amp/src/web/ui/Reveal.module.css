@@ -1,0 +1,25 @@
+.reveal {
+  display: grid;
+  grid-template-rows: 0fr;
+}
+.reveal[data-open] {
+  grid-template-rows: 1fr;
+}
+.inner {
+  min-height: 0;
+  overflow: hidden;
+}
+.reveal:not([data-open]) > .inner {
+  visibility: hidden;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    transition: grid-template-rows 220ms var(--ease-standard);
+  }
+  .reveal > .inner {
+    transition: visibility 0s linear 220ms;
+  }
+  .reveal[data-open] > .inner {
+    transition-delay: 0s;
+  }
+}
