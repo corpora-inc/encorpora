@@ -1,6 +1,11 @@
 import { CurriculumDetailsControl } from "../curriculum/CurriculumDetails";
-import { useState, type ReactNode } from "react";
-import { Link, useLocation, useNavigate } from "@tanstack/react-router";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useRouter,
+} from "@tanstack/react-router";
 import { useLearningView } from "../../lib/learning-view";
 import { useLearnerStore } from "../../learner-store";
 import { useShellSlots } from "../../lib/shell-slots";
@@ -20,7 +25,7 @@ import { ProfilePlace } from "../profiles/ProfileBar";
 type Icon =
   | "learn"
   | "level"
-  | "lessons"
+  | "workbooks"
   | "class"
   | "settings"
   | "plans"
@@ -35,7 +40,8 @@ function NavIcon({ kind }: { kind: Icon }) {
     // A person and an arrow: practicing as someone else.
     someone:
       "M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3.5 19c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5M16 8h5m-2-2 2 2-2 2",
-    lessons:
+    // An open book: a workbook, practice on paper.
+    workbooks:
       "M4 5.5C6.5 4.5 9.5 4.5 12 6c2.5-1.5 5.5-1.5 8-.5V19c-2.5-1-5.5-1-8 .5-2.5-1.5-5.5-1.5-8-.5V5.5ZM12 6v13.5",
     class:
       "M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-6 9a6 6 0 0 1 12 0m1-9a3 3 0 1 0 0-6m2 15a5 5 0 0 0-3.5-4.8",
@@ -93,12 +99,34 @@ export default function DrawerContents({
     value: l.id,
     label: l.name,
   }));
+  // The adult's own workbooks: a way to practise (on paper, at their level),
+  // so an item of its own under Practice (docs/design/ia.md).
+  const ownLearnerId = account?.adultPractice?.learner?.id;
+  const ownWorkbooks = ownLearnerId
+    ? `/learners/${ownLearnerId}/workbooks`
+    : null;
   // Exactly one item is current: the most specific match for this route.
-  // Practice as someone else sits inside My practice, so it outranks
-  // Progress there; never two fills at once.
+  // Practice as someone else and the adult's workbooks sit beside My
+  // practice, so they outrank Progress there; never two fills at once.
+  // Opening the drawer is the intent: each item's screen (its code and
+  // data) loads now, so the one a tap chooses renders whole, at once.
+  const router = useRouter();
+  const navRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    for (const link of navRef.current?.querySelectorAll("a[href]") ?? []) {
+      const href = link.getAttribute("href")!;
+      void router.preloadRoute({ href } as never).catch((error: unknown) => {
+        console.error("A drawer item's screen did not preload", href, error);
+      });
+    }
+  }, [router]);
   const currentItem = location.pathname.startsWith("/me/profiles")
     ? "someone"
-    : (here?.kind ?? null);
+    : ownWorkbooks &&
+        (location.pathname === ownWorkbooks ||
+          location.pathname.startsWith(`${ownWorkbooks}/`))
+      ? "workbooks"
+      : (here?.kind ?? null);
   const nav = (
     href: string,
     title: string,
@@ -278,12 +306,22 @@ export default function DrawerContents({
           <button onClick={view.retry}>Try again</button>
         </div>
       )}
-      <nav aria-label="AMP navigation" className={styles.navigation}>
+      <nav
+        ref={navRef}
+        aria-label="AMP navigation"
+        className={styles.navigation}
+      >
         {/* A second parent's family's child practices from its class
             ("Let … practice here"), which is the Class link below. */}
         {!view.viewOnly &&
           nav(practiceHref, practiceLabel, "learn", {
             current: currentItem === "practice",
+          })}
+        {own &&
+          !profile &&
+          ownWorkbooks &&
+          nav(ownWorkbooks, "Workbooks", "workbooks", {
+            current: currentItem === "workbooks",
           })}
         {/* A profile's progress is its practice; its levels are its editor. */}
         {hasProgress &&

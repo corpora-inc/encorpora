@@ -13,6 +13,7 @@ vi.mock("../../../lib/learning-view", () => ({
 vi.mock("@tanstack/react-router", () => ({
   useLocation: () => ({ pathname: pathname.value, search: {} }),
   useNavigate: () => vi.fn(),
+  useRouter: () => ({ preloadRoute: () => Promise.resolve() }),
   Link: ({
     children,
     params,
@@ -46,7 +47,10 @@ afterEach(cleanup);
 const adult = () => {
   const learner = { id: "me", name: "Me" };
   learningView.mockReturnValue({
-    account: { account: { kind: "adult" } },
+    account: {
+      account: { kind: "adult" },
+      adultPractice: { learner: { id: "me" } },
+    },
     learner,
     learners: [learner],
     ownPractice: true,
@@ -76,4 +80,15 @@ test("on Progress, only Progress is current", () => {
   pathname.value = "/me";
   render(<DrawerContents close={() => {}} />);
   expect(currentLinks()).toEqual(["Progress"]);
+});
+
+test("founder note: the adult's own workbooks sit under Practice, the one current item there", () => {
+  adult();
+  pathname.value = "/learners/me/workbooks/2026-11-10";
+  render(<DrawerContents close={() => {}} />);
+  const names = [
+    ...document.querySelectorAll('nav[aria-label="AMP navigation"] a'),
+  ].map((link) => link.getAttribute("aria-label"));
+  expect(names.slice(0, 3)).toEqual(["Practice", "Workbooks", "Progress"]);
+  expect(currentLinks()).toEqual(["Workbooks"]);
 });

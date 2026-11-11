@@ -644,15 +644,15 @@ async function adultJourney(
   );
   await measured(page, `${label} record`);
   await shot(page, "adult-used", width, theme);
-  // Their workbooks have their own allowance and stay one tap away: then the
-  // same pause, with their own plan to continue.
+  // Their workbooks have their own allowance and sit in the drawer under
+  // Practice: then the same pause, with their own plan to continue.
   await db.query("UPDATE amp_learners SET free_workbooks_used=5 WHERE id=$1", [
     learnerId,
   ]);
+  await page.getByRole("button", { name: "Open AMP menu" }).first().click();
   await page
+    .getByRole("dialog")
     .getByRole("link", { name: "Workbooks", exact: true })
-    .filter({ visible: true })
-    .first()
     .click();
   await page.waitForURL(`**/learners/${learnerId}/workbooks`);
   await page

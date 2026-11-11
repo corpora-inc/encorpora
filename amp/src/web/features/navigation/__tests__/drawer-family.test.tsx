@@ -10,6 +10,7 @@ vi.mock("../../../lib/learning-view", () => ({
 vi.mock("@tanstack/react-router", () => ({
   useLocation: () => ({ pathname: "/overview" }),
   useNavigate: () => vi.fn(),
+  useRouter: () => ({ preloadRoute: () => Promise.resolve() }),
   Link: ({
     children,
     params,

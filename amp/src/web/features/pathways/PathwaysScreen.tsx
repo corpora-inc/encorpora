@@ -85,6 +85,15 @@ function matchesQuery(text: string, query: string) {
   );
 }
 
+/** A lesson, problem type or film a search found, offered first in its
+ * skill's panel. */
+type SearchFound = {
+  kind: "lesson" | "type" | "film" | "term";
+  id: string;
+  title: string;
+  skill: string;
+};
+
 /** A problem type's id, as `?lesson=` carries it. */
 const LESSON_ID = /^[a-z0-9][a-z0-9-]{0,119}$/;
 
@@ -351,27 +360,44 @@ export function MapView({
   const searching = query.trim().length > 0;
   const docs = useSearchCorpus(searching);
   const found = useLessonSearch(docs, searching ? query.trim() : "", "");
+  // On Pathways every result selects its skill in the map, as the list
+  // without a search does (founder): the camera frames it, its panel opens,
+  // the search closes with the query kept. A lesson, problem type or film is
+  // then offered first in the panel, as found.
+  const [picked, setPicked] = useState<SearchFound | null>(null);
   const searchActionsFor = (): SearchActions => {
+    // An older server's result carries no skill: this page's own corpus
+    // knows every document's.
+    const skillOf = (result: SearchResult) =>
+      result.skill || docs?.find((doc) => doc.id === result.id)?.skill || "";
     const href = (result: SearchResult) =>
-      result.kind === "lesson"
-        ? `/lessons/${encodeURIComponent(result.target)}`
-        : result.kind === "film"
-          ? `/lessons/${encodeURIComponent(result.target)}/watch?from=${encodeURIComponent(window.location.pathname + window.location.search)}`
-          : result.kind === "skill"
-            ? `/pathways/${encodeURIComponent(result.target)}`
-            : `/pathways${window.location.search}`;
+      skillOf(result)
+        ? `/pathways/${encodeURIComponent(skillOf(result))}${window.location.search}`
+        : `/pathways${window.location.search}`;
     return {
       href,
-      open: (result, trigger) => {
-        if (result.kind === "type") openLesson(result.target, trigger);
-        else if (result.kind === "skill") select(result.target);
-        else if (result.kind !== "term")
-          void navigate({ href: href(result) } as never);
+      open: (result) => {
+        const skill = skillOf(result);
+        if (!skill) return;
+        setPicked(
+          result.kind === "skill"
+            ? null
+            : {
+                kind: result.kind,
+                id: result.target,
+                title: result.title,
+                skill,
+              },
+        );
+        select(skill);
       },
     };
   };
   const skills = catalog.data?.skills;
   const selected = skills?.find((s) => s.id === selectedId);
+  // What a search found, while its skill is the one selected.
+  const fromSearch =
+    picked && selected && picked.skill === selected.id ? picked : null;
   // The skill a short lesson practices: the selected one, or its own when
   // the lesson was opened by its address.
   const lessonSkill = lesson
@@ -736,6 +762,45 @@ export function MapView({
                     }}
                   />
                 </div>
+                {fromSearch && fromSearch.kind !== "term" && (
+                  <div className="pathways-found" data-found={fromSearch.kind}>
+                    <span className="pathways-found-kind">
+                      {fromSearch.kind === "lesson"
+                        ? "Lesson"
+                        : fromSearch.kind === "film"
+                          ? "Lesson film"
+                          : "Problem type"}
+                    </span>
+                    <strong>{fromSearch.title}</strong>
+                    {fromSearch.kind === "type" ? (
+                      <button
+                        onClick={(e) =>
+                          openLesson(fromSearch.id, e.currentTarget)
+                        }
+                      >
+                        View lesson
+                      </button>
+                    ) : fromSearch.kind === "film" ? (
+                      <Link
+                        to="/lessons/$templateId/watch"
+                        params={{ templateId: fromSearch.id }}
+                        search={{
+                          from:
+                            window.location.pathname + window.location.search,
+                        }}
+                      >
+                        Watch
+                      </Link>
+                    ) : (
+                      <Link
+                        to="/$"
+                        params={{ _splat: `lessons/${fromSearch.id}` }}
+                      >
+                        Read the lesson
+                      </Link>
+                    )}
+                  </div>
+                )}
                 {families.length ? (
                   <>
                     <div className="pathways-detail-actions">
@@ -744,7 +809,14 @@ export function MapView({
                           className="pathways-go"
                           to="/$"
                           params={{ _splat: "practice" }}
-                          search={{ skill: selected.id }}
+                          search={{
+                            skill: selected.id,
+                            // A problem type the search found: that one.
+                            ...(fromSearch?.kind === "type" ||
+                            fromSearch?.kind === "film"
+                              ? { template: fromSearch.id }
+                              : {}),
+                          }}
                         >
                           Try a problem
                         </Link>

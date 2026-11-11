@@ -84,19 +84,30 @@ export function AppShell({ children }: { children: ReactNode }) {
       return typeof value === "string" ? value : undefined;
     },
   });
-  const frame =
+  const pathFrame =
     !nativeRuntime && session.data && shown
       ? shellFrame(pathname, fromClass)
       : null;
   const setDrawerOpen = useShellSlots((state) => state.setDrawerOpen);
   // A screen change closes the drawer (a link inside it, or Back).
   useEffect(() => setDrawerOpen(false), [pathname, setDrawerOpen]);
+  const context = useProgressContext(!!pathFrame);
+  // The adult's own workbooks are a place of their own, under Practice in
+  // the drawer (docs/design/ia.md): the plain bar with its Practice, no
+  // Progress tabs. A child's keep their Progress frame.
+  const ownId = context.me?.adultPractice?.learner?.id;
+  const frame: ShellFrame | null =
+    pathFrame?.kind === "progress" &&
+    ownId &&
+    (pathname === `/learners/${ownId}/workbooks` ||
+      pathname.startsWith(`/learners/${ownId}/workbooks/`))
+      ? { kind: "plain", practice: true }
+      : pathFrame;
   const framed = useRef(false);
   if (frame) framed.current = true;
   useEffect(() => {
     if (frame) void preloadScreens();
   }, [!!frame]);
-  const context = useProgressContext(!!frame);
   return (
     <div
       className={frame ? styles.frame : styles.bare}
