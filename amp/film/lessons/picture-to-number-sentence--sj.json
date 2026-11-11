@@ -1,0 +1,1492 @@
+{
+ "id": "picture-to-number-sentence--sj",
+ "title": "A story in pictures and numbers",
+ "teaches": [
+  "build-the-number-sentence",
+  "number-sentence-to-picture"
+ ],
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -3.0000000000000004,
+     -6.6,
+     15.0,
+     11.4
+    ],
+    "points": {
+     "Pond": [
+      6,
+      2.4
+     ],
+     "T": [
+      0,
+      4.8
+     ],
+     "W": [
+      0,
+      -0.4
+     ],
+     "Wa1": [
+      1.9,
+      7.9
+     ],
+     "Wa2": [
+      2.7,
+      7.6
+     ],
+     "Wa3": [
+      3.5,
+      7.9
+     ],
+     "Wb1": [
+      9.0,
+      -3.9
+     ],
+     "Wb2": [
+      9.8,
+      -4.2
+     ],
+     "Wb3": [
+      10.6,
+      -3.9
+     ]
+    },
+    "parts": [
+     {
+      "id": "pond",
+      "circle": "Pond",
+      "r": 8.4,
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "waveA",
+      "curve": [
+       "Wa1",
+       "Wa2",
+       "Wa3"
+      ],
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "waveB",
+      "curve": [
+       "Wb1",
+       "Wb2",
+       "Wb3"
+      ],
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "frame",
+      "grid": [
+       5,
+       2
+      ],
+      "at": "T",
+      "size": 2.4,
+      "fill": "none",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "d",
+      "things": "duck",
+      "n": 5,
+      "in": "frame",
+      "slots": 9,
+      "start": true
+     },
+     {
+      "id": "m",
+      "things": "duck",
+      "n": 4,
+      "at": "W",
+      "size": 2
+     },
+     {
+      "id": "first",
+      "counters": "frame",
+      "n": 5,
+      "ink": "accent"
+     },
+     {
+      "id": "more",
+      "counters": "frame",
+      "n": 4,
+      "from": 6,
+      "ink": "warm"
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Five ducks are in the pond.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\ca{5}\\phantom{{}+4=9}",
+       "at": "Five"
+      },
+      {
+       "do": "highlight",
+       "target": "d",
+       "at": "Five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four more swim in to join them. Join is plus!",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "arrive",
+       "target": "m",
+       "at": "Four"
+      },
+      {
+       "do": "write",
+       "tex": "\\ca{5}+\\cw{4}\\phantom{{}=9}",
+       "at": "Four"
+      },
+      {
+       "do": "send",
+       "target": "m",
+       "to": "d",
+       "at": "join"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "One, two, three, four, five, six, seven, eight, nine. Nine ducks!",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "count",
+       "target": "d"
+      },
+      {
+       "do": "write",
+       "tex": "\\ca{5}+\\cw{4}=9",
+       "at": "Nine",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five plus four equals nine.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "d",
+       "at": "nine"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Now swap each duck for a counter.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "hide",
+       "target": "d",
+       "at": "swap"
+      },
+      {
+       "do": "show",
+       "target": [
+        "first",
+        "more"
+       ],
+       "at": "swap"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Five, and four more. Still five plus four equals nine.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "more",
+       "at": "four"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -3.0000000000000004,
+     -6.6,
+     15.0,
+     11.4
+    ],
+    "points": {
+     "Pond": [
+      6,
+      2.4
+     ],
+     "T": [
+      0,
+      4.8
+     ],
+     "Wa1": [
+      1.9,
+      7.9
+     ],
+     "Wa2": [
+      2.7,
+      7.6
+     ],
+     "Wa3": [
+      3.5,
+      7.9
+     ],
+     "Wb1": [
+      9.0,
+      -3.9
+     ],
+     "Wb2": [
+      9.8,
+      -4.2
+     ],
+     "Wb3": [
+      10.6,
+      -3.9
+     ],
+     "G3": [
+      6.0,
+      3.6
+     ],
+     "X3a": [
+      5.5536,
+      4.0464
+     ],
+     "X3b": [
+      6.4464,
+      3.1536
+     ],
+     "X3c": [
+      5.5536,
+      3.1536
+     ],
+     "X3d": [
+      6.4464,
+      4.0464
+     ],
+     "G4": [
+      8.4,
+      3.6
+     ],
+     "X4a": [
+      7.9536,
+      4.0464
+     ],
+     "X4b": [
+      8.8464,
+      3.1536
+     ],
+     "X4c": [
+      7.9536,
+      3.1536
+     ],
+     "X4d": [
+      8.8464,
+      4.0464
+     ],
+     "G5": [
+      10.8,
+      3.6
+     ],
+     "X5a": [
+      10.3536,
+      4.0464
+     ],
+     "X5b": [
+      11.2464,
+      3.1536
+     ],
+     "X5c": [
+      10.3536,
+      3.1536
+     ],
+     "X5d": [
+      11.2464,
+      4.0464
+     ],
+     "G6": [
+      1.2,
+      1.2
+     ],
+     "X6a": [
+      0.7536,
+      1.6464
+     ],
+     "X6b": [
+      1.6464,
+      0.7536
+     ],
+     "X6c": [
+      0.7536,
+      0.7536
+     ],
+     "X6d": [
+      1.6464,
+      1.6464
+     ]
+    },
+    "parts": [
+     {
+      "id": "pond",
+      "circle": "Pond",
+      "r": 8.4,
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "waveA",
+      "curve": [
+       "Wa1",
+       "Wa2",
+       "Wa3"
+      ],
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "waveB",
+      "curve": [
+       "Wb1",
+       "Wb2",
+       "Wb3"
+      ],
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "frame",
+      "grid": [
+       5,
+       2
+      ],
+      "at": "T",
+      "size": 2.4,
+      "fill": "none",
+      "ink": "blue",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "f",
+      "things": "fish",
+      "n": 6,
+      "in": "frame",
+      "start": true
+     },
+     {
+      "id": "six",
+      "counters": "frame",
+      "n": 6,
+      "ink": "accent"
+     },
+     {
+      "id": "pale3",
+      "group": "pale",
+      "circle": "G3",
+      "r": 0.72,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1
+     },
+     {
+      "id": "pale4",
+      "group": "pale",
+      "circle": "G4",
+      "r": 0.72,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1
+     },
+     {
+      "id": "pale5",
+      "group": "pale",
+      "circle": "G5",
+      "r": 0.72,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1
+     },
+     {
+      "id": "pale6",
+      "group": "pale",
+      "circle": "G6",
+      "r": 0.72,
+      "fill": "accent-fill",
+      "ink": "accent",
+      "w": 1
+     },
+     {
+      "id": "cr3",
+      "group": "crosses",
+      "seg": [
+       "X3a",
+       "X3b"
+      ],
+      "ink": "ink",
+      "w": 4
+     },
+     {
+      "id": "cs3",
+      "group": "crosses",
+      "seg": [
+       "X3c",
+       "X3d"
+      ],
+      "ink": "ink",
+      "w": 4
+     },
+     {
+      "id": "cr4",
+      "group": "crosses",
+      "seg": [
+       "X4a",
+       "X4b"
+      ],
+      "ink": "ink",
+      "w": 4
+     },
+     {
+      "id": "cs4",
+      "group": "crosses",
+      "seg": [
+       "X4c",
+       "X4d"
+      ],
+      "ink": "ink",
+      "w": 4
+     },
+     {
+      "id": "cr5",
+      "group": "crosses",
+      "seg": [
+       "X5a",
+       "X5b"
+      ],
+      "ink": "ink",
+      "w": 4
+     },
+     {
+      "id": "cs5",
+      "group": "crosses",
+      "seg": [
+       "X5c",
+       "X5d"
+      ],
+      "ink": "ink",
+      "w": 4
+     },
+     {
+      "id": "cr6",
+      "group": "crosses",
+      "seg": [
+       "X6a",
+       "X6b"
+      ],
+      "ink": "ink",
+      "w": 4
+     },
+     {
+      "id": "cs6",
+      "group": "crosses",
+      "seg": [
+       "X6c",
+       "X6d"
+      ],
+      "ink": "ink",
+      "w": 4
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Six fish are in the pond. Four swim away.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Six fish are in the pond. Four\u00a0swim\u00a0away."
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Four swim away, so I'll start with four.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "4",
+       "at": "start"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Start with all the fish, before any swim away. How many?",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "f",
+       "at": "all"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Six! Start with six.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Six"
+      },
+      {
+       "do": "write",
+       "tex": "6\\phantom{{}-4=2}",
+       "at": "Six"
+      },
+      {
+       "do": "highlight",
+       "target": "f",
+       "at": "Six"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four swim away. Go away is minus.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "leave",
+       "target": [
+        "f5",
+        "f4",
+        "f3",
+        "f6"
+       ],
+       "toward": "e",
+       "at": "Four"
+      },
+      {
+       "do": "write",
+       "tex": "6-4\\phantom{{}=2}",
+       "at": "Four"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Two are left. Six minus four equals two.",
+     "pause": 0.7,
+     "do": [
+      {
+       "do": "highlight",
+       "target": [
+        "f1",
+        "f2"
+       ],
+       "at": "Two"
+      },
+      {
+       "do": "write",
+       "tex": "6-4=2",
+       "at": "left"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "To draw it, start with all six.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "f1",
+        "f2"
+       ],
+       "at": "all"
+      },
+      {
+       "do": "show",
+       "target": "six",
+       "at": "all"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Then cross out the four that swam away. Two are left.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "hide",
+       "target": [
+        "six3",
+        "six4",
+        "six5",
+        "six6"
+       ],
+       "at": "cross"
+      },
+      {
+       "do": "show",
+       "target": "pale",
+       "at": "cross"
+      },
+      {
+       "do": "draw",
+       "target": "crosses",
+       "at": "cross"
+      },
+      {
+       "do": "highlight",
+       "target": [
+        "six1",
+        "six2"
+       ],
+       "at": "Two"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "figure": {
+    "view": [
+     -1.6250000000000004,
+     -2.0540000000000003,
+     8.975,
+     6.346
+    ],
+    "points": {
+     "mA1": [
+      -0.35,
+      3.0500000000000003
+     ],
+     "mA2": [
+      4.35,
+      3.0500000000000003
+     ],
+     "mA3": [
+      4.35,
+      4.75
+     ],
+     "mA4": [
+      -0.35,
+      4.75
+     ],
+     "gA": [
+      0,
+      4.4
+     ],
+     "gB": [
+      5.9,
+      4.4
+     ],
+     "arA0": [
+      5.75,
+      5.12
+     ],
+     "arA1": [
+      4.45,
+      5.12
+     ],
+     "mD1": [
+      0.65,
+      -0.9500000000000001
+     ],
+     "mD2": [
+      3.35,
+      -0.9500000000000001
+     ],
+     "mD3": [
+      3.35,
+      0.75
+     ],
+     "mD4": [
+      0.65,
+      0.75
+     ],
+     "gD": [
+      1.0,
+      0.4
+     ],
+     "arD0": [
+      3.45,
+      1.12
+     ],
+     "arD1": [
+      4.75,
+      1.12
+     ],
+     "q00a": [
+      5.6984,
+      -0.0686
+     ],
+     "q00b": [
+      5.6741,
+      0.022
+     ],
+     "q01a": [
+      5.6427,
+      0.0763
+     ],
+     "q01b": [
+      5.5763,
+      0.1427
+     ],
+     "q02a": [
+      5.522,
+      0.1741
+     ],
+     "q02b": [
+      5.4314,
+      0.1984
+     ],
+     "q03a": [
+      5.3686,
+      0.1984
+     ],
+     "q03b": [
+      5.278,
+      0.1741
+     ],
+     "q04a": [
+      5.2237,
+      0.1427
+     ],
+     "q04b": [
+      5.1573,
+      0.0763
+     ],
+     "q05a": [
+      5.1259,
+      0.022
+     ],
+     "q05b": [
+      5.1016,
+      -0.0686
+     ],
+     "q06a": [
+      5.1016,
+      -0.1314
+     ],
+     "q06b": [
+      5.1259,
+      -0.222
+     ],
+     "q07a": [
+      5.1573,
+      -0.2763
+     ],
+     "q07b": [
+      5.2237,
+      -0.3427
+     ],
+     "q08a": [
+      5.278,
+      -0.3741
+     ],
+     "q08b": [
+      5.3686,
+      -0.3984
+     ],
+     "q09a": [
+      5.4314,
+      -0.3984
+     ],
+     "q09b": [
+      5.522,
+      -0.3741
+     ],
+     "q010a": [
+      5.5763,
+      -0.3427
+     ],
+     "q010b": [
+      5.6427,
+      -0.2763
+     ],
+     "q011a": [
+      5.6741,
+      -0.222
+     ],
+     "q011b": [
+      5.6984,
+      -0.1314
+     ],
+     "q10a": [
+      6.6984,
+      -0.0686
+     ],
+     "q10b": [
+      6.6741,
+      0.022
+     ],
+     "q11a": [
+      6.6427,
+      0.0763
+     ],
+     "q11b": [
+      6.5763,
+      0.1427
+     ],
+     "q12a": [
+      6.522,
+      0.1741
+     ],
+     "q12b": [
+      6.4314,
+      0.1984
+     ],
+     "q13a": [
+      6.3686,
+      0.1984
+     ],
+     "q13b": [
+      6.278,
+      0.1741
+     ],
+     "q14a": [
+      6.2237,
+      0.1427
+     ],
+     "q14b": [
+      6.1573,
+      0.0763
+     ],
+     "q15a": [
+      6.1259,
+      0.022
+     ],
+     "q15b": [
+      6.1016,
+      -0.0686
+     ],
+     "q16a": [
+      6.1016,
+      -0.1314
+     ],
+     "q16b": [
+      6.1259,
+      -0.222
+     ],
+     "q17a": [
+      6.1573,
+      -0.2763
+     ],
+     "q17b": [
+      6.2237,
+      -0.3427
+     ],
+     "q18a": [
+      6.278,
+      -0.3741
+     ],
+     "q18b": [
+      6.3686,
+      -0.3984
+     ],
+     "q19a": [
+      6.4314,
+      -0.3984
+     ],
+     "q19b": [
+      6.522,
+      -0.3741
+     ],
+     "q110a": [
+      6.5763,
+      -0.3427
+     ],
+     "q110b": [
+      6.6427,
+      -0.2763
+     ],
+     "q111a": [
+      6.6741,
+      -0.222
+     ],
+     "q111b": [
+      6.6984,
+      -0.1314
+     ],
+     "cA1": [
+      -1.0250000000000004,
+      2.5460000000000007
+     ],
+     "cA2": [
+      8.375,
+      2.5460000000000007
+     ],
+     "cA3": [
+      8.375,
+      5.746
+     ],
+     "cA4": [
+      -1.0250000000000004,
+      5.746
+     ],
+     "cD1": [
+      -1.0250000000000004,
+      -1.4540000000000002
+     ],
+     "cD2": [
+      8.375,
+      -1.4540000000000002
+     ],
+     "cD3": [
+      8.375,
+      1.746
+     ],
+     "cD4": [
+      -1.0250000000000004,
+      1.746
+     ]
+    },
+    "parts": [
+     {
+      "id": "cardA",
+      "poly": [
+       "cA1",
+       "cA2",
+       "cA3",
+       "cA4"
+      ],
+      "fill": "paper",
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "cardD",
+      "poly": [
+       "cD1",
+       "cD2",
+       "cD3",
+       "cD4"
+      ],
+      "fill": "paper",
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "matA",
+      "poly": [
+       "mA1",
+       "mA2",
+       "mA3",
+       "mA4"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "matD",
+      "poly": [
+       "mD1",
+       "mD2",
+       "mD3",
+       "mD4"
+      ],
+      "fill": "none",
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "gridA",
+      "grid": [
+       4,
+       1
+      ],
+      "at": "gA",
+      "size": 1,
+      "fill": "none",
+      "ink": "paper",
+      "w": 0.5,
+      "start": true
+     },
+     {
+      "id": "gridB",
+      "grid": [
+       2,
+       1
+      ],
+      "at": "gB",
+      "size": 1,
+      "fill": "none",
+      "ink": "paper",
+      "w": 0.5,
+      "start": true
+     },
+     {
+      "id": "gridD",
+      "grid": [
+       2,
+       1
+      ],
+      "at": "gD",
+      "size": 1,
+      "fill": "none",
+      "ink": "paper",
+      "w": 0.5,
+      "start": true
+     },
+     {
+      "id": "four",
+      "counters": "gridA",
+      "n": 4,
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "two",
+      "counters": "gridB",
+      "n": 2,
+      "ink": "warm",
+      "start": true
+     },
+     {
+      "id": "stay",
+      "counters": "gridD",
+      "n": 2,
+      "ink": "accent",
+      "start": true
+     },
+     {
+      "id": "joinArrow",
+      "vector": [
+       "arA0",
+       "arA1"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "leaveArrow",
+      "group": "goD",
+      "vector": [
+       "arD0",
+       "arD1"
+      ],
+      "ink": "ink",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "q00",
+      "group": "goD",
+      "seg": [
+       "q00a",
+       "q00b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q01",
+      "group": "goD",
+      "seg": [
+       "q01a",
+       "q01b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q02",
+      "group": "goD",
+      "seg": [
+       "q02a",
+       "q02b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q03",
+      "group": "goD",
+      "seg": [
+       "q03a",
+       "q03b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q04",
+      "group": "goD",
+      "seg": [
+       "q04a",
+       "q04b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q05",
+      "group": "goD",
+      "seg": [
+       "q05a",
+       "q05b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q06",
+      "group": "goD",
+      "seg": [
+       "q06a",
+       "q06b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q07",
+      "group": "goD",
+      "seg": [
+       "q07a",
+       "q07b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q08",
+      "group": "goD",
+      "seg": [
+       "q08a",
+       "q08b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q09",
+      "group": "goD",
+      "seg": [
+       "q09a",
+       "q09b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q010",
+      "group": "goD",
+      "seg": [
+       "q010a",
+       "q010b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q011",
+      "group": "goD",
+      "seg": [
+       "q011a",
+       "q011b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q10",
+      "group": "goD",
+      "seg": [
+       "q10a",
+       "q10b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q11",
+      "group": "goD",
+      "seg": [
+       "q11a",
+       "q11b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q12",
+      "group": "goD",
+      "seg": [
+       "q12a",
+       "q12b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q13",
+      "group": "goD",
+      "seg": [
+       "q13a",
+       "q13b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q14",
+      "group": "goD",
+      "seg": [
+       "q14a",
+       "q14b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q15",
+      "group": "goD",
+      "seg": [
+       "q15a",
+       "q15b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q16",
+      "group": "goD",
+      "seg": [
+       "q16a",
+       "q16b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q17",
+      "group": "goD",
+      "seg": [
+       "q17a",
+       "q17b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q18",
+      "group": "goD",
+      "seg": [
+       "q18a",
+       "q18b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q19",
+      "group": "goD",
+      "seg": [
+       "q19a",
+       "q19b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q110",
+      "group": "goD",
+      "seg": [
+       "q110a",
+       "q110b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     },
+     {
+      "id": "q111",
+      "group": "goD",
+      "seg": [
+       "q111a",
+       "q111b"
+      ],
+      "ink": "muted",
+      "w": 1.5,
+      "start": true
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "Which picture shows four plus two?",
+     "pause": 2.5,
+     "do": [
+      {
+       "do": "clear"
+      },
+      {
+       "do": "problem",
+       "text": "Which picture shows $4+2$?"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The top one! Four counters,",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "matA",
+       "at": "Four"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "and two more come in.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "two",
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The arrow points in. Join is plus!",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "joinArrow",
+       "at": "arrow"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "The bottom one has two going away. That's minus.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "goD",
+       "at": "going"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Four plus two equals six.",
+     "pause": 0.6,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "4+2=6",
+       "at": "Four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Join is plus.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "joinArrow",
+       "at": "Join"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Go away is minus.",
+     "pause": 1.5,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "goD",
+       "at": "Go"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
