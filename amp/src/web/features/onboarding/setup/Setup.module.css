@@ -146,6 +146,9 @@
   line-height: 1.45;
   text-align: right;
 }
+.hint[data-lines="2"] {
+  min-height: 2.9em;
+}
 
 /* Each child or student: their row's name ("Child 2", what they go by if
    left blank), a name field, a birth year and Remove. Stacked with its own

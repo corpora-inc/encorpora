@@ -102,27 +102,33 @@ try {
       await context.close();
     }
 
-  // On a phone or a tablet, tapping a choice brings its step into view and
-  // moves focus to its heading, smoothly or, with reduced motion, at once.
+  // Each answer opens its own step page (the way a parent's setup does):
+  // its question at the top of a fresh page, its action on screen, and Back
+  // returning to the choices at the top, with nothing shifting on the way.
   for (const [width, height] of [
     [390, 844],
     [768, 1024],
+    [1280, 900],
   ] as const)
     for (const theme of ["light", "dark"] as const)
-      // (A parent's answer opens guided setup, a page of its own.)
-      for (const [choice, question, last] of [
+      for (const [choice, path, question, last] of [
         [
           /^I’m learning for myself/,
+          "myself",
           "What year were you born?",
           "Start practicing",
         ],
+        [
+          /^I run a school/,
+          "school",
+          "AMP for your school",
+          "Explore a demo school",
+        ],
       ] as const) {
-        const motion = width === 390 && theme === "dark" ? "reduce" : null;
-        const tag = `${width} ${theme} ${question}`;
+        const tag = `${width} ${theme} ${path}`;
         const context = await f.context(browser, "new", {
           viewport: { width, height },
           colorScheme: theme,
-          reducedMotion: motion,
         });
         const page = await context.newPage();
         await page.goto(`${f.origin}/start`);
@@ -132,30 +138,46 @@ try {
         await settle(page);
         await resetRecord(page);
         await page.getByRole("link", { name: choice }).click();
-        const heading = page.getByRole("heading", { name: question });
+        await page.waitForURL(new RegExp(`/start/${path}$`));
+        const heading = page.getByRole("heading", { level: 1, name: question });
         await heading.waitFor();
-        await settle(page, motion ? 100 : 900);
+        await settle(page);
+        const top = await heading.boundingBox();
         const action = await page
           .getByRole("button", { name: last })
           .boundingBox();
-        const top = await heading.boundingBox();
         check(
-          `${tag}: the step comes into view`,
-          !!action &&
-            !!top &&
+          `${tag}: a page of its own, its question at the top`,
+          !!top &&
             top.y >= 56 &&
-            action.y + action.height <= height,
-          { top, action },
+            top.y < 200 &&
+            (await page.evaluate(() => scrollY)) === 0 &&
+            (await page
+              .getByRole("heading", { name: "What brings you to AMP?" })
+              .count()) === 0,
+          { top },
         );
         check(
-          `${tag}: focus is on its heading`,
-          await heading.evaluate((node) => node === document.activeElement),
+          `${tag}: its action is a 44 px target`,
+          !!action && action.height >= 44,
+          { action },
         );
         const record = await shellRecord(page);
         check(`${tag}: nothing shifts`, record.cls === 0, record);
+        check(`${tag}: no horizontal overflow`, (await overflow(page)) <= 0);
         await page.screenshot({
-          path: `${shots}/into-view-myself-${width}-${theme}.png`,
+          path: `${shots}/step-${path}-${width}-${theme}.png`,
+          fullPage: true,
         });
+        await page.getByRole("link", { name: "Back" }).click();
+        await page.waitForURL(/\/start$/);
+        await page
+          .getByRole("heading", { name: "What brings you to AMP?" })
+          .waitFor();
+        check(
+          `${tag}: Back returns to the choices at the top`,
+          (await page.evaluate(() => scrollY)) === 0,
+        );
         await context.close();
       }
 
