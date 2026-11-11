@@ -529,7 +529,7 @@ Rules for `count`:
 - Say every number in the same beat as the `count`, in order. Other words between the numbers are fine ("one duck, two ducks"). `at` is not needed; the count starts at the first number.
 - The numbers said must match the things counted: five things, "one" to "five". When the voice stops early on purpose, give `"to"`. When a later sentence of the beat goes on to the next number for another reason, also give `"to"`.
 - A learner who touches one thing twice, or skips one: list the things in the order touched, one per word: `"target": ["a1", "a2", "a2", "a3"]` with "one, two, three, four".
-- One light at a time. A thing counted where it sits takes a small tick; a thing that arrived or slid away needs none. A light grows that thing about its own centre and boldens its stroke, on a short ease. Nothing around it moves.
+- One light at a time. Each thing counted where it sits takes a small tick as the light moves on. The last one keeps the light to the end of the beat, since the last number tells how many, and takes its tick a moment after it lights. A thing that arrived or slid away needs none. The ticks fade just after the beat ends. A light grows that thing about its own centre and boldens its stroke, on a short ease. Nothing around it moves.
 
 `--dry` stops with a plain message, before any voice is paid for, when a kind is not in the list, when the numbers said and the things counted do not match, when a thing or group does not exist, or when a group has no room.
 
