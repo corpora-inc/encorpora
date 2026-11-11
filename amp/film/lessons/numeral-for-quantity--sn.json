@@ -920,7 +920,7 @@
             {
               "do": "highlight",
               "target": "fb",
-              "at": "and"
+              "at": "no"
             }
           ]
         },
