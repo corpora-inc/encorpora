@@ -42,6 +42,28 @@
       }
     ]
   },
+  "compare-groups": {
+    "id": "compare-groups--sk",
+    "version": "18eff4b22abe5e73ff5d7363c6cfa74557b4b1d45cc40218f9c1302a1f587c11",
+    "title": "More, fewer or the same",
+    "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-groups--sk/18eff4b22abe5e73ff5d7363c6cfa74557b4b1d45cc40218f9c1302a1f587c11/data.json",
+    "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-groups--sk/18eff4b22abe5e73ff5d7363c6cfa74557b4b1d45cc40218f9c1302a1f587c11/audio.m4a",
+    "duration": 149.17,
+    "teacher": "Paul",
+    "capability": "lesson-film-v2",
+    "editions": [
+      {
+        "voices": {
+          "teacher": "J3Ei0Lj6fAobhIqY5ySH",
+          "learner": "SYXbTJsLE7zmSjr1DchT"
+        },
+        "dataUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-groups--sk/18eff4b22abe5e73ff5d7363c6cfa74557b4b1d45cc40218f9c1302a1f587c11/data.json",
+        "audioUrl": "https://d38iwc9748jekz.cloudfront.net/amp/films/compare-groups--sk/18eff4b22abe5e73ff5d7363c6cfa74557b4b1d45cc40218f9c1302a1f587c11/audio.m4a",
+        "version": "18eff4b22abe5e73ff5d7363c6cfa74557b4b1d45cc40218f9c1302a1f587c11",
+        "duration": 149.17
+      }
+    ]
+  },
   "compare-unlike-fractions": {
     "id": "compare-unlike-fractions",
     "version": "18c45034e9678b97639e63a0967f19c79fc69f857e4a158180f53bd20930929a",

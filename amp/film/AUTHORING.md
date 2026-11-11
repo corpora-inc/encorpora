@@ -140,7 +140,7 @@ All writing goes on one whiteboard for the whole lesson. Each line is written un
 | `{"do":"overview"}` | Pull back to show the current example whole, from problem to answer. `"of":"g1"` shows the column holding line `g1` (recap the first full example after quick ones). `"columns":"all"` shows every column. |
 | `{"do":"recap","text":"...","marks":["id1","id2"]}` | A numbered step in a card beside the overview. The board lines named in `marks` stay bright; the rest dims. When the whole column is too tall to read, the camera moves to the marked lines by itself. |
 
-Give board lines an `"id"` when a recap step will point at them.
+Give board lines an `"id"` when a recap step will point at them. Keep the recap short: three or four steps of a line or two each. On the 16:9 film the card is as tall as its steps, and `--dry` reports a card taller than the frame ("The recap card is taller than the frame"), because its top and bottom would be cut off.
 
 Equals signs line up and the work centers itself. Color in TeX with `\ca{}` teal, `\cw{}` rust, `\cg{}` gold, `\cb{}` blue, `\cv{}` violet, `\cm{}` muted. Give each quantity one color and keep it for the whole film: the same color on the figure and in the equation. `\cancel{x=3}` strikes out a rejected value.
 
@@ -295,6 +295,7 @@ The screenplays in `lessons/` are reference examples. Read the one closest to yo
 | `compare-unlike-fractions` | Fractions: the idea that always works (make the pieces the same size), tricky cases (larger fraction with smaller numerator, unit fractions, greater than one), bars cut to a common size. |
 | `mean-data` | Data: counters leveled into equal stacks to show what the number means, then bars leveled to the mean line. |
 | `quadratic-vertex` | Functions: the way to see it first (make the square zero), then a negative leading coefficient with no minimum (zoom out as the arms fall), then a harder form completed to vertex form. |
+| `linear-initial-value-meaning--sk` | Linear models, a whole skill: a story built into columns, a table, a line and `y = mx + b`; a line that slides and tilts with live `m` and `b`; a falling case; walking back to the start; a learner solving the last one from a table. |
 
 ## Never a blank or still screen
 
@@ -381,7 +382,7 @@ Parts:
 | `seg` | Two point names, `ink`, `w`, `dash`, `arrows` (parallel marks), `ticks` (equal marks), `tickAt`, `extend` (a line, not a segment) |
 | `dot` | A point name, `ink`, `r` |
 | `angle` | Three point names with the corner in the middle, `fill`, `ink`, `r`, `right` |
-| `label` | TeX, `at` (a point, or a seg's id for its middle), `dir` (`n`, `ne`, ...), `far`, `ink`, `size` (`s`, `m`, `l`, `xl` for a count beside a picture), `halo` (on a filled shape; automatic on a graph) |
+| `label` | TeX, `at` (a point, a thing, or a seg's id for its middle), `dir` (`n`, `ne`, ...), `far`, `ink`, `size` (`s`, `m`, `l`, `xl` for a count beside a picture), `halo` (on a filled shape; automatic on a graph), `flies` (it travels; see "Pairs, and things that travel to a label") |
 | `dim` | Two point names, `side`, `tex`: a measuring bracket |
 | `curve` | Point names, `ink`, `w` |
 | `axes` | `true`, `step` (tick spacing), `every` (number spacing), `ystep`, `yevery`, `ink`; `"y": false` draws only the x axis: a number line, with 0 labeled |
@@ -550,9 +551,40 @@ For anything about functions, graph the real function:
 - `plot` takes a plain expression in `x`: `2x+1`, `x^2-3x`, `1/(x-2)`, `sqrt(x)`, `abs(x)`, `sin(x)`. It breaks at asymptotes by itself.
 - A point `{ "on": "f", "x": 4 }` sits on the graph; `{"do":"glide","point":"P","x":2.01}` slides it along. A dot on it follows, and leaves the view when the value grows past it.
 - A label with `@x` or `@y` is a live readout of a point (`of`), counting as it glides. Where there is no value it reads "undefined".
+- A label with `@m` or `@b` reads a line as `y = mx + b`: the slope and the y-intercept of the line through a `seg`'s two points (`of` is the seg's id). The numbers count as `move` slides or tilts the line, to two decimals; a vertical line reads "undefined". See "A line that slides and tilts".
 - `{"do":"view","to":[...]}` zooms the graph: pull far back to show a value growing without end (the axes renumber themselves). Give readouts and the function's name `"pin": true` so they stay put on the card while the view moves.
 - Put labels in empty space, away from the axes and the curve. Two labels never touch: a side's length sits outside the shape at the middle of that side, a height's label beside its dashed line, away from the others.
 - A graph may set `"stretch": true` on the figure: x and y get their own scales so the view fills the card, and a steep curve shows as a bowl instead of a spike. Then give the y axis its own `ystep` and `yevery`. Never stretch geometry.
+
+### A line that slides and tilts
+
+In `y = mx + b`, `b` says where the line starts and `m` how steeply it climbs. Show that by moving the line and letting the two numbers read themselves: slide it and only `b` counts; tilt it about its start and only `m` counts.
+
+```json
+{ "figure": { "stretch": true, "view": [-0.62, -2.6, 4.9, 21.3],
+  "points": { "S": [0, 4], "E": [4, 16], "C": [1, 4], "T": [1, 7], "RM": [0.4, 19.3], "RB": [0.4, 17.1] },
+  "parts": [
+    { "id": "ax", "axes": true, "step": 1, "every": 1, "ystep": 1, "yevery": 2, "xrange": [0, 4.85], "yrange": [0, 19.6], "start": true },
+    { "id": "line", "seg": ["S", "E"], "ink": "accent", "w": 7, "start": true },
+    { "id": "run", "seg": ["S", "C"], "ink": "blue", "w": 6, "start": true }, { "id": "rise", "seg": ["C", "T"], "ink": "warm", "w": 6, "start": true },
+    { "id": "dS", "dot": "S", "ink": "gold", "r": 14, "start": true },
+    { "id": "rm", "label": "\\cw{m=@m}", "at": "RM", "of": "line", "dir": "e", "far": 0, "size": "l", "start": true },
+    { "id": "rb", "label": "\\cg{b=@b}", "at": "RB", "of": "line", "dir": "e", "far": 0, "size": "l", "start": true } ] },
+  "beats": [
+    { "say": "Start with seven, and the line slides up. Only b changes.", "do": [
+      { "do": "move", "points": { "S": [0, 7], "C": [1, 7], "T": [1, 10], "E": [4, 19] }, "at": "slides", "dur": 1.6 } ] },
+    { "say": "Back to four, and a slower step. The line tilts about its start. Only m changes.", "do": [
+      { "do": "move", "points": { "S": [0, 4], "C": [1, 4], "T": [1, 7], "E": [4, 16] }, "at": "Back" },
+      { "do": "move", "points": { "T": [1, 5], "E": [4, 8] }, "at": "tilts", "dur": 1.6 } ] } ] }
+```
+
+- The line is a `seg` between two points, with no `extend`: give it the ends you want and keep every position it will take inside the `view`, because the shot is framed once for everything it draws.
+- To slide, move both ends by the same amount. To tilt about the start, leave the start where it is and move the other end. Points moved in one `move` ease together, so the line stays straight on the way.
+- `@m` and `@b` follow `move`. They do not follow `slide` or `turn`, which carry a drawing without changing its points.
+- A step drawn on the line (a run of 1, then the rise) moves with the same `move`: its corner and top are points too. A readout placed beside a short rise will sit on the next tread; hide it while the slope is small.
+- Give `m` and `b` one colour each and use the same colours in the equation on the board.
+
+`linear-initial-value-meaning--sk` is the reference: columns of "start plus steps" whose tops make the line, then a staircase under the line that slides (only `b` counts) and tilts (only `m` counts, down to a negative rate).
 
 Figure actions:
 
@@ -569,6 +601,44 @@ Figure actions:
 | `{"do":"view","to":[-8,-8,8,8]}` | Push in or pull back, on purpose |
 
 `target` may be a list. Leave `dur` out unless a motion needs more room.
+
+### Pairs, and things that travel to a label
+
+Comparing two groups is pairing: every bear gets one balloon, and whatever is left over says which group has more. Make the pair something a child can see.
+
+**A line between two things.** A `seg` may name things as its ends. It follows them wherever they are sent, and things paint over it, so it reads as a string from one to the other. `draw` it on the word that makes the pair.
+
+```json
+{ "figure": {
+    "view": [0, 0, 9.6, 9.1],
+    "points": { "B": [0, 2.5], "H": [0, 6.1], "S": [0.3, 9] },
+    "parts": [
+      { "id": "s1", "seg": ["sky1", "bear1"], "ink": "muted", "w": 4 },
+      { "id": "s2", "seg": ["sky2", "bear2"], "ink": "muted", "w": 4 },
+      { "id": "bear", "things": "bear", "n": 3, "at": "B", "start": true },
+      { "id": "held", "things": "balloon", "n": 0, "slots": 3, "at": "H" },
+      { "id": "sky", "things": "balloon", "n": 2, "at": "S", "arrange": "scatter", "perRow": 3, "start": true }
+    ] },
+  "beats": [
+    { "say": "One for you. One for you.", "do": [
+      { "do": "send", "target": "sky1", "to": "held", "at": "One" }, { "do": "draw", "target": "s1", "at": "you" },
+      { "do": "send", "target": "sky2", "to": "held", "at": "One", "nth": 2 }, { "do": "draw", "target": "s2", "at": "you", "nth": 2 } ] },
+    { "say": "One bear has no balloon.", "do": [ { "do": "highlight", "target": "bear3", "at": "One" } ] }
+  ] }
+```
+
+- Put the partner group's places (`held`) straight above or below the group that stays (`bear`), with the same `size`: the first thing sent lands by the first bear, the second by the second, and the one with no partner is plain to see.
+- List the `seg` parts before the things. A segment keeps the names it was given: `["sky1", "bear1"]` still joins that balloon and that bear after the balloon has moved to `held`.
+- Counters pair the same way: a `seg` between two counters (`["c1", "q1"]`) follows a counter that is moved into another grid's cell. A hidden grid (no `start`) with wide cells is a spread-out row; `move` its counters into a grid with narrow cells to slide them together.
+
+**A label that travels.** A label rides whatever its `at` names: a point that is moved, or a thing that is sent. Give a travelling label `"flies": true`. In flight it passes over the labels in its way; without it, a label crossed in mid-flight is pushed aside and stays aside for the whole shot. Where a flying label comes to rest it is kept clear of the others, as any label is.
+
+```
+{ "id": "mA", "label": "\\text{A}", "at": "MA", "dir": "c", "size": "l", "flies": true }
+{ "do": "show", "target": "mA", "at": "four" }, { "do": "move", "points": { "MA": [5.25, 2.75] }, "at": "four" }
+```
+
+This is how a group's letter leaves its group and lands on its count on a number path (a `grid` of `[n, 1]` cells with a numeral in each). `compare-groups--sk` uses all three: balloons handed to bears, a spread-out row slid together and paired, and four groups' letters flown to a number path.
 
 ## Make it show why
 
