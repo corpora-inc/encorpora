@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { base, label, small } from "../base";
 import { registerComponent, type Prim } from "../layout";
-import { typeset } from "../type";
+import { regionMargin, typeset } from "../type";
 
 /** A table of values or of steps. Cells are labels; a derived cell is a
  * value the learner finds, drawn as "?" until revealed. */
@@ -49,11 +49,12 @@ export type LineTable = z.infer<typeof lineTableSchema>;
  *
  * Cell sizes are figure pixels; the component converts them to math units
  * at the current scale, so a table reads the same beside any graph. */
-const PAD = 10,
+const MARGIN = regionMargin("md", "sans"),
+  PAD = Math.ceil(MARGIN),
+  /** One line, so a second line plus the margin still clears the rules. */
+  LINE = Math.ceil(2 * MARGIN),
   MIN_W = 38,
-  ROW_H = 36,
-  /** Extra height of a row whose words wrap onto a second line. */
-  LINE = 19,
+  ROW_H = LINE + 2 * PAD,
   /** Words wider than this wrap at the space nearest their middle. */
   WRAP = 150;
 type Table = LineTable;

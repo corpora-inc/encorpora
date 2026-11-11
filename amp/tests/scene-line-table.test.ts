@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { describeScene, layoutScene, sceneSchema } from "../src/math/scene";
+import { regionMargin } from "../src/math/scene/type";
 import { lineTable as table } from "../src/math/scene/author";
 import type { Drawn } from "../src/math/scene";
 
@@ -31,6 +32,11 @@ test("a value table has equal rows, aligned columns and centred cells", () => {
     const cell = cells.find((d) => d.data?.cell === t.data?.cell)!;
     assert.ok(t.box.x0 >= cell.x - 0.5 && t.box.x1 <= cell.x + cell.w + 0.5);
     assert.ok(t.box.y0 >= cell.y - 0.5 && t.box.y1 <= cell.y + cell.h + 0.5);
+    const face = t.t.runs[0]?.font === "sans" || t.t.runs[0]?.font === "sansBold" ? "sans" : "math";
+    const size = (t.t.runs[0]?.size ?? 18) >= 21 ? "lg" : (t.t.runs[0]?.size ?? 18) <= 16 ? "sm" : "md";
+    const margin = regionMargin(size, face);
+    const inset = Math.min(t.box.x0 - cell.x, cell.x + cell.w - t.box.x1, t.box.y0 - cell.y, cell.y + cell.h - t.box.y1);
+    assert.ok(inset >= margin - 1, `${t.plain} is ${inset.toFixed(1)}px from its cell; half a line is ${margin.toFixed(1)}px`);
   }
   // The heading column is shaded and bold, and the unknown is masked.
   assert.equal(cells.find((d) => d.data?.cell === "1,0")!.fill, "empty");

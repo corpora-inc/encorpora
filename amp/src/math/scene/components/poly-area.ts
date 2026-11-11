@@ -2,6 +2,7 @@ import { z } from "zod";
 import { base, color, num as zNum } from "../base";
 import { registerComponent, type Prim } from "../layout";
 import type { FillRole } from "../spec";
+import { textClearsBox } from "../type";
 
 /** A monomial c·xᵖ as [c, p]: [3, 1] is 3x, [−2, 0] is −2. */
 const termSchema = z.tuple([
@@ -178,7 +179,11 @@ registerComponent("polyArea", {
             });
         }
         const mode = c.products ?? "derived";
-        if (mode !== "none" && w * s >= 26 && h * s >= 20)
+        const termLabel = termText(term);
+        const size = (["md", "sm"] as const).find((sz) =>
+          textClearsBox(termLabel, "math", sz, w * s, h * s, true),
+        );
+        if (mode !== "none" && size)
           labels.push({
             type: "text",
             id: `${id}.term`,
@@ -186,12 +191,12 @@ registerComponent("polyArea", {
               tiles && !gap
                 ? middleTile(x, y, w, h, c.across[i]!, c.down[j]!)
                 : [x + w / 2, y + h / 2],
-            text: termText(term),
+            text: termLabel,
             font: "math",
             derived: gap || mode === "derived",
             bold: true,
             halo: tiles,
-            size: w * s < 48 || h * s < 30 ? "sm" : "md",
+            size,
             align: [0, 0],
           });
         x += w;

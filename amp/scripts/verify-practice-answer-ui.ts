@@ -11,7 +11,12 @@ import { PostgresRepository } from "../src/server/repository";
 import { registerFamilyRoutes } from "../src/family/routes";
 import { generateProblem, templates } from "../src/math/engine";
 import { twoColumnProofCases } from "../src/math/two-column-proof-practice";
-import type { GeneratedProblem, ProblemResponse } from "../src/math/contracts";
+import type {
+  GeneratedProblem,
+  ProblemResponse,
+  PublicProblem,
+} from "../src/math/contracts";
+import { panelChoice } from "../src/math/figure-panels";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { answerOne, trackPracticeProblems } from "./ui-practice-answer";
@@ -26,6 +31,9 @@ const responseShape = (response: ProblemResponse) =>
       : response.kind === "point-plot"
         ? `${response.kind}/${response.ordered}`
         : response.kind;
+/** A choice among the figure's lettered panels answers on the figure. */
+const shapeOf = (problem: PublicProblem) =>
+  panelChoice(problem) ? "choice/panels" : responseShape(problem.response);
 
 const url = process.env.AMP_TEST_DATABASE_URL;
 assert.ok(url, "AMP_TEST_DATABASE_URL is required");
@@ -70,8 +78,7 @@ try {
   const representatives = new Map<string, GeneratedProblem>();
   for (const template of templates) {
     const problem = generateProblem(template.id, "response-controls");
-    const response = problem.public.response;
-    const signature = responseShape(response);
+    const signature = shapeOf(problem.public);
     if (!representatives.has(signature))
       representatives.set(signature, problem);
   }
@@ -171,7 +178,7 @@ try {
         );
       }
       assert.equal(
-        responseShape(actual.response),
+        shapeOf(actual),
         signature,
         "The actual served problem covers the selected response shape",
       );

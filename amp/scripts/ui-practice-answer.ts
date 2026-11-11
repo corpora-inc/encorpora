@@ -231,10 +231,15 @@ export async function preparePracticeAnswer(
           .check();
       await page.locator(".choice-submit:visible").click();
     } else if (schema.kind === "choice") {
-      await page
-        .locator(".choice-option:visible")
-        .nth(schema.options.findIndex((o) => o.id === response))
-        .click();
+      // A choice among the figure's lettered panels is made on the figure.
+      const panels = page.locator(".figure-panel");
+      await (
+        (await panels.count())
+          ? page.locator(`.figure-panel:has(input[value="${response}"])`)
+          : page
+              .locator(".choice-option:visible")
+              .nth(schema.options.findIndex((o) => o.id === response))
+      ).click();
       await page.locator(".choice-submit:visible").click();
     } else if (schema.kind === "multi-part-choice") {
       const draft = parseMultiPartDraft(response)!;

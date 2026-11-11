@@ -9,6 +9,7 @@ import {
   type KeyboardEvent,
 } from "react";
 import { MathText, spokenMath } from "./MathText";
+import { useTileDrag } from "./useTileDrag";
 import { lineTex, parseLine } from "../math/expression";
 import {
   checkEntry,
@@ -540,6 +541,110 @@ export function StructuredWorkInput({
     setAnnounce(`${noun} moved to position ${to + 1} of ${next.length}.`);
   }
 
+  // Dragging a row: the others slide aside to show where it will land, and
+  // it settles there on release. Rows keep their layout boxes throughout
+  // (transforms only), so the stage and the dock never move.
+  const list = useRef<HTMLOListElement>(null);
+  const reorder = useRef<{
+    tops: number[];
+    heights: number[];
+    gap: number;
+    from: number;
+    to: number;
+    dropped: boolean;
+  } | null>(null);
+  const rowItems = () => [
+    ...(list.current?.querySelectorAll<HTMLElement>(":scope > .work-row") ??
+      []),
+  ];
+  const drag = useTileDrag<string>({
+    disabled: locked || r.mode !== "order",
+    axis: "y",
+    accepts: (_, zone) => zone === "order",
+    moved: (rowId, point) => {
+      const ol = list.current;
+      if (!ol) return;
+      const items = rowItems();
+      if (!reorder.current) {
+        const tops = items.map((x) => x.offsetTop - items[0]!.offsetTop);
+        const heights = items.map((x) => x.offsetHeight);
+        const from = order.indexOf(rowId);
+        reorder.current = {
+          tops,
+          heights,
+          gap: items.length > 1 ? tops[1]! - heights[0]! : 0,
+          from,
+          to: from,
+          dropped: false,
+        };
+        ol.setAttribute("data-reordering", "");
+      }
+      const p = reorder.current;
+      const y = point.y - items[0]!.getBoundingClientRect().top;
+      // Transforms do not move offsets: measure against the first row's
+      // layout box, which no transform has moved unless it is shifted.
+      const firstShift = items[0]!.style.transform
+        ? parseFloat(items[0]!.style.transform.slice(11)) || 0
+        : 0;
+      const at = y + firstShift;
+      const to = p.tops.filter(
+        (top, i) => i !== p.from && top + p.heights[i]! / 2 < at,
+      ).length;
+      p.to = to;
+      const room = p.heights[p.from]! + p.gap;
+      items.forEach((item, i) => {
+        if (i === p.from) return;
+        const shift =
+          p.from < to && i > p.from && i <= to
+            ? -room
+            : to < p.from && i >= to && i < p.from
+              ? room
+              : 0;
+        item.style.transform = shift ? `translateY(${shift}px)` : "";
+      });
+    },
+    drop: (rowId) => {
+      const p = reorder.current;
+      const items = rowItems();
+      if (!p) return;
+      // Dropped where it started: it settles back into its own place.
+      if (p.to === p.from) return items[p.from]!.getBoundingClientRect();
+      p.dropped = true;
+      const next = order.filter((x) => x !== rowId);
+      next.splice(p.to, 0, rowId);
+      // Where the row lands: after the rows now above it.
+      const source = items[p.from]!.getBoundingClientRect();
+      const listTop =
+        items[0]!.getBoundingClientRect().top -
+        (parseFloat(items[0]!.style.transform.slice(11)) || 0);
+      let top = listTop;
+      for (const id of next) {
+        if (id === rowId) break;
+        top += p.heights[order.indexOf(id)]! + p.gap;
+      }
+      onChange(JSON.stringify(next));
+      setAnnounce(`${noun} moved to position ${p.to + 1} of ${next.length}.`);
+      return new DOMRect(source.left, top, source.width, source.height);
+    },
+    ended: () => {
+      const p = reorder.current;
+      reorder.current = null;
+      // A drop clears the room after the new order renders; a cancel lets
+      // the rows slide back.
+      if (p?.dropped) return;
+      for (const item of rowItems()) item.style.transform = "";
+      setTimeout(() => list.current?.removeAttribute("data-reordering"), 300);
+    },
+  });
+  // The new order is drawn: the rows are where they were shown, so the
+  // room made for the drag goes away without motion.
+  useLayoutEffect(() => {
+    const ol = list.current;
+    if (!ol?.hasAttribute("data-reordering") || reorder.current) return;
+    ol.removeAttribute("data-reordering");
+    for (const item of rowItems()) item.style.transform = "";
+  }, [value]);
+
   const header =
     r.layout === "proof" ? (
       <div className="work-columns" aria-hidden="true">
@@ -552,7 +657,13 @@ export function StructuredWorkInput({
 
   const body =
     r.mode === "order" ? (
-      <ol className="work-rows" data-layout={r.layout} data-mode="order">
+      <ol
+        ref={list}
+        className="work-rows"
+        data-layout={r.layout}
+        data-mode="order"
+        data-drop={locked ? undefined : "order"}
+      >
         {order.map((rowId, position) => {
           const row = r.rows.find((x) => x.id === rowId)!;
           return (
@@ -561,9 +672,36 @@ export function StructuredWorkInput({
               className="work-row"
               data-row={rowId}
               data-mark={markOf(position)}
+              data-draggable={locked ? undefined : ""}
+              onPointerDown={(event) => {
+                const target = event.target as HTMLElement;
+                // Touch drags from the grip, so a swipe elsewhere scrolls;
+                // a mouse or pen drags the whole row. The arrows stay buttons.
+                if (target.closest(".work-move")) return;
+                if (
+                  event.pointerType === "touch" &&
+                  !target.closest(".work-grip")
+                )
+                  return;
+                drag.start(rowId, event);
+              }}
             >
-              <span className="work-number" aria-hidden="true">
-                {position + 1}
+              <span
+                className="work-grip"
+                data-drag-tile={locked ? undefined : ""}
+                aria-hidden="true"
+              >
+                <span className="work-number">{position + 1}</span>
+                {!locked && (
+                  <svg viewBox="0 0 12 16" className="work-grip-dots">
+                    <circle cx="4" cy="3" r="1.3" />
+                    <circle cx="8" cy="3" r="1.3" />
+                    <circle cx="4" cy="8" r="1.3" />
+                    <circle cx="8" cy="8" r="1.3" />
+                    <circle cx="4" cy="13" r="1.3" />
+                    <circle cx="8" cy="13" r="1.3" />
+                  </svg>
+                )}
               </span>
               <span className="work-fields">
                 {row.label && (
@@ -825,7 +963,7 @@ export function StructuredWorkAnswer({
     >
       <p className="work-count" role="status" aria-live="polite">
         {order
-          ? `Use the arrows to put the ${r.layout === "proof" ? "lines" : "steps"} in order`
+          ? `Drag or use the arrows to put the ${r.layout === "proof" ? "lines" : "steps"} in order`
           : `${done} of ${total} filled in`}
       </p>
       <div className="work-actions">

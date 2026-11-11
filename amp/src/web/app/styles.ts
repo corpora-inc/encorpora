@@ -27,6 +27,7 @@ import "../unit-square-marking.css";
 import "../trend-line-fit.css";
 import "../shape-composer.css";
 import "../multi-part-choice.css";
+import "../tile-drag.css";
 import "../figure-choice.css";
 import "../structured-work.css";
 import "../practice-tablet.css";
