@@ -14,7 +14,7 @@ Fix everything `--check` prints before rendering. Then look at `contact.jpg`.
 
 `--dry --board` also writes `storyboard.jpg`: the screen as each beat ends, numbered, and beside it a frame for every moment a highlight is held, marked `lit`. Look at every frame, including the lit ones. The picture should fill its card, a light must not leave the card or touch a label, labels should stand apart, and the board should show the step the voice just said.
 
-The voice takes care of itself. Every take is transcribed and compared with your `say` lines; a take that skips, repeats or misreads a word, or is cut off, is made again automatically. Pauses go only into silence the voice really has, and a narration with an audible edit is never rendered. A `note:` line from `--check` (a pause that had to be left out, a take that failed three times) needs no action unless it names a word: then reword that line.
+The voice takes care of itself. Every take is transcribed and compared with your `say` lines; a take that skips, repeats or misreads a word, or is cut off, is made again automatically. Pauses go only into silence the voice really has, and a narration with an audible edit is never rendered. A stray sound in a pause (a breath, click or hiss) is removed, a last "s" the voice let drift off its word is joined back, and a take with a stray too close to a word to remove is made again; `note:` lines say where each repair was made (strays.ts). A `note:` line from `--check` (a pause that had to be left out, a take that failed three times) needs no action unless it names a word: then reword that line.
 
 ## The test
 
@@ -521,7 +521,8 @@ Names: `a` is the group (the things in it at that moment), `a3` is one thing for
 | `{"do":"count","target":"pile","to":4,"into":"bowl"}` | Counting out: each counted thing slides to `bowl` on its number, and the count stops at four. |
 | `{"do":"count","target":"more","from":8}` | Counting on: the first number said is "eight". A group of three more things takes "eight, nine, ten"; a group that already has eight things picks up at its eighth. |
 | `{"do":"send","target":["a4","a5"],"to":"b"}` | Things go to the next free places of another group: joining, taking away. `"to": ["p", "q"]` deals them out in turn: sharing. |
-| `{"do":"leave","target":["a4","a5"]}` | Things go away one by one. |
+| `{"do":"leave","target":["a4","a5"]}` | Things go away one by one, fading where they sit. |
+| `{"do":"leave","target":["a4","a5"],"toward":"n"}` | Each drifts that way (`n`, `s`, `e`, `w`, `ne`, `nw`, `se`, `sw`) about one and a half of its widths as it fades: ducks fly off, a bear eats the cookies. The group's places stay where they are, so nothing shifts. Leave room in the `view` on that side, since a thing is clipped at the card's edge. |
 | `show`, `hide`, `highlight` | Work on a group or a thing, as on any part. |
 
 Rules for `count`:

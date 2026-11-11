@@ -1,0 +1,2526 @@
+{
+  "id": "relation-function-choice--sl",
+  "title": "One input, one output",
+  "teaches": [
+    "relation-point-removal",
+    "function-pair-select",
+    "function-missing-input"
+  ],
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -0.4,
+          -0.5,
+          10.4,
+          8.6
+        ],
+        "points": {
+          "TL": [
+            0,
+            8
+          ],
+          "TR": [
+            10,
+            8
+          ],
+          "BR": [
+            10,
+            0
+          ],
+          "BL": [
+            0,
+            0
+          ],
+          "Title": [
+            5,
+            7.4
+          ],
+          "IH": [
+            2,
+            6
+          ],
+          "OH": [
+            8,
+            6
+          ],
+          "B": [
+            2,
+            4.5
+          ],
+          "C": [
+            2,
+            2
+          ],
+          "Ch": [
+            8,
+            4.5
+          ],
+          "Nu": [
+            8,
+            2
+          ],
+          "BT": [
+            3,
+            4.5
+          ],
+          "CT": [
+            3,
+            2
+          ],
+          "CE": [
+            6.7,
+            4.5
+          ],
+          "NE": [
+            6.7,
+            2
+          ]
+        },
+        "parts": [
+          {
+            "id": "machine",
+            "poly": [
+              "TL",
+              "TR",
+              "BR",
+              "BL"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 3,
+            "start": true
+          },
+          {
+            "id": "title",
+            "label": "\\text{Vending machine}",
+            "at": "Title",
+            "dir": "c",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "ih",
+            "label": "\\text{Input}",
+            "at": "IH",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "oh",
+            "label": "\\text{Output}",
+            "at": "OH",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "buttonB",
+            "circle": "B",
+            "r": 0.65,
+            "fill": "paper",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "buttonC",
+            "circle": "C",
+            "r": 0.65,
+            "fill": "paper",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "b",
+            "label": "\\text{B4}",
+            "at": "B",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "c",
+            "label": "\\text{C2}",
+            "at": "C",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "chips",
+            "label": "\\text{Chips}",
+            "at": "Ch",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "nuts",
+            "label": "\\text{Nuts}",
+            "at": "Nu",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "bc",
+            "vector": [
+              "BT",
+              "CE"
+            ],
+            "ink": "accent",
+            "w": 6
+          },
+          {
+            "id": "cc",
+            "vector": [
+              "CT",
+              "CE"
+            ],
+            "ink": "accent",
+            "w": 6
+          },
+          {
+            "id": "bn",
+            "vector": [
+              "BT",
+              "NE"
+            ],
+            "ink": "warm",
+            "w": 6
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A function is a rule that gives every input exactly one output.",
+          "do": [
+            {
+              "do": "term",
+              "word": "function",
+              "meaning": "A rule that gives every input exactly one output."
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A vending machine is one. Press B four: chips. The button is the input; the snack is the output.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "b",
+              "at": "Press"
+            },
+            {
+              "do": "draw",
+              "target": "bc",
+              "at": "chips"
+            },
+            {
+              "do": "text",
+              "text": "Button → snack",
+              "at": "button"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "C two gives chips too.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "cc",
+              "at": "C"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "bc",
+                "cc",
+                "chips"
+              ],
+              "at": "same"
+            }
+          ],
+          "say": "Two buttons give the same snack. I think that breaks the rule."
+        },
+        {
+          "speaker": "teacher",
+          "say": "No. Each button still gives just one snack.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "bc",
+                "cc"
+              ],
+              "at": "one"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "So B four giving chips or nuts would break it: one input, two different outputs.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "bn",
+              "at": "or"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "b",
+                "bc",
+                "bn"
+              ],
+              "at": "two"
+            },
+            {
+              "do": "text",
+              "text": "One input, two different outputs.",
+              "at": "two"
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          0,
+          -0.2,
+          10,
+          7.7
+        ],
+        "points": {
+          "IH": [
+            2,
+            6.7
+          ],
+          "OH": [
+            8,
+            6.7
+          ],
+          "I0": [
+            2,
+            5.2
+          ],
+          "I1": [
+            2,
+            3.4
+          ],
+          "I3": [
+            2,
+            1.6
+          ],
+          "O1": [
+            8,
+            5.2
+          ],
+          "O3": [
+            8,
+            3.4
+          ],
+          "ON": [
+            8,
+            1.6
+          ],
+          "T0": [
+            2.8,
+            5.2
+          ],
+          "T1": [
+            2.8,
+            3.4
+          ],
+          "T3": [
+            2.8,
+            1.6
+          ],
+          "E1": [
+            7.2,
+            5.2
+          ],
+          "E3": [
+            7.2,
+            3.4
+          ],
+          "EN": [
+            7.2,
+            1.6
+          ],
+          "Fly": [
+            5,
+            0.6
+          ]
+        },
+        "parts": [
+          {
+            "id": "ih",
+            "label": "\\text{Input}",
+            "at": "IH",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "oh",
+            "label": "\\text{Output}",
+            "at": "OH",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "i0",
+            "label": "-2",
+            "at": "I0",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "i1",
+            "label": "1",
+            "at": "I1",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "i3",
+            "label": "3",
+            "at": "I3",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "o1",
+            "label": "1",
+            "at": "O1",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "o3",
+            "label": "3",
+            "at": "O3",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "on",
+            "label": "-2",
+            "at": "ON",
+            "dir": "c",
+            "size": "l"
+          },
+          {
+            "id": "a",
+            "vector": [
+              "T0",
+              "E1"
+            ],
+            "ink": "accent",
+            "w": 6
+          },
+          {
+            "id": "b",
+            "vector": [
+              "T1",
+              "E3"
+            ],
+            "ink": "accent",
+            "w": 6
+          },
+          {
+            "id": "c",
+            "vector": [
+              "T3",
+              "E1"
+            ],
+            "ink": "accent",
+            "w": 6
+          },
+          {
+            "id": "bad",
+            "vector": [
+              "T1",
+              "EN"
+            ],
+            "ink": "warm",
+            "w": 6
+          },
+          {
+            "id": "ring",
+            "circle": "I1",
+            "r": 0.48,
+            "ink": "warm",
+            "w": 4
+          },
+          {
+            "id": "repeat",
+            "label": "(1,3)",
+            "at": "Fly",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "flies": true,
+            "halo": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "An ordered pair puts the input first, the output second. Negative two, one means negative two gives one.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "(\\cb{x},y)",
+              "fresh": true
+            },
+            {
+              "do": "text",
+              "text": "Input first. Output second.",
+              "at": "first"
+            },
+            {
+              "do": "write",
+              "tex": "(\\cb{-2},1)",
+              "fresh": true,
+              "at": "Negative"
+            },
+            {
+              "do": "draw",
+              "target": "a",
+              "at": "gives"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A relation is a set of these pairs. Add one, three: one gives three.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "term",
+              "word": "relation",
+              "meaning": "A set of input-output pairs."
+            },
+            {
+              "do": "write",
+              "tex": "(\\cb{1},3)",
+              "fresh": true,
+              "at": "Add"
+            },
+            {
+              "do": "draw",
+              "target": "b",
+              "at": "gives"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Three, one will work too. Two inputs share one output, like the buttons.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "(-2,1),\\ (1,3)",
+              "fresh": true,
+              "at": "Three"
+            },
+            {
+              "do": "write",
+              "tex": "(\\cb{3},1)",
+              "fresh": true,
+              "at": "one"
+            },
+            {
+              "do": "draw",
+              "target": "c",
+              "at": "work"
+            },
+            {
+              "do": "text",
+              "text": "Every input has one output.",
+              "at": "share"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "List one, three again. It lands on the same arrow; no new output.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "(1,3),\\ (1,3)",
+              "fresh": true
+            },
+            {
+              "do": "show",
+              "target": "repeat"
+            },
+            {
+              "do": "move",
+              "points": {
+                "Fly": [
+                  5,
+                  3.4
+                ]
+              },
+              "at": "lands",
+              "dur": 1
+            },
+            {
+              "do": "highlight",
+              "target": "b",
+              "at": "same"
+            },
+            {
+              "do": "hide",
+              "target": "repeat",
+              "at": "new"
+            },
+            {
+              "do": "text",
+              "text": "Same pair. Same arrow.",
+              "at": "no"
+            }
+          ],
+          "pause": 0.5
+        },
+        {
+          "speaker": "learner",
+          "say": "But one, negative two adds a second output for one. Not a function.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "(\\cw{1},3),\\ (\\cw{1},-2)",
+              "fresh": true
+            },
+            {
+              "do": "show",
+              "target": "on",
+              "at": "negative"
+            },
+            {
+              "do": "draw",
+              "target": "bad",
+              "at": "negative"
+            },
+            {
+              "do": "show",
+              "target": "ring",
+              "at": "second"
+            },
+            {
+              "do": "answer",
+              "tex": "\\text{Not a function}",
+              "at": "Not"
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -3.3,
+          -3.1,
+          5.1,
+          4.4
+        ],
+        "points": {
+          "A": [
+            -2,
+            1
+          ],
+          "B": [
+            1,
+            3
+          ],
+          "C": [
+            1,
+            -2
+          ],
+          "D": [
+            3,
+            1
+          ],
+          "S": [
+            -2.8,
+            -2.6
+          ],
+          "T": [
+            -2.8,
+            3.6
+          ],
+          "O": [
+            0,
+            0
+          ],
+          "X": [
+            1,
+            0
+          ],
+          "P": [
+            4,
+            3
+          ],
+          "XT": [
+            4.5,
+            0
+          ],
+          "YT": [
+            0,
+            3.9
+          ],
+          "Xn2": [
+            -2,
+            0
+          ],
+          "Xn1": [
+            -1,
+            0
+          ],
+          "X1": [
+            1,
+            0
+          ],
+          "X2": [
+            2,
+            0
+          ],
+          "X3": [
+            3,
+            0
+          ],
+          "X4": [
+            4,
+            0
+          ],
+          "Yn2": [
+            0,
+            -2
+          ],
+          "Yn1": [
+            0,
+            -1
+          ],
+          "Y1": [
+            0,
+            1
+          ],
+          "Y2": [
+            0,
+            2
+          ],
+          "Y3": [
+            0,
+            3
+          ]
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 99,
+            "xrange": [
+              -2.7,
+              4.6
+            ],
+            "yrange": [
+              -2.6,
+              3.7
+            ],
+            "start": true
+          },
+          {
+            "id": "scan",
+            "seg": [
+              "S",
+              "T"
+            ],
+            "ink": "gold",
+            "w": 6
+          },
+          {
+            "id": "run",
+            "vector": [
+              "O",
+              "X"
+            ],
+            "ink": "blue",
+            "w": 7
+          },
+          {
+            "id": "rise",
+            "vector": [
+              "X",
+              "B"
+            ],
+            "ink": "accent",
+            "w": 7
+          },
+          {
+            "id": "dA",
+            "dot": "A",
+            "r": 18,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "lA",
+            "label": "A",
+            "at": "A",
+            "dir": "nw",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "dB",
+            "dot": "B",
+            "r": 18,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "lB",
+            "label": "B",
+            "at": "B",
+            "dir": "ne",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "dC",
+            "dot": "C",
+            "r": 18,
+            "ink": "warm",
+            "start": false
+          },
+          {
+            "id": "lC",
+            "label": "C",
+            "at": "C",
+            "dir": "se",
+            "size": "m",
+            "start": false
+          },
+          {
+            "id": "dD",
+            "dot": "D",
+            "r": 18,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "lD",
+            "label": "D",
+            "at": "D",
+            "dir": "ne",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "dP",
+            "dot": "P",
+            "r": 18,
+            "ink": "accent"
+          },
+          {
+            "id": "lP",
+            "label": "P",
+            "at": "P",
+            "dir": "ne",
+            "size": "m"
+          },
+          {
+            "id": "tickXn2",
+            "label": "-2",
+            "at": "Xn2",
+            "dir": "s",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickXn1",
+            "label": "-1",
+            "at": "Xn1",
+            "dir": "s",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickX1",
+            "label": "1",
+            "at": "X1",
+            "dir": "s",
+            "far": 0.6,
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "tickX2",
+            "label": "2",
+            "at": "X2",
+            "dir": "s",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickX3",
+            "label": "3",
+            "at": "X3",
+            "dir": "s",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickX4",
+            "label": "4",
+            "at": "X4",
+            "dir": "s",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickYn2",
+            "label": "-2",
+            "at": "Yn2",
+            "dir": "w",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickYn1",
+            "label": "-1",
+            "at": "Yn1",
+            "dir": "w",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickY1",
+            "label": "1",
+            "at": "Y1",
+            "dir": "w",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickY2",
+            "label": "2",
+            "at": "Y2",
+            "dir": "w",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickY3",
+            "label": "3",
+            "at": "Y3",
+            "dir": "w",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "xt",
+            "label": "x",
+            "at": "XT",
+            "dir": "s",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "yt",
+            "label": "y",
+            "at": "YT",
+            "dir": "w",
+            "size": "m",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "The pairs are also points. Input x measures across; output y measures up or down. One, three is right one, up three.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "B=(\\cb{1},3)",
+              "fresh": true
+            },
+            {
+              "do": "text",
+              "text": "Input: across. Output: up or down.",
+              "at": "Input"
+            },
+            {
+              "do": "draw",
+              "target": "run",
+              "at": "right"
+            },
+            {
+              "do": "draw",
+              "target": "rise",
+              "at": "up",
+              "nth": 2
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "dB",
+                "lB"
+              ],
+              "at": "three",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "One, negative two sits directly below it. Same input, different outputs.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "B=(\\cw{1},3)",
+              "fresh": true
+            },
+            {
+              "do": "write",
+              "tex": "C=(\\cw{1},-2)",
+              "fresh": true
+            },
+            {
+              "do": "hide",
+              "target": [
+                "run",
+                "rise"
+              ]
+            },
+            {
+              "do": "show",
+              "target": [
+                "dC",
+                "lC"
+              ]
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "dB",
+                "dC"
+              ],
+              "at": "Same"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A vertical line checks one input. Sweep across: two points at one means not a function. A function has at most one point per vertical line. No points means that input is unused.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Vertical line test"
+            },
+            {
+              "do": "show",
+              "target": "scan"
+            },
+            {
+              "do": "move",
+              "points": {
+                "S": [
+                  1,
+                  -2.6
+                ],
+                "T": [
+                  1,
+                  3.6
+                ]
+              },
+              "at": "Sweep",
+              "dur": 1.4
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "dB",
+                "dC",
+                "tickX1"
+              ],
+              "at": "two"
+            },
+            {
+              "do": "text",
+              "text": "Two points at $x=1$.",
+              "at": "two"
+            },
+            {
+              "do": "move",
+              "points": {
+                "S": [
+                  2,
+                  -2.6
+                ],
+                "T": [
+                  2,
+                  3.6
+                ]
+              },
+              "at": "No",
+              "dur": 0.6
+            },
+            {
+              "do": "text",
+              "text": "No points at $x=2$.",
+              "at": "No"
+            },
+            {
+              "do": "highlight",
+              "target": "scan",
+              "at": "most"
+            }
+          ],
+          "pause": 0.4
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -3.3,
+          -3.1,
+          5.1,
+          4.4
+        ],
+        "points": {
+          "A": [
+            -2,
+            1
+          ],
+          "B": [
+            1,
+            3
+          ],
+          "C": [
+            1,
+            -2
+          ],
+          "D": [
+            3,
+            1
+          ],
+          "S": [
+            1,
+            -2.6
+          ],
+          "T": [
+            1,
+            3.6
+          ],
+          "O": [
+            0,
+            0
+          ],
+          "X": [
+            1,
+            0
+          ],
+          "P": [
+            4,
+            3
+          ],
+          "XT": [
+            4.5,
+            0
+          ],
+          "YT": [
+            0,
+            3.9
+          ],
+          "Xn2": [
+            -2,
+            0
+          ],
+          "Xn1": [
+            -1,
+            0
+          ],
+          "X1": [
+            1,
+            0
+          ],
+          "X2": [
+            2,
+            0
+          ],
+          "X3": [
+            3,
+            0
+          ],
+          "X4": [
+            4,
+            0
+          ],
+          "Yn2": [
+            0,
+            -2
+          ],
+          "Yn1": [
+            0,
+            -1
+          ],
+          "Y1": [
+            0,
+            1
+          ],
+          "Y2": [
+            0,
+            2
+          ],
+          "Y3": [
+            0,
+            3
+          ]
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 99,
+            "xrange": [
+              -2.7,
+              4.6
+            ],
+            "yrange": [
+              -2.6,
+              3.7
+            ],
+            "start": true
+          },
+          {
+            "id": "scan",
+            "seg": [
+              "S",
+              "T"
+            ],
+            "ink": "gold",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "run",
+            "vector": [
+              "O",
+              "X"
+            ],
+            "ink": "blue",
+            "w": 7
+          },
+          {
+            "id": "rise",
+            "vector": [
+              "X",
+              "B"
+            ],
+            "ink": "accent",
+            "w": 7
+          },
+          {
+            "id": "dA",
+            "dot": "A",
+            "r": 18,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "lA",
+            "label": "A",
+            "at": "A",
+            "dir": "nw",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "dB",
+            "dot": "B",
+            "r": 18,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "lB",
+            "label": "B",
+            "at": "B",
+            "dir": "ne",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "dC",
+            "dot": "C",
+            "r": 18,
+            "ink": "warm",
+            "start": true
+          },
+          {
+            "id": "lC",
+            "label": "C",
+            "at": "C",
+            "dir": "se",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "dD",
+            "dot": "D",
+            "r": 18,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "lD",
+            "label": "D",
+            "at": "D",
+            "dir": "ne",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "dP",
+            "dot": "P",
+            "r": 18,
+            "ink": "accent"
+          },
+          {
+            "id": "lP",
+            "label": "P",
+            "at": "P",
+            "dir": "ne",
+            "size": "m"
+          },
+          {
+            "id": "tickXn2",
+            "label": "-2",
+            "at": "Xn2",
+            "dir": "s",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickXn1",
+            "label": "-1",
+            "at": "Xn1",
+            "dir": "s",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickX1",
+            "label": "1",
+            "at": "X1",
+            "dir": "s",
+            "far": 0.6,
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "tickX2",
+            "label": "2",
+            "at": "X2",
+            "dir": "s",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickX3",
+            "label": "3",
+            "at": "X3",
+            "dir": "s",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickX4",
+            "label": "4",
+            "at": "X4",
+            "dir": "s",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickYn2",
+            "label": "-2",
+            "at": "Yn2",
+            "dir": "w",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickYn1",
+            "label": "-1",
+            "at": "Yn1",
+            "dir": "w",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickY1",
+            "label": "1",
+            "at": "Y1",
+            "dir": "w",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickY2",
+            "label": "2",
+            "at": "Y2",
+            "dir": "w",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickY3",
+            "label": "3",
+            "at": "Y3",
+            "dir": "w",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "xt",
+            "label": "x",
+            "at": "XT",
+            "dir": "s",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "yt",
+            "label": "y",
+            "at": "YT",
+            "dir": "w",
+            "size": "m",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "To make this a function, which single point could we remove?",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "To make this a function, which single point could we remove?"
+            }
+          ],
+          "pause": 1.5
+        },
+        {
+          "speaker": "learner",
+          "say": "Either B or C. Remove B: one output remains. Or put B back and remove C. Removing another point leaves both conflicting points.",
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "dB",
+                "lB"
+              ],
+              "at": "Remove"
+            },
+            {
+              "do": "answer",
+              "tex": "B\\ \\text{or}\\ C",
+              "at": "Either"
+            },
+            {
+              "do": "show",
+              "target": [
+                "dB",
+                "lB"
+              ],
+              "at": "back"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "dC",
+                "lC"
+              ],
+              "at": "C",
+              "nth": 2
+            },
+            {
+              "do": "show",
+              "target": [
+                "dC",
+                "lC"
+              ],
+              "at": "another"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "dB",
+                "dC"
+              ],
+              "at": "conflicting"
+            }
+          ],
+          "pause": 1
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -3.3,
+          -3.1,
+          5.1,
+          4.4
+        ],
+        "points": {
+          "A": [
+            -2,
+            1
+          ],
+          "B": [
+            1,
+            3
+          ],
+          "C": [
+            1,
+            -2
+          ],
+          "D": [
+            3,
+            1
+          ],
+          "S": [
+            -2.8,
+            -2.6
+          ],
+          "T": [
+            -2.8,
+            3.6
+          ],
+          "O": [
+            0,
+            0
+          ],
+          "X": [
+            1,
+            0
+          ],
+          "P": [
+            4,
+            3
+          ],
+          "XT": [
+            4.5,
+            0
+          ],
+          "YT": [
+            0,
+            3.9
+          ],
+          "Xn2": [
+            -2,
+            0
+          ],
+          "Xn1": [
+            -1,
+            0
+          ],
+          "X1": [
+            1,
+            0
+          ],
+          "X2": [
+            2,
+            0
+          ],
+          "X3": [
+            3,
+            0
+          ],
+          "X4": [
+            4,
+            0
+          ],
+          "Yn2": [
+            0,
+            -2
+          ],
+          "Yn1": [
+            0,
+            -1
+          ],
+          "Y1": [
+            0,
+            1
+          ],
+          "Y2": [
+            0,
+            2
+          ],
+          "Y3": [
+            0,
+            3
+          ]
+        },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 99,
+            "xrange": [
+              -2.7,
+              4.6
+            ],
+            "yrange": [
+              -2.6,
+              3.7
+            ],
+            "start": true
+          },
+          {
+            "id": "scan",
+            "seg": [
+              "S",
+              "T"
+            ],
+            "ink": "gold",
+            "w": 6
+          },
+          {
+            "id": "run",
+            "vector": [
+              "O",
+              "X"
+            ],
+            "ink": "blue",
+            "w": 7
+          },
+          {
+            "id": "rise",
+            "vector": [
+              "X",
+              "B"
+            ],
+            "ink": "accent",
+            "w": 7
+          },
+          {
+            "id": "dA",
+            "dot": "A",
+            "r": 18,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "lA",
+            "label": "A",
+            "at": "A",
+            "dir": "nw",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "dB",
+            "dot": "B",
+            "r": 18,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "lB",
+            "label": "B",
+            "at": "B",
+            "dir": "ne",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "dC",
+            "dot": "C",
+            "r": 18,
+            "ink": "warm",
+            "start": false
+          },
+          {
+            "id": "lC",
+            "label": "C",
+            "at": "C",
+            "dir": "se",
+            "size": "m",
+            "start": false
+          },
+          {
+            "id": "dD",
+            "dot": "D",
+            "r": 18,
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "lD",
+            "label": "D",
+            "at": "D",
+            "dir": "ne",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "dP",
+            "dot": "P",
+            "r": 18,
+            "ink": "accent"
+          },
+          {
+            "id": "lP",
+            "label": "P",
+            "at": "P",
+            "dir": "ne",
+            "size": "m"
+          },
+          {
+            "id": "tickXn2",
+            "label": "-2",
+            "at": "Xn2",
+            "dir": "s",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickXn1",
+            "label": "-1",
+            "at": "Xn1",
+            "dir": "s",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickX1",
+            "label": "1",
+            "at": "X1",
+            "dir": "s",
+            "far": 0.6,
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "tickX2",
+            "label": "2",
+            "at": "X2",
+            "dir": "s",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickX3",
+            "label": "3",
+            "at": "X3",
+            "dir": "s",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickX4",
+            "label": "4",
+            "at": "X4",
+            "dir": "s",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickYn2",
+            "label": "-2",
+            "at": "Yn2",
+            "dir": "w",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickYn1",
+            "label": "-1",
+            "at": "Yn1",
+            "dir": "w",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickY1",
+            "label": "1",
+            "at": "Y1",
+            "dir": "w",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickY2",
+            "label": "2",
+            "at": "Y2",
+            "dir": "w",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "tickY3",
+            "label": "3",
+            "at": "Y3",
+            "dir": "w",
+            "far": 0.6,
+            "size": "m",
+            "ink": "muted",
+            "start": true
+          },
+          {
+            "id": "xt",
+            "label": "x",
+            "at": "XT",
+            "dir": "s",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "yt",
+            "label": "y",
+            "at": "YT",
+            "dir": "w",
+            "size": "m",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Try adding four, three. Four is a new input, so it works, even though the output three is shared.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "(\\cb{4},3)",
+              "fresh": true
+            },
+            {
+              "do": "show",
+              "target": [
+                "dP",
+                "lP"
+              ],
+              "at": "four"
+            },
+            {
+              "do": "text",
+              "text": "New input: safe.",
+              "at": "new"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "dB",
+                "dP"
+              ],
+              "at": "shared"
+            }
+          ],
+          "pause": 1
+        },
+        {
+          "speaker": "learner",
+          "say": "But adding one, negative two fails. One already gives three. Same input, different height.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "dP",
+                "lP"
+              ]
+            },
+            {
+              "do": "write",
+              "tex": "(\\cw{1},-2)",
+              "fresh": true
+            },
+            {
+              "do": "show",
+              "target": [
+                "dC",
+                "lC"
+              ],
+              "at": "negative"
+            },
+            {
+              "do": "move",
+              "points": {
+                "S": [
+                  1,
+                  -2.6
+                ],
+                "T": [
+                  1,
+                  3.6
+                ]
+              },
+              "at": "Same",
+              "dur": 0.5
+            },
+            {
+              "do": "show",
+              "target": "scan",
+              "at": "Same"
+            },
+            {
+              "do": "text",
+              "text": "Same input, different outputs.",
+              "at": "Same"
+            }
+          ],
+          "pause": 1.2
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          0,
+          -1.4,
+          10,
+          7.7
+        ],
+        "points": {
+          "IH": [
+            2,
+            6.7
+          ],
+          "OH": [
+            8,
+            6.7
+          ],
+          "I0": [
+            2,
+            5.2
+          ],
+          "I1": [
+            2,
+            3.4
+          ],
+          "I3": [
+            2,
+            1.6
+          ],
+          "O1": [
+            8,
+            5.2
+          ],
+          "O3": [
+            8,
+            3.4
+          ],
+          "ON": [
+            8,
+            1.6
+          ],
+          "T0": [
+            2.8,
+            5.2
+          ],
+          "T1": [
+            2.8,
+            3.4
+          ],
+          "T3": [
+            2.8,
+            1.6
+          ],
+          "E1": [
+            7.2,
+            5.2
+          ],
+          "E3": [
+            7.2,
+            3.4
+          ],
+          "EN": [
+            7.2,
+            1.6
+          ],
+          "K": [
+            2,
+            -0.2
+          ],
+          "O4": [
+            8,
+            -0.2
+          ],
+          "TK": [
+            2.8,
+            -0.2
+          ],
+          "E4": [
+            7.2,
+            -0.2
+          ]
+        },
+        "parts": [
+          {
+            "id": "ih",
+            "label": "\\text{Input}",
+            "at": "IH",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "oh",
+            "label": "\\text{Output}",
+            "at": "OH",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "i0",
+            "label": "-2",
+            "at": "I0",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "i1",
+            "label": "1",
+            "at": "I1",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "i3",
+            "label": "3",
+            "at": "I3",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "o1",
+            "label": "1",
+            "at": "O1",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "o3",
+            "label": "3",
+            "at": "O3",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "a",
+            "vector": [
+              "T0",
+              "E1"
+            ],
+            "ink": "accent",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "b",
+            "vector": [
+              "T1",
+              "E3"
+            ],
+            "ink": "accent",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "c",
+            "vector": [
+              "T3",
+              "E1"
+            ],
+            "ink": "accent",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "lk",
+            "label": "k",
+            "at": "K",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "start": true
+          },
+          {
+            "id": "o4",
+            "label": "4",
+            "at": "O4",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold",
+            "start": true
+          },
+          {
+            "id": "ka",
+            "vector": [
+              "TK",
+              "E4"
+            ],
+            "ink": "gold",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "kb",
+            "vector": [
+              "T1",
+              "E4"
+            ],
+            "ink": "warm",
+            "w": 6
+          },
+          {
+            "id": "kfour",
+            "label": "4",
+            "at": "K",
+            "dir": "c",
+            "size": "l",
+            "ink": "gold"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Add k, four to our pairs: since none of their outputs is four, k must avoid the used inputs, negative two, one, and three.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "write",
+              "tex": "(-2,1),\\ (1,3)",
+              "fresh": true
+            },
+            {
+              "do": "write",
+              "tex": "(3,1),\\ (k,4)",
+              "fresh": true
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "i0",
+                "i1",
+                "i3"
+              ],
+              "at": "inputs"
+            },
+            {
+              "do": "write",
+              "tex": "k\\ne -2,\\ 1,\\ 3",
+              "fresh": true,
+              "at": "three"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "A new input, like four, works; a used input would get two different outputs.",
+          "do": [
+            {
+              "do": "text",
+              "text": "New input: one output."
+            },
+            {
+              "do": "highlight",
+              "target": "ka",
+              "at": "new"
+            }
+          ],
+          "pause": 1.5
+        }
+      ]
+    },
+    {
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Which list represents a function?",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "problem",
+              "text": "Which list represents a function?",
+              "choices": [
+                "A: $(-2,1),\\ (-2,3),\\ (3,1)$",
+                "B: $(-2,1),\\ (-2,1),\\ (3,1)$"
+              ]
+            }
+          ],
+          "pause": 3
+        },
+        {
+          "speaker": "learner",
+          "say": "B. The repeated pair adds nothing. Negative two and three each give one. A fails: negative two gives both one and three.",
+          "do": [
+            {
+              "do": "answer",
+              "tex": "B",
+              "at": "B"
+            },
+            {
+              "do": "write",
+              "tex": "-2\\to1,\\quad 3\\to1",
+              "fresh": true,
+              "at": "each"
+            },
+            {
+              "do": "text",
+              "text": "A: $-2$ gives both $1$ and $3$.",
+              "at": "fails"
+            }
+          ],
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          0,
+          -0.2,
+          10,
+          7.7
+        ],
+        "points": {
+          "IH": [
+            2,
+            6.7
+          ],
+          "OH": [
+            8,
+            6.7
+          ],
+          "I0": [
+            2,
+            5.2
+          ],
+          "I1": [
+            2,
+            3.4
+          ],
+          "I3": [
+            2,
+            1.6
+          ],
+          "O1": [
+            8,
+            5.2
+          ],
+          "O3": [
+            8,
+            3.4
+          ],
+          "ON": [
+            8,
+            1.6
+          ],
+          "T0": [
+            2.8,
+            5.2
+          ],
+          "T1": [
+            2.8,
+            3.4
+          ],
+          "T3": [
+            2.8,
+            1.6
+          ],
+          "E1": [
+            7.2,
+            5.2
+          ],
+          "E3": [
+            7.2,
+            3.4
+          ],
+          "EN": [
+            7.2,
+            1.6
+          ]
+        },
+        "parts": [
+          {
+            "id": "ih",
+            "label": "\\text{Input}",
+            "at": "IH",
+            "dir": "c",
+            "size": "m",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "oh",
+            "label": "\\text{Output}",
+            "at": "OH",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "i0",
+            "label": "-2",
+            "at": "I0",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "i1",
+            "label": "1",
+            "at": "I1",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "i3",
+            "label": "3",
+            "at": "I3",
+            "dir": "c",
+            "size": "l",
+            "ink": "blue",
+            "start": true
+          },
+          {
+            "id": "o1",
+            "label": "1",
+            "at": "O1",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "o3",
+            "label": "3",
+            "at": "O3",
+            "dir": "c",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "a",
+            "vector": [
+              "T0",
+              "E1"
+            ],
+            "ink": "accent",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "b",
+            "vector": [
+              "T1",
+              "E3"
+            ],
+            "ink": "accent",
+            "w": 6,
+            "start": true
+          },
+          {
+            "id": "c",
+            "vector": [
+              "T3",
+              "E1"
+            ],
+            "ink": "accent",
+            "w": 6,
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "learner",
+          "say": "Follow each input. Exactly one arrow leaves it. One input, one output.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "One input, one output."
+            },
+            {
+              "do": "highlight",
+              "target": "a",
+              "at": "input"
+            },
+            {
+              "do": "highlight",
+              "target": "b",
+              "at": "Exactly"
+            },
+            {
+              "do": "highlight",
+              "target": "c",
+              "at": "leaves"
+            }
+          ],
+          "pause": 2
+        }
+      ]
+    }
+  ]
+}

@@ -756,7 +756,7 @@
       "beats": [
         {
           "speaker": "teacher",
-          "say": "Here is ten. One full frame, and no more.",
+          "say": "Here is ten. One full frame,",
           "do": [
             {
               "do": "clear"
@@ -765,7 +765,13 @@
               "do": "highlight",
               "target": "fa",
               "at": "full"
-            },
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "and no more.",
+          "do": [
             {
               "do": "highlight",
               "target": "fb",
@@ -895,7 +901,7 @@
       "beats": [
         {
           "speaker": "teacher",
-          "say": "Twenty is the most we write today. Two full frames, and no more.",
+          "say": "Twenty is the most we write today. Two full frames,",
           "do": [
             {
               "do": "clear"
@@ -904,11 +910,17 @@
               "do": "highlight",
               "target": "fa",
               "at": "Two"
-            },
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "and no more.",
+          "do": [
             {
               "do": "highlight",
               "target": "fb",
-              "at": "full"
+              "at": "no"
             }
           ]
         },

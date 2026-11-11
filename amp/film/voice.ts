@@ -6,7 +6,9 @@
  *   - a speech-to-text pass hears exactly the words of the script (nothing skipped,
  *     repeated, garbled or misread),
  *   - it ends in silence (the voice was not cut off),
- *   - it never clips.
+ *   - it never clips,
+ *   - no stray sound (a hiss, click or breath) sits too close to a word to be
+ *     removed (strays.ts; the ones that can be removed are, when the film is made).
  * A take that fails is generated again, automatically. Kept takes are cached by
  * their text, so a film is voiced once and re-renders cost nothing.
  *
@@ -15,9 +17,11 @@
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { EDGE, envelope, SR } from "./audio";
-import { MODEL, NARRATOR_ID, requireVoices, resolveCast, runsOf, spokenText, takeKeyParts, type Voice } from "./cast";
+import { EDGE, envelope, even, SR } from "./audio";
+import { isTagWord, MODEL, NARRATOR_ID, requireVoices, resolveCast, runsOf, spokenText, takeKeyParts, type Voice } from "./cast";
 import { FILM_VOICES } from "./paths";
+import type { WordTime } from "./schema";
+import { describe, strayPlan, type TimedWord } from "./strays";
 
 /** The narrator: Madeline Brousseaux, by exact id (docs/amp-media-pipeline.md). Other approved voices are in voices.ts. */
 export const VOICE_ID = NARRATOR_ID;
@@ -161,6 +165,34 @@ export const pcmOf = (t: Take) => {
   return new Int16Array(raw.buffer, raw.byteOffset, raw.length >> 1);
 };
 
+/**
+ * Words with their times. A word runs from its first letter or digit to its
+ * last: the service gives the pause after a sentence to its full stop, so a
+ * word that kept its punctuation would end at the start of the next word.
+ */
+export function wordsOf(a: Alignment): WordTime[] {
+  const out: WordTime[] = [];
+  let buf = "", st = -1, en = -1, st0 = 0, en0 = 0;
+  // an audio tag ("[energetic]") sent before the words may come back in the alignment: it was not spoken
+  const push = () => { if (buf.trim() && !isTagWord(buf)) out.push({ text: buf.trim(), start: st >= 0 ? st : st0, end: en >= 0 ? en : en0 }); };
+  a.characters.forEach((ch, i) => {
+    if (/\s/.test(ch)) { push(); buf = ""; st = en = -1; return; }
+    if (!buf) st0 = a.character_start_times_seconds[i]!;
+    en0 = a.character_end_times_seconds[i]!;
+    if (/[\p{L}\p{N}]/u.test(ch)) {
+      if (st < 0) st = a.character_start_times_seconds[i]!;
+      en = a.character_end_times_seconds[i]!;
+    }
+    buf += ch;
+  });
+  push();
+  return out;
+}
+
+/** The transcript's words of each take judged in this run, for telling a word from a stray sound. */
+const heardOf = new WeakMap<Take, TimedWord[]>();
+export const heardWords = (take: Take): TimedWord[] => heardOf.get(take) ?? [];
+
 async function generate(voice: Voice, text: string, prev: string | undefined, next: string | undefined, seed?: number): Promise<Take> {
   // Authoring sessions run with FILM_NO_VOICE=1: only a reviewer spends voice characters.
   if (process.env.FILM_NO_VOICE) throw new Error("Voicing is off in this session (FILM_NO_VOICE). Check the screenplay with --dry.");
@@ -216,6 +248,10 @@ export async function judge(text: string, take: Take, cache: string) {
   const heard = await hear(pcm, cache);
   for (const d of differences(text, heard))
     faults.push(`at ${d.at.toFixed(1)} s the script says "${d.want}" but the voice says "${d.got}"`);
+  // A stray sound in a pause is removed when the film is made; one too close to a word cannot be.
+  const said = heard.words.filter((w) => w.type === "word").map((w) => ({ text: w.text, start: w.start, end: w.end }));
+  heardOf.set(take, said);
+  for (const s of strayPlan(even(pcm), wordsOf(take.alignment), said)) if (s.kind === "near") faults.push(describe(s));
   return faults;
 }
 

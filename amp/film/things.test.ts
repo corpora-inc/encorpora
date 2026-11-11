@@ -141,6 +141,21 @@ describe("the plan", () => {
     expect(m.stateAt("b1", 10.2).flying).toBe(false);
     expect(m.stateAt("b1", 10.6).flying).toBe(true);
   });
+  it("a thing that leaves toward a direction drifts that way while it fades, and stays gone", () => {
+    const m = new ThingsModel([group("a", 3, { start: true })]);
+    m.apply({ do: "leave", target: "a1", toward: "n" }, { t0: 2, beatEnd: 4 });
+    m.apply({ do: "leave", target: "a2" }, { t0: 2, beatEnd: 4 });
+    expect(m.stateAt("a1", 1).drift).toEqual([0, 0]);
+    const mid = m.stateAt("a1", 2.5).drift;
+    expect(mid[0]).toBeCloseTo(0);
+    expect(mid[1]).toBeGreaterThan(0);
+    expect(m.stateAt("a1", 4).drift[1]).toBeCloseTo(1);
+    expect(m.stateAt("a1", 4).o).toBe(0);
+    // a plain leave fades where it sits
+    expect(m.stateAt("a2", 2.2).drift).toEqual([0, 0]);
+    expect(actionSchema.safeParse({ do: "leave", target: "a1", toward: "ne" }).success).toBe(true);
+    expect(actionSchema.safeParse({ do: "leave", target: "a1", toward: "up" }).success).toBe(false);
+  });
   it("draws any frame by itself: the state is a function of time alone", () => {
     const build = () => {
       const m = new ThingsModel([group("a", 4), group("b", 0, { slots: 4 })]);
@@ -226,7 +241,7 @@ describe("the authoring guide", () => {
   });
   it("shows every action row in a form the schema takes", () => {
     const rows = [...section.matchAll(/^\| `(\{"do":[^`]+\})` \|/gm)].map((m) => JSON.parse(m[1]!));
-    expect(rows.map((r) => r.do)).toEqual(["arrive", "count", "count", "count", "send", "leave"]);
+    expect(rows.map((r) => r.do)).toEqual(["arrive", "count", "count", "count", "send", "leave", "leave"]);
     for (const r of rows) expect(actionSchema.safeParse(r).success, JSON.stringify(r)).toBe(true);
   });
 });

@@ -19,7 +19,7 @@ import {
   bandOpacity, checkGroups, CONTEXT, DIM, fits, guideLine, inRegion, mosaicAnchor, partBox, restBox, restriction, slabBox, tableAnchor, tableBox, tableCell,
   tableRegion, type Given, type MosaicSpec, type TableSpec,
 } from "./table";
-import { countRun, groupLayout, groupOf, IN_CELL, ThingsModel, type CountRun, type GroupLayout, type Seat } from "./things";
+import { countRun, DRIFT, groupLayout, groupOf, IN_CELL, ThingsModel, type CountRun, type GroupLayout, type Seat } from "./things";
 import { thingArt, thingStroke } from "../src/math/scene/components/things-art";
 
 export type Frame = { w: number; h: number };
@@ -955,8 +955,9 @@ class GeoStage {
   thingAt(name: string, t: number) {
     const st = this.thingsModel!.stateAt(name, t);
     const a = this.seatAt(st.from, t), b = st.to === st.from ? a : this.seatAt(st.to, t);
-    const c: P = [a.c[0] + (b.c[0] - a.c[0]) * st.u, a.c[1] + (b.c[1] - a.c[1]) * st.u];
-    return { st, c, size: a.size + (b.size - a.size) * st.u };
+    const size = a.size + (b.size - a.size) * st.u;
+    const c: P = [a.c[0] + (b.c[0] - a.c[0]) * st.u + st.drift[0] * size * DRIFT.widths, a.c[1] + (b.c[1] - a.c[1]) * st.u + st.drift[1] * size * DRIFT.widths];
+    return { st, c, size };
   }
   /** How many things sit in a group, or how many dots and things sit in a grid's cells: one counts once it has landed. */
   countIn(id: string, t: number) {

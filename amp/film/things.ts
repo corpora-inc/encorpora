@@ -137,7 +137,8 @@ const STEP = { arrive: 0.26, leave: 0.26, send: 0.34 };
 /** The highlight's short ease, in and out (stage.ts EMPH_IN / EMPH_OUT). */
 const LIGHT_UP = 0.2, LIGHT_DOWN = 0.22, HOLD = 0.35, RELEASE = 0.35;
 
-type Vis = { t0: number; dur: number; on: boolean; moved: boolean };
+/** A leaving thing that drifts: the direction it goes (x right, y up, unit length). */
+type Vis = { t0: number; dur: number; on: boolean; moved: boolean; drift?: [number, number] };
 type Hop = { t0: number; dur: number; seat: Seat };
 /** Lit from t0 to t1. `tick`: it was counted where it sits, so it keeps a small muted tick until the beat is over (`end`). */
 type Light = { t0: number; t1: number; end: number; tick: boolean };
@@ -150,6 +151,8 @@ export type ThingState = {
   flying: boolean; flightStart: number;
   /** Opacity. */
   o: number;
+  /** How far a leaving thing has drifted from its place, in its own widths (x right, y up); [0, 0] for any other. */
+  drift: [number, number];
   /** 1 as an arrival begins or a leaving ends, 0 in place: the stage shrinks and lifts it a little, inside its own place. */
   pose: number;
   /** How much it counts toward its group: 1 once it starts to arrive, 0 once it starts to leave, its opacity through a plain fade. */
@@ -160,9 +163,16 @@ export type ThingState = {
 
 type On = { target: string | string[]; dur?: number };
 export type ThingAction =
-  | ({ do: "show" } & On) | ({ do: "hide" } & On) | ({ do: "highlight" } & On) | ({ do: "arrive" } & On) | ({ do: "leave" } & On)
+  | ({ do: "show" } & On) | ({ do: "hide" } & On) | ({ do: "highlight" } & On) | ({ do: "arrive" } & On) | ({ do: "leave"; toward?: Toward } & On)
   | ({ do: "count"; from?: number; to?: number; into?: string } & On)
   | ({ do: "send"; to: string | string[] } & On);
+export type Toward = "n" | "s" | "e" | "w" | "ne" | "nw" | "se" | "sw";
+const TOWARD: Record<Toward, [number, number]> = {
+  n: [0, 1], s: [0, -1], e: [1, 0], w: [-1, 0],
+  ne: [Math.SQRT1_2, Math.SQRT1_2], nw: [-Math.SQRT1_2, Math.SQRT1_2], se: [Math.SQRT1_2, -Math.SQRT1_2], sw: [-Math.SQRT1_2, -Math.SQRT1_2],
+};
+/** How far a thing that leaves "toward" a direction drifts, in its own widths, and how long that takes. */
+export const DRIFT = { widths: 1.6, dur: 1 };
 export type ActionTiming = { t0: number; beatEnd: number; run?: CountRun };
 
 const list = (x: string | string[]) => (Array.isArray(x) ? x : [x]);
@@ -224,8 +234,8 @@ export class ThingsModel {
     for (let k = 0; k < g.slots; k++) if (!taken.has(k)) return k;
     throw new Error(`${what}: group ${group} is full (${g.slots} places). Give it more "slots".`);
   }
-  private vis(name: string, t0: number, dur: number, on: boolean, moved: boolean) {
-    this.things.get(name)!.vis.push({ t0, dur, on, moved });
+  private vis(name: string, t0: number, dur: number, on: boolean, moved: boolean, drift?: [number, number]) {
+    this.things.get(name)!.vis.push({ t0, dur, on, moved, drift });
     this.shown.set(name, on);
   }
   private hop(name: string, to: string, t0: number, dur: number, what: string) {
@@ -251,11 +261,12 @@ export class ThingsModel {
       return a.dur ?? LIGHT_UP;
     }
     if (a.do === "arrive" || a.do === "leave") {
-      const dur = a.dur ?? DUR[a.do], who = this.resolve(a.target, a.do);
+      const toward = a.do === "leave" ? a.toward : undefined;
+      const dur = a.dur ?? (toward ? DRIFT.dur : DUR[a.do]), who = this.resolve(a.target, a.do);
       const todo = who.filter((n) => this.shown.get(n) !== (a.do === "arrive"));
       if (!todo.length) throw new Error(`${a.do}: ${names(who) || "the group"} ${who.length ? (a.do === "arrive" ? "is already on screen" : "is not on screen") : "has no things"}. ${a.do === "arrive" ? 'Things arrive when their group does not have "start": true and they have not been shown.' : ""}`.trim());
       todo.forEach((n, k) => {
-        this.vis(n, t0 + k * STEP[a.do], dur, a.do === "arrive", true);
+        this.vis(n, t0 + k * STEP[a.do], dur, a.do === "arrive", true, toward ? TOWARD[toward] : undefined);
         if (a.do === "leave") this.seat.set(n, null);
       });
       return dur + (todo.length - 1) * STEP[a.do];
@@ -309,12 +320,14 @@ export class ThingsModel {
       from = to; to = h.seat; u = ease((t - h.t0) / h.dur);
       flying = t < h.t0 + h.dur; flightStart = h.t0;
     }
-    let o = th.start ? 1 : 0, pose = 0, present = o;
+    let o = th.start ? 1 : 0, pose = 0, present = o, drift: [number, number] = [0, 0];
     for (const v of th.vis) {
       if (t < v.t0) break;
       const k = ease((t - v.t0) / v.dur);
       o = o + ((v.on ? 1 : 0) - o) * k;
       pose = v.moved ? (v.on ? 1 - k : k) : 0;
+      // a thing that leaves toward a direction keeps going that way while it fades, and stays gone
+      drift = v.drift && !v.on ? [v.drift[0] * k, v.drift[1] * k] : [0, 0];
       // it counts from the moment it starts to arrive, and stops counting the moment it starts to leave
       present = v.moved ? (v.on ? 1 : 0) : o;
     }
@@ -331,7 +344,7 @@ export class ThingsModel {
       // the tick comes as the light moves on to the next thing
       if (l.tick) mark = Math.max(mark, Math.min(clamp((t - l.t1) / LIGHT_DOWN), 1 - clamp((t - l.end - HOLD) / RELEASE)));
     }
-    return { from, to, u, flying, flightStart, o, pose, present, lit, mark };
+    return { from, to, u, flying, flightStart, o, drift, pose, present, lit, mark };
   }
   /**
    * Where every thing belongs at time t, and how much it counts (0 to 1). A
