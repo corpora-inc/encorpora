@@ -273,10 +273,17 @@ export function ClassesScreen() {
     <OrgFrame orgId={orgId} nav="classes" title="Classes">
       <PageHead
         title="Classes"
+        // A count only for a list that runs past the first screen; the
+        // year when it is not the one in use.
         detail={
-          rows.length
-            ? `${rows.length} ${rows.length === 1 ? "class" : "classes"}${year ? `, ${year.name}` : ""}`
-            : undefined
+          [
+            rows.length > SMALL_CLASS
+              ? `${rows.length} ${rows.length === 1 ? "class" : "classes"}`
+              : "",
+            year ? year.name : "",
+          ]
+            .filter(Boolean)
+            .join(", ") || undefined
         }
         action={
           canAdd ? (

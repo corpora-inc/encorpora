@@ -1,3 +1,5 @@
+import { ScreenTitle } from "../../../ui/ScreenTitle";
+import { SMALL_CLASS } from "../../navigation/shell-frame";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
@@ -309,8 +311,10 @@ export function RosterScreen() {
         <div className={styles.page}>
           <header className={styles.head}>
             <div>
-              <h1>{family ? "People" : "Students"}</h1>
-              {data.students.length > 0 && (
+              <ScreenTitle>{family ? "People" : "Students"}</ScreenTitle>
+              {/* A count only for a list that runs past the first screen;
+                  a short one shows its own size. */}
+              {data.students.length > SMALL_CLASS && (
                 <p className={styles.count}>
                   {data.students.length === 1
                     ? `1 ${who}`

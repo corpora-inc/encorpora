@@ -5,6 +5,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { ScreenTitle, useNamedByTab } from "../../ui/ScreenTitle";
 import { TileChoice } from "../../ui/TileChoice";
 import styles from "./School.module.css";
 
@@ -12,9 +13,9 @@ import styles from "./School.module.css";
  * you are, so a screen's title is not shown again under them. */
 export const SubTabsShown = createContext(false);
 
-/** A screen's title and its one line, with its main action beside them. Under
- * sub-tabs the title is for screen readers only, and the line and action are
- * the first thing under the tabs. */
+/** A screen's title and its one line, with its main action beside them.
+ * When sub-tabs or the open tab already say the title, it is for screen
+ * readers only, and the line and action are the first thing on the page. */
 export function PageHead({
   title,
   detail,
@@ -25,13 +26,15 @@ export function PageHead({
   action?: ReactNode;
 }) {
   const tabbed = useContext(SubTabsShown);
-  if (tabbed && detail === undefined && action === undefined)
-    return <h1 className={styles.visuallyHidden}>{title}</h1>;
+  const said = useNamedByTab(title);
+  const named = tabbed || said;
+  if (named && !detail && action === undefined)
+    return <ScreenTitle named>{title}</ScreenTitle>;
   return (
-    <div className={styles.pageHead} data-tabbed={tabbed ? "" : undefined}>
+    <div className={styles.pageHead} data-tabbed={named ? "" : undefined}>
       <div className={styles.pageTitle}>
-        <h1 className={tabbed ? styles.visuallyHidden : undefined}>{title}</h1>
-        {detail !== undefined && <p>{detail}</p>}
+        <ScreenTitle named={named}>{title}</ScreenTitle>
+        {!!detail && <p>{detail}</p>}
       </div>
       {action !== undefined && (
         <div className={styles.pageAction}>{action}</div>

@@ -139,10 +139,7 @@ export function shellFrame(
   if (path === "/practice") return { kind: "practice" };
   // The immersive film route supplies its own return and playback controls.
   if (/^\/lessons\/[^/]+\/watch$/.test(path)) return null;
-  if (
-    under(path, "/lessons") ||
-    under(path, "/books")
-  )
+  if (under(path, "/lessons") || under(path, "/books"))
     return { kind: "plain", practice: true };
   if (path === "/" || path === "/progress") return { kind: "plain" };
   return null;
@@ -253,9 +250,7 @@ export function schoolTabs(org: OrgResource, classCount: number): TabItem[] {
       ...(!family && !lone ? [["staff", "Staff", "staff.read"]] : []),
       ...(!family && !lone ? [["activity", "Activity", "activity.read"]] : []),
       // Year and terms, student experience, license, privacy, integrations.
-      ...(!family
-        ? [["settings", "Settings", settingsPermission(can)]]
-        : []),
+      ...(!family ? [["settings", "Settings", settingsPermission(can)]] : []),
     ]
       .filter(([, , permission]) => can.has(permission as never))
       .map(([id, label]) => ({
@@ -264,4 +259,36 @@ export function schoolTabs(org: OrgResource, classCount: number): TabItem[] {
         path: `school/${org.id}/${id}`,
       })),
   ];
+}
+
+/** What each frame tab is called, by id (a class's roster is People in a
+ * family's class and Students in a school's). */
+const TAB_NAMES: Record<string, readonly string[]> = {
+  overview: ["Overview"],
+  pathways: ["Pathways"],
+  inventory: ["Inventory"],
+  security: ["Sign-in"],
+  learners: ["Learners"],
+  access: ["Billing"],
+  privacy: ["Privacy"],
+  today: ["Today"],
+  map: ["Map", "Class map"],
+  time: ["Time"],
+  workbooks: ["Workbooks"],
+  roster: ["Students", "People"],
+  settings: ["Settings"],
+  classes: ["Classes"],
+  staff: ["Staff"],
+  activity: ["Activity"],
+};
+
+/** Whether the bar's open tab already says what this screen is called, so
+ * the screen's own title would only repeat it (docs/design/ia.md). Read
+ * from the address, as the bar's own frame is, so it holds at first paint. */
+export function namedByTab(pathname: string, title: string) {
+  const frame = shellFrame(pathname);
+  if (!frame || !("active" in frame)) return false;
+  const names = TAB_NAMES[frame.active] ?? [];
+  const said = title.trim().toLowerCase();
+  return names.some((name) => name.toLowerCase() === said);
 }

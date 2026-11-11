@@ -1,3 +1,4 @@
+import { ScreenTitle } from "../../ui/ScreenTitle";
 import { FREE_ONLINE_PROBLEMS } from "../../../learning/free-allowance";
 import {
   CurriculumDetailsControl,
@@ -520,7 +521,7 @@ export function MapView({
       )}
       <div className="pathways-heading">
         <div>
-          <h1>Pathways</h1>
+          <ScreenTitle>Pathways</ScreenTitle>
         </div>
         {/* The counts paint once, when both the map and the learner's
             record are in: their line is held until then, never rewritten. */}

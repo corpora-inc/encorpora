@@ -1,3 +1,5 @@
+import { namedByTab as titleNamedByTab } from "./features/navigation/shell-frame";
+import screenTitle from "./ui/ScreenTitle.module.css";
 import { SatMathFocus } from "./features/practice/SatMathFocus";
 import { workbooksEnabled } from "./features/workbooks/config";
 import { canReadWorkbooks } from "./features/workbooks/model";
@@ -23,7 +25,7 @@ import { Loading } from "./ui/Loading";
 import { Sheet } from "./ui/Sheet";
 import { Button, buttonClass } from "./ui/Button";
 import { TextField } from "./ui/TextField";
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import { BackRow, BillingList, Chevron } from "./features/account/BillingList";
 import { LearnerList } from "./features/account/LearnerList";
 import pages from "./features/account/AccountPages.module.css";
@@ -448,6 +450,8 @@ export function FamilyCenter({
       window.location.assign(url.href);
     });
   }
+  // Read before any early return: the open tab may already say the title.
+  const pathname = useLocation({ select: (location) => location.pathname });
   if (paymentHistoryOpen)
     return (
       <PaymentHistoryCenter
@@ -480,6 +484,7 @@ export function FamilyCenter({
           : section === "access"
             ? "Billing"
             : "Privacy";
+  const namedByTab = titleNamedByTab(pathname, title);
   // A step inside a tab says the way back above its title.
   const back = purchaseChooser
     ? { label: "Billing", go: closeChooser }
@@ -614,11 +619,7 @@ export function FamilyCenter({
                 "Review consent or pause new activity",
               ],
             ] as const)),
-        [
-          "delete",
-          "Delete learning data",
-          "See what is removed first",
-        ],
+        ["delete", "Delete learning data", "See what is removed first"],
         ["retention", "What is kept", "Billing, sign-in and backups"],
         ...((family.purchaseMeasurement?.available ||
           family.metaPurchaseMeasurement?.available ||
@@ -666,24 +667,37 @@ export function FamilyCenter({
             ))}
           </ul>
           <p>
-            A plan’s dates don’t show whether it renews. Your payment
-            provider’s billing page shows renewal and lets you cancel it.
+            A plan’s dates don’t show whether it renews. Your payment provider’s
+            billing page shows renewal and lets you cancel it.
           </p>
         </FocusDialog>
       )}
       <Toast message={error} onDismiss={() => setError("")} />
       <div className={pages.column} ref={body} data-account-body>
         {back && family && <BackRow onClick={back.go}>{back.label}</BackRow>}
-        <div className={pages.head}>
+        {/* The open tab already says Sign-in, Learners, Billing or
+            Privacy: the title stays for screen readers and focus only. */}
+        {namedByTab ? (
           <h1
             id="family-title"
             ref={heading}
             tabIndex={-1}
-            className={pages.title}
+            className={screenTitle.hidden}
           >
             {title}
           </h1>
-        </div>
+        ) : (
+          <div className={pages.head}>
+            <h1
+              id="family-title"
+              ref={heading}
+              tabIndex={-1}
+              className={pages.title}
+            >
+              {title}
+            </h1>
+          </div>
+        )}
         {section === "security" && accountsEnabled && <AccountSecurity />}
         {notice && (
           <p className="family-notice" role="status">
@@ -698,7 +712,10 @@ export function FamilyCenter({
             <div className={`${pages.reserve} amp-skeleton`} />
             {error && (
               <div className={pages.footActions}>
-                <Button variant="secondary" onClick={() => void action(refresh)}>
+                <Button
+                  variant="secondary"
+                  onClick={() => void action(refresh)}
+                >
                   Try again
                 </Button>
               </div>
@@ -706,68 +723,68 @@ export function FamilyCenter({
           </div>
         ) : purchaseChooser ? (
           <>
-          <section
-            className={`family-purchase-options ${pages.section}`}
-            aria-labelledby="family-title"
-          >
-            <ul className={pages.list}>
-              <li className={pages.linkItem}>
-                <button
-                  type="button"
-                  ref={paymentTrigger}
-                  className={pages.linkRow}
-                  data-payment-history
-                  onClick={() => setPaymentHistoryOpen(true)}
-                >
-                  <span className={pages.rowText}>
-                    <span className={pages.rowTitle}>Payment records</span>
-                    <span className={pages.rowMeta}>
-                      Paid receipts and refund PDFs
-                    </span>
-                  </span>
-                  <Chevron />
-                </button>
-              </li>
-              {onAnnualPurchase && (
+            <section
+              className={`family-purchase-options ${pages.section}`}
+              aria-labelledby="family-title"
+            >
+              <ul className={pages.list}>
                 <li className={pages.linkItem}>
                   <button
                     type="button"
+                    ref={paymentTrigger}
                     className={pages.linkRow}
-                    data-purchase-entry="annual"
-                    onClick={onAnnualPurchase}
+                    data-payment-history
+                    onClick={() => setPaymentHistoryOpen(true)}
                   >
                     <span className={pages.rowText}>
-                      <span className={pages.rowTitle}>
-                        Annual subscription
-                      </span>
+                      <span className={pages.rowTitle}>Payment records</span>
                       <span className={pages.rowMeta}>
-                        Card payment, with the current price and terms
+                        Paid receipts and refund PDFs
                       </span>
                     </span>
                     <Chevron />
                   </button>
                 </li>
-              )}
-              {onFundedPurchase && (
-                <li className={pages.linkItem}>
-                  <button
-                    type="button"
-                    className={pages.linkRow}
-                    data-purchase-entry="funded"
-                    onClick={onFundedPurchase}
-                  >
-                    <span className={pages.rowText}>
-                      <span className={pages.rowTitle}>Education funds</span>
-                      <span className={pages.rowMeta}>
-                        Program options, quotes and requests
+                {onAnnualPurchase && (
+                  <li className={pages.linkItem}>
+                    <button
+                      type="button"
+                      className={pages.linkRow}
+                      data-purchase-entry="annual"
+                      onClick={onAnnualPurchase}
+                    >
+                      <span className={pages.rowText}>
+                        <span className={pages.rowTitle}>
+                          Annual subscription
+                        </span>
+                        <span className={pages.rowMeta}>
+                          Card payment, with the current price and terms
+                        </span>
                       </span>
-                    </span>
-                    <Chevron />
-                  </button>
-                </li>
-              )}
-            </ul>
-          </section>
+                      <Chevron />
+                    </button>
+                  </li>
+                )}
+                {onFundedPurchase && (
+                  <li className={pages.linkItem}>
+                    <button
+                      type="button"
+                      className={pages.linkRow}
+                      data-purchase-entry="funded"
+                      onClick={onFundedPurchase}
+                    >
+                      <span className={pages.rowText}>
+                        <span className={pages.rowTitle}>Education funds</span>
+                        <span className={pages.rowMeta}>
+                          Program options, quotes and requests
+                        </span>
+                      </span>
+                      <Chevron />
+                    </button>
+                  </li>
+                )}
+              </ul>
+            </section>
           </>
         ) : (
           <>
@@ -779,8 +796,7 @@ export function FamilyCenter({
                 {!consentActive && nativeRuntime ? (
                   <div className={pages.section}>
                     <p className={pages.lede}>
-                      Learning consent is completed in the AMP web
-                      application.
+                      Learning consent is completed in the AMP web application.
                     </p>
                     <div className={pages.footActions}>
                       <Button
@@ -1022,8 +1038,8 @@ export function FamilyCenter({
               <section className={`family-section ${pages.section}`}>
                 <p className={pages.prose}>
                   One NDJSON file with {hasChildren ? "your learners’" : "your"}{" "}
-                  problems and answers, plans, orders and privacy activity.
-                  It is a data export, not a printable workbook.
+                  problems and answers, plans, orders and privacy activity. It
+                  is a data export, not a printable workbook.
                 </p>
                 <div className={pages.footActions}>
                   <Button
@@ -1032,7 +1048,9 @@ export function FamilyCenter({
                     aria-busy={busy || undefined}
                     onClick={() => void exportData()}
                   >
-                    {hasChildren ? "Download family data" : "Download your data"}
+                    {hasChildren
+                      ? "Download family data"
+                      : "Download your data"}
                   </Button>
                 </div>
                 <p className={pages.quietLine}>

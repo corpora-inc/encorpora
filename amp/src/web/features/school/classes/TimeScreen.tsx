@@ -1,3 +1,4 @@
+import { ScreenTitle } from "../../../ui/ScreenTitle";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
 import { useMemo, useRef, useState, type CSSProperties } from "react";
@@ -372,7 +373,7 @@ export function TimeScreen() {
         <div className={styles.gradePage} aria-busy={time.isFetching}>
           <div className={styles.gradeHead}>
             <div className={styles.gradeTitle}>
-              <h1>Time</h1>
+              <ScreenTitle>Time</ScreenTitle>
               <p>{dayRange(data.range.from, data.range.to)}</p>
             </div>
             <div className={styles.gradeControls}>

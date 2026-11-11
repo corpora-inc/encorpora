@@ -182,7 +182,6 @@ export function ActivityScreen() {
     <OrgFrame orgId={orgId} nav="activity" title="Activity">
       <PageHead
         title="Activity"
-        detail="Everything that changed here, and who changed it."
         action={
           filtered ? (
             <Button

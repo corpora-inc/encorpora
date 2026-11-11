@@ -1,3 +1,4 @@
+import { ScreenTitle } from "../../../ui/ScreenTitle";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
@@ -254,13 +255,13 @@ export function MapScreen() {
         <LoadFailed what="The class map" onRetry={() => void map.refetch()} />
       ) : map.data.students.length === 0 ? (
         <div className={styles.page}>
-          <h1>Class map</h1>
+          <ScreenTitle>Class map</ScreenTitle>
           <EmptyMap org={place.org} classId={place.class} />
         </div>
       ) : (
         <div>
           <div className={styles.mapHead}>
-            <h1>Class map</h1>
+            <ScreenTitle>Class map</ScreenTitle>
             <MapKey data={map.data} />
           </div>
           <MapStudentSheet
