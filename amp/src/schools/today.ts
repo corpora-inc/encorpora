@@ -6,23 +6,6 @@ import {
   type StudentLevel,
 } from "./grade-policy.js";
 import type { TodayTodo } from "./teacher-contracts.js";
-import {
-  LOW_PRACTICE,
-  lowPractice,
-  lowPracticeFacts,
-  lowPracticeLine,
-  lowPracticeRule,
-  practiced,
-  PRACTICED,
-} from "./practice-rules.js";
-
-/** Why one student shows as behind, in one sentence. */
-function studentRule(target: number | null, weekday: number) {
-  const done = `${PRACTICED.minutes} minutes or ${PRACTICED.problems} problems this week`;
-  return target === null
-    ? `From Wednesday, a student shows here until they have ${done}.`
-    : `From Wednesday, a student shows here with less than ${done}, or under a quarter of the ${target}-minute target for the days so far (${lowPracticeLine(target, weekday)} minutes).`;
-}
 
 /** One answer as `amp_skill_evidence` keeps its last five. */
 export type RecentOutcome = {
@@ -94,13 +77,6 @@ export function inSentence(title: string): string {
   if (first === first.toUpperCase() || /^Pythagorean/.test(first)) return title;
   return title[0]!.toLowerCase() + title.slice(1);
 }
-const longDate = (iso: string) =>
-  new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-US", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-    timeZone: "UTC",
-  });
 const people = (students: readonly TodayStudent[]) =>
   students.map(({ id, name }) => ({ id, name }));
 
@@ -175,7 +151,7 @@ function familyDay(
           worked.length === 2
             ? "Both children worked today"
             : `All ${worked.length} children worked today`,
-        detail: `That’s ${plural(minutesToday, "active minute")} so far${objectives ? `, and ${skillsShownWords(objectives)} this week` : ""}.`,
+        detail: `${plural(minutesToday, "active minute")} so far${objectives ? `; ${skillsShownWords(objectives)} this week` : ""}.`,
         students: people(worked),
         action: { kind: "tab", tab: "time", label: "See the time report" },
       },
@@ -279,15 +255,15 @@ export function todayTodos(
       return {
         id: `gap:${skillId}`,
         kind: "shared-gap",
-        title: `${group.length} ${plural} are stuck on ${skill}`,
-        detail: `${joinNames(group.map((student) => student.first))} keep missing it on their own. A short lesson together should clear it.`,
+        title: `${group.length} ${plural} keep missing ${skill}`,
+        detail: `${joinNames(group.map((student) => student.first))}: each has ${rules.sharedGapMisses} or more misses without help in the last ${rules.recentDays} days, and no right answer since.`,
         students: people(group),
         action: lesson
           ? {
               kind: "lesson",
               templateId: lesson,
               skillId,
-              label: "Teach this lesson",
+              label: "Open the lesson",
             }
           : { kind: "skill", skillId, label: "Open this skill" },
         groupSheet: { skillId, label: "Print a group sheet" },
@@ -312,7 +288,10 @@ export function todayTodos(
     .slice(0, rules.maximumStuck)
     .map((row): TodayTodo => {
       const student = byId.get(row.studentId)!;
-      // A parent teaches it at the table: the lesson, then a sheet on paper.
+      const misses = stuckOn(row.recent, input.today, policy);
+      const title = `${student.first} keeps missing ${inSentence(input.skillTitle(row.skillId))}`;
+      const detail = `${misses} misses without help in the last ${rules.recentDays} days, and no right answer since.`;
+      // A parent's: the lesson, and a sheet on paper.
       if (input.family) {
         const lesson = input.lessonFor(
           row.skillId,
@@ -323,15 +302,15 @@ export function todayTodos(
         return {
           id: `stuck:${row.studentId}:${row.skillId}`,
           kind: "stuck",
-          title: `${student.first} is stuck on ${inSentence(input.skillTitle(row.skillId))}`,
-          detail: `${student.first} keeps missing it without help. A short lesson together, then a sheet on paper, should clear it.`,
+          title,
+          detail,
           students: people([student]),
           action: lesson
             ? {
                 kind: "lesson",
                 templateId: lesson,
                 skillId: row.skillId,
-                label: "Teach this lesson",
+                label: "Open the lesson",
               }
             : {
                 kind: "student",
@@ -344,8 +323,8 @@ export function todayTodos(
       return {
         id: `stuck:${row.studentId}:${row.skillId}`,
         kind: "stuck",
-        title: `${student.first} is stuck on ${inSentence(input.skillTitle(row.skillId))}`,
-        detail: `${student.first} keeps missing it without help. A minute side by side should show where it goes wrong.`,
+        title,
+        detail,
         students: people([student]),
         action: {
           kind: "student",
@@ -354,92 +333,6 @@ export function todayTodos(
         },
       };
     });
-
-  // A quiet week, by the rule a head's overview uses (`practice-rules.ts`):
-  // from Wednesday, a class that's short as a whole says so with its facts;
-  // otherwise each student who hasn't practiced, or is under the line, does.
-  const day = dayOfWeek(input.today);
-  const target = input.weeklyTargetMinutes;
-  const quiet: TodayTodo[] = [];
-  if (day >= LOW_PRACTICE.fromWeekday) {
-    const line = target === null ? null : lowPracticeLine(target, day);
-    const done = (student: TodayStudent) =>
-      practiced(student.weekMinutes, student.weekProblems);
-    const behind = started.filter(
-      (student) =>
-        !done(student) || (line !== null && student.weekMinutes < line),
-    );
-    const idle = behind.filter((student) => !done(student));
-    const rule = lowPracticeRule(target, day);
-    const classFlag = input.family
-      ? null
-      : lowPractice(
-          {
-            minutes: students.map((student) => student.weekMinutes),
-            practiced: students.filter(done).length,
-          },
-          target,
-          day,
-        );
-    const short = (list: readonly TodayStudent[]) =>
-      line === null
-        ? `${joinNames(list.map((student) => student.first))} ${list.length === 1 ? "hasn’t" : "haven’t"} practiced since Monday.`
-        : `${joinNames(list.map((student) => student.first))} ${list.length === 1 ? "has" : "have"} under ${line} of ${target} minutes so far.`;
-    // A class short as a whole says so with the overview's facts; one student
-    // behind is named on their own, with when they last worked.
-    if (classFlag && behind.length >= 2)
-      quiet.push({
-        id: "quiet",
-        kind: "no-practice",
-        title: "The class had little practice this week",
-        detail: `${lowPracticeFacts(classFlag)}. ${short(behind)}`,
-        students: people(behind),
-        action: { kind: "tab", tab: "time", label: "See the time report" },
-        rule,
-      });
-    else if (behind.length === 1) {
-      const student = behind[0]!;
-      const none = idle.length === 1;
-      quiet.push({
-        id: `quiet:${student.id}`,
-        kind: "no-practice",
-        title: none
-          ? `${student.first} hasn’t practiced this week`
-          : `${student.first} is behind this week’s target`,
-        detail: [
-          student.lastActive && none && student.weekMinutes < 1
-            ? `${student.first} last worked on ${longDate(student.lastActive)}.`
-            : target === null
-              ? `${student.first} has ${Math.round(student.weekMinutes)} ${Math.round(student.weekMinutes) === 1 ? "minute" : "minutes"} so far.`
-              : `${student.first} has ${Math.round(student.weekMinutes)} of ${target} minutes so far.`,
-          student.usualWeeklyMinutes
-            ? `A usual week is about ${Math.round(student.usualWeeklyMinutes)} minutes.`
-            : "",
-        ]
-          .filter(Boolean)
-          .join(" "),
-        students: people([student]),
-        action: {
-          kind: "student",
-          personId: student.id,
-          label: `See ${possessive(student.first)} work`,
-        },
-        rule: studentRule(target, day),
-      });
-    } else if (behind.length > 1)
-      quiet.push({
-        id: "quiet",
-        kind: "no-practice",
-        title:
-          idle.length === behind.length
-            ? `${behind.length} ${plural} haven’t practiced this week`
-            : `${behind.length} ${plural} are behind this week’s target`,
-        detail: short(behind),
-        students: people(behind),
-        action: { kind: "tab", tab: "time", label: "See the time report" },
-        rule: studentRule(target, day),
-      });
-  }
 
   // On the roster, but they've never signed in.
   const waiting = students.filter((student) => student.lastActive === null);
@@ -471,8 +364,8 @@ export function todayTodos(
           {
             id: "ready",
             kind: "ready",
-            title: `${joinNames(ready.map((student) => student.first))} ${ready.length === 1 ? "is" : "are"} ready for more`,
-            detail: `${ready.length === 1 ? ready[0]!.first : ready.length === 2 ? "Both" : "All of them"} ${ready.length === 1 ? "is" : "are"} past ${input.course?.label ?? "their own grade"} in every strand and ${ready.length === 1 ? "keeps" : "keep"} getting spaced review right without help.`,
+            title: `${joinNames(ready.map((student) => student.first))}: above ${input.course?.label ?? "their own grade"} in every strand`,
+            detail: `Spaced review right without help in ${Math.round(rules.readyReviewShare * 100)}% or more of at least ${rules.readyMinimumReviews} reviews.`,
             students: people(ready),
             action:
               ready.length === 1
@@ -505,8 +398,8 @@ export function todayTodos(
           {
             id: "good-day",
             kind: "good-day",
-            title: `A good day: ${worked.length} of ${students.length} ${plural} worked today`,
-            detail: `That’s ${minutesToday.toLocaleString("en-US")} active minutes so far${objectives ? `, and ${skillsShownWords(objectives)} this week` : ""}.`,
+            title: `${worked.length} of ${students.length} ${plural} practiced today`,
+            detail: `${minutesToday.toLocaleString("en-US")} active minutes so far${objectives ? `; ${skillsShownWords(objectives)} this week` : ""}.`,
             students: people(worked),
             action: { kind: "tab", tab: "time", label: "See the time report" },
           },
@@ -517,7 +410,12 @@ export function todayTodos(
               id: "going-well",
               kind: "good-day",
               title: `${skillsShownWords(objectives)} this week`,
-              detail: `${joinNames(gained.slice(0, 3).map((student) => student.first))} ${gained.length === 1 ? "is" : "are"} leading the way.`,
+              detail: `${joinNames(
+                gained.map(
+                  (student) => `${student.first} ${student.objectivesThisWeek}`,
+                ),
+                4,
+              )}.`,
               students: people(gained.slice(0, 6)),
               action: { kind: "tab", tab: "map", label: "See the class map" },
             },
@@ -530,7 +428,6 @@ export function todayTodos(
   const deficits = [
     ...gaps.slice(0, 1),
     ...stuck,
-    ...quiet,
     ...notStarted,
     ...gaps.slice(1),
   ];
