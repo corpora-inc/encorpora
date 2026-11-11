@@ -59,7 +59,7 @@ function StudentBand({
   const words = `${student.name}: ${signed(student.mu)} grades from their own, 95% range ${signed(low)} to ${signed(high)}, from ${student.answered} ${student.answered === 1 ? "answer" : "answers"}${
     student.growth
       ? `. Growth this term ${signed(student.growth.mu)} (${signed(student.growth.mu - 1.96 * student.growth.sd)} to ${signed(student.growth.mu + 1.96 * student.growth.sd)})`
-      : ""
+      : ". Not settled yet"
   }.`;
   return (
     <li>
