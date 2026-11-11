@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { helpWeekResource } from "./help-contracts.js";
 
 /* What the teacher's screens read: the reference for these routes, and what the
    client checks every response against. */
@@ -272,6 +273,8 @@ export const timeResponse = z.object({
   /** Each Monday in the range. */
   weeks: z.array(day),
   weeklyTargetMinutes: z.number().nullable(),
+  /** Help the class used, a week at a time (`help-events.ts`). */
+  help: z.array(helpWeekResource),
   students: z.array(
     z.object({
       id,
@@ -369,6 +372,8 @@ export const studentRecordResponse = progressRecordResource.extend({
       final: z.string().nullable(),
     }),
   ),
+  /** Help the student used over the record's 12 weeks. */
+  help: z.array(helpWeekResource),
   signIn: z.object({
     cardIssuedAt: z.string().nullable(),
     picturesSet: z.boolean(),

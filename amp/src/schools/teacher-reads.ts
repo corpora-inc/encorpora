@@ -53,6 +53,7 @@ import type {
   WorkItem,
 } from "./teacher-contracts.js";
 import { shownTeachers } from "./teacher-line.js";
+import { helpWeeks } from "./help-events.js";
 import { practiced } from "./practice-rules.js";
 import {
   todayTodos,
@@ -545,10 +546,20 @@ export async function readTime(
   const range = await periodRange(pool, context, period);
   const students = await termRoster(pool, context.id, range);
   const roster = asMembers(students);
-  const [days, skills, target] = await Promise.all([
+  const weeks = mondays(range);
+  const [days, skills, target, help] = await Promise.all([
     perDay(pool, roster, range),
     perSkill(pool, roster, range),
     weeklyTargetFor(pool, context),
+    helpWeeks(
+      pool,
+      students.map((student) => ({
+        learnerId: student.learnerId,
+        from: student.from,
+        to: student.to,
+      })),
+      weeks,
+    ),
   ]);
   const spanOf = new Map(students.map((student) => [student.id, student]));
   const enrolled = days.filter((row) => {
@@ -567,8 +578,9 @@ export async function readTime(
     class: classSummaryOf(context),
     period,
     range,
-    weeks: mondays(range),
+    weeks,
     weeklyTargetMinutes: target.minutes,
+    help,
     students: students.map((student) => {
       const rows = enrolled.filter((row) => row.personId === student.id);
       return {
@@ -808,7 +820,11 @@ export async function readStudentRecord(
   const course =
     contexts.map((context) => courseBand(context.courseBands)).find(Boolean) ??
     null;
-  const [progress, signIn, gradeRows] = await Promise.all([
+  const helpWeekList = mondays({
+    from: shift(weekStart(today), -7 * 11),
+    to: today,
+  });
+  const [progress, signIn, gradeRows, help] = await Promise.all([
     readProgress(
       pool,
       {
@@ -865,6 +881,11 @@ export async function readStudentRecord(
           );
         }),
     ),
+    helpWeeks(
+      pool,
+      [{ learnerId: person.learnerId, from: helpWeekList[0]!, to: today }],
+      helpWeekList,
+    ),
   ]);
   const flags = signIn.rows[0];
   return {
@@ -883,6 +904,7 @@ export async function readStudentRecord(
     })),
     ...progress,
     grades: gradeRows.flat(2),
+    help,
     signIn: {
       cardIssuedAt: flags.cardIssuedAt?.toISOString() ?? null,
       picturesSet: flags.picturesSet,
