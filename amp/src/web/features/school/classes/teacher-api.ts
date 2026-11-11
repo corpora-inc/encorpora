@@ -14,6 +14,7 @@ import {
   studentTimeResponse,
   timeResponse,
   todayResponse,
+  workReplayResponse,
   type EvidenceResponse,
   type GradebookResponse,
   type GradebookColumn,
@@ -130,6 +131,27 @@ export const reportCardsOptions = (
       session,
       `${CLASS(place)}/report-cards?term=${term}`,
       reportCardsResponse,
+    ),
+  });
+/** One answer replayed (`work-replay.ts`), under the student's record so a
+ * change to the record refreshes it too. `skill` narrows Previous and Next. */
+export const workReplayOptions = (
+  session: Session,
+  student: string,
+  attempt: string,
+  skill?: string,
+) =>
+  queryOptions({
+    queryKey: [...recordKey(session, student), "work", attempt, skill ?? null],
+    enabled: !!session,
+    // An answer never changes once given.
+    staleTime: Infinity,
+    queryFn: read(
+      session,
+      `/school/students/${student}/work/${encodeURIComponent(attempt)}${
+        skill ? `?skill=${encodeURIComponent(skill)}` : ""
+      }`,
+      workReplayResponse,
     ),
   });
 export const studentRecordOptions = (session: Session, student: string) =>

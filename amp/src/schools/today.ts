@@ -9,6 +9,8 @@ import type { TodayTodo } from "./teacher-contracts.js";
 
 /** One answer as `amp_skill_evidence` keeps its last five. */
 export type RecentOutcome = {
+  /** The attempt's id; absent on evidence folded before it was kept. */
+  id?: string;
   correct: boolean;
   assisted: boolean;
   createdAt: string;
@@ -101,6 +103,24 @@ function stuckOn(
       !outcome.assisted &&
       (outcome.evidenceWeight ?? 1) >= 1,
   ).length;
+}
+
+/** The latest miss without help, to replay from a "keeps missing" item. */
+function latestMiss(
+  studentId: string,
+  skillId: string,
+  recent: readonly RecentOutcome[],
+) {
+  const miss = [...recent]
+    .reverse()
+    .find(
+      (outcome) =>
+        !outcome.correct &&
+        !outcome.assisted &&
+        (outcome.evidenceWeight ?? 1) >= 1 &&
+        typeof outcome.id === "string",
+    );
+  return miss ? [{ personId: studentId, attempt: miss.id!, skillId }] : [];
 }
 
 const reference = (student: TodayStudent, input: TodayInput) =>
@@ -224,7 +244,11 @@ export function todayTodos(
   // Shared gaps: the same skill, enough students, repeatedly on their own.
   const missing = new Map<
     string,
-    { students: Set<string>; templates: string[] }
+    {
+      students: Set<string>;
+      templates: string[];
+      misses: ReturnType<typeof latestMiss>;
+    }
   >();
   for (const row of input.skills) {
     if (!byId.has(row.studentId)) continue;
@@ -233,8 +257,10 @@ export function todayTodos(
     const entry = missing.get(row.skillId) ?? {
       students: new Set<string>(),
       templates: [],
+      misses: [],
     };
     entry.students.add(row.studentId);
+    entry.misses.push(...latestMiss(row.studentId, row.skillId, row.recent));
     for (const outcome of row.recent)
       if (!outcome.correct && outcome.templateId)
         entry.templates.push(outcome.templateId);
@@ -267,6 +293,7 @@ export function todayTodos(
             }
           : { kind: "skill", skillId, label: "Open this skill" },
         groupSheet: { skillId, label: "Print a group sheet" },
+        ...(entry.misses.length ? { misses: entry.misses } : {}),
       };
     });
 
@@ -290,6 +317,8 @@ export function todayTodos(
       const student = byId.get(row.studentId)!;
       const misses = stuckOn(row.recent, input.today, policy);
       const title = `${student.first} keeps missing ${inSentence(input.skillTitle(row.skillId))}`;
+      const latest = latestMiss(row.studentId, row.skillId, row.recent);
+      const replay = latest.length ? { misses: latest } : {};
       const detail = `${misses} misses without help in the last ${rules.recentDays} days, and no right answer since.`;
       // A parent's: the lesson, and a sheet on paper.
       if (input.family) {
@@ -318,6 +347,7 @@ export function todayTodos(
                 label: `See ${possessive(student.first)} work`,
               },
           groupSheet: { skillId: row.skillId, label: "Print a sheet" },
+          ...replay,
         };
       }
       return {
@@ -329,8 +359,11 @@ export function todayTodos(
         action: {
           kind: "student",
           personId: student.id,
-          label: `See ${possessive(student.first)} work`,
+          label: latest.length
+            ? `See ${possessive(student.first)} misses`
+            : `See ${possessive(student.first)} work`,
         },
+        ...replay,
       };
     });
 

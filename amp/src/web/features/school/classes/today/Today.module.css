@@ -347,6 +347,21 @@
   line-height: 1.5;
   text-wrap: pretty;
 }
+.todoLinks {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--space-3);
+  margin: 0;
+  font-size: var(--text-table-small);
+}
+.todoLinks a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-underline-offset: 2px;
+}
 .todoPeople {
   display: flex;
   align-items: center;
