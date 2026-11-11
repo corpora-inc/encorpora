@@ -209,8 +209,27 @@ export function usePlaceEntries(
       classes.push(entry);
     }
   }
+  // A lone teacher's school with one class is that class: the school layer
+  // stays out of sight, as it does in the drawer and the class's tabs. A
+  // second class brings the school back (docs/design/ia.md).
+  const places = [...entries];
+  for (const [index, org] of classOrgs.entries()) {
+    const lone =
+      reads[index]?.data?.solo === true &&
+      (lists[index]?.data?.length ?? 0) <= 1;
+    const klass = classes.findIndex((entry) =>
+      entry.id.startsWith(`class:${org.id}:`),
+    );
+    const school = places.findIndex((entry) => entry.id === `school:${org.id}`);
+    if (!lone || klass < 0 || school < 0) continue;
+    places.splice(school, 1, {
+      ...classes[klass]!,
+      detail: places[school]!.detail,
+    });
+    classes.splice(klass, 1);
+  }
   return {
-    entries: orderPlaces(entries, classes),
+    entries: orderPlaces(places, classes),
     classHere,
     currentOrg: current,
     loading:

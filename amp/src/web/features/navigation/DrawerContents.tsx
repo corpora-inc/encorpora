@@ -233,9 +233,14 @@ export default function DrawerContents({
                 : "home";
   // A class this person doesn't teach isn't a place in the switcher; it
   // names the school, and the Class item names the class.
+  // A lone teacher's one-class school is listed as its class.
   const switcherPlace = places.some((place) => place.id === currentPlace)
     ? currentPlace
-    : (schoolPlace?.id ?? currentPlace);
+    : (schoolPlace?.id ??
+      (inSchool
+        ? places.find((place) => place.id.startsWith(`class:${here.org}:`))?.id
+        : undefined) ??
+      currentPlace);
   const learnerName = own ? (view.learner?.name ?? "") : (learner?.name ?? "");
   // Get started is the first run only: once a person has any place (a
   // school, a class, a family, their own practice), starting something new
