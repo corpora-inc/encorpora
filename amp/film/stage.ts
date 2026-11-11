@@ -399,7 +399,8 @@ function nudgeLabel(el: HTMLElement, dx: number, dy: number) {
  * and replays it, so a label that appears later does not shove one already there.
  * A label that `flies`, while in flight (its point is moving, or the thing it
  * rides is travelling), takes no part: it passes over the others, and what it
- * rests on is settled where it lands.
+ * rests on is settled where it lands. An axis number never moves off its tick:
+ * a label it meets takes the whole push, so the numbers keep one baseline.
  */
 function separateLabels(root: HTMLElement) {
   const els = [...root.querySelectorAll<HTMLElement>(".film-label")].filter((el) => {
@@ -419,10 +420,17 @@ function separateLabels(root: HTMLElement) {
         const ox = Math.min(a.right, b.right) - Math.max(a.left, b.left);
         const oy = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
         if (ox <= 0.5 || oy <= 0.5) continue;
+        // the axes thin their own numbers; two numbers are never pushed apart here
+        const fixedA = els[i]!.classList.contains("film-axis-num"), fixedB = els[j]!.classList.contains("film-axis-num");
+        if (fixedA && fixedB) continue;
         const dx = ox <= oy ? ((a.left + a.width / 2 <= b.left + b.width / 2 ? -1 : 1) * ((ox + gap) / 2)) / k : 0;
         const dy = oy < ox ? ((a.top + a.height / 2 <= b.top + b.height / 2 ? -1 : 1) * ((oy + gap) / 2)) / k : 0;
-        nudgeLabel(els[i]!, dx, dy);
-        nudgeLabel(els[j]!, -dx, -dy);
+        if (fixedA) nudgeLabel(els[j]!, -2 * dx, -2 * dy);
+        else if (fixedB) nudgeLabel(els[i]!, 2 * dx, 2 * dy);
+        else {
+          nudgeLabel(els[i]!, dx, dy);
+          nudgeLabel(els[j]!, -dx, -dy);
+        }
         moved = true;
       }
     }
@@ -1083,7 +1091,8 @@ class GeoStage {
         const d = this.geo.points[name];
         if (!d && this.thingsModel?.has(name)) throw new Error(`move: ${name} is a thing. Send it to a group: { "do": "send", "target": "${name}", "to": "<group>" }.`);
         if (!d) throw new Error(`move: no point named ${name}`);
-        if (!Array.isArray(d) && !("cell" in d)) throw new Error(`Point ${name} is derived; move the points it is built from`);
+        // a point in a grid cell or on a table's (mosaic's, bar's) anchor leaves from wherever that puts it
+        if (!Array.isArray(d) && !("cell" in d) && !("anchor" in d)) throw new Error(`Point ${name} is derived; move the points it is built from`);
         if (to === name) throw new Error(`move: ${name} cannot move to itself`);
         if (typeof to === "string" && !this.geo.points[to]) throw new Error(`move: no point named ${to}`);
         if (!Array.isArray(to) && typeof to === "object") this.grid(to.cell[0]);
@@ -2004,7 +2013,7 @@ class GeoStage {
         e.el.style.stroke = INK[p.ink ?? "muted"]!; e.el.style.strokeWidth = "3.5"; e.el.style.opacity = String(o);
         // numbers that would touch each other (near the origin, or crowded) drop out, nearest the origin first
         {
-          const o0 = map([0, 0]), fs = 34, gap = LABEL_GAP * 0.62;
+          const o0 = map([0, 0]), fs = AXIS_NUM_PX[p.size ?? "s"]!, gap = LABEL_GAP * 0.62;
           const box = (n: [string, P, string]) => {
             const w = n[0].replace(/[^0-9.\-]/g, "").length * fs * 0.55 + 6, h = fs;
             const cx = n[2] === "s" ? n[1][0] : n[1][0] - gap - w / 2, cy = n[2] === "s" ? n[1][1] + gap + h / 2 : n[1][1];
@@ -2021,7 +2030,7 @@ class GeoStage {
         }
         const tags = (e.extraHtml ??= []);
         // haloed: a curve through its own zero crossing never cuts through the number there
-        while (tags.length < nums.length) tags.push(div("film-label film-axis-num halo", this.labels));
+        while (tags.length < nums.length) tags.push(div(`film-label film-axis-num halo${p.size && p.size !== "s" ? ` axis-${p.size}` : ""}`, this.labels));
         tags.forEach((el, k) => {
           const it = nums[k];
           el.style.display = it ? "" : "none";
@@ -2152,10 +2161,21 @@ class GeoStage {
       for (const l of v.layers) l.el.style.strokeWidth = ((thingStroke(v.px, l.w) * 100) / v.px * bold).toFixed(3);
     }
   }
+  /**
+   * A box's width and height in pixels. A stretched graph scales x and y on
+   * their own, so a table drawn beside it maps each side separately; `s` is
+   * only the smaller of the two scales.
+   */
+  pxSize(b: Box, map: (p: P) => P, s: number): [number, number] {
+    if (!this.geo.stretch) return [b.w * s, b.h * s];
+    const a = map([b.x, b.y]), c = map([b.x + b.w, b.y + b.h]);
+    return [Math.abs(c[0] - a[0]), Math.abs(a[1] - c[1])];
+  }
   /** A rectangle in pixels from a box in units. */
   rectPath(b: Box, map: (p: P) => P, s: number, r = 0) {
     const tl = map([b.x, b.y + b.h]);
-    return roundRect(tl[0], tl[1], b.w * s, b.h * s, r);
+    const [w, h] = this.pxSize(b, map, s);
+    return roundRect(tl[0], tl[1], w, h, r);
   }
   /** The bar and its two aligned scales. Tick positions never move to accommodate text. */
   drawBar(v: BarView, g: SVGElement, t: number, map: (p: P) => P, s: number) {
@@ -2288,10 +2308,11 @@ class GeoStage {
       bg.style.strokeWidth = st.em > 0.02 ? String(3 + 4 * st.em) : "0";
       bg.style.opacity = String(o);
       if (st.em > 0.02) this.markEm(bg, st.em);
-      if (o > 0.5) fitCellLabel(el, box.w * s, box.h * s);
+      const [pw, ph] = this.pxSize(box, map, s);
+      if (o > 0.5) fitCellLabel(el, pw, ph);
       place(el, map([box.x + box.w / 2, box.y + box.h / 2]), "c", 0, o, st.em);
-      if (o > 0.5 && !fits(labelInk(el).w, labelInk(el).h, box.w * s, box.h * s, labelMargin(el), labelMargin(el)))
-        this.tableIssues.add(`table ${p.id}: "${(el.textContent ?? "").trim()}" does not fit cell (${r}, ${c}): ${Math.round(el.offsetWidth)} by ${Math.round(el.offsetHeight)} px in a cell ${Math.round(box.w * s)} by ${Math.round(box.h * s)} px. Widen the cell or shorten the text.`);
+      if (o > 0.5 && !fits(labelInk(el).w, labelInk(el).h, pw, ph, labelMargin(el), labelMargin(el)))
+        this.tableIssues.add(`table ${p.id}: "${(el.textContent ?? "").trim()}" does not fit cell (${r}, ${c}): ${Math.round(el.offsetWidth)} by ${Math.round(el.offsetHeight)} px in a cell ${Math.round(pw)} by ${Math.round(ph)} px. Widen the cell or shorten the text.`);
     }
     g.style.display = frameO < 0.002 ? "none" : "";
     if (frameO < 0.002) return;
@@ -2303,6 +2324,7 @@ class GeoStage {
     for (let c = 0; c < p.head.length; c++) { const x = left + lw + c * cw; d += `M${k(x, top)}L${k(x, bottom)}`; }
     v.grid.setAttribute("d", d);
     v.grid.style.opacity = String(frameO);
+    if (p.ink) v.grid.style.stroke = INK[p.ink]!;
     let rules = "";
     if (p.totals) {
       rules += `M${k(left, top - p.rows.length * ch)}L${k(right, top - p.rows.length * ch)}`;
@@ -2311,6 +2333,7 @@ class GeoStage {
     }
     v.rules.setAttribute("d", rules);
     v.rules.style.opacity = String(frameO);
+    if (p.ink) v.rules.style.stroke = INK[p.ink]!;
     for (const [target, band] of v.bands) {
       const bo = bandOpacity(givens, t, target, ease) * frameO;
       band.style.display = bo < 0.002 ? "none" : "";
@@ -2527,6 +2550,8 @@ const DIRS: Record<string, P> = {
 };
 /** How far a label sits from the thing it names, before `far` scales it. */
 const LABEL_GAP = 58;
+/** Axis numbers, in stage pixels, by the axes part's `size` (film.css draws the same sizes). */
+const AXIS_NUM_PX: Record<string, number> = { s: 34, m: 46, l: 56 };
 /** A highlight deepens the ink toward gold. The wash behind an element is not a highlight. */
 function emphInk(ink: string, em: number): string {
   if (em <= 0.001 || ink === "none") return ink;

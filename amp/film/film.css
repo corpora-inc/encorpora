@@ -116,6 +116,8 @@ html:has(body > #film), body:has(> #film) { margin: 0; width: 1920px; height: 10
 }
 
 .film-axis-num { font-size: 34px; color: var(--color-muted-text); }
+.film-axis-num.axis-m { font-size: 46px; }
+.film-axis-num.axis-l { font-size: 56px; }
 
 /* Base-ten blocks: the app's own look, solid accent with paper unit lines. */
 .film-block { stroke: var(--color-figure-ink); stroke-linejoin: round; }
