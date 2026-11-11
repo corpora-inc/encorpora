@@ -222,7 +222,7 @@ function screens(world: DemoWorld, pendingOrg: string): Screen[] {
       heading: /^Good /,
       then: async (page) => {
         await page
-          .getByRole("button", { name: "Teach this lesson" })
+          .getByRole("button", { name: "Open the lesson" })
           .first()
           .click();
         await page.getByRole("dialog").locator("h2").first().waitFor();

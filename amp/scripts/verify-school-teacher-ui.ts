@@ -456,26 +456,28 @@ async function journey(browser: Browser, engine: string, width: number) {
 
   // A shared gap, named, with its students and the lesson.
   const gap = page.getByRole("heading", {
-    name: /\d+ students are stuck on adding and subtracting unlike fractions/i,
+    name: /\d+ students keep missing adding and subtracting unlike fractions/i,
   });
   await gap.waitFor();
   const body = await page.locator("main").innerText();
   check(`${label} gap names students`, /Noor|Diego|Lena/.test(body));
-  // The product waits until Wednesday before calling a week quiet.
-  const schoolDay = new Intl.DateTimeFormat("en-US", {
-    weekday: "short",
-    timeZone: "America/New_York",
-  }).format(new Date());
-  const quiet =
-    /(behind this week’s target|practiced this week)[^]*Marcus/.test(body);
+  // Practice is data, never a verdict: no quiet-week item on any day, and
+  // the week's minutes for every student with their distribution.
   check(
-    `${label} quiet-week warning follows the school day`,
-    schoolDay === "Mon" || schoolDay === "Tue" ? !quiet : quiet,
-    { schoolDay, quiet },
+    `${label} no practice judgement on Today`,
+    !/little practice|behind this week’s target|haven’t practiced this week/i.test(
+      body,
+    ),
+  );
+  check(
+    `${label} the week's spread states n, median, mean and sd`,
+    /n \d+ · median [\d.]+ · mean [\d.]+ · sd [\d.]+/.test(body),
   );
   check(
     `${label} what's going well shows`,
-    /ready for more|good day/i.test(body),
+    /above Grade \d in every strand|practiced today|shown twice on their own this week/i.test(
+      body,
+    ),
   );
   check(
     `${label} no gendered pronouns on Today`,
@@ -483,7 +485,7 @@ async function journey(browser: Browser, engine: string, width: number) {
     body.match(/\b(he|she|his|her|hers|him)\b/i)?.[0],
   );
   const lesson = page
-    .getByRole("button", { name: "Teach this lesson" })
+    .getByRole("button", { name: "Open the lesson" })
     .first();
   await lesson.click();
   const sheet = page.getByRole("dialog");
@@ -498,7 +500,7 @@ async function journey(browser: Browser, engine: string, width: number) {
 
   // Checking off survives a reload, today.
   const box = page.getByRole("checkbox", {
-    name: /Done: \d+ students are stuck on adding and subtracting unlike fractions/i,
+    name: /Done: \d+ students keep missing adding and subtracting unlike fractions/i,
   });
   await box.check();
   await page.reload();
