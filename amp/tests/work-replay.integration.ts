@@ -5,7 +5,7 @@ import { Pool } from "pg";
 import { migrate } from "../scripts/migrate.js";
 import { schoolAdmin } from "../scripts/school-admin.js";
 import type { PublicProblem } from "../src/math/contracts.js";
-import { generateProblem } from "../src/math/engine.js";
+import { generateProblem, templates } from "../src/math/engine.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import { registerSchoolRoutes } from "../src/schools/routes.js";
 import {
@@ -177,13 +177,21 @@ test(
             seed: problem.seed,
             digest: problemDigest(problem),
           });
-          // The same template and seed, at the catalog version practice drew
-          // at, draw the same problem again.
+          // The same template, version and seed draw the same problem again,
+          // and the version is the catalog's, the one practice drew at.
           assert.equal(
             problemDigest(
-              generateProblem(problem.templateId, problem.seed).public,
+              generateProblem(
+                problem.templateId,
+                problem.seed,
+                problem.templateVersion,
+              ).public,
             ),
             replay.origin!.digest,
+          );
+          assert.equal(
+            problem.templateVersion,
+            templates.find((t) => t.id === problem.templateId)!.version,
           );
           assert.equal(replay.outcome.response, given.response);
           assert.equal(replay.outcome.answer, given.truth);
