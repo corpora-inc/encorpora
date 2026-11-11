@@ -9,13 +9,7 @@ import { OrgFrame } from "../OrgFrame";
 import { orgPath } from "../paths";
 import { compareClassNames } from "../sort";
 import { CurveLegend, CurvePlot, GradeAxis, peakOf } from "./CurvePlot";
-import {
-  gradesWords,
-  intervalWords,
-  plain,
-  signed,
-  students,
-} from "./format";
+import { gradesWords, intervalWords, plain, signed, students } from "./format";
 import {
   AxisEnds,
   CurveFacts,
@@ -83,6 +77,7 @@ export function StandingScreen() {
                 top={peakOf([data.all])}
                 bandLabel="Their grade"
                 label={curveSentence(data.all)}
+                name={data.org.name}
                 hover
               />
               <GradeAxis grid={data.grid} />
@@ -161,33 +156,32 @@ export function StandingScreen() {
               </tr>
             </thead>
             <tbody>
-              {[{ id: "all", name: "Everyone", curve: data.all }, ...groups].map(
-                (group) => (
-                  <tr key={group.id}>
-                    <th scope="row">{group.name}</th>
-                    <td>{group.curve.n}</td>
-                    <td>
-                      {group.curve.middle
-                        ? `${signed(group.curve.middle.median)} (${intervalWords(group.curve.middle)})`
-                        : "—"}
-                    </td>
-                    <td>
-                      {group.curve.mean === null
-                        ? "—"
-                        : signed(group.curve.mean)}
-                    </td>
-                    <td>
-                      {group.curve.sd === null ? "—" : plain(group.curve.sd)}
-                    </td>
-                    <td>
-                      {group.curve.n
-                        ? `${Math.round((group.curve.within / group.curve.n) * 100)}%`
-                        : "—"}
-                    </td>
-                    <td>{group.curve.settling}</td>
-                  </tr>
-                ),
-              )}
+              {[
+                { id: "all", name: "Everyone", curve: data.all },
+                ...groups,
+              ].map((group) => (
+                <tr key={group.id}>
+                  <th scope="row">{group.name}</th>
+                  <td>{group.curve.n}</td>
+                  <td>
+                    {group.curve.middle
+                      ? `${signed(group.curve.middle.median)} (${intervalWords(group.curve.middle)})`
+                      : "—"}
+                  </td>
+                  <td>
+                    {group.curve.mean === null ? "—" : signed(group.curve.mean)}
+                  </td>
+                  <td>
+                    {group.curve.sd === null ? "—" : plain(group.curve.sd)}
+                  </td>
+                  <td>
+                    {group.curve.n
+                      ? `${Math.round((group.curve.within / group.curve.n) * 100)}%`
+                      : "—"}
+                  </td>
+                  <td>{group.curve.settling}</td>
+                </tr>
+              ))}
             </tbody>
           </TableDisclosure>
         </div>

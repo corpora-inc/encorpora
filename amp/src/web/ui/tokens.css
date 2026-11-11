@@ -27,7 +27,9 @@
   --color-answer: #ffffff;
   --color-on-answer: #183e3a;
   --color-answer-border: #78887f;
-  --color-menu: #fffefa;
+  /* Menus and popovers too: the page cream, with a border and a shadow
+     (founder: "cream, not white"). */
+  --color-menu: #f7f6f0;
   --color-on-menu: #183e3a;
   --color-primary: #1f5f55;
   --color-on-primary: #fffefa;

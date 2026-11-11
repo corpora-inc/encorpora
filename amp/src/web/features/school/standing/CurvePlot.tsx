@@ -1,4 +1,4 @@
-import { useId, useState, type PointerEvent } from "react";
+import { useId, useState, type CSSProperties, type PointerEvent } from "react";
 import type {
   StandingCurve,
   StandingGrid,
@@ -26,6 +26,35 @@ export const peakOf = (curves: readonly StandingCurve[]) =>
     ]),
   );
 
+/** Where to name a curve on itself: the point where it stands furthest
+ * above the other curve, so the name sits on a stretch only its own line
+ * occupies (and not on the faint tails). */
+function apart(
+  grid: StandingGrid,
+  values: readonly number[],
+  other: readonly number[],
+  top: number,
+) {
+  const tallest = Math.max(...values);
+  let at = -1;
+  values.forEach((value, index) => {
+    if (value < tallest * 0.25) return;
+    // Clear of the grade band and its median, which carry their own labels.
+    if (Math.abs(grid.from + index * grid.step) < 0.75) return;
+    const gap = value - (other[index] ?? 0);
+    if (at < 0 || gap > values[at]! - (other[at] ?? 0)) at = index;
+  });
+  if (at < 0) return null;
+  const span = grid.to - grid.from;
+  return {
+    x: ((at * grid.step) / span) * 100,
+    y: 100 - (Math.min(values[at]!, top) / top) * TOP,
+    /** Outward from the grade band: left of it, the name goes left. */
+    side:
+      grid.from + at * grid.step > 0 ? ("end" as const) : ("start" as const),
+  };
+}
+
 function path(grid: StandingGrid, values: readonly number[], top: number) {
   const span = grid.to - grid.from;
   const points = values.map((value, index) => {
@@ -50,6 +79,7 @@ export function CurvePlot({
   size = "large",
   bandLabel,
   label,
+  name,
   hover = false,
 }: {
   grid: StandingGrid;
@@ -60,6 +90,8 @@ export function CurvePlot({
   /** Over the grade band; none on a compact row. */
   bandLabel?: string;
   label: string;
+  /** The group's name, written on its own curve (a large plot). */
+  name?: string;
   hover?: boolean;
 }) {
   const id = useId();
@@ -68,6 +100,16 @@ export function CurvePlot({
   const area = `M0,100 L${line.join(" L")} L${WIDTH},100 Z`;
   const typical = path(grid, curve.typical, top);
   const middle = curve.middle;
+  // Each curve is named where it is drawn, where it stands furthest from
+  // the other curve: the group's and the national spread's never share a
+  // stretch of line.
+  const showTypical = curve.typical.some((value) => value > 0);
+  const named = size === "large" && name;
+  const own = named ? apart(grid, curve.density, curve.typical, top) : null;
+  const national =
+    named && showTypical
+      ? apart(grid, curve.typical, curve.density, top)
+      : null;
   const move = (event: PointerEvent<HTMLDivElement>) => {
     const box = event.currentTarget.getBoundingClientRect();
     const share = (event.clientX - box.left) / box.width;
@@ -124,7 +166,7 @@ export function CurvePlot({
           </linearGradient>
         </defs>
         <path d={area} fill={`url(#${id}-fill)`} />
-        {curve.typical.some((value) => value > 0) && (
+        {showTypical && (
           <polyline
             className={styles.typical}
             points={typical.join(" ")}
@@ -137,6 +179,27 @@ export function CurvePlot({
           vectorEffect="non-scaling-stroke"
         />
       </svg>
+      {own && (
+        <span
+          className={styles.curveName}
+          data-side={own.side}
+          style={{ left: `${own.x}%`, "--y": own.y } as CSSProperties}
+          aria-hidden="true"
+        >
+          {name}
+        </span>
+      )}
+      {national && (
+        <span
+          className={styles.curveName}
+          data-curve="national"
+          data-side={national.side}
+          style={{ left: `${national.x}%`, "--y": national.y } as CSSProperties}
+          aria-hidden="true"
+        >
+          National spread
+        </span>
+      )}
       {middle && (
         <span
           className={styles.medianLine}
@@ -163,9 +226,7 @@ export function CurvePlot({
             style={{ left: `${across(grid, at)}%` }}
             aria-hidden="true"
           >
-            <strong>
-              {at === 0 ? "Their grade" : `${signed(at)} grades`}
-            </strong>
+            <strong>{at === 0 ? "Their grade" : `${signed(at)} grades`}</strong>
             {Math.round(near * 100)}% of students within half a grade
           </span>
         </>
@@ -199,7 +260,11 @@ export function GradeAxis({
           data-minor={minor(x) ? "" : undefined}
           style={{ left: `${across(grid, x)}%` }}
           data-edge={
-            across(grid, x) < 3 ? "start" : across(grid, x) > 97 ? "end" : undefined
+            across(grid, x) < 3
+              ? "start"
+              : across(grid, x) > 97
+                ? "end"
+                : undefined
           }
         >
           <b>{x === 0 ? "0" : signed(x, 0)}</b>
@@ -221,24 +286,15 @@ export function GradeAxis({
   );
 }
 
-/** What each mark is, under the chart. */
-export function CurveLegend({ typical = true }: { typical?: boolean }) {
+/** What the one unlabelled mark is, under the chart: each curve carries
+ * its own name where it is drawn (CurvePlot), so only the median needs a key. */
+export function CurveLegend(_props: { typical?: boolean } = {}) {
   return (
     <p className={styles.legend}>
-      <span>
-        <i data-key="curve" aria-hidden="true" />
-        Students, with their uncertainty
-      </span>
       <span>
         <i data-key="median" aria-hidden="true" />
         Median, 95% range
       </span>
-      {typical && (
-        <span>
-          <i data-key="typical" aria-hidden="true" />
-          Typical national spread
-        </span>
-      )}
     </p>
   );
 }

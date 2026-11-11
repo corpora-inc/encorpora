@@ -84,7 +84,7 @@ button.preset[aria-pressed="true"]:disabled {
 }
 @media (min-width: 880px) {
   .row {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 480px);
     gap: var(--space-6);
     align-items: start;
   }
@@ -118,6 +118,13 @@ button.preset[aria-pressed="true"]:disabled {
 @media (max-width: 639px) {
   .rowControl {
     grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* Wide: every control takes the same column (the widest, three choices),
+   so each row's action starts at the same place and fits on one line. */
+@media (min-width: 880px) {
+  .rowControl {
+    grid-template-columns: 262px minmax(0, 1fr);
   }
 }
 /* One height, whether or not there's an action, so nothing below ever moves. */

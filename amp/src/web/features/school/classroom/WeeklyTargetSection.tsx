@@ -64,6 +64,8 @@ export function WeeklyTargetSection({ orgId }: { orgId: string }) {
               ) : (
                 <Stepper
                   label="Minutes a week"
+                  // The row title and the stepper's own "60 min" say it.
+                  hideLabel
                   value={value}
                   min={WEEKLY_TARGET_RANGE.min}
                   max={WEEKLY_TARGET_RANGE.max}
