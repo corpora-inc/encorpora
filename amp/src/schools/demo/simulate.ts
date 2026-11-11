@@ -1,0 +1,448 @@
+/**
+ * One student's term of practice, the way the live serve path would leave it.
+ *
+ * Each sitting, the production planner picks the problem and the misspecified
+ * learner answers from their true level that day. The stored problem is the
+ * one the generator returned, including its template version. The level days
+ * are the production estimator replayed over those answers.
+ */
+import { createHash } from "node:crypto";
+import { isMainThread, parentPort } from "node:worker_threads";
+import { skills } from "../../curriculum/catalog.js";
+import type { AnswerHelp } from "../help-contracts.js";
+import { problemDigest } from "../work-replay.js";
+import {
+  clientCanDraw,
+  figureCapabilities,
+  responseCapabilities,
+  type PublicProblem,
+} from "../../math/contracts.js";
+import { generateProblem, templates, type GeneratedProblem } from "../../math/engine.js";
+import { projectSkillEvidence } from "../../server/evidence.js";
+import {
+  advanceLearnerFrontier,
+  newLearnerFrontier,
+  readLearnerFrontier,
+} from "../../server/learner-frontier.js";
+import { planMixedPractice } from "../../server/mixed-practice.js";
+import type { Outcome } from "../../server/repository.js";
+import {
+  levelDocuments,
+  misspecifiedCorrect,
+  type LevelAnswer,
+} from "./engine-levels.js";
+import { hash, wrongResponse } from "./personas.js";
+import { doseTruth, personaTruth, type LearnerTruth, type Sitting } from "./truth.js";
+import type { Persona } from "./personas.js";
+
+const nodes = new Map(skills.map((skill) => [skill.id, skill]));
+const strandNames = [...new Set(skills.map((skill) => skill.strand))].sort();
+const webTemplates = templates.filter((template) =>
+  clientCanDraw(template, {
+    responseCapabilities: [...responseCapabilities],
+    figureCapabilities: [...figureCapabilities],
+  }),
+);
+const strandOf = new Map(
+  webTemplates.map((template) => [
+    template.id,
+    nodes.get(template.skillId)?.strand ?? template.skillId,
+  ]),
+);
+
+const problemCache = new Map<string, GeneratedProblem>();
+function drawn(templateId: string, seed: string): GeneratedProblem | null {
+  const key = `${templateId}\0${seed}`;
+  const cached = problemCache.get(key);
+  if (cached) return cached;
+  try {
+    const problem = generateProblem(templateId, seed);
+    if (!problem.public.prompt) return null;
+    problemCache.set(key, problem);
+    return problem;
+  } catch {
+    return null;
+  }
+}
+
+const hexId = (text: string) =>
+  createHash("sha256").update(text).digest("hex");
+
+/** A wrong answer in the shape the problem asked for. Choice and numeric
+ * items use the shared distractor; anything else moves one part. */
+export function plausibleWrong(problem: GeneratedProblem): string {
+  const basic = wrongResponse(problem as never);
+  if (basic !== "99999" && basic !== "99998") return basic;
+  const answer = problem.answer;
+  if (answer.startsWith("[") || answer.startsWith("{")) {
+    try {
+      return JSON.stringify(nudge(JSON.parse(answer)));
+    } catch {
+      return basic;
+    }
+  }
+  return basic;
+}
+function nudge(value: unknown): unknown {
+  if (typeof value === "number" && Number.isFinite(value)) return value + 1;
+  if (typeof value === "string" && /^-?\d+(\.\d+)?$/.test(value)) {
+    const places = value.split(".")[1]?.length ?? 0;
+    return (Number(value) + 10 ** -places).toFixed(places);
+  }
+  if (Array.isArray(value) && value.length) {
+    const copy = [...value];
+    copy[copy.length - 1] = nudge(copy[copy.length - 1]);
+    return copy;
+  }
+  if (value && typeof value === "object") {
+    const copy = { ...(value as Record<string, unknown>) };
+    const key = Object.keys(copy).at(-1);
+    if (key) copy[key] = nudge(copy[key]);
+    return copy;
+  }
+  return value;
+}
+
+export type SimAnswer = {
+  learnerId: string;
+  instanceId: string;
+  content: string;
+  outcome: string;
+  at: string;
+  day: string;
+  skillId: string;
+  correct: boolean;
+  assisted: boolean;
+};
+export type SimActive = {
+  learnerId: string;
+  day: string;
+  surface: "practice" | "hint" | "lesson";
+  skillId: string;
+  ms: number;
+};
+export type SimHelp = {
+  learnerId: string;
+  at: string;
+  day: string;
+  kind: "hint" | "lesson";
+  skillId: string;
+  ref: string;
+  problemId: string;
+  step: number | null;
+};
+export type Simulation = {
+  answers: SimAnswer[];
+  active: SimActive[];
+  help: SimHelp[];
+  levels: { learnerId: string; day: string; frontier: string }[];
+  truth: Pick<LearnerTruth, "startOffset" | "growth" | "hoursPerWeek">;
+};
+
+function helpFor(key: string): AnswerHelp[] | undefined {
+  const roll = hash(`${key} help`);
+  if (roll < 0.07) return ["hint"];
+  if (roll < 0.09) return ["lesson"];
+  return undefined;
+}
+
+function simulateTruth(
+  learnerId: string,
+  name: string,
+  grade: number,
+  truth: LearnerTruth,
+  now: number,
+): Simulation {
+  const state = newLearnerFrontier({
+    epoch: 0,
+    start: grade,
+    strandStarts: {},
+  });
+  const attempts: Outcome[] = [];
+  const answers: SimAnswer[] = [];
+  const levelAnswers: LevelAnswer[] = [];
+  const active = new Map<string, SimActive>();
+  const help: SimHelp[] = [];
+  let serial = 0;
+  const addActive = (
+    day: string,
+    surface: SimActive["surface"],
+    skillId: string,
+    ms: number,
+  ) => {
+    const key = `${day}\0${surface}\0${skillId}`;
+    const row = active.get(key);
+    if (row) row.ms += ms;
+    else active.set(key, { learnerId, day, surface, skillId, ms });
+  };
+  for (const sitting of truth.sittings)
+    playSitting({
+      sitting,
+      learnerId,
+      name,
+      grade,
+      truth,
+      now,
+      state,
+      attempts,
+      answers,
+      levelAnswers,
+      help,
+      addActive,
+      serial: () => serial++,
+    });
+  const levels = levelDocuments({
+    start: grade,
+    answers: levelAnswers,
+    days: truth.sittings.map((sitting) => sitting.day),
+  }).map((row) => ({ learnerId, day: row.day, frontier: row.frontier }));
+  return {
+    answers,
+    active: [...active.values()],
+    help,
+    levels,
+    truth: {
+      startOffset: truth.startOffset,
+      growth: truth.growth,
+      hoursPerWeek: truth.hoursPerWeek,
+    },
+  };
+}
+
+function playSitting(bag: {
+  sitting: Sitting;
+  learnerId: string;
+  name: string;
+  grade: number;
+  truth: LearnerTruth;
+  now: number;
+  state: ReturnType<typeof newLearnerFrontier>;
+  attempts: Outcome[];
+  answers: SimAnswer[];
+  levelAnswers: LevelAnswer[];
+  help: SimHelp[];
+  addActive: (
+    day: string,
+    surface: SimActive["surface"],
+    skillId: string,
+    ms: number,
+  ) => void;
+  serial: () => number;
+}) {
+  const { sitting, truth, name, grade } = bag;
+  const origin =
+    sitting.day === new Date(bag.now).toISOString().slice(0, 10)
+      ? bag.now - sitting.problems * sitting.msEach
+      : Date.parse(`${sitting.day}T14:30:00Z`);
+  let placed = 0;
+  for (let slot = 0; slot < sitting.problems; slot++) {
+    const serial = bag.serial();
+    const atMs = origin + placed * sitting.msEach + sitting.msEach;
+    const at = new Date(atMs).toISOString();
+    const frontier = readLearnerFrontier(bag.state, atMs);
+    const [choice] = planMixedPractice({
+      templates: webTemplates,
+      skills,
+      attempts: bag.attempts.slice(-12),
+      evidence: projectSkillEvidence(bag.attempts),
+      frontier,
+      count: 1,
+      seed: `${name}:${serial}`,
+      now: atMs,
+      learnerKey: name,
+    });
+    if (!choice) break;
+    const template = choice.template;
+    const problem = drawn(template.id, `demo-${template.id}-${serial % 3}`);
+    if (!problem) continue;
+    placed++;
+    const strand = strandOf.get(template.id) ?? choice.strand;
+    const theta =
+      grade +
+      truth.startOffset +
+      truth.growth * sitting.progress +
+      (truth.strandOffsets.get(strand) ?? 0);
+    const correct = misspecifiedCorrect({
+      key: `${name}${sitting.day}${template.id}${serial}`,
+      theta,
+      templateId: template.id,
+      slip: truth.slip,
+      guess: truth.guess,
+    });
+    const assistedHelp = helpFor(`${name}${serial}`);
+    const assisted = !!assistedHelp;
+    const instanceId = hexId(`${bag.learnerId}:${serial}`);
+    const publicProblem: PublicProblem = { ...problem.public, id: instanceId };
+    const response = correct ? problem.answer : plausibleWrong(problem);
+    const attemptId = hexId(`${bag.learnerId}:${serial}:a`);
+    const requestId = hexId(`${bag.learnerId}:${serial}:r`);
+    const outcome = {
+      id: attemptId,
+      problemId: instanceId,
+      requestId,
+      skillId: problem.public.skillId,
+      templateId: template.id,
+      response,
+      correct,
+      assisted,
+      ...(assistedHelp ? { help: assistedHelp } : {}),
+      explanation: problem.explanation,
+      answer: problem.answer,
+      createdAt: at,
+      ...(problem.variant ? { variant: problem.variant } : {}),
+    };
+    const content = {
+      ...problem,
+      public: publicProblem,
+      practiceEpoch: 0,
+      practiceRevision: 0,
+      selection: { reason: choice.reason, strand: choice.strand },
+      digest: problemDigest(publicProblem),
+    };
+    bag.answers.push({
+      learnerId: bag.learnerId,
+      instanceId,
+      content: JSON.stringify(content),
+      outcome: JSON.stringify(outcome),
+      at,
+      day: sitting.day,
+      skillId: problem.public.skillId,
+      correct,
+      assisted,
+    });
+    bag.attempts.push({
+      id: attemptId,
+      problemId: instanceId,
+      requestId,
+      skillId: problem.public.skillId,
+      templateId: template.id,
+      response,
+      correct,
+      assisted,
+      explanation: [],
+      answer: problem.answer,
+      createdAt: at,
+    });
+    bag.levelAnswers.push({
+      templateId: template.id,
+      correct,
+      assisted,
+      at,
+      day: sitting.day,
+    });
+    const helpMs = assistedHelp?.includes("lesson")
+      ? 70_000
+      : assistedHelp?.includes("hint")
+        ? 25_000
+        : 0;
+    const practiceMs = Math.max(15_000, sitting.msEach - helpMs);
+    bag.addActive(sitting.day, "practice", problem.public.skillId, practiceMs);
+    if (assistedHelp?.includes("hint")) {
+      bag.addActive(sitting.day, "hint", problem.public.skillId, 25_000);
+      bag.help.push({
+        learnerId: bag.learnerId,
+        at,
+        day: sitting.day,
+        kind: "hint",
+        skillId: problem.public.skillId,
+        ref: template.id,
+        problemId: instanceId,
+        step: 1,
+      });
+    }
+    if (assistedHelp?.includes("lesson")) {
+      bag.addActive(sitting.day, "lesson", problem.public.skillId, 70_000);
+      bag.help.push({
+        learnerId: bag.learnerId,
+        at,
+        day: sitting.day,
+        kind: "lesson",
+        skillId: problem.public.skillId,
+        ref: template.id,
+        problemId: instanceId,
+        step: null,
+      });
+    }
+    advanceLearnerFrontier(bag.state, [
+      {
+        templateId: template.id,
+        correct,
+        assisted,
+        createdAt: at,
+        practiceRevision: 0,
+        sequence: String(serial + 1),
+      },
+    ]);
+  }
+}
+
+export function simulateDose(options: {
+  learnerId: string;
+  name: string;
+  grade: number;
+  termStart: string;
+  today: string;
+  weekShape: readonly number[];
+  now: number;
+  workToday: boolean;
+  joined?: string;
+}): Simulation {
+  const truth = doseTruth({
+    name: options.name,
+    grade: options.grade,
+    termStart: options.termStart,
+    today: options.today,
+    weekShape: options.weekShape,
+    strands: strandNames,
+    workToday: options.workToday,
+    joined: options.joined,
+  });
+  return simulateTruth(options.learnerId, options.name, options.grade, truth, options.now);
+}
+
+export function simulatePersona(options: {
+  learnerId: string;
+  name: string;
+  grade: number;
+  persona: Persona;
+  termStart: string;
+  today: string;
+  weekShape: readonly number[];
+  now: number;
+  workToday: boolean;
+}): Simulation {
+  const truth = personaTruth({
+    name: options.name,
+    grade: options.grade,
+    persona: options.persona,
+    termStart: options.termStart,
+    today: options.today,
+    weekShape: options.weekShape,
+    strands: strandNames,
+    workToday: options.workToday,
+  });
+  return simulateTruth(options.learnerId, options.name, options.grade, truth, options.now);
+}
+
+export type SimJob =
+  | { kind: "dose"; options: Parameters<typeof simulateDose>[0] }
+  | { kind: "persona"; options: Parameters<typeof simulatePersona>[0] };
+
+export function runSimulation(job: SimJob): Simulation {
+  return job.kind === "persona"
+    ? simulatePersona(job.options)
+    : simulateDose(job.options);
+}
+
+if (!isMainThread && parentPort) {
+  parentPort.on("message", (job: SimJob) => {
+    try {
+      parentPort!.postMessage({ ok: true as const, result: runSimulation(job) });
+    } catch (error) {
+      parentPort!.postMessage({
+        ok: false as const,
+        error: error instanceof Error ? error.message : String(error),
+      });
+    }
+  });
+}

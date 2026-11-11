@@ -20,6 +20,7 @@ import {
   seedClassHistory,
   type DemoStudent,
 } from "../src/schools/demo/history";
+import { sumWeeks } from "../src/schools/demo/term";
 import { persona, type Persona } from "../src/schools/demo/personas";
 import { PostgresRepository } from "../src/server/repository";
 import {
@@ -138,7 +139,6 @@ async function history(
   {
     weeks,
     grade,
-    recentDays,
   }: { weeks: number; grade: number; recentDays?: number },
 ) {
   const students: DemoStudent[] = learners.map((learner) => ({
@@ -162,19 +162,12 @@ async function history(
       weekShape: shape,
       now: Date.now(),
       workToday: true,
-      recentDays: recentDays ?? span + 1,
-      sharedGap: null,
-      stuck: null,
+      model: "persona",
     });
     // The weekly rollups, summed once, as a demo's bulk writer does.
-    const ids = learners.map((l) => l.learnerId);
-    await client.query(
-      `INSERT INTO amp_learner_weeks(learner_id,week,active_ms)
-       SELECT learner_id,date_trunc('week',day)::date,sum(active_ms) FROM amp_active_days
-       WHERE learner_id=ANY($1) GROUP BY 1,2
-       ON CONFLICT(learner_id,week) DO UPDATE SET active_ms=EXCLUDED.active_ms`,
-      [ids],
-    );
+    await sumWeeks(client, "SELECT unnest($1::text[])", [
+      learners.map((learner) => learner.learnerId),
+    ]);
     await client.query("COMMIT");
     return written.answers;
   } catch (error) {
