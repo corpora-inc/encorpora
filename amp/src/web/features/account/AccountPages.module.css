@@ -24,8 +24,12 @@
   display: grid;
   align-content: start;
   gap: var(--column-gap);
-  box-sizing: content-box;
-  max-width: 720px;
+  /* Its full width from the first paint: centred by auto margins, a grid
+     item would otherwise shrink to whatever has loaded, and widen (moving
+     its heading) when the rest arrives. 720 px of content, plus gutters. */
+  box-sizing: border-box;
+  width: 100%;
+  max-width: calc(720px + 2 * var(--gutter));
   /* A focused column, centred in the viewport (docs/design/ia.md). */
   margin-inline: auto;
   padding: var(--page-top) var(--gutter) var(--space-8);

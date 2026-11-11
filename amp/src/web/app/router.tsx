@@ -64,6 +64,7 @@ import {
 } from "../lib/student-device";
 import { workbookSearchSchema } from "../features/workbooks/model";
 import { preload } from "../features/school/api";
+import { SMALL_CLASS } from "../features/navigation/shell-frame";
 import { approvalsOptions } from "../features/family-approval/api";
 import { secondParentOptions } from "../features/second-parent/api";
 import { classYearOptions } from "../features/school/org/org-api";
@@ -895,15 +896,36 @@ const schoolClassToday = createRoute({
   },
   component: lazyRouteComponent(classScreens, "TodayScreen"),
 });
+/** The map with everything its first paint shows: a small class's map
+ * (six or fewer, ClassMap.tsx) carries each learner's grade line, so its
+ * gradebook loads with it rather than pushing the page down after. */
+async function mapLoader({
+  context,
+  params,
+}: {
+  context: unknown;
+  params: { org: string; class: string };
+}) {
+  const session = (context as { session: AuthSession }).session;
+  const { mapOptions, gradebookOptions } =
+    await import("../features/school/classes/teacher-api");
+  const place = { org: params.org, class: params.class };
+  const map = (await preload(mapOptions(session, place))) as
+    { students?: unknown[] } | undefined;
+  if (map && (map.students?.length ?? Infinity) <= SMALL_CLASS)
+    await preload(gradebookOptions(session, place, undefined));
+}
 const schoolClassMap = createRoute({
   getParentRoute: () => schoolClass,
   path: "map",
+  loader: mapLoader,
   component: lazyRouteComponent(classScreens, "MapScreen"),
 });
 /** One student, in a sheet over the class map: the class's tabs stay. */
 const schoolClassMapStudent = createRoute({
   getParentRoute: () => schoolClass,
   path: "map/$student",
+  loader: mapLoader,
   component: lazyRouteComponent(classScreens, "MapScreen"),
 });
 const schoolClassGradebook = createRoute({
@@ -1217,9 +1239,16 @@ const fallback = createRoute({
   getParentRoute: () => appScreen,
   path: "/$",
   // The app screen is rendered by the layout, so load its chunk here, as the
-  // route's own component would have been.
-  loader: async () => {
-    await legacy.preload?.();
+  // route's own component would have been. The Overview's level too, so it
+  // paints in its final layout (a learner's first day has its own).
+  loader: async ({ location }) => {
+    await Promise.all([
+      legacy.preload?.(),
+      location.pathname === "/overview" &&
+        import("../lib/learning-view").then((view) =>
+          view.preloadOverviewLevel(),
+        ),
+    ]);
   },
 });
 const lessonFilm = createRoute({

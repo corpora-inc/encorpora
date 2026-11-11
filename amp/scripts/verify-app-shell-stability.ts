@@ -41,7 +41,11 @@ const engines = (argument("engines") ?? "chromium,webkit").split(",");
 const widths = (argument("widths") ?? "320,390,768,1280")
   .split(",")
   .map(Number);
-const themes = ["light", "dark"] as const;
+const themes = (argument("themes") ?? "light,dark").split(",") as (
+  "light" | "dark"
+)[];
+// Only these screens (ids), for working on one; the tab walks run in full.
+const only = argument("screens")?.split(",");
 const shots = argument("shots");
 if (shots) await mkdir(shots, { recursive: true });
 
@@ -128,8 +132,8 @@ const screens: Screen[] = [
     path: "/inventory",
     state: "paid",
     group: "progress",
-    ready: (p) =>
-      p.locator('[aria-label="Inventory totals"][aria-busy="false"]').waitFor(),
+    // The totals show once the learner's skills have loaded.
+    ready: (p) => p.locator('section[aria-label="Totals"]').waitFor(),
   },
   {
     id: "security",
@@ -158,7 +162,8 @@ const screens: Screen[] = [
     path: "/family/privacy",
     state: "paid",
     group: "account",
-    ready: (p) => p.locator(".family-body section").first().waitFor(),
+    ready: (p) =>
+      p.locator("[data-account-body] [data-privacy-choice]").first().waitFor(),
   },
   {
     id: "practice",
@@ -295,7 +300,9 @@ for (const engine of engines) {
       const where = `${engine} ${width} ${theme}`;
       let logo: Box | null = null;
       const tabs: Record<string, Record<string, Box>> = {};
-      for (const screen of screens) {
+      for (const screen of screens.filter(
+        (s) => !only || only.includes(s.id),
+      )) {
         const tag = `${screen.id} ${where}`;
         // A screen that moved or flickered loads once more: a load-order
         // accident on a busy machine shows once, a real flicker every time,
@@ -466,11 +473,17 @@ for (const engine of engines) {
           ).__mark = 1;
         });
         const before = await tabBoxes(page);
+        // The tabs this frame offers: a family's small class has no Grades.
+        const offered = await page
+          .locator("[data-app-bar] [data-tab]")
+          .evaluateAll((tabs) =>
+            tabs.map((tab) => tab.getAttribute("data-tab")),
+          );
         const logoBefore = await page
           .locator("[data-app-logo]")
           .first()
           .boundingBox();
-        for (const id of order) {
+        for (const id of order.filter((id) => offered.includes(id))) {
           const accountReads = requests.filter(
             (r) => r === "GET /api/v1/me",
           ).length;

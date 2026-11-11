@@ -87,6 +87,31 @@ export function chooseLearner(
  * record and level), loaded before it renders so it paints once, whole
  * (docs/design/ia.md, "Smoothness"). A failure is left for the screen to
  * show in place. */
+/** The Overview's level only, before it paints: its layout (a learner's
+ * first day, or their record) depends on it. Its areas hold their rows while
+ * the catalog loads, so the catalog is not needed first. */
+export async function preloadOverviewLevel() {
+  const session = await queryClient
+    .ensureQueryData(sessionOptions)
+    .catch(() => undefined);
+  if (!session) return;
+  const me = await queryClient
+    .ensureQueryData(meOptions(session))
+    .catch(() => undefined);
+  const account =
+    me?.signedIn && me.account.id === session.accountId ? me : null;
+  const { learner } = chooseLearner(
+    account as SignedIn | null,
+    useLearnerStore.getState().learnerId,
+  );
+  if (learner)
+    await queryClient
+      .ensureQueryData(learnerFrontierOptions(session, learner.id))
+      .catch((error: unknown) =>
+        console.error("The level did not preload", error),
+      );
+}
+
 export async function preloadLearningView() {
   const quiet = <T>(promise: Promise<T>, what: string) =>
     promise.catch((error: unknown) => {
