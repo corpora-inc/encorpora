@@ -12,8 +12,59 @@ import type { Browser, Page } from "playwright";
 import { createServer, type ViteDevServer } from "vite";
 import { afterAll, beforeAll, expect, test } from "vitest";
 import { secureChromium } from "../browser-security.mjs";
+import { resolveCast, runsOf, TURN_GAP, voiceBindings } from "./cast";
+import { scriptSchema, type Script, type Timing } from "./schema";
 
 const FIX = fileURLToPath(new URL("./fixtures/frame/", import.meta.url));
+
+/** The same word-timing guess `make.ts --dry` uses, so a held highlight is the same moment. */
+function dryTiming(script: Script): Timing {
+  const cast = resolveCast(script, {});
+  const runs = runsOf(script, cast);
+  let t = 0.5;
+  const shots: Timing["shots"] = [];
+  for (const shot of script.shots) {
+    const out: Timing["shots"][number] = [];
+    shot.beats.forEach((b, bi) => {
+      if (bi && runs.some((r) => r.shot === shots.length && r.from === bi)) t += TURN_GAP;
+      const words: Timing["shots"][number][number]["words"] = [];
+      for (const raw of b.say.split(/\s+/).filter(Boolean)) {
+        const d = 0.087 + 0.0487 * raw.replace(/[^\p{L}\p{N}]/gu, "").length;
+        words.push({ text: raw, start: t, end: t + d });
+        t += d + 0.035 + (/[.?!:]$/.test(raw) ? 0.35 : /[,;]$/.test(raw) ? 0.14 : 0);
+      }
+      out.push({ start: words[0]!.start, end: words[words.length - 1]!.end, words });
+      t += (b.pause ?? 0) + 0.25;
+    });
+    shots.push(out);
+    t += 0.45;
+  }
+  return { duration: t + 1.8, shots, voices: voiceBindings(cast) };
+}
+const vaScript = scriptSchema.parse(JSON.parse(readFileSync(fileURLToPath(new URL("./lessons/count-out-objects--va.json", import.meta.url)), "utf8")));
+const vaTiming = dryTiming(vaScript);
+const vaPayload = JSON.stringify({ id: vaScript.id, title: vaScript.title, script: vaScript, timing: vaTiming, figure: null });
+
+function targetsOf(action: { target?: unknown }): string[] {
+  const target = action.target;
+  if (typeof target === "string") return [target];
+  if (Array.isArray(target)) return target.filter((x): x is string => typeof x === "string");
+  return [];
+}
+/** Beat end, while a highlight is still fully held. */
+function heldAt(say: string, includes: string[]): number {
+  for (let si = 0; si < vaScript.shots.length; si++) {
+    const shot = vaScript.shots[si]!;
+    for (let bi = 0; bi < shot.beats.length; bi++) {
+      const beat = shot.beats[bi]!;
+      if (beat.say !== say) continue;
+      const names = (beat.do ?? []).filter((a) => a.do === "highlight").flatMap(targetsOf);
+      if (!includes.every((n) => names.includes(n))) continue;
+      return vaTiming.shots[si]![bi]!.end - 0.08;
+    }
+  }
+  throw new Error(`No held highlight for ${includes.join(", ")}`);
+}
 const FILMS = ["frequency-table-build--pr", "line-slope", "bar-chart-total", "decimal-line-point", "count-out-objects--things"];
 const STABLE = [...FILMS, "divide-facts--pf", "count-sequence-missing--fn", "flat-or-solid-name--md", "pick-flat-or-solid--as"];
 const VIEWS = [
@@ -54,6 +105,11 @@ beforeAll(async () => {
         s.middlewares.use((req, res, next) => {
           const m = (req.url ?? "").split("?")[0]?.match(/^\/data\/([^/]+)\.json$/);
           if (!m) return next();
+          if (m[1] === "count-out-objects--va") {
+            res.setHeader("content-type", "application/json");
+            res.end(vaPayload);
+            return;
+          }
           const file = path.join(FIX, `${m[1]}.json`);
           if (!existsSync(file)) { res.statusCode = 404; res.end(); return; }
           res.setHeader("content-type", "application/json");
@@ -957,3 +1013,121 @@ test("a shaded or boxed region keeps half a line around what it holds", async ()
     await page.close();
   }
 }, 180_000);
+
+test("a lit ten-frame keeps every counter in the middle of its cell and off its neighbour", async () => {
+  const moments = [
+    { name: "f1", ids: ["f1"], t: heldAt("The last number is ten, so this frame shows ten. A full frame is ten.", ["f1"]) },
+    { name: "seconds", ids: ["fA2", "fB2", "fD2"], t: heldAt("It does not fit in one frame. Seventeen needs a second frame.", ["fA2", "fB2", "fD2"]) },
+  ];
+  const page = await browser.newPage();
+  try {
+    await page.goto(`${origin}/live.html?id=${encodeURIComponent("count-out-objects--va")}`, { waitUntil: "domcontentloaded" });
+    await page.waitForSelector(".live.ready", { timeout: 60_000 });
+    for (const view of VIEWS) {
+      await page.setViewportSize({ width: view.width, height: view.height });
+      await page.waitForFunction((layout) => document.querySelector("#film")?.getAttribute("data-layout") === layout, view.layout);
+      await page.evaluate(() => { document.documentElement.dataset.theme = "light"; });
+      for (const moment of moments) {
+        const got = await page.evaluate(({ ids, t }) => {
+          const scrub = document.querySelector<HTMLInputElement>(".live-scrub");
+          if (!scrub) return { error: "no scrubber" };
+          scrub.value = String(t);
+          scrub.dispatchEvent(new Event("input", { bubbles: true }));
+          const shots = [...document.querySelectorAll<HTMLElement>(".film-shot")];
+          let fit: HTMLElement | null = null, best = 0;
+          for (const shot of shots) {
+            const o = Number.parseFloat(getComputedStyle(shot).opacity);
+            const host = shot.querySelector<HTMLElement>(".film-fit");
+            if (!host || o < 0.5 || getComputedStyle(shot).visibility === "hidden") continue;
+            if (o >= best) { fit = host; best = o; }
+          }
+          if (!fit) return { error: "no figure" };
+          const shown = (el: Element) => {
+            let o = 1;
+            let n: Element | null = el;
+            while (n && n !== document.body) {
+              const cs = getComputedStyle(n);
+              if (cs.display === "none" || cs.visibility === "hidden") return 0;
+              o *= Number.parseFloat(cs.opacity) || 0;
+              n = n.parentElement;
+            }
+            return o;
+          };
+          const at = (el: SVGGraphicsElement, x: number, y: number) => {
+            const svg = el.ownerSVGElement;
+            const ctm = el.getScreenCTM();
+            if (!svg || !ctm) return null;
+            const pt = svg.createSVGPoint();
+            pt.x = x; pt.y = y;
+            const p = pt.matrixTransform(ctm);
+            return { x: p.x, y: p.y };
+          };
+          const problems: string[] = [];
+          const grids = [...fit.querySelectorAll<SVGGraphicsElement>('[data-kind="grid"]')].filter((el) => shown(el) > 0.45);
+          const byId = new Map(grids.map((el) => [el.dataset.part ?? "", el]));
+          for (const id of ids) {
+            const grid = byId.get(id);
+            if (!grid) { problems.push(`${id} is not on screen`); continue; }
+            const box = grid.getBBox();
+            const cols = Number(grid.dataset.cols || 0), rows = Number(grid.dataset.rows || 0);
+            if (cols < 1 || rows < 1 || box.width < 1) { problems.push(`${id} has no cells`); continue; }
+            const cellW = box.width / cols, cellH = box.height / rows;
+            const cells: { x: number; y: number; l: number; t: number; r: number; b: number }[] = [];
+            for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+              const x0 = box.x + c * cellW, y0 = box.y + r * cellH;
+              const corners = [[x0, y0], [x0 + cellW, y0], [x0, y0 + cellH], [x0 + cellW, y0 + cellH]].map(([x, y]) => at(grid, x!, y!));
+              if (corners.some((p) => !p)) { problems.push(`${id} cell did not map`); continue; }
+              const xs = corners.map((p) => p!.x), ys = corners.map((p) => p!.y);
+              const mid = at(grid, x0 + cellW / 2, y0 + cellH / 2);
+              if (!mid) continue;
+              cells.push({ x: mid.x, y: mid.y, l: Math.min(...xs), t: Math.min(...ys), r: Math.max(...xs), b: Math.max(...ys) });
+            }
+            const ctm = grid.getScreenCTM();
+            const stroke = (parseFloat(grid.style.strokeWidth || "0") || 0) * (ctm ? Math.hypot(ctm.a, ctm.b) : 1);
+            const inset = stroke / 2;
+            let counters = 0;
+            const inside = (x: number, y: number) => cells.some((cell) => x > cell.l && x < cell.r && y > cell.t && y < cell.b);
+            const pieces = [
+              ...fit.querySelectorAll<SVGGraphicsElement>('[data-kind="counter"]'),
+              ...fit.querySelectorAll<HTMLElement>(".film-label"),
+            ];
+            for (const el of pieces) {
+              if (shown(el) < 0.45) continue;
+              const rect = el.getBoundingClientRect();
+              if (rect.width < 1 || rect.height < 1) continue;
+              const cx = rect.left + rect.width / 2, cy = rect.top + rect.height / 2;
+              if (!inside(cx, cy)) continue;
+              counters++;
+              let best = cells[0]!, dist = Infinity;
+              for (const cell of cells) {
+                const d = Math.hypot(cell.x - cx, cell.y - cy);
+                if (d < dist) { best = cell; dist = d; }
+              }
+              const span = Math.min(best.r - best.l, best.b - best.t);
+              if (dist > Math.max(1.25, span * 0.04)) problems.push(`${el.dataset.part ?? "label"} sits ${dist.toFixed(1)}px off the middle of a ${id} cell`);
+              if (el.dataset.kind === "counter") {
+                const cut = rect.left < best.l + inset - 0.5 || rect.right > best.r - inset + 0.5 || rect.top < best.t + inset - 0.5 || rect.bottom > best.b - inset + 0.5;
+                if (cut) problems.push(`${el.dataset.part} is cut by a line of ${id}`);
+              }
+            }
+            if (counters < 1) problems.push(`${id} has no counter in its cells`);
+            const mine = grid.getBoundingClientRect();
+            for (const other of grids) {
+              if (other === grid) continue;
+              const o = other.getBoundingClientRect();
+              const ox = Math.min(mine.right, o.right) - Math.max(mine.left, o.left);
+              const oy = Math.min(mine.bottom, o.bottom) - Math.max(mine.top, o.top);
+              if (ox > 1 && oy > 1) problems.push(`${id} covers ${other.dataset.part} by ${ox.toFixed(1)}×${oy.toFixed(1)}px`);
+            }
+          }
+          return { problems };
+        }, { ids: moment.ids, t: moment.t });
+        const where = `${moment.name} ${view.layout} t=${moment.t.toFixed(2)}`;
+        if (!got || "error" in got) throw new Error(`${where}: ${got && "error" in got ? got.error : "no measurement"}`);
+        expect(got.problems, where).toEqual([]);
+      }
+    }
+  } finally {
+    await page.close();
+  }
+}, 120_000);
