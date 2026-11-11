@@ -182,10 +182,7 @@ export function WorkbookStackScreen() {
       loading={query.isPending}
       tab="workbooks"
     >
-      <PageHead
-        title="Workbooks"
-        detail={`A different workbook for each ${who}, made from their own work.`}
-      />
+      <PageHead title="Workbooks" />
       {!data ? (
         <EmptyState
           title="This class’s workbooks didn’t load"
@@ -495,9 +492,8 @@ function Stack({
                           ? tile.state === "ready" && tile.problems
                             ? count(tile.problems, "problem")
                             : statusWord[tile.state]
-                          : on
-                            ? "Will print"
-                            : "Left out"}
+                          : // The box says whether it prints: no word for it.
+                            ""}
                     </span>
                   </span>
                 </button>

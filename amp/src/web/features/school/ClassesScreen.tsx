@@ -639,7 +639,7 @@ export function ClassScreen() {
           title="Settings"
           detail={
             family
-              ? "Each child works at their own grade"
+              ? undefined
               : klass.studentCount
                 ? `${klass.studentCount} ${klass.studentCount === 1 ? "student" : "students"}, ${courseLabel(klass.courseBands).toLowerCase()}`
                 : courseLabel(klass.courseBands)

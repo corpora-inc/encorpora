@@ -131,7 +131,6 @@ export function IntegrationsScreen() {
     <OrgFrame orgId={orgId} nav="integrations" title="Integrations">
       <PageHead
         title="Integrations"
-        detail="How your rosters, grades and sign-ins connect to AMP."
         action={
           <Link
             to="/$"
