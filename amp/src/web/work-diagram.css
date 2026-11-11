@@ -223,14 +223,18 @@
   display: grid;
   grid-template-columns: max-content minmax(0, max-content);
   justify-content: center;
-  align-items: center;
+  align-items: start;
   gap: var(--space-4) var(--space-2);
   color: var(--color-on-surface);
   font-size: 21px;
   line-height: 1.2;
 }
+/* The left side sits level with the first row of a wrapped right side. */
 .work-line-left {
   justify-self: end;
+  display: flex;
+  align-items: center;
+  min-height: var(--target-size);
 }
 .work-line-right {
   display: flex;
@@ -240,7 +244,7 @@
   min-width: 0;
 }
 .work-diagram[data-kind="lines"] {
-  --work-line-entry: 80px;
+  --work-line-entry: 72px;
 }
 .work-line-text {
   white-space: nowrap;

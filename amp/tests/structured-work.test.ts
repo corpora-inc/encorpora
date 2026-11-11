@@ -1137,3 +1137,34 @@ test("printed scientific notation never shows a caret: one typeset number or rai
     }
   }
 });
+
+test("a diagram places every field once, fills undrawn places with 0 and marks each entry", async () => {
+  const {
+    diagramMarks,
+    structuralProblem,
+    withDiagramZeros,
+    workProgress,
+  } = await import("../src/math/structured-work");
+  const { generateProblem: generate } = await import("../src/math/engine");
+  // 1,726 ÷ 16: hundreds and ones parts; the tens place does not fit.
+  let p = generate("chunk-model", "s23");
+  for (let i = 0; !p.public.prompt.startsWith("Divide 1,726 by 16"); i++)
+    p = generate("chunk-model", `pin-${i}`);
+  const r = p.public.response;
+  assert.ok(r.kind === "structured-work" && r.diagram?.kind === "area");
+  if (r.kind !== "structured-work" || r.diagram?.kind !== "area") return;
+  assert.equal(structuralProblem(r), null);
+  // The learner never types the tens width; it is not counted as theirs.
+  assert.deepEqual(workProgress(r, ""), { done: 0, total: 5 });
+  const typed = [["100", "1600"], ["", "7"], ["112", "14"]];
+  assert.equal(JSON.stringify(withDiagramZeros(r, typed)), p.answer);
+  // A right width beside a wrong area is marked right.
+  const wrong = JSON.stringify([["100", "1700"], ["0", "7"], ["112", "14"]]);
+  const marks = diagramMarks(r, wrong, p.answer)!;
+  assert.equal(marks.get("0:0"), true);
+  assert.equal(marks.get("0:1"), false);
+  assert.equal(marks.has("1:0"), false);
+  // A diagram that leaves a field out is rejected.
+  const missing = { ...r, diagram: { ...r.diagram, zeros: undefined } };
+  assert.equal(structuralProblem(missing), "A diagram leaves a field out");
+});
