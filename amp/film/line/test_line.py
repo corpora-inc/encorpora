@@ -55,7 +55,7 @@ def setup(tmp_path, monkeypatch):
         providers.write_json(workspace/'screenplay.json', script)
         record = {'status': 'succeeded', 'api_dollars': None, 'reported_dollars': None,
                   'tokens': {'input_uncached': 100, 'input_cached': 20, 'cache_write': 0, 'output': 30},
-                  'usage_complete': True}
+                  'usage_complete': True, 'wall_seconds': 1.25}
         providers.write_json(receipt, record)
         return record
     def check(config, row, workspace):

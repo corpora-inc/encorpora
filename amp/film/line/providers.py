@@ -267,6 +267,7 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
     write_json(receipt, record)
     start = time.monotonic()
     timed_out = False
+    interruption = None
     try:
         process = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                    stderr=subprocess.PIPE, cwd=workspace, env=env,
@@ -289,6 +290,15 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
         except subprocess.TimeoutExpired:
             os.killpg(process.pid, signal.SIGKILL)
             stdout, stderr = process.communicate()
+    except BaseException as error:
+        interruption = error
+        os.killpg(process.pid, signal.SIGTERM)
+        try:
+            stdout, stderr = process.communicate(timeout=15)
+        except subprocess.TimeoutExpired:
+            os.killpg(process.pid, signal.SIGKILL)
+            stdout, stderr = process.communicate()
+    record['interrupted'] = interruption is not None
     stdout, stderr = redact(stdout, secrets), redact(stderr, secrets)
     receipt.with_suffix('.stdout').write_text(stdout)
     receipt.with_suffix('.stderr').write_text(stderr)
@@ -325,14 +335,16 @@ def run_agent(provider, role, prompt, workspace, receipt, *, secrets=None,
                 record['reported_cost_is_partial'] = response.get('cost_is_partial', False)
         record['raw_usage'] = raw_usage
         record['tokens'] = normalized_usage(provider, raw_usage)
-        record['usage_complete'] = bool(raw_usage) and not timed_out and not record.get('usage_partial')
+        record['usage_complete'] = bool(raw_usage) and not timed_out and interruption is None and not record.get('usage_partial')
     except (ValueError, KeyError, TypeError) as error:
         record['parse_error'] = type(error).__name__
         record['usage_complete'] = False
-    record['status'] = 'failed' if process.returncode or timed_out or record.get('provider_error') else 'succeeded'
+    record['status'] = 'failed' if process.returncode or timed_out or interruption is not None or record.get('provider_error') else 'succeeded'
     if subscription:
         for key in ('api_dollars', 'reported_dollars', 'partial_api_dollars'):
             record[key] = None
     record['response'] = result
     write_json(receipt, record)
+    if interruption is not None:
+        raise interruption
     return record

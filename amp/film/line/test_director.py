@@ -26,6 +26,8 @@ def test_revise_preserves_workspace_and_records_each_attempt(setup, monkeypatch,
     second = line.revise_film(config, args.film, notes)
     assert len(second['author_attempts']) == 2
     assert second['tokens']['input_uncached'] == 200
+    assert second['author_seconds'] == 2.5
+    assert [a['seconds'] for a in second['author_attempts']] == [1.25, 1.25]
     assert second['cost']['model_receipts_without_full_dollars'] == 2
     assert (root/'attempts/1/screenplay.json').exists()
     assert second['status'] == 'checked'
@@ -113,3 +115,60 @@ def test_adopt_checks_without_author_and_keeps_external_usage(setup, monkeypatch
     assert recipe['external_usage'] == {'minutes': 12, 'tokens': 300}
     with pytest.raises(ValueError, match='already registered'):
         line.adopt_film(config, SimpleNamespace(film=args.film))
+
+
+def test_auto_references_fall_back_to_none(setup):
+    config, args, _, _ = setup
+    args.reference = ['auto']
+    assert line.write_film(config, args)['format_references'] == []
+
+
+def test_interrupted_revision_keeps_attempt_number_and_previous_cut(setup, monkeypatch, tmp_path):
+    config, args, _, _ = setup
+    line.write_film(config, args)
+    author = providers.run_agent
+    def interrupted(*a, **kw):
+        raise KeyboardInterrupt()
+    monkeypatch.setattr(providers, 'run_agent', interrupted)
+    notes = tmp_path/'notes.txt'; notes.write_text('Show the next step.')
+    with pytest.raises(KeyboardInterrupt):
+        line.revise_film(config, args.film, notes)
+    root = line.film_root(config, args.film)
+    assert len(read_json(root/'recipe.json')['author_attempts']) == 2
+    monkeypatch.setattr(providers, 'run_agent', author)
+    result = line.revise_film(config, args.film, notes)
+    assert len(result['author_attempts']) == 3
+    assert result['author_attempts'][2]['receipt'].endswith('revision-3.json')
+
+
+def test_provider_interrupt_stops_child_and_preserves_receipt(tmp_path, monkeypatch):
+    stopped = []
+    class Process:
+        pid = 123
+        returncode = -15
+        first = True
+        def __init__(self, *a, **kw): pass
+        def communicate(self, *a, **kw):
+            if self.first:
+                self.first = False
+                raise KeyboardInterrupt()
+            return '', ''
+    monkeypatch.setattr(providers.subprocess, 'Popen', Process)
+    monkeypatch.setattr(providers.os, 'killpg', lambda pid, signal: stopped.append(pid))
+    receipt = tmp_path/'receipt.json'
+    with pytest.raises(KeyboardInterrupt):
+        providers.run_agent('sol', 'screenplay', 'Test', tmp_path/'work', receipt)
+    assert stopped == [123]
+    assert read_json(receipt)['status'] == 'failed' and read_json(receipt)['interrupted']
+
+
+def test_existing_film_accepts_new_operational_config_without_reauthoring(setup):
+    config, args, calls, _ = setup
+    line.write_film(config, args)
+    config['claude_auth'] = 'subscription'
+    config['queue_page'] = str(Path(config['root']).parent/'review/index.html')
+    line.write_film(config, args)
+    assert calls == [('sol', 'high')]
+    config['player_url'] = 'http://localhost/different-player/'
+    with pytest.raises(ValueError, match='runtime configuration changed'):
+        line.write_film(config, args)

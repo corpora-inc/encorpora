@@ -8,6 +8,8 @@ import os
 from pathlib import Path
 import re
 import shutil
+import signal
+import sys
 import subprocess
 import time
 from urllib.parse import urljoin
@@ -193,14 +195,14 @@ def existing_film(config, identifier):
 
 def recheck(local, recipe, workspace):
     root, row = Path(local['root']), local['film']
+    previous_status = recipe['status']
     with stage(local, recipe, 'kit-check'):
         checked = check_film(local, row, workspace)
         write_json(root/'films'/row['id']/'check.json', checked)
         if not checked['passed']:
             raise RuntimeError('Kit check failed: '+'; '.join(checked['errors']))
     changed = recipe.get('screenplay_sha256') != digest(workspace/'screenplay.json')
-    if changed or recipe['status'] not in ('voiced', 'exported', 'released'):
-        recipe['status'] = 'checked'
+    recipe['status'] = previous_status if not changed and previous_status in ('voiced', 'exported', 'released') else 'checked'
     recipe['screenplay_sha256'] = digest(workspace/'screenplay.json')
     shutil.copyfile(workspace/'screenplay.json', root/'films'/row['id']/'screenplay.json')
     write_json(root/'recipe.json', recipe)
@@ -224,10 +226,16 @@ def revise_film(config, identifier, notes_path):
     shutil.copyfile(workspace/'screenplay.json', archive/'screenplay.json')
     prompt = recipe['prompt'] + "\n\nDirector's notes on your first cut\n" + notes
     receipt = root/'runs'/identifier/f'revision-{attempt}.json'
+    remember_attempt(recipe, {'status': 'running'}, receipt, prompt)
     with stage(local, recipe, 'revise'):
-        record = providers.run_agent(recipe['provider'], 'screenplay', prompt, workspace, receipt,
-            secrets=providers.credentials(local['env_file']), check_command=check_command(local, local['film'], workspace),
-            timeout=2700, effort=recipe['effort'], claude_auth=local.get('claude_auth', 'api'))
+        try:
+            record = providers.run_agent(recipe['provider'], 'screenplay', prompt, workspace, receipt,
+                secrets=providers.credentials(local['env_file']), check_command=check_command(local, local['film'], workspace),
+                timeout=2700, effort=recipe['effort'], claude_auth=config.get('claude_auth', local.get('claude_auth', 'api')))
+        except BaseException:
+            record = read_json(receipt, {'status': 'failed'})
+            remember_attempt(recipe, {**record, 'status': 'failed'}, receipt, prompt)
+            raise
         remember_attempt(recipe, record, receipt, prompt)
         if record['status'] != 'succeeded':
             raise RuntimeError('Author did not succeed; the attempt and prior screenplay are preserved')
@@ -260,6 +268,8 @@ def adopt_film(config, args):
              'workspace_root': str(root/'workspace'), '_config_path': str(root/'config.json')}
     write_json(root/'config.json', local)
     write_json(root/'recipe.json', recipe)
+    write_json(root/'runs'/args.film/'adopted.json', {'status': 'succeeded', 'transport': 'external',
+        'api_dollars': None, 'reported_dollars': None, 'external_usage': recipe['external_usage']})
     workspace = prepare_workspace(local, pack, {})
     write_json(workspace/'screenplay.json', script)
     recheck(local, recipe, workspace)
@@ -275,7 +285,7 @@ def write_film(config, args):
         names = list(prior['references']) if prior else auto_references(config, args.skill, root)
     elif 'auto' in names:
         raise ValueError('Use auto by itself or name explicit references')
-    refs = {name: reference(config, name) for name in names}
+    refs = prior['references'] if args.reference == ['auto'] and prior else {name: reference(config, name) for name in names}
     inputs = {'brief': brief, 'concept': concept, 'references': refs,
               'skill': args.skill, 'provider': args.model, 'effort': args.effort}
     prior = read_json(root/'inputs.json')
@@ -299,7 +309,11 @@ def write_film(config, args):
     row = {'id': args.film, 'type': primary, 'teacher': recipe['teacher']}
     local = {**config, 'line_root': config['root'], 'root': str(root), 'film': row,
              'production': True, 'workspace_root': str(root/'workspace'), '_config_path': str(root/'config.json')}
-    fixed_file(root/'config.json', json.dumps(local, indent=2)+'\n')
+    saved_config = read_json(root/'config.json')
+    operational = {'claude_auth', 'queue_page'}
+    if saved_config is not None and {k: v for k, v in saved_config.items() if k not in operational} != {k: v for k, v in local.items() if k not in operational}:
+        raise ValueError('Film runtime configuration changed; use its recorded checkout and paths')
+    write_json(root/'config.json', local)
     with stage(local, recipe, 'facts'):
         pack = read_json(root/'facts/facts.json') or facts(config, args.skill, root/'facts')
         if primary not in {p['type'] for p in pack['problem_types']}:
@@ -331,7 +345,7 @@ def write_film(config, args):
         if not checked['passed']:
             raise RuntimeError('Kit check failed: '+'; '.join(checked['errors']))
     unchanged = previous_script == digest(workspace/'screenplay.json')
-    recipe.update(status=previous_status if unchanged and previous_status in ('voiced', 'exported') else 'checked',
+    recipe.update(status=previous_status if unchanged and previous_status in ('voiced', 'exported', 'released') else 'checked',
                   screenplay_sha256=digest(workspace/'screenplay.json'))
     write_json(root/'recipe.json', recipe)
     return recipe
@@ -448,4 +462,5 @@ def main(argv=None):
 
 
 if __name__ == '__main__':
+    signal.signal(signal.SIGTERM, lambda *_: sys.exit(130))
     main()
