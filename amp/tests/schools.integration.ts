@@ -753,6 +753,8 @@ test(
             person: randomUUID(),
             session: randomUUID(),
             workbook: randomUUID(),
+            // A recent-work replay: another tenant's student's attempt.
+            attempt: randomUUID(),
           };
           const known = new Set(Object.keys(fixtures));
           assert.ok(schoolRoutes.length >= 6);

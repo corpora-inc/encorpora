@@ -16,8 +16,11 @@ import {
   handedStudentDevice,
   studentSession,
 } from "./lib/student-device";
-const authority = import.meta.env.VITE_AMP_AUTHORITY as string | undefined;
-const clientId = import.meta.env.VITE_AMP_CLIENT_ID as string | undefined;
+// Read where the module loads, so it must also load under Node (print
+// export, rendering and tests import screens that sign requests), where
+// there is no `import.meta.env`.
+const authority = import.meta.env?.VITE_AMP_AUTHORITY as string | undefined;
+const clientId = import.meta.env?.VITE_AMP_CLIENT_ID as string | undefined;
 const manager =
   !nativeRuntime && authority && clientId
     ? new UserManager({

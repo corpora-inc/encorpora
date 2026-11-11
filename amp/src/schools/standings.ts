@@ -182,6 +182,43 @@ const shiftDays = (day: string, days: number) =>
     .toISOString()
     .slice(0, 10);
 
+/** Where a learner's term growth starts: the term's start, or the day they
+ * joined as a student if later. SQL expressions in, a date out. */
+const termStartSql = (learner: string, from: string, to: string) =>
+  `GREATEST(${from}::date, COALESCE((
+     SELECT min(r.begin_on) FROM amp_org_roles r
+     JOIN amp_people p ON p.id=r.person_id
+     WHERE p.learner_id=${learner} AND r.role='student' AND r.begin_on<=${to}::date
+   ), ${from}::date))`;
+
+/** The term a class's boards read today (see `termFor`). */
+export async function classTerm(db: Database, classId: string): Promise<Term> {
+  const klass = (
+    await db.query(
+      "SELECT id,name,org_id,session_id,grading_kind,ARRAY[]::text[] AS path FROM amp_classes WHERE id=$1",
+      [classId],
+    )
+  ).rows[0] as StudentClass;
+  return termFor(db, klass);
+}
+
+/** The first day of a learner's growth window on a class's term board: the
+ * term's start, or the day they joined as a student if later (`measured`). */
+export async function growthWindowStart(
+  db: Database,
+  learnerId: string,
+  classId: string,
+): Promise<string> {
+  const term = await classTerm(db, classId);
+  return (
+    await db.query(`SELECT ${termStartSql("$1", "$2", "$3")}::text AS day`, [
+      learnerId,
+      term.from,
+      term.to,
+    ])
+  ).rows[0].day as string;
+}
+
 /** One number per student, for students with something to show. Growth is a
  * hundredth of a grade per point, so it reads as a whole number and says nothing
  * of the level itself. A term and a week both use the shared pace (`growth.ts`)
@@ -230,13 +267,10 @@ async function measured(
     `SELECT l.learner_id,
        ${growthArraySql({
          learner: "l.learner_id",
-         from: span === "term"
-           ? `GREATEST($2::date, COALESCE((
-               SELECT min(r.begin_on) FROM amp_org_roles r
-               JOIN amp_people p ON p.id=r.person_id
-               WHERE p.learner_id=l.learner_id AND r.role='student' AND r.begin_on<=$3::date
-             ), $2::date))`
-           : "$2::date",
+         from:
+           span === "term"
+             ? termStartSql("l.learner_id", "$2", "$3")
+             : "$2::date",
          to: "$3::date",
        })} AS growth
      FROM unnest($1::text[]) AS l(learner_id)`,

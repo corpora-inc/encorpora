@@ -13,6 +13,11 @@ import { asFrozen } from "./fixtures/recorded-version";
  * newer story records story19 and may change only the wording.
  * origin/main used skill multiplicative-stories; this branch already serves
  * multiplicative-comparison, so the fixture is the branch surface, not main.
+ *
+ * 2026-11-11: 19 classic digests updated for one display-only change, the
+ * addition in the "7 more" choice's feedback typeset as math ("$15 + 7$",
+ * 786aeaa81). Every other byte, the draw and the variant are unchanged: each
+ * new digest was checked to equal the old one with that typesetting undone.
  */
 const golden = JSON.parse(
   readFileSync(

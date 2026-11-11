@@ -7,22 +7,29 @@ import {
 
 /** Misspecified coverage after sd-cal-v1, on the seeded population that
  * fixed the constants. Quick mode keeps that whole grid (a 40-learner draw
- * misses ±4 by sampling error) and still finishes in under a minute. */
+ * misses ±4 by sampling error). */
 const MAE_AT_100 = 0.7;
+/** The harness's own work, in CPU time across its worker threads: about
+ * 310 s measured on 2026-11-11, so a budget half again over it catches a
+ * slower harness. Wall time is no measure of that: the suite runs this beside
+ * every other test file, and the machine may be shared, so the wall-clock
+ * limit below only guards against a hang. */
+const CPU_BUDGET_MS = 450_000;
 
 test(
   "reported sd covers the misspecified production learner",
-  { timeout: 60_000 },
+  { timeout: 600_000 },
   async () => {
-    const started = Date.now();
+    const started = process.cpuUsage();
     const report = await runProductionCalibration({
       seed: CALIBRATION_SEED,
       quick: true,
       models: ["misspecified"],
       quiet: true,
     });
-    const elapsed = Date.now() - started;
-    assert.ok(elapsed < 60_000, `harness took ${elapsed}ms`);
+    const used = process.cpuUsage(started);
+    const cpu = Math.round((used.user + used.system) / 1000);
+    assert.ok(cpu < CPU_BUDGET_MS, `harness used ${cpu}ms of CPU`);
     const bands = report.models.misspecified.bands.filter(
       (band) => band.scope === "overall" || band.scope === "strands",
     );
