@@ -3,20 +3,20 @@ import type { ProblemMethod } from "./problem-lessons";
 import { scene } from "../math/scene/author";
 
 export const linePlotBuildMethod: ProblemMethod = {
-  goal: "Show every measurement by placing an X above its number.",
+  goal: "Show every measurement by placing an $X$ above its number.",
   intuition:
-    "A line plot shows measurements with marks above a number line. Each X stands for one measurement. If two lengths are the same, their two Xs stack above the same number. Numbers with no measurements keep their places on the line.",
+    "A line plot shows measurements with marks above a number line. Each $X$ stands for one measurement. If two lengths are the same, their two $X$s stack above the same number. Numbers with no measurements keep their places on the line.",
   terms: ["dot-plot", "length", "unit"],
   method: [
     "Read each length. On a ruler, find the nearest end mark and count units from the object's start.",
-    "Place one X above the number for each measurement. Stack another X when a number repeats.",
-    "Check each stack, then count all the Xs. There must be one for every measurement.",
+    "Place one $X$ above the number for each measurement. Stack another $X$ when a number repeats.",
+    "Check each stack, then count all the $X$s. There must be one for every measurement.",
   ],
   watch:
     "Keep repeated measurements. Leave a number with no measurements empty, without skipping it on the scale.",
 };
 export const linePlotBuildPrinciple =
-  "A line plot places one X above a number for each measurement of that length. Consecutive whole numbers keep every step the same size, including empty columns.";
+  "A line plot places one $X$ above a number for each measurement of that length. Consecutive whole numbers keep every step the same size, including empty columns.";
 export const linePlotBuildLesson = chainLesson({
   id: "line-plot-build-lesson",
   title: "Make a line plot",
@@ -37,12 +37,12 @@ export const linePlotBuildLesson = chainLesson({
     prompt:
       "Five ribbons measure 3, 5, 3, 6 and 5 centimeters. Make a line plot of their lengths.",
     steps: [
-      "The two measurements of 3 centimeters need two Xs above 3.",
-      "The two measurements of 5 centimeters need two Xs above 5. The one measurement of 6 needs one X above 6.",
+      "The two measurements of 3 centimeters need two $X$s above 3.",
+      "The two measurements of 5 centimeters need two $X$s above 5. The one measurement of 6 needs one $X$ above 6.",
       "Leave 4 empty because no ribbon measured 4 centimeters. Keep 4 on the line so the steps stay equal.",
-      "Count the marks: $2 + 2 + 1 = 5$. That is one X for each ribbon.",
+      "Count the marks: $2 + 2 + 1 = 5$. That is one $X$ for each ribbon.",
     ],
-    answer: "2 Xs above 3, 2 Xs above 5, and 1 X above 6",
+    answer: "2 $X$s above 3, 2 $X$s above 5, and 1 $X$ above 6",
     figure: {
       kind: "scene",
       scene: scene({
@@ -61,10 +61,10 @@ export const linePlotBuildLesson = chainLesson({
   formalTitle: "What a line plot records",
   formal: [linePlotBuildPrinciple],
   pitfalls: [
-    "Putting just one X above a repeated length.",
+    "Putting just one $X$ above a repeated length.",
     "Reading an object's end number without counting from its start.",
-    "Moving an X to the next number instead of placing it above its own number.",
+    "Moving an $X$ to the next number instead of placing it above its own number.",
   ],
   parentGuide:
-    "Measure several small objects together. List each length, then have your learner place an X for every item in the list.",
+    "Measure several small objects together. List each length, then have your learner place an $X$ for every item in the list.",
 });

@@ -1630,12 +1630,12 @@ function calculatorDisplayCase(r: Random): Case {
     prompt: `A calculator shows \`${shown}\`. What number is this?`,
     answer: plain(value),
     explanation: [
-      `A calculator writes E for "times ten to the power." \`${shown}\` means $${sciTex(c, n)}$.`,
-      `The number after E is the exponent, sign included. Move the decimal point ${places(Math.abs(n))} to the ${n < 0 ? "left" : "right"}.`,
+      `A calculator writes $E$ for "times ten to the power." \`${shown}\` means $${sciTex(c, n)}$.`,
+      `The number after $E$ is the exponent, sign included. Move the decimal point ${places(Math.abs(n))} to the ${n < 0 ? "left" : "right"}.`,
       `$${sciTex(c, n)} = ${standardTex(value)}$.`,
-      `Losing the minus sign would point the other way. E is not subtraction, and it is not a power on ${plain(c)} itself.`,
+      `Losing the minus sign would point the other way. $E$ is not subtraction, and it is not a power on ${plain(c)} itself.`,
     ],
-    hint: `The display \`${shown}\` uses E for times ten to the power that follows. Keep the sign of that power, then slide the decimal point.`,
+    hint: `The display \`${shown}\` uses $E$ for times ten to the power that follows. Keep the sign of that power, then slide the decimal point.`,
     tags: [negative ? "display-small" : "display-large", "calculator-display"],
     givens: {
       kind: "power-of-ten",
@@ -1692,7 +1692,7 @@ function calculatorProductCase(r: Random): Case {
         divide
           ? `Divide the front digits and subtract the exponents: $${sci(A)} \\div ${sci(B)} = ${sciTex(coef, target)}$.`
           : `Multiply the front digits and add the exponents: $${sci(A)} \\times ${sci(B)} = ${sciTex(coef, target)}$.`,
-        `The display \`${shown}\` is that result. E means times ten to the power ${target}.`,
+        `The display \`${shown}\` is that result. $E$ means times ten to the power ${target}.`,
         `In standard form, $${sciTex(coef, target)} = ${standardTex(value)}$.`,
       ],
       hint: divide
@@ -1914,7 +1914,7 @@ function chooseUnitCase(r: Random): Case {
         ? `Each step to a smaller unit multiplies by 1,000. After ${off === 1 ? "one step" : `${off} steps`}, the number is ${plain(value)}.`
         : `Each step to a larger unit divides by 1,000. After ${-off === 1 ? "one step" : `${-off} steps`}, the number is ${plain(value)}.`,
       `${plain(value)} ${nounFor(Number(plain(value)), UNIT_NAME[context.unit]!.replace(/ies$/, "y").replace(/s$/, ""))} is at least 1 and under 1,000. One step past that is ${plain(shift(value, off > 0 ? 3 : -3))}, which is the wrong size to picture.`,
-      `Check backward: ${plain(value)} ${nounFor(Number(plain(value)), UNIT_NAME[context.unit]!.replace(/ies$/, "y").replace(/s$/, ""))} returns to $${sciTex(coef, exp)}$ ${units[gIdx]}.`,
+      `Check backward: ${plain(value)} ${nounFor(Number(plain(value)), UNIT_NAME[context.unit]!.replace(/ies$/, "y").replace(/s$/, ""))} returns to $${sciTex(coef, exp)}$ ${units[gIdx]!}.`,
     ],
     hint: `The measure starts as ${coefText} times ten to the power ${expText}, in ${givenName}. Each step on the ladder changes the number by a factor of 1,000. Stop at the step whose number is at least 1 and under 1,000.`,
     tags: [context.ladder, "choose-unit-size"],

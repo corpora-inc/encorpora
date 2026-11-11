@@ -130,9 +130,10 @@ export function buildSkillFacts(id: string, standards: OfficialStandard[]) {
 // Importable for offline unit tests; the CLI reads the configured standards file.
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const { values } = parseArgs({ options: {
-    standards: { type: "string" }, out: { type: "string" }, skill: { type: "string" },
+    standards: { type: "string" }, out: { type: "string" }, template: { type: "string" }, skill: { type: "string" },
   } });
-  if (!values.standards || !values.out || !values.skill)
+  const skill = values.skill ?? templates.find(t => t.id === values.template)?.skillId;
+  if (!values.standards || !values.out || !skill)
     throw new Error("Required: --skill <id> --standards <private-json> --out <private-directory>");
   const worktree = resolve(fileURLToPath(new URL("../../../", import.meta.url)));
   mkdirSync(values.out, { recursive: true });
@@ -140,7 +141,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   if (destination === worktree || destination.startsWith(worktree + sep))
     throw new Error("Generated facts belong outside the public worktree");
   const raw = readFileSync(values.standards, "utf8");
-  const pack = { ...buildSkillFacts(values.skill, JSON.parse(raw)),
+  const pack = { ...buildSkillFacts(skill, JSON.parse(raw)),
     standards_sha256: createHash("sha256").update(raw).digest("hex") };
   writeFileSync(join(destination, "facts.json"), JSON.stringify(pack, null, 2) + "\n");
   console.log(JSON.stringify({ skill: values.skill, problem_types: pack.problem_types.length }));

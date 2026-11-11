@@ -127,9 +127,9 @@ export function linePlotBuildAnswerText(
     Object.entries(counts)
       .map(
         ([value, count]) =>
-          `${count} ${count === 1 ? "X" : "Xs"} above ${value} ${response.axis.unit}`,
+          `${count} ${count === 1 ? "$X$" : "$X$s"} above ${value} ${response.axis.unit}`,
       )
-      .join("; ") || "No Xs placed"
+      .join("; ") || "No $X$s placed"
   );
 }
 export type LinePlotDiagnosis = {
@@ -159,7 +159,7 @@ export function diagnoseLinePlotBuild(
     )
       return {
         tag: "shift",
-        message: `You put each X one number too far ${delta > 0 ? "right" : "left"}. An X for ${example} goes right above ${example}.`,
+        message: `You put each $X$ one number too far ${delta > 0 ? "right" : "left"}. An $X$ for ${example} goes right above ${example}.`,
       };
   }
   const repeat = Object.entries(expected).find(([, c]) => c > 1);
@@ -169,14 +169,14 @@ export function diagnoseLinePlotBuild(
   )
     return {
       tag: "dedupe",
-      message: `You dropped the repeated measurements. There were ${repeat[1]} measurements of ${repeat[0]} ${response.axis.unit}, so ${repeat[0]} needs ${repeat[1]} Xs.`,
+      message: `You dropped the repeated measurements. There were ${repeat[1]} measurements of ${repeat[0]} ${response.axis.unit}, so ${repeat[0]} needs ${repeat[1]} $X$s.`,
     };
   const n = Object.values(expected).reduce((a, b) => a + b, 0);
   const m = Object.values(actual).reduce((a, b) => a + b, 0);
   if (n !== m)
     return {
       tag: "total",
-      message: `There were ${n} measurements but you placed ${m} Xs. Every measurement gets exactly one X.`,
+      message: `There were ${n} measurements but you placed ${m} $X$s. Every measurement gets exactly one $X$.`,
     };
   // Match reading every end mark, or just one nonzero-start object's end mark.
   const readings = context?.readings;
@@ -213,6 +213,6 @@ export function diagnoseLinePlotBuild(
   return {
     tag: "recount",
     message:
-      "Recount one measurement at a time. Put its X directly above its number, including each repeated measurement.",
+      "Recount one measurement at a time. Put its $X$ directly above its number, including each repeated measurement.",
   };
 }

@@ -29,12 +29,12 @@ const pack = formatLessons([
       "A letter in an equation stands for the one number that makes the equation true. A letter in an inequality stands for every number that makes the inequality true. The words at least and at most include the boundary; more than and fewer than do not.",
     example: {
       prompt:
-        "Tara has s stickers. She gives away 7 and has 15 left. Riders must be at least 48 inches tall. Let h be an allowed height.",
+        "Tara has $s$ stickers. She gives away 7 and has 15 left. Riders must be at least 48 inches tall. Let $h$ be an allowed height.",
       steps: [
-        "15 left after 7 were given away means s = 15 + 7 = 22. One number.",
-        "Every height from 48 inches up is allowed, so h ≥ 48. Not only 48.",
+        "15 left after 7 were given away means $s = 15 + 7 = 22$. One number.",
+        "Every height from 48 inches up is allowed, so $h ≥ 48$. Not only 48.",
       ],
-      answer: "s = 22; h ≥ 48",
+      answer: "$s = 22$; $h ≥ 48$",
     },
     methodTitle: "Fact or condition",
     methodText: [
@@ -76,7 +76,7 @@ const pack = formatLessons([
         "A gym charges 42 dollars to join and 26 dollars a month. The total paid is 120 dollars.",
       steps: [
         "Arithmetic: 120 − 42 = 78, then 78 ÷ 26 = 3.",
-        "Algebra: 26m + 42 = 120. Subtract 42, then divide by 26. Same order.",
+        "Algebra: $26m + 42 = 120$. Subtract 42, then divide by 26. Same order.",
       ],
       answer: "3 months",
     },
@@ -86,7 +86,7 @@ const pack = formatLessons([
       "Doing it to both sides is the algebra form of that same step.",
     ],
     formal:
-      "For px + q = r the operations are subtract q, then divide by p. For p(x + q) = r they are divide by p, then subtract q. Another valid route is not used as a distractor.",
+      "For $px + q = r$ the operations are subtract $q$, then divide by $p$. For $p(x + q) = r$ they are divide by $p$, then subtract $q$. Another valid route is not used as a distractor.",
     pitfalls: [
       "Dividing before subtracting the fee solves a different equation.",
       "Swapping the fee and the rate uses the wrong numbers.",
@@ -158,7 +158,7 @@ const pack = formatLessons([
     principle:
       "A non-whole boundary uses ceil of the boundary for a greater-than-or-equal ray and floor of the boundary for a less-than-or-equal ray, because a count is a whole number.",
     example: {
-      prompt: "50 + 3s ≥ 100. What whole numbers of sales work?",
+      prompt: "$50 + 3s \\ge 100$. What whole numbers of sales work?",
       steps: [
         "The boundary is 50/3, about 16.7.",
         "Sales must be at least that, so the least whole number is 17.",
@@ -171,7 +171,7 @@ const pack = formatLessons([
       "Move to the next whole number that is still inside the ray.",
     ],
     formal:
-      "If b is not a whole number, the least whole solution of x ≥ b is ceil(b), and the greatest whole solution of x ≤ b is floor(b).",
+      "If $b$ is not a whole number, the least whole solution of $x \\ge b$ is ceil($b$), and the greatest whole solution of $x \\le b$ is floor($b$).",
     pitfalls: [
       "Rounding 16.7 down to 16 makes 50 + 3·16 = 98, which is still under 100.",
       "At least is not at most.",
@@ -185,40 +185,40 @@ const pack = formatLessons([
     summary:
       "Complete a right side so a linear equation has no solution, infinitely many solutions, or exactly one.",
     objectives: [
-      "Match x-counts and constants to none, infinitely many, or one solution.",
+      "Match $x$-counts and constants to none, infinitely many, or one solution.",
       "Accept any equivalent form of the left side for infinitely many solutions.",
     ],
     intuition:
-      "Compare how many x there are before you compare the plain numbers. Same count and same number means every x. Same count and different numbers means none. Different counts means one.",
+      "Compare how many $x$ there are before you compare the plain numbers. Same count and same number means every $x$. Same count and different numbers means none. Different counts means one.",
     terms: [],
     method: [
-      "Read the x-count and the plain number on the left.",
-      "For no solution, keep the x-count and change the plain number.",
-      "For every solution, match the left side. For one solution, change the x-count.",
+      "Read the $x$-count and the plain number on the left.",
+      "For no solution, keep the $x$-count and change the plain number.",
+      "For every solution, match the left side. For one solution, change the $x$-count.",
     ],
     watch:
-      "A different x-count does not give no solution. No solution needs the same x-count and a different plain number.",
+      "A different $x$-count does not give no solution. No solution needs the same $x$-count and a different plain number.",
     principle:
-      "For px + q = ax + b: a = p and b ≠ q gives no solution; a = p and b = q gives infinitely many; a ≠ p gives exactly one. Equivalent expressions have the same a and b.",
+      "For $px + q = ax + b$: $a = p$ and $b ≠ q$ gives no solution; $a = p$ and $b = q$ gives infinitely many; $a ≠ p$ gives exactly one. Equivalent expressions have the same $a$ and $b$.",
     example: {
-      prompt: "Complete 4x + 3 = ____ for no solution, every solution, and one solution.",
+      prompt: "Complete $4x + 3 =$ ____ for no solution, every solution, and one solution.",
       steps: [
-        "4x + 5 has the same x-count and a different plain number: no solution.",
-        "4x + 3, or 2(2x + 1) + 1, matches the left side: every solution.",
-        "5x + 3 has a different x-count: one solution.",
+        "$4x + 5$ has the same $x$-count and a different plain number: no solution.",
+        "$4x + 3$, or $2(2x + 1) + 1$, matches the left side: every solution.",
+        "$5x + 3$ has a different $x$-count: one solution.",
       ],
-      answer: "4x + 5; 4x + 3; 5x + 3",
+      answer: "$4x + 5$; $4x + 3$; $5x + 3$",
     },
-    methodTitle: "Count x first",
+    methodTitle: "Count the variable first",
     methodText: [
-      "The x-count decides whether the variable cancels.",
+      "The $x$-count decides whether the variable cancels.",
       "Only after it cancels do you compare the plain numbers.",
     ],
     formal:
       "Same coefficient and same constant: infinitely many solutions. Same coefficient and different constant: no solution. Different coefficient: exactly one solution.",
     pitfalls: [
-      "Any mismatch does not mean no solution. A different x-count leaves one solution.",
-      "A different plain number with the same x-count is no solution, not one solution.",
+      "Any mismatch does not mean no solution. A different $x$-count leaves one solution.",
+      "A different plain number with the same $x$-count is no solution, not one solution.",
     ],
     parentGuide:
       "Ask two questions: do the $x$ terms cancel, and if they do, is the leftover sentence true?",
@@ -244,12 +244,12 @@ const pack = formatLessons([
     principle:
       "A solution of a system is a pair that satisfies every equation. On the graph, that pair is the intersection and no other labeled point.",
     example: {
-      prompt: "P is on line 1 only, Q is the crossing, and R is on line 2 only. Which point solves the system?",
+      prompt: "$P$ is on line 1 only, $Q$ is the crossing, and $R$ is on line 2 only. Which point solves the system?",
       steps: [
-        "Q is on both lines.",
-        "P makes only the first equation true, and R makes only the second true.",
+        "$Q$ is on both lines.",
+        "$P$ makes only the first equation true, and $R$ makes only the second true.",
       ],
-      answer: "Q",
+      answer: "$Q$",
     },
     methodTitle: "Both lines",
     methodText: [
@@ -260,7 +260,7 @@ const pack = formatLessons([
       "If a point satisfies the first equation and not the second, it is not a solution of the system. The intersection satisfies both.",
     pitfalls: [
       "A point on the first line is not enough.",
-      "A crossing does not mean the x-coordinate equals the y-coordinate.",
+      "A crossing does not mean the $x$-coordinate equals the $y$-coordinate.",
     ],
     parentGuide:
       "Ask which dot would still be on the paper if either line were erased. Only the crossing survives both erasures.",
@@ -278,7 +278,7 @@ const pack = formatLessons([
       "A line is every pair that makes its equation true. Two of those pairs are enough to show the line.",
     terms: [],
     method: [
-      "Choose an x-value the denominator of the slope divides.",
+      "Choose an $x$-value the denominator of the slope divides.",
       "Multiply by the slope and add the intercept.",
       "Plot a second point the same way.",
     ],
@@ -286,22 +286,22 @@ const pack = formatLessons([
     principle:
       "A lattice point is on the line exactly when its coordinates satisfy the equation. The grader accepts any two distinct lattice points on the first line.",
     example: {
-      prompt: "Plot two lattice points on y = (1/2)x + 1.",
+      prompt: "Plot two lattice points on $y = (1/2)x + 1$.",
       steps: [
-        "At x = 0, y = 1. The point (0, 1) is on the line.",
-        "At x = 2, y = 2. The point (2, 2) is on the line.",
+        "At $x = 0$, $y = 1$. The point $(0, 1)$ is on the line.",
+        "At $x = 2$, $y = 2$. The point $(2, 2)$ is on the line.",
       ],
-      answer: "(0, 1) and (2, 2)",
+      answer: "$(0, 1)$ and $(2, 2)$",
     },
-    methodTitle: "Substitute a friendly x",
+    methodTitle: "Substitute a friendly input",
     methodText: [
-      "Use a multiple of the denominator so y is an integer.",
+      "Use a multiple of the denominator so $y$ is an integer.",
       "Check the point in the equation before you plot it.",
     ],
     formal:
-      "For y = (n/d)x + b with b an integer, every x that is a multiple of d gives an integer y on the line.",
+      "For $y = (n/d)x + b$ with $b$ an integer, every $x$ that is a multiple of $d$ gives an integer $y$ on the line.",
     pitfalls: [
-      "x = 1 on y = (1/2)x + 1 gives y = 1.5, which is not a lattice point on this grid.",
+      "$x = 1$ on $y = (1/2)x + 1$ gives $y = 1.5$, which is not a lattice point on this grid.",
       "The second equation is a different line.",
     ],
     parentGuide:
@@ -321,10 +321,10 @@ const pack = formatLessons([
     terms: [],
     method: [
       "Find where the two lines meet.",
-      "Read x and y to the nearest half unit.",
+      "Read $x$ and $y$ to the nearest half unit.",
       "Check you did not swap the coordinates.",
     ],
-    watch: "The y-intercept of one line is where that line starts, not where the lines meet.",
+    watch: "The $y$-intercept of one line is where that line starts, not where the lines meet.",
     principle:
       "The estimate is a half-unit pair within 0.25 of the exact intersection, and no other choice is within 0.5 of it.",
     example: {
@@ -341,10 +341,10 @@ const pack = formatLessons([
       "Half-unit marks sit halfway between integers.",
     ],
     formal:
-      "If the exact intersection is (x, y), the keyed estimate is the half-unit pair nearest to it, and every distractor is more than half a unit away.",
+      "If the exact intersection is $(x, y)$, the keyed estimate is the half-unit pair nearest to it, and every distractor is more than half a unit away.",
     pitfalls: [
-      "Swapping x and y names a different point.",
-      "Mirroring across the x-axis leaves the line.",
+      "Swapping $x$ and $y$ names a different point.",
+      "Mirroring across the $x$-axis leaves the line.",
     ],
     parentGuide:
       "Ask your learner to point to the crossing with a finger before choosing a pair.",
@@ -371,7 +371,7 @@ const pack = formatLessons([
     principle:
       "If a solution exists, it equals the number the reversible steps reach. Substituting that number into the original equation shows it works. A false number statement means no solution exists.",
     example: {
-      prompt: "Suppose 3(x − 2) = 2x + 1, and the chain reaches x = 7. What finishes the argument?",
+      prompt: "Suppose $3(x − 2) = 2x + 1$, and the chain reaches $x = 7$. What finishes the argument?",
       steps: [
         "The opening line assumes a solution exists.",
         "Substitute 7: 3(5) = 15 and 2(7) + 1 = 15, so 7 works.",
@@ -384,10 +384,10 @@ const pack = formatLessons([
       "The substitution says that it is one.",
     ],
     formal:
-      "From the assumption that x satisfies the equation, each equality step preserves that truth. The final check substitutes into the original equation. A contradiction such as 6 = 10 refutes the assumption.",
+      "From the assumption that $x$ satisfies the equation, each equality step preserves that truth. The final check substitutes into the original equation. A contradiction such as $6 = 10$ refutes the assumption.",
     pitfalls: [
-      "The equation is not true for every x.",
-      "Checking only the last line, x = 7, does not test the original equation.",
+      "The equation is not true for every $x$.",
+      "Checking only the last line, $x = 7$, does not test the original equation.",
     ],
     parentGuide:
       "Ask what was being supposed at the start, and then whether the ending number really works in the first line.",
@@ -398,38 +398,38 @@ const pack = formatLessons([
     summary:
       "Add a chosen multiple of one equation to the other and explain why the new system has the same solutions.",
     objectives: [
-      "Compute E2 + k·E1 exactly, including the right side.",
+      "Compute $E2 + k·E1$ exactly, including the right side.",
       "Explain why the step is reversible.",
     ],
     intuition:
-      "Multiplying an equation by k keeps it true for the same pairs. Adding two true equations gives a true equation. Subtracting k times the first equation brings the second one back.",
+      "Multiplying an equation by $k$ keeps it true for the same pairs. Adding two true equations gives a true equation. Subtracting $k$ times the first equation brings the second one back.",
     terms: [],
     method: [
-      "Multiply every term of E1 by k.",
-      "Add those terms to E2, including the right side.",
-      "Check that one variable cancelled and that subtracting k·E1 returns E2.",
+      "Multiply every term of $E1$ by $k$.",
+      "Add those terms to $E2$, including the right side.",
+      "Check that one variable cancelled and that subtracting $k·E1$ returns $E2$.",
     ],
-    watch: "Forgetting to multiply the right side by k makes a different equation.",
+    watch: "Forgetting to multiply the right side by $k$ makes a different equation.",
     principle:
-      "If a pair satisfies E1 and E2, it satisfies k·E1 and therefore E2 + k·E1. Subtracting k·E1 recovers E2, so the systems have the same solutions. At a solution, the new left side equals f + kc.",
+      "If a pair satisfies $E1$ and $E2$, it satisfies $k·E1$ and therefore $E2 + k·E1$. Subtracting $k·E1$ recovers $E2$, so the systems have the same solutions. At a solution, the new left side equals $f + kc$.",
     example: {
-      prompt: "E1 is 2x + 3y = 7 and E2 is 5x − 6y = 4. Replace the system by E1 and E2 + 2·E1.",
+      prompt: "$E1$ is $2x + 3y = 7$ and $E2$ is $5x − 6y = 4$. Replace the system by $E1$ and $E2 + 2·E1$.",
       steps: [
-        "2·E1 is 4x + 6y = 14.",
-        "Add E2: 9x = 18. The y terms cancel, and the right side was scaled.",
+        "$2·E1$ is $4x + 6y = 14$.",
+        "Add $E2$: $9x = 18$. The $y$ terms cancel, and the right side was scaled.",
       ],
-      answer: "9x = 18",
+      answer: "$9x = 18$",
     },
     methodTitle: "Scale, then add",
     methodText: [
-      "Scale both sides of E1.",
-      "Add to both sides of E2.",
+      "Scale both sides of $E1$.",
+      "Add to both sides of $E2$.",
     ],
     formal:
-      "E2 + k·E1 has left side (d + ka)x + (e + kb)y and right side f + kc. Choosing k so one coefficient is zero eliminates that variable. The step reverses by subtracting k·E1.",
+      "$E2 + k·E1$ has left side $(d + ka)x + (e + kb)y$ and right side $f + kc$. Choosing $k$ so one coefficient is zero eliminates that variable. The step reverses by subtracting $k·E1$.",
     pitfalls: [
-      "Adding without scaling the right side is not E2 + k·E1.",
-      "An equation in only x is not automatically equivalent to E2.",
+      "Adding without scaling the right side is not $E2 + k·E1$.",
+      "An equation in only $x$ is not automatically equivalent to $E2$.",
     ],
     parentGuide:
       "Multiply the whole first equation, both sides, before you add. Then ask how you would get the second equation back.",

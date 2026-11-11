@@ -131,8 +131,8 @@ for (const [id, base] of [
     ...areaByCountingMethods[base]!,
     method: [
       ...areaByCountingMethods[base]!.method.slice(0, 1),
-      "Count one row at a time. Tap each square as you count it; an X helps you remember which squares you counted.",
-      "Tap again to remove an X, or use Reset marks to start counting again. The marks are only a counting aid.",
+      "Count one row at a time. Tap each square as you count it; an $X$ helps you remember which squares you counted.",
+      "Tap again to remove an $X$, or use Reset marks to start counting again. The marks are only a counting aid.",
       "Enter the area with the named unit. Only your entered area is checked, so you may also count without marks.",
     ],
     watch:

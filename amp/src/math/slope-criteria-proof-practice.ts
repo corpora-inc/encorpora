@@ -303,8 +303,8 @@ export function generateSlopeCriteriaProof(
       };
     }
     steps = perpSteps(a, b);
-    prompt = `Line l through P(${px}, ${py}) has run ${a} and rise ${b}, so its slope is ${b}/${a}. Line m is l turned 90 degrees about P. Complete the proof that the slope of m is -${a}/${b}. Choose that slope as a number too.`;
-    hint = `Line l through P(${px}, ${py}) has run ${a} and rise ${b}. Use those counts first. A reason that mentions the conclusion too early is circular.`;
+    prompt = `Line $l$ through $P(${px}, ${py})$ has run ${a} and rise ${b}, so its slope is ${b}/${a}. Line $m$ is $l$ turned 90 degrees about $P$. Complete the proof that the slope of $m$ is $-${a}/${b}$. Choose that slope as a number too.`;
+    hint = `Line $l$ through $P(${px}, ${py})$ has run ${a} and rise ${b}. Use those counts first. A reason that mentions the conclusion too early is circular.`;
     scene = graph({ id: "g", x: [-6, 6], y: [-6, 6], grid: 1, aspect: 1 })
       .line({ through: [[px, py], [px + a, py + b]] }, { color: "accent" })
       .line({ through: [[px, py], [px - b, py + a]] }, { color: "warm" })
@@ -317,7 +317,7 @@ export function generateSlopeCriteriaProof(
     prompt = `On the figure, both slope triangles have run ${fig.run} and the lines have slope ${fig.rise}/${fig.run}. The rises are drawn. Complete the proof that the lines are parallel.`;
   } else {
     steps = parallelSteps();
-    prompt = `Lines l and m are parallel. Each slope triangle has run ${fig.run} and a right angle between the horizontal run and the vertical rise. Complete the proof that the slopes are equal.`;
+    prompt = `Lines $l$ and $m$ are parallel. Each slope triangle has run ${fig.run} and a right angle between the horizontal run and the vertical rise. Complete the proof that the slopes are equal.`;
   }
   const built = steps.map((step) => ({ step, pick: optionsFor(r, step) }));
   const response: MultiPartChoiceResponse = {

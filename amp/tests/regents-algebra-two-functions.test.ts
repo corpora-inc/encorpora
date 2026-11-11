@@ -257,11 +257,11 @@ test("events by characteristic: descriptions differ and old versions stay named 
       const B = new Set(space.filter((x) => x % 3 === 0));
       const words = /lists the numbers (.+)\?$/.exec(problem.public.prompt)![1]!;
       const ops: Record<string, number[]> = {
-        "in A and not in B": space.filter((x) => A.has(x) && !B.has(x)),
-        "not in A": space.filter((x) => !A.has(x)),
-        "in A or in B": space.filter((x) => A.has(x) || B.has(x)),
-        "not in A or B": space.filter((x) => !A.has(x) && !B.has(x)),
-        "not in both A and B": space.filter((x) => !(A.has(x) && B.has(x))),
+        "in $A$ and not in $B$": space.filter((x) => A.has(x) && !B.has(x)),
+        "not in $A$": space.filter((x) => !A.has(x)),
+        "in $A$ or in $B$": space.filter((x) => A.has(x) || B.has(x)),
+        "not in $A$ or $B$": space.filter((x) => !A.has(x) && !B.has(x)),
+        "not in both $A$ and $B$": space.filter((x) => !(A.has(x) && B.has(x))),
       };
       assert.deepEqual(
         correct,

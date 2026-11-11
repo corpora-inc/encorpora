@@ -94,11 +94,13 @@ async function openReview(filmId: string) {
 
   const root = $("div", "review", app);
   const slot = $("div", "player-slot", root);
+  // The button lives in its own row above the picture, never over it.
+  const tools = $("div", "film-tools", slot);
+  const full = $<HTMLButtonElement>("button", "btn film-full", tools, "Full screen");
+  full.type = "button";
   const frame = $<HTMLIFrameElement>("iframe", "", slot);
   frame.title = "Lesson film";
   frame.src = `index.html?id=${encodeURIComponent(filmId)}`;
-  const full = $<HTMLButtonElement>("button", "btn film-full", slot, "Full screen");
-  full.type = "button";
   const panel = $("div", "panel", root);
 
   const phone = () => matchMedia("(max-width: 767px)").matches;
@@ -130,7 +132,7 @@ async function openReview(filmId: string) {
       const bar = frame.contentDocument?.querySelector(".live-bar");
       const measured = bar ? bar.getBoundingClientRect().height : 0;
       const barH = measured > 1 ? Math.ceil(measured) : 160;
-      const next = Math.ceil(width * (1920 / 1080) + barH);
+      const next = Math.ceil(width * (1920 / 1080) + barH + tools.getBoundingClientRect().height);
       const cur = parseFloat(slot.style.height);
       if (!Number.isFinite(cur) || Math.abs(cur - next) > 1) slot.style.height = `${next}px`;
     });

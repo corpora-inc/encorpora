@@ -667,10 +667,14 @@ test("grade 7 compound variants list the space, the event, and a simulation rule
       }
     } else if (tag === "event-outcomes") {
       events++;
-      const first = /First outcomes: ([^.]+)\./.exec(prompt)![1]!.split(", ");
-      const second = /Second outcomes: ([^.]+)\./
-        .exec(prompt)![1]!
-        .split(", ");
+      // Typesetting only: outcome letters are $H$ and $T$. The pairs are unchanged.
+      const plain = (s: string) => s.replaceAll("$", "");
+      const first = plain(/First outcomes: ([^.]+)\./.exec(prompt)![1]!).split(
+        ", ",
+      );
+      const second = plain(
+        /Second outcomes: ([^.]+)\./.exec(prompt)![1]!,
+      ).split(", ");
       const phrase = /The event is: ([^.]+)\./.exec(prompt)![1]!;
       const keep = (x: string, y: string) =>
         phrase === "tails or a 6"

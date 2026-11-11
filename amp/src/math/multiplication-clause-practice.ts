@@ -1486,7 +1486,7 @@ function completeDivisionModel(r: Random) {
           `${["The first", "The next", "The last"][Math.min(i, 2)]} chunk is width ${comma(c.width)} and area ${comma(c.area)}, because ${d} × ${comma(c.width)} = ${comma(c.area)}.`,
       ),
       rem
-        ? `${comma(n)} − ${comma(d * q)} = ${rem}, and ${rem} is less than ${d}. ${comma(n)} ÷ ${d} = ${q} R ${rem}. Check: ${d} × ${q} + ${rem} = ${comma(n)}.`
+        ? `${comma(n)} − ${comma(d * q)} = ${rem}, and ${rem} is less than ${d}. $${comma(n)} \\div ${d} = ${q} R ${rem}$. Check: ${d} × ${q} + ${rem} = ${comma(n)}.`
         : `The widths add to ${q}. Check: ${d} × ${q} = ${comma(n)}.`,
       zero
         ? `The width 0 is required. Skipping that place would drop a zero from ${q}.`
@@ -1924,7 +1924,7 @@ function spotTheError(r: Random) {
     const n = d * q + rem;
     const shownQ = q - 1;
     const shownR = rem + d;
-    const correct = `${comma(shownR)} is bigger than ${d}, so another ${d} fits: ${q} R ${rem}`;
+    const correct = `${comma(shownR)} is bigger than ${d}, so another ${d} fits: $${q} R ${rem}$`;
     const cards: Card[] = [
       { label: correct, correct: true, feedback: "" },
       {
@@ -1943,13 +1943,13 @@ function spotTheError(r: Random) {
     const chosen = choiceResponse(r, cards);
     return {
       family: "big-remainder",
-      prompt: `${comma(n)} ÷ ${d} is shown as ${shownQ} R ${shownR}. Which statement is right?`,
+      prompt: `${comma(n)} ÷ ${d} is shown as $${shownQ} R ${shownR}$. Which statement is right?`,
       hint: `Compare the written remainder with ${d}. If the remainder is at least ${d}, the last quotient digit can go up by one.`,
       explanation: [
         `${d} × ${shownQ} = ${comma(d * shownQ)}, and ${comma(n)} − ${comma(d * shownQ)} = ${comma(shownR)}.`,
         `${comma(shownR)} is bigger than ${d}, so another ${d} fits.`,
         `${d} × ${q} = ${comma(d * q)}, and ${comma(n)} − ${comma(d * q)} = ${rem}.`,
-        `The quotient is ${q} R ${rem}.`,
+        `The quotient is $${q} R ${rem}$.`,
       ],
       ...chosen,
     };
@@ -1960,7 +1960,7 @@ function spotTheError(r: Random) {
   const rem = pin ? 10 : r(1, d - 1);
   const n = d * q + rem;
   const shown = Math.floor(q / 100) * 10 + (q % 10);
-  const correct = `The tens place would not share and needs a 0: ${q} R ${rem}`;
+  const correct = `The tens place would not share and needs a 0: $${q} R ${rem}$`;
   const guess = Math.round(d / 10) * 10;
   const cards: Card[] = [
     { label: correct, correct: true, feedback: "" },
@@ -1970,7 +1970,7 @@ function spotTheError(r: Random) {
     },
     {
       label: "It is correct",
-      feedback: `${shown} R ${rem} drops the tens digit. ${d} × ${shown} is not close to ${comma(n)}.`,
+      feedback: `$${shown} R ${rem}$ drops the tens digit. ${d} × ${shown} is not close to ${comma(n)}.`,
     },
     {
       label: `Estimate the divisor as ${guess}, giving ${shown + 1}`,
@@ -1980,13 +1980,13 @@ function spotTheError(r: Random) {
   const chosen = choiceResponse(r, cards);
   return {
     family: "missing-zero",
-    prompt: `${comma(n)} ÷ ${d} is shown as ${shown} R ${rem}. Which statement is right?`,
+    prompt: `${comma(n)} ÷ ${d} is shown as $${shown} R ${rem}$. Which statement is right?`,
     hint: `After the hundreds digit, look at the next place. If what is left is less than ${d}, that place is 0 in the quotient and the next digit is brought down.`,
     explanation: [
       `${d} × ${q} = ${comma(d * q)}, and ${comma(n)} − ${comma(d * q)} = ${rem}.`,
       `The tens digit of ${q} is 0 because that place would not share.`,
       `Writing ${shown} drops that 0, so the hundreds digit slides into the tens place.`,
-      `The quotient is ${q} R ${rem}.`,
+      `The quotient is $${q} R ${rem}$.`,
     ],
     ...chosen,
   };

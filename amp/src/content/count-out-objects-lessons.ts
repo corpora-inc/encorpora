@@ -24,7 +24,7 @@ export const countOutObjectsMethods: Record<string, ProblemMethod> = {
 
 export const countOutObjectsPrinciples: Record<string, string> = {
   "count-out-objects":
-    "Given a number n from 1 to 20, the matching set has exactly n counters. A ten-frame holds ten. A number from 11 to 20 is one full ten plus the loose ones, n − 10.",
+    "Given a number $n$ from 1 to 20, the matching set has exactly $n$ counters. A ten-frame holds ten. A number from 11 to 20 is one full ten plus the loose ones, $n - 10$.",
 };
 
 export const countOutObjectsLessons: Lesson[] = [
@@ -62,9 +62,9 @@ export const countOutObjectsLessons: Lesson[] = [
     ],
     formalTitle: "Exactly that many",
     formal: [
-      "A set shows n when it has n counters, no fewer and no more.",
-      "One more than n is too many. One fewer is too few.",
-      "From 11 to 20, n is 10 plus the loose counters. The loose counters alone are n − 10.",
+      "A set shows $n$ when it has $n$ counters, no fewer and no more.",
+      "One more than $n$ is too many. One fewer is too few.",
+      "From 11 to 20, $n$ is 10 plus the loose counters. The loose counters alone are $n - 10$.",
     ],
     pitfalls: [
       "Choosing the frame with one extra counter.",

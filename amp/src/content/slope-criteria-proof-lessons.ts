@@ -23,7 +23,7 @@ export const slopeCriteriaProofMethods: Record<string, ProblemMethod> = {
 
 export const slopeCriteriaProofPrinciples: Record<string, string> = {
   "slope-criteria-proof":
-    "If two lines are parallel, slope triangles with the same run are congruent by ASA, so the rises match and the slopes are equal. The converse uses SAS and the converse of corresponding angles. A 90 degree rotation sends a run of a and a rise of b to a slope of -a/b, and the product of the slopes is -1.",
+    "If two lines are parallel, slope triangles with the same run are congruent by ASA, so the rises match and the slopes are equal. The converse uses SAS and the converse of corresponding angles. A 90 degree rotation sends a run of $a$ and a rise of $b$ to a slope of $-a/b$, and the product of the slopes is -1.",
 };
 
 export const slopeCriteriaProofLessons: Lesson[] = [
@@ -46,7 +46,7 @@ export const slopeCriteriaProofLessons: Lesson[] = [
     ],
     example: {
       prompt:
-        "Lines l and m are parallel. Each slope triangle has run 1. Why are the rises equal?",
+        "Lines $l$ and $m$ are parallel. Each slope triangle has run 1. Why are the rises equal?",
       steps: [
         "The runs are both given as 1, and each right angle is where a vertical rise meets a horizontal run.",
         "The parallel lines and the horizontal line make a pair of corresponding angles equal.",

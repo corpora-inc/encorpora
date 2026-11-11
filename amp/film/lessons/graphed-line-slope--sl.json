@@ -1,0 +1,1661 @@
+{
+  "id": "graphed-line-slope--sl",
+  "title": "Any two points, same slope",
+  "teaches": [
+    "mcas-slope-sign-description",
+    "slope-triangle-statements",
+    "unequal-step-rate",
+    "slope-constant-similar-triangles",
+    "slope-argument-order"
+  ],
+  "cast": {
+    "teacher": {},
+    "learner": {}
+  },
+  "shots": [
+    {
+      "figure": {
+        "view": [
+          -1,
+          -1,
+          7,
+          10
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "L": [
+            -0.3,
+            -0.45
+          ],
+          "H": [
+            6.4,
+            9.6
+          ],
+          "A": [
+            0,
+            0
+          ],
+          "C": [
+            2,
+            0
+          ],
+          "B": [
+            2,
+            3
+          ],
+          "G": [
+            6,
+            0
+          ],
+          "T": [
+            6,
+            9
+          ],
+          "GridTL": [
+            -1,
+            10
+          ]
+        },
+        "parts": [
+          {
+            "id": "grid",
+            "grid": [
+              8,
+              10
+            ],
+            "at": "GridTL",
+            "ink": "muted",
+            "w": 0.7,
+            "start": true
+          },
+          {
+            "id": "line",
+            "seg": [
+              "L",
+              "H"
+            ],
+            "ink": "accent",
+            "w": 7
+          },
+          {
+            "id": "large",
+            "poly": [
+              "O",
+              "G",
+              "T"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "triangle",
+            "poly": [
+              "A",
+              "C",
+              "B"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 3
+          },
+          {
+            "id": "run",
+            "seg": [
+              "A",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 6
+          },
+          {
+            "id": "rise",
+            "seg": [
+              "C",
+              "B"
+            ],
+            "ink": "warm",
+            "w": 6
+          },
+          {
+            "id": "right",
+            "angle": [
+              "A",
+              "C",
+              "B"
+            ],
+            "right": true,
+            "r": 40,
+            "ink": "blue"
+          },
+          {
+            "id": "rightBig",
+            "angle": [
+              "O",
+              "G",
+              "T"
+            ],
+            "right": true,
+            "r": 40,
+            "ink": "gold"
+          },
+          {
+            "id": "angleSmall",
+            "angle": [
+              "C",
+              "A",
+              "B"
+            ],
+            "r": 65,
+            "ink": "blue",
+            "fill": "blue-fill"
+          },
+          {
+            "id": "angleBig",
+            "angle": [
+              "G",
+              "O",
+              "T"
+            ],
+            "r": 65,
+            "ink": "gold"
+          },
+          {
+            "id": "run2",
+            "label": "2",
+            "at": "run",
+            "dir": "s",
+            "ink": "blue",
+            "size": "l"
+          },
+          {
+            "id": "rise3",
+            "label": "3",
+            "at": "rise",
+            "dir": "e",
+            "ink": "warm",
+            "size": "l"
+          },
+          {
+            "id": "run4",
+            "label": "4",
+            "at": "run",
+            "dir": "s",
+            "ink": "blue",
+            "size": "l"
+          },
+          {
+            "id": "rise6",
+            "label": "6",
+            "at": "rise",
+            "dir": "e",
+            "ink": "warm",
+            "size": "l"
+          },
+          {
+            "id": "run6",
+            "label": "6",
+            "at": "run",
+            "dir": "s",
+            "ink": "blue",
+            "size": "l"
+          },
+          {
+            "id": "rise9",
+            "label": "9",
+            "at": "rise",
+            "dir": "e",
+            "ink": "warm",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Slope measures a line's steepness: vertical change divided by horizontal change, or rise over run.",
+          "do": [
+            {
+              "do": "draw",
+              "target": "line"
+            },
+            {
+              "do": "write",
+              "tex": "\\text{slope}=\\frac{\\cw{\\text{rise}}}{\\cb{\\text{run}}}",
+              "at": "vertical"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Each square is one unit. Right two, up three. The slope is three halves.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "show",
+              "target": "triangle",
+              "at": "Right"
+            },
+            {
+              "do": "draw",
+              "target": "run",
+              "at": "Right"
+            },
+            {
+              "do": "show",
+              "target": "run2",
+              "at": "two"
+            },
+            {
+              "do": "draw",
+              "target": "rise",
+              "at": "up"
+            },
+            {
+              "do": "show",
+              "target": "rise3",
+              "at": "three"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{\\cw{3}}{\\cb{2}}",
+              "at": "slope"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Does it matter which two points I pick?",
+          "pause": 0.6
+        },
+        {
+          "speaker": "teacher",
+          "say": "Watch. Double the run, double the rise. Six over four: three halves.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "run2",
+                "rise3"
+              ]
+            },
+            {
+              "do": "move",
+              "points": {
+                "C": [
+                  4,
+                  0
+                ],
+                "B": [
+                  4,
+                  6
+                ]
+              },
+              "at": "Double",
+              "dur": 2
+            },
+            {
+              "do": "show",
+              "target": [
+                "run4",
+                "rise6"
+              ],
+              "at": "Six"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{\\cw{6}}{\\cb{4}}=\\frac32",
+              "at": "Six"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Triple both. Nine over six: three halves again.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "hide",
+              "target": [
+                "run4",
+                "rise6"
+              ]
+            },
+            {
+              "do": "move",
+              "points": {
+                "C": [
+                  6,
+                  0
+                ],
+                "B": [
+                  6,
+                  9
+                ]
+              },
+              "at": "Triple",
+              "dur": 2
+            },
+            {
+              "do": "show",
+              "target": [
+                "run6",
+                "rise9"
+              ],
+              "at": "Nine"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{\\cw{9}}{\\cb{6}}=\\frac32",
+              "at": "Nine"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Shrink the triangle. Slide it along the line. Same shape, same slope.",
+          "pause": 1.5,
+          "do": [
+            {
+              "do": "show",
+              "target": "large"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "run6",
+                "rise9"
+              ]
+            },
+            {
+              "do": "move",
+              "points": {
+                "C": [
+                  2,
+                  0
+                ],
+                "B": [
+                  2,
+                  3
+                ]
+              },
+              "at": "Shrink",
+              "dur": 1.5
+            },
+            {
+              "do": "move",
+              "points": {
+                "A": [
+                  2,
+                  3
+                ],
+                "C": [
+                  4,
+                  3
+                ],
+                "B": [
+                  4,
+                  6
+                ]
+              },
+              "at": "Slide",
+              "dur": 2
+            },
+            {
+              "do": "show",
+              "target": [
+                "run2",
+                "rise3"
+              ],
+              "at": "Same"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Why? Both have square corners. Their horizontal sides are parallel, so the angles against the line match too.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "run2",
+                "rise3"
+              ]
+            },
+            {
+              "do": "show",
+              "target": [
+                "right",
+                "rightBig"
+              ],
+              "at": "square"
+            },
+            {
+              "do": "show",
+              "target": [
+                "angleSmall",
+                "angleBig"
+              ],
+              "at": "angles"
+            },
+            {
+              "do": "text",
+              "text": "Two pairs of equal angles",
+              "at": "match"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Two matching angle pairs make similar triangles: the same shape at different sizes. Both rise and run scale together, so their ratio stays the same.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "text",
+              "text": "Similar: same shape",
+              "at": "similar"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "angleSmall",
+                "angleBig"
+              ],
+              "at": "matching"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "run",
+                "rise"
+              ],
+              "at": "Both"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{\\cw{3}}{\\cb{2}}=\\frac{\\cw{6}}{\\cb{4}}=\\frac{\\cw{9}}{\\cb{6}}",
+              "at": "ratio"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "So I can choose points that are easy to read, where the line crosses grid corners.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Choose clear grid corners.",
+              "at": "choose"
+            },
+            {
+              "do": "show",
+              "target": [
+                "run2",
+                "rise3"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -4.5,
+          -3.5,
+          6.5,
+          5.5
+        ],
+        "points": {
+          "A": [
+            -2,
+            3
+          ],
+          "C": [
+            4,
+            3
+          ],
+          "B": [
+            4,
+            -1
+          ],
+          "L": [
+            -3,
+            3.6666666667
+          ],
+          "H": [
+            5,
+            -1.6666666667
+          ],
+          "GridTL": [
+            -4,
+            5
+          ],
+          "R": [
+            -2,
+            -1
+          ]
+        },
+        "parts": [
+          {
+            "id": "grid",
+            "grid": [
+              10,
+              8
+            ],
+            "at": "GridTL",
+            "ink": "muted",
+            "w": 0.7,
+            "start": true
+          },
+          {
+            "id": "axes",
+            "axes": true,
+            "step": 1,
+            "every": 2,
+            "xrange": [
+              -4,
+              6
+            ],
+            "yrange": [
+              -3,
+              5
+            ],
+            "start": true
+          },
+          {
+            "id": "line",
+            "seg": [
+              "L",
+              "H"
+            ],
+            "ink": "accent",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "dA",
+            "dot": "A",
+            "ink": "gold",
+            "r": 10
+          },
+          {
+            "id": "dB",
+            "dot": "B",
+            "ink": "gold",
+            "r": 10
+          },
+          {
+            "id": "run",
+            "vector": [
+              "A",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 6
+          },
+          {
+            "id": "rise",
+            "vector": [
+              "C",
+              "B"
+            ],
+            "ink": "warm",
+            "w": 6
+          },
+          {
+            "id": "lr",
+            "label": "+6",
+            "at": "run",
+            "dir": "n",
+            "ink": "blue",
+            "size": "l"
+          },
+          {
+            "id": "lh",
+            "label": "-4",
+            "at": "rise",
+            "dir": "e",
+            "ink": "warm",
+            "size": "l"
+          },
+          {
+            "id": "backRun",
+            "vector": [
+              "B",
+              "R"
+            ],
+            "ink": "blue",
+            "w": 6
+          },
+          {
+            "id": "backRise",
+            "vector": [
+              "R",
+              "A"
+            ],
+            "ink": "warm",
+            "w": 6
+          },
+          {
+            "id": "br",
+            "label": "-6",
+            "at": "backRun",
+            "dir": "s",
+            "ink": "blue",
+            "size": "l"
+          },
+          {
+            "id": "bh",
+            "label": "+4",
+            "at": "backRise",
+            "dir": "w",
+            "ink": "warm",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Try a falling line. Each square is one unit. Choose these two grid corners.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Find the slope."
+            },
+            {
+              "do": "show",
+              "target": [
+                "dA",
+                "dB"
+              ],
+              "at": "these"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Right six. Down four. Down means a negative rise, so negative four over six simplifies to negative two thirds.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "draw",
+              "target": "run",
+              "at": "Right"
+            },
+            {
+              "do": "show",
+              "target": "lr",
+              "at": "six"
+            },
+            {
+              "do": "draw",
+              "target": "rise",
+              "at": "Down"
+            },
+            {
+              "do": "show",
+              "target": "lh",
+              "at": "four"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{\\cw{-4}}{\\cb{6}}=-\\frac23",
+              "at": "negative",
+              "nth": 2
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "What if I go right to left?"
+        },
+        {
+          "speaker": "teacher",
+          "say": "Left six, up four. Both signs reverse. Positive four over negative six gives the same negative two thirds.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "run",
+                "rise",
+                "lr",
+                "lh"
+              ]
+            },
+            {
+              "do": "draw",
+              "target": "backRun",
+              "at": "Left"
+            },
+            {
+              "do": "show",
+              "target": "br",
+              "at": "six"
+            },
+            {
+              "do": "draw",
+              "target": "backRise",
+              "at": "up"
+            },
+            {
+              "do": "show",
+              "target": "bh",
+              "at": "four"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{\\cw{4}}{\\cb{-6}}=-\\frac23",
+              "at": "Positive"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "backRun",
+                "backRise"
+              ],
+              "at": "same"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "I have to measure both changes in the same direction.",
+          "do": [
+            {
+              "do": "text",
+              "text": "Same journey for rise and run.",
+              "at": "same"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.4,
+          -1.2,
+          7.6,
+          8.8
+        ],
+        "points": {
+          "A": [
+            0,
+            2
+          ],
+          "B": [
+            6,
+            8
+          ],
+          "P": [
+            0,
+            2
+          ],
+          "Read": [
+            3.6,
+            0.8
+          ],
+          "XT": [
+            5.7,
+            0
+          ],
+          "YT": [
+            0,
+            8.2
+          ]
+        },
+        "parts": [
+          {
+            "id": "axes",
+            "axes": true,
+            "step": 1,
+            "every": 2,
+            "xrange": [
+              0,
+              6.8
+            ],
+            "yrange": [
+              0,
+              8.2
+            ],
+            "start": true
+          },
+          {
+            "id": "line",
+            "seg": [
+              "A",
+              "B"
+            ],
+            "ink": "accent",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "walker",
+            "dot": "P",
+            "ink": "gold",
+            "r": 11,
+            "start": true
+          },
+          {
+            "id": "read",
+            "label": "\\text{slope}=@m",
+            "at": "Read",
+            "of": "line",
+            "dir": "c",
+            "size": "m",
+            "ink": "accent",
+            "start": true
+          },
+          {
+            "id": "xt",
+            "label": "\\text{time}",
+            "at": "XT",
+            "dir": "s",
+            "size": "m",
+            "far": 1.5,
+            "start": true
+          },
+          {
+            "id": "yt",
+            "label": "\\text{water level}",
+            "at": "YT",
+            "dir": "n",
+            "size": "m",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "A story can tell you the sign. Time is the input across; water level is the output up.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "As time increases…"
+            },
+            {
+              "do": "highlight",
+              "target": "xt",
+              "at": "input"
+            },
+            {
+              "do": "highlight",
+              "target": "yt",
+              "at": "output"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A tank filling steadily: the level rises as time increases. Positive slope.",
+          "do": [
+            {
+              "do": "move",
+              "points": {
+                "P": [
+                  6,
+                  8
+                ]
+              },
+              "at": "rises",
+              "dur": 2
+            },
+            {
+              "do": "text",
+              "text": "Filling: positive slope",
+              "at": "Positive"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "If the level stays the same, the line is flat. Zero rise, so zero slope.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "move",
+              "points": {
+                "A": [
+                  0,
+                  5
+                ],
+                "B": [
+                  6,
+                  5
+                ],
+                "P": [
+                  0,
+                  5
+                ]
+              },
+              "at": "same",
+              "dur": 1.6
+            },
+            {
+              "do": "move",
+              "points": {
+                "P": [
+                  6,
+                  5
+                ]
+              },
+              "at": "flat",
+              "dur": 2
+            },
+            {
+              "do": "write",
+              "tex": "\\text{Flat: }\\frac{\\cw{0}}{\\cb{6}}=0",
+              "at": "Zero"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "A tank draining steadily: the level falls as time increases. Negative slope.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "move",
+              "points": {
+                "A": [
+                  0,
+                  8
+                ],
+                "B": [
+                  6,
+                  2
+                ],
+                "P": [
+                  0,
+                  8
+                ]
+              },
+              "at": "draining",
+              "dur": 1.6
+            },
+            {
+              "do": "move",
+              "points": {
+                "P": [
+                  6,
+                  2
+                ]
+              },
+              "at": "falls",
+              "dur": 2
+            },
+            {
+              "do": "text",
+              "text": "Draining: negative slope",
+              "at": "Negative"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -0.6,
+          -0.6,
+          8.6,
+          7.4
+        ],
+        "points": {
+          "TL": [
+            0,
+            6.8
+          ]
+        },
+        "parts": [
+          {
+            "id": "t",
+            "table": true,
+            "at": "TL",
+            "corner": "Input $x$",
+            "head": [
+              "Output $y$"
+            ],
+            "rows": [
+              {
+                "label": "1",
+                "cells": [
+                  "$-1$"
+                ]
+              },
+              {
+                "label": "5",
+                "cells": [
+                  "3"
+                ]
+              },
+              {
+                "label": "6",
+                "cells": [
+                  "4"
+                ]
+              }
+            ],
+            "cell": [
+              4,
+              1.7
+            ],
+            "labelW": 4,
+            "size": "l",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "These points come from one straight line. Do the unequal jumps mean different slopes?",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "One straight line. Unequal steps."
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "The outputs jump by four, then one. But the inputs do too.",
+          "do": [
+            {
+              "do": "highlight",
+              "target": "t.col.1",
+              "at": "outputs"
+            },
+            {
+              "do": "highlight",
+              "target": "t.col.0",
+              "at": "inputs"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "From the first row to the second: output increases by four; input increases by four. Four over four is one.",
+          "pause": 0.8,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "t.cell.1.1",
+                "t.cell.2.1"
+              ],
+              "at": "output"
+            },
+            {
+              "do": "highlight",
+              "target": [
+                "t.cell.1.0",
+                "t.cell.2.0"
+              ],
+              "at": "input"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{\\cw{3-(-1)}}{\\cb{5-1}}=\\frac{\\cw{4}}{\\cb{4}}=1",
+              "at": "output"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Then one over one is one. Same slope: one more output for each one of input.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "highlight",
+              "target": [
+                "t.row.2",
+                "t.row.3"
+              ]
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{\\cw{4-3}}{\\cb{6-5}}=\\frac{\\cw{1}}{\\cb{1}}=1",
+              "at": "Then"
+            },
+            {
+              "do": "text",
+              "text": "Divide output change by input change.",
+              "at": "Same"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -1.1,
+          -1.2,
+          4,
+          7.8
+        ],
+        "points": {
+          "O": [
+            0,
+            0
+          ],
+          "A": [
+            1,
+            3
+          ],
+          "B": [
+            2,
+            6
+          ],
+          "C": [
+            1,
+            0
+          ],
+          "XT": [
+            2.1,
+            0
+          ],
+          "YT": [
+            0,
+            6.8
+          ]
+        },
+        "parts": [
+          {
+            "id": "axes",
+            "axes": true,
+            "step": 1,
+            "every": 1,
+            "yevery": 3,
+            "xrange": [
+              0,
+              2.8
+            ],
+            "yrange": [
+              0,
+              6.8
+            ],
+            "start": true
+          },
+          {
+            "id": "line",
+            "seg": [
+              "O",
+              "B"
+            ],
+            "ink": "accent",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "origin",
+            "dot": "O",
+            "ink": "gold",
+            "r": 10,
+            "start": true
+          },
+          {
+            "id": "run",
+            "vector": [
+              "O",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 6
+          },
+          {
+            "id": "rise",
+            "vector": [
+              "C",
+              "A"
+            ],
+            "ink": "warm",
+            "w": 6
+          },
+          {
+            "id": "lr",
+            "label": "1",
+            "at": "run",
+            "dir": "s",
+            "ink": "blue",
+            "size": "l"
+          },
+          {
+            "id": "lh",
+            "label": "3",
+            "at": "rise",
+            "dir": "e",
+            "ink": "warm",
+            "size": "l"
+          },
+          {
+            "id": "xt",
+            "label": "\\text{tickets}",
+            "at": "XT",
+            "dir": "s",
+            "far": 1.7,
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "yt",
+            "label": "\\text{dollars}",
+            "at": "YT",
+            "dir": "n",
+            "size": "m",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Tickets cost three dollars each. The line starts at zero tickets, zero dollars.",
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Tickets cost 3 dollars each."
+            },
+            {
+              "do": "highlight",
+              "target": "origin",
+              "at": "zero"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "One ticket, three dollars. Slope is the unit rate: three dollars per ticket.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "draw",
+              "target": "run",
+              "at": "One"
+            },
+            {
+              "do": "show",
+              "target": "lr",
+              "at": "ticket"
+            },
+            {
+              "do": "draw",
+              "target": "rise",
+              "at": "three"
+            },
+            {
+              "do": "show",
+              "target": "lh",
+              "at": "dollars"
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{\\cw{3\\text{ dollars}}}{\\cb{1\\text{ ticket}}}",
+              "at": "rate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "view": [
+          -5,
+          -4,
+          5,
+          4
+        ],
+        "points": {
+          "A": [
+            -3,
+            -2
+          ],
+          "B": [
+            3,
+            2
+          ],
+          "C": [
+            3,
+            -2
+          ],
+          "L": [
+            -4.5,
+            -3
+          ],
+          "H": [
+            4.5,
+            3
+          ],
+          "GridTL": [
+            -4,
+            3
+          ],
+          "S": [
+            0,
+            -2
+          ],
+          "T": [
+            0,
+            0
+          ],
+          "RunLabel": [
+            1.5,
+            -2
+          ],
+          "RiseLabel": [
+            3,
+            1
+          ]
+        },
+        "parts": [
+          {
+            "id": "grid",
+            "grid": [
+              8,
+              6
+            ],
+            "at": "GridTL",
+            "ink": "muted",
+            "w": 0.7,
+            "start": true
+          },
+          {
+            "id": "axes",
+            "axes": true,
+            "step": 1,
+            "every": 2,
+            "xrange": [
+              -4.5,
+              4.5
+            ],
+            "yrange": [
+              -3.5,
+              3.5
+            ],
+            "start": true
+          },
+          {
+            "id": "line",
+            "seg": [
+              "L",
+              "H"
+            ],
+            "ink": "accent",
+            "w": 7,
+            "start": true
+          },
+          {
+            "id": "large",
+            "poly": [
+              "A",
+              "C",
+              "B"
+            ],
+            "fill": "gold-fill",
+            "ink": "gold",
+            "w": 3
+          },
+          {
+            "id": "small",
+            "poly": [
+              "A",
+              "S",
+              "T"
+            ],
+            "fill": "blue-fill",
+            "ink": "blue",
+            "w": 3
+          },
+          {
+            "id": "dA",
+            "dot": "A",
+            "ink": "gold",
+            "r": 10
+          },
+          {
+            "id": "dB",
+            "dot": "B",
+            "ink": "gold",
+            "r": 10
+          },
+          {
+            "id": "run",
+            "vector": [
+              "A",
+              "C"
+            ],
+            "ink": "blue",
+            "w": 6
+          },
+          {
+            "id": "rise",
+            "vector": [
+              "C",
+              "B"
+            ],
+            "ink": "warm",
+            "w": 6
+          },
+          {
+            "id": "lr",
+            "label": "6",
+            "at": "RunLabel",
+            "dir": "s",
+            "ink": "blue",
+            "size": "l"
+          },
+          {
+            "id": "lh",
+            "label": "4",
+            "at": "RiseLabel",
+            "dir": "e",
+            "ink": "warm",
+            "size": "l"
+          },
+          {
+            "id": "smallRun",
+            "seg": [
+              "A",
+              "S"
+            ],
+            "ink": "blue",
+            "w": 6
+          },
+          {
+            "id": "smallRise",
+            "seg": [
+              "S",
+              "T"
+            ],
+            "ink": "warm",
+            "w": 6
+          },
+          {
+            "id": "sr",
+            "label": "3",
+            "at": "smallRun",
+            "dir": "s",
+            "ink": "blue",
+            "size": "l"
+          },
+          {
+            "id": "sh",
+            "label": "2",
+            "at": "smallRise",
+            "dir": "e",
+            "ink": "warm",
+            "size": "l"
+          }
+        ]
+      },
+      "beats": [
+        {
+          "speaker": "teacher",
+          "say": "Your turn. Each square is one unit. Find the slope.",
+          "pause": 3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Find the slope."
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "I choose these corners. Right six, up four.",
+          "pause": 0.6,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "dA",
+                "dB"
+              ],
+              "at": "these"
+            },
+            {
+              "do": "draw",
+              "target": "run",
+              "at": "Right"
+            },
+            {
+              "do": "show",
+              "target": "lr",
+              "at": "six"
+            },
+            {
+              "do": "draw",
+              "target": "rise",
+              "at": "up"
+            },
+            {
+              "do": "show",
+              "target": "lh",
+              "at": "four"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "Four over six simplifies to two thirds. Positive, because the line rises to the right.",
+          "pause": 1,
+          "do": [
+            {
+              "do": "write",
+              "tex": "\\frac{\\cw{4}}{\\cb{6}}=\\frac23",
+              "at": "Four"
+            }
+          ]
+        },
+        {
+          "speaker": "learner",
+          "say": "A smaller triangle gives two over three too.",
+          "pause": 1.5,
+          "do": [
+            {
+              "do": "show",
+              "target": [
+                "large",
+                "small"
+              ],
+              "at": "smaller"
+            },
+            {
+              "do": "hide",
+              "target": [
+                "axes",
+                "run",
+                "rise",
+                "lr",
+                "lh",
+                "dA",
+                "dB"
+              ],
+              "at": "smaller"
+            },
+            {
+              "do": "draw",
+              "target": [
+                "smallRun",
+                "smallRise"
+              ],
+              "at": "triangle"
+            },
+            {
+              "do": "show",
+              "target": [
+                "sr",
+                "sh"
+              ],
+              "at": "two"
+            }
+          ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Any two points, same slope.",
+          "pause": 3,
+          "do": [
+            {
+              "do": "clear"
+            },
+            {
+              "do": "text",
+              "text": "Any two points, same slope."
+            },
+            {
+              "do": "write",
+              "tex": "\\frac{\\cw{2}}{\\cb{3}}=\\frac{\\cw{4}}{\\cb{6}}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

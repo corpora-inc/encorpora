@@ -49,7 +49,7 @@ export const complexClauseItemsTemplates: readonly TemplateMetadata[] = [
     ...plot,
     glossaryNoLink: ["part", "parts", "plain", "plane"],
     description:
-      "Plot a nonzero real number or a nonzero pure imaginary number on the complex plane. The only accepted point is (a, b) for a+bi.",
+      "Plot a nonzero real number or a nonzero pure imaginary number on the complex plane. The only accepted point is $(a, b)$ for $a+bi$.",
   },
 ];
 
@@ -202,7 +202,7 @@ export function buildModulusViaConjugate(
   const n = a * a + b * b;
   const root = radTex(n);
   const hint =
-    "The conjugate keeps the real part and flips only the sign of the imaginary part. When you multiply, the cross terms cancel, and the i squared corner is the one to watch. The product is the square of the length, so the length is its square root.";
+    "The conjugate keeps the real part and flips only the sign of the imaginary part. When you multiply, the cross terms cancel, and the $i$ squared corner is the one to watch. The product is the square of the length, so the length is its square root.";
   if (/\d/.test(hint)) throw new Error("Modulus hint contains a digit");
   return {
     public: {
@@ -212,7 +212,7 @@ export function buildModulusViaConjugate(
       templateId: meta.id,
       templateVersion: 1,
       seed,
-      prompt: `Let $z=${cxInt(a, b)}$. (a) Write $\\bar z$. (b) Compute $z\\bar z$. (c) Use the result to find $|z|$.`,
+      prompt: `Let $z=${cxInt(a, b)}$. ($a$) Write $\\bar z$. ($b$) Compute $z\\bar z$. ($c$) Use the result to find $|z|$.`,
       skillId: meta.skillId,
       response,
     },
