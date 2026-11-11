@@ -2,13 +2,21 @@
 import { createHash } from "node:crypto";
 import { z } from "zod";
 import { semanticFigureSchema } from "../src/math/contracts";
-import { scriptSchema } from "./schema";
+import { scriptSchema, type Script } from "./schema";
 import { APPROVED, requireVoices, resolveCast, templateOf, voiceBindings } from "./cast";
 import {
   FILM_CAPABILITY,
+  FILM_CAPABILITY_V2,
   FILM_CDN,
   type LessonFilm,
 } from "../src/content/lesson-films";
+
+/** The oldest player that can draw the film: a shot with its own app figure ({scene}) needs v3. */
+export function filmCapability(script: Script): LessonFilm["capability"] {
+  return script.shots.some((shot) => shot.figure && "scene" in shot.figure)
+    ? FILM_CAPABILITY
+    : FILM_CAPABILITY_V2;
+}
 
 export const sha256 = (bytes: Uint8Array | string) =>
   createHash("sha256").update(bytes).digest("hex");
@@ -237,7 +245,7 @@ export function planFilm(
       audioUrl,
       duration: timing.duration,
       teacher: teacher.name as LessonFilm["teacher"],
-      capability: FILM_CAPABILITY,
+      capability: filmCapability(script),
       editions: [edition],
     },
   };

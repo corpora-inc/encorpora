@@ -11,6 +11,7 @@ export type LiveLesson = {
   title: string;
   script: Script;
   timing: Timing;
+  /** The template's example, for {example: true} shots. A shot's own scene is in `script`. */
   figure: unknown;
 };
 export type PlayerOptions = {
