@@ -39,6 +39,8 @@ function apart(
   let at = -1;
   values.forEach((value, index) => {
     if (value < tallest * 0.25) return;
+    // Clear of the grade band and its median, which carry their own labels.
+    if (Math.abs(grid.from + index * grid.step) < 0.75) return;
     const gap = value - (other[index] ?? 0);
     if (at < 0 || gap > values[at]! - (other[at] ?? 0)) at = index;
   });
