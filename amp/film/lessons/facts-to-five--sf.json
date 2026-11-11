@@ -1,0 +1,1266 @@
+{
+ "id": "facts-to-five--sf",
+ "title": "Plus hops forward, minus hops back",
+ "cast": {
+  "teacher": {},
+  "learner": {}
+ },
+ "shots": [
+  {
+   "figure": {
+    "view": [
+     -3.15,
+     -4.0,
+     19.65,
+     17.5
+    ],
+    "points": {
+     "A": [
+      -3.15,
+      17.5
+     ],
+     "B": [
+      19.65,
+      17.5
+     ],
+     "C": [
+      19.65,
+      -4.0
+     ],
+     "D": [
+      -3.15,
+      -4.0
+     ],
+     "P0": [
+      0.0,
+      0.0
+     ],
+     "N0": [
+      1.709,
+      -2.09
+     ],
+     "Q0": [
+      -1.705,
+      1.75
+     ],
+     "P1": [
+      3.3,
+      2.7
+     ],
+     "N1": [
+      5.009,
+      0.61
+     ],
+     "Q1": [
+      1.595,
+      4.45
+     ],
+     "P2": [
+      6.6,
+      5.4
+     ],
+     "N2": [
+      8.309,
+      3.31
+     ],
+     "Q2": [
+      4.895,
+      7.15
+     ],
+     "P3": [
+      9.9,
+      8.1
+     ],
+     "N3": [
+      11.609,
+      6.01
+     ],
+     "Q3": [
+      8.195,
+      9.85
+     ],
+     "P4": [
+      13.2,
+      10.8
+     ],
+     "N4": [
+      14.909,
+      8.71
+     ],
+     "Q4": [
+      11.495,
+      12.55
+     ],
+     "P5": [
+      16.5,
+      13.5
+     ],
+     "N5": [
+      18.209,
+      11.41
+     ],
+     "Q5": [
+      14.795,
+      15.25
+     ],
+     "L0": [
+      0.85,
+      -4.0
+     ],
+     "R0": [
+      15.65,
+      17.5
+     ],
+     "L1": [
+      0.841,
+      -3.83
+     ],
+     "R1": [
+      15.659,
+      17.33
+     ],
+     "L2": [
+      0.816,
+      -3.661
+     ],
+     "R2": [
+      15.684,
+      17.161
+     ],
+     "L3": [
+      0.773,
+      -3.493
+     ],
+     "R3": [
+      15.727,
+      16.993
+     ],
+     "L4": [
+      0.714,
+      -3.327
+     ],
+     "R4": [
+      15.786,
+      16.827
+     ],
+     "L5": [
+      0.638,
+      -3.164
+     ],
+     "R5": [
+      15.862,
+      16.664
+     ],
+     "L6": [
+      0.546,
+      -3.005
+     ],
+     "R6": [
+      15.954,
+      16.505
+     ],
+     "L7": [
+      0.437,
+      -2.85
+     ],
+     "R7": [
+      16.063,
+      16.35
+     ],
+     "L8": [
+      0.314,
+      -2.7
+     ],
+     "R8": [
+      16.186,
+      16.2
+     ],
+     "L9": [
+      0.176,
+      -2.556
+     ],
+     "R9": [
+      16.324,
+      16.056
+     ],
+     "L10": [
+      0.023,
+      -2.417
+     ],
+     "R10": [
+      16.477,
+      15.917
+     ],
+     "L11": [
+      -0.143,
+      -2.286
+     ],
+     "R11": [
+      16.643,
+      15.786
+     ],
+     "L12": [
+      -0.322,
+      -2.162
+     ],
+     "R12": [
+      16.822,
+      15.662
+     ],
+     "L13": [
+      -0.513,
+      -2.045
+     ],
+     "R13": [
+      17.013,
+      15.545
+     ],
+     "L14": [
+      -0.715,
+      -1.937
+     ],
+     "R14": [
+      17.215,
+      15.437
+     ],
+     "L15": [
+      -0.928,
+      -1.838
+     ],
+     "R15": [
+      17.428,
+      15.338
+     ],
+     "L16": [
+      -1.15,
+      -1.748
+     ],
+     "R16": [
+      17.65,
+      15.248
+     ],
+     "L17": [
+      -1.381,
+      -1.668
+     ],
+     "R17": [
+      17.881,
+      15.168
+     ],
+     "L18": [
+      -1.619,
+      -1.598
+     ],
+     "R18": [
+      18.119,
+      15.098
+     ],
+     "L19": [
+      -1.864,
+      -1.538
+     ],
+     "R19": [
+      18.364,
+      15.038
+     ],
+     "L20": [
+      -2.115,
+      -1.489
+     ],
+     "R20": [
+      18.615,
+      14.989
+     ],
+     "L21": [
+      -2.37,
+      -1.45
+     ],
+     "R21": [
+      18.87,
+      14.95
+     ],
+     "L22": [
+      -2.628,
+      -1.422
+     ],
+     "R22": [
+      19.128,
+      14.922
+     ],
+     "L23": [
+      -2.888,
+      -1.406
+     ],
+     "R23": [
+      19.388,
+      14.906
+     ],
+     "L24": [
+      -3.15,
+      -1.4
+     ],
+     "R24": [
+      19.65,
+      14.9
+     ]
+    },
+    "parts": [
+     {
+      "id": "pond",
+      "poly": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "fill": "blue-fill",
+      "ink": "blue",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bank0",
+      "poly": [
+       "D",
+       "L0",
+       "L1",
+       "L2",
+       "L3",
+       "L4",
+       "L5",
+       "L6",
+       "L7",
+       "L8",
+       "L9",
+       "L10",
+       "L11",
+       "L12",
+       "L13",
+       "L14",
+       "L15",
+       "L16",
+       "L17",
+       "L18",
+       "L19",
+       "L20",
+       "L21",
+       "L22",
+       "L23",
+       "L24"
+      ],
+      "fill": "accent-fill",
+      "ink": "blue",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "bank5",
+      "poly": [
+       "B",
+       "R0",
+       "R1",
+       "R2",
+       "R3",
+       "R4",
+       "R5",
+       "R6",
+       "R7",
+       "R8",
+       "R9",
+       "R10",
+       "R11",
+       "R12",
+       "R13",
+       "R14",
+       "R15",
+       "R16",
+       "R17",
+       "R18",
+       "R19",
+       "R20",
+       "R21",
+       "R22",
+       "R23",
+       "R24"
+      ],
+      "fill": "accent-fill",
+      "ink": "blue",
+      "w": 1,
+      "start": true
+     },
+     {
+      "id": "shore0",
+      "curve": [
+       "L0",
+       "L1",
+       "L2",
+       "L3",
+       "L4",
+       "L5",
+       "L6",
+       "L7",
+       "L8",
+       "L9",
+       "L10",
+       "L11",
+       "L12",
+       "L13",
+       "L14",
+       "L15",
+       "L16",
+       "L17",
+       "L18",
+       "L19",
+       "L20",
+       "L21",
+       "L22",
+       "L23",
+       "L24"
+      ],
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "shore5",
+      "curve": [
+       "R0",
+       "R1",
+       "R2",
+       "R3",
+       "R4",
+       "R5",
+       "R6",
+       "R7",
+       "R8",
+       "R9",
+       "R10",
+       "R11",
+       "R12",
+       "R13",
+       "R14",
+       "R15",
+       "R16",
+       "R17",
+       "R18",
+       "R19",
+       "R20",
+       "R21",
+       "R22",
+       "R23",
+       "R24"
+      ],
+      "ink": "accent",
+      "w": 2,
+      "start": true
+     },
+     {
+      "id": "c0",
+      "circle": "P0",
+      "r": 1.55,
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "c1",
+      "circle": "P1",
+      "r": 1.55,
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "c2",
+      "circle": "P2",
+      "r": 1.55,
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "c3",
+      "circle": "P3",
+      "r": 1.55,
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "c4",
+      "circle": "P4",
+      "r": 1.55,
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "c5",
+      "circle": "P5",
+      "r": 1.55,
+      "fill": "wood",
+      "ink": "wood",
+      "w": 3,
+      "start": true
+     },
+     {
+      "id": "n0",
+      "label": "0",
+      "at": "N0",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "n1",
+      "label": "1",
+      "at": "N1",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "n2",
+      "label": "2",
+      "at": "N2",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "n3",
+      "label": "3",
+      "at": "N3",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "n4",
+      "label": "4",
+      "at": "N4",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "n5",
+      "label": "5",
+      "at": "N5",
+      "dir": "c",
+      "size": "l",
+      "ink": "ink",
+      "start": true
+     },
+     {
+      "id": "s0",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Q0",
+      "size": 2.8
+     },
+     {
+      "id": "s1",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Q1",
+      "size": 2.8
+     },
+     {
+      "id": "s2",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Q2",
+      "size": 2.8
+     },
+     {
+      "id": "s3",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Q3",
+      "size": 2.8
+     },
+     {
+      "id": "s4",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Q4",
+      "size": 2.8
+     },
+     {
+      "id": "s5",
+      "things": "duck",
+      "n": 0,
+      "slots": 1,
+      "at": "Q5",
+      "size": 2.8
+     },
+     {
+      "id": "fa",
+      "things": "duck",
+      "n": 1,
+      "at": "Q0",
+      "size": 2.8
+     },
+     {
+      "id": "fb",
+      "things": "duck",
+      "n": 1,
+      "at": "Q3",
+      "size": 2.8
+     },
+     {
+      "id": "fc",
+      "things": "duck",
+      "n": 1,
+      "at": "Q2",
+      "size": 2.8
+     },
+     {
+      "id": "fd",
+      "things": "duck",
+      "n": 1,
+      "at": "Q1",
+      "size": 2.8
+     },
+     {
+      "id": "fe",
+      "things": "duck",
+      "n": 1,
+      "at": "Q3",
+      "size": 2.8
+     },
+     {
+      "id": "fg",
+      "things": "duck",
+      "n": 1,
+      "at": "Q4",
+      "size": 2.8
+     },
+     {
+      "id": "fh",
+      "things": "duck",
+      "n": 1,
+      "at": "Q2",
+      "size": 2.8
+     }
+    ]
+   },
+   "beats": [
+    {
+     "speaker": "teacher",
+     "say": "A duck on stepping stones, zero to five!",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "text",
+       "text": "Stepping stones, $0$ to $5$.",
+       "id": "open"
+      },
+      {
+       "do": "arrive",
+       "target": "fa",
+       "at": "duck"
+      },
+      {
+       "do": "highlight",
+       "target": "c0",
+       "at": "zero"
+      },
+      {
+       "do": "highlight",
+       "target": "c5",
+       "at": "five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Plus hops forward.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "term",
+       "word": "plus $+$",
+       "meaning": "hop forward",
+       "at": "Plus"
+      },
+      {
+       "do": "send",
+       "target": "fa1",
+       "to": "s1",
+       "at": "hops",
+       "dur": 0.6
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Minus hops back.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "term",
+       "word": "minus $-$",
+       "meaning": "hop back",
+       "at": "Minus"
+      },
+      {
+       "do": "send",
+       "target": "fa1",
+       "to": "s0",
+       "at": "hops",
+       "dur": 0.6
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "What is three plus one?",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear",
+       "at": "What"
+      },
+      {
+       "do": "problem",
+       "text": "What is $3 + 1$?",
+       "id": "p1",
+       "at": "What"
+      },
+      {
+       "do": "leave",
+       "target": "fa1",
+       "toward": "n",
+       "at": "What"
+      },
+      {
+       "do": "arrive",
+       "target": "fb",
+       "at": "three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Start on three. Plus hops forward. Hop forward one.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "send",
+       "target": "fb1",
+       "to": "s4",
+       "at": "one",
+       "dur": 0.6
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Four! One more is just the next stone.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\ca{3}+\\cw{1}=4",
+       "fresh": true,
+       "at": "Four"
+      },
+      {
+       "do": "highlight",
+       "target": "c4",
+       "at": "next"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "What is four minus one?",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear",
+       "at": "What"
+      },
+      {
+       "do": "problem",
+       "text": "What is $4 - 1$?",
+       "id": "p2",
+       "at": "What"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "The duck is on four. Minus hops back. Hop back one.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "send",
+       "target": "fb1",
+       "to": "s3",
+       "at": "one",
+       "dur": 0.6
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Three! One less is the stone before.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\ca{4}-\\cw{1}=3",
+       "fresh": true,
+       "at": "Three"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Plus, then minus. Home again.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\ca{3}+\\cw{1}=4",
+       "fresh": true,
+       "at": "Plus"
+      },
+      {
+       "do": "highlight",
+       "target": "c3",
+       "at": "Home"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "What is two plus zero?",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear",
+       "at": "What"
+      },
+      {
+       "do": "problem",
+       "text": "What is $2 + 0$?",
+       "id": "p3",
+       "at": "What"
+      },
+      {
+       "do": "leave",
+       "target": "fb1",
+       "toward": "n",
+       "at": "What"
+      },
+      {
+       "do": "arrive",
+       "target": "fc",
+       "at": "two"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Zero means nothing, so the answer is zero.",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "c0",
+       "at": "zero",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Not quite. Zero is how far the duck hops. Where is the duck?",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "fc1",
+       "at": "Where"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Still on two! Two plus zero is two.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\ca{2}+\\cw{0}=2",
+       "fresh": true,
+       "at": "plus"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Zero hops, nothing changes. Two minus zero is still two.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\ca{2}-\\cw{0}=2",
+       "fresh": true,
+       "at": "minus"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "What is one plus three?",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear",
+       "at": "What"
+      },
+      {
+       "do": "problem",
+       "text": "What is $1 + 3$?",
+       "id": "p4",
+       "at": "What"
+      },
+      {
+       "do": "leave",
+       "target": "fc1",
+       "toward": "n",
+       "at": "What"
+      },
+      {
+       "do": "arrive",
+       "target": "fd",
+       "at": "one"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Start on one. Hop forward three: one, two, three.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "send",
+       "target": "fd1",
+       "to": "s2",
+       "at": "one",
+       "nth": 2,
+       "dur": 0.45
+      },
+      {
+       "do": "send",
+       "target": "fd1",
+       "to": "s3",
+       "at": "two",
+       "dur": 0.45
+      },
+      {
+       "do": "send",
+       "target": "fd1",
+       "to": "s4",
+       "at": "three",
+       "nth": 2,
+       "dur": 0.45
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Four. But that was three hops.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\ca{1}+\\cw{3}=4",
+       "fresh": true,
+       "at": "Four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Swap them! Start on the bigger number, three, and hop forward just one.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "leave",
+       "target": "fd1",
+       "toward": "n",
+       "at": "Swap"
+      },
+      {
+       "do": "arrive",
+       "target": "fe",
+       "at": "three"
+      },
+      {
+       "do": "send",
+       "target": "fe1",
+       "to": "s4",
+       "at": "one",
+       "dur": 0.6
+      },
+      {
+       "do": "write",
+       "tex": "\\ca{3}+\\cw{1}=4",
+       "fresh": true,
+       "at": "one"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Both land on four!",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "highlight",
+       "target": "c4",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "So start on the bigger number. Fewer hops, same stone.",
+     "pause": 0.5
+    },
+    {
+     "speaker": "teacher",
+     "say": "What is four minus three?",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear",
+       "at": "What"
+      },
+      {
+       "do": "problem",
+       "text": "What is $4 - 3$?",
+       "id": "p5",
+       "at": "What"
+      },
+      {
+       "do": "leave",
+       "target": "fe1",
+       "toward": "n",
+       "at": "What"
+      },
+      {
+       "do": "arrive",
+       "target": "fg",
+       "at": "four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Minus hops back. Hop back three: one, two, three.",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "send",
+       "target": "fg1",
+       "to": "s3",
+       "at": "one",
+       "dur": 0.45
+      },
+      {
+       "do": "send",
+       "target": "fg1",
+       "to": "s2",
+       "at": "two",
+       "dur": 0.45
+      },
+      {
+       "do": "send",
+       "target": "fg1",
+       "to": "s1",
+       "at": "three",
+       "nth": 2,
+       "dur": 0.45
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "One! Four minus three is one.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "write",
+       "tex": "\\ca{4}-\\cw{3}=1",
+       "fresh": true,
+       "at": "One"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Three quick ones. What is one plus four?",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "leave",
+       "target": "fg1",
+       "toward": "n",
+       "at": "Three"
+      },
+      {
+       "do": "clear",
+       "at": "What"
+      },
+      {
+       "do": "problem",
+       "text": "What is $1 + 4$?",
+       "id": "q1",
+       "at": "What"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Five!",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "5",
+       "at": "Five"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "What is five minus one?",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear",
+       "at": "What"
+      },
+      {
+       "do": "problem",
+       "text": "What is $5 - 1$?",
+       "id": "q2",
+       "at": "What"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Four!",
+     "pause": 0.4,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "4",
+       "at": "Four"
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "What is three minus three?",
+     "pause": 0.3,
+     "do": [
+      {
+       "do": "clear",
+       "at": "What"
+      },
+      {
+       "do": "problem",
+       "text": "What is $3 - 3$?",
+       "id": "q3",
+       "at": "What"
+      }
+     ]
+    },
+    {
+     "speaker": "learner",
+     "say": "Zero! Three hops back lands on zero.",
+     "pause": 0.5,
+     "do": [
+      {
+       "do": "answer",
+       "tex": "0",
+       "at": "Zero"
+      },
+      {
+       "do": "highlight",
+       "target": "c0",
+       "at": "zero",
+       "nth": 2
+      }
+     ]
+    },
+    {
+     "speaker": "teacher",
+     "say": "Plus hops forward. Minus hops back.",
+     "pause": 0.8,
+     "do": [
+      {
+       "do": "clear",
+       "at": "Plus"
+      },
+      {
+       "do": "term",
+       "word": "plus $+$",
+       "meaning": "hop forward",
+       "at": "Plus"
+      },
+      {
+       "do": "arrive",
+       "target": "fh",
+       "at": "Plus"
+      },
+      {
+       "do": "send",
+       "target": "fh1",
+       "to": "s3",
+       "at": "forward",
+       "dur": 0.6
+      },
+      {
+       "do": "term",
+       "word": "minus $-$",
+       "meaning": "hop back",
+       "at": "Minus"
+      },
+      {
+       "do": "send",
+       "target": "fh1",
+       "to": "s2",
+       "at": "back",
+       "dur": 0.6
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
