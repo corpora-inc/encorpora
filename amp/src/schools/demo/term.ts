@@ -109,15 +109,15 @@ export async function sumWeeks(
   params: unknown[] = [],
 ) {
   await client.query(
-    `INSERT INTO amp_learner_weeks(learner_id,week,active_ms,attempts)
-       SELECT learner_id,week,sum(active_ms)::bigint,sum(attempts)::int FROM (
-         SELECT learner_id,date_trunc('week',day)::date AS week,active_ms,0 AS attempts FROM amp_active_days
+    `INSERT INTO amp_learner_weeks(learner_id,week,active_ms,attempts,assisted)
+       SELECT learner_id,week,sum(active_ms)::bigint,sum(attempts)::int,sum(assisted)::int FROM (
+         SELECT learner_id,date_trunc('week',day)::date AS week,active_ms,0 AS attempts,0 AS assisted FROM amp_active_days
            WHERE learner_id IN (${learners})
          UNION ALL
-         SELECT learner_id,date_trunc('week',day)::date,0,attempts FROM amp_skill_days
+         SELECT learner_id,date_trunc('week',day)::date,0,attempts,assisted FROM amp_skill_days
            WHERE learner_id IN (${learners})
        ) facts GROUP BY learner_id,week
-       ON CONFLICT(learner_id,week) DO UPDATE SET active_ms=EXCLUDED.active_ms,attempts=EXCLUDED.attempts`,
+       ON CONFLICT(learner_id,week) DO UPDATE SET active_ms=EXCLUDED.active_ms,attempts=EXCLUDED.attempts,assisted=EXCLUDED.assisted`,
     params,
   );
 }
@@ -152,27 +152,57 @@ export async function seedTermEvidence(
   );
   // Each class works through its grade's skills a few a week, so a class
   // shares its week's skills; a student's ability moves them up or down a grade.
+  // A student who seldom practices also comes on fewer days.
   await client.query(
     `CREATE TEMP TABLE seed_pick ON COMMIT DROP AS
-       SELECT DISTINCT ON (s.learner,d.day,skill) s.learner,d.day,s.diligence,d.factor,skill
-       FROM seed_student s CROSS JOIN seed_day d CROSS JOIN generate_series(1,$1::int) k
-       CROSS JOIN LATERAL (SELECT $2::jsonb->(LEAST(12,GREATEST(0,round(s.grade+s.ability*0.6)::int)))::text AS list) g
-       CROSS JOIN LATERAL (SELECT g.list->>((d.week*2+k+(s.index%3)::int)%jsonb_array_length(g.list)) AS skill) p
-       WHERE s.diligence>0 AND jsonb_array_length(g.list)>0 AND random()<0.82`,
+       SELECT DISTINCT ON (learner,day,skill) learner,day,diligence,factor,skill FROM (
+         SELECT s.learner,d.day,s.diligence,d.factor,p.skill,random() AS draw
+         FROM seed_student s CROSS JOIN seed_day d CROSS JOIN generate_series(1,$1::int) k
+         CROSS JOIN LATERAL (SELECT $2::jsonb->(LEAST(12,GREATEST(0,round(s.grade+s.ability*0.6)::int)))::text AS list) g
+         CROSS JOIN LATERAL (SELECT g.list->>((d.week*2+k+(s.index%3)::int)%jsonb_array_length(g.list)) AS skill) p
+         WHERE s.diligence>0 AND jsonb_array_length(g.list)>0
+       ) picks
+       -- A draw per student, day and pick: a filter on the student alone would
+       -- be decided once for all their days.
+       WHERE draw<0.82*LEAST(1,diligence/0.5)`,
     [options.skillsPerDay, JSON.stringify(byGrade)],
+  );
+  // Minutes first, then problems that fit in them: about a minute or two
+  // each, never more than the time allows.
+  await client.query(
+    `ALTER TABLE seed_pick ADD COLUMN ms bigint;
+     UPDATE seed_pick SET ms=floor((7+random()*9)*60000*diligence*factor/${Math.max(1, options.skillsPerDay - 1)})::bigint`,
   );
   await client.query(
     `INSERT INTO amp_active_days(learner_id,day,surface,skill_id,active_ms)
-       SELECT learner,day,'practice',skill,floor((7+random()*9)*60000*diligence*factor/$1)::bigint
-       FROM seed_pick ON CONFLICT DO NOTHING`,
-    [Math.max(1, options.skillsPerDay - 1)],
+       SELECT learner,day,'practice',skill,ms FROM seed_pick ON CONFLICT DO NOTHING`,
   );
+  // Each problem is drawn on its own: about one in five comes back as spaced
+  // review, and it's right without help at the student's own rate; one missed
+  // alone may have had a hint. Memoize would reuse one draw for every row with
+  // the same count, so it's off for this statement's transaction.
+  await client.query("SET LOCAL enable_memoize=off");
   await client.query(
     `INSERT INTO amp_skill_days(learner_id,day,skill_id,attempts,correct,independent,assisted,review,review_independent)
-       SELECT learner,day,skill,n,floor(n*0.8),floor(n*0.7),floor(n*0.1),floor(n*0.2),floor(n*0.15)
-       FROM seed_pick CROSS JOIN LATERAL (SELECT (2+floor(random()*7*LEAST(1.2,diligence*factor)))::int AS n) a
+       SELECT learner,day,skill,a.n,c.independent+c.right_helped,c.independent,c.helped,c.review,c.review_right
+       FROM seed_pick
+       CROSS JOIN LATERAL (SELECT LEAST((2+floor(random()*7*LEAST(1.2,diligence*factor)))::int,
+         GREATEST(1,floor(ms/(60000*(0.8+random()*0.8)))::int)) AS n) a
+       CROSS JOIN LATERAL (
+         SELECT count(*) FILTER (WHERE review)::int AS review,
+           count(*) FILTER (WHERE review AND alone)::int AS review_right,
+           count(*) FILTER (WHERE alone)::int AS independent,
+           count(*) FILTER (WHERE NOT alone AND helped)::int AS helped,
+           count(*) FILTER (WHERE NOT alone AND helped AND fixed)::int AS right_helped
+         FROM (
+           SELECT p.review,random()<LEAST(0.92,0.6+0.2*seed_pick.diligence)-CASE WHEN p.review THEN 0 ELSE 0.05 END AS alone,
+             random()<0.35 AS helped,random()<0.6 AS fixed
+           FROM generate_series(1,a.n) k CROSS JOIN LATERAL (SELECT k>0 AND random()<0.2 AS review) p
+         ) draws
+       ) c
        ON CONFLICT DO NOTHING`,
   );
+  await client.query("RESET enable_memoize");
   await client.query(
     `INSERT INTO amp_level_days(learner_id,day,frontier,policy_version)
        SELECT s.learner,d.day,jsonb_build_object(
