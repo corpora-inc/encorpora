@@ -200,7 +200,7 @@ const specs: Spec[] = [
     },
     methodTitle: "Two points above each other",
     methodText: [
-      t`Plant A is at $(5, 5)$ and Plant B is at $(5, 7)$. Both points have the same first number, 5 weeks, so they sit straight above one another. Only the heights are different. Subtract the shorter height from the taller one: $7 - 5 = 2$. So Plant B is 2 centimeters taller.`,
+      t`Plant $A$ is at $(5, 5)$ and Plant $B$ is at $(5, 7)$. Both points have the same first number, 5 weeks, so they sit straight above one another. Only the heights are different. Subtract the shorter height from the taller one: $7 - 5 = 2$. So Plant $B$ is 2 centimeters taller.`,
     ],
     formalTitle: "Why the order matters",
     formal: [

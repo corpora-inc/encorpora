@@ -113,7 +113,7 @@ export function generateTrendLineFit(
   const above = residuals.filter((d) => d > 1e-9).length;
   const below = residuals.filter((d) => d < -1e-9).length;
   const explanation = [
-    `Each dot represents one of ${c.n} ${ctx.members}. Read ${response.grid.xLabel.toLowerCase()} across and ${response.grid.yLabel.toLowerCase()} up.`,
+    `Each dot represents one of ${c.n} ${ctx.members}. Read ${response.grid.xLabel.toLowerCase().replace("°f", "°F").replace("°c", "°C")} across and ${response.grid.yLabel.toLowerCase().replace("°f", "°F").replace("°c", "°C")} up.`,
     `The dots ${sign > 0 ? "rise" : "fall"} from left to right, so a fitting line should ${sign > 0 ? "rise" : "fall"} too.`,
     `Place the line through the middle and follow the tilt at both ends. The shown good line has ${above} dots above and ${below} below.`,
     `A vertical distance is the gap straight up or down from a dot to the line at the same horizontal position. The largest gap here is about ${yAmount(short(Math.max(...residuals.map(Math.abs))), ctx.yUnit)}.`,

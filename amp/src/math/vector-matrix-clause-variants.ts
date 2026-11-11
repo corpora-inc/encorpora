@@ -540,14 +540,14 @@ export function vectorMatrixClause(
         [nz(6), nz(6)],
       ];
     const explanation = [
-      "Adding the zero matrix O changes no entry, just as adding 0 changes no number.",
-      "Multiplying by I leaves every column unchanged, just as the number 1 leaves a product unchanged. Multiplying by O gives O.",
+      "Adding the zero matrix $O$ changes no entry, just as adding 0 changes no number.",
+      "Multiplying by $I$ leaves every column unchanged, just as the number 1 leaves a product unchanged. Multiplying by $O$ gives $O$.",
     ];
     if (ask === 0)
       return b.choice(
         {
-          prompt: "Which matrix Z satisfies $A+Z=A$ for every 2×2 matrix A?",
-          hint: "Each entry added to A must leave that entry unchanged.",
+          prompt: "Which matrix $Z$ satisfies $A+Z=A$ for every 2×2 matrix $A$?",
+          hint: "Each entry added to $A$ must leave that entry unchanged.",
           explanation,
         },
         matrix(O),
@@ -567,11 +567,11 @@ export function vectorMatrixClause(
       return b.choice(
         {
           prompt:
-            "O is the 2×2 zero matrix and I is the identity. Which statement is NOT an identity valid for every 2×2 matrix A?",
-          hint: "Test what adding I does to a diagonal entry, and what multiplying by O does to a column.",
+            "$O$ is the 2×2 zero matrix and $I$ is the identity. Which statement is NOT an identity valid for every 2×2 matrix $A$?",
+          hint: "Test what adding $I$ does to a diagonal entry, and what multiplying by $O$ does to a column.",
           explanation: [
             ...explanation,
-            "An identity must hold for every A. A statement can fail this test even if it happens to hold for a special A.",
+            "An identity must hold for every $A$. A statement can fail this test even if it happens to hold for a special $A$.",
           ],
         },
         pick(r, ["$A+I=A$", "$AO=A$", "$AI=O$", "$A+O=O$"]),
@@ -582,7 +582,7 @@ export function vectorMatrixClause(
         result = operation === "A+O" || operation === "AI" ? A : O;
       return b.choice(
         {
-          prompt: `Let $A=$ ${matrix(A)}, O be the zero matrix, and I the identity. Find $${operation}$.`,
+          prompt: `Let $A=$ ${matrix(A)}, $O$ be the zero matrix, and $I$ the identity. Find $${operation}$.`,
           hint: `Check whether $${operation}$ adds zero, multiplies by zero, leaves a column unchanged, or subtracts an entry from itself.`,
           explanation,
         },
@@ -599,12 +599,12 @@ export function vectorMatrixClause(
       },
       [
         {
-          label: "I plays the role of which number in multiplication?",
+          label: "$I$ plays the role of which number in multiplication?",
           correct: "1",
           wrong: ["0", "−1", "Any nonzero number"],
         },
         {
-          label: "AO = O corresponds to…",
+          label: "$AO = O$ corresponds to…",
           correct: "$a\\cdot0=0$",
           wrong: ["$a+0=a$", "$a\\cdot1=a$", "$a-a=0$"],
         },
@@ -616,8 +616,8 @@ export function vectorMatrixClause(
     return b.choice(
       {
         prompt:
-          "For arbitrary square matrices A and B of the same size, which equation is NOT an identity?",
-        hint: "Expand products in order. You may regroup factors, but cannot exchange A and B.",
+          "For arbitrary square matrices $A$ and $B$ of the same size, which equation is NOT an identity?",
+        hint: "Expand products in order. You may regroup factors, but cannot exchange $A$ and $B$.",
         explanation: [
           "Matrix multiplication is associative and distributive, but generally not commutative.",
           "$(A+B)(A-B)=A^2-AB+BA-B^2$. The middle terms cancel only when $AB=BA$.",
@@ -647,25 +647,25 @@ export function vectorMatrixClause(
     return b.parts(
       {
         prompt: `Let $A=$ ${matrix(A)} and $B=$ ${matrix(B)}. Compute both orders and distinguish this example from the general rule.`,
-        hint: `For the top-left entry of AB, use ${A[0]![0]} × ${B[0]![0]} + ${A[0]![1]} × ${B[1]![0]}.`,
+        hint: `For the top-left entry of $AB$, use ${A[0]![0]} × ${B[0]![0]} + ${A[0]![1]} × ${B[1]![0]}.`,
         explanation: [
           `Row by column gives $AB=$ ${matrix(AB)} and $BA=$ ${matrix(BA)}.`,
           commuting
-            ? "These matrices commute: multiplying by a scalar identity commutes with A."
+            ? "These matrices commute: multiplying by a scalar identity commutes with $A$."
             : "These two products differ, providing a counterexample to the claim that all matrices commute.",
           "Some pairs commute, but matrix multiplication is not commutative in general.",
         ],
       },
       [
-        { label: "AB", correct: matrix(AB), wrong: [matrix(BA), ...slips(AB)] },
-        { label: "BA", correct: matrix(BA), wrong: [matrix(AB), ...slips(BA)] },
+        { label: "$AB$", correct: matrix(AB), wrong: [matrix(BA), ...slips(AB)] },
+        { label: "$BA$", correct: matrix(BA), wrong: [matrix(AB), ...slips(BA)] },
         {
-          label: "Is AB = BA for this pair?",
+          label: "Is $AB = BA$ for this pair?",
           correct: commuting ? "Yes" : "No",
           wrong: [commuting ? "No" : "Yes"],
         },
         {
-          label: "For square matrices in general, AB = BA…",
+          label: "For square matrices in general, $AB = BA$…",
           correct: "For some pairs, but not in general",
           wrong: [
             "Always",
@@ -710,18 +710,23 @@ export function vectorMatrixClause(
         max = Math.max(...totals),
         towns = totals
           .flatMap((n, i) => (n === max ? ["ABCD"[i]!] : []))
-          .join(", ");
+          .join(", "),
+        townList = (names: string) =>
+          names
+            .split(", ")
+            .map((name) => `$${name}$`)
+            .join(", ");
       const copy = {
-        prompt: `Each arrow is a one-way road. Rows are FROM towns and columns are TO towns, both in order A, B, C, D. ${ask === 0 ? "Which matrix represents the network?" : ask === 1 ? "How many roads leave C?" : "Which town or towns have the most incoming roads?"}`,
+        prompt: `Each arrow is a one-way road. Rows are FROM towns and columns are TO towns, both in order ${townList("A, B, C, D")}. ${ask === 0 ? "Which matrix represents the network?" : ask === 1 ? "How many roads leave $C$?" : "Which town or towns have the most incoming roads?"}`,
         figure: sceneFigure(g.scene()),
         hint: ask === 0
           ? "Follow an arrow from its tail town to its head town; put 1 at that row and column."
           : ask === 1
-            ? "Follow each arrow that leaves C. Count those arrows; put 1 at each row and column where an arrow runs."
+            ? "Follow each arrow that leaves $C$. Count those arrows; put 1 at each row and column where an arrow runs."
             : "Follow each arrow into a town. The town with the most incoming arrows is the one to name.",
         explanation: [
           `The network matrix is ${matrix(M)}.`,
-          `Row C sums to ${sum(M[2]!)}. The column totals are ${totals.join(", ")}, so the maximum is ${max}, for ${towns}.`,
+          `Row $C$ sums to ${sum(M[2]!)}. The column totals are ${totals.join(", ")}, so the maximum is ${max}, for ${townList(towns)}.`,
         ],
       };
       if (ask === 1)
@@ -733,8 +738,10 @@ export function vectorMatrixClause(
       if (ask === 2)
         return b.choice(
           copy,
-          towns,
-          ["A", "B", "C", "D", "A, B, C, D"].filter((x) => x !== towns),
+          townList(towns),
+          ["A", "B", "C", "D", "A, B, C, D"]
+            .filter((x) => x !== towns)
+            .map(townList),
         );
       const loop = M.map((row, i) => row.map((x, j) => (i === j ? 1 : x))),
         missing = M.map((row) => [...row]);

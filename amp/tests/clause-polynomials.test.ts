@@ -47,18 +47,20 @@ test("graph-from-factored-rule sketches are distinct and version 1 stays on the 
 });
 
 test("quadratic FTA statements match the seeded quadratics", () => {
+  // Typesetting only: the same discriminant sentences, with $...$ around the math.
+  // The quadratic (b, c) and the kind are unchanged.
   assert.equal(
     quadraticFtaStatement(4, 13).sentence,
-    "D = −36 < 0, so x = −2 ± 3i: two nonreal roots, which is two roots counting multiplicity.",
+    "$D = -36 < 0$, so $x = -2 \\pm 3i$: two nonreal roots, which is two roots counting multiplicity.",
   );
   assert.equal(
     quadraticFtaStatement(-6, 13).sentence,
-    "D = −16 < 0, so x = 3 ± 2i: two nonreal roots, which is two roots counting multiplicity.",
+    "$D = -16 < 0$, so $x = 3 \\pm 2i$: two nonreal roots, which is two roots counting multiplicity.",
   );
   assert.equal(quadraticFtaStatement(-6, 13).kind, "negative");
   const repeated = quadraticFtaStatement(10, 25);
   assert.equal(repeated.kind, "zero");
-  assert.match(repeated.sentence, /x = −5 is a root of multiplicity 2/);
+  assert.match(repeated.sentence, /\$x = -5\$ is a root of multiplicity 2/);
 });
 
 test("quadratic-fta-argument options include one sound count of two", () => {
@@ -85,8 +87,10 @@ test("quadratic-fta-argument options include one sound count of two", () => {
       const correct = options.find((o) => o.id === problem.answer);
       assert.ok(correct);
       assert.match(correct.label, /two roots/);
-      if (correct.label.includes("< 0")) kinds.add("negative");
-      else if (correct.label.startsWith("D = 0")) kinds.add("zero");
+      // Typesetting only: strip $ so "$D = 0$" still classifies as the repeated root.
+      const reading = correct.label.replaceAll("$", "");
+      if (reading.includes("< 0")) kinds.add("negative");
+      else if (reading.startsWith("D = 0")) kinds.add("zero");
       else kinds.add("positive");
     }
   }

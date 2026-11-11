@@ -2835,9 +2835,8 @@ function distanceRouted(
   const built = finish(template, seed, r, spec);
   return spec.variant === 2 ? stampClause(built, "odd-midpoint") : built;
 }
-const uni = (n: number) => String(n).replace("-", "−");
-/** Square-free radical of a positive integer: 18 → "3√2", 4 → "2", 3 → "√3". */
-function radicalText(m: number): string {
+/** Square-free radical as TeX: 18 → "3\\sqrt{2}", 4 → "2", 3 → "\\sqrt{3}". */
+function radicalTex(m: number): string {
   let k = 1;
   let rest = m;
   for (let p = 2; p * p <= rest; p++)
@@ -2846,7 +2845,8 @@ function radicalText(m: number): string {
       rest /= p * p;
     }
   if (rest === 1) return String(k);
-  return k === 1 ? `√${rest}` : `${k}√${rest}`;
+  const root = `\\sqrt{${rest}}`;
+  return k === 1 ? root : `${k}${root}`;
 }
 /** The one sound quadratic FTA statement. The oracle rebuilds this text. */
 export function quadraticFtaStatement(
@@ -2861,20 +2861,20 @@ export function quadraticFtaStatement(
     const lo = (-b - s) / 2;
     return {
       kind: "positive",
-      sentence: `D = ${uni(d)} > 0, so x = ${uni(hi)} and x = ${uni(lo)}: two real roots, which is two roots counting multiplicity.`,
+      sentence: `$D = ${d} > 0$, so $x = ${hi}$ and $x = ${lo}$: two real roots, which is two roots counting multiplicity.`,
     };
   }
   if (d === 0) {
     return {
       kind: "zero",
-      sentence: `D = 0, so x = ${uni(-b / 2)} is a root of multiplicity 2, which counts as two roots.`,
+      sentence: `$D = 0$, so $x = ${-b / 2}$ is a root of multiplicity 2, which counts as two roots.`,
     };
   }
   const h = -b / 2;
   const m = -d / 4;
   return {
     kind: "negative",
-    sentence: `D = ${uni(d)} < 0, so x = ${uni(h)} ± ${radicalText(m)}i: two nonreal roots, which is two roots counting multiplicity.`,
+    sentence: `$D = ${d} < 0$, so $x = ${h} \\pm ${radicalTex(m)}i$: two nonreal roots, which is two roots counting multiplicity.`,
   };
 }
 
@@ -2913,22 +2913,22 @@ function ftaArgument(r: Random): Spec {
     disc === "negative"
       ? [
           [
-            `D = ${uni(b * b - 4 * c)} < 0, so p has no roots; the theorem does not apply here.`,
+            `$D = ${b * b - 4 * c} < 0$, so $p$ has no roots; the theorem does not apply here.`,
             "A nonreal number is still a root. The theorem counts complex roots, not only real ones.",
           ],
           [
-            "The graph of p never meets the x-axis, so p has 0 roots, which contradicts the theorem.",
-            "An x-intercept is a real root. A quadratic can have two nonreal roots and no x-intercept.",
+            "The graph of $p$ never meets the $x$-axis, so $p$ has 0 roots, which contradicts the theorem.",
+            "An $x$-intercept is a real root. A quadratic can have two nonreal roots and no $x$-intercept.",
           ],
           [
-            `D = ${uni(b * b - 4 * c)}, so x = ${uni(-b / 2)} ± ${radicalText(-(b * b - 4 * c) / 4)}: the i was dropped.`,
-            "The square root of a negative number is imaginary. Dropping the i gives real numbers that do not solve p(x) = 0.",
+            `$D = ${b * b - 4 * c}$, so $x = ${-b / 2} \\pm ${radicalTex(-(b * b - 4 * c) / 4)}$: the $i$ was dropped.`,
+            "The square root of a negative number is imaginary. Dropping the $i$ gives real numbers that do not solve $p(x) = 0$.",
           ],
         ]
       : disc === "zero"
         ? [
             [
-              "D = 0, so there is only one root; the theorem fails for this quadratic.",
+              "$D = 0$, so there is only one root; the theorem fails for this quadratic.",
               "A double root is counted twice. Degree 2 still means two roots counting multiplicity.",
             ],
             [
@@ -2936,8 +2936,8 @@ function ftaArgument(r: Random): Spec {
               "Touching once is a root of multiplicity 2. It counts twice.",
             ],
             [
-              `D = 0, so x = ${uni(b / 2)} is a root of multiplicity 2, which counts as two roots.`,
-              "The root has the wrong sign. For x^2 + bx + c with D = 0, the root is −b/2.",
+              `$D = 0$, so $x = ${b / 2}$ is a root of multiplicity 2, which counts as two roots.`,
+              "The root has the wrong sign. For $x^2 + bx + c$ with $D = 0$, the root is $-b/2$.",
             ],
           ]
         : [
@@ -2946,20 +2946,20 @@ function ftaArgument(r: Random): Spec {
               "Real numbers are complex numbers. The two real roots are the two roots; the theorem does not add more.",
             ],
             [
-              `D = ${uni(b * b - 4 * c)} > 0, so there are no complex roots.`,
+              `$D = ${b * b - 4 * c} > 0$, so there are no complex roots.`,
               "A positive discriminant means two real roots, and real roots count as complex roots.",
             ],
             [
-              `D = ${uni(b * b - 4 * c)} > 0, so x = ${uni((-b + Math.sqrt(b * b - 4 * c)) / 2)} only: one root.`,
-              "The ± gives two roots. Both must be counted.",
+              `$D = ${b * b - 4 * c} > 0$, so $x = ${(-b + Math.sqrt(b * b - 4 * c)) / 2}$ only: one root.`,
+              "The $\\pm$ gives two roots. Both must be counted.",
             ],
           ];
   return {
     variant: 5,
     prompt: `Which statement correctly shows that $p(x) = ${poly}$ has exactly two complex roots, counting multiplicity?`,
-    hint: `For $p(x) = ${poly}$, compute the discriminant b² − 4ac. Its sign says whether the two roots are real and distinct, a repeated real root, or a conjugate pair.`,
+    hint: `For $p(x) = ${poly}$, compute the discriminant $b^2 - 4ac$. Its sign says whether the two roots are real and distinct, a repeated real root, or a conjugate pair.`,
     explanation: [
-      `For p(x) = ${poly}, b = ${uni(b)} and c = ${uni(c)}, so D = b² − 4ac = ${uni(b * b - 4 * c)}.`,
+      `For $p(x) = ${poly}$, $b = ${b}$ and $c = ${c}$, so $D = b^2 - 4ac = ${b * b - 4 * c}$.`,
       sentence,
       "A root does not have to be real, and a repeated root is counted as many times as it appears. Degree 2 means two roots in every case.",
     ],
