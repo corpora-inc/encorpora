@@ -983,27 +983,13 @@ nav button {
 /* Options past an edge: that edge fades and a shadow falls under the list,
    so the first view never hides that there are more. */
 .choice-options[data-more-below] {
-  mask-image: linear-gradient(
-    to bottom,
-    #000 calc(100% - 36px),
-    rgb(0 0 0 / 0.18)
-  );
+  mask-image: var(--scroll-fade-down);
 }
 .choice-options[data-more-above] {
-  mask-image: linear-gradient(
-    to top,
-    #000 calc(100% - 28px),
-    rgb(0 0 0 / 0.18)
-  );
+  mask-image: var(--scroll-fade-up);
 }
 .choice-options[data-more-above][data-more-below] {
-  mask-image: linear-gradient(
-    to bottom,
-    rgb(0 0 0 / 0.18),
-    #000 28px,
-    #000 calc(100% - 36px),
-    rgb(0 0 0 / 0.18)
-  );
+  mask-image: var(--scroll-fade-both);
 }
 .choice-form fieldset:has(> .choice-options[data-more-below])::after {
   content: "";
