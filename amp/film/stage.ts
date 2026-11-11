@@ -2004,7 +2004,7 @@ class GeoStage {
         e.el.style.stroke = INK[p.ink ?? "muted"]!; e.el.style.strokeWidth = "3.5"; e.el.style.opacity = String(o);
         // numbers that would touch each other (near the origin, or crowded) drop out, nearest the origin first
         {
-          const o0 = map([0, 0]), fs = 34, gap = LABEL_GAP * 0.62;
+          const o0 = map([0, 0]), fs = AXIS_NUM_PX[p.size ?? "s"]!, gap = LABEL_GAP * 0.62;
           const box = (n: [string, P, string]) => {
             const w = n[0].replace(/[^0-9.\-]/g, "").length * fs * 0.55 + 6, h = fs;
             const cx = n[2] === "s" ? n[1][0] : n[1][0] - gap - w / 2, cy = n[2] === "s" ? n[1][1] + gap + h / 2 : n[1][1];
@@ -2021,7 +2021,7 @@ class GeoStage {
         }
         const tags = (e.extraHtml ??= []);
         // haloed: a curve through its own zero crossing never cuts through the number there
-        while (tags.length < nums.length) tags.push(div("film-label film-axis-num halo", this.labels));
+        while (tags.length < nums.length) tags.push(div(`film-label film-axis-num halo${p.size && p.size !== "s" ? ` axis-${p.size}` : ""}`, this.labels));
         tags.forEach((el, k) => {
           const it = nums[k];
           el.style.display = it ? "" : "none";
@@ -2539,6 +2539,8 @@ const DIRS: Record<string, P> = {
 };
 /** How far a label sits from the thing it names, before `far` scales it. */
 const LABEL_GAP = 58;
+/** Axis numbers, in stage pixels, by the axes part's `size` (film.css draws the same sizes). */
+const AXIS_NUM_PX: Record<string, number> = { s: 34, m: 46, l: 56 };
 /** A highlight deepens the ink toward gold. The wash behind an element is not a highlight. */
 function emphInk(ink: string, em: number): string {
   if (em <= 0.001 || ink === "none") return ink;

@@ -386,7 +386,7 @@ Parts:
 | `label` | TeX, `at` (a point, a thing, or a seg's id for its middle), `dir` (`n`, `ne`, ...), `far`, `ink`, `size` (`s`, `m`, `l`, `xl` for a count beside a picture), `halo` (on a filled shape; automatic on a graph), `flies` (it travels; see "Pairs, and things that travel to a label") |
 | `dim` | Two point names, `side`, `tex`: a measuring bracket |
 | `curve` | Point names, `ink`, `w` |
-| `axes` | `true`, `step` (tick spacing), `every` (number spacing), `ystep`, `yevery`, `ink`; `"y": false` draws only the x axis: a number line, with 0 labeled |
+| `axes` | `true`, `step` (tick spacing), `every` (number spacing), `ystep`, `yevery`, `ink`; `"y": false` draws only the x axis: a number line, with 0 labeled; `size` (`m`, `l`) sets the numbers larger, for a graph that shares its card or must read on a phone: number fewer ticks (`every`, `yevery`) to match |
 | `circle` | A center point name and `r` (radius in units), `fill`, `ink`, `w`: a clock face, a wheel, a pie |
 | `plot` | An expression in `x`, `from`, `to`, `ink`, `w` |
 | `grid` | `[columns, rows]`, `at` (its top-left corner), `size` (one cell, or `[w, h]`), `fill`, `ink`: a ten-frame is `[5, 2]`, a bar split into equal parts `[n, 1]`, an array, a hundred chart |
@@ -606,7 +606,9 @@ A function shown two ways is one figure: the table to the left of the y axis, th
 - Changes between rows go beside them on points `{ "mid": [...] }` of two `left:` or `right:` anchors: the change in x on the left (blue), the change in y on the right (rust), so "x goes up two, y goes up four" is read straight off the table.
 - A start the table hides is a row whose cells wait for `show` (its grid is drawn from the first cell, so its place is kept).
 
-`compare-function-rates--sk` is the reference: a taxi's table, graph, equation and words holding one start and one step; a table against a falling graph, with the hidden start walked back and the table's rows flown onto the graph so both starts and both first steps stand side by side; speeds whose gap grows by the same amount every hour; and a rule whose steps grow, so its points leave the line.
+A table and a graph share one card, so keep both large: few rows (the cells hold numerals at `size` m), a graph with a short range and large axis numbers (`"size": "l"`, numbers every third unit), single-number change labels at `size` l, and step labels at `size` l.
+
+`compare-function-rates--sk` is the reference: a taxi's table, graph, equation and words holding one start and one step; a table against a falling graph, with the hidden start walked back and the table's rows flown onto the graph so both starts and both steps stand side by side; and, in the learner's closing turn, a rule whose steps grow, so its third point leaves the line.
 
 Figure actions:
 

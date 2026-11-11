@@ -8,7 +8,8 @@
  * instead of shrinking to fit a cell measured on the smaller scale.
  *
  * A row becomes a point: a dot placed on the row's edge (a table anchor)
- * moves to its place on the graph.
+ * moves to its place on the graph. Axes may set their numbers larger, so a
+ * few numbers read on a phone; none of them touch.
  */
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
@@ -28,7 +29,7 @@ const script: Script = scriptSchema.parse({
       view: [-6.5, -12, 5.5, 108],
       points: { TL: [-6, 100], E: [5, 100], D: { anchor: ["t", "right:1"] }, P: [2, 40] },
       parts: [
-        { id: "ax", axes: true, step: 1, every: 1, ystep: 10, yevery: 20, xrange: [0, 5.2], yrange: [0, 104], start: true },
+        { id: "ax", axes: true, step: 1, every: 1, ystep: 10, yevery: 20, xrange: [0, 5.2], yrange: [0, 104], size: "l", start: true },
         { id: "t", table: true, at: "TL", corner: "$x$", head: ["$y$"], rows: [{ label: "1", cells: ["20"] }, { label: "3", cells: ["60"] }], cell: [2.4, 24], size: "m", start: true },
         { id: "line", seg: ["TL", "E"], ink: "accent", start: true },
         { id: "p", dot: "P", ink: "ink", r: 6, start: true },
@@ -74,7 +75,7 @@ afterAll(async () => {
 
 const VIEWS = [{ width: 1280, height: 800, layout: "wide" }, { width: 390, height: 844, layout: "tall" }] as const;
 
-test("a table on a stretched graph fills its grid, keeps its type size, and its row flies to the graph", async () => {
+test("a table on a stretched graph fills its grid, keeps its type size, and its row flies to the graph; axis numbers can be large", async () => {
   const page = await browser.newPage();
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
@@ -111,7 +112,11 @@ test("a table on a stretched graph fills its grid, keeps its type size, and its 
           probe.remove();
           return px;
         })();
-        return { grid, cells, sizes, css };
+        const nums = [...document.querySelectorAll<HTMLElement>(".film-shot .film-axis-num")].filter((el) => el.style.display !== "none").map((el) => {
+          const r = el.getBoundingClientRect();
+          return { px: parseFloat(getComputedStyle(el).fontSize), l: r.left, t: r.top, r: r.right, b: r.bottom };
+        });
+        return { grid, cells, sizes, css, nums };
       });
       // two columns and three rows (the header and two body rows): each shaded cell is one column wide and one row tall
       expect(got.cells.length, where("cells drawn")).toBe(6);
@@ -121,6 +126,13 @@ test("a table on a stretched graph fills its grid, keeps its type size, and its 
       }
       // the cells are roomy, so the numbers keep the size the part asks for
       for (const s of got.sizes) expect(s.px, where(`"${s.text}" keeps its size`)).toBeGreaterThanOrEqual(got.css - 0.5);
+      // the axes asked for large numbers: every number is drawn at that size, and no two touch
+      expect(got.nums.length, where("axis numbers drawn")).toBeGreaterThanOrEqual(8);
+      for (const n of got.nums) expect(n.px, where("an axis number's size")).toBe(56);
+      for (let i = 0; i < got.nums.length; i++) for (let j = i + 1; j < got.nums.length; j++) {
+        const a = got.nums[i]!, b = got.nums[j]!;
+        expect(Math.min(a.r, b.r) - Math.max(a.l, b.l) > 0.5 && Math.min(a.b, b.b) - Math.max(a.t, b.t) > 0.5, where("two axis numbers touch")).toBe(false);
+      }
     }
     expect(errors).toEqual([]);
   } finally {
