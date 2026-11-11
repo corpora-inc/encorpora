@@ -1,6 +1,17 @@
 {
   "id": "linear-initial-value-meaning--sk",
   "title": "Linear models: the start and the step",
+  "teaches": [
+    "recover-linear-intercept",
+    "predict-linear-output",
+    "graph-of-linear-rule",
+    "graph-equation-choice",
+    "inline-linear-features",
+    "line-from-point-steps",
+    "sat-fn-line-equation-choice",
+    "savings-plan-growth",
+    "wage-and-cost-blanks"
+  ],
   "cast": {
     "teacher": {},
     "learner": {}
