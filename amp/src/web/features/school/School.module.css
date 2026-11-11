@@ -17,6 +17,18 @@
 }
 /* A title wide enough that a shorter line under it can't pull the action up
    beside it on a narrow screen, or push it down. */
+/* A title that sub-tabs already show: kept for screen readers only. */
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.pageHead[data-tabbed] {
+  align-items: center;
+}
 .pageTitle {
   flex: 1 1 180px;
   min-width: 0;

@@ -35,7 +35,7 @@ export function OrgSettingsScreen() {
   return (
     <OrgFrame orgId={orgId} nav="settings" title="Settings">
       <div className={styles.settingsPage}>
-        <PageHead title="Settings" detail={org?.name ?? " "} />
+        <PageHead title="Settings" />
         {can.has("calendar.read") && <YearCalendar orgId={orgId} section />}
         {can.has("settings.read") && <OrgExperienceSection orgId={orgId} />}
         {can.has("license.read") && <LicenseSection orgId={orgId} />}

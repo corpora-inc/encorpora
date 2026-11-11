@@ -1,8 +1,20 @@
-import { useId, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useId,
+  useState,
+  type ReactNode,
+} from "react";
 import { TileChoice } from "../../ui/TileChoice";
 import styles from "./School.module.css";
 
-/** A screen's title and its one line, with its main action beside them. */
+/** Whether the frame shows sub-tabs above the screen. They already say where
+ * you are, so a screen's title is not shown again under them. */
+export const SubTabsShown = createContext(false);
+
+/** A screen's title and its one line, with its main action beside them. Under
+ * sub-tabs the title is for screen readers only, and the line and action are
+ * the first thing under the tabs. */
 export function PageHead({
   title,
   detail,
@@ -12,10 +24,13 @@ export function PageHead({
   detail?: ReactNode;
   action?: ReactNode;
 }) {
+  const tabbed = useContext(SubTabsShown);
+  if (tabbed && detail === undefined && action === undefined)
+    return <h1 className={styles.visuallyHidden}>{title}</h1>;
   return (
-    <div className={styles.pageHead}>
+    <div className={styles.pageHead} data-tabbed={tabbed ? "" : undefined}>
       <div className={styles.pageTitle}>
-        <h1>{title}</h1>
+        <h1 className={tabbed ? styles.visuallyHidden : undefined}>{title}</h1>
         {detail !== undefined && <p>{detail}</p>}
       </div>
       {action !== undefined && (
