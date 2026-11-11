@@ -240,7 +240,12 @@ function EvidenceWork({
       {shown.length === 0 ? (
         <p className={styles.quietLine}>No problems in this term yet.</p>
       ) : (
-        <WorkList work={shown} />
+        <WorkList
+          work={shown}
+          href={(item) => ({
+            path: `${classUrl(place.org, place.class, "map")}/${student}/work/${item.id}`,
+          })}
+        />
       )}
       {offset !== null && (
         <div className={styles.moreWork}>

@@ -28,6 +28,7 @@
    the bars, never under a control. */
 .head {
   align-items: start;
+  padding-inline: var(--space-2);
   padding-bottom: var(--space-1);
   border-bottom: 1px solid var(--color-border);
 }
@@ -102,6 +103,9 @@
 }
 .row {
   min-height: 44px;
+  /* Room inside the row, so its focus ring never touches the name or the
+     range (Q-39). */
+  padding-inline: var(--space-2);
 }
 .name {
   display: flex;
@@ -153,6 +157,12 @@
 .bar {
   display: block;
   min-width: 0;
+}
+/* The bar and the range are pictures of the row: a click on them is a
+   click on the row's link beneath (Q-40). */
+.row > .bar,
+.row > .numbers {
+  pointer-events: none;
 }
 .numbers {
   align-self: center;

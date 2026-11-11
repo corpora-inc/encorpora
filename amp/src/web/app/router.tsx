@@ -927,6 +927,36 @@ const schoolClassMap = createRoute({
 const schoolClassMapStudent = createRoute({
   getParentRoute: () => schoolClassMap,
   path: "$student",
+  staticData: { overList: true },
+  component: () => null,
+});
+/** One of that student's answers, replayed over the map (WorkReplay.tsx):
+ * Back returns to their sheet. Its data and the practice screen it draws
+ * with arrive before it paints. */
+/** A student's answer, replayed over the class map: under the student's
+ * sheet, so the map under it stays mounted with its view. */
+const schoolClassMapWork = createRoute({
+  getParentRoute: () => schoolClassMapStudent,
+  path: "work/$work",
+  staticData: { overList: true },
+  loader: async (input) => {
+    const session = (input.context as { session: AuthSession }).session;
+    const { workReplayOptions } =
+      await import("../features/school/classes/teacher-api");
+    const skill = new URLSearchParams(input.location.searchStr).get("skill");
+    await Promise.all([
+      mapLoader(input),
+      preload(
+        workReplayOptions(
+          session,
+          input.params.student,
+          input.params.work,
+          skill ?? undefined,
+        ),
+      ),
+      import("../features/school/classes/WorkReplay"),
+    ]);
+  },
   component: () => null,
 });
 const schoolClassGradebook = createRoute({
@@ -1314,7 +1344,9 @@ export const router = createRouter({
     schoolClass.addChildren([
       schoolClassHome,
       schoolClassToday,
-      schoolClassMap.addChildren([schoolClassMapStudent]),
+      schoolClassMap.addChildren([
+        schoolClassMapStudent.addChildren([schoolClassMapWork]),
+      ]),
       schoolClassGradebook,
       schoolClassTime,
       schoolClassReportCards,
@@ -1443,18 +1475,19 @@ const VIEW_KEYS = [
   "period",
   "view",
 ] as const;
-/** One address is the other one step deeper: a detail over its list. */
+/** A detail over a list (a route marked `staticData.overList`: a student's
+ * sheet, an answer replayed over it, a class's standing drill, a student
+ * from the list) and the list it opened from, at an ancestor address. Only
+ * those carry a list's view; a move between tabs never does. */
 function overList(a: string, b: string) {
   const [short, long] = a.length < b.length ? [a, b] : [b, a];
   const trimmed = short.replace(/\/+$/, "");
-  return (
-    long.startsWith(`${trimmed}/`) &&
-    !long
-      .slice(trimmed.length + 1)
-      .replace(/\/+$/, "")
-      .includes("/")
-  );
+  if (!long.startsWith(`${trimmed}/`)) return false;
+  const leaf = router.getMatchedRoutes(long)[2] as
+    { options?: { staticData?: { overList?: boolean } } } | undefined;
+  return leaf?.options?.staticData?.overList === true;
 }
+
 /** Learning screens, which a practice profile never makes a place. */
 const PROFILE_PRACTICE_PATHS = [
   "/practice",

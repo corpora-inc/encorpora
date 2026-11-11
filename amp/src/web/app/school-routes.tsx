@@ -86,8 +86,10 @@ export function schoolRoutes(root: AnyRoute) {
     path: string,
     component: ReturnType<typeof screen>,
     load?: (session: AuthSession, orgId: string) => unknown[],
+    staticData?: { overList?: boolean },
   ) =>
     createRoute({
+      staticData,
       getParentRoute: () => root,
       path: `/school/$org${path}`,
       beforeLoad: staffScreen,
@@ -320,6 +322,8 @@ export function schoolRoutes(root: AnyRoute) {
     createRoute({
       getParentRoute: () => root,
       path: "/school/$org/standing/$class",
+      // A class's drill over the school's curves: it keeps their view.
+      staticData: { overList: true },
       beforeLoad: staffScreen,
       loader: async ({ context, params }) => {
         const { session } = context as unknown as { session: AuthSession };
@@ -351,7 +355,36 @@ export function schoolRoutes(root: AnyRoute) {
       preload(yearsOptions(session, orgId)),
     ]),
     orgScreen("/students", screens.students),
-    orgScreen("/students/$student", screens.student),
+    // A student from the school's list keeps the list's view.
+    orgScreen("/students/$student", screens.student, undefined, {
+      overList: true,
+    }),
+    // One of the student's answers, replayed over their page (WorkReplay.tsx).
+    createRoute({
+      getParentRoute: () => root,
+      path: "/school/$org/students/$student/work/$work",
+      staticData: { overList: true },
+      beforeLoad: staffScreen,
+      loader: async ({ context, params, location }) => {
+        const { session } = context as unknown as { session: AuthSession };
+        const { org, student, work } = params as unknown as {
+          org: string;
+          student: string;
+          work: string;
+        };
+        const { workReplayOptions } =
+          await import("../features/school/classes/teacher-api");
+        const skill = new URLSearchParams(location.searchStr).get("skill");
+        await Promise.all([
+          frameData(session, org),
+          preload(
+            workReplayOptions(session, student, work, skill ?? undefined),
+          ),
+          import("../features/school/classes/WorkReplay"),
+        ]);
+      },
+      component: screens.student,
+    }),
     orgScreen("/staff", screens.staff, (session, orgId) => [
       preload(staffOptions(session, orgId)),
     ]),

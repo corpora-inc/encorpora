@@ -1,4 +1,4 @@
-import { useNavigate, useSearch } from "@tanstack/react-router";
+import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import {
   useState,
   type FocusEvent,
@@ -9,7 +9,7 @@ import type {
   ClassTabId,
   WorkItem,
 } from "../../../../schools/teacher-contracts";
-import { MathText } from "../../../MathText";
+import { spokenMath } from "../../../MathText";
 import { Badge, type BadgeTone } from "../../../ui/Badge";
 import { Button, buttonClass } from "../../../ui/Button";
 import type { GridSort } from "../../../ui/DataGrid";
@@ -173,6 +173,7 @@ const RESULTS: Record<WorkItem["result"], { label: string; tone: BadgeTone }> =
     paper: { label: "Marked on paper", tone: "neutral" },
     missed: { label: "Missed", tone: "danger" },
   };
+export const resultTone = (result: WorkItem["result"]) => RESULTS[result].tone;
 export function resultLabel(
   result: WorkItem["result"],
   reader: RecordReader = "other",
@@ -181,44 +182,96 @@ export function resultLabel(
     ? "On your own"
     : RESULTS[result].label;
 }
-/** Real problems a student worked, as they read them. */
+/** The time of day an answer was given, in the reader's clock. */
+export const clockTime = (iso: string) =>
+  iso
+    ? new Date(iso).toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+      })
+    : "";
+/** A prompt as one line of plain text: TeX read out, lines joined. */
+export const promptLine = (prompt: string) =>
+  spokenMath(prompt).replace(/\s+/g, " ").trim();
+
+/** Real problems a student worked, newest first: when, the skill, the prompt
+ * on one line, the answer and how it went. With `href`, each row opens its
+ * replay (`WorkReplay`). */
 export function WorkList({
   work,
   reader = "other",
+  href,
 }: {
   work: readonly WorkItem[];
   reader?: RecordReader;
+  /** Where a row's replay lives, as a splat path and search. */
+  href?: (item: WorkItem) => { path: string; search?: Record<string, string> };
 }) {
   return (
     <ul className={styles.problems}>
-      {work.map((item) => (
-        <li key={item.id}>
-          <span className={styles.when}>{shortDay(item.day)}</span>
-          <span className={styles.problem}>
-            <span className={styles.prompt}>
-              <MathText text={item.prompt} />
+      {work.map((item) => {
+        const answered =
+          item.answer === null
+            ? null
+            : `Answered ${promptLine(
+                item.result === "missed" && item.response !== null
+                  ? `${item.response}, correct answer ${item.answer}`
+                  : item.answer,
+              )}${item.review ? ", spaced review" : ""}`;
+        const body = (
+          <>
+            <span className={styles.when}>
+              <span>{shortDay(item.day)}</span>
+              <span>{clockTime(item.at)}</span>
             </span>
-            {item.answer !== null && (
-              <span className={styles.answered}>
-                {item.result === "missed" && item.response !== null ? (
-                  <>
-                    Answered <MathText text={item.response} />, correct answer{" "}
-                    <MathText text={item.answer} />
-                  </>
-                ) : (
-                  <>
-                    Answered <MathText text={item.answer} />
-                  </>
-                )}
-                {item.review ? ", spaced review" : ""}
+            <span className={styles.workSkill}>{item.skill}</span>
+            <span className={styles.workResult}>
+              <Badge tone={RESULTS[item.result].tone}>
+                {resultLabel(item.result, reader)}
+              </Badge>
+            </span>
+            {item.prompt ? (
+              <span className={styles.prompt} title={promptLine(item.prompt)}>
+                {promptLine(item.prompt)}
+              </span>
+            ) : (
+              <span className={styles.promptMissing}>
+                Problem text not stored
               </span>
             )}
-          </span>
-          <Badge tone={RESULTS[item.result].tone}>
-            {resultLabel(item.result, reader)}
-          </Badge>
-        </li>
-      ))}
+            {answered && (
+              <span className={styles.answered} title={answered}>
+                {answered}
+              </span>
+            )}
+          </>
+        );
+        const target = href?.(item);
+        return (
+          <li key={item.id}>
+            {target ? (
+              <Link
+                to="/$"
+                params={{ _splat: target.path }}
+                search={(target.search ?? {}) as never}
+                className={styles.workRow}
+                data-work-item={item.id}
+              >
+                {body}
+                <svg
+                  className={styles.workChevron}
+                  viewBox="0 0 16 16"
+                  aria-hidden="true"
+                >
+                  <path d="M6 3.5 10.5 8 6 12.5" />
+                </svg>
+              </Link>
+            ) : (
+              <div className={styles.workRow}>{body}</div>
+            )}
+          </li>
+        );
+      })}
     </ul>
   );
 }

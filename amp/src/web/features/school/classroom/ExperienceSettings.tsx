@@ -1,3 +1,4 @@
+import { Reveal } from "../../../ui/Reveal";
 import { LockMark, SettingMeta } from "./SettingMeta";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
@@ -43,9 +44,24 @@ const presets: Record<ExperiencePreset, { title: string; detail: string }> = {
   },
 };
 
+/** A setting that only means something while another one is on: its row
+ * shows only then (and folds away, its value kept, when that one is off). */
+type DependsOn = { key: ExperienceKey; on: (value: string) => boolean };
+/** Boards exist only while Standings is on, for a class or the school. */
+const STANDINGS_ON: DependsOn = {
+  key: "standings",
+  on: (value) => value !== "off",
+};
+/** Whether a row that depends on another shows, from the value in effect
+ * here (a Standings locked Off from above hides its dependents too). */
+const shows = (dependsOn: DependsOn | undefined, experience: Experience) =>
+  !dependsOn ||
+  dependsOn.on(experience.settings[dependsOn.key].value as string);
+
 type Row<K extends ExperienceKey> = {
   key: K;
   title: string;
+  dependsOn?: DependsOn;
   options: { value: Experience["settings"][K]["value"]; label: string }[];
   describe: Record<Experience["settings"][K]["value"], string>;
 };
@@ -82,6 +98,7 @@ const standingsRow: Row<"standings"> = {
 };
 const measureRow: Row<"measure"> = {
   key: "measure",
+  dependsOn: STANDINGS_ON,
   title: "What a board counts",
   options: [
     { value: "growth", label: "Growth" },
@@ -252,30 +269,40 @@ export function ExperienceSettings({
     });
   };
   const levelsShown = settings.levels.value === "shown";
-  const row = (key: ExperienceKey) => (
-    <SettingRow
-      key={key}
-      row={rowOf[key] as Row<ExperienceKey>}
-      experience={experience}
-      disabled={false}
-      {...(key === "measure" &&
-      settings.measure.value === "level" &&
-      !levelsShown
-        ? { note: "Levels aren’t shown here, so boards count growth." }
-        : {})}
-      onValue={(value) => send({ values: { [key]: value } })}
-      onFollow={() => send({ values: { [key]: null } })}
-      onLock={(locked) =>
-        send({
-          locks: { [key]: locked },
-          // A lock holds this scope's own choice, whatever it's showing.
-          ...(locked && !settings[key].own
-            ? { values: { [key]: settings[key].value } }
-            : {}),
-        })
-      }
-    />
-  );
+  const row = (key: ExperienceKey) => {
+    const dependsOn = (rowOf[key] as Row<ExperienceKey>).dependsOn;
+    const setting = (
+      <SettingRow
+        key={key}
+        row={rowOf[key] as Row<ExperienceKey>}
+        experience={experience}
+        disabled={false}
+        {...(key === "measure" &&
+        settings.measure.value === "level" &&
+        !levelsShown
+          ? { note: "Levels aren’t shown here, so boards count growth." }
+          : {})}
+        onValue={(value) => send({ values: { [key]: value } })}
+        onFollow={() => send({ values: { [key]: null } })}
+        onLock={(locked) =>
+          send({
+            locks: { [key]: locked },
+            // A lock holds this scope's own choice, whatever it's showing.
+            ...(locked && !settings[key].own
+              ? { values: { [key]: settings[key].value } }
+              : {}),
+          })
+        }
+      />
+    );
+    return dependsOn ? (
+      <Reveal key={key} open={shows(dependsOn, experience)}>
+        {setting}
+      </Reveal>
+    ) : (
+      setting
+    );
+  };
   /** One line whatever it's set to, so switching never moves what's below. */
   const teacherRow = experience.teacherLine && (
     <section
@@ -356,46 +383,48 @@ export function ExperienceSettings({
         {row("deviceMode")}
       </div>
       {experience.students && (
-        <section className={styles.leftOff} aria-labelledby="left-off">
-          <div className={styles.rowText}>
-            <h2 id="left-off">Leave off standings</h2>
-            <p>
-              A student left off isn’t on any board and doesn’t see one. Their
-              practice and grades don’t change.
-            </p>
-          </div>
-          {experience.students.length ? (
-            <Chips
-              label="Students left off standings"
-              disabled={!experience.canEdit}
-              options={experience.students.map((student) => ({
-                value: student.id,
-                label: student.name,
-              }))}
-              value={experience.students
-                .filter((student) => student.leftOff)
-                .map((student) => student.id)}
-              onChange={(next) => {
-                const chosen = new Set(next);
-                const changed = experience.students!.find(
-                  (student) => student.leftOff !== chosen.has(student.id),
-                );
-                if (changed)
-                  leaveOff.mutate(
-                    { id: changed.id, leftOff: chosen.has(changed.id) },
-                    {
-                      onError: (failure) =>
-                        setError(say(failure, "That change didn’t save.")),
-                    },
+        <Reveal open={shows(STANDINGS_ON, experience)}>
+          <section className={styles.leftOff} aria-labelledby="left-off">
+            <div className={styles.rowText}>
+              <h2 id="left-off">Leave off standings</h2>
+              <p>
+                A student left off isn’t on any board and doesn’t see one. Their
+                practice and grades don’t change.
+              </p>
+            </div>
+            {experience.students.length ? (
+              <Chips
+                label="Students left off standings"
+                disabled={!experience.canEdit}
+                options={experience.students.map((student) => ({
+                  value: student.id,
+                  label: student.name,
+                }))}
+                value={experience.students
+                  .filter((student) => student.leftOff)
+                  .map((student) => student.id)}
+                onChange={(next) => {
+                  const chosen = new Set(next);
+                  const changed = experience.students!.find(
+                    (student) => student.leftOff !== chosen.has(student.id),
                   );
-              }}
-            />
-          ) : (
-            <p className={styles.none}>
-              Students added to this class show here.
-            </p>
-          )}
-        </section>
+                  if (changed)
+                    leaveOff.mutate(
+                      { id: changed.id, leftOff: chosen.has(changed.id) },
+                      {
+                        onError: (failure) =>
+                          setError(say(failure, "That change didn’t save.")),
+                      },
+                    );
+                }}
+              />
+            ) : (
+              <p className={styles.none}>
+                Students added to this class show here.
+              </p>
+            )}
+          </section>
+        </Reveal>
       )}
       <Toast message={error} onDismiss={() => setError("")} />
     </div>

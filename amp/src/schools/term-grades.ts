@@ -983,7 +983,7 @@ export const skillTitleOf = (id: string) => catalog.get(id)?.title ?? id;
 export const skillStrandOf = (id: string) =>
   catalog.get(id)?.strand ?? "number";
 
-function readable(
+export function readable(
   response: ProblemResponse | undefined,
   raw: unknown,
   strand: string,
@@ -1000,6 +1000,17 @@ function readable(
     return null;
   }
 }
+/** How an answer counts: right on their own, right with help, right on
+ * paper (a mark without the answer), or missed. */
+export function workResult(outcome: {
+  correct?: boolean;
+  assisted?: boolean;
+  evidenceWeight?: number;
+}): WorkItem["result"] {
+  if (!outcome.correct) return "missed";
+  if ((outcome.evidenceWeight ?? 1) < 1) return "paper";
+  return outcome.assisted ? "hint" : "independent";
+}
 /** Real problems a student worked: prompt and answer from the immutable instance
  * and attempt, in a single read that never opens a learner transaction. */
 export async function workSamples(
@@ -1011,7 +1022,7 @@ export async function workSamples(
   offset = 0,
 ): Promise<WorkItem[]> {
   const { rows } = await db.query(
-    `SELECT a.problem_id AS id,a.outcome,i.content->'public' AS problem,
+    `SELECT a.id,a.outcome,i.content->'public' AS problem,
        i.content->'selection'->>'reason' AS reason,
        ((a.outcome->>'createdAt')::timestamptz AT TIME ZONE $4)::date::text AS day
      FROM amp_attempts a JOIN amp_instances i ON i.id=a.problem_id AND i.learner_id=a.learner_id
@@ -1024,17 +1035,11 @@ export async function workSamples(
     const { outcome, problem } = row;
     const skillId: string = outcome.skillId ?? problem?.skillId ?? "";
     const strand = skillStrandOf(skillId);
-    const paper = (outcome.evidenceWeight ?? 1) < 1;
-    const result: WorkItem["result"] = !outcome.correct
-      ? "missed"
-      : paper
-        ? "paper"
-        : outcome.assisted
-          ? "hint"
-          : "independent";
+    const result = workResult(outcome);
     return {
       id: row.id,
       day: row.day,
+      at: outcome.createdAt ?? "",
       prompt: problem?.prompt ?? "",
       answer: readable(problem?.response, outcome.answer, strand),
       response: readable(problem?.response, outcome.response, strand),

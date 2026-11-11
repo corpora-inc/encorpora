@@ -31,10 +31,13 @@ export function StudentSections({
   data,
   org,
   single = false,
+  workPath,
 }: {
   data: StudentRecordResponse;
   org: string;
   single?: boolean;
+  /** Where one answer's replay lives, without the leading slash. */
+  workPath?: (attempt: string) => string;
 }) {
   const first = data.student.first;
   const weeks = data.weeks.filter((week) => week.minutes > 0);
@@ -105,7 +108,7 @@ export function StudentSections({
       {data.work.length > 0 && (
         <section className={styles.recordSection}>
           <h2>Recent work</h2>
-          <RecordWork record={data} />
+          <RecordWork record={data} workPath={workPath} />
         </section>
       )}
       <section className={`${styles.recordSection} ${styles.noPrint}`}>

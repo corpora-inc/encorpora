@@ -586,14 +586,9 @@
     color-mix(in srgb, var(--color-figure-accent) 70%, transparent);
   outline-offset: -1px;
 }
-.band[data-clip-start] {
-  border-start-start-radius: 0;
-  border-end-start-radius: 0;
-}
-.band[data-clip-end] {
-  border-start-end-radius: 0;
-  border-end-end-radius: 0;
-}
+/* The axis reaches every student's range (standing-math gridFor); it stops
+   short only at the curriculum's own ends, where no level lies beyond, so a
+   range that meets one ends there, rounded, like any other. */
 .dot {
   position: absolute;
   top: calc(50% - 5px);

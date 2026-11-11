@@ -18,8 +18,13 @@
 .scroller {
   width: 100%;
 }
+/* A table wider than its column scrolls inside it, and its last column
+   comes to rest inside the gutter, never against the edge (Q-39); the first
+   is sticky and keeps its own inset. */
 .scroller[data-scrolls] {
   overflow-x: auto;
+  padding-inline-end: var(--space-4);
+  scroll-padding-inline: var(--space-4);
 }
 .scroller[data-virtual] {
   overflow: auto;

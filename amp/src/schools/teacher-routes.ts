@@ -53,10 +53,17 @@ import {
   readTime,
   readToday,
 } from "./teacher-reads.js";
+import { readWorkReplay } from "./work-replay.js";
 
 const reportCardsPdfQuery = paperQuery.extend({
   term: z.uuid(),
   student: z.uuid().optional(),
+});
+const workParams = z.object({
+  attempt: z.string().min(1).max(160),
+});
+const workQuery = z.object({
+  skill: z.string().min(1).max(100).optional(),
 });
 const classParam = ({ params }: { params: Record<string, string> }) =>
   ({ kind: "class", classId: params.class! }) as const;
@@ -418,6 +425,27 @@ export function defineTeacherRoutes(define: typeof defineSchoolRoute) {
     target: ({ params }) =>
       ({ kind: "student", personId: params.student! }) as const,
     handler: ({ actor, target, pool }) => studentRecord(pool, actor, target),
+  });
+  // One answer replayed as the student saw it: whoever can read the record
+  // can open its work. The attempt must be this student's.
+  define({
+    method: "GET",
+    url: "/api/v1/school/students/:student/work/:attempt",
+    action: "students.read",
+    target: ({ params }) =>
+      ({ kind: "student", personId: params.student! }) as const,
+    handler: async ({ request, target, pool }) => {
+      const { attempt } = workParams.parse(request.params);
+      const { skill } = workQuery.parse(request.query);
+      const replay = await readWorkReplay(
+        pool,
+        target.personId,
+        attempt,
+        skill,
+      );
+      if (!replay) throw new SchoolError(404, "not_found");
+      return replay;
+    },
   });
   // The record as a printed progress report, rendered for this request and
   // never stored: it names the student.

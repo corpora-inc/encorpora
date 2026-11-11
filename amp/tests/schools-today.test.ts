@@ -493,3 +493,36 @@ test("thresholds come from the versioned policy", () => {
     true,
   );
 });
+
+test("keeps missing links each student's latest miss without help", () => {
+  const withIds = (id: string) => [
+    miss(4, { id: `${id}-1` }),
+    miss(3, { id: `${id}-2` }),
+    miss(2, { id: `${id}-3` }),
+    // A miss with a hint since: not the one to open.
+    miss(1, { id: `${id}-4`, assisted: true }),
+  ];
+  const stuck = todayTodos(
+    input({
+      skills: [{ ...gap("noor", withIds("noor")) }],
+    }),
+  ).find((todo) => todo.kind === "stuck")!;
+  assert.deepEqual(stuck.misses, [
+    { personId: "noor", attempt: "noor-3", skillId: "fraction-addition" },
+  ]);
+  assert.equal(stuck.action.label, "See Noor’s misses");
+  const shared = todayTodos(
+    input({
+      skills: [
+        gap("amara", withIds("amara")),
+        gap("diego", withIds("diego")),
+        gap("lena"),
+      ],
+    }),
+  ).find((todo) => todo.kind === "shared-gap")!;
+  // Evidence folded before attempt ids were kept links nothing.
+  assert.deepEqual(
+    shared.misses?.map((entry) => entry.attempt),
+    ["amara-3", "diego-3"],
+  );
+});

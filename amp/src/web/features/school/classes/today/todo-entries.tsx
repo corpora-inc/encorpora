@@ -71,14 +71,19 @@ export function TodoAction({
         {action.label}
       </Button>
     );
+  const miss = todo.misses?.find((entry) =>
+    action.kind === "student" ? entry.personId === action.personId : false,
+  );
   const target =
     action.kind === "skill"
       ? { to: `pathways/${action.skillId}`, search: {} }
       : action.kind === "student"
-        ? {
-            to: studentUrl(org, action.personId, classId),
-            search: {},
-          }
+        ? miss
+          ? missTarget(org, classId, miss)
+          : {
+              to: studentUrl(org, action.personId, classId),
+              search: {},
+            }
         : {
             to: classUrl(org, classId, action.tab as ClassTabId | "start"),
             search: action.tab === "settings" ? { add: 1 } : {},
@@ -92,6 +97,52 @@ export function TodoAction({
     >
       {action.label}
     </Link>
+  );
+}
+
+type Miss = NonNullable<TodayTodo["misses"]>[number];
+/** A student's latest miss, replayed over the class map; Previous and Next
+ * stay on the skill. */
+const missTarget = (org: string, classId: string, miss: Miss) => ({
+  to: `${studentUrl(org, miss.personId, classId)}/work/${miss.attempt}`,
+  search: { skill: miss.skillId },
+});
+/** "Keeps missing": each student's misses, one link each, unless the item's
+ * own action already opens them. */
+function MissLinks({
+  todo,
+  org,
+  classId,
+}: {
+  todo: TodayTodo;
+  org: string;
+  classId: string;
+}) {
+  const misses = (todo.misses ?? []).filter(
+    (miss) =>
+      !(
+        todo.action.kind === "student" && todo.action.personId === miss.personId
+      ),
+  );
+  if (!misses.length) return null;
+  const names = new Map(todo.students.map((s) => [s.id, s.name]));
+  return (
+    <>
+      {misses.map((miss) => {
+        const target = missTarget(org, classId, miss);
+        const name = names.get(miss.personId)?.split(" ")[0] ?? "Student";
+        return (
+          <Link
+            key={miss.personId}
+            to="/$"
+            params={{ _splat: target.to }}
+            search={target.search as never}
+          >
+            {`${name}’s misses`}
+          </Link>
+        );
+      })}
+    </>
   );
 }
 
@@ -128,6 +179,9 @@ export function todoEntries({
     rule: todo.rule,
     mark: isFirstStep(todo) ? "plain" : "check",
     people: people ? todo.students.map((student) => student.name) : undefined,
+    links: todo.misses?.length ? (
+      <MissLinks todo={todo} org={place.org} classId={place.class} />
+    ) : undefined,
     actions: (
       <>
         <TodoAction

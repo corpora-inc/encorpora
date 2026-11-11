@@ -84,6 +84,10 @@ export const todayTodoResource = z.object({
   groupSheet: z.object({ skillId: z.string(), label: z.string() }).optional(),
   /** How this item is decided, in one sentence. */
   rule: z.string().optional(),
+  /** "Keeps missing": each student's latest miss on the skill, to replay. */
+  misses: z
+    .array(z.object({ personId: id, attempt: z.string(), skillId: z.string() }))
+    .optional(),
 });
 export type TodayTodo = z.infer<typeof todayTodoResource>;
 /** One student's day at a glance: where they work and what they did today. */
@@ -254,8 +258,11 @@ export const workResultIds = [
   "paper",
 ] as const;
 export const workItemResource = z.object({
+  /** The attempt's id: where its replay lives (`work/<id>`). */
   id: z.string(),
   day,
+  /** When it was answered (ISO). */
+  at: z.string(),
   prompt: z.string(),
   answer: z.string().nullable(),
   response: z.string().nullable(),
@@ -265,6 +272,66 @@ export const workItemResource = z.object({
   strand: z.string(),
 });
 export type WorkItem = z.infer<typeof workItemResource>;
+export const answerHelpKinds = [
+  "hint",
+  "lesson",
+  "video",
+  "example",
+  "person",
+] as const;
+/** One answer replayed as the student saw it (`work-replay.ts`): the served
+ * problem for the practice renderer, the answer marked as after Check, and
+ * what surrounded it. Staff who can read the student, and a family's parent,
+ * read it; a student never does. */
+export const workReplayResponse = z.object({
+  student: z.object({ id, first: z.string() }),
+  item: workItemResource,
+  skillId: z.string(),
+  /** The problem as it was served (`served`), rebuilt from its template,
+   * version and seed when the stored copy is incomplete (`rebuilt`), or not
+   * drawable at all (`unavailable`): then only `item`'s text is shown. */
+  source: z.enum(["served", "rebuilt", "unavailable"]),
+  /** A `PublicProblem`, checked by the renderer's own types. */
+  problem: z.record(z.string(), z.unknown()).nullable(),
+  /** Where the problem came from: its template, version and seed, and a
+   * digest of what was drawn. Null when the stored attempt lacks them. */
+  origin: z
+    .object({
+      templateId: z.string(),
+      version: z.number().nullable(),
+      seed: z.string(),
+      digest: z.string(),
+    })
+    .nullable(),
+  outcome: z.object({
+    correct: z.boolean(),
+    assisted: z.boolean(),
+    response: z.string(),
+    answer: z.string(),
+    explanation: z.array(z.string()),
+    parts: z.array(z.boolean()).optional(),
+    /** A paper mark entered by an adult, not an answer in the app. */
+    paper: z.boolean(),
+  }),
+  /** The help this answer had; null for answers stored before it was
+   * recorded. */
+  help: z.array(z.enum(answerHelpKinds)).nullable(),
+  /** Seconds since the student's answer before, when that was in the same
+   * sitting; null otherwise. */
+  seconds: z.number().nullable(),
+  /** Every answer to this same problem (template and seed), oldest first. */
+  tries: z.array(
+    z.object({ id: z.string(), at: z.string(), result: z.enum(workResultIds) }),
+  ),
+  /** The student's answer before and after this one (in `skill` when the
+   * replay is narrowed to one skill). */
+  previous: z.string().nullable(),
+  next: z.string().nullable(),
+  /** The skill's lesson on Pathways, with this problem type's short lesson
+   * when it has one. */
+  lesson: z.object({ skillId: z.string(), templateId: z.string().nullable() }),
+});
+export type WorkReplayResponse = z.infer<typeof workReplayResponse>;
 export const evidenceResponse = z.object({
   student: person.extend({ first: z.string() }),
   class: classSummary,
