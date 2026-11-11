@@ -200,7 +200,7 @@ export function ClassStandingScreen() {
                       detail={
                         data.growth
                           ? `95%: ${intervalWords(data.growth)}, ${studentsWord(data.growth.n)}`
-                          : `Shown once students pass ${data.settleAt} answers`
+                          : "Not settled yet"
                       }
                     />
                   </CurveFacts>
@@ -297,7 +297,7 @@ export function ClassStandingScreen() {
                                 high:
                                   student.growth.mu + 1.96 * student.growth.sd,
                               })
-                            : "—"}
+                            : <span title="Not settled yet">—</span>}
                         </td>
                       </tr>
                     );

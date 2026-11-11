@@ -1,3 +1,5 @@
+import { termGrowth } from "../../src/schools/growth";
+
 /**
  * Which definition of "growth this term" recovers a misspecified learner's
  * true ability change.
@@ -111,60 +113,38 @@ function scale(series: GrowthSeries, start: number): GrowthFigure | null {
   return { ...figure, mu: figure.mu * factor, sd: figure.sd * factor };
 }
 
-/**
- * Weighted least squares of level on day. The classical standard error treats
- * each day as an independent observation with variance sd², so σ² = 1 and
- * se(slope) = 1/√Sxx.
- */
-function weightedSlope(
-  points: readonly GrowthReading[],
-): { slope: number; se: number } | null {
-  if (points.length < 2) return null;
-  let weight = 0;
-  let wx = 0;
-  let wy = 0;
-  const weights: number[] = [];
-  for (const point of points) {
-    if (!(point.reportedSd > 0)) return null;
-    const w = 1 / (point.reportedSd * point.reportedSd);
-    weights.push(w);
-    weight += w;
-    wx += w * point.day;
-    wy += w * point.level;
-  }
-  if (!(weight > 0)) return null;
-  const xMean = wx / weight;
-  const yMean = wy / weight;
-  let sxx = 0;
-  let sxy = 0;
-  for (let index = 0; index < points.length; index++) {
-    const point = points[index]!;
-    const dx = point.day - xMean;
-    sxx += weights[index]! * dx * dx;
-    sxy += weights[index]! * dx * (point.level - yMean);
-  }
-  if (!(sxx > 0)) return null;
-  return { slope: sxy / sxx, se: Math.sqrt(1 / sxx) };
-}
-
 function slopeFigure(
   series: GrowthSeries,
   cut: number,
   ends: boolean,
 ): GrowthFigure | null {
   const settled = series.days.filter((day) => day.reportedSd <= cut);
-  const fit = weightedSlope(settled);
   const first = settled[0];
   const last = series.days[series.days.length - 1];
-  if (!fit || !first || !last || series.elapsed <= 0) return null;
+  const pace = termGrowth(
+    series.days.map((day) => ({
+      day: day.day,
+      level: day.level,
+      sd: day.reportedSd,
+    })),
+    series.elapsed,
+    cut,
+  );
+  if (!pace || !first || !last) return null;
+  if (!ends) {
+    return {
+      ...pace,
+      startDay: first.day,
+      startAnswers: first.answers,
+    };
+  }
   const span = last.day - first.day;
   if (span <= 0) return null;
-  const sd = ends
-    ? hypot(first.reportedSd, last.reportedSd) * (series.elapsed / span)
-    : fit.se * series.elapsed;
+  const sd =
+    hypot(first.reportedSd, last.reportedSd) * (series.elapsed / span);
   if (!(sd > 0)) return null;
   return {
-    mu: fit.slope * series.elapsed,
+    mu: pace.mu,
     sd,
     startDay: first.day,
     startAnswers: first.answers,

@@ -88,6 +88,8 @@ const fact = (patch: Partial<StudentFact>): StudentFact => ({
   startLevel: null,
   levelSd: 0.3,
   startSd: 0.4,
+  growthMu: null,
+  growthSd: null,
   seated: true,
   signedIn: true,
   since: "2026-08-17",
@@ -98,15 +100,15 @@ test("the overview counts practiced students and states the growth median's n", 
     fact({ thisMs: 8_000 }), // eight seconds: not practiced
     fact({ thisMs: 6 * 60_000 }),
     fact({ thisAttempts: 5 }),
-    fact({ level: 5.2, startLevel: 5.5 }),
-    fact({ level: 5.6, startLevel: 5.2 }),
+    fact({ growthMu: -0.3, growthSd: 0.5 }),
+    fact({ growthMu: 0.4, growthSd: 0.5 }),
   ]);
   assert.equal(usage.active, 2);
   assert.equal(usage.placed, 2);
   // Either sign, as the grade model now shows it.
   assert.equal(usage.growth, 0.05);
-  // One student's growth interval is their own: Δμ ± 1.96·√(0.3² + 0.4²).
-  const one = usageOf([fact({ level: 5, startLevel: 5.3 })]);
+  // One student's interval is the pace's own: μ ± 1.96σ.
+  const one = usageOf([fact({ growthMu: -0.3, growthSd: 0.5 })]);
   assert.equal(one.growth, -0.3);
   assert.ok(Math.abs(one.growthLow! - (-0.3 - 1.96 * 0.5)) < 0.12);
   assert.ok(Math.abs(one.growthHigh! - (-0.3 + 1.96 * 0.5)) < 0.12);

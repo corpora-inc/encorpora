@@ -440,7 +440,7 @@ test(
             [klass.id, sessions.first, people.Ana!.personId],
           )
         ).rows[0].suggested;
-        assert.equal(frozen.policyVersion, "school-grades-v3");
+        assert.equal(frozen.policyVersion, "school-grades-v4");
         assert.deepEqual(frozen.curve.teacher, CURVE);
         assert.equal(typeof frozen.inputs.endLevel.sd, "number");
         const closeEvent = (
@@ -449,7 +449,7 @@ test(
             [klass.id],
           )
         ).rows[0].detail;
-        assert.equal(closeEvent.after.policyVersion, "school-grades-v3");
+        assert.equal(closeEvent.after.policyVersion, "school-grades-v4");
 
         // Nothing that changes afterwards reaches it: the stored curve, new work.
         assert.equal(

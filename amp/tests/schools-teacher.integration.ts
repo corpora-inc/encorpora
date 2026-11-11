@@ -887,7 +887,7 @@ test(
           )
         ).rows[0];
         assert.ok(stored.frozen_at);
-        assert.equal(stored.suggested.policyVersion, "school-grades-v2");
+        assert.equal(stored.suggested.policyVersion, "school-grades-v4");
         assert.ok(stored.suggested.inputs.enrolled.from);
         assert.ok(stored.suggested.inputs.activeMinutes > 100);
         // A closed term can't be edited or closed again.

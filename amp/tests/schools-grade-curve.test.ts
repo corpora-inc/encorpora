@@ -237,7 +237,7 @@ test("percentiles map through the teacher's curve: ranges honoured in expectatio
   }
   const top = curved.get("s01")!;
   const bottom = curved.get("s30")!;
-  assert.equal(top.policyVersion, "school-grades-v3");
+  assert.equal(top.policyVersion, "school-grades-v4");
   assert.equal(top.curve!.rankLow, 1);
   assert.ok(top.curve!.letters.A > 0.99);
   assert.ok(top.low! >= 90 && top.letterLow!.startsWith("A"));
@@ -395,7 +395,7 @@ test("letter bands come from the school's scale", () => {
     D: { bottom: 60, top: 70 },
     F: { bottom: 50, top: 60 },
   });
-  assert.equal(CURVE_POLICY.version, "school-grades-v3");
+  assert.equal(CURVE_POLICY.version, "school-grades-v4");
 });
 
 test("a default curve starts from the class's own letters and holds the class", () => {

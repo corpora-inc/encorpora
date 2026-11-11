@@ -21,7 +21,8 @@ import {
 } from "./grade-policy.js";
 
 /**
- * school-grades-v3: the teacher's curve sets the suggestion.
+ * school-grades-v4: the teacher's curve sets the suggestion, and a draw of
+ * growth is a draw of the shared pace (`growth.ts`) when the grade has one.
  *
  * 1. Rank. Every student with enough work has a composite (the four
  *    components at their weights). Its inputs are estimates: each level has an
@@ -51,7 +52,7 @@ export const curvePolicySchema = z.strictObject({
 export type CurvePolicy = Readonly<z.infer<typeof curvePolicySchema>>;
 export const CURVE_POLICY: CurvePolicy = Object.freeze(
   curvePolicySchema.parse({
-    version: "school-grades-v3",
+    version: "school-grades-v4",
     draws: 1000,
     interval: 0.8,
     failingFloor: 50,
@@ -185,6 +186,13 @@ export function applyCurve(
       model.strands.forEach((estimate, strand) => {
         levels[strand] = drawFrom(estimate, random);
       });
+      const growthGain =
+        model.termGrowth === undefined
+          ? undefined
+          : model.termGrowth === null
+            ? 0
+            : model.termGrowth.mu +
+              Math.max(0, model.termGrowth.sd) * normal(random);
       composite[index] = model.score(
         levels,
         model.start && drawFrom(model.start, random),
@@ -192,6 +200,7 @@ export function applyCurve(
         model.retention
           ? beta(model.retention.right, model.retention.wrong, random)
           : null,
+        growthGain,
       );
       // Equal composites share their places evenly.
       tie[index] = random();

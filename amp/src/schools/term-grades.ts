@@ -35,6 +35,7 @@ import type {
   TermResource,
   WorkItem,
 } from "./teacher-contracts.js";
+import { growthArraySql, type TermGrowth } from "./growth.js";
 import { startLevelSql } from "./start-level.js";
 import { applyCurve } from "./curve-grades.js";
 import {
@@ -289,24 +290,41 @@ export async function activityBySpan(
   );
 }
 
-/** Each student's level where their span starts, once placement settled
- * (`start-level.ts`), and the latest inside it. */
+/** Each student's settled start (`start-level.ts`), their latest level inside
+ * the span, and the shared growth pace over it. */
 export async function levelsBySpan(
   db: Database,
   students: readonly TermStudent[],
 ): Promise<
-  Map<string, { start: StudentLevel | null; end: StudentLevel | null }>
+  Map<
+    string,
+    {
+      start: StudentLevel | null;
+      end: StudentLevel | null;
+      growth: TermGrowth | null;
+    }
+  >
 > {
   if (!students.length) return new Map();
   const { rows } = await db.query(
     `SELECT r.person_id AS "personId",
        ${startLevelSql({ select: "d.frontier", learner: "r.learner_id", from: "r.day_from", to: "r.day_to" })} AS start,
-       (SELECT frontier FROM amp_level_days d WHERE d.learner_id=r.learner_id AND d.day BETWEEN r.day_from AND r.day_to ORDER BY d.day DESC LIMIT 1) AS "end"
+       (SELECT frontier FROM amp_level_days d WHERE d.learner_id=r.learner_id AND d.day BETWEEN r.day_from AND r.day_to ORDER BY d.day DESC LIMIT 1) AS "end",
+       ${growthArraySql({ learner: "r.learner_id", from: "r.day_from", to: "r.day_to" })} AS growth
      FROM ${SPANS}`,
     spans(students),
   );
   return new Map(
-    rows.map(({ personId, start, end }) => [personId, { start, end }]),
+    rows.map(({ personId, start, end, growth }) => [
+      personId,
+      {
+        start,
+        end,
+        growth: growth
+          ? { mu: Number(growth[0]), sd: Number(growth[1]) }
+          : null,
+      },
+    ]),
   );
 }
 
@@ -516,6 +534,7 @@ export async function computeTerm(
       gradeLevel: student.gradeLevel,
       start: stored?.start ?? null,
       end: stored?.end ?? null,
+      termGrowth: stored?.growth ?? null,
       objectivesGained: counted.get(student.id)!.length,
       activity: activity.get(student.id) ?? emptyActivity,
       weeklyTargetMinutes: target.minutes,
@@ -887,7 +906,7 @@ export async function closeTerm(
         after: {
           sessionId: term.id,
           students: computed.length,
-          // A curved term is v3; its curve is frozen inside each grade.
+          // A curved term records the curve policy; its curve is frozen inside each grade.
           policyVersion:
             computed.find(({ suggestion }) => suggestion.curve)?.suggestion
               .policyVersion ?? policy.version,
