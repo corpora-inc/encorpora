@@ -579,7 +579,13 @@ export async function readTime(
           rows.reduce((sum, row) => sum + row.activeMinutes, 0),
         ),
         problems: rows.reduce((sum, row) => sum + row.problems, 0),
-        days: rows.map((row) => ({ day: row.day, minutes: row.activeMinutes })),
+        from: student.from,
+        to: student.to,
+        days: rows.map((row) => ({
+          day: row.day,
+          minutes: row.activeMinutes,
+          problems: row.problems,
+        })),
       };
     }),
     skills: [...skillTotals.entries()]

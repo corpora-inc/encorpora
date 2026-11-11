@@ -15,7 +15,17 @@ import { Segmented } from "../../../ui/Segmented";
 import { Sheet } from "../../../ui/Sheet";
 import { StatRow, StatTile } from "../../../ui/StatTile";
 import { Toast } from "../../../ui/Toast";
+import { summarize } from "../../../../schools/practice-stats";
 import { currentSession, orgOptions } from "../api";
+import {
+  HeatCell,
+  HeatLegend,
+  measureOf,
+  MEASURES,
+  StatsLine,
+  unitWord,
+  type HeatMeasure,
+} from "../practice/heat";
 import { useStaffSession } from "./api";
 import { ClassFrame } from "./ClassFrame";
 import { TimeDetail } from "./ProgressRecord";
@@ -80,7 +90,8 @@ function columnsOf(data: TimeResponse): {
     return { columns: week, days: true };
   }
   const count = daysBetween(from, to);
-  if (count <= MOST_DAYS) {
+  // The term is students by weeks: the heat map's grain.
+  if (data.period !== "term" && count <= MOST_DAYS) {
     const days = Array.from({ length: count }, (_, index) => {
       const day = addDays(from, index);
       return {
@@ -101,27 +112,51 @@ function columnsOf(data: TimeResponse): {
   }));
   return { columns: weeks, days: false };
 }
-/** Five steps of one hue, darker for more, measured against what a good week or
- * day looks like. Zero is its own, emptier mark. */
-function bin(minutes: number, full: number) {
-  if (minutes <= 0) return 0;
-  return Math.min(5, Math.ceil((minutes / full) * 5));
-}
-const minutesIn = (row: Row, column: Column) =>
+const isWeekend = (iso: string) =>
+  [0, 6].includes(new Date(`${iso}T12:00:00Z`).getUTCDay());
+const amountIn = (row: Row, column: Column, measure: HeatMeasure) =>
   row.days
     .filter((entry) => entry.day >= column.from && entry.day <= column.to)
-    .reduce((sum, entry) => sum + entry.minutes, 0);
+    .reduce(
+      (sum, entry) =>
+        sum + (measure === "minutes" ? entry.minutes : entry.problems),
+      0,
+    );
+/** Each student's weekly amounts over the range, zero weeks included, while
+ * they were on the roster. */
+function weeklyAmounts(data: TimeResponse, measure: HeatMeasure) {
+  return data.students.map((row) =>
+    data.weeks
+      .filter(
+        (week) =>
+          addDays(week, 6) >= (row.from ?? data.range.from) &&
+          week <= (row.to ?? data.range.to),
+      )
+      .map((week) =>
+        amountIn(row, { from: week, to: addDays(week, 6), label: "" }, measure),
+      ),
+  );
+}
 
+/** A student's row of cells, cold to hot against the weekly target (a day:
+ * a fifth of it). A weekend day with no work is left blank, not cold; a day
+ * still to come or before they joined is no reading at all. */
 function Heat({
   row,
   columns,
-  full,
+  midpoint,
   isDay,
+  measure,
+  today,
+  current,
 }: {
   row: Row;
   columns: Column[];
-  full: number;
+  midpoint: number | null;
   isDay: boolean;
+  measure: HeatMeasure;
+  today: string;
+  current: string;
 }) {
   return (
     <span
@@ -129,14 +164,34 @@ function Heat({
       style={{ "--heat-columns": columns.length } as CSSProperties}
     >
       {columns.map((column) => {
-        const minutes = minutesIn(row, column);
+        const amount = amountIn(row, column, measure);
+        const when = isDay
+          ? fullDay(column.from)
+          : `week of ${shortDay(column.from)}`;
+        const future = column.from > today;
+        const before =
+          (row.from && column.to < row.from) || (row.to && column.from > row.to);
+        const off = isDay && isWeekend(column.from) && amount === 0;
+        const scale = midpoint === null ? null : isDay ? midpoint / 5 : midpoint;
         return (
-          <span
+          <HeatCell
             key={column.from}
-            className={styles.heatCell}
-            data-bin={bin(minutes, full)}
-            data-monday={(isDay && isMonday(column.from)) || undefined}
-            data-tip={`${row.first}, ${isDay ? fullDay(column.from) : `week of ${shortDay(column.from)}`}: ${Math.round(minutes)} active minutes`}
+            value={future || before || off ? null : amount}
+            future={future || off}
+            current={!isDay && column.from === current}
+            midpoint={scale}
+            tip={
+              future
+                ? `${row.first}, ${when}: still to come`
+                : before
+                  ? `${row.first}, ${when}: not in this class`
+                  : `${row.first}, ${when}${!isDay && column.from === current ? ", so far" : ""}: ${Math.round(amount)} ${unitWord(measure, Math.round(amount))}${scale ? ` (${measure === "minutes" ? "target" : "midpoint"} ${Math.round(scale)})` : ""}`
+            }
+            style={
+              isDay && isMonday(column.from)
+                ? { marginInlineStart: 3 }
+                : undefined
+            }
           />
         );
       })}
@@ -144,48 +199,35 @@ function Heat({
   );
 }
 
-function Legend({ full, isDay }: { full: number; isDay: boolean }) {
-  return (
-    <div className={styles.heatLegend} aria-hidden="true">
-      <span>Active minutes {isDay ? "a day" : "a week"}</span>
-      <span className={styles.heatLegendScale}>
-        <span>0</span>
-        {[0, 1, 2, 3, 4, 5].map((step) => (
-          <span key={step} className={styles.heatCell} data-bin={step} />
-        ))}
-        <span>{Math.round(full)}+</span>
-      </span>
-    </div>
-  );
-}
-
-/** Four made-up weeks of one learner, for the empty state: what the grid of
- * days looks like once there's work. */
-const EXAMPLE_DAYS = [
-  0, 3, 4, 0, 2, 0, 0, 4, 5, 3, 0, 4, 0, 0, 2, 4, 5, 5, 3, 0, 0, 5, 4, 0, 5, 3,
-  0, 0,
-];
+/** Four made-up weeks of one learner, for the empty state: what the grid
+ * looks like once there's work. Positions on the scale, -1 to 1. */
+const EXAMPLE_WEEKS = [0.2, 0.6, 0.9, 1.1, 1.0, 0.5, 1.4, 1.2, 0.8, 1.6, 1.3, 1.1];
 function ExampleTime() {
   return (
     <div className={styles.exampleTime}>
       <div className={styles.heatCardTop}>
         <span className={styles.exampleName}>A learner</span>
-        <span className={styles.heatTotal}>312 min</span>
+        <span className={styles.heatTotal}>612 min</span>
       </div>
       <span
         className={styles.heatStrip}
-        style={{ "--heat-columns": EXAMPLE_DAYS.length } as CSSProperties}
+        style={{ "--heat-columns": EXAMPLE_WEEKS.length } as CSSProperties}
       >
-        {EXAMPLE_DAYS.map((step, index) => (
-          <span
+        {EXAMPLE_WEEKS.map((share, index) => (
+          <HeatCell
             key={index}
-            className={styles.heatCell}
-            data-bin={step}
-            data-monday={index % 7 === 0 || undefined}
+            value={share * 60}
+            midpoint={60}
           />
         ))}
       </span>
-      <Legend full={20} isDay />
+      <HeatLegend
+        caption="Active minutes a week"
+        midpoint={60}
+        midpointWord="target"
+        unit="minutes"
+        current={false}
+      />
     </div>
   );
 }
@@ -259,7 +301,8 @@ export function TimeScreen() {
   const session = useStaffSession();
   const [search, set] = useClassSearch();
   const period =
-    timePeriods.find((entry) => entry === search.period) ?? "month";
+    timePeriods.find((entry) => entry === search.period) ?? "term";
+  const measure = measureOf(search.chart);
   const time = useQuery(timeOptions(session, place, period));
   const family =
     useQuery({
@@ -281,8 +324,36 @@ export function TimeScreen() {
     ? columnsOf(data)
     : { columns: [], days: false };
   const target = data?.weeklyTargetMinutes ?? 60;
-  // A good day is about a third of a good week.
-  const full = isDay ? Math.max(5, Math.round(target / 3)) : target;
+  // Problems have no target: their midpoint is the class's median
+  // student-week with any problems in these weeks.
+  const weekly = useMemo(
+    () => (data ? weeklyAmounts(data, measure) : []),
+    [data, measure],
+  );
+  const problemWeeks = useMemo(
+    () =>
+      data
+        ? weeklyAmounts(data, "problems")
+            .flat()
+            .filter((value) => value > 0)
+        : [],
+    [data],
+  );
+  const problemsMidpoint = problemWeeks.length
+    ? Math.max(1, Math.round(summarize(problemWeeks)!.median))
+    : null;
+  const midpoint = measure === "minutes" ? target : problemsMidpoint;
+  const today = data?.range.to ?? "";
+  const current = data?.weeks.at(-1) ?? "";
+  // Each student's mean a week over the range: the distribution beside the
+  // map.
+  const perStudent = summarize(
+    weekly.flatMap((weeks) =>
+      weeks.length
+        ? [weeks.reduce((sum, value) => sum + value, 0) / weeks.length]
+        : [],
+    ),
+  );
   const gridColumns = useMemo<DataGridColumn<Row>[]>(
     () => [
       {
@@ -303,13 +374,18 @@ export function TimeScreen() {
       },
       {
         id: "minutes",
-        header: "Minutes",
-        width: 72,
+        header: measure === "minutes" ? "Minutes" : "Problems",
+        width: 80,
         firstSort: "descending",
         align: "end",
-        compare: (a, b) => a.minutes - b.minutes,
+        compare: (a, b) =>
+          measure === "minutes"
+            ? a.minutes - b.minutes
+            : a.problems - b.problems,
         cell: (row) => (
-          <span className={styles.heatTotal}>{number(row.minutes)}</span>
+          <span className={styles.heatTotal}>
+            {number(measure === "minutes" ? row.minutes : row.problems)}
+          </span>
         ),
       },
       {
@@ -332,26 +408,31 @@ export function TimeScreen() {
         ),
         width: Math.max(420, columns.length * 14),
         cell: (row) => (
-          <Heat row={row} columns={columns} full={full} isDay={isDay} />
+          <Heat
+            row={row}
+            columns={columns}
+            midpoint={midpoint}
+            isDay={isDay}
+            measure={measure}
+            today={today}
+            current={current}
+          />
         ),
-        cellLabel: (row) => `${row.name}: ${row.minutes} active minutes`,
+        cellLabel: (row) =>
+          measure === "minutes"
+            ? `${row.name}: ${row.minutes} active minutes`
+            : `${row.name}: ${row.problems} problems`,
       },
     ],
     // Cells follow this response's rows and columns.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [data, family],
+    [data, family, measure, midpoint],
   );
   const totalMinutes = (data?.students ?? []).reduce(
     (sum, row) => sum + row.minutes,
     0,
   );
   const working = (data?.students ?? []).filter((row) => row.minutes > 0);
-  const weeks = data
-    ? Math.max(1, daysBetween(data.range.from, data.range.to) / 7)
-    : 1;
-  const perStudent = working.length
-    ? Math.round(totalMinutes / working.length / weeks)
-    : 0;
   const largestSkill = Math.max(
     1,
     ...(data?.skills ?? []).map((s) => s.minutes),
@@ -448,8 +529,8 @@ export function TimeScreen() {
                 }
               >
                 {family
-                  ? "Each child’s active minutes appear here day by day as they practice, with the skills the time went to."
-                  : "Each student’s active minutes appear here day by day as they work, with the skills the time went to."}
+                  ? "Each child’s active minutes, week by week, against the weekly target, with the skills the time went to."
+                  : "Each student’s active minutes, week by week, against the weekly target, with the skills the time went to."}
               </EmptyState>
             </div>
           ) : (
@@ -462,14 +543,51 @@ export function TimeScreen() {
                   />
                   <StatTile
                     value={`${working.length} of ${data.students.length}`}
-                    label={family ? "children practiced" : "students working"}
-                  />
-                  <StatTile
-                    value={number(perStudent)}
-                    label="minutes a week each"
+                    label={
+                      family ? "children with active time" : "students with active time"
+                    }
                   />
                 </StatRow>
-                <Legend full={full} isDay={isDay} />
+                {perStudent && (
+                  <StatsLine
+                    label={`${measure === "minutes" ? "Active minutes" : "Problems"} a week per ${family ? "child" : "student"}`}
+                    {...perStudent}
+                  />
+                )}
+              </div>
+              <div className={styles.timeScale}>
+                {midpoint !== null && (
+                  <HeatLegend
+                    caption={
+                      measure === "minutes"
+                        ? `Active minutes ${isDay ? "a day (a fifth of the weekly target)" : "a week"}`
+                        : `Problems ${isDay ? "a day" : "a week"}. Midpoint: the class’s median week with any problems${isDay ? ", over five days" : ""}`
+                    }
+                    midpoint={isDay ? midpoint / 5 : midpoint}
+                    midpointWord={measure === "minutes" ? "target" : "median"}
+                    unit={measure === "minutes" ? "minutes" : "problems"}
+                    current={!isDay}
+                    empty={data.students.some(
+                      (row) =>
+                        (row.from ?? data.range.from) > data.range.from,
+                    )}
+                  />
+                )}
+                <div className={styles.measure}>
+                  <Segmented<HeatMeasure>
+                    compact
+                    dense
+                    label="Show"
+                    value={measure}
+                    options={MEASURES}
+                    onChange={(value) =>
+                      set(
+                        { chart: value === "problems" ? "problems" : undefined },
+                        { replace: true },
+                      )
+                    }
+                  />
+                </div>
               </div>
               <TipZone>
                 <DataGrid
@@ -506,14 +624,19 @@ export function TimeScreen() {
                           <span>{row.name}</span>
                         </button>
                         <span className={styles.heatTotal}>
-                          {number(row.minutes)} min
+                          {measure === "minutes"
+                            ? `${number(row.minutes)} min`
+                            : `${number(row.problems)} problems`}
                         </span>
                       </div>
                       <Heat
                         row={row}
                         columns={columns}
-                        full={full}
+                        midpoint={midpoint}
                         isDay={isDay}
+                        measure={measure}
+                        today={today}
+                        current={current}
                       />
                     </div>
                   )}

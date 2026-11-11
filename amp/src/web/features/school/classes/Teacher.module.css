@@ -133,6 +133,8 @@ span.student[data-teacher] {
   box-shadow: var(--shadow-overlay);
   font-size: var(--text-table-small);
   line-height: 1.35;
+  font-variant-numeric: var(--numeric);
+  white-space: pre-line;
   transform: translate(-50%, calc(-100% - 2px));
   pointer-events: none;
 }
@@ -546,7 +548,7 @@ label.columnPick {
   gap: 2px;
   /* A short period stays a strip of small marks, never a row of blocks. */
   width: 100%;
-  max-width: calc(var(--heat-columns) * 44px);
+  max-width: calc(var(--heat-columns) * 72px);
 }
 .heatTicks {
   color: var(--color-subtle-text);
@@ -563,74 +565,13 @@ label.columnPick {
   justify-self: end;
   width: max-content;
 }
-.heatCell[data-monday],
 .heatTicks [data-monday] {
   margin-inline-start: 3px;
-}
-.heatCell {
-  display: block;
-  min-width: 0;
-  height: 22px;
-  border-radius: 3px;
-  background: var(--color-surface-sunken);
-}
-.heatCell[data-bin="1"] {
-  background: color-mix(
-    in srgb,
-    var(--color-primary) 16%,
-    var(--color-surface)
-  );
-}
-.heatCell[data-bin="2"] {
-  background: color-mix(
-    in srgb,
-    var(--color-primary) 32%,
-    var(--color-surface)
-  );
-}
-.heatCell[data-bin="3"] {
-  background: color-mix(
-    in srgb,
-    var(--color-primary) 50%,
-    var(--color-surface)
-  );
-}
-.heatCell[data-bin="4"] {
-  background: color-mix(
-    in srgb,
-    var(--color-primary) 72%,
-    var(--color-surface)
-  );
-}
-.heatCell[data-bin="5"] {
-  background: var(--color-primary);
 }
 .heatTotal {
   font-variant-numeric: var(--numeric);
   font-weight: 600;
   white-space: nowrap;
-}
-.heatLegend {
-  display: grid;
-  gap: var(--space-1);
-  color: var(--color-muted-text);
-  font-size: var(--text-table-small);
-}
-.heatLegendScale {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  font-variant-numeric: var(--numeric);
-}
-.heatLegendScale span:first-child {
-  margin-inline-end: var(--space-1);
-}
-.heatLegendScale span:last-child {
-  margin-inline-start: var(--space-1);
-}
-.heatLegendScale .heatCell {
-  width: 18px;
-  height: 12px;
 }
 .heatCard {
   display: grid;
@@ -875,4 +816,25 @@ label.columnPick {
   .recordSection {
     break-inside: avoid;
   }
+}
+.timeScale {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+  margin-bottom: var(--space-4);
+}
+.measure {
+  flex: 0 0 auto;
+  width: 220px;
+  max-width: 100%;
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }

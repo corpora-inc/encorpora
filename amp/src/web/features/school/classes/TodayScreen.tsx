@@ -90,6 +90,7 @@ function ClassToday({
         week={data.week}
         family={false}
         target={data.weeklyTargetMinutes}
+        students={data.students}
       />
     </>
   );

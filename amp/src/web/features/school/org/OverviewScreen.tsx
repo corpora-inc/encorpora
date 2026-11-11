@@ -26,7 +26,11 @@ import { classPath, orgPath } from "../paths";
 import { StandingChart, TrendChart, type TrendMeasure } from "./charts";
 import { RuleNote } from "../RuleNote";
 import { compareClassNames } from "../sort";
-import { overviewOptions } from "./org-api";
+import { summarize } from "../../../../schools/practice-stats";
+import { measureOf, MEASURES } from "../practice/heat";
+import { DoseResponse, type DoseDots } from "./DoseResponse";
+import { overviewOptions, practiceOptions } from "./org-api";
+import { PracticeMap } from "./PracticeMap";
 import styles from "./Org.module.css";
 
 const DAY = 86_400_000;
@@ -352,6 +356,97 @@ function Seats({
   );
 }
 
+/** The term's practice as data: classes by week, cold to hot against the
+ * weekly target, then whether more practice went with more growth. Its own
+ * read; until it lands, a block the size of what it will draw. */
+function Practice({
+  orgId,
+  rows,
+  measure,
+  onMeasure,
+  sort,
+  dots,
+  onDots,
+}: {
+  orgId: string;
+  rows: number;
+  measure: TrendMeasure;
+  onMeasure: (measure: TrendMeasure) => void;
+  sort: unknown;
+  dots: DoseDots;
+  onDots: (dots: DoseDots) => void;
+}) {
+  const session = currentSession();
+  const practice = useQuery(practiceOptions(session, orgId));
+  const data = practice.data;
+  if (rows === 0) return null;
+  const target =
+    summarize(data?.rows.map((row) => row.target) ?? [])?.median ?? 60;
+  return (
+    <>
+      <section aria-labelledby="overview-practice">
+        <div className={styles.practiceHead}>
+          <h2 id="overview-practice" className={styles.sectionTitle}>
+            Practice by week
+          </h2>
+          <div className={styles.trendToggle}>
+            <Segmented
+              label="Show"
+              options={MEASURES}
+              value={measure}
+              compact
+              dense
+              onChange={onMeasure}
+            />
+          </div>
+        </div>
+        {data ? (
+          <PracticeMap
+            data={data}
+            orgId={orgId}
+            measure={measure}
+            sort={sort}
+          />
+        ) : practice.isError ? (
+          <div className={styles.practiceFailed} role="alert">
+            <p>The practice map didn’t load. Check your connection, then try again.</p>
+            <Button variant="secondary" onClick={() => void practice.refetch()}>
+              Try again
+            </Button>
+          </div>
+        ) : (
+          <div
+            className={styles.practiceSkeleton}
+            style={{ height: 120 + rows * 44 }}
+            aria-busy="true"
+          />
+        )}
+      </section>
+      <section aria-labelledby="overview-dose">
+        <h2 id="overview-dose" className={styles.sectionTitle}>
+          Practice and growth
+        </h2>
+        {data ? (
+          <DoseResponse
+            data={data}
+            dots={dots}
+            onDots={onDots}
+            target={target}
+          />
+        ) : (
+          !practice.isError && (
+            <div
+              className={styles.practiceSkeleton}
+              style={{ height: 420 }}
+              aria-busy="true"
+            />
+          )
+        )}
+      </section>
+    </>
+  );
+}
+
 function FirstRun({ orgId, canImport }: { orgId: string; canImport: boolean }) {
   return (
     <EmptyState
@@ -386,19 +481,26 @@ export function OverviewScreen() {
   const canImport = org?.can?.includes("roster.import") === true;
   const view = overview.data;
   const district = view ? view.org.kind !== "school" : false;
-  const search = useSearch({ strict: false }) as { chart?: unknown };
-  const measure: TrendMeasure =
-    search.chart === "problems" ? "problems" : "minutes";
+  const search = useSearch({ strict: false }) as {
+    chart?: unknown;
+    rows?: unknown;
+    dot?: unknown;
+  };
+  const measure: TrendMeasure = measureOf(search.chart);
+  const dots: DoseDots = search.dot === "classes" ? "classes" : "students";
   const navigate = useNavigate();
-  const setMeasure = (next: TrendMeasure) =>
+  const setSearch = (patch: Record<string, string | undefined>) =>
     void navigate({
       to: ".",
       replace: true,
+      resetScroll: false,
       search: ((previous: Record<string, unknown>) => ({
         ...previous,
-        chart: next === "problems" ? "problems" : undefined,
+        ...patch,
       })) as never,
     });
+  const setMeasure = (next: TrendMeasure) =>
+    setSearch({ chart: next === "problems" ? "problems" : undefined });
   const placed = [...(view?.classes ?? []), ...(view?.schools ?? [])].reduce(
     (sum, row) => sum + row.placed,
     0,
@@ -458,10 +560,7 @@ export function OverviewScreen() {
                     <div className={styles.trendToggle}>
                       <Segmented
                         label="Show"
-                        options={[
-                          { value: "minutes", label: "Minutes" },
-                          { value: "problems", label: "Problems" },
-                        ]}
+                        options={MEASURES}
                         value={measure}
                         compact
                         dense
@@ -518,6 +617,17 @@ export function OverviewScreen() {
                   </StatRow>
                 </div>
               </div>
+              <Practice
+                orgId={orgId}
+                rows={(view.classes ?? view.schools ?? []).length}
+                measure={measure}
+                onMeasure={setMeasure}
+                sort={search.rows}
+                dots={dots}
+                onDots={(next) =>
+                  setSearch({ dot: next === "classes" ? "classes" : undefined })
+                }
+              />
               <section aria-labelledby="overview-usage">
                 <h2 id="overview-usage" className={styles.sectionTitle}>
                   {district ? "Schools" : "Classes"}

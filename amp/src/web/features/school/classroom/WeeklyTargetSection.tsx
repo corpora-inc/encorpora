@@ -51,8 +51,8 @@ export function WeeklyTargetSection({ orgId }: { orgId: string }) {
             <div className={rows.rowText}>
               <h2 id="setting-target">Weekly target per student</h2>
               <p>
-                The neutral midpoint of the practice heat maps, and the scale of
-                the suggested grade’s practice part.
+                The midpoint of the practice heat map’s scale, and the basis for
+                practice in suggested grades.
               </p>
             </div>
             <div className={rows.rowControl}>

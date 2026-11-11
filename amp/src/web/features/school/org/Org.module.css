@@ -1059,3 +1059,201 @@ button.danger:disabled {
     transition: none;
   }
 }
+
+/* Practice by week: classes (or schools) by week, cold to hot. */
+.practiceHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+  margin-bottom: var(--space-4);
+}
+.practiceHead .sectionTitle {
+  margin-bottom: 0;
+}
+.heatMap {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+.heatStrip,
+.heatTicks {
+  display: grid;
+  grid-template-columns: repeat(var(--heat-columns), minmax(0, 1fr));
+  gap: 2px;
+  width: 100%;
+}
+.heatTicks {
+  color: var(--color-subtle-text);
+  font-size: var(--text-table-small);
+  font-weight: 400;
+  white-space: nowrap;
+}
+.heatTicks span {
+  min-width: 0;
+  overflow: visible;
+}
+.heatTicks span:nth-last-child(-n + 2) {
+  justify-self: end;
+  width: max-content;
+}
+.heatMean {
+  font-variant-numeric: var(--numeric);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.heatCard {
+  display: grid;
+  gap: var(--space-2);
+  padding-block: var(--space-2);
+}
+.heatCardTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.practiceSkeleton {
+  border-radius: var(--radius-small);
+  background: var(--color-surface-sunken);
+}
+
+/* Does more practice go with more growth: two figures, side by side when
+   there is room. */
+.dose {
+  display: grid;
+  gap: var(--space-7);
+  min-width: 0;
+}
+@media (min-width: 1024px) {
+  .dose {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-7);
+  }
+}
+.doseFigure {
+  display: grid;
+  align-content: start;
+  min-width: 0;
+  margin: 0;
+}
+.doseTitle {
+  font-size: var(--text-body);
+  font-weight: 600;
+}
+.doseFrame {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+.doseSvg {
+  display: block;
+  overflow: visible;
+}
+.doseNeeds {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: var(--space-5);
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-small);
+  color: var(--color-muted-text);
+  text-align: center;
+  text-wrap: balance;
+}
+.doseAxes line {
+  stroke: var(--color-border);
+  stroke-width: 1;
+}
+.doseAxes line[data-zero] {
+  stroke: var(--color-border-strong);
+}
+.doseAxes text {
+  fill: var(--color-subtle-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+}
+.doseAxes .doseAxisLabel {
+  fill: var(--color-muted-text);
+}
+.doseBand {
+  fill: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+}
+.doseLine {
+  stroke: var(--color-on-surface);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.doseDot {
+  stroke: var(--color-surface);
+  stroke-width: 1.5;
+}
+.doseDot:hover,
+.doseQuarterDot:hover {
+  stroke: var(--color-on-surface);
+}
+.doseQuarter {
+  fill: none;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.doseQuarterDot {
+  stroke: var(--color-surface);
+  stroke-width: 1.5;
+}
+.doseQuarterLabel {
+  font-size: var(--text-table-small);
+  font-weight: 600;
+  fill: var(--color-on-surface);
+}
+[data-quarter="1"] > .doseQuarter { stroke: var(--color-dose-1); }
+[data-quarter="2"] > .doseQuarter { stroke: var(--color-dose-2); }
+[data-quarter="3"] > .doseQuarter { stroke: var(--color-dose-3); }
+[data-quarter="4"] > .doseQuarter { stroke: var(--color-dose-4); }
+[data-quarter="1"] > .doseQuarterDot, .doseSwatch[data-quarter="1"] { fill: var(--color-dose-1); background: var(--color-dose-1); }
+[data-quarter="2"] > .doseQuarterDot, .doseSwatch[data-quarter="2"] { fill: var(--color-dose-2); background: var(--color-dose-2); }
+[data-quarter="3"] > .doseQuarterDot, .doseSwatch[data-quarter="3"] { fill: var(--color-dose-3); background: var(--color-dose-3); }
+[data-quarter="4"] > .doseQuarterDot, .doseSwatch[data-quarter="4"] { fill: var(--color-dose-4); background: var(--color-dose-4); }
+.doseCaption {
+  display: grid;
+  gap: var(--space-1);
+  margin-top: var(--space-3);
+}
+.doseFinding {
+  max-width: 60ch;
+  font-variant-numeric: var(--numeric);
+  text-wrap: pretty;
+}
+.doseSlope {
+  color: var(--color-muted-text);
+}
+.doseKey {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  font-variant-numeric: var(--numeric);
+}
+.doseKey b {
+  color: var(--color-on-surface);
+  font-weight: 600;
+}
+.doseSwatch {
+  display: inline-block;
+  width: 14px;
+  height: 3px;
+  margin-inline-end: var(--space-1);
+  border-radius: 2px;
+  vertical-align: middle;
+}
+.practiceFailed {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-muted-text);
+}
