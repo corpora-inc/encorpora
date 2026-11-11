@@ -14,14 +14,14 @@
       "figure": {
         "stretch": true,
         "view": [
-          -6.1,
-          -2.0,
-          4.9,
+          -4.85,
+          -2.4,
+          4.6,
           11.4
         ],
         "points": {
           "TL": [
-            -4.95,
+            -4.6,
             10.0
           ],
           "P0": [
@@ -57,19 +57,11 @@
             10.2
           ],
           "M1": [
-            -2.35,
+            -2.3999999999999995,
             5.6
           ],
           "M2": [
-            -2.35,
-            3.3999999999999995
-          ],
-          "N1": [
-            -4.95,
-            5.6
-          ],
-          "N2": [
-            -4.95,
+            -2.3999999999999995,
             3.3999999999999995
           ],
           "D0": {
@@ -115,7 +107,7 @@
             "label": "\\text{miles}",
             "at": "XT",
             "dir": "s",
-            "far": 1.7,
+            "far": 2.3,
             "ink": "muted",
             "size": "m",
             "start": true
@@ -159,7 +151,7 @@
               }
             ],
             "cell": [
-              1.3,
+              1.1,
               2.2
             ],
             "size": "m"
@@ -190,26 +182,6 @@
             "dir": "e",
             "far": 0.35,
             "ink": "warm",
-            "size": "l",
-            "group": "tsteps"
-          },
-          {
-            "id": "cx1",
-            "label": "+1",
-            "at": "N1",
-            "dir": "w",
-            "far": 0.35,
-            "ink": "blue",
-            "size": "l",
-            "group": "tsteps"
-          },
-          {
-            "id": "cx2",
-            "label": "+1",
-            "at": "N2",
-            "dir": "w",
-            "far": 0.35,
-            "ink": "blue",
             "size": "l",
             "group": "tsteps"
           },
@@ -509,18 +481,22 @@
       "figure": {
         "stretch": true,
         "view": [
-          -6.1,
-          -2.0,
-          4.9,
+          -6.0,
+          -2.4,
+          4.6,
           11.4
         ],
         "points": {
           "TL": [
-            -4.95,
+            -4.8,
             10.0
           ],
           "TT": [
-            -3.6500000000000004,
+            -3.6999999999999997,
+            10.0
+          ],
+          "GT": [
+            2.75,
             10.0
           ],
           "B0": [
@@ -551,10 +527,6 @@
             3,
             3
           ],
-          "BN": [
-            2.25,
-            1.0
-          ],
           "A0": [
             0,
             1
@@ -571,14 +543,6 @@
             4.0,
             9.0
           ],
-          "AS": [
-            2,
-            5
-          ],
-          "AC": [
-            3,
-            5
-          ],
           "XT": [
             2.15,
             0
@@ -587,20 +551,28 @@
             0,
             10.2
           ],
+          "DV0": [
+            -1.1,
+            -1.4
+          ],
+          "DV1": [
+            -1.1,
+            11.0
+          ],
           "M1": [
-            -2.35,
+            -2.5999999999999996,
             5.6
           ],
           "M2": [
-            -2.35,
+            -2.5999999999999996,
             3.3999999999999995
           ],
           "N1": [
-            -4.95,
+            -4.8,
             5.6
           ],
           "N2": [
-            -4.95,
+            -4.8,
             3.3999999999999995
           ],
           "F0": {
@@ -646,7 +618,7 @@
             "label": "x",
             "at": "XT",
             "dir": "s",
-            "far": 1.7,
+            "far": 2.3,
             "ink": "muted",
             "size": "m",
             "start": true
@@ -659,6 +631,17 @@
             "far": 0.4,
             "ink": "muted",
             "size": "m",
+            "start": true
+          },
+          {
+            "id": "div",
+            "seg": [
+              "DV0",
+              "DV1"
+            ],
+            "ink": "muted",
+            "w": 4,
+            "dash": true,
             "start": true
           },
           {
@@ -690,10 +673,11 @@
               }
             ],
             "cell": [
-              1.3,
+              1.1,
               2.2
             ],
-            "size": "m"
+            "size": "m",
+            "ink": "violet"
           },
           {
             "id": "nA",
@@ -705,6 +689,51 @@
             "size": "m"
           },
           {
+            "id": "nB",
+            "label": "\\text{Function B}",
+            "at": "GT",
+            "dir": "n",
+            "far": 0.45,
+            "ink": "accent",
+            "size": "m"
+          },
+          {
+            "id": "cy2",
+            "label": "+4",
+            "at": "M2",
+            "dir": "e",
+            "far": 0.35,
+            "ink": "violet",
+            "size": "l"
+          },
+          {
+            "id": "cx2",
+            "label": "+2",
+            "at": "N2",
+            "dir": "w",
+            "far": 0.35,
+            "ink": "violet",
+            "size": "l"
+          },
+          {
+            "id": "cy1",
+            "label": "-2",
+            "at": "M1",
+            "dir": "e",
+            "far": 0.35,
+            "ink": "violet",
+            "size": "l"
+          },
+          {
+            "id": "cx1",
+            "label": "-1",
+            "at": "N1",
+            "dir": "w",
+            "far": 0.35,
+            "ink": "violet",
+            "size": "l"
+          },
+          {
             "id": "lineB",
             "seg": [
               "B0",
@@ -714,58 +743,10 @@
             "w": 8
           },
           {
-            "id": "nLB",
-            "label": "\\text{B}",
-            "at": "BN",
-            "dir": "c",
-            "ink": "accent",
-            "size": "l"
-          },
-          {
             "id": "dB3",
             "dot": "B3",
-            "ink": "ink",
+            "ink": "accent",
             "r": 14
-          },
-          {
-            "id": "cy2",
-            "label": "+4",
-            "at": "M2",
-            "dir": "e",
-            "far": 0.35,
-            "ink": "warm",
-            "size": "l",
-            "group": "f2"
-          },
-          {
-            "id": "cx2",
-            "label": "+2",
-            "at": "N2",
-            "dir": "w",
-            "far": 0.35,
-            "ink": "blue",
-            "size": "l",
-            "group": "f2"
-          },
-          {
-            "id": "cy1",
-            "label": "-2",
-            "at": "M1",
-            "dir": "e",
-            "far": 0.35,
-            "ink": "warm",
-            "size": "l",
-            "group": "f1"
-          },
-          {
-            "id": "cx1",
-            "label": "-1",
-            "at": "N1",
-            "dir": "w",
-            "far": 0.35,
-            "ink": "blue",
-            "size": "l",
-            "group": "f1"
           },
           {
             "id": "brun0",
@@ -773,8 +754,8 @@
               "B0",
               "BS1"
             ],
-            "ink": "blue",
-            "w": 7,
+            "ink": "muted",
+            "w": 6,
             "group": "bst1"
           },
           {
@@ -783,7 +764,7 @@
               "BS1",
               "BP1"
             ],
-            "ink": "warm",
+            "ink": "accent",
             "w": 7,
             "group": "bst1"
           },
@@ -793,7 +774,7 @@
             "at": "bdrop0",
             "dir": "e",
             "far": 0.4,
-            "ink": "warm",
+            "ink": "accent",
             "size": "l",
             "group": "bst1"
           },
@@ -803,8 +784,8 @@
               "BP1",
               "BS2"
             ],
-            "ink": "blue",
-            "w": 7,
+            "ink": "muted",
+            "w": 6,
             "group": "bstR"
           },
           {
@@ -813,7 +794,7 @@
               "BS2",
               "BP2"
             ],
-            "ink": "warm",
+            "ink": "accent",
             "w": 7,
             "group": "bstR"
           },
@@ -823,7 +804,7 @@
             "at": "bdrop1",
             "dir": "e",
             "far": 0.4,
-            "ink": "warm",
+            "ink": "accent",
             "size": "l",
             "group": "bstR"
           },
@@ -833,8 +814,8 @@
               "BP2",
               "BS3"
             ],
-            "ink": "blue",
-            "w": 7,
+            "ink": "muted",
+            "w": 6,
             "group": "bstR"
           },
           {
@@ -843,7 +824,7 @@
               "BS3",
               "B3"
             ],
-            "ink": "warm",
+            "ink": "accent",
             "w": 7,
             "group": "bstR"
           },
@@ -853,14 +834,14 @@
             "at": "bdrop2",
             "dir": "e",
             "far": 0.4,
-            "ink": "warm",
+            "ink": "accent",
             "size": "l",
             "group": "bstR"
           },
           {
             "id": "dB0",
             "dot": "B0",
-            "ink": "gold",
+            "ink": "accent",
             "r": 19
           },
           {
@@ -871,36 +852,6 @@
             ],
             "ink": "violet",
             "w": 8
-          },
-          {
-            "id": "arun",
-            "seg": [
-              "AS",
-              "AC"
-            ],
-            "ink": "blue",
-            "w": 7,
-            "group": "ast"
-          },
-          {
-            "id": "arise",
-            "seg": [
-              "AC",
-              "A3"
-            ],
-            "ink": "warm",
-            "w": 7,
-            "group": "ast"
-          },
-          {
-            "id": "lar",
-            "label": "+2",
-            "at": "arise",
-            "dir": "e",
-            "far": 0.4,
-            "ink": "warm",
-            "size": "l",
-            "group": "ast"
           },
           {
             "id": "fA1",
@@ -917,64 +868,58 @@
           {
             "id": "fA0",
             "dot": "F0",
-            "ink": "gold",
-            "r": 19
-          },
-          {
-            "id": "lA0",
-            "label": "1",
-            "at": "A0",
-            "dir": "w",
-            "far": 0.55,
-            "ink": "gold",
-            "size": "l"
-          },
-          {
-            "id": "nLA",
-            "label": "\\text{A}",
-            "at": "AE",
-            "dir": "e",
-            "far": 0.4,
             "ink": "violet",
-            "size": "l"
+            "r": 19
           }
         ]
       },
       "beats": [
         {
           "speaker": "teacher",
-          "say": "Which has the greater rate of change? And the greater initial value?",
-          "pause": 0.3,
+          "say": "Function A is a table, and Function B is a graph.",
           "do": [
             {
               "do": "clear"
             },
             {
               "do": "problem",
-              "text": "Which has the greater rate of change? And the greater initial value?",
-              "at": "Which",
+              "text": "Function A is a table, and Function B is a graph. Which has the greater rate of change? And the greater initial value?",
+              "at": "Function",
               "id": "pB"
+            },
+            {
+              "do": "show",
+              "target": "nA",
+              "at": "A"
             },
             {
               "do": "show",
               "target": [
                 "t.row.0",
                 "t.row.2",
-                "t.row.3",
-                "nA"
+                "t.row.3"
               ],
-              "at": "Which"
+              "at": "table"
+            },
+            {
+              "do": "show",
+              "target": "nB",
+              "at": "B"
             },
             {
               "do": "show",
               "target": [
                 "lineB",
-                "nLB",
                 "dB3"
               ],
-              "at": "change"
+              "at": "graph"
             }
           ]
+        },
+        {
+          "speaker": "teacher",
+          "say": "Which has the greater rate of change? And the greater initial value?",
+          "pause": 0.3
         },
         {
           "speaker": "learner",
@@ -987,7 +932,7 @@
             },
             {
               "do": "highlight",
-              "target": "lineB",
+              "target": "nB",
               "at": "graph"
             }
           ]
@@ -1019,7 +964,7 @@
           "do": [
             {
               "do": "write",
-              "tex": "\\cw{4}\\div\\cb{2}=\\cw{2}",
+              "tex": "4\\div 2=\\cv{2}",
               "fresh": true,
               "at": "Four",
               "id": "aStep"
@@ -1054,7 +999,7 @@
             },
             {
               "do": "write",
-              "tex": "3-\\cw{2}=\\cg{1}",
+              "tex": "3-2=\\cv{1}",
               "fresh": true,
               "at": "minus",
               "id": "aStart"
@@ -1100,7 +1045,7 @@
             },
             {
               "do": "write",
-              "tex": "\\cw{-9}\\div\\cb{3}=\\cw{-3}",
+              "tex": "-9\\div 3=\\ca{-3}",
               "fresh": true,
               "at": "negative",
               "id": "bStep"
@@ -1113,7 +1058,10 @@
           "do": [
             {
               "do": "hide",
-              "target": "bstR",
+              "target": [
+                "bstR",
+                "div"
+              ],
               "at": "Now"
             },
             {
@@ -1160,17 +1108,278 @@
               },
               "at": "runs",
               "dur": 1.2
-            },
-            {
-              "do": "show",
-              "target": [
-                "lA0",
-                "nLA"
-              ],
-              "at": "start"
             }
           ]
+        }
+      ]
+    },
+    {
+      "figure": {
+        "stretch": true,
+        "view": [
+          -1.0,
+          -2.4,
+          4.7,
+          11.4
+        ],
+        "points": {
+          "B0": [
+            0,
+            9
+          ],
+          "B3": [
+            3,
+            0
+          ],
+          "BS1": [
+            1,
+            9
+          ],
+          "BP1": [
+            1,
+            6
+          ],
+          "BS2": [
+            2,
+            6
+          ],
+          "BP2": [
+            2,
+            3
+          ],
+          "BS3": [
+            3,
+            3
+          ],
+          "A0": [
+            0,
+            1
+          ],
+          "A1": [
+            1,
+            3
+          ],
+          "A3": [
+            3,
+            7
+          ],
+          "AE": [
+            3.9,
+            8.8
+          ],
+          "AS": [
+            2,
+            5
+          ],
+          "AC": [
+            3,
+            5
+          ],
+          "XT": [
+            2.15,
+            0
+          ],
+          "YT": [
+            0,
+            10.2
+          ],
+          "NA": [
+            3.4,
+            9.9
+          ],
+          "NB": [
+            3.45,
+            1.7
+          ]
         },
+        "parts": [
+          {
+            "id": "ax",
+            "axes": true,
+            "step": 1,
+            "every": 1,
+            "ystep": 1,
+            "yevery": 3,
+            "xrange": [
+              0,
+              4.3
+            ],
+            "yrange": [
+              0,
+              10.2
+            ],
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "xt",
+            "label": "x",
+            "at": "XT",
+            "dir": "s",
+            "far": 2.3,
+            "ink": "muted",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "yt",
+            "label": "y",
+            "at": "YT",
+            "dir": "n",
+            "far": 0.4,
+            "ink": "muted",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "lineB",
+            "seg": [
+              "B0",
+              "B3"
+            ],
+            "ink": "accent",
+            "w": 8,
+            "start": true
+          },
+          {
+            "id": "dB3",
+            "dot": "B3",
+            "ink": "accent",
+            "r": 14,
+            "start": true
+          },
+          {
+            "id": "brun0",
+            "seg": [
+              "B0",
+              "BS1"
+            ],
+            "ink": "muted",
+            "w": 6,
+            "group": "bst1",
+            "start": true
+          },
+          {
+            "id": "bdrop0",
+            "seg": [
+              "BS1",
+              "BP1"
+            ],
+            "ink": "accent",
+            "w": 7,
+            "group": "bst1",
+            "start": true
+          },
+          {
+            "id": "lbd0",
+            "label": "-3",
+            "at": "bdrop0",
+            "dir": "e",
+            "far": 0.4,
+            "ink": "accent",
+            "size": "l",
+            "group": "bst1",
+            "start": true
+          },
+          {
+            "id": "dB0",
+            "dot": "B0",
+            "ink": "accent",
+            "r": 19,
+            "start": true
+          },
+          {
+            "id": "nB",
+            "label": "\\text{Function B}",
+            "at": "NB",
+            "dir": "c",
+            "ink": "accent",
+            "size": "m",
+            "start": true
+          },
+          {
+            "id": "lineA",
+            "seg": [
+              "AE",
+              "A0"
+            ],
+            "ink": "violet",
+            "w": 8,
+            "start": true
+          },
+          {
+            "id": "arun",
+            "seg": [
+              "AS",
+              "AC"
+            ],
+            "ink": "muted",
+            "w": 6,
+            "group": "ast"
+          },
+          {
+            "id": "arise",
+            "seg": [
+              "AC",
+              "A3"
+            ],
+            "ink": "violet",
+            "w": 7,
+            "group": "ast"
+          },
+          {
+            "id": "lar",
+            "label": "+2",
+            "at": "arise",
+            "dir": "e",
+            "far": 0.4,
+            "ink": "violet",
+            "size": "l",
+            "group": "ast"
+          },
+          {
+            "id": "fA1",
+            "dot": "A1",
+            "ink": "violet",
+            "r": 14,
+            "start": true
+          },
+          {
+            "id": "fA3",
+            "dot": "A3",
+            "ink": "violet",
+            "r": 14,
+            "start": true
+          },
+          {
+            "id": "fA0",
+            "dot": "A0",
+            "ink": "violet",
+            "r": 19,
+            "start": true
+          },
+          {
+            "id": "lA0",
+            "label": "1",
+            "at": "A0",
+            "dir": "w",
+            "far": 0.55,
+            "ink": "violet",
+            "size": "l",
+            "start": true
+          },
+          {
+            "id": "nA",
+            "label": "\\text{Function A}",
+            "at": "NA",
+            "dir": "c",
+            "ink": "violet",
+            "size": "m",
+            "start": true
+          }
+        ]
+      },
+      "beats": [
         {
           "speaker": "learner",
           "say": "B is steeper. So B has the greater rate of change?",
@@ -1208,7 +1417,7 @@
             },
             {
               "do": "write",
-              "tex": "\\cw{2}>\\cw{-3}",
+              "tex": "\\cv{2}>\\ca{-3}",
               "fresh": true,
               "at": "greater",
               "id": "cmpR"
@@ -1229,7 +1438,7 @@
             },
             {
               "do": "write",
-              "tex": "\\cg{9}>\\cg{1}",
+              "tex": "\\ca{9}>\\cv{1}",
               "fresh": true,
               "at": "nine",
               "id": "cmpS"
@@ -1243,13 +1452,13 @@
           "do": [
             {
               "do": "answer",
-              "tex": "\\text{Rate of change: A}",
+              "tex": "\\text{Rate of change: }\\cv{\\text{A}}",
               "at": "A",
               "id": "ansR"
             },
             {
               "do": "answer",
-              "tex": "\\text{Initial value: B}",
+              "tex": "\\text{Initial value: }\\ca{\\text{B}}",
               "at": "B",
               "id": "ansS"
             }
@@ -1262,7 +1471,7 @@
         "stretch": true,
         "view": [
           -0.8,
-          -1.8,
+          -2.4,
           4.2,
           13.4
         ],
@@ -1336,7 +1545,7 @@
             "label": "x",
             "at": "XT",
             "dir": "s",
-            "far": 1.7,
+            "far": 2.3,
             "ink": "muted",
             "size": "m",
             "start": true
@@ -1558,20 +1767,12 @@
       "figure": {
         "stretch": true,
         "view": [
-          -6.1,
-          -2.0,
-          4.9,
+          -1.0,
+          -2.4,
+          4.7,
           11.4
         ],
         "points": {
-          "TL": [
-            -4.95,
-            10.0
-          ],
-          "TT": [
-            -3.6500000000000004,
-            10.0
-          ],
           "B0": [
             0,
             9
@@ -1600,10 +1801,6 @@
             3,
             3
           ],
-          "BN": [
-            2.25,
-            1.0
-          ],
           "A0": [
             0,
             1
@@ -1617,8 +1814,8 @@
             7
           ],
           "AE": [
-            4.0,
-            9.0
+            3.9,
+            8.8
           ],
           "AS": [
             2,
@@ -1636,33 +1833,13 @@
             0,
             10.2
           ],
-          "M1": [
-            -2.35,
-            5.6
+          "NA": [
+            3.4,
+            9.9
           ],
-          "M2": [
-            -2.35,
-            3.3999999999999995
-          ],
-          "N1": [
-            -4.95,
-            5.6
-          ],
-          "N2": [
-            -4.95,
-            3.3999999999999995
-          ],
-          "F0": [
-            0,
-            1
-          ],
-          "F1": [
-            1,
-            3
-          ],
-          "F3": [
-            3,
-            7
+          "NB": [
+            3.45,
+            1.7
           ]
         },
         "parts": [
@@ -1689,7 +1866,7 @@
             "label": "x",
             "at": "XT",
             "dir": "s",
-            "far": 1.7,
+            "far": 2.3,
             "ink": "muted",
             "size": "m",
             "start": true
@@ -1705,51 +1882,6 @@
             "start": true
           },
           {
-            "id": "t",
-            "table": true,
-            "at": "TL",
-            "corner": "$x$",
-            "head": [
-              "$y$"
-            ],
-            "rows": [
-              {
-                "label": "0",
-                "cells": [
-                  "1"
-                ]
-              },
-              {
-                "label": "1",
-                "cells": [
-                  "3"
-                ]
-              },
-              {
-                "label": "3",
-                "cells": [
-                  "7"
-                ]
-              }
-            ],
-            "cell": [
-              1.3,
-              2.2
-            ],
-            "size": "m",
-            "start": true
-          },
-          {
-            "id": "nA",
-            "label": "\\text{Function A}",
-            "at": "TT",
-            "dir": "n",
-            "far": 0.45,
-            "ink": "violet",
-            "size": "m",
-            "start": true
-          },
-          {
             "id": "lineB",
             "seg": [
               "B0",
@@ -1760,63 +1892,10 @@
             "start": true
           },
           {
-            "id": "nLB",
-            "label": "\\text{B}",
-            "at": "BN",
-            "dir": "c",
-            "ink": "accent",
-            "size": "l",
-            "start": true
-          },
-          {
             "id": "dB3",
             "dot": "B3",
-            "ink": "ink",
+            "ink": "accent",
             "r": 14,
-            "start": true
-          },
-          {
-            "id": "cy2",
-            "label": "+4",
-            "at": "M2",
-            "dir": "e",
-            "far": 0.35,
-            "ink": "warm",
-            "size": "l",
-            "group": "f2",
-            "start": true
-          },
-          {
-            "id": "cx2",
-            "label": "+2",
-            "at": "N2",
-            "dir": "w",
-            "far": 0.35,
-            "ink": "blue",
-            "size": "l",
-            "group": "f2",
-            "start": true
-          },
-          {
-            "id": "cy1",
-            "label": "-2",
-            "at": "M1",
-            "dir": "e",
-            "far": 0.35,
-            "ink": "warm",
-            "size": "l",
-            "group": "f1",
-            "start": true
-          },
-          {
-            "id": "cx1",
-            "label": "-1",
-            "at": "N1",
-            "dir": "w",
-            "far": 0.35,
-            "ink": "blue",
-            "size": "l",
-            "group": "f1",
             "start": true
           },
           {
@@ -1825,8 +1904,8 @@
               "B0",
               "BS1"
             ],
-            "ink": "blue",
-            "w": 7,
+            "ink": "muted",
+            "w": 6,
             "group": "bst1",
             "start": true
           },
@@ -1836,7 +1915,7 @@
               "BS1",
               "BP1"
             ],
-            "ink": "warm",
+            "ink": "accent",
             "w": 7,
             "group": "bst1",
             "start": true
@@ -1847,76 +1926,25 @@
             "at": "bdrop0",
             "dir": "e",
             "far": 0.4,
-            "ink": "warm",
+            "ink": "accent",
             "size": "l",
             "group": "bst1",
             "start": true
           },
           {
-            "id": "brun1",
-            "seg": [
-              "BP1",
-              "BS2"
-            ],
-            "ink": "blue",
-            "w": 7,
-            "group": "bstR"
-          },
-          {
-            "id": "bdrop1",
-            "seg": [
-              "BS2",
-              "BP2"
-            ],
-            "ink": "warm",
-            "w": 7,
-            "group": "bstR"
-          },
-          {
-            "id": "lbd1",
-            "label": "-3",
-            "at": "bdrop1",
-            "dir": "e",
-            "far": 0.4,
-            "ink": "warm",
-            "size": "l",
-            "group": "bstR"
-          },
-          {
-            "id": "brun2",
-            "seg": [
-              "BP2",
-              "BS3"
-            ],
-            "ink": "blue",
-            "w": 7,
-            "group": "bstR"
-          },
-          {
-            "id": "bdrop2",
-            "seg": [
-              "BS3",
-              "B3"
-            ],
-            "ink": "warm",
-            "w": 7,
-            "group": "bstR"
-          },
-          {
-            "id": "lbd2",
-            "label": "-3",
-            "at": "bdrop2",
-            "dir": "e",
-            "far": 0.4,
-            "ink": "warm",
-            "size": "l",
-            "group": "bstR"
-          },
-          {
             "id": "dB0",
             "dot": "B0",
-            "ink": "gold",
+            "ink": "accent",
             "r": 19,
+            "start": true
+          },
+          {
+            "id": "nB",
+            "label": "\\text{Function B}",
+            "at": "NB",
+            "dir": "c",
+            "ink": "accent",
+            "size": "m",
             "start": true
           },
           {
@@ -1935,8 +1963,8 @@
               "AS",
               "AC"
             ],
-            "ink": "blue",
-            "w": 7,
+            "ink": "muted",
+            "w": 6,
             "group": "ast",
             "start": true
           },
@@ -1946,7 +1974,7 @@
               "AC",
               "A3"
             ],
-            "ink": "warm",
+            "ink": "violet",
             "w": 7,
             "group": "ast",
             "start": true
@@ -1957,29 +1985,29 @@
             "at": "arise",
             "dir": "e",
             "far": 0.4,
-            "ink": "warm",
+            "ink": "violet",
             "size": "l",
             "group": "ast",
             "start": true
           },
           {
             "id": "fA1",
-            "dot": "F1",
+            "dot": "A1",
             "ink": "violet",
             "r": 14,
             "start": true
           },
           {
             "id": "fA3",
-            "dot": "F3",
+            "dot": "A3",
             "ink": "violet",
             "r": 14,
             "start": true
           },
           {
             "id": "fA0",
-            "dot": "F0",
-            "ink": "gold",
+            "dot": "A0",
+            "ink": "violet",
             "r": 19,
             "start": true
           },
@@ -1989,18 +2017,17 @@
             "at": "A0",
             "dir": "w",
             "far": 0.55,
-            "ink": "gold",
+            "ink": "violet",
             "size": "l",
             "start": true
           },
           {
-            "id": "nLA",
-            "label": "\\text{A}",
-            "at": "AE",
-            "dir": "e",
-            "far": 0.4,
+            "id": "nA",
+            "label": "\\text{Function A}",
+            "at": "NA",
+            "dir": "c",
             "ink": "violet",
-            "size": "l",
+            "size": "m",
             "start": true
           }
         ]
@@ -2049,7 +2076,7 @@
             },
             {
               "do": "highlight",
-              "target": "f1",
+              "target": "lA0",
               "at": "Walk"
             }
           ]
