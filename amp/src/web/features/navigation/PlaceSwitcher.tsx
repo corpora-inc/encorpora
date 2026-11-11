@@ -222,10 +222,8 @@ export function usePlaceEntries(
     );
     const school = places.findIndex((entry) => entry.id === `school:${org.id}`);
     if (!lone || klass < 0 || school < 0) continue;
-    places.splice(school, 1, {
-      ...classes[klass]!,
-      detail: places[school]!.detail,
-    });
+    // They teach it: its own school's "Admin" says nothing they'd recognise.
+    places.splice(school, 1, { ...classes[klass]!, detail: "Teacher" });
     classes.splice(klass, 1);
   }
   return {
