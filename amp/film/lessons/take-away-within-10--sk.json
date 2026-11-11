@@ -108,7 +108,7 @@
           ]
         },
         {
-          "speaker": "teacher", "say": "Start with all six. Nobody goes away, so take away zero.", "pause": 0.3,
+          "speaker": "teacher", "say": "Start with all six. Nobody goes away, so we take away zero.", "pause": 0.3,
           "do": [
             { "do": "highlight", "target": "car", "at": "all" },
             { "do": "write", "tex": "\\ca{6}-\\cw{0}", "fresh": true, "id": "u60", "at": "take" }
