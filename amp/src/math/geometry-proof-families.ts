@@ -2576,17 +2576,17 @@ const measurementFamily: Family = {
       return {
         tag: "cylinder-limit",
         label: "Step",
-        prompt: `A right prism with a regular n-gon base is inscribed in a cylinder of radius ${rad} and height ${h}. Which step gives the cylinder volume $V = \\pi r^2 h$?`,
+        prompt: `A right prism with a regular $n$-gon base is inscribed in a cylinder of radius ${rad} and height ${h}. Which step gives the cylinder volume $V = \\pi r^2 h$?`,
         correct:
-          "As n grows, the base area approaches $\\pi r^2$, and the volume of every prism is its base area times its height.",
+          "As $n$ grows, the base area approaches $\\pi r^2$, and the volume of every prism is its base area times its height.",
         wrong: [
           [
             "The prism's lateral area approaches $2\\pi rh$.",
             "Lateral area is surface, not volume. The volume uses the base area times the height.",
           ],
           [
-            "The n-gon becomes congruent to the circle.",
-            "The base approaches the circle. It never becomes congruent to it for a finite n.",
+            "The $n$-gon becomes congruent to the circle.",
+            "The base approaches the circle. It never becomes congruent to it for a finite $n$.",
           ],
           [
             "The slant edges shrink to zero.",
