@@ -2,6 +2,9 @@ import { Link } from "@tanstack/react-router";
 import { useLayoutEffect, useRef } from "react";
 import styles from "./Tabs.module.css";
 
+/** Tighter paddings to try, in order, when the labels do not fit. */
+const FIT_STEPS = ["snug", "tight"] as const;
+
 export type TabItem = {
   id: string;
   label: string;
@@ -38,13 +41,24 @@ export function Tabs({
     if (box.left < from.left || box.right > from.right - 28)
       strip.scrollLeft += box.left - from.left;
   }, [active]);
-  // A strip wider than its row fades at its trailing edge, so a cut label
-  // reads as "more"; a strip that fits has no soft edge.
+  // Every tab in view when the labels can fit: a row too wide for its strip
+  // tightens its padding a step at a time (each target stays 44 px) before
+  // it scrolls. Only a row that cannot fit even then scrolls, and it fades at
+  // its trailing edge so the cut reads as "more". Measured before paint.
   useLayoutEffect(() => {
     const strip = list.current;
     if (!strip) return;
+    const over = () => strip.scrollWidth > strip.clientWidth + 1;
     const measure = () => {
-      const more = strip.scrollWidth > strip.clientWidth + 1;
+      let fit: string | null = null;
+      strip.removeAttribute("data-fit");
+      for (const step of FIT_STEPS) {
+        if (!over()) break;
+        fit = step;
+        strip.setAttribute("data-fit", step);
+      }
+      if (fit && over()) strip.removeAttribute("data-fit");
+      const more = over();
       if (more !== strip.hasAttribute("data-more"))
         strip.toggleAttribute("data-more", more);
     };
