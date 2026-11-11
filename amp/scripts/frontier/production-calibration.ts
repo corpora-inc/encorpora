@@ -1,0 +1,644 @@
+/**
+ * Coverage of the production frontier estimator's posterior sd.
+ *
+ * Synthetic learners have a known working grade, overall and per strand.
+ * Problems come from the production planner (`planMixedPractice`) and the
+ * production estimator (`newLearnerFrontier` / `advanceLearnerFrontier` /
+ * `readLearnerFrontier`), the same calls as tests/climb-simulation.fixture.ts.
+ * Correctness is sampled; the problem text is not generated.
+ *
+ *   npx tsx scripts/frontier/production-calibration.ts
+ *   npx tsx scripts/frontier/production-calibration.ts --quick --seed 20261110
+ *
+ * Markdown goes to stdout. JSON goes to artifacts/calibration/ (gitignored).
+ */
+import { mkdirSync, writeFileSync } from "node:fs";
+import { availableParallelism } from "node:os";
+import { dirname, join } from "node:path";
+import { Worker, isMainThread, parentPort } from "node:worker_threads";
+import { fileURLToPath, pathToFileURL } from "node:url";
+import { skills } from "../../src/curriculum/catalog";
+import {
+  initialLevel,
+  productionSuccessProbability,
+} from "../../src/learning/frontier";
+import { DEFAULT_FRONTIER_POLICY } from "../../src/learning/frontier-policy";
+import {
+  MISSPECIFIED_RESPONSE,
+  misspecifiedSuccessProbability,
+} from "../../src/learning/synthetic-response";
+import {
+  clientCanDraw,
+  figureCapabilities,
+  responseCapabilities,
+} from "../../src/math/contracts";
+import { templates } from "../../src/math/engine";
+import { guessChanceOf } from "../../src/math/guess-chance";
+import { projectSkillEvidence } from "../../src/server/evidence";
+import {
+  advanceLearnerFrontier,
+  newLearnerFrontier,
+  readLearnerFrontier,
+} from "../../src/server/learner-frontier";
+import {
+  planMixedPractice,
+  templateGrade,
+} from "../../src/server/mixed-practice";
+import type { Outcome } from "../../src/server/repository";
+
+export const CALIBRATION_SEED = 20261110;
+/** A Monday in the climb fixture, so a birth year maps to the same grade. */
+export const CALIBRATION_EPOCH = Date.parse("2026-10-19T12:00:00Z");
+export const CHECKPOINTS = [20, 50, 100, 300] as const;
+const ANSWERS = CHECKPOINTS[CHECKPOINTS.length - 1]!;
+const DAY_MS = 86_400_000;
+const FULL_GRADES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const FULL_OFFSETS = [-2, -1, 0, 1, 2, 3];
+const QUICK_GRADES = FULL_GRADES;
+const QUICK_OFFSETS = [-2, 0, 1, 3];
+
+export type LearnerModel = "well-specified" | "misspecified";
+
+export type CalibrationPoint = {
+  model: LearnerModel;
+  learner: string;
+  grade: number;
+  offset: number;
+  rep: number;
+  answers: number;
+  /** "overall", or a strand id. */
+  scope: string;
+  mean: number;
+  /** Posterior sd from the estimator, before reported-sd calibration. */
+  sd: number;
+  truth: number;
+};
+
+export type CoverageMetrics = {
+  n: number;
+  coverage1: number;
+  coverage2: number;
+  mae: number;
+  rmse: number;
+};
+
+export type GrowthMetrics = {
+  n: number;
+  mae: number;
+  rmse: number;
+  bias: number;
+};
+
+export type ScopeBand = CoverageMetrics & {
+  answers: number;
+  scope: string;
+};
+
+export type ModelReport = {
+  bands: ScopeBand[];
+  growth: GrowthMetrics;
+  points: CalibrationPoint[];
+};
+
+export type CalibrationReport = {
+  seed: number;
+  quick: boolean;
+  policy: string;
+  checkpoints: readonly number[];
+  learners: number;
+  models: Record<LearnerModel, ModelReport>;
+};
+
+type LearnerJob = {
+  id: string;
+  model: LearnerModel;
+  grade: number;
+  offset: number;
+  rep: number;
+  seed: number;
+  itemOffsets: Record<string, number>;
+};
+
+const nodes = new Map(skills.map((skill) => [skill.id, skill]));
+const webTemplates = templates.filter((template) =>
+  clientCanDraw(template, {
+    responseCapabilities: [...responseCapabilities],
+    figureCapabilities: [...figureCapabilities],
+  }),
+);
+const strandNames = [...new Set(skills.map((skill) => skill.strand))].sort();
+const gradeOf = new Map(
+  webTemplates.map((template) => [template.id, templateGrade(template, nodes)]),
+);
+const strandOf = new Map(
+  webTemplates.map((template) => [
+    template.id,
+    nodes.get(template.skillId)?.strand ?? template.skillId,
+  ]),
+);
+
+function mix(parts: readonly number[]) {
+  let hash = 2166136261;
+  for (const part of parts) {
+    hash ^= part | 0;
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+}
+
+function mulberry32(seed: number) {
+  let state = seed >>> 0;
+  return () => {
+    state = (state + 0x6d2b79f5) | 0;
+    let value = Math.imul(state ^ (state >>> 15), 1 | state);
+    value = (value + Math.imul(value ^ (value >>> 7), 61 | value)) ^ value;
+    return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function gaussian(rng: () => number) {
+  const u = Math.max(rng(), 1e-12);
+  const v = rng();
+  return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+}
+
+function birthYearForGrade(grade: number, now: number) {
+  const date = new Date(now);
+  const schoolYear = date.getUTCFullYear() - (date.getUTCMonth() < 7 ? 1 : 0);
+  return schoolYear - grade - 6;
+}
+
+function dayOfAnswer(index: number) {
+  return (index / (ANSWERS - 1)) * MISSPECIFIED_RESPONSE.termDays;
+}
+
+/** One learner, one model: 300 production problems, read at the checkpoints. */
+export function simulateLearner(job: LearnerJob): CalibrationPoint[] {
+  const modelCode = job.model === "well-specified" ? 1 : 2;
+  const rng = mulberry32(
+    mix([job.seed, job.grade, Math.round(job.offset * 10), job.rep, modelCode]),
+  );
+  const slip =
+    MISSPECIFIED_RESPONSE.slipMin +
+    rng() * (MISSPECIFIED_RESPONSE.slipMax - MISSPECIFIED_RESPONSE.slipMin);
+  const guess =
+    MISSPECIFIED_RESPONSE.guessMin +
+    rng() * (MISSPECIFIED_RESPONSE.guessMax - MISSPECIFIED_RESPONSE.guessMin);
+  const growth =
+    job.model === "misspecified"
+      ? MISSPECIFIED_RESPONSE.growthMin +
+        rng() *
+          (MISSPECIFIED_RESPONSE.growthMax - MISSPECIFIED_RESPONSE.growthMin)
+      : 0;
+  const strandOffset = new Map<string, number>();
+  for (const strand of strandNames)
+    strandOffset.set(
+      strand,
+      job.model === "misspecified" ? (rng() - 0.5) * 1.2 : 0,
+    );
+  const birthYear = birthYearForGrade(job.grade, CALIBRATION_EPOCH);
+  const start = initialLevel({ birthYear, now: CALIBRATION_EPOCH });
+  if (start !== job.grade)
+    throw new Error(
+      `Birth year ${birthYear} started at ${start}, not grade ${job.grade}`,
+    );
+  const theta0 = job.grade + job.offset;
+  const state = newLearnerFrontier({ epoch: 0, start, strandStarts: {} });
+  const attempts: Outcome[] = [];
+  const points: CalibrationPoint[] = [];
+  const wanted = new Set<number>(CHECKPOINTS);
+  for (let index = 0; index < ANSWERS; index++) {
+    const at = CALIBRATION_EPOCH + dayOfAnswer(index) * DAY_MS;
+    const frontier = readLearnerFrontier(state, at);
+    const [choice] = planMixedPractice({
+      templates: webTemplates,
+      skills,
+      attempts: attempts.slice(-12),
+      evidence: projectSkillEvidence(attempts),
+      frontier,
+      count: 1,
+      seed: `cal:${job.id}:${index}`,
+      now: at,
+      learnerKey: `cal:${job.id}`,
+    });
+    if (!choice) throw new Error(`No problem for ${job.id} at ${index}`);
+    const template = choice.template;
+    const strand = strandOf.get(template.id) ?? choice.strand;
+    const grade = gradeOf.get(template.id);
+    if (grade === undefined) throw new Error(`No grade for ${template.id}`);
+    const day = dayOfAnswer(index);
+    const overallTruth =
+      theta0 + growth * (day / MISSPECIFIED_RESPONSE.termDays);
+    const truth = overallTruth + (strandOffset.get(strand) ?? 0);
+    const itemGuess = guessChanceOf(template.id);
+    const probability =
+      job.model === "well-specified"
+        ? productionSuccessProbability(
+            truth,
+            grade,
+            itemGuess,
+            DEFAULT_FRONTIER_POLICY.response,
+          )
+        : misspecifiedSuccessProbability({
+            theta: truth,
+            catalogGrade: grade,
+            itemOffset: job.itemOffsets[template.id] ?? 0,
+            slip,
+            guess,
+          });
+    const correct = rng() < probability;
+    const createdAt = new Date(at).toISOString();
+    attempts.push({
+      id: `${job.id}:a${index}`,
+      problemId: `${job.id}:p${index}`,
+      requestId: `${job.id}:r${index}`,
+      skillId: template.skillId,
+      templateId: template.id,
+      response: "",
+      correct,
+      assisted: false,
+      explanation: [],
+      answer: "",
+      createdAt,
+    });
+    advanceLearnerFrontier(state, [
+      {
+        templateId: template.id,
+        correct,
+        assisted: false,
+        createdAt,
+        practiceRevision: 0,
+        sequence: String(index + 1),
+      },
+    ]);
+    const answered = index + 1;
+    if (!wanted.has(answered)) continue;
+    const after = readLearnerFrontier(state, at);
+    const base = {
+      model: job.model,
+      learner: job.id,
+      grade: job.grade,
+      offset: job.offset,
+      rep: job.rep,
+      answers: answered,
+    };
+    points.push({
+      ...base,
+      scope: "overall",
+      mean: after.overall.level,
+      sd: after.overall.sd,
+      truth: overallTruth,
+    });
+    for (const [name, estimate] of Object.entries(after.strands))
+      points.push({
+        ...base,
+        scope: name,
+        mean: estimate.level,
+        sd: estimate.sd,
+        truth: overallTruth + (strandOffset.get(name) ?? 0),
+      });
+  }
+  return points;
+}
+
+function itemOffsets(seed: number) {
+  const rng = mulberry32(mix([seed, 0x5a17]));
+  const offsets: Record<string, number> = {};
+  for (const template of webTemplates)
+    offsets[template.id] = gaussian(rng) * MISSPECIFIED_RESPONSE.itemSd;
+  return offsets;
+}
+
+function jobsFor(options: {
+  seed: number;
+  quick: boolean;
+  models: readonly LearnerModel[];
+}): LearnerJob[] {
+  const grades = options.quick ? QUICK_GRADES : FULL_GRADES;
+  const offsets = options.quick ? QUICK_OFFSETS : FULL_OFFSETS;
+  const reps = options.quick ? [0] : [0, 1];
+  const shared = itemOffsets(options.seed);
+  const jobs: LearnerJob[] = [];
+  for (const model of options.models)
+    for (const rep of reps)
+      for (const grade of grades)
+        for (const offset of offsets) {
+          const id = `${model}:g${grade}:o${offset}:r${rep}`;
+          jobs.push({
+            id,
+            model,
+            grade,
+            offset,
+            rep,
+            seed: options.seed,
+            itemOffsets: model === "misspecified" ? shared : {},
+          });
+        }
+  return jobs;
+}
+
+function metrics(points: readonly CalibrationPoint[]): CoverageMetrics {
+  let within1 = 0;
+  let within2 = 0;
+  let absolute = 0;
+  let squared = 0;
+  for (const point of points) {
+    const error = Math.abs(point.mean - point.truth);
+    if (error <= point.sd) within1 += 1;
+    if (error <= 2 * point.sd) within2 += 1;
+    absolute += error;
+    squared += error * error;
+  }
+  const n = points.length;
+  return {
+    n,
+    coverage1: n ? within1 / n : 0,
+    coverage2: n ? within2 / n : 0,
+    mae: n ? absolute / n : 0,
+    rmse: n ? Math.sqrt(squared / n) : 0,
+  };
+}
+
+function growthOf(points: readonly CalibrationPoint[]): GrowthMetrics {
+  const ends = new Map<
+    string,
+    { first?: CalibrationPoint; last?: CalibrationPoint }
+  >();
+  for (const point of points) {
+    if (point.scope !== "overall") continue;
+    const row = ends.get(point.learner) ?? {};
+    if (point.answers === CHECKPOINTS[0]) row.first = point;
+    if (point.answers === ANSWERS) row.last = point;
+    ends.set(point.learner, row);
+  }
+  let n = 0;
+  let absolute = 0;
+  let squared = 0;
+  let bias = 0;
+  for (const row of ends.values()) {
+    if (!row.first || !row.last) continue;
+    const reported = row.last.mean - row.first.mean;
+    const truth = row.last.truth - row.first.truth;
+    const error = reported - truth;
+    n += 1;
+    absolute += Math.abs(error);
+    squared += error * error;
+    bias += error;
+  }
+  return {
+    n,
+    mae: n ? absolute / n : 0,
+    rmse: n ? Math.sqrt(squared / n) : 0,
+    bias: n ? bias / n : 0,
+  };
+}
+
+function modelReport(points: CalibrationPoint[]): ModelReport {
+  const bands: ScopeBand[] = [];
+  for (const answers of CHECKPOINTS) {
+    const at = points.filter((point) => point.answers === answers);
+    const overall = at.filter((point) => point.scope === "overall");
+    const strands = at.filter((point) => point.scope !== "overall");
+    bands.push({ answers, scope: "overall", ...metrics(overall) });
+    bands.push({ answers, scope: "strands", ...metrics(strands) });
+    const names = [...new Set(strands.map((point) => point.scope))].sort();
+    for (const scope of names) {
+      const rows = strands.filter((point) => point.scope === scope);
+      if (rows.length < 15) continue;
+      bands.push({ answers, scope, ...metrics(rows) });
+    }
+  }
+  return { bands, growth: growthOf(points), points };
+}
+
+function emptyModel(): ModelReport {
+  return {
+    bands: [],
+    growth: { n: 0, mae: 0, rmse: 0, bias: 0 },
+    points: [],
+  };
+}
+
+type WorkerResponse =
+  | { ok: true; points: CalibrationPoint[]; ms: number }
+  | { ok: false; error: string; learner: string };
+
+function listen(worker: Worker, job: LearnerJob): Promise<WorkerResponse> {
+  return new Promise((resolve, reject) => {
+    const fail = (error: Error) => {
+      worker.off("message", done);
+      reject(error);
+    };
+    const done = (message: WorkerResponse) => {
+      worker.off("error", fail);
+      resolve(message);
+    };
+    worker.once("error", fail);
+    worker.once("message", done);
+    worker.postMessage({ kind: "run", job });
+  });
+}
+
+async function runJobs(
+  jobs: readonly LearnerJob[],
+  concurrency: number,
+): Promise<CalibrationPoint[]> {
+  if (jobs.length === 0) return [];
+  const workers = Math.max(1, Math.min(concurrency, jobs.length));
+  if (workers === 1) return jobs.flatMap((job) => simulateLearner(job));
+  const pool = Array.from(
+    { length: workers },
+    () => new Worker(new URL(import.meta.url)),
+  );
+  const points: CalibrationPoint[] = [];
+  let cursor = 0;
+  try {
+    await Promise.all(
+      pool.map(async (worker) => {
+        for (;;) {
+          const index = cursor;
+          cursor += 1;
+          const job = jobs[index];
+          if (!job) return;
+          const response = await listen(worker, job);
+          if (!response.ok)
+            throw new Error(`${response.learner}: ${response.error}`);
+          points.push(...response.points);
+          process.stderr.write(
+            `  ${response.ms}ms ${jobs[index]!.id} (${index + 1}/${jobs.length})\n`,
+          );
+        }
+      }),
+    );
+  } finally {
+    await Promise.all(pool.map((worker) => worker.terminate()));
+  }
+  return points;
+}
+
+export async function runProductionCalibration(
+  options: {
+    seed?: number;
+    quick?: boolean;
+    models?: readonly LearnerModel[];
+    concurrency?: number;
+  } = {},
+): Promise<CalibrationReport> {
+  const seed = options.seed ?? CALIBRATION_SEED;
+  const quick = options.quick ?? false;
+  const models = options.models ?? ["well-specified", "misspecified"];
+  const jobs = jobsFor({ seed, quick, models });
+  const concurrency =
+    options.concurrency ?? Math.max(1, Math.min(8, availableParallelism() - 1));
+  const started = Date.now();
+  const points = await runJobs(jobs, concurrency);
+  const byModel = new Map<LearnerModel, CalibrationPoint[]>();
+  for (const point of points) {
+    const list = byModel.get(point.model) ?? [];
+    list.push(point);
+    byModel.set(point.model, list);
+  }
+  const report: CalibrationReport = {
+    seed,
+    quick,
+    policy: DEFAULT_FRONTIER_POLICY.version,
+    checkpoints: CHECKPOINTS,
+    learners: jobs.length,
+    models: {
+      "well-specified": byModel.has("well-specified")
+        ? modelReport(byModel.get("well-specified")!)
+        : emptyModel(),
+      misspecified: byModel.has("misspecified")
+        ? modelReport(byModel.get("misspecified")!)
+        : emptyModel(),
+    },
+  };
+  process.stderr.write(
+    `calibration ${quick ? "quick" : "full"} seed ${seed}: ${jobs.length} learners in ${((Date.now() - started) / 1000).toFixed(1)}s\n`,
+  );
+  return report;
+}
+
+function percent(value: number) {
+  return (value * 100).toFixed(1);
+}
+
+function formatModel(name: string, model: ModelReport) {
+  const lines = [
+    `## ${name}`,
+    "",
+    "| answers | scope | n | ±1σ % | ±2σ % | MAE | RMSE |",
+    "| ---: | --- | ---: | ---: | ---: | ---: | ---: |",
+  ];
+  for (const band of model.bands) {
+    if (band.scope !== "overall" && band.scope !== "strands") continue;
+    lines.push(
+      `| ${band.answers} | ${band.scope} | ${band.n} | ${percent(band.coverage1)} | ${percent(band.coverage2)} | ${band.mae.toFixed(3)} | ${band.rmse.toFixed(3)} |`,
+    );
+  }
+  lines.push(
+    "",
+    `Growth (estimate at ${ANSWERS} minus estimate at ${CHECKPOINTS[0]}, against true Δθ): n=${model.growth.n}, MAE ${model.growth.mae.toFixed(3)}, RMSE ${model.growth.rmse.toFixed(3)}, bias ${model.growth.bias.toFixed(3)}.`,
+    "",
+  );
+  const strands = model.bands.filter(
+    (band) => band.scope !== "overall" && band.scope !== "strands",
+  );
+  if (strands.length) {
+    lines.push(
+      "| answers | strand | n | ±1σ % | ±2σ % | MAE |",
+      "| ---: | --- | ---: | ---: | ---: | ---: |",
+    );
+    for (const band of strands)
+      lines.push(
+        `| ${band.answers} | ${band.scope} | ${band.n} | ${percent(band.coverage1)} | ${percent(band.coverage2)} | ${band.mae.toFixed(3)} |`,
+      );
+    lines.push("");
+  }
+  return lines.join("\n");
+}
+
+export function formatCalibration(report: CalibrationReport) {
+  const header = [
+    `# Production frontier coverage (seed ${report.seed}, ${report.quick ? "quick" : "full"})`,
+    "",
+    `Policy \`${report.policy}\`. Posterior sd, before reported-sd calibration. ${report.learners} learners, checkpoints ${report.checkpoints.join(", ")}.`,
+    "",
+  ];
+  return (
+    header.join("\n") +
+    (Object.entries(report.models) as [LearnerModel, ModelReport][])
+      .filter(([, model]) => model.points.length > 0)
+      .map(([name, model]) => formatModel(name, model))
+      .join("\n")
+  );
+}
+
+export function writeCalibration(report: CalibrationReport) {
+  const directory = join(
+    dirname(fileURLToPath(import.meta.url)),
+    "../../artifacts/calibration",
+  );
+  mkdirSync(directory, { recursive: true });
+  const path = join(
+    directory,
+    report.quick ? "production-quick.json" : "production-full.json",
+  );
+  writeFileSync(path, JSON.stringify(report));
+  return path;
+}
+
+if (!isMainThread) {
+  parentPort!.on("message", (message: { kind: "run"; job: LearnerJob }) => {
+    try {
+      const started = Date.now();
+      const points = simulateLearner(message.job);
+      const response: WorkerResponse = {
+        ok: true,
+        points,
+        ms: Date.now() - started,
+      };
+      parentPort!.postMessage(response);
+    } catch (error) {
+      const response: WorkerResponse = {
+        ok: false,
+        learner: message.job.id,
+        error:
+          error instanceof Error
+            ? (error.stack ?? error.message)
+            : String(error),
+      };
+      parentPort!.postMessage(response);
+    }
+  });
+} else if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
+  const args = process.argv.slice(2);
+  let quick = false;
+  let seed = CALIBRATION_SEED;
+  let models: LearnerModel[] = ["well-specified", "misspecified"];
+  for (let index = 0; index < args.length; index++) {
+    const arg = args[index];
+    if (arg === "--quick") quick = true;
+    else if (arg === "--seed") seed = Number(args[++index]);
+    else if (arg === "--model") {
+      const name = args[++index];
+      if (name !== "well-specified" && name !== "misspecified")
+        throw new Error("--model must be well-specified or misspecified");
+      models = [name];
+    } else throw new Error(`Unknown argument ${arg}`);
+  }
+  if (!Number.isInteger(seed)) throw new Error("--seed must be an integer");
+  runProductionCalibration({ seed, quick, models })
+    .then((report) => {
+      process.stdout.write(formatCalibration(report));
+      const path = writeCalibration(report);
+      process.stderr.write(`wrote ${path}\n`);
+    })
+    .catch((error: unknown) => {
+      console.error(error);
+      process.exit(1);
+    });
+}
