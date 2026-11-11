@@ -10,11 +10,12 @@ import {
  * misses ±4 by sampling error). */
 const MAE_AT_100 = 0.7;
 /** The harness's own work, in CPU time across its worker threads: about
- * 310 s measured on 2026-11-11, so a budget half again over it catches a
- * slower harness. Wall time is no measure of that: the suite runs this beside
- * every other test file, and the machine may be shared, so the wall-clock
- * limit below only guards against a hang. */
-const CPU_BUDGET_MS = 450_000;
+ * 310 s on a developer Mac and 473 s on a GitHub ubuntu runner (2026-11-11),
+ * so the budget is about twice the slowest machine's: it catches a harness
+ * that doubles its work, not a slower CPU. Wall time is no measure of that:
+ * the suite runs this beside every other test file, and the machine may be
+ * shared, so the wall-clock limit below only guards against a hang. */
+const CPU_BUDGET_MS = 900_000;
 
 test(
   "reported sd covers the misspecified production learner",
