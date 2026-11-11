@@ -552,6 +552,64 @@ test("a held highlight stays inside the card and off its label", async () => {
             }
             return [{ text: (el.textContent ?? "").trim(), gap }];
           });
+          // The painted box stops at a clip. The lit part's own box, after the highlight
+          // transform and including the thickened stroke, is what has to be visible.
+          const fullBox = (el: Element) => {
+            if (!(el instanceof SVGGraphicsElement || el instanceof HTMLElement)) return null;
+            const b = el.getBoundingClientRect();
+            if (b.width < 0.2 && b.height < 0.2) return null;
+            let px = 0, py = 0;
+            if (el instanceof SVGGraphicsElement) {
+              const sw = parseFloat(el.style.strokeWidth || "") || 0;
+              const ctm = sw > 0 && typeof el.getScreenCTM === "function" ? el.getScreenCTM() : null;
+              if (ctm) { px = Math.hypot(ctm.a, ctm.b) * sw / 2; py = Math.hypot(ctm.c, ctm.d) * sw / 2; }
+            }
+            return { l: b.left - px, t: b.top - py, r: b.right + px, b: b.bottom + py };
+          };
+          const regionOf = (el: Element): { l: number; t: number; r: number; b: number } | null => {
+            let region: { l: number; t: number; r: number; b: number } | null = null;
+            const meet = (box: { l: number; t: number; r: number; b: number }) => {
+              region = region ? { l: Math.max(region.l, box.l), t: Math.max(region.t, box.t), r: Math.min(region.r, box.r), b: Math.min(region.b, box.b) } : box;
+            };
+            for (let n: Element | null = el.parentElement; n && n !== document.documentElement; n = n.parentElement) {
+              const cs = getComputedStyle(n);
+              if (cs.overflowX !== "visible" || cs.overflowY !== "visible") {
+                const b = n.getBoundingClientRect();
+                const bl = n instanceof HTMLElement ? parseFloat(getComputedStyle(n).borderLeftWidth) || 0 : 0;
+                const bt = n instanceof HTMLElement ? parseFloat(getComputedStyle(n).borderTopWidth) || 0 : 0;
+                const br = n instanceof HTMLElement ? parseFloat(getComputedStyle(n).borderRightWidth) || 0 : 0;
+                const bb = n instanceof HTMLElement ? parseFloat(getComputedStyle(n).borderBottomWidth) || 0 : 0;
+                meet({ l: b.left + bl, t: b.top + bt, r: b.right - br, b: b.bottom - bb });
+              }
+              if (n instanceof HTMLElement && n.dataset.layout) break;
+              if (n instanceof SVGGraphicsElement) {
+                const id = (n.getAttribute("clip-path") ?? "").match(/#([^)]+)\)/)?.[1];
+                const rect = id ? document.getElementById(id)?.querySelector("rect") : null;
+                const svg = n.ownerSVGElement;
+                if (rect && svg) {
+                  const svgBox = svg.getBoundingClientRect();
+                  const vb = svg.viewBox.baseVal;
+                  const sx = vb.width ? svgBox.width / vb.width : 1;
+                  const sy = vb.height ? svgBox.height / vb.height : 1;
+                  const x = parseFloat(rect.getAttribute("x") || "0"), y = parseFloat(rect.getAttribute("y") || "0");
+                  const w = parseFloat(rect.getAttribute("width") || "0"), h = parseFloat(rect.getAttribute("height") || "0");
+                  meet({
+                    l: svgBox.left + (x - vb.x) * sx, t: svgBox.top + (y - vb.y) * sy,
+                    r: svgBox.left + (x + w - vb.x) * sx, b: svgBox.top + (y + h - vb.y) * sy,
+                  });
+                }
+              }
+            }
+            return region;
+          };
+          const pieces = members.flatMap((el) => [el, ...el.querySelectorAll("*")]).filter((el) => !el.classList.contains("film-em"));
+          let over = 0;
+          for (const el of pieces) {
+            const box = fullBox(el);
+            const region = box && regionOf(el);
+            if (!box || !region) continue;
+            over = Math.max(over, region.l - box.l, region.t - box.t, box.r - region.r, box.b - region.b);
+          }
           return {
             margins: [l - card.left, card.right - r, top - card.top, card.bottom - b],
             need: Math.max(Math.min(card.width, card.height) * 0.06, 16),
@@ -559,10 +617,12 @@ test("a held highlight stays inside the card and off its label", async () => {
             em: Number(frame.dataset.em || 0),
             labels,
             n,
+            over,
           };
         }, { time: sample.t, part: sample.part });
         if (!got || "error" in got) throw new Error(`${where}: ${got && "error" in got ? got.error : "no measurement"}`);
         for (const m of got.margins) expect(m, `${where} margin`).toBeGreaterThanOrEqual(got.need);
+        expect(got.over, `${where} unclipped stroke leaves the visible region by ${got.over.toFixed(1)}px`).toBeLessThanOrEqual(1);
         expect(got.stroke, `${where} still bold`).toBeGreaterThan(6);
         expect(got.n, `${where} ink`).toBeGreaterThan(1);
         if (sample.letter) {

@@ -33,10 +33,13 @@ const ease = (u: number) => {
 /**
  * A highlight grows about its own centre and takes no layout space. It stops
  * at the card's inner margin and at a label, and a part with no room still
- * boldens. A ten-frame is the exception to growing alone: its cells, counters
- * and labels grow with it about one centre, so a counter stays in the middle
- * of its cell. Two frames that would otherwise swell into each other grow as
- * one piece. The in and out are a short smooth ease, with no bounce.
+ * boldens. The shot's view is a tight drawing area, so a light on its edge
+ * would be clipped there: the picture's clip opens around the lit part, stroke
+ * included, and the card is what keeps it on screen. A ten-frame is the
+ * exception to growing alone: its cells, counters and labels grow with it
+ * about one centre, so a counter stays in the middle of its cell. Two frames
+ * that would otherwise swell into each other grow as one piece. The in and
+ * out are a short smooth ease, with no bounce.
  */
 const EMPH_GROW = 0.15;
 const EMPH_IN = 0.2;
@@ -486,6 +489,89 @@ function cardLimit(fit: HTMLElement): Box4 | null {
   return { l: l + margin, t: t + margin, r: r - margin, b: b - margin };
 }
 const pastCard = (box: Box4, limit: Box4) => box.l < limit.l - 1 || box.t < limit.t - 1 || box.r > limit.r + 1 || box.b > limit.b + 1;
+const pastBox = (a: Box4, b: Box4) => a.l < b.l - 1 || a.t < b.t - 1 || a.r > b.r + 1 || a.b > b.b + 1;
+/**
+ * The lit part's own box after its highlight transform, including the thickened
+ * stroke, in viewport pixels. `getBoundingClientRect` is the geometry only:
+ * the stroke is not in it, and a clip must not be what decides the box.
+ */
+function fullLitBox(el: Element): Box4 | null {
+  if (!(el instanceof SVGGraphicsElement || el instanceof HTMLElement)) return null;
+  const b = el.getBoundingClientRect();
+  if (b.width < 0.2 && b.height < 0.2) return null;
+  let px = 0, py = 0;
+  if (el instanceof SVGGraphicsElement) {
+    const sw = parseFloat(el.style.strokeWidth || "") || parseFloat(el.getAttribute("stroke-width") || "") || 0;
+    const ctm = sw > 0 && typeof el.getScreenCTM === "function" ? el.getScreenCTM() : null;
+    if (sw > 0 && ctm) {
+      px = Math.hypot(ctm.a, ctm.b) * sw / 2;
+      py = Math.hypot(ctm.c, ctm.d) * sw / 2;
+    } else if (sw > 0) px = py = sw / 2;
+  }
+  return { l: b.left - px, t: b.top - py, r: b.right + px, b: b.bottom + py };
+}
+/** Where an ancestor actually clips painting: overflow, and an SVG clip rect. */
+function clipBounds(el: Element): Box4 {
+  const b = el.getBoundingClientRect();
+  if (!(el instanceof HTMLElement)) return { l: b.left, t: b.top, r: b.right, b: b.bottom };
+  const cs = getComputedStyle(el);
+  return {
+    l: b.left + (parseFloat(cs.borderLeftWidth) || 0),
+    t: b.top + (parseFloat(cs.borderTopWidth) || 0),
+    r: b.right - (parseFloat(cs.borderRightWidth) || 0),
+    b: b.bottom - (parseFloat(cs.borderBottomWidth) || 0),
+  };
+}
+function clipRectBox(node: Element): Box4 | null {
+  if (!(node instanceof SVGGraphicsElement)) return null;
+  const ref = node.getAttribute("clip-path") ?? "";
+  const id = ref.match(/#([^)]+)\)/)?.[1];
+  const rect = id ? document.getElementById(id)?.querySelector("rect") : null;
+  const svg = node.ownerSVGElement;
+  if (!rect || !svg) return null;
+  // The svg's border box, not getScreenCTM: a film measured off to the side
+  // (the other layout) has a CTM that drops that offset, and every light looks cut off.
+  const svgBox = svg.getBoundingClientRect();
+  const vb = svg.viewBox.baseVal;
+  const sx = vb.width ? svgBox.width / vb.width : 1;
+  const sy = vb.height ? svgBox.height / vb.height : 1;
+  const x = parseFloat(rect.getAttribute("x") || "0"), y = parseFloat(rect.getAttribute("y") || "0");
+  const w = parseFloat(rect.getAttribute("width") || "0"), h = parseFloat(rect.getAttribute("height") || "0");
+  return {
+    l: svgBox.left + (x - vb.x) * sx, t: svgBox.top + (y - vb.y) * sy,
+    r: svgBox.left + (x + w - vb.x) * sx, b: svgBox.top + (y + h - vb.y) * sy,
+  };
+}
+/** The region of `el` that can actually be seen: every clipping ancestor, and a clip rect. */
+function visibleRegion(el: Element): Box4 | null {
+  let region: Box4 | null = null;
+  const meet = (box: Box4) => {
+    region = region ? { l: Math.max(region.l, box.l), t: Math.max(region.t, box.t), r: Math.min(region.r, box.r), b: Math.min(region.b, box.b) } : box;
+  };
+  for (let n: Element | null = el.parentElement; n && n !== document.documentElement; n = n.parentElement) {
+    const cs = getComputedStyle(n);
+    if (cs.overflowX !== "visible" || cs.overflowY !== "visible") meet(clipBounds(n));
+    const clip = clipRectBox(n);
+    if (clip) meet(clip);
+    // The film frame is the screen. The page around an off-screen second layout is not.
+    if (n instanceof HTMLElement && n.dataset.layout) break;
+  }
+  return region;
+}
+/** A held light whose unclipped stroke leaves the region that is actually painted. */
+function litCutOff(fit: HTMLElement): boolean {
+  const hot = [...fit.querySelectorAll<HTMLElement | SVGElement>("[data-hot='1']")].filter((el) => !el.classList.contains("film-em") && Number(el.dataset.em0 || 0) > 0.35);
+  const leaves = (el: Element) => {
+    const box = fullLitBox(el);
+    const region = box && visibleRegion(el);
+    return !!box && !!region && pastBox(box, region);
+  };
+  for (const el of hot) {
+    if (leaves(el)) return true;
+    for (const c of el.querySelectorAll<Element>("*")) if (!c.classList.contains("film-em") && leaves(c)) return true;
+  }
+  return false;
+}
 type GrowFault = "card" | "label" | "neighbour";
 /**
  * Why this grown group must shrink. `labelGap` is the overlap a label is
@@ -584,8 +670,12 @@ const roundRect = (x: number, y: number, w: number, h: number, r: number) => {
   r = Math.min(r, w / 2, h / 2);
   return `M${(x + r).toFixed(2)} ${y.toFixed(2)}H${(x + w - r).toFixed(2)}Q${(x + w).toFixed(2)} ${y.toFixed(2)} ${(x + w).toFixed(2)} ${(y + r).toFixed(2)}V${(y + h - r).toFixed(2)}Q${(x + w).toFixed(2)} ${(y + h).toFixed(2)} ${(x + w - r).toFixed(2)} ${(y + h).toFixed(2)}H${(x + r).toFixed(2)}Q${x.toFixed(2)} ${(y + h).toFixed(2)} ${x.toFixed(2)} ${(y + h - r).toFixed(2)}V${(y + r).toFixed(2)}Q${x.toFixed(2)} ${y.toFixed(2)} ${(x + r).toFixed(2)} ${y.toFixed(2)}Z`;
 };
+let clipSeq = 0;
 class GeoStage {
   svg: SVGSVGElement;
+  /** Ink lives here, clipped to the view, and the clip opens around a light. */
+  layer: SVGGElement;
+  viewRect: SVGElement;
   labels: HTMLElement;
   parts: { p: Part; el: SVGElement; shadow?: SVGElement; side?: SVGElement; html?: HTMLElement; extra?: SVGElement[]; extraHtml?: HTMLElement[]; blocks?: BlocksView; table?: TableView; mosaic?: MosaicView; bar?: BarView; a0: number }[] = [];
   barCuts = new Map<string, BarCut[]>();
@@ -633,6 +723,21 @@ class GeoStage {
     this.svg.setAttribute("height", String(box.h));
     this.svg.setAttribute("viewBox", `0 0 ${box.w} ${box.h}`);
     host.appendChild(this.svg);
+    const clipId = `film-clip-${++clipSeq}`;
+    const clip = svg("clipPath");
+    clip.id = clipId;
+    clip.setAttribute("clipPathUnits", "userSpaceOnUse");
+    this.viewRect = svg("rect", "film-em");
+    this.viewRect.setAttribute("x", "0");
+    this.viewRect.setAttribute("y", "0");
+    this.viewRect.setAttribute("width", String(box.w));
+    this.viewRect.setAttribute("height", String(box.h));
+    clip.appendChild(this.viewRect);
+    this.svg.appendChild(clip);
+    this.layer = svg("g", "film-geo-ink") as SVGGElement;
+    // An absolute url(): a bare url(#id) is resolved against the page, and the clip silently does nothing.
+    this.layer.setAttribute("clip-path", `url(${new URL("#" + clipId, document.baseURI).href})`);
+    this.svg.appendChild(this.layer);
     this.labels = div("film-labels", host);
     for (const p of geo.parts) if ("plot" in p) this.fns.set(p.id, compile(p.plot));
     // a point on a graph may ride off the view; a point on a circle never leaves it
@@ -703,7 +808,7 @@ class GeoStage {
     }
     for (const p of geo.parts) this.build(p);
     // things paint above every other part: a frame, a plate or a line never covers one
-    if (this.thingLayer) this.svg.appendChild(this.thingLayer);
+    if (this.thingLayer) this.layer.appendChild(this.thingLayer);
     this.size = (Math.abs(this.view0[2]! - this.view0[0]!)) / box.w;
   }
   fit() {
@@ -1102,7 +1207,7 @@ class GeoStage {
   build(p: Part) {
     const entry: GeoStage["parts"][number] = { p, el: svg("g"), a0: 0 };
     if ("things" in p) {
-      const g = svg("g", "film-things"); this.svg.appendChild(g); entry.el = g;
+      const g = svg("g", "film-things"); this.layer.appendChild(g); entry.el = g;
       const group = this.thingGroups.get(p.id)!;
       // the group's whole footprint, including a thing that has not arrived yet, is ink from the first frame
       group.extent = svg("rect", "film-things-extent"); g.appendChild(group.extent);
@@ -1138,7 +1243,7 @@ class GeoStage {
       this.parts.push(entry); return;
     }
     if ("bar" in p) {
-      const g = svg("g", "film-bar"); this.svg.appendChild(g); entry.el = g;
+      const g = svg("g", "film-bar"); this.layer.appendChild(g); entry.el = g;
       const path = (cls: string) => { const el = svg("path", cls); g.appendChild(el); return el; };
       const label = (cls: string, content: string) => { const el = div(`film-label ${cls}`, this.labels); el.innerHTML = tex(content); return el; };
       const base = path("film-bar-base"), part = path("film-bar-part"), cuts = path("film-bar-cuts"), major = path("film-bar-major"), unit = path("film-bar-unit"), ring = path("film-bar-ring film-em"), bracket = path("film-bar-bracket");
@@ -1159,7 +1264,7 @@ class GeoStage {
     if ("blocks" in p) {
       const model = this.blocks.get(p.id)!;
       const g = svg("g", "film-blocks");
-      this.svg.appendChild(g);
+      this.layer.appendChild(g);
       entry.el = g;
       const pointLine = svg("path", "film-block-pointline"), point = svg("circle");
       g.appendChild(pointLine); g.appendChild(point);
@@ -1206,7 +1311,7 @@ class GeoStage {
     }
     if ("table" in p) {
       const g = svg("g", "film-table");
-      this.svg.appendChild(g);
+      this.layer.appendChild(g);
       entry.el = g;
       // bands beneath, then cell backgrounds, then the lines
       const bands = new Map<string, SVGElement>();
@@ -1236,7 +1341,7 @@ class GeoStage {
     }
     if ("mosaic" in p) {
       const g = svg("g", "film-mosaic");
-      this.svg.appendChild(g);
+      this.layer.appendChild(g);
       entry.el = g;
       const slabs: MosaicView["slabs"] = [];
       const html: HTMLElement[] = [];
@@ -1270,37 +1375,37 @@ class GeoStage {
     }
     if ("poly" in p) {
       if (p.solid) {
-        entry.shadow = svg("path", "film-shadow"); this.svg.appendChild(entry.shadow);
-        entry.side = svg("path", "film-side"); this.svg.appendChild(entry.side);
+        entry.shadow = svg("path", "film-shadow"); this.layer.appendChild(entry.shadow);
+        entry.side = svg("path", "film-side"); this.layer.appendChild(entry.side);
       }
       entry.el = svg("path");
       entry.el.setAttribute("stroke-linejoin", "round");
-      this.svg.appendChild(entry.el);
+      this.layer.appendChild(entry.el);
     } else if ("seg" in p || "curve" in p || "vector" in p) {
       entry.el = svg("path");
       entry.el.setAttribute("fill", "none");
       entry.el.setAttribute("stroke-linecap", "round");
-      this.svg.appendChild(entry.el);
+      this.layer.appendChild(entry.el);
       if ("seg" in p && (p.arrows || p.ticks)) {
         entry.extra = [svg("path")];
         entry.extra[0]!.setAttribute("fill", "none");
         entry.extra[0]!.setAttribute("stroke-linecap", "round");
         entry.extra[0]!.setAttribute("stroke-linejoin", "round");
-        this.svg.appendChild(entry.extra[0]!);
+        this.layer.appendChild(entry.extra[0]!);
       }
     } else if ("dot" in p) {
       entry.el = svg((p as Counter).counter ? "path" : "circle");
       if ((p as Counter).counter) entry.el.dataset.kind = "counter";
-      this.svg.appendChild(entry.el);
+      this.layer.appendChild(entry.el);
     } else if ("circle" in p) {
       entry.el = svg("path");
-      this.svg.appendChild(entry.el);
+      this.layer.appendChild(entry.el);
     } else if ("sweep" in p) {
-      entry.el = svg("path"); this.svg.appendChild(entry.el);
+      entry.el = svg("path"); this.layer.appendChild(entry.el);
       entry.extra = [svg("path")];
       entry.extra[0]!.setAttribute("fill", "none");
       entry.extra[0]!.setAttribute("stroke-linecap", "round");
-      this.svg.appendChild(entry.extra[0]!);
+      this.layer.appendChild(entry.extra[0]!);
       if (p.tex) {
         entry.html = div(`film-label size-${p.size ?? "m"} halo`, this.labels);
         entry.html.innerHTML = tex(p.tex);
@@ -1312,15 +1417,15 @@ class GeoStage {
       entry.el.dataset.cols = String(p.grid[0]);
       entry.el.dataset.rows = String(p.grid[1]);
       entry.el.setAttribute("stroke-linejoin", "round");
-      this.svg.appendChild(entry.el);
+      this.layer.appendChild(entry.el);
       entry.extra = [svg("path")];
       entry.extra[0]!.setAttribute("fill", "none");
-      this.svg.appendChild(entry.extra[0]!);
+      this.layer.appendChild(entry.extra[0]!);
     } else if ("angle" in p) {
-      entry.el = svg("path"); this.svg.appendChild(entry.el);
+      entry.el = svg("path"); this.layer.appendChild(entry.el);
       entry.extra = [svg("path")];
       entry.extra[0]!.setAttribute("fill", "none");
-      this.svg.appendChild(entry.extra[0]!);
+      this.layer.appendChild(entry.extra[0]!);
     } else if ("label" in p) {
       // on a graph, every label is haloed so grid lines and curves never cut through it
       const halo = p.halo || this.geo.parts.some((q) => "axes" in q);
@@ -1335,18 +1440,18 @@ class GeoStage {
       entry.el.setAttribute("stroke-linecap", "round");
       entry.el.setAttribute("stroke-linejoin", "round");
       entry.el.setAttribute("pathLength", "1");
-      this.svg.appendChild(entry.el);
+      this.layer.appendChild(entry.el);
     } else if ("axes" in p) {
       entry.el = svg("path");
       entry.el.setAttribute("fill", "none");
       entry.el.setAttribute("stroke-linecap", "round");
-      this.svg.appendChild(entry.el);
+      this.layer.appendChild(entry.el);
       entry.extra = [];
     } else if ("dim" in p) {
       entry.el = svg("path");
       entry.el.setAttribute("fill", "none");
       entry.el.setAttribute("stroke-linecap", "round");
-      this.svg.appendChild(entry.el);
+      this.layer.appendChild(entry.el);
       entry.html = div("film-label size-m", this.labels);
       entry.html.innerHTML = tex(p.tex);
       entry.html.style.color = INK[p.ink ?? "ink"]!;
@@ -1495,6 +1600,37 @@ class GeoStage {
       v.g.dataset.ax = m.cx.toFixed(2); v.g.dataset.ay = m.cy.toFixed(2);
       this.emphList = this.emphList.filter((x) => x.el !== v.art);
     }
+  }
+  /**
+   * The view clips the picture. A light is allowed past that edge, out to its
+   * own thickened stroke, so the card margin — not the view — is what limits it.
+   * The rect starts as the view and opens only around what is lit right now.
+   */
+  revealLit() {
+    let l = 0, t = 0, r = this.box.w, b = this.box.h;
+    const add = (el: SVGGraphicsElement) => {
+      if (el.classList.contains("film-em") || el instanceof SVGGElement || el instanceof SVGSVGElement) return;
+      if (typeof el.getBBox !== "function" || typeof el.getCTM !== "function") return;
+      let bb: DOMRect;
+      try { bb = el.getBBox(); } catch { return; }
+      if (bb.width < 0.05 && bb.height < 0.05) return;
+      const sw = parseFloat(el.style.strokeWidth || "") || 0;
+      const pad = sw / 2 + 3;
+      const ctm = el.getCTM();
+      if (!ctm) return;
+      for (const [x, y] of [[bb.x - pad, bb.y - pad], [bb.x + bb.width + pad, bb.y - pad], [bb.x - pad, bb.y + bb.height + pad], [bb.x + bb.width + pad, bb.y + bb.height + pad]] as [number, number][]) {
+        const p = new DOMPoint(x, y).matrixTransform(ctm);
+        l = Math.min(l, p.x); t = Math.min(t, p.y); r = Math.max(r, p.x); b = Math.max(b, p.y);
+      }
+    };
+    for (const el of this.layer.querySelectorAll<SVGGraphicsElement>("[data-hot='1']")) {
+      if (el instanceof SVGGElement) for (const c of el.querySelectorAll<SVGGraphicsElement>("*")) add(c);
+      else add(el);
+    }
+    this.viewRect.setAttribute("x", l.toFixed(2));
+    this.viewRect.setAttribute("y", t.toFixed(2));
+    this.viewRect.setAttribute("width", Math.max(0, r - l).toFixed(2));
+    this.viewRect.setAttribute("height", Math.max(0, b - t).toFixed(2));
   }
   /** Grow highlighted shapes. A frame's riders use the frame's centre. A lift stays outside the scale. */
   finishEmphasis() {
@@ -1689,7 +1825,7 @@ class GeoStage {
         e.el.style.fill = emphInk(INK[p.ink ?? "accent"]!, em);
         e.el.style.opacity = String(o);
         // a counter in flight passes over the others
-        if (this.moves.some((m) => m.name === p.dot && t >= m.t0 && t <= m.t0 + m.dur) && this.svg.lastChild !== e.el) this.svg.appendChild(e.el);
+        if (this.moves.some((m) => m.name === p.dot && t >= m.t0 && t <= m.t0 + m.dur) && this.layer.lastChild !== e.el) this.layer.appendChild(e.el);
       } else if ("circle" in p) {
         // traced as points so a stretched view and every transform apply
         const c = T(this.at(p.circle, t)), n = 96;
@@ -1917,6 +2053,7 @@ class GeoStage {
     if (host) {
       limitGrow(host);
       this.syncThingStrokes();
+      this.revealLit();
       if (this.nudgeReport) this.nudgeReport(this.capturedNudges(host));
       else this.applyNudges();
       host.dataset.moving = this.figureMoving(t) ? "1" : "0";
@@ -3489,6 +3626,17 @@ export class Film {
       const t = highlightHeld(e.t0, e.beatEnd);
       if (t < s.t0 - 0.05 || t > end + 0.05) continue;
       s.geo.draw(t);
+      const beat = beats.find((b) => e.t0 >= b.start - 1e-3 && e.t0 <= b.end + 1e-3);
+      const word = ("at" in e.a && e.a.at) || beat?.words.find((w) => Math.abs(w.start - e.t0) < 0.05)?.text || "highlight";
+      // The lit part's own box, stroke included, against what is actually painted.
+      // Ink a clip throws away is not in the painted box, so the painted box cannot answer this.
+      if (litCutOff(fit)) {
+        const key = `clip:${word}`;
+        if (!flagged.has(key)) {
+          flagged.add(key);
+          this.issues.push(`Shot ${i + 1}: highlighting "${word}" is cut off.`);
+        }
+      }
       const grown = litFaults(fit);
       if (!grown.length) continue;
       // A counter already sits on its frame before the light. Report a cover or a touch only when the growth causes it.
@@ -3498,9 +3646,6 @@ export class Film {
       const atRest = new Set(litFaults(fit));
       groups.forEach((members, gi) => members.forEach((el, j) => setFactor(el, saved[gi]![j]!)));
       const faults = grown.filter((fault) => fault === "card" || !atRest.has(fault));
-      if (!faults.length) continue;
-      const beat = beats.find((b) => e.t0 >= b.start - 1e-3 && e.t0 <= b.end + 1e-3);
-      const word = ("at" in e.a && e.a.at) || beat?.words.find((w) => Math.abs(w.start - e.t0) < 0.05)?.text || "highlight";
       for (const fault of faults) {
         const key = `${fault}:${word}`;
         if (flagged.has(key)) continue;
