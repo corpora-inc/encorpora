@@ -1259,7 +1259,7 @@ function quadraticOrExponential(seed: string): GeneratedProblem {
         exponentialCandidate(
           { a: g.a, b: inv(g.b) },
           (name) =>
-            `${name} ${grows ? "falls" : "rises"} from left to right, so its factor is ${plain(inv(g.b))}. A factor of ${plain(g.b)} is ${grows ? "greater" : "less"} than 1: the graph ${grows ? "rises (growth)" : "falls (decay)"}.`,
+            `${name} ${grows ? "falls" : "rises"} from left to right, so its factor is $${plain(inv(g.b))}$. A factor of $${plain(g.b)}$ is ${grows ? "greater" : "less"} than 1: the graph ${grows ? "rises (growth)" : "falls (decay)"}.`,
         ),
         exponentialCandidate(
           { a: ab.n, b: g.b },

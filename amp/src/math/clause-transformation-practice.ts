@@ -378,8 +378,8 @@ function similar(c: Context): GeneratedProblem {
           ? `Compare $AB$, from $A${point(a[0]!)}$ to $B${point(a[1]!)}$, with $A'${point(image[0]!)}$ and $C'${point(image[2]!)}$. If one scale factor fits a second pair as well, the map is a dilation about the origin followed by a rigid motion.`
           : `Compare $AB$, from $A${point(a[0]!)}$ to $B${point(a[1]!)}$, with $A'${point(image[0]!)}$ and $C'${point(image[2]!)}$. A single scale factor must work for both pairs before you name the dilation and the rigid motion.`,
       explanation: [
-        `Original squared side lengths: ${lengths(a).join(", ")}$.`,
-        `Image squared side lengths: ${lengths(image).join(", ")}$.`,
+        `Original squared side lengths: $${lengths(a).join(", ")}$.`,
+        `Image squared side lengths: $${lengths(image).join(", ")}$.`,
         yes
           ? `Each squared length is multiplied by $${k * k}$, so each length is multiplied by $${kt}$. ${describe(kt, m)}`
           : "The squared-length ratios differ. There is no one length scale factor, so the triangles are not similar.",

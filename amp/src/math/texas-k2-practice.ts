@@ -2437,7 +2437,7 @@ function earlyMoneyDecisions(r: Random): Built {
           },
           {
             label: dollars(start * weeks),
-            feedback: `${dollars(start)} is not added each week. Only ${dollars(week)} is added each week.`,
+            feedback: `${start} dollars is not added each week. Only ${week} dollars is added each week.`,
           },
           {
             label: dollars(start + week * (weeks - 1)),

@@ -446,7 +446,7 @@ function similarCase(r: Random): Case {
     ],
     hint: areaKind
       ? `The sides scale by ${big} ÷ ${small}. Area scales by that factor squared, not by the factor itself.`
-      : `The sides scale by ${big} ÷ ${small}. A perimeter is a sum of sides, so it scales by the same factor.`,
+      : `The sides scale by $${big} ÷ ${small}$. A perimeter is a sum of sides, so it scales by the same factor.`,
     tags: [areaKind ? "area" : "perimeter"],
     label: areaKind ? "Area" : "Perimeter",
   };
