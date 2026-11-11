@@ -29,6 +29,7 @@ import "../shape-composer.css";
 import "../multi-part-choice.css";
 import "../figure-choice.css";
 import "../structured-work.css";
+import "../work-diagram.css";
 import "../practice-tablet.css";
 import "../counter-builder.css";
 import "../peg-board.css";

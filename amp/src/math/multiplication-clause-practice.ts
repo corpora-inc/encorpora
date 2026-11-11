@@ -21,6 +21,10 @@ import {
   gradingFits,
   MAX_WORK_ROWS,
   normalizeStructuredWork,
+  structuralProblem,
+  type WorkDiagram,
+  type WorkRef,
+  type WorkToken,
 } from "./structured-work";
 import { serializeSelection } from "./selection-response";
 
@@ -819,7 +823,7 @@ function regionsToWhole(r: Random) {
   const g = factorCut(r);
   const a = g.rows * g.cut;
   const b = g.rows * g.rest;
-  const work = numberWork("Regions and the whole product", [
+  const work = withDiagram(numberWork("Regions and the whole product", [
     {
       label: `${g.rows} × ${g.cut} and ${g.rows} × ${g.rest}`,
       fields: [
@@ -838,7 +842,22 @@ function regionsToWhole(r: Random) {
       label: "The whole product",
       fields: [{ label: "Product", value: String(g.product) }],
     },
-  ]);
+  ]), {
+    kind: "lines",
+    lines: [
+      [{ text: `${g.rows} × ${g.cut}` }, { text: "=" }, { field: [0, 0] }],
+      [{ text: `${g.rows} × ${g.rest}` }, { text: "=" }, { field: [0, 1] }],
+      [
+        { text: `${g.rows} × ${g.columns}` },
+        { text: "=" },
+        { field: [1, 0] },
+        { text: "+" },
+        { field: [1, 1] },
+        { text: "=" },
+        { field: [2, 0] },
+      ],
+    ],
+  });
   const figure: SemanticFigure = {
     kind: "scene",
     scene: arrayEl(g.rows, g.columns, { splitAfterColumn: g.cut }).scene({
@@ -848,7 +867,7 @@ function regionsToWhole(r: Random) {
   };
   return {
     family: "regions-to-whole",
-    prompt: `Use the regions to find ${g.rows} × ${g.columns}. ${g.rows} × ${g.cut} = __, ${g.rows} × ${g.rest} = __, so ${g.rows} × ${g.columns} = __ + __ = __.`,
+    prompt: `Use the regions to find ${g.rows} × ${g.columns}. Fill in each region's product, then add them.`,
     hint: `The cut is after ${count(g.cut, "column")}, and ${count(g.rest, "column")} ${isAre(g.rest)} left. Multiply ${g.rows} by each part. The whole array is those two regions added; the total number of squares did not change.`,
     explanation: [
       `The line keeps ${g.cut} columns on one side and ${g.rest} on the other. ${g.cut} + ${g.rest} = ${g.columns}.`,
@@ -984,7 +1003,7 @@ function associativeCompute(r: Random) {
   const ab = a * b;
   const bc = b * c;
   const all = a * b * c;
-  const work = numberWork("Both groupings", [
+  const work = withDiagram(numberWork("Both groupings", [
     {
       label: `(${a} × ${b}) × ${c}`,
       fields: [
@@ -999,10 +1018,30 @@ function associativeCompute(r: Random) {
         { label: "Second route", value: String(all) },
       ],
     },
-  ]);
+  ]), {
+    kind: "lines",
+    lines: [
+      [
+        { text: `(${a} × ${b}) × ${c}` },
+        { text: "=" },
+        { field: [0, 0] },
+        { text: `× ${c}` },
+        { text: "=" },
+        { field: [0, 1] },
+      ],
+      [
+        { text: `${a} × (${b} × ${c})` },
+        { text: "=" },
+        { text: `${a} ×` },
+        { field: [1, 0] },
+        { text: "=" },
+        { field: [1, 1] },
+      ],
+    ],
+  });
   return {
     family: "associative-compute",
-    prompt: `${a} × ${b} × ${c} = (${a} × ${b}) × ${c} = __ × ${c} = __ and = ${a} × (${b} × ${c}) = ${a} × __ = __.`,
+    prompt: `Find ${a} × ${b} × ${c} two ways: group the first two factors, then the last two.`,
     hint: `Multiply one adjacent pair first. Then multiply by the factor that was waiting. The other grouping multiplies the other adjacent pair first. Both routes count the same ${a} groups of ${b} groups of ${c}.`,
     explanation: [
       `(${a} × ${b}) × ${c} = ${ab} × ${c} = ${all}.`,
@@ -1024,7 +1063,7 @@ function splitDividend(r: Random) {
   const n = d * q;
   const tens = d * 10;
   const ones = d * (q - 10);
-  const work = numberWork("Split the dividend", [
+  const work = withDiagram(numberWork("Split the dividend", [
     {
       label: `${tens} ÷ ${d} and ${ones} ÷ ${d}`,
       fields: [
@@ -1036,10 +1075,25 @@ function splitDividend(r: Random) {
       label: `${n} ÷ ${d}`,
       fields: [{ label: "Quotient", value: String(q) }],
     },
-  ]);
+  ]), {
+    kind: "lines",
+    lines: [
+      [{ text: `${tens} ÷ ${d}` }, { text: "=" }, { field: [0, 0] }],
+      [{ text: `${ones} ÷ ${d}` }, { text: "=" }, { field: [0, 1] }],
+      [
+        { text: `${n} ÷ ${d}` },
+        { text: "=" },
+        { echo: [0, 0] },
+        { text: "+" },
+        { echo: [0, 1] },
+        { text: "=" },
+        { field: [1, 0] },
+      ],
+    ],
+  });
   return {
     family: "split-the-dividend",
-    prompt: `${n} ÷ ${d}: split ${n} into ${tens} + ${ones}. ${tens} ÷ ${d} = __, ${ones} ÷ ${d} = __, so ${n} ÷ ${d} = __.`,
+    prompt: `Divide ${n} by ${d} by splitting ${n} into ${tens} + ${ones}. Divide each part, then add.`,
     hint: `${tens} is a multiple of ${d} made from tens. Divide that part and divide ${ones} as well, then add the two quotients. Divide each part once; do not divide the whole dividend and the leftover both by ${d} and then divide again.`,
     explanation: [
       `${n} = ${tens} + ${ones}, and both parts divide evenly by ${d}.`,
@@ -1070,7 +1124,10 @@ function completeAreaModel(r: Random) {
   const parts = [aT * bT, aT * bO, aO * bT, aO * bO];
   const total = a * b;
   if (parts.reduce((s, n) => s + n, 0) !== total) throw new Error("area parts");
-  const work = numberWork("Partial products and the total", [
+  // The model is drawn with the parts of a down the side and the parts of b
+  // across the top, so each row of entries is a row of the drawing.
+  const side = (n: number) => Math.max(1, Math.round(Math.sqrt(n) * 10));
+  const work = withDiagram(numberWork("Partial products and the total", [
     {
       label: `${aT} × ${bT} and ${aT} × ${bO}`,
       fields: [
@@ -1089,7 +1146,16 @@ function completeAreaModel(r: Random) {
       label: "Total",
       fields: [{ label: "Product", value: String(total) }],
     },
-  ]);
+  ]), {
+    kind: "area",
+    across: [bT, bO].map((n) => ({ size: side(n), given: String(n) })),
+    down: [aT, aO].map((n) => ({ size: side(n), given: String(n) })),
+    regions: [
+      [{ field: [0, 0] }, { field: [0, 1] }],
+      [{ field: [1, 0] }, { field: [1, 1] }],
+    ],
+    lines: [[{ text: `${a} × ${b}` }, { text: "=" }, { field: [2, 0] }]],
+  });
   const figure: SemanticFigure = {
     kind: "scene",
     scene: areaModel([aT, aO], [bT, bO], {
@@ -1099,13 +1165,13 @@ function completeAreaModel(r: Random) {
   };
   return {
     family: "complete-area-model",
-    prompt: `Complete the area model for ${a} × ${b}. The sides are split into ${aT} and ${aO}, and ${bT} and ${bO}. Write each part's product, then the total.`,
-    hint: `Each region is one part of ${a} times one part of ${b}. The largest region is the tens part times the tens part, which is a number of hundreds, not the product of the two tens digits alone. Add the four regions. Do not multiply a whole factor by one part and also count that region again.`,
+    prompt: `Multiply ${a} by ${b} with an area model. Fill in each part's area, then the product.`,
+    hint: `Each part's area is its side on the left times its side on top: one part of ${a} times one part of ${b}. The largest part is tens times tens, a number of hundreds, not the product of the two tens digits alone. Then add the four areas. Count each part once.`,
     explanation: [
       `${a} = ${aT} + ${aO} and ${b} = ${bT} + ${bO}.`,
       `${aT} × ${bT} = ${comma(parts[0]!)}, ${aT} × ${bO} = ${comma(parts[1]!)}, ${aO} × ${bT} = ${comma(parts[2]!)}, and ${aO} × ${bO} = ${parts[3]}.`,
-      `The regions add to ${comma(parts[0]!)} + ${comma(parts[1]!)} + ${comma(parts[2]!)} + ${parts[3]} = ${comma(total)}.`,
-      `So ${a} × ${b} = ${comma(total)}. Writing ${Math.floor(a / 10)} × ${Math.floor(b / 10)} in the large region drops the hundreds.`,
+      `The four areas add to ${comma(parts[0]!)} + ${comma(parts[1]!)} + ${comma(parts[2]!)} + ${parts[3]} = ${comma(total)}.`,
+      `So ${a} × ${b} = ${comma(total)}. Writing ${Math.floor(a / 10)} × ${Math.floor(b / 10)} in the largest part drops the hundreds.`,
     ],
     figure,
     ...work,
@@ -1176,7 +1242,7 @@ function partialProducts(r: Random) {
   const n = places.reduce((s, p) => s + p, 0);
   const total = n * factor;
   if (parts.reduce((s, p) => s + p, 0) !== total) throw new Error("partials");
-  const work = numberWork("Partial products and the total", [
+  const work = withDiagram(numberWork("Partial products and the total", [
     {
       label: `${comma(places[0]!)} × ${factor} and ${comma(places[1]!)} × ${factor}`,
       fields: [
@@ -1195,10 +1261,20 @@ function partialProducts(r: Random) {
       label: "Total",
       fields: [{ label: "Product", value: String(total) }],
     },
-  ]);
+  ]), {
+    kind: "lines",
+    lines: [
+      ...places.map((place, k): WorkToken[] => [
+        { text: `${comma(place)} × ${factor}` },
+        { text: "=" },
+        { field: [Math.floor(k / 2), k % 2] },
+      ]),
+      [{ text: `${comma(n)} × ${factor}` }, { text: "=" }, { field: [2, 0] }],
+    ],
+  });
   return {
     family: "partial-products-by-place",
-    prompt: `${comma(n)} × ${factor} = (${comma(places[0]!)} × ${factor}) + (${comma(places[1]!)} × ${factor}) + (${places[2]} × ${factor}) + (${places[3]} × ${factor}). Fill in the four partial products and the total.`,
+    prompt: `Multiply ${comma(n)} by ${factor} one place at a time. Fill in the four partial products, then the total.`,
     hint: `Multiply ${factor} by each place, including a place of 0. A 0 place has product 0; skipping it shifts the other places. Then add the four products.`,
     explanation: [
       `${comma(places[0]!)} × ${factor} = ${comma(parts[0]!)} and ${comma(places[1]!)} × ${factor} = ${comma(parts[1]!)}.`,
@@ -1413,6 +1489,71 @@ function divisionFigure(d: number, chunks: Chunk[]): SemanticFigure {
   };
 }
 
+/** Where one place's entries are in the rows: its width and its area (the
+ * remainder-only form has no area entry for its zero tens). */
+type PlaceRefs = { width: WorkRef; area?: WorkRef };
+
+/** The division as an area model: each nonzero place is one part, its width
+ * entered above it and its area inside; the quotient (and remainder) on the
+ * line beneath, after the widths it adds up. A place that does not fit is
+ * not drawn; its entries are the page's 0. Parts are drawn by the square
+ * root of their widths, so a small part still holds its entries and the
+ * drawing never states a width. */
+function divisionDiagram(
+  n: number,
+  d: number,
+  chunks: Chunk[],
+  places: PlaceRefs[],
+  result: { quotient?: WorkRef; remainder?: WorkRef },
+): WorkDiagram {
+  const drawn = chunks.flatMap((c, k) => (c.width > 0 ? [{ c, at: places[k]! }] : []));
+  const zeros = chunks.flatMap((c, k) =>
+    c.width > 0 ? [] : [places[k]!.width, ...(places[k]!.area ? [places[k]!.area!] : [])],
+  );
+  const sum: WorkToken[] =
+    drawn.length > 1
+      ? drawn.flatMap(({ at }, k) => [
+          ...(k ? [{ text: "+" }] : []),
+          { echo: at.width },
+        ])
+      : [];
+  const line: WorkToken[] = [{ text: `${comma(n)} ÷ ${d}` }, { text: "=" }, ...sum];
+  if (result.quotient)
+    line.push(...(sum.length ? [{ text: "=" }] : []), { field: result.quotient });
+  if (result.remainder) line.push({ text: "$\\mathrm{R}$" }, { field: result.remainder });
+  return {
+    kind: "area",
+    across: drawn.map(({ c, at }) => ({
+      size: Math.max(1, Math.round(Math.sqrt(c.width) * 10)),
+      field: at.width,
+      caption: "width",
+    })),
+    down: [{ size: 1, given: String(d) }],
+    regions: [drawn.map(({ at }) => ({ field: at.area!, caption: "area" }))],
+    lines: [line],
+    ...(zeros.length ? { zeros } : {}),
+  };
+}
+/** A built response, laid out by its diagram. */
+function withDiagram<T extends ReturnType<typeof numberWork>>(work: T, diagram: WorkDiagram): T {
+  const response = { ...work.response, diagram };
+  const problem = structuralProblem(response);
+  if (problem) throw new Error(`diagram: ${problem}`);
+  if (!gradingFits(response, work.workGrading)) throw new Error("diagram grading");
+  return { ...work, response };
+}
+const PLACE = ["hundred", "ten", "one"] as const;
+/** The places of a quotient of `count` digits, largest first. */
+const placesOf = (count: number) => PLACE.slice(3 - count);
+/** One hint sentence for a place that gets no part, or "". */
+function zeroPlaceHint(d: number, chunks: Chunk[]) {
+  const k = chunks.findIndex((c) => c.width === 0);
+  if (k < 0) return "";
+  const place = placesOf(chunks.length)[k]!;
+  const unit = place === "one" ? `${d}` : `${d} × ${place === "ten" ? 10 : 100}`;
+  return ` If what is left is less than ${unit}, no ${place}s fit: the ${place}s place gets no part and adds 0 to the quotient.`;
+}
+
 function completeDivisionModel(r: Random) {
   const pin = r(0, 9);
   let d: number;
@@ -1451,7 +1592,7 @@ function completeDivisionModel(r: Random) {
   for (let i = 0; i < chunks.length; i += 1) {
     const place = ["Hundreds", "Tens", "Ones"].slice(chunks.length === 2 ? 1 : 0);
     rows.push({
-      label: `${place[i]} chunk`,
+      label: `${place[i]} part`,
       fields: [
         { label: "Width", value: String(chunks[i]!.width) },
         { label: "Area", value: String(chunks[i]!.area) },
@@ -1472,25 +1613,35 @@ function completeDivisionModel(r: Random) {
           fields: [{ label: "Quotient", value: String(q) }],
         },
   );
-  const work = numberWork("Chunk widths, areas and quotient", rows);
-  const zero = chunks.find((c) => c.width === 0);
+  const last = chunks.length;
+  const work = withDiagram(
+    numberWork("Part widths, areas and quotient", rows),
+    divisionDiagram(
+      n,
+      d,
+      chunks,
+      chunks.map((_, i) => ({ width: [i, 0], area: [i, 1] })),
+      rem ? { quotient: [last, 0], remainder: [last, 1] } : { quotient: [last, 0] },
+    ),
+  );
+  const zero = chunks.findIndex((c) => c.width === 0);
+  const largest = placesOf(chunks.length)[0]!;
   return {
     family: rem ? "with-remainder" : "exact",
-    prompt: rem
-      ? `Fill in each chunk's width and area for ${comma(n)} ÷ ${d}, then the quotient and remainder. A place that does not fit has width 0 and area 0.`
-      : `Fill in each chunk's width and area for ${comma(n)} ÷ ${d}, then the quotient. A place that does not fit has width 0 and area 0.`,
-    hint: `Share the largest place first. The chunk width is the largest multiple of that place whose area is not more than what is left. A leftover at least as large as ${d} means another chunk fits. A place that does not fit is written 0, not skipped.`,
+    prompt: `Divide ${comma(n)} by ${d} with an area model. Fill in each part's width and area, then the quotient${rem ? " and the remainder" : ""}.`,
+    hint: `Each part is ${d} tall. Make the first part as wide as you can: the most ${largest}s whose area, ${d} × the width, is not more than ${comma(n)}. Take that area away and size the next part from what is left.${rem ? ` What is left at the end, less than ${d}, is the remainder.` : ""}${zeroPlaceHint(d, chunks)}`,
     explanation: [
-      ...chunks.map(
-        (c, i) =>
-          `${["The first", "The next", "The last"][Math.min(i, 2)]} chunk is width ${comma(c.width)} and area ${comma(c.area)}, because ${d} × ${comma(c.width)} = ${comma(c.area)}.`,
+      ...chunks.flatMap((c) =>
+        c.width
+          ? [`A part ${comma(c.width)} wide has area ${d} × ${comma(c.width)} = ${comma(c.area)}.`]
+          : [],
       ),
       rem
-        ? `${comma(n)} − ${comma(d * q)} = ${rem}, and ${rem} is less than ${d}. ${comma(n)} ÷ ${d} = ${q} R ${rem}. Check: ${d} × ${q} + ${rem} = ${comma(n)}.`
+        ? `The areas leave ${comma(n)} − ${comma(d * q)} = ${rem}, and ${rem} is less than ${d}. ${comma(n)} ÷ ${d} = ${q} R ${rem}. Check: ${d} × ${q} + ${rem} = ${comma(n)}.`
         : `The widths add to ${q}. Check: ${d} × ${q} = ${comma(n)}.`,
-      zero
-        ? `The width 0 is required. Skipping that place would drop a zero from ${q}.`
-        : `Every place had a nonzero chunk.`,
+      zero >= 0
+        ? `No ${placesOf(chunks.length)[zero]}s fit, so that place has no part and its digit in ${q} is 0.`
+        : `Every place has a part.`,
     ],
     figure: divisionFigure(d, chunks),
     ...work,
@@ -1541,18 +1692,21 @@ function chunkModel(r: Random) {
   const n = d * q + rem;
   const chunks = chunksOf(n, d, places);
   if (chunks.reduce((s, c) => s + c.width, 0) !== q) throw new Error("chunk widths");
+  const part = (label: string, c: Chunk): WorkSpec => ({
+    label,
+    fields: [
+      { label: "Width", value: String(c.width) },
+      { label: "Area", value: String(c.area) },
+    ],
+  });
   let rows: WorkSpec[];
+  let refs: PlaceRefs[];
+  let result: { quotient?: WorkRef; remainder?: WorkRef };
   if (style === "rem-3") {
     const [h, t, o] = chunks;
     if (!h || !t || !o || t.width !== 0) throw new Error("zero tens");
     rows = [
-      {
-        label: "Hundreds chunk",
-        fields: [
-          { label: "Width", value: String(h.width) },
-          { label: "Area", value: String(h.area) },
-        ],
-      },
+      part("Hundreds part", h),
       {
         label: "Tens width and ones width",
         fields: [
@@ -1561,84 +1715,45 @@ function chunkModel(r: Random) {
         ],
       },
       {
-        label: "Ones area and leftover",
+        label: "Ones area and remainder",
         fields: [
           { label: "Ones area", value: String(o.area) },
           { label: "Remainder", value: String(rem) },
         ],
       },
     ];
-  } else if (style === "rem-2") {
-    rows = [
-      {
-        label: "Tens chunk",
-        fields: [
-          { label: "Width", value: String(chunks[0]!.width) },
-          { label: "Area", value: String(chunks[0]!.area) },
-        ],
-      },
-      {
-        label: "Ones chunk",
-        fields: [
-          { label: "Width", value: String(chunks[1]!.width) },
-          { label: "Area", value: String(chunks[1]!.area) },
-        ],
-      },
-      {
-        label: "Quotient and remainder",
-        fields: [
-          { label: "Quotient", value: String(q) },
-          { label: "Remainder", value: String(rem) },
-        ],
-      },
-    ];
-  } else if (style === "exact-3") {
-    const names = ["Hundreds", "Tens", "Ones"];
-    rows = chunks.map((c, i) => ({
-      label: `${names[i]} chunk`,
-      fields: [
-        { label: "Width", value: String(c.width) },
-        { label: "Area", value: String(c.area) },
-      ],
-    }));
-    rows.push({
-      label: "Quotient",
-      fields: [{ label: "Quotient", value: String(q) }],
-    });
+    refs = [{ width: [0, 0], area: [0, 1] }, { width: [1, 0] }, { width: [1, 1], area: [2, 0] }];
+    result = { remainder: [2, 1] };
   } else {
-    rows = [
-      {
-        label: "Tens chunk",
-        fields: [
-          { label: "Width", value: String(chunks[0]!.width) },
-          { label: "Area", value: String(chunks[0]!.area) },
-        ],
-      },
-      {
-        label: "Ones chunk",
-        fields: [
-          { label: "Width", value: String(chunks[1]!.width) },
-          { label: "Area", value: String(chunks[1]!.area) },
-        ],
-      },
-      {
-        label: "Quotient",
-        fields: [{ label: "Quotient", value: String(q) }],
-      },
-    ];
+    const names = places === 3 ? ["Hundreds", "Tens", "Ones"] : ["Tens", "Ones"];
+    rows = chunks.map((c, i) => part(`${names[i]} part`, c));
+    rows.push(
+      rem
+        ? {
+            label: "Quotient and remainder",
+            fields: [
+              { label: "Quotient", value: String(q) },
+              { label: "Remainder", value: String(rem) },
+            ],
+          }
+        : { label: "Quotient", fields: [{ label: "Quotient", value: String(q) }] },
+    );
+    refs = chunks.map((_, i) => ({ width: [i, 0], area: [i, 1] }));
+    const last = chunks.length;
+    result = rem ? { quotient: [last, 0], remainder: [last, 1] } : { quotient: [last, 0] };
   }
-  const work = numberWork("Chunk widths and areas", rows);
+  const work = withDiagram(
+    numberWork("Part widths and areas", rows),
+    divisionDiagram(n, d, chunks, refs, result),
+  );
+  const largest = placesOf(chunks.length)[0]!;
   return {
     family: style,
-    prompt:
-      style === "rem-3"
-        ? `Fill the rectangle for ${comma(n)} ÷ ${d} in place-value chunks. Write the hundreds width and area, the tens width (0 when that place does not fit), the ones width, the ones area, and the leftover.`
-        : `Fill the rectangle for ${comma(n)} ÷ ${d} in chunks: the largest place first, then the smaller places. Write each width and area${rem ? ", then the quotient and the leftover" : ", then the quotient"}. A place that does not fit has width 0 and area 0.`,
-    hint: `Round ${d} to estimate, then check. The first width is the largest multiple of its place whose product with ${d} is not more than ${comma(n)}. A later place that does not fit is 0. The leftover must be less than ${d}.`,
+    prompt: `Divide ${comma(n)} by ${d} with an area model. Fill in each part's width and area, then the ${style === "rem-3" ? "remainder" : rem ? "quotient and the remainder" : "quotient"}.`,
+    hint: `Each part is ${d} tall. Round ${d} to estimate, then check: the first width is the most ${largest}s whose area, ${d} × the width, is not more than ${comma(n)}. Take that area away and size the next part from what is left.${rem ? ` What is left at the end, less than ${d}, is the remainder.` : ""}${zeroPlaceHint(d, chunks)}`,
     explanation: [
-      ...chunks.map(
-        (c) =>
-          `${d} × ${comma(c.width)} = ${comma(c.area)}.`,
+      ...chunks.flatMap((c) =>
+        c.width ? [`${d} × ${comma(c.width)} = ${comma(c.area)}.`] : [],
       ),
       rem
         ? `The widths add to ${q}, and ${comma(n)} − ${comma(d * q)} = ${rem}. ${d} × ${q} + ${rem} = ${comma(n)}.`

@@ -1,0 +1,301 @@
+/* Work drawn as its figure (WorkDiagram.tsx): an area model with each entry
+   where it means something (a width along its side, an area inside its
+   region) and the line that adds the parts up. Every size is set from the
+   first frame: entries keep their width, marks have a reserved corner, and
+   typing never resizes a part. */
+.work-diagram {
+  --work-part-min: 92px;
+  --work-region-min: 112px;
+  --work-side-entry: 76px;
+  --work-region-entry: 88px;
+  --work-line-entry: 76px;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-5);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 520px;
+  margin: var(--space-2) auto 0;
+}
+.work-diagram[data-kind="lines"] {
+  gap: var(--space-4);
+}
+
+/* ---------- the area model ---------- */
+.work-area {
+  position: relative;
+  display: grid;
+  width: 100%;
+}
+.work-area-caption {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+  color: var(--color-muted-text);
+}
+/* A side part: its caption, then its entry on a dimension line that spans
+   exactly the part below it; or its printed length. */
+.work-area-side[data-axis="across"] {
+  display: grid;
+  justify-items: center;
+  align-content: end;
+  gap: var(--space-1);
+  min-width: 0;
+  padding-bottom: var(--space-3);
+}
+.work-area-side[data-axis="down"] {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding-right: var(--space-3);
+}
+/* A dimension line, end ticks included, as long as its part. */
+.work-area-dimension {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  width: 100%;
+}
+.work-area-dimension::before,
+.work-area-dimension::after {
+  content: "";
+  position: absolute;
+  left: 1px;
+  right: 1px;
+  pointer-events: none;
+}
+.work-area-dimension::before {
+  top: 50%;
+  border-top: 1.5px solid var(--color-figure-axis);
+}
+.work-area-dimension::after {
+  top: calc(50% - 7px);
+  height: 14px;
+  border-inline: 1.5px solid var(--color-figure-axis);
+}
+.work-area-dimension[data-axis="across"] {
+  height: 14px;
+}
+.work-area-dimension[data-axis="down"] {
+  align-self: stretch;
+  width: 14px;
+}
+.work-area-dimension[data-axis="down"]::before {
+  top: 1px;
+  bottom: 1px;
+  left: 50%;
+  right: auto;
+  border-top: 0;
+  border-left: 1.5px solid var(--color-figure-axis);
+}
+.work-area-dimension[data-axis="down"]::after {
+  top: 1px;
+  bottom: 1px;
+  left: 0;
+  right: 0;
+  height: auto;
+  border-inline: 0;
+  border-block: 1.5px solid var(--color-figure-axis);
+}
+.work-area-given {
+  color: var(--color-figure-ink);
+  font-size: 21px;
+  font-variant-numeric: var(--numeric);
+  white-space: nowrap;
+}
+/* A region: its caption over its entry, on the figure's own fills. */
+.work-area-region {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: var(--space-1);
+  min-width: 0;
+  padding: var(--space-3) var(--space-2);
+  border-left: 2px solid var(--color-figure-ink);
+  border-top: 2px solid var(--color-figure-ink);
+  background: var(--color-figure-accent-fill);
+}
+.work-area-region[data-first-column] {
+  border-left-color: transparent;
+}
+.work-area-region[data-first-row] {
+  border-top-color: transparent;
+}
+.work-area-region[data-tone="1"] {
+  background: var(--color-figure-warm-fill);
+}
+.work-area-region[data-tone="2"] {
+  background: var(--color-figure-gold-fill);
+}
+.work-area-region .work-area-caption {
+  color: var(--color-figure-ink);
+  opacity: 0.8;
+}
+.work-area-outline {
+  grid-row: 2 / -1;
+  grid-column: 2 / -1;
+  z-index: 1;
+  border: 2px solid var(--color-figure-ink);
+  pointer-events: none;
+}
+
+/* ---------- entries placed on the figure ---------- */
+.work-slot {
+  position: relative;
+  z-index: 2;
+  display: inline-grid;
+}
+.work-diagram .work-entry-row {
+  gap: 0;
+}
+/* Entries keep the app's field style (app-shell.css) and take their size
+   from their place; the selectors outrank that shell rule. */
+.work .work-diagram .work-slot input.work-input {
+  flex: none;
+  width: var(--work-region-entry);
+  padding-inline: var(--space-2);
+  text-align: center;
+}
+.work .work-diagram .work-slot[data-role="side"] input.work-input {
+  width: var(--work-side-entry);
+}
+.work .work-diagram .work-slot[data-role="line"] input.work-input {
+  width: var(--work-line-entry);
+}
+/* The place names the entry; a placeholder would only repeat it. */
+.work-diagram .work-input::placeholder {
+  color: transparent;
+}
+.work .work-diagram .work-slot[data-mark="correct"] input.work-input {
+  border-color: var(--color-success-accent);
+}
+.work .work-diagram .work-slot[data-mark="incorrect"] input.work-input {
+  border-color: var(--color-danger-accent);
+}
+.work-slot-mark {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-surface-raised);
+  visibility: hidden;
+}
+.work-slot[data-mark] .work-slot-mark {
+  visibility: visible;
+}
+.work-slot[data-mark="correct"] .work-slot-mark {
+  background: var(--color-success-accent);
+}
+.work-slot[data-mark="incorrect"] .work-slot-mark {
+  background: var(--color-danger-accent);
+}
+
+/* ---------- a written line: 1,320 ÷ 55 = 20 + 4 = [ ] ---------- */
+.work-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin: 0;
+  color: var(--color-on-surface);
+  font-size: 21px;
+  line-height: 1.2;
+}
+.work-phrase {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  white-space: nowrap;
+}
+/* Written lines: the "=" signs in one column, the block centred. */
+.work-lines {
+  display: grid;
+  grid-template-columns: max-content minmax(0, max-content);
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-4) var(--space-2);
+  color: var(--color-on-surface);
+  font-size: 21px;
+  line-height: 1.2;
+}
+.work-line-left {
+  justify-self: end;
+}
+.work-line-right {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.work-diagram[data-kind="lines"] {
+  --work-line-entry: 80px;
+}
+.work-line-text {
+  white-space: nowrap;
+}
+/* An entry repeated where the line adds it up: an empty box until typed. */
+.work-echo {
+  display: inline-grid;
+  place-items: center;
+  min-height: 32px;
+  white-space: nowrap;
+}
+.work-echo[data-empty] {
+  box-sizing: border-box;
+  width: 28px;
+  height: 32px;
+  border: 1.5px dashed var(--color-border-strong);
+  border-radius: 6px;
+}
+
+/* The narrowest phones (320 px): three parts still sit side by side. */
+@container (max-width: 319px) {
+  .work-diagram {
+    --work-part-min: 72px;
+    --work-side-entry: 60px;
+    --work-region-entry: 64px;
+    --work-line-entry: 64px;
+  }
+  .work-area-region {
+    padding-inline: var(--space-1);
+  }
+  .work .work-diagram .work-slot input.work-input {
+    padding-inline: var(--space-1);
+  }
+  .work-area-side[data-axis="down"] {
+    gap: var(--space-1);
+    padding-right: var(--space-2);
+  }
+  .work-line,
+  .work-phrase {
+    gap: 6px;
+  }
+}
+@container (min-width: 480px) {
+  .work-diagram {
+    --work-region-min: 128px;
+  }
+}
+/* Side by side (practice-tablet.css), the figure centres in its column,
+   level with the prompt centred beside it. */
+@media (orientation: landscape) and (min-width: 900px) and (min-height: 500px) {
+  .answer-editor:has(> .work[data-diagram]) {
+    display: flex;
+    flex-direction: column;
+  }
+  .answer-editor > .work[data-diagram] {
+    margin-block: auto;
+  }
+}

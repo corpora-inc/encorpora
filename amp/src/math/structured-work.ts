@@ -125,7 +125,56 @@ export interface StructuredWorkResponse {
   /** Build only: rows[0] is the shape of every row; the learner adds rows,
    * from one up to `max`. */
   open?: { max: number };
+  /** Steps of fixed rows only: where each entry sits on the page, in place
+   * of a list of rows. Display only; the transport and grading are the
+   * rows'. */
+  diagram?: WorkDiagram;
 }
+
+/* ----------------------------------------------------------- diagrams */
+
+/** A learner field of a fixed response: [row index, field index]. */
+export type WorkRef = [number, number];
+/** One piece of a written line: words or mathematics (typeset as in a
+ * prompt), an entry typed there, or another entry echoed as typed. */
+export type WorkToken =
+  | { text: string }
+  | { field: WorkRef }
+  | { echo: WorkRef };
+/** An entry placed on a figure, with the word that names it there. */
+export interface WorkPlacement {
+  field: WorkRef;
+  caption?: string;
+}
+/** One part of a side of an area model: a printed length, or an entry
+ * (`field`) written along that side. `size` is its drawn share; the model
+ * is not to scale, so a small part still holds its entry. */
+export interface WorkAreaPart {
+  size: number;
+  given?: string;
+  field?: WorkRef;
+  caption?: string;
+}
+/** How a fixed build is laid out (display only, never grading data).
+ *
+ * `area`: a rectangle split into regions, parts `across` the top and
+ * `down` the left side, an entry in each region (`regions[j][i]` is the
+ * region of down part j and across part i), and lines under it. A place
+ * that does not fit is not drawn: its entries are `zeros`, which the page
+ * fills with 0 for the learner, so the transport keeps every field.
+ *
+ * `lines`: the work as written lines, each entry where it belongs
+ * ("3 × 5 = [ ]"). */
+export type WorkDiagram =
+  | {
+      kind: "area";
+      across: WorkAreaPart[];
+      down: WorkAreaPart[];
+      regions: (WorkPlacement | null)[][];
+      lines?: WorkToken[][];
+      zeros?: WorkRef[];
+    }
+  | { kind: "lines"; lines: WorkToken[][] };
 
 /* ------------------------------------------------------------ schema */
 
@@ -192,6 +241,143 @@ const rowSchema = z
     fields: z.array(fieldSchema).min(1).max(2),
   })
   .strict();
+const refSchema = z.tuple([
+  z.number().int().min(0).max(MAX_WORK_ROWS - 1),
+  z.number().int().min(0).max(1),
+]);
+const caption = z.string().trim().min(1).max(24);
+const tokenSchema = z.union([
+  z.object({ text: z.string().trim().min(1).max(60) }).strict(),
+  z.object({ field: refSchema }).strict(),
+  z.object({ echo: refSchema }).strict(),
+]);
+const lineSchema = z.array(tokenSchema).min(1).max(12);
+const partSchema = z
+  .object({
+    size: z.number().int().min(1).max(1000),
+    given: z.string().trim().min(1).max(12).optional(),
+    field: refSchema.optional(),
+    caption: caption.optional(),
+  })
+  .strict()
+  .refine(
+    (p) => (p.given === undefined) !== (p.field === undefined),
+    "A side part is printed or entered",
+  );
+const diagramSchema = z.discriminatedUnion("kind", [
+  z
+    .object({
+      kind: z.literal("area"),
+      across: z.array(partSchema).min(1).max(4),
+      down: z.array(partSchema).min(1).max(4),
+      regions: z.array(
+        z.array(
+          z.object({ field: refSchema, caption: caption.optional() }).strict().nullable(),
+        ),
+      ),
+      lines: z.array(lineSchema).min(1).max(3).optional(),
+      zeros: z.array(refSchema).min(1).max(4).optional(),
+    })
+    .strict()
+    .refine(
+      (d) =>
+        d.regions.length === d.down.length &&
+        d.regions.every((row) => row.length === d.across.length),
+      "One region per pair of side parts",
+    ),
+  z
+    .object({
+      kind: z.literal("lines"),
+      lines: z.array(lineSchema).min(1).max(MAX_WORK_ROWS),
+    })
+    .strict(),
+]);
+/** Every entry a diagram places, in page order (sides, regions, lines). */
+export function diagramFields(d: WorkDiagram): WorkRef[] {
+  const out: WorkRef[] = [];
+  const line = (tokens: WorkToken[]) => {
+    for (const t of tokens) if ("field" in t) out.push(t.field);
+  };
+  if (d.kind === "lines") d.lines.forEach(line);
+  else {
+    for (const p of [...d.across, ...d.down]) if (p.field) out.push(p.field);
+    for (const row of d.regions) for (const c of row) if (c) out.push(c.field);
+    d.lines?.forEach(line);
+  }
+  return out;
+}
+/** The entries the page fills with 0 for the learner: places not drawn. */
+export const diagramZeros = (r: StructuredWorkResponse): WorkRef[] =>
+  r.diagram?.kind === "area" ? (r.diagram.zeros ?? []) : [];
+const isZeroOf = (r: StructuredWorkResponse) => {
+  const zeros = diagramZeros(r);
+  return (i: number, j: number) => zeros.some(([a, b]) => a === i && b === j);
+};
+/** A draft with the undrawn places' entries filled with 0. */
+export function withDiagramZeros(
+  r: StructuredWorkResponse,
+  rows: WorkDraft,
+): WorkDraft {
+  const zero = isZeroOf(r);
+  return rows.map((row, i) => row.map((v, j) => (zero(i, j) ? "0" : v)));
+}
+/** After grading: each entry a diagram places, right or not, keyed
+ * "row:field". A diagram's work is graded field by field (gradingFits), so
+ * its answer key is the one right value of each entry, and a right width
+ * beside a wrong area is marked right. Null without a diagram. */
+export function diagramMarks(
+  r: StructuredWorkResponse,
+  response: string,
+  answer: string,
+): Map<string, boolean> | null {
+  if (!r.diagram) return null;
+  const mine = parseWorkDraft(response),
+    key = parseWorkDraft(answer);
+  if (!mine || !key) return null;
+  const at = (rows: WorkDraft | string[], [i, j]: WorkRef) => {
+    const row = rows[i];
+    return Array.isArray(row) ? qParse(row[j] ?? "") : null;
+  };
+  const out = new Map<string, boolean>();
+  for (const ref of diagramFields(r.diagram)) {
+    const a = at(mine, ref),
+      b = at(key, ref);
+    out.set(`${ref[0]}:${ref[1]}`, !!a && !!b && qEq(a, b));
+  }
+  return out;
+}
+/** The first rule a diagram breaks for its response, or null: every learner
+ * field is placed exactly once (or is an undrawn 0), an echo names a
+ * learner field, and only fixed lists of steps have a diagram. */
+function diagramProblem(r: StructuredWorkResponse): string | null {
+  const d = r.diagram;
+  if (!d) return null;
+  if (r.layout !== "steps" || r.mode === "order" || r.open)
+    return "Only fixed steps have a diagram";
+  const learner = (ref: WorkRef) => {
+    const f = r.rows[ref[0]]?.fields[ref[1]];
+    return !!f && f.given === undefined && f.kind !== "choice";
+  };
+  const zeros = diagramZeros(r);
+  const placed = [...diagramFields(d), ...zeros];
+  if (!placed.every(learner)) return "A diagram places an unknown field";
+  if (zeros.some(([i, j]) => r.rows[i]!.fields[j]!.kind !== "number"))
+    return "An undrawn place is a number";
+  const keys = placed.map(([i, j]) => `${i}:${j}`);
+  if (new Set(keys).size !== keys.length)
+    return "A diagram places a field twice";
+  const total = r.rows.reduce(
+    (s, row) => s + row.fields.filter((f) => f.given === undefined).length,
+    0,
+  );
+  if (keys.length !== total) return "A diagram leaves a field out";
+  const lines = d.kind === "lines" ? d.lines : (d.lines ?? []);
+  for (const line of lines)
+    for (const t of line)
+      if ("echo" in t && !learner(t.echo))
+        return "A diagram echoes an unknown field";
+  return null;
+}
 export const structuredWorkResponseSchema = z
   .object({
     kind: z.literal("structured-work"),
@@ -206,6 +392,7 @@ export const structuredWorkResponseSchema = z
       .object({ max: z.number().int().min(2).max(MAX_WORK_ROWS) })
       .strict()
       .optional(),
+    diagram: diagramSchema.optional(),
   })
   .strict()
   .superRefine((r, ctx) => {
@@ -288,7 +475,7 @@ export function structuralProblem(r: StructuredWorkResponse): string | null {
   if (r.open && r.rows.length !== 1) return "An open list has one row shape";
   if (responseBudget(r) > MAX_WORK_RESPONSE_LENGTH)
     return "The longest response would not fit";
-  return null;
+  return diagramProblem(r);
 }
 
 /* ------------------------------------------------------------ drafts */
@@ -404,11 +591,13 @@ export function workProgress(
 ): { done: number; total: number } {
   if (r.mode === "order") return { done: r.rows.length, total: r.rows.length };
   const rows = draftRows(r, raw);
+  // An undrawn place's 0 is the page's, not the learner's.
+  const zero = isZeroOf(r);
   let done = 0,
     total = 0;
   rows.forEach((row, i) =>
     rowShape(r, i).fields.forEach((f, j) => {
-      if (f.given !== undefined) return;
+      if (f.given !== undefined || zero(i, j)) return;
       total++;
       if (checkEntry(r, f, row[j] ?? "").ok) done++;
     }),
@@ -1627,6 +1816,8 @@ export function gradingFits(
   g: WorkGrading,
 ): boolean {
   const shapes = r.open ? [r.rows[0]!] : r.rows;
+  // A diagram marks each entry against the key: only fixed fields have one.
+  if (r.diagram && g.mode !== "fields") return false;
   if (g.mode === "fields")
     return r.open
       ? // An open list: one expected row per key row, each of the one shape,

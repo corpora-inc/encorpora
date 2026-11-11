@@ -12,6 +12,8 @@ import { MathText, spokenMath } from "./MathText";
 import { lineTex, parseLine } from "../math/expression";
 import {
   checkEntry,
+  diagramMarks,
+  diagramZeros,
   draftOrder,
   draftRows,
   fieldMaxLength,
@@ -20,12 +22,14 @@ import {
   numberTex,
   rowShape,
   serializeDraft,
+  withDiagramZeros,
   workProgress,
   type StructuredWorkResponse,
   type WorkField,
   type WorkRow,
 } from "../math/structured-work";
 import { deleteBackward, insertText, readField } from "./lib/keypadEdit";
+import { WorkDiagramView, type DiagramSlots } from "./WorkDiagram";
 
 /* Structured work: a list of steps (or a two-column proof) built field by
    field. Every control keeps its size from the first frame: a choice is as
@@ -270,6 +274,7 @@ export function StructuredWorkInput({
   onChange,
   locked,
   marks,
+  answer,
   small,
 }: {
   problemId: string;
@@ -279,6 +284,8 @@ export function StructuredWorkInput({
   locked: boolean;
   /** After an answer: each row right or not (an ordering: each position). */
   marks: boolean[] | null;
+  /** After an answer: the key, so a diagram marks each entry on its own. */
+  answer?: string;
   /** Touch or narrow: entries use the on-screen keypad. */
   small: boolean;
 }) {
@@ -332,7 +339,8 @@ export function StructuredWorkInput({
     if (locked) return;
     const next = draftRows(r, value).map((x) => [...x]);
     next[row]![field] = text;
-    onChange(serializeDraft(next));
+    // A place a diagram leaves out (nothing fits there) is the page's 0.
+    onChange(serializeDraft(withDiagramZeros(r, next)));
   };
   const markOf = (i: number): Mark =>
     marks ? (marks[i] ? "correct" : "incorrect") : undefined;
@@ -367,7 +375,14 @@ export function StructuredWorkInput({
     setEntry(active.row, active.field, edit.value);
   }
 
-  function entry(i: number, j: number, f: WorkField, rowLabel: string) {
+  function entry(
+    i: number,
+    j: number,
+    f: WorkField,
+    rowLabel: string,
+    /** A diagram names the entry by its place ("Part 1 width"). */
+    name?: string,
+  ) {
     const key = `${i}:${j}`;
     const raw = rows[i]?.[j] ?? "";
     const p = preview(f, raw);
@@ -395,8 +410,10 @@ export function StructuredWorkInput({
             autoCorrect="off"
             spellCheck={false}
             maxLength={fieldMaxLength(f)}
+            data-field={key}
             aria-label={
-              rowLabel ? `${spokenMath(rowLabel)}: ${f.label}` : label
+              name ??
+              (rowLabel ? `${spokenMath(rowLabel)}: ${f.label}` : label)
             }
             aria-describedby={noteId}
             aria-invalid={showError || undefined}
@@ -540,6 +557,21 @@ export function StructuredWorkInput({
     setAnnounce(`${noun} moved to position ${to + 1} of ${next.length}.`);
   }
 
+  const each =
+    marks && answer !== undefined ? diagramMarks(r, value, answer) : null;
+  const slots: DiagramSlots = {
+    entry: ([i, j], name) =>
+      entry(i, j, rowShape(r, i).fields[j]!, "", name),
+    value: ([i, j]) => rows[i]?.[j] ?? "",
+    mark: ([i, j]) =>
+      each?.has(`${i}:${j}`)
+        ? each.get(`${i}:${j}`)
+          ? "correct"
+          : "incorrect"
+        : markOf(i),
+    label: ([i, j]) => rowShape(r, i).fields[j]!.label,
+  };
+
   const header =
     r.layout === "proof" ? (
       <div className="work-columns" aria-hidden="true">
@@ -550,8 +582,9 @@ export function StructuredWorkInput({
       </div>
     ) : null;
 
-  const body =
-    r.mode === "order" ? (
+  const body = r.diagram ? (
+    <WorkDiagramView diagram={r.diagram} slots={slots} />
+  ) : r.mode === "order" ? (
       <ol className="work-rows" data-layout={r.layout} data-mode="order">
         {order.map((rowId, position) => {
           const row = r.rows.find((x) => x.id === rowId)!;
@@ -660,6 +693,7 @@ export function StructuredWorkInput({
     <div
       className="work"
       data-layout={r.layout}
+      data-diagram={r.diagram?.kind}
       data-keypad={keypadOpen ? "" : undefined}
       // Room for the keypad is reserved from the first frame, so opening
       // and closing it never changes the scroll extent under a finger.
@@ -810,10 +844,16 @@ export function StructuredWorkAnswer({
   const order = r.mode === "order";
   const shown = JSON.stringify(r.rows.map((x) => x.id));
   const rows = order ? [] : draftRows(r, value);
+  // A diagram's undrawn places hold the page's 0, not the learner's work.
+  const zeros = diagramZeros(r);
   const empty = order
     ? value === "" || value === shown
     : (!r.open || rows.length <= 1) &&
-      rows.every((row) => row.every((v) => !v.trim()));
+      rows.every((row, i) =>
+        row.every(
+          (v, j) => !v.trim() || zeros.some(([a, b]) => a === i && b === j),
+        ),
+      );
   return (
     <form
       className="work-form"
@@ -853,19 +893,32 @@ export function StructuredWorkAnswer({
 /** What one row is called: an open list's own label ("pair"), else a line
  * of a proof or a step. */
 export function workItem(r: StructuredWorkResponse): string {
-  return r.open && r.rows[0]?.label
-    ? r.rows[0].label.toLowerCase()
-    : r.layout === "proof"
-      ? "line"
-      : "step";
+  return r.diagram
+    ? "number"
+    : r.open && r.rows[0]?.label
+      ? r.rows[0].label.toLowerCase()
+      : r.layout === "proof"
+        ? "line"
+        : "step";
 }
 
-/** "2 of 4 steps correct", from the server's marks. */
+/** "2 of 4 steps correct", from the server's marks; a diagram's numbers
+ * are counted one by one against the answer key. */
 export function workSummary(
   r: StructuredWorkResponse,
   parts: boolean[] | undefined,
+  response?: string,
+  answer?: string,
 ): string {
   const what = `${workItem(r)}s`;
+  const each =
+    response !== undefined && answer !== undefined
+      ? diagramMarks(r, response, answer)
+      : null;
+  if (each) {
+    const marks = [...each.values()];
+    return `${marks.filter(Boolean).length} of ${marks.length} ${what} correct`;
+  }
   if (!parts?.length) return `Your ${what} are marked above`;
   return `${parts.filter(Boolean).length} of ${parts.length} ${what} correct`;
 }
