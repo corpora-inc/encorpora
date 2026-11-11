@@ -6,6 +6,7 @@ import {
   normalizeLinePlotBuild,
 } from "../math/line-plot-build";
 import { DEFAULT_FRONTIER_POLICY } from "../learning/frontier-policy";
+import { reportFrontier } from "../learning/frontier-report";
 import { practiceChangeSchema } from "../learning/practice-settings";
 import { changePractice } from "./practice-settings";
 import { satPracticeEligible } from "../curriculum/sat.js";
@@ -453,8 +454,9 @@ function routes(app: FastifyInstance, options: AppOptions) {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
     return options.repository.transaction(account, learnerId, async (tx) => {
-      // Estimates, uncertainty and evidence counts per strand.
-      return tx.frontier();
+      // Estimates, reported uncertainty and evidence counts per strand.
+      // Selection reads the posterior from tx.frontier() itself, not this copy.
+      return reportFrontier(await tx.frontier());
     });
   });
   /** How the overall estimate moved as answers came in: the best guess and
@@ -549,8 +551,10 @@ function routes(app: FastifyInstance, options: AppOptions) {
         ...progress,
         mastered: await tx.masteredSkills(),
         frontier: {
-          placement: placed ? await tx.frontierAfter(progress.placement) : null,
-          current: await tx.frontier(),
+          placement: placed
+            ? reportFrontier(await tx.frontierAfter(progress.placement))
+            : null,
+          current: reportFrontier(await tx.frontier()),
         },
         trend: await tx.frontierTrend(),
         workbooks: await trialWorkbooks(

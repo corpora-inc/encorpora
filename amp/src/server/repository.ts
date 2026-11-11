@@ -28,6 +28,7 @@ import {
   type FrontierObservation,
 } from "../learning/frontier";
 import { DEFAULT_FRONTIER_POLICY } from "../learning/frontier-policy";
+import { REPORTED_SD_VERSION, reportedSd } from "../learning/frontier-report";
 import {
   advanceLearnerFrontier,
   applyStrandRestart,
@@ -381,12 +382,7 @@ export class PostgresRepository implements Repository {
         namePending: boolean;
       };
       if (restricted)
-        learner = await insertFamilyChild(
-          client,
-          accountId,
-          birthYear!,
-          name,
-        );
+        learner = await insertFamilyChild(client, accountId, birthYear!, name);
       else {
         learner = {
           id: randomUUID(),
@@ -789,9 +785,11 @@ export class PgTransaction implements LearnerTransaction {
     return (await this.learner())?.name_pending === true;
   }
   async saveLevelDay(frontier: Frontier) {
+    // Scheduling has already read the posterior sd. The stored width is the
+    // calibrated report, so a level day and the live planner do not share it.
     const estimate = ({ level, sd, answered, independent }: Estimate) => ({
       level,
-      sd,
+      sd: reportedSd(sd, { answered }),
       answered,
       independent,
     });
@@ -808,6 +806,7 @@ export class PgTransaction implements LearnerTransaction {
       [
         this.learnerId,
         JSON.stringify({
+          sdVersion: REPORTED_SD_VERSION,
           overall: estimate(frontier.overall),
           strands: Object.fromEntries(
             Object.entries(frontier.strands).map(([id, e]) => [
@@ -920,11 +919,11 @@ export class PgTransaction implements LearnerTransaction {
     const { start, observations } = await this.frontierInputs(now);
     return overallTrend(
       { start, observations, now, ...frontierCatalog },
-      trendCounts(
-        observations.length,
-        trendStep(observations.length, points),
-      ),
-    );
+      trendCounts(observations.length, trendStep(observations.length, points)),
+    ).map((point) => ({
+      ...point,
+      sd: reportedSd(point.sd, { answered: point.answered }),
+    }));
   }
   async recentAttempts() {
     const settings = await this.practiceSettings();

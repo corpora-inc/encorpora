@@ -23,6 +23,7 @@ import {
   productionSuccessProbability,
 } from "../../src/learning/frontier";
 import { DEFAULT_FRONTIER_POLICY } from "../../src/learning/frontier-policy";
+import { reportedSd } from "../../src/learning/frontier-report";
 import {
   MISSPECIFIED_RESPONSE,
   misspecifiedSuccessProbability,
@@ -89,9 +90,11 @@ export type GrowthMetrics = {
   bias: number;
 };
 
-export type ScopeBand = CoverageMetrics & {
+export type ScopeBand = {
   answers: number;
   scope: string;
+  posterior: CoverageMetrics;
+  reported: CoverageMetrics;
 };
 
 export type ModelReport = {
@@ -314,12 +317,16 @@ function jobsFor(options: {
   quick: boolean;
   models: readonly LearnerModel[];
 }): LearnerJob[] {
-  const grades = options.quick ? QUICK_GRADES : FULL_GRADES;
-  const offsets = options.quick ? QUICK_OFFSETS : FULL_OFFSETS;
-  const reps = options.quick ? [0] : [0, 1];
   const shared = itemOffsets(options.seed);
   const jobs: LearnerJob[] = [];
-  for (const model of options.models)
+  for (const model of options.models) {
+    // The coverage band is ±4 points. A 40-learner draw falls outside it by
+    // sampling error, so quick mode keeps the whole misspecified grid the
+    // constants were fit on and only shrinks the well-specified grid.
+    const shrink = options.quick && model === "well-specified";
+    const grades = shrink ? QUICK_GRADES : FULL_GRADES;
+    const offsets = shrink ? QUICK_OFFSETS : FULL_OFFSETS;
+    const reps = shrink ? [0] : [0, 1];
     for (const rep of reps)
       for (const grade of grades)
         for (const offset of offsets) {
@@ -334,18 +341,23 @@ function jobsFor(options: {
             itemOffsets: model === "misspecified" ? shared : {},
           });
         }
+  }
   return jobs;
 }
 
-function metrics(points: readonly CalibrationPoint[]): CoverageMetrics {
+function metrics(
+  points: readonly CalibrationPoint[],
+  sdOf: (point: CalibrationPoint) => number,
+): CoverageMetrics {
   let within1 = 0;
   let within2 = 0;
   let absolute = 0;
   let squared = 0;
   for (const point of points) {
     const error = Math.abs(point.mean - point.truth);
-    if (error <= point.sd) within1 += 1;
-    if (error <= 2 * point.sd) within2 += 1;
+    const sd = sdOf(point);
+    if (error <= sd) within1 += 1;
+    if (error <= 2 * sd) within2 += 1;
     absolute += error;
     squared += error * error;
   }
@@ -393,19 +405,34 @@ function growthOf(points: readonly CalibrationPoint[]): GrowthMetrics {
   };
 }
 
+function bandFor(
+  points: CalibrationPoint[],
+  answers: number,
+  scope: string,
+): ScopeBand {
+  return {
+    answers,
+    scope,
+    posterior: metrics(points, (point) => point.sd),
+    reported: metrics(points, (point) =>
+      reportedSd(point.sd, { answered: point.answers }),
+    ),
+  };
+}
+
 function modelReport(points: CalibrationPoint[]): ModelReport {
   const bands: ScopeBand[] = [];
   for (const answers of CHECKPOINTS) {
     const at = points.filter((point) => point.answers === answers);
     const overall = at.filter((point) => point.scope === "overall");
     const strands = at.filter((point) => point.scope !== "overall");
-    bands.push({ answers, scope: "overall", ...metrics(overall) });
-    bands.push({ answers, scope: "strands", ...metrics(strands) });
+    bands.push(bandFor(overall, answers, "overall"));
+    bands.push(bandFor(strands, answers, "strands"));
     const names = [...new Set(strands.map((point) => point.scope))].sort();
     for (const scope of names) {
       const rows = strands.filter((point) => point.scope === scope);
       if (rows.length < 15) continue;
-      bands.push({ answers, scope, ...metrics(rows) });
+      bands.push(bandFor(rows, answers, scope));
     }
   }
   return { bands, growth: growthOf(points), points };
@@ -442,13 +469,17 @@ function listen(worker: Worker, job: LearnerJob): Promise<WorkerResponse> {
 async function runJobs(
   jobs: readonly LearnerJob[],
   concurrency: number,
+  quiet: boolean,
 ): Promise<CalibrationPoint[]> {
   if (jobs.length === 0) return [];
   const workers = Math.max(1, Math.min(concurrency, jobs.length));
   if (workers === 1) return jobs.flatMap((job) => simulateLearner(job));
+  const execArgv = process.execArgv.filter(
+    (arg) => arg !== "--test" && !arg.startsWith("--test-"),
+  );
   const pool = Array.from(
     { length: workers },
-    () => new Worker(new URL(import.meta.url)),
+    () => new Worker(new URL(import.meta.url), { execArgv }),
   );
   const points: CalibrationPoint[] = [];
   let cursor = 0;
@@ -464,9 +495,10 @@ async function runJobs(
           if (!response.ok)
             throw new Error(`${response.learner}: ${response.error}`);
           points.push(...response.points);
-          process.stderr.write(
-            `  ${response.ms}ms ${jobs[index]!.id} (${index + 1}/${jobs.length})\n`,
-          );
+          if (!quiet)
+            process.stderr.write(
+              `  ${response.ms}ms ${jobs[index]!.id} (${index + 1}/${jobs.length})\n`,
+            );
         }
       }),
     );
@@ -482,6 +514,7 @@ export async function runProductionCalibration(
     quick?: boolean;
     models?: readonly LearnerModel[];
     concurrency?: number;
+    quiet?: boolean;
   } = {},
 ): Promise<CalibrationReport> {
   const seed = options.seed ?? CALIBRATION_SEED;
@@ -491,7 +524,7 @@ export async function runProductionCalibration(
   const concurrency =
     options.concurrency ?? Math.max(1, Math.min(8, availableParallelism() - 1));
   const started = Date.now();
-  const points = await runJobs(jobs, concurrency);
+  const points = await runJobs(jobs, concurrency, options.quiet ?? false);
   const byModel = new Map<LearnerModel, CalibrationPoint[]>();
   for (const point of points) {
     const list = byModel.get(point.model) ?? [];
@@ -513,9 +546,10 @@ export async function runProductionCalibration(
         : emptyModel(),
     },
   };
-  process.stderr.write(
-    `calibration ${quick ? "quick" : "full"} seed ${seed}: ${jobs.length} learners in ${((Date.now() - started) / 1000).toFixed(1)}s\n`,
-  );
+  if (!options.quiet)
+    process.stderr.write(
+      `calibration ${quick ? "quick" : "full"} seed ${seed}: ${jobs.length} learners in ${((Date.now() - started) / 1000).toFixed(1)}s\n`,
+    );
   return report;
 }
 
@@ -523,35 +557,43 @@ function percent(value: number) {
   return (value * 100).toFixed(1);
 }
 
+function metricRow(band: ScopeBand, metrics: CoverageMetrics) {
+  return `| ${band.answers} | ${band.scope} | ${metrics.n} | ${percent(metrics.coverage1)} | ${percent(metrics.coverage2)} | ${metrics.mae.toFixed(3)} | ${metrics.rmse.toFixed(3)} |`;
+}
+
 function formatModel(name: string, model: ModelReport) {
+  const summary = model.bands.filter(
+    (band) => band.scope === "overall" || band.scope === "strands",
+  );
   const lines = [
     `## ${name}`,
     "",
+    "### Posterior sd",
+    "",
     "| answers | scope | n | ±1σ % | ±2σ % | MAE | RMSE |",
     "| ---: | --- | ---: | ---: | ---: | ---: | ---: |",
-  ];
-  for (const band of model.bands) {
-    if (band.scope !== "overall" && band.scope !== "strands") continue;
-    lines.push(
-      `| ${band.answers} | ${band.scope} | ${band.n} | ${percent(band.coverage1)} | ${percent(band.coverage2)} | ${band.mae.toFixed(3)} | ${band.rmse.toFixed(3)} |`,
-    );
-  }
-  lines.push(
+    ...summary.map((band) => metricRow(band, band.posterior)),
+    "",
+    "### Reported sd",
+    "",
+    "| answers | scope | n | ±1σ % | ±2σ % | MAE | RMSE |",
+    "| ---: | --- | ---: | ---: | ---: | ---: | ---: |",
+    ...summary.map((band) => metricRow(band, band.reported)),
     "",
     `Growth (estimate at ${ANSWERS} minus estimate at ${CHECKPOINTS[0]}, against true Δθ): n=${model.growth.n}, MAE ${model.growth.mae.toFixed(3)}, RMSE ${model.growth.rmse.toFixed(3)}, bias ${model.growth.bias.toFixed(3)}.`,
     "",
-  );
+  ];
   const strands = model.bands.filter(
     (band) => band.scope !== "overall" && band.scope !== "strands",
   );
   if (strands.length) {
     lines.push(
-      "| answers | strand | n | ±1σ % | ±2σ % | MAE |",
-      "| ---: | --- | ---: | ---: | ---: | ---: |",
+      "| answers | strand | n | posterior ±1σ % | reported ±1σ % | posterior ±2σ % | reported ±2σ % |",
+      "| ---: | --- | ---: | ---: | ---: | ---: | ---: |",
     );
     for (const band of strands)
       lines.push(
-        `| ${band.answers} | ${band.scope} | ${band.n} | ${percent(band.coverage1)} | ${percent(band.coverage2)} | ${band.mae.toFixed(3)} |`,
+        `| ${band.answers} | ${band.scope} | ${band.posterior.n} | ${percent(band.posterior.coverage1)} | ${percent(band.reported.coverage1)} | ${percent(band.posterior.coverage2)} | ${percent(band.reported.coverage2)} |`,
       );
     lines.push("");
   }
@@ -562,7 +604,7 @@ export function formatCalibration(report: CalibrationReport) {
   const header = [
     `# Production frontier coverage (seed ${report.seed}, ${report.quick ? "quick" : "full"})`,
     "",
-    `Policy \`${report.policy}\`. Posterior sd, before reported-sd calibration. ${report.learners} learners, checkpoints ${report.checkpoints.join(", ")}.`,
+    `Policy \`${report.policy}\`. Reported sd is sd-cal-v1. ${report.learners} learners, checkpoints ${report.checkpoints.join(", ")}.`,
     "",
   ];
   return (

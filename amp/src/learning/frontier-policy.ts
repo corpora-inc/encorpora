@@ -31,7 +31,10 @@ const response = z
   });
 
 /** Editorial grade-estimate parameters, separate from practice exposure weights.
- * Bounds protect computation; these are not population-calibrated norms. */
+ * Bounds protect computation. These are not population-calibrated norms: item
+ * difficulties are not fitted to real students, and there is no external norm.
+ * Reported uncertainty is a separate scale on the posterior sd
+ * (`frontier-report.ts`), fit to a misspecified synthetic learner. */
 export const frontierPolicySchema = z
   .object({
     schemaVersion: z.literal(1),
