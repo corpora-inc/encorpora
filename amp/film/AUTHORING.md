@@ -520,7 +520,8 @@ Names: `a` is the group (the things in it at that moment), `a3` is one thing for
 | `{"do":"count","target":"pile","to":4,"into":"bowl"}` | Counting out: each counted thing slides to `bowl` on its number, and the count stops at four. |
 | `{"do":"count","target":"more","from":8}` | Counting on: the first number said is "eight". A group of three more things takes "eight, nine, ten"; a group that already has eight things picks up at its eighth. |
 | `{"do":"send","target":["a4","a5"],"to":"b"}` | Things go to the next free places of another group: joining, taking away. `"to": ["p", "q"]` deals them out in turn: sharing. |
-| `{"do":"leave","target":["a4","a5"]}` | Things go away one by one. |
+| `{"do":"leave","target":["a4","a5"]}` | Things go away one by one, fading where they sit. |
+| `{"do":"leave","target":["a4","a5"],"toward":"n"}` | Each drifts that way (`n`, `s`, `e`, `w`, `ne`, `nw`, `se`, `sw`) about one and a half of its widths as it fades: ducks fly off, a bear eats the cookies. The group's places stay where they are, so nothing shifts. Leave room in the `view` on that side, since a thing is clipped at the card's edge. |
 | `show`, `hide`, `highlight` | Work on a group or a thing, as on any part. |
 
 Rules for `count`:
