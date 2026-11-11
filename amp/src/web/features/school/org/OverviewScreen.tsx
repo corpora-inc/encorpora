@@ -1,3 +1,4 @@
+import { classColumn, teacherColumn, teacherNames } from "../class-columns";
 import { useQuery } from "@tanstack/react-query";
 import {
   Link,
@@ -185,8 +186,6 @@ function UsageCard({
 }
 
 /** Teachers by name, with the person reading it as "You". */
-const teacherNames = (teachers: readonly string[], self: string | null) =>
-  teachers.map((name) => (self && name === self ? "You" : name)).join(", ");
 
 function ClassTable({
   orgId,
@@ -200,34 +199,9 @@ function ClassTable({
   const navigate = useNavigate();
   const columns = useMemo<DataGridColumn<ClassUsage>[]>(
     () => [
-      {
-        id: "name",
-        header: "Class",
-        width: 190,
-        compare: (a, b) => compareClassNames(a.name, b.name),
-        cell: (row) => (
-          <Link
-            to="/$"
-            params={{ _splat: classPath(orgId, row.id) }}
-            className={styles.rowLink}
-          >
-            {row.name}
-          </Link>
-        ),
-      },
-      {
-        id: "teacher",
-        header: "Teacher",
-        width: 150,
-        compare: (a, b) =>
-          (a.teachers[0] ?? "").localeCompare(b.teachers[0] ?? "", "en"),
-        cell: (row) =>
-          row.teachers.length ? (
-            teacherNames(row.teachers, self)
-          ) : (
-            <span className={styles.none}>No teacher</span>
-          ),
-      },
+      // The same Class and Teacher columns as the Classes tab's table.
+      classColumn<ClassUsage>((row) => classPath(orgId, row.id)),
+      teacherColumn<ClassUsage>(self),
       ...usageColumns<ClassUsage>(),
     ],
     [orgId, self],

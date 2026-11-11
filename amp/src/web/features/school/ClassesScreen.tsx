@@ -1,3 +1,4 @@
+import { classColumn, teacherColumn } from "./class-columns";
 import { canAddStudents } from "./permissions";
 import {
   AddChildSheet,
@@ -50,7 +51,6 @@ import { ClassExperienceSection } from "./classroom/ExperienceScreens";
 import { FormNote, GradePicker, PageHead, gradeLabel } from "./parts";
 import { yearsOptions } from "./org/org-api";
 import { classPath, orgPath } from "./paths";
-import { compareClassNames } from "./sort";
 import { SmallClassGrades } from "./classes/SmallClassGrades";
 import { SMALL_CLASS } from "../navigation/shell-frame";
 import { meOptions } from "../../lib/query";
@@ -194,22 +194,11 @@ function AddClassSheet({
 const classColumns = (
   orgId: string,
   earlier: boolean,
+  self: string | null | undefined,
 ): DataGridColumn<ClassResource>[] => [
-  {
-    id: "name",
-    header: "Class",
-    width: 220,
-    compare: (a, b) => compareClassNames(a.name, b.name),
-    cell: (row) => (
-      <Link
-        to="/$"
-        params={{ _splat: classHome(orgId, row.id, earlier) }}
-        className={styles.rowLink}
-      >
-        {row.name}
-      </Link>
-    ),
-  },
+  // The same Class and Teacher columns as the Overview's table.
+  classColumn<ClassResource>((row) => classHome(orgId, row.id, earlier)),
+  teacherColumn<ClassResource>(self),
   {
     id: "students",
     header: "Students",
@@ -329,7 +318,7 @@ export function ClassesScreen() {
       ) : rows.length ? (
         <DataGrid
           label="Classes"
-          columns={classColumns(orgId, earlier)}
+          columns={classColumns(orgId, earlier, org?.personName)}
           rows={rows}
           rowKey={(row) => row.id}
           defaultSort={{ column: "name", direction: "ascending" }}

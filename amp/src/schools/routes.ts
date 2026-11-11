@@ -1,3 +1,4 @@
+import { PERSON_NAME } from "./term-grades.js";
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import { randomBytes } from "node:crypto";
 import type { Pool } from "pg";
@@ -359,11 +360,21 @@ defineSchoolRoute({
   url: "/api/v1/school/orgs/:org",
   action: "org.read",
   target: orgParam,
-  handler: async ({ actor, target, repository }) => {
+  handler: async ({ actor, target, repository, pool }) => {
     const org = await repository.orgFor(actor.accountId, target.orgId);
+    const person = actorPerson(actor, target);
     return {
       org: org && {
         ...org,
+        // The caller's own name here, so a list of teachers can say "You".
+        personName: person
+          ? (((
+              await pool.query(
+                `SELECT ${PERSON_NAME} AS name FROM amp_people p WHERE p.id=$1`,
+                [person],
+              )
+            ).rows[0]?.name as string | undefined) ?? null)
+          : null,
         can: canList({ actor, target }),
         teaches: actor.classes
           .filter((c) => c.role === "teacher" && c.path.includes(target.orgId))

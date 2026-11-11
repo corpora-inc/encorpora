@@ -352,6 +352,8 @@ export const orgResource = z.object({
   can: z.array(z.enum(schoolActions)).optional(),
   /** Classes the caller teaches here, for the class-level actions in `can`. */
   teaches: z.array(z.uuid()).optional(),
+  /** The caller's own name here (a teacher list says "You" for it). */
+  personName: z.string().nullable().optional(),
   /** The orgs above this one that the caller can open, from the top down. */
   ancestors: z.array(z.object({ id: z.uuid(), name: z.string() })).optional(),
 });
@@ -364,6 +366,8 @@ export const classResource = z.object({
   gradingKind: z.enum(gradingKinds),
   joinCode: z.string(),
   studentCount: z.number().int(),
+  /** Its teachers today, by name. */
+  teachers: z.array(z.string()).default([]),
 });
 export const studentResource = z.object({
   id: z.uuid(),
