@@ -179,7 +179,7 @@ async function line(page: Page, t: number): Promise<{ ends: number[]; things: Re
     const scrub = document.querySelector<HTMLInputElement>(".live-scrub")!;
     scrub.value = String(time);
     scrub.dispatchEvent(new Event("input", { bubbles: true }));
-    const seg = [...document.querySelectorAll<SVGPathElement>(".film-shot svg.film-geo > path")].find((p) => /^M[-\d. ]+L[-\d. ]+$/.test(p.getAttribute("d") ?? ""))!;
+    const seg = [...document.querySelectorAll<SVGPathElement>(".film-shot svg.film-geo path")].find((p) => /^M[-\d. ]+L[-\d. ]+$/.test(p.getAttribute("d") ?? ""))!;
     const ends = (seg.getAttribute("d") ?? "").match(/-?[\d.]+/g)!.map(Number);
     const things: Record<string, [number, number]> = {};
     for (const g of document.querySelectorAll<SVGGElement>(".film-thing")) {
