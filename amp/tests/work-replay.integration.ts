@@ -177,8 +177,9 @@ test(
             seed: problem.seed,
             digest: problemDigest(problem),
           });
-          // The same template, version and seed draw the same problem again,
-          // and the version is the catalog's, the one practice drew at.
+          // The same template, version and seed draw the same problem again.
+          // The version is the one practice drew at: the catalog's, or 1 when
+          // a client without the added response formats got the original.
           assert.equal(
             problemDigest(
               generateProblem(
@@ -189,9 +190,11 @@ test(
             ),
             replay.origin!.digest,
           );
-          assert.equal(
-            problem.templateVersion,
-            templates.find((t) => t.id === problem.templateId)!.version,
+          assert.ok(
+            [
+              1,
+              templates.find((t) => t.id === problem.templateId)!.version,
+            ].includes(problem.templateVersion),
           );
           assert.equal(replay.outcome.response, given.response);
           assert.equal(replay.outcome.answer, given.truth);
