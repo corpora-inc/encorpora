@@ -53,12 +53,16 @@ export async function schoolShellReview(page: Page, shot?: string) {
             !el.closest("[data-scrolls], [data-virtual]"),
         )
         .map((el) => parseFloat(getComputedStyle(el).top)),
+      // The tabs shown: a phone row too wide for the bar holds the rest
+      // in More (ui/Tabs), and those have no box.
       tabs: tab
-        ? [...tab.children].map((item) => ({
-            label: item.textContent,
-            y: item.getBoundingClientRect().y,
-            height: item.getBoundingClientRect().height,
-          }))
+        ? [...tab.children]
+            .filter((item) => item.getClientRects().length > 0)
+            .map((item) => ({
+              label: item.textContent,
+              y: item.getBoundingClientRect().y,
+              height: item.getBoundingClientRect().height,
+            }))
         : [],
     };
   });

@@ -508,7 +508,8 @@ async function sweep(
       width,
       theme,
       `/school/${school}`,
-      /^Good /,
+      // An overview's heading is the school's own name.
+      /^Alder Street School$/,
     );
     const logoBefore = await boxes(page, "[data-app-bar] [data-app-logo]");
     await page.getByRole("button", { name: "Open AMP menu" }).click();
@@ -557,7 +558,7 @@ async function sweep(
       width,
       theme,
       `/school/${district}`,
-      /^Good /,
+      /^Juniper Valley Schools$/,
     );
     await viewScreen(
       page,
@@ -567,7 +568,7 @@ async function sweep(
       width,
       theme,
       `/school/${districtSchool}`,
-      /^Good /,
+      / (Elementary|Middle School|High School)$/,
     );
     await page.getByRole("button", { name: "Open AMP menu" }).click();
     const drawer = page.getByRole("dialog");
@@ -809,19 +810,19 @@ async function journey(browser: Browser, engine: string) {
 
     // The overview: a head's morning read, with one action on each item.
     await page.goto(`${origin}/school/${north.id}`);
-    await heading(page, /^Good /).waitFor();
+    await heading(page, /^North Campus$/).waitFor();
     await page.getByText(/students practiced this week/).waitFor();
     await page.getByRole("heading", { name: "Needs attention" }).waitFor();
     await page.getByRole("link", { name: "See who" }).click();
     await page.waitForURL(/status=never-signed-in/);
     await page.getByText("who haven’t signed in yet").waitFor();
     await page.goBack();
-    await heading(page, /^Good /).waitFor();
+    await heading(page, /^North Campus$/).waitFor();
     // The class row opens the class.
     await page.getByRole("link", { name: "Grade 5 Math" }).first().click();
     await page.waitForURL(`**/classes/${math.id}/today`);
     await page.goBack();
-    await heading(page, /^Good /).waitFor();
+    await heading(page, /^North Campus$/).waitFor();
     // A one-class solo school never sees any of it.
     const solo = await schools.createOrg(
       { kind: "school", name: "Just One Class", timezone: "UTC" },

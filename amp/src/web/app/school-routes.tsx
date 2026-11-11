@@ -332,9 +332,14 @@ export function schoolRoutes(root: AnyRoute) {
     orgScreen("/calendar", screens.calendar, (session, orgId) => [
       preload(calendarOptions(session, orgId)),
     ]),
+    // Every section before the page paints, so a section never arrives
+    // late and pushes the ones below it (the license, opened by its hash).
     orgScreen("/settings", screens.settings, (session, orgId) => [
       preload(calendarOptions(session, orgId)),
       preload(licenseOptions(session, orgId)),
+      import("../features/school/classroom/api").then(({ experienceOptions }) =>
+        preload(experienceOptions(session, { kind: "org", id: orgId })),
+      ),
     ]),
     toSettings("/license", "license"),
     orgScreen("/import", screens.importer),
