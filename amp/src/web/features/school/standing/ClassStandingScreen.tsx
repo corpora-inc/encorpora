@@ -80,8 +80,6 @@ function StudentBand({
           <span
             className={styles.band}
             data-settling={settling ? "" : undefined}
-            data-clip-start={low < grid.from ? "" : undefined}
-            data-clip-end={high > grid.to ? "" : undefined}
             style={{
               left: `${across(grid, low)}%`,
               width: `${across(grid, high) - across(grid, low)}%`,

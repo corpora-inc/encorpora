@@ -157,9 +157,11 @@ span.student[data-teacher] {
 .gradeControls {
   display: flex;
   flex: 1 1 auto;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
   gap: var(--space-3);
+  min-width: 0;
 }
 .term {
   flex: 0 1 260px;
