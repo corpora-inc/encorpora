@@ -275,3 +275,28 @@ export const savedMarksResource = z.object({
   recorded: z.number().int(),
   problems: z.array(markedProblem),
 });
+
+/** A school's or district's weekly practice target per student, in minutes. */
+export const orgWeeklyTargetResource = z.object({
+  /** What counts here; null only for a family that hasn't set one. */
+  minutes: z.number().nullable(),
+  /** This org set its own. */
+  own: z.boolean(),
+  /** What it follows without its own. */
+  inherited: z.number().nullable(),
+  /** The org that set the value in use; null when it's AMP's default. */
+  setBy: z.string().nullable(),
+  /** An org above locked it, so it can't be changed here. */
+  lockedBy: z.string().nullable(),
+  canEdit: z.boolean(),
+});
+export type OrgWeeklyTarget = z.infer<typeof orgWeeklyTargetResource>;
+export const WEEKLY_TARGET_RANGE = { min: 15, max: 300, step: 15 } as const;
+export const orgWeeklyTargetWriteSchema = z.strictObject({
+  minutes: z
+    .number()
+    .int()
+    .min(WEEKLY_TARGET_RANGE.min)
+    .max(WEEKLY_TARGET_RANGE.max)
+    .nullable(),
+});

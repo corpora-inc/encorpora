@@ -14,6 +14,7 @@ import {
   DEFAULT_GRADE_POLICY,
   rangeLetters,
   type GradeComponentId,
+  type GradeSuggestion,
 } from "./grade-policy.js";
 import {
   classContext,
@@ -52,6 +53,7 @@ import type {
   WorkItem,
 } from "./teacher-contracts.js";
 import { shownTeachers } from "./teacher-line.js";
+import { practiced } from "./practice-rules.js";
 import {
   todayTodos,
   weekStart,
@@ -280,7 +282,7 @@ export async function readToday(
         (sum, student) => sum + student.objectivesThisWeek,
         0,
       ),
-      working: week.filter((row) => row.problems > 0 || row.activeMinutes > 0)
+      working: week.filter((row) => practiced(row.activeMinutes, row.problems))
         .length,
       students: named.length,
     },
@@ -395,6 +397,8 @@ export async function readGradebook(
     term,
     weeklyTargetMinutes: target.minutes,
     targetLocked: target.locked,
+    targetOwn: target.own,
+    inheritedTargetMinutes: target.inherited,
     canEdit,
     students: rows.map(({ student, suggestion, final }) => ({
       id: student.id,
@@ -415,7 +419,11 @@ const COMPONENT_LABELS: Record<GradeComponentId, string> = {
 };
 const WORK_PAGE = 12;
 /** "Why a B?", or "Why B to A−?" when the range spans letters. */
-function whyQuestion(letters: string | null): string {
+function whyQuestion(
+  letters: string | null,
+  status: GradeSuggestion["status"],
+): string {
+  if (status === "facts-only") return "What the work shows";
   if (!letters) return "Why no range yet?";
   if (letters.includes(" to ")) return `Why ${letters}?`;
   return `Why ${/^[AF]/.test(letters) ? "an" : "a"} ${letters}?`;
@@ -474,12 +482,12 @@ export async function readEvidence(
     canEdit: canEdit && term.state === "open",
     final: row.final,
     suggestion: resource,
-    question: whyQuestion(rangeLetters(row.suggestion)),
-    lines: row.suggestion.components.map((component) => ({
+    question: whyQuestion(rangeLetters(row.suggestion), row.suggestion.status),
+    lines: row.suggestion.components.map((component, index) => ({
       id: component.id,
       label: COMPONENT_LABELS[component.id],
       weight: component.weight,
-      score: component.score,
+      score: resource.components[index]!.score,
       sentence: componentSentence(component),
     })),
     joined: row.beginOn && row.beginOn > term.startsOn ? row.beginOn : null,

@@ -14,6 +14,13 @@ const klass = (id: string, org: string, teachers: string[], minutes = 900) => ({
   active: 20,
   minutes,
   growth: 0.3,
+  placed: 20,
+  // Each of 24 students with an equal share of the class's minutes.
+  week: {
+    minutes: Array.from({ length: 24 }, () => minutes / 24),
+    practiced: minutes / 24 >= 5 ? 24 : 0,
+  },
+  target: 60,
 });
 const rollup = (kind: "district" | "school") => ({
   org: {
@@ -69,6 +76,39 @@ test("a school's attention list names its own classes plainly", () => {
     items.find((item) => item.id === "no-teacher")?.detail ?? "",
     / at /,
   );
+});
+
+test("each little-practice class says what flagged it, links to it, and says how", () => {
+  const items = attentionFor(rollup("school") as never);
+  const quiet = items.filter((item) => item.id.startsWith("little-practice"));
+  assert.equal(quiet.length, 2);
+  assert.equal(
+    quiet[0]!.title,
+    "Precalculus · Period 3 had little practice this week",
+  );
+  assert.equal(
+    quiet[0]!.detail,
+    "0 of 24 have practiced · median 0 of 60 min.",
+  );
+  assert.match(quiet[0]!.action.path, /^classes\/.+\/today$/);
+  assert.match(quiet[0]!.rule!, /^From Wednesday, a class is flagged when/);
+  // Every item on the list can say how it's decided.
+  for (const item of items) assert.ok(item.rule, item.id);
+  // No hard-coded minutes per school day: a class at its target isn't flagged.
+  assert.doesNotMatch(JSON.stringify(items), /usually sorts it out/);
+});
+
+test("a school with many quiet classes names a few, then one line for the rest", () => {
+  const base = rollup("school");
+  const many = Array.from({ length: 6 }, (_, index) =>
+    klass(`2${index}`, north, ["Ms. Okafor"], index),
+  );
+  const items = attentionFor({ ...base, classes: many } as never);
+  const quiet = items.filter((item) => item.id.startsWith("little-practice"));
+  assert.equal(quiet.length, 3);
+  assert.equal(quiet[2]!.id, "little-practice");
+  assert.equal(quiet[2]!.title, "4 more classes had little practice this week");
+  assert.equal(quiet[2]!.action.path, "classes");
 });
 
 test("the activity log has a sentence for every family link, standings and marking event", async () => {

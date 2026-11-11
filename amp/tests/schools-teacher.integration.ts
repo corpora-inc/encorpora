@@ -564,22 +564,30 @@ test(
             .json()
             .students.find((row: { first: string }) => row.first === "Amara")
             .suggestion.components[2].score as number;
-        const median = await practice();
+        // With nothing set, a school class counts against AMP's default.
+        const before = (await get(`${CLASS}/gradebook`, teacher)).json();
+        assert.equal(before.weeklyTargetMinutes, 60);
+        assert.equal(before.targetOwn, false);
+        assert.equal(before.inheritedTargetMinutes, 60);
+        const usual = await practice();
         const set = (minutes: number | null) =>
           post(`${CLASS}/target`, teacher, { minutes });
         assert.deepEqual((await set(600)).json(), {
           minutes: 600,
           locked: false,
+          own: true,
+          inherited: 60,
         });
         const book = (await get(`${CLASS}/gradebook`, teacher)).json();
         assert.equal(book.weeklyTargetMinutes, 600);
-        assert.ok((await practice()) < median);
+        assert.ok((await practice()) < usual);
         assert.equal((await set(null)).statusCode, 200);
+        // Cleared, the class follows its school again.
         assert.equal(
           (await get(`${CLASS}/gradebook`, teacher)).json().weeklyTargetMinutes,
-          null,
+          60,
         );
-        assert.equal(await practice(), median);
+        assert.equal(await practice(), usual);
         const logged = (
           await db.query(
             "SELECT count(*)::int AS n FROM amp_school_events WHERE action='settings.changed' AND target_id=$1",
@@ -625,7 +633,10 @@ test(
         (todo: { kind: string }) => todo.kind === "shared-gap",
       );
       assert.ok(gap, JSON.stringify(body.todos));
-      assert.match(gap.title, /3 students are stuck on multidigit quotients/);
+      assert.match(
+        gap.title,
+        /3 students are stuck on dividing by a two-digit number/,
+      );
       assert.deepEqual(
         new Set(gap.students.map((entry: { id: string }) => entry.id)),
         new Set([amara.personId, diego.personId, late.personId]),
@@ -876,7 +887,7 @@ test(
           )
         ).rows[0];
         assert.ok(stored.frozen_at);
-        assert.equal(stored.suggested.policyVersion, "school-grades-v1");
+        assert.equal(stored.suggested.policyVersion, "school-grades-v2");
         assert.ok(stored.suggested.inputs.enrolled.from);
         assert.ok(stored.suggested.inputs.activeMinutes > 100);
         // A closed term can't be edited or closed again.

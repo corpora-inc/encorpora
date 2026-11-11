@@ -68,6 +68,8 @@ export const gradePolicySchema = z
       /** Pulls a few reviews toward a typical result rather than 0 or 100. */
       priorShare: share,
       priorReviews: count,
+      /** Below this many reviews a share is noise, so it doesn't count. */
+      minimumReviews: count,
     }),
     evidence: z.strictObject({
       minimumActiveDays: count,
@@ -97,10 +99,6 @@ export const gradePolicySchema = z
       sharedGapStudents: z.number().int().min(2).max(100),
       sharedGapMisses: z.number().int().min(1).max(5),
       stuckMisses: z.number().int().min(1).max(5),
-      /** Days into the week before an empty week says anything. */
-      quietWeekFromDay: z.number().int().min(0).max(6),
-      /** Below this share of the target so far is "behind". */
-      behindTargetShare: share,
       readyMinimumReviews: count,
       readyReviewShare: share,
       /** How many grades past the course counts as past it. */
@@ -189,7 +187,7 @@ export function assertGradePolicy(policy: GradePolicy): void {
 
 export const DEFAULT_GRADE_POLICY = createGradePolicy({
   schemaVersion: 1,
-  version: "school-grades-v1",
+  version: "school-grades-v2",
   weights: { course: 40, growth: 30, practice: 20, retention: 10 },
   course: {
     onPaceScore: 84,
@@ -211,7 +209,7 @@ export const DEFAULT_GRADE_POLICY = createGradePolicy({
     fallbackYearDays: 304,
   },
   practice: { minutesPerUnmeasuredProblem: 1, fallbackWeeklyMinutes: 60 },
-  retention: { priorShare: 0.8, priorReviews: 3 },
+  retention: { priorShare: 0.8, priorReviews: 3, minimumReviews: 10 },
   evidence: {
     minimumActiveDays: 2,
     minimumMinutes: 20,
@@ -247,8 +245,6 @@ export const DEFAULT_GRADE_POLICY = createGradePolicy({
     sharedGapStudents: 3,
     sharedGapMisses: 2,
     stuckMisses: 3,
-    quietWeekFromDay: 2,
-    behindTargetShare: 0.25,
     readyMinimumReviews: 3,
     readyReviewShare: 0.8,
     readyMargin: 0,
@@ -297,6 +293,9 @@ export type GradeActivity = {
   independent: number;
 };
 export type GradeInput = {
+  /** One child alone, or a class of one with no target: nothing to measure a
+   * letter against, so the facts show without one. */
+  factsOnly?: boolean;
   /** The school year the term sits in. Pace runs across it. */
   year: { from: string; to: string };
   /** The term's enrolled days up to today: all that ever counts. */
@@ -350,10 +349,14 @@ export type GradeComponent =
       id: "retention";
       weight: number;
       score: number | null;
+      /** Null below the policy's minimum of reviews. */
       reviewShare: number | null;
+      reviews: number;
+      reviewsRight: number;
     };
 export type GradeSuggestion = {
-  status: "ready" | "not-enough-work";
+  /** "facts-only": enough work, and no letter (`GradeInput.factsOnly`). */
+  status: "ready" | "not-enough-work" | "facts-only";
   low: number | null;
   high: number | null;
   letterLow: string | null;
@@ -452,13 +455,15 @@ function growthScore(input: GradeInput, policy: GradePolicy) {
   const yearDays = daysIn(input.year) || growth.fallbackYearDays;
   const days = daysIn(input.enrolled);
   const expected = Math.max(0.001, (growth.gradesPerYear * days) / yearDays);
+  // Shown as it is, either sign; a level lower than at the start scores as no
+  // gain, never below it, since two estimates a term apart carry noise.
   const levelsGained =
     input.start && input.end
-      ? Math.max(0, input.end.overall.level - input.start.overall.level)
+      ? input.end.overall.level - input.start.overall.level
       : null;
   const capped = (pace: number) => Math.min(growth.maximumPace, pace);
   const observed =
-    growth.levelShare * capped((levelsGained ?? 0) / expected) +
+    growth.levelShare * capped(Math.max(0, levelsGained ?? 0) / expected) +
     (1 - growth.levelShare) *
       capped(input.objectivesGained / (growth.objectivesPerGrade * expected));
   const pace =
@@ -493,8 +498,9 @@ function practiceScore(input: GradeInput, policy: GradePolicy) {
 
 function retentionScore(input: GradeInput, policy: GradePolicy) {
   const { review, reviewIndependent } = input.activity;
-  if (review === 0) return { score: null, share: null };
-  const { priorShare, priorReviews } = policy.retention;
+  const { priorShare, priorReviews, minimumReviews } = policy.retention;
+  if (review === 0 || review < minimumReviews)
+    return { score: null, share: null };
   return {
     score:
       (100 * (reviewIndependent + priorShare * priorReviews)) /
@@ -616,6 +622,8 @@ export function suggestGrade(
       weight: weights.retention,
       score: shown(retention.score),
       reviewShare: retention.share,
+      reviews: activity.review,
+      reviewsRight: activity.reviewIndependent,
     },
   ];
   if (!ready || !course || !end)
@@ -642,6 +650,17 @@ export function suggestGrade(
   const carried = parts.reduce((sum, part) => sum + part.weight, 0);
   const middle =
     parts.reduce((sum, part) => sum + part.weight * part.score, 0) / carried;
+  if (input.factsOnly)
+    return {
+      status: "facts-only",
+      low: null,
+      high: null,
+      letterLow: null,
+      letterHigh: null,
+      components,
+      inputs,
+      policyVersion: policy.version,
+    };
   const half = halfWidth(input, end, policy);
   const low = clamp(Math.round(middle - half), 0, 100);
   const high = clamp(Math.round(middle + half), 0, 100);
@@ -655,6 +674,16 @@ export function suggestGrade(
     inputs,
     policyVersion: policy.version,
   };
+}
+
+/** Components as a screen or export shows them: a suggestion with no letter
+ * shows its facts and no scores. */
+export function shownComponents(
+  suggestion: Pick<GradeSuggestion, "status" | "components">,
+): GradeComponent[] {
+  return suggestion.status === "facts-only"
+    ? suggestion.components.map((component) => ({ ...component, score: null }))
+    : suggestion.components;
 }
 
 /** The range in words: "B to A−", or one letter when both ends agree. */
@@ -675,6 +704,23 @@ const plural = (count: number, one: string, many = `${one}s`) =>
   `${count.toLocaleString("en-US")} ${count === 1 ? one : many}`;
 /** A count of problems is a fact worth stating only once it isn't a small one. */
 const PROBLEMS_WORTH_STATING = 100;
+const timesWords = (count: number) =>
+  count === 1 ? "once" : count === 2 ? "twice" : `${count} times`;
+/** What a grade counts as an objective, as it is: "6 skills shown twice on
+ * their own". */
+export function skillsShownWords(
+  count: number,
+  policy: GradePolicy = DEFAULT_GRADE_POLICY,
+): string {
+  return `${plural(count, "skill")} shown ${timesWords(policy.growth.demonstratedSuccesses)} on ${count === 1 ? "its" : "their"} own`;
+}
+/** A signed change of level: "0.3 grades gained", "0.2 grades lower". */
+export function levelChangeWords(change: number): string {
+  const size = Math.abs(change).toFixed(1);
+  return change <= -0.05
+    ? `a level ${size} grades lower than at the start`
+    : `${size} grades gained`;
+}
 
 /** Each component in one sentence, for the evidence sheet and report cards. */
 export function componentSentence(component: GradeComponent): string {
@@ -687,10 +733,10 @@ export function componentSentence(component: GradeComponent): string {
     }
     case "growth": {
       const { objectivesGained, levelsGained } = component;
-      const objectives = `${plural(objectivesGained, "new objective")}`;
+      const objectives = skillsShownWords(objectivesGained);
       return levelsGained === null
         ? `${objectives} this term.`
-        : `${objectives} and ${levelsGained.toFixed(1)} grades gained this term.`;
+        : `${objectives}, and ${levelChangeWords(levelsGained)}, this term.`;
     }
     case "practice": {
       const { weeklyMinutes: minutes, targetMinutes, against } = component;
@@ -698,15 +744,25 @@ export function componentSentence(component: GradeComponent): string {
         against === "target"
           ? `${minutes} active minutes a week, against a target of ${targetMinutes}`
           : against === "class"
-            ? `${minutes} active minutes a week, against ${targetMinutes} for most of the class`
+            ? `${minutes} active minutes a week, against a class median of ${targetMinutes}`
             : `${minutes} active minutes a week`;
       return component.problems >= PROBLEMS_WORTH_STATING
         ? `${measure}, ${component.problems.toLocaleString("en-US")} problems so far.`
         : `${measure}.`;
     }
-    case "retention":
-      return component.reviewShare === null
-        ? "No spaced review has come due yet, so this doesn’t count toward the range."
-        : `${Math.round(component.reviewShare * 100)}% of spaced reviews right without help.`;
+    case "retention": {
+      const { reviews, reviewsRight, reviewShare } = component;
+      // A term closed before counts were kept says what it said then.
+      if (reviews === undefined)
+        return reviewShare === null
+          ? "No spaced review has come due yet, so this doesn’t count toward the range."
+          : `${Math.round(reviewShare * 100)}% of spaced reviews right without help.`;
+      if (reviews === 0)
+        return "No spaced review has come due yet, so this doesn’t count toward the range.";
+      const counted = `${reviewsRight} of ${plural(reviews, "spaced review")} right without help`;
+      return reviewShare === null
+        ? `${counted}: too few yet to count toward the range.`
+        : `${counted} (${Math.round(reviewShare * 100)}%).`;
+    }
   }
 }

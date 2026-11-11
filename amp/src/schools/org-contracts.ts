@@ -15,8 +15,10 @@ export const usageResource = z.object({
   students: count,
   active: count,
   minutes: count,
-  /** Median grades gained this term among students with two readings. */
+  /** Median grades gained this term among placed students, either sign. */
   growth: z.number().nullable(),
+  /** How many placed students that median is over. */
+  placed: count.default(0),
 });
 export const attentionAction = z.object({
   label: z.string(),
@@ -31,6 +33,8 @@ export const attentionItem = z.object({
   title: z.string(),
   detail: z.string(),
   action: attentionAction,
+  /** How this is decided, in one sentence. */
+  rule: z.string().optional(),
 });
 export const standingBin = z.object({
   /** Grades from the student's own, low edge. Null: everything below `to`. */
@@ -72,14 +76,22 @@ export const overviewResponse = z.object({
     lastMinutes: count,
   }),
   trend: z.array(
-    z.object({ week: z.string(), minutes: count, students: count }),
+    z.object({
+      week: z.string(),
+      minutes: count,
+      /** Practiced that week (`practice-rules.ts`). */
+      students: count,
+      /** Problems answered, and of those, with a hint or lesson. */
+      problems: count.default(0),
+      assisted: count.default(0),
+    }),
   ),
   standing: z.object({
     bins: z.array(standingBin),
     behind: count,
     at: count,
     ahead: count,
-    /** Rostered with no grade on file, or no work to read yet. */
+    /** Rostered with no grade on file, or fewer answers than placement. */
     unplaced: count,
   }),
   classes: z

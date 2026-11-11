@@ -319,8 +319,15 @@ test("several behind reads as a group, against the target", () => {
       ],
     }),
   );
+  // 2 of 3 practiced, but the median is 3 minutes against a line of 15 (a
+  // quarter of 60 by Friday): the class is flagged, with the overview's facts.
   const quiet = todos.find((todo) => todo.kind === "no-practice")!;
-  assert.equal(quiet.title, "2 students are behind this week’s target");
+  assert.equal(quiet.title, "The class had little practice this week");
+  assert.equal(
+    quiet.detail,
+    "2 of 3 have practiced · median 3 of 60 min. Diego and Lena have under 15 of 60 minutes so far.",
+  );
+  assert.match(quiet.rule!, /median student has under a quarter/);
   assert.deepEqual(quiet.action, {
     kind: "tab",
     tab: "time",
@@ -437,7 +444,10 @@ test("a good day says so", () => {
   );
   const good = todos.find((todo) => todo.kind === "good-day")!;
   assert.equal(good.title, "A good day: 3 of 4 students worked today");
-  assert.match(good.detail, /60 active minutes so far, and 6 new objectives/);
+  assert.match(
+    good.detail,
+    /60 active minutes so far, and 6 skills shown twice on their own/,
+  );
   // Too few for a good day, but what's going well still shows.
   const quiet = todayTodos(
     input({
@@ -451,7 +461,7 @@ test("a good day says so", () => {
   );
   const going = quiet.find((todo) => todo.kind === "good-day")!;
   assert.equal(going.id, "going-well");
-  assert.equal(going.title, "3 new objectives this week");
+  assert.equal(going.title, "3 skills shown twice on their own this week");
 });
 
 test("never a wall of deficits: what's going well keeps its place", () => {

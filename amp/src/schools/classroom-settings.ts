@@ -6,11 +6,14 @@ import {
   experienceKeys,
   leaveOffSchema,
   orgExperienceWriteSchema,
+  orgWeeklyTargetWriteSchema,
   teacherShownSchema,
   type Experience,
   type ExperienceKey,
   type NamedScope,
+  type OrgWeeklyTarget,
 } from "./classroom-contracts.js";
+import { DEFAULT_WEEKLY_TARGET_MINUTES } from "./practice-rules.js";
 import { SchoolError } from "./contracts.js";
 import { recordEvent } from "./events.js";
 import { activeToday } from "./principal.js";
@@ -356,5 +359,79 @@ export async function setTeacherShown(
       });
     }
     return experienceView(client, actor, target);
+  });
+}
+
+/** A school's or district's weekly practice target: what it is, who set it,
+ * and whether this person can change it. Unset, it follows the org above, then
+ * AMP's default (`practice-rules.ts`). */
+export async function orgWeeklyTargetView(
+  db: Database,
+  actor: Actor,
+  target: Extract<Target, { kind: "org" }>,
+): Promise<OrgWeeklyTarget> {
+  const { above, here } = await chainFor(db, target);
+  const names = await scopeNames(db, target);
+  const family =
+    (await db.query("SELECT kind FROM amp_orgs WHERE id=$1", [target.orgId]))
+      .rows[0]?.kind === "family";
+  const fallback = family ? null : DEFAULT_WEEKLY_TARGET_MINUTES;
+  const inherited = resolveSettings(above).weeklyTargetMinutes;
+  const resolved = resolveSettings(
+    here ? [...above, here] : above,
+  ).weeklyTargetMinutes;
+  const name = (ref: ScopeRef | null) =>
+    ref ? (names.get(ref.id) ?? "") : null;
+  return {
+    minutes: resolved.value ?? fallback,
+    own: here?.values.weeklyTargetMinutes !== undefined,
+    inherited: inherited.value ?? fallback,
+    setBy: name(resolved.setBy),
+    lockedBy:
+      resolved.lockedBy?.id === target.orgId ? null : name(resolved.lockedBy),
+    canEdit: can(actor, "settings.write", target),
+  };
+}
+
+/** Sets this org's weekly target, or clears it back to the one above. A
+ * target locked above is refused. */
+export async function writeOrgWeeklyTarget(
+  repository: SchoolRepository,
+  actor: Actor,
+  target: Extract<Target, { kind: "org" }>,
+  raw: unknown,
+  actorPersonId: string | null,
+): Promise<OrgWeeklyTarget> {
+  const { minutes } = orgWeeklyTargetWriteSchema.parse(raw);
+  return repository.transaction(async (client) => {
+    const { above } = await chainFor(client, target);
+    try {
+      assertSettingsWritable(above, { weeklyTargetMinutes: 1 });
+    } catch (error) {
+      if (error instanceof SettingLockedError)
+        throw new SchoolError(409, "setting_locked");
+      throw error;
+    }
+    const current = await lockedRow(client, target);
+    const before = current.values.weeklyTargetMinutes ?? null;
+    if (before !== minutes) {
+      const values = { ...current.values };
+      if (minutes === null) delete values.weeklyTargetMinutes;
+      else values.weeklyTargetMinutes = minutes;
+      await client.query(
+        `UPDATE amp_scope_settings SET "values"=$3,updated_at=now() WHERE scope_kind=$1 AND scope_id=$2`,
+        ["org", target.orgId, JSON.stringify(values)],
+      );
+      await recordEvent(client, {
+        ...eventScope(target),
+        actorPersonId,
+        action: "settings.changed",
+        detail: {
+          before: { weeklyTargetMinutes: before },
+          after: { weeklyTargetMinutes: minutes },
+        },
+      });
+    }
+    return orgWeeklyTargetView(client, actor, target);
   });
 }

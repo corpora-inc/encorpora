@@ -587,9 +587,9 @@ test(
         assert.deepEqual(after.seats, before.seats);
         for (const learner of [riveraLearner, chenLearner])
           assert.ok(!after.oneRoster.includes(learner));
-        // The class's practice median is the students' alone: no weekly
-        // target is set, so the gradebook's practice score stands on it.
-        assert.equal(after.gradebook.weeklyTargetMinutes, null);
+        // No target is set here, so the class counts against the school's
+        // default; the teacher's own line changes no student's suggestion.
+        assert.equal(after.gradebook.weeklyTargetMinutes, 60);
         assert.ok(
           after.gradebook.students.every(
             (row: { suggestion: { status: string } }) =>
