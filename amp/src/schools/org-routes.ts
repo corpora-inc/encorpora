@@ -17,6 +17,7 @@ import {
   requestIntegrationSchema,
 } from "./org-contracts.js";
 import { readOverview, readSchools } from "./org-reads.js";
+import { readPractice } from "./practice-views.js";
 import { eraseBatch, readPrivacy, schoolExport } from "./privacy.js";
 import { rolloverOptions, runRollover } from "./rollover.js";
 import type { defineSchoolRoute } from "./routes.js";
@@ -47,6 +48,15 @@ export function defineOrgRoutes(define: typeof defineSchoolRoute) {
         can(actor, "year.rollover", target),
         services.now?.(),
       ),
+  });
+
+  define({
+    method: "GET",
+    url: `${ORG}/practice`,
+    action: "overview.read",
+    target: orgParam,
+    handler: ({ target, pool, services }) =>
+      readPractice(pool, target.orgId, services.now?.()),
   });
 
   /* Schools. */

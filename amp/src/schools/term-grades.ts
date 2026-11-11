@@ -449,6 +449,26 @@ export async function weeklyTargetsFor(
   );
 }
 
+/** Schools' targets in one read, for a district's practice views: what each
+ * school's classes follow unless they set their own. */
+export async function orgWeeklyTargets(
+  db: Database,
+  orgs: readonly { id: string; path: readonly string[] }[],
+): Promise<Map<string, number>> {
+  if (!orgs.length) return new Map();
+  const { rows } = await db.query(SCOPE_ROWS, [
+    [...new Set(orgs.flatMap((org) => org.path))],
+    [],
+  ]);
+  return new Map(
+    orgs.map((org) => [
+      org.id,
+      resolveWeeklyTarget(rows, null, org.path, false).minutes ??
+        DEFAULT_WEEKLY_TARGET_MINUTES,
+    ]),
+  );
+}
+
 export type ComputedStudent = {
   student: TermStudent;
   suggestion: GradeSuggestion;

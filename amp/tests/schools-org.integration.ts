@@ -335,28 +335,23 @@ test(
       );
 
       await t.test(
-        "little practice is decided by the clock it's given: not Tuesday, from Wednesday",
+        "the overview reads the clock it is given, and never flags practice",
         async () => {
           // Noon UTC on this week's Tuesday and Wednesday: the rows above are
           // in this week whatever day the suite runs.
           const at = (days: number) =>
             new Date(`${plus(week, days)}T12:00:00Z`);
-          const flags = async (now: Date) =>
-            (
-              await readOverview(db, alder.id, null, true, now)
-            ).attention.filter((item) => item.id.startsWith("little-practice"));
-          assert.deepEqual(await flags(at(1)), []);
-          const wednesday = await flags(at(2));
-          const math = wednesday.find((item) =>
-            item.title.startsWith("Grade 5 Math"),
-          )!;
-          // Amara's 21 minutes and Caleb's 6 problems practiced; Gia didn't.
-          // The median, 0 minutes, is under 9 (a quarter of 60 by Wednesday).
-          assert.equal(
-            math.detail,
-            "2 of 3 have practiced · median 0 of 60 min.",
-          );
-          assert.match(math.rule!, /\(9 minutes by today\)/);
+          // Practice is data on the heat map, never a flag: Tuesday or
+          // Wednesday, Gia's empty week adds nothing to the list.
+          for (const day of [1, 2, 4]) {
+            const items = (
+              await readOverview(db, alder.id, null, true, at(day))
+            ).attention;
+            assert.ok(
+              items.every((item) => !/practice/i.test(item.id + item.title)),
+              JSON.stringify(items),
+            );
+          }
           const view = await readOverview(db, alder.id, null, true, at(2));
           assert.equal(view.today, plus(week, 2));
         },

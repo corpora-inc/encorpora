@@ -76,8 +76,9 @@ export const fullDay = (iso: string) => WEEKDAY.format(dayAt(iso));
 export const dayRange = (from: string, to: string) =>
   `${longDay(from)} to ${longDay(to)}`;
 export const number = (value: number) => value.toLocaleString("en-US");
-/** A hover and focus readout for anything inside with `data-tip`. It overlays
- * the page, so it moves nothing. */
+/** A hover, tap and focus readout for anything inside with `data-tip`. It
+ * overlays the page, so it moves nothing. A tip may hold line breaks. A tap
+ * on a touch screen shows it; a second tap, or one elsewhere, puts it away. */
 export function TipZone({
   className,
   children,
@@ -106,7 +107,18 @@ export function TipZone({
       onPointerOver={(event: PointerEvent) =>
         event.pointerType === "mouse" && show(event.target as Element | null)
       }
-      onPointerLeave={() => setTip(null)}
+      onPointerDown={(event: PointerEvent) => {
+        if (event.pointerType === "mouse") return;
+        const target = (event.target as Element | null)?.closest<HTMLElement>(
+          "[data-tip]",
+        );
+        if (target && tip?.text === target.dataset.tip) setTip(null);
+        else show(target ?? null);
+      }}
+      // A finger lifting also "leaves": only a mouse leaving puts it away.
+      onPointerLeave={(event: PointerEvent) =>
+        event.pointerType === "mouse" && setTip(null)
+      }
       onFocus={(event: FocusEvent) =>
         show(
           (event.target as HTMLElement).querySelector?.("[data-tip]") ?? null,

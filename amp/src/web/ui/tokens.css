@@ -123,6 +123,24 @@
   --color-brand-microsoft-green: #7fba00;
   --color-brand-microsoft-blue: #00a4ef;
   --color-brand-microsoft-yellow: #ffb900;
+  /* Practice heat: a diverging scale, cold blue (no practice) through a
+     neutral at the weekly target to hot red (twice it and more). Nine stops,
+     mixed between neighbours in OKLab (heat-scale.ts); blue against red stays
+     apart under protanopia and deuteranopia. The four dose lines are the
+     practice-time quartiles, coldest to hottest. */
+  --color-heat-0: #1d4f91;
+  --color-heat-1: #2f69b3;
+  --color-heat-2: #5f93d3;
+  --color-heat-3: #a9c6e8;
+  --color-heat-4: #e6e3da;
+  --color-heat-5: #f2c4ab;
+  --color-heat-6: #e2895f;
+  --color-heat-7: #c2502f;
+  --color-heat-8: #942b22;
+  --color-dose-1: #1d4f91;
+  --color-dose-2: #4d86cc;
+  --color-dose-3: #d9744c;
+  --color-dose-4: #942b22;
 }
 @media screen and (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -228,6 +246,19 @@
     --color-brand-microsoft-green: #7fba00;
     --color-brand-microsoft-blue: #00a4ef;
     --color-brand-microsoft-yellow: #ffb900;
+    --color-heat-0: #8fbdf0;
+    --color-heat-1: #5e98de;
+    --color-heat-2: #3d72b8;
+    --color-heat-3: #2c4a6e;
+    --color-heat-4: #2a3633;
+    --color-heat-5: #5e3a2e;
+    --color-heat-6: #b55f3c;
+    --color-heat-7: #e3784f;
+    --color-heat-8: #f5a27f;
+    --color-dose-1: #6aa6ea;
+    --color-dose-2: #3d72b8;
+    --color-dose-3: #b55f3c;
+    --color-dose-4: #ef8a63;
   }
 }
 :root[data-theme="dark"] {
@@ -333,6 +364,19 @@
   --color-brand-microsoft-green: #7fba00;
   --color-brand-microsoft-blue: #00a4ef;
   --color-brand-microsoft-yellow: #ffb900;
+  --color-heat-0: #8fbdf0;
+  --color-heat-1: #5e98de;
+  --color-heat-2: #3d72b8;
+  --color-heat-3: #2c4a6e;
+  --color-heat-4: #2a3633;
+  --color-heat-5: #5e3a2e;
+  --color-heat-6: #b55f3c;
+  --color-heat-7: #e3784f;
+  --color-heat-8: #f5a27f;
+  --color-dose-1: #6aa6ea;
+  --color-dose-2: #3d72b8;
+  --color-dose-3: #b55f3c;
+  --color-dose-4: #ef8a63;
 }
 
 /*

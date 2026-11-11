@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
 import { WEEKLY_TARGET_RANGE } from "../../../../schools/classroom-contracts";
-import { LOW_PRACTICE } from "../../../../schools/practice-rules";
 import { Button } from "../../../ui/Button";
 import { EmptyState } from "../../../ui/EmptyState";
 import { Loading } from "../../../ui/Loading";
@@ -15,9 +14,9 @@ import styles from "../School.module.css";
 const minutesWords = (minutes: number) => `${minutes} min`;
 
 /** A school's or district's weekly practice target, a section of its
- * Settings: one number every class follows unless it sets its own. Today, the
- * grade suggestion's practice and the overview's flags all count against it.
- * A step shows at once and saves once stepping settles. */
+ * Settings: one number every class follows unless it sets its own. It is the
+ * midpoint of the practice heat maps and the grade suggestion's practice
+ * scale. A step shows at once and saves once stepping settles. */
 export function WeeklyTargetSection({ orgId }: { orgId: string }) {
   const session = useStaffSession();
   const target = useQuery(weeklyTargetOptions(session, orgId));
@@ -43,9 +42,8 @@ export function WeeklyTargetSection({ orgId }: { orgId: string }) {
     <section className={styles.settingsSection} aria-labelledby="weekly-target">
       <h2 id="weekly-target">Weekly practice</h2>
       <p className={styles.sectionLead}>
-        The minutes each student aims for in a week. Each class’s Today, its
-        suggested grades and the overview count against it. A class can set its
-        own.
+        Minutes per student per week. Every class follows it unless the class
+        sets its own.
       </p>
       {data ? (
         <div className={rows.rows}>
@@ -53,10 +51,8 @@ export function WeeklyTargetSection({ orgId }: { orgId: string }) {
             <div className={rows.rowText}>
               <h2 id="setting-target">Weekly target per student</h2>
               <p>
-                A class is flagged from Wednesday when fewer than{" "}
-                {Math.round(LOW_PRACTICE.practicedShare * 100)}% of its students
-                have practiced, or its median student is under a quarter of this
-                for the days so far.
+                The midpoint of the practice heat map’s scale, and the basis for
+                practice in suggested grades.
               </p>
             </div>
             <div className={rows.rowControl}>

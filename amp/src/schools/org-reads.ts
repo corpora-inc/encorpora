@@ -5,41 +5,29 @@ import type {
   OverviewResponse,
   SchoolUsage,
 } from "./org-contracts.js";
-import { joinNames, weekStart, dayOfWeek } from "./today.js";
+import { joinNames, weekStart } from "./today.js";
 import { PERSON_NAME } from "./term-grades.js";
 import { YEAR_IN_USE } from "./years.js";
 import { startLevelSql } from "./start-level.js";
 import { growthOf, medianInterval } from "./standing-math.js";
 import { levelSdSql } from "./student-sd.js";
 import { PLACEMENT_ATTEMPTS } from "../learning/placement.js";
-import {
-  lowPractice,
-  lowPracticeFacts,
-  lowPracticeRule,
-  medianOf,
-  practiced,
-  practicedSql,
-  type ClassWeek,
-} from "./practice-rules.js";
-import { weeklyTargetsFor } from "./term-grades.js";
+import { medianOf, practiced, practicedSql } from "./practice-rules.js";
 
 type Database = Pick<PoolClient, "query">;
 const DAY = 86_400_000;
-const shift = (iso: string, days: number) =>
+export const shift = (iso: string, days: number) =>
   new Date(Date.parse(`${iso}T00:00:00Z`) + days * DAY)
     .toISOString()
     .slice(0, 10);
 
-/** What a head needs flagged, and when. Practice rules are shared with a
- * teacher's Today, in `practice-rules.ts`. */
+/** What a head is asked to act on, and when. Only facts with an admin action:
+ * practice is shown as data (`practice-views.ts`), never flagged. */
 export const ATTENTION = {
   /** A license this close to its end says so. */
   licenseDays: 45,
   /** The year this close to its end asks for next year. */
   yearDays: 30,
-  /** Classes a school's list names one by one; past this, one line says how
-   * many more. */
-  quietClassesShown: 3,
 } as const;
 
 export type OrgScope = {
@@ -117,9 +105,11 @@ export type StudentFact = {
   startSd: number | null;
   seated: boolean;
   signedIn: boolean;
+  /** On the roster here since. */
+  since: string;
 };
 export const SQL_ACTIVE_STUDENTS = `
-  SELECT DISTINCT ON (p.id) p.id,p.learner_id,p.grade_level,r.org_id
+  SELECT DISTINCT ON (p.id) p.id,p.learner_id,p.grade_level,r.org_id,r.begin_on
   FROM amp_orgs o
   JOIN amp_org_roles r ON r.org_id=o.id AND r.role='student'
     AND r.begin_on<=(now() AT TIME ZONE o.timezone)::date
@@ -145,7 +135,7 @@ export async function studentFacts(
        COALESCE(w."thisAttempts",0)::int AS "thisAttempts",COALESCE(w."lastAttempts",0)::int AS "lastAttempts",
        latest.overall_level::float8 AS level,first.overall_level::float8 AS "startLevel",
        latest.sd AS "levelSd",first.sd AS "startSd",
-       seat.person_id IS NOT NULL AS seated,
+       r.begin_on::text AS since,seat.person_id IS NOT NULL AS seated,
        session.id IS NOT NULL AS "signedIn"
      FROM roster r
      LEFT JOIN (
@@ -215,13 +205,6 @@ export function usageOf(students: readonly StudentFact[]) {
     placed: gains.length,
   };
 }
-/** This week's facts for a class's flag. */
-export const classWeekOf = (students: readonly StudentFact[]): ClassWeek => ({
-  minutes: students.map((student) => minutesOf(student.thisMs)),
-  practiced: students.filter((student) =>
-    isActive(student.thisMs, student.thisAttempts),
-  ).length,
-});
 
 export async function trendOf(
   db: Database,
@@ -283,17 +266,17 @@ export async function classesHere(db: Database, orgId: string) {
     teachers: string[];
   }[];
 }
-async function classMembers(db: Database, classIds: readonly string[]) {
+export async function classMembers(db: Database, classIds: readonly string[]) {
   if (!classIds.length) return [];
   const { rows } = await db.query(
-    `SELECT e.class_id AS class,e.person_id AS person
+    `SELECT e.class_id AS class,e.person_id AS person,e.begin_on::text AS since
      FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs o ON o.id=c.org_id
      WHERE e.class_id=ANY($1::uuid[]) AND e.role='student'
        AND e.begin_on<=(now() AT TIME ZONE o.timezone)::date
        AND (e.end_on IS NULL OR e.end_on>(now() AT TIME ZONE o.timezone)::date)`,
     [classIds],
   );
-  return rows as { class: string; person: string }[];
+  return rows as { class: string; person: string; since: string }[];
 }
 
 /** Seats and dates: this org's licenses, ones held above it, and at a district
@@ -338,13 +321,7 @@ const shortDate = (iso: string) =>
 type Rollup = {
   org: OrgScope;
   students: readonly StudentFact[];
-  classes: readonly (ClassUsage & {
-    org: string;
-    /** This week, for the practice flag; a class without it isn't flagged. */
-    week?: ClassWeek;
-    /** Its weekly target, null for a family that hasn't set one. */
-    target?: number | null;
-  })[];
+  classes: readonly (ClassUsage & { org: string })[];
   seats: OverviewResponse["seats"];
   /** The nearest agreement isn't accepted, for these schools. */
   unsigned: readonly { id: string; name: string }[];
@@ -427,8 +404,8 @@ export function attentionFor({
           : `The license ends ${shortDate(licenseEnd!)}`,
       detail:
         daysLeft <= 0
-          ? "Practice has stopped until it’s renewed. Student data is kept."
-          : "Ask about renewing now, so practice doesn’t stop.",
+          ? "Practice is stopped until it’s renewed. Student data is kept."
+          : "Practice stops on that date unless it’s renewed.",
       action: { label: "Open the license", org: org.id, path: "license" },
       rule: `Shown from ${ATTENTION.licenseDays} days before the license ends.`,
     });
@@ -479,85 +456,12 @@ export function attentionFor({
       },
       rule: "Shown while a class this year has no teacher.",
     });
-  // Little practice, by the rule a teacher's Today uses: each class against
-  // its own weekly target, with the facts that flagged it.
-  const weekday = dayOfWeek(org.today);
-  const quiet = classes
-    .flatMap((row) => {
-      const flag =
-        row.week && lowPractice(row.week, row.target ?? null, weekday);
-      return flag ? [{ row, flag }] : [];
-    })
-    .sort(
-      (a, b) =>
-        a.flag.practiced / a.flag.students -
-          b.flag.practiced / b.flag.students ||
-        a.flag.medianMinutes - b.flag.medianMinutes,
-    );
-  const ruleFor = ({ row }: { row: { target?: number | null } }) =>
-    lowPracticeRule(row.target ?? null, weekday);
-  const sameTarget = new Set(quiet.map(({ row }) => row.target ?? null));
-  const sharedRule =
-    sameTarget.size === 1
-      ? lowPracticeRule([...sameTarget][0]!, weekday)
-      : lowPracticeRule(null, weekday).replace(
-          /\.$/,
-          ", or its median student has under a quarter of its weekly target for the days so far.",
-        );
-  if (district && quiet.length)
-    items.push({
-      id: "little-practice",
-      title: `${plural(quiet.length, "class", "classes")} had little practice this week`,
-      detail: `${joinNames(
-        quiet.map(({ row }) => classLabel(row)),
-        NAMES_SHOWN,
-      )}.`,
-      action: {
-        label: openLabel(worst(quiet.map(({ row }) => row)), ""),
-        org: worst(quiet.map(({ row }) => row)),
-        path: "",
-      },
-      rule: sharedRule,
-    });
-  else {
-    const shown =
-      quiet.length > ATTENTION.quietClassesShown
-        ? quiet.slice(0, ATTENTION.quietClassesShown - 1)
-        : quiet;
-    for (const entry of shown)
-      items.push({
-        id: `little-practice:${entry.row.id}`,
-        title: `${entry.row.name} had little practice this week`,
-        detail: `${lowPracticeFacts(entry.flag)}.`,
-        action: {
-          label: `Open ${entry.row.name}`,
-          org: org.id,
-          path: `classes/${entry.row.id}/today`,
-        },
-        rule: ruleFor(entry),
-      });
-    const rest = quiet.slice(shown.length);
-    if (rest.length)
-      items.push({
-        id: "little-practice",
-        title: `${plural(rest.length, "more class", "more classes")} had little practice this week`,
-        detail: `${joinNames(
-          rest.map(
-            ({ row, flag }) => `${row.name} (${lowPracticeFacts(flag)})`,
-          ),
-          NAMES_SHOWN,
-        )}.`,
-        action: { label: "See all classes", org: org.id, path: "classes" },
-        rule: sharedRule,
-      });
-  }
   const neverSignedIn = students.filter((student) => !student.signedIn).length;
   if (neverSignedIn > 0)
     items.push({
       id: "never-signed-in",
       title: `${plural(neverSignedIn, "student hasn’t", "students haven’t")} signed in yet`,
-      detail:
-        "Their cards or class code are waiting. Teachers can print cards from each roster.",
+      detail: "Sign-in cards print from each class roster.",
       action: {
         label: "See who",
         org: org.id,
@@ -673,7 +577,7 @@ export async function readOverview(
         : null,
     ],
   );
-  const [members, seatRows, targets] = await Promise.all([
+  const [members, seatRows] = await Promise.all([
     classMembers(
       pool,
       classList.map((row) => row.id),
@@ -682,10 +586,6 @@ export async function readOverview(
       pool,
       org,
       students.reduce((sum, student) => sum + (student.seated ? 0 : 1), 0),
-    ),
-    weeklyTargetsFor(
-      pool,
-      classList.map((row) => row.id),
     ),
   ]);
   const byPerson = new Map(students.map((student) => [student.id, student]));
@@ -700,8 +600,6 @@ export async function readOverview(
   const classes = classList.map((row) => ({
     ...row,
     ...usageOf(enrolled.get(row.id) ?? []),
-    week: classWeekOf(enrolled.get(row.id) ?? []),
-    target: targets.get(row.id)?.minutes ?? null,
   }));
   const isSchool = org.kind === "school";
   const week = students.reduce(
@@ -734,11 +632,7 @@ export async function readOverview(
       lastMinutes: Math.round(minutesOf(week.lastMs)),
     },
     trend,
-    classes: isSchool
-      ? classes.map(
-          ({ org: _org, week: _week, target: _target, ...row }) => row,
-        )
-      : null,
+    classes: isSchool ? classes.map(({ org: _org, ...row }) => row) : null,
     schools: isSchool ? null : schoolRows(schools, students, classes),
     attention: attentionFor({
       org,

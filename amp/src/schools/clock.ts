@@ -1,7 +1,7 @@
 /**
  * The clock school reads take "today" from. Production always reads the wall
  * clock. A local preview or test may pin it with AMP_SCHOOL_NOW (an ISO
- * instant), so a weekday rule such as the little-practice flag can be seen on
+ * instant), so the views of a given week, mid-week, can be seen on
  * any day; set anywhere else, the server refuses to start rather than report
  * a made-up day.
  */

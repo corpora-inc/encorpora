@@ -635,7 +635,7 @@ test(
       assert.ok(gap, JSON.stringify(body.todos));
       assert.match(
         gap.title,
-        /3 students are stuck on dividing by a two-digit number/,
+        /3 students keep missing dividing by a two-digit number/,
       );
       assert.deepEqual(
         new Set(gap.students.map((entry: { id: string }) => entry.id)),

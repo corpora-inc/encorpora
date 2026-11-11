@@ -316,7 +316,12 @@ export const timeResponse = z.object({
       first: z.string(),
       minutes: z.number(),
       problems: z.number(),
-      days: z.array(z.object({ day, minutes: z.number() })),
+      /** In this class over these days: before `from`, not on its roster. */
+      from: day.optional(),
+      to: day.optional(),
+      days: z.array(
+        z.object({ day, minutes: z.number(), problems: z.number().default(0) }),
+      ),
     }),
   ),
   skills: z.array(
