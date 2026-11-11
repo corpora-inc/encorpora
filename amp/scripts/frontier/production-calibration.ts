@@ -9,6 +9,11 @@
  *
  *   npx tsx scripts/frontier/production-calibration.ts
  *   npx tsx scripts/frontier/production-calibration.ts --quick --seed 20261110
+ *   npx tsx scripts/frontier/production-calibration.ts --growth
+ *   npx tsx scripts/frontier/production-calibration.ts --growth --quick
+ *
+ * `--growth` is the growth-recovery study: misspecified learners, a 180-day
+ * term, and irregular practice. Scoring lives in `growth-recovery.ts`.
  *
  * Markdown goes to stdout. JSON goes to artifacts/calibration/ (gitignored).
  */
@@ -24,6 +29,12 @@ import {
 } from "../../src/learning/frontier";
 import { DEFAULT_FRONTIER_POLICY } from "../../src/learning/frontier-policy";
 import { reportedSd } from "../../src/learning/frontier-report";
+import {
+  formatGrowthStudy,
+  summarizeGrowth,
+  type GrowthReading,
+  type GrowthSeries,
+} from "./growth-recovery";
 import {
   MISSPECIFIED_RESPONSE,
   misspecifiedSuccessProbability,
@@ -446,6 +457,276 @@ function emptyModel(): ModelReport {
   };
 }
 
+const GROWTH_QUICK_GRADES = [1, 4, 7, 10];
+const GROWTH_QUICK_OFFSETS = [-2, 0, 2];
+
+type GrowthJob = {
+  id: string;
+  grade: number;
+  offset: number;
+  rep: number;
+  seed: number;
+  itemOffsets: Record<string, number>;
+};
+
+/**
+ * One misspecified learner across a 180-day term. Practice is 2–6 fixed
+ * weekdays and 5–40 answers on each of those days. Person parameters are
+ * drawn in the same order as `simulateLearner`, then the practice pattern.
+ * A day is stored only when the learner answered, which is what a level day is.
+ */
+export function simulateGrowthLearner(job: GrowthJob): GrowthSeries {
+  const rng = mulberry32(
+    mix([job.seed, job.grade, Math.round(job.offset * 10), job.rep, 2]),
+  );
+  const slip =
+    MISSPECIFIED_RESPONSE.slipMin +
+    rng() * (MISSPECIFIED_RESPONSE.slipMax - MISSPECIFIED_RESPONSE.slipMin);
+  const guess =
+    MISSPECIFIED_RESPONSE.guessMin +
+    rng() * (MISSPECIFIED_RESPONSE.guessMax - MISSPECIFIED_RESPONSE.guessMin);
+  const growth =
+    MISSPECIFIED_RESPONSE.growthMin +
+    rng() *
+      (MISSPECIFIED_RESPONSE.growthMax - MISSPECIFIED_RESPONSE.growthMin);
+  const strandOffset = new Map<string, number>();
+  for (const strand of strandNames)
+    strandOffset.set(strand, (rng() - 0.5) * 1.2);
+  const daysPerWeek = 2 + Math.floor(rng() * 5);
+  const weekdays = [0, 1, 2, 3, 4, 5, 6];
+  for (let index = weekdays.length - 1; index > 0; index--) {
+    const swap = Math.floor(rng() * (index + 1));
+    const held = weekdays[index]!;
+    weekdays[index] = weekdays[swap]!;
+    weekdays[swap] = held;
+  }
+  const practices = new Set(weekdays.slice(0, daysPerWeek));
+  const birthYear = birthYearForGrade(job.grade, CALIBRATION_EPOCH);
+  const start = initialLevel({ birthYear, now: CALIBRATION_EPOCH });
+  if (start !== job.grade)
+    throw new Error(
+      `Birth year ${birthYear} started at ${start}, not grade ${job.grade}`,
+    );
+  const theta0 = job.grade + job.offset;
+  const state = newLearnerFrontier({ epoch: 0, start, strandStarts: {} });
+  const attempts: Outcome[] = [];
+  const days: GrowthReading[] = [];
+  let serial = 0;
+  const termDays = MISSPECIFIED_RESPONSE.termDays;
+  for (let day = 0; day < termDays; day++) {
+    if (!practices.has(day % 7)) continue;
+    const count = 5 + Math.floor(rng() * 36);
+    for (let within = 0; within < count; within++) {
+      const at = CALIBRATION_EPOCH + day * DAY_MS + within * 1000;
+      const frontier = readLearnerFrontier(state, at);
+      const [choice] = planMixedPractice({
+        templates: webTemplates,
+        skills,
+        attempts: attempts.slice(-12),
+        evidence: projectSkillEvidence(attempts),
+        frontier,
+        count: 1,
+        seed: `growth:${job.id}:${serial}`,
+        now: at,
+        learnerKey: `growth:${job.id}`,
+      });
+      if (!choice) throw new Error(`No problem for ${job.id} on day ${day}`);
+      const template = choice.template;
+      const strand = strandOf.get(template.id) ?? choice.strand;
+      const grade = gradeOf.get(template.id);
+      if (grade === undefined) throw new Error(`No grade for ${template.id}`);
+      const overallTruth = theta0 + growth * (day / termDays);
+      const truth = overallTruth + (strandOffset.get(strand) ?? 0);
+      const probability = misspecifiedSuccessProbability({
+        theta: truth,
+        catalogGrade: grade,
+        itemOffset: job.itemOffsets[template.id] ?? 0,
+        slip,
+        guess,
+      });
+      const correct = rng() < probability;
+      const createdAt = new Date(at).toISOString();
+      attempts.push({
+        id: `${job.id}:a${serial}`,
+        problemId: `${job.id}:p${serial}`,
+        requestId: `${job.id}:r${serial}`,
+        skillId: template.skillId,
+        templateId: template.id,
+        response: "",
+        correct,
+        assisted: false,
+        explanation: [],
+        answer: "",
+        createdAt,
+      });
+      serial += 1;
+      advanceLearnerFrontier(state, [
+        {
+          templateId: template.id,
+          correct,
+          assisted: false,
+          createdAt,
+          practiceRevision: 0,
+          sequence: String(serial),
+        },
+      ]);
+    }
+    const at = CALIBRATION_EPOCH + day * DAY_MS + count * 1000;
+    const after = readLearnerFrontier(state, at);
+    days.push({
+      day,
+      answers: after.overall.answered,
+      level: after.overall.level,
+      reportedSd: reportedSd(after.overall.sd, {
+        answered: after.overall.answered,
+      }),
+      truth: theta0 + growth * (day / termDays),
+    });
+  }
+  const last = days[days.length - 1];
+  return {
+    id: job.id,
+    grade: job.grade,
+    offset: job.offset,
+    rep: job.rep,
+    answers: last?.answers ?? 0,
+    daysPerWeek,
+    truth: growth,
+    elapsed: termDays,
+    days,
+  };
+}
+
+function growthJobsFor(options: { seed: number; quick: boolean }): GrowthJob[] {
+  const shared = itemOffsets(options.seed);
+  const grades = options.quick ? GROWTH_QUICK_GRADES : FULL_GRADES;
+  const offsets = options.quick ? GROWTH_QUICK_OFFSETS : FULL_OFFSETS;
+  const reps = options.quick ? [0] : [0, 1];
+  const jobs: GrowthJob[] = [];
+  for (const rep of reps)
+    for (const grade of grades)
+      for (const offset of offsets)
+        jobs.push({
+          id: `misspecified:g${grade}:o${offset}:r${rep}`,
+          grade,
+          offset,
+          rep,
+          seed: options.seed,
+          itemOffsets: shared,
+        });
+  return jobs;
+}
+
+type GrowthWorkerResponse =
+  | { ok: true; series: GrowthSeries; ms: number }
+  | { ok: false; error: string; learner: string };
+
+function listenGrowth(
+  worker: Worker,
+  job: GrowthJob,
+): Promise<GrowthWorkerResponse> {
+  return new Promise((resolve, reject) => {
+    const fail = (error: Error) => {
+      worker.off("message", done);
+      reject(error);
+    };
+    const done = (message: GrowthWorkerResponse) => {
+      worker.off("error", fail);
+      resolve(message);
+    };
+    worker.once("error", fail);
+    worker.once("message", done);
+    worker.postMessage({ kind: "growth", job });
+  });
+}
+
+async function runGrowthJobs(
+  jobs: readonly GrowthJob[],
+  concurrency: number,
+  quiet: boolean,
+): Promise<GrowthSeries[]> {
+  if (jobs.length === 0) return [];
+  const workers = Math.max(1, Math.min(concurrency, jobs.length));
+  if (workers === 1) return jobs.map((job) => simulateGrowthLearner(job));
+  const execArgv = process.execArgv.filter(
+    (arg) => arg !== "--test" && !arg.startsWith("--test-"),
+  );
+  const pool = Array.from(
+    { length: workers },
+    () => new Worker(new URL(import.meta.url), { execArgv }),
+  );
+  const series: GrowthSeries[] = [];
+  let cursor = 0;
+  try {
+    await Promise.all(
+      pool.map(async (worker) => {
+        for (;;) {
+          const index = cursor;
+          cursor += 1;
+          const job = jobs[index];
+          if (!job) return;
+          const response = await listenGrowth(worker, job);
+          if (!response.ok)
+            throw new Error(`${response.learner}: ${response.error}`);
+          series.push(response.series);
+          if (!quiet)
+            process.stderr.write(
+              `  ${response.ms}ms ${job.id} (${index + 1}/${jobs.length})\n`,
+            );
+        }
+      }),
+    );
+  } finally {
+    await Promise.all(pool.map((worker) => worker.terminate()));
+  }
+  return series;
+}
+
+export async function runGrowthRecovery(
+  options: {
+    seed?: number;
+    quick?: boolean;
+    concurrency?: number;
+    quiet?: boolean;
+  } = {},
+) {
+  const seed = options.seed ?? CALIBRATION_SEED;
+  const quick = options.quick ?? false;
+  const jobs = growthJobsFor({ seed, quick });
+  const concurrency =
+    options.concurrency ?? Math.max(1, Math.min(8, availableParallelism() - 1));
+  const started = Date.now();
+  const series = await runGrowthJobs(jobs, concurrency, options.quiet ?? false);
+  const summary = summarizeGrowth(series);
+  if (!options.quiet)
+    process.stderr.write(
+      `growth ${quick ? "quick" : "full"} seed ${seed}: ${jobs.length} learners in ${((Date.now() - started) / 1000).toFixed(1)}s\n`,
+    );
+  return { seed, quick, termDays: MISSPECIFIED_RESPONSE.termDays, summary, series };
+}
+
+function writeGrowth(report: Awaited<ReturnType<typeof runGrowthRecovery>>) {
+  const directory = join(
+    dirname(fileURLToPath(import.meta.url)),
+    "../../artifacts/calibration",
+  );
+  mkdirSync(directory, { recursive: true });
+  const path = join(
+    directory,
+    report.quick ? "growth-quick.json" : "growth-full.json",
+  );
+  writeFileSync(
+    path,
+    JSON.stringify({
+      seed: report.seed,
+      quick: report.quick,
+      termDays: report.termDays,
+      summary: report.summary,
+    }),
+  );
+  return path;
+}
+
 type WorkerResponse =
   | { ok: true; points: CalibrationPoint[]; ms: number }
   | { ok: false; error: string; learner: string };
@@ -631,39 +912,52 @@ export function writeCalibration(report: CalibrationReport) {
 }
 
 if (!isMainThread) {
-  parentPort!.on("message", (message: { kind: "run"; job: LearnerJob }) => {
-    try {
-      const started = Date.now();
-      const points = simulateLearner(message.job);
-      const response: WorkerResponse = {
-        ok: true,
-        points,
-        ms: Date.now() - started,
-      };
-      parentPort!.postMessage(response);
-    } catch (error) {
-      const response: WorkerResponse = {
-        ok: false,
-        learner: message.job.id,
-        error:
-          error instanceof Error
-            ? (error.stack ?? error.message)
-            : String(error),
-      };
-      parentPort!.postMessage(response);
-    }
-  });
+  parentPort!.on(
+    "message",
+    (message: { kind: "run"; job: LearnerJob } | { kind: "growth"; job: GrowthJob }) => {
+      try {
+        const started = Date.now();
+        if (message.kind === "growth") {
+          const response: GrowthWorkerResponse = {
+            ok: true,
+            series: simulateGrowthLearner(message.job),
+            ms: Date.now() - started,
+          };
+          parentPort!.postMessage(response);
+          return;
+        }
+        const response: WorkerResponse = {
+          ok: true,
+          points: simulateLearner(message.job),
+          ms: Date.now() - started,
+        };
+        parentPort!.postMessage(response);
+      } catch (error) {
+        const response: WorkerResponse = {
+          ok: false,
+          learner: message.job.id,
+          error:
+            error instanceof Error
+              ? (error.stack ?? error.message)
+              : String(error),
+        };
+        parentPort!.postMessage(response);
+      }
+    },
+  );
 } else if (
   process.argv[1] &&
   import.meta.url === pathToFileURL(process.argv[1]).href
 ) {
   const args = process.argv.slice(2);
   let quick = false;
+  let growth = false;
   let seed = CALIBRATION_SEED;
   let models: LearnerModel[] = ["well-specified", "misspecified"];
   for (let index = 0; index < args.length; index++) {
     const arg = args[index];
     if (arg === "--quick") quick = true;
+    else if (arg === "--growth") growth = true;
     else if (arg === "--seed") seed = Number(args[++index]);
     else if (arg === "--model") {
       const name = args[++index];
@@ -673,10 +967,23 @@ if (!isMainThread) {
     } else throw new Error(`Unknown argument ${arg}`);
   }
   if (!Number.isInteger(seed)) throw new Error("--seed must be an integer");
-  runProductionCalibration({ seed, quick, models })
-    .then((report) => {
-      process.stdout.write(formatCalibration(report));
-      const path = writeCalibration(report);
+  const run = growth
+    ? runGrowthRecovery({ seed, quick }).then((report) => {
+        process.stdout.write(
+          formatGrowthStudy(report.summary, {
+            seed: report.seed,
+            quick: report.quick,
+            termDays: report.termDays,
+          }),
+        );
+        return writeGrowth(report);
+      })
+    : runProductionCalibration({ seed, quick, models }).then((report) => {
+        process.stdout.write(formatCalibration(report));
+        return writeCalibration(report);
+      });
+  run
+    .then((path) => {
       process.stderr.write(`wrote ${path}\n`);
     })
     .catch((error: unknown) => {
